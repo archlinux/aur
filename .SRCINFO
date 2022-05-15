@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE
 	pkgver = 100.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
 	arch = x86_64
@@ -28,7 +28,6 @@ pkgbase = firedragon
 	makedepends = cbindgen
 	makedepends = nasm
 	makedepends = python-setuptools
-	makedepends = python-psutil
 	makedepends = python-zstandard
 	makedepends = git
 	makedepends = binutils

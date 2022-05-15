@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=100.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -71,8 +71,8 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0007-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-1516803-Fix-building-sandbox.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0017-Make-PGO-use-toolchain.patch
@@ -87,7 +87,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0026-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0027-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0028-bgo-816975-fix-build-on-x86.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1559213-fix-system-av1-libs.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1559213-fix-system-av1-libs.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1762050-fix-pgo-with-virtualenv.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1765361-resolve_objdir_from_virtualenv_if_mozinfo_not_ancestor.patch
@@ -116,12 +116,8 @@ prepare() {
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
-  # remove search extensions (experimental)
-  # patch -Np1 -i ${_patches_dir}/search-config.patch
-  #cp "${srcdir}/common/source_files/search-config.json" services/settings/dumps/main/search-config.json
-
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  #patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   echo "---- Librewolf patches - UI"
   # Remove references to Firefox from the settings UI, change text in some of the links,
@@ -147,8 +143,9 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
   patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
 
-  # Remap links
+  # Misc
   patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/native-messaging-registry-path.patch
 
   # Pref pane - custom FireDragon svg
   patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
@@ -176,10 +173,10 @@ ac_add_options --with-ccache
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 export CC='clang'
 export CXX='clang++'
-export NM=llvm-nm
-export OBJCOPY='/usr/bin/llvm-objcopy'
-export RANLIB=llvm-ranlib
-export STRIP=llvm-strip
+#export NM=llvm-nm
+#export OBJCOPY='/usr/bin/llvm-objcopy'
+#export RANLIB=llvm-ranlib
+#export STRIP=llvm-strip
 
 # Branding
 ac_add_options --enable-update-channel=release
@@ -194,24 +191,36 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
-# ac_add_options --with-system-av1
-# ac_add_options --with-system-graphite2
-# ac_add_options --with-system-harfbuzz
-# ac_add_options --with-system-icu
-# ac_add_options --with-system-jpeg
-# ac_add_options --with-system-libevent
-# ac_add_options --with-system-libvpx
+#ac_add_options --with-system-av1
+#ac_add_options --with-system-graphite2
+ac_add_options --with-system-harfbuzz
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-# ac_add_options --with-system-zlib
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --disable-crashreporter
 ac_add_options --disable-debug
+ac_add_options --disable-debug-js-modules
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-gpsd
+ac_add_options --disable-necko-wifi
+ac_add_options --disable-rust-tests
+ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
+ac_add_options --disable-trace-logging
 ac_add_options --disable-updater
+ac_add_options --disable-warnings-as-errors
+ac_add_options --disable-webspeech
+ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-strip
 
 # Disables crash reporting, telemetry and other data gathering tools
 #mk_add_options MOZ_CRASHREPORTER=0 supposed to be obsolete
