@@ -1,7 +1,7 @@
 # Maintainer: Yohann D'ANELLO <ynerant@crans.org>
 
 pkgname=woke-bin
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Detect non-inclusive language in your source code. Pre-compiled."
 arch=('amd64' 'arm64' 'x86_64')
@@ -12,9 +12,9 @@ provides=('woke')
 source_amd64=("https://github.com/get-woke/woke/releases/download/v${pkgver}/woke-${pkgver}-linux-amd64.tar.gz")
 source_arm64=("https://github.com/get-woke/woke/releases/download/v${pkgver}/woke-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("https://github.com/get-woke/woke/releases/download/v${pkgver}/woke-${pkgver}-linux-386.tar.gz")
-sha256sums_amd64=("5fa5780858a45ecfa9e8d597c17bb231da9af4b7bc2c7c3150f00e28f3d7de9f")
-sha256sums_arm64=("8294eff862047078b3771f9e63aeb8ebd84073e6a8f870d5239411c3fc94a2ca")
-sha256sums_x86_64=("e79d1e6edff135769f371aa8cfa9ae8e2dbc14823baeaec22638d232b6d6e7a9")
+sha256sums_amd64=("da0372dc33f45a56265abce127a2b9ed34cef9cfe85110b2fb6981db630a0416")
+sha256sums_arm64=("fa545e7fd0b2bbae1bc85b67b360c24cd8892b8aef1bffb538c215c6e532a1ff")
+sha256sums_x86_64=("97450250965ae952b5e0d7b7c6a15388ac657b6ebdb42f869dfc06384cbd771b")
 
 package() {
   if [ $CARCH == 'x86_64' ]; then
