@@ -1,8 +1,8 @@
 pkgbase = dendrite
 	pkgdesc = A second-generation Matrix homeserver written in Go
 	pkgver = 0.8.5
-	pkgrel = 1
-	url = https://matrix.org/docs/projects/server/dendrite
+	pkgrel = 2
+	url = https://matrix-org.github.io/dendrite/
 	install = dendrite.install
 	arch = x86_64
 	arch = i686

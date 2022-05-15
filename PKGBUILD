@@ -3,9 +3,9 @@
 
 pkgname="dendrite"
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A second-generation Matrix homeserver written in Go"
-url="https://matrix.org/docs/projects/server/dendrite"
+url="https://matrix-org.github.io/dendrite/"
 license=("Apache")
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 makedepends=("go>=1.16")
@@ -45,12 +45,12 @@ check(){
 
 package(){
  cd "$pkgname-$pkgver"
- install -D -m 755 "$pkgname-monolith-server"   "$pkgdir/usr/bin/$pkgname"
- install -D -m 755 "generate-config"            "$pkgdir/usr/bin/$pkgname-generate-config"
- install -D -m 755 "generate-keys"              "$pkgdir/usr/bin/$pkgname-generate-keys"
- install -D -m 755 "create-account"             "$pkgdir/usr/bin/$pkgname-create-account"
- install -D -m 644 "$pkgname-config.yaml"       "$pkgdir/etc/$pkgname/config-example.yaml"
- install -D -m 644 "$srcdir/$pkgname.service"   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
- install -D -m 644 "$srcdir/$pkgname.sysusers"  "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
- install -D -m 644 "$srcdir/$pkgname.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+ install -D -m 755 "$pkgname-monolith-server"      "$pkgdir/usr/bin/$pkgname"
+ install -D -m 755 "generate-config"               "$pkgdir/usr/bin/$pkgname-generate-config"
+ install -D -m 755 "generate-keys"                 "$pkgdir/usr/bin/$pkgname-generate-keys"
+ install -D -m 755 "create-account"                "$pkgdir/usr/bin/$pkgname-create-account"
+ install -D -m 644 "$pkgname-sample.monolith.yaml" "$pkgdir/etc/$pkgname/config-example.yaml"
+ install -D -m 644 "$srcdir/$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+ install -D -m 644 "$srcdir/$pkgname.sysusers"     "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+ install -D -m 644 "$srcdir/$pkgname.tmpfiles"     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
