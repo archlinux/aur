@@ -2,7 +2,7 @@
 
 _pkgname=sview
 pkgname=$_pkgname-git
-pkgver=19.08.r9.ga1af0e0d
+pkgver=20.08.r31.ga255e0d4
 pkgrel=1
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('ttf-nanum')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://github.com/gkv311/$_pkgname.git")
+source=("git+https://github.com/gkv311/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,5 +35,5 @@ package() {
   msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
   mkdir -p $pkgdir/usr/share/licenses/$_pkgname/
-  cp LICENSE.md $pkgdir/usr/share/licenses/$_pkgname/
+  cp docs/LICENSE.md $pkgdir/usr/share/licenses/$_pkgname/
 }
