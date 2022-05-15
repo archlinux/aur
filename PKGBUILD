@@ -23,8 +23,9 @@ build() {
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
     install -Dm 775 $srcdir/$pkgname-$pkgver/target/release/camilladsp -t $pkgdir/usr/bin
     install -Dm 755 -g http -o http camilladsp.yml -t $pkgdir/srv/http/data/camilladsp/configs
     install -Dm 644 camilladsp.service -t $pkgdir/usr/lib/systemd/system
+    mkdir $pkgdir/srv/http/data/camilladsp/coeffs
+    chown http:http $pkgdir/srv/http/data/camilladsp/coeffs
 }
