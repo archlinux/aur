@@ -1,4 +1,5 @@
-# Maintainer: Jiachen YANG <farseerfc at archlinux dot org>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Jiachen YANG <farseerfc at archlinux dot org>
 
 _pkgname=libtg_owt
 pkgname=${_pkgname}-git
