@@ -6,7 +6,6 @@ pkgbase = libtg_owt-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = ninja
 	makedepends = unzip
 	makedepends = cmake
 	makedepends = protobuf

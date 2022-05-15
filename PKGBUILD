@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/desktop-app/tg_owt'
 license=('BSD')
 depends=('protobuf')
-makedepends=('git' 'ninja' 'unzip' 'cmake' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
+makedepends=('git' 'unzip' 'cmake' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
              'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp' 'libepoxy')
 options=('staticlibs')
 source=("tg_owt::git+${url}.git"
@@ -25,7 +25,7 @@ provides=('libtg_owt')
 conflicts=('libtg_owt')
 
 pkgver(){
-  cd $srcdir/tg_owt
+  cd tg_owt
   printf "0.git.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -39,20 +39,17 @@ prepare() {
 }
 
 build() {
-  cd tg_owt
   # Upstream stated that only static builds are really supported so that's what we'll do.
   # https://github.com/desktop-app/tg_owt/issues/75#issuecomment-992061171
-  cmake \
-    -B build \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake -B build -S tg_owt \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=OFF
-  ninja -C build
+  make -C build
 }
 
 package() {
-  cd tg_owt
-  DESTDIR="${pkgdir}/" ninja -C build install
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  make -C build DESTDIR="${pkgdir}/" install
+
+  install -Dm644 tg_owt/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
