@@ -2,12 +2,12 @@
 
 pkgname=stremio
 pkgver=4.4.142
-pkgrel=1
+pkgrel=2
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
 license=('GPL3')
-depends=('mpv' 'nodejs' 'openssl' 'qt5-webengine' 'qt5-base' 'qt5-declarative'
+depends=('mpv' 'nodejs-lts-gallium' 'openssl' 'qt5-webengine' 'qt5-base' 'qt5-declarative'
           'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-translations' 'qt5-webchannel')
 makedepends=('git' 'cmake' 'librsvg')
 source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"

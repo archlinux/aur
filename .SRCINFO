@@ -1,7 +1,7 @@
 pkgbase = stremio
 	pkgdesc = A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)
 	pkgver = 4.4.142
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stremio.com/
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = stremio
 	makedepends = cmake
 	makedepends = librsvg
 	depends = mpv
-	depends = nodejs
+	depends = nodejs-lts-gallium
 	depends = openssl
 	depends = qt5-webengine
 	depends = qt5-base
