@@ -3,15 +3,15 @@
 
 _pkgname=libtg_owt
 pkgname=${_pkgname}-git
-pkgver=0.git.r217.6708e0d3
-pkgrel=2
+pkgver=0.git.r275.c1aea3d1
+pkgrel=1
 pkgdesc='WebRTC library - static linked, git version'
 arch=('x86_64')
 url='https://github.com/desktop-app/tg_owt'
 license=('BSD')
 depends=('protobuf')
 makedepends=('git' 'ninja' 'unzip' 'cmake' 'protobuf' 'libxrandr' 'libxcomposite' 'openssl' 'glibc'
-             'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp')
+             'ffmpeg' 'libva' 'opus' 'yasm' 'libjpeg-turbo' 'pipewire' 'libxtst' 'abseil-cpp' 'libepoxy')
 options=('staticlibs')
 source=("tg_owt::git+${url}.git"
         "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
