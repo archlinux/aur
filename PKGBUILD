@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.155762
+pkgver=29.0.50.156495
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -239,7 +239,6 @@ build() {
 # If you insist you'll need to read that bug report in *full*.
 # Good luck!
    --without-gconf
-   --without-gsettings
   )
 
 ################################################################################
@@ -272,6 +271,10 @@ elif [[ $GTK3 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 elif [[ $PGTK == "YES" ]]; then
   _conf+=( '--with-pgtk' '--without-xaw3d' );
+fi
+
+if [[ ! $PGTK == "YES" ]]; then
+    _conf+=( '--without-gsettings' ) :
 fi
 
 if [[ $NOCAIRO == "YES" || $CLI == "YES" || $NOTKIT == "YES" || $LUCID == "YES" ]]; then
