@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 _electronversion=17
 _nodeversion=12
@@ -16,7 +16,7 @@ optdepends=('libnotify: for desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('9c9fdc1391e9f35c6effc802814d90508f3ae8d57686035eff7057bfb103d42a'
+sha256sums=('78ef6a6e9d7b878a284a4f43227ff9cc52ba424c4d6ee699268d9c80f9a5c97f'
             'eedee6478d28d182aff196a66a4a8d4a771f576f924a9a7b0dd836f62e079453'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
 
@@ -43,7 +43,7 @@ build() {
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
-  yarn install
+  yarn --frozen-lockfile
   ./node_modules/.bin/electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
