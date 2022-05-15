@@ -1,6 +1,6 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
@@ -65,9 +65,7 @@ pkgbase = deadbeef
 	optdepends = wavpack: for wavpack plugin
 	optdepends = yasm: required to build assembly portions of ffap plugin
 	optdepends = zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)
-	source = https://sourceforge.net/projects/deadbeef/files/travis/linux/1.9.0/deadbeef-1.9.0.tar.bz2
-	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/deadbeef-makefile.diff
-	sha512sums = ecb37e688170d2f84cb08a92fa5955de01705a60c6cd3aad7bb5dee3c3cbf939a5ba072621164530d7194d1bddcdf956d13b30d7a932603cf737247197da4e73
-	sha512sums = 346dfaf553b13bd7f5dc7f174faeb5ac3abdea3a57a67c1f10cdba0070075847a930ab041aabd685bb3506ae5196423d51e1bef33612cdaaa794a3f4c84596fc
+	source = https://sourceforge.net/projects/deadbeef/files/travis/linux/1.9.1/deadbeef-1.9.1.tar.bz2
+	sha512sums = 2f959fb139078bbde3c1183019545ed3979b3c5dfc051794ea7a5ccf166156acc8d5dface3169ec705059f487d47c9b314c5400770a7572c22fbd0b903eefc5a
 
 pkgname = deadbeef
