@@ -1,14 +1,14 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=kherson
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="minimal status line generator for i3/sway written in go"
+pkgdesc="Minimal status line generator for i3/sway written in Go"
 arch=('x86_64')
 url="https://github.com/alexcoder04/kherson"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=(git go)
+makedepends=(go)
 optdepends=()
 provides=()
 conflicts=()
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('cce6cc0301024f583081dfc529013798')
+md5sums=('0b4e411bd696090303742ef46df38fb2')
 
 package() {
   cd "$pkgname-$pkgver"
