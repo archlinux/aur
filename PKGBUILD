@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
 pkgver=r461.96cdf8f
-pkgrel=3
+pkgrel=4
 pkgdesc="Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
@@ -28,12 +28,13 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	mkdir -p "${pkgdir}/usr/share/wayland-sessions"
-	mkdir -p "${pkgdir}/usr/share/hyprland"
-	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin/Hyprland"
-	install -Dm755 hyprctl/hyprctl -t "${pkgdir}/usr/bin/hyprctl"
-	install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
-	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
-	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	sudo make install
+	#mkdir -p "${pkgdir}/usr/share/wayland-sessions"
+	#mkdir -p "${pkgdir}/usr/share/hyprland"
+	#install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin/Hyprland"
+	#install -Dm755 hyprctl/hyprctl -t "${pkgdir}/usr/bin/hyprctl"
+	#install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
+	#install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
+	#install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
+	#install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
