@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Session
-Exec=/opt/Session/session-desktop %U
+Exec=session-desktop %U
 Terminal=false
 Type=Application
 Icon=session-desktop
