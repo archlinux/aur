@@ -1,7 +1,7 @@
 pkgbase = ytmdesktop-git
 	pkgdesc = A desktop app for YouTube Music
-	pkgver = 1.14.1.r7.ge469e2c
-	pkgrel = 3
+	pkgver = 1.14.2.r0.g2393f31
+	pkgrel = 1
 	url = https://ytmdesktop.app
 	arch = x86_64
 	license = CC0-1.0

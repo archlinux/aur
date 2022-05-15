@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.14.1.r7.ge469e2c
-pkgrel=3
+pkgver=1.14.2.r0.g2393f31
+pkgrel=1
 _electronversion=17
 _nodeversion=12
 pkgdesc="A desktop app for YouTube Music"
@@ -51,7 +51,7 @@ build() {
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
-  yarn install
+  yarn --frozen-lockfile
   ./node_modules/.bin/electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
