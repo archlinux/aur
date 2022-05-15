@@ -1,7 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=protontricks-git
-pkgver=1.8.1
+pkgver=1.8.2.dev3+gbe3805b
 pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
   'yad: GUI for game selection', 
   'zenity: GUI for winetricks'
 )
-makedepends=('git' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=("protontricks")
 conflicts=('protontricks')
 source=("git+${url}.git")
