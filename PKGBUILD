@@ -1,14 +1,14 @@
 # Maintainer: <thysupremematrix@tuta.io>
 pkgname=gnome-shell-extension-datetime-format-git
-pkgver=r13.556b1b9
+pkgver=r21.b81900b
 pkgrel=1
 pkgdesc="Gnome extension which allows users to customise the datetime format on the status bar and date menu."
 arch=(any)
-url="https://github.com/nvlgit/datetime-format"
+url="https://github.com/ZimbiX/datetime-format"
 license=("GPL3")
 depends=('gnome-shell>=1:40')
 makedepends=('git' 'nodejs')
-source=("git+https://github.com/nvlgit/datetime-format.git" "build.patch")
+source=("git+https://github.com/ZimbiX/datetime-format.git#branch=fix-on-gnome-42" "build.patch")
 install="gnome-shell-extension.install"
 sha256sums=('SKIP'
             'ca11b183e163eb143ea3a7ae937df07bd9759ff141764ac09117364cff8fc10d')

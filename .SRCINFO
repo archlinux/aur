@@ -1,15 +1,15 @@
 pkgbase = gnome-shell-extension-datetime-format-git
 	pkgdesc = Gnome extension which allows users to customise the datetime format on the status bar and date menu.
-	pkgver = r13.556b1b9
+	pkgver = r21.b81900b
 	pkgrel = 1
-	url = https://github.com/nvlgit/datetime-format
+	url = https://github.com/ZimbiX/datetime-format
 	install = gnome-shell-extension.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = nodejs
 	depends = gnome-shell>=1:40
-	source = git+https://github.com/nvlgit/datetime-format.git
+	source = git+https://github.com/ZimbiX/datetime-format.git#branch=fix-on-gnome-42
 	source = build.patch
 	sha256sums = SKIP
 	sha256sums = ca11b183e163eb143ea3a7ae937df07bd9759ff141764ac09117364cff8fc10d
