@@ -10,7 +10,7 @@ license=('MIT')
 depends=('curl' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 makedepends=('cmake' 'curl' 'pkgconf' 'make' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 conflicts=('emulationstation' 'emulationstation-git')
-source=("emulationstation-de-stable-1.2-AUR_${pkgver}-${pkgrel}.tar.gz::https://gitlab.com/leonstyhre/emulationstation-de/-/archive/stable-1.2-AUR/emulationstation-de-stable-1.2-AUR.tar.gz")
+source=("emulationstation-de-stable-1.2-AUR_${pkgver}-${pkgrel}.tar.gz::https://gitlab.com/es-de/emulationstation-de/-/archive/stable-1.2-AUR/emulationstation-de-stable-1.2-AUR.tar.gz")
 md5sums=('fe6056ed98d54dfca0f21e6a548565aa')
 
 build() {
