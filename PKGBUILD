@@ -27,7 +27,7 @@ depends=('sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_gfx' 'fontconfig' # For the 
          'soundfont-fluid' # Arbitrary choosen, but hardcoded, soundfont to play midi files.
          #'timidity++'
         )
-makedepends=('help2man' 'rsync' 'cxxtest' 'glm' 'intltool')
+makedepends=('help2man' 'rsync' 'cxxtest' 'glm' 'intltool' 'git')
 install=freedink.install
 
 

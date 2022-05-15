@@ -17,6 +17,7 @@ pkgbase = freedink
 	makedepends = cxxtest
 	makedepends = glm
 	makedepends = intltool
+	makedepends = git
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
