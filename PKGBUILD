@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact please see the relevant AUR commits email
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=0.1.r36.gd7f2821
+pkgver=0.1.r38.g5f3cb73
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
 	cd "$_pkgname"
 	cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
+	cmake --build build --target linux-desktop-integration
 }
 
 package() {
