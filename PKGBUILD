@@ -15,7 +15,7 @@ pkgname=(
 )
 epoch=1
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings'
