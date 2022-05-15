@@ -2,7 +2,7 @@
 
 pkgname=sgdboop-bin
 pkgname_=sgdboop
-pkgver=1.0.13
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="SGDBoop is a tool that automatically applies assets from SteamGridDB directly to your Steam library"
 arch=('x86_64')
