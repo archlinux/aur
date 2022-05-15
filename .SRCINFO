@@ -46,6 +46,11 @@ pkgname = gnatcoll-python2
 	provides = gnatcoll-python
 	replaces = gnatcoll-python
 
+pkgname = gnatcoll-python3
+	pkgdesc = GNAT Components Collection - Interface to the python 3 interpreter.
+	depends = python
+	depends = gnatcoll-core
+
 pkgname = gnatcoll-readline
 	pkgdesc = GNAT Components Collection - Bindings to readline
 	depends = readline

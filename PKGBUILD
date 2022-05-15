@@ -8,6 +8,7 @@ pkgname=(
     gnatcoll-lzma
     gnatcoll-omp
     gnatcoll-python2
+    gnatcoll-python3
     gnatcoll-readline
     gnatcoll-syslog
     gnatcoll-zlib
@@ -49,6 +50,9 @@ build()
 
     cd "$srcdir/$_source_dir/python"
     # --gpr-opts reads all remaining arguments, so no quotes
+    python setup.py build --prefix=/usr --gpr-opts $_gpr_opts
+
+    cd "$srcdir/$_source_dir/python3"
     python setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
     cd "$srcdir/$_source_dir/readline"
@@ -96,6 +100,17 @@ package_gnatcoll-python2()
     replaces=('gnatcoll-python')
 
     cd "$srcdir/$_source_dir/python"
+    python setup.py install --prefix="$pkgdir/usr"
+
+    _install_license
+}
+
+package_gnatcoll-python3()
+{
+    pkgdesc='GNAT Components Collection - Interface to the python 3 interpreter.'
+    depends=('python' 'gnatcoll-core')
+
+    cd "$srcdir/$_source_dir/python3"
     python setup.py install --prefix="$pkgdir/usr"
 
     _install_license
