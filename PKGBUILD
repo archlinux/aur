@@ -25,11 +25,6 @@ _libfiles=("CMakeLists.txt" "color.hpp" "constants.hpp" "main.cpp" "messenger.hp
 
 for _libfile in ${_libfiles[@]}
 {
-    rm -rf "$_libfile"
-}
-
-for _libfile in ${_libfiles[@]}
-{
     source=(${source[@]} "$_srcprefix/$_libfile")
 }
 
