@@ -1,0 +1,5 @@
+*.zst
+*.gz
+PKGBUILD.tpl
+pkg/
+src/

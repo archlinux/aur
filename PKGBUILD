@@ -1,16 +1,16 @@
 # Maintainer: Eric Long <hackereric at outlook dot com>
 # Contributor: Yukari Chiba <i@0x7f.cc>
 pkgname=hive-server-git
-pkgver=r1.8bf6530
+pkgver=r2.5eba775
 pkgrel=1
 pkgdesc="Lua microservices framework."
 arch=('x86_64')
 url="https://github.com/hackerer1c/hive"
 license=('MIT')
 makedepends=('cargo')
-commitid="8bf65304ab5cae499f6fa0a647a4565f6672aa26"
+commitid="5eba775be17e625d934573e1e4a0687005e078b1"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hackerer1c/hive/archive/$commitid.tar.gz")
-sha512sums=('2c5453fbc860d7389adbbbf45c0ecdc09f1e92eaa9880027dd6f8b2330c056c88767ab64b34f854b3a42b55cd3d8571b40de05fa0e426523a48e3159b4b20114')
+sha512sums=('cccaed703e62331858895d1a2bae81a4a57dc7cf9bb2af541f1807152a8f4cd36721ea93364839fcf4fd2b20d6ed4b7f4f4003f44cae8a2ba8771b6727a9464b')
 
 build() {
   cd "hive-$commitid"
