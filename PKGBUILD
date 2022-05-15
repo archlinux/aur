@@ -3,7 +3,7 @@
 pkgname=langkit
 pkgver=20211103
 _pkgver=22.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 
 url='https://github.com/AdaCore/langkit/'
