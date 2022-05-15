@@ -14,32 +14,41 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=99.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://github.com/openSUSE/firefox-maintenance"
 depends=('libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
-	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
-         # system av1
-         'dav1d' 'aom'
-         # system harfbuzz
-         'harfbuzz'
-         # system graphite
-         'graphite'
-         # system webp
-         'libwebp'
-         # system libevent
-         'libevent'
+         'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
+	 'sqlite' 'kmozillahelper' 'ffmpeg'
         )
 
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13'
              'cargo' 'mercurial' 'llvm' 'clang' 'rust' 'jack'
              'nodejs' 'cbindgen' 'nasm' 'xz'
-             'python' 'python-psutil' 'python-zstandard' 'dump_syms')
+             'python' 'python-psutil' 'python-zstandard' 'dump_syms'
+             # system av1
+             'dav1d' 'aom'
+             # system harfbuzz
+             'harfbuzz'
+             # system graphite
+             'graphite'
+             # system webp
+             'libwebp'
+             # system libevent
+             'libevent'
+             # system icu
+             'icu'
+             # system libvpx
+             'libvpx'
+             # gtk
+             'gtk3'
+             'libnotify'
+             'libpulse'
+            )
 
 
 # https://bugs.gentoo.org/792705
@@ -49,11 +58,13 @@ makedepends+=('gcc>=11.2.0')
 
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
-            'pulseaudio: Audio support')
+            'pulseaudio: Audio support'
+            'libnotify: Notification integration'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 _patchrev=081e705dab36a3b67d60f8e4ba9ee426095d0227
-options=('!emptydirs')
+options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
@@ -100,8 +111,6 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
-        # Fix build against current Dav1D tagged version #18
-        revert_dav1d_changes.patch.xz
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -161,9 +170,6 @@ prepare() {
 
   # Workaround #14
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
-
-  # Fix build against current Dav1D tagged version
-  xzcat "$srcdir"/revert_dav1d_changes.patch.xz | patch -Np1
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -227,6 +233,24 @@ build() {
 }
 
 package() {
+  # The .so dependencies have to be added here so
+  # pacman doesn't try to install the build time  dependencies
+  # by trying to resolve so names.
+  # Doing so makes pacman ask for which have to be installed even thou
+  # they are already specificied in makedepends
+  depends+=(
+    # system av1
+    'libdav1d.so' 'libaom.so'
+    # system harfbuzz
+    'libharfbuzz.so'
+    # system icu
+    'libicuuc.so'
+    'libicui18n.so'
+    # system vpx
+    'libvpx.so'
+    # gtk
+    'libgtk-3.so'
+  )
   cd mozilla-unified
 
   [[ "$CARCH" == "i686" ]] && cp "$srcdir/kde.js" obj-i686-pc-linux-gnu/dist/bin/defaults/pref
@@ -294,5 +318,4 @@ md5sums=('SKIP'
          '943b9fe2ba474f7809a41622744f97f9'
          '31f950a94966287bfa6ccf03030781cc'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a'
-         '3467677cadefe358473555340f681ae6')
+         '2cf74781f6b742d6b7e6f7251f49311a')
