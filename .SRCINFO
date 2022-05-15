@@ -1,6 +1,6 @@
 pkgbase = libtg_owt-git
 	pkgdesc = WebRTC library - static linked, git version
-	pkgver = 0.git.r275.c1aea3d1
+	pkgver = 0.git.r325.10d5f4bf
 	pkgrel = 1
 	url = https://github.com/desktop-app/tg_owt
 	arch = x86_64
@@ -30,9 +30,11 @@ pkgbase = libtg_owt-git
 	source = libvpx::git+https://chromium.googlesource.com/webm/libvpx.git
 	source = libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git
 	source = pipewire::git+https://github.com/PipeWire/pipewire.git
+	source = 0001-fix-h265_pps_parser-fix-missing-cstdint-include.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = e123c6b8e3cc0445ee9d843ff018500ab1203e6e4fb966a2409275a238bb26903e7d635929aab075cf4d5ce2098d3d1f101f9d5c2b81c6fb24fdcd9ddf85443b
 
 pkgname = libtg_owt-git

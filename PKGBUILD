@@ -3,7 +3,7 @@
 
 _pkgname=libtg_owt
 pkgname=${_pkgname}-git
-pkgver=0.git.r275.c1aea3d1
+pkgver=0.git.r325.10d5f4bf
 pkgrel=1
 pkgdesc='WebRTC library - static linked, git version'
 arch=('x86_64')
@@ -16,11 +16,14 @@ options=('staticlibs')
 source=("tg_owt::git+${url}.git"
         "libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
         "libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
-        "pipewire::git+https://github.com/PipeWire/pipewire.git")
+        "pipewire::git+https://github.com/PipeWire/pipewire.git"
+        "0001-fix-h265_pps_parser-fix-missing-cstdint-include.patch"
+)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
+        'SKIP'
+        'e123c6b8e3cc0445ee9d843ff018500ab1203e6e4fb966a2409275a238bb26903e7d635929aab075cf4d5ce2098d3d1f101f9d5c2b81c6fb24fdcd9ddf85443b')
 provides=('libtg_owt')
 conflicts=('libtg_owt')
 
@@ -31,6 +34,9 @@ pkgver(){
 
 prepare() {
   cd tg_owt
+
+  patch -p1 < "$srcdir/0001-fix-h265_pps_parser-fix-missing-cstdint-include.patch"
+
   git submodule init
   git config submodule.src/third_party/libvpx/source/libvpx.url "$srcdir"/libvpx
   git config submodule.src/third_party/libyuv.url "$srcdir"/libyuv
