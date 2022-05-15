@@ -1,7 +1,7 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
 	pkgver = 4.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.selenium.dev
 	arch = any
 	license = Apache
@@ -15,6 +15,7 @@ pkgbase = python-selenium
 	depends = python-importlib-metadata
 	depends = python-trio-websocket
 	depends = geckodriver
+	options = !makeflags
 	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.1.4-python.tar.gz
 	sha256sums = 6bbabf82d437d3226899a9624aeeaf65ed58882110c205b4adc863ff4557812e
 

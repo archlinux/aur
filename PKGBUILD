@@ -5,7 +5,7 @@
 _pkgname=selenium
 pkgname=python-$_pkgname
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=('any')
 url="https://www.selenium.dev"
@@ -17,6 +17,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/SeleniumHQ/$_pkgname/archive/refs/tags/$_pkgname-$pkgver-python.tar.gz")
 sha256sums=('6bbabf82d437d3226899a9624aeeaf65ed58882110c205b4adc863ff4557812e')
+options=(!makeflags)
 
 prepare() {
   cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
