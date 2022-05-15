@@ -1,7 +1,7 @@
 # Maintainer: Yunhui Fu <yhfudev at gmail dot com>
 
-pkgname=wxmedit-git
-pkgver=r1282.a6d6fce
+pkgname=wxmedit
+pkgver=r1381.0ac05dc
 pkgrel=1
 pkgdesc="Cross-platform Text/Hex Editor, a fork of MadEdit with bug fixes and improvements"
 arch=("i686" "x86_64")
@@ -12,13 +12,13 @@ conflicts=('wxmedit')
 depends=('wxgtk' 'libucd-git' 'desktop-file-utils' 'boost')
 makedepends=('git' 'libucd-git' 'boost' 'wxgtk')
 source=(
-    "$pkgname::git://github.com/hltj/wxMEdit.git"
-    wxmedit-encdet-mozilla.patch
+    "${pkgname%-git}::git+https://github.com/hltj/wxMEdit.git"
+    wxmedit.patch
     )
 install=wxmedit.install
 md5sums=(
     'SKIP'
-    '357585e05be0a807e4416d31e76df17c'
+    '46a56ded3f5969d068701d9ee0ce11c1'
     )
 
 pkgver_git() {
@@ -35,7 +35,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   #cd "$srcdir/wxMEdit-$pkgver"
-  patch -p1 < "$srcdir/wxmedit-encdet-mozilla.patch"
+  patch -p1 < "$srcdir/wxmedit.patch"
 }
 
 build() {
@@ -43,7 +43,7 @@ build() {
   #cd "$srcdir/wxMEdit-$pkgver"
 
   ./autogen.sh
-  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.8
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config
   make -j $(cat /proc/cpuinfo | grep processor | wc -l | awk '{print $0 + 1;}')
 }
 
