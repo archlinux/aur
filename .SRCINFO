@@ -1,0 +1,22 @@
+pkgbase = python-async-upnp-client
+	pkgdesc = Asyncio UPnP Client library for Python/asyncio
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://pypi.org/project/python-async-upnp-client
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-voluptuous>=0.12.1
+	depends = python-aiohttp>=3.7.4
+	depends = python-async-timeout>=3.0.0
+	depends = python-async-timeout<5.0.0
+	depends = python-didl-lite
+	depends = python-defusedxml>=0.6.0
+	source = https://files.pythonhosted.org/packages/source/a/async_upnp_client/async_upnp_client-0.29.0.tar.gz
+	sha256sums = 54ac8a7ce4b15eb3ae3c3f4c5b42a964c58414a187f280c19f67b4cc01771908
+
+pkgname = python-async-upnp-client
