@@ -5,7 +5,7 @@ pkgname=(
    zapret-{nfqws,tpws,common,docs}-git
 )
 pkgbase=zapret-git
-pkgver=47.r17.ba5bde8
+pkgver=47.r16.ba5bde8
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
@@ -44,6 +44,7 @@ build()
     cd "$srcdir/${pkgbase%-git}"
     make
 }
+
 _symlink() {
    mkdir -pm755 "$pkgdir/usr/bin"
    ln -s "/opt/zapret/$1" "$pkgdir/usr/bin/${1##*/}"
@@ -86,7 +87,8 @@ package_zapret-nfqws-git() {
    depends=('libnetfilter_queue' 'zapret-common-git')
    provides+=('zapret-nfqws')
    conflicts+=('zapret-nfqws')
-   backup=('opt/zapret/config.nfqws')
+   backup=("${makepkg_program_name+/}opt/zapret/config.nfqws")
+
 
    cd "$srcdir/${pkgbase%-git}"
 
@@ -108,7 +110,7 @@ package_zapret-tpws-git() {
    depends=('zapret-common-git')
    provides+=('zapret-tpws')
    conflicts+=('zapret-tpws')
-   backup=('opt/zapret/config.tpws')
+   backup=("${makepkg_program_name+/}opt/zapret/config.tpws")
 
    cd "$srcdir/${pkgbase%-git}"
 
