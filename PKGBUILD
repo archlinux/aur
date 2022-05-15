@@ -3,8 +3,8 @@
 # https://git.sr.ht/~nytpu/PKGBUILDs/
 
 pkgname=spark2014-git
-pkgver=0.3.draft.r22203.g30299b3035
-pkgrel=3
+pkgver=0.3.draft.r22234.g1895e0e8d1
+pkgrel=1
 pkgdesc='Formally defined programming language based on Ada (GNAT FSF version)'
 url='https://www.spark-2014.org'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!makeflags')
 
 depends=('python2')
 makedepends=('git' 'gprbuild' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num'
-             'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-zip'
+             'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-camlzip'
              'ocaml-ocplib-simplex' 'ocaml-yojson' 'python-sphinx')
 optdepends=('alt-ergo: alternative prover'
             'z3: alternative prover'
