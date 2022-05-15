@@ -1,3 +1,4 @@
+# Maintainer: valentino
 pkgname=nerd-fonts-noto-sans-mono-extended
 pkgver=2.1.0
 pkgrel=1
