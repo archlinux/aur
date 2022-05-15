@@ -9,7 +9,7 @@ url="https://github.com/ZingyTomato/Harmony-Music"
 license=('GPL')
 depends=('mpv' 'python-requests' 'python-pip')
 source=("${pkgname}::https://github.com/ZingyTomato/Harmony-Music/releases/download/v${pkgver}/harmony")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('bcb325f910139ab8e0c1538ea368e94dffde010125b2ef66fcc5b935bb96ff4c')
 
 package() {
     install -Dm755 harmony "${pkgdir}/usr/local/bin/harmony"

@@ -9,6 +9,6 @@ pkgbase = harmony
 	depends = python-requests
 	depends = python-pip
 	source = harmony::https://github.com/ZingyTomato/Harmony-Music/releases/download/v0.4/harmony
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = bcb325f910139ab8e0c1538ea368e94dffde010125b2ef66fcc5b935bb96ff4c
 
 pkgname = harmony
