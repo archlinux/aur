@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57682.b9f2909137a
+pkgver=r57686.186f2f8614e
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -142,9 +142,9 @@ prepare() {
 build() {
   cd "$srcdir/kodi-build"
 
-  ### Optionally uncomment and setup to your liking
-  # export CFLAGS+=" -march=native"
-  # export CXXFLAGS="${CFLAGS}"
+  # fix build breakage introduced with gcc-12.1.0-1
+  export CFLAGS+=" -Wno-error"
+  export CXXFLAGS="${CFLAGS}"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
