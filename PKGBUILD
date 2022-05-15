@@ -71,8 +71,8 @@ source=(https://ftp.gnu.org/gnu/freedink/freedink-${_engine}.tar.gz
 sha256sums=('5e0b35ac8f46d7bb87e656efd5f9c7c2ac1a6c519a908fc5b581e52657981002'
             '9e26cd4179fd4cb3dd5ea347e6a66f5f8b3a7a5fb574dd728592c0b52bdf5442'
             '59cdf6e96b5ee3e8d6a44750222590be6cb013c436682dfb223367c895540ba4'
-            '0b5af8ea5d77372ef338aab4a876660bd418aee52b696ad73f7f92f3df88de70'
-            '3a64a2a5bd1b1fa93b299ae3f354b5d1c88e40f597d119aa6e95d09f40e19bb8'
+            'SKIP'
+            'SKIP'
             '715f44773b05b73a9ec9b62b0e152f3f281be1a1512fbaaa386176da94cffb9d'
             'a51124ecd11eeca0f1d16732ef58ee690e2fa2db06cc0ec2a5b61b41f8b0e8fa')
 

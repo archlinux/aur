@@ -18,7 +18,7 @@ post_upgrade() {
     echo "    esc      -> open menu"
     echo "    enter    -> open & close inventory"
     echo "    m        -> open & close map"
-    echo "    tab"     -> turbo mode (pressed)
+    echo "    tab      -> turbo mode (pressed)"
     echo ""
     echo "To walk, press and move the mouse or use the arrow keys."
     echo "Fullscreen can be toggled by alt + backspace."
