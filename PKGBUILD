@@ -2,7 +2,7 @@
 
 pkgname=pinboard-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="a full-featured Python wrapper for the Pinboard API (development version)"
 arch=('i686' 'x86_64')
 url="https://github.com/lionheart/pinboard.py"
@@ -11,7 +11,7 @@ depends=("python")
 provides=('pinboard')
 conflicts=('pinboard')
 makedepends=('git')
-source=("git+git://github.com/lionheart/pinboard.py.git")
+source=("git+https://github.com/lionheart/pinboard.py.git")
 md5sums=('SKIP')
 
 pkgver() {
