@@ -6,7 +6,7 @@ url="https://github.com/virtual-puppet-project/puppeteer"
 license=('MIT')
 
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 
 replaces=(
   'openseeface-gd'
@@ -28,7 +28,7 @@ package() {
   mkdir -p $pkgdir/usr/{share/puppeteer,share/applications,bin}
   cp -rf $(ls . | grep -v "${pkgname}-${pkgver}.zip") $pkgdir/usr/share/puppeteer
   chmod 755 -R $pkgdir/usr/share/puppeteer/*
-  ln -sf ../share/openseeface-gd/OpenSeeFaceGD.x86_64 $pkgdir/usr/bin/puppeteer
+  ln -sf ../share/puppeteer/OpenSeeFaceGD.x86_64 $pkgdir/usr/bin/puppeteer
 
   curl -L https://github.com/virtual-puppet-project/puppeteer/raw/0.8.1/assets/osfgd_icon.png -o "$pkgdir/usr/share/puppeteer/osfgd_icon.png"
   cat > "$pkgdir/usr/share/applications/pupeteer.desktop"<< EOF
