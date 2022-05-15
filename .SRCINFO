@@ -1,0 +1,13 @@
+pkgbase = menumeters-qt-git
+	pkgdesc = display system resources in the system tray
+	pkgver = r50.88bc028
+	pkgrel = 1
+	url = https://github.com/tomKPZ/menumeters-qt
+	arch = any
+	license = GPL3
+	depends = python-pyqt5
+	depends = python-psutil
+	source = git+https://github.com/tomKPZ/menumeters-qt.git
+	sha256sums = SKIP
+
+pkgname = menumeters-qt-git
