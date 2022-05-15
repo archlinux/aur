@@ -1,0 +1,44 @@
+From 6f69e67914ec7ce2150588de9892c9787554ef6f Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 15 May 2022 11:36:11 +0200
+Subject: [PATCH 2/2] fix(python): don't cache --prefix during install
+
+The build system is missing a DESTDIR mechanic, so --prefix has to be
+hacked into serving both roles, which only works if the --prefix passed
+to install is actually used instead of the cached value from build.
+---
+ python/setup.py  | 3 +++
+ python3/setup.py | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/python/setup.py b/python/setup.py
+index 18a29157..7c191ed9 100755
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -195,6 +195,9 @@ class GNATCollPython(SetupApp):
+     def install(self, args):
+         config = Config()
+         has_static_python = "GNATCOLL_PYTHON_STATIC_LIB" in config.data["gprbuild"]
++        if args.prefix is not None:
++            config.set_data('prefix', args.prefix)
++
+         if has_static_python:
+             python_la = config.data["gprbuild"]["GNATCOLL_PYTHON_STATIC_LIB"]
+             prefix = config.data["prefix"]
+diff --git a/python3/setup.py b/python3/setup.py
+index 18a29157..7c191ed9 100755
+--- a/python3/setup.py
++++ b/python3/setup.py
+@@ -195,6 +195,9 @@ class GNATCollPython(SetupApp):
+     def install(self, args):
+         config = Config()
+         has_static_python = "GNATCOLL_PYTHON_STATIC_LIB" in config.data["gprbuild"]
++        if args.prefix is not None:
++            config.set_data('prefix', args.prefix)
++
+         if has_static_python:
+             python_la = config.data["gprbuild"]["GNATCOLL_PYTHON_STATIC_LIB"]
+             prefix = config.data["prefix"]
+-- 
+2.36.1
+
