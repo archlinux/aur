@@ -1,19 +1,17 @@
 # Maintainer: Zingy Tomato <zingytomato@tutanota.com>
 
 pkgname=harmony
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="An open souce video/music streamer based on MPV and piped."
 arch=('any')
 url="https://github.com/ZingyTomato/Harmony-Music"
 license=('GPL')
-depends=('mpv' 'yt-dlp' 'python-requests' 'python-pip')
-conflicts=('youtube-dl')
+depends=('mpv' 'python-requests' 'python-pip')
 source=("${pkgname}::https://github.com/ZingyTomato/Harmony-Music/releases/download/v${pkgver}/harmony")
-sha256sums=('6393ceaf04d76844d5b7a4198b01e4f294aa9fde39768acb6b624226012b96da')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 package() {
-    pip3 install termcolor
     install -Dm755 harmony "${pkgdir}/usr/local/bin/harmony"
 
 }
