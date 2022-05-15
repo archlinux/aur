@@ -16,7 +16,7 @@ pkgbase = linkchecker-git
 	optdepends = python-argcomplete
 	provides = linkchecker
 	conflicts = linkchecker
-	source = git+git://github.com/linkchecker/linkchecker.git
+	source = git+https://github.com/linkchecker/linkchecker.git
 	md5sums = SKIP
 
 pkgname = linkchecker-git

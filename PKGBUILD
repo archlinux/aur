@@ -12,7 +12,7 @@ optdepends=("python-argcomplete")
 provides=('linkchecker')
 conflicts=('linkchecker')
 makedepends=('git')
-source=("git+git://github.com/linkchecker/linkchecker.git")
+source=("git+https://github.com/linkchecker/linkchecker.git")
 md5sums=('SKIP')
 
 pkgver() {
