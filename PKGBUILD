@@ -2,10 +2,10 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.17.7
+gitver=v5.17.8
 patchver=20220315
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=5.17.v.7
+pkgver=5.17.v.8
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'e833353f4c921513301a2676da233efb804f40faa9b48ad1608e472e40c1fa91'
+            'a1c30dcede50779662fcfa6f6becccbaf6cc37b0b526543b58bd8d1323ff7c67'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
@@ -215,7 +215,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
   # strip scripts directory
