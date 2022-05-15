@@ -3,7 +3,7 @@
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
 pkgver=515.43.04.r10.gd8f3bcff9
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA open GPU kernel modules (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -56,7 +56,13 @@ package_nvidia-open-git() {
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
     local _kernver
-    _kernver="$(</usr/src/linux/version)"
+    if [ -d "/usr/lib/modules/$(uname -r)" ]
+    then
+        _kernver="$(<"/usr/lib/modules/$(uname -r)/build/version")"
+    else
+        _kernver="$(find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d | head -n1)"
+        _kernver="$(<"/usr/lib/modules/${_kernver##*/}/build/version")"
+    fi
     
     install -D -m644 open-gpu-kernel-modules/kernel-open/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     install -D -m644 open-gpu-kernel-modules/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
