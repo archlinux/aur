@@ -1,0 +1,40 @@
+pkgbase = nvidia-vgpu
+	pkgver = 510.47.03
+	pkgrel = 1
+	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
+	arch = x86_64
+	groups = nvidia-vgpu
+	license = custom
+	makedepends = git
+	makedepends = rust
+	options = !strip
+	source = nvidia-smi
+	source = nvidia-vgpu.conf
+	source = vgpu_unlock-rs.conf
+	source = nv-kernel.patch
+	source = nvidia-vgpu-vfio.patch
+	source = vgpu_unlock.patch
+	source = file://NVIDIA-Linux-x86_64-510.47.03-vgpu-kvm.run
+	source = git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=3858f2c
+	sha256sums = 20676096714ac00d9fc993901ab275e4b0fa3f2eddc937dae395c8f4e8cb543e
+	sha256sums = 9c23ae9e0ef3b9b927608079ccc5f787e7e351a780f2369479c2e75dfd0470fe
+	sha256sums = c85ae100a6c87c12906fd0057b77c0c4190f68434de4bc3bc89348ffc19aed61
+	sha256sums = 7f6c7ab8bdcff47589306c465906bf950c93a721cb1c01792ca8150530566316
+	sha256sums = 35bb29a3ea181ceadc6e27e88af863f10a6ba94ea16d9394cea4b50d384d3c47
+	sha256sums = f77f26f609bb6f1eb69d3dc7e84ba704e5c065e424a619ab1460accb8247143f
+	sha256sums = 8656a261902e6569a71fbb55229dde8f03383772b6be50044102f250520d846f
+	sha256sums = SKIP
+
+pkgname = nvidia-vgpu-dkms
+	pkgdesc = NVIDIA drivers - module sources; patched for consumer vGPU support w/ Rust unlock
+	depends = dkms
+	depends = nvidia-vgpu-utils=510.47.03
+	conflicts = nvidia-dkms
+
+pkgname = nvidia-vgpu-utils
+	pkgdesc = NVIDIA drivers utilities; patched for consumer vGPU support w/ Rust unlock
+	optdepends = mdevctl: mediated device contfiguration tool
+	optdepends = libvirt: virtualization engine control interface
+	provides = vgpu_unlock
+	conflicts = nvidia-utils
+	replaces = vgpu_unlock
