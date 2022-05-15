@@ -9,6 +9,7 @@ pkgbase = teres
 	makedepends = cargo
 	makedepends = python
 	makedepends = gtk3
+	depends = vapoursynth-plugin-mvtools
 	depends = vapoursynth-plugin-havsfunc
 	depends = vapoursynth
 	depends = ffmpeg

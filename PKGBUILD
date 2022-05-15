@@ -3,7 +3,7 @@ pkgname=teres
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
-depends=('vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc-git')
+depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc-git')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support'
 'vapoursynth-plugin-vsrife-git: RIFE CUDA support')
 makedepends=('rust' 'cargo' 'python' 'gtk3')
@@ -33,7 +33,7 @@ check() {
 
 package() {
     cd $pkgname-$pkgver
-    curl https://github.com/couleurm/vs-frameblender/releases/download/1.2/vs-frameblender-1.2.so -o vs-frameblender-1.2.so
+    curl -L https://github.com/couleurm/vs-frameblender/releases/download/1.2/vs-frameblender-1.2.so -o vs-frameblender-1.2.so
     install -Dt "$pkgdir/usr/lib/vapoursynth/" vs-frameblender-1.2.so
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     install -Dt "$pkgdir$site_packages/" plugins/weighting.py
