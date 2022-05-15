@@ -1,6 +1,6 @@
 pkgbase = r-openssl
 	pkgdesc = Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=openssl
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = r-openssl
 	optdepends = r-jsonlite
 	optdepends = r-jose
 	optdepends = r-sodium
-	source = https://cran.r-project.org/src/contrib/openssl_2.0.0.tar.gz
-	sha256sums = eb28fde65f33ffb780abb85ab17d724ae55c2b9dbe171155d3dd2d7154ff564b
+	source = https://cran.r-project.org/src/contrib/openssl_2.0.1.tar.gz
+	sha256sums = 1c6771bf1d7bfd65bc3d512e477c28672bb6c30f8689bfdbe474e62ae2e8f36c
 
 pkgname = r-openssl
