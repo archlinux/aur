@@ -7,8 +7,8 @@ pkgdesc='libpurple Telegram plugin implemented using official tdlib client libra
 arch=(x86_64 aarch64)
 url='https://github.com/ars3niy/tdlib-purple'
 license=(GPL2)
-depends=(libpurple telegram-tdlib)
-makedepends=(cmake git)
+depends=(libpurple)
+makedepends=(cmake git telegram-tdlib)
 conflicts=(telegram-tdlib-purple)
 provides=(telegram-tdlib-purple="${pkgver}")
 source=($pkgname::git+"$url" PR154-fix-build-with-tdlib-1.8.0.patch)
@@ -25,7 +25,7 @@ prepare() {
 	cd $pkgname
 	# See https://github.com/ars3niy/tdlib-purple/pull/154
 	p=PR154-fix-build-with-tdlib-1.8.0.patch
-	patch --dry-run -tNp1 -R -i "$srcdir"/$p || patch -tNp1 -i "$srcdir"/$p
+	patch --dry-run -tNp1 -R -i "$srcdir"/$p >/dev/null || patch -tNp1 -i "$srcdir"/$p
 }
 
 build() {

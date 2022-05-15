@@ -8,8 +8,8 @@ pkgbase = telegram-tdlib-purple-minimal-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
+	makedepends = telegram-tdlib
 	depends = libpurple
-	depends = telegram-tdlib
 	provides = telegram-tdlib-purple=0.7.9.r496.80a9163
 	conflicts = telegram-tdlib-purple
 	source = telegram-tdlib-purple-minimal-git::git+https://github.com/ars3niy/tdlib-purple
