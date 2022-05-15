@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=0.175.0
+pkgver=0.177.0
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -34,15 +34,15 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0006-Add-architecture-and-scheduler-maps.patch
         0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
 )
-sha256sums=('6802efaf1c1b2c89cc0de856c5754a1aecb045d2193a3a42b7a5775ccdbf70fd'
+sha256sums=('3dfeb9944f78f17a509966dd1dd89d177dd0d87856a6c8f7556d68e07521d1d4'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
-            '494e71779c7726a064f259780f526ef80b8788d821a5878948f668226ee97329'
-            'aab64fd3abfd850b31293da2785112212286cfe837477a28d9f41dab122c0226'
-            'e7a79a0b242de7881721f15d9bda7735a9b28f2239dbaa024d57465a7c955782'
-            '9df799925551c9ea9194e01ddc6f1a75266ffb4b431a9c51b66ccb8a234de7c8'
-            'daf095a9ecfb710e8d85802f84e00c5f38c2aa0aa79518c77587aea7afdc2b8d'
-            '8955d3986bd3fbd395b28b5724c323f18fdd5154c1a4fea586029075516a22eb'
-            'c5db79451612ac9377eb1fd7a3da0d8bceebf43b17b6bf49e8ea5d00be9ba717')
+            'ed6607e642695028740efb53bfa1cb3e2efd97f1694e4a8efacf224b949d0962'
+            'd09810c556e3170fdd0a058d090a6c3261af4e2032b6cf96fe63cef12c1e10e2'
+            '1d3b37f662a74a1d070beb1cfe4cb0c1f2b1bf78503a6d7b69e2a3d46e516a4e'
+            '7a68dc9b077523679b96b2a0520efb67d71fdcbf1d94ed6be3e06c2bfb768604'
+            '8843a1c96702d18da0a029504990493d3a4417663916e83f21d96b2cee871c81'
+            '68ecfb6f85bf34730191ef658f91cc29c2d2872ed0b0d2f814b3673e0841527d'
+            '361bf935f382cf9ab34bd8e29c4f090c457293f97b705509997e2916aa17713b')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets

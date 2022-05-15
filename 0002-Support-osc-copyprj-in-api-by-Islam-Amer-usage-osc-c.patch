@@ -1,8 +1,8 @@
-From 15a603fc9d438bd59d78b698b388bd66ba95d891 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Marko Lemmetty <marko.lemmetty@jollamobile.com>
 Date: Fri, 15 May 2020 14:20:54 +0300
-Subject: [PATCH 2/7] Support 'osc copyprj' in api by Islam Amer usage: osc
- copyprj SOURCEPRJ DESTPRJ
+Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
+ SOURCEPRJ DESTPRJ
 
     A way to copy a project and all packages in it
     It can not yet be done across buildservice instances
@@ -13,10 +13,10 @@ Subject: [PATCH 2/7] Support 'osc copyprj' in api by Islam Amer usage: osc
  2 files changed, 81 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 1b6b9138..2d46b1c7 100644
+index bb0528a9..eb04d59d 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3152,6 +3152,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3170,6 +3170,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                  break
              sys.stdout.write(decode_it(buf))
  
@@ -77,10 +77,10 @@ index 1b6b9138..2d46b1c7 100644
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index fd4759fc..bab85eb8 100644
+index 5e1d3196..0e6d90e6 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5551,6 +5551,34 @@ def copy_pac(src_apiurl, src_project, src_package,
+@@ -5560,6 +5560,34 @@ def copy_pac(src_apiurl, src_project, src_package,
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  
@@ -115,6 +115,3 @@ index fd4759fc..bab85eb8 100644
  
  def unlock_package(apiurl, prj, pac, msg):
      query = {'cmd': 'unlock', 'comment': msg}
--- 
-2.34.1
-

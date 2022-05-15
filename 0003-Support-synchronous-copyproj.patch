@@ -1,7 +1,7 @@
-From da1209b4817b4273c95eceaf67fb3b50a901b3f3 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Marko Lemmetty <marko.lemmetty@jollamobile.com>
 Date: Fri, 15 May 2020 14:33:17 +0300
-Subject: [PATCH 3/7] Support synchronous copyproj
+Subject: [PATCH] Support synchronous copyproj
 
 ---
  osc/commandline.py | 5 +++++
@@ -9,10 +9,10 @@ Subject: [PATCH 3/7] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 2d46b1c7..a395ee19 100644
+index eb04d59d..2063bfe5 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3154,6 +3154,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3172,6 +3172,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
      @cmdln.option('-b', '--with-binaries', action='store_true',
                          help='copy the built binaries over to avoid a rebuild')
@@ -21,7 +21,7 @@ index 2d46b1c7..a395ee19 100644
      @cmdln.option('-H', '--with-history', action='store_true',
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
-@@ -3171,6 +3173,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3189,6 +3191,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
          The user must be able to create DESTPRJ
  
@@ -30,7 +30,7 @@ index 2d46b1c7..a395ee19 100644
          usage:
              osc copyprj SOURCEPRJ DESTPRJ
          ${cmd_option_list}
-@@ -3201,6 +3205,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3219,6 +3223,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -39,10 +39,10 @@ index 2d46b1c7..a395ee19 100644
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index bab85eb8..de116a70 100644
+index 0e6d90e6..42923737 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5575,6 +5575,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5584,6 +5584,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['resign'] = '1'
      if comment:
          query['comment'] = comment
@@ -51,6 +51,3 @@ index bab85eb8..de116a70 100644
      u = makeurl(src_apiurl, ['source', dst_project], query=query)
      print >>sys.stderr, "copyprj ", u
      f = http_POST(u)
--- 
-2.34.1
-

@@ -1,7 +1,7 @@
-From a92e36fd28ef36715346b133d13434d700efaca5 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Marko Lemmetty <marko.lemmetty@jollamobile.com>
 Date: Fri, 15 May 2020 15:16:37 +0300
-Subject: [PATCH 6/7] Add architecture and scheduler maps
+Subject: [PATCH] Add architecture and scheduler maps
 
 Makes preferring local packages with armv8el and i486 OBS schedulers
 work. These mappings armv7hl/armv7tnhl -> armv8el and i486 ->
@@ -27,6 +27,3 @@ index 93a439b5..c3aa2c0d 100644
      def __init__(self, wanted_architecture):
          self.wanted_architecture = wanted_architecture
          super(PackageQueries, self).__init__()
--- 
-2.34.1
-
