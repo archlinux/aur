@@ -12,7 +12,7 @@ _snaprev="10"
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap" "no-sandbox.sh")
 
 sha512sums=("1fd58a6c61855448f207f86728eb181be88486c2050a1dedea8292585aa816aaa3d7f25ae511b0926cfa870d757ee4772132f6739eea35378effcbfea3adfafc"
-			"52053a3ee543c5d4fe8c2ed8498b78b9b42988cee1a9765c33d0bb9bea75c9a62cae82deda3f1ab4d8f0e84a4fec08ee8c98d60c147ab46961a0686f202a05b7")
+            "52053a3ee543c5d4fe8c2ed8498b78b9b42988cee1a9765c33d0bb9bea75c9a62cae82deda3f1ab4d8f0e84a4fec08ee8c98d60c147ab46961a0686f202a05b7")
 
 prepare() {
     echo "Extracting snap file..."
