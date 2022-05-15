@@ -5,7 +5,7 @@ pkgname=(
    zapret-{nfqws,tpws,common,docs}-git
 )
 pkgbase=zapret-git
-pkgver=47.r16.ba5bde8
+pkgver=47.r39.ba5bde8
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/bol-van/zapret"
 license=('MIT')
 depends=('systemd' 'ipset' 'curl' 'iptables')
 makedepends=('libnetfilter_queue' 'git')
-provides=('zapret' 'zapret-git')
+provides=("zapret=$pkgver" "zapret-git=$pkgver")
 conflicts=('zapret')
 source=(
    "zapret::git+https://github.com/bol-van/zapret.git"
@@ -33,8 +33,8 @@ pkgver()
             | sed -E 's/ v([[:digit:]]+)/ \1/'
       )
       git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "%s.r%s.%s" "$ver" \
-         "$(git rev-list --count HEAD --since=$sha)" \
+      printf "%s.%s" \
+         "${ver:+$ver.}r$(git rev-list --count ${sha:+$sha~..}HEAD)" \
          "$(git rev-parse --short HEAD)"
    ) | tr -s '[:space:]:\\-' '.'
    pkgrel=$(git diff --shortstat|cut -d' ' -f2)
@@ -51,17 +51,17 @@ _symlink() {
 }
 
 _set_config() {
-   local _cfg="$pkgdir/opt/zapret/config"
-   if grep -q "^#$1=" "$_cfg";then
-      sed -i "/^#$1/s/#//" "$_cfg"
+   local _cfg="$pkgdir/opt/zapret/config.${1%/*}" _key="${1##*/}" _val="$2"
+   if grep -q "^#$_key=" "$_cfg";then
+      sed -i "/^#$_key/s/#//" "$_cfg"
    fi
-   sed -i "/^$1=/c\\$1=$(printf '%q' "$2")" "$_cfg"
+   sed -i "/^$_key=/c\\$_key=$(printf '%q' "$_val")" "$_cfg"
 }
 
 package_zapret-common-git()
 {
-   depends=('systemd' 'ipset' 'curl' 'iptables' 'zapret-git')
-   provides=('zapret-common')
+   depends=('systemd' 'ipset' 'curl' 'iptables' "zapret-git=$pkgver")
+   provides=("zapret-common=$pkgver")
    conflicts=('zapret-common')
 
    cd "$srcdir/${pkgbase%-git}"
@@ -84,8 +84,8 @@ package_zapret-common-git()
 
 package_zapret-nfqws-git() {
 
-   depends=('libnetfilter_queue' 'zapret-common-git')
-   provides+=('zapret-nfqws')
+   depends=('libnetfilter_queue' "zapret-common-git=$pkgver")
+   provides+=("zapret-nfqws=$pkgver")
    conflicts+=('zapret-nfqws')
    backup=("${makepkg_program_name+/}opt/zapret/config.nfqws")
 
@@ -99,16 +99,16 @@ package_zapret-nfqws-git() {
 
    _symlink nfq/nfqws
 
-   _set_config FWTYPE iptables
-   _set_config MODE nfqws
-   _set_config MODE_HTTP_KEEPALIVE 1
-   _set_config MODE_HTTPS 1
-   _set_config MODE_HTTP 1
+   _set_config nfqws/FWTYPE iptables
+   _set_config nfqws/MODE nfqws
+   _set_config nfqws/MODE_HTTP_KEEPALIVE 1
+   _set_config nfqws/MODE_HTTPS 1
+   _set_config nfqws/MODE_HTTP 1
 }
 
 package_zapret-tpws-git() {
-   depends=('zapret-common-git')
-   provides+=('zapret-tpws')
+   depends=("zapret-common-git=$pkgver")
+   provides+=("zapret-tpws=$pkgver")
    conflicts+=('zapret-tpws')
    backup=("${makepkg_program_name+/}opt/zapret/config.tpws")
 
@@ -121,16 +121,16 @@ package_zapret-tpws-git() {
 
    _symlink tpws/tpws
 
-   _set_config FWTYPE iptables
-   _set_config MODE tpws
-   _set_config MODE_HTTP_KEEPALIVE 1
-   _set_config MODE_HTTPS 1
-   _set_config MODE_HTTP 1
+   _set_config tpws/FWTYPE iptables
+   _set_config tpws/MODE tpws
+   _set_config tpws/MODE_HTTP_KEEPALIVE 1
+   _set_config tpws/MODE_HTTPS 1
+   _set_config tpws/MODE_HTTP 1
 }
 
 package_zapret-docs-git() {
    unset depends
-   provides=('zapret-docs')
+   provides=("zapret-docs=$pkgver")
    conflicts=('zapret-docs')
 
    cd "$srcdir/${pkgbase%-git}"
