@@ -2,7 +2,7 @@
 
 pkgname=go-translation-git
 _name=got
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Translating TUI written in go using simplytranslate's API"
 arch=('any')
@@ -21,8 +21,8 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags='-linkmode=external -X main.gotVersion=$pkgver' -mod=readonly -modcacherw"
-	go build -o got ./cmd/got/main.go
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -ldflags "-X main.gotVersion=$pkgver" -o got ./cmd/got/main.go
 }
 
 package() {
