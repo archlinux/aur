@@ -3,14 +3,14 @@
 pkgname=python-ffmpeg-git
 _pkgname='ffmpeg-python'
 pkgver=0.2.0.r37.gfc41f4a
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for FFmpeg - with complex filtering support"
 arch=(any)
 url="https://github.com/kkroening/ffmpeg-python"
 license=('Apache')
 options=(!emptydirs)
 depends=('ffmpeg' 'python-future')
-makedepends=('python-setuptools' 'python-pytest-runner')
+makedepends=('python-setuptools' 'python-pytest-runner' 'git')
 checkdepends=('python-pytest' 'python-pytest-mock')
 provides=(python-ffmpeg)
 conflicts=(python-ffmpeg)
