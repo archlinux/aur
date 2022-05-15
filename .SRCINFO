@@ -1,0 +1,18 @@
+pkgbase = zapit
+	pkgdesc = An advanced MQTT client made for the modern age
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/chocoearly44/ZapIt
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = java-runtime>=17
+	depends = xdg-utils
+	source = https://github.com/chocoearly44/ZapIt/releases/download/1.1/zapit-1.1.jar
+	source = zapit.desktop
+	source = icon.svg
+	md5sums = 4a13267e3d7e83d2d0dd3d6bb975c80a
+	md5sums = d5f64bcad5ef5b31dee352ab17d1b251
+	md5sums = fd4772bfec535553874eb6d7207fdbf5
+
+pkgname = zapit

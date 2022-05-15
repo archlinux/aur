@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ZapIt
+GenericName=ZapIt
+Comment=An advanced MQTT client made for the modern age.
+Exec=java -jar /opt/zapit/zapit.jar %u
+Icon=zapit
+Terminal=false
+Type=Application
+StartupNotify=true
