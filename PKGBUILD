@@ -243,7 +243,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
@@ -251,14 +251,12 @@ build() {
   # Do 3-tier PGO
   echo "Building instrumented browser..."
 
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-
   ./mach build
 
   echo "Profiling instrumented browser..."
+
   ./mach package
+
   LLVM_PROFDATA=llvm-profdata \
     JARLOG_FILE="$PWD/jarlog" \
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
@@ -280,8 +278,6 @@ ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --enable-linker=lld
-ac_add_options --disable-bootstrap
 END
 
   ./mach build
