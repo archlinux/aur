@@ -14,11 +14,11 @@ pkgbase = telegram-tdlib-purple-git
 	license = custom:STB
 	makedepends = cmake
 	makedepends = git
-	depends = libpurple
-	depends = libpng
-	depends = libwebp
-	depends = telegram-tdlib
+	makedepends = telegram-tdlib
 	depends = libtgvoip
+	depends = libpng
+	depends = libpurple
+	depends = libwebp
 	provides = telegram-tdlib-purple=0.7.9.r496.80a9163
 	conflicts = telegram-tdlib-purple
 	source = telegram-tdlib-purple-git::git+https://github.com/ars3niy/tdlib-purple
