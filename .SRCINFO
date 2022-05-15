@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	pkgver = 470.62.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
 	license = custom
@@ -27,6 +27,7 @@ pkgname = nvidia-vulkan
 	depends = linux
 	depends = nvidia-vulkan-utils=470.62.29
 	depends = libglvnd
+	provides = NVIDIA-MODULE
 	provides = nvidia=470.62.29
 	conflicts = nvidia
 
@@ -35,6 +36,7 @@ pkgname = nvidia-vulkan-dkms
 	depends = dkms
 	depends = nvidia-vulkan-utils=470.62.29
 	depends = libglvnd
+	provides = NVIDIA-MODULE
 	provides = nvidia=470.62.29
 	conflicts = nvidia
 
