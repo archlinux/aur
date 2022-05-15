@@ -5,7 +5,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgve
         "onlyoffice-documentserver.hook"
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles")
-sha512sums=('612754ad6ba636888a8ff53014128eb58e1907257e1f46c1ca3910da15b0322b4cd35bc6a541ee2790bed69eb42551fcb28f5487e93cbfce76f12e0c3ac51d85'
+sha512sums=('0726cc5bdc83a00a952d0df876810142cdf1165fed98f89d662eb9cb229f20c88797760f568c5963bf04d3e7d873e19c4b3dfb0ca28058450488d5fde248117f'
             '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
@@ -42,6 +42,7 @@ package() {
   install -d "${pkgdir}/var/lib/onlyoffice/documentserver/App_Data"
   install -d "${pkgdir}/var/log/onlyoffice/documentserver"
   cp -r "${srcdir}/var/www/onlyoffice/documentserver/" "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/"
+  chmod -R 755 "${pkgdir}/usr/share/webapps/onlyoffice/documentserver/"
   install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/{default.json,production-linux.json} "${pkgdir}/etc/webapps/onlyoffice/documentserver/"
   install -Dm 644 ${srcdir}/etc/onlyoffice/documentserver/log4js/production.json "${pkgdir}/etc/webapps/onlyoffice/documentserver/log4js/"
   install -Dm 777 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
