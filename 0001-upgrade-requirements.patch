@@ -1,39 +1,38 @@
-From ed178519cd651a907afd79c093cb612528341df0 Mon Sep 17 00:00:00 2001
+From 10cb9bf56e013515131b56bd444008a98b221b24 Mon Sep 17 00:00:00 2001
 From: atomlong <atom.long@hotmail.com>
-Date: Sat, 6 Nov 2021 20:19:07 +0800
+Date: Sun, 15 May 2022 23:01:14 +0800
 Subject: [PATCH] upgrade requirements
 
 ---
- requirements.txt | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ requirements.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/requirements.txt b/requirements.txt
-index 7c0cf80..35746d2 100644
+index cf68db1..5596ca6 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -1,14 +1,14 @@
- treelib==1.6.1
+ treelib~=1.6.1
 -requests~=2.25.1
-+requests~=2.26.0
- click_aliases==1.0.1
--rsa==4.0
--click==7.1.2
-+rsa==4.7.2
-+click==8.0.3
- ruamel.base==1.0.0
++requests~=2.27.1
+ click_aliases~=1.0.1
+ rsa>=4.8
+-click~=8.0.0
++click~=8.1.2
+ ruamel.base~=1.0.0
  ruamel.yaml
 -colorama~=0.4.3
 +colorama~=0.4.4
- npyscreen==4.10.5
- windows-curses;platform_system=="Windows" and python_version<"3.10"
+ npyscreen~=4.10.5
+ windows-curses;platform_system=="Windows"
 -pyperclip~=1.8.1
 +pyperclip~=1.8.2
  aria2p~=0.10.4
  Flask
 -simplejson~=3.17.3
 \ No newline at end of file
-+simplejson~=3.17.5
++simplejson~=3.17.6
 \ No newline at end of file
 -- 
-2.33.1.windows.1
+2.35.1.windows.2
 

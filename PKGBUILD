@@ -2,7 +2,7 @@
 
 _pkgname=aliyunpan
 pkgname=${_pkgname}-cli
-pkgver=2.10.2
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Aliyunpan CLI"
 arch=('any')
@@ -26,9 +26,9 @@ provides=('aliyunpan')
 source=(${_pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
         dlnap-master.tar::"https://github.com/cherezov/dlnap/archive/master.tar.gz"
         "0001-upgrade-requirements.patch")
-sha256sums=('d29db6437bb8b1467d6c31df2aeffc17da857fc260f7cde20a0ebb695bc75b0f'
+sha256sums=('b5452250bcb1c2134b996ceb2f832b3924ea6254c05bbee5c128ae6d413c4554'
             'SKIP'
-            '716c9542077062d32c59e27f44ddbdb232b9e3774124647d7c67dbcd150f6fd7')
+            '861a40ead90266234e2ecca520ea837e3118f994431053f390f7b81bf45b0fb9')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
