@@ -1,7 +1,7 @@
 pkgbase = pge
 	pkgdesc = A simple game engine built on top of SDL2
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ICanOnlySuffer/pge
 	arch = x86_64
 	groups = pocha
@@ -12,6 +12,6 @@ pkgbase = pge
 	makedepends = sdl2_image
 	makedepends = sdl2_mixer
 	source = https://gitlab.com/ICanOnlySuffer/pge/-/archive/v0.1.0/pge-v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = bb4e4ad4378d05981916dc120b510a04a0659013edf4991fbf71497969eec562
 
 pkgname = pge
