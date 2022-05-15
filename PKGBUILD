@@ -3,7 +3,7 @@
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
 pkgver=515.43.04
-pkgrel=3
+pkgrel=4
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -50,7 +50,13 @@ package_nvidia-open-beta() {
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
     local _kernver
-    _kernver="$(</usr/src/linux/version)"
+    if [ -d "/usr/lib/modules/$(uname -r)" ]
+    then
+        _kernver="$(<"/usr/lib/modules/$(uname -r)/build/version")"
+    else
+        _kernver="$(find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d | head -n1)"
+        _kernver="$(<"/usr/lib/modules/${_kernver##*/}/build/version")"
+    fi
     
     install -D -m644 "open-gpu-kernel-modules-${pkgver}/kernel-open"/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
     install -D -m644 "open-gpu-kernel-modules-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
