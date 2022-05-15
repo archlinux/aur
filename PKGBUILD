@@ -10,7 +10,7 @@ license=('GPL')
 depends=('crypto++' 'geoip' 'geoip-database' 'wxgtk3')
 makedepends=('git')
 conflicts=('amule')
-source=('git+git://github.com/amule-project/amule.git')
+source=('git+https://github.com/amule-project/amule.git')
 md5sums=('SKIP')
 
 pkgver() {

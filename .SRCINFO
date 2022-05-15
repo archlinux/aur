@@ -12,8 +12,7 @@ pkgbase = amule-remote-git
 	depends = geoip-database
 	depends = wxgtk3
 	conflicts = amule
-	source = git+git://github.com/amule-project/amule.git
+	source = git+https://github.com/amule-project/amule.git
 	md5sums = SKIP
 
 pkgname = amule-remote-git
-
