@@ -3,7 +3,7 @@
 # Contributer:  James Hendrie <hendrie dot james at gmail dot com>
 pkgname=shalarm
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash script alarm clock."
 arch=('any')
 url="http://www.someplacedumb.net/content/progs/index.html#shalarm"
