@@ -1,6 +1,6 @@
 # Maintainer: Yunhui Fu <yhfudev at gmail dot com>
 
-pkgname=wxmedit
+pkgname=wxmedit-git
 pkgver=r1381.0ac05dc
 pkgrel=1
 pkgdesc="Cross-platform Text/Hex Editor, a fork of MadEdit with bug fixes and improvements"
@@ -12,8 +12,8 @@ conflicts=('wxmedit')
 depends=('wxgtk' 'libucd-git' 'desktop-file-utils' 'boost')
 makedepends=('git' 'libucd-git' 'boost' 'wxgtk')
 source=(
-    "${pkgname%-git}::git+https://github.com/hltj/wxMEdit.git"
-    wxmedit.patch
+    "${pkgname%}::git+https://github.com/hltj/wxMEdit.git"
+    wxmedit-encdet-mozilla.patch
     )
 install=wxmedit.install
 md5sums=(
@@ -35,7 +35,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   #cd "$srcdir/wxMEdit-$pkgver"
-  patch -p1 < "$srcdir/wxmedit.patch"
+  patch -p1 < "$srcdir/wxmedit-encdet-mozilla.patch"
 }
 
 build() {
