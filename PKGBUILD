@@ -11,7 +11,7 @@ groups=('pocha')
 url="https://gitlab.com/ICanOnlySuffer/$pkgname"
 
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('a1e95d0eb4584ef49645dacf6223050aac4a863e0029c306b4c0982d94eff1c2')
 
 package () {
 	make -C $pkgname-v$pkgver install clean INSTALL_DIR=$pkgdir
