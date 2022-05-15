@@ -67,13 +67,13 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=109
-_rtpatchver=65
+_minor=115
+_rtpatchver=67
 _clr=${_major}.59-83
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
@@ -331,9 +331,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('18fb22ecb249669ea775474aee614dcb0697cab299068074fd9f0bafa32113dc'
+sha256sums=('f5e417b32f89318b6d0a230109a592ffd68997817463dc4692fa49ec7fe42f71'
             'SKIP'
-            'f894016f1cf552eb23747355b0510d25222d88f628082d8b777e6d5e67d1eb70'
+            '1230deb8fecf012567ee78c0cced7521872692d949e77951721f5b8471bb2f9a'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
