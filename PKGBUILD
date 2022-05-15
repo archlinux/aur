@@ -8,9 +8,8 @@
 # Please consult any applicable license agreements prior to
 # usage of this script.
 #
-# You will need to acquire both NVIDIA-Linux-...-grid.run
-# and ...-vgpu-kvm.run, place them in the same directory
-# as this PKGBUILD file, and then run makepkg.
+# You will need to acquire both NVIDIA-Linux-...-vgpu-kvm.run
+# place it in the same directory as this PKGBUILD file, and then run makepkg.
 
 pkgbase='nvidia-vgpu'
 pkgname=('nvidia-vgpu-dkms' 'nvidia-vgpu-utils')
