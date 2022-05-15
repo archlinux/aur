@@ -1,0 +1,17 @@
+pkgbase = cl-local-time
+	pkgdesc = Time manipulation library for Common Lisp
+	pkgver = 1.0.6.r76.ga177eb9
+	pkgrel = 1
+	url = https://local-time.common-lisp.dev/
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-fad
+	source = cl-local-time::git+https://github.com/dlowe-net/local-time#commit=a177eb911c0e8116e2bfceb79049265a884b701b
+	source = use-system-zoneinfo.patch
+	b2sums = SKIP
+	b2sums = 216aa11cfd4e2ecb072d37f7d23aa5f369e376606ac5fd3846924902946ff3726893e87b26a339037b638673d2e15059956c4a71de84e86585e8569c4817a05a
+
+pkgname = cl-local-time
