@@ -14,7 +14,7 @@ source=("emulationstation-de-stable-1.2-AUR_${pkgver}-${pkgrel}.tar.gz::https://
 md5sums=('fe6056ed98d54dfca0f21e6a548565aa')
 
 build() {
-        cmake -B emulationstation-de-stable-1.2-AUR -S emulationstation-de-stable-1.2-AUR .
+        cmake -B emulationstation-de-stable-1.2-AUR -S emulationstation-de-stable-1.2-AUR
         make -C emulationstation-de-stable-1.2-AUR -j4
 }
 
