@@ -2,13 +2,13 @@
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=ns3
-pkgver=3.35
-pkgrel=2
+pkgver=3.36
+pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('any')
 url='http://www.nsnam.org/'
 license=('GPL2')
-depends=('gcc' 'python' 'dpdk'
+depends=('python' 'dpdk'
          'qt5-base'                         # netanim animator
          'openmpi'                          # MPI for HPC
          'sqlite'                           # database support for statistics
@@ -16,25 +16,25 @@ depends=('gcc' 'python' 'dpdk'
          'boost' 'boost-libs'               # openflow switch
          'glibc' 'libpcap'                  # click
          'gsl'                              # wireless model fidelity
-         'gtk2'                             # configuration system
+         'gtk3'                             # configuration system
          # ns-3-pyviz
-         'python-pygraphviz' 'goocanvas' 'pygoocanvas' 'pygtk'
+         'goocanvas' 'python-gobject' 'python-cairo' 'python-pygraphviz' 'ipython'
          # Python bindings auto-generation
-         'cmake' 'clang' 'llvm' 'castxml' 'pygccxml' 'python-cxxfilt')
-makedepends=('python-pip' 'python-setuptools' 'python-wheel' 'git' 'mercurial'
-             'bzr' 'doxygen' 'graphviz' 'imagemagick')
-optdepends=('python-sphinx: ns3 manual and tutorial'
-            'dia: ns3 manual and tutorial'
-            'texlive-bin: ns3 manual and tutorial'
-            'uncrustify: utils/check-style.py style check program')
-provides=('ns3')
+         'clang' 'llvm' 'castxml' 'python-pygccxml' 'python-cxxfilt')
+makedepends=('cmake' 'python-setuptools' 'python-pip' 'python-wheel' 'git'
+             'mercurial'
+             # documentation
+             'doxygen' 'graphviz' 'imagemagick' 'python-sphinx' 'dia'
+             'texlive-bin')
+optdepends=('uncrustify: utils/check-style.py style check program')
+provides=('ns3' 'clickrouter')
 conflicts=('ns3-hg')
-source=("https://www.nsnam.org/release/ns-allinone-$pkgver.tar.bz2"
-        "ns3-brite-hg::hg+https://code.nsnam.org/jpelkey3/BRITE"
+source=("https://www.nsnam.org/releases/ns-allinone-$pkgver.tar.bz2"
+        "brite-hg::hg+https://code.nsnam.org/BRITE"
         "click-git::git+https://github.com/kohler/click"
-        "ns3-openflow-hg::hg+https://code.nsnam.org/openflow"
+        "openflow-hg::hg+https://code.nsnam.org/openflow"
         "pybindgen-git::git+https://github.com/gjcarneiro/pybindgen")
-sha256sums=('25e07a95349847b3e453d3af29a94545a4f869b1c6b4d860900cb7718fb1a618'
+sha256sums=('8919f90f7c6eff90a549c7b756021f78f6c5278a238cfa0890cd07e9bb46c8be'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,81 +46,97 @@ prepare() {
 }
 
 build() {
-    # Build brite
-    cd "$srcdir/ns3-brite-hg"
+    # brite
+    # https://www.nsnam.org/docs/models/html/brite.html
+    cd "$srcdir/brite-hg"
     make
 
-    # Build click
+    # click
+    # https://www.nsnam.org/docs/models/html/click.html
     cd "$srcdir/click-git"
     sed -i -e '/linux_true/d' include/click/cxxprotect.h # https://github.com/kohler/click/issues/493
-    ./configure --prefix=/usr --disable-linuxmodule --enable-nsclick --enable-wifi
-    rm -rf bin
+    ./configure --prefix="$srcdir/click-git/install" \
+        --disable-linuxmodule \
+        --enable-nsclick \
+        --enable-wifi
     make
+    make install
 
-    # Build openflow
-    cd "$srcdir/ns3-openflow-hg"
+    # openflow
+    # https://www.nsnam.org/docs/models/html/openflow-switch.html
+    cd "$srcdir/openflow-hg"
     ./waf configure --prefix=/usr
-    ./waf build --progress
+    ./waf build
 
-    # Build pybindgen
+    # pybindgen
     cd "$srcdir/pybindgen-git"
     ./waf configure --prefix=/usr --build-profile=release
-    ./waf build --progress
+    ./waf build
 
-    # Build netanim
+    # netanim
     cd "$srcdir/ns-allinone-$pkgver/netanim"-*
     qmake NetAnim.pro
     make
 
-    # Build ns3
+    # ns3
     cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
-    ./waf configure \
+    ./ns3 configure \
         --build-profile=release \
         --prefix=/usr \
-        --progress \
-        --enable-sudo \
-        --enable-tests \
+        --enable-dpdk \
         --enable-examples \
+        --enable-gsl \
+        --enable-gtk \
         --enable-mpi \
-        --enable-des-metrics \
-        --force-planetlab \
-        --with-brite="$srcdir/ns3-brite-hg" \
-        --with-nsclick="$srcdir/click-git" \
-        --with-openflow="$srcdir/ns3-openflow-hg" \
-        --with-pybindgen="$srcdir/pybindgen-git"
-    ./waf build --progress
+        --enable-python-bindings \
+        --enable-tests \
+        --enable-sudo \
+        --with-brite="$srcdir/brite-hg" \
+        --with-click="$srcdir/click-git/install" \
+        --with-openflow="$srcdir/openflow-hg"
+    ./ns3 build
 
     # replace directory path
-    find -L . -name "*.pc" | xargs -n 1 sed -e "s|[^[:blank:]\r\n]\+$srcdir[^[:blank:]\r\n]\+||g" -i
+    find -L . -name "*.pc" | xargs -n 1 sed -e "s,[^[:blank:]]\+$srcdir[^[:blank:]]\+,,g" -i
 }
 
-# Disabled for now due to gsl version mismatch
 #check() {
 #    cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
 #
 #    # brite
-#    # https://www.nsnam.org/docs/models/html/brite.html
-#    ./waf --run brite-generic-example
-#    mpirun -np 2 ./waf --run brite-MPI-example
-#
-#    # openflow
-#    # https://www.nsnam.org/docs/models/html/openflow-switch.html
-#    ./waf --run "openflow-switch -v"
+#    ./ns3 --run brite-generic-example
+#    mpirun -np 2 ./ns3 --run brite-MPI-example
 #
 #    # click
-#    # https://www.nsnam.org/docs/models/html/click.html
-#    ./waf --run nsclick-simple-lan
+#    ./ns3 --run nsclick-simple-lan
+#
+#    # openflow
+#    ./ns3 --run "openflow-switch -v"
 #
 #    # ns3
 #    ./test.py
 #}
 
 package() {
-    cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
-    ./waf install --prefix=/usr --destdir="$pkgdir"
+    # brite
+    cd "$srcdir/brite-hg"
+    PREFIX="$pkgdir/usr" make install
 
+    # click
+    cd "$srcdir/click-git"
+    cp -rf ./install/* "$pkgdir/usr"
+
+    # pybindgen
+    cd "$srcdir/pybindgen-git"
+    ./waf install --destdir="$pkgdir"
+
+    # netanim
     cd "$srcdir/ns-allinone-$pkgver/netanim"-*
-    install -Dm 755 ./NetAnim "${pkgdir}/usr/bin/netanim"
+    install -Dm 755 ./NetAnim "$pkgdir/usr/bin/netanim"
+
+    # ns3
+    cd "$srcdir/ns-allinone-$pkgver/ns-$pkgver"
+    DESTDIR="$pkgdir" ./ns3 install
 }
 
 # vim: set ts=4 sw=4 et :
