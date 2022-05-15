@@ -5,7 +5,7 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r905.gf4615754e
+pkgver=v3.0_rc1.r918.g8c4a7aaed
 pkgrel=1
 epoch=2
 pkgdesc="BibleTime is a Bible study application based on the Sword library and Qt toolkit."
@@ -13,7 +13,7 @@ arch=('x86_64' 'i686')
 url="https://bibletime.info/"
 license=('GPL2')
 depends=('sword>=1.8.1' 'qt5-webengine>=5.15')
-makedepends=('cmake' 'git' 'fop' 'po4a' 'docbook-xsl=1.79.2-7' 'docbook-xml')
+makedepends=('cmake' 'git' 'fop' 'po4a' 'docbook-xsl' 'docbook-xml')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
@@ -26,6 +26,7 @@ pkgver() {
 }
 
 build() {
+	_xslstylespath="/usr/share/xml/docbook/xsl-stylesheets-"$(pacman -Q docbook-xsl | cut -d ' ' -f 2 | cut -d '-' -f 1)
 	mkdir -p "$srcdir/$_gitname/build_dir"
 	cd "$srcdir/$_gitname/build_dir"
 
@@ -36,8 +37,8 @@ build() {
 	      -DBUILD_HANDBOOK_PDF=ON \
 	      -DBUILD_HOWTO_HTML=ON \
 	      -DBUILD_HOWTO_PDF=ON \
-	      -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/html/chunk.xsl \
-	      -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/fo/docbook.xsl \
+	      -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
+	      -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=$_xslstylespath/fo/docbook.xsl \
 	      ..
 	make
 }
