@@ -1,0 +1,12 @@
+--- ./kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c	2022-01-24 17:56:30.000000000 -0600
++++ ./kernel/nvidia-vgpu-vfio/nvidia-vgpu-vfio.c	2022-03-24 16:55:31.344084760 -0500
+@@ -206,4 +206,9 @@ struct parent_ops vgpu_fops = {
+     .write            = nv_vgpu_vfio_write,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,0)
++    .open_device      = nv_vgpu_vfio_open,
++    .close_device     = nv_vgpu_vfio_close,
++#else
+     .open             = nv_vgpu_vfio_open,
+     .release          = nv_vgpu_vfio_close,
++#endif
+     .ioctl            = nv_vgpu_vfio_ioctl,
