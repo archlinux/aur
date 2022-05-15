@@ -1,0 +1,16 @@
+pkgbase = obs-websocket-bin
+	pkgdesc = Websockets API for obs-studio
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-websocket
+	arch = x86_64
+	license = GPL2
+	makedepends = libarchive
+	depends = obs-studio>=27.0.0
+	provides = obs-websocket
+	conflicts = obs-websocket
+	options = !strip
+	source = https://github.com/obsproject/obs-websocket/releases/download/4.9.1/obs-websocket_4.9.1-1_amd64.deb
+	sha256sums = 15c487180a5124c6005e685640dedc7e8f8e0b95e3653425fac2e21e01104fdc
+
+pkgname = obs-websocket-bin
