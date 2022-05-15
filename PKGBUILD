@@ -40,6 +40,7 @@ _var_directory="/var/lib/$pkgname"
 
 prepare()
 {
+    rm -rf *
     curl -L "$_srcprefix/PKGBUILD" > PKGBUILD-git
 }
 
