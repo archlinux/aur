@@ -2,13 +2,13 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r446.gbef4d7c
+pkgver=r461.g96cdf8f
 pkgrel=3
 pkgdesc="Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
 license=('BSD')
-depends=(libxcb xcb-proto xcb-util xcb-util-keysyms libinput libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols wlroots-git)
+depends=(libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols wlroots-git cairo pango)
 makedepends=(git cmake ninja gcc)
 source=("${_pkgname}::git+https://github.com/vaxerski/Hyprland.git")
 sha256sums=('SKIP')
