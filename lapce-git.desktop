@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=lapce-git
+GenericName=Lightning-fast and Powerful Code Editor written in Rust
+Exec=/usr/bin/lapce %u
+Icon=Lapce
+Type=Application
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=lapce;lapce-git;
