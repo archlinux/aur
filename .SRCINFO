@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-rikaichamp
 	pkgdesc = Translate Japanese by hovering over words
-	pkgver = 1.6.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/birchill/10ten-ja-reader
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firefox-extension-rikaichamp
 	makedepends = yarn
 	makedepends = nodejs>=12
 	depends = firefox
-	source = 10ten-ja-reader-1.6.1.tar.gz::https://github.com/birchill/10ten-ja-reader/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = c1264e4d4602e13975525abe8008492ccaf989dba4ce2bc5a93f0371134e6127
+	source = 10ten-ja-reader-1.9.0.tar.gz::https://github.com/birchill/10ten-ja-reader/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 9190b314e0b1cb5eaae2e3150aea6d25b16d8ff72a3b4efaf240677662b71913
 
 pkgname = firefox-extension-rikaichamp

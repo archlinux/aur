@@ -3,7 +3,7 @@
 _gecko_id="{59812185-ea92-4cca-8ab7-cfcacee81281}"
 _name="10ten-ja-reader"
 pkgname=firefox-extension-rikaichamp
-pkgver=1.6.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Translate Japanese by hovering over words"
 arch=('any')
@@ -13,7 +13,7 @@ groups=("firefox-addons")
 depends=("firefox")
 makedepends=("yarn" "nodejs>=12")
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1264e4d4602e13975525abe8008492ccaf989dba4ce2bc5a93f0371134e6127')
+sha256sums=('9190b314e0b1cb5eaae2e3150aea6d25b16d8ff72a3b4efaf240677662b71913')
 
 
 build() {
