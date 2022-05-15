@@ -2,7 +2,7 @@
 
 pkgname=ghdl-yosys-plugin-git
 pkgver=r208.c9b05e4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl and yosys)'
 url='https://github.com/ghdl/ghdl-yosys-plugin'
