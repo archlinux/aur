@@ -1,7 +1,7 @@
 pkgbase = wxbase-git
 	pkgdesc = wxWidgets base libraries for no X install (3.x branch development version)
 	pkgver = latest
-	pkgrel = 5
+	pkgrel = 6
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = wxbase-git
 	conflicts = wxgtk
 	conflicts = wxwidgets
 	conflicts = wxbase
-	source = git+git://github.com/wxWidgets/wxWidgets.git
+	source = git+https://github.com/wxWidgets/wxWidgets.git
 	md5sums = SKIP
 
 pkgname = wxbase-git

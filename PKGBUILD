@@ -2,7 +2,7 @@
 
 pkgname=wxbase-git
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc="wxWidgets base libraries for no X install (3.x branch development version)" 
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -10,7 +10,7 @@ license=('custom:wxWindows')
 makedepends=('git')
 provides=('wxbase=3.1')
 conflicts=('wxgtk' 'wxwidgets' 'wxbase')
-source=("git+git://github.com/wxWidgets/wxWidgets.git")
+source=("git+https://github.com/wxWidgets/wxWidgets.git")
 md5sums=('SKIP')
 
 pkgver() {
