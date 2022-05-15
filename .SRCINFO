@@ -1,13 +1,14 @@
 pkgbase = warp-share-files
 	pkgdesc = Share files with each other effortlessly
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/felinira/warp
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = rust
+	makedepends = itstool
 	depends = glib2
 	depends = libadwaita
 	source = https://gitlab.gnome.org/felinira/warp/-/archive/v0.1.1/warp-v0.1.1.tar
