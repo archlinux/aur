@@ -1,0 +1,16 @@
+pkgbase = cl-named-readtables
+	pkgdesc = Library that creates a namespace for readtables akin to the namespace of packages
+	pkgver = 0.9.r47.gd5ff162
+	pkgrel = 1
+	url = https://github.com/melisgl/named-readtables
+	arch = any
+	license = BSD
+	checkdepends = sbcl
+	checkdepends = cl-try
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-named-readtables::git+https://github.com/melisgl/named-readtables#commit=d5ff162ce02035ec7de1acc9721385f325e928c0
+	b2sums = SKIP
+
+pkgname = cl-named-readtables
