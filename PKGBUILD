@@ -20,13 +20,28 @@ pkgver() {
 build() {
 install "${srcdir}/inform7-ide/build-aux/make-integration-settings.mk" "${srcdir}/make-integration-settings.mk"
 install -d "${srcdir}/inform7-ide/retrospective"
-bash "inweb/scripts/first.sh" "linux"
-bash "intest/scripts/first.sh"
+
+#setting up inweb build enviroment
+install -D "inweb/Materials/platforms/linux.mk" "inweb/platform-settings.mk"
+cp -f "inweb/Materials/platforms/inweb-on-linux.mk" "inweb/inweb.mk"
+make -f "inweb/inweb.mk" "initial"
+
+#setting up intest build enviroment
+inweb/Tangled/inweb intest -prototype "intest/scripts/intest.mkscript" -makefile "intest/intest.mk"
+make -f "intest/intest.mk" "force"
+
+#setting up inform build enviroment and installing retroppective and tools for inform7-ide build
 cd "inform"
-bash "scripts/first.sh"
+../inweb/Tangled/inweb -prototype "scripts/inform.mkscript" -makefile "makefile"
+make "makers"
+make "forcetools"
+make "force"
+make -f "inform6/inform6.mk" "interpreters"
 make "integration" "retrospective"
 cd "retrospective"
 cp -r "6L02" "6L38" "6M62" "retrospective.txt" -t "${srcdir}/inform7-ide/retrospective"
+
+#building inform7-ide
 cd "${srcdir}/inform7-ide/"
 meson --prefix=/usr build
 ninja -C build
