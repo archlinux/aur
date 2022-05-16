@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-postgres
 	pkgdesc = GNAT Components Collection - Postgres database support
 	pkgver = 22.0.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-db/
 	arch = i686
