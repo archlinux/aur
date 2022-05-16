@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=mullvad-vpn-beta-bin
-_pkgver=2022.1
-_channel=stable
+_pkgver=2022.2
+_channel=beta
 _rel=1
 # beta
-#pkgver=${_pkgver}.${_channel}${_rel}
+pkgver=${_pkgver}.${_channel}${_rel}
 # stable
-pkgver=${_pkgver}.${_channel}
+#pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -17,11 +17,11 @@ provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 install="${pkgname%-*-*}.install"
 source=(
-#        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_amd64.deb"{,.asc} # beta
-        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
+        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}${_rel}/MullvadVPN-${_pkgver}-${_channel}${_rel}_amd64.deb"{,.asc} # beta
+#        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
         "${pkgname%-*-*}.sh"
        )
-sha256sums=('713043f60a146f5a8669abd4c05e3fde8e5b7658d4b9cd269ea9cc7264f22268'
+sha256sums=('015b1781fff117c32a0d7c5ebeaf186f605835273dd41d4d2788a7938327077b'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
