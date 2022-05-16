@@ -1,7 +1,7 @@
 pkgbase = tokyocabinet
-	pkgdesc = a modern implementation of DBM
+	pkgdesc = A modern implementation of DBM
 	pkgver = 1.4.48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fallabs.com/tokyocabinet/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tokyocabinet
 	makedepends = pkgconfig
 	depends = zlib
 	depends = bzip2
-	source = https://fallabs.com/tokyocabinet/tokyocabinet-1.4.48.tar.gz
-	sha256sums = a003f47c39a91e22d76bc4fe68b9b3de0f38851b160bbb1ca07a4f6441de1f90
+	source = https://gitlab.com/patlefort/tokyocabinet/-/archive/v1.4.48/tokyocabinet-v1.4.48.tar.gz
+	sha256sums = 7ac6676532be461a55b91eefa832b36e7118fca01b377d0ed3cad81580d3460d
 
 pkgname = tokyocabinet
