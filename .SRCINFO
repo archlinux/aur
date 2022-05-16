@@ -1,0 +1,17 @@
+pkgbase = ghidra-extension-ghidra2dwarf
+	pkgdesc = Ghidra plugin to export information from ghidra to dwarf sections inside ELF binaries
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cesena/ghidra2dwarf
+	arch = any
+	license = MIT
+	depends = python
+	depends = ghidra
+	replaces = ghidra2dwarf
+	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/libdwarf.jar
+	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/elf.py
+	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/ghidra2dwarf.py
+	source = ghidra2dwarf.zip::https://github.com/cesena/ghidra2dwarf/releases/download/latest/ghidra2dwarf.zip
+	sha512sums = 23e43ce0bbc0ba6667f6647a896b75c951f9031fd050a0512f6b0c498f4ade7295d41377a7559b63d5a9d47a30d4e123b794717b093f42bfb5e6982c3a41895f
+
+pkgname = ghidra-extension-ghidra2dwarf
