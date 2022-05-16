@@ -1,0 +1,21 @@
+pkgbase = openwebstart-bin
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://openwebstart.com
+	install = openwebstart.install
+	arch = x86_64
+	license = GPL
+	depends = java-runtime<18
+	provides = openwebstart
+	options = !strip
+	options = !zipman
+	source = https://github.com/karakun/OpenWebStart/releases/download/v1.5.2/OpenWebStart_linux_1_5_2.deb
+	source = jnlp.xml
+	source = javaws.desktop
+	source = itw-settings.desktop
+	md5sums = 879e7d8514c4c58ffcfbe9a7d05b5699
+	md5sums = 551218dd79f7600755d76ab733fdb5bc
+	md5sums = 325214a1c96b12461190320cd2201bf7
+	md5sums = 1443e7e283bbf7461e9829eeffd5966a
+
+pkgname = openwebstart-bin
