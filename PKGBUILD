@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-nl
-pkgver=2.53.9.1
+pkgver=2.53.12
 pkgrel=1
 _lang=nl
 pkgdesc="Dutch language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('909bf7bb4cf877e8cc382a2e45d864764de0259b818b86fa7dafc54e229842bbb69907b990fa3a34ca4450db090c0059a9b7390dcc1b00044c2fcb3638608806')
+sha512sums=('24d75b92695453ab9a853846d22c5034f8040652a97af597ef002d5916de2e978a49f4b61f4c42b96ce8c70bf48db3c9e47704326ef5206211e140107e082950')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
