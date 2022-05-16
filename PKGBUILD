@@ -1,6 +1,6 @@
 # Maintainer: Trevor Tilby <trevor.tilby@gmail.com>
 pkgname='ds3os-loader-rs-git'
-pkgver=1
+pkgver=r12.d83b7a1
 pkgrel=1
 pkgdesc="Loader for the Dark Souls 3 Open Server"
 arch=('x86_64')
