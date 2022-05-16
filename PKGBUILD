@@ -3,28 +3,22 @@
 pkgname=btrfs-compress
 # compress is too generic a name!!! Also the script is unmaintained upstream but still works.
 _pkgname=compress
-pkgver=20190221.r11
-pkgrel=2
+pkgver=20190221.r12
+pkgrel=1
 pkgdesc="btrfs tool that makes it possible to change +c flags recursively on existing files"
 arch=('i686' 'x86_64')
 url="https://github.com/benapetr/compress"
 license=('BSD') 
 depends=('python')
-source=("git+https://github.com/benapetr/$_pkgname.git#commit=5b5afb8cdfa0fbe94a1535dcd682816fc3672e1b"
-        'subprocess.check_output.patch')
-b2sums=('SKIP'
-        '578ad8a209d7f80eacf006de338e5a9235f7b3d9f4dced084046bc8cd45feeaf39131fad86d93ed95310baa4500ae736411ce39916fb2ebe6222a4a384de2d45')
+makedepends=('git')
+source=("git+https://github.com/benapetr/$_pkgname.git#commit=394be8f2a44b8587c7190decf4d758e15dfed9d7")
+b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
   printf "%s.r%s" \
     "$(git log -1 --format="%cd" --date=short | sed 's/\-//g')" \
     "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "$_pkgname"
-  patch -p1 < ../subprocess.check_output.patch
 }
 
 build() {
