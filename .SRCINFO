@@ -1,0 +1,20 @@
+pkgbase = cl-try
+	pkgdesc = A test framework for Common Lisp
+	pkgver = 0.0.1.r23.ga1fffad
+	pkgrel = 1
+	url = https://melisgl.github.io/try
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	depends = cl-closer-mop
+	depends = cl-ieee-floats
+	depends = cl-mgl-pax
+	depends = cl-trivial-gray-streams
+	source = cl-try::git+https://github.com/melisgl/try#commit=a1fffad2ca328b3855f629b633ab1daaeec929c2
+	b2sums = SKIP
+
+pkgname = cl-try
