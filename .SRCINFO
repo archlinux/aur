@@ -1,0 +1,17 @@
+pkgbase = cl-usocket
+	pkgdesc = Universal socket library for Common Lisp
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://usocket.common-lisp.dev/
+	arch = any
+	license = MIT
+	checkdepends = cl-rt
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-split-sequence
+	depends = cl-bordeaux-threads
+	source = cl-usocket::git+https://github.com/usocket/usocket#commit=57d7d00ed42d45803c0b3e4041413477fcec441a
+	b2sums = SKIP
+
+pkgname = cl-usocket
