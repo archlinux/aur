@@ -1,0 +1,17 @@
+pkgbase = gpower2-git
+	pkgdesc = A simple power dialog written in zig using gtk4
+	pkgver = r4.c5012ef
+	pkgrel = 1
+	url = https://mzte.de/git/LordMZTE/gpower2
+	arch = x86_64
+	license = GPL-3
+	makedepends = git
+	makedepends = zig
+	depends = gtk4
+	depends = systemd
+	provides = gpower2
+	conflicts = gpower2
+	source = git+https://mzte.de/git/LordMZTE/gpower2.git
+	sha256sums = SKIP
+
+pkgname = gpower2-git
