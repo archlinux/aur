@@ -1,12 +1,12 @@
 pkgbase = lib32-nvidia-470xx-utils
-	pkgver = 470.103.01
+	pkgver = 470.129.06
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.103.01/NVIDIA-Linux-x86_64-470.103.01.run
-	sha512sums = 3dc19774a6fef5e6ec0cb9451df4268f77cb31b0a9ede253bf9cf805a048ad457a7bfec852aaeab3e3e297b3353840a3d6c9c7ddc75d57b2b000ab4e0b15530b
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.129.06/NVIDIA-Linux-x86_64-470.129.06.run
+	sha512sums = 6f61f01b3840e30b3cd195ecb81826c37200e27b79d555808c873d5381fd55868bddf16a53f15cb51646af067705a6ce289c4cef514908b1b4b2d2e765907252
 
 pkgname = lib32-nvidia-470xx-utils
 	pkgdesc = NVIDIA drivers utilities (32-bit)
