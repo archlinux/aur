@@ -1,6 +1,6 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=project-plus-netplay
-_tagname='v2.29'
+_tagname='2.29'
 pkgver='v2.29.r0.g59e9409'
 pkgrel=1
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
