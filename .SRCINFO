@@ -1,14 +1,17 @@
 pkgbase = poweralertd
 	pkgdesc = UPower-powered power alerter
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://git.sr.ht/~kennylevinsen/poweralertd
+	pkgrel = 2
+	url = https://sr.ht/~kennylevinsen/poweralertd
 	arch = x86_64
-	license = GPL
+	license = GPL3
+	makedepends = meson
 	makedepends = scdoc
-	depends = mako
+	depends = systemd-libs
 	depends = upower
-	source = poweralertd-0.2.0::https://git.sr.ht/~kennylevinsen/poweralertd/archive/0.2.0.tar.gz
+	optdepends = mako: option for notification daemon
+	optdepends = libnotify: option for notification daemon
+	source = poweralertd-0.2.0.tar.gz::https://git.sr.ht/~kennylevinsen/poweralertd/archive/0.2.0.tar.gz
 	sha256sums = f70076dad452c592e2fcdeba4fd533c11394c254f42c21522aa7b56f92a0bd69
 
 pkgname = poweralertd
