@@ -1,7 +1,7 @@
 # Maintainer: René Wagner
 # Contributor: Christian Sturm <reezer@reezer.org>
 pkgname=perl-modern-perl
-pkgver=1.20200211
+pkgver=1.20220515
 pkgrel=1
 pkgdesc="enable all of the features of Modern Perl with one command"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('perl>=5.10.0')
 makedepends=('make')
 options=(!emptydirs)
 source=("http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz")
-sha256sums=('da1c83cee84fab9edb9e31d7f7abac43e1337b2e66015191ec4b6da59298c480')
+sha256sums=('700c292bd61d6c0c9f1f351d029a15a7144e405294321804f022885e5c59e68f')
 
 build() {
   cd "$srcdir/Modern-Perl-$pkgver"
