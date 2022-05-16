@@ -6,7 +6,7 @@
 _pkgbasename=nvidia-390xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-390xx-utils' 'lib32-opencl-nvidia-390xx')
-pkgver=390.147
+pkgver=390.151
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,7 +15,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('0d8bda32e916d71da2ea74bc12a4f3cb0a0c2ddda27511cf3c89bbf4aeb28db68f6b7261639d88dd1c0180b91213c09de930d233158268c5d9ab3b223510e964')
+sha512sums=('aad962e4132c8ab031b5f72e47fbd4b5c49824bc175f13fd2c6fb3e539d41ff9829835ce4928bbfa56aba2ffa43fbe3d8049e9246e29b19abcea0ac89bdae5d4')
 
 create_links() {
     # create soname links
