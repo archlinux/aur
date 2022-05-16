@@ -1,13 +1,13 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2022.05.09.00
+pkgver=2022.05.16.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
 arch=(x86_64)
 license=(MIT)
-depends=(openssl gcc-libs)
+depends=(openssl gcc11-libs)
 makedepends=(patchelf python)
 provides=("watchman=$pkgver")
 conflicts=(watchman)
@@ -15,10 +15,8 @@ options=(!strip)
 install=watchman.install
 
 # https://github.com/facebook/watchman/releases
-source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
-        libgcc_s.so.1)
-sha256sums=('99a4aad800d7ecd6d5d265d40ee3633f5afc1c3c97eaed4a443e72cdef1091f3'
-            'a82367caaa653296b67007e5db6aa3a7a8103687690cdfa91a0095dacff8cbea')
+source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
+sha256sums=('76adb45344973e6a0f9851f0b2d70679e5126fa985ba10b59bf52207489fb97a')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -46,6 +44,10 @@ END
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
+
+  # Use libgcc from gcc11-libs to avoid a crash
+  # https://github.com/facebook/watchman/issues/1019
+  patchelf --add-rpath /usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0 bin/* lib/*
 }
 
 package() {
@@ -53,10 +55,6 @@ package() {
 
   install -Dt "$pkgdir/usr/bin" bin/*
   install -Dt "$pkgdir/usr/lib/watchman" lib/*
-
-  # Add libgcc from gcc-libs 11.2.0-4 to avoid a crash
-  # https://github.com/facebook/watchman/issues/1019
-  install -t "$pkgdir/usr/lib/watchman" ../libgcc_s.so.1
 
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/watchman.conf" <<END
 d /run/watchman 1777 root root
