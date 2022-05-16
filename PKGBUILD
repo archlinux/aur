@@ -8,7 +8,7 @@ pkgname=ut2004-gog
 pkgver=3369
 _pkgvermaj=3369
 _pkgvermin=2
-pkgrel=3
+pkgrel=4
 pkgdesc="Unreal Tournament 2004 ECE native Linux version with data via GOG"
 arch=('i686' 'x86_64')
 url="https://www.gog.com/game/unreal_tournament_2004_ece"
@@ -17,7 +17,6 @@ depends=('sdl' 'openal' 'libstdc++5')
 makedepends=('lgogdownloader' 'innoextract')
 conflicts=('ut2004' 'ut2004-steam')
 install=ut2004.install
-changelog=ChangeLog
 source=("setup_unreal_tournament_2004_1.0_(18947).exe::gogdownloader://unreal_tournament_2004_ece/en1installer0"
     "setup_unreal_tournament_2004_1.0_(18947)-1.bin::gogdownloader://unreal_tournament_2004_ece/en1installer1"
     "https://github.com/jm2/archlinux-package-ut2004-steam/raw/master/ut2004-lnxpatch$_pkgvermaj-$_pkgvermin.tar.bz2"
@@ -29,10 +28,10 @@ sha256sums=('1f8712b4da90a22d822e4f2c2a4d841df2692be96d0f85f9064c6c77480c3b85'
             '438b9b13a367d46f23cce12b065382a55afa2fc68add1f1dd3db03b015f60bb3'
             'daf88b168e941d0bdd6c6637934a98d703f962afec7c64a1502c5b82ff66c6c8'
             '9fd35b406dc32caa6a0700bda89ac72f561346b919c4764d943bf4198ec032fd'
-            '0f1c5007a0d0023e9298c3c1c63c5fcbf158dec86e834aaf4aa346d0b2499838')
+            '5b47246e4f22ecca725e18f355b7f50fd0b56061e54a95a87146cd564ad65e10')
 
 # If you want to use lgogdownloader add the following to /etc/makepkg.conf
-# DLAGENTS+=('goggogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
+# DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 DLAGENTS+=("gogdownloader::/usr/bin/echo Could not find gog installer file (%u). Manually download it to \"$(pwd)\", or set up a gogdownloader:// DLAGENT in /etc/makepkg.conf. See PKGBUILD for example.")
 
 package() {
