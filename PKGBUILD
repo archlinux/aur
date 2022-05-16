@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-cache-memcached-fast"
-pkgver="0.26"
+pkgver="0.27"
 pkgrel='1'
 pkgdesc="Perl client for memcached, in C language"
 arch=('i686' 'x86_64' 'arm')
@@ -9,7 +9,7 @@ url="https://metacpan.org/release/Cache-Memcached-Fast"
 license=('PerlArtistic')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RA/RAZ/Cache-Memcached-Fast-${pkgver}.tar.gz")
-sha512sums=('aea565be2d1aaae186c6d985d88e444fa39311338a851f7f05b013affcab0bfcabd258a3df08849b9429b7168ff0d1e59ab27b1e843b217093b2b64786e890b1')
+sha512sums=('6e3f7cb6ae317312a16aad7888fb75ec03ff7be5b79aef1702c8bc8a1499995379b42c1afd6c587d419ea4dbe880836c874d4929f968f7a384ab152e5baa03fa')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
