@@ -2,7 +2,7 @@
 
 pkgname=sweet-theme-full-git
 _pkgname=sweet
-pkgver=r248.802e805
+pkgver=r265.c7f8a15
 pkgrel=1
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
@@ -19,7 +19,8 @@ optdepends=('ttf-roboto: primary font face defined (GTK theme)'
 provides=("sweet-theme")
 conflicts=('sweet-kde' 'sweet-kde-git' 'sweet-gtk-theme' 'sweet-theme-git'
            'sweet-cursor-theme-git' 'sweet-cursor-theme' 'sweet-cursors-theme'
-           'kvantum-theme-sweet-git' 'sweet-kvantum-theme-git')
+           'kvantum-theme-sweet-git' 'sweet-kvantum-theme-git' 'sweet-gtk-theme-dark'
+		   'plasma5-theme-sweet-git')
 options=('!strip')
 source=("git+$url.git#branch=nova")
 sha256sums=('SKIP')

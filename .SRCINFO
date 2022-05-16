@@ -1,6 +1,6 @@
 pkgbase = sweet-theme-full-git
 	pkgdesc = Sweet KDE Plasma theme
-	pkgver = r248.802e805
+	pkgver = r265.c7f8a15
 	pkgrel = 1
 	url = https://github.com/EliverLara/sweet
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = sweet-theme-full-git
 	conflicts = sweet-cursors-theme
 	conflicts = kvantum-theme-sweet-git
 	conflicts = sweet-kvantum-theme-git
+	conflicts = sweet-gtk-theme-dark
+	conflicts = plasma5-theme-sweet-git
 	options = !strip
 	source = git+https://github.com/EliverLara/sweet.git#branch=nova
 	sha256sums = SKIP
