@@ -1,6 +1,6 @@
 # Maintainer: matt kasun <matt  at gravil.com>
 pkgname=netclient
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="netclient daemon - a platform for modern, blazing fast virtual networks"
 arch=(x86_64)
