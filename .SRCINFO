@@ -1,7 +1,7 @@
 pkgbase = python-tableone
 	pkgdesc = Create "Table 1" for research papers in Python
 	pkgver = 0.7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/tableone
 	arch = any
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = python-tableone
 	sha256sums = 6ef7d3a824d43e003eebb8bb93e9ed0fedeafd59e70581e65ae231654bcc4cee
 
 pkgname = python-tableone
-
