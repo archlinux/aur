@@ -2,7 +2,7 @@
 
 pkgname=pass-otp-git
 pkgver=1.2.0.r29.ga364d2a
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension for managing one-time-password (OTP) tokens.'
 arch=('any')
 url=https://github.com/tadfisher/pass-otp
