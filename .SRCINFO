@@ -1,7 +1,7 @@
 pkgbase = netclient
 	pkgdesc = netclient daemon - a platform for modern, blazing fast virtual networks
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitl/netmaker
 	arch = x86_64
 	license = custom:SSPL
