@@ -1,0 +1,19 @@
+pkgbase = cl-fiasco
+	pkgdesc = A Common Lisp test framework that treasures your failures
+	pkgver = r310.gbb47d2f
+	pkgrel = 1
+	url = https://github.com/joaotavora/fiasco
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	depends = cl-trivial-gray-streams
+	source = cl-fiasco::git+https://github.com/joaotavora/fiasco#commit=bb47d2fef4eb24cc16badc1c9a73d73c3a7e18f5
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 81f24fccac6aae28374f3a7cf8e3bcc0ce148bb41ae3c4831bede57dd4068103fe4e4bac4905a702a560027d4fa02434eea9bafb07441fe3e626785e3df0c169
+
+pkgname = cl-fiasco
