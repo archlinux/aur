@@ -12,7 +12,6 @@ license=('GPL' 'MIT' 'zlib/png')
 groups=()
 provides=('gdevelop')
 conflicts=('gdevelop')
-depends=('gconf')
 source=("https://github.com/4ian/GDevelop/releases/download/v${pkgver//.b/-b}/GDevelop-${pkgver%%.*}-${pkgver//.b/-b}.AppImage"
         'https://github.com/4ian/GDevelop/raw/master/Core/docs/images/glogo.png'
         'gdevelop.desktop')
