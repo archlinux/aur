@@ -1,10 +1,11 @@
-# Maintainer: Tim Lagnese <tim at inept tech>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Tim Lagnese <tim at inept tech>
 
 pkgname=ada-libfswatch-git
 pkgver=r17.00fb794
 pkgrel=2
 
-pkgdesc='High level string and text processing library'
+pkgdesc='Ada binding to the libfswatch library'
 url='https://github.com/AdaCore/ada_libfswatch'
 arch=('x86_64')
 license=('GPL3')

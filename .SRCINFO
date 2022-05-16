@@ -1,5 +1,5 @@
 pkgbase = ada-libfswatch-git
-	pkgdesc = High level string and text processing library
+	pkgdesc = Ada binding to the libfswatch library
 	pkgver = r17.00fb794
 	pkgrel = 2
 	url = https://github.com/AdaCore/ada_libfswatch
