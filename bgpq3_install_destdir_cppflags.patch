@@ -1,14 +1,14 @@
-diff -ruw bgpq3-0.1.35/Makefile.in bgpq3-0.1.35.patched/Makefile.in
---- bgpq3-0.1.35/Makefile.in	2018-11-30 10:53:12.000000000 +0100
-+++ bgpq3-0.1.35.patched/Makefile.in	2020-10-04 15:23:52.608308665 +0200
+diff -ruw bgpq3-0.1.36.1.orig/Makefile.in bgpq3-0.1.36.1/Makefile.in
+--- bgpq3-0.1.36.1.orig/Makefile.in	2021-12-30 11:45:44.000000000 +0100
++++ bgpq3-0.1.36.1/Makefile.in	2022-05-16 20:36:25.492560996 +0200
 @@ -1,5 +1,5 @@
  CC=@CC@
--CFLAGS=@CFLAGS@ @DEFS@ -g -Wall -I. -O0
+-CFLAGS=@CFLAGS@ @DEFS@ -g -Wall -I.
 +CFLAGS=@CFLAGS@ @DEFS@ -Wall -I.
  LDADD=@LDFLAGS@ @LIBS@
  INSTALL=@INSTALL@
  
-@@ -20,19 +20,18 @@
+@@ -20,20 +20,18 @@
  all: bgpq3
  
  bgpq3: ${OBJECTS}
@@ -24,6 +24,7 @@ diff -ruw bgpq3-0.1.35/Makefile.in bgpq3-0.1.35.patched/Makefile.in
  	rm -rf *.o *.core core.* core
  
  install: bgpq3
+-	if test ! -d @bindir@ ; then mkdir -p @bindir@ ; fi
 -	${INSTALL} -c -s -m 755 bgpq3 @bindir@
 -	if test ! -d @prefix@/man/man8 ; then mkdir -p @prefix@/man/man8 ; fi
 -	${INSTALL} -m 644 bgpq3.8 @prefix@/man/man8
