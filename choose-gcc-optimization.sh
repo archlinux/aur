@@ -126,17 +126,22 @@ case $answer in
    94) Microarchitecture=CONFIG_GENERIC_CPU4 ;;
    98) Microarchitecture=CONFIG_MNATIVE_INTEL ;;
    99) Microarchitecture=CONFIG_MNATIVE_AMD ;;
-    *) default=CONFIG_GENERIC_CPU ;;
+    *) default=CONFIG_GENERIC_CPU ; _localversion=-x64v1 ;;
 esac
 
 warning "According to PKGBUILD variable _microarchitecture, your choice is $answer"
 msg "Building this package for microarchitecture: $Microarchitecture$default"
 sleep 5
 
+if [ -z "${default}" ]; then
+    _localversion=$(echo ${Microarchitecture,,} | sed -e 's/config_m/-/g' -e 's/config_generic_cpu/-x64v/g')
+fi
+
 sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
 sed -e 's|^CONFIG_GENERIC_CPU2=y|# CONFIG_GENERIC_CPU2 is not set|g' -i .config
 sed -e 's|^CONFIG_GENERIC_CPU3=y|# CONFIG_GENERIC_CPU3 is not set|g' -i .config
 sed -e 's|^CONFIG_GENERIC_CPU4=y|# CONFIG_GENERIC_CPU4 is not set|g' -i .config
+sed -e "s|^CONFIG_LOCALVERSION=\"-x64v2\"|CONFIG_LOCALVERSION=\"$_localversion\"|g" -i .config
 sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
 
 echo
