@@ -1,6 +1,6 @@
 pkgbase = grass
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = http://grass.osgeo.org/
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = grass
 	depends = zstd
 	optdepends = postgresql: PostgreSQL database interface
 	optdepends = sqlite: SQLite database interface
-	source = http://grass.osgeo.org/grass80/source/grass-8.0.1.tar.gz
-	sha512sums = ec0e52bfe22179c85bb7119980ab4d5b96278fc85d1fc5c0781aea1864e89a302677fa008b65f0398d564fd6ffc05cee0da1b81affb489c89c20a3bd9f6b089f
+	source = http://grass.osgeo.org/grass80/source/grass-8.0.2.tar.gz
+	sha512sums = fc6f45f2b6ac2507c70a14baa931d5c66f0b115c914081d24c95f40afa6c266a718026df895f7a182ea837c6abf70da15b09dccba39eedd6a71ba7b6301edf7c
 
 pkgname = grass
