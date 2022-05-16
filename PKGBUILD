@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=ada-libfswatch-git
-pkgver=r16.94c0a5f
-pkgrel=3
+pkgver=r17.00fb794
+pkgrel=2
 
 pkgdesc='High level string and text processing library'
 url='https://github.com/AdaCore/ada_libfswatch'
