@@ -5,8 +5,8 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2022.1
-_channel=stable
+_pkgver=2022.2
+_channel=beta
 _rel=1
 # beta
 pkgver=${_pkgver}.${_channel}${_rel}
@@ -23,12 +23,11 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_commit=973ee47bec89df537b8ecae20235071055693ec5
+_commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=(
-#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
-        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
-#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit" # unverified commit by mvd-ows
+        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
+#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         "${pkgname%-beta}.sh"
        )
 sha256sums=('SKIP'
@@ -71,14 +70,13 @@ prepare() {
 build() {
   cd "$srcdir/mullvadvpn-app"
   local RUSTC_VERSION=$(rustc --version)
-  local PRODUCT_VERSION=$(node -p "require('./gui/package.json').version" | \
-    sed -Ee 's/\.0//g')
+  local PRODUCT_VERSION=$(cd gui/; node -p "require('./package.json').version" | sed -Ee 's/\.0//g')
   source env.sh ""
 
-  echo "Building Mullvad VPN $PRODUCT_VERSION..."
+  echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
   echo "Updating version in metadata files..."
-  ./version-metadata.sh inject $PRODUCT_VERSION --desktop
+  ./version-metadata.sh inject ${PRODUCT_VERSION} --desktop
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
@@ -96,7 +94,7 @@ build() {
 
   export MULLVAD_ADD_MANIFEST="1"
 
-  echo "Building Rust code in release mode using $RUSTC_VERSION..."
+  echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -104,8 +102,8 @@ build() {
 
   mkdir -p dist-assets/shell-completions
   for sh in bash zsh fish; do
-    echo "Generating shell completion script for $sh..."
-    cargo run --bin mullvad --frozen --release -- shell-completions "$sh" \
+    echo "Generating shell completion script for ${sh}..."
+    cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
       dist-assets/shell-completions/
   done
 
@@ -119,14 +117,11 @@ build() {
     mullvad-exclude
   )
   for binary in ${binaries[*]}; do
-    cp "target/release/$binary" "dist-assets/$binary"
+    cp target/release/${binary} dist-assets/${binary}
   done
 
   echo "Updating relay list..."
   cargo run --bin relay_list --frozen --release > dist-assets/relays.json
-
-  echo "Updating API address cache..."
-  cargo run --bin address_cache --frozen --release > dist-assets/api-ip-address.txt
 
   # Build Electron GUI app
   pushd gui
@@ -184,6 +179,6 @@ package() {
 
   for icon_size in 16 32 48 64 128 256 512 1024; do
     icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
+    install -Dm644 ${icons_dir}/${pkgname%-beta}.png -t "$pkgdir/${icons_dir}"
   done
 }
