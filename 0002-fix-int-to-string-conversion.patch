@@ -1,0 +1,13 @@
+diff --git a/src/utils.h b/src/utils.h
+index fab00e9b..b6f2830f 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -67,7 +67,7 @@ namespace Utils {
+ 
+   inline std::string int_to_string(int a)
+   {
+-    return static_cast< std::ostringstream & >(( std::ostringstream() << std::dec << a ) ).str();
++    return std::to_string(a);
+   }
+ 
+   inline std::string double_to_string(double dbl)

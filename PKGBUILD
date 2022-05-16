@@ -1,8 +1,10 @@
-# Maintainer: xpt <user.xpt@gmail.com>
+# Maintainer: Benjamin Radel <aur@radel.tk>
+# Contributor: xpt <user.xpt@gmail.com>
 
 pkgname=liggghts-git
-pkgver=git
-pkgrel=5
+_execname=liggghts
+pkgver=3.8.0.r45.g86544c3f
+pkgrel=1
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
 arch=('any')
 url="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC"
@@ -11,33 +13,33 @@ depends=('paraview' 'openmpi' 'voro++' 'fftw')
 makedepends=('git')
 provides=('liggghts')
 conflicts=('liggghts')
-source=('liggghts.patch')
+source=('liggghts-git::git+https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git'
+	'0001-use-paraviewVTK.patch'
+	'0002-fix-int-to-string-conversion.patch')
 
-md5sums=('eee93965dc63cba0e7a666080236260b')
+sha256sums=('SKIP'
+	'cfbd4027050a33653b9960edc5a503947a39845cee50063a663189696e63f66f'
+	'047ae8867d90550e34558ee1dfe5fef582a22922632863c66ad4a288e33b2a3c')
 
-_gitroot="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git"
-_gitname="liggghts-public"
 _make="mpi"
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $srcdir/$pkgname
+  for p in "${source[@]}"; do
+    if [[ "$p" =~ \.patch$ ]]; then
+      echo "Applying patch ${p##*/}"
+      patch -p1 -N -i "$srcdir/${p##*/}"
+    fi
+  done
+}
+
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build/"
-
-  patch -Np0 < ../liggghts.patch # diff -Naur Makefile.mpi.old Makefile.mpi > liggghts.patch
+  cd "$srcdir/$pkgname"
   cd src
   make  clean-all
   make $MAKEFLAGS $_make || return 1
@@ -50,8 +52,8 @@ build() {
   mkdir -p "$pkgdir/usr/share/doc/$pkgname/PDF/"
   mkdir -p "$pkgdir/usr/bin/"
   
-  cd "$srcdir/$_gitname-build"
-  install -Dm 755 src/lmp_$_make "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/$pkgname"
+  install -Dm 755 src/lmp_$_make "$pkgdir/usr/bin/$_execname"
   
   cp -r --no-preserve='ownership' examples/LIGGGHTS/Tutorials_public/* "$pkgdir/usr/share/$pkgname/examples"
 #   install -Dm644 examples/LIGGGHTS/Tutorials_public/ $pkgdir/usr/share/$pkgname/examples

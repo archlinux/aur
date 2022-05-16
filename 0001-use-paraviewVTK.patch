@@ -1,12 +1,5 @@
---- src/MAKE/Makefile.mpi.old	2018-03-06 01:33:18.183912526 -0300
-+++ src/MAKE/Makefile.mpi	2018-03-06 01:33:33.306885953 -0300
-@@ -34,7 +34,7 @@
- # LAMMPS ifdef settings, OPTIONAL
- # see possible settings in doc/Section_start.html#2_2 (step 4)
- 
--LMP_INC =	-DLAMMPS_GZIP -DLAMMPS_VTK
-+LMP_INC =	-DLAMMPS_GZIP -DLAMMPS_VTK
- 
+--- a/src/MAKE/Makefile.mpi.old	2018-03-06 01:33:18.183912526 -0300
++++ b/src/MAKE/Makefile.mpi	2018-03-06 01:33:33.306885953 -0300
  # MPI library, REQUIRED
  # see discussion in doc/Section_start.html#2_2 (step 5)
 @@ -54,9 +54,9 @@
@@ -28,9 +21,9 @@
 -VTK_INC =	-I/usr/include/vtk-6.2
 -VTK_PATH =	#-L/usr/lib/x86_64-linux-gnu
 -VTK_LIB =	-lvtkCommonCore-6.2 -lvtkIOCore-6.2 -lvtkIOXML-6.2 -lvtkIOLegacy-6.2 -lvtkCommonDataModel-6.2 -lvtkIOParallel-6.2 -lvtkParallelCore-6.2 -lvtkParallelMPI-6.2 -lvtkIOImage-6.2 -lvtkCommonExecutionModel-6.2 -lvtkFiltersCore-6.2 -lvtkIOParallelXML-6.2
-+VTK_INC =	-I/usr/include/paraview-5.9
-+VTK_PATH =	-L/usr/lib
-+VTK_LIB =	-lvtkCommonCore-pv5.9 -lvtkIOCore-pv5.9 -lvtkIOXML-pv5.9 -lvtkIOLegacy-pv5.9 -lvtkCommonDataModel-pv5.9 -lvtkIOParallel-pv5.9 -lvtkParallelCore-pv5.9 -lvtkParallelMPI-pv5.9 -lvtkIOImage-pv5.9 -lvtkCommonExecutionModel-pv5.9 -lvtkFiltersCore-pv5.9 -lvtkIOParallelXML-pv5.9
++VTK_INC =	-I/opt/paraview/include/paraview
++VTK_PATH =	-L/opt/paraview/lib
++VTK_LIB =	-lvtkCommonCore -lvtkIOCore -lvtkIOXML -lvtkIOLegacy -lvtkCommonDataModel -lvtkIOParallel -lvtkParallelCore -lvtkParallelMPI -lvtkIOImage -lvtkCommonExecutionModel -lvtkFiltersCore -lvtkIOParallelXML
  
  # ---------------------------------------------------------------------
  # build rules and dependencies
