@@ -1,4 +1,4 @@
-# Maintainer: Celeste <yuan.zx at outlook dot com>
+# Maintainer: celeste <yuan.zx at outlook dot com>
 # Contributor: yjun <jerrysteve1104 at gmail dot com>
 
 pkgname=phddns-bin
