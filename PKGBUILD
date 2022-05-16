@@ -3,7 +3,7 @@
 pkgname=anbox-modules-dkms-git
 _pkgname=anbox-modules
 pkgver=r38.8148a16
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for Anbox or Waydroid (DKMS)"
 arch=(x86_64)
 url="https://github.com/choff/$_pkgname"
