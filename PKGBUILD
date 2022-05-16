@@ -10,7 +10,6 @@ arch=(x86_64)
 depends=(gtk3 json-glib gnutls)
 makedepends=(gtk3 vala meson cmake python json-glib gnutls gettext)
 conflicts=(fossil)
-provides=(fossil)
 source=("git+https://github.com/koyuspace/fossil.git")
 sha256sums=('SKIP')
 

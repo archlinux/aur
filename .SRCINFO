@@ -16,7 +16,6 @@ pkgbase = fossil-gemini-git
 	depends = gtk3
 	depends = json-glib
 	depends = gnutls
-	provides = fossil
 	conflicts = fossil
 	source = git+https://github.com/koyuspace/fossil.git
 	sha256sums = SKIP
