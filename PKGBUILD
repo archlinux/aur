@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=steam-screensaver-fix
-pkgver=2.0.20
+pkgver=2.0.22
 pkgrel=1
 pkgdesc='Fix for steam screensaving bug.'
 arch=('i686' 'x86_64')
@@ -36,7 +36,6 @@ makedepends=(
 	'libxinerama'
 	'wayland'
 	'libxkbcommon'
-	'wayland-protocols'
 	'ibus'
 	'fcitx'
 	'libxss'
@@ -60,7 +59,7 @@ source=(
 	'steam_sdl_injection.sh'
 	'steam-screensaver-fix-runtime'
 	'steam-screensaver-fix-native')
-sha256sums=('c56aba1d7b5b0e7e999e4a7698c70b63a3394ff9704b5f6e1c57e0c16f04dd06'
+sha256sums=('fe7cbf3127882e3fc7259a75a0cb585620272c51745d3852ab9dd87960697f2e'
             'SKIP'
             '114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379'
             '1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1'
@@ -92,11 +91,12 @@ _flags=(
 prepare() {
 	cd "SDL2-${pkgver}"
 	patch -p1 -i "${srcdir}/0001-SDL-allow-screensaver.patch"
-	#patch -p1 -i "${srcdir}/fix-hidapi.patch"
 	sed -i '/pkg_search_module.*ibus-1.0/d' 'CMakeLists.txt'
 }
 
 build() {
+	CFLAGS+=" -ffat-lto-objects -Wno-error"
+	
 	# Build 32 bit version.
 	if [ "$CARCH" = 'x86_64' ]; then
 	(
@@ -111,7 +111,6 @@ build() {
 	# Build native version.
 	cmake -S "SDL2-${pkgver}" -B 'libnative' "${_flags[@]}"
 	cmake --build 'libnative'
-	
 }
 
 package() {
