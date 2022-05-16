@@ -1,16 +1,22 @@
 pkgbase = openvpn-nl
 	pkgdesc = An open-source fork of OpenVPN allowed to be used in classified environments up to (equivalent) NATO RESTRICTED
 	pkgver = 2.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openvpn.fox-it.com/
-	arch = any
+	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = gnupg
 	depends = lzo
-	depends = lz4
 	provides = openvpn
-	source = https://openvpn.fox-it.com/repos/source/2.4.12/openvpn-nl-src-2.4.12.tar.gz
+	source = https://openvpn.fox-it.com/repos/deb/dists/focal/Release
+	source = https://openvpn.fox-it.com/repos/deb/dists/focal/Release.gpg
+	source = https://openvpn.fox-it.com/repos/deb/dists/focal/main/binary-amd64/Packages
+	source = openvpn-nl-2.4.12.deb::https://openvpn.fox-it.com/repos/deb/pool/main/o/openvpn-nl/openvpn-nl_2.4.12-focalnl1_amd64.deb
 	validpgpkeys = 6A1195968DDCA3494E7C598C43CF15D354E03E30
-	sha512sums = 5e13c53750894a74837f4fe546eaf205fa18c618c03cbc5b79e9ac5b4b11b14f50995d7629136d02a9cb11c094b5cf9139d94f944dd19847b75bcbe61d007532
+	sha512sums = 9134bbfbed767b9cde277d8f794260fcc466b3e30c3cecb8bf34e84339b449e5264095e539839d733b917cb903f3a903d39cd7850bee9d06b6961a81d68b71f2
+	sha512sums = ed1dc76fce009d13408e79cc6803e2520c7cd9cb572ccccf3d272cc8120c5fd7d600c066418d78b3da5a708a6ee0dd8793dd765e1f70475c5b9d79f6901fef4a
+	sha512sums = db967a6593bd5cf06bfadebaa66df2e4636c6d45c425db0abf5443e2e319be827a7c1e7ab97b6877920a60fe4d5c51922bbbeb150abd7b59a7e794d63c9d71b9
+	sha512sums = aa8499705f7b402cb0b896745710349ccb2e33efab680f900c4ec3d789059e396474634ff220f8c95efd39007530b8c33722fadb31bb5a7f7f1bebbbf12e534c
 
 pkgname = openvpn-nl
