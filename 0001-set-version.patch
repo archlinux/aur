@@ -1,0 +1,25 @@
+diff --git a/wscript b/wscript
+index e30727c..3f0ae47 100644
+--- a/wscript
++++ b/wscript
+@@ -38,19 +38,7 @@ APPNAME = 'dcpomatic'
+ libdcp_version = '1.8.13'
+ libsub_version = '1.6.13'
+ 
+-this_version = subprocess.Popen(shlex.split('git tag -l --points-at HEAD'), stdout=subprocess.PIPE).communicate()[0]
+-last_version = subprocess.Popen(shlex.split('git describe --tags --match v* --abbrev=0'), stdout=subprocess.PIPE).communicate()[0]
+-
+-# Python 2/3 compatibility; I don't really understand what's going on here
+-if not isinstance(this_version, str):
+-    this_version = this_version.decode('utf-8')
+-if not isinstance(last_version, str):
+-    last_version = last_version.decode('utf-8')
+-
+-if this_version == '' or this_version == 'merged-to-main':
+-    VERSION = '%sdevel' % last_version[1:].strip()
+-else:
+-    VERSION = this_version[1:].strip()
++VERSION = 'XXXXXX'
+ 
+ def options(opt):
+     opt.load('compiler_cxx')
