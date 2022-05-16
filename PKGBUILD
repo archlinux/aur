@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-it
-pkgver=2.53.9.1
+pkgver=2.53.12
 pkgrel=1
 _lang=it
 pkgdesc="Italian language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('eb0e51d7b169c33ab4a8d9159285c2732909ba089194fe03673d3a8c33c4c22b1c86f814495610fd463f35f07f71c8295972b731228fa2cd3b91f85bea9544d0')
+sha512sums=('e20c089de0d55ca9c2cfa48bb84e6e198bae9bef14bfac643b14338f2091eaaf9c949aa1119fe9ddfbce84007deebe0483afb9942dfe0411199857f6aabf801f')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
