@@ -20,7 +20,7 @@ build() {
   git submodule update --init
   make ${pkgname}_version.h
   sed -i 's/\r//' $srcdir/${pkgname}-${pkgver}/unbuffered_version.h
-  make
+  make CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
 }
 
 package() {
