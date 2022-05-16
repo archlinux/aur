@@ -2,8 +2,8 @@
 # Maintainer: Mahor1221 <mahor1221 at pm dot me>
 
 pkgname=tachidesk
-pkgver=0.6.3_r1087
-pkgrel=2
+pkgver=0.6.3_r1100
+pkgrel=1
 __pkgname=tachidesk-server
 __PkgName=Tachidesk-Server
 __pkgver="${pkgver%_*}"
@@ -23,7 +23,7 @@ source=("$url/releases/download/v$__pkgver/$__jar"
         "$__pkgname-browser-launcher.sh"
         "$__pkgname-debug-launcher.sh"
         "$__pkgname-electron-launcher.sh")
-sha256sums=('aece7cebf31c977197e762304d5182b2a18111140da3dffa9a12311893ac2ce4'
+sha256sums=('533afe39862d2af2826b9c8b5e31653b63ffd13c3fc20512e33814caa39eb5ca'
             '7ec4e0722d0312384672ccd01d939cce0fe356cf16d23f3473e7502cdddbccd3'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
             '1a075de252d4d1e4a025e26d379985995893e03d2ac9182ab8a48624b7076470'
