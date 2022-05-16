@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
 provides=("${pkgname%-bin}")
-conflicts=("${pkgname}" "${pkgname%-bin}" "${pkgname/bin/git}")
+conflicts=("${pkgname%-bin}")
 # TODO: add dep on libsciter-gtk, remove libsciter-gtk.so from this package
 depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
 options=('!strip')
