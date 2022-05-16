@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 # TODO: add dep on libsciter-gtk, remove libsciter-gtk.so from this package
-depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
+depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio' 'hicolor-icon-theme')
 options=('!strip')
 source=("$url/releases/download/${pkgver}/rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst")
 sha256sums=('8fe8f3179ebdc8660ffdf70c39386894dc25780183101ef464d99fc97eb881d3')
