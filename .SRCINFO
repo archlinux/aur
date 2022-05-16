@@ -1,0 +1,14 @@
+pkgbase = zls
+	pkgdesc = A language server for Zig
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/zigtools/zls
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	source = git+https://github.com/zigtools/zls.git#tag=0.9.0
+	sha256sums = SKIP
+
+pkgname = zls
