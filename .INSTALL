@@ -4,13 +4,14 @@ post_install() {
 
 	snbuf=$(wget 127.0.0.1:16062/ora_service/getsn -T 3 -q -O - 2>/dev/null)
 	SN=`echo -e $snbuf | grep -oE '"device_sn":"[^\"]+' | cut -d ":" -f 2 | sed 's/\"//g'`
+    pkgver=${1%-*}
 
 	echo -e "\033[1;31mSuccessful installation of Phddns Service.\033[0m"
 	sleep 2
 	if [ `systemctl is-active phtunnel.service` == 'active' ]; then
 		echo -e ""
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
-		echo -e " \033[32m|             Oray Phtunnel Linux 5.0.0            |\033[0m"
+		echo -e " \033[32m|             Oray Phtunnel Linux $pkgver           |\033[0m"
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
 		echo -e " \033[32m|  SN: $SN   Default password: admin  |\033[0m"
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
@@ -25,13 +26,14 @@ post_upgrade() {
 	
 	snbuf=$(wget 127.0.0.1:16062/ora_service/getsn -T 3 -q -O - 2>/dev/null)
 	SN=`echo -e $snbuf | grep -oE '"device_sn":"[^\"]+' | cut -d ":" -f 2 | sed 's/\"//g'`
+    pkgver=${1%-*}
 
 	echo -e "\033[1;31mSuccessful installation of Phddns Service.\033[0m"
 	sleep 2
 	if [ `systemctl is-active phtunnel.service` == 'active' ]; then
 		echo -e ""
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
-		echo -e " \033[32m|             Oray Phtunnel Linux 5.0.0            |\033[0m"
+		echo -e " \033[32m|             Oray Phtunnel Linux $pkgver           |\033[0m"
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
 		echo -e " \033[32m|  SN: $SN   Default password: admin  |\033[0m"
 		echo -e " \033[32m+--------------------------------------------------+\033[0m"
