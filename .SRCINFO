@@ -1,14 +1,16 @@
 pkgbase = python-rxv
 	pkgdesc = Automation Library for Yamaha RX-V473, RX-V573, RX-V673, RX-V773 receivers.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wuub/rxv
 	arch = any
 	license = BSD
 	checkdepends = python
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-defusedxml
-	source = https://github.com/wuub/rxv/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 957dce69a2304d087c5fd9cd4c400b41efc1fc7579d3644a873877d32f09df43
+	source = https://files.pythonhosted.org/packages/source/r/rxv/rxv-0.7.0.tar.gz
+	sha256sums = 6e21f6e5e808ed28147633633b1073f22f30ed84cf47868d970598cefe2b98a9
 
 pkgname = python-rxv
