@@ -32,7 +32,7 @@ prepare() {
 	echo -e "${_YEL}Verifying Packages file with previously verified Release file...${_NC}"
 	(sed -n 17p Release | awk '{print $1 " Packages"}' | sha256sum --check --status --strict && echo "OK") || (echo -e "${_RED}There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!${_NC}" && exit 1)
 	echo -e "${_YEL}Verifying *.deb package with previously verified Packages file...${_NC}"
-	(sed -n 12p Packages | awk '{print $2 " openvpn-nl-2.4.12.deb"}' | sha256sum --check --status --strict && echo "OK") || (echo -e "${_RED}There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!${_NC}" && exit 1)
+	(sed -n 12p Packages | awk -v name=${pkgname} -v ver=${pkgver} '{print $2 " " name "-" ver ".deb"}' | sha256sum --check --status --strict && echo "OK") || (echo -e "${_RED}There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!${_NC}" && exit 1)
 }
 
 package() {
