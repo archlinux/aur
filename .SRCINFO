@@ -1,0 +1,23 @@
+pkgbase = pkd
+	pkgdesc = A minimal CLI download manager for all major package managers and URLs/Torrents
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/a4to/pkd
+	arch = any
+	license = MIT
+	depends = dialog
+	optdepends = git: To clone git repositories
+	optdepends = npm: To download npm packages.
+	optdepends = snapd: To download and install snap packages.
+	optdepends = flatpak: To download and install flatpak packages.
+	optdepends = python-pip: To download python packages.
+	optdepends = aria2: To download files or torrents from URLs.
+	source = https://concise.cc/pkg/pkd-1.1-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/pkd-1.1-1-any.pkg.tar.zst.sig
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = d722d323248da143f15e2bf3df014b83
+	md5sums = 403a3d3852e236cc90a4d9d53bee2f85
+	sha512sums = 80f783e309642ce88af43b595d08d78a497378ac3443b192de446f42f439778066cba1ad0263d8cc1970a6bf975fd15779ce618d5758b49cd53cd4c3b15ec8fa
+	sha512sums = b2117947d4b7e3ab64d9fe58f6fa393d39c83e808c7cfc9b7eb8ceba1447133168e0df4bc90e7292a68f976b013f5a7d800c9a80f593d405a80e7826224d3c2c
+
+pkgname = pkd
