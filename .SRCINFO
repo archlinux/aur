@@ -1,6 +1,6 @@
 pkgbase = tricks
 	pkgdesc = The social network for programmers!
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://tricks.aseman.io/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tricks
 	conflicts = tricks-bin
 	options = !emptydirs
 	options = !strip
-	source = https://tricks.aseman.io/tricks/static/downloads/Tricks-0.1.2_linux.tar.xz
+	source = https://tricks.aseman.io/tricks/static/downloads/Tricks-0.1.3_linux.tar.xz
 	source = tricks.desktop
-	sha256sums = 0fc49e61e9d4efc0640a88a85bd109e10f65704101570a61a37ddd69ec6b9888
+	sha256sums = b9a5f92cc6671a29c84321b49f800928fc858bf81f53fe0e4d742d233159b400
 	sha256sums = 8cb921da1169ae970e26f46007e2ff4471c3804302bc0089809c09aac35577eb
 
 pkgname = tricks
