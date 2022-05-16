@@ -4,7 +4,7 @@
 pkgname=gnatcoll-sqlite
 epoch=1
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 _repo_name=gnatcoll-db
 
 pkgdesc='GNAT Components Collection - SQLite database support'
