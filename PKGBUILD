@@ -2,7 +2,7 @@
 pkgname=qwt5-qt5
 _commit=a2b11e3f7c83dcba30a9bfac86a54ccb8305691d
 pkgver=5.2.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Qwt library (version 5.2.3) updated to work with Qt5.'
 arch=('x86_64')
 license=('custom')
