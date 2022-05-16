@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 100.0
-	pkgrel = 2
+	pkgver = 100.0.1
+	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -57,15 +57,15 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/100.0/source/firefox-100.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/100.0/source/firefox-100.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/100.0.1/source/firefox-100.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/100.0.1/source/firefox-100.0.1.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=100.0-2
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=100.0.1-1
 	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.4
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f
+	sha256sums = 13bc55e1c32a6ad32b4a3b37296a0459f41b0981489fc22da491256773c51c9d
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
