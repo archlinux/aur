@@ -3,7 +3,7 @@
 pkgname=perl-app-cpm
 _lastauthor=S/SK/SKAJI
 _pkgname=App-cpm
-pkgver=0.997007
+pkgver=0.997011
 pkgrel=1
 pkgdesc='a fast CPAN module installer'
 arch=('any')
@@ -23,10 +23,11 @@ depends=(
 	perl-menlo-legacy
 	perl-module-cpanfile
 	perl-parallel-pipes
+	perl-parse-pmfile
 )
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('00a6c006a4fee3b9b9f359cd7cd7b91e11b9f91c7e226d63b19798784d6b5673')
+sha256sums=('632102c6e67de7c9cff51d6faa0d9d03bfefbed35b5cc5d96919f7b9202501c9')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \

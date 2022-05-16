@@ -1,6 +1,6 @@
 pkgbase = perl-app-cpm
 	pkgdesc = a fast CPAN module installer
-	pkgver = 0.997007
+	pkgver = 0.997011
 	pkgrel = 1
 	url = https://metacpan.org/release/App-cpm
 	arch = any
@@ -20,7 +20,8 @@ pkgbase = perl-app-cpm
 	depends = perl-menlo-legacy
 	depends = perl-module-cpanfile
 	depends = perl-parallel-pipes
-	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/App-cpm-0.997007.tar.gz
-	sha256sums = 00a6c006a4fee3b9b9f359cd7cd7b91e11b9f91c7e226d63b19798784d6b5673
+	depends = perl-parse-pmfile
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/App-cpm-0.997011.tar.gz
+	sha256sums = 632102c6e67de7c9cff51d6faa0d9d03bfefbed35b5cc5d96919f7b9202501c9
 
 pkgname = perl-app-cpm
