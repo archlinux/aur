@@ -1,6 +1,6 @@
 pkgbase = python-pyqt-feedback-flow
 	pkgdesc = Show feedbacks in toast-like notifications
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/pyqt-feedback-flow
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pyqt-feedback-flow
 	makedepends = python-poetry-core
 	depends = python-pyqt5
 	depends = python-emoji
-	source = https://github.com/firefly-cpp/pyqt-feedback-flow/archive/0.1.5.tar.gz
-	sha512sums = 409858a57f9779e9bb71d7be79f04c23a41dd47d2e4abd672917ed9b8513b3455a73b3abc260ef6d8725d769ed334a56a6ddd67e2967fd34ccc82cd0879a2627
+	source = https://github.com/firefly-cpp/pyqt-feedback-flow/archive/0.1.6.tar.gz
+	sha512sums = abe48bf6e6367dfc78c8bf5995b6744caaac59fac0d7820a0c067e71080cfc4664824b2a31659e67169b919d242fafde7700f034768c50090c93df67a17a4ac0
 
 pkgname = python-pyqt-feedback-flow
