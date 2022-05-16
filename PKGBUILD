@@ -3,7 +3,7 @@
 
 pkgname=python-imbalanced-learn
 _pkg="${pkgname#python-}"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Toolbox for imbalanced dataset in machine learning'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python>=3.7' 'python-scipy' 'python-numpy' 'python-scikit-learn')
 optdepends=('python-keras' 'python-tensorflow')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('836a4c137cc3c10310d4f6cd5ec34600ff488d7f8c243a997c3f9b551c91d0b2')
+sha256sums=('4e14f7ae6078b5ab843b73c379b2ac50b207446415d9c2438c885d6cb5afd962')
 
 prepare() {
 	cd "$_pkg-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-imbalanced-learn
 	pkgdesc = Toolbox for imbalanced dataset in machine learning
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/scikit-learn-contrib/imbalanced-learn
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-imbalanced-learn
 	depends = python-scikit-learn
 	optdepends = python-keras
 	optdepends = python-tensorflow
-	source = python-imbalanced-learn-0.9.0.tar.gz::https://files.pythonhosted.org/packages/source/i/imbalanced-learn/imbalanced-learn-0.9.0.tar.gz
-	sha256sums = 836a4c137cc3c10310d4f6cd5ec34600ff488d7f8c243a997c3f9b551c91d0b2
+	source = python-imbalanced-learn-0.9.1.tar.gz::https://files.pythonhosted.org/packages/source/i/imbalanced-learn/imbalanced-learn-0.9.1.tar.gz
+	sha256sums = 4e14f7ae6078b5ab843b73c379b2ac50b207446415d9c2438c885d6cb5afd962
 
 pkgname = python-imbalanced-learn
