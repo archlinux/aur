@@ -3,7 +3,7 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
-pkgver=0.9.17.dev99
+pkgver=0.9.17.dev286
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
@@ -88,7 +88,7 @@ package_ivre-web-git() {
      "$pkgdir/usr/share/ivre/docker" \
      "$pkgdir/usr/share/ivre/geoip" \
      "$pkgdir/usr/share/ivre/honeyd" \
-     "$pkgdir/usr/share/ivre/nmap_scripts" \
+     "$pkgdir/usr/share/ivre/patches" \
      "$pkgdir/etc/bash_completion.d"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
