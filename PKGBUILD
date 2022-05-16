@@ -5,8 +5,8 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='1.0.0'
-pkgrel=1
-_rc='-rc2'
+pkgrel=3
+_rc='-rc3'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -20,21 +20,21 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 sha256sums=('8a5812d246e8d129075b25622219a46fc74a33e1a123724156b084055489bb12')
-sha256sums_i686=('96775008409c0cb34384fada6ab332177fbb43ac670d98c66d905543e89b8023')
-sha256sums_x86_64=('03ac5a5e71f2c855cd808329b585d845e073e6ec754028bd72a18db8c42070ac')
-sha256sums_aarch64=('b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41')
-sha256sums_armv8=('b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41')
-sha256sums_armv7=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
-sha256sums_armv7l=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
-sha256sums_armv7h=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
-sha256sums_arm=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
+sha256sums_i686=('dbca19fab28207eca6af5fe2df49221a80081c61e001b616b5da09d54c2fbe81')
+sha256sums_x86_64=('d4f1a33c1f3d46d1386265dcead43cadb0b78f060007c4b3bc62028c4e98a11a')
+sha256sums_aarch64=('29daf7c3f27c74bb796b57531f8db0284c821bac95cf27d80134f5eca64c33eb')
+sha256sums_armv8=('29daf7c3f27c74bb796b57531f8db0284c821bac95cf27d80134f5eca64c33eb')
+sha256sums_armv7=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
+sha256sums_armv7l=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
+sha256sums_armv7h=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
+sha256sums_arm=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
 #https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
 source_armv8=( ${source_aarch64[@]} )
-source_arm=("${_release_url}-arm.tar.gz")
+source_arm=("${_release_url}-armhf.tar.gz")
 source_armv7=( ${source_arm[@]} )
 source_armv7l=( ${source_arm[@]} )
 source_armv7h=( ${source_arm[@]} )
@@ -58,21 +58,24 @@ mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
 
-_msg2 'Installing binaries'
-_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
-for i in ${_binaries[@]}; do
-_msg3 "${i}"
- install -Dm755 ${srcdir}/${i} ${_pkgdir}/${_skybin}/${i}
- ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
-done
-_msg2 'Installing app binaries'
-_apps=${srcdir}/apps
-_appbinaries=$( ls "${_apps}" )
-for i in ${_appbinaries}; do
-  _msg3 "${i}"
-  install -Dm755 ${_apps}/${i} ${_pkgdir}/${_skyapps}/${i}
-  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
-done
+_msg2 'installing binaries'
+install -Dm755 ${srcdir}/skywire-v*/skywire-visor ${_pkgdir}/${_skybin}/
+ln -rTsf ${_pkgdir}/${_skybin}/skywire-visor ${_pkgdir}/usr/bin/skywire-visor
+install -Dm755 ${srcdir}/skywire-v*/skywire-cli ${_pkgdir}/${_skybin}/
+ln -rTsf ${_pkgdir}/${_skybin}/skywire-cli ${_pkgdir}/usr/bin/skywire-cli
+
+_msg2 'installing app binaries'
+_apps=${srcdir}/skywire-v*/apps
+install -Dm755 ${_apps}/skychat ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skychat ${_pkgdir}/usr/bin/skychat
+install -Dm755 ${_apps}/skysocks ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skysocks ${_pkgdir}/usr/bin/skysocks
+install -Dm755 ${_apps}/skysocks-client ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skysocks-client ${_pkgdir}/usr/bin/skysocks-client
+install -Dm4755 ${_apps}/vpn-client ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/vpn-client ${_pkgdir}/usr/bin/vpn-client
+install -Dm4755 ${_apps}/vpn-server ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/vpn-server ${_pkgdir}/usr/bin/vpn-server
 
 _msg2 'Installing scripts'
 _scripts1=${srcdir}/${_scripts}/${_pkgname}
@@ -89,7 +92,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${srcdir}/skywire-v*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 #install systemd services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service

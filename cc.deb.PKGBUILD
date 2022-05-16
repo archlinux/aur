@@ -5,10 +5,10 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='1.0.0'
-_rc='-rc2'
+_rc='-rc3'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=1
+pkgrel=3
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -26,17 +26,17 @@ source=(
 "${_scripts}.tar.gz"
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
-"${_release_url}-arm.tar.gz"
+"${_release_url}-armhf.tar.gz"
 )
 noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
-"${_binarchive}arm.tar.gz"
+"${_binarchive}armhf.tar.gz"
 )
 sha256sums=('8a5812d246e8d129075b25622219a46fc74a33e1a123724156b084055489bb12'
-            '03ac5a5e71f2c855cd808329b585d845e073e6ec754028bd72a18db8c42070ac'
-            'b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41'
-            '03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
+            'd4f1a33c1f3d46d1386265dcead43cadb0b78f060007c4b3bc62028c4e98a11a'
+            '29daf7c3f27c74bb796b57531f8db0284c821bac95cf27d80134f5eca64c33eb'
+            '395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -64,7 +64,7 @@ _msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
 local _pkgarch1=${_pkgarch}
 if [[ ${_pkgarch} == "armhf" ]] ; then
-  local _pkgarch1=arm
+  local _pkgarch1=armhf
 fi
 
 local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
@@ -93,20 +93,23 @@ mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 cd $_pkgdir
 _msg2 'installing binaries'
-_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
-for i in ${_binaries[@]}; do
-_msg3 "${i}"
- install -Dm755 ${pkgdir}/test/${i} ${_pkgdir}/${_skybin}/${i}
- ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
-done
+install -Dm755 ${pkgdir}/test/*/skywire-visor ${_pkgdir}/${_skybin}/
+ln -rTsf ${_pkgdir}/${_skybin}/skywire-visor ${_pkgdir}/usr/bin/skywire-visor
+install -Dm755 ${pkgdir}/test/*/skywire-cli ${_pkgdir}/${_skybin}/
+ln -rTsf ${_pkgdir}/${_skybin}/skywire-cli ${_pkgdir}/usr/bin/skywire-cli
+
 _msg2 'installing app binaries'
-_apps=${pkgdir}/test/apps
-_appbinaries=$( ls "${_apps}" )
-for i in ${_appbinaries}; do
-  _msg3 "${i}"
-  install -Dm755 ${_apps}/${i} ${_pkgdir}/${_skyapps}/${i}
-  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
-done
+_apps=${pkgdir}/test/*/apps
+install -Dm755 ${_apps}/skychat ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skychat ${_pkgdir}/usr/bin/skychat
+install -Dm755 ${_apps}/skysocks ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skysocks ${_pkgdir}/usr/bin/skysocks
+install -Dm755 ${_apps}/skysocks-client ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/skysocks-client ${_pkgdir}/usr/bin/skysocks-client
+install -Dm4755 ${_apps}/vpn-client ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/vpn-client ${_pkgdir}/usr/bin/vpn-client
+install -Dm4755 ${_apps}/vpn-server ${_pkgdir}/${_skyapps}/
+ln -rTsf ${_pkgdir}/${_skyapps}/vpn-server ${_pkgdir}/usr/bin/vpn-server
 
 _msg2 'installing scripts'
 _scripts1=${srcdir}/${_scripts}/${_pkgname}
@@ -122,7 +125,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${pkgdir}/test/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${pkgdir}/test/*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
