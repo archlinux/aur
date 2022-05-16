@@ -11,7 +11,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.5.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -30,12 +30,14 @@ makedepends=(python-twisted python-jinja python-msgpack python-zope-interface py
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
+        "buildbot-autobahn-22.4.patch::https://github.com/buildbot/buildbot/commit/7d0cd447cd302d8f97e7ee13aa15721b7a3b6d8c.patch"
         "python310.diff"
         "graphql-core.diff")
 sha256sums=('53b58e056d7da5c83b669ce1bf213147beedba6fa6a60dadba3e80d385239ced'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
+            'e4902bca5d0098ed048d5a46edcc496c6260c5bd02394961bd6f8c47fbedda21'
             '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
             '9ed4f9f18f71558afc876c92206e4de213fa6a94305ad9d4d9115a041dd41b22')
 validpgpkeys=(
@@ -63,7 +65,7 @@ prepare() {
 
   # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
   # in upstream CI and introduces extra deprecation warnings
-  sed -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
+  sed -r -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
 
   # Fixes for Python 3.10 breakages:
   # https://github.com/python/cpython/pull/20236
@@ -71,6 +73,10 @@ prepare() {
 
   # Fix test failures with newer python-graphql-core
   patch -Np1 -i ../graphql-core.diff
+
+  # Backported from master branch "wamp: Remove unused config attribute to fix compat with new autobahn"
+  # https://github.com/buildbot/buildbot/pull/6509
+  patch -Np1 -i ../buildbot-autobahn-22.4.patch
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
