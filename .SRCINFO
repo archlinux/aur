@@ -1,6 +1,6 @@
 pkgbase = abyss
 	pkgdesc = Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-	pkgver = 2.3.4
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/bcgsc/abyss
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = abyss
 	optdepends = pigz: for parallel gzip
 	optdepends = samtools: to read BAM files
 	optdepends = zsh: to report time and memory usage
-	source = abyss-2.3.4.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.4.tar.gz
-	sha512sums = 9d4e418399dd62883b53e831f51a0bd2ba228da73eda6c6459cd729c002eb0487f9613fca1c9bd0f4fbb076eed8a9b952505ee97143ab7dde537c23e4a246cd4
+	source = abyss-2.3.5.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.5.tar.gz
+	sha512sums = 1853e2d4d577abf7d0e8ce70e944846e5ad67afcd1f0a1a4b9944047c7e8ebc1dbdd8639b9d99d4b8ce5c84c8fa42638bb16bf02825e9c660bcac133662ec553
 
 pkgname = abyss
