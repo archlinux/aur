@@ -6,14 +6,14 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=51c7559e812f840db106da39bcfb6039a325e66a
+_wine_commit=2c3c135b834de97dfc2450068b94bcb9502cf519
 _stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 
 pkgname=wine-ge-lol
 _reponame=wine-ge-custom
-_srctag=7.0-GE-1-LoL
+_srctag=7.0-GE-2-LoL
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=1
 
 source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
         wine::git+https://github.com/GloriousEggroll/wine.git#commit=${_wine_commit}
@@ -21,6 +21,7 @@ source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#ta
         wine-wmclass.patch
         wine-isolate_home.patch
         wine-redefinition.patch
+        futex.patch
         30-win32-aliases.conf)
 sha512sums=('SKIP'
             'SKIP'
@@ -28,6 +29,7 @@ sha512sums=('SKIP'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
             '9277cfe9b2ebc5903f39b94f81077b07862091ae79cf19ddff299a060a4683e4d64f7086fb2bb94941d7d4a1123753b636249d026df91579d3c8e79d9684f241'
+            '02c650aa559a33b7f2bc35deb2946b28473428e1c166895f0e60d3ab766475db172f974e24860850d1575a843056b673fb1dfe1390204d528b1323cc65d0efce'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running League of Legends - GloriousEggroll branch"
@@ -129,6 +131,7 @@ prepare() {
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
       patch -p1 -i "$srcdir"/wine-redefinition.patch
+      patch -p1 -i "$srcdir"/futex.patch
       dlls/winevulkan/make_vulkan
       tools/make_requests
       autoreconf -f
