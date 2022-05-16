@@ -109,7 +109,7 @@ done
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
             'c2d1d3f7ed027d8fee2a55dc78bc3deff0f1e228f7098a077bad833e741605b3'
-            'bbc66f6fd1c9028bd2c57ca9a4c6000f2cf47d1c09d207fe5087ef3afdd96eeb')
+            'dda2e928f3b02c28e71d4e99f90b499b4c99a265d30fceec7dc1dd7082afc285')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
