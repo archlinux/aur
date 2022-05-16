@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
-pkgver=470.103.01
+pkgver=470.129.06
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -19,7 +19,7 @@ source=('nvidia-drm-outputclass.conf'
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
-            '3dc19774a6fef5e6ec0cb9451df4268f77cb31b0a9ede253bf9cf805a048ad457a7bfec852aaeab3e3e297b3353840a3d6c9c7ddc75d57b2b000ab4e0b15530b')
+            '6f61f01b3840e30b3cd195ecb81826c37200e27b79d555808c873d5381fd55868bddf16a53f15cb51646af067705a6ce289c4cef514908b1b4b2d2e765907252')
 
 
 create_links() {
