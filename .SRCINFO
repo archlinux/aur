@@ -1,6 +1,6 @@
 pkgbase = saladbind-git
 	pkgdesc = A tool for Salad to customize your miner [git version]
-	pkgver = 1.7.7.r4.g5c1e7ea
+	pkgver = 1.7.7.r5.gd9018b8
 	pkgrel = 1
 	url = https://github.com/vtheskeleton/SaladBind
 	arch = x86_64
