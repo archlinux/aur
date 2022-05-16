@@ -4,7 +4,7 @@ pkgname=('mangohud-wayland' 'lib32-mangohud-wayland' 'mangohud-common-wayland')
 pkgbase=mangohud-wayland
 _pkgver=0.6.7-1
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
@@ -68,7 +68,7 @@ local meson_options=(
 }
 
 package_mangohud-wayland() {
-  depends=('mangohud-common' 'dbus' 'gcc-libs' 'spdlog' 'vulkan-icd-loader' 'wayland')
+  depends=('mangohud-common-wayland' 'dbus' 'gcc-libs' 'spdlog' 'vulkan-icd-loader' 'wayland')
   provides=("${pkgname%-wayland}")
   conflicts=("${pkgname%-wayland}")
 
@@ -81,7 +81,7 @@ package_mangohud-wayland() {
 }
 
 package_lib32-mangohud-wayland() {
-  depends=('mangohud-common' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-wayland'
+  depends=('mangohud-common-wayland' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-wayland'
            'lib32-vulkan-icd-loader')
   provides=("${pkgname%-wayland}")
   conflicts=("${pkgname%-wayland}")
