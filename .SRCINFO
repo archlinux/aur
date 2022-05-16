@@ -10,7 +10,7 @@ pkgbase = scidavis-qt5
 	makedepends = qt5-tools
 	makedepends = sip
 	makedepends = pyqt-builder
-	makedepends = qwt5-qt5>=5.2.3.4-2
+	makedepends = qwt5-qt5>=5.2.3.4-3
 	depends = gsl
 	depends = glu
 	depends = mesa

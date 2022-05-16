@@ -20,7 +20,7 @@ url="http://scidavis.sourceforge.net/"
 license=('GPL')
 makedepends=('boost' 'cmake' 'qt5-tools'
 'sip' 'pyqt-builder'
-'qwt5-qt5>=5.2.3.4-2'
+'qwt5-qt5>=5.2.3.4-3'
 )
 depends=('gsl' 'glu' 'mesa' 'muparser>=2.3.2' 'shared-mime-info'
 'desktop-file-utils' 'hicolor-icon-theme'
