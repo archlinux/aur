@@ -2,7 +2,7 @@
 _base=basix
 pkgname=python-fenics-${_base}
 pkgdesc="Basix Python interface"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 arch=(any)
 url="https://github.com/FEniCS/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-scikit-build pybind11)
 # checkdepends=(python-pytest python-numba python-sympy python-scipy)
 # optdepends=('python-numba: for numba_helpers support')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e7840e950ad1fcdd3c64afc409710125e960922bde971a7d8d3a9b7da319cd4999e679a6e11dd071a65cb0b83769b13ab997f83bf7230e4dcbe703128dfe8724')
+sha512sums=('0a1fc7b06a30a0fb4599ab53e930e259ac23163553f5e7b5a25bd7c451548850ae995ad7f43003cec43b2b177823de18d457e26e1430587da3ee58f91960d641')
 
 build() {
   cd ${_base}-${pkgver}
