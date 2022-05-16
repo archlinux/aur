@@ -25,7 +25,7 @@ prepare() {
 	sed -i "s/^PACKAGE_VERSION=\".*\"$/PACKAGE_VERSION=\"$pkgver\"/g" ./**/dkms.conf
 	# this should work with all Arch Linux kernels (including linux-lts)
 	# https://github.com/choff/anbox-modules/pull/1#issuecomment-974865917
-	sed -i 's/^#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,2))$/#if 1/g' binder/binder.c
+	#sed -i 's/^#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,2))$/#if 1/g' binder/binder.c
 }
 
 package() {
