@@ -1,0 +1,18 @@
+pkgbase = cl-json
+	pkgdesc = JSON encoder/decoder for Common Lisp
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://cl-json.common-lisp.dev/cl-json.html
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-fiveam
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-json::git+https://github.com/sharplispers/cl-json#commit=994dd38c94344383f39f95d75987f6dc47a0cca1
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = d727167c38c4ab5f9e648ba5e2061c44928860689efaad3659837acfa627c1f40d82a0aa90ee308048207bed1ef0c115907802855db84a5ad6c7453192816c8c
+
+pkgname = cl-json
