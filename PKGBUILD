@@ -1,6 +1,6 @@
 # Maintainer: Excitable Snowball <excitablesnowball@gmail.com>
 pkgname=inkscape-appimage
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="Professional vector graphics editor (official AppImage release)"
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=()
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!strip')
-source=("inkscape-$pkgver.AppImage::https://inkscape.org/gallery/item/31669/Inkscape-0a00cf5-x86_64.AppImage"
+source=("inkscape-$pkgver.AppImage::https://inkscape.org/gallery/item/33450/Inkscape-dc2aeda-x86_64.AppImage"
         "inkscape.sh")
-sha256sums=('b7a99b6c0ee2817706e77803643f4a6caf9e35bdec928e963c1d2ae86e5e4beb'
+sha256sums=('020ba9ef605d35f539adde9c6872c4231caa8472438180285258bc9aa11a4e55'
             '52214003ba59053e0faa2030d48b03c16bf540babd40ff7360928cd0145aa5de')
 
 prepare() {
