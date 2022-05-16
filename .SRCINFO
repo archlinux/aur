@@ -1,12 +1,12 @@
 pkgbase = lv_font_conv
 	pkgdesc = Rasterize vector fonts for embedded use. Supports subsettings & merge.
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lvgl/lv_font_conv#readme
 	arch = any
 	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
 	noextract = lv_font_conv-1.5.2.tgz
 	source = https://registry.npmjs.org/lv_font_conv/-/lv_font_conv-1.5.2.tgz
 	sha512sums = d146a94524e454ffe99c1f19e2bd870c7c79a76749c7fc541b5fb5e2efd65e8e7d9b0b82ec16a147e067c7feba8caa03ac6d70150c27f59ce8c8cc511ce0fd6e
