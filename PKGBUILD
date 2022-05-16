@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://revolutionarygamesstudio.com"
 license=('GPL')
 source=("https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver%.0}/Thrive_${pkgver}_linux_x11.7z")
-sha256sums=('14ea943eb116bf7c17604d30f2c6ebff662599114267c566119177e8314364fe')
+sha256sums=('5c75ca15827af5337f11c9ac54078921ff7f09014a4e0367a7415e1b7f82e44e')
 
 prepare() {
   mv "Thrive_${pkgver}_linux_x11"/Thrive.{desktop,png} .
