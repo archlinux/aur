@@ -1,0 +1,15 @@
+pkgbase = cl-trivial-with-current-source-form
+	pkgdesc = A library to help macro writers produce better errors for macro users
+	pkgver = 0.1.0.r8.g3898e09
+	pkgrel = 1
+	url = https://github.com/scymtym/trivial-with-current-source-form
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	source = cl-trivial-with-current-source-form::git+https://github.com/scymtym/trivial-with-current-source-form#commit=3898e09f8047ef89113df265574ae8de8afa31ac
+	b2sums = SKIP
+
+pkgname = cl-trivial-with-current-source-form
