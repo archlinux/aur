@@ -1,7 +1,7 @@
 pkgbase = privacy-protection-messenger-qt
 	pkgdesc = Privacy Protection Messenger Qt GUI
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/imperzer0/privacy-protection-messenger-qt
 	arch = x86_64
 	license = GPL3

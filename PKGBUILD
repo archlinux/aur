@@ -1,7 +1,7 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="privacy-protection-messenger-qt"
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Privacy Protection Messenger Qt GUI"
 author="imperzer0"
 branch="master"
