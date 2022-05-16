@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Olyenyov <dmitry.olyenyov@gmail.com>
 pkgname=python-broadlink
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=0
 arch=('any')
 license=("MIT")
@@ -8,7 +8,7 @@ license=("MIT")
 pkgdesc="broadlink_cli script for interacting with broadlink remote control devices"
 
 source=("https://github.com/mjg59/python-broadlink/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1512679d6a340148fc21f7f0e5823c10411b050080b11be0b9aa6b7ec55d5798')
+sha256sums=('75cfeda0fd78ce0bd656655bbed58fcf4459e48cfda43980cdcc5044fb561c6c')
 
 
 makedepends=('python-setuptools')
