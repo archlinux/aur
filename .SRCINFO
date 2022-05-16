@@ -1,0 +1,19 @@
+pkgbase = sip-65
+	pkgdesc = A tool that makes it easy to create Python bindings for C and C++ libraries
+	pkgver = 6.5.1
+	pkgrel = 1
+	url = https://www.riverbankcomputing.com/software/sip/intro
+	arch = x86_64
+	license = custom:"sip"
+	depends = python-toml
+	depends = python-packaging
+	depends = python-setuptools
+	provides = sip
+	conflicts = sip
+	conflicts = sip5
+	replaces = sip5
+	options = debug
+	source = https://pypi.python.org/packages/source/s/sip/sip-6.5.1.tar.gz
+	sha256sums = 204f0240db8999a749d638a987b351861843e69239b811ec3d1881412c3706a6
+
+pkgname = sip-65
