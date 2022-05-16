@@ -1,0 +1,16 @@
+pkgbase = openvpn-nl
+	pkgdesc = An open-source fork of OpenVPN allowed to be used in classified environments up to (equivalent) NATO RESTRICTED
+	pkgver = 2.4.12
+	pkgrel = 1
+	url = https://openvpn.fox-it.com/
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	depends = lzo
+	depends = lz4
+	provides = openvpn
+	source = https://openvpn.fox-it.com/repos/source/2.4.12/openvpn-nl-src-2.4.12.tar.gz
+	validpgpkeys = 6A1195968DDCA3494E7C598C43CF15D354E03E30
+	sha512sums = 5e13c53750894a74837f4fe546eaf205fa18c618c03cbc5b79e9ac5b4b11b14f50995d7629136d02a9cb11c094b5cf9139d94f944dd19847b75bcbe61d007532
+
+pkgname = openvpn-nl
