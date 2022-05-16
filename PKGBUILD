@@ -3,7 +3,7 @@
 pkgname=perl-parallel-pipes
 _lastauthor=S/SK/SKAJI
 _pkgname=Parallel-Pipes
-pkgver=0.005
+pkgver=0.102
 pkgrel=1
 pkgdesc='parallel processing using pipe(2) for communication and synchronization'
 arch=('any')
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=(perl)
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('44bd9e2be33d7b314f81c9b886a95d53514689090635f9fad53181f2d3051fd5')
+sha256sums=('26365f8105dc606b140bd1d45f8d70d5c3054390f75e4fdb7484a3e591cbfa97')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
