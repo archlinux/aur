@@ -1,6 +1,6 @@
 pkgbase = perl-command-runner
 	pkgdesc = run external commands and Perl code refs
-	pkgver = 0.103
+	pkgver = 0.200
 	pkgrel = 1
 	url = https://metacpan.org/release/Command-Runner/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = perl-command-runner
 	license = GPL
 	depends = perl-capture-tiny
 	depends = perl-string-shellquote
+	depends = perl-file-pushd
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Command-Runner-0.103.tar.gz
-	sha256sums = 0f180b5c3b3fc9db7b83d4a5fdd959db34f7d6d2472f817dbf8b4b795a9dc82a
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Command-Runner-0.200.tar.gz
+	sha256sums = 5ad26d06111bfecd53c8f5bb5dea94bf2025f6c78e95f6d8012e4cfa89e29f26
 
 pkgname = perl-command-runner
-
