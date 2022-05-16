@@ -1,6 +1,6 @@
 pkgbase = openblas-lapack-static
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
-	pkgver = 0.3.18
+	pkgver = 0.3.20
 	pkgrel = 1
 	url = http://www.openblas.net/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = openblas-lapack-static
 	conflicts = lapacke
 	options = !emptydirs
 	options = staticlibs
-	source = OpenBLAS-0.3.18.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.3.18.tar.gz
-	sha256sums = 1632c1e8cca62d8bed064b37747e331a1796fc46f688626337362bf0d16aeadb
+	source = OpenBLAS-0.3.20.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v0.3.20.tar.gz
+	sha256sums = 8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c
 
 pkgname = openblas-lapack-static

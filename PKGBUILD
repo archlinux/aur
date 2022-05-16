@@ -1,5 +1,6 @@
-# Maintainer : chn <g897331845@gmail.com>
-# Contributor : George Eleftheriou <eleftg>
+# Maintainer: frazar0 [at] hotmail (dot) it
+# Contributor: chn <g897331845@gmail.com>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
@@ -7,7 +8,7 @@
 pkgname=openblas-lapack-static
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.3.18
+pkgver=0.3.20
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.9.0
 _blasver=3.8.0
@@ -22,7 +23,7 @@ provides=('openblas' "blas=${_blasver}" "lapack=${_lapackver}" "cblas=${_blasver
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs staticlibs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
-sha256sums=('1632c1e8cca62d8bed064b37747e331a1796fc46f688626337362bf0d16aeadb')
+sha256sums=('8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c')
 
 # Add the following line to the _config variable if you want to set the number of make jobs
 #  MAKE_NB_JOBS=2 \
@@ -74,4 +75,3 @@ package(){
   ln -sf libopenblas.so liblapacke.so.${_lapackver:0:1}
   ln -sf libopenblas.so liblapacke.so.${_lapackver}
 }
-# vim:set ts=2 sw=2 et:
