@@ -5,7 +5,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=lib32-unixodbc
-pkgver=2.3.9
+pkgver=2.3.11
 pkgrel=1
 pkgdesc='ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL2' 'LGPL2.1')
 depends=('lib32-libltdl' 'unixodbc')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-${pkgver}.tar.gz")
-sha256sums=('52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207')
+sha256sums=('d9e55c8e7118347e3c66c87338856dad1516b490fb7c756c1562a2c267c73b5c')
 
 build() {
   cd ${srcdir}/unixODBC-${pkgver}
