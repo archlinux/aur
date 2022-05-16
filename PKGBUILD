@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
-pkgver=390.147
-pkgrel=2
+pkgver=390.151
+pkgrel=1
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -17,13 +17,11 @@ source=('nvidia-drm-outputclass.conf'
         'nvidia-390xx-utils.sysusers'
         'nvidia-390xx.rules'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        kernel-5.17.patch
         kernel-4.16.patch)
 b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1aa5c66b8d033fc9d5e0cfffed456a87298bd93a3afbbc30b8dc48c4e9'
         'c1da4ce5784e43385465913a95053a3e54f800aac6f1b49f33e2a77504d76da5e6db6ec7074fbe7ba5f52dcef9e1ebaa620942c33ff825a56caba5c9c8b0d1be'
         '67e32932eeddda8fef667d25c34faf7b3a02f01cf9c15a97e5613bd44a0e8dcf7396e25399a52701f55dd18054c689720f237bb07d5bd580394d8dc8c9d05534'
-        'a8085c9abc1c31251788a8f5abdc2090c9085b3028e364184244bbf24d822dc3266877c88b30f403507fa2dd511c68ec67e1f188d6b0f1f4d7d792881d5253fc'
-        '308c4e770500dc63031a5736bf9578982c022b91c4ef081545821322c1712a8fc3ceab70d507b329378eee053671e8a89c59d9787821f25e92aadf4161f761a6'
+        '8f78ee00d15ffac9f371e8302541eee8b033670953850dd770c6615eb674fcda2adcea52582284c59a9d7e32943a445d65515b1cacd6f8e5fcbe6c9e94080fb0'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -46,10 +44,6 @@ prepare() {
     # Restore phys_to_dma support (still needed for 390.138)
     # From loqs via https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-
-    # 5.17, PDE_DATA() renamed to pde_data()
-    # Joan Bruguera via Ike Devolder
-    patch -Np1 -i ../kernel-5.17.patch
 
     cd kernel
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
