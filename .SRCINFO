@@ -2,7 +2,7 @@ pkgbase = waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime
 	pkgver = 1.7.0
 	pkgrel = 1
-	url = http://www.waffle-gl.org
+	url = https://waffle.freedesktop.org
 	arch = x86_64
 	license = BSD
 	makedepends = meson
@@ -28,4 +28,3 @@ pkgbase = waffle
 	sha256sums = 7a7e064395551ce20a694be7ecb4795effc3fd6f614943e50445469631677f6e
 
 pkgname = waffle
-
