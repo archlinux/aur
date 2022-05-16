@@ -1,0 +1,16 @@
+pkgbase = rit-meeranew-font
+	pkgdesc = Sans serif font for Malayalam
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://gitlab.com/rit-fonts/MeeraNew
+	arch = any
+	license = custom:SIL
+	makedepends = fontforge
+	makedepends = git
+	makedepends = python
+	makedepends = python-fonttools
+	makedepends = python-cffsubr
+	source = https://gitlab.com/rit-fonts/MeeraNew/-/archive/1.4/MeeraNew-1.4.tar.bz2
+	sha256sums = 900be8a6a28351888d5c7dcaa4daf9b05cfc91148122a87d92fa2829d645fc46
+
+pkgname = rit-meeranew-font
