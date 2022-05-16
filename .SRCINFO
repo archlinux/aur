@@ -1,0 +1,18 @@
+pkgbase = cl-hu-dwim-stefil
+	pkgdesc = A simple test framework in Common Lisp
+	pkgver = r257.g7a17248
+	pkgrel = 1
+	url = https://github.com/hu-dwim/hu.dwim.stefil
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	source = cl-hu-dwim-stefil::git+https://github.com/hu-dwim/hu.dwim.stefil#commit=7a172486ea51c5d38836e5b209d7135014506d19
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = f2db21db5957adcdf6ecf9c015795bcd03d982d961a2ea4ff7c4e53c8086d29c4fcaaa822358c4a1e9bebf5e3698d020afb1177715ed1f521ba772861ffc9b3e
+
+pkgname = cl-hu-dwim-stefil
