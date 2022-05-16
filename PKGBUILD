@@ -5,20 +5,17 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
-pkgver=11.1.0
-_islver=0.22
+pkgver=12.1.0
 pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
 license=('GPL' 'LGPL' 'FDL')
 groups=('risc-v')
-depends=("$_target-binutils" "$_target-glibc" 'libmpc')
-options=('!emptydirs' '!strip')
-source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
-        "http://isl.gforge.inria.fr/isl-$_islver.tar.xz")
-sha512sums=('fd6bba0f67ff48069d03073d1a9b5e896383b1cfc9dde008e868e60a9ec5014a837d56af0ecbf467b3fb9b37ec74a676e819a18b44393a0a3c4280175b5d7ad8'
-            '7c3c9502ea07e4d47a823841837c3aa0b9d7ba0fe58deaf180734e44c18e53735ec783645da0bdc56b617c9e639b226cc03b40a947f852e1e787166a64f59424')
+depends=("$_target-binutils" "$_target-glibc" 'libmpc' 'libisl' 'zstd')
+options=('!emptydirs' '!strip' '!lto')
+source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz")
+sha512sums=('2121d295292814a6761edf1fba08c5f633ebe16f52b80e7b73a91050e71e1d2ed98bf17eebad263e191879561c02b48906c53faa4c4670c486a26fc75df23900')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
@@ -29,17 +26,10 @@ fi
 prepare() {
   cd $_basedir
 
-  # link isl for in-tree builds
-  ln -s ../isl-$_islver isl
-
   echo $pkgver > gcc/BASE-VER
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" \
-    "$srcdir/$_basedir/"{libiberty,gcc}/configure
 
   rm -rf "$srcdir/gcc-build"
   mkdir "$srcdir/gcc-build"
@@ -47,6 +37,9 @@ prepare() {
 
 build() {
   cd gcc-build
+
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   # Using -pipe causes spurious test-suite failures.
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
