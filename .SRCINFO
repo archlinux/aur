@@ -10,9 +10,9 @@ pkgbase = dcpomatic
 	makedepends = boost>=1.78.0
 	depends = pangomm>=1.4
 	depends = xorgproto
-	depends = libsub>=1.6.13
+	depends = libsub>=1.6.19
 	depends = libcxml>=0.17.3
-	depends = libdcp>=1.8.13
+	depends = libdcp>=1.8.18
 	depends = ffmpeg>=4.0.2
 	depends = glib2
 	depends = imagemagick

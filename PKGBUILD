@@ -8,7 +8,7 @@ pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) 
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
 #  CXXFLAGS="$CXXFLAGS  -I/usr/include/openjpeg-1.5/  -std=c++11"
-depends=('pangomm>=1.4' 'xorgproto' 'libsub>=1.6.13' 'libcxml>=0.17.3' 'libdcp>=1.8.13' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh'  'wxgtk3>=3.0.4' 'wxgtk-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2')
+depends=('pangomm>=1.4' 'xorgproto' 'libsub>=1.6.19' 'libcxml>=0.17.3' 'libdcp>=1.8.18' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh'  'wxgtk3>=3.0.4' 'wxgtk-common' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264' 'openssl' 'leqm-nrt>=0.0.2')
 makedepends=('python' 'which' 'boost>=1.78.0' )
 source=("${pkgname}-${pkgver}.tar.bz2::https://dcpomatic.com/dl.php?id=source&version=${pkgver}"
         "0001-set-version.patch" )
