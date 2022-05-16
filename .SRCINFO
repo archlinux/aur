@@ -1,6 +1,6 @@
 pkgbase = volar-server-bin
 	pkgdesc = Explore high-performance tooling for Vue
-	pkgver = 0.34.13
+	pkgver = 0.34.15
 	pkgrel = 1
 	url = https://github.com/johnsoncodehk/volar/tree/master/packages/vue-language-server
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = volar-server-bin
 	provides = vue-language-server
 	conflicts = volar-server
 	conflicts = vue-language-server
-	noextract = vue-language-server-0.34.13.tgz
-	source = https://registry.npmjs.org/@volar/vue-language-server/-/vue-language-server-0.34.13.tgz
-	sha256sums = 6bcb691115d6ee404c93fff33c08d97ee7f044969d8eb912713f6f7cf97d0a54
+	noextract = vue-language-server-0.34.15.tgz
+	source = https://registry.npmjs.org/@volar/vue-language-server/-/vue-language-server-0.34.15.tgz
+	sha256sums = 9da282aed7b16b67f68a212aacf6406ed84bcc1dbf10305a4d8407c4a28fcea6
 
 pkgname = volar-server-bin
