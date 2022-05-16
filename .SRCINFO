@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 18.0.1
+	pkgver = 18.0.4
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = drawio-desktop
 	depends = libnotify
 	depends = shared-mime-info
 	options = !strip
-	source = drawio-18.0.1.tar.gz::https://github.com/jgraph/drawio/archive/v18.0.1.tar.gz
-	source = drawio-desktop-18.0.1.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v18.0.1.tar.gz
+	source = drawio-18.0.4.tar.gz::https://github.com/jgraph/drawio/archive/v18.0.4.tar.gz
+	source = drawio-desktop-18.0.4.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v18.0.4.tar.gz
 	source = drawio.xml
-	sha512sums = 77fa0a87b37171fedd6cd7e2ee2d10abf97988b1fa96894af14833d030189d88815e65a192e6b1f991689eeb4ec2eb75d54fa867489807057ebca6c4c6447e61
-	sha512sums = bc2a79b3a994c3d80c3ef29518de9d9d6ca95b1a45e9177349cdb619967849874f43b22384a27f342c04ffe21d90377efbc9a851cc8da99f827b1cd54fa3c582
+	sha512sums = 5ecc717d4f2a4389f2750a0ff8d441f3623c8f8835c1ec129ba297f49cf560a21161358eee03da68ed66b968d8ea0c31984e495235db6907db3fa2efc265debd
+	sha512sums = 4c805c67746466ea2487df54f9f36ac968f5c1cba5e1ffab836123291f13105a03faeb978737b9e0bfbdde7154533563dd1a1153eaf7ff45014011f65054e504
 	sha512sums = 8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539
 
 pkgname = drawio-desktop
