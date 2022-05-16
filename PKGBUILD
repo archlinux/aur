@@ -2,7 +2,7 @@
 
 pkgname=zls
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for Zig"
 arch=('i686' 'x86_64')
 url="https://github.com/zigtools/zls"
@@ -39,6 +39,4 @@ package() {
     install \
     -p "$pkgdir/usr"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/zls"
-
-  rm "$pkgdir/usr/bin/build_runner.zig"
 }
