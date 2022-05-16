@@ -1,0 +1,18 @@
+pkgbase = activate-linux-wayland-git
+	pkgdesc = The "Activate Windows" watermark for Wayland
+	pkgver = r4.d3bc7ea
+	pkgrel = 1
+	url = https://github.com/Kljunas2/activate-linux.git
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = gtk3
+	depends = gtk-layer-shell
+	source = git+https://github.com/Kljunas2/activate-linux
+	source = activate-linux.desktop
+	sha512sums = SKIP
+	sha512sums = 76af63a9377cf75d1f2db368032029700747f2c9d7284cbdea6f562d873bd0d6e9122bbd695b88ff753e6bbc45a7c54a9b2554133d4b3825ce9f43228f39a37b
+
+pkgname = activate-linux-wayland-git
