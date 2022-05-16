@@ -1,16 +1,16 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname=perl-eval-linenumbers
-pkgver=0.34
-pkgrel='4'
+pkgname='perl-eval-linenumbers'
+pkgver='0.35'
+pkgrel='1'
 pkgdesc="Add line numbers to hereis blocks that contain perl source code"
 arch=('any')
 url="http://search.cpan.org/dist/Eval-LineNumbers"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Eval-LineNumbers-$pkgver.tar.gz")
-md5sums=('dc78f98c8de437a8cad2cd4236df68ed')
-sha512sums=('db99b5c431c634142d6f0e030c332285ad8d40fbece7b12a57524d24e6fca6039203648a6112c065196ff2b85f031bc527ad444dbc4e369d2d65832744b7a053')
+source=("https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Eval-LineNumbers-${pkgver}.tar.gz")
+md5sums=('3aa767153567825f57bee4a0f3070d00')
+sha512sums=('2128e30c3a36b282ba223d13b73effc189394a4827c83edb11fda9e5ca58c24f226df59df93dc0ed465ae9b3370fc4ad418c9cdc0f8df58fac0a89c93053f747')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
