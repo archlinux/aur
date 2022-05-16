@@ -1,0 +1,14 @@
+diff -Naur orig.tpm_emulator-0.7.4/crypto/rsa.h tpm_emulator-0.7.4/crypto/rsa.h
+--- orig.tpm_emulator-0.7.4/crypto/rsa.h	2022-05-16 09:33:22.000000000 -0700
++++ tpm_emulator-0.7.4/crypto/rsa.h	2022-05-16 09:34:03.000000000 -0700
+@@ -17,6 +17,10 @@
+ #ifndef _RSA_H_
+ #define _RSA_H_
+ 
++#if __GNUC__ >= 12
++#pragma GCC diagnostic ignored "-Waddress"
++#endif
++
+ #include <stddef.h>
+ #include <stdint.h>
+ #include "bn.h"

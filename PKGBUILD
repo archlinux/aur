@@ -21,8 +21,8 @@ _zlib=1.2.3
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.16.0
-pkgrel=3
+pkgver=4.16.1
+pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -46,6 +46,10 @@ _source=(
 	"xen-ucode-extract.sh"
 	"xen-intel-ucode.hook"
 	"xen-amd-ucode.hook"
+	"gcc12-fixes.patch"       # from https://build.opensuse.org/package/show/openSUSE:Factory/xen
+	"vtpm-gcc12-fixes.patch"  # based on above patch
+	"add-stubdom-fixes.patch" # add above patch to build
+
 )
 
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing (signatures on the xen hypervisor and tools) <pgp@xen.org>
@@ -54,10 +58,6 @@ validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree cod
 # Follow the Xen securite mailing lists, and if a patch is applicable to our package
 # add the URL here.
 _patches=(
-	"https://xenbits.xen.org/xsa/xsa393.patch"
-	"https://xenbits.xen.org/xsa/xsa394.patch"
-	"https://xenbits.xen.org/xsa/xsa395.patch"
-
 )
 
 
@@ -76,21 +76,21 @@ _stubdom_source=(
 
 # from cheap hack known as break_out_sums.sh
 _sha512sums=(
-        "2869ed90d1779c9754d7f2397f5fc67a655304d9c32953ac20655ef96cb154521d8fce9f23915ac0c91f984dc54f72c67e5e619e2da318b5997748f44cf21b87" # xen-4.16.0.tar.gz
-        "SKIP" # xen-4.16.0.tar.gz.sig
+        "eeabba9c263cd2425bca083e32b5ebfc6c716c00553759c144fd4b6f64a89836b260787fa25ba22c1f5c4ea65aaad7c95b8c2c1070d3377b1c43c9517aa7032a" # xen-4.16.1.tar.gz
+        "SKIP" # xen-4.16.1.tar.gz.sig
         "1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
         "ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
         "53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
         "a9230ec6ef9636ac3f3e4b72b1747ee8c4648a8bf4bd8dc3650365e34f1f67474429dbdd24996907d277b0ff5f235574643e781cb3ff37da954e899ddadbe0d6" # xen-ucode-extract.sh
         "7a832de9b35f4b77ee80d33310b23886f4d48d1d42c3d6ef6f8e2b428bec7332a285336864b61cfa01d9a14c2023674015beb7527bd5849b069f2be88e6500cd" # xen-intel-ucode.hook
         "99921b94a29fa7988c7fb5c17da8e598e777c972d6cae8c8643c991e5ff911a25525345ea8913945313d5c49fecf9da8cc3b83d47ab03928341e917b304370a9" # xen-amd-ucode.hook
+        "3f03e61a9c0b52db79f264a877589f09d7ebbc6a17da93a581e3ae38993ae15b340d49c62da4f21dbbcac3ec8251331e5253f3980f0e4874acf4545dfbaacfc6" # gcc12-fixes.patch
+        "2397795a0a4999a6efee3d8291356673d1757bc1b34dd2015378ef6ea8800ee1317c7d9f902d82bd62ff8d451223ad51ced5e3a6d66e8e79930a7f513cc2b805" # vtpm-gcc12-fixes.patch
+        "e379a2c072a1a42973aaddd1d8046ab68be50fd386bb718f73fc7401f412a40be3dab94b01e5364604216f39c867a9d6ed1751589c318b45faa28acf33875930" # add-stubdom-fixes.patch
 )
 
 
 _patch_sums=(
-	"32efed25f988579be8266a6bc80ed7c09c408519c6b6c5264b7e032849e3accc7ddea19c5879c06d7e7b27308d06e114f6e3ca4f814d53b9be9d239fb09c71f1" # xsa393.patch
-	"a0afa766e492a4dc921cd5c4c43c9ecbe87f79c07986504c8626ab7f06736147bdfa4637ea4c4abf17b9f1df31056bbcbb6c51a52e244e57467564c8ea06a52e" # xsa394.patch
-	"0aafb55b88a7feefeb0162b2722efc8ad43edcdfc7926492e1d49945eafb8dda900f7da37b2d49fd4dbc2d0c9a068ad6e47674a6df108a58842275695ed73540" # xsa395.patch
 )
 
 
@@ -104,6 +104,8 @@ _stub_sums=(
         "4928b5b82f57645be9408362706ff2c4d9baa635b21b0d41b1c82930e8c60a759b1ea4fa74d7e6c7cae1b7692d006aa5cb72df0c3b88bf049779aa2b566f9d35" # tpm_emulator-0.7.4.tar.gz
         "021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
 )
+
+
 
 # Simplify things for makepkg
 source=( "${_source[@]}" "${_patches[@]}" )
@@ -165,6 +167,11 @@ prepare() {
 		done
 
 	fi
+
+	echo "==> Applying GCC 12.1 fixes..."
+	patch -p1 < ../gcc12-fixes.patch
+	cp ../vtpm-gcc12-fixes.patch stubdom/
+	patch -p1 < ../add-stubdom-fixes.patch
 
 
 	for patchurl in "${_patches[@]}"; do
@@ -292,8 +299,11 @@ package_xen() {
 	rm -r "${pkgdir}/usr/share/doc"
 	rm -r "${pkgdir}/usr/share/man"
 
-	# remove potential stubdom files
-	rm -r "${pkgdir}/usr/lib/xen/boot"
+	# remove stubdom files
+        rm -f "${pkgdir}/usr/lib/xen/boot/vtpmmgr-stubdom.gz" \
+                "${pkgdir}/usr/lib/xen/boot/vtpm-stubdom.gz" \
+                "${pkgdir}/usr/lib/xen/boot/xenstorepvh-stubdom.gz" \
+                "${pkgdir}/usr/lib/xen/boot/xenstore-stubdom.gz"
 
 	# remove qemu
 	if [ "${_build_qemu}" == "true" ]; then
