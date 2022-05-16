@@ -2,11 +2,11 @@
 
 pkgname=sulis
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="Turn based tactical RPG with several campaigns, written in Rust."
+pkgrel=2
+pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
-url="https://github.com/Tessil/robin-map"
-license=("GPL3")
+url='https://www.sulisgame.com/'
+license=('GPL3')
 depends=('alsa-lib')
 makedepends=('rust' 'cargo' 'gendesk')
 source=(
@@ -21,6 +21,7 @@ sha256sums=(
 	'e75d53f449b05542dbf39a8db3f300693955586a5e80a21de93fdeba25639658'
 	'7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d'
 )
+options=('!lto')
 
 _srcdir="${pkgname}-${pkgver}"
 
