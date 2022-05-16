@@ -35,14 +35,14 @@ for _libfile in ${_libfiles[@]}
     source=(${source[@]} "$_srcprefix/$_libfile")
 }
 
-md5sums=('d947c26f52d4d7faba15f3ef08916fe4'
-         '19701c33c592f57e964d4a4d6e9c64f5'
-         'd477c2ed847d2af3c0ed2af79dfb1ee6'
-         'a4c97595748ab29c30bd475a9e086f55'
-         '70915dcbf16202a933114d45ee2a949c'
-         'd01756d07619f1f5b4791c399effdcbd'
-         'baff22f5e98a6c117c609b3078d4d373'
-         '945f6b1c3fca462d12cbf7c75e71cd4c'
+md5sums=('d947c26f52d4d7faba15f3ef08916fe4'# CMakeLists.txt
+         '19701c33c592f57e964d4a4d6e9c64f5'# main.cpp
+         '5f6306742f2bf43f916624fd09db18e1'# mainwindow.cpp
+         '3d8b09c49a6a49e13e26c01d36f91157'# mainwindow.h
+         '70915dcbf16202a933114d45ee2a949c'# call_backend.hpp
+         'c5fb8c7b63411c7b5c2f5e82b8c6da5d'# mainwindow.ui
+         'baff22f5e98a6c117c609b3078d4d373'# resources.qrc
+         '945f6b1c3fca462d12cbf7c75e71cd4c'# $pkgname.desktop
 
          '05cf19b4d413f0cfbefe3415b4d4e80f'
          '43ca58212a0ebb4d303b581844799928'
