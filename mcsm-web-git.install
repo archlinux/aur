@@ -1,0 +1,4 @@
+post_remove() {
+  echo "Clean all file."
+  rm -r opt/mcsmanager/
+}

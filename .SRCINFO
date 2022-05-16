@@ -1,0 +1,16 @@
+pkgbase = mcsm-web-git
+	pkgdesc = 适用于 MCSManager 的面板端（Web）程序。
+	pkgver = 9.4.4
+	pkgrel = 1
+	url = https://github.com/MCSManager/MCSManager-Web-Production
+	install = mcsm-web-git.install
+	arch = x86_64
+	license = AGPL
+	makedepends = npm
+	depends = nodejs>=14
+	source = file://mcsm-web.service
+	source = web::git+https://github.com/MCSManager/MCSManager-Web-Production
+	sha256sums = 5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc
+	sha256sums = SKIP
+
+pkgname = mcsm-web-git

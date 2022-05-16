@@ -1,0 +1,12 @@
+[Unit]
+Description=MCSManager Web
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/mcsmanager/web
+ExecStart=/usr/bin/node app.js
+Restart=on-failure
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
