@@ -6,8 +6,7 @@ pkgbase = harmony
 	arch = any
 	license = GPL
 	depends = mpv
-	depends = python-requests
-	depends = python-pip
+	depends = python
 	source = harmony::https://github.com/ZingyTomato/Harmony-Music/releases/download/v0.4/harmony
 	sha256sums = bcb325f910139ab8e0c1538ea368e94dffde010125b2ef66fcc5b935bb96ff4c
 
