@@ -1,6 +1,6 @@
 pkgbase = stc-isp-wine
 	pkgdesc = Wine STC-ISP 下载编程烧录软件
-	pkgver = v6.88O
+	pkgver = v6.89C
 	pkgrel = 1
 	url = http://www.stcmcudata.com
 	install = stc-isp-wine.install
@@ -12,16 +12,15 @@ pkgbase = stc-isp-wine
 	depends = winetricks
 	depends = wine-mono
 	depends = wine-gecko
-	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
 	provides = STC-ISP
 	conflicts = stc-isp
 	conflicts = stc-isp-bin
 	replaces = stc-isp-bin
-	noextract = stc-isp-v6.88O.zip
+	noextract = stc-isp-v6.89C.zip
 	options = !strip
-	source = stc-isp-v6.88O.zip::http://www.stcmcudata.com/STCISP/stc-isp-15xx-v6.88O.zip
+	source = stc-isp-v6.89C.zip::http://www.stcmcudata.com/STCISP/stc-isp-15xx-v6.89C.zip
 	source = stc-isp-wine.install
-	sha256sums = ce13269af0660ca4fc697c80bdc906c087538ae381bff09f52d922ae2dd0d148
+	sha256sums = 4fa56b7c14ac81af065fbf2ccb3f784d2a0ee9b3bbe73a0034cbb57860b87ede
 	sha256sums = b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6
 
 pkgname = stc-isp-wine
