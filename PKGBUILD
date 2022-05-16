@@ -48,13 +48,17 @@ md5sums=('d947c26f52d4d7faba15f3ef08916fe4'
          '43ca58212a0ebb4d303b581844799928'
          '980681771058d0cc584f9fa154e5296b')
 
+prepare()
+{
+    curl -L "$_srcprefix/PKGBUILD" > PKGBUILD-git
+}
+
 build()
 {
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ .
-	make
+    . PKGBUILD-git && build
 }
 
 package()
 {
-	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    . PKGBUILD-git && package
 }
