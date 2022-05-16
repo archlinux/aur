@@ -20,7 +20,7 @@ source=(
 	"$_launcher::$_url/download/v$_tagname/$_launcher"
 	"$_sd::$_url/download/v$_tagname/$_sd"
 )
-sha512sums=('SKIP')
+md5sums=('SKIP')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
