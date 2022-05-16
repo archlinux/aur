@@ -12,14 +12,14 @@ url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPL')
 source=("git+https://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 depends=('libftdi' 'pciutils')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'cmocka')
 optdepends=("dmidecode: for SMBIOS/DMI table decoder support")
 conflicts=("${_gitname}")
 provides=("${_gitname}")
 replaces=("${_gitname}-svn")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=v1.2.r667.g7dcd0dea
+pkgver=v1.2.r746.g086f0c8e
 pkgrel=1
 
 pkgver() {
