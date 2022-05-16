@@ -25,13 +25,14 @@ validpgpkeys=('6A1195968DDCA3494E7C598C43CF15D354E03E30')
 prepare() {
 	# Set colour, yellow and reset respectively
 	_YEL='\033[1;33m'
+	_RED='\033[0;31m'
 	_NC='\033[0m'
 	echo -e "${_YEL}Verifying Release file with GPG key...${_NC}"
-	gpg --verify Release.gpg Release || (echo "There is something wrong with the signature! Either this package is compromised or you need to import the key from https://openvpn.fox-it.com/repos/fox-crypto-gpg.asc" && exit 1)
+	gpg --verify Release.gpg Release || (echo -e "${_RED}There is something wrong with the signature! Either this package is compromised or you need to import the key from https://openvpn.fox-it.com/repos/fox-crypto-gpg.asc${_NC}" && exit 1)
 	echo -e "${_YEL}Verifying Packages file with previously verified Release file...${_NC}"
-	(echo "$(sed -n 17p Release | awk '{print $1}') Packages" | sha256sum --check --status && echo "OK") || (echo "There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!" && exit 1)
+	(echo "$(sed -n 17p Release | awk '{print $1}') Packages" | sha256sum --check --status && echo "OK") || (echo -e "${_RED}There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!${_NC}" && exit 1)
 	echo -e "${_YEL}Verifying *.deb package with previously verified Packages file...${_NC}"
-	(echo "$(sed -n 12p Packages | awk '{print $2}') openvpn-nl-2.4.12.deb" | sha256sum --check --status && echo "OK") || (echo "There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!" && exit 1)
+	(echo "$(sed -n 12p Packages | awk '{print $2}') openvpn-nl-2.4.12.deb" | sha256sum --check --status && echo "OK") || (echo -e "${_RED}There is something wrong with the SHA256 hash! This package is likely compromised and should not be used!${_NC}" && exit 1)
 }
 
 package() {
