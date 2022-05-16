@@ -2,7 +2,7 @@
 
 pkgname=cmake-init
 _name=${pkgname#python-}
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="The missing CMake project initializer"
 arch=('any')
