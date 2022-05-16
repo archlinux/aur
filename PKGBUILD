@@ -6,7 +6,7 @@
 _pkgbase=nvidia-settings
 pkgbase=nvidia-470xx-settings
 pkgname=('nvidia-470xx-settings' 'libxnvctrl-470xx')
-pkgver=470.103.01
+pkgver=470.129.06
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -16,7 +16,7 @@ makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-470x
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('301ad7cff80ca19fc951f5b2f2c90f28163e1592c6098c75f8a6644ab7324904daaa4d344c00912a52ffb2ac0f131106d800ccd65cf4f1b23039dcdaa81bedba'
+sha512sums=('70d37b869698a69921537a3fb7a0bad8bb0cd7b01b967ab9e9694892a7d28499c3be53316461d3722b083aa4477ac3d15e2e15bf6ddc8438f3818a81b165ea4e'
             '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
 
 prepare() {
@@ -43,7 +43,12 @@ package_nvidia-470xx-settings() {
 
   install -D -m644 doc/nvidia-settings.desktop "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
   install -D -m644 doc/nvidia-settings.png "${pkgdir}/usr/share/pixmaps/nvidia-settings.png"
-  sed -e 's:__UTILS_PATH__:/usr/bin:' -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' -e 's/__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__/Settings;HardwareSettings;/' -i "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
+  sed \
+    -e 's:__UTILS_PATH__:/usr/bin:' \
+    -e 's:__PIXMAP_PATH__:/usr/share/pixmaps:' \
+    -e 's/__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__/Settings;HardwareSettings;/' \
+    -e 's/Icon=.*/Icon=nvidia-settings/' \
+    -i "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
 
   rm "$pkgdir/usr/lib/libnvidia-gtk2.so.$pkgver"
 }
