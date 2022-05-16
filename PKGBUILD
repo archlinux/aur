@@ -1,7 +1,7 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-sk
-pkgver=2.53.9.1
+pkgver=2.53.12
 pkgrel=1
 _lang=sk
 pkgdesc="Slovak language pack for SeaMonkey"
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('9e39e3ebe0ee9f5a5dcc58b2175894b55fce06dbf9e1aee6b617cf8173d9d4152c87c490d49362b4f75abacb8bbab8f35695e6acb78bb2286373c0dfd59057b0')
+sha512sums=('32548af0505e2595962e1be0498b084529b5c2a652a8a67c6d9d815b941365f0925bf9f19e704ee9552399661ff02305f56f27a3e771ade15c55ba18a51ffcd0')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
