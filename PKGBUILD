@@ -36,7 +36,6 @@ build() {
   msg2 "Building stage 3 (muon from muon)"
   build-stage2/muon setup \
     -D prefix=/usr \
-    -D meson-docs:prefix=/usr \
     build
   ninja -C build
 }
