@@ -1,0 +1,17 @@
+pkgbase = cl-javascript
+	pkgdesc = Javascript compiler for Common Lisp (a.k.a. cl-js)
+	pkgver = 0.12.03.r29.g5ffa5e9
+	pkgrel = 1
+	url = https://marijnhaverbeke.nl/cl-javascript/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-parse-js
+	depends = cl-ppcre
+	depends = cl-local-time
+	source = cl-javascript::git+https://github.com/akapav/js#commit=5ffa5e9d113f2000bbbdccda634f09e272b1983d
+	b2sums = SKIP
+
+pkgname = cl-javascript
