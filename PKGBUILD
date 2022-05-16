@@ -2,7 +2,7 @@
 
 _pkgname=nvidia-vulkan-utils
 pkgname=${_pkgname}-nvlax
-pkgver=470.62.22
+pkgver=470.62.29
 pkgrel=3
 pkgdesc="NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
@@ -46,7 +46,7 @@ sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
   "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
   "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
-  "9e9f6a665034495bbfd438567fb9a0998adbfcc979fd1e0370d355b4f312e4c1fb5162b15e5264cc89d3aca6dcaf84ce7ebfff0885ac783dfcd8be3b99b3b96f"
+  "bdd8dd25b2fa07c15a4e14bab9d7154f2be5c3d08960caf7d419247ff5d12c8366962346c2f38efee6daa935b020d8de09d9c145c08cdd0835a6fef0c2c3c76d"
   "SKIP"
   "3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098"
 )
@@ -55,7 +55,7 @@ create_links() {
   # create soname links
   find "$pkgdir" -type f -name '*.so*' ! -path '*xorg/*' -print0 | while read -d $'\0' _lib; do
     _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
-    _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
+    _base=$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')
     [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
     [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
   done
