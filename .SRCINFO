@@ -1,9 +1,9 @@
 pkgbase = sioyek
 	pkgdesc = PDF viewer for research papers and technical books.
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ahrm/sioyek
-	arch = any
+	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = qt5-3d

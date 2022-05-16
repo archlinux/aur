@@ -1,9 +1,9 @@
 # Maintainer: Alexander Seiler <seileralex@gmail.com>
 pkgname=sioyek
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PDF viewer for research papers and technical books."
-arch=('any')
+arch=('x86_64')
 license=('GPL3')
 provides=('sioyek')
 url="https://github.com/ahrm/sioyek"
