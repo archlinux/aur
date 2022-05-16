@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/pass-otp"
-    make DESTDIR="$pkgdir" install
+    make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
