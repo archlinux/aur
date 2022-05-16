@@ -1,11 +1,12 @@
 pkgbase = dialect-git
 	pkgdesc = A translation app for GNOME.
-	pkgver = 1.4.1.r99.g550410c
+	pkgver = 1.4.1.r125.g7003c76
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.github.gi_lom.dialect
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
