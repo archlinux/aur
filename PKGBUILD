@@ -1,7 +1,7 @@
 # Maintainer: Mario Jiménez <mario.emilio.j@gmail.com>
 
 pkgname=touchegg-music-client
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Widget for music and volume control, connected to touchegg's daemon"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('touchegg' 'cairomm' 'glibmm' 'libpulse')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=(cf79f5cbf57e2daf70bee5a9c8a325fc86d35982e8e71ebeef690cd175a948ab)
+sha256sums=(be2bc122741eed0e260a8dc118e6680ce962ecb9f2053cff6cc5f598f2046a4f)
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
