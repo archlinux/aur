@@ -5,7 +5,7 @@ pkgname=lib32-gegl
 _pkgbase=gegl
 pkgver=0.4.36
 _commit=31763e39265adab1142418f6d5cedbd4d3581e06  # tags/GEGL_0_4_36
-pkgrel=1
+pkgrel=2
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
 url="https://www.gegl.org/"
@@ -18,7 +18,7 @@ depends=("gegl>=$pkgver"
          'lib32-lensfun' 'lib32-luajit'
          'lib32-jasper'
          'lib32-suitesparse'
-         'lib32-ffmpeg=2:4.4' 'lib32-libffmpeg=2:4.4' 'ffmpeg4.4')
+         'lib32-ffmpeg' 'ffmpeg')
 makedepends=('intltool' 'ruby' 'mesa' 'glu' 'exiv2' 'meson' 'vala'
              'xorgproto' 'shared-mime-info' 'gobject-introspection'
              'lib32-sdl2' 'python-gobject')
@@ -52,6 +52,8 @@ prepare() {
   for pkg in xproto.pc kbproto.pc xextproto.pc renderproto.pc shared-mime-info.pc; do
       cp "/usr/share/pkgconfig/$pkg" "$srcdir/"
   done
+  cd "$_pkgbase"
+  git cherry-pick -n 002f4807e511e65c885cb7c10643b6f44a514eb3..7e19debd83f0658b59fc86c214332ded4f935035
 }
 
 build() {
