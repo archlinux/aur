@@ -3,7 +3,7 @@
 pkgname=python-cursor
 _name=${pkgname#python-}
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package to hide or show the terminal cursor"
 arch=('any')
 url="https://github.com/GijsTimmers/${_name}"
