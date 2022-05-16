@@ -1,6 +1,6 @@
 pkgbase = ttf-tw
 	pkgdesc = Set of KAI and SONG fonts from the Ministry of Education of Taiwan. These fonts follow all the official recommendations and their shapes are calligraphically correct. (TTF/UTF-8)
-	pkgver = 20210727
+	pkgver = 20220516
 	pkgrel = 1
 	epoch = 1
 	url = http://www.moe.gov.tw/
