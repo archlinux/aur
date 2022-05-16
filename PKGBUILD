@@ -2,7 +2,7 @@
 # Co-Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cbd24aee743c4616e66877ccba0208e109f07cb8445ef3b84e67613014a96bc9')
+sha256sums=('516daac821e88926e7e0b37d3f08df3490adb11683f807cc61504ef52997fcbf')
 
 prepare() {
   cd "$pkgname-$pkgver"
