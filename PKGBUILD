@@ -32,9 +32,9 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
-#if [ -z ${_compiler+x} ]; then
+if [ -z ${_compiler+x} ]; then
   _compiler=gcc
-#fi
+fi
 
 # Compress modules with ZSTD (to save disk space)
 if [ -z ${_compress_modules+x} ]; then
@@ -62,7 +62,7 @@ fi
 
 pkgbase=linux-xanmod-lts
 _major=5.15
-pkgver=${_major}.38
+pkgver=${_major}.40
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -98,7 +98,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '65f29f5a9e5d44a1e2b27451a3caaf4e53dc9dd41a261fe8092c243b7fee18a0'
+            '157024489eb4187812f03440ff0b13aeb5a0a2ed2c5f45a595cf059ba52f4a60'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
