@@ -1,7 +1,8 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=project-plus-netplay
-pkgver=2.29
-pkgrel=3
+_tagname='v2.29'
+pkgver='v2.29.r0.g59e9409'
+pkgrel=1
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
 arch=('x86_64')
 url="https://projectplusgame.com/"
@@ -13,15 +14,13 @@ options=('!strip')
 _url="https://github.com/jlambert360/FPM-AppImage/releases"
 _package="Faster_Project_Plus-x86-64.AppImage"
 _launcher="Launcher.tar.gz"
-_sd="ProjectPlusSd$pkgver.tar.gz"
+_sd="ProjectPlusSd$_tagname.tar.gz"
 source=(
-	"$_package::$_url/download/v$pkgver/$_package"
-	"$_launcher::$_url/download/v$pkgver/$_launcher"
-	"$_sd::$_url/download/v$pkgver/$_sd"
+	"$_package::$_url/download/v$_tagname/$_package"
+	"$_launcher::$_url/download/v$_tagname/$_launcher"
+	"$_sd::$_url/download/v$_tagname/$_sd"
 )
-md5sums=('74ab044274d9dd85116e074ced75f4ba'
-	'909b062d9236cbbc5f51de9a402eda41'
-	'cdebf3f50af8d5b6e0b252509a02466b')
+sha512sums=('SKIP')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
@@ -32,11 +31,11 @@ package() {
 	install -Dm755 "$_package" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/ishiiruka.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -dm644 "$pkgdir/usr/share/applications"
-	printf "[Desktop Entry]\nVersion=$pkgver\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=project-plus-netplay\nIcon=project-plus-netplay\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+	printf "[Desktop Entry]\nVersion=$_tagname\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=project-plus-netplay\nIcon=project-plus-netplay\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -d "$pkgdir/$HOME/Documents/Project+ Netplay/Games"
 	touch "/$pkgdir/$HOME/Documents/Project+ Netplay/Games/Place Brawl ISO here"
 	cp -R "Launcher" "$pkgdir/$HOME/Documents/Project+ Netplay"
 	chown -R "$USER" "$pkgdir/$HOME/Documents/Project+ Netplay"
-	install -D "ProjectPlusSd$pkgver.raw" "$pkgdir/$HOME/.local/share/FasterPPlus/Wii/sd.raw"
+	install -D "ProjectPlusSd$_tagname.raw" "$pkgdir/$HOME/.local/share/FasterPPlus/Wii/sd.raw"
 	chown -R "$USER" "$pkgdir/$HOME/.local/share/FasterPPlus"
 }
