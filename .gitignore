@@ -1,0 +1,9 @@
+*.tar.xz
+*.tar.gz
+*.tar.zst
+
+pkg
+src
+
+pass-otp-git*
+pass-otp
