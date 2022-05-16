@@ -1,17 +1,18 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-datetime-format-mysql
-pkgver='0.06'
-pkgrel='3'
+pkgver='0.0701'
+pkgrel='1'
 pkgdesc="Parse and format MySQL dates and times"
 arch=("any")
 license=('GPL' 'PerlArtistic')
 url="http://search.cpan.org/~drolsky/DateTime-Format-MySQL"
 options=(!emptydirs)
 depends=('perl-datetime' 'perl-datetime-format-builder')
+makedepends=('perl-module-build')
 source=("https://cpan.metacpan.org/authors/id/X/XM/XMIKEW/DateTime-Format-MySQL-${pkgver}.tar.gz")
-md5sums=('60b84516b5f29e0c639cd1a0f12333d2')
-sha512sums=('56ea114f45e848f7a2389e1fea306b0e97d78e7033d745426db71bbfc527bb90affef8e2a697c213d855aced530b990424eedd92576354abcd4a3bbc3d6f1e69')
+md5sums=('3e53451637536ee14811396bfbf08caa')
+sha512sums=('74cbe1dcf6d708c643b24eb25f837f56715fee6685a1071bce9e5e5114347155018b8c14247233910bd6e6208996532962b93cc024a816fbeb37a41116a6265c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
