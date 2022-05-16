@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=colima
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=4
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "https://github.com/abiosoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-Linux-x86_64"
   "https://raw.githubusercontent.com/abiosoft/colima/v${pkgver}/LICENSE"
 )
-sha256sums=('9d8ed5a4cf2e0c30ea8f42f97696893802c88c81b2acffacad51841b48050155'
+sha256sums=('76fb5f3de0bee3d3b7baee1374be746c618a90d6aa1426c668dfe4b172cfa6af'
             'e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea')
 
 package() {
