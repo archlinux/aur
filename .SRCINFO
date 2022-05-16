@@ -1,0 +1,23 @@
+pkgbase = cl-3bmd
+	pkgdesc = Markdown processor in Common Lisp using Esrap parser
+	pkgver = r106.g4e08d82
+	pkgrel = 1
+	url = https://github.com/3b/3bmd
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-fiasco
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-split-sequence
+	depends = cl-esrap
+	depends = cl-alexandria
+	depends = cl-colorize
+	depends = python-pygments
+	source = cl-3bmd::git+https://github.com/3b/3bmd#commit=4e08d82d7c8fb1b8fc708c87f4d9d13a1ab490cb
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 0438150ad0f16fa0c074e7b32e5cb411274da81ff715a3062abd6cb01f47f9fcc2ac94fe5e69837f8737977112683453e59cf0c0c1708a438095075516362d45
+
+pkgname = cl-3bmd
