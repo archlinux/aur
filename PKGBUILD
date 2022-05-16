@@ -3,7 +3,7 @@ pkgname=systemd-cron
 pkgver=1.5.18
 # VERSION is actually 1.5.18 but tag is 1.15.18
 _tagver=1.15.18
-pkgrel=1
+pkgrel=2
 pkgdesc='systemd units to run cron scripts'
 arch=(any)
 url='https://github.com/systemd-cron/systemd-cron'
@@ -34,6 +34,6 @@ package() {
 
     install -d "${pkgdir}"/etc/cron.{boot,minutely,hourly,daily,weekly,monthly,quarterly,semi-annually,yearly}
     install -dm775 "${pkgdir}/var/spool/cron"
-    install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    cat "${srcdir}/sysusers.conf" >> "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
 
