@@ -1,28 +1,30 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
+# Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml
-pkgver=0.16.1
-pkgrel=2
+pkgver=0.17.3
+pkgrel=1
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
 url="https://carlh.net/libcxml"
 license=('GPL')
-depends=('libxml++2.6' 'boost-libs>=1.72.0' 'libasdcp-cth>=0.1.3' 'liblocked-sstream>=0.0.5')
-makedepends=('python2' 'pkg-config' 'boost')
-source=("${pkgname}-${pkgver}.tar.bz2::https://carlh.net/downloads/libcxml/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('664b97fa8add07f97b0354acc5991f4fc214bfbdaba169508298fd17f381dae7')
+depends=('libxml++2.6' 'boost-libs>=1.72.0' )
+makedepends=('git' 'python' 'pkg-config' 'boost')
+source=("$pkgname-$pkgver::git+git://git.carlh.net/git/libcxml.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
-
-build() {
-    CXXFLAGS="$CXXFLAGS -std=c++11"
+prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python2 waf configure --prefix=/usr
-    python2 waf build
+    python waf configure --prefix=/usr
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python waf build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 waf install --destdir=$pkgdir
+  python waf install --destdir=$pkgdir
   cd "${pkgdir}"
   if [ -d usr/lib64   ]
     then
