@@ -10,3 +10,23 @@
  endforeach(im ${NIST_SAMPLE_MODELS})
  
  CMAKEFILES(
+--- regress/coverage/covgcheck.cpp
++++ regress/coverage/covgcheck.cpp
+@@ -43,6 +43,7 @@
+ 
+ #include <cctype>
+ #include <cstdio>
++#include <cstring>
+ #include <algorithm>
+ #include <locale>
+ #include <fstream>
+--- regress/repository/repocheck.cpp
++++ regress/repository/repocheck.cpp
+@@ -43,6 +43,7 @@
+ 
+ #include <cctype>
+ #include <cstdio>
++#include <cstring>
+ #include <algorithm>
+ #include <locale>
+ #include <fstream>
