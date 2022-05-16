@@ -1,0 +1,3 @@
+post_upgrade() {
+	sed -i '/avoid_blocking_read\|retry_on_error/ d' srv/http/data/camilladsp/configs/camilladsp.yml
+}
