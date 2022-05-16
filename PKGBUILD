@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=naken_asm
-pkgver=2021.04.18
+pkgver=2022.04.16
 pkgrel=1
 pkgdesc="Assembler for MSP430, dsPIC, ARM, MIPS, 65xx, 68000, 8051/8052, Atmel AVR8, and others"
 url=http://www.mikekohn.net/micro/naken_asm.php
@@ -10,7 +10,7 @@ depends=(readline)
 conflicts=(naken_asm-git)
 _pkgver=${pkgver//./-}
 source=("http://www.mikekohn.net/downloads/${pkgname}/${pkgname}-${_pkgver}.tar.gz")
-sha512sums=('ca5181031ee06fa54738c7c11baa526324d07f534e666b0da842e6c09559320d5bef66fef97ee6cb3d020a9d9afa86c1956c45c6439a4d4d2f4a69aa66db44bc')
+b2sums=('cbd6170c8acf63ce79d24d3dd4630d1236a8b1abc1166b22fa412f15be87c02e5f7599c1102390a8834aa6cd86eff1b012969b069f19bb73aae56d317320e405')
 
 build () {
 	cd "${pkgname}-${_pkgver}"
