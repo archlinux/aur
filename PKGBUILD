@@ -4,7 +4,7 @@ pkgname=('mangohud-x11' 'lib32-mangohud-x11' 'mangohud-common-x11')
 pkgbase=mangohud
 _pkgver=0.6.7-1
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
@@ -70,7 +70,7 @@ local meson_options=(
 }
 
 package_mangohud-x11() {
-  depends=('mangohud-common' 'dbus' 'gcc-libs' 'glew' 'glfw-x11' 'libx11'
+  depends=('mangohud-common-x11' 'dbus' 'gcc-libs' 'glew' 'glfw-x11' 'libx11'
            'spdlog' 'vulkan-icd-loader')
   optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl')
   provides=("${pkgname%-x11}")
@@ -82,7 +82,7 @@ package_mangohud-x11() {
 }
 
 package_lib32-mangohud-x11() {
-  depends=('mangohud-common' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11'
+  depends=('mangohud-common-x11' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11'
            'lib32-vulkan-icd-loader')
   optdepends=('lib32-libxnvctrl: NVIDIA GPU stats by XNVCtrl')
   provides=("${pkgname%-x11}")
