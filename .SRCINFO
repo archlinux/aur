@@ -1,0 +1,20 @@
+pkgbase = cl-esrap
+	pkgdesc = A Packrat/Parsing Grammar/TDPL parser for Common Lisp
+	pkgver = 0.17.r21.g7588b43
+	pkgrel = 1
+	url = https://scymtym.github.io/esrap/
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-fiveam
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	depends = cl-trivial-with-current-source-form
+	source = cl-esrap::git+https://github.com/scymtym/esrap#commit=7588b430ad7c52f91a119b4b1c9a549d584b7064
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 4d8734eeaf99dc51455c53381ba45ec6449bd0895092ed0d30577d86e3f2b89da2aeb49ad0000d222fb14f43d2499562307610409383ccda475d93df64877ce4
+
+pkgname = cl-esrap
