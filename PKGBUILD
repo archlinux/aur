@@ -1,29 +1,17 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Trevor Tilby <trevor dot tilby at gmail dot com>
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=epix
-pkgver=1.2.18
+pkgver=1.2.22
 pkgrel=1
-epoch=
 pkgdesc="ePiX - Utilities for creating mathematically accurate figures"
 arch=('i686' 'x86_64')
 url="http://mathcs.holycross.edu/~ahwang/epix/ePiX.html"
 license=('GPL')
-groups=()
 depends=('ghostscript' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("http://mathcs.holycross.edu/~ahwang/$pkgname/$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=('313808af7f50cfde5dc684eff0623151')
-sha1sums=('5b67581464db0fd494da0ac3865912eff6c9ef9c')
-sha256sums=('ef2a6ecabc4a5beb7e4460e9dcea79e515d54298981bc9ecb6efa3c2c41f934d')
+md5sums=('a002184deb45b5f8bb212db9ee2d712a')
+sha1sums=('32920cb9a612c668b0c8b2e6e1b93ad7f3475de9')
+sha256sums=('c314b47110cd3ff081e80f60ac4834c0291da94ddfac805ea20036871f4d488f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
