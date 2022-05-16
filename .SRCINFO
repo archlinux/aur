@@ -1,7 +1,7 @@
 pkgbase = fleet-orbit
 	pkgdesc = Eases the deployment of osquery connected with a Fleet server.
 	pkgver = 0.0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fleetdm/fleet/tree/main/orbit
 	arch = x86_64
 	license = MIT
