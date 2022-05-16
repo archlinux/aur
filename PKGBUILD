@@ -3,7 +3,7 @@ _pkgname=u-boot-qemu
 pkgname=${_pkgname}-bin
 pkgver="2022.04"
 _pkgversuffix="+dfsg-2"
-pkgrel=1
+pkgrel=2
 pkgdesc="U-Boot for qemu"
 arch=('any')
 url="https://www.denx.de/wiki/U-Boot/"
@@ -17,6 +17,7 @@ b2sums=('b09247c498d5320623785b5076de101062248fc95c1661a3c15df000a701f6ab9776c97
 package() {
 	tar -C "${pkgdir}" -xf "${srcdir}/data.tar.xz"
 	cd "${pkgdir}"
-	mv ./usr/lib/u-boot/ ./usr/share/${_pkgname}
+	mv ./usr/lib/u-boot/ ./usr/share/${pkgname}
+	mv ./usr/share/doc/u-boot-qemu/ ./usr/share/doc/${pkgname}
 	rm -rf ./usr/lib/ ./usr/share/lintian/
 }

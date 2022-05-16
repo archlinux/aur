@@ -1,7 +1,7 @@
 pkgbase = u-boot-qemu-bin
 	pkgdesc = U-Boot for qemu
 	pkgver = 2022.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.denx.de/wiki/U-Boot/
 	arch = any
 	license = GPL2
