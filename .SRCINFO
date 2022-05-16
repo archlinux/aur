@@ -1,9 +1,10 @@
 pkgbase = btrfs-assistant-git
 	pkgdesc = An application for managing BTRFS subvolumes and Snapper snapshots
-	pkgver = 1.1.r21.g7206fdb
+	pkgver = 1.5.r33.g8f15ee5
 	pkgrel = 1
 	url = https://gitlab.com/btrfs-assistant/btrfs-assistant
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
