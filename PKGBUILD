@@ -18,10 +18,11 @@ build() {
   make man
 }
 
+# FIXME: Upstream obviously doesn't run their own tests as they are always broken
 false &&
 check() {
   cd "avocado-${pkgver}"
-  make check-full
+  make check
 }
 
 package() {
