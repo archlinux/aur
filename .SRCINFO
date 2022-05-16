@@ -1,12 +1,12 @@
 pkgbase = flyway
 	pkgdesc = Database migration utility written Java, supporting a wide range of databases
-	pkgver = 8.5.10
+	pkgver = 8.5.11
 	pkgrel = 1
 	url = https://flywaydb.org/
 	arch = any
 	license = Apache
 	depends = java-environment>=8
-	source = https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.5.10/flyway-commandline-8.5.10.tar.gz
-	sha512sums = 6dc0de6c8f44b191a17990a7f82fb70ba4f2cb2fc7d351545e9f93cb7a7efc7a3fdb34070d54ada03e6b9d7a6fd11c2d34e831d34cc479c145e245d9bb9d4d4f
+	source = https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.5.11/flyway-commandline-8.5.11.tar.gz
+	sha512sums = 6ee7d8cb0efd24a6c049881e8d839f4b9d87c45eaa6921f48267daa0084092b1deaf42edc9d493bb35d7b122b4fc90d8ea378a85ddbe7ddad5350358bc1a5653
 
 pkgname = flyway
