@@ -1,6 +1,6 @@
 pkgbase = aravis
 	pkgdesc = A vision library for genicam-based cameras
-	pkgver = 0.8.20
+	pkgver = 0.8.21
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Aravis
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = aravis
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
 	makedepends = appstream-glib
+	makedepends = gi-docgen
 	depends = gtk3
-	depends = libnotify
 	depends = gst-plugins-base-libs
 	depends = audit
 	depends = libusb
 	depends = python-gobject
-	source = https://github.com/AravisProject/aravis/releases/download/0.8.20/aravis-0.8.20.tar.xz
-	sha256sums = 0c0eb5a76109f29180c09c7e6a23fd403633bf22bbe8468a0ae44995c4449f46
+	source = https://github.com/AravisProject/aravis/releases/download/0.8.21/aravis-0.8.21.tar.xz
+	sha256sums = 3c4f768b22e7333386fc2622ef731722cb42971de1810caa59d29aa23eedff39
 
 pkgname = aravis
