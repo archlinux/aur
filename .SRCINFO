@@ -8,7 +8,6 @@ pkgbase = openvpn-nl
 	makedepends = cmake
 	makedepends = gnupg
 	depends = lzo
-	provides = openvpn
 	source = https://openvpn.fox-it.com/repos/deb/dists/focal/Release
 	source = https://openvpn.fox-it.com/repos/deb/dists/focal/Release.gpg
 	source = https://openvpn.fox-it.com/repos/deb/dists/focal/main/binary-amd64/Packages

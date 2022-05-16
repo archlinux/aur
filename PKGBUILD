@@ -8,7 +8,6 @@ url="https://openvpn.fox-it.com/"
 license=('GPL2')
 depends=('lzo')
 makedepends=('cmake' 'gnupg')
-provides=('openvpn')
 source=(
 	"https://openvpn.fox-it.com/repos/deb/dists/focal/Release" 
 	"https://openvpn.fox-it.com/repos/deb/dists/focal/Release.gpg"
