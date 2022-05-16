@@ -1,0 +1,26 @@
+pkgbase = keno-git
+	pkgdesc = GTK4 client for Mastodon (git)
+	pkgver = r329.94348d9
+	pkgrel = 1
+	url = https://codeberg.org/gatroig/keno
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = cmocka
+	depends = curl
+	depends = sqlite
+	depends = gtk4
+	depends = json-c
+	provides = keno
+	conflicts = keno
+	source = git+https://codeberg.org/gatroig/keno
+	source = git+https://codeberg.org/gatroig/libkenoma
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = keno-git
