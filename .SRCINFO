@@ -1,6 +1,6 @@
 pkgbase = perl-prima
 	pkgdesc = a perl multiplatform graphic toolkit
-	pkgver = 1.63
+	pkgver = 1.65
 	pkgrel = 1
 	url = https://metacpan.org/release/Prima
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = perl-prima
 	depends = perl-config-simple
 	depends = perl-anyevent
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/K/KA/KARASIK/Prima-1.63.tar.gz
-	sha512sums = 401187ac7590f0c598405f8b4d64d814fbb0c249e6a57f2ae27178fcf7d13a297899b58099f0b9acfd79409ca20bc961ede7dc7a123a18dd92f42b0d8d7d4127
+	source = https://cpan.metacpan.org/authors/id/K/KA/KARASIK/Prima-1.65.tar.gz
+	sha512sums = b679f62d147942596089b1cdef0df224268ac04a6025e2ec6e11803db3b728e0e95d771eed7ab2edeb019c479caa4715780ee1e16bc81e396616f629c88f5700
 
 pkgname = perl-prima
