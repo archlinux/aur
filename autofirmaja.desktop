@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AutoFirmaJA
+Comment=Cliente @firma Junta de Andalucia
+Icon=autofirmaja
+Exec=autofirmaja %U
+Categories=Utility;Java;
+StartupNotify=true
+StartupWMClass=autofirmaja
+MimeType=x-scheme-handler/afirmaja;x-scheme-handler/afirma;

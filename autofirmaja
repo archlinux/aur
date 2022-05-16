@@ -1,0 +1,136 @@
+#! /bin/bash
+_autofirma_dir="${HOME}/.afirmaJA/AutoFirma"
+_autofirma_ca="${_autofirma_dir}/AutoFirma_ROOT.cer"
+_autofirma_pfx="${_autofirma_dir}/autofirma.pfx"
+_cert_days="3650"
+_cert_cn="AutoFirma ROOT"
+_firefox_profiles_ini="${HOME}/.mozilla/firefox/profiles.ini"
+_nssdb="sql:${HOME}/.pki/nssdb"
+
+function _make_ca_config {
+  cat << EOF > "${_temp_dir}/openssl.cnf"
+[ ca ]
+default_ca=CA_autofirma
+[ CA_autofirma ]
+dir=${_temp_dir}
+new_certs_dir=\$dir
+database=\$dir/index.txt
+serial=\$dir/serial
+crlnumber=\$dir/crlnumber
+default_days=${_cert_days}
+default_crl_days=30
+default_md=sha256
+preserve=no
+x509_extensions=usr_cert
+email_in_dn=no
+copy_extensions=copy
+[ policy_ca ]
+countryName=optional
+stateOrProvinceName=optional
+localityName=optional
+organizationName=optional
+organizationalUnitName=optional
+commonName=supplied
+emailAddress=optional
+[ req ]
+default_bits=4096
+x509_extensions=v3_ca
+distinguished_name=req_distinguished_name
+[ req_distinguished_name ]
+commonName_default=${_cert_cn}
+[ usr_cert ]
+basicConstraints=CA:FALSE
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer:always
+subjectAltName=IP:127.0.0.1
+[ v3_ca ]
+basicConstraints=critical,CA:TRUE
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer:always
+keyUsage=cRLSign,digitalSignature,keyCertSign,keyEncipherment,dataEncipherment
+extendedKeyUsage=serverAuth,clientAuth,anyExtendedKeyUsage
+EOF
+touch "${_temp_dir}/index.txt"
+echo "01" > "${_temp_dir}/crlnumber"
+}
+
+function trust_ca {
+  # Add CA in shared user database
+  certutil -d "${_nssdb}" -D -n "${_cert_cn}" > /dev/null 2>&1
+  certutil -d "${_nssdb}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+  # Add CA in all firefox profiles (if any)
+  if [ -r "${_firefox_profiles_ini}" ]; then
+    _firefox_profile_paths=($(grep Path ${_firefox_profiles_ini}))
+    for _firefox_profile_path in ${_firefox_profile_paths[@]}; do
+      _firefox_profile_path="${_firefox_profile_path##*=}"
+      # Check if profile path is absolute or relative
+      [ ! -d "${_firefox_profile_path}" ] && \
+        _firefox_profile_path="${HOME}/.mozilla/firefox/${_firefox_profile_path}"
+      # Add CA in current firefox profile
+      if [ -d "${_firefox_profile_path}" ]; then
+        certutil -d "${_firefox_profile_path}" -D -n "${_cert_cn}" > /dev/null 2>&1
+        certutil -d "${_firefox_profile_path}" -A -i "${_autofirma_ca}" -n "${_cert_cn}" -t C,,
+      fi
+    done
+  unset _autofirma_ca _autofirma_pfx _cert_cn _nssdb \
+    _firefox_profiles_ini _firefox_profile_paths _firefox_profile_path
+fi
+}
+
+function do_init {
+  mkdir -p "${_autofirma_dir}"
+  _temp_dir="$(mktemp -d)"
+  _ca="openssl ca -config ${_temp_dir}/openssl.cnf"
+  _req="openssl req -config ${_temp_dir}/openssl.cnf"
+  rm -f "${_autofirma_ca}" "${_autofirma_pfx}"
+  _make_ca_config
+  openssl rand -base64 48 > "${_temp_dir}/randomkey.txt"
+  # Make local CA
+  ${_req} -new -passout file:"${_temp_dir}/randomkey.txt" \
+    -keyout "${_temp_dir}/autofirma.key" \
+    -subj "/CN=${_cert_cn}" \
+    -out "${_temp_dir}/autofirma.csr"
+  ${_ca} -batch -create_serial -notext -selfsign \
+    -extensions v3_ca \
+    -policy policy_ca \
+    -out "${_autofirma_ca}" \
+    -days ${_cert_days} \
+    -passin file:"${_temp_dir}/randomkey.txt" \
+    -keyfile "${_temp_dir}/autofirma.key" \
+    -infiles "${_temp_dir}/autofirma.csr"
+  # Make user certificate and key
+  ${_req} -new -passout file:"${_temp_dir}/randomkey.txt" \
+    -keyout "${_temp_dir}/user.key" \
+    -subj "/CN=127.0.0.1" \
+    -out "${_temp_dir}/user.csr"
+  ${_ca} -batch -notext \
+    -extensions usr_cert \
+    -policy policy_ca \
+    -out "${_temp_dir}/user.cer" \
+    -cert "${_autofirma_ca}" \
+    -keyfile "${_temp_dir}/autofirma.key" \
+    -passin file:"${_temp_dir}/randomkey.txt" \
+    -infiles "${_temp_dir}/user.csr"
+  # Make user pfx from certificate and key
+  openssl pkcs12 -export -passin file:"${_temp_dir}/randomkey.txt" \
+    -inkey "${_temp_dir}/user.key" \
+    -certfile "${_autofirma_ca}" \
+    -in "${_temp_dir}/user.cer" \
+    -name "socketautofirma" \
+    -passout pass:654321 \
+    -out "${_autofirma_pfx}"
+  rm -rf ${_temp_dir}
+  unset _ca _req _temp_dir
+}
+
+# If any required cert or key is missing rebuild it
+{ [ ! -r "${_autofirma_ca}" ] || [ ! -r "${_autofirma_pfx}" ]; } && \
+  do_init
+unset _autofirma_dir _cert_days
+
+# Always update CA in profiles
+trust_ca
+
+# Run app
+/usr/lib/jvm/java-11-openjdk/bin/java -jar \
+  /usr/share/java/autofirmaja/autofirmaja.jar $@

@@ -1,69 +1,45 @@
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Maintainer: Alberto Gómez <no publicado>
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 
 pkgname=autofirmaja
-pkgver=1.6.0_jav2
-pkgrel=1
-pkgdesc='Junta de Andalucia cliente de firma digital andaluz'
-arch=('i686' 'x86_64')
+pkgver=1.6.0.jav2
+pkgrel=2
+pkgdesc='Cliente de firma electrónica de la Junta de Andalucia'
+arch=('any')
 url='https://ws024.juntadeandalucia.es/clienteafirma/autofirma/autofirma.html'
-license=('GPL' 'EUPL')
-depends=('java-runtime' 'nss' 'firefox')
-makedepends=('binutils' 'openssl')
-source=("${pkgname}-${pkgver}.deb::https://ws024.juntadeandalucia.es/ae/descargar/5679")
-sha512sums=('073aa69caf26209706ec703dc12b7dcf99e205f1d96345c94607380dff9ea49a0e8614dfed86acfe8ae932c3a42a4c0dd1574b72eaa26e96cccea24e9b59b376')
+license=('GPL' 'custom:EUPL')
+depends=('java-runtime=11')
+source=("${pkgname}-${pkgver}.deb::https://ws024.juntadeandalucia.es/ae/descargar/5679"
+        "autofirmaja"
+        "autofirmaja.desktop"
+        "autofirmaja.js"
+        "autofirmaja.svg"
+        "eupl-1.1.txt")
+noextract=("${pkgname}-${pkgver}.deb")
+b2sums=('68c7c66648f8e17f65900c37ff50768dd5cb21bb260a489d30a36d139ac81a35f3425f6bb0bf80747eb80326b925729e4ec7bdadf03917fd0bfd21201a14a084'
+        'e8b11f01f770be19253ecd460239136f004d6adc24e333094a90e54609df40ad4760cea0d139d4741aadb7cd485004f4a59c248f71807cf8d03e49bee890de23'
+        'fb8f3090880400a969dd0f3fae1a50ecbf4f9aafe1beef8c7864696d86ca7b7a19065d7a878730b7391aacc3f70e0939dea9bff2adad2caa268fa48f1effb0d9'
+        '4fffa7bce59647d89275aacf1f94c63f7ef8994fa4f6e5487528dc7b812a0943d0ddaa083f95c8bf89388bb31d337773ec50b6db25eb76c0dcfe91d1c85b98dd'
+        '3397abf9b38b8e187ec7a1fa59e91c974568d520a2604487aa5dda56c590756560d38d46152ed5765eb6746956265107a7ff8d448f9090dc7f75a2b74d36513b'
+        '3ec804ae210f767d9f20d17b364e4b25523d44a07f9cedeffd5fb1cefd4be51ef7374fa58c7b060c548b4ebd43d84fbe149ae42c5befcbab5ab42485d0b2a672')
 
 prepare() {
-	tar -xf data.tar.xz
+  # Extract debian package
+  bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${srcdir}" -xJf -
 }
 
 package() {
-
-	mkdir -p "${pkgdir}"/usr/lib/firefox/defaults/pref/
-	mv etc/firefox/pref/AutoFirmaJA.js etc/firefox/pref/AutoFirmaJA.js.tmp
-	tail -4 etc/firefox/pref/AutoFirmaJA.js.tmp > etc/firefox/pref/AutoFirmaJA.js
-	cp -d --no-preserve=ownership etc/firefox/pref/AutoFirmaJA.js "${pkgdir}"/usr/lib/firefox/defaults/pref/
-	cp -dr --no-preserve=ownership usr "${pkgdir}"/
-
-	mkdir -p "${pkgdir}"/usr/share/licenses/autofirmaja/
-	ln -s /usr/share/doc/AutoFirmaJA/copyright "${pkgdir}"/usr/share/licenses/autofirmaja/LICENSE
-	rm "${pkgdir}"/usr/bin/AutoFirmaJA-FirefoxChrome
-
-	sed -i 's|dir = /usr/share/AutoFirmaJA/|dir = usr/share/AutoFirmaJA/|' usr/share/AutoFirmaJA/openssl.cnf
-
-	# Create random password
-	openssl rand -base64 48 > randomkey.txt
-
-	# CREATE CERTIFICATION AUTHORITY "AutoFirmaJA ROOT LOCAL"
-	# Create CA key
-	openssl genrsa -aes128 -passout file:randomkey.txt -out AutoFirmaJA.key 2048
-	# Create request for signature
-	openssl req -config usr/share/AutoFirmaJA/openssl.cnf -new -passin file:randomkey.txt -key AutoFirmaJA.key -out AutoFirmaJA.csr  -subj "/CN=AutoFirmaJA ROOT LOCAL"
-	# Self sign the request
-	openssl x509 -req -days 3650 -in AutoFirmaJA.csr -signkey AutoFirmaJA.key -passin file:randomkey.txt  -out AutoFirmaJA.crt -extensions exts -extfile usr/share/AutoFirmaJA/extensions.txt
-
-	# CREATE A CERTIFICATE FOR COMMUNICATION BETWEEN BROWSER AND SIGNATURE CLIENTE
-	# Another random password
-	openssl genrsa -aes128 -passout file:randomkey.txt -out localhost.key 2048
-	# Another request for signature
-	openssl req -new -passin file:randomkey.txt -key localhost.key -out localhost.csr  -subj "/CN=127.0.0.1"
-	# Sign the request with our CA signature
-	openssl ca -batch -config usr/share/AutoFirmaJA/openssl.cnf -policy signing_policy -extensions signing_req -cert AutoFirmaJA.crt -keyfile AutoFirmaJA.key -passin file:randomkey.txt -in localhost.csr -out localhost.crt
-
-	# Export key and certificate to pfx
-	openssl pkcs12 -export -out autofirmaJA.pfx -passout pass:654321 -inkey localhost.key -passin file:randomkey.txt  -in localhost.crt  -name "socketautofirmalocal" -certfile AutoFirmaJA.crt
-	chmod ugo+r autofirmaJA.pfx
-	
-	# Some cleaning
-	rm randomkey.txt AutoFirmaJA.key AutoFirmaJA.csr localhost.key localhost.csr localhost.crt
-
-	# Move CA certificate where it will be found by browsers
-	mkdir -p "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors
-	mv AutoFirmaJA.crt "${pkgdir}"/usr/share/ca-certificates/trust-source/anchors/
-
-	# Move pfx where the application needs it
-	mv autofirmaJA.pfx "${pkgdir}"/usr/lib/AutoFirmaJA/
-
-	# Final cleaning
-	rm "${pkgdir}"/usr/share/applications/afirmaja-firefoxchrome.desktop "${pkgdir}"/usr/share/AutoFirmaJA/*.txt "${pkgdir}"/usr/share/AutoFirmaJA/openssl.*
+  install -Dm755 "autofirmaja" \
+    "${pkgdir}/usr/bin/autofirmaja"
+  install -Dm644 "autofirmaja.js" \
+    "${pkgdir}/usr/lib/firefox/defaults/pref/autofirmaja.js"
+  install -Dm644 "usr/lib/AutoFirmaJA/AutoFirmaJA.jar" \
+    "${pkgdir}/usr/share/java/autofirmaja/autofirmaja.jar"
+  install -Dm644 "autofirmaja.svg" \
+    "${pkgdir}/usr/share/pixmaps/autofirmaja.svg"
+  install -Dm644 "autofirmaja.desktop" \
+    "${pkgdir}/usr/share/applications/autofirmaja.desktop"
+  install -Dm644 "eupl-1.1.txt" \
+    "${pkgdir}/usr/share/licenses/autofirmaja/EUPL"
 }
