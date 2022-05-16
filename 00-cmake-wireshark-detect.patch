@@ -1,0 +1,793 @@
+From 9442fa3ed14392ff008203804d5e9da534f4a584 Mon Sep 17 00:00:00 2001
+From: cryptoluks <9020527+cryptoluks@users.noreply.github.com>
+Date: Tue, 11 Jan 2022 15:19:01 +0100
+Subject: [PATCH] Rewrite CMakeLists.txt and use improved Find*.cmake files to
+ fix cmake building
+
+---
+ CMakeLists.txt            |  85 +++++++-
+ cmake/FindGLIB2.cmake     | 443 ++++++++++++++++++--------------------
+ cmake/FindWSLibrary.cmake |  37 ++++
+ cmake/FindWSWinLibs.cmake | 105 +++++++++
+ cmake/FindWireshark.cmake |  57 +++--
+ 5 files changed, 461 insertions(+), 266 deletions(-)
+ create mode 100644 cmake/FindWSLibrary.cmake
+ create mode 100644 cmake/FindWSWinLibs.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddf974f..cba8bb1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,10 +7,48 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ #
+ 
+-include(WiresharkPlugin)
++project(h4bcm-wireshark-plugin C CXX)
+ 
+-# Plugin name and version info (major minor micro extra)
+-set_module_info(h4bcm 1 1 0 0)
++cmake_minimum_required(VERSION 3.5)
++set(CMAKE_BACKWARDS_COMPATIBILITY 3.5)
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
++
++MESSAGE(${CMAKE_MODULE_PATH})
++
++find_package(Wireshark 3.4)
++
++if(Wireshark_FOUND)
++
++  MESSAGE(STATUS "Wireshark 3.4 libraries found in ${Wireshark_LIB_DIR}, performing a stand-alone plug-in build.")
++
++  MESSAGE(STATUS "Plug-in will be installed in: ${CMAKE_INSTALL_LIBDIR}")
++
++  INCLUDE(UseMakePluginReg)
++
++  set(GLIB2_MIN_VERSION 2.4.0)
++
++  find_package(GLIB2)
++  include_directories (${GLIB2_INCLUDE_DIRS})
++
++  include_directories (${Wireshark_INCLUDE_DIR})
++
++  IF(APPLE)
++    LINK_DIRECTORIES(/usr/local/lib)
++  ENDIF()
++
++  set(LINK_MODE_LIB SHARED)
++  set(LINK_MODE_MODULE MODULE)
++
++else(Wireshark_FOUND)
++
++  MESSAGE(STATUS "Wireshark 3.4 libraries not found, performing an in-tree Wireshark plug-in build.")
++
++  include(WiresharkPlugin)
++
++  # Plugin name and version info (major minor micro extra)
++  set_module_info(h4bcm 1 1 0 0)
++
++endif(Wireshark_FOUND)
+ 
+ set(DISSECTOR_SRC
+ 	packet-h4bcm.c
+@@ -35,14 +73,39 @@ register_plugin_files(plugin.c
+ 	${DISSECTOR_SRC}
+ )
+ 
+-add_plugin_library(h4bcm epan)
++if(Wireshark_FOUND)
++
++  add_library(h4bcm ${LINK_MODE_MODULE}
++                  ${PLUGIN_FILES}
++                  ${PLUGIN_RC_FILE}
++  )
++
++  set_target_properties(h4bcm PROPERTIES
++          PREFIX ""
++          LINK_FLAGS "${WS_LINK_FLAGS}"
++          FOLDER "Plugins"
++  )
+ 
+-target_link_libraries(h4bcm epan)
++  link_directories(${Wireshark_LIB_DIR})
+ 
+-install_plugin(h4bcm epan)
++  target_link_libraries(h4bcm wireshark)
+ 
+-file(GLOB DISSECTOR_HEADERS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*.h")
+-CHECKAPI(
++  install(TARGETS h4bcm
++          LIBRARY DESTINATION ${Wireshark_PLUGIN_INSTALL_DIR} NAMELINK_SKIP
++          RUNTIME DESTINATION ${Wireshark_PLUGIN_INSTALL_DIR}
++          ARCHIVE DESTINATION ${Wireshark_PLUGIN_INSTALL_DIR}
++  )
++
++else(Wireshark_FOUND)
++
++  add_plugin_library(h4bcm epan)
++
++  target_link_libraries(h4bcm epan)
++
++  install_plugin(h4bcm epan)
++
++  file(GLOB DISSECTOR_HEADERS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*.h")
++  CHECKAPI(
+ 	NAME
+ 	  h4bcm
+ 	SWITCHES
+@@ -50,8 +113,9 @@ CHECKAPI(
+ 	SOURCES
+ 	  ${DISSECTOR_SRC}
+ 	  ${DISSECTOR_HEADERS}
+-)
++  )
+ 
++endif(Wireshark_FOUND)
+ #
+ # Editor modelines  -  https://www.wireshark.org/tools/modelines.html
+ #
+--- a/cmake/FindGLIB2.cmake
++++ b/cmake/FindGLIB2.cmake
+@@ -1,238 +1,213 @@
+ #
+-# $Id: FindGLIB2.cmake 34248 2010-09-25 15:38:12Z jmayer $
+-#
+-# - Try to find GLib2
++# - Try to find the GLIB2 libraries
+ # Once done this will define
+ #
+-#  GLIB2_FOUND - system has GLib2
+-#  GLIB2_INCLUDE_DIRS - the GLib2 include directory
+-#  GLIB2_LIBRARIES - Link these to use GLib2
+-#
+-#  HAVE_GLIB_GREGEX_H  glib has gregex.h header and 
+-#                      supports g_regex_match_simple
+-#
+-#  Copyright (c) 2006 Andreas Schneider <mail@cynapses.org>
+-#  Copyright (c) 2006 Philippe Bernery <philippe.bernery@gmail.com>
+-#  Copyright (c) 2007 Daniel Gollub <gollub@b1-systems.de>
+-#  Copyright (c) 2007 Alban Browaeys <prahal@yahoo.com>
+-#  Copyright (c) 2008 Michael Bell <michael.bell@web.de>
+-#  Copyright (c) 2008-2009 Bjoern Ricks <bjoern.ricks@googlemail.com>
++#  GLIB2_FOUND           - system has glib2
++#  GLIB2_INCLUDE_DIRS    - the glib2 include directory
++#  GLIB2_LIBRARIES       - glib2 library
++#  GLIB2_DLL_DIR_DEBUG   - (Windows) Path to required GLib2 DLLs in debug build.
++#  GLIB2_DLL_DIR_RELEASE - (Windows) Path to required GLib2 DLLs in release builds.
++#  GLIB2_DLLS_DEBUG      - (Windows) List of required GLib2 DLLs in debug builds.
++#  GLIB2_DLLS_RELEASE    - (Windows) List of required GLib2 DLLs in release builds.
++
++# Copyright (c) 2008 Laurent Montel, <montel@kde.org>
+ #
+-#  Redistribution and use is allowed according to the terms of the New
+-#  BSD license.
+-#  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-#
+-
+-
+-IF (GLIB2_LIBRARIES AND GLIB2_INCLUDE_DIRS )
+-  # in cache already
+-  SET(GLIB2_FOUND TRUE)
+-ELSE (GLIB2_LIBRARIES AND GLIB2_INCLUDE_DIRS )
+-
+-  INCLUDE(FindPkgConfig)
+-
+-  ## Glib
+-  IF ( GLIB2_FIND_REQUIRED )
+-    SET( _pkgconfig_REQUIRED "REQUIRED" )
+-  ELSE ( GLIB2_FIND_REQUIRED )
+-    SET( _pkgconfig_REQUIRED "" )
+-  ENDIF ( GLIB2_FIND_REQUIRED )
+-
+-  IF ( GLIB2_MIN_VERSION )
+-    PKG_SEARCH_MODULE( GLIB2 ${_pkgconfig_REQUIRED} glib-2.0>=${GLIB2_MIN_VERSION} )
+-  ELSE ( GLIB2_MIN_VERSION )
+-    PKG_SEARCH_MODULE( GLIB2 ${_pkgconfig_REQUIRED} glib-2.0 )
+-  ENDIF ( GLIB2_MIN_VERSION )
+-  IF ( PKG_CONFIG_FOUND )
+-    IF ( GLIB2_FOUND )
+-      SET ( GLIB2_CORE_FOUND TRUE )
+-    ELSE ( GLIB2_FOUND )
+-      SET ( GLIB2_CORE_FOUND FALSE )
+-    ENDIF ( GLIB2_FOUND )
+-  ENDIF ( PKG_CONFIG_FOUND )
+-
+-  # Look for glib2 include dir and libraries w/o pkgconfig
+-  IF ( NOT GLIB2_FOUND AND NOT PKG_CONFIG_FOUND )
+-    FIND_PATH(
+-      _glibconfig_include_DIR
+-    NAMES
+-      glibconfig.h
+-    PATHS
+-      /opt/gnome/lib64
+-      /opt/gnome/lib
+-      /opt/lib/
+-      /opt/local/lib
+-      /sw/lib/
+-      /usr/lib64
+-      /usr/lib
+-      /usr/local/include
+-      ${CMAKE_LIBRARY_PATH}
+-    PATH_SUFFIXES
+-      glib-2.0/include
+-    )
+-
+-    FIND_PATH(
+-      _glib2_include_DIR
+-    NAMES
+-      glib.h
+-    PATHS
+-      /opt/gnome/include
+-      /opt/local/include
+-      /sw/include
+-      /usr/include
+-      /usr/local/include
+-    PATH_SUFFIXES
+-      glib-2.0
+-    )
+-
+-    #MESSAGE(STATUS "Glib headers: ${_glib2_include_DIR}")
+-
+-    FIND_LIBRARY(
+-      _glib2_link_DIR
+-    NAMES
+-      glib-2.0
+-      glib
+-    PATHS
+-      /opt/gnome/lib
+-      /opt/local/lib
+-      /sw/lib
+-      /usr/lib
+-      /usr/local/lib
+-    )
+-    IF ( _glib2_include_DIR AND _glib2_link_DIR )
+-        SET ( _glib2_FOUND TRUE )
+-    ENDIF ( _glib2_include_DIR AND _glib2_link_DIR )
+-
+-
+-    IF ( _glib2_FOUND )
+-        SET ( GLIB2_INCLUDE_DIRS ${_glib2_include_DIR} ${_glibconfig_include_DIR} )
+-        SET ( GLIB2_LIBRARIES ${_glib2_link_DIR} )
+-        SET ( GLIB2_CORE_FOUND TRUE )
+-    ELSE ( _glib2_FOUND )
+-        SET ( GLIB2_CORE_FOUND FALSE )
+-    ENDIF ( _glib2_FOUND )
+-
+-    # Handle dependencies
+-    # libintl
+-    IF ( NOT LIBINTL_FOUND )
+-      FIND_PATH(LIBINTL_INCLUDE_DIR
+-      NAMES
+-        libintl.h
+-      PATHS
+-        /opt/gnome/include
+-        /opt/local/include
+-        /sw/include
+-        /usr/include
+-        /usr/local/include
+-      )
+-
+-      FIND_LIBRARY(LIBINTL_LIBRARY
+-      NAMES
+-        intl
+-      PATHS
+-        /opt/gnome/lib
+-        /opt/local/lib
+-        /sw/lib
+-        /usr/local/lib
+-        /usr/lib
+-      )
+-
+-      IF (LIBINTL_LIBRARY AND LIBINTL_INCLUDE_DIR)
+-        SET (LIBINTL_FOUND TRUE)
+-      ENDIF (LIBINTL_LIBRARY AND LIBINTL_INCLUDE_DIR)
+-    ENDIF ( NOT LIBINTL_FOUND )
+-
+-    # libiconv
+-    IF ( NOT LIBICONV_FOUND )
+-      FIND_PATH(LIBICONV_INCLUDE_DIR
+-      NAMES
+-        iconv.h
+-      PATHS
+-        /opt/gnome/include
+-        /opt/local/include
+-        /opt/local/include
+-        /sw/include
+-        /sw/include
+-        /usr/local/include
+-        /usr/include
+-      PATH_SUFFIXES
+-        glib-2.0
+-      )
+-
+-      FIND_LIBRARY(LIBICONV_LIBRARY
+-      NAMES
+-        iconv
+-      PATHS
+-        /opt/gnome/lib
+-        /opt/local/lib
+-        /sw/lib
+-        /usr/lib
+-        /usr/local/lib
+-      )
+-
+-      IF (LIBICONV_LIBRARY AND LIBICONV_INCLUDE_DIR)
+-        SET (LIBICONV_FOUND TRUE)
+-      ENDIF (LIBICONV_LIBRARY AND LIBICONV_INCLUDE_DIR)
+-    ENDIF ( NOT LIBICONV_FOUND )
+-
+-    IF (LIBINTL_FOUND)
+-      SET (GLIB2_LIBRARIES ${GLIB2_LIBRARIES} ${LIBINTL_LIBRARY})
+-      SET (GLIB2_INCLUDE_DIRS ${GLIB2_INCLUDE_DIRS} ${LIBINTL_INCLUDE_DIR})
+-    ENDIF (LIBINTL_FOUND)
+-
+-    IF (LIBICONV_FOUND)
+-      SET (GLIB2_LIBRARIES ${GLIB2_LIBRARIES} ${LIBICONV_LIBRARY})
+-      SET (GLIB2_INCLUDE_DIRS ${GLIB2_INCLUDE_DIRS} ${LIBICONV_INCLUDE_DIR})
+-    ENDIF (LIBICONV_FOUND)
+-
+-  ENDIF ( NOT GLIB2_FOUND AND NOT PKG_CONFIG_FOUND )
+-  ##
+-
+-  IF (GLIB2_CORE_FOUND AND GLIB2_INCLUDE_DIRS AND GLIB2_LIBRARIES)
+-    SET (GLIB2_FOUND TRUE)
+-  ENDIF (GLIB2_CORE_FOUND AND GLIB2_INCLUDE_DIRS AND GLIB2_LIBRARIES)
+-
+-  IF (GLIB2_FOUND)
+-    IF (NOT GLIB2_FIND_QUIETLY)
+-      MESSAGE (STATUS "Found GLib2: ${GLIB2_LIBRARIES} ${GLIB2_INCLUDE_DIRS}")
+-    ENDIF (NOT GLIB2_FIND_QUIETLY)
+-  ELSE (GLIB2_FOUND)
+-    IF (GLIB2_FIND_REQUIRED)
+-      MESSAGE (SEND_ERROR "Could not find GLib2")
+-    ENDIF (GLIB2_FIND_REQUIRED)
+-  ENDIF (GLIB2_FOUND)
+-
+-  # show the GLIB2_INCLUDE_DIRS and GLIB2_LIBRARIES variables only in the advanced view
+-  MARK_AS_ADVANCED(GLIB2_INCLUDE_DIRS GLIB2_LIBRARIES)
+-  MARK_AS_ADVANCED(LIBICONV_INCLUDE_DIR LIBICONV_LIBRARY)
+-  MARK_AS_ADVANCED(LIBINTL_INCLUDE_DIR LIBINTL_LIBRARY)
+-
+-ENDIF (GLIB2_LIBRARIES AND GLIB2_INCLUDE_DIRS)
+-
+-IF ( WIN32 )
+-    # include libiconv for win32
+-    IF ( NOT LIBICONV_FOUND )
+-      FIND_PATH(LIBICONV_INCLUDE_DIR iconv.h PATH_SUFFIXES glib-2.0)
+-
+-      FIND_LIBRARY(LIBICONV_LIBRARY NAMES iconv)
+-
+-      IF (LIBICONV_LIBRARY AND LIBICONV_INCLUDE_DIR)
+-        SET (LIBICONV_FOUND TRUE)
+-      ENDIF (LIBICONV_LIBRARY AND LIBICONV_INCLUDE_DIR)
+-    ENDIF ( NOT LIBICONV_FOUND )
+-    IF (LIBICONV_FOUND)
+-      SET (GLIB2_LIBRARIES ${GLIB2_LIBRARIES} ${LIBICONV_LIBRARY})
+-      SET (GLIB2_INCLUDE_DIRS ${GLIB2_INCLUDE_DIRS} ${LIBICONV_INCLUDE_DIR})
+-    ENDIF (LIBICONV_FOUND)
+-ENDIF ( WIN32 )
+-
+-IF ( GLIB2_FOUND )
+-	# Check if system has a newer version of glib
+-	# which supports g_regex_match_simple
+-	INCLUDE( CheckIncludeFiles )
+-	SET( CMAKE_REQUIRED_INCLUDES ${GLIB2_INCLUDE_DIRS} )
+-	CHECK_INCLUDE_FILES ( glib/gregex.h HAVE_GLIB_GREGEX_H )
+-	CHECK_INCLUDE_FILES ( glib/gchecksum.h HAVE_GLIB_GCHECKSUM_H )
+-	# Reset CMAKE_REQUIRED_INCLUDES
+-	SET( CMAKE_REQUIRED_INCLUDES "" )
+-ENDIF( GLIB2_FOUND )
++# Redistribution and use is allowed according to the terms of the BSD license.
++# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
++
++
++if( GLIB2_MAIN_INCLUDE_DIR AND GLIB2_LIBRARIES )
++	# Already in cache, be silent
++	set( GLIB2_FIND_QUIETLY TRUE )
++endif()
++
++include( FindWSWinLibs )
++FindWSWinLibs( "vcpkg-export-*" "GLIB2_HINTS" )
++
++if (NOT WIN32)
++	find_package(PkgConfig)
++	pkg_search_module( PC_GLIB2 glib-2.0 )
++endif()
++
++find_path( GLIB2_MAIN_INCLUDE_DIR
++	NAMES
++		glib.h
++	HINTS
++		"${PC_GLIB2_INCLUDEDIR}"
++		"${GLIB2_HINTS}/include"
++	PATH_SUFFIXES
++		glib-2.0
++		glib-2.0/include
++	PATHS
++		/opt/gnome/include
++		/opt/local/include
++		/sw/include
++		/usr/include
++		/usr/local/include
++)
++
++include(FindWSLibrary)
++FindWSLibrary( GLIB2_LIBRARY
++	NAMES
++		glib-2.0
++		libglib-2.0
++	HINTS
++		"${PC_GLIB2_LIBDIR}"
++	WIN32_HINTS
++	    ${GLIB2_HINTS}
++	PATHS
++		/opt/gnome/lib64
++		/opt/gnome/lib
++		/opt/lib/
++		/opt/local/lib
++		/sw/lib/
++		/usr/lib64
++		/usr/lib
++)
++
++# search the glibconfig.h include dir under the same root where the library is found
++get_filename_component( glib2LibDir "${GLIB2_LIBRARY}" PATH)
++
++find_path( GLIB2_INTERNAL_INCLUDE_DIR
++	NAMES
++		glibconfig.h
++	HINTS
++		"${GLIB2_INCLUDEDIR}"
++		"${GLIB2_HINTS}/include"
++		"${glib2LibDir}"
++		${CMAKE_SYSTEM_LIBRARY_PATH}
++	PATH_SUFFIXES
++		glib-2.0/include
++	PATHS
++		${GLIB2_LIBRARY}
++
++)
++
++if(PC_GLIB2_VERSION)
++	set(GLIB2_VERSION ${PC_GLIB2_VERSION})
++elseif(GLIB2_INTERNAL_INCLUDE_DIR)
++	# On systems without pkg-config (e.g. Windows), search its header
++	# (available since the initial commit of GLib).
++	file(STRINGS ${GLIB2_INTERNAL_INCLUDE_DIR}/glibconfig.h GLIB_MAJOR_VERSION
++		REGEX "#define[ ]+GLIB_MAJOR_VERSION[ ]+[0-9]+")
++	string(REGEX MATCH "[0-9]+" GLIB_MAJOR_VERSION ${GLIB_MAJOR_VERSION})
++	file(STRINGS ${GLIB2_INTERNAL_INCLUDE_DIR}/glibconfig.h GLIB_MINOR_VERSION
++		REGEX "#define[ ]+GLIB_MINOR_VERSION[ ]+[0-9]+")
++	string(REGEX MATCH "[0-9]+" GLIB_MINOR_VERSION ${GLIB_MINOR_VERSION})
++	file(STRINGS ${GLIB2_INTERNAL_INCLUDE_DIR}/glibconfig.h GLIB_MICRO_VERSION
++		REGEX "#define[ ]+GLIB_MICRO_VERSION[ ]+[0-9]+")
++	string(REGEX MATCH "[0-9]+" GLIB_MICRO_VERSION ${GLIB_MICRO_VERSION})
++	set(GLIB2_VERSION ${GLIB_MAJOR_VERSION}.${GLIB_MINOR_VERSION}.${GLIB_MICRO_VERSION})
++else()
++	# When using VERSION_VAR it must be set to a valid value or undefined to
++	# mean "not found". It's not enough to use the empty string or any other CMake false boolean.
++	unset(GLIB2_VERSION)
++endif()
++
++include( FindPackageHandleStandardArgs )
++find_package_handle_standard_args( GLIB2
++	REQUIRED_VARS   GLIB2_LIBRARY GLIB2_MAIN_INCLUDE_DIR GLIB2_INTERNAL_INCLUDE_DIR
++	VERSION_VAR     GLIB2_VERSION
++)
++
++if( GLIB2_FOUND )
++	set( GLIB2_LIBRARIES ${GLIB2_LIBRARY} )
++	# Include transitive dependencies for static linking.
++	if(UNIX AND CMAKE_FIND_LIBRARY_SUFFIXES STREQUAL ".a")
++		find_library(PCRE_LIBRARY pcre)
++		list(APPEND GLIB2_LIBRARIES -pthread ${PCRE_LIBRARY})
++	endif()
++	set( GLIB2_INCLUDE_DIRS ${GLIB2_MAIN_INCLUDE_DIR} ${GLIB2_INTERNAL_INCLUDE_DIR} )
++	if ( WIN32 AND GLIB2_FOUND )
++		set ( GLIB2_DLL_DIR_RELEASE "${GLIB2_HINTS}/bin"
++			CACHE PATH "Path to GLib2 release DLLs"
++		)
++		set ( GLIB2_DLL_DIR_DEBUG "${GLIB2_HINTS}/debug/bin"
++			CACHE PATH "Path to GLib2 debug DLLs"
++		)
++
++		# GTK+ required GObject and GIO. We probably don't.
++		file( GLOB _glib2_dlls_release RELATIVE "${GLIB2_DLL_DIR_RELEASE}"
++			# "${GLIB2_DLL_DIR_RELEASE}/gio-2.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/glib-2.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/gmodule-2.dll"
++			# "${GLIB2_DLL_DIR_RELEASE}/gobject-2.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/gthread-2.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/libcharset.dll"
++			# gnutls-3.6.3-1-win64ws ships with libffi-6.dll
++			# "${GLIB2_DLL_DIR_RELEASE}/libffi.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/libiconv.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/libintl.dll"
++			"${GLIB2_DLL_DIR_RELEASE}/pcre.dll"
++			# "${GLIB2_DLL_DIR_RELEASE}/pcre16.dll"
++			# "${GLIB2_DLL_DIR_RELEASE}/pcre32.dll"
++			# "${GLIB2_DLL_DIR_RELEASE}/pcrecpp.dll"
++			# "${GLIB2_DLL_DIR_RELEASE}/pcreposix.dll"
++		)
++		set ( GLIB2_DLLS_RELEASE ${_glib2_dlls_release}
++			# We're storing filenames only. Should we use STRING instead?
++			CACHE FILEPATH "GLib 2 release DLL list"
++		)
++		file( GLOB _glib2_dlls_debug RELATIVE "${GLIB2_DLL_DIR_DEBUG}"
++			# "${GLIB2_DLL_DIR_DEBUG}/gio-2.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/glib-2.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/gmodule-2.dll"
++			# "${GLIB2_DLL_DIR_DEBUG}/gobject-2.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/gthread-2.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/libcharset.dll"
++			# gnutls-3.6.3-1-win64ws ships with libffi-6.dll
++			# "${GLIB2_DLL_DIR_DEBUG}/libffi.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/libiconv.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/libintl.dll"
++			"${GLIB2_DLL_DIR_DEBUG}/pcred.dll"
++			# "${GLIB2_DLL_DIR_DEBUG}/pcre16d.dll"
++			# "${GLIB2_DLL_DIR_DEBUG}/pcre32d.dll"
++			# "${GLIB2_DLL_DIR_DEBUG}/pcrecppd.dll"
++			# "${GLIB2_DLL_DIR_DEBUG}/pcreposixd.dll"
++		)
++		set ( GLIB2_DLLS_DEBUG ${_glib2_dlls_debug}
++			# We're storing filenames only. Should we use STRING instead?
++			CACHE FILEPATH "GLib 2 debug DLL list"
++		)
++
++		file( GLOB _glib2_pdbs_release RELATIVE "${GLIB2_DLL_DIR_RELEASE}"
++			"${GLIB2_DLL_DIR_RELEASE}/glib-2.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/gmodule-2.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/gthread-2.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/libcharset.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/libiconv.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/libintl.pdb"
++			"${GLIB2_DLL_DIR_RELEASE}/pcre.pdb"
++		)
++		set ( GLIB2_PDBS_RELEASE ${_glib2_pdbs_release}
++			CACHE FILEPATH "GLib2 debug release PDB list"
++		)
++		file( GLOB _glib2_pdbs_debug RELATIVE "${GLIB2_DLL_DIR_DEBUG}"
++			"${GLIB2_DLL_DIR_DEBUG}/glib-2.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/gmodule-2.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/gthread-2.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/libcharset.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/libiconv.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/libintl.pdb"
++			"${GLIB2_DLL_DIR_DEBUG}/pcred.pdb"
++		)
++		set ( GLIB2_PDBS_DEBUG ${_glib2_pdbs_debug}
++			CACHE FILEPATH "GLib2 debug debug PDB list"
++		)
++
++		mark_as_advanced( GLIB2_DLL_DIR_RELEASE GLIB2_DLLS_RELEASE GLIB2_PDBS_RELEASE )
++		mark_as_advanced( GLIB2_DLL_DIR_DEBUG GLIB2_DLLS_DEBUG GLIB2_PDBS_DEBUG )
++	endif()
++elseif( GLIB2_FIND_REQUIRED )
++	message( SEND_ERROR "Package required but not found" )
++else()
++	set( GLIB2_LIBRARIES )
++	set( GLIB2_MAIN_INCLUDE_DIRS )
++	set( GLIB2_DLL_DIR_RELEASE )
++	set( GLIB2_DLL_DIR_DEBUG )
++	set( GLIB2_PDBS_RELEASE )
++	set( GLIB2_PDBS_DEBUG )
++	set( GLIB2_DLLS )
++endif()
++
++mark_as_advanced( GLIB2_INCLUDE_DIRS GLIB2_LIBRARIES )
+diff --git a/cmake/FindWSLibrary.cmake b/cmake/FindWSLibrary.cmake
+--- /dev/null
++++ b/cmake/FindWSLibrary.cmake
+@@ -0,0 +1,37 @@
++#
++# - Find WS Library
++#  This function is a wrapper for find_library() that does handle vcpkg exported
++#  library directory structure
++
++function(FindWSLibrary OUTPUT_LIBRARY)
++    cmake_parse_arguments(
++        WS_LIB
++        ""
++        "WIN32_HINTS"
++        "NAMES;HINTS;PATHS"
++        ${ARGN}
++    )
++
++    if (WIN32)
++        find_library(${OUTPUT_LIBRARY}_DEBUG
++            NAMES ${WS_LIB_NAMES}
++            HINTS "${WS_LIB_WIN32_HINTS}/debug/lib"
++            PATHS ${WS_LIB_PATHS}
++        )
++        find_library(${OUTPUT_LIBRARY}_RELEASE
++            NAMES ${WS_LIB_NAMES}
++            HINTS "${WS_LIB_WIN32_HINTS}/lib"
++            PATHS ${WS_LIB_PATHS}
++        )
++
++        if (${OUTPUT_LIBRARY}_DEBUG AND ${OUTPUT_LIBRARY}_RELEASE)
++            set(${OUTPUT_LIBRARY} debug ${${OUTPUT_LIBRARY}_DEBUG} optimized ${${OUTPUT_LIBRARY}_RELEASE} PARENT_SCOPE)
++        endif()
++    else()
++        find_library(${OUTPUT_LIBRARY}
++            NAMES ${WS_LIB_NAMES}
++            HINTS ${WS_LIB_HINTS}
++            PATHS ${WS_LIB_PATHS}
++        )
++    endif()
++endfunction()
+diff --git a/cmake/FindWSWinLibs.cmake b/cmake/FindWSWinLibs.cmake
+--- /dev/null
++++ b/cmake/FindWSWinLibs.cmake
+@@ -0,0 +1,105 @@
++#
++# - Find WSWin Libs
++#  Due to the layout of the Wireshark Win support libs,
++#  CMake needs some support to find them
++#
++#  The function is passed the directory name to search for and the variable
++#  to set in the callers scope.
++
++function( FindWSWinLibs _WS_LIB_SEARCH_PATH _LIB_HINT_VAR )
++  if( WIN32 )
++    if( ARGN )
++      set( _PROJECT_LIB_DIR ${ARGN} )
++    else()
++      if( DEFINED ENV{WIRESHARK_LIB_DIR} )
++        # The buildbots set WIRESHARK_LIB_DIR but not WIRESHARK_BASE_DIR.
++        file( TO_CMAKE_PATH "$ENV{WIRESHARK_LIB_DIR}" _PROJECT_LIB_DIR )
++      else()
++        file( TO_CMAKE_PATH "$ENV{WIRESHARK_BASE_DIR}" _WS_BASE_DIR )
++        set( _PROJECT_LIB_DIR "${_WS_BASE_DIR}/wireshark-${WIRESHARK_TARGET_PLATFORM}-libs-3.4" )
++      endif()
++    endif()
++
++    file( GLOB _SUBDIR "${_PROJECT_LIB_DIR}/*" )
++    # We might be able to use $ENV{VSCMD_ARG_TGT_ARCH} here.
++    set (_vcpkg_arch x64)
++    if(WIRESHARK_TARGET_PLATFORM MATCHES "win32")
++      set (_vcpkg_arch x86)
++    endif()
++
++    foreach( _DIR ${_SUBDIR} )
++      if( IS_DIRECTORY ${_DIR} )
++        if( "${_DIR}" MATCHES ".*/${_WS_LIB_SEARCH_PATH}" )
++          set(_vcpkg_dir "${_DIR}/installed/${_vcpkg_arch}-windows")
++          if( IS_DIRECTORY "${_vcpkg_dir}")
++            set( ${_LIB_HINT_VAR} ${_vcpkg_dir} PARENT_SCOPE )
++          else()
++            set( ${_LIB_HINT_VAR} ${_DIR} PARENT_SCOPE )
++          endif()
++        endif()
++      endif()
++    endforeach()
++  endif()
++endfunction()
++
++# Add a single DLL
++function(AddWSWinDLL _PKG_NAME _PKG_HINTS _DLL_GLOB)
++  if(WIN32 AND ${_PKG_NAME}_FOUND)
++    string(TOUPPER ${_PKG_NAME} _PKG_VAR)
++    set ( ${_PKG_VAR}_DLL_DIR "${${_PKG_HINTS}}/bin"
++      CACHE PATH "Path to ${_PKG_NAME} DLL"
++    )
++    file( GLOB _pkg_dll RELATIVE "${${_PKG_VAR}_DLL_DIR}"
++      "${${_PKG_VAR}_DLL_DIR}/${_DLL_GLOB}.dll"
++    )
++    set ( ${_PKG_VAR}_DLL ${_pkg_dll}
++      CACHE STRING "${_PKG_NAME} DLL file name"
++    )
++    file( GLOB _pkg_pdb RELATIVE "${${_PKG_VAR}_DLL_DIR}"
++      "${${_PKG_VAR}_DLL_DIR}/${_DLL_GLOB}.pdb"
++    )
++    set ( ${_PKG_VAR}_PDB ${_pkg_pdb}
++      CACHE STRING "${_PKG_NAME} PDB file name"
++    )
++    mark_as_advanced( ${_PKG_VAR}_DLL_DIR ${_PKG_VAR}_DLL ${_PKG_VAR}_PDB )
++  else()
++    set( ${_PKG_VAR}_DLL_DIR )
++    set( ${_PKG_VAR}_DLL )
++  endif()
++endfunction()
++
++# Add a list of DLLs
++function(AddWSWinDLLS _PKG_NAME _PKG_HINTS) # ...DLL globs
++  if(WIN32 AND ${_PKG_NAME}_FOUND)
++    string(TOUPPER ${_PKG_NAME} _PKG_VAR)
++    set ( ${_PKG_VAR}_DLL_DIR "${${_PKG_HINTS}}/bin"
++      CACHE PATH "Path to ${_PKG_NAME} DLLs"
++    )
++
++    set (_pkg_dlls)
++    set (_pkg_pdbs)
++    foreach(_dll_glob ${ARGN})
++      file( GLOB _pkg_dll RELATIVE "${${_PKG_VAR}_DLL_DIR}"
++        "${${_PKG_VAR}_DLL_DIR}/${_dll_glob}.dll"
++      )
++      list(APPEND _pkg_dlls "${_pkg_dll}")
++      file( GLOB _pkg_pdb RELATIVE "${${_PKG_VAR}_DLL_DIR}"
++        "${${_PKG_VAR}_DLL_DIR}/${_dll_glob}.pdb"
++      )
++      list(APPEND _pkg_pdbs "${_pkg_pdb}")
++    endforeach()
++
++    set ( ${_PKG_VAR}_DLLS ${_pkg_dlls}
++    CACHE FILEPATH "${_PKG_NAME} DLL list"
++    )
++    set ( ${_PKG_VAR}_PDBS ${_pkg_pdbs}
++      CACHE FILEPATH "${_PKG_NAME} PDB list"
++    )
++
++    mark_as_advanced( ${_PKG_VAR}_DLL_DIR ${_PKG_VAR}_DLLS ${_PKG_VAR}_PDBS )
++  else()
++    set( ${_PKG_VAR}_DLL_DIR )
++    set( ${_PKG_VAR}_DLLS )
++    set( ${_PKG_VAR}_PDBS )
++  endif()
++endfunction()
+--- a/cmake/FindWireshark.cmake
++++ b/cmake/FindWireshark.cmake
+@@ -1,28 +1,39 @@
++# Locate the Wireshark library.
+ #
+-# Try to find the wireshark library and its includes
++# This file is meant to be copied into projects that want to use Wireshark.
++# It will search for WiresharkConfig.cmake, which ships with Wireshark
++# and will provide up-to-date buildsystem changes. Thus there should not be
++# any need to update FindWiresharkVc.cmake again after you integrated it into
++# your project.
+ #
+-# This snippet sets the following variables:
+-#  WIRESHARK_FOUND             True if wireshark library got found
+-#  WIRESHARK_INCLUDE_DIRS      Location of the wireshark headers 
+-#  WIRESHARK_LIBRARIES         List of libraries to use wireshark
+-#
+-#  Copyright (c) 2011 Reinhold Kainhofer <reinhold@kainhofer.com>
+-#
+-#  Redistribution and use is allowed according to the terms of the New
+-#  BSD license.
+-#  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-#
+-
+-# wireshark does not install its library with pkg-config information,
+-# so we need to manually find the libraries and headers
++# This module defines the following variables:
++# Wireshark_FOUND
++# Wireshark_VERSION_MAJOR
++# Wireshark_VERSION_MINOR
++# Wireshark_VERSION_PATCH
++# Wireshark_VERSION
++# Wireshark_VERSION_STRING
++# Wireshark_INSTALL_DIR
++# Wireshark_PLUGIN_INSTALL_DIR
++# Wireshark_LIB_DIR
++# Wireshark_LIBRARY
++# Wireshark_INCLUDE_DIR
++# Wireshark_CMAKE_MODULES_DIR
+ 
+-FIND_PATH( WIRESHARK_INCLUDE_DIRS epan/packet.h PATH_SUFFIXES wireshark )
+-FIND_LIBRARY( WIRESHARK_LIBRARIES wireshark )
++find_package(Wireshark ${Wireshark_FIND_VERSION} QUIET NO_MODULE PATHS $ENV{HOME} /opt/Wireshark)
+ 
+-# Report results
+-IF ( WIRESHARK_LIBRARIES AND WIRESHARK_INCLUDE_DIRS )
+-  SET( WIRESHARK_FOUND 1 )
+-ELSE ( WIRESHARK_LIBRARIES AND WIRESHARK_INCLUDE_DIRS )
+-  MESSAGE( SEND_ERROR "Could NOT find the wireshark library and headers" )
+-ENDIF ( WIRESHARK_LIBRARIES AND WIRESHARK_INCLUDE_DIRS )
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Wireshark CONFIG_MODE)
+ 
++MESSAGE(STATUS "Wireshark_FOUND: ${Wireshark_FOUND}")
++MESSAGE(STATUS "Wireshark_VERSION_MAJOR: ${Wireshark_VERSION_MAJOR}")
++MESSAGE(STATUS "Wireshark_VERSION_MINOR: ${Wireshark_VERSION_MINOR}")
++MESSAGE(STATUS "Wireshark_VERSION_PATCH: ${Wireshark_VERSION_PATCH}")
++MESSAGE(STATUS "Wireshark_VERSION: ${Wireshark_VERSION}")
++MESSAGE(STATUS "Wireshark_VERSION_STRING: ${Wireshark_VERSION_STRING}")
++MESSAGE(STATUS "Wireshark_INSTALL_DIR: ${Wireshark_INSTALL_DIR}")
++MESSAGE(STATUS "Wireshark_PLUGIN_INSTALL_DIR: ${Wireshark_PLUGIN_INSTALL_DIR}")
++MESSAGE(STATUS "Wireshark_LIB_DIR: ${Wireshark_LIB_DIR}")
++MESSAGE(STATUS "Wireshark_LIBRARY: ${Wireshark_LIBRARY}")
++MESSAGE(STATUS "Wireshark_INCLUDE_DIR: ${Wireshark_INCLUDE_DIR}")
++MESSAGE(STATUS "Wireshark_CMAKE_MODULES_DIR: ${Wireshark_CMAKE_MODULES_DIR}")

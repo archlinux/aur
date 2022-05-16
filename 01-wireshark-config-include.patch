@@ -1,0 +1,45 @@
+--- h4bcm_wireshark_dissector-git/packet-btbrlmp.c	2022-05-16 09:04:46.437343496 +0200
++++ h4bcm_wireshark_dissector-git_patched/packet-btbrlmp.c	2022-05-16 09:07:22.634009274 +0200
+@@ -21,8 +21,6 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ 
+--- h4bcm_wireshark_dissector-git/packet-h4bcm.c	2022-05-16 09:04:46.437343496 +0200
++++ h4bcm_wireshark_dissector-git_patched/packet-h4bcm.c	2022-05-16 09:07:31.670675890 +0200
+@@ -23,8 +23,6 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#include "config.h"
+-
+ #include <epan/packet.h>
+ #include <epan/prefs.h>
+ #include <string.h>
+
+--- h4bcm_wireshark_dissector-git/tools/make-plugin-reg.py  2022-05-16 09:17:24.307339166 +0200
++++ h4bcm_wireshark_dissector-git_patched/tools/make-plugin-reg.py  2022-05-16 09:14:54.050673357 +0200
+@@ -102,7 +102,7 @@ reg_code = ""
+ reg_code += preamble
+ 
+ reg_code += """
+-#include "wireshark/config.h"
++#include <wireshark/ws_version.h>
+ 
+ #include <gmodule.h>
+ 
+@@ -131,8 +131,8 @@ for symbol in regs['codec_register']:
+ # FIXME should not be hardcoded here but actually come from moduleinfo.h ...
+ reg_code += """
+ WS_DLL_PUBLIC_DEF const gchar plugin_version[] = "0.0.2";
+-WS_DLL_PUBLIC_DEF const int plugin_want_major = VERSION_MAJOR;
+-WS_DLL_PUBLIC_DEF const int plugin_want_minor = VERSION_MINOR;
++WS_DLL_PUBLIC_DEF const int plugin_want_major = WIRESHARK_VERSION_MAJOR;
++WS_DLL_PUBLIC_DEF const int plugin_want_minor = WIRESHARK_VERSION_MINOR;
+ 
+ WS_DLL_PUBLIC void plugin_register(void);
+ 
