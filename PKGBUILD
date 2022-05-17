@@ -4,7 +4,7 @@ _orgname=ignite
 _projname=cli
 _pkgname=${_orgname}-${_projname}
 pkgname=${_pkgname}-bin
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="The all-in-one platform to build, launch, and maintain any crypto application on a sovereign and secured blockchain"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=(${_pkgname} starport)
 conflicts=(${_pkgname} starport)
 source_x86_64=("https://github.com/${_orgname}-hq/${_projname}/releases/download/v${pkgver}/${_orgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/${_orgname}-hq/${_projname}/releases/download/v${pkgver}/${_orgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('4cc85c4ba34d0382c98a96826a563293f47cd164c38564a44799ed4c7845568b')
-sha256sums_aarch64=('fd9004f319e46569aebc337f473718bb3b2b07ec5b017bed55fe81da807e3107')
+sha256sums_x86_64=('c79e7119a0e14881336b92a5191cba861130c80a5a21bb0f0aa8f79c4c237204')
+sha256sums_aarch64=('25512912e665473b52ad0f76ea64487aa197f7ce52575b1b553b88f020ecc0b2')
 
 package() {
     install -Dt "$pkgdir/usr/local/bin" "$_orgname"
