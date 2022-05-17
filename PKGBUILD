@@ -1,32 +1,35 @@
-# Maintainer: uzerus <szymonscholz (at) gmail.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+
 pkgname=zutils
-pkgver=1.6
+pkgver=1.11
 pkgrel=1
-pkgdesc="Utilities collection able to deal with any compressed and 
-uncompressed files transparently. Utilities - zcat,zcmp,zdiff,zgrep,ztest,zupdate"
-arch=('x86_64' 'i686')
-url="http://savannah.nongnu.org/projects/zutils/"
-license=('GPL3')
-depends=('xz' 'lzip' 'gzip' 'bzip2')
-makedepends=()
-optdepends=()
-provides=('zcat' 'zcmp' 'zdiff' 'zgrep' 'ztest' 'zupdate' 
-'zutils')
-conflicts=()
-source=(http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.lz)
-md5sums=('e25c577a95088b0edb06cf2e245a5ae6')
+pkgdesc="Zutils is a collection of utilities able to process any combination of compressed and uncompressed files transparently."
+url="http://www.nongnu.org/zutils/zutils.html"
+arch=('x86_64')
+depends=('gzip-zutils')
+makedepends=('lzip' 'bzip2' 'gzip')
+license=('GPL')
+source=(
+    "http://download.savannah.gnu.org/releases/zutils/$pkgname-$pkgver.tar.lz"
+    "http://download.savannah.gnu.org/releases/zutils/$pkgname-$pkgver.tar.lz.sig"
+    )
+validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
+sha512sums=('2b7171e337bf50806f7e7890558a1eb0cf61e5cff61577713e1749bac682eb6036a5c327d79c6d450df38c30592e0bdbed44b6487020623259610d9181d9d4b5'
+            'SKIP')
 
 
 build() {
-  cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr --sysconfdir=/etc CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	make
+}
 
-  ./configure --prefix=/usr \
-	--sysconfdir=/etc
-  make
+check() {
+	cd "$pkgname-$pkgver"
+	make -k check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }

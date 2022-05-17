@@ -1,24 +1,18 @@
 pkgbase = zutils
-	pkgdesc = Utilities collection able to deal with any compressed and uncompressed files transparently. Utilities - zcat,zcmp,zdiff,zgrep,ztest,zupdate
-	pkgver = 1.6
+	pkgdesc = Zutils is a collection of utilities able to process any combination of compressed and uncompressed files transparently.
+	pkgver = 1.11
 	pkgrel = 1
-	url = http://savannah.nongnu.org/projects/zutils/
+	url = http://www.nongnu.org/zutils/zutils.html
 	arch = x86_64
-	arch = i686
-	license = GPL3
-	depends = xz
-	depends = lzip
-	depends = gzip
-	depends = bzip2
-	provides = zcat
-	provides = zcmp
-	provides = zdiff
-	provides = zgrep
-	provides = ztest
-	provides = zupdate
-	provides = zutils
-	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.6.tar.lz
-	md5sums = e25c577a95088b0edb06cf2e245a5ae6
+	license = GPL
+	makedepends = lzip
+	makedepends = bzip2
+	makedepends = gzip
+	depends = gzip-zutils
+	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.11.tar.lz
+	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.11.tar.lz.sig
+	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
+	sha512sums = 2b7171e337bf50806f7e7890558a1eb0cf61e5cff61577713e1749bac682eb6036a5c327d79c6d450df38c30592e0bdbed44b6487020623259610d9181d9d4b5
+	sha512sums = SKIP
 
 pkgname = zutils
-
