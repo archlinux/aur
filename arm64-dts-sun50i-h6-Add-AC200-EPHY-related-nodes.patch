@@ -1,7 +1,7 @@
-From 1b08baab634bebd4ef94ca449b81d7550c91abf0 Mon Sep 17 00:00:00 2001
+From c843cbfb9d8c5b68ed2fedfd2d6905ec852f2873 Mon Sep 17 00:00:00 2001
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 Date: Sun, 12 Jan 2020 12:09:12 +0100
-Subject: [PATCH 3/4] arm64: dts: allwinner: h6: Add AC200 EPHY related nodes
+Subject: [PATCH 011/101] arm64:dts: sun50i-h6: Add AC200 EPHY related nodes
 
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
@@ -9,12 +9,12 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
  1 file changed, 63 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-index 3329283e38ab..81caf1e96407 100644
+index 6cdebbbff..7c17076d9 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-@@ -16,6 +16,16 @@
- 	#address-cells = <1>;
- 	#size-cells = <1>;
+@@ -22,6 +22,16 @@ aliases {
+ 		mmc2 = &mmc2;
+ 	};
  
 +	ac200_pwm_clk: ac200_clk {
 +		compatible = "pwm-clock";
@@ -29,21 +29,21 @@ index 3329283e38ab..81caf1e96407 100644
  	cpus {
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -248,5 +258,9 @@
- 			ths_calibration: thermal-sensor-calibration@14 {
+@@ -307,6 +317,10 @@ ths_calibration: thermal-sensor-calibration@14 {
  				reg = <0x14 0x8>;
  			};
-+
+ 
 +			ephy_calibration: ephy-calibration@2c {
 +				reg = <0x2c 0x2>;
 +			};
- 
++
  			cpu_speed_grade: cpu-speed-grade@1c {
-@@ -291,6 +305,14 @@
- 				function = "emac";
+ 				reg = <0x1c 0x4>;
+ 			};
+@@ -364,6 +378,14 @@ ext_rgmii_pins: rgmii-pins {
  				drive-strength = <40>;
  			};
-+			
+ 
 +			/omit-if-no-ref/
 +			ext_rmii_pins: rmii_pins {
 +				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
@@ -51,22 +51,23 @@ index 3329283e38ab..81caf1e96407 100644
 +				function = "emac";
 +				drive-strength = <40>;
 +			};
- 
++
  			hdmi_pins: hdmi-pins {
  				pins = "PH8", "PH9", "PH10";
-@@ -311,6 +333,11 @@
- 				pins = "PD23", "PD24";
+ 				function = "hdmi";
+@@ -384,6 +406,11 @@ i2c2_pins: i2c2-pins {
  				function = "i2c2";
  			};
-+			
+ 
 +			i2c3_pins: i2c3-pins {
 +				pins = "PB17", "PB18";
 +				function = "i2c3";
 +			};
- 
++
  			mmc0_pins: mmc0-pins {
  				pins = "PF0", "PF1", "PF2", "PF3",
-@@ -329,6 +356,11 @@
+ 				       "PF4", "PF5";
+@@ -401,6 +428,11 @@ mmc1_pins: mmc1-pins {
  				bias-pull-up;
  			};
  
@@ -78,7 +79,7 @@ index 3329283e38ab..81caf1e96407 100644
  			mmc2_pins: mmc2-pins {
  				pins = "PC1", "PC4", "PC5", "PC6",
  				       "PC7", "PC8", "PC9", "PC10",
-@@ -504,6 +536,37 @@
+@@ -643,6 +675,38 @@ spi1: spi@5011000 {
  			#size-cells = <0>;
  		};
  
@@ -98,6 +99,7 @@ index 3329283e38ab..81caf1e96407 100644
 +			ac200: mfd@10 {
 +				compatible = "x-powers,ac200";
 +				reg = <0x10>;
++				clocks = <&ac200_pwm_clk>;
 +				interrupt-parent = <&pio>;
 +				interrupts = <1 20 IRQ_TYPE_LEVEL_LOW>;
 +				interrupt-controller;
@@ -117,5 +119,5 @@ index 3329283e38ab..81caf1e96407 100644
  			compatible = "allwinner,sun50i-h6-emac",
  				     "allwinner,sun50i-a64-emac";
 -- 
-2.20.1
+2.31.1
 

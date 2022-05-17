@@ -152,6 +152,10 @@
 	};
 };
 
+&i2s1 {
+    status = "okay";
+};
+
 &i2c3 {
     status = "okay";
 };
@@ -340,6 +344,10 @@
 
 &rtc {
 	clocks = <&ext_osc32k>;
+};
+
+&sound_hdmi {
+    status = "okay";
 };
 
 &uart0 {

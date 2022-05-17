@@ -1,0 +1,3 @@
+https://github.com/armbian/build/blob/master/patch/kernel/archive/sunxi-5.17/patches.armbian/HACK-media-uapi-hevc-tiles-and-num_slices.patch
+https://github.com/armbian/build/blob/master/patch/kernel/archive/sunxi-5.17/patches.armbian/Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch
+https://github.com/armbian/build/blob/master/patch/kernel/archive/sunxi-5.17/patches.armbian/WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch

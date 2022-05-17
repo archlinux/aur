@@ -6,63 +6,96 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-5.14
+_srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.14.8
+pkgver=5.17.7
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+source=(
+        # "http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+        "https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/${_srcname}.tar.xz"
         'sun50i-h6-tqc-a01.dts'
-        '0001-mfd-Add-support-for-AC200.patch'
-        '0001-HACK-h6-Add-HDMI-sound-card.patch'
-	'0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
-        '0002-net-phy-Add-support-for-AC200-EPHY.patch'
-        '0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch'
-        '0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch'
-        '0003-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch'
-        '0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch'
-        '0005-drm-gem-cma-Export-with-handle-allocator.patch'
-        '0006-drm-sun4i-Add-GEM-allocator.patch'
-        '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
-	'0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
-	'0012-arm64-h6-gpu-devfreq-enable.patch'
-	'0040-wip-H6-deinterlace.patch'
-	'0041-arm64-dts-h6-deinterlace.patch'
+        # custom
+        '0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
+        '0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
+        '0012-arm64-h6-gpu-devfreq-enable.patch'
+        # emmc
+        '0012-fix-h6-emmc.patch'
+        '0013-x-fix-h6-emmc-dts.patch'
+        # ethernet
+        'arm64-dts-sun50i-h6-Add-AC200-EPHY-related-nodes.patch'
+        'drv-net-phy-Add-support-for-AC200-EPHY.patch'
+        'drv-mfd-Add-support-for-AC200.patch'
+        'net-stmmac-sun8i-Add-support-for-enabling-a-regulator-for-PHY-I.patch'
+        'net-stmmac-sun8i-Rename-PHY-regulator-variable-to-regulator_phy.patch'
+        'net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regulator.patch'
+        # hdmi sound
+        'arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch'
+        # audio codec
+        '0009-allwinner-h6-support-ac200-audio-codec.patch'
+        # misc
+        '0010-allwinner-add-sunxi_get_soc_chipid-and-sunxi_get_ser.patch'
+        'arm64-dts-sun50i-h6.dtsi-improve-thermals.patch'
+        'arm64-dts-allwinner-h6-Add-SCPI-protocol.patch'
+        'arm64-dts-allwinner-h6-Protect-SCP-clocks.patch'
+        'drv-pinctrl-sunxi-pinctrl-sun50i-h6.c-GPIO-disable_strict_mode.patch'
+        # cedrus
+        'WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch'
+        'HACK-media-uapi-hevc-tiles-and-num_slices.patch'
+        'Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch'
+        'drv-media-cedrus-10-bit-HEVC-support.patch'
+        'drv-media-cedrus-Add-callback-for-buffer-cleanup.patch'
+        'drv-media-cedrus-h264-Improve-buffer-management.patch'
+        'drv-media-cedrus-hevc-Improve-buffer-management.patch'
+        'drv-media-cedrus-hevc-tiles-hack.patch'
+
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
 
 [[ ${pkgver##*.} != 0 ]] && \
-source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+# source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('a082ef5748b813abca0649dab8be5f52'
-         '46d921dba031a9f397955a787c71911e'
-         '17aa0c69176c68cd98b4522740a1b747'
-         '2285d81ec6fb859d34b7abfd46a59550'
+md5sums=('07321a70a48d062cebd0358132f11771'
+         '5dc58208abd2ad11ad2aa67fadf1c66f'
          '7a18066683f3351b2bbd2653db783f80'
-         'bc7904920675ba8d38f21d46ffac33b5'
-         '94a69594f90309c50c83a5cc8579fb54'
-         'e1868e41094baff9eceba481fc097c79'
-         '2d2de8db5e0c7d8f51a05fd33000c19a'
-         '5d42a68276c8f9e8b3de040fa2579b84'
-         '335382823f6dc2aae2f6038b7aee339e'
-         'cb38b30491472097c3b9b475de39127f'
-         'bc65c0b9e4d6fb2fe3a81b8358886885'
          '74baf0cb243b3abd5e38f0131c95408f'
-         '05c4d9cbe622d5ff15e6b84b1c5c1a70'
-         'd1543c205b4faf9be4552d4308228217'
-         'e4ef0ae46cdfb23abb11d729452f68b2'
-         '80fec552244267a059d06399c1a3c931'
+         '947f64e1c0eec0564cb683940a5af51f'
+         '6c58c6697e1275038acf579251c69d31'
+         '2d7918618ec227b65d35078b3c7862ce'
+         '5cf059c6de6dbee8d20041dcb735f5b1'
+         'f0826f12d7b1f597fba32913e8580543'
+         '714a3df875f3a05aee07c7c464ad3fe0'
+         'c6bb7c8ce8d41c93d5c2b70f4110135f'
+         'abe164c89da5fb50bb4c866c1d5fe03b'
+         '72a95b87caccf7f36dff15ed1e4a6df9'
+         'f8aa3197a5c1e6d01cb1809c31cc2d92'
+         'eda5ceb6d7f63318bba5ec63c601ae93'
+         'a709f3089148690f41c739275e66e9b0'
+         '99368425ced226332796b7f69fda3a2b'
+         '6ab19f7244b9f82f56edabeb7e1e1004'
+         'a95bab65e3009909138c0982ab7234aa'
+         '113ec102b9b94a8c8c44dbde7e9b8d59'
+         '196331c28fc1c77f78d7c6378cfb9e9e'
+         'ec38509f11f44b412f4de990502a3fb7'
+         '52d4ddae2d47320b97ce311106b407af'
+         '2eb1edf94864c3c0b2a6f82463f84d67'
+         '28ce48cd57b8776a75f4fed54569ffd1'
+         'f5e2e35d9f0955cef5cf2332f901ff09'
+         'b36af4f711a0aeb3f0edeb522a9e97bf'
+         'dafb6c0da0e1c6be55c18fc50c850fab'
+         'ce726485a1ab9c726037aa02fdfa15f1'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '767e2bd13b4f1497f7500877792cbff2')
+         'c942f79b0f310ca6e8d5828fad539a7f')
 
 prepare() {
   cd ${_srcname}
@@ -76,22 +109,39 @@ prepare() {
   echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts//dts/dtb}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
   cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/allwinner/${target_dts}"
 
-  # patches for TQC A01
-  patch -p1 < ../0001-mfd-Add-support-for-AC200.patch
-  patch -p1 < ../0001-HACK-h6-Add-HDMI-sound-card.patch
+  # patches
   patch -p1 < ../0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-  patch -p1 < ../0002-net-phy-Add-support-for-AC200-EPHY.patch
-  patch -p1 < ../0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch
-  patch -p1 < ../0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch
-  patch -p1 < ../0003-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch
-  patch -p1 < ../0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch
-  patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
-  patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
-  patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
   patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
   patch -p1 < ../0012-arm64-h6-gpu-devfreq-enable.patch
-  patch -p1 < ../0040-wip-H6-deinterlace.patch
-  patch -p1 < ../0041-arm64-dts-h6-deinterlace.patch
+
+  patch -p1 < ../0012-fix-h6-emmc.patch
+  patch -p1 < ../0013-x-fix-h6-emmc-dts.patch
+  
+  patch -p1 < ../arm64-dts-sun50i-h6-Add-AC200-EPHY-related-nodes.patch
+  patch -p1 < ../drv-net-phy-Add-support-for-AC200-EPHY.patch
+  patch -p1 < ../drv-mfd-Add-support-for-AC200.patch
+  patch -p1 < ../net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regulator.patch
+  patch -p1 < ../net-stmmac-sun8i-Rename-PHY-regulator-variable-to-regulator_phy.patch
+  patch -p1 < ../net-stmmac-sun8i-Add-support-for-enabling-a-regulator-for-PHY-I.patch
+
+  patch -p1 < ../arm64-dts-allwinner-h6-Add-hdmi-sound-card.patch
+  
+  patch -p1 < ../0009-allwinner-h6-support-ac200-audio-codec.patch
+
+  patch -p1 < ../0010-allwinner-add-sunxi_get_soc_chipid-and-sunxi_get_ser.patch
+  patch -p1 < ../arm64-dts-sun50i-h6.dtsi-improve-thermals.patch
+  patch -p1 < ../arm64-dts-allwinner-h6-Add-SCPI-protocol.patch
+  patch -p1 < ../arm64-dts-allwinner-h6-Protect-SCP-clocks.patch
+  patch -p1 < ../drv-pinctrl-sunxi-pinctrl-sun50i-h6.c-GPIO-disable_strict_mode.patch
+
+  patch -p1 < ../WIP-media-uapi-hevc-add-fields-needed-for-rkvdec.patch
+  patch -p1 < ../HACK-media-uapi-hevc-tiles-and-num_slices.patch
+  patch -p1 < ../Revert-net-Remove-net-ipx.h-and-uapi-linux-ipx.h-hea.patch
+  patch -p1 < ../drv-media-cedrus-10-bit-HEVC-support.patch
+  patch -p1 < ../drv-media-cedrus-Add-callback-for-buffer-cleanup.patch
+  patch -p1 < ../drv-media-cedrus-h264-Improve-buffer-management.patch
+  patch -p1 < ../drv-media-cedrus-hevc-Improve-buffer-management.patch
+  patch -p1 < ../drv-media-cedrus-hevc-tiles-hack.patch
 
   cat "${srcdir}/config" > ./.config
 

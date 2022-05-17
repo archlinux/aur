@@ -1,7 +1,7 @@
-From d98aa318aabd4aba05328f9c832b23bdf2e1677a Mon Sep 17 00:00:00 2001
+From 3e6411db1aa4dfe1d1a6d63c2cbed2c588d35aef Mon Sep 17 00:00:00 2001
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 Date: Fri, 16 Aug 2019 16:38:21 +0200
-Subject: [PATCH 1/4] mfd: Add support for AC200
+Subject: [PATCH 006/101] drv:mfd: Add support for AC200
 
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
@@ -14,7 +14,7 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
  create mode 100644 include/linux/mfd/ac200.h
 
 diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index 420900852166..a45e7c88ac9b 100644
+index d2f345245..5b756e81b 100644
 --- a/drivers/mfd/Kconfig
 +++ b/drivers/mfd/Kconfig
 @@ -178,6 +178,15 @@ config MFD_AC100
@@ -22,7 +22,7 @@ index 420900852166..a45e7c88ac9b 100644
  	  components like codecs or RTC under the corresponding menus.
  
 +config MFD_AC200
-+	tristate "X-Powers AC200"
++	bool "X-Powers AC200"
 +	select MFD_CORE
 +	depends on I2C
 +	help
@@ -34,10 +34,10 @@ index 420900852166..a45e7c88ac9b 100644
  	tristate
  	select MFD_CORE
 diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index aed99f08739f..4431a4cf19ca 100644
+index 2ba6646e8..7edc825f9 100644
 --- a/drivers/mfd/Makefile
 +++ b/drivers/mfd/Makefile
-@@ -141,6 +141,7 @@ obj-$(CONFIG_MFD_DA9052_SPI)	+= da9052-spi.o
+@@ -142,6 +142,7 @@ obj-$(CONFIG_MFD_DA9052_SPI)	+= da9052-spi.o
  obj-$(CONFIG_MFD_DA9052_I2C)	+= da9052-i2c.o
  
  obj-$(CONFIG_MFD_AC100)		+= ac100.o
@@ -47,7 +47,7 @@ index aed99f08739f..4431a4cf19ca 100644
  obj-$(CONFIG_MFD_AXP20X_RSB)	+= axp20x-rsb.o
 diff --git a/drivers/mfd/ac200.c b/drivers/mfd/ac200.c
 new file mode 100644
-index 000000000000..570573790d91
+index 000000000..570573790
 --- /dev/null
 +++ b/drivers/mfd/ac200.c
 @@ -0,0 +1,170 @@
@@ -223,7 +223,7 @@ index 000000000000..570573790d91
 +MODULE_LICENSE("GPL v2");
 diff --git a/include/linux/mfd/ac200.h b/include/linux/mfd/ac200.h
 new file mode 100644
-index 000000000000..0c677094a5b3
+index 000000000..0c677094a
 --- /dev/null
 +++ b/include/linux/mfd/ac200.h
 @@ -0,0 +1,208 @@
@@ -436,5 +436,5 @@ index 000000000000..0c677094a5b3
 +
 +#endif /* __LINUX_MFD_AC200_H */
 -- 
-2.20.1
+2.31.1
 
