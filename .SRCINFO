@@ -1,0 +1,22 @@
+pkgbase = cinny-desktop
+	pkgdesc = Cinny is a matrix client focusing primarily on a simple, elegant and secure interface.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/cinnyapp/cinny-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	depends = webkit2gtk
+	depends = openssl
+	depends = gtk3
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libvips
+	depends = sqlite
+	source = cinny-desktop::https://github.com/cinnyapp/cinny-desktop/releases/download/v2.0.3/cinny-desktop-v2.0.3.zip
+	sha256sums = c74471769c2d89904b89f6418b396b9897878708393cd0a9a9d35e082c0a7e33
+
+pkgname = cinny-desktop
