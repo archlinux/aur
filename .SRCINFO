@@ -1,8 +1,9 @@
 pkgbase = vlc-materia-skin
 	pkgdesc = Materia Skin for VLC
 	pkgver = v0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atahabaki/materia-vlc
+	install = vlc-materia-skin.install
 	arch = any
 	license = GPL
 	makedepends = git
