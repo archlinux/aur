@@ -1,5 +1,5 @@
 pkgname=podman-remote
-pkgver=3.4.4
+pkgver=4.1.0
 pkgrel=1
 conflicts=('podman')
 provides=('podman')
