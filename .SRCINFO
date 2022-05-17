@@ -1,0 +1,27 @@
+pkgbase = libtiff-maya-git
+	pkgdesc = TIFF library and utilities (built with --enable-ld-version-script flag for maya support)
+	pkgver = 4.2.0.r7.gec8bdded
+	pkgrel = 1
+	url = https://libtiff.gitlab.io/libtiff/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = freeglut
+	makedepends = glu
+	makedepends = jbigkit
+	makedepends = mesa
+	depends = glibc
+	depends = libjpeg
+	depends = xz
+	depends = zlib
+	optdepends = freeglut: for using tiffgt
+	provides = libtiff
+	provides = libtiff.so
+	provides = libtiffxx.so
+	conflicts = libtiff
+	options = staticlibs
+	source = git+https://gitlab.com/libtiff/libtiff.git
+	sha256sums = SKIP
+
+pkgname = libtiff-maya-git
