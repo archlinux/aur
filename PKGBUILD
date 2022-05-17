@@ -18,7 +18,7 @@ sha1sums=('SKIP'
 install="$pkgname.install"
 
 pkgver() {
-    cd UPMetroSkin
+    cd "${srcdir}/UPMetroSkin"
     printf "%sr%s.%s" "$(cat version | tr -d " \t\n\r")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
