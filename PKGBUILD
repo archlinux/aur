@@ -3,7 +3,7 @@
 pkgname=cl-cffi
 _pkgname="${pkgname#cl-}"
 pkgver=0.24.1.r19.g3c76afe
-pkgrel=1
+pkgrel=2
 pkgdesc='Common Foreign Function Interface for Common Lisp'
 arch=('any')
 url='https://cffi.common-lisp.dev/'
@@ -44,7 +44,8 @@ check() {
 
   sbcl --script tests/run-tests.lisp 
 
-  make clean
+  # delete test artifacts
+  find . -name '*.o' -delete
 }
 
 package() {

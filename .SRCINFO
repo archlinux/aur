@@ -1,7 +1,7 @@
 pkgbase = cl-cffi
 	pkgdesc = Common Foreign Function Interface for Common Lisp
 	pkgver = 0.24.1.r19.g3c76afe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cffi.common-lisp.dev/
 	arch = any
 	license = MIT
