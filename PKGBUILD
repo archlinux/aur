@@ -1,54 +1,35 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
+# Contributor: Teodor Nikolov <teodor.nikolov22@gmail.com>
 
 pkgname=libtree
-pkgver=1.2.1
+pkgver=3.1.1
 pkgrel=1
-pkgdesc="ldd as a tree with an option to bundle dependencies into a single folder "
+pkgdesc="ldd as a tree"
 arch=('x86_64')
 url="https://github.com/haampie/libtree"
 license=('MIT')
-depends=('cppglob' 'gcc-libs')
-makedepends=('cmake' 'cxxopts' 'termcolor' 'elfio')
-optdepends=('binutils: For the --strip option'
-	'chrpath: For the --chrpath option'
-)
-checkdepends=('gtest')
+depends=('gcc-libs')
+makedepends=()
+optdepends=()
+checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3273588747e75bbbc1416139471e49d149148de4bc1cd6c063b45fbfee45edf7')
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	mkdir -p build
-
-	# Needed for LTO
-	find . \
-		-name 'CMakeLists.txt' \
-		-exec sed -i 's/VERSION 3.0/VERSION 3.13.0/' {} \;
-}
+sha256sums=('6148436f54296945d22420254dd78e1829d60124bb2f5b9881320a6550f73f5c')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+  cd "$srcdir/$pkgname-$pkgver"
 
-	cmake \
-		-DUSE_SYSTEM_DEPS=ON \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_UNITY_BUILD=ON \
-		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-		..
-
-	make
+  make
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+  cd "$srcdir/$pkgname-$pkgver"
 
-	make test
+  make check
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+  cd "$srcdir/$pkgname-$pkgver"
 
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make PREFIX="$pkgdir/usr/" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
