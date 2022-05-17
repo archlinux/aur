@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-windowck-plugin
 pkgname=${_pkgname}-xfwm4-theme-support
-pkgver=0.4.5+40+g585ba47
+pkgver=0.4.5+125+gcef4f71
 pkgrel=1
 pkgdesc="Xfce panel plugin for displaying window title and buttons (xfwm4 theme support reenabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
