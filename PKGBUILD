@@ -1,7 +1,7 @@
 # contributor: fbis251
 # former Maintainer: si_kabayan <aaizap4p at gmail dot com>
 pkgname=raccoon
-pkgver=4.19.0
+pkgver=4.20.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer"
@@ -17,7 +17,7 @@ source=('raccoon.desktop'
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
-            '962c226d3a78af5f299cb9ab934cb51614c6c6896f16be471bf9fc6d769573a7745031d15fe729f3199b5233b79619b4aa082b96e08e4c4646c5cc4626191806'
+            '97ea08e4c980ac7f87b7590b455aa7bf38dd99d32eee874c9b4c7c49a69a8b32a87107e00e7a1e60b9aed3ef84175054aa3bb77871d052599d25071509184fff'
             '0e095c7cb167fd049968ba9e7c5acf51c3454aca884fd3106209d9ba92cd434c22c1398996f58238e98c692d7b0a635c6e6fb60782ba0dcb79cd837fe9ed7bba')
 
 prepare() {
