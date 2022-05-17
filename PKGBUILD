@@ -8,7 +8,7 @@
 
 pkgname=discord_arch_electron_wayland
 pkgver=0.0.17
-pkgrel=7
+pkgrel=8
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
@@ -21,16 +21,24 @@ optdepends=(
 	'libpulse: Pulseaudio support'
 	'xdg-utils: Open files'
 )
-source=(
-	"https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz"
-	discord-launcher.sh
-)
-sha256sums=(
-	'3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315'
-	'd1bda62e34f21d07e238990474ee1b29067043b4794d8f86c0f269310405e787'
-)
+source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz")
+sha256sums=('3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315')
 
 prepare() {
+	# create launcher script
+	cat >>"$srcdir"/discord-launcher.sh <<'EOF'
+#!/bin/sh
+
+if [ "$XDG_SESSION_TYPE" = wayland ]; then
+	# Using wayland
+	exec electron13 --enable-features=UseOzonePlatform \
+		--ozone-platform=wayland /usr/lib/discord/app.asar \$@
+else
+	# Using x11
+	exec electron13 /usr/lib/discord/app.asar \$@
+fi
+EOF
+
 	# fix the .desktop file
 	sed -i "s|Exec=.*|Exec=/usr/bin/discord-launcher.sh|" Discord/discord.desktop
 	echo 'Path=/usr/bin' >>Discord/discord.desktop
