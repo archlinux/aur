@@ -8,12 +8,16 @@ CURRENT=$(gsettings get org.gnome.desktop.interface gtk-theme)
 case $1 in
     dark | night)
       for f in "$HOME/.local/share/dark-mode.d/"*; do
-        "$f" &
+        if [ -x "$f" ]; then
+            "$f" &
+        fi
       done
     ;;
     light | day | daytime)
       for f in "$HOME/.local/share/light-mode.d/"*; do
-        "$f" &
+        if [ -x "$f" ]; then
+            "$f" &
+        fi
       done
     ;;
     toggle | transition)
