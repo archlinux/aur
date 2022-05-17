@@ -24,4 +24,5 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D ./target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 ./examples/*.tok -t "${pkgdir}/usr/share/${pkgname%-git}/examples"
 }
