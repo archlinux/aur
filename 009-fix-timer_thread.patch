@@ -1,0 +1,14 @@
+--- core/src/lib/timer_thread.cc  2022-03-17 17:22:34.000000000 +0100
++++ core/src/lib/timer_thread.cc  2022-05-15 19:28:30.410009804 +0200
+@@ -213,9 +213,11 @@
+       remove_from_list = true;
+     } else {
+       p->scheduled_run_timepoint = last_timer_run_timepoint + p->interval;
++      next_timer_run = min(p->scheduled_run_timepoint, next_timer_run);
+     }
++  } else {
++    next_timer_run = min(p->scheduled_run_timepoint, next_timer_run);
+   }
+-  next_timer_run = min(p->scheduled_run_timepoint, next_timer_run);
+   return remove_from_list;
+ }

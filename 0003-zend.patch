@@ -1,0 +1,11 @@
+--- webui/vendor/zendframework/zend-stdlib/src/ArrayObject.php
++++ webui/vendor/zendframework/zend-stdlib/src/ArrayObject.php
+@@ -423,7 +423,7 @@ public function unserialize($data)
+                     $this->setIteratorClass($v);
+                     break;
+                 case 'protectedProperties':
+-                    continue;
++                    break;
+                 default:
+                     $this->__set($k, $v);
+             }

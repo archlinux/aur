@@ -1,0 +1,12 @@
+--- core/src/dird/ua_prune.cc.orig	2021-12-23 12:29:52.844307700 +0100
++++ core/src/dird/ua_prune.cc	2021-12-23 14:58:31.874042423 +0100
+@@ -585,7 +585,9 @@ bail_out:
+ 
+ static void DropTempTables(UaContext* ua)
+ {
++  ua->db->SqlQuery("SET client_min_messages = warning");
+   ua->db->SqlQuery(BareosDb::SQL_QUERY::drop_deltabs);
++  ua->db->SqlQuery("SET client_min_messages = notice");
+ }
+ 
+ static bool CreateTempTables(UaContext* ua)

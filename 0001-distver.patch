@@ -1,0 +1,10 @@
+--- core/cmake/distname.sh	2021-12-23 02:16:52.596202300 +0100
++++ core/cmake/distname.sh	2021-12-23 02:18:31.430250149 +0100
+@@ -181,6 +181,7 @@ else
+       elif test -f /etc/arch-release
+       then
+          PLATFORM=archlinux
++         DISTVER="Arch Linux"
+       elif test "$CYGWIN" = yes
+       then
+          PLATFORM=cygwin

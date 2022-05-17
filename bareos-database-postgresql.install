@@ -3,15 +3,13 @@ coloroff='\e[0m'
 
 # arg 0:  the new package version
 post_install() {
-   echo -e "${yellow}NOTE: Please see documentation (section 2.4.2) to setup database:${coloroff}"
-   echo -e "${yellow}      http://download.bareos.org/bareos/release/17.2/documentation/html/bareos-manual-main-reference.html#QQ2-1-47${coloroff}"
+   echo -e "${yellow}NOTE: Please see documentation to setup database${coloroff}"
 }
 
 # arg 0:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-   echo -e "${yellow}NOTE: Please see documentation (section) 4.2.2 to update database${coloroff}"
-   echo -e "${yellow}      http://download.bareos.org/bareos/release/17.2/documentation/html/bareos-manual-main-reference.html#x1-710004.2.2${coloroff}"
+   echo -e "${yellow}NOTE: Please see documentation to setup database${coloroff}"
 }
 
 # arg 0:  the old package version

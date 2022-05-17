@@ -2,7 +2,7 @@
 post_install() {
    /usr/lib/bareos/scripts/bareos-config initialize_local_hostname
    /usr/lib/bareos/scripts/bareos-config initialize_passwords
-   #chown root:bareos /etc/bareos/bconsole.conf
+   chown -R bareos:bareos /etc/bareos/tray-monitor.d/monitor/
 }
 
 post_upgrade() {

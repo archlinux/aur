@@ -1,0 +1,22 @@
+--- core/scripts/bareos-config-lib.sh.in	2022-05-07 14:35:31.000000000 +0300
++++ core/scripts/bareos-config-lib.sh.in	2022-05-07 23:25:21.958745554 +0300
+@@ -1070,14 +1070,12 @@
+ {
+     # put actual short hostname in configuration files
+     # try to get short hostname
+-    hname=`hostname -s`
++    hname=`hostnamectl --static | sed 's/\..*//g'`
+     if [ -z "$hname" ]; then
+-        # try to get long hostname
+-        hname=`hostname|sed 's/\..*//g'`
+-        if [ -z "$hname" ]; then
+-            # set to "localhost"
+-            hname='localhost'
+-        fi
++       if [ -z "$hname" ]; then
++          # set to "localhost"
++          hname='localhost'
++       fi
+     fi
+     echo "$hname"
+ }
