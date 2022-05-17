@@ -2,10 +2,10 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-music
-pkgver=22.0129
+pkgver=22.0514
 pkgrel=1
 pkgdesc="Extra music for RVGL community tracks."
-url='https://re-volt.io/downloads/packs'
+url='https://re-volt.io/online/tracks'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
@@ -15,7 +15,7 @@ optdepends=('rvgl-io-tracks: additional tracks for official events'
 makedepends=('git')
 conflicts=('rvgl-music')
 replaces=('rvgl-music')
-groups=('rvgl-community')
+groups=('rvgl-online')
 source=("rvgl_io_music"::git+https://gitlab.com/re-volt/rvio/music.git#tag=${pkgver})
 sha256sums=('SKIP')
 
