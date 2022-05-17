@@ -5,7 +5,7 @@
 # Contributor: Nathan Jones <nathanj@insightbb.com>
 
 pkgname=tig-git
-pkgver=2.1.1.r48.geecfbda
+pkgver=2.5.5.r12.g06dd7a8b
 pkgrel=1
 pkgdesc='Text-mode interface for Git - git checkout'
 depends=('git' 'ncurses')
@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 conflicts=('tig')
 provides=('tig')
 backup=('etc/tigrc')
-source=('git://github.com/jonas/tig.git')
+source=('git+https://github.com/jonas/tig.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,11 +26,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
