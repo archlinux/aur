@@ -2,27 +2,38 @@
 
 _pkgname=assimp
 pkgname=mingw-w64-${_pkgname}
-pkgver=5.1.5
-pkgrel=2
+pkgver=5.2.4
+pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner (mingw-w64)"
 arch=('any')
 license=('BSD')
 depends=('mingw-w64-zlib' 'mingw-w64-boost' 'mingw-w64-minizip')
 makedepends=('mingw-w64-cmake')
 url='http://www.assimp.org/'
-source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=(
+	"https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
+	'zlib.patch')
 options=('!strip' '!buildflags' 'staticlibs' '!lto')
-sha256sums=('d62b58ed3b35c20f89570863a5415df97cb1b301b444d39687140fc883717ced')
+sha256sums=('6a4ff75dc727821f75ef529cea1c4fc0a7b5fc2e0a0b2ff2f6b7993fe6cb54ba'
+            '91ce3c534de415c786212416861b7b13964bfb88da1af22553ef23d8b7aa02fc')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-O2 -DNDEBUG'
-         -DASSIMP_BUILD_SAMPLES=OFF )
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_flags=(
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-O2 -DNDEBUG'
+	-DASSIMP_BUILD_SAMPLES=OFF )
 _srcdir="${_pkgname}-${pkgver}"
 
 prepare ()
 {
 	cd "${_srcdir}"
-	sed -i "s/5.1.4/${pkgver}/" 'CMakeLists.txt'
+	patch -ulbf 'code/Common/ZipArchiveIOSystem.cpp' < '../zlib.patch'
+	sed -i 's/fprintf(pFile, this->szPlainText.c_str());/fprintf(pFile, "%s", this->szPlainText.c_str());/' 'tools/assimp_view/LogWindow.cpp'
+	sed -i 's/set(LIBRARY_SUFFIX/#nope/' 'code/CMakeLists.txt'
+	#sed -i 's/-static-libgcc -static-libstdc++ -Wl,-Bstatic//' 'code/CMakeLists.txt'
+	sed -i 's/TARGET_LINK_LIBRARIES ( assimp_viewer/#nope/' 'code/CMakeLists.txt'
+	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_cmd/CMakeLists.txt'
+	sed -i 's/LINK_DIRECTORIES/#nope/' 'tools/assimp_view/CMakeLists.txt'
+	sed -i 's/LINK_DIRECTORIES/#nope/' 'test/CMakeLists.txt'
 }
 
 build()
@@ -30,11 +41,11 @@ build()
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DASSIMP_BUILD_TESTS=OFF -DASSIMP_BUILD_ASSIMP_TOOLS=OFF \
 			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
-    cmake --build "build-${_arch}-static"
-    
-    ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DASSIMP_BUILD_TESTS=OFF
-    cmake --build "build-${_arch}"
-  done
+		cmake --build "build-${_arch}-static"
+		
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DASSIMP_BUILD_TESTS=OFF -DASSIMP_BUILD_ASSIMP_TOOLS=ON
+		cmake --build "build-${_arch}"
+	done
 }
 
 #check() {
