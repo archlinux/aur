@@ -4,8 +4,8 @@
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
-pkgver=r120.6a4e9f4
-pkgrel=2
+pkgver=r121.ad81537
+pkgrel=1
 epoch=
 pkgdesc='An Application Indicator showing various system parameters'
 arch=('any')
