@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.31.2
+pkgver=1.31.3
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('61059c0fa1101ffadc5090e6b754ea59ff58b12bb3103096fd9fb2f93b656bf3d2291b801ff199ab51c3b3f264f965a29083f35d58ca6f68ebe2c17ff82af012')
+b2sums=('6161e3cc0d11ccd0578cc6ac777cc012491255a3534c2aeb63f01bd1e25a2e831967331cd559c7898219d4e7f5e784eb1b4790f5992b2ee993693e03c8404280')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
