@@ -3,6 +3,7 @@ pkgname=boca
 _pkgname=BoCA
 pkgver=1.0.6a
 pkgrel=1
+epoch=1
 pkgdesc="A component library used by the fre:ac audio converter"
 arch=('x86_64')
 url="https://github.com/enzo1982/BoCA"
