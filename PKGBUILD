@@ -36,11 +36,6 @@ prepare()
     curl -L "$_srcprefix/PKGBUILD" > PKGBUILD-git
 }
 
-build()
-{
-    . PKGBUILD-git && build
-}
-
 package()
 {
     . PKGBUILD-git && package
