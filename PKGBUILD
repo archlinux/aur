@@ -1,9 +1,9 @@
 # Maintainer: XavierCLL <xavier.corredor.llano at gmail.com>
-# Co-maintainer: MikeBreytenbach <mike.breyten.bach at gmail dot com>
+# Contributors: MikeBreytenbach <mike.breyten.bach at gmail dot com>
 # Contributors: edacval
 
 pkgname=pycharm-professional
-pkgver=2022.1
+pkgver=2022.1.1
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('9b160ed74f384be31ff376af73f91924a212e6440ce142a581b22f261e6cf605'
+sha256sums=('fee081e04964b2eb934d425043117e2dda52f34942e7f6111a6fb3bb948d73c2'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             'ef181319a2dfcb3c35f08a8f57ce12029e8e6dccea6a463bd93a94c5074c1bbc')
