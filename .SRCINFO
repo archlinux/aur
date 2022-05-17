@@ -1,14 +1,13 @@
 pkgbase = python-pylibconfig2
 	pkgdesc = Pure python library for libconfig syntax
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pypi.python.org/pypi/pylibconfig2
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyparsing
-	depends = python-setuptools
-	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/p/pylibconfig2/pylibconfig2-0.2.5.tar.gz
 	sha256sums = 186bd2d88356036ac8770195c8a3e9bac3ccdb3b9e6ecf04be62c307760895c7
 
