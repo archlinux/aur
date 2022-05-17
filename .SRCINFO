@@ -1,15 +1,11 @@
 pkgbase = samsung-unified-driver
 	pkgdesc = Unified Linux Driver for Samsung printers and scanners.
 	pkgver = 1.00.39
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.samsung.com
 	arch = i686
 	arch = x86_64
 	license = custom:samsung
-	depends = libxml2
-	depends = libusb-compat
-	depends = cups
-	depends = sane
 	options = !strip
 	source = http://downloadcenter.samsung.com/content/DR/201704/20170407143829533/uld_V1.00.39_01.17.tar.gz
 	source = xerox_mfp-smfp.conf

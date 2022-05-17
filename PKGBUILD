@@ -8,14 +8,12 @@ pkgname=(
     'samsung-unified-driver'
 )
 pkgver=1.00.39
-pkgrel=5
+pkgrel=6
 
 pkgdesc='Unified Linux Driver for Samsung printers and scanners.'
 arch=('i686' 'x86_64')
 url="http://www.samsung.com"
 license=('custom:samsung')
-depends=('libxml2' 'libusb-compat' 'cups' 'sane')
-
 options=(!strip)
 source=(
     "http://downloadcenter.samsung.com/content/DR/201704/20170407143829533/uld_V${pkgver}_01.17.tar.gz"
