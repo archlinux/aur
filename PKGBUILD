@@ -2,17 +2,17 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tracks-circuit
-pkgver=22.0129
+pkgver=22.0514
 pkgrel=1
 pkgdesc="Additional RVGL tracks used for drifting and other special events."
-url='https://re-volt.io/online/tracks'
+url='https://re-volt.io/online/tracks/circuit'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-io-loadlevel: custom load screens'
-            'rvgl-io-music: extra music')
+optdepends=('rvgl-io-music: extra music'
+            'rvgl-io-loadlevel: custom load screens')
 makedepends=('git')
-groups=('rvgl-community')
+groups=('rvgl-bonus')
 source=("rvgl_io_tracks_circuit"::git+https://gitlab.com/re-volt/rvio/circuit_tracks.git#tag=${pkgver})
 sha256sums=('SKIP')
 
