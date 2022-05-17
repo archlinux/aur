@@ -2,13 +2,13 @@
 # Contributor: DaZ <daz.root+arch@gmail.com> 
 
 pkgname=slic3r-bin
-pkgrel=4
+pkgrel=5
 pkgdesc='Open Source toolpath generator for 3D printers'
 pkgver=1.3.0
 arch=('x86_64')
 url="http://www.slic3r.org"
 conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
-depends=('freeglut' 'glu' 'libpng12' 'perl' 'libxcrypt-compat')
+depends=('freeglut' 'glu' 'libpng12' 'perl' 'libxcrypt-compat' 'gtk2')
 provides=('slic3r')
 license=('AGPL3')
 source=("https://github.com/slic3r/Slic3r/releases/download/${pkgver}/slic3r-${pkgver}-linux-x64.tar.bz2"
