@@ -1,7 +1,7 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
 	pkgver = 2.8.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
 	license = unknown
@@ -11,7 +11,7 @@ pkgbase = wemeet-bin
 	depends = libxrandr
 	depends = qt5-webkit
 	depends = libxinerama
-	depends = libpulse
+	depends = pulseaudio
 	optdepends = bubblewrap: Fix abnormal text color in dark mode.
 	provides = wemeet
 	provides = tencent-meeting
