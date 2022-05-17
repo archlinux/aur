@@ -5,9 +5,9 @@
 # Contributor: Dragoon Aethis <dragoon at dragonic dot eu>
 
 pkgname=substance-designer
-pkgver=11.3.3
+pkgver=12.1.0
 pkgrel=1
-_build=5429
+_build=5722
 pkgdesc="Node-based, non-destructive PBR material authoring tool."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-designer'
@@ -16,7 +16,7 @@ depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4' 
 options=('!strip') # PNG assets here should be left untouched!
 
 source=("https://download.substance3d.com/adobe-substance-3d-designer/11.x/Adobe_Substance_3D_Designer-${pkgver}-${_build}-linux-x64-standard.rpm")
-sha256sums=('132e09f1559b76667ea035c19f084225915a824df0b21a811dcfd288f5761f42')
+sha256sums=('c604d887887cae471e84de7b558c238aac1db535309be5754a3b589f65099ac3')
 
 validpgpkeys=()
 
