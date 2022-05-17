@@ -7,7 +7,8 @@ pkgdesc="Zutils is a collection of utilities able to process any combination of 
 url="http://www.nongnu.org/zutils/zutils.html"
 arch=('x86_64')
 depends=('gzip-zutils')
-makedepends=('lzip' 'bzip2' 'gzip')
+conflicts=('gzip')
+makedepends=('lzip' 'bzip2' 'gzip-zutils')
 license=('GPL')
 source=(
     "http://download.savannah.gnu.org/releases/zutils/$pkgname-$pkgver.tar.lz"
