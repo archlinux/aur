@@ -5,8 +5,8 @@
 # Contributor: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-player
-pkgver=11.3.3
-_build=5429
+pkgver=12.1.0
+_build=5722
 pkgrel=1
 pkgdesc="PBR material preview, visualization and tweaking software."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
 source=("https://download.substance3d.com/substance-player/11.x/Substance_Player-${pkgver}-${_build}-linux-x64-standard.rpm")
 
-sha256sums=('72583d4a07f90a0f23a272691e4e0775060cbb796a2fde0b22fbb24b1e208ff0')
+sha256sums=('d4bf31b9ae163183012d9d4f4d793b904df22ee1b34c9ccf30c7cd8cc850b888')
 
 validpgpkeys=()
 
