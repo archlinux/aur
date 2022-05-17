@@ -1,0 +1,12 @@
+pkgbase = pinephone-call-audio
+	pkgdesc = Voice call audio routing setup tool for Pinephone
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://xnux.eu/devices/feature/audio-pp.html
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = linux-headers
+	source = https://xff.cz/kernels/pinephone-call-audio-0.1.tar.gz
+	sha256sums = 7cd79f9d60d4d38fb8407bf07624ff004d69df7993422457ec38dfeec83f5ff9
+
+pkgname = pinephone-call-audio
