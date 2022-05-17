@@ -2,15 +2,15 @@
 
 pkgname=crow-translate
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and lightweight translator that allows you to translate and speak text using Google, Yandex Bing, LibreTranslate and Lingva'
 arch=(x86_64 aarch64)
 url=https://github.com/crow-translate/crow-translate
 license=(GPL3)
-depends=(qt5-svg qt5-multimedia qt5-x11extras gst-plugins-good openssl tesseract kwayland)
+depends=(qt5-svg qt5-multimedia qt5-x11extras kwayland gst-plugins-good openssl tesseract)
 makedepends=(qt5-tools extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-source.tar.gz)
-sha256sums=(1001d103b1493142ef9f3e9158998bf08752e912798752a110583bd3dc2b9cd3)
+sha256sums=(9c823c8eeea2a9a7f7f7eec4ed618a80f7a8cb4a8a3ebd9763e005bdb7770704)
 
 build() {
   cd $pkgname-$pkgver
