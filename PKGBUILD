@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'
 license=('MIT')
 arch=('x86_64')
-install="lfp.install"
+install='lfp.install'
 url="https://gitlab.com/a4to/lfp"
 depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat)
 optdepends=(
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'dfdab53e53e953780d7d8f20cbe3717666bfdd542e6010150c7c8732cb8d71a3616da6a2a16961d86716efc0242274555bc0f481dc30ab7082e5bf4ee94629ff'
-  'b62539408653f2533268855c9bc2cabc693180049d23fbc6f7763601c5bdce8b662ccbae945317c80ba4561db3ec8c385375752ce4d0bc713a8967519d367b14'
+  'cc638a69c08714c1822470430137120ded215cd11c5a76765b2711868daf6f730c12a4c9afb0845ab54d882abe4dcbd46d988986e18ec4e1488a66c3b73614f0'
+  '8fc91669908e7ffaf22865d636f9338a82d8d251ce865e3b4f0d4c6b8137f50b374281a063b2788870bd7ad108f9c5c06b1ec6373c9fcf4d80b841831153ae7f'
   )
 md5sums=(
-  '0c8c3ae6adb063dafc6b60443d1d0044'
-  '2116df2157024ac9c3370142023f60f6'
+  '48fa9a7f70730fa4292f02e3ed1fa9ac'
+  'e07de9415d33006253f543cc600ce113'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
