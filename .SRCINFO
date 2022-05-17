@@ -9,7 +9,6 @@ pkgbase = gzip-zutils
 	depends = glibc
 	depends = bash
 	depends = less
-	depends = zutils
 	provides = gzip
 	conflicts = gzip
 	source = https://ftp.gnu.org/pub/gnu/gzip/gzip-1.12.tar.xz
