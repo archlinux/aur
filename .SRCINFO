@@ -1,6 +1,6 @@
 pkgbase = dendrite-git
 	pkgdesc = A second-generation Matrix homeserver written in Go
-	pkgver = 0.3.11.r39.g81d60d544
+	pkgver = 0.8.5.r2.gcd8246051
 	pkgrel = 1
 	url = https://github.com/matrix-org/dendrite
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = dendrite-git
 	sha256sums = 562a89c61d4f54a2558024f755497a3a59b1c85e236924131fdf58724ed25f3f
 
 pkgname = dendrite-git
-

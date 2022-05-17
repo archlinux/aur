@@ -3,7 +3,7 @@
 
 pkgname=dendrite-git
 _gitname=dendrite
-pkgver=0.3.11.r39.g81d60d544
+pkgver=0.8.5.r2.gcd8246051
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
@@ -55,7 +55,7 @@ package() {
   install -Dm755 ./generate-config                    "${pkgdir}/usr/bin/${_gitname}-generate-config"
   install -Dm755 ./generate-keys                      "${pkgdir}/usr/bin/${_gitname}-generate-keys"
   install -Dm755 ./create-account                      "${pkgdir}/usr/bin/${_gitname}-create-account"
-  install -Dm644 ./dendrite-config.yaml       "${pkgdir}/etc/dendrite/config-sample.yaml"
+  install -Dm644 ./dendrite-sample.monolith.yaml       "${pkgdir}/etc/dendrite/config-sample.yaml"
   install -Dm644 "${srcdir}/dendrite.service"         "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
   install -Dm644 "${srcdir}/${_gitname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${_gitname}.conf"
   install -Dm644 "${srcdir}/tmpfiles-${_gitname}.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_gitname}.conf"
