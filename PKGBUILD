@@ -1,15 +1,15 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=0.23.11
+pkgver=0.24.12
 _commit_glm=0d973b4
-_commit_glslang=418694e
+_commit_glslang=42398c9
 _commit_imgui=fd2a90e
 _commit_lz4=d443718
 _commit_miniz=a426483
-_commit_slang_binaries=d5d6893
-_commit_spirv_headers=1380cbb
-_commit_spirv_tools=d997c83
+_commit_slang_binaries=ee043c6
+_commit_spirv_headers=36c0c15
+_commit_spirv_tools=60761de
 _commit_tinyobjloader=d541711
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
@@ -22,12 +22,12 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/g-truc/glm#commit=$_commit_glm"
         "git+https://github.com/ocornut/imgui#commit=$_commit_imgui"
         "git+https://github.com/shader-slang/slang-binaries#commit=$_commit_slang_binaries"
-        "spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools#commit=$_commit_spirv_tools"
+        "spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools#commit=$_commit_spirv_tools"
         "spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=$_commit_spirv_headers"
         "git+https://github.com/richgel999/miniz#commit=$_commit_miniz"
         "git+https://github.com/lz4/lz4#commit=$_commit_lz4"
         )
-sha1sums=('bfa7c119ed18d5f9507732333fafe26f67678e6c'
+sha1sums=('4a07dc97a2fefba1fd9ad2cd487886926db33380'
           'SKIP'
           'SKIP'
           'SKIP'

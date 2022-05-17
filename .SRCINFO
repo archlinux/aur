@@ -1,23 +1,23 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
-	pkgver = 0.23.11
+	pkgver = 0.24.12
 	pkgrel = 1
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = MIT
 	makedepends = premake
 	depends = glslang
-	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.23.11.tar.gz
-	source = git+https://github.com/shader-slang/glslang#commit=418694e
+	source = https://github.com/shader-slang/slang/archive/refs/tags/v0.24.12.tar.gz
+	source = git+https://github.com/shader-slang/glslang#commit=42398c9
 	source = git+https://github.com/syoyo/tinyobjloader#commit=d541711
 	source = git+https://github.com/g-truc/glm#commit=0d973b4
 	source = git+https://github.com/ocornut/imgui#commit=fd2a90e
-	source = git+https://github.com/shader-slang/slang-binaries#commit=d5d6893
-	source = spirv-tools::git+https://github.com/KhronosGroup/SPIRV-Tools#commit=d997c83
-	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=1380cbb
+	source = git+https://github.com/shader-slang/slang-binaries#commit=ee043c6
+	source = spirv-tools::git+https://github.com/shader-slang/SPIRV-Tools#commit=60761de
+	source = spirv-headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=36c0c15
 	source = git+https://github.com/richgel999/miniz#commit=a426483
 	source = git+https://github.com/lz4/lz4#commit=d443718
-	sha1sums = bfa7c119ed18d5f9507732333fafe26f67678e6c
+	sha1sums = 4a07dc97a2fefba1fd9ad2cd487886926db33380
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
