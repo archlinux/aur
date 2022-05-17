@@ -1,0 +1,18 @@
+pkgbase = libchimara-git
+	pkgdesc = Interactive Fiction GTK Widget
+	pkgver = 0.9.2.r0.5cd1f96
+	pkgrel = 1
+	url = https://github.com/chimara/Chimara.git
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = gstreamer
+	provides = libchimara
+	conflicts = libchimara
+	source = libchimara::git+https://github.com/chimara/Chimara.git
+	md5sums = SKIP
+
+pkgname = libchimara-git
