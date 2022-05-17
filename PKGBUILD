@@ -1,11 +1,11 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=leafish-git
-pkgver=r107.bb537e8
+pkgver=r207.b3b467c
 pkgrel=1
 pkgdesc="Multi-version Minecraft-compatible client written in Rust."
 arch=('x86_64')
-url="https://github.com/terrarier2111/leafish"
+url="https://github.com/Lea-fish/Leafish"
 license=('APACHE')
 groups=()
 depends=('libxcb' 'openssl')
@@ -31,7 +31,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
