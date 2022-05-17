@@ -1,6 +1,6 @@
 pkgbase = python-bugsnag
 	pkgdesc = Official bugsnag error monitoring and error reporting for various python apps.
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/bugsnag/bugsnag-python
 	changelog = CHANGELOG.md
@@ -13,7 +13,7 @@ pkgbase = python-bugsnag
 	depends = python-webob
 	optdepends = python-flask: Flask integration
 	optdepends = python-blinker: Flask integration
-	source = python-bugsnag-4.2.0.tar.gz::https://github.com/bugsnag/bugsnag-python/archive/v4.2.0.tar.gz
+	source = python-bugsnag-4.2.1.tar.gz::https://files.pythonhosted.org/packages/source/b/bugsnag/bugsnag-4.2.1.tar.gz
 	sha256sums = c8bf852972054deed2026866c4b7b6cc6c64ae306b370c885ecf4995a72f5897
 
 pkgname = python-bugsnag
