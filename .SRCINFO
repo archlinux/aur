@@ -1,0 +1,14 @@
+pkgbase = tfblib
+	pkgdesc = Low-level graphics library for drawing to the framebuffer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/vvaltchev/tfblib
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = glibc
+	provides = libtfb.so
+	source = tfblib-0.1.1.tar.gz::https://github.com/vvaltchev/tfblib/archive/v0.1.1.tar.gz
+	sha256sums = 957cdf360ed247cd0e4ced377ae9a6e7261d60a5216cd1f63e50814d6bdd3c8e
+
+pkgname = tfblib
