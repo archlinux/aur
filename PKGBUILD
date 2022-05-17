@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=20.1.2.Nexus.r73.g7839875
+pkgver=20.2.0.Nexus.r19.g59ce7b0
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 20+"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
