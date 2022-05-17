@@ -1,7 +1,7 @@
 pkgbase = php74-redis
 	pkgdesc = An API for communicating with the Redis key-value store
 	pkgver = 5.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/redis
 	arch = x86_64
 	license = PHP

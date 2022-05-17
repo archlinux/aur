@@ -6,7 +6,7 @@ pkgname=php74-redis
 _name=redis
 _upstream=phpredis
 pkgver=5.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An API for communicating with the Redis key-value store"
 arch=('x86_64')
 url="https://pecl.php.net/package/redis"
@@ -44,7 +44,7 @@ check() {
   # tests are partly broken:
   # https://github.com/phpredis/phpredis/issues/1593
   export TEST_PHP_EXECUTABLE=/usr/bin/php74
-  export TEST_PHP_ARGS="--no-php-ini -d extension=igbinary -d extension=${srcdir}/${pkgname}-${pkgver}/modules/redis.so"
+  export TEST_PHP_ARGS="--no-php-ini -d extension=json -d extension=igbinary -d extension=${srcdir}/${pkgname}-${pkgver}/modules/redis.so"
   cd "$pkgname-$pkgver"
   tests/mkring.sh start
   $TEST_PHP_EXECUTABLE $TEST_PHP_ARGS tests/TestRedis.php --class Redis
