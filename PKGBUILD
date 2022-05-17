@@ -6,11 +6,11 @@ pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
 url="https://github.com/ptomato/inform7-ide"
 license=('GPL3')
-depends=('libcanberra' 'ninja' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good')
-makedepends=('meson')
+depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3')
+makedepends=('meson' 'ninja')
 provides=('inform7-ide')
-source=("git+https://github.com/ptomato/inform7-ide" "git+https://github.com/ganelson/inweb" "git+https://github.com/ganelson/intest" "git+https://github.com/ganelson/inform")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("git+https://github.com/ptomato/inform7-ide" "git+https://github.com/ganelson/inweb" "git+https://github.com/ganelson/intest" "git+https://github.com/ganelson/inform" "git+https://github.com/chimara/Chimara.git" "git+https://github.com/ptomato/ratify")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -41,13 +41,32 @@ make "integration" "retrospective"
 cd "retrospective"
 cp -r "6L02" "6L38" "6M62" "retrospective.txt" -t "${srcdir}/inform7-ide/retrospective"
 
+#building libchimara
+cd "$srcdir/Chimara"
+arch-meson build
+ninja -C build
+
+#build libratify
+cd "$srcdir/ratify"
+arch-meson build
+ninja -C build
+
 #building inform7-ide
 cd "${srcdir}/inform7-ide/"
-meson --prefix=/usr build
+arch-meson build
 ninja -C build
 }
 
 package() {
+# packaging inform7-ide
 cd "${srcdir}/inform7-ide/"
+meson install -C build --destdir "$pkgdir"
+
+#packaging libchimara
+cd "$srcdir/Chimara"
+meson install -C build --destdir "$pkgdir"
+
+#packaging libratify
+cd "$srcdir/ratify"
 meson install -C build --destdir "$pkgdir"
 }
