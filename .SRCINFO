@@ -1,7 +1,7 @@
 pkgbase = python-ssdeep
 	pkgdesc = Python wrapper for ssdeep fuzzy hashing library
-	pkgver = 3.3
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/ssdeep
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = python-ssdeep
 	depends = python-six
 	depends = python-cffi
 	depends = ssdeep
-	source = https://github.com/DinoTools/python-ssdeep/archive/3.3.tar.gz
-	sha256sums = 31bd3c20a9c066f5cd89fa90073320ea43c08c09fb995e4284c6bcf055704e89
+	source = python-ssdeep-3.4.tar.gz::https://github.com/DinoTools/python-ssdeep/archive/3.4.tar.gz
+	sha256sums = 1924ca700aedd6563b9939cac6519d5aa24c4c3c24e09a748b31c09955b09ad4
 
 pkgname = python-ssdeep
-
