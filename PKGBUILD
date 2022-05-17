@@ -1,7 +1,7 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=go-honnef-tools
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="State of the art linter tooling for the Go programming language."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://honnef.co/go/tools"
 license=('BSD')
 makedepends=('go')
 source=("https://github.com/dominikh/go-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('96adc5ca8e8d7e5d57504e224f827b20de7cbb85a07624f28f4100bea9e96e6b2af575e3d7deaf266c2fdd2f65ed7caecc6da9ce5f7ddf4477a82de862efd5ab')
+sha512sums=('4215bddf2b2dbeb7295c79ca0ef9816882193bb7544ab9982525eb498c7a87b2c590b4623904cca67c2b672dbf5bf921a32105c15243178b9f226be4685b24dd')
 
 prepare() {
 	mkdir -p bin
