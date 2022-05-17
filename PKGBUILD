@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='openasar'
 pkgname="${_pkgname}-git"
-pkgver=r740.c9c3b5e
+pkgver=r742.6748897
 pkgrel=1
 pkgdesc="Open-source alternative of Discord desktop's app.asar"
 arch=('i686' 'x86_64')
@@ -12,17 +12,17 @@ makedepends=('git' 'asar' 'nodejs')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://github.com/GooseMod/OpenAsar.git')
+source=("git+${url}.git")
 sha1sums=('SKIP')
 install="$pkgname.install"
 
 pkgver() {
-    cd OpenAsar
+    cd "${srcdir}/OpenAsar"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd OpenAsar
+    cd "${srcdir}/OpenAsar"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     bash scripts/injectPolyfills.sh
     sed -i -e "s/nightly/nightly-$(git rev-parse HEAD | cut -c 1-7)/" src/index.js
