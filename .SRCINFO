@@ -1,6 +1,6 @@
 pkgbase = parallel-launcher
 	pkgdesc = A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators
-	pkgver = 6.6.2
+	pkgver = 6.6.3
 	pkgrel = 0
 	url = https://parallel-launcher.ca
 	install = parallel-launcher.install
@@ -22,7 +22,7 @@ pkgbase = parallel-launcher
 	depends = sqlite
 	depends = libgcrypt
 	optdepends = noto-fonts: intended font
-	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/740f115525cf9e4704282653a18d499d/parallel-launcher-6.6.2.tar.gz
-	sha256sums = 9e2efa8005eae87589a2b47617ef89163c02d218a92f4f0eb2ae46d5dfd1c4b4
+	source = https://gitlab.com/parallel-launcher/parallel-launcher/uploads/95a6d4d84fbf6fd9be7e45ad14b7a142/parallel-launcher-6.6.3.tar.gz
+	sha256sums = ff2cb9c746d285e9d9d0be530f8755a11a82af3f8fd2fa14be93cadf20c611e1
 
 pkgname = parallel-launcher
