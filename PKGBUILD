@@ -2,10 +2,10 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-loadlevel
-pkgver=21.1218
+pkgver=22.0514
 pkgrel=1
 pkgdesc="Loading screens for RVGL community tracks."
-url='https://re-volt.io/downloads/packs'
+url='https://re-volt.io/online/tracks'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
@@ -15,7 +15,7 @@ optdepends=('rvgl-io-tracks: additional tracks for official events'
 makedepends=('git')
 conflicts=('rvgl-loadlevel')
 replaces=('rvgl-loadlevel')
-groups=('rvgl-community')
+groups=('rvgl-bonus')
 source=("rvgl_io_loadlevel"::git+https://gitlab.com/re-volt/rvio/loadlevel.git#tag=${pkgver})
 sha256sums=('SKIP')
 
