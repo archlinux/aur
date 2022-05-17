@@ -1,0 +1,15 @@
+pkgbase = b64url
+	pkgdesc = Command line URL-safe Base-64 encoder/decoder
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://crates.io/crates/b64url
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = b64url-0.1.1.tar.gz::https://crates.io/api/v1/crates/b64url/0.1.1/download
+	sha512sums = 0c8749474cd23766744f1df72b5a17f20a170e9eac1b3663f91a7e3bf20760f5f36e08bd0fa859edc368cd01d949fd669abd927c109f276c11b801719afad94b
+
+pkgname = b64url
