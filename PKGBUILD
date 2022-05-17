@@ -20,7 +20,7 @@ source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$o_pkgname-$pkgv
         https://invent.kde.org/frameworks/kwallet/-/merge_requests/11.patch)
 sha256sums=('01366b42754ee7543b67fe57deb39bc2a772923eda3e6ea70a59f8ef955e2a32'
             'SKIP'
-            '3bce43160e7613c38ecc8d76fe3fad0ae8a85e9335836ece922fbe3d61771ef7')
+            'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 options=(debug)
 
