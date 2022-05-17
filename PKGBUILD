@@ -53,7 +53,7 @@ _override_max_perf=
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
 pkgver=510
-pkgrel=3
+pkgrel=4
 license=('custom')
 url='https://github.com/ventureoo/nvidia-tweaks'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
@@ -66,7 +66,7 @@ source=('nvidia.conf'
         '60-nvidia.rules'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh')
-sha256sums=('038b1170ac750b0dbcd59f2758e8fa12bc807e87b39c079c0396e33d0f83b37f'
+sha256sums=('ff2bb34076c829d0e11a04379915d36d224ad4f381c4e406b4c75349cdf2df5b'
             'b7001d91396821ff0ce50d9b65a7e86e2379dba738543cea4c01613c092efa90'
             '81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420'
             'b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144'
