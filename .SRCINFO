@@ -8,7 +8,7 @@ pkgbase = otf-urbanist
 	source = https://github.com/coreyhu/Urbanist/releases/download/v1.310/Urbanist_Font_Family_1.310.zip
 	source = OFL.txt
 	sha256sums = 7b51d9d081931875e03fdeaf51033d01c1cc250a40b02ad67f20e1c4bae782e4
-	sha256sums = ee1221b1c2d08920e5f9ca764eb228dafa5c8090df9cf665373c2287b9cb8f49
+	sha256sums = 93b568382826c6f92eda0dc4807d0106b05141fb8348cd63ac996077e8cc47fa
 
 pkgname = otf-urbanist
 
