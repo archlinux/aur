@@ -2,14 +2,14 @@
 
 pkgname=stumpwm-ql
 _stumpver=20.11
-_qlver=2021_12_09
+_qlver=2022_02_20
 pkgver="${_stumpver}_${_qlver}"
 pkgrel=1
 pkgdesc='Stumpwm tiling window manager built with dependencies from quicklisp'
 arch=('x86_64')
 url='https://stumpwm.github.io'
 license=('GPL2')
-makedepends=('quicklisp-bootstrap' 'sbcl')
+makedepends=('quicklisp' 'sbcl')
 provides=('stumpwm')
 conflicts=('stumpwm' 'stumpwm-git')
 source=("$pkgname-$_stumpver.tar.gz::https://github.com/stumpwm/stumpwm/archive/refs/tags/$_stumpver.tar.gz"
@@ -35,7 +35,7 @@ build() {
 
   # Install quicklisp
   sbcl --no-sysinit --no-userinit \
-       --load "$(quicklisp-bootstrap)" \
+       --load "/usr/share/quicklisp/quicklisp.lisp" \
        --eval "(quicklisp-quickstart:install :dist-url \"${disturl}\" :path \"${qlpath}\")" \
        --eval '(ql:quickload "clx")' \
        --eval '(ql:quickload "cl-ppcre")' \
