@@ -1,14 +1,14 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=aya-neo-fixes-git
 _gitdir=aya-neo-fixes
-pkgver=22.05.r46.34cf9b4
+pkgver=22.05.r47.7b63f55
 pkgrel=1
 pkgdesc="Various fixes for Aya Neo Handheld consoles."
 arch=('any')
 url="https://github.com/ShadowBlip/aya-neo-fixes"
 license=('GPL')
 groups=()
-depends=('python' 'python-evdev')
+depends=('python' 'python-evdev' 'dbus-python')
 optdepends=()
 makedepends=('git')
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git")
@@ -29,7 +29,7 @@ package() {
 	install -m755 systemd-suspend-mods.sh ${pkgdir}/usr/lib/systemd/system-sleep/systemd-suspend-mods.sh
 	install -m755 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
 	install -m755 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
-	install -m755 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
+	install -m655 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
 	install -m755 phantom-input.py ${pkgdir}/usr/local/bin/phantom-input.py
-	install -m755 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
+	install -m655 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
 }
