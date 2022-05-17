@@ -2,7 +2,7 @@ pkgbase = rvgl-basic
 	pkgdesc = RVGL for GNU/Linux. Does not include the soundtrack.
 	pkgver = 1
 	pkgrel = 1
-	url = https://rvgl.re-volt.io
+	url = https://rvgl.org
 	arch = x86_64
 	license = custom
 	depends = rvgl-bin
@@ -11,4 +11,3 @@ pkgbase = rvgl-basic
 	conflicts = rvgl
 
 pkgname = rvgl-basic
-
