@@ -1,0 +1,21 @@
+pkgbase = gzip-zutils
+	pkgdesc = GNU compression utility—zutils compat
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://www.gnu.org/software/gzip/
+	arch = x86_64
+	groups = base-devel
+	license = GPL3
+	depends = glibc
+	depends = bash
+	depends = less
+	depends = zutils
+	provides = gzip
+	conflicts = gzip
+	source = https://ftp.gnu.org/pub/gnu/gzip/gzip-1.12.tar.xz
+	source = https://ftp.gnu.org/pub/gnu/gzip/gzip-1.12.tar.xz.sig
+	validpgpkeys = 155D3FC500C834486D1EEA677FD9FCCB000BEEEE
+	sha256sums = ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956
+	sha256sums = SKIP
+
+pkgname = gzip-zutils
