@@ -1,8 +1,8 @@
 # Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-sdk-cmdline-tools-latest
-pkgver=6.0
-pkgrel=2
+pkgver=7.0
+pkgrel=1
 pkgdesc='Android SDK Command-line Tools (latest)'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio'
@@ -12,10 +12,10 @@ optdepends=('android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
 provides=('android-sdk')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip'
+source=('https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip'
         "${pkgname}.sh"
         "${pkgname}.csh")
-sha1sums=('8d47ab9a90caa60ce8a95d7e384ec64633bc13b4'
+sha1sums=('5e7bf2dd563d34917d32f3c5920a85562a795c93'
           'cbcfb844067eb40d7cab029c481f3f94f31f0518'
           'f71b94781633743850c760322dc3b370bc63fcaa')
 
