@@ -1,4 +1,5 @@
-# Maintainer: svalo <me@valo.space> 
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Contributer: svalo <me@valo.space> 
 pkgname=plzip
 pkgver=1.10
 pkgrel=1
