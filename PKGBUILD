@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.28679.g35913fc695
+pkgver=0.20.0.28901.ga5ff515804
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -25,6 +25,7 @@ qt5-svg
 qt5-tools
 qt5-webkit
 qt5-webengine
+qt5-webchannel
 qt5-x11extras
 qt5-xmlpatterns
 qt5-base
@@ -38,7 +39,6 @@ cmake
 coin
 eigen
 gcc-fortran
-gendesk
 git
 ninja
 python-shiboken2
@@ -73,15 +73,7 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
-
-  #sed 's,from femexamples.boxanalysis_frequency import setup,return,' -i src/Mod/Fem/femtest/app/test_ccxtools.py
-  #sed 's,from femexamples.thermomech_flow1d import setup,return,' -i src/Mod/Fem/femtest/app/test_ccxtools.py
-
-  #git revert --no-commit 663ac994a794606e56d086cac85598517bd323dc
-  #git checkout 927fdc9edc
 }
-
-_destdir="/usr"
 
 build() {
   cd FreeCAD
@@ -107,47 +99,32 @@ build() {
     -D FREECAD_USE_QT_FILEDIALOG=ON \
     -D PYTHON_EXECUTABLE=/usr/bin/python \
     -D INSTALL_TO_SITEPACKAGES=ON \
-    -D CMAKE_INSTALL_PREFIX="${_destdir}/lib/freecad" \
-    -D CMAKE_INSTALL_BINDIR=bin \
-    -D CMAKE_INSTALL_LIBDIR='../../lib' \
-    -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
-    -D CMAKE_INSTALL_DATAROOTDIR='../../share' \
-    -D CMAKE_INSTALL_DOCDIR='../../share/doc/freecad'
+    -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
+    -D CMAKE_INSTALL_BINDIR='/usr/lib/freecad/bin' \
+    -D CMAKE_INSTALL_LIBDIR='/usr/lib/freecad/lib' \
+    -D CMAKE_INSTALL_DATADIR='/usr/share/freecad' \
+    -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
+    -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'
 
   cmake --build build_dir
 }
 
 check() {
-  cd FreeCAD
-  unset PATH_TO_FREECAD_LIBDIR
-  cd build_dir
+  cd FreeCAD/build_dir
   LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
   DESTDIR="${pkgdir}" cmake --install build_dir
-
-  # link all the .sos into python site package dir
-  python_site_packages="$(python -c 'import sys; print(sys.path[-1])')"
-  mkdir -p "${pkgdir}/${python_site_packages}"
-  FILES="${pkgdir}${_destdir}"/lib/*.so
-  for f in $FILES
-  do
-    ln -s ${_destdir}/lib/$(basename $f) "${pkgdir}/${python_site_packages}/$(basename $f)"
-  done
-
+  
   # links for bin
-  mkdir -p "${pkgdir}${_destdir}"/bin
-  FILES="${pkgdir}${_destdir}"/lib/freecad/bin/*
+  mkdir -p "${pkgdir}"/usr/bin
+  FILES="${pkgdir}"/usr/lib/freecad/bin/*
   for f in $FILES
   do
-    ln -s '../lib/freecad/bin/'$(basename $f) "${pkgdir}${_destdir}"/bin/$(basename $f)
+    ln -s '../lib/freecad/bin/'$(basename $f) "${pkgdir}"/usr/bin/$(basename $f)
   done
 
-  # env var for __init__.py
-  mkdir -p "${pkgdir}"/etc/profile.d
-  echo "export PATH_TO_FREECAD_LIBDIR=${_destdir}/lib" > "${pkgdir}"/etc/profile.d/freecad.sh
-
-  install -Dt "${pkgdir}${_destdir}/share/licenses/${pkgname}" -m644 LICENSE
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
