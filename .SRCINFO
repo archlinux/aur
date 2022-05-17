@@ -1,0 +1,8 @@
+pkgbase = systemd-sysvcompat-noop
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3+
+	provides = systemd-sysvcompat
+
+pkgname = systemd-sysvcompat-noop
