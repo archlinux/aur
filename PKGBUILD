@@ -12,7 +12,7 @@ DEBUG=0
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=latest
+pkgver=0.13.0rc1.r18.ga72753bad
 pkgrel=2
 epoch=1
 
