@@ -1,0 +1,13 @@
+pkgbase = execute-process-linux
+	pkgdesc = advanced process execution static library
+	pkgver = 2.5
+	pkgrel = 0
+	url = https://github.com/imperzer0/execute-process-linux
+	arch = x86_64
+	license = GPL3
+	source = https://raw.githubusercontent.com/imperzer0/execute-process-linux/master/execute-process-linux
+	source = https://raw.githubusercontent.com/imperzer0/execute-process-linux/master/execute-process-linux-defs
+	md5sums = 503cbd766917491444a63472d6861eed
+	md5sums = 1963c2f59044568b3ecfd588b56852da
+
+pkgname = execute-process-linux
