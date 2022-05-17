@@ -15,7 +15,7 @@ source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/FF-Logs-Uploade
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
 sha256sums_x86_64=('b32f05e777bb666811725319202d73b2af70bab310f9f1e09ffa354eeec37a47'
-                   'a283d01d3ba5dbe7a22721d5d0d553327460921315c713e846475d730ef91ab6')
+                   '47bcb91caa07976ec4f57d2c6dccffdf341715b4e687c334c864be93600df1f0')
 
 prepare() {
     chmod +x "${_appimage}"
