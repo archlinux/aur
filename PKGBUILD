@@ -3,21 +3,21 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 
 pkgname=autofirmaja
-pkgver=1.6.0.jav2
-pkgrel=2
+pkgver=1.6.0.jav4
+pkgrel=1
 pkgdesc='Cliente de firma electrónica de la Junta de Andalucia'
 arch=('any')
 url='https://ws024.juntadeandalucia.es/clienteafirma/autofirma/autofirma.html'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime=11')
-source=("${pkgname}-${pkgver}.deb::https://ws024.juntadeandalucia.es/ae/descargar/5679"
+source=("${pkgname}-${pkgver}.deb::https://ws024.juntadeandalucia.es/ae/descargar/5851"
         "autofirmaja"
         "autofirmaja.desktop"
         "autofirmaja.js"
         "autofirmaja.svg"
         "eupl-1.1.txt")
 noextract=("${pkgname}-${pkgver}.deb")
-b2sums=('68c7c66648f8e17f65900c37ff50768dd5cb21bb260a489d30a36d139ac81a35f3425f6bb0bf80747eb80326b925729e4ec7bdadf03917fd0bfd21201a14a084'
+b2sums=('56e1663be7f696730a23bcb76b8a8469ffd926c84040b1ef6c70861ddd5dd012a4171d0396696cdc5d7d262b6038408acf0c13605cda1ebdb24f40a1b3eb8a0f'
         'e8b11f01f770be19253ecd460239136f004d6adc24e333094a90e54609df40ad4760cea0d139d4741aadb7cd485004f4a59c248f71807cf8d03e49bee890de23'
         'fb8f3090880400a969dd0f3fae1a50ecbf4f9aafe1beef8c7864696d86ca7b7a19065d7a878730b7391aacc3f70e0939dea9bff2adad2caa268fa48f1effb0d9'
         '4fffa7bce59647d89275aacf1f94c63f7ef8994fa4f6e5487528dc7b812a0943d0ddaa083f95c8bf89388bb31d337773ec50b6db25eb76c0dcfe91d1c85b98dd'
