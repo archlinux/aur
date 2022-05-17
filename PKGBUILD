@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=3.2.3
+pkgver=3.3.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -20,14 +20,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/BleuBleu/${_pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('c725e23641ed3b040cd0ff69d88795e8'
+md5sums=('f358c41440432f8431d2b0046a11612d'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('144dfb5b08e8c8511190a37848a465ee2d36c6e45e1d0a173d5f4a0ded203270'
+sha256sums=('e158f0ce85218dced7eba8e68a9bf2332faad3076a3b0c5e93c419a3a06cd71c'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
