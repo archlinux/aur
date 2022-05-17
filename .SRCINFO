@@ -9,10 +9,10 @@ pkgbase = rtsp-simple-server-git
 	makedepends = git
 	provides = rtsp-simple-server
 	conflicts = rtsp-simple-server
+	backup = etc/rtsp-simple-server/rtsp-simple-server.yml
 	source = rtsp-simple-server::git+https://github.com/aler9/rtsp-simple-server
 	source = rtsp-simple-server.service
 	md5sums = SKIP
 	md5sums = 81b313c4715f2ec997c64aa47f75e444
 
 pkgname = rtsp-simple-server-git
-
