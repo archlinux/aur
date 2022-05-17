@@ -11,8 +11,7 @@ url='https://github.com/wakatime/wakatime-cli'
 license=('BSD')
 source=("wakatime-${pkgver}-${pkgrel}.zip::https://github.com/wakatime/wakatime-cli/releases/download/v$pkgver/wakatime-cli-linux-amd64.zip"
 	"LICENSE-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/wakatime/wakatime-cli/v$pkgver/LICENSE")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-	'4aafe64159ef6372aba2de60ba7de1b92cb37c9adc63f904ae1a0e4e7b1292d2')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
 	install -Dm755 wakatime-cli-linux-amd64 "$pkgdir/usr/bin/wakatime"
