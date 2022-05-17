@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang-git
-pkgver=0.23.11+4.gf4c2b0de41
+pkgver=0.23.13+2.gd9fd0ff3f0
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -27,8 +27,7 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP'
-          )
+          'SKIP')
 makedepends=(premake git)
 depends=(glslang)
 conflicts=(shader-slang shader-slang-bin)
