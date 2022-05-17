@@ -42,4 +42,3 @@ pkgname = slippi-online-git
 	pkgdesc = Super Smash Bros. Melee rollback netcode - git version
 	provides = slippi-online
 	conflicts = slippi-online
-
