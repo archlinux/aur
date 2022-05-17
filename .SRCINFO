@@ -1,0 +1,15 @@
+pkgbase = antidot-git
+	pkgdesc = Cleans up your $HOME from those pesky dotfiles
+	pkgver = v0.6.2.r50.g3abc66f
+	pkgrel = 1
+	url = https://github.com/doron-cohen/antidot
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = antidot
+	conflicts = antidot
+	source = antidot-git::git+https://github.com/doron-cohen/antidot.git
+	sha256sums = SKIP
+
+pkgname = antidot-git
