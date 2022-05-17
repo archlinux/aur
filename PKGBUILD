@@ -118,6 +118,9 @@ package() {
   cd FreeCAD
   DESTDIR="${pkgdir}" cmake --install build_dir
   
+  # package thumbnailer
+  install src/Tools/freecad-thumbnailer "${pkgdir}/usr/lib/freecad/bin/freecad-thumbnailer"
+  
   # links for bin
   mkdir -p "${pkgdir}"/usr/bin
   FILES="${pkgdir}"/usr/lib/freecad/bin/*
