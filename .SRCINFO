@@ -1,5 +1,5 @@
 pkgbase = bareos
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 21.1.3
 	pkgrel = 1
 	url = http://www.bareos.org
@@ -46,7 +46,7 @@ pkgbase = bareos
 	md5sums = e78b88f897cfc3e60129eec360521e3d
 
 pkgname = bareos-bconsole
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Admin Tool (CLI)
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Admin Tool (CLI)
 	install = bareos-bconsole.install
 	groups = bareos
 	groups = bareos-client
@@ -56,7 +56,7 @@ pkgname = bareos-bconsole
 	backup = etc/bareos/bconsole.conf
 
 pkgname = bareos-common
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Common files
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Common files
 	install = bareos-common.install
 	depends = libcap
 	depends = openssl
@@ -67,7 +67,7 @@ pkgname = bareos-common
 	depends = zlib
 
 pkgname = bareos-database-common
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Generic abstration libs and tools for sql catalog
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Generic abstration libs and tools for sql catalog
 	depends = bareos-common=21.1.3
 	depends = libcap
 	depends = lzo
@@ -77,20 +77,20 @@ pkgname = bareos-database-common
 	depends = jansson
 
 pkgname = bareos-database-postgresql
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libs and tools for postgresql catalog
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Libs and tools for postgresql catalog
 	install = bareos-database-postgresql.install
 	depends = bareos-database-common=21.1.3
 	depends = postgresql-libs
 	provides = bareos-database=21.1.3
 
 pkgname = bareos-database-tools
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools with database dpendencies (dbcheck, bscan)
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - CLI tools with database dpendencies (dbcheck, bscan)
 	depends = bareos-database-common=21.1.3
 	depends = openssl
 	depends = jansson
 
 pkgname = bareos-director
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Director daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Director daemon
 	install = bareos-director.install
 	depends = bareos-common=21.1.3
 	depends = openssl
@@ -98,11 +98,11 @@ pkgname = bareos-director
 	depends = jansson
 
 pkgname = bareos-director-python-plugins-common
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - This package contains the common files for the python 2 and python 3 director plugins
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the common files for the python 2 and python 3 director plugins
 	depends = bareos-director=21.1.3
 
 pkgname = bareos-director-python2-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for director daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for director daemon
 	depends = bareos-director=21.1.3
 	depends = bareos-director-python-plugins-common=21.1.3
 	depends = python2
@@ -112,7 +112,7 @@ pkgname = bareos-director-python2-plugin
 	conflicts = bareos-director-python-plugin
 
 pkgname = bareos-director-python3-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for director daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for director daemon
 	depends = bareos-director=21.1.3
 	depends = bareos-director-python-plugins-common=21.1.3
 	depends = python
@@ -122,7 +122,7 @@ pkgname = bareos-director-python3-plugin
 	conflicts = bareos-director-python-plugin
 
 pkgname = bareos-filedaemon
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - File daemon
 	install = bareos-filedaemon.install
 	groups = bareos
 	groups = bareos-client
@@ -132,42 +132,42 @@ pkgname = bareos-filedaemon
 	depends = gcc-libs
 
 pkgname = bareos-filedaemon-glusterfs-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - GlusterFS plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - GlusterFS plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = glusterfs
 
 pkgname = bareos-filedaemon-ldap-python-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - LDAP Python plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - LDAP Python plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = bareos-filedaemon-python3-plugin=21.1.3
 	depends = python-ldap
 
 pkgname = bareos-filedaemon-libcloud-python-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Libcloud Python plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Libcloud Python plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = python-apache-libcloud
 
 pkgname = bareos-filedaemon-mariabackup-python-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - MariaBackup plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - MariaBackup plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = mariadb
 
 pkgname = bareos-filedaemon-percona-xtrabackup-python-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - XtraBackup plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - XtraBackup plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = xtrabackup
 
 pkgname = bareos-filedaemon-postgresql-python-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - PostgreSQL plugin for Bareos File daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - PostgreSQL plugin for Bareos File daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = postgresql
 
 pkgname = bareos-filedaemon-python-plugins-common
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - This package contains the common files for the python 2 and python 3 filedaemon plugins
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the common files for the python 2 and python 3 filedaemon plugins
 	depends = bareos-filedaemon=21.1.3
 
 pkgname = bareos-filedaemon-python2-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for file daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for file daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = bareos-filedaemon-python-plugins-common=21.1.3
 	depends = python2
@@ -177,7 +177,7 @@ pkgname = bareos-filedaemon-python2-plugin
 	conflicts = bareos-filedaemon-python-plugin
 
 pkgname = bareos-filedaemon-python3-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for file daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for file daemon
 	depends = bareos-filedaemon=21.1.3
 	depends = bareos-filedaemon-python-plugins-common=21.1.3
 	depends = python
@@ -187,7 +187,7 @@ pkgname = bareos-filedaemon-python3-plugin
 	conflicts = bareos-filedaemon-python-plugin
 
 pkgname = bareos-storage
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Storage daemon
 	install = bareos-storage.install
 	depends = bareos-common=21.1.3
 	depends = zlib
@@ -197,11 +197,11 @@ pkgname = bareos-storage
 	depends = libcap
 
 pkgname = bareos-storage-droplet
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Droplet support for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Droplet support for storage daemon
 	depends = bareos-storage=21.1.3
 
 pkgname = bareos-storage-fifo
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - FIFO support for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - FIFO support for storage daemon
 	depends = bareos-storage=21.1.3
 	depends = zlib
 	depends = libcap
@@ -210,16 +210,16 @@ pkgname = bareos-storage-fifo
 	depends = lzo
 
 pkgname = bareos-storage-glusterfs
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - GlusterFS support for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - GlusterFS support for storage daemon
 	depends = bareos-storage=21.1.3
 	depends = glusterfs
 
 pkgname = bareos-storage-python-plugins-common
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - This package contains the common files for the python 2 and python 3 storage plugins
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the common files for the python 2 and python 3 storage plugins
 	depends = bareos-storage=21.1.3
 
 pkgname = bareos-storage-python2-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for storage daemon
 	depends = bareos-storage=21.1.3
 	depends = bareos-storage-python-plugins-common=21.1.3
 	depends = python2
@@ -229,7 +229,7 @@ pkgname = bareos-storage-python2-plugin
 	conflicts = bareos-storage-python-plugin
 
 pkgname = bareos-storage-python3-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Python plugin for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for storage daemon
 	depends = bareos-storage=21.1.3
 	depends = bareos-storage-python-plugins-common=21.1.3
 	depends = python
@@ -239,7 +239,7 @@ pkgname = bareos-storage-python3-plugin
 	conflicts = bareos-storage-python-plugin
 
 pkgname = bareos-storage-tape
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Tape support for storage daemon
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Tape support for storage daemon
 	depends = bareos-storage=21.1.3
 	depends = zlib
 	depends = libcap
@@ -251,16 +251,16 @@ pkgname = bareos-storage-tape
 	backup = etc/bareos/mtx-changer.conf
 
 pkgname = bareos-tools
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild, bregex)
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - CLI tools (bcopy, bextract, bls, bregeq, bwild, bregex)
 	depends = bareos-common=21.1.3
 	depends = glibc
 
 pkgname = bareos-vmware-plugin
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Bareos VMware plugin
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Bareos VMware plugin
 	depends = python2
 
 pkgname = bareos-webui
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Webui (Bareos web administration)
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Webui (Bareos web administration)
 	depends = php7
 	depends = php7-fpm
 	depends = jansson
@@ -271,5 +271,16 @@ pkgname = bareos-webui
 	backup = etc/httpd/conf/extra/bareos-webui.conf
 
 pkgname = bareos-devel
-	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced - Devel headers
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Devel headers
 	arch = any
+
+pkgname = bareos-traymonitor
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the tray monitor (QT based)
+	install = bareos-traymonitor.install
+	groups = bareos
+	groups = bareos-client
+	depends = bareos-common=21.1.3
+	backup = etc/bareos/tray-monitor.d/monitor/bareos-mon.conf
+	backup = etc/bareos/tray-monitor.d/client/file-daemon.conf
+	backup = etc/bareos/tray-monitor.d/director/director.conf
+	backup = etc/bareos/tray-monitor.d/storage/storage-daemon.conf
