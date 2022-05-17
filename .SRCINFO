@@ -1,6 +1,6 @@
 pkgbase = gede
 	pkgdesc = Graphical frontend (GUI) to GDB written in Qt.
-	pkgver = 2.17.1
+	pkgver = 2.18.2
 	pkgrel = 1
 	url = https://gede.dexar.se/
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = gede
 	depends = qt5-base
 	depends = gdb
 	depends = ctags
-	source = http://gede.dexar.se/uploads/source/gede-2.17.1.tar.xz
+	source = http://gede.dexar.se/uploads/source/gede-2.18.2.tar.xz
 	source = do_not_build_on_install.patch
-	sha256sums = a323c7a347328efb0ff46ebbfe9979c733eb5a7f83405b53eb88be5fbdf07a41
+	sha256sums = 416ac31d5fb6b6b97ec0a2a26d68836be915444375d7a3b043a0e899a2a3dcb6
 	sha256sums = 65f0075eee147364cfcba6776de1389ceb4dbe066f6274da65470bf8bdd467b4
 
 pkgname = gede
-
