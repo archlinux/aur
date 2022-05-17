@@ -1,8 +1,8 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=libratify-git
 pkgver=v2.0.0.r0.debe81d
 pkgrel=1
-pkgdesc=""
+pkgdesc="RTF serialization and deserialization for GtkTextBuffer"
 arch=(x86_64)
 url="https://github.com/ptomato/ratify.git"
 license=('LGPL3')
@@ -11,7 +11,6 @@ makedepends=('git' 'ninja' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("libratify::git+${url}")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {

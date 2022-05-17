@@ -1,4 +1,5 @@
 pkgbase = libratify-git
+	pkgdesc = RTF serialization and deserialization for GtkTextBuffer
 	pkgver = v2.0.0.r0.debe81d
 	pkgrel = 1
 	url = https://github.com/ptomato/ratify.git
