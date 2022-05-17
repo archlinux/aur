@@ -1,13 +1,13 @@
 pkgbase = connect-4
 	pkgdesc = A simple four in a row game made with SDL2
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/ICanOnlySuffer/connect-4
 	arch = x86_64
 	groups = pocha
 	license = GPLv3
 	makedepends = pge
 	source = https://gitlab.com/ICanOnlySuffer/connect-4/-/archive/v0.1.0/connect-4-v0.1.0.tar.gz
-	sha256sums = 769d275fe2a08001056a4d581c68903da576ecf51815999313e22e3f6f882d56
+	sha256sums = baca99ab45b6833a208072bad623fe2a30fa34e08ecc6b916558a074ad6bb13f
 
 pkgname = connect-4
