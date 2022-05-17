@@ -1,7 +1,7 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r2379.6ae5242e
+pkgver=r2403.3045e860
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
     cd "$srcdir/openrgb"
     qmake OpenRGB.pro
     make
-    ./scripts/build-udev-rules.sh "."
+    "."/scripts/build-udev-rules.sh "."
 }
 
 package() {
