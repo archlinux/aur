@@ -6,7 +6,7 @@ pkgver=21.0930a
 _gamefilesver=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
-url='https://rvgl.re-volt.io'
+url='https://rvgl.org'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('custom')
 depends=('sdl2' 'sdl2_image' 'openal' 'enet' 'libunistring')
@@ -18,7 +18,7 @@ optdepends=('rvgl-dcpack: dreamcast content pack'
             'mpg123: for MPEG support'
             'fluidsynth: for SoundFont 2 support')
 makedepends=('git')
-groups=('rvgl-basic' 'rvgl-original' 'rvgl-community')
+groups=('rvgl-basic' 'rvgl-original' 'rvgl-online')
 source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${_gamefilesver}
         "rvgl_assets"::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=${pkgver}
         "rvgl_platform"::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=${pkgver}
