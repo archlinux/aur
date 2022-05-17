@@ -1,18 +1,19 @@
 # Maintainer: Amirabbas Fazelinia <utilyre@protonmail.com>
+
 pkgname="utilyre-st-git"
 _reponame="st"
 pkgver="0.8.6"
 pkgrel="1"
 pkgdesc="A simple virtual terminal emulator for X"
-arch=("x86_64")
-url="https://github.com/utilyre/st.git"
+arch=("i686" "x86_64" "armv7h")
+url="https://github.com/utilyre/st"
 license=("MIT")
 depends=("libxft-bgra")
-makedepends=("git" "make")
+makedepends=("ncurses" "libxext" "git")
 provides=("st")
 conflicts=("st" "st-git")
-source=("git+$url")
-md5sums=("SKIP")
+source=("git+$url.git")
+sha256sums=("SKIP")
 
 build() {
 	cd "$_reponame"
