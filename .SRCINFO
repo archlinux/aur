@@ -11,7 +11,7 @@ pkgbase = wakatime-cli-bin
 	conflicts = wakatime-cli
 	source = wakatime-1.45.3-1.zip::https://github.com/wakatime/wakatime-cli/releases/download/v1.45.3/wakatime-cli-linux-amd64.zip
 	source = LICENSE-1.45.3-1::https://raw.githubusercontent.com/wakatime/wakatime-cli/v1.45.3/LICENSE
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	sha256sums = 4aafe64159ef6372aba2de60ba7de1b92cb37c9adc63f904ae1a0e4e7b1292d2
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = wakatime-cli-bin
