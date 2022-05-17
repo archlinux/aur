@@ -3,7 +3,7 @@
 
 pkgname=ctlptl-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Making local Kubernetes clusters fun and easy to set up"
 arch=('x86_64')
 url="https://github.com/tilt-dev/ctlptl"
@@ -13,4 +13,7 @@ sha256sums=('ec298c1df36b68135e54ae4ad25d900c327ad961c097e0a99247f1fef990e2c3')
 
 package() {
   install -Dm 755 "$srcdir/ctlptl" "$pkgdir/usr/bin/ctlptl"
+
+  "$pkgdir/usr/bin/ctlptl" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/ctlptl"
+  "$pkgdir/usr/bin/ctlptl" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_ctlptl"
 }
