@@ -12,6 +12,6 @@ pkgbase = fflogs-uploader-appimage
 	source_x86_64 = ff-logs-uploader-5.9.0.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v5.9.0/FF-Logs-Uploader-5.9.0.AppImage
 	source_x86_64 = fflogs-uploader.desktop
 	sha256sums_x86_64 = b32f05e777bb666811725319202d73b2af70bab310f9f1e09ffa354eeec37a47
-	sha256sums_x86_64 = a283d01d3ba5dbe7a22721d5d0d553327460921315c713e846475d730ef91ab6
+	sha256sums_x86_64 = 47bcb91caa07976ec4f57d2c6dccffdf341715b4e687c334c864be93600df1f0
 
 pkgname = fflogs-uploader-appimage
