@@ -25,18 +25,18 @@ prepare() {
 }
 
 build() {
-	cd libcroco
-	for _arch in ${_architectures}; do
-		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-configure \
+  cd libcroco
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
       --disable-gtk-doc-html
-		make
-		popd
-	done
+    make
+    popd
+  done
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/bin"
   for _arch in ${_architectures}; do
     cd "${srcdir}/libcroco/build-${_arch}"
     make DESTDIR="$pkgdir" install
@@ -46,3 +46,5 @@ package() {
     ln -s "/usr/${_arch}/bin/croco-${pkgver%.*}-config" "$pkgdir/usr/bin/${_arch}-croco-config"
   done
 }
+
+# vim: ts=2 sw=2 et:
