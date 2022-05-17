@@ -1,0 +1,57 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2017-12-15 18:23:23.000000000 +0100
++++ b/Makefile	2022-05-17 14:21:53.919907281 +0200
+@@ -38,12 +38,12 @@
+ # For UNIX-like systems
+ 
+ SYSTEM =	UNIX
+-SUBSYSTEM =	SOLARIS
++SUBSYSTEM =	LINUX
+ 
+ # Locations
+-DIR =		/home/dick
+-BINDIR =	$(DIR)/bin.`$(DIR)/bin/arch`
+-MAN1DIR =	$(DIR)/man/man1
++DIR =		/usr
++BINDIR =	$(DIR)/bin
++MAN1DIR =	$(DIR)/share/man/man1
+ 
+ # Commands
+ COPY =		cp -p
+@@ -56,27 +56,6 @@
+ NULLFILE =	/dev/null
+ 
+ ################################################################
+-# For MSDOS + MinGW
+-
+-SYSTEM =	MSDOS
+-SUBSYSTEM =	MinGW
+-
+-# Locations
+-DIR =		C:/BIN
+-BINDIR =	C:/BIN
+-MAN1DIR =	C:/BIN
+-
+-# File names
+-NULLFILE =	nul
+-
+-# Commands (cp required, since xcopy cannot handle forward slashes)
+-COPY =		cp -p
+-EXE =		.exe
+-LEX =		flex
+-LN =		ln
+-ZIP =		zip -o
+-
+-################################################################
+ # General, C compilation:
+ CC =		gcc -D$(SYSTEM) -D$(SUBSYSTEM)
+ LINT =		lint -ansi -D$(SYSTEM) -D$(SUBSYSTEM)
+@@ -391,7 +370,7 @@
+ 		$(BINDIR)/sim_mira$(EXE) \
+ 		$(BINDIR)/sim_8086$(EXE)
+ 
+-$(MAN1D)/sim.1:	sim.1
++$(MAN1DIR)/sim.1:	sim.1
+ 		$(COPY) sim.1 $@
+ 
+ $(BINDIR)/sim_c$(EXE):	sim_c$(EXE)
