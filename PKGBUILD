@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://openvpn.fox-it.com/"
 license=('GPL2')
 depends=('lzo')
-makedepends=('cmake' 'gnupg')
+makedepends=('gnupg')
 source=(
 	"https://openvpn.fox-it.com/repos/deb/dists/focal/Release" 
 	"https://openvpn.fox-it.com/repos/deb/dists/focal/Release.gpg"
