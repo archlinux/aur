@@ -12,7 +12,7 @@ depends=('rvgl-bin')
 makedepends=('git')
 provides=('rvgl-soundtrack')
 conflicts=('rvgl-soundtrack')
-groups=('rvgl-community')
+groups=('rvgl-online')
 source=("rvgl_io_soundtrack"::git+https://gitlab.com/re-volt/rvio/ost.git#tag=${pkgver})
 sha256sums=('SKIP')
 

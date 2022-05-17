@@ -4,7 +4,7 @@ pkgbase = rvgl-io-soundtrack
 	pkgrel = 3
 	url = https://re-volt.io/downloads/packs
 	arch = any
-	groups = rvgl-community
+	groups = rvgl-online
 	license = custom
 	makedepends = git
 	depends = rvgl-bin
@@ -14,4 +14,3 @@ pkgbase = rvgl-io-soundtrack
 	sha256sums = SKIP
 
 pkgname = rvgl-io-soundtrack
-
