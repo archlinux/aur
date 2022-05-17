@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -89,15 +89,13 @@ source=(
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
-  "ffmpeg_5_master_fixes.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/6423.patch
 )
 sha256sums=(
   "SKIP"
   "4dc22cc6a71f879486946032debef5789b144d1d108a678379910480601937ca"
-  "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
+  "e0cfe383286ae1b7e9a4f88ea0e8f05e79470bf677b16ac18bd2a64826c2ae28"
   "SKIP"
   "SKIP"
-  "91a08c02b397c49e84400f36559059f03c629b4d0df5b6689ce8eb6923c805f6"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -162,7 +160,12 @@ prepare() {
   sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
 
   ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
-  patch -Np1 < "$srcdir/ffmpeg_5_master_fixes.patch"
+  git cherry-pick -n e66542075d5d2cb51a14a0bdf3458ac10757de64
+  git cherry-pick -n 5b6cc73c2475abe6a85647604b9ce937dec09000
+  git cherry-pick -n 12d1f1c3358f7231244db0b971a333445e346f80
+
+  ## obs-ffmpeg: Change types to avoid unnecessary casts (https://github.com/obsproject/obs-studio/commit/8bd4ef61a02f6f574d4788f2bc25bb9fe2568c5c)
+  git cherry-pick -n 8bd4ef61a02f6f574d4788f2bc25bb9fe2568c5c
 
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
