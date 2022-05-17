@@ -1,12 +1,12 @@
 pkgbase = nali-go
 	pkgdesc = An offline tool for querying IP geographic information and CDN provider.
-	pkgver = 0.3.7
+	pkgver = 0.4.0_rc1
 	pkgrel = 1
 	url = https://github.com/zu1k/nali
 	arch = x86_64
 	license = MIT
 	makedepends = go>=2:1.18beta
-	source = https://github.com/zu1k/nali/archive/refs/tags/0.3.7.tar.gz
-	sha256sums = cae428002cc8984cd4817fb1e277876806648c199cec42b5213bf1f0fba31e09
+	source = https://github.com/zu1k/nali/archive/refs/tags/v0.4.0-rc1.tar.gz
+	sha256sums = f3de033108fb1b665baa24bb5620dc6d89dfd197417e36f14ac4b1e83773a493
 
 pkgname = nali-go
