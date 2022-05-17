@@ -1,0 +1,13 @@
+/pkg/
+/src/
+*.pkg.tar.zst
+*.txt
+*.hpp
+*.cpp
+*.service
+*.ts
+*.h
+*.c
+*.ui
+*.qrc
+xor-crypt*
