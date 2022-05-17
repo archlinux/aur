@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=statmake
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
 arch=(any)
@@ -13,18 +13,20 @@ _py_deps=(attrs
           fs) # optdepends of fonttools required for [ufo]
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer}
+             python-poetry
+             python-wheel)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('c75ea5f00d9d8c298c99831568bf6fe351ce013cbaf93b8533086679ad94ee1f')
+sha256sums=('67ac5de8bdea62ffd57b5c714b5f8af51016d07b203e3a4deecf6f2b0c9f9276')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
