@@ -78,7 +78,7 @@ prepare() {
 build() {
   cd FreeCAD
 
-  cmake -Wno-dev -G Ninja -B build_dir -S . \
+  cmake -Wno-dev -G Ninja -B build -S . \
     -D BUILD_ENABLE_CXX_STD=C++17 \
     -D BUILD_FEM=ON \
     -D BUILD_FEM_NETGEN=OFF \
@@ -106,17 +106,17 @@ build() {
     -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
     -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'
 
-  cmake --build build_dir
+  cmake --build build
 }
 
 check() {
-  cd FreeCAD/build_dir
+  cd FreeCAD/build
   LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
-  DESTDIR="${pkgdir}" cmake --install build_dir
+  DESTDIR="${pkgdir}" cmake --install build
   
   # package thumbnailer
   install src/Tools/freecad-thumbnailer "${pkgdir}/usr/lib/freecad/bin/freecad-thumbnailer"
