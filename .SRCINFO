@@ -2,7 +2,7 @@ pkgbase = mingw-w64-libcroco
 	pkgdesc = GNOME CSS2 parsing and manipulation toolkit (mingw-w64)
 	pkgver = 0.6.13
 	pkgrel = 1
-	url = https://gitlab.gnome.org/GNOME/libcroco
+	url = https://gitlab.gnome.org/Archive/libcroco
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
@@ -18,4 +18,3 @@ pkgbase = mingw-w64-libcroco
 	sha256sums = SKIP
 
 pkgname = mingw-w64-libcroco
-
