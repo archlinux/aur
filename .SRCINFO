@@ -1,7 +1,7 @@
 pkgbase = openrgb
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
 	pkgver = 0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
 	license = GPL2
@@ -15,8 +15,10 @@ pkgbase = openrgb
 	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_0.7/OpenRGB-release_0.7.tar.gz
 	source = openrgb.conf
 	source = openrgb.service
+	source = https://gitlab.com/CalcProgrammer1/OpenRGB/-/commit/59732ed47e6c1392ba5236c07410dca13d4d721f.patch
 	sha256sums = 6052e04ad736f94a91a386f6cfc0aaff9554fafdabe99cdd46a296fd49132569
 	sha256sums = b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2
 	sha256sums = 272dc43a77d0e48d29f32da753c7e05fd635883b173c21047f4eefa8bfc77938
+	sha256sums = 9d5f9435426351af7e9a12df5f75f56183585fd38729956a5cead1e2172d8e02
 
 pkgname = openrgb
