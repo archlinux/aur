@@ -13,7 +13,7 @@ DEBUG=0
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=1
 
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
@@ -104,8 +104,8 @@ build() {
     if [ "$CARCH" == "x86_64" ] && [ -z "$GOAMD64" ]; then
       # detect cpu feature level
       version_4="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
-      version_3="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
-      version_2="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
+      version_3="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v3 | wc -l)"
+      version_2="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v2 | wc -l)"
       
       if [ "$version_4" -gt 0 ]; then
         export GOAMD64="v4"
