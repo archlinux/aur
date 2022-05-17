@@ -2,17 +2,17 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins-bonus
-pkgver=22.0129
+pkgver=22.0514
 pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
-url='https://re-volt.io/downloads/packs'
+url='https://re-volt.io/online/cars'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
 optdepends=('rvgl-io-cars: additional cars for official events'
             'rvgl-io-cars-bonus: additional cars')
 makedepends=('git')
-groups=('rvgl-community')
+groups=('rvgl-bonus')
 source=("rvgl_io_skins_bonus"::git+https://gitlab.com/re-volt/rvio/bonus_skins.git#tag=${pkgver})
 sha256sums=('SKIP')
 
