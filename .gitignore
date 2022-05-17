@@ -1,9 +1,7 @@
-BCM43430A1_*.hcd
-brcmfmac43430-sdio_*.txt
+*.hcd
+*.txt
 src
 pkg
 *.zst
-brcmfmac43430-sdio_1.1.bin.armbian brcmfmac43430-sdio_1.1.txt.armbian
-brcmfmac43430-sdio_1.1.bin
 *.bin
-*.armbian
+*.clm_blob
