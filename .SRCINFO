@@ -1,18 +1,13 @@
 pkgbase = xuanxuan
 	pkgdesc = 一款面向企业协同的及时通讯软件！
-	pkgver = 3.0.0beta.1
+	pkgver = 5.6
 	pkgrel = 1
 	url = https://xuan.im
-	install = xuanxuan.install
-	arch = x86_64
+	arch = any
 	license = custom
-	depends = gtk3
-	depends = libxss
-	depends = nss
-	options = !strip
-	options = !emptydirs
-	source = http://dl.cnezsoft.com/xuanxuan/3.0.0-beta.1/xuanxuan.3.0.0-beta.1.linux.amd64.deb
-	sha512sums = c5dc31f389f4451613a4e141f8bcfa23e1fd20f0d0561361ec0a516453e87a657d4d04e3cbe741fbd207a93efd462854a2d12cbadc295be5956dd648cf863e5b
+	source = xuanxuan-5.6.deb::https://www.xuanim.com/dl/xuanxuan/5.6/xuanxuan.5.6.linux.amd64.deb
+	source = xuanxuan.sh
+	sha512sums = bb302f97f7f36cc3608591ad2e14e006c1aa246f6b0c54cf803512d2cca847076bbdd7190037f87e839b5492a1be82ea7caa95168effd5dfa729323c993ffee1
+	sha512sums = b5f6c579c447bb9708183064fc46f728a093e1a0446136f76cdaf593bd73830b00e6e20676f9ab3cfa6cd4d13935a2f9624059521e6dce3b145675678eda080a
 
 pkgname = xuanxuan
-
