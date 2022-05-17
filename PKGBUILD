@@ -1,4 +1,4 @@
-# Maintainer: Charles Vejnar
+# Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-fontools
 pkgver=0.3
@@ -8,22 +8,16 @@ arch=("any")
 url="https://github.com/vejnar/fontools"
 license=("MPLv2")
 depends=("python" "python-pyfnutils" "python-pyfaidx")
-makedepends=("python-setuptools" "python-pip" "python-wheel")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("https://github.com/vejnar/fontools/archive/refs/tags/v$pkgver.tar.gz")
 sha1sums=("966b0888d7a50369f9f04b907f6d480a5ede7a72")
 
+build() {
+    cd "$srcdir/fontools-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "$srcdir/fontools-$pkgver"
-    pip install --disable-pip-version-check \
-                --ignore-installed \
-                --isolated \
-                --no-deps \
-                --no-build-isolation \
-                --no-index \
-                --no-cache-dir \
-                --no-warn-script-location \
-                --root="$pkgdir" \
-                .
-    cd "${pkgdir}"
-    python -O -m compileall "usr/lib"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
