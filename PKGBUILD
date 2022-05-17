@@ -35,15 +35,15 @@ pkgname=("bareos-bconsole"
          "bareos-vmware-plugin"
          "bareos-webui"
          "bareos-devel"
+         "bareos-traymonitor"
          )
-#         "bareos-traymonitor"
 
 pkgver=21.1.3
 pkgmajor=${pkgver%%.*}
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
-pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
+pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
 makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python2' 'python' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper') # 'ceph-libs'
