@@ -11,7 +11,7 @@ noextract=('SwiftExplorer-${pkgver}-jar-with-dependencies.jar')
 conflicts=()
 url="http://www.619.io/swift-explorer"
 arch=(any)
-source=("SwiftExplorer-${pkgver}-jar-with-dependencies.jar::https://bintray.com/artifact/download/roikku/generic/SwiftExplorer-${pkgver}-jar-with-dependencies.jar"
+source=("SwiftExplorer-${pkgver}-jar-with-dependencies.jar::https://github.com/roikku/swift-explorer/releases/download/${pkgver}/SwiftExplorer-${pkgver}-jar-with-dependencies.jar"
         "swift-explorer.sh"
         "swift-explorer.png"
         "swift-explorer.desktop"
