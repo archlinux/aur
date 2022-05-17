@@ -2,7 +2,7 @@
 pkgname=mint-artwork
 pkgver=1.5.7
 pkgrel=0
-epoch=0
+epoch=1
 pkgdesc="Linux Mint Artwork and Resources."
 arch=("any")
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
@@ -22,13 +22,13 @@ sha256sums=("b210ada84a4b29805ce79cff8de4dfaabc6d49b45a2a546c4df776d8558e961f")
 
 package() {
 
-  mkdir --parents "${pkgdir}/etc/lightdm/"
-  mkdir --parents "${pkgdir}/usr/bin/"
-  mkdir --parents "${pkgdir}/usr/share/backgrounds/linuxmint/"
+  mkdir --parents ${pkgdir}/etc/lightdm/
+  mkdir --parents ${pkgdir}/usr/bin/
+  mkdir --parents ${pkgdir}/usr/share/backgrounds/linuxmint/
 
-  cp --archive "${srcdir}/${pkgname}/etc/lightdm/lightdm-gtk-greeter.conf.d/99_linuxmint.conf" "${pkgdir}/etc/lightdm/lightdm-gtk-greeter.conf"
-  cp --archive "${srcdir}/${pkgname}/etc/skel" "${pkgdir}/etc"
-  cp --archive "${srcdir}/${pkgname}/etc/xdg" "${pkgdir}/etc"
-  cp --archive "${srcdir}/${pkgname}/usr/bin/sha256sum-mint" "${pkgdir}/usr/bin/sha256sum-mint"
-  cp --archive "${srcdir}/${pkgname}/usr/share/*" "${pkgdir}/usr/share/"
+  cp --archive ${srcdir}/${pkgname}/etc/lightdm/lightdm-gtk-greeter.conf.d/99_linuxmint.conf ${pkgdir}/etc/lightdm/lightdm-gtk-greeter.conf
+  cp --archive ${srcdir}/${pkgname}/etc/skel ${pkgdir}/etc
+  cp --archive ${srcdir}/${pkgname}/etc/xdg ${pkgdir}/etc
+  cp --archive ${srcdir}/${pkgname}/usr/bin/sha256sum-mint ${pkgdir}/usr/bin/sha256sum-mint
+  cp --archive ${srcdir}/${pkgname}/usr/share/* ${pkgdir}/usr/share/
 }
