@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=7.6.1
+pkgver=7.7.0
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc"
         'facter-3.14.9.gemspec')
-sha512sums=('5a76e0053f41bf51cb0c4f79a6785e7759ba4ecaeadb84ce3dc777a288910d355bbeb0efc438eb3fddc09b7f7471526124bbfd076bff9091eecb341f3958130b'
+sha512sums=('f56a94cfb75f2e95aef4947b2e755cda1ba4b3a1f646f14525c2ed2434c49da7d71b5dc2766bae727dcc307e06e2c56df80682b2376d8379b7c291a319a37ed1'
             'SKIP'
             '3341d62606d9426b4f810d873ec93b1c2888032dc5a1eb17afb38382f4f4463489a338d470367e8d129c1103efb9183bb941cc9de56815184f859823c99e91f9')
 validpgpkeys=('D6811ED3ADEEB8441AF5AA8F4528B6CD9E61EF26')
