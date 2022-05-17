@@ -4,7 +4,7 @@
 _pyname=glyphsLib
 pkgname=python-${_pyname,,}
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A bridge from Glyphs source files (.glyphs) to UFOs'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -38,9 +38,11 @@ build() {
 
 check() {
 	cd "$_archive"
-	# skipped tests require ufo2ft, a circular dependency which might be on
-	# older version than expected when this is built against Arch packages
+	# skipped interpolation and designspace tests assume pinned version of defcon, Arch's might be newer
+	# skipped builder test requires ufo2ft, a circular dependency which might be older version than expected
 	PYTHONPATH=Lib pytest tests \
+		--deselect tests/builder/interpolation_test.py \
+		--deselect tests/builder/designspace_gen_test.py \
 		--deselect tests/builder/builder_test.py
 }
 
