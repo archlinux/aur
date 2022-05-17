@@ -1,7 +1,7 @@
 pkgbase = hqplayer4
 	pkgdesc = The high-end upsampling multichannel software HD-audio player
 	pkgver = 4.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
 	license = custom
@@ -26,6 +26,7 @@ pkgbase = hqplayer4
 	depends = mpg123
 	optdepends = hqplayer-client
 	optdepends = evince: hqplayer manual reading
+	provides = hqplayer
 	conflicts = hqplayer-embedded-amd
 	conflicts = hqplayer-embedded
 	options = !strip
