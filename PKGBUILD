@@ -15,7 +15,7 @@ source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/FF-Logs-Uploade
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
 sha256sums_x86_64=('b32f05e777bb666811725319202d73b2af70bab310f9f1e09ffa354eeec37a47'
-                   '47bcb91caa07976ec4f57d2c6dccffdf341715b4e687c334c864be93600df1f0')
+                   '1e8ea2d53369ee177b4bd3522edcfcb34d68e617a973353426cb1eced6f36416')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -25,8 +25,6 @@ prepare() {
 build() {
 	# fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
-	#appending version to desktop file
-	echo -e "\nX-AppImage-Version=${pkgver}" >> "${_pkgname}.desktop"
 }
 
 package() {
