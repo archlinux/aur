@@ -28,6 +28,6 @@ pkgbase = scrt
 	options = !strip
 	options = !emptydirs
 	source = local://scrt-9.2.1.2768.ubuntu20-64.tar.gz
-	md5sums = 79d0b903a46a388d31925ebcb3ac3102
+	md5sums = e97fdda6424782d0ee2279dc77c29c6b
 
 pkgname = scrt

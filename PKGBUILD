@@ -20,7 +20,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu66')
 options=('!strip' '!emptydirs')
 source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu20-64.tar.gz")
-md5sums=('79d0b903a46a388d31925ebcb3ac3102')
+md5sums=('e97fdda6424782d0ee2279dc77c29c6b')
 
 package() {
        cd "${srcdir}"/${pkgname}-${pkgver}
