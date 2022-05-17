@@ -1,0 +1,16 @@
+pkgbase = libratify-git
+	pkgver = v2.0.0.r0.debe81d
+	pkgrel = 1
+	url = https://github.com/ptomato/ratify.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	depends = gtk3
+	provides = libratify
+	conflicts = libratify
+	source = libratify::git+https://github.com/ptomato/ratify.git
+	md5sums = SKIP
+
+pkgname = libratify-git
