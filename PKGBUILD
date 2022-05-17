@@ -1,10 +1,10 @@
 # Maintainer: Coral Pink <coral.pink@disr.it>
 pkgname=unshell-git
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A utility for splitting input into shell-like tokens"
 url="https://codeberg.org/coralpink/unshell"
-source=("$pkgname-$pkgver::git+https://codeberg.org/coralpink/unshell.git#tag=0.1.2")
+source=("$pkgname-$pkgver::git+https://codeberg.org/coralpink/unshell.git#tag=$pkgver")
 arch=("any")
 license=("custom:MIT+NIGGER")
 validpgpkeys=("88CF318EE94748D582940E86CC5693B9689DB487")
@@ -17,5 +17,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX=/usr install
+	make DESTDIR="$pkgdir" PREFIX=/usr PACKAGE_NAME="$pkgname" install
 }
