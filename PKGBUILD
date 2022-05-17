@@ -9,7 +9,7 @@
 # hm_b <holger@music-nerds.net>
 
 pkgname=renoise-demo
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A music composition program"
 arch=("x86_64")
@@ -21,7 +21,7 @@ options=("!strip")
 conflicts=("renoise" "renoise3-demo")
 
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux_x86_64.tar.gz")
-sha512sums=('499fd07ada10c784f91adc9c9b94a3a9f006157eea274da4b0a86fba6be23444604640c64e55aaf30475523b63814089805ad5c6ec4e8bd49ea1a31e9f59d8a2')
+sha512sums=('0de97654be51caee4190a4894877d1aaf7ce2d8be5976529a8c53758e3601be4ca74af1e48f24bc0bfed8773a81b365ef614d8c061e5b31f2d5e89709c9ad55d')
 
 package() {
     cd "Renoise_${pkgver//./_}_Demo_Linux_x86_64"
