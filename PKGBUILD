@@ -1,37 +1,23 @@
-# Maintainer: AchmadFathoni <fathoni DOT id AT gmail DOT com>
-# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: AchmadFathoni <fathoni DOT id AT gmail DOT com>
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 # Contributor: Ramdambo <https://github.com/Ramdambo>
 pkgname=ignition-math
-pkgver=6.10.0
-pkgrel=2
+pkgver=6.11.0
+pkgrel=1
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
-url="https://ignitionrobotics.org/libs/math"
+url="https://gazebosim.org/libs/math"
 license=('Apache')
 groups=('development')
-depends=('gcc-libs')
+depends=('gcc-libs' 'swig')
 makedepends=('ignition-cmake>=2')
 optdepends=('eigen')
 conflicts=()
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz"
-  "cmake.patch::https://github.com/ignitionrobotics/ign-math/commit/6340f89b4d19e6b6aa38ae632760da264409c1ef.diff"
-)
-sha256sums=(
-  "9e00284cd6d51afe190165b2b44258e19bd4a28781cbacf21fd6b0bae43c16aa"
-  "d94835e0c1fe543ac47d7de1ee0906c171ce91c2f4e60bf597172c951d66a605"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-math/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=("e6b8901c94147e2c2659323083ce1d151495a07f9bef72a957069ce5b9f3d9e8")
 
-depends=(
-  swig
-)
-
-_dir="ign-math-${pkgname}6_${pkgver}"
-
-prepare(){
-  patch --directory="$_dir" --forward --strip=1 --input="${srcdir}/cmake.patch"
-}
+_dir="gz-math-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
