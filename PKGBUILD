@@ -1,14 +1,14 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=fup
-pkgrel=4
+pkgrel=5
 pkgver=1.0.0
 pkgdesc="Command line client for gofu"
 url="https://git.roshless.me/~roshless/fup"
 arch=('x86_64' 'i686')
 license=("GPL")
 depends=("glibc" "curl")
-source=("https://git.roshless.me/~roshless/$pkgname/archive/$pkgver.tar.gz")
+source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 build() {
 	cd $pkgname-$pkgver
