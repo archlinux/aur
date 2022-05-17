@@ -2,7 +2,7 @@
 
 _gemname=fpm
 pkgname=$_gemname
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
@@ -25,12 +25,11 @@ depends=(ruby
 #              ruby-insist)
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('caa90a5735c30a889403c7a4f719f9cc96eafbf520b39088d74d2e9df5f0d1da')
+sha256sums=('84b6c3519cbadca010af1d23d04e634375f93337c0452eb7d1842b9103e38d14')
 
 build() {
   cd $srcdir/$_gemname-$pkgver
   sed -i 's/"clamp", "~> 1.0.0"/"clamp", ">= 1.0.0"/' fpm.gemspec
-  sed -i 's/"childprocess", "0.9.0"/"childprocess", "< 1.0.0"/' fpm.gemspec
   make gem
 }
 
