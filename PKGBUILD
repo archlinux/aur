@@ -2,10 +2,10 @@
 
 pkgname='connect-4'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple four in a row game made with SDL2'
 arch=('x86_64')
-makedepends=('pul' 'sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer')
+makedepends=('pge')
 license=('GPLv3')
 groups=('pocha')
 url="https://gitlab.com/ICanOnlySuffer/$pkgname"
