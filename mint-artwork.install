@@ -13,6 +13,8 @@ post_remove() {
 }
 
 restart_Cinnamon() {
-  DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${SUDO_UID}/bus"
-  sudo -u "#${SUDO_UID}" -H dbus-send --bus=$DBUS_SESSION_BUS_ADDRESS --type=method_call --dest=org.Cinnamon /org/Cinnamon org.Cinnamon.RestartCinnamon boolean:true 2> /dev/null
+  sudo DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${SUDO_UID}/bus"
+  sudo -u "#${SUDO_UID}" -H dbus-send --bus=$DBUS_SESSION_BUS_ADDRESS \
+    --type=method_call --dest=org.Cinnamon /org/Cinnamon \
+    org.Cinnamon.RestartCinnamon boolean:false 2> /dev/null
 }
