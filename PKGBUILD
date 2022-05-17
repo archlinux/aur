@@ -9,7 +9,7 @@ _pkgname=multimc
 pkgver=0.6.14
 _nbtplusplusver=dc72a20b7efd304d12af2025223fad07b4b78464
 _quazipver=b1a72ac0bb5a732bf887a535ab75c6f9bedb6b6b
-pkgrel=4
+pkgrel=5
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
@@ -36,7 +36,7 @@ source=("${pkgname}::git+https://github.com/MultiMC/Launcher#tag=${pkgver}"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'df53f8b13ceeddc7922b6553730f29fdf92662277d20c9fc97d56965df1fe2349dd724ad8f911b105b02653fad112785e72ffadbf5571458fa23a45daf473e11'
+            '333cf8f504385d9e24a06cec12f3eb944b27773900595e6116cdd8e372d9ce564d53e4cf88f99b5d935345d2cf2a46309ea2431d86da6869236be17acd035b87'
             'ede87db7e1ce67184409123720b48f65d35884bac5dfff34cc099c5d7520fd9173be00997df82ad29da4640928134a7199ffdd1cbaa83a72101dbed72736508b'
             'd0e3152b885ec73b019dc0269d46e1ce0c43211bbcf05776a1e97f10fdc29f442930cc2d5144c0f979133e6aec68bf68474b924c746d1fa6b8c7f604af6eb83f'
             'df077c24a235117cc391ac515dd1e28c10b2082093c80aac5dcf3d6d8feaf07acacc79bfd5f111e389e7972e6f0a3b6eb217202d13e362219ed22a5437cd49c7'
