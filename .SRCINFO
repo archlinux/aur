@@ -1,0 +1,18 @@
+pkgbase = topgrade-git
+	pkgdesc = Invoke the upgrade procedure of multiple package managers
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/r-darwish/topgrade
+	arch = x86_64
+	arch = aarch64
+	arch = armv7
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = topgrade
+	conflicts = topgrade
+	source = git+https://github.com/r-darwish/topgrade.git
+	sha256sums = SKIP
+
+pkgname = topgrade-git
