@@ -2,11 +2,11 @@ pkgbase = rvgl-dcpack
 	pkgdesc = Dreamcast content pack for RVGL.
 	pkgver = 20.0905a
 	pkgrel = 2
-	url = https://rvgl.re-volt.io
+	url = https://rvgl.org
 	arch = any
 	groups = rvgl-basic
 	groups = rvgl-original
-	groups = rvgl-community
+	groups = rvgl-online
 	license = custom
 	makedepends = git
 	depends = rvgl-bin
@@ -14,4 +14,3 @@ pkgbase = rvgl-dcpack
 	sha256sums = SKIP
 
 pkgname = rvgl-dcpack
-
