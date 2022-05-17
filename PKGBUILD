@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=aya-neo-fixes-git
 _gitdir=aya-neo-fixes
-pkgver=22.05.r47.7b63f55
+pkgver=22.05.r48.7603ccd
 pkgrel=1
 pkgdesc="Various fixes for Aya Neo Handheld consoles."
 arch=('any')
@@ -20,16 +20,15 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
 	mkdir -p ${pkgdir}/etc
-	mkdir -p ${pkgdir}/etc/modprobe.d	
 	mkdir -p ${pkgdir}/etc/systemd/system
 	mkdir -p ${pkgdir}/usr/lib/systemd/system-sleep
 	mkdir -p ${pkgdir}/usr/lib/systemd/system-shutdown
 	mkdir -p ${pkgdir}/usr/local/bin
 	install -m644 systemd-suspend-mods.conf ${pkgdir}/etc/systemd-suspend-mods.conf
-	install -m755 systemd-suspend-mods.sh ${pkgdir}/usr/lib/systemd/system-sleep/systemd-suspend-mods.sh
-	install -m755 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
-	install -m755 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
-	install -m655 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
-	install -m755 phantom-input.py ${pkgdir}/usr/local/bin/phantom-input.py
-	install -m655 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
+	install -m744 systemd-suspend-mods.sh ${pkgdir}/usr/lib/systemd/system-sleep/systemd-suspend-mods.sh
+	install -m744 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
+	install -m744 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
+	install -m644 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
+	install -m744 phantom-input.py ${pkgdir}/usr/local/bin/phantom-input.py
+	install -m644 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
 }
