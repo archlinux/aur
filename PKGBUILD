@@ -6,7 +6,7 @@ pkgname=dosbox-gcc
 pkgver=12.1.0
 _target="i586-pc-msdosdjgpp"
 _djver=2.05
-pkgrel=3
+pkgrel=4
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -21,7 +21,6 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "gcc-djgpp.diff"
         "lto.patch")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')

@@ -1,7 +1,7 @@
 pkgbase = dosbox-gcc
 	pkgdesc = djgpp cross-compiler for the dosbox environment
 	pkgver = 12.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,6 @@ pkgbase = dosbox-gcc
 	source = ftp://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
 	source = gcc-djgpp.diff
 	source = lto.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
