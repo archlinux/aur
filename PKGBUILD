@@ -3,11 +3,11 @@
 # Contributor: janezz55
 
 pkgname=dosbox-gcc
-pkgver=11.3.0
+pkgver=12.1.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.24
 _djver=2.05
-pkgrel=6
+pkgrel=1
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -53,9 +53,8 @@ prepare() {
 }
 
 build() {
-  export CPPFLAGS="$CPPFLAGS -Ofast"
-
   cd gcc-build-$_target
+  CPPFLAGS="$CPPFLAGS -Ofast" \
   ../gcc-$pkgver/configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \

@@ -1,8 +1,8 @@
 diff --git a/Makefile.in b/Makefile.in
-index 047be0255e2..0ba4dbaa0a2 100644
+index 593495e1650..3fa29ac57ea 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -1378,7 +1378,6 @@ dvi-host: maybe-dvi-itcl
+@@ -1469,7 +1469,6 @@ dvi-host: maybe-dvi-itcl
  dvi-host: maybe-dvi-ld
  dvi-host: maybe-dvi-libbacktrace
  dvi-host: maybe-dvi-libcpp
@@ -10,7 +10,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  dvi-host: maybe-dvi-libdecnumber
  dvi-host: maybe-dvi-libgui
  dvi-host: maybe-dvi-libiberty
-@@ -1469,7 +1468,6 @@ pdf-host: maybe-pdf-itcl
+@@ -1559,7 +1558,6 @@ pdf-host: maybe-pdf-itcl
  pdf-host: maybe-pdf-ld
  pdf-host: maybe-pdf-libbacktrace
  pdf-host: maybe-pdf-libcpp
@@ -18,7 +18,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  pdf-host: maybe-pdf-libdecnumber
  pdf-host: maybe-pdf-libgui
  pdf-host: maybe-pdf-libiberty
-@@ -1560,7 +1558,6 @@ html-host: maybe-html-itcl
+@@ -1649,7 +1647,6 @@ html-host: maybe-html-itcl
  html-host: maybe-html-ld
  html-host: maybe-html-libbacktrace
  html-host: maybe-html-libcpp
@@ -26,7 +26,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  html-host: maybe-html-libdecnumber
  html-host: maybe-html-libgui
  html-host: maybe-html-libiberty
-@@ -1651,7 +1648,6 @@ TAGS-host: maybe-TAGS-itcl
+@@ -1739,7 +1736,6 @@ TAGS-host: maybe-TAGS-itcl
  TAGS-host: maybe-TAGS-ld
  TAGS-host: maybe-TAGS-libbacktrace
  TAGS-host: maybe-TAGS-libcpp
@@ -34,7 +34,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  TAGS-host: maybe-TAGS-libdecnumber
  TAGS-host: maybe-TAGS-libgui
  TAGS-host: maybe-TAGS-libiberty
-@@ -1742,7 +1738,6 @@ install-info-host: maybe-install-info-itcl
+@@ -1829,7 +1825,6 @@ install-info-host: maybe-install-info-itcl
  install-info-host: maybe-install-info-ld
  install-info-host: maybe-install-info-libbacktrace
  install-info-host: maybe-install-info-libcpp
@@ -42,7 +42,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  install-info-host: maybe-install-info-libdecnumber
  install-info-host: maybe-install-info-libgui
  install-info-host: maybe-install-info-libiberty
-@@ -1833,7 +1828,6 @@ install-pdf-host: maybe-install-pdf-itcl
+@@ -2009,7 +2004,6 @@ install-pdf-host: maybe-install-pdf-itcl
  install-pdf-host: maybe-install-pdf-ld
  install-pdf-host: maybe-install-pdf-libbacktrace
  install-pdf-host: maybe-install-pdf-libcpp
@@ -50,7 +50,7 @@ index 047be0255e2..0ba4dbaa0a2 100644
  install-pdf-host: maybe-install-pdf-libdecnumber
  install-pdf-host: maybe-install-pdf-libgui
  install-pdf-host: maybe-install-pdf-libiberty
-@@ -1924,7 +1918,6 @@ install-html-host: maybe-install-html-itcl
+@@ -2099,7 +2093,6 @@ install-html-host: maybe-install-html-itcl
  install-html-host: maybe-install-html-ld
  install-html-host: maybe-install-html-libbacktrace
  install-html-host: maybe-install-html-libcpp
@@ -58,31 +58,31 @@ index 047be0255e2..0ba4dbaa0a2 100644
  install-html-host: maybe-install-html-libdecnumber
  install-html-host: maybe-install-html-libgui
  install-html-host: maybe-install-html-libiberty
-diff --git a/configure.ac b/configure.ac
-index 088e735c5db..6e5dbf631c0 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1465,12 +1465,12 @@ esac
- # C++11 compiler can still start the bootstrap.  Otherwise, if building GCC,
- # require C++11 (or higher).
- if test "$enable_bootstrap:$GXX" = "yes:yes"; then
--  CXX="$CXX -std=c++11"
-+  AX_CXX_COMPILE_STDCXX(11, [ext])
- elif test "$have_compiler" = yes; then
--  AX_CXX_COMPILE_STDCXX(11)
-+  AX_CXX_COMPILE_STDCXX(11, [ext])
- 
-   if test "${build}" != "${host}"; then
--    AX_CXX_COMPILE_STDCXX(11, [], [], [_FOR_BUILD])
-+    AX_CXX_COMPILE_STDCXX(11, [ext], [], [_FOR_BUILD])
-   fi
- fi
- 
+diff --git a/c++tools/resolver.cc b/c++tools/resolver.cc
+index 1fe9c17e0fe..9862f4aaa15 100644
+--- a/c++tools/resolver.cc
++++ b/c++tools/resolver.cc
+@@ -33,13 +33,13 @@ along with GCC; see the file COPYING3.  If not see
+ #define MAPPED_READING 0
+ #else
+ #ifdef IN_GCC
+-#if HAVE_MMAP_FILE && _POSIX_MAPPED_FILES > 0
++#if HAVE_MMAP_FILE && _POSIX_MAPPED_FILES > 0 && !defined(__DJGPP__)
+ #define MAPPED_READING 1
+ #else
+ #define MAPPED_READING 0
+ #endif
+ #else
+-#ifdef HAVE_SYS_MMAN_H
++#if defined(HAVE_SYS_MMAN_H) && !defined(__DJGPP__)
+ #include <sys/mman.h>
+ #define MAPPED_READING 1
+ #else
 diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
-index 0a90c92402c..d1d0fc7b1fe 100644
+index 591d033fbca..2c26f55851b 100644
 --- a/gcc/ada/adaint.c
 +++ b/gcc/ada/adaint.c
-@@ -297,6 +297,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
+@@ -298,6 +298,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
  
  char __gnat_path_separator = PATH_SEPARATOR;
  
@@ -95,7 +95,7 @@ index 0a90c92402c..d1d0fc7b1fe 100644
  /* The GNAT_LIBRARY_TEMPLATE contains a list of expressions that define
     the base filenames that libraries specified with -lsomelib options
     may have. This is used by GNATMAKE to check whether an executable
-@@ -596,7 +602,11 @@ __gnat_try_lock (char *dir, char *file)
+@@ -597,7 +603,11 @@ __gnat_try_lock (char *dir, char *file)
  int
  __gnat_get_maximum_file_name_length (void)
  {
@@ -108,10 +108,10 @@ index 0a90c92402c..d1d0fc7b1fe 100644
  
  /* Return nonzero if file names are case sensitive.  */
 diff --git a/gcc/ada/gcc-interface/Make-lang.in b/gcc/ada/gcc-interface/Make-lang.in
-index d88c354c9a4..88b81133168 100644
+index a8d8899d3c9..359d3334898 100644
 --- a/gcc/ada/gcc-interface/Make-lang.in
 +++ b/gcc/ada/gcc-interface/Make-lang.in
-@@ -1080,7 +1080,7 @@ ada/generated/gnatvsn.ads: ada/gnatvsn.ads BASE-VER ada/GNAT_DATE
+@@ -1152,7 +1152,7 @@ ada/generated/gnatvsn.ads: ada/gnatvsn.ads BASE-VER ada/GNAT_DATE
  	s=`cat $(srcdir)/BASE-VER | sed -e "s/\([0-9]*\)\.\([0-9]*\)\..*/-\1\2/g"`; \
  	d=`if test -f $(srcdir)/ada/GNAT_DATE; then \
             cat $(srcdir)/ada/GNAT_DATE; else date +%Y%m%d; fi`; \
@@ -119,9 +119,9 @@ index d88c354c9a4..88b81133168 100644
 +	cat $< | sed -e "/Version/s/(\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\).*)/($$d$$s)/g" | tr -d \\\015 >$@
  
  ada/gnatvsn.o : ada/gnatvsn.adb ada/generated/gnatvsn.ads
- 	$(CC) -c $(ALL_ADAFLAGS) -Iada/generated -I../ada/generated $(ADA_INCLUDES) $< $(ADA_OUTPUT_OPTION)
+ 	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) $< $(ADA_OUTPUT_OPTION)
 diff --git a/gcc/ada/libgnarl/s-taprop__dummy.adb b/gcc/ada/libgnarl/s-taprop__dummy.adb
-index 7e9093a58fc..84b80d3fd61 100644
+index 5ab41b1b3c1..fb4bd5cc777 100644
 --- a/gcc/ada/libgnarl/s-taprop__dummy.adb
 +++ b/gcc/ada/libgnarl/s-taprop__dummy.adb
 @@ -37,7 +37,7 @@
@@ -134,10 +134,10 @@ index 7e9093a58fc..84b80d3fd61 100644
     pragma Warnings (Off);
     --  Turn off warnings since so many unreferenced parameters
 diff --git a/gcc/ada/libgnat/s-os_lib.adb b/gcc/ada/libgnat/s-os_lib.adb
-index 93522bc13eb..f61e7965fdf 100644
+index 0681580b9b2..a1bff26e216 100644
 --- a/gcc/ada/libgnat/s-os_lib.adb
 +++ b/gcc/ada/libgnat/s-os_lib.adb
-@@ -76,7 +76,7 @@ package body System.OS_Lib is
+@@ -73,7 +73,7 @@ package body System.OS_Lib is
  
     --  The following are used by Create_Temp_File
  
@@ -146,7 +146,7 @@ index 93522bc13eb..f61e7965fdf 100644
     --  Used to initialize Current_Temp_File_Name and Temp_File_Name_Last_Digit
  
     Current_Temp_File_Name : String := First_Temp_File_Name;
-@@ -2318,9 +2318,10 @@ package body System.OS_Lib is
+@@ -2275,9 +2275,10 @@ package body System.OS_Lib is
        --    * Check the drive letter
        --    * Remove all double-quotes
  
@@ -160,10 +160,10 @@ index 93522bc13eb..f61e7965fdf 100644
              if Path_Buffer (Index) = '/' then
                 Path_Buffer (Index) := Directory_Separator;
 diff --git a/gcc/ada/libgnat/s-os_lib.ads b/gcc/ada/libgnat/s-os_lib.ads
-index f786cca8143..756766d4e71 100644
+index 503793f8ab2..d3cbd803ddf 100644
 --- a/gcc/ada/libgnat/s-os_lib.ads
 +++ b/gcc/ada/libgnat/s-os_lib.ads
-@@ -1091,9 +1091,12 @@ package System.OS_Lib is
+@@ -1100,9 +1100,12 @@ package System.OS_Lib is
     Path_Separator : constant Character;
     --  The character to separate paths in an environment variable value
  
@@ -177,7 +177,7 @@ index f786cca8143..756766d4e71 100644
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
 diff --git a/gcc/ada/s-oscons-tmplt.c b/gcc/ada/s-oscons-tmplt.c
-index 582c35ef7db..647ca3f88f4 100644
+index af6919092d5..f7745325759 100644
 --- a/gcc/ada/s-oscons-tmplt.c
 +++ b/gcc/ada/s-oscons-tmplt.c
 @@ -121,7 +121,7 @@ pragma Style_Checks ("M32766");
@@ -189,11 +189,11 @@ index 582c35ef7db..647ca3f88f4 100644
  #include <poll.h>
  #endif
  
-diff --git a/gcc/collect2.c b/gcc/collect2.c
-index bd371430ab7..e925d83b004 100644
---- a/gcc/collect2.c
-+++ b/gcc/collect2.c
-@@ -1189,18 +1189,27 @@ main (int argc, char **argv)
+diff --git a/gcc/collect2.cc b/gcc/collect2.cc
+index d81c7f28f16..1f48973eb66 100644
+--- a/gcc/collect2.cc
++++ b/gcc/collect2.cc
+@@ -1159,18 +1159,27 @@ main (int argc, char **argv)
    *ld1++ = *ld2++ = ld_file_name;
  
    /* Make temp file names.  */
@@ -225,10 +225,10 @@ index bd371430ab7..e925d83b004 100644
  #ifdef COLLECT_EXPORT_LIST
        export_file = make_temp_file (".x");
  #endif
-diff --git a/gcc/config/i386/djgpp.c b/gcc/config/i386/djgpp.c
-index 4d9548aed8d..dca15602642 100644
---- a/gcc/config/i386/djgpp.c
-+++ b/gcc/config/i386/djgpp.c
+diff --git a/gcc/config/i386/djgpp.cc b/gcc/config/i386/djgpp.cc
+index f1641a475c7..ab0fa0b7dfc 100644
+--- a/gcc/config/i386/djgpp.cc
++++ b/gcc/config/i386/djgpp.cc
 @@ -36,6 +36,8 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
      *f++ = 'w';
    if (flags & SECTION_CODE)
@@ -239,7 +239,7 @@ index 4d9548aed8d..dca15602642 100644
    /* LTO sections need 1-byte alignment to avoid confusing the
       zlib decompression algorithm with trailing zero pad bytes.  */
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
-index f53b348ad4b..fc17fc89f88 100644
+index 1aff35ff87c..f557a82909a 100644
 --- a/gcc/config/i386/xm-djgpp.h
 +++ b/gcc/config/i386/xm-djgpp.h
 @@ -30,6 +30,8 @@ along with GCC; see the file COPYING3.  If not see
@@ -264,7 +264,7 @@ index f53b348ad4b..fc17fc89f88 100644
  #define MAX_OFILE_ALIGNMENT 128
  
 diff --git a/gcc/cp/mapper-client.cc b/gcc/cp/mapper-client.cc
-index b9e02168d55..0fb15fd0c7b 100644
+index 8603a886a09..a32603ba171 100644
 --- a/gcc/cp/mapper-client.cc
 +++ b/gcc/cp/mapper-client.cc
 @@ -19,7 +19,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -276,10 +276,24 @@ index b9e02168d55..0fb15fd0c7b 100644
  // Solaris11's socket header used bcopy, which we poison.  cody.hh
  // will include it later under the above check
  #include <sys/socket.h>
-diff --git a/gcc/gcov-tool.c b/gcc/gcov-tool.c
-index 71bdfdaa1f0..31bd5b1733f 100644
---- a/gcc/gcov-tool.c
-+++ b/gcc/gcov-tool.c
+diff --git a/gcc/diagnostic-show-locus.cc b/gcc/diagnostic-show-locus.cc
+index 6eafe19785f..8a32a9e30b7 100644
+--- a/gcc/diagnostic-show-locus.cc
++++ b/gcc/diagnostic-show-locus.cc
+@@ -5688,7 +5688,9 @@ diagnostic_show_locus_cc_tests ()
+   for_each_line_table_case (test_fixit_replace_containing_newline);
+   for_each_line_table_case (test_fixit_deletion_affecting_newline);
+   for_each_line_table_case (test_tab_expansion);
++#ifndef __DJGPP__
+   for_each_line_table_case (test_escaping_bytes_1);
++#endif
+   for_each_line_table_case (test_escaping_bytes_2);
+ 
+   test_line_numbers_multiline_range ();
+diff --git a/gcc/gcov-tool.cc b/gcc/gcov-tool.cc
+index f4e42ae763c..11b10d4c8e8 100644
+--- a/gcc/gcov-tool.cc
++++ b/gcc/gcov-tool.cc
 @@ -56,11 +56,18 @@ static bool verbose;
  
  /* Remove file NAME if it has a gcda suffix. */
@@ -311,10 +325,10 @@ index 71bdfdaa1f0..31bd5b1733f 100644
  #else
      return -1;
  #endif
-diff --git a/gcc/ggc-common.c b/gcc/ggc-common.c
-index 357bda13f97..db375610751 100644
---- a/gcc/ggc-common.c
-+++ b/gcc/ggc-common.c
+diff --git a/gcc/ggc-common.cc b/gcc/ggc-common.cc
+index 755d166417a..e63b27d573a 100644
+--- a/gcc/ggc-common.cc
++++ b/gcc/ggc-common.cc
 @@ -31,6 +31,12 @@ along with GCC; see the file COPYING3.  If not see
  #include "plugin.h"
  #include "options.h"
@@ -325,11 +339,11 @@ index 357bda13f97..db375610751 100644
 +}
 +#endif
 +
- /* When set, ggc_collect will do collection.  */
- bool ggc_force_collect;
+ /* When true, protect the contents of the identifier hash table.  */
+ bool ggc_protect_identifiers = true;
  
 diff --git a/gcc/ginclude/float.h b/gcc/ginclude/float.h
-index a0cbd7fb0d8..cf71ac8b695 100644
+index 9d368c4afa5..ed99aad4934 100644
 --- a/gcc/ginclude/float.h
 +++ b/gcc/ginclude/float.h
 @@ -25,6 +25,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
@@ -344,7 +358,7 @@ index a0cbd7fb0d8..cf71ac8b695 100644
  #define _FLOAT_H___
  
 diff --git a/include/libiberty.h b/include/libiberty.h
-index f4c0fe11d6f..e1a28b83cce 100644
+index a65ced9c820..ffd8220c743 100644
 --- a/include/libiberty.h
 +++ b/include/libiberty.h
 @@ -108,6 +108,7 @@ extern int countargv (char * const *);
@@ -372,11 +386,11 @@ index 789ce9e70b7..8794e4dd8e6 100644
  // C++
  #include <memory>
  #include <string>
-diff --git a/libcpp/files.c b/libcpp/files.c
-index 6e20fc5887f..44fd90f83af 100644
---- a/libcpp/files.c
-+++ b/libcpp/files.c
-@@ -742,6 +742,10 @@ read_file_guts (cpp_reader *pfile, _cpp_file *file, location_t loc)
+diff --git a/libcpp/files.cc b/libcpp/files.cc
+index 24208f7b0f8..6ba6fc571e1 100644
+--- a/libcpp/files.cc
++++ b/libcpp/files.cc
+@@ -747,6 +747,10 @@ read_file_guts (cpp_reader *pfile, _cpp_file *file, location_t loc,
      cpp_error_at (pfile, CPP_DL_WARNING, loc,
  	       "%s is shorter than expected", file->path);
  
@@ -385,12 +399,12 @@ index 6e20fc5887f..44fd90f83af 100644
 +  if (total>0 && buf[total-1]==0x1A) total--;
 +
    file->buffer = _cpp_convert_input (pfile,
- 				     CPP_OPTION (pfile, input_charset),
+ 				     input_charset,
  				     buf, size + 16, total,
-diff --git a/libcpp/lex.c b/libcpp/lex.c
-index 06bcc31c87e..ae28ac4ff4b 100644
---- a/libcpp/lex.c
-+++ b/libcpp/lex.c
+diff --git a/libcpp/lex.cc b/libcpp/lex.cc
+index fb1dfabb7af..54886789c34 100644
+--- a/libcpp/lex.cc
++++ b/libcpp/lex.cc
 @@ -502,6 +502,13 @@ init_vectorized_lexer (void)
    search_line_fast_type impl = search_line_acc_char;
    int minimum = 0;
@@ -415,10 +429,10 @@ index 06bcc31c87e..ae28ac4ff4b 100644
  }
  
 diff --git a/libffi/src/x86/sysv.S b/libffi/src/x86/sysv.S
-index 78f245bda07..1ae18b248a7 100644
+index 7110f02f5f3..d079e22c976 100644
 --- a/libffi/src/x86/sysv.S
 +++ b/libffi/src/x86/sysv.S
-@@ -822,7 +822,7 @@ ENDF(C(__x86.get_pc_thunk.dx))
+@@ -921,7 +921,7 @@ ENDF(C(__x86.get_pc_thunk.dx))
  #ifdef __APPLE__
  .section __TEXT,__eh_frame,coalesced,no_toc+strip_static_syms+live_support
  EHFrame0:
@@ -428,10 +442,10 @@ index 78f245bda07..1ae18b248a7 100644
  #elif defined(HAVE_AS_X86_64_UNWIND_SECTION_TYPE)
  .section .eh_frame,EH_FRAME_FLAGS,@unwind
 diff --git a/libgcc/libgcov-util.c b/libgcc/libgcov-util.c
-index bc7416d99bf..3a47764bfa5 100644
+index ba7fb924b53..a6c23301fc7 100644
 --- a/libgcc/libgcov-util.c
 +++ b/libgcc/libgcov-util.c
-@@ -389,7 +389,11 @@ read_gcda_file (const char *filename)
+@@ -392,7 +392,11 @@ read_gcda_file (const char *filename)
  
  static int
  ftw_read_file (const char *filename,
@@ -444,26 +458,26 @@ index bc7416d99bf..3a47764bfa5 100644
  {
    int filename_len;
 diff --git a/libgcc/libgcov.h b/libgcc/libgcov.h
-index 7b0d367ec52..a8be4f0be22 100644
+index 40e845ce3ea..59ab48ec5e5 100644
 --- a/libgcc/libgcov.h
 +++ b/libgcc/libgcov.h
-@@ -45,6 +45,11 @@
- #include "libgcc_tm.h"
- #include "gcov.h"
+@@ -164,6 +164,11 @@ extern struct gcov_info *gcov_list;
+ 
+ #endif /* !IN_GCOV_TOOL */
  
 +#ifdef __DJGPP__
 +#include <stdint.h>
 +#undef HAVE_SYS_MMAN_H
 +#endif // __DJGPP__
 +
- #if HAVE_SYS_MMAN_H
- #include <sys/mman.h>
- #endif
+ #if defined(inhibit_libc)
+ #define IN_LIBGCOV (-1)
+ #else
 diff --git a/libgfortran/intrinsics/chmod.c b/libgfortran/intrinsics/chmod.c
-index 8b5140a05a3..6e7a2afb032 100644
+index 76f82b8828b..15971189648 100644
 --- a/libgfortran/intrinsics/chmod.c
 +++ b/libgfortran/intrinsics/chmod.c
-@@ -442,7 +442,7 @@ clause_done:
+@@ -445,7 +445,7 @@ clause_done:
  	if ((ugo[2] || honor_umask) && !rwxXstugo[8])
  	  file_mode = (file_mode & ~(S_IROTH | S_IWOTH | S_IXOTH))
  		      | (new_mode & (S_IROTH | S_IWOTH | S_IXOTH));
@@ -472,7 +486,7 @@ index 8b5140a05a3..6e7a2afb032 100644
  	if (is_dir && rwxXstugo[5])
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
-@@ -454,7 +454,7 @@ clause_done:
+@@ -457,7 +457,7 @@ clause_done:
        {
  	/* Clear '-'.  */
  	file_mode &= ~new_mode;
@@ -481,7 +495,7 @@ index 8b5140a05a3..6e7a2afb032 100644
  	if (rwxXstugo[5] || !is_dir)
  	  file_mode &= ~S_ISVTX;
  #endif
-@@ -462,7 +462,7 @@ clause_done:
+@@ -465,7 +465,7 @@ clause_done:
      else if (set_mode == 3)
        {
  	file_mode |= new_mode;
@@ -491,7 +505,7 @@ index 8b5140a05a3..6e7a2afb032 100644
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
 diff --git a/libgfortran/intrinsics/execute_command_line.c b/libgfortran/intrinsics/execute_command_line.c
-index 5d41667df9e..439738b6bf1 100644
+index 1fac10a9e08..0ea4b7f68f3 100644
 --- a/libgfortran/intrinsics/execute_command_line.c
 +++ b/libgfortran/intrinsics/execute_command_line.c
 @@ -98,7 +98,7 @@ execute_command_line (const char *command, bool wait, int *exitstat,
@@ -504,7 +518,7 @@ index 5d41667df9e..439738b6bf1 100644
        bool sig_init = __atomic_load_n (&sig_init_saved, __ATOMIC_RELAXED);
        if (!sig_init)
 diff --git a/libgfortran/io/unix.c b/libgfortran/io/unix.c
-index b127cf7a32d..f293cff6ae0 100644
+index 616c1aab166..6a772c4a3d3 100644
 --- a/libgfortran/io/unix.c
 +++ b/libgfortran/io/unix.c
 @@ -221,6 +221,9 @@ typedef struct
@@ -546,7 +560,7 @@ index b127cf7a32d..f293cff6ae0 100644
      return NULL;
  
 diff --git a/libiberty/make-relative-prefix.c b/libiberty/make-relative-prefix.c
-index ef932ff022e..401800baa3d 100644
+index 18d55b6bc68..28bcd07ed1d 100644
 --- a/libiberty/make-relative-prefix.c
 +++ b/libiberty/make-relative-prefix.c
 @@ -65,6 +65,7 @@ relative prefix can be found, return @code{NULL}.
@@ -576,10 +590,10 @@ index ef932ff022e..401800baa3d 100644
      }
  
 diff --git a/libiberty/make-temp-file.c b/libiberty/make-temp-file.c
-index 7465cec5ea6..f60a441eb6a 100644
+index 7bfc65ea613..eec49a447be 100644
 --- a/libiberty/make-temp-file.c
 +++ b/libiberty/make-temp-file.c
-@@ -47,6 +47,7 @@ Boston, MA 02110-1301, USA.  */
+@@ -51,6 +51,7 @@ Boston, MA 02110-1301, USA.  */
  #endif
  
  #include "libiberty.h"
@@ -587,7 +601,7 @@ index 7465cec5ea6..f60a441eb6a 100644
  extern int mkstemps (char *, int);
  
  /* '/' works just fine on MS-DOS based systems.  */
-@@ -142,7 +143,8 @@ choose_tmpdir (void)
+@@ -153,7 +154,8 @@ choose_tmpdir (void)
        len = strlen (base);
        tmpdir = XNEWVEC (char, len + 2);
        strcpy (tmpdir, base);
@@ -598,7 +612,7 @@ index 7465cec5ea6..f60a441eb6a 100644
        memoized_tmpdir = tmpdir;
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
 diff --git a/libiberty/simple-object-elf.c b/libiberty/simple-object-elf.c
-index a421177f0c2..c166621b931 100644
+index 677a18a7776..0fde7757d9a 100644
 --- a/libiberty/simple-object-elf.c
 +++ b/libiberty/simple-object-elf.c
 @@ -1293,7 +1293,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
@@ -635,7 +649,7 @@ index 32ebcec928c..96498b7c408 100644
  #else
  #define L_(x) x
 diff --git a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
-index 8a63099c941..f3d4d7c7239 100644
+index 5e1370d2985..c9f41b6d526 100644
 --- a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
 +++ b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
 @@ -45,7 +45,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
@@ -657,13 +671,18 @@ index 8a63099c941..f3d4d7c7239 100644
    {
      memset(_M_widen, 0, sizeof(_M_widen));
 diff --git a/libstdc++-v3/config/os/djgpp/error_constants.h b/libstdc++-v3/config/os/djgpp/error_constants.h
-index e538d38d9de..434de1601e4 100644
+index 4b25929ddae..eb3d507858e 100644
 --- a/libstdc++-v3/config/os/djgpp/error_constants.h
 +++ b/libstdc++-v3/config/os/djgpp/error_constants.h
-@@ -33,6 +33,15 @@
+@@ -33,16 +33,42 @@
  #include <bits/c++config.h>
  #include <cerrno>
  
++// Include Watt-32 errno list, if present
++#if defined __has_include && __has_include(<sys/werrno.h>)
++#include <sys/werrno.h>
++#endif
++
 +#ifndef EOPNOTSUPP
 +// Use same value as in wat3222br6.zip file net/watt/sys/djgpp.err
 +#define EOPNOTSUPP 52
@@ -676,28 +695,208 @@ index e538d38d9de..434de1601e4 100644
  namespace std _GLIBCXX_VISIBILITY(default)
  {
  _GLIBCXX_BEGIN_NAMESPACE_VERSION
-@@ -122,16 +131,16 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
-       not_supported = 				ENOTSUP,
+ 
+   enum class errc
+     {
+-//    address_family_not_supported = 		EAFNOSUPPORT,
+-//    address_in_use = 				EADDRINUSE,
+-//    address_not_available = 			EADDRNOTAVAIL,
+-//    already_connected = 			EISCONN,
++#ifdef EAFNOSUPPORT
++      address_family_not_supported = 		EAFNOSUPPORT,
++#endif
++
++#ifdef EADDRINUSE
++      address_in_use = 				EADDRINUSE,
++#endif
++
++#ifdef EADDRNOTAVAIL
++      address_not_available = 			EADDRNOTAVAIL,
++#endif
++
++#ifdef EISCONN
++      already_connected = 			EISCONN,
++#endif
++
+       argument_list_too_long = 			E2BIG,
+       argument_out_of_domain = 			EDOM,
+       bad_address = 				EFAULT,
+@@ -53,12 +79,29 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
  #endif
  
--#ifdef ECANCELED
-+#ifdef _GLIBCXX_HAVE_ECANCELED
+       broken_pipe = 				EPIPE,
+-//    connection_aborted = 			ECONNABORTED,
+-//    connection_already_in_progress = 		EALREADY,
+-//    connection_refused = 			ECONNREFUSED,
+-//    connection_reset = 			ECONNRESET,
++
++#ifdef ECONNABORTED
++      connection_aborted = 			ECONNABORTED,
++#endif
++
++#ifdef EALREADY
++      connection_already_in_progress = 		EALREADY,
++#endif
++
++#ifdef ECONNREFUSED
++      connection_refused = 			ECONNREFUSED,
++#endif
++
++#ifdef ECONNRESET
++      connection_reset = 			ECONNRESET,
++#endif
++
+       cross_device_link = 			EXDEV,
+-//    destination_address_required = 		EDESTADDRREQ,
++
++#ifdef EDESTADDRREQ
++      destination_address_required = 		EDESTADDRREQ,
++#endif
++
+       device_or_resource_busy = 		EBUSY,
+       directory_not_empty = 			ENOTEMPTY,
+       executable_format_error = 		ENOEXEC,
+@@ -66,7 +109,10 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       file_too_large = 				EFBIG,
+       filename_too_long = 			ENAMETOOLONG,
+       function_not_supported = 			ENOSYS,
+-//    host_unreachable = 			EHOSTUNREACH,
++
++#ifdef EHOSTUNREACH
++      host_unreachable = 			EHOSTUNREACH,
++#endif
+ 
+ #ifdef EIDRM
+       identifier_removed = 			EIDRM,
+@@ -79,11 +125,27 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       invalid_seek = 				ESPIPE,
+       io_error = 				EIO,
+       is_a_directory = 				EISDIR,
+-//    message_size = 				EMSGSIZE,
+-//    network_down = 				ENETDOWN,
+-//    network_reset = 				ENETRESET,
+-//    network_unreachable = 			ENETUNREACH,
+-//    no_buffer_space = 			ENOBUFS,
++
++#ifdef EMSGSIZE
++      message_size = 				EMSGSIZE,
++#endif
++
++#ifdef ENETDOWN
++      network_down = 				ENETDOWN,
++#endif
++
++#ifdef ENETRESET
++      network_reset = 				ENETRESET,
++#endif
++
++#ifdef ENETUNREACH
++      network_unreachable = 			ENETUNREACH,
++#endif
++
++#ifdef ENOBUFS
++      no_buffer_space = 			ENOBUFS,
++#endif
++
+       no_child_process = 			ECHILD,
+ 
+ #ifdef ENOLINK
+@@ -96,8 +158,14 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       no_message_available = 			ENODATA,
+ #endif
+ 
+-//    no_message = 				ENOMSG,
+-//    no_protocol_option = 			ENOPROTOOPT,
++#ifdef ENOMSG
++      no_message = 				ENOMSG,
++#endif
++
++#ifdef ENOPROTOOPT
++      no_protocol_option = 			ENOPROTOOPT,
++#endif
++
+       no_space_on_device = 			ENOSPC,
+ 
+ #ifdef ENOSR
+@@ -109,13 +177,19 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       no_such_file_or_directory = 		ENOENT,
+       no_such_process = 			ESRCH,
+       not_a_directory = 			ENOTDIR,
+-//    not_a_socket = 				ENOTSOCK,
++
++#ifdef ENOTSOCK
++      not_a_socket = 				ENOTSOCK,
++#endif
+ 
+ #ifdef ENOSTR
+       not_a_stream = 				ENOSTR,
+ #endif
+ 
+-//    not_connected = 				ENOTCONN,
++#ifdef ENOTCONN
++      not_connected = 				ENOTCONN,
++#endif
++
+       not_enough_memory = 			ENOMEM,
+ 
+ #ifdef ENOTSUP
+@@ -126,10 +200,16 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
        operation_canceled = 			ECANCELED,
  #endif
  
- //    operation_in_progress = 			EINPROGRESS,
+-//    operation_in_progress = 			EINPROGRESS,
++#ifdef EINPROGRESS
++      operation_in_progress = 			EINPROGRESS,
++#endif
++
        operation_not_permitted = 		EPERM,
 -//    operation_not_supported = 		EOPNOTSUPP,
+-//    operation_would_block = 			EWOULDBLOCK,
 +      operation_not_supported = 		EOPNOTSUPP,
- //    operation_would_block = 			EWOULDBLOCK,
++
++#ifdef EWOULDBLOCK
++      operation_would_block = 			EWOULDBLOCK,
++#endif
  
--#ifdef EOWNERDEAD
-+#ifdef _GLIBCXX_HAVE_EOWNERDEAD
+ #ifdef EOWNERDEAD
        owner_dead = 				EOWNERDEAD,
+@@ -141,7 +221,10 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       protocol_error = 				EPROTO,
  #endif
  
+-//    protocol_not_supported = 			EPROTONOSUPPORT,
++#ifdef EPROTONOSUPPORT
++      protocol_not_supported = 			EPROTONOSUPPORT,
++#endif
++
+       read_only_file_system = 			EROFS,
+       resource_deadlock_would_occur = 		EDEADLK,
+       resource_unavailable_try_again = 		EAGAIN,
+@@ -159,7 +242,10 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       text_file_busy = 				ETXTBSY,
+ #endif
+ 
+-//    timed_out = 				ETIMEDOUT,
++#ifdef ETIMEDOUT
++      timed_out = 				ETIMEDOUT,
++#endif
++
+       too_many_files_open_in_system = 		ENFILE,
+       too_many_files_open = 			EMFILE,
+       too_many_links = 				EMLINK,
+@@ -169,7 +255,9 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+       value_too_large = 			EOVERFLOW,
+ #endif
+ 
+-//    wrong_protocol_type = 			EPROTOTYPE
++#ifdef EPROTOTYPE
++      wrong_protocol_type = 			EPROTOTYPE
++#endif
+     };
+ 
+ _GLIBCXX_END_NAMESPACE_VERSION
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index 2df2bba3dcd..3a732171390 100644
+index b0825ba76e8..5f9d721bc6e 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
@@ -712,7 +911,7 @@ index 2df2bba3dcd..3a732171390 100644
  namespace std _GLIBCXX_VISIBILITY(default)
  {
  _GLIBCXX_BEGIN_NAMESPACE_VERSION
-@@ -523,6 +528,8 @@ namespace __detail
+@@ -515,6 +520,8 @@ namespace __detail
      {
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
        return __ch == L'/' || __ch == preferred_separator;
@@ -721,7 +920,7 @@ index 2df2bba3dcd..3a732171390 100644
  #else
        return __ch == '/';
  #endif
-@@ -971,6 +978,9 @@ namespace __detail
+@@ -998,6 +1005,9 @@ namespace __detail
  #ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
      std::replace(_M_pathname.begin(), _M_pathname.end(), L'/',
  		 preferred_separator);
@@ -731,7 +930,7 @@ index 2df2bba3dcd..3a732171390 100644
  #endif
      return *this;
    }
-@@ -1194,7 +1204,7 @@ namespace __detail
+@@ -1221,7 +1231,7 @@ namespace __detail
    inline bool
    path::is_absolute() const
    {
@@ -741,7 +940,7 @@ index 2df2bba3dcd..3a732171390 100644
  #else
      return has_root_directory();
 diff --git a/libstdc++-v3/src/c++11/shared_ptr.cc b/libstdc++-v3/src/c++11/shared_ptr.cc
-index 4678fbeffe2..18a68a16025 100644
+index 8e84672d603..54adbdacfef 100644
 --- a/libstdc++-v3/src/c++11/shared_ptr.cc
 +++ b/libstdc++-v3/src/c++11/shared_ptr.cc
 @@ -35,7 +35,11 @@ namespace __gnu_internal _GLIBCXX_VISIBILITY(hidden)
@@ -757,10 +956,10 @@ index 4678fbeffe2..18a68a16025 100644
      return m[i];
    }
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index a935573740f..9cd2e9898b2 100644
+index cb8d2c67941..186f86401cb 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
 +++ b/libstdc++-v3/src/filesystem/path.cc
-@@ -408,8 +408,13 @@ path::_M_split_cmpts()
+@@ -411,8 +411,13 @@ path::_M_split_cmpts()
  	_M_add_root_dir(0);
        ++pos;
      }
@@ -768,9 +967,9 @@ index a935573740f..9cd2e9898b2 100644
 +#if defined(_GLIBCXX_FILESYSTEM_IS_WINDOWS) \
 +  || defined(_GLIBCXX_FILESYSTEM_IS_DJGPP)
 +#ifdef __DJGPP__
-+  else if (len > 1 && _M_pathname[1] == ':')
++  else if (len > 1 && pathname[1] == ':')
 +#else
-   else if (len > 1 && _M_pathname[1] == L':')
+   else if (len > 1 && pathname[1] == L':')
 +#endif
      {
        // got disk designator
