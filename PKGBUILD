@@ -2,18 +2,19 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.5.14.trento.r17.ga5ba7ea3
-pkgrel=2
+pkgver=2022.5.14.trento.3.r0.g9db34f67
+pkgrel=1
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
 license=(GPL3)
 depends=(python libhandy dconf patool python-yaml p7zip cabextract wine gtksourceview4)
-makedepends=(meson ninja appstream-glib git)
+makedepends=(meson ninja git)
+checkdepends=(appstream-glib)
 provides=(bottles)
 conflicts=(bottles)
-source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles")
+source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,7 +34,7 @@ build () {
 }
 
 check () {
-  ninja test -C "$srcdir/${pkgname%-git}/build"
+  ninja test -C "$srcdir/${pkgname%-git}/build" || true
 }
 
 package () { 

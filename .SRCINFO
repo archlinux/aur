@@ -1,14 +1,14 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
-	pkgver = 2022.5.14.trento.r17.ga5ba7ea3
-	pkgrel = 2
+	pkgver = 2022.5.14.trento.3.r0.g9db34f67
+	pkgrel = 1
 	epoch = 1
 	url = https://usebottles.com/
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = ninja
-	makedepends = appstream-glib
 	makedepends = git
 	depends = python
 	depends = libhandy
@@ -21,7 +21,7 @@ pkgbase = bottles-git
 	depends = gtksourceview4
 	provides = bottles
 	conflicts = bottles
-	source = bottles::git+https://github.com/bottlesdevs/Bottles
+	source = bottles::git+https://github.com/bottlesdevs/Bottles.git
 	sha256sums = SKIP
 
 pkgname = bottles-git
