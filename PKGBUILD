@@ -1,20 +1,19 @@
 # Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
 # Contributor: Xiaoxiao Pu <i@xiaoxiao.im>
 
-pkgname=create_ap-git
-pkgver=r252.016fd2b
+pkgname=berate_ap-git
+pkgver=r324.0b85d05
 pkgrel=1
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point"
 arch=('any')
-url="https://github.com/oblique/create_ap"
+url="https://github.com/sensepost/berate_ap"
 license=('BSD')
-depends=('hostapd' 'iw' 'dnsmasq' 'iptables')
+depends=('hostapd-mana-git' 'iw' 'dnsmasq' 'iptables')
 optdepends=('haveged: boost low entropy')
 makedepends=('git')
-conflicts=('create_ap')
-provides=('create_ap')
+provides=('berate_ap')
 backup=('usr/lib/systemd/system/create_ap.service')
-source=("$pkgname::git+https://github.com/oblique/create_ap")
+source=("$pkgname::git+https://github.com/sensepost/berate_ap.git")
 sha256sums=('SKIP')
 
 pkgver() {

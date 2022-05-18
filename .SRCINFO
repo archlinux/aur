@@ -1,21 +1,19 @@
-pkgbase = create_ap-git
+pkgbase = berate_ap-git
 	pkgdesc = A shell script to create a NATed/Bridged Software Access Point
-	pkgver = r252.016fd2b
+	pkgver = r324.0b85d05
 	pkgrel = 1
-	url = https://github.com/oblique/create_ap
+	url = https://github.com/sensepost/berate_ap
 	arch = any
 	license = BSD
 	makedepends = git
-	depends = hostapd
+	depends = hostapd-mana-git
 	depends = iw
 	depends = dnsmasq
 	depends = iptables
 	optdepends = haveged: boost low entropy
-	provides = create_ap
-	conflicts = create_ap
+	provides = berate_ap
 	backup = usr/lib/systemd/system/create_ap.service
-	source = create_ap-git::git+https://github.com/oblique/create_ap
+	source = berate_ap-git::git+https://github.com/sensepost/berate_ap.git
 	sha256sums = SKIP
 
-pkgname = create_ap-git
-
+pkgname = berate_ap-git
