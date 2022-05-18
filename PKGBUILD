@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita')
 checkdepends=('appstream-glib')
 makedepends=('vala' 'meson')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('287f5b1e9e696777e96c41b535cfff6080b8871525a4b59158ec49eba93ae1e4')
+sha256sums=('90611c40c6f15f8df84ed68d633b6f060f72617f248766707cc4578136f35a25')
 
 build() {
 	arch-meson $pkgname-$pkgver build
