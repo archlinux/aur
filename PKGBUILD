@@ -2,7 +2,7 @@
 
 pkgname=python-pynumpress
 _bname=pynumpress
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A more pythonic wrapper around the MSNumpress library for mass spectrometry numerical data compression"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python-numpy')
 makedepends=('cython')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/p/${_bname}/${_bname}-${pkgver}.tar.gz")
-sha256sums=('1dfa54928a687f292a3901ec6c5383379029061b3bb5e8cdbeabf115e2ddc1e4')
+sha256sums=('a5d4633ad48cb5657b38c518abe320094bcf1465190732919622e1ab9a906f56')
 
 package() {
   cd "$srcdir/${_bname}-$pkgver"
