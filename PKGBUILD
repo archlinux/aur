@@ -1,5 +1,6 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Nemanja <nemanjan00@gmail.com>
 
 pkgname=hostapd-mana-git
 pkgver=20220508.b859b9bce
