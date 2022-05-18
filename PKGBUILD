@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=1.r2.3204526
+pkgver=1.r10.4a09773
 pkgrel=1
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr -lf to count all lines. Run lctr for help!"
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=()
 noextract=()
-md5sums=("SKIP")
+md5sums=()
 validpgpkeys=()
 
 pkgver(){
