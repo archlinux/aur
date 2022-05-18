@@ -1,7 +1,7 @@
 pkgbase = obs-downstream-keyer
 	pkgdesc = Add a Downstream Keyer dock to OBS studio
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/downstream-keyer.1254/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = obs-downstream-keyer
 	makedepends = ffmpeg
 	makedepends = pciutils
 	depends = obs-studio>=27.2.0
+	depends = obs-studio<28
 	source = obs-downstream-keyer::git+https://github.com/exeldro/obs-downstream-keyer#commit=c34bc6ebc3f561a4481cebc369670528d1f29780
 	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
