@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=1.r49.3388c7f
+pkgver=1.r2.3204526
 pkgrel=1
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr -lf to count all lines. Run lctr for help!"
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/spynetS/Linecounter.git")
+source=()
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -36,7 +36,11 @@ pkgver(){
 
 
 package() {
-    cd .. 
+    cd ..
+    git clone https://github.com/spynetS/Linecounter.git
+    cd Linecounter
+    pwd
+    ls
     chmod 755 ./build.sh
     exec ./build.sh
 }
