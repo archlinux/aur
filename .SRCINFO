@@ -18,7 +18,7 @@ pkgbase = nnrss
 	optdepends = python-psycopg2: connect to PostgreSQL database
 	optdepends = sqlite: local file database
 	backup = var/lib/nnrss/config.ini
-	source = https://git.roshless.me/~roshless/nnrss/archive/1.3.1.tar.gz
+	source = https://git.roshless.me/roshless/nnrss/-/archive/1.3.1/nnrss-1.3.1.tar.gz
 	source = nnrss.service
 	source = nnrss.sysusers
 	source = nnrss.tmpfiles
@@ -28,4 +28,3 @@ pkgbase = nnrss
 	md5sums = 364b51a829d7cf46a9557b97f8d3ce28
 
 pkgname = nnrss
-

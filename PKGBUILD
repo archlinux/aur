@@ -16,7 +16,7 @@ optdepends=('gunicorn: recommended WSGI server'
 makedepends=('python-setuptools')
 install="$pkgname.install"
 backup=("var/lib/$pkgname/config.ini")
-source=("https://git.roshless.me/~roshless/$pkgname/archive/${pkgver}.tar.gz"
+source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
