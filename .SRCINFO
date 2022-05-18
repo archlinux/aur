@@ -1,9 +1,9 @@
 pkgbase = tt-rss-git
 	pkgdesc = Web-based news feed (RSS/Atom) aggregator (Git version)
-	pkgver = r9777.040dfc71f
+	pkgver = r11269.68e49203d
 	pkgrel = 1
 	epoch = 1
-	url = http://tt-rss.org/
+	url = https://tt-rss.org/
 	arch = any
 	license = GPL
 	makedepends = git
@@ -16,10 +16,9 @@ pkgbase = tt-rss-git
 	conflicts = tt-rss
 	options = !strip
 	backup = etc/webapps/tt-rss/config.php
-	source = git+https://git.tt-rss.org/git/tt-rss.git
+	source = git+https://git.tt-rss.org/fox/tt-rss.git
 	source = service
 	sha256sums = SKIP
 	sha256sums = c9eb3acb18ab15562e3c3b8f1e3092f5699f5281fc40e04400615469aa39f217
 
 pkgname = tt-rss-git
-
