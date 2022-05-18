@@ -3,7 +3,7 @@
 pkgname=clipdl;
 pkgver=1.1
 pkgrel=1
-pkgdesc="A simple script for downloading videos from linkss coppied to your primary clipboard"
+pkgdesc="A simple script for downloading videos from links coppied to your primary clipboard"
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
