@@ -2,7 +2,7 @@
 # Contributor: djmattyg007 <internet@matthewgamble.net>
 
 pkgname=doggo
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Command-line DNS Client for Humans.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
 conflicts=('doggo-git')
 provides=('doggo')
-sha256sums=('9fac0437830cfe656df267e809350de629397d2a0bbc8a924ca403e6e307abfa')
+sha256sums=('3666eef23d4abf60fe55cd5428c295d91102075f956b9766a2a1c89b17ea13a4')
 
 prepare(){
   cd "$pkgname-$pkgver"
