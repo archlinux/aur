@@ -1,7 +1,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=headset
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Discover and collect music on YouTube"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss')
 makedepends=('npm' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/headsetapp/headset-electron/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('2b5f96910354ac5fb49c935055898ba0e0ad8a9a50bcc82a68c66861ce4dc0cd'
+sha256sums=('b47f78ee250665314969e4ae98c9bc4599ee540ecfae6d18b89533bc14e84fa5'
             '3bc18b531f1e914e317267a570241855dbf11b27347435fe4770d75b74958123')
 
 build() {
