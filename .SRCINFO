@@ -1,6 +1,6 @@
 pkgbase = python-notify-py
 	pkgdesc = Cross platform desktop notifications for Python scripts and applications
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/ms7m/notify-py
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-notify-py
 	depends = python
 	depends = python-jeepney
 	depends = python-loguru
-	source = python-notify-py-0.3.2.tar.gz::https://github.com/ms7m/notify-py/releases/download/v0.3.2/notify_py-0.3.2.tar.gz
-	sha256sums = 016b54d20dff55713dce5428d6f6314d3a7e3e6d7d00a57c45ce813534e34a4e
+	source = python-notify-py-0.3.2.tar.gz::https://github.com/ms7m/notify-py/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 4971d289eabdb98b0aca9621bfaa3496d7a9920a5f6a6e6a61d7fbbe21118771
 
 pkgname = python-notify-py

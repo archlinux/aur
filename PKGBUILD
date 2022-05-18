@@ -1,6 +1,7 @@
 # Maintainer: Kenneth J. Miller <ken plus aur at miller dot ec>
-pkgname=python-notify-py
-pkgver=0.3.2
+_pkgname=notify-py
+pkgname=python-${_pkgname}
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Cross platform desktop notifications for Python scripts and applications"
 arch=('any')
@@ -8,17 +9,16 @@ url="https://github.com/ms7m/notify-py"
 license=('MIT')
 depends=('python' 'python-jeepney' 'python-loguru')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/notify_py-${pkgver}.tar.gz")
-sha256sums=('016b54d20dff55713dce5428d6f6314d3a7e3e6d7d00a57c45ce813534e34a4e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4971d289eabdb98b0aca9621bfaa3496d7a9920a5f6a6e6a61d7fbbe21118771')
 
 build() {
-  cd "$srcdir/notify_py-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/notify_py-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install -O1 --root="${pkgdir}" --skip-build
-# TODO https://github.com/ms7m/notify-py/issues/43
-#  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
