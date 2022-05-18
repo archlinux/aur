@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=beryl
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Extendable timer using electron."
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron')
 makedepends=('nodejs' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BrenekH/beryl/archive/refs/tags/v$pkgver.tar.gz" "beryl" "beryl.desktop" "bipa.xml" "berylprof.xml")
-sha256sums=('b58e96749c475b061b036240dccb37b84724d713e9d27368adb4f14d74ebcf35'
+sha256sums=('479af31f1113434116f3cecc69faf9caeeebc90111fec4d8dc456d3ac579aa2d'
             '64ba0a65ff8fe1bfb2ae2eea4f821e245c00a694fa080956c243d3ab81bd1edb'
             '715683464f03fa7d52860eb969c993402d777b9487595f3eb8169b269c17acbe'
             '7bfcda7056e131630771152f2c51d48e24ae94f4eb30795ef35d9120dfb10853'
