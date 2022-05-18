@@ -1,12 +1,12 @@
 pkgbase = sinuous
 	pkgdesc = A simple TUI to control local Sonos speakers
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/abusch/sinuous
 	arch = any
 	license = MIT
 	makedepends = rust
-	source = sinuous-0.1.2.tar.gz::https://github.com/abusch/sinuous/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 1fe6272d174906ec10c95683be12ad5a9945f94a5c8bdd481584495aef9641ca
+	source = sinuous-0.1.3.tar.gz::https://github.com/abusch/sinuous/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 796131dfe6495c78f02077eda897795f1f8ec9a54c12fd1e90a3874759de3003
 
 pkgname = sinuous
