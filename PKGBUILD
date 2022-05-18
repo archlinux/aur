@@ -5,12 +5,12 @@ _pluginname=OBSInfoWriter
 pkgname=obs-infowriter
 pkgver=2.1
 _deps_commit=cf621ae938e69cc63e37d4d32a7cbdc32486787b
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin writes a timestamp to a textfile that you can use to mark specific events for later editing of your videos or streams"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/infowriter.345/"
 license=("MPL2")
-depends=("obs-studio")
+depends=("obs-studio<28")
 source=(
   "$_pluginname-$pkgver.tar.gz::https://github.com/partouf/$_pluginname/archive/v$pkgver.tar.gz"
   "$_depsname-$_deps_commit.tar.gz::https://github.com/partouf/$_depsname/archive/$_deps_commit.tar.gz"
