@@ -57,6 +57,9 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
+  # EVENT__SIZEOF_TIME_T does not exist on upstream libevent, see event-config.h.cmake
+  sed -i '/CHECK_EVENT_SIZEOF(TIME_T, time_t);/d' ipc/chromium/src/base/message_pump_libevent.cc
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
