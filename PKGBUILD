@@ -1,13 +1,13 @@
 # Maintainer: Tomás Duarte <alfarrofo@gmail.com>
 _pkgname=pacman-zfs-hook
 pkgname=${_pkgname}
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 epoch=
 pkgdesc="Pacman Hook to create ZFS Snapshots on Pacman transactions."
 arch=('x86_64')
 url="https://github.com/MustachedSquid/Pacman-ZFS-Hook"
-license=('MIT')
+license=('BSD')
 depends=('bash' 'pacman')
 makedepends=()
 checkdepends=()
