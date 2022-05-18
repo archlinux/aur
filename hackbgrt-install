@@ -1,0 +1,72 @@
+#!/bin/sh
+# Try to detect EFI partition and mount point
+ESPDEV=$(echo $(fdisk -l | grep -sm 1 "EFI System") | cut -d ' ' -f 1)
+if [ ${ESPDEV:5:7} == "hd" ] || [ ${ESPDEV:5:7} == "sd" ] || [ ${ESPDEV:5:7} == "vd" ]; then
+	ESPDISK=${ESPDEV:0:8}
+	ESPPART=${ESPDEV:8}
+elif [ ${ESPDEV:5:9} == "nvme" ]; then
+	ESPDISK=${ESPDEV:0:12}
+	ESPPART=${ESPDEV:13}
+elif [ ${ESPDEV:5:11} == "mmcblk" ]; then # mmcblk0p1
+	ESPDISK=${ESPDEV:0:12}
+	ESPPART=${ESPDEV:13}
+fi
+ESPDIR=$(findmnt -no TARGET $ESPDEV)
+
+# Find existing bootloader path used to boot the system
+BOOTCURRENT=$(efibootmgr | grep -sm 1 "BootCurrent: ")
+BOOTCURRENT=$(efibootmgr -v | grep -sm 1 Boot${BOOTCURRENT:13})
+BOOTCURRENT=$(echo $BOOTCURRENT | grep -o -P "(?<=\)/File\().*(?=.efi\))").efi
+
+# Create paths
+mkdir -p $ESPDIR/EFI/boot $ESPDIR/EFI/HackBGRT
+
+# Install HackBGRT to ESP
+cp -n /usr/lib/hackbgrt/bootx64.efi $ESPDIR/EFI/boot/bootx64.efi
+cp /usr/lib/hackbgrt/bootx64.efi $ESPDIR/EFI/HackBGRT/bootx64.efi
+cp /usr/lib/hackbgrt/splash.bmp $ESPDIR/EFI/HackBGRT/splash.bmp
+
+# Create HackBGRT bootloader entry
+efibootmgr -c -d $ESPDISK -p $ESPPART -L "HackBGRT" -l '\EFI\HackBGRT\bootx64.efi'
+
+# Create HackBGRT config file
+echo "# vim: set fileencoding=utf-8" > $ESPDIR/EFI/HackBGRT/config.txt
+echo "# The same options may be given also as command line parameters in the EFI Shell, which is useful for debugging." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Boot loader path. Default: backup of the Windows boot loader." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "boot=$BOOTCURRENT" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# The image is specified with an image line." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Multiple image lines may be present, in which case one will be picked by random." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# The image line may contain the following parts:" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Any of the following:" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"n=[0-9]+\", a weight for this image in the randomization process. Default: n=1." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"x={auto|native|[0-9]+}\", the x coordinate. Default: x=auto." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"y={auto|native|[0-9]+}\", the y coordinate. Default: y=auto." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# One of the following:" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"keep\" to keep the firmware logo. Sets also x=native,y=native by default." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"remove\" to remove the BGRT. Makes x and y meaningless. Windows will display the Windows logo instead of a BGRT." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"black\" to use only a black image. Makes x and y meaningless." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - \"path=...\" to read a BMP file. The file must be a 24-bit BMP file with a 54-byte header." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#    * NOTE: The file must be on the EFI System Partition. Do not add a drive letter!" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Examples:" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - image=remove" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - image=black" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - image=x=auto,y=0,path=\EFI\HackBGRT\topimage.bmp" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - image=n=1,path=\EFI\HackBGRT\splash.bmp" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - image=n=50,path=\EFI\HackBGRT\probable.bmp" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# The above examples together would produce" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - 1/54 chance for the default OS logo" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - 1/54 chance for black screen" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - 1/54 chance for topimage.bmp, centered at the top of the screen" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - 1/54 chance for splash.bmp, automatically positioned" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "#  - 50/54 chance for probable.bmp, automatically positioned" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Default: just one image." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "image=path=\EFI\HackBGRT\splash.bmp" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Preferred resolution. Use 0x0 for maximum and -1x-1 for original." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "resolution=-1x-1" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "" >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Debug mode (0 for disabled, 1 for enabled)." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "# Shows debug information and prompts for keypress before booting." >> $ESPDIR/EFI/HackBGRT/config.txt
+echo "debug=0" >> $ESPDIR/EFI/HackBGRT/config.txt

@@ -1,0 +1,4 @@
+post_install() {
+	echo "Run hackbgrt-install to install HackBGRT to the ESP."
+	echo "This will configure HackBGRT to boot the bootloader used to boot this system."
+}
