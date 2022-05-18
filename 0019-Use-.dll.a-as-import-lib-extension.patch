@@ -1,4 +1,4 @@
-From 80a21a21aac613d66d5f25edaeebddbd944d6a8f Mon Sep 17 00:00:00 2001
+From 7c2c449e7d286be7aa1df1494e19ec1c3130792d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 19/33] Use *.dll.a as import lib extension
@@ -94,5 +94,5 @@ index 183cef2908..03732df4a8 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.36.0
+2.36.1
 

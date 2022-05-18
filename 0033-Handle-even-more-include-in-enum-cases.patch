@@ -1,4 +1,4 @@
-From a785d0d6b84ccbe0e74d7846076ba6df7d250dd8 Mon Sep 17 00:00:00 2001
+From 1bd4629742cda699fccdbc75ab6a722ddf1b6af8 Mon Sep 17 00:00:00 2001
 From: Fabian Kosmale <fabian.kosmale@qt.io>
 Date: Tue, 3 Aug 2021 16:23:25 +0200
 Subject: [PATCH 33/33] Handle even more include in enum cases
@@ -52,5 +52,5 @@ index b8abf77f12..cd53ba6a28 100644
  };
  #endif
 -- 
-2.36.0
+2.36.1
 
