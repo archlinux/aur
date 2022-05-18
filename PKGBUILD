@@ -13,7 +13,7 @@ depends=('dbus')
 replaces=('kernel-updated')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/rnestler/${_pkgname}.git")
+source=("git+https://github.com/rnestler/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {

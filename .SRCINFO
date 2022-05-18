@@ -13,7 +13,7 @@ pkgbase = reboot-arch-btw-git
 	provides = reboot-arch-btw
 	conflicts = reboot-arch-btw
 	replaces = kernel-updated
-	source = git://github.com/rnestler/reboot-arch-btw.git
+	source = git+https://github.com/rnestler/reboot-arch-btw.git
 	md5sums = SKIP
 
 pkgname = reboot-arch-btw-git
