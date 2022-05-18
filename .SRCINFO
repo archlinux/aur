@@ -1,0 +1,20 @@
+pkgbase = obs-plugin-input-overlay-git
+	pkgdesc = Show keyboard, gamepad and mouse input on stream
+	pkgver = 5.0
+	pkgrel = 2
+	url = https://github.com/univrsal/input-overlay
+	arch = x86_64
+	groups = obs-plugins
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = obs-studio>=19.0.3
+	depends = libuiohook
+	conflicts = obs-plugin-input-overlay
+	conflicts = obs-plugin-input-overlay-bin
+	source = git+https://github.com/univrsal/input-overlay.git#branch=master
+	md5sums = SKIP
+
+pkgname = obs-plugin-input-overlay-git
