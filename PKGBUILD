@@ -1,49 +1,49 @@
 # Maintainer: ksandr <ru@ksandr.online>
 
-pkgname=python-rssd-usermode
+
 _pkgname=python-rssd
+pkgname=${_pkgname}-usermode
 pkgver=1
-pkgrel=2
+pkgrel=4
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('x86_64')
 license=('GPL')
-install=$pkgname.install
+install=${pkgname}.install
 provides=("${_pkgname}")
-url="https://gitflic.ru/project/ksandr/python-rssd"
+url="https://gitflic.ru/project/ksandr/${_pkgname}"
 depends=('python' 'python-dbus' 'python-feedparser')
 optdepends=('python-requests-html: for parsing inaccessible RSS')
-source=(git+$url.git)
+source=(git+${url}.git)
 md5sums=('SKIP')
 
 prepare() {
-    tar -zxvf ${srcdir}/$_pkgname/icons.tar.gz
+    tar -zxvf ${srcdir}/${_pkgname}/icons.tar.gz
+
+    # Create .desktop file.
+	gendesk -f -n \
+		--pkgname "${_pkgname}" \
+		--pkgdesc "${pkgdesc}" \
+		--name "Last news loader..." \
+		--genericname "Python RSS daemon" \
+		--comment "Show last RSS-news in notify" \
+		--exec "$HOME/.local/bin/${_pkgname}.py" \
+		--categories "Network;"
 }
 
 package() {
-	install -Dm644 ${srcdir}/$_pkgname/python-rssd.py "$pkgdir/$HOME/.local/bin/python-rssd.py"
-	chmod +x $pkgdir/$HOME/.local/bin/python-rssd.py
+	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.py" "${pkgdir}/$HOME/.local/bin/${_pkgname}.py"
+	chmod +x "${pkgdir}/$HOME/.local/bin/${_pkgname}.py"
 
-	install -Dm644 ${srcdir}/$_pkgname/config.py "$pkgdir/$HOME/.config/$_pkgname/config.py"
+	install -Dm644 "${srcdir}/${_pkgname}/config.py" "${pkgdir}/$HOME/.config/${_pkgname}/config.py"
 
-	install -d $pkgdir/$HOME/.config/$_pkgname/icons
-	install -Dm644 ${srcdir}/icons/* "$pkgdir/$HOME/.config/$_pkgname/icons/"
+	install -d "${pkgdir}/$HOME/.config/${_pkgname}/icons"
+	install -Dm644 "${srcdir}/icons/"* "${pkgdir}/$HOME/.config/${_pkgname}/icons/"
 
-	install -Dm644 ${srcdir}/$_pkgname/python-rssd.service "$pkgdir/$HOME/.config/systemd/user/python-rssd.service"
-	install -Dm644 ${srcdir}/$_pkgname/python-rssd.timer "$pkgdir/$HOME/.config/systemd/user/python-rssd.timer"
+	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.service" "${pkgdir}/$HOME/.config/systemd/user/${_pkgname}.service"
+	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.timer" "${pkgdir}/$HOME/.config/systemd/user/${_pkgname}.timer"
 
-	install -d $pkgdir/$HOME/.local/share/applications
-	echo "[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Python RSS daemon
-Comment=Show last RSS-news in notify
-Categories=Network
-Exec=$HOME/.local/bin/python-rssd.py
-Terminal=false
-Icon=internet-news-reader
-GenericName=Python RSS daemon
-Name[ru]=Загрузка новостей..." > "$pkgdir/$HOME/.local/share/applications/python-rssd.desktop"
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/$HOME/.local/share/applications/${_pkgname}.desktop"
 
-	chown $USER:$USER -Rc $pkgdir
+	chown $USER:$USER -Rc ${pkgdir}
 }
