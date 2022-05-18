@@ -26,7 +26,7 @@ install=
 changelog=
 source=()
 noextract=()
-md5sums=(‘SKIP’)
+md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver(){
