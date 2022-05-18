@@ -2,7 +2,7 @@
 pkgname=mint-artwork
 pkgver=1.5.7
 pkgrel=0
-epoch=1
+epoch=2
 pkgdesc="Linux Mint Artwork and Resources."
 arch=("any")
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"

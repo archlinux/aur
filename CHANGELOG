@@ -1,3 +1,5 @@
+Fix typo on install from 'sudo' to 'export'
+Remove quotes around paths
 1.5.7 - Updated to 1.5.7 Upstream
 Discovered official method to restart Cinnamon, updated
 Switched method for restarting Cinnamon to nohup, fixed INSTALL & conflicts
