@@ -1,10 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: twilinx <twilinx@mesecons.net>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
-pkgver=3.24.33
-pkgrel=2
+pkgver=3.24.34
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
 url="https://www.gtk.org/"
@@ -21,7 +22,7 @@ provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil
 conflicts=(gtk3 gtk3-print-backends)
 replaces=("gtk3-print-backends<=3.22.26-1")
 install=gtk3.install
-_commit=8ff9b2f83ff491cbfcbf9b30c706bd917679e7cc  # tags/3.24.33^0
+_commit=4e3a3f05533789e1a68c70c185e1755d386d6c47  # tags/3.24.34^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         typeahead.patch)
@@ -36,12 +37,6 @@ pkgver() {
 
 prepare() {
   cd gtk
-
-  # Add legacy icons
-  git cherry-pick -n 5a0ffbbb4568e39bdf26006e1bf18c1c1d0d597a
-
-  # Fix annotation
-  git cherry-pick -n 56ada2f01f3b522a42831aba158786e843fca817
 
   # Typeahead-specific changes
   patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
