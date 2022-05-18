@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=transformers_ocr
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="An OCR tool for manga using maim with Transformers."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/Ajatt-Tools/transformers_ocr"
 license=("GPL3")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 depends=('python' 'libnotify' 'python-pip' 'bash' 'maim' 'xclip')
-sha256sums=('608918b1a747ed6b7350f656811855ac5ff72265f4936cc85dc102e84380831e')
+sha256sums=('37c716fff6944d91cd6a0dc3eeeede5e5d47ef2b56899b93e7ff7ce8c57d46d8')
 
 package() {
 	cd -- "${pkgname}-${pkgver}"
