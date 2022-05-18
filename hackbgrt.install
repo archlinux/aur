@@ -1,4 +1,5 @@
 post_install() {
-	echo "Run hackbgrt-install to install HackBGRT to the ESP."
+	echo "Run \"hackbgrt-install\" to install HackBGRT to the ESP."
+	echo "Run \"hackbgrt-install 32\" to install the 32 bit version instead of the 64 bit version."
 	echo "This will configure HackBGRT to boot the bootloader used to boot this system."
 }

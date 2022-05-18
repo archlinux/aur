@@ -1,4 +1,9 @@
 #!/bin/sh
+[ $(whoami) != "root" ] && echo "[ERROR] You must run this script with root priviliges." && exit 1
+if [ $1 == "32" ]; then BOOTNAME="bootia32"
+else if [ -z $
+BOOTNAME="bootx64"
+
 # Try to detect EFI partition and mount point
 ESPDEV=$(echo $(fdisk -l | grep -sm 1 "EFI System") | cut -d ' ' -f 1)
 if [ ${ESPDEV:5:7} == "hd" ] || [ ${ESPDEV:5:7} == "sd" ] || [ ${ESPDEV:5:7} == "vd" ]; then
@@ -22,12 +27,12 @@ BOOTCURRENT=$(echo $BOOTCURRENT | grep -o -P "(?<=\)/File\().*(?=.efi\))").efi
 mkdir -p $ESPDIR/EFI/boot $ESPDIR/EFI/HackBGRT
 
 # Install HackBGRT to ESP
-cp -n /usr/lib/hackbgrt/bootx64.efi $ESPDIR/EFI/boot/bootx64.efi
-cp /usr/lib/hackbgrt/bootx64.efi $ESPDIR/EFI/HackBGRT/bootx64.efi
+cp -n /usr/lib/hackbgrt/$BOOTNAME.efi $ESPDIR/EFI/boot/$BOOTNAME.efi
+cp /usr/lib/hackbgrt/$BOOTNAME.efi $ESPDIR/EFI/HackBGRT/$BOOTNAME.efi
 cp /usr/lib/hackbgrt/splash.bmp $ESPDIR/EFI/HackBGRT/splash.bmp
 
 # Create HackBGRT bootloader entry
-efibootmgr -c -d $ESPDISK -p $ESPPART -L "HackBGRT" -l '\EFI\HackBGRT\bootx64.efi'
+efibootmgr -c -d $ESPDISK -p $ESPPART -L "HackBGRT" -l "\EFI\HackBGRT\\$BOOTNAME.efi"
 
 # Create HackBGRT config file
 echo "# vim: set fileencoding=utf-8" > $ESPDIR/EFI/HackBGRT/config.txt
