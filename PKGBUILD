@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtiff-maya-git
-pkgver=4.2.0.r7.gec8bdded
+pkgver=4.3.0.r209.gb92d4ad0
 pkgrel=1
 pkgdesc="TIFF library and utilities (built with --enable-ld-version-script flag for maya support)"
 arch=('i686' 'x86_64')
