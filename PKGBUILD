@@ -2,12 +2,12 @@
 
 pkgname=obs-color-monitor
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin provides three sources to monitor color balances"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-color-monitor.1277/"
 license=("GPL2")
-depends=("obs-studio")
+depends=("obs-studio<28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
