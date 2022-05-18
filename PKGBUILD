@@ -4,7 +4,7 @@
 
 pkgname=dosbox-binutils
 pkgver=2.35
-pkgrel=7
+pkgrel=8
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -27,10 +27,9 @@ prepare() {
 }
 
 build() {
-  export CPPFLAGS="$CPPFLAGS -Ofast"
-
   mkdir -p binutils-$_target
   cd binutils-$_target
+  CPPFLAGS="$CPPFLAGS -Ofast" \
   ../binutils-$pkgver/configure \
     --prefix=/usr \
     --target="$_target" \
