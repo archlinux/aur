@@ -4,7 +4,7 @@
 
 pkgname=greetd-artix-runit
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic greeter daemon, packaged for artix-runit"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
@@ -29,7 +29,7 @@ backup=(
   'etc/greetd/config.toml'
   'etc/pam.d/greetd'
 )
-
+provides=('greetd')
 prepare() {
     cd greetd-$pkgver
     patch < ../change-default-vt.patch
