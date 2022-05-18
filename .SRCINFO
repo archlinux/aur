@@ -1,7 +1,7 @@
 pkgbase = gtk4-telegrand
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Telegrand)
 	pkgver = 4.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gtk.org/
 	arch = x86_64
 	license = LGPL
@@ -13,6 +13,7 @@ pkgbase = gtk4-telegrand
 	makedepends = gobject-introspection
 	makedepends = wayland-protocols
 	makedepends = python-gobject
+	makedepends = python-docutils
 	depends = glib2
 	depends = cairo
 	depends = pango

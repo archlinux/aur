@@ -3,7 +3,7 @@
 
 pkgname=gtk4-telegrand
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('evince: Default print preview command')
 conflicts=(gtk4)
 provides=(gtk4 libgtk-4.so)
 makedepends=(git meson shaderc sassc gobject-introspection
-             wayland-protocols python-gobject)
+             wayland-protocols python-gobject python-docutils)
 checkdepends=(weston)
 _commit=1e6bad6c4f412dc0eb7b2f508cb4465929a04303  # tags/4.6.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
