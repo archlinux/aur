@@ -7,8 +7,8 @@
 # https://github.com/electron/electron/issues/32487
 
 pkgname=discord_arch_electron_wayland
-pkgver=0.0.17
-pkgrel=8
+pkgver=0.0.18
+pkgrel=1
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
@@ -22,11 +22,11 @@ optdepends=(
 	'xdg-utils: Open files'
 )
 source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz")
-sha256sums=('3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315')
+sha256sums=('0417389fa437c6e044d77252de0cffe8473074e596e7b34ba76b1a3a5c0e80c2')
 
 prepare() {
 	# create launcher script
-	cat >>"$srcdir"/discord-launcher.sh <<'EOF'
+	cat >"$srcdir"/discord-launcher.sh <<'EOF'
 #!/bin/sh
 
 if [ "$XDG_SESSION_TYPE" = wayland ]; then
@@ -40,7 +40,7 @@ fi
 EOF
 
 	# fix the .desktop file
-	sed -i "s|Exec=.*|Exec=/usr/bin/discord-launcher.sh|" Discord/discord.desktop
+	sed -i "s|Exec=.*|Exec=/usr/bin/discord|" Discord/discord.desktop
 	echo 'Path=/usr/bin' >>Discord/discord.desktop
 
 	# create the license files
@@ -65,7 +65,7 @@ package() {
 	cp -r Discord/resources/* "$pkgdir"/usr/lib/discord/
 
 	# install the binary
-	install -Dm 755 discord-launcher.sh "$pkgdir"/usr/bin/
+	install -Dm 755 discord-launcher.sh "$pkgdir"/usr/bin/discord
 
 	cp Discord/discord.png \
 		"$pkgdir"/usr/share/pixmaps/discord.png
