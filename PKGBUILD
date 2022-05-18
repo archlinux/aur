@@ -7,7 +7,7 @@ pkgver=20210920.1302a72
 pkgrel=1
 pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with Mana patches'
 url='http://w1.fi/hostapd/'
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7l')
 license=('custom')
 makedepends=('git')
 depends=('openssl' 'libnl')
@@ -29,8 +29,6 @@ pkgver() {
 build() {
 	cd "${srcdir}/hostapd-mana/hostapd"
 	sed -i 's:/etc/hostapd:/etc/hostapd/hostapd:' hostapd.conf
-	sed -i '/CONFIG_LIBNL32=y/s/^#//' defconfig
-	cp defconfig .config
 	cd ..
 	make -C hostapd
 }

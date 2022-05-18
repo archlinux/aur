@@ -6,6 +6,7 @@ pkgbase = hostapd-mana-git
 	arch = i686
 	arch = x86_64
 	arch = aarch64
+	arch = armv7l
 	license = custom
 	makedepends = git
 	depends = openssl
