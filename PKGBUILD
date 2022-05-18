@@ -3,18 +3,18 @@
 
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
-pkgver=1.28.1
+pkgver=1.28.3
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
 license=(BSD)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-build python-installer python-versioningit python-wheel)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('e9e6fc1df557fa22c8b56850b0c03e6ea8c512fe57966dae155ae9ebd9c51546'
+sha256sums=('d61037b3f21f7fc7d5cfe4eea683789259e7ccb9eef5f7229cbc62f31ea6ba32'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
@@ -22,7 +22,7 @@ validpgpkeys=(
 
 build() {
   cd pg8000-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -66,6 +66,6 @@ EOF
 
 package() {
   cd pg8000-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
