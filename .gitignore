@@ -15,3 +15,5 @@
 /src
 /pkg
 *.kate-swp
+!.SRCINFO
+!PKGBUILD
