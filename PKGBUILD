@@ -12,7 +12,7 @@ depends=('hostapd-mana-git' 'iw' 'dnsmasq' 'iptables')
 optdepends=('haveged: boost low entropy')
 makedepends=('git')
 provides=('berate_ap')
-backup=('usr/lib/systemd/system/create_ap.service')
+backup=('usr/lib/systemd/system/berate_ap.service')
 source=("$pkgname::git+https://github.com/sensepost/berate_ap.git")
 sha256sums=('SKIP')
 
@@ -24,5 +24,5 @@ pkgver() {
 package() {
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/create_ap/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/berate_ap/LICENSE"
 }
