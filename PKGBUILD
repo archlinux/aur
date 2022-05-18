@@ -4,7 +4,7 @@
 _pkgname=python-rssd
 pkgname=${_pkgname}-usermode
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 install=${pkgname}.install
 provides=("${_pkgname}")
 url="https://gitflic.ru/project/ksandr/${_pkgname}"
-depends=('python' 'python-dbus' 'python-feedparser')
+depends=('python' 'dbus-python' 'python-feedparser')
 optdepends=('python-requests-html: for parsing inaccessible RSS')
 source=(git+${url}.git)
 md5sums=('SKIP')
