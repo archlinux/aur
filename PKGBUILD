@@ -1,7 +1,7 @@
 # Maintainer: Chen Jicheng <hi@chenjicheng.com>
 pkgname=obs-plugin-input-overlay-git
-pkgver=5.0
-pkgrel=2
+pkgver=5.0.r0.5a3035e
+pkgrel=1
 pkgdesc="Show keyboard, gamepad and mouse input on stream"
 arch=('x86_64')
 url="https://github.com/univrsal/input-overlay"
@@ -23,6 +23,11 @@ conflicts=(
 )
 source=("git+https://github.com/univrsal/input-overlay.git#branch=master")
 md5sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "${srcdir}/input-overlay"
