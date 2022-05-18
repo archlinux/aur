@@ -40,4 +40,3 @@ package() {
     chmod 755 ./build.sh
     exec ./build.sh
 }
-md5sums=('47aae599569a8b99cc3cb16eca0ffc8c')
