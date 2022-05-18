@@ -1,0 +1,14 @@
+pkgbase = taverner-git
+	pkgdesc = cli launcher menu for games (or anything), the UNIX way.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/vagos/taverner
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = dmenu: recommended app launcher
+	provides = taverner
+	source = git+https://github.com/vagos/taverner
+	sha256sums = SKIP
+
+pkgname = taverner-git
