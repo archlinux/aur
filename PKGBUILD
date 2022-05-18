@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-dbix-class'
-pkgver='0.082842'
+pkgver='0.082843'
 pkgrel='1'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
@@ -15,7 +15,6 @@ depends=(
   'perl-config-any>=0.20'
   'perl-context-preserve>=0.01'
   'perl-data-dumper-concise>=2.020'
-  'perl-data-page>=2.00'
   'perl-dbi>=1.57'
   'perl-devel-globaldestruction>=0.09'
   'perl-hash-merge>=0.12'
@@ -24,7 +23,6 @@ depends=(
   'perl-mro-compat>=0.12'
   'perl-namespace-clean>=0.24'
   'perl-path-class>=0.18'
-  'perl-scalar-list-utils>=1.16'
   'perl-scope-guard>=0.03'
   'perl-sql-abstract-classic>=1.91'
   'perl-sub-name>=0.04'
@@ -40,7 +38,7 @@ makedepends=(
 )
 url='http://search.cpan.org/dist/DBIx-Class'
 source=("https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/DBIx-Class-${pkgver}.tar.gz")
-sha512sums=('c8d7149536d5c4ebbfc866b0c143454ead37fda5ddb8fa43dfe2d56c2169be0fd8a46ec3b6c7cd22cb1c93504056d5803b5250ac151507ef4205fe53495e8f18')
+sha512sums=('395752fd2568580c7a35598c4e2a30210e6ee5dc382dc56338ca6e20effa083e2bb31ebe6c715f2bd421699de10570551b1c4c25772c0f8b071f64787b041d7c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

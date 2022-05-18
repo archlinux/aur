@@ -1,6 +1,6 @@
 pkgbase = perl-dbix-class
 	pkgdesc = Extensible and flexible object <-> relational mapper.
-	pkgver = 0.082842
+	pkgver = 0.082843
 	pkgrel = 1
 	url = http://search.cpan.org/dist/DBIx-Class
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = perl-dbix-class
 	depends = perl-config-any>=0.20
 	depends = perl-context-preserve>=0.01
 	depends = perl-data-dumper-concise>=2.020
-	depends = perl-data-page>=2.00
 	depends = perl-dbi>=1.57
 	depends = perl-devel-globaldestruction>=0.09
 	depends = perl-hash-merge>=0.12
@@ -26,14 +25,12 @@ pkgbase = perl-dbix-class
 	depends = perl-mro-compat>=0.12
 	depends = perl-namespace-clean>=0.24
 	depends = perl-path-class>=0.18
-	depends = perl-scalar-list-utils>=1.16
 	depends = perl-scope-guard>=0.03
 	depends = perl-sql-abstract-classic>=1.91
 	depends = perl-sub-name>=0.04
 	depends = perl-try-tiny>=0.07
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/DBIx-Class-0.082842.tar.gz
-	sha512sums = c8d7149536d5c4ebbfc866b0c143454ead37fda5ddb8fa43dfe2d56c2169be0fd8a46ec3b6c7cd22cb1c93504056d5803b5250ac151507ef4205fe53495e8f18
+	source = https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/DBIx-Class-0.082843.tar.gz
+	sha512sums = 395752fd2568580c7a35598c4e2a30210e6ee5dc382dc56338ca6e20effa083e2bb31ebe6c715f2bd421699de10570551b1c4c25772c0f8b071f64787b041d7c
 
 pkgname = perl-dbix-class
-
