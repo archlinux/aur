@@ -3,10 +3,10 @@
 pkgname=python-deltachat-cursed
 _module=deltachat_cursed
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Delta Chat client for the command line"
 url="https://github.com/adbenitez/deltachat-cursed"
-depends=(python-notify-py python-urwid_readline)
+depends=(python-notify-py python-urwid_readline python-deltachat)
 makedepends=(python-setuptools)
 license=('GPL')
 arch=('any')
