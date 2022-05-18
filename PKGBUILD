@@ -31,7 +31,8 @@ build() {
 	sed -i 's:/etc/hostapd:/etc/hostapd/hostapd:' hostapd.conf
 	sed -i '/CONFIG_LIBNL32=y/s/^#//' defconfig
 	cp defconfig .config
-	make
+	cd ..
+	make -C hostapd
 }
 
 package() {
