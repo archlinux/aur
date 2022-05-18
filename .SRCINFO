@@ -9,6 +9,7 @@ pkgbase = bioawk-git
 	makedepends = bison
 	makedepends = make
 	makedepends = gcc
+	makedepends = git
 	provides = bioawk
 	conflicts = bioawk
 	source = git+https://github.com/lh3/bioawk.git
