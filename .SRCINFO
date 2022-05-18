@@ -1,7 +1,7 @@
 pkgbase = python-rssd-usermode
 	pkgdesc = A service for displaying the latest news from RSS feeds via notify.
-	pkgver = 1
-	pkgrel = 5
+	pkgver = 1.54b6441
+	pkgrel = 1
 	url = https://gitflic.ru/project/ksandr/python-rssd
 	install = python-rssd-usermode.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-rssd-usermode
 	depends = python-feedparser
 	optdepends = python-requests-html: for parsing inaccessible RSS
 	provides = python-rssd
-	source = git+https://gitflic.ru/project/ksandr/python-rssd.git
+	source = git+https://gitflic.ru/project/ksandr/python-rssd.git#commit=54b6441
 	md5sums = SKIP
 
 pkgname = python-rssd-usermode

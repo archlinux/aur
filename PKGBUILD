@@ -3,8 +3,9 @@
 
 _pkgname=python-rssd
 pkgname=${_pkgname}-usermode
-pkgver=1
-pkgrel=5
+_commit=54b6441
+pkgver=1.${_commit}
+pkgrel=1
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('x86_64')
@@ -14,7 +15,7 @@ provides=("${_pkgname}")
 url="https://gitflic.ru/project/ksandr/${_pkgname}"
 depends=('python' 'dbus-python' 'python-feedparser')
 optdepends=('python-requests-html: for parsing inaccessible RSS')
-source=(git+${url}.git)
+source=(git+${url}.git#commit=${_commit})
 md5sums=('SKIP')
 
 prepare() {
