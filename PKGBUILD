@@ -3,11 +3,11 @@
 pkgname=python-deltachat
 _module='deltachat'
 pkgver=1.79.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Delta Chat Core library using CFFI against the Rust-implemented libdeltachat"
 url="https://pypi.org/project/deltachat/"
 depends=(libdeltachat python-cffi python-requests python-imap-tools python-pluggy python-idna python-urllib3 python-pycparser python-charset-normalizer python-certifi)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-pkgconfig)
 license=('MPL')
 arch=('x86_64')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
