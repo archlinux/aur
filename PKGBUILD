@@ -13,7 +13,7 @@ provides=('actionlint')
 
 source=("https://github.com/rhysd/actionlint/releases/download/v${pkgver}/actionlint_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('SKIP')
+sha256sums=('6c4b8928bf44c54817adbd603c2bb880b9bcb90d1fcde69a96b5306120c702b7')
 
 package() {
 	# package
