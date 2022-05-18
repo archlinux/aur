@@ -3,8 +3,8 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="lumi"
-pkgver="0.8.3"
-pkgrel="2"
+pkgver="0.9.1"
+pkgrel="1"
 pkgdesc="A Desktop App that offers a collection of tools to create, edit and share digital content with your class."
 arch=('x86_64')
 url="https://${pkgname}.education"
@@ -14,7 +14,7 @@ depends=('gtk3' 'nss' 'nodejs')
 #makedepends=('')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.pacman::${_url}/releases/download/v${pkgver}/lumi-${pkgver}.pacman")
-sha256sums=('2c364198c259185736798305ab0f80e8d14bcb70d3ea0c17d3434c9d0d8c4b86')
+sha256sums=('cc259090478ae638089bf5d145783c92f8a3c0af55e05c8195bec10a6fbf4929')
 
 package() {
 	install -d "${pkgdir}/{opt,usr}"
