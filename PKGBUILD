@@ -1,8 +1,8 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
-pkgname=hostapd-git
-pkgver=20170315.6c2056abe
+pkgname=hostapd-mana-git
+pkgver=20220508.b859b9bce
 pkgrel=1
 pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
 url='http://w1.fi/hostapd/'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('git')
 depends=('openssl' 'libnl')
-source=('git://w1.fi/hostap.git'
+source=('https://github.com/sensepost/hostapd-mana.git'
          'service')
 sha256sums=('SKIP'
          '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e')
