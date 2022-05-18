@@ -37,8 +37,8 @@ pkgver(){
 
 package() {
     cd ..
-    git clone https://github.com/spynetS/Linecounter.git
-    cd Linecounter
+    git clone https://github.com/spynetS/Linecounter.git lctr
+    cd lctr
     pwd
     ls
     chmod 755 ./build.sh
