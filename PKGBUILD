@@ -5,21 +5,19 @@
 pkgname=dosbox-gcc
 pkgver=12.1.0
 _target="i586-pc-msdosdjgpp"
-_islver=0.24
 _djver=2.05
-pkgrel=2
+pkgrel=3
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('djgpp')
-depends=('zlib' 'libmpc' 'dosbox-binutils')
+depends=('zlib' 'libisl' 'libmpc' 'dosbox-binutils')
 makedepends=('unzip' 'tar' 'xz')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
-        "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
         "gcc-djgpp.diff"
         "lto.patch")
 sha256sums=('SKIP'
@@ -35,9 +33,6 @@ prepare() {
 
   # gcc hacks
   cd $srcdir/gcc-$pkgver
-
-  # link isl for in-tree build
-  ln -fs ../isl-${_islver} isl
 
   # build the lto plugin
   patch -Np0 < ../lto.patch
