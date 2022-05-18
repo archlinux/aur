@@ -1,8 +1,9 @@
-# Maintainer: Batuhan Baserdem <lastn.firstn[at]gmail>
+# Maintainer: kormpu mcgpapu@gmail.com 
+
 name=breeze-hacked-cursor-theme
 pkgname="${name}-git"
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Breeze Hacked cursor theme"
 arch=("any")
 url="https://github.com/codejamninja/${name}"
@@ -11,7 +12,8 @@ makedepends=('gnome-themes-extra' 'inkscape' 'xorg-xcursorgen' 'git')
 provides=("${name}")
 conflicts=("${name}")
 source=("git+${url}")
-sha512sums=('SKIP')
+b2sums=('SKIP')
+
 
 build() {
     cd "${srcdir}/${name}"

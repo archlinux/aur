@@ -1,7 +1,7 @@
 pkgbase = breeze-hacked-cursor-theme-git
 	pkgdesc = Breeze Hacked cursor theme
 	pkgver = 2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/codejamninja/breeze-hacked-cursor-theme
 	arch = any
 	license = GPL
@@ -12,7 +12,6 @@ pkgbase = breeze-hacked-cursor-theme-git
 	provides = breeze-hacked-cursor-theme
 	conflicts = breeze-hacked-cursor-theme
 	source = git+https://github.com/codejamninja/breeze-hacked-cursor-theme
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = breeze-hacked-cursor-theme-git
-
