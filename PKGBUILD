@@ -3,12 +3,12 @@
 pkgname=obs-rendering-lag
 _pkgver=1.0.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin intentionally adds lags during video rendering"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/rendering-lag-plugin.1365/"
 license=("GPL2")
-depends=("obs-studio")
+depends=("obs-studio<28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$_pkgver.tar.gz")
