@@ -1,14 +1,14 @@
 # Maintainer: Alexandre `zopieux` Macabies <web+oss@zopieux.com>
 
 pkgname=vim-nix-git
-pkgver=r83.be0c6bb
+pkgver=r110.7d23e97
 pkgrel=1
 pkgdesc="Nix support for Vim"
 arch=('any')
 url='https://github.com/LnL7/vim-nix'
 license=('MIT')
 depends=('vim')
-source=('vim-nix::git+git://github.com/LnL7/vim-nix.git')
+source=('vim-nix::git+https://github.com/LnL7/vim-nix.git')
 sha256sums=('SKIP')
 
 pkgver() {
