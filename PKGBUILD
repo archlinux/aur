@@ -3,7 +3,7 @@
 
 pkgname=bottles
 pkgver=2022.5.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
@@ -35,8 +35,8 @@ optdepends=(
   'vulkan-icd-loader'
   'gamemode')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}-trento-1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-trento-1.tar.gz")
-sha256sums=('48aad92fd18edfafd95b7d9716249a939e63c3b62741378fec8f78db5f08154b')
+source=("${pkgname}-${pkgver}-trento-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-trento-2.tar.gz")
+sha256sums=('1a6a76f753e9bbcc625cecaf038957da8500da2f110974e91311adb0d9195407')
 
 build() {
   if [[ -d Bottles ]]; then 
