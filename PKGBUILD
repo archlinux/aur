@@ -3,7 +3,7 @@
 # Maintainer: Nemanja <nemanjan00@gmail.com>
 
 pkgname=hostapd-mana-git
-pkgver=20220508.b859b9bce
+pkgver=20210920.1302a72
 pkgrel=1
 pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with Mana patches'
 url='http://w1.fi/hostapd/'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'aarch64')
 license=('custom')
 makedepends=('git')
 depends=('openssl' 'libnl')
-source=('https://github.com/sensepost/hostapd-mana.git'
+source=('git+https://github.com/sensepost/hostapd-mana.git'
          'service')
 sha256sums=('SKIP'
          '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e')
@@ -22,12 +22,12 @@ conflicts=('hostapd')
 provides=('hostapd')
 
 pkgver() {
-	cd "${srcdir}/hostap"
+	cd "${srcdir}/hostapd-mana"
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-	cd "${srcdir}/hostap/hostapd"
+	cd "${srcdir}/hostapd-mana/hostapd"
 	sed -i 's:/etc/hostapd:/etc/hostapd/hostapd:' hostapd.conf
 	sed -i '/CONFIG_LIBNL32=y/s/^#//' defconfig
 	cp defconfig .config
@@ -35,8 +35,8 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/hostap/hostapd"
-	
+	cd "${srcdir}/hostapd-mana/hostapd"
+
 	install -d "${pkgdir}"/usr/bin
 	install -t "${pkgdir}"/usr/bin hostapd hostapd_cli
 
