@@ -2,9 +2,11 @@
 # Contributor: Sergio Schneider <spsf1964 @ g m a i l.c o m>
 
 pkgname=session-desktop-appimage
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
-pkgdesc="Private messaging from your desktop"
+#pkgdesc="Private messaging from your desktop"
+pkgdesc="Session is an end-to-end encrypted messenger that minimises sensitive metadata"
+
 arch=('x86_64')
 
 #url="https://github.com/loki-project/session-desktop"
@@ -27,7 +29,7 @@ source=("${_bin}::https://github.com/oxen-io/session-desktop/releases/download/v
         'session-desktop.desktop'
         'session-desktop.png')
 
-sha256sums=('033f4d12ca94e19726b929e8dfccdf953e0ce2523aff84a1121dc55537324498'
+sha256sums=('10e5c0568beb68b75ad4e7e6efc0f69311310eab631be0ccce1b7a28d25af9bb'
             '2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b'
             '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
 
