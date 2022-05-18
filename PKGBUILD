@@ -4,9 +4,9 @@
 pkgname=hostapd-mana-git
 pkgver=20220508.b859b9bce
 pkgrel=1
-pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+pkgdesc='IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with Mana patches'
 url='http://w1.fi/hostapd/'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('custom')
 makedepends=('git')
 depends=('openssl' 'libnl')
