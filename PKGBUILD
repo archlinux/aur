@@ -15,7 +15,7 @@ license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4' 'libxcrypt-compat')
 options=('!strip') # PNG assets here should be left untouched!
 
-source=("https://download.substance3d.com/adobe-substance-3d-designer/11.x/Adobe_Substance_3D_Designer-${pkgver}-${_build}-linux-x64-standard.rpm")
+source=("https://download.substance3d.com/adobe-substance-3d-designer/12.x/Adobe_Substance_3D_Designer-${pkgver}-${_build}-linux-x64-standard.rpm")
 sha256sums=('c604d887887cae471e84de7b558c238aac1db535309be5754a3b589f65099ac3')
 
 validpgpkeys=()
