@@ -1,14 +1,14 @@
 pkgbase = obs-face-tracker
 	pkgdesc = This plugin provide video filters for face detection and face tracking for mainly a speaking person
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://obsproject.com/forum/resources/face-tracker.1294/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
-	depends = obs-studio
+	depends = obs-studio<28
 	depends = openblas
 	depends = cblas
 	depends = lapack

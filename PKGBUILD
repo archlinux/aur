@@ -24,12 +24,12 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
-depends=("obs-studio")
+depends=("obs-studio<28")
 makedepends=("cmake")
 options=('debug')
 source=(
