@@ -1,66 +1,52 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
+# Contributor: denisse https://github.com/da-edra (original PKGBUILD author from teleirc)
 pkgname=teleirc-git
 _pkgname=teleirc
-pkgver=182
+pkgdesc='Go implementation of a Telegram <=> IRC bridge for use with any IRC channel and Telegram group.'
+arch=(any)
+url='https://github.com/RITlug/teleirc'
+_branch='main'
+pkgver=v2.2.0.r14.g8dac678
 pkgrel=1
-epoch=
-pkgdesc="NodeJS Telegram to IRC bridge bot (direct from GitHub)"
-arch=('any')
-url="https://github.com/ritlug/teleirc"
-license=('MIT')
-groups=()
-depends=("nodejs")
-makedepends=("yarn")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=("usr/lib/teleirc/config.js"
-        "usr/lib/teleirc/.env"
-)
-options=()
-install=
-changelog=
-source=("git+https://github.com/ritlug/teleirc.git"
-        "teleirc.sysusers"
-)
-noextract=()
-sha256sums=('SKIP'
-            '8aef33679b7c407fa38bb59b8973bad96ff193c42efa31702c7385722be334ef'
-)
+license=('GPL3')
+makedepends=(go)
+source=("git+https://github.com/ritlug/teleirc.git")
+sha256sums=('SKIP')
+provides=($_pkgname)
+conflicts=($_pkgname)
 
 pkgver() {
-        cd $srcdir/${_pkgname}
-        git rev-list --count HEAD
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-        cd $srcdir/${_pkgname}
-        git checkout -f v1.3.4
+  mkdir -p "${_pkgname}/build"
 }
 
 build() {
-        cd $srcdir/${_pkgname}
-        yarn install
+  cd "${_pkgname}"
+
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build -o build/ cmd/$_pkgname.go
 }
 
 check() {
-        echo "No check"
+  cd "${_pkgname}"
+  go test ./...
 }
 
 package() {
-        mkdir -p $pkgdir/usr/lib/teleirc
-
-        cd $srcdir/${_pkgname}
-        cp -r node_modules $pkgdir/usr/lib/teleirc/
-        cp *.js $pkgdir/usr/lib/teleirc/
-        cp env.example $pkgdir/usr/lib/teleirc/.env
-
-        cp -r lib $pkgdir/usr/lib/teleirc/
-        mkdir -p $pkgdir/usr/lib/systemd/system/
-        cp misc/teleirc.service $pkgdir/usr/lib/systemd/system/
-
-        install -D -m 644 "${srcdir}/teleirc.sysusers" "${pkgdir}/usr/lib/sysusers.d/teleirc.conf"
-
+  cd "${_pkgname}"
+  install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 "${srcdir}/${_pkgname}/deployments/systemd/teleirc.sysusers" "${pkgdir}/usr/lib/sysusers.d/teleirc.conf"
+  install -Dm644 "${srcdir}/${_pkgname}/deployments/systemd/teleirc@.service" "${pkgdir}/usr/lib/systemd/system/teleirc@.service"
+  install -Dm644 "${srcdir}/${_pkgname}/deployments/systemd/teleirc.tmpfiles" "${pkgdir}/etc/tmpfiles.d/teleirc.conf"
+  install -Dm644 "${srcdir}/${_pkgname}/env.example" "${pkgdir}/etc/teleirc/example"
 }
+
