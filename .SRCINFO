@@ -12,7 +12,7 @@ pkgbase = berate_ap-git
 	depends = iptables
 	optdepends = haveged: boost low entropy
 	provides = berate_ap
-	backup = usr/lib/systemd/system/create_ap.service
+	backup = usr/lib/systemd/system/berate_ap.service
 	source = berate_ap-git::git+https://github.com/sensepost/berate_ap.git
 	sha256sums = SKIP
 
