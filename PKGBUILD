@@ -1,7 +1,7 @@
 # Maintainer: Nikola Tasić <nik at 7aske dot com>
 pkgname="rgs"
 pkgver="1.14.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Batch git repository analysis tool"
 arch=('x86_64')
 url="https://github.com/7aske/rgs"
@@ -24,9 +24,8 @@ build() {
 
 package() {
 	cd $pkgname-$pkgver
-	install -Dm 755 target/release/${pkgname} -t ${pkgdir}/usr/bin
-	[ ! -e "${pkgdir}/usr/bin/cgs" ] &&
-		ln -sf "${pkgdir}/usr/bin/rgs" "${pkgdir}/usr/bin/cgs"
+	install -Dm 755 target/release/${pkgname} -T ${pkgdir}/usr/bin/rgs
+	install -Dm 755 target/release/${pkgname} -T ${pkgdir}/usr/bin/cgs
 	install -Dm 644 README.md -t $pkgdir/usr/share/doc/${pkgname}
 	install -Dm 644 LICENSE -t $pkgdir/usr/share/licenses/${pkgname}
 }

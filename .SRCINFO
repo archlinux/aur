@@ -1,7 +1,7 @@
 pkgbase = rgs
 	pkgdesc = Batch git repository analysis tool
 	pkgver = 1.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7aske/rgs
 	arch = x86_64
 	license = GPL2
