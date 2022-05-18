@@ -11,7 +11,7 @@ pkgname=("${pkgbase}-git"
         )
 
 pkgver=0.14.0.r5.g4251006e
-pkgrel=1
+pkgrel=2
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -22,10 +22,8 @@ source=(
   'git+https://github.com/quassel/quassel.git'
   'git+https://github.com/quassel/quassel-i18n.git'
 )
-md5sums=(
-  'SKIP'
-  'SKIP'
-)
+md5sums=('SKIP'
+         'SKIP')
 ## Common build options
 _build_common=(
   -Wno-dev

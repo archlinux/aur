@@ -1,6 +1,6 @@
 pkgbase = quassel
 	pkgver = 0.14.0.r5.g4251006e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quassel-irc.org
 	arch = i686
 	arch = x86_64
