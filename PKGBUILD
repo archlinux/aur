@@ -12,28 +12,27 @@ makedepends=('git')
 optdepends=('i2c-tools: Motherboard & RAM access')
 provides=('openrgb')
 conflicts=('openrgb')
-source=("openrgb::git+https://gitlab.com/CalcProgrammer1/openrgb.git"
-        'openrgb.conf')
+source=("git+https://gitlab.com/CalcProgrammer1/OpenRGB.git"
+        openrgb.conf
+        openrgb.service)
 sha256sums=('SKIP'
-            'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2')
+            'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2'
+            '272dc43a77d0e48d29f32da753c7e05fd635883b173c21047f4eefa8bfc77938')
 
 pkgver() {
-    cd openrgb
+    cd OpenRGB
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/openrgb"
+    cd "$srcdir/OpenRGB"
     qmake OpenRGB.pro
     make
-    "."/scripts/build-udev-rules.sh "."
 }
 
 package() {
-    cd "$srcdir/openrgb"
-    install -Dm755 -t "$pkgdir"/usr/bin openrgb
-    install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/128x128 "."/qt/OpenRGB.png
-    install -Dm644 -t "$pkgdir"/usr/share/applications "."/qt/OpenRGB.desktop
-    install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d 60-openrgb.rules
-    install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d ".."/openrgb.conf
+    install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d "."/openrgb.conf
+    install -Dm644 -t "$pkgdir"/usr/lib/systemd/system "."/openrgb.service
+    cd OpenRGB
+    make INSTALL_ROOT="$pkgdir" install
 }
