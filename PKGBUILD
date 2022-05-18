@@ -23,7 +23,6 @@ depends=(
 makedepends=(
   'python-setuptools'
   'python-babel'
-  'python-pytest-runner'
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")

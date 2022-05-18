@@ -7,7 +7,6 @@ pkgbase = python-apprise
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-babel
-	makedepends = python-pytest-runner
 	depends = python-decorator
 	depends = python-requests
 	depends = python-requests-oauthlib
