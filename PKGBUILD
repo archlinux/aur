@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 install=gofu.install
 backup=('var/lib/gofu/config.ini')
-source=("https://git.roshless.me/~roshless/$pkgname/archive/$pkgver.tar.gz"
+source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"gofu.service"
 	"gofu.sysusers"
 	"gofu.tmpfiles")
