@@ -1,0 +1,12 @@
+pkgbase = omnisharp-vim-git
+	pkgdesc = Vim omnicompletion (intellisense) and more for C#.
+	pkgver = r1779.d322a70
+	pkgrel = 1
+	url = https://github.com/OmniSharp/omnisharp-vim
+	arch = any
+	license = MIT
+	depends = omnisharp-roslyn
+	source = git+https://github.com/OmniSharp/omnisharp-vim.git
+	md5sums = SKIP
+
+pkgname = omnisharp-vim-git
