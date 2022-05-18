@@ -1,6 +1,6 @@
 pkgbase = fortls
 	pkgdesc = A modern Language Server for Fortran.
-	pkgver = 2.2.4
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/gnikit/fortls
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fortls
 	depends = python-setuptools
 	provides = fortran-language-server
 	conflicts = fortran-language-server
-	source = https://github.com/gnikit/fortls/archive/refs/tags/v2.2.4.tar.gz
-	sha256sums = 2408bdacc7f638776721430716b7b82952c399adce0bfa139dd66a3e7bc42856
+	source = https://github.com/gnikit/fortls/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = 3638cb43c2b2a898ca49a88fadaf7cdcab6ff576797cda64aa12812dd311bc31
 
 pkgname = fortls
