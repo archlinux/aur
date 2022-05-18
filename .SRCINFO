@@ -1,7 +1,7 @@
 pkgbase = kingston_fw_updater
 	pkgdesc = Kingston's utility to update SSD firware on Sandforce based drives, created by James Huey. For more information please look the project's github page.
 	pkgver = 205
-	pkgrel = 010
+	pkgrel = 011
 	url = https://github.com/vinibali/kingston_fw_updater
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,7 @@ pkgbase = kingston_fw_updater
 	depends = lib32-libxext
 	depends = lib32-libxrender
 	depends = zlib
-	source = https://github.com/vinibali/kingston_fw_updater/archive/master.zip
-	md5sums = e06707340670e5b51ce571879c154f2a
+	source = https://gitlab.com/vinibali/kingston_fw_updater/-/archive/master/kingston_fw_updater-master.zip
+	md5sums = cc6c408219978c6f65b681a67caf1772
 
 pkgname = kingston_fw_updater
-
