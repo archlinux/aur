@@ -11,14 +11,14 @@
 
 _qt_module=qtwebglplugin
 pkgname=mingw-w64-qt5-webglplugin-static
-pkgver=5.15.3
+pkgver=5.15.4
 pkgrel=1
 arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static' 'mingw-w64-qt5-websockets-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=4318ad91c2a8bea3a0aaaa64aaf49d3b997e50a1
+_commit=df60c61e640dc4fb6be0d9565a4ab08aee054f93
 _basever=$pkgver
 pkgver+=+kde+r0
 makedepends+=('git')
