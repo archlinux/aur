@@ -1,0 +1,19 @@
+pkgbase = clipdl
+	pkgdesc = A simple script for downloading videos from linkss coppied to your primary clipboard
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/a4to/clipdl
+	arch = any
+	license = MIT
+	depends = yt-dlp
+	depends = dunst
+	depends = xclip
+	source = https://concise.cc/pkg/clipdl-1.1-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/clipdl-1.1-1-any.pkg.tar.zst.sig
+	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
+	md5sums = f495eef8d9cfda33306f8830fed10896
+	md5sums = 01c5e4b91860f146865b0b4da4354df5
+	sha512sums = 3cbc786c1dc44389517786b05ca363a193aca9d3e113f6d61814112cd58448f3ad803c723727f739a679a2d2fb28fa1bb319e48e7fd5be395cda5544e3cb4748
+	sha512sums = 7e8c74d237e6a3fd95387f76a817249d3ed57b73904e611ded34933ea87c23ef1cdadcd6b68078514689e62e993c792cbf5892e00c4848bcb9de1e91d9bf07cf
+
+pkgname = clipdl
