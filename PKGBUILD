@@ -1,23 +1,25 @@
-# Contributor: Erik Johnson <palehose at gmail dot com>
+# Maintainer: A.T.W.A. <arch.atwa@gmail.com>
 
 pkgname=libucl
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='Universal Config Language'
-arch=('i686' 'x86_64')
-url='https://github.com/vstakhov/libucl'
+pkgdesc="Universal configuration library parser"
+arch=('x86_64')
+url="https://github.com/vstakhov/libucl"
 license=('BSD')
 depends=('glibc')
-source=("https://github.com/vstakhov/libucl/archive/${pkgver}.tar.gz")
-sha256sums=('af361cd1f0b7b66c228a1c04a662ccaa9ee8af79842046c04446d915db349ee1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vstakhov/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('a6397e179672f0e8171a0f9a2cfc37e01432b357fd748b13f4394436689d24ef')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  ./autogen.sh && ./configure --prefix=/usr --sysconfdir=/etc && make
+    cd "${pkgname}-${pkgver}"
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+    install -D -m 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
