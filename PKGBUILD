@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=3.7.0
+pkgver=3.7.5
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 't
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt-git')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
@@ -33,6 +33,8 @@ _commit="tag=v$pkgver"
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
+    "tgcalls_type_fix.diff"
+    # Here are all the repos. See the commands above for populating them
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
     "dispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
@@ -69,6 +71,7 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
+            'd161ed9fc01dff6b9a0e812a7ea2f4ab8f03d96990706ba96d8e11f54f17e768a7aee97d9c9fc92279ccd70394c240864d8a7fb61987e5332b69a9dad544a1bf'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -154,7 +157,8 @@ prepare() {
     #    ln -s $fixed ${fixed/_fixed/}
     #done
     # Patch here, if needed!
-    # patch -Np1 -i "$srcdir/my_beautiful.patch"
+    cd "$srcdir/tdesktop/Telegram/ThirdParty/tgcalls"
+    patch -Np1 -i "$srcdir/tgcalls_type_fix.diff"
 
     # Official package patches
 }
