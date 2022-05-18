@@ -2,7 +2,7 @@
 
 pkgname=fleet-orbit
 pkgver=0.0.11
-pkgrel=4
+pkgrel=5
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
 url='https://github.com/fleetdm/fleet/tree/main/orbit'
@@ -32,7 +32,7 @@ build() {
   mkdir -p build
   go mod download
 
-  isodate="$(TZ=GMT date +'%Y-%m-%dT%H:%M:%SZ')"
+  isodate="$(TZ=UTC date +'%Y-%m-%dT%H:%M:%SZ')"
   importpath='github.com/fleetdm/fleet/v4/orbit/pkg/build'
   commitsha='716e06a7d388289f36a6b06b648a1594d9df1689'
 
