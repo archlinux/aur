@@ -8,6 +8,6 @@ pkgbase = linecounter-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-pip
-	md5sums = ‘SKIP’
+	md5sums = SKIP
 
 pkgname = linecounter-git
