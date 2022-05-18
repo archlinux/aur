@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libiconv
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 arch=(any)
 pkgdesc="Provides GNU libiconv.so and libcharset.so (mingw-w64)"
@@ -9,7 +9,7 @@ options=(!strip !buildflags staticlibs)
 license=("LGPL")
 url="http://www.gnu.org/software/libiconv/"
 source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz")
-md5sums=('7d2a800b952942bb2880efb00cfd524c')
+sha256sums=('8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -18,8 +18,7 @@ build() {
   cd "$srcdir/libiconv-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
-      --disable-nls
+    ${_arch}-configure --disable-nls
     make
     popd
   done

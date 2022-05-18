@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libiconv
 	pkgdesc = Provides GNU libiconv.so and libcharset.so (mingw-w64)
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = http://www.gnu.org/software/libiconv/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-libiconv
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz
-	md5sums = 7d2a800b952942bb2880efb00cfd524c
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz
+	sha256sums = 8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
 
 pkgname = mingw-w64-libiconv
-
