@@ -1,8 +1,8 @@
 pkgbase = znc-push-git
 	pkgdesc = A module for ZNC that sends notifications to push notification services
-	pkgver = v1.0.0.r167.5f95488
+	pkgver = 1.1.0.r0.b203070
 	pkgrel = 1
-	url = http://noswap.com/projects/znc-push
+	url = https://noswap.com/projects/znc-push
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -13,8 +13,7 @@ pkgbase = znc-push-git
 	makedepends = python
 	makedepends = cmake
 	depends = znc
-	source = znc-push-git::git+git://github.com/jreese/znc-push.git
+	source = znc-push-git::git+https://github.com/jreese/znc-push.git
 	md5sums = SKIP
 
 pkgname = znc-push-git
-

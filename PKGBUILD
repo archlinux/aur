@@ -1,20 +1,21 @@
 # Maintainer: Leela Ross <leela@leela-ross.com>
 # Maintainer: Ethan Skinner <aur@etskinner.com>
+# Maintainer: Dotz0cat <Dotz0cat@gmail.com>
 pkgname=znc-push-git
-pkgver=v1.0.0.r167.5f95488
+pkgver=1.1.0.r0.b203070
 pkgrel=1
 pkgdesc="A module for ZNC that sends notifications to push notification services"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://noswap.com/projects/znc-push"
+url="https://noswap.com/projects/znc-push"
 license=('MIT')
 depends=('znc')
 makedepends=('git' 'python' 'cmake')
-source=("${pkgname}::git+git://github.com/jreese/znc-push.git")
+source=("${pkgname}::git+https://github.com/jreese/znc-push.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
