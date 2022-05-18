@@ -3,12 +3,12 @@
 pkgname=obs-midi
 _pkgver=0.9.3-ALPHA-3.66
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-midi.1023/"
 license=("GPL2")
-depends=("obs-studio" "jack")
+depends=("obs-studio<28" "jack")
 makedepends=("cmake" "git")
 options=('debug')
 source=(
