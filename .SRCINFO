@@ -1,6 +1,6 @@
 pkgbase = proverbilo
 	pkgdesc = Montras hazardajn proverbaojn kaj diraĵojn en terminalo.
-	pkgver = c15b95f
+	pkgver = f570a97
 	pkgrel = 1
 	url = https://github.com/Fierthraix/proverbilo
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = proverbilo
 	sha1sums = SKIP
 
 pkgname = proverbilo
-

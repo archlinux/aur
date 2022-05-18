@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=proverbilo
-pkgver=c15b95f
+pkgver=f570a97
 pkgrel=1
 pkgdesc="Montras hazardajn proverbaojn kaj diraĵojn en terminalo."
 arch=('any')
