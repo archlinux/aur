@@ -1,8 +1,8 @@
 pkgbase = lib32-alure
 	pkgdesc = Utility library to help manage common tasks with OpenAL applications (32-bit)
 	pkgver = 1.2
-	pkgrel = 7
-	url = https://kcat.strangesoft.net/alure.html
+	pkgrel = 8
+	url = https://kcat.tomasu.net/alure.html
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -10,6 +10,7 @@ pkgbase = lib32-alure
 	makedepends = lib32-libvorbis
 	makedepends = lib32-flac
 	makedepends = lib32-mpg123
+	makedepends = lib32-dumb
 	makedepends = lib32-fluidsynth
 	depends = lib32-openal
 	depends = alure
@@ -17,11 +18,13 @@ pkgbase = lib32-alure
 	optdepends = lib32-libvorbis: for OGG Vorbis support
 	optdepends = lib32-flac: for FLAC support
 	optdepends = lib32-mpg123: for MPEG support
+	optdepends = lib32-dumb: for IT, XM, S3M and MOD support
 	optdepends = lib32-fluidsynth: for SoundFont 2 support
-	source = https://src.fedoraproject.org/lookaside/pkgs/alure/alure-1.2.tar.bz2/3088aba074ad02d95ea51e705053b9f5/alure-1.2.tar.bz2
+	source = https://kcat.tomasu.net/alure-releases/alure-1.2.tar.bz2
 	source = build.patch
+	source = dumb-2.patch
 	md5sums = 3088aba074ad02d95ea51e705053b9f5
 	md5sums = 6a8dfd62ccae920d393b4202736aba46
+	md5sums = f6569e1fee4015a9e0a68df37798c8aa
 
 pkgname = lib32-alure
-
