@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio
-pkgver=0.8.9.17
+pkgver=0.8.9.18
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-dnspython' 'python-requests' 'python-psutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('python-pip' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/coderholic/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('aecd8e11c5745593ca5aa63abecd88828ecef537e683c0477e73b76682bb063e')
+sha256sums=('da28f6202fa955cd1177e9a6d0e8708414962748c7f62b212d439c6d9bd700c3')
 
 prepare() {
   cd $pkgname-$pkgver
