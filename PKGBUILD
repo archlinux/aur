@@ -3,9 +3,9 @@
 
 _pkgname=python-rssd
 pkgname=${_pkgname}-usermode
-_commit=54b6441
+_commit=07ab815
 pkgver=1.${_commit}
-pkgrel=3
+pkgrel=1
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('any')
