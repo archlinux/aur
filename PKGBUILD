@@ -2,7 +2,7 @@
 # Contributor: csicar
 # Based on: https://github.com/yochananmarqos/pkgbuilds/blob/master/fx_cast-bin/PKGBUILD
 pkgname=fx_cast-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=3
 pkgdesc="Implementation of the Google Cast Chrome Sender SDK within Firefox "
 arch=('x86_64')
@@ -13,9 +13,9 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 install="${pkgname%-bin}.install"
-source=("https://github.com/hensm/fx_cast/releases/download/v0.1.0/fx_cast_bridge-0.1.0-x64.deb"
+source=("https://github.com/hensm/fx_cast/releases/download/v0.2.0/fx_cast_bridge-0.2.0-x64.deb"
         "https://raw.githubusercontent.com/hensm/fx_cast/v$pkgver/LICENSE")
-sha512sums=('0cad784281f46c3b6d2818b3de8823afe6d935a2108ed6de3b06a28db20f0a751f530657c59c9cdc7235c6c3a0463a9d0f5d072c67a0081d029bb05116d14168'
+sha512sums=('e8408663540d7474cb710f743263736ad02de36c2bc3c2546a2b15e022e75d5a192eb61786e59da11657a90e01e2f9f4564934b1ed11ecc85f048b174289d51d'
             '342096561c04ea9b85db0bb6f365bd448afbf7ce8f80e3dc35e26c303358b45bf6d19dc4e4bfbb20e52685fcfd8a650a27071387cdc4761a0365c66f427d8992')
 
 package(){
