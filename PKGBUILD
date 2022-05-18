@@ -3,7 +3,7 @@
 # Maintainer: sgtxd <mark@sgtxd.de>
 # Latest Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffmpeg-compat-57
-pkgver=3.4.10
+pkgver=3.4.11
 pkgrel=1
 options=('!lto')
 pkgdesc="Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
@@ -25,7 +25,7 @@ provides=('libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6'
           'libpostproc.so=54' 'libswresample.so=2' 'libswscale.so=4')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "fs56089.patch")
-sha256sums=('aafb865e09f3b79e7cc8f3b2d6569b6a592a7b606b65d08d0a407e52da193f13'
+sha256sums=('9c310072bcdcc78a1ee82a36b2b6e648b21dd2e790618200e45876d4d96e32e6'
             'SKIP'
             '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
