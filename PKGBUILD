@@ -4,12 +4,12 @@ _pluginname=source-copy
 pkgname=obs-$_pluginname
 pkgver=0.1.4
 _obsver=27.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy and paste scenes, sources and filters on clipboard"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-copy.1261/"
 license=("GPL2")
-depends=("obs-studio>=$_obsver")
+depends=("obs-studio>=$_obsver" "obs-studio<28")
 makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=822650ce6b471b37d9b9169ea212b0bab245316c"
