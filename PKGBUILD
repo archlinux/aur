@@ -2,12 +2,12 @@
 
 pkgname=obs-audio-pan-filter
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="This is a simple plugin to control stereo pan of audio source in OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/audio-pan-filter.1042/"
 license=("GPL2")
-depends=("obs-studio")
+depends=("obs-studio<28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
