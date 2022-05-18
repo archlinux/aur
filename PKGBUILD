@@ -1,6 +1,6 @@
 pkgname=monitorfs
 pkgdesc="Monitor filesystem, Do something on some filesystem event"
-pkgver=v0.0.1.r2.g9b4417c
+pkgver=v0.0.1.r3.ge9dd4ea
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
@@ -26,7 +26,7 @@ prepare(){
 check(){
   cd "${srcdir}/MonitorFileSystem"
   PATH="${srcdir}/dotnet-sdk:${PATH}"
-  dotnet test ./tests/MonitorFileSystem.Tests/MonitorFileSystem.Tests.csproj -c "Release"
+  dotnet test ./tests/MonitorFileSystem.Tests/MonitorFileSystem.Tests.csproj -c "Release" --nologo
 }
 build(){
   cd "${srcdir}/MonitorFileSystem"
@@ -44,11 +44,18 @@ package(){
   mkdir -p "${pkgdir}/opt/monitorfs"
   mkdir -p "${pkgdir}/opt/monitorfsc"
   mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/etc/monitorfs"
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+
   cd "${srcdir}/MonitorFileSystem/service-out"
   cp -a * "${pkgdir}/opt/monitorfs"
   cd "${srcdir}/MonitorFileSystem/client-out"
   cp -a * "${pkgdir}/opt/monitorfsc"
 
+  cd "${srcdir}/MonitorFileSystem/systemd"
+  cp -a * "${pkgdir}/usr/lib/systemd/system"
+
   ln -sf /opt/monitorfs/MonitorFileSystem "${pkgdir}/usr/bin/monitorfs"
   ln -sf /opt/monitorfsc/MonitorFileSystem.Client "${pkgdir}/usr/bin/monitorfsc"
+  ln -sf /opt/monitorfs/appsettings.json "${pkgdir}/etc/monitorfs/appsettings.json"
 }
