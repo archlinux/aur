@@ -2,12 +2,12 @@
 
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
-_electron=electron12
+_electron=electron17
 depends=("$_electron"
          fuse2
          uucp)
@@ -17,23 +17,24 @@ makedepends=(git
              node-gyp
              yarn)
 _archive="${pkgname^}-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname.sh")
-sha256sums=('5c82cb42a1783132be5d65dd5881c4216ef512eb86f9e908169c1addac836223'
+sha256sums=('bc65b2b17ddb2ac4fa810cf9987c621638b6005991fe5c2fe6d609a8ef343bf4'
             '9de3ff052ca4600862b8663b93bf2b4223cf2e637995c67e1fe4cb4ed893b39f')
+
+_yarnargs="--cache-folder '$srcdir/node_modules'"
 
 prepare() {
 	local _electronVersion=$($_electron --version | sed -e 's/^v//')
 	cd "$_archive"
-	sed -i -e '/plugin:prettier/d' .eslintrc.js
 	jq 'del(.devDependencies["electron"])' package.json | sponge package.json
-	yarn --cache-folder "$srcdir/node_modules" install --frozen-lockfile --ignore-scripts
-	yarn --cache-folder "$srcdir/node_modules" add -D --no-lockfile --ignore-scripts electron@$_electronVersion
+	yarn $_yarnargs install --frozen-lockfile --ignore-scripts
+	yarn $_yarnargs add -D --no-lockfile --ignore-scripts electron@$_electronVersion
 }
 
 build() {
 	cd "$_archive"
-	yarn --cache-folder "$srcdir/node_modules" run build:linux
+	yarn $_yarnargs run build:linux
 }
 
 package() {
