@@ -1,6 +1,6 @@
 pkgbase = python-plover_stroke
 	pkgdesc = Helper class for working with steno strokes.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://github.com/benoit-pierre/plover_stroke
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-plover_stroke
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-plover_stroke-1.0.1.tar.gz::https://github.com/benoit-pierre/plover_stroke/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 135c17055ea6884bc5caa03bee0431977e48a5d085bd9f34be07969531595520
+	source = python-plover_stroke-1.1.0.tar.gz::https://github.com/benoit-pierre/plover_stroke/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 9c5e01ff594a822424562dd12c60aa0dfc66eb4a0060a16c57c7ab12f04825c4
 
 pkgname = python-plover_stroke
