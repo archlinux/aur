@@ -49,7 +49,7 @@ _hpn_ver=hpn17v0
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=6
+pkgrel=7
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -74,14 +74,6 @@ source=(
 
   'sshd.pam'
   'sshd.conf'
-)
-backup=(
-  'etc/ssh/ssh_config'
-  'etc/ssh/sshd_config'
-  'etc/pam.d/sshd'
-  'etc/hpnssh/ssh_config'
-  'etc/hpnssh/sshd_config'
-  'etc/pam.d/hpnsshd'
 )
 
 sha512sums=(
@@ -128,8 +120,6 @@ b3sums=(
   'f417610d7bdc942b79ee6fcc59c37e3d68ca09069a021e62a33fabe259dcc3af'
   '50ac93718a139e60fbda1cf54a531f0053f05f61f62f398573770da047babed7'
 )
-
-install="${pkgname}.install"
 
 prepare() {
   cd "${srcdir}/openssh-portable-hpn-${_pkgver}/"
@@ -190,11 +180,17 @@ build() {
 #}
 
 package_openssh-hpn() {
+  install="openssh-hpn.install"
+  backup=(
+    'etc/hpnssh/ssh_config'
+    'etc/hpnssh/sshd_config'
+    'etc/pam.d/hpnsshd'
+  )
   cd "${srcdir}/openssh-portable-hpn-${_pkgver}/"
 
   make DESTDIR="${pkgdir}" install
 
-  #ln -sf hpnssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
+  pushd "${pkgdir}/usr/share/man/man1" &>/dev/null; ln -sf hpnssh.1.gz slogin.1.gz; popd &>/dev/null
   install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 
   install -Dm644 ../hpnsshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/hpnsshdgenkeys.service
@@ -218,22 +214,39 @@ package_openssh-hpn-shim(){
   depends=('openssh-hpn')
   provides=('openssh')
   conflicts=('openssh' 'openssh-hpn-git')
+  install="openssh-hpn-shim.install"
+  backup=(
+    'etc/ssh/ssh_config'
+    'etc/ssh/sshd_config'
+    'etc/pam.d/sshd'
+  )
 
   cd "${srcdir}/openssh-portable-hpn-${_pkgver}/"
 
-  install -dm0755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/ssh";
-  pushd "${pkgdir}/usr/bin"
-  for i in findssl.sh scp sftp ssh ssh-add ssh-agent ssh-copy-id ssh-keygen ssh-keyscan sshd; do
-    ln -s "hpn${i}" "${i}"
-  done; popd
-  pushd "${pkgdir}/usr/lib/ssh"
+  install -dm0755 "${pkgdir}/usr/bin" "${pkgdir}/usr/share/man/man1"
+  for i in scp sftp ssh ssh-add ssh-agent ssh-copy-id ssh-keygen ssh-keyscan; do
+    pushd "${pkgdir}/usr/bin" &>/dev/null; ln -s "hpn${i}" "${i}"; popd &>/dev/null
+    pushd "${pkgdir}/usr/share/man/man1" &>/dev/null; ln -s "hpn${i}.1.gz" "${i}.1.gz"; popd &>/dev/null
+  done
+  pushd "${pkgdir}/usr/bin" &>/dev/null; for i in findssl.sh sshd; do ln -s "hpn${i}" "${i}"; done; popd &>/dev/null
+
+  install -dm0755 "${pkgdir}/usr/lib/ssh" "${pkgdir}/usr/share/man/man8"
   for i in sftp-server ssh-keysign ssh-pkcs11-helper ssh-sk-helper; do
-    ln -s "../hpnssh/hpn${i}" "${i}"
-  done; popd
+    pushd "${pkgdir}/usr/lib/ssh" &>/dev/null; ln -s "../hpnssh/hpn${i}" "${i}"; popd &>/dev/null
+    pushd "${pkgdir}/usr/share/man/man8" &>/dev/null; ln -s "hpn${i}.8.gz" "${i}.8.gz"; popd &>/dev/null
+  done
+  pushd "${pkgdir}/usr/share/man/man8" &>/dev/null; ln -s "hpnsshd.8.gz" "sshd.8.gz"; popd &>/dev/null
+
+  install -dm0755 "${pkgdir}/usr/share/man/man5" "${pkgdir}/etc/ssh"
+  for i in moduli ssh_config sshd_config; do
+    pushd "${pkgdir}/usr/share/man/man5" &>/dev/null; ln -s "hpn${i}.5.gz" "${i}.5.gz"; popd &>/dev/null
+
+    # apparently configs need to exist in target package for pacman to not stomp
+    # them, instead of following previous package's `backup` entry *on removal*
+    pushd "${pkgdir}/etc/ssh" &>/dev/null; ln -s "../hpnssh/${i}" "${i}"; popd &>/dev/null
+  done
 
   install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
   install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
   install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
-
-  install -Dm644 contrib/hpnssh-copy-id.1 "${pkgdir}"/usr/share/man/man1/ssh-copy-id.1
 }

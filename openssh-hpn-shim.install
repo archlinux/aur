@@ -1,0 +1,46 @@
+pre_upgrade() {
+  # Remove socket activation. See: https://bugs.archlinux.org/task/62248
+  if (( "$(vercmp $2 8.0p1-3)" < 0 )); then
+    if systemctl is-enabled -q "sshd.socket"; then
+      cat <<EOF
+==> This package no longer provides sshd.socket and sshd@.service;
+==> copies of those files will be placed under /etc/systemd/system
+==> but please migrate to sshd.service whenever possible.
+EOF
+      for i in "sshd.socket" "sshd@.service"; do
+        if [[ ! -e "/etc/systemd/system/${i}" ]]; then
+          cp -v "/usr/lib/systemd/system/${i}" "/etc/systemd/system/${i}"
+        fi
+      done
+      systemctl reenable "sshd.socket"
+    fi
+  fi
+}
+
+post_install() {
+  cat <<'EOF'
+============== B L A R I N G  W A R N I N G  S I R E N  H E R E ================
+Be warned, that in order to not outright stomp out existing sshd config files
+this package is forced to symlink it's own in upstream's location.
+
+If the user has altered any of that configuration prior, be sure to replace them
+with *.pacsave backups!
+
+Thanks, Pacman.
+============== B L A R I N G  W A R N I N G  S I R E N  H E R E ================
+EOF
+}
+
+post_upgrade() {
+  post_install
+
+  if (( $(vercmp $2 8.2p1-3) < 0 )); then
+    if systemctl is-active "sshd.service" >/dev/null; then
+      cat <<EOF
+==> After this upgrade, your existing SSH daemon may be unable to accept
+==> new connections. To fix this, your SSH daemon will now be restarted.
+EOF
+      systemctl restart "sshd.service"
+    fi
+  fi
+}
