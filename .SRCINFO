@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-minizip
-	pkgdesc = ZIP file extraction library (mingw-w64)
-	pkgver = 1.2.11
+	pkgdesc = Mini zip and unzip based on zlib (mingw-w64)
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://www.zlib.net/
 	arch = any
@@ -10,11 +10,10 @@ pkgbase = mingw-w64-minizip
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://zlib.net/zlib-1.2.11.tar.gz
-	source = https://zlib.net/zlib-1.2.11.tar.gz.asc
+	source = https://zlib.net/zlib-1.2.12.tar.gz
+	source = https://zlib.net/zlib-1.2.12.tar.gz.asc
 	validpgpkeys = 5ED46A6721D365587791E2AA783FCD8E58BCAFBA
-	md5sums = 1c9f62f0778697a09d36121ead88e08e
-	md5sums = SKIP
+	sha256sums = 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
+	sha256sums = SKIP
 
 pkgname = mingw-w64-minizip
-
