@@ -1,7 +1,7 @@
 pkgbase = python-matplotx
 	pkgdesc = Useful styles and extensions for Matplotlib
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://github.com/nschloe/matplotx
 	arch = any
 	license = MIT
@@ -9,14 +9,13 @@ pkgbase = python-matplotx
 	checkdepends = python-imageio
 	checkdepends = python-networkx
 	checkdepends = python-pypng
-	checkdepends = python-scikit-fem
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-install
 	depends = python-matplotlib
 	optdepends = python-networkx: for creation of graphs
 	optdepends = python-pypng: for iterator support
-	source = https://pypi.org/packages/source/m/matplotx/matplotx-0.3.6.tar.gz
-	sha512sums = 3ae45f52e448ae7df702b3d1611e72845766a34b7a74578ee0ad6339eedc37f0dd021a2a23ecb17c362aa8c1df187125c9d86281e49974aa9c7be497ff602f52
+	source = https://pypi.org/packages/source/m/matplotx/matplotx-0.3.7.tar.gz
+	sha512sums = 527a92863e9de5dbff70625afc693e814e8d34d16f48c25d437d8eba6dcf094e71f742a8af5c4281d09e6908f331b25bbd55b98290352a2d68ea31fc7063969f
 
 pkgname = python-matplotx
