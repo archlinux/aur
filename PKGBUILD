@@ -3,7 +3,7 @@
 
 pkgname=rvgl-bin
 pkgver=21.0930a
-_gamefilesver=18.0328
+_gamefilesver=21.0715
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.org'

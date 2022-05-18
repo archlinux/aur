@@ -24,7 +24,7 @@ pkgbase = rvgl-bin
 	optdepends = flac: for FLAC support
 	optdepends = mpg123: for MPEG support
 	optdepends = fluidsynth: for SoundFont 2 support
-	source = rvgl_game_files::git+https://gitlab.com/re-volt/game_files.git#tag=18.0328
+	source = rvgl_game_files::git+https://gitlab.com/re-volt/game_files.git#tag=21.0715
 	source = rvgl_assets::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=21.0930a
 	source = rvgl_platform::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=21.0930a
 	source = RVGL.desktop
