@@ -14,7 +14,7 @@ url='hhttps://www.substance3d.com/'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
-source=("https://download.substance3d.com/substance-player/11.x/Substance_Player-${pkgver}-${_build}-linux-x64-standard.rpm")
+source=("https://download.substance3d.com/substance-player/12.x/Substance_Player-${pkgver}-${_build}-linux-x64-standard.rpm")
 
 sha256sums=('d4bf31b9ae163183012d9d4f4d793b904df22ee1b34c9ccf30c7cd8cc850b888')
 
