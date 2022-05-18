@@ -2,8 +2,8 @@
 # Contributor: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="https://github.com/mavlink/qgroundcontrol"
@@ -73,7 +73,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
         "gst-volatile.patch::https://patch-diff.githubusercontent.com/raw/mavlink/gst-plugins-good/pull/1.patch"
 )
 
-sha256sums=('99b12eb7cee960e9a654efa20997b149b743aa27f0fdbe77f2148bd3adbe08c7'
+sha256sums=('413662eb96d4275dac30cee3761d35df4d49d62567b6e7424a0626ccfb0d37b6'
             '30e7924bf96724e0854dc461df131f24ce2221f4aa22c69e43ace34e2699b2d2'
             '0fa24d921e5ead2d5fe405fff2ac9bb167b155cd767ba42a9f613ddb44d7e4ae'
             'afb3090975a7da881ff0c8577d13777de5703f71859a5cf8b05387f790bc0748'
