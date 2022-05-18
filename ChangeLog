@@ -387,3 +387,19 @@ Fixes:
 - We resolved an issue while moving an event from one calendar to another. Before, the event was often not deleted from the old calendar, thus resulting in a duplicate.
 - We fixed a couple of small glitches, with Tasks and Scheduling Links.
 - We fixed a bug causing inconsistent calendar names in different parts of the Morgen app interface.
+
+=== Morgen 2.5.5
+New Features:
+- Flexible Week: Sometimes you want to focus on the near future, sometimes you want to plan ahead. For every use case, Morgen now allows you to quickly customize your week view to display 1 to 10 days. Use Command+number on macOS and CTRL+number on Linux and Windows.
+- Consistent with the Todoist integration, Morgen now displays subtasks from Microsoft To Do.
+
+Improvements:
+- Improved visualization of calendar events that end at midnight.
+- It's now possible to switch calendar views using shortcuts when creating or editing a one-time link.
+
+Fixes:
+- Automatic logouts on Linux using Snaps
+- Google Meet links now correctly redirect to the default browser.
+- Fixed some formatting issues in the scheduling link reminders.
+- Morgen no longer sends out outdated reminders for booked meetings that have been cancelled or rescheduled by the organizer.
+
