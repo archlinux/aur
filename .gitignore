@@ -2,4 +2,6 @@
 !/.gitignore
 !/PKGBUILD
 !/.SRCINFO
-!/hydroxide.service
+!/hydroxide.sysusers
+!/system.service
+!/user.service

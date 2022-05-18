@@ -1,0 +1,12 @@
+[Unit]
+Description=A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
+Wants=network.service
+
+[Service]
+User=hydroxide
+Environment=XDG_CONFIG_HOME=/etc
+ExecStart=/usr/bin/hydroxide serve
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
