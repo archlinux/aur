@@ -1,41 +1,71 @@
 pre_install() {
-	if [[ ! -f "/usr/share/gtk-4.0/settings.ini" ]]
-	then
-		echo "### ERROR: /usr/share/gtk-4.0/settings.ini doesn't exist."
-		exit 1
-	fi
+    if [[ ! -f "/usr/share/gtk-4.0/settings.ini" ]]
+    then
+        echo "### ERROR: /usr/share/gtk-4.0/settings.ini doesn't exist."
+        exit 1
+    fi
+
+    if [[ ! -f "/usr/share/gtk-3.0/settings.ini" ]]
+    then
+        echo "### ERROR: /usr/share/gtk-3.0/settings.ini doesn't exist."
+        exit 1
+    fi
 }
 
 post_install() {
-	if [[ ! -f "/usr/share/gtk-4.0/settings-old.ini" ]]
-	then
-		echo "Renaming settings.ini to settings-old.ini."
-		mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
-	fi
+    # GTK 4
+    if [[ ! -f "/usr/share/gtk-4.0/settings-old.ini" ]]
+    then
+        echo "Renaming gtk-4.0/settings.ini to gtk-4.0/settings-old.ini."
+        mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
+    fi
 
-	echo "Installing modified config to settings.ini."
-	mv /usr/share/gtk-4.0/settings-modified.ini /usr/share/gtk-4.0/settings.ini
+    echo "Installing modified config to gtk-4.0/settings.ini."
+    cp /etc/blurry-text-fix/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings.ini
 
-	if [[ -f "/usr/bin/flatpak" ]]
-	then
-		echo "Flatpak found! Overriding flatpak.."
-		flatpak override --filesystem=xdg-config/gtk-4.0
-	fi
+    if [[ -f "/usr/bin/flatpak" ]]
+    then
+        echo "Flatpak found! Overriding flatpak for GTK 4.0.."
+        flatpak override --filesystem=xdg-config/gtk-4.0
+    fi
+    
+    # GTK 3
+    if [[ ! -f "/usr/share/gtk-3.0/settings-old.ini" ]]
+    then
+        echo "Renaming gtk-3.0/settings.ini to gtk-3.0/settings-old.ini."
+        mv /usr/share/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings-old.ini
+    fi
 
-	echo "The new config file is stored in /usr/share/gtk-4.0/settings.ini."
-	echo "### Done. Please relog to apply changes."
+    echo "Installing modified config to gtk-3.0/settings.ini."
+    cp /etc/blurry-text-fix/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings.ini
+
+    if [[ -f "/usr/bin/flatpak" ]]
+    then
+        echo "Flatpak found! Overriding flatpak for GTK 3.0.."
+        flatpak override --filesystem=xdg-config/gtk-3.0
+    fi
+
+    echo "INFO: Your backup file is in /usr/share/gtk-<version>/settings-old.ini"
+    echo "INFO: If you want to edit settings.ini, then edit this file /etc/blurry-text-fix and then run blurry-text-fix-reload"
+    echo "### Done. Please relog to apply changes."
+
 }
 
 post_upgrade() {
-	echo "### Please ignore file information warnings."
-	post_install
+    echo "### Please ignore the file information warnings."
+    post_install
 }
 
 post_remove() {
-	echo "Removing modified settings.ini."
-	rm /usr/share/gtk-4.0/settings.ini
-	echo "Restoring old settings.ini."
-	mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
-	echo "The old config file is stored in /usr/share/gtk-4.0/settings.ini."
-	echo "### Done. Please relog to apply changes."
+    echo "Removing modified gtk-4.0/settings.ini."
+    rm /usr/share/gtk-4.0/settings.ini
+    echo "Restoring old gtk-4.0/settings.ini."
+    mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
+    echo "Removing modified gtk-3.0/settings.ini."
+    rm /usr/share/gtk-3.0/settings.ini
+    echo "Restoring old gtk-3.0/settings.ini."
+    mv /usr/share/gtk-3.0/settings-old.ini /usr/share/gtk-3.0/settings.ini
+
+    echo "The old config file is stored in /usr/share/gtk-<version>/settings.ini."
+    echo "### Done. Please relog to apply changes."
 }
