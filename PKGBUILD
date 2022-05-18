@@ -2,9 +2,9 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=8.8.4
-_pkgtimestamp=1525200006884
-_pkgbuild=17
+pkgver=10.0.0
+_pkgtimestamp=15252000061000
+_pkgbuild=303
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -20,7 +20,7 @@ source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('65662a9bfd3f598faad2a42f14a22aa6a66300e6'
+sha1sums=('713a58ae2977fa22e85a6b3f3a845b74bfe6908e'
           'f73e2b1155744594303d81b394031159e248654c'
           'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'          
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
@@ -64,6 +64,7 @@ package() {
 
   # As arch isnt a recognised flavour we manually extract the so files
   cp nlib/common/* nlib/
+  cp nlib/ubuntu20/libuaw.so nlib/
   rm -rf nlib/{rhel7,rhel8,ubuntu18,ubuntu20,common}
 
   sed -i "s|<manifestPath.*</manifestPath>|<manifestPath>/opt/$_pkgname/manifest</manifestPath>|g" $pkgdir/opt/$_pkgname/conf/default.service.xml
