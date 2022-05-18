@@ -1,4 +1,4 @@
-From 36f1d2408585cb82ee53f06c7c3fd745ee5e9ff8 Mon Sep 17 00:00:00 2001
+From 765559b1ba5f1829ca61feb9001d06bf79c960ca Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
 Subject: [PATCH 16/33] Enable rpath for build tools
@@ -33,5 +33,5 @@ index 8354f30eea..30e8cf18c5 100644
  INSTALLS += target
  
 -- 
-2.36.0
+2.36.1
 
