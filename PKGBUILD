@@ -10,14 +10,14 @@
 
 _qt_module=qtwebsockets
 pkgname=mingw-w64-qt5-websockets-static
-pkgver=5.15.3
+pkgver=5.15.4
 pkgrel=1
 arch=('any')
 pkgdesc="Provides WebSocket communication compliant with RFC 6455 (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=7196d2cc34adf9f45b50a9488f4ff95b36092993
+_commit=6a4991250793cd38efa5e8db858cd49c82439130
 _basever=$pkgver
 pkgver+=+kde+r3
 makedepends+=('git')
