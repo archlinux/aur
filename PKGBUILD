@@ -8,7 +8,7 @@ url='https://git.roshless.me/~roshless/mumbledj'
 arch=('x86_64' 'i686')
 license=('MIT')
 install=mumbledj.install
-source=("https://git.roshless.me/~roshless/$pkgname/archive/$pkgver.tar.gz"
+source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"mumbledj.service"
 	"mumbledj.sysusers"
 	"mumbledj.tmpfiles")
