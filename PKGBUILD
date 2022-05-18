@@ -14,7 +14,7 @@ checkdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MustachedSquid/Pacman-ZFS-Hook/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("4904be067b5db9576b1516519305a2511312b3c9fd9d9895a985211682ecb2ff")
+sha256sums=("c1b7f65d216015281d7ff5421af729a62fee7d38b5f67548cdf3c10a6ff36a9a")
 
 package() {
 	cd "$pkgname-$pkgver"
