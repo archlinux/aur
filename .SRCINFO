@@ -1,13 +1,13 @@
 pkgbase = phrase-cli
 	pkgdesc = Phrase CLI tool
-	pkgver = 2.4.9
+	pkgver = 2.4.10
 	pkgrel = 1
 	url = https://phrase.com/cli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/phrase/phrase-cli/archive/refs/tags/2.4.9.tar.gz
-	sha256sums = b8f06bdab6034b3c83a5ecf78239653073652a058b4ebb2576a9ac39af00c1f8
+	source = https://github.com/phrase/phrase-cli/archive/refs/tags/2.4.10.tar.gz
+	sha256sums = 46a7783f5db2372c523d267bf1b3eed811993b2a2e8469cabd5ea4746c6844b8
 
 pkgname = phrase-cli
