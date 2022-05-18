@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qgis
-pkgver=3.24.1
+pkgver=3.24.3
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats (mingw-w64)'
 url='https://qgis.org/'
@@ -9,7 +9,7 @@ depends=('mingw-w64-protobuf' 'mingw-w64-qt5-3d' 'mingw-w64-qt5-imageformats' 'm
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://qgis.org/downloads/qgis-$pkgver.tar.bz2")
-sha256sums=('20cc5c47fb9463e82c72ac77122b77849f04f6fb64314ac5fe6d0069dd0d5c11')
+sha256sums=('fc9fa28e10c32773f49f1de0c52a35a393060acd6f799d6926f08e96fbaf2b4e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
