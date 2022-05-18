@@ -2,11 +2,11 @@
 
 _gitname=ton
 pkgname=ton-git
-pkgver=r205.9875f02
-pkgrel=4
+pkgver=rr174.db3619e
+pkgrel=1
 pkgdesc='The next gen network to unite all blockchains and the existing Internet'
 arch=('any')
-url='https://github.com/newton-blockchain/ton'
+url='https://github.com/ton-blockchain/ton'
 license=('GPL')
 depends=()
 makedepends=('git'
@@ -14,7 +14,7 @@ makedepends=('git'
              'gsl')
 provides=('ton')
 conflicts=('ton')
-source=('git+https://github.com/newton-blockchain/ton.git'
+source=('git+https://github.com/ton-blockchain/ton.git'
         'git+https://github.com/abseil/abseil-cpp.git'
         'git+https://github.com/google/crc32c.git'
         'git+https://github.com/ton-blockchain/libRaptorQ.git'
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "rr%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -45,12 +45,13 @@ prepare() {
     sed -i 's/find_package(Threads REQUIRED)/\0\nfind_package(GSL REQUIRED)/' ./CMakeLists.txt
     sed -i 's/find_package(LATEX)//' ./CMakeLists.txt
     sed -i 's/#include <array>/\0\n#include <stdexcept>\n#include <limits>/' ./third-party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+    sed -i 's/target_link_libraries(rldp2 PRIVATE gsl)/target_link_libraries(rldp2 PRIVATE gsl gslcblas)/' ./rldp2/CMakeLists.txt
 }
 
 build() {
     cd build
 
-    cmake "../$_gitname" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release
+    cmake "../$_gitname" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release -DWITH_LIBURING=0
     make -j $(nproc)
 }
 
