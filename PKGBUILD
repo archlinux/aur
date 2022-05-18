@@ -1,14 +1,14 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
-pkgver=r1514.a46e98d31672ca3732cc
+pkgver=r1578.abccd1790d1130ea6f6a
 pkgrel=1
 pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
 license=(GPL3)
 arch=(x86_64)
 depends=(pkgconf curl zlib libarchive)
-makedepends=(git scdoc)
+makedepends=(git scdoc ninja)
 conflicts=()
 provides=(muon)
 source=("git+https://git.sr.ht/~lattis/muon")
