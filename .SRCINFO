@@ -1,7 +1,7 @@
 pkgbase = pinktrace-1
 	pkgdesc = Lightweight ptrace() wrapper library
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pinktrace.exherbo.org/
 	arch = x86_64
 	license = custom:BSD
