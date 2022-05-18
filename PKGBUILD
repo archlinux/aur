@@ -12,6 +12,7 @@ pkgdesc='IT, XM, S3M and MOD player library'
 arch=(x86_64)
 license=(custom:dumb GPL)
 url='https://dumb.sf.net/'
+depends=('lib32-glibc' $_pkgbasename)
 makedepends=(cmake ninja)
 source=($_pkgbasename-$pkgver.tar.gz::"https://github.com/kode54/dumb/archive/$pkgver.tar.gz")
 sha256sums=('99bfac926aeb8d476562303312d9f47fd05b43803050cd889b44da34a9b2a4f9')
