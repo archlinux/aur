@@ -9,7 +9,7 @@
 
 pkgname=pyinstaller
 _pkgname=pyinstaller
-pkgver=5.0.1
+pkgver=5.1
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64' 'i686' 'aarch64')
@@ -30,9 +30,9 @@ _pkg_whlname_aarch64="${_pkg_whlname_prefix}_aarch64.whl"
 source_x86_64=("$_py_hosted_url/$_pkgname_prefix/$_pkgname/$_pkg_whlname_x86_64")
 source_i686=("$_py_hosted_url/$_pkgname_prefix/$_pkgname/$_pkg_whlname_i686")
 source_aarch64=("$_py_hosted_url/$_pkgname_prefix/$_pkgname/$_pkg_whlname_aarch64")
-sha512sums_x86_64=('60efdd42e2dfdc30310db0179f5901a6db1edec9b3b665f3b7a444235e8378b7406629bc932561a232391fab04a332af48af51a7de609f4543f3193ed25e9964')
-sha512sums_i686=('dde208341bdf5b8dc44d8b9d80fe9628583dce08661a0296a84fda2a41daad618a468469f367ee30face1dba2bf062597235f89dd6602cb37863bc28f14f4fc1')
-sha512sums_aarch64=('d254d9a061056031a562277a3f9e62d0e4eabc343c8f0381b58ee6de65cb471d02ac83e4af179514f047ccb8237c3a01e99b0e857e1340affa68266d043b4044')
+sha512sums_x86_64=('224e006440a07df946bb85cb178c1939c1e93001c969e9c6a60b15cd0eba53830ac2e740952f241e9f6f45e6d6457c80e18659b7209747dd6c3724c803f4c315')
+sha512sums_i686=('74792ada87abd97525304a1e4551334e5291d69bc7a258a476a2ddd249b03efca61abae48dedc3f827d42ab6415fcfa7126c0fb80e64a099abfbf9e298997da2')
+sha512sums_aarch64=('e20a0d59a81bd950db5365a69a27142fb0ea135f13297fc00d4a48a9baeb3df5d7fdfdfb7584ad2126d2b664e65a484292eae328f0cadf37f6148fa17cebb3b9')
 
 package() {
   cd "$srcdir" || exit
