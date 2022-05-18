@@ -1,10 +1,11 @@
-pkgbase = hostapd-git
-	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
-	pkgver = 20170315.6c2056abe
+pkgbase = hostapd-mana-git
+	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with Mana patches
+	pkgver = 20220508.b859b9bce
 	pkgrel = 1
 	url = http://w1.fi/hostapd/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = git
 	depends = openssl
@@ -12,10 +13,9 @@ pkgbase = hostapd-git
 	provides = hostapd
 	conflicts = hostapd
 	options = emptydirs
-	source = git://w1.fi/hostap.git
+	source = https://github.com/sensepost/hostapd-mana.git
 	source = service
 	sha256sums = SKIP
 	sha256sums = 989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e
 
-pkgname = hostapd-git
-
+pkgname = hostapd-mana-git
