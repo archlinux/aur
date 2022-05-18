@@ -3,12 +3,12 @@
 pkgname=obs-rtspserver
 pkgver=2.2.1
 _obsver=27.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
 license=("GPL2")
-depends=("obs-studio>=$_obsver")
+depends=("obs-studio>=$_obsver" "obs-studio<28")
 makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/iamscottxu/obs-rtspserver.git#tag=v$pkgver"
