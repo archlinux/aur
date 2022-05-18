@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r31.7110fa0
+pkgver=r40.068c5a8
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/InfiniTimeOrg/InfiniSim"
 license=('GPL')
 groups=()
 depends=('sdl2')
-makedepends=('git' 'cmake') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cmake' 'npm') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=()
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -22,9 +22,11 @@ source=(
 	"git+https://github.com/lvgl/lv_drivers.git"
 	"git+https://github.com/joaquimorg/lvgl.git"
 	"git+https://github.com/laurencelundblade/QCBOR.git"
+	"git+https://github.com/littlefs-project/littlefs.git"
 )
 noextract=()
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -45,6 +47,8 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname}"
+	# install lv_font_conv dependency to local directory
+	npm install lv_font_conv@1.5.2
 	git submodule init
 	git config submodule.InfiniTime.url "$srcdir/InfiniTime"
 	git config submodule.libpng.url "$srcdir/libpng"
@@ -53,8 +57,10 @@ prepare() {
 	cd "$srcdir/${pkgname}/InfiniTime"
 	git config submodule.src/libs/lvgl.url "${srcdir}/lvgl"
 	git config submodule.src/libs/QCBOR.url "${srcdir}/QCBOR"
+	git config submodule.src/libs/littlefs.url "${srcdir}/littlefs"
 	git submodule update --init src/libs/lvgl
 	git submodule update --init src/libs/QCBOR
+	git submodule update --init src/libs/littlefs
 }
 
 build() {
