@@ -1,0 +1,11 @@
+pkgbase = schedule24
+	pkgdesc = Skola24 schedule tui
+	pkgver = 0.1.0.r0.g2295862
+	pkgrel = 1
+	url = https://github.com/NAHFE/schedule24
+	arch = any
+	makedepends = cargo
+	source = schedule24::git+https://github.com/NAHFE/schedule24.git
+	sha256sums = SKIP
+
+pkgname = schedule24
