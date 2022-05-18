@@ -1,7 +1,7 @@
 pkgbase = obs-scene-collection-manager
 	pkgdesc = Plugin for OBS Studio to add a Scene Collection Manager
 	pkgver = 0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://obsproject.com/forum/resources/scene-collection-manager.1434/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = obs-scene-collection-manager
 	makedepends = ffmpeg
 	makedepends = pciutils
 	depends = obs-studio>=27.2.0
+	depends = obs-studio<28
 	source = obs-scene-collection-manager::git+https://github.com/exeldro/obs-scene-collection-manager#commit=bd2db561e7d3b8ccf5f1b994629a15a3a9639eb5
 	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
