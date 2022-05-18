@@ -4,7 +4,7 @@
 
 pkgbase=linux-covolunablu-gaming
 pkgver=5.17.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
