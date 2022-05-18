@@ -2,7 +2,7 @@
 
 pkgname=xrotor
 pkgver=7.55
-pkgrel=1
+pkgrel=2
 pkgdesc="interactive program for the design and analysis of ducted and free-tip
 propellers and windmills"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ build() {
   make libPlt_gfortran.a
 
   cd ../bin
+  sed -i '/FFLAGS/ s|$| -fallow-argument-mismatch|' Makefile.gfortran
   cp Makefile.gfortran Makefile
   make xrotor
   make jplot
