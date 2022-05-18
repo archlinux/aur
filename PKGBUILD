@@ -5,7 +5,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ByteDream/crunchyroll-go"
 license=('LGPL3')
 
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 
 optdepends=(
@@ -15,7 +15,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ByteDream/crunchyroll-go/archive/v${pkgver}.tar.gz")
-sha256sums=('526b9ce53edd9653b6bdb3924fc6c87619c66c90097513e7d5ff7cae5c066969')
+sha256sums=('9d8868413440b5848650dd304e6ecb0c7ae4f0f47f8d15c645cfe2fd410e8aac')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
