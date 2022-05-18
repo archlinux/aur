@@ -1,16 +1,16 @@
 # Maintainer: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=libnsfb
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Framebuffer abstraction library'
-arch=(x86_64 i686)
-url=https://www.netsurf-browser.org/projects/$pkgname/
-license=(MIT)
-depends=(glibc)
-makedepends=(netsurf-buildsystem)
-source=(https://source.netsurf-browser.org/$pkgname.git/snapshot/$pkgname-release/$pkgver.tar.bz2)
-sha256sums=('6634ab873adc8bad537b30278588b34a41e67c1ecc286d5386a077747b3364a8')
+arch=('any')
+url="https://www.netsurf-browser.org/projects/$pkgname/"
+license=('MIT')
+depends=('glibc')
+makedepends=('netsurf-buildsystem')
+source=("https://source.netsurf-browser.org/$pkgname.git/snapshot/$pkgname-release/$pkgver.tar.bz2")
+sha256sums=('bd4a2370d82f057f2465def204f2a6451ba993ad367325939f6f261a2c920943')
 _makedir=$pkgname-release/$pkgver
 _makeopts="-C $_makedir PREFIX=/usr COMPONENT_TYPE=lib-shared"
 
