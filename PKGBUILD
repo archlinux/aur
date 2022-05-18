@@ -6,11 +6,11 @@
 pkgname=htmlunit
 
 pkgver=2.61.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Headless HTTP webclient for Java'
 arch=('any')
-url="http://$pkgbase.sourceforge.net"
+url="http://$pkgname.sourceforge.net"
 license=('Apache')
 
 provides=("$pkgname-doc")
@@ -19,8 +19,8 @@ conflicts=("$pkgname-doc")
 depends=('java-runtime')
 
 #source=("http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver-bin.zip")
-source=("https://github.com/$pkgname/$pkname/releases/download/$pkgver/$pkgname-$pkgver-bin.zip")
-sha256sums=('292b527fb77e1470428c5b7e8363d16146e6d28af6ad97ce5ad76ccfd933f59e')
+source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-bin.zip")
+sha256sums=('0ad94f78ff5c937b6a2a5eb5af7a930a4993e8c980617d7aad33a436d58bf1a0')
 
 
 package() {
