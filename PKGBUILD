@@ -14,13 +14,13 @@ pkgver=7.5.0
 _pkgver=7
 _majorver=${pkgver:0:1}
 _islver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNU Compiler Collection (7.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python subversion flex)
-options=(!emptydirs)
+options=(!emptydirs !lto)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
         https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
         bz84080.patch

@@ -1,7 +1,7 @@
 pkgbase = gcc7
 	pkgdesc = The GNU Compiler Collection (7.x.x)
 	pkgver = 7.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = gcc7
 	makedepends = subversion
 	makedepends = flex
 	options = !emptydirs
+	options = !lto
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-7.5.0/gcc-7.5.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
 	source = bz84080.patch
@@ -26,20 +27,21 @@ pkgbase = gcc7
 
 pkgname = gcc7
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (7.x.x)
-	depends = gcc7-libs=7.5.0-3
+	depends = gcc7-libs=7.5.0-4
 	depends = binutils>=2.28
 	depends = libmpc
 	options = !emptydirs
+	options = !lto
 	options = staticlibs
 
 pkgname = gcc7-libs
 	pkgdesc = Runtime libraries shipped by GCC (7.x.x)
 	depends = glibc>=2.27
 	options = !emptydirs
+	options = !lto
 	options = !strip
 
 pkgname = gcc7-fortran
 	pkgdesc = Fortran front-end for GCC (7.x.x)
-	depends = gcc7=7.5.0-3
+	depends = gcc7=7.5.0-4
 	options = !emptydirs
-
