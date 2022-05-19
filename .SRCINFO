@@ -1,8 +1,8 @@
 pkgbase = trenchbroom-git
 	pkgdesc = TrenchBroom is a modern cross-platform level editor for Quake-engine based games.
-	pkgver = v2021.1.r67.ga78fa3bc3
-	pkgrel = 2
-	url = http://kristianduske.com/trenchbroom
+	pkgver = main_branch
+	pkgrel = 1
+	url = https://trenchbroom.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPLv3
@@ -23,10 +23,9 @@ pkgbase = trenchbroom-git
 	depends = glm
 	provides = trenchbroom
 	conflicts = trenchbroom
-	source = trenchbroom::git+https://github.com/kduske/TrenchBroom.git#branch=master
+	source = trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=master
 	source = trenchbroom.desktop
 	sha1sums = SKIP
 	sha1sums = 028252ac86ec7f733e94589062eb316224887bd4
 
 pkgname = trenchbroom-git
-

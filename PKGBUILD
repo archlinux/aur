@@ -1,11 +1,12 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
+# Contributor: Retro Gamer <https://github.com/eGax>
 
 pkgname=trenchbroom-git
-pkgver=v2021.1.r67.ga78fa3bc3
-pkgrel=2
+pkgver=main_branch
+pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=("i686" "x86_64")
-url="http://kristianduske.com/trenchbroom"
+url="https://trenchbroom.github.io/"
 license=("GPLv3")
 
 makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb")
@@ -13,7 +14,7 @@ depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "
 conflicts=("trenchbroom")
 provides=("trenchbroom")
 
-source=("trenchbroom::git+https://github.com/kduske/TrenchBroom.git#branch=master"
+source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=master"
 	trenchbroom.desktop)
 
 sha1sums=('SKIP'
@@ -36,7 +37,7 @@ _BUILDDIR=build
 build() {
 	mkdir -p "$_BUILDDIR"
 	cd "$_BUILDDIR"
-	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="cmake/packages" -DCMAKE_TOOLCHAIN_FILE="vcpkg/scripts/buildsystems/vcpkg.cmake"
 	# we were running into weird xcb errors, which made this necessary to force headless builds
 	# might be useful incase you ARE building on a headless system
 	#QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
