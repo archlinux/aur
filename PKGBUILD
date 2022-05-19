@@ -1,4 +1,4 @@
-# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
+# Maintainer: ramen <hendrikjschick at gmail dot com>
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 # Contributor: N.E. Neal <contact at [part of name before neal without dots] dog com>
 
