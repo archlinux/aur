@@ -1,7 +1,7 @@
 pkgname=home-assistant-service-pip
 _serviceName=hass
 pkgdesc='Self installing package of Home Assistant using pip'
-pkgver=1
+pkgver=2
 pkgrel=1
 arch=('any')
 url='https://home-assistant.io/'
@@ -44,12 +44,13 @@ optdepends=(
 )
 source=("${_serviceName}.service" "${_serviceName}-update.service" "${_serviceName}.sysusers" "${_serviceName}.tmpfiles" "${_serviceName}.env")
 sha256sums=('680ed79423fd66af3201c9eaf08abdbd0aea0ef1e9ca7fd89d182065117a06f6'
-            '4cc30ae7bc72471c4c918548a1574be82ca75ee0f852eb9602aa1f09566dc715'
+            '10c57fb89c0e70abb02adeb11ca276da230dc5e169134f0586a000bb135505e7'
             'ee49a7bb8ce2cf2bb34f53708d205aea4e16c25c1cb9d3925d562286ab499852'
             'ce1491f82b257f915d41f9556636bb2a924d95c8ae6e0e85188c2b15849f82de'
             '0418c572087bfd0c7946b1cf662619e58c09b4c4972d1e705354fe26b38e4a7c')
 backup=("etc/${_serviceName}.env")
 install="${_serviceName}.install"
+provides=('home-assistant')
 
 package() {
 	install -Dvm 644 "${srcdir}/${_serviceName}.service" "${pkgdir}/usr/lib/systemd/system/${_serviceName}.service"
