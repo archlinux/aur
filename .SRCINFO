@@ -1,6 +1,6 @@
 pkgbase = dbus-broker-git
 	pkgdesc = Linux D-Bus Message Broker
-	pkgver = r1484.cf3b49c
+	pkgver = 31.14.g5d475cf
 	pkgrel = 1
 	url = https://github.com/bus1/dbus-broker
 	arch = x86_64

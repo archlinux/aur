@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1484.cf3b49c
+pkgver=31.14.g5d475cf
 pkgrel=1
 
 pkgname=$_pkgname-git
