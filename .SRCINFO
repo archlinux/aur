@@ -1,0 +1,17 @@
+pkgbase = python-markdown-del-ins
+	pkgdesc = Markdown extension to support the <del> and <ins> tags
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/honzajavorek/markdown-del-ins
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-markdown
+	source = markdown-del-ins-1.0.0.tar.gz::https://github.com/honzajavorek/markdown-del-ins/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 501d1a6b6d9eb9f738ed5d12727f6e01df2082d89f854c94f44224d0fd68cfd2
+
+pkgname = python-markdown-del-ins
