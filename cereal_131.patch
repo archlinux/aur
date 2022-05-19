@@ -1,0 +1,107 @@
+From 99878b95235445cd02aee1d7669d9a60b91f6fc8 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Thu, 19 May 2022 11:42:53 +0200
+Subject: [PATCH] Fix build againt cereal>1.3.0
+
+As of careal=1.3.1 target requires component
+---
+ src/CMakeLists.txt                  | 6 ++++++
+ src/openMVG/cameras/CMakeLists.txt  | 2 +-
+ src/openMVG/features/CMakeLists.txt | 2 +-
+ src/openMVG/geometry/CMakeLists.txt | 2 +-
+ src/openMVG/matching/CMakeLists.txt | 2 +-
+ src/openMVG/sfm/CMakeLists.txt      | 2 +-
+ 6 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 37b2aa6e..d799af77 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -248,6 +248,7 @@ ENDMACRO(UNIT_TEST)
+ # ==============================================================================
+ # - external by default
+ # - internal if cereal not found
++# - as of cereal:1.3.1 target requires component
+ # ==============================================================================
+ find_package(cereal QUIET CONFIG)
+ if (NOT cereal_FOUND)
+@@ -260,6 +261,11 @@ if (NOT cereal_FOUND)
+   install(TARGETS cereal EXPORT openMVG-targets)
+   set(OpenMVG_USE_INTERNAL_CEREAL ON)
+ endif()
++if (${cereal_VERSION} VERSION_GREATER 1.3.0)
++  set(cereal_TARGET "cereal::cereal")
++else()
++  set(cereal_TARGET "cereal")
++endif()
+ 
+ # ==============================================================================
+ # Eigen
+diff --git a/src/openMVG/cameras/CMakeLists.txt b/src/openMVG/cameras/CMakeLists.txt
+index 333ab729..5909e592 100644
+--- a/src/openMVG/cameras/CMakeLists.txt
++++ b/src/openMVG/cameras/CMakeLists.txt
+@@ -4,7 +4,7 @@ set_property(TARGET openMVG_camera APPEND PROPERTY
+   INTERFACE_INCLUDE_DIRECTORIES "$<INSTALL_INTERFACE:include>")
+ 
+ target_compile_features(openMVG_camera INTERFACE ${CXX11_FEATURES})
+-target_link_libraries(openMVG_camera INTERFACE openMVG_numeric cereal ${OPENMVG_LIBRARY_DEPENDENCIES})
++target_link_libraries(openMVG_camera INTERFACE openMVG_numeric ${cereal_TARGET} ${OPENMVG_LIBRARY_DEPENDENCIES})
+ install(TARGETS openMVG_camera DESTINATION lib EXPORT openMVG-targets)
+ 
+ UNIT_TEST(openMVG Camera_Pinhole openMVG_camera)
+diff --git a/src/openMVG/features/CMakeLists.txt b/src/openMVG/features/CMakeLists.txt
+index 2e49701d..96b1b30a 100644
+--- a/src/openMVG/features/CMakeLists.txt
++++ b/src/openMVG/features/CMakeLists.txt
+@@ -31,7 +31,7 @@ target_include_directories(openMVG_features
+ )
+ target_link_libraries(openMVG_features
+   PRIVATE openMVG_fast ${STLPLUS_LIBRARY}
+-  PUBLIC ${OPENMVG_LIBRARY_DEPENDENCIES} cereal)
++  PUBLIC ${OPENMVG_LIBRARY_DEPENDENCIES} ${cereal_TARGET})
+ if (MSVC)
+   set_target_properties(openMVG_features PROPERTIES COMPILE_FLAGS "/bigobj")
+   target_compile_options(openMVG_features PUBLIC "-D_USE_MATH_DEFINES")
+diff --git a/src/openMVG/geometry/CMakeLists.txt b/src/openMVG/geometry/CMakeLists.txt
+index 0a6a016a..973978d1 100644
+--- a/src/openMVG/geometry/CMakeLists.txt
++++ b/src/openMVG/geometry/CMakeLists.txt
+@@ -21,7 +21,7 @@ set_property(TARGET openMVG_geometry PROPERTY FOLDER OpenMVG/OpenMVG)
+ target_link_libraries(openMVG_geometry
+   PUBLIC
+     openMVG_numeric
+-    cereal
++    ${cereal_TARGET}
+   PRIVATE
+     openMVG_linearProgramming
+ )
+diff --git a/src/openMVG/matching/CMakeLists.txt b/src/openMVG/matching/CMakeLists.txt
+index 2e0eafd7..4600550b 100644
+--- a/src/openMVG/matching/CMakeLists.txt
++++ b/src/openMVG/matching/CMakeLists.txt
+@@ -35,7 +35,7 @@ target_link_libraries(openMVG_matching
+   PUBLIC
+     openMVG_features
+     Threads::Threads
+-    cereal
++    ${cereal_TARGET}
+ )
+ if (NOT DEFINED OpenMVG_USE_INTERNAL_FLANN)
+ target_link_libraries(openMVG_matching
+diff --git a/src/openMVG/sfm/CMakeLists.txt b/src/openMVG/sfm/CMakeLists.txt
+index b8928083..7aabc136 100644
+--- a/src/openMVG/sfm/CMakeLists.txt
++++ b/src/openMVG/sfm/CMakeLists.txt
+@@ -25,7 +25,7 @@ target_link_libraries(openMVG_sfm
+     openMVG_graph
+     openMVG_matching
+     openMVG_multiview
+-    cereal
++    ${cereal_TARGET}
+     ${OPENMVG_LIBRARY_DEPENDENCIES}
+ )
+ 
+-- 
+2.35.1
+
