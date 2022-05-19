@@ -29,7 +29,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	cd cpp
-	cmake . -DBUILD_MCTS=1 -DUSE_BACKEND=EIGEN -DUSE_AVX2=1
+	cmake . -DUSE_BACKEND=EIGEN -DUSE_AVX2=1
 	make 
 }
 
