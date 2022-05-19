@@ -1,0 +1,18 @@
+pkgbase = cl-utilities
+	pkgdesc = A collection of semi-standard utilities for Common Lisp
+	pkgver = r39.gdce2d2f
+	pkgrel = 1
+	url = https://cl-utilities.common-lisp.dev/
+	arch = any
+	license = custom:Public
+	checkdepends = sbcl
+	checkdepends = cl-fiveam
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-utilities::git+https://gitlab.common-lisp.net/cl-utilities/cl-utilities.git#commit=dce2d2f6387091ea90357a130fa6d13a6776884b
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = d3253ddb6fae17ecb91d894d08dc04b902f6d1f6b4e5fd79963d71fed9e9543897d9016ae115ae6d11fd5b5fcb0d7cce3ebaa5d8bd711407e2064fb40e335dc2
+
+pkgname = cl-utilities
