@@ -1,0 +1,12 @@
+diff --git i/spsdk/crypto/__init__.py w/spsdk/crypto/__init__.py
+index f2a7b65..508b0ff 100644
+--- i/spsdk/crypto/__init__.py
++++ w/spsdk/crypto/__init__.py
+@@ -48,7 +48,6 @@ from cryptography.exceptions import InvalidSignature
+ # Explicit import due to MYPY issue
+ from cryptography.hazmat.backends import *
+ from cryptography.hazmat.backends import default_backend
+-from cryptography.hazmat.backends.interfaces import *
+ from cryptography.hazmat.backends.openssl.rsa import *
+ 
+ # Explicit import due to MYPY issue
