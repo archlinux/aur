@@ -1,0 +1,18 @@
+pkgbase = gtklock-git
+	pkgdesc = GTK-based lockscreen for Wayland
+	pkgver = 20220519.r6.ge7c1127
+	pkgrel = 1
+	url = https://github.com/jovanlanik/gtklock
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = wayland
+	depends = pam
+	provides = gtklock
+	conflicts = gtklock
+	source = gtklock-git::git+https://github.com/jovanlanik/gtklock.git
+	sha256sums = SKIP
+
+pkgname = gtklock-git
