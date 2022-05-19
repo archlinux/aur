@@ -2,7 +2,7 @@
 
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
-pkgver=1.1.0.2.g7d107f3
+pkgver=1.2.0
 pkgrel=1
 epoch=2
 pkgdesc='system76 userspace scheduler'
@@ -10,9 +10,8 @@ arch=(x86_64)
 url='https://github.com/pop-os/system76-scheduler'
 license=('MPL-2')
 depends=()
-provides=(${_pkgname})
 conflicts=(${_pkgname})
-makedepends=(git rust make)
+makedepends=(git rust just bcc-tools)
 source=("git+$url")
 sha256sums=('SKIP')
 install=install.sh
@@ -27,10 +26,11 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  make
+  export EXECSNOOP_PATH=/usr/share/bcc/tools/execsnoop
+  just all
 }
 
 package() {
   cd ${_pkgname}
-  DESTDIR=${pkgdir} make install
+  just rootdir=${pkgdir} install
 }
