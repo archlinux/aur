@@ -1,6 +1,6 @@
 pkgbase = datcord-bin
-	pkgdesc = open-source discord client.
-	pkgver = 0.2
+	pkgdesc = An open-source discord client.
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/gamingdoom/datcord
 	arch = x86_64
