@@ -1,6 +1,6 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="xor-crypto-lib"
-pkgver=1.9
+pkgver=1.10
 pkgrel=0
 pkgdesc="xor encryption c++ library"
 author="imperzer0"
@@ -28,7 +28,7 @@ for _libfile in ${_libfiles[@]}
     source=(${source[@]} "$_srcprefix/$_libfile")
 }
 
-md5sums=('08be27c92138a391361a5bfabe998c06'
+md5sums=('98b890f00affcfc98876386795c7ad0f'
          '058b77d68f4400b72a864a07c323a99e')
 
 prepare()
