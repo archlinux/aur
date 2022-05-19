@@ -10,7 +10,7 @@ _rev_amd64=12 # snap:revision
 
 pkgname=whatpulse
 pkgver=3.7
-pkgrel=5
+pkgrel=6
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
@@ -30,12 +30,10 @@ optdepends=(
 )
 source=(
 	'whatpulse.desktop'
-	'logo.png::https://whatpulse.org/images/assets/whatpulse-logo-solid-black.png'
 	LICENSE
 )
 source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${_rev_amd64}.snap")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
-            '8403a8082fa559477245845c681d2e48f6bae828be5041ae87dc6ab07661bf00'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
 sha256sums_x86_64=('e84c50788c5cf201759fa76ff0d8530959c6fca46fc9022d9d94aea573c76824')
 
@@ -43,6 +41,7 @@ prepare() {
 	rm -rf sfs
 	unsquashfs -q -i -n -d sfs \
 		"${pkgname%*-bin}-$pkgver.sfs" \
+		meta/gui/icon.png \
 		usr/bin/whatpulse
 }
 
@@ -62,7 +61,7 @@ package() {
 				+gravity -crop 615x680+0+0 +repage \
 				-resize "${size}x${size}" -background none \
 				-gravity center -extent "${size}x${size}" \
-				logo.png xc:"#656565" -channel RGB -clut \
+				sfs/meta/gui/icon.png xc:"#656565" -channel RGB -clut \
 				"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/whatpulse.png"
 	done
 }
