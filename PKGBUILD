@@ -3,7 +3,7 @@
 pkgname=ytsubconverter-bin
 _reponame=YTSubConverter
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating styled YouTube subtitles"
 arch=('x86_64')
 url="https://github.com/arcusmaximus/YTSubConverter"
@@ -32,7 +32,6 @@ package() {
                        "${pkgdir}/opt/${_reponame}/${lang}/YTSubConverter.Shared.resources.dll"
     done
     install -Dm644 "${srcdir}/checkers.png" "${pkgdir}/opt/${_reponame}/checkers.png"
-    install -Dm644 "${srcdir}/YTSubConverter.Shared.pdb" "${pkgdir}/opt/${_reponame}/YTSubConverter.Shared.pdb"
     install -Dm644 "${srcdir}/StyleOptions.xml" "${pkgdir}/opt/${_reponame}/StyleOptions.xml"
 
     # Actual executables.
