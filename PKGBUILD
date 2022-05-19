@@ -12,8 +12,11 @@ md5sums=('7508e76f8977698a068634f3c5ff34d3')
 
 package () {
     mkdir -p "${pkgdir}" 
-    mv "${srcdir}/${pkgname}-${pkgver//_/-}/"{usr,etc} "${pkgdir}/"
-    mv "${srcdir}/${pkgname}-${pkgver//_/-}/LICENSE" "${pkgdir}/usr/share/arcologout"
-    mv "${srcdir}/${pkgname}-${pkgver//_/-}/README.md" "${pkgdir}/usr/share/arcologout"
+    mv "${srcdir}/archlinux-logout-${pkgver//_/-}/"{usr,etc} "${pkgdir}/"
+    mv "${srcdir}/archlinux-logout-${pkgver//_/-}/LICENSE" "${pkgdir}/usr/share/arcologout"
+    mv "${srcdir}/archlinux-logout-${pkgver//_/-}/README.md" "${pkgdir}/usr/share/arcologout"
+    # mv "${srcdir}/${pkgname}-${pkgver//_/-}/"{usr,etc} "${pkgdir}/"
+    # mv "${srcdir}/${pkgname}-${pkgver//_/-}/LICENSE" "${pkgdir}/usr/share/arcologout"
+    # mv "${srcdir}/${pkgname}-${pkgver//_/-}/README.md" "${pkgdir}/usr/share/arcologout"
 }
 
