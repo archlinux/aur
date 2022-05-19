@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
-pkgver='1.145.0'
+pkgver='1.145.1'
 pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
@@ -14,9 +14,9 @@ depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
 #_bootstrap_version='1.19.0'
-#_bootstrap_checksum='b76079a0a64c6cab1ffc58689e2daeae570ca8b7c5b2a00527e26551c6f73792'
-#_launcher_version='1.145.0'
-#_launcher_checksum='e9baf70b7d11f293c30fb8d9c58bd2a2a81131c64ebe2d572452e74189de3316'
+#_bootstrap_checksum='98a6703b9b23bcd65f47a75b6c01a20546398a4fd0dadd4883b9245da1829b07'
+#_launcher_version='1.145.1'
+#_launcher_checksum='811d3d789bf182c0aa7b256c09f0e8ebaa43e4505d21d39a4ecbece145503e64'
 
 _repo='https://tlaun.ch/repo'
 # Try one of these if the above one fails:
@@ -36,10 +36,10 @@ _repo='https://tlaun.ch/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.19.0.jar::${_repo}/update/aur/bootstrap/b76079a0a64c6cab1ffc58689e2daeae570ca8b7c5b2a00527e26551c6f73792.jar"
+  "tl-bootstrap-1.19.0.jar::${_repo}/update/aur/bootstrap/98a6703b9b23bcd65f47a75b6c01a20546398a4fd0dadd4883b9245da1829b07.jar"
 
   # Launcher
-  "tl-launcher-1.145.0.jar::${_repo}/update/aur/launcher/e9baf70b7d11f293c30fb8d9c58bd2a2a81131c64ebe2d572452e74189de3316.jar"
+  "tl-launcher-1.145.1.jar::${_repo}/update/aur/launcher/811d3d789bf182c0aa7b256c09f0e8ebaa43e4505d21d39a4ecbece145503e64.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -76,19 +76,26 @@ source=(
   "${_repo}/libraries/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
 
   # Other resources
-
+  minecraft.128x128.png
+  minecraft.192x192.png
+  minecraft.256x256.png
+  minecraft.48x48.png
+  minecraft.64x64.png
+  minecraft.96x96.png
+  tlauncher.bash
+  tlauncher.desktop
 )
 
 noextract=(
   "${source[@]##*/}"
   "tl-bootstrap-1.19.0.jar"
-  "tl-launcher-1.145.0.jar"
+  "tl-launcher-1.145.1.jar"
 )
 
 sha256sums=(
-  'b76079a0a64c6cab1ffc58689e2daeae570ca8b7c5b2a00527e26551c6f73792' # tl-bootstrap-1.19.0.jar
+  '98a6703b9b23bcd65f47a75b6c01a20546398a4fd0dadd4883b9245da1829b07' # tl-bootstrap-1.19.0.jar
 
-  'e9baf70b7d11f293c30fb8d9c58bd2a2a81131c64ebe2d572452e74189de3316' # tl-launcher-1.145.0.jar
+  '811d3d789bf182c0aa7b256c09f0e8ebaa43e4505d21d39a4ecbece145503e64' # tl-launcher-1.145.1.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'd5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9' # com.google.guava:guava:31.0.1-jre
@@ -122,6 +129,14 @@ sha256sums=(
   'e06e89d40943245fcfa39ec537cdbfce3762aecde8f9c597780d2b00c2b43424' # org.apache.httpcomponents:httpcore:4.4.13
   'daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636' # commons-logging:commons-logging:1.2
   'e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d' # commons-codec:commons-codec:1.11
+  '68226a8230f1187cf2fa81ad63590b195e5c58d918ada16f52b9bdca59e57fd9' # minecraft.128x128.png
+  '1d5c9f54a06e6a803c6e69093e3cf429c8a9092b94f61ac693993f3f6c1261a7' # minecraft.192x192.png
+  '23909ccb5a61f607f355743cdf553799e033fcaac16538b27f1cb0a80aa7faa3' # minecraft.256x256.png
+  'beba733d11b80113007683cf61b122c4e1524c424f963960b08b74bf77d378e4' # minecraft.48x48.png
+  'd6da12b649df178826399a31e8f0f72be7428f90b5a3a95b7538cec0a58a4755' # minecraft.64x64.png
+  '328e0bc94661b68fd74c414f4d37ec82d2a3b86a1991eed7132180b15c23fe10' # minecraft.96x96.png
+  '0b31e2afee3a709c74daa0df9345d15c01ea361f8beee26e6cfac2a3b518aa23' # tlauncher.bash
+  'd8c7b15306bbb620e22ae0ee59a350ab36e63c28b52bce012ab312522ef6dab6' # tlauncher.desktop
 )
 
 package() {
@@ -136,7 +151,7 @@ package() {
 
   # install launcher
   install -Dm0644 "${srcdir}/tl-bootstrap-1.19.0.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl-launcher-1.145.0.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-1.145.1.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
