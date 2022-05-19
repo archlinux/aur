@@ -2,11 +2,12 @@ pkgname=home-assistant-service-pip
 _serviceName=hass
 pkgdesc='Self installing package of Home Assistant using pip'
 pkgver=3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://home-assistant.io/'
 license=(APACHE)
 depends=(
+	gcc
 	python-aiohttp
 	python-aiohttp-cors
 	python-astral
