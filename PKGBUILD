@@ -2,7 +2,7 @@
 
 pkgname=bedstead-fonts
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Bedstead is a family of outline fonts based on the characters produced by the Mullard SAA5050 series of Teletext Character Generators."
 url="https://bjh21.me.uk/bedstead/"
 arch=(any)
@@ -17,9 +17,8 @@ package() {
 	install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
 	install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 *.otf
 }
-
-sha256sums=('f7d195d5faf04b4c6dbbf2812d76e2ce8f6d73b88759d4e8531e764db7ea26a3'
-            '3917d986972768f4c1ece841e918146db1549966b25ccc7da0d52d413ac1513c'
-            'e191e4fe0a5a82e8f5ed08b70d007c71631914cf337186721885c09c603dea40'
-            '08cd505031fdda72d4bcdcebe7860edd566b10333217b50b91bfa9a73a4c9f1d'
-            'afc29c1ed877e928458c71a74ed4d5dac17ce3e401d120d0619259cc95e59a29')
+sha256sums=('414aa3746e629d4efe17fe4c6400cf109214e082e51f8254c70e9d070e21f56d'
+            'a3a21dfbe3338b2fa4b31b2dd65dd8ff4c54bd94811b7c79fe799fb43870371f'
+            '01a2f3d4956f4a36bc5fa636fc6595a636007565fabb9705341ed05123f0597e'
+            'cc136fd8e15c10d8bd6bc5b44c2cbfb230546db46caed20618ebbf6116589503'
+            '236cd7c7a28a6776d9a2e0873527f41d21fd576a83b81bca4a757a87110b932e')
