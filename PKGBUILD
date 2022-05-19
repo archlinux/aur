@@ -1,10 +1,10 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=mroonga
-pkgver=11.08
+pkgver=12.03
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
-mariadbver=10.6.4
+mariadbver=10.6.7
 MYSQL_VERSION=mariadb-${mariadbver}
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
@@ -106,13 +106,13 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('f1cb3660ea771816d87622fe41bf667ed46333ef'
-          'd955487a1bfd5e1478e607d6077130d50ca817d0'
+sha1sums=('5fd3502ba50af64b7d9138f36fa857c0bd9d5723'
+          'da4b3b12097f25016decdc2555cf2682dc4bc834'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
           'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
-sha256sums=('f5ca4a393ee6af59c4de5d1c5099646ad0181213c3c0a69a89f69d45bd081cb3'
-            '75bf9b147a95d38160d01a73b098d50a1960563b46d16a235971fff64d99643c'
+sha256sums=('7f3ec8801e81995ed81877622035b07b35aa64bcf1fab5296b88d6390411e407'
+            '738a9d5391c6666e78c21f5c9ae90ac7e4477defa0e171a47f0f559a12d73429'
             '2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd')
