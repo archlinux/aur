@@ -4,7 +4,7 @@
 
 pkgname=dash-static-musl
 _pkgbase=dash
-pkgver=0.5.11.4
+pkgver=0.5.11.5
 pkgrel=1
 pkgdesc="A POSIX compliant shell that aims to be as small as possible, statically linked to musl libc"
 arch=('i686' 'x86_64')
@@ -15,9 +15,8 @@ conflicts=("$_pkgbase")
 makedepends=('musl' 'libedit') #we are static
 install=dash.install
 source=("https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/${_pkgbase}-${pkgver}.tar.gz")
-sha512sums=('6bfe9f4cd4c8d7f0ba0f71d6df1fb784b3a3960d4395f76604e46d21e13c16e504c0b73ee7e8113d64448d1db2c90f5dbcc19fd2a40b8a52d3e8f32ee3ad61ca')
-b2sums=('a40aad5713d37209d1ad423d606e5dccf9b953628f140058a054dd126ffd09b09d2fba0799e5c34b00337ccfb8db8cc73071b4aecd176f68dbb572491e76e2e9')
-
+sha512sums=('324e7971bb9ab93246e811600f59a059462abc4fefc48c7d53782b518d560f740ace95f41b5d8c215279c6084c1881ff8bbdaabee69fdae66c971d3e9bdce2d4')
+b2sums=('f8ad8eacbb13ea00ecccde33d32ea5cd7527b7fbef5a4e11765925239de91d916184a3b9fff9757629512a76eed3ae5cc46f5cf588fc65bd82616b187cb9cd2e')
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
