@@ -14,8 +14,14 @@ makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/donadigo/appeditor.git')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'a716d057769c43697cb3946f551aaf60950a71a56cc1c6862e123975a159fe41')
+source=('git+https://github.com/donadigo/appeditor.git' '0001-Fix-121-failure-to-compile-with-vala-0.55.1.patch')
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  patch --forward --strip=1 --input="${srcdir}/0001-Fix-121-failure-to-compile-with-vala-0.55.1.patch"
+}
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
