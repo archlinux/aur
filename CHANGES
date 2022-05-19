@@ -1,0 +1,32 @@
+-- 2.6.1 release 20211226 "Convalmore" --
+
+ 004) Michael Baeuerle <michael.baeuerle@stz-e.de>
+      BUG. wrong pkg-config file name for libcanlock3
+      FIX. aclocal.m4
+
+ 003) Urs Janssen <urs@tin.org>
+      ADD. config.guess, config.sub update
+      ADD. don't count comment and empty lines in newsrc-file
+      ADD. fixed mixed declarations and code
+      ADD. const qualification for free_if_not_default() and strfpath_cp()
+      ADD. allow to cancel wait_message() via key press
+      BUG. missing bounds checking in *highlight_string()
+      BUG. use of wint_t in !MULTIBYTE_ABLE code
+      FIX. curses.c, help.c, memory.c, misc.c, newsrc.c, page.c, prompt.c
+           rfc2046.c, screen.c, select.c, tcurses.c, extern.h, tin.5
+           config.guess, config.sub
+
+ 002) Thomas E. Dickey <dickey@invisible-island.net>
+      BUG. missing configure check for get_wch and wget_wch
+      ADD. workaround for possible redefinition of bool type when using
+           pdcurses
+      FIX. autoconf.hin, tcurses.h, tin.h, Makefile.in, aclocal.m4
+           configure[.in]
+
+ 001) Matt Anton <tin@lv223.org>
+      ADD. updated French translation
+      FIX. fr.po
+
+-- 2.6.0 release 20210823 "Coleburn" --
+
+For changes made till the 2.6.0 release look at CHANGES.old

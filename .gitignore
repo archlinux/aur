@@ -1,1 +1,7 @@
-/home/aksr/arch/pkg/.gitignore
+*
+
+!.SRCINFO
+!PKGBUILD
+
+!CHANGES
+!LICENSE

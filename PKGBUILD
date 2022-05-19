@@ -1,51 +1,40 @@
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: akojo
-# Contributor: quizzlo
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Contributor : aksr <aksr at t-com dot me>
+# Contributor : dorphell <dorphell@archlinux.org>
+# Contributor : akojo
+# Contributor : quizzlo
+
+
 pkgname=tin
-pkgver=2.4.5
+
+pkgver=2.6.1
 pkgrel=1
-pkgdesc="A threaded NNTP and spool based UseNet newsreader."
+
+pkgdesc='Threaded NNTP and spool based UseNet newsreader'
 arch=('i686' 'x86_64')
-url="http://www.tin.org"
+url="http://www.$pkgname.org"
 license=('BSD')
-depends=('ncurses' 'ispell' 'perl' 'gnupg' 'dante' 'icu' 'libidn')
-conflicts=('tin-unstable')
-source=("ftp://ftp.tin.org/pub/news/clients/tin/v${pkgver%.*}/$pkgname-$pkgver.tar.gz"
+
+depends=('ncurses' 'ispell' 'perl' 'gnupg' 'dante' 'icu' 'libidn' 'gsasl')
+
+changelog=CHANGES
+source=("ftp://ftp.$pkgname.org/pub/news/clients/$pkgname/v${pkgver%.*}/$pkgname-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('303016b1aa8d845cc79d6bd6754a81a8'
-         '22de35b1bdc6f0df87c93ae794198b21')
-sha1sums=('833a9970cb65a62a36e0027f27ccfd1be7554862'
-          '07e1217ee68bb20f0ad2670e84116a0d67243063')
-sha256sums=('4a61aaa688d45c3b88b7bc21a29e87f0748dcf3cd53b613ca129e4ea0b7e93a0'
+sha256sums=('6b1bc8c8ab07467bc8dbc845a1c7389339e1beb0244894d7911457efd25a83b5'
             '5ccb431a94c2d2f093b8f93325075e5ad886772ba2a452478120b86ce71c0683')
 
+options=('zipman')
+
+
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  unset CFLAGS
-  unset CPPFLAGS
-  ./configure --prefix=/usr --mandir=/usr/share/man \
-    --enable-shell-escape \
-    --enable-nntp \
-    --enable-nls \
-    --enable-ipv6 \
-    --enable-append-pid \
-    --enable-posting \
-    --enable-piping \
-    --enable-locale \
-    --enable-xhdr-xref \
-    --with-spool-dir=/var/spool/news \
-    --with-ispell=/usr/bin/ispell \
-    --with-gpg=/usr/bin/gpg \
-    --with-pcre=/usr \
-    --with-screen=ncursesw \
-    --with-inews-dir=/usr/lib/news \
-    --with-libdir=/usr/lib/news \
-    --with-coffee \
-    --with-socks \
-    --with-socks5 \
-    --disable-prototypes \
-    --disable-echo
+  cd "$pkgname-$pkgver"
+  unset CFLAGS CPPFLAGS
+  ./configure --prefix=/usr --mandir=/usr/share/man --enable-shell-escape --enable-nntp --enable-nls \
+    --enable-ipv6 --enable-append-pid --enable-posting --enable-piping --enable-locale \
+    --enable-xhdr-xref --with-spool-dir=/var/spool/news --with-ispell=/usr/bin/ispell \
+    --with-pcre=/usr --with-gpg=/usr/bin/gpg --with-screen=ncursesw \
+    --with-coffee --with-socks --with-socks5 --disable-prototypes --disable-echo \
+    --with-inews-dir=/var/lib/news --with-libdir=/var/lib/news
 #   --with-domain-name         (default: unset)
 #   --with-nntp-default-server (default: news.$DOMAIN_NAME)
 #   --with-shell=PROG          (default: sh, except on BSD where csh is used)
@@ -58,11 +47,20 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
-  rm -f $pkgdir/usr/share/man/man5/mbox.5
-  rm -f $pkgdir/usr/share/man/man5/mmdf.5
-  mv $pkgdir/usr/bin/url_handler.pl $pkgdir/usr/bin/tin_url_handler.pl
-  install -D -m644 $srcdir/LICENSE  $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -Dm755 {tools/,"$pkgdir/usr/bin/$pkgname"_}url_handler.sh
+  install -Dm644 README      -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 ../LICENSE  -t"$pkgdir/usr/share/licenses/$pkgname/"
+  cd doc
+  install -Dm644 *.3         -t"$pkgdir/usr/share/man/man3/"
+  install -Dm644 l10n/es/*.1 -t"$pkgdir/usr/share/man/es/man1/"
+  install -Dm644 l10n/es/*.5 -t"$pkgdir/usr/share/man/es/man5/"
+  install -Dm644 l10n/de/*.1 -t"$pkgdir/usr/share/man/de/man1/"
+  install -Dm644 l10n/de/*.5 -t"$pkgdir/usr/share/man/de/man5/"
+  ln -s {,"$pkgdir/usr/bin/$pkgname"_}url_handler.pl
+  rm "$pkgdir/usr/share/man/man5"/m{box,mdf}.5  # conflicts with the `mutt` package
 }
 
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
