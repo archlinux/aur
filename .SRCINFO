@@ -1,7 +1,7 @@
 pkgbase = python-fontfeatures
 	pkgdesc = Library for manipulating OpenType font features
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simoncozens/fontFeatures
 	arch = any
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = python-fontfeatures
 	makedepends = python-wheel
 	depends = python
 	depends = python-beziers
-	depends = python-glyphtools
 	depends = python-fs
 	depends = python-fonttools
 	depends = python-lxml
+	optdepends = python-glyphtools
 	source = https://files.pythonhosted.org/packages/source/f/fontFeatures/fontFeatures-1.6.4.tar.gz
 	sha256sums = 334f2281f76ac3d3305a416e6b8acf52110812c81051dac388b66e4f5b3e711c
 
