@@ -12,6 +12,7 @@ depends=('bzip2' 'curl' 'xz')
 provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
+options=('staticlibs')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('8d7f8bf9658226942eeab70af2a22aca618577eaa8fe2ed9416ee306d5351aa1')
 
@@ -25,12 +26,6 @@ build() {
     --with-plugin-dir=/usr/lib/htslib/plugins
 
   make
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-
-  make check
 }
 
 package() {
