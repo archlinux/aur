@@ -1,0 +1,16 @@
+pkgbase = red_lenlab
+	pkgdesc = Lenlab ist eine Oszilloskop-Software für das TI LaunchPad EK-TM4C123GXL.
+	pkgver = 7.5.2
+	pkgrel = 1
+	url = https://github.com/kalanzun/red_lenlab
+	arch = x86_64
+	license = GPL3
+	depends = libusb
+	depends = qt5-base
+	depends = qt5-charts
+	source = https://github.com/kalanzun/red_lenlab/archive/refs/tags/7.5.2.tar.gz
+	source = 20-lenlab.rules
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = red_lenlab
