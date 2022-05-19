@@ -38,7 +38,7 @@ USE_ALL_CPU_CORES="YES" # Do you want to use all CPU cores?
 
 CHECK=            # Run tests. May fail, this is developement after all.
 
-CLANG="YES"       # Use clang.
+CLANG=            # Use clang.
 
 GOLD=             # Use the gold linker.
 
@@ -103,7 +103,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.50.155783
+pkgver=29.0.50.156571
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -140,10 +140,9 @@ if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
   # Make sure mold is available in /usr/bin/mold, or
   # you could specify another path to mold.
   makedepends+=( 'mold' )
-  ln -s /usr/bin/mold ./ld
   export LD=/usr/bin/mold
-  export CFLAGS+=" -B.";
-  export CXXFLAGS+=" -B."; 
+  export CFLAGS+=" -fuse-ld=gold";
+  export CXXFLAGS+=" -fuse-ld=gold";
 fi
 
 if [[ $CLANG == "YES" ]]; then
