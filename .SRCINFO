@@ -1,6 +1,6 @@
 pkgbase = jackett-mono
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.20.1076
+	pkgver = 0.20.1078
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = any
@@ -19,10 +19,10 @@ pkgbase = jackett-mono
 	source = jackett.service
 	source = jackett.sysusers
 	source = jackett.tmpfiles
-	source = Jackett.Binaries.Mono-0.20.1076.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.20.1076/Jackett.Binaries.Mono.tar.gz
+	source = Jackett.Binaries.Mono-0.20.1078.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.20.1078/Jackett.Binaries.Mono.tar.gz
 	sha256sums = c5605e488bb113452b0bd6e6a7420ea5be8ffd7807cc06cbb6eb6277937c7da8
 	sha256sums = d005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590
 	sha256sums = 64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1
-	sha256sums = 6e8dd1ab9115cc01e34846023167886629e90f07cfe1109845a6b14efb90f1e8
+	sha256sums = 8ce53311a889050a2d62d1ec2698e5a85d460bf0ba460cbe061a94a302ec706b
 
 pkgname = jackett-mono
