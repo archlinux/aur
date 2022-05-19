@@ -3,7 +3,7 @@
 
 pkgname=icoextract
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality'
 arch=('any')
 url='https://github.com/jlu5/icoextract'
@@ -17,14 +17,17 @@ sha256sums=('SKIP')
 
 build() {
     cd ${pkgname}-git
-   
+
     python setup.py build
 }
      
 package() {
     cd ${pkgname}-git
-    
+
     python setup.py install --root="${pkgdir}" --optimize=1
-    
+
     install -Dm644 exe-thumbnailer.thumbnailer ${pkgdir}/usr/share/thumbnailers/exe-thumbnailer.thumbnailer
+
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -rf "${pkgdir}${site_packages}/tests/"
 }
