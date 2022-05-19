@@ -1,6 +1,6 @@
 pkgbase = python-selenium-wire
 	pkgdesc = Extends Selenium's Python bindings to give you the ability to inspect requests made by the browser
-	pkgver = 4.5.6
+	pkgver = 4.6.4
 	pkgrel = 1
 	url = https://github.com/wkeeling/selenium-wire
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-selenium-wire
 	depends = python-selenium
 	depends = python-wsproto
 	depends = python-zstandard
-	source = python-selenium-wire-4.5.6.tar.gz::https://github.com/wkeeling/selenium-wire/archive/refs/tags/4.5.6.tar.gz
-	sha256sums = f424b1a8069ac5385fae7ff8abd1d410b5389e6b0faa36cac82dde6d3c0c9ac9
+	source = python-selenium-wire-4.6.4.tar.gz::https://github.com/wkeeling/selenium-wire/archive/refs/tags/4.6.4.tar.gz
+	sha256sums = e0cf195341946e802edaf421f88f6a1405e4f44551163a6d3eab2d3c53811189
 
 pkgname = python-selenium-wire
