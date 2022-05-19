@@ -3,7 +3,7 @@
 
 pkgname=q5go-git
 _pkgname=q5go
-pkgver=20201014.d2e6920
+pkgver=20220508.b1b78a7
 pkgrel=1
 pkgdesc='Everyday SGF editor for Go players'
 url='https://github.com/bernds/q5go'
