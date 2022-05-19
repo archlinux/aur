@@ -9,7 +9,7 @@ pkgbase = ttea
 	depends = glibc
 	optdepends = mpv: play timer sound
 	optdepends = mplayer: alternative player
-	source = https://git.roshless.me/~roshless/ttea/archive/1.2.1.tar.gz
+	source = https://git.roshless.me/roshless/ttea/-/archive/1.2.1/ttea-1.2.1.tar.gz
 	md5sums = aaacf75cccc3eb3eeab96a4451905db4
 
 pkgname = ttea

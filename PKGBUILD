@@ -7,7 +7,7 @@ pkgdesc="CLI tea manager"
 url="https://git.roshless.me/~roshless/ttea"
 arch=('x86_64' 'i686')
 license=("GPL")
-source=("https://git.roshless.me/~roshless/$pkgname/archive/$pkgver.tar.gz")
+source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 depends=('glibc')
 optdepends=('mpv: play timer sound' 'mplayer: alternative player')
 
