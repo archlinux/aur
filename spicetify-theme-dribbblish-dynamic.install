@@ -18,6 +18,8 @@ post_install() {
   echo "to"
   echo "xpui.js_repl_8008 = ,\${1}58,"
   echo ""
+  echo "Dribbblish Dynamic development is currently on hold (See https://github.com/JulienMaille/dribbblish-dynamic-theme)"
+  echo ""
 }
 
 post_upgrade() {
