@@ -1,7 +1,7 @@
 pkgbase = steam-rom-manager-appimage
 	pkgdesc = An app for managing ROMs in Steam.
 	pkgver = 2.3.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SteamGridDB/steam-rom-manager
 	arch = x86_64
 	license = GPL3
