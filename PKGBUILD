@@ -2,7 +2,7 @@
 
 _pkgname=streamlink-twitch-gui
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -13,8 +13,8 @@ depends=("gtk3" "libxss" "nss" "streamlink")
 options=(!strip)
 source_i686=("https://github.com/streamlink/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux64.tar.gz")
-sha256sums_i686=('fa3813a4861be013ccec8c66a3e61478e5f93a542531a4551177f75b34b69402')
-sha256sums_x86_64=('e40810fa7beffc9e3ddd98be17ee90453fc31a0f09caeb17b0fe6a56e5ed886e')
+sha256sums_i686=('7db67fdf76df7258e5f1d1059fb6377dd202ab6634628c2415bf78cd2093b094')
+sha256sums_x86_64=('91f08684880a308d2c883aa79881d2324e913071655babb056c5b8f1a891b9ad')
 
 package() {
 	cd "${srcdir}/${_pkgname}"
