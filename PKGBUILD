@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=1.6
+pkgver=1.5
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'
 license=('MIT')
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'a40efb4645867d490111edd14219d64a5e2f39b0382824ae7810e9da17c57386c102f2b470bc800b22da0f9eae3b4b2e4e96ae59ccc4907676eda7a45d00ba16'
-  '42f49a235a295e182f7a3d4f81a7f05b4ed0af9978a93f6abdce30e00f918901d4f9c79de4a3ee6312b1346fb4c9d4958493bc44796c6d8a8e753bbfae64c119'
+  '0953d78602e4c1b21a3512a37fd6715cb110f9484265c4095e8fefaf3199ccc30dc7f67868d69f87fa7098bd685ce9552ab881491554e0ad59a4a59729af1ec8'
+  '062129791f792b6edf0fc9b2a367be2c9ee5f383d6d1088e3ea8c7679dc0b945e73062808cf7f88c143757f8e06d8bb580265c4bca8613ca690ca8d62eaeb986'
   )
 md5sums=(
-  'd3d36393163b7a0b530c57d691fb4081'
-  '2ef6e714fcde71222ee545046c14d5c4'
+  'c22560a6eb106c1d4b1d1fc9a79b6bc0'
+  '08c7d89f4aa8f7348022abba7224650d'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
