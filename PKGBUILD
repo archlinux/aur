@@ -1,5 +1,6 @@
 # Maintainer: Daniel Albers <daniel@lbe.rs>
 # Source: <https://github.com/AlD/archlinux/tree/master/pkgbuilds/quassel>
+# from: git
 
 pkgbase='quassel'
 pkgname=("${pkgbase}-git"
@@ -11,7 +12,7 @@ pkgname=("${pkgbase}-git"
         )
 
 pkgver=0.14.0.r5.g4251006e
-pkgrel=2
+pkgrel=3
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
