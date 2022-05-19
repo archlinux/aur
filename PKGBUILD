@@ -10,6 +10,7 @@ arch=(x86_64)
 url='https://github.com/pop-os/system76-scheduler'
 license=('MPL-2')
 depends=()
+provides=(${_pkgname})
 conflicts=(${_pkgname})
 makedepends=(git rust just bcc-tools)
 source=("git+$url")

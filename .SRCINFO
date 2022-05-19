@@ -11,6 +11,7 @@ pkgbase = system76-scheduler-git
 	makedepends = rust
 	makedepends = just
 	makedepends = bcc-tools
+	provides = system76-scheduler
 	conflicts = system76-scheduler
 	backup = etc/system76-scheduler/assignments/default.ron
 	source = git+https://github.com/pop-os/system76-scheduler
