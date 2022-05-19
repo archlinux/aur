@@ -1,0 +1,13 @@
+pkgbase = go-dispatch-proxy-git
+	pkgdesc = A SOCKS5 load balancing proxy to combine multiple internet connections into one
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/extremecoders-re/go-dispatch-proxy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = git+https://github.com/extremecoders-re/go-dispatch-proxy.git
+	sha256sums = SKIP
+
+pkgname = go-dispatch-proxy-git
