@@ -3,8 +3,8 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -35,20 +35,8 @@ optdepends=(
   'desktop-file-utils: for checking desktop entries'
   'python-pyenchant: for spell checking'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-  "0001-Use-different-Python-package-for-ZStandard.patch"
-)
-sha256sums=(
-  '53d61cb3c31663c8e86703548bec38f21a49cf0e5a4bdb26f7f6bc3cee899178'
-  '8775c5f66987a8f6a99fdb24cc769a5ca253acdb1f03c96134763ac7eda02f3b'
-)
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch --forward --strip=1 --input="${srcdir}/0001-Use-different-Python-package-for-ZStandard.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('ff6271f2e77a76f19caa5ceff9d90e32ef9da3a6140f0726e0e697c0381f496b')
 
 build() {
   cd "$pkgname-$pkgver"
