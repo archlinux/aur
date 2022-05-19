@@ -3,23 +3,20 @@
 
 _pkgname=magic-wormhole.rs
 pkgname=wormhole-rs
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Rust implementation of Magic Wormhole, with new features and enhancements'
 arch=(x86_64)
 url="https://github.com/magic-wormhole/$_pkgname"
 license=('custom:EUPL-1.2+')
 depends=(libxcb)
-makedepends=(cargo git)
+makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz"
-        "$pkgname-cli-clipboard-dep.patch::$url/commit/1606112.patch")
-sha256sums=('4773a5f179d1f26b61eed8a95b586b30cc45b205255d1427ba735e6df5804061'
-            '0c0d6afe4ecc8869ef5a8f4afed9d15a423c462c99e9af22984f0085802fae7d')
+source=("$url/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('fdd1d0bd00948f9bdce28b7d21e84bebd25d08502efe30408ded91a150afa5ce')
 
 prepare() {
   cd "$_archive"
-  patch -p1 < ../${source[1]%::*}
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
