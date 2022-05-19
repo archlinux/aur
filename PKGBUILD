@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=nnrss-git
-pkgver=0.2.r0.gd339d95
+pkgver=1.3.1.r18.g27a17bf
 pkgrel=1
 pkgdesc='Web/API RSS aggregator - git master'
 url='https://git.roshless.me/~roshless/nnrss'
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'git')
 provides=('nnrss')
 conflicts=('nnrss')
 install='nnrss.install'
-source=("nnrss-git::git+https://git.roshless.me/~roshless/${pkgname%-git}"
+source=("nnrss-git::git+https://git.roshless.me/nnrss/${pkgname%-git}"
         "nnrss.sysusers"
         "nnrss.tmpfiles")
 
