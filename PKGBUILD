@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 
 pkgname=streamlink-twitch-gui
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -11,16 +11,16 @@ depends=("gtk3" "libxss" "nss" "streamlink")
 makedepends=("nodejs" "yarn")
 options=(!strip)
 
-# https://github.com/streamlink/streamlink-twitch-gui/blob/v2.0.0/src/config/main.json#L4
-_nwjs=0.60.0
+# https://github.com/streamlink/streamlink-twitch-gui/blob/v2.1.0/src/config/main.json#L4
+_nwjs=0.64.1
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/streamlink/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 source_i686=("nwjs-${_nwjs}-linux32.tar.gz::https://dl.nwjs.io/v${_nwjs}/nwjs-v${_nwjs}-linux-ia32.tar.gz")
 source_x86_64=("nwjs-${_nwjs}-linux64.tar.gz::https://dl.nwjs.io/v${_nwjs}/nwjs-v${_nwjs}-linux-x64.tar.gz")
 noextract=("nwjs-${_nwjs}-linux"{32,64}".tar.gz")
-sha256sums=('202061aca853a7b7a42b858c2544df8f4a9046f392da5c03372fd81f4473947e')
+sha256sums=('ac8f1f616c2e375ca385478d1894104069f1fae0729735fa8d6c5a2280534a2b')
 # https://dl.nwjs.io/${_nwjs}/SHASUMS256.txt{,.asc}  (1E8BEE8D5B0C4CBCD6D19E2678680FA9E21BB40A - Roger Wang <roger@nwjs.io>)
-sha256sums_i686=('18aeb06c86d58de396f4b2a08949c4cc9216b5fef931fe277196222173e35766')
-sha256sums_x86_64=('4c68dab80fdea548bc0f34b46c8cb4c40e7a51bc9b5ce20f813ab5ca2b5c69ba')
+sha256sums_i686=('794e2f86ffaca86b7515afd829e58764189451a31e033bac3cfd3179a66b7632')
+sha256sums_x86_64=('69de613a1310bbc502b1f63a326908b156ec41df6764223175298819e7b0cd57')
 
 [[ "${CARCH}" == "x86_64" ]] && _arch=linux64 || _arch=linux32
 
