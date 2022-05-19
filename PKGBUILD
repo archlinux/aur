@@ -35,8 +35,8 @@ build() {
 package() {
   cd "$_gitname"
 
-  install -Dm755 -t "${pkgdir}/usr/bin/" "src/i3-match"
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1/" man/*.1
+  install -Dm755 -t "${pkgdir}/usr/bin/" src/i3-match
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1/" man/i3-match.1.gz
   ln -s i3-match "${pkgdir}/usr/bin/swaymatch"
   ln -s i3-match.1.gz "${pkgdir}/usr/share/man/man1/swaymatch.1.gz"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
