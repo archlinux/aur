@@ -1,6 +1,6 @@
 pkgbase = python-tpm2-pytss-git
 	pkgdesc = Python bindings for tpm2-tss
-	pkgver = 1.1.0.r19.288dd9d
+	pkgver = 1.1.0.r23.7c89ea0
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pytss
 	arch = x86_64

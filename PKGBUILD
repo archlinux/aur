@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=1.1.0.r19.288dd9d
+pkgver=1.1.0.r23.7c89ea0
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
 check() {
 	cd "${_name%-git}"
 	local _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_python_version" pytest --import-mode=append
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_python_version" pytest
 }
 
 package() {
