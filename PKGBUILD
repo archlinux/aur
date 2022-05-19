@@ -1,4 +1,4 @@
-# Maintainer: Efaile <seebeckemily3403@gmail.com>
+# Maintainer: Emily3403 <seebeckemily3403@gmail.com>
 # Attention: Currently it is not possible to install!
 
 pkgname=isisdl
