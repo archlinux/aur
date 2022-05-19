@@ -10,7 +10,7 @@
 
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.7
+pkgver=5.0.8
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -18,7 +18,8 @@ url="https://www.mongodb.com/"
 license=("Apache" "custom:SSPL1")
 depends=('curl' 'libstemmer' 'snappy' 'gperftools' 'boost-libs' 'pcre' 'yaml-cpp')
 makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
-optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc')
+optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
+            'mongosh-bin: interactive shell to connect with MongoDB')
 checkdepends=("python-pymongo")
 backup=("etc/mongodb.conf")
 source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
@@ -27,7 +28,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-skip-no-exceptions.patch
         mongodb-5.0.2-no-compass.patch
         mongodb-4.4.1-boost.patch)
-sha256sums=('d4f78305924da895c71ff7128767be591d0f7d2fdbed7b891339246eb453fe07'
+sha256sums=('92ef194385597f049bca604d4ff686f63027e4948431d589cec5cd6032864591'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4'
@@ -46,7 +47,7 @@ _scons_args=(
   --disable-warnings-as-errors
   # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  MongoDB uses custom patches.
   # --use-system-icu      # Doesn't compile
-  --use-system-tcmalloc   # in gperftools
+  # --use-system-tcmalloc   # in gperftools
   --use-system-boost    # Doesn't compile
   --use-system-zstd
   # --use-system-valgrind # Compiles, but namcap says not used
