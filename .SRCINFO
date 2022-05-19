@@ -1,0 +1,16 @@
+pkgbase = comic-shanns
+	pkgdesc = version 2 of a classy font
+	pkgver = r16.b98eee0
+	pkgrel = 1
+	url = https://github.com/shannpersand/comic-shanns
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/shannpersand/comic-shanns
+	sha256sums = SKIP
+
+pkgname = otf-comic-shanns-v1
+
+pkgname = otf-comic-shanns-v2
+
+pkgname = ttf-comic-shanns-v2
