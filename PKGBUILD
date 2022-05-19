@@ -2,15 +2,15 @@
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=esbuild
-pkgver=0.14.38
-pkgrel=2
+pkgver=0.14.39
+pkgrel=1
 pkgdesc="An extremely fast JavaScript/TypeScript bundler and minifier"
 arch=('x86_64')
 url="https://github.com/evanw/esbuild"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('a76c8a943dc63704176afa923c99da55fa9c3917b7a3c95a71ff505cbf5f43e86d2e959027da7ef122fba81bd64d18738a04ef47d3a3ce2f8f226681edd606c2')
+b2sums=('e6b1331e4c9a6218e53df05c108c8258164a2f9e7af6fcfa97d5aa4558a438d9dbd3bfa5f11559b84009e542478fb59481374f03f39c0b307e7ace687b8e4865')
 
 prepare() {
   cd "$pkgname-$pkgver"
