@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win10-auto
 	pkgver = 10.0.19042.789
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
@@ -10,6 +10,8 @@ pkgbase = ttf-ms-win10-auto
 	provides = ttf-font
 	provides = ttf-ms-win10
 	conflicts = ttf-vista-fonts
+	conflicts = ttf-ms-win11-auto
+	conflicts = ttf-ms-win11
 	source = http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso
 	source = file://arial.ttf
 	source = file://arialbd.ttf
@@ -308,6 +310,8 @@ pkgname = ttf-ms-win10-auto
 	provides = ttf-tahoma
 	provides = ttf-ms-fonts
 	conflicts = ttf-vista-fonts
+	conflicts = ttf-ms-win11-auto
+	conflicts = ttf-ms-win11
 	conflicts = ttf-tahoma
 	conflicts = ttf-ms-fonts
 

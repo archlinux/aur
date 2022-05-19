@@ -59,12 +59,12 @@
 pkgbase=ttf-ms-win10-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.19042.789
-pkgrel=4
+pkgrel=5
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 provides=(ttf-font ttf-ms-win10)
-conflicts=(ttf-vista-fonts)
+conflicts=(ttf-vista-fonts ttf-ms-win11-auto ttf-ms-win11)
 makedepends=(udisks2 p7zip httpfs2-2gbplus)
 
 # URL of ISO file from which to extract the fonts.
