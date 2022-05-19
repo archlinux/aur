@@ -1,7 +1,7 @@
 pkgbase = nagstamon-git
 	pkgdesc = Nagios status monitor for the desktop
-	pkgver = 3.9.20211208.r2329.16549c68
-	pkgrel = 2
+	pkgver = 3.9.20220516.r2399.ccb16316
+	pkgrel = 1
 	url = https://nagstamon.ifw-dresden.de/
 	arch = any
 	license = GPL2
