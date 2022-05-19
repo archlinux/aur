@@ -3,13 +3,13 @@
 
 pkgbase=linux-rt
 pkgver=5.17.1.17.realtime2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux RT'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
 license=(GPL2)
 makedepends=(bc cpio git graphviz imagemagick kmod libelf pahole perl
-python-sphinx python-sphinx_rtd_theme tar xmlto)
+python-sphinx python-sphinx_rtd_theme texlive-latexextra xmlto)
 options=(!strip)
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"

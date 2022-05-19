@@ -1,7 +1,7 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
 	pkgver = 5.17.1.17.realtime2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.17.1.17.realtime2
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-rt
 	makedepends = perl
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	makedepends = tar
+	makedepends = texlive-latexextra
 	makedepends = xmlto
 	options = !strip
 	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.17.1.17.realtime2?signed
