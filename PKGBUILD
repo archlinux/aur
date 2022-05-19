@@ -2,7 +2,7 @@
 # Package Maintainer: Federico "EvilScript" Torrielli <evilscript@protonmail.com>
 pkgname=paspio-git
 _pkgname=paspio
-pkgver=0.3.3.326382f
+pkgver=0.3.3.09e8c81
 pkgrel=1
 pkgdesc="A password entropy calculator and library."
 
