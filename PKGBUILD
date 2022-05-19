@@ -1,12 +1,12 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'
 license=('MIT')
 arch=('x86_64')
-install='lfp.install'
+install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
 depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat)
 optdepends=(
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '0953d78602e4c1b21a3512a37fd6715cb110f9484265c4095e8fefaf3199ccc30dc7f67868d69f87fa7098bd685ce9552ab881491554e0ad59a4a59729af1ec8'
-  '062129791f792b6edf0fc9b2a367be2c9ee5f383d6d1088e3ea8c7679dc0b945e73062808cf7f88c143757f8e06d8bb580265c4bca8613ca690ca8d62eaeb986'
+  '043578b9c8296249fe7a56b15a399b5c267d4fe132e0a53eea47f426d537c17ef3b8dd45bd533183d94f19f26187618534a40dcd435e94e9cd117d4dca304254'
+  '63ec31e17e494961c41ebecf2e04a3a1454fa31f4fd11c0d020097d35346ca35b2da5c7221567968e9ce766e1c39e80f1253596a29dc8f61fbcd6c1a67b519b5'
   )
 md5sums=(
-  'c22560a6eb106c1d4b1d1fc9a79b6bc0'
-  '08c7d89f4aa8f7348022abba7224650d'
+  '6b20187a2ff4c77fa77230b5ec051e5d'
+  '9d78f780638da7b17fb220876429fb3f'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
