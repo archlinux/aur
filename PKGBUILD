@@ -5,9 +5,9 @@
 
 pkgname=directfb
 pkgver=1.7.7
-pkgrel=5
+pkgrel=6
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://www.directfb.org"
 license=('LGPL')
 makedepends=('fluxcomp')

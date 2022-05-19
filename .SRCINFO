@@ -1,10 +1,11 @@
 pkgbase = directfb
 	pkgdesc = A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device
 	pkgver = 1.7.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.directfb.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	makedepends = fluxcomp
 	depends = gcc-libs
@@ -19,4 +20,3 @@ pkgbase = directfb
 	sha512sums = 4b4c800e3fa18a02aba6cd2224b57fd9522b024a5b90a5f69676d73254875513822634d039f307a2e5334bbb9f905a8e7d8d6bd388fcbc94580a35d652965f32
 
 pkgname = directfb
-
