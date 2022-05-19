@@ -1,8 +1,8 @@
 pkgbase = python-baycomp
 	pkgdesc = library for Bayesian comparison of classifiers
 	pkgver = 1.0.2
-	pkgrel = 1
-	url = https://github.com/guglielmino/baycomp-py
+	pkgrel = 2
+	url = https://github.com/janezd/baycomp
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -12,4 +12,3 @@ pkgbase = python-baycomp
 	sha256sums = c43472c16bd7cdf4884dd4c73dd307e4a3da7097fe49c83cd5e88d75142923b0
 
 pkgname = python-baycomp
-
