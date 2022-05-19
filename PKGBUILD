@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('python-pyqt5' 'qt5-base' 'python-requests' 'libnotify')
 makedepends=('python-setuptools')
-source=("https://git.roshless.me/~roshless/$pkgname/archive/${pkgver}.tar.gz"
+source=("https://git.roshless.me/nnrss/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "nnrss-qt.desktop")
 
 build() {
