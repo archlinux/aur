@@ -1,4 +1,4 @@
-From ef3a423e2d01f511a7af11071324ca90177ac40f Mon Sep 17 00:00:00 2001
+From dcf8aacaca06c5d4305e81e4d7e12b37eff6e88a Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Sun, 8 May 2022 12:58:59 +0300
 Subject: [PATCH 2/2] RevertMe: Use one job for autoconf targets because of an
