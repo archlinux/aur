@@ -2,11 +2,11 @@
 # Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=5.1.7
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Omada SDN Controller'
-_basepkgname='Omada_SDN_Controller_v5.1.7_Linux_x64'
-_basepkgpath='upload/software/2022/202203/20220322'
+_basepkgname='Omada_SDN_Controller_v5.3.1_Linux_x64'
+_basepkgpath='upload/software/2022/202205/20220507'
 arch=('x86_64')
 url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
@@ -18,10 +18,8 @@ source=(
     "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}.tar.gz"
     "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
-sha256sums=('ef9b9ad7c9cf6888be0557aad30658ece0e10f9b6b76147d13d8a3d072dd5c7c'
+sha256sums=('6f64fba6bbe8981a725613470bb8d32019b7136b9eae060661ca4867cb4e0f64'
             'SKIP')
-
-
 package() {
     cd ${_basepkgname}
 
@@ -43,12 +41,12 @@ package() {
         install -m 755 "${file}" "${BASEDIR}/bin/"
     done
 
-    # Install keystore.
-    install -dm 755 "${BASEDIR}/keystore"
+    # Install keystore. - keystore no longer available since version 5.3.1
+    #install -dm 755 "${BASEDIR}/keystore"
 
-    for file in keystore/*; do
-        install -m 644 "${file}" "${BASEDIR}/keystore/"
-    done
+    #for file in keystore/*; do
+    #    install -m 644 "${file}" "${BASEDIR}/keystore/"
+    #done
 
     # Install *.properties config files.
     install -dm 755 "${BASEDIR}/properties"
