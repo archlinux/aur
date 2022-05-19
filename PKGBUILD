@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ausweisapp2
-pkgver=1.22.5
+pkgver=1.22.6
 pkgrel=1
 pkgdesc="A software application that you install on your computer to use your national identity card or your electronic residence permit for online identification"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'qt5-tools')
 optdepends=('ccid' 'acsccid' 'pcsc-cyberjack')
 source=("https://github.com/Governikus/AusweisApp2/releases/download/${pkgver}/AusweisApp2-${pkgver}.tar.gz"{,.asc})
 validpgpkeys=('699BF3055B0A49224EFDE7C72D7479A531451088')
-sha256sums=('e390159c5387c6776a3f041e7257fc430b03deafd24653250b4177f6dc9eb721'
+sha256sums=('3665502eb9fa5811c58ffd1952e15589216bcaaf88c63458ac5930c9ad588945'
             'SKIP')
 
 prepare() {
