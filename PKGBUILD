@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r209.g5e95a231
+pkgver=5.r213.g2779f248
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('x86_64')
@@ -28,8 +28,12 @@ pkgver() {
 	git describe --long --tags | sed 's/^r//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i '/std::array types/s/static constexpr/const/' $_pkgname/tests/cpu_info.cpp
+}
+
 build() {
-	CXXFLAGS+=" -ffat-lto-objects"
+	CXXFLAGS+=" -ffat-lto-objects -Wno-array-bounds"
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
