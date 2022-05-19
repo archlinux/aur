@@ -10,7 +10,6 @@ pkgbase = system76-scheduler
 	makedepends = rust
 	makedepends = just
 	makedepends = bcc-tools
-	conflicts = system76-scheduler-git
 	backup = etc/system76-scheduler/assignments/default.ron
 	source = https://github.com/pop-os/system76-scheduler/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = SKIP
