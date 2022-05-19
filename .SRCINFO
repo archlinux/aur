@@ -1,6 +1,6 @@
 pkgbase = mapserver-git
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
-	pkgver = rel.7.6.0.r741.g67b1f043c
+	pkgver = 0
 	pkgrel = 1
 	url = http://www.mapserver.org
 	arch = i686
