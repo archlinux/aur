@@ -2,18 +2,17 @@
 
 _pkgname=zypper
 pkgname=${_pkgname}-git
-pkgver=1.14.50.9.g7d1549bf
+pkgver=1.14.52.37.g01e16dc9
 pkgrel=1
 pkgdesc="World's most powerful command line package manager"
 arch=('x86_64')
-url="https://github.com/openSUSE/${_pkgname}"
+url='http://en.opensuse.org/Portal:Zypper'
 license=('GPL')
 depends=(
   'augeas'
   'libzypp'
   'perl'
   'procps'
-  'protobuf'
 )
 makedepends=(
   'asciidoc'
@@ -21,19 +20,11 @@ makedepends=(
   'boost'
   'cmake'
   'git'
-  'ninja'
 )
-provides=(
-  "${_pkgname}"
-  'apt'
-)
-conflicts=(
-  "${_pkgname}"
-  'apt'
-)
-source=(
-  "${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git"
-  'make-ZyppCommon-cmake-module-includable.patch')
+provides=("${_pkgname}" 'apt')
+conflicts=("${provides[@]}")
+source=("${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git"
+        'make-ZyppCommon-cmake-module-includable.patch')
 sha256sums=('SKIP'
             'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
 
@@ -49,15 +40,19 @@ prepare() {
 
 build() {
   cmake \
-  -B build \
-  -S "${pkgname}" \
-  -G Ninja \
-  -D CMAKE_INSTALL_PREFIX=/usr \
-  -D CMAKE_BUILD_TYPE=Release \
-  -D LIB=lib \
-  -D ZYPP_PREFIX=/usr \
+    -B build \
+    -S "${pkgname}" \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D LIB=lib \
+    -D ZYPP_PREFIX=/usr \
+    -D ENABLE_BUILD_TESTS=ON
 
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build
 }
 
 package() {
