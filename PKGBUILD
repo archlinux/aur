@@ -3,8 +3,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=dcmtk
-pkgver=3.6.6
-pkgrel=3
+pkgver=3.6.7
+pkgrel=1
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
@@ -12,8 +12,8 @@ license=('other')
 depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'libwrap')
 optdepedns=('libiconv')
 makedepends=('cmake' 'make')
-source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk366/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('2bba96eac5908012eec7f510e05e7e426b3f1d2454fcdec056a3de9eb724b04d9d12f3cd0088b1f3be9c32430367600abdf30514d0f62c2f017f7740d1008b63')
+source=("https://dicom.offis.de/download/dcmtk/dcmtk367/${pkgname}-${pkgver}.tar.gz");
+sha512sums=('b9c227f496de65424256636fa7ad266affc6593f72c6849271da94837b68c93a5b8e056ecd09d46550b6ac0530c406ab9f71751d317a5fd4171a222f9fc9ca45')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
