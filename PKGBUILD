@@ -2,8 +2,8 @@
 
 pkgname=ytsubconverter-bin
 _reponame=YTSubConverter
-pkgver=1.6.0
-pkgrel=4
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="A tool for creating styled YouTube subtitles"
 arch=('x86_64')
 url="https://github.com/arcusmaximus/YTSubConverter"
@@ -15,7 +15,7 @@ source=("ytsubconverter.desktop"
         "ytsc-bin-${pkgver}.tar.xz::https://github.com/arcusmaximus/${_reponame}/releases/download/${pkgver}/${_reponame}-Linux.tar.xz")
 sha256sums=('8d28386263f039bf3e7db1ff7db97039a23aa8f1eb345c769a8e8da388fccb5a'
             'e42a5a178c01515e9db901038562c7e220d3088cfb49abaf8d0a3c80e5e36637'
-            'ac7c7e859b962f000b21f794dc65c6a3d54ab7b8e24db7659ad2dc1a703c2d43')
+            '788323174e7234a1c346fbcc921281b26c341454de6be97c2ada89ae90f4c557')
 
 package() {
     install -Dm644 "${srcdir}/ytsubconverter.desktop" "${pkgdir}/usr/share/applications/ytsubconverter.desktop"
@@ -33,10 +33,7 @@ package() {
     done
     install -Dm644 "${srcdir}/checkers.png" "${pkgdir}/opt/${_reponame}/checkers.png"
     install -Dm644 "${srcdir}/YTSubConverter.Shared.pdb" "${pkgdir}/opt/${_reponame}/YTSubConverter.Shared.pdb"
-
-    # Needs to be writeable by user. Ideally should be in a config directory.
-    # Gets overwritten on update, too.
-    install -Dm777 "${srcdir}/StyleOptions.xml" "${pkgdir}/opt/${_reponame}/StyleOptions.xml"
+    install -Dm644 "${srcdir}/StyleOptions.xml" "${pkgdir}/opt/${_reponame}/StyleOptions.xml"
 
     # Actual executables.
     install -Dm644 "${srcdir}/YTSubConverter.exe" "${pkgdir}/opt/${_reponame}/YTSubConverter.exe"
