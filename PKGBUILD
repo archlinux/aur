@@ -1,33 +1,3 @@
-###########################################################
-# !!!!!!!!!!!! THIS PACKAGE HAS BEEN RENAMED !!!!!!!!!!!! #
-###########################################################
-#
-# The PKGBUILD of the old
-#
-#   streamlink-twitch-gui
-#
-# AUR package has been moved to
-#
-#   streamlink-twitch-gui-bin
-#
-# This PKGBUILD now builds from source, excluding NW.js
-#
-# ----
-#
-# This message has been added as a temporary warning to
-# let users of the old package know about the name change,
-# and it will be removed after the next release.
-#
-# Users of Streamlink Twitch GUI will have to upgrade to
-# the 2.0.0 release until the end of February due to the
-# shutdown of Twitch's kraken API. For more information,
-# please see the changelog of the 2.0.0 release.
-#
-# Thank you!
-#
-###########################################################
-
-
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 
 pkgname=streamlink-twitch-gui
