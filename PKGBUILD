@@ -1,4 +1,5 @@
-# Maintainer: Zepman <the_zep_man@hotmail.com>
+# Maintainer: RubenKelevra
+# Contributor: Zepman <the_zep_man@hotmail.com>
 # Contributor: Michael Lass <bevan@bi-co.net>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: reflexing <reflexing@reflexing.ru>
@@ -58,7 +59,7 @@
 pkgbase=ttf-ms-win10-auto
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.19042.789
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -68,7 +69,7 @@ makedepends=(udisks2 p7zip httpfs2-2gbplus)
 
 # URL of ISO file from which to extract the fonts.
 # Must be HTTP due to limitations of httpfs2.
-_iso="http://software-download.microsoft.com/download/pr/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso"
+_iso="http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso"
 
 _ttf_ms_win10=(
 #########################################################################################

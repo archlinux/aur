@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win10-auto
 	pkgver = 10.0.19042.789
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = ttf-ms-win10-auto
 	provides = ttf-font
 	provides = ttf-ms-win10
 	conflicts = ttf-vista-fonts
-	source = http://software-download.microsoft.com/download/pr/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso
+	source = http://software-static.download.prss.microsoft.com/pr/download/19042.631.201119-0144.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso
 	source = file://arial.ttf
 	source = file://arialbd.ttf
 	source = file://ariali.ttf
@@ -345,4 +345,3 @@ pkgname = ttf-ms-win10-auto-other
 	pkgdesc = Microsoft Windows 10 Other TrueType fonts
 	provides = ttf-ms-win10-other
 	conflicts = ttf-ms-win10-other
-
