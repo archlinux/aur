@@ -1,9 +1,9 @@
 # Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
 # Original Maintainer:: Marcos Piccinini <x@nofxx.com>
-# Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
+# Original Maintainer::  Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver-git
-pkgver=0
+pkgver=rel.7.6.0.r741.g67b1f043c
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
