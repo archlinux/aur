@@ -12,6 +12,9 @@ WorkingDirectory=~
 EnvironmentFile=-/etc/hass.env
 
 Type=oneshot
+# upgrade home assistant and all its necessary libs
+ExecStart=pip install --no-warn-script-location --user --upgrade homeassistant
+
 # delete old python version libraries in the venv
 ExecStart=sh -c '\
 find \
@@ -20,9 +23,6 @@ $(python -c "import os.path as path; import site; print(path.dirname(path.dirnam
 -print0 \
 | xargs --no-run-if-empty -0 rm --verbose --recursive'
 
-# upgrade home assistant and all its necessary libs
-ExecStart=pip install --no-warn-script-location --user --upgrade homeassistant
-
 LockPersonality=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
@@ -30,6 +30,9 @@ ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
 PrivateMounts=true
+PrivateTmp=true
+ProtectSystem=full
+PrivateDevices=true
 
 [Install]
 WantedBy=multi-user.target

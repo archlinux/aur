@@ -27,6 +27,7 @@ ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
 PrivateMounts=true
+ProtectSystem=full
 
 
 [Install]

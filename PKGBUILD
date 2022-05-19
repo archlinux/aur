@@ -1,7 +1,7 @@
 pkgname=home-assistant-service-pip
 _serviceName=hass
 pkgdesc='Self installing package of Home Assistant using pip'
-pkgver=2
+pkgver=3
 pkgrel=1
 arch=('any')
 url='https://home-assistant.io/'

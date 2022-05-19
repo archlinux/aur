@@ -2,6 +2,7 @@ post-install() {
 	cat - <<- 'EOF'
 		This package installs a hass.service and a hass-update.service to manage the Home Assistant installation.
 		You can ( and should ) configure the parameters for native modules compilation at /etc/hass.env.
+		Any customization to the service, such as granting bluetooth capabilities, can be done using # systemctl edit hass.
 		Auto update and installation of Home Assistant is handled before service launch/restart, it may take a while, especially the first time.
 	EOF
 }
