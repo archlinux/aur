@@ -1,0 +1,17 @@
+pkgbase = r-pzfx
+	pkgdesc = Import GraphPad Prism (pzfx) data in R
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/pzfx/vignettes/pzfx.html
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-xml2
+	depends = r-testthat
+	depends = r-knitr
+	depends = r-rmarkdown
+	optdepends = r-rio
+	source = https://cran.r-project.org/src/contrib/pzfx_0.3.0.tar.gz
+	sha256sums = f9e9781900011be1c91db4e1381481d94eca565a00f18c8a449813322ddf0b39
+
+pkgname = r-pzfx
