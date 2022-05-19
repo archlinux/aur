@@ -1,7 +1,7 @@
 pkgbase = gtklock
 	pkgdesc = GTK-based lockscreen for Wayland
-	pkgver = 20220519
-	pkgrel = 2
+	pkgver = 20220520
+	pkgrel = 1
 	url = https://github.com/jovanlanik/gtklock
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = gtklock
 	depends = gtk-layer-shell
 	depends = wayland
 	depends = pam
-	source = https://github.com/jovanlanik/gtklock/archive/refs/tags/20220519.tar.gz
-	sha256sums = 8a27d86a15bc7eb49d4d7ff91625c1a92befad35af7b15c0114b71ab75831a17
+	source = https://github.com/jovanlanik/gtklock/archive/refs/tags/20220520.tar.gz
+	sha256sums = cea96d3c8f4762d405522d29f9aac112d36d1256f721744b47119b9204351176
 
 pkgname = gtklock
