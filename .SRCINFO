@@ -1,19 +1,18 @@
 pkgbase = dell-idractools
 	pkgdesc = Dell EMC iDRAC Tools (RACADM, VMCLI, IPMI Tool)
-	pkgver = 9.4.0.3732
-	pkgrel = 2
-	url = https://www.dell.com/support/home/de/de/debsdt1/drivers/driversdetails?driverid=G3NDF&oscode=RHE70&productcode=poweredge-r640
+	pkgver = 10.1.0.0.4566
+	pkgrel = 1
+	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=df1nd&oscode=rhel8&productcode=poweredge-r7525
 	arch = x86_64
 	license = GPL2
 	license = LGPL2
 	makedepends = rpmextract
 	conflicts = dell-srvadmin
 	conflicts = dell-mgmtstat
-	source = https://dl.dell.com/FOLDER05920766M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz.sign
-	source = https://dl.dell.com/FOLDER05920767M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz
+	source = https://dl.dell.com/FOLDER07423495M/1/DellEMC-iDRACTools-Web-LX-10.1.0.0-4566_A00.tar.gz.sign
+	source = https://dl.dell.com/FOLDER07423496M/1/DellEMC-iDRACTools-Web-LX-10.1.0.0-4566_A00.tar.gz
 	validpgpkeys = 42550ABD1E80D7C1BC0BAD851285491434D8786F
-	sha256sums = SKIP
-	sha256sums = bd7cecb61fbf46818355c5c142e23b3b35466cacc5bb56ee24dc9a6da728d595
+	sha256sums = ae88b3ccef2e3d7cbc25aea5e48e1e9a5cfd760cd5e651ba1ab65e6b57bf32a0
+	sha256sums = e8329bce40684805bfcebf6975e2fe18850d302329e4424170acdc460d5c1d2a
 
 pkgname = dell-idractools
-
