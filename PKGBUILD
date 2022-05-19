@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.09.05
+pkgver=6.09.06
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
 url="https://github.com/htrb/ngraph-gtk/"
@@ -11,7 +11,7 @@ depends=('gsl' 'gtksourceview4' 'ruby')
 optdepends=('ttf-liberation: alternative to Times, Arial, and Courier')
 source=("https://github.com/htrb/ngraph-gtk/releases/download/v${pkgver}/ngraph-gtk-${pkgver}.tar.gz")
 options=('!makeflags')
-sha512sums=('0ffb57c0a743ac6a15427b48027f1f90042c598af962bb168eb61af157bc75657b53c79878babc14cacd210a13237b6c3bf127dee71a5c4448420c67bf4540e4')
+sha512sums=('4d391ba8e96db261c035091ae61fb09e24d8b5a7fd61d531f944d25d4913ddeac3204ff99008832cb67111924e385af2d689641f1a9c979dd607333a70b93933')
 
 build() {
   cd "${srcdir}/ngraph-gtk-${pkgver}"
