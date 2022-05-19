@@ -1,6 +1,6 @@
 pkgbase = google-tsunami-security-scanner
 	pkgdesc = A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/google/tsunami-security-scanner
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = google-tsunami-security-scanner
 	depends = ncrack>=0.7
 	depends = jdk11-openjdk
 	conflicts = google-tsunami-security-scanner-git
-	source = google-tsunami-security-scanner-0.0.10.tar.gz::https://github.com/google/tsunami-security-scanner/archive/v0.0.10.tar.gz
+	source = google-tsunami-security-scanner-0.0.11.tar.gz::https://github.com/google/tsunami-security-scanner/archive/v0.0.11.tar.gz
 	source = https://github.com/google/tsunami-security-scanner/raw/master/tsunami.yaml
-	sha256sums = 534a8974a5f90af8a8d17dd4e5778606bb6fac05a57869df2e1393c8fad04b49
+	sha256sums = b2f807b5b0c8f841e40d750aaaad3d5bcc53802e4b821882eb29136b7ebe52ad
 	sha256sums = 633313cb332fcafb46a7200b1b22d691160c2d5b5677123c1677bf53749d100b
 
 pkgname = google-tsunami-security-scanner
