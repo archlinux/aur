@@ -1,6 +1,6 @@
 pkgbase = otf-comic-shanns
 	pkgdesc = a classy font
-	pkgver = r10.ff436a9
+	pkgver = r16.b98eee0
 	pkgrel = 1
 	url = https://github.com/shannpersand/comic-shanns
 	arch = any
@@ -9,4 +9,3 @@ pkgbase = otf-comic-shanns
 	sha256sums = SKIP
 
 pkgname = otf-comic-shanns
-

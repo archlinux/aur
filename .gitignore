@@ -1,4 +1,4 @@
-src/
-pkg/
-comic-shanns
-*.pkg.tar.xz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
