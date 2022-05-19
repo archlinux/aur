@@ -1,0 +1,18 @@
+pkgbase = sofa-server
+	pkgdesc = Turn your phone or tablet into a remote control for your GNOME desktop.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://flavio.tordini.org/sofa
+	arch = x86_64
+	license = unknown
+	depends = avahi
+	depends = gnome-shell
+	depends = libnotify
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-websockets
+	depends = systemd
+	source = sofa-server-1.5.deb::https://flavio.tordini.org/files/sofa/sofa-server.deb
+	sha256sums = a93284b71fdbe987ede0fb32dbf093882a4e8cb254fa0b9392bc3a41d15170ab
+
+pkgname = sofa-server
