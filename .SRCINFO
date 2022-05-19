@@ -1,6 +1,6 @@
 pkgbase = wonderpen-appimage
 	pkgdesc = A professional writing app with a focused mode and markdown support
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://www.tominlab.com/en/wonderpen
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = wonderpen-appimage
 	conflicts = wonderpen
 	noextract = wonderpen.AppImage
 	options = !strip
-	source = https://file.tominlab.com/WonderPen/2.1/WonderPen_linux_x86_64_2.1.4(6308).AppImage
+	source = https://file.tominlab.com/WonderPen/2.1/WonderPen_linux_x86_64_2.1.5(6318).AppImage
 	source = wonderpen.sh
-	sha256sums = 851578ae2cd218596fac628e4bacec68c0f37f7bbdb09c91ee0324965861ba96
+	sha256sums = 09f4a132963e392bc86fbfb898d51c6887e04add060bc93509d6e95a7e2eb06a
 	sha256sums = e9d4b90a89dad8de88c49346fff51e3813a7f1503ab3d058b87cf647d0946a10
 
 pkgname = wonderpen-appimage
