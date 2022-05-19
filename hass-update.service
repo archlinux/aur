@@ -1,0 +1,30 @@
+[Unit]
+Description=Home assistant update
+After=network.target
+
+[Service]
+User=hass
+Group=hass
+LogsDirectory=hass
+StateDirectory=hass
+WorkingDirectory=~
+
+EnvironmentFile=-/etc/hass.env
+
+Type=oneshot
+# delete old python version libraries in the venv
+ExecStartPre=sh -c 'find $(python -c "import os.path as path; import site; print(path.dirname(path.dirname(site.getusersitepackages())))") -mindepth 1 -type d -path $(python -c "import os.path as path; import site; print(path.basename(path.dirname(path.relpath(site.getusersitepackages(),site.getuserbase()))))") -prune -print0 | xargs --no-run-if-empty -0 rm --verbose --recursive'
+
+# upgrade home assistant and all its necessary libs
+ExecStartPre=pip install --no-warn-script-location --user --upgrade homeassistant
+
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateMounts=true
+
+[Install]
+WantedBy=multi-user.target
