@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager-Avalonia'
 license=('MIT')
 depends=('dotnet-runtime' 'xorg-xprop')
-makedepends=('dotnet-sdk')
+makedepends=('git' 'dotnet-sdk')
 source=("git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v${pkgver}"
         eternalmodmanager)
 sha256sums=('SKIP'
