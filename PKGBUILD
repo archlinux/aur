@@ -5,8 +5,9 @@
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-_ver=4.6.0-rc.1
-pkgver="${_ver/-}"
+pkgver=4.6.0
+#_ver=4.6.0-rc.1
+#pkgver="${_ver/-}"
 pkgrel=1
 
 pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
@@ -19,12 +20,12 @@ conflicts=("$_name")
 
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 
-#_url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
-#source=("$_url")
-#sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$pkgver-linux-x64.rpm" | cut -d\  -f1))
-_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
+_url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
 source=("$_url")
-sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
+sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$pkgver-linux-x64.rpm" | cut -d\  -f1))
+#_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
+#source=("$_url")
+#sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
 
 
 package() {
