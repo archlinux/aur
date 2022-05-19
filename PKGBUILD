@@ -5,7 +5,7 @@ pkgname=steam-rom-manager-git
 pkgdesc="An app for managing ROMs in Steam (Git version)."
 license=("GPL3")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver=2.3.32
+pkgver=2.3.37.r17.g0866070
 pkgrel=1
 arch=("x86_64")
 makedepends=("git" "nodejs" "npm" "libxcrypt-compat")
@@ -17,6 +17,7 @@ source=("$pkgname::git+https://github.com/SteamGridDB/steam-rom-manager"
 sha512sums=("SKIP"
             "ff714e294c4fe0282327614ee93249d154ee77086d41e0964e61ad297472e9a0787b71ef274ecd5b86fd97ec23ab655870519f673b113e893f1678f0897abaac")
 
+
 pkgver() {
   cd $pkgname
 
@@ -27,16 +28,19 @@ pkgver() {
   )
 }
 
+
 prepare() {
   cd $pkgname
   npm ci
 }
+
 
 build() {
   cd $pkgname
   npm run build:dist
   npm run build:linux
 }
+
 
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
