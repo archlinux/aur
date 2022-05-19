@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=11.20
+pkgver=11.21
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "c0fb4e502a2771e85aed30c4edf4c1245b9d47ee22bc41df0c572e3c78bc0b44"
+    "3ba9614d7615765e687a645389b2336bb50c3c2df52bc9f4a583852b0e8bca42"
 )
 options=(!strip)
 install=".install"
@@ -38,7 +38,7 @@ package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    tail -c +37816 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    tail -c +37836 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
     # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
     tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
@@ -66,7 +66,7 @@ package() {
         "$pkgdir/opt/$_pkgname/Resources/FreeFileSync.png" \
         "$pkgdir/opt/$_pkgname/Resources/RealTimeSync.png"
 
-    # desktop launcher
+    # desktop launchers
     for tmpl in "$srcdir"/*.template.desktop; do
         f="${tmpl/.template/}"
         sed -E -e 's#^(Exec=")FFS_INSTALL_PATH/([^"]+")#\1/opt/freefilesync/\2#' \
