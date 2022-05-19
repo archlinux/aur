@@ -4,7 +4,7 @@
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
@@ -25,10 +25,10 @@ sha256sums=('5d5d86963f5a922ce5f616159e0d5705602aa39c7520dc8a5f0f020adb74a3da'
             '7da797cd35bc5060e3bfa4ba37681cbbd2201a499477772c008f9f1e691b6ea0'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418'
-            '122b89f5fff5d46a52eb3c21ac105b22b6cab6258a5c001af0f86ae88f403b75'
-            'a26c6ae257441a51240e597b40aea163e3d1de97fbff8d720d419b96713aab6e'
-            '559d9cfd957a0d2a9559a8e0dd6ade78da51912abeae05b216e67fae9a119cda'
-            'a83ab767620aaf9ea9f15190cc22f7279d8465be5435998ca4a5efbfc0bf57b1')
+            'faf0ac96bc33cbda28105389d4dba19e23bc682cc010611d0b4529933e78a36c'
+            '84c2ea643553b81dd8df912c0b79618697b7a2ef2cc1c8199a0f446873b615c6'
+            '04d40011c2442f32f851e9ea7be45214c2f3a827a00d6b81c9323a0cf8142a7c'
+            '48ef876935fe7798faeafbfcdffbbf29e93677c7c5492c745eaa757f4fecb9cc')
 prepare(){
     7z x "bili_win-install.exe" -o"bili" "\$PLUGINSDIR/app-64.7z"
     7z x "bili/\$PLUGINSDIR/app-64.7z" -o"bili" "resources"
