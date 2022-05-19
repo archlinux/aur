@@ -3,10 +3,10 @@
 
 pkgname=simple-diary-gtk
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and lightweight diary app'
 arch=('x86_64')
-url='https://github.com/johan-bjareholt/${pkgname}'
+url="https://github.com/johan-bjareholt/${pkgname}"
 license=('GPL3')
 depends=('libhandy' 'md4c' 'webkit2gtk' 'gtkmdview')
 makedepends=('appstream-glib' 'meson')
