@@ -1,13 +1,12 @@
 pkgbase = r-globals
 	pkgdesc = Identify Global Objects in R Expressions
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=globals
 	arch = any
-	license = LGPL2.1
-	license = LGPL3
-	depends = r>=3.1.2
-	source = https://cran.r-project.org/src/contrib/globals_0.14.0.tar.gz
-	sha256sums = 203dbccb829ca9cc6aedb6f5e79cb126ea31f8dd379dff9111ec66e3628c32f3
+	license = LGPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/globals_0.15.0.tar.gz
+	sha256sums = f83689a420590b0d62b049c40a944c1c8c7202b3f1cc12102712c63104e99496
 
 pkgname = r-globals

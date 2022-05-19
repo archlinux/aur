@@ -1,24 +1,26 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=globals
-_cranver=0.14.0
+_cranver=0.15.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Identify Global Objects in R Expressions"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(LGPL2.1 LGPL3)
-depends=('r>=3.1.2')
+license=(LGPL)
+depends=(r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('203dbccb829ca9cc6aedb6f5e79cb126ea31f8dd379dff9111ec66e3628c32f3')
+sha256sums=('f83689a420590b0d62b049c40a944c1c8c7202b3f1cc12102712c63104e99496')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
