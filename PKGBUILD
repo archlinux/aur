@@ -9,6 +9,7 @@ pkgver=2.3.32
 pkgrel=1
 arch=("x86_64")
 makedepends=("git" "nodejs" "npm" "libxcrypt-compat")
+depends=("nss" "atk" "at-spi2-atk" "gtk3" "alsa-lib")
 provides=("steam-rom-manager")
 conflicts=("steam-rom-manager")
 source=("$pkgname::git+https://github.com/SteamGridDB/steam-rom-manager"
