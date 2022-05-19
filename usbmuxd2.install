@@ -1,0 +1,16 @@
+post_install() {
+	cat << EOF
+	This is a drop in for the vanilla usbmuxd with network functionality enabled via avahi.
+	Thanks to tihmstar! https://github.com/tihmstar
+
+	To use network functionality ensure you have avahi-daemon running.
+
+	Then enable usbmuxd via systemd 
+	"systemctl enable --now usbmuxd"
+
+	To disable the daemon
+	"systemctl disable --now usbmuxd"
+
+	The udev rule should wake up the daemon in any case
+EOF
+}

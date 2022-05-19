@@ -1,0 +1,23 @@
+pkgbase = usbmuxd2-git
+	pkgdesc = Drop-in replacement of usbmuxd with wifi support
+	pkgver = r46.753b79e
+	pkgrel = 1
+	url = https://github.com/tihmstar/usbmuxd2
+	install = usbmuxd2.install
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = clang
+	depends = avahi
+	depends = libplist-git
+	depends = libusbmuxd-git
+	depends = libusb
+	depends = libimobiledevice-git
+	depends = libimobiledevice-glue-git
+	depends = libgeneral-git
+	provides = usbmuxd
+	conflicts = usbmuxd
+	source = git+https://github.com/tihmstar/usbmuxd2.git
+	md5sums = SKIP
+
+pkgname = usbmuxd2-git
