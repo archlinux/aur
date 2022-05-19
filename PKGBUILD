@@ -50,6 +50,7 @@ build() {
   arch-meson $pkgname build \
     -D audit=true \
     -D docs=true \
+    -D linux-4-17=true \
     -D system-console-users=gdm,sddm,lightdm,lxdm
   ninja -C build
 }
