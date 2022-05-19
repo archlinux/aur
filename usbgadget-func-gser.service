@@ -1,0 +1,18 @@
+[Unit]
+Description=USB Gadget Serial Console
+Before=gadget-start.service
+After=modprobe@usbfunc:gser.service gadget-init.service
+Wants=modprobe@usbfunc:gser.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-gser
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/gser.0
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/gser.0 ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/gser.0
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/gser.0
+[Install]
+WantedBy=usb-gadget.target

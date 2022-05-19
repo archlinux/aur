@@ -1,0 +1,16 @@
+[Unit]
+Description=USB Gadget Android Debug Bridge Post-Setup
+Before=gadget-start.service
+After=adbd.service dev-usb\x2dffs-adb.mount gadget-init.service
+Requires=adbd.service dev-usb\x2dffs-adb.mount gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-adb
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/ffs.adb ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/ffs.adb
+[Install]
+WantedBy=usb-gadget.target
+Also=usbgadget-func-adb-pre.service

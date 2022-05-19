@@ -1,0 +1,19 @@
+[Unit]
+Description=USB Gadget Mass Storage Device %I
+Before=gadget-start.service
+After=modprobe@usbfunc:mass_storage.service gadget-init.service
+Wants=modprobe@usbfunc:mass_storage.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-mass
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/mass_storage.%i
+ExecStart=/usr/bin/bash -c "echo /dev/%I > ${GADGET}/functions/mass_storage.%i/lun.0/file"
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/mass_storage.%i ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/mass_storage.%i
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/mass_storage.%i
+[Install]
+WantedBy=usb-gadget.target

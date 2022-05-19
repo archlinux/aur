@@ -1,0 +1,18 @@
+[Unit]
+Description=USB Gadget EEM Network
+Before=gadget-start.service
+After=modprobe@usbfunc:eem.service NetworkManager.service systemd-networkd.service gadget-init.service dnsmasq.service
+Wants=modprobe@usbfunc:eem.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-eem
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/eem.0
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/eem.0 ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/eem.0
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/eem.0
+[Install]
+WantedBy=usb-gadget.target

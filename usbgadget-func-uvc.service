@@ -1,0 +1,18 @@
+[Unit]
+Description=USB Gadget Video
+Before=gadget-start.service
+After=modprobe@usbfunc:uvc.service gadget-init.service
+Wants=modprobe@usbfunc:uvc.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-uvc
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/uvc.0
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/uvc.0 ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/uvc.0
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/uvc.0
+[Install]
+WantedBy=usb-gadget.target

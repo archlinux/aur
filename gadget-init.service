@@ -1,0 +1,16 @@
+[Unit]
+Description=USB Gadget Init
+After=modprobe@libcomposite.service sys-kernel-config.mount
+Wants=modprobe@libcomposite.service
+Requires=sys-kernel-config.mount
+ConditionPathExists=/sys/kernel/config/usb_gadget
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-init
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/bash /usr/lib/systemd/scripts/gadget-init.sh start
+[Install]
+WantedBy=usb-gadget.target
+Also=gadget-start.service

@@ -1,0 +1,9 @@
+[Match]
+Type=bridge
+Name=sharenet
+[Network]
+Address=192.168.42.1/24
+DHCPServer=yes
+ConfigureWithoutCarrier=yes
+[Link]
+RequiredForOnline=no

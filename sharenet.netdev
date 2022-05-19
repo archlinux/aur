@@ -1,0 +1,5 @@
+[NetDev]
+Kind=bridge
+Name=sharenet
+[Bridge]
+STP=off

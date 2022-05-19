@@ -1,0 +1,18 @@
+[Unit]
+Description=USB Gadget Audio 1.0
+Before=gadget-start.service
+After=modprobe@usbfunc:uac1.service gadget-init.service
+Wants=modprobe@usbfunc:uac1.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-uac1
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/uac1.0
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/uac1.0 ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/uac1.0
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/uac1.0
+[Install]
+WantedBy=usb-gadget.target

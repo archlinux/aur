@@ -1,0 +1,37 @@
+## {GADGET}/idVendor
+##   Type:   number
+##   Format: 0x05F9
+ID_VENDOR=0x05F9
+
+## {GADGET}/idProduct
+##   Type:   number
+##   Format: 0x1234
+ID_PRODUCT=0x1234
+
+## {GADGET}/strings/*/serialnumber
+##   Type:   serial string / mode
+##   Format: 0123456789abcdef
+##     machine:  /etc/machine-id
+##     serialno: /proc/cmdline(androidboot.serialno)
+SERIAL=serialno
+
+## {GADGET}/strings/*/manufacturer
+##   Type:   string
+MANFACTURER=ClassFun
+
+## {GADGET}/strings/*/product
+##   Type:   string
+PRODUCT=MiniLinux
+
+## {GADGET}/configs/*/strings/*/configuration
+##   Type:   string
+CONFIGURATION=gadget
+
+## Gadget device name
+##   Type:   string
+GADGET=gadget
+
+## USB device controller name (/sys/class/udc)
+##   Type:   string / mode
+##     auto: /proc/cmdline(androidboot.usbcontroller) or scan /sys/class/udc
+UDC=auto

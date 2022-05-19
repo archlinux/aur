@@ -1,0 +1,6 @@
+[Match]
+Type=gadget
+[Network]
+Bridge=sharenet
+[Link]
+RequiredForOnline=no

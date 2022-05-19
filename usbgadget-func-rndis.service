@@ -1,0 +1,24 @@
+[Unit]
+Description=USB Gadget RNDIS Network
+Before=gadget-start.service
+After=modprobe@usbfunc:rndis.service NetworkManager.service systemd-networkd.service gadget-init.service dnsmasq.service
+Wants=modprobe@usbfunc:rndis.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-func-rndis
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/mkdir ${GADGET}/functions/rndis.0
+ExecStart=-/usr/bin/bash -c "echo 0xEF > ${GADGET}/functions/rndis.0/class"
+ExecStart=-/usr/bin/bash -c "echo 0x04 > ${GADGET}/functions/rndis.0/subclass"
+ExecStart=-/usr/bin/bash -c "echo 0x01 > ${GADGET}/functions/rndis.0/protocol"
+ExecStart=-/usr/bin/bash -c "echo 0xEF > ${GADGET}/bcdDeviceClass"
+ExecStart=-/usr/bin/bash -c "echo 0x04 > ${GADGET}/bcdDeviceSubClass"
+ExecStart=-/usr/bin/bash -c "echo 0x01 > ${GADGET}/bcdDeviceProtocol"
+ExecStart=/usr/bin/ln -s ${GADGET}/functions/rndis.0 ${GADGET}/configs/a.1/
+ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/rndis.0
+ExecStop=/usr/bin/rmdir ${GADGET}/functions/rndis.0
+[Install]
+WantedBy=usb-gadget.target

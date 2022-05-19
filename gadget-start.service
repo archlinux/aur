@@ -1,0 +1,16 @@
+[Unit]
+Description=USB Gadget Start
+After=modprobe@udc-core.service gadget-init.service
+Wants=modprobe@udc-core.service
+Requires=gadget-init.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+SyslogIdentifier=gadget-start
+EnvironmentFile=/etc/default/gadget
+WorkingDirectory=/sys/kernel/config/usb_gadget
+ExecStart=/usr/bin/bash /usr/lib/systemd/scripts/gadget-start.sh start
+ExecStop=/usr/bin/bash /usr/lib/systemd/scripts/gadget-start.sh stop
+[Install]
+WantedBy=usb-gadget.target
+Also=gadget-init.service
