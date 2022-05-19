@@ -1,7 +1,7 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
-pkgver=5279.0c5314e82
+pkgver=5409.cefb28c16
 pkgrel=2
 pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=(
     'vulkan-headers'
     'python'
     'qt5-tools'
+    'imagemagick'
 )
 depends=(
 	'boost-libs'
@@ -27,11 +28,12 @@ depends=(
   'gtk3'
   'sdl2'
 )
+install="eka2l1-git.install"
 provides=('eka2l1')
 conflicts=('eka2l1')
 source=(
 	"${_pkgname}-git::git+https://github.com/EKA2L1/EKA2L1.git"
-  "eka2l1"
+  "eka2l1_qt"
 )
 md5sums=('SKIP'
          '904f15dfd859ab3c10d7f1b9a78db41d')
@@ -44,13 +46,14 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}-git"
 	git submodule update --recursive --init
+    sed -i 's/-Werror//g' src/external/mbedtls/CMakeLists.txt
     sed -i 's/constexpr size_t signal_stack_size = std::max(SIGSTKSZ/const size_t signal_stack_size = std::max<size_t>(SIGSTKSZ/g' src/external/dynarmic/src/backend/x64/exception_handler_posix.cpp 
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}-git"
 
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DEKA2L1_NO_TERMINAL=ON -DEKA2L1_ENABLE_UNEXPECTED_EXCEPTION_HANDLER=ON -DEKA2L1_BUILD_VULKAN_BACKEND=OFF -DCMAKE_INSTALL_PREFIX=/opt/eka2l1 .
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DEKA2L1_NO_TERMINAL=ON -DEKA2L1_ENABLE_UNEXPECTED_EXCEPTION_HANDLER=ON -DEKA2L1_BUILD_VULKAN_BACKEND=OFF -DEKA2L1_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=/opt/eka2l1 .
 
     cd build
 
@@ -64,5 +67,11 @@ package() {
  install -d -m 777 "${pkgdir}/opt/eka2l1"
  install -d -m 755 "${pkgdir}/usr/bin"
  cp -R "${srcdir}/${_pkgname}-git/build/bin/." "${pkgdir}/opt/eka2l1"
- install -m 755 ${srcdir}/eka2l1 "${pkgdir}/usr/bin/eka2l1"
+ install -m 755 ${srcdir}/eka2l1_qt "${pkgdir}/usr/bin/eka2l1_qt"
+ for s in 16 24 32 48 64 96 128 512; do
+    install -d -m 755 "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps"
+    convert "${srcdir}/${_pkgname}-git/src/emu/qt/duck_tank.ico" -resize ${s}x${s} "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/duck_tank.png"
+ done
+ install -d -m 755 "${pkgdir}/usr/share/applications"
+ install -m 644 "${srcdir}/${_pkgname}-git/src/emu/qt/eka2l1.desktop" "${pkgdir}/usr/share/applications/eka2l1.desktop"
 }
