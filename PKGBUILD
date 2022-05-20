@@ -3,7 +3,7 @@
 cpaname=Keyword-Simple
 cpanauthor=MAUKE
 pkgname=perl-keyword-simple
-pkgver=0.03
+pkgver=0.04
 pkgrel=1
 pkgdesc="Perl Keyword-Simple CPAN module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-b-hooks-endofscope')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('3e0f75e33c8c2ccc82e89d74660bebe4f74ef5330ab3042d9243337061ef6ce8')
+sha256sums=('9455cb86b92c30027d6eeb5712a04a84d8a3863d399be6ebdd723e5e84d51305')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"

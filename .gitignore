@@ -1,2 +1,3 @@
-Keyword-Simple-*.tar.gz
-perl-keyword-simple-*.log
+/Keyword-Simple-*.tar.gz
+/perl-keyword-simple-*.log
+/perl-keyword-simple-*.pkg.tar.*
