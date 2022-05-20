@@ -1,17 +1,18 @@
 # -*- mode: sh; -*-
+# Maintainer: kiasoc5 <kiasoc5 at disroot dot org>
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
 # Maintainer: Jeff Mickey <jeff@archlinux.org>
 pkgname=shepherd
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Service manager that looks after the herd."
 arch=('x86_64')
 url="https://www.gnu.org/software/shepherd/"
 license=('GPL3')
-depends=('guile')
+depends=('guile' 'guile-fibers')
 makedepends=('gcc' 'make' 'gawk' 'sed')
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('2964502388aa74207e6761c2ff77df69369738b0')
+sha1sums=('df84c15e21b00e6237af1c243ff77dfee2373626')
 
 OPTIONS=(!strip)
 
@@ -32,7 +33,7 @@ package() {
 	make DESTDIR="$pkgdir/" install
 
 	# get rid of halt / reboot and the var dir
-	rm -r $pkgdir/usr/var
-	rm -r $pkgdir/usr/sbin
-	rm -r $pkgdir/usr/share/man/man8
+	rm -r "$pkgdir/usr/var"
+	rm -r "$pkgdir/usr/sbin"
+	rm -r "$pkgdir/usr/share/man/man8"
 }
