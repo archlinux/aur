@@ -1,0 +1,23 @@
+pkgbase = xtermwm-git
+	pkgdesc = A text-based window manager
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.com/AutumnMeowMeow/xtermwm
+	arch = any
+	license = MIT
+	makedepends = jdk-openjdk
+	makedepends = ant
+	makedepends = git
+	depends = java-runtime
+	depends = bash
+	depends = glibc
+	optdepends = inetutils: server-client support
+	provides = xtwm
+	provides = ptypipe
+	conflicts = xtwm
+	conflicts = xtermwm
+	conflicts = ptypipe
+	source = git+https://gitlab.com/AutumnMeowMeow/xtermwm.git
+	md5sums = SKIP
+
+pkgname = xtermwm-git
