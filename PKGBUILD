@@ -2,29 +2,35 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.26.1
+pkgver=0.27.1
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/flausch/mdcat"
 license=('MPL2')
 options=(!lto)
-depends=('gcc-libs' 'openssl')
-makedepends=('cargo' 'asciidoctor')
-optdepends=('librsvg: used to render SVG images in kitty')
+depends=('gcc-libs'
+         'shared-mime-info')
+makedepends=('asciidoctor'
+             'cargo')
+optdepends=('less: for mdless'
+            'librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('1120c4f3b5b517075b6347dbfe76a2211a91837b4d0242c0b72cdbc19e6886dd')
+sha256sums=('79961e0a842ee0f68aee3d54b39458352664c67388e56175a9d18d80f357bf14')
+
+prepare() {
+  cd "$pkgname"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$pkgname"
-  rustc --version
-  cargo --version
-  cargo build --release --locked --target-dir=target
+  cargo build --frozen --release --target-dir=target
 }
 
 check() {
   cd "$pkgname"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
@@ -43,15 +49,11 @@ package() {
     return 1
   fi
 
-  install -Dm644 "$OUT_DIR/_mdcat" \
-    "$pkgdir/usr/share/zsh/site-functions/_mdcat"
-  install -Dm644 "$OUT_DIR/mdcat.bash" \
-    "$pkgdir/usr/share/bash-completion/completions/mdcat"
-  install -Dm644 "$OUT_DIR/mdcat.fish" \
-    "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
+  install -Dm644 "$OUT_DIR/_mdcat" "$pkgdir/usr/share/zsh/site-functions/_mdcat"
+  install -Dm644 "$OUT_DIR/mdcat.bash" "$pkgdir/usr/share/bash-completion/completions/mdcat"
+  install -Dm644 "$OUT_DIR/mdcat.fish" "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
 
   MANPAGE="$OUT_DIR/mdcat.1"
   gzip -n "$MANPAGE"
-  install -Dm 644 "$MANPAGE.gz" \
-    "$pkgdir/usr/share/man/man1/mdcat.1.gz"
+  install -Dm644 "$MANPAGE.gz" "$pkgdir/usr/share/man/man1/mdcat.1.gz"
 }
