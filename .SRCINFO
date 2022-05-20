@@ -6,6 +6,7 @@ pkgbase = ferium-bin
 	arch = x86_64
 	license = MPL2
 	depends = gcc-libs
+	depends = bzip2
 	provides = ferium
 	conflicts = ferium-gui-bin
 	source = ferium-4.0.0-1.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.0.0/ferium-linux-gnu-nogui.zip
