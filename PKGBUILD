@@ -2,7 +2,7 @@
 
 pkgname="ivpn-ui"
 pkgver=3.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN Graphical User Interface"
 arch=('x86_64')
 url="https://ivpn.net"
@@ -32,9 +32,6 @@ prepare() {
   # https://wiki.archlinux.org/title/Node.js_package_guidelines
   _ensure_local_nvm
   nvm install 15.14.0
-
-  # some linux versions have problems running Electron without this
-  sudo chmod 4755 /opt/ivpn/ui/bin/chrome-sandbox || echo "[!] Failed to 'chmod' for '/opt/ivpn/ui/bin/chrome-sandbox'"
 }
 
 build() {
