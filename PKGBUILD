@@ -11,9 +11,9 @@ depends=("gcc-libs")
 makedepends=("cargo" "git")
 provides=("ferium")
 conflicts=("ferium-gui-bin" "ferium-bin" "ferium-gui-git" "ferium")
-url="https://github.com/theRookieCoder/ferium"
+url="https://github.com/gorilla-devs/ferium"
 license=('MPL2')
-source=('git+https://github.com/theRookieCoder/ferium')
+source=('git+https://github.com/gorilla-devs/ferium')
 sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
