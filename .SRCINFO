@@ -1,6 +1,6 @@
 pkgbase = icalingua++-git
 	pkgdesc = A Linux client for QQ and more(fork to upgrading)
-	pkgver = 2.6.1.r2.gef15421
+	pkgver = 2.6.3.r1.gd070477
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
@@ -27,7 +27,7 @@ pkgname = icalingua++-electron-git
 	pkgdesc = A Linux client for QQ and more(fork to upgrading) with system electron
 	depends = ffmpeg
 	depends = libappindicator-gtk3
-	depends = electron17
+	depends = electron
 	provides = electron-qq
 	provides = icalingua
 	provides = icalingua-electron
