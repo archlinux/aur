@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 	
 	make install
 
