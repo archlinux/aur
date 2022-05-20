@@ -5,7 +5,7 @@
 
 pkgname=cups-bjnp
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='CUPS back-end for the canon printers using the proprietary USB over IP BJNP protocol'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/cups-bjnp/'
@@ -20,6 +20,8 @@ build() {
 
   # Patch for https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc/Warning-Options.html#index-Wstringop_002dtruncation
   # sed -i 's/strncpy/memcpy/' bjnp-commands.c
+
+  sed -i '188d;191d' bjnp-commands.c
 
   ./configure --prefix='/usr'
   make
