@@ -1,6 +1,6 @@
 pkgbase = emacs-pdf-tools-git
 	pkgdesc = Emacs support library for PDF files.
-	pkgver = 0.90.r86.gf68899c
+	pkgver = 0.91.r39.gfedd930
 	pkgrel = 1
 	url = https://github.com/vedang/pdf-tools
 	arch = any

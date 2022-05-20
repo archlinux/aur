@@ -1,8 +1,10 @@
+# Contributor: ZappaBoy <federico dot zappone at justanother dot cloud>
+
 _gituser="vedang"
 _gitrepo="pdf-tools"
 
 pkgname=emacs-pdf-tools-git
-pkgver=0.90.r86.gf68899c
+pkgver=0.91.r39.gfedd930
 pkgrel=1
 pkgdesc="Emacs support library for PDF files."
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -23,6 +25,7 @@ pkgver() {
 
 build() {
   cd "$_gitrepo"
+  export CXXFLAGS='-std=c++17'
   make bytecompile
   make server/epdfinfo
 }
