@@ -2,7 +2,7 @@
 
 _name=exceptiongroup
 pkgname=python-${_name}
-pkgver=1.0.0rc6
+pkgver=1.0.0rc7
 pkgrel=1
 pkgdesc="Backport of PEP 654 (exception groups)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-pip')
 _wheelname="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}")
-sha256sums=('1ce181e67ce038f3a187f003df3e744d653c8e5bae1387e405003cac2c7d0c97')
+sha256sums=('82dc1cfc21bb5f921a25925e80ec696c71b7d108c6c63bd8a786abe2b73c3263')
 
 
 package() {
