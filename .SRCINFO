@@ -1,0 +1,17 @@
+pkgbase = mqtt-cpp
+	pkgdesc = MQTT client/server for C++14 based on Boost.Asio
+	pkgver = 13.0.0
+	pkgrel = 0
+	url = https://github.com/redboltz/mqtt_cpp
+	arch = x86_64
+	license = custom:Boost
+	makedepends = ninja
+	makedepends = cmake
+	depends = boost
+	depends = doxygen
+	depends = openssl
+	provides = mqtt_cpp
+	source = https://github.com/redboltz/mqtt_cpp/archive/refs/tags/v13.0.0.tar.gz
+	sha512sums = 2f0c85ac813cc6c99cc5b1ca02514ee6643abc39750bce541a362d1fcd281b8b9011cc39ddeaf4394fd3772904eed15e8ecbe6b3839caad13cae2b04201e682b
+
+pkgname = mqtt-cpp
