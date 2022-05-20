@@ -10,7 +10,7 @@ depends=('gzip-zutils')
 makedepends=('lzip' 'bzip2' 'gzip-zutils')
 license=('GPL')
 source=(
-    "https://download.savannah.gnu.org/releases/zutils/$pkgname-$pkgver.tar.lz{,.sig}"
+    "https://download.savannah.gnu.org/releases/zutils/$pkgname-$pkgver.tar.lz"{,.sig}
     )
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
 sha512sums=('2b7171e337bf50806f7e7890558a1eb0cf61e5cff61577713e1749bac682eb6036a5c327d79c6d450df38c30592e0bdbed44b6487020623259610d9181d9d4b5'
@@ -19,7 +19,7 @@ sha512sums=('2b7171e337bf50806f7e7890558a1eb0cf61e5cff61577713e1749bac682eb6036a
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --sysconfdir=/etc CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 	make
 }
 
