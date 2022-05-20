@@ -5,6 +5,7 @@ pkgbase = why2
 	url = https://github.com/ENGO150/WHY2.git
 	arch = x86_64
 	license = MIT
+	makedepends = make
 	makedepends = git
 	makedepends = gcc
 	makedepends = curl

@@ -10,7 +10,7 @@ url="https://github.com/ENGO150/WHY2.git"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(git gcc curl json-c)
+makedepends=(make git gcc curl json-c)
 checkdepends=()
 optdepends=()
 provides=(why2)
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "$_pkgname"
+	cd "${_pkgname}"
 	
 	make install
 
