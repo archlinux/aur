@@ -9,8 +9,6 @@ pkgbase = ferium-gui-bin
 	provides = ferium
 	conflicts = ferium-bin
 	source = ferium-gui-4.0.0-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.0.0/ferium-linux-gnu.zip
-	source = ferium.desktop
 	sha256sums = 238992a018c33661c3451ba45347abcf156d819453e490c09237a4ff38d6971d
-	sha256sums = 594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018
 
 pkgname = ferium-gui-bin

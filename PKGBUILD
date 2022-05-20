@@ -11,14 +11,10 @@ provides=("ferium")
 conflicts=("ferium-bin")
 url="https://github.com/theRookieCoder/ferium"
 license=('MPL2')
-source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/theRookieCoder/ferium/releases/download/v$pkgver/ferium-linux-gnu.zip"
-	"ferium.desktop")
-sha256sums=('238992a018c33661c3451ba45347abcf156d819453e490c09237a4ff38d6971d'
-            '594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018')
+source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/theRookieCoder/ferium/releases/download/v$pkgver/ferium-linux-gnu.zip")
+sha256sums=('238992a018c33661c3451ba45347abcf156d819453e490c09237a4ff38d6971d')
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "ferium" "$pkgdir/usr/bin/ferium" 
-
-	install -Dm644 -t "$pkgdir/usr/share/applications" ferium.desktop
+	install -Dm0755 "ferium" "$pkgdir/usr/bin/ferium" 
 }
