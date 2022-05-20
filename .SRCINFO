@@ -1,13 +1,13 @@
 pkgbase = abctab2ps
 	pkgdesc = ABC notation editor
-	pkgver = 1.8.17
+	pkgver = 1.8.21
 	pkgrel = 1
 	url = http://www.lautengesellschaft.de/cdmm/
 	arch = i686
 	arch = x86_64
 	groups = abc
 	license = GPL
-	source = http://www.lautengesellschaft.de/cdmm/abctab2ps-1.8.17.tar.gz
-	sha256sums = 82079c2bca7ac3b38d24aad7c929af266eee4bed2e07448ae07166a4601d3383
+	source = http://www.lautengesellschaft.de/cdmm/abctab2ps-1.8.21.tar.gz
+	sha256sums = ea1576c05026b23aef2483f91e5e98d9bc93fcc0665576f7442337ca978af9de
 
 pkgname = abctab2ps
