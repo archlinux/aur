@@ -5,7 +5,7 @@
 pkgname=sway
 pkgver=1.7
 epoch=1
-pkgrel=8
+pkgrel=9
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -26,7 +26,10 @@ depends=(
   'ttf-font'
 )
 makedepends=(meson ninja scdoc setconf wayland-protocols)
-backup=(etc/sway/config)
+backup=(
+  etc/sway/config
+  etc/sway/config.d/50-systemd-user.conf
+)
 optdepends=(
   'bemenu: Wayland-native alternative to dmenu'
   'dmenu: Application launcher used in default config'
