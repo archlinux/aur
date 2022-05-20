@@ -11,6 +11,7 @@ license=('GPL')
 
 depends=(dotnet-runtime)
 makedepends=(dotnet-sdk)
+conflicts=(scarab-bin)
 options=(!strip)
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fifty-six/Scarab/archive/v$pkgver.tar.gz"
