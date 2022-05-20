@@ -1,0 +1,15 @@
+pkgbase = occultist-git
+	pkgdesc = The Chaos programming language dependency manager
+	pkgver = r49.6e9d5f4
+	pkgrel = 1
+	url = https://occultist.io/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = jq
+	depends = git
+	depends = bash
+	source = occultist-git::git+https://github.com/chaos-lang/occultist.git#branch=master
+	md5sums = SKIP
+
+pkgname = occultist-git
