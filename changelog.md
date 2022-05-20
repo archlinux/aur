@@ -1,3 +1,11 @@
+## GE-Proton7-18 Released
+- proton bleeding edge updates, contains patches to fix official FFXIV Launcher (finally)
+Additional notes:
+- As before, you can still also use NOSTEAM=1 %command% to log in with a standalone non-steam account.
+- The login and download progress bar both render at the bottom of the launcher, you'll need to scroll down.
+- dxvk updated
+- vkd3d-proton updated
+
 ## GE-Proton7-17 Released
 - This is just a minor update/hotfix release.
 - sapi-iteration-tokens staging patchset updated. Fixes Bless Unleashed launcher crash and fixes performance hit when patch set is not applied. Game is now playable.
