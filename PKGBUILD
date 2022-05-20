@@ -4,7 +4,7 @@
 
 pkgbase=nvidia-510xx-settings
 pkgname=('nvidia-510xx-settings' 'libxnvctrl-510xx')
-pkgver=510.68.02
+pkgver=510.73.05
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -14,7 +14,7 @@ makedepends=('inetutils' 'jansson' 'gtk2' 'gtk3' 'libxv' 'libvdpau' 'nvidia-510x
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('a0f89220b8b45d05de28509b4d758db1b8318a8d222f6948d45a60ead7cc917274b9ffcda1a7a11cb7740215b439c248fa6096f3011e7a74bde91cd3f093aecd'
+sha512sums=('8b0a1c8ade2592e317318c1866b996b8f65d09c0349d97649a48fbc00c251f77551ae261d2acce508bee05fc410c5dabf0e57a92b27828a5aaff13151861a390'
             '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
 
 prepare() {
