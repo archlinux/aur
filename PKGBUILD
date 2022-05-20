@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${pkgname}"
 
 	make install
 
