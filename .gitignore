@@ -1,2 +1,3 @@
-true-*.tar.gz
-perl-true-*.log
+/true-*.tar.gz
+/perl-true-*.log
+/perl-true-*.pkg.tar.*
