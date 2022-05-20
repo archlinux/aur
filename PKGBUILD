@@ -1,17 +1,16 @@
 # Maintainer: obslsessed <obslsessed@protonmail.com>
 pkgname="cate-bossfight-bin"
-pkgver="1.5.1"
+pkgver="1.6.0"
 pkgrel="1"
 pkgdesc="funny jinx the cat game where you click the cat, a gamemaker remake by Skirlez of the scratch game \"cate remix remix remix remix remix remix\" about the big-footed cat named jinx"
 arch=("x86_64")
 url="https://github.com/Skirlez/cate-bossfight-gm"
 license=("custom")
-source_x86_64=("https://github.com/Skirlez/cate-bossfight-gm/releases/download/$pkgver/cate-gms2-linux.zip")
-sha256sums_x86_64=("60ebe5c6dfd76aa463aca73a13e331ffffdab8b0362d37afaa03621b538c2644")
+depends=("wine")
+source_x86_64=("https://github.com/Skirlez/cate-bossfight-gm/releases/download/$pkgver/cate-bossfight-gm-yyc-download-me.zip" "https://raw.githubusercontent.com/Skirlez/cate-bossfight-gm/main/options/windows/icons/icon.ico")
+sha512sums_x86_64=("d9c44344547f5530e874dd1fb3a8219086ca8f2ebd8ea91ceac90a2d2909b966c831caf8a170ee4ddbdf902223b91f3bf01e20ddeb2e1749aa1483c05c38f336" "ca9d271ebf3a44ce91b8a5677dbd8b4dbdccc3e970dd8239a02688f0471380af4beb23f86277bc7e91ede177997654774f17954d3fbed943d018e9dcafd60950")
 package() {
-  install -Dt "$pkgdir/usr/share/applications/" -m4755 "$srcdir/../cate-bossfight.desktop"
-  install -Dt "$pkgdir/opt/cate-bossfight/assets/" -m4755 "$srcdir/cate-gms2/assets/game.unx" "$srcdir/cate-gms2/assets/icon.png" "$srcdir/cate-gms2/assets/options.ini"
-  install -Dt "$pkgdir/opt/cate-bossfight/" -m4755 "$srcdir/cate-gms2/cate_gms2"
-  #install directories and executable as cate-bossfight instead of cate-gms2 because the game has been renamed to cate-bossfight but there has not been a new release to reflect that yet
-  rename cate_gms2 cate-bossfight "$pkgdir/opt/cate-bossfight/cate_gms2"
+  echo "test"
+  install -Dt "$pkgdir/opt/cate-bossfight/" "$srcdir/cate-bossfight-gm/cate-bossfight.exe" "$srcdir/cate-bossfight-gm/data.win" "$srcdir/cate-bossfight-gm/options.ini" "$srcdir/icon.ico"
+  install -Dt "$pkgdir/usr/share/applications/" "$srcdir/../cate-bossfight.desktop"
 }

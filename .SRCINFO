@@ -1,11 +1,14 @@
 pkgbase = cate-bossfight-bin
 	pkgdesc = funny jinx the cat game where you click the cat, a gamemaker remake by Skirlez of the scratch game "cate remix remix remix remix remix remix" about the big-footed cat named jinx
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/Skirlez/cate-bossfight-gm
 	arch = x86_64
 	license = custom
-	source_x86_64 = https://github.com/Skirlez/cate-bossfight-gm/releases/download/1.5.1/cate-gms2-linux.zip
-	sha256sums_x86_64 = 60ebe5c6dfd76aa463aca73a13e331ffffdab8b0362d37afaa03621b538c2644
+	depends = wine
+	source_x86_64 = https://github.com/Skirlez/cate-bossfight-gm/releases/download/1.6.0/cate-bossfight-gm-yyc-download-me.zip
+	source_x86_64 = https://raw.githubusercontent.com/Skirlez/cate-bossfight-gm/main/options/windows/icons/icon.ico
+	sha512sums_x86_64 = d9c44344547f5530e874dd1fb3a8219086ca8f2ebd8ea91ceac90a2d2909b966c831caf8a170ee4ddbdf902223b91f3bf01e20ddeb2e1749aa1483c05c38f336
+	sha512sums_x86_64 = ca9d271ebf3a44ce91b8a5677dbd8b4dbdccc3e970dd8239a02688f0471380af4beb23f86277bc7e91ede177997654774f17954d3fbed943d018e9dcafd60950
 
 pkgname = cate-bossfight-bin

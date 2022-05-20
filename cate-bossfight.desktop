@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
-Version=1.5.1
+Version=1.6.0
 Type=Application
 Terminal=false
-Exec=/opt/cate-bossfight/cate-bossfight
+Exec=wine /opt/cate-bossfight/cate-bossfight.exe
 Name=cate-bossfight
 Categories=Game;
-Icon=/opt/cate-bossfight/assets/icon.png
+Icon=/opt/cate-bossfight/icon.ico
