@@ -6,6 +6,7 @@ pkgbase = python-klepto
 	arch = any
 	license = custom:BSD-3-clause
 	checkdepends = python-pytest
+	checkdepends = python-h5py
 	makedepends = python-setuptools
 	depends = python-dill
 	depends = python-pox

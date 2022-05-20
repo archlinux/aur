@@ -10,7 +10,7 @@ url="https://github.com/uqfoundation/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-dill python-pox)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest) # python-h5py
+checkdepends=(python-pytest python-h5py)
 optdepends=('python-jsonpickle: for serializers support'
   'python-cloudpickle: for serializers support'
   'python-sqlalchemy: for connect to MySQL or PostgreSQL database'
