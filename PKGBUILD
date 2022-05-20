@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=arrayfire
-pkgver=3.8.1
-pkgrel=7
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -16,7 +16,7 @@ optdepends=('cuda: Required for using CUDA backend'
 options=('!lto')
 source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2"
         'arrayfire-boost-1.76.0.patch')
-sha512sums=('341bccdc52c995a58367640574037626476c3836061a93d49344d63cfdda791c171d0908e66a13aff0fc6c4e6b747d801e5b2c637f9576177f91ce0b6cf387bb'
+sha512sums=('ee8d7fe0406880238af51302f91cdb21879bec0732dc6f257fc522d1f4883ee7136d0ded65c9ebbc493e1795a2a175221a8ca11032ed0cf4ee2e1a555abf3a15'
             '92e34c28e4b6222febef5a3047f4faf64756a50b46a68507931b989984bbc6729aa4d1560dc267650f1890cb1ad7aa0866dd3debc0073f9103f764af7618d795')
 
 prepare() {
