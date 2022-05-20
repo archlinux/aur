@@ -1,0 +1,48 @@
+pkgbase = nvidia-510xx-utils
+	pkgver = 510.68.02
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-utils.sysusers
+	source = nvidia.rules
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/510.68.02/NVIDIA-Linux-x86_64-510.68.02.run
+	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
+	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
+	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
+	sha512sums = eb31ed729555075bcc307acc576cb6fdfdd7e397c9e47dd80fc2f55cac6902c3924b69bb91036e5ded1001e81d4b81082ba093dd63d6d97bc313fe78e510131b
+
+pkgname = nvidia-510xx-utils
+	pkgdesc = NVIDIA drivers utilities
+	install = nvidia-510xx-utils.install
+	depends = xorg-server
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-settings: configuration tool
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = opencl-nvidia: OpenCL support
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = nvidia-libgl
+	provides = nvidia-utils
+	conflicts = nvidia-libgl
+	conflicts = nvidia-utils
+	replaces = nvidia-libgl
+
+pkgname = opencl-510xx-nvidia
+	pkgdesc = OpenCL implemention for NVIDIA
+	depends = zlib
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = opencl-driver
+	provides = opencl-nvidia
+	conflicts = opencl-nvidia
+
+pkgname = nvidia-510xx-dkms
+	pkgdesc = NVIDIA drivers - module sources
+	depends = dkms
+	depends = nvidia-utils=510.68.02
+	depends = libglvnd
+	provides = NVIDIA-MODULE
+	conflicts = nvidia-dkms
