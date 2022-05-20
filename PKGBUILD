@@ -1,65 +1,76 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
+arch=(x86_64)
 url='https://www.open-mpi.org'
-arch=('x86_64')
 license=('custom:OpenMPI')
-depends=('glibc' 'libltdl' 'hwloc' 'openssh' 'zlib' 'libnl' 'perl' 'libevent')
-makedepends=('inetutils' 'valgrind' 'gcc-fortran' 'cuda')
+# TODO: package and depend on https://github.com/openpmix/prrte
+depends=(gcc-libs glibc hwloc libevent libnl openpmix zlib)
+makedepends=(cuda gcc-fortran inetutils valgrind)
 optdepends=(
-  'gcc-fortran: fortran support'
   'cuda: cuda support'
+  'gcc-fortran: fortran support'
+  'openssh: for offloading to remote hosts'
+  'perl: for aggregate_profile.pl and profile2mat.pl'
 )
-options=('staticlibs')
-source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('9b78c7cf7fc32131c5cf43dd2ab9740149d9d87cadb2e2189f02685749a6b527')
-b2sums=('2e6fc12b4564a302d2c364528d0f6bea8b23f9b1cd6059763b8d5de583d86aae2812c239b1d0bb40c83f3c7682c8e666ce1de3112e95de54848169cb5e2805e8')
+provides=(
+  libmca_common_cuda.so
+  libmca_common_monitoring.so
+  libmca_common_ompio.so
+  libmca_common_sm.so
+  libmpi.so
+  libmpi_cxx.so
+  libmpi_mpifh.so
+  libmpi_usempi_ignore_tkr.so
+  libmpi_usempif08.so
+  libompitrace.so
+  libopen-pal.so
+  libopen-rte.so
+)
+options=(debug)
+source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$pkgname-$pkgver.tar.bz2)
+sha256sums=('3d81d04c54efb55d3871a465ffb098d8d72c1f48ff1cbaf2580eb058567c0a3b')
+b2sums=('5148fe5fb68f7be32d6a76fa780b13e74f98621a001f860e92c0cba85b405f193f9afeeb9518cff8bbf57098cc813701fb3edda7061f557da7fa9cdcbc63c722')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd $pkgname-$pkgver
+
   ./configure \
     --prefix=/usr \
-    --sysconfdir=/etc/${pkgname} \
-    --enable-mpi-fortran=all \
-    --libdir=/usr/lib/${pkgname} \
     --enable-builtin-atomics \
-    --enable-mpi-cxx \
-    --with-valgrind \
     --enable-memchecker \
+    --enable-mpi-cxx \
+    --enable-mpi-fortran=all \
     --enable-pretty-print-stacktrace \
-    --without-slurm \
-    --with-hwloc=/usr \
-    --with-libltdl=/usr  \
-    --with-libevent=/usr  \
+    --libdir=/usr/lib \
+    --sysconfdir=/etc/$pkgname \
     --with-cuda=/opt/cuda \
-    FC=/usr/bin/gfortran \
-    LDFLAGS="${LDFLAGS} -Wl,-z,noexecstack"
-  make
+    --with-hwloc=external \
+    --with-libevent=external \
+    --with-pmix=external \
+    --with-valgrind \
+    --without-slurm
+
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make V=1
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
-  make check
+  make check -C $pkgname-$pkgver
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  depends+=(libpmix.so)
 
-  # FS#28583
-  install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
-  for i in "${pkgdir}/usr/lib/openmpi/pkgconfig/"*.pc; do
-    ln -sf "/usr/lib/openmpi/pkgconfig/$(basename ${i})" "${pkgdir}/usr/lib/pkgconfig/"
-  done
-
-  install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
-  echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  make DESTDIR="$pkgdir" install -C $pkgname-$pkgver
+  install -Dm 644 $pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
