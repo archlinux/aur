@@ -1,6 +1,6 @@
 pkgbase = obs-plugin-input-overlay-git
 	pkgdesc = Show keyboard, gamepad and mouse input on stream
-	pkgver = 5.0.r887.5a3035e
+	pkgver = 5.0.0.rc1.r60.g5a3035e
 	pkgrel = 1
 	url = https://github.com/univrsal/input-overlay
 	arch = x86_64
