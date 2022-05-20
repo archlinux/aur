@@ -2,9 +2,9 @@
 
 pkgname=nnrss-git
 pkgver=1.3.1.r18.g27a17bf
-pkgrel=1
+pkgrel=2
 pkgdesc='Web/API RSS aggregator - git master'
-url='https://git.roshless.me/~roshless/nnrss'
+url='https://git.roshless.me/nnrss/nnrss'
 arch=('any')
 license=('GPL')
 depends=('python-flask' 'python-sqlalchemy' 'python-werkzeug'
