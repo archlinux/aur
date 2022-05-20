@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/th-ch/youtube-music/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb"
         "https://github.com/th-ch/youtube-music/raw/v$pkgver/license")
-sha256sums=('e4d8b7830fb24d33f4bc8c371dd54d645f8cd870716964afbb544e95b728a1af'
+sha256sums=('3159e54439028fa7abdcf9bbc16139298c431daef467931cf14fd6caaa59cd4b'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08')
 
 package(){
