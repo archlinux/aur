@@ -1,5 +1,5 @@
 pkgname="md-git"
-pkgver=1.17
+pkgver=1.18.r101cdb6e76
 pkgrel=1
 pkgdesc="Simple MarkDown Reader"
 
@@ -39,26 +39,30 @@ build () {
 	echo "3: Doxy"
 	echo "4: Moon"
 	echo "5: TTY-Support ( Designed to work with TTY Session users )"
+	echo "6: Wolf"
 
 	printf "Please Pick a Style?(1) "
 
-	read style_id 
+	read style_id
 
-	if [ -z $style_id ] || [ $style_id = "1" ] 
+	if [ -z $style_id ] || [ $style_id = "1" ]
 	then
 		Style=default
-	elif [ $style_id = "2" ] 
+	elif [ $style_id = "2" ]
 	then
 		Style=desert
-	elif [ $style_id = "3" ] 
+	elif [ $style_id = "3" ]
 	then
 		Style=doxy
-	elif [ $style_id = "4" ] 
+	elif [ $style_id = "4" ]
 	then
 		Style=moon
-	elif [ $style_id = "5" ] 
+	elif [ $style_id = "5" ]
 	then
 		Style=tty-support
+	elif [ $style_id = "6" ]
+	then
+		Style=wolf
 	else
 		echo "Error: $style_id is not an option"
 		exit 1
