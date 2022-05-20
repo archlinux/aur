@@ -1,0 +1,37 @@
+pkgbase = nvidia-510xx-settings
+	pkgdesc = Tool for configuring the NVIDIA graphics driver
+	pkgver = 510.68.02
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-settings
+	arch = x86_64
+	license = GPL2
+	makedepends = inetutils
+	makedepends = jansson
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = libxv
+	makedepends = libvdpau
+	makedepends = nvidia-510xx-utils
+	makedepends = libxext
+	options = staticlibs
+	source = nvidia-510xx-settings-510.68.02.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/510.68.02.tar.gz
+	source = libxnvctrl_so.patch
+	sha512sums = a0f89220b8b45d05de28509b4d758db1b8318a8d222f6948d45a60ead7cc917274b9ffcda1a7a11cb7740215b439c248fa6096f3011e7a74bde91cd3f093aecd
+	sha512sums = 91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa
+
+pkgname = nvidia-510xx-settings
+	depends = jansson
+	depends = gtk3
+	depends = libxv
+	depends = libvdpau
+	depends = nvidia-510xx-utils
+	depends = libxnvctrl-510xx
+	provides = nvidia-settings
+	conflicts = nvidia-settings
+
+pkgname = libxnvctrl-510xx
+	pkgdesc = NVIDIA NV-CONTROL X extension
+	depends = libxext
+	provides = libxnvctrl
+	provides = libXNVCtrl.so
+	conflicts = libxnvctrl
