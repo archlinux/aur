@@ -1,9 +1,9 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 cpaname=Parse-Keyword
-cpanauthor=DOY
+cpanauthor=HAARG
 pkgname=perl-parse-keyword
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
 pkgdesc="Perl Parse::Keyword CPAN module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-devel-callparser')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('84906fc0b7321e4247baa969fbd07894782e75c7847f563cfe3ad31b0b8bda32')
+sha256sums=('6735a7e48fcebc28d188a0403df6a5a19e4cbeb84b3f2c7fbb816aef6de369ca')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
