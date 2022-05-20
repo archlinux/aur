@@ -3,7 +3,7 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cppo
-pkgver=1.6.8
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="C-style preprocessor for OCaml"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 optdepends=('ocamlbuild: ocamlbuild plugin')
 makedepends=('dune' 'ocamlbuild')
 source=("https://github.com/ocaml-community/cppo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7e056d50bb194b7f628d2547667262ceb814b1fe9ea666240bfaf1396727be53')
+sha256sums=('16036d85c11d330a7c8b56f4e071d6bbe86d8937c89d3d79f6eef0e38bdda26a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
