@@ -1,0 +1,16 @@
+pkgbase = dlauncher-git
+	pkgdesc = An application launcher for Linux that is based on Ulauncher
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/diced/dlauncher
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	provides = dlauncher
+	conflicts = dlauncher
+	conflicts = dlauncher-bin
+	source = git+https://github.com/diced/dlauncher.git#branch=trunk
+	sha256sums = SKIP
+
+pkgname = dlauncher-git
