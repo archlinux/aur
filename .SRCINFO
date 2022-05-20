@@ -1,0 +1,18 @@
+pkgbase = falltergeist
+	pkgdesc = Opensource Fallout game engine written in C++ and SDL
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://falltergeist.org
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = zlib
+	depends = glew
+	depends = glm
+	source = falltergeist-0.4.0.tar.gz::https://github.com/falltergeist/falltergeist/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = b97a9c293f3e6e435d23cab496ec0e00ce60f785afddc27f8837f3f87a5059ff
+
+pkgname = falltergeist
