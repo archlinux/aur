@@ -3,7 +3,7 @@
 _gopkgname='github.com/dtn7/dtn7-go'
 
 pkgname=dtn7
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Delay tolerant routing daemon - Implements Bundle Protocol Version 7"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ provides=('dtnd' "dtn-tool")
 conflicts=('dtnd')
 backup=("etc/dtn7/configuration.toml" "etc/ufw/applications.d/dtn7")
 source=("https://$_gopkgname/archive/v$pkgver.tar.gz")
-sha512sums=("2afb171bfbacc66495dbc0df4de4718191678735b5d4b242743e25c1ae67aa028af8afd5720b77cb3b443b811cf6c32c3ecd143cef9119ec4f0fddeb8466f72f")
+sha512sums=("18662a754c75191ded80b7388357e384980576df6a8ce96cb7b684b3a53a60a83e6895adcd7ce56e3d69868c71601f25141e7f34858f73338a62af9db510bedb")
 
 build() {
 	cd "$srcdir/$pkgname-go-$pkgver"

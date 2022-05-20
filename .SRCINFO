@@ -1,6 +1,6 @@
 pkgbase = dtn7
 	pkgdesc = Delay tolerant routing daemon - Implements Bundle Protocol Version 7
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://dtn7.github.io/
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = dtn7
 	conflicts = dtnd
 	backup = etc/dtn7/configuration.toml
 	backup = etc/ufw/applications.d/dtn7
-	source = https://github.com/dtn7/dtn7-go/archive/v0.9.0.tar.gz
-	sha512sums = 2afb171bfbacc66495dbc0df4de4718191678735b5d4b242743e25c1ae67aa028af8afd5720b77cb3b443b811cf6c32c3ecd143cef9119ec4f0fddeb8466f72f
+	source = https://github.com/dtn7/dtn7-go/archive/v0.9.1.tar.gz
+	sha512sums = 18662a754c75191ded80b7388357e384980576df6a8ce96cb7b684b3a53a60a83e6895adcd7ce56e3d69868c71601f25141e7f34858f73338a62af9db510bedb
 
 pkgname = dtn7
-
