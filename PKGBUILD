@@ -3,7 +3,7 @@
 
 _project_name=pace
 pkgname=${_project_name}-cli
-pkgver=1.4.1.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A simple pacman.conf CLI editor'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('polkit')
 conflicts=('pace')
 provides=('pace')
 source=("https://gitlab.com/softwareperonista/${_project_name}/-/archive/${pkgver}/${_project_name}-${pkgver}.tar.gz")
-sha256sums=('60e65adf3bf0ecf36a9e9c175971b4b2695d9409a535d1f0e7b51092fbf2b58c')
+sha256sums=('abb668d16a1fd3ea6d56fcb925cc5696c28b4cbfc023244630cbe7a57087f574')
 
 build() {
   cd ${_project_name}-${pkgver}
