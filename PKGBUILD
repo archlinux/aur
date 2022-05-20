@@ -1,7 +1,6 @@
 # Maintainer: onenowy <onenowy AT gmail DOT com>
 # Contributor: Youngjae Lee <ls4154.lee@gmail.com>
 # Contributor: Kimlulz (kimlulz@naver.com)
-
 pkgname=naver-whale-stable-bin
 pkgver=3.14.134.62
 pkgrel=1
@@ -23,7 +22,7 @@ optdepends=(
 	'gnome-keyring: for storing passwords in GNOME keyring'
 	'kwallet: for storing passwords in KWallet'
 )
-replaces=('naver-whale-stable' 'whale-browser')
+conflicts=('naver-whale-stable' 'whale-browser')
 options=('!emptydirs' '!strip')
 source=("https://repo.whale.naver.com/stable/deb/pool/main/n/naver-whale-stable/naver-whale-stable_${pkgver}-1_amd64.deb"
 	"naver-whale-stable.sh"
