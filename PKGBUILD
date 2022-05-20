@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "src/WHY2"
+	cd "WHY2"
 
 	make install
 
