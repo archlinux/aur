@@ -1,0 +1,15 @@
+pkgbase = warpforge-git
+	pkgdesc = Putting things together. Consistently.
+	pkgver = r261.5be2023
+	pkgrel = 1
+	url = http://warpforge.io
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = warpforge-git
+	conflicts = warpforge
+	source = git+https://github.com/warpfork/warpforge.git
+	md5sums = SKIP
+
+pkgname = warpforge-git
