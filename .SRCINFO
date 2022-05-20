@@ -1,0 +1,15 @@
+pkgbase = fbihtax-git
+	pkgdesc = CLI tool to help manage tax payments in FBiH (Bosnia and Herzegovina Federation) written in Rust.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/esensar/fbihtax
+	arch = any
+	license = MIT
+	makedepends = cargo
+	optdepends = pdftk: PDF output support
+	provides = fbihtax
+	conflicts = fbihtax
+	source = git+https://github.com/esensar/fbihtax
+	sha256sums = SKIP
+
+pkgname = fbihtax-git
