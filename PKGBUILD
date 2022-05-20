@@ -8,10 +8,10 @@ pkgdesc='system76 userspace scheduler'
 arch=(x86_64)
 url='https://github.com/pop-os/system76-scheduler'
 license=('MPL-2')
-depends=()
-makedepends=(git rust just bcc-tools)
+depends=(bcc-tools python-bcc)
+makedepends=(git rust just)
 source=("https://github.com/pop-os/system76-scheduler/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c48cd5ba62d499dbf01eb9ab44d592e6213fd5f4d4391e2a06430c6806f8f08d')
 install=install.sh
 backup=(
   'etc/system76-scheduler/assignments/default.ron'
