@@ -122,7 +122,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux TT scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -160,7 +160,6 @@ source+=(
     "${_patchsource}/0002-anbox.patch"
     "${_patchsource}/0003-bbr2.patch"
     "${_patchsource}/0004-cachy.patch"
-#    "${_patchsource}/0005-migrate.patch"
     "${_patchsource}/0006-clearlinux.patch"
     "${_patchsource}/0007-cpu.patch"
     "${_patchsource}/0008-fixes-miscellaneous.patch"
@@ -171,7 +170,7 @@ source+=(
     "${_patchsource}/0013-xanmod.patch"
     "${_patchsource}/0014-lrng.patch"
     "${_patchsource}/0015-ck-hrtimer.patch"
-#    "${_patchsource}/0016-futex-winesync.patch"
+    "${_patchsource}/0016-futex-winesync.patch"
     "auto-cpu-optimization.sh"
 )
 
@@ -708,4 +707,5 @@ sha256sums=('172424bc41ef2df9b19457ceb022b56a51eb9497529b15ce7e9b8d6f90ad5978'
             '0e5177f086ddcac9b0e6596d29588c0730cce5c827e4c51e57f835a32f25ee85'
             '761abc5bd65c194b6b810af1022df5888ce0ecbe70ffe4cd67e6e0c748fb78a2'
             '07e34ca2f03d96837166ff4764503a76ff6f499107716455073e5e081b40a146'
+            '179b540f8848b03ccb1a0d12e24feab63fd0576b5e9eed8f214d6e9cb790f151'
             '65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
