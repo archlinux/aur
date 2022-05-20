@@ -1,11 +1,12 @@
 pkgbase = youtube-music-git
 	pkgdesc = YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)
-	pkgver = 1.16.0.r3.g5cffb6f
-	pkgrel = 2
+	pkgver = 1.17.0.r0.g96b2aab
+	pkgrel = 1
 	url = https://th-ch.github.io/youtube-music
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = nodejs>=14.0.0
 	makedepends = npm
 	makedepends = yarn
 	depends = electron
