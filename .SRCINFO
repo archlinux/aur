@@ -1,13 +1,13 @@
 pkgbase = dyff
 	pkgdesc = Diff tool for YAML files
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/homeport/dyff
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = dyff-1.5.2.tar.gz::https://github.com/homeport/dyff/archive/v1.5.2.tar.gz
-	sha256sums = 4458fc1e15ce0840fed428434b1c9a17d35d4ffe26109c6003a564c10a1bbd58
+	source = dyff-1.5.3.tar.gz::https://github.com/homeport/dyff/archive/v1.5.3.tar.gz
+	sha256sums = d5c7cf570d41b80459bb591bd36b50b8a10d575bf55e6e7bf1a2d315e575bb2d
 
 pkgname = dyff
