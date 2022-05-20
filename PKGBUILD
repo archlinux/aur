@@ -1,16 +1,16 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=wpaperd
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
 url='https://github.com/danyspin97/wpaperd'
 license=('GPL3')
-depends=('gcc-libs' 'glibc')
+depends=('libxkbcommon')
 makedepends=('cargo' 'scdoc')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8756670001a114090f79ff3cd317d871ae0116cb98f6402a822e8c9251e35176')
+sha256sums=('b18bab5a130d20fe466f59ebadaaa031a4de45544cc864fb419cf438063d7c92')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
   scdoc < man/wpaperd-output.5.scd > man/wpaperd-output.5
 }
 
