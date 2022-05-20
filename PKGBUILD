@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://www.fvwm.org"
 license=('GPL' 'custom')
 depends=('libevent' 'libx11' 'libxrender' 'libxt' )
+provides=('fvwm=3')
 makedepends=('libxslt')
 optdepends=('asciidoctor'
             'fontconfig' 
