@@ -1,7 +1,7 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
 	pkgver = 3.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivpn.net
 	install = ivpn.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = ivpn
 	depends = lsof
 	depends = wireless_tools
 	depends = openvpn
+	depends = git
 	source = ivpn-src-v3.8.7.tar.gz::https://github.com/ivpn/desktop-app/archive/v3.8.7.tar.gz
 	sha256sums = 79891cfdd5e6b6e8e6c47db277251debb16ee094e402a4ac188883c5334bb7a7
 
