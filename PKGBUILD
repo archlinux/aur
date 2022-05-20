@@ -28,8 +28,8 @@ sha256sums=('6ed1ae73cbe32022e5be9ddd4689e9177891de69fcccb9ea4b07e66dc682179f'
 validpgpkeys=()
 
 package() {
-	install -Dm644 "$srcdir/LICENSE" "$pkdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm775 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm0775 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm0644 -t "$pkdir/usr/share/licenses/$pkgname/" "$srcdir/LICENSE"
 }
 
 # vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:
