@@ -1,17 +1,18 @@
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Maintainer: Matrix <thysupremematrix at tuta dot io>
 
 pkgname=gstreamer0.10
 _pkgname=gstreamer
 pkgver=0.10.36
-pkgrel=17
+pkgrel=20
 pkgdesc="GStreamer Multimedia Framework"
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 url='https://gstreamer.freedesktop.org'
 depends=('libxml2' 'glib2')
-makedepends=('intltool' 'gobject-introspection')
+makedepends=('intltool' 'gobject-introspection' 'python3')
 source=("https://gstreamer.freedesktop.org/src/gstreamer/${_pkgname}-${pkgver}.tar.xz"
         'tests-remove-silly-test_fail_abstract_new-check.patch'
         'bison3.patch')
@@ -24,6 +25,7 @@ prepare() {
   patch -Np1 -i ../tests-remove-silly-test_fail_abstract_new-check.patch
   patch -Np1 -i ../bison3.patch
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
+  sed -e 's/static volatile gsize gonce_data/static gsize gonce_data/g' -i gst/gstutils.h
 }
 
 build() {
