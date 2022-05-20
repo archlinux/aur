@@ -1,0 +1,1041 @@
+From e306382576d357ea41e842a584dfbbf97ac4e59e Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 11:41:54 +0200
+Subject: [PATCH 01/13] fix: check only for remaining download
+
+---
+ .../Library/components/InstallModal/index.tsx | 37 ++++++++++++++++---
+ 1 file changed, 31 insertions(+), 6 deletions(-)
+
+diff --git a/src/screens/Library/components/InstallModal/index.tsx b/src/screens/Library/components/InstallModal/index.tsx
+index c634fd5b0..521dd19d1 100644
+--- a/src/screens/Library/components/InstallModal/index.tsx
++++ b/src/screens/Library/components/InstallModal/index.tsx
+@@ -256,10 +256,22 @@ export default function InstallModal({
+           installPath
+         )
+         if (gameInstallInfo?.manifest?.disk_size) {
+-          const notEnoughDiskSpace = free < gameInstallInfo.manifest.disk_size
+-          const spaceLeftAfter = size(
++          let notEnoughDiskSpace = free < gameInstallInfo.manifest.disk_size
++          let spaceLeftAfter = size(
+             free - Number(gameInstallInfo.manifest.disk_size)
+           )
++          if (previousProgress.folder === installPath) {
++            const progress = 100 - getProgress(previousProgress)
++            notEnoughDiskSpace =
++              free <
++              (progress / 100) * Number(gameInstallInfo.manifest.disk_size)
++
++            spaceLeftAfter = size(
++              free -
++                (progress / 100) * Number(gameInstallInfo.manifest.disk_size)
++            )
++          }
++
+           setSpaceLeft({
+             message,
+             notEnoughDiskSpace,
+@@ -323,9 +335,20 @@ export default function InstallModal({
+ 
+   const haveDLCs = gameInstallInfo?.game?.owned_dlc?.length > 0
+   const DLCList = gameInstallInfo?.game?.owned_dlc
+-  const downloadSize =
+-    gameInstallInfo?.manifest?.download_size &&
+-    size(Number(gameInstallInfo?.manifest?.download_size))
++  const downloadSize = () => {
++    if (gameInstallInfo?.manifest?.download_size) {
++      if (previousProgress.folder === installPath) {
++        const progress = 100 - getProgress(previousProgress)
++        return size(
++          (progress / 100) * Number(gameInstallInfo.manifest.disk_size)
++        )
++      }
++
++      return size(Number(gameInstallInfo?.manifest?.download_size))
++    }
++    return ''
++  }
++
+   const installSize =
+     gameInstallInfo?.manifest?.disk_size &&
+     size(Number(gameInstallInfo?.manifest?.disk_size))
+@@ -404,7 +427,9 @@ export default function InstallModal({
+                   <div className="InstallModal__sizeLabel">
+                     {t('game.downloadSize', 'Download Size')}:
+                   </div>
+-                  <div className="InstallModal__sizeValue">{downloadSize}</div>
++                  <div className="InstallModal__sizeValue">
++                    {downloadSize()}
++                  </div>
+                 </div>
+                 <div className="InstallModal__size">
+                   <FontAwesomeIcon
+
+From 1b85efc0d1360216627a11cf51026d7b6673a817 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 12:36:30 +0200
+Subject: [PATCH 02/13] feat: use proton on runExe
+
+---
+ electron/main.ts | 41 +++++++++++------------------------------
+ src/App.css      |  7 +++++++
+ 2 files changed, 18 insertions(+), 30 deletions(-)
+
+diff --git a/electron/main.ts b/electron/main.ts
+index 793e46ed5..dbcd0992c 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -87,7 +87,8 @@ import {
+   weblateUrl,
+   wikiLink,
+   heroicToolsPath,
+-  fontsStore
++  fontsStore,
++  flatPakHome
+ } from './constants'
+ import { handleProtocol } from './protocol'
+ import { logError, logInfo, LogPrefix, logWarning } from './logger/logger'
+@@ -555,45 +556,25 @@ interface Tools {
+ ipcMain.handle(
+   'callTool',
+   async (event, { tool, wine, prefix, exe }: Tools) => {
+-    const newProtonWinePath = wine.replace('proton', 'files/bin/wine64')
+-    const oldProtonWinePath = wine.replace('proton', 'dist/bin/wine64')
+-    const isProton = wine.includes('proton')
++    const isProton = wine.includes('/proton')
+     const winetricks = `${heroicToolsPath}/winetricks`
+     const options: ExecOptions = {
+       ...execOptions
+     }
+ 
+-    // existsSync is weird because it returns false always if the path has single-quotes in it
+-    const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
+-      ? newProtonWinePath
+-      : oldProtonWinePath
+-    let wineBin = isProton ? `'${protonWinePath}'` : wine
+-    let winePrefix = prefix.replace('~', userHome)
++    const wineBin = isProton ? `'${wine}' run` : wine
++    const fixedPrefix = prefix.replace('~', userHome)
++    const steamInstallPath = join(flatPakHome, '.steam', 'steam')
++    const winePrefix = isProton
++      ? `STEAM_COMPAT_CLIENT_INSTALL_PATH=${steamInstallPath}  STEAM_COMPAT_DATA_PATH='${fixedPrefix}'`
++      : `WINEPREFIX='${fixedPrefix}'`
+ 
+-    if (wine.includes('proton')) {
+-      const protonPrefix = winePrefix.replaceAll("'", '')
+-      winePrefix = `${protonPrefix}/pfx`
+-
+-      logWarning(
+-        'Using Winecfg and Winetricks with Proton might not work as expected.',
+-        LogPrefix.Backend
+-      )
+-      // workaround for proton since newer versions doesnt come with a wine binary anymore.
+-      if (!existsSync(wineBin.replaceAll("'", ''))) {
+-        logInfo(
+-          `${wineBin} not found for this Proton version, will try using default wine`,
+-          LogPrefix.Backend
+-        )
+-        wineBin = '/usr/bin/wine'
+-      }
+-    }
+-
+-    let command = `WINE=${wineBin} WINEPREFIX='${winePrefix}' ${
++    let command = `WINE=${wineBin} ${winePrefix} ${
+       tool === 'winecfg' ? `${wineBin} ${tool}` : `${winetricks} -q`
+     }`
+ 
+     if (tool === 'runExe') {
+-      command = `WINEPREFIX='${winePrefix}' ${wineBin} '${exe}'`
++      command = `${winePrefix} ${wineBin} '${exe}'`
+       options.cwd = dirname(exe)
+     }
+ 
+diff --git a/src/App.css b/src/App.css
+index 981e2457c..4c0bf51a8 100644
+--- a/src/App.css
++++ b/src/App.css
+@@ -168,6 +168,13 @@ html,
+   border: 2px solid;
+ }
+ 
++.button.outline:hover:disabled,
++.button.outline:disabled {
++  background-color: var(--background-secondary);
++  color: var(--text-secondary);
++  border: none;
++}
++
+ .button.outline:hover {
+   background: transparent;
+   color: var(--accent-overlay);
+
+From 206b46a3ab436c8711e754e6b62dde04f46865ac Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 12:36:42 +0200
+Subject: [PATCH 03/13] fix: disable winetricks for proton
+
+---
+ .../Settings/components/Tools/index.tsx       | 29 +++++++++++--------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/src/screens/Settings/components/Tools/index.tsx b/src/screens/Settings/components/Tools/index.tsx
+index 1291552d7..daf1c5690 100644
+--- a/src/screens/Settings/components/Tools/index.tsx
++++ b/src/screens/Settings/components/Tools/index.tsx
+@@ -75,6 +75,8 @@ export default function Tools({ wineVersion, winePrefix }: Props) {
+     ev.preventDefault()
+   }
+ 
++  const isProton = wineVersion.type === 'proton'
++
+   return (
+     <>
+       <div data-testid="toolsSettings" className="settingsTools">
+@@ -91,18 +93,21 @@ export default function Tools({ wineVersion, winePrefix }: Props) {
+           >
+             <span className="toolTitle">Winecfg</span>
+           </button>
+-          <button
+-            data-testid="wineTricks"
+-            className="button outline"
+-            style={{
+-              color: winetricksRunning
+-                ? 'var(--download-button)'
+-                : 'var(--text-default)'
+-            }}
+-            onClick={async () => callTools('winetricks')}
+-          >
+-            <span className="toolTitle">Winetricks</span>
+-          </button>
++          {
++            <button
++              data-testid="wineTricks"
++              className="button outline"
++              disabled={isProton}
++              style={{
++                color: winetricksRunning
++                  ? 'var(--download-button)'
++                  : 'var(--text-default)'
++              }}
++              onClick={async () => callTools('winetricks')}
++            >
++              <span className="toolTitle">Winetricks</span>
++            </button>
++          }
+           <a
+             data-testid="toolsDrag"
+             draggable
+
+From 7efc5117f5c08e60636256a17a78364afad6e01a Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 12:41:18 +0200
+Subject: [PATCH 04/13] fix: proton prefixes not being created
+
+---
+ electron/launcher.ts | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index 65d30e647..2117ddd01 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -281,12 +281,15 @@ async function verifyWinePrefix(
+ ): Promise<{ res: ExecResult; updated: boolean }> {
+   const { winePrefix, wineVersion } = await game.getSettings()
+ 
+-  if (!(wineVersion.type === 'wine')) {
++  if (wineVersion.type === 'crossover') {
+     return { res: { stdout: '', stderr: '' }, updated: false }
+   }
+ 
+   if (!existsSync(winePrefix)) {
+     mkdirSync(winePrefix, { recursive: true })
++    if (wineVersion.type === 'proton') {
++      return { res: { stdout: '', stderr: '' }, updated: true }
++    }
+   }
+ 
+   // If the registry isn't available yet, things like DXVK installers might fail. So we have to wait on wineboot then
+
+From d956208ffe400764b2dafb277f81c7c60ebe1a74 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 13:04:48 +0200
+Subject: [PATCH 05/13] fix: winetricks with proton
+
+---
+ electron/main.ts                              | 53 +++++++++++++++++--
+ .../Settings/components/Tools/index.tsx       | 29 +++++-----
+ 2 files changed, 61 insertions(+), 21 deletions(-)
+
+diff --git a/electron/main.ts b/electron/main.ts
+index dbcd0992c..f8260ef49 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -553,11 +553,57 @@ interface Tools {
+   wine: string
+ }
+ 
++const runWineTricks = async (
++  prefix: string,
++  wine: string,
++  isProton: boolean
++) => {
++  const winetricks = `${heroicToolsPath}/winetricks`
++  const newProtonWinePath = wine.replace(
++    new RegExp('proton' + '$'),
++    'files/bin/wine64'
++  )
++  const oldProtonWinePath = wine.replace(
++    new RegExp('proton' + '$'),
++    'dist/bin/wine64'
++  )
++
++  const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
++    ? newProtonWinePath
++    : oldProtonWinePath
++
++  const wineBin = isProton ? protonWinePath : wine
++
++  let winePrefix = prefix.replace('~', userHome)
++  if (isProton) {
++    const protonPrefix = winePrefix.replaceAll("'", '')
++    winePrefix = `${protonPrefix}/pfx`
++  }
++
++  const command = `WINEPREFIX='${winePrefix}' WINE='${wineBin}' ${winetricks} -q`
++
++  logInfo(['trying to run', command], LogPrefix.Backend)
++  try {
++    const { stderr, stdout } = await execAsync(command, execOptions)
++    logInfo(`Output: ${stderr} \n ${stdout}`)
++  } catch (error) {
++    logError(`${error}`)
++    logError(
++      `Something went wrong! Check if WineTricks is available and ${wineBin} exists`,
++      LogPrefix.Backend
++    )
++  }
++}
++
+ ipcMain.handle(
+   'callTool',
+   async (event, { tool, wine, prefix, exe }: Tools) => {
+     const isProton = wine.includes('/proton')
+-    const winetricks = `${heroicToolsPath}/winetricks`
++
++    if (tool === 'winetricks') {
++      return runWineTricks(prefix, wine, isProton)
++    }
++
+     const options: ExecOptions = {
+       ...execOptions
+     }
+@@ -565,13 +611,12 @@ ipcMain.handle(
+     const wineBin = isProton ? `'${wine}' run` : wine
+     const fixedPrefix = prefix.replace('~', userHome)
+     const steamInstallPath = join(flatPakHome, '.steam', 'steam')
++
+     const winePrefix = isProton
+       ? `STEAM_COMPAT_CLIENT_INSTALL_PATH=${steamInstallPath}  STEAM_COMPAT_DATA_PATH='${fixedPrefix}'`
+       : `WINEPREFIX='${fixedPrefix}'`
+ 
+-    let command = `WINE=${wineBin} ${winePrefix} ${
+-      tool === 'winecfg' ? `${wineBin} ${tool}` : `${winetricks} -q`
+-    }`
++    let command = `WINE=${wineBin} ${winePrefix} ${`${wineBin} ${tool}`}`
+ 
+     if (tool === 'runExe') {
+       command = `${winePrefix} ${wineBin} '${exe}'`
+diff --git a/src/screens/Settings/components/Tools/index.tsx b/src/screens/Settings/components/Tools/index.tsx
+index daf1c5690..1291552d7 100644
+--- a/src/screens/Settings/components/Tools/index.tsx
++++ b/src/screens/Settings/components/Tools/index.tsx
+@@ -75,8 +75,6 @@ export default function Tools({ wineVersion, winePrefix }: Props) {
+     ev.preventDefault()
+   }
+ 
+-  const isProton = wineVersion.type === 'proton'
+-
+   return (
+     <>
+       <div data-testid="toolsSettings" className="settingsTools">
+@@ -93,21 +91,18 @@ export default function Tools({ wineVersion, winePrefix }: Props) {
+           >
+             <span className="toolTitle">Winecfg</span>
+           </button>
+-          {
+-            <button
+-              data-testid="wineTricks"
+-              className="button outline"
+-              disabled={isProton}
+-              style={{
+-                color: winetricksRunning
+-                  ? 'var(--download-button)'
+-                  : 'var(--text-default)'
+-              }}
+-              onClick={async () => callTools('winetricks')}
+-            >
+-              <span className="toolTitle">Winetricks</span>
+-            </button>
+-          }
++          <button
++            data-testid="wineTricks"
++            className="button outline"
++            style={{
++              color: winetricksRunning
++                ? 'var(--download-button)'
++                : 'var(--text-default)'
++            }}
++            onClick={async () => callTools('winetricks')}
++          >
++            <span className="toolTitle">Winetricks</span>
++          </button>
+           <a
+             data-testid="toolsDrag"
+             draggable
+
+From 43c30ba3bb156c202ab6871f47106ee5f52bb1ab Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 14:01:16 +0200
+Subject: [PATCH 06/13] fix: home variable on prefix
+
+---
+ src/screens/Settings/components/WineSettings/index.tsx | 6 ++++++
+ src/screens/Settings/index.tsx                         | 4 +++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/screens/Settings/components/WineSettings/index.tsx b/src/screens/Settings/components/WineSettings/index.tsx
+index ada9050ba..bf99344c2 100644
+--- a/src/screens/Settings/components/WineSettings/index.tsx
++++ b/src/screens/Settings/components/WineSettings/index.tsx
+@@ -18,6 +18,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
+ import { Tooltip } from '@mui/material'
+ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+ import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
++import { configStore } from 'src/helpers/electronStores'
+ 
+ const { ipcRenderer } = window.require('electron')
+ 
+@@ -84,6 +85,11 @@ export default function WineSettings({
+   const { platform } = useContext(ContextProvider)
+   const isLinux = platform === 'linux'
+   const isProton = wineVersion.type === 'proton'
++  const home = configStore.get('userHome')
++
++  if (winePrefix === '') {
++    winePrefix = `${home}/.wine`
++  }
+ 
+   useEffect(() => {
+     const getAltWine = async () => {
+diff --git a/src/screens/Settings/index.tsx b/src/screens/Settings/index.tsx
+index f3ea1c02b..c3cde8cdd 100644
+--- a/src/screens/Settings/index.tsx
++++ b/src/screens/Settings/index.tsx
+@@ -21,6 +21,7 @@ import WineSettings from './components/WineSettings'
+ import LogSettings from './components/LogSettings'
+ import { AdvancedSettings } from './components/AdvancedSettings'
+ import FooterInfo from './components/FooterInfo'
++import { configStore } from 'src/helpers/electronStores'
+ 
+ interface ElectronProps {
+   ipcRenderer: IpcRenderer
+@@ -42,12 +43,13 @@ function Settings() {
+   } = useLocation() as { state: LocationState }
+   const { platform } = useContext(ContextProvider)
+   const isWin = platform === 'win32'
++  const home = configStore.get('userHome')
+ 
+   const [wineVersion, setWineVersion] = useState({
+     bin: '/usr/bin/wine',
+     name: 'Wine Default'
+   } as WineInstallation)
+-  const [winePrefix, setWinePrefix] = useState('~/.wine')
++  const [winePrefix, setWinePrefix] = useState(`${home}/.wine`)
+   const [wineCrossoverBottle, setWineCrossoverBottle] = useState('Heroic')
+   const [defaultInstallPath, setDefaultInstallPath] = useState('')
+   const [defaultWinePrefix, setDefaultWinePrefix] = useState('')
+
+From cdfc13e56fb4d16be668f04e5a850df58941ec08 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 14:08:39 +0200
+Subject: [PATCH 07/13] fix: pr comments
+
+---
+ electron/launcher.ts |  2 +-
+ electron/main.ts     | 45 +-------------------------------------------
+ electron/tools.ts    | 37 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+), 45 deletions(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index 2117ddd01..4b91e0eb4 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -288,7 +288,7 @@ async function verifyWinePrefix(
+   if (!existsSync(winePrefix)) {
+     mkdirSync(winePrefix, { recursive: true })
+     if (wineVersion.type === 'proton') {
+-      return { res: { stdout: '', stderr: '' }, updated: true }
++      return { res: { stdout: '', stderr: '' }, updated: false }
+     }
+   }
+ 
+diff --git a/electron/main.ts b/electron/main.ts
+index f8260ef49..ce9b5f6b7 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -86,7 +86,6 @@ import {
+   tsStore,
+   weblateUrl,
+   wikiLink,
+-  heroicToolsPath,
+   fontsStore,
+   flatPakHome
+ } from './constants'
+@@ -553,55 +552,13 @@ interface Tools {
+   wine: string
+ }
+ 
+-const runWineTricks = async (
+-  prefix: string,
+-  wine: string,
+-  isProton: boolean
+-) => {
+-  const winetricks = `${heroicToolsPath}/winetricks`
+-  const newProtonWinePath = wine.replace(
+-    new RegExp('proton' + '$'),
+-    'files/bin/wine64'
+-  )
+-  const oldProtonWinePath = wine.replace(
+-    new RegExp('proton' + '$'),
+-    'dist/bin/wine64'
+-  )
+-
+-  const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
+-    ? newProtonWinePath
+-    : oldProtonWinePath
+-
+-  const wineBin = isProton ? protonWinePath : wine
+-
+-  let winePrefix = prefix.replace('~', userHome)
+-  if (isProton) {
+-    const protonPrefix = winePrefix.replaceAll("'", '')
+-    winePrefix = `${protonPrefix}/pfx`
+-  }
+-
+-  const command = `WINEPREFIX='${winePrefix}' WINE='${wineBin}' ${winetricks} -q`
+-
+-  logInfo(['trying to run', command], LogPrefix.Backend)
+-  try {
+-    const { stderr, stdout } = await execAsync(command, execOptions)
+-    logInfo(`Output: ${stderr} \n ${stdout}`)
+-  } catch (error) {
+-    logError(`${error}`)
+-    logError(
+-      `Something went wrong! Check if WineTricks is available and ${wineBin} exists`,
+-      LogPrefix.Backend
+-    )
+-  }
+-}
+-
+ ipcMain.handle(
+   'callTool',
+   async (event, { tool, wine, prefix, exe }: Tools) => {
+     const isProton = wine.includes('/proton')
+ 
+     if (tool === 'winetricks') {
+-      return runWineTricks(prefix, wine, isProton)
++      return Winetricks.run(prefix, wine, isProton)
+     }
+ 
+     const options: ExecOptions = {
+diff --git a/electron/tools.ts b/electron/tools.ts
+index 72b334e1f..b6cd79628 100644
+--- a/electron/tools.ts
++++ b/electron/tools.ts
+@@ -198,5 +198,42 @@ export const Winetricks = {
+       .catch(() => {
+         logError('Error Downloading Winetricks', LogPrefix.Backend)
+       })
++  },
++  run: async (prefix: string, wine: string, isProton: boolean) => {
++    const winetricks = `${heroicToolsPath}/winetricks`
++    const newProtonWinePath = wine.replace(
++      new RegExp('proton' + '$'),
++      'files/bin/wine64'
++    )
++    const oldProtonWinePath = wine.replace(
++      new RegExp('proton' + '$'),
++      'dist/bin/wine64'
++    )
++
++    const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
++      ? newProtonWinePath
++      : oldProtonWinePath
++
++    const wineBin = isProton ? protonWinePath : wine
++
++    let winePrefix = prefix.replace('~', userHome)
++    if (isProton) {
++      const protonPrefix = winePrefix.replaceAll("'", '')
++      winePrefix = `${protonPrefix}/pfx`
++    }
++
++    const command = `WINEPREFIX='${winePrefix}' WINE='${wineBin}' ${winetricks} -q`
++
++    logInfo(['trying to run', command], LogPrefix.Backend)
++    try {
++      const { stderr, stdout } = await execAsync(command, execOptions)
++      logInfo(`Output: ${stderr} \n ${stdout}`)
++    } catch (error) {
++      logError(`${error}`)
++      logError(
++        `Something went wrong! Check if WineTricks is available and ${wineBin} exists`,
++        LogPrefix.Backend
++      )
++    }
+   }
+ }
+
+From 67a0b41af3496f2d7513bc02720269c5e7d8366d Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 14:31:03 +0200
+Subject: [PATCH 08/13] feat: use runWineCommand for runexe
+
+---
+ electron/main.ts               | 31 +++++++++++++------------------
+ src/screens/Settings/index.tsx |  6 +++++-
+ 2 files changed, 18 insertions(+), 19 deletions(-)
+
+diff --git a/electron/main.ts b/electron/main.ts
+index ce9b5f6b7..57a94b3ac 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -1,5 +1,4 @@
+ import { ExecOptions } from 'child_process'
+-import { dirname } from 'path'
+ import {
+   InstallParams,
+   LaunchResult,
+@@ -35,6 +34,7 @@ import {
+   writeFileSync
+ } from 'graceful-fs'
+ 
++import { runWineCommand } from './launcher'
+ import Backend from 'i18next-fs-backend'
+ import i18next from 'i18next'
+ import { join } from 'path'
+@@ -64,7 +64,8 @@ import {
+   getGOGdlBin,
+   showErrorBoxModal,
+   getFileSize,
+-  showErrorBoxModalAuto
++  showErrorBoxModalAuto,
++  getWineFromProton
+ } from './utils'
+ import {
+   configStore,
+@@ -86,8 +87,7 @@ import {
+   tsStore,
+   weblateUrl,
+   wikiLink,
+-  fontsStore,
+-  flatPakHome
++  fontsStore
+ } from './constants'
+ import { handleProtocol } from './protocol'
+ import { logError, logInfo, LogPrefix, logWarning } from './logger/logger'
+@@ -550,35 +550,30 @@ interface Tools {
+   prefix: string
+   tool: string
+   wine: string
++  appName: string
+ }
+ 
+ ipcMain.handle(
+   'callTool',
+-  async (event, { tool, wine, prefix, exe }: Tools) => {
++  async (event, { tool, wine, prefix, exe, appName }: Tools) => {
+     const isProton = wine.includes('/proton')
+ 
+     if (tool === 'winetricks') {
+       return Winetricks.run(prefix, wine, isProton)
+     }
+ 
++    if (tool === 'runExe') {
++      const settings = await Game.get(appName).getSettings()
++      return runWineCommand(settings, exe, null, false)
++    }
++
+     const options: ExecOptions = {
+       ...execOptions
+     }
+ 
+-    const wineBin = isProton ? `'${wine}' run` : wine
+-    const fixedPrefix = prefix.replace('~', userHome)
+-    const steamInstallPath = join(flatPakHome, '.steam', 'steam')
++    const { winePrefix, wineBin } = getWineFromProton(wine, isProton, prefix)
+ 
+-    const winePrefix = isProton
+-      ? `STEAM_COMPAT_CLIENT_INSTALL_PATH=${steamInstallPath}  STEAM_COMPAT_DATA_PATH='${fixedPrefix}'`
+-      : `WINEPREFIX='${fixedPrefix}'`
+-
+-    let command = `WINE=${wineBin} ${winePrefix} ${`${wineBin} ${tool}`}`
+-
+-    if (tool === 'runExe') {
+-      command = `${winePrefix} ${wineBin} '${exe}'`
+-      options.cwd = dirname(exe)
+-    }
++    const command = `WINE='${wineBin}' WINEPREFIX='${winePrefix}' ${`'${wineBin}' ${tool}`}`
+ 
+     logInfo(['trying to run', command], LogPrefix.Backend)
+     try {
+diff --git a/src/screens/Settings/index.tsx b/src/screens/Settings/index.tsx
+index c3cde8cdd..513388efb 100644
+--- a/src/screens/Settings/index.tsx
++++ b/src/screens/Settings/index.tsx
+@@ -397,7 +397,11 @@ function Settings() {
+             />
+           )}
+           {isWineSettings && (
+-            <Tools winePrefix={winePrefix} wineVersion={wineVersion} />
++            <Tools
++              winePrefix={winePrefix}
++              wineVersion={wineVersion}
++              appName={appName}
++            />
+           )}
+           {isOtherSettings && (
+             <OtherSettings
+
+From d8aa1fb8464971840c9bf32216b47ec3702b5f89 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 14:31:26 +0200
+Subject: [PATCH 09/13] chore: refactored and add helper functions
+
+---
+ electron/tools.ts                             | 27 +++++-------------
+ electron/utils.ts                             | 28 +++++++++++++++++++
+ .../Settings/components/Tools/index.tsx       |  6 ++--
+ 3 files changed, 39 insertions(+), 22 deletions(-)
+
+diff --git a/electron/tools.ts b/electron/tools.ts
+index b6cd79628..da6c4e0ea 100644
+--- a/electron/tools.ts
++++ b/electron/tools.ts
+@@ -3,7 +3,12 @@ import * as axios from 'axios'
+ import { exec } from 'child_process'
+ import { existsSync, readFileSync } from 'graceful-fs'
+ 
+-import { execAsync, isOnline, showErrorBoxModalAuto } from './utils'
++import {
++  execAsync,
++  getWineFromProton,
++  isOnline,
++  showErrorBoxModalAuto
++} from './utils'
+ import { execOptions, heroicToolsPath, userHome } from './constants'
+ import { logError, logInfo, LogPrefix, logWarning } from './logger/logger'
+ import i18next from 'i18next'
+@@ -201,26 +206,8 @@ export const Winetricks = {
+   },
+   run: async (prefix: string, wine: string, isProton: boolean) => {
+     const winetricks = `${heroicToolsPath}/winetricks`
+-    const newProtonWinePath = wine.replace(
+-      new RegExp('proton' + '$'),
+-      'files/bin/wine64'
+-    )
+-    const oldProtonWinePath = wine.replace(
+-      new RegExp('proton' + '$'),
+-      'dist/bin/wine64'
+-    )
+-
+-    const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
+-      ? newProtonWinePath
+-      : oldProtonWinePath
+ 
+-    const wineBin = isProton ? protonWinePath : wine
+-
+-    let winePrefix = prefix.replace('~', userHome)
+-    if (isProton) {
+-      const protonPrefix = winePrefix.replaceAll("'", '')
+-      winePrefix = `${protonPrefix}/pfx`
+-    }
++    const { winePrefix, wineBin } = getWineFromProton(wine, isProton, prefix)
+ 
+     const command = `WINEPREFIX='${winePrefix}' WINE='${wineBin}' ${winetricks} -q`
+ 
+diff --git a/electron/utils.ts b/electron/utils.ts
+index ed22c0682..cbe922ad3 100644
+--- a/electron/utils.ts
++++ b/electron/utils.ts
+@@ -92,6 +92,34 @@ function isOnline() {
+ 
+ export const getFileSize = fileSize.partial({ base: 2 })
+ 
++export function getWineFromProton(
++  wine: string,
++  isProton: boolean,
++  prefix: string
++) {
++  const newProtonWinePath = wine.replace(
++    new RegExp('proton' + '$'),
++    'files/bin/wine64'
++  )
++  const oldProtonWinePath = wine.replace(
++    new RegExp('proton' + '$'),
++    'dist/bin/wine64'
++  )
++
++  const protonWinePath = existsSync(newProtonWinePath.replaceAll("'", ''))
++    ? newProtonWinePath
++    : oldProtonWinePath
++
++  const wineBin = isProton ? protonWinePath : wine
++
++  let winePrefix = prefix.replace('~', userHome)
++  if (isProton) {
++    const protonPrefix = winePrefix.replaceAll("'", '')
++    winePrefix = `${protonPrefix}/pfx`
++  }
++  return { winePrefix, wineBin }
++}
++
+ async function isEpicServiceOffline(
+   type: 'Epic Games Store' | 'Fortnite' | 'Rocket League' = 'Epic Games Store'
+ ) {
+diff --git a/src/screens/Settings/components/Tools/index.tsx b/src/screens/Settings/components/Tools/index.tsx
+index 1291552d7..93cc60d98 100644
+--- a/src/screens/Settings/components/Tools/index.tsx
++++ b/src/screens/Settings/components/Tools/index.tsx
+@@ -13,9 +13,10 @@ const { ipcRenderer } = window.require('electron') as {
+ interface Props {
+   winePrefix: string
+   wineVersion: WineInstallation
++  appName: string
+ }
+ 
+-export default function Tools({ wineVersion, winePrefix }: Props) {
++export default function Tools({ wineVersion, winePrefix, appName }: Props) {
+   const { t } = useTranslation()
+   const [winecfgRunning, setWinecfgRunning] = useState(false)
+   const [winetricksRunning, setWinetricksRunning] = useState(false)
+@@ -33,7 +34,8 @@ export default function Tools({ wineVersion, winePrefix }: Props) {
+       exe,
+       prefix: winePrefix,
+       tool,
+-      wine: wineVersion.bin
++      wine: wineVersion.bin,
++      appName
+     })
+     setWinetricksRunning(false)
+     setWinecfgRunning(false)
+
+From c0044ddf62dff8a5dd8bdf34a38ae71724cca7f2 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 14:40:17 +0200
+Subject: [PATCH 10/13] fix: pr comments
+
+---
+ electron/launcher.ts | 10 +++++++---
+ electron/main.ts     |  4 +---
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index 4b91e0eb4..aac832488 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -285,11 +285,15 @@ async function verifyWinePrefix(
+     return { res: { stdout: '', stderr: '' }, updated: false }
+   }
+ 
++  let didCreateFolder = false
++
+   if (!existsSync(winePrefix)) {
+     mkdirSync(winePrefix, { recursive: true })
+-    if (wineVersion.type === 'proton') {
+-      return { res: { stdout: '', stderr: '' }, updated: false }
+-    }
++    didCreateFolder = true
++  }
++
++  if (wineVersion.type === 'proton') {
++    return { res: { stdout: '', stderr: '' }, updated: didCreateFolder }
+   }
+ 
+   // If the registry isn't available yet, things like DXVK installers might fail. So we have to wait on wineboot then
+diff --git a/electron/main.ts b/electron/main.ts
+index 57a94b3ac..1242aa5e3 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -34,7 +34,6 @@ import {
+   writeFileSync
+ } from 'graceful-fs'
+ 
+-import { runWineCommand } from './launcher'
+ import Backend from 'i18next-fs-backend'
+ import i18next from 'i18next'
+ import { join } from 'path'
+@@ -563,8 +562,7 @@ ipcMain.handle(
+     }
+ 
+     if (tool === 'runExe') {
+-      const settings = await Game.get(appName).getSettings()
+-      return runWineCommand(settings, exe, null, false)
++      return Game.get(appName).runWineCommand(exe)
+     }
+ 
+     const options: ExecOptions = {
+
+From 48acf56b1e6dff8af890c00943887e69a1b98b66 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 15:27:56 +0200
+Subject: [PATCH 11/13] fix: verify if prefix exist before running tool
+
+---
+ electron/launcher.ts |  9 +++++++--
+ electron/main.ts     |  8 ++++++++
+ electron/utils.ts    | 13 ++++++++-----
+ 3 files changed, 23 insertions(+), 7 deletions(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index aac832488..61fc2233c 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -276,9 +276,14 @@ function setupWrappers(
+  * @param game The game to verify the Wineprefix of
+  * @returns stderr & stdout of 'wineboot --init'
+  */
+-async function verifyWinePrefix(
++export async function verifyWinePrefix(
+   game: LegendaryGame | GOGGame
+ ): Promise<{ res: ExecResult; updated: boolean }> {
++  // needs this check here in case game comes undefined
++  if (!game) {
++    return { res: { stdout: '', stderr: '' }, updated: false }
++  }
++
+   const { winePrefix, wineVersion } = await game.getSettings()
+ 
+   if (wineVersion.type === 'crossover') {
+@@ -352,7 +357,7 @@ async function runWineCommand(
+   wait: boolean
+ ) {
+   const { wineVersion, winePrefix } = gameSettings
+-
++  verifyWinePrefix(this)
+   const env_vars = {
+     ...process.env,
+     ...getWineEnvSetup(wineVersion, winePrefix)
+diff --git a/electron/main.ts b/electron/main.ts
+index 1242aa5e3..dea432145 100644
+--- a/electron/main.ts
++++ b/electron/main.ts
+@@ -92,6 +92,7 @@ import { handleProtocol } from './protocol'
+ import { logError, logInfo, LogPrefix, logWarning } from './logger/logger'
+ import { gameInfoStore } from './legendary/electronStores'
+ import { getFonts } from 'font-list'
++import { verifyWinePrefix } from './launcher'
+ 
+ const { showMessageBox, showOpenDialog } = dialog
+ const isWindows = platform() === 'win32'
+@@ -561,10 +562,17 @@ ipcMain.handle(
+       return Winetricks.run(prefix, wine, isProton)
+     }
+ 
++    const game = Game.get(appName)
++    await verifyWinePrefix(game)
++
+     if (tool === 'runExe') {
+       return Game.get(appName).runWineCommand(exe)
+     }
+ 
++    if (tool === 'winecfg') {
++      return Game.get(appName).runWineCommand('winecfg')
++    }
++
+     const options: ExecOptions = {
+       ...execOptions
+     }
+diff --git a/electron/utils.ts b/electron/utils.ts
+index cbe922ad3..c3bc671ad 100644
+--- a/electron/utils.ts
++++ b/electron/utils.ts
+@@ -97,6 +97,12 @@ export function getWineFromProton(
+   isProton: boolean,
+   prefix: string
+ ) {
++  let winePrefix = prefix.replace('~', userHome)
++
++  if (!isProton) {
++    return { winePrefix, wineBin: wine }
++  }
++
+   const newProtonWinePath = wine.replace(
+     new RegExp('proton' + '$'),
+     'files/bin/wine64'
+@@ -111,12 +117,9 @@ export function getWineFromProton(
+     : oldProtonWinePath
+ 
+   const wineBin = isProton ? protonWinePath : wine
++  const protonPrefix = winePrefix.replaceAll("'", '')
++  winePrefix = `${protonPrefix}/pfx`
+ 
+-  let winePrefix = prefix.replace('~', userHome)
+-  if (isProton) {
+-    const protonPrefix = winePrefix.replaceAll("'", '')
+-    winePrefix = `${protonPrefix}/pfx`
+-  }
+   return { winePrefix, wineBin }
+ }
+ 
+
+From bf6c1a2f2b1c3405e837f02274b50f4b95222da0 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 15:48:03 +0200
+Subject: [PATCH 12/13] fix: unecessary call
+
+---
+ electron/launcher.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index 61fc2233c..d1cf11c66 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -357,7 +357,7 @@ async function runWineCommand(
+   wait: boolean
+ ) {
+   const { wineVersion, winePrefix } = gameSettings
+-  verifyWinePrefix(this)
++
+   const env_vars = {
+     ...process.env,
+     ...getWineEnvSetup(wineVersion, winePrefix)
+
+From 2b45bb5cc188f944b51e2a9f5b574f8832997dc6 Mon Sep 17 00:00:00 2001
+From: Flavio F Lima <flavioislima@gmail.com>
+Date: Fri, 20 May 2022 15:51:28 +0200
+Subject: [PATCH 13/13] fix: unecessary check
+
+---
+ electron/launcher.ts | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/electron/launcher.ts b/electron/launcher.ts
+index d1cf11c66..026f60ded 100644
+--- a/electron/launcher.ts
++++ b/electron/launcher.ts
+@@ -279,11 +279,6 @@ function setupWrappers(
+ export async function verifyWinePrefix(
+   game: LegendaryGame | GOGGame
+ ): Promise<{ res: ExecResult; updated: boolean }> {
+-  // needs this check here in case game comes undefined
+-  if (!game) {
+-    return { res: { stdout: '', stderr: '' }, updated: false }
+-  }
+-
+   const { winePrefix, wineVersion } = await game.getSettings()
+ 
+   if (wineVersion.type === 'crossover') {

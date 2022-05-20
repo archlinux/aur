@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ELECTRON_IS_DEV=0 exec electron@@VERSION@@ /usr/lib/heroic-games-launcher/resources/app.asar "$@"

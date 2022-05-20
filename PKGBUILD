@@ -1,34 +1,58 @@
-# Maintainer Chris Werner Rau <aur@cwrau.io>
+# Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=heroic-games-launcher-electron
-_pkgver=v1.0.1
-pkgver=${_pkgver#v}
+_pkgbase=HeroicGamesLauncher
+pkgver=2.3.2
 pkgrel=1
+_electronversion=18
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
-url="https://github.com/flavioislima/HeroicGamesLauncher"
+url="https://heroicgameslauncher.com/"
 license=('GPL3')
-conflicts=(${pkgname%-*}-{appimage,bin})
-depends=(electron)
-_filename=heroic-${pkgver}.pacman
-source=("$url/releases/download/${_pkgver}/${_filename}"
-  heroic)
-md5sums=('6b5789d399e5a1c5faf8fca64051593d'
-         'b561c32112d481345acb0d9ca828fa01')
-options=(!strip)
+depends=("electron$_electronversion" 'gawk' 'curl' 'zstd' 'legendary')
+makedepends=('nodejs' 'asar' 'jq' 'npm')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
+        fixes-for-2_3_2.patch
+        electron-is-dev-env.patch
+        "${pkgname%-*}.desktop"
+        "${pkgname%-*}.sh.in")
+sha256sums=('dfd94e47e60668985c5be9f62118a3c47b22565e25d946fba18a12de8d98b1e4'
+            'baa55ec2a4212b22d8764ba36be8fd398c3eb1152996ec823f47feacbf57ebdd'
+            'd4fad8a579a8a955fe2176da0b2fa14cdc010d750c00651c1193a6fba914d4d8'
+            'fe4d0b449feb9aa93a80ef40831889692854c5c162f5502927a6b53e985e6868'
+            '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
 
 prepare() {
-  sed -ri 's|^Exec=.+/heroic(.+)|Exec=/usr/bin/heroic -s\1|' "$srcdir/usr/share/applications/heroic.desktop"
-  sed -ri 's|^Icon=.+heroic\.png|Icon=heroic|' "$srcdir/usr/share/applications/heroic.desktop"
+  cd "$_pkgbase-$pkgver"
+  patch -Np1 < ../fixes-for-2_3_2.patch
+  patch -Np1 < ../electron-is-dev-env.patch
+  jq 'del(.scripts.prepare)' package.json > tmp.json
+  mv {tmp,package}.json
+}
+
+build() {
+  cd "$_pkgbase-$pkgver"
+  electronDist="/usr/lib/electron" # $_electronversion"
+  electronVer="$(sed s/^v// $electronDist/version)"
+  yarn install
+  yarn dist --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
-  install -Dm755 "${srcdir}/heroic" -t "$pkgdir/usr/bin"
-  install -Dm644 "${srcdir}/opt/heroic/resources/app.asar" -t "$pkgdir/opt/heroic"
-  cp -r "${srcdir}/opt/heroic/resources/app.asar.unpacked" "$pkgdir/opt/heroic"
-  install -Dm644 "${srcdir}/usr/share/applications/heroic.desktop" -t "$pkgdir/usr/share/applications"
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/usr/share/icons" "${pkgdir}/usr/share/"
-}
+  cd "$_pkgbase-$pkgver"
 
-# vim:set ts=2 sw=2 et: syntax=sh
+  install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-*}/resources/"
+  cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-*}/resources/"
+  rm "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/linux/legendary"
+  ln -s /usr/bin/legendary "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/linux/"
+
+  sed "s/@@VERSION@@/$_electronversion/" "$srcdir/${pkgname%-*}.sh.in" > "${pkgname%-*}.sh"
+  install -Dm755 "${pkgname%-*}.sh" "$pkgdir/usr/bin/heroic"
+  install -Dm644 "$srcdir/${pkgname%-*}.desktop" -t "$pkgdir/usr/share/applications/"
+
+  install -Dm644 build/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-*}.png"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
+}

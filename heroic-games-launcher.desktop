@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Heroic Games Launcher
+Comment=A Native GUI Epic Games Launcher for Linux
+GenericName=Game launcher
+Exec=heroic %U
+Icon=heroic
+Type=Application
+Terminal=false
+StartupNotify=true
+StartupWMClass=heroic
+Categories=Game;
