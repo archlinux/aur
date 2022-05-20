@@ -1,8 +1,8 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r1961.3ae83946
-pkgrel=1
+pkgver=r2006.946252c5
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -72,7 +72,7 @@ package() {
 	install -Dm755 target/release/alvr_launcher -t "$pkgdir/usr/bin/"
 
 	# vrcompositor wrapper
-	install -Dm755 target/release/alvr_vrcompositor_wrapper -t "$pkgdir/usr/lib/alvr/"
+	install -Dm755 target/release/alvr_vrcompositor_wrapper "$pkgdir/usr/lib/alvr/vrcompositor-wrapper"
 
 	# OpenVR Driver
 	install -Dm644 target/release/libalvr_server.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
