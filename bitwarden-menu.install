@@ -4,5 +4,9 @@ cat <<End-of-message
 
 Copy /usr/share/doc/bitwarden-menu-git/config.ini.example into ~/.config/bwm/config.ini and edit. Add vault URLs and logins to config file if desired.
 
+        *CONFLICT* The Archlinux packages python-xdg and python-pyxdg conflict.
+        If you need python-pyxdg, remove python-xdg from the PKGBUILD and
+        `pip install --user xdg` or install bitwarden-menu into a virtualenv.
+
 End-of-message
 }

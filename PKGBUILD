@@ -10,7 +10,7 @@ pkgdesc="Dmenu/Rofi frontend for Bitwarden/Vaultwarden."
 arch=('any')
 url="https://github.com/firecat53/bitwarden-menu"
 license=('MIT')
-depends=('python' 'python-pynput' 'bitwarden-cli')
+depends=('python' 'python-pynput' 'bitwarden-cli' 'python-xdg')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
