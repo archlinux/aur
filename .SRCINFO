@@ -1,16 +1,15 @@
 pkgbase = ttf-unifont-csur
 	pkgdesc = TrueType part of the GNU Unifont containing Michael Everson's ConScript Unicode Registry (CSUR) Private Use Area (PUA) glyphs
-	pkgver = 12.1.04
+	pkgver = 14.0.03
 	pkgrel = 1
-	url = http://unifoundry.com/unifont.html
+	url = https://unifoundry.com/unifont/index.html
 	arch = any
 	license = GPL
 	depends = ttf-unifont
-	source = http://unifoundry.com/pub/unifont/unifont-11.0.02/font-builds/unifont_csur-12.1.04.ttf
-	source = http://unifoundry.com/pub/unifont/unifont-11.0.02/font-builds/unifont_csur-12.1.04.ttf.sig
+	source = http://unifoundry.com/pub/unifont/unifont-14.0.03/font-builds/unifont_csur-14.0.03.ttf
+	source = http://unifoundry.com/pub/unifont/unifont-14.0.03/font-builds/unifont_csur-14.0.03.ttf.sig
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha512sums = 8636e37e76265679b06df6a2373e2d1c53df637cb67b0b05ab840b3db97c8850fab05b12dd550fd06c4452b6f2383648187907ce7173a868bebd28c72927a0d1
+	sha512sums = 969ada59fdb8870bee92e03a88c5cf8f518a33c1467c7b7b432e018fd7da30f7eb0686e37bd8c5cdd5efedbe0888c7daf2dbb9a444161604f50b742867a67819
 	sha512sums = SKIP
 
 pkgname = ttf-unifont-csur
-
