@@ -1,0 +1,17 @@
+pkgbase = correlation-git
+	pkgdesc = Program calculates the main correlation functions of a material
+	pkgver = r146.f0965a0
+	pkgrel = 1
+	url = https://github.com/Isurwars/Correlation
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = automake
+	depends = autoconf
+	depends = libtool
+	source = correlation-git::git+https://github.com/Isurwars/Correlation.git#branch=main
+	source = https://gist.githubusercontent.com/MineralwaterXu/114c0f8e1f25d4a36cfec83a3b66075e/raw/9284a4e24cda1633546b2aef620d9642ff4e9bbc/0001-Fix-function-strerror-declaration.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = correlation-git
