@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-office-electron-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
