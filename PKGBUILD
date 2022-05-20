@@ -1,11 +1,12 @@
-# Maintainer: M Novick <mnovick1988@gmail.com>
-# Maintainer: M Rawash <mrawash@gmail.com>
+# Maintainer: tjhexf <jhonatan@justin.com.br>
+# Contributor: M Novick <mnovick1988@gmail.com>
+# Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: MrBougo <bougospam at gmail dot com>
 # Contributor: wido <widomaker2k7@gmail.com>
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 
 pkgname=xonotic-git
-pkgver=20200729.r1904.9304e64
+pkgver=20220415.r2077.4b05ca1
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter. GIT version. PLEASE SEE AUR COMMENTS."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'armv8h')
@@ -37,7 +38,7 @@ conflicts=('xonotic' 'xonotic-glx' 'xonotic-sdl' 'xonotic-dedicated' 'xonotic-ic
 #source=('git://git.xonotic.org/xonotic/xonotic.git')
 #md5sums=('SKIP')
 
-_gitroot="git://git.xonotic.org/xonotic/xonotic.git"
+_gitroot="https://gitlab.com/xonotic/xonotic.git"
 _gitname="xonotic"
 _releasename="git-AUR"
 _compression=5
