@@ -1,0 +1,18 @@
+pkgbase = python-html-tag-names
+	pkgdesc = List of known HTML tag names
+	pkgver = 0.1.2
+	pkgrel = 00
+	url = https://github.com/Riverside-Healthcare/html-tag-names
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	noextract = html_tag_names-0.1.2-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/9a/e4/242318dcaa06d8525ff72332fc15cea2cffb84c06cfc73c7da6c6b45801a/html_tag_names-0.1.2-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = cb21b2f426f42544931cec6a11bf5609
+	md5sums = 5f6d35549fbdb35156f48a91c94792a9
+
+pkgname = python-html-tag-names
