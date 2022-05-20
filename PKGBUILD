@@ -1,23 +1,32 @@
-# Maintainer: Peter Mayr <petermayr@ymail.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Contributer: Peter Mayr <petermayr@ymail.com>
 
 pkgname=lunzip
-pkgver=1.11
-pkgrel=2
-pkgdesc='For extracting and viewing files in .lzip archives'
-url='http://www.nongnu.org/lzip/lunzip.html'
-arch=('i686' 'x86_64')
-license=('custom')
-depends=('bzip2' 'bash')
-source=("http://download.savannah.gnu.org/releases/lzip/lunzip/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('e6e7ab7d3594f5f5ac522541043d0f32c2eec914')
-
+pkgver=1.13
+pkgrel=1
+pkgdesc="Lunzip is a decompressor for the lzip format written in C."
+url="https://www.nongnu.org/lzip/lunzip.html"
+arch=('x86_64' 'i686')
+license=('GPL')
+source=(
+    "https://download.savannah.gnu.org/releases/lzip/lunzip/$pkgname-$pkgver.tar.gz"
+    "https://download.savannah.gnu.org/releases/lzip/lunzip/$pkgname-$pkgver.tar.gz.sig"
+    )
+validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
+sha512sums=('67f950883b7062d37601bc16d7d64c07f6c580afbf3c0f61394dd6fb5d41c27214484b1dea7aabd41db06d18162b95b5734674646c4fcc833268cabe8cba91bb'
+            'SKIP')
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr --mandir=/usr/share/man
-    make
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
+	make
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	make -k check
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR=${pkgdir} install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }

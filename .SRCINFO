@@ -1,15 +1,15 @@
 pkgbase = lunzip
-	pkgdesc = For extracting and viewing files in .lzip archives
-	pkgver = 1.11
+	pkgdesc = Lunzip is a decompressor for the lzip format written in C.
+	pkgver = 1.13
 	pkgrel = 1
-	url = http://www.nongnu.org/lzip/lunzip.html
-	arch = i686
+	url = https://www.nongnu.org/lzip/lunzip.html
 	arch = x86_64
-	license = custom
-	depends = bzip2
-	depends = bash
-	source = http://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.11.tar.gz
-	sha1sums = e6e7ab7d3594f5f5ac522541043d0f32c2eec914
+	arch = i686
+	license = GPL
+	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.13.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/lunzip/lunzip-1.13.tar.gz.sig
+	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
+	sha512sums = 67f950883b7062d37601bc16d7d64c07f6c580afbf3c0f61394dd6fb5d41c27214484b1dea7aabd41db06d18162b95b5734674646c4fcc833268cabe8cba91bb
+	sha512sums = SKIP
 
 pkgname = lunzip
-
