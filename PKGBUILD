@@ -1,8 +1,8 @@
-# Maintainer : Ashwin Vishnu <y4d71nsar@relay.firefox.com>
+# Maintainer: Ashwin Vishnu <y4d71nsar@relay.firefox.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=mamba
 pkgname=micro${_base}-bin
-pkgver=0.23.2
+pkgver=0.23.3
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums=('f2b9f45dd83f0e55019c6715fcac328394205a42fb9b95001e97d8178af55e2375361e0f920e0397bf913939fe75c73f2b0d21d65cc434b82f9e7371dceaa188')
+sha512sums=('041c0b844b92619c6a97166c171ab5291744c2014128d383365fdabb45a6c1e96cf5d0c6feef200799f4bed571c1489f6d340940d216ce5c5aa84b69058648ff')
 
 check() {
   export PREFIX="${srcdir}"
