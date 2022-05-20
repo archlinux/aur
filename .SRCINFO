@@ -9,6 +9,7 @@ pkgbase = vrms-arch-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = pyalpm
 	source = git+https://github.com/gardenappl/vrms-arch.git
