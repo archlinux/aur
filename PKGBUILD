@@ -28,7 +28,7 @@ sha256sums=('6ed1ae73cbe32022e5be9ddd4689e9177891de69fcccb9ea4b07e66dc682179f'
 validpgpkeys=()
 
 package() {
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm775 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
