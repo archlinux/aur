@@ -2,13 +2,13 @@
 
 _pkgname=Surelog
 pkgname=${_pkgname,,}-git
-pkgver=r4734.beb0e674a
+pkgver=r4745.f96768e1f
 pkgrel=1
 pkgdesc="SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler."
 arch=(x86_64)
 url="https://github.com/chipsalliance/$_pkgname"
 license=('Apache')
-depends=('antlr4-runtime' 'uhdm' 'flatbuffers')
+depends=('antlr4-runtime' 'uhdm' 'flatbuffers>2.0.6')
 makedepends=('git' 'cmake' 'tcl' 'antlr4' 'python')
 checkdepends=('gtest')
 provides=("${_pkgname,,}=$pkgver")
