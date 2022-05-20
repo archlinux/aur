@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.7.0.60
-pkgrel=1
+pkgrel=3
 _ffmpeg_ver=2021_02_27
 _ffdetect_ver=2021_02_27
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -85,13 +85,13 @@ build() {
     --disable-lzma \
     --disable-sdl2 \
     --disable-xlib \
+    --disable-libdav1d \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
     --enable-libaom \
     --enable-libass \
-    --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
