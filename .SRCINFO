@@ -1,6 +1,6 @@
 pkgbase = studio-3t
 	pkgdesc = The Professional Client, IDE and GUI for MongoDB
-	pkgver = 2022.4.1
+	pkgver = 2022.5.0
 	pkgrel = 1
 	url = https://studio3t.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = studio-3t
 	depends = gtk2
 	provides = studio-3t
 	replaces = mongochef
-	source = studio-3t-2022.4.1.tar.gz::https://download.studio3t.com/studio-3t/linux/2022.4.1/studio-3t-linux-x64.tar.gz
-	sha256sums = 5c2a05d289e8c3f9068cbe41b7e850d0a4023c21b5783e554ef1849b11c3e0a1
+	source = studio-3t-2022.5.0.tar.gz::https://download.studio3t.com/studio-3t/linux/2022.5.0/studio-3t-linux-x64.tar.gz
+	sha256sums = 77feddefa3cec8aac31e3e78f3fce4f4c58987fd6143ee2d91e2972963e6156b
 
 pkgname = studio-3t
