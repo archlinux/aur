@@ -3,7 +3,7 @@
 
 _pkgname=aws-google-auth
 pkgname="python-$_pkgname"
-pkgver=0.0.37
+pkgver=0.0.38
 pkgrel=1
 pkgdesc="Provides AWS STS credentials based on Google Apps SAML SSO auth"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-beautifulsoup4' 'python-boto3' 'python-filelock'
 'python-tabulate' 'python-tzlocal' 'python-keyrings-alt' 'python-configparser')
 optdepends=('python-u2flib-host: U2F support')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/cevoaustralia/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('d128857ab1b6eaec28c69b488c8efd52a036a36c23dc2f8f12e8269d2ce891a3024b58f581e1867341495f079d9b7fb9a48ee91c47284639b2917079a8f4747a')
+sha512sums=('bb43bd6718e556595a9277dbfd841b2fb180c307ef41e09dc45e871b1178fb4e97e15ee79938e31729fbe86166e4b60c90976d4e8997e77f19489160f65d0a7c')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver

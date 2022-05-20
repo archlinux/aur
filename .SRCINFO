@@ -1,6 +1,6 @@
 pkgbase = python-aws-google-auth
 	pkgdesc = Provides AWS STS credentials based on Google Apps SAML SSO auth
-	pkgver = 0.0.37
+	pkgver = 0.0.38
 	pkgrel = 1
 	url = https://github.com/cevoaustralia/aws-google-auth
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-aws-google-auth
 	depends = python-keyrings-alt
 	depends = python-configparser
 	optdepends = python-u2flib-host: U2F support
-	source = aws-google-auth-0.0.37.tar.gz::https://github.com/cevoaustralia/aws-google-auth/archive/0.0.37.tar.gz
-	sha512sums = d128857ab1b6eaec28c69b488c8efd52a036a36c23dc2f8f12e8269d2ce891a3024b58f581e1867341495f079d9b7fb9a48ee91c47284639b2917079a8f4747a
+	source = aws-google-auth-0.0.38.tar.gz::https://github.com/cevoaustralia/aws-google-auth/archive/0.0.38.tar.gz
+	sha512sums = bb43bd6718e556595a9277dbfd841b2fb180c307ef41e09dc45e871b1178fb4e97e15ee79938e31729fbe86166e4b60c90976d4e8997e77f19489160f65d0a7c
 
 pkgname = python-aws-google-auth
