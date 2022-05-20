@@ -4,7 +4,7 @@
 
 pkgname=ghi
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GitHub Issues on the command line'
 arch=('any')
 url="https://github.com/drazisil/${pkgname}"
