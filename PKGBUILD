@@ -10,7 +10,7 @@ url="https://github.com/esensar/fbihtax"
 license=('MIT')
 groups=()
 depends=()
-makedepends=()
+makedepends=('cargo')
 checkdepends=()
 optdepends=("pdftk: PDF output support")
 provides=()
@@ -20,16 +20,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/esensar/$pkgname/releases/download/$pkgver/$pkgname-linux.zip"
-        "https://raw.githubusercontent.com/esensar/$pkgname/$pkgver/LICENSE")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/esensar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('6ed1ae73cbe32022e5be9ddd4689e9177891de69fcccb9ea4b07e66dc682179f'
-            '5ed063358afdef13866ed90f97205d89ff3747869a6c737f5b618e73773404fb')
+sha256sums=('f96d45cfe28f769c8b9a92211432e488e96c679f1355001c7d70eaba979bd4e9')
 validpgpkeys=()
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  cargo build --release --target-dir target
+}
+
 package() {
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm775 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
+
+  install -Dm775 "target/release/fbihtax" "$pkgdir/usr/bin/fbihtax"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/fbihtax/LICENSE"
 }
 
 # vim:set ts=4 sw=2 ft=sh et syn=sh ft=sh:

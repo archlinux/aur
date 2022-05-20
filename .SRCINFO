@@ -5,10 +5,9 @@ pkgbase = fbihtax
 	url = https://github.com/esensar/fbihtax
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	optdepends = pdftk: PDF output support
-	source = https://github.com/esensar/fbihtax/releases/download/0.3.0/fbihtax-linux.zip
-	source = https://raw.githubusercontent.com/esensar/fbihtax/0.3.0/LICENSE
-	sha256sums = 6ed1ae73cbe32022e5be9ddd4689e9177891de69fcccb9ea4b07e66dc682179f
-	sha256sums = 5ed063358afdef13866ed90f97205d89ff3747869a6c737f5b618e73773404fb
+	source = fbihtax-0.3.0.tar.gz::https://github.com/esensar/fbihtax/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = f96d45cfe28f769c8b9a92211432e488e96c679f1355001c7d70eaba979bd4e9
 
 pkgname = fbihtax
