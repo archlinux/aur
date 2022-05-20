@@ -1,7 +1,7 @@
 pkgbase = weylus
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
 	pkgver = 0.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64
 	license = AGPL3
@@ -27,6 +27,8 @@ pkgbase = weylus
 	optdepends = gst-plugin-pipewire: Wayland support
 	conflicts = weylus-bin
 	source = weylus-0.11.4.zip::https://github.com/H-M-H/Weylus/archive/v0.11.4.zip
-	sha256sums = 5c8af860ae23a71203d547a5f1d8012bf51c00543ad1110d0fceb0de0c3ae33d
+	source = linking.patch
+	sha256sums = 9cc838e6406ea763c448e64775c42a8faf62a43e63a14facfbdbe0704336e4f8
+	sha256sums = SKIP
 
 pkgname = weylus
