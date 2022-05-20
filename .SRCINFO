@@ -9,7 +9,6 @@ pkgbase = zutils
 	makedepends = bzip2
 	makedepends = gzip-zutils
 	depends = gzip-zutils
-	conflicts = gzip
 	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.11.tar.lz
 	source = http://download.savannah.gnu.org/releases/zutils/zutils-1.11.tar.lz.sig
 	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
