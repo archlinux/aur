@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.21.13393.3002e592c
+pkgver=0.0.22.13627.cd74fb6a6
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -33,7 +33,6 @@ depends=(
   vulkan-icd-loader
   zlib
   curl
-  wolfssl
   pugixml
 # newer system flatbuffers is incompatible with the version RPCS3 depends on
 # flatbuffers
@@ -76,7 +75,7 @@ prepare() {
   git config submodule.llvm.url ../rpcs3-llvm
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
-    awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/wolfssl/ && !/pugixml/'))
+    awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
 
   # We need to convert from a relative folder path to a https://github.com path
   for ((i=0;i<${#SUBMODULES[@]};i+=2))
@@ -111,10 +110,8 @@ build() {
     -DUSE_SYSTEM_LIBPNG=ON \
     -DUSE_SYSTEM_ZLIB=ON \
     -DUSE_SYSTEM_CURL=ON \
-    -DUSE_SYSTEM_WOLFSSL=ON \
     -DUSE_SYSTEM_FLATBUFFERS=OFF \
     -DUSE_SYSTEM_PUGIXML=ON \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -fpermissive"
   
   make -C build
 }
