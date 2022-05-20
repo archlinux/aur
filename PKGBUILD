@@ -9,9 +9,9 @@ arch=("x86_64")
 depends=("gcc-libs")
 provides=("ferium")
 conflicts=("ferium-gui-bin")
-url="https://github.com/theRookieCoder/ferium"
+url="https://github.com/gorilla-devs/ferium"
 license=('MPL2')
-source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/theRookieCoder/ferium/releases/download/v$pkgver/ferium-linux-gnu-nogui.zip"
+source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-gnu-nogui.zip"
 	"ferium.desktop")
 sha256sums=('173a881ffdf37ccf38a89ce026c7b8c1bc39959c1c5ef778afbc98d34f5649e3'
             '594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018')
@@ -19,6 +19,4 @@ sha256sums=('173a881ffdf37ccf38a89ce026c7b8c1bc39959c1c5ef778afbc98d34f5649e3'
 package() {
 	cd "$srcdir"
 	install -Dm755 "ferium" "$pkgdir/usr/bin/ferium" 
-
-	install -Dm644 -t "$pkgdir/usr/share/applications" ferium.desktop
 }
