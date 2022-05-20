@@ -9,7 +9,7 @@ license=('GPL')
 groups=()
 depends=('libcups')
 makedepends=('cups')
-source=('https://github.com/Skythrew/cups-bjnp-backend/releases/download/v${pkgver}/${pkgname}.tar.xz')
+source=('https://github.com/Skythrew/cups-bjnp-backend/releases/download/v2.0.3/cups-bjnp-backend.tar.xz')
 md5sums=('23bcb4e8746ff95e279bcf5952303cb8')
 build() {
   cd cups-bjnp-backend
