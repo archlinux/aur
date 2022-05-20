@@ -1,6 +1,6 @@
 # Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
 pkgname=oc-auxiliary-tools
-pkgver=20220206
+pkgver=20220207
 pkgrel=1
 pkgdesc="Cross-platform GUI management tools for OpenCore"
 arch=(x86_64)
@@ -11,7 +11,8 @@ makedepends=(glew glfw libxcb)
 provides=()
 conflicts=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
-md5sums=('6e2c553a2fc1a5deb445443805e4447a' '62b8bb061f709d193a2d7b7355b4cfbb')
+sha256sums=('621a12685106052b05cab8068291b963363b2509a5635e7c9a16d4b9cc305e96'
+            'fbff8d4bddd4e410623eeecb5afdd8578cfe64d0e633373ab5d93170bf4d007a')
 
 build() {
   cd "$srcdir/OCAuxiliaryTools-$pkgver"
