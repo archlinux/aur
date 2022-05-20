@@ -3,7 +3,7 @@
 cpaname=PerlX-Assert
 cpanauthor=TOBYINK
 pkgname=perl-perlx-assert
-pkgver=0.904
+pkgver=0.905
 pkgrel=1
 pkgdesc="Perl PerlX::Assert CPAN module"
 arch=('any')
@@ -12,13 +12,14 @@ license=('unknown')
 options=('!emptydirs')
 depends=(
    'perl'
+   'perl-devel-declare'
    'perl-devel-strictmode'
    'perl-exporter-tiny'
    'perl-keyword-simple'
    'perl-test-modern'
 )
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('2d20aa2377dc5cf03629171fa5d0867cdc9d4ac0c582ef684520358abc91b1c1')
+sha256sums=('8cd67df35a31a85678aa81abdd58a654efd5ab8ca7742701cb54d60eb2c6e4f2')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
