@@ -1,6 +1,6 @@
 pkgbase = system76-scheduler-git
 	pkgdesc = system76 userspace scheduler
-	pkgver = 1.2.0
+	pkgver = 1.2.0.1.gc103229
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/pop-os/system76-scheduler

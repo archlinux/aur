@@ -2,7 +2,7 @@
 
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
-pkgver=1.2.0
+pkgver=1.2.0.1.gc103229
 pkgrel=1
 epoch=2
 pkgdesc='system76 userspace scheduler'
