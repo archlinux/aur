@@ -3,7 +3,7 @@
 
 _pkgname="samplecat"
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.r15.g5e26576
+pkgver=0.3.2.r1.g0bb17d2
 pkgrel=1
 pkgdesc="A program for cataloguing and auditioning audio samples."
 arch=(x86_64)
@@ -28,12 +28,10 @@ makedepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://github.com/ayyi/samplecat.git'
-        'git+https://github.com/ayyi/libwaveform.git'
-        "libwaveform-peak-tempfiles.diff")
-md5sums=('SKIP'
-         'SKIP'
-         '824d2703d40b2256253b14185171f6f6')
+source=('git+https://github.com/ayyi/samplecat.git#branch=ffmpeg-5'
+        'git+https://github.com/ayyi/libwaveform.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -49,10 +47,6 @@ prepare() {
   git submodule init
   git config submodule.waveform.url "${srcdir}/libwaveform"
   git submodule update
-
-  # https://github.com/ayyi/libwaveform/pull/7
-  cd lib/waveform
-  patch -p1 -N -r - -i "${srcdir}"/libwaveform-peak-tempfiles.diff || :
 }
 
 build() {
