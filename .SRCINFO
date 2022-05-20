@@ -1,0 +1,14 @@
+pkgbase = cups-bjnp-backend
+	pkgdesc = Cups Backend for BJNP
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/Skythrew/cups-bjnp-backend
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cups
+	depends = libcups
+	source = https://github.com/Skythrew/cups-bjnp-backend/releases/download/v2.0.3/cups-bjnp-backend.tar.xz 
+	md5sums = 23bcb4e8746ff95e279bcf5952303cb8
+
+pkgname = cups-bjnp-backend
