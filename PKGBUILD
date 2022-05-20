@@ -13,13 +13,19 @@ makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm' 'nodejs')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
     "$pkgname.desktop"
     deezer
-    start-hidden-on-tray.patch
+    remove-kernel-version-from-user-agent.patch
+    avoid-change-default-texthtml-mime-type.patch
+    fix-isDev-usage.patch
+    start-hidden-in-tray.patch
     quit.patch)
 sha256sums=('6a6346d55fafc979c86835e0b3235fec8bed35914342959e879a0a713de67caa'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             'b464dbfc0d426730259ce2abc660960ecc6a73bbef838b8fbbd15deb2f5dce53'
-            '2254632a03ca2cf7ae6b50a4109b0bec417cf0db6d669a8037125d13488e3b9f'
-            'd3f96ae6019abb60aa097919b22b1873f83061ed7453cd251e43b3afe5d54919')
+            'ec87bbcc5a615c61c78bf117889d5b697a2174150722b1318205ad1c903286f2'
+            '357b1e208aa58353a0fd176318b4628a7bed3210686e35f8d30399c750c99b0d'
+            '731d25269ed260b386ad40937e38b6f56634cf7a13e2a98a8eaf53a778026161'
+            '505bc0363443f8a921361efb5f204a15afa7773e57fa386c2221ba1609b896c8'
+            '78d26c08c234594eeba0ac68c95612a8c01ea4026f34e0141e8a997287b0af1b')
 
 prepare() {
     # Extract app from installer
@@ -38,10 +44,15 @@ prepare() {
     install -Dm644 "$srcdir/resources/win/systray.png" resources/linux/
 
     prettier --write "build/*.js"
-    # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
-    patch --forward --strip=1 --input="$srcdir/quit.patch"
-    # Add start in tray cli option (https://github.com/SibrenVasse/deezer/pull/12)
-    patch --forward --strip=1 --input="$srcdir/start-hidden-on-tray.patch"
+
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch ${src}..."
+      patch -Np1 < "${srcdir}/${src}"
+    done
 
     cd "$srcdir/resources/"
     asar pack app app.asar
