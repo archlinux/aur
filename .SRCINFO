@@ -1,0 +1,14 @@
+pkgbase = yam-git
+	pkgdesc = Game manager for F95zone
+	pkgver = 2.6.3.r18.gc6c3ee7
+	pkgrel = 1
+	url = https://github.com/MillenniumEarl/YAM
+	arch = x86_64
+	license = MIT
+	depends = npm
+	provides = yam-git
+	conflicts = yam
+	source = git+https://github.com/MillenniumEarl/YAM.git
+	sha1sums = SKIP
+
+pkgname = yam-git
