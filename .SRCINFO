@@ -1,0 +1,18 @@
+pkgbase = python-html-void-elements
+	pkgdesc = List of HTML void tag names.
+	pkgver = 0.1.0
+	pkgrel = 00
+	url = https://github.com/Riverside-Healthcare/html-void-elements
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	noextract = html_void_elements-0.1.0-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/f5/0a/373f28a1cf37f8c9aa23c82cbcac7197ddea95c88b5a3eaa564cdb8de375/html_void_elements-0.1.0-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = e7e79422eee85629607a1e48bf52c2f6
+	md5sums = 5f6d35549fbdb35156f48a91c94792a9
+
+pkgname = python-html-void-elements
