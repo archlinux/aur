@@ -19,7 +19,7 @@ depends=('glibc' 'bash' 'less')
 provides=('gzip')
 conflicts=('gzip')
 validpgpkeys=('155D3FC500C834486D1EEA677FD9FCCB000BEEEE') # Jim Meyering
-source=("https://ftp.gnu.org/pub/gnu/gzip/gzip-$pkgver.tar.xz"{,.sig})
+source=("https://ftpmirror.gnu.org/gzip/gzip-$pkgver.tar.xz"{,.sig})
 sha256sums=('ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35baf5fbd3479e91956'
             'SKIP')
 prepare() {
