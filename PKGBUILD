@@ -1,7 +1,7 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=krew
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='Krew is the package manager for kubectl plugins'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://krew.sigs.k8s.io/'
@@ -12,7 +12,7 @@ depends=('kubectl' 'git')
 makedepends=('go')
 install=kubectl-krew.install
 source=("https://github.com/kubernetes-sigs/krew/archive/v${pkgver}.tar.gz")
-sha256sums=('db61152a01ac70fcf186ddf99536c307f5d3c2259ffbce02d53e8de050f99860')
+sha256sums=('77cc28f744e10ce33860e47c1465fddb9e1b171ac5c366792785df27e29bcd34')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -28,7 +28,7 @@ build() {
   )
   cd "${pkgname}-${pkgver}"
   export CGO_LDFLAGS="$LDFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CFLAGS="$CFLAGS -fno-lto"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
