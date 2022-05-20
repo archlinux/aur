@@ -1,8 +1,11 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-# NOTE This "PIP install" package is similar to a VCS package:
-#      it has a pkgver() function and a reinstall will update the package.
-#      That is the only reason why this package ends on -git.
+# To install a specific release manually: comment out pkgver(), set the release in "pkgver=" and
+# at the end of the "pip install" line (change "sickchill" to "sickchill==<release>").
+
+# This "PIP install" package is similar to a VCS package:
+# it has a pkgver() function and a reinstall will update the package.
+# That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
 pkgver=2021.11.10.r0
