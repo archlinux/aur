@@ -1,6 +1,6 @@
 pkgbase = tpm2-pkcs11-git
 	pkgdesc = PKCS#11 interface for Trusted Platform Module 2.0 hardware
-	pkgver = 1.7.0.r54.bedf83a
+	pkgver = 1.8.0.r7.9f851dd
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = tpm2-pkcs11-git
 	depends = python
 	depends = python-bcrypt
 	depends = python-cryptography
+	depends = python-pyasn1
 	depends = python-pyasn1-modules
 	depends = python-tpm2-pytss
 	depends = python-yaml
