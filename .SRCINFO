@@ -1,7 +1,7 @@
 pkgbase = inform7-git
 	pkgdesc = A design system for interactive fiction based on natural language (git version)
 	pkgver = r1497.e0a9a9eb1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ganelson.github.io/inform
 	install = inform7.install
 	arch = aarch64
