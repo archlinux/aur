@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if [ $UID -eq 0 ]
-then
-    if [[ -f /etc/profile.d/jdk.sh ]]; then
+if [ "$(id -u)" -eq "0" ]; then
+    if [ -f /etc/profile.d/jdk.sh ]; then
         . /etc/profile.d/jdk.sh
-    elif [[ -f /etc/profile.d/jre.sh ]]; then
+    elif [ -f /etc/profile.d/jre.sh ]; then
         . /etc/profile.d/jre.sh
     fi
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
