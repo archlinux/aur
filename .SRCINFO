@@ -1,0 +1,14 @@
+pkgbase = ansible-doc-generator
+	pkgdesc = CLI for documenting Ansible roles into Markdown files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/PopulateTools/ansible-doc-generator
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ansible-doc-generator
+	conflicts = ansible-doc-generator
+	source = https://rubygems.org/downloads/ansible_doc_generator-0.1.0.gem
+	sha256sums = cbdf93a5b7c5aa3736496be642fc40bae3588c9110929a768850849136c0b1d2
+
+pkgname = ansible-doc-generator
