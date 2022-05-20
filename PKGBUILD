@@ -47,5 +47,7 @@ package() {
 	pushd spotdl-$pkgver
 	python setup.py install --root="$pkgdir" --optimize=1
 	install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	rm -rf "${pkgdir}${site_packages}/tests/"
 	popd
 }
