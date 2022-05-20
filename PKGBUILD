@@ -10,9 +10,8 @@ license=('GPL' 'custom')
 depends=('libevent' 'libx11' 'libxrender' 'libxt' )
 provides=('fvwm=3')
 conflicts=('fvwm')
-makedepends=('libxslt')
-optdepends=('asciidoctor'
-            'fontconfig' 
+makedepends=('libxslt' 'asciidoctor')
+optdepends=('fontconfig' 
             'freetype2' 
             'fribidi' 
             'ncurses' 
