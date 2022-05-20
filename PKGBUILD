@@ -122,7 +122,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux TT scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -160,7 +160,6 @@ source+=(
     "${_patchsource}/0002-anbox.patch"
     "${_patchsource}/0003-bbr2.patch"
     "${_patchsource}/0004-cachy.patch"
-#    "${_patchsource}/0005-migrate.patch"
     "${_patchsource}/0006-clearlinux.patch"
     "${_patchsource}/0007-cpu.patch"
     "${_patchsource}/0008-fixes-miscellaneous.patch"
