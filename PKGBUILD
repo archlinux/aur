@@ -32,10 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "${pkgname}"
-	
-	pwd
-	ls -al
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	make install
 
