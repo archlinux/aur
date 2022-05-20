@@ -18,5 +18,5 @@ echo "Updated version to $UNIFONTVER"
 updpkgsums
 makepkg --printsrcinfo >.SRCINFO
 git add ./PKGBUILD ./.SRCINFO
-git commit -m "Bump version to $UNIFONTVER"
+git commit -m "Version $UNIFONTVER"
 git push && git push aur master
