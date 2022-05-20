@@ -3,7 +3,7 @@
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname=nb
-pkgver=6.10.2
+pkgver=6.11.0
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   'termpdf.py-git'
   'vifm'
 )
-sha512sums=('40da77d9c1b36a3a416c61d9e2a45f299b96786534b30a867d919b5632d95e4d37f474911373d64b9cc9daa14e6bc0355b199c8982b59258c4bf80e4ffc494ca')
+sha512sums=('ee03508e4a70ac579c5b0f21cae34ecd09dafafc7f9f24b6eb39d05c8d71629566a8e49e2aad7ba0990193d4ec351cdfe1ce4f792fa59730fa2269bf916a54a9')
 
 package() {
   cd "${pkgname}-${pkgver}"
