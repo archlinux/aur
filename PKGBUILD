@@ -10,7 +10,7 @@ url="https://github.com/jwrdegoede/rtl8189ES_linux/tree/rtl8189fs"
 license=('GPL')
 depends=('linux')
 makedepends=('linux-headers' 'git')
-source=("git://github.com/jwrdegoede/$_pkgname.git#branch=rtl8189fs")
+source=("git+https://github.com/jwrdegoede/$_pkgname.git#branch=rtl8189fs")
 sha256sums=('SKIP')
 install=depmod.install
 
