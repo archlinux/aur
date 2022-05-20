@@ -2,7 +2,7 @@
 
 _phpversion=81
 pkgname=php${_phpversion}-pdo_sqlsrv
-pkgver=5.10.0
+pkgver=5.10.1
 pkgrel=1
 pkgdesc="Microsoft SQL Server PDO Drivers for PHP"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://pecl.php.net/package/pdo_sqlsrv"
 license=('MIT')
 depends=("php${_phpversion}" "php${_phpversion}-pdo" "msodbcsql")
 source=("https://pecl.php.net/get/pdo_sqlsrv-${pkgver}.tgz")
-sha256sums=('0446bb8bff1e82fcfd993ebd765d1dc56715a3e754453f43ce8e9fe84765112a')
+sha256sums=('c7854196a236bc83508a346f8c6ef1df999bc21eebbd838bdb0513215e0628ad')
 backup=("etc/php${_phpversion}/conf.d/30-pdo_sqlsrv.ini")
 
 build() {
