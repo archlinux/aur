@@ -1,13 +1,11 @@
 # Maintainer: Gustavo Sousa <gustavo.jo.sousa@gmail.com>
 pkgname=nerd-fonts-monofur
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Monofur from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
-provides=('nerd-fonts-roboto-mono')
-conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Monofur.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
