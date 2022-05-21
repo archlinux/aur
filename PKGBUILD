@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.53.0.r4.g07f82ac29b
+pkgver=1.59.1.r0.gd24a1486e5
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -18,7 +18,6 @@ depends=(
 	'python-canonicaljson'
 	'python-signedjson'
 	'python-pynacl'
-	'python-idna'
 	'python-service-identity'
 	'python-twisted'
 	'python-treq'
@@ -42,32 +41,41 @@ depends=(
 	'python-ijson'
 	'python-systemd'
 	'python-matrix-common'
+	'python-packaging'
+	'python-importlib-metadata'
 	'systemd'
 )
 makedepends=(
 	'git'
-	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-poetry'
 )
 checkdepends=(
-	'python-mock'
-	'python-parameterized'
-	'python-lxml'
+	'python-pip'
 	'python-authlib'
+	'python-lxml'
 	'python-pyjwt'
         'python-txredisapi'
 	'python-hiredis'
+	'python-parameterized'
+	'python-idna'
 )
 optdepends=(
+	'perl: sync_room_to_group.pl'
 	'python-psycopg2: PostgreSQL support'
 	'python-pysaml2: SAML2 support'
 	'python-authlib: OIDC support'
 	'python-lxml: URL previewing'
 	'python-sentry_sdk: Sentry support'
-	'python-jaeger-client: tracing support'
 	'python-opentracing: tracing support'
+	'python-jaeger-client: tracing support'
 	'python-pyjwt: JWT support'
 	'python-txredisapi: worker communication via Redis'
 	'python-hiredis: faster worker communication via Redis'
+	'python-pympler: experimental `caches.track_memory_usage` config option'
+	'python-matrix-synapse-ldap3: LDAP provider'
 )
 
 source=(
@@ -113,25 +121,26 @@ prepare() {
 
 build() {
 	cd synapse
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
 	cd synapse
-	PYTHONPATH=. trial $MAKEFLAGS tests
+	pip install dist/*.whl
+	PYTHONPATH="$PWD" python -m twisted.trial -j$(nproc) tests
 }
 
 package() {
 	cd synapse
-	python setup.py install --root "$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	install -dm755 -o 198 -g 198 "$pkgdir"/etc/synapse
 	install -vDm644 contrib/systemd/log_config.yaml "$pkgdir"/etc/synapse/log_config.yaml
 	install -vDm644 "$srcdir"/generic_worker.yaml.example "$pkgdir"/etc/synapse/workers/generic_worker.yaml.example
 
-	install -vDm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/synapse{,-worker@}.service "$srcdir"/synapse.target
 	install -vDm644 "$srcdir/override-hardened.conf" -t "$pkgdir/usr/lib/systemd/system/synapse.service.d"
 	install -vDm644 "$srcdir/override-hardened.conf" -t "$pkgdir/usr/lib/systemd/system/synapse-worker@.service.d"
+	install -vDm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/synapse{,-worker@}.service "$srcdir"/synapse.target
 	install -vDm644 "$srcdir"/sysusers-synapse.conf "$pkgdir"/usr/lib/sysusers.d/synapse.conf
 	install -vDm644 "$srcdir"/tmpfiles-synapse.conf "$pkgdir"/usr/lib/tmpfiles.d/synapse.conf
 }
