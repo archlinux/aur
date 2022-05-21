@@ -1,0 +1,5 @@
+thunar-nextcloud-plugin*/
+*.zip
+src
+pkg
+*.zst
