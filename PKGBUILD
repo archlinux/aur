@@ -390,11 +390,13 @@ prepare() {
     echo "- Fonts are missing"
     echo -ne "- Mount filesystems as a non-privileged user: "
     touch test.mount
-    _mount=
-    udisksctl loop-setup -r -f test.mount --no-user-interaction >/dev/null 2>&1 && _mount=true
+    _unprivilegedMountAllowed=false
+    _testLoopDev=$(udisksctl loop-setup -r -f test.mount --no-user-interaction | awk '{print $NF}') && _unprivilegedMountAllowed=true
+    _testLoopDev=${_testLoopDev::-1}
+    udisksctl loop-delete -b "$_testLoopDev" --no-user-interaction
     rm test.mount
 
-    if [ $_mount ]; then
+    if [ $_unprivilegedMountAllowed ]; then
       echo "allowed"
       echo "- Downloading fonts directly"
       mkdir -p mnt/http
