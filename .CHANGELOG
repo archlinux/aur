@@ -1,6 +1,34 @@
 Version history
 ===============
 
+0.9.45
+------
+
+2022-05-21
+
+Added many multiplayer levels by Flopsy, including Krypton Factor race.
+
+Added multiplayer levels by Kingshadow: Straight & Curved,
+Marble Puzzle League, Spiral Spyfall, The Ascending Lix Scenario,
+Tricky Breakthrough.
+
+Added tags ($TAG lines in levels) to several maps by Flopsy.
+
+Fix lagging client in a 10-hour netgame. This was an esoteric bug that never
+surfaced in normal usage. When the same networking game (not netplay session
+or server run, but really individual game; what happens after you click
+"ready" in the lobby) ran for over 10 hours, the client would stop
+updating at the normal speed of 15 physics updates per second, and instead run
+at 10 frames per second.
+
+Make Lix compile with the newly released DMD 2.100.0.
+
+Mention FreeGameDev IRC channel #lix in the main readme. QuakeNet #lix
+is still the development channel. I still recommend QuakeNet #lix to find
+players, with FreeGameDev #lix as an alternative.
+
+
+
 0.9.44
 ------
 
