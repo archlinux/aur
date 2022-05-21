@@ -4,7 +4,7 @@ pkgbase = m3u8-downloader
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/m3u8-downloader
 	arch = x86_64
-	license = GPL2
+	license = MIT
 	source = m3u8-downloader.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/releases/download/nightly/m3u8-downloader-nightly-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP
 

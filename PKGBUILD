@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="m3u8-downloader"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/m3u8-downloader"
-license=('GPL2')
+license=('MIT')
 # depends=('gcc-libs')
 makedepends=()
 conflicts=()
@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "*/m3u8-downloader" "$pkgdir/usr/bin/$pkgname"
+  cd "$pkgname"
+  install -Dm755 "*/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "*/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
