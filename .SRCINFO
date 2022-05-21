@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-hidapi
 	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices (mingw-w64)
-	pkgver = 0.10.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/libusb/hidapi
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = mingw-w64-hidapi
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/libusb/hidapi/archive/hidapi-0.10.1.tar.gz
-	source = autoconf-2.70.patch
-	sha256sums = f71dd8a1f46979c17ee521bc2117573872bbf040f8a4750e492271fc141f2644
-	sha256sums = a56fd8181d980ae9786000883cb31944d3765088363cfd9c192e475b975cd8c7
+	source = https://github.com/libusb/hidapi/archive/hidapi-0.11.2.tar.gz
+	sha256sums = bc4ac0f32a6b21ef96258a7554c116152e2272dacdec1e4620fc44abeea50c27
 
 pkgname = mingw-w64-hidapi
