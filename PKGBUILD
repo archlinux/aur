@@ -84,6 +84,8 @@ makedepends=(
 )
 # NOTE: currently the debug package for qemu >= 7.0.0 contains an invalid /build dir
 options=(debug)
+
+# patch source: https://github.com/Thaodan/qemu/tree/sailfishos/7.0.0
 source=(
   https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
   0001-Revert-linux-user-Use-safe_syscall-for-open-and-open.patch
