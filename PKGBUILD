@@ -3,7 +3,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsparse
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='rocSPARSE marshalling library.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hip' 'rocsparse')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/hipSPARSE'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('33f4abea4a0d98809991581564659af916106d49133e0482ec5c442075e9491c')
+sha256sums=('6e6a0752654f0d391533df8cedf4b630a78ad34c99087741520c582963ce1602')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
