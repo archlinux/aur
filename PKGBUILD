@@ -1,7 +1,7 @@
 # Maintainer: Phoney Badger <phoneybadgercode.4ikc7 at simplelogin.co>
 pkgname=pokemon-colorscripts-git
 _pkgname=pokemon-colorscripts
-pkgver=r103.c315110
+pkgver=r108.3dc0b2e
 pkgrel=1
 pkgdesc="CLI utility that prints unicode sprites of pokemon to the terminal"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
     install -Dm644 colorscripts/small/shiny/* -t "$pkgdir/usr/local/opt/$_pkgname/colorscripts/small/shiny"
     install -Dm644 colorscripts/large/regular/* -t "$pkgdir/usr/local/opt/$_pkgname/colorscripts/large/regular"
     install -Dm644 colorscripts/large/shiny/* -t "$pkgdir/usr/local/opt/$_pkgname/colorscripts/large/shiny"
-    install -Dm644 nameslist.txt "$pkgdir/usr/local/opt/$_pkgname/nameslist.txt"
+    install -Dm644 pokemon.json "$pkgdir/usr/local/opt/$_pkgname/pokemon.json"
     install -Dm755 pokemon-colorscripts.py "$pkgdir/usr/local/opt/$_pkgname/pokemon-colorscripts.py"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
