@@ -1,8 +1,8 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
 pkgver=r1530.cf2cfe0
-miscfiles_pkgver=0.5.0
-pkgrel=3
+miscfiles_pkgver=0.5.2
+pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sys
         "git+https://github.com/nestybox/libseccomp-golang.git"
         "git+https://github.com/nestybox/sysbox-mgr.git"
         "git+https://github.com/nestybox/sysbox-runc.git")
-sha256sums=('eeacd9ae0e08ee5e5637e3b93e4f0cf78f20f9590ef2e7ab08347700682422f0'
+sha256sums=('f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 provides=('sysbox-ce')
