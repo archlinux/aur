@@ -18,6 +18,11 @@ provides=('metacall')
 source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${pkgname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     METACALL_LOADER_C="${METACALL_LOADER_C:=off}"
     METACALL_LOADER_CS="${METACALL_LOADER_CS:=off}"
@@ -44,6 +49,7 @@ build() {
         -Wno-dev
     cmake --build build
 }
+
 # Check are not working fine for now as such they are disabled.
 #check() {
 #    cd build
