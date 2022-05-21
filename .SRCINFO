@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce-bin
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sysbox-ce-bin
 	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
 	provides = sysbox-ce
 	conflicts = sysbox-ce
-	source = https://downloads.nestybox.com/sysbox/releases/v0.5.0/sysbox-ce_0.5.0-0.linux_amd64.deb
-	sha256sums = eeacd9ae0e08ee5e5637e3b93e4f0cf78f20f9590ef2e7ab08347700682422f0
+	source = https://downloads.nestybox.com/sysbox/releases/v0.5.2/sysbox-ce_0.5.2-0.linux_amd64.deb
+	sha256sums = f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8
 
 pkgname = sysbox-ce-bin
