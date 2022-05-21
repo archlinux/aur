@@ -6,14 +6,14 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
 arch=(x86_64)
 _plugin_name=Fundamental
-_plugin_ver=$pkgver
+_plugin_ver=2.1.0
 _plugin_pkg=${pkgname}-${_plugin_name,,}
 makedepends=(curl glew glfw-x11 jansson libarchive openssl rtaudio rtmidi speexdsp zstd gendesk jq)
 provides=(libRack.so $_plugin_pkg)
@@ -37,7 +37,7 @@ source=(
   'vcvrack.sh'
   'profile.sh'
 )
-sha256sums=('c3a30105d673733698fca934a4287728c1eb49d76204f76d6e8152b4cc940594'
+sha256sums=('09ba76fc1461b969507a732d7c8d3a338e39abfdb84bfde4b0a88fefd0c0e899'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
             '31cb6aa73ab52347ea56f7eb47947bad154cee588a0780df18e9523975bfb971'
