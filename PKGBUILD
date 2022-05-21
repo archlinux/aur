@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=()
 conflicts=('stow')
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/stow-nightly-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/${pkgver}/stow-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package() {
-  cd "stow-$pkgver"
-  install -Dm755 "*/stow" "$pkgdir/usr/bin/stow-cm"
-  install -Dm644 "*/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/stow-x86_64-unknown-linux-musl"
+  install -Dm755 "stow" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
