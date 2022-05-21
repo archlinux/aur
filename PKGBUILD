@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=hipcub
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='Header-only library on top of rocPRIM or CUB'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('rocprim')
 makedepends=('cmake' 'rocm-cmake' 'git' 'hip')
 _git='https://github.com/ROCmSoftwarePlatform/hipCUB'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f19a465969692f814d838d63a0d283acd0424b7f52b6da83efa8d8cabb580688')
+sha256sums=('dc75640689b6a5e15dd3acea643266bdf114ea63efc60be8272f484cf8f04494')
 _dirname="$(basename $_git)-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
