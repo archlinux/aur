@@ -1,7 +1,8 @@
 # Maintainer: Chen Jicheng <git@chenjicheng.com>
 pkgname=arduino-cli-bin
+_pkgname=arduino-cli
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Arduino command line tool"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/arduino-cli"
@@ -22,5 +23,6 @@ sha256sums_armv6h=('3fc2a68d04deb6d2f0b64a7e79ba4737b6b9f340f7ecc91207176a2c244f
 sha256sums_armv7h=('10b6f038eef5de156fef3970fdfe7d423838e5fb4578d0934148cd6b18ccea2e')
 
 package() {
-	install -Dm755 "${srcdir}/arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
+	install -D -m755 "${srcdir}/arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
+	install -D -m644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
