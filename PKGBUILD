@@ -5,6 +5,8 @@
 
 # Note: this copied from the SVN upstream gzip package
 # with minimal modifications to be compatible with zutils
+# Please do not flag gzip-zutils out of date until gzip is
+# up to date in the stable Arch Linux repository.
 
 _pkgname=gzip
 pkgname=gzip-zutils
