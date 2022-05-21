@@ -1,0 +1,16 @@
+pkgbase = baidu-translate-client-bin
+	pkgdesc = baidu translate
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://fanyi.baidu.com/
+	arch = x86_64
+	license = unknown
+	depends = electron11
+	provides = baidu-translate-client
+	provides = baidu-translate
+	source = baidu-translate-client-1.5.2.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.baidu.translateclient/com.baidu.translateclient_1.5.2_amd64.deb
+	source = baidu-translate-client.sh
+	sha512sums = 0d01d242aa8b5660427570ffaa1a1ece57cf3de7fb43ea92026863b9568ac59b30d64ea1ed850ba19f4ac07c4b0286d7a9e3591944aa5c43e21124345ed9b8cc
+	sha512sums = fab6f76c73e0dd5e126adc1e74d4cd372cf917f4e0fb708ecfae59d12d5a42080cbae0ed66e9239f94ac87a1e00c41db9ad8562f49f2e579536b917f29efcb22
+
+pkgname = baidu-translate-client-bin
