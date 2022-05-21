@@ -1,6 +1,6 @@
 # Maintainer: Lahfa Samy <'akechishiro-aur' at domain 'lahfa.xyz'>
 pkgname=metacall-git
-pkgver=v0.1.9.r1789.g2a4a9ee1
+pkgver=v0.5.20.r12.g2a4a9ee1
 pkgrel=1
 pkgdesc='A CLI for a library providing inter-language foreign function interface calls'
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = metacall-git
 	pkgdesc = A CLI for a library providing inter-language foreign function interface calls
-	pkgver = 0.5.7
+	pkgver = v0.5.20.r12.g2a4a9ee1
 	pkgrel = 1
 	url = https://github.com/metacall/core
 	arch = x86_64
