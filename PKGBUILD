@@ -1,7 +1,7 @@
 # Maintainer: zaeyee <zaeyee@163.com>
 
 pkgname=apifox-latest
-pkgver=2.1.15
+pkgver=2.1.17
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'sn
 source=(
 	"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
 	"apifox.desktop")
-sha256sums=('3a7711d2a34f0edbb44a15780e7e1372c6edc4ac11733f0fabd349e64c970159'
+sha256sums=('8d00d9afe36fdbddba2836f911514a8aa34c37178a7d2666641ae1e68baff1f9'
             '538bd986b582053799128254b4fcd6edfd51d096b127cf6398555664497d76b0')
 options=(!strip)
 
