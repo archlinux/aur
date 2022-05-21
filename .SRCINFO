@@ -1,0 +1,14 @@
+pkgbase = pdfannots-git
+	pkgdesc = Extracts and formats text annotations from a PDF file
+	pkgver = 0.3.r20.g43b574d
+	pkgrel = 1
+	url = https://github.com/0xabu/pdfannots
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pdfminer
+	source = git+https://github.com/0xabu/pdfannots
+	sha256sums = SKIP
+
+pkgname = pdfannots-git
