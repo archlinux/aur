@@ -1,15 +1,15 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=mdwriter-git
 pkgver=r26.796f36c
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown Editor"
 arch=('any')
 url="https://gitlab.gnome.org/GabMus/mdwriter"
 license=('GPL3')
-depends=('glib2' 'libadwaita-git')
-makedepends=('git' 'meson' 'gobject-introspection' 'blueprint-compiler-git')
-checkdepends=('appstream-glib')
+depends=('gtksourceview5' 'libadwaita' 'python-markdown-del-ins' 'webkit2gtk-5.0')
+makedepends=('git' 'meson' 'gobject-introspection' 'blueprint-compiler')
+checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
