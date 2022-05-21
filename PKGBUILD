@@ -2,13 +2,13 @@
 pkgname=speedifyui
 _pkgver=12.1.0-10424
 pkgver=${_pkgver/-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
 license=(unknown)
 groups=()
-depends=( speedify libayatana-appindicator )
+depends=( speedify libayatana-appindicator webkit2gtk)
 makedepends=()
 provides=()
 conflicts=()
