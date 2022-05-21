@@ -1,38 +1,27 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-# Contributor: Kevin Piche <kevin@archlinux.org>
-# Contributor: K. Piche <kpiche@rogers.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=swatch
-pkgver=3.2.3
-pkgrel=2
-pkgdesc="The active log file monitoring tool"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Color palette manager"
 arch=('any')
-license=('GPL')
-url="http://swatch.sourceforge.net/"
-depends=('perl-date-calc' 'perl-date-manip' 'perl-file-tail' 'perl-timedate' 'perl>=5.10.0')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-options=('!emptydirs')
-md5sums=('1162f1024cf07fc750ed4960d61ac4e8')
+url="https://gitlab.gnome.org/GabMus/swatch"
+license=('GPL3')
+depends=('glib2' 'libadwaita')
+makedepends=('meson' 'gobject-introspection' 'blueprint-compiler')
+checkdepends=('appstream-glib')
+source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar)
+b2sums=('a3db665127fa75f38d0cdca27ffa214efaec5651db3a412b20f6d98187c8b63d180cad7d918e601be6fae9569246ac077ebeb968f20ffb1c249786856e5b1eec')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  /usr/bin/perl Makefile.PL INSTALLDIRS=vendor
-  make
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
 }
+
+#check() {
+#  meson test -C build
+#}
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  meson install -C build --destdir "$pkgdir"
 }
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  make test
-}
-
-# vim:set ts=2 sw=2 et:
