@@ -1,16 +1,16 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=ftba
-pkgver=202203251547_a5e4f8b1e5_release
+pkgver=202205171618_14abefffbf_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
 pkgdesc="Offers many different styles of Minecraft modpacks to the community."
 source=("https://apps.modpacks.ch/FTBApp/release/${pkgver//_/-}/FTBA_linux_${pkgver//_/-}.deb" "ftbapp.desktop")
-sha256sums=('f6f22717d5d2e239dde29f8ad93c7b72fa73c7694a7aef78f4c4512f9ae382f5'
+sha256sums=('b91a3fc59470b22e094160974a58a369da88d289a0718df12ee1c4da5e31e673'
             '72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6')
 license=('LGPL2.1')
-depends=("java-runtime=8" "java-runtime=11" "avahi") # Crashes without libavahi-common.so.3
+depends=("java-runtime=8" "java-runtime=11" "java-runtime=17" "avahi") # Crashes without libavahi-common.so.3
 optdepends=("jdk8-graalvm-bin: improved performance with '-XX:+UseJVMCICompiler'")
 
 package() {
