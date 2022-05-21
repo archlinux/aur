@@ -2,7 +2,7 @@
 
 pkgname=archtorify-git
 _pkgname=archtorify
-pkgver=v1.28.0
+pkgver=v1.29.0
 pkgrel=1
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
@@ -25,7 +25,7 @@ package() {
     install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
 
     mkdir -p $pkgdir/usr/share/$_pkgname/data
-    mkdir -p $pkgdir/usr/share/$_pkgname/backups
+    mkdir -p $pkgdir/var/lib/$_pkgname/backups
 
     install -Dm644 data/* $pkgdir/usr/share/$_pkgname/data
 }
