@@ -1,3 +1,4 @@
+pkgbase="md-git"
 pkgname="md-git"
 pkgver=1.18
 pkgrel=1
@@ -43,24 +44,24 @@ build () {
 
 	printf "Please Pick a Style?(1) "
 
-	read style_id
+	read -r style_id
 
-	if [ -z $style_id ] || [ $style_id = "1" ]
+	if [ -z "$style_id" ] || [ "$style_id" = "1" ]
 	then
 		Style=default
-	elif [ $style_id = "2" ]
+	elif [ "$style_id" = "2" ]
 	then
 		Style=desert
-	elif [ $style_id = "3" ]
+	elif [ "$style_id" = "3" ]
 	then
 		Style=doxy
-	elif [ $style_id = "4" ]
+	elif [ "$style_id" = "4" ]
 	then
 		Style=moon
-	elif [ $style_id = "5" ]
+	elif [ "$style_id" = "5" ]
 	then
 		Style=tty-support
-	elif [ $style_id = "6" ]
+	elif [ "$style_id" = "6" ]
 	then
 		Style=wolf
 	else
