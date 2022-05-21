@@ -2,12 +2,12 @@
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia
-pkgver=510.54
+pkgver=515.43.04
 pkgrel=1
 pkgdesc="mhwd-nvidia pci id"
 arch=("any")
 url="https://garudalinux.org/"
-license=('GPL2')
+license=('custom')
 source=('mhwd-nvidia')
 makedepends=('nvidia-dkms' 'nvidia-utils')
 sha256sums=('738749f5ada14afac3085d10fac351c55d423674228eea1dae8e41b935d1497c')
@@ -21,6 +21,6 @@ package() {
     /usr/share/doc/nvidia/README \
     /usr/src/nvidia-$pkgver/nvidia/nv-kernel.o_binary \
     > $pkgdir/var/lib/mhwd/ids/pci/nvidia.ids
-    # add PCIID: 1b82 Nvidia Gforce 1070 Ti
-    sed -i 's/1b81 1b84/1b81 1b82 1b84/g' $pkgdir/var/lib/mhwd/ids/pci/nvidia.ids
+
+    install -Dm644 /usr/share/licenses/nvidia-dkms/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

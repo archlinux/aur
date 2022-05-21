@@ -1,10 +1,10 @@
 pkgbase = mhwd-nvidia
 	pkgdesc = mhwd-nvidia pci id
-	pkgver = 510.54
+	pkgver = 515.43.04
 	pkgrel = 1
 	url = https://garudalinux.org/
 	arch = any
-	license = GPL2
+	license = custom
 	makedepends = nvidia-dkms
 	makedepends = nvidia-utils
 	provides = mhwd-nvidia
