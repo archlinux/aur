@@ -8,7 +8,7 @@ _pkgbase=nginx
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.21.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -88,7 +88,8 @@ build() {
 
   export CXXFLAGS="$CXXFLAGS -fPIC"
   # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
-  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
+  # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
+  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
 
   cd ${srcdir}/boringssl
   mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
