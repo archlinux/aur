@@ -13,8 +13,8 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=99.0.1
-pkgrel=2
+pkgver=100.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -29,7 +29,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13'
              'cargo' 'mercurial' 'llvm' 'clang' 'rust' 'jack'
              'nodejs' 'cbindgen' 'nasm' 'xz'
-             'python' 'python-psutil' 'python-zstandard' 'dump_syms'
+             'python' 'python-zstandard' 'dump_syms'
              # system av1
              'dav1d' 'aom'
              # system harfbuzz
@@ -199,7 +199,10 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_APP_REMOTINGNAME=$pkgname
   export CARGO_HOME="$srcdir"/.cargo
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+
+  # LTO needs more open files
+  ulimit -n 4096
 
   export CC=gcc
   export CXX=g++
@@ -305,7 +308,7 @@ md5sums=('SKIP'
          '1d5e9215530ef6778299b67dc6dba65e'
          '52681df0a4fde83d8060724283ee681c'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         'a9967bd9cd5cae2c2678cb5635236c4f'
+         'be5c90ee2edeed5509d840d87e1e429b'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '350c258cdaeef99b4638c5181fda3ad2'
