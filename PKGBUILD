@@ -4,7 +4,7 @@
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
 pkgver='1.145.2'
-pkgrel=1
+pkgrel=4
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
 url='https://tlaun.ch'

@@ -1,7 +1,7 @@
 pkgbase = tlauncher
 	pkgdesc = Freeware Minecraft launcher
 	pkgver = 1.145.2
-	pkgrel = 1
+	pkgrel = 4
 	epoch = 1
 	url = https://tlaun.ch
 	arch = any
