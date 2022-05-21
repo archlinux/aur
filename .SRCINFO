@@ -1,7 +1,7 @@
 pkgbase = vidcutter-git
 	pkgdesc = A modern and fast media cutter and joiner
 	pkgver = 6.0.5.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://vidcutter.ozmartians.com
 	install = vidcutter-git.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vidcutter-git
 	makedepends = tesseract-data-eng
 	depends = ffmpeg
 	depends = mediainfo
-	depends = mpv-git
+	depends = mpv
 	depends = python-opengl
 	depends = python-pyqt5
 	depends = python-setuptools
