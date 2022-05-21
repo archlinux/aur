@@ -2,7 +2,7 @@
 pkgname=sysbox-ce-git
 pkgver=r1530.cf2cfe0
 miscfiles_pkgver=0.5.2
-pkgrel=1
+pkgrel=4
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
