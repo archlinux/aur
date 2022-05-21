@@ -1,7 +1,7 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="privacy-protection-messenger-qt"
-pkgver=2.3
-pkgrel=1
+pkgver=2.5
+pkgrel=0
 pkgdesc="Privacy Protection Messenger Qt GUI"
 author="imperzer0"
 branch="master"
@@ -37,10 +37,10 @@ for _libfile in ${_libfiles[@]}
 
 md5sums=('d947c26f52d4d7faba15f3ef08916fe4'
          '19701c33c592f57e964d4a4d6e9c64f5'
-         '3aeb37c05c67ccfee2988e639b6927cc'
-         '64c82d7e629adeb7a302d6ce46f6a645'
-         '70915dcbf16202a933114d45ee2a949c'
-         'c5fb8c7b63411c7b5c2f5e82b8c6da5d'
+         'a6da9d8e12d050d9f36342668889d966'
+         'f83a4de94ce22469bcbf1691e6d63d93'
+         '40d0711b3cf43f7cc947c06cc669f3c0'
+         '6cf2c080681e86fab5470ad72307166c'
          'baff22f5e98a6c117c609b3078d4d373'
          '31370d27ff1be3b6b587d2817c492328'
          '0c56a68ee3f1abe72a1c2a0b5361c646'
