@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.1.5.r1.g2f3e132
-pkgrel=2
+pkgver=1.1.9.r8.g86db09b
+pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
@@ -21,18 +21,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
-  # Fix browser names
-  sed -i 's/brave-browser/brave/g' \
-    "usr/lib/${pkgname%-git}/common.py"
-  sed -i 's/epiphany-browser/epiphany/g' \
-    "usr/lib/${pkgname%-git}/common.py"
-  sed -i 's/"google-chrome"/"google-chrome-stable"/g' \
-    "usr/lib/${pkgname%-git}/common.py"
-  sed -i 's/microsoft-edge/microsoft-edge-beta/g' \
-    "usr/lib/${pkgname%-git}/common.py"
-  sed -i 's/"vivaldi"/"vivaldi-stable"/g' \
-    "usr/lib/${pkgname%-git}/common.py"
 
   # Fix license path
   sed -i 's/common-licenses\/GPL/licenses\/common\/GPL\/license.txt/g' \
