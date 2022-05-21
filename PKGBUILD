@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 pkgname=python-transliterate
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bi-directional transliterator for Python"
 arch=('any')
 url="https://pypi.org/project/transliterate/"
