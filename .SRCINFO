@@ -1,6 +1,6 @@
 pkgbase = last-align
 	pkgdesc = Genome-scale comparison of biological sequences
-	pkgver = 1282
+	pkgver = 1293
 	pkgrel = 1
 	url = https://gitlab.com/mcfrith/last
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = last-align
 	depends = zlib
 	optdepends = bash: interpreter for some bundled scripts
 	optdepends = python: interpreter for some bundled scripts
-	source = https://gitlab.com/mcfrith/last/-/archive/1282/last-1282.tar.gz
-	sha256sums = 409e4a8224b970af593db831140e944f18648085d476b0227713d06ce464f2ce
+	source = https://gitlab.com/mcfrith/last/-/archive/1293/last-1293.tar.gz
+	sha256sums = 36680cea26b746a60b564297275d510f078cddbb9baa1bba109037753dab31e8
 
 pkgname = last-align
