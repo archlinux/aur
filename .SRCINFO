@@ -1,6 +1,6 @@
 pkgbase = termusic
 	pkgdesc = Music Player TUI written in Rust
-	pkgver = 0.6.15
+	pkgver = 0.6.16
 	pkgrel = 1
 	url = https://github.com/tramhao/termusic
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = termusic
 	depends = gst-plugins-ugly
 	depends = gst-libav
 	depends = dbus
-	optdepends = ueberzug: display album covers
+	depends = ueberzug
 	optdepends = yt-dlp: download mp3
 	optdepends = ffmpeg: download mp3
 	options = !lto
-	source = termusic-0.6.15.tar.gz::https://github.com/tramhao/termusic/archive/v0.6.15.tar.gz
-	sha512sums = 41e8167f1071e73004af131156d45b65f5956142489b28613911d08fd0f83f42cdf1e4b396d91b57917294af4c9b3039af830259ebabeac429e2ede32f28c78a
+	source = termusic-0.6.16.tar.gz::https://github.com/tramhao/termusic/archive/v0.6.16.tar.gz
+	sha512sums = 28ded1b349534b4a8790e33fd918e0806493aa861cdd9865a123f66df9ef48b593d0dc5aed2542c18d49ece3418178afc0afe0cf9453c00c537d2cba2013d85b
 
 pkgname = termusic
