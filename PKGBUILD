@@ -17,6 +17,7 @@ pkgver() {
 }
 
 package() {
+  ls
   cd "$srcdir"
   install -Dm755 "*/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "*/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
