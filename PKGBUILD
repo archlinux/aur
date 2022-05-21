@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname="thunderhub"
-pkgver=0.13.10
+pkgver=0.13.11
 pkgrel=1
 pkgdesc="Lightning Node Manager"
 arch=(any)
@@ -10,7 +10,7 @@ depends=("nodejs>=10")
 makedepends=("npm")
 optdepends=('lnd-bin')
 source=("https://github.com/apotdevin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "env" "accounts.yaml" "${pkgname}.user" "pacman-01-chown.hook" "${pkgname}.service")
-sha256sums=(25917a1b651ab181b200677fdf8dcea2bf2a40fd03e31c2b077d1809d1d769ca SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(27c465ea6d795657e7402ca7a27c353ae2e0055c4b2f1844ee930d6a4ad7a9f4 SKIP SKIP SKIP SKIP SKIP)
 options=('!strip')
 backup=("etc/${pkgname}/accounts.yaml" "etc/${pkgname}/env")
 install=${pkgname}.install
