@@ -1,6 +1,6 @@
 pkgbase = mkvtool
 	pkgdesc = Automatic fonts subset tool.
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://github.com/MkvAutoSubset/MkvAutoSubset
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mkvtool
 	depends = ass2bdnxml
 	depends = ffmpeg
 	depends = ripgrep
-	source = mkvtool-4.1.2.tar.gz::https://github.com/MkvAutoSubset/MkvAutoSubset/archive/refs/tags/v4.1.2.tar.gz
-	sha256sums = 967c8c1abb5af9f3c609cc18d8ebe3fa9fcbe7c73eb38b4cdcaa0e4f6dfdcbd1
+	source = mkvtool-4.1.3.tar.gz::https://github.com/MkvAutoSubset/MkvAutoSubset/archive/refs/tags/v4.1.3.tar.gz
+	sha256sums = e8a847b0da50da8e3997a1c3377209399a11c2733a87c6c4c898162dbc96a82f
 
 pkgname = mkvtool
