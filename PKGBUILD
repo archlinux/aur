@@ -1,16 +1,17 @@
 # Maintainer: Librewish <librewish@gmail.com>
+# Maintainer: TNE <tne at garudalinux org>
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia
 pkgver=515.43.04
-pkgrel=1
+pkgrel=2
 pkgdesc="mhwd-nvidia pci id"
 arch=("any")
 url="https://garudalinux.org/"
 license=('custom')
 source=('mhwd-nvidia')
 makedepends=('nvidia-dkms' 'nvidia-utils')
-sha256sums=('738749f5ada14afac3085d10fac351c55d423674228eea1dae8e41b935d1497c')
+sha256sums=('fc77d5f4bf9df15afb33c85cf957294a0e942aa23ee730d8fc45b2d8b2853950')
 provides=('mhwd-nvidia')
 package() {
 
