@@ -1,23 +1,26 @@
 pkgbase = python-sherpa
 	pkgdesc = Modeling and fitting package for scientific data analysis
-	pkgver = 4.14.0
+	pkgver = 4.14.1
 	pkgrel = 1
-	url = http://cxc.cfa.harvard.edu/contrib/sherpa/
+	url = http://cxc.cfa.harvard.edu/contrib/sherpa
 	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = python-pytest-xvfb
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-numpy
 	makedepends = fftw
-	makedepends = python-setuptools
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
 	makedepends = python-nbsphinx>=0.8.6
 	makedepends = pandoc
-	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.14.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.14.1.tar.gz
 	source = sherpa_local_fftw.patch
-	md5sums = 05674dfa5a616a34acac02c4d336f0c1
+	md5sums = 693dd73517c2943e2477c4d36a75f1a4
 	md5sums = d1823cc7683442d92450fadff7aed362
 
 pkgname = python-sherpa
@@ -29,9 +32,6 @@ pkgname = python-sherpa
 	optdepends = python-astropy>=3.2.1: Data I/O support
 	optdepends = ds9: Imaging requires
 	optdepends = xpa: Imaging requires
-	optdepends = python-pytest>=3.3: For testing suite
-	optdepends = python-mock: For testing suite
-	optdepends = python-pytest-xvfb: For testing suite
 	optdepends = python-sherpa-doc: Documentation for Sherpa
 
 pkgname = python-sherpa-doc
