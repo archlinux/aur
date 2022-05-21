@@ -2,7 +2,7 @@
 # Maintainer: Jonas Bucher <j.bucher.mn at gmail>
 
 pkgname=newm-git
-pkgver=0.2.r0.g5e4a171.27b399d
+pkgver=0.3alpha
 pkgrel=1
 license=('MIT')
 pkgdesc="Wayland compositor"
@@ -44,8 +44,8 @@ makedepends=(
 arch=('any')
 url="https://github.com/jbuchermn/newm"
 source=(
-	'git+https://github.com/jbuchermn/pywm.git#branch=v0.3'
-	'git+https://github.com/jbuchermn/newm.git#branch=v0.3'
+	'git+https://github.com/jbuchermn/pywm.git'
+	'git+https://github.com/jbuchermn/newm.git'
 )
 md5sums=(
 	'SKIP'
