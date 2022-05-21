@@ -5,6 +5,7 @@ pkgbase = korai-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = imagemagick
 	depends = libarchive
 	depends = gtkmm3
 	depends = webkit2gtk

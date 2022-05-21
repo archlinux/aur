@@ -5,7 +5,7 @@ pkgrel=1
 pkgver=0.1.3
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
-makedepends=("git")
+makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
 license=("GPL")
 source=('https://github.com/DisableGraphics/Korai/archive/refs/tags/v0.1.3.tar.gz')
@@ -22,7 +22,11 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/icons/"
 
 	cp ${srcdir}/Korai-${pkgver}/build/korai "${pkgdir}/usr/bin/"
-	cp ${srcdir}/Korai-${pkgver}/src/icon.xpm "${pkgdir}/usr/share/icons/korai.xpm"
+
+	echo "Converting icon..."
+	convert ${srcdir}/Korai-${pkgver}/src/icon.xpm "${pkgdir}/usr/share/icons/korai.png"
+
+	echo "Adding application menu..."
 
 	mkdir -p "${pkgdir}/usr/share/applications/"
 
@@ -37,7 +41,7 @@ package() {
 	Name=Korai
 	Comment=\"Fast, reliable and feature-packed manga/comic book reader\"
 	Exec=/usr/bin/korai
-	Icon=/usr/share/icons/korai.xpm
+	Icon=/usr/share/icons/korai.png
 	Path=/home/$USER/.local/share
 	Terminal=false
 	StartupNotify=false
