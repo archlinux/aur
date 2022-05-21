@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.1.0_devel.151514.a5884df949e.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.2.0_devel.154303.e8eb6d13a5d.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -126,7 +126,6 @@ build () {
     meson setup mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
-        -D b_lto=true \
         -D buildtype=plain \
         --wrap-mode=nofallback \
         -D prefix=/usr \
