@@ -1,6 +1,6 @@
 # Maintainer: ceri <ceri@dev.null>
 pkgname=apkeep
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Tool for downloading android APK files from various sources'
 url='https://github.com/EFForg/apkeep'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv7h' 'aarch64')
 license=('custom:MIT')
 depends=('openssl' 'gcc-libs')
 makedepends=('rust>=1.56.1')
-sha256sums=('8935a853139bd836855181f62f6a580cd4197c7e28d4b59b3216456716ba7833')
+sha256sums=('a1ab0121e53cc63cad042c378ea3c28779fd201287917186b429aec69522f224')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
