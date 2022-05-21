@@ -6,7 +6,7 @@
 
 pkgname=ebview-git
 pkgver=r64.390e6ed
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK2 based EPWING dictionary viewer."
 arch=('i686' 'x86_64')
 url="http://ebview.sourceforge.net"
