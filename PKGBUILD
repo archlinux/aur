@@ -3,7 +3,7 @@
 
 pkgname=picomc-git
 _pkgname=${pkgname%-*}
-pkgver=v0.4.2.r12.g64285b3
+pkgver=0.4.5.r2.g597e670
 pkgrel=1
 pkgdesc='A tiny CLI Minecraft launcher'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
 	'python-certifi'
 	'python-tqdm'
 	'python-coloredlogs'
+	'python-colorama'
 	'java-runtime'
 )
 provides=('picomc')
@@ -26,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
