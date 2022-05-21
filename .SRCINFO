@@ -1,7 +1,7 @@
 pkgbase = qolibri
 	pkgdesc = A QT-based EPWING dictionary viewer
 	pkgver = 2.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ludios/qolibri
 	arch = x86_64
 	arch = i686
