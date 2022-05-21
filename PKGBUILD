@@ -406,8 +406,14 @@ prepare() {
       _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
       _loopDev=$(udisksctl loop-setup -r -f "${_isoFile}" --no-user-interaction | awk '{print $NF}')
       _loopDev=${_loopDev::-1}
-      echo "  - Mounting loop device: $_loopDev"
-      _mountpoint=$(udisksctl mount -t udf -b "$_loopDev" --no-user-interaction | awk '{print $NF}')
+      # Wait for the loop device to be automatically mounted.
+      sleep 5
+      # Mount the loop device if not automatically mounted.
+      if ! grep -qs $_loopDev /proc/mounts; then
+        echo "  - Mounting loop device: $_loopDev"
+        udisksctl mount -t udf -b "$_loopDev" --no-user-interaction
+      fi
+      _mountpoint=$(findmnt -nfr -o target -S $_loopDev)
       echo "  - Loop device mounted as ISO at: $_mountpoint"
 
       echo "  - Extracting files from online Windows installation image"
