@@ -1,3 +1,5 @@
+# Maintainer: Chen Jicheng <git@chenjicheng.com>
+# fork https://aur.archlinux.org/packages/firefox-nightly, but update the package version daily.
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
