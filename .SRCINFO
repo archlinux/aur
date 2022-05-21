@@ -1,0 +1,14 @@
+pkgbase = nonosolver
+	pkgdesc = A fast command-line based nonogram solver.
+	pkgver = 2.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	source = nonogram-rs-2.0.0.tar.gz::https://github.com/ricoriedel/nonogram-rs/archive/refs/tags/v2.0.0.tar.gz
+	source = nonogram-rs-2.0.0.tar.gz.sig::https://github.com/ricoriedel/nonogram-rs/releases/download/v2.0.0/nonogram-rs-2.0.0.tar.gz.sig
+	validpgpkeys = C6BC439C0B32DFBE1CB809006B4087D7F5F4F83B
+	b2sums = 06e82bf7b7a144d15329bc4be5bae284499274936b9ec0e56fd75a249b5526a700831e693e44a39619c4b4f985d4e8cba52e7ff2dfaf8121eee45e3a6349f271
+	b2sums = 15de461b3bac20fd4c0fdd67eac94758b588f1bed19d76d8756b91932a836df65713a7f48776ac1cf80ae71ba88b6ac1afe238eedbf9cca0f748860dfff4d916
+
+pkgname = nonosolver
