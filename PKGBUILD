@@ -14,6 +14,7 @@ pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=(dbus-glib gtk3 libxt nss mime-types)
+conflicts=(firefox-nightly)
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
