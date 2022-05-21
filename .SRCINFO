@@ -1,7 +1,7 @@
 pkgbase = czateria-git
 	pkgdesc = Qt client for Czateria, a Polish chatroom network
 	pkgver = r134.459c301
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xavery/czateria
 	arch = x86_64
 	license = BSD

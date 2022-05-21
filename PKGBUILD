@@ -3,7 +3,7 @@
 _pkgname=czateria
 pkgname=czateria-git
 pkgver=r134.459c301
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt client for Czateria, a Polish chatroom network"
 arch=(x86_64)
 url="https://github.com/xavery/czateria"
@@ -23,8 +23,8 @@ build() {
   cd "${_pkgname}"
   mkdir build
   cd build
-  qmake6 ../czateria.pro CONFIG+=release QMAKE_CFLAGS="${CFLAGS}" \
-    QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}"
+  qmake6 ../czateria.pro CONFIG+=release QMAKE_CFLAGS="${CFLAGS} ${LTOFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS} ${LTOFLAGS}" QMAKE_LFLAGS="${LDFLAGS} ${LTOFLAGS}"
   make
 }
 
