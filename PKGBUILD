@@ -2,32 +2,27 @@
 # Contributor: budRich
 
 pkgname=i3ass
-pkgver=2022.05.20.2
+pkgver=2022.05.21.1
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
-# url='file:///home/bud/git/i3ass'
 url='https://github.com/budlabs/i3ass'
 license=('MIT')
-groups=()
 depends=('bash>=4.0.0' 'i3-wm' 'gawk' 'sed')
 makedepends=('gawk' 'sed')
 optdepends=('rofi' 'xdotool')
-provides=()
 conflicts=('i3-gaps')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-# source=("${pkgname}::git+$url")
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-noextract=()
-sha256sums=('ac772c40169c9ff7c29ba9f2fe3a5506b0b657ba96d44e6344392e6bab387359')
+sha256sums=('2e1247aca34418bd152f6b77ebb81de9bb276d1fdc92365c5b384485675f65e9')
+_trgdir="$pkgname-$pkgver"
+
+# _trgdir="$pkgname"
+# sha256sums=('SKIP')
+# url='file:///home/bud/git/i3ass'
+# source=("${pkgname}::git+$url")
 
 package() {
-  # cd "$pkgname"
-  cd "$pkgname-$pkgver"
+  cd "$_trgdir"
 
   make DESTDIR="$pkgdir/" PREFIX=/usr
   make DESTDIR="$pkgdir/" PREFIX=/usr install
