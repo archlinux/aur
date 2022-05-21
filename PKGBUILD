@@ -2,6 +2,15 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: _cmake_flags < <(echo -n "$CMAKE_FLAGS")
+
 pkgname=meshlab
 pkgver=2022.02
 _pkgver_vcg=${pkgver}
@@ -33,11 +42,11 @@ prepare() {
 
 
 build() {
-  local cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
-                      '-DCMAKE_INSTALL_PREFIX=/usr'
-                      '-DCMAKE_BUILD_TYPE=Release'
-                    )
-  cmake "${cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
+  _cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
+                 '-DCMAKE_INSTALL_PREFIX=/usr'
+                 '-DCMAKE_BUILD_TYPE=Release'
+               )
+  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
 # shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
  ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
