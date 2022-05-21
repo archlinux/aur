@@ -16,7 +16,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2021.10.r66.gd9d9ed105
+pkgver=2022.02.r55.g09f2a009c
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ prepare() {
 }
 
 pkgver() {
-  git -C "${srcdir}/${_name}" describe --long --tags --match "Meshlab-[0-9.]*"| sed 's/Meshlab-//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${srcdir}/${_name}" describe --long --tags --match "MeshLab-[0-9.]*"| sed 's/MeshLab-//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
