@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='4.0.1.20220513'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -31,6 +31,10 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
+	# OpenMPI library path changed between openmpi 4.1.2-1 and 4.1.3-1
+	# Autodetect which one it is to smoothen transition
+	[ -e /usr/lib/openmpi/libmpi.so ] && MPILIBPATH=/usr/lib/openmpi || MPILIBPATH=/usr/lib
+
 	# NOTE: The following optional features are NOT enabled:
 	# * Automatic instrumentation (with dyninst)
 	# * CUDA support
@@ -44,7 +48,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--with-mpi=/usr \
-		--with-mpi-libs=/usr/lib/openmpi \
+		--with-mpi-libs="$MPILIBPATH" \
 		--with-mpi-headers=/usr/include/openmpi \
 		--with-unwind=/usr \
 		--with-unwind-headers=/usr/include \
