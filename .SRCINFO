@@ -1,6 +1,6 @@
 pkgbase = perl-math-bigint-gmp
 	pkgdesc = Math::BigInt::GMP - backend library for Math::BigInt etc. based on GMP
-	pkgver = 1.6010
+	pkgver = 1.6011
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-BigInt-GMP
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = perl-math-bigint-gmp
 	license = GPL
 	depends = gmp>=6.1.2
 	depends = perl>=5.6.1
-	depends = perl-math-bigint>=1.999819
+	depends = perl-math-bigint>=1.999831
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.6010.tar.gz
-	b2sums = 22e79d167e8d8fb3a34685488550860bd81e225166fd22be9353ce12a871a486b0b0d01fa72a32f063133d4c2f6bc9aeef1207865824a4de7679e80a137638f6
+	source = https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.6011.tar.gz
+	b2sums = 8efe6fbe21f98e2b2a78a72572c6a5e048df273e2b171db6d7d5d5f79debe3e434f9145c8b62990b7b191debe11a47abdf1f1f58814b4345e969c51372846db4
 
 pkgname = perl-math-bigint-gmp
