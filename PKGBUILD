@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.17.7
+_kernver=5.17.9
 _archver=arch1
-_pkgrel=2
+_pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.17.7-arch1-2
+_KERNNAME=5.17.9-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.17.7-arch1"
+url="https://github.com/archlinux/linux/commits/v5.17.9-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('1a628fc33d374ca9e2b0a5baae3028864506325b7970c76ba18a1fbeebec5dad'
-            '2d80d2162477a93cfba52cbb3ec870412cca763d1c0251a75516a4647218a3bc'
-            '4378b500bb2f9d4adba5616126912e45a413faac232927f45d052a9d69d5216c')
+sha256sums=('18e5c82d39e2fe26df97901bb8d0f102f66dac03ae014cb0edb9be1b7e009913'
+            '963f64f8c62d3335895a0845ed354091155ac6c1310fb531138003f335864c61'
+            'b5de092374f827cad914f12685787934251dd461a2e53b3d4312dc79253fc2ad')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.17.7.arch1-2-bin() {
+package_linux5.17.9.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.17.7.arch1-2-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.17.7.arch1-2-headers-bin() {
+package_linux5.17.9.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.17.7.arch1-2-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.17.7.arch1-2-docs-bin() {
+package_linux5.17.9.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
