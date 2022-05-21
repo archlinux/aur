@@ -4,7 +4,7 @@
 
 pkgname=cppo
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="C-style preprocessor for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/cppo"
@@ -29,7 +29,8 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  # hmmm, --libdir behaviour changed in dune 3.2.0, it must now be an absolute path?!
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "/usr/lib/ocaml"
 
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
