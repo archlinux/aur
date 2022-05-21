@@ -1,6 +1,6 @@
 # Maintainer: Lahfa Samy <'akechishiro-aur' at domain 'lahfa.xyz'>
 pkgname=metacall-git
-pkgver=0.5.7
+pkgver=v0.1.9.r1789.g2a4a9ee1
 pkgrel=1
 pkgdesc='A CLI for a library providing inter-language foreign function interface calls'
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
