@@ -31,18 +31,17 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/input-overlay"
+	cd "${srcdir}/${_pkgname}"
 	git submodule update --init --recursive
 	cmake .
 	make
 }
 
 package() {
-	cd "${srcdir}/input-overlay"
-	mkdir -p "${pkgdir}/usr/lib/obs-plugins/"
-	mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/"
-	mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/presets/"
-	cp "./projects/plugin/input-overlay.so" "${pkgdir}/usr/lib/obs-plugins/"
-	cp -R "./projects/plugin/data/locale/" "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/"
-	cp -R "./projects/presets/" "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/"
+	_prjdir="${srcdir}/${_pkgname}/projects"
+	install -D -m755 "${_prjdir}/plugin/input-overlay.so" "${pkgdir}/usr/lib/obs-plugins/input-overlay.so"
+	install -D -m644 "${srcdir}/${_pkgname}/COPYING.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/input-overlay"
+	cp -r "${_prjdir}/plugin/data/locale" "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/locale"
+	cp -r "${_prjdir}/presets" "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/presets"
 }
