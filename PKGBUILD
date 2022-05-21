@@ -1,7 +1,7 @@
 # Maintainer: Guilherme B. Duarte <guilhermebemberduarte@gmail.com>
 pkgname=viper-bin
 _pkgname=viper
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 epoch=2
 pkgdesc="Viper is a launcher and updater for Northstar, and not much more than that."
