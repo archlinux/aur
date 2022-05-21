@@ -7,7 +7,7 @@ _pkgname=firefox
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 
 pkgname=firefox-kde
-pkgver=100.0.1
+pkgver=100.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -34,7 +34,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         mozilla-kde.patch::$_patchurl/mozilla-kde.patch
         firefox-branded-icons.patch::$_patchurl/firefox/firefox-branded-icons.patch
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch)
-sha256sums=('13bc55e1c32a6ad32b4a3b37296a0459f41b0981489fc22da491256773c51c9d'
+sha256sums=('dc109861204f6938fd8f147af89a694eb516f3d4bb64ce3f0116452d654a8417'
             'SKIP'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
