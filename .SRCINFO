@@ -1,6 +1,6 @@
 pkgbase = ttf-ms-win11-auto
 	pkgver = 10.0.22000.318
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
 	license = custom
