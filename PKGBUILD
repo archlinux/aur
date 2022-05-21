@@ -17,7 +17,7 @@ pkgver() {
 }
 
 package() {
-  cd "stow-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm755 "*/m3u8-downloader" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "*/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
