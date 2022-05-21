@@ -110,7 +110,7 @@ fi
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
 _major=5.15
-pkgver=${_major}.38
+pkgver=${_major}.40
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -153,7 +153,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '18e8225b1e488490a89353cd8fd5affbf1828cd1de6ecbe288a9b18639a7565e'
+            '9766495f6184ce75ac31d7a83cfe65e9399c0d164ee2c25a58c43021a47d17ef'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
