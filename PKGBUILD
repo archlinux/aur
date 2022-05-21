@@ -1,4 +1,5 @@
-# Maintainer: winlu <derwinlu@gmail.com>
+# Maintainer: archertech ac@archertech.ru
+# Contributor: winlu <derwinlu@gmail.com>
 
 pkgname=camel-k-bin
 pkgver=1.9.1
