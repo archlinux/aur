@@ -28,11 +28,6 @@ build() {
         cargo build --release --frozen
 }
 
-check() {
-        cd "$srcdir/${pkgname%-git}"
-        cargo test --frozen
-}
-
 package() {
         cd "$srcdir/${pkgname%-git}"
         install -Dm0755 target/release/cargo-xwin "$pkgdir/usr/bin/cargo-xwin"
