@@ -32,10 +32,21 @@
 #  $ fusermount -uz src/mnt/http
 #
 # Replace /dev/loopX with the relevant loop device, which is reported during
-# package build.
+# package build. If it isn't reported then loop device creation is not yet
+# finished and it errored out due to timeout. It usually happens due to slow or
+# inconsistent network. In such a case, you can do one of the following:
+#  1. wait for the loop device to be created and run the above commands, or
+#  2. just run the above 'fusermount' command (doing this might leave redundant
+#     loop devices which can be later removed with a simple system reboot);
+# and then try building the package again.
 #
 # A file integrity check is performed after download. Due to the unconventional
 # way that the data is downloaded, the verification is done in prepare().
+#
+# This package uses HTTPDirFS with permanent cache. Due to this the maximum
+# download speed is around 15MiB/s. To disable cache, find and remove the
+# '--cache' option from httpdirfs. Read more about HTTPDirFS permanent cache
+# here: https://github.com/fangfufu/httpdirfs#permanent-cache-system
 #
 # If fonts cannot be downloaded directly, the ISO fill will be fully
 # downloaded. Due to that install.wim will be extracted from the ISO, it is
@@ -401,6 +412,7 @@ prepare() {
       echo "- Downloading fonts directly"
       mkdir -p mnt/http
       echo "  - Mounting HTTP file"
+      # Remove '--cache' here to disable HTTPDirFS permanent cache.
       httpdirfs --cache --single-file-mode "$_iso" mnt/http
       echo "  - Creating loop device"
       _isoFile="mnt/http/$(echo "$_iso" | awk -F "/" '{print $NF}')"
