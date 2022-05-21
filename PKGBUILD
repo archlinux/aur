@@ -9,7 +9,7 @@ license=('MIT')
 # depends=('gcc-libs')
 makedepends=()
 conflicts=()
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/releases/download/nightly/m3u8-downloader-nightly-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/releases/download/${pkgver}/m3u8-downloader-linux.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -17,6 +17,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "**/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "**/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/m3u8-downloader-linux"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
