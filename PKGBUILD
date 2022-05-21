@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='4.0.1.20220513'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -20,6 +20,10 @@ prepare() {
 	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
 	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
+
+	# The OpenMPI package also has a library called libompitrace, which conflicts with
+	# extrae's version - rename extrae's version to libextraeompitrace to avoid the clash
+	sed -ie 's/libompitrace/libextraeompitrace/g' example/LINUX/MPI+OMP/ld-preload/trace.sh scripts/mpitrace_wizard src/tracer/Makefile.am
 
 	autoreconf -i -f
 }
