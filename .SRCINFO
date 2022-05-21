@@ -1,6 +1,6 @@
 pkgbase = monitorfs
 	pkgdesc = Monitor filesystem, Do something on some filesystem event
-	pkgver = v0.0.1.r3.ge9dd4ea
+	pkgver = v0.0.2.r1.ge46bf3f
 	pkgrel = 1
 	url = https://github.com/vcup/MonitorFileSystem
 	arch = x86_64

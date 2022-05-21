@@ -1,6 +1,6 @@
 pkgname=monitorfs
 pkgdesc="Monitor filesystem, Do something on some filesystem event"
-pkgver=v0.0.1.r3.ge9dd4ea
+pkgver=v0.0.2.r1.g417d88b
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
@@ -22,6 +22,8 @@ pkgver() {
 prepare(){
   [[ -d "${srcdir}/dotnet-sdk" ]] && rm -rf "${srcdir}/dotnet-sdk"
   bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk" --channel Current --no-path
+  cd "${srcdir}/MonitorFileSystem"
+  git submodule update --init --recursive
 }
 check(){
   cd "${srcdir}/MonitorFileSystem"
@@ -45,6 +47,7 @@ package(){
   mkdir -p "${pkgdir}/opt/monitorfsc"
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/etc/monitorfs"
+  mkdir -p "${pkgdir}/etc/monitorfsc"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
 
   cd "${srcdir}/MonitorFileSystem/service-out"
@@ -57,5 +60,4 @@ package(){
 
   ln -sf /opt/monitorfs/MonitorFileSystem "${pkgdir}/usr/bin/monitorfs"
   ln -sf /opt/monitorfsc/MonitorFileSystem.Client "${pkgdir}/usr/bin/monitorfsc"
-  ln -sf /opt/monitorfs/appsettings.json "${pkgdir}/etc/monitorfs/appsettings.json"
 }
