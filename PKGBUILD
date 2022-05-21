@@ -1,7 +1,7 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-adventuresofdemo
 pkgver=1.3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with AoD game assets."
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/Wohlstand/TheXTech"
@@ -40,6 +40,8 @@ package() {
     cp -r "${srcdir}/music" "${pkgdir}/usr/share/games/thextech-aod/music"
     cp -r "${srcdir}/sound" "${pkgdir}/usr/share/games/thextech-aod/sound"
     cp -r "${srcdir}/worlds" "${pkgdir}/usr/share/games/thextech-aod/worlds"
+    chmod 0644 "${pkgdir}/usr/share/games/thextech-aod/sound/*"
+    chmod 0644 "${pkgdir}/usr/share/games/thextech-aod/music/*"
     install -Dm0644 "${srcdir}/gameinfo.ini" "${pkgdir}/usr/share/games/thextech-aod/gameinfo.ini"
     install -Dm0644 "${srcdir}/music.ini" "${pkgdir}/usr/share/games/thextech-aod/music.ini"
     install -Dm0644 "${srcdir}/sounds.ini" "${pkgdir}/usr/share/games/thextech-aod/sounds.ini"
