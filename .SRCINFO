@@ -1,7 +1,7 @@
 pkgbase = orthanc
 	pkgdesc = Open-source, lightweight DICOM server
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.orthanc-server.com/
 	arch = x86_64
 	arch = i686

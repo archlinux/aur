@@ -4,7 +4,7 @@
 
 pkgname=orthanc
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source, lightweight DICOM server'
 arch=('x86_64' 'i686')
 url='https://www.orthanc-server.com/'
