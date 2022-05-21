@@ -1,0 +1,12 @@
+pkgbase = apertium-regtest
+	pkgdesc = Regression testing system for Apertium
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://wiki.apertium.org/wiki/Apertium-regtest
+	arch = any
+	license = GPL3
+	depends = python
+	source = apertium-regtest-0.9.1.tar.gz::https://github.com/apertium/apertium-regtest/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 06bdbbc6be60252fa7f05a86bb467f42f369fde9ea6c26ff9e66751fe22242b9
+
+pkgname = apertium-regtest
