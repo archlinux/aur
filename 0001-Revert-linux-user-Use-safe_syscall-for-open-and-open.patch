@@ -1,0 +1,61 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Frajo Haider <f_haider@gmx.at>
+Date: Wed, 22 Jan 2020 10:47:20 +0200
+Subject: [PATCH] Revert "linux-user: Use safe_syscall for open and openat
+ system calls"
+
+This reverts commit c10a07387b77b94d8f7233f3b5bb559211d4e49a.
+---
+ linux-user/syscall.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index f65045efe6a22bb38d0c95dde0844345795cf188..9ed3e732cd7444cf18a951677663cc5f45acffde 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -439,6 +439,18 @@ static const bitmask_transtbl fcntl_flags_tbl[] = {
+ 
+ _syscall2(int, sys_getcwd1, char *, buf, size_t, size)
+ 
++static int sys_openat(int dirfd, const char *pathname, int flags, mode_t mode)
++{
++  /*
++   * open(2) has extra parameter 'mode' when called with
++   * flag O_CREAT.
++   */
++  if ((flags & O_CREAT) != 0) {
++      return (openat(dirfd, pathname, flags, mode));
++  }
++  return (openat(dirfd, pathname, flags));
++}
++
+ #if defined(TARGET_NR_utimensat) || defined(TARGET_NR_utimensat_time64)
+ #if defined(__NR_utimensat)
+ #define __NR_sys_utimensat __NR_utimensat
+@@ -625,8 +637,6 @@ static type safe_##name(type1 arg1, type2 arg2, type3 arg3, type4 arg4, \
+ 
+ safe_syscall3(ssize_t, read, int, fd, void *, buff, size_t, count)
+ safe_syscall3(ssize_t, write, int, fd, const void *, buff, size_t, count)
+-safe_syscall4(int, openat, int, dirfd, const char *, pathname, \
+-              int, flags, mode_t, mode)
+ #if defined(TARGET_NR_wait4) || defined(TARGET_NR_waitpid)
+ safe_syscall4(pid_t, wait4, pid_t, pid, int *, status, int, options, \
+               struct rusage *, rusage)
+@@ -8240,7 +8250,7 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
+ 
+     if (is_proc_myself(pathname, "exe")) {
+         int execfd = qemu_getauxval(AT_EXECFD);
+-        return execfd ? execfd : safe_openat(dirfd, exec_path, flags, mode);
++        return execfd ? execfd : sys_openat(dirfd, exec_path, flags, mode);
+     }
+ 
+     for (fake_open = fakes; fake_open->filename; fake_open++) {
+@@ -8276,7 +8286,7 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
+         return fd;
+     }
+ 
+-    return safe_openat(dirfd, path(pathname), flags, mode);
++    return sys_openat(dirfd, path(pathname), flags, mode);
+ }
+ 
+ #define TIMER_MAGIC 0x0caf0000

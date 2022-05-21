@@ -1,0 +1,106 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Wed, 27 Apr 2022 15:35:36 +0100
+Subject: [PATCH] virtio-scsi: fix ctrl and event handler functions in
+ dataplane mode
+
+Commit f34e8d8b8d48d73f36a67b6d5e492ef9784b5012 ("virtio-scsi: prepare
+virtio_scsi_handle_cmd for dataplane") prepared the virtio-scsi cmd
+virtqueue handler function to be used in both the dataplane and
+non-datpalane code paths.
+
+It failed to convert the ctrl and event virtqueue handler functions,
+which are not designed to be called from the dataplane code path but
+will be since the ioeventfd is set up for those virtqueues when
+dataplane starts.
+
+Convert the ctrl and event virtqueue handler functions now so they
+operate correctly when called from the dataplane code path. Avoid code
+duplication by extracting this code into a helper function.
+
+Fixes: f34e8d8b8d48d73f36a67b6d5e492ef9784b5012 ("virtio-scsi: prepare virtio_scsi_handle_cmd for dataplane")
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-id: 20220427143541.119567-2-stefanha@redhat.com
+[Fixed s/by used/be used/ typo pointed out by Michael Tokarev
+<mjt@tls.msk.ru>.
+--Stefan]
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ hw/scsi/virtio-scsi.c | 42 +++++++++++++++++++++++++++---------------
+ 1 file changed, 27 insertions(+), 15 deletions(-)
+
+diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
+index 34a968ecfb5b45d5b2f09aef052197aceab4728e..417fbc71d66340c38f285d3d77912b675eb4947e 100644
+--- a/hw/scsi/virtio-scsi.c
++++ b/hw/scsi/virtio-scsi.c
+@@ -472,16 +472,32 @@ bool virtio_scsi_handle_ctrl_vq(VirtIOSCSI *s, VirtQueue *vq)
+     return progress;
+ }
+ 
++/*
++ * If dataplane is configured but not yet started, do so now and return true on
++ * success.
++ *
++ * Dataplane is started by the core virtio code but virtqueue handler functions
++ * can also be invoked when a guest kicks before DRIVER_OK, so this helper
++ * function helps us deal with manually starting ioeventfd in that case.
++ */
++static bool virtio_scsi_defer_to_dataplane(VirtIOSCSI *s)
++{
++    if (!s->ctx || s->dataplane_started) {
++        return false;
++    }
++
++    virtio_device_start_ioeventfd(&s->parent_obj.parent_obj);
++    return !s->dataplane_fenced;
++}
++
+ static void virtio_scsi_handle_ctrl(VirtIODevice *vdev, VirtQueue *vq)
+ {
+     VirtIOSCSI *s = (VirtIOSCSI *)vdev;
+ 
+-    if (s->ctx) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_ctrl_vq(s, vq);
+     virtio_scsi_release(s);
+@@ -720,12 +736,10 @@ static void virtio_scsi_handle_cmd(VirtIODevice *vdev, VirtQueue *vq)
+     /* use non-QOM casts in the data path */
+     VirtIOSCSI *s = (VirtIOSCSI *)vdev;
+ 
+-    if (s->ctx && !s->dataplane_started) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_cmd_vq(s, vq);
+     virtio_scsi_release(s);
+@@ -855,12 +869,10 @@ static void virtio_scsi_handle_event(VirtIODevice *vdev, VirtQueue *vq)
+ {
+     VirtIOSCSI *s = VIRTIO_SCSI(vdev);
+ 
+-    if (s->ctx) {
+-        virtio_device_start_ioeventfd(vdev);
+-        if (!s->dataplane_fenced) {
+-            return;
+-        }
++    if (virtio_scsi_defer_to_dataplane(s)) {
++        return;
+     }
++
+     virtio_scsi_acquire(s);
+     virtio_scsi_handle_event_vq(s, vq);
+     virtio_scsi_release(s);

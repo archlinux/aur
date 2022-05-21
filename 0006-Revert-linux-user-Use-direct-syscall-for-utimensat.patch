@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Frajo Haider <f_haider@gmx.at>
+Date: Wed, 29 Jan 2020 12:49:43 +0200
+Subject: [PATCH] Revert "linux-user: Use direct syscall for utimensat"
+
+This reverts commit 700fa58e4b9100d6bd77df06d2e5d1f457720c4d.
+---
+ linux-user/syscall.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index b894acd0d7b3c258bf41272e5600ed69673b35ed..925c6111a59832300dd1fc93cef06e7bedce5c64 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -452,17 +452,19 @@ static int sys_openat(int dirfd, const char *pathname, int flags, mode_t mode)
+ }
+ 
+ #if defined(TARGET_NR_utimensat) || defined(TARGET_NR_utimensat_time64)
+-#if defined(__NR_utimensat)
+-#define __NR_sys_utimensat __NR_utimensat
+-_syscall4(int,sys_utimensat,int,dirfd,const char *,pathname,
+-          const struct timespec *,tsp,int,flags)
+-#else
++#ifdef CONFIG_UTIMENSAT
+ static int sys_utimensat(int dirfd, const char *pathname,
+                          const struct timespec times[2], int flags)
+ {
+-    errno = ENOSYS;
+-    return -1;
++    if (pathname == NULL)
++        return futimens(dirfd, times);
++    else
++        return utimensat(dirfd, pathname, times, flags);
+ }
++#elif defined(__NR_utimensat)
++#define __NR_sys_utimensat __NR_utimensat
++_syscall4(int,sys_utimensat,int,dirfd,const char *,pathname,
++          const struct timespec *,tsp,int,flags)
+ #endif
+ #endif /* TARGET_NR_utimensat */
+ 

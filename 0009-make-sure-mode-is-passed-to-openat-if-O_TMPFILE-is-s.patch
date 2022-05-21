@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Frajo Haider <f_haider@gmx.at>
+Date: Wed, 29 Jan 2020 11:12:24 +0000
+Subject: [PATCH] make sure mode is passed to openat if O_TMPFILE is specified.
+ JB#45765
+
+---
+ linux-user/syscall.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 847fa04b71ac2a94343539adb97d77d2b2e38661..ceef613e5664f6c4ab1831a727aa85cbd2f56eea 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -445,7 +445,7 @@ static int sys_openat(int dirfd, const char *pathname, int flags, mode_t mode)
+    * open(2) has extra parameter 'mode' when called with
+    * flag O_CREAT.
+    */
+-  if ((flags & O_CREAT) != 0) {
++  if ((flags & O_CREAT) != 0 || ((flags) & O_TMPFILE) == O_TMPFILE) {
+       return (openat(dirfd, pathname, flags, mode));
+   }
+   return (openat(dirfd, pathname, flags));

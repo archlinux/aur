@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Frajo Haider <f_haider@gmx.at>
+Date: Tue, 8 Dec 2020 00:19:06 +0200
+Subject: [PATCH] linux-user: disable commpage
+
+---
+ linux-user/elfload.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index c45da4d63375978b9a4b37c39af3d7d3d008bc1e..be40c3078ef799bfb631f94a3eed04ac9da0c94d 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -390,8 +390,10 @@ enum {
+ 
+ /* The commpage only exists for 32 bit kernels */
+ 
+-#define HI_COMMPAGE (intptr_t)0xffff0f00u
++#define HI_COMMPAGE 0
++#define init_guest_commpage() true
+ 
++#if 0
+ static bool init_guest_commpage(void)
+ {
+     void *want = g2h_untagged(HI_COMMPAGE & -qemu_host_page_size);
+@@ -415,6 +417,7 @@ static bool init_guest_commpage(void)
+     }
+     return true;
+ }
++#endif
+ 
+ #define ELF_HWCAP get_elf_hwcap()
+ #define ELF_HWCAP2 get_elf_hwcap2()
