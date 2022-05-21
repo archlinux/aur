@@ -5,7 +5,6 @@ pkgbase = redump-bioses
 	url = https://en.wikipedia.org/wiki/BIOS
 	arch = any
 	license = custom
-	depends = duckstation
 	source = gamecube.zip::https://archive.org/download/2019_11_25_redump_bios/Redump-BIOS/Nintendo%20-%20GameCube%20-%20BIOS%20%2816%29%20%282021-09-18%29.zip
 	source = psx.zip::https://archive.org/download/2019_11_25_redump_bios/Redump-BIOS/Sony%20-%20PlayStation%20-%20BIOS%20%2824%29%20%282016-10-21%29.zip
 	source = ps2.zip::https://archive.org/download/2019_11_25_redump_bios/Redump-BIOS/Sony%20-%20PlayStation%202%20-%20BIOS%20%28107%29%20%282019-11-25%29.zip
