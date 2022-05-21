@@ -5,8 +5,8 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 epoch=
 pkgdesc='Self-hosted LR parser generator in C++20'
 arch=('x86_64')
@@ -16,7 +16,7 @@ groups=()
 depends=('fmt')
 makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
-optdepends=('bux>=1.2.1: To build the generated code with')
+optdepends=('bux>=1.6.4: To build the generated code with')
 provides=()
 conflicts=()
 replaces=()
@@ -40,7 +40,7 @@ prepare() {
 	fi
 }
 
-if [[ ! "$pkgver" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+if [[ ( "$pkgver" != "main" ) && ( ! "$pkgver" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ) ]]; then
 	pkgver() {
 		cd "$pkgname" || return 1
 		local _ret=
@@ -55,7 +55,7 @@ fi
 
 build() {
 	cd "$pkgname" || return 1
-	cmake .
+	cmake -D FETCH_DEPENDEES=1 .
 	cd ParserGen/ || return 1
 	make -j
 	cd ../ScannerGen/ || return 1
