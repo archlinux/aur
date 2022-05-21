@@ -20,7 +20,6 @@ post_install() {
 		          from matrix-angular-sdk, or set 'web_client_location' to a path
 		          to make synapse not try to serve it using syweb.
 		EOF
-		install -dm700 -o 198 -g 198 /var/lib/synapse
 	fi
 }
 
@@ -65,6 +64,45 @@ post_upgrade() {
 		    and adds a new path for media workers.
 
 		    See https://matrix-org.github.io/synapse/v1.41/upgrade.html#upgrading-to-v1410
+		EOF
+	fi
+
+	if [[ "$(vercmp "$2" 1.45.1)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Changes required to media storage provider modules
+		    Media storage provider modules that read from the Synapse configuration
+		    object (i.e. that read the value of hs.config.[...])
+		    now need to specify the configuration section they're reading from.
+
+		    see https://matrix-org.github.io/synapse/develop/upgrade#upgrading-to-v1450
+		EOF
+	fi
+
+	if [[ "$(vercmp "$2" 1.51.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Deprecation of webclient listeners and non-HTTP(S) web_client_location
+		    Listeners of type webclient are deprecated and scheduled to be removed in
+		    Synapse v1.53.0.
+		    Similarly, a non-HTTP(S) web_client_location configuration is deprecated
+		    and will become a configuration error in Synapse v1.53.0.
+		EOF
+	fi
+	if [[ "$(vercmp "$2" 1.53.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Dropping support for webclient listeners and non-HTTP(S) web_client_location
+		    Per the deprecation notice in Synapse v1.51.0, listeners of type
+		    webclient are no longer supported and configuring them is a now
+		    a configuration error.
+		    Configuring a non-HTTP(S) web_client_location configuration is now
+		    a configuration error.
+		EOF
+	fi
+	if [[ "$(vercmp "$2" 1.56.0)" -lt 0 ]]; then
+		cat <<-EOF
+		==> Open registration without verification is now disabled by default
+		    Synapse will refuse to start if registration is enabled without email,
+		    captcha, or token-based verification unless the new config flag
+		    enable_registration_without_verification is set to "true".
 		EOF
 	fi
 }
