@@ -1,7 +1,8 @@
-# Maintainer: onbjerg <hi@notbjerg.me>
+# Maintainer: Ktl_XV <aur@ktlxv.com>
+# Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth-dev
 pkgver="0.5.0"
-pkgrel=4
+pkgrel=18
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -12,7 +13,7 @@ makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame')
 conflicts=('frame-eth')
 install=$pkgname.install
-source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.9"
+source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.18"
         "$pkgname.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -34,7 +35,9 @@ prepare() {
 build() {
   _ensure_local_nvm
   cd frame
+  npm run setup
   npm install --cache "${srcdir}/npm-cache"
+  # npm run bundle
   npm run build -- --linux dir
 }
 
