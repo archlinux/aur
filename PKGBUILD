@@ -1,5 +1,7 @@
-#!/hint/bash
+#!/usr/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
+
 pkgname=meshlab
 pkgver=2022.02
 _pkgver_vcg=${pkgver}
