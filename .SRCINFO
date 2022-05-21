@@ -1,13 +1,13 @@
 pkgbase = harmony
 	pkgdesc = An open souce CLI music streamer based on MPV.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/ZingyTomato/Harmony-Music
 	arch = any
 	license = GPL
 	depends = mpv
 	depends = python
-	source = harmony::https://github.com/ZingyTomato/Harmony-Music/releases/download/v0.4.1/harmony
-	sha256sums = 3d6602eb420280bbc8a34884d306106b1bd94b4e7b513d5ea5b42cb321268711
+	source = harmony::https://github.com/ZingyTomato/Harmony-Music/releases/download/v0.4.2/harmony
+	sha256sums = 622311c4a8135aa281794488b6492fc11e912358f8f49120ac8d3d07c485d834
 
 pkgname = harmony
