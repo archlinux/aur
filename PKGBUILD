@@ -1,3 +1,4 @@
+pkgbase="libadvo"
 pkgname="libadvo"
 pkgver=1.1
 pkgrel=1
