@@ -1,0 +1,16 @@
+pkgbase = glitch2
+	pkgdesc = An Audio Effects Plugin.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://illformed.com/glitch
+	arch = x86_64
+	arch = i686
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	depends = libcurl-gnutls
+	depends = glibc
+	source = https://illformed.com/downloads/glitch_2_1_2/demo/Glitch_2_1_2_Linux_Demo.zip
+	md5sums = 1e8b266d66956246116e818af9885414
+
+pkgname = glitch2
