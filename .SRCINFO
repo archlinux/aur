@@ -1,6 +1,6 @@
 pkgbase = wwise-audio-tools-git
 	pkgdesc = Tools for working with Wwise file types (only extraction at the moment)
-	pkgver = 0.5.0.r3.g16400e4
+	pkgver = 0.5.1.r0.g5a799da
 	pkgrel = 1
 	url = https://github.com/WolvenKit/wwise-audio-tools
 	arch = x86_64
