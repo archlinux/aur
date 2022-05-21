@@ -4,7 +4,7 @@
 
 pkgname=river-noxwayland-git
 _pkgname=river
-pkgver=0.1.0.r69.g90b3764
+pkgver=0.1.0.r75.gded490d
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
 makedepends=('zig' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river' 'river-bin' 'river-git')
+options=('!strip')
 source=(
 	"git+$url"
 	'git+https://github.com/ifreund/zig-pixman.git'
@@ -50,7 +51,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	DESTDIR="$pkgdir" zig build install -Drelease-safe --prefix '/usr'
+	DESTDIR="$pkgdir" zig build --prefix '/usr'
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 	install -d "$pkgdir/usr/share/$_pkgname"
