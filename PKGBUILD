@@ -1,7 +1,7 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab
-pkgver=2021.07
+pkgver=2022.02
 _pkgver_vcg=${pkgver}
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
@@ -17,7 +17,7 @@ optdepends=('u3d: for U3D and IDTF file support'
             'mpir: for Constructive Solid Geometry operation filters'
             'openctm-tools: for compressed triangle mesh file format')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-${pkgver}"
+source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-${pkgver}"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=${_pkgver_vcg}"
         )
 sha256sums=('SKIP'

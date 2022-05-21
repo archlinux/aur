@@ -1,6 +1,6 @@
 pkgbase = meshlab
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2021.07
+	pkgver = 2022.02
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
@@ -32,8 +32,8 @@ pkgbase = meshlab
 	optdepends = muparser: for filer_func plugins
 	optdepends = mpir: for Constructive Solid Geometry operation filters
 	optdepends = openctm-tools: for compressed triangle mesh file format
-	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-2021.07
-	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2021.07
+	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=MeshLab-2022.02
+	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2022.02
 	source = nexus::git+https://github.com/cnr-isti-vclab/nexus.git
 	source = corto::git+https://github.com/cnr-isti-vclab/corto.git
 	sha256sums = SKIP
