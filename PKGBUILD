@@ -1,8 +1,8 @@
 # Maintainer: Ayaka Mikazuki <ayaka@mail.shn.hk>
 
 pkgname=rime-tupa
-pkgver=0.0.0.20220518
-_commit=c3bd6e5c261be8f9f5b219757046e8d5e95203f1
+pkgver=0.0.0.20220521
+_commit=a8568446d9dde284dfc3f45badb1909b12519184
 pkgrel=1
 pkgdesc="TUPA input for rime"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('CC0')
 depends=('rime-luna-pinyin' 'rime-cantonese')
 makedepends=('librime')
 source=("$url/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha256sums=('914c1b8e6d80063c7273c053d0ee80579e33f7bd87a3dfea7abf16bf6ecc7f3f')
+sha256sums=('cacef8273b5a06d04d0cbcc2d2adb6f362bb3a8301e7c245d3fdbf8b2fa04900')
 
 prepare() {
   cd $pkgname-$_commit
