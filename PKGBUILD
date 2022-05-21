@@ -3,12 +3,12 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
 license=('AGPL3')
-depends=(gtk3)
+depends=(gtk3 sqlite)
 makedepends=(git clang cmake ninja unzip rust cargo cargo-make dart)
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname-bin)
