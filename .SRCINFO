@@ -1,8 +1,9 @@
 pkgbase = naver-whale-stable
 	pkgdesc = The web browser from NAVER
 	pkgver = 3.14.134.62
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whale.naver.com
+	install = naver-whale-stable.install
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
