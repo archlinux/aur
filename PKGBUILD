@@ -3,7 +3,7 @@
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.7.1.r0.g84b0c4a
+pkgver=0.7.1.r134.ga24289b
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('ISC')
 provides=('telescope')
 conflicts=('telescope')
 depends=('libretls')
-source=("git+https://git.omarpolo.com/telescope")
+source=("git+https://github.com/omar-polo/telescope")
 sha256sums=('SKIP')
 
 pkgver() {
