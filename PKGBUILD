@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tartube
-pkgver=2.3.549
+pkgver=2.4.053
 pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('ffmpeg: Video playback support'
             'atomicparsley')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/axcore/tartube/archive/v${pkgver}.tar.gz")
-sha256sums=('cdabf38af4b88ef15162c61826f01cf394e32131644f6ab666505bd82f43ee24')
+sha256sums=('4221b4913ab7f8883ba9cf234db4e40b7f27e02435e3100ce994cb90e3c8369a')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -33,6 +33,6 @@ package() {
   install -d "${pkgdir}/usr/share/applications" \
    "${pkgdir}/usr/share/pixmaps"
   install -Dm644 pack/tartube.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 pack/tartube.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm644 pack/io.sourceforge.tartube.desktop -t "${pkgdir}/usr/share/applications"
 }
 # vim:set ts=2 sw=2 et:
