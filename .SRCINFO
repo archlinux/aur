@@ -1,6 +1,6 @@
 pkgbase = atmi
 	pkgdesc = Task graph framework for heterogeneous CPU-GPU systems.
-	pkgver = 5.1.1
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/atmi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = atmi
 	makedepends = rsync
 	depends = hsa-rocr
 	depends = comgr
-	source = atmi-5.1.1.tar.gz::https://github.com/RadeonOpenCompute/atmi/archive/rocm-5.1.1.tar.gz
-	sha256sums = 2ca680d1ee5868021a178aaf25d46b457e03365971cc23d29d4874eb41463f12
+	source = atmi-5.1.3.tar.gz::https://github.com/RadeonOpenCompute/atmi/archive/rocm-5.1.3.tar.gz
+	sha256sums = a43448d77705b2b07e1758ffe8035aa6ba146abc2167984e8cb0f1615797b341
 
 pkgname = atmi
