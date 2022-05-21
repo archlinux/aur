@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-debug-agent
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="ROCr Debug Agent Library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hip' 'rocm-dbgapi' 'glibc')
 makedepends=('cmake' 'git')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('370d0b723e1bd2808a17f87e7ed66b26b22110758215cf97b169346c0effaf3d')
+sha256sums=('ef26130829f3348d503669467ab1ea39fb67d943d88d64e7ac04b9617ec6067d')
 _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
