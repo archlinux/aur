@@ -4,7 +4,7 @@
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
 pkgver='1.145.2'
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
 url='https://tlaun.ch'
@@ -13,8 +13,8 @@ license=('custom')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
-#_bootstrap_version='1.20.0'
-#_bootstrap_checksum='9cf731b0512d2219f33a056aeffa8b6fd50383a5554503d8608060708bb30989'
+#_bootstrap_version='1.21.0'
+#_bootstrap_checksum='b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2'
 #_launcher_version='1.145.2'
 #_launcher_checksum='ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e'
 
@@ -36,7 +36,7 @@ _repo='https://tlaun.ch/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.20.0-9cf731b0.jar::${_repo}/update/aur/bootstrap/9cf731b0512d2219f33a056aeffa8b6fd50383a5554503d8608060708bb30989.jar"
+  "tl-bootstrap-1.21.0-b67db2fa.jar::${_repo}/update/aur/bootstrap/b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2.jar"
 
   # Launcher
   "tl-launcher-1.145.2-ad1bc46f.jar::${_repo}/update/aur/launcher/ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e.jar"
@@ -88,12 +88,12 @@ source=(
 
 noextract=(
   "${source[@]##*/}"
-  "tl-bootstrap-1.20.0-9cf731b0.jar"
+  "tl-bootstrap-1.21.0-b67db2fa.jar"
   "tl-launcher-1.145.2-ad1bc46f.jar"
 )
 
 sha256sums=(
-  '9cf731b0512d2219f33a056aeffa8b6fd50383a5554503d8608060708bb30989' # tl-bootstrap-1.20.0-9cf731b0.jar
+  'b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2' # tl-bootstrap-1.21.0-b67db2fa.jar
 
   'ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e' # tl-launcher-1.145.2-ad1bc46f.jar
 
@@ -150,7 +150,7 @@ package() {
   done
 
   # install launcher
-  install -Dm0644 "${srcdir}/tl-bootstrap-1.20.0-9cf731b0.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-1.21.0-b67db2fa.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/tl-launcher-1.145.2-ad1bc46f.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
