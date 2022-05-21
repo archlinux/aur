@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -9,16 +9,16 @@ license=('Apache')
 source=("https://downloads.nestybox.com/sysbox/releases/v${pkgver}/sysbox-ce_${pkgver}-0.linux_amd64.deb"
         "git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
-        "git+https://github.com/nestybox/dockerfiles.git#commit=3ae0877cbfc71d1e17016d9ef4ad3acd5f2be7f7"
+        "git+https://github.com/nestybox/dockerfiles.git#commit=f870cf0cb7a56f800ca5570e490c4db0f2851b1b"
         "git+https://github.com/nestybox/sysbox-fs.git#commit=95a773a6ea3920f7ab454f1583465c7aea4c701f"
         "git+https://github.com/nestybox/fuse.git#commit=a499c0dfef7f4306b1d596f0cb11289f3b609c4b"
         "git+https://github.com/nestybox/sysbox-ipc.git#commit=f8d635430d7ce35830ca2a67fa1c95eb79499228"
-        "git+https://github.com/nestybox/sysbox-libs.git#commit=f12101feb13996bfadae5db7390038d0d0f13c0a"
+        "git+https://github.com/nestybox/sysbox-libs.git#commit=f5c3e31c11774954c2939731de4373c159398e95"
         "git+https://github.com/nestybox/libseccomp.git#commit=8249e759351de2c647fa6e4f2e7db6261a624542"
         "git+https://github.com/nestybox/libseccomp-golang.git#commit=34080bdd6320612d64400edce4e51188c0d64d72"
-        "git+https://github.com/nestybox/sysbox-mgr.git#commit=bf4140a678de2cdb4d7f02f50c5e71348d2d2335"
-        "git+https://github.com/nestybox/sysbox-runc.git#commit=c85420f1d1a426949047eb55e4112a3bc310aec2")
-sha256sums=('eeacd9ae0e08ee5e5637e3b93e4f0cf78f20f9590ef2e7ab08347700682422f0'
+        "git+https://github.com/nestybox/sysbox-mgr.git#commit=ea1b7db91031355cb10b850125e0d6502dc38962"
+        "git+https://github.com/nestybox/sysbox-runc.git#commit=d91c42c2125fd7aaf46f66307eb5c2a025f30289")
+sha256sums=('f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 depends=('rsync' 'fuse2')
