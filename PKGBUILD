@@ -1,18 +1,18 @@
-# Maintainer: Stefan Reisinger <dev at stefan-reisinger dot at>
+# Maintainer: Jens Vanhooydonck <jens at vanhooydonck dot eu>
 
 pkgname=manictime-bin
-pkgver=1.3.1
-_pkgver=1_3_1_0
+pkgver=1.3.7
+_pkgver=1_3_7_0
 pkgrel=1
 pkgdesc='ManicTime automatically records your computer usage.'
 arch=('x86_64')
 url="https://www.manictime.com/linux/download"
 license=('custom')
-depends=('libappindicator-gtk3' 'libx11' 'glibc' 'libxss' 'gss-ntlmssp' 'krb5')
+depends=('libappindicator-gtk3' 'libx11' 'glibc' 'libxss' 'gss-ntlmssp' 'krb5' 'icu')
 options=('staticlibs')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://cdn.manictime.com/setup/linux/v${_pkgver}/ManicTime.tar.gz")
-sha256sums=('1da4fddd1ed44dc0eb2e1e3d11e4f1f54caca7c61f8be7330147e21be1cee62a')
+source=("${pkgname}-${pkgver}.tar.gz::https://cdn.manictime.com/setup/linux/v${_pkgver}/ManicTime-arch.tar.gz")
+sha256sums=('6c7acb36b7aa2c7caaae576fab6c1b59bb1189555dfb5650b562510f07a968ba')
 
 package() {
     install -Dm644 "${srcdir}/manictime/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
