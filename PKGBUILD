@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r73.g51d1912
+pkgver=0.r113.g0c5d28c
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -25,9 +25,12 @@ depends=(
   bash
   jq
 
+  # pickdate
+  rofi
+  awk
+
   # rofi-blezz
   bash
-  rofi
   rofi-blezz
   sed
 
