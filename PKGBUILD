@@ -2,6 +2,18 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT={commit,tag,brach}=xxx for bisect build
+_fragment="#${FRAGMENT:-branch=main}"
+
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: _cmake_flags < <(echo -n "$CMAKE_FLAGS")
+
 _name="meshlab"
 pkgname="$_name-git"
 pkgver=2021.10.r66.gd9d9ed105
@@ -20,7 +32,7 @@ optdepends=('u3d: for U3D and IDTF file support'
             'muparser: for filer_func plugins'
             'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git"
+source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git${_fragment}"
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -38,10 +50,10 @@ pkgver() {
 }
 
 build() {
-  local cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
-                      '-DCMAKE_INSTALL_PREFIX=/usr'
-                    )
-  cmake "${cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
+  _cmake_flags+=( '-DALLOW_SYSTEM_QHULL=OFF'
+                  '-DCMAKE_INSTALL_PREFIX=/usr'
+                )
+  cmake "${_cmake_flags[@]}" -G Ninja -B "${srcdir}/build" -S "${srcdir}/meshlab/src"
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when passing multiple flags.
   ninja ${MAKEFLAGS:--j1} -C "${srcdir}/build"
 }
