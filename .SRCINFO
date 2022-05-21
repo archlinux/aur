@@ -1,0 +1,14 @@
+pkgbase = clzip
+	pkgdesc = A C language version of lzip
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://www.nongnu.org/lzip/clzip.html
+	arch = x86_64
+	license = GPL
+	source = https://download.savannah.gnu.org/releases/lzip/clzip/clzip-1.13.tar.gz
+	source = https://download.savannah.gnu.org/releases/lzip/clzip/clzip-1.13.tar.gz.sig
+	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
+	sha512sums = 7b9943f3e971cb9cabadb3b0832c23984c9329cb48bbfa6fd0780146b6b3d612386b6ca8c6e688c05470e3e3474b688dfb3228ba6aff2093ea1d781eba5f2791
+	sha512sums = SKIP
+
+pkgname = clzip
