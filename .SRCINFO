@@ -1,0 +1,20 @@
+pkgbase = age-of-empires-2-the-age-of-kings
+	pkgdesc = Real-time strategy video game developed by Ensemble Studios and published by Microsoft
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://it.wikipedia.org/wiki/Age_of_Empires_II:_The_Age_of_Kings
+	arch = any
+	license = custom
+	makedepends = bchunk
+	makedepends = p7zip
+	depends = pcsx2
+	source = SLES-50282.bin::https://archive.org/download/age-of-empires-ii-the-age-of-kings-europe-en-fr-de-es-it-v-2.00.-7z/Age%20of%20Empires%20II%20-%20The%20Age%20of%20Kings%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28v2.00%29.7z/Age%20of%20Empires%20II%20-%20The%20Age%20of%20Kings%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28v2.00%29.bin
+	source = SLES-50282.cue
+	source = ps2-template.desktop
+	source = com.ensemblestudios.AgeOfEmpiresIITheAgeOfKings.png::https://upload.wikimedia.org/wikipedia/en/5/56/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png
+	sha256sums = 9bb74ac0c02a18b3aab121e3ae83395bc306ef3edf70fc809348262e2021c908
+	sha256sums = 1312e0bcec587cea0737a320627b88295a12efcbbcc66541a7b78887b30ba29e
+	sha256sums = dca9cf8e0064abaaf09666951a105c7697ba5cd377a3d11070338ef5ad7f08ee
+	sha256sums = 92dc96bfa14916b8faca4443806fffafed7fd15071bd774710be5f8037939902
+
+pkgname = age-of-empires-2-the-age-of-kings
