@@ -1,13 +1,13 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=rancher-cli-bin
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="The Rancher Command Line Interface (CLI) is a unified tool to manage your Rancher server."
 arch=('x86_64')
 url="https://github.com/rancher/cli"
 license=('APACHE')
 source=("https://github.com/rancher/cli/releases/download/v${pkgver}/rancher-linux-amd64-v${pkgver}.tar.xz")
-sha256sums=("13570c7f2731b44b7278b0936217db430424a3eaba724e06aa49622675229e09")
+sha256sums=("b417887fe7eb42a086345cd2ba11c1cc32eb0031c3d36e6652597f971e454a5c")
 
 
 package() {
