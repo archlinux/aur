@@ -18,3 +18,6 @@ makepkg_build:
     - useradd builduser -m && passwd -d builduser && printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
   script:
     - sudo -u builduser bash -c 'makepkg -si --noconfirm'
+  artifacts:
+    paths:
+      - "*.zst"
