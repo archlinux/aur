@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='aeon'
-pkgver='0.14.1.0'
+pkgver='0.14.2.0'
 pkgrel='1'
 pkgdesc='A lightweight CryptoNote digital currency.'
 url="https://github.com/${pkgname}ix/${pkgname}"
@@ -19,13 +19,13 @@ sha256sums=('5212dff199bb3880191292976cd8278dcdbae64f9c0ab39a9c2a91a4733186c3'
             'a0cdf75b86073829f4033e367f36e9418dc20556e7adfa6ffac8653c67cd6337'
             '1da20b66d52db4f1c5b3106cf27ee54033650a0e36c5c775b25c9e86e6027be0'
             '3ef15e3c9e2d146c415f2e483dd10e4ec36f653e4684c254d9f69a5fb699036b'
-            '319bb1781a6aba52b9770ae06dcef91e66daa4e5c26085fa7c3feeae40b9c7b5')
+            '459a937ced27b119c714a5664644d019bef12221e32d2ba619612a09611e0d03')
 backup=("etc/${pkgname}d.conf")
 
 prepare() {
   cd "${pkgname}-${pkgver}-${pkgname}"
-  git clone git://github.com/monero-project/miniupnp.git external/miniupnp
-  git clone git://github.com/monero-project/unbound.git external/unbound
+  git clone https://git@github.com/monero-project/miniupnp.git external/miniupnp
+  git clone https://git@github.com/monero-project/unbound.git external/unbound
   git -C external/miniupnp checkout monero
   git -C external/unbound checkout monero
 }
