@@ -1,6 +1,6 @@
 pkgbase = wine-x64
 	pkgdesc = A compatibility layer for running Windows programs. This only configured with x64 support.
-	pkgver = 7.7
+	pkgver = 7.9
 	pkgrel = 1
 	url = http://www.winehq.com
 	arch = x86_64
@@ -32,15 +32,15 @@ pkgbase = wine-x64
 	optdepends = libusb
 	optdepends = libgudev
 	optdepends = sdl2
-	provides = wine_x64=7.7
+	provides = wine_x64=7.9
 	conflicts = wine
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/7.x/wine-7.7.tar.xz
-	source = https://dl.winehq.org/wine/source/7.x/wine-7.7.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/7.x/wine-7.9.tar.xz
+	source = https://dl.winehq.org/wine/source/7.x/wine-7.9.tar.xz.sign
 	source = 30-win32-aliases.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = b0185176a1074ff7331a937a2a5a1f0b865f3e38abbe2fdca841b9f14540497bf941a2aa3bf8dc52d19eb848c68974f3ab47b6d0031cbf4eebc8a76b0b1484be
-	sha512sums = bff04b7f23297b318c827d1f27e7641aaa3710d123c61da29cd1d123d0921584dbe0563131108a39298ba74919083cc961f1a8d569781a894be78e3477c11d9a
+	sha512sums = 47ecbb8bc31a06d0f40a63469ffe3df4a1e05c9476a8926ec7f20c2230de8afecb5e0df9f3c5dd238ce3d0323d7cf9c9f48c41ef6ca149822458a4e605a2e029
+	sha512sums = f02eea3ec3784b233cdab425d4904366c892c5591191ecb62e278e04556558a0511d65ce5c9b89373b4f2412cf77b1002fab913e0839e86a91e242aa21937ae6
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 
 pkgname = wine-x64
