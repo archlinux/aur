@@ -1,3 +1,0 @@
-#!/bin/bash
-
-DEBUGGER="steam_sdl_injection.sh" steam-runtime "$@"
