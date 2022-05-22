@@ -1,6 +1,6 @@
 pkgbase = hipfft
 	pkgdesc = rocFFT marshalling library.
-	pkgver = 5.1.1
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/hipFFT
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hipfft
 	makedepends = git
 	depends = hip
 	depends = rocfft
-	source = hipfft-5.1.1.tar.gz::https://github.com/ROCmSoftwarePlatform/hipFFT/archive/rocm-5.1.1.tar.gz
-	sha256sums = e9519d746ee01ba96669182c0159d687d36abb4b5e4cd7d4c22cad29b9856e00
+	source = hipfft-5.1.3.tar.gz::https://github.com/ROCmSoftwarePlatform/hipFFT/archive/rocm-5.1.3.tar.gz
+	sha256sums = c26fa64499293b25d0686bed04feb61378c878a4bb4a6d559e6cb7be1f6bf2ec
 
 pkgname = hipfft

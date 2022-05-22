@@ -1,7 +1,7 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=hipfft
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='rocFFT marshalling library.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('hip' 'rocfft')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('e9519d746ee01ba96669182c0159d687d36abb4b5e4cd7d4c22cad29b9856e00')
+sha256sums=('c26fa64499293b25d0686bed04feb61378c878a4bb4a6d559e6cb7be1f6bf2ec')
 _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
