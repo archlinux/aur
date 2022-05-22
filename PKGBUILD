@@ -1,6 +1,9 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
+
+### PKGBUILD METADATA ###
+
 pkgname=webcord-git
-pkgver=3.1.3.r460.f89f426
+pkgver=3.2.0_pre.r470.d4ffcbf
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
@@ -18,25 +21,95 @@ source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
 md5sums=('SKIP'
          'c420b0dd4b9a360b0b2f35840f562e39')
 
-_TIMES='1'
-_TIMES_MAX='?'
+### CONFIGURABLE VARIABLES ###
 
+# Set to "true" if you want to have update notifications enabled.
+_UPDATE_NOTIFICATIONS=false
 
+# Set to "release" if you want to disable an access to the development tools.
+_RELEASE_TYPE=devel
 
-_echo_times() {
-  echo "(${_TIMES}/${_TIMES_MAX})" "${@}"
-  let _TIMES++
-}
-
-_npm() {
-  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${srcdir:-.}/npm-cache" "$@"
-}
+### PKGBUILD STANDARD FUNCTIONS ###
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   printf "%s.r%s.%s" "$(jq -r .version "${srcdir}/${pkgname%-git}/package.json" | tr '-' '_')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  _TIMES_MAX=6
+  cd "${srcdir}/${pkgname%-git}"
+
+  # Remove unnecesary developer dependencies
+
+  mapfile -t _remove_deps < <(grep -E '@electron-forge|electron-forge-maker' "${srcdir}/${pkgname%-git}/package.json" | sed 's~"\(.*\)":.*~\1~g' | tr -d " ")
+
+  _remove_deps+=(
+  typescript eslint eslint-import-resolver-typescript eslint-plugin-import
+  @typescript-eslint/parser @typescript-eslint/experimental-utils
+  @typescript-eslint/eslint-plugin
+  )
+
+  _echo_times "Installing dependencies..."
+  [[ -f package-lock.json ]] && _npm update
+  _npm --save r ${_remove_deps[@]}
+  _cleanup && _compile && _genico && _gen_buildinfo
+}
+
+package() {
+  # Neccesary files – application data, license etc.
+
+  _TIMES_MAX=2
+  _pack "${pkgdir}/usr/share/"
+  _echo_times "Adding other files to package..."
+  _script "${pkgdir}/usr/bin/${pkgname%-git}"
+  cd "${srcdir}"
+  install -Dm755 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+  install -Dm644 "${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
+
+  # Application icons
+
+  install -dm755 "${pkgdir}/usr/share/icons"
+  cp -R "iconThemes/themeId-1/" "${pkgdir}/usr/share/icons/hicolor"
+  chmod 0644 "${pkgdir}/usr/share/icons"/*/*/*/"${pkgname%-git}."*
+
+  # Documentation
+
+  install -dm755 "${pkgdir}/usr/share/docs"
+  cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
+  chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-git}/"
+
+  # Get supported electron version and add it to the dependencies.
+  depends=(electron`_getelectron`)
+}
+
+### INTERNAL PKGBUILD VARIABLES ###
+
+_TIMES='1'
+_TIMES_MAX='?'
+
+### INTERNAL PSEUDO-FUNCTIONS ###
+
+# Generates a "buildInfo.json" metadata file.
+_gen_buildinfo() {
+  _echo_times "Generating build configuration..."
+  cd "${srcdir}/${pkgname%-git}";
+  printf '{"type":"%s","commit":"%s","features":{"updateNotifications":%s}}' \
+    "${_RELEASE_TYPE}" "$(git rev-parse HEAD)" "${_DISABLE_UPDATES}" > buildInfo.json;
+}
+
+# Internal "echo" command to show a progress on current PKGBUILD step.
+_echo_times() {
+  echo "(${_TIMES}/${_TIMES_MAX})" "${@}"
+  let _TIMES++
+}
+
+# NPM alias with useful flags/modifications.
+_npm() {
+  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${srcdir:-.}/npm-cache" "$@"
+}
+
+# Cleanup script to remove useless files before packaging the application.
 _cleanup() {
   cd "${srcdir}/${pkgname%-git}"
   _echo_times "Cleaning up workspace..."
@@ -55,10 +128,12 @@ _cleanup() {
   done
 }
 
+# A print function used internally by "genico" script.
 _print() {
   printf "\r%-${1}s" "${2}"
 }
 
+# A function used for to compile the code to JavaScript files.
 _compile() {
   cd "${srcdir}/${pkgname%-git}"
   _echo_times "Compiling TypeScript to Javascript..."
@@ -66,10 +141,12 @@ _compile() {
   _postcompile
 }
 
+# A function that retunrs the currently available Electron version.
 _getelectron(){
   jq -r .devDependencies.electron "${srcdir:-src}/${pkgname%-git}/package.json" | sed 's~\^\([0-9]*\)\.[0-9a-z.]*~\1~'
 }
 
+# A function to convert the base icon into another sizes.
 _genico(){
   _icons=("${srcdir}/${pkgname%-git}/sources/assets/icons/app.png")
   mkdir "${srcdir}/iconThemes"
@@ -98,6 +175,7 @@ _genico(){
   _print "${#_msg}" && printf '\r'
 }
 
+# A function to pack the application data into the ASAR archive.
 _pack() {
   cd "${srcdir}/${pkgname%-git}"
   # Package to ASAR
@@ -108,6 +186,7 @@ _pack() {
   [[ -d ../git-data ]] && mv ../git-data .git
 }
 
+# A postcompile stem to remove build dependencies.
 _postcompile() {
   cd "${srcdir}/${pkgname%-git}"
   _echo_times "Removing build dependencies..."
@@ -115,55 +194,10 @@ _postcompile() {
   rmdir node_modules/* --ignore-fail-on-non-empty
 }
 
-build() {
-  _TIMES_MAX=5
-  cd "${srcdir}/${pkgname%-git}"
-
-  # Remove unnecesary developer dependencies
-
-  mapfile -t _remove_deps < <(grep -E '@electron-forge|electron-forge-maker' "${srcdir}/${pkgname%-git}/package.json" | sed 's~"\(.*\)":.*~\1~g' | tr -d " ")
-
-  _remove_deps+=(
-  typescript eslint eslint-import-resolver-typescript eslint-plugin-import
-  @typescript-eslint/parser @typescript-eslint/experimental-utils
-  @typescript-eslint/eslint-plugin
-  )
-
-  _echo_times "Installing dependencies..."
-  _npm --save r ${_remove_deps[@]}
-
-  _cleanup && _compile && _genico
-}
-
+# A function that returns a script to be used for starting WebCord with
+# system-wide Electron binary.
 _script() {
   mkdir -p "`dirname "$1"`"
-  echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/lib/${pkgname%-git}.asar\nexit \$?">"$1"
+  echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-git}.asar\nexit \$?">"$1"
   chmod 755 "$1"
-}
-
-package() {
-  # Neccesary files – application data, license etc.
-
-  _TIMES_MAX=2
-  _pack "${pkgdir}/usr/lib/"
-  _echo_times "Adding other files to package..."
-  _script "${pkgdir}/usr/bin/${pkgname%-git}"
-  cd "${srcdir}"
-  install -Dm755 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-  install -Dm644 "${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
-
-  # Application icons
-
-  install -dm755 "${pkgdir}/usr/share/icons"
-  cp -R "iconThemes/themeId-1/" "${pkgdir}/usr/share/icons/hicolor"
-  chmod 0644 "${pkgdir}/usr/share/icons"/*/*/*/"${pkgname%-git}."*
-
-  # Documentation
-
-  install -dm755 "${pkgdir}/usr/share/docs"
-  cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
-  chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-git}/"
-
-  # Get supported electron version and add it to the dependencies.
-  depends=(electron`_getelectron`)
 }
