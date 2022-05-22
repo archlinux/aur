@@ -13,7 +13,7 @@ depends=('qt5-base' 'kconfig' 'ki18n' 'ktextwidgets' 'qt5-webkit' 'kcoreaddons' 
 #depends=('qt5-webkit' 'kxmlgui' 'hicolor-icon-theme')
 #optdepends=('')
 makedepends=('git')
-source=("https://sourceforge.net/project/qtrans0/files/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz")
+source=("https://sourceforge.net/projects/qtrans0/files/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz")
 sha256sums=('5a19be0354752ced0abe4ee2449db2d3a669c3227343fbbcf479a3a21edda362')
 
 prepare() {
