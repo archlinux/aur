@@ -4,12 +4,12 @@
 
 _pkgname=ddb_discord_presence
 pkgname=deadbeef-plugin-discord-git
-pkgver=r34.g0c2fa68
+pkgver=r51.g18103a9
 pkgrel=1
 pkgdesc="DeaDBeeF Discord rich presence plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/kuba160/ddb_discord_presence"
-license=('BSD')
+license=('ZLIB', 'MIT')
 depends=('deadbeef')
 makedepends=('git' 'wget')
 source=("${_pkgname}::git+https://github.com/kuba160/${_pkgname}")
@@ -40,4 +40,6 @@ package() {
   cd "${_pkgname}"
   install -m0755 -d "${pkgdir}/usr/lib/deadbeef"
   make PREFIX="${pkgdir}/usr/lib/deadbeef" install
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSES/*
+  sed -n '/## License/,$ p' README.md > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
