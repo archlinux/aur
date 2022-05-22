@@ -4,7 +4,7 @@ pkgname=bigsh0t-plugins-release-git
 _srcname=bigsh0t
 pkgver=2.5.1.r0.gdd6b0f7
 pkgrel=1
-pkgdesc='Plugins like frei0r for dealing with VR (git version)'
+pkgdesc='360 equirectangular VR Video Stitching and Manipulation filters for free video editors'
 arch=('i686' 'x86_64')
 url=https://bitbucket.org/leo_sutic/bigsh0t/src/main/
 license=('GPL')
@@ -19,6 +19,8 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$_srcname"
 	mkdir -p Release-Linux
+#pwd
+#	patch -Np1 -i ../../Comp.patch
 }
 
 pkgver() {
