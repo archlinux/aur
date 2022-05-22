@@ -1,6 +1,6 @@
 pkgbase = bux-mariadb-client
 	pkgdesc = Loose-coupled throw-on-error C++20 wrapper classes and utilities of mysql/mariadb Connector/C API
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/buck-yeh/bux-mariadb-client.git
 	arch = x86_64

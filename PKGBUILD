@@ -5,8 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux-mariadb-client
-pkgver=1.0.1
-#pkgver=main
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc='Loose-coupled throw-on-error C++20 wrapper classes and utilities of mysql/mariadb Connector/C API'
@@ -39,7 +38,7 @@ prepare() {
 
 build() {
 	cd "$pkgname" || return 1
-	cmake .
+	cmake -D FETCH_DEPENDEES=1 .
 	cd src || return 1
 	make -j
 }
