@@ -3,14 +3,14 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-pkgver=6.0.0.nightly.42
+pkgver=6.0.0.nightly.43
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
-apptag='v6.0.0-nightly.42'
+apptag='v6.0.0-nightly.43'
 makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
