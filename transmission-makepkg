@@ -39,8 +39,8 @@ def makepkg_to_magnet(link):
         link, path = link.split(path_marker)
     return link, path
 
-def magnet_makepkg(link, output_file, download_dir=getcwd()):
-    output_file = output_file.replace(".part", "")
+def magnet_makepkg(link, output_path, download_dir=getcwd()):
+    output_file = output_path.replace(".part", "")
     magnet_link, torrent_path = makepkg_to_magnet(link)
     torrent_output_path = path_join(download_dir, torrent_path)
     output_path = path_join(download_dir, output_file)
