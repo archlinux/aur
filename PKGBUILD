@@ -1,7 +1,7 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.38.2
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
@@ -10,14 +10,10 @@ license=('MIT')
 depends=('dotnet-runtime')
 makedepends=('dotnet-sdk' 'mono' 'mono-msbuild')
 source=("https://github.com/OmniSharp/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('115bacb4b9c43cd002f497845fc13919eccedf35941d4bd400411605cb411084')
+sha256sums=('c98c7a59be96315150523755839c2efb5f07e7b9832089b8bac5eea7e0ebd383')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-
-    # /etc/os-release doesn't exist inside the build chroot, use
-    # /usr/lib/os-release instead
-    sed -i 's|/etc/os-release|/usr/lib/os-release|' scripts/platform.cake
 
     # normally the build sets the version from git, we don't have a git repo so
     # just override it manually
@@ -27,8 +23,8 @@ prepare() {
     # only built STDIO
     sed -i 's/"OmniSharp.Stdio.Driver",/"OmniSharp.Stdio.Driver"/;/OmniSharp.Http.Driver/d' build.json
 
-    # only build x86_64
-    sed -i '/linux-arm64/d' build.cake
+    # only build x86_64-gnu
+    sed -i '/linux-arm64/d;/linux-musl/d;' build.cake
 }
 
 build() {
