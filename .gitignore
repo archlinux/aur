@@ -1,0 +1,5 @@
+*.zst
+*.log
+pkg/
+src/
+jakt-git/
