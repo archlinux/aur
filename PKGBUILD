@@ -1,34 +1,36 @@
 # Maintainer: Trashlord <dornenreich666 at gmail dot com>
-# Patch contributed by Ailin Nemui (Nei on irc.freenode.org #irssi)
+# Maintainer notes:
+# I've forked the irssi-python GitHub repo and made some backwards compatibility changes to two files.
+# This is so that I can avoid having to distribute a patch with the package.
+# The package now works exclusively with Python 3. Python 2 is no longer supported.
+# Special thanks to Ailin Nemui for the help with building it against 1.3.2-an.
 
 pkgname=irssi-python
-pkgver=test4
-pkgrel=12
+pkgver=test5
+pkgrel=1
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 install='irssi-python.install'
 makedepends=('git')
-depends=('python2')
+depends=('python' 'irssi')
 license=('GPL2')
-version="1.2.0"
+version="1.2.3"
 
-source=('https://github.com/irssi/irssi/releases/download/1.2.0/irssi-1.2.0.tar.gz')	
-md5sums=('28a6705b9c64db40072fac31ecf75372')
+source=('https://github.com/irssi/irssi/releases/download/1.2.3/irssi-1.2.3.tar.gz')	
+md5sums=('ebbf455d8e9c847fc8106591088024ab')
 
-build() {  
-    # The following line makes "configure" look for python2 instead of python,
-    # since python on Arch refers to Python 3, which would cause an error.
-    export PYTHON_VERSION=2
-    
+build() {     
     # Get irssi-python with git
-    git clone https://github.com/irssi-import/irssi-python
+    git clone https://github.com/SpiritualForest/irssi-python
     # Extract irssi sources and generate ./configure file
-    tar xvf irssi-1.2.0.tar.gz
+    tar xvf irssi-1.2.3.tar.gz
     cd "irssi-python"
+    # Set the pkgconfig path to our source dir, so that it finds irssi-1.pc
+    export PKG_CONFIG_PATH="$srcdir/irssi-python"
     autoreconf -ivf -I.
     # Build
-    ./configure --with-irssi=../irssi-1.2.0 --prefix=/usr
+    ./configure
     make -C src constants
     make
     libtool --finish /usr/lib/irssi/modules
