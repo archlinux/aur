@@ -2,37 +2,48 @@
 # Contributor: Payson Wallach <payson@paysonwallach.com>
 
 pkgname=python-persist-queue
-pkgver=0.7.0
+_pkg="${pkgname#python-}"
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Thread-safe disk-based persistent queue'
-arch=(any)
+arch=('any')
 url="https://github.com/peter-wangxu/persist-queue"
 license=('BSD')
 depends=('python')
-optdepends=('python-msgpack>=0.5.6')
-makedepends=('python-setuptools')
-checkdepends=('python-nose2' 'python-msgpack>=0.5.6' 'python-mock>=2.0.0' 'python-eventlet>=0.19.0')
+optdepends=('python-msgpack' 'python-pymysql' 'python-dbutils')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+# checkdepends=(
+# 	'python-dbutils'
+# 	'python-eventlet'
+# 	'python-nose2'
+# 	'python-msgpack'
+# 	'python-mock'
+# 	'python-pymysql')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('720d47b022f4f4811ab67f9db665cc1fe1e83455cfd1fe26b13478f04a7c24f6')
+sha256sums=('a236c9fe2a14c16a3fc37452ccd12d7ad807468199f51e942f4fdc29f495a2fc')
 
 prepare() {
-	cd "persist-queue-$pkgver"
+	cd "$_pkg-$pkgver"
 	sed -i "/packages=find/c\packages=find_packages(exclude=('*tests*',))," setup.py
 }
 
 build() {
-	cd "persist-queue-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "persist-queue-$pkgver"
-	nose2
-}
+# check() {
+# 	cd "persist-queue-$pkgver"
+# 	nose2
+# }
 
 package() {
-	cd "persist-queue-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/${_pkg/-/_}-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
