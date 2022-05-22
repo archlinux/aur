@@ -2,6 +2,7 @@ pkgbase = nonosolver
 	pkgdesc = A fast command-line based nonogram solver.
 	pkgver = 2.0.0
 	pkgrel = 1
+	url = https://github.com/ricoriedel/nonogram-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
