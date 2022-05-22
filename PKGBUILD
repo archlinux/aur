@@ -3,7 +3,7 @@
 
 pkgname=photocollage
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical tool to make photo collage posters.'
 url='https://github.com/adrienverge/PhotoCollage'
 license=('GPL2')
@@ -22,6 +22,7 @@ build() {
 check() {
     cd "${srcdir}/PhotoCollage-${pkgver}"
 
+    touch tests/__init__.py  # https://aur.archlinux.org/packages/photocollage#comment-863717
     python -m unittest tests/test_*.py
 }
 
