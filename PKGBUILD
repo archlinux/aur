@@ -32,7 +32,8 @@ prepare() {
 build() {
   cd "${_pkgname}"
   ( cd discord-rpc ; make thirdparty/rapidjson-1.1.0 )
-  make COPT="${CFLAGS}" CXXOPT="${CXXFLAGS}"
+  make COPT="${CFLAGS}" CXXOPT="${CXXFLAGS}" libdiscord-rpc.a
+  make COPT="${CFLAGS}" CXXOPT="${CXXFLAGS}" discord_presence
 }
 
 package() {
