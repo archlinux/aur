@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
         "nvcc.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/HIP/pull/2623.patch"
         "git-hash.patch")
-sha256sums=('c2400c98d87f72e7a879d167d9913bca778e66bc198518a0fdb345e3e50792f1'
-            'e2fb059841940a9ccf5d8b94e5022979796d93da2f049211fbd07e190d3e99e5'
+sha256sums=('ce755ee6e407904eba3f6b3c9efcdd48eb4f58a26b06e1892166d05f19a75973'
+            '707f2217f0e7aeb62d7b76830a271056d665542bf5f7a54e40adf4d5f299ca93'
             'SKIP'
             '84cd40751e041edd48489eca59f1702bba08a402b25162e4cf061de45abc2bde')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
