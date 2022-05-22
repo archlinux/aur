@@ -1,8 +1,10 @@
-# Maintainer: Daniel Maslowski <info@orangecms.org>
+# Maintainer: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
+# Contributor: Daniel Maslowski <info@orangecms.org>
 
+_gitname=PSPTool
 _pyname=psptool
 pkgname=psptool-git
-pkgver=r110.1e22f74
+pkgver=r125.58f5ba2
 pkgrel=1
 pkgdesc="Swiss Army knife for dealing with firmware of the AMD Secure Processor"
 arch=('any')
@@ -19,16 +21,16 @@ makedepends=('git')
 provides=("$_pyname")
 conflicts=($_pyname)
 options=(!emptydirs)
-source=(git://github.com/PSPReverse/$_pyname.git)
+source=(git+https://github.com/PSPReverse/PSPTool.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pyname"
+  cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$_pyname"
+  cd "$_gitname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 

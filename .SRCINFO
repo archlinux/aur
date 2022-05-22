@@ -1,6 +1,6 @@
 pkgbase = psptool-git
 	pkgdesc = Swiss Army knife for dealing with firmware of the AMD Secure Processor
-	pkgver = r110.1e22f74
+	pkgver = r125.58f5ba2
 	pkgrel = 1
 	url = https://github.com/PSPReverse/PSPTool
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = psptool-git
 	provides = psptool
 	conflicts = psptool
 	options = !emptydirs
-	source = git://github.com/PSPReverse/psptool.git
+	source = git+https://github.com/PSPReverse/PSPTool.git
 	sha512sums = SKIP
 
 pkgname = psptool-git
-
