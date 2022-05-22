@@ -1,6 +1,7 @@
 pkgbase = micromamba
+	pkgdesc = C++ tiny version of mamba, the fast conda package installer
 	pkgver = 0.23.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
