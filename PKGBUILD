@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.6.rc4.r0.g888d18eb851
+pkgver=9.7.beta0.r0.g6f4efb0bf37
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -47,7 +47,8 @@ optdepends=('cython: to compile cython code'
   'python-pip: to install optional packages with sage -pip'
   'sage-notebook-exporter: convert flask notebooks to Jupyter'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
-  'python-phitigra: graph editor')
+  'python-phitigra: graph editor'
+  'topcom: to compute triangulations of point configurations')
 makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
@@ -56,13 +57,15 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         latte-count.patch
         test-optional.patch
         sagemath-linbox-1.7.patch
-        sagemath-bliss-0.77.patch)
+        sagemath-bliss-0.77.patch
+        sagemath-tachyon-0.99.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
             '9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
-            'b467a41e1e0a0850f7722d875a743233751966a206c2f61401c7582aa722f84e')
+            'b467a41e1e0a0850f7722d875a743233751966a206c2f61401c7582aa722f84e'
+            '4ee8071efd7b9ad66ac5bbfe081fe670cc58cfcac8fb783d5a40b6da3593cbf4')
 
 pkgver() {
   cd sage
@@ -77,6 +80,8 @@ prepare(){
   patch -p1 -i ../sagemath-linbox-1.7.patch
 # Fix build with bliss 0.77 https://trac.sagemath.org/ticket/33010
   patch -p1 -i ../sagemath-bliss-0.77.patch
+# Fix tests with tachyon 0.99 https://trac.sagemath.org/ticket/23712
+  patch -p1 -i ../sagemath-tachyon-0.99.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
