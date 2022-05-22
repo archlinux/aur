@@ -91,7 +91,6 @@ build()
   cmake ../pcsx2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_YAML=TRUE \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
     -USE_VULKAN=ON \
