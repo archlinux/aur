@@ -1,7 +1,7 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=hipsolver
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='rocSOLVER marshalling library.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hip' 'rocsolver')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/hipSOLVER'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('2c707857e44dd16ed4c71036eda92dafeca0af9186c874fec27fedd6fd6aaa88')
+sha256sums=('96faa799a2db8078b72f9c3b5c199179875a7c20dc1064371b22a6a63397c145')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
