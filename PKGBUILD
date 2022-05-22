@@ -3,7 +3,7 @@
 
 _gemname=representable
 pkgname=ruby-$_gemname
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Converts between JSON/XML/YAML documents and Ruby objects. Has properties, collections, nesting, coercion etc.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('dacfd01d46ee2c398cf78aa74a3269dd52adc38fdae32c3d3fe5fa4cd2ffbc27')
+sha256sums=('cc29bf7eebc31653586849371a43ffe36c60b54b0a6365b5f7d95ec34d1ebace')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
