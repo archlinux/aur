@@ -2,10 +2,10 @@
 
 pkgname=rocm-llvm-alt-bin
 _pkgname=rocm-llvm-alt
-pkgver=5.1.1
-_pkgver=5.1.1
+pkgver=5.1.3
+_pkgver=5.1.3
 pkgrel=1
-_debfile="${_pkgname}_13.0.0.22045.50101-48_amd64.deb"
+_debfile="${_pkgname}_13.0.0.22045.50103-66_amd64.deb"
 pkgdesc='Closed source components for rocm-llvm'
 arch=('x86_64')
 url='https://docs.amd.com/category/ROCm_v5.1'
@@ -14,7 +14,7 @@ depends=()
 provides=('rocm-llvm-alt')
 conflicts=('rocm-llvm-alt')
 source=("$pkgname-$pkgver.tar.gz::http://repo.radeon.com/rocm/apt/${_pkgver}/pool/proprietary/r/rocm-llvm-alt/${_debfile}")
-sha256sums=('da32e0924a48d45b3935503d0b68d66d16521729b2ab966a01a57dd27cb29fad')
+sha256sums=('53c95665c3685c57ed5acca92539d3e1f1dfe60db2bf9f32bca9658242280352')
 
 package() {
   tar -C "$pkgdir" -xf data.tar.xz
