@@ -1,0 +1,15 @@
+pkgbase = macrobe
+	pkgdesc = Companion scripts for xmacro.
+	pkgver = 0.r63.g5b910f4
+	pkgrel = 1
+	url = https://github.com/DMBuce/macrobe
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xmacro
+	depends = perl
+	depends = bash
+	source = macrobe::git+https://github.com/DMBuce/macrobe.git
+	md5sums = SKIP
+
+pkgname = macrobe

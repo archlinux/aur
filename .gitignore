@@ -1,0 +1,4 @@
+macrobe/
+src/
+pkg/
+*.pkg.tar.*
