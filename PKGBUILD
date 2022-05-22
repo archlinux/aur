@@ -1,6 +1,6 @@
 # Maintainer: Vincent B <vb@luminar.eu.org>
 pkgname=pqrs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 epoch=
 pkgdesc="Command line tool for inspecting Parquet files"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/manojkarthick/pqrs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eb6de6afd34aed8d0504d2176bbf6d5f428decc9409473b72720b426e0f8fe1b')
+sha256sums=('549da46a98b97b4f8c461ebc6ad49badb659dd2bc78bcb3482a76c779564e6a8')
 noextract=()
 
 prepare() {
