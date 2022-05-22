@@ -1,21 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=authy-electron
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Two factor authentication desktop application"
 arch=('x86_64')
 url="https://authy.com"
 license=('unknown')
-depends=('electron9')
+depends=('electron')
 makedepends=('squashfs-tools')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 _snapid='H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn'
-_snaprev='9'
+_snaprev='10'
 source=("${pkgname%-*}-$pkgver-$_snaprev.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap"
         "${pkgname%-*}.sh")
-sha256sums=('4718f1398adb9de55cb724c94ccbe837f51d444a2169959bd644dd11e23a9945'
-            '0fc1d3b29679a601108479fd535253f0b56b18f7a7fc8332a0d02e6e5c7c647f')
+sha256sums=('b01f7f7d557faa9f837e3c69bf32141ec2e4784bb7e62dab12fd7f258332b46f'
+            'b34f61cf1abc96de993449a9d05f586d3872800454a72f07d0f83634161d0d07')
 
 prepare() {
   unsquashfs -f -d "$srcdir/${pkgname%-*}" "${pkgname%-*}-$pkgver-$_snaprev.snap"
