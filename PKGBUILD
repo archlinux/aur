@@ -1,8 +1,8 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocsolver
-pkgver=5.1.1
-pkgrel=2
+pkgver=5.1.3
+pkgrel=1
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
 url='https://rocsolver.readthedocs.io/en/latest/userguidedocu.html'
@@ -12,8 +12,8 @@ makedepends=('cmake' 'python' 'python-pyaml' 'rocm-cmake')
 _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "fmt.patch::https://github.com/acxz/rocSOLVER/commit/0f4658e04ac7b48fea213f29b209a0206b67c43f.patch")
-sha256sums=('7b81d7d8ca5fcb86a4e1ac824e7ac884f635c61bf593e91a9322fc925aae8276'
-            '1f2ad0256013dcc3f3d6a494b864326d2ac0e79b528102cd5b235f55f8069c61')
+sha256sums=('5a8f3b95ac9a131c31538196e954ea53b863009c092cce0c0ef869a0cd5dd554'
+            'SKIP')
 options=(!lto)
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
