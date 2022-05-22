@@ -6,7 +6,7 @@ pkgbase = ttf-ligaconsolas-nerd-font
   arch = any
   depends = fontconfig
   depends = xorg-font-util
-  source = https://github.com/Dosx001/$pkgname/raw/main/ligaconsolas-fonts-ttf.tar.gz
+  source = https://github.com/Dosx001/ttf-ligaconsolas-nerd-font/raw/main/ligaconsolas-fonts-ttf.tar.gz
   md5sums = ee98aac8d196250386f594d5495d43ba
 
 pkgname = ttf-ligaconsolas-nerd-font
