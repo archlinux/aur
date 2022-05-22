@@ -2,12 +2,13 @@
 
 pkgname=libdeltachat-git
 _srcname=deltachat-core-rust
-pkgver=1.70.0.r9.g7ab71bb4
+pkgver=1.83.0.r3.gb7d2828f
 pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/deltachat/deltachat-core-rust/"
 license=('Mozilla Public License, v. 2.0')
+depends=('sqlcipher')
 makedepends=('rust' 'git')
 provides=('libdeltachat')
 conflicts=('libdeltachat')
