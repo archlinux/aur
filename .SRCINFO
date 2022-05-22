@@ -5,11 +5,11 @@ pkgbase = ferium-gui-bin
 	url = https://github.com/theRookieCoder/ferium
 	arch = x86_64
 	license = MPL2
-	depends = gtk3
+	depends = xdg-desktop-portal
 	depends = bzip2
 	provides = ferium
 	conflicts = ferium-bin
-	source = ferium-gui-4.0.0-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.0.0/ferium-linux-gnu.zip
+	source = ferium-gui-4.0.0-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.0.0/ferium-linux-gnu-xdg.zip
 	sha256sums = 238992a018c33661c3451ba45347abcf156d819453e490c09237a4ff38d6971d
 
 pkgname = ferium-gui-bin
