@@ -4,6 +4,7 @@ pkgname=nonosolver
 pkgver=2.0.0
 pkgrel=1
 pkgdesc='A fast command-line based nonogram solver.'
+url='https://github.com/ricoriedel/nonogram-rs'
 arch=(x86_64)
 license=(GPL3)
 makedepends=(cargo)
