@@ -1,13 +1,12 @@
 pkgbase = cpuid2cpuflags
-	pkgdesc = Tool to get the instruction sets supported by your CPU
-	pkgver = 11
+	pkgdesc = Tool to get the instruction sets supported by the local CPU
+	pkgver = 12
 	pkgrel = 1
 	url = https://github.com/mgorny/cpuid2cpuflags/
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	source = https://github.com/mgorny/cpuid2cpuflags/releases/download/v11/cpuid2cpuflags-11.tar.bz2
-	sha256sums = 5c4b21b41e90f86225f155205edcf85309ad1aae131a6a7c75cba40459d3c36c
+	source = https://github.com/mgorny/cpuid2cpuflags/releases/download/v12/cpuid2cpuflags-12.tar.bz2
+	sha256sums = 9d37fa04316a36016aa14b9e6db9db12017bfc5fa063dde7e67a18e4d48793d2
 
 pkgname = cpuid2cpuflags
-
