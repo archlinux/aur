@@ -1,0 +1,17 @@
+pkgbase = toyboxbinsh
+	pkgdesc = Relink /bin/sh to toybox
+	pkgver = 1
+	pkgrel = 1
+	install = toyboxbinsh.install
+	arch = any
+	license = Unlicense
+	depends = toybox
+	provides = sh
+	conflicts = busyboxbinsh
+	conflicts = dashbinsh
+	conflicts = zshbinsh
+	source = toyboxbinsh.hook
+	sha256sums = 78aa18a8c67c5f45103707d2deb7e1dedc5a9d2556072b193184ffe8b9b3a4b9
+	sha512sums = d019ea922ae5901fe541c3bf54dada3c2f94c0758bc9135541c1225e9769b5dda2368b5cd62f818101c0c3c451779be90cc603f1d59ad6ae213dace74b8d230b
+
+pkgname = toyboxbinsh
