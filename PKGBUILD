@@ -1,7 +1,6 @@
-# Maintainer: Andreas "Cocaine Johnsson" Björkman <akb95@disroot.org>
+# Maintainer: Jakub Wasylków <kuba_160@protonmail.com>
+# Contributor: Andreas "Cocaine Johnsson" Björkman <akb95@disroot.org>
 # Contributor: Deposite Pirate <dpirate at metalpunks dot info>
-#
-# Upstream: https://git.metalpunks.info/arch-ports
 
 _pkgname=ddb_discord_presence
 pkgname=deadbeef-plugin-discord-git
