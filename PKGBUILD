@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cjson' 'mbedtls')
 makedepends=('meson' 'cmake' 'cmocka' 'lz4')
 source=("https://code.videolan.org/rist/librist/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
         '010-librist-disable-multicast-tests.patch')
-sha256sums=('7b8ea1afd479f48d27f59f349f0ac6ce8a4f8afd80f6a1da610bbcad83ccbfee'
+sha256sums=('7adf2ef9e61e909020df6d22a38b4416380809e655a3f947fcd548b9af115603'
             'a9dc0c1a3690fea576252e687123ec2d7dfaec7c1a8b0e02c8518bdcb8e9b954')
 
 prepare() {
