@@ -1,7 +1,7 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname='qbittorrent-enhanced-qt5-git'
-pkgver=4.4.2.10.r3.g780ad2c06
+pkgver=4.4.2.10.r26.gc07d649f4
 pkgrel=2
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -48,6 +48,14 @@ pkgver() {
 }
 
 prepare() {
+  echo 'Reverting commit: "add TS (torrent storm) to peer blacklist"...'
+  echo '(This re-enables seeding to Popcorn Time media player.)'
+  (
+    cd "${_srcrepodir}"
+    git revert --no-commit dbf3359f2c2cb30d107a1dc1af00e2ff7dd545a5
+    echo
+  )
+
   printf 'Checking if ccache is enabled for makepkg... '
 
   if check_buildoption "ccache" "y"; then
