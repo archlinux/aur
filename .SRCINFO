@@ -1,0 +1,22 @@
+pkgbase = f4pga-git
+	pkgdesc = F4PGA tools
+	pkgver = r758.a4ff811
+	pkgrel = 1
+	url = https://github.com/chipsalliance/f4pga
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorama
+	provides = f4pga=r758.a4ff811
+	conflicts = f4pga
+	conflicts = symbiflow-arch-defs-toolchain
+	source = git+https://github.com/chipsalliance/f4pga.git
+	sha256sums = SKIP
+
+pkgname = f4pga-git
