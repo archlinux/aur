@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('libxss')
-makedepends=('npm' 'python2' 'git')
+makedepends=('npm' 'git' 'dpkg' 'rpm' 'libxcrypt-compat')
 source=("abricotine::git+https://github.com/brrd/abricotine"
         "abricotine.desktop")
 sha256sums=('SKIP'
@@ -24,21 +24,21 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/abricotine"
+    cd "${srcdir}/abricotine"
 
-  npm install --cache ../cache --devdir="$srcdir/devdir"
-  npm run packager
+    npm install --cache ../cache --devdir="${srcdir}/devdir"
+    npm run dist --cache ../cache --devdir="${srcdir}/devdir"
 }
 
 package() {
-    cd "$srcdir/abricotine"
+    cd "${srcdir}/abricotine"
 
-    install -d "$pkgdir/opt/abricotine"
-    cp -r dist/*/* "$pkgdir/opt/abricotine"
+    install -d "${pkgdir}/opt/abricotine"
+    cp -r dist/linux-unpacked/* "${pkgdir}/opt/abricotine"
 
-    install -d "$pkgdir/usr/bin"
-    ln -s "/opt/abricotine/abricotine" "$pkgdir/usr/bin/abricotine"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/abricotine/abricotine" "${pkgdir}/usr/bin/abricotine"
 
-    install -Dm644 "../abricotine.desktop" -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "icons/abricotine@2x.png" "$pkgdir/usr/share/pixmaps/abricotine.png"
+    install -Dm644 "../abricotine.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "icons/abricotine@2x.png" "${pkgdir}/usr/share/pixmaps/abricotine.png"
 }
