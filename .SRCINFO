@@ -1,0 +1,14 @@
+pkgbase = dotfiles-hristotanev-git
+	pkgdesc = This is my personal set of .dotfiles and some other configs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hristotanev/.dotfiles.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rcm
+	provides = dotfiles
+	source = git+https://github.com/hristotanev/.dotfiles.git
+	md5sums = SKIP
+
+pkgname = dotfiles-hristotanev-git
