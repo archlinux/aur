@@ -1,7 +1,7 @@
 pkgbase = irssi-python
 	pkgdesc = Provides Python scripting support for Irssi
 	pkgver = test5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://irssi.org/
 	install = irssi-python.install
 	arch = x86_64
@@ -9,7 +9,5 @@ pkgbase = irssi-python
 	makedepends = git
 	depends = python
 	depends = irssi
-	source = https://github.com/irssi/irssi/releases/download/1.2.3/irssi-1.2.3.tar.gz
-	md5sums = ebbf455d8e9c847fc8106591088024ab
 
 pkgname = irssi-python
