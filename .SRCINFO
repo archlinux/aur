@@ -1,0 +1,21 @@
+pkgbase = python2-pymongo
+	pkgdesc = Python module for using MongoDB
+	pkgver = 3.12.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pymongo/
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python2-pymongocrypt: for [encryption]
+	optdepends = python2-pyopenssl: for [ocsp]
+	optdepends = python2-requests: for [ocsp]
+	optdepends = python2-service-identity: for [ocsp]
+	optdepends = python2-snappy: for [snappy]
+	optdepends = python2-zstandard: for [zstd]
+	optdepends = python2-pymongo-auth-aws: for [aws]
+	optdepends = python2-dnspython: for [srv]
+	source = https://pypi.io/packages/source/p/pymongo/pymongo-3.12.2.tar.gz
+	sha512sums = ad53e3b8e4af63ced1dd26f891673264c50ad3f95871e905989cbf5e98bc4ab549e346e0be32b064dbc1404b25cee40c375f8fff495a829b0b84ee432bec056a
+
+pkgname = python2-pymongo
