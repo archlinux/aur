@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='absolutely-proprietary'
-pkgver='20190627'
-_commit='4a126c8bfe173d916f0569939ef31d1786bb30d5'
-pkgrel='3'
+pkgver='20220518'
+_commit='632ebf75bff68959e48ad7db06a9350fede806d0'
+pkgrel='1'
 pkgdesc="Proprietary package detector for arch-based distros that uses Parabola's package blacklist"
 arch=('any')
 url="https://github.com/vmavromatis/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('6510e0bd2bf57cd842906ec2fee531fb4ca6f38a29bde45bdfa7570396c9f8d0')
+sha512sums=('d6b10dd6b89171e568b07a86617b0b731aa8cbd20f61968f4fd1e4bf42e73665d4746034a6181a210b1644070abfe80d91b1378ad0dab0413ffe58516b3332b2')
 
 _sourcedirectory="$pkgname-$_commit"
 
