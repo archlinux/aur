@@ -2,7 +2,7 @@
 
 _pkgname=yrice
 pkgname=yrice
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A dotfile manager based on a single yaml fiel written in Rust'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/LoricAndre/$_pkgname"
 makedepends=(cargo)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b4f002c251054cdeddffc538af5a89a142381a199a12764bce7d5581f4911fc9')
+sha256sums=('2b0e58def84d9d1659368837c4e51fb604dda9fce9097eee39e779c381b947fd')
 
 
 build() {
