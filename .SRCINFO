@@ -1,7 +1,8 @@
 pkgbase = newmat
 	pkgdesc = C++ matrix library
-	pkgver = 10
+	pkgver = 10E
 	pkgrel = 1
+	epoch = 1
 	url = http://www.robertnz.net
 	arch = i686
 	arch = x86_64
@@ -13,4 +14,3 @@ pkgbase = newmat
 	sha256sums = b707dfdf6f64c7bcea1f288845b967349aaa76b6b8fb43559138a9f70307ceee
 
 pkgname = newmat
-
