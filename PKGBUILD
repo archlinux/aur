@@ -13,4 +13,4 @@ package() {
   install -D "nfetch-$pkgver" "$pkgdir/usr/bin/nfetch"
 }
 
-sha256sums=('f42cdba8b5c04d344706eeeca2d762182355c8c8495b49cf4e0a415b5b8c325d')
+sha256sums=('57fa9c8ca52c2ffbb8211e69a3989933fed85da176777f78cb749911f92e3c81')
