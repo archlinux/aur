@@ -5,7 +5,7 @@
 
 # Maintainer: Oscar Rainford <oscar@fourbs.com.au>
 pkgname=openwebstart-bin
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 epoch=
 pkgdesc=""
@@ -25,13 +25,13 @@ options=(!strip !zipman)
 install="openwebstart.install"
 changelog=
 source=(
-	"https://github.com/karakun/OpenWebStart/releases/download/v1.5.2/OpenWebStart_linux_1_5_2.deb"
+	"https://github.com/karakun/OpenWebStart/releases/download/v1.6.0/OpenWebStart_linux_1_6_0.deb"
 	"jnlp.xml"
 	"javaws.desktop"
 	"itw-settings.desktop"
 )
 md5sums=(
-	"879e7d8514c4c58ffcfbe9a7d05b5699"
+	"43de50969e877cb5b7e56a97da2e2cdd"
 	"551218dd79f7600755d76ab733fdb5bc"
 	"325214a1c96b12461190320cd2201bf7"
 	"1443e7e283bbf7461e9829eeffd5966a"
