@@ -60,14 +60,14 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
 license=(GPL3)
 _aomver=3
 _dav1dver=1.0.0
-_libristver=0.2.6
+_libristver=0.2.7
 _libvpxver=1.11.0
 _srtver=1.4.3
 _vmafver=2
@@ -467,6 +467,7 @@ prepare() {
 
   # avformat/hlsenc: remove unnecessary http/https shutdown status operate
   # https://patchwork.ffmpeg.org/project/ffmpeg/patch/20210913021204.22138-1-lq@chinaffmpeg.org/
+  # https://github.com/FFmpeg/FFmpeg/commit/f1c19867d72a14699277175101b2bcf1e333af88
   patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-9010.patch
 
   # libRIST: allow setting fifo size and fail on overflow
