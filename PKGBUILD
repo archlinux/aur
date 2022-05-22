@@ -3,11 +3,11 @@
 # Contributor: Imperator Storm <ImperatorStorm11@protonmail.com>
 pkgname=ferium-gui-git
 _pkgname=ferium
-pkgver=3.28.7.r3.g7e795a6
+pkgver=4.0.0.r4.g814cd12
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64")
-depends=("gcc-libs" "gtk3" "bzip2")
+depends=("gcc-libs" "xdg-desktop-portal" "bzip2")
 makedepends=("cargo" "git")
 provides=("ferium")
 conflicts=("ferium-gui-bin" "ferium-bin" "ferium-git" "ferium")
@@ -28,14 +28,14 @@ build(){
     cd "$srcdir/ferium"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --no-default-features --features xdg
 }
 
 check() {
     cd "$srcdir/ferium"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test --frozen --all-features
+    cargo test --frozen --no-default-features --features xdg
 }
 
 package() {
