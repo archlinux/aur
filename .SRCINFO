@@ -1,0 +1,14 @@
+pkgbase = ruby-aes_key_wrap
+	pkgdesc = AES Key Wrap, a.k.a RFC 3394, a.k.a NIST Key Wrap
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/aes_key_wrap
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = aes_key_wrap-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/aes_key_wrap-1.1.0.gem
+	sha256sums = b935f4756b37375895db45669e79dfcdc0f7901e12d4e08974d5540c8e0776a5
+
+pkgname = ruby-aes_key_wrap
