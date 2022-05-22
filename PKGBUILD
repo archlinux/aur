@@ -2,7 +2,7 @@
 
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=0
 arch=(x86_64)
 pkgdesc='GUI for editing EFI Boot Manager entries'
@@ -11,7 +11,7 @@ license=(LGPL3)
 depends=(efivar)
 makedepends=(cmake qt6-tools qt6-5compat qt5-base)
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v${pkgver}.tar.gz)
-md5sums=('05e22015ebfe076e7341ed9573d10a37')
+md5sums=('60715bac5481a016972e648a15590ffa')
 
 build() {
     cd ${pkgbase}-${pkgver}
