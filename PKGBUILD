@@ -3,6 +3,7 @@
 pkgname=steam-screensaver-fix
 pkgver=r4.97cf918
 pkgrel=1
+epoch=1
 pkgdesc='Fix for steam screensaving bug.'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/patlefort/steam-screensaver-fix'
