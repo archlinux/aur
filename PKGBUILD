@@ -4,8 +4,8 @@
 _java_ver=17
 _jdkname="zulu-jre-fx"
 _zulu_build="${_java_ver}.34.19-ca"
-_hmcl_ver=3.5.2
-_hmcl_build=218
+_hmcl_ver=3.5.3
+_hmcl_build=219
 _jdk_ver=${_java_ver}.0.3
 pkgname=hmcl-zulu-bin
 pkgver=${_hmcl_ver}.${_hmcl_build}.zulu.${_jdk_ver}
@@ -43,7 +43,7 @@ sha256sums=('8f12b377b03124612da0127a95a6148bbc3e58894932d50408f4d3d179f0b9fb'
             '5f53d37fef37aa654e474a073f2457601c5fc607ba836f7b1404c89a07b196a3'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '3ca6f468d12a3e98527cad7360775cbd0edd40615a00360d020702e600191ac0'
+            '3b15c6fc7466f41367f58c18f468894758240a8db096792a4d20a4aab9787a80'
             '4de47974610b21e708d7fef4455a1f769d8d80f24382fb6277c1167c5ce3e9ae'
             'b8d220e15b774407d9602d1e40dc896ecd9df26a3ff23a649367b5b566c7f930')
 
