@@ -1,0 +1,18 @@
+info() {
+    echo -e "Dev Cube 是博流提供的芯片集成开发工具"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the bouffalolab-devcude bottle..."
+    find /home -maxdepth 4 -name "bouffalolab-devcude" -exec rm -rf {} \;
+    info
+    mkdir /usr/lib/x86_64-linux-gnu/
+    ln -sf /usr/lib/gdk-pixbuf-2.0 /usr/lib/x86_64-linux-gnu/
+}
+pre_remove() {
+    echo "deleting the bouffalolab-devcude bottle..."
+    find /home -maxdepth 4 -name "bouffalolab-devcude" -exec rm -rf {} \;
+    rm -f /usr/lib/x86_64-linux-gnu/
+}

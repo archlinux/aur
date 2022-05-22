@@ -1,0 +1,19 @@
+pkgbase = bouffalolab-devcude-bin
+	pkgdesc = Dev Cube是博流提供的芯片集成开发工具，包含IOT程序下载、MCU程序下载和RF性能测试三大功能。工具提供程序固件启动时的时钟，电源，Flash参数等配置，并可根据用户需求对程序进行加密和签名，生成应用程序启动信息文件。工具还可烧写用户资源文件，分区表文件以及 EFUSE配置文件等。工具可对Flash进行擦、改、写
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://dev.bouffalolab.com/download
+	install = bouffalolab-devcude-bin.install
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = libusb
+	depends = libftdi
+	depends = hidapi
+	provides = Bouffalo-Lab-Dev-Cube
+	noextract = bouffalolab-devcude-1.7.2.tar.gz
+	options = !strip
+	source = bouffalolab-devcude-1.7.2.tar.gz::https://dev.bouffalolab.com/media/upload/download/BouffaloLabDevCube-1.7.2-linux-x86.tar.gz
+	sha256sums = 407aef58a6762ed6fba78aa865804aa9083c583036e732e73c87c70367deeb16
+
+pkgname = bouffalolab-devcude-bin
