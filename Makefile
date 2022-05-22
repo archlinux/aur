@@ -21,4 +21,7 @@ clean:
 		serialize \
 		rapidjson \
 		qtkeychain \
-		websocketpp
+		sanitizers-cmake \
+		websocketpp \
+		magic_enum \
+		googletest

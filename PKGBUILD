@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-dankerino-git
 _pkgname=dankerino
-pkgver=r3693.0c3cafa4
+pkgver=r3813.37191909
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
@@ -25,17 +25,23 @@ source=("git+https://github.com/Mm2PL/dankerino"
         "git+https://github.com/pajlada/serialize"
         "git+https://github.com/Tencent/rapidjson"
         "git+https://github.com/Chatterino/qtkeychain"
-        "git+https://github.com/zaphoyd/websocketpp")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+        "git+https://github.com/arsenm/sanitizers-cmake"
+        "git+https://github.com/zaphoyd/websocketpp"
+        "git+https://github.com/Neargye/magic_enum"
+        "git+https://github.com/google/googletest.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -53,7 +59,12 @@ prepare () {
     git config submodule.serialize $srcdir/$_pkgname/lib/serialize
     git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
     git config submodule.qtkeychain $srcdir/$_pkgname/lib/qtkeychain
+    git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
     git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
+    # We can't set the local directory of this submodule as we have no way of accessing the config name `submodule.magic_enum` because underscores are actually not allowed.
+    # The only thing I can think of is moving the submodule to `lib/magicenum` but that feels like an off approach. I'll look into it only if builds fail because of the below call is missing.
+    # git config submodule.magic_enum $srcdir/$_pkgname/lib/magic_enum
+    git config submodule.googletest $srcdir/$_pkgname/lib/googletest
     git submodule update
 }
 
