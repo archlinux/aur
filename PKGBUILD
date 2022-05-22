@@ -4,7 +4,7 @@
 _ARCHS=('generic' 'ice40' 'ecp5' 'nexus' 'gowin')
 
 pkgname=nextpnr-git
-pkgver=r3962.3266c51d
+pkgver=0.3.r27.ge9004943
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git')
-provides=('nextpnr')
+provides=("nextpnr=$pkgver")
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
 sha256sums=('SKIP')
@@ -47,7 +47,7 @@ done
 
 pkgver() {
   cd "$srcdir/nextpnr"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^nextpnr-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
