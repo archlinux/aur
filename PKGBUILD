@@ -2,12 +2,12 @@
 
 pkgname=sixad-git
 pkgver=1.5.1_93388dc
-pkgrel=1
+pkgrel=2
 pkgdesc='Connects and manages various official PS3 controllers'
 url='https://github.com/RetroPie/sixad'
 arch=('x86_64')
 license=('GPL2')
-makedepends=(make libusb bluez-libs dbus libdbusmenu-glib)
+makedepends=(make libusb libusb-compat bluez-libs dbus libdbusmenu-glib)
 depends=(bluez)
 
 source=("git+https://github.com/RetroPie/sixad.git")
