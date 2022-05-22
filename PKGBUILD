@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=cpp-ghc-filesystem
-pkgver=1.5.8
+pkgver=1.5.12
 pkgrel=1
 pkgdesc="ghc C++ header-only single-file std filesystem compatible helper library"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/gulrak/filesystem"
 license=('MIT')
 depends=('gcc' 'cmake')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/gulrak/filesystem/archive/v${pkgver}.tar.gz)
-md5sums=('a6dacafb1e89480518470802255bffae')
+md5sums=('88ebdd8120216ddd3ca7be99310a7310')
 
 prepare(){
   cd ${pkgname/cpp-ghc-/}-${pkgver}
