@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=100.0.1
+pkgver=100.0.2
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
@@ -67,31 +67,7 @@ prepare() {
 
   # Gentoo patches
   echo "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0001-Don-t-use-build-id.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-  #patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-  #patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0007-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-1516803-Fix-building-sandbox.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0017-Make-PGO-use-toolchain.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0020-Fix-building-with-PGO-when-using-GCC.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-libaom-Use-NEON_FLAGS-instead-of-VPX_ASFLAGS-for-lib.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0022-build-Disable-Werror.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0023-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0024-Disable-FFVPX-with-VA-API.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0025-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0027-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0028-bgo-816975-fix-build-on-x86.patch
-  #patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1559213-fix-system-av1-libs.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1762050-fix-pgo-with-virtualenv.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1765361-resolve_objdir_from_virtualenv_if_mozinfo_not_ancestor.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1761691-fix_audio_thread_priority_when_dbus_is_disabled.patch
 
   # Remove some pre-installed addons that might be questionable
   echo "---- Librewolf patches"
@@ -155,10 +131,6 @@ prepare() {
   # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
-  echo "---- Fixing build issues"
-  # Needed patch to have build working
-  patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
-
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -191,16 +163,8 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
-#ac_add_options --with-system-av1
-#ac_add_options --with-system-graphite2
-ac_add_options --with-system-harfbuzz
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --disable-crashreporter
