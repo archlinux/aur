@@ -1,4 +1,4 @@
-# Maintainer: fenze <fenze@contact.dev>
+# Maintainer: mini-rose <fenze@contact.dev>
 pkgname=rose-browser
 pkgver=v1.0.beta
 pkgrel=1
