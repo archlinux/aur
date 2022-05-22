@@ -7,7 +7,7 @@
 
 pkgname=irssi-python
 pkgver=test5
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
 arch=('x86_64')
@@ -15,16 +15,11 @@ install='irssi-python.install'
 makedepends=('git')
 depends=('python' 'irssi')
 license=('GPL2')
-version="1.2.3"
-
-source=('https://github.com/irssi/irssi/releases/download/1.2.3/irssi-1.2.3.tar.gz')	
-md5sums=('ebbf455d8e9c847fc8106591088024ab')
 
 build() {     
     # Get irssi-python with git
     git clone https://github.com/SpiritualForest/irssi-python
-    # Extract irssi sources and generate ./configure file
-    tar xvf irssi-1.2.3.tar.gz
+    # Generate configure file
     cd "irssi-python"
     # Set the pkgconfig path to our source dir, so that it finds irssi-1.pc
     export PKG_CONFIG_PATH="$srcdir/irssi-python"
