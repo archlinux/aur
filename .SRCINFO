@@ -1,6 +1,6 @@
 pkgbase = rocm-hip-libraries
 	pkgdesc = Develop applications using HIP and libraries for AMD platforms
-	pkgver = 5.1.1
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rocm-hip-libraries
 	depends = hipfft
 	depends = hipsparse
 	depends = hipfort
-	source = rocm-hip-libraries-5.1.1.deb::https://repo.radeon.com/rocm/apt/5.1.1/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_5.1.1.50101-48_amd64.deb
-	sha256sums = c711e7a72dad3ea7c6a76e3cf903c1a372d0c6248c1b7f6c65ab054055578cc2
+	source = rocm-hip-libraries-5.1.3.deb::https://repo.radeon.com/rocm/apt/5.1.3/pool/main/r/rocm-hip-libraries/rocm-hip-libraries_5.1.3.50103-66_amd64.deb
+	sha256sums = 41583a1b56a5444d2fc9744583035c03e5c9434f264767b377d67fd4400acee1
 
 pkgname = rocm-hip-libraries
