@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-faad
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="OCaml bindings for the libfaad AAC decoder library"
 arch=('i686' 'x86_64')
@@ -28,5 +28,6 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('9c03711d0d65ffb0c7860addf271c7a28667f840fab563432d12c28ae9701b5f')
+sha256sums=('f62a7c4a48177ab6fab199502a335ceeea88f53e503d679c18fcc1b5343f20fd'
+'skip')
 
