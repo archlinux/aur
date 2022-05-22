@@ -3,7 +3,7 @@
 
 pkgname=mopidy-youtube-git
 _pkgname=mopidy-youtube
-pkgver=3.5.r13.g9e72d58
+pkgver=v3.4.r1.g242b420
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube"
 
@@ -26,7 +26,7 @@ source=("$_pkgname::git+$url.git")
 
 pkgver() {
   cd "$_pkgname"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
