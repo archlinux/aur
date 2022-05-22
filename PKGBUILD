@@ -5,9 +5,9 @@
 
 _rubyver=2.6
 pkgname=ruby2.6
-pkgver=2.6.8
+pkgver=2.6.10
 pkgdesc='An object-oriented language for quick and easy programming (version 2.6)'
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='http://www.ruby-lang.org/en/'
 license=(BSD custom)
@@ -16,7 +16,7 @@ optdepends=('tk: for Ruby/TK')
 makedepends=(gdbm openssl libffi doxygen graphviz libyaml ttf-dejavu tk)
 options=(!emptydirs)
 source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('d040ad2238523587d8f356fcb796b8b6ad7f8caff7dd6df09e3f7efcbfa0369e33600e78c7f2bc713ae77c040757cce5c4fec223cb9070209f2bf741899c556d')
+sha512sums=('06ebf1442c4bf4be62eb710348cfb714cbc4c4acc5125319a425fe76ef2be7cccfd41e50bf3751bfef3ceb8ac47ad41a027d2c2ad560e25ec694e34fd9f62a8a')
 
 build() {
   cd ruby-${pkgver}
