@@ -1,13 +1,13 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=pdfmixtool-git
-pkgver=r457.37a16db
+pkgver=r565.4926728
 pkgrel=1
 pkgdesc='An application to perform common editing operations on PDF files'
 arch=('i686' 'x86_64')
 url='https://www.scarpetta.eu/pdfmixtool'
 license=('GPL')
-depends=('qt6-base' 'qt6-svg' 'qpdf')
+depends=('qt6-base' 'qt6-svg' 'qpdf' 'imagemagick')
 makedepends=('git' 'cmake' 'qt6-tools')
 conflicts=(pdfmixtool)
 provides=(pdfmixtool)
