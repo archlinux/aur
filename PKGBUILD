@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=15.30.2
+pkgver=15.31.1
 pkgrel=1
 pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
 arch=('x86_64')
@@ -31,14 +31,14 @@ depends=(
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::https://download.teamviewer.com/download/teamviewer_qs.tar.gz")
-sha256sums=('e0b810574190301e16461e6cac2f97d48c5ff57926f0dc6b4e3c1be13606496a')
+sha256sums=('8f6f7f6043dcdfb654c47f8a91cfd9a313d629c1b5bef7e24b9dbb46a76473c9')
 
 prepare() {
 	cd teamviewerqs/
 
 	if ! grep -q "^TV_VERSION='${pkgver}'\$" tv_bin/script/tvw_config; then
 		echo "Source version does not match pkgver!"
-		exit 1
+		return 1
 	fi
 
 	# Delete unneeded empty dirs
