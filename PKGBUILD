@@ -2,8 +2,8 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.22
-_commit=feece96c
+pkgver=1.2.23
+_commit=61e3b8a9
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
