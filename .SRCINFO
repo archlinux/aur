@@ -1,6 +1,6 @@
 pkgbase = abricotine-bin
 	pkgdesc = A markdown editor with inline preview
-	pkgver = 1.0.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = http://abricotine.brrd.fr
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = abricotine-bin
 	depends = libxss
 	provides = abricotine
 	conflicts = abricotine
-	source = https://github.com/brrd/Abricotine/releases/download/1.0.0/abricotine-1.0.0-linux-x64.tar.gz
+	source = https://github.com/brrd/Abricotine/releases/download/v1.1.2/abricotine_1.1.2_amd64.deb
 	source = abricotine.desktop
-	sha256sums = f3bbee75c7f5bc09e445546869582e1c7a09c0c269b22339f9cff79bd948c517
+	sha256sums = f75cca5504a74ff5d313ff6eb55ceed096a27c77c3d54eb4b1e4d6cb339ca96b
 	sha256sums = 164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c
 
 pkgname = abricotine-bin
-
