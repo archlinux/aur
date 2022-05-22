@@ -2,14 +2,15 @@
 # Original author of surge package: David Runge <dvzrv@archlinux.org>
 
 # This currently only builds VST3 plugins
-# lv2 would need:
+# lv2 would need custom JUCE:
 # https://github.com/lv2-porting-project/JUCE
+# or simply wait for JUCE 7 release which will officially support lv2
 
 _name="Surge XT"
 _repo_name="surge"
 pkgname=surge-xt
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Digital Synthesizer"
 arch=('x86_64')
 url="https://surge-synthesizer.github.io/"
@@ -87,9 +88,15 @@ package() {
     -t "${pkgdir}/usr/lib/vst3/${_name}.vst3/Contents/${CARCH}-linux/"
   install -vDm 755 "build/surge_xt_products/${_name} Effects.vst3/Contents/${CARCH}-linux/${_name} Effects.so" \
     -t "${pkgdir}/usr/lib/vst3/${_name} Effects.vst3/Contents/${CARCH}-linux/"
-  
-  install -vdm 755 "${pkgdir}/usr/share/${pkgname}"
+
+  # install standalone
+  install -vDm 755 "build/surge_xt_products/${_name}" \
+    -t "${pkgdir}/usr/bin/"
+  install -vDm 755 "build/surge_xt_products/${_name} Effects" \
+    -t "${pkgdir}/usr/bin/"
+
   # install resources
+  install -vdm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -av resources/data/* "${pkgdir}/usr/share/${pkgname}"
   install -vDm 644 {AUTHORS,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
