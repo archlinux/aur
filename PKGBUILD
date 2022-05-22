@@ -34,9 +34,6 @@ prepare() {
   git submodule update -f --init
   # We have a patched libharu
   sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
-  # disable pluginxs xml
-  sed -i "s|_paraview_add_plugin_XML_DOCUMENTATION ON|_paraview_add_plugin_XML_DOCUMENTATION OFF|g" CMake/ParaViewPlugin.cmake
-  sed -i "s|NOT _paraview_add_plugin_XML_DOCUMENTATION|FALSE|g" CMake/ParaViewPlugin.cmake
 }
 
 build() {
@@ -48,6 +45,7 @@ build() {
       -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
       -DPARAVIEW_USE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
+      -DPARAVIEW_PLUGIN_DISABLE_XML_DOCUMENTATION=ON \
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
