@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-enhanced-qt5-git
 	pkgdesc = Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod
-	pkgver = 4.4.2.10.r3.g780ad2c06
+	pkgver = 4.4.2.10.r26.gc07d649f4
 	pkgrel = 2
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = arm
