@@ -1,7 +1,7 @@
 pkgbase = zshbinsh
 	pkgdesc = Relink /bin/sh to zsh
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = zshbinsh.install
 	arch = any
 	license = Unlicense
