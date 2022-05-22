@@ -1,7 +1,7 @@
 pkgbase = veridian-bin
 	pkgdesc = A SystemVerilog Language Server
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vivekmalneedi/veridian
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = veridian-bin
 	optdepends = verible-git: syntax checking and formatting (git version)
 	provides = veridian
 	source = https://github.com/vivekmalneedi/veridian/releases/download/nightly/veridian-ubuntu-20.04.tar.gz
-	sha256sums = 925cbef6b672b657c3bd278c91437537c827f3e1eccd607f9ea28b91f238faa5
+	sha256sums = 6f2ad6d2e50e5a481c93c98259463b7028b0a9a359f8a41189dfe17f078269f7
 
 pkgname = veridian-bin
