@@ -1,4 +1,4 @@
-pkgname='nfetch-bin'
+pkgname='nfetch-git'
 pkgdesc="A minimal linux fetch utility written in nim"
 pkgver=1.00
 pkgrel=1
