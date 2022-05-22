@@ -62,7 +62,7 @@ build()
 	# 64-bit
 	arch-meson gtk+-$_gtkver build \
 		-D broadway_backend=true \
-		-D colord=no \
+		-D colord=auto \
 		-D demos=true \
 		-D examples=false \
 		-D tests=false \
@@ -79,7 +79,7 @@ build()
 
 	linux32 arch-meson gtk+-$_gtkver build32 \
 		-D broadway_backend=true \
-		-D colord=no \
+		-D colord=auto \
 		-D demos=false \
 		-D examples=false \
 		-D introspection=false \
