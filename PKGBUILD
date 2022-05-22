@@ -5,8 +5,8 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="194c90c257f7abf1094736dffd3d6152f8b0cb00"
-_gtkver=3.24.33
+__arch_pkg_commit="ef36b28a894a3de835464d89a3ac0bc2898c2317"
+_gtkver=3.24.34
 
 _gtk3_classic_commit="221a3257c5d804520e3a26270ac2fc4673d39eb4"
 
@@ -42,7 +42,7 @@ source=(
 	settings.ini
 )
 sha256sums=('SKIP'
-            '588b06522e25d1579e989b6f9d8a1bdbf2fe13cde01a04e904ff346a225e7801'
+            'dbc69f90ddc821b8d1441f00374dc1da4323a2eafa9078e61edbe5eeefa852ec'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
