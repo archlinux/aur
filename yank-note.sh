@@ -1,3 +1,3 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
 cd /usr/lib/yank-note
-electron app "$@"
+ELECTRON app "$@"

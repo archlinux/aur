@@ -3,19 +3,20 @@
 
 pkgname=yank-note-bin
 _pkgname=yank-note
-pkgver=3.29.0
-pkgrel=2
+_electron=electron
+pkgver=3.30.1
+pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
 url='https://github.com/purocean/yn'
 license=('AGPL3')
-depends=('electron' 'pandoc')
+depends=(${_electron} 'pandoc')
 makedepends=('asar' 'yarn')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('5e7f5b6aa99784f112dd795ce11d5baf2d983c274d0e25c5514e106c8ffbcacf'
-            'ea47e7cea0b74bf9a0f96a853432a49ddfdba61017b68dcae47d1e4862327409')
+sha256sums=('a64d11d50313a72d6626ca5bad5bcdcd5fc4cec170003bbe76ff516a69dbdc9a'
+            'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
 options=(!strip)
 prepare() {
 	cd ${srcdir}
@@ -24,11 +25,13 @@ prepare() {
     asar e app.asar apps 
     rm -rf apps/app.asar
     cd apps/dist/main
-    sed -i "63c var binPath='/usr/bin/pandoc';" server/convert.js
-    sed -i "39c exports.BIN_DIR='/usr/bin';" constant.js
+    sed -i "s|^var binPath.*|var binPath='/usr/bin/pandoc';|g" server/convert.js
+    sed -i "s|^exports.BIN_DIR.*|exports.BIN_DIR='/usr/bin';|g" constant.js
     
     cd $srcdir/usr/share/applications
-    sed -i "3c Exec=yank-note %U"   ${_pkgname}.desktop
+    sed -i "s|^Exec.*|Exec=yank-note %U|g"   ${_pkgname}.desktop
+    
+    sed -i "s|ELECTRON|${_electron}|g" $srcdir/"$_pkgname.sh"
 }
 
 build(){
@@ -37,7 +40,7 @@ build(){
     rm -rf bin
     # fix node-pty
     yarn add electron-rebuild
-    node_modules/.bin/electron-rebuild -f -w node-pty -v $(electron -v)
+    node_modules/.bin/electron-rebuild -f -w node-pty -v $(${_electron} -v)
     cp -rf node_modules/node-pty ./
     yarn remove electron-rebuild
     rm -rf node_modules/node-pty
