@@ -12,15 +12,15 @@ sha512sum_first_src_sum() {
   local pkgver=$(get_latest_release_tag $pkgbin)
   local pkgsrc=$(cat PKGBUILD | grep "_pkgsrc=" | sed -E 's/.*"([^"]+)".*/\1/' | sed -E 's/\$\{pkgver\}/'"$pkgver"'/g')
 
+  # Replace pkgver
+  sed -Ei "s/pkgver=.*\$/pkgver="'"'"$(get_latest_release_tag $pkgbin)"'"'"/g" PKGBUILD
+
   # Calculate sum on first in source()
   wget "$url/releases/download/v$pkgver/$pkgsrc"
   local sha=$(sha512sum $pkgsrc | cut -d " " -f1)
   rm $pkgsrc
   echo $sha
 }
-
-# Replace pkgver
-sed -Ei "s/pkgver=.*\$/pkgver=$(get_latest_release_tag "SteamGridDB/steam-rom-manager")/g" PKGBUILD
 
 # Replace first sha512sum
 sha=$(sha512sum_first_src_sum)
