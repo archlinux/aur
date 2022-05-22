@@ -1,7 +1,7 @@
 pkgbase = tubefeeder-git
 	pkgdesc = A Youtube, Lbry and Peertube client made for the Pinephone
 	pkgver = 1.6.6.r2.6151151
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tubefeeder.de
 	arch = x86_64
 	arch = aarch64

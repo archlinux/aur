@@ -1,7 +1,7 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
 pkgver=1.6.6.r2.6151151
-pkgrel=1
+pkgrel=2
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
 url="https://www.tubefeeder.de"
@@ -42,6 +42,7 @@ package() {
         # Binary
         install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/tubefeeder"
         # Desktop-file
+        sed -i 's_/app/bin/tubefeeder_/usr/bin/tubefeeder_' packaging/tubefeeder.desktop
         install -D packaging/tubefeeder.desktop $pkgdir/usr/share/applications/de.schmidhuberj.tubefeeder.desktop
         # Icon
         install -D packaging/tubefeeder.png $pkgdir/usr/share/icons/hicolor/512x512/apps/de.schmidhuberj.tubefeeder.png
