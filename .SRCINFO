@@ -16,6 +16,7 @@ pkgbase = cinny-desktop
 	depends = librsvg
 	depends = libvips
 	depends = sqlite
+	conflicts = cinny-desktop-bin
 	source = cinny-desktop::https://github.com/cinnyapp/cinny-desktop/releases/download/v2.0.3/cinny-desktop-v2.0.3.zip
 	sha256sums = c74471769c2d89904b89f6418b396b9897878708393cd0a9a9d35e082c0a7e33
 

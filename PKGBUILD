@@ -23,6 +23,7 @@ depends=(
     'sqlite'
 )
 makedepends=('rust' 'nodejs' 'npm')
+conflicts=('cinny-desktop-bin')
 
 source=("${pkgname}::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
 sha256sums=('c74471769c2d89904b89f6418b396b9897878708393cd0a9a9d35e082c0a7e33')
