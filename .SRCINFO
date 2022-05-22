@@ -1,16 +1,13 @@
 pkgbase = python2-jinja
-	pkgdesc = A simple pythonic template language written in Python - python2 version
+	pkgdesc = A simple pythonic template language written in Python
 	pkgver = 2.11.3
-	pkgrel = 3
-	url = https://palletsprojects.com/p/jinja
+	pkgrel = 1
+	url = https://palletsprojects.com/p/jinja/
 	arch = any
 	license = BSD
-	checkdepends = python2-pytest
 	makedepends = python2-setuptools
-	makedepends = python2-markupsafe
-	depends = python2-setuptools
-	depends = python2-markupsafe
-	source = python2-jinja-2.11.3-3.tar.gz::https://github.com/pallets/jinja/archive/2.11.3.tar.gz
-	sha256sums = 4be44a9e55fb069347b217d2d66d51d8b0a97f2f76985b90630bb4f317eb042a
+	optdepends = python2-babel: for i18n support
+	source = https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-2.11.3.tar.gz
+	sha256sums = a6d58433de0ae800347cab1fa3043cebbabe8baa9d29e668f1c768cb87a333c6
 
 pkgname = python2-jinja
