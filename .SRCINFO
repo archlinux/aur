@@ -1,5 +1,5 @@
 pkgbase = bigsh0t-plugins-git
-	pkgdesc = Plugins like frei0r for dealing with VR (git version)
+	pkgdesc = 360 equirectangular VR Video Stitching and Manipulation filters for free video editors
 	pkgver = 2.5.r12.g8e852fb
 	pkgrel = 1
 	url = https://bitbucket.org/leo_sutic/bigsh0t/src/main/

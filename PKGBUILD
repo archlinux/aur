@@ -4,7 +4,7 @@ pkgname=bigsh0t-plugins-git
 _srcname=bigsh0t
 pkgver=2.5.r12.g8e852fb
 pkgrel=1
-pkgdesc='Plugins like frei0r for dealing with VR (git version)'
+pkgdesc='360 equirectangular VR Video Stitching and Manipulation filters for free video editors'
 arch=('i686' 'x86_64')
 url=https://bitbucket.org/leo_sutic/bigsh0t/src/main/
 license=('GPL')
@@ -41,5 +41,5 @@ package() {
         cp -rp Release-Linux/bigsh0t-2.6-linux/lib/frei0r-1/* $pkgdir/usr/lib/frei0r-1/
         cp -rp Release-Linux/bigsh0t-2.6-linux/shotcut/share/shotcut/qml/filters/* $pkgdir/share/shotcut/qml/filters/
 #        cp -rp Release-Linux/bigsh0t-$(echo $pkgver | cut -s -d"." -f1,2)-linux/lib/frei0r-1/* $pkgdir/usr/lib/frei0r-1/
-#	 cp -rp Release-Linux/bigsh0t-$(echo $pkgver | cut -s -d"." -f1,2)-linux/shotcut/share/shotcut/qml/filters/* $pkgdir/share/shotcut/qml/filters/
+#	cp -rp Release-Linux/bigsh0t-$(echo $pkgver | cut -s -d"." -f1,2)-linux/shotcut/share/shotcut/qml/filters/* $pkgdir/share/shotcut/qml/filters/
 }
