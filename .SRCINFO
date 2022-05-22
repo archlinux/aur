@@ -1,0 +1,11 @@
+pkgbase = 2cdt
+	pkgdesc = Create CDT/TZX for Amstrad/Spectrum out of raw files
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://cpctech.cpcwiki.de/download/2cdt.zip
+	arch = x86_64
+	license = GPL2
+	source = https://box.glgprograms.it/users/giomba/2cdt.zip
+	sha256sums = 5ffe321b111203f4d901da5c83999179138d4bec5d9771d085e084c195bbe82c
+
+pkgname = 2cdt
