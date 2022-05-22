@@ -25,14 +25,31 @@ sha256sums=('71f70bba797a501b13b6b0905dc852f3fd6e264d74ce294f2df98d29914c4303')
 prepare() {
   # set cmake pkg info dirs for opencl-headers-git
   sed 's|${CMAKE_INSTALL_DATADIR}/cmake|${CMAKE_INSTALL_LIBDIR}/cmake|g' -i "${_reponame}-${_pkgver_or_commit}/CMakeLists.txt"
-}
 
-build() {
+  printf 'Checking if ccache is enabled for makepkg... '
+
+  if check_buildoption "ccache" "y"; then
+    printf 'yes\n'
+    printf 'Enabling C++ ccache for CMake...\n'
+    export CMAKE_CXX_COMPILER_LAUNCHER='ccache'
+  else
+    printf 'no\n'
+  fi
+
+  printf 'Configuring build with CMake...\n\n'
+  export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
+
   cmake -S "${_reponame}-${_pkgver_or_commit}" -B build \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
     -DBUILD_TESTING=ON
+}
 
+build() {
+  printf 'Building with CMake...\n\n'
   cmake --build build
 }
 
@@ -41,5 +58,6 @@ check() {
 }
 
 package() {
+  printf 'Installing with CMake...\n\n'
   DESTDIR="${pkgdir}" cmake --build build --target install
 }
