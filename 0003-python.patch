@@ -1,5 +1,19 @@
+From 59246af1699c3234a5e24b4af5e187acc621e324 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:17:31 +0200
+Subject: [PATCH 03/12] python
+
+---
+ CMakeLists.txt                                    | 4 ++++
+ samples/luxcoreconsole/CMakeLists.txt             | 2 +-
+ samples/luxcoredemo/CMakeLists.txt                | 2 +-
+ samples/luxcorescenedemo/CMakeLists.txt           | 2 +-
+ samples/luxcoreui/CMakeLists.txt                  | 3 ++-
+ tests/luxcoreimplserializationdemo/CMakeLists.txt | 2 +-
+ 6 files changed, 10 insertions(+), 5 deletions(-)
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7dda21b7d..fe41ec5d8 100644
+index 72c1996ac..78316b671 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -28,6 +28,10 @@ MESSAGE(STATUS "CMake version " ${CMAKE_VERSION} " detected")
@@ -13,7 +27,6 @@ index 7dda21b7d..fe41ec5d8 100644
  # Remove the following when the version check is at least 2.8.4
  SET(CMAKE_LEGACY_CYGWIN_WIN32 0)
  
-
 diff --git a/samples/luxcoreconsole/CMakeLists.txt b/samples/luxcoreconsole/CMakeLists.txt
 index 96e09bc6a..cdb83231c 100644
 --- a/samples/luxcoreconsole/CMakeLists.txt
@@ -36,7 +49,7 @@ index 194104caf..241dbd5f2 100644
 -TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 +TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
-index 3acb27bfa..b52d3ec81 100644
+index 1840a0e42..504739572 100644
 --- a/samples/luxcorescenedemo/CMakeLists.txt
 +++ b/samples/luxcorescenedemo/CMakeLists.txt
 @@ -29,4 +29,4 @@ set(LUXCORESCENEDEMO_SRCS
@@ -46,12 +59,10 @@ index 3acb27bfa..b52d3ec81 100644
 -TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
 +TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
-index 8b74e0704..c6f9c88f1 100644
+index d2e823874..80325af7e 100644
 --- a/samples/luxcoreui/CMakeLists.txt
 +++ b/samples/luxcoreui/CMakeLists.txt
-@@ -100,7 +100,8 @@ TARGET_LINK_LIBRARIES(luxcoreui
- 	glfw
- 	${GLFW_LIBRARIES}
+@@ -103,5 +103,6 @@ TARGET_LINK_LIBRARIES(luxcoreui
  	${LUXCORE_LIBRARY}
  	${OPENGL_LIBRARIES}
  	${GTK3_LIBRARIES}
@@ -60,7 +71,7 @@ index 8b74e0704..c6f9c88f1 100644
 +        ${PYTHON_LIBRARIES})
  endif()
 diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
-index bdd3445b8..a79c4a7b2 100644
+index bdd3445b8..baa52f622 100644
 --- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
 +++ b/tests/luxcoreimplserializationdemo/CMakeLists.txt
 @@ -31,4 +31,4 @@ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
@@ -69,4 +80,7 @@ index bdd3445b8..a79c4a7b2 100644
  
 -TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
 \ No newline at end of file
-+TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${PYTHON_LIBRARIES})
+-- 
+2.36.1
+

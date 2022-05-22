@@ -1,0 +1,66 @@
+From 2e84475cf47832d7d1b6b9416b8a0884381c8cf8 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:17:09 +0200
+Subject: [PATCH 02/12] boost107400
+
+---
+ src/slg/engines/bakecpu/bakecputhread.cpp         | 2 ++
+ src/slg/engines/pathocl/pathoclopenclthread.cpp   | 2 ++
+ src/slg/engines/tilepathocl/tilepathoclthread.cpp | 2 ++
+ src/slg/film/filmserialize.cpp                    | 1 +
+ 4 files changed, 7 insertions(+)
+
+diff --git a/src/slg/engines/bakecpu/bakecputhread.cpp b/src/slg/engines/bakecpu/bakecputhread.cpp
+index ca0284271..7eb9e97b1 100644
+--- a/src/slg/engines/bakecpu/bakecputhread.cpp
++++ b/src/slg/engines/bakecpu/bakecputhread.cpp
+@@ -23,6 +23,8 @@
+ #include "slg/utils/varianceclamping.h"
+ #include "slg/film/imagepipeline/plugins/bakemapmargin.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff --git a/src/slg/engines/pathocl/pathoclopenclthread.cpp b/src/slg/engines/pathocl/pathoclopenclthread.cpp
+index 5d17f8ff4..0cbef9349 100644
+--- a/src/slg/engines/pathocl/pathoclopenclthread.cpp
++++ b/src/slg/engines/pathocl/pathoclopenclthread.cpp
+@@ -31,6 +31,8 @@
+ #include "slg/renderconfig.h"
+ #include "slg/engines/pathocl/pathocl.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff --git a/src/slg/engines/tilepathocl/tilepathoclthread.cpp b/src/slg/engines/tilepathocl/tilepathoclthread.cpp
+index f8e3fa2d1..4a44d13c8 100644
+--- a/src/slg/engines/tilepathocl/tilepathoclthread.cpp
++++ b/src/slg/engines/tilepathocl/tilepathoclthread.cpp
+@@ -24,6 +24,8 @@
+ #include "slg/kernels/kernels.h"
+ #include "slg/engines/tilepathocl/tilepathocl.h"
+ 
++#include <boost/bind.hpp>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff --git a/src/slg/film/filmserialize.cpp b/src/slg/film/filmserialize.cpp
+index 6cd3aee46..120eb8cb5 100644
+--- a/src/slg/film/filmserialize.cpp
++++ b/src/slg/film/filmserialize.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <boost/lexical_cast.hpp>
+ #include <boost/foreach.hpp>
++#include <boost/serialization/library_version_type.hpp>
+ #include <boost/serialization/unordered_set.hpp>
+ 
+ #include "slg/film/film.h"
+-- 
+2.36.1
+

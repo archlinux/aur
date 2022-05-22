@@ -1,0 +1,53 @@
+From 5f90e5915e2d24068495371df15f579367a45aa8 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:17:51 +0200
+Subject: [PATCH 04/12] cpplib
+
+---
+ src/slg/scene/parsematerials.cpp | 2 ++
+ src/slg/scene/parseobjects.cpp   | 2 ++
+ src/slg/scene/parsevolumes.cpp   | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/src/slg/scene/parsematerials.cpp b/src/slg/scene/parsematerials.cpp
+index 592c10e81..0288d7c5d 100644
+--- a/src/slg/scene/parsematerials.cpp
++++ b/src/slg/scene/parsematerials.cpp
+@@ -52,6 +52,8 @@
+ 
+ #include "slg/utils/filenameresolver.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff --git a/src/slg/scene/parseobjects.cpp b/src/slg/scene/parseobjects.cpp
+index ddabedfae..3cb8712ba 100644
+--- a/src/slg/scene/parseobjects.cpp
++++ b/src/slg/scene/parseobjects.cpp
+@@ -19,6 +19,8 @@
+ #include "slg/scene/scene.h"
+ #include "slg/utils/filenameresolver.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+diff --git a/src/slg/scene/parsevolumes.cpp b/src/slg/scene/parsevolumes.cpp
+index c9798c2ec..8101b5742 100644
+--- a/src/slg/scene/parsevolumes.cpp
++++ b/src/slg/scene/parsevolumes.cpp
+@@ -32,6 +32,8 @@
+ #include "slg/volumes/heterogenous.h"
+ #include "slg/volumes/homogenous.h"
+ 
++#include <atomic>
++
+ using namespace std;
+ using namespace luxrays;
+ using namespace slg;
+-- 
+2.36.1
+

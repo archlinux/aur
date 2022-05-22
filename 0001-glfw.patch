@@ -1,5 +1,14 @@
+From fdf20c2ce2ea87663031b322ca38644b0babf1ec Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:16:28 +0200
+Subject: [PATCH 01/12] glfw
+
+---
+ samples/luxcoreui/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
 diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
-index 33b50b3d0..ba1982a42 100644
+index 8b74e0704..d2e823874 100644
 --- a/samples/luxcoreui/CMakeLists.txt
 +++ b/samples/luxcoreui/CMakeLists.txt
 @@ -22,7 +22,10 @@
@@ -14,3 +23,6 @@ index 33b50b3d0..ba1982a42 100644
  include_directories(deps/glfw-3.1.1/include)
  include_directories(deps/nfd/include)
  
+-- 
+2.36.1
+

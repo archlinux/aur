@@ -1,4 +1,23 @@
+From e2f76bd9aaa4111eaf1b23d907367a982de9d5ff Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 21 May 2022 18:18:50 +0200
+Subject: [PATCH 06/12] openexr3
+
+---
+ cmake/Packages/FindOpenEXR.cmake              | 241 ++++++++++--------
+ .../src/OpenColorIO/BitDepthUtils.h           |   2 +-
+ .../src/OpenColorIO/MathUtils.h               |   2 +-
+ .../src/OpenColorIO/ops/range/RangeOp.cpp     |   2 +-
+ .../OpenColorIO/transforms/builtins/ACES.cpp  |   2 +-
+ .../transforms/builtins/OpHelpers.cpp         |   2 +-
+ .../src/libutils/oiiohelpers/oiiohelpers.cpp  |   2 +-
+ deps/openvdb-7.0.0/openvdb/Types.h            |   2 +-
+ include/slg/imagemap/imagemap.h               |   2 +-
+ include/slg/utils/halfserialization.h         |   2 +-
+ 10 files changed, 137 insertions(+), 122 deletions(-)
+
 diff --git a/cmake/Packages/FindOpenEXR.cmake b/cmake/Packages/FindOpenEXR.cmake
+index dfe517b34..a2f7b4c62 100644
 --- a/cmake/Packages/FindOpenEXR.cmake
 +++ b/cmake/Packages/FindOpenEXR.cmake
 @@ -1,123 +1,138 @@
@@ -253,43 +272,8 @@ diff --git a/cmake/Packages/FindOpenEXR.cmake b/cmake/Packages/FindOpenEXR.cmake
 +UNSET(_openexr_FIND_COMPONENTS)
 +UNSET(_openexr_LIBRARIES)
 +UNSET(_openexr_SEARCH_DIRS)
-diff --git a/include/slg/imagemap/imagemap.h b/include/slg/imagemap/imagemap.h
---- a/include/slg/imagemap/imagemap.h
-+++ b/include/slg/imagemap/imagemap.h
-@@ -19,7 +19,7 @@
- #ifndef _SLG_IMAGEMAP_H
- #define	_SLG_IMAGEMAP_H
- 
--#include <OpenEXR/half.h>
-+#include <Imath/half.h>
- 
- #include <string>
- #include <limits>
-diff --git a/include/slg/utils/halfserialization.h b/include/slg/utils/halfserialization.h
---- a/include/slg/utils/halfserialization.h
-+++ b/include/slg/utils/halfserialization.h
-@@ -19,7 +19,7 @@
- #ifndef _SLG_HALFSERIALIZATION_H
- #define	_SLG_HALFSERIALIZATION_H
- 
--#include <OpenEXR/half.h>
-+#include <Imath/half.h>
- 
- #include "luxrays/utils/utils.h"
- #include "luxrays/utils/serializationutils.h"
-diff --git a/deps/openvdb-7.0.0/openvdb/Types.h b/deps/openvdb-7.0.0/openvdb/Types.h
---- a/deps/openvdb-7.0.0/openvdb/Types.h
-+++ b/deps/openvdb-7.0.0/openvdb/Types.h
-@@ -6,7 +6,7 @@
- 
- #include "version.h"
- #include "Platform.h"
--#include <OpenEXR/half.h>
-+#include <Imath/half.h>
- #include <openvdb/math/Math.h>
- #include <openvdb/math/BBox.h>
- #include <openvdb/math/Quat.h>
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h b/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
+index a8b3cbd94..bb0163bff 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
 @@ -7,7 +7,7 @@
@@ -302,6 +286,7 @@ diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h b/deps/openc
  
  namespace OCIO_NAMESPACE
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h b/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
+index 309c6244f..0873d4908 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
 @@ -9,7 +9,7 @@
@@ -314,6 +299,7 @@ diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h b/deps/opencolor
  namespace OCIO_NAMESPACE
  {
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp b/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
+index b6fb6d9e7..e7389203c 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
 @@ -7,7 +7,7 @@
@@ -326,6 +312,7 @@ diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp b/deps
  #include "MathUtils.h"
  #include "ops/lut1d/Lut1DOpData.h"
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp b/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
+index 20968c0da..9ee2ac27a 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
 @@ -6,7 +6,7 @@
@@ -351,6 +338,7 @@ index 04b8fbd40..288ca5668 100644
  #include "transforms/builtins/OpHelpers.h"
  
 diff --git a/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp b/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
+index 3228644ad..11478daff 100644
 --- a/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
 +++ b/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
 @@ -5,7 +5,7 @@
@@ -362,3 +350,45 @@ diff --git a/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp b/d
  #include "oiiohelpers.h"
  #include "utils/StringUtils.h"
  
+diff --git a/deps/openvdb-7.0.0/openvdb/Types.h b/deps/openvdb-7.0.0/openvdb/Types.h
+index 70269cf07..0d9906828 100644
+--- a/deps/openvdb-7.0.0/openvdb/Types.h
++++ b/deps/openvdb-7.0.0/openvdb/Types.h
+@@ -6,7 +6,7 @@
+ 
+ #include "version.h"
+ #include "Platform.h"
+-#include <OpenEXR/half.h>
++#include <Imath/half.h>
+ #include <openvdb/math/Math.h>
+ #include <openvdb/math/BBox.h>
+ #include <openvdb/math/Quat.h>
+diff --git a/include/slg/imagemap/imagemap.h b/include/slg/imagemap/imagemap.h
+index 0260456ce..46d2c2241 100644
+--- a/include/slg/imagemap/imagemap.h
++++ b/include/slg/imagemap/imagemap.h
+@@ -19,7 +19,7 @@
+ #ifndef _SLG_IMAGEMAP_H
+ #define	_SLG_IMAGEMAP_H
+ 
+-#include <OpenEXR/half.h>
++#include <Imath/half.h>
+ 
+ #include <string>
+ #include <limits>
+diff --git a/include/slg/utils/halfserialization.h b/include/slg/utils/halfserialization.h
+index 551789888..2624f118c 100644
+--- a/include/slg/utils/halfserialization.h
++++ b/include/slg/utils/halfserialization.h
+@@ -19,7 +19,7 @@
+ #ifndef _SLG_HALFSERIALIZATION_H
+ #define	_SLG_HALFSERIALIZATION_H
+ 
+-#include <OpenEXR/half.h>
++#include <Imath/half.h>
+ 
+ #include "luxrays/utils/utils.h"
+ #include "luxrays/utils/serializationutils.h"
+-- 
+2.36.1
+

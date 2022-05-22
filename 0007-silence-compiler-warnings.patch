@@ -1,7 +1,7 @@
-From 1d8d704a0562a7d98036a6c08d647681d3d9fe7b Mon Sep 17 00:00:00 2001
+From 905c132fe054804cea3897d33c222a33bc41142d Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
-Date: Mon, 31 Jan 2022 19:47:16 +0100
-Subject: [PATCH] Silence C++ warnings
+Date: Sat, 21 May 2022 18:19:13 +0200
+Subject: [PATCH 07/12] silence-compiler-warnings
 
 ---
  CMakeLists.txt | 1 +
@@ -20,5 +20,5 @@ index 78316b671..74f5465ef 100644
  if (CMAKE_CONFIGURATION_TYPES)
  
 -- 
-2.34.1
+2.36.1
 
