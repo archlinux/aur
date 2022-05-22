@@ -1,7 +1,7 @@
 pkgbase = streamtuner2
 	pkgdesc = An internet radio browser
-	pkgver = 2.2.1
-	pkgrel = 5
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = https://sourceforge.net/projects/streamtuner2/
 	arch = any
 	license = custom:public domain
@@ -13,8 +13,7 @@ pkgbase = streamtuner2
 	depends = python-pyxdg
 	depends = python-requests
 	depends = youtube-dl
-	source = https://downloads.sourceforge.net/streamtuner2/streamtuner2-2.2.1+2020-05.deb
-	sha256sums = dcebec983a11e6c644d42e6e9f4c1b3cb494f869bd1ef84deb0b3b42220bb2b3
+	source = https://downloads.sourceforge.net/streamtuner2/streamtuner2-2.2.2.deb
+	sha256sums = 0ae036770c23f8e968711904a701e6a5b5033b56d161c3ea35bb3d5c0098f434
 
 pkgname = streamtuner2
-

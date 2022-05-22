@@ -1,26 +1,27 @@
+# Maintainer : silverhikari <kerrickethan@gmail.com>
 # Contributor: archus <archus@arch.int.pl>
 
 pkgname=streamtuner2
-pkgver=2.2.1
-pkgrel=5
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="An internet radio browser"
 arch=('any')
 url="https://sourceforge.net/projects/streamtuner2/"
 license=('custom:public domain')
 depends=(gtk3 python-dbus python-gobject python-pillow python-pyquery python-pyxdg python-requests youtube-dl)
-source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver+2020-0$pkgrel.deb")
-sha256sums=('dcebec983a11e6c644d42e6e9f4c1b3cb494f869bd1ef84deb0b3b42220bb2b3')
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.deb")
+sha256sums=('0ae036770c23f8e968711904a701e6a5b5033b56d161c3ea35bb3d5c0098f434')
 
 
 prepare() {
-	ar -x ${pkgname}-${pkgver}+2020-0${pkgrel}.deb
-	mkdir ${pkgname}-${pkgver}_${pkgrel}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}_${pkgrel}"
+	ar -x ${pkgname}-${pkgver}.deb
+	mkdir ${pkgname}-${pkgver}
+	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
 }
 
 package() {
 
-	cd "${pkgname}-${pkgver}_${pkgrel}"
+	cd "${pkgname}-${pkgver}"
 
 	# Creating needed directories
 	install -dm755 "$pkgdir/usr/bin/"
