@@ -1,7 +1,7 @@
 pkgbase = lib32-gd
 	pkgdesc = Library for the dynamic creation of images by programmers (32-bit)
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libgd.github.io/
 	arch = x86_64
 	license = custom
@@ -16,6 +16,6 @@ pkgbase = lib32-gd
 	source = https://github.com/libgd/libgd/archive/gd-2.3.3.tar.gz
 	source = https://github.com/libgd/libgd/commit/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch
 	sha256sums = 24429f9d0dbe0f865aaa4b1a63558242396ba9134e6cfd32ca5e486a84483350
-	sha256sums = 2ae91e3e018440c74c1628bac5deed2851234f2b5bfea49bf805312c64d0115e
+	sha256sums = 1e7bdb17e76ad6b1384222b449b9011ee131d3e1f105f9b30495a9c34b2cd5eb
 
 pkgname = lib32-gd

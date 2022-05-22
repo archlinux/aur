@@ -4,7 +4,7 @@
 _basename=gd
 pkgname=lib32-gd
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for the dynamic creation of images by programmers (32-bit)"
 arch=('x86_64')
 url="https://libgd.github.io/"
@@ -13,9 +13,9 @@ depends=('lib32-fontconfig' 'lib32-libheif' 'lib32-libraqm' 'lib32-libtiff' 'lib
          'lib32-libxpm' 'gd')
 checkdepends=('ttf-liberation')
 source=("https://github.com/libgd/libgd/archive/${_basename}-${pkgver}.tar.gz"
-        "https://github.com/libgd/libgd/commit/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch")
+        'https://github.com/libgd/libgd/commit/bdc281eadb1d58d5c0c7bbc1125ee4674256df08.patch')
 sha256sums=('24429f9d0dbe0f865aaa4b1a63558242396ba9134e6cfd32ca5e486a84483350'
-            '2ae91e3e018440c74c1628bac5deed2851234f2b5bfea49bf805312c64d0115e')
+            '1e7bdb17e76ad6b1384222b449b9011ee131d3e1f105f9b30495a9c34b2cd5eb')
 
 prepare() {
     cd libgd-${_basename}-${pkgver}
