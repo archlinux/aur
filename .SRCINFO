@@ -1,7 +1,7 @@
 pkgbase = mcomix
 	pkgdesc = A user-friendly, customizable image viewer specifically designed to handle comic books
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://sourceforge.net/p/mcomix/wiki/Home/
 	arch = any
 	license = GPL
@@ -19,9 +19,7 @@ pkgbase = mcomix
 	optdepends = unzip: for zip compressed comics
 	optdepends = lhasa: for lha compressed comics
 	optdepends = mupdf-tools: for PDF comics
-	source = https://downloads.sourceforge.net/project/mcomix/MComix-2.0.1/mcomix-2.0.1.tar.gz
-	source = b6fe038db.patch
-	md5sums = afa6e2ba9c843e82b346b21d316dbc15
-	md5sums = 6dab75dc1be41f522ce9271e1c3d62a2
+	source = https://downloads.sourceforge.net/project/mcomix/MComix-2.0.2/mcomix-2.0.2.tar.gz
+	md5sums = 43c1b65fc21168ac8c7eaee71ee79c1b
 
 pkgname = mcomix
