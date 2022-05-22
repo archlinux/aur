@@ -1,6 +1,6 @@
 pkgbase = qpwgraph-qt5
 	pkgdesc = a pipewire graph using qt(qt5 version)
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/rncbc/qpwgraph
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qpwgraph-qt5
 	depends = hicolor-icon-theme
 	provides = qpwgraph
 	conflicts = qpwgraph
-	source = https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v0.2.6/qpwgraph-v0.2.6.tar.gz
-	sha256sums = d9f8109ef87d947948f5d61f60480968d925d7a93fcf15e7fca8c45f194e2f90
+	source = https://gitlab.freedesktop.org/rncbc/qpwgraph/-/archive/v0.3.0/qpwgraph-v0.3.0.tar.gz
+	sha256sums = 1d06bcd8d081e8341b4320e94388f1320145a0f536169cbeddd2762defc8f352
 
 pkgname = qpwgraph-qt5
