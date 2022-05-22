@@ -2,7 +2,7 @@
 # Contributors: Felix Seidel, Claudia Pellegrino, Liu Yuxuan
 
 pkgname=1password-cli
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
@@ -13,16 +13,16 @@ install=${pkgname}.install
 
 case "$CARCH" in
   arm*) _pkgarch='arm'
-    sha256sums+=('31fe9f77bba55470df8edac7a49b80d22e54e5e273a7bc9e854d85b5ea894b3d')
+    sha256sums+=('77b00b5d655baf90ed8cb7ff1a7410f0922a3a24804312455cd1ec2a83221111')
     ;;
   aarch64) _pkgarch='arm64'
-    sha256sums+=('62b76bcb760a707fc46dac365536e791f94b83571f3aaaeac27b9bedb85a38aa')
+    sha256sums+=('0261238d4b9db136bc43c3b304c685600e617858e0c676330b3d4ef0a25f5c99')
     ;;
   i686) _pkgarch='386'
-    sha256sums+=('f2214557be3ceea6a419c58475337bfdaacce1b40c9a7f0394d5809cd1f23d7a')
+    sha256sums+=('58294b35f65f42035090bac61afba9d700865e1be12eb0bb3406079cbb2d3618')
     ;;
   x86_64) _pkgarch='amd64'
-    sha256sums+=('c883c74c633056160539913fba21ad2603fba16e9f23fbb1dc8f9265428c4e30')
+    sha256sums+=('6239f057bcf9f6e7cac22e22ee9513d29d300f12fca3e846661c42bf18ab2be8')
     ;;
 esac
 
