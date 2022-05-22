@@ -1,6 +1,6 @@
 pkgbase = liquidprompt
 	pkgdesc = A useful adaptive prompt for Bash & Zsh
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/nojhan/liquidprompt
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = liquidprompt
 	optdepends = breezy: Show Bazaar repository status
 	optdepends = fossil: Show Fossil repository status
 	conflicts = liquidprompt-git
-	source = https://github.com/nojhan/liquidprompt/archive/v2.0.4.tar.gz
-	sha256sums = 9e770029e78e0669031320b27e7614dea42547653c9bdc459f4f45c7627df0b2
+	source = https://github.com/nojhan/liquidprompt/archive/v2.0.5.tar.gz
+	sha256sums = aec7a1a2d2b5aee5db30895ebe8fddde2f59db0e23fbf55e627acc0551b16465
 
 pkgname = liquidprompt
