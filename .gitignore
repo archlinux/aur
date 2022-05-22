@@ -2,6 +2,7 @@
 /firefox-extension-netvyne-git
 /src
 /pkg
+*.log
 *.pkg.*
 *.tar.*
 *.zip
