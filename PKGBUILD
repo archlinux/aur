@@ -1,6 +1,6 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=hipify-clang
-pkgver=5.1.1
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='Convert CUDA to Portable C++ Code '
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('rocm-llvm' 'cuda')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('2d1bdfc75f5be4895e4b15a00cbf5a6869df17c79a8fefdf65a3834c47201429')
+sha256sums=('6354b08b8ab2f4c481398fb768652bae00bb78c4cec7a11d5f6c7e4cb831ddf1')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
