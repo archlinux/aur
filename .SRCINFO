@@ -1,15 +1,12 @@
 pkgbase = abricotine
 	pkgdesc = A markdown editor with inline preview
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://abricotine.brrd.fr
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
 	makedepends = nodejs
-	makedepends = libxcrypt-compat
-	makedepends = rpm-tools
-	makedepends = dpkg
 	depends = libxss
 	source = abricotine-1.1.2.tar.gz::https://github.com/brrd/abricotine/archive/1.1.2.tar.gz
 	source = abricotine.desktop
