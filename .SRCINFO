@@ -1,15 +1,15 @@
 pkgbase = alhp-keyring
 	pkgdesc = ALHP PGP keyring
-	pkgver = 20211125
+	pkgver = 20220522
 	pkgrel = 1
 	url = https://git.harting.dev/ALHP/alhp-keyring
 	install = alhp-keyring.install
 	arch = any
 	license = GPL
-	source = https://f.harting.dev/alhp-keyring/alhp-keyring-20211125.tar.gz
-	source = https://f.harting.dev/alhp-keyring/alhp-keyring-20211125.tar.gz.sig
+	source = https://f.harting.dev/alhp-keyring/alhp-keyring-20220522.tar.gz
+	source = https://f.harting.dev/alhp-keyring/alhp-keyring-20220522.tar.gz.sig
 	validpgpkeys = 2E3B2B05A332A7DB9019797848998B4039BED1CA
-	b2sums = 39fd6edd9b509c1520085d30cd56ad7459ad25df9e68a26ed014d3798436a87626c21250009860d0fdaa91c051cf7b1e53418cd93140b28471cbc5c516b6e5df
+	b2sums = 6fb02c2101b4f289c9583ac9bb55c62426b074926bfcfe249c0a6632f044ae652cf1424dc05951d42ed064167f7bd153a363c6cdcbc5300f35cf4b11ce2e765a
 	b2sums = SKIP
 
 pkgname = alhp-keyring
