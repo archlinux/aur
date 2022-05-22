@@ -1,6 +1,6 @@
 pkgbase = newmat-shared
 	pkgdesc = C++ matrix library
-	pkgver = 10
+	pkgver = 10E
 	pkgrel = 1
 	url = http://www.robertnz.net
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = newmat-shared
 	sha256sums = 57a4875047ea1a4a71d70509cc1e7018c13e0a71bde8f0d7d16ba1cabbec30aa
 
 pkgname = newmat-shared
-
