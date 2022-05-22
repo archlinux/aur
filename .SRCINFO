@@ -10,9 +10,7 @@ pkgbase = deadbeef-plugin-discord-git
 	makedepends = wget
 	depends = deadbeef
 	source = ddb_discord_presence::git+https://github.com/kuba160/ddb_discord_presence
-	source = ddb_discord_presence-makefile.patch
 	sha256sums = SKIP
-	sha256sums = 5f9f2a604c20f0ea877542c2dcc7cc3d5372b026f310bdfd65214664452683a9
 
 pkgname = deadbeef-plugin-discord-git
 

@@ -12,10 +12,8 @@ url="https://github.com/kuba160/ddb_discord_presence"
 license=('BSD')
 depends=('deadbeef')
 makedepends=('git' 'wget')
-source=("${_pkgname}::git+https://github.com/kuba160/${_pkgname}"
-        "${_pkgname}-makefile.patch")
-sha256sums=('SKIP'
-            '5f9f2a604c20f0ea877542c2dcc7cc3d5372b026f310bdfd65214664452683a9')
+source=("${_pkgname}::git+https://github.com/kuba160/${_pkgname}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -26,9 +24,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-
-  # Arch compile FLAGS
-  patch -p1 -i ../${_pkgname}-makefile.patch
 
   make submodules_load
   make discord-rpc-patch
