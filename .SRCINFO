@@ -1,0 +1,12 @@
+pkgbase = ly-aur
+	pkgdesc = TUI Display Manager
+	pkgver = v0.5.3.41
+	pkgrel = 1
+	url = https://github.com/fairyglade/ly.git
+	arch = any
+	license = WTFPL
+	makedepends = git
+	source = git+https://github.com/fairyglade/ly.git
+	md5sums = SKIP
+
+pkgname = ly-aur
