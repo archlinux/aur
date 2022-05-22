@@ -1,0 +1,21 @@
+pkgbase = i3ass-git
+	pkgdesc = A bash-script collection to assist the use of i3-wm.
+	pkgver = r448.fdaa000
+	pkgrel = 1
+	url = https://github.com/budlabs/i3ass
+	arch = any
+	license = MIT
+	makedepends = gawk
+	makedepends = sed
+	depends = bash>=4.0.0
+	depends = i3-wm
+	depends = gawk
+	depends = sed
+	optdepends = rofi
+	optdepends = xdotool
+	conflicts = i3ass
+	conflicts = i3-gaps
+	source = i3ass-git::git+https://github.com/budlabs/i3ass
+	sha256sums = SKIP
+
+pkgname = i3ass-git
