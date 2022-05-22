@@ -1,18 +1,39 @@
 # Maintainer: alltidsemester <alltidsemester+git@pm.me>
 pkgname=amen
-pkgver=0.0.1
+pkgver=0.0.1.r3.ga5a743a
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A CLI menu tool utilizing abbreviations"
-url="https://github.com/Kniben/amen"
+pkgdesc='A CLI menu tool utilizing abbreviations'
+source=('git+https://github.com/Kniben/amen.git')
+md5sums=('SKIP')
+url='https://github.com/Kniben/amen'
 license=('MIT')
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-    return 0
+    cd "$srcdir/$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    cd "$srcdir/$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-    cd $srcdir
-    cargo install --root="$pkgdir" --git=https://github.com/Kniben/amen.git
+    cd "$srcdir/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
