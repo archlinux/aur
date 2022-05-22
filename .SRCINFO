@@ -1,0 +1,18 @@
+pkgbase = bux-sqlite
+	pkgdesc = Wrapper classes and utilities of the original SQLite3 CAPI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/buck-yeh/bux-sqlite.git
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	makedepends = binutils
+	makedepends = fakeroot
+	makedepends = gawk
+	depends = sqlite
+	depends = fmt
+
+pkgname = bux-sqlite
