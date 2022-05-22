@@ -1,6 +1,6 @@
 pkgbase = vopono-bin
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = vopono-bin
 	provides = vopono
 	conflicts = vopono
 	noextract = vopono
-	source_x86_64 = vopono-0.9.0::https://github.com/jamesmcm/vopono/releases/download/0.9.0/vopono_0.9.0_linux_x86-64_gcc
-	sha256sums_x86_64 = 315b2aaac0108e75f0ee7c2b108ad49fcf3926fd4fdc667243226fc7aed5d565
-	source_armv7h = vopono-0.9.0::https://github.com/jamesmcm/vopono/releases/download/0.9.0/vopono_0.9.0_linux_armv7
-	sha256sums_armv7h = 298d2b2d33057eb1766a23040e6b2aa704a879a77c5efdb5aca6dbdcd44f0ed7
+	source_x86_64 = vopono-0.9.1::https://github.com/jamesmcm/vopono/releases/download/0.9.1/vopono_0.9.1_linux_x86-64_gcc
+	sha256sums_x86_64 = 2cc5ad5b8505807ad4d4eef78023ddc7f7a5363baef76b420884162a071d7355
+	source_armv7h = vopono-0.9.1::https://github.com/jamesmcm/vopono/releases/download/0.9.1/vopono_0.9.1_linux_armv7
+	sha256sums_armv7h = 4b8f1f68ed9d0fa7486f9a73f694e0ef5de6bd1ee09ee55ceeebfae26a476fa1
 
 pkgname = vopono-bin
