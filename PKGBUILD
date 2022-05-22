@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=firefox-extension-netvyne-git
-pkgver=1.0.1.r29.c4e0dd6
+pkgver=1.0.9.r37.3d66124
 pkgrel=1
 pkgdesc='Firefox extension to leave and read comments on any URL'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/netvyne/firefoxext'
 license=('MIT')
 groups=('firefox-addons')
 depends=('firefox')
-makedepends=('git' 'jq' 'moreutils' 'nodejs' 'yarn')
+makedepends=('git' 'jq' 'moreutils' 'nodejs' 'npm' 'python' 'yarn' 'zip')
 options=('!strip')
 
 source=(
