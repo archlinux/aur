@@ -1,17 +1,15 @@
 pkgbase = brightnessctl-git
 	pkgdesc = Lightweight brightness control tool
-	pkgver = 0.4.r9.g4500f76
+	pkgver = 0.5.1.r17.gef49d47
 	pkgrel = 1
 	url = https://github.com/Hummer12007/brightnessctl
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = pkg-config
 	provides = brightnessctl
 	conflicts = brightnessctl
-	source = git://github.com/Hummer12007/brightnessctl
+	source = brightnessctl-git::git+https://github.com/Hummer12007/brightnessctl.git
 	sha256sums = SKIP
 
 pkgname = brightnessctl-git
-
