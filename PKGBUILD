@@ -12,13 +12,13 @@ pkgname=openfoam-com
 pkgver=v2112
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (www.openfoam.com)"
 arch=('i686' 'x86_64')
-url="http://www.openfoam.com/"
-license=('GPL')
+url="http://www.openfoam.com"
+license=('GPL3')
 install="${pkgname}.install"
-depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis')
+depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis' 'kahip')
 
 source=('https://sourceforge.net/projects/openfoam/files/v2112/OpenFOAM-v2112.tgz')
 
@@ -50,7 +50,7 @@ export WM_MPLIB=SYSTEMOPENMPI
     -boost boost-system \
     -cgal  cgal-system \
     -fftw  fftw-system \
-    -kahip kahip-none \
+    -kahip kahip-system \
     -scotch scotch-system \
     -paraview paraview-system \
     ;
@@ -74,7 +74,7 @@ build() {
   # changes to avoid linking problems related to gcc 11
   # check this for the next upgrade!
   pwd
-  sed -i 's/g++ -std=c++11/g++ -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0/g' $projectDir/wmake/rules/General/Gcc/c++
+  sed -i 's/g++$(COMPILER_VERSION) -std=c++11/g++$(COMPILER_VERSION) -std=c++14 -D_GLIBCXX_USE_CXX14_ABI=0/g' $projectDir/wmake/rules/General/Gcc/c++
 
   # Avoid external influence on the environment
   export FOAM_CONFIG_MODE="o"
