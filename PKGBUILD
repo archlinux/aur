@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=tut
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='A TUI for Mastodon with vim inspired keys'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8c6dd035f06669bffe98312f313fd74d155c893abade6a67b1d02e3583d0169c')
+sha256sums=('67c48a6e8f28e01f61aeb62566601bf88f5afc5a917f0d2e4b97d215330c245e')
 
 build() {
   cd $pkgname-$pkgver
