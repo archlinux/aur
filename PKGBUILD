@@ -1,5 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x.dev>
-# Contributor: Luke Horwell <code@horwell.me>
+# Maintainer: Luke Horwell <code@horwell.me>
+# Contributor: Jonathon Fernyhough <jonathon+m2x.dev>
 # Contributor: Tomasz Gąsior <tomaszgasior.pl>
 
 # This file is based on original PKGBUILD of GTK3 package.
