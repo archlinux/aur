@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r77624.6c833594a1
+pkgver=r78263.ca3bfde193
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -50,7 +50,6 @@ build() {
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_ParaView_vtkcatalyst=OFF \
       -DVTK_QT_VERSION=5 \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
