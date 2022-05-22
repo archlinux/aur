@@ -1,0 +1,19 @@
+pkgbase = conbatt-rs-git
+	pkgdesc = Displays controller battery as notifications
+	pkgver = 0.1.0.r0.g79ebba8
+	pkgrel = 1
+	url = https://github.com/albarozzz/conbatt-rs
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = conbatt-rs-git
+	conflicts = conbatt-rs-git
+	backup = home/albaro/.config/conbatt-rs/controller.png
+	backup = etc/systemd/user/conbatt.service
+	source = conbatt-rs-git::git+https://github.com/albarozzz/conbatt-rs
+	md5sums = SKIP
+
+pkgname = conbatt-rs-git
