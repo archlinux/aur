@@ -1,7 +1,7 @@
 # Maintainer:       zzjzxq33 <wojiushixxx at 126 dot com>
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
-pkgver=20220515
+pkgver=20220522
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
@@ -11,15 +11,15 @@ depends=('electron16')
 conflicts=("${pkgname}-git")
 source=(
 	'bbg.sh'
-	'icon.png'
+	'icon.png'::'https://github.com/baiyang-lzy/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png'
 	'bbg.desktop'
 	"app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
 sha256sums=(
 	'ef39a1c67ffe2228d8bb51256a5a666d8ecbbfbc935c1f515a6c087ba5fbe924'
-	'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
+	'd5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
-	'fa07c2c8fce53fc77ef91afcc5cc6062c15dded119d404e182d80b0c55d63068'
+	'04089ec7bd1b792c372c4eece86d7bd8048708593044fa6e6c75f99e0b030fa3'
 )
 
 package() {
