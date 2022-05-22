@@ -47,6 +47,7 @@ def magnet_makepkg(link, output_file, download_dir=getcwd()):
     btt_cmd = ["/usr/bin/transmission-cli",
                f"{magnet_link}",
                f"--download-dir={download_dir}",
+               "--portmap",
                f"--finish /usr/bin/transmission-quit",
                "|| echo 0"]    
 
