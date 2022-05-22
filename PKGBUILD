@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.39.0.r17.g76dca1b4
+pkgver=2.42.0.r1.ge2ef8822
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -16,17 +16,16 @@ makedepends=('git' 'cmake' 'boost')
 provides=('i2pd' 'i2p-router')
 conflicts=('i2pd')
 backup=('etc/i2pd/i2pd.conf'
-        'etc/i2pd/tunnels.conf')
+        'etc/i2pd/tunnels.conf'
+        'etc/logrotate.d/i2pd')
 source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
-        '010-i2pd-use-arch-flags-on-tests.patch'
-        '020-i2pd-config.patch'
-        '030-i2pd-do-not-override-config.patch'
-        '040-i2pd-systemd-service-hardening.patch'
-        '050-i2pd-tunnels-d-readme.patch'
+        '010-i2pd-config.patch'
+        '020-i2pd-do-not-override-config.patch'
+        '030-i2pd-systemd-service-hardening.patch'
+        '040-i2pd-tunnels-d-readme.patch'
         'i2pd.sysusers'
         'i2pd.tmpfiles')
 sha256sums=('SKIP'
-            'f6ac6e147a3cd12bbd1766c49869e716d9570fb2ec4a51999cc02f074d080772'
             '45dae1e2f798d23df92c996c233fccb07349d62992d0f625be7fd913719875af'
             'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
             '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
@@ -35,11 +34,10 @@ sha256sums=('SKIP'
             'fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac')
 
 prepare() {
-    patch -d i2pd -Np1 -i "${srcdir}/010-i2pd-use-arch-flags-on-tests.patch"
-    patch -d i2pd -Np1 -i "${srcdir}/020-i2pd-config.patch"
-    patch -d i2pd -Np1 -i "${srcdir}/030-i2pd-do-not-override-config.patch"
-    patch -d i2pd -Np1 -i "${srcdir}/040-i2pd-systemd-service-hardening.patch"
-    patch -d i2pd -Np1 -i "${srcdir}/050-i2pd-tunnels-d-readme.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/010-i2pd-config.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/020-i2pd-do-not-override-config.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/030-i2pd-systemd-service-hardening.patch"
+    patch -d i2pd -Np1 -i "${srcdir}/040-i2pd-tunnels-d-readme.patch"
 }
 
 pkgver() {
@@ -78,6 +76,9 @@ package() {
     install -D -m644 contrib/i2pd.service   -t "${pkgdir}/usr/lib/systemd/system"
     install -D -m644 "${srcdir}/i2pd.sysusers" "${pkgdir}/usr/lib/sysusers.d/i2pd.conf"
     install -D -m644 "${srcdir}/i2pd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/i2pd.conf"
+    
+    # logrotate
+    install -D -m644 contrib/i2pd.logrotate "${pkgdir}/etc/logrotate.d/i2pd"
     
     # tunnels.d examples
     install -D -m644 contrib/tunnels.d/{*.conf,README} -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
