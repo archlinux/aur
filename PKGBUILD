@@ -3,8 +3,8 @@
 # Contributor: Lazaros Koromilas <koromilaz@gmail.com>
 
 pkgname=khronos-ocl-icd
-pkgver=2022.01.04
-pkgrel=2
+pkgver=2022.05.18
+pkgrel=1
 pkgdesc='Khronos Group OpenCL installable client driver (ICD) loader'
 arch=('x86_64')
 url='https://www.khronos.org/registry/OpenCL/'
@@ -12,16 +12,15 @@ license=('Apache')
 depends=('glibc'
         'opencl-driver')
 makedepends=('cmake'
-             'opencl-headers-git>=2022.01.04') # Arch/extra/opencl-headers doesn't have the cmake pkg configs yet
+             "opencl-headers-git>=${pkgver}") # Arch/extra/opencl-headers doesn't have the cmake pkg configs yet
 provides=('ocl-icd'
           'opencl-icd-loader')
 conflicts=('ocl-icd')
-# _pkgver_or_commit="v${pkgver}"
-_pkgver_or_commit='c8490f9d2eb52dd12a1e9652c4e5369ff5af18d8'
+_pkgver_or_commit="${pkgver}"
+# _pkgver_or_commit='eaf36a67c0f4c496078e51097a40a01718198edc'
 _reponame='OpenCL-ICD-Loader'
-source=("${pkgname}-${_pkgver_or_commit}.tar.gz::https://github.com/KhronosGroup/${_reponame}/archive/${_pkgver_or_commit}.tar.gz")
-sha256sums=('9f65a8c27dcd2979a835e6de17ba87ddecf23ea4d26d1c3348a1648cff30e41f')
-options=('debug')
+source=("${pkgname}-${_pkgver_or_commit}.tar.gz::https://github.com/KhronosGroup/${_reponame}/archive/v${_pkgver_or_commit}.tar.gz")
+sha256sums=('71f70bba797a501b13b6b0905dc852f3fd6e264d74ce294f2df98d29914c4303')
 
 prepare() {
   # set cmake pkg info dirs for opencl-headers-git
