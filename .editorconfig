@@ -18,3 +18,7 @@ trim_trailing_whitespace = false
 
 [PKGBUILD]
 indent_size = 2
+
+[*.sh]
+end_of_line = lf
+indent_size = 2

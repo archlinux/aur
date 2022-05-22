@@ -2,7 +2,7 @@
 
 pkgname=playdate-sdk
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('any')
 url='https://play.date/dev/'
@@ -38,12 +38,6 @@ prepare() {
     -C "${srcdir}/${pkgname}-${pkgver}" \
     --exclude='setup.sh' \
     --strip-components=1
-}
-
-pkgver() {
-  curl -s -o /dev/null -w '%{json}' "${_url_base}-latest.tar.gz" \
-    | jq -r '.redirect_url' \
-    | sed -E 's/.*SDK-(.*)\.tar\.gz/\1/'
 }
 
 package() {

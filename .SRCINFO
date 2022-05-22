@@ -1,7 +1,7 @@
 pkgbase = playdate-sdk
 	pkgdesc = SDK for the Playdate console with Lua and C APIs, docs, and a simulator
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://play.date/dev/
 	install = playdate-sdk.install
 	arch = any
