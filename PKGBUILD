@@ -8,8 +8,8 @@ license=(GPL3)
 depends=(glib2 libgudev python)
 makedepends=(git libxslt meson systemd)
 # test dependencies need to be present for unittest_inspector at build time
-makedepends+=(dbus-python umockdev)
-checkdepends=(dbus-python umockdev)
+makedepends+=(dbus-python python-dbusmock umockdev)
+checkdepends=(dbus-python python-dbusmock umockdev)
 _commit=992977918026e4eec352d38728b2e55f73fd02d2
 source=("git+https://gitlab.freedesktop.org/hadess/switcheroo-control.git#commit=$_commit")
 sha256sums=('SKIP')
