@@ -11,7 +11,7 @@ arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('libxss')
-makedepends=('npm' 'git' 'dpkg' 'rpm' 'libxcrypt-compat')
+makedepends=('npm' 'git')
 source=("abricotine::git+https://github.com/brrd/abricotine"
         "abricotine.desktop")
 sha256sums=('SKIP'
@@ -27,7 +27,7 @@ build() {
     cd "${srcdir}/abricotine"
 
     npm install --cache ../cache --devdir="${srcdir}/devdir"
-    npm run dist --cache ../cache --devdir="${srcdir}/devdir"
+    npm run pack --cache ../cache --devdir="${srcdir}/devdir"
 }
 
 package() {
