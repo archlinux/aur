@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=pnpm-bin
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager"
 arch=("x86_64")
@@ -10,7 +10,7 @@ options=("!strip")
 provides=("pnpm")
 conflicts=("pnpm" "pnpm-git")
 source=("pnpm-$pkgver::$url/releases/download/v${pkgver}/pnpm-linux-x64")
-sha256sums=('e58bedf12a4e258674d2381d5ce36a2719efd59df78705340417d670f376b1aa')
+sha256sums=('4dc9d2bd7066c73905fca8e0978da92d82ca0fbe14e58a57736a6fc30a4be2c5')
 
 package() {
   install -d "$pkgdir/usr/bin"
