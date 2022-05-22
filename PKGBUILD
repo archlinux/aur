@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2747
+pkgver=1.7.2759
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   libaio
   libjpeg-turbo
   libpcap
+  libzip
   libgl # For Steam Deck
   xorg-xrandr # For Steam Deck
   libxrender # For Steam Deck
@@ -29,10 +30,12 @@ depends=(
   portaudio
   libsamplerate
   sdl2
+  fmt
   soundtouch
   wxgtk3
   wayland
   rapidyaml
+  zstd-cmake # AUR Package
 )
 makedepends=(
   cmake
@@ -47,15 +50,12 @@ provides=(pcsx2)
 conflicts=(pcsx2)
 source=(
 git+https://github.com/PCSX2/pcsx2.git
-git+https://github.com/fmtlib/fmt.git
 git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
-git+https://github.com/nih-at/libzip.git
-git+https://github.com/facebook/zstd.git
 git+https://github.com/mozilla/cubeb.git
 git+https://github.com/KhronosGroup/glslang.git
-git+https://github.com/libsdl-org/SDL.git
+git+https://github.com/KhronosGroup/Vulkan-Headers.git
 )
 sha256sums=(SKIP)
 
@@ -68,16 +68,18 @@ pkgver()
 prepare()
 {
   cd $srcdir/pcsx2/3rdparty
-  git submodule init
-  git config submodule.https://github.com/fmtlib/src/fmt.git.url fmt
+  git submodule update --init libchdr
+  git submodule update --init gtest
+  git submodule update --init cubeb
+  git submodule update --init imgui
+  git submodule update --init glslang
+  git submodule update --init vulkan-headers
   git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
   git config submodule.https://github.com/google/googletest.git.url gtest
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
   git config submodule.https://github.com/ocornut/imgui.git.url imgui
   git config submodule.https://github.com/KhronosGroup/glslang.git glslang
-  git config submodule.https://github.com/libsdl-org/SDL.git SDL
-  git config submodule.https://github.com/nih-at/libzip.git libzip
-  git config submodule.https://github.com/facebook/zstd.git ztsd
+  git config submodule.https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
   git submodule update
 }
 
@@ -93,6 +95,7 @@ build()
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
     -USE_VULKAN=ON \
+    -DUSE_SYSTEM_LIBS=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE \
@@ -107,9 +110,6 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
