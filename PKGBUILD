@@ -21,7 +21,7 @@ source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git#commit='$_COMMI
 md5sums=('SKIP')
 
 _VER=$(echo "$_RES" | grep '<a aria-current="page"' | awk '{print $8}')
-_VER=${VER:1}
+_VER=${_VER:1}
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
