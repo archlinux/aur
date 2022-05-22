@@ -3,7 +3,7 @@
 
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
-pkgver=1.28.3
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('d61037b3f21f7fc7d5cfe4eea683789259e7ccb9eef5f7229cbc62f31ea6ba32'
+sha256sums=('5b73f5516190a7a7537a32d3c3abb69daae41bda273b930296e3a5bbdd1cd47d'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
@@ -60,7 +60,10 @@ EOF
   pg_ctl reload
   # Upstream tests require LANG=en_GB.UTF-8 or LANG=C.UTF-8 :/
   # https://github.com/tlocke/pg8000/blob/1.19.2/test/native/test_typeconversion.py#L455-L458
-  PYTHONPATH="$PWD" LANG=C.UTF-8 pytest test
+  # test_readme: skipped as many tests need a postgresql instance listening on the default port
+  # localhost:5432, which may cause conflicts until devtools supports a separate network namespace [1]
+  # [1] https://gitlab.archlinux.org/archlinux/devtools/-/issues/72
+  PYTHONPATH="$PWD" LANG=C.UTF-8 pytest test -k 'not test_readme'
   pg_ctl stop
 }
 
