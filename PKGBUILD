@@ -1,20 +1,37 @@
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-_realname=sigtools
 pkgname=python-sigtools
-pkgver=2.0.1
+_pkg="${pkgname#python-}"
+pkgver=3.0.0rc4
 pkgrel=1
-pkgdesc="Joblties for working with 3.3's inspect.Signature objects.ib is a set of tools to provide lightweight pipelining in Python."
+pkgdesc='Utilities for working with inspect.Signature objects'
 url="https://pypi.python.org/pypi/sigtools"
-arch=(any)
+arch=('any')
 license=('MIT')
-depends=('python' 'python-funcsigs')
-makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/0e/bc/29248bd3ad5cc14dffa7ce6d26878c186766eb7febebc2720cbbe9a13a60/$_realname-$pkgver.tar.gz")
-md5sums=('f67b9d4d1e670c2f594c50ac50303652')
+depends=('python-funcsigs')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
+        'remove-tests.patch')
+sha256sums=('525ba6bf2f756df30727dff6ccdccb99bffbf0be000ca64a5d7c1e236a4efcdb'
+            'c42b7d2ed37ee0ae11e8b1c3f1323cb824ef2243792f12573189c8e1ef84f7c3')
+
+prepare() {
+	patch -p1 -d "$_pkg-$pkgver" < remove-tests.patch
+}
+
+build() {
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir/$_realname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }

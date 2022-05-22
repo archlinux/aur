@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index effeedf..acc5416 100755
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,7 @@ setup(
+     author='Yann Kaiser',
+     author_email='kaiser.yann@gmail.com',
+     url='https://sigtools.readthedocs.io/',
+-    packages=['sigtools', 'sigtools.tests'],
++    packages=['sigtools'],
+     tests_require=tests_deps,
+     install_requires=[],
+     python_requires='>=3.6',
