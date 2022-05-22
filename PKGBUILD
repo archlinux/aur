@@ -2,7 +2,7 @@
 
 pkgname=zshbinsh
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Relink /bin/sh to zsh"
 arch=('any')
 license=('Unlicense')
