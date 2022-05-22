@@ -2,10 +2,10 @@
 # Maintainer: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-new
-_ver=3.5.2
-_build=218
+_ver=3.5.3
+_build=219
 pkgver=${_ver}.${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="An unofficial build of HMCL that trying to compile and run with the latest version of java. "
 arch=('any')
 url="https://github.com/so1ar/HMCL-build"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '576f740216d29f6a1052e281a65290b932b770d90cdf33dad6ba32a384d9dc13')
+            'fe536b213959538474955593f1e5db73d208b499c40a414a4f428f6cd318017a')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
