@@ -1,4 +1,5 @@
-# Maintainer: mark.blakeney at bullet-systems dot net
+# Maintainer: niklas.fiekas at backscattering dot de
+# Contributor: mark.blakeney at bullet-systems dot net
 # Contributor: Tod Jackson <tod.jackson@gmail.com>
 # Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: user6553591 <Message on Reddit>
@@ -8,10 +9,10 @@
 
 pkgname=stockfish
 pkgver=15
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski"
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
@@ -27,15 +28,32 @@ build() {
     _arch=armv8
   elif [[ "$CARCH" == "i686" ]]; then
     _arch=x86-32
+  elif grep -wq avx512dq /proc/cpuinfo && grep -wq avx512vl /proc/cpuinfo && grep -wq avx512_vnni /proc/cpuinfo; then
+    _arch=x86-64-vnni512
+  elif grep -wq avx512f /proc/cpuinfo && grep -wq avx512bw /proc/cpuinfo; then
+    _arch=x86-64-avx512
   elif grep -wq bmi2 /proc/cpuinfo; then
-    _arch=x86-64-bmi2
-  elif grep -w popcnt /proc/cpuinfo | grep -wqv cr8_legacy; then
-    _arch=x86-64-modern
+    if grep -wq GenuineIntel /proc/cpuinfo; then
+      _arch=x86-64-bmi2
+    elif grep -wq AuthenticAMD /proc/cpuinfo && [[ "$(grep --max-count=1 'cpu family' /proc/cpuinfo | sed -e 's/^.*: //')" -ge 25 ]]; then
+      _arch=x86-64-bmi2
+    else
+      # On AMD, bmi2 is emulated before Zen 3, so that using it is a slowdown
+      _arch=x86-64-avx2
+    fi
+  elif grep -wq avx2 /proc/cpuinfo; then
+    _arch=x86-64-avx2
+  elif grep -wq sse4_1 /proc/cpuinfo && grep -wq popcnt /proc/cpuinfo; then
+    _arch=x86-64-sse41-popcnt
+  elif grep -wq ssse3 /proc/cpuinfo; then
+    _arch=x86-64-ssse3
+  elif grep -wq pni /proc/cpuinfo && grep -wq popcnt /proc/cpuinfo; then
+    _arch=x86-64-sse3-popcnt
   else
     _arch=x86-64
   fi
 
-  make build ARCH="$_arch" COMP=gcc
+  make ARCH="$_arch" profile-build
 }
 
 package() {
