@@ -7,19 +7,19 @@
 run_tests=false
 
 pkgname=certmonger
-pkgver=0.79.14
+pkgver=0.79.15
 pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/certmonger"
 license=(GPL)
 depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson)
+makedepends=(rpm-tools)
 checkdepends=(diffutils dos2unix expect)
-backup=(etc/certmonger/certmonger.conf
-        etc/tmpfiles.d/certmonger.conf)
+backup=(etc/certmonger/certmonger.conf)
 install=${pkgname}.install
 source=("https://pagure.io/certmonger/archive/certmonger-${pkgver}/certmonger-certmonger-${pkgver}.tar.gz")
-sha512sums=('dea5aa24a23e5a20cf0e074c5048e0c51a1816413914b2b4a62c259d3439339be56d66727f91ce733e9fb4aaaa065e08c0be7bad9454c25e1d3f4cac727b0789')
+sha512sums=('7304ce89736ca9d4dc170e39c43c1c2043dc76176fb4abe63558f2fbca277ee1988f1945e9e763db9e36a630837c436bb89965553059addb2620ee7aa9d652bf')
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
