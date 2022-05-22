@@ -1,14 +1,15 @@
-pkgbase = bitwarden-cli-bin
-	pkgdesc = Bitwarden Command-line Interface
-	pkgver = 1.22.0
+pkgbase = rose-browser
+	pkgdesc = Minimalist browser based on webkit2 and GTK4.
+	pkgver = v1.0.beta
 	pkgrel = 1
-	url = https://github.com/bitwarden/cli
+	url = https://github.com/mini-rose/rose
 	arch = x86_64
-	license = GPL3
-	makedepends = unzip
-	conflicts = bitwarden-cli
+	license = CUSTOM
+	makedepends = tar
+	depends = webkit2gtk-5.0
+	depends = gtk4
 	options = !strip
-	source = https://github.com/bitwarden/cli/releases/download/v1.22.0/bw-linux-1.22.0.zip
+	source = https://github.com/mini-rose/rose/releases/download/beta/rose.tar.gz
 	md5sums = SKIP
 
-pkgname = bitwarden-cli-bin
+pkgname = rose-browser
