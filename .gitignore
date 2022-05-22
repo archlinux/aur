@@ -1,0 +1,5 @@
+/rtcqs.desktop
+pkg/
+src/
+*.tar.*
+*.zip

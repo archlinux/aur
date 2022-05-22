@@ -1,0 +1,20 @@
+pkgbase = rtcqs
+	pkgdesc = Scanner for potential real-time bottlenecks
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = https://codeberg.org/rtcqs/rtcqs
+	arch = any
+	groups = pro-audio
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-pysimplegui: for rtcqs_gui
+	source = https://files.pythonhosted.org/packages/source/r/rtcqs/rtcqs-0.5.3.tar.gz
+	source = https://codeberg.org/rtcqs/rtcqs/raw/commit/cc129306/rtcqs.desktop
+	sha256sums = 34baf6eeb87660c8cd975221001e10c8aca73e2bf0474ca8de1afd63555f3fdd
+	sha256sums = 6540a30fffff5db0f005830c9c090e95b0312e7efec8dd5ea25d995781703da3
+
+pkgname = rtcqs
