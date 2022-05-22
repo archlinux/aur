@@ -11,7 +11,7 @@ license=("AGPL3")
 source=("transmission-makepkg"
 	"transmission-quit"
 	"makepkg.conf")
-sha256sums=("130952c1ffe57be1b82e620a243f93ee3187bb4e5616a6dc7797b2d5f0ecb8bd"
+sha256sums=("85cae10fcd3235b1f822a8420f4dda0b3eac6984b4cd6615256a6bfd506f9f47"
 	    "b07e32b4c1424d8e62adf5c05acd02e82be0a6549c49879aebeaa813b4840411"
 	    "849a4b3b5f574105f4b5e4afac7c1b16cebd805c8a3ba22910a30a432cc679c6")
 

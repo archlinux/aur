@@ -43,6 +43,7 @@ def magnet_makepkg(link, output_file, download_dir=getcwd()):
     output_file = output_file.replace(".part", "")
     magnet_link, torrent_path = makepkg_to_magnet(link)
     torrent_output_path = path_join(download_dir, torrent_path)
+    output_path = path_join(download_dir, output_file)
 
     btt_cmd = ["/usr/bin/transmission-cli",
                f"{magnet_link}",
@@ -58,13 +59,14 @@ def magnet_makepkg(link, output_file, download_dir=getcwd()):
         if f"Failed opening torrent file `{magnet_link}" in str(err.stderr):
             print(f"Error in the magnet link '{magnet_link}'")
         else:
-            error = err.stderr.decode("utf-8")
-            error = error.split("\n")
-            for line in error:
-                print(line)
+            if err.stderr:
+                error = err.stderr.decode("utf-8")
+                error = error.split("\n")
+                for line in error:
+                    print(line)
 
     try:
-        mv(torrent_output_path, download_dir)
+        mv(torrent_output_path, output_path)
     except MoveError as e:
         print(e)
         return e
