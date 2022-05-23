@@ -20,11 +20,12 @@ groups=('pro-audio' 'vst3-plugins')
 depends=('cairo' 'fontconfig' 'gcc-libs' 'glibc' 'libx11' 'libxcb'
 'libxkbcommon-x11' 'xcb-util' 'xcb-util-cursor' 'xcb-util-image'
 'xcb-util-keysyms' 'xcb-util-renderutil' 'xdg-utils')
-makedepends=('cmake' 'freetype2' 'libsndfile' 'python')
+makedepends=('cmake' 'freetype2' 'libsndfile' 'python' 'libxrandr' 'libxinerama' 'libxcursor' 'alsa-lib' 'jack')
 # makedepends=('cmake' 'freetype2' 'libsndfile' 'lv2' 'python')
 optdepends=(
   # 'lv2-host: for the LV2 plugin'
   'vst3-host: for the VST3 plugin'
+  'jack: backend for standalone'
 )
 # checkdepends=('lv2lint')
 source=("${pkgname}-${pkgver}.tgz::https://github.com/surge-synthesizer/releases-xt/releases/download/${pkgver}/surge-src-${pkgver}.tar.gz")
