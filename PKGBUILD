@@ -2,7 +2,7 @@
 
 pkgname='nfetch-bin'
 pkgdesc="A minimal linux fetch utility written in nim"
-pkgver=2.10
+pkgver=2.50
 pkgrel=0
 arch=('x86_64')
 url="https://github.com/Infinitybeond1/nfetch-src"
@@ -14,4 +14,4 @@ package() {
   install -D "nfetch-$pkgver" "$pkgdir/usr/bin/nfetch"
 }
 
-sha256sums=('cc33041abc3ac7c35fa4537e3f74e4d5a218904307079c2127d0fbd0e4ef7e7f')
+sha256sums=('6e462f96f707578a7ecc189cfef80d8f0bd432b24faf46bef32407d150987259 ')
