@@ -11,6 +11,7 @@ pkgbase = dragit-git
 	depends = gtk3
 	provides = dragit
 	conflicts = dragit
+	conflicts = dragit-bin
 	source = git+https://github.com/sireliah/dragit.git
 	sha256sums = SKIP
 
