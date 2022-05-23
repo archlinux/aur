@@ -4,21 +4,18 @@ _srcname=srp
 
 pkgname=(python-$_srcname python2-$_srcname)
 pkgbase=python-srp
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=0
 pkgdesc='Python implementation of the Secure Remote Password protocol (SRP)'
 arch=('any')
 url="https://github.com/cocagne/py$_srcname"
 license=('MIT')
 makedepends=('python' 'python2' 'python-six' 'python2-six')
-source=("$url/archive/$pkgver.tar.gz" "0001-Use-libssl.so.1.1.patch")
+source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('7cdcffc4c0bc32798ad054c3bca99d95a97b92b37df708eaca9e748153141a76'
             '301627f7766f09e7cfda7b374699311da657490a8e63ab34d6c2cb4628bd8427')
 
 prepare() {
-  cd "$srcdir/py$_srcname-$pkgver"
-  patch -p1 < "${srcdir}/0001-Use-libssl.so.1.1.patch"
-
   cd "$srcdir"
   cp -a "py$_srcname-$pkgver"{,-py2}
 }
