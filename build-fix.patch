@@ -1,0 +1,36 @@
+diff --color --unified --recursive --text libdogleg.orig/dogleg.c libdogleg.new/dogleg.c
+--- libdogleg.orig/dogleg.c	2022-05-23 13:33:30.238518177 +1000
++++ libdogleg.new/dogleg.c	2022-05-23 13:35:55.067771655 +1000
+@@ -16,7 +16,7 @@
+ #include "dogleg.h"
+ 
+ #if (CHOLMOD_VERSION > (CHOLMOD_VER_CODE(2,2)))
+-#include <suitesparse/cholmod_function.h>
++#include <cholmod_function.h>
+ #endif
+ 
+ 
+diff --color --unified --recursive --text libdogleg.orig/dogleg.h libdogleg.new/dogleg.h
+--- libdogleg.orig/dogleg.h	2022-05-23 13:33:30.238518177 +1000
++++ libdogleg.new/dogleg.h	2022-05-23 13:36:03.224407071 +1000
+@@ -5,7 +5,7 @@
+ 
+ #pragma once
+ 
+-#include <suitesparse/cholmod.h>
++#include <cholmod.h>
+ #include <stdbool.h>
+ 
+ typedef void (dogleg_callback_t)(const double*   p,
+diff --color --unified --recursive --text libdogleg.orig/Makefile libdogleg.new/Makefile
+--- libdogleg.orig/Makefile	2022-05-23 13:33:30.238518177 +1000
++++ libdogleg.new/Makefile	2022-05-23 13:35:45.554474527 +1000
+@@ -31,7 +31,7 @@
+ # packages are built.
+ OPTFLAGS := $(if $(filter -O%, $(CFLAGS)),,-O3 -ffast-math -mtune=core2) -fno-omit-frame-pointer
+ 
+-FLAGS += -ggdb  -Wall -Wextra -MMD $(OPTFLAGS) -I/usr/include/suitesparse
++FLAGS += -ggdb  -Wall -Wextra -MMD $(OPTFLAGS) -I/usr/include
+ CFLAGS += $(FLAGS) --std=gnu99
+ 
+ LDLIBS += -lcholmod -lsuitesparseconfig -llapack

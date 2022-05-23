@@ -1,0 +1,19 @@
+pkgbase = libdogleg-git
+	pkgdesc = mrcal is a generic toolkit built to solve the calibration and SFM-like problems we encounter at NASA/JPL.
+	pkgver = v0.15.4.r0.gd8e655b
+	pkgrel = 1
+	url = https://github.com/dkogan/libdogleg
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = Apache
+	makedepends = make
+	makedepends = gcc
+	depends = suitesparse
+	optdepends = 
+	source = libdogleg::git+https://github.com/dkogan/libdogleg.git#branch=master
+	source = build-fix.patch
+	md5sums = SKIP
+	md5sums = 82e1b119ee90a326c57b633b5530fe0e
+
+pkgname = libdogleg-git
