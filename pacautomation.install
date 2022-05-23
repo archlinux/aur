@@ -1,0 +1,22 @@
+# Scripting around package installation, removal, ...
+
+post_install() {
+    systemctl enable pacautomation.timer
+    systemctl --global enable pacautomation-notify.socket
+    echo "Please reboot to enable pacautomation's services or run:"
+    echo '  systemctl start pacautomation.timer'
+    echo '  systemctl --global start pacautomation-notify.socket'
+}
+
+pre_remove() {
+    systemctl disable pacautomation.timer
+    systemctl --global disable pacautomation-notify.socket
+}
+
+# Tell the user about files he may want to clean up manually
+post_remove() {
+    echo 'You may delete leftover files that were created by pacautomation:'
+    echo '  /var/log/pacautomation.log'
+    echo '  /var/spool/pacautomation/'
+    echo '  $XDG_STATE_HOME/pacautomation/ (default: $HOME/.local/state/pacautomation/)'
+}
