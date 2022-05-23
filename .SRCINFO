@@ -1,15 +1,14 @@
-pkgbase = rose-browser
+pkgbase = rose-browser-bin
 	pkgdesc = Minimalist browser based on webkit2 and GTK4.
-	pkgver = v1.0.beta
+	pkgver = 1.0.beta
 	pkgrel = 1
 	url = https://github.com/mini-rose/rose
 	arch = x86_64
 	license = CUSTOM
-	makedepends = tar
 	depends = webkit2gtk-5.0
 	depends = gtk4
 	options = !strip
 	source = https://github.com/mini-rose/rose/releases/download/beta/rose.tar.gz
 	md5sums = SKIP
 
-pkgname = rose-browser
+pkgname = rose-browser-bin
