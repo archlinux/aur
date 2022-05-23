@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 source=("git+https://gitlab.gnome.org/GNOME/gnome-panel.git#tag=${_pkgver}"
         'minimize.patch')
 sha256sums=('SKIP'
-            'a4b1bb874dcf98a2110293e4146619aef30bee38d10e8825d5de0ab67b73bc43')
+            'e9fc7811ed3cdc92746b4d8b2f9074e59f1298fe7b511531b61d4bd18bd8e4ff')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
