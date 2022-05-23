@@ -1,6 +1,6 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=pw-volume
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Basic interface to PipeWire volume controls"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('pipewire')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e55d524b96a22c19773260408f9412cac4080173afa793beb71a06fcb28a6e1d')
+sha256sums=('5bbaebe8da02e4ab4bd5ec7527ec219765a983309f9b66b1d346de3332d1af6b')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
