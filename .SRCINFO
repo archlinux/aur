@@ -9,6 +9,7 @@ pkgbase = system76-scheduler
 	makedepends = git
 	makedepends = rust
 	makedepends = just
+	makedepends = linux-headers
 	depends = bcc-tools
 	depends = python-bcc
 	backup = etc/system76-scheduler/assignments/default.ron
