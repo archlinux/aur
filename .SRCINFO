@@ -1,7 +1,7 @@
 pkgbase = mrgingham-git
 	pkgdesc = Chessboard corner-finder for a camera calibration system
 	pkgver = v1.20.r6.g21a210b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkogan/mrgingham
 	arch = i686
 	arch = x86_64

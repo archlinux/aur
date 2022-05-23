@@ -1,7 +1,7 @@
 # Maintainer: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=mrgingham-git
 pkgver=v1.20.r6.g21a210b
-pkgrel=1
+pkgrel=2
 pkgdesc="Chessboard corner-finder for a camera calibration system "
 arch=('i686' 'x86_64')
 url="https://github.com/dkogan/mrgingham"
@@ -28,5 +28,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR=$pkgdir install
+	make DESTDIR=$pkgdir USRLIB=/usr/lib install
 }
