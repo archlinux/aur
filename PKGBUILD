@@ -3,9 +3,9 @@
 # This pkgbuild is based on his "freecad-appimage-git"
 
 pkgname=cura-appimage-bin
-_pkgname=Ultimaker_Cura
+_pkgname=Ultimaker-Cura
 _shortname=cura
-pkgver=4.13.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Ultimakers 3D printer / slicing GUI built on top of the Uranium framework'
 arch=('x86_64')
@@ -18,23 +18,22 @@ options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 noextract=('${_pkgname}-${pkgver}.AppImage')
 source=(
-    "${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${_pkgname}-${pkgver}.AppImage::https://github.com/Ultimaker/Cura/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.AppImage"
     "cura.sh"
     "cura.desktop.patch"
 )
 
 sha256sums=(
-    "7f0a7fdc0cbf804d6da289568e966c4d07f81287f3c5c11a92ab8f480a20c893"
-    "591cd8c33986ad7707e10eed49ba66e87de01c0f761f705c1650e66bc3f22991"
-    "c950da916ead034a4ce871c25ca20c5d3f0fc5d65492a082dcaf7897af357aa3"
+    "ec00f8e42a46fd24cd71e098fa713a08be4e2bcc6df17d5d02938bc6ea315754"
+    "6430e6359ff98b7c6a209181c389cfc606d1e84628793a4eb772c5e2f0d0a23f"
+    "6c1b54af7077ca101cca099f40d9627d6d69e9b11a5a6ae0667e118d764dc903"
 )
    
 prepare() {
     cd "${srcdir}"
     chmod +x $PWD/${_pkgname}-${pkgver}.AppImage
-    $PWD/${_pkgname}-${pkgver}.AppImage --appimage-extract cura.desktop
     $PWD/${_pkgname}-${pkgver}.AppImage --appimage-extract cura-icon.png
-    $PWD/${_pkgname}-${pkgver}.AppImage --appimage-extract usr/share
+    $PWD/${_pkgname}-${pkgver}.AppImage --appimage-extract cura.desktop
     patch -Np0 < $PWD/cura.desktop.patch
     sed -i "s/VERSION_PLACEHOLDER/${pkgver}/g" cura.sh
 }
@@ -42,8 +41,6 @@ prepare() {
 package() {
     install -Dm 755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${_pkgname}/${_pkgname}-${pkgver}.AppImage"
     install -Dm 755 "${srcdir}/cura.sh" "${pkgdir}/usr/bin/${_shortname}"
-    install -dm 755 "${pkgdir}/usr/share"
     install -Dm 644 "${srcdir}/squashfs-root/cura-icon.png" "${pkgdir}/usr/share/pixmaps/cura-icon.png"
     install -Dm 644 "${srcdir}/squashfs-root/cura.desktop" "${pkgdir}/usr/share/applications/cura.desktop"
-    cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/" "${pkgdir}/usr"
 }

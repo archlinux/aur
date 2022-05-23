@@ -2,12 +2,12 @@
 
 # For easier maintainability
 CURA_VERSION="VERSION_PLACEHOLDER"
-CURA_BIN_PATH="/opt/Ultimaker_Cura/Ultimaker_Cura-$CURA_VERSION.AppImage"
+CURA_BIN_PATH="/opt/Ultimaker-Cura/Ultimaker-Cura-$CURA_VERSION.AppImage"
 
 # Get full path to avoid Error Message in cura 
 [[ -n $(dirname "$1") ]] && filePath="$(realpath "$1")" || filePath="$1"
 
 # Start cura-appimage without Parameter if not given. ( Avoiding cura Error Message "No file found" )
-[[ -z $filePath ]] && $CURA_BIN_PATH || $CURA_BIN_PATH $filePath
+[[ -z $filePath ]] && $CURA_BIN_PATH || $CURA_BIN_PATH "$filePath"
 
 exit
