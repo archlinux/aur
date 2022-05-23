@@ -24,11 +24,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly"
-  go build -o build ./...
+  go build ./...
 }
 
 package() {
   cd "$srcdir"/"$pkgname"
-  install -Dm755 build/simpread-sync -t "$pkgdir"/usr/bin/
+  install -Dm755 simpread-sync -t "$pkgdir"/usr/bin/
   install -Dm644 systemd/simpread-sync@.service -t "$pkgdir"/usr/lib/systemd/system/
 }

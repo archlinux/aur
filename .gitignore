@@ -1,3 +1,6 @@
 pkg/
 src/
-simpread-sync-git
+/simpread-sync-git
+
+*.tar
+*.tar.*
