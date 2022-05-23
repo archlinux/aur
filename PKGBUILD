@@ -2,14 +2,14 @@
 
 pkgname=pix
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('desktop-file-utils' 'librsvg' 'clutter-gtk'
-        'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
+         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
 makedepends=('gnome-common' 'intltool' 'itstool'
-        'liboauth' 'libchamplain' 'libopenraw' 'exiv2')
+             'liboauth' 'libchamplain' 'exiv2')
 optdepends=('gstreamer: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
