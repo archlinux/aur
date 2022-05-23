@@ -2,11 +2,11 @@
 
 pkgname=kwin-effect-shaders-git
 _pkgname=kwin-effect-shaders
-pkgver=21.r7675418
+pkgver=159.ref9f7e8
 pkgrel=1
 pkgdesc="KDE Plasma / KWin desktop effect aimed at adding post processing effects to video games."
 arch=('i686' 'x86_64')
-url="https://github.com/kevinlekiller/kwin-effect-shader"
+url="https://github.com/kevinlekiller/kwin-effect-shaders"
 license=('GPL')
 depends=('kwin') #kf5
 makedepends=('extra-cmake-modules')
