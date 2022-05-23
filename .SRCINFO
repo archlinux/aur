@@ -42,13 +42,13 @@ pkgbase = swift-language-git
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20210726
 	source = 0001-arch-aur-patches.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
-	source = yams::git+https://github.com/jpsim/Yams#commit=4.0.2
+	source = yams::git+https://github.com/jpsim/Yams#commit=5.0.0
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
 	source = swift-cmark-gfm::git+https://github.com/apple/swift-cmark#branch=gfm
 	source = swift-docc::git+https://github.com/apple/swift-docc#branch=main
 	source = swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main
 	source = swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main
-	source = swift-experimental-string-processing::git+https://github.com/apple/swift-experimental-string-processing#commit=dev/5
+	source = swift-experimental-string-processing::git+https://github.com/apple/swift-experimental-string-processing#branch=main
 	source = swift-format::git+https://github.com/apple/swift-format#branch=main
 	source = swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main
 	source = swift-lmdb::git+https://github.com/apple/swift-lmdb#branch=main
