@@ -232,6 +232,68 @@ index 67339eae9..879905876 100644
  	org.gnome.gnome-panel.applet.initial-settings.gschema.xml \
  	org.gnome.gnome-panel.gschema.xml \
  	org.gnome.gnome-panel.object.gschema.xml \
+diff --git a/data/default.layout b/data/default.layout
+index 8e16f764a..2f15b30a6 100644
+--- a/data/default.layout
++++ b/data/default.layout
+@@ -1,48 +1,29 @@
+-[Toplevel top-panel]
+-expand=true
+-orientation=top
+-size=24
+-
+ [Toplevel bottom-panel]
+ expand=true
+ orientation=bottom
+-size=24
+-
+-[Object menu-bar]
+-object-iid=org.gnome.gnome-panel.menu::menu-bar
+-toplevel-id=top-panel
+-pack-index=0
+-
+-[Object clock]
+-object-iid=org.gnome.gnome-panel.clock::clock
+-toplevel-id=top-panel
+-pack-type=end
+-pack-index=1
++alignment=center
++size=32
+ 
+ [Object notification-area]
+ object-iid=org.gnome.gnome-panel.notification-area::notification-area
+-toplevel-id=top-panel
++toplevel-id=bottom-panel
+ pack-type=end
+-pack-index=2
++pack-index=0
+ 
+ [Object show-desktop]
+ object-iid=org.gnome.gnome-panel.wncklet::show-desktop
+ toplevel-id=bottom-panel
+-pack-index=0
+-
+-[Object user-menu]
+-object-iid=org.gnome.gnome-panel.menu::user-menu
+-toplevel-id=top-panel
+-pack-type=end
++pack-type=start
+ pack-index=0
+ 
+ [Object window-list]
+ object-iid=org.gnome.gnome-panel.wncklet::window-list
+ toplevel-id=bottom-panel
+-pack-index=1
++pack-type=start
++pack-index=2
+ 
+ [Object workspace-switcher]
+ object-iid=org.gnome.gnome-panel.wncklet::workspace-switcher
+ toplevel-id=bottom-panel
+-pack-type=end
+-pack-index=0
++pack-type=start
++pack-index=1
 diff --git a/data/org.gnome.gnome-panel.gschema.xml b/data/org.gnome.gnome-panel.gschema.xml
 index 08c4bbfa3..c411da8c5 100644
 --- a/data/org.gnome.gnome-panel.gschema.xml
