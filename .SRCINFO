@@ -1,0 +1,14 @@
+pkgbase = rom-parser-git
+	pkgdesc = PCI device rom parser/fixer.
+	pkgver = 20170330
+	pkgrel = 1
+	url = https://github.com/awilliam/rom-parser
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = glibc
+	source = rom-parser-git-20170330::git+https://github.com/awilliam/rom-parser
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = rom-parser-git
