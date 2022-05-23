@@ -1,7 +1,7 @@
 pkgbase = python-ipyopt
 	pkgdesc = Python interface to Ipopt
 	pkgver = 0.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/py-nonlinopt/ipyopt
 	arch = x86_64
 	license = custom
