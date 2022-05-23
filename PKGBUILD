@@ -1,3 +1,4 @@
+# Packager: urawotlol <urawotlol@mailfence.com>
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Sébastien Luttringer
