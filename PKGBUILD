@@ -61,7 +61,7 @@ _localmodcfg=
 
 pkgbase=linux-bcachefs-git
 pkgver=v5.17.8.arch1.r1075854.40eaef7e8049
-_srcver_tag=v5.17.8.arch1
+_srcver_tag=v5.17.9.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
