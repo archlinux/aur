@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-	cd "${pkgname}"
+    cd "${pkgname}"
     make DESTDIR="$pkgdir" install
 }
 
