@@ -1,7 +1,7 @@
 pkgbase = firefox-kde
-	pkgdesc = Standalone web browser from mozilla.org
+	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches
 	pkgver = 100.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -60,6 +60,7 @@ pkgbase = firefox-kde
 	source = mozilla-kde.patch::https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master/mozilla-kde.patch
 	source = firefox-branded-icons.patch::https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master/firefox/firefox-branded-icons.patch
 	source = firefox-kde.patch::https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master/firefox/firefox-kde.patch
+	source = unity-menubar.patch::https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/download/head:/debian/patches/unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = dc109861204f6938fd8f147af89a694eb516f3d4bb64ce3f0116452d654a8417
 	sha256sums = SKIP
@@ -68,5 +69,6 @@ pkgbase = firefox-kde
 	sha256sums = e74a04219a498a57aae35added4dcdc6a396774437a97ecf67e3b78875eb2ad3
 	sha256sums = bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a
 	sha256sums = da420deac6bfdcbf0bba31011ec23be31cdc5ab10f95a6fef5a2d6d6defc739d
+	sha256sums = 0c6e1cf2bee5445cda5209ea6e4745a1175f863204245aa9be9c77073a017dd6
 
 pkgname = firefox-kde

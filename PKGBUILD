@@ -2,14 +2,17 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
+# Contributor: Weng Xuetian <wengxt@gmail.com>
 
 _pkgname=firefox
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
+_bazaarurl=https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/download/head:/debian/patches
 
 pkgname=firefox-kde
 pkgver=100.0.2
-pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org"
+pkgrel=2
+pkgdesc="Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
@@ -33,14 +36,17 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         # https://github.com/openSUSE/firefox-maintenance
         mozilla-kde.patch::$_patchurl/mozilla-kde.patch
         firefox-branded-icons.patch::$_patchurl/firefox/firefox-branded-icons.patch
-        firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch)
+        firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch
+        # https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/files/head:/debian/patches
+        unity-menubar.patch::$_bazaarurl/unity-menubar.patch)
 sha256sums=('dc109861204f6938fd8f147af89a694eb516f3d4bb64ce3f0116452d654a8417'
             'SKIP'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'e74a04219a498a57aae35added4dcdc6a396774437a97ecf67e3b78875eb2ad3'
             'bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a'
-            'da420deac6bfdcbf0bba31011ec23be31cdc5ab10f95a6fef5a2d6d6defc739d')
+            'da420deac6bfdcbf0bba31011ec23be31cdc5ab10f95a6fef5a2d6d6defc739d'
+            '0c6e1cf2bee5445cda5209ea6e4745a1175f863204245aa9be9c77073a017dd6')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -65,6 +71,9 @@ prepare() {
 
   # Firefox/browser
   patch -Np1 -i ../firefox-kde.patch
+
+  # Global menu
+  patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
