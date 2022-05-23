@@ -1,7 +1,7 @@
 pkgname=fbmessenger-bin
 _pkgname=FBMessenger-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -30,7 +30,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/Messenger/messenger" "$pkgdir/usr/bin/messenger"
+    ln -s "/opt/Messenger/Messenger" "$pkgdir/usr/bin/messenger"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/resources/app/Messenger.desktop" \
