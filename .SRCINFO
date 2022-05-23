@@ -10,6 +10,7 @@ pkgbase = system76-scheduler-git
 	makedepends = git
 	makedepends = rust
 	makedepends = just
+	makedepends = linux-headers
 	depends = bcc-tools
 	depends = python-bcc
 	provides = system76-scheduler
