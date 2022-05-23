@@ -16,7 +16,7 @@ install=semaphoreci-cli.install
 build () {
     cd "${srcdir}/cli-${pkgver}"
     GOPATH="${srcdir}/_go" GOOS=linux GOARCH=${target_arch} \
-        go build -ldflags "-s -w -X cmd.version=${pkgver}-arch" \
+        go build -ldflags "-s -w -X main.version=${pkgver}-arch" \
         -o semaphoreci
     chmod -R +w "${srcdir}/_go"  # Ugh.
 }
