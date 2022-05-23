@@ -1,0 +1,27 @@
+pkgbase = xp-git
+	pkgdesc = GUI and TUI music player with support for multiple streaming services.
+	pkgver = v0.0.1_r40.gce6ba5b
+	pkgrel = 1
+	url = https://github.com/Ryhon0/xp
+	arch = any
+	license = GPL-3.0
+	makedepends = ldc
+	depends = liblphobos
+	depends = dbus
+	depends = sdl2_mixer
+	depends = gtk4
+	depends = libadwaita
+	depends = youtube-dl
+	depends = ffmpeg
+	depends = taglib
+	depends = dbus
+	depends = sqlite3
+	depends = modest
+	optdepends = yt-dlp: SponsorBlock for YouTube,
+	optdepends = yt-dlp-drop-in: faster YouTube download speeds
+	provides = xp
+	conflicts = xp
+	source = git+https://github.com/Ryhon0/xp.git
+	sha256sums = SKIP
+
+pkgname = xp-git
