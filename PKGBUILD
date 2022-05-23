@@ -257,9 +257,8 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
 
   # Pref pane - custom FireDragon svg
-  patch -Np1 -i "${_patches_dir}"/librewolf/librewolf-pref-pane.patch
-  patch -Np1 -i "${_patches_dir}"/misc/add_firedragon_svg.patch
-  patch -Np1 -i "${_patches_dir}"/librewolf-ui/website-appearance-ui-rfp.patch
+  patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
+  patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
