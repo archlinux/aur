@@ -1,6 +1,6 @@
 pkgbase = nvidia-510xx-utils
 	pkgver = 510.73.05
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -20,7 +20,7 @@ pkgname = nvidia-510xx-utils
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
-	optdepends = nvidia-settings: configuration tool
+	optdepends = nvidia-510xx-settings: configuration tool
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia: OpenCL support
 	provides = vulkan-driver
@@ -42,7 +42,7 @@ pkgname = opencl-510xx-nvidia
 pkgname = nvidia-510xx-dkms
 	pkgdesc = NVIDIA drivers - module sources
 	depends = dkms
-	depends = nvidia-utils=510.73.05
+	depends = nvidia-510xx-utils=510.73.05
 	depends = libglvnd
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-dkms

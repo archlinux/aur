@@ -5,7 +5,7 @@
 pkgbase=nvidia-510xx-utils
 pkgname=('nvidia-510xx-utils' 'opencl-510xx-nvidia' 'nvidia-510xx-dkms')
 pkgver=510.73.05
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -77,7 +77,7 @@ package_opencl-510xx-nvidia() {
 
 package_nvidia-510xx-dkms() {
     pkgdesc="NVIDIA drivers - module sources"
-    depends=('dkms' "nvidia-utils=$pkgver" 'libglvnd')
+    depends=('dkms' "nvidia-510xx-utils=$pkgver" 'libglvnd')
     provides=('NVIDIA-MODULE')
     conflicts=('nvidia-dkms')
 
@@ -92,7 +92,7 @@ package_nvidia-510xx-dkms() {
 package_nvidia-510xx-utils() {
     pkgdesc="NVIDIA drivers utilities"
     depends=('xorg-server' 'libglvnd' 'egl-wayland')
-    optdepends=('nvidia-settings: configuration tool'
+    optdepends=('nvidia-510xx-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
     conflicts=('nvidia-libgl' 'nvidia-utils')
