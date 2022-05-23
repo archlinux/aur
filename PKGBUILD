@@ -21,7 +21,8 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  echo "$(git log -1 --format="%cd" --date=short | tr -d '-')_$(git log -1 --format="%h")"
 }
 
 build() {
