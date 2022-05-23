@@ -10,7 +10,7 @@ depends=('nss' 'alsa-lib' 'gtk3')
 url="https://github.com/0neGal/${_pkgname}"
 license=('GPL3')
 source=("https://github.com/0neGal/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('26b4163b57f0429cef37a49814fd3668ad77ab40b2f54fd1577b59da81deac59')
 
 package() {
 	 tar -xf data.tar.xz -C "${pkgdir}"
