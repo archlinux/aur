@@ -1,0 +1,21 @@
+pkgbase = lbry-sdk
+	pkgdesc = The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps.
+	pkgver = 0.108.0
+	pkgrel = 1
+	url = https://github.com/lbryio/lbry-sdk
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = openssl
+	makedepends = python-pip
+	makedepends = python-protobuf
+	provides = lbrynet
+	conflicts = lbrynet
+	options = !buildflags
+	source = lbry-sdk-0.108.0.tar.gz::https://github.com/lbryio/lbry-sdk/archive/refs/tags/v0.108.0.tar.gz
+	source = git+https://github.com/lbryio/lbry-rocksdb
+	sha256sums = 410f92741d87f2ca13df3748d2e593e8dc70f7b5a1420fe6f4f1013b4b03f35d
+	sha256sums = SKIP
+
+pkgname = lbry-sdk

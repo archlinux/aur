@@ -1,0 +1,56 @@
+diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py lbry-venv_new/lib/python3.10/site-packages/aioupnp/gateway.py
+--- lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py	2022-05-07 23:04:48.359999989 +0200
++++ lbry-venv_new/lib/python3.10/site-packages/aioupnp/gateway.py	2022-05-06 21:21:09.263333000 +0200
+@@ -224,7 +224,7 @@
+         try:
+             return await asyncio.wait_for(loop.create_task(
+                 cls._discover_gateway(lan_address, gateway_address, timeout, loop)
+-            ), timeout, loop=loop)
++            ), timeout)
+         except asyncio.TimeoutError:
+             raise UPnPError(f"M-SEARCH for {gateway_address}:1900 timed out")
+ 
+diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/scpd.py
+--- lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2022-05-07 23:04:48.363333323 +0200
++++ lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2022-05-06 23:10:44.523333086 +0200
+@@ -141,7 +141,7 @@
+     assert isinstance(protocol, SCPDHTTPClientProtocol)
+ 
+     error = None
+-    wait_task: typing.Awaitable[typing.Tuple[bytes, bytes, int, bytes]] = asyncio.wait_for(protocol.finished, 1.0, loop=loop)
++    wait_task: typing.Awaitable[typing.Tuple[bytes, bytes, int, bytes]] = asyncio.wait_for(protocol.finished, 1.0)
+     body = b''
+     raw_response = b''
+     try:
+@@ -182,7 +182,7 @@
+     assert isinstance(protocol, SCPDHTTPClientProtocol)
+ 
+     try:
+-        wait_task: typing.Awaitable[typing.Tuple[bytes, bytes, int, bytes]] = asyncio.wait_for(finished, 1.0, loop=loop)
++        wait_task: typing.Awaitable[typing.Tuple[bytes, bytes, int, bytes]] = asyncio.wait_for(finished, 1.0)
+         raw_response, body, response_code, response_msg = await wait_task
+     except asyncio.TimeoutError:
+         return {}, b'', UPnPError("Timeout")
+diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py
+--- lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2022-05-07 23:04:48.366666656 +0200
++++ lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2022-05-06 23:26:52.969999640 +0200
+@@ -31,8 +31,8 @@
+         self.transport: Optional[DatagramTransport] = None
+         self._pending_searches: List[PendingSearch] = []
+         self.notifications: List[SSDPDatagram] = []
+-        self.connected = asyncio.Event(loop=self.loop)
+-        self.devices: 'asyncio.Queue[SSDPDatagram]' = asyncio.Queue(loop=self.loop)
++        self.connected = asyncio.Event()
++        self.devices: 'asyncio.Queue[SSDPDatagram]' = asyncio.Queue()
+ 
+     def connection_made(self, transport: asyncio.DatagramTransport) -> None:  # type: ignore
+         super().connection_made(transport)
+@@ -98,7 +98,7 @@
+     async def m_search(self, address: str, timeout: float,
+                        datagrams: List[Dict[str, typing.Union[str, int]]]) -> SSDPDatagram:
+         fut = self.send_m_searches(address, datagrams)
+-        return await asyncio.wait_for(fut, timeout, loop=self.loop)
++        return await asyncio.wait_for(fut, timeout)
+ 
+     def datagram_received(self, data: bytes, addr: Tuple[str, int]) -> None:  # type: ignore
+         if addr[0] == self.bind_address:
