@@ -1,7 +1,7 @@
 _npmname=dockerfile-utils
-_npmver=0.0.13
+_npmver=0.10.0
 pkgname=nodejs-dockerfile-utils
-pkgver=0.0.13
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Utilities for formatting and linting a Dockerfile."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(43dd955e6c4d2c4c844216b7128d5a95b8fdc783)
+sha1sums=('5aa16271388f9b718687f8a1df156c077f169154')
 
 package() {
   cd $srcdir
