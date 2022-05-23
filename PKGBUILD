@@ -1,6 +1,6 @@
 # Maintainer: cruggs_mutt <aur dot 125rc at aleeas dot com>
 pkgname=yam-git
-pkgver=2.6.3.r18.gc6c3ee7
+pkgver=2.6.3.r19.gc9cbf48
 pkgrel=1
 pkgdesc="Game manager for F95zone"
 arch=('x86_64')
