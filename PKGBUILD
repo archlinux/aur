@@ -22,7 +22,7 @@ prepare() {
   export PREFIX=/usr
   export NV_USE_BUNDLED_LIBJANSSON=0
   export OUTPUTDIR=out
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgbase}-${pkgver}
   patch -p0 < "${srcdir}/libxnvctrl_so.patch"
 }
 
