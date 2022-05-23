@@ -37,5 +37,5 @@ package() {
 
 	# Create local folders and copy panels
 	mkdir -p "${PANELSPATH}"
-	cp -r "${srcdir}/${pkgname%-*}" "${PANELSPATH}"
+	cp -r "${srcdir}/${pkgname%-*}"/* "${PANELSPATH}"
 }
