@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgbase}-${pkgver}
   export CFLAGS+=" -ffat-lto-objects"
   make
   make -C src/libXNVCtrl
