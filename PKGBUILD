@@ -17,9 +17,9 @@ depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson)
 makedepends=(rpm-tools)
 checkdepends=(diffutils dos2unix expect)
 backup=(etc/certmonger/certmonger.conf)
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("https://pagure.io/certmonger/archive/certmonger-${pkgver}/certmonger-certmonger-${pkgver}.tar.gz")
-sha512sums=('7304ce89736ca9d4dc170e39c43c1c2043dc76176fb4abe63558f2fbca277ee1988f1945e9e763db9e36a630837c436bb89965553059addb2620ee7aa9d652bf')
+sha512sums=("7304ce89736ca9d4dc170e39c43c1c2043dc76176fb4abe63558f2fbca277ee1988f1945e9e763db9e36a630837c436bb89965553059addb2620ee7aa9d652bf")
 
 build() {
   cd "${pkgname}-${pkgname}-${pkgver}"
