@@ -4,7 +4,7 @@
 pkgname="prowlarr"
 pkgver=0.3.0.1730
 pkgrel=1
-pkgdesc="Usenet and torrent aggregator, similar to nzbhydar2 and jackett."
+pkgdesc="Usenet and torrent aggregator, similar to nzbhydra2 and jackett."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Prowlarr/Prowlarr"
 license=('GPL3')

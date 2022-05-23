@@ -1,5 +1,5 @@
 pkgbase = prowlarr
-	pkgdesc = Usenet and torrent aggregator, similar to nzbhydar2 and jackett.
+	pkgdesc = Usenet and torrent aggregator, similar to nzbhydra2 and jackett.
 	pkgver = 0.3.0.1730
 	pkgrel = 1
 	url = https://github.com/Prowlarr/Prowlarr
