@@ -1,0 +1,21 @@
+pkgbase = evillimiter-patched
+	pkgdesc = A patched version of evillimiter tool, which adds support for arrow keys running previous command and suppressing disruptive warnings.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/Rayrsn/evillimiter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-colorama
+	depends = python-netaddr
+	depends = python-netifaces
+	depends = python-tqdm
+	depends = python-scapy
+	depends = python-terminaltables
+	source = evillimiter-patched-1.6.0.tar.gz::https://github.com/Rayrsn/evillimiter/archive/v1.6.0.tar.gz
+	sha256sums = d325e33104c1b09538391867a8f4d467ac815910c630ceb5bc6b836771564b5e
+
+pkgname = evillimiter-patched
