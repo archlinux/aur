@@ -1,6 +1,6 @@
 pkgbase = pridefetch
 	pkgdesc = Neofetch clone written in Python with the ability to display pride flags
-	pkgver = 1.2.0
+	pkgver = r44.8bbd5f4
 	pkgrel = 1
 	url = https://github.com/R0dn3yS/pridefetch
 	arch = any
