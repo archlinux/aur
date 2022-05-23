@@ -1,15 +1,15 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms
-_date=20220319
-pkgver=3.3
-pkgrel=2
+_date=20220523
+pkgver=3.5
+pkgrel=1
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
 url='https://github.com/86Box/roms'
 license=('custom')
 options=('!strip')
 source=("https://github.com/86Box/roms/archive/refs/tags/${_date}.tar.gz")
-sha512sums=('4647fe9f1690e1a0e368b6a8f10af17c15dbca8edd1bb55d83c85e1cb99dc1dbea254023d441a1fead617f4478ef19bbf051a3d1cc5e90ab79238dd3bff18f9e')
+sha512sums=('56981c38af41d0b3e348a068aa9e9ae45071bbea47c00d827c15afb50734ff433993479d8c373f49e70a297ce1d8e2f20496bb42be779e9a88fcd1ddca5c6f6f')
 
 package() {
     cd "${srcdir}/roms-${_date}"
