@@ -2,7 +2,7 @@
 # Maintainer: robertfoster
 
 pkgname=yap-git
-pkgver=r9.5b847f2
+pkgver=r16.aad3441
 pkgrel=1
 pkgdesc="Package software with ease"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -16,7 +16,6 @@ source=("${pkgname%-git}::git+${url}")
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  # printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -29,10 +28,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
 
   go build
-
-  ./"${pkgname%-git}" completion bash >"${srcdir}/${pkgname%-git}.bash"
-  ./"${pkgname%-git}" completion fish >"${srcdir}/${pkgname%-git}.fish"
-
 }
 
 package() {
@@ -40,10 +35,14 @@ package() {
   install -Dm 755 ./"${pkgname%-git}" \
     "${pkgdir}/usr/bin/${pkgname%-git}"
 
-  install -Dm 644 "$srcdir/${pkgname%-git}.bash" \
-    "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
-  install -Dm 644 "$srcdir/${pkgname%-git}.fish" \
-    "${pkgdir}/usr/share/fish/completions/${pkgname%-git}.fish"
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+
+  ./"${pkgname%-git}" completion bash >"${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
+  ./"${pkgname%-git}" completion zsh >"${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-git}"
+  ./"${pkgname%-git}" completion fish >"${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname%-git}.fish"
+
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/GPL3" LICENSE
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" README.md
 }

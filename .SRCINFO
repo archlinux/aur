@@ -1,6 +1,6 @@
 pkgbase = yap-git
 	pkgdesc = Package software with ease
-	pkgver = r9.5b847f2
+	pkgver = r16.aad3441
 	pkgrel = 1
 	url = https://github.com/PackageFoundation/yap
 	arch = armv6h
