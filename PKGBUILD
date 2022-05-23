@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=shapeit4
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Segmented HAPlotype Estimation and Imputation Tools"
 arch=('i686' 'x86_64')
 url="https://odelaneau.github.io/shapeit4/"
@@ -25,7 +25,17 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+	
+	# Binaries
 	install -Dm755 bin/shapeit4.2 "${pkgdir}/usr/bin/shapeit4"
 	install -Dm755 tools/bingraphsample/bin/bingraphsample "${pkgdir}/usr/bin/bingraphsample"
+	
+	# Example data
+	mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	install -Dm644 test/*.gmap.gz "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 test/*.vcf.gz "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 test/*.vcf.gz.csi "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 test/*.bcf "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 test/*.bcf.csi "${pkgdir}/usr/share/${pkgname}/"
 }
 

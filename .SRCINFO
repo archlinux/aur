@@ -1,7 +1,7 @@
 pkgbase = shapeit4
 	pkgdesc = Segmented HAPlotype Estimation and Imputation Tools
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://odelaneau.github.io/shapeit4/
 	arch = i686
 	arch = x86_64
