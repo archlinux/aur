@@ -4,7 +4,7 @@
 
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r3575.2ebce32c
+pkgver=r3579.153b4689
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686' 'aarch64' )
@@ -63,8 +63,7 @@ build() {
         -D          tracing=disabled \
 	-D          lc-compliance=auto \
 	-D          qcam=auto \
-	-D          pycamera=disabled \
-	-D          auto-features=enabled
+	-D          pycamera=disabled
 
     meson compile -C build
 }
