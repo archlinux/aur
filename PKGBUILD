@@ -13,7 +13,7 @@ source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/down
 sha512sums=('SKIP')
 
 pkgver() {
-  printf "nightly"
+  date +%Y%m%d%H%M%S
 }
 
 package() {
