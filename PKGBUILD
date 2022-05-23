@@ -1,13 +1,13 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-git
-pkgver=r837.fbe1b3b
-pkgrel=3
+pkgver=r1211.4254d16
+pkgrel=1
 epoch=
 pkgdesc="An open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
 license=('MIT')
-depends=('dotnet-host' 'dotnet-runtime-3.1' 'dotnet-targeting-pack-3.1' 'dotnet-sdk-3.1' 'fuse2' 'fuse3' 'fuse-common')
+depends=('dotnet-host' 'dotnet-runtime' 'dotnet-targeting-pack' 'dotnet-sdk' 'fuse2' 'fuse3' 'fuse-common')
 options=(staticlibs)
 source=("git+https://github.com/stakira/OpenUtau.git"
         "OpenUtau-git.desktop")
