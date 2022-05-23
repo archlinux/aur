@@ -1,6 +1,6 @@
 pkgbase = trustedqsl
 	pkgdesc = QSO log signing data for the ARRL Logbook of The World (LoTW)
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = http://lotw.arrl.org/
 	arch = i686
@@ -15,11 +15,11 @@ pkgbase = trustedqsl
 	provides = trustedqsl
 	conflicts = trustedqsl-git
 	replaces = tqsl
-	source = http://www.arrl.org/tqsl/tqsl-2.6.1.tar.gz
+	source = http://www.arrl.org/tqsl/tqsl-2.6.2.tar.gz
 	source = trustedqsl.desktop
-	md5sums = bc928b43fc4bbcf02557d67b41612072
+	md5sums = e4f92d02ba598e80c776e61fafbb6100
 	md5sums = 6dd4296f5fda2d77922c9cbe4a120d3b
-	sha256sums = 5c097480c4a5e34d9d27142fe55062e519420132f9299bdebf1b1f17fa185f9b
+	sha256sums = be72fa50038fe26cd996180eda4334010cea62b8fda054585688e612ed570afc
 	sha256sums = 68129b7f7ddbb75be52f1b9164d43c6d9805c5877423546b50397c2d920c79e9
 
 pkgname = trustedqsl
