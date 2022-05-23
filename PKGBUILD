@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=r568.9403529
+pkgver=1.2.52.r33.g9403529
 pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64")
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
