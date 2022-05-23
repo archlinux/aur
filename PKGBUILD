@@ -11,13 +11,17 @@ provides=('lbrynet')
 conflicts=('lbrynet')
 options=('!buildflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbry-sdk/archive/refs/tags/v${pkgver}.tar.gz"
-        'git+https://github.com/lbryio/lbry-rocksdb')
+        'git+https://github.com/lbryio/lbry-rocksdb'
+        'lbry-rocksdb.patch'
+        "lbry-sdk-${pkgver}.patch"
+        'lbry-venv.patch')
 sha256sums=('410f92741d87f2ca13df3748d2e593e8dc70f7b5a1420fe6f4f1013b4b03f35d'
-            'SKIP')
+            'SKIP'
+            'a80ae363aedb3809d1fcd27cc7c3b5ed44f1b6a6a436302aad2136d05ba3aae6'
+            'ac49f097561e8f2cb666bbf10393ee9ee878a308752ba83e602edb1e265ad33a'
+            '7061749daacd7ab1db2b10383aaedfc12b47de2cc72c57e0c533b63e9302c881')
 
 prepare() {
-	cp ../*.patch "$srcdir"	
-
 	cd lbry-rocksdb
 	git submodule update --init --recursive
 	git pull --recurse-submodules
