@@ -2,3 +2,8 @@ post_install() {
     #copy the config
     cp "/usr/share/paracloud/sccs.yml" "${HOME}/.config/papp_cloud/"
 }
+
+post_remove() {
+    #delete the config
+    rm -rf "${HOME}/.config/papp_cloud/"
+}
