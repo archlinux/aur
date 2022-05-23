@@ -1,6 +1,6 @@
 pkgbase = hcledit-git
 	pkgdesc = A command line editor for HCL
-	pkgver = 20200822.69_5cd4dee
+	pkgver = 20220414.181_085cf84
 	pkgrel = 1
 	url = https://github.com/minamijoyo/hcledit
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = hcledit-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = hcledit-git::git://github.com/minamijoyo/hcledit#branch=master
+	source = hcledit-git::git+https://github.com/minamijoyo/hcledit#branch=master
 	md5sums = SKIP
 
 pkgname = hcledit-git
-

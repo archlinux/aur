@@ -19,9 +19,7 @@ source=(
   "$_pkgname::git+https://github.com/minamijoyo/hcledit#branch=${BRANCH:-master}"
 )
 
-md5sums=(
-  'SKIP'
-)
+md5sums=('SKIP')
 
 backup=(
 )
