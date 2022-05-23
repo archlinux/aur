@@ -1,7 +1,7 @@
 pkgbase = osk-sdl
 	pkgdesc = SDL2 On-screen Keyboard for FDE
 	pkgver = 0.66
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/postmarketOS/osk-sdl
 	arch = x86_64
 	license = GPL3
@@ -16,8 +16,10 @@ pkgbase = osk-sdl
 	source = osk-sdl-0.66.tar.gz::https://gitlab.com/postmarketOS/osk-sdl/-/archive/0.66/osk-sdl-0.66.tar.gz
 	source = osk-sdl-hooks
 	source = osk-sdl-install
+	source = fix-compiling-for-gcc12.patch
 	md5sums = fb608060dea423d221bdfff9a6101624
 	md5sums = 3a4a2945ce9fa98451273833e1a615cd
 	md5sums = 3025fb91626943901f33437ac74a748c
+	md5sums = c97cc198285b90fea7aa864537d165b1
 
 pkgname = osk-sdl

@@ -1,0 +1,10 @@
+--- src/keyboard.h
++++ src/keyboard.h
+@@ -27,6 +27,7 @@
+ #include <list>
+ #include <string>
+ #include <vector>
++#include <array>
+ 
+ constexpr char KEYCAP_BACKSPACE[] = "\u2190";
+ constexpr char KEYCAP_SHIFT[] = "\u2191";

@@ -2,7 +2,7 @@
 # Contributor: Danct12 <danct12@disroot.org>
 pkgname=osk-sdl
 pkgver=0.66
-pkgrel=4
+pkgrel=5
 pkgdesc="SDL2 On-screen Keyboard for FDE"
 arch=(x86_64)
 url="https://gitlab.com/postmarketOS/osk-sdl"
@@ -11,7 +11,13 @@ depends=(device-mapper cryptsetup sdl2 sdl2_ttf mesa ttf-dejavu)
 makedepends=(scdoc meson)
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/postmarketOS/osk-sdl/-/archive/$pkgver/$pkgname-$pkgver.tar.gz
         osk-sdl-hooks
-        osk-sdl-install)
+        osk-sdl-install
+        fix-compiling-for-gcc12.patch)
+
+prepare() {
+    cd "$pkgname-$pkgver" 
+    patch -u -p0 --input="${srcdir}/fix-compiling-for-gcc12.patch"
+}
 
 build() {
   arch-meson "$pkgname-$pkgver" _build
@@ -30,4 +36,5 @@ package() {
 }
 md5sums=('fb608060dea423d221bdfff9a6101624'
          '3a4a2945ce9fa98451273833e1a615cd'
-         '3025fb91626943901f33437ac74a748c')
+         '3025fb91626943901f33437ac74a748c'
+         'c97cc198285b90fea7aa864537d165b1')
