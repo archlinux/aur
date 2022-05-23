@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Application for intuitive file sharing between devices.'
 arch=('any')
 depends=('gtk3')
+makedepends=('cargo' 'git' 'rust')
 url='https://github.com/sireliah/dragit'
 license=('GPL3')
 source=("https://github.com/sireliah/dragit/archive/refs/tags/v${pkgver}.tar.gz")
