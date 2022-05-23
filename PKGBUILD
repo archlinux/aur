@@ -1,38 +1,29 @@
-# Maintainer = Carsten Feuls <archlinux@carstenfeuls.de>
-# ex-Maintainer: Anty <anty_fab at hotmail dot fr>
-# ex-Maintainer: Evan Anderson <evananderson@thelinuxman.us>
+# Maintainer: Joona P <jonppep at gmail dot com>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
+# Contributor: Anty <anty_fab at hotmail dot fr>
+# Contributor: Evan Anderson <evananderson@thelinuxman.us>
 
 _gitname=grub-btrfs
 pkgname=$_gitname-git
-pkgver=1.7.2.r0.g52ab9db
-pkgrel=2
-pkgdesc="grub-btrfs, Include btrfs snapshots at boot options. (grub menu)"
+pkgver=4.11.r4.g3dc1d89
+pkgrel=1
+pkgdesc="Include btrfs snapshots at boot options (grub menu)"
 arch=('any')
 url="https://github.com/Antynea/grub-btrfs"
 license=('GPL3')
-depends=('btrfs-progs' 'grub')
+depends=('grub' 'btrfs-progs' 'bash' 'gawk')
 makedepends=('git')
 conflicts=('grub-btrfs')
-backup=('etc/grub.d/41_snapshots-btrfs')
+provides=('grub-btrfs')
 source=('git+https://github.com/Antynea/grub-btrfs.git')
-#source=('git+https://github.com/Antynea/grub-btrfs.git#branch=v1.xx')
-#source=('git+https://github.com/Antynea/grub-btrfs.git#branch=v0.xx')
 md5sums=('SKIP')
 
 pkgver() {
-	cd $_gitname/
-	# ( set -o pipefail
-		# git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    # )
-	( set -o pipefail
-		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+	cd $_gitname
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
 	cd "$_gitname"
-	install -Dm 755 "41_snapshots-btrfs" "${pkgdir}/etc/grub.d/41_snapshots-btrfs"
-	install -Dm 644 "localisation/fr/grub-btrfs-git.mo" "${pkgdir}/usr/share/locale/fr/LC_MESSAGES/grub-btrfs-git.mo"
+	make DESTDIR="${pkgdir}" INITCPIO=true install
 }

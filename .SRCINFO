@@ -1,17 +1,18 @@
 pkgbase = grub-btrfs-git
-	pkgdesc = grub-btrfs, Include btrfs snapshots at boot options. (grub menu)
-	pkgver = v1.7.r6.g4388c33-1
+	pkgdesc = Include btrfs snapshots at boot options (grub menu)
+	pkgver = 4.11.r4.g3dc1d89
 	pkgrel = 1
 	url = https://github.com/Antynea/grub-btrfs
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = btrfs-progs
 	depends = grub
+	depends = btrfs-progs
+	depends = bash
+	depends = gawk
+	provides = grub-btrfs
 	conflicts = grub-btrfs
-	backup = etc/grub.d/41_snapshots-btrfs
 	source = git+https://github.com/Antynea/grub-btrfs.git
 	md5sums = SKIP
 
 pkgname = grub-btrfs-git
-
