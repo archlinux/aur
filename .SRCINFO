@@ -1,8 +1,8 @@
 pkgbase = zulucrypt
 	pkgdesc = A cli and gui frontend to cryptsetup
-	pkgver = 6.0.0
+	pkgver = 6.1.0
 	pkgrel = 1
-	url = http://mhogomchungu.github.io/zuluCrypt
+	url = https://mhogomchungu.github.io/zuluCrypt
 	arch = x86_64
 	arch = i686
 	license = GPL
@@ -14,9 +14,8 @@ pkgbase = zulucrypt
 	depends = libxkbcommon-x11
 	optdepends = kwalletmanager: retrieve volume keys from kde kwallet
 	conflicts = zulucrypt-git
-	source = https://github.com/mhogomchungu/zuluCrypt/releases/download/6.0.0/zuluCrypt-6.0.0.tar.xz
-	md5sums = c93da2702281fc5127f12e0dd88170ef
-	sha256sums = d149e220e0859f6cd88f45ce3c8de6dc3a632705f9092b86c9aaac490cc442a8
+	source = https://github.com/mhogomchungu/zuluCrypt/releases/download/6.1.0/zuluCrypt-6.1.0.tar.xz
+	md5sums = 2ac473b6b902e6bf2166065e7cb1a997
+	sha256sums = 9c832308c7b84007efda363a6755c9c42fdc98f283cd15b9d6d82eb5cd78fe88
 
 pkgname = zulucrypt
-
