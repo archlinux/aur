@@ -1,8 +1,8 @@
-# Maintainer:geekmar <geekmar2002@gmail.com>
+# Maintainer:zzy-ac <zzy-ac@qq.com>
 
 
 pkgname=winegame
-pkgver=0.5.7.2
+pkgver=0.5.9.4
 pkgrel=1
 pkgdesc="开源游戏平台，帮您在deepin系统中运行windows游戏"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=('wine: Windows support'
             'vkd3d: Vulkan 3D support'
             'lib32-vkd3d: Vulkan 3D support'
             'gvfs: GVFS backend')
-	source=("https://file.winegame.net/packages/debian/0.5.7.2/net.winegame.client_0.5.7.2_amd64.deb")
-sha512sums=('ef7cc3c2183d51dfce9b0a2557f26a2ecf7e757a6b05e7495a2947b0a2b4968b623e63a032173c867338a17e3abea812556b48ea89840624dcc9f568035e68ad')
+	source=("https://file.winegame.net/packages/debian/$pkgver/net.winegame.client_"$pkgver"_amd64.deb")
+sha512sums=('d819b54abec1ae8eab421e0fa6893dcbc43231d545e51f2db036ead912d50f0fff9d12c93e8aebf52fc592b114a63a4f8488204c69130b26e9803f9c3dd7ae74')
 
 package() {
 	cd ${pkgdir}
