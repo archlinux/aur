@@ -1,7 +1,7 @@
 pkgbase = dell-idractools
 	pkgdesc = Dell EMC iDRAC Tools (RACADM, VMCLI, IPMI Tool)
 	pkgver = 10.1.0.0.4566
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=df1nd&oscode=rhel8&productcode=poweredge-r7525
 	arch = x86_64
 	license = GPL2
