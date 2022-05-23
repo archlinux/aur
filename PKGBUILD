@@ -2,7 +2,7 @@
 
 pkgname=ctrlr-romankubiak-panels-git
 pkgver=r11.1aaeb12
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Ctrlr panels from Roman Kubiak.  Including demo panels, as well as panels for Oberheim Matrix-1000, Yamaha TX81Z, Roland JX8P, Roland Juno106 and more.  Panels are installed under /usr/share/ctrlr/panels/{DEMO,RomanKubiak}."
 arch=('any')
