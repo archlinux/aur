@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-lineprofiler
 _pkgname=line_profiler
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
@@ -15,7 +15,7 @@ makedepends=('cython')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz"
     "cython.patch")
 
-sha256sums=('cc89c869984544f14b4f44ee9968a3cff254e68dc54cea385c22bd50938097b2'
+sha256sums=('bc9ad7e88112e882b16e3698040c7f9449fe72e4f15f957d2bd5e486484ff75e'
             '3acc85c3eebe59d94edfa1624e68d06d3f4fad342d5380606f69c566d93c8131')
 
 prepare() {
