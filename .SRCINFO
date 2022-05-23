@@ -1,12 +1,13 @@
 pkgbase = openixcard
 	pkgdesc = Open Source Version of Allwinner PhoenixCard on Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YuzukiTsuru/OpenixCard
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = glibc
+	depends = confuse
 	source = openixcard-1.0.1::git+https://github.com/YuzukiTsuru/OpenixCard.git#tag=1.0.1
 	source = git+https://github.com/YuzukiTsuru/ColorCout.git
 	source = git+https://github.com/p-ranav/argparse.git

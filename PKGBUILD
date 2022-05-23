@@ -1,13 +1,13 @@
 # Maintainer: Camber Huang <camber@poi.science>
 pkgname=openixcard
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Version of Allwinner PhoenixCard on Linux"
 arch=("x86_64")
 url="https://github.com/YuzukiTsuru/OpenixCard"
 license=('GPL')
 groups=()
-depends=('glibc')
+depends=('glibc' 'confuse')
 makedepends=('cmake')
 optdepends=()
 provides=()
