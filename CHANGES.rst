@@ -1,6 +1,51 @@
 Release Notes
 =============
 
+2.1.89
+------
+
+This release brings official support for CPython 3.11 and PyPy 3.9 as
+well as long needed robust runtime interpreter selection.
+
+* Select PEX runtime interpreter robustly. (#1770)
+  `PR #1770 <https://github.com/pantsbuild/pex/pull/1770>`_
+* Upgrade PyPy checking to latest. (#1767)
+  `PR #1767 <https://github.com/pantsbuild/pex/pull/1767>`_
+* Add 3.11 support. (#1766)
+  `PR #1766 <https://github.com/pantsbuild/pex/pull/1766>`_
+
+2.1.88
+------
+
+This release is a hotfix for 2.1.86 that handles unparseable
+``~/.netrc`` files gracefully.
+
+* Just warn when ``~/.netrc`` can't be loaded. (#1763)
+  `PR #1763 <https://github.com/pantsbuild/pex/pull/1763>`_
+
+2.1.87
+------
+
+This release fixes ``pex3 lock create`` to handle relative ``--tmpdir``.
+
+* Fix lock save detection to be more robust. (#1760)
+  `PR #1760 <https://github.com/pantsbuild/pex/pull/1760>`_
+
+2.1.86
+------
+
+This release fixes an oversight in lock file use against secured custom
+indexes and find links repos. Previously credentials were passed during
+the lock creation process via either ``~/.netrc`` or via embedded
+credentials in the custom indexes and find links URLs Pex was configured
+with. But, at lock use time, these credentials were not used. Now
+``~/.netrc`` entries are always used and embedded credentials passed via
+custom URLS at lock creation time can be passed in the same manner at
+lock use time.
+
+* Support credentials in URLFetcher. (#1754)
+  `PR #1754 <https://github.com/pantsbuild/pex/pull/1754>`_
+
 2.1.85
 ------
 
