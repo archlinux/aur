@@ -24,6 +24,7 @@ pkgbase = inform7-ide-git
 	depends = gtk3
 	depends = libratify-git
 	depends = libchimara-git
+	depends = rsync
 	provides = inform7-ide
 	source = git+https://github.com/ptomato/inform7-ide
 	source = git+https://github.com/ganelson/inweb
