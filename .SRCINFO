@@ -1,7 +1,7 @@
 pkgbase = simpread-sync-git
 	pkgdesc = SimpRead sync server
 	pkgver = v0.6.6.r3.ga383d3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j1g5awi/simpread-sync
 	arch = x86_64
 	license = MIT

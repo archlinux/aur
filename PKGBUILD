@@ -2,7 +2,7 @@
 
 pkgname=simpread-sync-git
 pkgver=v0.6.6.r3.ga383d3e
-pkgrel=1
+pkgrel=2
 pkgdesc='SimpRead sync server'
 arch=('x86_64')
 url="https://github.com/j1g5awi/simpread-sync"
