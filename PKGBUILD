@@ -1,7 +1,7 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box
 _pkgname=86Box
-pkgver=3.4.1
+pkgver=3.5
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -18,7 +18,7 @@ options=('!buildflags')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('76a4f8d129bdad6d4eef5d34c68b4a90840b00ba0bc2771d07a24ffcf7baa8db6ce2a23936675e0126a2938f48486a734bcebae7f2df2bbaf67ffa7e8dc3b5fa')
+sha512sums=('8f40d918e0fbae388a4aa4f037adaa7fa1920cafd5c0493f1f052ee59c677a898226ab7958b8f22899e3983664c2e63c9bcbaf82e27b42efebfb22bdcf4717dc')
 
 build() {
     case "$CARCH" in
