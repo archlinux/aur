@@ -7,9 +7,9 @@
 
 pkgname=swift-language
 _swiftver=swift-5.6-RELEASE
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
-swiftargumentparserver=0.4.3
+swiftargumentparserver=1.0.3
 swiftcryptover=1.1.5
 swiftniover=2.31.2
 swiftniosslver=2.15.0
