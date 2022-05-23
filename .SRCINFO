@@ -6,7 +6,6 @@ pkgbase = dragit
 	arch = any
 	license = GPL3
 	makedepends = cargo
-	makedepends = git
 	makedepends = rust
 	depends = gtk3
 	source = https://github.com/sireliah/dragit/archive/refs/tags/v0.6.2.tar.gz
