@@ -1,9 +1,9 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Padraic Fanning <fanninpm AT miamoh DOT edu>
 
 _pkgname=gaphor
 pkgname="${_pkgname}-bin"
-pkgver=2.9.2
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64')
 url="https://github.com/gaphor/gaphor/"
@@ -22,7 +22,7 @@ options=(!strip)
 _appimage=("${pkgname}-${pkgver}-${CARCH}.AppImage")
 source=("${_appimage}::https://github.com/gaphor/${_pkgname}/releases/download/${pkgver}/Gaphor-${pkgver}-${CARCH}.AppImage")
 noextract=(${_appimage})
-sha256sums=('cfc551b972262c6527d7ce122c5a38e34a70d4d9300413dbfbb3ea3010edc1bd')
+sha256sums=('44922f3cd9c2ec22173f887140fdc756d68b9bc32b683acfff00634853e25c4f')
 
 prepare() {
 	cd "$srcdir"

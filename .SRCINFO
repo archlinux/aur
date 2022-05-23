@@ -1,7 +1,7 @@
 pkgbase = gaphor-bin
 	pkgdesc = Simple and easy to use modeling tool for UML using GTK3
-	pkgver = 2.9.2
-	pkgrel = 2
+	pkgver = 2.10.0
+	pkgrel = 1
 	url = https://github.com/gaphor/gaphor/
 	arch = x86_64
 	license = Apache
@@ -9,9 +9,9 @@ pkgbase = gaphor-bin
 	conflicts = gaphor-git
 	conflicts = python-gaphor
 	conflicts = python-gaphor-git
-	noextract = gaphor-bin-2.9.2-x86_64.AppImage
+	noextract = gaphor-bin-2.10.0-x86_64.AppImage
 	options = !strip
-	source = gaphor-bin-2.9.2-x86_64.AppImage::https://github.com/gaphor/gaphor/releases/download/2.9.2/Gaphor-2.9.2-x86_64.AppImage
-	sha256sums = cfc551b972262c6527d7ce122c5a38e34a70d4d9300413dbfbb3ea3010edc1bd
+	source = gaphor-bin-2.10.0-x86_64.AppImage::https://github.com/gaphor/gaphor/releases/download/2.10.0/Gaphor-2.10.0-x86_64.AppImage
+	sha256sums = 44922f3cd9c2ec22173f887140fdc756d68b9bc32b683acfff00634853e25c4f
 
 pkgname = gaphor-bin
