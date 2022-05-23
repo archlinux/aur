@@ -24,7 +24,7 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
@@ -35,7 +35,7 @@ options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
   "libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git"
-  "dlib::git+https://github.com/davisking/dlib.git"
+  "dlib::git+https://github.com/davisking/dlib.git#tag=v19.23"
 )
 sha256sums=(
   "SKIP"
