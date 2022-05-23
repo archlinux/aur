@@ -1,7 +1,7 @@
 pkgbase = mrcal-git
 	pkgdesc = mrcal is a generic toolkit built to solve the calibration and SFM-like problems we encounter at NASA/JPL.
 	pkgver = mrbuild_2.1.1.r63.g4d19882
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mrcal.secretsauce.net/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = mrcal-git
 	depends = python-numpy
 	optdepends = 
 	provides = mrcal
+	conflicts = mrcal
 	source = mrcal::git+https://github.com/dkogan/mrcal.git#branch=master
 	source = build-fix.patch
 	md5sums = SKIP

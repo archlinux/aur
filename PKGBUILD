@@ -1,7 +1,7 @@
 # Maintainer: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=mrcal-git
 pkgver=mrbuild_2.1.1.r63.g4d19882
-pkgrel=1
+pkgrel=2
 pkgdesc="mrcal is a generic toolkit built to solve the calibration and SFM-like problems we encounter at NASA/JPL."
 arch=('i686' 'x86_64')
 url="http://mrcal.secretsauce.net/"
@@ -11,6 +11,7 @@ depends=('libdogleg' 'python' 'python-numpy')
 makedepends=('make' 'gcc' 'perl-list-moreutils' 're2c' 'chrpath')
 optdepends=('')
 provides=('mrcal')
+conflicts=('mrcal')
 source=("${pkgname%-git}::git+https://github.com/dkogan/mrcal.git#branch=master"
 	"build-fix.patch")
 md5sums=('SKIP'
