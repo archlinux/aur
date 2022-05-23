@@ -6,8 +6,8 @@ pkgdesc='GILDAS'
 arch=('x86_64')
 url="https://www.iram.fr/IRAMFR/GILDAS/"
 license=('custom')
-depends=(gcc-fortran)
-optdepends=()
+depends=(gcc-fortran cfitsio gtk2)
+optdepends=(python-numpy)
 
 source=("https://www.iram.fr/~gildas/dist/gildas-src-$pkgver.tar.xz")
 sha512sums=('SKIP')
