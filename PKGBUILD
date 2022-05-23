@@ -12,7 +12,7 @@ pkgname=aseprite
 pkgver=1.2.34.1
 _skiaver=m96
 _skiahash=2f1f21b8a9
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -93,7 +93,7 @@ skia_use_{expat,xps,zlib,libgifcodec,sfntly}=false`"
 	echo Building Aseprite...
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
--DENABLE_{UPDATER,SCRIPTING,WEBSOCKET}=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
+-DENABLE_{UPDATER,WEBSOCKET}=OFF -DENABLE_SCRIPTING=ON -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
 -DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
 	ninja -C build
