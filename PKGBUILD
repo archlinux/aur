@@ -2,18 +2,18 @@
 
 _pkgname=openskyscraper
 pkgname=${_pkgname}-git
-epoch=3
+epoch=4
 pkgver=r345+a287b66
 pkgrel=1
 pkgdesc="Simtower clone"
 arch=('i686' 'x86_64')
-url="https://github.com/matthewharvey/openskyscraper"
+url="https://github.com/fabianschuiki/OpenSkyscraper"
 license=('GPL')
-depends=('libgl' 'sfml' 'libmspack' 'rmlui')
+depends=('libgl' 'sfml' 'libmspack' 'librocket')
 makedepends=('cmake' 'git' 'unzip' 'imagemagick')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/HongPong/openskyscraper"
+source=("${_pkgname}::git+https://github.com/fabianschuiki/OpenSkyscraper"
         'SimTower_-_The_Vertical_Empire.zip::http://files.abandonia.com/download.php?game=SimTower+-+The+Vertical+Empire&secure=af938dbb075eeb94c87e771c1ae6be14&td=1544286020'
         'openskyscraper.png::http://www.abandonia.com/files/games/341/Sim%20Tower_thumb.png'
         'openskyscraper.desktop')
