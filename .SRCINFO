@@ -1,10 +1,9 @@
 pkgbase = packwiz-bin
 	pkgdesc = A command line tool for editing and distributing Minecraft modpacks (Git auto-update)
-	pkgver = r195.d7bfed5
+	pkgver = r211.e71b63e
 	pkgrel = 1
 	url = https://packwiz.infra.link/
 	arch = x86_64
-	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = curl
@@ -13,11 +12,9 @@ pkgbase = packwiz-bin
 	provides = packwiz
 	conflicts = packwiz
 	conflicts = packwiz-git
-	source_x86_64 = packwiz-x86_64-r195.d7bfed5.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip
-	sha256sums_x86_64 = SKIP
-	source_i686 = packwiz-i686-r195.d7bfed5.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2032-bit%20x86.zip
-	sha256sums_i686 = SKIP
-	source_aarch64 = packwiz-aarch64-r195.d7bfed5.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20ARM.zip
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = packwiz-x86_64-r211.e71b63e.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip
+	sha256sums_x86_64 = 6312fdfeee415125eee2cb1993ceff8cf85123852269ed7cb5917b05867173d1
+	source_aarch64 = packwiz-aarch64-r211.e71b63e.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20ARM.zip
+	sha256sums_aarch64 = b633a432d2a29387b0e137ccdc5d60bb80ba3902517dedf629cb05df45823b8c
 
 pkgname = packwiz-bin
