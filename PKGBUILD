@@ -4,7 +4,7 @@
 # Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
 
 pkgname=windscribe-bin
-pkgver=2.3.15
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Windscribe Client"
 arch=('x86_64')
