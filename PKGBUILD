@@ -2,7 +2,7 @@
 
 pkgname=libodb-mysql
 pkgver=2.5.0b21
-pkgrel=1
+pkgrel=2
 pkgdesc="The ODB MySQL runtime library"
 arch=('i686' 'x86_64')
 url="https://www.codesynthesis.com/products/odb/"
@@ -15,11 +15,11 @@ build() {
 	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	GPPVER="$(g++ --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
 
 	bpkg create -d gcc-${GPPVER} cc \
-	config.cxx=g++ \
-	config.cc.coptions="-O3 -DLIBODB_MYSQL_MARIADB" \
+	config.cxx=${CXX:-g++} \
+	config.cc.coptions="-O3 -DLIBODB_MYSQL_MARIADB $CXXFLAGS" \
 	config.bin.lib=shared \
 	config.install.root=${pkgdir}/usr
 
@@ -31,7 +31,7 @@ build() {
 
 package() {
 
-	GPPVER="$(g++ --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
 	cd "${srcdir}/${pkgname}-${pkgver}/gcc-${GPPVER}"
 
 	bpkg install ${pkgname}
