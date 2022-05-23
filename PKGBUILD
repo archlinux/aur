@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.6.6
+pkgver=0.7.17
 pkgrel=1
 pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='c2e0067538fa5d24e57effce1adca172db6e8117'
+_commit='66b57dca9c5c461c13cd44f977bd357677200be3'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
   'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
@@ -63,15 +63,15 @@ prepare() {
   git submodule init \
     tests/fp/berkeley-testfloat-3 \
     tests/fp/berkeley-softfloat-3 \
-    ui/imgui \
-    ui/implot \
+    ui/thirdparty/imgui \
+    ui/thirdparty/implot \
     ui/keycodemapdb \
     genconfig
 
   git config submodule.tests/fp/berkeley-testfloat-3.url "$srcdir/gitlab.com-qemu-project-berkeley-testfloat-3"
   git config submodule.tests/fp/berkeley-softfloat-3.url "$srcdir/gitlab.com-qemu-project-berkeley-softfloat-3"
-  git config submodule.ui/imgui.url "$srcdir/github.com-ocornut-imgui"
-  git config submodule.ui/implot.url "$srcdir/github.com-epezent-implot"
+  git config submodule.ui/thirdparty/imgui.url "$srcdir/github.com-ocornut-imgui"
+  git config submodule.ui/thirdparty/implot.url "$srcdir/github.com-epezent-implot"
   git config submodule.ui/keycodemapdb.url "$srcdir/gitlab.com-qemu-project-keycodemapdb"
   git config submodule.genconfig.url "$srcdir/github.com-mborgerson-genconfig"
 
