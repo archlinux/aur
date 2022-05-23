@@ -1,0 +1,4 @@
+post_install() {
+    #copy the config
+    cp "/usr/share/${pkgname}/sccs.yml" "${HOME}/.config/papp_cloud/"
+}
