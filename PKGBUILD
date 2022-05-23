@@ -2,7 +2,7 @@
 
 pkgname=ctrlr-anders-roland-d50-panel
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Ctrlr panel from Anders (meastempo) for the Roland D-50, installed under /usr/share/ctrlr/panel/Anders."
 arch=('any')
@@ -33,5 +33,5 @@ package() {
 
 	# Create local folders and copy panels
 	mkdir -p "${ANDERSPATH}"
-	cp -r "D50-editor-${pkgver}.bpanelz" "${ANDERSPATH}"
+	cp "D50-editor-${pkgver}.bpanelz" "${ANDERSPATH}"
 }
