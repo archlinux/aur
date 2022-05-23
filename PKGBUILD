@@ -13,7 +13,7 @@ source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/re
 sha512sums=('SKIP')
 
 pkgver() {
-  date +%Y%m%d
+  date +%Y%m%d%H%M%S
 }
 
 package() {
