@@ -1,0 +1,59 @@
+From b4bbce879c44f6a7f01063a585e2e0d445f6d848 Mon Sep 17 00:00:00 2001
+From: Camber Huang <camber@poi.science>
+Date: Tue, 24 May 2022 01:17:03 +0800
+Subject: [PATCH] [DO NOT MERGE] Workaround for #3 - alter the searching path
+ of genimage - alter the installation path in CMakeList.txt
+
+Signed-off-by: Camber Huang <camber@poi.science>
+---
+ CMakeLists.txt              | 4 ++--
+ src/OpenixCard/Genimage.cpp | 6 +++++-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d2afa55..da5f928 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,13 +72,13 @@ else ()
+     install(
+             TARGETS OpenixCard
+             COMPONENT applications
+-            DESTINATION "opt/openixcard/bin"
++            DESTINATION "bin"
+     )
+ 
+     install(
+             FILES "${EXECUTABLE_OUTPUT_PATH}/bin/genimage"
+             COMPONENT applications
+-            DESTINATION "opt/openixcard/bin/bin"
++            DESTINATION "libexec/openixcard"
+     )
+ 
+     include(CMake/cpack.cmake)
+diff --git a/src/OpenixCard/Genimage.cpp b/src/OpenixCard/Genimage.cpp
+index 22f313e..b922b14 100644
+--- a/src/OpenixCard/Genimage.cpp
++++ b/src/OpenixCard/Genimage.cpp
+@@ -13,6 +13,8 @@
+ #include <filesystem>
+ #include <fstream>
+ #include <iostream>
++#include <cstdlib>
++#include <string>
+ 
+ #include <subprocess.hpp>
+ 
+@@ -22,7 +24,9 @@
+ 
+ [[maybe_unused]] Genimage::Genimage(std::string config_path, std::string image_path, std::string output_path)
+         : config_path(std::move(config_path)), image_path(std::move(image_path)), output_path(std::move(output_path)) {
+-    this->genimage_bin = std::filesystem::current_path() / "bin/genimage";
++    // this->genimage_bin = std::filesystem::current_path() / "bin/genimage";
++    // A temporary workaround for #3
++    this->genimage_bin = std::string("/usr/libexec/openixcard/genimage");
+     // generate blank.fex file for commented partition
+     generate_blank_fex();
+     // call genimage
+-- 
+2.36.1
+
