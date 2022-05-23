@@ -1,0 +1,2 @@
+d /etc/webapps/stickerpicker/ 0750
+d /var/lib/stickerpicker/packs/ 0755

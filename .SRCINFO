@@ -1,0 +1,32 @@
+pkgbase = stickerpicker-git
+	pkgdesc = Element sticker picker widget
+	pkgver = r78.99ced88
+	pkgrel = 1
+	url = https://github.com/maunium/stickerpicker
+	arch = any
+	license = AGPL3
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-yarl
+	depends = python-pillow
+	depends = python-telethon
+	depends = python-cryptg
+	depends = python-magic
+	provides = stickerpicker=r78.99ced88
+	conflicts = stickerpicker
+	source = git+https://github.com/maunium/stickerpicker.git
+	source = 0001-Change-default-dirs-to-point-to-package-directories.patch
+	source = stickerpicker.tmpfiles
+	source = nginx.conf
+	sha256sums = SKIP
+	sha256sums = c314dffebf5cc36d1dde79cf49eca20c1823167a1917f31504e940ae40446b92
+	sha256sums = 41df176c7557a0c632ed4c3b3473dc2660ccbb2fde3a4a14c2e40e52f5632902
+	sha256sums = 0ae7588129d7d9cc594a41b3ec79a9bed2f7b7b23b3e815dde2860c053c28805
+
+pkgname = stickerpicker-git

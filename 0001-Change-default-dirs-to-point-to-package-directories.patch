@@ -1,0 +1,37 @@
+From 210955f20b8a2a6d78db451d10d02838ec8b15f5 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Mon, 23 May 2022 17:59:56 +0200
+Subject: [PATCH] Change default dirs to point to package directories
+
+---
+ sticker/stickerimport.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/sticker/stickerimport.py b/sticker/stickerimport.py
+index f153e98..2bcb30a 100644
+--- a/sticker/stickerimport.py
++++ b/sticker/stickerimport.py
+@@ -29,6 +29,9 @@ from telethon.tl.types.messages import StickerSet as StickerSetFull
+ from .lib import matrix, util
+ 
+ 
++DEFAULT_CONFIG_FILE = "/etc/webapps/stickerpicker/config.json"
++DEFAULT_PACK_DIR = "/var/lib/stickerpicker/packs/"
++
+ async def reupload_document(client: TelegramClient, document: Document) -> matrix.StickerInfo:
+     print(f"Reuploading {document.id}", end="", flush=True)
+     data = await client.download_media(document, file=bytes)
+@@ -124,8 +127,8 @@ parser.add_argument("--list", help="List your saved sticker packs", action="stor
+ parser.add_argument("--session", help="Telethon session file name", default="sticker-import")
+ parser.add_argument("--config",
+                     help="Path to JSON file with Matrix homeserver and access_token",
+-                    type=str, default="config.json")
+-parser.add_argument("--output-dir", help="Directory to write packs to", default="web/packs/",
++                    type=str, default=DEFAULT_CONFIG_FILE)
++parser.add_argument("--output-dir", help="Directory to write packs to", default=DEFAULT_PACK_DIR,
+                     type=str)
+ parser.add_argument("pack", help="Sticker pack URLs to import", action="append", nargs="*")
+ 
+-- 
+2.36.1
+
