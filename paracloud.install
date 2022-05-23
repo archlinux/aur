@@ -1,5 +1,6 @@
 post_install() {
     #copy the config
+    mkdir "${HOME}/.config/papp_cloud"
     cp "/usr/share/paracloud/sccs.yml" "${HOME}/.config/papp_cloud/"
 }
 
