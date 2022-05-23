@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.3.4.r5.gad2601f
+pkgver=1.4.0.r0.g60af0b9
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -25,7 +25,7 @@ makedepends=(
   "dbus"
   "xfconf"
   # "libmagick6"
-  # "rpm-tools"
+  # "sqlite3"
 )
 optdepends=(
   "pciutils: GPU output"
@@ -42,7 +42,7 @@ optdepends=(
   "zlib: Faster image output when using kitty graphics protocol"
   "xfconf: XFWM theme + xfce-terminal font"
   # "libmagick6: ImageMagick 6 support" 
-  # "rpm-tools: rpm package count"
+  # "sqlite3: rpm package count"
 )
 
 _provides_and_conflicts=(
@@ -66,7 +66,7 @@ build() {
   cmake \
     -B "${_build_dir}" \
     -S "${_src_dir}" \
-    -DENABLE_RPM=OFF \
+    -DENABLE_SQLITE3=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
     -Wno-dev
 
