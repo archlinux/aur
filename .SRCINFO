@@ -1,0 +1,21 @@
+pkgbase = shapeit4
+	pkgdesc = Segmented HAPlotype Estimation and Imputation Tools
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://odelaneau.github.io/shapeit4/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = htslib
+	makedepends = gcc>=5.0.0
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = glibc
+	source = shapeit4-4.2.2.tar.gz::https://github.com/odelaneau/shapeit4/archive/refs/tags/v4.2.2.tar.gz
+	source = shapeit4.patch
+	sha256sums = 9f109e307b5cc22ab68e7bf77de2429a9bbb2212d66303386e6a3dd81a5bc556
+	sha256sums = b380dfeac4a28af4877d5f3f534864bd4c5090ed59f27c4da36c40bd18448457
+
+pkgname = shapeit4
