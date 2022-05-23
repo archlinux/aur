@@ -1,16 +1,15 @@
 pkgbase = clair
 	pkgdesc = Vulnerability Static Analysis for Containers
-	pkgver = 2.1.6
+	pkgver = 4.4.1
 	pkgrel = 1
-	url = https://github.com/coreos/clair
+	url = https://github.com/quay/clair
+	install = clair.install
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	depends = rpm-tools
-	depends = postgresql
 	depends = glibc
-	source = clair-2.1.6.tar.gz::https://github.com/quay/clair/archive/v2.1.6.tar.gz
-	sha256sums = 51e3c1e13c7670406097b447d385cdac9a0509e6bcb71bf89c29d6143ed4f464
+	optdepends = postgresql: local database
+	source = clair-4.4.1.tar.gz::https://github.com/quay/clair/archive/v4.4.1.tar.gz
+	sha256sums = 64ffb0b33d19ff525535fa64cb507f78573d8df8e58e390b6ac2f3c8aa75bb31
 
 pkgname = clair
-

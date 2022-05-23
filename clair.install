@@ -1,0 +1,6 @@
+post_install() {
+	echo "Clair requires a PostgreSQL database for persistence"
+	echo "Make sure that either a PostgreSQL database is available with the connection string:"
+	echo "   host=localhost port=5432 user=clair dbname=clair sslmode=disable"
+	echo "or edit the default connection string in /etc/clair/config.yaml to point at another database"
+}
