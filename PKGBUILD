@@ -46,7 +46,7 @@ makedepends=(
   python
   vulkan-headers
 )
-provides=(pcsx2-qt)
+provides=(pcsx2)
 conflicts=(pcsx2)
 source=(
 git+https://github.com/PCSX2/pcsx2.git
