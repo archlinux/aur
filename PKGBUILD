@@ -11,8 +11,8 @@ arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
-url="https://librewolf.net/"
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
+url=https://gitlab.com/dr460nf1r3/settings/
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
@@ -192,7 +192,6 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
-  patch -Np1 -i "${_librewolf_patches_dir}"/context-menu.patch
   patch -Np1 -i "${_librewolf_patches_dir}"/urlbarprovider-interventions.patch
 
   # change some hardcoded directory strings that could lead to unnecessarily
