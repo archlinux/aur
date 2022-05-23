@@ -1,7 +1,7 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
 	pkgver = 5.10.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us/
 	arch = x86_64
 	license = custom
