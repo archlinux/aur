@@ -6,10 +6,10 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
-_fragment="#tag=v2.12.1"
+_fragment="#tag=v2.12.2"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -20,19 +20,14 @@ optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         "${name}-cork::git+https://github.com/CloudCompare/cork.git"
         CloudCompare.desktop
-        ccViewer.desktop
-        https://github.com/CloudCompare/CloudCompare/commit/63818d5083f3d3f5fbc5d8db5655004461c95437.patch
-        )
+        ccViewer.desktop)
 sha256sums=('SKIP'
             'SKIP'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
-            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc'
-            '8f56bf9ec50058daab994ada8ef2289bd652fe6bd9e70a37c21d3fecff94ab33'
-)
+            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc')
 
 prepare() {
   git -C "${srcdir}/${name}" submodule update --init --recursive
-  git -C "${srcdir}/${name}" apply -v "${srcdir}"/63818d5083f3d3f5fbc5d8db5655004461c95437.patch
 }
 
 build() {
