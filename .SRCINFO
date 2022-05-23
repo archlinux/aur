@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-git
 	pkgdesc = A free and open-source connection manager. master branch
-	pkgver = 6.3.2.r24.gbd961ea
+	pkgver = 6.3.3.r1.gac61921
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
