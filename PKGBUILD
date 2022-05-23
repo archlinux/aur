@@ -3,7 +3,7 @@
 # Contributor: Raphael Nestler <raphael.nestler@gmail.com>
 pkgdesc='Command line tool for the Semaphore CI service'
 pkgname=semaphoreci-cli
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 url=https://github.com/semaphoreci/cli
 license=(Apache)
@@ -11,7 +11,7 @@ arch=(x86_64)
 depends=()
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f4920bf8e69fc2247aa1cf84c8f317e7258a0c1db39fe6a487b2ba5234743be3')
+sha256sums=('c9d888b1df4c9e9ef6f2f128e61156e8df126892876adc7221d18f555f656702')
 install=semaphoreci-cli.install
 
 build () {
