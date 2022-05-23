@@ -295,10 +295,18 @@ index 8e16f764a..2f15b30a6 100644
 +pack-type=start
 +pack-index=1
 diff --git a/data/org.gnome.gnome-panel.gschema.xml b/data/org.gnome.gnome-panel.gschema.xml
-index 08c4bbfa3..c411da8c5 100644
+index 08c4bbfa3..f835fb6ef 100644
 --- a/data/org.gnome.gnome-panel.gschema.xml
 +++ b/data/org.gnome.gnome-panel.gschema.xml
-@@ -95,27 +95,4 @@
+@@ -4,7 +4,6 @@
+     <child name="general" schema="org.gnome.gnome-panel.general"/>
+     <child name="layout" schema="org.gnome.gnome-panel.layout"/>
+     <child name="lockdown" schema="org.gnome.gnome-panel.lockdown"/>
+-    <child name="run-dialog" schema="org.gnome.gnome-panel.run-dialog"/>
+   </schema>
+ 
+   <enum id='org.gnome.gnome-panel.menu-icon-size'>
+@@ -95,27 +94,4 @@
      </key>
    </schema>
  
