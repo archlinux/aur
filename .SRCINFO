@@ -1,6 +1,6 @@
 pkgbase = golden-cheetah-git
 	pkgdesc = Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the computer of their choice, analyze it in whatever way they see fit, and share their methods of analysis with others.
-	pkgver = v3.6.DEV2101.r160.99f73bdba
+	pkgver = v3.6.RC1.r58.a5d64686d
 	pkgrel = 1
 	url = http://www.goldencheetah.org/
 	arch = i686
@@ -50,6 +50,6 @@ pkgbase = golden-cheetah-git
 	sha256sums = 6c4f56ba53f2deadec5b16efdecd1311653c2dca2c0378f951672a9b7186f09d
 	sha256sums = e12471b7864adc877c34cd4cfb23451cae7648b9c8109f400f1af883d4c8cd4e
 	sha256sums = 2959d5570f271feec4de6277fb45208d987d20645185adf069e189dd32ba66b0
-	sha256sums = b98d4667711d1af37d439619de576352dc06321340da0834723cb7f258fdcab3
+	sha256sums = 843d4edf5b49e7620f7dcb58de7fcb65b833e22a1a6273afafda821c3f44da3e
 
 pkgname = golden-cheetah-git
