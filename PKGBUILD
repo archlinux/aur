@@ -1,7 +1,7 @@
 # Maintainer: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=libdogleg-git
 pkgver=v0.15.4.r0.gd8e655b
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale nonlinear least-squares optimization library for both sparse and dense problems"
 arch=('i686' 'x86_64')
 url="https://github.com/dkogan/libdogleg"
@@ -11,6 +11,7 @@ depends=('suitesparse')
 makedepends=('make' 'gcc')
 optdepends=('')
 provides=('libdogleg')
+conflicts=('libdogleg')
 source=("${pkgname%-git}::git+https://github.com/dkogan/libdogleg.git#branch=master"
 	"build-fix.patch")
 md5sums=('SKIP'
