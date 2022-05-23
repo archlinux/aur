@@ -202,9 +202,6 @@ fi
   # should not break things, buuuuuuuuuut we'll see.
   patch -Np1 -i "${_librewolf_patches_dir}"/dbus_name.patch
 
-  # add v100 about dialog
-  patch -Np1 -i "${_librewolf_patches_dir}"/aboutLogos.patch
-
   # allow uBlockOrigin to run in private mode by default, without user intervention.
   patch -Np1 -i "${_librewolf_patches_dir}"/allow-ubo-private-mode.patch
 
