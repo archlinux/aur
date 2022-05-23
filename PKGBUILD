@@ -1,8 +1,8 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 pkgname=rbtools
 _name=RBTools
-pkgver=2.0.1
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Client tools for Review Board"
 arch=('any')
 url="https://www.reviewboard.org/"
@@ -10,7 +10,7 @@ license=('custom:MIT')
 makedepends=(python-build python-installer python-wheel)
 depends=(python python-setuptools python-six python-tqdm python-texttable python-colorama)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('df8d5e834ad291c6e743907e27e50fc2f6006cdc6b8a4f9035acc86b87dcba31')
+sha256sums=('a185dd9c4b42eeda6b611135b3a814cc01c9b870519a3b6d6d7e7401592692f9')
 
 build() {
   cd "$srcdir/RBTools-$pkgver"
