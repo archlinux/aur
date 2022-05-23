@@ -5,21 +5,18 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=100.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
-arch=(x86_64 x86_64_v3)
+arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
-url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
-         aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
-         kfiredragonhelper)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils
-             rust xorg-server-xwayland xorg-server-xvfb ccache
-             autoconf2.13 clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-zstandard git binutils
-             lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
+url="https://librewolf.net/"
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
+makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-zstandard git binutils lld dump_syms
+             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
             'whoogle: Searching the web using a locally running Whoogle instance'
@@ -32,188 +29,272 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
+backup=('usr/lib/librewolf/librewolf.cfg'
+        'usr/lib/librewolf/distribution/policies.json')
 options=(!emptydirs !makeflags !strip !lto !debug)
-conflicts=('firedragon-hg')
 install=$pkgname.install
-source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
-        $pkgname.desktop
+source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
+        "$pkgname.desktop"
         "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/dr460nf1r3/settings.git")
-
-sha256sums=('13bc55e1c32a6ad32b4a3b37296a0459f41b0981489fc22da491256773c51c9d'
+        "git+https://gitlab.com/dr460nf1r3/settings.git"
+        "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
+        "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git")
+# source_aarch64=()
+sha256sums=('dc109861204f6938fd8f147af89a694eb516f3d4bb64ce3f0116452d654a8417'
+            'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
+# sha256sums_aarch64=()
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
+
+# change this to false if you do not want to run a PGO build for aarch64 as well
+_build_profiled_aarch64=true
 
 prepare() {
-  if [[ ! -d mozbuild ]]; then
-      mkdir mozbuild
-  fi
-  cd firefox-$pkgver
+  mkdir -p mozbuild
+  cd firefox-"$pkgver"
 
   local _patches_dir
   _patches_dir="${srcdir}/common/patches"
 
+  local _librewolf_patches_dir
+  _librewolf_patches_dir="${srcdir}/librewolf-source/patches"
+
   # Prepare patches, then return to the source directory
-  cd ${_patches_dir} && sh ${srcdir}/common/rebrand.sh
-  cd $srcdir/firefox-$pkgver
-
-  # Ubuntu patches
-  echo "---- Misc patches"
-  patch -Np1 -i ${_patches_dir}/misc/fix-hidden-buttons-with-csd-menubar.patch
-  
-  # Rust
-  patch -Np1 -i ${_patches_dir}/misc/reduce-rust-debuginfo.patch
-
-  # Gentoo patches
-  echo "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-
-  # Remove some pre-installed addons that might be questionable
-  echo "---- Librewolf patches"
-  patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
-
-  # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
-  # should not break things, buuuuuuuuuut we'll see.
-  patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
-
-  # add custom uBO assets (on first launch only)
-  patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
-
-  # Debian patch to enable global menubar
-  patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
-
-  # custom patch that does not conflict with the unity patch
-  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
-
-  # Remove Mozilla VPN ads
-  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad2.patch
-
-  # Allow SearchEngines option in non-ESR builds
-  patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
-
-  # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
-  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-
-  echo "---- Librewolf patches - UI"
-  # Remove references to Firefox from the settings UI, change text in some of the links,
-  # explain that we force en-US and suggest enabling history near the session restore checkbox.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
-
-  # Privacy preferences
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
-
-  # Remove Firefox references in the urlbar, when suggesting opened tabs.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
-
-  # Remove cfr UI elements, as they are disabled and locked already.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-cfrprefs.patch
-
-  # Do not display your browser is being managed by your organization in the settings.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-organization-policy-banner.patch
-
-  # Hide "snippets" section from the home page settings, as it was already locked.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-snippets-from-home.patch
-
-  # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-
-  # Misc
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
-  patch -Np1 -i ${_patches_dir}/librewolf/native-messaging-registry-path.patch
-
-  # Pref pane - custom FireDragon svg
-  patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
-  patch -Np1 -i ${_patches_dir}/misc/add_firedragon_svg.patch
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/website-appearance-ui-rfp.patch
-
-  # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
-  patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
+  pushd "${_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
+  popd
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
-ac_add_options --enable-hardening
-ac_add_options --enable-linker=lld
-ac_add_options --enable-release
-ac_add_options --enable-rust-simd
+# This supposedly speeds up compilation (We test through dogfooding anyway)
+ac_add_options --disable-tests
+ac_add_options --disable-debug
+
+# TODO: use source/assets/moczonfig in the future
+# NOTE: let us use it for one last build, otherwise, there might be some conflicts
+mk_add_options MOZ_CRASHREPORTER=0
+mk_add_options MOZ_DATA_REPORTING=0
+mk_add_options MOZ_SERVICES_HEALTHREPORT=0
+mk_add_options MOZ_TELEMETRY_REPORTING=0
+
 ac_add_options --prefix=/usr
-ac_add_options --with-ccache
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --enable-release
+ac_add_options --enable-hardening
+ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
+ac_add_options --disable-bootstrap
+
 export CC='clang'
 export CXX='clang++'
-#export NM=llvm-nm
-#export OBJCOPY='/usr/bin/llvm-objcopy'
-#export RANLIB=llvm-ranlib
-#export STRIP=llvm-strip
 
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
-ac_add_options --with-app-basename=${_pkgname}
+
+# ac_add_options --with-app-basename=${_pkgname}
+
 ac_add_options --with-branding=browser/branding/${pkgname}
-ac_add_options --with-distribution-id=org.garudalinux
+# ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=1
-export MOZ_ADDON_SIGNING=1
-export MOZ_APP_REMOTINGNAME=${pkgname}
+export MOZ_REQUIRE_SIGNING=
+# export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 
 # Features
-ac_add_options --disable-crashreporter
-ac_add_options --disable-debug
-ac_add_options --disable-debug-js-modules
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-gpsd
-ac_add_options --disable-necko-wifi
-ac_add_options --disable-rust-tests
-ac_add_options --disable-synth-speechd
-ac_add_options --disable-tests
-ac_add_options --disable-trace-logging
-ac_add_options --disable-updater
-ac_add_options --disable-warnings-as-errors
-ac_add_options --disable-webspeech
-ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-strip
-
-# Disables crash reporting, telemetry and other data gathering tools
-#mk_add_options MOZ_CRASHREPORTER=0 supposed to be obsolete
-mk_add_options MOZ_DATA_REPORTING=0
-mk_add_options MOZ_SERVICES_HEALTHREPORT=0
-mk_add_options MOZ_TELEMETRY_REPORTING=0
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
 
 # options for ci / weaker build systems
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
+
+# wasi
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 END
 
-  rm -f ${srcdir}/common/source_files/mozconfig
-  cp -r ${srcdir}/common/source_files/* ./
+if [[ $CARCH == 'aarch64' ]]; then
+  cat >>../mozconfig <<END
+# taken from manjaro build:
+ac_add_options --enable-optimize="-g0 -O2"
+END
+
+  export MOZ_DEBUG_FLAGS=" "
+  export CFLAGS+=" -g0"
+  export CXXFLAGS+=" -g0"
+  export RUSTFLAGS="-Cdebuginfo=0"
+
+  # we should have more than enough RAM on the CI spot instances.
+  # ...or maybe not?
+  export LDFLAGS+=" -Wl,--no-keep-memory"
+  # patch -Np1 -i "${_librewolf_patches_dir}"/arm.patch # not required anymore?
+  # patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
+
+else
+
+  cat >>../mozconfig <<END
+# probably not needed, enabled by default?
+ac_add_options --enable-optimize
+
+# Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
+ac_add_options --disable-elf-hack
+
+# might help with failing x86_64 builds?
+export LDFLAGS+=" -Wl,--no-keep-memory"
+END
+fi
+
+  # upstream patches from gentoo
+
+  # pgo improvements
+  patch -Np1 -i "${_patches_dir}"/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+
+  # LibreWolf
+
+  # Remove some pre-installed addons that might be questionable
+  patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
+
+  # Debian patch to enable global menubar
+  # disabled for the default build, as it seems to cause issues in some configurations
+  # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
+  patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
+
+  # KDE menu
+  # patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde.patch
+  # custom patch that does not conflict with the unity patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
+
+  # Disabling Pocket
+  patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
+
+  # Remove Internal Plugin Certificates
+  # patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/remove-internal-plugin-certs.patch
+  # => breaks profiled builds since 90.0, it seems
+
+  # allow SearchEngines option in non-ESR builds
+  patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/allow-searchengines-non-esr.patch
+
+  # remove search extensions (experimental)
+  # patch -Np1 -i "${_librewolf_patches_dir}"/search-config.patch
+  cp "${srcdir}/librewolf-source/assets/search-config.json" services/settings/dumps/main/search-config.json
+
+  # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
+  patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/stop-undesired-requests.patch
+
+  # Assorted patches
+  patch -Np1 -i "${_librewolf_patches_dir}"/context-menu.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/urlbarprovider-interventions.patch
+
+  # change some hardcoded directory strings that could lead to unnecessarily
+  # created directories
+  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla_dirs.patch
+
+  # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
+  # should not break things, buuuuuuuuuut we'll see.
+  patch -Np1 -i "${_librewolf_patches_dir}"/dbus_name.patch
+
+  # add v100 about dialog
+  patch -Np1 -i "${_librewolf_patches_dir}"/aboutLogos.patch
+
+  # allow uBlockOrigin to run in private mode by default, without user intervention.
+  patch -Np1 -i "${_librewolf_patches_dir}"/allow-ubo-private-mode.patch
+
+  # add custom uBO assets (on first launch only)
+  patch -Np1 -i "${_librewolf_patches_dir}"/custom-ubo-assets-bootstrap-location.patch
+
+  # ui patches
+
+  # remove references to firefox from the settings UI, change text in some of the links,
+  # explain that we force en-US and suggest enabling history near the session restore checkbox.
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
+
+  #
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remap-links.patch
+
+  #
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/hide-default-browser.patch
+
+  # Add LibreWolf logo to Debugging Page
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
+
+  #
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
+
+  # remove firefox references in the urlbar, when suggesting opened tabs.
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-branding-urlbar.patch
+
+  # remove cfr UI elements, as they are disabled and locked already.
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-cfrprefs.patch
+
+  # do not display your browser is being managed by your organization in the settings.
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-organization-policy-banner.patch
+
+  # hide "snippets" section from the home page settings, as it was already locked.
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-snippets-from-home.patch
+
+  # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/sanitizing-description.patch
+
+  # add patch to hide website appearance settings
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/website-appearance-ui-rfp.patch
+
+  #
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
+
+  # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
+  patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
+
+  # allows hiding the password manager (from the lw pref pane) / via a pref
+  patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
+
+  # Pref pane - custom FireDragon svg
+  patch -Np1 -i "${_patches_dir}"/librewolf/librewolf-pref-pane.patch
+  patch -Np1 -i "${_patches_dir}"/misc/add_firedragon_svg.patch
+  patch -Np1 -i "${_patches_dir}"/librewolf-ui/website-appearance-ui-rfp.patch
+
+  rm -f "${srcdir}"/common/source_files/mozconfig
+  cp -r "${srcdir}"/common/source_files/* ./
 }
 
 
 build() {
-  cd firefox-$pkgver
+  cd firefox-"$pkgver"
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  # export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
   # LTO needs more open files
   ulimit -n 4096
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
+
+  if [[ $CARCH == 'aarch64' ]]; then
+
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+
+    else
+
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+
+  fi
 
   ./mach build
 
@@ -237,12 +318,30 @@ build() {
 
   echo "Building optimized browser..."
 
-  cat >.mozconfig ../mozconfig - <<END
+  if [[ $CARCH == 'aarch64' ]]; then
+
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+
+  else
+
+    cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
+
+  fi
+
+  # cat >>.mozconfig <<END
+# ac_add_options --enable-linker=lld
+# ac_add_options --disable-bootstrap
+# END
 
   ./mach build
 
@@ -251,30 +350,33 @@ END
 }
 
 package() {
-  cd firefox-$pkgver
+  cd firefox-"$pkgver"
   DESTDIR="$pkgdir" ./mach install
+
   rm "$pkgdir"/usr/lib/${pkgname}/pingsender
 
   install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
-  
-  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+
+  local vendorjs
+  vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
 // Don't disable extensions in the application directory
-// done in librewolf.cfg
+// done in firedragon.cfg
 // pref("extensions.autoDisableScopes", 11);
 END
 
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
-  cd ${srcdir}/firefox-$pkgver
+  cd ${srcdir}/firefox-"$pkgver"
   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
+
 [Global]
 id=garudalinux
 version=1.0
@@ -309,16 +411,13 @@ END
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
+
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
-  
+
   # Delete unneeded things from settings repo
-  rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
-  rm "$pkgdir/usr/lib/firedragon/about.png"
-  rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
-  rm "$pkgdir/usr/lib/firedragon/home.png"
-  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
+  rm "$pkgdir/usr/lib/firedragon/{LICENSE.txt,about.png,firedragon.psd,home.png,tabliss.json,.gitignore,yarn.lock,package.json}"
 }
