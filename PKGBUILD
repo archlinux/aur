@@ -1,8 +1,8 @@
 # Maintainer: Lennart Husvogt <lennart at husvogt dot net>
 
 pkgname=webviewer
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Minimal display of a website. Useful for web versions of messengers."
 arch=('any')
 url="https://github.com/LeAlex27/webviewer"
@@ -11,7 +11,7 @@ depends=('pyside6' 'qt6-webengine')
 makedepends=('qt6-base' 'python-setuptools' 'python-build' 'wget' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LeAlex27/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('5da83be3a8c7c52aaae3064983a288d8e25b851ceb54c26e18b3540c6f730b25')
+sha256sums=('c4a0493e35a39f323d346974893cf280cc4cab440bf2ea04b6d7f4fbc05d6733')
 
 # uncomment to generate .desktop files
 _whatsapp_web=1
@@ -30,13 +30,13 @@ prepare() {
     if [ -n "$_threema_web" ]; then
         wget "https://upload.wikimedia.org/wikipedia/commons/2/2e/Threema%27s_App_Icon.png"
         gendesk --pkgname "threema_web" --name "Threema Web" --categories "Network;InstantMessaging" \
-        --exec "python -m webviewer --storage-name threema_web  https://web.threema.ch"
+        --exec "env QT_QUICK_CONTROLS_STYLE=Material QT_QUICK_CONTROLS_MATERIAL_THEME=Light QT_QUICK_CONTROLS_MATERIAL_ACCENT=#25b157 python -m webviewer --storage-name threema_web https://web.threema.ch"
     fi
 
     if [ -n "$_android_messages" ]; then
         wget "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Google_Messages_logo.svg/600px-Google_Messages_logo.svg.png"
         gendesk --pkgname "android_messages" --name "Android Messages" --categories "Network;InstantMessaging" \
-        --exec "python -m webviewer --storage-name android_messages https://messages.google.com/web/authentication"
+        --exec "env QT_QUICK_CONTROLS_STYLE=Material QT_QUICK_CONTROLS_MATERIAL_THEME=Dark QT_QUICK_CONTROLS_MATERIAL_ACCENT=#8eb7f8 python -m webviewer --storage-name android_messages https://messages.google.com/web/authentication"
     fi
 }
 
