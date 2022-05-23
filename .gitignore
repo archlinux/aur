@@ -1,0 +1,6 @@
+mrgingham/
+src/
+pkg/
+*.zst
+*.gz
+*.sig

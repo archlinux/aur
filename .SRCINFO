@@ -1,0 +1,16 @@
+pkgbase = gama
+	pkgdesc = GNU Gama package is dedicated to the adjustment of surveying networks.
+	pkgver = 2.19
+	pkgrel = 0
+	url = https://www.gnu.org/software/gama/
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	optdepends = 
+	source = https://ftpmirror.gnu.org/gama/gama-2.19.tar.gz
+	sha256sums = 382c9470a910ce9d67cfd960192478311acfed7051d64a487cf100ecf7520352
+
+pkgname = gama
