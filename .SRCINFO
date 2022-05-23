@@ -1,7 +1,7 @@
 pkgbase = ignition-sensors
 	pkgdesc = Provides numerous sensor models designed to generate realistic data from simulation environments.
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.4.0
+	pkgrel = 1
 	url = https://gazebosim.org/libs/sensors
 	arch = x86_64
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = ignition-sensors
 	depends = ignition-msgs
 	depends = ignition-plugin
 	depends = sdformat
-	source = ignition-sensors-6.1.0.tar.gz::https://github.com/gazebosim/gz-sensors/archive/ignition-sensors6_6.1.0.tar.gz
-	sha256sums = c8a4d813cc6b689b27552a40dea75687b244111df720726b485a9d1ad89ad1f4
+	source = ignition-sensors-6.4.0.tar.gz::https://github.com/gazebosim/gz-sensors/archive/ignition-sensors6_6.4.0.tar.gz
+	sha256sums = e4210f59d4d49b89f178b7e42d5550b2a56d715a33e70168f4804009e5d0bd26
 
 pkgname = ignition-sensors
