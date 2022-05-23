@@ -12,6 +12,7 @@ pkgbase = yap-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	provides = yap
 	conflicts = yap
 	source = yap::git+https://github.com/PackageFoundation/yap

@@ -10,6 +10,7 @@ url="https://github.com/PackageFoundation/yap"
 license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname%-git}::git+${url}")
 
@@ -19,15 +20,13 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
-
+  cd "$srcdir/${pkgname%-git}"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-
-  go build
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -ldflags="-w -s -buildid='' -linkmode=external -X main.version=${pkgver}" .
 }
 
 package() {
