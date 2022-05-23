@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=24911
+pkgver=25090
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ sha256sums=('SKIP')
 _svnmod='scribus'
 
 pkgver() {
+  LANG=C
   cd ${_svnmod}
   local ver="$(svnversion)"
   printf "%s" "${ver//[[:alpha:]]}"
