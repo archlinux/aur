@@ -5,7 +5,7 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
@@ -20,10 +20,10 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz.asc::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz.asc"
 )
-sha512sums=('62856d1a7a921f2c81be33497c789ede0988cba882493b076ff60f24487a025c2221754b40e9cbaf66fbd9d4327aef0fa4b026e9ff679936b7933f55d481aea4'
+sha512sums=('fd88621acd883a577ed2ce97226544260d7703000a2862667fc42e0cd0882a51c091a897c111febe2ee16cc3a9e4aafe349ffd42f3db1368c3376c11c9d6bd7b'
             'SKIP')
-# Matthew "strager" Glazar (quick-lint-js signing key) <strager.nds@gmail.com>
-validpgpkeys=(0327DE8F9CEF499851D19F6ED20BA9DCCF0E9D20)
+# Matthew "strager" Glazar <strager.nds@gmail.com>
+validpgpkeys=(A6851D57A65803E98C05DA01C08A7BC89CA2F557)
 options=(lto)
 
 build() {
