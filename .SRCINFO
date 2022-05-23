@@ -1,7 +1,7 @@
 pkgbase = ctrlr-romankubiak-panels-git
-	pkgdesc = Ctrlr panels from Roman Kubiak. Including demo panels as well as production ready panels for Oberheim Matrix-1000, Yamaha TX81Z, Roland JX8P, Roland Juno106 and more. Panels are installed under /usr/share/ctrlr/panels.
+	pkgdesc = Ctrlr panels from Roman Kubiak. Including demo panels, as well as panels for Oberheim Matrix-1000, Yamaha TX81Z, Roland JX8P, Roland Juno106 and more. Panels are installed under /usr/share/ctrlr/panels/{DEMO,RomanKubiak}.
 	pkgver = r11.1aaeb12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RomanKubiak/Panels
 	arch = any
 	groups = pro-audio
