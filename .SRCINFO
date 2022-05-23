@@ -1,0 +1,14 @@
+pkgbase = simpread-sync-git
+	pkgdesc = SimpRead sync server
+	pkgver = v0.6.6.r3.ga383d3e
+	pkgrel = 1
+	url = https://github.com/j1g5awi/simpread-sync
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = pandoc
+	source = simpread-sync-git::git+https://github.com/j1g5awi/simpread-sync
+	sha256sums = SKIP
+
+pkgname = simpread-sync-git
