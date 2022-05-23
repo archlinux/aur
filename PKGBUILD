@@ -1,6 +1,6 @@
 pkgname=rpmlauncher-bin
 _pkgname=rpmlauncher
-pkgver=1.0.6+908
+pkgver=1.0.6+909
 pkgrel=2
 pkgdesc="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore! "
 url="https://www.rpmtw.com/"
@@ -12,7 +12,7 @@ conflicts=('rpmlauncher')
 source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/RPMTW/RPMLauncher/releases/download/$pkgver/RPMLauncher-Linux.zip"
 	"RPMLauncher.desktop"
 	"https://github.com/RPMTW/RPMLauncher/raw/develop/assets/images/Logo.png")
-sha256sums=('74b335111c86dcd02c0b48ffef325e23ece548f5bf12acba63a982a4d1e9fbaa'
+sha256sums=('f2ded66d21a99fc4902223ae111934b7cc5127d7fa95ea4c710d4151cc22870b'
             'af2720db5735cc5e9fb9fe76e20f12d51da452e5360fb90a7086f360efbb3828'
             '4fb011f8924ae51231875788181bd5800345500745364fb921c22448f368d570')
 package(){
