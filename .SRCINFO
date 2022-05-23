@@ -6,6 +6,8 @@ pkgbase = mprocs
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	provides = mprocs
+	conflicts = mprocs-bin
 	source = https://github.com/pvolok/mprocs/archive/refs/tags/v0.2.2.tar.gz
 	sha256sums = 61ede3286f717352c3a4cf4ebc6dca4f0a560658258d21a1dfdaec1302343558
 
