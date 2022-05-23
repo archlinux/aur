@@ -36,4 +36,6 @@ package() {
     mkdir $pkgdir/usr/lib/mujoco
     mv $pkgdir/usr/bin/* $pkgdir/usr/lib/mujoco/
     rmdir $pkgdir/usr/bin
+    mkdir $pkgdir/usr/include/mujoco
+    mv $pkgdir/usr/include/*.h $pkgdir/usr/include/mujoco/
 }
