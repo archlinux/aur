@@ -3,8 +3,8 @@
 
 pkgname=perl-extutils-cbuilder
 _realname=ExtUtils-CBuilder
-pkgver=0.280216
-pkgrel=2
+pkgver=0.280236
+pkgrel=1
 pkgdesc="CPAN/ExtUtils::CBuilder - Compile and link C code for Perl modules"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,8 +12,8 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url="http://metacpan.org/release/$_realname"
-source=("http://cpan.metacpan.org/authors/id/A/AM/AMBS/ExtUtils/${_realname}-${pkgver}.tar.gz")
-md5sums=('e213485bc24bf8fb3db35847977d07bd')
+source=("http://cpan.metacpan.org/authors/id/A/AM/AMBS/${_realname}-${pkgver}.tar.gz")
+md5sums=('a4c9654c7344bbec02ced59a6b6027bb')
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
