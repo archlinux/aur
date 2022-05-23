@@ -62,17 +62,21 @@ build() {
         -D          documentation=disabled \
         -D          tracing=disabled \
 	-D          lc-compliance=auto \
-	-D qcam=auto \
-	-D pycamera=disabled \
-	-D auto-features=enabled
+	-D          qcam=auto \
+	-D          pycamera=disabled \
+	-D          auto-features=enabled
 
     meson compile -C build
 }
 
-check() {
-    cd "$srcdir/$_pkgname"
-    ninja -C build test
-}
+# Disabled because it's impoossible to build libcamera-git without webcam
+# plugged in: https://aur.archlinux.org/packages/libcamera-git#comment-839459
+# Enable once https://github.com/mesonbuild/meson/issues/6999 is resolved
+#check() {
+#    cd "$srcdir/$_pkgname"
+#    meson test --no-rebuild --print-errorlogs --skip single_stream_test
+#    #ninja -C build test
+#}
 
 package() {
     cd "$srcdir/$_pkgname"
