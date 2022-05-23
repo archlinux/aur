@@ -13,7 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 depends=(liblphobos dbus sdl2_mixer gtk4 libadwaita youtube-dl ffmpeg taglib dbus sqlite3 modest)
-makedepends=(ldc)
+makedepends=(dub ldc)
 optdepends=('yt-dlp: SponsorBlock for YouTube',
 			'yt-dlp-drop-in: faster YouTube download speeds')
 
