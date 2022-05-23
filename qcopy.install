@@ -1,0 +1,3 @@
+post_install() {
+  ln -s /usr/bin/qcopy /usr/bin/qcp
+}
