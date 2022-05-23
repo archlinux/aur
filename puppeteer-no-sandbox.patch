@@ -1,0 +1,17 @@
+diff --git a/bin/convert.js b/bin/convert.js
+index cf22eb9b5..e3c4abe55 100644
+--- a/bin/convert.js
++++ b/bin/convert.js
+@@ -88,7 +88,11 @@ function dateDiff(file) {
+   const batchNum = Math.ceil(totalFiles / maxConvertProcesses)
+   let batchCount = 1
+ 
+-  const converter = createConverter()
++  const converter = createConverter({
++    puppeteer: {
++      args: ['--no-sandbox']
++    }
++  })
+ 
+   do {
+     const percentComplete = `${

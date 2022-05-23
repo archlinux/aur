@@ -1,0 +1,22 @@
+pkgbase = firefox-extension-wappalyzer
+	pkgdesc = Identify technology on websites
+	pkgver = 6.10.26
+	pkgrel = 1
+	url = https://github.com/wappalyzer/wappalyzer
+	arch = any
+	groups = firefox-addons
+	license = MIT
+	makedepends = jq
+	makedepends = libxss
+	makedepends = moreutils
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = zip
+	depends = firefox
+	options = !strip
+	source = firefox-extension-wappalyzer-6.10.26.tar.gz::https://github.com/wappalyzer/wappalyzer/archive/v6.10.26.tar.gz
+	source = puppeteer-no-sandbox.patch
+	sha512sums = 803681daf618057dd927e68f79c035927aab584226ad5a377d75e66ed1134439ba9d291322a3971577599da73ef3e6309e58388311cf38927933a1353286eab7
+	sha512sums = d2ccd784adfccb76dd6ccb7db07fdcf94ad40bde100cd552fddf3516660a9526992e83757898f7efeff5818f83cebea49fcaeb44ba5349e339eb29a995669948
+
+pkgname = firefox-extension-wappalyzer
