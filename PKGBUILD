@@ -5,8 +5,8 @@
 
 pkgname=hmcl-dev
 _pkgname=hmcl
-pkgver=3.5.2.218
-_commit=d28723916d6d42fbea2a6423a07a74ffdf7cd1bd
+pkgver=3.5.3.220
+_commit=a2300279746937fa8ceb2f870183de0f8f57c85b
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
@@ -14,19 +14,19 @@ url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
 provides=('hmcl')
 conflicts=('hmcl')
-depends=('java8-openjfx'
-         'jdk8-openjdk')
+depends=('java11-openjfx'
+         'jdk11-openjdk')
 makedepends=(git)
 source=("hmcl-launch-script"
         "${_pkgname}.desktop"
-        "git://github.com/huanghongxun/HMCL.git#commit=${_commit}")
-sha256sums=('b9e66ecda49285fb076f2c383420854b639c56e4bb240e86dbf666f5929dc1a5'
+        "git+https://github.com/huanghongxun/HMCL.git#commit=${_commit}")
+sha256sums=('b0a74379d7a118408d261ea72befeea4bd103a522d76832c8b6a9d3b8e244495'
             '5780cf70f1afec0eb3cd8fc43297d361903c7204e274a28c5edf9b8ac3eea83e'
             'SKIP')
 
 build() {
   cd HMCL
-  _java=$(ls /usr/lib/jvm | grep 8-openjdk)
+  _java=$(ls /usr/lib/jvm | grep 11-openjdk)
   export JAVA_HOME=/usr/lib/jvm/$_java
   sh gradlew --no-daemon build
 }
