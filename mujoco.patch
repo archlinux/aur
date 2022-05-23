@@ -1,0 +1,98 @@
+diff --git a/cmake/MujocoDependencies.cmake b/cmake/MujocoDependencies.cmake
+index 56a1e64..7b95bfe 100644
+--- a/cmake/MujocoDependencies.cmake
++++ b/cmake/MujocoDependencies.cmake
+@@ -141,7 +141,7 @@ target_link_options(qhullstatic_r PRIVATE ${MUJOCO_MACOS_LINK_OPTIONS})
+ set(tinyxml2_BUILD_TESTING OFF)
+ findorfetch(
+   USE_SYSTEM_PACKAGE
+-  OFF
++  ON
+   PACKAGE_NAME
+   tinyxml2
+   LIBRARY_NAME
+@@ -154,12 +154,12 @@ findorfetch(
+   tinyxml2
+   EXCLUDE_FROM_ALL
+ )
+-target_compile_options(tinyxml2 PRIVATE ${MUJOCO_MACOS_COMPILE_OPTIONS})
+-target_link_options(tinyxml2 PRIVATE ${MUJOCO_MACOS_LINK_OPTIONS})
++#target_compile_options(tinyxml2 PRIVATE ${MUJOCO_MACOS_COMPILE_OPTIONS})
++#target_link_options(tinyxml2 PRIVATE ${MUJOCO_MACOS_LINK_OPTIONS})
+ 
+ findorfetch(
+   USE_SYSTEM_PACKAGE
+-  OFF
++  ON
+   PACKAGE_NAME
+   tinyobjloader
+   LIBRARY_NAME
+@@ -177,7 +177,7 @@ set(ENABLE_DOUBLE_PRECISION ON)
+ set(CCD_HIDE_ALL_SYMBOLS ON)
+ findorfetch(
+   USE_SYSTEM_PACKAGE
+-  OFF
++  ON
+   PACKAGE_NAME
+   ccd
+   LIBRARY_NAME
+@@ -217,7 +217,7 @@ if(MUJOCO_BUILD_TESTS)
+   set(ABSL_BUILD_TESTING OFF)
+   findorfetch(
+     USE_SYSTEM_PACKAGE
+-    OFF
++    ON
+     PACKAGE_NAME
+     absl
+     LIBRARY_NAME
+@@ -244,7 +244,7 @@ if(MUJOCO_BUILD_TESTS)
+ 
+   findorfetch(
+     USE_SYSTEM_PACKAGE
+-    OFF
++    ON
+     PACKAGE_NAME
+     GTest
+     LIBRARY_NAME
+@@ -278,7 +278,7 @@ if(MUJOCO_BUILD_TESTS)
+ 
+   findorfetch(
+     USE_SYSTEM_PACKAGE
+-    OFF
++    ON
+     PACKAGE_NAME
+     benchmark
+     LIBRARY_NAME
+diff --git a/sample/cmake/SampleDependencies.cmake b/sample/cmake/SampleDependencies.cmake
+index 14cc943..588e788 100644
+--- a/sample/cmake/SampleDependencies.cmake
++++ b/sample/cmake/SampleDependencies.cmake
+@@ -26,8 +26,8 @@ option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
+ )
+ unset(DEFAULT_USE_SYSTEM_MUJOCO)
+ 
+-option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version." OFF)
+-option(MUJOCO_SAMPLES_USE_SYSTEM_GLFW "Use installed GLFW version." OFF)
++option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version." ON)
++option(MUJOCO_SAMPLES_USE_SYSTEM_GLFW "Use installed GLFW version." ON)
+ 
+ set(MUJOCO_DEP_VERSION_glfw
+     7d5a16ce714f0b5f4efa3262de22e4d948851525 # 3.3.6
+@@ -58,7 +58,7 @@ findorfetch(
+   EXCLUDE_FROM_ALL
+ )
+ 
+-option(MUJOCO_SAMPLES_STATIC_GLFW "Link MuJoCo sample apps against GLFW statically." ON)
++option(MUJOCO_SAMPLES_STATIC_GLFW "Link MuJoCo sample apps against GLFW statically." OFF)
+ if(MUJOCO_SAMPLES_STATIC_GLFW)
+   set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
+   set(BUILD_SHARED_LIBS
+@@ -76,7 +76,7 @@ findorfetch(
+   USE_SYSTEM_PACKAGE
+   MUJOCO_SAMPLES_USE_SYSTEM_GLFW
+   PACKAGE_NAME
+-  glfw
++  glfw3
+   LIBRARY_NAME
+   glfw
+   GIT_REPO
