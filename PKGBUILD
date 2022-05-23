@@ -1,4 +1,5 @@
-# Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
+# Maintainer: Michael Prager <archlinuxaur@michaelprager.de>
+# Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
 pkgver=v3.6.RC1.r58.a5d64686d
 pkgrel=1
