@@ -1,6 +1,6 @@
 pkgbase = mailscanner
 	pkgdesc = Mail filter for spam, viruses, phishing, and other malicious content
-	pkgver = 5.3.3_1
+	pkgver = 5.4.4_1
 	pkgrel = 1
 	url = https://mailscanner.info/
 	arch = x86_64
@@ -55,8 +55,8 @@ pkgbase = mailscanner
 	backup = etc/MailScanner/rules/external.message.rules
 	backup = etc/MailScanner/rules/max.message.size.rules
 	backup = etc/MailScanner/rules/spam.whitelist.rules
-	source = https://github.com/MailScanner/v5/releases/download/5.3.3-1/MailScanner-5.3.3-1.nix.tar.gz
-	sha256sums = 6d2fd0015bc5b6292f7ba2ab6b31bfa5540373624072d585d25382b1a975db4d
+	source = https://github.com/MailScanner/v5/releases/download/5.3.3-1/MailScanner-5.4.4-1.nix.tar.gz
+	sha256sums = 15e34631ee7030694a537f56ac0e8152cb41a5a53135b12f696cd34d3940d667
 
 pkgname = mailscanner
 
