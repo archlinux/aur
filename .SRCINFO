@@ -1,5 +1,5 @@
 pkgbase = libdogleg-git
-	pkgdesc = mrcal is a generic toolkit built to solve the calibration and SFM-like problems we encounter at NASA/JPL.
+	pkgdesc = Large-scale nonlinear least-squares optimization library for both sparse and dense problems
 	pkgver = v0.15.4.r0.gd8e655b
 	pkgrel = 1
 	url = https://github.com/dkogan/libdogleg
