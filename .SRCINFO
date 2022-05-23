@@ -1,13 +1,13 @@
 pkgbase = python-indexed-gzip
 	pkgdesc = Drop-in replacement for the built-in python gzip.GzipFile class (IndexedGzipFile); written to allow fast random access of compressed NIfTI files
-	pkgver = 1.6.4
+	pkgver = 1.6.13
 	pkgrel = 1
 	arch = any
 	license = ZLIB
 	depends = python
 	depends = cython
 	options = !emptydirs
-	source = https://github.com/pauldmccarthy/indexed_gzip/archive/v1.6.4.tar.gz
-	sha256sums = 41977f08c72322fa72499b35338a207c4d3b8c772ca2273d04cad664fcecf96a
+	source = https://github.com/pauldmccarthy/indexed_gzip/archive/v1.6.13.tar.gz
+	sha256sums = 025f0c281da965ea1a48a0340f7ede8ae4f400911240c3072df3f210fa8a6756
 
 pkgname = python-indexed-gzip
