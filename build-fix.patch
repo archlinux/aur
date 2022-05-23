@@ -1,0 +1,69 @@
+Only in mrcal.orig: .git
+diff --color --unified --recursive --text mrcal.orig/Makefile mrcal.new/Makefile
+--- mrcal.orig/Makefile	2022-05-23 17:16:41.763345353 +1000
++++ mrcal.new/Makefile	2022-05-23 17:16:34.386712371 +1000
+@@ -60,7 +60,8 @@
+ # generate manpages from distributed binaries, and ship them. This is a hoaky
+ # hack because apparenly manpages from python tools is a crazy thing to want to
+ # do
+-DIST_MAN := $(addsuffix .1,$(DIST_BIN))
++# Discarding documentation until I can figure out how to build it on Arch Linux
++#DIST_MAN := $(addsuffix .1,$(DIST_BIN))
+ 
+ # parser
+ cameramodel-parser_GENERATED.c: cameramodel-parser.re mrcal.h
+@@ -108,7 +109,8 @@
+ all: mrcal/_mrcal$(PY_EXT_SUFFIX) $(ALL_NPSP_SO)
+ EXTRA_CLEAN += mrcal/*.so
+ 
+-include Makefile.doc
++# Discarding documentation until I can figure out how to build it on Arch Linux
++#include Makefile.doc
+ include Makefile.tests
+ 
+ include mrbuild/Makefile.common.footer
+diff --color --unified --recursive --text mrcal.orig/mrbuild/Makefile.common.footer mrcal.new/mrbuild/Makefile.common.footer
+--- mrcal.orig/mrbuild/Makefile.common.footer	2022-05-23 17:16:41.773345307 +1000
++++ mrcal.new/mrbuild/Makefile.common.footer	2022-05-23 17:16:34.390045690 +1000
+@@ -256,16 +256,19 @@
+ $(if $(PY3_MODULE_PATH),,$(error "Couldn't find the python3 module path!"))
+ endif
+ 
+-USE_DEBIAN_PATHS := $(wildcard /etc/debian_version)
+-ifneq (,$(USE_DEBIAN_PATHS))
+-  # we're a debian-ish box, use the multiarch dir
+-  DEB_HOST_MULTIARCH := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
+-  USRLIB             := usr/lib/$(DEB_HOST_MULTIARCH)
+-else
+-  # we're something else. Do what CentOS does.
+-  # If /usr/lib64 exists, use that. Otherwise /usr/lib
+-  USRLIB := $(if $(wildcard /usr/lib64),usr/lib64,usr/lib)
+-endif
++#USE_DEBIAN_PATHS := $(wildcard /etc/debian_version)
++#ifneq (,$(USE_DEBIAN_PATHS))
++#  # we're a debian-ish box, use the multiarch dir
++#  DEB_HOST_MULTIARCH := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
++#  USRLIB             := usr/lib/$(DEB_HOST_MULTIARCH)
++#else
++#  # we're something else. Do what CentOS does.
++#  # If /usr/lib64 exists, use that. Otherwise /usr/lib
++#  USRLIB := $(if $(wildcard /usr/lib64),usr/lib64,usr/lib)
++#endif
++# We are making for Arch, use /usr/lib
++# 
++USRLIB := /usr/lib
+ 
+ endif
+ 
+diff --color --unified --recursive --text mrcal.orig/mrcal-pywrap.c mrcal.new/mrcal-pywrap.c
+--- mrcal.orig/mrcal-pywrap.c	2022-05-23 17:16:41.776678626 +1000
++++ mrcal.new/mrcal-pywrap.c	2022-05-23 17:16:34.390045690 +1000
+@@ -8,7 +8,7 @@
+ #include <dogleg.h>
+ 
+ #if (CHOLMOD_VERSION > (CHOLMOD_VER_CODE(2,2)))
+-#include <suitesparse/cholmod_function.h>
++#include <cholmod_function.h>
+ #endif
+ 
+ #include "mrcal.h"
