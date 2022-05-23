@@ -1,7 +1,7 @@
 pkgbase = nvidia-510xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver
 	pkgver = 510.73.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
 	license = GPL2
