@@ -13,7 +13,7 @@ if __name__ == "__main__":
         # cmd = 'jupytext ' + file_path + ' --pipe "black -l 88 -S -C {}"'
     elif file_ext == 'sh':
         cmd = 'shfmt -w ' + file_path
-    elif file_ext == 'json':
+    elif file_ext in ['json', 'yaml', 'yml']:
         cmd = 'prettier --print-width 88 --write ' + file_path
     else:
         sys.exit()
