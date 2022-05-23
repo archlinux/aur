@@ -1,8 +1,8 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-fsutil
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="file-system utilities for lazy devs."
 arch=('any')
 url="https://github.com/fabiocaccamo/python-fsutil"
@@ -15,11 +15,11 @@ makedepends=(
 	'python-setuptools'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f338558b1b55d1e5386cbd2c03ac2be026e65e047a1c0c2d063df321579b4523')
+sha256sums=('fa5ca88b9064af7142e2be67ff4b5e93a3de791bb6feae1e4b57b8484e54d8b7')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python setup.py build
+	python3 -m build
 }
 
 package() {
