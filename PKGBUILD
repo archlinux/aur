@@ -1,7 +1,7 @@
 # Maintainer: missing <liri_bucketful at slmail dot me>
 pkgname=lbry-sdk
 pkgver=0.108.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps."
 arch=('x86_64')
 url="https://github.com/lbryio/lbry-sdk"
