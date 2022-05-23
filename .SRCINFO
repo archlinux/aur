@@ -1,6 +1,6 @@
 pkgbase = photoprism
 	pkgdesc = Personal Photo Management powered by Go and Google TensorFlow
-	pkgver = 220302
+	pkgver = 220517
 	pkgrel = 0
 	url = https://github.com/photoprism/photoprism
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = photoprism
 	provides = photoprism
 	conflicts = photoprism
 	backup = etc/photoprism/options.yml
-	source = git+https://github.com/photoprism/photoprism.git#tag=220302-0059f429
+	source = git+https://github.com/photoprism/photoprism.git#tag=220517-b9c68f8f
 	source = https://dl.photoprism.org/tensorflow/nasnet.zip
 	source = https://dl.photoprism.org/tensorflow/facenet.zip
 	source = https://dl.photoprism.org/tensorflow/nsfw.zip
