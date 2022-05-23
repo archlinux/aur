@@ -6,9 +6,8 @@ pkgbase=docspell
 pkgname=(
     'docspell-joex'
     'docspell-restserver'
-    # 'firefox-extension-docspell'
 )
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
@@ -18,15 +17,14 @@ license=('GPL3')
 groups=('docspell')
 source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-restserver-$pkgver.zip"
         "$pkgbase-$pkgver-joex.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-joex-$pkgver.zip"
-        # "$pkgbase-$pkgver-tools.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-tools-$pkgver.zip"
         "${pkgname[0]}.sh"
         "${pkgname[1]}.sh"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('03c29764ae405910618e28d97e3643ec745cceb3fc5271a24947b1ac63d0ca88f66c218287d4c39e20bcc1326a344c65daef89ea2046ea72c1c89df647a884ed'
-            'dba474bfc5613cc67997d9dca2f49e6b87126ef915ed1babbf46c7b63d073266e5075df198fa7e73ad274fbab98303edf12b50f162933db0f5eaf7bf7314f520'
+sha512sums=('783b0af5071b820691e1e829993bd7cae5528761ac7a42e44567794faa7b362b4a3d36b26d1915193e6fa7c18fa85cdf899ea9803bd3096697b2ae0aaf911209'
+            '27b77399c33720d90d2515041f01bb17423fee19de72b638ab562e52b8d27d917769d8192e12810a2a614fb9ebdcaaaa371f8f42305f8247d88f1e89f390043f'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
@@ -39,12 +37,6 @@ prepare() {
     sed -i -e 's@url = "jdbc:h2://"${java.io.tmpdir}"@url = "jdbc:h2:///var/lib/docspell@' \
         "${pkgname[0]}-$pkgver/conf/${pkgname[0]}.conf" \
         "${pkgname[1]}-$pkgver/conf/$pkgbase-server.conf"
-
-    # sed -i -e 's@/usr/local/share/docspell/native.py@/usr/share/docspell-tools/native.py@' \
-    #     "${pkgname[2]}-$pkgver/firefox/native/app_manifest.json"
-
-    # sed -i -e 's@DS_SH_CMD="ds.sh"@DS_SH_CMD="docspell-dsc"@' \
-    #     "${pkgname[2]}-$pkgver/firefox/native/native.py"
 }
 
 # You do not need to compile Java applications from source.
@@ -113,24 +105,3 @@ package_docspell-restserver() {
         `# DSTDIR:` \
             "$pkgdir/usr/share/java/${pkgname[1]}/"
 }
-
-# makedepends+=('python')
-# package_firefox-extension-docspell() {
-#     pkgdesc="Send documents from the context menu in Firefox to Docspell"
-#     depends=('python')
-#     conflicts=('docspell-tools')
-#     # optdepends=('docspell-dsc')
-
-#     cd "${pkgname[2]}-$pkgver" || return
-
-#     # Firefox extension and native messaging host
-#     mkdir -p "$pkgdir/usr/share/${pkgname[2]}"
-#     mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
-#     install -Dm 644 "firefox/$pkgbase-extension.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/docspell@eikek.github.io.xpi"
-#     install -Dm 755 "firefox/native/native.py" "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
-#     ln -s "/usr/share/${pkgname[2]}/firefox/native/app_manifest.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/$pkgbase.json"
-
-#     # https://wiki.archlinux.org/index.php/Python_package_guidelines#Reproducible_bytecode
-#     export PYTHONHASHSEED=0
-#     python -O -m compileall "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
-# }

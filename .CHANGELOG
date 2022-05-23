@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.36.0
+
+*May 22, 2022*
+
+- Extend docspell via addons (experimental feature) (#1550)
+- Adds Lithuanian and Polish to document languages (#1540, #1345)
+- Added a quick guide for adding more languages (#942)
+- Make dashboard boxes headlines bold (#1531)
+- Improve logging config; allow to specify loggers and their level (#1535)
+- Allow for auth tokens to optionally be issued with an validity (#1533, 1534)
+- Allow to repair db migrations, necessary for rare cases like #1517
+
+### Rest API Changes
+
+- new endpoints for managing addons
+- new endpoint for joex to return its addon executor config
+
+### Configuration Changes
+
+- logging config sections allows to specfiy a map of logger names ->
+  level pairs (joex and restserver)
+- addon config section in restserver: allows to enable/disable
+  corresponding endpoints
+- addon config section in joex: allows to configure how to run addons
+
+
 ## v0.35.0
 
 *Apr 14, 2022*
@@ -434,7 +460,7 @@ Complete
 
 - Joex: A new section for configuring the update task has been added.
   See section `update-check` in the default [config
-  file](https://docspell.org/docs/configure/main/#joex).
+  file](https://docspell.org/docs/configure/defaults/#joex).
 
 
 ## v0.25.1
@@ -883,7 +909,7 @@ Please open an issue if want more languages to be included.
   - the config regarding text analysis changed, there are new config
     options, like `nlp.mode` and the `max-due-date-years` has been
     moved inside `text-anlysis`. Please have a look at the new
-    [default config](https://docspell.org/docs/configure/main/#joex)
+    [default config](https://docspell.org/docs/configure/defaults/#joex)
     if you changed something there.
   - The `regex-ner` section has changed: the `enabled` flag has been
     removed, you can now limit the number of entries using
