@@ -1,6 +1,6 @@
 pkgbase = sdformat-9
 	pkgdesc = SDF Converter for gazebo
-	pkgver = 9.5.0
+	pkgver = 9.8.0
 	pkgrel = 1
 	url = http://sdformat.org/
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = sdformat-9
 	depends = ignition-math>=6
 	depends = python-psutil
 	depends = urdfdom
-	source = sdformat-9.5.0.tar.gz::https://github.com/osrf/sdformat/archive/sdformat9_9.5.0.tar.gz
-	sha256sums = 53791427b25c2485a2f74aab90e07ff8e7470f86532ecd30b9510bbec4122c97
+	source = sdformat-9-9.8.0.tar.gz::https://github.com/osrf/sdformat/archive/sdformat9_9.8.0.tar.gz
+	sha256sums = 6aabb4e08073d506f27a8e801eb175cca9a1c938e4fbff6b30f0b2ddf52a9b5e
 
 pkgname = sdformat-9
-
