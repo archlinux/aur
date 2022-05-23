@@ -1,5 +1,6 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Raphael Nestler <raphael.nestler@gmail.com>
 pkgdesc='Command line tool for the Semaphore CI service'
 pkgname=semaphoreci-cli
 pkgver=0.24.0
