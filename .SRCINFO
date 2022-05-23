@@ -5,6 +5,7 @@ pkgbase = xp-git
 	url = https://github.com/Ryhon0/xp
 	arch = any
 	license = GPL-3.0
+	makedepends = dub
 	makedepends = ldc
 	depends = liblphobos
 	depends = dbus
