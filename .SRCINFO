@@ -9,8 +9,7 @@ pkgbase = bolbol-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = bolbol::git://github.com/mostafa-asg/bolbol.git#branch=master
+	source = bolbol::git+https://github.com/mostafa-asg/bolbol.git#branch=master
 	md5sums = SKIP
 
 pkgname = bolbol-git
-

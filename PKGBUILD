@@ -16,12 +16,10 @@ makedepends=(
 )
 
 source=(
-  "$_pkgname::git://github.com/mostafa-asg/bolbol.git#branch=${BRANCH:-master}"
+  "$_pkgname::git+https://github.com/mostafa-asg/bolbol.git#branch=${BRANCH:-master}"
 )
 
-md5sums=(
-  'SKIP'
-)
+md5sums=('SKIP')
 
 backup=(
 )
