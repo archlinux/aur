@@ -2,7 +2,7 @@
 
 pkgname=odb
 pkgver=2.5.0b21
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Object-Relational Mapping compiler"
 url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ build() {
 	mkdir -p "${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	GPPVER="$(g++ --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
 
 	bpkg create -d odb-gcc-${GPPVER} cc \
-	config.cxx=g++ \
-	config.cc.coptions="-O3 -DODB_GCC_PLUGIN_DIR" \
+	config.cxx=${CXX:-g++} \
+	config.cc.coptions="-O3 -DODB_GCC_PLUGIN_DIR $CXXFLAGS" \
 	config.bin.rpath=${pkgdir}/usr/lib \
 	config.install.root=${pkgdir}/usr
 
@@ -30,7 +30,7 @@ build() {
 
 package() {
 
-	GPPVER="$(g++ --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
+	GPPVER="$(${CXX:-g++} --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
 	cd "${srcdir}/${pkgname}-${pkgver}/odb-gcc-${GPPVER}"
 
 	bpkg install odb
