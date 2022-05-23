@@ -1,6 +1,6 @@
 pkgname=influxdb-cxx
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/influxdb-cxx
 arch=(x86_64)
@@ -21,6 +21,7 @@ prepare() {
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=null-dereference -Wno-error=maybe-uninitialized" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_INCLUDEDIR="include/influxdb-cxx" \
 	-DBUILD_SHARED_LIBS=OFF \
 	-DINFLUXCXX_TESTING=OFF \
 	-DINFLUXCXX_SYSTEMTEST=OFF \
@@ -31,6 +32,7 @@ prepare() {
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=null-dereference -Wno-error=maybe-uninitialized" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_INCLUDEDIR="include/influxdb-cxx" \
 	-DBUILD_SHARED_LIBS=ON \
 	-DINFLUXCXX_TESTING=OFF \
 	-DINFLUXCXX_SYSTEMTEST=OFF \

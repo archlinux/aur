@@ -1,7 +1,7 @@
 pkgbase = influxdb-cxx
 	pkgdesc = C++ client library for InfluxDB 1.x/2.x
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/offa/influxdb-cxx
 	arch = x86_64
 	makedepends = cmake
