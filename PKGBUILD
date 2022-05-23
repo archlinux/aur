@@ -1,8 +1,8 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
-pkgver=1.7.3
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
@@ -12,6 +12,7 @@ depends=(
 		python-emoji
 		python-filetype
 		python-flask-login
+		python-flask-assets
 		python-future
 		python-immutabledict # aur
 		python-netaddr
