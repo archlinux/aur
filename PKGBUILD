@@ -1,7 +1,7 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 pkgname=evillimiter-patched
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="A patched version of evillimiter tool, which adds support for arrow keys running previous command and suppressing disruptive warnings."
 arch=('any')
 url="https://github.com/Rayrsn/evillimiter"
