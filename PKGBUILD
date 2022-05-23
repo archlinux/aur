@@ -59,16 +59,22 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
     "apache.conf"
+    "nginx.conf"
     "php.ini"
+    "php-fpm.conf"
     "0001-Fix-configuration-to-point-to-installed-files.patch"
+    "0002-Set-default-project-directory-to-package-provided-di.patch"
 )
 sha256sums=('8f0c7ab93e6341713da40d034e689c4b9c3f257de485624abe4dc78b175267fc'
             'fe66393aaf561749255cebf4c61d13a8425e326b8ce50409d88c4035165de049'
             '7f71b5217cbe0713fa5f8baa138348c9cd49f42c2b6025c059076042e0c04c6d'
             '50bf612ad951bcf3c1969aa79b0c7ab78745983720bc5f2deb37d1704c0e37d8'
-            '3c4d5fbb1299aff5d4efa855c8b278f2e19c47104982f3488c2c545a40f75ac8'
+            'fdde0a7fb8fac01fabf05a63ff7d2d4dd7bdaa2fca980de899f01ce2a4063e56'
+            'ed00242d06d6a17297a30675befef110f354a6f4bd2804d58796d956a9ae54a2'
             '37c4b17463f8317d39bb741b07bbb693afc0bbf584eec590f89b849542b98b7d'
-            '0873be585fa87e266e7e5bf02ab71b7032ea4e8d38d168f2f56cf4dd1bb32975')
+            'c2d5391160704bc636fde73c0e92346529ae1698f1cc909a8341271e0e4967d4'
+            '2d6b5aced7a5a3fba2d3009f0806eb8a79677f9a62e9de90cd3c9cb4452746a3'
+            '7e931eb36bc77a754bf22fa34e8d3c589b14d3668f14b73cf59121be5026bf24')
 noextract=(
     "country_grid.sql.gz"
 )
@@ -79,6 +85,7 @@ prepare() {
     cd "Nominatim-$pkgver"
 
     patch -p1 < "$srcdir/0001-Fix-configuration-to-point-to-installed-files.patch"
+    patch -p1 < "$srcdir/0002-Set-default-project-directory-to-package-provided-di.patch"
     cp "$srcdir/country_grid.sql.gz" "data/country_grid.sql.gz"
 }
 
@@ -101,8 +108,12 @@ package() {
     cd "${srcdir}/build/"
     make DESTDIR="${pkgdir}/" install
 
-    # install apache and php config
-    install -Dm644 "${srcdir}/apache.conf" -t "${pkgdir}/etc/webapps/${pkgname}"
+    # install apache and nginx example configs
+    install -Dm644 "${srcdir}/apache.conf" -t "${pkgdir}/usr/share/doc/$pkgname/examples/"
+    install -Dm644 "${srcdir}/nginx.conf" -t "${pkgdir}/usr/share/doc/$pkgname/examples/"
+
+    # Install PHP configs
+    install -Dm644 "${srcdir}/php-fpm.conf" "${pkgdir}/etc/php/php-fpm.d/nominatim.conf"
     install -Dm644 "${srcdir}/php.ini" "${pkgdir}/etc/php/conf.d/nominatim.ini"
 
     # create users and directories
