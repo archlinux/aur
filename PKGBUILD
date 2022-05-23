@@ -2,7 +2,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 _base=NiaPy
 pkgname=python-${_base,,}
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Python microframework for building nature-inspired algorithms"
 url="https://${_base}.org"
@@ -11,11 +11,10 @@ license=(MIT)
 depends=(python-pandas python-matplotlib python-openpyxl)
 checkdepends=(python-pytest)
 source=(https://github.com/NiaOrg/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('7c2233e24bfeebad277f44897bc4763d55de514693f84bfcc06b325f6b7adb06e8a7668df58e9a6c2350a51f6d8145afff5081841e8f9c5f1d0dc38be4e96653')
+sha512sums=('d13fe766aa4e1d3150be07845d2fcfa856b6ffd66d70e9a8de187325da3c702f266a1b65ee817879e344d3b6302c12deac8e8f6550699b01c9df900d82be0644')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
