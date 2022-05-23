@@ -1,7 +1,7 @@
 pkgbase = build2
 	pkgdesc = build2 build system
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://build2.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = build2
 	makedepends = wget
 	depends = sqlite3
 	depends = pkgconf
+	options = !ccache
 	source = https://download.build2.org/0.14.0/build2-toolchain-0.14.0.tar.xz
 	source = build.patch
 	sha256sums = 18efc6b2d41498f7516e7a8a5c91023f6182c867d423792398390dd0c004cfdd

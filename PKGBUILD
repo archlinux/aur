@@ -4,11 +4,12 @@
 
 pkgname=build2
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
+options=('!ccache')
 makedepends=('wget')
 depends=('sqlite3' 'pkgconf')
 source=("https://download.build2.org/${pkgver}/build2-toolchain-${pkgver}.tar.xz"
@@ -23,7 +24,7 @@ build() {
   patch -p0 < ${srcdir}/build.patch
 
   mkdir -p ${srcdir}/build/usr
-  ./build.sh --trust yes --install-dir ${srcdir}/build/usr g++
+  ./build.sh --trust yes --install-dir ${srcdir}/build/usr ${CXX:-g++} $CXXFLAGS
 
   for f in ${srcdir}/build/usr/lib/pkgconfig/*.pc; do sed -i "s|${srcdir}/build||" ${f}; done
 }
