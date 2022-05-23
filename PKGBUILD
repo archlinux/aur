@@ -3,7 +3,7 @@
 pkgname=hlint-bin
 _githubname=hlint
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Haskell source code suggestions. Packaged from upstream binary release.'
 arch=('x86_64')
 url="https://github.com/ndmitchell/hlint"
