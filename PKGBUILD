@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2774
+pkgver=1.7.2787
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -30,9 +30,7 @@ depends=(
   portaudio
   libsamplerate
   sdl2
-  qt6-base
-  qt6-wayland
-  qt6-tools
+  wxgtk3
   fmt
   soundtouch
   wayland
@@ -85,8 +83,6 @@ build()
   mkdir -p build
   cd build
 
-  ls -l $srcdir/pcsx2/3rdparty/
-
   cmake ../pcsx2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -94,7 +90,6 @@ build()
     -DWAYLAND_API=ON \
     -DXDG_STD=TRUE \
     -USE_VULKAN=ON \
-    -DQT_BUILD=ON \
     -DUSE_SYSTEM_LIBS=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
