@@ -1,21 +1,19 @@
-# Maintainer: Christian Mauderer <oss@c-mauderer.de>
-# Package based on python2-flask-assets
-pkgname=python-flask-assets
-_name=Flask-Assets
-pkgver=0.12
+# Maintainer: pappy <pa314159@users.noreply.github.com>
+py_name=flask-assets
+pkgname=python-$py_name
+pkgver=2.0
 pkgrel=1
 pkgdesc="Asset management for Flask, to compress and merge CSS and Javascript files"
 arch=(any)
-url="https://pythonhosted.org/Flask-Cache/"
+url="https://flask-assets.readthedocs.io"
 license=('BSD')
 depends=('python' 'python-flask' 'python-webassets')
 makedepends=('python-distribute')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('b97b2f2f23517973ac551bde968d7b7e')
+source=("https://github.com/miracle2k/$py_name/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('a0c6f8c2a2caa0f6b83a5878b594b3a8cbd0b47a45986ab514b8b9ac7d84b568')
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "$srcdir/$py_name-$pkgver"
   python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
