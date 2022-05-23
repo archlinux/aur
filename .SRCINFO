@@ -1,0 +1,16 @@
+pkgbase = python-numpysane
+	pkgdesc = More reasonable core functionality for numpy
+	pkgver = 0.35
+	pkgrel = 0
+	url = https://github.com/dkogan/numpysane
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python-numpy
+	optdepends = 
+	source = https://files.pythonhosted.org/packages/source/n/numpysane/numpysane-0.35.tar.gz
+	md5sums = 1d7aef04459ab492b6e5fa1aec64f2a5
+
+pkgname = python-numpysane
