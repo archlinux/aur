@@ -12,8 +12,7 @@ url="https://github.com/cocagne/py$_srcname"
 license=('MIT')
 makedepends=('python' 'python2' 'python-six' 'python2-six')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('7cdcffc4c0bc32798ad054c3bca99d95a97b92b37df708eaca9e748153141a76'
-            '301627f7766f09e7cfda7b374699311da657490a8e63ab34d6c2cb4628bd8427')
+sha256sums=('57dd009ed4d739fa4bd7403fb014c0113621e5631953396221749ed53a9dd4a8')
 
 prepare() {
   cd "$srcdir"
