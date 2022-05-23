@@ -2,7 +2,7 @@
 # Contributor: arjan5 <aur@anymore.nl>
 
 pkgname=mailscanner
-pkgver=5.3.3_1
+pkgver=5.4.4_1
 pkgrel=1
 pkgdesc="Mail filter for spam, viruses, phishing, and other malicious content"
 arch=("x86_64" "i686")
@@ -62,7 +62,7 @@ backup=('etc/MailScanner/MailScanner.conf'
   'etc/MailScanner/rules/max.message.size.rules'
   'etc/MailScanner/rules/spam.whitelist.rules')
 source=(https://github.com/MailScanner/v5/releases/download/${pkgver//_/-}/MailScanner-${pkgver//_/-}.nix.tar.gz)
-sha256sums=('6d2fd0015bc5b6292f7ba2ab6b31bfa5540373624072d585d25382b1a975db4d')
+sha256sums=('15e34631ee7030694a537f56ac0e8152cb41a5a53135b12f696cd34d3940d667')
 _srcname=MailScanner-${pkgver//_[0-9]*/}
 
 prepare() {
