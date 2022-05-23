@@ -1,15 +1,15 @@
 pkgbase = cloud-nuke-bin
 	pkgdesc = A tool for cleaning up your cloud accounts by nuking (deleting) all resources within it.
-	pkgver = 0.11.3
+	pkgver = 0.11.6
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/cloud-nuke
 	arch = x86_64
 	arch = i386
 	license = MIT
 	provides = cloud-nuke
-	source_x86_64 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.3/cloud-nuke_linux_amd64
-	sha256sums_x86_64 = b9cce7506b32edef33f03d95c9548a1a3d5313868357ad6f8d5e364fc405d2ad
-	source_i386 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.3/cloud-nuke_linux_386
-	sha256sums_i386 = 0e071048f2bb0b34ba0261f92b894c2dbb49306ef3973ccb9d989792132dba41
+	source_x86_64 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.6/cloud-nuke_linux_amd64
+	sha256sums_x86_64 = 043b75a488166d79a052587643afd2d69e4dd45e54a83b9ef6f3d47f6211deb2
+	source_i386 = cloud-nuke-bin::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.6/cloud-nuke_linux_386
+	sha256sums_i386 = c411bcce7c1156ccf435faeefa54496420881abfd45fbc5a65cb8d4bdfd8088f
 
 pkgname = cloud-nuke-bin
