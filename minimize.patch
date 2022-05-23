@@ -11,11 +11,10 @@ index e89ad854f..4ad046917 100644
  PANGO_REQUIRED=1.15.4
  GLIB_REQUIRED=2.67.1
  GTK_REQUIRED=3.22.0
--LIBWNCK_REQUIRED=40.0
+ LIBWNCK_REQUIRED=40.0
 -LIBGNOME_MENU_REQUIRED=3.7.90
 -LIBECAL_REQUIRED=3.33.2
 -LIBEDATASERVER_REQUIRED=3.5.3
-+LIBWNCK_REQUIRED=40.0s
  LIBSYSTEMD_REQUIRED=230
  CAIRO_REQUIRED=1.0.0
 -GWEATHER_REQUIRED=3.91.0
@@ -138,7 +137,7 @@ index e89ad854f..4ad046917 100644
 -  modules/clock/Makefile
 -  modules/clock/pixmaps/Makefile
 -  modules/fish/Makefile
-   modules/launcher/Makefile
+-  modules/launcher/Makefile
 -  modules/menu/Makefile
    modules/notification-area/Makefile
    modules/separator/Makefile
