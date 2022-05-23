@@ -1,6 +1,6 @@
 pkgbase = mitk
 	pkgdesc = Medical Imaging Interaction Toolkit (MITK) is a free open-source software system for development of interactive medical image processing software.
-	pkgver = 2021.02
+	pkgver = 2022.04
 	pkgrel = 1
 	url = https://mitk.org
 	arch = x86_64
@@ -10,14 +10,13 @@ pkgbase = mitk
 	depends = qt5-tools
 	depends = qt5-webengine
 	options = !strip
-	source = https://www.mitk.org/download/releases/MITK-2021.02/Ubuntu%2020.04/MITK-v2021.02-linux-x86_64.tar.gz
+	source = https://www.mitk.org/download/releases/MITK-2022.04/Ubuntu%2020.04/MITK-v2022.04-linux-x86_64.tar.gz
 	source = LICENSE
 	source = mitk-workbench
 	source = mitk-workbench.desktop
-	md5sums = 8c39aece3a4226b950dc18fcdcbfb2b9
+	md5sums = 3cb14d793aa8aa768c2fcbf07b9cf519
 	md5sums = e559d78ebaf8764cbef89a26d3fcbfe6
-	md5sums = c660294bae6faf808acf0c659d64f372
+	md5sums = d0d77438906a627167b9729d52755ecb
 	md5sums = 96fab1bb6f6eea48c3a1bf8f525635ba
 
 pkgname = mitk
-
