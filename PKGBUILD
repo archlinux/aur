@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2765
+pkgver=1.7.2774
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -48,7 +48,7 @@ makedepends=(
   python
   vulkan-headers
 )
-provides=(pcsx2)
+provides=(pcsx2-qt)
 conflicts=(pcsx2)
 source=(
 git+https://github.com/PCSX2/pcsx2.git
@@ -69,20 +69,15 @@ pkgver()
 
 prepare()
 {
-  cd $srcdir/pcsx2/3rdparty
-  git submodule update --init libchdr
-  git submodule update --init gtest
-  git submodule update --init cubeb
-  git submodule update --init imgui
-  git submodule update --init glslang
-  git submodule update --init vulkan-headers
-  git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
-  git config submodule.https://github.com/google/googletest.git.url gtest
-  git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
-  git config submodule.https://github.com/ocornut/imgui.git.url imgui
-  git config submodule.https://github.com/KhronosGroup/glslang.git glslang
-  git config submodule.https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
-  git submodule update
+  cd $srcdir/pcsx2
+  git submodule init
+  git config submodule.3rdparty/libchdr/libchdr.url $srcdir/libchdr
+  git config submodule.3rdparty/gtest.url $srcdir/googletest
+  git config submodule.3rdparty/cubeb/cubeb.url $srcdir/cubeb
+  git config submodule.3rdparty/imgui/imgui.url $srcdir/imgui
+  git config submodule.3rdparty/glslang/glslang.url $srcdir/glslang
+  git config submodule.3rdparty/vulkan-headers.url $srcdir/Vulkan-Headers
+  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/imgui 3rdparty/glslang/glslang 3rdparty/vulkan-headers
 }
 
 build()
@@ -90,17 +85,19 @@ build()
   mkdir -p build
   cd build
 
+  ls -l $srcdir/pcsx2/3rdparty/
+
   cmake ../pcsx2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
+    -DXDG_STD=TRUE \
     -USE_VULKAN=ON \
     -DQT_BUILD=ON \
     -DUSE_SYSTEM_LIBS=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
-    -DXDG_STD=TRUE \
     -DDISABLE_SETCAP=ON
   ninja -j$(nproc)
 }
