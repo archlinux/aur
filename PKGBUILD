@@ -121,13 +121,12 @@ build() {
     unset CPPFLAGS
     export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
 
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir"
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/destdir"
 }
 
 package() {
-  ls -la
-  # mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
-  # ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
+  ls -la $srcdir/destdir
+  mv $srcdir/destdir/* $pkgdir
 }
 
 # vim:set ts=2 sw=2 et:
