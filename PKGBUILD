@@ -62,7 +62,7 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
-XINPUT2=          # Use Xinput2 support.
+XINPUT2="YES"     # Use Xinput2 support.
                   # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
                   # This is useless with pgtk.
 
@@ -103,7 +103,7 @@ else
 pkgname="emacs-native-comp-git"
 fi
 pkgver=29.0.50.156571
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch without PGTK."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
