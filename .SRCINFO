@@ -1,0 +1,11 @@
+pkgbase = nyaash
+	pkgver = 1.1.rc3
+	pkgrel = 1
+	md5sums = 302637792329d824de040d49669f2c98
+	license = GPL
+	arch = any
+	depends = lynx
+	source = https://notabug.org/BezierQuadratic/nyaash/archive/1.1.rc3.tar.gz 
+
+pkgname = nyaash
+
