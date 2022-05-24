@@ -1,7 +1,7 @@
 # Forked from https://aur.archlinux.org/pkgbase/qtcreator-src/
 
 pkgname=qtcreator-src-git
-pkgver=v5.0.0.beta1.r31.g58d00f37d4
+pkgver=7.0.2.r809.gf54097fefb
 pkgrel=1
 pkgdesc="Source code of Qt Creator IDE needed to build plugins"
 arch=('any')
@@ -10,13 +10,14 @@ license=('LGPL')
 depends=()
 options=('!strip')
 makedepends=()
+provides=("qtcreator-src=$pkgver")
 conflicts=(qtcreator-src)
 source=("git+https://code.qt.io/qt-creator/qt-creator.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/qt-creator
-    git describe --long --match v* | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --match v* | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed -r 's/v//g'
 }
 
 build() {
