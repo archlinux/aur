@@ -1,7 +1,7 @@
 pkgbase = qtcreator-spellchecker-plugin-bin
 	pkgdesc = Spell Checker plugin for the Qt Creator IDE (precompiled binary)
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CJCombrink/SpellChecker-Plugin
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = qtcreator-spellchecker-plugin-bin
 	depends = qtcreator
 	depends = hunspell
 	conflicts = qtcreator-spellchecker-plugin-git
+	conflicts = qtcreator-spellchecker-plugin
 	source = https://github.com/CJCombrink/SpellChecker-Plugin/releases/download/v3.0.0/SpellChecker-Plugin_QtCv7.0.0_linux_x64.tar.gz
 	sha256sums = 4600473a78754d5c81794d5ab81e5af4d9c789c462f2af3692d6e0a6c3eca314
 
