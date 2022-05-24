@@ -6,26 +6,26 @@
 
 pkgname=hipmagma
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix Algebra on GPU and Multicore Architectures"
 arch=('x86_64')
 url="https://icl.cs.utk.edu/magma/"
 license=('custom')
 depends=('blas' 'lapack' 'rocm-hip-sdk')
-makedepends=('gcc-fortran' 'cmake' 'ninja')
+makedepends=('gcc11-fortran' 'cmake' 'ninja')
 optdepends=('python: for examples and tests'
-            'gcc-fortran: Fortran interface')
+            'gcc11-fortran: Fortran interface')
 _pkgname="magma"
 source=("${_pkgname}-${pkgver}.tar.gz::http://icl.cs.utk.edu/projectsfiles/${_pkgname}/downloads/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f7892a14067d92f73714196e4d76e0354c8dc3da80053612ec98965ce6793627')
+sha256sums=('75b554dab00903e2d10b972c913e50e7f88cbc62f3ae432b5a086c7e4eda0a71')
 options=(!lto)
 
 build() {
   cd ${_pkgname}-${pkgver}
 
-  CC=/usr/bin/gcc \
-  CXX=/opt/rocm/g++ \
-  FC=/usr/bin/gfortran \
+  CC=/usr/bin/gcc-11 \
+  CXX=/opt/rocm/g++-11 \
+  FC=/usr/bin/gfortran-11 \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake \
     -Bbuild \
