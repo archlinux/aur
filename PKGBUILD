@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.10.1.r26.g9ed65ddd
+pkgver=0.5.10.1.r73.gf6e7d86b
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
          'webkit2gtk' 'xdg-utils' 'xorg-xrandr')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-#checkdepends=('appstream-glib' 'pciutils' 'python-nose2' 'python-poetry'
+#checkdepends=('appstream-glib' 'libcanberra' 'pciutils' 'python-nose2'
 #              'xorg-server-xvfb' 'xterm')
 optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
@@ -60,7 +60,7 @@ check() {
   # Will produce errors if ~/.local/share/lutris, ~/.config/lutris
   # and ~/.cache/lutris are not avialable / writable
 #  cd "$srcdir/${pkgname%-git}"
-#  xvfb-run --auto-servernum poetry run nose2
+#  xvfb-run --auto-servernum make test
 }
 
 package() {
