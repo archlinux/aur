@@ -1,6 +1,6 @@
 # Maintainer: XMiao
 pkgname="techmino-client"
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="Techmino:方块研究所"
 arch=('x86_64')
@@ -8,9 +8,9 @@ url="http://home.techmino.org"
 license=('(L)GPL')
 depends=(fuse xorg-xrandr)
 options=(!strip)
-_pkgname="Techmino_a0.17.3_Linux.AppImage"
+_pkgname="Techmino_a0.17.4_Linux.AppImage"
 source=("https://github.com/26F-Studio/Techmino/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=('6b0f139dff4f182d096cfe8cbb3cd81390b5f6e3bdc22aed7986e80b1d57da54')
+sha256sums=('a6138a2a9b208aacca74b421121a4f14840b4297a5ba73cac4bfdc08cdfd819a')
 _installdir=/opt/appimages
 _installname=techmino
 
