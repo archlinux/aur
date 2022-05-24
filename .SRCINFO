@@ -1,0 +1,13 @@
+pkgbase = cobra-cli
+	pkgdesc = tool to generate cobra applications and commands
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://cobra.dev
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = https://github.com/spf13/cobra-cli/archive/v1.3.0/cobra-cli-1.3.0.tar.gz
+	sha256sums = 9c9729828a035eff012330d5e720eec28d2cb6a1dbaa048e485285977da77d15
+
+pkgname = cobra-cli
