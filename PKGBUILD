@@ -2,7 +2,7 @@
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-_pkgver=2.21.2-2
+_pkgver=2.21.3-1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
@@ -18,7 +18,7 @@ install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
 source_x86_64=("warsaw-${pkgver}-64.run::https://cloud.gastecnologia.com.br/gas/diagnostico/ubuntu_64bits.run")
-sha256sums_x86_64=('4f9f5ef178dcaa6a7eaf0bda080f62e38110bdba8d4c56085a0357df059940ac')
+sha256sums_x86_64=('b7ebf7f6ae8e5251ab0948a91aefdee7f23cc2142d2519ddff674d76ea18abe6')
 
 prepare() {
     cd "${srcdir}"
