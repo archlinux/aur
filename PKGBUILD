@@ -1,6 +1,6 @@
 pkgname='nfetch-git'
 pkgdesc="A minimal linux fetch utility written in nim"
-pkgver=2.51
+pkgver=2.61
 pkgrel=0
 arch=('x86_64')
 url="https://github.com/Infinitybeond1/nfetch-src"
