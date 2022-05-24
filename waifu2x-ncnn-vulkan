@@ -15,7 +15,7 @@ while getopts "hvi:o:n:s:t:m:g:j:xf:" arg; do
     s) args="$args -$arg $OPTARG" ;;
     t) args="$args -$arg $OPTARG" ;;
     m)
-        if ! [ -d $OPTARG ]; then
+        if ! [ -d "$OPTARG" ]; then
             args="$args -m $default_model_path$OPTARG"
         else
             args="$args -$arg $OPTARG"
@@ -25,7 +25,11 @@ while getopts "hvi:o:n:s:t:m:g:j:xf:" arg; do
     j) args="$args -$arg $OPTARG" ;;
     x) args="$args -$arg" ;;
     f) args="$args -$arg $OPTARG" ;;
+    *)
+        echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
     esac
 done
 
-/usr/share/waifu2x-ncnn-vulkan/waifu2x-ncnn-vulkan $args
+/usr/share/waifu2x-ncnn-vulkan/waifu2x-ncnn-vulkan "$args"
