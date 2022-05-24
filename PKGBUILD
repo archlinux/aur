@@ -7,7 +7,7 @@ license=('GPL-3.0')
 
 arch=(any)
 pkgrel=1
-pkgver=v0.0.1_r40.gce6ba5b
+pkgver=v0.0.1_r48.gf8e756c
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

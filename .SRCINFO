@@ -1,6 +1,6 @@
 pkgbase = xp-git
 	pkgdesc = GUI and TUI music player with support for multiple streaming services.
-	pkgver = v0.0.1_r40.gce6ba5b
+	pkgver = v0.0.1_r48.gf8e756c
 	pkgrel = 1
 	url = https://github.com/Ryhon0/xp
 	arch = any
