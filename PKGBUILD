@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=tricks
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The social network for programmers!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('tricks-bin')
 options=('!emptydirs' '!strip')
 source=("https://tricks.aseman.io/tricks/static/downloads/Tricks-${pkgver}_linux.tar.xz"
         "tricks.desktop")
-sha256sums=('b9a5f92cc6671a29c84321b49f800928fc858bf81f53fe0e4d742d233159b400'
+sha256sums=('a07f1e95406e0c3316db0f6e51ecd98410f4699a151d52602ca7c2179ce88f73'
             '8cb921da1169ae970e26f46007e2ff4471c3804302bc0089809c09aac35577eb')
 
 prepare() {
