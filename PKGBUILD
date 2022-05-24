@@ -7,7 +7,7 @@
 pkgname=acroread-fonts-systemwide
 epoch=1
 _cloudver=DC
-_ver=2021.011.20039
+_ver=2022.001.20117
 _fontpackver=2022.001.20085
 _shortver=${_ver:2}
 _nodotver=${_shortver//.}
@@ -17,7 +17,7 @@ pkgver=${_cloudver}_${_ver}
 pkgrel=1
 pkgdesc="Fonts from Adobe Acrobat Reader ${_cloudver}"
 arch=('any')
-url="http://www.adobe.com/products/acrobat/acrrasianfontpack.html"
+url="https://helpx.adobe.com/acrobat/kb/windows-font-packs-32-bit-reader.html"
 license=('custom')
 makedepends=('p7zip')
 conflicts=('ttf-adobe-fonts'
@@ -27,7 +27,7 @@ conflicts=('ttf-adobe-fonts'
 source=("http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/${_nodotver}/AcroRdr${_cloudver}${_nodotver}_en_US.exe"
         "http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/misc/FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi")
 noextract=("AcroRdr${_cloudver}${_nodotver}_en_US.exe")
-sha256sums=('9ea7854fc05fd9c92b070893c6b199fbef922e36304e85177503df6d1470cd62'
+sha256sums=('d1c2f3167c2d4cf075690789753c2680a6196decfcb4b6bfe30335655abcf6cc'
             '21664fb9d0c7440459579867fb54d3ac6b9c6472ad0ef573f234c7bc0a4f23d3')
 
 prepare() {
