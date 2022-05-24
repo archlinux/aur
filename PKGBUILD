@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/greetd-$pkgver/target/release/mprocs" \
+	install -Dm755 "$srcdir/mprocs-$pkgver/target/release/mprocs" \
 		"$pkgdir/usr/bin/mprocs"
 }
