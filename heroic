@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-exec electron /opt/heroic/app.asar "$@"
