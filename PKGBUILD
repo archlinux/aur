@@ -1,4 +1,6 @@
-# Maintainer: Andrew Nelless <andrew at nelless dot net>
+# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
+# Contributor: Andrew Nelless <andrew at nelless dot net>
+
 pkgname='avro-cpp'
 pkgver=1.11.0
 pkgrel=1
