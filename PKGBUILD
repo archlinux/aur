@@ -5,7 +5,7 @@ _pkgname=gnome-panel
 _pkgver=3.44.0
 pkgname=${_pkgname}-minimal
 pkgver=3.44.0+0a5a7081f
-pkgrel=8
+pkgrel=9
 pkgdesc='Panel of GNOME Flashback (minimal build)'
 arch=('x86_64')
 url='https://wiki.gnome.org/Projects/GnomePanel'
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 source=("git+https://gitlab.gnome.org/GNOME/gnome-panel.git#tag=${_pkgver}"
         'minimize.patch')
 sha256sums=('SKIP'
-            '399216e67a7d02a869df3e3c15831ee01ff8f235bf859eebc229aa67bd5299a6')
+            '0a863238aa585521183ccb56cc1c98fac84ccf9b733e2998b60fa04fc9461b7b')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

@@ -258,7 +258,7 @@ index 8e16f764a..2f15b30a6 100644
 -pack-type=end
 -pack-index=1
 +alignment=center
-+size=32
++size=28
  
  [Object notification-area]
  object-iid=org.gnome.gnome-panel.notification-area::notification-area

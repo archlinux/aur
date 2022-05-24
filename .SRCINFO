@@ -1,7 +1,7 @@
 pkgbase = gnome-panel-minimal
 	pkgdesc = Panel of GNOME Flashback (minimal build)
 	pkgver = 3.44.0+0a5a7081f
-	pkgrel = 8
+	pkgrel = 9
 	url = https://wiki.gnome.org/Projects/GnomePanel
 	arch = x86_64
 	license = GPL
@@ -17,6 +17,6 @@ pkgbase = gnome-panel-minimal
 	source = git+https://gitlab.gnome.org/GNOME/gnome-panel.git#tag=3.44.0
 	source = minimize.patch
 	sha256sums = SKIP
-	sha256sums = 399216e67a7d02a869df3e3c15831ee01ff8f235bf859eebc229aa67bd5299a6
+	sha256sums = 0a863238aa585521183ccb56cc1c98fac84ccf9b733e2998b60fa04fc9461b7b
 
 pkgname = gnome-panel-minimal
