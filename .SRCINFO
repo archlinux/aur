@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 251.rc1.r479.gcf393c5f44
+	pkgver = 251.r65.g620ecc9c4b
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -41,6 +41,7 @@ pkgbase = systemd-git
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
+	options = !ccache
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -125,14 +126,14 @@ pkgname = systemd-git
 	optdepends = curl: machinectl pull-tar and pull-raw
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
-	provides = systemd=251.rc1.r479.gcf393c5f44
 	provides = nss-myhostname
-	provides = systemd-tools=251.rc1.r479.gcf393c5f44
-	provides = udev=251.rc1.r479.gcf393c5f44
-	conflicts = systemd
+	provides = systemd-tools=251.r65.g620ecc9c4b
+	provides = udev=251.r65.g620ecc9c4b
+	provides = systemd=251.r65.g620ecc9c4b
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
+	conflicts = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
@@ -163,28 +164,28 @@ pkgname = systemd-libs-git
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs=251.rc1.r479.gcf393c5f44
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	conflicts = systemd-libs
+	provides = systemd-libs=251.r65.g620ecc9c4b
 	conflicts = libsystemd
+	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf=251.rc1.r479.gcf393c5f44
 	provides = openresolv
 	provides = resolvconf
-	conflicts = systemd-resolvconf
+	provides = systemd-resolvconf=251.r65.g620ecc9c4b
 	conflicts = openresolv
+	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=251.rc1.r479.gcf393c5f44
-	conflicts = systemd-sysvcompat
+	provides = systemd-sysvcompat=251.r65.g620ecc9c4b
 	conflicts = sysvinit
+	conflicts = systemd-sysvcompat

@@ -1,14 +1,11 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on core/systemd by:
-# Christian Hesse <mail@eworm.de>
-# Dave Reisner <dreisner@archlinux.org>
-# Tom Gundersen <teg@jklm.no>
+# Based on core/systemd by Christian Hesse <mail@eworm.de>
 
 _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=251.rc1.r479.gcf393c5f44
+pkgver=251.r65.g620ecc9c4b
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -18,6 +15,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync')
+options=(!ccache)
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -87,6 +85,7 @@ build() {
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
     -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver/-/\~}-${pkgrel}-arch"
     -Dmode=release
 
     -Dgnu-efi=true
@@ -138,9 +137,11 @@ package_systemd-git() {
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
            'libp11-kit.so' 'openssl')
-  provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides+=("systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts+=('systemd')
   optdepends=('libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
@@ -222,8 +223,10 @@ package_systemd-libs-git() {
   pkgdesc='systemd client libraries (git version)'
   depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
-  provides=("systemd-libs=$pkgver" 'libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('systemd-libs' 'libsystemd')
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  provides+=("systemd-libs=$pkgver")
+  conflicts=('libsystemd')
+  conflicts+=('systemd-libs')
   replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr
@@ -234,8 +237,10 @@ package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved, git version)'
   license=('LGPL2.1')
   depends=('systemd-git')
-  provides=("systemd-resolvconf=$pkgver" 'openresolv' 'resolvconf')
-  conflicts=('systemd-resolvconf' 'openresolv')
+  provides=('openresolv' 'resolvconf')
+  provides+=("systemd-resolvconf=$pkgver")
+  conflicts=('openresolv')
+  conflicts+=('systemd-resolvconf')
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
@@ -247,7 +252,8 @@ package_systemd-resolvconf-git() {
 package_systemd-sysvcompat-git() {
   pkgdesc='sysvinit compat for systemd (git version)'
   license=('GPL2')
-  conflicts=('systemd-sysvcompat' 'sysvinit')
+  conflicts=('sysvinit')
+  conflicts+=('systemd-sysvcompat')
   depends=('systemd-git')
   provides=("systemd-sysvcompat=$pkgver")
 
