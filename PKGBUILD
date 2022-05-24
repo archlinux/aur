@@ -12,6 +12,7 @@ arch=('x86_64')
 license=('BSD')
 depends=('python-setuptools' 'ipython')
 makedepends=('cython')
+checkdepends=('python-pytest' 'python-ubelt')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz"
     "cython.patch")
 
@@ -31,7 +32,7 @@ build() {
 check() {
   cd "$_pkgname-${pkgver}"
   python setup.py build_ext --inplace
-  python -m unittest discover -v tests
+  PYTHONPATH=. pytest tests
 }
 
 package() {
