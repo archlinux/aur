@@ -2,14 +2,14 @@
 
 pkgname=paper-note-git
 _pkgname=paper
-pkgver=r39.2b472c3
+pkgver=r122.1db7cfb
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64')
 url="https://gitlab.com/posidon_software/paper"
 license=('GPL3')
 depends=('glib2' 'libadwaita' 'gtksourceview5' 'libgee')
-makedepends=('git' 'meson' 'gobject-introspection' 'vala')
+makedepends=('git' 'meson' 'gobject-introspection' 'blueprint-compiler' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)

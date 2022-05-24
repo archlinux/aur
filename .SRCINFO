@@ -1,6 +1,6 @@
 pkgbase = paper-note-git
 	pkgdesc = A pretty note-taking app for GNOME
-	pkgver = r39.2b472c3
+	pkgver = r122.1db7cfb
 	pkgrel = 1
 	url = https://gitlab.com/posidon_software/paper
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = paper-note-git
 	makedepends = git
 	makedepends = meson
 	makedepends = gobject-introspection
+	makedepends = blueprint-compiler
 	makedepends = vala
 	depends = glib2
 	depends = libadwaita
