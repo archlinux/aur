@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=qcopy
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Easily set variables and their respective values for easy access at any point"
 arch=(any)
@@ -14,12 +14,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'a810674d2f04621398ba208f2bf97d12a9c37fcf6efe5da939484e771ea04e9eb0569c7738de268e2172597fc9c3ffb6058e156b14170faf3d3bfc77ad2ddad0'
-  '9468b86d7e54dd6def3ac9812a140e70a1a60716f81c2e0325dafb78b1655fab5b73cc84fcb0f9735e0b64a1980abb49fc28f5b42bbe6e80d6301e2c3474698d'
+  'c44ac791ecbf572732f23c797801bd2f90bfb4e6d690eec643166c80d0f1d2613c15296567c212071edda12b73de69ac775d447c60e32bd969a4093b012b6f9a'
+  'daf0e8d48bf444ae314b57de6eb142bcdb84858c5edae2becd24e5cf9cce004fec21bc9bb202ec6590da11e68e9d230b850a3a810115bace7bf8cf24df5d8131'
   )
 md5sums=(
-  '5f226d4fe4bbbfba6d145175cfe8a522'
-  '7fb73a7d87a815ef5a9e2009192793a5'
+  'cd375f0a025fb5715fc5bd22e15f86ff'
+  'b2e16293fb036c2c5e6a953e156b64c4'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
