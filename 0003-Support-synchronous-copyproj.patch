@@ -9,10 +9,10 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index eb04d59d..2063bfe5 100644
+index b5ce2169e384c6203583e960a20b660be199fa6c..53d5235e63424cfe6302a554027f2656199c70a2 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3172,6 +3172,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3205,6 +3205,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
      @cmdln.option('-b', '--with-binaries', action='store_true',
                          help='copy the built binaries over to avoid a rebuild')
@@ -21,7 +21,7 @@ index eb04d59d..2063bfe5 100644
      @cmdln.option('-H', '--with-history', action='store_true',
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
-@@ -3189,6 +3191,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3222,6 +3224,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
  
          The user must be able to create DESTPRJ
  
@@ -30,7 +30,7 @@ index eb04d59d..2063bfe5 100644
          usage:
              osc copyprj SOURCEPRJ DESTPRJ
          ${cmd_option_list}
-@@ -3219,6 +3223,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3252,6 +3256,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -39,10 +39,10 @@ index eb04d59d..2063bfe5 100644
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index 0e6d90e6..42923737 100644
+index 93aa7dd20f6dd71f7e934534896d3330fffab4fc..3bc09fb096eebe391831ffaf9db2b1ddbde031ff 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5584,6 +5584,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -5644,6 +5644,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['resign'] = '1'
      if comment:
          query['comment'] = comment

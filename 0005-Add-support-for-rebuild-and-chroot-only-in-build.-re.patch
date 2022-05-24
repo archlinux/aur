@@ -14,10 +14,10 @@ Subject: [PATCH] Add support for --rebuild and --chroot-only in build.
  2 files changed, 10 insertions(+)
 
 diff --git a/osc/build.py b/osc/build.py
-index d2bdb888..8931d8a8 100644
+index 2aa09b84a6e6cc9744125a0f3e0cad505152a022..10fa9d7660e94cb99983651e871711c3bcf55f3c 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -667,6 +667,12 @@ def main(apiurl, opts, argv):
+@@ -687,6 +687,12 @@ def main(apiurl, opts, argv):
          buildargs.append('--norootforbuild')
      if opts.clean:
          buildargs.append('--clean')
@@ -31,10 +31,10 @@ index d2bdb888..8931d8a8 100644
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index bde97403..d72467f2 100644
+index 6cb15c71731ea233607a373a109d2f5770aa96d0..8600914f08641941c18ecf49565a5ee04ee28b90 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6533,6 +6533,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6581,6 +6581,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='Copy overlay filesystem to buildroot after installing all RPMs .')
      @cmdln.option('--noinit', '--no-init', action='store_true',
                    help='Skip initialization of build root and start with build immediately.')
