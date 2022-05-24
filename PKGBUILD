@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.4.0.r0.g60af0b9
+pkgver=1.4.2.r0.ge79af7b
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -26,6 +26,7 @@ makedepends=(
   "xfconf"
   # "libmagick6"
   # "sqlite3"
+  # "rpm-tools"
 )
 optdepends=(
   "pciutils: GPU output"
@@ -43,6 +44,7 @@ optdepends=(
   "xfconf: XFWM theme + xfce-terminal font"
   # "libmagick6: ImageMagick 6 support" 
   # "sqlite3: rpm package count"
+  # "rpm-tools: slower rpm package count fallback"
 )
 
 _provides_and_conflicts=(
@@ -67,6 +69,7 @@ build() {
     -B "${_build_dir}" \
     -S "${_src_dir}" \
     -DENABLE_SQLITE3=OFF \
+    -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
     -Wno-dev
 
