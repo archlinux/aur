@@ -1,7 +1,8 @@
+# ipv6: false # When set to false, resolver won't translate hostnames to IPv6 addresses
+# tcp-concurrent: true # default false
+# geodata-mode: true
 # external-controller: 127.0.0.1:9090
 # external-ui: dashboard
-# ipv6: false # When set to false, resolver won't translate hostnames to IPv6 addresses
-# interface-name: 
 
 dns:
   enable: true
@@ -10,7 +11,7 @@ dns:
 
   # These nameservers are used to resolve the DNS nameserver hostnames below.
   # Specify IP addresses only
-  enhanced-mode: redir-host # or fake-ip
+  enhanced-mode: fake-ip # redir-host # (not recommended)
   # fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
   
@@ -23,12 +24,13 @@ dns:
   
   # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
   # All DNS questions are sent directly to the nameserver, without proxies
-  # involved. Clash answers the DNS question with the first result gathered.
+  # involved. Clash answers the DNS question with the first result gathered. 
   nameserver:
-    - 1.1.1.1 # default value
-    - 1.0.0.1 # default value
-    - tls://one.one.one.one # DNS over TLS
+    - tls://1dot1dot1dot1.cloudflare-dns.com # DNS over TLS
     - https://1.1.1.1/dns-query # DNS over HTTPS
+    - 1.1.1.1 # Cloudflare
+    - 1.0.0.1 # Cloudflare
+
   # When `fallback` is present, the DNS server will send concurrent requests
   # to the servers in this section along with servers in `nameservers`.
   # The answers from fallback servers are used when the GEOIP country
@@ -59,8 +61,10 @@ dns:
 # Enable the TUN listener
 tun:
   enable: true
-  stack: gvisor # or system
-  dns-hijack: 
-    - 198.18.0.1:53 # when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
+  stack: system # or gvisor
+  device: Meta
+  dns-hijack:
+    - any:53
   auto-route: true # auto set global route
+  auto-detect-interface: true # conflict with interface-name
 
