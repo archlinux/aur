@@ -1,8 +1,8 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=librespot
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Open source client library for Spotify'
 arch=(x86_64 aarch64)
 url='https://github.com/librespot-org/librespot'
@@ -19,7 +19,7 @@ makedepends=(
 	cargo
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('454502af4532e729fd062075f962d07efdacc94d475a4f05461d1a2bd9c1287881c7f51884e03cd659bf3e1569db954508eafec3030e5d3dc9a789152eecaa3a')
+b2sums=('b84627f6a5b204255954500e13ba45a74444f85d65412b31b0887d1003437d38f823ccc981baad9e437c32195ba50055e0bf541569b155a3da9f3582a6d579cb')
 
 build() {
 	return 0
