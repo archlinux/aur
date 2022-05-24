@@ -1,4 +1,5 @@
-# Maintainer: Lauri Niskanen <ape@ape3000.com>
+# Maintainer: Lahfa Samy <'akechishiro-aur' at domain 'lahfa.xyz'>
+# Contributor: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Vlad M. <vlad@archlinux.net>
 
