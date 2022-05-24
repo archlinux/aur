@@ -1,7 +1,8 @@
 # Maintainer alx365
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
+# Maintainer gileri
 pkgname='noisetorch-git'
-pkgver=0.11.4.r2.g8c34658
+pkgver=0.11.5.r58.ge096c4c
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -14,8 +15,12 @@ provides=('noisetorch')
 conflicts=('noisetorch')
 install="${pkgname}.install"
 source=('git+https://github.com/lawl/NoiseTorch.git'
+        'git+https://github.com/noisetorch/c-ringbuf.git'
+        'git+https://github.com/noisetorch/rnnoise.git'
         "${pkgname}.install")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             '171a4179c7e0f3a018a314893e81e598c02cfee274c90d715a302660af920eba')
 
 pkgver() {
@@ -25,6 +30,10 @@ pkgver() {
 
 prepare() {
 	cd NoiseTorch
+	git submodule init
+	git config submodule.c/c-ringbuf.url $srcdir/c-ringbuf
+	git config submodule.c/rnnoise.url $srcdir/rnnoise
+	git submodule update
 	export GOPATH="$srcdir/go"
 	go clean -modcache
 }
