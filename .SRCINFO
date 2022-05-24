@@ -1,0 +1,14 @@
+pkgbase = python-ubelt
+	pkgdesc = A Python utility belt containing simple tools
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Erotemic/ubelt
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ordered-set
+	source = https://files.pythonhosted.org/packages/source/u/ubelt/ubelt-1.0.1.tar.gz
+	sha256sums = cc94626ea111f554f9cbdc8dede6cf83ec1f58ca1c49648d513022be05ba8a93
+
+pkgname = python-ubelt
