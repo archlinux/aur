@@ -1,28 +1,21 @@
 # Maintainer: Andrew Nelless <andrew at nelless dot net>
 pkgname='avro-cpp'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
 pkgdesc="C++ implementation of the Apache Avro data serialization system"
 url="https://avro.apache.org/"
 license=('Apache')
 groups=('avro')
 depends=('boost-libs')
-makedepends=('boost' 'cmake' 'python2')
+makedepends=('boost' 'cmake' 'snappy')
 
-source=("https://www-us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
-	$pkgname-python2.patch)
-sha256sums=('ab016fa07c5759dc5ab8464214fc942833537f3419659a5df53ab7e3f1e809ec'
-            '5d54151dd25e717a19109c97e68ce2a07d3b28b9fd3fb3ae1dc5df06b8600fd4')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i "$srcdir/$pkgname-python2.patch"
-}
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/apache/avro/tar.gz/release-$pkgver)
+sha256sums=('c205140e7936d552286ba7131122a34e522d66f601ee912f272109d801f89773')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/avro-release-$pkgver/lang/c++"
     mkdir build
     cd build
 
@@ -35,11 +28,11 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/avro-release-$pkgver/lang/c++/build"
     make test
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build"
+    cd "$srcdir/avro-release-$pkgver/lang/c++/build"
     make DESTDIR="$pkgdir/" install
 }

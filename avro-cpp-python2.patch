@@ -1,9 +1,0 @@
-diff -uNr avro-cpp-1.8.0.orig/scripts/gen-cppcode.py avro-cpp-1.8.0/scripts/gen-cppcode.py
---- avro-cpp-1.8.0.orig/scripts/gen-cppcode.py	2016-02-04 13:28:36.564240294 +0000
-+++ avro-cpp-1.8.0/scripts/gen-cppcode.py	2016-02-04 13:35:33.354241323 +0000
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/python2
- 
- license = '''/**
-  * Licensed to the Apache Software Foundation (ASF) under one
