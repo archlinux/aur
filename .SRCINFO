@@ -1,6 +1,6 @@
 pkgbase = dlauncher
 	pkgdesc = An application launcher for Linux that is based on Ulauncher
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/diced/dlauncher
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dlauncher
 	provides = dlauncher
 	conflicts = dlauncher
 	conflicts = dlauncher-bin
-	source = https://github.com/diced/dlauncher/releases/download/v0.1.0/dlauncher
-	source = https://github.com/diced/dlauncher/releases/download/v0.1.0/dlauncher-toggle
+	source = https://github.com/diced/dlauncher/releases/download/v0.1.1/dlauncher
+	source = https://github.com/diced/dlauncher/releases/download/v0.1.1/dlauncher-toggle
 	sha256sums = bb030a62642afbf11dc1b68a85d11ebd986f7418dae53ee346874c5927c1ba0a
 	sha256sums = 205441344af36652562e5d9664b5358779046eb843321f4a306e702432fd1ed5
 
