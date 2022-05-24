@@ -1,6 +1,6 @@
 pkgbase = rocm-llvm-mlir
 	pkgdesc = Radeon Open Compute - LLVM Multi-Level IR Compiler Framework
-	pkgver = 5.1.2
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/llvm-project-mlir
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rocm-llvm-mlir
 	makedepends = python
 	depends = hip
 	options = !lto
-	source = rocm-llvm-mlir-5.1.2.tar.gz::https://github.com/ROCmSoftwarePlatform/llvm-project-mlir/archive/refs/tags/rocm-5.1.2.tar.gz
-	sha256sums = 3b750ac53e0708ed69c6117921594949aaea60370e22a420657fdb039dd3a918
+	source = rocm-llvm-mlir-5.1.3.tar.gz::https://github.com/ROCmSoftwarePlatform/llvm-project-mlir/archive/refs/tags/rocm-5.1.3.tar.gz
+	sha256sums = 936f92707ffe9a1973728503db6365bb7f14e5aeccfaef9f0924e54d25080c69
 
 pkgname = rocm-llvm-mlir
