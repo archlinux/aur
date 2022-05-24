@@ -1,6 +1,6 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop-bin
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=('gtk3' 'nss')
 provides=('threema-desktop')
 conflicts=('threema-desktop')
 source=("$pkgname-$pkgver.deb::https://releases.threema.ch/web-electron/archive/latest-$pkgver/Threema-Latest.deb")
-sha256sums=('3134f448de1a98de8af819855ad43bdf4a95b7688656ff17d5a5c88fa9934e83')
+sha256sums=('eeb7f6b075ade093a79e9073191e8af814f0fcc7b0efb3039353787292d56cf5')
 
 package() {
     tar xf "$srcdir/data.tar.xz" -C "$pkgdir"
