@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r88.g13975d60
-pkgrel=2
+pkgver=2.7.2.r89.g5ec326ba
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -64,16 +64,13 @@ package(){
     mkdir -p "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/opt/watt-toolkit"
-    cp -a "${srcdir}/SteamTools/linux-out"/* "${pkgdir}/opt/watt-toolkit"
     for file in libe_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so Steam++
     do
-        chmod 755 "${pkgdir}/opt/watt-toolkit/${file}"
+        install -Dm755 "${srcdir}/SteamTools/linux-out/${file}" "${pkgdir}/opt/watt-toolkit/${file}"
     done
     for width in 16 24 32 48 64 96 128 256 512 1024
     do
         echo "Processing ${width}x${width} icon..."
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps"
         install -Dm644 \
             "${srcdir}/SteamTools/resources/AppIcon/Logo_${width}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps/watt-toolkit.png"
