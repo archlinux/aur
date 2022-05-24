@@ -1,21 +1,22 @@
 pkgbase = git-remote-ipld-git
 	pkgdesc = git IPLD remote helper
-	pkgver = 0.0.0.r0.g501d5f2ce
-	pkgrel = 1
+	pkgver = 0.0.0.r0.g2f4756ae2
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ipfs-shipyard/git-remote-ipld
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = go>=2:1.14.4-1
+	makedepends = go
 	makedepends = git
-	makedepends = go-ipfs
+	depends = glibc
 	depends = git
+	depends = go-ipfs
 	provides = git-remote-ipld
 	conflicts = git-remote-ipld
 	source = git+https://github.com/ipfs-shipyard/git-remote-ipld.git
 	b2sums = SKIP
 
 pkgname = git-remote-ipld-git
-
