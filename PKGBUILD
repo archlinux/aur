@@ -3,7 +3,7 @@
 cpaname=Return-Type
 cpanauthor=TOBYINK
 pkgname=perl-return-type
-pkgver=0.005
+pkgver=0.007
 pkgrel=1
 pkgdesc="Perl Return::Type CPAN module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-test-fatal' 'perl-type-tiny')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('6666f8103cfa6beb2bc71a20f2686bd98bbd5edf1e9df9d60e0a6dc2b7f3293a')
+sha256sums=('0dffa4e3a7a63885da029d8f04e79d99d04e0f48b3b890d4509e209bb865e1b4')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
