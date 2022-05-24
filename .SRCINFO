@@ -1,7 +1,8 @@
 pkgbase = kbibtex-git
 	pkgdesc = A BibTeX editor for KDE (latest development version)
-	pkgver = r3338.0c711606
+	pkgver = 0.8.90.r429.g99490207
 	pkgrel = 1
+	epoch = 1
 	url = https://userbase.kde.org/KBibTeX
 	arch = x86_64
 	arch = aarch64
@@ -24,4 +25,3 @@ pkgbase = kbibtex-git
 	sha512sums = SKIP
 
 pkgname = kbibtex-git
-

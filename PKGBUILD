@@ -2,8 +2,9 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kbibtex-git
-pkgver=r3338.0c711606
+pkgver=0.8.90.r429.g99490207
 pkgrel=1
+epoch=1
 pkgdesc="A BibTeX editor for KDE (latest development version)"
 arch=('x86_64' 'aarch64')
 url='https://userbase.kde.org/KBibTeX'
@@ -17,7 +18,7 @@ source=("git+https://invent.kde.org/office/kbibtex.git")
 
 pkgver() {
   cd "$srcdir"/kbibtex
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --always | sed 's/^[^0-9]\+//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
