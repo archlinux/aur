@@ -2,29 +2,30 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=3.12.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
 depends=('git' 'hicolor-icon-theme' 'python-qtpy')
-makedepends=('asciidoc' 'docbook-xsl' 'python-sphinx' 'rsync' 'xmlto')
-checkdepends=('appstream-glib' 'desktop-file-utils' 'python-mock' 'python-pyqt5'
-              'python-pytest-flake8')
+makedepends=('python-build' 'python-installer' 'python-jaraco.packaging' 'python-pip'
+             'python-rst.linker' 'python-setuptools-scm' 'python-sphinx' 'python-wheel')
+checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pyqt5' 'python-pytest-flake8')
 optdepends=('python-pygments: syntax highlighting'
-            'python-pyinotify: for inotify support'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('ec1167ea9a472214bf18f5537d96e137c724f3d28a85b3642f07dba35f04b24a')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
+sha256sums=('b22e9d253a41584c727eef0757715cc8f11ccfc5ce1b54f163ed7faad158661c'
+            'SKIP')
+validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 
 build() {
   cd "$pkgname-$pkgver"
-  export USE_ENV_PYTHON=1
-  export GIT_COLA_NO_PRIVATE_LIBS=1
-  export GIT_COLA_NO_VENDOR_LIBS=1
-  make prefix=/usr all doc man
+  python -m build --wheel --no-isolation
+
+#  make prefix=/usr doc man
+  make prefix=/usr man
 }
 
 check() {
@@ -39,8 +40,8 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  export USE_ENV_PYTHON=1
-  export GIT_COLA_NO_PRIVATE_LIBS=1
-  export GIT_COLA_NO_VENDOR_LIBS=1
-  make prefix=/usr DESTDIR="$pkgdir" install{,-doc,-man}
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+#  make prefix=/usr DESTDIR="$pkgdir" install{,-doc,-man}
+  make prefix=/usr DESTDIR="$pkgdir" install-man
 }
