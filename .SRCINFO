@@ -1,0 +1,20 @@
+pkgbase = dwm-autolinux
+	pkgdesc = AutoLinux - Suckless DWM Build
+	pkgver = 6.2.r53
+	pkgrel = 1
+	url = https://gitlab.com/a4to/auto-dwm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxft
+	optdepends = xorg-xrandr: Allows for changing the resolution of the screen
+	optdepends = xwallpaper: Allows for setting a wallpaper
+	optdepends = lxappearance: Allows for changing the theme of the window manager
+	optdepends = xorg-xsetroot: Allows for changing the background color of the bar and WM
+	optdepends = xorg-xbacklight: Allows for changing the brightness of the screen
+	provides = dwm
+	conflicts = dwm
+	source = git+https://gitlab.com/a4to/auto-dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-autolinux
