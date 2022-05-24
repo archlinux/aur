@@ -1,0 +1,23 @@
+post_install() {
+    cat <<-'EOF'
+:: Shell configuration
+
+You will need to add some lines in your shell configuration file to make asdf-vm to work.
+
+For more information refer to the official instructions.
+
+https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+
+EOF
+}
+
+post_remove() {
+    cat <<-'EOF'
+:: Revert the configuration from your shell.
+
+For more information refer to the official instructions.
+
+https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+
+EOF
+}

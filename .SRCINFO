@@ -1,0 +1,20 @@
+pkgbase = asdf-vm-git
+	pkgdesc = Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more. Git version.
+	pkgver = 0.10.1.1.g0bc8c3a
+	pkgrel = 1
+	url = https://asdf-vm.com
+	install = asdf-vm.install
+	arch = any
+	license = MIT
+	makedepends = txt2man
+	depends = git
+	depends = curl
+	optdepends = ncurses: For terminal handling
+	optdepends = bash-completion: For Bash completion
+	optdepends = unzip: For Elixir plugin
+	provides = asdf-vm=0.10.1.1.g0bc8c3a
+	conflicts = asdf-vm
+	source = git+https://github.com/asdf-vm/asdf.git
+	sha512sums = SKIP
+
+pkgname = asdf-vm-git
