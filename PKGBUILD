@@ -1,6 +1,6 @@
 # Maintainer: Grant G <grant@fig.io>
 pkgname='fig-beta'
-pkgver='2.0.0_alpha.6'
+pkgver='2.0.0_alpha.8'
 pkgrel=1
 pkgdesc='Fig adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('fig' 'fig_desktop' 'figterm' 'fig_ibus_engine')
 conflicts=('fig')
 source=("https://get-fig-io.s3.us-west-1.amazonaws.com/desktop/linux-x86_64/fig-${pkgver//_/-}.tar.gz")
 
-sha256sums=('9f9b7a488288f6c27ffe53fed93e2e38e55319d0aa29cb6abc24940b6e2dde17')
+sha256sums=('77cf39f7eea7a7a3f1772a46e5b77d8f4d0e9b135a7700203b440b67c899eed0')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
@@ -29,7 +29,7 @@ package() {
   install -Dm644 "${srcdir}/usr/share/applications/fig.desktop" "${pkgdir}/usr/share/applications/fig.desktop"
   install -Dm644 "${srcdir}/usr/share/ibus/component/engine.xml" "${pkgdir}/usr/share/ibus/component/engine.xml"
 
-  for size in 32 128 256 512; do
+  for size in 16 22 24 32 48 64 128 256 512; do
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/fig.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/fig.png"
   done
