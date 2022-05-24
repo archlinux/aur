@@ -19,8 +19,9 @@ pkgbase = clapper
 	depends = gst-plugins-bad>=1.18.0
 	depends = libadwaita
 	optdepends = gst-libav>=1.18.0: Popular video decoders
-	optdepends = gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration,
+	optdepends = gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration
 	optdepends = gst-plugins-ugly>=1.18.0: CD/DVD playback
+	optdepends = gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)
 	provides = clapper
 	provides = libgstclapper-1.0
 	conflicts = clapper

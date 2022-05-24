@@ -48,6 +48,7 @@ optdepends=(
 	"gst-libav>=1.18.0: Popular video decoders"
 	"gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration"
 	"gst-plugins-ugly>=1.18.0: CD/DVD playback"
+	"gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)"
 )
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "libgst${_basename}-1.0")
