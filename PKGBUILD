@@ -26,16 +26,17 @@ pkgver() {
 
 build() {
 	cd "$_gitname"
-	mkdir build && cd build
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=debugfull \
-		..
+	cmake \
+		-B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=debugfull
 
-	make
+	cmake --build build
 }
 
 package() {
-	cd "$_gitname/build"
-	make DESTDIR=${pkgdir} install
+	cd "$_gitname"
+
+	DESTDIR="$pkgdir" cmake --install build
 }
