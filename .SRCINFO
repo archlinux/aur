@@ -11,7 +11,9 @@ pkgbase = nginx-mainline-mod-modsecurity
 	depends = libmodsecurity
 	source = https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/v1.0.3/modsecurity-nginx-v1.0.3.tar.gz
 	source = https://github.com/SpiderLabs/ModSecurity-nginx/releases/download/v1.0.3/modsecurity-nginx-v1.0.3.tar.gz.asc
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	validpgpkeys = 190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277
+	validpgpkeys = F126692E9BA86B3958E73ED2F2FC4E45883BCBA4
 	sha256sums = ae811c7208ac029cb7a99d6f63e03d3971797607517187f47620df39c1f78add
 	sha256sums = SKIP
 
