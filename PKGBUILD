@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cfclient
-pkgver=2022.3
+pkgver=2022.5
 pkgrel=1
 pkgdesc='Host applications and library for Crazyflie written in Python.'
 arch=('any')
@@ -13,13 +13,14 @@ depends=(python python-cflib python-appdirs python-pyzmq python-pyqtgraph
 optdepends=(crazyflie-udev crazyradio-udev)
 makedepends=(python python-setuptools python-cx-freeze python-importlib-metadata)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-clients-python/archive/$pkgver.tar.gz")
-sha256sums=('a37581c6e87e9c026d063b2cba47d27bf5c3c766dced9d7cc38febbcc5ee521d')
+sha256sums=('724edeb64e0e5dc2334a80cdd8fa1ce619af7785f3f2cd4485e76dfe157cc94b')
 
 _pkgname=crazyflie-clients-python
 
 prepare() {
     sed -i "s/= get_version()/= \"${pkgver}\"/g" ${srcdir}/${_pkgname}-${pkgver}/setup.py
-    sed -i "20i'bin_path_includes': ['/usr/lib/python3.10/site-packages/cx_Freeze/bases']," ${srcdir}/${_pkgname}-${pkgver}/setup.py
+    # 23 is line number after `'build_exe': {`
+    sed -i "23i'bin_path_includes': ['/usr/lib/python3.10/site-packages/cx_Freeze/bases']," ${srcdir}/${_pkgname}-${pkgver}/setup.py
 }
 
 build() {
