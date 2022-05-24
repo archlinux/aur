@@ -1,0 +1,17 @@
+pkgbase = kns
+	pkgdesc = kns is a very small shellscript that utilizes fzf to switch between Kubernetes namespaces blazing fast.
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/blendle/kns
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = ISC
+	depends = fzf
+	provides = kns
+	source = https://raw.githubusercontent.com/blendle/kns/master/bin/kns
+	sha256sums = 1c5a786767cf7d4313f805e17efaf83ad40d1e6a9ac5ce82ca648c7887a36056
+
+pkgname = kns
