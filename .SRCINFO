@@ -1,13 +1,13 @@
 pkgbase = fastjson
 	pkgdesc = A fast JSON parser/generator for Java
-	pkgver = 1.2.79
+	pkgver = 1.2.83
 	pkgrel = 1
 	url = https://github.com/alibaba/fastjson
 	arch = i686
 	arch = x86_64
 	license = APACHE
 	depends = java-runtime
-	source = https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.79/fastjson-1.2.79.jar
-	sha256sums = 3e7ee1af0d9afbd6161356675c28252c2364734f4dc380418d5c80fe1fb6d35a
+	source = https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.83/fastjson-1.2.83.jar
+	sha256sums = 641a4d65ab32fbfdccd9c718e3f83ebc4caabdb5e4fe5b3d51527c5fe692631d
 
 pkgname = fastjson
