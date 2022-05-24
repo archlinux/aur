@@ -6,14 +6,14 @@ pkgdesc="m3u8-downloader"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/m3u8-downloader"
 license=('MIT')
-# depends=('gcc-libs')
+# depends=('coreutils')
 makedepends=()
 conflicts=()
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/releases/download/${pkgver}/m3u8-downloader-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/m3u8-downloader/releases/download/nightly/m3u8-downloader-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
-  date +%Y%m%d%H%M%S
+  sha256sum ${pkgname}.tar.gz | cut -d ' ' -f 1
 }
 
 package() {
