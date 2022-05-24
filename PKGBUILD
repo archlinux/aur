@@ -2,17 +2,18 @@
 # Maintainer: Ivan Tiukov <ivan@tiukov.com>
 
 pkgname=remotixqc
-pkgver=1.5.15
-pkgrel=1690
+pkgver=1.0
+pkgrel=24704
 pkgdesc="Remotix QC is a tiny portable application with zero configuration. Run it on a computer that you want to observe or control remotely."
 arch=('x86_64')
 url="https://remotixcloud.com"
 license=('custom:freeware')
 depends=('qt5-base' 'wayland' 'libx11')
 
-source_x86_64=(https://eu.downloads.remotix.com/agent-linux/remotixagent-${pkgver}-${pkgrel}.x86_64.deb)
+#source_x86_64=(https://eu.downloads.remotix.com/agent-linux/remotixagent-${pkgver}-${pkgrel}.x86_64.deb)
+source_x86_64=(https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-${pkgver}-${pkgrel}.x86_64.deb)
 
-sha256sums_x86_64=('195e692f34ce52e2cc20ae6a7cdf9737ec97921ed3d9c234d52434a45f985374')
+sha256sums_x86_64=('01329b5b5035bc9d4dc9ae72db7c6275b6c2a75c3a6a0cfd795a2d34939653c2')
 
 package() {
     cd "${pkgdir}"

@@ -1,15 +1,15 @@
 pkgbase = remotixqc
 	pkgdesc = Remotix QC is a tiny portable application with zero configuration. Run it on a computer that you want to observe or control remotely.
-	pkgver = 1.5.15
-	pkgrel = 1690
+	pkgver = 1.0
+	pkgrel = 24704
 	url = https://remotixcloud.com
 	arch = x86_64
 	license = custom:freeware
 	depends = qt5-base
 	depends = wayland
 	depends = libx11
-	source_x86_64 = https://eu.downloads.remotix.com/agent-linux/remotixagent-1.5.15-1690.x86_64.deb
-	sha256sums_x86_64 = 195e692f34ce52e2cc20ae6a7cdf9737ec97921ed3d9c234d52434a45f985374
+	source_x86_64 = https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-1.0-24704.x86_64.deb
+	sha256sums_x86_64 = 01329b5b5035bc9d4dc9ae72db7c6275b6c2a75c3a6a0cfd795a2d34939653c2
 
 pkgname = remotixqc
 
