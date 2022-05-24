@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtensor
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ tensors with broadcasting and lazy computing"
 arch=('x86_64')
 url="https://github.com/xtensor-stack/${pkgname}"
@@ -13,8 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 build() {
   cmake -B "${pkgname}-${pkgver}/build" -S "${pkgname}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    ..
+    -DCMAKE_INSTALL_LIBDIR=lib
   make -C "${pkgname}-${pkgver}/build"
 }
 
