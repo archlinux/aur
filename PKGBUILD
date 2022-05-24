@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=8.2.4827
+pkgver=8.2.4981
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -15,16 +15,16 @@ license=('custom:vim')
 depends=('vim-runtime' 'gpm' 'acl' 'glibc' 'libxt' 'libgcrypt' 'zlib')
 makedepends=('glibc' 'libgcrypt' 'gpm' 'python' 'ruby' 'libxt' 'lua'
              'gawk' 'tcl' 'pcre' 'zlib')
-optdepends=('python: Python 3 language support'
+optdepends=('python: Python language support'
             'ruby: Ruby language support'
             'lua: Lua language support'
             'perl: Perl language support'
             'tcl: Tcl language support')
-conflicts=('vim' 'gvim' 'vim-minimal' 'vim-python3')
-provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
-replaces=('vim' 'vim-python3' 'vim-minimal' 'gvim')
+conflicts=('vim' 'gvim' 'vim-minimal')
+provides=('xxd' 'vim' 'vim-minimal' 'vim-plugin-runtime')
+replaces=('vim' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha512sums=('f3437e5c3f7f8184d62102f2191fe39e8f6e3751c1d2aa86bb2802ccb7ac992bea10ac0bf75370674605c59a9fc6cc7b6c849f4d72a60f2c68bb7794d758ec29')
+sha512sums=('303353e2098293d0e411feb95754aee6af5d09273698c22b102eca78335865c5bbbd4537d3b76dc39d81bacdbadc1eaffbf15e38c39d5043db2af189d6138981')
 
 prepare() {
   cd vim-${pkgver}/src
