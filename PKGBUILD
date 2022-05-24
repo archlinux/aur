@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'ruby-ceedling' 'doxygen' 'graphviz')
 source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'git+https://github.com/wolfSSL/wolfssl.git'
         '010-lightway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('61254de5e7e3ba03851efa345c48cf6fda175996cc74993b46843f44520a967c'
+sha256sums=('4edeabe5d8f1cac75c7ec53e81dc581cad502ebf015fac9c704152deec080010'
             'SKIP'
             'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
 
@@ -30,6 +30,7 @@ prepare() {
 
 build() {
     export CFLAGS+=' -ffat-lto-objects'
+    [ -z "$LC_ALL" ] && export LC_ALL='C'
     cd "${pkgname}-${pkgver}"
     ceedling release project:linux
     doxygen
