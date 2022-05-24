@@ -4,10 +4,10 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.7.0.60
-pkgrel=3
-_ffmpeg_ver=2021_02_27
-_ffdetect_ver=2021_02_27
+pkgver=4.8.0.0
+pkgrel=1
+_ffmpeg_ver=2022_05_07
+_ffdetect_ver=2022_05_07
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -17,8 +17,9 @@ depends=('alsa-lib'
          'aspnet-runtime'
          'bzip2'
          'dotnet-runtime'
-         'dotnet-host-bin'
+ #        'dotnet-host-bin'
          'expat'
+         'ffmpeg'
          'fontconfig'
          'fribidi'
          'glibc'
@@ -39,6 +40,7 @@ depends=('alsa-lib'
          'libvorbis.so'
          'libwebp'
          'libx264.so'
+         'libx265.so'
          'opus'
          'skia-sharp'
          'sqlite'
@@ -60,9 +62,9 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('480228f3adea6ed75eb8bf7917a4b3baadf51231a413cef46daad366fb43e649'
-            'dd587ddbde4c967695919d7f85b0f28e6d7262f55171f3e8052eef2f4a7f585c'
-            '3e87c29f28a714e96ee62b2e1bac79215aa1b0fe6065f37ccebb33c84e05c64d'
+sha256sums=('68756527cf8ef3e2520eddccaed88ba35bf25dce13ec776ba8a775a72032b7b5'
+            '44506c7c4fa41c721819f9b530b021e11921ea2a1332ce947d8af5a06a2df01e'
+            '4ed857c4e8145db71c87dd25c3978d7592ad115fa4933c2fedccb0c59e0b031c'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
             'a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14'
@@ -85,7 +87,6 @@ build() {
     --disable-lzma \
     --disable-sdl2 \
     --disable-xlib \
-    --disable-libdav1d \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -102,19 +103,21 @@ build() {
     --enable-libvorbis \
     --enable-libwebp \
     --enable-libx264 \
+    --enable-libx265 \
     --enable-libzvbi \
-    --enable-version3 \
+    --enable-lto \
     --enable-nvdec \
     --enable-nvenc \
     --enable-static \
-    --enable-vaapi
+    --enable-vaapi \
+    --enable-version3
   make
 }
 
 package() {
   install -dm 755 "${pkgdir}"/usr/lib
   cp -dr --no-preserve='ownership' system "${pkgdir}"/usr/lib/emby-server
-  ln -s ../libSkiaSharp.so.68.0.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
+  ln -s ../libSkiaSharp.so.80.2.0 "${pkgdir}"/usr/lib/emby-server/libSkiaSharp.so
   install -Dm 755 emby-server -t "${pkgdir}"/usr/bin/
   install -Dm 755 bin/ffdetect "${pkgdir}"/usr/bin/ffdetect-emby
   install -Dm 755 ffmpeg-${_ffmpeg_ver}_*/ffmpeg "${pkgdir}"/usr/bin/ffmpeg-emby
