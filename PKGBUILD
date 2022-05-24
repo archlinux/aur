@@ -1,10 +1,11 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainor: Pig2014 <18111431031@163.com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Forked from aur/firefox-extension-keepassxc-browser. Original contributors:
 # Contributor: Hezekiah Michael <spiritomb at protonmail dot com>
 
 pkgname=firefox-extension-keepassxc-browser-git
 pkgdesc="Official browser plugin for the KeePassXC password manager."
-pkgver=1.7.8.1.r21.g3db23e9
+pkgver=1.7.11.r54.ga037a0b
 pkgrel=1
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/"
@@ -30,6 +31,7 @@ prepare() {
 
 build() {
   cd keepassxc-browser
+  npm install
   npm ci
   npm run build
 }
