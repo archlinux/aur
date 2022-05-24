@@ -1,11 +1,14 @@
 pkgbase = python-libpysal
 	pkgdesc = Core components of Python Spatial Analysis Library.
-	pkgver = 4.6.0
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = https://pysal.org/libpysal/
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
 	depends = python-beautifulsoup4
 	depends = python-jinja
 	depends = python-numpy
@@ -40,7 +43,7 @@ pkgbase = python-libpysal
 	optdepends = python-xarray: plus conda
 	optdepends = python-black: dev tool
 	optdepends = python-pre-commit: dev tool
-	source = https://files.pythonhosted.org/packages/source/l/libpysal/libpysal-4.6.0.tar.gz
-	b2sums = 39c615ee86d7e344db104c2b11b8aac3ac03b7bde80be9b48f5dbdc6f92f14f6ce187d39b39226ab5f564156a66b80afc9b29e02a243c60c65964fc147dfb389
+	source = https://files.pythonhosted.org/packages/source/l/libpysal/libpysal-4.6.2.tar.gz
+	b2sums = 92eac6b46acb8adef6c8d64e63fb85a902d8835888a5fb7bfa31a923d0090186ad00eec00afa7c511ec0db54162f2be734e1329612ec70fa5b30487ad839f435
 
 pkgname = python-libpysal

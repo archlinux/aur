@@ -1,8 +1,10 @@
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
+#!/bin/bash
+
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
 
 _name=libpysal
 pkgname=python-libpysal
-pkgver=4.6.0
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
@@ -46,18 +48,24 @@ optdepends=(
   'python-black: dev tool'
   'python-pre-commit: dev tool'
 )
-makedepends=('python-setuptools')
+makedepends=(
+  'python-wheel'
+  'python-build'
+  'python-installer'
+  'python-pytest-runner'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('39c615ee86d7e344db104c2b11b8aac3ac03b7bde80be9b48f5dbdc6f92f14f6ce187d39b39226ab5f564156a66b80afc9b29e02a243c60c65964fc147dfb389')
+b2sums=('92eac6b46acb8adef6c8d64e63fb85a902d8835888a5fb7bfa31a923d0090186ad00eec00afa7c511ec0db54162f2be734e1329612ec70fa5b30487ad839f435')
 
 build() {
-  cd "$_name-$pkgver"
-  export PYTHONHASHSEED=0
-  python setup.py build
+  cd "$srcdir/$_name-$pkgver" || exit
+
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$_name-$pkgver" || exit
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
 }
