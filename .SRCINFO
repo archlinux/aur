@@ -9,7 +9,7 @@ pkgbase = frozen
 	makedepends = cmake
 	provides = frozen
 	conflicts = frozen-git
-	source = frozen-1.1.1::git+https://github.com/serge-sans-paille/frozen.git#commit=f75fffcc077e5cda0bf3c87121dca103855d2be5
+	source = frozen::git+https://github.com/serge-sans-paille/frozen.git#commit=f75fffcc077e5cda0bf3c87121dca103855d2be5
 	sha256sums = SKIP
 
 pkgname = frozen

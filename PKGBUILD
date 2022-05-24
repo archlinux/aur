@@ -13,37 +13,35 @@ license=('Apache')
 makedepends=('git' 'cmake')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}::git+https://github.com/serge-sans-paille/frozen.git#commit=${_commit}")
+source=("${pkgname}::git+https://github.com/serge-sans-paille/frozen.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  cmake -E make_directory build
-  cmake -B.build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_TESTING=OFF
+	cd "${pkgname}"
+	cmake -E make_directory build
+	cmake -B.build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF
 }
 
 pkgver() {
-  cd "${pkgname}-${pkgver}"
-  git describe --tags | sed 's/-/+/g'
+	cd "${pkgname}"
+	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cmake --build .build
+	cd "${pkgname}"
+	cmake --build .build
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  #cmake --build .build --target test
-  #cmake --build .build --target benchmark
+	cd "${pkgname}"
+	#cmake --build .build --target test
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install .build --config Release
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${pkgname}"
+	DESTDIR="${pkgdir}" cmake --install .build --config Release
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
