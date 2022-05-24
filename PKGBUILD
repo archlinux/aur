@@ -15,19 +15,19 @@ md5sums=('SKIP')
 _gitname=smrender
 
 pkgver () {
-  cd $_gitname
+  cd "$srcdir/$_gitname"
   echo $(git describe --always | sed 's/-/./g')
 }
 
 build() {
-  cd $_gitname
+  cd "$srcdir/$_gitname"
   ./autoconf.sh
   ./configure --prefix=/usr
   make
 }
 
 package () {
-  cd $_gitname
+  cd "$srcdir/$_gitname"
   make DESTDIR=$pkgdir install
 }
 
