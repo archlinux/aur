@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/FEniCS/${pkgname}"
 license=(LGPL3)
 makedepends=(cmake)
-depends=(boost xtensor xsimd python-fenics-basix python-fenics-ffcx hdf5-openmpi petsc parmetis)
+depends=(boost xsimd python-fenics-ffcx hdf5-openmpi petsc parmetis)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('b0824e48ad2ea23db7ca93af390891a09bd6a975f28501fc870dcf555d951764625b04614d4c28eeecb690bb95e9443ba6be52ae4e31ea51c5475fdd7710c56b')
 
