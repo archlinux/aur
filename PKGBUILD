@@ -12,15 +12,17 @@ url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 makedepends=('linux-headers')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
-        0001-proc_ops-struct.patch 0002-kernel-5.7.patch)
+        0001-proc_ops-struct.patch 0002-kernel-5.7.patch 0003-kernel-5.18.patch)
 sha512sums=('11ab163931feb6c0e202d04c4552b848e999fedea9990390c26b28abdb4a69081ccfb5a22d1e390cc274f1c0cfc9adedc719c5fece14738b17aaa93e28865b7c'
             '993a2895c37ea213c105be668f794af54838d8015d6f561ee6bc7ce65583425515931c83c2487ab97c14454105f233f089e8bdc90ea5ed9576be767335f57ad1'
-            '2eeae463b2f83e7744ff1a769cb6186389e026fc78668e836525dfd16a56abfae01cfb150c9bb46af74ec42e87ebea91636118fe0c773e7eaa7ea671b25d2e04')
+            '2eeae463b2f83e7744ff1a769cb6186389e026fc78668e836525dfd16a56abfae01cfb150c9bb46af74ec42e87ebea91636118fe0c773e7eaa7ea671b25d2e04'
+            'c658e0e8de95c678d1a3ea5659344fff9fce14a93e0f8da3f21f79dc9c820feb3c540e1892ffc10a444c96a768d6d3fecd684315988da5f401f5c6ef6f37be79')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
   patch -Np1 < ../0001-proc_ops-struct.patch
   patch -Np1 < ../0002-kernel-5.7.patch
+  patch -Np1 < ../0003-kernel-5.18.patch
 }
 
 build() {
