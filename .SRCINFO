@@ -4,6 +4,9 @@ pkgbase = curl-impersonate-firefox
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = tar
 	makedepends = cmake
@@ -20,6 +23,7 @@ pkgbase = curl-impersonate-firefox
 	makedepends = patch
 	depends = nss
 	provides = curl-impersonate-firefox
+	options = !buildflags
 	source = curl-impersonate.tar.gz::https://github.com/lwthiker/curl-impersonate/archive/refs/tags/v0.4.1.tar.gz
 	md5sums = 77760f18eeea4e169b5abf469e43e61c
 
