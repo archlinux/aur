@@ -16,6 +16,7 @@ pkgbase = qtrans
 	depends = kcoreaddons
 	depends = python
 	depends = kxmlgui
+	depends = kwidgetsaddons
 	depends = zlib
 	depends = hicolor-icon-theme
 	source = https://sourceforge.net/projects/qtrans0/files/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz
