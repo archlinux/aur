@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v6.0.1.r219.g57381ab358
+pkgver=7.0.2.r809.gf54097fefb
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=('bzr: bazaar support'
             'subversion: subversion support'
             'valgrind: analyze support'
             'x11-ssh-askpass: ssh support')
-provides=(qtcreator)
+provides=("qtcreator=$pkgver")
 conflicts=(qtcreator)
 source=('git+https://code.qt.io/qt-creator/qt-creator.git'
         'org.qt-project.qtcreator.desktop')
@@ -40,7 +40,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd qt-creator
 
-    git describe --long --match v* | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long --match v* | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed -r 's/v//g'
 }
 
 prepare() {
