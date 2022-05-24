@@ -1,0 +1,16 @@
+pkgbase = gn-m85
+	pkgdesc = Meta-build system that generates build files for Ninja (version shipped in Chromium 85; for apps not ported to use frameworks to list framework dependencies; https://gn-review.googlesource.com/c/gn/+/9240)
+	pkgver = 0.1792.7d7e8dee
+	pkgrel = 1
+	url = https://gn.googlesource.com/gn/
+	arch = x86_64
+	license = BSD
+	makedepends = clang
+	makedepends = ninja
+	makedepends = python
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://gn.googlesource.com/gn#commit=7d7e8deea36d126397bda2cf924682504271f0e1
+	md5sums = SKIP
+
+pkgname = gn-m85
