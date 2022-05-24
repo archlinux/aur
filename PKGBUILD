@@ -2,7 +2,7 @@
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
