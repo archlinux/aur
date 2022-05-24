@@ -1,6 +1,6 @@
 pkgname=rvxx-ex-amp-bin
 pkgver=22.03.09
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio Assault RVXX Aggressive Guitar Amplifier Next Generation"
 arch=('x86_64')
 url="https://audio-assault.com/rvxx.php"
@@ -26,6 +26,10 @@ package() {
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/RVXX EX Linux/RVXX EX VST2.so" "$pkgdir/usr/lib/vst/RVXX EX.so"
+
+    ## Install VST3 Plugin
+    mkdir -p "$pkgdir/usr/lib/vst3"
+    cp -r "$srcdir/RVXX EX Linux/RVXX EX.vst3" "$pkgdir/usr/lib/vst3/RVXX EX.vst3"
 
     ## Install Standalone Binary
     cp "$srcdir/RVXX EX Linux/RVXX EX Standalone" "$pkgdir/usr/bin/RVXX EX Standalone"

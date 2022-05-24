@@ -1,7 +1,7 @@
 pkgbase = rvxx-ex-amp-bin
 	pkgdesc = Audio Assault RVXX Aggressive Guitar Amplifier Next Generation
 	pkgver = 22.03.09
-	pkgrel = 2
+	pkgrel = 3
 	url = https://audio-assault.com/rvxx.php
 	arch = x86_64
 	groups = pro-audio
