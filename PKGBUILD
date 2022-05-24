@@ -12,14 +12,14 @@
 # Contributor: sidereus <francesco.serafin.3@gmail.com>
 
 pkgname=stumpwm
-pkgver=20.11
+pkgver=22.05
 pkgrel=2
 pkgdesc='Tiling, keyboard-driven window manager written in Common Lisp'
 arch=('x86_64')
 url='https://stumpwm.github.io/'
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c')
+sha256sums=('d843302f9ce54660bc96e4f0d8e9584f07a81d43c4c26357d5a29cb07194abae')
 makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'cl-alexandria-git')
 optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
             'rlwrap: command completion and history in stumpish'
