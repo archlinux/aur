@@ -1,26 +1,26 @@
 diff --git a/Action.c b/Action.c
-index 07e21dca..fdc62e85 100644
+index 551c426b..0bb3a42b 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -459,7 +459,7 @@ static const struct {
-    bool roInactive;
+@@ -504,7 +504,7 @@ static const struct {
     const char* info;
  } helpLeft[] = {
+    { .key = "    Tab: ",  .roInactive = false, .info = "switch to next screen tab" },
 -   { .key = " Arrows: ",  .roInactive = false, .info = "scroll process list" },
 +   { .key = "   hjkl: ",  .roInactive = false, .info = "scroll process list" },
     { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
     { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
     { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
-@@ -486,7 +486,7 @@ static const struct {
+@@ -532,7 +532,7 @@ static const struct {
     { .key = "  Space: ", .roInactive = false, .info = "tag process" },
     { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
     { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
 -   { .key = "   F9 k: ", .roInactive = true,  .info = "kill process/tagged processes" },
 +   { .key = "   F9 x: ", .roInactive = true,  .info = "kill process/tagged processes" },
     { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
-    { .key = "   F8 [: ", .roInactive = false, .info = "lower priority (+ nice)" },
+    { .key = "   F8 [: ", .roInactive = true,  .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_AFFINITY))
-@@ -494,12 +494,12 @@ static const struct {
+@@ -540,12 +540,12 @@ static const struct {
  #endif
     { .key = "      e: ", .roInactive = false, .info = "show process environment" },
     { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
@@ -36,7 +36,7 @@ index 07e21dca..fdc62e85 100644
     { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -673,12 +673,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -744,12 +744,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index 07e21dca..fdc62e85 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -688,9 +690,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -759,9 +761,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -61,7 +61,7 @@ index 07e21dca..fdc62e85 100644
     keys['m'] = actionToggleMergedCommand;
     keys['p'] = actionToggleProgramPath;
     keys['q'] = actionQuit;
-@@ -698,7 +697,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -769,7 +768,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['t'] = actionToggleTreeView;
     keys['u'] = actionFilterByUser;
     keys['w'] = actionShowCommandScreen;
@@ -70,18 +70,19 @@ index 07e21dca..fdc62e85 100644
     keys[KEY_F(1)] = actionHelp;
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
-@@ -710,5 +709,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -781,6 +780,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys[KEY_F(9)] = actionKill;
     keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
 +   keys['o'] = actionExpandCollapseOrSortColumn;
     keys[KEY_RECLICK] = actionExpandOrCollapse;
- }
+    keys[KEY_SHIFT_TAB] = actionPrevScreen;
+    keys['\t'] = actionNextScreen;
 diff --git a/CategoriesPanel.c b/CategoriesPanel.c
-index 30867ee9..93c659fc 100644
+index 6e905ce9..3cac0734 100644
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
-@@ -101,6 +101,14 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+@@ -103,6 +103,14 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
     HandlerResult result = IGNORED;
  
     int selected = Panel_getSelectedIndex(super);
@@ -97,10 +98,10 @@ index 30867ee9..93c659fc 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index 07dc6319..a5282388 100644
+index 44915dfd..47477886 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
-@@ -50,7 +50,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
+@@ -51,7 +51,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
     return Process_getCommand(p);
  }
  
@@ -110,10 +111,10 @@ index 07dc6319..a5282388 100644
  
     HandlerResult result = IGNORED;
 diff --git a/MainPanel.h b/MainPanel.h
-index 04f4c0a8..cc6b0edd 100644
+index bd22acd0..069d0b34 100644
 --- a/MainPanel.h
 +++ b/MainPanel.h
-@@ -46,4 +46,6 @@ void MainPanel_setState(MainPanel* this, State* state);
+@@ -47,4 +47,6 @@ void MainPanel_setState(MainPanel* this, State* state);
  
  void MainPanel_delete(Object* object);
  
@@ -121,10 +122,10 @@ index 04f4c0a8..cc6b0edd 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index a5773d52..f46563ad 100644
+index 4ea03f66..5c60d2bd 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -358,6 +358,7 @@ bool Panel_onKey(Panel* this, int key) {
  
     switch (key) {
     case KEY_DOWN:
@@ -132,7 +133,7 @@ index a5773d52..f46563ad 100644
     case KEY_CTRL('N'):
     #ifdef KEY_C_DOWN
     case KEY_C_DOWN:
-@@ -359,6 +360,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -366,6 +367,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_UP:
@@ -140,7 +141,7 @@ index a5773d52..f46563ad 100644
     case KEY_CTRL('P'):
     #ifdef KEY_C_UP
     case KEY_C_UP:
-@@ -367,7 +369,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -374,7 +376,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_LEFT:
@@ -149,7 +150,7 @@ index a5773d52..f46563ad 100644
        if (this->scrollH > 0) {
           this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
-@@ -375,16 +377,27 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -382,16 +384,27 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_RIGHT:
@@ -178,7 +179,7 @@ index a5773d52..f46563ad 100644
        PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
        break;
  
-@@ -397,10 +410,12 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -404,10 +417,12 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_HOME:
@@ -192,7 +193,7 @@ index a5773d52..f46563ad 100644
        break;
  
 diff --git a/README b/README
-index e4831f89..701b7478 100644
+index 55372b43..574ee1bb 100644
 --- a/README
 +++ b/README
 @@ -21,6 +21,48 @@ The information displayed is configurable through a graphical setup and can be s
@@ -245,18 +246,18 @@ index e4831f89..701b7478 100644
  
  `htop` is written in C.
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 54dec643..7fa03ef6 100644
+index e4b04bd3..735d7a23 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -16,6 +16,7 @@ in the source distribution for its full text.
- 
+@@ -17,6 +17,7 @@ in the source distribution for its full text.
  #include "CRT.h"
  #include "FunctionBar.h"
+ #include "Macros.h"
 +#include "MainPanel.h"
  #include "Object.h"
  #include "Platform.h"
  #include "ProcessList.h"
-@@ -224,14 +225,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -294,14 +295,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
           redraw = false;
           continue;
        }
@@ -279,7 +280,7 @@ index 54dec643..7fa03ef6 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -265,7 +268,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -335,7 +338,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
           continue;
        }
        case KEY_LEFT:
@@ -288,7 +289,7 @@ index 54dec643..7fa03ef6 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -286,7 +289,7 @@ tryLeft:
+@@ -356,7 +359,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
