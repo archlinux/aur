@@ -5,7 +5,6 @@ pkgbase = stow-cm
 	url = https://github.com/someoneonsmile/stow
 	arch = x86_64
 	license = GPL2
-	depends = gcc-libs
 	conflicts = stow
 	source = stow-cm.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/stow-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP

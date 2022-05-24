@@ -6,14 +6,14 @@ pkgdesc="config manager (simple impl of gun-stow)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/stow"
 license=('GPL2')
-depends=('gcc-libs')
+# depends=('coreutils')
 makedepends=()
 conflicts=('stow')
-source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/${pkgver}/stow-x86_64-unknown-linux-musl.tar.gz")
+source=("${pkgname}.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/stow-x86_64-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
-  date +%Y%m%d%H%M%S
+  sha256sum ${pkgname}.tar.gz | cut -d ' ' -f 1
 }
 
 package() {
