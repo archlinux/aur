@@ -2,8 +2,9 @@
 # Co-Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=python-migen-git
-pkgver=0.9.2.rcc6e76e
-pkgrel=2
+epoch=1
+pkgver=0.9.2.r74.gd4e3f34
+pkgrel=1
 pkgdesc="A  python toolbox for building complex digital hardware"
 arch=(any)
 url="https://github.com/m-labs/migen"
@@ -20,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/migen"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
