@@ -2,7 +2,7 @@
 # Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _base=panel
 pkgname=python-${_base}
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A high-level app and dashboarding solution for Python"
 arch=(any)
@@ -11,11 +11,10 @@ license=('custom:BSD-3-clause')
 depends=(python-bokeh python-pyviz_comms python-markdown python-tqdm python-pyct python-bleach)
 makedepends=(python-setuptools npm)
 source=(${_base}-${pkgver}::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('d74790e3cbb660d63b31c0903c14c428e6a7690b006a8a596e24dccb22f9d92bc4724a3e80629f12ae94f7f9fb1d190b912a45d68a49700318e350d65694c306')
+sha512sums=('d190cf1e97c362a8cc2fb94267c9129abfe01808c0c873b9fd2e29653b1be764576db571a137715f8c1a428a16bb3daace106f85fdd6597817c59434c8371d37')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
