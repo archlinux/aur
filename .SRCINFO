@@ -1,13 +1,12 @@
 pkgbase = unbound-python
 	pkgdesc = Validating, recursive, and caching DNS resolver, with Python bindings
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unbound.net/
 	arch = x86_64
 	license = BSD
 	makedepends = expat
 	makedepends = protobuf-c
-	makedepends = python
 	makedepends = swig
 	makedepends = systemd
 	depends = dnssec-anchors
@@ -21,7 +20,6 @@ pkgbase = unbound-python
 	depends = python
 	optdepends = expat: for unbound-anchor
 	optdepends = sh: for unbound-control-setup
-	optdepends = python: for python-bindings
 	provides = libunbound.so
 	provides = unbound=1.15.0
 	conflicts = unbound
