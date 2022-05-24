@@ -11,6 +11,7 @@ depends=('suitesparse')
 makedepends=('make' 'gcc')
 optdepends=('')
 provides=('libdogleg')
+conflicts=('libdogleg')
 source=("${pkgname%-git}::git+https://github.com/dkogan/libdogleg.git#branch=master"
 	"build-fix.patch")
 md5sums=('SKIP'

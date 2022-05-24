@@ -12,6 +12,7 @@ pkgbase = libdogleg-git
 	depends = suitesparse
 	optdepends = 
 	provides = libdogleg
+	conflicts = libdogleg
 	source = libdogleg::git+https://github.com/dkogan/libdogleg.git#branch=master
 	source = build-fix.patch
 	md5sums = SKIP
