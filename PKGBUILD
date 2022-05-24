@@ -1,13 +1,17 @@
 # Maintainer: open62541 Team <open62541-core@googlegroups.com>
-branch=1.0
+# Maintainer: Samega7Cattac <sameg7acattac@gmail.com>
+branch=1.3
 pkgname=open62541
-pkgver=v1.0_rc4_r8_g6b93d4e0
+pkgver=v1.3_r11_g237ca65b7
 pkgrel=1
 pkgdesc="An open source and free implementation of OPC Unified Architecture written in the common subset of the C99 and C++98 languages."
 arch=('any')
 url="http://open62541.org/"
 license=('MPL2')
-makedepends=('cmake')
+makedepends=('cmake'
+             'git')
+optdepends=('openssl: OpenSSL encryption backend (set UA_ENABLE_ENCRYPTION=OPENSSL on environment variable OPEN62541_CMAKE_FLAGS)'
+            'mbedtls: mbed TLS encryption backend (set UA_ENABLE_ENCRYPTION=MBEDTLS on environment variable OPEN62541_CMAKE_FLAGS)')
 source=("git+https://github.com/open62541/open62541.git#branch=$branch")
 md5sums=('SKIP')
 sha256sums=('SKIP')
