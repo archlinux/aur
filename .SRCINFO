@@ -1,0 +1,31 @@
+pkgbase = clasp-cl
+	pkgdesc = Bringing Common Lisp and C++ Together
+	pkgver = 1.0.0.r214.gfdfb2e6d3
+	pkgrel = 1
+	url = https://github.com/clasp-developers/clasp
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = sbcl
+	makedepends = ninja
+	depends = boost
+	depends = expat
+	depends = fmt
+	depends = gmp
+	depends = libbsd
+	depends = libedit
+	depends = clang
+	depends = libelf
+	depends = libffi
+	depends = llvm
+	depends = ncurses
+	depends = zlib
+	provides = cclasp-boehm
+	provides = clasp-cl
+	provides = common-lisp
+	provides = cl-asdf
+	options = !strip
+	source = clasp-cl::git+https://github.com/clasp-developers/clasp#commit=fdfb2e6d3be4fcc042427f5759f92673e12fe767
+	sha512sums = SKIP
+
+pkgname = clasp-cl
