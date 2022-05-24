@@ -22,7 +22,7 @@ _gitname="oxygen-gtk"
 pkgver() {
 	cd "$srcdir/$_gitname"
 
-	echo "$(LANG=C date '+%Y%m%d')_$(git describe --tags --always --abbrev=5 | sed 's/-/_/g')"
+	git describe --long | sed 's/vgtk3-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
