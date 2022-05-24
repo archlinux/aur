@@ -1,0 +1,16 @@
+pkgbase = asmcli
+	pkgdesc = Anthos Service Mesh command line interface, to install and manage an Anthos Service Mesh.
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages
+	arch = x86_64
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = Apache 2.0
+	provides = asmcli
+	source = asmcli-1.13::https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.13
+	sha256sums = c55d35a814b3d38208282ddc6e93f9c47babb0b8dbb0c356461d511cf7e89571
+
+pkgname = asmcli
