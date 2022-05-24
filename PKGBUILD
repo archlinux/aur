@@ -8,7 +8,7 @@
 # shellcheck disable=SC2034
 _gitname="oxygen-gtk"
 pkgname=oxygen-gtk3-git
-pkgver=20160429_vgtk3_1.4.1_12_g705b7
+pkgver=1.4.1.r12.g705b755f
 pkgrel=1
 pkgdesc="Port of the default KDE widget theme (Oxygen) to GTK3"
 arch=('i686' 'x86_64')
