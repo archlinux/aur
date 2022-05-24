@@ -4,17 +4,17 @@
 
 pkgname=borg-git
 _pkgname=borg
-pkgver=1.2.0a4.r32.g20756bd3
+pkgver=2.0.0.dev0.r2.gb10d6611
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://borgbackup.github.io/'
 license=('BSD')
 arch=('x86_64')
-depends=('acl' 'lz4' 'openssl' 'python-msgpack' 'python-setuptools' 'xz' 'zstd')
+depends=('acl' 'lz4' 'openssl' 'python-msgpack' 'python-setuptools' 'xz' 'zstd' 'xxhash' 'libdeflate-git')
 optdepends=('openssh: repositories on remote hosts'
             'python-llfuse: mounting backups as a FUSE file system')
-makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme' 'git' 'python-pkgconfig')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'python-mock')
+makedepends=('cython' 'python-sphinx' 'python-guzzle-sphinx-theme' 'git' 'python-pkgconfig' 'python-pip' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-benchmark' 'python-mock' 'python-argon2_cffi' 'python-dateutil')
 provides=('borg' 'borgbackup')
 conflicts=('borg' 'borgbackup')
 source=("${_pkgname}::git+https://github.com/borgbackup/${_pkgname}.git")
