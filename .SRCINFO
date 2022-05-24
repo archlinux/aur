@@ -8,7 +8,7 @@ pkgbase = remotixqc
 	depends = qt5-base
 	depends = wayland
 	depends = libx11
-	source_x86_64 = https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-1.0-24704.x86_64.deb
+	source_x86_64 = https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-1.0-24704-x86_64.deb
 	sha256sums_x86_64 = 01329b5b5035bc9d4dc9ae72db7c6275b6c2a75c3a6a0cfd795a2d34939653c2
 
 pkgname = remotixqc

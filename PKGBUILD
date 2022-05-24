@@ -11,7 +11,7 @@ license=('custom:freeware')
 depends=('qt5-base' 'wayland' 'libx11')
 
 #source_x86_64=(https://eu.downloads.remotix.com/agent-linux/remotixagent-${pkgver}-${pkgrel}.x86_64.deb)
-source_x86_64=(https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-${pkgver}-${pkgrel}.x86_64.deb)
+source_x86_64=(https://dl.acronis.com/u/acpc/AcronisCyberProtectConnect-${pkgver}-${pkgrel}-x86_64.deb)
 
 sha256sums_x86_64=('01329b5b5035bc9d4dc9ae72db7c6275b6c2a75c3a6a0cfd795a2d34939653c2')
 
