@@ -1,2 +1,3 @@
-Lexical-Accessor-*.tar.gz
-perl-lexical-accessor-*.log
+/Lexical-Accessor-*.tar.gz
+/perl-lexical-accessor-*.log
+/perl-lexical-accessor-*.pkg.tar.*
