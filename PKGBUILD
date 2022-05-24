@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://nusmv.fbk.eu/index.html"
 license=('LGPL2.1')
 depends=('libxml2')
-makedepends=('cmake' 'python2' 'ghostscript' 'texlive-latexextra' 'doxygen')
+makedepends=('cmake' 'python2' 'ghostscript' 'texlive-latexextra' 'doxygen' 'flex' 'bison')
 optdepends=('perl: for scripts in /usr/share/nusmv/contrib/')
 source=("http://nusmv.fbk.eu/distrib/${_pkgname}-${pkgver}.tar.gz"
         "cmake.patch"
@@ -37,7 +37,7 @@ prepare() {
 build() {
     cd "$srcdir/$_pkgname-$pkgver/$_pkgname"
 
-    mkdir build
+    mkdir -p build
     cd build
     cmake .. -DPYTHON_EXECUTABLE=/bin/python2 -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
     make
