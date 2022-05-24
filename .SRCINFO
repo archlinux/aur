@@ -1,0 +1,14 @@
+pkgbase = span-git
+	pkgdesc = Implementation of C++20's std::span for older compilers
+	pkgver = 20220321
+	pkgrel = 1
+	url = https://github.com/tcbrindle/span
+	arch = any
+	license = custom
+	makedepends = git
+	provides = span
+	conflicts = span
+	source = span::git+https://github.com/tcbrindle/span.git
+	sha256sums = SKIP
+
+pkgname = span-git
