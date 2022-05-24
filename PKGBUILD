@@ -2,7 +2,7 @@
 
 _electron=electron
 pkgname=revolt-desktop
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='User-first chat platform built with modern web technologies'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(yarn)
 source=("https://github.com/revoltchat/desktop/archive/v$pkgver.tar.gz"
 				"https://raw.githubusercontent.com/revoltchat/desktop/master/LICENSE"
         "$pkgname.js")
-sha256sums=('e9ed82773677a9ec1133dbd0fd0b1efa346cb6da44d15ff28879256333c3ca64'
+sha256sums=('4130d8acc7d8a7d10a5041aa5bfcba54233861beefb8181c4e5dbb1357090a89'
             '147078bfdb948f3ac5ff0e4bb97bd040b61fef4dd5fb8ff851ef333ff048caf9'
             '3a9ae188a92ca0620a0838b32e0ab4a38b1fcca4c313d9a1c933c469f8d60df0')
 
