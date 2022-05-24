@@ -1,5 +1,5 @@
 pkgbase = kbibtex-next-git
-	pkgdesc = A BibTeX editor for KDE (latest development version)
+	pkgdesc = A BibTeX editor for KDE (next release development version)
 	pkgver = 0.9.90.r19.gcf671d89
 	pkgrel = 1
 	epoch = 1
