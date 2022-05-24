@@ -1,0 +1,271 @@
+From 6bea9f3a8f7249577acabb0445156cd70a43f2c3 Mon Sep 17 00:00:00 2001
+From: WerWolv <werwolv98@gmail.com>
+Date: Tue, 17 May 2022 20:46:42 +0200
+Subject: [PATCH 3/4] fix: Random build errors with GCC 12.1.0
+
+---
+ .../include/hex/helpers/encoding_file.hpp     |  3 ++-
+ lib/libimhex/source/helpers/encoding_file.cpp | 20 ++++++++---------
+ .../source/helpers/loader_script_handler.cpp  | 22 +++++++++++++------
+ .../builtin/source/content/data_inspector.cpp | 10 +++++----
+ .../source/content/providers/gdb_provider.cpp |  8 +++----
+ .../builtin/source/content/tools_entries.cpp  | 17 +++++++-------
+ .../content/views/view_command_palette.cpp    |  2 +-
+ .../content/views/view_data_processor.cpp     |  4 ++--
+ .../source/content/views/view_hex_editor.cpp  |  4 ++--
+ 9 files changed, 48 insertions(+), 42 deletions(-)
+
+diff --git a/lib/libimhex/include/hex/helpers/encoding_file.hpp b/lib/libimhex/include/hex/helpers/encoding_file.hpp
+index b04eaaa6..237bc86a 100644
+--- a/lib/libimhex/include/hex/helpers/encoding_file.hpp
++++ b/lib/libimhex/include/hex/helpers/encoding_file.hpp
+@@ -7,6 +7,7 @@
+ #include <vector>
+ 
+ #include <hex/helpers/fs.hpp>
++#include <hex/helpers/file.hpp>
+ 
+ namespace hex {
+ 
+@@ -26,7 +27,7 @@ namespace hex {
+         [[nodiscard]] bool valid() const { return this->m_valid; }
+ 
+     private:
+-        void parseThingyFile(std::ifstream &content);
++        void parseThingyFile(fs::File &file);
+ 
+         bool m_valid = false;
+ 
+diff --git a/lib/libimhex/source/helpers/encoding_file.cpp b/lib/libimhex/source/helpers/encoding_file.cpp
+index 84b6dd80..be01984c 100644
+--- a/lib/libimhex/source/helpers/encoding_file.cpp
++++ b/lib/libimhex/source/helpers/encoding_file.cpp
+@@ -2,16 +2,13 @@
+ 
+ #include <hex/helpers/utils.hpp>
+ 
+-#include <fstream>
+-
+ namespace hex {
+ 
+     EncodingFile::EncodingFile(Type type, const std::fs::path &path) {
+-        std::ifstream encodingFile(path.c_str());
+-
++        auto file = fs::File(path, fs::File::Mode::Read);
+         switch (type) {
+             case Type::Thingy:
+-                parseThingyFile(encodingFile);
++                parseThingyFile(file);
+                 break;
+             default:
+                 return;
+@@ -34,22 +31,23 @@ namespace hex {
+         return { ".", 1 };
+     }
+ 
+-    void EncodingFile::parseThingyFile(std::ifstream &content) {
+-        for (std::string line; std::getline(content, line);) {
++    void EncodingFile::parseThingyFile(fs::File &file) {
++        for (const auto &line : splitString(file.readString(), "\n")) {
+ 
+             std::string from, to;
+             {
+-                auto delimiterPos = line.find('=', 0);
++                auto delimiterPos = line.find('=');
+ 
+                 if (delimiterPos == std::string::npos)
+                     continue;
++                if (delimiterPos >= from.length())
++                    continue;
++                if (delimiterPos >= to.length())
++                    continue;
+ 
+                 from = line.substr(0, delimiterPos);
+                 to   = line.substr(delimiterPos + 1);
+ 
+-                hex::trim(from);
+-                hex::trim(to);
+-
+                 if (from.empty()) continue;
+                 if (to.empty()) to = " ";
+             }
+diff --git a/lib/libimhex/source/helpers/loader_script_handler.cpp b/lib/libimhex/source/helpers/loader_script_handler.cpp
+index 1c10e267..15c53212 100644
+--- a/lib/libimhex/source/helpers/loader_script_handler.cpp
++++ b/lib/libimhex/source/helpers/loader_script_handler.cpp
+@@ -76,6 +76,11 @@ namespace hex {
+     }
+ 
+     static PyObject *createStructureType(const std::string &keyword, PyObject *args) {
++        if (args == nullptr) {
++            PyErr_BadArgument();
++            return nullptr;
++        }
++
+         auto type = PyTuple_GetItem(args, 0);
+         if (type == nullptr) {
+             PyErr_BadArgument();
+@@ -119,10 +124,19 @@ namespace hex {
+ 
+         for (Py_ssize_t i = 0; i < PyList_Size(list); i++) {
+             auto item = PyList_GetItem(list, i);
++            if (item == nullptr) {
++                PyErr_SetString(PyExc_TypeError, "failed to get item from list");
++                return nullptr;
++            }
+ 
+             auto memberName = PyUnicode_AsUTF8(PyTuple_GetItem(item, 0));
++            if (memberName == nullptr) {
++                PyErr_SetString(PyExc_TypeError, "invalid member name");
++                return nullptr;
++            }
++
+             auto memberType = PyTuple_GetItem(item, 1);
+-            if (memberType == nullptr) {
++            if (!PyTuple_Check(memberType) || memberType == nullptr) {
+                 PyErr_SetString(PyExc_TypeError, "member needs to have a annotation extending from ImHexType");
+                 return nullptr;
+             }
+@@ -148,12 +162,6 @@ namespace hex {
+                     code += "["s + PyUnicode_AsUTF8(arraySize) + "];\n";
+                 else if (PyLong_Check(arraySize))
+                     code += "["s + std::to_string(PyLong_AsLong(arraySize)) + "];\n";
+-                else {
+-                    PyErr_SetString(PyExc_TypeError, "invalid array size type. Expected string or int");
+-                    return nullptr;
+-                }
+-
+-
+             } else {
+                 auto memberTypeInstance = PyObject_CallObject(memberType, nullptr);
+                 if (memberTypeInstance == nullptr || memberTypeInstance->ob_type->tp_base == nullptr || memberTypeInstance->ob_type->tp_base->tp_name != "ImHexType"s) {
+diff --git a/plugins/builtin/source/content/data_inspector.cpp b/plugins/builtin/source/content/data_inspector.cpp
+index 25af6cc0..c5cea842 100644
+--- a/plugins/builtin/source/content/data_inspector.cpp
++++ b/plugins/builtin/source/content/data_inspector.cpp
+@@ -92,14 +92,16 @@ namespace hex::plugin::builtin {
+                     ImGui::TextUnformatted(binary.c_str());
+                     return binary;
+                 };
+-            }, [](std::string value, std::endian endian) -> std::vector<u8> {
++            }, [](const std::string &value, std::endian endian) -> std::vector<u8> {
+                 hex::unused(endian);
+-                if (value.starts_with("0b"))
+-                    value = value.substr(2);
++
++                std::string copy = value;
++                if (copy.starts_with("0b"))
++                    copy = copy.substr(2);
+ 
+                 if (value.size() > 8) return { };
+                 u8 byte = 0x00;
+-                for (char c : value) {
++                for (char c : copy) {
+                     byte <<= 1;
+ 
+                     if (c == '1')
+diff --git a/plugins/builtin/source/content/providers/gdb_provider.cpp b/plugins/builtin/source/content/providers/gdb_provider.cpp
+index 49f07481..97d8dd86 100644
+--- a/plugins/builtin/source/content/providers/gdb_provider.cpp
++++ b/plugins/builtin/source/content/providers/gdb_provider.cpp
+@@ -226,12 +226,10 @@ namespace hex::plugin::builtin::prv {
+     }
+ 
+     std::string GDBProvider::getName() const {
+-        std::string address, port;
++        std::string address = "-";
++        std::string port = "-";
+ 
+-        if (!this->isConnected()) {
+-            address = "-";
+-            port    = "-";
+-        } else {
++        if (this->isConnected()) {
+             address = this->m_ipAddress;
+             port    = std::to_string(this->m_port);
+         }
+diff --git a/plugins/builtin/source/content/tools_entries.cpp b/plugins/builtin/source/content/tools_entries.cpp
+index 229737b7..2da60681 100644
+--- a/plugins/builtin/source/content/tools_entries.cpp
++++ b/plugins/builtin/source/content/tools_entries.cpp
+@@ -425,19 +425,18 @@ namespace hex::plugin::builtin {
+                 ImGui::NewLine();
+ 
+             if (evaluate) {
+-                std::optional<long double> result;
+-
+                 try {
+-                    result = mathEvaluator.evaluate(mathInput);
++                    auto result = mathEvaluator.evaluate(mathInput);
++
++                    if (result.has_value()) {
++                        mathHistory.push_back(result.value());
++                        mathInput.clear();
++                        lastMathError.clear();
++                    }
++
+                 } catch (std::invalid_argument &e) {
+                     lastMathError = e.what();
+                 }
+-
+-                if (result.has_value()) {
+-                    mathHistory.push_back(result.value());
+-                    mathInput.clear();
+-                    lastMathError.clear();
+-                }
+             }
+         }
+ 
+diff --git a/plugins/builtin/source/content/views/view_command_palette.cpp b/plugins/builtin/source/content/views/view_command_palette.cpp
+index c376faab..4c2953df 100644
+--- a/plugins/builtin/source/content/views/view_command_palette.cpp
++++ b/plugins/builtin/source/content/views/view_command_palette.cpp
+@@ -7,7 +7,7 @@
+ namespace hex::plugin::builtin {
+ 
+     ViewCommandPalette::ViewCommandPalette() : View("hex.builtin.view.command_palette.name") {
+-        this->m_commandBuffer.resize(1024, 0x00);
++        this->m_commandBuffer = std::vector<char>(1024, 0x00);
+ 
+         ShortcutManager::addGlobalShortcut(CTRL + SHIFT + Keys::P, [this] {
+             EventManager::post<RequestOpenPopup>("hex.builtin.view.command_palette.name"_lang);
+diff --git a/plugins/builtin/source/content/views/view_data_processor.cpp b/plugins/builtin/source/content/views/view_data_processor.cpp
+index ebc23bae..f36288ed 100644
+--- a/plugins/builtin/source/content/views/view_data_processor.cpp
++++ b/plugins/builtin/source/content/views/view_data_processor.cpp
+@@ -366,7 +366,7 @@ namespace hex::plugin::builtin {
+                 if (ImNodes::IsLinkCreated(&from, &to)) {
+ 
+                     do {
+-                        dp::Attribute *fromAttr, *toAttr;
++                        dp::Attribute *fromAttr = nullptr, *toAttr = nullptr;
+                         for (auto &node : this->m_nodes) {
+                             for (auto &attribute : node->getAttributes()) {
+                                 if (attribute.getId() == static_cast<u32>(from))
+@@ -535,7 +535,7 @@ namespace hex::plugin::builtin {
+             newLink.setID(linkId);
+             this->m_links.push_back(newLink);
+ 
+-            dp::Attribute *fromAttr, *toAttr;
++            dp::Attribute *fromAttr = nullptr, *toAttr = nullptr;
+             for (auto &node : this->m_nodes) {
+                 for (auto &attribute : node->getAttributes()) {
+                     if (attribute.getId() == newLink.getFromId())
+diff --git a/plugins/builtin/source/content/views/view_hex_editor.cpp b/plugins/builtin/source/content/views/view_hex_editor.cpp
+index 90f1379d..a6ab870b 100644
+--- a/plugins/builtin/source/content/views/view_hex_editor.cpp
++++ b/plugins/builtin/source/content/views/view_hex_editor.cpp
+@@ -26,8 +26,8 @@ namespace hex::plugin::builtin {
+ 
+     ViewHexEditor::ViewHexEditor() : View("hex.builtin.view.hex_editor.name"_lang) {
+ 
+-        this->m_searchStringBuffer.resize(0xFFF, 0x00);
+-        this->m_searchHexBuffer.resize(0xFFF, 0x00);
++        this->m_searchStringBuffer = std::vector<char>(0xFFF, 0x00);
++        this->m_searchHexBuffer = std::vector<char>(0xFFF, 0x00);
+ 
+         ContentRegistry::FileHandler::add({ ".hexproj" }, [](const auto &path) {
+             return ProjectFile::load(path);
+-- 
+2.36.1
+

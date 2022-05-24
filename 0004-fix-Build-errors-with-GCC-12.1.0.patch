@@ -1,0 +1,31 @@
+From d8194f667fa660c6f0dd3c6925be63502b52f919 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Tue, 24 May 2022 15:27:25 +0200
+Subject: [PATCH 4/4] fix: Build errors with GCC 12.1.0
+
+---
+ lib/libimhex/source/helpers/encoding_file.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/libimhex/source/helpers/encoding_file.cpp b/lib/libimhex/source/helpers/encoding_file.cpp
+index be01984c..57fc8018 100644
+--- a/lib/libimhex/source/helpers/encoding_file.cpp
++++ b/lib/libimhex/source/helpers/encoding_file.cpp
+@@ -56,11 +56,11 @@ namespace hex {
+             if (fromBytes.empty()) continue;
+ 
+             if (!this->m_mapping.contains(fromBytes.size()))
+-                this->m_mapping.insert({ fromBytes.size(), {} });
++                this->m_mapping.insert({ (u32)fromBytes.size(), {} });
+             this->m_mapping[fromBytes.size()].insert({ fromBytes, to });
+ 
+             this->m_longestSequence = std::max(this->m_longestSequence, fromBytes.size());
+         }
+     }
+ 
+-}
+\ No newline at end of file
++}
+-- 
+2.36.1
+
