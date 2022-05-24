@@ -3,7 +3,7 @@
 
 _pkgname=assinador-serpro
 pkgname=serpro-signer
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Assinador SERPRO'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libappindicator-gtk3')
 # source_i686=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/assinador-serpro-i386_${pkgveri686}_i386.deb")
 source_x86_64=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/${_pkgname}_${pkgver}_amd64.deb")
 # sha256sums_i686=('7ec54364cd5ad1887dad9702ef1de663d3beac3d4ddcac5adb38fc32c8921683')
-sha256sums_x86_64=('e80f4febca38a3948ebb39a12e3001227adfe931eef8921ba2aadc69ce46e669')
+sha256sums_x86_64=('f09b2039ce1de06990d31a3f7b1e9c1263a690c5ed99088aeeebbdaa26b1f3bb')
 
 prepare() {
 	[ -d data ] && rm -rf data
