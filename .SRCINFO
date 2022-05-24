@@ -1,14 +1,19 @@
 pkgbase = bgpdump
 	pkgdesc = Utility and C Library for parsing MRT files
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RIPE-NCC/bgpdump
 	arch = x86_64
 	license = GPL2
 	depends = zlib
 	depends = bzip2
 	source = https://github.com/RIPE-NCC/bgpdump/archive/v1.6.2.tar.gz
+	source = 05-addr-representation.diff
+	source = updates.nlri_mask_trailing_bits.gz
+	source = updates.nlri_mask_trailing_bits.gz.bgp.gz
 	sha256sums = 415692c173a84c48b1e927a6423a4f8fd3e6359bc3008c06b7702fe143a76223
+	sha256sums = 86efd03c29add6e93596b3df8eb8a6eded67a907811e2ff61f60c8bb4ac663df
+	sha256sums = 19ed2d93b3dd30cbb5af3bdccf421e22b685e9944138b96a72b34660865a5607
+	sha256sums = 8f71ea4caa5d22cf9e105a64be1be91a3168fd4ee6113ec2ff863cefc526b506
 
 pkgname = bgpdump
-

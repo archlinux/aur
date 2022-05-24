@@ -1,0 +1,66 @@
+diff --git a/ChangeLog b/ChangeLog
+index 8004c56..5c8a5ff 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -8,6 +8,9 @@ PLEASE DO NOT E-MAIL INDIVIDUAL DEVELOPERS ABOUT
+ ISSUES, AS YOUR E-MAIL MAY BE LOST
+ ==========================================================
+ 
++2020-09-20 Colin Petrie <colin@spakka.net> 
++	* Mask trailing bits in NLRI to correct address representations
++
+ 2020-06-07 Colin Petrie <colin@spakka.net> v1.6.2
+ 	* Version fix and make dist
+ 
+diff --git a/bgpdump_lib.c b/bgpdump_lib.c
+index d9bb65b..693ad3e 100644
+--- a/bgpdump_lib.c
++++ b/bgpdump_lib.c
+@@ -1561,6 +1561,7 @@ void process_mp_withdraw(struct mstream *s, struct mp_info *info, struct zebra_i
+ }
+ 
+ static int read_prefix_list(struct mstream *s, u_int16_t afi, struct prefix *prefixes, struct zebra_incomplete *incomplete, int is_addp) {
++    u_int8_t maskarray[8] = {0x80, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc, 0xfe, 0xff};
+     int count = 0;
+     
+     while(mstream_can_read(s)) {
+@@ -1571,8 +1572,10 @@ static int read_prefix_list(struct mstream *s, u_int16_t afi, struct prefix *pre
+         if (is_addp)
+             path_id = mstream_getl(s, NULL);
+ 
+-        u_int8_t p_len = mstream_getc(s,NULL); // length in bits
+-        u_int8_t p_bytes = (p_len + 7) / 8;
++        u_int8_t p_len = mstream_getc(s,NULL); // prefix length in bits
++        u_int8_t p_bytes = p_len / 8;          // number of complete octets to read
++        u_int8_t p_mask = p_len % 8;           // number of remaining significant bits
++        if (p_mask) p_bytes++;                 // if remaining bits, need to read one more octet
+         
+         /* Truncated prefix list? */
+         if(mstream_can_read(s) < p_bytes) {
+@@ -1596,7 +1599,26 @@ static int read_prefix_list(struct mstream *s, u_int16_t afi, struct prefix *pre
+             continue;
+ 
+         *prefix = (struct prefix) { .len = p_len, .path_id = path_id };
++
++        /*
++            RFC4271:
++            The Prefix field contains an IP address prefix, followed by
++            the minimum number of trailing bits needed to make the end
++            of the field fall on an octet boundary.  Note that the value
++            of trailing bits is irrelevant.
++
++            Some implementations (including bgpdump.c) pass the address directly
++            into inet_ntoa() without first considering the prefix length.
++            This isn't a problem for anything that works with prefix lengths.
++            But the resulting address visual representation can look wrong.
++            To avoid any confusion, we mask the trailing bits to 0 also.
++        */
++
+         mstream_get(s, &prefix->address, p_bytes);
++
++        /* Mask trailing bits to 0 if not aligned on a octet boundary */
++        if (p_mask)
++            ((u_int8_t *)&prefix->address)[p_bytes - 1] &= maskarray[p_mask - 1];
+     }
+     
+     if(count > MAX_PREFIXES) {
