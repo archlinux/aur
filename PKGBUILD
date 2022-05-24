@@ -1,7 +1,7 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.39.13.1
+pkgver=0.39.14.1
 pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=('any')
@@ -11,6 +11,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=(# see https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
          'python-flask'
          'python-flask-wtf'
+         'python-flask-restful'
          'python-eventlet'
          'python-validators'
          'python-timeago'
@@ -31,7 +32,7 @@ source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgve
         'sysusers'
         'tmpfiles'
         'service')
-sha512sums=('7629068ae6e55f88c8dfc2c6dc6c4036ac90fee7bef2d361f4e192a18c74ae9e55ad5b8ee44f3d5fe85b01261cd0b131011b16b10e04d92e7cb62a6cb64c60e9'
+sha512sums=('aeee92803b845d7810878fbdf158d7123b0d786ccc2284dc044a8af41cc22061258b8eafd7550985af2eb5a6dfd560299735a9788ef8ccc2cb34c8fe16f51514'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
             '5dba78fafd77fe41b69d73849529ed4f086879cd3a6e4ada126a320d249bb730bcf6a0b49e5b987699a2420e7083c7c6d1a0b921c49c932ec33f30bda083b506')
