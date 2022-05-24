@@ -1,22 +1,20 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sailboot
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Highly customizable framework for performing numerical bootstrap computations"
 arch=(any)
 url='https://gitlab.com/maneandrea/sailboot'
 license=('GPL')
 depends=('python-mpmath' 'python-pyparsing' 'sdpb-git')
-optdepends=('python-gmpy2' 'sagemath' 'scalar_blocks-git')
+optdepends=('python-gmpy2' 'sagemath' 'scalar_blocks-git' 'python-sympy')
 makedepends=('python-setuptools')
-source=('https://gitlab.com/maneandrea/sailboot/-/archive/v1.0/sailboot-v1.0.tar.gz' 'pyparsing_fix.patch')
-sha256sums=('fcac6a42c2220220737d1274ec86afb2a33488737fb2a81d8ec3e8526b272bc7' 'ac4957d25c46651fc3a3341bacc24636bda1026910491e505fe023f00a45f120')
+source=('https://gitlab.com/maneandrea/sailboot/-/archive/v1.1/sailboot-v1.1.tar.gz')
+sha256sums=('f024743e49296c23db48621e215ff9e979188e9d80d7cd30b5139cace90afaab')
 
 build() {
     cd "$pkgname"-v"$pkgver"
-
-    patch -p1 < ../pyparsing_fix.patch
 
     python setup.py build
 }
