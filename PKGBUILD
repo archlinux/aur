@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r113.g0c5d28c
+pkgver=0.1.r2.g35d5d55
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -28,11 +28,6 @@ depends=(
   # pickdate
   rofi
   awk
-
-  # rofi-blezz
-  bash
-  rofi-blezz
-  sed
 
   # i3blocks-monit
   monit
