@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/tcbrindle/span"
 license=('custom')
 makedepends=('git')
+provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/tcbrindle/span.git")
 sha256sums=('SKIP')
 
