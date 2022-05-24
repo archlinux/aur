@@ -1,6 +1,6 @@
 pkgbase = linux-acs-manjaro
 	pkgver = 5.17.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
