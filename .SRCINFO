@@ -1,0 +1,18 @@
+pkgbase = cppcheck-premium
+	pkgdesc = Premium (nonfree) version of cppcheck
+	pkgver = 22.4.1
+	pkgrel = 1
+	url = https://www.cppchecksolutions.com/
+	arch = x86_64
+	license = custom
+	license = GPL
+	depends = python-pygments
+	conflicts = cppcheck
+	source = file:///cppcheckpremium-22.4.1.tar.xz
+	source = https://raw.githubusercontent.com/danmar/cppcheck/2.8/htmlreport/cppcheck-htmlreport
+	source = cppcheck
+	sha1sums = 02f1dc4f959dfd5da99aa3f6d79bc5c22fb6546b
+	sha1sums = d21de261ba3dfa58ad732877b65635ec38d40dd7
+	sha1sums = a1c60e8820d66096961c7666faeeefe6a04fc44b
+
+pkgname = cppcheck-premium
