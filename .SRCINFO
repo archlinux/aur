@@ -1,12 +1,16 @@
 pkgbase = tscrape
 	pkgdesc = Twitter scraper
-	pkgver = 0.6
+	pkgver = 0.6+r4+g291870a
 	pkgrel = 1
 	url = https://codemadness.org/tscrape.html
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = ISC
-	source = https://codemadness.org/releases/tscrape/tscrape-0.6.tar.gz
-	sha256sums = d9cbb9ab1072f808fc29dfa69a685f959ac0afd3ec69ca11df3a0b555b0bee87
+	source = git://git.codemadness.org/tscrape#commit=291870afea3ad56366e82efaceef0f1288b34018
+	sha256sums = SKIP
 
 pkgname = tscrape
-

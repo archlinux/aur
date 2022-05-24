@@ -1,23 +1,28 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='tscrape'
-pkgver=0.6
+pkgname=tscrape
+pkgver=0.6+r4+g291870a
 pkgrel=1
 pkgdesc='Twitter scraper'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://codemadness.org/tscrape.html'
 _url_source='https://codemadness.org/releases/tscrape'
 license=('ISC')
-source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d9cbb9ab1072f808fc29dfa69a685f959ac0afd3ec69ca11df3a0b555b0bee87')
+_commit=291870afea3ad56366e82efaceef0f1288b34018 # latest commit with updated static bearer token
+source=("git://git.codemadness.org/tscrape#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  git -C "${pkgname}" describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  make -C "${pkgname}-${pkgver}"
+  make -C "${pkgname}"
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${pkgname}-${pkgver}" install
-  install -Dvm644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  make DESTDIR="${pkgdir}" PREFIX='/usr' MANPREFIX='/usr/share/man' -C "${pkgname}" install
+  install -Dvm644 "${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
