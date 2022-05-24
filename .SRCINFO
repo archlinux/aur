@@ -1,11 +1,13 @@
 pkgbase = python-asks
 	pkgdesc = Async requests-like httplib for python.
-	pkgver = 2.4.12
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/theelous3/asks
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-async_generator
 	depends = python-h11
 	depends = python-anyio
@@ -13,8 +15,7 @@ pkgbase = python-asks
 	optdepends = python-curio: test use
 	optdepends = python-pytest: test use
 	optdepends = python-overly: test use
-	source = https://files.pythonhosted.org/packages/source/a/asks/asks-2.4.12.tar.gz
-	sha256sums = 38de944eb350e7e4e3a918055fa8ff033da5f7b5ff385c1160a2d6b9d84783b0
+	source = https://files.pythonhosted.org/packages/source/a/asks/asks-3.0.0.tar.gz
+	b2sums = 34202ba49b23dec5161f8b39a2dc970b4caf83b31aeaa5b9e93f57b05ec48a47a953395fbb79c1e114fef17ef58ee184c0240292b0209de0f70e39014ebc21ad
 
 pkgname = python-asks
-
