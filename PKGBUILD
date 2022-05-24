@@ -20,23 +20,23 @@ md5sums=('SKIP')
 _gitname="oxygen-gtk"
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname"
 
-    echo "$(LANG=C date '+%Y%m%d')_$(git describe --tags --always --abbrev=5 | sed 's/-/_/g')"
+	echo "$(LANG=C date '+%Y%m%d')_$(git describe --tags --always --abbrev=5 | sed 's/-/_/g')"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  mkdir build && cd build
+	cd "${srcdir}/${_gitname}"
+	mkdir build && cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=debugfull \
-        ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=debugfull \
+		..
 
-  make
+	make
 }
 
-package () {
-  cd "${srcdir}/${_gitname}/build"
-  make DESTDIR=${pkgdir} install
+package() {
+	cd "${srcdir}/${_gitname}/build"
+	make DESTDIR=${pkgdir} install
 }
