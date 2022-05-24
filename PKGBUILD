@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennnan <caleb@alerque.com>
 
 pkgname=bo
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='prose editor written in Rust with vim-like navigation'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('9190abcb138bc1cd5398416b035a9644159c3e26ee4a5777818670c737c295a8')
+sha256sums=('8b3300388ff7ebbf905c635b2c1f7985fc165c0de65cf19dee3d976d0781a059')
 
 prepare() {
 	cd "$_archive"

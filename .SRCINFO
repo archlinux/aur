@@ -1,12 +1,12 @@
 pkgbase = bo
 	pkgdesc = prose editor written in Rust with vim-like navigation
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/brouberol/bo
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/brouberol/bo/archive/v0.3.3/bo-0.3.3.tar.gz
-	sha256sums = 9190abcb138bc1cd5398416b035a9644159c3e26ee4a5777818670c737c295a8
+	source = https://github.com/brouberol/bo/archive/v0.4.0/bo-0.4.0.tar.gz
+	sha256sums = 8b3300388ff7ebbf905c635b2c1f7985fc165c0de65cf19dee3d976d0781a059
 
 pkgname = bo
