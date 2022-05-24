@@ -34,7 +34,7 @@ build() {
 	cmake \
 		-B build \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=debugfull
+		-DCMAKE_BUILD_TYPE=Release
 
 	cmake --build build
 }
