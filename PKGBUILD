@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages'
 license=('Apache 2.0')
 provides=('asmcli')
+depends=('kpt')
 sha256sums=('c55d35a814b3d38208282ddc6e93f9c47babb0b8dbb0c356461d511cf7e89571')
 
 source=("asmcli-${pkgver}"::"https://storage.googleapis.com/csm-artifacts/asm/asmcli_${pkgver}")
