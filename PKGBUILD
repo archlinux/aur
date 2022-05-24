@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=qcopy
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Easily set variables and their respective values for easy access at any point"
 arch=(any)
@@ -14,16 +14,17 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'e7bdc3bd055243b7727c1cf2701e568b6d94abf3544b9f68e9b9f3c1c34fc38c0edef2255bf463d48a3bd3ef036c0f5978a89f6f82cd51109506c1eea555694b'
-  'e6fe964ffa8007827eaece70719108138f37d026a56a76fc1a442663f0ab4690707ae969440e49d7def306e5ce7034240c7f0f77c72bc56f559856d565d42bda'
+  '804e1416c953c7d7631d2b0d10008186abd2f0d6b97e773a1c8c6f6a77942dce4cecb1cd37e15fc4acb00ceb3c96220720ab4233e69f79391c8fb6e7de9c385c'
+  'c1c55c9345a5999246ccb48c10366e5ad1b6e4f195553eaadcd1b3c60d3e632f2bcc571e6aeb79cd5277aeeda869ec70a284f383fcdc733634a158cde30de60f'
   )
 md5sums=(
-  '7bca69724002178341c2e419e6b3065b'
-  '562e6730007751d659a761960be1b79d'
+  '9b7d19d355d487489972d10b017aa8e2'
+  '46bd33ac680b81b66e4d4a049b472db2'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
-    install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 usr/share/man/man1/${pkgname}/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
