@@ -1,13 +1,16 @@
 pkgbase = python-amazon.ion
 	pkgdesc = A Python implementation of Amazon Ion.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://amzn.github.io/ion-docs/
 	arch = any
 	license = Apache
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-py
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/a/amazon.ion/amazon.ion-0.9.1.tar.gz
-	b2sums = 290f8bf8417bbccdf7a0b48449f6e435cbf5950c5ba11c8e71656eb9ee03520281d310079947fa4a05f02c0b26443f9c5b42d6eac4c84e3c789ba0ab1450e28b
+	source = https://files.pythonhosted.org/packages/source/a/amazon.ion/amazon.ion-0.9.2.tar.gz
+	b2sums = a7ca5d4d81f16c7951679249850c57def9d315a4b904fc248d55823d993c6141b58e963e12f7f3a2f6d35caba58618baf48e243dc3c922c05926763a4c36a7d4
 
 pkgname = python-amazon.ion

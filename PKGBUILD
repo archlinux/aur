@@ -4,7 +4,7 @@
 
 pkgname="python-amazon.ion"
 _name="amazon.ion"
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A Python implementation of Amazon Ion.'
 url='https://amzn.github.io/ion-docs/'
@@ -14,17 +14,23 @@ depends=(
     'python-py'
     'python-six'
 )
+makedepends=(
+    'python-wheel'
+    'python-build'
+    'python-installer'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('290f8bf8417bbccdf7a0b48449f6e435cbf5950c5ba11c8e71656eb9ee03520281d310079947fa4a05f02c0b26443f9c5b42d6eac4c84e3c789ba0ab1450e28b')
+b2sums=('a7ca5d4d81f16c7951679249850c57def9d315a4b904fc248d55823d993c6141b58e963e12f7f3a2f6d35caba58618baf48e243dc3c922c05926763a4c36a7d4')
 
 build() {
     cd "$srcdir/$_name-$pkgver" || exit
-    export PYTHONHASHSEED=0
-    python setup.py build
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver" || exit
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
 }
