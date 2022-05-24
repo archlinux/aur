@@ -1,10 +1,10 @@
 post_install() {
     #copy the config
-    mkdir -p "${HOME}/.config/papp_cloud"
-    cp "/usr/share/paracloud/sccs_sample.yml" "${HOME}/.config/papp_cloud/sccs.yml"
+    #mkdir -p "${HOME}/.config/papp_cloud"
+    #whoami
+    #echo ${HOME}
+    #cp "/usr/share/paracloud/sccs_sample.yml" "${HOME}/.config/papp_cloud/sccs.yml"
+    echo "Use this command to copy the config file:"
+    echo "mkdir ~/.config/papp_cloud && cp /usr/share/paracloud/sccs_sample.yml ~/.config/papp_cloud/sccs.yml"
 }
 
-post_remove() {
-    #delete the config
-    rm -rf "${HOME}/.config/papp_cloud/"
-}
