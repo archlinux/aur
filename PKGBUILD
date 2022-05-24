@@ -16,7 +16,6 @@ options=('!strip')
 source=("git://anongit.kde.org/oxygen-gtk#branch=gtk3")
 md5sums=('SKIP')
 
-#_gitroot="git://anongit.kde.org/oxygen-gtk"
 _gitname="oxygen-gtk"
 
 pkgver() {
@@ -26,31 +25,6 @@ pkgver() {
 }
 
 build() {
-  #cd "${srcdir}"
-  #msg "Connecting to GIT server...."
-
-  #if [ -d ${_gitname} ] ; then
-    #cd ${_gitname} && git pull origin
-    #msg "The local files are updated."
-  #else
-    #git clone ${_gitroot} ${_gitname}
-    #cd ${_gitname}
-    #git checkout gtk3
-    #cd -
-  #fi
-
-  #msg "GIT checkout done or server timeout"
-  #msg "Starting make..."
-
-  #rm -rf "${srcdir}/${_gitname}-build"
-  #git clone -l "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-build"
-  #cd "${srcdir}/${_gitname}-build"
-
-  #cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        #-DCMAKE_BUILD_TYPE=debugfull \
-        #../${_gitname}
-  #make
-
   cd "${srcdir}/${_gitname}"
   mkdir build && cd build
 
