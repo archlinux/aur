@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=pkd
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A minimal CLI download manager for all major package managers and URLs/Torrents"
 arch=(any)
@@ -21,17 +21,18 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '80f783e309642ce88af43b595d08d78a497378ac3443b192de446f42f439778066cba1ad0263d8cc1970a6bf975fd15779ce618d5758b49cd53cd4c3b15ec8fa'
-  'b2117947d4b7e3ab64d9fe58f6fa393d39c83e808c7cfc9b7eb8ceba1447133168e0df4bc90e7292a68f976b013f5a7d800c9a80f593d405a80e7826224d3c2c'
+  'd19e13895e451642f8ba44165dc7c64f339de8905b172c4a76d446bb331b24e7be90b72d8b5f25b951931b8d33342e6e75dad132e2ac0b101f4ec6ce74856dd2'
+  'bbe9f1bb6b30e05030abaa07f74bc62800d9c7aaf56dc5ba9f75d697f6999742129b9bc23c2758a3fc809f866f89cf47340f2ecfee395ae5e3a0f6f129a202b0'
   )
 md5sums=(
-  'd722d323248da143f15e2bf3df014b83'
-  '403a3d3852e236cc90a4d9d53bee2f85'
+  '2b601eabef9eba758f62c319b0048077'
+  'f0b8bf78c26ec0d998b7964ed71ec1b3'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
     install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 usr/share/man/man1/${pkgname}.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
     install -Dm644 usr/share/doc/${pkgname}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 }
