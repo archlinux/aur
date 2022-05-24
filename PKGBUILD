@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('borg' 'python-appdirs' 'python-pyqt5' 'python-peewee' 'python-paramiko
 makedepends=('qt5-tools' 'python-pip')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9396915819d6ccb204e4321b8fe482fd2421563a09fa0daab9b2e982d2b9d50b')
+sha256sums=('581fb54d5555ecf0aa4396f91cc8618bf4cff65ea9eefcc369680367675973d2')
           
 
 build() {
