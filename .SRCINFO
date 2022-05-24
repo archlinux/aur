@@ -9,6 +9,7 @@ pkgbase = python-migen-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = python-colorama
 	provides = python-migen
 	conflicts = python-migen
 	replaces = migen-git

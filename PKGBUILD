@@ -10,7 +10,7 @@ url="https://github.com/m-labs/migen"
 license=('BSD')
 
 makedepends=('git' 'python-setuptools')
-depends=('python')
+depends=('python' 'python-colorama')
 checkdepends=('python-pytest')
 provides=("${pkgname%%-git}")
 conflicts=("${pkgname%%-git}")
