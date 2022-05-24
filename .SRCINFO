@@ -7,8 +7,7 @@ pkgbase = rom-parser-git
 	license = unknown
 	makedepends = git
 	depends = glibc
-	source = rom-parser-git-20170330::git+https://github.com/awilliam/rom-parser
-	sha512sums = SKIP
-	b2sums = SKIP
+	source = rom-parser-git::git+https://github.com/awilliam/rom-parser
+	sha256sums = SKIP
 
 pkgname = rom-parser-git

@@ -9,23 +9,21 @@ url="https://github.com/awilliam/rom-parser"
 license=('unknown')
 depends=('glibc')
 makedepends=('git')
-source=("${pkgname}-${pkgver}::git+https://github.com/awilliam/rom-parser")
-sha512sums=('SKIP')
-b2sums=('SKIP')
+source=("${pkgname}::git+https://github.com/awilliam/rom-parser")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	git log -1 --date=format:%Y%m%d --pretty=%cd
 }
 
 build() {
-        cd "${pkgname}-${pkgver}"
-        make
+	cd "${pkgname}"
+	make
 }
 
 package() {
-        cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	install -Dm755 rom-parser "${pkgdir}"/usr/bin/rom-parser
 	install -Dm755 rom-fixer "${pkgdir}"/usr/bin/rom-fixer
 }
-
