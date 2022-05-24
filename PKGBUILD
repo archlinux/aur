@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/solokeys/solo2-cli/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "b17b6e846089f61af2ae58784f05daf2f17de4a63e8a890f9f525880b7e590be"
+    "f797a53046f7fb66ffd9f76063c4b9abdd88299b89d18c28a451a4f62573a334"
 )
 
 prepare() {
@@ -29,7 +29,7 @@ build() {
   export CARGO_TARGET_DIR=target
   # dev-pki feature not activated due to bug in v0.1.1
   # cargo build --release --frozen --all-features
-  cargo build --release --frozen
+  cargo build --features dev-pki --release --frozen
 }
 
 check() {
@@ -39,7 +39,7 @@ check() {
   target/release/solo2 --version
   # dev-pki feature not activated due to bug in v0.1.1
   # cargo test --release --frozen --all-features
-  cargo test --release --frozen
+  cargo test --features dev-pki --release --frozen
 }
 
 package() {
