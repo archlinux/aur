@@ -5,8 +5,8 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='1.0.0'
-pkgrel=3
-_rc='-rc3'
+pkgrel=4
+_rc='-rc4'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -20,14 +20,14 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 sha256sums=('da3022932e854e5ff445fe07247c85ac20d0cd1f2815a15c885e0ce620548d69')
-sha256sums_i686=('dbca19fab28207eca6af5fe2df49221a80081c61e001b616b5da09d54c2fbe81')
-sha256sums_x86_64=('d4f1a33c1f3d46d1386265dcead43cadb0b78f060007c4b3bc62028c4e98a11a')
-sha256sums_aarch64=('29daf7c3f27c74bb796b57531f8db0284c821bac95cf27d80134f5eca64c33eb')
-sha256sums_armv8=('29daf7c3f27c74bb796b57531f8db0284c821bac95cf27d80134f5eca64c33eb')
-sha256sums_armv7=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
-sha256sums_armv7l=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
-sha256sums_armv7h=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
-sha256sums_arm=('395f4307e5c63731cc6f9595636544d7caeeed1eb3c7a5e0c7e45d4d3b34f314')
+sha256sums_i686=('93311432784e370d5b5638d95e2b80fbb20de65840d7728fb5c1b5491dbf0df1')
+sha256sums_x86_64=('798a9ccf3ca26a0450c62bc8ad2d4fddbbfdd27501a83bb771af3d60a007c001')
+sha256sums_aarch64=('13f849a09634341be5bf93b660f852a0d3c793408a45c4b059cb17e37225a565')
+sha256sums_armv8=('13f849a09634341be5bf93b660f852a0d3c793408a45c4b059cb17e37225a565')
+sha256sums_armv7=('7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
+sha256sums_armv7l=('7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
+sha256sums_armv7h=('7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
+sha256sums_arm=('7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
 #https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
@@ -59,13 +59,13 @@ mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 _msg2 'installing binaries'
-install -Dm755 ${srcdir}/skywire-v*/skywire-visor ${_pkgdir}/${_skybin}/
+install -Dm755 ${srcdir}/skywire/skywire-visor ${_pkgdir}/${_skybin}/
 ln -rTsf ${_pkgdir}/${_skybin}/skywire-visor ${_pkgdir}/usr/bin/skywire-visor
-install -Dm755 ${srcdir}/skywire-v*/skywire-cli ${_pkgdir}/${_skybin}/
+install -Dm755 ${srcdir}/skywire/skywire-cli ${_pkgdir}/${_skybin}/
 ln -rTsf ${_pkgdir}/${_skybin}/skywire-cli ${_pkgdir}/usr/bin/skywire-cli
 
 _msg2 'installing app binaries'
-_apps=${srcdir}/skywire-v*/apps
+_apps=${srcdir}/skywire/apps
 install -Dm755 ${_apps}/skychat ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/skychat ${_pkgdir}/usr/bin/skychat
 install -Dm755 ${_apps}/skysocks ${_pkgdir}/${_skyapps}/
@@ -92,7 +92,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${srcdir}/skywire-v*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${srcdir}/skywire/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 #install systemd services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
