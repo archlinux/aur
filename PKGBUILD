@@ -4,10 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=101.0.4951.64
+pkgver=102.0.5005.61
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=4
+_gcc_patchset=5
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -16,7 +16,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless')
+             'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -25,20 +25,22 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        fix-no-member-named-tie-in-namespace-std.patch
         iwyu-add-utility-for-std-exchange.patch
         enable-GlobalMediaControlsCastStartStop.patch
+        roll-src-third_party-ffmpeg.patch
         chromium-libxml-unbundle.patch
         sql-make-VirtualCursor-standard-layout-type.patch
+        remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('9c5896e4135563453ac10d15698c18ef61eb5535dc611325b230ece4c5a8d8f7'
+sha256sums=('1a3797d36901fa3ba63744b9a870b65a8890c9a850442c160196bc64df886b1f'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '8ed519d21ccd8b382ddd384e9c15306a60d2e3495f48a62dea07c9be9bbffebd'
-            '7ad0106161bbf25e2e603ae1a723ae4217155ebb26eb4778363ad396e8c14156'
+            '53de0f936fd571e578ba2fbf348c8741116cdcceac3ea6fae5008d8f054a7698'
             '6f666ef0acb08704ca58cc0d5e97e7ce64d8fea51042e593adae1ce15a61231c'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
+            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             'fd3bf124aacc45f2d0a4f1dd86303fa7f2a3d4f4eeaf33854631d6cb39e12485'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
+            '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -94,13 +96,19 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
+  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
+  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
+
   # Upstream fixes
-  patch -Np1 -i ../fix-no-member-named-tie-in-namespace-std.patch
   patch -Np1 -i ../iwyu-add-utility-for-std-exchange.patch
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
   patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
+
+  # Revert ffmpeg roll requiring new channel layout API support
+  # https://crbug.com/1325301
+  patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/3488058
   patch -Np1 -i ../chromium-libxml-unbundle.patch
@@ -109,7 +117,8 @@ prepare() {
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  #patch -Np1 -i ../patches/
+  patch -Np1 -i ../patches/chromium-102-fenced_frame_utils-include.patch
+  patch -Np1 -i ../patches/chromium-102-regex_pattern-array.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -255,7 +264,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
