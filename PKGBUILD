@@ -1,15 +1,15 @@
-# Maintainer: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
+# Maintainer: Vitaly Ankh <https://aur.archlinux.org/account/VitalyAnkh>
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
 ################################################################################
-# The difference between this PKGBUILD and the one from `emacs-git` is that:
-# - this one builds emacs from `feature/native-comp` branch.
-# - built-in packages are native compiled by default.
+# This PKGBUILD features:
+# - the xwidgets is enabled (you can surf the Internet via
+#   a modern browser(webkit) in Emacs!).
 # - link-time optimization is disabled by default.
-#
-# Pre-compiling all built-in elisp modules takes *hours* on fast systems. You
-# can set FAST_BOOT="YES" to pre-compile the bare minimum, then you'll need to
-# manage native-compilation later (eg. with comp-deferred-compilation).
+# - enalbe JIT and AOT compilation of emacs-lisp, which
+#   means built-in packages and your own packages are 
+#   native compiled by default.
 ################################################################################
 
 ################################################################################
@@ -25,20 +25,52 @@
 ################################################################################
 
 ################################################################################
-# Assign "YES" to the variable you want enabled; empty or other value
+# Assign "YES" to the variable you want enabled; empty or any other value
 # for NO.
 #
 # Where you read experimental, replace with foobar.
 # =================================================
-#
+
 ################################################################################
+
+USE_ALL_CPU_CORES="YES" # Do you want to use all CPU cores?
+
 CHECK=            # Run tests. May fail, this is developement after all.
+
 CLANG=            # Use clang.
-LTO=              # Enable link-time optimization. Not that experimental anymore.
-                  # Seems fixed in GCC, so I've reenabled binutils support, please
-		  # report any bug, to make it use clang by default again.
+
+GOLD=             # Use the gold linker.
+
+LTO=              # Enable link-time optimization. Still experimental.
+
+MOLD="YES"        # Use the mold linker.
+                  # This is the default linker.
+                  # Notice that it will always be used.
+
+JIT="YES"         # Enable native just-in-time compilation. Use libgccjit,
+                  # which is in testing repo for now.
+                  #
+                  # This compiles only performance critical elisp files.
+                  #
+                  # To compile all elisp on demand, add
+                  #    (setq comp-deferred-compilation t)
+                  # to your .emacs file.
+
+AOT="YES"         # Precompile all included elisp. It takes a long time.
+                  # You still need to enable on-demand compilation
+                  # for your own packages.
+
 CLI=              # CLI only binary.
+
+XINPUT2=          # Use Xinput2 support.
+                  # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
+                  # This is useless with pgtk.
+
+GPM="YES"         # Mouse support in Linux console using gmpd.
+
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+                  # Bitmap fonts only, 1337!
+               
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
                   # Read https://wiki.archlinux.org/index.php/X_resources
@@ -47,119 +79,151 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   # for some tips on using outline fonts with
                   # Xft, if you choose no toolkit or Lucid.
                   #
-GTK2=             # GTK2 support. Why would you?
-M17N=             # Enable m17n international table input support.
-                  # You are far better off using harfbuzz+freetype2
-                  # But this gives independence if you need it.
-                  # In fact, right now harfbuzz is hardwired, I have to
-                  # be convinced it should be refactored.
-CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
-                  # This is now, along with harfbuzz, the prefered font
-                  # and text shaping engine.
-                  # If using GTK+, you'll get printing for free.
-XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
+               
+ALSA="YES"        # Linux sound support.
+
+NOCAIRO=          # Disable here. 
+               
+XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+                  # Thanks to Po Lu, xwidgets supports pgtk now!
+               
+PGTK=             # Wayland is awesome!
+
 DOCS_HTML=        # Generate and install html documentation.
+               
 DOCS_PDF=         # Generate and install pdf documentation.
-MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
-                  # ImageMagick, like flash, is a bug ridden pest that 
-		  # won't die;  yet it is useful if you know what you 
-		  #are doing.
-                  # -->>If you just *believe* you need it, you don't.<<--
+               
 NOGZ="YES"        # Don't compress .el files.
-FAST_BOOT="YES"   # Only native-compile the bare minimum. Intended for use with
-                  # deferred compilation to native-compile on-demand at runtime.
-PROFILING=        # Enable gprof profiling support.
 ################################################################################
 
 ################################################################################
+if [[ $CLI == "YES" ]] ; then
+  pkgname="emacs-nox-git"
+else
 pkgname="emacs-native-comp-git"
-pkgver=28.0.50.146220
-pkgrel=2
-pkgdesc="GNU Emacs. Development native-comp branch."
-arch=('x86_64' )
+fi
+pkgver=29.0.50.156571
+pkgrel=1
+pkgdesc="GNU Emacs. Development master branch without PGTK."
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3' )
-depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit')
-makedepends=('git')
-provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-comp")
-# If Savannah access is blocked for reasons, use Github instead.
-# Edit the config file of your local repo copy as well.
+license=('GPL3')
+depends_nox=('gnutls' 'libxml2' 'jansson')
+depends=("${depends_nox[@]}" 'harfbuzz')
+makedepends=('git' 'mold')
+provides=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+conflicts=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+# If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
-md5sums=('SKIP')
+options=(!strip)
+install=emacs-git.install
+b2sums=('SKIP')
 ################################################################################
 
 ################################################################################
 
-CFLAGS+=" -g"
-CXXFLAGS+=" -g"
+if [[ $GOLD == "YES" && ! $CLANG == "YES" ]]; then
+  export LD=/usr/bin/ld.gold
+  export CFLAGS+=" -fuse-ld=gold";
+  export CXXFLAGS+=" -fuse-ld=gold";
+elif [[ $GOLD == "YES" && $CLANG == "YES" ]]; then
+  echo "";
+  echo "Clang rather uses its own linker or mold.";
+  echo "";
+  exit 1;
+fi
 
-if [[ $LTO == "YES" ]]; then
-  CFLAGS+=" -flto"
-  CXXFLAGS+=" -flto"
-  if [[ $CLANG != "YES" ]]; then
-    CFLAGS+=" -fuse-linker-plugin"
-    CXXFLAGS+=" -fuse-linker-plugin"
-  fi
+if [[ $MOLD == "YES" && ! $CLANG == "YES" ]]; then
+  # Make sure mold is available in /usr/bin/mold, or
+  # you could specify another path to mold.
+  makedepends+=( 'mold' )
+  export LD=/usr/bin/mold
+  export CFLAGS+=" -fuse-ld=gold";
+  export CXXFLAGS+=" -fuse-ld=gold";
 fi
 
 if [[ $CLANG == "YES" ]]; then
   export CC="/usr/bin/clang" ;
   export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
-  export LD="/usr/bin/lld" ;
   export AR="/usr/bin/llvm-ar" ;
   export AS="/usr/bin/llvm-as" ;
+  makedepends+=( 'clang' 'llvm') ;
+  if [[ ! $MOLD == "YES" ]]; then
+  makedepends+=( 'mold' )
+  export LD="/usr/bin/lld" ;
   export CCFLAGS+=' -fuse-ld=lld' ;
   export CXXFLAGS+=' -fuse-ld=lld' ;
-  makedepends+=( 'clang' 'lld' 'llvm') ;
-else
-  export LD="/usr/bin/ld.gold"
-  export CFLAGS+=" -fuse-ld=gold"
-  export CXXFLAGS+=" -fuse-ld=gold"
+  export CFLAGS+=" --ld-path=/usr/bin/mold";
+  export CXXFLAGS+=" --ld-path=/usr/bin/mold";
+  else
+  makedepends+=( 'lld' )
+  export LD="/usr/bin/lld" ;
+  fi
 fi
 
-if [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
+if [[ $JIT == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'libgccjit' );
+  else
+    depends+=( 'libgccjit' );
+  fi
+fi
+
+if [[ $CLI == "YES" ]]; then
+  depends=("${depends_nox[@]}");
+elif [[ $NOTKIT == "YES" ]]; then
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' 'libxi');
+  makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'xorgproto' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' 'libxi');
   makedepends+=( 'xorgproto' );
-elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' );
-  makedepends+=( 'xorgproto' );
-else
+elif [[ $GTK3 == "YES" ]]; then
   depends+=( 'gtk3' );
-  makedepends+=( 'xorgproto' );
+  makedepends+=( 'xorgproto' 'libxi' );
+elif [[ $PGTK == "YES" ]]; then
+  depends+=( 'gtk3' );
+  makedepends+=( 'xorgproto' 'libxi' );
 fi
 
-if [[ $M17N == "YES" ]]; then
-  depends+=( 'm17n-lib' );
-fi
-
-if [[ $MAGICK == "YES" ]]; then
-  depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]]; then
+if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
-else
+elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
 
-if [[ $CAIRO == "YES" ]]; then
+if [[ $ALSA == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'alsa-lib' );
+  else
+    depends+=( 'alsa-lib' );
+  fi
+fi
+
+if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] && [[ ! $PGTK == "YES" ]]; then
   depends+=( 'cairo' );
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
-  if [[ $GTK2 == "YES" ]] || [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
+  if [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
     echo "";
     echo "";
-    echo "Xwidgets support *requires* gtk+3!!!";
+    echo "Xwidgets support **requires** GTK+3!!!";
     echo "";
     echo "";
     exit 1;
   else
     depends+=( 'webkit2gtk' );
+  fi
+fi
+
+if [[ $GPM == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'gpm' );
+  else
+    depends+=( 'gpm' );
   fi
 fi
 
@@ -202,15 +266,15 @@ build() {
     --localstatedir=/var
     --mandir=/usr/share/man
     --with-gameuser=:games
-    --with-sound=alsa
     --with-modules
+    --without-libotf
+    --without-m17n-flt
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings you set in ~/.emacs.
 # If you insist you'll need to read that bug report in *full*.
 # Good luck!
    --without-gconf
    --without-gsettings
-   --with-native-compilation
   )
 
 ################################################################################
@@ -225,41 +289,53 @@ if [[ $LTO == "YES" ]]; then
   _conf+=( '--enable-link-time-optimization' );
 fi
 
-if [[ $PROFILING == "YES" ]]; then
-  _conf+=( '--enable-profiling' );
+if [[ $XINPUT2 == "YES" ]]; then
+  _conf+=( '--with-xinput2' );
+fi
+
+
+if [[ $JIT == "YES" ]]; then
+  _conf+=( '--with-native-compilation' );
 fi
 
 if [[ $CLI == "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
+  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--without-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
-elif [[ $GTK2 == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
-else
+elif [[ $GTK3 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
+elif [[ $PGTK == "YES" ]]; then
+  _conf+=( '--with-pgtk' '--without-xaw3d' );
 fi
 
-if [[ ! $M17N == "YES" ]]; then
-  _conf+=( '--without-m17n-flt' );
+if [[ $NOCAIRO == "YES" || $CLI == "YES" || $NOTKIT == "YES" || $LUCID == "YES" ]]; then
+  _conf+=( '--without-cairo' );
 fi
 
-if [[ $MAGICK == "YES" ]]; then
-  _conf+=( '--with-imagemagick');
-fi
-
-if [[ $CAIRO == "YES" ]]; then
-  _conf+=( '--with-cairo' );
+if [[ $ALSA == "YES" ]]; then
+    _conf+=( '--with-sound=alsa' );
+else
+    _conf+=( '--with-sound=no' );
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
 fi
 
+if [[ $GPM == "YES" ]]; then
+    true
+else
+  _conf+=( '--without-gpm' );
+fi
+
 if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
+
+# ctags/etags may be provided by other packages, e.g, universal-ctags
+_conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
@@ -275,11 +351,20 @@ fi
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
-  if [[ $FAST_BOOT == "YES" ]]; then
-    make NATIVE_FAST_BOOT=1
+  # Always use mold to link.
+if [[ $USE_ALL_CPU_CORES == "YES" ]]; then
+   if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+    mold -run make NATIVE_FULL_AOT=1 -j$(nproc)
   else
-    make NATIVE_FULL_AOT=1
+    mold -run make -j$(nproc)
+  fi 
+else
+  if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+    mold -run make NATIVE_FULL_AOT=1
+  else
+    mold -run make
   fi
+fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
@@ -305,15 +390,6 @@ package() {
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-
-  if [[ $NOGZ == "YES" ]]; then
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1};
-  else
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-  fi
-
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
@@ -326,4 +402,4 @@ package() {
 }
 
 ################################################################################
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ft=bash ts=2 sw=2 et:
