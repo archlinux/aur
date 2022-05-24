@@ -1,18 +1,19 @@
 pkgbase = cosbrowser
 	pkgdesc = 腾讯云COS工具
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cloud.tencent.com
 	arch = x86_64
 	license = custom
+	checkdepends = electron11
 	depends = gtk3
 	depends = libxcb
-	depends = electron11
 	depends = libappindicator-gtk2
 	depends = gconf
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
+	depends = electron11
 	source = https://cos5.cloud.tencent.com/cosbrowser/releases/cosbrowser-latest-linux.zip
 	sha256sums = SKIP
 
