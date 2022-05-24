@@ -1,0 +1,4 @@
+libdogleg/
+src/
+pkg/
+*.zst

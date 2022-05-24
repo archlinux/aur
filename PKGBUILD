@@ -1,7 +1,7 @@
 # Maintainer: piratecarrot <39475419+piratecarrot@users.noreply.github.com>
 pkgname=libdogleg-git
 pkgver=v0.15.4.r0.gd8e655b
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale nonlinear least-squares optimization library for both sparse and dense problems"
 arch=('i686' 'x86_64')
 url="https://github.com/dkogan/libdogleg"
@@ -32,7 +32,11 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -m 755 libdogleg.so.2.0.15.4 libdogleg.so.2 libdogleg.so -D --target-directory="$pkgdir/usr/lib/"
+	install -m 755 libdogleg.so.2.0.15.4 -D --target-directory="$pkgdir/usr/lib/"
+	pushd $pkgdir/usr/lib/
+	ln -s libdogleg.so.2.0.15.4 libdogleg.so.2
+	ln -s libdogleg.so.2.0.15.4 libdogleg.so
+	popd
 	install -m 644 dogleg.h -D --target-directory="$pkgdir/usr/include/"
 	install -m 755 sample -D "$pkgdir/usr/bin/libdogleg-sample"
 }
