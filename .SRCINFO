@@ -12,10 +12,9 @@ pkgbase = xsnow-comp-patch-git
 	depends = libxpm
 	provides = xsnow
 	conflicts = xsnow
-	source = git://github.com/protractorninja/xsnow-comp-patch.git
+	source = git+https://github.com/protractorninja/xsnow-comp-patch.git
 	source = http://janswaal.home.xs4all.nl/Xsnow/xsnow-1.42.tar.gz
 	md5sums = SKIP
 	md5sums = 451d8fc0a2b5393b428faa496a556036
 
 pkgname = xsnow-comp-patch-git
-
