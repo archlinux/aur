@@ -1,3 +1,7 @@
 post_install() {
   ln -s /usr/bin/qcopy /usr/bin/qcp
 }
+
+post_remove() {
+  rm -f /usr/bin/qcp
+}
