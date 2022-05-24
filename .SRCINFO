@@ -1,0 +1,14 @@
+pkgbase = vim-searchhighlighting
+	pkgdesc = Highlighting of searches via star, auto-highlighting.
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://github.com/inkarkat/vim-SearchHighlighting
+	arch = any
+	license = custom:vim
+	depends = vim-ingo-library
+	source = https://github.com/inkarkat/vim-SearchHighlighting/archive/refs/tags/2.10.tar.gz
+	source = https://raw.githubusercontent.com/vim/vim/c9a431c7638ecebb6f2cb3eabd0e1b2b5e269c1e/runtime/doc/uganda.txt
+	sha256sums = baf83e5baa93b1afdd28aa073229a3b120daa709d1bf28857b03c1e596e8753e
+	sha256sums = 81da0f67560c8a533852fe12f33a12765c99db082247540b8231e50aa74e3cc8
+
+pkgname = vim-searchhighlighting
