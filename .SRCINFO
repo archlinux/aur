@@ -1,13 +1,13 @@
 pkgbase = python-pbar
 	pkgdesc = A Python library to display customizable progress bars on the terminal easily.
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/DarviL82/PBar
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.9
-	source = https://files.pythonhosted.org/packages/source/P/PBar2/PBar2-2.2.1.tar.gz
-	sha256sums = 40f1a441510cc70fdc549a80adc63cdabf8532c87930ade3ea90e6922e15c2e5
+	source = https://files.pythonhosted.org/packages/source/P/PBar2/PBar2-2.2.2.tar.gz
+	sha256sums = dc49a707dbdc82a5f16c27b623405440cfd01215f610a82c69b77eb7e4bc53aa
 
 pkgname = python-pbar
