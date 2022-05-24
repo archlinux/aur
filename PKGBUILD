@@ -1,7 +1,7 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="privacy-protection-messenger"
-pkgver=1.3
-pkgrel=4
+pkgver=1.4
+pkgrel=0
 pkgdesc="Secure messenger backend"
 author="imperzer0"
 branch="master"
@@ -32,7 +32,7 @@ md5sums=('a7abc0672242dedcd5e4f563456e7dbc'
          '058646ab78672c97a2f18dffc1b56ebf'
          '7b6219f801b85979015e2323815630d0'
          'e00fc2264833b47f203e1d541277efd6'
-         'dc2d9e85c9dca012992c25c5e34d2acf'
+         '3e34f9c585545a0c12691e1fdcdafbf2'
          '48db5e5193c134ec52fef48b1d133c5e')
 
 _package_version=$pkgname" ("$pkgver"-"$pkgrel")"
