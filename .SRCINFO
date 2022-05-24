@@ -1,7 +1,7 @@
 pkgbase = vosk-api
 	pkgdesc = Offline speech recognition toolkit
-	pkgver = 0.3.32
-	pkgrel = 4
+	pkgver = 0.3.38
+	pkgrel = 1
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
 	license = Apache
@@ -16,17 +16,17 @@ pkgbase = vosk-api
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = https://github.com/alphacep/vosk-api/archive/v0.3.32/vosk-api-0.3.32.tar.gz
-	source = https://github.com/xianyi/OpenBLAS/archive/v0.3.13/openblas-0.3.13.tar.gz
+	source = https://github.com/alphacep/vosk-api/archive/v0.3.38/vosk-api-0.3.38.tar.gz
+	source = https://github.com/xianyi/OpenBLAS/archive/v0.3.20/openblas-0.3.20.tar.gz
 	source = https://github.com/alphacep/clapack/archive/v3.2.1/clapack-3.2.1.tar.gz
-	source = kaldi-vosk-gd8d8452.tar.gz::https://github.com/alphacep/kaldi/archive/d8d84524c35506ff30514da5d062e341c1f62330.tar.gz
+	source = kaldi-vosk-g098ee91.tar.gz::https://github.com/alphacep/kaldi/archive/098ee918bb3b7cd3b51f12b5fbc14bde8f2362db.tar.gz
 	source = https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip
 	source = https://alphacephei.com/vosk/models/vosk-model-spk-0.4.zip
 	source = git+https://github.com/alphacep/openfst.git#commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
-	sha256sums = acf61c1af48f15e4c6ac299b2aca3c17d83ec48073c5c6229e2de3601b1e6882
-	sha256sums = 79197543b17cc314b7e43f7a33148c308b0807cd6381ee77f77e15acf3e6459e
+	sha256sums = 8832e3b2abec8e3b7589217eb15f90a0258b03b2f76516be3eafea69c7467144
+	sha256sums = 8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c
 	sha256sums = ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78
-	sha256sums = 800844238f1a25be502013dd6048bd14a7472a6082b8ec8b98871b88be16a117
+	sha256sums = 406bef9945a07e1704c8c941c3eaa3aee5636d871907cba309dd7831fa14ea0b
 	sha256sums = 30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498
 	sha256sums = a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7
 	sha256sums = SKIP
@@ -39,4 +39,4 @@ pkgname = python-vosk
 	pkgdesc = Python module for vosk-api
 	depends = python
 	depends = python-cffi
-	depends = vosk-api=0.3.32
+	depends = vosk-api=0.3.38

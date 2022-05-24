@@ -2,14 +2,14 @@
 
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
-pkgver=0.3.32
-pkgrel=4
-_openblas_ver=0.3.13
+pkgver=0.3.38
+pkgrel=1
+_openblas_ver=0.3.20
 _clapack_ver=3.2.1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
-_kaldi_commit=d8d84524c35506ff30514da5d062e341c1f62330
+_kaldi_commit=098ee918bb3b7cd3b51f12b5fbc14bde8f2362db
 pkgdesc='Offline speech recognition toolkit'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
@@ -24,10 +24,10 @@ source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pk
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
         "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
-sha256sums=('acf61c1af48f15e4c6ac299b2aca3c17d83ec48073c5c6229e2de3601b1e6882'
-            '79197543b17cc314b7e43f7a33148c308b0807cd6381ee77f77e15acf3e6459e'
+sha256sums=('8832e3b2abec8e3b7589217eb15f90a0258b03b2f76516be3eafea69c7467144'
+            '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
             'ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78'
-            '800844238f1a25be502013dd6048bd14a7472a6082b8ec8b98871b88be16a117'
+            '406bef9945a07e1704c8c941c3eaa3aee5636d871907cba309dd7831fa14ea0b'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
             'SKIP')
