@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -49,12 +49,17 @@ optdepends=(
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
+        "init_order.patch"::"https://github.com/ray-project/ray/commit/85fe5346c83233af8e3aa36a3a9e3001a05f972f.patch"
         "py310.patch"::"https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21221.patch")
-sha256sums=('f358a942c35890c8939706ef0362569bcd3aca225109b6875492c4832caf2fe7'
+
+sha256sums=('e88933aa912c5165bc3705439608dbf3c3a6c6df8a3299a9a90432bc30340d52'
+            '539f9881e686281a71ca72d3a9a62c926960f400e36f3007d2bb8079b59fd07b'
             'SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+
+  patch --strip=1 < "${srcdir}/init_order.patch"
 
   #patch --strip=1 < "${srcdir}/py310.patch"
   sed -i "s/9)]/9), (3, 10)]/" python/setup.py
