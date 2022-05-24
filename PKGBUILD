@@ -3,7 +3,7 @@
 
 pkgname=sdl2pp
 _pkgname=libSDL2pp
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="SDL2 wrapper for C++11"
 arch=('any')
@@ -12,7 +12,7 @@ license=('zlib')
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('fa3b848a5a1af49c01e812297116b6b2')
+md5sums=('a9682fe9a68bce5647c3b2cacb43f9e7')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
