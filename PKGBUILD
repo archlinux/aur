@@ -6,6 +6,7 @@ pkgdesc="Communist is a simple GTK4 based p2p messenger"
 license=('GPL3')
 arch=('x86_64')
 provides=("${pkgname}")
+url="https://github.com/ProfessorNavigator/communist"
 source=("https://github.com/ProfessorNavigator/communist/archive/refs/tags/v1.1.tar.gz")
 makedepends=('meson' 'ninja' 'pkgconf' 'gcc' 'gtkmm-4.0' 'hunspell' 'libtorrent-rasterbar' 'libgcrypt' 'libzip' 'icu' 'boost')
 depends=('gtkmm-4.0' 'hunspell' 'libtorrent-rasterbar' 'libgcrypt' 'libzip' 'icu')
