@@ -3,10 +3,10 @@
 
 
 pkgname=picgo-appimage
-pkgver=2.3.1
-_beta=-beta.2
-_release=${pkgver}${_beta}
-pkgrel=2
+_beta=beta.3
+_release=${pkgver}-${_beta}
+pkgver=2.3.1.${_beta}
+pkgrel=1
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "picgo.desktop"
 )
 sha256sums=(
-    'd7801c930445d45f8e55464b2739a4b8638ccdbcd3925d6d84628a12151bbbd1'
+    '46d2bbaee419f97e582cd2e0f04ac1eb2e84f0750332ee41c19d86ef93560cfe'
     '9cf46faad2b6b431e2fb8cc9ece7c4f2638fc04bff1089679686b7c53c8fc31e'
     'SKIP'
     'SKIP'
