@@ -20,13 +20,13 @@ md5sums=('SKIP')
 _gitname="oxygen-gtk"
 
 pkgver() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	git describe --long | sed 's/vgtk3-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
+	cd "$_gitname"
 	mkdir build && cd build
 
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
@@ -37,6 +37,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_gitname}/build"
+	cd "$_gitname/build"
 	make DESTDIR=${pkgdir} install
 }
