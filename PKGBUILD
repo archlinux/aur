@@ -2,6 +2,7 @@
 # Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
 # Contributor: Cezary Drożak <cezary at drozak.net>
 
+_gitname="oxygen-gtk"
 pkgname=oxygen-gtk3-git
 pkgver=20160429_vgtk3_1.4.1_12_g705b7
 pkgrel=1
@@ -14,10 +15,8 @@ makedepends=('git' 'cmake')
 conflicts=('oxygen-gtk3')
 provides=('oxygen-gtk3')
 options=('!strip')
-source=("git+https://invent.kde.org/plasma/oxygen-gtk.git#branch=gtk3")
+source=("git+https://invent.kde.org/plasma/$_gitname.git#branch=gtk3")
 md5sums=('SKIP')
-
-_gitname="oxygen-gtk"
 
 pkgver() {
 	cd "$_gitname"
