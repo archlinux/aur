@@ -1,0 +1,2 @@
+z /etc/mx-puppet-slack/* 0640 mx-puppet-slack mx-puppet-slack
+d /var/lib/mx-puppet-slack 0700 mx-puppet-slack mx-puppet-slack

@@ -1,0 +1,17 @@
+# shellcheck disable=all
+
+post_install() {
+	cat <<-'EOF'
+		After editing /etc/mx-puppet-slack/config.yaml, generate a registration file using:
+		# sudo /usr/bin/node /usr/lib/node_modules/mx-puppet-slack/build/index.js \
+			-c /etc/mx-puppet-slack/config.yaml \
+			-r -f /etc/mx-puppet-slack/registration.yaml
+		# sudo chmod 640 /etc/mx-puppet-slack/registration.yaml
+		# sudo chown mx-puppet-slack:mx-puppet-slack /etc/mx-puppet-slack/registration.yaml
+
+		If your Home Server (synapse, dendrite, conduit, etc) runs on the same machine,
+		you can grant it permission to acess the registration file based on the Home Server's
+		user, for example:
+		# sudo chown mx-puppet-slack:dendrite /etc/mx-puppet-slack/registration.yaml
+	EOF
+}

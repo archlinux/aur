@@ -1,0 +1,4 @@
+src/
+pkg/
+mx-puppet-slack/
+mx-puppet-slack-git*.tar

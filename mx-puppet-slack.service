@@ -1,0 +1,35 @@
+[Unit]
+Description=Matrix-Slack puppeting bridge
+After=network-online.target
+
+[Service]
+ExecStart=node /usr/lib/node_modules/mx-puppet-slack/build/index.js \
+	-c /etc/mx-puppet-slack/config.yaml \
+	-f /etc/mx-puppet-slack/registration.yaml
+User=mx-puppet-slack
+WorkingDirectory=~
+
+LockPersonality=yes
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=no
+ProtectHostname=yes
+ProtectSystem=full
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RemoveIPC=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+
+ReadWritePaths=/var/lib/mx-puppet-slack
+
+[Install]
+WantedBy=multi-user.target
