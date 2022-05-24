@@ -1,7 +1,11 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2164
+
 # Contributor: Zephyr
 # Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
 # Contributor: Cezary Drożak <cezary at drozak.net>
 
+# shellcheck disable=SC2034
 _gitname="oxygen-gtk"
 pkgname=oxygen-gtk3-git
 pkgver=20160429_vgtk3_1.4.1_12_g705b7
@@ -38,5 +42,6 @@ build() {
 package() {
 	cd "$_gitname"
 
+	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 }
