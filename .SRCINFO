@@ -1,6 +1,6 @@
 pkgbase = whatweb-git
 	pkgdesc = Next generation web scanner that identifies what websites are running.
-	pkgver = 0.5.5.r0.1b351697
+	pkgver = 0.5.5.r41.efee4d80
 	pkgrel = 1
 	url = http://www.morningstarsecurity.com/research/whatweb
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = whatweb-git
 	provides = whatweb
 	conflicts = whatweb
 	replaces = whatweb
-	source = whatweb::git://github.com/urbanadventurer/WhatWeb.git
-	md5sums = SKIP
+	source = git+https://github.com/urbanadventurer/WhatWeb
+	b2sums = SKIP
 
 pkgname = whatweb-git
-
