@@ -9,3 +9,39 @@ index 7ec7b855..2d64f510 100644
  	keyboard-settings \
  	mouse-settings
  
+diff --git a/xfsettingsd/main.c b/xfsettingsd/main.c
+index 39639911..cd7018f8 100644
+--- a/xfsettingsd/main.c
++++ b/xfsettingsd/main.c
+@@ -52,7 +52,6 @@
+ #include <locale.h>
+ 
+ #include "debug.h"
+-#include "accessibility.h"
+ #include "pointers.h"
+ #include "keyboards.h"
+ #include "keyboard-layout.h"
+@@ -84,7 +83,6 @@ struct t_data_set
+     XfceSMClient         *sm_client;
+     GObject              *pointer_helper;
+     GObject              *keyboards_helper;
+-    GObject              *accessibility_helper;
+     GObject              *shortcuts_helper;
+     GObject              *keyboard_layout_helper;
+     GObject              *gtk_decorations_helper;
+@@ -138,7 +136,6 @@ on_name_acquired (GDBusConnection *connection,
+ #endif
+     s_data->pointer_helper = g_object_new (XFCE_TYPE_POINTERS_HELPER, NULL);
+     s_data->keyboards_helper = g_object_new (XFCE_TYPE_KEYBOARDS_HELPER, NULL);
+-    s_data->accessibility_helper = g_object_new (XFCE_TYPE_ACCESSIBILITY_HELPER, NULL);
+     s_data->shortcuts_helper = g_object_new (XFCE_TYPE_KEYBOARD_SHORTCUTS_HELPER, NULL);
+     s_data->keyboard_layout_helper = g_object_new (XFCE_TYPE_KEYBOARD_LAYOUT_HELPER, NULL);
+ #ifdef GDK_WINDOWING_X11
+@@ -366,7 +363,6 @@ main (gint argc, gchar **argv)
+ #endif
+     UNREF_GOBJECT (s_data.pointer_helper);
+     UNREF_GOBJECT (s_data.keyboards_helper);
+-    UNREF_GOBJECT (s_data.accessibility_helper);
+     UNREF_GOBJECT (s_data.shortcuts_helper);
+     UNREF_GOBJECT (s_data.keyboard_layout_helper);
+     UNREF_GOBJECT (s_data.workspaces_helper);

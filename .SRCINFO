@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-standalone
 	pkgdesc = Settings manager of the Xfce desktop
 	pkgver = 4.16.2+2076199f
-	pkgrel = 6
+	pkgrel = 7
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
 	groups = xfce4
@@ -30,6 +30,6 @@ pkgbase = xfce4-settings-standalone
 	sha256sums = SKIP
 	sha256sums = 8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7
 	sha256sums = c74353e795c54a8c1268835026236fae37ac196a621d871a2e518c1087aa0248
-	sha256sums = ab362c452ffc12175eeae49833376deb160adaf45755a771083fcfd774078998
+	sha256sums = 250ffff5d8c19649e649eed3b2025efbee938432097b8dc50d807581d145ef1b
 
 pkgname = xfce4-settings-standalone

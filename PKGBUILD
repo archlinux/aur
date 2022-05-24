@@ -5,7 +5,7 @@ _pkgname=xfce4-settings
 _pkgver=4.16.2
 pkgname=${_pkgname}-standalone
 pkgver=4.16.2+2076199f
-pkgrel=6
+pkgrel=7
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
@@ -25,7 +25,7 @@ source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}#tag=${_pkgnam
 sha256sums=('SKIP'
             '8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7'
             'c74353e795c54a8c1268835026236fae37ac196a621d871a2e518c1087aa0248'
-            'ab362c452ffc12175eeae49833376deb160adaf45755a771083fcfd774078998')
+            '250ffff5d8c19649e649eed3b2025efbee938432097b8dc50d807581d145ef1b')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
