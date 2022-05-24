@@ -1,0 +1,11 @@
+diff --git a/dialogs/Makefile.am b/dialogs/Makefile.am
+index 7ec7b855..2d64f510 100644
+--- a/dialogs/Makefile.am
++++ b/dialogs/Makefile.am
+@@ -1,6 +1,5 @@
+ SUBDIRS = \
+ 	appearance-settings \
+-	accessibility-settings \
+ 	keyboard-settings \
+ 	mouse-settings
+ 

@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-standalone
 	pkgdesc = Settings manager of the Xfce desktop
 	pkgver = 4.16.2+2076199f
-	pkgrel = 5
+	pkgrel = 6
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
 	groups = xfce4
@@ -26,8 +26,10 @@ pkgbase = xfce4-settings-standalone
 	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings#tag=xfce4-settings-4.16.2
 	source = default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings
 	source = remove-settings-manager.patch
+	source = remove-accessibility-settings.patch
 	sha256sums = SKIP
 	sha256sums = 8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7
 	sha256sums = c74353e795c54a8c1268835026236fae37ac196a621d871a2e518c1087aa0248
+	sha256sums = ab362c452ffc12175eeae49833376deb160adaf45755a771083fcfd774078998
 
 pkgname = xfce4-settings-standalone
