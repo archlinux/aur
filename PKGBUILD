@@ -2,7 +2,7 @@
 
 pkgname=paracloud
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to connect to super computers in PARATERA(TM)."
 url="https://www.paratera.com"
 arch=(x86_64)
