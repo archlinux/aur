@@ -6,7 +6,7 @@ _sign_location="etc/secureboot/keys"
 
 # Maintainer: BrLi <brli@chakralinux.org>
 pkgname=secureboot-helper
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Kernel signing helper for UEFI secure boot"
 arch=('any')
@@ -32,19 +32,21 @@ backup=($_sign_location/db/db.auth
         $_sign_location/PK/PK.key
         $_sign_location/PK/rm_PK.auth
         $_sign_location/GUID.txt)
-source=(secureboot-helper.hook
+source=(secureboot-helper-kernel.hook
         secureboot-helper-systemd.hook
         secureboot-helper-ucode.hook
         systemd-boot-update.hook
         secureboot-helper.sysusers)
 sha256sums=('0e52f034ba8576b1723e07f974ea8a7d689cc41488cee731a6e0cb510a2cd4be'
             'fa56188cb7d1175283ad7bbdc06a540ba8c1a2fc1b5ea55011a3a2cca0f7ac4c'
-            '00cf821b99f5851aed9b1eff2cc242d651017ab3d164605541c66d817fbebadb'
+            'badc4c0a167af7606df2076929d3ccede9da971b9e6c7bc24e9dfb22ea29cd3a'
             '3f7f448987c82b9475182cc2bf5b861780e9da2a121b3607c5d24bc836846e86'
             'ff1993aff155370018deeb78a0a112e887394fe3c5d289140d17462d1c2f1cc6')
 
 prepare() {
-    sed "s,%SIGN_LOCATION%,$_sign_location,g" -i $srcdir/secureboot-helper.hook
+    sed "s,%SIGN_LOCATION%,$_sign_location,g" -i $srcdir/secureboot-helper-kernel.hook
+    sed "s,%SIGN_LOCATION%,$_sign_location,g" -i $srcdir/secureboot-helper-systemd.hook
+    sed "s,%SIGN_LOCATION%,$_sign_location,g" -i $srcdir/secureboot-helper-ucode.hook
     sed "s,%SIGN_LOCATION%,$_sign_location,g" -i $srcdir/secureboot-helper.sysusers
 }
 package() {
@@ -71,6 +73,7 @@ package() {
 
     # Signature Database key
     msg 'Generating DB.key'
+    cd $pkgdir/$_sign_location/db
     openssl req -newkey rsa:2048 -nodes -keyout db.key -new -x509 -sha256 -days 3650 -subj "/CN=Self-generated Signature Database key/" -out db.crt
     openssl x509 -outform DER -in db.crt -out db.cer
     cert-to-efi-sig-list -g "$(< ../GUID.txt)" db.crt db.esl
