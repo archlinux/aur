@@ -3,26 +3,27 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=v2.3.5.r64.g221dad77
-pkgrel=2
+pkgver=2.3.5.r126.gd30526f9
+pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('r' 'vtk' 'perl' 'gdcm')
+depends=('libglvnd' 'r' 'perl' 'gdcm' 'cli11')
 makedepends=('git' 'cmake')
 optdepends=()
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("${pkgname}"'::git+https://github.com/stnava/ANTs.git'
+source=("${pkgname}"'::git+https://github.com/ANTsX/ANTs.git'
         '0001-fix-for-GDCM-build.patch')
 sha256sums=('SKIP'
             'f20685afed8f3fdc005b7c6924cee39350f0eac1e6010cfe9fee78a517d7e684')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

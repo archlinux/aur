@@ -1,20 +1,21 @@
 pkgbase = ants-git
 	pkgdesc = Advanced Normalization Tools (ANTs) computes high-dimensional \ mappings to capture the statistics of brain structure and function
-	pkgver = v2.3.5.r64.g221dad77
-	pkgrel = 2
+	pkgver = 2.3.5.r126.gd30526f9
+	pkgrel = 1
 	url = http://www.picsl.upenn.edu/ANTS/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
+	depends = libglvnd
 	depends = r
-	depends = vtk
 	depends = perl
 	depends = gdcm
-	provides = ants
+	depends = cli11
+	provides = ants=2.3.5.r126.gd30526f9
 	conflicts = ants
-	source = ants-git::git+https://github.com/stnava/ANTs.git
+	source = ants-git::git+https://github.com/ANTsX/ANTs.git
 	source = 0001-fix-for-GDCM-build.patch
 	sha256sums = SKIP
 	sha256sums = f20685afed8f3fdc005b7c6924cee39350f0eac1e6010cfe9fee78a517d7e684
