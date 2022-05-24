@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=16.11.8
+pkgver=17.2.r1
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -21,7 +21,7 @@ _architectures="x86 x64 arm arm64"
 
 pkgver() {
 	VS_VERSION=`python msvc-wine/vsdownload.py --print-version | grep "Loaded installer manifest for "`
-	echo -n ${VS_VERSION:30}
+	echo -n ${VS_VERSION:30} | sed 's/\.\([^.]*\)$/.r\1/'
 }
 
 prepare() {
