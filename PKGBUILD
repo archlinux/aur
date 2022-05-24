@@ -24,9 +24,9 @@ package() {
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/bin"
-  mv papp_cloud-${pkgver}/papp_cloud_linux_amd64 "${pkgdir}/usr/bin/"
-  mv papp_cloud-${pkgver}/passh_linux_amd64 "${pkgdir}/usr/bin/"
+  mv papp_cloud-${pkgver}/papp_cloud_linux_amd64 "${pkgdir}/usr/bin/papp_cloud"
+  mv papp_cloud-${pkgver}/passh_linux_amd64 "${pkgdir}/usr/bin/passh"
   mv papp_cloud-${pkgver}/papp_cloud使用手册.pdf "${pkgdir}/usr/share/doc/${pkgname}/papp_cloud_manual_zh_CN.pdf"
-  mv papp_cloud-${pkgver}/sccs.yml "${pkgdir}/usr/share/${pkgname}/"
+  mv papp_cloud-${pkgver}/sccs.yml "${pkgdir}/usr/share/${pkgname}/sccs_sample.yml"
 }
 
