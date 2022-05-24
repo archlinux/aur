@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-foamgrid
-_tarver=2.8
-_tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
+_tarver=2.8.0
+_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
 pkgver=${_tarver}
 pkgrel=1
 pkgdesc="Implementation of the dune-grid interface that implements one- and two-dimensional grids in a physical space of arbitrary dimension"
@@ -12,16 +12,12 @@ depends=('dune-grid>=2.8.0')
 makedepends=('doxygen' 'graphviz')
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('69fe3a7582a62f06a108e4be2186b5e63880a4c39cefd0754d6c92abf435316d7960ea6ddee10bea725f482ee767afe9695de132c3b8e4fbd5c11a0a3023398d')
-
-prepare() {
-  sed -i 's/^Version: '"${pkgver}"'-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${_tarver}/dune.module
-}
+source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
+sha512sums=('22461026de973d72f5094a9010b61fac0e92c74105bc31765b29a4eb73350c3cbbd2e805985fdc5874816a140cda0cd73945e480deb894a12c522eabe22a8343')
 
 build() {
   cmake \
-    -S ${pkgname}-releases-${_tarver} \
+    -S ${pkgname}-${_tarver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -37,6 +33,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
 }

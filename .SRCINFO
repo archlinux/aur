@@ -1,6 +1,6 @@
 pkgbase = dune-foamgrid
 	pkgdesc = Implementation of the dune-grid interface that implements one- and two-dimensional grids in a physical space of arbitrary dimension
-	pkgver = 2.8
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://www.dune-project.org/modules/dune-foamgrid
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dune-foamgrid
 	depends = dune-grid>=2.8.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://gitlab.dune-project.org/extensions/dune-foamgrid/-/archive/releases/2.8/dune-foamgrid-releases-2.8.tar.gz
-	sha512sums = 69fe3a7582a62f06a108e4be2186b5e63880a4c39cefd0754d6c92abf435316d7960ea6ddee10bea725f482ee767afe9695de132c3b8e4fbd5c11a0a3023398d
+	source = https://gitlab.dune-project.org/extensions/dune-foamgrid/-/archive/2.8.0/dune-foamgrid-2.8.0.tar.gz
+	sha512sums = 22461026de973d72f5094a9010b61fac0e92c74105bc31765b29a4eb73350c3cbbd2e805985fdc5874816a140cda0cd73945e480deb894a12c522eabe22a8343
 
 pkgname = dune-foamgrid
