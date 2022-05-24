@@ -3,7 +3,7 @@
 
 _pkgname=python-rssd
 pkgname=${_pkgname}-usermode
-_commit=07ab815
+_commit=83d7d55
 pkgver=1.${_commit}
 pkgrel=1
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
@@ -30,7 +30,8 @@ prepare() {
 		--genericname "Python RSS daemon" \
 		--comment "Show last RSS-news in notify" \
 		--exec "$HOME/.local/bin/${_pkgname}.py" \
-		--categories "Network;"
+		--categories "Network;" \
+		--icon "internet-news-reader"
 }
 
 package() {
@@ -39,8 +40,8 @@ package() {
 
 	install -Dm644 "${srcdir}/${_pkgname}/config.py" "${pkgdir}/$HOME/.config/${_pkgname}/config.py"
 
-	install -d "${pkgdir}/$HOME/.config/${_pkgname}/icons"
-	install -Dm644 "${srcdir}/icons/"* "${pkgdir}/$HOME/.config/${_pkgname}/icons/"
+	install -d "${pkgdir}/$HOME/.local/share/icons/hicolor/48x48/apps"
+	install -Dm644 "${srcdir}/icons/"* "${pkgdir}/$HOME/.local/share/icons/hicolor/48x48/apps/"
 
 	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.service" "${pkgdir}/$HOME/.config/systemd/user/${_pkgname}.service"
 	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.timer" "${pkgdir}/$HOME/.config/systemd/user/${_pkgname}.timer"
