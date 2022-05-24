@@ -4,7 +4,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2022.509.0
+pkgver=2022.523.0
 pkgrel=1
 
 dotnet_version=6.0
@@ -28,7 +28,7 @@ source=(
 
 sha256sums=('SKIP'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
-            'df49f92c03b67833b58a6cd3f7e520092e68b3ef17915e867b122adfcbf00dad'
+            'a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf'
             '9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6'
             '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
             'd842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f')
