@@ -2,18 +2,21 @@
 
 pkgname=python-pushover
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for Pushover notification service."
 arch=('any')
 url='http://pythonhosted.org/python-pushover/'
 license=('GPL')
 depends=('python-requests')
 makedepends=('python-distribute')
-source=("https://github.com/Thibauth/python-pushover/archive/v${pkgver}.tar.gz")
-sha256sums=('455ad02b20ce6c34b6857a2c2ad9fa9ca27a698fc76793a68e76213633bcb5b8')
+source=("git+https://github.com/Thibauth/python-pushover.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}"
+
+  2to3 pushover.py
+  sed -i '/2to3/d' setup.py
   python setup.py install --root=${pkgdir} 
 }
 
