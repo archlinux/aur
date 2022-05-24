@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 56418b4be7a6..39a333e7af9a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -109,7 +109,8 @@ WARNINGS = \
+   -Wsuggest-override \
+   -Wunused-macros \
+   -Wzero-as-null-pointer-constant \
+-  -Wno-unknown-warning-option
++  -Wno-unknown-warning-option \
++  -Wno-array-bounds
+ # Uncomment below to disable warnings
+ #WARNINGS = -w
+ DEBUGSYMS = -g
