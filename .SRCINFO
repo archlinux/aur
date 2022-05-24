@@ -1,6 +1,6 @@
 pkgbase = zxtune-bin
 	pkgdesc = Portable toolkit for ZX-Spectrum music playing (pre-compiled)
-	pkgver = r5000
+	pkgver = r5010
 	pkgrel = 1
 	url = https://zxtune.bitbucket.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = zxtune-bin
 	optdepends = curl: for accessing data via network schemes
 	provides = zxtune
 	conflicts = zxtune-git
-	source = https://bitbucket.org/zxtune/zxtune/downloads/zxtune_r5000_linux_x86_64.tar.gz
-	md5sums = 0ddfb427294b83b2d578f8a9166065eb
+	source = https://bitbucket.org/zxtune/zxtune/downloads/zxtune_r5010_linux_x86_64.tar.gz
+	md5sums = c890cc98926e31c36339df4a3c640add
 
 pkgname = zxtune-bin
