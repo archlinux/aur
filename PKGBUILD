@@ -13,9 +13,19 @@ checkdepends=()
 makedepends=('perl-test-simple>=0')
 provides=()
 options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/J/JJ/JJORE/$_dist-$pkgver.tar.gz")
-sha256sums=('35d815c49090d57b7051806ae1c4844879131791de1b861613c55a90a46b28ab')
+source=(
+    "http://search.cpan.org/CPAN/authors/id/J/JJ/JJORE/$_dist-$pkgver.tar.gz"
+    'fix-25.patch::https://rt.cpan.org/Public/Ticket/Attachment/1728436/929353/UNIVERSAL-ref-0.14-Fix-building-with-Perl-5.25.1.patch'
+)
+sha256sums=(
+    '35d815c49090d57b7051806ae1c4844879131791de1b861613c55a90a46b28ab'
+    '5c4d3ff7b699e443bd57b67472c3fbdc9a85cef191e555bc598b6af49f301b7d'
+)
 
+prepare() {
+    cd "$srcdir/$_dist-$pkgver"
+    patch -Np1 -i "${srcdir}/fix-25.patch"
+}
 build() (
   cd "$srcdir/$_dist-$pkgver"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
