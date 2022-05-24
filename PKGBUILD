@@ -4,7 +4,7 @@ cpaname=namespace-sweep
 cpanauthor=FRIEDO
 pkgname=perl-namespace-sweep
 pkgver=0.006
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl namespace::sweep CPAN module"
 arch=('any')
 url="http://search.cpan.org/dist/${cpaname}/"
@@ -13,6 +13,9 @@ options=('!emptydirs')
 depends=(
    'perl'
    'perl-b-hooks-endofscope'
+   'perl-moo'
+   'perl-moose'
+   'perl-mouse'
    'perl-package-stash'
    'perl-sub-identify'
    'perl-sub-name'
