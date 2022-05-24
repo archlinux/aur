@@ -6,7 +6,7 @@ pkgbase=matlab
 # python-matlabengine must be packaged before matlab, because package_matlab
 # moves files needed by package_python-matlabengine, they're expensive to copy.
 pkgname=('python-matlabengine' 'matlab')
-pkgrel=5
+pkgrel=6
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
 pkgver=9.12.0.1903524
@@ -146,13 +146,12 @@ prepare() {
     --mimetypes "application/x-matlab-data;text/x-matlab" \
     --icon "${pkgbase}" \
     --exec 'sh -c '\''if [ "${MATLAB_INTEL_OVERRIDE}" = "yes" ] ; then exec env MESA_LOADER_DRIVER_OVERRIDE=i965 GTK_PATH=/usr/lib/gtk-2.0 matlab -desktop ; else exec env GTK_PATH=/usr/lib/gtk-2.0 matlab -desktop ; fi'\'
-
 }
 
 build() {
   msg2 "Running original installer..."
   # Using the installer with the -inputFile parameter will automatically
-  # cause the installation to be non-interactive
+  # cause the installation to be non-interactive.
   "${srcdir}/${pkgbase}/install" -inputFile "${srcdir}/${pkgbase}/installer_input.txt"
 
   msg2 "Building Python API..."
@@ -167,8 +166,8 @@ build() {
     tail -1)"
   _pytminor="$(python -c 'import sys; print(sys.version_info.minor)')"
 
-  msg2 "Spoofing Python version compatibility if not applicable..."
   if [[ "${_pytminor}" != "${_matminor}" ]]; then
+    msg2 "Spoofing Python version compatibility..."
     _matcustom="${srcdir}/sitecustomize.py"
     touch "${_matcustom}"
     echo 'import sys'                               >> "${_matcustom}"
@@ -201,13 +200,13 @@ package_python-matlabengine() {
   _prefix="$(python -c 'import sys; print(sys.prefix)')"
   _pytminor="$(python -c 'import sys; print(sys.version_info.minor)')"
 
-  msg2 "Changing around locations if spoofing is needed..."
   if [[ "${_pytminor}" != "${_matminor}" ]]; then
-    mv "${pkgdir}/${_prefix}/lib/python3".{"${_matminor}","${_pytminor}"}
-    _egginfo="$(ls "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/"*"-py3.${_matminor}.egg-info")"
+    msg2 "Changing around locations as spoofing is needed..."
+    mv "${pkgdir}${_prefix}/lib/python3".{"${_matminor}","${_pytminor}"}
+    _egginfo="$(ls -d "${pkgdir}${_prefix}/lib/python3.${_pytminor}/site-packages/"*"-py3.${_matminor}.egg-info")"
     mv "${_egginfo}" "${_egginfo%py3."${_matminor}".egg-info}py3.${_pytminor}.egg-info"
     sed -i "s|sys.version_info|(3, $_matminor, 0)|" \
-      "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine/__init__.py"
+      "${pkgdir}${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine/__init__.py"
   fi
 
   msg2 "Fixing erroneous references in the _arch.txt files..."
@@ -215,7 +214,7 @@ package_python-matlabengine() {
   trustr="/${_instdir}/extern/engines/python/"
   for _dir in \
     "${srcdir}/build/extern/engines/python/build/lib/matlab/engine" \
-    "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine" \
+    "${pkgdir}${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine" \
     ; do
     sed -i "s|${errstr}|${trustr}|" "${_dir}/_arch.txt"
   done
@@ -269,7 +268,7 @@ package_matlab() {
     gfortranexc="gfortran-matlab"
   fi
 
-  msg2 "Moving files from build area..."
+  msg2 "Moving files from building area to packaging area..."
   install -dm755 "${pkgdir}/usr/lib/"
   mv "${srcdir}/build" "${pkgdir}/${_instdir}"
 
@@ -292,7 +291,8 @@ package_matlab() {
   msg2 "Installing desktop files..."
   install -D -m644 "${srcdir}/${pkgbase}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-  install -Dm644 "${srcdir}/${pkgbase}/bin/glnxa64/cef_resources/matlab_icon.png" "$pkgdir/usr/share/pixmaps/$pkgbase.png"
+  install -Dm644 "${srcdir}/${pkgbase}/bin/glnxa64/cef_resources/matlab_icon.png" \
+    "$pkgdir/usr/share/pixmaps/$pkgbase.png"
 
   msg2 "Linking mex options to ancient libraries..."
   sysdir="bin/glnxa64/mexopts"
