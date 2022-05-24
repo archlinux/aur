@@ -1,7 +1,7 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
 pkgbase=linux-sgx
-pkgver=5.17.7.arch1
+pkgver=5.17.9.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
