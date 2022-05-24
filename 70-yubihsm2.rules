@@ -2,6 +2,6 @@
 ACTION!="add|change", GOTO="yubihsm2_connector_end"
 
 # Yubico YubiHSM 2
-SUBSYSTEM=="usb", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0030"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0030", TAG += "uaccess"
 
 LABEL="yubihsm2_connector_end"

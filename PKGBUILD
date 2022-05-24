@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
 pkgver=2021.12b
-pkgrel=1
+pkgrel=2
 pkgdesc="YubiHSM2 SDK"
 url="https://developers.yubico.com/YubiHSM2/Releases/"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 	"yubihsm-connector.yaml"
 )
 sha256sums=('00e4d646022097b05c5e8a7e6dcd1c0a413d134ded692c0a4f8dcc5f94180f7f'
-            '13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a'
+            'ecd8ad2475463759ae8aa261542856f7f00428a7759252c4b435f5e6775d5cd0'
             '3f2e731277d0fbdda8fe7fbff1e04eaf8d2ea40e5ea2b8db7d882f4a5af463b2'
             '6f5415db4913d31c0bc6dc398f89e93308251a6f86d07354dc16f062b8e726e0')
 
