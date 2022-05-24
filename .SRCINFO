@@ -1,0 +1,15 @@
+pkgbase = perl-perlx-define
+	pkgdesc = Perl PerlX::Define CPAN module
+	pkgver = 0.101
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PerlX-Define/
+	arch = any
+	license = unknown
+	depends = perl
+	depends = perl-keyword-simple
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/T/TO/TOBYINK/PerlX-Define-0.101.tar.gz
+	sha256sums = ea50c41793bcc9cfc1c2a2d3f205935f26fa774830f09faa9ae82b0f57c61431
+
+pkgname = perl-perlx-define
