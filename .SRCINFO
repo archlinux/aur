@@ -1,6 +1,6 @@
 pkgbase = rockpass
 	pkgdesc = A small and ultrasecure Lesspass database server written in Rust
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/ogarcia/rockpass
 	arch = arm
@@ -13,11 +13,11 @@ pkgbase = rockpass
 	makedepends = rust
 	depends = sqlite
 	backup = etc/rockpass.conf
-	source = rockpass-0.5.0.tar.gz::https://github.com/ogarcia/rockpass/archive/0.5.0.tar.gz
+	source = rockpass-0.6.0.tar.gz::https://github.com/ogarcia/rockpass/archive/0.6.0.tar.gz
 	source = rockpass.conf
 	source = rockpass.service
-	sha256sums = 3bed737a6fd852973f08311ca2584f075555e7105884c2951f7472fd846732fd
-	sha256sums = 93183adf08ab3ba7b9e8189c30c4c01831b42fd3ff1fb4f20ad3cf7cb64c382e
-	sha256sums = 5175d4d689c8f9b63a4d1409ab48d4ec91e37120cec8c4be1f8ba871363be424
+	b2sums = 92b2cb27a49786ca8d3994ea9e878f53533c75073bc8cc0de456a6f7475c2afa6c80d4a0d03f57ff69443492b2b18f86f658b6705f19ab1b3b6a9b81b9d65f60
+	b2sums = fb14ea017d62647acd111e0c834ff1357a55e6b0c4692f0e372f969024f004af806cae99b5311a2d1c7975e88e0049c6ebb92fa6f0532df0b06d893d564daf80
+	b2sums = 754c712cc81cf4c63f6aae586386a21c50fa30e8730de62d3e73e0cdf000dd7bf1abcf54371036e22568f390b6a0b559d1064dae244f1e4b2cf9bd3def90c149
 
 pkgname = rockpass
