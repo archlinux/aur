@@ -1,5 +1,6 @@
 # Contributor: Zephyr
 # Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
+# Contributor: Cezary Drożak <cezary at drozak.net>
 
 pkgname=oxygen-gtk3-git
 pkgver=20160429_vgtk3_1.4.1_12_g705b7
