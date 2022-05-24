@@ -7,7 +7,7 @@ _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
 _pkgver="${_major}.0.0"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
@@ -39,7 +39,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
 
-	for _folder in 'locales' 'resources' 'swiftshader'; do
+	for _folder in 'locales' 'resources'; do
 		cp -r --no-preserve=ownership --preserve=mode "${_folder}/" "${pkgdir}/usr/lib/${_pkgname}/${_folder}/"
 	done
 
