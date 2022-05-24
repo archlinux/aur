@@ -1,6 +1,6 @@
 # Maintainer: matt kasun <matt  at gravil.com>
 pkgname=netclient
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=2
 pkgdesc="netclient daemon - a platform for modern, blazing fast virtual networks"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=('wireguard-tools')
 makedepends=('go')
 
 source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('c7b81d9cf1a51acc8da0ff3e00937b5a4080719602c1a68c2b667d1c9f8d30b3')
+sha256sums=('df77c207f4158a3e896b6355828bd09ad118139d36eaa44cfe06c4394f6c8900')
 
 
 package() {
