@@ -1,7 +1,7 @@
 pkgbase = ttf-inconsolata2
 	pkgdesc = Monospace font. Last release compatible with Xft (dwm, dmenu, st, ...)
 	pkgver = 2.012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/fonts/specimen/Inconsolata
 	arch = any
 	license = custom:OFL

@@ -2,7 +2,7 @@
 
 pkgname=ttf-inconsolata2
 pkgver=2.012
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospace font. Last release compatible with Xft (dwm, dmenu, st, ...)"
 arch=('any')
 url="https://www.google.com/fonts/specimen/Inconsolata"
@@ -17,5 +17,8 @@ sha256sums=('58f04258291886edebcf95685e6a72ba34352b716b65fbc026265c66d9d80516'
 package() {
   install -d "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 "${srcdir}"/Inconsolata-$pkgver/fonts/ttf/*.ttf "${pkgdir}/usr/share/fonts/TTF"
+  install -Dm644 "${srcdir}/Inconsolata-$pkgver/OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt"
+  install -Dm644 "${srcdir}/Inconsolata-$pkgver/FONTLOG.txt" "${pkgdir}/usr/share/doc/${pkgname}/FONTLOG.txt"
+
   install -Dm644 "${srcdir}/75-ttf-inconsolata.conf" "${pkgdir}/usr/share/fontconfig/conf.avail/75-ttf-inconsolata.conf"
 }
