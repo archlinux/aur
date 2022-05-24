@@ -4,7 +4,8 @@
 
 ################################################################################
 # This PKGBUILD features:
-# - the xwidgets is enabled (you can surf the Internet via
+# - pgtk is not enabled.
+# - xwidgets is enabled (you can surf the Internet via
 #   a modern browser(webkit) in Emacs!).
 # - link-time optimization is disabled by default.
 # - enalbe JIT and AOT compilation of emacs-lisp, which
@@ -103,7 +104,7 @@ else
 pkgname="emacs-native-comp-git"
 fi
 pkgver=29.0.50.156571
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch without PGTK."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"

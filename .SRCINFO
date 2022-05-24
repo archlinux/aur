@@ -1,7 +1,7 @@
 pkgbase = emacs-native-comp-git
 	pkgdesc = GNU Emacs. Development master branch without PGTK.
 	pkgver = 29.0.50.156571
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
 	arch = x86_64
