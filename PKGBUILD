@@ -1,12 +1,9 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on multilib/lib32-systemd by:
-# Christian Hesse <mail@eworm.de>
-# Dave Reisner <dreisner@archlinux.org>
-# Tom Gundersen <teg@jklm.no>
+# Based on multilib/lib32-systemd by Christian Hesse <mail@eworm.de>
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=250.r1414.gad337e55a3
+pkgver=251.r65.g620ecc9c4b
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -20,6 +17,7 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
+options=(!ccache)
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
@@ -55,6 +53,7 @@ build() {
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
     -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
+    -Dshared-lib-tag="${pkgver/-/\~}-${pkgrel}-arch"
     -Dmode=release
 
     # features
