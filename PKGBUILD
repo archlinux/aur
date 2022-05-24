@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=NiaAML
 pkgname=python-${_base,,}
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Python automated machine learning framework"
 url="https://github.com/lukapecnik/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niapy python-scikit-learn)
 makedepends=(python-build python-install python-poetry)
 checkdepends=(python-pytest)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('a891a98a703feccea10459cbb1c60095a13bdeb5a1ad51bfc9b6e691cf802a7f707c83f5ada343bf29815df8776c8176e9c5215017792f012c1a22dd70353736')
+sha512sums=('6d0b092b0c994d8b704bb3f4868966d0ed2a80f2b8fb6b95906e1dfa99e70670b0bfd47eac2305ace93171c52e4026779cc9277ed30413ecd7229fd7c827ba1c')
 
 prepare() {
   sed -i 's/^name = "'"${_base}"'"/name = "'"${_base,,}"'"/' ${_base}-${pkgver}/pyproject.toml
@@ -19,7 +19,6 @@ prepare() {
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
