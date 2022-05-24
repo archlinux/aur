@@ -2,16 +2,16 @@
 
 pkgname=paper-note
 _pkgname=paper
-pkgver=22.2
+pkgver=22.5
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64')
 url="https://gitlab.com/posidon_software/paper"
 license=('GPL3')
 depends=('glib2' 'libadwaita' 'gtksourceview5' 'libgee')
-makedepends=('meson' 'gobject-introspection' 'vala')
+makedepends=('meson' 'gobject-introspection' 'blueprint-compiler' 'vala')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-b2sums=('756a954fd16630f826319ca09b3001a26d2f1e86fe13463658ae37aa60b609fa1d1109ba3bb9abc408d7cea02f63e4c089ef3156d7648ced66fef33a4b9f9b48')
+b2sums=('21eba7fb3fa8b8e270b30243f97b018d5ccce373c8180d6a886472f03056a22942eaa063c7be6621734a7fead35e95049410f7b05943aa405797203395998ecd')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
