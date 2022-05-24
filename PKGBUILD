@@ -1,6 +1,6 @@
 pkgname=mujoco
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64')
 url="https://www.mujoco.org"
@@ -9,7 +9,7 @@ depends=('libgl' 'glfw' 'tinyxml2' 'tinyobjloader')
 makedepends=('libccd' 'abseil-cpp' 'gtest' 'benchmark' 'cmake' 'git')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
     "${pkgname}.patch")
-sha256sums=('5bd3847aca1f53e2467b680f797fe74ce6a1c20870e0fee534cfda38a25ea1d5'
+sha256sums=('98cab2735817456c028e96ba34b2ee2c94cc4fab33ebcae15ab46fcc45a762ad'
             'fa5799290dd68bd2bdd520515484112c3a72079af6425ee6d01b6865e81bdab1')
 
 prepare() {
@@ -35,7 +35,7 @@ package() {
     rmdir $pkgdir/usr/local
     mkdir $pkgdir/usr/lib/mujoco
     mv $pkgdir/usr/bin/* $pkgdir/usr/lib/mujoco/
-    rmdir $pkgdir/usr/bin
-    mkdir $pkgdir/usr/include/mujoco
-    mv $pkgdir/usr/include/*.h $pkgdir/usr/include/mujoco/
+    for _file in $pkgdir/usr/lib/mujoco/*; do
+        ln -s $_file $pkgdir/usr/bin/mujoco-$(basename $_file)
+    done
 }
