@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=libsbml
-pkgver=5.19.2
+pkgver=5.19.5
 pkgrel=1
 pkgdesc="XML-based description language for computational models in systems biology"
 url="https://github.com/sbmlteam/libsbml"
@@ -11,7 +11,7 @@ optdepends=('bzip2' 'python' 'perl' 'ruby' 'java-runtime') # 'octave' 'mono'
 makedepends=('cmake' 'swig' 'python' 'perl' 'ruby' 'java-environment') # 'octave', 'mono'
 options=('!libtool')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('5b4d7a34e3d516877525041334ee9bcdd79a3dd6334d9e1a61e0687ed9751e78')
+sha256sums=('6c0ec766e76bc6ad0c8626f3d208b4d9e826b36c816dff0c55e228206c82cb36')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
