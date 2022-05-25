@@ -104,7 +104,7 @@ else
 pkgname="emacs-native-comp-git"
 fi
 pkgver=29.0.50.156571
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch without PGTK."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -115,9 +115,9 @@ makedepends=('git' 'mold')
 provides=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
-#source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
