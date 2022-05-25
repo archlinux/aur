@@ -1,19 +1,20 @@
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=pyprecice
 pkgname=python-${_base}
 pkgdesc="Python language bindings for the preCICE coupling library"
-pkgver=2.3.0.1
+pkgver=2.4.0.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/${_base/py/}/python-bindings"
 license=(LGPL3)
 depends=(precice python-mpi4py)
 makedepends=(python-setuptools cython)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0b0447a9cb9989ae5035919439f3e73401dab2a4cda49d298a10f55842c197239c1d43ca6271ddbf5ef03bda4cf075020c18142a6d4c6d26103f75d332cba822')
+source=(python-bindings-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c4001e676e623d299f9be214b1f04d95497e93fed1d68a1bf3ac1d12cd154fc6c6186c7918ebb7e5ebb73de57f783e9d9509a5b23ad42e8562aecec2925d413c')
 
 build() {
-  cd "python-bindings-${pkgver}"
+  cd python-bindings-"${pkgver}"
   python setup.py clean --all
   python setup.py \
     build_ext \
@@ -23,14 +24,13 @@ build() {
 }
 
 check() {
-  cd "python-bindings-${pkgver}"
+  cd python-bindings-"${pkgver}"
   # https://github.com/precice/python-bindings/issues/1
   python setup.py test
 }
 
 package() {
-  cd "python-bindings-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd python-bindings-"${pkgver}"
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
