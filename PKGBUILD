@@ -20,9 +20,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=280
+_minor=281
 _srcname=linux-${_major}
-_clr=${_major}.279-200
+_clr=${_major}.280-201
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -279,7 +279,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'f2ebff5d0cd5300a5da9fbba5a73473e8a81a0264bf81435ebb212436cd117e1'
+            '91456de4881df6401207a846266944cc4a4d29b8c0ee7fb874c1a22e05411aa1'
             'SKIP')
 
 validpgpkeys=(
