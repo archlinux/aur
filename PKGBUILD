@@ -2,7 +2,7 @@
 
 pkgbase=gnome-software-git
 pkgname=(gnome-software-git gnome-software-packagekit-plugin-git)
-pkgver=42.0+r12+g0d856448e
+pkgver=42.0+r367+g0c3e21d1a
 pkgrel=1
 pkgdesc='GNOME Software Tools'
 arch=(x86_64 aarch64)
@@ -41,7 +41,8 @@ build() {
 	# Ensure static library is non-LTO compatible
 	CFLAGS+=" -ffat-lto-objects"
 
-	arch-meson gnome-software build -D soup2=true
+	arch-meson gnome-software build -D soup2=true \
+		-D hardcoded_foss_webapps=false -D hardcoded_proprietary_webapps=false -D webapps=false
 	meson compile -C build
 }
 
