@@ -1,10 +1,10 @@
 # Maintainer: WillyJL <willy.leslie@icloud.com>
 pkgname="qursers-git"
-pkgver=r35.7bd9c40
+pkgver=r37.d62ec6b
 pkgrel=1
 pkgdesc="a sleek linux cursor pack made by qube-03"
 arch=("any")
-url="https://github.com/Willy-JL/qursers"
+url="https://github.com/qube-03/qursers"
 provides=("qursers")
 conflicts=("qursers")
 depends=()

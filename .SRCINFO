@@ -1,13 +1,13 @@
 pkgbase = qursers-git
 	pkgdesc = a sleek linux cursor pack made by qube-03
-	pkgver = r35.7bd9c40
+	pkgver = r37.d62ec6b
 	pkgrel = 1
-	url = https://github.com/Willy-JL/qursers
+	url = https://github.com/qube-03/qursers
 	arch = any
 	makedepends = git
 	provides = qursers
 	conflicts = qursers
-	source = git+https://github.com/Willy-JL/qursers.git
+	source = git+https://github.com/qube-03/qursers.git
 	md5sums = SKIP
 
 pkgname = qursers-git
