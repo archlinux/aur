@@ -4,7 +4,7 @@
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.exe::https://dl.hdslb.com/mobile/fixed/bili_win/b
         "${_pkgname}"
         "${_pkgname}.png"
         "${_pkgname}.desktop"
-        "extensions-v${pkgver}-${pkgrel}.tar.gz::https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-${pkgrel}/extensions-v${pkgver}-${pkgrel}.tar.gz"
+        "extensions-v${pkgver}-${pkgrel}.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-${pkgrel}/extensions-v${pkgver}-${pkgrel}.tar.gz"
         "injectExt.js"
         "area-unlimit.sh"
         "fix-other.sh")
@@ -25,10 +25,10 @@ sha256sums=('96718413342daca81b375a80fc996fa1ab19fc199c73bd9002eb32eccdbbb35f'
             '7da797cd35bc5060e3bfa4ba37681cbbd2201a499477772c008f9f1e691b6ea0'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418'
-            'b5d77954b13969bb0dd7f3226e434f4e04c56e05857ce4be0bbd84e4a07730b3'
+            '4be43f75a703ed307ff0e420cd551b783fe072577420e3bfab130ae38b7650e8'
             'e5326a2a5b6dd61d3274bcf5977c62ade6a59752d21f9634a2db8e6ad225ffe9'
-            '086ee28cffb00ee053c50b92e20087ac14ec5938cd36129eee50c53461e734bc'
-            '984999997e376d16036237686f2120e735c0b7e122bc6262e508c5d5c387de22')
+            'cbf118eb359722c227b4c87de8917e59881d93e99d87d302fff1b47f36afe831'
+            '853e5d3bb00fe0cb23eef003e6a72f4517ce53a208ce4bf8b34d1e9236bb5a8e')
 prepare(){
     7z x "${_pkgname}-${pkgver}.exe" -o"bili" "\$PLUGINSDIR/app-64.7z"
     7z x "bili/\$PLUGINSDIR/app-64.7z" -o"bili" "resources"
