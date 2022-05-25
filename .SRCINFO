@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-wnnm-git
+	pkgdesc = Plugin for Vapoursynth: wnnm (GIT Version)
+	pkgver = 13.141baae
+	pkgrel = 1
+	url = https://github.com/WolframRhodium/VapourSynth-WNNM
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = python-pip
+	depends = vapoursynth
+	provides = vapoursynth-plugin-wnnm
+	conflicts = vapoursynth-plugin-wnnm
+	options = debug
+	source = wnnm::git+https://github.com/WolframRhodium/VapourSynth-WNNM.git
+	source = vectorclass.zip::https://github.com/vectorclass/version2/archive/refs/tags/v2.01.04.zip
+	sha256sums = SKIP
+	sha256sums = 01e1cce8e88dae24d28ff2d8e150fc6606fcc43ec350fb2c90b66aedb3a1ba06
+
+pkgname = vapoursynth-plugin-wnnm-git
