@@ -8,7 +8,7 @@ pkgdesc="Extension that adds 'Wanda the Fish' to the Shell top panel"
 arch=('any')
 url="https://gitlab.com/tallero/wandathefish"
 license=('GPL3')
-depends=('gnome-shell<1:47')
+depends=('gnome-shell<1:47' 'fortune-mod')
 install=$_pkgname.install
 _commit="aaf40ea73b0e3e27d8002b053d2881082d8f83d8"
 source=("${_pkgname}::git+${url}#commit=${_commit}")
