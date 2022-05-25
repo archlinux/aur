@@ -1,5 +1,5 @@
 pkgbase = frozen
-	pkgdesc = Header-only library that provides 0 cost initialization for immutable containers, fixed-size containers, and various algorithms.
+	pkgdesc = A header-only, constexpr alternative to gperf for C++14 users
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/serge-sans-paille/frozen
