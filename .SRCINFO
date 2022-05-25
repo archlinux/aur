@@ -1,0 +1,11 @@
+pkgbase = libproxmox-backup-qemu0-dev-bin
+	pkgver = 1.3.1
+	pkgrel = 1
+	arch = x86_64
+	license = AGPL
+	depends = libproxmox-backup-qemu0
+	provides = libproxmox-backup-qemu0-dev
+	source = http://download.proxmox.com/debian/pve/dists/bullseye/pve-no-subscription/binary-amd64/libproxmox-backup-qemu0-dev_1.3.1-1_amd64.deb
+	sha256sums = 1669cbf148037f4728620a1eed60ef09149b493515ae2e0fa7d1250cdbcd2721
+
+pkgname = libproxmox-backup-qemu0-dev-bin
