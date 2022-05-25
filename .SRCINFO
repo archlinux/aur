@@ -1,0 +1,13 @@
+pkgbase = editas
+	pkgdesc = sudoedit alternative for OpenDoas
+	pkgver = 20220525
+	pkgrel = 1
+	url = https://gist.github.com/grgergo1/bb40a07d9e599481203763e20310aeea
+	arch = any
+	license = GPL
+	depends = doas
+	noextract = editas
+	source = editas
+	md5sums = 320ebd47abe1e647a935f7dff73d5ae0
+
+pkgname = editas

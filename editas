@@ -1,0 +1,14 @@
+if [[ -z $1 ]]
+then
+	echo "Usage: $0 [FILE]"
+	exit 1
+fi
+
+rand=$RANDOM
+file=$(basename $1)
+doas cp $1 /tmp/$file.$rand 2> /dev/null
+doas touch /tmp/$file.$rand 
+doas chown $(whoami) /tmp/$file.$rand 2> /dev/null
+$EDITOR /tmp/$file.$rand
+doas cp /tmp/$file.$rand $1
+
