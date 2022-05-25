@@ -2,7 +2,7 @@
 
 pkgname=ansiwave-bin
 _pkg=ansiwave
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Client for ANSIWAVE BBS"
 url="https://github.com/ansiwave/ansiwave"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('unlicense')
 source=("$_pkg-$pkgver::$url/releases/download/$pkgver-linux/ansiwave"
         "https://raw.githubusercontent.com/ansiwave/ansiwave/master/UNLICENSE")
-sha512sums=('b9d9a9f7920b9644cf2568c6c2ae42853a2957c09bd4e3614f4f11733de1a32fefb0c0178b37ee1d4163624c3d5e32242909ad6dc636c67009e5eb7588fa41b3'
+sha512sums=('5c02c6798055e28dbe3e0b2f86fcc0ca5af959af7986f963444cfbdc0126070acca74dc56e24dd61c46cef20861e0b140e07b88d51d4f57fb206c0b1a57a5886'
             'aa647966e7fb62ffcd7bfc1e56a8ebe38e8384a36c14e07fec4ccf3be91ffa1b3bbd9798901fa7956056c26d124f067582366bdb9581db1f742291c86e64e39d')
 
 package() {
