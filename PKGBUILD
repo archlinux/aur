@@ -2,7 +2,7 @@
 
 pkgname=cmake-init
 _name=${pkgname#python-}
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="The missing CMake project initializer"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 # }
 
 pkgver() {
-	curl -sH "Accept: application/vnd.github.v3+json" https://api.github.com/repos/friendlyanon/cmake-init/tags  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
+	curl -sH "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/friendlyanon/cmake-init/tags'  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
 }
 
 package() {
