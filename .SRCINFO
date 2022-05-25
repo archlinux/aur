@@ -1,0 +1,27 @@
+pkgbase = plume-postgres
+	pkgdesc = Federated blogging application
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://joinplu.me/
+	install = plume.install
+	arch = x86_64
+	license = AGPL3
+	depends = gettext
+	depends = openssl
+	depends = pkgconf
+	depends = postgresql
+	provides = plume
+	conflicts = plume-git
+	conflicts = plume
+	conflicts = plume-bin
+	conflicts = plume-sqlite
+	source = plume-postgres-0.7.2::https://github.com/Plume-org/Plume/releases/download/0.7.2/plume-postgres.tar.gz
+	source = .env.sample
+	source = plume.service
+	source = plume.sysusers
+	md5sums = 571a18ad2fabdb5a130dbdf446cb334d
+	md5sums = 939c960f67f2b859b48f96223bd6b74e
+	md5sums = 545792acab035885a7cd479f43cde695
+	md5sums = ebfcfb05844a25ff281317af9b64f8bb
+
+pkgname = plume-postgres
