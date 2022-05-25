@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.16.0.r5339.2c59435e
+pkgver=0.16.0.r5511.e59f4d4f
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -53,7 +53,7 @@ pkgver () {
 	(
 		set -o pipefail
 		meson introspect --projectinfo "${_builddir_pkgver}" \
-		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-dev"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${pkgname}"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
