@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.17
+pkgver=0.7.19
 pkgrel=1
 pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='66b57dca9c5c461c13cd44f977bd357677200be3'
+_commit='9fe352c56c8aa646957552472a1f411f326927c3'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
   'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
@@ -77,7 +77,6 @@ prepare() {
 
   git submodule update
 
-
   # generate license file
   python scripts/gen-license.py > XEMU_LICENSE
 
@@ -98,6 +97,7 @@ build() {
 
   ./configure \
     --audio-drv-list="sdl" \
+    --disable-debug-info \
     --enable-slirp=system \
     --extra-cflags="-DXBOX=1" \
     --ninja=samu \
