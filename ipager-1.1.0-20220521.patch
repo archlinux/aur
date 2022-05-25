@@ -1,0 +1,18 @@
+--- SConstruct.ORIG 2022-05-21 10:52:59.214228851 -0400
++++ SConstruct  2022-05-21 10:54:31.294226321 -0400
+@@ -104,12 +104,12 @@
+
+ # imlib2
+ print ("Checking for Imlib2... ",)
+-if not conf.env.WhereIs('imlib2-config'):
+-    print ("cant find 'imlib2-config.")
++if not conf.env.WhereIs('pkg-config'):
++    print ("cant find 'pkg-config.")
+     exit(1)
+ else:
+     imlib2_env = Environment()
+-    imlib2_env.ParseConfig('imlib2-config --cflags --libs')
++    imlib2_env.ParseConfig('pkg-config --cflags --libs imlib2')
+     if not imlib2_env.Dictionary()['LIBS']:
+         print ("missing imlib2, install it.")
+         exit(1)
