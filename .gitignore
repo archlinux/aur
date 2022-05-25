@@ -1,2 +1,3 @@
-Moops-*.tar.gz
-perl-moops-*.log
+/Moops-*.tar.gz
+/perl-moops-*.log
+/perl-moops-*.pkg.tar.*
