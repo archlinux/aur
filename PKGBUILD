@@ -5,7 +5,7 @@ pkgname=${_pkgname,,}-native
 _electronver=$(</usr/lib/electron/version)
 _pkgver=2.8.2
 pkgver=${_pkgver/-/.}+electron.${_electronver}
-pkgrel=1
+pkgrel=2
 pkgdesc='WowUp the World of Warcraft addon updater (system Electron)'
 arch=('x86_64')
 
@@ -52,7 +52,11 @@ build() {
     # npm --registry https://registry.npmmirror.com/ install electron@$_electronver <<<"N"
 
     npm run build:prod
-    ./node_modules/.bin/electron-builder --linux dir -c.electronDist=/usr/lib/electron -c.electronVersion=$_electronver
+    ./node_modules/.bin/electron-builder \
+        --linux dir \
+        -c.nodeGypRebuild=false \
+        -c.electronDist=/usr/lib/electron \
+        -c.electronVersion=$_electronver
 }
 
 package() {

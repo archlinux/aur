@@ -1,7 +1,7 @@
 pkgbase = wowup-native
 	pkgdesc = WowUp the World of Warcraft addon updater (system Electron)
 	pkgver = 2.8.2+electron.18.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WowUp/WowUp
 	arch = x86_64
 	license = GPL3
