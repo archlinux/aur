@@ -54,6 +54,12 @@ arch=('x86_64')
 sha256sums=('SKIP'
             '258dd5223a28811fd5ad86ae2d22abafbab7f1d6a30d2aa41d0224f9af44069c'
             'SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pveqemu}"
+    printf "include /usr/share/dpkg/pkg-info.mk\ndvu:\n\techo \${DEB_VERSION_UPSTREAM}\n" > DVUMakefile
+    make -sfDVUMakefile dvu
+}
                 
 build () {
     cp "${dpkgdiff}" "${srcdir}/${pveqemu}"
