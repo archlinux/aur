@@ -8,23 +8,17 @@ url="https://github.com/pythongssapi/httpx-gssapi"
 arch=(any)
 license=(custom:ISC)
 depends=(python-gssapi python-httpx)
-makedepends=(git python-setuptools)
-_commit=6efed5e6fa1ac92ed87599cc3271c86281c71904
-source=("git+https://github.com/pythongssapi/httpx-gssapi#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
-}
+makedepends=(python-setuptools)
+source=("https://github.com/pythongssapi/httpx-gssapi/releases/download/v$pkgver/httpx-gssapi-$pkgver.tar.gz")
+sha256sums=('f300f99a8e0b26e89756f2cd59d4c899ab0d80655b4200d59592bbeecc70f254')
 
 build() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

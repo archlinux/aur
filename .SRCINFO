@@ -5,11 +5,10 @@ pkgbase = python-httpx-gssapi
 	url = https://github.com/pythongssapi/httpx-gssapi
 	arch = any
 	license = custom:ISC
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python-gssapi
 	depends = python-httpx
-	source = git+https://github.com/pythongssapi/httpx-gssapi#commit=6efed5e6fa1ac92ed87599cc3271c86281c71904
-	sha256sums = SKIP
+	source = https://github.com/pythongssapi/httpx-gssapi/releases/download/v0.1.6/httpx-gssapi-0.1.6.tar.gz
+	sha256sums = f300f99a8e0b26e89756f2cd59d4c899ab0d80655b4200d59592bbeecc70f254
 
 pkgname = python-httpx-gssapi
