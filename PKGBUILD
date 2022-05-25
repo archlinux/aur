@@ -54,7 +54,7 @@ _bfq_rel='stable'
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.17
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
 pkgrel=1
 _srcname=linux-${pkgver}
@@ -345,7 +345,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('3b7ef167e5a4334b8745728582b6b79f8f2ac37eb89f0de4e5e7b21ae9fd36b8c40096fd6056fb684c78f0b25604d60d6af0f146a53ebdba8bd85877676ac4b4'
+sha512sums=('cabe2594aa188c7dcea842e9bd31015a851d3ab3f7122b595c5c81701eca42fd223e2cc3667783a1a1f852c61b6e1045f6e361a642aaf60b545498bd1acadef2'
             'SKIP'
             '963935b9e6a7764467c147d4e33cd7ff1b84bef6e4e0f7ef201510c7ba438096fe16a26fb8b6b2ee6efe63a3d73870c387e0dd692a8b525e88ec3263285ac3d0'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
