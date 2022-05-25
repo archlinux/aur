@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=libcaer
-pkgver=3.3.13
+pkgver=3.3.14
 pkgrel=1
 pkgdesc="Minimal C library to access, configure and get data from neuromorphic sensors and processors."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,7 +16,7 @@ replaces=()
 options=('staticlibs')
 source=("https://release.inivation.com/libcaer/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('efc2ba0e0e1a5bd1860046803addd6f0677e9923c189ac2ed922096edaa4d94d')
+sha256sums=('d79d6e9808e46710946c0156335dd1e72ee81262fb8f201ccfb96779b3049ff2')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
