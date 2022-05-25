@@ -3,7 +3,7 @@
 cpaname=Number-Fraction
 cpanauthor=DAVECROSS
 pkgname='perl-number-fraction'
-pkgver=2.01
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="model fractions"
 arch=('any')
@@ -11,20 +11,23 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
     perl
+    perl-moo
     perl-moose
+    perl-moox-types-mooselike
 )
 checkdepends=(
     perl-test-pod
     perl-test-pod-coverage
+    perl-test-warn
 )
 url=http://search.cpan.org/dist/${cpaname}
-source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('3552a2736a133a0cb642b28ee9e7c229')
-sha256sums=('0585a871cb5243fdb4c8b4b0bcd1f61d431bc4da11f907d82fe9d7465a2d5bfb')
-sha512sums=('89a5dc9f3cd36ab1abffb3c4e3660b576cb7760fb00e5ffef3256014e0fd210be5f5fdeb339484ed20e36d090500919a58242e7739d3f52ba0fd692a1141e4d3')
+source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-v${pkgver}.tar.gz")
+md5sums=('ec6cdc0ca8b3d8b9fcb8c23a9fbf01f1')
+sha256sums=('c6419c8ab778fd729b10d7e6a78f3b7b07fc08957c1f79e5666dcdcb4d62c085')
+sha512sums=('c309e4ee95909a8ad570f061387490c49cf11d71b76569dc2b3b98c8c4bc0c2b4936ca6f14dc5818ca3aea34fec06486665269f304ff5141c566acc061522407')
 
 build() {
-  cd "${srcdir}/${cpaname}-${pkgver}"
+  cd "${srcdir}/${cpaname}-v${pkgver}"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
          PERL_AUTOINSTALL=--skipdeps                            \
          PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
@@ -35,13 +38,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${cpaname}-${pkgver}"
+  cd "${srcdir}/${cpaname}-v${pkgver}"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
   make test
 }
 
 package() {
-  cd "${srcdir}/${cpaname}-${pkgver}"
+  cd "${srcdir}/${cpaname}-v${pkgver}"
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
