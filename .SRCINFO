@@ -1,32 +1,35 @@
 pkgbase = privacy-protection-messenger
 	pkgdesc = Secure messenger backend
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 0
 	url = https://github.com/imperzer0/privacy-protection-messenger
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake>=3.0
-	makedepends = curl
 	makedepends = inet-comm>=3.9-0
 	makedepends = openssl
 	makedepends = themispp
 	makedepends = mariadb
 	makedepends = mariadb-connector-cpp-git
+	makedepends = lua>=5.3
 	depends = openssl
 	depends = iptables-nft
 	depends = themispp>=0.14.1
 	depends = mariadb
+	depends = lua>=5.3
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/CMakeLists.txt
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/color.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/config.lua
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/constants.hpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/main.cpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/messenger.hpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/privacy-protection-messenger.service
-	md5sums = a7abc0672242dedcd5e4f563456e7dbc
+	md5sums = 394719936ca96d2a7e28eb2d7da27b93
 	md5sums = 058646ab78672c97a2f18dffc1b56ebf
+	md5sums = 0acea4b2198c6e1c1f51b398bb2c7487
 	md5sums = 7b6219f801b85979015e2323815630d0
 	md5sums = e00fc2264833b47f203e1d541277efd6
-	md5sums = 3e34f9c585545a0c12691e1fdcdafbf2
+	md5sums = a03f359a7866da55ff8520e07e9356e7
 	md5sums = 48db5e5193c134ec52fef48b1d133c5e
 
 pkgname = privacy-protection-messenger
