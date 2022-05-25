@@ -5,29 +5,26 @@
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Robert Orzanna <orschiro at gmail dot com>
 pkgname=timeshift
-pkgver=21.09.1
-pkgrel=4
+pkgver=21.09.1+42+gf04fb67
+pkgrel=1
 pkgdesc="A system restore utility for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/teejee2008/timeshift"
+url="https://github.com/linuxmint/timeshift"
 license=('GPL3')
 depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'xapp'
          'xorg-xhost')
 makedepends=('git' 'vala')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('btrfs-progs: BTRFS support'
-            'grub-btrfs: BtrfS snapshots in grub')
-options=('!emptydirs')
+            'grub-btrfs: BTRFS snapshots in grub')
 install="$pkgname.install"
-_commit=ade651c0c8199a6f99344ecf6fc5061b741494eb
-source=("git+https://github.com/teejee2008/timeshift.git#commit=$_commit"
-        'https://github.com/teejee2008/timeshift/pull/904.patch'
+_commit=f04fb67babf3b302245b849a12f0b85920f6331f
+source=("git+https://github.com/linuxmint/timeshift.git#commit=$_commit"
         "read-only-btrfs-snapshot.patch"
         "grub-btrfs.path"
         "snapshot-detect.desktop"
         "snapshot-detect")
 sha256sums=('SKIP'
-            '561fd266992458da028d31abfda0b15193568bb28e71ece618e2500ac4fd2263'
             '17b4f01d131c4c0b0fe5c5b55142c45deca7d1448e85736a23b65226e6dd6eb1'
             'b48a3e22d238fbfd22324d0444312559e7b740fd591fa7eb4e9c3d2717c79dfa'
             '97b38f4dbd6819542eab0a9217e399f55ec7339af4529432cfab1eb3cff8e0eb'
@@ -42,9 +39,6 @@ prepare() {
   cd "$srcdir/$pkgname"
   sed -i -e 's/--Xcc="-O3" //g' src/makefile
 
-  # Force rsync to output decimals in C locale
-  patch -Np1 -i "$srcdir/904.patch"
-
   # https://github.com/teejee2008/timeshift/pull/685
   #patch -Np1 -i "$srcdir"/read-only-btrfs-snapshot.patch
 }
@@ -55,7 +49,6 @@ build() {
   cd "$srcdir/$pkgname/src"
   make app-gtk
   make app-console
-  make pot
 }
 
 check() {
@@ -67,6 +60,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname/src"
   make DESTDIR="$pkgdir" install
+
   install -Dm644 $srcdir/grub-btrfs.path -t "$pkgdir/etc/systemd/system/"
   install -Dm644 $srcdir/snapshot-detect.desktop -t "$pkgdir/etc/xdg/autostart/"
   install -Dm755 $srcdir/snapshot-detect -t "$pkgdir/usr/bin/"
