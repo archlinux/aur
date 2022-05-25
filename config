@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.9.311-1 Kernel Configuration
+# Linux/x86 4.9.315-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1938,6 +1938,7 @@ CONFIG_PNPACPI=y
 CONFIG_BLK_DEV=y
 # CONFIG_BLK_DEV_NULL_BLK is not set
 CONFIG_BLK_DEV_FD=m
+# CONFIG_BLK_DEV_FD_RAWCMD is not set
 # CONFIG_PARIDE is not set
 CONFIG_BLK_DEV_PCIESSD_MTIP32XX=m
 CONFIG_ZRAM=m
@@ -3232,7 +3233,6 @@ CONFIG_MISDN_NETJET=m
 CONFIG_MISDN_IPAC=m
 CONFIG_MISDN_ISAR=m
 CONFIG_ISDN_HDLC=m
-# CONFIG_NVM is not set
 
 #
 # Input device support
