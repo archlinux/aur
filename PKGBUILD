@@ -2,16 +2,16 @@
 # Contributor: Lucki <https://aur.archlinux.org/account/Lucki/>
 
 pkgname=gfxtablet-git
-pkgver=50.128060d
-pkgrel=3
+pkgver=51.7bd5181
+pkgrel=1
 pkgdesc="Android app to control a virtual Network Tablet on Linux"
 arch=('i686' 'x86_64')
-url="http://github.com/rfc2822/GfxTablet"
+url="https://github.com/rfc2822/GfxTablet"
 license=('MIT')
 makedepends=('git')
 provides=('gfxtablet')
 conflicts=('gfxtablet')
-source=("$pkgname"::'git://github.com/rfc2822/GfxTablet.git'
+source=("$pkgname"::'git+https://github.com/rfc2822/GfxTablet.git'
         '99-uinput.rules')
 md5sums=('SKIP'
          'eaa7b50c8714e6c94637a65269d54b81')
