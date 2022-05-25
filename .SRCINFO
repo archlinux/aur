@@ -1,7 +1,7 @@
 pkgbase = papirus-linux-universe
 	pkgdesc = Papirus folder icon set based on distros and the most famous icon themes in the Linux world!
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pling.com/p/1493085
 	arch = any
 	license = GPL2

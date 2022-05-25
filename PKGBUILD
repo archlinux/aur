@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=papirus-linux-universe
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus folder icon set based on distros and the most famous icon themes in the Linux world!"
 arch=('any')
 url="https://www.pling.com/p/1493085"
@@ -23,6 +23,7 @@ package() {
 
     # Remove conflicting icons provided by papirus-icon-theme
     rm Icons/${i}x${i}/*breeze*
+    rm Icons/${i}x${i}/*adwaita*
 
     install -d "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
     cp -r Icons/${i}x${i}/* "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
