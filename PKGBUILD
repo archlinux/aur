@@ -2,7 +2,7 @@
 
 pkgname="nats-server"
 pkgdesc="Simple, secure and high performance open source messaging system"
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 provides=("${pkgname}")
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	"bc485dc4fcf1edf35f14fe14b114f8c96345b388aada3d655c3ad1f929126d5c"
+	"248a93e363d582f930e4459270aeeb1b39fc67e9861d6beadf279fe39e984714"
 	"3dcf497f31d8502712773d63801e6aa33416851fcf5e58a504a72c7d105960ce"
 )
 
