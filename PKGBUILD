@@ -1,8 +1,8 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="nyaash"
-pkgver="1.1.rc3"
-pkgrel="2"
+pkgver="1.1.0"
+pkgrel="1"
 pkgdesc="Shell script CLI shell script to query nyaa instances."
 arch=('any')
 depends=('lynx')
