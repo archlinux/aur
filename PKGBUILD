@@ -12,8 +12,13 @@ options=('!strip')
 source=("https://github.com/mini-rose/rose/archive/refs/tags/beta.tar.gz")
 md5sums=('SKIP')
 
-package() {
+build() {
   cd "$srcdir/rose-beta"
   make
-  install -Dm755 rose "${pkgdir}/usr/bin/rose"
+}
+
+package() {
+  cd "$srcdir/rose-beta"
+  install -Dm755 rose -t "$pkgdir/usr/bin/"
+  install -Dm755 scripts/dmenu_rose.sh "$pkgdir/usr/bin/dmenu_rose"
 }
