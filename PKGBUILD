@@ -1,7 +1,7 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=yosys-uhdm-plugin
-pkgver=c7b3eb9
+pkgver=1061066
 pkgrel=1
 pkgdesc='UDHM plugin for Yosys (SystemVerilog support)'
 arch=('x86_64')
