@@ -1,12 +1,15 @@
 pkgbase = verible-bin
 	pkgdesc = SystemVerilog parser, linter, formatter and etc from Google
-	pkgver = 0.0
-	pkgrel = 1921
+	pkgver = 0.0.2152
+	pkgrel = 1
 	url = https://github.com/google/verible
 	arch = x86_64
 	license = Apache License 2.0
+	makedepends = jq
+	makedepends = curl
+	makedepends = wget
 	provides = verible
-	source = https://github.com/chipsalliance/verible/releases/download/v0.0-1921-g348c1f8b/verible-v0.0-1921-g348c1f8b-CentOS-7.9.2009-Core-x86_64.tar.gz
-	sha512sums = 55fa95d2ca612e7c45e3912f1ef8df63e96b64f36c100095d625d12483baf6f1986acc4d27491bb088a4b0492f5179372a1856bbb8dcd1e556f632adbe1a4e8c
+	source = https://api.github.com/repos/chipsalliance/verible/releases/latest
+	sha512sums = SKIP
 
 pkgname = verible-bin

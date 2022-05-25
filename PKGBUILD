@@ -1,20 +1,29 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=verible-bin
-pkgver=0.0
-pkgrel=1921
+pkgver=0.0.2152
+pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
 arch=('x86_64')
 url='https://github.com/google/verible'
 license=('Apache License 2.0')
 provides=('verible')
+makedepends=('jq' 'curl' 'wget')
 
-_githash='g348c1f8b'
-source=("https://github.com/chipsalliance/verible/releases/download/v${pkgver}-${pkgrel}-${_githash}/verible-v${pkgver}-${pkgrel}-${_githash}-CentOS-7.9.2009-Core-x86_64.tar.gz")
-sha512sums=('55fa95d2ca612e7c45e3912f1ef8df63e96b64f36c100095d625d12483baf6f1986acc4d27491bb088a4b0492f5179372a1856bbb8dcd1e556f632adbe1a4e8c')
+source=("https://api.github.com/repos/chipsalliance/verible/releases/latest")
+sha512sums=('SKIP')
+
+prepare() {
+  cat latest | jq '.assets[0]["browser_download_url"]' | xargs wget -O - | tar -xz
+}
+
+pkgver() {
+  cat latest | jq '.tag_name' | grep -Eo '([0-9\.]+\-[0-9]+)' | tr '-' '.'
+}
 
 package() {
-  cd $srcdir/verible-v${pkgver}-${pkgrel}-${_githash}
+  part=$(cat latest | jq '.tag_name' | grep -Eo '[^"]+')
+  cd $srcdir/verible-${part}
   mkdir -p $pkgdir/usr/
 
   cp -R bin $pkgdir/usr/
