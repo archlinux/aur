@@ -1,14 +1,13 @@
 pkgbase = xmake-dev-git
 	pkgdesc = A make-like build utility based on Lua
-	pkgver = 2.6.5.r82
+	pkgver = 2.6.5.r296
 	pkgrel = 1
 	url = http://xmake.io
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	depends = ccache
-	provides = xmake=2.6.5.r82
+	provides = xmake=2.6.5.r296
 	conflicts = xmake
 	source = git+https://github.com/xmake-io/xmake.git#branch=dev
 	source = git+https://github.com/xmake-io/xmake-core-lua-cjson.git

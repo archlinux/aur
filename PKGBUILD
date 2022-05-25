@@ -1,13 +1,13 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 _basename=xmake
 pkgname=${_basename}-dev-git
-pkgver=2.6.5.r82
+pkgver=2.6.5.r296
 pkgrel=1
 pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
 url='http://xmake.io'
 license=('Apache')
-depends=('ccache')
+depends=()
 makedepends=('git')
 provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}")
