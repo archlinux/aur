@@ -82,9 +82,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.17
-_minor=9
+_minor=11
 _srcname=linux-${_major}
-_clr=${_major}.8-1143
+_clr=${_major}.9-1145
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -183,8 +183,7 @@ prepare() {
                    --module-after SND_OSSEMUL SND_MIXER_OSS \
                    --module-after SND_MIXER_OSS SND_PCM_OSS \
                    --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA \
-                   --enable FW_LOADER_COMPRESS
+                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
@@ -419,7 +418,7 @@ done
 
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            '2eeae2b74c8304b2050281b0d5e9bfe5a94abfc5c5d50fdc2f7bda984bd5ffca'
+            '6662c369b697b37f6b6d9f969d6183dcf528d89bb7d183a928721a4c17cde473'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
