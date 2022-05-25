@@ -1,7 +1,7 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/westandskif/${pkgname}/
 arch=('any')
 depends=('gcc-libs')
 makedepends=('cargo')
-sha512sums=('9b663ae43119b9171a98350f5c802169a377069280958d530f5f94ac1321f7f686eabe3e3e09cff0735b99ccda4c51b25d0f5931397bcddb8e1b1add53f06d49')
+sha512sums=('5cd02c26d5b800b1ec16150dfb5f211a02f50144e6ccf77d1edef173da19ab3c0d5c62cae64fc6a650a9c5e836b4a3546f82eab54955034c40765af1f64eb68b')
 
 build() {
   cd "$pkgname-$pkgver"
