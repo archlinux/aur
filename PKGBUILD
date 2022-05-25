@@ -2,7 +2,7 @@
 
 pkgname=opentyrian2000
 pkgver=2000.20200917
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source port of the classic DOS shoot-em-up Tyrian2000'
 url="https://github.com/KScl/opentyrian2000"
 arch=('x86_64')
@@ -41,13 +41,21 @@ prepare() {
 }
 
 build() {
-  make prefix=/usr all -C "$pkgname"
+  make \
+    -C "$pkgname" \
+    prefix=/usr \
+    gamesdir=/usr/share \
+    all
 }
 
 package() {
   cd "$pkgname"
 
-  make DESTDIR="$pkgdir" prefix=/usr install
+  make \
+    DESTDIR="$pkgdir" \
+    prefix=/usr \
+    gamesdir=/usr/share \
+    install
 
   # desktop file & icons
   install -vDm644 linux/opentyrian.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"

@@ -1,7 +1,7 @@
 pkgbase = opentyrian2000
 	pkgdesc = Open Source port of the classic DOS shoot-em-up Tyrian2000
 	pkgver = 2000.20200917
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KScl/opentyrian2000
 	arch = x86_64
 	license = GPL2
