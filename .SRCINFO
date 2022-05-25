@@ -1,7 +1,7 @@
 pkgbase = mips64-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (mips64-elf)
 	pkgver = 2.38
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL

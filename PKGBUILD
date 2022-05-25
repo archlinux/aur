@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-binutils
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -55,6 +55,7 @@ package() {
 
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
+  rm "$pkgdir"/usr/lib/bfd-plugins/libdep.a
 
   # Remove info documents that conflict with host version
   rm -rf "$pkgdir"/usr/share/info
