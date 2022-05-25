@@ -7,7 +7,7 @@ pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
 url='http://xmake.io'
 license=('Apache')
-depends=('ccache')
+depends=()
 makedepends=('git')
 provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}")
