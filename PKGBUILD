@@ -22,7 +22,7 @@ source=("${pkgname}.service"
         "${pkgname}.tmpfiles"
         "${pkgname}-${pkgver}.tar.gz::https://github.com/writeas/writefreely/archive/v${pkgver}.tar.gz")
 sha256sums=('5f8dc4dfa200b395b0a615a0ab3faa40d363978d460aa800a022725c6973ae25'
-            '6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
+            '7407acf657f6ae090d916e7b002e1521e60479776137bbb5b7b1084eea595807'
             '591e6067e08a35dad90c82302dbb853bb08943fdcea4af20abf5940128aada08'
             'f7ac0a02721bc4fb7451dd1ab3dc3c4b4f450d1d7623b3c55e6d0b1c73add43c')
 
