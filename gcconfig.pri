@@ -23,7 +23,9 @@ GSL_LIBS = -lgsl -lgslcblas -lm
 # You will need R installed along with the Rcpp and RInside
 # packages. There is an R script in the `util' directory that
 # can be run to install these packages; see it for more info.
-#DEFINES += GC_WANT_R
+packagesExist(libR) {
+    DEFINES += GC_WANT_R
+}
 
 # Uncomment below if you want Python charting / ML etc
 # You will need Python Development tools installed
