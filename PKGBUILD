@@ -3,7 +3,7 @@
 pkgname=dosbox-ece
 _pkgver=4475
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('x86_64')
 url="https://yesterplay.net/dosboxece/"
@@ -20,7 +20,7 @@ source=(
   "backslash-fix.diff"
   "linux-fix.diff"
 )
-sha256sums=('0e8ec862b78d9704d8a041198d04fc6ac6bde76adc27bab64dc12c2e7f0d6f05'
+sha256sums=('7cfbf0f6b4f18a44c5448aa6c98ba9be6aa6f72a242d2002de4caa5807c8c4df'
             'd119e08a87289ec279c6d794f9192c929893563ffdc9b5fe41a519f85d7b988d'
             'f8af5935e8a4d8d8472f491f5f9f2f57a4365b05f093c592d3504b6726afce5e'
             'f574b62a9e33251228b117f901023353628839c2cf57e62035ada3a8627c1952'
