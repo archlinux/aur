@@ -23,7 +23,7 @@ source=(https://openlitespeed.org/packages/$pkgname-$pkgver.src.tgz
 	$pkgname.sysusers
 	$pkgname.tmpfiles)
 sha256sums=('918c1f54b92b87462ff7013568768c85cb08568f184eb83223c48f3c0a792719'
-            'e96831b0bc823974e7351e9fe5f99561609fa395c77a400d71997f9df23978d3'
+            '92d1c6e4c93f2f0ee363b20add793a47b1cf7783ca430591a9de95b3496d7ef3'
             '77b8b0870da1bbf43e77b976cb118b97ac09f74744845877e56023c5772616f1'
             '0d2a2d55882e76e1bbdea12e9d97886366c0ad58c43b24fe655fff099c11e141'
             '93de5ef937ec4fdf0c33e3932fd81f9890b96b99efb2fbe3d601fb91945bde7f')
