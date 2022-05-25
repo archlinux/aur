@@ -1,7 +1,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.241
+pkgver=${_basever}.245
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -24,12 +24,12 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '05914faeb800d15ebb04feb8f16eceb3'
-         '8adf579f2dc69c69a4ef796ea820b65e'
+         'c767a7677dc7b44c9f044586ca19a837'
+         '7d028f0956f025b5ecf82d1e526cb342'
          '8d3adddbed67c62b0910ec68c78ebbac')
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'ef34716e18681ec89455db3a8aedca1198e07d69f3a236bc2b96c5ff440e9318'
-            'd19fc0605fc904d85e4f2c0c3c0d5d827e752703dfc771c4cef6c1e30f10bee1'
+            'f63de7b836a6c7ce8e2979d24f79eea05a587766eb77373a07ffa5aa1d0de4c7'
+            '474ed72afc487e2dd0da02e53731aa94bcaca463ae71d3ac376c344631159193'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
