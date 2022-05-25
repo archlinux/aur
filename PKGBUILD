@@ -414,5 +414,12 @@ END
   fi
 
   # Delete unneeded things from settings repo
-  rm "$pkgdir/usr/lib/firedragon/{LICENSE.txt,about.png,firedragon.psd,home.png,tabliss.json,.gitignore,yarn.lock,package.json}"
+  rm "$pkgdir/usr/lib/firedragon/.gitignore"
+  rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
+  rm "$pkgdir/usr/lib/firedragon/about.png"
+  rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
+  rm "$pkgdir/usr/lib/firedragon/home.png"
+  rm "$pkgdir/usr/lib/firedragon/package.json"
+  rm "$pkgdir/usr/lib/firedragon/tabliss.json"
+  rm "$pkgdir/usr/lib/firedragon/yarn.lock"
 }
