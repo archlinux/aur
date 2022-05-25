@@ -2,8 +2,8 @@
 
 pkgname=inform7-git
 _gitpkg=inform
-pkgver=r1497.e0a9a9eb1
-pkgrel=3
+pkgver=r1507.e3bcfd85a
+pkgrel=1
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
@@ -13,6 +13,7 @@ provides=('inform' 'inform7')
 conflicts=('inform7')
 groups=(inform)
 install=inform7.install
+options=(!buildflags !makeflags)
 
 source=('git+https://github.com/ganelson/inform'
 	'git+https://github.com/ganelson/inweb'
@@ -40,7 +41,7 @@ build() {
   cd "${_gitpkg}"
   bash scripts/first.sh
   ../intest/Tangled/intest inform7 -show Acidity
-  # make check
+  make check
 
   # make -C .. -f inweb/inweb.mk
   # make -C .. -f intest/intest.mk
