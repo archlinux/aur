@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="sudoedit alternative for OpenDoas"
 arch=("any")
-url="https://gist.github.com/grgergo1/bb40a07d9e599481203763e20310aeea"
+url="https://aur.archlinux.org/cgit/aur.git/tree/editas?h=editas"
 license=('GPL')
 groups=()
 depends=("doas")
