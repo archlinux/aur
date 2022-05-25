@@ -1,7 +1,7 @@
 pkgbase = wowup
 	pkgdesc = WowUp the World of Warcraft addon updater
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WowUp/WowUp
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = wowup
 	source = wowup.desktop
 	source = run_wowup.sh
 	sha256sums = ca080bd5a6debbb98195318159fd5c252dd5ec53ebde4802f113041d1c072608
-	sha256sums = aa1c5d570d39227e97b34e9e814af4b176e4159bf760868234639ad3c18c690c
+	sha256sums = 6bfc22269c930d771c9c3cbbdf49ccda67a6d0e57d0e9414eb4af519b0653ca0
 	sha256sums = 5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db
 	sha256sums = 9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7
 
