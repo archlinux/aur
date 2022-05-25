@@ -3,13 +3,13 @@
 pkgname=protonvpn-gui
 _gitpkgname=linux-app
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official ProtonVPN Graphical User Interface, maintained by the ProtonVPN team."
 arch=("any")
 url="https://github.com/ProtonVPN/"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-protonvpn-nm-lib" "python-gobject" "python-psutil" "gtk3" "python-cairo" "webkit2gtk")
+depends=("python-protonvpn-nm-lib>=3.10.0" "python-gobject" "python-psutil" "gtk3" "python-cairo" "webkit2gtk")
 optdepends=("libappindicator-gtk3")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonVPN/linux-app/archive/refs/tags/$pkgver.tar.gz")

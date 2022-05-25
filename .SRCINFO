@@ -1,13 +1,13 @@
 pkgbase = protonvpn-gui
 	pkgdesc = Official ProtonVPN Graphical User Interface, maintained by the ProtonVPN team.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/
 	arch = any
 	groups = ProtonVPN
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-protonvpn-nm-lib
+	depends = python-protonvpn-nm-lib>=3.10.0
 	depends = python-gobject
 	depends = python-psutil
 	depends = gtk3
