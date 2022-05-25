@@ -2,7 +2,7 @@
 
 pkgname=go-translation-git
 _name=got
-pkgver=r1.a8bef52
+pkgver=r53.29fa065
 pkgrel=1
 pkgdesc="Translating TUI written in go using simplytranslate's API"
 arch=('any')
