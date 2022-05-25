@@ -1,21 +1,21 @@
 # Maintainer: Chris Kobayashi <software+aur@disavowed.jp>
 
 pkgname="xfce4-hotcorner-plugin"
-pkgver=0.0.3a
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Allow users to set AfterDark-like hot corner actions"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 url="https://github.com/christopherkobayashi/xfce4-hotcorner-plugin"
 groups=("xfce4")
-depends=('xfce4-panel' 'libwnck3')
-makedepends=('cmake' 'xfce4-dev-tools' 'git')
+depends=('xfce4-panel' 'libwnck3' 'libnotify' 'gtk3' )
+makedepends=('xfce4-dev-tools')
 source=("https://github.com/christopherkobayashi/xfce4-hotcorner-plugin/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('1269dca0a08e700b5c3e070e8d18fdf516c7c2f77df8e3acafd95547de8c2d312a7c5e3a6962a5c0bc5cb76abe14a073b644fb4a3979532156181fe62c4b3ebb')
+sha512sums=('e50eb010f8cbc470db15a402513e1c6b5c4e66decc1d8e2e6fbada2530542d0f6750d3989ee93818fa3122b373a2447e40706a6febc33bea61c91ce40bcba7d7')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
+    ./configure --prefix=/usr && make
 }
 
 package() {
