@@ -1,16 +1,16 @@
 # Maintainer Jocelyn Thode <jocelyn.thode@gmail.com>
 
-_binname=crossplane
+_binname=crank
 pkgname=kubectl-crossplane-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=0
 pkgdesc="Crossplane kubectl plugin"
 url="https://releases.crossplane.io"
 depends=('kubectl')
 license=('APACHE')
 arch=('x86_64')
-source=("$_binname::$url/stable/v$pkgver/bin/linux_amd64/crossplane")
-sha512sums=('a146104e5bb5e4279d89d798da277e886e4782f02b177a41661491f0fc0573fa5fc7e98ed3a5ac97e298a14d3a7ffcce52060daa8da61131adc1a1f92ead0275')
+source=("$_binname::$url/stable/v$pkgver/bin/linux_amd64/$_binname")
+sha256sums=('eb9b26a223681d36108866519aaf18c1b89337e291f76f854dfca9a94ae6931e')
 
 package() {
 	install -D -m 0755 $srcdir/$_binname $pkgdir/usr/bin/kubectl-crossplane
