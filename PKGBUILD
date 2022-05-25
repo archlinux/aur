@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=aya-neo-fixes-git
 _gitdir=aya-neo-fixes
-pkgver=22.05.r49.f0856d4
+pkgver=22.05.r50.738edde
 pkgrel=1
 pkgdesc="Various fixes for Aya Neo Handheld consoles."
 arch=('any')
@@ -29,6 +29,4 @@ package() {
 	install -m744 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
 	install -m744 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
 	install -m644 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
-	install -m744 phantom-input.py ${pkgdir}/usr/local/bin/phantom-input.py
-	install -m644 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
 }
