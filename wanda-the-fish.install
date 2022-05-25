@@ -1,0 +1,7 @@
+post_install() {
+  echo ''
+  echo '==> To enable wanda-the-fish:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with gnome-extensions-app or "gnome-shell-extension-tool -e wandathefish@arcipelago.org"'
+  echo ''
+}

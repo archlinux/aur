@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-wanda-the-fish
+	pkgdesc = Extension that adds 'Wanda the Fish' to the Shell top panel
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/tallero/wandathefish
+	install = wanda-the-fish.install
+	arch = any
+	license = GPL3
+	depends = gnome-shell<1:47
+	source = wanda-the-fish::git+https://gitlab.com/tallero/wandathefish#commit=aaf40ea73b0e3e27d8002b053d2881082d8f83d8
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-wanda-the-fish
