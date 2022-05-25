@@ -2,13 +2,13 @@
 pkgname=archlinux-tweak-tool-git
 _pkgname=archlinux-tweak-tool
 pkgver=r708.d917f14
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux Tweak Tool or ATT"
 arch=('x86_64')
 url="https://github.com/arcolinux/archlinux-tweak-tool"
 license=('GPL3')
-depends=('polkit-gnome' 'lsb-release' 'reflector' 'neofetch' 'python-distro' 'w3m' 'python-numpy' 'python-psutil' 'arcolinux-mirrorlist-git' 'arcolinux-keyring' 'chaotic-mirrorlist' 'chaotic-keyring' 'endeavouros-keyring' 'endeavouros-mirrorlist')
-optdepends=('alacritty' 'alacritty-themes')
+depends=('polkit-gnome' 'lsb-release' 'reflector' 'neofetch' 'python-distro' 'w3m' 'python-numpy' 'python-psutil')
+optdepends=('alacritty' 'alacritty-themes' 'arcolinux-mirrorlist-git' 'arcolinux-keyring' 'chaotic-mirrorlist' 'chaotic-keyring' 'endeavouros-keyring' 'endeavouros-mirrorlist')
 makedepends=('git')
 options=(!strip !emptydirs)
 replaces=(arcolinux-tweak-tool-git)
