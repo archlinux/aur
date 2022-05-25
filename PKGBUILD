@@ -1,21 +1,21 @@
 # Maintainer: sukanka <su975853527 at gmail.com>
 pkgname=tradingview-bin
 _pkgname=tradingview
-pkgver=1.0.7
-_snapver=18
-pkgrel=2
+pkgver=1.0.8
+_snapver=20
+pkgrel=1
 pkgdesc="Track all markets"
 arch=('x86_64')
 url="https://www.tradingview.com/desktop/"
 license=('unknown')
-depends=('electron17')
+depends=('electron')
 provides=(${_pkgname})
 makedepends=('squashfs-tools')
 source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_${_snapver}.snap"
 ${_pkgname}.sh
 )
-sha512sums=('8a54cd30e869727d480f25035898a34dc4c64ad98a3e971e0f5a9fedfb13b3af9dcba9e3b4acb775d7259cc35abd5ef923912d0ede6743d84c54950dcc211870'
-            'b9d799e6b9650dfb79263ce450c41026bb562812d84555ba754f9760a958f20db4aa4e85d032145194cab66a3582a254f6f067346aa16d63037dd752aff7f947')
+sha512sums=('c13258d525bffc3f11929dc1e7f5388c11439e31463b3d41f7d0e3e05e0a73f3a3e59bd573f6410a99a7b3520faedbb796c844333d78fa6c66a531c6c402a391'
+            '241971af1b52a147a860ad43802897337baa81a04f3a51c88f9ff669cb1b937bc69b805312fa49ac53c8bec01159ae4e396b7bc85b4a550a6a5b2f2269f4844f')
 
 
 ## run these to get the source URL and the version, require jq
