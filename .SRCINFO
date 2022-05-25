@@ -1,7 +1,7 @@
 pkgbase = datasette
 	pkgdesc = An open source multi-tool for exploring and publishing data
 	pkgver = 0.61.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://datasette.io
 	arch = any
 	license = Apache
