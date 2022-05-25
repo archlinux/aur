@@ -5,7 +5,7 @@
 
 
 pkgname=flipper
-pkgver=0.144.0
+pkgver=0.146.1
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('watchman: Required for a fully functional install'
             'android-sdk: Required for a fully functional install')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('0e0dd72db8fc51508981fc12ee3b6512ab7669f3d0dca3f531d6d79d7be77cd9')
+sha256sums=('184cb9f27768a3e819c956731a74c6bfec3cc3a2e18cf10cb5b99387587b5eb1')
 conflicts=('flipper-bin')
 
 build() {
