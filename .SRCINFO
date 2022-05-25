@@ -10,6 +10,7 @@ pkgbase = python-torchaudio
 	makedepends = python-setuptools
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = gcc11
 	depends = python
 	depends = python-pytorch
 	optdepends = python-kaldi-io
