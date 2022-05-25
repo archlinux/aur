@@ -3,13 +3,13 @@
 pkgname=protonvpn-cli
 _gitpkgname=linux-cli
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official ProtonVPN Command Line Interface, maintained by the ProtonVPN team."
 arch=("any")
 url="https://github.com/ProtonVPN/"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-protonvpn-nm-lib" "python-pythondialog")
+depends=("python-protonvpn-nm-lib>=3.10.0" "python-pythondialog")
 makedepends=("python-setuptools")
 source=("https://github.com/ProtonVPN/linux-cli/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('761d8c1864b46e0caea5cea19e1be5dc46940fbcc294c8923a2a34ff4b1ee2bf')
