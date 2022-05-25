@@ -4,7 +4,7 @@
 # Package Information
 _crate="ldproxy"
 pkgname="$_crate"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A linker proxy tool'
 license=('Apache' 'MIT')
@@ -14,10 +14,10 @@ arch=('aarch64' 'i686' 'x86_64')
 
 # Generic Stuff for cargo packages
 url="https://crates.io/crates/$_crate"
-depends=('gcc-libs')
-makedepends=('cargo' 'clang')
+depends=('gcc-libs' 'clang')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('1750f17498468da83c28bf455870ff601b825220ae6b5a7be51f5b4ee68414fabd89b4a82d2bc9128d0e321639d7cae41a3c4274b544488df3f9d63562781995')
+sha512sums=('60d654ce08e194f21ea80f576bae0d40e608fd17735fafef01d5be06aec29a7e937b99e918fb0da2c7745abe37342ec6cf36ce26d867c443fca1b6dcaf944835')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
