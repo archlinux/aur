@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WowUp (Native)
+Exec=/usr/bin/electron /usr/lib/wowup-native %u
+Terminal=false
+Type=Application
+Icon=wowup-native
+StartupWMClass=WowUp
+Comment=Word of Warcraft addon updater
+Categories=Game;
+MimeType=x-scheme-handler/wowup;
