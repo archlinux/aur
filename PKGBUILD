@@ -3,7 +3,7 @@
 pkgname=dosbox-ece
 _pkgver=4475
 pkgver=${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('x86_64')
 url="https://yesterplay.net/dosboxece/"
@@ -17,19 +17,13 @@ source=(
   "https://yesterplay.net/dosboxece/download/DOSBox%20ECE%20r${_pkgver}%20(source).7z"
   "dosbox-ece.png"
   "dosbox-ece.desktop"
-  "backslash-fix.diff"
-  "linux-fix.diff"
 )
 sha256sums=('7cfbf0f6b4f18a44c5448aa6c98ba9be6aa6f72a242d2002de4caa5807c8c4df'
             'd119e08a87289ec279c6d794f9192c929893563ffdc9b5fe41a519f85d7b988d'
-            'f8af5935e8a4d8d8472f491f5f9f2f57a4365b05f093c592d3504b6726afce5e'
-            'f574b62a9e33251228b117f901023353628839c2cf57e62035ada3a8627c1952'
-            '9a5cb960f4886c983f0adbddcb2c6d133f4578a0436caa29977f1404ba74104d')
+            'f8af5935e8a4d8d8472f491f5f9f2f57a4365b05f093c592d3504b6726afce5e')
 
 build() {
   FLAGS="-O3 -DNDEBUG -pipe -I/usr/include/openglide"
-  patch -p1 < backslash-fix.diff
-  patch -p1 < linux-fix.diff
   dos2unix autogen.sh
   chmod +x autogen.sh
   autoupdate
