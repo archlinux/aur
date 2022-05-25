@@ -1,7 +1,0 @@
-pre_remove() {
-  rm /usr/bin/gpp-decrypt
-}
-
-pre_upgrade() {
-  rm /usr/bin/gpp-decrypt
-}

@@ -3,7 +3,6 @@ pkgbase = gpp-decrypt-git
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/t0thkr1s/gpp-decrypt.git
-	install = gpp-decrypt.install
 	arch = x86_64
 	arch = i686
 	license = GPL

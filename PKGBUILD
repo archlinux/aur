@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=gpp-decrypt.install
+install=
 changelog=
 source=("git+$url")
 noextract=()
@@ -38,8 +38,7 @@ package() {
         cd gpp-decrypt
         mv gpp-decrypt.py gpp-decrypt.py.tmp
         cat gpp-decrypt.py.tmp | sed 's/iv = .* \* 16/iv = b"\\x00" \* 16/g' > gpp-decrypt.py
-        chmod +x gpp-decrypt.py
-        sudo cp gpp-decrypt.py /usr/bin/gpp-decrypt
+        install -Dm755 gpp-decrypt.py "$pkgdir/usr/bin/gpp-decrypt"
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
         install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 }
