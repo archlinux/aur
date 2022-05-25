@@ -3,7 +3,7 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
 pkgname=cask
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Project management tool for Emacs"
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/cask/cask'
 license=('GPL')
 depends=('emacs' 'python')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6b664da044e8faef77717f79bb90069ec9e7868e9c47da498057236b409a501b')
+sha256sums=('94f99d4161dedda3024312dc6b929be6319aff593a6d31f1cf4f2845ae6ca5c6')
 
 package() {
 	cd "${srcdir}/${pkgname}-$pkgver"
@@ -22,8 +22,6 @@ package() {
 	install -Dm644 *.el "${__prefix}/"
 	install -d "${__prefix}/bin"
 	install -Dm755 "bin/cask" "${__prefix}/bin"
-	install -d "${__prefix}/templates"
-	install -Dm644 templates/* "${__prefix}/templates/"
 	touch "${__prefix}/.no-upgrade"  # Stop cask performing self-upgrades.
 
 	install -d "${pkgdir}/usr/bin"
