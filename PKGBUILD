@@ -3,8 +3,8 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
-pkgver='1.145.2'
-pkgrel=4
+pkgver='1.145.3'
+pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
 url='https://tlaun.ch'
@@ -15,8 +15,8 @@ optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
 #_bootstrap_version='1.21.0'
 #_bootstrap_checksum='b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2'
-#_launcher_version='1.145.2'
-#_launcher_checksum='ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e'
+#_launcher_version='1.145.3'
+#_launcher_checksum='18d097c597338410122dd0b1320c893ea120cb253711ee7070590c114abf0a0c'
 
 _repo='https://tlaun.ch/repo'
 # Try one of these if the above one fails:
@@ -39,7 +39,7 @@ source=(
   "tl-bootstrap-1.21.0-b67db2fa.jar::${_repo}/update/aur/bootstrap/b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2.jar"
 
   # Launcher
-  "tl-launcher-1.145.2-ad1bc46f.jar::${_repo}/update/aur/launcher/ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e.jar"
+  "tl-launcher-1.145.3-18d097c5.jar::${_repo}/update/aur/launcher/18d097c597338410122dd0b1320c893ea120cb253711ee7070590c114abf0a0c.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -89,13 +89,13 @@ source=(
 noextract=(
   "${source[@]##*/}"
   "tl-bootstrap-1.21.0-b67db2fa.jar"
-  "tl-launcher-1.145.2-ad1bc46f.jar"
+  "tl-launcher-1.145.3-18d097c5.jar"
 )
 
 sha256sums=(
   'b67db2fad53b7e1e1a3959e9c345009ce9332cd3ef638eb114f0fec6609ecdc2' # tl-bootstrap-1.21.0-b67db2fa.jar
 
-  'ad1bc46f26887f1d2f90a924880a1e33f6d35c8cb16879acffd23431ef72d11e' # tl-launcher-1.145.2-ad1bc46f.jar
+  '18d097c597338410122dd0b1320c893ea120cb253711ee7070590c114abf0a0c' # tl-launcher-1.145.3-18d097c5.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'd5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9' # com.google.guava:guava:31.0.1-jre
@@ -151,7 +151,7 @@ package() {
 
   # install launcher
   install -Dm0644 "${srcdir}/tl-bootstrap-1.21.0-b67db2fa.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl-launcher-1.145.2-ad1bc46f.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-1.145.3-18d097c5.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
