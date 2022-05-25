@@ -5,7 +5,7 @@
 
 pkgname=zfs-dkms
 pkgver=2.1.4+65.r05147319b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -45,6 +45,7 @@ build() {
     cd "${srcdir}"/${pkgname%-dkms} #-${pkgver}
 
     ./scripts/dkms.mkconf -n ${pkgname%-dkms} -v ${pkgver} -f dkms.conf
+    ./scripts/make_gitrev.sh include/zfs_gitrev.h
 }
 
 package() {
