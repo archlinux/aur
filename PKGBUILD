@@ -3,7 +3,7 @@
 
 _pkgname=python-rssd
 pkgname=${_pkgname}-usermode
-_commit=83d7d55
+_commit=7392dd0
 pkgver=1.${_commit}
 pkgrel=1
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 url="https://gitflic.ru/project/ksandr/${_pkgname}"
 depends=('python' 'dbus-python' 'python-feedparser')
 makedepends=('gendesk')
-optdepends=('python-requests-html: for parsing inaccessible RSS')
+# optdepends=('python-requests-html: for parsing inaccessible RSS')
 source=(git+${url}.git#commit=${_commit})
 md5sums=('SKIP')
 
@@ -29,14 +29,18 @@ prepare() {
 		--name "Last news loader..." \
 		--genericname "Python RSS daemon" \
 		--comment "Show last RSS-news in notify" \
-		--exec "$HOME/.local/bin/${_pkgname}.py" \
+		--exec "/usr/bin/env python $HOME/.local/bin/${_pkgname}.pyc" \
 		--categories "Network;" \
 		--icon "internet-news-reader"
 }
 
+build() {
+	python -m compileall "${srcdir}/${_pkgname}/${_pkgname}.py" -b
+}
+
 package() {
-	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.py" "${pkgdir}/$HOME/.local/bin/${_pkgname}.py"
-	chmod +x "${pkgdir}/$HOME/.local/bin/${_pkgname}.py"
+	install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.pyc" "${pkgdir}/$HOME/.local/bin/${_pkgname}.pyc"
+	chmod +x "${pkgdir}/$HOME/.local/bin/${_pkgname}.pyc"
 
 	install -Dm644 "${srcdir}/${_pkgname}/config.py" "${pkgdir}/$HOME/.config/${_pkgname}/config.py"
 
