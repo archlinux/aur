@@ -1,13 +1,13 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 pkgname=tonespace
-pkgver=2.5.544
+pkgver=2.9.20220308
 pkgrel=1
 pkgdesc="chord generator and visualizer"
 arch=('x86_64')
 url="https://www.mucoder.net/en/tonespace"
 license=('unknown')
-source=("https://www.mucoder.net/en/tonespace/v0205/download/544/tonespace-2.5.544-linux-64bit.zip")
-md5sums=('f2a88b3f84cab982f5740b4668ef52f0')
+source=("https://www.mucoder.net/en/tonespace/v0209/download/tonespace-2.9.20220308.2-linux.zip")
+sha256sums=('a4b7e19f4cf080b971978202bb483f5bd1b44c367f1326d504440725a483b7ea')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
