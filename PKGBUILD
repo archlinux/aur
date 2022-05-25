@@ -1,8 +1,8 @@
 # Maintainer: loupzeur <loup@loupzeur.net>
 pkgname=speedifyui
-_pkgver=12.1.0-10424
+_pkgver=12.1.1-10447
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=0
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
