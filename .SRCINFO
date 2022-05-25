@@ -1,6 +1,6 @@
 pkgbase = tamtam
 	pkgdesc = TamTam messenger for linux
-	pkgver = 1.4.9
+	pkgver = 1.4.12
 	pkgrel = 1
 	url = https://desktop.tamtam.chat/latest/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tamtam
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	source = tamtam-1.4.9.deb::https://desktop.tamtam.chat/v1.4.9/TamTam-amd64.deb
-	sha256sums = 0ed38456afba4d3d182aba27f9bba8488d2bfe16bb65f6260acb973013cd0656
+	source = tamtam-1.4.12.deb::https://desktop.tamtam.chat/v1.4.12/TamTam-amd64.deb
+	sha256sums = 019c45738b33d6f2d411abf3ac9d6468c9898ddb857ad32ad4ae655e25e7d06c
 
 pkgname = tamtam
