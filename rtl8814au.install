@@ -1,0 +1,9 @@
+pre_remove() {
+  wget https://raw.githubusercontent.com/morrownr/8814au/main/remove-driver.sh
+  bash remove-driver.sh
+}
+
+pre_upgrade() {
+  wget https://raw.githubusercontent.com/morrownr/8814au/main/remove-driver.sh
+  bash remove-driver.sh
+}
