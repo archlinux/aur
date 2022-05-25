@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=svkbd-git
-pkgver=0.2.1.r0.g02a2f77
+pkgver=0.4.1.r0.g38faf1c
 pkgrel=1
 pkgdesc='simple virtual keyboard - git checkout'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='http://tools.suckless.org/x/svkbd'
 depends=('libx11' 'libxtst' 'libxft' 'libxinerama')
 conflicts=('svkbd')
 provides=('svkbd')
-makedepends=('git' 'markdown')
+makedepends=('git' 'discount')
 license=('MIT')
 source=('git://git.suckless.org/svkbd')
 sha256sums=('SKIP')
