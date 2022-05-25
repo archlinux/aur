@@ -1,2 +1,5 @@
-Devel-CallParser-*.tar.gz
-perl-devel-callparser-*.log
+/Devel-CallParser-*.tar.gz
+/perl-devel-callparser-*.log
+/perl-devel-callparser-*.pkg.tar.*
+/*.patch
+/src/
