@@ -2,7 +2,7 @@
 
 pkgname=unbound-bible
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An open source and a free, multilingual Bible-reader program."
 arch=('i686' 'x86_64')
