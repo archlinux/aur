@@ -1,5 +1,5 @@
 pkgbase = playit
-	pkgdesc = A tunneling tool so you can host a game server at home without port forwarding or sharing your public IP.
+	pkgdesc = A tunneling tool to host a game server without port forwarding or sharing public IP
 	pkgver = 0.8.1+beta
 	pkgrel = 1
 	url = https://playit.gg
