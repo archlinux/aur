@@ -1,0 +1,27 @@
+pkgbase = plume-sqlite
+	pkgdesc = Federated blogging application
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://joinplu.me/
+	install = plume.install
+	arch = x86_64
+	license = AGPL3
+	depends = gettext
+	depends = openssl
+	depends = pkgconf
+	depends = sqlite
+	provides = plume
+	conflicts = plume-git
+	conflicts = plume
+	conflicts = plume-bin
+	conflicts = plume-postgres
+	source = plume-sqlite-0.7.2::https://github.com/Plume-org/Plume/releases/download/0.7.2/plume-sqlite.tar.gz
+	source = .env.sample
+	source = plume.service
+	source = plume.sysusers
+	md5sums = c928ee2a9bdd6fa55ecb54917cec442a
+	md5sums = 939c960f67f2b859b48f96223bd6b74e
+	md5sums = 545792acab035885a7cd479f43cde695
+	md5sums = ebfcfb05844a25ff281317af9b64f8bb
+
+pkgname = plume-sqlite
