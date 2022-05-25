@@ -33,7 +33,7 @@ package() {
    install -Dm755 "$pkgname-$pkgver/$pkgname" -t "$pkgdir/usr/bin/"
    install -Dm644 "$pkgname-$pkgver"/views/* -t "$_PKG_HONKDIR/views/"
    install -Dm644 $DOCS/* -t "$_PKG_HONKDIR/docs/"
-  ip -k -f $DOCS/*.{1,3,5,7,8}
+   
    for i in {1,3,5,8}; do
        install -Dm644 $DOCS/honk.$i -t ${_MANDIR}$i/
    done
