@@ -3,11 +3,11 @@
 
 pkgname=ananicy-rules-git
 _pkgname=ananicy
-pkgver=2.2.1.r102.g7dbaa5c
+pkgver=2.2.1.r192.g6ee9669
 pkgrel=1
 pkgdesc="Rules for ananicy-cpp"
 arch=('any')
-url="https://github.com/Nefelim4ag/Ananicy.git"
+url="https://github.com/kuche1/minq-ananicy"
 license=('GPL3')
 makedepends=('git')
 source=("$_pkgname"::'git+https://github.com/kuche1/minq-ananicy')
