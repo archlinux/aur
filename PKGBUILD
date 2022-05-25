@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-dkms
-pkgver=2.1.4
+pkgver=2.1.4+65.r05147319b0
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
@@ -15,19 +15,19 @@ provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" 'spl-dkms')
 # ambiguous, provided for backwards compat, pls don't use
 provides+=('zfs')
 replaces=('spl-dkms')
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
+makedepends=('git')
+#source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
+source=("git+https://github.com/openzfs/zfs.git#commit=05147319b0821f61fcff743e20605e191d523906"
         "0001-only-build-the-module-in-dkms.conf.patch")
-sha256sums=('3b52c0d493f806f638dca87dde809f53861cd318c1ebb0e60daeaa061cf1acf6'
-            'SKIP'
-            'd964e11018992a2acd98e263244efdbfe4367d26ad15f4728848261d3c6e227a')
-b2sums=('be303f1181f604770536aa4aa61d5319ec408abbd04964cedadd15b3101a15deba6539bb5d833f4fed357f323d74f622d035305df699b213df41ae45bffdd200'
-        'SKIP'
-        '0e91cd2421b81c8ee517503059fb9ebc20e7c150801851cff2ffdfb64cbcd9a4e0657e7678c412a334fc37b589006ec78dca2ccc091b034a83a00966acba6f5b')
+sha256sums=('SKIP'
+            '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
+b2sums=('SKIP'
+        '58dc2494e71b50833d44c126b72acad52e9817626542afbc245b7ba82009e8c8252ebde6023592aac42d9942207e7655c0a421da9067fbdd619746ebc372d791')
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 
 prepare() {
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms} #-${pkgver}
 
     patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
 
@@ -42,7 +42,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms} #-${pkgver}
 
     ./scripts/dkms.mkconf -n ${pkgname%-dkms} -v ${pkgver} -f dkms.conf
 }
@@ -50,7 +50,7 @@ build() {
 package() {
     depends=("zfs-utils=${pkgver}" 'dkms')
 
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms} #-${pkgver}
 
     dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
     install -d "${dkmsdir}"/{config,scripts}
