@@ -3,7 +3,6 @@ pkgbase = gtfobins-explorer-git
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/creep33/GTFOBins-Explorer.git
-	install = gtfobins.install
 	arch = x86_64
 	arch = i686
 	license = GPL

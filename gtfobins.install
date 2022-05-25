@@ -1,7 +1,0 @@
-pre_remove() {
-  rm /usr/bin/gtfobins
-}
-
-pre_upgrade() {
-  rm /usr/bin/gtfobins
-}

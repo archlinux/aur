@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=gtfobins.install
+install=
 changelog=
 source=("git+$url")
 noextract=()
@@ -35,7 +35,7 @@ build() {
 
 package() {
         cd GTFOBins-Explorer
-        sudo cp GTFOBins-Explorer-ng /usr/bin/gtfobins
+        install -Dm755  GTFOBins-Explorer-ng "$pkgdir/usr/bin/gtfobins"
         install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
         install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 }
