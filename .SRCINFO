@@ -1,6 +1,6 @@
 pkgbase = lc0-cudnn-git
 	pkgdesc = CudNN version of Leela Chess Zero.
-	pkgver = 0.28.0.r0.g3982cc0e
+	pkgver = 0.28.2.r0.gfa5864bb
 	pkgrel = 1
 	url = https://lczero.org/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = lc0-cudnn-git
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
+	makedepends = gcc11
 	depends = cuda
 	depends = cudnn
 	depends = protobuf

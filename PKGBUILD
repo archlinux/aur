@@ -1,14 +1,14 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-cudnn-git
 _pkgname=lc0-cudnn
-pkgver=0.28.0.r0.g3982cc0e
+pkgver=0.28.2.r0.gfa5864bb
 pkgrel=1
 pkgdesc="CudNN version of Leela Chess Zero."
 arch=('i686' 'x86_64')
 url="https://lczero.org/"
 license=('GPL3')
 depends=('cuda' 'cudnn' 'protobuf')
-makedepends=('git' 'meson>=0.46' 'ninja')
+makedepends=('git' 'meson>=0.46' 'ninja' 'gcc11')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
 md5sums=('SKIP')
 
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    PATH=$PATH:/opt/cuda/bin ./build.sh release -Dblas=false -Dopencl=false || return 1
+    PATH=$PATH:/opt/cuda/bin ./build.sh release -Dblas=false -Dopencl=false -Dnvcc_ccbin=g++-11 || return 1
 }
 
 package() {
