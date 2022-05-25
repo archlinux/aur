@@ -45,11 +45,11 @@ build() {
 
     # Angular may ask for sharing anonymous usage data during `npm install`.
     # Say “no” to it.
-    # npm install electron@$_electronver <<<"N"
+    npm install electron@$_electronver <<<"N"
 
     # or use miorrors
-    export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-    npm --registry https://registry.npmmirror.com/ install electron@$_electronver <<<"N"
+    # export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+    # npm --registry https://registry.npmmirror.com/ install electron@$_electronver <<<"N"
 
     npm run build:prod
     ./node_modules/.bin/electron-builder --linux dir -c.electronDist=/usr/lib/electron -c.electronVersion=$_electronver
