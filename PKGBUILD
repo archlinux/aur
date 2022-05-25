@@ -1,10 +1,11 @@
-# Maintainer: aureolebigben <aureolebigben@gmail.com>
-# Contributer: fleischie
-# Contributer: auk
-# Contributer: blind
+# Maintainer: Constantine Fedotov <zenflak@gmail.com>
+# Contributor: aureolebigben <aureolebigben@gmail.com>
+# Contributor: fleischie
+# Contributor: auk
+# Contributor: blind
 
 pkgname=hyper
-pkgver=3.1.2
+pkgver=3.2.3
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -29,13 +30,13 @@ _pkgver_project=${pkgver/\.canary/-canary}
 
 source=(
     "https://github.com/zeit/$pkgname/archive/v${_pkgver_project}.tar.gz"
-    "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
+    "https://github.com/bnb/awesome-hyper/raw/master/hyper-3-color-logo.svg"
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('4ffd934e32aa986e4ddced0acca2fcd1'
-         'f3481e14cba331160339b3b5ab78872b'
-         '74cb7ba38e37332aa8300e4b6ba9c61c')
+md5sums=('fb365705e6c0a7142379131af82a4ce8'
+         'c770d64996561d98fa41a8d88963a074'
+         'e5a0ef01f23708d9bd2d6a7f094095f2')
 validpgpkeys=()
 
 prepare() {
@@ -88,5 +89,5 @@ package() {
     # ln -s /usr/share/electron/lib{node,ffmpeg}.so .
 
     install -Dm644 "$srcdir/Hyper.desktop" "$pkgdir/usr/share/applications/Hyper.desktop"
-    install -Dm644 "$srcdir/Hyper-Mark-120@3x.png" "$pkgdir/usr/share/pixmaps/hyper.png"
+    install -Dm644 "$srcdir/hyper-3-color-logo.svg" "$pkgdir/usr/share/pixmaps/hyper.svg"
 }
