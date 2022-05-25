@@ -1,8 +1,9 @@
-# Maintainer: Michael Mansell <michael.mansell@gmail.com>
+# Maintainer: Jordan Day < jordanday444 at gmail dot com >
+# Contributor: Michael Mansell <michael.mansell@gmail.com>
 
 pkgname=gimp-script-divide-scanned-images
 pkgver=2.2F
-pkgrel=4
+pkgrel=5
 pkgdesc="GIMP Scheme (.scm) script for splitting separate sub-images from a composite image that has a uniform background. Creates a new image from each; will call the \'deskew\' plugin on each image (if it is installed)."
 
 arch=('any')
