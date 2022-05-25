@@ -16,7 +16,7 @@ changelog="$pkgname.changelog"
 provides=("${pkgname}")
 conflicts=("${pkgname}" 'honk-hg')
 source=("$pkgname-$pkgver.tar::https://humungus.tedunangst.com/r/honk/d/$pkgname-$pkgver.tgz")
-sha512sums=("d946be7796be2ef7dc565710351b0b27da947f4e65a2a8f52ec99624c66fb6fd5e21d3fa58fec691d944b4acfa6256b0ad1090f3f8f5191e6c3714f3eae99b29")
+sha512sums=("45acc81178f5a3143da8c7fa3dc4492dab70739cee3630b594b68b4d8cda88929a11d0bc499065eeed0462e787feac1f7718d17b7ff2dccecedb04e28affe2e3")
 options=(strip docs zipman)
 install="$pkgname.install"
 
