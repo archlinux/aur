@@ -1,6 +1,6 @@
 # Maintainer: WillyJL <willy.leslie@icloud.com>
 pkgname="ios-mount-git"
-pkgver=r4.18028f8
+pkgver=r19.771a471
 pkgrel=1
 pkgdesc="Utility script to mount iOS photos and app files on linux, built around ifuse"
 arch=("any")
