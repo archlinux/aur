@@ -2,7 +2,7 @@
 pkgname=archlinux-tweak-tool-git
 _pkgname=archlinux-tweak-tool
 pkgver=r708.d917f14
-pkgrel=2
+pkgrel=3
 pkgdesc="Arch Linux Tweak Tool or ATT"
 arch=('x86_64')
 url="https://github.com/arcolinux/archlinux-tweak-tool"
