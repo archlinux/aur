@@ -1,2 +1,3 @@
-Kavorka-*.tar.gz
-perl-kavorka-*.log
+/Kavorka-*.tar.gz
+/perl-kavorka-*.log
+/perl-kavorka-*.pkg.tar.*
