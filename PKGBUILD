@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.8.1
+_pkgver=2.8.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
@@ -18,16 +18,22 @@ makedepends=(
 )
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
+    wago-fix.js
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('dfb7693656ac834ec64ab707deef96e5c16deb0d4b0bda2f63ec0ded2e90f470'
+sha256sums=('ca080bd5a6debbb98195318159fd5c252dd5ec53ebde4802f113041d1c072608'
+            '6bfc22269c930d771c9c3cbbdf49ccda67a6d0e57d0e9414eb4af519b0653ca0'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
             '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
 
 prepare() {
     # set legacy peer deps in .npmrc file to dependency conflict since npm 7
     echo "legacy-peer-deps=true" >>"$_pkgname-$_pkgver/wowup-electron/.npmrc"
+
+    # intergient.com refuse to provide service to users in some country/region
+    # add a workaround that extracts the key manually
+    cat wago-fix.js >>"$_pkgname-$_pkgver/wowup-electron/assets/preload/wago.js"
 }
 
 build() {
@@ -42,7 +48,7 @@ build() {
     # npm --registry https://registry.npmmirror.com/ install <<<"N"
 
     npm run build:prod
-    ./node_modules/.bin/electron-builder --linux dir --config.asarUnpack="build/Release/addon.node"
+    ./node_modules/.bin/electron-builder --linux dir --config.linux.asarUnpack="build/Release/addon.node"
 }
 
 package() {
@@ -51,7 +57,7 @@ package() {
 
     cd "$srcdir/$_pkgname-$_pkgver/wowup-electron/release/linux-unpacked/"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
-    cp -r --no-preserve='ownership' -- * "$pkgdir/usr/lib/$pkgname"
+    cp -r -- * "$pkgdir/usr/lib/$pkgname"
 
     cd "$srcdir/$_pkgname-$_pkgver/wowup-electron/"
     install -Dm644 assets/wowup_logo_512np.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
