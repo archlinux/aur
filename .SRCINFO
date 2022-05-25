@@ -4,6 +4,7 @@ pkgbase = senpai-irc-git
 	pkgrel = 1
 	url = https://ellidri.org/senpai/
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	makedepends = git
 	makedepends = go

@@ -6,7 +6,7 @@ pkgver=r220.6be7183
 pkgrel=1
 pkgdesc='TUI IRC Client Created by ~taiite'
 url=https://ellidri.org/senpai/
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=('ISC')
 provides=("senpai-irc")
 conflicts=("senpai-irc")
@@ -28,8 +28,6 @@ pkgver () {
 prepare () {
 	cd "${srcdir}/${_pkgname}"
 	make clean
-	rm -f doc/senpai.1.gz
-	rm -f doc/senpai.5.gz
 }
 
 build () {
@@ -42,8 +40,6 @@ build () {
 	go build ./cmd/senpai
 	make doc/senpai.1
 	make doc/senpai.5
-	gzip doc/senpai.1
-	gzip doc/senpai.5
 }
 
 package () {
@@ -51,7 +47,7 @@ package () {
 	mkdir -p "${pkgdir}/usr/share/man/man1"
 	mkdir -p "${pkgdir}/usr/share/man/man5"
 	cp "${srcdir}/${_pkgname}/senpai" "${pkgdir}/usr/bin/senpai-irc"
-	cp "${srcdir}/${_pkgname}/doc/senpai.1.gz" "${pkgdir}/usr/share/man/man1/"
-	cp "${srcdir}/${_pkgname}/doc/senpai.5.gz" "${pkgdir}/usr/share/man/man5/"
+	cp "${srcdir}/${_pkgname}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
+	cp "${srcdir}/${_pkgname}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
 }
 
