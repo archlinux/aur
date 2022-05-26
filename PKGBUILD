@@ -13,7 +13,7 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.1.1.1
+pkgver=2.1.1.2
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
