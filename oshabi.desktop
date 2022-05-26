@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name=Oshabi
+Exec=oshabi
+Terminal=false
+Type=Application
