@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.23b30044.1f4a63794d
+pkgver=2.23b31807.25ffd4b40d
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -23,14 +23,15 @@ makedepends=('fontforge'
 	     'tex-gyre-fonts'
 	     'texlive-langcyrillic'
 	     'texi2html'
-	     'netpbm')
+	     'netpbm'
+	     'python')
 optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
 	    'tidy: same for HTML files'
 	    'tk: for the gui')
 provides=('lilypond')
 conflicts=('lilypond')
-source=(git://git.savannah.gnu.org/lilypond.git)
-md5sums=('SKIP')
+source=(git+https://gitlab.com/lilypond/lilypond.git#branch=dev/wl/fix-install)
+sha256sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
@@ -46,12 +47,12 @@ build() {
   ./autogen.sh --noconfigure
   [[ -d build ]] || mkdir build
   cd build
-  ../configure --prefix=/usr \
-      --disable-documentation
+  ../configure --prefix=/usr --disable-documentation
   make -j1 
 }
 
 package() {
+  LANG=C
   cd lilypond/build
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
   rm -rf "$pkgdir"/usr/share/man
