@@ -1,9 +1,10 @@
 pkgbase = surge-xt
 	pkgdesc = An Open Source Digital Synthesizer
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://surge-synthesizer.github.io/
 	arch = x86_64
+	arch = aarch64
 	groups = pro-audio
 	groups = vst3-plugins
 	license = GPL3
@@ -31,7 +32,7 @@ pkgbase = surge-xt
 	depends = xdg-utils
 	optdepends = vst3-host: for the VST3 plugin
 	optdepends = jack: backend for standalone
-	source = surge-xt-1.0.1.tgz::https://github.com/surge-synthesizer/releases-xt/releases/download/1.0.1/surge-src-1.0.1.tar.gz
+	source = surge-xt-1.0.1.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/1.0.1/surge-src-1.0.1.tar.gz
 	sha256sums = 100b536f741c62529800fc26e3773567591385d4152db305382b4315f6e39c55
 
 pkgname = surge-xt
