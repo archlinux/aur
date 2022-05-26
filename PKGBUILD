@@ -2,8 +2,8 @@
 
 _pkgname='qbittorrent'
 pkgname=qbittorrent-qt5
-pkgver=4.4.2
-pkgrel=2
+pkgver=4.4.3.1
+pkgrel=1
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt5 toolkit and libtorrent-rasterbar'
 arch=(x86_64)
 url='https://www.qbittorrent.org'
@@ -14,7 +14,7 @@ optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
 provides=('qbittorrent')
 source=(https://downloads.sourceforge.net/sourceforge/qbittorrent/${_pkgname}-${pkgver}.tar.xz{,.asc})
-sha256sums=('efa580924e96605bae916b9a8ae1f3fce82a5130647ae41d74d689761262463d'
+sha256sums=('b64559ca50b54bc6c5be17302e69f34fba8433059842aa4093865dc2c00d24c8'
             'SKIP')
 validpgpkeys=('D8F3DA77AAC6741053599C136E4A2D025B7CC9A2')
 
