@@ -1,6 +1,6 @@
 # Maintainer: Slender Hacker <slenderhacker1234@gmail.com>
 pkgname=universal-android-debloater-git
-pkgver=0.5.0.r4.19d389e
+pkgver=0.5.0.r6.216beec
 pkgrel=1
 epoch=
 pkgdesc="An android debloater application written in rust credit to w1nst0n (0x192) @github"

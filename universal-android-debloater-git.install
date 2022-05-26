@@ -1,7 +1,7 @@
 post_install() {
-    echo -e "###########################################################"
-    echo -e "## The icons can be found in /opt/neon-logout-git        ##"
-    echo -e "###########################################################"
+    echo -e "######################################################################"
+    echo -e "## The package can be found in /usr/bin/universal-android-debloater ##"
+    echo -e "######################################################################"
 }
 
 post_upgrade() {
