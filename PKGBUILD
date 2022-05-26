@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=aya-neo-fixes-git
 _gitdir=aya-neo-fixes
-pkgver=22.05.r50.738edde
+pkgver=22.05.r52.41da7c5
 pkgrel=1
 pkgdesc="Various fixes for Aya Neo Handheld consoles."
 arch=('any')
