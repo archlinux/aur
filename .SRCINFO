@@ -1,6 +1,6 @@
 pkgbase = python-cos-python-sdk-v5
 	pkgdesc = 腾讯云COSV5Python SDK
-	pkgver = 1.9.15
+	pkgver = 1.9.17
 	pkgrel = 1
 	url = https://github.com/tencentyun/cos-python-sdk-v5
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-cos-python-sdk-v5
 	depends = python-dicttoxml
 	depends = python-crcmod
 	depends = python-pycryptodome
-	source = python-cos-python-sdk-v5-1.9.15.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/V1.9.15.tar.gz
-	sha256sums = 68bd18052d80017a68b0bbbb0c407c9344026458909a8e92eae72158bdb86ddd
+	source = python-cos-python-sdk-v5-1.9.17.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/V1.9.17.tar.gz
+	sha256sums = cad1d91bd09b6f9874c8ab1b6eade242feee524b84a32fbccc216a6162f6453d
 
 pkgname = python-cos-python-sdk-v5
