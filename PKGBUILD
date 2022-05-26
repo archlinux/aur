@@ -26,6 +26,7 @@ depends=(
   suil
   twolame
   vamp-plugin-sdk
+  wxgtk-audacity
 )
 makedepends=(
   alsa-lib
@@ -42,7 +43,6 @@ makedepends=(
   sratom
   sord
   sqlite
-  wxgtk-audacity
 )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
