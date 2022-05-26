@@ -1,17 +1,17 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=passes
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc="A digital pass manager"
 arch=('any')
 url="https://github.com/pablo-s/passes"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'python-qrcode')
-makedepends=('meson')
+depends=('libadwaita' 'zint')
+makedepends=('meson' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('14fddfc886f45ee89449d4a6244fe10c02e5196279b3ef01ca3a0e0736d25b6ad9fa15b6486716a0fc6d633fb766f28733e30d33b301af40a1a42fa715f9a01f')
+b2sums=('1f7786d939fec7b2d04471fc04c439e41eac5605e1f298b0b0436f94062aa32dd14a276d01a7f6961bf881d521a569cc0f83598a3cd58ca40de5b284b4e38cfa')
 
 build() {
   arch-meson "${pkgname%-git}-$pkgver" build
