@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Plus42
+Exec=/usr/bin/plus42
+Icon=plus42
+Terminal=false
+Type=Application
+Categories=Utility;Calculator;
