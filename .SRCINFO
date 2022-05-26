@@ -1,6 +1,6 @@
 pkgbase = infra-arcana-git
 	pkgdesc = Roguelike game inspired by the writings of H.P. Lovecraft - git version
-	pkgver = 21.0.1.beta2.r2.gb9f13856
+	pkgver = 21.0.1.r15.g112286d1
 	pkgrel = 1
 	url = https://sites.google.com/site/infraarcana/home
 	arch = i686
