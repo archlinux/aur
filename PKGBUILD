@@ -1,14 +1,14 @@
 # Maintainer: Jorengarenar
 
 pkgname=h2-dmenu-desktop
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 arch=('any')
 depends=(python dmenu)
-url='https://joren.ga'
+url='https://github.com/Jorengarenar/h2-dmenu-desktop'
 license=('MIT')
 source=("${pkgname}::https://github.com/Jorengarenar/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aade9e11704187a4e5c374192c65d3548d3461dae919b68fe92bedf6351c7882')
+sha256sums=('355624d3caf95db38b1bf56665cf2d3e77f4fb6ef1eddd4328244ea3850a9e05')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
