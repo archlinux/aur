@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-pdcurses
 provides=(mingw-w64-curses)
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="Public Domain Curses wincon port (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ options=(staticlibs !buildflags !strip)
 license=("public domain")
 source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCursesMod/archive/v${pkgver}.tar.gz"
         001-mingw-pdcurses-4.1.0-build.patch)
-sha256sums=('31a4a0ac585e722d15a1640302d7e7dd69adb8d248761018a8e5667f9fd3eb0e'
+sha256sums=('d3e06dd1d8c4ddce90aa83028123216df966d0d4873f8f960b79d9b154689090'
             '029b3755eacc8b3bebc09767b2090e18c160acc80be0b07742d8aaa098b6be89')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
