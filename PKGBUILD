@@ -5,8 +5,8 @@
 # Contributor: NeoTheFox <soniczerops@gmail.com>
 
 pkgname=python-telegram-bot
-pkgver=13.11
-pkgrel=2
+pkgver=13.12
+pkgrel=1
 pkgdesc="A pure Python interface for the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
 license=(GPL3 LGPL)
@@ -15,11 +15,10 @@ depends=(python-apscheduler python-cachetools python-urllib3 python-pytz python-
 makedepends=(python-setuptools)
 # checkdepends=(python-beautifulsoup4 python-flaky python-pytest-timeout)
 optdepends=('python-cryptography: for support cryptography library'
-  'python-ujson: for support JSON de- & encoding'
   'python-pysocks: for support Socks5 server')
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('655BB4F56CDB0E0E4500CF572E9E0E127EF3F283') # Hinrich Mahler <hinrich.mahler@freenet.de>
-sha512sums=('1b1345ecce9edd0b324b95491e1fb0343aa19a6bf44e609407cd1cde127ea0214529f127056a63c78a50ab9517974212abf70b11d75e54dbb10ee33adb858523' 'SKIP')
+sha512sums=('63b8fc52f881c4d1532d3cfe15e4e382f2ca824822293cc154324ad2bfca3118cdde877a5050d9952dfbdcfad102b020dd2d0c00aa87df17cb47938ca5cef4b1' 'SKIP')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -29,7 +28,7 @@ prepare() {
   sed -i '/certifi/d' telegram/__main__.py requirements.txt
   sed -e '/import certifi/d' \
     -e 's|certifi.where()|"/etc/ssl/certs/ca-certificates.crt"|' \
-    -i telegram/utils/request.py #tests/test_official.py
+    -i telegram/utils/request.py # tests/test_official.py
 
   # Fixes for testing with system urllib3
   # sed -i 's/from telegram.vendor.ptb_urllib3 import urllib3/import urllib3/' tests/test_official.py
@@ -40,7 +39,6 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build --with-upstream-urllib3
 }
 
