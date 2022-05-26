@@ -11,7 +11,7 @@ pkgbase = starc-appimage
 	provides = starc=0.1.5
 	conflicts = starc
 	options = !strip
-	source = https://github.com/story-apps/starc/releases/download/v0.1.5/starc-setup.AppImage
+	source = starc.AppImage::https://github.com/story-apps/starc/releases/download/v0.1.5/starc-setup.AppImage
 	source = starc.desktop.patch
 	source = starc.sh
 	sha256sums = fb98d6c8a84e0873d264c615b639341a1edf1a72fb61d960e0af9ecc15a7f63a
