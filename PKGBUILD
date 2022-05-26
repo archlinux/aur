@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=a7800
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="A7800 is a fork of the MAME Atari 7800 driver, with several enhancements added (ProSystem)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ source=("https://github.com/7800-devtools/a7800/releases/download/v$pkgver/a7800
 	"http://7800.8bitdev.org/resources/assets/78008bitdevlogo.png"
 	"a7800-starter.sh"
 	"a7800.desktop")
-sha256sums=('6fd78e8cdf6cc7054d6cdb0405b3c48e0592826ca052f85aaf49c5df4a55b4a9'
+sha256sums=('615309f0dc38c9957c159c1c69e8516c44e3ca092f45f92e3ec6d418f26304f2'
             'b89310a46a5305c41f8dfb63e915aaa1e12ea74209cd6fcf7ec3e4753067ff73'
             '59e9ca8f0c028f23212dffd778ef3b2be63a716ded5bb66a50a0869700408322'
             '06b0773ebd2795fb15c9380449f6464c03414f514c6f5e5aeb25835bed000ddb')
