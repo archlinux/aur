@@ -4,7 +4,7 @@ _pkgname=gpower2
 
 pkgname="${_pkgname}-git"
 pkgver=r13.10ae693
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple power dialog written in zig using gtk4"
 url="https://mzte.de/git/LordMZTE/gpower2"
 license=('GPL-3')
@@ -24,7 +24,8 @@ pkgver() {
 }
 
 prepare() {
-    git submodule init
+    cd "${_pkgname}"
+    git submodule update --init
 }
 
 build() {
