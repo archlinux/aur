@@ -1,23 +1,15 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=wordbook-git
-_author=fushinari
 _gitname=Wordbook
-pkgver=0.3.1.r4.g0ce26e2
+pkgver=0.3.1.r51.gb5c8961
 pkgrel=1
 pkgdesc='An offline dictionary app for GNOME'
 arch=(any)
 url=https://github.com/fushinari/Wordbook
 license=(GPL3)
-depends=(
-    espeak-ng
-    gtk3
-    libhandy
-    python
-    python-gobject
-    python-wn
-)
-makedepends=('git' 'gobject-introspection' 'meson')
+depends=('glib2' 'python-gobject' 'espeak-ng' 'libadwaita' 'python-wn')
+makedepends=('git' 'meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
