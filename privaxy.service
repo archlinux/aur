@@ -1,0 +1,13 @@
+[Unit]
+Description=Privaxy Server
+Documentation=https://github.com/Barre/privaxy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/privaxy
+WorkingDirectory=/var/lib/privaxy
+User=privaxy
+Group=privaxy
+
+[Install]
+WantedBy=multi-user.target

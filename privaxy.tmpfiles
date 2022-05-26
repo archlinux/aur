@@ -1,0 +1,2 @@
+d /var/lib/privaxy     0750 privaxy privaxy
+h /var/lib/privaxy     -    -            -            - +C

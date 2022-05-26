@@ -1,0 +1,21 @@
+pkgbase = privaxy
+	pkgdesc = Privaxy is the next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Barre/privaxy
+	install = privaxy.install
+	arch = x86_64
+	license = AGPL
+	makedepends = trunk
+	makedepends = nodejs
+	makedepends = rustup
+	source = https://github.com/Barre/privaxy/archive/v0.1.0.tar.gz
+	source = privaxy.tmpfiles
+	source = privaxy.service
+	source = privaxy.sysusers.conf
+	sha256sums = b8d10fc88bbd21889015974ff2528ffae4938eee2355180c34edeb2ff0c82379
+	sha256sums = ba367fc62b311ad4a7022c5452981836672db70d5c3edc0620f842cc8ca80497
+	sha256sums = acda4febbb8244c9834079ee87016bab723332bc093adbdf192646ee7eb7c002
+	sha256sums = 2a02713029de78f7c23a654a223a0597780e05cdd510a1da7854283b5f678b16
+
+pkgname = privaxy
