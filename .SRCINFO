@@ -1,0 +1,55 @@
+pkgbase = matchama-kde
+	pkgver = r265.8525e05
+	pkgrel = 1
+	url = https://gitlab.com/cscs/matchama-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = matchama-kde::git+https://gitlab.com/cscs/matchama-kde.git
+	sha256sums = SKIP
+
+pkgname = matchama-kde
+	pkgdesc = Matcha theme for KDE Plasma 5
+	install = matchama-kde.install
+	depends = plasma-workspace
+	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
+	optdepends = matcha-gtk-theme: for a consistent look in GTK applications
+	optdepends = matcha-kde-wallpapers: matcha KDE wallpapers
+	optdepends = kvantum-theme-matcha: matcha theme for Kvantum (recommended)
+	optdepends = konsole-colorscheme-matcha: matcha theme for Konsole
+	optdepends = yakuake-skin-matcha: matcha theme for Yakuake
+	optdepends = konversation-theme-matcha: matcha theme for Konversation
+	optdepends = matcha-firefox-theme: matcha theme for Firefox
+	provides = matchama-kde
+	conflicts = matchama-kde
+	conflicts = matcha-kde
+
+pkgname = matchama-kde-wallpapers
+	pkgdesc = Matcha KDE wallpapers
+	provides = matchama-kde-wallpapers
+	conflicts = matchama-kde-wallpapers
+
+pkgname = kvantum-theme-matchama
+	pkgdesc = Matcha theme for Kvantum
+	depends = kvantum-qt5
+	provides = kvantum-theme-matchama
+	conflicts = kvantum-theme-matchama
+
+pkgname = konsole-colorscheme-matchama
+	pkgdesc = Matcha theme for Konsole
+	depends = konsole
+	provides = konsole-colorscheme-matchama
+	conflicts = konsole-colorscheme-matchama
+
+pkgname = yakuake-skin-matchama
+	pkgdesc = Matcha theme for Yakuake
+	depends = yakuake
+	provides = yakuake-skin-matchama
+	conflicts = yakuake-skin-matchama
+
+pkgname = konversation-theme-matchama
+	pkgdesc = Matcha theme for Konversation
+	depends = konversation
+	provides = konversation-theme-matchama
+	conflicts = konversation-theme-matchama

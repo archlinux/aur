@@ -1,0 +1,11 @@
+post_install() {
+  /usr/bin/echo "execute 'rm -rf ~/.cache/plasma-svgelements-Matcha-* ~/.cache/plasma_theme_Matcha-*.kcache' to delete cache"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
