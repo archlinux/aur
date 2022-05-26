@@ -5,10 +5,10 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r918.g8c4a7aaed
+pkgver=v3.0_rc1.r977.g6496e8906
 pkgrel=1
 epoch=2
-pkgdesc="BibleTime is a Bible study application based on the Sword library and Qt toolkit."
+pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
 arch=('x86_64' 'i686')
 url="https://bibletime.info/"
 license=('GPL2')
