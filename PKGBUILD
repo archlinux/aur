@@ -1,6 +1,6 @@
 # Maintainer: Grant G <grant@fig.io>
 pkgname='fig-beta'
-pkgver='2.0.0_alpha.11'
+pkgver='2.0.0_alpha.12'
 pkgrel=1
 pkgdesc='Fig adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -11,29 +11,15 @@ provides=('fig' 'fig_desktop' 'figterm' 'fig_ibus_engine')
 conflicts=('fig')
 source=("https://get-fig-io.s3.us-west-1.amazonaws.com/desktop/linux-x86_64/fig-${pkgver//_/-}.tar.gz")
 
-sha256sums=('b7ecfc8401c94291473f9629310eb30002e9e8549b13656361329c08f06a80cd')
+sha256sums=('bd194dd5bfa84a05bf7bd38cbeb3e7729b63f669ec40bd18176860e8d4334107')
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  for bin in 'fig' 'fig_desktop' 'figterm' 'fig_ibus_engine'; do
-    install -Dm755 "${srcdir}/usr/bin/${bin}" "${pkgdir}/opt/fig/bin/${bin}"
-    ln -sf "/opt/fig/bin/${bin}" "${pkgdir}/usr/bin/${bin}"
-  done
+  find "${srcdir}/usr" -type f | sed "s|${srcdir}/||" | xargs -I{} install -Dm644 "${srcdir}/{}" "${pkgdir}/{}"
+  chmod +x "${pkgdir}/usr/bin/"*
 
   # Figterm name copies
   for shell in 'zsh' 'bash' 'fish'; do
-    install -Dm755 "${srcdir}/usr/bin/figterm" "${pkgdir}/opt/fig/bin/${shell} (figterm)"
-    ln -sf "/opt/fig/bin/${shell} (figterm)" "${pkgdir}/usr/bin/${shell} (figterm)"
+    install -Dm755 "${srcdir}/usr/bin/figterm" "${pkgdir}/usr/bin/${shell} (figterm)"
   done
-
-  install -Dm644 "${srcdir}/usr/share/applications/fig.desktop" "${pkgdir}/usr/share/applications/fig.desktop"
-  install -Dm644 "${srcdir}/usr/share/ibus/component/engine.xml" "${pkgdir}/usr/share/ibus/component/engine.xml"
-
-  for size in 16 22 24 32 48 64 128 256 512; do
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}x${size}/apps/fig.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/fig.png"
-  done
-
-  install -Dm644 "${srcdir}/usr/share/pixmaps/fig.png" "${pkgdir}/usr/share/pixmaps/fig.png"
 }
 
