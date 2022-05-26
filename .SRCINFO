@@ -1,12 +1,12 @@
 pkgbase = rustdesk-server-bin
 	pkgdesc = RustDesk Server Program
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk-server
 	install = rustdesk-server.install
 	arch = x86_64
 	arch = aarch64
-	license = Proprietary
+	license = AGPL3
 	provides = rustdesk-server
 	conflicts = rustdesk-server-demo
 	source = rustdesk-server-hbbs.service

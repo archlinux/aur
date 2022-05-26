@@ -3,11 +3,11 @@
 pkgname=rustdesk-server-bin
 _pkgname=rustdesk-server
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="RustDesk Server Program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk-server"
-license=('Proprietary')
+license=('AGPL3')
 provides=(${_pkgname})
 conflicts=("rustdesk-server-demo")
 source=(
