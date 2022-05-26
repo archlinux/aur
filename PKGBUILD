@@ -58,9 +58,9 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
-	cp -a "${srcdir}"/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
+	cp -a "${srcdir}/icons/hicolor"/* "${pkgdir}/usr/share/icons/hicolor/"
 
-	if [ "$CARCH" = "x86_64" ]; then
+	if [[ "$CARCH" == "x86_64" ]]; then
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox" "${pkgdir}/usr/bin/sunvox"
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox_opengl" "${pkgdir}/usr/bin/sunvox_opengl"
 	else
