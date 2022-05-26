@@ -2,7 +2,7 @@
 pkgname=python-rst.linker
 _name=${pkgname#python-}
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Can add links and perform other custom replacements to rst"
 arch=('any')
 url="https://github.com/jaraco/rst.linker"
@@ -10,7 +10,9 @@ license=('MIT')
 depends=('python' 'python-dateutil' 'python-six')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 #makedepends+=('python-jaraco.packaging' 'python-sphinx') # for building docs
-checkdepends=('python-path' 'python-pytest')
+checkdepends=('python-path' 'python-pip' 'python-pytest-black' 'python-pytest-checkdocs'
+              'python-pytest-cov' 'python-pytest-enabler' 'python-pytest-flake8'
+              'python-pytest-mypy' 'python-types-python-dateutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9acefd0fdaf64b25ecf00ae85af5d994ee49120199b7e057f1394c7ae7ba2918')
 
