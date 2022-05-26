@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='e93cff8c9c8ceaee8d19cf2599b84a7683ce4ecd' # git rev-parse v${_tag_name}
-_tag_name=251
+_tag='a57280c2c63622b0f31b707db0ea13ce0c7ce6a0' # git rev-parse v${_tag_name}
+_tag_name=251.1
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
