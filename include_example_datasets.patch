@@ -1,6 +1,6 @@
 --- caerus/caerus.py
 +++ caerus/caerus.py.modified
-@@ -15,7 +15,6 @@   Remove unneeded import.
+@@ -16,7 +16,6 @@   Remove unneeded import.
  # Custom helpers
  from caerus.utils.ones2idx import region2idx
  from caerus.utils.risk_performance_metrics import risk_performance_metrics
@@ -8,7 +8,7 @@
  import os
  import matplotlib.pyplot as plt
  pd.options.mode.chained_assignment = None  # default='warn'
-@@ -270,23 +268,15 @@  Load datasets from install directory.
+@@ -272,23 +269,15 @@  Load datasets from install directory.
  
          """
          if name=='facebook':
