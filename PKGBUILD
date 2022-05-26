@@ -7,6 +7,7 @@ arch=('x86_64')
 url='https://bird.network.cz/'
 license=('GPL2')
 backup=('etc/bird.conf')
+makedepends=('git' 'autoconf' 'automake')
 depends=('glibc' 'readline' 'ncurses' 'libssh')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
