@@ -1,13 +1,13 @@
 pkgbase = ssl-cert-check
 	pkgdesc = Checks if digital certificates in X.509 format have expired.
 	pkgver = 4.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://prefetch.net/articles/checkcertificate.html
 	arch = any
 	license = GPL
 	depends = openssl
 	noextract = ssl-cert-check
-	source = https://raw.githubusercontent.com/Matty9191/ssl-cert-check/master/ssl-cert-check
+	source = https://raw.githubusercontent.com/Matty9191/ssl-cert-check/967b93707f53cfdfefd61e074f18348f1f82bab9/ssl-cert-check
 	sha256sums = e6342e1b41710551f719c13a837294ea051182058943b918ae7a03a5c3b6f3fe
 
 pkgname = ssl-cert-check
