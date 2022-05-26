@@ -1,6 +1,6 @@
 # Maintainer: Grant G <grant@fig.io>
 pkgname='fig-beta'
-pkgver='2.0.0_alpha.10'
+pkgver='2.0.0_alpha.11'
 pkgrel=1
 pkgdesc='Fig adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('fig' 'fig_desktop' 'figterm' 'fig_ibus_engine')
 conflicts=('fig')
 source=("https://get-fig-io.s3.us-west-1.amazonaws.com/desktop/linux-x86_64/fig-${pkgver//_/-}.tar.gz")
 
-sha256sums=('8e17d7d8998673e8029c80560cbd249987283dc0bc95ff2dfd3f337ce630b5e9')
+sha256sums=('b7ecfc8401c94291473f9629310eb30002e9e8549b13656361329c08f06a80cd')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
