@@ -1,7 +1,7 @@
 pkgbase = torrserver-bin
 	pkgdesc = Torrent to http. Streams media torrent files as media streams without fully downloading
 	pkgver = MatriX.115
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YouROK/TorrServer
 	install = torrserver.install
 	arch = x86_64
