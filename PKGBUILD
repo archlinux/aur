@@ -15,7 +15,7 @@ depends=(python-apscheduler python-cachetools python-urllib3 python-pytz python-
 makedepends=(python-setuptools)
 # checkdepends=(python-beautifulsoup4 python-flaky python-pytest-timeout)
 optdepends=('python-cryptography: for support cryptography library'
-  'python-pysocks: for support Socks5 server')
+  'python-httpx: for support SOCKS server')
 source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('655BB4F56CDB0E0E4500CF572E9E0E127EF3F283') # Hinrich Mahler <hinrich.mahler@freenet.de>
 sha512sums=('63b8fc52f881c4d1532d3cfe15e4e382f2ca824822293cc154324ad2bfca3118cdde877a5050d9952dfbdcfad102b020dd2d0c00aa87df17cb47938ca5cef4b1' 'SKIP')
