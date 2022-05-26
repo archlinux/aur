@@ -3,8 +3,8 @@
 _pkgname=gpower2
 
 pkgname="${_pkgname}-git"
-pkgver=r4.c5012ef
-pkgrel=1
+pkgver=r13.10ae693
+pkgrel=2
 pkgdesc="A simple power dialog written in zig using gtk4"
 url="https://mzte.de/git/LordMZTE/gpower2"
 license=('GPL-3')
@@ -21,6 +21,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    git submodule init
 }
 
 build() {
