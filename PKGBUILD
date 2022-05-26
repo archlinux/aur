@@ -12,7 +12,7 @@ source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v${pkgv
         camillagui.service
         camillagui.yml)
 sha256sums=('8b61c3a18bbbdc1ed5e259e5e13122b698e3dff74e0ef708bd0b9f452232d6d6'
-            'f0fe7f27e1e41bb6f9e62d4659ec7fd7efcaed98b1c7ee44673220b9eba2929f'
+            '3700b298c9d63a407ac288ccdfa91019480ee923067ded70fdee1e34e4d09e85'
             '816138c492d68e291375971a95f88e13d665a21e39202dfce7443c57b4d1d240'
             'd2682fd4c0ae6ec9526a397e9419447e56b8652e2a1a8f53881290ec2e8079a2')
 
