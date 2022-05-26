@@ -1,6 +1,6 @@
 pkgbase = jql
 	pkgdesc = A JSON Query Language CLI tool
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/yamafaktory/jql
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = jql
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = jql-4.0.3.tar.gz::https://github.com/yamafaktory/jql/archive/v4.0.3.tar.gz
-	sha512sums = 677b681df8bd95ad34c9b7a360da17c14ed8f4ec7867d879517739017f3d6b9fc7739d029c3e0e123ec8285ff7ebd566fdbc0d384ecb2ba9493ca5dddc24a45a
+	source = jql-4.0.4.tar.gz::https://github.com/yamafaktory/jql/archive/v4.0.4.tar.gz
+	sha512sums = 909529db7508dcf179ec0eaace7be06f9c8acd0daf479e81bffb02644eea6e03f39f9605ec9ea4436d282a408b2c78979c7f24b10cde8cac8b99129ef6510b54
 
 pkgname = jql
