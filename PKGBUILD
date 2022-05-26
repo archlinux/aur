@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=comictagger
-pkgver=1.3.2.alpha.4
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc='Application for writing metadata to digital comics, written in Python and PyQt'
 arch=(any)
 url='https://github.com/comictagger/comictagger'
@@ -16,6 +16,8 @@ depends=(python
          python-py7zr
          python-unrar-cffi
          python-pyqt5
+         python-pathvalidate
+         # Deps of py7zr
          python-pybcj
          python-brotli
 )
@@ -23,7 +25,7 @@ makedepends=(python-{build,installer}
              python-setuptools-scm
              python-wheel)
 makedepends+=(git)
-_tag=1.3.2-alpha.4
+_tag=1.4.3
 source=(git+https://github.com/comictagger/comictagger.git#tag=$_tag)
 sha256sums=('SKIP')
 
