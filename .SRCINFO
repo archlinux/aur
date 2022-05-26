@@ -1,14 +1,18 @@
 pkgbase = spi-ch341-usb-dkms
 	pkgdesc = SPI/GPIO driver for CH341
 	pkgver = r45.cfb61d0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rogerjames99/spi-ch341-usb
 	arch = any
 	license = GPL
 	makedepends = git
 	source = git+https://github.com/rogerjames99/spi-ch341-usb.git
 	source = 0001-Arch-compatible-paths-for-kernel-headers-modules.patch
+	source = 50-spi_ch341_usb.rules
+	source = spi_ch341_usb_setup.sh
 	sha256sums = SKIP
 	sha256sums = 75041421dbbf41b35c8f7a3992d601ca304c129ca9b9f348d575c57999f3cbc0
+	sha256sums = f17a1941b599fdae84584be239905c76a81dbc17d4ed575c0b134112c6da2982
+	sha256sums = 41f03bfd96efed8b968ef1f695f18121cdbbc6af27212060a30274f1a1984544
 
 pkgname = spi-ch341-usb-dkms
