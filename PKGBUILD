@@ -2,7 +2,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-numpy-stl
-pkgver=2.16.3
+pkgver=2.17.1
 pkgrel=1
 pkgdesc="Library to make working with STL files (and 3D objects in general) fast and easy"
 url="https://github.com/WoLpH/numpy-stl/"
@@ -11,7 +11,7 @@ depends=('python' 'python-numpy' 'python-utils')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8')
 source=("numpy-stl-v${pkgver}.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz")
-sha256sums=('11a0afb41923e5a6839dcce4cc5f55229a36c7251e138d3a1a818d7636e5e777')
+sha256sums=('6228bd07cdb67bb3e4a67721146c425a6f2b0546dba8dfa082d7cf58642c0f1a')
 arch=('x86_64')
 
 build() {
@@ -23,8 +23,7 @@ check() {
   cd "$srcdir/numpy-stl-$pkgver"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" pytest \
-    -vv tests --cov-fail-under=50 \
-    -k "not test_use_with_qt_with_custom_locale_decimal_delimeter"
+    -vv tests --cov-fail-under=50
 }
 
 package() {
