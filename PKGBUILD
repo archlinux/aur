@@ -2,7 +2,7 @@
 
 pkgname=tpl-git
 pkgver=v1.6.1.r16.f8138adr28.f8138ad
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for C data type serialization."
 arch=('i686' 'x86_64')
 url="http://troydhanson.github.io/tpl/"
