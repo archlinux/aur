@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-anbox-git
 	pkgdesc = Linux Mainline
-	pkgver = 5.18.r2752.gfdaf9a5840ac
+	pkgver = 5.18.r7857.gbabf0bb978e3
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
