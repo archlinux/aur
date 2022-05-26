@@ -1,6 +1,6 @@
 # Maintainer: Arthur Aslanyan <arthur.e.aslanyan@gmail.com>
 _name=starc
-_filename='starc-setup.AppImage'
+_filename='starc.AppImage'
 
 pkgname="${_name}-appimage"
 pkgver=0.1.5
@@ -13,7 +13,7 @@ depends=('zlib' 'bash')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
 options=(!strip)
-source=("https://github.com/story-apps/starc/releases/download/v${pkgver}/${_filename}"
+source=("${_filename}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
 		"${_name}.desktop.patch"
 		"${_name}.sh")
 sha256sums=('fb98d6c8a84e0873d264c615b639341a1edf1a72fb61d960e0af9ecc15a7f63a'
@@ -29,7 +29,7 @@ prepare() {
 
 package() {
 	# Install AppImage and bin
-	install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_name}.AppImage"
+	install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_filename}"
 	install -Dm755 "${srcdir}/${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
 	# Install icon and desktop
