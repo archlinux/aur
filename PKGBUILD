@@ -1,7 +1,7 @@
 # Maintainer: dreamscache.d <dreamscache.d@gmail.com>
 _pkgname=recaf
 pkgname=${_pkgname}-git
-pkgver=r2223.333a70d1
+pkgver=r2266.4409f96c
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
@@ -20,14 +20,9 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/$_pkgname"
-	sed -i '12s/read mode/mode=2/' build
-}
-
 build() {
 	cd "$srcdir/$_pkgname"
-	./build
+    ./mvnw -gs "$srcdir/../settings.xml" clean package
 }
 
 package() {
