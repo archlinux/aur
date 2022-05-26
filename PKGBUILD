@@ -1,7 +1,7 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=urlwatch-git
-pkgver=r501.5d5b108
+pkgver=2.25.r13.ga72e87c
 pkgrel=1
 pkgdesc="A tool for monitoring webpages for updates"
 arch=('any')
@@ -13,7 +13,6 @@ depends=('python'
          'python-keyring'
          'python-lxml'
          'python-minidb'
-         'python-pycodestyle'
          'python-requests'
          'python-yaml')
 makedepends=('git' 'python-setuptools')
@@ -24,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

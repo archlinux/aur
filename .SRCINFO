@@ -1,6 +1,6 @@
 pkgbase = urlwatch-git
 	pkgdesc = A tool for monitoring webpages for updates
-	pkgver = r501.5d5b108
+	pkgver = 2.25.r13.ga72e87c
 	pkgrel = 1
 	url = http://thp.io/2008/urlwatch/
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = urlwatch-git
 	depends = python-keyring
 	depends = python-lxml
 	depends = python-minidb
-	depends = python-pycodestyle
 	depends = python-requests
 	depends = python-yaml
 	provides = urlwatch
@@ -22,4 +21,3 @@ pkgbase = urlwatch-git
 	sha256sums = SKIP
 
 pkgname = urlwatch-git
-
