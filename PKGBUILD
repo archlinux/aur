@@ -20,6 +20,11 @@ depends=('alsa-lib'
          'sdl2')
 makedepends=('unzip' 'icoutils')
 optdepends=('jack: jack audio server output')
+# sunvox_opengl is only provided for x86_64 architecture, and needs individual optdeps
+if [[ "$CARCH" == "x86_64" ]]; then
+  optdepends+=('libgl: required for sunvox_opengl'
+               'libxi: required for sunvox_opengl')
+fi
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip sunvox.desktop sunvox.xml)
 sha256sums=('bf87509d1afba6eb0e0075fccad0c284a8b16311088e0df4bce4c3eae03f4b4a'
             '21680b38c66e4375f0a01e496d3167fe8695ada60204c885ff63e63022b63495'
@@ -56,10 +61,10 @@ package() {
 
 	if [ "$CARCH" = "x86_64" ]; then
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox" "${pkgdir}/usr/bin/sunvox"
+		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox_opengl" "${pkgdir}/usr/bin/sunvox_opengl"
 	else
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox" "${pkgdir}/usr/bin/sunvox"
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox_lofi" "${pkgdir}/usr/bin/sunvox_lofi"
-		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox_no_simd" "${pkgdir}/usr/bin/sunvox_no_simd"
 	fi
 
 	cp -a "${srcdir}"/sunvox/{examples,instruments,effects} "${pkgdir}/opt/${pkgname}/"
