@@ -2,7 +2,7 @@
 
 pkgname=pbincli
 _name="PBinCLI"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A command line client for PrivateBin'
 arch=('any')
@@ -15,8 +15,8 @@ depends=('python'
          'python-sjcl')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha1sums=('b06e1e7130143eee98a69a3e210c3b4f58b528b5')
-sha256sums=('a7db80ef1c842f73db04996602db32085e65a9026115cf534b08a650d2f05dc5')
+sha1sums=('41e414fbb3d94ebb2dad5da1dd4d8f94e7a2c694')
+sha256sums=('32cae77cc5e4e73ef0aa39a1d06701df535b30fd589327d6350d2e31814d2b61')
 
 build() {
   cd "$_name-$pkgver"
