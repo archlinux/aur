@@ -14,10 +14,12 @@ source=(https://github.com/HEnquist/camilladsp/archive/refs/tags/v$pkgver.tar.gz
         camilladsp.service
         camilladsp.yml)
 sha256sums=('9de8d7759fa738206e6dd21596a72736aa1841927cc81c359c8d726d22c8a4ad'
-            '9b8677709317fa8fc3dad5cc93e6f363148059b378f242c69a4045fe51d31703'
+            '15e9bb22a32472b88bd092d5bdbca0cdc7de8d0a476e954558ca8e00ab8c4517'
             '993f05f04e1627b1739046e3c59d880deec1d4849525fa0e633dda5493923b48'
             'dd7932754e220e3e68250dae326ce6a81f6a61ce7923f6e001c9c3c1787a3b07')
+
 backup=('srv/http/data/camilladsp/configs/camilladsp.yml')
+install=camilladsp.install
 
 build() {
     cd $srcdir/$pkgname-$pkgver
