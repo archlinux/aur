@@ -1,6 +1,6 @@
 pkgbase = eddie-ui
 	pkgdesc = Eddie - VPN tunnel - UI
-	pkgver = 2.21.6
+	pkgver = 2.21.8
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-ui.install
@@ -13,14 +13,15 @@ pkgbase = eddie-ui
 	depends = sudo
 	depends = desktop-file-utils
 	depends = libnotify
-	depends = libappindicator-gtk2
+	depends = libayatana-appindicator
+	depends = patchelf
 	optdepends = stunnel: VPN over SSL
 	optdepends = openssh: VPN over SSH
 	provides = eddie-ui
 	conflicts = airvpn
 	conflicts = airvpn-beta-bin
 	conflicts = airvpn-git
-	source = https://github.com/AirVPN/Eddie/archive/2.21.6.tar.gz
-	sha1sums = c63513cd1da4adf2ba109c3334221d66170b226f
+	source = https://github.com/AirVPN/Eddie/archive/2.21.8.tar.gz
+	sha1sums = b6a2cb24858ea7ce14906901e6c92fd923a81f2c
 
 pkgname = eddie-ui
