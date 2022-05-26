@@ -1,29 +1,27 @@
-# Maintainer : Anthony Wang <ta180m@pm.me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor : Anthony Wang <ta180m@pm.me>
 # Contributor : Ashwin Vishnu <ashwinvis+arch At protonmail DoT cOm>
 # Contributor : Immae <ismael.bouya@normalesup.org>
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
-pkgdesc="Mini version of Anaconda Python distribution."
-arch=('x86_64')
-url="https://conda.io/en/latest/miniconda.html"
-license=("custom")
-source=("miniconda3-${pkgver}.sh::https://repo.continuum.io/miniconda/Miniconda3-py39_${pkgver}-Linux-x86_64.sh"
-        "$pkgname.install")
+pkgdesc="Mini version of Anaconda Python distribution"
+arch=(x86_64)
+url="https://conda.io/en/latest/miniconda"
+license=('custom')
+source=(${pkgname}-${pkgver}.sh::https://repo.continuum.io/miniconda/Miniconda3-py39_${pkgver}-Linux-x86_64.sh)
 options=(!strip libtool staticlibs)
-sha256sums=('4ee9c3aa53329cd7a63b49877c0babb49b19b7e5af29807b793a76bdb1d362b4'
-            '6d6d8b5f4d2e9ca3c69464e903e292fa020c10ea6920aff5c32ebb021b84d865')
-install="$pkgname.install"
-
+sha512sums=('874a3c0b73cef6b349907e330ef5d3caac57c97a8dc0f264a40263838b45325c91e7bbe39889d01166e664bb305fb361df4b85a842672a826af252943faa06ba')
+install="${pkgname}.install"
 
 package() {
-	prefix="${pkgdir}/opt/${pkgname}"
+	prefix="${pkgdir}"/opt/"${pkgname}"
 	LD_PRELOAD="/usr/lib/libfakeroot/libfakeroot.so"
 
 	# Packaging miniconda3 for installation to /opt/miniconda3
-	bash "${srcdir}/miniconda3-${pkgver}.sh" -b -p $prefix -f
+	bash "${srcdir}/${pkgname}-${pkgver}.sh" -b -p ${prefix} -f
 	[ "$BREAK_EARLY" = 1 ] && exit 1
 	cd "${prefix}"
 
@@ -31,8 +29,8 @@ package() {
 	chmod a+r -R pkgs
 
 	# Stripping $pkgdir
-	sed "s|${pkgdir}||g" -i $(grep "$pkgdir" . -rIl)
+	sed -e "s|${pkgdir}||g" -i $(grep "${pkgdir}" . -rIl 2>/dev/null)
 
 	# Installing license
-	install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
