@@ -116,8 +116,8 @@ package_python-ivre-git() {
   cd "$srcdir/$_pkgname"
 
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-  echo -en "-aur-${pkgrel}" >> "${pkgdir}/usr/lib/python3.10/site-packages/ivre/VERSION"
-  sed -ri 's#(VERSION = .*)(['\''"])$#\1-aur-'"${pkgrel}"'\2#' "${pkgdir}/usr/lib/python3.10/site-packages/ivre/__init__.py"
+  echo -en "-aur-${pkgrel}" >> "${pkgdir}/usr/lib/"python*"/site-packages/ivre/VERSION"
+  sed -ri 's#(VERSION = .*)(['\''"])$#\1-aur-'"${pkgrel}"'\2#' "${pkgdir}/usr/lib/"python*"/site-packages/ivre/__init__.py"
 
   rm -r "$pkgdir/usr/bin" \
      "$pkgdir/usr/share" \
