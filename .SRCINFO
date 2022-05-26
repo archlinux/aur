@@ -7,7 +7,7 @@ pkgbase = nyaash
 	license = GPL
 	arch = any
 	depends = lynx
-	optdepends = 'noto-fonts-cjk: chinese, japanese, and korean characters'
+	optdepends = noto-fonts-cjk: chinese, japanese, and korean character
 	source = https://notabug.org/BezierQuadratic/nyaash/archive/1.1.0.tar.gz 
 
 pkgname = nyaash
