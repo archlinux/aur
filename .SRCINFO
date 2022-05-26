@@ -1,7 +1,7 @@
 pkgbase = privacy-protection-messenger
 	pkgdesc = Secure messenger backend
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imperzer0/privacy-protection-messenger
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = privacy-protection-messenger
 	md5sums = 2935854d25c83b99ff259294c4f92971
 	md5sums = 7b6219f801b85979015e2323815630d0
 	md5sums = 462360fcefb35ac56a1041fca8aa81dc
-	md5sums = 824d596a52c898183b02cf2b246ae36c
+	md5sums = 8ed0248b86ba909b9a4c41d60ecdac3c
 	md5sums = 48db5e5193c134ec52fef48b1d133c5e
 
 pkgname = privacy-protection-messenger
