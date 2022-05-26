@@ -1,0 +1,25 @@
+pkgbase = bird-babel-rtt-git
+	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon (with babel-rtt)
+	pkgver = r3826.4c582913
+	pkgrel = 1
+	url = https://github.com/tohojo/bird
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = glibc
+	depends = readline
+	depends = ncurses
+	depends = libssh
+	provides = bird
+	conflicts = bird
+	replaces = bird6
+	options = !emptydirs
+	backup = etc/bird.conf
+	source = bird::git+https://github.com/tohojo/bird.git#branch=babel-rtt-01
+	source = bird.service
+	sha256sums = SKIP
+	sha256sums = 4aa1e8d41229badd276aa3747f613e7df34761892add2258c63bdb5097dfeb2b
+
+pkgname = bird-babel-rtt-git
