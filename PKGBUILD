@@ -13,7 +13,7 @@ conflicts=("$_pkgname" "${_pkgname}-appimage")
 license=("GPL3")
 depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "ocl-icd" "ffmpeg")
 makedepends=("cargo" "opencl-headers")
-optdepends=("opencl-driver: OpenCL driver for GPU stabilization acceleration"
+optdepends=("opencl-driver: OpenCL driver for GPU accelerated stabilization"
             "libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU"
             "intel-media-driver: VAAPI video acceleration for Intel GPU")
 source=("$_pkgname::git+https://github.com/gyroflow/gyroflow.git"
@@ -57,6 +57,12 @@ package() {
     # I can't find any existing package for this file.
     install -Dm0755 "target/release/libmdk.so.0" "${pkgdir}/opt/${_pkgname}/libmdk.so.0"
     cp -a "resources/camera_presets" "${pkgdir}/opt/${_pkgname}"
+    # Allow user to save custom camera preset
+    find "${pkgdir}/opt/${_pkgname}/camera_presets" -type d -exec chmod 777 {} +
+
     install -Dm0644 "resources/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
     install -Dm0644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
