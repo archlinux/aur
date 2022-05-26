@@ -1,7 +1,7 @@
 pkgbase = python2-wxpython3
 	pkgdesc = Classic wxWidgets GUI toolkit for Python
 	pkgver = 3.0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.wxpython.org
 	arch = x86_64
 	license = custom:wxWindows

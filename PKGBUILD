@@ -2,7 +2,7 @@
 
 pkgname=python2-wxpython3
 pkgver=3.0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Classic wxWidgets GUI toolkit for Python"
 arch=('x86_64')
 license=('custom:wxWindows')
@@ -31,6 +31,10 @@ prepare() {
 }
 
 build() {
+    # Disable build flag that's causing build to fail.
+    CFLAGS=${CFLAGS/-Werror=format-security/}
+    CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
     cd wxPython-src-${pkgver}
     ./configure \
         --prefix=/usr \
