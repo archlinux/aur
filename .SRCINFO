@@ -1,6 +1,6 @@
 pkgbase = eddie-ui-git
 	pkgdesc = Eddie - VPN tunnel - UI - beta
-	pkgver = 2.21.7
+	pkgver = 2.21.8
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-ui.install
@@ -13,7 +13,7 @@ pkgbase = eddie-ui-git
 	depends = sudo
 	depends = desktop-file-utils
 	depends = libnotify
-	depends = libappindicator-gtk2
+	depends = libayatana-appindicator
 	depends = patchelf
 	optdepends = stunnel: VPN over SSL
 	optdepends = openssh: VPN over SSH

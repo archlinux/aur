@@ -2,18 +2,17 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 # Current issues:
-# - eddie-tray don't build, depend on Community package libappindicator-gtk2
 # - msbuild vs xbuild
 # - target framework not v4.8
 
 pkgname=eddie-ui-git
-pkgver=2.21.7
+pkgver=2.21.8
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI - beta'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPLv3)
-depends=(mono openvpn sudo desktop-file-utils libnotify libappindicator-gtk2 patchelf)
+depends=(mono openvpn sudo desktop-file-utils libnotify libayatana-appindicator patchelf)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=('cmake')
 provides=('eddie-ui')
