@@ -1,8 +1,12 @@
 # Maintainer: Eddie.website <maintainer@eddie.website>
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
+# Current issues:
+# - msbuild vs xbuild
+# - target framework not v4.8
+
 pkgname=eddie-cli
-pkgver=2.21.6
+pkgver=2.21.8
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
 arch=('i686' 'x86_64')
@@ -14,8 +18,8 @@ makedepends=('cmake')
 provides=('eddie-cli')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-cli.install
-source=('https://github.com/AirVPN/Eddie/archive/2.21.6.tar.gz')
-sha1sums=('c63513cd1da4adf2ba109c3334221d66170b226f')
+source=('https://github.com/AirVPN/Eddie/archive/2.21.8.tar.gz')
+sha1sums=('b6a2cb24858ea7ce14906901e6c92fd923a81f2c')
 
 case "$CARCH" in
     i686) _pkgarch="x86"
@@ -42,19 +46,10 @@ build() {
     xbuild /verbosity:minimal /p:TargetFrameworkVersion="v4.5" /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.ui.sln
   fi
 
-  # Compile C sources (Tray)
-  # Removed in 2.21.5, compatibility issue
-  #if [ "cli" = "ui" ]; then
-  #  cd src/UI.GTK.Linux.Tray
-  #  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
-  #  make
-  #  strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
-  #  cd ../..
-  #fi
-
   # Compile C sources
   chmod +x src/eddie.linux.postbuild.sh
   chmod +x src/Lib.Platform.Linux.Native/build.sh
+  chmod +x src/UI.GTK.Linux.Tray/build.sh
   
   if [ "cli" = "cli" ]; then
     src/eddie.linux.postbuild.sh "src/App.CLI.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
@@ -94,7 +89,7 @@ package() {
     install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-cli/eddie-cli.exe"
     install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.dll" "$pkgdir/usr/lib/eddie-cli/Lib.Forms.dll"
     install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.Skin.dll" "$pkgdir/usr/lib/eddie-cli/Lib.Forms.Skin.dll"
-    #install -Dm755 "src/UI.GTK.Linux.Tray/eddie-tray-strip" "$pkgdir/usr/lib/eddie-cli/eddie-tray"
+    install -Dm755 "src/UI.GTK.Linux.Tray/bin/eddie-tray" "$pkgdir/usr/lib/eddie-cli/eddie-tray"
     install -Dm644 "repository/linux_arch/bundle/eddie-cli/usr/share/pixmaps/eddie-cli.png"  "$pkgdir/usr/share/pixmaps/eddie-cli.png"
   fi
 
