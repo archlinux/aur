@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Sunvox
+Name=__NAME__
 GenericName=Modular Synthesizer / Tracker
-Comment=Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker).
-Exec=sunvox %f
+Comment=Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker).__COMMENT__
+Exec=__BINARY__ %f
 Icon=sunvox
 Terminal=false
 StartupNotify=false

@@ -27,7 +27,7 @@ if [[ "$CARCH" == "x86_64" ]]; then
 fi
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip sunvox.desktop sunvox.xml)
 sha256sums=('bf87509d1afba6eb0e0075fccad0c284a8b16311088e0df4bce4c3eae03f4b4a'
-            '21680b38c66e4375f0a01e496d3167fe8695ada60204c885ff63e63022b63495'
+            'b45ee10df93982ac0d36c6887fe637c28b3c3de7013aa3462291629eed2dcc8d'
             '7ac2192298abdda802832518c98721b08881e32e8b470f2989c614852dd44f67')
 
 build() {
@@ -49,6 +49,29 @@ build() {
 			exit 2
 		fi
 	done
+
+	# build .desktop files for all variants of the current architecture from template
+	printf -- ":: building desktop files from common template for application variants:"
+	install -dm755 "${srcdir}/desktop_files"
+	sed -e 's|__NAME__|Sunvox|g' \
+	    -e 's|__COMMENT__||g' \
+	    -e 's|__BINARY__|sunvox|g' \
+	    "${srcdir}/sunvox.desktop" > "${srcdir}/desktop_files/sunvox.desktop"
+	printf -- " sunvox"
+	if [[ "$CARCH" == "x86_64" ]]; then
+		sed -e 's|__NAME__|Sunvox OpenGL|g' \
+		    -e 's|__COMMENT__| (OpenGL graphics)|g' \
+		    -e 's|__BINARY__|sunvox_opengl|g' \
+		    "${srcdir}/sunvox.desktop" > "${srcdir}/desktop_files/sunvox_opengl.desktop"
+		printf -- " sunvox_opengl"
+	elif [[ "$CARCH" == "i686" ]]; then
+		sed -e 's|__NAME__|Sunvox LoFi|g' \
+		    -e 's|__COMMENT__| (LoFi)|g' \
+		    -e 's|__BINARY__|sunvox_lofi|g' \
+		    "${srcdir}/sunvox.desktop" > "${srcdir}/desktop_files/sunvox_lofi.desktop"
+		printf -- " sunvox_lofi"
+	fi
+	printf -- "\n"
 }
 
 package() {
@@ -56,7 +79,9 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
 	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	for _desktop_file in "${srcdir}/desktop_files"/*.desktop; do
+		install -Dm644 "${_desktop_file}" "${pkgdir}/usr/share/applications/$(basename "${_desktop_file}")"
+	done
 	install -Dm644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 	cp -a "${srcdir}/icons/hicolor"/* "${pkgdir}/usr/share/icons/hicolor/"
 
@@ -78,7 +103,7 @@ package() {
 	# contains binaries for all architectures. Bash exclusion with
 	# `!(sunvox)` needs `shopt -s extglob`, so I'll just delete the
 	# unwanted copy to keep light on the shell feature requirements.
-	cp -a "${srcdir}/sunvox/"* "${pkgdir}/opt/${pkgname}/"
+	cp -a "${srcdir}"/sunvox/* "${pkgdir}/opt/${pkgname}/"
 	rm -r "${pkgdir}/opt/${pkgname}/sunvox"
 
 	# supplied documentation is replicated in expected system-wide location
