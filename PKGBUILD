@@ -5,8 +5,8 @@
 
 pkgname=vit-git
 _pkgname="${pkgname%-git}"
-pkgver=r710.7a05bc2
-pkgrel=2
+pkgver=2.2.0.r18.ge37a75d
+pkgrel=1
 pkgdesc="Visual Interactive Taskwarrior full-screen terminal interface (GIT version)"
 arch=('any')
 url='https://github.com/vit-project/vit'
@@ -24,7 +24,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
