@@ -2,7 +2,7 @@
 Type=application
 Name=Gyroflow
 Comment=Video stabilization using gyroscope data
-Exec=/opt/gyroflow/gyroflow %U
+Exec=/usr/bin/gyroflow %U
 Icon=gyroflow
 StartupNotify=false
 Terminal=false

@@ -18,8 +18,8 @@ optdepends=("opencl-driver: OpenCL driver for GPU accelerated stabilization"
             "intel-media-driver: VAAPI video acceleration for Intel GPU")
 source=("$_pkgname::git+https://github.com/gyroflow/gyroflow.git"
         "$_pkgname.desktop")
-sha512sums=("SKIP"
-            "03279c2568350619f1cbdd88960e77773f55bafa4da81de4fb9276743fa66ff11edd0149af9caae7ecba3afa3b8704217552634973373aaaf98f20f64fa95a84")
+sha256sums=("SKIP"
+            "1ee4e5f8471ef60a209d9ae6e630b7ca066cda295be54e3e95630b25a259db00")
 
 pkgver() {
 	cd "$_pkgname"
