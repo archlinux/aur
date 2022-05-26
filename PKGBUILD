@@ -1,11 +1,15 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Javier Tia <javier dot tia at gmail dot com>
+
 pkgname=python-stormssh
-_module='stormssh'
+_module=stormssh
 pkgver=0.7.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Management commands to ssh config files."
 url="http://github.com/emre/storm"
-depends=('python-paramiko' 'python-flask' 'python-termcolor')
-makedepends=('python-setuptools')
+depends=(python-paramiko python-flask python-termcolor python-six)
+makedepends=(python-setuptools)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
