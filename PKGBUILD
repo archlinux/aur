@@ -6,11 +6,11 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-5.17
+_srcname=linux-5.18
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.17.7
-pkgrel=1
+pkgver=5.18.0
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -63,8 +63,8 @@ source=(
 # source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('07321a70a48d062cebd0358132f11771'
-         '5dc58208abd2ad11ad2aa67fadf1c66f'
+md5sums=('58e80452e2d8e1993cd7ec95e697ab5a'
+         '7d9f4609119a7ae169cf7b7cb9121537'
          '7a18066683f3351b2bbd2653db783f80'
          '74baf0cb243b3abd5e38f0131c95408f'
          '947f64e1c0eec0564cb683940a5af51f'
@@ -73,9 +73,9 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          '5cf059c6de6dbee8d20041dcb735f5b1'
          'f0826f12d7b1f597fba32913e8580543'
          '714a3df875f3a05aee07c7c464ad3fe0'
-         'c6bb7c8ce8d41c93d5c2b70f4110135f'
-         'abe164c89da5fb50bb4c866c1d5fe03b'
-         '72a95b87caccf7f36dff15ed1e4a6df9'
+         'f585248da27f4a1a2ae00fcef89ad92e'
+         'ab514581687e4bb1f107a3692bba4bf3'
+         'b45a181d414c98d99fe3231dc56ee38d'
          'f8aa3197a5c1e6d01cb1809c31cc2d92'
          'eda5ceb6d7f63318bba5ec63c601ae93'
          'a709f3089148690f41c739275e66e9b0'
@@ -91,11 +91,10 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          'f5e2e35d9f0955cef5cf2332f901ff09'
          'b36af4f711a0aeb3f0edeb522a9e97bf'
          'dafb6c0da0e1c6be55c18fc50c850fab'
-         'ce726485a1ab9c726037aa02fdfa15f1'
+         'ffda40aab9bcfa1e32c644381030fd83'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77'
-         'c942f79b0f310ca6e8d5828fad539a7f')
+         '3dc88030a8f2f5a5f97266d99b149f77')
 
 prepare() {
   cd ${_srcname}
@@ -112,7 +111,7 @@ prepare() {
   # patches
   patch -p1 < ../0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
   patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
-  patch -p1 < ../0012-arm64-h6-gpu-devfreq-enable.patch
+  # patch -p1 < ../0012-arm64-h6-gpu-devfreq-enable.patch
 
   patch -p1 < ../0012-fix-h6-emmc.patch
   patch -p1 < ../0013-x-fix-h6-emmc-dts.patch
@@ -187,8 +186,9 @@ build() {
 
 _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=('coreutils' 'kmod' 'mkinitcpio>=0.7')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'firmware-tqc-a01: firmware for TQC A01 WiFi/Bluetooth')
   provides=("linux=${pkgver}" "WIREGUARD-MODULE")
   replaces=('linux-armv8')
   conflicts=('linux')

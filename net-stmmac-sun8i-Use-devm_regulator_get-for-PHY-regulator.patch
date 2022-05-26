@@ -41,10 +41,8 @@ index 09644ab0d87a..c0c8ce1f8b00 100644
 +		return ret;
  	}
  
- 	ret = clk_prepare_enable(gmac->tx_clk);
-@@ -1045,8 +1043,7 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
- 
- 	clk_disable_unprepare(gmac->tx_clk);
+    if (gmac->use_internal_phy) {
+@@ -1045,6 +1043,5 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
  
 -	if (gmac->regulator)
 -		regulator_disable(gmac->regulator);

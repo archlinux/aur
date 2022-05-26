@@ -28,15 +28,14 @@ index b44f14c278ca..afa2a61d7ec8 100644
   * @rst_ephy:			reference to the optional EPHY reset for
   *				the internal PHY
   * @variant:			reference to the current board variant
-@@ -73,6 +75,7 @@ struct sunxi_priv_data {
- 	struct clk *tx_clk;
+@@ -73,5 +75,6 @@ struct sunxi_priv_data {
  	struct clk *ephy_clk;
  	struct regulator *regulator_phy;
 +	struct regulator *regulator_phy_io;
  	struct reset_control *rst_ephy;
  	const struct emac_variant *variant;
  	struct regmap_field *regmap_field;
-@@ -573,10 +576,16 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
+@@ -573,9 +576,15 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
  	struct sunxi_priv_data *gmac = priv;
  	int ret;
  
@@ -53,9 +52,7 @@ index b44f14c278ca..afa2a61d7ec8 100644
 +		goto err_disable_regulator_phy_io;
  	}
  
- 	ret = clk_prepare_enable(gmac->tx_clk);
-@@ -597,6 +606,8 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
- 	clk_disable_unprepare(gmac->tx_clk);
+@@ -597,5 +606,7 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
  err_disable_regulator:
  	regulator_disable(gmac->regulator_phy);
 +err_disable_regulator_phy_io:
@@ -63,8 +60,7 @@ index b44f14c278ca..afa2a61d7ec8 100644
  
  	return ret;
  }
-@@ -1045,6 +1056,7 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
- 	clk_disable_unprepare(gmac->tx_clk);
+@@ -1045,5 +1056,6 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
  
  	regulator_disable(gmac->regulator_phy);
 +	regulator_disable(gmac->regulator_phy_io);

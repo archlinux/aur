@@ -16,11 +16,10 @@ diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/eth
 index c0c8ce1f8b00..b44f14c278ca 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-@@ -57,20 +57,22 @@ struct emac_variant {
+@@ -57,18 +57,20 @@ struct emac_variant {
  };
  
  /* struct sunxi_priv_data - hold all sunxi private data
-- * @tx_clk:	reference to MAC TX clock
 - * @ephy_clk:	reference to the optional EPHY clock for the internal PHY
 - * @regulator:	reference to the optional regulator
 - * @rst_ephy:	reference to the optional EPHY reset for the internal PHY
@@ -29,7 +28,6 @@ index c0c8ce1f8b00..b44f14c278ca 100644
 - * @internal_phy_powered: Does the internal PHY is enabled
 - * @use_internal_phy: Is the internal PHY selected for use
 - * @mux_handle:	Internal pointer used by mdio-mux lib
-+ * @tx_clk:			reference to MAC TX clock
 + * @ephy_clk:			reference to the optional EPHY clock for
 + *				the internal PHY
 + * @regulator_phy:		reference to the optional regulator
@@ -42,7 +40,6 @@ index c0c8ce1f8b00..b44f14c278ca 100644
 + * @mux_handle:			Internal pointer used by mdio-mux lib
   */
  struct sunxi_priv_data {
- 	struct clk *tx_clk;
  	struct clk *ephy_clk;
 -	struct regulator *regulator;
 +	struct regulator *regulator_phy;
@@ -61,9 +58,7 @@ index c0c8ce1f8b00..b44f14c278ca 100644
  		return ret;
  	}
  
-@@ -594,8 +596,7 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
- err_disable_clk:
- 	clk_disable_unprepare(gmac->tx_clk);
+@@ -594,6 +596,5 @@ static int sun8i_dwmac_init(struct platform_device *pdev, void *priv)
  err_disable_regulator:
 -	if (gmac->regulator)
 -		regulator_disable(gmac->regulator);
@@ -71,9 +66,7 @@ index c0c8ce1f8b00..b44f14c278ca 100644
  
  	return ret;
  }
-@@ -1043,7 +1044,7 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
- 
- 	clk_disable_unprepare(gmac->tx_clk);
+@@ -1043,5 +1044,5 @@ static void sun8i_dwmac_exit(struct platform_device *pdev, void *priv)
  
 -	regulator_disable(gmac->regulator);
 +	regulator_disable(gmac->regulator_phy);
