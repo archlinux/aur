@@ -1,0 +1,12 @@
+post_install() {
+    echo "Creating kavita user"
+    useradd kavita
+    chown -R kavita /opt/kavita
+    echo "Done"
+    echo "To run, systemctl start kavita"
+    echo "site at localhost:5000"
+}
+
+post_remove() {
+    userdel kavita
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=Kavita Server
+After=network.target
+
+[Service]
+User=kavita
+Group=kavita
+Type=simple
+WorkingDirectory=/opt/kavita
+ExecStart=/opt/kavita/Kavita
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
