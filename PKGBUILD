@@ -3,7 +3,7 @@
 
 _pkgname=gyroflow
 pkgname=${_pkgname}-git
-pkgver=1.0.1.22.g304b71f
+pkgver=1.0.1.r22.g304b71f
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data (Git version)"
 arch=("x86_64")
@@ -22,8 +22,8 @@ sha256sums=("SKIP"
             "1ee4e5f8471ef60a209d9ae6e630b7ca066cda295be54e3e95630b25a259db00")
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

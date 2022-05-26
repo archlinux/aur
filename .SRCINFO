@@ -1,6 +1,6 @@
 pkgbase = gyroflow-git
 	pkgdesc = Video stabilization using gyroscope data (Git version)
-	pkgver = 1.0.1.22.g304b71f
+	pkgver = 1.0.1.r22.g304b71f
 	pkgrel = 1
 	url = https://gyroflow.xyz/
 	arch = x86_64
