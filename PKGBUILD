@@ -3,7 +3,7 @@
 
 pkgname=python-textract
 _name=textract
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Extract text from any document. No muss. No fuss."
 arch=('any')
@@ -27,12 +27,12 @@ optdepends=('antiword: .doc support'
             'python-xlrd: .xls and .xlsx support'
             'sox: audio support'
             'unrtf: .rtf support')
-source=(https://files.pythonhosted.org/packages/28/8e/c3aa0592e54c6317685301af18fdb9f3e5bf39ca9cf57bc65a350ad9b80b/$_name-$pkgver.tar.gz
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
         make-dependencies-optional.patch)
-sha1sums=('c607f1a2354433136b5a885e67aa2deb51571a4b'
-          '66ea6d7430cc98f0b498880d91756677593e03e9')
-sha256sums=('35ac0302e2dbe53eb8d513b4cf0741264ea89a695fd89a3d48e3bd94d517cef6'
-            'e24c8c40fe65d95d3a0fd395b943312205029003c94e29081f860dd42ddba0e0')
+sha1sums=('f5f9ef418288e9527e6fe2566f9c9a07a2cec808'
+          '421fc9b8674b9df0e3d6cefd3b67de736c849dab')
+sha256sums=('68f0f09056885821e6c43d8538987518daa94057c306679f2857cc5ee66ad850'
+            '398684c8f94f10c4cc64646520d96322d35f7309533332bb128956587fd362f4')
 
 prepare() {
   cd "$_name-$pkgver"

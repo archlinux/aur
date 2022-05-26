@@ -2,7 +2,7 @@ diff --git a/requirements/python b/requirements/python
 index 01b7610..583a56e 100644
 --- a/requirements/python
 +++ b/requirements/python
-@@ -1,14 +1,6 @@
+@@ -1,13 +1,6 @@
  # This file contains all python dependencies that are required by the textract
  # package in order for it to properly work.
  
@@ -10,7 +10,6 @@ index 01b7610..583a56e 100644
 -beautifulsoup4~=4.8.0
 -chardet==3.*
 -docx2txt~=0.8
--EbookLib==0.*
 -extract-msg<=0.29.* #Last with python2 support
 -pdfminer.six==20191110 #Last with python2 support
 -python-pptx~=0.6.18
