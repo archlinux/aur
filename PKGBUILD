@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r89.g5ec326ba
-pkgrel=1
+pkgver=2.7.2.r92.ge2f24094
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -28,17 +28,19 @@ pkgver(){
 }
 prepare(){
     cd "${srcdir}/SteamTools"
-    [[ -d "${srcdir}/dotnet-sdk" ]] && rm -rf "${srcdir}/dotnet-sdk"
     bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk" --channel Current --no-path
     git submodule update --init --recursive
-    cp "${srcdir}"/Credentials-Public/*.pfx .
+    for key in aes-key.pfx rsa-public-key-debug.pfx rsa-public-key-release.pfx
+    do
+        cp "${srcdir}/Credentials-Public/${key}" ${key}
+    done
     PATH="${srcdir}/dotnet-sdk:${PATH}" dotnet workload install android
 }
 check(){
     cd "${srcdir}/SteamTools"
     PATH="${srcdir}/dotnet-sdk:${PATH}"
     dotnet test ./tests/Common.UnitTest/Common.UnitTest.csproj -c "Release"
-    dotnet test ./tests/ST.Client.UnitTest/ST.Client.UnitTest.csproj -c "Release" || true # may failed because no libSkiaSharp.so
+    dotnet test ./tests/ST.Client.UnitTest/ST.Client.UnitTest.csproj -c "Release"
     dotnet test ./tests/ST.Client.Desktop.UnitTest/ST.Client.Desktop.UnitTest.csproj -c "Release"
     dotnet test ./tests/ST.Client.Desktop.UnitTest/ST.Client.Desktop.UnitTest.csproj
 }
