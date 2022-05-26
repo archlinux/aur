@@ -1,14 +1,14 @@
 
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=huiontablet
-pkgver=v15.0.0.80.202204090856
+pkgver=v15.0.0.89.202205241352
 pkgrel=1
 pkgdesc="Official Huion tablet drivers"
 arch=('x86_64')
 url="https://www.huion.com/download/"
 license=('unknown')
 source=("https://driverdl.huion.com/driver/Linux/HuionTablet_$pkgver.$arch.tar.xz")
-md5sums=("45ca87801f19c193992e7c5cc0b87739")
+md5sums=("cb57fc99ce6eec949841143e4945a10c")
 
 prepare() {
   cd "${srcdir}"
