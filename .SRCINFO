@@ -16,8 +16,7 @@ pkgbase = markmywords-git
 	depends = webkit2gtk
 	provides = markmywords
 	conflicts = markmywords
-	source = git://github.com/voldyman/MarkMyWords.git
+	source = git+https://github.com/voldyman/MarkMyWords.git
 	md5sums = SKIP
 
 pkgname = markmywords-git
-

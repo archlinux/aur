@@ -18,7 +18,7 @@ makedepends=('vala' 'gobject-introspection' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install='gschemas.install'
-source=("git://github.com/voldyman/MarkMyWords.git")
+source=("git+https://github.com/voldyman/MarkMyWords.git")
 md5sums=('SKIP')
 
 pkgver() {
