@@ -1,21 +1,15 @@
 pkgbase = python-stormssh
-	pkgdesc = Manage your SSH like a boss
+	pkgdesc = Management commands to ssh config files.
 	pkgver = 0.7.0
-	pkgrel = 2
-	url = https://github.com/emre/storm
+	pkgrel = 1
+	url = http://github.com/emre/storm
 	arch = any
 	license = MIT
-	makedepends = python
-	depends = python
-	depends = python-six
+	makedepends = python-setuptools
 	depends = python-paramiko
-	depends = python-termcolor
 	depends = python-flask
-	provides = storm=0.7.0
-	conflicts = python2-stormssh-git
-	replaces = python2-stormssh-git
-	source = https://github.com/emre/storm/archive/0.7.0.tar.gz
-	sha256sums = c2e5da1cb4a27b309ed7e470c5acebe2822f7928c5ef0e38f9dade247cf9a6c6
+	depends = python-termcolor
+	source = https://files.pythonhosted.org/packages/source/s/stormssh/stormssh-0.7.0.tar.gz
+	sha256sums = 8d034dcd9487fa0d280e0ec855d08420f51d5f9f2249f932e3c12119eaa53453
 
 pkgname = python-stormssh
-

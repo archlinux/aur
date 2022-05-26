@@ -1,32 +1,22 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Javier Tia <javier dot tia at gmail dot com>
-
-pkgname='python-stormssh'
-_name=storm
+pkgname=python-stormssh
+_module='stormssh'
 pkgver=0.7.0
-pkgrel=2
-pkgdesc='Manage your SSH like a boss'
-url='https://github.com/emre/storm'
-arch=('any')
+pkgrel=1
+pkgdesc="Management commands to ssh config files."
+url="http://github.com/emre/storm"
+depends=('python-paramiko' 'python-flask' 'python-termcolor')
+makedepends=('python-setuptools')
 license=('MIT')
-depends=('python' 'python-six' 'python-paramiko' 'python-termcolor' 'python-flask')
-conflicts=('python2-stormssh-git')
-replaces=('python2-stormssh-git')
-makedepends=('python')
-provides=("${_name}=${pkgver}")
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c2e5da1cb4a27b309ed7e470c5acebe2822f7928c5ef0e38f9dade247cf9a6c6')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('8d034dcd9487fa0d280e0ec855d08420f51d5f9f2249f932e3c12119eaa53453')
 
-# Enable for tests
-# check() {
-  # cd "${srcdir}/${_name}-${pkgver}"
-  # python setup.py check
-# }
-
-package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+  cd "${srcdir}/${_module}-${pkgver}"
+  python setup.py build
 }
 
-# vim:set ft=sh ts=2 sw=2 et:
+package() {
+  cd "${srcdir}/${_module}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
