@@ -3,7 +3,7 @@
 
 pkgname=terminal-parrot
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 conflicts=('terminal-parrot-git')
 pkgdesc="Party parrot (http://cultofthepartyparrot.com) for your terminal"
 arch=('any')
@@ -18,7 +18,8 @@ prepare() {
     mkdir -p go
     echo $srcdir
     export GOPATH="$srcdir/go"
-    go get github.com/nsf/termbox-go
+    go mod init github.com/nsf/termbox-go
+    go mod tidy
 }
 
 build() {

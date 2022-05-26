@@ -1,7 +1,7 @@
 pkgbase = terminal-parrot
 	pkgdesc = Party parrot (http://cultofthepartyparrot.com) for your terminal
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmhobbs/terminal-parrot
 	arch = any
 	license = MIT
