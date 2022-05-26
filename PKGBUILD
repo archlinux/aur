@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 # shellcheck disable=SC2010,SC2016
 pkgname=minc-toolkit-v2
-pkgver=1.9.18.1
+pkgver=1.9.18.2
 pkgrel=1
 pkgdesc="Medical Imaging NetCDF Toolkit"
 arch=('x86_64')
@@ -31,14 +31,17 @@ depends=(
     'perl'
     'zlib'
 )
-makedepends=('git' 'cmake' 'bc')
+makedepends=(
+    'bc'
+    'cmake'
+    'gcc-fortran'
+    'git'
+)
 provides=('minc-toolkit')
 source=("git+https://github.com/BIC-MNI/minc-toolkit-v2.git#tag=release-${pkgver}"
-        'FindNIFTI.patch'
-        'xdisp.patch')
+        'FindNIFTI.patch')
 sha256sums=('SKIP'
-            'bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a'
-            '968c27cac3ce6698940b3aa511f6ce7ff6dadad219b24427fffdcf0ec37a2aab')
+            'bfff8b8b72c7ac39bc457709d482bb205d94c1303304ae15fd3a3299bc087b2a')
 
 _itk=$(ls /opt/insight-toolkit4/lib/cmake | grep -m1 ITK)
 _install_prefix="/usr/share/minc"
@@ -85,9 +88,6 @@ prepare() {
         's/enum {false=0, true=1};//' \
         minctools/progs/mincdump/mincdump.h
 
-    # Fix link error due to multiple symbol definitions
-    (cd "${srcdir}/${pkgname}/xdisp" && git apply "${srcdir}/xdisp.patch")
-
     rm -rf build
     mkdir build
     cd build
@@ -97,6 +97,7 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX:PATH="${_install_prefix}" \
         -DCMAKE_CXX_FLAGS='-fdiagnostics-color=always' \
         -DCMAKE_C_FLAGS='-fdiagnostics-color=always' \
+        -DLIBMINC_USE_SYSTEM_NIFTI:BOOL=ON \
         -DMT_BUILD_ABC:BOOL=ON   \
         -DMT_BUILD_ANTS:BOOL=OFF   \
         -DMT_BUILD_C3D:BOOL=ON   \
