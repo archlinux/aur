@@ -2,7 +2,7 @@
 
 pkgname=python-botoy
 _gitname=${pkgname#python-}
-pkgver=8.2.3
+pkgver=8.3
 pkgrel=1
 pkgdesc="OPQ/IOTQQ/IOTBot的一个Python开发助手"
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python-httpx'
          'python-pydantic'
          'python-colorama')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xiyaowong/botoy/archive/v${pkgver}.tar.gz")
-sha256sums=('734adc778eb2f5b1407115e0c8317f600461b250f882ff3c2af789fe536955f5')
+sha256sums=('90c66bc8617a5dbbf113038d51922df0488996501180f63256cfd76f72d8cae0')
 
 build() {
   cd ${_gitname}-${pkgver}
