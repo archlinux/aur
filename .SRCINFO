@@ -1,14 +1,14 @@
 pkgbase = tpl-git
 	pkgdesc = C library for C data type serialization.
 	pkgver = v1.6.1.r16.f8138adr28.f8138ad
-	pkgrel = 1
+	pkgrel = 2
 	url = http://troydhanson.github.io/tpl/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = make
 	makedepends = git
-	makedepends = autoreconf
+	makedepends = autoconf
 	provides = tpl
 	source = tpl::git+https://github.com/troydhanson/tpl.git
 	sha256sums = SKIP
