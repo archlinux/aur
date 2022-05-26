@@ -1,2 +1,2 @@
 secret = "<secret here>"
-bind-to = "0.0.0.0:443"
+bind-to = "0.0.0.0:4443"
