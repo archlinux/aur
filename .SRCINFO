@@ -1,7 +1,7 @@
 pkgbase = pyside6-tools
 	pkgdesc = Tools for PySide6
-	pkgver = 6.0.0
-	pkgrel = 3
+	pkgver = 6.3.0
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	license = LGPL
@@ -9,8 +9,9 @@ pkgbase = pyside6-tools
 	makedepends = shiboken6
 	depends = pyside6
 	depends = python-pyqt6
+	depends = qt6-tools
 	conflicts = pyside2-tools
-	source = https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.0.0-src/pyside-setup-opensource-src-6.0.0.tar.xz
-	sha256sums = f47a4598118510feecc96b9d4b01063d206ac9a1240af3545163d2891db27dd4
+	source = https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.3.0-src/pyside-setup-opensource-src-6.3.0.tar.xz
+	sha256sums = 9d808d617c8daa2fe074f9a481478dc923a9799b5c89f6c5af38ece111ed57e2
 
 pkgname = pyside6-tools
