@@ -1,11 +1,10 @@
 pkgbase = helm-s3
-	pkgdesc = Helm plugin that allows to use AWS S3 as a [private] chart repository
+	pkgdesc = Helm plugin that allows to set up a chart repository in AWS S3
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/hypnoglow/helm-s3
 	install = helm-s3.install
 	arch = x86_64
-	groups = helm-plugins
 	license = MIT
 	makedepends = go
 	depends = helm
@@ -13,4 +12,3 @@ pkgbase = helm-s3
 	sha256sums = 0828ba5f4024a9cb98a5a41f42805fa93c7ed0734881d40e7e41ec74727764e0
 
 pkgname = helm-s3
-
