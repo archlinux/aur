@@ -63,9 +63,14 @@ package() {
 	if [[ "$CARCH" == "x86_64" ]]; then
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox" "${pkgdir}/usr/bin/sunvox"
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86_64/sunvox_opengl" "${pkgdir}/usr/bin/sunvox_opengl"
-	else
+	elif [[ "$CARCH" == "i686" ]]; then
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox" "${pkgdir}/usr/bin/sunvox"
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox_lofi" "${pkgdir}/usr/bin/sunvox_lofi"
+	else
+		printf -v _archlist -- "%s, " "${arch[@]}"
+		printf -- ":: error: unsupported architecture '%s', must be one of " "${CARCH}"
+		printf -- "%s\n" "${_archlist%, }"
+		exit 2
 	fi
 
 	# preserve distributed structure of source package to install all
