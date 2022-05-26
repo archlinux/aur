@@ -2,10 +2,11 @@
 
 pkgname="nyaash"
 pkgver="1.1.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Shell script CLI shell script to query nyaa instances."
 arch=('any')
 depends=('lynx')
+optdepends=('noto-fonts-cjk: chinese, japanese, and korean characters')
 license=('GPL')
 url="https://notabug.org/BezierQuadratic/nyaash"
 source=("https://notabug.org/BezierQuadratic/nyaash/archive/$pkgver.tar.gz")
