@@ -1,0 +1,14 @@
+pkgbase = alsa-ucm-conf-git
+	pkgdesc = ALSA Use Case Manager configuration (and topologies), git version
+	pkgver = 1.2.6.3.461.15a1250.d41d8cd98f00b204e9800998ecf8427e
+	pkgrel = 1
+	url = https://alsa-project.org/
+	arch = any
+	license = BSD
+	provides = alsa-ucm-conf
+	conflicts = alsa-ucm-conf
+	source = alsa-ucm-conf::git+https://github.com/alsa-project/alsa-ucm-conf.git#branch=master
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = alsa-ucm-conf-git
