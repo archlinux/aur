@@ -7,10 +7,10 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc='Set Content-Type mime-type automatically from the magic bytes of some file! (Similar to file(1))'
 arch=('x86_64')
-url="https://github.com/FadedCoder/${_name}"
+url="https://github.com/Yureien/${_name}"
 license=('BSD')
 depends=('nginx' 'file')
-makedepends=('nginx-src')
+makedepends=('nginx-src' 'make')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/FadedCoder/${_name}/archive/v${pkgver}.tar.gz")
 sha256sums=('9e7e865a99c2a99af720ec3269128a11f74b6fae0cdcdda396522ec5c06108ff')
 
