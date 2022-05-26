@@ -1,7 +1,7 @@
 # Maintainer: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-qt5-git
-pkgver=3.4.1.r64.g932f817a6
+pkgver=3.5.r4.g6ec0d337e
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
