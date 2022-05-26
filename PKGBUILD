@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunkforwarder
-basever=8.2.5
-splunkver=${basever}-77015bc7a462
+basever=8.2.6
+splunkver=${basever}-a6fe1ee8894b
 # Splunk is inconsistent with the length of their version numbers
 if [ ${#basever} -gt 5 ]; then
 	pkgver=${basever}
@@ -22,8 +22,8 @@ source_aarch64=("https://download.splunk.com/products/universalforwarder/release
 sha256sums=('8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152'
             '27d1d172add8c64a275ec3356f0fa0b9d56036a7e64b7b882e066a67f6173b5b'
             'bca1b7720a827973f1c959cb78d788324f47dd6fcfc03bf4452c457f2d044db5')
-sha256sums_x86_64=('69029f1c9979c27e700667b1dec73a0f5de11f2cc7e1d523aac2b617a51791a7')
-sha256sums_aarch64=('d5b2dbd2e8a73025659f9ffa97412bc6e6903339b46271c561f5cd9593b5c60e')
+sha256sums_x86_64=('f10513c493bcfa822485aa71a52c2b2c06943f77392684b1d67f26299da821fc')
+sha256sums_aarch64=('1b4ca7550dffda4554042d4b619722b8d51f087f641154bd393b1a56eac5388d')
 
 package() {
 	cd "$srcdir"
