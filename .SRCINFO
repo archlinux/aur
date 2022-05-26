@@ -1,6 +1,6 @@
 pkgbase = dahdi-linux-ck-git-dkms
 	pkgdesc = DAHDI drivers for Asterisk, patched to support older cards
-	pkgver = git
+	pkgver = 20220326.g9b3d416
 	pkgrel = 1
 	url = http://www.asterisk.org/
 	arch = i686
@@ -13,4 +13,3 @@ pkgbase = dahdi-linux-ck-git-dkms
 	sha256sums = SKIP
 
 pkgname = dahdi-linux-ck-git-dkms
-
