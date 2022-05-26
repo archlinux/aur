@@ -1,4 +1,4 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@proton.me>
 # Contributor: ny-a <nyaarch64 at gmail dot com>
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Jean Lucas <jean@4ray.co>
