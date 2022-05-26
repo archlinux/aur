@@ -7,7 +7,7 @@ pkgname=(
   python2-wxpython3-gtk3
 )
 pkgver=3.0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Classic wxWidgets GTK GUI toolkit (version 3) for Python2."
 arch=(
   'i686'
@@ -51,7 +51,6 @@ sha256sums=(
   '559b076f206c44e66b33857f49068d66f59a3fc15b97972486e32a8105885554'
 )
 
-options+=('ccache')
 
 prepare() {
   cd "${srcdir}"

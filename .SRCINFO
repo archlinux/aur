@@ -1,7 +1,7 @@
 pkgbase = python2-wxpython3
 	pkgdesc = Classic wxWidgets GTK GUI toolkit (version 3) for Python2.
 	pkgver = 3.0.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.wxpython.org
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = python2-wxpython3
 	makedepends = python2
 	makedepends = wxgtk2
 	makedepends = wxgtk3
-	options = ccache
 	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
 	source = fix-plot.patch
 	source = fix-editra-removal.patch
