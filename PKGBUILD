@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <dev at codyps.com>
 pkgname=fuse-archive
-pkgver=0.1.9
+pkgver=0.1.11
 pkgrel=1
 epoch=
 pkgdesc="FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/google/fuse-archive"
 license=('Apache-2.0')
 groups=()
-depends=()
+depends=(fuse2)
 makedepends=()
 checkdepends=(go)
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('22fb9df77583b36595d370b3d6151349b530ee45f3f9e278255cc020cefb0667')
+sha256sums=('1ca30ec5064fccc3329adf821689dfd3190517d7555e6c8eba6f62f2b011e8bc')
 validpgpkeys=()
 
 build() {
