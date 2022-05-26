@@ -1,7 +1,7 @@
-diff --git a/common/inc/nv.h b/common/inc/nv.h
+diff --git a/kernel/common/inc/nv.h b/kernel/common/inc/nv.h
 index def0551..f7db7ed 100644
---- a/common/inc/nv.h
-+++ b/common/inc/nv.h
+--- a/kernel/common/inc/nv.h
++++ b/kernel/common/inc/nv.h
 @@ -12,6 +12,11 @@
  #ifndef _NV_H_
  #define _NV_H_
@@ -14,11 +14,11 @@ index def0551..f7db7ed 100644
  #include <nvlimits.h>
  #include <nvtypes.h>
  #include <nvCpuUuid.h>
-diff --git a/common/inc/pci-dma-compat.h b/common/inc/pci-dma-compat.h
+diff --git a/kernel/common/inc/pci-dma-compat.h b/kernel/common/inc/pci-dma-compat.h
 new file mode 100644
 index 0000000..4e94d4e
 --- /dev/null
-+++ b/common/inc/pci-dma-compat.h
++++ b/kernel/common/inc/pci-dma-compat.h
 @@ -0,0 +1,130 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/* include this file if the platform implements the dma_ DMA Mapping API
