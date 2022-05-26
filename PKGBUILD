@@ -9,7 +9,7 @@ url="http://troydhanson.github.io/tpl/"
 license=('Apache')
 # depends=()
 
-makedepends=('make' 'git' 'autoreconf')
+makedepends=('make' 'git' 'autoconf')
 optdepends=()
 provides=('tpl')
 
