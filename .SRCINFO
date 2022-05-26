@@ -1,6 +1,6 @@
 pkgbase = python-astropy
 	pkgdesc = A community python library for astronomy
-	pkgver = 5.0.4
+	pkgver = 5.1
 	pkgrel = 1
 	url = http://www.astropy.org/
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = python-astropy
 	optdepends = python-pyarrow: To read/write Table objects from/to Parquet files
 	conflicts = python-pyfits
 	conflicts = python-vo
-	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-5.0.4.tar.gz
-	sha512sums = 9076b364d7da2ba9a6a43946be5050261eabc46ef755c65bf7733927d26dd0fa23e0f95ef9a6992f4871319fef040972c4449de9bfa24421cc3711716dfb136c
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-5.1.tar.gz
+	sha512sums = fe81429734be6184a9f4321fc34cf9ccf174eb4ee61deeb311e497adabe4321c388476ad2174c7756848575246caadf42b71c5f3587815761b34aa998641c37f
 
 pkgname = python-astropy
