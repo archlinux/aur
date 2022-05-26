@@ -1,12 +1,12 @@
 pkgbase = taywee-args
 	pkgdesc = A simple, small, flexible, single-header C++11 argument parsing library
-	pkgver = 6.2.7
-	pkgrel = 1
+	pkgver = 6.4.1
+	pkgrel = 2
 	url = https://github.com/Taywee/args
 	arch = any
 	license = MIT
-	source = https://github.com/Taywee/args/archive/refs/tags/6.2.7.tar.gz
-	sha512sums = a6491b2680979feb2f09e7ffb4f3c939b75057b6b4b90136b6cb72eaf5a462d3079dfb5836744e53bf4946bd575d4449f87129d6e50045732d7fba11c2be57dd
-	b2sums = 4e82bef428fc3c671d72c6d7e60adf9f17bbe07ff05db04cf24a1547a8b8574f7e96ed17f5988ce379a94ed53267fe05e950521e4883cebb3b46a195e5b56209
+	source = https://github.com/Taywee/args/archive/refs/tags/6.4.1.tar.gz
+	sha512sums = 71426bef3db56e02c3d985127a6dbcef94f0de20b250219c248cd51bbbd2a1918b4d85d9ae08096120df8232b58633e9268ef0102c1bd1960d8a3d1ea5ec0473
+	b2sums = 862d700d313314992f7fc2e6ea1df5c7df81b9530f33c6120bc3f797ba60148442b51f16463c4229b26cfc0124a2040770cb4516334110181f3f3cbb3444f0a0
 
 pkgname = taywee-args
