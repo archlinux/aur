@@ -2,14 +2,14 @@
 
 pkgname=textpieces-git
 _pkgname=textpieces
-pkgver=3.0.2.r56.gc1e0f77
+pkgver=3.0.2.r60.g4d70027
 pkgrel=1
 pkgdesc="Small tool for quick text transformations such as hashes, encoding, decoding and so on"
 arch=('x86_64')
 url="https://github.com/liferooter/textpieces"
 license=('GPL3')
 depends=('json-glib' 'libadwaita' 'python-pyaml' 'gtksourceview5')
-makedepends=('git' 'meson' 'vala')
+makedepends=('git' 'blueprint-compiler' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
