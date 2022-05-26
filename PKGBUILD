@@ -5,7 +5,7 @@
 
 pkgname=sunvox
 pkgver=2.0e
-pkgrel=2
+pkgrel=3
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
