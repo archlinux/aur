@@ -1,9 +1,11 @@
-# Maintainer: Martin Patz <mailto at martin-patz.de>
+# Mantainer: Sneakatoo <corinne.9 at hotmail.it>
+# Contributor: Martin Patz <mailto at martin-patz.de>
 # Contributor: Nicky Heinimann <nicky.heinimann at posteo.de>
+# Contributor: Pellegrino Prevete <pellegrinoprevete at gmail.com>
 
 pkgname=indicator-sound-switcher
-pkgver=2.3.5.2
-pkgrel=2
+pkgver=2.3.8
+pkgrel=1
 pkgdesc="Sound input/output selector indicator for Linux."
 arch=('any')
 url="https://github.com/yktoo/indicator-sound-switcher"
@@ -12,7 +14,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-gobject' 'libkeybinder3' 'libappindicator-gtk3' 'pulseaudio')
 options=(!emptydirs)
 source=("https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('49c836b5d20c505a32971f4fbd2182af')
+sha256sums=('844a8ab2b674ebf62ab4933ed8d9a38756592ca912c3935488bb22468ed888f6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
