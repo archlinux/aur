@@ -9,7 +9,7 @@
 
 pkgname=anki-qt6
 pkgver=2.1.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt6 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -63,6 +63,15 @@ sha256sums=('e2df0055ee27a432b8e479ef180e02d30f1bb9674ce7305fd51d680160e936f8'
 '281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
 )
 
+_bazel_build() {
+    bazel build -c opt wheels
+    _status=$?
+    bazel shutdown
+    if [[ $_status -gt 0 ]]; then
+        exit $_status # or call false
+    fi
+}
+
 prepare(){
     cd "anki-$pkgver"
     # pro-actively prevent "module not found" error
@@ -86,7 +95,7 @@ If the build is failing retry the installation. This usually fixes the problem.
 A too slow internet connection can also hinder the dependency fetching process because of hardcoded timeouts in bazel.
 If the problem persists consider removing data in ~/.cache/bazel and your AUR manager cache (~/.cache/paru/clone/anki for paru) and retry again.
 ####################"
-    bazel build -c opt wheels
+    _bazel_build
 }
 
 package() {

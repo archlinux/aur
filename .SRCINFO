@@ -1,7 +1,7 @@
 pkgbase = anki-qt6
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt6 Build
 	pkgver = 2.1.52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
