@@ -53,8 +53,9 @@ build() {
 
 package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}"
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
 	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 	cp -a "${srcdir}"/icons/hicolor/* "${pkgdir}/usr/share/icons/hicolor/"
@@ -67,10 +68,29 @@ package() {
 		install -Dm755 "${srcdir}/sunvox/sunvox/linux_x86/sunvox_lofi" "${pkgdir}/usr/bin/sunvox_lofi"
 	fi
 
-	cp -a "${srcdir}"/sunvox/{examples,instruments,effects} "${pkgdir}/opt/${pkgname}/"
-	# enforce correct and consistent permissions
-	chmod -R 0644 "${pkgdir}/opt/${pkgname}"/* "${pkgdir}"/usr/share/icons/hicolor/*
-	find "${pkgdir}/opt/${pkgname}" "${pkgdir}"/usr/share/icons/hicolor -type d -print0 | xargs -0 chmod 0755
+	# preserve distributed structure of source package to install all
+	# provided support files, except for the `sunvox` directory, which only
+	# contains binaries for all architectures. Bash exclusion with
+	# `!(sunvox)` needs `shopt -s extglob`, so I'll just delete the
+	# unwanted copy to keep light on the shell feature requirements.
+	cp -a "${srcdir}/sunvox/"* "${pkgdir}/opt/${pkgname}/"
+	rm -r "${pkgdir}/opt/${pkgname}/sunvox"
+
+	# supplied documentation is replicated in expected system-wide location
+	cp -a "${srcdir}"/sunvox/docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	# enforce correct and consistent permissions. At least the examples/
+	# subdir is world-accessible by default, so rather err on the side of
+	# caution here, and set all permissions to a known good value.
+	chmod -R 0644 \
+	      "${pkgdir}/opt/${pkgname}"/* \
+	      "${pkgdir}/usr/share/doc/${pkgname}"/* \
+	      "${pkgdir}/usr/share/icons/hicolor"/*
+	find "${pkgdir}/opt/${pkgname}" \
+	     "${pkgdir}/usr/share/doc/${pkgname}" \
+	     "${pkgdir}/usr/share/icons/hicolor" \
+	     -type d -print0 | xargs -0 chmod 0755
 
 	install -Dm644 "${srcdir}/sunvox/docs/license/sunvox.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/sunvox/docs/license"/*  "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
