@@ -1,26 +1,27 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camillagui-backend
-pkgver=0.8.0
+pkgver=1.0.0.rc4
 pkgrel=1
 pkgdesc='Backend server for camillagui'
 url=https://github.com/HEnquist/camillagui-backend
 arch=(any)
 license=(GPL)
-install=camillagui.install
-source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v$pkgver.tar.gz
+source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v${pkgver/.rc/-rc}.tar.gz
         camillagui.install
         camillagui.service
         camillagui.yml)
-sha256sums=('186bb43ee44e459a9ace22ed1b0f2d45e2218f3b2c763cdabe6c9cb91b1ae110'
-            'c6786d57e06a59c204032358dec918b95a7a6c10a02956d37fcea92a5fdc7cd7'
+sha256sums=('8b61c3a18bbbdc1ed5e259e5e13122b698e3dff74e0ef708bd0b9f452232d6d6'
+            'f0fe7f27e1e41bb6f9e62d4659ec7fd7efcaed98b1c7ee44673220b9eba2929f'
             '816138c492d68e291375971a95f88e13d665a21e39202dfce7443c57b4d1d240'
-            '15c0f36e5bebdfda8eb6d8cc5e34d8a6982a0b13eaf73f2d7478f48da1fe5587')
+            'd2682fd4c0ae6ec9526a397e9419447e56b8652e2a1a8f53881290ec2e8079a2')
+
+install=camillagui.install
 
 build() {
     installdir=$srcdir/srv/http/settings/camillagui
-    mkdir -p $installdir
-    bsdtar xf v$pkgver.tar.gz --strip=1 -C $installdir
+    mkdir -p $installdir $installdir/build
+    bsdtar xf v${pkgver/.rc/-rc}.tar.gz --strip=1 -C $installdir
     rm $installdir/{.gitignore,*.md,*.txt}
     rm -rf $installdir/{.github,build}
     sed -i 's/"build")$/"build", follow_symlinks=True)/' $installdir/backend/routes.py
