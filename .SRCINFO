@@ -1,0 +1,14 @@
+pkgbase = open-in-mpv
+	pkgdesc = Handler for open-in-mpv, a simple web extension which helps open video in mpv.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/Baldomo/open-in-mpv
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = make
+	depends = mpv
+	source = open-in-mpv-2.0.2.zip::https://github.com/Baldomo/open-in-mpv/archive/refs/tags/v2.0.2.zip
+	sha256sums = ab55c5d37abb03504fdebf157e03fa5b338ad72cb63d3fc94ab41debee9fa317
+
+pkgname = open-in-mpv
