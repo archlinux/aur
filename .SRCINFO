@@ -1,14 +1,14 @@
 pkgbase = ttf-inconsolata2
-	pkgdesc = Monospace font. Last release compatible with Xft (dwm, dmenu, st, ...)
-	pkgver = 2.012
-	pkgrel = 2
+	pkgdesc = Inconsolata font. Ligature-free release compatible with Xft (dwm, dmenu, st, ...)
+	pkgver = 2.000
+	pkgrel = 1
 	url = https://www.google.com/fonts/specimen/Inconsolata
 	arch = any
 	license = custom:OFL
 	conflicts = ttf-inconsolata
-	source = ttf-inconsolata2-2.012.zip::https://github.com/googlefonts/Inconsolata/archive/refs/tags/v2.012.zip
+	source = ttf-inconsolata2-2.000.zip::https://github.com/googlefonts/Inconsolata/archive/refs/tags/v.2.000.zip
 	source = 75-ttf-inconsolata.conf
-	sha256sums = 58f04258291886edebcf95685e6a72ba34352b716b65fbc026265c66d9d80516
+	sha256sums = SKIP
 	sha256sums = f29a1b45c96ee05e64c03181b587f48a5d090839b7356eb4f48fb752a17a899f
 
 pkgname = ttf-inconsolata2
