@@ -1,0 +1,24 @@
+pkgbase = linkerd-bin
+	pkgdesc = Ultralight, security-first service mesh for Kubernetes. Main repo for Linkerd 2.x
+	pkgver = 2.11.2
+	pkgrel = 1
+	url = https://linkerd.io/
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	depends = glibc
+	source_x86_64 = linkerd-x86_64::https://github.com/linkerd/linkerd2/releases/download/stable-2.11.2/linkerd2-cli-stable-2.11.2-linux-amd64
+	sha256sums_x86_64 = 269d2f1ca468ac67f05bcfeb3524e8203dbc003643a4b003d1001acfc17ff7d9
+	source_arm = linkerd-arm::https://github.com/linkerd/linkerd2/releases/download/stable-2.11.2/linkerd2-cli-stable-2.11.2-linux-arm
+	sha256sums_arm = 5c0346b298c3f989b425e54f48dd13ef2d83f241abc1a88f7e415d4f1f15fcef
+	source_armv6h = linkerd-armv6h::https://github.com/linkerd/linkerd2/releases/download/stable-2.11.2/linkerd2-cli-stable-2.11.2-linux-arm
+	sha256sums_armv6h = 5c0346b298c3f989b425e54f48dd13ef2d83f241abc1a88f7e415d4f1f15fcef
+	source_armv7h = linkerd-armv7h::https://github.com/linkerd/linkerd2/releases/download/stable-2.11.2/linkerd2-cli-stable-2.11.2-linux-arm
+	sha256sums_armv7h = 5c0346b298c3f989b425e54f48dd13ef2d83f241abc1a88f7e415d4f1f15fcef
+	source_aarch64 = linkerd-aarch64::https://github.com/linkerd/linkerd2/releases/download/stable-2.11.2/linkerd2-cli-stable-2.11.2-linux-arm64
+	sha256sums_aarch64 = 5f596a0bb1aaa8fc0c3e7bcf442d242cf06817951dcc47ac022b819b20ae411e
+
+pkgname = linkerd-bin
