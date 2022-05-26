@@ -2,12 +2,11 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 # Current issues:
-# - eddie-tray don't build, depend on Community package libappindicator-gtk2
 # - msbuild vs xbuild
 # - target framework not v4.8
 
 pkgname=eddie-cli-git
-pkgver=2.21.7
+pkgver=2.21.8
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI - beta'
 arch=('i686' 'x86_64')
