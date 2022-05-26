@@ -63,6 +63,10 @@ package() {
     install -Dm0644 "resources/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
     install -Dm0644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
+    # gyroflow UI depends on those svg files
+    # See https://github.com/gyroflow/gyroflow/issues/353
+    cp -a resources/icons/svg/* "${pkgdir}/usr/share/pixmaps/"
+
     mkdir -p "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
