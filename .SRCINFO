@@ -1,6 +1,6 @@
 pkgbase = recaf-git
 	pkgdesc = A modern Java bytecode editor
-	pkgver = r2223.333a70d1
+	pkgver = r2266.4409f96c
 	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
