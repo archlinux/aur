@@ -21,6 +21,7 @@ package() {
 	cd "$srcdir/${_gitdir}"
 	mkdir -p ${pkgdir}/etc
 	mkdir -p ${pkgdir}/etc/systemd/system
+	mkdir -p ${pkgdir}/etc/udev/rules.d
 	mkdir -p ${pkgdir}/usr/lib/systemd/system-sleep
 	mkdir -p ${pkgdir}/usr/lib/systemd/system-shutdown
 	mkdir -p ${pkgdir}/usr/local/bin
@@ -29,4 +30,5 @@ package() {
 	install -m744 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
 	install -m744 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
 	install -m644 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
+	install -m644 60-neo-controller.rules ${pkgdir}/etc/udev/rules.d/60-neo-controller.rules
 }
