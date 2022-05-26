@@ -76,7 +76,7 @@ PKGCONFIG += python3 python3-embed
 
 # We use g++ on all platforms so switch on auto vectorization amongst other
 # things to speed up looping over ride file points
-QMAKE_CXXFLAGS += -O3
+#QMAKE_CXXFLAGS += -O3
 
 # Let us know where flex and bison are installed.
 # You may need to specify the full path if things don't work.
@@ -188,7 +188,7 @@ packagesExist(libusb) {
 
 # if you want video playback on training mode then
 # download and install vlc (videolan) from
-# ftp.videolan.org/pub/vlc/1.1.8 or http://download.videolan.org/vlc/ for 
+# ftp.videolan.org/pub/vlc/3.0.8 or http://download.videolan.org/vlc/ for 
 # your platform there are sdks for Mac and Windows. On Linux you
 # will need to use the latest distro (e.g. Meerkat
 # on Ubuntu) to be sure apt-get installs the latest
@@ -212,12 +212,6 @@ packagesExist(libvlc) {
 } else {
     DEFINES += GC_VIDEO_NONE 
 }
-
-# *** Mac users NOTE ***
-# On MAC you don't need libvlc since we use the
-# native QTKit (OSX framework) for video playback
-# using Quicktime and on 10.6 or higher Quicktime X
-#
 
 # if you want to resample with high fidelity we can use the
 # libsamplerate libraries, this is used in RideFile::resample()
@@ -282,12 +276,9 @@ macx {
 #DEFINES += GC_DROPBOX_CLIENT_ID=\\\"xxxxxxxxxxxxxxx\\\"
 #DEFINES += GC_DROPBOX_CLIENT_SECRET=\\\"xxxxxxxxxxxxxxx\\\"
 
-# if you have your own MAPQUEST KEY
-#DEFINES += GC_MAPQUESTAPI_KEY=\\\"xxxxxxxxxxxxxxxxxxxxxx\\\"
-
-# USING THE WITHINGS API (http://oauth.withings.com/api)
-#DEFINES += GC_WITHINGS_CONSUMER_KEY=\\\"xxxxxxxxxxxxxxx\\\"
-#DEFINES += GC_WITHINGS_CONSUMER_SECRET=\\\"xxxxxxxxxxxxxxx\\\"
+# USING THE WITHINGS API (http://oauth.withings.com/api, use https://www.goldencheetah.org as CALLBACK URL)
+#DEFINES += GC_NOKIA_CLIENT_ID=\\\"xxxxxxxxxxxxxxx\\\"
+#DEFINES += GC_NOKIA_CLIENT_SECRET=\\\"xxxxxxxxxxxxxxx\\\"
 
 # What video playback do you want?
 #DEFINES += GC_VIDEO_NONE             # dont add any video playback support

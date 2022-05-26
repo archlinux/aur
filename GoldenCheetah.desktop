@@ -1,9 +1,10 @@
 [Desktop Entry]
-Version=3.3.0
+Version=1.5
 Type=Application
 Name=GoldenCheetah
-Comment=Cycling Power Analysis Software.
+Comment=Performance Software for Cyclists, Runners, Triathletes and Coaches
 TryExec=/usr/bin/GoldenCheetah
 Exec=GoldenCheetah
-Icon=/usr/share/pixmaps/gc.png
-Keywords=Cycling;Training;Bike;Ride
+Icon=gc
+Categories=Science;Sports
+Keywords=Cycling;Training;Bike;Ride;Running;Triathlon
