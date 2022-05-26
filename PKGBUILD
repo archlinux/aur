@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Story Architect is a text editor for film, theatre, radio scripts or comic books."
 arch=('x86_64')
 url='https://starc.app/'
-license=('GPL3')
+license=('GPL3' 'custom')
 depends=('zlib' 'bash')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
@@ -28,9 +28,14 @@ prepare() {
 }
 
 package() {
+	# Install AppImage and bin
 	install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_name}.AppImage"
 	install -Dm755 "${srcdir}/${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
+	# Install icon and desktop
 	install -Dm644 "${srcdir}/squashfs-root/${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
 	install -Dm644 "${srcdir}/squashfs-root/${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+
+	# TODO: Install custom LICENSE when author makes it
+	# install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

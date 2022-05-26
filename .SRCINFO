@@ -5,6 +5,7 @@ pkgbase = starc-appimage
 	url = https://starc.app/
 	arch = x86_64
 	license = GPL3
+	license = custom
 	depends = zlib
 	depends = bash
 	provides = starc=0.1.5
