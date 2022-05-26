@@ -1,17 +1,22 @@
 pkgbase = python2-wxpython3
-	pkgdesc = Classic wxWidgets GUI toolkit for Python
+	pkgdesc = Classic wxWidgets GTK GUI toolkit (version 3) for Python2.
 	pkgver = 3.0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.wxpython.org
+	arch = i686
 	arch = x86_64
 	license = custom:wxWindows
-	makedepends = mesa
 	makedepends = glu
-	depends = wxgtk3
-	depends = python2
-	provides = wxpython=3.0.2.0
-	conflicts = wxpython
-	replaces = wxpython
+	makedepends = mesa
+	makedepends = python2-setuptools
+	makedepends = expat
+	makedepends = libjpeg
+	makedepends = libpng
+	makedepends = libtiff
+	makedepends = python2
+	makedepends = wxgtk2
+	makedepends = wxgtk3
+	options = ccache
 	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
 	source = fix-plot.patch
 	source = fix-editra-removal.patch
@@ -19,4 +24,37 @@ pkgbase = python2-wxpython3
 	sha256sums = 2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65
 	sha256sums = 559b076f206c44e66b33857f49068d66f59a3fc15b97972486e32a8105885554
 
-pkgname = python2-wxpython3
+pkgname = python2-wxpython3-gtk2
+	pkgdesc = Classic wxWidgets GTK2 GUI toolkit (version 3) for Python2.
+	depends = expat
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = python2
+	depends = wxgtk2
+	provides = python2-wxpython=3.0.2.0
+	provides = python2-wxpython-gtk2=3.0.2.0
+	provides = python2-wxpython3=3.0.2.0
+	provides = wxpython=3.0.2.0
+	provides = wxpython-gtk2=3.0.2.0
+	provides = wxpython3=3.0.2.0
+	provides = wxpython3-gtk2=3.0.2.0
+	conflicts = wxpython
+
+pkgname = python2-wxpython3-gtk3
+	pkgdesc = Classic wxWidgets GTK3 GUI toolkit (version 3) for Python2.
+	depends = expat
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = python2
+	depends = wxgtk3
+	provides = python2-wxpython=3.0.2.0
+	provides = python2-wxpython-gtk3=3.0.2.0
+	provides = python2-wxpython3=3.0.2.0
+	provides = wxpython=3.0.2.0
+	provides = wxpython-gtk3=3.0.2.0
+	provides = wxpython3=3.0.2.0
+	provides = wxpython3-gtk3=3.0.2.0
+	conflicts = wxpython
+	replaces = wxpython
