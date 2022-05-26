@@ -1,6 +1,6 @@
 # Maintainer: scan
 pkgname=keepass-es
-pkgver=2.50
+pkgver=2.51
 pkgrel=1
 pkgdesc="KeePass Español"
 license=('GPL2')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Spanish.zip)
 arch=(any)
-sha256sums=('8adf204035533b5367bc5e0b90635acc58088fa52616eac71b67b0a37524bec4')
+sha256sums=('5e8b5a1c46d966cb300ec14e9e9a3955f557a2b405ea9cbd0b6ba89917cab345')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass/Languages
