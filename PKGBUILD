@@ -4,7 +4,7 @@
 pkgname="stm32cubeide"
 pkgver=1.9.0
 _pkgver_ext=1.9.0_12015_20220302_0855
-_pkg_file_name=en.st-stm32cubeide_1.9.0_12015_20220302_0855_amd64.sh_v1.9.0.zip
+_pkg_file_name=en.st-stm32cubeide_1.9.0_12015_20220302_0855_amd64.sh.zip
 pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
