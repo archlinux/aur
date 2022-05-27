@@ -2,9 +2,9 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.5.0.r18.6c54c2c
+pkgver=1.5.0.r32.12b1adf
 pkgrel=1
-_kver=5.16
+_kver=5.17
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/evilsocket/opensnitch.git'
         "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
 sha256sums=('SKIP'
-            'd5a4751aada0ecd6bee5dbc961dd056e5f8f87ac86dfed9dae145a85035765d2')
+            'f58338c5b06314559a269afe70b33b9b0b75cc2fe5e8a537ac29f70caa6e489b')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
