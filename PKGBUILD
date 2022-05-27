@@ -15,11 +15,11 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_nam
 md5sums=('0ac9329d7e247229a2a3979197422498')
 
 build() {
-	cd $srcdir/$_name-$pkgver
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd $srcdir/$_name-$pkgver
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
