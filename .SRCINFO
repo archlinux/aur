@@ -1,0 +1,13 @@
+pkgbase = nudgis-obs-plugin
+	pkgdesc = OBS plugin for UbiCast Nudgis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/UbiCastTeam/nudgis-obs-plugin
+	arch = x86_64
+	license = GPL2
+	makedepends = binutils
+	depends = obs-studio
+	source = https://github.com/UbiCastTeam/nudgis-obs-plugin/releases/download/v1.0.0-rc1/nudgis-obs-plugin-1.0.0-Linux.deb
+	sha512sums = aed30acb436153aa1f81cffaf611f207a025a2e81f242feaa7069cbda98310360b12d80223b632a3a077fda68d8650613c1ba433e8b60e25bd7191af78e04f0b
+
+pkgname = nudgis-obs-plugin
