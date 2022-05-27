@@ -1,6 +1,6 @@
 pkgbase = privaxy-git
 	pkgdesc = Privaxy is the next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic. (git version)
-	pkgver = 0.1.0
+	pkgver = r27.7156dd7
 	pkgrel = 1
 	url = https://github.com/Barre/privaxy
 	install = privaxy-git.install

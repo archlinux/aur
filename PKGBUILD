@@ -1,6 +1,6 @@
 pkgname=privaxy-git
 _pkgname=privaxy
-pkgver=0.1.0
+pkgver=r27.7156dd7
 pkgrel=1
 pkgdesc='Privaxy is the next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic. (git version)'
 arch=('x86_64')
@@ -22,6 +22,12 @@ sha256sums=(
     '2a02713029de78f7c23a654a223a0597780e05cdd510a1da7854283b5f678b16'
 )
 install=$pkgname.install
+
+
+pkgver () {
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare () {
     rustup default stable 
