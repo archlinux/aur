@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=natscli-bin
-pkgver=0.0.32
+pkgver=0.0.33
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
 arch=(x86_64)
