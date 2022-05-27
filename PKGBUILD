@@ -5,7 +5,7 @@
 
 # Maintainer: Mohamed Emad <hulxxv@gmail.com>
 pkgname=vnstat-client
-pkgver=22.2.11
+pkgver=22.5.28
 pkgrel=1
 pkgdesc="GUI Client for vnStat Network Monitor for Linux or GNU/Linux"
 arch=('x86_64')
