@@ -1,7 +1,7 @@
 # Maintainer: Frolleks <frolleks@hotmail.com>
 pkgname=sfetch
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple system fetch CLI tool written in Shell"
 arch=(any)
 url="https://github.com/Frolleks/sfetch"
