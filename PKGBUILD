@@ -2,7 +2,7 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.6.1.r1.gc06e1d7
+pkgver=2.6.3.r2.g9d8c2d0
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
@@ -29,9 +29,9 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
 
   # Bug 1953395 - Apostrophe can't export to HTML
-  sed -i 's|/app/share/fonts/FiraSans-Regular.ttf|/usr/share/fonts/mozilla-fira/FiraSans-Regular.otf|' \
+  sed -i 's|/app/share/fonts/FiraSans-Regular.ttf|/usr/share/fonts/OTF/FiraSans-Regular.otf|' \
     data/media/css/web/base.css
-  sed -i 's|/app/share/fonts/FiraMono-Regular.ttf|/usr/share/fonts/mozilla-fira/FiraMono-Regular.otf|' \
+  sed -i 's|/app/share/fonts/FiraMono-Regular.ttf|/usr/share/fonts/OTF/FiraMono-Regular.otf|' \
     data/media/css/web/base.css
 
   # W: hidden-file-or-dir
