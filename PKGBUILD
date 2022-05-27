@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=neovim-coc-bin
-pkgver=0.0.80
+pkgver=0.0.81
 pkgrel=1
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('npm: for installing coc extensions'
 provides=('neovim-coc')
 conflicts=('neovim-coc')
 source=("https://github.com/neoclide/coc.nvim/archive/v${pkgver}.tar.gz")
-sha256sums=('6bc817a8fcb42ed4ce139bb128a0087520be1c73d197968b163e9125c9a80ba6')
+sha256sums=('ce5c801a8c58c35231ffce25fa1e63c6e8859713de471204cf1e1401fc18242b')
 
 package() {
     cd "${srcdir}/coc.nvim-${pkgver}"
