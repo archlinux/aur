@@ -1,0 +1,16 @@
+pkgbase = darling-dkms
+	pkgdesc = Kernel module for Darling
+	pkgver = 0.1.20220213
+	pkgrel = 2
+	url = https://github.com/darlinghq/darling
+	install = darling-dkms.install
+	arch = x86_64
+	groups = darling-bin
+	license = GPL
+	depends = dkms
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220213/darling-dkms_0.1.20220125.focal_amd64.deb
+	sha512sums = 5896acab5d8a4f2c46ecee864c299a9e7f77e159173812ad3303fd0e893c167ba1428daea26bc522a445fea68010c94bf24646a5fe3972feffec12fe38e01a58
+
+pkgname = darling-dkms
