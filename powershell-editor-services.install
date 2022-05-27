@@ -1,0 +1,5 @@
+post_install() {
+  echo ""
+  echo "To use PowerShell Editor Services set the bundle path to /opt/powershell-editor-services in your editor"
+  echo ""
+}
