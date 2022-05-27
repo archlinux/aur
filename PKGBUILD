@@ -18,7 +18,6 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
-  echo "$(pwd)"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
