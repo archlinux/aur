@@ -5,6 +5,7 @@ pkgname=blendnet
 pkgdesc="Distribute your Blender renders (with CUDA CPU+GPU support!)"
 pkgver=0.3.11
 pkgrel=1
+url="https://github.com/state-of-the-art/BlendNet"
 arch=('any')
 license=('Apache')
 depends=('blender')
