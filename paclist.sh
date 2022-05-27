@@ -1,23 +1,38 @@
 #!/bin/bash
 # a script for generating lists of pacman packages.
 
-# add typical bin dirs to PATH
-export PATH="${PATH}:/usr/bin:/usr/local/bin"
+# config file
+conf=/etc/paclist/config
 
-# load and check configuration
-. /etc/paclist/config || exit 1
-[ ${#lists[@]} -lt 4 ] && exit 1
-[ $(( ${#lists[@]} % 4 )) -ne 0 ] && exit 1
+# populate the PATH variable with sane defaults
+export PATH=$PATH:/usr/bin:/usr/local/bin
 
-for i in $(seq 0 4 $(( ${#lists[@]} - 4 )) ); do
+# source the config file
+source $conf || {
+    echo "paclist: failed to source $conf" >&2
+    exit 1
+}
 
-    user="${lists[$i]}"
-    group="${lists[$i+1]}"
-    path="${lists[$i+2]}$suffix"
-    cmd="${lists[$i+3]}"
+# perform sanity checks on the lists array
+[[ ${#lists[@]} -lt 4 ]] && {
+    echo "paclist: the 'lists' array defined in $conf has a size of less than 4" >&2
+    exit 1
+}
+[[ $(( ${#lists[@]} % 4 )) -ne 0 ]] && {
+    echo "paclist: the 'lists' array defined in $conf is not divisible by 4" >&2
+    exit 1
+}
 
-    runuser -u "$user" -g "$group" -- mkdir -p "$(dirname "$path")"
-    sh -c -- "$cmd" > "$path"
-    chown "$user":"$group" -- "$path"
+[[ $verbose != true ]] && unset verbose
 
+# generate all the lists in parallel
+for ((i=0; i<${#lists[@]}; i+=4)); do
+    user=${lists[$i]}
+    group=${lists[$i+1]}
+    path=${lists[$i+2]}$suffix
+    cmd=${lists[$i+3]}
+    sh -c -- "${cmd:?}" | install ${verbose:+-v} -Dm644 -o"${user:?}" -g"${group:?}" -- /dev/stdin "${path:?}" &
 done
+
+# wait for the lists to be generated
+wait

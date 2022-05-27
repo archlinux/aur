@@ -7,4 +7,4 @@ Target = *
 [Action]
 Description = Updating package lists...
 When = PostTransaction
-Exec = /bin/sh -c 'paclist.sh <&- >&- 2>&- &'
+Exec = /usr/share/libalpm/scripts/paclist

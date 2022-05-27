@@ -1,12 +1,17 @@
 # paclist's config
 
-# package lists to generate
+# package lists to generate.
+# the list will be generated using the specified command with
+# the specified owner in the specified path.
 lists=(
-#   user   group   path                          command
-    root   root    /etc/paclist/lists/official   'pacman -Qqne'
-    root   root    /etc/paclist/lists/aur        'pacman -Qqme'
-    root   root    /etc/paclist/lists/all        'pacman -Qq'
+#   user   group   path                                command
+    root   root    /etc/paclist/lists/official.list   'pacman -Qqne'
+    root   root    /etc/paclist/lists/aur.list        'pacman -Qqme'
+    root   root    /etc/paclist/lists/all.list        'pacman -Qq'
 )
 
 # suffix to add to list names
-suffix=-$(cat /etc/hostname)
+suffix=-$HOSTNAME
+
+# wether to print extra info when generating the lists or not
+verbose=false

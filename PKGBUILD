@@ -1,19 +1,17 @@
 # Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
 pkgname=paclist
-pkgver=r4
-pkgrel=2
+pkgver=r5
+pkgrel=1
 pkgdesc='pacman hook to make lists of installed packages.'
 arch=(any)
-license=(GPL)
-source=($pkgname.sh $pkgname.hook config)
-
-sha256sums=('b2423b71c85c00c5ffccf78dd8ed859edbbacac9f3765fa2ea6cb9662e9736a8'
-            'd63dced7184b8688bcc5e414352d0e436a10f4b5dba1243644f68e7ff277228e'
-            'd29a5dd3b799e60312d94819d78ff025e55d72918cd47dd0e5be2b1edbf73d66')
+backup=(etc/paclist/config)
+source=(paclist.sh paclist.hook config)
+sha256sums=('626d0e3d7ef574ec03a2eba3bb6e026c9ee95d1cd1b3c0ef8f86a3d5edeeef45'
+            '87ce6f65a9b4a58457beaa0866ec86a1192d668920311969b5b78b5b76491b52'
+            '470e9b2586fc67d2fde3908e395ce13895100ae1e177f3d6d185cbe4e9d57e15')
 
 package() {
-    cd "$srcdir"
-    install -Dm755 $pkgname.sh -t "$pkgdir/usr/bin/"
-    install -Dm644 config -t "$pkgdir/etc/$pkgname/"
-    install -Dm644 $pkgname.hook -t "$pkgdir/usr/share/libalpm/hooks/"
+    install -vDm644 config "$pkgdir"/etc/paclist/config
+    install -vDm755 paclist.sh "$pkgdir"/usr/share/libalpm/scripts/paclist
+    install -vDm644 paclist.hook "$pkgdir"/usr/share/libalpm/hooks/paclist.hook
 }
