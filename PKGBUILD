@@ -5,21 +5,21 @@
 
 pkgname=bigloo-devel
 pkgver=4.5a
-pkgrel=3
+pkgrel=4
 epoch=1
 _suffix=unstable
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
 url="https://www-sop.inria.fr/mimosa/fp/Bigloo/"
 license=('GPL' 'LGPL')
-depends=('gmp' 'openssl' 'libunistring' 'libnsl' 'gc' 'libuv' 'libpulse' 'mpg123' 'avahi' 'sqlite')
+depends=('gmp' 'openssl' 'libunistring' 'libnsl' 'gc' 'libuv' 'libpulse' 'mpg123' 'avahi' 'sqlite' 'gstreamer')
 makedepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi' 'chrpath' 'tar')
 optdepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz bigloo-emacs.patch)
-sha256sums=('c8f45080b90511affd17b1c787ae48b06cf6640930a0d8c25ee5167f77201138'
+sha256sums=('50efd3c646f7d45d2d081e9b06358e8d30dd58a286c894c352ad46afb88d68c7'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 prepare() {
@@ -45,7 +45,8 @@ build() {
     --enable-flac \
     --enable-sqlite \
     --enable-ssl \
-    --disable-gstreamer
+    --enable-gstreamer \
+    --disable-mqtt
  
   EXTRALIBS="-ldl -lresolv -lunistring -lpcre -lgmp -lm -lc" make build compile-bee
 }
