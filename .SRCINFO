@@ -1,7 +1,7 @@
 pkgbase = qasarbeach-bin
 	pkgdesc = a recreation of the Fairlight CMI 2x by Adam Strange
 	pkgver = 129g
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adamstrange.itch.io/qasarbeach/
 	install = qasarbeach.install
 	arch = x86_64

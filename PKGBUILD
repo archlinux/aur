@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=qasarbeach-bin
 pkgver=129g
-pkgrel=1
+pkgrel=2
 pkgdesc="a recreation of the Fairlight CMI 2x by Adam Strange"
 arch=('x86_64')
 url="https://adamstrange.itch.io/qasarbeach/"
