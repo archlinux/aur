@@ -1,7 +1,7 @@
 pkgbase = markmywords-git
-	pkgdesc = A minimal markdown editor. It is currently under heavy development.
+	pkgdesc = A minimal markdown editor.
 	pkgver = 0.1.3.4.g970b459
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/voldyman/MarkMyWords
 	install = gschemas.install
 	arch = i686

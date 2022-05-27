@@ -8,8 +8,8 @@ _gitname="MarkMyWords"
 _pkgname="markmywords"
 pkgname="${_pkgname}-git"
 pkgver=0.1.3.4.g970b459
-pkgrel=1
-pkgdesc="A minimal markdown editor. It is currently under heavy development."
+pkgrel=2
+pkgdesc="A minimal markdown editor."
 url="https://github.com/voldyman/MarkMyWords"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -18,7 +18,7 @@ makedepends=('vala' 'gobject-introspection' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 install='gschemas.install'
-source=("git+https://github.com/voldyman/MarkMyWords.git")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
