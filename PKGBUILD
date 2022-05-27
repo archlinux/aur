@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=perimeter81
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
