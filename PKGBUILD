@@ -1,6 +1,6 @@
 # Maintainer: Daniel Duan <daniel@duan.ca>
 pkgname=ea-command
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -8,7 +8,7 @@ pkgdesc="ea: make your CLI output actionable"
 url="https://github.com/dduan/ea"
 license=('MIT')
 source=("https://github.com/dduan/ea/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('269d57cf78645bd2b238bd3dbde965c05d1be631bcaffc354d9fcff4c77e06e7')
+sha256sums=('df461668c4603ec01614e5c680ff8e511451d4055f4f4572edcd2fe2fa3aca1e')
 
 build() {
     cd "$srcdir/ea-$pkgver"
