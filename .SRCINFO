@@ -1,6 +1,6 @@
 pkgbase = lelivrescolaire
 	pkgdesc = Lelivrescolaire.fr Éditions : application innovante pour consulter vos manuels scolaires de la 6e à la Terminale !
-	pkgver = 2.2.1
+	pkgver = 3.1.10
 	pkgrel = 1
 	url = lelivrescolaire.fr
 	arch = x86_64
