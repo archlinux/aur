@@ -1,0 +1,18 @@
+pkgbase = gotests
+	pkgdesc = Go PKGBUILD Example
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/cweill/gotests
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = go>=1.6
+	depends = glibc
+	source = gotests-1.6.0.tar.gz::https://github.com/cweill/gotests/archive/v1.6.0.tar.gz
+	sha256sums = f0236dbebd8a3fd19ec4260f490cb164240e1d518d3971b42872978f7a50c040
+
+pkgname = gotests
