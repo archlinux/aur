@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-plugin-yandex-music
 	pkgdesc = Yandex Music integration for Rhythmbox
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/dobroweb/rhythmbox-plugin-yandex-music
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rhythmbox-plugin-yandex-music
 	depends = rhythmbox
 	depends = python-yandex-music-api
 	conflicts = rhythmbox-plugin-yandex-music-git
-	source = https://github.com/dobroweb/rhythmbox-plugin-yandex-music/archive/refs/tags/0.2-alpha.tar.gz
-	sha256sums = 25d804579ceef0157767cb2657a88355b697ef2406737d5e0d4db5aeb7cbc75f
+	source = https://github.com/dobroweb/rhythmbox-plugin-yandex-music/archive/refs/tags/0.3-alpha.tar.gz
+	sha256sums = ccfab00c41d455b27d48a0259e55146e4a3027d404d0cdbbca00425805cbee26
 
 pkgname = rhythmbox-plugin-yandex-music

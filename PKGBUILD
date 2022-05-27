@@ -1,7 +1,7 @@
-# Maintainer: Sergey Feschukov <snfesh@gmail.com>
+# Maintainer: Sergey Feschukov <snfesh@yandex.ru>
 
 pkgname=rhythmbox-plugin-yandex-music
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 _pkgrel=alpha
 pkgdesc='Yandex Music integration for Rhythmbox'
@@ -16,7 +16,7 @@ conflicts=(
     rhythmbox-plugin-yandex-music-git
 )
 source=("https://github.com/dobroweb/rhythmbox-plugin-yandex-music/archive/refs/tags/${pkgver}-${_pkgrel}.tar.gz")
-sha256sums=('25d804579ceef0157767cb2657a88355b697ef2406737d5e0d4db5aeb7cbc75f')
+sha256sums=('ccfab00c41d455b27d48a0259e55146e4a3027d404d0cdbbca00425805cbee26')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/rhythmbox/plugins/yandex-music
