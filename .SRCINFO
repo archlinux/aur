@@ -1,0 +1,22 @@
+pkgbase = prometheus-adguard-exporter
+	pkgdesc = Prometheus Exporter for AdguardHome metrics
+	pkgver = 1.14
+	pkgrel = 1
+	url = https://github.com/prometheus/node_exporter
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !lto
+	backup = etc/conf.d/prometheus-adguard-exporter
+	source = prometheus-adguard-exporter-1.14.tar.gz::https://github.com/ebrianne/adguard-exporter/archive/refs/tags/v1.14.tar.gz
+	source = prometheus-adguard-exporter.conf
+	source = prometheus-adguard-exporter.service
+	source = prometheus-adguard-exporter.sysusers
+	sha256sums = df4e9febef2bfae2d823083cb8ca4f3a799a9312603896c17825b8af85f758ef
+	sha256sums = d57a6bfe3b6fcf470053ed344f33aaa8461ab92512fbc27c271cbc254006d8d1
+	sha256sums = 276df659240d72bb2b67f9c018756d4c62fb2f509a3e1da99fdb1c849e1cf1ec
+	sha256sums = 0b944ff91f6309fb751c3bf0ce1fb39549b6f42773a5c115e72d265cf0d5ee5b
+
+pkgname = prometheus-adguard-exporter
