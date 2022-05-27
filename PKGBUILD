@@ -2,14 +2,14 @@
 #Maintainer: atriix <aur a snilius d com>
 
 pkgname=migrate
-pkgver=4.15.1
+pkgver=4.15.2
 pkgrel=1
 pkgdesc="Database migration handling"
 url="https://github.com/golang-migrate/migrate"
 arch=("x86_64")
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/golang-migrate/migrate/archive/v$pkgver.tar.gz")
-sha256sums=('d426b0c55b3445210392fc61cbeefbe8410665bf2725eed9b1becb6c200ffe42')
+sha256sums=('070b8c370fe45a2c2f6aa445feb65a1d63d749ce8b2dc5c7d1dffe45418b567a')
 makedepends=("go")
 
 build() {
