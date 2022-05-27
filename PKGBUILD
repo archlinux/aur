@@ -2,7 +2,7 @@
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname=vim-unimpaired
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Pairs of handy bracket mappings for vim'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('vim')
 groups=('vim-plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tpope/vim-unimpaired/archive/v${pkgver}.tar.gz")
-sha512sums=('e9c7f265ac343aa5d8aaed8c922209390524c5470d0f06278bfb0fd87fb9bc39eeb802bbe314bb6e7da36166c0091389f3cf32e6480075ee3ae55525e09830a5')
+sha512sums=('6f26d439e940d3e39901a980e78597634cb3a89188cde8fd5091998d635fc2aa0c8c72c9ddcc4d5ab362efc7e8f819c03f81c4fc954193e177528712c168a01d')
 
 package() {
   cd "${srcdir}/vim-unimpaired-${pkgver}"
