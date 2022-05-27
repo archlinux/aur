@@ -1,6 +1,6 @@
 pkgbase = xor-crypto-lib
 	pkgdesc = xor encryption c++ library
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 0
 	url = https://github.com/imperzer0/xor-crypto-lib
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xor-crypto-lib
 	depends = log-console>=1.18-1
 	source = https://raw.githubusercontent.com/imperzer0/xor-crypto-lib/master/xor-crypt
 	source = https://raw.githubusercontent.com/imperzer0/xor-crypto-lib/master/xor-crypt-defs
-	md5sums = f6caee61f3294f9928e22b340dabe72b
+	md5sums = 2e02020222c11cd5248df088be818889
 	md5sums = 058b77d68f4400b72a864a07c323a99e
 
 pkgname = xor-crypto-lib
