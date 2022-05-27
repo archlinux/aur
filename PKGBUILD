@@ -2,7 +2,7 @@
 pkgname=fcitx5-skin-fluentdark-git
 _pkgname=fcitx5-skin-fluentdark-git
 pkgver=v0.3.0.r0.g7755620
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fluent-Design dark theme with blur effect and shadow."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/FluentDark-fcitx5"
@@ -15,7 +15,6 @@ md5sums=('SKIP')
 _name=FluentDark-fcitx5
 prepare() {
   cd $_name
-  git checkout v0.3.0
 }
 
 pkgver() {
