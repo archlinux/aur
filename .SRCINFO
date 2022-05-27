@@ -1,7 +1,7 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE
 	pkgver = 5.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://k8slens.dev
 	arch = x86_64
 	license = MIT

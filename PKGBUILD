@@ -4,7 +4,7 @@
 pkgname=lens
 pkgdesc='The Kubernetes IDE'
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url='https://k8slens.dev'
@@ -20,6 +20,7 @@ b2sums=('f8ab7d3026253b530e92ee4b6ace95486e122f31a7bcc6fc52334da84c66f0a28312bc9
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export LANG=C LC_ALL=''
   make node_modules
   yarn download:binaries
   yarn run npm:fix-build-version
