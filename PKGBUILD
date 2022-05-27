@@ -12,20 +12,14 @@ license=('GPL3')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 conflicts=('libvss')
 
-source=("git+https://github.com/AdaCore/VSS.git" "vss.patch")
-sha1sums=('SKIP'
-          '8f318de8802249dac4e38ac9d198dc53fe8b1dd9')
+source=("git+https://github.com/AdaCore/VSS.git")
+sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/VSS"
     printf "r%s.%s" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/VSS"
-    patch --strip=1 < ../vss.patch
 }
 
 build() {
