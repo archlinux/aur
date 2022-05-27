@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wp2latex  
-pkgver=3.106
+pkgver=3.107
 pkgrel=1
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/wp2latex/wp2latex.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("http://www.penguin.cz/~fojtik/$pkgname/$pkgname-$pkgver.zip")
-sha256sums=('1438d0ad6884c568427b06b930fbdf727559a283127ece45a2b10d86fcde1606')
+sha256sums=('70763925f3013fccf431f5d329fcb2a4e0eeabdcfc206925fbbeb98cb00ad32c')
 depends=('libjpeg' 'gcc-libs' 'libpng')
 options=('!strip')
 
