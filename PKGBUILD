@@ -5,7 +5,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.11.0
+pkgver=4.12.0
 _attnum=3473464
 pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -17,7 +17,7 @@ optdepends=(ksh libaec odb_api)
 makedepends=(cmake gcc-fortran perl-xml-parser python-jinja swig)
 source=(http://confluence.ecmwf.int/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz
         gcc11.patch)
-sha256sums=('5b609dd7532e0bfb2efcd0107d3200bf6edca449d3484355b76a6e034ec0c313'
+sha256sums=('d07944962b9e85de3fd1eec543f52077afe37efc10957b903bd7bead96e81c90'
             'c0250ac473b4703e79c8f879f6271d1409e800a0f8a7a77b3793cc9ce9a85951')
 
 prepare() {
