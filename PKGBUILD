@@ -1,15 +1,15 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 _pkgname=tut
 pkgname=tut-mastodon
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='A TUI for Mastodon with vim inspired keys. Same as aur/tut, only for name collision.'
 arch=('any')
 url="https://github.com/RasmusLindroth/$_pkgname"
 license=('MIT')
 makedepends=('go')
-source=("https://github.com/RasmusLindroth/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('67c48a6e8f28e01f61aeb62566601bf88f5afc5a917f0d2e4b97d215330c245e')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('010e4d87bcae72b03c3f2fcf1396f9a1d0271d323abb9f27099dbdc1e1137245')
 
 build() {
   cd $_pkgname-$pkgver
@@ -22,5 +22,9 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 config.example.ini "$pkgdir"/usr/share/doc/$pkgname/config.example.ini
+  install -Dm644 config/toot.tmpl "$pkgdir"/usr/share/doc/$pkgname/toot.tmpl
+  install -Dm644 config/user.tmpl "$pkgdir"/usr/share/doc/$pkgname/user.tmpl
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }

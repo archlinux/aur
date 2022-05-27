@@ -1,12 +1,12 @@
 pkgbase = tut-mastodon
 	pkgdesc = A TUI for Mastodon with vim inspired keys. Same as aur/tut, only for name collision.
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/RasmusLindroth/tut
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/RasmusLindroth/tut/archive/refs/tags/1.0.9.tar.gz
-	sha256sums = 67c48a6e8f28e01f61aeb62566601bf88f5afc5a917f0d2e4b97d215330c245e
+	source = tut-1.0.10.tar.gz::https://github.com/RasmusLindroth/tut/archive/refs/tags/1.0.10.tar.gz
+	sha256sums = 010e4d87bcae72b03c3f2fcf1396f9a1d0271d323abb9f27099dbdc1e1137245
 
 pkgname = tut-mastodon
