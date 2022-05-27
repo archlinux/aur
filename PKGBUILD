@@ -69,8 +69,6 @@ build () {
     
     make submodule
 
-    printf "include /usr/share/dpkg/pkg-info.mk\ndvu:\n\techo \${DEB_VERSION_UPSTREAM}\n" > DVUMakefile
-
     builddir="pve-qemu-kvm-${pkgver}"
     make "${builddir}"
     cd "${builddir}"
