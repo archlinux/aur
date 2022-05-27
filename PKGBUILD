@@ -1,7 +1,7 @@
 # Maintainer: dcordonu
 
 pkgname=connect-tunnel
-pkgver=12.41.01005
+pkgver=12.41.01037
 pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "ConnectTunnel_Linux64-${pkgver}.tar::https://software.sonicwall.com/CT-NX-VPN%20Clients/CT-12.4.1/ConnectTunnel_Linux64-${pkgver}.tar"
     "https://www.sonicwall.com/legal/general-product-agreement"
 )
-md5sums=('2125609cd3d19bd83e4e94af49e5e726' 'SKIP')
+md5sums=('fe4f21b23ef3cf22d459d1bc8b3122ea' 'SKIP')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 install=${pkgname}.install
