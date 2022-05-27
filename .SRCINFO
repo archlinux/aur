@@ -1,6 +1,6 @@
 pkgbase = docsify-cli
-	pkgdesc = A magical documentation generator.
-	pkgver = 4.4.3
+	pkgdesc = A magical documentation generator
+	pkgver = 4.4.4
 	pkgrel = 1
 	url = https://github.com/docsifyjs/docsify-cli
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = docsify-cli
 	makedepends = npm
 	depends = nodejs
 	provides = docsify
-	noextract = docsify-cli-4.4.3.tgz
+	noextract = docsify-cli-4.4.4.tgz
 	options = !strip
-	source = https://registry.npmjs.org/docsify-cli/-/docsify-cli-4.4.3.tgz
-	sha256sums = 34ad80b8f597c4afacb7e45e927b6745df11e6023ab5f2bbbd9ccebd971b3e81
+	source = https://registry.npmjs.org/docsify-cli/-/docsify-cli-4.4.4.tgz
+	sha256sums = d8b2a3b6e736b6999534bad0b717958b1c5dd3df392498c030971b342de7c565
 
 pkgname = docsify-cli
-
