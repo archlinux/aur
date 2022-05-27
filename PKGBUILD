@@ -3,12 +3,12 @@
 pkgname=pyside6-tools
 _qtver=6.3.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Tools for PySide6'
-depends=(pyside6 python-pyqt6 qt6-tools)
+depends=(pyside6 qt6-tools)
 conflicts=(pyside2-tools)
 makedepends=(cmake shiboken6)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
