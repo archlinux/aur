@@ -1,0 +1,18 @@
+pkgbase = most-snapshot
+	pkgdesc = A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)
+	pkgver = 5.2.9
+	pkgrel = 1
+	url = https://www.jedsoft.org/most/
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = slang
+	provides = most
+	conflicts = most
+	source = https://jedsoft.org/snapshots/most-pre5.2-9.tar.gz
+	md5sums = bb213ed174259cced2f959f38415fe71
+	sha256sums = 020eaf5014623e3e94a4e3fff3765f4fb248f8a409308f7832201443dda1a8b5
+	sha512sums = 2500726e9789421a56e70ae1454704b7d0fe3a123092e7f8854e4f31a9e52048addb6af579d6e69bf685e3b60f81f0a7c641c97759fbe97cf68c43da4736816b
+	b2sums = a82b3fb21feea2474df92fec7312000b5b1fdba25af20a7d6897a095650956a53942904a6fd38f79a77f4cf81828400c74962f383220ba3c4ebefec287cf0b52
+
+pkgname = most-snapshot
