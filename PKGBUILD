@@ -3,7 +3,7 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 
 pkgname=ckb-next-git
-pkgver=0.4.4.r201.gcb37c692
+pkgver=0.5.0.r0.g519330ed
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
