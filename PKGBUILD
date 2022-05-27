@@ -12,7 +12,7 @@ pkgname=("${_pkgname[@]/%/}")
 pkgbase=${_pkgbase}
 _commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 pkgver=r265.8525e05
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://gitlab.com/cscs/${_pkgbase}"
 license=('GPL3')
@@ -62,7 +62,7 @@ package_matchama-kde-wallpapers() {
 package_kvantum-theme-matchama() {
 	pkgdesc="Matcha theme for Kvantum"
 	depends=('kvantum-qt5')
-	provides=('kvantum-theme-matchama')
+	provides=('kvantum-theme-matchama' 'kvantum-theme-matcha')
 	conflicts=('kvantum-theme-matchama')
 
 	_install Kvantum
