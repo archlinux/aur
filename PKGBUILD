@@ -13,7 +13,7 @@ url="https://github.com/Hulxv/vnstat-client"
 license=('MIT')
 depends=('vnstat' 'electron>=15.0.0')
 
-__filename__=${pkgname}-${pkgver}-${arch}.pacman
+__filename__=vnstat-client-${pkgver}-${arch}.pacman
 source=("${url}/releases/download/v${pkgver}/${__filename__}")
 noextract=()
 md5sums=('SKIP')

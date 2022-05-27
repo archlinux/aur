@@ -7,7 +7,7 @@ pkgbase = vnstat-client-aarch64
 	license = MIT
 	depends = vnstat
 	depends = electron>=15.0.0
-	source = https://github.com/Hulxv/vnstat-client/releases/download/v22.5.28/vnstat-client-aarch64-22.5.28-aarch64.pacman
+	source = https://github.com/Hulxv/vnstat-client/releases/download/v22.5.28/vnstat-client-22.5.28-aarch64.pacman
 	md5sums = SKIP
 
 pkgname = vnstat-client-aarch64
