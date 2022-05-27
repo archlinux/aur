@@ -1,15 +1,15 @@
 pkgbase = siyuan-appimage
 	pkgdesc = The next generation PKM system, your digital garden
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = unknown
 	optdepends = pandoc: docx export
 	provides = siyuan
-	noextract = siyuan-2.0.12-linux.AppImage
+	noextract = siyuan-2.0.13-linux.AppImage
 	options = !strip
-	source = https://release.b3log.org/siyuan/siyuan-2.0.12-linux.AppImage
-	sha512sums = d50091661455eaa91c3316476b2412a69eefb987d5b8bcb213f0d73d81146571be7c71bbf689a9111cdf1fdd3c068ef6b3a630b86bba1024bae49ab8de7328eb
+	source = https://release.b3log.org/siyuan/siyuan-2.0.13-linux.AppImage
+	sha512sums = 2935939a2104fd26daee46aa3116192312f25e7a2048c6a897dba51b2bf3f0f7d415ed4e53f62b3d9c121afc99867d8e8f5c1726215c4fe378433bf86ad3346a
 
 pkgname = siyuan-appimage
