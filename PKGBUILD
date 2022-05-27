@@ -3,8 +3,8 @@
 
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
@@ -19,24 +19,28 @@ source=("${_pkgname}-${pkgver}.exe::https://dl.hdslb.com/mobile/fixed/bili_win/b
         "extensions-v${pkgver}-${pkgrel}.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-${pkgrel}/extensions-v${pkgver}-${pkgrel}.tar.gz"
         "injectExt.js"
         "area-unlimit.sh"
-        "fix-other.sh")
+        "fix-other.sh"
+        "app-decrypt.js"
+        "bridge-decode.js"
+        "js-decode.js")
 noextract=("${_pkgname}-${pkgver}.exe")
-sha256sums=('96718413342daca81b375a80fc996fa1ab19fc199c73bd9002eb32eccdbbb35f'
+sha256sums=('60f8546dafa3506cbfa39c38c3a0cb16278823d655dfd9b6a70fa72ca28c9e2e'
             '7da797cd35bc5060e3bfa4ba37681cbbd2201a499477772c008f9f1e691b6ea0'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418'
-            '4be43f75a703ed307ff0e420cd551b783fe072577420e3bfab130ae38b7650e8'
+            '019dc848f44fb33dd9592d01c9d4baa5e851f97bb8f22f066f2f92ccdd0d2ffd'
             'e5326a2a5b6dd61d3274bcf5977c62ade6a59752d21f9634a2db8e6ad225ffe9'
-            'cbf118eb359722c227b4c87de8917e59881d93e99d87d302fff1b47f36afe831'
-            '853e5d3bb00fe0cb23eef003e6a72f4517ce53a208ce4bf8b34d1e9236bb5a8e')
+            '96d77876f2eb01379e470c4f022bab6edbad81cf49d278b37d2be1737affa5ed'
+            '5f3c5fd5b99da7886ca4d665f93903522d8a8217c9ec2296653a77aa6bd6a43a'
+            '4bf4426791850ac9ec430880cf66b8744c7e89480aeee9d1e5db1a5311cdf209'
+            '9399099c831d97d1f0f85e90adf78eab85b2a00d532b1d428392bb7f77f3b56c'
+            '04283a0427fe556ce6045d233328c5f864f7a72c42ba0c64adc71abd99b407ee')
 prepare(){
-    7z x "${_pkgname}-${pkgver}.exe" -o"bili" "\$PLUGINSDIR/app-64.7z"
-    7z x "bili/\$PLUGINSDIR/app-64.7z" -o"bili" "resources"
-    rm -rf "bili/\$PLUGINSDIR/app-64.7z" "bili/resources/elevate.exe"
-    mkdir -p app
-    mv "bili/resources/"* app
+    7z x "${_pkgname}-${pkgver}.exe" -o"tmp/bili" "\$PLUGINSDIR/app-64.7z"
+    7z x "tmp/bili/\$PLUGINSDIR/app-64.7z" -o"tmp/bili" "resources"
+    rm -rf "tmp/bili/\$PLUGINSDIR/app-64.7z" "tmp/bili/resources/elevate.exe"
     mkdir -p tools
-    for file in *.sh; do
+    for file in *.sh app-decrypt.js bridge-decode.js js-decode.js; do
         mv $file tools;
     done
     mkdir -p res/scripts
@@ -50,6 +54,7 @@ build(){
         _log "run ${script}"
         "${srcdir}/tools/${script}"
     done
+    mv tmp/bili/resources/* app
 }
 package() {
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
