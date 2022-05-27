@@ -1,6 +1,6 @@
 pkgbase = archiso-encryption
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
-	pkgver = 58
+	pkgver = 59
 	pkgrel = 2
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
@@ -16,10 +16,11 @@ pkgbase = archiso-encryption
 	depends = libisoburn
 	depends = mtools
 	depends = squashfs-tools
+	depends = cryptsetup
+	optdepends = archiso-profiles: extra profiles for archiso
 	optdepends = edk2-ovmf: for emulating UEFI with run_archiso
 	optdepends = openssl: for codesigning support when building netboot artifacts
 	optdepends = qemu: for run_archiso
-	provides = archiso
 	conflicts = archiso
 	replaces = archiso
 	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=crypto

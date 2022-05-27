@@ -4,20 +4,20 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 _pkgname=archiso
 pkgname=$_pkgname-encryption
-pkgver=58
+pkgver=59
 pkgrel=2
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/archlinux/archiso"
 depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
-'libarchive' 'libisoburn' 'mtools' 'squashfs-tools')
+'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup')
 makedepends=('git')
 checkdepends=('shellcheck')
-provides=('archiso')
 replaces=('archiso')
 conflicts=('archiso')
 optdepends=(
+  'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
