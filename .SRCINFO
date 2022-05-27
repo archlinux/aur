@@ -1,0 +1,12 @@
+pkgbase = goosemod
+	pkgdesc = A light, secure, and easy to use Discord mod
+	pkgver = 12.3
+	pkgrel = 1
+	url = https://goosemod.com
+	arch = x86_64
+	license = MIT
+	depends = discord
+	source = patch.sh
+	sha256sums = bd6e4592141cd7dcb6ca11c4eda9ab62c551fdf263b28c78c0344d9b664df958
+
+pkgname = goosemod
