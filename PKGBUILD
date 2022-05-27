@@ -13,7 +13,7 @@ makedepends=('git' 'perl-module-build')
 provides=()
 conflicts=()
 
-depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-gtk3' 'perl-libwww' 'perl-file-sharedir' 'perl-unicode-linebreak' 'perl-html-tree' 'yt-dlp')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-gtk3' 'perl-libwww' 'perl-file-sharedir' 'perl-unicode-linebreak' 'perl-html-tree' 'webp-pixbuf-loader' 'yt-dlp')
 
 optdepends=(
     #'ffmpeg: conversions and MKV merging'

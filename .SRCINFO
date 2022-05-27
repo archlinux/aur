@@ -16,6 +16,7 @@ pkgbase = lbry-viewer-git
 	depends = perl-file-sharedir
 	depends = perl-unicode-linebreak
 	depends = perl-html-tree
+	depends = webp-pixbuf-loader
 	depends = yt-dlp
 	optdepends = gnome-icon-theme: icons in menus
 	optdepends = perl-json-xs: faster JSON parsing
