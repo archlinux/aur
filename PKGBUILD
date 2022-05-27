@@ -24,6 +24,7 @@ pkgname=("bareos-bconsole"
          "bareos-filedaemon-python2-plugin"
          "bareos-filedaemon-python3-plugin"
          "bareos-storage"
+         "bareos-storage-ceph"
          "bareos-storage-droplet"
          "bareos-storage-fifo"
          "bareos-storage-glusterfs"
@@ -40,13 +41,13 @@ pkgname=("bareos-bconsole"
 
 pkgver=21.1.3
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python2' 'python' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper') # 'ceph-libs'
+makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python2' 'python' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper' 'ceph-libs')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
         "0002-libdroplet.patch"
@@ -547,6 +548,20 @@ package_bareos-storage() {
 
   # Currently upstream systemd file does not automatically create run directory
   sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-sd.service
+}
+
+#=========================================
+package_bareos-storage-ceph() {
+  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - storage daemon CEPH backend"
+  depends=("bareos-storage=${pkgver}")
+  for f in \
+     usr/lib/bareos/backends/libbareossd-rados.so* \
+     usr/lib/bareos/backends/libbareossd-cephfs.so* \
+     usr/share/bareos/config/bareos-dir.d/storage/Rados.conf.example \
+     usr/share/bareos/config/bareos-sd.d/device/RadosStorage.conf.example \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install/"
+  done
 }
 
 #=========================================

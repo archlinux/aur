@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 21.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = bareos
 	makedepends = glusterfs
 	makedepends = jansson
 	makedepends = pam_wrapper
+	makedepends = ceph-libs
 	source = git+https://github.com/bareos/bareos.git#tag=Release/21.1.3
 	source = 0001-distver.patch
 	source = 0002-libdroplet.patch
@@ -195,6 +196,10 @@ pkgname = bareos-storage
 	depends = jansson
 	depends = openssl
 	depends = libcap
+
+pkgname = bareos-storage-ceph
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Backup Archiving Recovery Open Sourced - storage daemon CEPH backend
+	depends = bareos-storage=21.1.3
 
 pkgname = bareos-storage-droplet
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Droplet support for storage daemon
