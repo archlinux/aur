@@ -13,8 +13,9 @@ sha256sums=("b019e38be61a817b0b0db55d54039b7a1d45b0a49c88f3ebf0c362d49b5608e2" "
 
 package() {
 #used to clear prior extraction if exists
-rm -R "intiface-desktop"
-
+if [ -d "intiface-desktop" ]; then
+  rm -R "intiface-desktop"
+fi
 mv "intiface-desktop-${pkgver}-linux-x64" "intiface-desktop"
 install -d "${pkgdir}/opt/"
 cp -R "intiface-desktop" "${pkgdir}/opt/"
