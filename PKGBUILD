@@ -3,7 +3,7 @@
 
 pkgname=telescope-bin
 _pkgname=${pkgname%-*}
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=2
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('ISC')
 provides=('telescope')
 conflicts=('telescope' 'telescope-git')
 source=("https://github.com/omar-polo/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver-binaries.tar.gz")
-sha256sums=('a40a6a439632878714304b895946be103837e5002b61a07078bebf968ea9d309')
+sha256sums=('27623182be33ecb9e099217c5d458b94334436e97ab2f692b2eed2f7c91400b5')
 
 package() {
 	cd "$_pkgname-$pkgver-binaries"
