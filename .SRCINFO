@@ -1,0 +1,15 @@
+pkgbase = nodejs-passport-saml
+	pkgdesc = SAML 2.0 authentication with passport
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/node-saml/passport-saml
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs<18.1.0
+	depends = nodejs-passport=0.5.3
+	noextract = passport-saml-3.2.1.tgz
+	source = https://registry.npmjs.org/passport-saml/-/passport-saml-3.2.1.tgz
+	sha256sums = 1dff35e54dca44ea0dc02a8f6446f8eda04138509bb93eb9227b43cd37e9eb77
+
+pkgname = nodejs-passport-saml
