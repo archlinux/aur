@@ -1,20 +1,8 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
-### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
-
-# Optional select if you would like to use NO-JBR. You can override the JJDK used from Idea with
-# a file `idea.sh` at `~/.config/JetBrains/IntelliJIdea${_veryear}.${_verrelease}/
-# Note - available options:
-# 1. <empty> JBR 11 (default)
-# 2. no-jbr No bundled JBR included (make sure you provide a Java runtime)
-_JBR=
-
-### Do no edit below this line unless you know what you're doing
-
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=222.2270.31
+_buildver=222.2680.4
 _veryear=2022
 _verrelease=2
 _verextra=
@@ -26,16 +14,11 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-if [ -n "${_JBR}" ]; then
-    _archive=("ideaIU-${_buildver}-${_JBR}.tar.gz")
-else
-    _archive=("ideaIU-${_buildver}.tar.gz")
-fi
+_archive="ideaIU-${_buildver}.tar.gz"
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ue-eap.desktop")
 sha256sums=($(curl -s "https://download.jetbrains.com/idea/${_archive}.sha256" | cut -f1 -d" ")
             'af5a9e49b921dbdc5b960dedc27e15b2510896ff6e58d983fca7de6a6fd18f38')
-
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -r --no-preserve='ownership' "${srcdir}/${_pkgname}-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
