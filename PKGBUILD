@@ -3,7 +3,7 @@
 _gecko_id='{2d0ade95-bf3c-4868-b877-71ccd038e11b}'
 _plugin_name='hohser'
 pkgname="firefox-extension-${_plugin_name}"
-pkgver=4.1.3
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Highlight or hide search engine results'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  '26790a1901c7c232e0b0ab2a3691aca672d7c4d144eb28ca1f0bcd208ddfcdd4024c4236f19c3e13efffb73e797bb06797fbf2b9b1e322be56bc0ed7a2058c50'
+  '5a19a690476c9ff0e5b2dc589ccf9a2bce75488d40e25e32e266f0dad9f22533d670b6a785f4ddcd121f89a99d9b092402ba2d1099d36733f0989f9bb3d9f79d'
 )
 
 build() {
