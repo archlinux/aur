@@ -1,8 +1,11 @@
+# Debian packaging
 # Maintainer : Barfin
+# Pevious Maintainer: Jack Lupino
+# Arch package unofficial
 # Packager :  Alem swaj <alemswaj@tutanota.com>
-# Pevious Maintainer: Jack Lupino 
+
 pkgname=lelivrescolaire
-pkgver='2.2.1'
+pkgver='3.1.10'
 pkgrel=1
 pkgdesc="Lelivrescolaire.fr Éditions : application innovante pour consulter vos manuels scolaires de la 6e à la Terminale !"
 arch=('x86_64')
