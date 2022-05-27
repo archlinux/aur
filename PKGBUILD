@@ -12,10 +12,12 @@ source=("https://github.com/FineFindus/artem/releases/download/v$pkgver/artem-v$
 sha256sums=('04901a1f1accef974b5bd28a2379734c7ab0baef63244f6e726893ffd93ce40a')
 
 package() {
-    install -Dm 755 artem -t "$pkgdir/usr/bin"
-	install -Dm 644 doc/artem.1 -t "$pkgdir/usr/share/man/man1/"
-	install -Dm 644 completions/artem.bash -t "$pkgdir/usr/share/bash-completion/completions/"
-	install -Dm 644 completions/artem.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-	install -Dm 644 completions/_artem -t "$pkgdir/usr/share/zsh/vendor-completions/"
+	install -Dm 755 target/release/artem -t "$pkgdir/usr/bin"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm 644 CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm 644 deployment/doc/artem.1 -t "$pkgdir/usr/share/man/man1/"
+	install -Dm 644 deployment/completions/artem.bash -t "$pkgdir/usr/share/bash-completion/completions/"
+	install -Dm 644 deployment/completions/artem.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm 644 completions/_artem -t "$pkgdir/usr/share/zsh/site-functions"
 }
  
