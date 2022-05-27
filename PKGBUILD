@@ -6,11 +6,12 @@ pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
 license=('custom:LICENSE')
-depends=('systemd')
+depends=('systemd' 'netcat')
 options=(!strip)
 source=(
   'https://static.perimeter81.com/agents/linux/snapshot/latest/Perimeter81.deb'
   'perimeter81helper.service'
+  'LICENSE'
 )
 md5sums=(
   'SKIP'
@@ -28,4 +29,5 @@ pkgver() {
 package() {
   cp -r opt usr $pkgdir/
   install -Dm644 $srcdir/perimeter81helper.service $pkgdir/usr/lib/systemd/system/perimeter81helper.service
+  install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

@@ -6,9 +6,11 @@ pkgbase = perimeter81
 	arch = x86_64
 	license = custom:LICENSE
 	depends = systemd
+	depends = netcat
 	options = !strip
 	source = https://static.perimeter81.com/agents/linux/snapshot/latest/Perimeter81.deb
 	source = perimeter81helper.service
+	source = LICENSE
 	md5sums = SKIP
 	md5sums = SKIP
 
