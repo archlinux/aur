@@ -10,6 +10,7 @@ _pkgname=("${_pkgbase}"{,'-wallpapers'}
           'konversation-theme-matchama')
 pkgname=("${_pkgname[@]/%/}")
 pkgbase=${_pkgbase}
+_commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 pkgver=r265.8525e05
 pkgrel=1
 arch=('any')
@@ -17,7 +18,7 @@ url="https://gitlab.com/cscs/${_pkgbase}"
 license=('GPL3')
 makedepends=('git')
 options=('!strip')
-source=("${pkgbase}::git+${url}.git")
+source=("${pkgbase}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {

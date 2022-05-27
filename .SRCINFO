@@ -6,7 +6,7 @@ pkgbase = matchama-kde
 	license = GPL3
 	makedepends = git
 	options = !strip
-	source = matchama-kde::git+https://gitlab.com/cscs/matchama-kde.git
+	source = matchama-kde::git+https://gitlab.com/cscs/matchama-kde.git#commit=8525e052971c807d3f6797d7baf38f51c81d4b81
 	sha256sums = SKIP
 
 pkgname = matchama-kde
