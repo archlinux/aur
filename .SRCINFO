@@ -1,0 +1,13 @@
+pkgbase = nodejs-nodemailer
+	pkgver = 6.7.5
+	pkgrel = 1
+	url = https://nodemailer.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs<18.1.0
+	noextract = nodemailer-6.7.5.tgz
+	source = https://registry.npmjs.org/nodemailer/-/nodemailer-6.7.5.tgz
+	sha256sums = 4ae1b9486449740f4021c675a856d4025e42d118758deb6364f27127443fc102
+
+pkgname = nodejs-nodemailer
