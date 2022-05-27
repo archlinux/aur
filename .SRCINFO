@@ -1,6 +1,6 @@
 pkgbase = telescope
 	pkgdesc = w3m-like browser for Gemini.
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://telescope.omarpolo.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = telescope
 	provides = telescope
 	conflicts = telescope-git
 	conflicts = telescope-bin
-	source = https://github.com/omar-polo/telescope/releases/download/0.7.1/telescope-0.7.1.tar.gz
-	sha256sums = 6549392d4d5cfbff23f2b2cfb2bd679c9c0b681514561034d492d0941ac5b114
+	source = https://github.com/omar-polo/telescope/releases/download/0.8.1/telescope-0.8.1.tar.gz
+	sha256sums = ea860a8868fcba303d6db2ad3340a3e2584048b2c5001624ab12b626eba874b9
 
 pkgname = telescope
