@@ -1,7 +1,7 @@
 # Maintainer: FineFindus <Finefindusgh@gmail.com>
 pkgname=artem-bin
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert images from multiple formats (jpg, png, webp, etc…) to ASCII art, written in rust'
 url='https://github.com/finefindus/artem'
 license=('MPL2')
