@@ -3,7 +3,7 @@
 pkgname='nfetch-bin'
 pkgdesc="A minimal linux fetch utility written in nim"
 pkgver=3.0
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Infinitybeond1/nfetch-src"
 license=('GPL3')
