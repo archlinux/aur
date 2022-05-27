@@ -1,7 +1,7 @@
 pkgbase = gotests
-	pkgdesc = Go PKGBUILD Example
+	pkgdesc = Golang commandline tool that generates table driven tests based on its target source files function and method signatures
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cweill/gotests
 	arch = x86_64
 	arch = i686
