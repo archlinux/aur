@@ -34,10 +34,12 @@ packagesExist(libR) {
 # python3.6-config --libs
 #
 # below 3 lines work well on Linux style OS
-DEFINES += GC_WANT_PYTHON
-CONFIG += link_pkgconfig
-# Add python3 using pkg-config
-PKGCONFIG += python3 python3-embed
+packagesExist(python3 python3-embed) {
+    DEFINES += GC_WANT_PYTHON
+    CONFIG += link_pkgconfig
+    # Add python3 using pkg-config
+    PKGCONFIG += python3 python3-embed
+}
 #PYTHONINCLUDES = -I/usr/include/python3.6
 #PYTHONLIBS = -L/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu -lpython3.6m
 # below 3 lines work well on Windows

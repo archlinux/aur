@@ -14,7 +14,8 @@ makedepends=(
   'make'
   'qt5-tools'
   'sip4'
-  'pkgconf')
+  'pkgconf'
+  'git')
 depends=(
   'qt5-base'
   'qt5-svg'
@@ -29,7 +30,6 @@ depends=(
   'qt5-script'
   'qt5-connectivity'
   'qt5-charts'
-  'vlc'
   'gsl')
 optdepends=(
   'vlc: for video playback in realtime'
@@ -39,7 +39,8 @@ optdepends=(
   'libical: for diary integration with Google or MobileMe calendars'
   'libusb-compat: for using USB2 sticks in Train View'
   'libsamplerate'
-  'r: for charts generation')
+  'r: for charts generation'
+  'python: charting / ML')
 options=('staticlibs')
 conflicts=('golden-cheetah-rc' 'golden-cheetah-dev' 'golden-cheetah')
 provides=('golden-cheetah')
