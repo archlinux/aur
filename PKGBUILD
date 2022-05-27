@@ -7,8 +7,8 @@ pkgname=(
   python2-wxpython3-gtk3
 )
 pkgver=3.0.2.0
-pkgrel=6
-pkgdesc="Classic wxWidgets GTK GUI toolkit (version 3) for Python2."
+pkgrel=7
+pkgdesc="Classic wxWidgets GTK GUI toolkit (legacy version 3.x) for Python2."
 arch=(
   'i686'
   'x86_64'
@@ -20,6 +20,7 @@ url="https://www.wxpython.org"
 # In order to not double the information, we use helper variables, where we specify the runtime dependencies.
 _depends_general=(
   'expat'
+  'gstreamer0.10'
   'libjpeg'
   'libpng'
   'libtiff'
@@ -399,7 +400,7 @@ build() {
 }
 
 package_python2-wxpython3-gtk2() {
-  pkgdesc="Classic wxWidgets GTK2 GUI toolkit (version 3) for Python2."
+  pkgdesc="Classic wxWidgets GTK2 GUI toolkit (legacy version 3.x) for Python2."
   depends=(
     "${_depends_general[@]}"
     "${_depends_gtk2[@]}"
@@ -426,7 +427,7 @@ package_python2-wxpython3-gtk2() {
 }
 
 package_python2-wxpython3-gtk3() {
-  pkgdesc="Classic wxWidgets GTK3 GUI toolkit (version 3) for Python2."
+  pkgdesc="Classic wxWidgets GTK3 GUI toolkit (legacy version 3.x) for Python2."
   depends=(
     "${_depends_general[@]}"
     "${_depends_gtk3[@]}"
