@@ -1,8 +1,8 @@
 # Maintainer: Joshua Carnes <jtcarnes2@gmail.com>
 pkgname=gotests
 pkgver=1.6.0
-pkgrel=1
-pkgdesc='Go PKGBUILD Example'
+pkgrel=2
+pkgdesc='Golang commandline tool that generates table driven tests based on its target source files function and method signatures'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/cweill/$pkgname"
 license=('Apache')
