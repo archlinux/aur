@@ -57,7 +57,9 @@ package() {
     # I can't find any existing package for this file.
     install -Dm0755 "target/release/libmdk.so.0" "${pkgdir}/opt/${_pkgname}/libmdk.so.0"
     cp -a "resources/camera_presets" "${pkgdir}/opt/${_pkgname}"
-    # Allow user to save custom camera preset
+
+    # Make camera presets directory writable. gyroflow will automatically
+    # download and save new presets to this directory.
     find "${pkgdir}/opt/${_pkgname}/camera_presets" -type d -exec chmod 777 {} +
 
     install -Dm0644 "resources/icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
