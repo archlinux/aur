@@ -1,6 +1,6 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
-pkgname='chia-bin-cli'
+pkgname='chia-cli-bin'
 pkgver=1.3.5
 pkgrel=1
 _pkgrel=1
@@ -10,6 +10,7 @@ url="https://www.chia.net/"
 license=('Apache')
 conflicts=('chia' 'chia-cli')
 provides=('chia' 'chia-cli')
+replaces=('chia-bin-cli')
 options=('!strip')
 source_x86_64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_amd64.deb")
 source_aarch64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_arm64.deb")
