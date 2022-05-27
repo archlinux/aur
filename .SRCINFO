@@ -1,6 +1,6 @@
 pkgbase = amxo_xml_to-git
 	pkgdesc = Ambiorix XML converter
-	pkgver = 0.2.3.r0.g19ea146
+	pkgver = 0.2.4.r0.g5bbb6ba
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxo-xml-to.git
 	arch = x86_64

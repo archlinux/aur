@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo_xml_to-git
-pkgver=0.2.3.r0.g19ea146
+pkgver=0.2.4.r0.g5bbb6ba
 pkgrel=1
 pkgdesc="Ambiorix XML converter"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
