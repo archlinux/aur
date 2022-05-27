@@ -19,5 +19,5 @@ build () {
 package () {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 libscry.so -t "$pkgdir/usr/lib"
-  install -Dm644 src/*.h -t "$pkgdir/usr/include"
+  install -Dm644 src/*.h -t "$pkgdir/usr/include/scry"
 }
