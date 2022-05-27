@@ -1,7 +1,8 @@
-# Maintainer: Szymon Scholz (raspher) <first name last name [at] gmail [dot] com>
+# Maintainer: Constantine Fedotov <zenflak@gmail.com>
+# Contributor: Szymon Scholz (raspher) <first name last name [at] gmail [dot] com>
 
 pkgname='sfz-bin'
-pkgver='0.6.0'
+pkgver='0.7.0'
 pkgrel='1'
 pkgdesc='A simple static file serving command-line tool written in Rust'
 arch=('x86_64')
@@ -14,9 +15,11 @@ source=(
   "https://github.com/weihanglo/sfz/raw/v$pkgver/LICENSE-APACHE"
   "https://github.com/weihanglo/sfz/raw/v$pkgver/LICENSE-MIT"
 )
-md5sums=('5ec5c983b4d68055918f3949b3625167'
-         '1836efb2eb779966696f473ee8540542'
-          'b93f0f6d6a499152e5538a25abec2dc7')
+md5sums=(
+  'b5c13a2ba8a03e85047d548e19c0e113'
+  '1836efb2eb779966696f473ee8540542'
+  'b93f0f6d6a499152e5538a25abec2dc7'
+)
 
 package() {
   install -Dm755 sfz "$pkgdir/usr/bin/sfz"
