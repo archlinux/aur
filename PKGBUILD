@@ -6,7 +6,7 @@
 
 pkgbase=gcc9
 pkgname=(${pkgbase} ${pkgbase}-libs ${pkgbase}-fortran)
-pkgver=9.4.0
+pkgver=9.5.0
 _majorver=${pkgver:0:1}
 _islver=0.24
 pkgrel=1
@@ -28,7 +28,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha512sums=('dfd3500bf21784b8351a522d53463cf362ede66b0bc302edf350bb44e94418497a8b4b797b6af8ca9b2eeb746b3b115d9c3698381b989546e9151b4496415624'
+sha512sums=('cdd144ce4f747e051480410afc8506c90a57cb45da89071ddae377b1453bca3014422455ade9fe4563ebe51f4b6348cbc0c61905a9b8801cd597d51ad0ec62b3'
             'SKIP'
             'ff6bdcff839e1cd473f2a0c1e4dd4a3612ec6fee4544ccbc62b530a7248db2cf93b4b99bf493a86ddf2aba00e768927265d5d411f92061ea85fd7929073428e8'
             '25f0e186388075e25c80c2322865e948f22678f6769886d30c09204eb0e7efd6653170b62e749ece674d0814843609be75a096fd54bb65a87fa4037cf2889d03'
