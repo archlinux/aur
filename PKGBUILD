@@ -2,7 +2,7 @@
 
 _pkgname=kdenlive
 pkgname=kdenlive-appimage
-pkgver=21.12.1
+pkgver=22.04.1
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework"
 arch=('x86_64')
@@ -10,25 +10,36 @@ arch=('x86_64')
 license=('GPL')
 provides=('kdenlive')
 conflicts=('kdenlive')
-source=("https://download.kde.org/stable/kdenlive/21.12/linux/${_pkgname}-${pkgver}-${arch}.appimage"
-        ${_pkgname}.sh)
-md5sums=('11a5ac0c0d68d5c68292c640c02e2394'
-         '9f6bcd19b67bd5efaf25ea902301968d')
+_filename="${_pkgname}-${pkgver}-${arch}.AppImage"
+source=("${_filename}::https://download.kde.org/stable/kdenlive/22.04/linux/${_pkgname}-${pkgver}-${arch}.appimage")
+md5sums=('65b2c2e30a353149365aaec6ffb51e8e')
 options=(!strip)
-_filename=./${_pkgname}-${pkgver}-${arch}.appimage
-
-prepare() {
+prepare() 
+{
   cd "${srcdir}"
   chmod +x ${_filename}
-  ${_filename} --appimage-extract
-  rm ${srcdir}/squashfs-root/usr/share/icons/hicolor/icon-theme.cache
+  eval ./${_filename} --appimage-extract "*/*/*/*/*x*/apps/*.png"
+  eval ./${_filename} --appimage-extract "*/*/applications/*.desktop"
 }
 
-package() {
-  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
-  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+package() 
+{
+  # Install AppImage
+  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_filename}"
 
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/applications" "${pkgdir}/usr/share/"
-  }
+  # Install Exec Script
+  ExecScript="#!/bin/sh\nexec /opt/appimages/${_filename} \"\$@\""
+  install -dm755 "${pkgdir}/usr/bin"
+  echo -e $ExecScript > "${pkgdir}/usr/bin/${_pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Install global Desktop-Integration
+  _sizes=('256x256' '128x128' '64x64' '48x48' '32x32' '22x22' '16x16')
+  for _size in ${_sizes[@]}; do
+  install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_size}/apps/kdenlive.png" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/kdenlive.png"
+  done
+  install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/org.kde.kdenlive.desktop" "${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
+  
+  #Append Window Class to prevent duplicate launcher icons
+  echo "StartupWMClass=kdenlive" >> "${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
+}
