@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=plow
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A high-performance HTTP benchmarking tool with real-time web UI & terminal displaying"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,13 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa579bfa7fee552d84723b6f49d7851759bfd2ff15c9a5d0f216c11a838472a8')
+sha256sums=('bd57418d6842ae79a675ede027cd986d1e719edb163febfaec812d1a7cde4304')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	mkdir -p build
+	go mod download
+}
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -20,7 +26,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	go build
+	go build -o build
 }
 
 check() {
@@ -36,6 +42,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm 755 plow -t "$pkgdir/usr/bin"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -D build/plow -t "$pkgdir/usr/bin"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
