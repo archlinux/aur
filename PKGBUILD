@@ -2,7 +2,7 @@
 pkgname=bitwave-git
 _pkgname=bitwave-git
 pkgver=v0.2.2dev.r0.ga2977f4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
@@ -15,7 +15,6 @@ md5sums=('SKIP')
 _name=BitWave
 prepare() {
   cd $_name
-  git checkout v0.2.2dev
   git submodule update --init --recursive
 }
 
