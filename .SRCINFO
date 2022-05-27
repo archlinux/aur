@@ -1,0 +1,14 @@
+pkgbase = nodejs-modern-syslog
+	pkgdesc = modern syslog - streaming, async, native, uses nan
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/strongloop/modern-syslog
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs<18.1.0
+	noextract = modern-syslog-1.2.0.tgz
+	source = https://registry.npmjs.org/modern-syslog/-/modern-syslog-1.2.0.tgz
+	sha256sums = 052b6265b24efcf36369f91aead98e184ffd35152b5e93c900c7b051f978a58f
+
+pkgname = nodejs-modern-syslog
