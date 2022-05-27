@@ -1,7 +1,7 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 
 pkgname=tmd-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Tiny Markdown Parser"
 url="https://github.com/WebReflection/tmd/#readme"
