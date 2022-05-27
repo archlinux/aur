@@ -3,14 +3,14 @@
 
 pkgname=pdf-compress
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Compress an overlarge pdf file'
 arch=('any')
 url='https://www.timedicer.co.uk/programs/help/pdf-compress.sh.php'
 license=('APACHE')
 depends=('ghostscript' 'imagemagick')
 source=("${pkgname}-${pkgver}::https://www.timedicer.co.uk/programs/${pkgname}.sh")
-sha256sums=('ba1db731c22d858541544d01f2bca3f5a4e9ab7eaa6a983e8c6d426f007064f4')
+sha256sums=('5d097872d01fcca73e9ddb062b641c46bb99c82c99c6411502b9a76ce8ff4c6a')
 
 package() {
   install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
