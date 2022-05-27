@@ -2,7 +2,7 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 # Maintainer gileri
 pkgname='noisetorch-git'
-pkgver=0.11.5.r58.ge096c4c
+pkgver=0.11.5.r68.ga902168
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
 conflicts=('noisetorch')
 install="${pkgname}.install"
-source=('git+https://github.com/lawl/NoiseTorch.git'
+source=('git+https://github.com/noisetorch/NoiseTorch.git'
         'git+https://github.com/noisetorch/c-ringbuf.git'
         'git+https://github.com/noisetorch/rnnoise.git'
         "${pkgname}.install")
