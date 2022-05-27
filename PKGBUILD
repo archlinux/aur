@@ -5,7 +5,7 @@
 pkgname=chrysalis-bin
 _pkgname=${pkgname%-bin}
 pkgdesc="Graphical configurator for Kaleidoscope-powered keyboards (AppImage)"
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/keyboardio/${_pkgname^}"
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!strip)
 source=("$url/releases/download/v$pkgver/${_pkgname^}-$pkgver.AppImage")
-sha256sums=('0c02464b5bca38e2cc46031ccc08847eb4fd6b044d8f3f6bfcc12be1915cdc1a')
+sha256sums=('35d3a740a5fb4583156d13117416329b68b8465142d11e432edd31073de34d0b')
 
 package() {
 	install -Dm0755 "${_pkgname^}-$pkgver.AppImage" "$pkgdir/usr/bin/$_pkgname"
