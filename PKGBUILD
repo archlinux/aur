@@ -55,7 +55,7 @@ sha256sums=('SKIP'
             '258dd5223a28811fd5ad86ae2d22abafbab7f1d6a30d2aa41d0224f9af44069c'
             'SKIP')
 
-pkgver() {
+pkgver () {
     cd "${srcdir}/${pveqemu}"
     printf "include /usr/share/dpkg/pkg-info.mk\ndvu:\n\techo \${DEB_VERSION_UPSTREAM}\n" > DVUMakefile
     make -sfDVUMakefile dvu
@@ -71,9 +71,7 @@ build () {
 
     printf "include /usr/share/dpkg/pkg-info.mk\ndvu:\n\techo \${DEB_VERSION_UPSTREAM}\n" > DVUMakefile
 
-    DEB_VERSION_UPSTREAM=$(make -sfDVUMakefile dvu)
-
-    builddir="pve-qemu-kvm-${DEB_VERSION_UPSTREAM}"
+    builddir="pve-qemu-kvm-${pkgver}"
     make "${builddir}"
     cd "${builddir}"
 
@@ -88,7 +86,5 @@ build () {
 
 package () {
     mkdir -p "${pkgdir}/usr/bin"
-    cd "${srcdir}/${pveqemu}"
-    DEB_VERSION_UPSTREAM=$(make -sfDVUMakefile dvu)
-    cp "pve-qemu-kvm-${DEB_VERSION_UPSTREAM}/build/vma" "${pkgdir}/usr/bin/"
+    cp "${srcdir}/${pveqemu}/pve-qemu-kvm-${pkgver}/build/vma" "${pkgdir}/usr/bin/"
 }
