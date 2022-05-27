@@ -1,29 +1,27 @@
 pkgname=litecoin-bin
-pkgver=0.18.1
+pkgver=0.21.2
 pkgrel=1
-arch=(i686 x86_64)
+arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
 source=(
   litecoin-bin.desktop
   litecoin128.png
+  LICENSE
 )
-sha256sums=(
-  '512d0d7de9be2736e4a2d7bf948d16b61319b2c402c032be7c4d3acc06febe16'
-  'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
-)
-source_i686=("https://download.litecoin.org/litecoin-${pkgver}/linux/litecoin-${pkgver}-i686-pc-linux-gnu.tar.gz"{,.asc})
 source_x86_64=("https://download.litecoin.org/litecoin-${pkgver}/linux/litecoin-${pkgver}-x86_64-linux-gnu.tar.gz"{,.asc})
-sha256sums_i686=('0a2788d58bd22c3754927e216bf18c64145b9fdc0d709f3f49ba3040b876a066' 'SKIP')
-sha256sums_x86_64=('ca50936299e2c5a66b954c266dcaaeef9e91b2f5307069b9894048acf3eb5751' 'SKIP')
+sha256sums=('512d0d7de9be2736e4a2d7bf948d16b61319b2c402c032be7c4d3acc06febe16'
+            'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
+            'f3f26c3c29d78523fd80083e8726802be4743f537d3c79adf9a163cb72b08264')
+sha256sums_x86_64=('94a10a217d91d29e97e7a0088bc1545f34b188297c3ce5b87b07e775d8d00b12'
+                   'SKIP')
 validpgpkeys=(
-  '59CAF0E96F23F53747945FD4FE3348877809386C'  # Adrian Gallagher (thrasher)
+  'D35621D53A1CC6A3456758D03620E9D387E55666'  # David Burkett
 )
 options=('!strip')
 depends=(
   bzip2
-  expat
   fontconfig
   freetype2
   gcc-libs
@@ -32,7 +30,6 @@ depends=(
   graphite
   harfbuzz
   libpng
-  libx11
   libxau
   libxcb
   libxdmcp
@@ -47,4 +44,6 @@ package() {
   install -Dm644 litecoin-$pkgver/share/man/man1/litecoin* -t "$pkgdir/usr/share/man/man1"
   install -Dm644 litecoin-bin.desktop "$pkgdir"/usr/share/applications/litecoin-bin.desktop
   install -Dm644 litecoin128.png "$pkgdir"/usr/share/pixmaps/litecoin128.png
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
