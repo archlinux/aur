@@ -11,7 +11,7 @@ license=('GPL')
 provides=('kdenlive')
 conflicts=('kdenlive')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
-source=("${_filename}::https://download.kde.org/stable/kdenlive/22.04/linux/${_pkgname}-${pkgver}-${arch}.appimage")
+source=("${_filename}::https://download.kde.org/stable/kdenlive/22.04/linux/${_pkgname}-${pkgver}-${arch}.AppImage")
 md5sums=('65b2c2e30a353149365aaec6ffb51e8e')
 options=(!strip)
 prepare() 
