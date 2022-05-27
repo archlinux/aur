@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui-git
-pkgver=0.8.3.r0.g86bad3e
+pkgver=0.9.0.r0.g8ad3f3a
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG (git)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   cargo build --release --frozen
-  OUT_DIR=completions/ cargo run --release --bin gpg-tui-completions
+  OUT_DIR=completions/ target/release/gpg-tui-completions
 }
 
 check() {
