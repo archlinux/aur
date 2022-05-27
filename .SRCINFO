@@ -1,13 +1,14 @@
 pkgbase = scrycli
 	pkgdesc = CLI tool for Scryfall
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/EmperorPenguin18/scrycli/
 	arch = x86_64
 	license = GPL3
 	makedepends = pandoc
-	depends = libscry
-	source = scrycli-0.1.tar.gz::https://github.com/EmperorPenguin18/scrycli/archive/refs/tags/0.1.tar.gz
-	sha256sums = 72fb7097fc196a663b49408c2a405ab67b2fea1b47a72f9f5163fae6de283c98
+	depends = libscry>=0.3.1
+	depends = chafa
+	source = scrycli-0.2.tar.gz::https://github.com/EmperorPenguin18/scrycli/archive/refs/tags/0.2.tar.gz
+	sha256sums = aadfc3930676cbca8d2e3c4cc838b3e9c64a261dd30233854bac57cb61f08d5d
 
 pkgname = scrycli
