@@ -1,7 +1,7 @@
 # Maintainer: Artur Juraszek <artur@juraszek.xyz>
 
 pkgname=docker-sbom
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Plugin for Docker CLI to support SBOM creation using Syft"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/docker/sbom-cli-plugin"
 license=("Apache")
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/docker/sbom-cli-plugin/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('290f84f6b7b847499a106f0d7f083a8a0cbd713f874d235d93c1d86821bafe2ef3c843c3c3c27d9528c1f133d79b29c67f821c7cc57f62e335fd42adafc5d2eb')
+sha512sums=('f2a00fa2afd23177dee8a81f1c9ea5371268d8251af0524a8fa013420e53351414bdc630dd8bf40929286aa3372381614e3a75fe7509b62c872be3a768fcf8e3')
 
 build() {
   cd "sbom-cli-plugin-$pkgver"
