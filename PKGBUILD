@@ -2,7 +2,7 @@
 
 pkgname=ttf-roboto-flex-git
 _pkgname=roboto-flex
-pkgver=3.100.r7.g3ad0fa63d8
+pkgver=3.100.r8.g7dd9b0b48e
 pkgrel=1
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
 makedepends=('git')
