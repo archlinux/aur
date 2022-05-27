@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=intiface-desktop
+Comment=a hub for sex hardware access
+Path=/usr/bin
+Exec=intiface-desktop
+Icon=intiface-desktop
+Terminal=false
+Categories=Utilites

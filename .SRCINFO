@@ -1,0 +1,21 @@
+pkgbase = intiface-desktop-bin
+	pkgdesc = Open-source, cross-platform application that acts as a hub for sex hardware access
+	pkgver = 27.0.0
+	pkgrel = 1
+	url = https://github.com/intiface/intiface-desktop/
+	arch = x86_64
+	license = BSD
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss-hg
+	provides = intiface-desktop
+	source = https://github.com/intiface/intiface-desktop/releases/download/v27.0.0/intiface-desktop-27.0.0-linux-x64.tar.gz
+	source = https://raw.githubusercontent.com/intiface/intiface-desktop/master/LICENSE
+	source = intiface-desktop.png::https://raw.githubusercontent.com/intiface/intiface-desktop/master/packages/intiface/build/icon.png
+	source = intiface-desktop.desktop
+	sha256sums = b019e38be61a817b0b0db55d54039b7a1d45b0a49c88f3ebf0c362d49b5608e2
+	sha256sums = 9cd7bf902f29cad83585d79576c2349aa83e9e34950ed09c5dd78ded41b22b35
+	sha256sums = 0beeac6741afeef8a29538e3c277174f57b0b172ea60cd6351b5b720df894248
+	sha256sums = SKIP
+
+pkgname = intiface-desktop-bin
