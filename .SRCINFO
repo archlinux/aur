@@ -1,0 +1,14 @@
+pkgbase = shashchess
+	pkgdesc = A try to implement Alexander Shashin's theory on a Stockfish's derived chess engine
+	pkgver = 22
+	pkgrel = 1
+	url = https://github.com/amchess/ShashChess
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = glibc
+	source = shashchess-22.tar.gz::https://github.com/amchess/ShashChess/archive/refs/tags/22.tar.gz
+	sha512sums = 6236b8e93e65eacbe2983391414e16a597f15a24e7f72ba3bf72ac95fb3e2565dbcb0829d9a5de584f9d26fb5c1c822e7fcd24079cf94f0b53ccadd2308d1d92
+
+pkgname = shashchess
