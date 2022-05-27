@@ -1,0 +1,13 @@
+pkgbase = livebot-bin
+	pkgdesc = An app that allows you to be inside a Discord bot!
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/SebOuellette/LiveBot
+	arch = x86_64
+	license = Apache
+	source = https://github.com/SebOuellette/LiveBot/releases/download/v1.1.4-alpha/livebot-linux-x64.tar.gz
+	source = livebot.desktop
+	sha256sums = d6b1529c33bae97eb200c2a50fa6c3e81559e849c6c99d3a929bee85fb80e838
+	sha256sums = SKIP
+
+pkgname = livebot-bin

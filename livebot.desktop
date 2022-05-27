@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.1.4-alpha
+Name=LiveBot
+Comment=Be Inside a Discord Bot
+Exec=livebot
+Icon=livebot
+Terminal=false
