@@ -1,0 +1,15 @@
+pkgbase = numb-git
+	pkgdesc = A tool for workinng with numbers, units, and dates
+	pkgver = v0.0.1.r0.75090e6
+	pkgrel = 1
+	url = https://github.com/nkanaev/numb
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = numb
+	conflicts = numb
+	source = git+https://github.com/nkanaev/numb.git
+	md5sums = SKIP
+
+pkgname = numb-git
