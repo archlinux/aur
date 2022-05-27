@@ -4,8 +4,8 @@
 
 _pkgname=selenium
 pkgname=python-$_pkgname
-pkgver=4.1.4
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=('any')
 url="https://www.selenium.dev"
@@ -15,27 +15,27 @@ depends=('python-urllib3' 'python-certifi' 'python-debugpy' 'python-inflection'
          'geckodriver')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-source=("https://github.com/SeleniumHQ/$_pkgname/archive/refs/tags/$_pkgname-$pkgver-python.tar.gz")
-sha256sums=('6bbabf82d437d3226899a9624aeeaf65ed58882110c205b4adc863ff4557812e')
+source=("https://github.com/SeleniumHQ/$_pkgname/archive/refs/tags/$_pkgname-$pkgver.tar.gz")
+sha256sums=('bb0b38c094bc3a9cc05eae30b2293ef18dfc60fb31893295473d4c1218352e97')
 options=(!makeflags)
 
 prepare() {
-  cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
+  cd "$srcdir/$_pkgname-$_pkgname-$pkgver/py"
   cp ../rb/lib/$_pkgname/webdriver/atoms/* $_pkgname/webdriver/remote
   echo '{"frozen":{},"mutable":{}}' > $_pkgname/webdriver/firefox/webdriver_prefs.json
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
+  cd "$srcdir/$_pkgname-$_pkgname-$pkgver/py"
   python setup.py build
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
+  cd "$srcdir/$_pkgname-$_pkgname-$pkgver/py"
   pytest
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
+  cd "$srcdir/$_pkgname-$_pkgname-$pkgver/py"
   python setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
 }
