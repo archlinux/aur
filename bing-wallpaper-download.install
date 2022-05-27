@@ -1,0 +1,6 @@
+post_install() {
+    if ! [ -d /usr/local/share/wallpaper/ ]; then
+        mkdir -p /usr/local/share/wallpaper/
+        printf "\033[1;32mDefault image storage location is /usr/local/share/wallpaper/\033[0m\n"
+    fi
+}
