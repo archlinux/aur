@@ -5,7 +5,7 @@
 _pkgname=selenium
 pkgname=python-$_pkgname
 pkgver=4.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=('any')
 url="https://www.selenium.dev"
@@ -22,7 +22,7 @@ options=(!makeflags)
 prepare() {
   cd "$srcdir/$_pkgname-$_pkgname-$pkgver-python/py"
   cp ../rb/lib/$_pkgname/webdriver/atoms/* $_pkgname/webdriver/remote
-  touch $_pkgname/webdriver/firefox/webdriver_prefs.json
+  echo '{"frozen":{},"mutable":{}}' > $_pkgname/webdriver/firefox/webdriver_prefs.json
 }
 
 build() {
