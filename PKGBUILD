@@ -1,26 +1,31 @@
-# Maintainer: Luca Popesco
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Luca Popesco
 pkgname=gl-gsync-demo
-pkgver=2019.03.31
+pkgver=1.0+3+g4fd963a
 pkgrel=1
-pkgdesc="Simple Application to test gsync functionality"
-arch=('any')
+epoch=1
+pkgdesc="Unofficial OpenGL G-SYNC Demo for Linux"
+arch=('x86_64')
 url="https://github.com/dahenry/gl-gsync-demo"
 license=('MIT')
-depends=('nvidia' 'libxnvctrl')
+depends=('freeglut' 'glew' 'libxnvctrl')
 makedepends=('git')
-optdepends=()
-provides=('gl-gsync-demo')
-conflicts=('gl-gsync-demo')
-source=('git+https://github.com/dahenry/gl-gsync-demo.git')
+_commit=4fd963a8ad880dc2d846394c8c80b2091a119591
+source=("git+https://github.com/dahenry/gl-gsync-demo.git#commit=$_commit")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
 build() {
-	cd "$pkgname"
-	make
+  cd "$srcdir/$pkgname"
+  make
 }
 
 package() {
-	cd "$pkgname"
-	mkdir -p $pkgdir/usr/local/bin
-	mv "gl-gsync-demo" $pkgdir/usr/local/bin
+  cd "$srcdir/$pkgname"
+  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

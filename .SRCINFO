@@ -1,17 +1,16 @@
 pkgbase = gl-gsync-demo
-	pkgdesc = Simple Application to test gsync functionality
-	pkgver = 2019.03.31
+	pkgdesc = Unofficial OpenGL G-SYNC Demo for Linux
+	pkgver = 1.0+3+g4fd963a
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/dahenry/gl-gsync-demo
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = nvidia
-	depends = nvidia-settings
-	provides = gl-gsync-demo
-	conflicts = gl-gsync-demo
-	source = git+https://github.com/dahenry/gl-gsync-demo.git
+	depends = freeglut
+	depends = glew
+	depends = libxnvctrl
+	source = git+https://github.com/dahenry/gl-gsync-demo.git#commit=4fd963a8ad880dc2d846394c8c80b2091a119591
 	sha256sums = SKIP
 
 pkgname = gl-gsync-demo
-
