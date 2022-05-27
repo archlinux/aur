@@ -1,17 +1,21 @@
 pkgbase = oshabi-bin
 	pkgdesc = A scanner for Path of Exile harvest horticrafting stations and sacred grove.
-	pkgver = 0.0.15
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/Vilsol/oshabi
 	arch = x86_64
 	license = GPL3
 	depends = tesseract
+	depends = tesseract-data-eng
 	depends = opencv
-	provides = oshabi=0.0.15
+	depends = xsel
+	depends = webkit2gtk
+	depends = qt5-base
+	provides = oshabi=0.0.18
 	conflicts = oshabi
-	source = https://github.com/Vilsol/oshabi/releases/download/v0.0.15/oshabi-linux-amd64.tar.gz
+	source = https://github.com/Vilsol/oshabi/releases/download/v0.0.18/oshabi-linux-amd64.tar.gz
 	source = oshabi.desktop
-	sha256sums = d47c871180a6a7e4be64b4c033908783d80e41943db3ec1b5f350fccccf8e161
+	sha256sums = d3bd4e5b38268a072ceef9450ace1b9d7e16a7818d5c2484c6ecf3d4410572a3
 	sha256sums = 27038c830b270cc01df8fc989766e2eb444944a19230f4f25dae63c451456a9c
 
 pkgname = oshabi-bin
