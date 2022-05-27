@@ -1,6 +1,6 @@
 pkgbase = libvss-git
 	pkgdesc = High level string and text processing library
-	pkgver = r651.b8ed8a1
+	pkgver = r792.cab6bf6
 	pkgrel = 2
 	url = https://github.com/AdaCore/VSS
 	arch = any

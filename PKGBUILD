@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=libvss-git
-pkgver=r651.b8ed8a1
-pkgrel=2
+pkgver=r793.b3001c7
+pkgrel=1
 
 pkgdesc='High level string and text processing library'
 url='https://github.com/AdaCore/VSS'
@@ -30,7 +30,7 @@ build() {
 package() {
     cd "$srcdir/VSS"
 
-    for gpr in config gnat json text
+    for gpr in config gnat json text regexp
     do
         gprinstall -p -P gnat/vss_$gpr.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
     done
