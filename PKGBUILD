@@ -2,7 +2,7 @@
 _pkgname=kumactl
 pkgname=${_pkgname}-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for Kuma, the universal Envoy service mesh"
 arch=('x86_64')
 url="https://github.com/kumahq/kuma"
@@ -13,7 +13,7 @@ source=(
   "${_pkgname}-${pkgver}::https://download.konghq.com/mesh-alpine/kuma-${pkgver}-debian-amd64.tar.gz"
 )
 sha256sums=(
-  'fec8c80873700db4053f5a3a09c2600c794b35d272fbf4f18ed0e8358a065820'
+  'c6faa0ec1933b97ba74c2b3beca1f09075d6f2bd917085144dfdf4eb6d26cd41'
 )
 
 package() {
