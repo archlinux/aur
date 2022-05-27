@@ -1,7 +1,7 @@
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=python-typed-ast
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="a fork of Python 2 and 3 ast modules with type comment support"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/python/typed_ast/archive/${pkgver}.tar.gz")
-sha256sums=('3d519da0252f5116650ee9a2d93f632cca1969addf434192b3f828ec1893b6dd')
+sha256sums=('1b2db37247c74594660aa9ad40014394fd765ed7fba90256f472329c06e742ab')
 
 build(){
   cd "typed_ast-$pkgver"
