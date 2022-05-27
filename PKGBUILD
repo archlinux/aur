@@ -4,8 +4,8 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 _pkgname=archiso
 pkgname=$_pkgname-encryption
-pkgver=59
-pkgrel=2
+pkgver=63
+pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
 license=('GPL3')

@@ -1,7 +1,7 @@
 pkgbase = archiso-encryption
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
-	pkgver = 59
-	pkgrel = 2
+	pkgver = 63
+	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
 	license = GPL3
