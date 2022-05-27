@@ -25,6 +25,6 @@ validpgpkeys=()
 package() {
   cd devsak
   mkdir -p ${pkgdir}/opt/${pkgname} && cp -rf * ${pkgdir}/opt/${pkgname}
-  sudo ln -s ${pkgdir}/opt/${pkgname}/scripts/devsak.sh /usr/local/bin/devsak
-  sudo ln -s ${pkgdir}/opt/${pkgname}/scripts/uninstall.sh /usr/local/bin/uninstall_devsak
+  sudo ln -s ${pkgdir}/opt/${pkgname}/scripts/devsak.sh /usr/bin/devsak
+  sudo ln -s ${pkgdir}/opt/${pkgname}/scripts/uninstall.sh /usr/bin/uninstall_devsak
 }
