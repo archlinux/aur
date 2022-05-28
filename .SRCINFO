@@ -1,15 +1,15 @@
 pkgbase = transmission-remote-tui-git
 	pkgdesc = A TUI for BitTorrent client Transmission
-	pkgver = r55.f68bea3
+	pkgver = 0.1r58.ab0a415
 	pkgrel = 1
-	url = https://github.com/Murtaza-Udaipurwala/transmission-remote-tui
+	url = https://github.com/murtaza-u/transmission-remote-tui
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = go
 	depends = transmission-cli
 	provides = trt
-	source = git+https://github.com/Murtaza-Udaipurwala/transmission-remote-tui
+	source = git+https://github.com/murtaza-u/transmission-remote-tui
 	md5sums = SKIP
 
 pkgname = transmission-remote-tui-git
