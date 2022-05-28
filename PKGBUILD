@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
@@ -30,9 +30,9 @@ cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '1751714463'
-        '580245095'
-        '2664630175'
+        '249434350'
+        '1603902693'
+        '3778198690'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
@@ -40,9 +40,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'eab0ba36b1cbc09c7a0a88a4640106a484df4621f6e8b7b44169355512379004'
-            'fbff3cfb5eddc75fa22de0f29b8e53dd7afcf0ae117ec8541d03fb351e2f9f7f'
-            'f6b154b914a31873a2946ed84bcb6afee91050f3065c5d2bea4d4ea3d424215d'
+            '8a7206223be0d0e5d44707efffe233d698764d8cb10f05cdb69e963f27889c7c'
+            'a6967665a3411c3f47b45a10bb500c3e203eb909ee7474a9812927b0d702c636'
+            '5aeb7bce48f42a145b9420e5c49b2208bf45e6845ef027eb0045bd4096cb0db4'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
@@ -50,9 +50,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'd4a0dff313e6fc6be96acde3ff85515147f99ce5027f44795364a45010afe2e815430828bce84d00cbec280ddd61ca1ae3f7ac926d6840d27f01b6785c64d0b5'
-        '20fcc6449d99e6ff2fbd1c9f62752b9535c6457ab337be18950fe323df6ab36b792ed701bb995cc3db416968984ab3bb4496d90b688ffdd5d8ae978de2c4628d'
-        'f1e36773169cc1d5ed0ada30383e0e5e37b4e6d764a998ac2c4b5b9fc990fca45e3143815f467669094b9e3b8b940f6bbb6f6d5595dfba1c98d718c8131a3db5'
+        '3125a42f09f78303a1a73439fa4acc0bb617b67718bf2142266e9820f27639d32c385472958bd4aebea4b9799e3e6b107825bb10efa8e50d7e8b3219a9da4384'
+        '5bbe1d23816db451ace64a1d90906e7668ce0dacd69ff0a46d100545852ab50c271701f4b4d6661e23d0a449289963b77699dc730946b27687649f9175f76e62'
+        '44330771db35d9c89572552ca55348cd8181fca2befb47db41dde9e4de5938ddf60ddd34e828e5a0f43d42c7e8688e53bc5d8df2c9b70b2d6f6c47c35ae3c178'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 options=(!lto)
 
@@ -80,8 +80,6 @@ build() {
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_SKIP_RPATH=ON \
-    -D CMAKE_C_FLAGS="$CFLAGS -Wno-error=restrict" \
-    -D CMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=restrict" \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
