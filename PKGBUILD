@@ -2,14 +2,14 @@
 pkgbase="korai-git"
 pkgname="korai"
 pkgrel=1
-pkgver=0.1.4
+pkgver=0.2.0
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
 makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
 license=("GPL")
-source=('https://github.com/DisableGraphics/Korai/archive/refs/tags/v0.1.4.tar.gz')
-sha512sums=('1ec1cb97bb8355457952897dd601c772e3caf075762c6af2dd77d5e2d4e4326dfd7df517bab938aaeb42cacdfa82969d80b456cb03efbc6a2a183fc161735094')
+source=('https://github.com/DisableGraphics/Korai/archive/refs/tags/v0.2.0.tar.gz')
+sha512sums=('cdddd9b1fa79bac063d2321458d03e1100624691612f8d8d1d99fcf7cae5fa06b34bf0ffcdc8aa2944adcfd6d9fd3d6abb0e148398665a7980ac06bdeb7ef2b3')
 prepare() {
 	tar xf v${pkgver}.tar.gz
 	cd ${srcdir}/Korai-${pkgver}/
@@ -21,7 +21,14 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/"
 	mkdir -p "${pkgdir}/usr/share/icons/"
 
+	mkdir -p "${pkgdir}/home"
+	mkdir -p "${pkgdir}/home/$USER"
+	mkdir -p "${pkgdir}/home/$USER/.local"
+	mkdir -p "${pkgdir}/home/$USER/.local/share"
+	mkdir -p "${pkgdir}/home/$USER/.local/share/korai-extensions"
+
 	cp ${srcdir}/Korai-${pkgver}/build/korai "${pkgdir}/usr/bin/"
+	cp ${srcdir}/Korai-${pkgver}/build/korai-extensions/savepos.so "${pkgdir}/home/$USER/.local/share/korai-extensions/savepos.so"
 
 	echo "Converting icon..."
 	convert ${srcdir}/Korai-${pkgver}/src/icon.xpm "${pkgdir}/usr/share/icons/korai.png"
