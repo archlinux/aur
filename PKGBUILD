@@ -1,41 +1,42 @@
-# Maintainer : Jingbei Li <i@jingbei.li>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgname=intel-oneapi-dpcpp-debugger
-pkgver=10.1.1
-_debpkgrel=80
+_pkgver=2021.6.0
+_debpkgrel=178
+pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® Distribution for GDB*"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=("custom")
 source=(
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-eclipse-cfg-${pkgver}-${_debpkgrel}_all.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-eclipse-cfg-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}.conf"
 )
 noextract=(
-	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"${pkgname}-eclipse-cfg-${pkgver}-${_debpkgrel}_all.deb"
+	"${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"${pkgname}-eclipse-cfg-${_pkgver}-${_debpkgrel}_all.deb"
 )
-sha256sums=('cbd18e772db0c9a781b2f340f1cdc06a29c8cc8499772be99f75fa67eba58bf3'
-            '3f9ea224b178085a688effc2726ba65493c5fdf91bad53bb585c3c2bef17e1a5'
+sha256sums=('aba62716b81c21d431abbeda55d28db9326cbfbe13dd633c4df4655da62b85d4'
+            '91db109a0cfe173057d88fa8a8580b84870e73bbb576ba22883e6d8cff4bb88e'
             'b27f24587d796719ac01160026e085817b077b65b25cca2959cb782eb714b965')
 
 build() {
-	ar x ${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
+	ar x ${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
 	tar xvf data.tar.xz
 
-	ar x ${pkgname}-eclipse-cfg-${pkgver}-${_debpkgrel}_all.deb
+	ar x ${pkgname}-eclipse-cfg-${_pkgver}-${_debpkgrel}_all.deb
 	tar xvf data.tar.xz
 
-	rm -r opt/intel/oneapi/debugger/${pkgver}/src
+	rm -rf opt/intel/oneapi/debugger/${_pkgver}/src
 }
 
 package() {
-	depends=('intel-oneapi-common-vars' 'intel-oneapi-common-licensing')
+	depends=('intel-oneapi-common=2022.1.0')
 	mv ${srcdir}/opt ${pkgdir}
-	ln -sfT "$pkgver" ${pkgdir}/opt/intel/oneapi/debugger/latest
+	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/debugger/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
 }
