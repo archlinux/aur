@@ -15,7 +15,8 @@ _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64')
 arch=('any')
 url="https://${_pkggopath}"
-makedepends=('dpkg') # 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
+#makedepends=('dpkg') # 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
+makedepends=('dpkg' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl')
 depends=()
 _debdeps=""
 #_debdeps=""
@@ -33,7 +34,7 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}armhf.tar.gz"
 )
-sha256sums=('da3022932e854e5ff445fe07247c85ac20d0cd1f2815a15c885e0ce620548d69'
+sha256sums=('39587ebe9d7c757fd5d2ec59fbaeb0be943edafc03558eab67c8772a89154413'
             '798a9ccf3ca26a0450c62bc8ad2d4fddbbfdd27501a83bb771af3d60a007c001'
             '13f849a09634341be5bf93b660f852a0d3c793408a45c4b059cb17e37225a565'
             '7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
