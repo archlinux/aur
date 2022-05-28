@@ -1,6 +1,6 @@
 pkgbase = universal-android-debloater-git
 	pkgdesc = An android debloater application written in rust credit to w1nst0n (0x192) @github
-	pkgver = 0.5.0.r6.216beec
+	pkgver = 0.5.0.r10.5df9cee
 	pkgrel = 1
 	url = https://github.com/0x192/universal-android-debloater.git
 	install = universal-android-debloater-git.install
