@@ -2,9 +2,9 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.14.1
+pkgver=3.20.0
 pkgrel=1
-pkgdesc='A free, open-source and completely encrypted notes app'
+pkgdesc='Free, open-source encrypted notes app'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://standardnotes.org'
 license=('AGPL3')
@@ -19,9 +19,9 @@ source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/standardnot
 source_i686=("$pkgname-$pkgver-i686.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-i386.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('9d9bda1a0c95bed758515a83349b368e24e79ae54677ee186c93b0db5b32990e')
-sha256sums_i686=('5424c08aecff5119a8b7e6af83daafbe104045e67be5f551ac7fabb753790613')
-sha256sums_aarch64=('5778490911e81de9d1cbf8b07c6e8781899120e961037818624576c288418819')
+sha256sums_x86_64=('b3e0ca9300652502471f47bb4647ef902cac5d2ae4bfc9265898d35c0c985ef5')
+sha256sums_i686=('f268938477563d31ebd71c1cfb3aa5432860ecc98c85919f1acf9196d5e3a1c5')
+sha256sums_aarch64=('519badf7939871e6fd7cdded385b31323eb9b4646d332dbd07e212de5a208360')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
