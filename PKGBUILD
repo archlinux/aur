@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=('electron' 'hicolor-icon-theme')
 makedepends=('asar')
 options=('!strip')
-source=("${pkgname%-bin}.AppImage::$url/releases/download/v$pkgver/ESO-Logs-Uploader-$pkgver.AppImage"
+source=("${pkgname%-bin}-$pkgver.AppImage::$url/releases/download/v$pkgver/ESO-Logs-Uploader-$pkgver.AppImage"
         'eso-logs-uploader.sh'
         'main.js.patch')
 sha256sums=('21a77c9730a917ce75db709730969a10c9a19b42beda93558fb5ade67d1b70af'
@@ -22,8 +22,8 @@ sha256sums=('21a77c9730a917ce75db709730969a10c9a19b42beda93558fb5ade67d1b70af'
 prepare() {
     cd "$srcdir"
     rm -rf "squashfs-root" "${pkgname%-bin}"
-    chmod u+x "${pkgname%-bin}.AppImage"
-    "./${pkgname%-bin}.AppImage" --appimage-extract
+    chmod u+x "${pkgname%-bin}-$pkgver.AppImage"
+    "./${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
     asar e "squashfs-root/resources/app.asar" "${pkgname%-bin}"
 
     mv "${pkgname%-bin}/LICENSE.md" "${pkgname%-bin}/README.md" .
