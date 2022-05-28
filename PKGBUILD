@@ -6,28 +6,24 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-14
+_srctag=GE-Proton7-15
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
-_wine_commit=0c90fc52e579066a2c4e7d48350de9f2c1e2f8ae
-_stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 #_winever=${pkgver%.*}
 #_winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
 _winever=$_pkgbasever
 
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
-        wine-valve::git+https://github.com/ValveSoftware/wine.git#commit=${_wine_commit}
-        wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=${_stag_commit}
+        proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
         wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
@@ -128,9 +124,9 @@ install=wine.install
 
 prepare() {
   pushd $pkgname
-    rm -r proton-wine && cp -r "$srcdir"/wine-valve proton-wine
-    rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
-    patches/protonprep-lutris-staging.sh
+    git submodule init proton-wine
+    git config submodule.proton-wine.url "$srcdir"/proton-wine-ge
+    git submodule update proton-wine
     pushd proton-wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch

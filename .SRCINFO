@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = GE.Proton7.14
+	pkgver = GE.Proton7.15
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -150,9 +150,8 @@ pkgbase = wine-ge-custom
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton7-14
-	source = wine-valve::git+https://github.com/ValveSoftware/wine.git#commit=0c90fc52e579066a2c4e7d48350de9f2c1e2f8ae
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton7-15
+	source = proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
 	source = wine-more_8x5_res.patch
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
@@ -160,7 +159,6 @@ pkgbase = wine-ge-custom
 	source = wine-binfmt.conf
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2
