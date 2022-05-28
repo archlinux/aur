@@ -8,14 +8,14 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=policycoreutils
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('GPL2')
 groups=('selinux')
-depends=('libsemanage>=3.3' 'pam')
+depends=('libsemanage>=3.4' 'pam')
 optdepends=('mcstrans: SELinux MCS translation daemon'
             'restorecond: SELinux daemon that fixes SELinux file contexts'
             'selinux-dbus-config: D-Bus configuration for SELinux'
@@ -25,8 +25,10 @@ optdepends=('mcstrans: SELinux MCS translation daemon'
             'semodule-utils: SELinux module tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4199040ced8a81f2ddd0522b4faf2aba62fc821473f4051dc8474fb1c4a01078')
+validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('bf049f31a7572a65cb796fa575f56c53327c839027d57782965c1682b33a7108'
+            'SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}"
