@@ -2,7 +2,7 @@
 
 pkgname=rng-rename
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to rename files to randomly generated strings."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/rng-rename"
@@ -33,5 +33,5 @@ package() {
   install -Dm755 target/release/rng-rename "${pkgdir}/usr/bin/rng-rename"
   install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/rng-rename"
   install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/rng-rename.fish"
-  install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_rng_rename"
+  install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_rng-rename"
 }
