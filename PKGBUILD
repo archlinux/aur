@@ -1,31 +1,51 @@
-# Maintainer: Jonas Schwartz
-pkgname=galaxybudsclient-bin
-_pkgname=GalaxyBudsClient
-pkgver=4.4.1
-pkgrel=3
-pkgdesc="Galaxy Buds Client for Linux"
+# Maintainer: gato_lento <vukk.euob at gmail>
+# Contributor: Jonas Schwartz
+_program_name=GalaxyBudsClient
+_pkgname=${_program_name,,}
+pkgname=${_pkgname}-bin
+pkgver=4.5.2
+pkgrel=1
+pkgdesc="Unofficial manager for the Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
       'armv7h'
       'aarch64')
-url="https://github.com/ThePBone/GalaxyBudsClient"
+url="https://github.com/ThePBone/${_program_name}"
 license=('GPL3')
-depends=()
-makedepends=()
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-options=("!strip")
-source=("${pkgname}.desktop" "icon_white.png")
-source_x86_64=("https://github.com/ThePBone/GalaxyBudsClient/releases/download/${pkgver}/${_pkgname}_Linux_64Bit_Portable.bin")
-source_armv7h=("https://github.com/ThePBone/GalaxyBudsClient/releases/download/${pkgver}/${_pkgname}_Linux_arm_Portable.bin")
-source_aarch64=("https://github.com/ThePBone/GalaxyBudsClient/releases/download/${pkgver}/${_pkgname}_Linux_arm64_Portable.bin")
+depends=('gcc-libs' 'zlib')
+install="${pkgname}.install"
+source=("${_pkgname}.desktop" "icon_white.png")
+
+# regardless of archtecture, the url used to download the binary starts with this
+_source_url_common="${url}/releases/download/${pkgver}"
+
+# template used for the names of the binaries
+_source_binary_common="${_program_name}_Linux_ARCH_Portable.bin"
+
+_source_binary_x86_64="${_source_binary_common/ARCH/64bit}"
+_source_binary_armv7h="${_source_binary_common/ARCH/arm}"
+_source_binary_aarch64="${_source_binary_common/ARCH/arm64}"
+
+# urls used to download the binaries for each architecture
+source_x86_64=("${_source_url_common}/${_source_binary_x86_64}")
+source_armv7h=("${_source_url_common}/${_source_binary_armv7h}")
+source_aarch64=("${_source_url_common}/${_source_binary_aarch64}")
 
 package() {
-	install -Dm755 ${_pkgname}_Linux_64Bit_Portable.bin "$pkgdir/usr/bin/galaxybudsclient"
-	install -Dm644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/galaxybudsclient.desktop"
-	install -Dm644 "$srcdir/icon_white.png" "$pkgdir/usr/share/pixmaps/galaxybudsclient.png"
+    dest="$pkgdir/usr/bin/${_pkgname}"
+
+    if [ $CARCH == "x86_64" ]; then
+        install -Dm755 ${_source_binary_x86_64} $dest
+    elif [ $CARCH == "armv7h" ]; then
+        install -Dm755 ${_source_binary_armv7h} $dest
+    elif [ $CARCH == "aarch64" ]; then
+        install -Dm755 ${_source_binary_aarch64} $dest
+    fi
+
+    install -Dm644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "$srcdir/icon_white.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 }
 sha256sums=('61e88374446b2d378e487f0b4cb41cafac7dfb6ce1905158028b144123c5c1ca'
             '04b551470a2e0ccd99b266d313265321113886f5808b872bf928a97442bf930a')
-sha256sums_x86_64=('eef881b49f5bceea153870c7b82633e2a5eeec82ddc6949883a7c9ed3e074ae4')
-sha256sums_armv7h=('aa17d71d9a539fdac508ce60d0ec8f078a7662d85c91f58ac3e4da31c3be8074')
-sha256sums_aarch64=('892ca971816cf6cdcc0fc4d46004ad88fefa4cafd97b491e45aec79c43a81251')
+sha256sums_x86_64=('8e07ebbcf4cd4e2700e319ed146de8a7e4cd5b28ffdc24a3d4340c294f0a6274')
+sha256sums_armv7h=('714df59b7f0bcf505e51efa4ab186a0ad637c3a448d409bbc2164c38b597f35a')
+sha256sums_aarch64=('09cb2bde9390ef614a569da9eff49ac7a724af780cdcdaac4807a4239ba8ca98')
