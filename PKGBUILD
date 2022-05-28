@@ -19,7 +19,7 @@ conflicts=( 'skywire' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('39587ebe9d7c757fd5d2ec59fbaeb0be943edafc03558eab67c8772a89154413')
+sha256sums=('ffa0a31aad701bdc939923ef7299eb5fc40282e159aecb2c82d08f293e61aa07')
 sha256sums_i686=('93311432784e370d5b5638d95e2b80fbb20de65840d7728fb5c1b5491dbf0df1')
 sha256sums_x86_64=('798a9ccf3ca26a0450c62bc8ad2d4fddbbfdd27501a83bb771af3d60a007c001')
 sha256sums_aarch64=('13f849a09634341be5bf93b660f852a0d3c793408a45c4b059cb17e37225a565')
@@ -95,11 +95,13 @@ chmod +x ${_pkgdir}/usr/bin/*
 install -Dm644 ${srcdir}/skywire/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 #install systemd services
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-user.service ${_pkgdir}/${_systemddir}/${_pkgname}-user.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
+_msg2 'Installing scripts'
+_systemd=${srcdir}/${_scripts}/systemd
+_skywiresystemd=$( ls ${_systemd} )
+for i in ${_skywiresystemd}; do
+install -Dm644 ${srcdir}/${_scripts}/systemd/${i} ${_pkgdir}/${_systemddir}/${i}
+done
+rm ${_pkgdir}/${_systemddir}/skywire-hypervisor.service
 
 #desktop integration
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
