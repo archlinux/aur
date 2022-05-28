@@ -11,14 +11,14 @@ _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r760.g84fb6d499
+pkgver=0.60.0.beta2.r1821.g092daecb6
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
 url='https://www.dxx-rebirth.com/'
 license=('GPL3' 'custom:Parallax')
-depends=('glu' 'libgl' 'libpng' 'sdl' 'sdl_image' 'sdl_mixer' 'physfs')
-makedepends=('git' 'scons')
+depends=('glu' 'libgl' 'libpng' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs')
+makedepends=('git' 'scons' 'clang')
 source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
         "https://www.dxx-rebirth.com/download/dxx/res/d1xr-${_music}-music.dxa"
@@ -32,25 +32,24 @@ sha256sums=('SKIP'
             'ace152182c70b9a7ae6f911bddbc239566220a287ab5419cab260d5af739bf16')
 
 pkgver() {
-    cd dxx-rebirth
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C dxx-rebirth describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
     local -a _common_opts=(
         "$MAKEFLAGS"
         '-Cdxx-rebirth'
-        'lto=1'
-        'sdlmixer=1'
         'builddir=./build'
         'prefix=/usr'
         'opengl=yes'
+        'sdl2=yes'
         'sdlmixer=yes'
         'ipv6=yes'
         'use_udp=yes'
         'use_tracker=yes'
         'screenshot=png')
     
+    export CXX='clang++'
     scons "${_common_opts[@]}" 'd1x=1' 'd2x=0' 'sharepath=/usr/share/d1x-rebirth'
     scons "${_common_opts[@]}" 'd1x=0' 'd2x=1' 'sharepath=/usr/share/d2x-rebirth'
 }
