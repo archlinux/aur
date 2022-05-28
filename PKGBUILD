@@ -1,4 +1,4 @@
-# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
+# Maintainer:  Courtney Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-oswald
 _commit='dbb34644e36024fef3def6d268d30ead8f0ce113'
