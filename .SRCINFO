@@ -1,0 +1,15 @@
+pkgbase = xinputd-git
+	pkgdesc = Xinputd is a simple daemon that executes a command when an Xorg input device is added or removed. By default, Xinputd forks to background and exits when the X server exits.
+	pkgver = 1.0.0e0bd7c
+	pkgrel = 1
+	url = https://github.com/bbenne10/xinputd
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = asciidoc
+	provides = xinputd
+	conflicts = xinputd
+	source = git+https://github.com/bbenne10/xinputd.git
+	sha256sums = SKIP
+
+pkgname = xinputd-git
