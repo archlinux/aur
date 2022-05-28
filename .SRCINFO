@@ -9,10 +9,10 @@ pkgbase = akamai-bin
 	provides = akamai
 	provides = akamai-cli
 	source = https://raw.githubusercontent.com/akamai/cli/1.5.0/LICENSE
-	sha512sums = 389080b6132d3eaae780648d6998390d8cc71908561bce09578e27c542aa1a9f3122e01f640c5b01bee73004c23aa4e9f2066fe5ee0ca2072c2420578b28d71f
+	b2sums = 21231bed1327f35b322032568be6b848d23595a294f5e055bc2506a57c122b3ebf3809ae9574b2f16b8856c744816658a06091f8d8e596a31586b3f632ae5d6b
 	source_x86_64 = akamai-bin-1.5.0-x86_64::https://github.com/akamai/cli/releases/download/v1.5.0/akamai-v1.5.0-linuxamd64
-	sha512sums_x86_64 = 53bbc29b454e87d72399c3c3534330fe07efaf96c8d9071174860667221cee9eae936c17d6d6968df0a4193610ac7fcf7d3fb81dc2f6cbe6c5a037d0e1c53fc8
+	b2sums_x86_64 = fa1bb1a43ce30488e767ff0b5f2de41e83c186afc6644007c9ba45e14fe21e4fbceacb5fb01a56f064c2514d57cc60a21d40a8576b574419ab446bf73c79235a
 	source_pentium4 = akamai-bin-1.5.0-x86_64::https://github.com/akamai/cli/releases/download/v1.5.0/akamai-v1.5.0-linux386
-	sha512sums_pentium4 = 53bbc29b454e87d72399c3c3534330fe07efaf96c8d9071174860667221cee9eae936c17d6d6968df0a4193610ac7fcf7d3fb81dc2f6cbe6c5a037d0e1c53fc8
+	b2sums_pentium4 = fa1bb1a43ce30488e767ff0b5f2de41e83c186afc6644007c9ba45e14fe21e4fbceacb5fb01a56f064c2514d57cc60a21d40a8576b574419ab446bf73c79235a
 
 pkgname = akamai-bin
