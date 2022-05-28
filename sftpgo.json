@@ -54,6 +54,22 @@
       }
     ]
   },
+  "acme": {
+    "domains": [],
+    "email": "",
+    "key_type": "4096",
+    "certs_path": "/var/lib/sftpgo/certs",
+    "ca_endpoint": "https://acme-v02.api.letsencrypt.org/directory",
+    "renew_days": 30,
+    "http01_challenge": {
+      "port": 80,
+      "proxy_header": "",
+      "webroot": ""
+    },
+    "tls_alpn01_challenge": {
+      "port": 0
+    }
+  },
   "sftpd": {
     "bindings": [
       {
@@ -133,7 +149,9 @@
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "prefix": "",
-        "proxy_allowed": []
+        "proxy_allowed": [],
+        "client_ip_proxy_header": "",
+        "client_ip_header_depth": 0
       }
     ],
     "certificate_file": "",
@@ -235,6 +253,8 @@
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "proxy_allowed": [],
+        "client_ip_proxy_header": "",
+        "client_ip_header_depth": 0,
         "hide_login_url": 0,
         "render_openapi": true,
         "web_client_integrations": [],
@@ -300,6 +320,7 @@
     "ca_certificates": [],
     "ca_revocation_lists": [],
     "signing_passphrase": "",
+    "token_validation": 0,
     "max_upload_file_size": 1048576000,
     "cors": {
       "enabled": false,
