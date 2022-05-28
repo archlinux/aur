@@ -1,13 +1,13 @@
---- ./powercord/injectors/index.js	2020-09-14 22:56:56.712657163 +0200
-+++ ./index.js.patched	2020-09-14 23:13:59.510168597 +0200
+--- ./powercord/injectors/index.js	2022-05-28 23:52:39.121011129 +0200
++++ ./index.js.patched	2022-05-28 23:51:44.530980252 +0200
 @@ -1,3 +1,10 @@
 +#!/usr/bin/env node
 +
-+if(process.env.USER != "root") {
++if (process.env.USER != "root") {
 +  console.log("You need to run powercord as root.");
 +  process.exit(1);
 +}
 +
- /**
-  * Copyright (c) 2018-2020 aetheryx & Bowser65
-  * All Rights Reserved. Licensed under the Porkord License
+ require('./elevate');
+ require('./env_check')(); // Perform checks
+ require('../polyfills'); // And then do stuff

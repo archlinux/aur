@@ -1,0 +1,16 @@
+diff --git a/src/browserWindow.js b/src/browserWindow.js
+index 27e87cbb..4f575775 100644
+--- a/src/browserWindow.js
++++ b/src/browserWindow.js
+@@ -56,6 +56,11 @@ class PatchedBrowserWindow extends BrowserWindow {
+     win.on('unmaximize', () => void win.webContents.send('POWERCORD_WINDOW_UNMAXIMIZE'));
+ 
+     win.webContents._powercordPreload = originalPreload;
++    const oldOn = win.on;
++    win.on = (event, listener, args) => {
++      if (event === 'app-command') return;
++      oldOn.apply(win, [event, listener, args]);
++    };
+     return win;
+   }
+ 
