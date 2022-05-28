@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=future
-_cranver=1.25.0
+_cranver=1.26.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
 )
 optdepends=(r-rhpcblasctl r-r.rsp r-markdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d6242ece0fb45f0bf492e8219eae790a448255540ee39ef930a2752fdc821847')
+sha256sums=('a35c0bdae86265ebe86119231802b6fbf7b1d533b57cb423d8483fbe779390d5')
 
 build() {
   mkdir -p build
