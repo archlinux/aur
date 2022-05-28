@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 
 pkgname=libkcapi
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux Kernel Crypto API User Space Interface Library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('BSD' 'GPL2')
 source=("http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz"
         "http://www.chronox.de/$pkgname/$pkgname-$pkgver.tar.xz.asc"
         "makefile.patch")
-sha256sums=('6b57946eb87bc9cfa544140b6c9a12ef9eefa0a16695578aebf3395f0a78bede'
+sha256sums=('644b47593b3f27f08add7a8808ccdbe569a2f331d70fb8b52551e57379b917fa'
             'SKIP'
             '792424adf0c33ec1902a0cde15e9ca8ee7b19c9952b07b3b799fad5662d3b551')
 
