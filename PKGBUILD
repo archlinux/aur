@@ -28,6 +28,4 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
-	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
 }
