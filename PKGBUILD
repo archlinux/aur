@@ -8,22 +8,24 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('custom')
 groups=('selinux')
 makedepends=('pkgconf' 'python' 'ruby' 'xz' 'swig')
-depends=('libsepol>=3.3' 'pcre')
+depends=('libsepol>=3.4' 'pcre')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "libselinux.tmpfiles.d")
-sha256sums=('acfdee27633d2496508c28727c3d41d3748076f66d42fccde2e6b9f3463a7057'
+sha256sums=('77c294a927e6795c2e98f74b5c3adde9c8839690e9255b767c5fca6acff9b779'
+            'SKIP'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
