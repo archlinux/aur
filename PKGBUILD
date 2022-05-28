@@ -1,4 +1,5 @@
-# Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=jellyseerr
 pkgver=1.1.0
