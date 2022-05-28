@@ -1,47 +1,68 @@
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+
 pkgname=totem-git
-_pkgname=totem
-pkgver=3.34.0+105+g020c9dfd6
+pkgver=42.0+r69+g2c7772ef4
 pkgrel=1
-pkgdesc="Movie player for the GNOME desktop based on GStreamer"
-url="https://wiki.gnome.org/Apps/Videos"
-arch=(x86_64)
+pkgdesc='Movie player for the GNOME desktop based on GStreamer'
+url='https://wiki.gnome.org/Apps/Videos'
+arch=(x86_64 aarch64)
 license=(GPL2 custom)
-depends=('totem-plparser' 'iso-codes' 'libpeas' 'clutter-gtk' 'clutter-gst' 'grilo' 'gsettings-desktop-schemas'
-         'dconf' 'python-gobject' 'python-xdg' 'gnome-desktop' 'gst-plugins-base' 'gst-plugins-good'
-         'gst-plugins-bad')
-makedepends=('libnautilus-extension' 'itstool' 'docbook-xsl' 'python-pylint'
-             'gobject-introspection' 'git' 'appstream-glib' 'gtk-doc' 'meson' 'intltool')
-optdepends=('gst-plugins-ugly: Extra media codecs'
-            'gst-libav: Extra media codecs'
-            'grilo-plugins: Media discovery'
-            'python-dbus: MPRIS plugin')
-provides=('totem')
-conflicts=('totem' 'totem-plugin')
-replaces=('totem' 'totem-plugin')
-source=("git+https://gitlab.gnome.org/GNOME/totem.git"
-        "git+https://gitlab.gnome.org/GNOME/libgd.git")
-sha512sums=('SKIP'
-            'SKIP')
+depends=(
+	gnome-desktop
+	grilo
+	gst-plugin-gtk
+	gst-plugins-bad
+	gst-plugins-base
+	gst-plugins-good
+	libhandy
+	libpeas
+	libportal-gtk3
+	python-gobject
+)
+makedepends=(
+	appstream-glib
+	docbook-xsl
+	git
+	gobject-introspection
+	gtk-doc
+	intltool
+	itstool
+	libnautilus-extension
+	meson
+	python-pylint
+)
+optdepends=(
+	'grilo-plugins: Media discovery'
+	'gst-libav: Extra media codecs'
+	'gst-plugins-ugly: Extra media codecs'
+)
+provides=(totem)
+conflicts=(totem)
+source=(
+	"git+https://gitlab.gnome.org/GNOME/totem.git"
+	"git+https://gitlab.gnome.org/GNOME/libgd.git"
+)
+b2sums=('SKIP' 'SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^V_//;s/_/./g;s/-/+/g'
+	cd totem
+	git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd $_pkgname
+	cd totem
 
-  git submodule init
-  git config --local submodule.subprojects/libgd.url "$srcdir/libgd"
-  git submodule update
+	git submodule init
+	git submodule set-url subprojects/libgd "$srcdir/libgd"
+	git submodule update
 }
 
 build() {
-  arch-meson $_pkgname build -D enable-gtk-doc=true
-  ninja -C build
+	arch-meson totem build -D enable-gtk-doc=true
+	meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-  install -Dt "$pkgdir/usr/share/licenses/$_pkgname" -m644 $_pkgname/COPYING
+	meson install -C build --destdir "$pkgdir"
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 totem/COPYING
 }
