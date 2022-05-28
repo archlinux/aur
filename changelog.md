@@ -1,3 +1,20 @@
+## GE-PROTON-7-19 Released
+
+- V Rising fixes imported from upstream proton
+- More FFXIV fixes imported from upstream proton
+- FFXIV A Realm Reborn intro video missing audio fixed
+- Star Citizen fixes imported from upstream wine (PLEASE NOTE THIS IS NOT FOR RUNNING STAR CITIZEN. THIS WAS ADDED ONLY FOR OTHER GAMES THAT NEED THE SAME PATCHES.)
+- video fix for Outward added
+- video fix for El Hijo added from upstream proton
+- video fix for We Were Here Forever added from upstream proton
+- video fix for The Room 4 added from upstream proton
+- video fix for EZ2ON REBOOT added from upstream proton
+- Added fix for Fall Guys to for Proton EAC runtime to install if not already present (Thanks Rokam!)
+- Removed Serious Sam 4 DX12 workaround (no longer needed). It will now only set OpenAL audio (still needed)
+- wine updated to latest bleeding edge
+- dxvk updated to latest bleeding edge
+- vkd3d-proton updated to latest bleeding edge
+
 ## GE-Proton7-18 Released
 - proton bleeding edge updates, contains patches to fix official FFXIV Launcher (finally)
 Additional notes:
