@@ -1,7 +1,7 @@
 pkgbase = mauikit-git
 	pkgdesc = Utilities and "templated" controls based on Kirigami and QCC2 that follow the ongoing work on the Maui HIG
-	pkgver = 2.0.0.r6.g8399e74e
-	pkgrel = 1
+	pkgver = 2.1.2.r3.g2e8de1ec
+	pkgrel = 2
 	url = https://mauikit.org/
 	arch = x86_64
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = mauikit-git
 	depends = qt5-quickcontrols2
 	depends = kio
 	depends = kdecoration
+	depends = maui-manager
 	provides = mauikit
 	conflicts = mauikit
 	source = git+https://invent.kde.org/kde/mauikit.git
