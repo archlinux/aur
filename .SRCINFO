@@ -1,6 +1,6 @@
 pkgbase = gitcolorscripts
 	pkgdesc = Get your GitHub contributions right in your terminal!
-	pkgver = r19.5c5e449
+	pkgver = r23.aae09d8
 	pkgrel = 1
 	url = https://github.com/BladeOfLightX/gitcolorscripts
 	arch = any

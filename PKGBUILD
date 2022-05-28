@@ -5,7 +5,7 @@
 
 # Maintainer: 0xsapphir3 <0xsapphir3@gmail.com>
 pkgname=gitcolorscripts
-pkgver=r19.5c5e449
+pkgver=r23.aae09d8
 pkgrel=1
 pkgdesc="Get your GitHub contributions right in your terminal!"
 arch=(any)
