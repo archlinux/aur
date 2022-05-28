@@ -1,8 +1,8 @@
 pkgbase = celestia
 	pkgdesc = Real-time space simulation
 	pkgver = 1.6.2.2
-	pkgrel = 1
-	url = https://celestia.space/
+	pkgrel = 2
+	url = https://celestia.space
 	arch = x86_64
 	license = GPL
 	depends = gtk2
@@ -17,7 +17,7 @@ pkgbase = celestia
 	options = !makeflags
 	source = https://github.com/CelestiaProject/Celestia/archive/1.6.2.2/celestia-1.6.2.2.tar.gz
 	source = celestia-fix-desktop.patch::https://github.com/CelestiaProject/Celestia/commit/6a4a0573.patch
-	sha1sums = 6e2fb4481dd69a5a81e31dc4352f2cf3680740d8
-	sha1sums = 23d8963cceb407ff33171f87f8aa1ba5fa8839f9
+	sha512sums = a67cc296a3f176bbe74e9c0bf8d83f6a78cc045edb23fbb870ff42dfd0b53a87af83b57ec35d378338f5dc321ead0d719a350a36036cdc3a2817f9c4b0d89ad2
+	sha512sums = 13574528ba33f9bb94ed4b505bd5a921ffff92637663dc737f614a0bdce6f6ad1f9d685cf43d20b304b37244d4868909bcad13c82588d071fffd4bc0ff6e5e00
 
 pkgname = celestia
