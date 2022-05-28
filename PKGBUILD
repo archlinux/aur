@@ -6,7 +6,7 @@
 
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
-pkgver=8.050.00
+pkgver=8.050.02
 pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/r8168"
