@@ -1,6 +1,6 @@
 # Maintainer: FineFindus <Finefindusgh@gmail.com>
 pkgname=artem
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Convert images from multiple formats (jpg, png, webp, etc…) to ASCII art, written in Rust'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('artem')
 conflicts=('artem')
 source=("$pkgname-$pkgver=.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5c9de1b5c4695b5a8dc5ed3e6ad3f9010136960b51516a0007c06201e5def8de')
+sha256sums=('fac6a22aa9b82988be13745868ce3ae9ba3d18ce286d7b9f1edb1d1534f0a0db')
 
 
 prepare() {
@@ -48,6 +48,6 @@ package() {
 	install -Dm 644 deployment/doc/artem.1 -t "$pkgdir/usr/share/man/man1/"
 	install -Dm 644 deployment/completions/artem.bash -t "$pkgdir/usr/share/bash-completion/completions/"
 	install -Dm 644 deployment/completions/artem.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-	install -Dm 644 deployment/completions/_artem -t "$pkgdir/usr/share/zsh/vendor-completions/"
+	install -Dm 644 completions/_artem -t "$pkgdir/usr/share/zsh/site-functions"
 }
 
