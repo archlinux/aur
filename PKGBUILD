@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=mprocs
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Run multiple commands in parallel"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 conflicts=('mprocs-bin')
 provides=('mprocs')
 source=("https://github.com/pvolok/mprocs/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61ede3286f717352c3a4cf4ebc6dca4f0a560658258d21a1dfdaec1302343558')
+sha256sums=('d2e3ca56f6ab701cf224c6be97b1830911f6447ee76a260314b246bd080aaa09')
 makedepends=(rust)
 
 build() {
