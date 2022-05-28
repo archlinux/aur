@@ -1,0 +1,18 @@
+pkgbase = sslpsk
+	pkgdesc = This module adds TLS-PSK support to the Python 2.7 and 3.x ssl package.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/drbild/sslpsk
+	arch = any
+	license = Apache 2.0
+	makedepends = python2-setuptools
+	source = https://github.com/drbild/sslpsk/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 49b63093b96602591c44b79545e144efe35fe4936ff53eed7bd93eef048ff595
+
+pkgname = python-sslpsk
+	pkgdesc = This module adds TLS-PSK support to the Python 3.x ssl package.
+	depends = python
+
+pkgname = python2-sslpsk
+	pkgdesc = This module adds TLS-PSK support to the Python 2.7 ssl package.
+	depends = python2
