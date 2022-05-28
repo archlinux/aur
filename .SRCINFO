@@ -1,5 +1,5 @@
 pkgbase = clipdl
-	pkgdesc = A simple script for downloading videos from linkss coppied to your primary clipboard
+	pkgdesc = A simple script for downloading the most recent media link coppied to your clipboard
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/a4to/clipdl
