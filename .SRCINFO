@@ -1,6 +1,6 @@
 pkgbase = lilypond-git
 	pkgdesc = An automated music engraving system (Git snapshot)
-	pkgver = 2.23b31807.25ffd4b40d
+	pkgver = 2.23b31827.8b533bda3b
 	pkgrel = 1
 	url = http://lilypond.org/
 	arch = i686
@@ -27,7 +27,9 @@ pkgbase = lilypond-git
 	provides = lilypond
 	conflicts = lilypond
 	options = !makeflags
-	source = git+https://gitlab.com/lilypond/lilypond.git#branch=dev/wl/fix-install
+	source = git+https://gitlab.com/lilypond/lilypond.git
+	source = fix_buildsystem.patch
 	sha256sums = SKIP
+	sha256sums = 4c04ea356f87321ab816ce25d28d3301698b8091df5f248f6bdc882cd9953f06
 
 pkgname = lilypond-git

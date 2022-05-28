@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.23b31807.25ffd4b40d
+pkgver=2.23b31827.8b533bda3b
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -30,8 +30,9 @@ optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
 	    'tk: for the gui')
 provides=('lilypond')
 conflicts=('lilypond')
-source=(git+https://gitlab.com/lilypond/lilypond.git#branch=dev/wl/fix-install)
-sha256sums=('SKIP')
+source=(git+https://gitlab.com/lilypond/lilypond.git fix_buildsystem.patch)
+sha256sums=('SKIP'
+            '4c04ea356f87321ab816ce25d28d3301698b8091df5f248f6bdc882cd9953f06')
 options=('!makeflags')
 
 pkgver() {
@@ -39,6 +40,11 @@ pkgver() {
   printf %s.%sb%s.%s $(grep MAJOR VERSION | cut -d= -f2) \
 	 $(grep MINOR VERSION | cut -d= -f2) $(git rev-list --count HEAD) \
 	 "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd lilypond/
+  patch -Np1 < "$srcdir"/fix_buildsystem.patch
 }
 
 build() {
@@ -52,7 +58,6 @@ build() {
 }
 
 package() {
-  LANG=C
   cd lilypond/build
   make DESTDIR="$pkgdir/" vimdir="/usr/share/vim/vimfiles" install
   rm -rf "$pkgdir"/usr/share/man
