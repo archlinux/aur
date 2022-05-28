@@ -3,7 +3,7 @@
 pkgname=qcopy
 pkgver=1.4
 pkgrel=1
-pkgdesc="Easily set variables and their respective values for easy access at any point"
+pkgdesc="Easily save important snippets such as passwords for quick access copying at any point"
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
@@ -14,12 +14,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'ae0933af9d04281e6f0ac796e4326cf3353e811350d83ba6b64e08c94f17479e7b266b56748f231d0bdf4a40c7c2192dfd9ce5d48c1673c0865e749183c6dba6'
-  '6d2152ebd4089c2d604b102c1a9e41c2ea881e0cb3a866de6e3bac7c6d0e9d5a214b3e2781ecdd424bef975d6aefaa04a8c2b08a30dfd173eb04fd433538fb13'
+  '57c5a7eec67a10356749ce3d93dccedcf67888f8dde0011bd9aadf690b0349bf902ebbc0c3870581692977bb1022d83addaecf5378650dd72b97bb1db3f1a770'
+  'c51c4ea4ebfce0c6fae655421f28c258537e5cf864e82a3bf3fa3b638308e3508030a71f127a3203019b7b1328677757fcf9193f3989bdfb110e0153da49044d'
   )
 md5sums=(
-  '038be052b5f26b4343c492950b440738'
-  'e773e7e093c54b2af509aeb2f9a32a8b'
+  '7443ea0fe9e79fcebb199be264c7fd89'
+  '65c39345ed840582311bcc451bba1903'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
