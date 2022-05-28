@@ -4,14 +4,15 @@ _program_name=GalaxyBudsClient
 _pkgname=${_program_name,,}
 pkgname=${_pkgname}-bin
 pkgver=4.5.2
-pkgrel=1
-pkgdesc="Unofficial manager for the Buds, Buds+, Buds Live and Buds Pro"
+pkgrel=2
+pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
       'armv7h'
       'aarch64')
 url="https://github.com/ThePBone/${_program_name}"
 license=('GPL3')
 depends=('gcc-libs' 'zlib')
+options=('!strip')
 install="${pkgname}.install"
 source=("${_pkgname}.desktop" "icon_white.png")
 
