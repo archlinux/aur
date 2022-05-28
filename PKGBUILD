@@ -7,7 +7,7 @@
 pkgbase=ttf-ms-win10-cdn
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.19042.789
-pkgrel=1
+pkgrel=6
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -491,8 +491,10 @@ prepare() {
 
 _package() {
     conflicts+=(${pkgname/10/8} ttf-win7-fonts${pkgname##*10})
-
-    install -Dm644 $(echo "$@" | cut -d':' -f1)  -t "$pkgdir/usr/share/fonts/TTF"
+    for font in $@; do
+        font=$(echo "$font" | cut -d':' -f1)
+        install -Dm644 $font -t "$pkgdir/usr/share/fonts/TTF"
+    done
     install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
