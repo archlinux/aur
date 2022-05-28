@@ -3,10 +3,10 @@
 _pkgname=polymc-cracked
 pkgname=${_pkgname}-git
 pkgver=3832.782929c4
-pkgrel=1
+pkgrel=2
 pkgdesc="The PolyMC launcher, modified to allow the use of offline Minecraft accounts."
 arch=('i686' 'x86_64')
-url="https://github.com/catfromplan9/PolyMC-Cracked"
+url="https://git.plan9.rocks/cat/PolyMC-Cracked"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme')
 provides=('polymc')
@@ -17,7 +17,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("git+https://github.com/catfromplan9/PolyMC-Cracked"
+source=("git+https://git.plan9.rocks/cat/PolyMC-Cracked"
         "git+https://github.com/PolyMC/libnbtplusplus"
         "git+https://github.com/stachenov/quazip")
 
