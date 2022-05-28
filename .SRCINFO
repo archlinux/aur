@@ -5,6 +5,7 @@ pkgbase = imd-git
 	url = https://github.com/Noah-Arcouette/imd.git
 	arch = any
 	license = MIT
+	makedepends = python3
 	makedepends = git
 	makedepends = binutils
 	makedepends = make

@@ -6,7 +6,7 @@ pkgdesc="Improved MarkDown Reader"
 
 arch=("any")
 
-makedepends=("git" "binutils" "make" "gcc" "gzip")
+makedepends=("python3" "git" "binutils" "make" "gcc" "gzip")
 depends=("glibc")
 
 license=("MIT")
