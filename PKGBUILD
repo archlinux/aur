@@ -1,4 +1,4 @@
-# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
+# Maintainer:  Courtney Swagar <distorto@member.fsf.org>
 # Contributor: Juraj Fiala <doctorjellyface at riseup dot net>
 
 pkgname=fonts-meta-base
