@@ -2,8 +2,8 @@
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgname=intel-oneapi-dpcpp-ct
-_pkgver=2022.0.0
-_debpkgrel=96
+_pkgver=2022.1.0
+_debpkgrel=172
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® DPC++ Compatibility Tool"
@@ -12,8 +12,8 @@ url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=("custom")
 source=("https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
 "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-ct-eclipse-cfg-${_pkgver}-${_debpkgrel}_all.deb")
-sha256sums=('3574b3fca83124ce57a184f27699f03744ecde619d3ee91c29b6411a0a3b0e14'
-            '289e12f6ed8df55a233ba681885f07900b7b08cf5255428fdd8dd764c694d69d')
+sha256sums=('df6998ea28a885dceb4445b8f331d08c0fd68c9e5d85b98dba83278bde42bdb9'
+            'b8e0053bf3c8ec14c3fdcc4e54b71c15c6f0ac7ee2f7ea22cf4bb677003ebf00')
 
 noextract=(
 	"intel-oneapi-dpcpp-ct-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0')
+	depends=('intel-oneapi-common=2022.1.0')
 	mv ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/dpcpp-ct/latest
 }
