@@ -1,0 +1,14 @@
+pkgbase = netbsd-manpages
+	pkgdesc = The NetBSD man pages
+	pkgver = 9.2
+	pkgrel = 1
+	url = https://man.netbsd.org/
+	arch = any
+	license = BSD
+	options = !strip
+	source = https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.2/amd64/binary/sets/man.tar.xz
+	source = manfmt
+	sha256sums = 1f567b36f58f3ad845e89ac0685de9f18be2ad9491976ee790738faf1a9efcb8
+	sha256sums = 4b8b668c7e7b44ea06299a468169f337a346ecd77804cca24bc0bcefaf976963
+
+pkgname = netbsd-manpages

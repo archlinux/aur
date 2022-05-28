@@ -1,0 +1,9 @@
+#!/bin/sh
+# Copy into a unique file path and indicate OS inside the man page.
+if [ -z "$1" ]; then
+	echo 'usage: manfmt <file>' 1>&2
+	exit 1
+fi
+outfile=$pkgdir/${1#$srcdir/}netbsd
+os="NetBSD $pkgver"
+sed -E "0,/^\.Os/s//\0 $os/; 0,/^\.TH/s/(\"[^\"]*\" \")(\" \"[^\"]*\")$/\1$os\2/" "$1" >"$outfile"
