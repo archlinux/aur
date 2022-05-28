@@ -1,11 +1,12 @@
 pkgbase = seccomp-tools
 	pkgdesc = Provide powerful tools for seccomp analysis.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/david942j/seccomp-tools
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-os
 	noextract = seccomp-tools-1.5.0.gem
 	source = https://rubygems.org/downloads/seccomp-tools-1.5.0.gem
 	sha1sums = f8de199c3c2e3c0f2fee36e54da507de21653b93
