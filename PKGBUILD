@@ -1,6 +1,6 @@
 # Maintainer: Mihir Lad <mihirlad55@gmail.com>
 pkgname=polybar-spotify-module
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Programs to display spotify information and control spotify with polybar"
 arch=('any')
