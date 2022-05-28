@@ -1,0 +1,13 @@
+pkgbase = gitcolorscripts-bin
+	pkgdesc = Get your GitHub contributions right in your terminal!
+	pkgver = r19.5c5e449
+	pkgrel = 1
+	url = https://github.com/BladeOfLightX/gitcolorscripts
+	arch = any
+	license = MIT
+	depends = cargo
+	provides = gitcolorscripts
+	source = git+https://github.com/BladeOfLightX/gitcolorscripts
+	md5sums = SKIP
+
+pkgname = gitcolorscripts-bin
