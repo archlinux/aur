@@ -414,7 +414,6 @@ END
   fi
 
   # Delete unneeded things from settings repo
-  rm "$pkgdir/usr/lib/firedragon/.gitignore"
   rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
   rm "$pkgdir/usr/lib/firedragon/about.png"
   rm "$pkgdir/usr/lib/firedragon/firedragon.psd"
