@@ -25,7 +25,11 @@ depends=(
 	python-tqdm
 	python-wasabi
 )
-makedepends=(python-setuptools cython)
+makedepends=(
+	python-pip
+	python-setuptools
+	cython
+)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 b2sums=('edee5e238be38054d75e0eb12d4461812243afd3d5eb4744b998476feff58ea8edf2ef1de8a70254e522949db07d87c9b00368d60946db35e4a342a8318aa313')
 
