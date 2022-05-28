@@ -8,6 +8,7 @@ pkgbase = bilibili-bin
 	license = custom
 	makedepends = asar
 	makedepends = p7zip
+	makedepends = nodejs
 	depends = ffmpeg
 	depends = electron
 	depends = libappindicator-gtk3
