@@ -1,4 +1,4 @@
-# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
+# Maintainer:  Courtney Swagar <distorto@member.fsf.org>
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Max Roder <maxroder@web.de>
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
