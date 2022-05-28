@@ -3,11 +3,12 @@ pkgname=betterbird-bin
 _pkgname=betterbird
 pkgver=91.9.1
 _build=bb32
-pkgrel=1
+pkgrel=2
 pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
 license=('MPL2')
+depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
