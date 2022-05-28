@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Raphnet-Tech Adapter Manager
+Exec=/usr/bin/gcn64ctl_gui
+Icon=raphnet-manager
+Categories=Utility

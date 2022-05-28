@@ -1,0 +1,22 @@
+pkgbase = gcn64tools-git
+	pkgdesc = Raphnet USB adapter management tools.
+	pkgver = r423.e8420ea
+	pkgrel = 1
+	url = https://github.com/raphnet/gcn64tools
+	install = gcn64tools.install
+	arch = any
+	license = GPL3
+	makedepends = hidapi
+	makedepends = pkgconf
+	makedepends = gtk3
+	makedepends = libxml2
+	optdepends = dfu-programmer: firmware updates
+	provides = gcn64tools
+	source = git+https://github.com/raphnet/gcn64tools.git
+	source = raphnet-manager.desktop
+	source = raphnet-manager.svg
+	sha256sums = SKIP
+	sha256sums = 7dc5f9c2c92649f96e08df50d0634f5a24f61da04bb753455959d66fb2300850
+	sha256sums = 67416a5f07a6c349ca3f4a1e75792e23f93956ea26dbb45bf02ccdcd3eca558a
+
+pkgname = gcn64tools-git

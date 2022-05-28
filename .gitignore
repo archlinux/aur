@@ -1,0 +1,4 @@
+/gcn64tools/
+/pkg/
+/src/
+*.tar.zst
