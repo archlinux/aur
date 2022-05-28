@@ -1,12 +1,13 @@
 pkgbase = devsak-git
 	pkgdesc = DEVeloper's Swiss Army Knife
-	pkgver = 0.0.1
+	pkgver = 0.0.1.r1.g556ba9e
 	pkgrel = 1
 	url = https://github.com/hristotanev/devsak.git
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL3
 	makedepends = git
 	provides = devsak
+	conflicts = devsak
 	source = git+https://github.com/hristotanev/devsak.git
 	md5sums = SKIP
 
