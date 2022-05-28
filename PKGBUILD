@@ -4,7 +4,7 @@
 pkgname=sudo-git
 _pkgname=sudo
 pkgrel=1
-pkgver=1.9.10.r11521.ge2692f109
+pkgver=1.9.11.r11641.gdc8311dae
 pkgdesc="Give certain users the ability to run some commands as root - git version"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
