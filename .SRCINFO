@@ -1,7 +1,7 @@
 pkgbase = eso-logs-uploader-bin
 	pkgdesc = Official log uploader application for esologs.com
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RPGLogs/Uploaders-esologs
 	arch = any
 	license = custom:CC0
@@ -15,7 +15,7 @@ pkgbase = eso-logs-uploader-bin
 	source = eso-logs-uploader.sh
 	source = main.js.patch
 	sha256sums = 21a77c9730a917ce75db709730969a10c9a19b42beda93558fb5ade67d1b70af
-	sha256sums = f4ed827fdf403e9fee5c359c54902ad6ddde4b4962ce3dd43cc26ba6d53aacf5
+	sha256sums = 6b260619df25c8f73b2ad252462480745130d3a2d51eb8be431e55f81e637239
 	sha256sums = bc880cedc36a76f0a6ae901da4ca648ea5751d507463e960d03f3ce8b3f4948a
 
 pkgname = eso-logs-uploader-bin

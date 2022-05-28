@@ -2,7 +2,7 @@
 
 pkgname=eso-logs-uploader-bin
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official log uploader application for esologs.com"
 arch=('any')
 url="https://github.com/RPGLogs/Uploaders-esologs"
@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-$pkgver.AppImage::$url/releases/download/v$pkgver/ESO-L
         'eso-logs-uploader.sh'
         'main.js.patch')
 sha256sums=('21a77c9730a917ce75db709730969a10c9a19b42beda93558fb5ade67d1b70af'
-            'f4ed827fdf403e9fee5c359c54902ad6ddde4b4962ce3dd43cc26ba6d53aacf5'
+            '6b260619df25c8f73b2ad252462480745130d3a2d51eb8be431e55f81e637239'
             'bc880cedc36a76f0a6ae901da4ca648ea5751d507463e960d03f3ce8b3f4948a')
 
 prepare() {
