@@ -1,0 +1,11 @@
+pkgbase = ttf-playfair-display-sc
+	pkgdesc = An Open Source typeface family for display and titling use with a transitional design.
+	pkgver = 1.202
+	pkgrel = 1
+	url = https://github.com/clauseggers/Playfair-Display/
+	arch = any
+	license = custom:OFL
+	source = https://github.com/clauseggers/Playfair/archive/1.202.tar.gz
+	sha512sums = 8bf7d4c528d5dde8fa14a8a9379bc73f2809277bb19892027c02066b538d851b552e0dcba6bf44dd8b6953a906f00fd4244a563cde258c41b689826323d09366
+
+pkgname = ttf-playfair-display-sc
