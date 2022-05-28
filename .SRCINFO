@@ -1,17 +1,18 @@
 pkgbase = neolight
 	pkgdesc = Additional layers for the german qwertz keyboard layout and others.
-	pkgver = 1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/mihi314/neolight
 	install = neolight.install
 	arch = any
 	license = GPL
 	depends = xkeyboard-config
-	source = https://raw.githubusercontent.com/mihi314/neolight/v1.0/linux/neolight
-	source = https://raw.githubusercontent.com/mihi314/neolight/v1.0/linux/register-neolight.sh
+	optdepends = ibus: adds neolight to the ibus input methods
+	source = https://raw.githubusercontent.com/mihi314/neolight/v1.2.0/linux/neolight
+	source = https://raw.githubusercontent.com/mihi314/neolight/v1.2.0/linux/register-neolight.sh
 	source = register-neolight.hook
-	md5sums = 7c8ff562fc2aa3083504153858471e5d
-	md5sums = 433d01c216b121d6917ea8df08391035
-	md5sums = ea5d2bf7d983a2629fc02de193557f0b
+	md5sums = 64c22a708abbd99c45ccf5f224d522d6
+	md5sums = 450e3c6aa9c0fe9b2f9048bde5ce438a
+	md5sums = c6e81d0589bab55863b25cbffbaebf09
 
 pkgname = neolight

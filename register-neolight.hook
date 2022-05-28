@@ -2,8 +2,10 @@
 Operation = Install
 Operation = Upgrade
 Type = Path
+# deliberately not starting the path with a /, see https://man.archlinux.org/man/alpm-hooks.5#TRIGGERS
 Target = usr/share/X11/xkb/rules/evdev.xml
 Target = usr/share/X11/xkb/rules/evdev
+Target = usr/share/ibus/component/simple.xml
 
 [Action]
 When = PostTransaction
