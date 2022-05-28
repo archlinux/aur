@@ -1,23 +1,13 @@
---- /opt/powercord/src/Powercord/index.js	2020-08-15 18:33:09.000000000 +0200
-+++ ./index.js	2020-08-15 22:14:22.762386298 +0200
-@@ -54,9 +54,9 @@
- 
-     this.api = {};
-     this.gitInfos = {
--      upstream: '???',
--      branch: '???',
--      revision: '???'
-+      upstream: 'powercord-org/powercord',
-+      branch: 'v2',
-+      revision: 'REVISION_NUMBER'
-     };
-     this.initialized = false;
-     this.styleManager = new StyleManager();
-@@ -89,7 +89,6 @@
+diff --git a/src/Powercord/index.js b/src/Powercord/index.js
+index 1ddfd149..21f20185 100644
+--- a/src/Powercord/index.js
++++ b/src/Powercord/index.js
+@@ -87,7 +87,7 @@ class Powercord extends Updatable {
      // Start
      await this.startup();
      this.fetchAccount();
 -    this.gitInfos = await this.pluginManager.get('pc-updater').getGitInfos();
++    // this.gitInfos = await this.pluginManager.get('pc-updater').getGitInfos();
  
      // Token manipulation stuff
      if (this.settings.get('hideToken', true)) {
