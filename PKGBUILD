@@ -7,24 +7,26 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libsemanage
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="SELinux binary policy manipulation library"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('LGPL2.1')
 groups=('selinux')
 makedepends=('flex' 'pkgconf' 'python' 'ruby' 'swig')
-depends=('libselinux>=3.3' 'audit')
+depends=('libselinux>=3.4' 'audit')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 options=(!emptydirs) # For /var/lib/selinux
 install=libsemanage.install
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "semanage.conf")
-sha256sums=('84d0ec5afa34bbbb471f602d8c1bf317d12443d07852a34b60741d428d597ce8'
+sha256sums=('93b423a21600b8e3fb59bb925d4583d1258f45bebf63c29bde304dfd3d52efd6'
+            'SKIP'
             '5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0')
 
 build() {
