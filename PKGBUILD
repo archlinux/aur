@@ -1,13 +1,15 @@
-# Maintainer: Szentesi Botond
-pkgname=powercord-git
+# Maintainer: Marie Ramlow
+# Based on powercord-git
+pkgname=powercord-git-mouse-button-fix
 _pkgname=powercord
 pkgver=r1390.8a471180
 pkgrel=1
-pkgdesc="A lightweight discord client mod focused on simplicity and performance."
+pkgdesc="A lightweight discord client mod focused on simplicity and performance. Includes a patch to fix mouse thumb buttons."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
-license=('Porkord')
-depends=('nodejs' 'git' 'npm')
+license=('MIT')
+conflicts=('powercord-git')
+depends=('nodejs' 'git' 'npm' 'discord-canary')
 makedepends=('jq')
 source=(
 	"git+https://github.com/powercord-org/powercord#branch=v2"
@@ -17,17 +19,19 @@ source=(
 	"pc-settings_index.js.patch"
 	"pc-updater_index.js.patch"
 	"pc-updater_settings.jsx.patch"
+	"browserWindow.js.patch"
 	"powercord.8"
 	)
-md5sums=(
+sha256sums=(
 	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
+	'970eadfdffcae1b64ed1771ff1430c8a3988476fdb9a25b7d40e40e4aa708bf7'
+	'a3543f74cbe07752f81fd0b5a2b29647e7138acd11ae76a6b723e28928504fb0'
+	'b08d9cc0097a8e7a6347a4455e0beed7ebbe8504fed3a0c4eee02116f49e69db'
+	'59356c741dea8192e340f009c5d148e526c1f723be91a8224489ed66d6b3a070'
+	'b9e17f6091ea5eaee58d625aa9921f14b579f068eb7b4bd7a70068413b614bc3'
+	'1f3b303f5ddfb04badb1c909f3da2cee49ffa6a13e4a8ebb255aef715d381c6f'
+	'd554cc48d14e4085bf3976a5b3439abb6fbea94c7593240b717d9883ee923b8d'
+	'0f06f85a3d80b00cf577d8d3a38589e8230bb7480871eca4c7ee6b04f28b61da'
 	)
 options=('!strip')
 
@@ -38,6 +42,7 @@ prepare() {
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-settings/index.js -i ${srcdir}/pc-settings_index.js.patch
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/index.js -i ${srcdir}/pc-updater_index.js.patch
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/components/Settings.jsx -i ${srcdir}/pc-updater_settings.jsx.patch
+	patch -u ${srcdir}/${_pkgname}/src/browserWindow.js -i ${srcdir}/browserWindow.js.patch
 	
 	cd "${srcdir}/${_pkgname}"
 	local _revision="$(git rev-list HEAD | head -n 1)"

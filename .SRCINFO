@@ -1,14 +1,16 @@
-pkgbase = powercord-git
-	pkgdesc = A lightweight discord client mod focused on simplicity and performance.
-	pkgver = r1280.61c8dae5
+pkgbase = powercord-git-mouse-button-fix
+	pkgdesc = A lightweight discord client mod focused on simplicity and performance. Includes a patch to fix mouse thumb buttons.
+	pkgver = r1390.8a471180
 	pkgrel = 1
 	url = https://github.com/powercord-org/powercord
 	arch = any
-	license = Porkord
+	license = MIT
 	makedepends = jq
 	depends = nodejs
 	depends = git
 	depends = npm
+	depends = discord-canary
+	conflicts = powercord-git
 	options = !strip
 	source = git+https://github.com/powercord-org/powercord#branch=v2
 	source = injector_index.js.patch
@@ -17,15 +19,16 @@ pkgbase = powercord-git
 	source = pc-settings_index.js.patch
 	source = pc-updater_index.js.patch
 	source = pc-updater_settings.jsx.patch
+	source = browserWindow.js.patch
 	source = powercord.8
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 970eadfdffcae1b64ed1771ff1430c8a3988476fdb9a25b7d40e40e4aa708bf7
+	sha256sums = a3543f74cbe07752f81fd0b5a2b29647e7138acd11ae76a6b723e28928504fb0
+	sha256sums = b08d9cc0097a8e7a6347a4455e0beed7ebbe8504fed3a0c4eee02116f49e69db
+	sha256sums = 59356c741dea8192e340f009c5d148e526c1f723be91a8224489ed66d6b3a070
+	sha256sums = b9e17f6091ea5eaee58d625aa9921f14b579f068eb7b4bd7a70068413b614bc3
+	sha256sums = 1f3b303f5ddfb04badb1c909f3da2cee49ffa6a13e4a8ebb255aef715d381c6f
+	sha256sums = d554cc48d14e4085bf3976a5b3439abb6fbea94c7593240b717d9883ee923b8d
+	sha256sums = 0f06f85a3d80b00cf577d8d3a38589e8230bb7480871eca4c7ee6b04f28b61da
 
-pkgname = powercord-git
-
+pkgname = powercord-git-mouse-button-fix
