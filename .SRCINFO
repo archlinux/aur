@@ -1,0 +1,16 @@
+pkgbase = pacman-zfs-hook-git
+	pkgdesc = Pacman ZFS Hook to create ZFS Snapshots on Pacman transactions.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~mustachedsquid/pacman-zfs-hook
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = bash
+	depends = pacman
+	provides = pacman-zfs-hook
+	conflicts = pacman-zfs-hook
+	source = pacman-zfs-hook-git::git+https://git.sr.ht/~mustachedsquid/pacman-zfs-hook.git
+	md5sums = SKIP
+
+pkgname = pacman-zfs-hook-git
