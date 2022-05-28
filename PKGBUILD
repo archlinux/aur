@@ -72,9 +72,9 @@ install -Dm755 ${_apps}/skysocks ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/skysocks ${_pkgdir}/usr/bin/skysocks
 install -Dm755 ${_apps}/skysocks-client ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/skysocks-client ${_pkgdir}/usr/bin/skysocks-client
-install -Dm4755 ${_apps}/vpn-client ${_pkgdir}/${_skyapps}/
+install -Dm755 ${_apps}/vpn-client ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/vpn-client ${_pkgdir}/usr/bin/vpn-client
-install -Dm4755 ${_apps}/vpn-server ${_pkgdir}/${_skyapps}/
+install -Dm755 ${_apps}/vpn-server ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/vpn-server ${_pkgdir}/usr/bin/vpn-server
 
 _msg2 'Installing scripts'
