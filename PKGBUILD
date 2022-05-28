@@ -6,14 +6,19 @@
 ## Discord Rich Presence integration
 ## Required for game invites.
 if [ -z ${_use_discordrpc+x} ]; then
-  _use_discordrpc=n
+  # Automatically enable discord rpc integration if `discord-rpc-git` is installed
+  if ( pacman -Q discord-rpc-git >/dev/null ); then
+    _use_discordrpc=y
+  else
+    _use_discordrpc=n
+  fi
 fi
 
 # Don't compress with UPX, don't dump symbols to speed up compiling
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 pkgname=srb2kart-moe-mansion-git
-pkgver=r7373.df0db020
+pkgver=r7384.4849fb5c
 _dataver=1.3
 pkgrel=1
 pkgdesc="A rolling release/nightly version of srb2kart 1.3 based on birdhouse with a couple other changes."
@@ -26,7 +31,7 @@ makedepends_i686=('nasm')
 conflicts=('srb2kart-moe-mansion')
 
 if [ "${_use_discordrpc}" = "y" ]; then
-  depends+=('discord-rpc-api')
+  depends+=('discord-rpc-git')
 fi
 
 options=(!buildflags)
