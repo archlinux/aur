@@ -1,0 +1,38 @@
+--- a/linux-gpib-user/language/python/gpibinter.c
++++ b/linux-gpib-user/language/python/gpibinter.c
+@@ -3,7 +3,7 @@
+  * Python wrapper module for gpib library functions.
+  ************************************************************/
+ 
+-
++#define PY_SSIZE_T_CLEAN
+ #include "Python.h"
+ 
+ #ifdef USE_INES
+@@ -283,7 +283,7 @@
+ static PyObject* gpib_write(PyObject *self, PyObject *args)
+ {
+ 	char *command;
+-	int command_len;
++	Py_ssize_t command_len;
+ 	int  device;
+ 	int sta;
+ 
+@@ -309,7 +309,7 @@
+ static PyObject* gpib_write_async(PyObject *self, PyObject *args)
+ {
+ 	char *command;
+-	int  command_len;
++	Py_ssize_t  command_len;
+ 	int  device;
+ 	int  sta;
+ 
+@@ -336,7 +336,7 @@
+ static PyObject* gpib_command(PyObject *self, PyObject *args)
+ {
+ 	char *command;
+-	int  command_len;
++	Py_ssize_t  command_len;
+ 	int  device;
+ 	int  sta;
+ 
