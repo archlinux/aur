@@ -1,3 +1,4 @@
+# Overseerr's default port is 5055, if you want to use both, change this.
 # specify on which port to listen
 PORT=5055
 
