@@ -1,0 +1,44 @@
+diff --git a/Makefile b/Makefile
+index a2e391f..0a94385 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+-CC           = gcc
+-CFLAGS       = -g -O2 -Wall $(RPM_OPT_FLAGS)
+-LDFLAGS      = -L. -lmediacheck
+-SHARED_FLAGS = -fPIC -fvisibility=hidden
++CC           ?= gcc
++CFLAGS       += -O2 -Wall
++_LDFLAGS     = $(LDFLAGS) -L. -lmediacheck
++SHARED_FLAGS += -fPIC -fvisibility=hidden
+ 
+ ARCH    := $(shell uname -m)
+ GIT2LOG := $(shell if [ -x ./git2log ] ; then echo ./git2log --update ; else echo true ; fi)
+@@ -19,15 +19,15 @@ LIB_SONAME   = $(LIB_NAME).so.$(MAJOR_VERSION)
+ DIGEST_SRC  = $(wildcard md5.c sha*.c)
+ DIGEST_OBJ  = $(DIGEST_SRC:.c=.o)
+ 
+-LIBDIR = /usr/lib$(shell ldd /bin/sh | grep -q /lib64/ && echo 64)
++LIBDIR ?= /usr/lib
+ 
+ all: checkmedia digestdemo
+ 
+ checkmedia: checkmedia.c $(LIB_FILENAME)
+-	$(CC) $(CFLAGS) checkmedia.c $(LDFLAGS) -DVERSION=\"$(VERSION)\" -o $@
++	$(CC) $(CFLAGS) checkmedia.c $(_LDFLAGS) -DVERSION=\"$(VERSION)\" -o $@
+ 
+ digestdemo: digestdemo.c $(LIB_FILENAME)
+-	$(CC) $(CFLAGS) digestdemo.c $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) digestdemo.c $(_LDFLAGS) -o $@
+ 
+ mediacheck.o: mediacheck.c mediacheck.h
+ 	$(CC) -c $(CFLAGS) $(SHARED_FLAGS) -o $@ $<
+@@ -36,7 +36,7 @@ $(DIGEST_OBJ): %.o: %.c %.h
+ 	$(CC) -c $(CFLAGS) $(SHARED_FLAGS) -o $@ $<
+ 
+ $(LIB_FILENAME): $(DIGEST_OBJ) mediacheck.o
+-	$(CC) -shared -Wl,-soname,$(LIB_SONAME) mediacheck.o $(DIGEST_OBJ) -o $(LIB_FILENAME)
++	$(CC) -shared -Wl,-soname,$(LIB_SONAME) mediacheck.o $(DIGEST_OBJ) -o $(LIB_FILENAME) $(LDFLAGS)
+ 	@ln -snf $(LIB_FILENAME) $(LIB_SONAME)
+ 	@ln -snf $(LIB_SONAME) $(LIB_NAME).so
+ 

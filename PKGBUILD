@@ -1,32 +1,35 @@
-# Maintainer: Yamada Hayao <development@fascode.net>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Yamada Hayao <development@fascode.net>
 
-_pkgname="checkmedia"
-pkgname="${_pkgname}"
+pkgname=checkmedia
 pkgdesc="Check installation CDs and DVDs for errors."
-pkgver="5.4"
-pkgrel="1"
+pkgver=6.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/openSUSE/checkmedia"
-license=('GPL')
-source=("git+${url}.git#tag=${pkgver}")
-md5sums=('SKIP')
-_dir="${_pkgname}"
-
-build(){
-    cd "${srcdir}/${_dir}"
-    make
-}
+license=('GPL3')
+depends=('perl')
+provides=('libmediacheck.so=6-64')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'Makefile.patch')
+sha256sums=('1cbfd7b4f5b898ec64c4435609b2bcffeaed35294bd85fb57f92dd2f0089babe'
+            'dc949a243128c3265f86517b6c3356a3e66bd31695f5cdcc12501e3109fa66fa')
 
 prepare(){
-    cd "${srcdir}/${_dir}"
-    sed -i "s|^LIBDIR.*|LIBDIR = \"/usr/lib\"|g" ./Makefile
+	patch -p1 -d "$pkgname-$pkgver" < Makefile.patch
+}
+
+build(){
+	cd "$pkgname-$pkgver"
+	make checkmedia VERSION="$pkgver" MAJOR_VERSION="${pkgver::1}" ARCH="$CARCH"
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	make test VERSION="$pkgver" MAJOR_VERSION="${pkgver::1}" ARCH="$CARCH"
 }
 
 package() {
-    cd "${srcdir}/${_dir}"
-
-    # Prepare dirs
-    mkdir -p "${pkgdir}/usr/bin"
-
-    make DESTDIR="${pkgdir}" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" VERSION="$pkgver" MAJOR_VERSION="${pkgver::1}" ARCH="$CARCH" install
 }
