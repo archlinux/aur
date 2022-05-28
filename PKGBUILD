@@ -4,18 +4,20 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-python
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
-depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=3.3' 'setools>=4.4.0')
+depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=3.4' 'setools>=4.4.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")
-source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8ad91061300387996ccb474962fb93dde263d924aa8f740618be16b22e2444ec')
+validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+sha256sums=('1731065a58293b8a598c0f8b182fdd1a278959b1288747fcb17af392496bac32'
+            'SKIP')
 
 build() {
   cd "${pkgbase}-${pkgver}"

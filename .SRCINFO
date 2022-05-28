@@ -1,7 +1,7 @@
 pkgbase = selinux-python
 	pkgdesc = SELinux python tools and libraries
-	pkgver = 3.3
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
@@ -11,12 +11,15 @@ pkgbase = selinux-python
 	depends = python
 	depends = python-audit
 	depends = python-ipy
-	depends = libsemanage>=3.3
+	depends = libsemanage>=3.4
 	depends = setools>=4.4.0
-	provides = sepolgen=3.3-2
+	provides = sepolgen=3.4-1
 	conflicts = sepolgen<2.7
 	conflicts = policycoreutils<2.7
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.3/selinux-python-3.3.tar.gz
-	sha256sums = 8ad91061300387996ccb474962fb93dde263d924aa8f740618be16b22e2444ec
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/selinux-python-3.4.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/selinux-python-3.4.tar.gz.asc
+	validpgpkeys = E853C1848B0185CF42864DF363A8AD4B982C4373
+	sha256sums = 1731065a58293b8a598c0f8b182fdd1a278959b1288747fcb17af392496bac32
+	sha256sums = SKIP
 
 pkgname = selinux-python
