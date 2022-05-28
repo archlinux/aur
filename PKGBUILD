@@ -1,4 +1,4 @@
-# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
+# Maintainer:  Courtney Swagar <distorto@member.fsf.org>
 
 # Notes:
 #   + gog:// DLAGENT:
@@ -7,7 +7,7 @@
 #       - https://github.com/Sude-/lgogdownloader
 
 pkgname='gog-hypnospace-outlaw'
-pkgver=2.25e
+pkgver=2.34b
 pkgrel=1
 pkgdesc='Solve crimes on the 90s internet'
 url='http://www.hypnospace.net/'
@@ -17,12 +17,12 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'file://hypnospace_outlaw_2_25e_linux64_40816.sh'
+  'file://hypnospace_outlaw_2_34b_linux64_46295.sh'
 )
 sha256sums=(
   '9fcb50a4e213fe1a209221ab9ac99392b8be805cfe5966ea17d8e5e6f640c8e7'
   '395fb7e8199cbe728a6bae36cb608f4273921a1100f07f85a0147034fe3118b3'
-  '615a68ab2f5a35f1f52c4d132366ba3ae2ca05bf829c148cc7a9bf41489e8f46'
+  '841a7d16329a8e808177aaf98e75c0120fcfe7772ff1472134d894e93dd77ae1'
 )
 
 prepare() {
