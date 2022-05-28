@@ -1,0 +1,25 @@
+diff --git a/manuals/Makefile b/manuals/Makefile
+index 817836b3..b616df91 100644
+--- a/manuals/Makefile
++++ b/manuals/Makefile
+@@ -65,7 +65,7 @@ POPULATION	= Makefile \
+ #*---------------------------------------------------------------------*/
+ #*    Everything ...                                                   */
+ #*---------------------------------------------------------------------*/
+-all: info ps sui html pdf
++all: info ps pdf
+ allwww: all bigloo.info.tar.gz # bdb.info.tar.gz
+ 
+ dvi: bigloo.dvi
+@@ -213,9 +213,9 @@ version.texi: ../Makefile.config
+ #*---------------------------------------------------------------------*/
+ #*    install                                                          */
+ #*---------------------------------------------------------------------*/
+-.PHONY: install install-html install-man install-info
++.PHONY: install install-man install-info
+ 
+-install: install-html install-man install-info
++install: install-man install-info
+ 
+ install-html:
+ 	@if [ ! -d $(DOCDIR) ]; then \

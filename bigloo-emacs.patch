@@ -1,0 +1,1493 @@
+--- bmacs/bee/bee-browse.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bee/bee-browse.el	2018-06-17 15:32:42.037634520 -0600
+@@ -144,14 +144,16 @@
+ 				     (select-frame frame)
+ 				     (select-window win)
+ 				     (set-buffer buffer)
+-				     (goto-line line)
++				     (goto-char (point-min))
++				     (forward-line (1- line))
+ 				     (recenter)
+ 				     t)
+ 				 nil))))))
+ 	    (let ((pop-up-frames t)
+ 		  (buffer (find-file-noselect aname)))
+ 	      (pop-to-buffer buffer)
+-	      (goto-line line)
++	      (goto-char (point-min))
++	      (forward-line (1- line))
+ 	      (recenter)))))
+     t)
+    ((and (consp command) 
+--- bmacs/bee/bee-expand.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bee/bee-expand.el	2018-06-17 15:32:42.043634505 -0600
+@@ -79,9 +79,10 @@
+ (defun bee-set-expand-temporary-buffer ()
+   (if (and (bufferp bee-expand-temporary-buffer)
+ 	   (buffer-live-p bee-expand-temporary-buffer))
+-      (save-excursion
+-	(set-buffer bee-expand-temporary-buffer)
+-	(toggle-read-only nil)
++      (with-current-buffer bee-expand-temporary-buffer
++	(if (featurep 'xemacs)
++	    (toggle-read-only 0)
++	  (setq buffer-read-only nil))
+ 	(erase-buffer))
+     (setq bee-expand-temporary-buffer (get-buffer-create "*bee tmp expand*"))))
+ 
+@@ -106,7 +107,7 @@
+       (funcall completion-hook bee-expand-temporary-buffer))
+   (delete-file (buffer-file-name bee-expand-temporary-buffer))
+   (set-buffer-modified-p nil)
+-  (toggle-read-only t)
++  (if (featurep 'xemacs) (toggle-read-only 1) (setq buffer-read-only t))
+   (let* ((pop-up-frames t)
+ 	 (lines      (+ 3 (count-lines (point-min) (point-max))))
+ 	 (cur-height (frame-height (selected-frame)))
+@@ -133,7 +134,7 @@
+ 		   (bee-get-temp-name)))))
+     (bee-set-expand-temporary-buffer)
+     (set-buffer bee-expand-temporary-buffer)
+-    (insert-buffer buf)
++    (insert-buffer-substring buf)
+     (write-file fname nil)
+     (bee-expand-buffer-internal)))
+ 
+--- bmacs/bee/bee-indent.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bee/bee-indent.el	2018-06-17 15:32:42.044634502 -0600
+@@ -157,7 +157,7 @@ of the start of the containing expressio
+ (defun bee-calculate-forced-indent ()
+   (when (> (count-lines 1 (point)) 1)
+     (save-excursion
+-      (previous-line 1)
++      (forward-line -1)
+       (beginning-of-line)
+       (skip-chars-forward " \t")
+       (let ((s (current-column)))
+--- bmacs/bee/bee-module.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bee/bee-module.el	2018-06-17 15:32:42.045634500 -0600
+@@ -359,8 +359,7 @@
+ ;*    bee-get-module-name ...                                          */
+ ;*---------------------------------------------------------------------*/
+ (defun bee-get-module-name (buffer)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (goto-char (point-min))
+     ;; first we search for the module declaration
+     (if (re-search-forward (concat "(module[ \n\t]\\(" (ude-ident-regexp)
+--- bmacs/bee/bee-usage.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bee/bee-usage.el	2018-06-17 15:32:42.046634497 -0600
+@@ -33,9 +33,7 @@
+ 						  (goto-char pos)
+ 						  (beginning-of-line)
+ 						  (point))
+-						(save-excursion
+-						  (end-of-line)
+-						  (point)))))
++						(point-at-eol))))
+     (vector (concat "def   : " define)
+ 	    `(let ((pop-up-frames t))
+ 	       (pop-to-buffer ,buffer)
+@@ -271,7 +269,7 @@ It is used to bypass the buffer local va
+ 			(pop-to-buffer buffer))
+ 		      (set-buffer buffer)
+ 		      (goto-char (point-min))
+-		      (goto-line (string-to-number line)))
++		      (forward-line (1- (string-to-number line))))
+ 		  (ude-error "Can't find buffer for %S" file))))))))
+ 
+ ;*---------------------------------------------------------------------*/
+--- bmacs/bug/bug-class.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-class.el	2018-06-17 15:32:42.046634497 -0600
+@@ -36,15 +36,13 @@
+ ;*    bug-file-to-string ...                                           */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-file-to-string (file)
+-  (save-excursion
+-    (let ((buffer (bug-find-file file)))
+-      (if buffer
+-	  (progn
+-	    (set-buffer buffer)
+-	    (let ((s (buffer-string)))
+-	      (kill-buffer buffer)
+-	      s))
+-	""))))
++  (let ((buffer (bug-find-file file)))
++    (if buffer
++	(with-current-buffer buffer
++	  (let ((s (buffer-string)))
++	    (kill-buffer buffer)
++	    s))
++      "")))
+ 
+ ;*---------------------------------------------------------------------*/
+ ;*    bug-jfile-module-name ...                                        */
+@@ -104,8 +102,7 @@
+ (defun bug-file-to-class (file)
+   (interactive "Ffile: ")
+   (let ((buffer (get-buffer file)))
+-    (save-excursion
+-      (set-buffer buffer)
++    (with-current-buffer buffer
+       (if bug-buffer-class
+ 	  bug-buffer-class
+ 	(progn
+--- bmacs/bug/bug-connect.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-connect.el	2018-06-17 15:32:42.047634495 -0600
+@@ -74,8 +74,7 @@
+ ;*    This function returns the point line number.                     */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-line-number (buffer pos)
+-  (save-restriction
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let (start)
+       (save-excursion
+ 	(save-restriction
+--- bmacs/bug/bug.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug.el	2018-06-17 15:32:42.048634492 -0600
+@@ -71,7 +71,10 @@ and source-file directory for your debug
+ 	     `(,bugname ,binary ,nil ,@(bug-string->list bug-emacs-option)
+ 			,a.out))
+       ;; the process filter and sentinel
+-      (process-kill-without-query (get-buffer-process bug-comint-buffer))
++      (if (featurep 'xemacs)
++	  (process-kill-without-query (get-buffer-process bug-comint-buffer))
++	(set-process-query-on-exit-flag (get-buffer-process bug-comint-buffer)
++					nil))
+       (set-process-filter (get-buffer-process bug-comint-buffer)
+ 			  'bug-filter))
+     ;; we start the bug-mode
+@@ -130,8 +133,7 @@ and source-file directory for your debug
+ (defun bugloo-quit ()
+   (interactive)
+   (if (bufferp bug-comint-buffer)
+-      (save-excursion
+-	(set-buffer bug-comint-buffer)
++      (with-current-buffer bug-comint-buffer
+ 	(condition-case ()
+ 	    (comint-kill-subjob)
+ 	  (error
+--- bmacs/bug/bug-filter.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-filter.el	2018-06-17 15:32:42.048634492 -0600
+@@ -51,9 +51,7 @@
+ ;*    bug-buffer-text-properties-at ...                                */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-buffer-text-properties-at (buf p)
+-  (save-excursion
+-    (set-buffer buf)
+-    (text-properties-at p)))
++  (text-properties-at p buf))
+ 
+ ;*---------------------------------------------------------------------*/
+ ;*    bug-filter-init ...                                              */
+@@ -272,10 +270,8 @@
+   (insert-text-property 0 (length output) 'keymap bug-filter-footprint-map output)
+   (insert-text-property 0 (length output) 'help-echo "mouse-3: Edit properties" output)
+   (funcall bug-filter-output proc output)
+-  (save-excursion
+-    (set-buffer bug-comint-buffer)
+-    (bug-add-image-overlay bug-comint-buffer (1- (point-max))
+-			   bug-footprint-enable-image)))
++  (bug-add-image-overlay bug-comint-buffer (1- (point-max))
++			 bug-footprint-enable-image))
+   
+ ;*---------------------------------------------------------------------*/
+ ;*    bug-filter-breakpoint-map ...                                    */
+@@ -303,10 +299,8 @@
+   (insert-text-property 0 (length output) 'keymap bug-filter-breakpoint-map output)
+   (insert-text-property 0 (length output) 'help-echo "mouse-3: Edit properties" output)
+   (funcall bug-filter-output proc output)
+-  (save-excursion
+-    (set-buffer bug-comint-buffer)
+-    (bug-add-image-overlay bug-comint-buffer (1- (point-max))
+-			   bug-breakpoint-red-image)))
++  (bug-add-image-overlay bug-comint-buffer (1- (point-max))
++			 bug-breakpoint-red-image))
+ 
+ ;*---------------------------------------------------------------------*/
+ ;*    bug-filter-ident-map ...                                         */
+--- bmacs/bug/bug-gnu-emacs.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-gnu-emacs.el	2018-06-17 15:32:42.049634490 -0600
+@@ -14,6 +14,7 @@
+ ;*---------------------------------------------------------------------*/
+ (provide 'bug-gnu-emacs)
+ (require 'bug-custom)
++(require 'bmacs-gnu-emacs)
+ 
+ ;*---------------------------------------------------------------------*/
+ ;*    GNU emacs settings...                                            */
+@@ -49,9 +50,9 @@
+ ;*    bug-add-margin-image-overlay ...                                 */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-add-margin-image-overlay (buffer line image)
+-  (save-excursion
+-    (set-buffer buffer)
+-    (goto-line line)
++  (with-current-buffer buffer
++    (goto-char (point-min))
++    (forward-line (1- line))
+     (let ((o (make-overlay (line-beginning-position)
+ 			   (1+ (line-beginning-position))))
+ 	  (s (string ? )))
+@@ -69,8 +70,7 @@
+ ;*    bug-add-image-overlay ...                                        */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-add-image-overlay (buffer char image)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (goto-char char)
+     (let ((o (make-overlay (line-beginning-position)
+ 			   (1+ (line-beginning-position))))
+@@ -132,12 +132,12 @@
+       (progn
+ 	(setq bug-gnu-emacs-source-line-overlay (make-overlay 1 1))
+ 	(overlay-put bug-gnu-emacs-source-line-overlay 'face 'bug-line-face)))
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let ((pos))
+       (save-restriction
+ 	(widen)
+-	(goto-line line)
++	(goto-char (point-min))
++	(forward-line (1- line))
+ 	(setq pos (point))
+ 	(move-overlay bug-gnu-emacs-source-line-overlay
+ 		      (line-beginning-position)
+--- bmacs/bug/bug-hooking.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-hooking.el	2018-06-17 15:32:42.049634490 -0600
+@@ -48,7 +48,7 @@
+ 	(redisplay-frame)
+ 	(sit-for 0.2)
+ 	(bug-wait-process "hooks" bug-hook-timeout)
+-	(mapcar (lambda (hook) (funcall hook)) bug-command-hooks)
++	(mapc (lambda (hook) (funcall hook)) bug-command-hooks)
+ 	(redisplay-frame)
+ 	(setq bug-command-hook-p nil))))
+ 
+@@ -69,8 +69,7 @@
+     ;; we wait for comint to be ready
+     (sit-for 0.1)
+     (if (bug-wait-process "bug-hook-command" bug-hook-timeout)
+-	(save-excursion
+-	  (set-buffer buffer)
++	(with-current-buffer buffer
+ 	  (let ((buffer-read-only nil))
+ 	    (erase-buffer)
+ 	    ;; Temporarily install our filter function.
+@@ -79,8 +78,7 @@
+ 		  (old-prompt-hook bug-prompt-hook))
+ 	      (setq bug-filter-output
+ 		    #'(lambda (proc str)
+-			(save-excursion
+-			  (set-buffer buffer)
++			(with-current-buffer buffer
+ 			  (goto-char (point-max))
+ 			  (insert str))))
+ 	      (setq bug-prompt-hook
+--- bmacs/bug/bug-process.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-process.el	2018-06-17 15:32:42.049634490 -0600
+@@ -63,8 +63,7 @@
+   (let ((proc (get-buffer-process bug-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer bug-comint-buffer)
++    (with-current-buffer bug-comint-buffer
+       (goto-char (process-mark proc))
+       (delete-region (point) (point-max))
+       (process-send-string proc (concat command "\n")))))
+@@ -83,47 +82,45 @@
+ (defun bug-wait-process (from timeout)
+   (if (not bug-comint-buffer)
+       (ude-error "No debugger running")
+-    (save-excursion
+-      (save-restriction
+-	(widen)
+-	(let ((count 0)
+-	      (str   "/-\\|")
+-	      (l (length bug-prompt-regexp)))
+-	  (setq str str)
+-	  (set-buffer bug-comint-buffer)
+-	  ;; we mark bug waiting
+-	  (setq bug-waiting t)
+-	  (accept-process-output)
+-	  (goto-char (point-max))
+-	  (while (progn
+-		   (goto-char (point-max))
+-		   (or (<= (point) l)
+-		       (and (save-excursion
+-			      (backward-char l)
+-			      (not (re-search-forward bug-prompt-eol-regexp
+-						      (point-max)
+-						      t)))
+-			    (or (not (numberp timeout))
+-				(< count timeout)))))
++    (with-current-buffer bug-comint-buffer
++      (save-excursion
++	(save-restriction
++	  (widen)
++	  (let ((count 0)
++		(str   "/-\\|")
++		(l (length bug-prompt-regexp)))
++	    ;; we mark bug waiting
++	    (setq bug-waiting t)
+ 	    (accept-process-output)
+-	    (setq count (+ 1 count))
+-	    (if (numberp timeout)
++	    (goto-char (point-max))
++	    (while (progn
++		     (goto-char (point-max))
++		     (or (<= (point) l)
++			 (and (save-excursion
++				(backward-char l)
++				(not (re-search-forward bug-prompt-eol-regexp
++							(point-max)
++							t)))
++			      (or (not (numberp timeout))
++				  (< count timeout)))))
++	      (accept-process-output)
++	      (setq count (+ 1 count))
++	      (if (numberp timeout)
++		  (display-message 'no-log
++		    (format "waiting for `%s' [%c] (timeout %d/%S)"
++			    from
++			    (aref str (% count 4))
++			    count
++			    timeout))
+ 		(display-message 'no-log
+-				 (format "waiting for `%s' [%c] (timeout %d/%S)"
+-					 from
+-					 (aref str (% count 4))
+-					 count
+-					 timeout))
+-	      (display-message 'no-log
+-			       (format "waiting for `%s' [%c]"
+-				       from
+-				       (aref str (% count 4)))))
+-	    (sit-for 0.3)
+-	    (redisplay-frame (selected-frame) t))
+-	  ;; we remove the last wait message
+-	  (display-message 'no-log " ")
+-	  ;; bug is now ready
+-	  (setq bug-waiting nil)
+-	  (or (not (numberp timeout))
+-	      (< count timeout)))))))
+-
++		  (format "waiting for `%s' [%c]"
++			  from
++			  (aref str (% count 4)))))
++	      (sit-for 0.3)
++	      (redisplay-frame (selected-frame) t))
++	    ;; we remove the last wait message
++	    (display-message 'no-log " ")
++	    ;; bug is now ready
++	    (setq bug-waiting nil)
++	    (or (not (numberp timeout))
++		(< count timeout))))))))
+--- bmacs/bug/bug-source.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-source.el	2018-06-17 15:32:42.049634490 -0600
+@@ -80,7 +80,8 @@
+ 			(display-buffer buffer))))
+ 	  (set-buffer buffer)
+ 	  (bug-connect-buffer buffer)
+-	  (goto-line line)
++	  (goto-char (point-min))
++	  (forward-line (1- line))
+ 	  (set-window-point window (point))
+ 	  (if bug-raise-active-source-frame-p
+ 	      (let ((frame (window-frame window)))
+--- bmacs/bug/bug-xemacs.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/bug/bug-xemacs.el	2018-06-17 15:32:42.049634490 -0600
+@@ -143,7 +143,8 @@ static char *arrow[] = {
+       (save-excursion
+ 	(save-restriction
+ 	  (widen)
+-	  (goto-line line)
++	  (goto-char (point-min))
++	  (forward-line (1- line))
+ 	  (setq pos (point))))
+       (goto-char pos)
+       (set-window-point window pos)
+@@ -162,9 +163,9 @@ static char *arrow[] = {
+ ;*    bug-add-margin-image-overlay ...                                 */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-add-margin-image-overlay (buffer line image)
+-  (save-excursion
+-    (set-buffer buffer)
+-    (goto-line line)
++  (with-current-buffer buffer
++    (goto-char (point-min))
++    (forward-line (1- line))
+     (let ((o (make-extent (line-beginning-position)
+ 			  (1+ (line-beginning-position))
+ 			  buffer)))
+@@ -177,8 +178,7 @@ static char *arrow[] = {
+ ;*    bug-add-image-overlay ...                                        */
+ ;*---------------------------------------------------------------------*/
+ (defun bug-add-image-overlay (buffer char image)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (goto-char char)
+     (let ((o (make-extent (line-beginning-position)
+ 			  (1+ (line-beginning-position))
+--- bmacs/cee/cee-kbdb.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/cee/cee-kbdb.el	2018-06-17 15:32:42.049634490 -0600
+@@ -389,7 +389,8 @@
+ 		      (select-frame frame)
+ 		      (select-window win)
+ 		      (set-buffer buf)
+-		      (goto-line npos)
++		      (goto-char (point-min))
++		      (forward-line (1- npos))
+ 		      (beginning-of-line)
+ 		      (set-window-point win npos)
+ 		      t))))
+@@ -399,7 +400,8 @@
+ 	  (if (bufferp buf)
+ 	      (progn
+ 		(set-buffer buf)
+-		(goto-line npos)
++		(goto-char (point-min))
++		(forward-line (1- npos))
+ 		(beginning-of-line)
+ 		t))))
+        (t
+--- bmacs/dbg/dbg-args.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-args.el	2018-06-17 15:32:42.049634490 -0600
+@@ -100,8 +100,7 @@ This is implemented using the DBG `args'
+   (let ((proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (while (not (looking-at comint-prompt-regexp))
+ 	(goto-char (process-mark proc))
+@@ -140,8 +139,7 @@ This is implemented using the DBG `args'
+ ;*    Args a new args in a separate buffer.                            */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-args-args (buffer args)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let ((buffer-read-only nil))
+       (erase-buffer)
+       (insert args)
+@@ -164,12 +162,12 @@ This is implemented using the DBG `args'
+ 					 'mouse-face 'highlight
+ 					 'keymap dbg-args-mouse-map)
+ 		    (if (< end (point-max))
+-			(next-line 1)
++			(forward-line 1)
+ 		      (setq keep nil)))
+ 		(progn
+ 		  (end-of-line)
+ 		  (if (< (point) (point-max))
+-		      (next-line 1)
++		      (forward-line 1)
+ 		    (setq keep nil)))))))))))
+ 		
+ ;*---------------------------------------------------------------------*/
+@@ -243,8 +241,7 @@ This is implemented using the DBG `args'
+ (defun dbg-args-menu (event)
+   (interactive "e")
+   (let (selection)
+-    (save-excursion
+-      (set-buffer (event-buffer event))
++    (with-current-buffer (event-buffer event)
+       (save-excursion
+ 	(goto-char (event-closest-point event))
+ 	(message "point: %S" (point))
+--- bmacs/dbg/dbg-breakpoint.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-breakpoint.el	2018-06-17 15:32:42.050634487 -0600
+@@ -304,8 +304,7 @@ static char *footprint[] = {
+   (let ((proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (process-send-string proc dbg-info-break-command)
+       (process-send-string proc "\n"))))
+@@ -323,8 +322,7 @@ static char *footprint[] = {
+ 	  (proc (get-buffer-process dbg-comint-buffer)))
+       (or proc (ude-error "Current buffer has no process"))
+       ;; Arrange for the current prompt to get deleted.
+-      (save-excursion
+-	(set-buffer dbg-comint-buffer)
++      (with-current-buffer dbg-comint-buffer
+ 	(goto-char (process-mark proc))
+ 	(process-send-string proc command)))))
+ 
+@@ -533,7 +531,8 @@ static char *footprint[] = {
+ 	    (set-extent-property extent 'mouse-face 'highlight)
+ 	    (set-extent-property extent 'dbg-breakpoint bp)
+ 	    (set-buffer buffer)
+-	    (goto-line line)
++	    (goto-char (point-min))
++	    (forward-line (1- line))
+ 	    (beginning-of-line)
+ 	    (set-extent-endpoints extent (point) (point))
+ 	    bp)))))
+--- bmacs/dbg/dbg-connect.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-connect.el	2018-06-17 15:32:42.050634487 -0600
+@@ -157,6 +157,6 @@
+ ;*    Disconnect all currently connected buffers.                      */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-disconnect-all-buffers ()
+-  (mapcar 'dbg-disconnect-buffer dbg-connected-buffers)
++  (mapc 'dbg-disconnect-buffer dbg-connected-buffers)
+   (setq dbg-connected-buffers '()))
+   
+--- bmacs/dbg/dbg-display.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-display.el	2018-06-17 15:32:42.050634487 -0600
+@@ -100,8 +100,7 @@ This is implemented using the DBG `displ
+   (let ((proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (while (not (looking-at comint-prompt-regexp))
+ 	(goto-char (process-mark proc))
+@@ -140,8 +139,7 @@ This is implemented using the DBG `displ
+ ;*    Display a new display in a separate buffer.                      */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-display-display (buffer display)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let ((buffer-read-only nil))
+       (erase-buffer)
+       (insert display)
+@@ -164,12 +162,12 @@ This is implemented using the DBG `displ
+ 					 'mouse-face 'highlight
+ 					 'keymap dbg-display-mouse-map)
+ 		    (if (< end (point-max))
+-			(next-line 1)
++			(forward-line 1)
+ 		      (setq keep nil)))
+ 		(progn
+ 		  (end-of-line)
+ 		  (if (< (point) (point-max))
+-		      (next-line 1)
++		      (forward-line 1)
+ 		    (setq keep nil)))))))))))
+ 		
+ ;*---------------------------------------------------------------------*/
+@@ -248,8 +246,7 @@ This is implemented using the DBG `displ
+ (defun dbg-display-menu (event)
+   (interactive "e")
+   (let (selection)
+-    (save-excursion
+-      (set-buffer (event-buffer event))
++    (with-current-buffer (event-buffer event)
+       (save-excursion
+ 	(goto-char (event-closest-point event))
+ 	(message "point: %S" (point))
+--- bmacs/dbg/dbg.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg.el	2018-06-17 15:32:42.050634487 -0600
+@@ -80,7 +80,12 @@ and source-file directory for your debug
+ 	  (setq dbg-marker-filter 'dbg-default-marker-filter)
+ 	  (make-comint dbgname binary nil dbg-emacs-option a.out)
+ 	  ;; the process filter and sentinel
+-	  (process-kill-without-query (get-buffer-process dbg-comint-buffer))
++	  (if (featurep 'xemacs)
++	      (process-kill-without-query
++	       (get-buffer-process dbg-comint-buffer))
++	    (set-process-query-on-exit-flag
++	     (get-buffer-process dbg-comint-buffer)
++	     nil))
+ 	  (set-process-filter (get-buffer-process dbg-comint-buffer)
+ 			      'dbg-filter)
+ 	  (set-process-sentinel (get-buffer-process dbg-comint-buffer)
+@@ -203,8 +208,7 @@ and source-file directory for your debug
+ 	(proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (beginning-of-line)
+       (if (looking-at comint-prompt-regexp)
+@@ -226,7 +230,7 @@ and source-file directory for your debug
+ 	(dbg-console-log "dbg-send-input" intxt 'font-lock-type-face)
+       (dbg-console-log "dbg-send-input" 'nil 'font-lock-string-face))
+     (comint-send-input)
+-    (mapcar (lambda (hook) (funcall hook intxt)) dbg-send-input-hooks)
++    (mapc (lambda (hook) (funcall hook intxt)) dbg-send-input-hooks)
+     (redisplay-frame)))
+ 
+ ;*---------------------------------------------------------------------*/
+@@ -282,8 +286,7 @@ This is implemented using the DBG `no-ou
+ 	(proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (while (not (looking-at comint-prompt-regexp))
+ 	(goto-char (process-mark proc))
+@@ -341,7 +344,7 @@ This is implemented using the DBG `no-ou
+   (let ((dbg-mode nil))
+     (setq dbg-mode dbg-mode)
+     (recenter following)
+-    (mapcar (lambda (hook) (funcall hook nil)) dbg-send-input-hooks)
++    (mapc (lambda (hook) (funcall hook nil)) dbg-send-input-hooks)
+     (redisplay-frame)))
+ 
+ ;*---------------------------------------------------------------------*/
+@@ -360,11 +363,10 @@ This is implemented using the DBG `no-ou
+ (defun dbg-comint-ready-p ()
+   (if dbg-waiting
+       nil
+-    (save-excursion
+-      (save-restriction
+-	(widen)
+-	(progn
+-	  (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
++      (save-excursion
++	(save-restriction
++	  (widen)
+ 	  (goto-char (point-max))
+ 	  (let ((bound (point)))
+ 	    (beginning-of-line)
+@@ -385,40 +387,39 @@ This is implemented using the DBG `no-ou
+ (defun dbg-wait-for-comint (from timeout)
+   (if (not dbg-comint-buffer)
+       (ude-error "No debugger running")
+-    (save-excursion
+-      (save-restriction
+-	(widen)
+-	(let ((count 0)
+-	      (str   "/-\\|"))
+-	  (setq str str)
+-	  (set-buffer dbg-comint-buffer)
+-	  ;; we mark dbg waiting
+-	  (setq dbg-waiting t)
+-	  (accept-process-output)
+-	  (while (progn
+-		   (goto-char (point-max))
+-		   (let ((bound (point)))
+-		     (beginning-of-line)
+-		     (and (not (re-search-forward (concat
+-						   comint-prompt-regexp
+-						   "[ \t\n]*")
+-						  bound t))
+-			  (or (not (numberp timeout))
+-			      (< count timeout)))))
+-	    (setq count (+ 1 count))
+-	    '(display-message 'no-log
+-	      (format "waiting for `%s' [%c] (timeout %d/%S)"
+-		      from
+-		      (aref str (% count 4))
+-		      count
+-		      timeout))
+-	    (sit-for 0.1)
+-	    (redisplay-frame (selected-frame) t)
+-	    (set-buffer dbg-comint-buffer))
+-	  ;; we remove the last wait message
+-	  (display-message 'no-log " ")
+-	  ;; dbg is now ready
+-	  (setq dbg-waiting nil))))))
++    (with-current-buffer dbg-comint-buffer
++      (save-excursion
++	(save-restriction
++	  (widen)
++	  (let ((count 0)
++		(str   "/-\\|"))
++	    ;; we mark dbg waiting
++	    (setq dbg-waiting t)
++	    (accept-process-output)
++	    (while (progn
++		     (goto-char (point-max))
++		     (let ((bound (point)))
++		       (beginning-of-line)
++		       (and (not (re-search-forward (concat
++						     comint-prompt-regexp
++						     "[ \t\n]*")
++						    bound t))
++			    (or (not (numberp timeout))
++				(< count timeout)))))
++	      (setq count (+ 1 count))
++	      '(display-message 'no-log
++		(format "waiting for `%s' [%c] (timeout %d/%S)"
++			from
++			(aref str (% count 4))
++			count
++			timeout))
++	      (sit-for 0.1)
++	      (redisplay-frame (selected-frame) t)
++	      (set-buffer dbg-comint-buffer))
++	    ;; we remove the last wait message
++	    (display-message 'no-log " ")
++	    ;; dbg is now ready
++	    (setq dbg-waiting nil)))))))
+ 
+ ;*---------------------------------------------------------------------*/
+ ;*    dbg-clear-window ...                                             */
+@@ -449,8 +450,7 @@ This is implemented using the DBG `no-ou
+ ;*    This function returns the point line number.                     */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-line-number (buffer pos)
+-  (save-restriction
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let (start)
+       (save-excursion
+ 	(save-restriction
+--- bmacs/dbg/dbg-filter.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-filter.el	2018-06-17 15:32:42.050634487 -0600
+@@ -30,10 +30,12 @@ It is saved for when this flag is not se
+ (defvar dbg-delete-prompt-marker nil)
+ 
+ (defvar dbg-last-frame nil)
++(make-variable-buffer-local 'dbg-last-frame)
+ 
+ (defvar dbg-last-last-frame nil)
+ 
+ (defvar dbg-marker-acc "")
++(make-variable-buffer-local 'dbg-marker-acc)
+ 
+ (defvar dbg-marker-filter nil)
+ 
+@@ -309,8 +311,7 @@ It is saved for when this flag is not se
+ 		(progn
+ 		  (setq string (concat dbg-filter-pending-text string))
+ 		  (setq dbg-filter-pending-text nil)))
+-	    (save-excursion
+-	      (set-buffer (process-buffer proc))
++	    (with-current-buffer (process-buffer proc)
+ 	      ;; If we have been so requested, delete the debugger prompt.
+ 	      (if (marker-buffer dbg-delete-prompt-marker)
+ 		  (progn
+@@ -344,11 +345,8 @@ It is saved for when this flag is not se
+ 		(dbg-display-frame))
+ 	    ;; We have to be in the proper buffer, (process-buffer proc),
+ 	    ;; but not in a save-excursion, because that would restore point.
+-	    (let ((old-buf (current-buffer)))
+-	      (set-buffer (process-buffer proc))
+-	      (unwind-protect
+-		  (dbg-display-frame)
+-		(set-buffer old-buf))))
++	    (with-current-buffer (process-buffer proc)
++	      (dbg-display-frame)))
+ 	  ;; If we deferred text that arrived during this processing,
+ 	  ;; handle it now.
+ 	  (if dbg-filter-pending-text
+--- bmacs/dbg/dbg-locals.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-locals.el	2018-06-17 15:32:42.050634487 -0600
+@@ -100,8 +100,7 @@ This is implemented using the DBG `local
+   (let ((proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (while (not (looking-at comint-prompt-regexp))
+ 	(goto-char (process-mark proc))
+@@ -140,8 +139,7 @@ This is implemented using the DBG `local
+ ;*    Locals a new locals in a separate buffer.                        */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-locals-locals (buffer locals)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let ((buffer-read-only nil))
+       (erase-buffer)
+       (insert locals)
+@@ -164,12 +162,12 @@ This is implemented using the DBG `local
+ 					 'mouse-face 'highlight
+ 					 'keymap dbg-locals-mouse-map)
+ 		    (if (< end (point-max))
+-			(next-line 1)
++			(forward-line 1)
+ 		      (setq keep nil)))
+ 		(progn
+ 		  (end-of-line)
+ 		  (if (< (point) (point-max))
+-		      (next-line 1)
++		      (forward-line 1)
+ 		    (setq keep nil)))))))))))
+ 		
+ ;*---------------------------------------------------------------------*/
+@@ -242,8 +240,7 @@ This is implemented using the DBG `local
+ (defun dbg-locals-menu (event)
+   (interactive "e")
+   (let (selection)
+-    (save-excursion
+-      (set-buffer (event-buffer event))
++    (with-current-buffer (event-buffer event)
+       (save-excursion
+ 	(goto-char (event-closest-point event))
+ 	(message "point: %S" (point))
+--- bmacs/dbg/dbg-mode.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-mode.el	2018-06-17 15:32:42.051634485 -0600
+@@ -98,10 +98,7 @@ The following command are available:
+   (make-local-variable 'dbg-delete-prompt-marker)
+   (setq dbg-delete-prompt-marker (make-marker))
+   ;; same for dbg-last-frame
+-  (make-variable-buffer-local 'dbg-last-frame)
+   (setq dbg-last-frame nil)
+-  ;; and so it is for dbg-marker-acc
+-  (make-variable-buffer-local 'dbg-marker-acc)
+   ;; the mouse shape when flying over non text
+   (ude-set-nontext-pointer "left_ptr")
+   ;; we set up kill buffer hook
+--- bmacs/dbg/dbg-source.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-source.el	2018-06-17 15:32:42.051634485 -0600
+@@ -152,11 +152,11 @@ static char *arrow[] = {
+ 		(set-extent-begin-glyph extent dbg-arrow-glyph)
+ 		(set-extent-begin-glyph-layout extent 'outside-margin)
+ 		(setq dbg-source-line-extent extent)))
+-	  (save-excursion
+-	    (set-buffer buffer)
++	  (with-current-buffer buffer
+ 	    (save-restriction
+ 	      (widen)
+-	      (goto-line line)
++	      (goto-char (point-min))
++	      (forward-line (1- line))
+ 	      (set-window-point window (point))
+ 	      (setq pos (progn
+ 			  (beginning-of-line)
+--- bmacs/dbg/dbg-stack.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/dbg/dbg-stack.el	2018-06-17 15:32:42.051634485 -0600
+@@ -110,8 +110,7 @@ This is implemented using the DBG `stack
+ 	(proc (get-buffer-process dbg-comint-buffer)))
+     (or proc (ude-error "Current buffer has no process"))
+     ;; Arrange for the current prompt to get deleted.
+-    (save-excursion
+-      (set-buffer dbg-comint-buffer)
++    (with-current-buffer dbg-comint-buffer
+       (goto-char (process-mark proc))
+       (while (not (looking-at comint-prompt-regexp))
+ 	(goto-char (process-mark proc))
+@@ -149,8 +148,7 @@ This is implemented using the DBG `stack
+ ;*    Display a new stack in a separate buffer.                        */
+ ;*---------------------------------------------------------------------*/
+ (defun dbg-display-stack (buffer stack)
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (let ((buffer-read-only nil))
+       (erase-buffer)
+       (insert stack)
+@@ -173,12 +171,12 @@ This is implemented using the DBG `stack
+ 					 'mouse-face 'highlight
+ 					 'keymap dbg-stack-mouse-map)
+ 		    (if (< end (point-max))
+-			(next-line 1)
++			(forward-line 1)
+ 		      (setq keep nil)))
+ 		(progn
+ 		  (end-of-line)
+ 		  (if (< (point) (point-max))
+-		      (next-line 1)
++		      (forward-line 1)
+ 		    (setq keep nil)))))))))))
+ 		
+ ;*---------------------------------------------------------------------*/
+@@ -276,8 +274,7 @@ This is implemented using the DBG `stack
+ (defun dbg-frames-select-by-mouse (event)
+   (interactive "e")
+   (let (selection)
+-    (save-excursion
+-      (set-buffer (event-buffer event))
++    (with-current-buffer (event-buffer event)
+       (save-excursion
+ 	(goto-char (event-closest-point event))
+ 	(setq selection (dbg-get-frame-number))))
+--- bmacs/ude/id-select.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/id-select.el	2018-06-17 15:32:42.051634485 -0600
+@@ -248,6 +248,72 @@
+ (defvar id-select-prior-buffer 'nil)
+ 
+ ;;; ************************************************************************
++;;; Private variables
++;;; ************************************************************************
++
++(defvar id-select-bigger-alist
++  '((char nil)
++    (whitespace id-select-whitespace)
++    (word id-select-word)
++    (symbol id-select-symbol)
++    (punctuation nil)
++    (string id-select-string)
++    (text nil)
++    (comment id-select-comment)
++    (markup-pair nil)
++    (preprocessor-def nil)
++    (sexp id-select-sexp)
++    (sexp-start nil)
++    (sexp-end nil)
++    (sexp-up id-select-sexp-up)
++    (line id-select-line)
++    (sentence id-select-sentence)
++    (brace-def-or-declaration id-select-brace-def-or-declaration)
++    (indent-def id-select-indent-def)
++    (paragraph id-select-paragraph)
++    (page id-select-page)
++    (buffer id-select-buffer)
++    )
++  "List of (REGION-TYPE-SYMBOL REGION-SELECTION-FUNCTION) pairs.
++Used to go from one thing to a bigger thing.  See id-select-bigger-thing.
++Nil value for REGION-SELECTION-FUNCTION means that region type is skipped
++over when trying to grow the region and is only used when a selection is made
++with point on a character that triggers that type of selection.  Ordering of
++entries is largely irrelevant to any code that uses this list.")
++
++
++(defvar id-select-prior-buffer nil)
++(defvar id-select-prior-point nil)
++
++(defvar id-select-previous 'char
++  "Most recent type of selection.  Must be set by all id-select functions.")
++
++(defvar id-select-region (cons 'nil 'nil)
++  "Cons cell that contains a region (<beginning> . <end>).
++The function `id-select-set-region' updates and returns it.")
++
++(defvar id-select-old-region (cons 'nil 'nil)
++  "Cons cell that contains a region (<beginning> . <end>).")
++
++(defcustom id-select-syntax-alist
++  '((?w  id-select-word)
++    (?_  id-select-symbol)
++    (?\" id-select-string)
++    (?\( id-select-sexp-start)
++    (?\$ id-select-sexp-start)
++    (?'  id-select-sexp-start)
++    (?\) id-select-sexp-end)
++    (?   id-select-whitespace)
++    (?<  id-select-comment)
++    (?.  id-select-punctuation))
++  "*List of pairs of the form (SYNTAX-CHAR FUNCTION) used by the function `id-select-syntactical-region'.
++Each FUNCTION takes a single position argument and returns a region
++(start . end) delineating the boundaries of the thing at that position.
++Ordering of entries is largely irrelevant to any code that uses this list."
++  :type '(repeat (list (sexp :tag "Syntax-Char" function)))
++  :group 'id-select)
++
++;;; ************************************************************************
+ ;;; Public functions
+ ;;; ************************************************************************
+ 
+@@ -290,7 +356,10 @@ the minibuffer."
+ 	       (if (and (boundp 'transient-mark-mode)
+ 			transient-mark-mode)
+ 		   (setq mark-active t))
+-	       (and (interactive-p) id-select-display-type
++	       (and (if (featurep 'xemacs)
++			(interactive-p)
++		      (called-interactively-p 'interactive))
++		    id-select-display-type
+ 		    (message "%s" id-select-previous))
+ 	       (run-hooks 'id-select-thing-hook)
+ 	       t))))
+@@ -425,7 +494,9 @@ does not have a `>' terminator character
+ 	    ((null tag)
+ 	     (error "(id-select-goto-matching-tag): No <tag> following point"))
+ 	    ((null result)
+-	     (if (interactive-p)
++	     (if (if (featurep 'xemacs)
++		     (interactive-p)
++		   (called-interactively-p 'interactive))
+ 		 (progn
+ 		   (beep)
+ 		   (message "(id-select-goto-matching-tag): No matching tag for %s>"
+@@ -456,7 +527,8 @@ does not have a `>' terminator character
+   "Return the (start . end) of a syntactically defined region based upon the last region selected or on position POS.
+ The character at POS is selected if no other thing is matched."
+   (interactive)
+-  (setq zmacs-region-stays t)
++  (if (featurep 'xemacs)
++      (setq zmacs-region-stays t))
+   (setcar id-select-old-region (car id-select-region))
+   (setcdr id-select-old-region (cdr id-select-region))
+   (let ((prior-type id-select-previous))
+@@ -477,7 +549,7 @@ The character at POS is selected if no o
+      (t (let ((min-region (1+ (- (point-max) (point-min))))
+ 	      (result)
+ 	      region region-size)
+-	  (mapcar
++	  (mapc
+ 	   (function
+ 	    (lambda (sym-func)
+ 	      (setq region
+@@ -1209,71 +1281,5 @@ list, id-select-markup-modes."
+   (setq id-select-previous 'buffer)
+   (id-select-set-region (point-min) (point-max)))
+ 
+-;;; ************************************************************************
+-;;; Private variables
+-;;; ************************************************************************
+-
+-(defvar id-select-bigger-alist
+-  '((char nil)
+-    (whitespace id-select-whitespace)
+-    (word id-select-word)
+-    (symbol id-select-symbol)
+-    (punctuation nil)
+-    (string id-select-string)
+-    (text nil)
+-    (comment id-select-comment)
+-    (markup-pair nil)
+-    (preprocessor-def nil)
+-    (sexp id-select-sexp)
+-    (sexp-start nil)
+-    (sexp-end nil)
+-    (sexp-up id-select-sexp-up)
+-    (line id-select-line)
+-    (sentence id-select-sentence)
+-    (brace-def-or-declaration id-select-brace-def-or-declaration)
+-    (indent-def id-select-indent-def)
+-    (paragraph id-select-paragraph)
+-    (page id-select-page)
+-    (buffer id-select-buffer)
+-    )
+-  "List of (REGION-TYPE-SYMBOL REGION-SELECTION-FUNCTION) pairs.
+-Used to go from one thing to a bigger thing.  See id-select-bigger-thing.
+-Nil value for REGION-SELECTION-FUNCTION means that region type is skipped
+-over when trying to grow the region and is only used when a selection is made
+-with point on a character that triggers that type of selection.  Ordering of
+-entries is largely irrelevant to any code that uses this list.")
+-
+-
+-(defvar id-select-prior-buffer nil)
+-(defvar id-select-prior-point nil)
+-
+-(defvar id-select-previous 'char
+-  "Most recent type of selection.  Must be set by all id-select functions.")
+-
+-(defvar id-select-region (cons 'nil 'nil)
+-  "Cons cell that contains a region (<beginning> . <end>).
+-The function `id-select-set-region' updates and returns it.")
+-
+-(defvar id-select-old-region (cons 'nil 'nil)
+-  "Cons cell that contains a region (<beginning> . <end>).")
+-
+-(defcustom id-select-syntax-alist
+-  '((?w  id-select-word)
+-    (?_  id-select-symbol)
+-    (?\" id-select-string)
+-    (?\( id-select-sexp-start)
+-    (?\$ id-select-sexp-start)
+-    (?'  id-select-sexp-start)
+-    (?\) id-select-sexp-end)
+-    (?   id-select-whitespace)
+-    (?<  id-select-comment)
+-    (?.  id-select-punctuation))
+-  "*List of pairs of the form (SYNTAX-CHAR FUNCTION) used by the function `id-select-syntactical-region'.
+-Each FUNCTION takes a single position argument and returns a region
+-(start . end) delineating the boundaries of the thing at that position.
+-Ordering of entries is largely irrelevant to any code that uses this list."
+-  :type '(repeat (list (sexp :tag "Syntax-Char" function)))
+-  :group 'id-select)
+-
+ 
+ (provide 'id-select)
+--- bmacs/ude/plugin.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/plugin.el	2018-06-17 15:32:42.051634485 -0600
+@@ -371,14 +371,16 @@ process structure hosting the plugin.
+ 			       (select-frame frame)
+ 			       (select-window win)
+ 			       (set-buffer buffer)
+-			       (goto-line line)
++			       (goto-char (point-min))
++			       (forward-line (1- line))
+ 			       (recenter)
+ 			       t)
+ 			   nil))
+ 		     nil))
+ 	      (let ((pop-up-frames t))
+ 		(pop-to-buffer buffer)
+-		(goto-line line)
++		(goto-char (point-min))
++		(forward-line (1- line))
+ 		(recenter))))))
+      ((and (consp command) (memq (car command) '(HELP help)))
+       (let ((prgm (let ((p (cadr command)))
+--- bmacs/ude/ude-about.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-about.el	2018-06-17 15:32:42.051634485 -0600
+@@ -27,8 +27,7 @@
+   (if (featurep 'xemacs)
+       (let ((window-min-height 1)
+ 	    (window-min-width 1))
+-	(save-excursion
+-	  (set-buffer (generate-new-buffer "*junk-frame-buffer*"))
++	(with-current-buffer (generate-new-buffer "*junk-frame-buffer*")
+ 	  (prog1
+ 	      (make-frame '(minibuffer t initially-unmapped t width 1 height 1))
+ 	    (rename-buffer " *junk-frame-buffer*" t))))))
+@@ -37,15 +36,14 @@
+ ;*    ude-about-make-frame ...                                         */
+ ;*---------------------------------------------------------------------*/
+ (defun ude-about-make-frame (x y msg xpm)
+-  (save-excursion
+-    (let ((window-min-height 100)
+-	  (window-min-width 100)
+-	  (bg-color (or (x-get-global-resource "backgroundToolBarColor"
+-					       "BackgroundToolBarColor")
+-			"grey75"))
+-	  (buffer (get-buffer-create " *ude-about-buffer*"))
+-	  (frame nil))
+-      (set-buffer buffer)
++  (let ((window-min-height 100)
++	(window-min-width 100)
++	(bg-color (or (x-get-global-resource "backgroundToolBarColor"
++					     "BackgroundToolBarColor")
++		      "grey75"))
++	(buffer (get-buffer-create " *ude-about-buffer*"))
++	(frame nil))
++    (with-current-buffer buffer
+       (ude-about-insert-xpm (current-buffer) xpm)
+       (insert "\n")
+       (insert msg)
+--- bmacs/ude/ude-autoload.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-autoload.el	2018-06-17 15:32:42.052634482 -0600
+@@ -17,6 +17,7 @@
+ (autoload 'ude-customize "ude-custom" "Ude customization." t)
+ ;; config
+ (autoload 'bmacs-docdir "bmacs-config" "Bmacs configuration." t)
++(autoload 'bmacs-lispdir "bmacs-config" "Bmacs configuration." t)
+ ;; parent
+ (autoload 'ude-paren-init "ude-paren" "Ude paren initialization." t)
+ ;; root
+@@ -124,7 +125,7 @@
+ (autoload 'ude-checkin-project "ude-version" "Version manager." t)
+ (autoload 'ude-tar-gz-project "ude-version" "Version manager." t)
+ ;; ude-balloon
+-(autoload 'ude-add-ballon-action "ude-balloon" "Bdb balloon system." t)
++(autoload 'ude-add-balloon-action "ude-balloon" "Bdb balloon system." t)
+ (autoload 'ude-balloon-start "ude-balloon" "Bdb balloon system." t)
+ (autoload 'ude-balloon-stop "ude-balloon" "Bdb balloon system." t)
+ (autoload 'ude-balloon-get-buffer "ude-balloon" "Bdb balloon system." t)
+--- bmacs/ude/ude-compile.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-compile.el	2018-06-17 15:32:42.052634482 -0600
+@@ -344,8 +344,7 @@ Executed hooks are removed from that lis
+    (ude-pop-compilation-frame-on-error
+     ;; we have to pop up a frame
+     (let* ((pop-up-frames t)
+-	   (height (save-excursion
+-		     (set-buffer buffer)
++	   (height (with-current-buffer buffer
+ 		     (+ 2 (count-lines (point-min) (point-max)))))
+ 	   (cur-height (frame-height (selected-frame)))
+ 	   (err-height (if (> height cur-height) cur-height height))
+--- bmacs/ude/ude-docline.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-docline.el	2018-06-17 15:32:42.052634482 -0600
+@@ -106,13 +106,10 @@
+ 	  (ude-error "Can't find documentation for `%S'" var)
+ 	(progn
+ 	  (if ude-info-fontify
+-	      (let* ((cbuf (current-buffer))
+-		     (ibuf (get-buffer "*info*")))
++	      (let ((ibuf (get-buffer "*info*")))
+ 		(if (bufferp ibuf)
+-		    (progn
+-		      (set-buffer ibuf)
+-		      (font-lock-fontify-buffer)
+-		      (set-buffer cbuf)))))
++		    (with-current-buffer ibuf
++		      (font-lock-fontify-buffer)))))
+ 	  (ude-pop-to-info))))))
+ 
+ ;*---------------------------------------------------------------------*/
+@@ -140,13 +137,10 @@ This command is designed to be used whet
+ 	(ude-error (format "Can't find section `%S'" section))
+       (progn
+ 	(if ude-info-fontify
+-	    (let* ((cbuf (current-buffer))
+-		   (ibuf (get-buffer "*info*")))
++	    (let ((ibuf (get-buffer "*info*")))
+ 	      (if (bufferp ibuf)
+-		  (progn
+-		    (set-buffer ibuf)
+-		    (font-lock-fontify-buffer)
+-		    (set-buffer cbuf)))))
++		  (with-current-buffer ibuf
++		    (font-lock-fontify-buffer)))))
+ 	(ude-pop-to-info)))))
+ 
+ ;*---------------------------------------------------------------------*/
+@@ -237,8 +231,7 @@ This command is designed to be used whet
+ ;*---------------------------------------------------------------------*/
+ (defun ude-fontify-doc-source (buffer)
+   (interactive "Bbuffer: ")
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (goto-char (point-min))
+     (let* ((path-regexp   "@path[ \t]+\\([^@]+\\)@")
+ 	   (anchor-regexp "@ref[ \t]+\\([^@:]+\\):\\([^@]+\\)@")
+--- bmacs/ude/ude-icon.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-icon.el	2018-06-17 15:32:42.052634482 -0600
+@@ -19,6 +19,7 @@
+ (require 'ude-custom)
+ 
+ ;;; add to emacs image-load-path the directory containing the toolbar icons
++(defvar image-load-path nil)
+ (add-to-list 'image-load-path (concat bmacs-lispdir 
+ 				      "/" 
+ 				      ude-toolbar-image-directory))
+--- bmacs/ude/ude-ident.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-ident.el	2018-06-17 15:32:42.052634482 -0600
+@@ -36,8 +36,8 @@
+   (save-excursion
+     (goto-char pos)
+     ;; we start skipping left until we found a separator
+-    (let* ((min (save-excursion (beginning-of-line) (point)))
+-	   (max (save-excursion (end-of-line) (point))))
++    (let* ((min (point-at-bol))
++	   (max (point-at-eol)))
+       (if (looking-at (ude-ident-regexp))
+ 	  ;; we could be located on a identifier we go left until we found
+ 	  ;; a non identifier character
+@@ -215,13 +215,11 @@
+ ;*---------------------------------------------------------------------*/
+ (defun ude-tags-balloon-remove (event)
+   (interactive "e")
+-  (let* ((point   (event-closest-point event))
+-	 (buffer  (event-buffer event))
+-	 (current (current-buffer)))
+-    (set-buffer buffer)
+-    ;; we store the disabled position
+-    (setq ude-tags-disabled (cons buffer point))
+-    (set-buffer current)
++  (let ((point   (event-closest-point event))
++	(buffer  (event-buffer event)))
++    (with-current-buffer buffer
++      ;; we store the disabled position
++      (setq ude-tags-disabled (cons buffer point)))
+     (ude-tags-balloon-delete)))
+ 
+ ;*---------------------------------------------------------------------*/
+@@ -262,16 +260,14 @@
+ (defun ude-tags-balloon-delete (&optional frame)
+   (if (consp ude-tags-balloon-region)
+       (let ((buffer (car ude-tags-balloon-region))
+-	    (region (cdr ude-tags-balloon-region))
+-	    (cbuf (current-buffer)))
+-	(set-buffer buffer)
+-	(let ((mod (buffer-modified-p))
+-	      (l '(help-echo ude-balloon-ident mouse-face keymap)))
+-	  (while (consp l)
+-	    (remove-text-property (car region) (cdr region) (car l))
+-	    (setq l (cdr l)))
+-	  (set-buffer-modified-p mod))
+-	(set-buffer cbuf)
++	    (region (cdr ude-tags-balloon-region)))
++	(with-current-buffer buffer
++	  (let ((mod (buffer-modified-p))
++		(l '(help-echo ude-balloon-ident mouse-face keymap)))
++	    (while (consp l)
++	      (remove-text-property (car region) (cdr region) (car l))
++	      (setq l (cdr l)))
++	    (set-buffer-modified-p mod)))
+ 	(setq ude-tags-balloon-region nil))))
+ 
+ ;*---------------------------------------------------------------------*/
+--- bmacs/ude/ude-makefile.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-makefile.el	2018-06-17 15:32:42.052634482 -0600
+@@ -209,14 +209,12 @@
+   (interactive)
+   (let ((default-directory ude-root-directory))
+     (if (and (stringp ude-makefile) (file-exists-p ude-makefile))
+-	(let ((buffer (current-buffer)))
++	(progn
+ 	  (message "Switching to high debugging mode...")
+ 	  (setq ude-compile-mode 'debug)
+ 	  (if (bufferp ude-last-compile-buffer)
+-	      (progn
+-		(set-buffer ude-last-compile-buffer)
+-		(ude-set-compilation-modeline)
+-		(set-buffer buffer)))
++	      (with-current-buffer ude-last-compile-buffer
++		(ude-set-compilation-modeline)))
+ 	  (let* ((cmd (format "%s -o %s -debug"
+ 			      ude-makemake
+ 			      ude-makefile))
+@@ -234,14 +232,12 @@
+   (interactive)
+   (let ((default-directory ude-root-directory))
+     (if (and (stringp ude-makefile) (file-exists-p ude-makefile))
+-	(let ((buffer (current-buffer)))
++	(progn
+ 	  (message "Switching to development mode...")
+ 	  (setq ude-compile-mode 'devel)
+ 	  (if (bufferp ude-last-compile-buffer)
+-	      (progn
+-		(set-buffer ude-last-compile-buffer)
+-		(ude-set-compilation-modeline)
+-		(set-buffer buffer)))
++	      (with-current-buffer ude-last-compile-buffer
++		(ude-set-compilation-modeline)))
+ 	  (let* ((cmd (format "%s -o %s -devel"
+ 			      ude-makemake
+ 			      ude-makefile))
+@@ -259,14 +255,12 @@
+   (interactive)
+   (let ((default-directory ude-root-directory))
+     (if (and (stringp ude-makefile) (file-exists-p ude-makefile))
+-	(let ((buffer (current-buffer)))
++	(progn
+ 	  (message "Switching to final mode...")
+ 	  (setq ude-compile-mode 'final)
+ 	  (if (bufferp ude-last-compile-buffer)
+-	      (progn
+-		(set-buffer ude-last-compile-buffer)
+-		(ude-set-compilation-modeline)
+-		(set-buffer buffer)))
++	      (with-current-buffer ude-last-compile-buffer
++		(ude-set-compilation-modeline)))
+ 	  (let* ((cmd (format "%s -o %s -final"
+ 			      ude-makemake
+ 			      ude-makefile))
+@@ -284,13 +278,11 @@
+   (interactive "SProject name: ")
+   (let ((default-directory ude-root-directory))
+     (if (and (stringp ude-makefile) (file-exists-p ude-makefile))
+-	(let ((buffer (current-buffer)))
++	(progn
+ 	  (message (format "Setting project name to %S..." arg))
+ 	  (if (bufferp ude-last-compile-buffer)
+-	      (progn
+-		(set-buffer ude-last-compile-buffer)
+-		(ude-set-compilation-modeline)
+-		(set-buffer buffer)))
++	      (with-current-buffer ude-last-compile-buffer
++		(ude-set-compilation-modeline)))
+ 	  (let* ((cmd (format "%s -o %s -project %s"
+ 			      ude-makemake
+ 			      ude-makefile
+--- bmacs/ude/ude-repl.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/ude/ude-repl.el	2018-06-17 15:32:42.053634480 -0600
+@@ -43,8 +43,7 @@
+ 			'ude-repl-sentinel)
+   (set-process-filter ude-repl-comint-process
+ 		      (function ude-repl-output-from-process))
+-  (save-excursion
+-    (set-buffer ude-repl-buffer)
++  (with-current-buffer ude-repl-buffer
+     (setq comint-prompt-regexp ude-repl-prompt-regexp)
+     (setq comint-scroll-show-maximum-output 0.4)
+     (setq comint-scroll-to-bottom-on-output t)
+--- bmacs/xemacs-etags.el.orig	2018-02-04 23:59:28.000000000 -0700
++++ bmacs/xemacs-etags.el	2018-06-17 15:32:42.053634480 -0600
+@@ -236,8 +236,7 @@ file the tag was in."
+ 		     ;; it is initialized as a tag table buffer.
+ 		     (save-excursion
+ 		       (tags-verify-table (buffer-file-name table-buffer))))
+-		(save-excursion
+-		  (set-buffer table-buffer)
++		(with-current-buffer table-buffer
+ 		  (if (tags-included-tables)
+ 		      ;; Insert the included tables into the list we
+ 		      ;; are processing.
+@@ -276,8 +275,7 @@ file the tag was in."
+ 	      (setq computed (cons (car tables) computed)
+ 		    table-buffer (get-file-buffer (car tables)))
+ 	      (if table-buffer
+-		  (save-excursion
+-		    (set-buffer table-buffer)
++		  (with-current-buffer table-buffer
+ 		    (if (tags-included-tables)
+ 			;; Insert the included tables into the list we
+ 			;; are processing.
+@@ -663,12 +661,8 @@ Assumes the tags table is the current bu
+   (save-excursion
+     (while (looking-at "\\sw\\|\\s_")
+       (forward-char 1))
+-    (if (or (re-search-backward "\\sw\\|\\s_"
+-				(save-excursion (beginning-of-line) (point))
+-				t)
+-	    (re-search-forward "\\(\\sw\\|\\s_\\)+"
+-			       (save-excursion (end-of-line) (point))
+-			       t))
++    (if (or (re-search-backward "\\sw\\|\\s_" (point-at-bol) t)
++	    (re-search-forward "\\(\\sw\\|\\s_\\)+" (point-at-eol) t))
+ 	(progn (goto-char (match-end 0))
+ 	       (buffer-substring (point)
+ 				 (progn (forward-sexp -1)
+@@ -752,22 +746,21 @@ See documentation of variable `tags-file
+ 	(setq last-tag tagname))
+       ;; Record the location so we can pop back to it later.
+       (let ((marker (make-marker)))
+-	(save-excursion
+-	  (set-buffer
+-	   ;; find-tag-in-order does the real work.
+-	   (find-tag-in-order
+-	    (if next-p last-tag tagname)
+-	    (if regexp-p
+-		find-tag-regexp-search-function
+-	      find-tag-search-function)
+-	    (if regexp-p
+-		find-tag-regexp-tag-order
+-	      find-tag-tag-order)
+-	    (if regexp-p
+-		find-tag-regexp-next-line-after-failure-p
+-	      find-tag-next-line-after-failure-p)
+-	    (if regexp-p "matching" "containing")
+-	    (not next-p)))
++	(with-current-buffer
++	 ;; find-tag-in-order does the real work.
++	 (find-tag-in-order
++	  (if next-p last-tag tagname)
++	  (if regexp-p
++	      find-tag-regexp-search-function
++	    find-tag-search-function)
++	  (if regexp-p
++	      find-tag-regexp-tag-order
++	    find-tag-tag-order)
++	  (if regexp-p
++	      find-tag-regexp-next-line-after-failure-p
++	    find-tag-next-line-after-failure-p)
++	  (if regexp-p "matching" "containing")
++	  (not next-p))
+ 	  (set-marker marker (point))
+ 	  (run-hooks 'local-find-tag-hook)
+ 	  (setq tags-location-stack
+@@ -978,9 +971,7 @@ See documentation of variable `tags-file
+ 	      ;; Naive match found.  Qualify the match.
+ 	      (and (funcall (car order) pattern)
+ 		   ;; Make sure it is not a previous qualified match.
+-		   (not (member (set-marker match-marker (save-excursion
+-							   (beginning-of-line)
+-							   (point)))
++		   (not (member (set-marker match-marker (point-at-bol))
+ 				tag-lines-already-matched))
+ 		   (throw 'qualified-match-found nil))
+ 	      (if next-line-after-failure-p
+@@ -1103,9 +1094,7 @@ See documentation of variable `tags-file
+ 
+       ;; Find the end of the tag and record the whole tag text.
+       (search-forward "\177")
+-      (setq tag-text (buffer-substring (1- (point))
+-				       (save-excursion (beginning-of-line)
+-						       (point))))
++      (setq tag-text (buffer-substring (1- (point)) (point-at-bol)))
+       ;; Skip explicit tag name if present.
+       (search-forward "\001" (save-excursion (forward-line 1) (point)) t)
+       (if (looking-at "[0-9]")
+@@ -1312,7 +1301,7 @@ See documentation of variable `tags-file
+   (save-excursion
+     (beginning-of-line)
+     (let ((bol (point)))
+-      (and (search-forward "\177" (save-excursion (end-of-line) (point)) t)
++      (and (search-forward "\177" (point-at-eol) t)
+ 	   (re-search-backward re bol t)))))
+ 
+ ;;;###autoload
