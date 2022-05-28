@@ -1,8 +1,9 @@
-## arg 1:  the new package version
 post_install() {
-   /usr/lib/bareos/scripts/bareos-config initialize_local_hostname
-   /usr/lib/bareos/scripts/bareos-config initialize_passwords
-   chown -R bareos:bareos /etc/bareos/tray-monitor.d/monitor/
+  /usr/lib/bareos/scripts/bareos-config initialize_local_hostname
+  /usr/lib/bareos/scripts/bareos-config initialize_passwords
+  CONFIGDIR="/etc/bareos/tray-monitor.d/"
+  chown -R root:bareos ${CONFIGDIR}
+  chmod -R u=rwX,go=rX ${CONFIGDIR}
 }
 
 post_upgrade() {

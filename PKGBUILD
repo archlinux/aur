@@ -37,11 +37,13 @@ pkgname=("bareos-bconsole"
          "bareos-webui"
          "bareos-devel"
          "bareos-traymonitor"
+         "python2-bareos"
+         "python-bareos"
          )
 
 pkgver=21.1.3
 pkgmajor=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -131,6 +133,10 @@ build() {
     -Dtraymonitor=yes
 
   make DESTDIR="${srcdir}/install" install
+
+  cd "${srcdir}/${pkgbase}/python-bareos"
+  python2 setup.py build
+  python setup.py build
 }
 
 #=========================================
@@ -705,31 +711,23 @@ package_bareos-traymonitor() {
   groups+=("bareos-client")
   pkgdesc="${pkgdesc} - This package contains the tray monitor (QT based)"
   depends=("bareos-common=${pkgver}")
-  backup=("etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
-          "etc/bareos/tray-monitor.d/client/file-daemon.conf"
-          "etc/bareos/tray-monitor.d/director/director.conf"
-          "etc/bareos/tray-monitor.d/storage/storage-daemon.conf")
+  backup=("etc/bareos/tray-monitor.d/monitor/bareos-mon.conf")
   install=bareos-traymonitor.install
+
   for f in \
-    usr/bin/bareos-tray-monitor \
-    usr/share/bareos/config/tray-monitor.d/client/FileDaemon-local.conf \
-    usr/share/bareos/config/tray-monitor.d/director/Director-local.conf \
-    usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf \
-    usr/share/bareos/config/tray-monitor.d/storage/StorageDaemon-local.conf \
-    usr/share/man/man1/bareos-tray-monitor.1 \
-    usr/share/applications/bareos-tray-monitor.desktop \
-    etc/xdg/autostart/bareos-tray-monitor.desktop \
-    usr/share/pixmaps/bareos-tray-monitor.png \
+     +etc/bareos/tray-monitor.d/monitor \
+     etc/xdg/autostart/bareos-tray-monitor.desktop \
+     usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf \
+     usr/bin/bareos-tray-monitor \
+     usr/share/man/man1/bareos-tray-monitor.1* \
+     usr/share/applications/bareos-tray-monitor.desktop \
+     usr/share/pixmaps/bareos-tray-monitor.png \
   ; do
     cp_pkgdir "$f" "$srcdir/install/"
   done
 
   # tray-monitor needs configuration files to run
-  install -d -m750 ${pkgdir}/etc/bareos/tray-monitor.d/{client,director,monitor,storage}
-  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf"          "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
-  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/client/FileDaemon-local.conf"     "${pkgdir}/etc/bareos/tray-monitor.d/client/file-daemon.conf"
-  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/director/Director-local.conf"     "${pkgdir}/etc/bareos/tray-monitor.d/director/director.conf"
-  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/storage/StorageDaemon-local.conf" "${pkgdir}/etc/bareos/tray-monitor.d/storage/storage-daemon.conf"
+  install -m640 "${pkgdir}/usr/share/bareos/config/tray-monitor.d/monitor/bareos-mon.conf" "${pkgdir}/etc/bareos/tray-monitor.d/monitor/bareos-mon.conf"
 }
 
 #=========================================
@@ -773,4 +771,22 @@ package_bareos-webui() {
   done
   cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
   install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
+
+#=========================================
+package_python2-bareos() {
+  pkgdesc="${pkgdesc} - python-bareos is a Python2 module to access a backup system."
+  depends=('python2' 'jansson')
+
+  cd "${srcdir}/${pkgbase}/python-bareos"
+  python2 setup.py install --skip-build --root="${pkgdir}" --optimize='1'
+}
+
+#=========================================
+package_python-bareos() {
+  pkgdesc="${pkgdesc} - python-bareos is a Python module to access a backup system."
+  depends=('python' 'jansson')
+
+  cd "${srcdir}/${pkgbase}/python-bareos"
+  python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
 }

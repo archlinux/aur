@@ -286,6 +286,13 @@ pkgname = bareos-traymonitor
 	groups = bareos-client
 	depends = bareos-common=21.1.3
 	backup = etc/bareos/tray-monitor.d/monitor/bareos-mon.conf
-	backup = etc/bareos/tray-monitor.d/client/file-daemon.conf
-	backup = etc/bareos/tray-monitor.d/director/director.conf
-	backup = etc/bareos/tray-monitor.d/storage/storage-daemon.conf
+
+pkgname = python2-bareos
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python2 module to access a backup system.
+	depends = python2
+	depends = jansson
+
+pkgname = python-bareos
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python module to access a backup system.
+	depends = python
+	depends = jansson
