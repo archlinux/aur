@@ -3,10 +3,11 @@
 
 pkgname=ratarmount
 pkgver=0.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Mount tar file using fuse with fast read-only random access"
 arch=(any)
 url="https://github.com/mxmlnkn/ratarmount"
+conflict=(ratarmount-git)
 license=(MIT)
 depends=(python-fusepy python-msgpack python-rapidjson python-ujson python-simplejson python-fuse)
 optdepends=('python-indexed-gzip: Support for gzip-compressed tar files')
