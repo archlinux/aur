@@ -1,6 +1,6 @@
 pkgbase = clapper
 	pkgdesc = A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
@@ -10,22 +10,22 @@ pkgbase = clapper
 	makedepends = gobject-introspection
 	depends = gtk4
 	depends = gjs
-	depends = glib2>=2.56.0
+	depends = glib2>=2.68.0
 	depends = wayland-protocols
 	depends = hicolor-icon-theme
-	depends = gstreamer>=1.18.0
-	depends = gst-plugins-base>=1.18.0
-	depends = gst-plugins-good>=1.18.0
-	depends = gst-plugins-bad>=1.18.0
+	depends = gstreamer>=1.20.0
+	depends = gst-plugins-base>=1.20.0
+	depends = gst-plugins-good>=1.20.0
+	depends = gst-plugins-bad>=1.20.0
 	depends = libadwaita
-	optdepends = gst-libav>=1.18.0: Popular video decoders
-	optdepends = gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration
-	optdepends = gst-plugins-ugly>=1.18.0: CD/DVD playback
-	optdepends = gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)
+	optdepends = gst-libav>=1.20.0: Popular video decoders
+	optdepends = gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration
+	optdepends = gst-plugins-ugly>=1.20.0: CD/DVD playback
+	optdepends = gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)
 	provides = clapper
 	provides = libgstclapper-1.0
 	conflicts = clapper
-	source = clapper-0.4.1::https://github.com/Rafostar/clapper/archive/0.4.1.tar.gz
-	md5sums = e6c61dadeb7745c09d9ae1f7225a4e20
+	source = clapper-0.5.0::https://github.com/Rafostar/clapper/archive/0.5.0.tar.gz
+	md5sums = 57ac1a08162ac6fc6cd022b9518ac4f7
 
 pkgname = clapper

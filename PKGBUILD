@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}"
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
@@ -30,13 +30,13 @@ license=("GPL-3.0")
 depends=(
 	"gtk4"
 	"gjs"
-	"glib2>=2.56.0" # glib-2.0, gmodule-2.0, gio-2.0
+	"glib2>=2.68.0" # glib-2.0, gmodule-2.0, gio-2.0
 	"wayland-protocols" # gtk4 non-default runtime dep
 	"hicolor-icon-theme"
-	"gstreamer>=1.18.0" # gstreamer-1.0, gstreamer-base-1.0
-	"gst-plugins-base>=1.18.0"
-	"gst-plugins-good>=1.18.0"
-	"gst-plugins-bad>=1.18.0"
+	"gstreamer>=1.20.0" # gstreamer-1.0, gstreamer-base-1.0
+	"gst-plugins-base>=1.20.0"
+	"gst-plugins-good>=1.20.0"
+	"gst-plugins-bad>=1.20.0"
 	"libadwaita"
 )
 makedepends=(
@@ -45,15 +45,15 @@ makedepends=(
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
 )
 optdepends=(
-	"gst-libav>=1.18.0: Popular video decoders"
-	"gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration"
-	"gst-plugins-ugly>=1.18.0: CD/DVD playback"
-	"gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)"
+	"gst-libav>=1.20.0: Popular video decoders"
+	"gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration"
+	"gst-plugins-ugly>=1.20.0: CD/DVD playback"
+	"gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)"
 )
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "libgst${_basename}-1.0")
 conflicts=("${_basename}")
-md5sums=("e6c61dadeb7745c09d9ae1f7225a4e20")
+md5sums=("57ac1a08162ac6fc6cd022b9518ac4f7")
 
 prepare() {
 	cd "${srcdir}/${_basename}-${pkgver}"
