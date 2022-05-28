@@ -1,0 +1,23 @@
+pkgbase = jellyseerr
+	pkgdesc = Request management and media discovery tool for the Jellyfin ecosystem
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Fallenbagel/jellyseerr
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = nodejs
+	options = !strip
+	backup = etc/conf.d/jellyseerr
+	source = jellyseerr-1.1.0.tar.gz::https://github.com/Fallenbagel/jellyseerr/archive/v1.1.0.tar.gz
+	source = jellyseerr.sysusers
+	source = jellyseerr.tmpfiles
+	source = jellyseerr.service
+	source = jellyseerr.conf.d
+	sha256sums = e0b09f2ce82f05ab5cc1070b28856c2c1569e584b129c6ab2bb2a3a2e939567f
+	sha256sums = 372ee94f76040ea76af49fd2f9db851375559458ba1b55ea41f1b2768fe10cb8
+	sha256sums = cb0b856fc93969c901e69eb31dc201f4e37c8a2d30041beabf1a82077cca4c24
+	sha256sums = 84159db69b33ef3c4e6a424b32331f78e92efe316355c05e3f86920e1ad24c05
+	sha256sums = f9e1500b89df94b11a4b4576501fe6f19e7cb15afd90d6e670f4b9cf40e3c00b
+
+pkgname = jellyseerr

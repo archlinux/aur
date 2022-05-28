@@ -1,0 +1,17 @@
+[Unit]
+Description=Jellyseerr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/jellyseerr
+Environment=NODE_ENV=production
+User=jellyseerr
+Group=jellyseerr
+Type=exec
+Restart=on-failure
+WorkingDirectory=/usr/lib/jellyseerr
+ExecStart=/usr/bin/node dist/index.js
+
+[Install]
+WantedBy=multi-user.target

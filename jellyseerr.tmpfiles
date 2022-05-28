@@ -1,0 +1,4 @@
+d /var/lib/jellyseerr      0750 jellyseerr jellyseerr -
+d /var/lib/jellyseerr/db   0750 jellyseerr jellyseerr -
+d /var/lib/jellyseerr/logs 0750 jellyseerr jellyseerr -
+L /var/log/jellyseerr - - - - /var/lib/jellyseerr/logs/
