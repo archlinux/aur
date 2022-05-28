@@ -3,28 +3,21 @@
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # vim: set ts=4 sw=4 et ft=sh:
 
-pkgname=qutebrowser-git
-pkgver=2.0.0.r2.gd3b8b525b
+pkgname=qutebrowser-qt6-git
+pkgver=2.5.1.r258.g64e8c7132
 pkgrel=1
-pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
+pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 (Qt 6 branch)"
 arch=("any")
 url="https://www.qutebrowser.org/"
 license=("GPL")
-depends=("python-jinja" "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine")
+depends=("python-jinja" "python-pyqt6" "python-yaml" "python-pyqt6-webengine")
 makedepends=("asciidoc" "pygmentize" "git" "python-setuptools")
 optdepends=("python-adblock: ABP-style adblocking"
-            "pdfjs: displaying PDF in-browser"
-            "gst-libav: media playback with qt5-webkit backend"
-            "gst-plugins-base: media playback with qt5-webkit backend"
-            "gst-plugins-good: media playback with qt5-webkit backend"
-            "gst-plugins-bad: media playback with qt5-webkit backend"
-            "gst-plugins-ugly: media playback with qt5-webkit backend"
-            "python-pygments: :view-source with qt5-webkit backend" 
-            "qt5-webkit: alternative backend")
+            "pdfjs: displaying PDF in-browser")
 options=(!emptydirs)
-conflicts=('qutebrowser')
+conflicts=('qutebrowser' 'qutebrowser-git')
 provides=('qutebrowser')
-source=('git+https://github.com/qutebrowser/qutebrowser.git')
+source=('git+https://github.com/qutebrowser/qutebrowser.git#branch=qt6-v2')
 sha256sums=('SKIP')
 
 pkgver() {
