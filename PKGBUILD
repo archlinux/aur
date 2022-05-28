@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='dwall'
 pkgname="${_pkgname}-git"
-pkgver=r6.fe7b1c4
+pkgver=r7.de6bc64
 pkgrel=1
 pkgdesc="A simple bash script to set wallpapers according to current time, using cron job scheduler."
 arch=('i686' 'x86_64')
@@ -14,23 +14,23 @@ optdepends=('xorg-xrandr: XFCE support'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('git+https://github.com/adi1090x/dynamic-wallpaper.git')
+source=("git+${url}.git")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd dynamic-wallpaper
+    cd "${srcdir}/dynamic-wallpaper"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 _walldir="${pkgdir}/opt/${pkgname}"
 
 prepare() {
-    cd dynamic-wallpaper
+    cd "${srcdir}/dynamic-wallpaper"
     sed -i "s~DIR=\"/usr/share/dynamic-wallpaper/images\"~DIR=\"${_walldir}\"~" dwall.sh
 }
 
 package() {
-    cd dynamic-wallpaper
+    cd "${srcdir}/dynamic-wallpaper"
     install -Dm755 dwall.sh "${pkgdir}/usr/bin/dwall"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -d "${pkgdir}/opt/${pkgname}/"
