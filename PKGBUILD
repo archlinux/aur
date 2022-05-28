@@ -66,6 +66,8 @@ prepare() {
   # Prepare patches, then return to the source directory
   pushd "${_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
   popd
+  pushd "${_librewolf_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
+  popd
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -91,6 +93,9 @@ ac_add_options --disable-bootstrap
 
 export CC='clang'
 export CXX='clang++'
+export AR=llvm-ar
+export NM=llvm-nm
+export RANLIB=llvm-ranlib
 
 # Branding
 ac_add_options --enable-update-channel=release
