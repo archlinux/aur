@@ -2,7 +2,7 @@
 # Contributor: Matt Coffin <mcoffin13@gmail.com>
 pkgname=bossa-git
 pkgver=1.9.1.r14.g3532de8
-pkgrel=2
+pkgrel=3
 pkgdesc="Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers"
 arch=('i686' 'x86_64')
 url="https://github.com/shumatech/BOSSA"
@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('readline' 'wxgtk2')
 provides=('bossa')
 conflicts=('bossa')
-source=("git://github.com/shumatech/BOSSA")
+source=("git+https://github.com/shumatech/BOSSA")
 sha256sums=('SKIP')
 
 pkgver() {
