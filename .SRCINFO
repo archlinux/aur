@@ -1,7 +1,8 @@
 pkgbase = libretro-beetle-saturn-git
 	pkgdesc = Sega Saturn core
-	pkgver = r608.e6ba71f
+	pkgver = r494.548fe9c
 	pkgrel = 1
+	epoch = 2
 	url = https://github.com/libretro/beetle-saturn-libretro
 	arch = aarch64
 	arch = armv7h

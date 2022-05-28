@@ -1,8 +1,9 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-beetle-saturn
 pkgname=$_pkgname-git
-pkgver=r608.e6ba71f
+pkgver=r494.548fe9c
 pkgrel=1
+epoch=2
 pkgdesc="Sega Saturn core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/beetle-saturn-libretro"
