@@ -1,5 +1,5 @@
 pkgbase = jellyseerr
-	pkgdesc = Request management and media discovery tool for the Jellyfin ecosystem
+	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Fallenbagel/jellyseerr

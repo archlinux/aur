@@ -3,7 +3,7 @@
 pkgname=jellyseerr
 pkgver=1.1.0
 pkgrel=1
-pkgdesc='Request management and media discovery tool for the Jellyfin ecosystem'
+pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/Fallenbagel/jellyseerr'
 license=('MIT')
@@ -29,6 +29,12 @@ build()
     export COMMIT_TAG=${pkgver}
     echo "{\"commitTag\": \"${COMMIT_TAG}\"}" > committag.json
 
+    mkdir -p .next "${srcdir}/.jellyseer_cache"
+    rm -rf .next/cache # in case previous builds have it as real folder
+    ln -s "${srcdir}/.jellyseer_cache" .next/cache
+
+    patch -p0 < "../../no-prepare-husky.patch"
+
     yarn --frozen-lockfile
     yarn build
     yarn install --production --ignore-scripts --prefer-offline
@@ -40,9 +46,10 @@ package()
     install -m0755 -d "${pkgdir}/usr/lib/jellyseerr"
     cp -dr --no-preserve='ownership' "${srcdir}/${pkgname}-${pkgver}/." "${pkgdir}/usr/lib/jellyseerr"
 
-    find "${pkgdir}/usr/lib/jellyseerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/${pkgname}-${pkgver}/^/usr/lib/jellyseerr/^g"
+    find "${pkgdir}/usr/lib/jellyseerr/.next" -type f -print0 | xargs -0 sed -i "s^${srcdir}/${pkgname}-${pkgver}^/usr/lib/jellyseerr^g"
 
     rm -rf "${pkgdir}/usr/lib/jellyseerr/config"
+    rm -rf "${pkgdir}/usr/lib/jellyseerr/.next/cache"
     ln -s "/var/lib/jellyseerr" "${pkgdir}/usr/lib/jellyseerr/config"
 
     install -Dm0644 "${srcdir}/jellyseerr.conf.d"   "${pkgdir}/etc/conf.d/jellyseerr"
