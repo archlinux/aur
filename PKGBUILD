@@ -1,8 +1,8 @@
 # Maintainer: Tomás Duarte <tomas@mustachedsquid.com>
 _pkgname=pacman-zfs-hook
 pkgname=${_pkgname}-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=r1.e1b097a
+pkgrel=2
 pkgdesc="Pacman ZFS Hook to create ZFS Snapshots on Pacman transactions."
 arch=('x86_64')
 url="https://git.sr.ht/~mustachedsquid/pacman-zfs-hook"
@@ -11,7 +11,7 @@ depends=('bash' 'pacman')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,6 +20,6 @@ pkgver() {
 }
 
 package() {
-	cd "${$pkgname}"
+	cd "${pkgname}"
 	make DESTDIR="$pkgdir/" install
 }
