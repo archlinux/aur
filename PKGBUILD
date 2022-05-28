@@ -5,7 +5,7 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20220429.r45.g3c37651f7
+pkgver=20220429.r89.g5dfb39759
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
@@ -17,7 +17,7 @@ depends=('glibc' 'gpgme' 'lua53' 'notmuch-runtime' 'krb5' 'gnutls' 'sqlite'
 optdepends=('python: keybase.py'
             'perl: smime_keys'
             'ca-certificates: default CA certificates')
-makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m' 'patch')
+makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
 source=("git+https://github.com/neomutt/neomutt.git#branch=main"
         "default-ca-certificates.patch")
 sha256sums=('SKIP'
