@@ -1,7 +1,7 @@
 # This package is based on libva-intel-driver just with the hybrid codec flag
 pkgname=libva-intel-driver-hybrid
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=(x86_64)
 url=https://01.org/linuxmedia/vaapi

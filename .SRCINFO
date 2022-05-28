@@ -1,7 +1,7 @@
 pkgbase = libva-intel-driver-hybrid
 	pkgdesc = VA-API implementation for Intel G45 and HD Graphics family
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linuxmedia/vaapi
 	arch = x86_64
 	license = MIT
@@ -18,4 +18,3 @@ pkgbase = libva-intel-driver-hybrid
 	sha256sums = SKIP
 
 pkgname = libva-intel-driver-hybrid
-
