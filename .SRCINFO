@@ -1,6 +1,6 @@
 pkgbase = perl-compiler-lexer
 	pkgdesc = Lexical Analyzer for Perl5
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Compiler-Lexer
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = perl-compiler-lexer
 	makedepends = perl-module-build-xsutil
 	depends = perl>=5.8.1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/G/GO/GOCCY/Compiler-Lexer-0.22.tar.gz
-	md5sums = 2cb3b6886e75ab1db91757553b1bf83a
+	source = https://cpan.metacpan.org/authors/id/G/GO/GOCCY/Compiler-Lexer-0.23.tar.gz
+	sha256sums = 6031ce4afebbfa4f492a274949be7b8232314e91023828c438e47981ff0a99db
 
 pkgname = perl-compiler-lexer
-

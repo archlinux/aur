@@ -1,8 +1,9 @@
+# Maintainer: Alad Wenter <alad at archlinux dot org>
 # Contributor: Archer777 <NAME at gmx dot com>
 
 _realname=Compiler-Lexer
 pkgname=perl-compiler-lexer
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc="Lexical Analyzer for Perl5"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ depends=('perl>=5.8.1')
 makedepends=('perl-module-build' 'perl-module-build-xsutil')
 url='http://search.cpan.org/dist/Compiler-Lexer'
 source=("https://cpan.metacpan.org/authors/id/G/GO/GOCCY/${_realname}-${pkgver}.tar.gz")
-md5sums=('2cb3b6886e75ab1db91757553b1bf83a')
+sha256sums=('6031ce4afebbfa4f492a274949be7b8232314e91023828c438e47981ff0a99db')
 
 build() {
   cd "${_realname}-${pkgver}"
