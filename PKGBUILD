@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: 0xsapphir3 <0xsapphir3@gmail.com>
-pkgname=gitcolorscripts-bin
+pkgname=gitcolorscripts
 pkgver=r19.5c5e449
 pkgrel=1
 pkgdesc="Get your GitHub contributions right in your terminal!"
