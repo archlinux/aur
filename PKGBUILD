@@ -13,8 +13,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - erbium: 12
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron13
-pkgver=1.65.0
+_electron=electron17
+pkgver=1.67.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -23,7 +23,7 @@ depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-fermium')
+makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-gallium')
 conflicts=('code')
 provides=('code' 'vscode')
 install='code-transparent.install'
@@ -37,7 +37,7 @@ sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
             'b8bdb0e53cf8748140ed444c9b02cb6a57a7e1e120d96861d4cc9f79744a987f0253c052a238c78aa2c3f86459c4afb6f3b687435f0588d8f640822a9908b257'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
-            '92913eede12335d21d032dc6e0bc01d1f29062ce6375a5648f6c59dd1f343a798e5791819a904fb7b3504058a5daae6a1c3286cb9f95be211540992bdab92d17'
+            'SKIP'
             'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e')
 
 # Even though we don't officially support other archs, let's

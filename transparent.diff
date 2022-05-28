@@ -22,9 +22,9 @@ index 189811d6fdf..d10bd05bced 100644
  
 -import { BrowserWindow, nativeTheme } from 'electron';
 +import { nativeTheme } from 'electron';
- import { isMacintosh, isWindows } from 'vs/base/common/platform';
- import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
- import { IStateMainService } from 'vs/platform/state/electron-main/state';
+ import { Emitter, Event } from 'vs/base/common/event';
+ import { Disposable } from 'vs/base/common/lifecycle';
+ import { isLinux, isMacintosh, isWindows } from 'vs/base/common/platform';
 @@ -68,19 +68,6 @@ export class ThemeMainService implements IThemeMainService {
  			{ key: THEME_WINDOW_SPLASH, data: splash }
  		]);
@@ -61,32 +61,36 @@ diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/w
 diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 --- a/src/vs/workbench/common/theme.ts	2020-04-21 11:28:02.140938188 +0800
 +++ b/src/vs/workbench/common/theme.ts	2020-04-21 11:36:36.133491755 +0800
-@@ -6,20 +6,24 @@
+@@ -6,23 +6,25 @@
  import { localize } from 'vs/nls';
- import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground } from 'vs/platform/theme/common/colorRegistry';
+ import { registerColor, editorBackground, contrastBorder, transparent, editorWidgetBackground, textLinkForeground, lighten, darken, focusBorder, activeContrastBorder, editorWidgetForeground, editorErrorForeground, editorWarningForeground, editorInfoForeground, treeIndentGuidesStroke, errorForeground, listActiveSelectionBackground, listActiveSelectionForeground, editorForeground } from 'vs/platform/theme/common/colorRegistry';
  import { IColorTheme } from 'vs/platform/theme/common/themeService';
 -import { Color } from 'vs/base/common/color';
+-import { ColorScheme } from 'vs/platform/theme/common/theme';
 +import { Color, RGBA } from 'vs/base/common/color';
 
  // < --- Workbench (not customizable) --- >
 
 -export function WORKBENCH_BACKGROUND(theme: IColorTheme): Color {
 -	switch (theme.type) {
--		case 'dark':
--			return Color.fromHex('#252526');
--		case 'light':
+-		case ColorScheme.LIGHT:
 -			return Color.fromHex('#F3F3F3');
--		default:
+-		case ColorScheme.HIGH_CONTRAST_LIGHT:
+-			return Color.fromHex('#FFFFFF');
+-		case ColorScheme.HIGH_CONTRAST_DARK:
 -			return Color.fromHex('#000000');
+-		default:
+-			return Color.fromHex('#252526');
 -	}
 -}
 +export const WORKBENCH_BACKGROUND = (theme: IColorTheme) => theme.getColor(
 +	registerColor(
 +		'workbench.background',
 +		{
-+			dark: '#252526',
 +			light: '#F3F3F3',
-+			hc: '#000000'
++			hcLight: '#FFFFFF',
++			hcDark: '#000000',
++			dark: '#252526'
 +		},
 +		localize(
 +			'workbenchBackground',
@@ -94,6 +98,6 @@ diff --git a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
 +		)
 +	)
 +) || new Color(new RGBA(0, 0, 0, 0));
- 
+
  // < --- Tabs --- >
- 
+
