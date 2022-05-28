@@ -1,25 +1,25 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=qcopy
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Easily set variables and their respective values for easy access at any point"
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
-depends=(fzf dialog xclip bat)
+depends=(fzf dialog xsel bat)
 install="qcopy.install"
 source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'c44ac791ecbf572732f23c797801bd2f90bfb4e6d690eec643166c80d0f1d2613c15296567c212071edda12b73de69ac775d447c60e32bd969a4093b012b6f9a'
-  'daf0e8d48bf444ae314b57de6eb142bcdb84858c5edae2becd24e5cf9cce004fec21bc9bb202ec6590da11e68e9d230b850a3a810115bace7bf8cf24df5d8131'
+  'ae0933af9d04281e6f0ac796e4326cf3353e811350d83ba6b64e08c94f17479e7b266b56748f231d0bdf4a40c7c2192dfd9ce5d48c1673c0865e749183c6dba6'
+  '6d2152ebd4089c2d604b102c1a9e41c2ea881e0cb3a866de6e3bac7c6d0e9d5a214b3e2781ecdd424bef975d6aefaa04a8c2b08a30dfd173eb04fd433538fb13'
   )
 md5sums=(
-  'cd375f0a025fb5715fc5bd22e15f86ff'
-  'b2e16293fb036c2c5e6a953e156b64c4'
+  '038be052b5f26b4343c492950b440738'
+  'e773e7e093c54b2af509aeb2f9a32a8b'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
