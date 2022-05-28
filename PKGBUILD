@@ -1,36 +1,37 @@
-# Maitainer: Loek Le Blansch <loek@pipeframe.xyz>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Loek Le Blansch <loek@pipeframe.xyz>
 
 pkgname=arduino-language-server-git
-pkgver=1.0.1
+pkgver=0.6.0.r12.g22ca780
 pkgrel=1
+epoch=2
 pkgdesc="An Arduino Language Server based on Clangd to Arduino code autocompletion"
-arch=('any')
-makedepends=('git' 'go')
+arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/arduino/arduino-language-server"
-license=('APACHE')
-source=(git+https://github.com/arduino/arduino-language-server)
+license=(Apache)
+makedepends=(git go)
+provides=(arduino-language-server)
+conflicts=(arduino-language-server)
+source=("git+https://github.com/arduino/arduino-language-server.git")
 sha256sums=('SKIP')
-provides=('arduino-language-server')
-conflicts=('arduino-language-server')
 
 pkgver() {
-	cd ${pkgname%-git}
-	git rev-parse HEAD | cut -c1-7
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd ${pkgname%-git}
-
-	msg2 'Building...'
-	go build
+  cd "${pkgname%-git}"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
-	cd ${pkgname%-git}
-
-	msg2 'Installing executables...'
-	install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
-
-	msg2 'Cleaning up pkgdir...'
-	find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  cd "${pkgname%-git}"
+  install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
 }
