@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
 arch=('any')
@@ -23,25 +23,23 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-pypdf2'
              'python-astrocut')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_14.png"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_15.png"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCellCombo.png"
-        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/ZoomSkyCellCombo.png"
+#       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_14.png"
+#       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_15.png"
+#       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCellCombo.png"
+#       "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/ZoomSkyCellCombo.png"
         'fix_catalog_generation_title_level.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-md5sums=('0d66e2128ea86951ab4114dfc9e16430'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
+md5sums=('0bf518c1f488b771508fa1e6099d3780'
          '3c29fa986f6ee57c2c63d94cea8fb3ff')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/fix_catalog_generation_title_level.patch"
+    sed "/generate_custom_svm_param_file/s/generate_custom_svm_param_file/generate_custom_svm_mvm_param_file/" \
+        -i doc/source/catalog_generation.rst
     mv ${_pyname} _${_pyname}
-    ln -s ${srcdir}/*.png ${srcdir}/${_pyname}-${pkgver}/doc/source
+#   ln -s ${srcdir}/*.png ${srcdir}/${_pyname}-${pkgver}/doc/source
 }
 
 build() {
