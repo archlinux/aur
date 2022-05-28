@@ -26,6 +26,5 @@ package() {
   cd devsak
   sudo mkdir -p /opt/${pkgname}
   sudo cp -rf * /opt/${pkgname}
-  sudo ln -s /opt/${pkgname}/scripts/devsak.sh /usr/bin/devsak
-  sudo ln -s /opt/${pkgname}/scripts/uninstall.sh /usr/bin/uninstall_devsak
+  /opt/devsak-git/scripts/install.sh
 }
