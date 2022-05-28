@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 21.1.3
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -290,9 +290,13 @@ pkgname = bareos-traymonitor
 pkgname = python2-bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python2 module to access a backup system.
 	depends = python2
+	depends = python2-sslpsk
 	depends = jansson
+	conflicts = python-bareos
 
 pkgname = python-bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python module to access a backup system.
 	depends = python
+	depends = python-sslpsk
 	depends = jansson
+	conflicts = python2-bareos

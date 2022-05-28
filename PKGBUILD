@@ -43,7 +43,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=21.1.3
 pkgmajor=${pkgver%%.*}
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -776,7 +776,8 @@ package_bareos-webui() {
 #=========================================
 package_python2-bareos() {
   pkgdesc="${pkgdesc} - python-bareos is a Python2 module to access a backup system."
-  depends=('python2' 'jansson')
+  depends=('python2' 'python2-sslpsk' 'jansson')
+  conflicts=("python-bareos")
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python2 setup.py install --skip-build --root="${pkgdir}" --optimize='1'
@@ -785,7 +786,8 @@ package_python2-bareos() {
 #=========================================
 package_python-bareos() {
   pkgdesc="${pkgdesc} - python-bareos is a Python module to access a backup system."
-  depends=('python' 'jansson')
+  depends=('python' 'python-sslpsk' 'jansson')
+  conflicts=("python2-bareos")
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
