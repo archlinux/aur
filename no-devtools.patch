@@ -1,5 +1,6 @@
---- main.js     2022-05-28 02:38:57.398442864 +0200
-+++ main.js.new 2022-05-28 02:44:27.748478671 +0200
+diff -ruN a/main.js b/main.js
+--- a/main.js	2022-05-28 14:47:17.964878674 +0200
++++ b/main.js	2022-05-28 14:46:30.607414509 +0200
 @@ -91,6 +91,7 @@
        nodeIntegration: true,
        webviewTag: true,
@@ -7,3 +8,4 @@
 +      devTools: false
      },
    };
+ 

@@ -2,7 +2,7 @@
 
 pkgname=eso-logs-uploader-bin
 pkgver=5.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Official log uploader application for esologs.com"
 arch=('any')
 url="https://github.com/RPGLogs/Uploaders-esologs"
@@ -14,10 +14,12 @@ makedepends=('asar')
 options=('!strip')
 source=("${pkgname%-bin}-$pkgver.AppImage::$url/releases/download/v$pkgver/ESO-Logs-Uploader-$pkgver.AppImage"
         'eso-logs-uploader.sh'
-        'main.js.patch')
+        'no-devtools.patch'
+        'no-ads.patch')
 sha256sums=('21a77c9730a917ce75db709730969a10c9a19b42beda93558fb5ade67d1b70af'
             '6b260619df25c8f73b2ad252462480745130d3a2d51eb8be431e55f81e637239'
-            'bc880cedc36a76f0a6ae901da4ca648ea5751d507463e960d03f3ce8b3f4948a')
+            '0d1ee7d16d8e226a78300e5f20d6bb743bd194aa68090adccd436952f0b0d287'
+            '53c3b564c22088ba45bc6c6a9c6e0c7cf9be126caad9cb77cf88f85973701df0')
 
 prepare() {
     cd "$srcdir"
@@ -27,8 +29,11 @@ prepare() {
     asar e "squashfs-root/resources/app.asar" "${pkgname%-bin}"
 
     mv "${pkgname%-bin}/LICENSE.md" "${pkgname%-bin}/README.md" .
-    patch "${pkgname%-bin}/main.js" "main.js.patch"
     sed -i 's/^\(Exec=\).*$/\1eso-logs-uploader/' "squashfs-root/esologs.desktop"
+
+    cd "${pkgname%-bin}"
+    patch -p1 < "$srcdir/no-devtools.patch"
+    patch -p1 < "$srcdir/no-ads.patch"
 }
 
 package() {
