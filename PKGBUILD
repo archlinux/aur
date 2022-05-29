@@ -1,8 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-devel-repl'
-pkgver='1.003028'
-pkgrel='4'
+pkgver='1.003029'
+pkgrel='1'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,9 +12,10 @@ depends=(
   'perl-file-homedir'
   'perl-module-runtime'
   'perl-moose>=0.93'
-  'perl-moosex-getopt>=0.72'
+  'perl-moosex-getopt>=0.18'
   'perl-moosex-object-pluggable>=0.0009'
   'perl-namespace-autoclean'
+  'perl-scalar-list-utils'
   'perl-task-weaken'
 
   # runtime requirements for modules
@@ -29,12 +30,11 @@ depends=(
   'perl-sys-sigaction'
 )
 makedepends=(
-  'perl-test-cpan-meta'
   'perl-test-fatal'
 )
 url='http://search.cpan.org/dist/Devel-REPL/'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-${pkgver}.tar.gz")
-sha512sums=('f3eab967fc5502cdb66a601a20ef83561cf285c19c0634d77d0a037416874b0d8faeb0f840fff7d943c3c43dfed4eca0c8afd56f82a69065938f5b872f58fe7e')
+sha512sums=('08aeaa94e088051506f0912fb4d51585f6c73107fce54ef590706dba0cb9b04ea65ceb64e1bbf0b8c409a6aeb3d5e4e044d19277f41ba5b8e3b9459bb5dbf1c4')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

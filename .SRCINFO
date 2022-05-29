@@ -1,19 +1,19 @@
 pkgbase = perl-devel-repl
 	pkgdesc = a modern perl interactive shell
-	pkgver = 1.003028
-	pkgrel = 4
+	pkgver = 1.003029
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Devel-REPL/
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-test-cpan-meta
 	makedepends = perl-test-fatal
 	depends = perl-file-homedir
 	depends = perl-module-runtime
 	depends = perl-moose>=0.93
-	depends = perl-moosex-getopt>=0.72
+	depends = perl-moosex-getopt>=0.18
 	depends = perl-moosex-object-pluggable>=0.0009
 	depends = perl-namespace-autoclean
+	depends = perl-scalar-list-utils
 	depends = perl-task-weaken
 	depends = perl-b-keywords
 	depends = perl-data-dump-streamer
@@ -25,8 +25,7 @@ pkgbase = perl-devel-repl
 	depends = perl-ppi-xs
 	depends = perl-sys-sigaction
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-1.003028.tar.gz
-	sha512sums = f3eab967fc5502cdb66a601a20ef83561cf285c19c0634d77d0a037416874b0d8faeb0f840fff7d943c3c43dfed4eca0c8afd56f82a69065938f5b872f58fe7e
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-1.003029.tar.gz
+	sha512sums = 08aeaa94e088051506f0912fb4d51585f6c73107fce54ef590706dba0cb9b04ea65ceb64e1bbf0b8c409a6aeb3d5e4e044d19277f41ba5b8e3b9459bb5dbf1c4
 
 pkgname = perl-devel-repl
-
