@@ -1,5 +1,5 @@
 pkgbase = libmediawiki
-	pkgdesc = A KDE C++ interface for MediaWiki based web service as wikipedia.org
+	pkgdesc = A KDE C++ interface for MediaWiki based web services like Wikipedia
 	pkgver = 5.37.0
 	pkgrel = 6
 	url = https://invent.kde.org/libraries/libmediawiki

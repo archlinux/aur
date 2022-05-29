@@ -5,7 +5,7 @@
 pkgname=libmediawiki
 pkgver=5.37.0
 pkgrel=6
-pkgdesc="A KDE C++ interface for MediaWiki based web service as wikipedia.org"
+pkgdesc='A KDE C++ interface for MediaWiki based web services like Wikipedia'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/libmediawiki'
 license=('GPL2')
