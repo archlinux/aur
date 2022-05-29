@@ -2,7 +2,7 @@
 # specify on which port to listen
 PORT=5055
 
-# specify on which interface to listen, by default overseerr listens on all interfaces
+# specify on which interface to listen, by default jellyseerr listens on all interfaces
 #HOST=127.0.0.1
 
 # Uncomment if your media server is emby instead of jellyfin.
