@@ -29,8 +29,6 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
-backup=('usr/lib/librewolf/librewolf.cfg'
-        'usr/lib/librewolf/distribution/policies.json')
 options=(!emptydirs !makeflags !strip !lto !debug)
 install=$pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
