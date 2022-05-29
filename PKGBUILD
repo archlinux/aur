@@ -7,7 +7,7 @@ language designed to build optimal, maintainable, reliable and efficient softwar
 url='https://github.com/hascal/hascal'
 arch=('i686' 'x86_64')
 pkgrel=1
-pkgver=v1.3.9.rc.r0.g9ee0c0d
+pkgver=v1.3.9.rc.1.r2.g0ca3b12
 license=('MIT')
 depends=('gcc' 'python' 'python-wheel' 'python-colorama' 'python-requests' )
 makedepends=('git' 'pyinstaller')
