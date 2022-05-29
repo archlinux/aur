@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-enhanced-qt5-git
 	pkgdesc = Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod
-	pkgver = 4.4.2.10.r26.gc07d649f4
-	pkgrel = 2
+	pkgver = 4.4.3.11.r2.gcdd700126
+	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = arm
 	arch = armv6h
@@ -39,7 +39,7 @@ pkgbase = qbittorrent-enhanced-qt5-git
 	conflicts = qbittorrent-git
 	conflicts = qbittorrent-nox-git
 	conflicts = qbittorrent-qt5
-	source = qbittorrent-enhanced::git+https://github.com/c0re100/qBittorrent-Enhanced-Edition.git#branch=v4_4_x
+	source = qbittorrent-enhanced::git+https://github.com/c0re100/qBittorrent-Enhanced-Edition.git
 	sha256sums = SKIP
 
 pkgname = qbittorrent-enhanced-qt5-git
