@@ -1,10 +1,11 @@
 [Unit]
 Description=Unload Nvidia modules before shutdown/reboot.
+DefaultDependencies=no
+After=final.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=true
-ExecStop=/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm && /usr/bin/modprobe -r nvidia
+ExecStart=/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm && /usr/bin/modprobe -r nvidia
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=final.target
