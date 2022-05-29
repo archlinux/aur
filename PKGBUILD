@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.31.3-beta.0'
+_pkgver='1.32.0-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -18,10 +18,9 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 	'browserslist.diff'
-
 )
-sha512sums=('ff3067ca95b853031272aead9be1d7ab7e203ad2f08b5d12ce259ffef5967492e104fe6f171eec73983023c4e0803e37f9938973327ab373c6475108176a52e1'
-            '6f291b0d37ad5ed9f6688a8836447fff9cf1b88af0124997c5b8e1de1ede0b1a2a78a81a57516786950c49c2318677c8bf24104dc025bdd22ece8c8cc61c7d3f'
+sha512sums=('7e6f8d9188e3df091c29452e7f3c444d8c29b2a2fa557c36a9409386c5611911e33d8dcb0283a9149e1a0d5640e0708590b91e140d1f266200814a3b9fe597d8'
+            '1b9bf0ba93cc979953dae1ee2b7e872ef2f8649a033aac5862f650a018b9450ac7a89a20e61718bb41203a206e2e4f193e7853539106fc2d491736645203c3fd'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
 _sourcedirectory="compass-$_pkgver"
