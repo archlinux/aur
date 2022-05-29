@@ -1,6 +1,6 @@
 pkgbase = mimir
 	pkgdesc = A scalable long-term storage for Prometheus
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://grafana.com/oss/mimir/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mimir
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = mimir::git+https://github.com/grafana/mimir.git#commit=9fd2da5d3dc764fc00e4396a5c0ddd12ccebb00d
+	source = mimir::git+https://github.com/grafana/mimir.git#commit=840c68616a6fa4a4f86cbd581b05c43d0bfee7e0
 	b2sums = SKIP
 
 pkgname = mimir

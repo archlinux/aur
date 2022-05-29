@@ -1,16 +1,16 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mimir
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A scalable long-term storage for Prometheus"
+pkgdesc='A scalable long-term storage for Prometheus'
 arch=('x86_64')
-url="https://grafana.com/oss/mimir/"
+url='https://grafana.com/oss/mimir/'
 license=('AGPL3')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='9fd2da5d3dc764fc00e4396a5c0ddd12ccebb00d'
+_commit='840c68616a6fa4a4f86cbd581b05c43d0bfee7e0'
 source=("$pkgname::git+https://github.com/grafana/mimir.git#commit=$_commit")
 b2sums=('SKIP')
 
