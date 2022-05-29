@@ -1,6 +1,6 @@
 pkgbase = libretro-stella-git
 	pkgdesc = Atari 2600 VCS core
-	pkgver = 6.6.r159.gfc1d87f6d
+	pkgver = 6.6.r206.g53dba3bba
 	pkgrel = 1
 	epoch = 1
 	url = https://stella-emu.github.io/

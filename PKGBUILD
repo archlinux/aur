@@ -2,7 +2,7 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-stella
 pkgname=$_pkgname-git
-pkgver=6.6.r159.gfc1d87f6d
+pkgver=6.6.r206.g53dba3bba
 pkgrel=1
 epoch=1
 pkgdesc="Atari 2600 VCS core"
@@ -27,8 +27,6 @@ prepare() {
 }
 
 build() {
-	# https://github.com/stella-emu/stella/issues/806
-	CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 	make -C stella-emu/src/libretro LTO=
 }
 
