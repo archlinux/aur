@@ -1,16 +1,13 @@
 pkgbase = icebreaker
 	pkgdesc = A clone of Jezzball that uses icebergs and penguins. (non-theme support version)
-	pkgver = 1.2.1
-	pkgrel = 3
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://mattdm.org/icebreaker/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl_mixer
-	source = https://mattdm.org/icebreaker/1.2.x/icebreaker-1.2.1.tgz
-	source = icebreaker.patch
-	sha512sums = ece8fc9b8d298e8a8a6c749aa29fa735b49b98d6ef147740e292aa83faabaa52e16447385ea9cf327c54e78c081519802f50fd1d596aa6f0fed030979c003899
-	sha512sums = d7e5c79ffcc5ef3018fcf8aaf4d003eea976d22f92ba04e4f802c34869f14e1b04f01c437ad6869759393c4c9d5e41c269476576df1f9f106bf79f5ed7c042da
+	source = https://mattdm.org/icebreaker/2.2.x/icebreaker-2.2.1.tar.xz
+	sha256sums = 29d02d59681faa1e83949b7bae4553720db0247c51ac040bb9f3b516350e9810
 
 pkgname = icebreaker
-
