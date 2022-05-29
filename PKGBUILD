@@ -14,7 +14,7 @@ source=('nvidia-modprobe.service'
 	'notes.install')
 
 sha256sums=('db66b0fc66d1ca68e7cc0f64e203e1bf7b5b612899fd58a5a0e18b8f7ec4d30d'
-	    'aa5902887da3a6f79ab2d9fbd3c64d7b861b213902b05b4f30c314425636c1fb')
+	    '15d2d58c1ae9055cac4b4930a532e53f59b4a8a214d2c6ac245b3f92a07b21d8')
 
 
 package() {
