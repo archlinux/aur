@@ -1,0 +1,22 @@
+pkgbase = guile2.0
+	pkgdesc = Portable, embeddable Scheme implementation written in C
+	pkgver = 2.0.14
+	pkgrel = 6
+	url = https://www.gnu.org/software/guile/
+	arch = x86_64
+	license = GPL
+	depends = gmp
+	depends = libltdl
+	depends = ncurses
+	depends = texinfo
+	depends = libunistring
+	depends = gc
+	depends = libffi
+	source = https://ftp.gnu.org/pub/gnu/guile/guile-2.0.14.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/guile/guile-2.0.14.tar.gz.sig
+	validpgpkeys = 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
+	validpgpkeys = FF478FB264DE32EC296725A3DDC0F5358812F8F2
+	md5sums = 333b6eec83e779935a45c818f712484e
+	md5sums = SKIP
+
+pkgname = guile2.0
