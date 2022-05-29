@@ -8,6 +8,7 @@ arch=('any')
 license=('GPL')
 depends=('systemd')
 install="notes.install"
+url="https://github.com/Fxzzi/nvidia-modprobe-service"
 
 source=('nvidia-modprobe.service'
 	'notes.install')
