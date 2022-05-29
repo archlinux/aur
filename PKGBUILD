@@ -7,7 +7,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
 
-sha256sums=('d57245357f1005d26467a2f7e30c63badf1b748271fed8334adf7d30014ee28a')
+sha256sums=('bb39bd8def07eedbfe5ff40c0860de0b79ac2755b7ba42fa61be35830a94f59a')
 
 build() {
   cd "${srcdir}/PolyMC-$pkgver"
