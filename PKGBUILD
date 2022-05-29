@@ -4,15 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='ibus-mozc'
-pkgver=2.28.4715.102
+pkgver=2.28.4740.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.28.4715.102')
+depends=('ibus>=1.4.1' 'mozc>=2.28.4740.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4c5d516fdff227039305eef3411f12bac9f02246")
+options=(!distcc !ccache)
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=73f289987769fe1dd381bf436b5888a2a663e276")
 sha256sums=('SKIP')
 
 prepare() {
