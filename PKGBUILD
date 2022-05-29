@@ -1,5 +1,5 @@
 pkgname=netrautafarmi
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc=".net client for donut.gq rautafarmi"
 arch=("any")
@@ -7,7 +7,7 @@ url="https://github.com/kawaiizenbo/netrautafarmi"
 license=("MIT")
 depends=("mono")
 source=("https://github.com/kawaiizenbo/netrautafarmi/archive/refs/tags/$pkgver.tar.gz" "icon2.png")
-sha256sums=("deb3f2a0a2026df8e173355abf1a75973c706f6de378e3fbf5931e7c3b9cad79" "e5d4cde444f4beca80469a5c3afbf17185b06f99711b6096be37da3505cfaa49")
+sha256sums=("5b43790d283fcb29b402a3adff2e5105cb6be2ed3623b993c1c1793fa31140ed" "e5d4cde444f4beca80469a5c3afbf17185b06f99711b6096be37da3505cfaa49")
 
 build() {
 	cd "netrautafarmi-$pkgver/netrautafarmi"
