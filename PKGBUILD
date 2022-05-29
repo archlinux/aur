@@ -2,7 +2,7 @@
 
 pkgname=nvidia-modprobe-service
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fixes /oldroot unmount issues by unloading nvidia modules before shutdown / reboot."
 arch=('any')
 license=('GPL')
