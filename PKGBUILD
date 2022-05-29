@@ -10,8 +10,13 @@ pkgdesc='A KDE C++ interface for MediaWiki based web service as wikipedia.org'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/libmediawiki'
 license=('GPL2')
-depends=('qt5-base' 'kcoreaddons')
-makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'kcoreaddons'
+  'qt5-base'
+)
+makedepends=('git' 'extra-cmake-modules')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -53,7 +58,7 @@ build() {
   cd "${srcdir}/build"
   cmake "${srcdir}/libmediawiki" -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/usr \
-                -DLIB_INSTALL_DIR=lib \
+                -DKDE_INSTALL_LIBDIR=lib \
                 -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
                 -DBUILD_TESTING=OFF
   make
