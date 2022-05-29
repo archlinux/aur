@@ -2,8 +2,8 @@
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
 pkgname=libreddit
-pkgver=0.22.8
-_commit=428dc58
+pkgver=0.22.9
+_commit=5f20e8e
 pkgrel=1
 pkgdesc='Alternative private front-end to Reddit'
 arch=('x86_64')
@@ -27,14 +27,12 @@ prepare() {
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-
 	cd "$pkgname"
 	cargo build --release --frozen --all-features
 }
 
 check() {
 	export RUSTUP_TOOLCHAIN=stable
-
 	cd "$pkgname"
 	cargo test --frozen --all-features
 }
