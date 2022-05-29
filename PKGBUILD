@@ -10,8 +10,7 @@ license=('MIT')
 depends=('bash' 'mpv')
 #makedepends=('')
 
-source=("git://github.com/yoarch/regal.git")
-#source#=("file:///$MHOME/dev/aur/regal/regal.tar.gz")
+source=("git+https://github.com/yoarch/regal.git")
 sha256sums=('SKIP')
 
 pkgver() {
