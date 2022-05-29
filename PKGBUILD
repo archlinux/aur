@@ -1,7 +1,7 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source discord client."
 arch=('x86_64')
 url="https://github.com/gamingdoom/datcord"
@@ -16,7 +16,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=(datcord)
 conflicts=(datcord)
 replaces=()
-source=(https://github.com/gamingdoom/datcord/releases/latest/download/datcord-$CARCH-linux.tar.bz2)
+source=(https://github.com/gamingdoom/datcord/releases/latest/download/datcord-linux-$CARCH.tar.bz2)
 noextract=()
 sha256sums=('SKIP')
 

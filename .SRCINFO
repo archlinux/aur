@@ -1,7 +1,7 @@
 pkgbase = datcord-bin
 	pkgdesc = An open-source discord client.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gamingdoom/datcord
 	arch = x86_64
 	license = MPL
@@ -20,7 +20,7 @@ pkgbase = datcord-bin
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
 	provides = datcord
 	conflicts = datcord
-	source = https://github.com/gamingdoom/datcord/releases/latest/download/datcord-x86_64-linux.tar.bz2
+	source = https://github.com/gamingdoom/datcord/releases/latest/download/datcord-linux-x86_64.tar.bz2
 	sha256sums = SKIP
 
 pkgname = datcord-bin
