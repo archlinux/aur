@@ -1,5 +1,5 @@
 pkgbase = libmediawiki-git
-	pkgdesc = A KDE C++ interface for MediaWiki based web service as wikipedia.org
+	pkgdesc = A KDE C++ interface for MediaWiki based web services like Wikipedia
 	pkgver = 5.37.0.r16.g8741b29
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/libmediawiki
