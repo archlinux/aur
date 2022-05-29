@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others'
 arch=('x86_64')
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
@@ -12,6 +12,7 @@ depends=(
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
+install=dbgate.install
 source=(
 	"$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/dbgate-$pkgver-linux_amd64.deb"
 	"$pkgname-$pkgver-LICENSE::${url/github/raw.githubusercontent}/v$pkgver/LICENSE"
