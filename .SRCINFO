@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended-pak128.britain
 	pkgdesc = High resolution graphics set for Simutrans Extended, with a British theme
-	pkgver = r4253.a737177c7
+	pkgver = r4257.80e0c8890
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
