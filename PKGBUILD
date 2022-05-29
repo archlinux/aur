@@ -2,7 +2,7 @@
 
 pkgname=perl-version-compare
 pkgver=0.14
-pkgrel=5
+pkgrel=6
 pkgdesc='Compare version strings'
 arch=(any)
 license=(PerlArtistic GPL)
