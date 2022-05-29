@@ -1,0 +1,4 @@
+frida-*
+python-frida-*
+src/
+pkg/
