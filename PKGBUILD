@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others'
 arch=('x86_64')
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
@@ -23,4 +23,7 @@ b2sums=('36d129c468f4078f4597cf558c709810d21b88e87213476868aa3789d2fd12933ae294c
 package() {
 	bsdtar -xf data.tar.xz --directory="$pkgdir"
 	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	mkdir -p "$pkgdir"/usr/bin
+	ln -s /opt/DbGate/dbgate "$pkgdir"/usr/bin/dbgate
 }
