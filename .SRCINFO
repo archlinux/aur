@@ -5,6 +5,7 @@ pkgbase = tangram
 	url = https://apps.gnome.org/app/re.sonny.Tangram
 	arch = any
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	depends = gjs
@@ -12,7 +13,7 @@ pkgbase = tangram
 	depends = libsoup
 	depends = webkit2gtk
 	optdepends = gst-plugins-bad: May be necessary for some websites
-	source = git+https://github.com/sonnyp/Tangram.git#tag=v1.4.2
+	source = git+https://github.com/sonnyp/Tangram.git#commit=37e7a820b0646791cec2678eb5808045eb2a6f42
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
 	sha256sums = SKIP
