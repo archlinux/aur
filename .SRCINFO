@@ -1,0 +1,15 @@
+pkgbase = pridefetch-git
+	pkgdesc = Neofetch clone written in Python with the ability to display pride flags
+	pkgver = r73.c65fb6a
+	pkgrel = 1
+	url = https://github.com/Spyhoodle/pridefetch
+	arch = any
+	makedepends = git
+	makedepends = zip
+	depends = python3
+	depends = python-distro
+	provides = pridefetch
+	source = git+https://github.com/Spyhoodle/pridefetch#tag=vr73.c65fb6a
+	sha512sums = SKIP
+
+pkgname = pridefetch-git
