@@ -2,7 +2,7 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-amqp
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('python-vine')
 checkdepends=('python-case' 'python-pytest-sugar')
 source=("https://github.com/celery/py-amqp/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('1e0abe1afdf9abc2ba3ac4333da0806aa7d9713921f36417aa47e0e0ba1ca2884665e011abedb56306fdd62bb77d2b4ec5dfac30fa2e83f3a7d9230606941e1c')
+sha512sums=('6e075377718c3b8e6c92713cceb580869243c33427efc4e7e6291bbb4daf136c34e13a1c12796064ac30e87dd5dd6f5f2cb17ec320a97adb6c25f03fb3b852fb')
 
 build() {
   cd py-amqp-$pkgver
