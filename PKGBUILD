@@ -1,7 +1,7 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=libsbml
 pkgver=5.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="XML-based description language for computational models in systems biology"
 url="https://github.com/sbmlteam/libsbml"
 license=('LGPL')
@@ -40,4 +40,6 @@ build() {
 package() {
   cd "$srcdir"/build-$pkgver
   DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P cmake_install.cmake
+
+  rm "$pkgdir"/usr/share/cmake/Modules/Find{ZLIB,LIBXML,BZ2}.cmake
 }
