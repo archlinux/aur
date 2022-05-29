@@ -17,7 +17,7 @@ license=("custom")
 _dmca_exemption="https://archive.org/about/dmca.php"
 source=("${_uuid_it}.bin::https://archive.org/download/medievil/medievil.img"
 	"${_uuid_it}.cue::https://archive.org/download/medievil/medievil.cue"
-	"${_uuid_it}.7z::https://psxdatacenter.com/sbifiles/MediEvil%20(I)%20[SCES-01494]%20sbi.7z"
+	"${_uuid_it}.sbi.7z::https://psxdatacenter.com/sbifiles/MediEvil%20(I)%20[SCES-01494]%20sbi.7z"
 	"${_uuid_jp}.bin::https://archive.org/download/medievilscps10081/MediEvil%20%5BSCPS-10081%5D.zip/MediEvil%20J.BIN"
 
 	"${_uuid_jp}.cue::https://archive.org/download/medievilscps10081/MediEvil%20%5BSCPS-10081%5D.zip/MediEvil%20J.cue"
