@@ -1,0 +1,32 @@
+#!/bin/sh
+
+lang=""
+
+_lang() {
+  local uage="${LANG%%.*}"
+  lang="${uage%%_*}"
+}
+
+_launch() {
+  lang="${1}"
+  [ -z "${lang}" ] && _lang
+  local _game="/usr/games/%_app_id%"
+  local _path=$(cat "${_game}/${lang}" 
+  if [ ! -f "${_game}/${lang}" ]; then
+    _path=$(cat "${_game}/any")
+  fi
+
+  duckstation-nogui -fullscreen "${_path}"
+}
+
+_main() {
+  if [[ "${$1}" == "--help" ]]; then
+    echo "HELP: %_app_id% <language>"
+  else
+    game_lang="${1}"
+    _launch "${game_lang}"
+  fi
+}
+
+
+_main "$@"

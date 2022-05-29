@@ -1,0 +1,34 @@
+pkgbase = medievil
+	pkgdesc = Action-adventure hack and slash video game developed by SCE Cambridge Studio and published by Sony Computer Entertainment for the PlayStation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/MediEvil
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCES-01494.bin::https://archive.org/download/medievil/medievil.img
+	source = SCES-01494.cue::https://archive.org/download/medievil/medievil.cue
+	source = SCES-01494.7z::https://psxdatacenter.com/sbifiles/MediEvil%20(I)%20[SCES-01494]%20sbi.7z
+	source = SCPS-10081.bin::https://archive.org/download/medievilscps10081/MediEvil%20%5BSCPS-10081%5D.zip/MediEvil%20J.BIN
+	source = SCPS-10081.cue::https://archive.org/download/medievilscps10081/MediEvil%20%5BSCPS-10081%5D.zip/MediEvil%20J.cue
+	source = psx-template.desktop
+	source = launcher
+	source = net.worldwidestudios.MediEvil.png::https://upload.wikimedia.org/wikipedia/en/d/d3/Medievil_cover.jpg
+	sha256sums = a722bc37862876eb53415b15ad2977a69487413f9241186c373ae8dc9917c007
+	sha256sums = 9eaeb95180371439af2bbc4ab77a57cf09656c0360b174ae85b32fbef81ed078
+	sha256sums = 6963af08246ae0dee61c562b2fe9c052c22e3524062bb083698df51fbd5aa06e
+	sha256sums = 2ecfd848609645e9eccf0dd28a540149c6ba27af3a2d577630b817aa246225db
+	sha256sums = b9cb2d0f1717de3e7b8096a5189eca9efb7792f287b3ce5fbb40ca789777f9d8
+	sha256sums = 517b82624fe3f0ea13ca4f9eea1e11088e30ff8449ae69f37b7a1412744c734d
+	sha256sums = 8877e2243e9ef02895ebed457d8b0fc701207453afb81c5ecd64d8e31ea8a5ed
+	sha256sums = dd9019e1daaa6badd13588dda4b9d00d3d5147a09e5635bc97fdc962ccddf83d
+
+pkgname = medievil
+
+pkgname = medievil-it
+	depends = duckstation
+	depends = medievil
+
+pkgname = medievil-jp
+	depends = duckstation
+	depends = medievil
