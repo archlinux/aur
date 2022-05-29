@@ -5,7 +5,7 @@
 pkgname=photoprism
 pkgver="220524"
 commit="c76de0df"
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
@@ -35,7 +35,7 @@ sha256sums=('SKIP'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
             'bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af'
             'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
-            'cd98c9b00d6e83cea7ab5d54063ced31421332258bdf59e96f98e3820d4d10c2'
+            '54bd008dc089cb29a1bef22a2509bbf493af387104725193595b67d82c5e2b9d'
             '73afd3b2983d6a31405c5a68f553f1a82a87a0d38483cdb56e32e959840ad1a6'
             '3921b7516182b82a41672b3894ff998ce78b19d39c87b76a8db2894b01145287'
             'ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721')
