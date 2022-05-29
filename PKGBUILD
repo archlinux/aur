@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=bingrep-rs
 _pkgname=bingrep
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Cross-platform binary parser and colorizer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/m4b/bingrep/archive/v$pkgver.tar.gz)
-sha512sums=('b0f163019c7fcc88749b4f28cd1d80ca26b131226487b0f6f44bf56009765799e8ca44d49d736baac7b2ad5981b5019795f75b857c58bc9b49f1e4f5a89ba38d')
+sha512sums=('1b9aeabffe3c4619495b446ec9c9d5505126294502f2f62f09aeccd9fea91ef64478aa331373f0b1a65d56bf369ff2ea73a01bb0dc272cdc9c3fa244301e6ca1')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = bingrep-rs
 	pkgdesc = Cross-platform binary parser and colorizer
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/m4b/bingrep
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = bingrep-rs-0.9.1.tar.gz::https://github.com/m4b/bingrep/archive/v0.9.1.tar.gz
-	sha512sums = b0f163019c7fcc88749b4f28cd1d80ca26b131226487b0f6f44bf56009765799e8ca44d49d736baac7b2ad5981b5019795f75b857c58bc9b49f1e4f5a89ba38d
+	source = bingrep-rs-0.10.0.tar.gz::https://github.com/m4b/bingrep/archive/v0.10.0.tar.gz
+	sha512sums = 1b9aeabffe3c4619495b446ec9c9d5505126294502f2f62f09aeccd9fea91ef64478aa331373f0b1a65d56bf369ff2ea73a01bb0dc272cdc9c3fa244301e6ca1
 
 pkgname = bingrep-rs
