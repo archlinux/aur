@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.1.0.beta"
-pkgrel=1
+pkgver="0.1.1beta"
+pkgrel=2
 pkgdesc="Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
@@ -15,12 +15,12 @@ sha256sums=('SKIP')
 options=(!makeflags !buildflags)
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/Hyprland-$pkgver"
 	make all
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/Hyprland-$pkgver"
 	mkdir -p "${pkgdir}/usr/share/wayland-sessions"
 	mkdir -p "${pkgdir}/usr/share/hyprland"
 	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
