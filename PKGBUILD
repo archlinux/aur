@@ -2,7 +2,7 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.4.7
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Installed using the debian release builds from CircleCI."
 arch=("armv7h" "i686" "x86_64")
@@ -15,7 +15,7 @@ source=("cider.desktop")
 sha256sums=('7bf97dfa92b312ceb95d005a8aa7f225af079ee450f38b58b894e951a529d997')
 
 pkgver() {
-    curl $_url | grep tag_name | cut -d '"' -f 4 | sed 's/v//' | xargs
+    curl -s $_url | grep tag_name | cut -d '"' -f 4 | sed 's/v//' | sed 's/\-/./g' | xargs
 }
 
 build() {
@@ -36,9 +36,9 @@ build() {
 
     # Fetch the Various Useful Files
     echo "Fetching additional Files"
-    curl https://raw.githubusercontent.com/CiderApp/cider/master/README.md > README
-    curl https://raw.githubusercontent.com/CiderApp/cider/master/LICENSE > LICENSE
-    curl https://raw.githubusercontent.com/CiderApp/cider/master/resources/icons/cider.png > icon.png
+    curl -s https://raw.githubusercontent.com/CiderApp/cider/master/README.md > README
+    curl -s https://raw.githubusercontent.com/CiderApp/cider/master/LICENSE > LICENSE
+    curl -s https://raw.githubusercontent.com/CiderApp/cider/master/resources/icons/cider.png > icon.png
 }
 
 package() {
