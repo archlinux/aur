@@ -1,13 +1,14 @@
 pkgbase = libmediawiki
 	pkgdesc = A KDE C++ interface for MediaWiki based web service as wikipedia.org
 	pkgver = 5.37.0
-	pkgrel = 5
-	url = https://www.digikam.org/
+	pkgrel = 6
+	url = https://invent.kde.org/libraries/libmediawiki
+	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = extra-cmake-modules
 	depends = kcoreaddons
-	source = https://download.kde.org/stable/libmediawiki/libmediawiki-5.37.0.tar.xz
-	sha256sums = da167259c49d012359ad65175c365613f0c42699fb99ac7fb9d1f1c8c48292c1
+	source = libmediawiki-5.37.0.tar.bz2::https://invent.kde.org/libraries/libmediawiki/-/archive/1a6e469024128a10ac4d54457dbae58aaec52fb0/libmediawiki-1a6e469024128a10ac4d54457dbae58aaec52fb0.tar.bz2
+	sha256sums = 40c670699f06e3fe0856a08406e9cc8674d2ea7c3cd53561dfd6ce730eaf6842
 
 pkgname = libmediawiki
