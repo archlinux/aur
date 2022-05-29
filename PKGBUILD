@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-pulse
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -11,7 +11,8 @@ makedepends=('git')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=$pkgver"
+_commit=1f49c84c222a02d9e9e2e1a4a2fb04397ce7017b
+source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
         'git+https://github.com/ThePBone/EELEditor.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
@@ -23,6 +24,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'c6496e6981471aa3f8d1593673991e422d243ff3efe595b3230de713588599c3')
+
+pkgver() {
+  cd "$srcdir/JDSP4Linux"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/JDSP4Linux"
