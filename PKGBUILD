@@ -1,8 +1,8 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
 
 pkgname=jakt-git
-pkgver=r428.b8863dc
-pkgrel=2
+pkgver=r637.f07cd13
+pkgrel=1
 pkgdesc="The Jakt Programming Language from SerenityOS"
 arch=("x86_64")
 url="https://github.com/SerenityOS/jakt"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cargo build --release
+    cargo build --release --help
 }
 
 check() {
@@ -34,16 +34,14 @@ check() {
 
 package() {
     install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/lib/jakt/runtime"
+    install -d "${pkgdir}/usr/lib/jakt"
     install -d "${pkgdir}/usr/share/doc/jakt"
     install -d "${pkgdir}/usr/share/licenses/jakt"
 
     cd "${pkgname}"
 
     install -Dm755 "target/release/jakt" "${pkgdir}/usr/bin/jakt"
-    cp runtime/lib.h "${pkgdir}/usr/lib/jakt/runtime/"
-    find runtime -maxdepth 1 -mindepth 1 -type d -exec cp -r {} ${pkgdir}/usr/lib/jakt/ \;
-    find runtime -maxdepth 1 -mindepth 1 -type f \( ! -iname "lib.h" \) -exec cp {} ${pkgdir}/usr/lib/jakt/ \;
+    find runtime -maxdepth 1 -mindepth 1 -exec cp -r {} ${pkgdir}/usr/lib/jakt/ \;
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/jakt"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/jakt"
 }
