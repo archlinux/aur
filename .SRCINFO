@@ -1,0 +1,14 @@
+pkgbase = azure-cli-bin
+	pkgdesc = Command-line tools for Azure (Debian package)
+	pkgver = 2.37.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = azure-cli
+	conflicts = python-azure-cli
+	source = https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_2.37.0-1~bullseye_all.deb
+	md5sums = ac55d9a9462f445052bc7f365a81dfa0
+
+pkgname = azure-cli-bin
