@@ -1,13 +1,13 @@
 pkgbase = mpd-notification
 	pkgdesc = Notify about tracks played by mpd
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/mpd-notification
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = systemd
-	makedepends = markdown
+	makedepends = discount
 	depends = libsystemd
 	depends = ffmpeg
 	depends = file
@@ -21,4 +21,3 @@ pkgbase = mpd-notification
 	sha256sums = SKIP
 
 pkgname = mpd-notification
-
