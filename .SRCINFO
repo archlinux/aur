@@ -1,0 +1,11 @@
+pkgbase = yip-git
+	pkgdesc = Performant, lightweight HTTP server that echoes the client's IP address, written in plain C. (Development version)
+	pkgver = 0.1.2.r0.gdbcdd0d
+	pkgrel = 1
+	url = https://github.com/jenspots/yip
+	arch = x86_64
+	license = AGPL-3.0
+	source = yip-git::git+https://github.com/jenspots/yip#branch=main
+	md5sums = SKIP
+
+pkgname = yip-git
