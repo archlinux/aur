@@ -14,7 +14,7 @@
 
 pkgname=ffmpeg3.4
 pkgver=3.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://ffmpeg.org'
@@ -24,10 +24,12 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libmodplug' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
          'libva' 'libvdpau' 'libvorbis' 'libvpx' 'libwebp' 'libx11' 'libxcb'
          'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg' 'opus' 'sdl2'
-         'speex' 'v4l-utils' 'vid.stab' 'x264' 'x265' 'xvidcore' 'xz' 'zlib'
-         'libomxil-bellagio')
-makedepends=('ladspa' 'libvdpau' 'yasm')
-optdepends=('ladspa: LADSPA filters')
+         'speex' 'v4l-utils' 'vid.stab' 'x264' 'x265' 'xvidcore' 'xz' 'zlib')
+makedepends=('ladspa' 'libomxil-bellagio' 'yasm')
+makedepends_x86_64=('libmfx')
+optdepends=('ladspa: LADSPA filters'
+            'libomxil-bellagio: HW acceleration on mobile platforms')
+optdepends_x86_64=('intel-media-sdk: for Intel QuickSync HW acceleration support (experimental)')
 provides=('ffmpeg-compat-57'
           'libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6' 'libavformat.so=57'
           'libavresample.so=3' 'libavutil.so=55' 'libpostproc.so=54' 'libswresample.so=2'
@@ -52,17 +54,18 @@ prepare() {
 build() {
     cd ${srcdir}/ffmpeg-${pkgver}
 
-    [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
+    [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && local arch_specific_config='--host-cflags="-fPIC"'
+    [[ $CARCH == "x86_64" ]] && local arch_specific_config='--enable-libmfx'
 
     ./configure \
         --prefix='/usr' \
-        --disable-debug \
         --incdir='/usr/include/ffmpeg3.4' \
         --libdir='/usr/lib/ffmpeg3.4' \
         --shlibdir='/usr/lib/ffmpeg3.4' \
+        --disable-debug \
         --disable-doc \
-        --disable-sndio \
         --disable-static \
+        --disable-sndio \
         --enable-stripping \
         --enable-avisynth \
         --enable-avresample \
@@ -100,7 +103,8 @@ build() {
         --enable-libxvid \
         --enable-shared \
         --enable-version3 \
-        --enable-omx
+        --enable-omx \
+        "${arch_specific_config}"
 
     make
 }

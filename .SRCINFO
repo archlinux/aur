@@ -1,7 +1,7 @@
 pkgbase = ffmpeg3.4
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 3.4.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmpeg.org
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ffmpeg3.4
 	arch = aarch64
 	license = GPL3
 	makedepends = ladspa
-	makedepends = libvdpau
+	makedepends = libomxil-bellagio
 	makedepends = yasm
 	depends = alsa-lib
 	depends = bzip2
@@ -55,8 +55,8 @@ pkgbase = ffmpeg3.4
 	depends = xvidcore
 	depends = xz
 	depends = zlib
-	depends = libomxil-bellagio
 	optdepends = ladspa: LADSPA filters
+	optdepends = libomxil-bellagio: HW acceleration on mobile platforms
 	provides = ffmpeg-compat-57
 	provides = libavcodec.so=57
 	provides = libavdevice.so=57
@@ -77,5 +77,7 @@ pkgbase = ffmpeg3.4
 	sha256sums = 9c310072bcdcc78a1ee82a36b2b6e648b21dd2e790618200e45876d4d96e32e6
 	sha256sums = SKIP
 	sha256sums = 0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427
+	optdepends_x86_64 = intel-media-sdk: for Intel QuickSync HW acceleration support (experimental)
+	makedepends_x86_64 = libmfx
 
 pkgname = ffmpeg3.4
