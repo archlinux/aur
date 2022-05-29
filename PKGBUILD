@@ -10,6 +10,7 @@ source=("git+https://github.com/Spyhoodle/pridefetch")
 depends=('python3' 'python-distro')
 makedepends=('git' 'zip')
 provides=('pridefetch')
+conflicts=('pridefetch')
 sha512sums=('SKIP')
 
 package() {
