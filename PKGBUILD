@@ -1,21 +1,31 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Sevenseven < forauronly AT gmail.com >
+
 pkgname=libmediawiki-git
-pkgver=r108.a5cd0ea
+pkgver=1.0.0.r17.g8741b29
 pkgrel=1
 pkgdesc='A KDE C++ interface for MediaWiki based web service as wikipedia.org'
 arch=('i686' 'x86_64')
-url='http://www.kde.org'
-license=('GPL' 'LGPL' 'FDL')
+url='https://invent.kde.org/libraries/libmediawiki'
+license=('GPL2')
 depends=('qt5-base' 'kcoreaddons')
-makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+provides=("libmediawiki=${pkgver}")
 conflicts=('libmediawiki')
-provides=('libmediawiki')
-groups=('digikamsc-git')
-source=('git://anongit.kde.org/libmediawiki')
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/libmediawiki"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+  local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+  # Format git-based version for pkgver
+  echo "${_gitversion}" | sed \
+    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+    -e 's|\([0-9]\+-g\)|r\1|' \
+    -e 's|-|.|g'
 }
 
 prepare() {
