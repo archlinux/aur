@@ -30,7 +30,7 @@ sha256sums=("a722bc37862876eb53415b15ad2977a69487413f9241186c373ae8dc9917c007"
 	    "2ecfd848609645e9eccf0dd28a540149c6ba27af3a2d577630b817aa246225db"
 	    "b9cb2d0f1717de3e7b8096a5189eca9efb7792f287b3ce5fbb40ca789777f9d8"
 	    "517b82624fe3f0ea13ca4f9eea1e11088e30ff8449ae69f37b7a1412744c734d"
-	    "8877e2243e9ef02895ebed457d8b0fc701207453afb81c5ecd64d8e31ea8a5ed"
+	    "243e129901670aafd6c10384ba334af7ea7a2d8d7686ab94c50595318bec0a02"
 	    "dd9019e1daaa6badd13588dda4b9d00d3d5147a09e5635bc97fdc962ccddf83d")
 
 prepare() {
@@ -42,6 +42,7 @@ prepare() {
 
   cp launcher "${pkgbase}"
   sed -i "s/%_app_id%/${_app_id}/g" "${pkgbase}"
+  sed -i "s/%pkgbase%/${pkgbase}/g" "${pkgbase}"
 
   echo "/usr/games/${_app_id}/${_uuid}.cue" > any
   sed -i -e "s/${_rom_filename_it}/${_uuid_it}.bin/g" "${_uuid_it}.cue"
