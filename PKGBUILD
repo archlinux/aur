@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2022.3
-_build=100
+_build=103
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,11 +15,11 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 source=(
-  https://www.yourkit.com/download/YourKit-JavaProfiler-${_version}-b${_build}.zip
+  https://download.yourkit.com/yjp/${_version}/YourKit-JavaProfiler-${_version}-b${_build}.zip
   yourkit-yjp.desktop
   yourkit.sh
 )
-sha256sums=('09cbac9b2ec624f241a749bd50707b4f82266232329a8c2b46925595e77a658e'
+sha256sums=('01e782071074171749a6b955da0a8f42745bd33a2c623e6b58050693e840e3aa'
             'b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
             '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e')
 
