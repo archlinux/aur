@@ -1,15 +1,16 @@
+# Maintainer: David <aur@david.davidlane.io>
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=selectdefaultapplication-git
 pkgver=r19.73a7579
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple application that lets you define default applications on Linux in a sane way'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/selectdefaultapplication'
 license=('GPL')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-source=("git://github.com/sandsmark/selectdefaultapplication.git")
+source=("git+https://github.com/sandsmark/selectdefaultapplication.git")
 md5sums=('SKIP')
 
 pkgver() {
