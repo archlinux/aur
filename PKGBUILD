@@ -1,5 +1,7 @@
 # Maintainer:  <zhaose@Planet>
 pkgname=purple-oicq-git
+provides=('purple-oicq')
+conflicts=('purple-oicq')
 pkgver=v1.0.1.r0.g810034c
 pkgrel=1
 pkgdesc="oicq plugin for pidgin"
