@@ -1,0 +1,20 @@
+pkgbase = taup-git
+	pkgdesc = A seismic travel time calculator.
+	pkgver = 2.6.0.r9.ff98c73
+	pkgrel = 1
+	url = https://github.com/crotwell/TauP
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = java-environment=8
+	makedepends = gradle
+	depends = java-runtime=8
+	depends = java-atk-wrapper-openjdk=8
+	provides = taup
+	conflicts = taup
+	source = taup::git+https://github.com/crotwell/TauP.git
+	source = taup.sh
+	sha256sums = SKIP
+	sha256sums = 8af69c98ac6180f4b2632d37936004c79d9153a775f94c67585962ec85f63a4e
+
+pkgname = taup-git
