@@ -1,0 +1,15 @@
+pkgbase = purple-oicq-git
+	pkgdesc = oicq plugin for pidgin
+	pkgver = v1.0.1.r0.g810034c
+	pkgrel = 1
+	url = https://github.com/axon-oicq/purple-oicq
+	arch = i686
+	arch = x86_64
+	license = NONE
+	makedepends = git
+	depends = libpurple
+	depends = json-c
+	source = purple-oicq-git::git+https://github.com/axon-oicq/purple-oicq.git
+	md5sums = SKIP
+
+pkgname = purple-oicq-git
