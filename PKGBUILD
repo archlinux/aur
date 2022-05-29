@@ -3,7 +3,7 @@
 _pkgname=python-constraint
 pkgname=$_pkgname-git
 pkgver=1.4.0.r4.ge23fe98
-pkgrel=1
+pkgrel=2
 pkgdesc="Solvers for Constraint Satisfaction Problems (CSPs) over finite domains in simple and pure Python"
 arch=(any)
 url="https://github.com/python-constraint/python-constraint"
