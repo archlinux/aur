@@ -9,6 +9,7 @@ url="https://github.com/Spyhoodle/pridefetch"
 source=("git+https://github.com/Spyhoodle/pridefetch#tag=v$pkgver")
 depends=('python3' 'python-distro')
 makedepends=('git' 'zip')
+conflicts=('pridefetch-git')
 sha512sums=('SKIP')
 
 package() {

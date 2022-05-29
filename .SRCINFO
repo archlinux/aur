@@ -8,6 +8,7 @@ pkgbase = pridefetch
 	makedepends = zip
 	depends = python3
 	depends = python-distro
+	conflicts = pridefetch-git
 	source = git+https://github.com/Spyhoodle/pridefetch#tag=v1.0.0
 	sha512sums = SKIP
 
