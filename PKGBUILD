@@ -13,7 +13,7 @@ url="https://github.com/Fxzzi/nvidia-modprobe-service"
 source=('nvidia-modprobe.service'
 	'notes.install')
 
-sha256sums=('1448af15034cf5bcd4e9a44d757833b5f07bcf3a6217ea621f6d42d0806ee832'
+sha256sums=('7986dbe15228e4a04ac60bbfe7efadce0407395b50a28056acfede9317cbc04d'
 	    'c105f4a328491f31984d767bc15042122d4de59cca4c3d46fbd7712004053982')
 
 
