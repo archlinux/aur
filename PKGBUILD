@@ -1,7 +1,7 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname=pridefetch-git
-pkgver=r73.c65fb6a
+pkgver=r76.a046048
 pkgrel=1
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
