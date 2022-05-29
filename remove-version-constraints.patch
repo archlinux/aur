@@ -1,0 +1,36 @@
+--- a/setup.py	2022-05-29 11:01:04.562707441 +0200
++++ b/setup.py	2022-05-29 11:01:37.683025642 +0200
+@@ -8,15 +8,15 @@
+ {'': ['*']}
+ 
+ install_requires = \
+-['ExifRead>=2.3.2,<3.0.0',
+- 'Jinja2>=3.0.3,<4.0.0',
+- 'PyYAML>=5.4.1,<6.0.0',
+- 'Send2Trash[nativeLib]>=1.8.0,<2.0.0',
+- 'click>=8.0.3,<9.0.0',
+- 'fs>=2.4.15,<3.0.0',
+- 'rich>=11.0.0,<12.0.0',
+- 'schema>=0.7.5,<0.8.0',
+- 'simplematch>=1.3,<2.0']
++['ExifRead>=2.3.2',
++ 'Jinja2>=3.0.3',
++ 'PyYAML>=5.4.1',
++ 'Send2Trash[nativeLib]>=1.8.0',
++ 'click>=8.0.3',
++ 'fs>=2.4.15',
++ 'rich>=11.0.0',
++ 'schema>=0.7.5',
++ 'simplematch>=1.3']
+ 
+ extras_require = \
+ {':sys_platform == "darwin"': ['macos-tags>=1.5.1,<2.0.0'],
+@@ -24,7 +24,7 @@
+           'mkdocstrings>=0.17.0,<0.18.0',
+           'mkdocs-include-markdown-plugin>=3.2.3,<4.0.0',
+           'mkdocs-autorefs>=0.3.1,<0.4.0'],
+- 'textract': ['textract>=1.6.4,<2.0.0']}
++ 'textract': ['textract>=1.6.4']}
+ 
+ entry_points = \
+ {'console_scripts': ['organize = organize.cli:cli']}
