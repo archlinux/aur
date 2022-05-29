@@ -6,7 +6,6 @@ pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
 url="https://github.com/ThaUnknown/miru"
 license=('GPL-3.0')
-groups=('')
 depends=('xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
