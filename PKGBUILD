@@ -2,7 +2,7 @@
 
 pkgname=perl-log-any-adapter-tap
 pkgver=0.003003
-pkgrel=4
+pkgrel=5
 pkgdesc='Logger suitable for use with TAP test files'
 arch=(any)
 license=(PerlArtistic GPL)
