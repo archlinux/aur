@@ -3,7 +3,7 @@
 pkgbase='cinny-desktop'
 pkgname='cinny-desktop'
 pkgver='2.0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Cinny is a matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
 
@@ -23,7 +23,8 @@ depends=(
 )
 makedepends=('rust' 'nodejs' 'npm')
 
-source=("${pkgname}::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
+# This makes sure dirty builds still pull down the newest version
+source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
 sha256sums=('4142c672bb421f1694eaf7d266296b00860885931a436378e72ae2a3ba81c7e7')
 install="${pkgname}.install"
 
