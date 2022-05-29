@@ -4,7 +4,7 @@
 
 pkgname=ack
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code"
 arch=('any')
 url="http://betterthangrep.com/"
