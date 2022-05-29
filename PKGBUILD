@@ -4,23 +4,25 @@
 
 pkgname=appimagelauncher
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A Helper application for running and integrating AppImages."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libappimage'
          'libbsd' 'libxpm' 'qt5-base' 'shared-mime-info')
-makedepends=('git' 'boost' 'cmake' 'gtest' 'python' 'qt5-tools')
-source=("$pkgname::git+$url.git#tag=v$pkgver"
+makedepends=('boost' 'cmake' 'git' 'gtest' 'python' 'qt5-tools')
+_commit=0f918015fa418affec32435d1c61c6ae473f2af5
+source=("git+https://github.com/TheAssassin/AppImageLauncher.git#commit=$_commit"
         'git+https://github.com/AppImage/AppImageUpdate.git'
         'git+https://github.com/AppImage/libappimage.git'
-        'git+https://github.com/TheAssassin/zsync2'
-        'git+https://github.com/arsenm/sanitizers-cmake'
+        'git+https://github.com/TheAssassin/zsync2.git'
+        'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest.git'
-        'git+https://github.com/AppImage/cpr'
-        'git+https://github.com/Taywee/args'
-        'appimage-binfmt-remove.hook')
+        'git+https://github.com/AppImage/cpr.git'
+        'git+https://github.com/Taywee/args.git'
+        'appimage-binfmt-remove.hook'
+        )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -31,48 +33,55 @@ sha256sums=('SKIP'
             'SKIP'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
+pkgver() {
+  cd "$srcdir/AppImageLauncher"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/AppImageLauncher"
   git submodule init
   git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
   git config submodule.lib/libappimage.url "$srcdir/libappimage"
   git submodule update
 
-  cd "$srcdir/$pkgname/lib/AppImageUpdate"
+  pushd lib/AppImageUpdate
   git submodule init
   git config submodule.lib/zsync2.url "$srcdir/zsync2"
   git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
   git config submodule.lib/libappimage.url "$srcdir/libappimage"
   git submodule update
+  popd
 
-  cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/libappimage"
+  pushd lib/AppImageUpdate/lib/libappimage
   git submodule init
   git config submodule.lib/gtest.url "$srcdir/googletest"
   git submodule update
+  popd
 
-  cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/zsync2"
+  pushd lib/AppImageUpdate/lib/zsync2
   git submodule init
   git config submodule.lib/cpr.url "$srcdir/cpr"
   git config submodule.lib/args.url "$srcdir/args"
   git config submodule.lib/gtest.url "$srcdir/googletest"
   git submodule update
+  popd
 
-  cd "$srcdir/$pkgname/lib/libappimage"
+  pushd lib/libappimage
   git submodule init
   git config submodule.lib/gtest.url "$srcdir/googletest"
   git submodule update
+  popd
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/AppImageLauncher"
   cmake . \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
-    -DUSE_SYSTEM_GTEST=ON \
-    -DUSE_SYSTEM_XZ=ON \
-    -DUSE_SYSTEM_LIBARCHIVE=ON \
-    -DUSE_SYSTEM_LIBAPPIMAGE=ON \
-    -DBUILD_TESTING=OFF \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DUSE_SYSTEM_LIBAPPIMAGE='ON' \
+    -DUSE_SYSTEM_GTEST='ON' \
+    -DBUILD_TESTING='OFF' \
     -Wno-dev
 
   # See https://github.com/TheAssassin/AppImageLauncher/issues/251
@@ -82,9 +91,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/AppImageLauncher"
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks/
 }
