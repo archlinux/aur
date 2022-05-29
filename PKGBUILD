@@ -2,7 +2,7 @@
 
 pkgname=('beaker-common' 'beaker-client')
 pkgbase='beaker'
-pkgver=28.2
+pkgver=28.3
 pkgrel=1
 pkgdesc="Full-stack software and hardware integration testing system"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-nose' 'python-mock' 'python-docutils' 'python-sphinx' 'make
 provides=('bkr' 'beaker-wizard')
 options=('zipman')
 source=("beaker-$pkgver.tar.gz::https://github.com/beaker-project/beaker/archive/refs/tags/beaker-$pkgver.tar.gz")
-sha256sums=('5aa4c1807187e7c318db1ddc9132d1045824f6eaa6f04773663d9fae0e950b8c')
+sha256sums=('be2bea573bc6ab70a0eacf366c63623c9cca679bbf3313c8dc6625b76e2c66b8')
 
 build() {
 	export BKR_PY3="$(which python3)"

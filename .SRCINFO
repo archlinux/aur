@@ -1,6 +1,6 @@
 pkgbase = beaker
 	pkgdesc = Full-stack software and hardware integration testing system
-	pkgver = 28.2
+	pkgver = 28.3
 	pkgrel = 1
 	url = https://beaker-project.org/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = beaker
 	provides = bkr
 	provides = beaker-wizard
 	options = zipman
-	source = beaker-28.2.tar.gz::https://github.com/beaker-project/beaker/archive/refs/tags/beaker-28.2.tar.gz
+	source = beaker-28.3.tar.gz::https://github.com/beaker-project/beaker/archive/refs/tags/beaker-28.3.tar.gz
 	sha256sums = 5aa4c1807187e7c318db1ddc9132d1045824f6eaa6f04773663d9fae0e950b8c
 
 pkgname = beaker-common
@@ -34,4 +34,4 @@ pkgname = beaker-client
 	depends = python-requests
 	depends = python-prettytable
 	depends = python-jinja
-	depends = beaker-common=28.2
+	depends = beaker-common=28.3
