@@ -63,6 +63,10 @@ prepare() {
   local _librewolf_patches_dir
   _librewolf_patches_dir="${srcdir}/librewolf-source/patches"
 
+  sed -i 's/lib\/librewolf/lib\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+  sed -i 's/lib64\/librewolf/lib64\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+  sed -i 's/librewolf/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
+
   # Prepare patches, then return to the source directory
   pushd "${_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
   popd
