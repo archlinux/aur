@@ -3,14 +3,14 @@
 
 pkgname=authenticator-git
 _pkgname=Authenticator
-pkgver=4.1.0.r3.gb4ba55a
+pkgver=4.1.2.r0.g66e0fc1
 pkgrel=1
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
 license=('GPL3')
-depends=('glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad')
-makedepends=('git' 'meson' 'gobject-introspection' 'rust')
+depends=('glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'pipewire')
+makedepends=('git' 'meson' 'gobject-introspection' 'rust' 'clang')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
