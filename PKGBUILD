@@ -1,19 +1,18 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-pkgname=('mangohud-x11' 'lib32-mangohud-x11' 'mangohud-common-x11')
+pkgname=('mangohud' 'mangoapp' 'mangohud-common')
 pkgbase=mangohud
 _pkgver=0.6.7-1
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 arch=('x86_64')
 url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')
-makedepends=('dbus' 'git' 'glew' 'glfw-x11' 'glslang' 'lib32-dbus' 'lib32-libglvnd'
-             'lib32-vulkan-icd-loader' 'libglvnd' 'libxnvctrl' 'meson' 'nlohmann-json'
-             'python-mako' 'spdlog' 'vulkan-headers')
+makedepends=('dbus' 'git' 'glew' 'glfw-x11' 'glslang' 'libglvnd' 'libxnvctrl' 'meson'
+             'nlohmann-json' 'python-mako' 'spdlog' 'vulkan-headers')
 source=("git+https://github.com/flightlessmango/MangoHud.git#tag=v$_pkgver"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
@@ -35,8 +34,10 @@ prepare() {
 
   mkdir -p "$srcdir/common"
 
-  ln -sfv "$srcdir/imgui-${_imgui_ver}" subprojects
-  ln -sfv "$srcdir/spdlog-${_spdlog_ver}" subprojects
+  ln -sfv \
+    "$srcdir/imgui-${_imgui_ver}" \
+    "$srcdir/spdlog-${_spdlog_ver}" \
+    subprojects
 
   # Use system nlohmann-json package instead of subproject
   sed -i "s/  json_sp = subproject('nlohmann_json')//g" meson.build
@@ -45,62 +46,51 @@ prepare() {
 
 build() {
 local meson_options=(
-    -Duse_system_vulkan=enabled
-    -Dappend_libdir_mangohud=false
-    -Dwith_x11=enabled
-    -Dwith_wayland=disabled
-    -Dmangoapp=true
-    -Dmangohudctl=true
-    -Dmangoapp_layer=true
-  )
+  -Duse_system_spdlog=enabled
+  -Duse_system_vulkan=enabled
+  -Dappend_libdir_mangohud=false
+  -Dmangoapp=true
+  -Dmangohudctl=true
+  -Dmangoapp_layer=true
+)
 
-  arch-meson MangoHud build "${meson_options[@]}" \
-    -Duse_system_spdlog=enabled
+  arch-meson MangoHud build "${meson_options[@]}"
   meson compile -C build
-
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export LLVM_CONFIG="/usr/bin/llvm-config32"
-
-  arch-meson MangoHud build32 "${meson_options[@]}" \
-    --libdir lib32 \
-    -Dinclude_doc=false
-  meson compile -C build32
 }
 
-package_mangohud-x11() {
-  depends=('mangohud-common-x11' 'dbus' 'gcc-libs' 'glew' 'glfw-x11' 'libx11'
-           'spdlog' 'vulkan-icd-loader')
-  optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl')
-  provides=("${pkgname%-x11}")
-  conflicts=("${pkgname%-x11}")
+package_mangohud() {
+  depends=('mangohud-common' 'dbus' 'gcc-libs' 'libx11' 'spdlog' 'vulkan-icd-loader')
+  optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl'
+              'mangoapp')
+  replaces=("$pkgname-x11" "$pkgname-wayland")
 
   meson install -C build --destdir "$pkgdir"
 
-  mv -f "$pkgdir"/usr/share/{doc,man} "$srcdir/common"
+  mv -f \
+    "$pkgdir/usr/bin/mangoapp" \
+    "$pkgdir/usr/lib/libMangoApp.so" \
+    "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json" \
+    "$srcdir/"
+  mv -f "$pkgdir"/usr/share/{doc,man} "$srcdir/common/"
 }
 
-package_lib32-mangohud-x11() {
-  depends=('mangohud-common-x11' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11'
-           'lib32-vulkan-icd-loader')
-  optdepends=('lib32-libxnvctrl: NVIDIA GPU stats by XNVCtrl')
-  provides=("${pkgname%-x11}")
-  conflicts=("${pkgname%-x11}")
+package_mangoapp() {
+  pkgdesc="A transparent background OpenGL application with a built-in MangoHud designed to be run inside a gamescope instance"
+  depends=('glew' 'glfw-x11' 'mangohud')
+  optdepends=('gamescope')
 
-  meson install -C build32 --destdir "$pkgdir"
-
-  rm -rf "$pkgdir"/usr/{bin,share}
+  install -Dm755 mangoapp -t "$pkgdir/usr/bin/"
+  install -Dm644 libMangoApp.so -t "$pkgdir/usr/lib/"
+  install -Dm644 libMangoApp.json -t "$pkgdir/usr/share/vulkan/implicit_layer.d/"
 }
 
-package_mangohud-common-x11() {
+package_mangohud-common() {
   pkgdesc="Common files for MangoHud"
-  provides=("${pkgname%-x11}")
-  conflicts=("${pkgname%-x11}")
+  replaces=("$pkgname-x11" "$pkgname-wayland")
 
-  install -d "$pkgdir"/usr/share/
+  install -d "$pkgdir/usr/share"
   cp -r common/* "$pkgdir/usr/share/"
 
   cd "$srcdir/MangoHud"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgbase"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgbase/"
 }
