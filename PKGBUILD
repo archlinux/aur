@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
 url="https://github.com/Spyhoodle/pridefetch"
-source=("git+https://github.com/Spyhoodle/pridefetch#tag=v$pkgver")
+source=("git+https://github.com/Spyhoodle/pridefetch")
 depends=('python3' 'python-distro')
 makedepends=('git' 'zip')
 provides=('pridefetch')

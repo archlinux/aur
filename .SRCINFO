@@ -9,7 +9,7 @@ pkgbase = pridefetch-git
 	depends = python3
 	depends = python-distro
 	provides = pridefetch
-	source = git+https://github.com/Spyhoodle/pridefetch#tag=vr73.c65fb6a
+	source = git+https://github.com/Spyhoodle/pridefetch
 	sha512sums = SKIP
 
 pkgname = pridefetch-git
