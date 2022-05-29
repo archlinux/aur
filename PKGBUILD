@@ -1,16 +1,17 @@
-# Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
+# Maintainer: Lizen_5 <rs.supermarios at gmail dot com>
+# Contributor: Advaith Madhukar <advaith.madhukar at gmail dot com>
 
 pkgname=pyside6-tools
 _qtver=6.3.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Tools for PySide6'
-depends=(pyside6 qt6-tools)
+depends=(pyside6)
 conflicts=(pyside2-tools)
-makedepends=(cmake shiboken6)
+makedepends=(cmake shiboken6 qt6-tools)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-$pkgver-src/${_pkgfqn}.tar.xz")
 sha256sums=('9d808d617c8daa2fe074f9a481478dc923a9799b5c89f6c5af38ece111ed57e2')
@@ -24,6 +25,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir"/usr/bin/{rcc,designer,assistant,linguist,lrelease,lupdate,qmllint,qmltyperegistrar}
+  rm "$pkgdir"/usr/bin/{rcc,designer,assistant,linguist,qmllint,qmltyperegistrar}
   mv "$pkgdir"/usr/bin/uic "$pkgdir"/usr/bin/pyside6-uic
+  mv "$pkgdir"/usr/bin/lupdate "$pkgdir"/usr/bin/pyside6-lupdate
+  mv "$pkgdir"/usr/bin/lrelease "$pkgdir"/usr/bin/pyside6-lrelease
 }
