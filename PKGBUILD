@@ -47,9 +47,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksmd
 # pkgname=('linux-uksmd' 'linux-uksmd-headers' 'linux-uksmd-docs')
-_major=5.17
-_minor=11
-pkgver=${_major}.${_minor}
+_major=5.18
+_minor=0
+#pkgver=${_major}.${_minor}
+pkgver=${_major}
 _srcname=linux-${pkgver}
 pkgrel=1
 pkgdesc='Linux UKSMD'
@@ -71,13 +72,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksmd_path}/${_uksmd_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0007-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -319,18 +314,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('cabe2594aa188c7dcea842e9bd31015a851d3ab3f7122b595c5c81701eca42fd223e2cc3667783a1a1f852c61b6e1045f6e361a642aaf60b545498bd1acadef2'
+sha512sums=('dbbc9d1395898a498fa4947fceda1781344fa5d360240f753810daa4fa88e519833e2186c4e582a8f1836e6413e9e85f6563c7770523b704e8702d67622f98b5'
             'SKIP'
-            'cf73767a104132c34937d69fe25e95f5c5bd5da4ff959ba5aca8e45e5fe7cc07540babb0637ffde7459560131f74104ffc3e7e44989b9e9826cea2bff807ae1b'
-            'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            'db7645d57a8439e60f68dc58bcf26c106f170847a4dc2ce8de1fae1e021382d5330676fadd7af49519b5bb7e1f0b28a66595b4eaf32ea1c616d4e2c95fae9a23'
-            'e898db1663004c60758f74868da0fc4c36cb9c20cb53768b875f12b1af86c9b9d1891f6046ae3a06213b4a6e4259d34b86be865713c85883fef80259a966e558'
-            '1134a0e8bedef8e4c0305c85d2bb0652c4af0d403f0e961a157f3e4faf1cee2637aa219533009cb79db657cb583e8f013e5891980ad41536b17f391fbd38266b'
-            'd45f7d4dd7d54302afdae31c66aac5bf92b8fe42154bd4969dee0d3f96dfbdf9d747a732cd69f80110fa27790a6c57d4c3bf7c27f6f207015d2caf95311685d7'
-            '9d905da7321f165ed36bf42803f80a386c1d09c6335919164871a03dc15ffe8e1204de522099051f3effc07b126f5b2d692f3f7c20d576a384eb56540af890b6'
-            'de068782a004f79be4d56a6b207ea1dafc9aeb71688f26ee5f7c5ea1df17e63a29484bba10be1418a2f3643426541471d1bc28a699cfa94f86dc494e44f36712'
-            'e0f473fa58e4aa54aa598f5bd5af15b9d3055a7f9cefb73e050ae6602b4474ec4bce60a863f3ab6c2b28c313e9e104cbfedbe782edf0d51b3f136ea9863a4bc4'
-            'd2b587f4cba42b50793df13479a5cb93f308f538ff431409da04b57a30b88e2c85a831280a1df2e1cef9bae6c4309b62dc42f667b061f067eedc90b4bbd6ba13')
+            '49ab997abb17d06b332a892cc6c281f9f757bf5455502dacef647343f3c78ed5a0ab590f12e3c85695b3bac31ee52d8640c493c502080184b802324a23a1dbaa'
+            '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
+            '654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf'
+            'a221f24fd4f0a459234ed6ea75b2d9c7d9b3baa87ecaa0d9a7d128b8c963133eb8c9f0b63c88d11883671ded3b711a3bec598aeaf5aa87649c2c62cab608157b')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
