@@ -14,7 +14,7 @@ pkgbase = mullvad-vpn-cli
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	options = !lto
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2022.1?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=9797300613176b73497b7c3f090199e1ffe3229b?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=973ee47bec89df537b8ecae20235071055693ec5
 	source = override.conf
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87

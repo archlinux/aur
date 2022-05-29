@@ -14,10 +14,11 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!lto')
 install="${pkgname%-*}.install"
+_tag=9797300613176b73497b7c3f090199e1ffe3229b
 _commit=973ee47bec89df537b8ecae20235071055693ec5
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
 #        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit" # unverified commit by mvd-ows
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}" # unverified commit by mvd-ows
         'override.conf')
 sha256sums=('SKIP'
             'SKIP'
@@ -26,6 +27,11 @@ validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (co
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
               '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
+
+pkgver() {
+  cd "$srcdir/mullvadvpn-app"
+  git describe --tags | sed 's/-/./g'
+}
 
 prepare() {
   cd "$srcdir/mullvadvpn-app"
