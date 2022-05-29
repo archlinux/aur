@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
@@ -38,6 +38,7 @@ depends=(
 	"gst-plugins-good>=1.20.0"
 	"gst-plugins-bad>=1.20.0"
 	"libadwaita"
+	"libsoup3"
 )
 makedepends=(
 	"meson>=0.50"
@@ -53,7 +54,7 @@ optdepends=(
 source=("${_basename}-${pkgver}::https://github.com/Rafostar/${_basename}/archive/${pkgver}.tar.gz")
 provides=("${_basename}" "libgst${_basename}-1.0")
 conflicts=("${_basename}")
-md5sums=("57ac1a08162ac6fc6cd022b9518ac4f7")
+md5sums=("4b17fee0a0c0c7e4e17342060423fd6b")
 
 prepare() {
 	cd "${srcdir}/${_basename}-${pkgver}"
