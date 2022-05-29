@@ -1,33 +1,35 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
-
 pkgname=icoextract
 pkgver=0.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality'
 arch=('any')
 url='https://github.com/jlu5/icoextract'
 license=('MIT')
 depends=('python-pefile')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-pillow: required for the optional thumbnailer')
 conflicts=('exe-thumbnailer')
-source=("$pkgname-git::git+https://github.com/jlu5/icoextract.git#tag=$pkgver")
-sha256sums=('SKIP')
+source=("https://github.com/jlu5/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('3818ad889160b33d360da4083da0a32df8d1955fb77a64bfbac49edc15d5ad3b')
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+
+    rm -rf ./tests
+}
 
 build() {
-    cd ${pkgname}-git
+    cd ${pkgname}-${pkgver}
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
-     
+
 package() {
-    cd ${pkgname}-git
+    cd ${pkgname}-${pkgver}
 
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    install -Dm644 exe-thumbnailer.thumbnailer ${pkgdir}/usr/share/thumbnailers/exe-thumbnailer.thumbnailer
-
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    rm -rf "${pkgdir}${site_packages}/tests/"
+    install -Dm644 exe-thumbnailer.thumbnailer "${pkgdir}"/usr/share/thumbnailers/exe-thumbnailer.thumbnailer
 }
