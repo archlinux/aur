@@ -1,0 +1,42 @@
+pkgbase = lib32-mangohud
+	pkgver = 0.6.7.1
+	pkgrel = 3
+	url = https://github.com/flightlessmango/MangoHud
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = glfw-x11
+	makedepends = glslang
+	makedepends = lib32-dbus
+	makedepends = lib32-libglvnd
+	makedepends = libxnvctrl
+	makedepends = meson
+	makedepends = nlohmann-json
+	makedepends = python-mako
+	makedepends = vulkan-headers
+	source = git+https://github.com/flightlessmango/MangoHud.git#tag=v0.6.7-1
+	source = git+https://github.com/flightlessmango/minhook.git
+	source = https://github.com/ocornut/imgui/archive/v1.81/imgui-1.81.tar.gz
+	source = https://wrapdb.mesonbuild.com/v2/imgui_1.81-1/get_patch#/imgui-1.81-1-wrap.zip
+	source = spdlog-1.8.5.tar.gz::https://github.com/gabime/spdlog/archive/v1.8.5.tar.gz
+	source = spdlog-1.8.5-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/spdlog/1.8.5/1/get_zip
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb
+	sha256sums = 6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f
+	sha256sums = 944d0bd7c763ac721398dca2bb0f3b5ed16f67cef36810ede5061f35a543b4b8
+	sha256sums = 3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be
+
+pkgname = lib32-mangohud
+	pkgdesc = MangoHud 32-bit library
+	depends = lib32-dbus
+	depends = lib32-gcc-libs
+	depends = lib32-libx11
+	depends = lib32-vulkan-icd-loader
+	depends = mangohud-common
+	replaces = lib32-mangohud-x11
+	replaces = lib32-mangohud-wayland
+
+pkgname = lib32-mangoapp
+	pkgdesc = MangoApp 32-bit library
+	depends = lib32-mangohud
