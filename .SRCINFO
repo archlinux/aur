@@ -18,7 +18,7 @@ pkgbase = mullvad-vpn-beta
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	options = !lto
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2022.2-beta1?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=b02998e203ef50c2f799051d149fdb6083c51a5c?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec?signed
 	source = mullvad-vpn.sh
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
