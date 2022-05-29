@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# remove nvidia modules
+/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
