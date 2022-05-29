@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=jing-git
-pkgver=20181222
+pkgver=20220510
 pkgrel=1
 pkgdesc="RELAX NG validator"
 url=https://github.com/relaxng/jing-trang
@@ -18,18 +18,13 @@ conflicts=(jing)
 
 pkgver() {
   cd jing-trang
-  git describe --abbrev=10 |
+  git describe --tags --abbrev=10 |
     sed 's/^V//; s/-/+/; s/-/./'
 }
 
 build() {
   cd jing-trang
   ./ant
-}
-
-check() {
-  cd jing-trang
-  ./ant test
 }
 
 package() {

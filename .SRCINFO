@@ -1,18 +1,17 @@
 pkgbase = jing-git
 	pkgdesc = RELAX NG validator
-	pkgver = 20181222
+	pkgver = 20220510
 	pkgrel = 1
 	url = https://github.com/relaxng/jing-trang
 	arch = x86_64
 	license = BSD
 	makedepends = java-environment
 	depends = java-runtime
-	provides = jing=20181222
+	provides = jing=20220510
 	conflicts = jing
-	source = https://github.com/relaxng/jing-trang
+	source = git+https://github.com/relaxng/jing-trang
 	source = jing.sh
 	sha256sums = SKIP
 	sha256sums = d7610d8e1446ac837f81bf0726fb7eaa3ed3d6d204bf02eb03f36aabf3ae0c00
 
 pkgname = jing-git
-
