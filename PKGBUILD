@@ -1,16 +1,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=femtolisp-git
-pkgver=r293.983c847
+pkgver=r308.0bf4243
 pkgrel=1
+#_contributor=JeffBezanson
+_contributor=lambdaconservatory
 pkgdesc="lightweight, robust, scheme-like lisp implementation"
 arch=('i686' 'x86_64')
-url="https://github.com/JeffBezanson/femtolisp"
+url="https://github.com/${_contributor}/femtolisp"
 depends=('glibc')
 license=('custom:BSD')
 provides=('femtolisp')
 conflicts=('femtolisp')
 makedepends=('git')
-source=("git+https://github.com/JeffBezanson/femtolisp")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
