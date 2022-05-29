@@ -1,6 +1,6 @@
-# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Maintainer: Atakku <atakkudev@gmail.com>
 pkgname=apriltag
-pkgver=3.1.3
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="AprilTag is a visual fiducial system popular for robotics research."
 arch=('x86_64')
@@ -8,14 +8,14 @@ url="https://april.eecs.umich.edu/software/apriltag"
 license=('BSD')
 source=("https://github.com/AprilRobotics/apriltag/archive/v${pkgver}.tar.gz"
         "cmake.patch")
-sha256sums=('a46ce9b63297f20423d7954a8cb0a4e409ab32449ceb45245616ad2d4dd61425'
-            '04a589f47ce5d7eb194d509a800f77cc30c7cdea1fc17923f015e00753fa9c43')
+sha512sums=('0b09b530ed03dce0bdc3c4e08b17d98f1303ab1d45870843354bf1a5bdf6c7efc6089e2bdf40a370d17a8191b7ce2c46fefa2dd2d49a959591351e00e186f33e'
+            '0851483ebaadab808349927a0ff308c649902a10f4067fd193dfa7f4ec6c7cc11850ac2905a6bdcf7a1287924a0e9c9752f6ec52e732c2158fcf58ec4763ea7f')
 
 prepare() {
   mkdir -p "$srcdir/build"
 
   cd "$srcdir/${pkgname}-${pkgver}"
-  patch -Np1 -i "$srcdir/cmake.patch"
+  #patch -Np1 -i "$srcdir/cmake.patch"
 }
 
 
