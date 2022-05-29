@@ -2,7 +2,7 @@
 
 pkgname=perl-log-any-adapter-log4perl
 pkgver=0.09
-pkgrel=4
+pkgrel=5
 pkgdesc='Log::Any adapter for Log::Log4perl'
 arch=(any)
 license=(PerlArtistic GPL)
