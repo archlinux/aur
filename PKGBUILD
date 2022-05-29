@@ -15,7 +15,7 @@ optdepends=('python-h5py: for saving results to files'
             'python-paramiko: for remote computation launching'
             'ipython: for interactive shell')
 source=("plask-$pkgver.tar.zst::https://get.plask.app/packages/plask-$pkgver-1-x86_64.pkg.tar.zst")
-sha256sums=('122059cb58a725fcede7e47bffeb76df01b3ac8645b8ac399c540e36e7d7d081')
+sha256sums=('557de2ed759c03069fc2009a4313e987109002780b71cc6bdc036c0c3b0a9082')
 noextract=("plask-$pkgver.tar.zst")
 
 package() {
