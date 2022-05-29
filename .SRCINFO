@@ -1,13 +1,13 @@
 pkgbase = mprocs-bin
 	pkgdesc = Run multiple commands in parallel
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
 	license = MIT
 	provides = mprocs
 	conflicts = mprocs
-	source = https://github.com/pvolok/mprocs/releases/download/v0.2.3/mprocs-0.2.3-linux64.tar.gz
-	sha256sums = db961747ce49217133a73ad1d9efc994d5c7a32b422eb1cb010e43790db4a0ae
+	source = https://github.com/pvolok/mprocs/releases/download/v0.3.0/mprocs-0.3.0-linux64.tar.gz
+	sha256sums = 57282931026028680fea4d379fa60e6e3fcba9ccb3e80c7fd92effc776dbf2d0
 
 pkgname = mprocs-bin
