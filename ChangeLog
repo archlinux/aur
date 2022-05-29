@@ -1,0 +1,85 @@
+2020-08-17 Kyle Keen <keenerd@gmail.com>
+	* 1.10.2-1
+	- Version bump
+
+2019-10-20 Kyle Keen <keenerd@gmail.com>
+	* 1.10.0-1
+	- Upstream removed GPG sig
+
+2017-03-29 Kyle Keen <keenerd@gmail.com>
+	* 1.8.2-3
+	- Guile 2.2.0 rebuild
+
+2016-04-28 Kyle Keen <keenerd@gmail.com>
+	* 1.8.2-2
+	- Install hooks
+
+2014-01-24 Kyle Keen <keenerd@gmail.com>
+	* 1.8.2-1
+	- Version bump
+
+2013-09-17 Kyle Keen <keenerd@gmail.com>
+	* 1.8.1-3
+	- Update url
+
+2013-06-04 Bartłomiej Piotrowski <barthalion@gmail.com>
+	* 1.8.1-2
+	- ???
+
+2012-01-19 Kyle Keen <keenerd@gmail.com>
+	* 1.8.1-1
+	- Version bump
+
+2012-01-19 Kyle Keen <keenerd@gmail.com>
+	* 1.6.2-2
+	- libpng15 rebuild
+
+2010-12-26 Stefan Husmann <stefan-husmann@t-online.de>
+	* 1.6.1-2
+	- adopted, moved to [community]
+	- added some optional dependencies
+	- added some sed-commands for python2 compatibility
+
+2010-02-14 Jared Casper <jaredcasper@gmail.com>
+	* 1.6.1-1
+	- Version bump
+
+2009-10-10 Jared Casper <jaredcasper@gmail.com>
+	* 1.6.0-2
+	- Fixed a bug causing icon problems
+
+2009-10-05 Jared Casper <jaredcasper@gmail.com>
+	* 1.6.0-1
+	- Merged with geda-libs and renamed to geda-gaf to match up with
+	the release tarball name
+
+2009-05-03 Jared Casper <jaredcasper@gmail.com>
+	* 1.4.3-2
+	- Added gettext dep (noted by sergej)
+	- Added '|| return 1's to configure and make commands
+	- A bit of other random cleanup of deps
+
+2009-01-03 Jared Casper <jaredcasper@gmail.com>
+	* 1.4.3-1
+	- Version bump
+	- Fix dependencies (s/=>/>=/)
+
+2008-12-20 Jared Casper <jaredcasper@gmail.com>
+	* 1.4.2-1
+	- Version bump
+	- Update from comments
+
+2008-09-28 Jared Casper <jaredcasper@gmail.com>
+	* 1.4.1-1
+	- Version bump
+	- Added icon cache update
+	- Added icon cache and desktop update to post_update
+
+2008-05-07 Jared Casper <jaredcasper@gmail.com>
+
+	* 1.4.0-1
+	- adopted by Jared Casper
+	- Update PKGBUILD to current standards and latest version (1.4.0)
+	- add configure options and install script to handle desktop issues
+	- added ChangeLog
+
