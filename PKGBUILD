@@ -31,8 +31,8 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-    make DESTDIR=$pkgdir install
+	make DESTDIR=$pkgdir install
 	install -Dm644 99-rk-rockusb.rules -t "$pkgdir/usr/lib/udev/rules.d/"
 }
 
-# vim: set sw=4 ts=4 noet:
+# vim: set sw=2 ts=2 noet:
