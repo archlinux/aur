@@ -1,4 +1,12 @@
 #!/bin/sh
+# Remove all Nvidia modules on shutdown
+# to avoid errors like
+# [35509.312925] sd-umoun[56020]: Failed to unmount /oldroot: Device or resource busy
+# [35509.317505] sd-umoun[56021]: Failed to unmount /oldroot/sys: Device or resource busy
+# [35509.322349] shutdown[1]: Failed to finalize file systems, ignoring.
+#
 
-# remove nvidia modules
-/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
+for MODULE in nvidia_drm nvidia_modeset nvidia_uvm nvidia
+do
+rmmod $MODULE
+done

@@ -11,7 +11,7 @@ url="https://github.com/Fxzzi/nvidia-modprobe-service"
 
 source=('nvidia.shutdown')
 
-sha256sums=('70887ad4e0a2759aeb929514287e83c5b01016bfb8e19098b42d7fb11dcd5af6')
+sha256sums=('53ffa6ac9098be4ac212ec6d91289bc44367f311046542528f49ff6895784473')
 
 package() {
 	install -Dm 644 nvidia.shutdown -t "$pkgdir"/usr/lib/systemd/system-shutdown/
