@@ -5,35 +5,26 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=41.3
-pkgrel=3
+pkgver=42.2
+pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3' 'libgxps' 'libspectre' 'gsfonts' 'poppler-glib' 'djvulibre' 't1lib' 'dconf' 'libsynctex' 'gsettings-desktop-schemas' 'libarchive' 'gst-plugins-base-libs' 'gspell' 'libhandy')
-makedepends=('texlive-bin' 'docbook-xsl' 'python' 'gtk-doc' 'git' 'meson' 'ninja' 'appstream-glib' yelp-tools)
+makedepends=('texlive-bin' 'docbook-xsl' 'python' 'git' 'meson' 'ninja' 'appstream-glib' yelp-tools)
 optdepends=('texlive-bin: DVI support'
             'gvfs: for session saving and bookmarking')
 provides=("$_pkgname" libev{document,view}3.so)
 conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
-_commit=08780f527ac0306f527c48ea6cc77a7b2c6c5fa8  # tags/41.3^0
-source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit"
-        "0001-meson_appstream_remove.patch")
-sha256sums=('SKIP'
-            'fd296c5eb2095ae071600896f680020d331b50901dd42c2087f30bf4a0487434')
+_commit=05d656cb835704339375f8e514d694b1201fe686 # tags/42.2^0
+source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-  for p in ${srcdir}/*.patch; do
-      patch -Np1 -i "$p"
-  done
 }
 
 build() {
@@ -42,7 +33,8 @@ build() {
         -D nautilus=false \
         -D introspection=false \
         -D thumbnail_cache=disabled \
-        -D keyring=disabled
+        -D keyring=disabled \
+        -D gtk_doc=false
     meson compile -C build
 }
 
