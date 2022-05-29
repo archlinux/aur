@@ -1,6 +1,6 @@
 pkgbase = furnace-git
 	pkgdesc = A multi-system chiptune tracker compatible with DefleMask modules
-	pkgver = dev97.r25.g8ea60f37
+	pkgver = dev99.r61.g1ed5be88
 	pkgrel = 1
 	url = https://github.com/tildearrow/furnace
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = furnace-git
 	provides = furnace
 	source = git+https://github.com/tildearrow/furnace.git
 	source = git+https://github.com/ocornut/imgui.git
-	source = gcc12.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 58c3201bc0608db13c3c3ceb365176b845b3606d7806a7d62ceba3355e1f073e
 
 pkgname = furnace-git

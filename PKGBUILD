@@ -1,7 +1,7 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=furnace-git
-pkgver=dev97.r25.g8ea60f37
+pkgver=dev99.r61.g1ed5be88
 pkgrel=1
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
 url="https://github.com/tildearrow/furnace"
@@ -13,9 +13,8 @@ license=('GPL')
 source=(
   "git+https://github.com/tildearrow/furnace.git"
   "git+https://github.com/ocornut/imgui.git"
-  "gcc12.patch"
 )
-sha256sums=('SKIP' 'SKIP' '58c3201bc0608db13c3c3ceb365176b845b3606d7806a7d62ceba3355e1f073e')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,7 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   git submodule update --init
-  patch --forward --strip=1 --input="${srcdir}/gcc12.patch"
+  # patch --forward --strip=1 --input="${srcdir}/gcc12.patch"
 }
 
 build() {
