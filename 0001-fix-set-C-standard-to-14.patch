@@ -1,0 +1,30 @@
+From 10e2d2c8fc16de6eac4579bb022a36b16b8f1b69 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 29 May 2022 20:31:49 +0200
+Subject: [PATCH] fix: set C++ standard to 14
+
+GCC >= 11 defaults to C++17, but abseil needs to be compiled with the
+same standard as the rest of the codebase, which sets CMAKE_CXX_STANDARD
+to 14.
+
+https://github.com/f4pga/prjxray/issues/1950
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8a20d04a..029fc1f5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,6 +21,8 @@
+ # and then issuing `yum install cmake3` on the command line.
+ cmake_minimum_required(VERSION 3.5)
+ 
++set(CMAKE_CXX_STANDARD 14)
++
+ # Compiler id for Apple Clang is now AppleClang.
+ if (POLICY CMP0025)
+   cmake_policy(SET CMP0025 NEW)
+-- 
+2.36.1
+

@@ -3,7 +3,7 @@
 _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-tools-git" "python-$_pkgbase-git")
-pkgver=r3579.5937733d
+pkgver=r3602.51132a11
 pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
 arch=(x86_64)
@@ -11,7 +11,7 @@ url="https://github.com/SymbiFlow/prjxray"
 license=('ISC')
 depends=()
 _pythondepends=('python' 'python-fasm' 'python-intervaltree' 'python-numpy'
-                'python-yaml' 'python-simplejson')
+                'python-pyjson5' 'python-yaml' 'python-simplejson')
 makedepends=('git' 'cmake' 'python-setuptools')
 makedepends+=("${_pythondepends[@]}")
 optdepends=('prjxray-db: The pre-built database')
@@ -22,14 +22,17 @@ source=("git+$url"
         "git+https://github.com/gflags/gflags"
         "git+https://github.com/google/cctz"
         "git+https://github.com/abseil/abseil-cpp"
-        "git+https://github.com/jbeder/yaml-cpp")
+        "git+https://github.com/jbeder/yaml-cpp"
+        '0001-fix-set-C-standard-to-14.patch'
+)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '5f47ffb9b89b976046588968f9a5038da7612211c1a85b396d62a24973941730')
 
 pkgver() {
 	cd "$_pkgbase"
@@ -52,6 +55,9 @@ prepare() {
 
 	cd third_party
 	git submodule update "${_mods[@]}"
+
+	cd abseil-cpp
+	patch -p1 < "$srcdir/0001-fix-set-C-standard-to-14.patch"
 }
 
 build() {
