@@ -43,7 +43,7 @@ build() {
 package_bing-wallpaper-download() {
     msg "Install ${pkgname[0]}"
     install -dm755 "${pkgdir}/usr/local/bin/"
-    install -Dm744 "${srcdir}/${pkgname}/${_pkgname}-us" "${pkgdir}/usr/local/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}/${_pkgname}-us" "${pkgdir}/usr/local/bin/${_pkgname}"
 
     msg "Install ${pkgname[0]} systemd timer and service"
     install -dm755 "${pkgdir}/etc/systemd/system/"
@@ -55,7 +55,7 @@ package_bing-wallpaper-download() {
 package_bing-wallpaper-download-cn() {
     msg "Install ${pkgname[1]}"
     install -dm755 "${pkgdir}/usr/local/bin/"
-    install -Dm744 "${srcdir}/${pkgbase}/${_pkgname}" "${pkgdir}/usr/local/bin"
+    install -Dm755 "${srcdir}/${pkgbase}/${_pkgname}" "${pkgdir}/usr/local/bin"
 
     msg "Install ${pkgname[1]} systemd timer and service"
     install -dm755 "${pkgdir}/etc/systemd/system/"
