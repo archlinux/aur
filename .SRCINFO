@@ -1,11 +1,12 @@
 pkgbase = namcap-git
 	pkgdesc = A Pacman package analyzer
-	pkgver = 3.2.10.r6.ge68dc85
-	pkgrel = 2
+	pkgver = 3.3.0.r0.gad8f115
+	pkgrel = 1
 	url = https://gitlab.archlinux.org/pacman/namcap
 	arch = any
 	license = GPL
 	checkdepends = systemd
+	checkdepends = python-six
 	makedepends = git
 	makedepends = python-setuptools
 	depends = pyalpm

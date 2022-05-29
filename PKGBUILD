@@ -6,15 +6,15 @@
 # Contributor: Jesse Young <jesse.young@gmail.com>
 
 pkgname=namcap-git
-pkgver=3.2.10.r6.ge68dc85
-pkgrel=2
+pkgver=3.3.0.r0.gad8f115
+pkgrel=1
 pkgdesc="A Pacman package analyzer"
 arch=('any')
 url="https://gitlab.archlinux.org/pacman/namcap"
 license=('GPL')
 depends=('pyalpm' 'licenses' 'binutils' 'python-pyelftools')
 makedepends=('git' 'python-setuptools')
-checkdepends=('systemd')
+checkdepends=('systemd' 'python-six')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -36,7 +36,7 @@ check() {
   cd $pkgname
 
   env PARSE_PKGBUILD_PATH="$srcdir/${pkgname}" \
-      PATH="$srcdir/${pkgname}:$PATH" \
+      PATH="$srcdir/${pkgname}/scripts:$PATH" \
       python setup.py test
 }
 
