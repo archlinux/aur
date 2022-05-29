@@ -4,7 +4,7 @@
 
 pkgname=femto-emacs-git
 pkgver=2019.12.16.abb1c38
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny emacs clone with configuring in FemtoLisp"
 url="https://github.com/FemtoEmacs/Femto-Emacs/"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('ncurses' 'termcap')
 makedepends=('git')
 conflicts=('femto-emacs')
 provides=('femto-emacs')
-source=('git://github.com/FemtoEmacs/Femto-Emacs.git')
+source=('git+https://github.com/FemtoEmacs/Femto-Emacs.git')
 md5sums=('SKIP')
 _gitname="Femto-Emacs"
 
