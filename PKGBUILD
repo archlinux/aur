@@ -9,8 +9,12 @@ license=('GPL')
 depends=('systemd')
 install="notes.install"
 
-source=('nvidia-modprobe.service')
-sha512sums=('8611a7be31a75fc8794c2e5c2f74678da82893fb42387d2e94ad877276939975ccf8daaa32aa3f84bafd40501a8216ea436ea0010ede3e958f910804ae3c36d8')
+source=('nvidia-modprobe.service'
+	'notes.install')
+
+sha512sums=('8611a7be31a75fc8794c2e5c2f74678da82893fb42387d2e94ad877276939975'
+	'ccf8daaa32aa3f84bafd40501a8216ea436ea0010ede3e958f910804ae3c36d8')
+
 
 package() {
 	install -Dm 644 nvidia-modprobe.service -t "$pkgdir"/usr/lib/systemd/system/
