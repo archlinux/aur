@@ -1,5 +1,6 @@
 .git
 pkg
 src
+vmware-unlocker
 *.pkg.tar.zst
 *.zip
