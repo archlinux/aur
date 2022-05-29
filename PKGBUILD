@@ -1,13 +1,9 @@
 _uuid_ita="SCES-02545"
-_uuid_es="${_uuid_ita}"
-_uuid_pt="${_uuid_ita}"
 _app_id="net.worldwidestudios.MediEvil2"
 _title="MediEvil 2"
 _rom_filename_ita="${_title} (E) (Es,It,Pt)"
-_rom_filename_es="${_rom_filename_ita}"
-_rom_filename_pt="${_rom_filename_ita}"
 pkgbase=medievil-2
-pkgname=($pkgbase $pkgbase-ita)
+pkgname=($pkgbase-ita $pkgbase-es $pkgbase-pt)
 pkgver=1.0
 pkgrel=1
 pkgdesc="Action-adventure hack and slash video game developed by SCE Cambridge Studio and published by Sony Computer Entertainment for the PlayStation."
@@ -36,12 +32,6 @@ prepare() {
   sed -i -e "s/${_rom_filename_ita}/${_uuid_ita}/g" "${_uuid_ita}.cue"
 }
 
-package_medievil-2() {
-  depends=('medievil-2-ita'
-           'medievil-2-es'
-           'medievil-2-pt')
-}
-
 _package(){
   local _uuid="${1}"
   local _game="${pkgdir}/usr/games/${_app_id}"
@@ -63,17 +53,11 @@ package_medievil-2-ita() {
 }
 
 package_medievil-2-es() {
-  provides=('medievil-2'
-            'medievil-2-ita'
-            'medievil-2-pt')
-  local _uuid="${_uuid_es}"
-  _package "${_uuid}"
+  provides=('medievil')
+  depends=('medievil-2-ita')
 }
 
 package_medievil-2-pt() {
-  provides=('medievil-2'
-            'medievil-2-ita'
-            'medievil-2-es')
-  local _uuid="${_uuid_pt}"
-  _package "${_uuid}"
+  provides=('medievil')
+  depends=('medievil-2-ita')
 }
