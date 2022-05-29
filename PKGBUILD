@@ -8,19 +8,17 @@
 
 pkgname=noisetorch
 pkgver=0.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
-url=https://github.com/lawl/NoiseTorch
+url=https://github.com/noisetorch/NoiseTorch
 license=('GPL3')
-depends=('pulseaudio' 'polkit')
+depends=('pulseaudio' 'polkit' 'hicolor-icon-theme')
 makedepends=('go' 'cmake' 'git')
 provides=('noisetorch')
 install="${pkgname}.install"
-source=("git+${url}#tag=${pkgver}"
-        "${pkgname}.install")
-md5sums=('SKIP'
-         'efe2d4667047aab863f7dd6716cd46b4')
+source=("git+${url}.git#tag=${pkgver}")
+md5sums=('SKIP')
 
 build() {
 	export GOPATH="$srcdir/go"
