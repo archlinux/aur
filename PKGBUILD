@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=cargo-deb
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 
 pkgdesc="Cargo subcommand that generates Debian packages."
@@ -9,7 +9,7 @@ url="https://github.com/kornelski/${pkgname}"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4d6937809f08787859fac1cb7f27c9443e71175bef80bfcc43c98adbd1c407d')
+sha256sums=('7965b20e026269759dbf17b3a92b219b6948243121928296e945d619472fa730')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
