@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r15933.g900a0b0eee'
+pkgver='5.0.r16541.gbb2a3d35b0'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -15,7 +15,7 @@ url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
 	'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
-	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
+	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt6-base'
 	'sfml' 'zlib'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
