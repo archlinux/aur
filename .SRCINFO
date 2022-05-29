@@ -1,16 +1,15 @@
 pkgbase = ruby-logging
 	pkgdesc = A flexible and extendable logging library for Ruby
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://rubygems.org/gems/logging
 	arch = any
 	depends = ruby
 	depends = ruby-little-plugger
 	depends = ruby-multi_json
-	noextract = logging-2.3.0.gem
+	noextract = logging-2.3.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/logging-2.3.0.gem
-	sha1sums = b35cf3d50819a51398ff764d0d2a9de689415e2a
+	source = https://rubygems.org/downloads/logging-2.3.1.gem
+	b2sums = c6cfdd4c8b3d92efbef1a2042cc8728535402d54937bd77873cf20f2c810709db44539558689e542458105577d686d8c2b2874661eb6baed0cae7b785c8487e8
 
 pkgname = ruby-logging
-
