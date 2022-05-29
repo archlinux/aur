@@ -13,7 +13,7 @@ provides=('pridefetch')
 sha512sums=('SKIP')
 
 package() {
-	cd $pkgname/src
+	cd pridefetch/src
 	zip -r ../pridefetch.zip *
 	cd ..
 	echo "#!/usr/bin/env python" | cat - pridefetch.zip > pridefetch
