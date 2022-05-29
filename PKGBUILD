@@ -1,9 +1,9 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>, Sander van Kasteel <info@sandervankasteel.nl>
+# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
 pkgver="0.1.1beta"
-pkgrel=2
+pkgrel=3
 pkgdesc="Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
