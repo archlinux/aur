@@ -4,10 +4,10 @@
 
 pkgname=udevil-git
 pkgver=20170628.225
-pkgrel=1
+pkgrel=2
 pkgdesc='Mount without password'
 arch=('i686' 'x86_64')
-url=http://ignorantguru.github.com/udevil
+url=https://github.com/IgnorantGuru/udevil
 license=('GPL3')
 makedepends=('intltool' 'gettext')
 depends=('udev' 'glib2')
@@ -28,7 +28,7 @@ conflicts=('udevil' 'devmon' 'devmon-git')
 provides=('udevil' 'devmon')
 backup=('etc/udevil/udevil.conf' 'etc/conf.d/devmon')
 options=(!strip debug)
-source=("git://github.com/IgnorantGuru/udevil.git#branch=next")
+source=("git+${url}.git#branch=next")
 md5sums=(SKIP)
 
 pkgver() {

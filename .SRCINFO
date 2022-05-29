@@ -1,8 +1,8 @@
 pkgbase = udevil-git
 	pkgdesc = Mount without password
 	pkgver = 20170628.225
-	pkgrel = 1
-	url = http://ignorantguru.github.com/udevil
+	pkgrel = 2
+	url = https://github.com/IgnorantGuru/udevil
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -30,8 +30,7 @@ pkgbase = udevil-git
 	options = debug
 	backup = etc/udevil/udevil.conf
 	backup = etc/conf.d/devmon
-	source = git://github.com/IgnorantGuru/udevil.git#branch=next
+	source = git+https://github.com/IgnorantGuru/udevil.git#branch=next
 	md5sums = SKIP
 
 pkgname = udevil-git
-
