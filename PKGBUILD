@@ -1,9 +1,11 @@
+# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=teamviewer-quicksupport
-pkgver=15.31.1
+epoch=1
+pkgver=15.30.3
 pkgrel=1
-pkgdesc='Teamviewer Quicksupport - All-In-One Software for Remote Support and Online Meetings'
+pkgdesc='All-in-one software for remote support and online meetings'
 arch=('x86_64')
 url='http://www.teamviewer.com/'
 options=('!strip')
@@ -31,7 +33,7 @@ depends=(
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::https://download.teamviewer.com/download/teamviewer_qs.tar.gz")
-sha256sums=('8f6f7f6043dcdfb654c47f8a91cfd9a313d629c1b5bef7e24b9dbb46a76473c9')
+sha256sums=('db65cb7fbc485df94e5f88f67b5538b1a8dd91080cedf2cd344b30c03b8dbacc')
 
 prepare() {
 	cd teamviewerqs/
