@@ -3,11 +3,12 @@
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.7.2.r102.g01f1be61
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
 makedepends=('git' 'curl' 'lsb-release' 'tar' 'unzip')
+checkdepends=('libSaikaSharp.so>=88.0')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
