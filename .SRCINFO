@@ -8,8 +8,7 @@ pkgbase = webcord
 	makedepends = npm
 	makedepends = typescript
 	makedepends = git
-	depends = electron>=19
-	depends = electron<20
+	depends = electron19
 	options = !strip
 	options = !emptydirs
 	source = WebCord-3.2.0.tar.gz::https://github.com/SpacingBat3/WebCord/archive/v3.2.0.tar.gz

@@ -5,7 +5,7 @@ pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
-depends=('electron>=19' 'electron<20')
+depends=('electron19')
 makedepends=('npm' 'typescript' 'git')
 options=('!strip' '!emptydirs')
 
