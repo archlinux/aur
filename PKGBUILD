@@ -40,6 +40,7 @@ depends=('python-pillow'
          'libappindicator-gtk3'
          'libopenmpt' # AUR
          'libsamplerate'
+         'python-httpx' # Workaround for https://bugs.archlinux.org/task/74611
          )
          
 optdepends=('noto-fonts-cjk: Matching font for CJK characters'
