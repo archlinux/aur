@@ -2,13 +2,14 @@
 
 pkgname=vmware-unlocker
 pkgver=4.2.0
-pkgrel=10
+pkgrel=11
 pkgdesc="VMware macOS utilities"
 arch=('x86_64')
 url="https://github.com/DrDonk/unlocker"
 license=('MIT')
 #depends=('vmware-workstation>=16.0.0')
 #makedepends=('git')
+conflicts=('vmware-unlocker-bin')
 source=("https://github.com/DrDonk/unlocker/releases/download/v$pkgver/unlocker420.zip" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
 md5sums=('403f60e1a71debbfcbc6393f7184d3de'
   'fdab28536a0508852c98fe48e05789ab'
