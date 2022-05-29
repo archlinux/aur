@@ -2,8 +2,8 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r92.ge2f24094
-pkgrel=2
+pkgver=2.7.2.r102.g01f1be61
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -34,7 +34,9 @@ prepare(){
     do
         cp "${srcdir}/Credentials-Public/${key}" ${key}
     done
-    PATH="${srcdir}/dotnet-sdk:${PATH}" dotnet workload install android
+    PATH="${srcdir}/dotnet-sdk:${PATH}" 
+    dotnet workload install android
+    #dotnet workload install maui
 }
 check(){
     cd "${srcdir}/SteamTools"
@@ -68,7 +70,8 @@ package(){
     mkdir -p "${pkgdir}/usr/bin"
     for file in libe_sqlite3.so libHarfBuzzSharp.so libSkiaSharp.so Steam++
     do
-        install -Dm755 "${srcdir}/SteamTools/linux-out/${file}" "${pkgdir}/opt/watt-toolkit/${file}"
+        install -Dm755 \
+            "${srcdir}/SteamTools/linux-out/${file}" "${pkgdir}/opt/watt-toolkit/${file}"
     done
     for width in 16 24 32 48 64 96 128 256 512 1024
     do
