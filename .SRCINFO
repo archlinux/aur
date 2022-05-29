@@ -1,6 +1,6 @@
 pkgbase = vosk-api-git
 	pkgdesc = Offline speech recognition toolkit (git version)
-	pkgver = 0.3.32.r50.ga87f2e1
+	pkgver = 0.3.42.r0.gb1b216d
 	pkgrel = 1
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
@@ -14,8 +14,12 @@ pkgbase = vosk-api-git
 	makedepends = python-build
 	makedepends = python-cffi
 	makedepends = python-installer
+	makedepends = python-requests
 	makedepends = python-setuptools
+	makedepends = python-srt
+	makedepends = python-tqdm
 	makedepends = python-wheel
+	noextract = vosk-model-small-en-us-0.15.zip
 	source = git+https://github.com/alphacep/vosk-api.git
 	source = git+https://github.com/xianyi/OpenBLAS.git
 	source = git+https://github.com/alphacep/clapack.git
@@ -41,6 +45,9 @@ pkgname = python-vosk-git
 	pkgdesc = Python module for vosk-api (git version)
 	depends = python
 	depends = python-cffi
-	depends = vosk-api-git=0.3.32.r50.ga87f2e1
+	depends = python-requests
+	depends = python-srt
+	depends = python-tqdm
+	depends = vosk-api-git=0.3.42.r0.gb1b216d
 	provides = python-vosk
 	conflicts = python-vosk

@@ -2,7 +2,7 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.32.r50.ga87f2e1
+pkgver=0.3.42.r0.gb1b216d
 pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
@@ -10,8 +10,8 @@ pkgdesc='Offline speech recognition toolkit (git version)'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
 license=('Apache')
-makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi'
-             'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
+             'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-wheel')
 checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
@@ -20,6 +20,7 @@ source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/alphacep/kaldi.git#branch=vosk'
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip")
+noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -33,10 +34,11 @@ prepare() {
     local _url='https://raw.githubusercontent.com/alphacep/vosk-api/master/travis/Dockerfile.manylinux'
     git -C OpenBLAS config --local advice.detachedHead false
     git -C clapack config --local advice.detachedHead false
-    git -C OpenBLAS checkout "$(awk '/xianyi\/OpenBLAS/ { print $5 }' <($_curl "$_url"))"
-    git -C clapack checkout "$(awk '/alphacep\/clapack/ { print $5 }' <($_curl "$_url"))"
+    git -C OpenBLAS checkout --quiet "$(awk '/xianyi\/OpenBLAS/ { print $5 }' <($_curl "$_url"))"
+    git -C clapack checkout --quiet "$(awk '/alphacep\/clapack/ { print $5 }' <($_curl "$_url"))"
     
-    ln -sf "../../../vosk-model-small-en-us-${_model_small_ver}" vosk-api/python/example/model
+    mkdir -p models
+    bsdtar -x -f  "vosk-model-small-en-us-${_model_small_ver}.zip" -C models
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" vosk-api/python/example/model-spk
     ln -sf ../../OpenBLAS kaldi/tools/OpenBLAS
     ln -sf ../../clapack kaldi/tools/clapack
@@ -111,8 +113,9 @@ build() {
 
 check() {
     local _test
+    local -x VOSK_MODEL_PATH="${srcdir}/models"
     cd vosk-api/python/example
-    for _test in alternatives empty ffmpeg reset simple speaker text words
+    for _test in alternatives empty ffmpeg nlsml reset simple speaker srt text words
     do
         printf '%s\n' "Running test_${_test}..."
         PYTHONPATH="${PWD}/../build/lib" python "./test_${_test}.py" test.wav
@@ -136,7 +139,7 @@ package_vosk-api-git() {
 
 package_python-vosk-git() {
     pkgdesc='Python module for vosk-api (git version)'
-    depends=('python' 'python-cffi' "vosk-api-git=${pkgver}")
+    depends=('python' 'python-cffi' 'python-requests' 'python-srt' 'python-tqdm' "vosk-api-git=${pkgver}")
     provides=('python-vosk')
     conflicts=('python-vosk')
     
