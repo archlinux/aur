@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=adwaita-icon-theme-git
-pkgver=42.beta.r0.g7342c5411
+pkgver=42.0+r18+gefd1c615a
 pkgrel=1
 pkgdesc='GNOME standard icons'
 arch=(any)
@@ -16,7 +16,7 @@ b2sums=(SKIP)
 
 pkgver() {
 	cd adwaita-icon-theme
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
