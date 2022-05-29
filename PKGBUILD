@@ -2,7 +2,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=5.0.1080
+pkgver=5.0.1092
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
 sha256sums=(
     'SKIP'
     'SKIP'
-    '33c571d0b05ada4448375e9aa604772ae6dfa0e38ef3f179476245108c9027d1'
+    '23b65b55a5c09526eeff3ac5b3aca097d3bfb9f7d44e9fc32102f309111199a7'
 )
 install=${pkgname}.install
 

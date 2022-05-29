@@ -9,4 +9,4 @@ export LD_LIBRARY_PATH=${APPDIR}/usr/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${APPDIR}:${LD_LIBRARY_PATH}
 export LD_PRELOAD=/usr/lib/libcurl.so.4
 
-exec ${APPDIR}/shadow $@
+exec ${APPDIR}/shadow "$@"
