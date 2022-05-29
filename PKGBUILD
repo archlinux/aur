@@ -10,7 +10,7 @@ license=(MIT)
 conflicts=('mprocs-bin')
 provides=('mprocs')
 source=("https://github.com/pvolok/mprocs/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('57282931026028680fea4d379fa60e6e3fcba9ccb3e80c7fd92effc776dbf2d0')
+sha256sums=('3c0b753d835ab143aa6cb325518f7ef50390a952b4adab82c68ed3e50c5a3c55')
 makedepends=(rust)
 
 build() {
