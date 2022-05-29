@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('clutter' 'discount' 'gtksourceview4' 'gtkspell3' 'libarchive' 'libgee'
          'link-grammar' 'libhandy' 'webkit2gtk')
 makedepends=('git' 'meson' 'vala')
-source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver-$_codename"
+_commit=039ec4f81170b468d2eb5cf3b9e0b0cae7b59097
+source=("git+https://github.com/kmwallio/ThiefMD.git#commit=${_commit}"
         'git+https://github.com/ThiefMD/BiBtex-vala.git'
         'git+https://github.com/ThiefMD/ghost-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
@@ -29,7 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/ThiefMD"
-  git describe --tags | sed "s/^v//;s/-$_codename//;s/-/+/g"
+  git describe --tags | sed "s/^v//;s/-${_codename}//;s/-/+/g"
 }
 
 prepare() {
