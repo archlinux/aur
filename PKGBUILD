@@ -4,12 +4,17 @@
 
 pkgname=libmediawiki
 pkgver=5.37.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A KDE C++ interface for MediaWiki based web services like Wikipedia'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/libmediawiki'
 license=('GPL2')
-depends=('kcoreaddons')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'kcoreaddons'
+  'qt5-base'
+)
 makedepends=('extra-cmake-modules')
 _last_release_commit='1a6e469024128a10ac4d54457dbae58aaec52fb0'
 source=("$pkgname-$pkgver.tar.bz2::${url}/-/archive/${_last_release_commit}/${pkgname}-${_last_release_commit}.tar.bz2")
