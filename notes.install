@@ -6,6 +6,7 @@ post_install() {
 	echo
 	echo -e "${BOLD}Successfully installed nvidia-modprobe.service!${RESET}"
 	echo "You should enable the service for this fix to work:"
+        echo -e "${GREEN}sudo systemctl daemon-reload${RESET}"
 	echo -e "${GREEN}sudo systemctl enable --now nvidia-modprobe.service${RESET}"
 	echo
 }
