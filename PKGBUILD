@@ -2,7 +2,7 @@
 
 pkgname=kepubify
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
 arch=('x86_64')
 url='https://pgaskin.net/kepubify/'
@@ -20,7 +20,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
+	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o $pkgname \
     github.com/pgaskin/kepubify/v4/cmd/kepubify/
 
@@ -29,7 +29,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
+	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o covergen \
     github.com/pgaskin/kepubify/v4/cmd/covergen/
 
@@ -38,7 +38,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
+	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o seriesmeta \
     github.com/pgaskin/kepubify/v4/cmd/seriesmeta/
 }
