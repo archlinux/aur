@@ -20,6 +20,4 @@ package() {
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -Dm755 "gitcolorscripts.service" "$pkgdir/usr/lib/systemd/system/gitcolorscripts.service"
-
-	systemctl start gitcolorscripts
 }
