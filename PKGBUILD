@@ -2,7 +2,9 @@
 # Contributor: Sevenseven < forauronly AT gmail.com >
 
 pkgname=libmediawiki-git
-pkgver=1.0.0.r17.g8741b29
+_last_non_tagged_release_ver=5.37.0
+_last_non_tagged_release_commit=1a6e469024128a10ac4d54457dbae58aaec52fb0
+pkgver=5.37.0.r16.g8741b29
 pkgrel=1
 pkgdesc='A KDE C++ interface for MediaWiki based web service as wikipedia.org'
 arch=('i686' 'x86_64')
@@ -10,22 +12,33 @@ url='https://invent.kde.org/libraries/libmediawiki'
 license=('GPL2')
 depends=('qt5-base' 'kcoreaddons')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
-provides=("libmediawiki=${pkgver}")
-conflicts=('libmediawiki')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/libmediawiki"
 
-  # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
-  local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+  # Generate git tag based version if there is a git tag newer than the $_last_non_tagged_release_ver.
+  # Count only proper (v)#.#* [#=number] tags if such exists.
+  # If not, count the number of revisions (commits) since the $_last_non_tagged_release_commit.
+  (
+    set -o pipefail
+    local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' \
+      --contains "${_last_non_tagged_release_commit}" 2>/dev/null || \
+      printf "%s.r%s.g%s" \
+        "${_last_non_tagged_release_ver}" \
+        $(git rev-list --count "${_last_non_tagged_release_commit}"..HEAD) \
+        $(git rev-parse --short HEAD))
 
-  # Format git-based version for pkgver
-  echo "${_gitversion}" | sed \
-    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-    -e 's|\([0-9]\+-g\)|r\1|' \
-    -e 's|-|.|g'
+    # Format git-based version for pkgver
+    echo "${_gitversion}" | \
+      sed -e 's|^v||' | \
+      tr '[:upper:]' '[:lower:]' | \
+      sed \
+        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+        -e 's|\([0-9]\+-g\)|r\1|' \
+        -e 's|-|.|g'
+  )
 }
 
 prepare() {
@@ -47,6 +60,9 @@ build() {
 }
 
 package() {
+  provides=("libmediawiki=${pkgver}")
+  conflicts=('libmediawiki')
+
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 }
