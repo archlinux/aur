@@ -1,12 +1,12 @@
 # Maintainer: Atakku <atakkudev@gmail.com>
 pkgname=apriltag
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AprilTag is a visual fiducial system popular for robotics research."
 arch=('x86_64')
 url="https://april.eecs.umich.edu/software/apriltag"
 license=('BSD')
-makedepends=('make')
+makedepends=('cmake')
 source=("https://github.com/AprilRobotics/apriltag/archive/v${pkgver}.tar.gz"
         "cmake.patch")
 sha512sums=('0b09b530ed03dce0bdc3c4e08b17d98f1303ab1d45870843354bf1a5bdf6c7efc6089e2bdf40a370d17a8191b7ce2c46fefa2dd2d49a959591351e00e186f33e'

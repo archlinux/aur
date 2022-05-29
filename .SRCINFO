@@ -1,7 +1,7 @@
 pkgbase = apriltag
 	pkgdesc = AprilTag is a visual fiducial system popular for robotics research.
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://april.eecs.umich.edu/software/apriltag
 	arch = x86_64
 	license = BSD
