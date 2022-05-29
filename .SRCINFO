@@ -1,0 +1,21 @@
+pkgbase = libstroke
+	pkgdesc = A stroke (mouse gesture) translation library
+	pkgver = 0.5.1
+	pkgrel = 8
+	url = http://etla.net/libstroke/
+	arch = x86_64
+	license = GPL2
+	makedepends = libx11
+	depends = glibc
+	source = https://sources.archlinux.org/other/packages/libstroke/libstroke-0.5.1.tar.gz
+	source = libgstroke-Makefile.am.patch
+	source = libstroke-Makefile.am.patch
+	source = libstroke-0.5.1-m4_syntax.patch
+	source = libstroke-0.5.1-no_gtk1.patch
+	sha1sums = 48bd2b98faa8681ccd97eda7a09442845dbf1b7b
+	sha1sums = a0c3bd9e894650475ba3049b0ef3d7f9580c203d
+	sha1sums = ee5a3635c31dba00b070a942c512cc0d53056188
+	sha1sums = c9240937776b0572e3927e1c56d78309413c5209
+	sha1sums = c79acd9712fa5c6b9a9ac21621c6858ec10d84dd
+
+pkgname = libstroke
