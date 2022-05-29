@@ -1,8 +1,9 @@
 pkgbase = firefox-gnome-theme-git
 	pkgdesc = A GNOME theme for Firefox
-	pkgver = 100.r70.geecc9a0
+	pkgver = 100.r72.g44606f0
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/firefox-gnome-theme
+	install = firefox-gnome-theme.install
 	arch = x86_64
 	license = custom
 	makedepends = git
