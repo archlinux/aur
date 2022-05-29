@@ -1,7 +1,7 @@
 pkgbase = nvidia-modprobe-service
 	pkgdesc = Fixes /oldroot unmount issues by unloading nvidia modules before shutdown / reboot.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = notes.install
 	arch = any
 	license = GPL
