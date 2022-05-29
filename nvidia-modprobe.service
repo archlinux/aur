@@ -1,11 +1,10 @@
 [Unit]
-Description=Pre-Shutdown Processes
-DefaultDependencies=no
-Before=shutdown.target reboot.target halt.target
+Description=Ditch nvidia after multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
+RemainAfterExit=true
+ExecStop=/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
 
 [Install]
-WantedBy=halt.target reboot.target shutdown.target
+WantedBy=multi-user.target

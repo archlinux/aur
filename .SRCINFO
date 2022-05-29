@@ -1,7 +1,7 @@
 pkgbase = nvidia-modprobe-service
 	pkgdesc = Fixes /oldroot unmount issues by unloading nvidia modules before shutdown / reboot.
 	pkgver = 1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/Fxzzi/nvidia-modprobe-service
 	install = notes.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nvidia-modprobe-service
 	depends = systemd
 	source = nvidia-modprobe.service
 	source = notes.install
-	sha256sums = 7986dbe15228e4a04ac60bbfe7efadce0407395b50a28056acfede9317cbc04d
+	sha256sums = 1895e120c20c841187a743916a71f9957e5da519e45f12565266fa5370b71beb
 	sha256sums = c105f4a328491f31984d767bc15042122d4de59cca4c3d46fbd7712004053982
 
 pkgname = nvidia-modprobe-service
