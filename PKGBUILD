@@ -1,8 +1,8 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -22,16 +22,8 @@ depends=('bzip2'
          'zlib')
 makedepends=('cmake'
              'p7zip')
-source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
-        '0001-Keep-up-wx3.0-compatibility.patch')
-sha256sums=('e23cb1238d184a13912231c22e96208d6dff4eb55f38181ae92d2b67f205dfa5'
-            '8f89b81ec2ef11581ddac8592ab45a3a90ea02711b07a732ee931359883350dc')
-
-prepare() {
-    cd SLADE-${pkgver}
-
-    patch -i "$srcdir"/0001-Keep-up-wx3.0-compatibility.patch -p 1
-}
+source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
+sha256sums=('c327fa62ba491ac481d769700261d810128910007297fd9d9dbe26ac0e78bb2c')
 
 build() {
     cd SLADE-${pkgver}
