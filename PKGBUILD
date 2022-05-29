@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 pkgname=mjpeg-proxy-git
 _pkgname=mjpeg-proxy
-pkgver=r39.facab20
+pkgver=r55.042fc2e
 pkgrel=1
 pkgdesc="Republish MJPEG HTTP image streams using a server in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -30,7 +30,14 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  go build -gcflags "all=-trimpath=$PWD" -ldflags="-s -w" -o $_pkgname
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build -o $_pkgname
 }
 
 package() {

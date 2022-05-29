@@ -1,6 +1,6 @@
 pkgbase = mjpeg-proxy-git
 	pkgdesc = Republish MJPEG HTTP image streams using a server in Go
-	pkgver = r39.facab20
+	pkgver = r55.042fc2e
 	pkgrel = 1
 	url = https://github.com/vvidic/mjpeg-proxy
 	arch = i686
@@ -24,4 +24,3 @@ pkgbase = mjpeg-proxy-git
 	sha256sums = 11b464bb313a6ea6f6719b7f47814f76bcf10f733dc83c06aefd76b825e47988
 
 pkgname = mjpeg-proxy-git
-
