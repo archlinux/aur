@@ -1,0 +1,15 @@
+pkgbase = gitmux
+	pkgdesc = Git in your tmux status bar
+	pkgver = 0.7.9
+	pkgrel = 1
+	url = https://github.com/arl/gitmux
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = tmux
+	source = gitmux-0.7.9.tar.gz::https://github.com/arl/gitmux/archive/v0.7.9.tar.gz
+	sha256sums = ca59fad183fd3b9e99818201074b58c92d060b58765b1dd73a00ffa9fab914ef
+
+pkgname = gitmux
