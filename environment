@@ -1,7 +1,6 @@
-# additional options to pass to all wiretrustee services
-# see more at 'wiretrustee --help'
-WIRETRUSTEE_ARGS="--log-level info"
+# additional options to pass to all netbird services
+NETBIRD_ARGS="--log-level info"
 
-# additional options to pass to wiretrustee clients
-WIRETRUSTEE_CLIENT_ARGS="${WIRETRUSTEE_ARGS}"
+# additional options to pass to netbird clients
+NETBIRD_CLIENT_ARGS="${NETBIRD_ARGS}"
 
