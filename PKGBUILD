@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.24.31
+pkgver=3.24.34
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -27,22 +27,15 @@ depends=(
   'mingw-w64-pango>=1.41.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-  "${pkgname}-${pkgver}-gdkkeys-win32.h::https://gitlab.gnome.org/GNOME/gtk/-/raw/${pkgver}/gdk/win32/gdkkeys-win32.h"
-  'gtk3-merge-4292-fix-windows-build.patch')
+  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=(
-  '423c3e7fdb4c459ee889e35fd4d71fd2623562541c1041b11c07e5ad1ff10bf9'
-  '540c9fbca675a787377b9ba832df1acb0e870088e0c0bb2484312dc9754797a0'
-  'cbcda384fb206388d69729cb8e81cbbf87db362d83292f36a42cde9f0c2e7cb5')
+  'dbc69f90ddc821b8d1441f00374dc1da4323a2eafa9078e61edbe5eeefa852ec')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
   local source_file
-  for source_file in "${source[@]:1:1}"; do
-    cp "${srcdir}/${source_file%%::*}" "gdk/win32/${source_file##*/}"
-  done
   for source_file in "${source[@]}"; do
     case "${source_file}" in
       *.patch)
