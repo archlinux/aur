@@ -1,0 +1,16 @@
+pkgbase = dctrl-tools
+	pkgdesc = Command-line tools to process Debian package information
+	pkgver = 2.24
+	pkgrel = 1
+	url = https://github.com/ajkaijanaho/dctrl-tools
+	arch = x86_64
+	license = GPL
+	makedepends = gettext>=0.11
+	makedepends = debhelper>=10
+	makedepends = po4a>=0.40
+	makedepends = glibc>=2.14
+	depends = glibc>=2.14
+	source = https://github.com/ajkaijanaho/dctrl-tools/archive/refs/tags/2.24.tar.gz
+	sha512sums = d64ef69a33437899ad7a4abbd26eca5bc92e682bcf4732cf2802c9ddb01c7eed66f48e2281a226d39d66e88207d05e1a3fe77d972ce9b51aa43f7c93929abb13
+
+pkgname = dctrl-tools
