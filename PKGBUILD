@@ -7,7 +7,7 @@ pkgname=(
   python2-wxpython3-gtk3
 )
 pkgver=3.0.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Classic wxWidgets GTK GUI toolkit (legacy version 3.x) for Python2."
 arch=(
   'i686'
@@ -20,7 +20,7 @@ url="https://www.wxpython.org"
 # In order to not double the information, we use helper variables, where we specify the runtime dependencies.
 _depends_general=(
   'expat'
-  'gstreamer0.10'
+  'gstreamer0.10-base'
   'libjpeg'
   'libpng'
   'libtiff'
