@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=nancy
-pkgver=1.0.33
+pkgver=1.0.35
 pkgrel=1
 pkgdesc="Checks for vulnerabilities in Golang dependencies"
 arch=('x86_64' 'i686' 'aarch64')
@@ -9,9 +9,8 @@ url="https://github.com/sonatype-nexus-community/nancy"
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
-changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4eeb2a1860e794ffb7cdb3ce1c0863ef0906973032c893a77cbc2abf3aa33505')
+sha256sums=('6e2f96203ff71f211fd1f70c9109673dc5c8a0be5e2492e314e8d04f56cc77dd')
 
 prepare() {
 	cd "$pkgname-$pkgver"
