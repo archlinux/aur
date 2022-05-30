@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.18
+gitver=v5.18.1
 patchver=20220315
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=5.18.v.0
+pkgver=5.18.v.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '90c09ed4e6bfc963abfe05be415beaece38f8b7fdac4f1c9323c56683eab4d19'
+            '57cc3f97af865fd45f2cbf6d0617336cedadc9be9496fe469aa7f05042e8b2fb'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
