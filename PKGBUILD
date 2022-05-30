@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-pcie
-pkgver=0.1.22
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="PCI express simulation framework for cocotb"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-cocotb' 'python-cocotbext-axi')
 makedepends=('python-setuptools')
 
 source=("cocotbext-pcie-$pkgver.tar.gz::https://github.com/alexforencich/cocotbext-pcie/archive/v$pkgver.tar.gz")
-sha256sums=('39e98cc2f910f52ea2b1e3bbb2368d79564af68ed74de7ab637533f20ab62e6b')
+sha256sums=('9da6c4f0045f4bcf388ce0699fb239ce722a76d431da2cecc00246c73c6b8855')
 
 build() {
     cd "$srcdir/cocotbext-pcie-$pkgver"
