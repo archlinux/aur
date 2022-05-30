@@ -1,12 +1,14 @@
 pkgbase = python-pincer-git
 	pkgdesc = The snappy asynchronous discord api wrapper API wrapper written with aiohttp.
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Pincer-org/Pincer
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python>=3.8
 	depends = python-aiohttp
 	optdepends = python-pillow: image support
@@ -14,7 +16,7 @@ pkgbase = python-pincer-git
 	optdepends = python-brotli: speed
 	optdepends = python-aiodns: speed
 	optdepends = python-cchardet: speed
-	source = python-pincer-git::git+https://github.com/Pincer-org/Pincer.git
+	source = pincer::git+https://github.com/Pincer-org/Pincer.git
 	sha256sums = SKIP
 
 pkgname = python-pincer-git
