@@ -1,0 +1,46 @@
+pkgbase = spyro-the-dragon
+	pkgdesc = Action-adventure hack and slash video game developed by SCE Cambridge Studio and published by Sony Computer Entertainment for the PlayStation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/MediEvil
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCUS-94228.bin::https://archive.org/download/SpyroTheDragon.7z/Spyro%20the%20Dragon.7z/Spyro%20the%20Dragon.bin
+	source = SCUS-94228.cue::https://archive.org/download/SpyroTheDragon.7z/Spyro%20the%20Dragon.7z/Spyro%20the%20Dragon.cue
+	source = SCES-01438.7z::https://archive.org/download/spyro-the-dragon-europe-en-fr-de-es-it.-7z/Spyro%20the%20Dragon%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.7z
+	source = SCPS-10085.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Spyro%20the%20Dragon%20%28Japan%29.7z
+	source = psx-template.desktop
+	source = launcher
+	source = games.insomniac.SpyroTheDragon.png::https://upload.wikimedia.org/wikipedia/en/5/53/Spyro_the_Dragon.jpg
+	sha256sums = fc866b2a02e010a6658f8af2de28bb3001eb33513e5924af014e35643c6dee37
+	sha256sums = e34a77b4d0c0d85c409db3dac96546020b57af163b532bfb279ba99b05c3f133
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 1a5ac315868c1a34105965747e7cb82960cfd390dd28f786cc045c502cdeb4a2
+	sha256sums = 517b82624fe3f0ea13ca4f9eea1e11088e30ff8449ae69f37b7a1412744c734d
+	sha256sums = 243e129901670aafd6c10384ba334af7ea7a2d8d7686ab94c50595318bec0a02
+	sha256sums = 19b03ed9e69ce0f4815c87e80dcf78aa61a2e8e10c17f3a4106599f5d1774646
+
+pkgname = spyro-the-dragon
+
+pkgname = spyro-the-dragon-de
+	depends = spyro-the-dragon-it
+
+pkgname = spyro-the-dragon-en
+	depends = duckstation
+	depends = spyro-the-dragon
+
+pkgname = spyro-the-dragon-es
+	depends = spyro-the-dragon-it
+
+pkgname = spyro-the-dragon-fr
+	depends = spyro-the-dragon-it
+
+pkgname = spyro-the-dragon-it
+	depends = duckstation
+	depends = spyro-the-dragon
+
+pkgname = spyro-the-dragon-jp
+	depends = duckstation
+	depends = spyro-the-dragon
