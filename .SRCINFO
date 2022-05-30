@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc
 	pkgdesc = Litecoin wallet
-	pkgver = 4.0.9.3
+	pkgver = 4.2.2.1
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -25,10 +25,7 @@ pkgbase = electrum-ltc
 	depends = python-scrypt
 	depends = python-websocket-client
 	depends = zbar
-	source = https://electrum-ltc.org/download/Electrum-LTC-4.0.9.3.tar.gz
-	source = https://electrum-ltc.org/download/Electrum-LTC-4.0.9.3.tar.gz.asc
-	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
-	b2sums = d8eda2557416aeda0767f0b77530069beb46a9410e43618bd22e9f53815a7cac9d81668ca5be6271bd5dd0e9c57190c94085582aa83a231388b1ac2ef670c8c5
-	b2sums = SKIP
+	source = electrum-ltc-4.2.2.1.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/refs/tags/4.2.2.1
+	b2sums = b3327f6bcf23b5caca6196e380e62f154a9f56a5b636a8d0cc49e08ed0ab5a05b4b1a81d9869b92125526339924ccb9b555a704eb7fa98bce59eac6088c7ebfe
 
 pkgname = electrum-ltc
