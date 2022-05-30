@@ -1,8 +1,8 @@
---- a/cpu/ext/ffmpeg-svt/CMakeLists.txt
-+++ b/cpu/ext/ffmpeg-svt/CMakeLists.txt
-@@ -20,17 +20,17 @@ endif()
- option(BUILD_GPL_X264 "Build X264 with GPL License" OFF)
+--- a/cpu/ext/ffmpeg-codecs/CMakeLists.txt
++++ b/cpu/ext/ffmpeg-codecs/CMakeLists.txt
+@@ -38,9 +38,9 @@ endif()
  
+ # Set basic FFmpeg and codec libs
  if("${CMAKE_SIZEOF_VOID_P}" STREQUAL "8")
 -  set(SVTHEVCENC_LIB ${VPL_DEP_DIR}/lib/libSvtHevcEnc.a)
 -  set(SVTAV1ENC_LIB ${VPL_DEP_DIR}/lib/libSvtAv1Enc.a)
@@ -10,7 +10,13 @@
 +  set(SVTHEVCENC_LIB ${VPL_DEP_DIR}/lib/libSvtHevcEnc.so)
 +  set(SVTAV1ENC_LIB ${VPL_DEP_DIR}/lib/libSvtAv1Enc.so)
 +  set(DAV1D_LIB ${VPL_DEP_DIR}/lib/libdav1d.so)
+ 
+   if(NOT EXISTS ${SVTHEVCENC_LIB}
+      OR NOT EXISTS ${SVTAV1ENC_LIB}
+@@ -49,10 +49,10 @@ if("${CMAKE_SIZEOF_VOID_P}" STREQUAL "8"
+   endif()
  endif()
+ 
 -set(AVCODEC_LIB ${VPL_DEP_DIR}/lib/libavcodec.a)
 -set(AVUTIL_LIB ${VPL_DEP_DIR}/lib/libavutil.a)
 -set(AVFILTER_LIB ${VPL_DEP_DIR}/lib/libavfilter.a)
@@ -20,30 +26,52 @@
 +set(AVFILTER_LIB ${VPL_DEP_DIR}/lib/libavfilter.so)
 +set(SWSCALE_LIB ${VPL_DEP_DIR}/lib/libswscale.so)
  
- if(BUILD_GPL_X264)
--  set(X264_LIB ${VPL_DEP_DIR}/lib/libx264.a)
-+  set(X264_LIB ${VPL_DEP_DIR}/lib/libx264.so)
-   if(NOT EXISTS ${X264_LIB})
-     message(FATAL_ERROR "Could not find expected FFmpeg libraries")
-   endif()
-@@ -75,14 +75,14 @@ if(MSVC)
-   string(REGEX MATCH "[0-9]+\\.[0-9]+\\.[0-9]+" gcc_version ${gcc_version_text})
+ if(NOT EXISTS ${AVCODEC_LIB}
+    OR NOT EXISTS ${AVUTIL_LIB}
+@@ -135,14 +135,14 @@ endif()
  
-   set(GCC_LIB
--      ${MSYS_ROOT}/${mingw_name}/lib/gcc/${gcc_name}/${gcc_version}/libgcc.a)
-+      ${MSYS_ROOT}/${mingw_name}/lib/gcc/${gcc_name}/${gcc_version}/libgcc.so)
-   set(GCC_EH_LIB
--      ${MSYS_ROOT}/${mingw_name}/lib/gcc/${gcc_name}/${gcc_version}/libgcc_eh.a)
--  set(BCRYPT_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libbcrypt.a)
--  set(MINGW32_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libmingw32.a)
--  set(MINGWEX_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libmingwex.a)
-+      ${MSYS_ROOT}/${mingw_name}/lib/gcc/${gcc_name}/${gcc_version}/libgcc_eh.so)
-+  set(BCRYPT_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libbcrypt.so)
-+  set(MINGW32_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libmingw32.so)
-+  set(MINGWEX_LIB ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libmingwex.so)
-   set(PTHREAD_IMPLIB
--      ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libpthread.dll.a)
-+      ${MSYS_ROOT}/${mingw_name}/${gcc_name}/lib/libpthread.dll.so)
-   set(PTHREAD_DLL ${MSYS_ROOT}/${mingw_name}/bin/libwinpthread-1.dll)
+ # Set AVC encoder lib name
+ if(BUILD_GPL_X264)
+-  set(H264_ENC_LIB ${VPL_DEP_DIR}/lib/libx264.a)
++  set(H264_ENC_LIB ${VPL_DEP_DIR}/lib/libx264.so)
+   if(NOT EXISTS ${H264_ENC_LIB})
+     message(FATAL_ERROR "Could not find x264 libraries")
+   else()
+     message(STATUS "Building with GPL x264 for AVC implementation")
+   endif()
+ elseif(BUILD_OPENH264)
+-  set(H264_ENC_LIB ${VPL_DEP_DIR}/lib/libopenh264.a)
++  set(H264_ENC_LIB ${VPL_DEP_DIR}/lib/libopenh264.so)
+   if(NOT EXISTS ${H264_ENC_LIB})
+     message(FATAL_ERROR "Could not find openh264 libraries")
+   else()
+@@ -157,7 +157,7 @@ if(WIN32)
+   # openH264 lib dependencies
+   if(BUILD_OPENH264)
+     findmingwlib(STDCPP_LIB ${MINGW_PATH} lib/gcc/${gcc_name}/${gcc_version}
+-                 libstdc++.a)
++                 libstdc++.so)
+     if(NOT EXISTS ${STDCPP_LIB})
+       message(
+         FATAL_ERROR "Could not find expected MinGW stdc++ runtime libraries")
+@@ -169,14 +169,14 @@ if(WIN32)
+ 
+   # Common libs from mingw
+   findmingwlib(GCC_LIB ${MINGW_PATH} lib/gcc/${gcc_name}/${gcc_version}
+-               libgcc.a)
++               libgcc.so)
+   findmingwlib(GCC_EH_LIB ${MINGW_PATH} lib/gcc/${gcc_name}/${gcc_version}
+-               libgcc_eh.a)
++               libgcc_eh.so)
+ 
+-  findmingwlib(BCRYPT_LIB ${MINGW_PATH} ${gcc_name}/lib libbcrypt.a)
+-  findmingwlib(MINGW32_LIB ${MINGW_PATH} ${gcc_name}/lib libmingw32.a)
+-  findmingwlib(MINGWEX_LIB ${MINGW_PATH} ${gcc_name}/lib libmingwex.a)
+-  findmingwlib(PTHREAD_IMPLIB ${MINGW_PATH} ${gcc_name}/lib libpthread.dll.a)
++  findmingwlib(BCRYPT_LIB ${MINGW_PATH} ${gcc_name}/lib libbcrypt.so)
++  findmingwlib(MINGW32_LIB ${MINGW_PATH} ${gcc_name}/lib libmingw32.so)
++  findmingwlib(MINGWEX_LIB ${MINGW_PATH} ${gcc_name}/lib libmingwex.so)
++  findmingwlib(PTHREAD_IMPLIB ${MINGW_PATH} ${gcc_name}/lib libpthread.dll.so)
  
    if(NOT EXISTS ${GCC_LIB})
+     message(FATAL_ERROR "Could not find expected MinGW GCC runtime libraries")

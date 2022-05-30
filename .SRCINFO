@@ -1,21 +1,22 @@
 pkgbase = onevpl-cpu
 	pkgdesc = oneVPL runtime implementation for CPU
-	pkgver = 2022.0.0
+	pkgver = 2022.1.4
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = onevpl
+	makedepends = openh264
 	makedepends = svt-hevc
 	depends = ffmpeg
 	provides = onevpl-runtime
 	options = !emptydirs
-	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2022.0.0/onevpl-cpu-2022.0.0.tar.gz
+	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2022.1.4/onevpl-cpu-2022.1.4.tar.gz
 	source = 010-onevpl-cpu-fix-libs.patch
 	source = 020-onevpl-cpu-googletest-remove-werror.patch
-	sha256sums = 6f143db3db1f0c6c6d8eb5833fdd5da4627602ceafaf93b4eeee65796bf54cc2
-	sha256sums = ab8858a2fd1da6de829c180fdf91e41cbaa7caca71ebcb7dff377816ba42c7b0
+	sha256sums = 88a156ec57016813297c83ea0aa30e3d631aad2e1821c3fc3e5a573d1dc21a80
+	sha256sums = 3e27f4634dfb3b563dfec9d85082e20abbeb58bf489782e901fab102106ca7c5
 	sha256sums = a0caaa1dd7701b6a13ebe58bc6917c4f10f787f33d4d7e53d52766ddf985b980
 
 pkgname = onevpl-cpu
