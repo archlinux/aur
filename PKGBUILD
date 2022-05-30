@@ -4,7 +4,7 @@
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=25.40.1.r0.gd209bb7f7
+pkgver=32.68.2.r0.g22832dc21d
 pkgrel=1
 pkgdesc="Renovate - Dependency update tool (Git version)"
 arch=(any)
