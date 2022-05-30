@@ -1,4 +1,6 @@
-# Maintainer: navigaid <navigaid@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: zer0def
+# Contributor: navigaid <navigaid@gmail.com>
 
 pkgname=naiveproxy-bin
 _pkgname=naiveproxy
