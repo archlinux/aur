@@ -1,19 +1,20 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=flac2mp3-git
-pkgver=r165.16da5f5
-pkgrel=2
+pkgver=1.0.0.r5.g101330e
+pkgrel=1
 pkgdesc="a perl script to convert FLAC files to MP3 format"
 arch=('any')
 url="https://github.com/robinbowes/flac2mp3"
 license=('GPL')
 depends=('perl' 'perl-data-dump' 'perl-file-find-rule' 'perl-audio-flac-header' 'perl-file-which' 'perl-mp3-tag' 'perl-proc-parallelloop' 'perl-parallel-forkmanager')
-source=("${pkgname}"::'git://github.com/robinbowes/flac2mp3')
+makedepends=('git')
+source=("${pkgname}"::'git+https://github.com/robinbowes/flac2mp3')
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
