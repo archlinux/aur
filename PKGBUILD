@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=gyro
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="An unofficial package manager for the Zig programming language"
 url="https://github.com/mattnite/gyro"
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '053228c8947b15b2c935a9d507b4737a03ff69af8317ba91e0668b177aecd715'
+  '349b6d4e7dcd6e9696b7a4fe06ac18517012af3b703e9bb247554475b2c0789e'
 )
 
 prepare() {
