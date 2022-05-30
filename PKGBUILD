@@ -2,8 +2,8 @@
 
 _pkgname=f4pga
 pkgname="$_pkgname-git"
-pkgver=r758.a4ff811
-pkgrel=1
+pkgver=r765.42fc3f8
+pkgrel=2
 pkgdesc="F4PGA tools"
 arch=(any)
 url="https://github.com/chipsalliance/$_pkgname"
@@ -22,6 +22,12 @@ pkgver() {
 	cd "$_pkgname"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$_pkgname"
+
+	find f4pga/wrappers/sh -type f | xargs sed -i -e 's#\$F4PGA_ENV_SHARE#/usr/share/symbiflow#g'
 }
 
 build() {
