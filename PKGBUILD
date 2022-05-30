@@ -3,9 +3,9 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=101.0.4951.41_1
+pkgver=102.0.5005.61_1
 pkgrel=1
-_pkgver=101.0.4951.41
+_pkgver=102.0.5005.61
 _pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -13,9 +13,10 @@ license=('BSD')
 depends=("gcc-libs" "glibc")
 # makedepends=("ninja" "gn" "llvm" "lld" "clang" "ccache" "python" "unzip")
 makedepends=("ninja" "gn" "ccache" "python" "unzip")
+checkdepends=("python")
 
-_PGO_PATH='chrome-linux-4951-1650389737-545882ae3e5c9e7f75e0781c8dc0d1eafb667efd.profdata'
-_clang_path='clang-llvmorg-15-init-3677-g8133778d-4.tgz'
+_PGO_PATH='chrome-linux-5005-1652783756-51c73d0c010d6007ebdf3ca8150e9544cb705cc6.profdata'
+_clang_path='clang-llvmorg-15-init-7570-gba4537b2-1.tgz'
 
 source=(
   "naiveproxy.service"
@@ -30,22 +31,18 @@ noextract=(
   "${_clang_path}"
 )
 
-sha1sums=(
-  "4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8"
-  "013b31ae43e309bc6560b61e8b4196f8f14f738f"
-  "3727d7da81b1480d60e593a7d6878d981b35c4f6"
-  "ddebc7fcbcd59820f208d2708510ce3a1a1b1e4b"
-  "545882ae3e5c9e7f75e0781c8dc0d1eafb667efd"
-  "895d8d24961f45089d376c23400dfa05c00a108c"
-)
-sha256sums=(
-  "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
-  "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
-  "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
-  "890720b00ed81eacb11388b5c1a1d00c98182db6b57e87ba0053a5300aacfd5c"
-  "5b1490bb6176f0f70d19029701a2a2f8e26c9df01781db41b946659e3972892b"
-  "26d8c347253528e6dca471fa040d0e5e0f8eb55e6ec9671a673b88c723330a21"
-)
+sha1sums=('4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8'
+          '013b31ae43e309bc6560b61e8b4196f8f14f738f'
+          '3727d7da81b1480d60e593a7d6878d981b35c4f6'
+          '5dae5eebe0332cb5182a2034c7e34ad161db56b7'
+          '51c73d0c010d6007ebdf3ca8150e9544cb705cc6'
+          '0eb5dc8cbda0bdc8ce927a55e0f748c829629a25')
+sha256sums=('c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f'
+            'daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440'
+            '5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb'
+            '725d4ab5898691c3c21c8116f6251a9d34ed36b11ac3a20fcb4bbd057c0a434d'
+            'd85a1683a1eb53c6efd8cf5f5423e275d531fe41807fb875a60a4f93de50b45f'
+            '40090455226011c896ecae5770c55a06deb39849f8b6a3c167e7ced843154073')
 
 backup=(etc/naiveproxy/config.json)
 provides=('naiveproxy')
@@ -55,13 +52,13 @@ prepare() {
   SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
 
   mkdir -p ${SRC_DIR}/chrome/build/pgo_profiles
-  cp ${_PGO_PATH} ${SRC_DIR}/chrome/build/pgo_profiles
+  cp ${_PGO_PATH} ${SRC_DIR}/chrome/build/pgo_profiles/
 
   mkdir -p ${SRC_DIR}/third_party/llvm-build/Release+Asserts
-  tar xzf ${_clang_path} -C ${SRC_DIR}/third_party/llvm-build/Release+Asserts
+  tar xzf ${_clang_path} -C ${SRC_DIR}/third_party/llvm-build/Release+Asserts/
 }
 
-build(){
+build() {
   SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
   pushd ${SRC_DIR}
 
@@ -137,19 +134,28 @@ build(){
   popd
 }
 
+check() {
+  SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
+  script_dir="${SRC_DIR}/tests"
+  naive="${SRC_DIR}/src/out/Release/naive"
+
+  cd /tmp
+  python "${script_dir}/basic.py" --naive="$naive"
+}
+
 package(){
-  pushd ${srcdir}
-  install -Dm644 naiveproxy.service ${pkgdir}/usr/lib/systemd/system/naiveproxy.service
-  install -Dm644 naiveproxy@.service ${pkgdir}/usr/lib/systemd/system/naiveproxy@.service
-  install -Dm644 naiveproxy.sysusers ${pkgdir}/usr/lib/sysusers.d/naiveproxy.conf
+  pushd "${srcdir}"
+    install -Dm644 naiveproxy.service ${pkgdir}/usr/lib/systemd/system/naiveproxy.service
+    install -Dm644 naiveproxy@.service ${pkgdir}/usr/lib/systemd/system/naiveproxy@.service
+    install -Dm644 naiveproxy.sysusers ${pkgdir}/usr/lib/sysusers.d/naiveproxy.conf
   popd
 
-  pushd ${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}
-  install -d -m750 -o 0 -g 287 ${pkgdir}/etc/naiveproxy
-  install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
-  install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/naiveproxy/README.md
-  install -Dm644 USAGE.txt ${pkgdir}/usr/share/doc/naiveproxy/USAGE.txt
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
+  pushd "${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}"
+    install -d -m750 -o 0 -g 287 ${pkgdir}/etc/naiveproxy
+    install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
+    install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
+    install -Dm644 README.md ${pkgdir}/usr/share/doc/naiveproxy/README.md
+    install -Dm644 USAGE.txt ${pkgdir}/usr/share/doc/naiveproxy/USAGE.txt
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
   popd
 }
