@@ -1,7 +1,7 @@
+/pkg/
+/src/
 *.gz
 *.xz
 *.zip
-/pkg
-/src
-*.log*
 *.zst
+*.log*
