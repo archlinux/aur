@@ -1,13 +1,14 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname=seiscomp-git
-pkgver=4.8.4.r0.gf49807e
+pkgver=4.9.3.r0.gb975d57
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version)."
 arch=('x86_64')
 url="https://github.com/SeisComP"
 license=('AGPL3')
 depends=('boost-libs' 'inetutils' 'libxml2' 'mariadb' 'ncurses' 'openssl' 'python' 'python-dateutil' 'python-numpy' 'python-twisted' 'qt5-base' 'qt5-svg' 'sqlite')
-makedepends=('boost' 'cmake' 'gcc-fortran' 'git' 'libmariadbclient' 'python-myst-parser' 'python-sphinx' 'postgresql-libs')
+makedepends=('boost' 'cmake' 'gcc-fortran' 'git' 'libmariadbclient' 'python-myst-parser' 'python-sphinx' 'python-sphinxcontrib-bibtex' 'postgresql-libs')
 optdepends=("${pkgname%-git}-maps: for SeisComp default map files"
             "nmxptool: for seedlink nmxp plugin"
             "postgresql: for using PostgreSQL database")
@@ -15,13 +16,13 @@ provides=("${pkgname%-git}" "${pkgname%-git}-docs")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-docs")
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}/seiscomp.git"
-		"${pkgname%-git}-seedlink::git+${url}/seedlink.git"
-		"${pkgname%-git}-common::git+${url}/common.git"
-		"${pkgname%-git}-main::git+${url}/main.git"
-		"${pkgname%-git}-extras::git+${url}/extras.git"
-		"${pkgname%-git}-contrib-gns::git+${url}/contrib-gns.git"
-		"${pkgname%-git}-contrib-ipgp::git+${url}/contrib-ipgp.git"
-		"${pkgname%-git}-contrib-sed::git+${url}/contrib-sed.git"
+		"${pkgname%-git}/src/base/seedlink::git+${url}/seedlink.git"
+		"${pkgname%-git}/src/base/common::git+${url}/common.git"
+		"${pkgname%-git}/src/base/main::git+${url}/main.git"
+		"${pkgname%-git}/src/base/extras::git+${url}/extras.git"
+		"${pkgname%-git}/src/base/contrib-gns::git+${url}/contrib-gns.git"
+		"${pkgname%-git}/src/base/contrib-ipgp::git+${url}/contrib-ipgp.git"
+		"${pkgname%-git}/src/base/contrib-sed::git+${url}/contrib-sed.git"
         "${pkgname%-git}.sh"
         "${pkgname%-git}-sysusers.conf"
         "${pkgname%-git}-tmpfiles.conf")
@@ -47,9 +48,9 @@ pkgver() {
 prepare() {
     for scmod in "${scmodules[@]}"
     do
-        mv "${pkgname%-git}-${scmod}" "${pkgname%-git}/src/base/${scmod}"
+        mv "${scmod}" "${pkgname%-git}/src/base/${scmod}"
     done
-    sed -i 's/m2r/myst_parser/g' "${pkgname%-git}/doc/templates/conf.py"
+    sed -i 's/m2r2/myst_parser/g' "${pkgname%-git}/doc/templates/conf.py"
     sed -i 's/\(source_suffix =\).*/\1 ['\''.rst'\'', '\''.md'\'' ]/g' "${pkgname%-git}/doc/templates/conf.py"
     sed -i 's|/base/changelog|changelog </base/CHANGELOG>|g' "${pkgname%-git}/doc/templates/index.rst"
     sed -i '1s/^/```{_sc-changelog:}\n```\n/' "${pkgname%-git}/CHANGELOG.md"
