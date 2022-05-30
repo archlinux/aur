@@ -19,6 +19,22 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.40.2
+
+### Changed
+
+- Updated to the latest SCIP version, fixing a bug for scip-typescript uploads. [sourcegraph/scip#30](https://github.com/sourcegraph/scip/pull/30)
+
+## 3.40.1
+
+### Added
+
+- `src code-intel` is a new alias for `src lsif`. [#748](https://github.com/sourcegraph/src-cli/pull/748)
+
+### Fixed
+
+- Updated to the latest SCIP version, fixing a bug in the `src code-intel upload` conversion for "Find implementations". [sourcegraph/scip#27](https://github.com/sourcegraph/scip/pull/27)
+
 ## 3.40.0
 
 ### Added
@@ -26,6 +42,7 @@ All notable changes to `src-cli` are documented in this file.
 - New command `src debug`. [#731](https://github.com/sourcegraph/src-cli/pull/731)
 - `src lsif upload` now supports the `-gitlab-token` flag. [#721](https://github.com/sourcegraph/src-cli/pull/721)
 - Batch Changes can be applied to Bitbucket Cloud when `src` is used with Sourcegraph 3.40 or later. [#725](https://github.com/sourcegraph/src-cli/pull/725)
+- `src lsif upload` accepts indexes in the [SCIP](https://github.com/sourcegraph/scip) format. [#742](https://github.com/sourcegraph/src-cli/pull/742)
 
 ### Changed
 
