@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=22.0.0
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('e6c41928b5b9917485bd67cec22d15e62cad7a358bf4c711a647979987601250'
+sha256sums=('df6270c1371eaa2aa6eb65b95cbbb2a98b14fa4b7ba0ed45e4ca2fd32df60477'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -27,7 +27,7 @@ prepare () {
 build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Dvulkan-icd-dir=bin
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
@@ -36,7 +36,7 @@ package() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" ninja -C build-${_arch} install
-    rm -r "$pkgdir"/usr/${_arch}/{lib,include}
+    rm -r "$pkgdir"/usr/${_arch}/lib
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
