@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.17.9
+pkgver=5.18.1
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -91,29 +91,17 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
-  0003-tick-Detect-and-fix-jiffies-update-stall.patch
-  0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
-  0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
-  0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
-  0007-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('172424bc41ef2df9b19457ceb022b56a51eb9497529b15ce7e9b8d6f90ad5978'
+sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
             'SKIP'
-            'fb37785c43d90085ab4e7d7cee522cb8232713b6c601d74cfc7234eeaeb1e6b5'
+            '5088714ec20c9c5b063decbf2210f5b153a908a71678aa156f5f3e81394e9c38'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
-            'fc98cccf83629a8d70116b25e9dfdded1f1e108f876d122c99eb581dab5278a4'
-            '787a61e964c74f49206bcdb16be2dd255ce08bff2ea70da547f44abba2f87dee'
-            'de1fbc9f4abbe72ddefa897427b31757eb246d5bcfe46c6e2f4a583da1ff5ab2'
-            '7a59f490388c9dd3a3afaf6c733cb86a1ec0dba2a3cbd720fd72d7445e40449b'
-            '35bc37ee470e1256cc153b2ae3783bf9f9ba450d675ab324a7e202898eadbab9'
-            '55dce32803b8b719bc5262aa8407efe0849828f839d2eca6b31a48147e08d386'
-            'a0c3ecc39c58349e6bd1444d42f598ec189f53c267e80d48c66e945c91a7b831')
+            '93d720a496ac649851ac8e78bcbea93a54e422eb11ef770e84c4d8693e681925')
 
 prepare() {
   cd linux-${pkgver}
