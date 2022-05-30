@@ -1,0 +1,12 @@
+pkgbase = rainfall
+	pkgdesc = A rainfall animation for CLI / unix terminals written in python.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/alpin111/rainfall
+	arch = any
+	license = MIT
+	depends = python>=3.10.4
+	source = git+https://github.com/alpin111/rainfall.git
+	sha256sums = SKIP
+
+pkgname = rainfall
