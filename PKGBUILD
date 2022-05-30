@@ -2,13 +2,14 @@
 
 pkgname=purple-oicq
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A libpurple plugin'
 url='https://github.com/axon-oicq/purple-oicq'
 license=(Unlicense)
 arch=(x86_64)
 depends=('libpurple'
           'json-c'
+	  'glibc'
         )
 makedepends=('make' 'gcc' 'libtool')
 optdepends=('pidgin: For GUI usage of oicq'

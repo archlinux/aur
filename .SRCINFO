@@ -1,7 +1,7 @@
 pkgbase = purple-oicq
 	pkgdesc = A libpurple plugin
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/axon-oicq/purple-oicq
 	arch = x86_64
 	license = Unlicense
@@ -10,6 +10,7 @@ pkgbase = purple-oicq
 	makedepends = libtool
 	depends = libpurple
 	depends = json-c
+	depends = glibc
 	optdepends = pidgin: For GUI usage of oicq
 	optdepends = finch: For cli usage of oicq
 	optdepends = libaxon-bin: qicq backend, binary with systemd service
