@@ -1,8 +1,8 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.9.24
+pkgver=1.9.25
 _splver=0.1.8
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz"
         "spl-token-$_splver.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v$_splver.tar.gz")
-sha256sums=('0a58c811a582f0d018f56a6014f92ffb3140e754c37e32434defa37f4cf1780d'
+sha256sums=('ebed35ae8ccdb8abfe12b865e175fafc15ab05715fb14081be3fa7fe764e6b9a'
             '09d57f880688e3dfafae22801500b3de09f7da8fc43281c11fed8cf0b0c31e7e')
 
 prepare() {
