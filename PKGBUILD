@@ -2,7 +2,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-asan-git
 _pkgname=wlroots
-pkgver=0.16.0.r5387.e279266f
+pkgver=0.16.0.r5542.98c5f58a
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version, with address sanitizer)'
@@ -54,7 +54,7 @@ pkgver () {
 	(
 		set -o pipefail
 		meson introspect --projectinfo "${_builddir_pkgver}" \
-		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)-dev"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${_pkgname}"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
