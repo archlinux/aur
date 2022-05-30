@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu-git
-pkgver=21.3.0.r30.ge629271b
+pkgver=22.4.2.r16.g66ef3aea
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPU (TigerLake and later) (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('onevpl-intel-gpu')
 source=('git+https://github.com/oneapi-src/oneVPL-intel-gpu.git'
         '010-onevpl-intel-gpu-disable-verbose-makefile.patch')
 sha256sums=('SKIP'
-            'c4056b72a2c5dedb54ed19ad56cd0ff60d4dc6d8e991db3d71d18423aa19012e')
+            'c6b17b7026d16d02c3cab7b5081366c24021a86fa173eaee5db310691ce76879')
 
 prepare() {
     patch -d oneVPL-intel-gpu -Np1 -i "${srcdir}/010-onevpl-intel-gpu-disable-verbose-makefile.patch"
