@@ -3,9 +3,9 @@
 
 pkgname=mcpelauncher-linux-git
 pkgver=v0.3.4.r2.g75ec84c
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL3' 'custom')
 makedepends_x86_64=('git' 'cmake' 'clang')
@@ -153,6 +153,9 @@ build() {
 package() {
   cd mcpelauncher-manifest/build || exit 1
   make DESTDIR="$pkgdir" install
+  if [[ $CARCH == "i686" ]]; then
+    mv "$pkgdir/usr/bin/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
+  fi
 
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ../msa-daemon-client/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"

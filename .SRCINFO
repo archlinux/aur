@@ -1,9 +1,10 @@
 pkgbase = mcpelauncher-linux-git
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
 	pkgver = v0.3.4.r2.g75ec84c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	license = custom
 	optdepends = mcpelauncher-msa: Xbox Live support
