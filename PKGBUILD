@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-specification
-pkgver=r379.4337a09
+pkgver=r393.dba688e
 pkgrel=1
 pkgdesc='Specification for the Hare programming language'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(
   'texlive-latexextra'
   'texlive-fontsextra'
 )
-_commit='4337a094feb3ac1310e660e9a14b1652d73c399b'
+_commit='dba688e94c603cc451e77b90f658650f41aa26a4'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
