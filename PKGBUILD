@@ -43,22 +43,18 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Download bfq patchset
-# ATTENTION - one of two predefined values should be selected!
-# 'stable' - stable releases (recommended)
-# 'unstable' - dev releases
-_bfq_rel='stable'
-
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.17
-_minor=1
-_rtver=17
+_major=5.18
+_minor=0
+_rtver=11
 _rtpatchver=rt${_rtver}
-pkgver=${_major}.${_minor}.${_rtpatchver}
-_pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}.${_rtpatchver}
+#_pkgver=${_major}.${_minor}
+pkgver=${_major}.${_rtpatchver}
+_pkgver=${_major}
 _srcname=linux-${_pkgver}
 pkgrel=11
 pkgdesc='Linux RT-BFQ-dev'
@@ -71,21 +67,9 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'texlive-latexextra' 'xmlto')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-
-if [ "$_bfq_rel" = "stable" ]; then
-
- _bfq_name='bfq-lucjan'
- _bfq_ver='r2K220408v1'
- _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
-
-elif [ "$_bfq_rel" = "unstable" ]; then
-
- _bfq_name='bfq-dev-lucjan'
- _bfq_ver='r2K220408v3'
- _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
-
-fi
-
+_bfq_name='bfq-lucjan'
+_bfq_ver='r2K220528v1'
+_bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
@@ -95,14 +79,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_name}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0007-x86-speculation-Restore-speculation-related-MSRs-dur.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0008-Revert-ACPI-processor-idle-Only-flush-cache-on-enter.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -354,21 +331,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0adf0808dd82b49735534fe1aae7d83acbf6e42de214d2e179832f6e6c866dd'
+sha512sums=('dbbc9d1395898a498fa4947fceda1781344fa5d360240f753810daa4fa88e519833e2186c4e582a8f1836e6413e9e85f6563c7770523b704e8702d67622f98b5'
             'SKIP'
-            '6c39e02803b2962adadb839a6d7844b4ba22ab09ccf4040371683fc0abb8d6f17372f159666209c7eb90fcee05dd01767df739a5dc545ceffe3bfb43f30463cd'
+            'd86c9805b24f0385c0b4b0d0f66623a965d561b49d7cf01e12fd49382296b14114363d72828bbfd4b608678f17d211e72b5ac7a3bebbbc5b9ec6f6c236ebfdee'
             'SKIP'
-            '79c3473364f47a4b92faca8318af147e5dd70423567afbdf78db7a58363aa48429aa0bffeaa20c4640a13105511b4b41be3f9824501a74f23aaac21d41e3efc5'
-            'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            '017722a0044acac58fcbd4f1a7ce0b89dce7d40bbbdc94b522a782460cd4d5fe262defa4d450942f718812eb194428edb76689cfd10616f124c62a50453d6583'
-            'cca78bdb4a675f5f2affe4c1eaac98645bce415ba4a2d44905291f499872c08998fb6dc9d661072c54fc7e9b19e83f36a9c0768ee6204f2695b6bb62e1dd82d1'
-            '0f537750dc46752dc060bc5bb4bb648a8073ca1334758478276f683ca5456e10213a934a4b279687548720ba9389a9eb5898a687e15123dd03106da4d4b45511'
-            'af401362dd252bc8133e50dcce295fe71e05cfc84ad8280c4644068a484088b34297fc32bb9619f6241bdc59edd400d4b204f77a9f9aa47831efedac751fcadc'
-            'a9415bdf42163e868da9b4e0f0f8114f167f480e3789c8b5f6abbf08985e9c70c79e0bba10bc3964786b4b8f6d4ada828ba5a2d23ec6ce7625c19653f46d5fac'
-            'a6b89fd887f0ecd8512b4295d025b0c9bda2c711f1ae3b0f5687ff852ffbf6adabcea571ada324b04254dc41e23bec42adc2a5de485bbaae6216de94791adc92'
-            '053f2244bfbe4527dfc9de24e266b7ae35242fa0b5b713d75ba53dad4f71f9bd03349e5a96de3a1cb731ad2dd6fa7225e5cb3633c7b290ac85b8991775de1938'
-            '45462454ac4294d507faf5f68102f38126b8e96bd0f0c5a52441b6af5acf5c6069f5a61b1429365556ccf9a92f2e188d82d500f915e7a2fad83bcabdabdc2086'
-            '57ed3322d1449c024c191eb855ecae9626a2c520f64bcd4feb30c5d87ebd12ecf7ff67ce4a9f01bc6c3f6a3bb7f74849ee329a24e74388542016eebb510b945b')
+            '61b6f29f9ddc52312270845d78018f86a612d000e94f4dfecb654b445d977ca3ae6a0905ab1045e6954f72c79761e6b4ce4990e4f733afe95c89c401fa7b2adb'
+            '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
+            '654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf'
+            'b0e0f9bcc11cbcb96fd2847fcba08f1c3f5f7b451ea9d8d262cbfb4c7a31ca44dadde2a0a72b5f15d620fc123c75b83b1f4fd80b7bc56cdeea23126c6527d953')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
