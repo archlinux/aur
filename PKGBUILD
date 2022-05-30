@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=vim-hare
-pkgver=r42.2500e38
+pkgver=r45.ad43995
 pkgrel=1
 pkgdesc='Vim plugins for Hare'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~sircmpwn/hare.vim'
 license=('custom:vim')
 depends=('vim')
 makedepends=('git')
-_commit='2500e389a8be4953a7618a531c6cd94bb2cd794c'
+_commit='ad43995e5c27bc5a7fdbfc7a5be0909b332e4906'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
