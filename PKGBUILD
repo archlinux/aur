@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-git
-pkgver=2022.0.1.r1.g43c3736
+pkgver=2022.1.4.r0.g8f6d55d
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libva')
 optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
-makedepends=('git' 'cmake' 'libdrm' 'pybind11' 'python' 'libx11')
+makedepends=('git' 'cmake' 'libdrm' 'pybind11' 'python' 'libx11' 'wayland-protocols')
 provides=('onevpl')
 conflicts=('onevpl')
 options=('!emptydirs')
@@ -25,6 +25,7 @@ build() {
     cmake -B build -S oneVPL \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         -DBUILD_PYTHON_BINDING:BOOL='ON' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
         -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
@@ -35,7 +36,7 @@ build() {
 package() {
     make -C build DESTDIR="$pkgdir" install
     install -d -m755 "${pkgdir}/usr/share/licenses"
-    mv "${pkgdir}/usr/share/doc/oneVPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/vpl/licensing" "${pkgdir}/usr/share/licenses/${pkgname}"
     
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
