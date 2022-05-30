@@ -7,7 +7,7 @@
 # Contributor: mrfaber <lenelsner@uos.de>
 
 pkgname="isso-git"
-pkgver=0.12.6.r96.g2525865
+pkgver=0.12.6.r398.g10e5a90
 pkgrel=1
 pkgdesc="Lightweight commenting server written in Python and JavaScript"
 url="http://posativ.org/isso/"
@@ -57,5 +57,5 @@ package(){
  install -D -m 644 "$srcdir/isso.sysusers" "$pkgdir/usr/lib/sysusers.d/isso.conf"
  install -D -m 644 "$srcdir/isso.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/isso.conf"
  # copy default configuration
- install -D -m 640 "share/isso-dev.cfg" "$pkgdir/etc/isso.cfg"
+ install -D -m 640 "contrib/isso-dev.cfg" "$pkgdir/etc/isso.cfg"
 }

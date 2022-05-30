@@ -1,6 +1,6 @@
 pkgbase = isso-git
 	pkgdesc = Lightweight commenting server written in Python and JavaScript
-	pkgver = 0.12.6.r96.g2525865
+	pkgver = 0.12.6.r398.g10e5a90
 	pkgrel = 1
 	url = http://posativ.org/isso/
 	arch = any
