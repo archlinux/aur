@@ -1,11 +1,11 @@
 pkgbase = veusz
 	pkgdesc = A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veusz.github.io/
 	arch = x86_64
 	license = GPL2
-	makedepends = sip>=5.0
+	makedepends = sip-65
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = hicolor-icon-theme
