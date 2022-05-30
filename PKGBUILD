@@ -10,7 +10,7 @@ pkgname=('xgboost-git'
 if $_with_r; then
   pkgname+=('r-xgboost-git')
 fi
-pkgver=r4244.306e38ff3
+pkgver=r5804.6275cdc48
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '4940b84afffe9c2be646d0f77bcfb0d8d36aadcabc4a83b40113e1d97ae917b5')
+            'SKIP')
 
 pkgver() {
   cd "${_name}"

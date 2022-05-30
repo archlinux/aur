@@ -2,12 +2,12 @@ diff --git a/python-package/setup.py b/python-package/setup.py
 index e1433af05..3fa20467d 100644
 --- a/python-package/setup.py
 +++ b/python-package/setup.py
-@@ -283,7 +283,6 @@ if __name__ == '__main__':
+@@ -339,7 +339,6 @@
            cmdclass={
-               'build_ext': BuildExt,
-               'sdist': Sdist,
--              'install_lib': InstallLib,
-               'install': Install
+               'build_ext': BuildExt,     # type: ignore
+               'sdist': Sdist,            # type: ignore
+-              'install_lib': InstallLib,  # type: ignore
+               'install': Install          # type: ignore
            },
            extras_require={
 diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
