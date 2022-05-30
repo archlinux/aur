@@ -1,0 +1,14 @@
+pkgbase = python-pipe
+	pkgdesc = A Python library to use infix notation in Python
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/JulienPalard/Pipe
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.7
+	source = pipe-2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pipe/pipe-2.0.tar.gz
+	sha256sums = a1cf3f29f98576b7e6552231142bc711e8dd324513a2c4525fc68c33f47fabad
+
+pkgname = python-pipe
