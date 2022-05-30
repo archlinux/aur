@@ -3,8 +3,9 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Kyle <kyle@gmx.ca>
+
 pkgname=java-atk-wrapper-openjdk-ea
-pkgver=0.38.0
+pkgver=0.40.0
 pkgrel=1
 _jvmver=19
 pkgdesc="ATK wrapper for screen reader access to Java Swing applications - OpenJDK ${_jvmver}"
@@ -17,7 +18,7 @@ provides=("java-atk-wrapper-openjdk=${_jvmver}")
 conflicts=("java-atk-wrapper-openjdk=${_jvmver}")
 options=(!emptydirs)
 source=("${url}/-/archive/${pkgver}/${pkgname%-openjdk-ea}-${pkgver}.tar.bz2")
-sha256sums=('411ef463ac843beca8e96cd57a1771ca752f0c2703c569045235c3a587c60542')
+sha256sums=('2456fc3cde27e185ec417ae5b64b59d34197b5ece18319c9a6eaa5f10eccaa7e')
 
 prepare() {
 	cd ${pkgname%-openjdk-ea}-${pkgver}
@@ -39,4 +40,4 @@ package() {
 	rm "${pkgdir}"/usr/lib/*.so*
 	rm -f "${pkgdir}"/usr/lib/jvm/java-${_jvmver}-openjdk/conf/*
 }
-# vim: ts=4 sw=4:
+# vim: ts=4 sw=4 et:
