@@ -1,7 +1,7 @@
 # Maintainer: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-web-git
-pkgver=9.4.4
-pkgrel=2
+pkgver=9.4.5
+pkgrel=1
 pkgdesc="适用于 MCSManager 的面板端（Web）程序。"
 arch=(x86_64)
 url="https://github.com/MCSManager/MCSManager-Web-Production"
