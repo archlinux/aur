@@ -1,7 +1,7 @@
 pkgbase = pdfrankenstein
 	pkgdesc = PDF Annotator of Nightmares
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxplot/pdfrankenstein
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = pdfrankenstein
 	makedepends = git
 	depends = inkscape
 	depends = qpdf
+	depends = poppler
 	source = git+https://github.com/oxplot/pdfrankenstein#tag=v0.9
 	sha512sums = SKIP
 

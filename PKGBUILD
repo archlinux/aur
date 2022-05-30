@@ -2,13 +2,13 @@
 
 pkgname=pdfrankenstein
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF Annotator of Nightmares"
 url="https://github.com/oxplot/$pkgname"
 arch=("x86_64")
 license=("BSD")
 makedepends=("go>=1.18" "git")
-depends=("inkscape" "qpdf")
+depends=("inkscape" "qpdf" "poppler")
 source=("git+https://github.com/oxplot/$pkgname#tag=v$pkgver")
 sha512sums=('SKIP')
 
