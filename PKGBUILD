@@ -2,7 +2,7 @@
 # Upstream-Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom-native
-_srctag=GE-Proton7-19
+_srctag=GE-Proton7-20
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
