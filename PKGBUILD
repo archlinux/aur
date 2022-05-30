@@ -3,19 +3,19 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.25.0
-pkgrel=2
+pkgver=1.26.0
+pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs-lts-erbium' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs>=12' 'nodejs<18' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'yarn' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
-_tools_commit=91b0df468d0352e0fddbba34d9743e6c92b65513
+_tools_commit=9459237357dab53226b31d502644151fc2d2fb12
 source=(
   "theia-electron.sh"
   "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
@@ -26,8 +26,8 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
-            '4389fe32082820b5f89578ce85006507f9d17b8496dd2e00b41189da9754fd87'
-            'bced2cecb21434563f72c6a46e577a802d9d6a756c178a870db1f69ac010c4ba'
+            'a1d37799b39c75329d4ef8083e21282ccec02b4af7c0228c413f4e5359c67458'
+            '0b9deba070c7ed601ecc288a4d26faa5a3028842837b570a262e6c2327bb6777'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             '25f7748c49f29bd35a28b1f9509357367f2c83c5a275162a969e3c2210432d54'
