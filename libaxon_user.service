@@ -1,0 +1,11 @@
+[Unit]
+Description=A oicq backend.
+After=network.target
+
+[Service]
+Type=exec
+Restart=on-abort
+ExecStart=/usr/bin/libaxon
+
+[Install]
+WantedBy=default.target

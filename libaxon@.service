@@ -1,0 +1,15 @@
+[Unit]
+Description=A oicq backend.
+After=network.target
+After=local-fs.target
+After=systemd-logind.service
+
+
+[Service]
+Type=exec
+User=%i
+Restart=on-abort
+ExecStart=/usr/bin/libaxon
+
+[Install]
+WantedBy=multi-user.target
