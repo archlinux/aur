@@ -1,23 +1,25 @@
-# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# https://aur.archlinux.org/packages/python-types-python-dateutil
+groups=('modified')
+
 pkgname=python-types-python-dateutil
-_pkgname=${pkgname:7}
-pkgver=2.8.10
+_name=${pkgname#python-}
+pkgver=2.8.17
 pkgrel=1
 pkgdesc="Typing stubs for python-dateutil"
 arch=('any')
-url="https://pypi.org/project/${pkgname}"
-license=(Apache)
-makedepends=(python-build python-installer python-wheel)
-depends=(python)
-source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('6bcf3aae7242e5793bafd7b2bcfb4e255eb7b2b3144acd0df0e182dce58ccad3')
+url="https://github.com/python/typeshed"
+license=('Apache')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('6c54265a221681dd87f61df6743bd5eab060cf1b4086ff65c1a8fd763ed6370e')
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-    python -m build --wheel --no-isolation
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
