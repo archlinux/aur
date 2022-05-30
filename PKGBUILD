@@ -1,9 +1,9 @@
-# Maintainer: Sambhav <samb at disroot dot org>
+# Maintainer: Ersei <samb at disroot dot org>
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=v0.1.beta.2.r135.g8cae128
-pkgrel=2
+pkgver=v0.3.4.r2.g75ec84c
+pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -142,8 +142,8 @@ prepare() {
 build() {
   cd mcpelauncher-manifest || exit 1
   # Hacky solution to fix compile
-  sed -i '22i#include <mutex>' mcpelauncher-linker/core/liblog/logger_write.cpp
-  sed -i '26i#include <limits>' mcpelauncher-linker/core/libziparchive/zip_archive_stream_entry.cc
+  #sed -i '22i#include <mutex>' mcpelauncher-linker/core/liblog/logger_write.cpp
+  #sed -i '26i#include <limits>' mcpelauncher-linker/core/libziparchive/zip_archive_stream_entry.cc
   mkdir -p build
   cd build || exit
   CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_DEV_PATHS=OFF -Wno-dev ..
