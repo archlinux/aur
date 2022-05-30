@@ -2,7 +2,7 @@
 
 pkgname=icoextract
 pkgver=0.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Icon extractor for Windows PE files (.exe/.dll) with optional thumbnailer functionality'
 arch=('any')
 url='https://github.com/jlu5/icoextract'
@@ -32,4 +32,6 @@ package() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 exe-thumbnailer.thumbnailer "${pkgdir}"/usr/share/thumbnailers/exe-thumbnailer.thumbnailer
+
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/icoextract/LICENSE
 }
