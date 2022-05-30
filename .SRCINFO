@@ -7,12 +7,10 @@ pkgbase = mpd-rich-presence-discord-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = discord-rpc-api
 	depends = libmpdclient
 	depends = gcc-libs
-	depends = discord-rpc-api
+	depends = discord-rpc-git
 	source = git+https://github.com/justas-d/mpd-rich-presence-discord.git
 	md5sums = SKIP
 
 pkgname = mpd-rich-presence-discord-git
-
