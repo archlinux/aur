@@ -1,17 +1,15 @@
 pkgbase = mle-git
 	pkgdesc = Flexible terminal-based text editor
-	pkgver = r379.af76670
-	pkgrel = 3
+	pkgver = r503.e4dc431
+	pkgrel = 1
 	url = https://github.com/adsr/mle
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = uthash
 	depends = pcre
-	depends = termbox
 	depends = lua
 	source = mle-git::git+https://github.com/adsr/mle
 	sha512sums = SKIP
 
 pkgname = mle-git
-
