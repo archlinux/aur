@@ -1,6 +1,6 @@
 pkgbase = inform7-ide-git
 	pkgdesc = a ide for the inform language/compiler
-	pkgver = 0.5.r724.gd4b9b79c
+	pkgver = 0.5.r728.ge6ded50f
 	pkgrel = 1
 	url = https://github.com/ptomato/inform7-ide
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = inform7-ide-git
 	depends = libratify-git
 	depends = libchimara-git
 	depends = rsync
+	depends = vala
 	provides = inform7-ide
 	source = git+https://github.com/ptomato/inform7-ide
 	source = git+https://github.com/ganelson/inweb

@@ -1,12 +1,12 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=inform7-ide-git
-pkgver=0.5.r724.gd4b9b79c
+pkgver=0.5.r728.ge6ded50f
 pkgrel=1
 pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
 url="https://github.com/ptomato/inform7-ide"
 license=('GPL3')
-depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync')
+depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala')
 makedepends=('meson' 'ninja')
 provides=('inform7-ide')
 source=("git+https://github.com/ptomato/inform7-ide" "git+https://github.com/ganelson/inweb" "git+https://github.com/ganelson/intest" "git+https://github.com/ganelson/inform")
