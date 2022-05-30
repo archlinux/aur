@@ -1,8 +1,8 @@
 pkgbase = keepass-keetheme
 	pkgdesc = A plugin that provides a dark theme for keepass
 	pkgver = 0.9.11
-	pkgrel = 1
-	url = https://www.gnu.org/software/patch/patch.html
+	pkgrel = 2
+	url = https://github.com/xatupal/KeeTheme
 	arch = x86_64
 	license = MIT
 	depends = keepass

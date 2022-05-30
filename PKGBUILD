@@ -2,10 +2,10 @@
 
 pkgname=keepass-keetheme
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin that provides a dark theme for keepass"
 arch=('x86_64')
-url="https://www.gnu.org/software/patch/patch.html"
+url="https://github.com/xatupal/KeeTheme"
 license=('MIT')
 depends=('keepass')
 source=("https://github.com/xatupal/KeeTheme/releases/download/v${pkgver}/KeeTheme.plgx")
