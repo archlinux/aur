@@ -2,12 +2,14 @@
 
 pkgname=keyd
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/$pkgname"
 license=('MIT')
-source=("git+$url.git#tag=v$pkgver")
+# https://github.com/rvaiya/keyd/tags
+_commit=90c3687fd507761ae45ef3b0180848187c181ef8
+source=("git+$url.git#tag=$_commit")
 install=keyd.install
 sha256sums=('SKIP')
 
