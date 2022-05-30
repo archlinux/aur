@@ -18,9 +18,6 @@ _makexconfig=
 ### Tweak kernel options prior to a build via gconfig
 _makegconfig=
 
-### Running with a 1000 HZ tick rate
-_1k_HZ_ticks=y
-
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -43,21 +40,19 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Running with a 1000 HZ tick rate
+_1k_HZ_ticks=
+
 ### Do not edit below this line unless you know what you're doing
 
-pkgbase=linux-rt-bfq-dev
-# pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
+pkgbase=linux-bfq-dev
+# pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.18
-_minor=0
-_rtver=11
-_rtpatchver=rt${_rtver}
-#pkgver=${_major}.${_minor}.${_rtpatchver}
-#_pkgver=${_major}.${_minor}
-pkgver=${_major}.${_rtpatchver}
-_pkgver=${_major}
-_srcname=linux-${_pkgver}
-pkgrel=12
-pkgdesc='Linux RT-BFQ-dev'
+_minor=1
+pkgver=${_major}.${_minor}
+pkgrel=1
+_srcname=linux-${pkgver}
+pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
@@ -75,8 +70,6 @@ _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_name}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -90,12 +83,9 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd $_srcname
 
-    ### Add rt patch
-        echo "Add rt patch"
-        patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
-
     ### Setting version
         echo "Setting version..."
+        sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -191,9 +181,9 @@ _package() {
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-rt-bfq)
-    replaces=('linux-rt-bfq')
-    conflicts=('linux-rt-bfq')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-bfq)
+    replaces=('linux-bfq')
+    conflicts=('linux-bfq')
 
   cd $_srcname
   local kernver="$(<version)"
@@ -217,10 +207,10 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-rt-bfq-dev' 'pahole')
-    replaces=('linux-rt-bfq-headers')
-    conflicts=('linux-rt-bfq-headers')
-    provides=('linux-rt-bfq-headers')
+    depends=('linux-bfq-dev' 'pahole')
+    replaces=('linux-bfq-headers')
+    conflicts=('linux-bfq-headers')
+    provides=('linux-bfq-headers')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -302,10 +292,10 @@ _package-headers() {
 
 _package-docs() {
     pkgdesc="Documentation for the $pkgdesc kernel"
-    depends=('linux-rt-bfq-dev')
-    replaces=('linux-rt-bfq-docs')
-    conflicts=('linux-rt-bfq-docs')
-    provides=('linux-rt-bfq-docs')
+    depends=('linux-bfq-dev')
+    replaces=('linux-bfq-docs')
+    conflicts=('linux-bfq-docs')
+    provides=('linux-bfq-docs')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -331,20 +321,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('dbbc9d1395898a498fa4947fceda1781344fa5d360240f753810daa4fa88e519833e2186c4e582a8f1836e6413e9e85f6563c7770523b704e8702d67622f98b5'
-            'SKIP'
-            'd86c9805b24f0385c0b4b0d0f66623a965d561b49d7cf01e12fd49382296b14114363d72828bbfd4b608678f17d211e72b5ac7a3bebbbc5b9ec6f6c236ebfdee'
+sha512sums=('1d3f676403b7f21c6790cac568e9655f95012c250a7d0f35cb8223c8a36ce561b414a25cd85be6892607facb617247d4983f4be426388dd6c6817991a6da928d'
             'SKIP'
             '61b6f29f9ddc52312270845d78018f86a612d000e94f4dfecb654b445d977ca3ae6a0905ab1045e6954f72c79761e6b4ce4990e4f733afe95c89c401fa7b2adb'
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
             '654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf'
-            '8f41acd3019b8db297d934eede98a0b6e5d9970ff9b9d62bad1b5000b0a2193ed4b4b4429eedf66dd00da4635e783ab2b3c3378362c66080baebde8e6985c1a5')
+            'a221f24fd4f0a459234ed6ea75b2d9c7d9b3baa87ecaa0d9a7d128b8c963133eb8c9f0b63c88d11883671ded3b711a3bec598aeaf5aa87649c2c62cab608157b')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-              '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
-              '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73' # Steven Rostedt
-              'E644E2F1D45FA0B2EAA02F33109F098506FF0B14' # Thomas Gleixner
-              'D5653EA39C8675DA4BD5971C13B55DD07C53B851' # Clark Williams
-              )
+             )
