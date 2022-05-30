@@ -1,7 +1,7 @@
 # Maintainer: Star_caorui <Star_caorui@hotmail.com>
 pkgname=mcsm-daemon-git
-pkgver=9.4.4
-pkgrel=1
+pkgver=1.5.5
+pkgrel=2
 pkgdesc="适用于 MCSManager 的守护（daemon）程序。"
 arch=(x86_64)
 url="https://github.com/MCSManager/MCSManager-Daemon-Production"

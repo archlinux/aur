@@ -1,7 +1,7 @@
 pkgbase = mcsm-daemon-git
 	pkgdesc = 适用于 MCSManager 的守护（daemon）程序。
-	pkgver = 9.4.4
-	pkgrel = 1
+	pkgver = 1.5.5
+	pkgrel = 2
 	url = https://github.com/MCSManager/MCSManager-Daemon-Production
 	install = mcsm-daemon-git.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mcsm-daemon-git
 	depends = nodejs>=14
 	source = file://mcsm-daemon.service
 	source = daemon::git+https://github.com/MCSManager/MCSManager-Daemon-Production
-	sha256sums = 5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc
+	sha256sums = 56a03d9b7a65fcbb41c3d19433a0e8dc4f99f909470691c4792399957d3323b8
 	sha256sums = SKIP
 
 pkgname = mcsm-daemon-git
