@@ -1,6 +1,6 @@
 pkgbase = python2-pysodium
 	pkgdesc = Python wrapper for libsodium
-	pkgver = 0.7.11
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://github.com/stef/pysodium
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python2-pysodium
 	depends = libsodium
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.io/packages/source/p/pysodium/pysodium-0.7.11.tar.gz
-	sha256sums = 1a739ff00606595f5e818d9f1414ea82a0c75aed6ba6778f580e52cb5ff6a625
+	source = https://pypi.io/packages/source/p/pysodium/pysodium-0.7.12.tar.gz
+	sha256sums = 3e9005c770dca021889b2fe77db7ffa3c2e98fcac7e3cc1e8e157b9ed78f1fc8
 
 pkgname = python2-pysodium
