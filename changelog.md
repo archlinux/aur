@@ -1,5 +1,10 @@
-## GE-PROTON-7-19 Released
+## GE-Proton-7-20 Released
+- Fix FSR missing
+- Fix some WMV videos broken after previous release (UMVC3, Atelier, RE5)
+- Note: Audio is still broken on some of these (audio was broken before e.g. UMVC3)
+- Fix nvcuda missing
 
+## GE-Proton-7-19 Released
 - V Rising fixes imported from upstream proton
 - More FFXIV fixes imported from upstream proton
 - FFXIV A Realm Reborn intro video missing audio fixed
