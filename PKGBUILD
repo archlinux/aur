@@ -1,37 +1,38 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+# PRs are welcome: https://github.com/yurikoles-aur/zfs-dkms-git
 
 pkgname=zfs-dkms-git
-pkgver=2.0.0rc1.r38.gcd80273909
+pkgver=2.1.99.r1271.g1c0c729ab4
 pkgrel=1
 epoch=2
-pkgdesc="Kernel modules for the Zettabyte File System."
-arch=('any')
-url="https://zfsonlinux.org/"
+pkgdesc='Kernel modules for the Zettabyte File System.'
+arch=('x86_64')
+url='https://zfsonlinux.org/'
 license=('CDDL')
+groups=('zfs-git')
+depends=("zfs-utils-git=${epoch}:${pkgver}" 'dkms')
 makedepends=('git')
-conflicts=("${pkgname%-git}" 'spl-dkms')
 provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" "${pkgname%-git}=${pkgver}" 'spl-dkms')
-# ambiguous, provided for backwards compat, pls don't use
-provides+=('zfs')
+conflicts=("${pkgname%-git}" 'spl-dkms')
 replaces=('spl-dkms-git')
 source=("git+https://github.com/zfsonlinux/zfs.git"
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
-            '780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409')
+            '539f325e56443554f9b87baff33948b91a280ec1daadcb0c636b105252fcd0f5')
 b2sums=('SKIP'
-        '1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50')
+        'a8ab5da81d214e7801f0f8cdf77c076c714a3f17292df15ca35fcf7aef2c4d505348797e3b1da7590ea303ff488490ddba49e6f9e3f8a0bcc975894d51d97c2b')
 
 pkgver() {
-    cd "${srcdir}"/zfs
+    cd zfs
 
     git describe --long | sed 's/^zfs-//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}"/zfs
+    cd zfs
 
     patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
 
@@ -46,7 +47,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/zfs
+    cd zfs
 
     ./scripts/dkms.mkconf -n zfs -v ${pkgver} -f dkms.conf
     # update metadata
@@ -56,13 +57,8 @@ build() {
 }
 
 package() {
-    depends=("zfs-utils-git=${epoch}:${pkgver}" 'dkms')
-
-    cd "${srcdir}"/zfs
-
     dkmsdir="${pkgdir}/usr/src/zfs-${pkgver}"
-    install -d "${dkmsdir}"/{config,scripts}
-    cp -a configure dkms.conf Makefile.in META zfs_config.h.in zfs.release.in include/ module/ "${dkmsdir}"/
-    cp config/compile config/config.* config/missing config/*sh "${dkmsdir}"/config/
-    cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
+    install -d "${dkmsdir}"
+    cp -a zfs/. "${dkmsdir}"
+    rm -rf "${dkmsdir}"/.git*
 }
