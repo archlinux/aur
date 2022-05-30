@@ -7,8 +7,8 @@ pkgbase = nrf5x-command-line-tools
 	license = custom
 	depends = jlink-software-and-documentation
 	provides = nrfjprog
-	conflicts = nrfjprog
 	source_x86_64 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/10-15-4/nrf-command-line-tools-10.15.4_Linux-amd64.tar.gz
 	sha256sums_x86_64 = E5FFDF5BF7786268FE01DD2335328A89AECC99C0B8497F1CA8D1F908A36B8882
+	provides = mergehex
 
 pkgname = nrf5x-command-line-tools
