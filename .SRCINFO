@@ -1,7 +1,7 @@
 pkgbase = dctrl-tools
 	pkgdesc = Command-line tools to process Debian package information
 	pkgver = 2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajkaijanaho/dctrl-tools
 	arch = x86_64
 	license = GPL
