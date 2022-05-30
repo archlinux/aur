@@ -9,5 +9,6 @@ Name[zh_TW]=嗶哩嗶哩
 Comment=Bilibili desktop
 Comment[zh_CN]=哔哩哔哩桌面版
 Comment[zh_TW]=嗶哩嗶哩桌面版
+StartupWMClass=bilibili
 StartupNotify=true
 Terminal=false
