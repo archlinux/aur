@@ -1,11 +1,13 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=liveusb-builder-git
-pkgver=2021.04.3.gcc427a7
+pkgver=2021.04.9.gec66632
 pkgrel=1
 pkgdesc='A script suite to create multiboot USB stick for GNU/Linux distributions'
 license=('GPL3')
-depends=('util-linux' 'libarchive' 'udevil' 'wget' 'syslinux' 'mtools' 'grub')
+depends=('util-linux' 'libarchive' 'wget' 'syslinux' 'mtools' 'grub')
+optdepends=('udisks2: mount partitions on USB drives without being root'
+            'udevil: mount partitions on USB drives and ISO images without being root')
 arch=('any')
 url='https://github.com/mytbk/liveusb-builder'
 source=('git+https://git.wehack.space/liveusb-builder'
@@ -24,5 +26,4 @@ package() {
 pkgver() {
 	cd "$srcdir/liveusb-builder"
 	git describe --always | sed 's/-/./g'
-
 }
