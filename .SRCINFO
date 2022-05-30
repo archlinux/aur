@@ -1,7 +1,7 @@
 pkgbase = onevpl-git
 	pkgdesc = oneAPI Video Processing Library (git version)
 	pkgver = 2022.1.4.r0.g8f6d55d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html
 	arch = x86_64
 	license = MIT

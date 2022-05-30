@@ -2,7 +2,7 @@
 
 pkgname=onevpl-git
 pkgver=2022.1.4.r0.g8f6d55d
-pkgrel=1
+pkgrel=2
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html'
@@ -41,7 +41,13 @@ package() {
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     mv "${pkgdir}/usr/lib/python"{,"$_pyver"}
-    mv "${pkgdir}/usr/bin"/{,vpl-}sample_decode
-    mv "${pkgdir}/usr/bin"/{,vpl-}sample_encode
-    mv "${pkgdir}/usr/bin"/{,vpl-}sample_multi_transcode
+    
+    local _file
+    while read -r -d '' _file
+    do
+        if ! grep -q '^vpl\-' <<< "$_file"
+        then
+            mv "${pkgdir}/usr/bin"/{,vpl-}"$_file"
+        fi
+    done < <(find "${pkgdir}/usr/bin" -mindepth 1 -maxdepth 1 -type f -print0 | sed -z 's|.*/||')
 }
