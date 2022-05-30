@@ -1,7 +1,7 @@
 pkgbase = insync
 	pkgdesc = An unofficial Google Drive and OneDrive client that runs on Linux, with support for various desktops
-	pkgver = 3.7.6.50356
-	pkgrel = 2
+	pkgver = 3.7.7.50360
+	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = x86_64
 	license = custom:insync
@@ -15,10 +15,10 @@ pkgbase = insync
 	depends = xdg-utils
 	optdepends = lib32-libappindicator-gtk2: Required for tray icon in some configurations
 	options = !strip
-	source = http://s.insynchq.com/builds/insync_3.7.6.50356-buster_amd64.deb
+	source = http://s.insynchq.com/builds/insync_3.7.7.50360-buster_amd64.deb
 	source = insync@.service
 	source = insync.service
-	sha256sums = baf1b3c424171d092053c2dd667fa0f167db5a37cd0a94b5eac1bc78d412a1a0
+	sha256sums = ae9f9a45625c4b3217bab25d378008d4e84fb07aefdf2a809803dcc6aa0e7ab0
 	sha256sums = cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598
 	sha256sums = 1432141539a6b3c5333631a2ee6696fab9bd2fe8770643bc670d95e4e96203e0
 
