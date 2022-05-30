@@ -2,7 +2,7 @@
 # Contributor: lukpod <lukpod9@ya.ru>
 
 pkgname=electrum-ltc-git
-pkgver=4.1.0.git20210401.d880731
+pkgver=4.3.0a0.git20220529.1742a2d
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -28,7 +28,9 @@ depends=('hicolor-icon-theme'
 	 'python-aiorpcx'
 	 'python-aiohttp'
          'python-scrypt'
-         'qt5-base')
+         'qt5-base'
+         'python-bitstring'
+         'python-attrs')
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'

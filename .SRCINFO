@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc-git
 	pkgdesc = Litecoin thin client
-	pkgver = 4.1.0.git20210401.d880731
+	pkgver = 4.3.0a0.git20220529.1742a2d
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
@@ -32,6 +32,8 @@ pkgbase = electrum-ltc-git
 	depends = python-aiohttp
 	depends = python-scrypt
 	depends = qt5-base
+	depends = python-bitstring
+	depends = python-attrs
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-amodem: air-gapped transaction signing over audio modem
@@ -52,4 +54,3 @@ pkgbase = electrum-ltc-git
 	sha256sums = SKIP
 
 pkgname = electrum-ltc-git
-
