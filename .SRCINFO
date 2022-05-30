@@ -1,6 +1,6 @@
 pkgbase = goland-eap
 	pkgdesc = Capable and Ergonomic Go IDE
-	pkgver = 222.2270.35
+	pkgver = 222.2680.5
 	pkgrel = 1
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = goland-eap
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/go/goland-222.2270.35.tar.gz
+	source = https://download.jetbrains.com/go/goland-222.2680.5.tar.gz
 	source = jetbrains-goland-eap.desktop
 	source = LICENSE
-	b2sums = 47c302842d8b2029a8b9915de527d591ade77c30b616dfc840bca5ec4045b4148d634ff618f1af8464f62f6174b506ee1ed5856cf6171f6d6387bbd88aa75125
+	b2sums = f1f7280f643c889072454d6c91e06f37c1194b473aaaddc37f45fe6ebd6f9a843d8705cd9c41d5965f2de0a279bda816c3a860488cd3da36acd285bbe1b9e77d
 	b2sums = b985586e25598fbe87d697403e87ed45f8ce7b944e6d3ba02509f4c6f2544e3b7a55f19861d399dadcae699db894d3f2be73039401ac004370115f3cefc1fe9c
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
