@@ -1,5 +1,5 @@
 pkgname=pomo
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=1
 
 pkgdesc='Pomodoro Command Line Interface'
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=('go')
 
 
-source=("https://github.com/kevinschoon/pomo/archive/${pkgver}.tar.gz" "pomo.1.gz")
+source=("https://github.com/kevinschoon/pomo/archive/${pkgver}.tar.gz")
 build() {
 	cd ${pkgname}-${pkgver}
   #export GOOS=linux
@@ -23,11 +23,10 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin
+  gzip -f -k $srcdir/${pkgname}-${pkgver}/man/pomo.1
   install -Dm 755 $srcdir/${pkgname}-${pkgver}/bin/pomo "$pkgdir/usr/bin/pomo"
-  install -Dm 644 $srcdir/pomo.1.gz "$pkgdir/usr/share/man/man1/pomo.1.gz"
+  install -Dm 644 $srcdir/${pkgname}-${pkgver}/man/pomo.1.gz "$pkgdir/usr/share/man/man1/pomo.1.gz"
 }
 
-md5sums=('4884ac7aa8acd674b3f3f8f30f322cf0'
-         'fa5b708af2c606a52d65f3231146fe22')
-sha512sums=('e95faeb1bbe6324063c5ebe9a81b0082ce238abd42385026c04b1582c65ac1494d8e259bfa873058f725c12e0888f2b0d0dad7808102bd0bf763ca79e645637b'
-            'c6b61ca7a6a2f6be154cea4515853ac131e27cbfa52ee1c1d0d9eb78767bccd103efaf1ed0bdd434879f0fac999db24e7e5fb44db492735fee774bd2f2059bc8')
+md5sums=('d6f1d5661ccf0485d02d73f93138d221')
+sha512sums=('53b9608efce6a0820fc9fa3bfb9af406c23f1457bba2113c83b2fe714bff6e6e4d956533691ba7de8ada4db38a37527bed47692524128d275be3ec9a8b9bf758')
