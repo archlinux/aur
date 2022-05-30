@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-config
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Configuration management library for GNU Guile'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://gitlab.com/a-sassmannshausen/guile-config'
 license=('GPL3')
 depends=('guile')
 source=("https://gitlab.com/a-sassmannshausen/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b5850462afc0d336b55af07b9ff373a50527533112ee6c10c9932b19ffada61')
+sha256sums=('c30bb76bf27dcdbda7cc13733cf907e3b28d14dec2a55a89097514be61f3278e')
 
 build() {
   cd "$pkgname-$pkgver"
