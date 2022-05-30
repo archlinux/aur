@@ -1,0 +1,17 @@
+[Unit]
+Description = Netbird Service (%i)
+Documentation = https://netbird.io/docs
+After = network-online.target syslog.target
+Wants = network-online.target
+
+[Service]
+Type = simple
+EnvironmentFile = -/etc/default/netbird
+ExecStart = /usr/bin/netbird service run --config /etc/netbird/%i.json --log-file console $NETBIRD_CLIENT_ARGS
+Restart = on-failure
+RestartSec = 5
+TimeoutStopSec = 10
+
+[Install]
+WantedBy = multi-user.target
+
