@@ -2,13 +2,12 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r102.g01f1be61
-pkgrel=2
+pkgver=2.7.2.r112.g632bb110
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
 makedepends=('git' 'curl' 'lsb-release' 'tar' 'unzip')
-checkdepends=('libSaikaSharp.so>=88.0')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
@@ -42,6 +41,12 @@ prepare(){
 check(){
     cd "${srcdir}/SteamTools"
     PATH="${srcdir}/dotnet-sdk:${PATH}"
+
+    # Fix ST.Client.UnitTest, it just works :P
+    _unit_test_out=tests/ST.Client.UnitTest/bin/Release/net6.0
+    [[ ! -f ${_unit_test_out}/libSkiaSharp.so ]] && \
+        install -Dm644 linux-out/libSkiaSharp.so ${_unit_test_out}/libSkiaSharp.so
+
     dotnet test ./tests/Common.UnitTest/Common.UnitTest.csproj -c "Release"
     dotnet test ./tests/ST.Client.UnitTest/ST.Client.UnitTest.csproj -c "Release"
     dotnet test ./tests/ST.Client.Desktop.UnitTest/ST.Client.Desktop.UnitTest.csproj -c "Release"
