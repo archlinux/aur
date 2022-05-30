@@ -3,7 +3,7 @@
 
 pkgname='navi-bin'
 pkgdesc='An interactive cheatsheet tool for the command-line'
-pkgver='2.19.0'
+pkgver='2.20.1'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/denisidoro/navi'
@@ -15,7 +15,7 @@ checkdepends=()
 provides=('navi')
 conflicts=('navi')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/denisidoro/navi/releases/download/v${pkgver}/navi-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('abba422824669981d4f9c16d9895feb3075c2149289b2fc87ce17b56f316ce9c')
+sha256sums=('fe7ed852e6411f7c2d213cc402eaa22ee6013f4a8d51e7bc87b033021c28d605')
 
 package() {
     install -Dm755 "navi" "$pkgdir/usr/bin/navi"
