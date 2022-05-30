@@ -11,7 +11,7 @@ depends=('nodejs>=14')
 makedepends=('npm')
 source=('file://mcsm-daemon.service'
         'daemon::git+https://github.com/MCSManager/MCSManager-Daemon-Production')
-sha256sums=('5f85e25231e3d4119c215a3ee00e1ae6dd000d8c55c1b8f32194868f882305cc'
+sha256sums=('56a03d9b7a65fcbb41c3d19433a0e8dc4f99f909470691c4792399957d3323b8'
             'SKIP')
 
 build() {
