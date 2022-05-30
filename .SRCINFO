@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop-git
 	pkgdesc = A privacy oriented chat application built on e-mail
-	pkgver = v1.28.2.r7.g667b4f33
+	pkgver = v1.30.0.r0.gbae63334
 	pkgrel = 1
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = any
