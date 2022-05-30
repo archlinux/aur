@@ -3,7 +3,7 @@
 pkgname=libaxon-bin
 _pkgname=libaxon
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='oicq backend'
 url='https://github.com/axon-oicq/axon'
 license=(Unlicense)
@@ -17,18 +17,18 @@ optdepends=('pidgin: For GUI usage of oicq'
             'purple-oicq-git: purple plugin for ocqi, git version'
             'systemd: For init systemd instead of openrc'
             )
-source=("https://github.com/axon-oicq/axon/releases/download/v1.0.1/axon-1.0.1-linux-x86_64"
+source=("http://ci.hackflow.org/job/oicq-axon/8/artifact/dist/oicq-axon-linux-x64.gz"
         "libaxon.install"
         "libaxon@.service"
         "libaxon_user.service")
-sha256sums=('edee85740af52652bb2325ad7b1061a3dca101e078a290f515d5c0890ba89928'
-            '7272853b3cb6b2a787f394ae803a1d731cdd8c7c552c69445a8f7a2b47ba3ab9'
-            'ab5586c4cf93b1cbd77d57c31ce0d3da9d5888301c9b8638dab36e2f71299736'
-            'c28f69e0879b560553750adfd7c456cae96d12e4a6cf63d590e28059caab12ad'
-            )
+sha256sums=("614cb0340407dda56de94e560e14261885df208d2c3cde4f0a068e30110e0c22"
+	    "6251c002f240591219638b1ef487f532a2874cef836f0ec91c62643416de7bca"
+	    "366a164f08ed21363b75ccd946a8e889d02b1c3f421dd0d9ddb73c23d3ae7058"
+	    "7e03b55d48c162d9047c98055b0a3825c174dd36804f04af39db56d038ce9e03"
+           )
 
 package() {
-  install -Dm755 axon-${pkgver}-linux-${CARCH} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm755 oicq-axon-linux-x64 ${pkgdir}/usr/bin/${_pkgname}
   install -Dm644 "libaxon@.service" "${pkgdir}/usr/lib/systemd/system/libaxon@.service"
    install -Dm644 "libaxon_user.service" "${pkgdir}/usr/lib/systemd/user/libaxon.service"
 }

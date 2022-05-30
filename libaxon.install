@@ -1,5 +1,7 @@
 post_install(){
 	echo "=========================="
+	echo "Run 'systemd daemon-reload' first"
+	echo ""
 	echo "Systemd service can be enabled via command:"
 	echo ""
 	echo "systemctl enable libaxon@USERNAME.service"
@@ -16,6 +18,11 @@ post_upgrade(){
 	echo ""
 	echo "systemctl daemon-reload && systemctl restart libaxon.service"
 
+}
+
+pre_remove(){
+	echo "Stop systemd service..."
+	systemctl stop libaxon@${whoami}.serivce
 }
 
 post_remove(){

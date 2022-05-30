@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=exec
 Restart=on-abort
-ExecStart=/usr/bin/libaxon
+ExecStart=/usr/bin/libaxon -c /home/%i/.cache/libaxon/
 
 [Install]
 WantedBy=default.target
