@@ -1,7 +1,7 @@
 pkgbase = mcsm-web-git
 	pkgdesc = 适用于 MCSManager 的面板端（Web）程序。
 	pkgver = 9.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCSManager/MCSManager-Web-Production
 	install = mcsm-web-git.install
 	arch = x86_64
