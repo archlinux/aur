@@ -1,14 +1,14 @@
 pkgbase = r-readxl
 	pkgdesc = Read Excel Files
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=readxl
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = r
 	depends = r-cellranger
-	depends = r-rcpp>=0.12.18
+	depends = r-cpp11>=0.4.0
 	depends = r-tibble>=1.3.1
 	depends = r-progress
 	optdepends = r-covr
