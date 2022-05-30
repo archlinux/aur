@@ -1,0 +1,12 @@
+pkgbase = python-staticmap
+	pkgdesc = A small, python-based library for creating map images with lines and markers.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/komoot/staticmap
+	arch = any
+	license = Apache
+	depends = python
+	source = https://github.com/komoot/staticmap/archive/refs/tags/0.4.3.tar.gz
+	sha256sums = 406db3e119885d928c40eccd531dbf8228d6a9eefd5687dc6c22d361ee22cb60
+
+pkgname = python-staticmap
