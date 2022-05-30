@@ -31,7 +31,7 @@ source=(electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum
 b2sums=(b3327f6bcf23b5caca6196e380e62f154a9f56a5b636a8d0cc49e08ed0ab5a05b4b1a81d9869b92125526339924ccb9b555a704eb7fa98bce59eac6088c7ebfe)
 
 prepare() {
-  sed -i -r 's/sh.*(electrum.*)"/\1/' electrum-ltc-$pkgver/electrum-ltc.desktop
+  sed -i -r 's/sh.+(electrum.+)"/\1/' electrum-ltc-$pkgver/electrum-ltc.desktop
 }
 
 build() {
