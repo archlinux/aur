@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=lucky-git
-pkgver=r659.9618c44
+pkgver=r665.4a2e553
 pkgrel=1
 pkgdesc='A Crystal command-line tool for generating new Lucky Web Applications'
 arch=('x86_64')
