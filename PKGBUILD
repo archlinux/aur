@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-pcie-git
-pkgver=0.1.22.r0.g4348cfd
+pkgver=0.2.0.r0.g3848d98
 pkgrel=1
 pkgdesc="PCI express simulation framework for cocotb"
 arch=('any')
