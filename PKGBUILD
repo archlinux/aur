@@ -1,16 +1,28 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
 conflicts=(mle-git)
-depends=(pcre termbox lua53)
+depends=(pcre lua)
 makedepends=(uthash)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('014a8834a088f410a9ef5cd213140f1e4386726bd277f5fdffdfff8165cd1460ede54d5cb62a26bdef804391a524d398a439977b8f82add3d365936a3c5505ab')
+sha512sums=('b96462dee4212a006a7e93c76954315bb0ead2f28be5e206e3918d9dae2cece6ebf76e6531468f178eb551cd23840ff4c8a77cbedde18808e1c8fd80f25fef49')
+
+prepare () {
+    cd "${pkgname}-${pkgver}"
+    # Avoid locale-dependent assertion
+    # See https://github.com/adsr/mle/commit/e4dc4314b02a324701d9ae9873461d34cce041e5
+    sed -i '/0wv/d' tests/unit/test_bline_insert.c
+
+	# The Arch Linux Lua package does not have an include/lua5.4 subdir,
+	# per-version subdirs are only available for the older releases; but
+	# mle.h wants to use lua5.4/lua*.h nevertheless.
+	ln -snf /usr/include lua5.4
+}
 
 build () {
 	cd "${pkgname}-${pkgver}"
