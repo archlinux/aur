@@ -1,0 +1,22 @@
+pkgbase = 123-bin
+	pkgdesc = Lotus 1-2-3 for Unix release 3.0
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/taviso/123elf
+	arch = i386
+	license = unknown
+	makedepends = unzip
+	makedepends = cpio
+	makedepends = gcc
+	makedepends = binutils
+	depends = lib32-ncurses
+	provides = 123
+	noextract = 123-unix.zip
+	source = 123-bin::git+https://github.com/taviso/123elf.git
+	source = https://archive.org/compress/123-unix/formats=ISO%20IMAGE&file=/123-unix.zip
+	source = 123.sh
+	sha256sums = SKIP
+	sha256sums = ff6e43b904c1611d13baaf6d33df9ccf0ab2153025fbd384ca17ffd16c525e29
+	sha256sums = 02774d899d22c3ea807b5065e6ade1285eb5da175588507a4f047e65bce409b5
+
+pkgname = 123-bin
