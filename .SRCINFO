@@ -1,14 +1,13 @@
-pkgbase = kubectl-kudo-bin
-	pkgdesc = Kubernetes Universal Declarative Operator (KUDO)
-	pkgver = 0.19.0
+pkgbase = tetragon-bin
+	pkgdesc = eBPF-based Security Observability and Runtime Enforcement
+	pkgver = 0.0.0
 	pkgrel = 0
-	url = https://github.com/kudobuilder/kudo
+	url = https://github.com/cilium/tetragon
 	arch = x86_64
 	license = APACHE
-	conflicts = kudo
-	conflicts = kudo-git
-	source = kudo-0.19.0.tar.gz::https://github.com/kudobuilder/kudo/releases/download/v0.19.0/kudo_0.19.0_linux_x86_64.tar.gz
-	sha512sums = 2c21050c660ed84bb2b176ae09805c9d6aff94bece30c97f769d46bc31ac6cf67a3b294ecd7d6cbf538a5a0c3805f4b0cec14633f876697dd20bf7f05104ee3e
+	conflicts = tetragon
+	conflicts = tetragon-git
+	source = tetragon-0.0.0.tar.gz::https://github.com/cilium/tetragon/releases/download/tetragon-cli/tetragon-linux-amd64.tar.gz
+	sha512sums = fccb0f54b228265f480b29b60ac7531bda7a5279004b3ac9cd3d4f2c6094eb7c95db4b7147c87f04a3146b8ceaa92e8fe4b8119d3c65e194181bc78947dc5f04
 
-pkgname = kubectl-kudo-bin
-
+pkgname = tetragon-bin
