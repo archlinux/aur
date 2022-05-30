@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl
-pkgver=2022.0.0
+pkgver=2022.1.4
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
@@ -10,15 +10,16 @@ license=('MIT')
 depends=('libva')
 optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
-makedepends=('cmake' 'libdrm' 'pybind11' 'python' 'libx11')
+makedepends=('cmake' 'libdrm' 'pybind11' 'python' 'libx11' 'wayland-protocols')
 options=('!emptydirs')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('81c545ed05165f530d7fd5f9804376d048aa626cadb487761dd81b3b99e9383e')
+sha256sums=('939f158ea7f011be14069326ee0a95be1776c364032e6ca800b01d2f2b2e9597')
 
 build() {
     cmake -B build -S "oneVPL-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         -DBUILD_PYTHON_BINDING:BOOL='ON' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
         -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
@@ -29,7 +30,7 @@ build() {
 package() {
     make -C build DESTDIR="$pkgdir" install
     install -d -m755 "${pkgdir}/usr/share/licenses"
-    mv "${pkgdir}/usr/share/doc/oneVPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/vpl/licensing" "${pkgdir}/usr/share/licenses/${pkgname}"
     
     local _pyver
     _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
