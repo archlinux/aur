@@ -1,6 +1,6 @@
 pkgbase = sway-asan-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)
-	pkgver = r6863.b4fd4bca
+	pkgver = r6934.251a648e
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = sway-asan-git
 	depends = json-c
 	depends = pango
 	depends = polkit
-	depends = pcre
+	depends = pcre2
 	depends = swaybg-git
 	depends = ttf-font
 	depends = wlroots-git
@@ -31,7 +31,7 @@ pkgbase = sway-asan-git
 	optdepends = wallutils: Timed wallpapers
 	optdepends = waybar: Highly customizable bar
 	provides = sway
-	provides = sway-git=r6863.b4fd4bca
+	provides = sway-git=r6934.251a648e
 	conflicts = sway
 	options = debug
 	backup = etc/sway/config
