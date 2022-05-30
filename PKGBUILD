@@ -16,18 +16,15 @@ source=("git+https://github.com/justas-d/$_pkgname.git")
 md5sums=('SKIP')
 
 build() {
-	cd $srcdir/$_pkgname
+	cd "$srcdir/$_pkgname"
 	./build.sh
 }
 
 package() {
-	cd $srcdir/$_pkgname/release
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/lib/systemd/system/
-	mkdir -p $pkgdir/usr/lib/systemd/user/
-	install -Dm755 mpd_discord_richpresence $pkgdir/usr/bin/
-	ln -s /usr/bin/mpd_discord_richpresence $pkgdir/usr/bin/mpd-rpc
-	install -Dm644 mpd-discord.service $pkgdir/usr/lib/systemd/system/
-	install -Dm644 mpd-discord.service $pkgdir/usr/lib/systemd/user/
+	cd "$srcdir/$_pkgname/release"
+	install -Dm755 mpd_discord_richpresence -t "$pkgdir/usr/bin"
+	ln -s mpd_discord_richpresence "$pkgdir/usr/bin/mpd-rpc"
+	install -Dm644 mpd-discord.service -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 mpd-discord.service -t "$pkgdir/usr/lib/systemd/user"
 }
 
