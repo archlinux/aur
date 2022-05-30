@@ -15,7 +15,7 @@ url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
-conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-qt6')
+conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle')
 options=('!ccache')
 depends=(
     # anki and aqt
