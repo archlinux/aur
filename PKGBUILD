@@ -2,7 +2,7 @@
 
 _pkgname=apalache
 pkgname=$_pkgname-bin
-pkgver=0.25.3
+pkgver=0.25.4
 pkgrel=1
 pkgdesc="A symbolic model checker for TLA+"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('java-runtime>=11'
 makedepends=('patch')
 source=("https://github.com/informalsystems/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz"
         'sys-install.patch')
-sha256sums=('fa96941a98d1feeb987389c4b7f8920aeb5b1495d7402c1dc4b8923bfa6e93a9'
+sha256sums=('85eca0dc353109eee813682179eb401fefee4108810a667fe7c92476c7dfba1b'
             'c88201e1adeb5b50cfadfd55d071dedef8b3199cb1fcd5b5f008e5240be2f08d')
 
 prepare() {
