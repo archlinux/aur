@@ -2,7 +2,7 @@
 
 _pkgname=OpenBoardView
 pkgname=${_pkgname,,}
-pkgver=9.0.0
+pkgver=9.0.3
 pkgrel=1
 pkgdesc='Linux SDL/ImGui edition software for viewing .brd files'
 arch=('i686' 'x86_64')
