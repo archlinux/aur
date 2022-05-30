@@ -2,6 +2,7 @@ pkgbase = pcf2bdf-git
 	pkgdesc = Convert X font from PCF to BDF
 	pkgver = 1.07.r0.g4e80d7f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/ganaware/pcf2bdf
 	arch = i686
 	arch = x86_64
