@@ -1,7 +1,7 @@
 pkgbase = naiveproxy-bin
 	pkgdesc = Camouflages network traffic for strong privacy and censorship resistance. Built from Chromium's network stack.
 	pkgver = 102.0.5005.61_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
 	arch = i686

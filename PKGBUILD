@@ -5,7 +5,7 @@
 pkgname=naiveproxy-bin
 pkgdesc="Camouflages network traffic for strong privacy and censorship resistance. Built from Chromium's network stack."
 pkgver=102.0.5005.61_1    # use underscore (_) instead of dash (-) in pkgver
-pkgrel=1
+pkgrel=2
 url="https://github.com/klzgrad/${pkgname%-bin}"
 license=('BSD')
 depends=('gcc-libs' 'glibc')
@@ -39,7 +39,7 @@ package(){
   pushd "${srcdir}/${_base_tarname}-${_tar_arch[${_current_arch_index}]}"
   install -Dm755 naive "${pkgdir}/usr/bin/${pkgname%-bin}"
   install -Dm644 config.json "${pkgdir}/etc/${pkgname%-bin}/config.json"
-  install -Dm644 USAGE.txt "${pkgdir}/usr/share/doc/${pkgname}/USAGE.txt"
+  install -Dm644 USAGE.txt "${pkgdir}/usr/share/doc/${pkgname%-bin}/USAGE.txt"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   popd
 }
