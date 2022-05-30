@@ -2,7 +2,7 @@
 
 pkgname=netbird
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -24,8 +24,8 @@ source=(
 sha256sums=(
   '99983702588098e43f02db0d31697109d3a5ae0de4137c776059c9673a84a07c'
   '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
-  'eb3566297f3917183132dfc564e2059b568471ed263ae2cf561234d8b5901a08'
-  'eb3566297f3917183132dfc564e2059b568471ed263ae2cf561234d8b5901a08'
+  'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
+  'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
 )
 
 prepare() {
