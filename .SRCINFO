@@ -1,12 +1,12 @@
 pkgbase = memeassembly
 	pkgdesc = A Meme-based programming language
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://kammt.github.io/MemeAssembly/#/
 	arch = x86_64
 	license = GPL3
 	depends = gcc
-	source = https://github.com/kammt/MemeAssembly/archive/refs/tags/v1.4.tar.gz
-	sha256sums = 0deb153d2b9ca315e75948187f2b6936c20e19cf1bdab61a229191161f39dd9f
+	source = https://github.com/kammt/MemeAssembly/archive/refs/tags/v1.5.tar.gz
+	sha256sums = 5383c0785ff6939554d009fc718d42b97f56c883
 
 pkgname = memeassembly
