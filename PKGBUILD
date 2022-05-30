@@ -2,7 +2,7 @@
 
 pkgname=coolero
 _app_id="org.$pkgname.Coolero"
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coolero/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5194ac901b2cb469323ff58a88c14f1ac930998d83b8324ff0de34db98f0caf5')
+sha256sums=('f31aa2af4b5b6c1d86fe493a9d0b8cc7cf046418a5defff683f72c22c0e71f57')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -39,6 +39,12 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm "${pkgdir}${site_packages}/$pkgname-$pkgver.dist-info"/{COPYING,LICENSE}
 
+  # systemd service files
+  install -Dm644 "packaging/systemd/${pkgname}d.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "packaging/systemd/${pkgname}d.socket" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "packaging/systemd/${pkgname}.conf" -t "$pkgdir/usr/lib/sysusers.d/"
+
+  # desktop metadata
   install -Dm644 "metadata/$_app_id.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "metadata/$_app_id.png" -t "$pkgdir/usr/share/pixmaps/"
