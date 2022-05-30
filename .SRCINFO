@@ -16,6 +16,6 @@ pkgbase = deltachat-desktop-git
 	source = deltachat-desktop.sh
 	sha256sums = SKIP
 	sha256sums = bd118380fdfea9f47de6e23445cc995a1a1fa30fe87fcb37ac2981365adadcea
-	sha256sums = b628ed45534a227a5e7e7d75acffb912fc12095f78c23cfd4021cf1ee2aed267
+	sha256sums = cd5c0044fe28b31788b9d0efaac94ba6af8baadad6d122ce19c37874905af27b
 
 pkgname = deltachat-desktop-git
