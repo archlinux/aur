@@ -1,48 +1,45 @@
-# Maintainer: LSUtigers3131
-# https://gitlab.manjaro.org/packages/extra/pamac
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+# Contributer: LSUtigers3131
 
-pkgname=pamac-nosnap
-pkgver=10.3.0
-pkgrel=2
-_pkgfixver=$pkgver
+_pkgname=pamac
+pkgname=$_pkgname-nosnap
+pkgver=10.4.0
+pkgrel=1
 
-pkgdesc="A Gtk3 frontend for libalpm (with AUR, flatpak, appindicator)"
+pkgdesc="A Gtk3 frontend from Manjaro Linux for libalpm with AUR, flatpak, and appindicator support."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-nosnap' 'libhandy')
-optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
-makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
+depends=('libnotify' 'libpamac-nosnap>=10.3.0' 'libhandy')
+optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
+            'fwupd: support firmware updates')
+makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-all' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
-source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('aa9f2760cf6a08df658067e5c61f62aecb01db3fd32efd8b3a9c268ecad40fdc')
+source=("$_pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2")
+sha512sums=('0fccf34ab3eee721ab26a572dc80edd04b71a7d39e8e3896592e4cbff671d496eecc96692eb907271e96294b4097f250d1346b45d372e3f3b2e49c412756a0ad')
 
 prepare() {
-  cd "$srcdir/pamac-v$pkgver"
   # adjust version string
-  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
+  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" $srcdir/pamac-v$pkgver/src/version.vala
 }
 
 build() {
-  cd "$srcdir/pamac-v$pkgver"
-  mkdir -p builddir
-  cd builddir
-  meson --prefix=/usr --sysconfdir=/etc --buildtype=release -Denable-fake-gnome-software=true
-  # build
-  ninja
+  arch-meson --buildtype=release -Denable-fake-gnome-software=true $srcdir/pamac-v$pkgver build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/pamac-v$pkgver/builddir"
-
-  DESTDIR="$pkgdir" ninja install
+  meson install -C build --destdir "$pkgdir"
   # remove pamac-gnome-integration
   rm "$pkgdir/usr/bin/gnome-software"
   rm "$pkgdir/usr/share/applications/org.gnome.Software.desktop"
   rm "$pkgdir/usr/share/dbus-1/services/org.gnome.Software.service"
 
 }
-# vim:set ts=2 sw=2 et:
