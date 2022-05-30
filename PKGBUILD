@@ -13,7 +13,7 @@ url="https://wiki.gnome.org/Apps/Seahorse"
 arch=(x86_64)
 license=(GPL)
 options=(debug !strip)
-depends=(gtk3 gcr libsecret libsoup gpgme gnome-keyring libpwquality 'libhandy-git>=1.5.0')
+depends=(gtk3 gcr libsecret libsoup gpgme gnome-keyring libpwquality libhandy)
 conflicts=('seahorse')
 provides=('seahorse')
 makedepends=(libldap yelp-tools gobject-introspection vala git meson)
@@ -37,15 +37,15 @@ prepare() {
 
 build() {
   rm -rf build
-  meson --prefix /usr --buildtype=plain seahorse build
-  ninja -C build
+  meson --prefix /usr --buildtype=plain seahorse build -D manpage=true
+  meson compile -C build
 }
 
 check() {
   cd build
-  meson test
+  meson test --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

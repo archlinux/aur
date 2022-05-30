@@ -18,7 +18,7 @@ pkgbase = seahorse-git
 	depends = gpgme
 	depends = gnome-keyring
 	depends = libpwquality
-	depends = libhandy-git>=1.5.0
+	depends = libhandy
 	provides = x11-ssh-askpass
 	conflicts = seahorse
 	options = debug
