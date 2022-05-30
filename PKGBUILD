@@ -3,7 +3,7 @@
 
 pkgname='worm'
 pkgdesc="A floating, tag-based window manager written in Nim"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/codic12/worm"
@@ -12,7 +12,7 @@ makedepends=('nimble' 'nim' 'git')
 depends=('xorg-server')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('7e0831fbc73fc91556f706aa6c8395318919ade5ef3339a79dbdd2fc91078a3675e9a7690e3e2bdd6d9f0181877e89cc790ed381941a9f3c2e619b38b0c34592')
+sha512sums=('a5fcd25508cef3a8b5112e32ecedd9a2d981f602356aefc862b9ca188ef4f6bef1ba01e4e7772a460bad76ab2a35d27eddf779cdb4d5661921067569f0e92765')
 
 build() {
     cd "$pkgname-$pkgver"
