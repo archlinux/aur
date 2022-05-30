@@ -4,11 +4,11 @@
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
 license=('GPL')
-url='http://pagegen.phnd.net/'
+url='https://pagegen.phnd.net/'
 wheel="${_pkgname}-$pkgver-py3-none-any.whl"
 source=(
   "https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/$wheel"
