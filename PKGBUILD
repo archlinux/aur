@@ -1,6 +1,6 @@
 pkgname=monitorfs
 pkgdesc="Monitor filesystem, Do something on some filesystem event"
-pkgver=v0.0.2.r1.g417d88b
+pkgver=v0.0.3.r1.gda59ece
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://github.com/vcup/MonitorFileSystem
