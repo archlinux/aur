@@ -5,7 +5,7 @@
 pkgname=mpd-rich-presence-discord-git
 _pkgname=mpd-rich-presence-discord
 pkgver=r50.ced628d
-pkgrel=2
+pkgrel=3
 pkgdesc=" Broadcast your MPD state using discord rich presence!"
 arch=('x86_64')
 url='https://github.com/justas-d/mpd-rich-presence-discord'
@@ -26,5 +26,6 @@ package() {
 	ln -s mpd_discord_richpresence "$pkgdir/usr/bin/mpd-rpc"
 	install -Dm644 mpd-discord.service -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 mpd-discord.service -t "$pkgdir/usr/lib/systemd/user"
+	install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 

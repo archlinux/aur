@@ -1,7 +1,7 @@
 pkgbase = mpd-rich-presence-discord-git
 	pkgdesc = Broadcast your MPD state using discord rich presence!
 	pkgver = r50.ced628d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/justas-d/mpd-rich-presence-discord
 	arch = x86_64
 	license = MIT
