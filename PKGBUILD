@@ -2,7 +2,7 @@
 
 pkgname=doh-curl-git
 pkgrel=1
-pkgver=doh.0.1.r20.g17fd81d
+pkgver=0.1.r20.g17fd81d
 pkgdesc='stand-alone application for DoH (DNS-over-HTTPS) name resolves and lookups'
 arch=(any)
 url=https://github.com/curl/doh
@@ -15,7 +15,7 @@ provides=('doh')
 pkgver() {
   cd "$srcdir/doh"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^doh\.//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

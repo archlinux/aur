@@ -1,6 +1,6 @@
 pkgbase = doh-curl-git
 	pkgdesc = stand-alone application for DoH (DNS-over-HTTPS) name resolves and lookups
-	pkgver = doh.0.1.r20.g17fd81d
+	pkgver = 0.1.r20.g17fd81d
 	pkgrel = 1
 	url = https://github.com/curl/doh
 	arch = any
