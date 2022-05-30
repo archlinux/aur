@@ -1,7 +1,8 @@
 # Maintainer: Martin Joergensen <newsboost at gmail com>
 pkgname=python-stego-lsb
 _name=${pkgname#python-}
-pkgver="1.3.3"
+_name=${_name//-/_}
+pkgver="1.3.4"
 pkgrel=1
 pkgdesc="Least Significant Bit Steganography for .bmp, .png, WAV sound files, and byte sequences."
 arch=('any')
@@ -11,19 +12,13 @@ depends=(python python-click python-pillow python-numpy)
 makedepends=(python-setuptools)
 provides=('stegolsb')
 source=(
-  "https://files.pythonhosted.org/packages/2a/11/b4779629886222381320f9ceb3a3104a598dec0f628e1dae2c2d4d402b25/stego_lsb-${pkgver}.tar.gz"
+  "https://files.pythonhosted.org/packages/43/a7/143a113585c819c457baf627994171f6e9c544c4f188c46170dd3825837b/${_name}-${pkgver}-py2.py3-none-any.whl"
 )
-md5sums=('e2cfaa247f0caace30dc62f85cffcef2')
-
-build() {
-  cd "${_name//-/_}-$pkgver"
-  python3 setup.py build
-}
+md5sums=('d2f23896f41dfb16e925ecafb94ed6d3')
 
 package() {
-  cd "${_name//-/_}-$pkgver"
-  install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  pip install --quiet --root="$pkgdir" --no-deps *.whl
+  di="${_name}-${pkgver}.dist-info"
+  install -D -m644 "${di}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
