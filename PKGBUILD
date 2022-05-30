@@ -1,17 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-email-filter"
-pkgver="1.034"
-pkgrel='2'
+pkgver="1.035"
+pkgrel='1'
 pkgdesc="Library for creating easy email filters"
 arch=('any')
 url="http://search.cpan.org/dist/Email-Filter/"
 license=('PerlArtistic')
-depends=('perl-class-trigger' 'perl-email-simple' 'perl-email-localdelivery' 'perl-ipc-run')
+depends=('perl-class-trigger' 'perl-email-localdelivery' 'perl-email-simple' 'perl-ipc-run')
 makedepends=('perl-test-pod>=1.41')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Filter-${pkgver}.tar.gz")
-sha512sums=('8b377c3d7503f18f03c8bd97baed17a5615c41cf737886aa834aa324954531a464b2564be244c4097fb9d5fe1b612885303acbf1d7dc8b2a64a739fb81ef3af6')
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Filter-${pkgver}.tar.gz")
+sha512sums=('d8a699454e64989478445f3e15adbe4fbbcfa07e270b3237d65a6456d75ea5b636e92435b76acd4f9badbf948f11aa8d21257af61c90beb69c37aaafa2a82717')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
