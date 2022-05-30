@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Picocrypt
+Exec=sh -c "LIBGL_ALWAYS_SOFTWARE=1 picocrypt"
+Icon=/usr/share/icons/picocrypt.svg
