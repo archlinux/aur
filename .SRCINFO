@@ -1,7 +1,7 @@
 pkgbase = azure-cli-bin
 	pkgdesc = Command-line tools for Azure (Debian package)
 	pkgver = 2.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT

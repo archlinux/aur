@@ -2,7 +2,7 @@
 
 pkgname=azure-cli-bin
 pkgver=2.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tools for Azure (Debian package)'
 arch=('any')
 url='https://github.com/Azure/azure-cli'
@@ -16,4 +16,5 @@ package () {
 	cd "${pkgdir}"
 	bsdtar -xf "${srcdir}/data.tar.xz"
 	rm -r usr/share/doc
+	find -name __pycache__ | xargs rm -r
 }
