@@ -1,7 +1,7 @@
 pkgbase = perl-module-starter
 	pkgdesc = a simple starter kit for any module
 	pkgver = 1.77
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Module-Starter
 	arch = any
 	license = PerlArtistic
@@ -15,4 +15,3 @@ pkgbase = perl-module-starter
 	sha256sums = 108717def4755145fdccffbcb3cd5b9a9405e8139b9e54293ced83064982ea0d
 
 pkgname = perl-module-starter
-
