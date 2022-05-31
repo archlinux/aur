@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-espresso-git
-pkgver=r273.cac7566
+pkgver=r279.e3b9770
 pkgrel=1
 pkgdesc="Prevent auto suspend and screensaver functions (forked from caffeine)"
 arch=('any')
@@ -14,24 +14,23 @@ source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	./update-locale.sh
-	glib-compile-schemas \
-		--strict \
-		--targetdir=espresso@coadmunkee.github.com/schemas/ \
-			espresso@coadmunkee.github.com/schemas
+    ./update-locale.sh
+    glib-compile-schemas \
+        --targetdir=espresso@coadmunkee.github.com/schemas/ \
+        --strict espresso@coadmunkee.github.com/schemas
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
-	cp -a "espresso@coadmunkee.github.com" "${pkgdir}/usr/share/gnome-shell/extensions"
+    install -dm755 "${pkgdir}/usr/share/gnome-shell/extensions"
+    cp -a "espresso@coadmunkee.github.com" "${pkgdir}/usr/share/gnome-shell/extensions"
 }
