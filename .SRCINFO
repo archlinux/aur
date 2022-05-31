@@ -1,9 +1,10 @@
 pkgbase = jmtpfs
 	pkgdesc = FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JasonFerrara/jmtpfs
 	arch = x86_64
+	arch = armv7h
 	license = GPL3
 	depends = fuse
 	depends = libmtp
@@ -11,4 +12,3 @@ pkgbase = jmtpfs
 	sha512sums = 1997d202199af59ae2138701855864e4dab624fff4feac08ea98e3e4ed6c39e4181d8f9fec35db0e83570f48de204f3d00e1b0d2244ec677f77a99b1dc9c38b3
 
 pkgname = jmtpfs
-

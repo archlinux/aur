@@ -1,12 +1,11 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
-# Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+# Maintainer: Michele Spagnuolo <mikispag@gmail.com>
 
 pkgname=jmtpfs
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 license=('GPL3')
 pkgdesc='FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices'
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url=https://github.com/JasonFerrara/jmtpfs
 depends=('fuse' 'libmtp')
 source=("$url/archive/v$pkgver/jmtpfs-v$pkgver.tar.gz")
