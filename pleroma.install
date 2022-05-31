@@ -55,6 +55,8 @@ post_upgrade() {
         ;&
     "2.4.2-1")
         ;&
+    "2.4.3-1")
+        ;&
     esac
 
     if [ "$migration_needed" = "true" ]; then

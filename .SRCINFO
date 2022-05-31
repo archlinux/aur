@@ -1,6 +1,6 @@
 pkgbase = pleroma-bin
 	pkgdesc = A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://pleroma.social/
 	install = pleroma.install
@@ -12,6 +12,7 @@ pkgbase = pleroma-bin
 	license = CCPL:cc-by-sa-4.0
 	depends = ncurses
 	depends = file
+	depends = libxcrypt-compat
 	optdepends = postgresql: local postgresql database support
 	optdepends = imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support
 	optdepends = ffmpeg: media preview proxy support for videos
@@ -27,11 +28,11 @@ pkgbase = pleroma-bin
 	sha256sums = b5e844fab22dc4fafdec09c1f14437a06d3a12fae753fc0be968d22eaddfd6dc
 	sha256sums = 268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed
 	sha256sums = e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104
-	source_x86_64 = pleroma-x86_64-2.4.2.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/202882/artifacts/download?file_type=archive
-	sha256sums_x86_64 = 0ba949e50129323356cc464ff95f9d8acb19e0efd892a57ac63ecdf3f890248a
-	source_aarch64 = pleroma-aarch64-2.4.2.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/202886/artifacts/download?file_type=archive
-	sha256sums_aarch64 = 77a717f150b7dad2f78c480ac905439d5b2148ad7c86ea49ac5cd0758d9877c2
-	source_armv7h = pleroma-armv7h-2.4.2.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/202884/artifacts/download?file_type=archive
-	sha256sums_armv7h = 9f4374b2200d5848f122f6514362a8b1e49ef712aa97db0f40e416b5cf7b8909
+	source_x86_64 = pleroma-x86_64-2.4.3.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209298/artifacts/download
+	sha256sums_x86_64 = 7221965fde2f6692745e0adfcb2332c14de9ef5b73f5fd336af539d914859338
+	source_aarch64 = pleroma-aarch64-2.4.3.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209302/artifacts/download
+	sha256sums_aarch64 = 5aeede9a594a6b6688a98d0309d884077e42f174a11cbc3c428241c92056b350
+	source_armv7h = pleroma-armv7h-2.4.3.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/209300/artifacts/download
+	sha256sums_armv7h = 45f369bf70ca1640b7159814631d40c4104e39f3b5499214ceadfaf1bec14a20
 
 pkgname = pleroma-bin
