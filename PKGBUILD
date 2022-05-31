@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
-_TARBALL_PKGVER=1.1.0-2
-_UPLOAD_DATE=20211109
+_TARBALL_PKGVER=1.2.1-11
+_UPLOAD_DATE=20220527
 
 pkgname=xencelabs
 pkgver=${_TARBALL_PKGVER/-/.}
@@ -10,21 +10,21 @@ pkgdesc='Driver for the Xencelabs Pen Tablets'
 arch=(x86_64)
 url='https://www.xencelabs.com'
 license=(LGPL3)
-depends=(qt5-base qt5-x11extras icu)
+depends=(qt5-base qt5-x11extras icu openssl)
 install=$pkgname.install
 source_x86_64=("https://download01.xencelabs.com/file/$_UPLOAD_DATE/XencelabsLinux_$_TARBALL_PKGVER.zip")
-sha256sums_x86_64=('7063c441cd594f7200f6a14c25505f25c1a129749a017478b802915f8df1b226')
+sha256sums_x86_64=('0ee73309d9c2f6681c47542ae1c0efaea8c49f273c835046968d9271b7c7ed03')
 
 prepare() {
   rm -rf $pkgname-$_TARBALL_PKGVER.$CARCH
-  tar xf $pkgname-$_TARBALL_PKGVER.$CARCH.tar.gz
+  tar xf XencelabsLinux_$_TARBALL_PKGVER/$pkgname-$_TARBALL_PKGVER.$CARCH.tar.gz
 }
 
 build() {
   cd $pkgname-$_TARBALL_PKGVER.$CARCH/App
 
   # provided by the `licenses` package
-  rm usr/lib/xencelabs/LGPL
+  rm usr/lib/xencelabs/lib/LGPL
 
   # fix FSH to match Arch's
   mv lib/*/ usr/lib/
@@ -38,6 +38,8 @@ build() {
   rm usr/lib/xencelabs/lib/libQt5*
   rm usr/lib/xencelabs/platforms/libqxcb.so
   rm usr/lib/xencelabs/lib/libicu*
+  rm usr/lib/xencelabs/lib/libssl.so*
+  rm usr/lib/xencelabs/lib/libcrypto.so*
 
   # make sure it's empty, so that if some other lib is added in a future
   # release we notice it right away.
