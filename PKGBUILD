@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-mmod-panel-git
-pkgver=v0.1.4.r28.g40a58cd
+pkgver=0.1.4.r28.g40a58cd
 pkgrel=1
 pkgdesc="Create a customizable panel for Gnome 3"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
