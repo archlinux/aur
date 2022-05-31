@@ -3,7 +3,7 @@ _name=starc
 _filename='starc.AppImage'
 
 pkgname="${_name}-appimage"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Story Architect is a text editor for film, theatre, radio scripts or comic books."
 arch=('x86_64')
