@@ -1,4 +1,4 @@
-pkgbase = perl-coro
+pkgbase = perl-coro.any_perl_version
 	pkgdesc = CPAN/Coro - the only real threads in perl
 	pkgver = 6.57
 	pkgrel = 1
@@ -8,13 +8,14 @@ pkgbase = perl-coro
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-canary-stability
-	depends = perl>=0
+	depends = perl
 	depends = perl-anyevent>=5
 	depends = perl-common-sense
 	depends = perl-guard>=0.5
+	provides = perl-coro=6.57
+	conflicts = perl-coro
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-6.57.tar.gz
 	md5sums = fa5970a2a2f3df9d68d4369c7dde1a55
 
-pkgname = perl-coro
-
+pkgname = perl-coro.any_perl_version
