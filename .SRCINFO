@@ -1,7 +1,7 @@
 pkgbase = perl-authen-simple
 	pkgdesc = Authen-Simple for Perl
 	pkgver = 0.5
-	pkgrel = 9
+	pkgrel = 11
 	url = https://metacpan.org/release/Authen-Simple
 	arch = any
 	license = PerlArtistic
@@ -18,4 +18,3 @@ pkgbase = perl-authen-simple
 	sha256sums = 02cddab47f8bf1a1cbd4c9bf8d258f6d05111499c33f8315e7244812f72613aa
 
 pkgname = perl-authen-simple
-
