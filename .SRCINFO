@@ -1,8 +1,9 @@
 pkgbase = aksusbd-bin
 	pkgdesc = Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys.
 	pkgver = 8.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://supportportal.thalesgroup.com
+	install = package.install
 	arch = i686
 	arch = x86_64
 	license = custom

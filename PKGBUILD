@@ -3,7 +3,7 @@
 
 pkgname=aksusbd-bin
 pkgver=8.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://supportportal.thalesgroup.com"
@@ -27,6 +27,7 @@ makedepends=('libarchive'
 
 conflicts=('ehaspd' 'aksusbd')
 options=('!strip')
+install=package.install
 
 pkgver() {
   cd $srcdir  
