@@ -57,6 +57,9 @@ post_install() {
     yello "1.5.2"
     plain "${blue}#37${all_off} clang compilation failure"
     plain ""
+    yello "1.5.3"
+    plain "Fix segfault when no lid present; thank you Joost Molenaar"
+    plain ""
 }
 
 post_upgrade() {
