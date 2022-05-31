@@ -1,7 +1,7 @@
 # Maintainer: Tony <tony@libpcap.net>
 
 pkgname=rocksdb-lite
-pkgver=7.1.2
+pkgver=7.2.2
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ checkdepends=('python')
 conflicts=('rocksdb')
 provides=('rocksdb')
 source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz")
-sha256sums=('4dded5503a87098d55084dbb1f88eebbf1078ea4b827e9508fdb4c9fccb98977')
+sha256sums=('c4ea6bd2e3ffe3f0f8921c699234d59108c9122d61b0ba2aa78358642a7b614e')
 
 build() {
     cd "${srcdir}/rocksdb-${pkgver}"
