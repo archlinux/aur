@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=crosswords
-pkgver=0.3.0
-_commit=9242f85065a9a8bfce2663ddad771250e19de993
+pkgver=0.3.2
+_commit=590216093a630e7a596bce309b5d23fcd4b51c7d
 pkgrel=1
 pkgdesc='Crossword player and editor.'
 arch=(x86_64)
