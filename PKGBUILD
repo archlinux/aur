@@ -2,7 +2,7 @@
 pkgname=cloak-obfuscation
 _pkgname=Cloak
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A censorship circumvention tool to evade detection by authoritarian state adversaries'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/cbeuw/Cloak"
@@ -25,8 +25,6 @@ build() {
   export GOPATH="${srcdir}/gopath"
   export CGO_ENABLED=0
   go build -ldflags "-X main.version=v${pkgver}" -o build ./cmd/...
-  # prevent permission issues during cleanup
-  chmod -R u+w "${GOPATH}"
 }
 
 check() {
@@ -43,4 +41,7 @@ package() {
   pushd example_config
   install -Dm 644 -t "${pkgdir}/etc/cloak" ckclient.json ckserver.json
   popd
+
+  # prevent permission issues during cleanup
+  chmod -R u+w "${srcdir}/gopath"
 }
