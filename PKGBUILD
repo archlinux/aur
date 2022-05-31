@@ -1,18 +1,19 @@
-# Maintainer: Martin Weinelt <martin@darmstadt.freifunk.net>
+# Maintainer: SilverBut <SilverBut@users.noreply.github.com>
+# Contributor: Martin Weinelt <martin@darmstadt.freifunk.net>
 
 # things can get a little crashy at times, so better have debug symbols handy
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre17.25.g2b0aeec0
-pkgrel=1
-pkgdesc="Virtual Private Network daemon (prerelease)"
+pkgver=1.1pre18.217.g84b24109
+pkgrel=2
+pkgdesc="VPN (Virtual Private Network) daemon (Latest commit on the pre-release branch)"
 arch=('any')
 url="http://www.tinc-vpn.org/"
 license=('GPL')
 depends=('lzo' 'openssl')
-makedepends=('git')
-optdepends=('python2' 'wxpython: gui support')
+makedepends=('git' 'meson>=0.51')
+optdepends=('python2' 'wxpython: gui support' 'miniupnpc')
 provides=('tinc-pre')
 conflicts=('tinc' 'tinc-pre' 'tinc-pre-systemd')
 source=('git+https://github.com/gsliepen/tinc#branch=1.1')
@@ -20,28 +21,23 @@ _gitname=tinc
 
 pkgver() {
     cd "$_gitname"
-    git describe --tags | sed 's/-/./g' | cut -d'.' -f2-
+    git describe --long | sed 's/-/./g' | cut -d. -f2-
 }
 
 build() {
     cd "$_gitname"
-    autoreconf -fsi
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
-    make
+    meson setup build --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+    meson compile -C build
+}
 
-    cd systemd
-    make tinc.service
-    make tinc@.service
+check() {
+    cd "$_gitname"
+    meson test -C build
 }
 
 package() {
     cd "$_gitname"
-    make DESTDIR="$pkgdir" install
-
-    install -Dm644 "$srcdir/tinc/bash_completion.d/tinc" -t "$pkgdir/usr/share/bash-completion/completions/"
-    install -Dm644 "$srcdir/tinc/systemd/tinc.service" -t "$pkgdir/usr/lib/systemd/system/"
-    install -Dm644 "$srcdir/tinc/systemd/tinc@.service" -t "$pkgdir/usr/lib/systemd/system/"
-
+    meson install --destdir="$pkgdir" -C build
 }
 
 md5sums=('SKIP')
