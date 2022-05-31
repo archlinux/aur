@@ -3,13 +3,13 @@
 _pkgname=streamlink-twitch-gui
 pkgname="${_pkgname}-bin"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
 provides=("${_pkgname}")
-depends=("gtk3" "libxss" "nss" "streamlink")
+depends=("alsa-lib" "gtk3" "libxss" "nss" "streamlink")
 options=(!strip)
 source_i686=("https://github.com/streamlink/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux64.tar.gz")
