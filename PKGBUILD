@@ -16,7 +16,7 @@ pkgdesc="A high-performance, open source, schema-free document-oriented database
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("Apache" "custom:SSPL1")
-depends=('libstemmer' 'snappy' 'openssl' 'krb5' 'boost-libs' 'pcre' 'yaml-cpp' 'zstd')
+depends=('libstemmer' 'snappy' 'krb5' 'boost-libs' 'pcre' 'yaml-cpp' 'curl')
 makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh-bin: interactive shell to connect with MongoDB')
