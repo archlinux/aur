@@ -6,7 +6,7 @@
 
 pkgname=tinc-pre-git
 pkgver=1.1pre18.217.g84b24109
-pkgrel=2
+pkgrel=3
 pkgdesc="VPN (Virtual Private Network) daemon (Latest commit on the pre-release branch)"
 arch=('any')
 url="http://www.tinc-vpn.org/"
