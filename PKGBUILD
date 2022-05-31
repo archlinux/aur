@@ -1,13 +1,9 @@
-# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: frichtlm <frichtlm@gmail.com>
-# Contributor: wagnerflo <florian@wagner-flo.net>
-
+# Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=feather
 _cranver=0.3.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Read and write feather files, a lightweight binary columnar data store designed for maximum speed."
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
