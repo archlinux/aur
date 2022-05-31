@@ -1,4 +1,5 @@
 # Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
+# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname=android-backup-extractor
 pkgver=20220119054922_ef67572
@@ -6,7 +7,7 @@ pkgrel=2
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
 makedepends=('git' 'apache-ant' 'java-environment>=11')
-depends=('bcprov' 'java-runtime>=11')
+depends=('bcprov>=1.71' 'java-runtime>=11')
 license=('apache')
 provides=('abe')
 url="https://github.com/nelenkov/android-backup-extractor"
@@ -17,14 +18,14 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver//_/-}"
   # 1. set correct path to system bcprov
   # 2. do not include bcprov classes in the final abe.jar file
-  sed -e 's@lib/bcprov-jdk15on-1.70.jar@/usr/share/java/bcprov.jar@g' \
+  sed -e 's@lib/bcprov-jdk15on-1.70.jar@/usr/share/java/bcprov/bcprov.jar@g' \
     -e 's@<zipfileset.*@@g' \
     -i build.xml || return 1
 
   # do not use the bundled abe script, a simple wrapper is good enough
   echo '#!/bin/sh' > arch-abe
-  echo "CP=/usr/share/java/bcprov.jar:/usr/share/java/${pkgname}/abe.jar" >> arch-abe
-  echo 'exec /usr/bin/java -cp $CP org.nick.abe.Main "$@"' >> arch-abe
+  echo "CP=\"/usr/share/java/bcprov/bcprov.jar:/usr/share/java/${pkgname}/abe.jar\"" >> arch-abe
+  echo 'exec /usr/bin/java -cp "$CP" org.nick.abe.Main "$@"' >> arch-abe
   chmod +x arch-abe
 }
 

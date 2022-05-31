@@ -8,7 +8,7 @@ pkgbase = android-backup-extractor
 	makedepends = git
 	makedepends = apache-ant
 	makedepends = java-environment>=11
-	depends = bcprov
+	depends = bcprov>=1.71
 	depends = java-runtime>=11
 	provides = abe
 	source = https://github.com/nelenkov/android-backup-extractor/archive/refs/tags/20220119054922-ef67572.tar.gz
