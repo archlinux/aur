@@ -2,12 +2,12 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=22.0
+pkgver=23.0
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://bitcoincore.org"
-depends=('boost' 'boost-libs' 'zeromq' 'libevent')
+depends=('boost' 'boost-libs' 'zeromq' 'libevent' 'libnatpmp')
 checkdepends=('python')
 makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config' 'systemd')
 license=('MIT')
@@ -21,7 +21,7 @@ source=(https://bitcoincore.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin-core-01-userdel.hook
         bitcoin-core-02-chown.hook
         bitcoin-core-02-rm-rf.hook)
-sha256sums=('d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b'
+sha256sums=('26748bf49d6d6b4014d0fedccac46bf2bcca42e9d34b3acfd9e3467c415acc05'
             'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73'
             '7429a9db1da6bc2eed1ae87f61ab9faecaa3d5d6113422f99a146cc1d8e4b5fd'
