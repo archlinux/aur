@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-system76-power-git
 pkgver=2.0.2.r5.gca24c83
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
 url="https://github.com/pop-os/gnome-shell-extension-system76-power"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build(){
