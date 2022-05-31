@@ -1,6 +1,6 @@
 pkgname=mingw-w64-wine
 pkgver=1
-pkgrel=7
+pkgrel=8
 arch=('any')
 pkgdesc="Wine wrapper for MinGW (mingw-w64)"
 depends=('wine')
