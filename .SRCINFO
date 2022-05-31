@@ -1,7 +1,7 @@
 pkgbase = python2-docopt
 	pkgdesc = Pythonic argument parser, that will make you smile
 	pkgver = 0.6.2
-	pkgrel = 5
+	pkgrel = 8
 	url = https://github.com/docopt/docopt
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = python2-docopt
 	sha256sums = 49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491
 
 pkgname = python2-docopt
-
