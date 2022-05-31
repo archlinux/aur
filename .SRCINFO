@@ -1,5 +1,5 @@
 pkgbase = perl-coro+any_perl_version
-	pkgdesc = CPAN/Coro - the only real threads in perl
+	pkgdesc = [Pending deletion; '+' sign is legal in name but yay/paru cannot find package in AUR] Threads support (no Perl version constraint)
 	pkgver = 6.57
 	pkgrel = 1
 	url = https://metacpan.org/release/Coro
@@ -8,11 +8,9 @@ pkgbase = perl-coro+any_perl_version
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-canary-stability
-	depends = perl
 	depends = perl-anyevent>=5
 	depends = perl-common-sense
 	depends = perl-guard>=0.5
-	provides = perl-coro=6.57
 	conflicts = perl-coro
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Coro-6.57.tar.gz
