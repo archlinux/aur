@@ -22,13 +22,14 @@ prepare () {
   curl -L https://github.com/oneapi-src/oneTBB/pull/609.patch | patch -p1
   curl -L https://github.com/oneapi-src/oneTBB/pull/618.patch | patch -p1
   curl -L https://github.com/oneapi-src/oneTBB/pull/679.patch | patch -p1
+  curl -L https://github.com/oneapi-src/oneTBB/pull/716.patch | patch -p1
 }
 
 build() {
   cd "$srcdir"/oneTBB-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DTBB_TEST=OFF ..
+    ${_arch}-cmake -DTBB_TEST=OFF -DTBB_STRICT=OFF ..
     make
     popd
   done
