@@ -2,7 +2,7 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.15
+pkgver=0.4.16
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
@@ -11,6 +11,7 @@ license=('BSD')
 makedepends=(
   'python-setuptools-scm'
   'icoutils'
+  'python-dephell'
 )
 depends=(
   'napari-console'
@@ -31,9 +32,12 @@ depends=(
   'python-pillow'
   'python-pint'
   'python-psutil'
+  'python-psygnal'
   'python-pyaml'
   'python-pydantic-latest'  # community package has been out of date for months
+  'python-pygments'
   'python-qtpy'
+  'python-scikit-image'
   'python-scipy'
   'python-superqt'
   'python-tifffile'
@@ -49,17 +53,13 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  '0d4cf6067d2112c78a705917aa5e74371463982d80147a898c6b5d2f0b514baa'
+  'a14b96cf5f7314bf12e7300d30f42250848d9b87e3d414adf19ec876057e7b81'
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
-  # for now we need this for pep517
-  cat > setup.py <<EOF
-from setuptools import setup
-setup()
-EOF
+  dephell deps convert --from pyproject.toml --to setup.py
 }
 
 build() {
