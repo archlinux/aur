@@ -4,7 +4,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 pkgname=nwjs-bin
-pkgver=0.62.1
+pkgver=0.65.0
 pkgrel=1
 pkgdesc="An app runtime based on Chromium and node.js."
 arch=("x86_64")
@@ -19,13 +19,17 @@ provides=("nwjs" "node-webkit")
 replaces=("node-webkit")
 conflicts=("nwjs" "node-webkit")
 source=("${pkgname}-${pkgver}.tar.gz::http://dl.nwjs.io/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('8c41d48f632be869b15e11fb7ef43e573fcab694e9e2a508d4125137684922dd')
+sha256sums=('d98fdf8ba4b1ac605e45afe641575627f8eae8ba7419690ac3e3c7eb9d6f4cfd')
 
 package() {
   cd "${pkgname%-bin}-v${pkgver}-linux-x64"
+
   install -d "${pkgdir}/opt/${pkgname%-bin}"
+  cp -dr * "${pkgdir}/opt/${pkgname%-bin}/"
+  chmod -R 644 "${pkgdir}/opt/${pkgname%-bin}/"
+  chmod 755 "${pkgdir}/opt/${pkgname%-bin}/"{,swiftshader,lib,locales,nw,chrome_crashpad_handler}
+
   install -d "${pkgdir}/usr/bin"
-  cp -a * "${pkgdir}/opt/${pkgname%-bin}/"
   ln -s "/opt/${pkgname%-bin}/nw" "${pkgdir}/usr/bin/nw"
 }
 # vim:set ts=2 sw=2 et:
