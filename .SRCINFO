@@ -6,6 +6,8 @@ pkgbase = bareos-scripts
 	arch = any
 	license = GPL2
 	depends = python2-bareos
+	backup = etc/systemd/system/bareos-incoming-connect@.timer.d/bareos-incoming-connect.conf
+	backup = etc/bareos/bareos-scripts.conf
 	source = https://github.com/snuglinux/bareos-scripts/archive/0.0.2.zip
 	md5sums = e061869925ae5faf7c807649e2dc4cb1
 

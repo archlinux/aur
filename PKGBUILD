@@ -7,6 +7,8 @@ license=('GPL2')
 depends=("python2-bareos")
 source=("https://github.com/snuglinux/${pkgname}/archive/${pkgver}.zip")
 md5sums=('e061869925ae5faf7c807649e2dc4cb1')
+backup=("etc/systemd/system/bareos-incoming-connect@.timer.d/bareos-incoming-connect.conf"
+        "etc/bareos/bareos-scripts.conf")
 install=${pkgname}.install
 
 package(){
