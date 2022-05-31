@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-cpupower-git
-pkgver=v10.0.1.r5.gaf6a9b1
+pkgver=10.1.2.r5.ge9e89c0
 pkgrel=1
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
