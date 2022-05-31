@@ -1,0 +1,10 @@
+--- /home/jtb/Werkbank/c_c++/ecal/thirdparty/fineftp-server/fineftp-server/src/filesystem.cpp	2022-05-24 11:32:32.000000000 +0200
++++ /home/jtb/Werkbank/c_c++/ecal-fat-source/thirdparty/fineftp-server/fineftp-server/src/filesystem.cpp	2022-05-31 10:32:29.031990966 +0200
+@@ -14,6 +14,7 @@
+ 
+ #else // WIN32
+ 
++#include <cstring>
+ #include <dirent.h>
+ 
+ #endif // WIN32
