@@ -1,6 +1,6 @@
 pkgbase = xkb-switch-git
 	pkgdesc = Program that allows to query and change the XKB layout state
-	pkgver = 1.6.0.r12.gba0ee5d
+	pkgver = 1.8.5.r8.g5dd459a
 	pkgrel = 1
 	url = https://github.com/grwlf/xkb-switch
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = xkb-switch-git
 	makedepends = cmake
 	depends = libx11
 	depends = libxkbfile
-	provides = xkb-switch
+	provides = xkb-switch=1.8.5.r8.g5dd459a
 	conflicts = xkb-switch
-	source = git+git://github.com/grwlf/xkb-switch
+	source = git+https://github.com/grwlf/xkb-switch
 	sha1sums = SKIP
 
 pkgname = xkb-switch-git
-
