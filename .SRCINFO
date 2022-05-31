@@ -1,6 +1,6 @@
 pkgbase = zsh-notify-git
 	pkgdesc = Desktop notifications for long-running commands in zsh.
-	pkgver = r57.853bc94
+	pkgver = r87.ae6e958
 	pkgrel = 1
 	url = https://github.com/marzocchi/zsh-notify
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = zsh-notify-git
 	depends = xdotool
 	optdepends = wmctrl: To activate the terminal and set the urgency hint
 	provides = zsh-notify
-	source = zsh-notify::git://github.com/marzocchi/zsh-notify
+	source = zsh-notify::git+https://github.com/marzocchi/zsh-notify
 	sha256sums = SKIP
 
 pkgname = zsh-notify-git
-
