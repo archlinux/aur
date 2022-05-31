@@ -3,7 +3,7 @@
 
 pkgname=android-backup-extractor-git
 pkgver=r115.g33a2f6c
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility to extract and repack Android backups created with adb backup'
 arch=('any')
 url="https://github.com/nelenkov/${pkgname%-git}"
@@ -44,7 +44,7 @@ build() {
 
 package() { 
   cd "${pkgname}"
-  install -Dm 644 arch-abe "${pkgdir}/usr/bin/abe"
-  install -Dm 644 abe.jar -t "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm 755 arch-abe "${pkgdir}/usr/bin/abe"
+  install -Dm 755 abe.jar -t "${pkgdir}/usr/share/java/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
