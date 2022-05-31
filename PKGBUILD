@@ -12,7 +12,7 @@ conflicts=("httplz-bin")
 depends=("openssl" "bzip2")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d37803bb3db9505e192490a0a14e31e10c7a9cf140cbc05ae6e97a2638eb0583')
+sha512sums=('25cc6a542dac9d4cce8370cee49a71ab48db02a0706a7df92f1e3e0e8082db154d5e68224a23603b2143a087e86ce67383e55c66844e5cfd9fa340b5f4d80b38')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
