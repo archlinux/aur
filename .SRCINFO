@@ -8,6 +8,6 @@ pkgbase = simple-tls-bin
 	provides = simple-tls
 	conflicts = simple-tls
 	source = https://github.com/IrineSistiana/simple-tls/releases/download/v0.7.0/simple-tls-linux-amd64.zip
-	sha256sums = a4d2d9edb253f4e71c9ccbf9fa6d8fb5e9ac668c2bb53b720123a436308f0449
+	sha512sums = cdfa018e3ec4db157e259dfc58c00358ea6dea6c714715bbaaaced7f2348e44e03159f636fc641eae03fc02fce207841f9705b8b21a6ec2f9a907442097f019e
 
 pkgname = simple-tls-bin
