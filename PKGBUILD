@@ -1,5 +1,5 @@
 pkgname=pacman-log-orphans-hook
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='hook to check whether there are any packages marked as unrequired (orphans) via pacman -Qttdq after every pacman run'
 arch=(any)
