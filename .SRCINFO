@@ -1,6 +1,6 @@
 pkgbase = rocksdb-static
 	pkgdesc = Embedded key-value store for fast storage (static library)
-	pkgver = 7.1.2
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = rocksdb-static
 	depends = lz4
 	depends = snappy
 	depends = gcc-libs
-	source = https://github.com/facebook/rocksdb/archive/v7.1.2.tar.gz
-	sha256sums = 4dded5503a87098d55084dbb1f88eebbf1078ea4b827e9508fdb4c9fccb98977
+	source = https://github.com/facebook/rocksdb/archive/v7.2.2.tar.gz
+	sha256sums = c4ea6bd2e3ffe3f0f8921c699234d59108c9122d61b0ba2aa78358642a7b614e
 
 pkgname = rocksdb-static
