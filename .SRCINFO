@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-ss17-super
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 15.4.0
+	pkgver = 15.4.2
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v15.4.0/super-ttc-iosevka-ss17-15.4.0.zip
-	source = ttc-iosevka-ss17-super-15.4.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v15.4.0/LICENSE.md
-	sha256sums = 13407b217dc957a6cc4080b9b030898ce79e163330f3fef69e4499c55a1f4f4f
+	source = https://github.com/be5invis/Iosevka/releases/download/v15.4.2/super-ttc-iosevka-ss17-15.4.2.zip
+	source = ttc-iosevka-ss17-super-15.4.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v15.4.2/LICENSE.md
+	sha256sums = 9b63f71ae618771fbad39388f52f273309ff338600bb566af973aa93922c4c0b
 	sha256sums = 46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1
 
 pkgname = ttc-iosevka-ss17-super
