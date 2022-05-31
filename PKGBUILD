@@ -4,15 +4,16 @@
 _gitname=presets-projectm-classic
 pkgname=projectm-presets-classic-git
 pkgver=2.14a6244
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic preset pack for projectM (git version)"
 arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/presets-projectm-classic'
 license=('LGPL')
 depends=('projectm-git' 'sdl2' 'libxext' 'glm' 'poco')
 makedepends=('cmake')
-source=("git+https://github.com/projectM-visualizer/${_gitname}.git")
-sha256sums=(SKIP)
+source=("git+https://github.com/projectM-visualizer/${_gitname}.git"
+	"git+https://github.com/projectM-visualizer/presets-milkdrop-texture-pack")
+sha256sums=(SKIP SKIP)
 options=('!buildflags')
 
 pkgver() {
@@ -21,6 +22,7 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/projectM/presets/"
+  mkdir -p "$pkgdir/usr/share/projectM/presets"
   cp -ar $srcdir/${_gitname}/* "$pkgdir/usr/share/projectM/presets"
+  cp -ar $srcdir/presets-milkdrop-texture-pack/textures "$pkgdir/usr/share/projectM/presets"
 }
