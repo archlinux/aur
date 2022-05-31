@@ -1,6 +1,6 @@
 pkgbase = linux-preserve-modules
 	pkgdesc = a pacman hook that preserves linux kernel modules until reboot
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/linux-preserve-modules
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = linux-preserve-modules
 	source = linux-preserve-modules
 	sha256sums = 666c8f92f798a006b83740afae4dc832e4d38209eb866b2019cb32b8798bfdbf
 	sha256sums = 995a5f75dde50626fdf002f1de18fbd06f3b39a5c50d9ea2d44927f7bede11bc
-	sha256sums = 7f068ac894cf2248fa373af17817053db177ceae50e960db55293596b16441b9
+	sha256sums = e8521c527f0c730799f4bca024c22ccc07662383213e04f4474b2e5166ea709f
 
 pkgname = linux-preserve-modules
