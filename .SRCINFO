@@ -1,0 +1,19 @@
+pkgbase = eturnal
+	pkgdesc = Modern, straightforward STUN and TURN server with full IPv6 support.
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://eturnal.net/
+	install = eturnal.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	depends = erlang-nox>=22.0
+	depends = libyaml
+	depends = openssl
+	source = eturnal-1.8.3.tar.gz::https://eturnal.net/download/eturnal-1.8.3.tar.gz
+	source = eturnal.conf
+	sha256sums = 74e3eef81a57569a499aeb0b7a6f055432bce2068a9d6b255fae50399575ecd9
+	sha256sums = c1b61cfa9bb7a48f1b8a29467782801f5da679dbe196728da2ed9972e678ff5a
+
+pkgname = eturnal

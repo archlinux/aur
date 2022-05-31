@@ -1,0 +1,14 @@
+post_install() {
+	chown -R eturnal:eturnal /opt/eturnal/
+	echo "Enable the systemd service using 'systemd enable --now eturnal.service'\n"
+	echo "An example configuration file is available at /usr/share/doc/eturnal/eturnal.yml"
+	echo "Place it in /etc/eturnal.yml to get it working."
+}
+
+post_upgrade() {
+	chown -R eturnal:eturnal /opt/eturnal/
+}
+
+post_remove() {
+	echo "To remove configuration files, please run 'rm -rf /opt/eturnal' and 'rm -rf /etc/eturnal.yml"
+}
