@@ -28,10 +28,9 @@ build() {
 }
 
 package() {
-	mkdir -p $pkgdir/opt/eturnal
-	install -dm0755 $pkgdir/opt/eturnal
-	cp -r $srcdir/eturnal $pkgdir/opt
-	install -m0644 -D "$pkgdir/opt/eturnal/etc/eturnal.yml" "$pkgdir/usr/share/doc/eturnal/eturnal.yml"
+	install -m0644 -D "$srcdir/eturnal/etc/eturnal.yml" "$pkgdir/usr/share/doc/eturnal/eturnal.yml"
 	install -m0644 -D "$srcdir/eturnal.conf" "$pkgdir/usr/lib/sysusers.d/eturnal.conf"
-	install -m0644 -D "$pkgdir/opt/eturnal/etc/systemd/system/eturnal.service" "$pkgdir/etc/systemd/system/eturnal.service"
+	install -m0644 -D "$srcdir/eturnal/etc/systemd/system/eturnal.service" "$pkgdir/etc/systemd/system/eturnal.service"
+  install -dm0755 $pkgdir/opt/eturnal
+  cp -r $srcdir/eturnal $pkgdir/opt
 }
