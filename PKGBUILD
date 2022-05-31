@@ -4,7 +4,7 @@
 
 pkgname=perl-imager
 pkgver=1.012
-pkgrel=1
+pkgrel=3
 pkgdesc='Perl extension for Generating 24 bit Images'
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
