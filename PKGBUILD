@@ -16,7 +16,7 @@ source=(
 	eturnal.conf
 )
 sha256sums=('74e3eef81a57569a499aeb0b7a6f055432bce2068a9d6b255fae50399575ecd9'
-						'c1b61cfa9bb7a48f1b8a29467782801f5da679dbe196728da2ed9972e678ff5a'
+						'da8fedd8d6e33f23eb333e5631884da77f404398db0e6542d0b30753ee74efa8'
 )
 install=eturnal.install
 
