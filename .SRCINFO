@@ -1,6 +1,6 @@
 pkgbase = mit-scheme-git
 	pkgdesc = MIT/GNU Scheme from git
-	pkgver = 10.1.2.17182_ded2d658a
+	pkgver = 12.0.50.r18599.9c6e1ee31c
 	pkgrel = 1
 	url = http://www.gnu.org/software/mit-scheme/
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = mit-scheme-git
 	md5sums = SKIP
 
 pkgname = mit-scheme-git
-

@@ -1,6 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=mit-scheme-git
-pkgver=10.1.2.17182_ded2d658a
+pkgver=12.0.50.r18599.9c6e1ee31c
 pkgrel=1
 pkgdesc="MIT/GNU Scheme from git"
 arch=('i686' 'x86_64')
@@ -17,25 +18,26 @@ options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}/src
-  ver=$(grep AC_INIT configure.ac | cut -d \[ -f 3 | cut -d \] -f 1)."$(git rev-list --count HEAD)"
+  ver=$(grep AC_INIT configure.ac | cut -d \[ -f 3 | cut -d \] -f 1).r"$(git rev-list --count HEAD)"
   hsh=$(git rev-parse --short HEAD)
-  echo ${ver}_${hsh}
+  echo ${ver}.${hsh}
 }
 
 build() {
   cd ${pkgname%-git}/src
+  export LANG=C
   ./Setup.sh
-  ./configure --prefix=`pwd`/boot --with-x --enable-native-code --disable-default-plugins
+  export CFLAGS=" -fcommon -Wno-error=use-after-free"
+  ./configure --prefix=`pwd`/boot --with-x --enable-x11 
   make
   make install
   make distclean
-  export MIT_SCHEME_EXE=`pwd`/boot/bin/mit-scheme
-  export MITSCHEME_LIBRARY_PATH=`pwd`/boot/lib/mit-scheme-x86-64/
-  ./configure --prefix=/usr --with-x --enable-native-code
+
+  ./configure --prefix=/usr --with-x --enable-x11 --enable-native-code
   make
   cd "$srcdir"/${pkgname%-git}/doc
   autoconf
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-pdf --disable-html
   make
 }
 
@@ -47,6 +49,6 @@ check() {
 package() {
   cd ${pkgname%-git}/src
   make DESTDIR="$pkgdir/" install
-  cd ${srcdir}/${pkgname%-git}/doc
+  cd "$srcdir"/${pkgname%-git}/doc
   make DESTDIR="$pkgdir/" install
 }
