@@ -1,7 +1,7 @@
 # Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=erigon
-pkgver=2022.05.08
+pkgver=2022.05.09
 pkgrel=1
 pkgdesc='Ethereum implementation on the efficiency frontier.'
 arch=('x86_64')
