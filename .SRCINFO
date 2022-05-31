@@ -1,6 +1,6 @@
 pkgbase = neon-os-scripts-git
 	pkgdesc = My dmenu, zenity, etc scripts for my custom arch distro neon-os
-	pkgver = 1.r10.5df9cee
+	pkgver = 1.r14.dabf7a6
 	pkgrel = 1
 	url = https://www.gitlab.com/NEON-MMD/neon-os-scripts.git
 	install = neon-os-scripts-git.install

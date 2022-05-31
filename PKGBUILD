@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=neon-os-scripts-git
-pkgver=1.r10.5df9cee
+pkgver=1.r14.dabf7a6
 pkgrel=1
 epoch=
 pkgdesc="My dmenu, zenity, etc scripts for my custom arch distro neon-os"
@@ -35,7 +35,7 @@ package() {
     mkdir -p ${pkgdir}/etc/neon-os/
     mkdir -p ${pkgdir}/etc/neon-os/.config/
     cp -rf amd-hybrid-switcher/* ${pkgdir}/opt/${pkgname}
-    install -Dm755 usr-scripts/amd-hybrid-switcher.sh "${pkgdir}/usr/bin/amd-hybrid-switcher.sh"
+    install -Dm755 usr-scripts/gpu-hybrid-switcher.sh "${pkgdir}/usr/bin/gpu-hybrid-switcher.sh"
     install -Dm755 usr-scripts/article-viewer-convertor.sh "${pkgdir}/usr/bin/article-viewer-convertor.sh"
     install -Dm755 usr-scripts/battery-notifier.sh "${pkgdir}/usr/bin/battery-notifier.sh"
     install -Dm755 usr-scripts/common-websites.sh "${pkgdir}/usr/bin/common-websites.sh"
