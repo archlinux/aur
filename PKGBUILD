@@ -5,7 +5,7 @@ pkgname=android-backup-extractor
 # git tag version format: 20220304   or 20220304133015-67ef57a      (don't use 'master-*' tags)
 # pkgver expected format: 2022.03.04 or 2022.03.04t13.30.15_67ef57a
 pkgver=2022.03.04
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Utility to extract and repack Android backups created with adb backup'
 arch=('any')
@@ -41,7 +41,7 @@ build() {
 
 package() { 
   cd "${pkgname}-${_tar_pkgver}"
-  install -Dm 644 arch-abe "${pkgdir}/usr/bin/abe"
-  install -Dm 644 abe.jar -t "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm 755 arch-abe "${pkgdir}/usr/bin/abe"
+  install -Dm 755 abe.jar -t "${pkgdir}/usr/share/java/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
