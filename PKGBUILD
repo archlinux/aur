@@ -13,7 +13,7 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.17
 _basever=517
-pkgver=5.17.11
+pkgver=5.17.12
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -36,7 +36,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-random-treat_bootloader_trust_toggle_the_same_way_as_cpu_trust_toggle.patch'
         '0103-tick-Detect_and_fix_jiffies_update_stall.patch'
         '0104-tick-rcu-Remove_obsolete_parameters.patch'
         '0105-tick-rcu-Stop_allowing_RCU_SOFTIRQ_in_idle.patch'
@@ -64,10 +63,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
-            '6662c369b697b37f6b6d9f969d6183dcf528d89bb7d183a928721a4c17cde473'
-            '0df92b4fba502d7e087e7631fbd4df1d94df46aedf14b80e94527ffc13b76459'
+            '6592348509bc9bbfdccdcbe94058411c03b5bd2fd573830c95be6b1fdb83630a'
+            'fd4881ab23e542cc84922ccc4219d400e88a165ab1edc7e4dac357f4ebfb18f4'
             'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
-            'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
             'f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad'
             'e17f4175131fd5224b438be00b55ac6496ec6c25ac2c6fcc3ec6f9a94e6b3221'
             'ca5bb1ba3cb70020d712fa7f684de7d20d2bd6ad2efe6d92b578ab3b12749b04'
