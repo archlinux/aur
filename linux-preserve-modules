@@ -27,7 +27,7 @@ set-vars() {
 
 preserve-modules-copy() {
     if [[ $# -gt 1 ]]; then
-        echo "usage: preserve-modules copy [release]" >&2
+        echo "usage: linux-preserve-modules copy [release]" >&2
         exit 1
     elif [[ $# -eq 1 ]]; then
         set-vars "$1"
@@ -63,7 +63,7 @@ preserve-modules-copy() {
 
 preserve-modules-link() {
     if [[ $# -gt 1 ]]; then
-        echo "usage: preserve-modules link [release]" >&2
+        echo "usage: linux-preserve-modules link [release]" >&2
         exit 1
     elif [[ $# -eq 1 ]]; then
         set-vars "$1"
@@ -111,7 +111,7 @@ preserve-modules-link() {
 
 preserve-modules-unlink() {
     if [[ $# -gt 1 ]]; then
-        echo "usage: preserve-modules unlink [release]" >&2
+        echo "usage: linux-preserve-modules unlink [release]" >&2
         exit 1
     elif [[ $# -eq 1 ]]; then
         set-vars "$1"
@@ -129,12 +129,35 @@ preserve-modules-unlink() {
     mountpoint -q "$TARGET_DIR/kernel" && umount "$TARGET_DIR/kernel"
     mountpoint -q "$TARGET_DIR/updates" && umount "$TARGET_DIR/updates"
 
+    # remove mount points if empty
+    rmdir --ignore-fail-on-non-empty "$TARGET_DIR/kernel"
+    rmdir --ignore-fail-on-non-empty "$TARGET_DIR/updates"
+    rmdir --ignore-fail-on-non-empty "$TARGET_DIR"
+
     echo "info: unlinked modules" >&2
     exit 0
 }
 
+preserve-modules-unlink-all() {
+    if [[ $# -gt 0 ]]; then
+        echo "usage: linux-preserve-modules unlink-all" >&2
+        exit 1
+    fi
+
+    # find kernels with .preserved marker file
+    LINKED_KERNELS=( $(find /usr/lib/modules -maxdepth 2 -type f -name .preserved | cut -d/ -f5) )
+    echo "info: found ${#LINKED_KERNELS[@]} kernels with linked modules" >&2
+
+    # unlink modules for each
+    for kernel in ${LINKED_KERNELS[@]}; do
+        linux-preserve-modules unlink "$kernel"
+    done
+
+    exit 0
+}
+
 usage() {
-    echo "usage: linux-preserve-modules <copy|link|unlink> [release]" >&2
+    echo "usage: linux-preserve-modules <copy|link|unlink|unlink-all> [release]" >&2
     exit 1
 }
 
@@ -156,6 +179,7 @@ main() {
         copy) preserve-modules-copy "$@";;
         link) preserve-modules-link "$@";;
         unlink) preserve-modules-unlink "$@";;
+        unlink-all) preserve-modules-unlink-all "$@";;
         *) usage;;
     esac
 }
