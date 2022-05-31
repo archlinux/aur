@@ -12,9 +12,8 @@
 # Contributor: Joe Julian                <me@joejulian.name>     
 # Orginally based on a Debian Squeeze package
 
-
 pkgname=zoneminder
-pkgver=1.36.16
+pkgver=1.36.17
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -46,11 +45,11 @@ optdepends=('mariadb'
             'vlc: provides libvlc, which may achieve better performance with some camera models'
             'libvncserver')
 conflicts=('zoneminder-git')
-backup=("etc/nginx/sites-available/$pkgname.conf"
-        "etc/httpd/conf/extra/$pkgname.conf"
-        "etc/php/conf.d/$pkgname.ini")
-install=$pkgname.install
-source=("$pkgname-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=$pkgver"
+backup=("etc/nginx/sites-available/${pkgname}.conf"
+        "etc/httpd/conf/extra/${pkgname}.conf"
+        "etc/php/conf.d/${pkgname}.ini")
+install=${pkgname}.install
+source=("${pkgname}-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=${pkgver}"
         "zoneminder-nginx.conf"
         "zoneminder-httpd.conf"
         "zoneminder-php.ini"
@@ -68,91 +67,89 @@ sha256sums=('SKIP'
             '255374c400e01c7666cc7b3e1f06da8445dc57afda631868d33ced62ba631c98')
 
 prepare () {
-    cd $pkgname-git
-    
+    cd ${pkgname}-git
+
     # Download and move extra PHP plugins into place
     git submodule update --init --recursive
-    
+
     # Fix the launcher
-    sed -i 's|localhost/zm|localhost:8095|g' misc/$pkgname.desktop.in
+    sed -i 's|localhost/zm|localhost:8095|g' misc/${pkgname}.desktop.in
 }
 
 build() {
-    cd $pkgname-git
-   
+    cd ${pkgname}-git
+
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DZM_CONFIG_DIR=/etc/$pkgname \
-          -DZM_CONFIG_SUBDIR=/etc/$pkgname/conf.d \
-          -DZM_RUNDIR=/run/$pkgname \
-          -DZM_SOCKDIR=/run/$pkgname \
-          -DZM_LOGDIR=/var/log/$pkgname \
-          -DZM_TMPDIR=/var/tmp/$pkgname \
-          -DZM_CONTENTDIR=/var/lib/$pkgname \
-          -DZM_CACHEDIR=/var/lib/$pkgname/cache \
-          -DZM_WEBDIR=/usr/share/webapps/$pkgname/www \
-          -DZM_CGIDIR=/usr/share/webapps/$pkgname/cgi-bin \
+          -DZM_CONFIG_DIR=/etc/${pkgname} \
+          -DZM_CONFIG_SUBDIR=/etc/${pkgname}/conf.d \
+          -DZM_RUNDIR=/run/${pkgname} \
+          -DZM_SOCKDIR=/run/${pkgname} \
+          -DZM_LOGDIR=/var/log/${pkgname} \
+          -DZM_TMPDIR=/var/tmp/${pkgname} \
+          -DZM_CONTENTDIR=/var/lib/${pkgname} \
+          -DZM_CACHEDIR=/var/lib/${pkgname}/cache \
+          -DZM_WEBDIR=/usr/share/webapps/${pkgname}/www \
+          -DZM_CGIDIR=/usr/share/webapps/${pkgname}/cgi-bin \
           -DZM_WEB_USER=http .
-          #-DCMAKE_CXX_FLAGS=-fpermissive .
 
     make
 }
-     
-package() {
-    cd $pkgname-git
 
-    make DESTDIR=$pkgdir install
-    
+package() {
+    cd ${pkgname}-git
+
+    make DESTDIR=${pkgdir} install
+
     # Set Polkit directory permissions in accordance with Arch policy
-    chmod 750                                               $pkgdir/usr/share/polkit-1/rules.d
-    chown root:polkitd                                      $pkgdir/usr/share/polkit-1/rules.d
-    
+    chmod 750                                                   ${pkgdir}/usr/share/polkit-1/rules.d
+    chown root:polkitd                                          ${pkgdir}/usr/share/polkit-1/rules.d
+
     # Create ZM_LOGDIR
-    install -dm755 -o http -g http                          $pkgdir/var/log/$pkgname
-    
+    install -dm755 -o http -g http                              ${pkgdir}/var/log/${pkgname}
+
     # Create ZM_CONTENTDIR and its subfolders
-    install -dm775 -o http -g http                          $pkgdir/var/lib/$pkgname/{cache,events,images}
-    
+    install -dm775 -o http -g http                              ${pkgdir}/var/lib/${pkgname}/{cache,events,images}
+
     # Link ZM_CGIDIR and ZM_CACHEDIR inside ZM_WEBDIR and set correct permissions
-    ln -sf /usr/share/webapps/$pkgname/cgi-bin              $pkgdir/usr/share/webapps/$pkgname/www
-    ln -sf /var/lib/$pkgname/cache                          $pkgdir/usr/share/webapps/$pkgname/www
-    chown -Rh http:http                                     $pkgdir/usr/share/webapps/$pkgname
-    
+    ln -sf /usr/share/webapps/${pkgname}/cgi-bin                ${pkgdir}/usr/share/webapps/${pkgname}/www
+    ln -sf /var/lib/${pkgname}/cache                            ${pkgdir}/usr/share/webapps/${pkgname}/www
+    chown -Rh http:http                                         ${pkgdir}/usr/share/webapps/${pkgname}
+
     # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
-    ln -sf /var/tmp/$pkgname                                $pkgdir/usr/share/webapps/$pkgname/www/api/app/tmp
-    
+    ln -sf /var/tmp/${pkgname}                                  ${pkgdir}/usr/share/webapps/${pkgname}/www/api/app/tmp
+
     # Temporary fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
-    ln -sf /usr/share/webapps/$pkgname/www                  $pkgdir/usr/share/webapps/$pkgname/www/zm
-    
+    ln -sf /usr/share/webapps/${pkgname}/www                    ${pkgdir}/usr/share/webapps/${pkgname}/www/zm
+
     # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR
-    chmod -R 755                                            $pkgdir/etc/$pkgname
-    chmod 644                                               $pkgdir/etc/$pkgname/zm.conf
-    chmod 644                                               $pkgdir/etc/$pkgname/conf.d/*
-    
-    
+    chmod -R 755                                                ${pkgdir}/etc/${pkgname}
+    chmod 644                                                   ${pkgdir}/etc/${pkgname}/zm.conf
+    chmod 644                                                   ${pkgdir}/etc/${pkgname}/conf.d/*
+
     # Nginx conf file
-    install -Dm644 $srcdir/$pkgname-nginx.conf              $pkgdir/etc/nginx/sites-available/$pkgname.conf    
-    
+    install -Dm644 $srcdir/${pkgname}-nginx.conf                ${pkgdir}/etc/nginx/sites-available/${pkgname}.conf
+
     # Apache conf file
-    install -Dm644 $srcdir/$pkgname-httpd.conf              $pkgdir/etc/httpd/conf/extra/$pkgname.conf
-    
+    install -Dm644 $srcdir/${pkgname}-httpd.conf                ${pkgdir}/etc/httpd/conf/extra/${pkgname}.conf
+
     # systemd service
-    install -Dm644 $srcdir/$pkgname.service                 $pkgdir/usr/lib/systemd/system/$pkgname.service
-    
+    install -Dm644 $srcdir/${pkgname}.service                   ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+
     # systemd tmpfile
-    install -Dm644 $srcdir/$pkgname-tmpfile.conf            $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
-    
+    install -Dm644 $srcdir/${pkgname}-tmpfile.conf              ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
+
     # php.ini extension
-    install -Dm644 $srcdir/$pkgname-php.ini                 $pkgdir/etc/php/conf.d/$pkgname.ini
-    
+    install -Dm644 $srcdir/${pkgname}-php.ini                   ${pkgdir}/etc/php/conf.d/${pkgname}.ini
+
     # fcgiwrap-multiwatch service
-    install -Dm644 $srcdir/fcgiwrap-multiwatch.service      $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
-    
+    install -Dm644 $srcdir/fcgiwrap-multiwatch.service          ${pkgdir}/usr/lib/systemd/system/fcgiwrap-multiwatch.service
+
     # optional install script
-    install -Dm755 $srcdir/zmsetup.sh                       $pkgdir/usr/bin/zmsetup.sh
-    
+    install -Dm755 $srcdir/zmsetup.sh                           ${pkgdir}/usr/bin/zmsetup.sh
+
     # logrotate conf file
-    install -Dm644 misc/logrotate.conf                      $pkgdir/etc/logrotate.d/$pkgname
+    install -Dm644 misc/logrotate.conf                          ${pkgdir}/etc/logrotate.d/${pkgname}
 
     # database schemas
-    install -Dm644 db/zm*.sql                               $pkgdir/usr/share/$pkgname/db
+    install -Dm644 db/zm*.sql                                   ${pkgdir}/usr/share/${pkgname}/db
 }
