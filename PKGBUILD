@@ -2,27 +2,27 @@
 # Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname=android-backup-extractor-git
-pkgver=r113.07bb660
-pkgrel=2
-pkgdesc="Utility to extract and repack Android backups created with adb backup"
+pkgver=r115.g33a2f6c
+pkgrel=1
+pkgdesc='Utility to extract and repack Android backups created with adb backup'
 arch=('any')
-makedepends=('git' 'apache-ant' 'java-environment>=11')
-depends=('bcprov>=1.71' 'java-runtime-headless>=11' 'sh')
-url="https://github.com/nelenkov/android-backup-extractor"
+url="https://github.com/nelenkov/${pkgname%-git}"
 license=('custom:Apache') # Apache 2.0 license with copyright notice
+depends=('bcprov>=1.71' 'java-runtime-headless>=11' 'sh')
+makedepends=('git' 'apache-ant' 'java-environment>=11')
 provides=('abe.jar' 'android-backup-extractor')
 conflicts=('abe' 'android-backup-extractor')
-source=("$pkgname"::git+${url}.git)
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   # use the revision count.hash
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd ${srcdir}/${pkgname}
+  cd "${pkgname}"
   # 1. set correct path to system bcprov
   # 2. do not include bcprov classes in the final abe.jar file
   sed -e 's@lib/bcprov-jdk15on-1.70.jar@/usr/share/java/bcprov/bcprov.jar@g' \
@@ -37,17 +37,14 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   latest_version="$(archlinux-java status | grep 'java-[0-9][0-9]' | sort --reverse | head --lines 1 | sed 's/(.*)//g' | tr -d '[:space:]')"
   JAVA_HOME="/usr/lib/jvm/${latest_version}" ant
 }
 
 package() { 
-  cd "${srcdir}/${pkgname}"
-  install -m755 -d "${pkgdir}/usr/bin"
-  install arch-abe "${pkgdir}/usr/bin/abe"
-  install -m755 -d "${pkgdir}/usr/share/java/${pkgname}"
-  install abe.jar "${pkgdir}/usr/share/java/${pkgname}/abe.jar"
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}"
+  install -Dm 644 arch-abe "${pkgdir}/usr/bin/abe"
+  install -Dm 644 abe.jar -t "${pkgdir}/usr/share/java/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
