@@ -4,7 +4,7 @@
 
 pkgname=crosstool-ng-git
 epoch=1
-pkgver=1.25.0rc1.r0.g1e47ca1e
+pkgver=crosstool.ng.1.25.0.33
 pkgrel=1
 pkgdesc="crosstool-NG aims at building toolchains."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,26 +18,25 @@ source=('git+https://github.com/crosstool-ng/crosstool-ng.git')
 b2sums=('SKIP')
 
 pkgver() {
-	cd crosstool-ng
-  git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
+    cd crosstool-ng
+    git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
 }
 
-prepare () {
-	cd crosstool-ng
-	# add glibc version 2.35
-  git pull --no-edit origin pull/1368/head
-}
+#prepare () {
+#cd crosstool-ng
+#git pull --no-edit origin pull/1368/head
+#}
 
 build () {
-	cd crosstool-ng
+  cd crosstool-ng
 
-	./bootstrap
-	./configure --prefix=/usr
-	make
+    ./bootstrap
+    ./configure --prefix=/usr
+    make
 }
 
 package () {
-	cd crosstool-ng
+  cd crosstool-ng
 
-	make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
