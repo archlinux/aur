@@ -1,26 +1,25 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=objcryst-fox
-pkgver=2017.2.29
-pkgrel=2
+pkgver=2022.1
+pkgrel=1
 pkgdesc='A program for the ab initio structure determination from powder diffraction'
 arch=('i686' 'x86_64')
 url='http://fox.vincefn.net/FoxWiki'
 depends=('glu' 'freeglut' 'wxgtk2' 'fftw')
 makedepends=('mariadb-libs' 'newmat' 'rsync')
 license=('GPL2')
-#_objcryst_ver=v${pkgver}
-_objcryst_ver=05954fd9c2e0fb80571a3d63fbd7ab8666655ee9
+_objcryst_ver=v${pkgver}
 _boost_ver=1.68.0
 source=(
 "Fox.desktop"
 "objcryst-${pkgver}.tar.gz::https://github.com/vincefn/objcryst/archive/${_objcryst_ver}.tar.gz"
-"https://dl.bintray.com/boostorg/release/${_boost_ver}/source/boost_${_boost_ver//./_}.tar.bz2"
+"https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.bz2"
 "http://downloads.sourceforge.net/project/objcryst/3rdPartyLibraries/cctbx.tar.bz2")
 noextract=("cctbx.tar.bz2" "boost_${_boost_ver//./_}.tar.bz2")
-sha1sums=('6d8bb12fe1add4481ac1733e9cf6aea57aedee61'
-          '037a633155160f036997c8b422653e69a87ebaa2'
-          '18863a7cae4d58ae85eb63d400f774f60a383411'
-          '76f82bae08b2412eb90a05a558dc746274ca8e7b')
+sha256sums=('d55bafe20672f01a800b8406ad2892f9f34aa545f6b3faa554399198c3dd9492'
+            '2a022d16df89ecfef7fac13fa339f788221891a76f037d895f24c16522da336c'
+            '7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7'
+            '9cd4c221cfde091a529236c542b5511b1ad8df420dbe2287bd69a492868e3bda')
 
 
 prepare() {
