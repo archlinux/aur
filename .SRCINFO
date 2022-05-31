@@ -1,7 +1,7 @@
 pkgbase = perl-mail-gnupg
 	pkgdesc = MIME Email <-> GnuPG::Interface interface
 	pkgver = 0.23
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/Mail-GnuPG
 	arch = any
 	license = PerlArtistic
@@ -18,4 +18,3 @@ pkgbase = perl-mail-gnupg
 	sha256sums = cf3c00ddb334020c9431e6a3af71fb6651ca647706ef3daab96e5d26347807f4
 
 pkgname = perl-mail-gnupg
-
