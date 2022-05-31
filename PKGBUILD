@@ -1,7 +1,7 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.co>
 
 pkgname=madgraph
-pkgver=3.3.2
+pkgver=3.4.0
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -15,7 +15,7 @@ depends=(
     'bash'
     'gcc-fortran'
     'perl'
-    'python2'
+    'python'
 )
 optdepends=(
     'delphes'
@@ -27,18 +27,18 @@ optdepends=(
     'madgraph-pythia-pgs'
     'madgraph-pythia8-interface'
 )
-source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.3.x/+download/MG5_aMC_v${pkgver}.tar.gz"
+source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.4.x/+download/MG5_aMC_v${pkgver}.tar.gz"
 "mg5_configuration.patch"
         )
-sha256sums=('d62f020d5b1bf72f654acc96916aba895bdc50f88ad560080f0e63894201ed99'
+sha256sums=('6853c311c3641e6f2d1fc99695bb72d4dcf159f9b944f8e7322e085257406611'
             '14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf')
 options=("!strip")
 
 prepare() {
-    msg2 "Extracting documentation"
-    cd "${srcdir}/${_dirname}"
-    tar xf doc.tgz
-    rm doc.tgz
+    #msg2 "Extracting documentation"
+    #cd "${srcdir}/${_dirname}"
+    #tar xf doc.tgz
+    #rm doc.tgz
 
     msg2 "Removing VCS directories"
     find "${srcdir}/${_dirname}" -name "CVS" \
