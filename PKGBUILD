@@ -11,12 +11,12 @@
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=5.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("Apache" "custom:SSPL1")
-depends=('curl' 'libstemmer' 'snappy' 'gperftools' 'boost-libs' 'pcre' 'yaml-cpp')
+depends=('libstemmer' 'snappy' 'openssl' 'krb5' 'boost-libs' 'pcre' 'yaml-cpp' 'zstd')
 makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh-bin: interactive shell to connect with MongoDB')
@@ -40,19 +40,13 @@ _scons_args=(
   --use-system-snappy
   --use-system-yaml # https://jira.mongodb.org/browse/SERVER-43980
   --use-system-zlib
-  #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
   --use-sasl-client
   --ssl
   --disable-warnings-as-errors
-  # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  MongoDB uses custom patches.
-  # --use-system-icu      # Doesn't compile
-  # --use-system-tcmalloc   # in gperftools
   --use-system-boost    # Doesn't compile
   --use-system-zstd
-  # --use-system-valgrind # Compiles, but namcap says not used
-  # --use-system-sqlite   #   "
-  # --use-system-mongo-c  # Doesn't compile
+  --runtime-hardening=off
 )
 
 prepare() {
