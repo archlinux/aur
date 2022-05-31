@@ -2,12 +2,13 @@
 pkgname=cloak-obfuscation
 _pkgname=Cloak
 pkgver=2.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A censorship circumvention tool to evade detection by authoritarian state adversaries'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/cbeuw/Cloak"
 license=('GPL3')
 makedepends=('go')
+conflicts=('cloak-obfuscation-bin' 'cloak-obfuscation-git')
 source=(cloak-obfuscation-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('cbb73e87b94ed63603b550ad8e0596865f8547c36f109f0d1e6ca31b9c522571c9f2ac8c2f6caa006a12b3f2126a313c1b2448f57ed9dcf5804f7e2bc8717b60')
 backup=(
