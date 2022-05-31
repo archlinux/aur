@@ -2,7 +2,7 @@
 
 pkgname=coolero
 _app_id="org.$pkgname.Coolero"
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coolero/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f31aa2af4b5b6c1d86fe493a9d0b8cc7cf046418a5defff683f72c22c0e71f57')
+sha256sums=('7e90e62a30fe5bd4e629fb9b29b0d66e069208d280f4055cafd6eb5395561f8b')
 
 build() {
   cd "$pkgname-$pkgver"
