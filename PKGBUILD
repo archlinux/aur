@@ -5,7 +5,7 @@ arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
-depends=('mingw-w64-crt' 'mingw-w64-zlib')
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libaec')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
@@ -13,18 +13,14 @@ sha256sums=('1a88bbe36213a2cea0c8397201a459643e7155c9dc91e062675b3fb07ee38afe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare () {
-  cd "$srcdir/hdf5-${pkgver/_/-}"
-  # fix cmake config location
-  sed -i 's|_INSTALL_CMAKE_DIR cmake|_INSTALL_CMAKE_DIR share/cmake|g' config/cmake_ext_mod/HDFMacros.cmake
-}
-
 build() {
   cd "$srcdir/hdf5-${pkgver/_/-}"
   for _arch in $_architectures; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
+      -DHDF5_INSTALL_CMAKE_DIR="lib/cmake" \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
+      -DHDF5_ENABLE_SZIP_SUPPORT=ON \
       -DHDF5_BUILD_CPP_LIB=ON \
       -DHDF5_BUILD_FORTRAN=ON \
       -DBUILD_TESTING=OFF \
