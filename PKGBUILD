@@ -34,5 +34,4 @@ package() {
 	install -m0644 -D "$pkgdir/opt/eturnal/etc/eturnal.yml" "$pkgdir/usr/share/doc/eturnal/eturnal.yml"
 	install -m0644 -D "$srcdir/eturnal.conf" "$pkgdir/usr/lib/sysusers.d/eturnal.conf"
 	install -m0644 -D "$pkgdir/opt/eturnal/etc/systemd/system/eturnal.service" "$pkgdir/usr/lib/system/eturnal.service"
-	echo mug root beer
 }
