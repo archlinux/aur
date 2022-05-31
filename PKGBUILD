@@ -2,15 +2,16 @@
 
 pkgname=easena-git
 pkgver=r441.07415e8
-pkgrel=1
+pkgrel=2
 pkgdesc="EAsy Specification of Evolutionary and Neural Algorithms is an Artificial Evolution platform developped by the SONIC (Stochastic Optimisation and Nature Inspired Computing) group of the BFO team at Université de Strasbourg. "
 arch=(i686 x86_64)
 url="http://easea.unistra.fr"
 license=('AGPL3')
 depends=(cmake flex bison valgrind java-environment cuda r)
 makedepends=(make gcc)
-provides=(easena)
+provides=(easena easea)
 conflicts=(easea)
+replaces=(easea)
 source=("git+https://github.com/EASEA/easea")
 sha256sums=('SKIP')
 
