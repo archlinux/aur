@@ -16,5 +16,9 @@ sha256sums=('cf67105dd2a072518a4fe72cfba30552149fa3c8206943718336188fb4438b92')
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "ferium" "$pkgdir/usr/bin/ferium" 
+	install -Dm755 "ferium" "$pkgdir/usr/bin/ferium"
+	chmod +x ferium
+	./ferium complete bash | /dev/stdin "${pkgdir}"/usr/share/bash-completion/completions/ferium
+	./ferium complete zsh | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/zsh/site-functions/_ferium
+	./ferium complete fish | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/fish/vendor_completions.d/packwiz.fish
 }
