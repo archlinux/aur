@@ -9,7 +9,7 @@ arch=('any')
 depends=('zsh')
 makedepends=('git')
 provides=($_name)
-source=("${_name}::${url//https/git}")
+source=("${_name}::${url//https/git+https}")
 sha256sums=('SKIP')
 
 pkgver() {
