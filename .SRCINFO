@@ -1,13 +1,13 @@
 pkgbase = libstroke
 	pkgdesc = A stroke (mouse gesture) translation library
 	pkgver = 0.5.1
-	pkgrel = 8
-	url = http://etla.net/libstroke/
+	pkgrel = 9
+	url = https://sources.archlinux.org/other/packages/libstroke/
 	arch = x86_64
 	license = GPL2
 	makedepends = libx11
 	depends = glibc
-	source = https://sources.archlinux.org/other/packages/libstroke/libstroke-0.5.1.tar.gz
+	source = https://sources.archlinux.org/other/packages/libstroke//libstroke-0.5.1.tar.gz
 	source = libgstroke-Makefile.am.patch
 	source = libstroke-Makefile.am.patch
 	source = libstroke-0.5.1-m4_syntax.patch
