@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=lemonade-git
-pkgver=v1.1.2.r0.gfb41f18
-pkgrel=1
+pkgver=1.1.2.r0.gfb41f18
+pkgrel=2
 pkgdesc='A remote utility tool (copy, paste and open browser) over TCP.'
 url="https://github.com/lemonade-command/lemonade"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
