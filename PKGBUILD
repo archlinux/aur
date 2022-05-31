@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -30,10 +30,10 @@ build() {
   cmake --build build
 }
 
-check() {
-  cd build
-  ctest --output-on-failure
-}
+#check() {
+#  cd build
+#  ctest --output-on-failure
+#}
 
 package() {
   cd "DownZemAll-$pkgver"
