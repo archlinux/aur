@@ -29,7 +29,7 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/opt/eturnal
-	cp -r "$srcdir/eturnal" "$pkgdir/opt"
+	cp -r $srcdir/eturnal $pkgdir/opt
 	chown eturnal $pkgdir/opt/eturnal/etc/eturnal.yml
 	install -m0644 -D "$pkgdir/opt/eturnal/etc/eturnal.yml" "$pkgdir/usr/share/doc/eturnal/eturnal.yml"
 	install -m0644 -D "$srcdir/eturnal.conf" "$pkgdir/usr/lib/sysusers.d/eturnal.conf"
