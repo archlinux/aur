@@ -1,5 +1,6 @@
 # Maintainer: malacology
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: lilydjwg <lilydjwg@gmail.com>
 
 _pkgname=lilac
 pkgname=$_pkgname-git
@@ -41,5 +42,5 @@ check() {
 package() {
   cd $_pkgname
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 config.toml.sample -t "$pkgdir"/usr/share/doc/lilac
+  install -Dm644 config.toml.sample scripts/dbsetup.sql -t "$pkgdir"/usr/share/doc/lilac
 }
