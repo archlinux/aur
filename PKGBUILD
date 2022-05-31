@@ -1,6 +1,6 @@
 # Maintainer: Aakash Sen Sharma <aakashsensharma@gmail.com>
 pkgname=wayshot-bin
-pkgver=1.1.5
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A screenshot tool for wlroots compositors."
 url="https://github.com/waycrate/wayshot"
