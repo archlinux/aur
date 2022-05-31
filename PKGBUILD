@@ -4,7 +4,7 @@ _filename='starc.AppImage'
 
 pkgname="${_name}-appimage"
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Story Architect is a text editor for film, theatre, radio scripts or comic books."
 arch=('x86_64')
 url='https://starc.app/'
@@ -16,7 +16,7 @@ options=(!strip)
 source=("${_filename}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
 		"${_name}.desktop.patch"
 		"${_name}.sh")
-sha256sums=('fb98d6c8a84e0873d264c615b639341a1edf1a72fb61d960e0af9ecc15a7f63a'
+sha256sums=('e712e3b88788bb7bcf5a30fcb56d86ae461f7f51c9ae80abcc90c312a54b0e49'
 			'583fcc57942d9c9e1a8e41a0a95fcc3f4cdd1660767e014921c30a3fa272f5fa'
 			'642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7')
 
