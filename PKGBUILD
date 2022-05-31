@@ -15,6 +15,7 @@ install=
 source=('swap_pybind.patch'
         'swap_pugixml.patch'
         'swap_pybind_enoki.patch'
+        'python_collections.patch'
         'git+https://github.com/mitsuba-renderer/mitsuba2.git'
         'git+https://github.com/wjakob/tbb.git'
         'git+https://github.com/mitsuba-renderer/asmjit.git'
@@ -25,6 +26,7 @@ source=('swap_pybind.patch'
 md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          '617bd32eecbebd8c7036f738b8275e5f'
          'eee8327568bbe7e0fa0a8d873eb2dea0'
+         'fcd771afe770b24492938482d6facfed'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -58,6 +60,9 @@ prepare() {
 	git apply -v $srcdir/swap_pybind.patch
 	git apply -v $srcdir/swap_pugixml.patch
 	git -C ext/enoki apply -v $srcdir/swap_pybind_enoki.patch
+
+	# fix Python documentation
+	git apply -v $srcdir/python_collections.patch
 
 	# not used with the current build options
 	rmdir ext/embree ext/nanogui

@@ -1,0 +1,26 @@
+diff --git a/docs/exts/sphinxtr/custombackports.py b/docs/exts/sphinxtr/custombackports.py
+index 8741cd1f..a2657d2d 100644
+--- a/docs/exts/sphinxtr/custombackports.py
++++ b/docs/exts/sphinxtr/custombackports.py
+@@ -1,9 +1,11 @@
+ import collections
+ 
++collections_abc = getattr(collections, 'abc', collections)
++
+ Set = set
+ 
+ try:
+-    from collections import OrderedDict
++    from collections_abc import OrderedDict
+ except ImportError:
+     class OrderedDict(dict):
+         'Dictionary that remembers insertion order'
+@@ -252,7 +254,7 @@ except ImportError:
+ 
+ KEY, PREV, NEXT = range(3)
+ 
+-class OrderedSet(collections.MutableSet):
++class OrderedSet(collections_abc.MutableSet):
+   """
+   From: http://code.activestate.com/recipes/576694/
+   """
