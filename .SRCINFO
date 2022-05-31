@@ -1,6 +1,6 @@
 pkgbase = easena-git
 	pkgdesc = EAsy Specification of Evolutionary and Neural Algorithms is an Artificial Evolution platform developped by the SONIC (Stochastic Optimisation and Nature Inspired Computing) group of the BFO team at Université de Strasbourg.
-	pkgver = r431.gb9cb59c
+	pkgver = r441.07415e8
 	pkgrel = 1
 	url = http://easea.unistra.fr
 	arch = i686
@@ -18,8 +18,6 @@ pkgbase = easena-git
 	provides = easena
 	conflicts = easea
 	source = git+https://github.com/EASEA/easea
-	source = fix_config.patch
 	sha256sums = SKIP
-	sha256sums = 0e8f5c0745a8e67dcd523d5a886f9562d72bdcb377a34af1c02d356f96251cf4
 
 pkgname = easena-git
