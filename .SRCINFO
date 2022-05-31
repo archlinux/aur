@@ -1,8 +1,8 @@
 pkgbase = jdk11-j9-bin
 	pkgdesc = IBM® Semeru Runtime Certified Edition, Version 11
-	pkgver = 11.0.12.0
-	pkgrel = 2
-	url = https://www.ibm.com/semeru-runtimes/downloads?license=IBM
+	pkgver = 11.0.15.0
+	pkgrel = 1
+	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads/?license=IBM&version=11
 	arch = x86_64
 	license = custom
 	makedepends = coreutils
@@ -13,7 +13,7 @@ pkgbase = jdk11-j9-bin
 	provides = java-environment=11
 	provides = java-runtime=11
 	provides = java-runtime-headless=11
-	source = install_11.0.12.0.bin::https://github.com/ibmruntimes/semeru11-binaries/releases/download/jdk-11.0.12.0-certified/ibm-semeru-certified-jdk_x64_linux_11.0.12.0-archive.bin
-	sha256sums = 4691610316eb4a205557e3aa7d6d84caa1f140a8e584eaaef5ecbcc99378c0fd
+	source = install_11.0.15.0.bin::https://github.com/ibmruntimes/semeru11-certified-binaries/releases/download/jdk-11.0.15+10_openj9-0.32.0/ibm-semeru-certified-jdk_x64_linux_11.0.15.0-archive.bin
+	sha256sums = b70d8a8f4975a04015038cc0507cfb44e6a73ab81c3d07bd8642f644fbc155b1
 
 pkgname = jdk11-j9-bin
