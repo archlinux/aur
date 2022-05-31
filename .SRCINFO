@@ -17,7 +17,7 @@ pkgbase = rocksdb-ldb
 	depends = zlib
 	depends = gflags
 	provides = rocksdb-ldb
-	source = https://github.com/facebook/rocksdb/archive/v6.15.2.tar.gz
-	sha256sums = 79d554d8a109575f80d827026ecd2fca50b7f79b0af3d0c376afb755db465d4e
+	source = https://github.com/facebook/rocksdb/archive/refs/tags/v7.2.2.tar.gz
+	sha256sums = c4ea6bd2e3ffe3f0f8921c699234d59108c9122d61b0ba2aa78358642a7b614e
 
 pkgname = rocksdb-ldb
