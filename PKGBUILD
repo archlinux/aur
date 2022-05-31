@@ -6,15 +6,13 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.0.0_dev.r13317.gabbd6c167
+pkgver=4.2.0_dev.r15273.ga550af260
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
-arch=('any')
-depends=(cni-plugins conmon containers-common device-mapper iptables
-  runc slirp4netns libsystemd fuse-overlayfs)
-makedepends=(go go-md2man git)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+arch=(x86_64 aarch64)
+makedepends=(go go-md2man git gcc btrfs-progs catatonit libapparmor.so libdevmapper.so libgpgme.so libseccomp.so libsystemd)
+# https://github.com/containers/podman/issues/13297
+options=(!lto)
 url="https://github.com/containers/$_pkgname.git"
 license=(Apache)
 source=("git+$url")
@@ -28,6 +26,9 @@ pkgver() {
 }
 
 build() {
+  # Fails if using clang
+  export CC=gcc
+  export CXX=g++
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -39,13 +40,17 @@ build() {
 }
 
 package_podman-git() {
-  depends+=('libseccomp.so' 'libgpgme.so')
-  optdepends+=('podman-docker: for Docker-compatible CLI'
+  depends+=(catatonit conmon containers-common crun iptables libdevmapper.so libgpgme.so libseccomp.so libsystemd slirp4netns netavark aardvark-dns)
+  optdepends+=(
     'libapparmor.so: support for apparmor'
     'libselinux: support for selinux'
     'btrfs-progs: support btrfs backend devices'
-    'catatonit: --init flag support'
-    'crun: support for unified cgroupsv2')
+    'cni-plugins: for the old cni networking implementation'
+    'podman-compose: for docker-compose compatibility'
+    'podman-docker: for Docker-compatible CLI'
+  )
+  provides=("$_pkgname" "$_pkgname-remote")
+  conflicts=("$_pkgname" "$_pkgname-remote")
 
   cd $_pkgname || exit 1
   make install install.completions DESTDIR="$pkgdir" PREFIX=/usr
@@ -56,13 +61,12 @@ package_podman-git() {
 
 package_podman-docker-git() {
   pkgdesc='Emulate Docker CLI using podman'
-  depends=(podman)
+  depends=("$_pkgname")
   conflicts=(docker)
   provides=(docker)
 
   cd $_pkgname || exit 1
   make docker-docs EXTRA_LDFLAGS='-s -w -linkmode=external'
-  make install.docker DESTDIR="$pkgdir" PREFIX=/usr
-  make install.docker-docs DESTDIR="$pkgdir" PREFIX=/usr
+  make install.docker-full DESTDIR="$pkgdir" PREFIX=/usr
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
