@@ -3,9 +3,9 @@
 
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
-pkgver=2.6
-pkgrel=7
-arch=('i686' 'x86_64')
+pkgver=3.0
+pkgrel=1
+arch=('x86_64' 'aarch64')
 url="http://www.kryoflux.com"
 license=('custom')
 provides=('capsimage')
@@ -14,13 +14,13 @@ depends=('libusb')
 install=kryoflux.install
 makedepends=('gendesk' 'imagemagick')
 optdepends=('java-runtime: for the Kryoflux GUI')
-source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
+source=("https://www.kryoflux.com/download/kryoflux_${pkgver}0_linux.tgz"
         'https://kryoflux.com/kryoflux-ui.jar'
         '80-kryoflux.rules'
         'kryoflux.conf'
         'kryoflux.sh'
         'https://webstore.kryoflux.com/catalog/images/kf_logo_big.png')
-md5sums=('12d57dcc9657a90c583dded553b8a2e1'
+md5sums=('5683afb16b34bd33d9d88e6cf1b04861'
          '44a067aa8d40dd0c8c53d6ff3ad8109c'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb'
@@ -42,22 +42,24 @@ package() {
   install -D 80-kryoflux.rules ${pkgdir}/etc/udev/rules.d/80-kryoflux.rules
   install -D kryoflux.conf ${pkgdir}/etc/modprobe.d/kryoflux.conf
 
-  cd "$srcdir/kryoflux_${pkgver}_linux"
+  cd "$srcdir/kryoflux_${pkgver}0_linux"
   install -d ${pkgroot}/{bin,lib}
+  if [ "$CARCH" = "x86_64" ]
+  then
+    ar -xv dtc/${CARCH}/dtc_${pkgver}.0_amd64.deb data.tar.gz
+  else
+    ar -xv dtc/${CARCH}/dtc_${pkgver}.0_${CARCH}.deb data.tar.gz
+  fi
+  tar -C ${pkgdir} -xvf data.tar.gz
   # rename dtc binary to kdtc to avoid clash with dtc package (suggested by @frankspace)
-  install dtc/${CARCH}/static/dtc ${pkgroot}/bin/kdtc
-  install -Dm755 dtc/${CARCH}/static/dtc ${pkgroot}/share/java/kryoflux/dtc
-  # install -Dm644 dtc/kryoflux-ui.jar ${pkgroot}/share/java/kryoflux/kryoflux-ui.jar
+  mv ${pkgdir}/usr/bin/dtc ${pkgdir}/usr/bin/kdtc
+  # we'll also copy dtc under original name to /usr/share/java/kryoflux
+  install -Dm755 ${pkgdir}/usr/bin/kdtc ${pkgroot}/share/java/kryoflux/dtc
   install -Dm644 ${srcdir}/kryoflux-ui.jar ${pkgroot}/share/java/kryoflux/kryoflux-ui.jar
-  cp -P dtc/${CARCH}/lib* ${pkgroot}/lib
-
-  # Firmwares: choose one or the other
-  install -D dtc/firmware_kf_usb_rosalie.bin ${pkgdir}/usr/lib/firmware/firmware_kf_usb_rosalie.bin
-  install -D dtc/firmware_fast/firmware_kf_usb_rosalie.bin ${pkgdir}/usr/lib/firmware/firmware_kf_usb_rosalie.bin
 
   # Documents
   install -d ${pkgdir}/usr/share/{licenses,doc}/kryoflux
-  install LICENCE.txt ${pkgdir}/usr/share/licenses/kryoflux/LICENCE
+  install -Dm644 LICENCE.txt ${pkgdir}/usr/share/licenses/kryoflux/LICENCE
   install docs/* ${pkgdir}/usr/share/doc/kryoflux
   install dtc/*README* ${pkgdir}/usr/share/doc/kryoflux
   cp -a schematics ${pkgdir}/usr/share/doc/kryoflux
