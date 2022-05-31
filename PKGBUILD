@@ -10,7 +10,7 @@ url='https://pagure.io/libuser/'
 depends=('libuser' 'libldap')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool')
 source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
-sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
+sha512sums=('5a8d261cea62d7d67da84acd263955eca10b876d3bb0cbbf8f15c2a4ad813f3d16361f90060a8ca77f7d97da4aaceaa0549985c06e9cabefeb10451bbb93a9d2')
 
 prepare() {
   cd libuser-${pkgver}
