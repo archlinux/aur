@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://www.apipost.cn/"
 license=('unknown')
 source=("${_pkgname}.desktop"
-        "https://www.apipost.cn/dl.php?client=LinuxGz&arch=x64&version=$pkgver#/${_pkgname}.tar.gz")
+        "https://www.apipost.cn/dl.php?client=LinuxGz&arch=x64&version=$pkgver#/${_pkgname}-v$pkgver.tar.gz")
 md5sums=("74c20618584d247486311abf144089ea"
         "SKIP")
 
