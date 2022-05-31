@@ -1,0 +1,89 @@
+pkgbase = mesa-dri1
+	pkgver = 7.11.2
+	pkgrel = 13
+	url = http://mesa3d.sourceforge.net
+	arch = x86_64
+	license = custom
+	makedepends = xorgproto
+	makedepends = libdrm>=2.4.26
+	makedepends = libxxf86vm>=1.1.1
+	makedepends = libxdamage>=1.1.3
+	makedepends = expat>=2.0.1
+	makedepends = libx11>=1.4.3
+	makedepends = libxt>=1.1.1
+	makedepends = gcc-libs>=4.6.1
+	makedepends = python
+	makedepends = libxml2
+	makedepends = imake
+	makedepends = llvm
+	makedepends = udev
+	source = ftp://ftp.freedesktop.org/pub/mesa/older-versions/7.x/7.11.2/MesaLib-7.11.2.tar.bz2
+	source = LICENSE
+	source = mesa-dri1-symbol-visibility.patch
+	source = mesa-dri1-python3.patch
+	md5sums = 0837c52698fe3252369c3fdb5195afcc
+	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
+	md5sums = 489feaf524440ff2e4fa32e65e7037ce
+	md5sums = b1da35125d638bb3ea673cc18ce9f9e3
+
+pkgname = unichrome-dri
+	pkgdesc = Mesa DRI drivers for S3 Graphics/VIA Unichrome
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = mesa>=21.0
+
+pkgname = i810-dri
+	pkgdesc = Mesa DRI drivers for Intel i810
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = mesa>=21.0
+
+pkgname = mach64-dri
+	pkgdesc = Mesa DRI drivers for ATI Mach64
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-mach64<6.8.2
+	conflicts = mesa>=21.0
+
+pkgname = mga-dri
+	pkgdesc = Mesa DRI drivers for Matrox
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-mga<1.4.11
+	conflicts = mesa>=21.0
+
+pkgname = r128-dri
+	pkgdesc = Mesa DRI drivers for ATI Rage128
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-r128<6.8.1
+	conflicts = mesa>=21.0
+
+pkgname = savage-dri
+	pkgdesc = Mesa DRI drivers for S3 Sraphics/VIA Savage
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-savage<2.3.1
+	conflicts = mesa>=21.0
+
+pkgname = sis-dri
+	pkgdesc = Mesa DRI drivers for SiS
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-sis<0.10.2
+	conflicts = mesa>=21.0
+
+pkgname = tdfx-dri
+	pkgdesc = Mesa DRI drivers for 3dfx
+	depends = expat
+	depends = libdrm
+	depends = gcc-libs
+	conflicts = xf86-video-tdfx<1.4.3
+	conflicts = mesa>=21.0
