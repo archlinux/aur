@@ -1,0 +1,18 @@
+pkgbase = new-bin
+	pkgdesc = cookiecutter wrapper, let you search through github for template
+	pkgver = 0.1.3
+	pkgrel = 1
+	depends = cookiecutter
+	conflicts = new
+	provides = new
+	arch = aarch64
+	source_aarch64 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 45c1a314a7b51335628fce6f5a1e3ba82ec171cd186c93838bafe67a5b751e1a
+	arch = i686
+	source_i686 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_i386.tar.gz
+	sha256sums_i686 = 97df4e6b34f3f2fa42c94e4cecc9c8004e219e0881dbd7f9e5bbcf4334b08116
+	arch = x86_64
+	source_x86_64 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f960801dc9fef0db3943566e86ddc72847ea838d050b160613fa94340681cc95
+	
+pkgname = new-bin
