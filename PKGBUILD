@@ -1,18 +1,18 @@
 # Maintainer: jose riha <jose 1711 gmail com>
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
-pkgname='perl-tinkerforge'
-pkgver='2.1.4'
-pkgrel='1'
+pkgname=perl-tinkerforge
+pkgver=2.1.31
+pkgrel=1
 pkgdesc="perl binding for the TinkerForge hard-/software"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 url='http://www.tinkerforge.com/en/doc/Software/API_Bindings_Perl.html'
-source=("http://download.tinkerforge.com/bindings/perl/tinkerforge_perl_bindings_2_1_4.zip")
-md5sums=('ebb1ca6e64d4f22d124666ee77500f2c')
-sha512sums=('810cbac499ade0f2cf5c575256819d629feca9fb0297cee521e326522672d68cec0887b0c4c7ddc6645d9e5dd53dc177c0507661997dd557e3a5b27ba57e4e00')
+source=("http://download.tinkerforge.com/bindings/perl/tinkerforge_perl_bindings_${pkgver//./_}.zip")
+md5sums=('202cbf5c1678707f9be155f5cbb1ce52')
+sha512sums=('85f29551b7c219573385a8cc420c1f76804ef3c5c1c1f3aa066e5f07cecd580ac35232a440fc6d225c086dc9e80768f901f7754938bd4311679d81d83a687afd')
 _distdir="Tinkerforge-${pkgver}"
 
 build() {
