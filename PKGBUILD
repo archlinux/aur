@@ -3,7 +3,7 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
