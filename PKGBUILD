@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=qpwgraph-qt5
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="a pipewire graph using qt(qt5 version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 provides=('qpwgraph')
 conflicts=('qpwgraph')
 source=("$url/-/archive/v$pkgver/${pkgname%-qt5}-v$pkgver.tar.gz")
-sha256sums=('1d06bcd8d081e8341b4320e94388f1320145a0f536169cbeddd2762defc8f352')
+sha256sums=('450c53c88925f744eb6ae12404c94cfe0c2d24bf0fcca3a3492ff393d321105e')
 
 build() {
 cmake -B build -S "${pkgname%-qt5}-v$pkgver" -DCMAKE_BUILD_TYPE=None \
