@@ -1,16 +1,16 @@
 # Maintainer:
 
 pkgname=virtiofsd
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A virtio-fs vhost-user device daemon written in Rust"
+pkgdesc='A virtio-fs vhost-user device daemon written in Rust'
 arch=('x86_64')
-url="https://gitlab.com/virtio-fs/virtiofsd"
+url='https://gitlab.com/virtio-fs/virtiofsd'
 license=('Apache' 'BSD')
 depends=('gcc-libs' 'libcap-ng' 'libseccomp')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='220405d7a2606c92636d31992b5cb3036a41047b' # v1.1.0
+_commit='deea41891759b3f96539ff805435248717e7c666'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
