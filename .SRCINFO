@@ -17,7 +17,6 @@ pkgbase = mongodb
 	makedepends = boost
 	depends = libstemmer
 	depends = snappy
-	depends = krb5
 	depends = boost-libs
 	depends = pcre
 	depends = yaml-cpp
