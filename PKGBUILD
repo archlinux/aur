@@ -1,6 +1,6 @@
-# Maintainer: James Triantafylos <JTriantafylos at gmail dot com>
+# Maintainer: James Triantafylos <JTriantafylos at protonmail dot com>
 pkgname=sstatus
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A lightweight, multi-threaded status line generator to be used with i3bar."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/JTriantafylos/${pkgname}"
 license=('GPL3')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JTriantafylos/sstatus/archive/v${pkgver}.tar.gz")
-sha256sums=('6ddd996a8fd7bbc0f3e25851e4f238480723077000a91a5e5197a57fb2696d59')
+sha256sums=('0d465bcd28e2ef6ca5cdfc6035d37acf82ad78b7b7273e3da67d433d3fa401d5')
 
 build () {
   cmake -B build \
