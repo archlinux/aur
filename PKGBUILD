@@ -1,7 +1,7 @@
 # Maintainer: Rutger Broekhoff <rutger@viasalix.nl>
 
 pkgname='gyro-bin'
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A Zig package manager with an index, build runner, and build dependencies"
 arch=('aarch64' 'i686' 'x86_64')
@@ -14,9 +14,9 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/mattnit
 source_i686=("${pkgname}-${pkgver}-i386.tar.gz::https://github.com/mattnite/gyro/releases/download/${pkgver}/gyro-${pkgver}-linux-i386.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/mattnite/gyro/releases/download/${pkgver}/gyro-${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('e8b7547024443b2fae2609708ffd1680a8f1973214f1523419fe91bd52aa8552')
-sha256sums_aarch64=('268127ce0626c2f3062ae0d08d9226ad4efeb111429790073bb0f31e4ed696be')
-sha256sums_i686=('6425d605347ceda35360734d28f08cc76eb6b5839438aa9e25d642fd1430fd19')
-sha256sums_x86_64=('2b947a5f39797924667bdf0d3793f4c5400fa90ad517c9605829071736badd74')
+sha256sums_aarch64=('0efe2542b40f6e65d507807ee37e9d8a9b3887100489aa97d6988479f62287ae')
+sha256sums_i686=('a1112f5eb0efc99e30f9a5a9b36687c9e4379b3dae8954f9475f9d914036e1e2')
+sha256sums_x86_64=('06b596dd3e2f76445300e619a9c4d8bdc3d0cbaf40202a90fe8c09d40343273f')
 
 package() {
 	local gyro_arch="$(get_pkg_arch)"
