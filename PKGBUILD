@@ -12,7 +12,7 @@ depends=("gcc-libs")
 makedepends=("cargo")
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('2b97ea27d0a9bdd49f3778bd750fe1bf93de9bffd47d4cbc2a50ab6e39a11b93')
+sha512sums=('4d80d60b3b7b3002a2b7d14a2d55ca1ba217b651e44438085fa8ccc87cbb1a287aeff153fd73be68118da89dc8db35a7e4586d9f8e799239f1b7eebb1b322719')
 
 prepare() {
   cd ${pkgname}-${pkgver}
