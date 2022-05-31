@@ -1,7 +1,7 @@
 pkgbase = perl-string-random
 	pkgdesc = Perl module to generate random strings based on a pattern
 	pkgver = 0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/String::Random
 	arch = any
 	license = PerlArtistic
