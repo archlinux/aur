@@ -1,0 +1,22 @@
+pkgbase = derocli-bin
+	pkgdesc = a cli tool to fetch information from a dero rpc node
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://stratum.farm
+	license = MIT
+	conflicts = derocli
+	provides = derocli
+	arch = aarch64
+	source_aarch64 = https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 13a265850769ceacd02865644dcc847234833567bb10aa79dcc2b84a6e4c65a1
+	arch = armv7h
+	source_armv7h = https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-armv7.tar.gz
+	sha256sums_armv7h = a15eb59e42a1f5dee53a49adbc6c490dea2274f43bdd9d9e76f12a91c7e223e9
+	arch = i686
+	source_i686 = https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-386.tar.gz
+	sha256sums_i686 = 8eb9c6bf411bd65fb9990694a6b7d39a8ef29a5d808f83809d8c9760187f9799
+	arch = x86_64
+	source_x86_64 = https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = ded8b1e9c175d273633e0619ee9f3b46c40c2a611718eb5975afdeb0350c2cdd
+	
+pkgname = derocli-bin
