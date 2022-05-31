@@ -1,10 +1,11 @@
 # Maintainer: Skunnyk <skunnyk@archlinux.fr>
+# Maintainer: Andre Miranda <andreldm at xfce dot org>
 pkgname=xfce4-screenshooter-git
-pkgver=1.9.2.r3.gd789db8
+pkgver=1.9.10.r38.g13d0c95
 pkgrel=1
 pkgdesc="Plugin that makes screenshots for the Xfce panel."
 arch=('i686' 'x86_64')
-url="http://goodies.xfce.org/projects/applications/xfce4-screenshooter"
+url="https://docs.xfce.org/apps/screenshooter/start"
 license=('GPL2')
 groups=('xfce4-goodies')
 depends=('xfce4-panel' 'libsoup')
@@ -12,7 +13,7 @@ makedepends=('xfce4-dev-tools' 'intltool')
 provides=('xfce4-screenshooter')
 conflicts=('xfce4-screenshooter')
 install=$pkgname.install
-source=($pkgname::git://git.xfce.org/apps/xfce4-screenshooter)
+source=($pkgname::git+https://gitlab.xfce.org/apps/xfce4-screenshooter)
 sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$pkgname"
