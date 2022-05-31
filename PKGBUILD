@@ -1,14 +1,14 @@
 # Author: Dominic Radermacher <dominic@familie-radermacher.ch>
 pkgname=lan951x-led-ctl
-pkgver=1.0.r6.g2d51527
+pkgver=1.0.r7.gfe5cfbc
 pkgrel=1
 pkgdesc="Command line tool to control the LED's of a LAN9512/LAN9514 ethernet controller"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-url="https://familie-radermacher.ch/dominic/computer/raspberry-pi/lan951x-led-ctl/"
+url="https://dominic.familie-radermacher.ch/computer/raspberry-pi/lan951x-led-ctl/"
 license=('GPL2')
 makedepends=('git')
 depends=('libusb>=1.0')
-source=(git+https://familie-radermacher.ch/cgi/cgit/linux/${pkgname}.git)
+source=(git+https://git.familie-radermacher.ch/linux/${pkgname}.git)
 sha256sums=('SKIP')
 
 pkgver() {
