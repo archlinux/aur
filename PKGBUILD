@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=coredns
 pkgver=1.9.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
 conflicts=('coredns-bin')

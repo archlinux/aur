@@ -1,7 +1,7 @@
 pkgbase = coredns
 	pkgdesc = A DNS server that chains plugins
 	pkgver = 1.9.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/coredns/coredns
 	arch = any
 	license = Apache
