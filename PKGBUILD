@@ -3,7 +3,7 @@
 pkgname=ferium-bin
 _pkgname=ferium
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64")
 depends=("gcc-libs" "bzip2")
