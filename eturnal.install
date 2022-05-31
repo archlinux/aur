@@ -1,4 +1,5 @@
 post_install() {
+	chown -R eturnal:eturnal /opt/eturnal/
 	echo "Enable the systemd service using 'systemctl enable --now eturnal.service'"
 	echo ""
 	echo "An example configuration file is available at /usr/share/doc/eturnal/eturnal.yml"
