@@ -109,7 +109,7 @@ index d3b3145a3..e11efb9f6 100644
   * This function takes a 64 bit time stamp from the monotonic clock, and clamps
   * it to the scope of the X server clock, without losing the granularity.
 diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
-index 1576ce551..ecc072510 100644
+index 6f4982553..ce4184776 100644
 --- a/src/compositor/compositor.c
 +++ b/src/compositor/compositor.c
 @@ -85,6 +85,8 @@
@@ -121,7 +121,7 @@ index 1576ce551..ecc072510 100644
  enum
  {
    PROP_0,
-@@ -512,6 +514,10 @@ meta_compositor_add_window (MetaCompositor    *compositor,
+@@ -513,6 +515,10 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     * before we first paint.
     */
    priv->windows = g_list_append (priv->windows, window_actor);
@@ -132,7 +132,7 @@ index 1576ce551..ecc072510 100644
    sync_actor_stacking (compositor);
  }
  
-@@ -558,6 +564,7 @@ meta_compositor_queue_frame_drawn (MetaCompositor *compositor,
+@@ -559,6 +565,7 @@ meta_compositor_queue_frame_drawn (MetaCompositor *compositor,
    MetaWindowActor *window_actor = meta_window_actor_from_window (window);
  
    meta_window_actor_queue_frame_drawn (window_actor, no_delay_frame);
@@ -140,7 +140,7 @@ index 1576ce551..ecc072510 100644
  }
  
  void
-@@ -889,6 +896,20 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
+@@ -907,6 +914,20 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
  
    sync_actor_stacking (compositor);
  
@@ -158,10 +158,10 @@ index 1576ce551..ecc072510 100644
 +        }
 +    }
 +
-   top_window_actor = get_top_visible_window_actor (compositor);
+   update_top_window_actor (compositor);
+ }
  
-   if (priv->top_window_actor == top_window_actor)
-@@ -919,7 +940,17 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
+@@ -923,7 +944,17 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
    changes = meta_window_actor_sync_actor_geometry (window_actor, did_placement);
  
    if (changes & META_WINDOW_ACTOR_CHANGE_SIZE)
@@ -179,7 +179,7 @@ index 1576ce551..ecc072510 100644
  }
  
  static void
-@@ -1085,6 +1116,49 @@ meta_compositor_get_property (GObject    *object,
+@@ -1099,6 +1130,49 @@ meta_compositor_get_property (GObject    *object,
      }
  }
  
@@ -229,7 +229,7 @@ index 1576ce551..ecc072510 100644
  static void
  meta_compositor_init (MetaCompositor *compositor)
  {
-@@ -1115,6 +1189,8 @@ meta_compositor_constructed (GObject *object)
+@@ -1135,6 +1209,8 @@ meta_compositor_constructed (GObject *object)
  
    priv->laters = meta_laters_new (compositor);
  
@@ -238,7 +238,7 @@ index 1576ce551..ecc072510 100644
    G_OBJECT_CLASS (meta_compositor_parent_class)->constructed (object);
  }
  
-@@ -1134,6 +1210,8 @@ meta_compositor_dispose (GObject *object)
+@@ -1155,6 +1231,8 @@ meta_compositor_dispose (GObject *object)
  
    g_clear_pointer (&priv->windows, g_list_free);
  
@@ -247,7 +247,7 @@ index 1576ce551..ecc072510 100644
    G_OBJECT_CLASS (meta_compositor_parent_class)->dispose (object);
  }
  
-@@ -1477,3 +1555,20 @@ meta_compositor_get_laters (MetaCompositor *compositor)
+@@ -1498,3 +1576,20 @@ meta_compositor_get_laters (MetaCompositor *compositor)
  
    return priv->laters;
  }
@@ -269,7 +269,7 @@ index 1576ce551..ecc072510 100644
 +    }
 +}
 diff --git a/src/compositor/meta-window-actor-private.h b/src/compositor/meta-window-actor-private.h
-index 138ce2c83..abcd695a9 100644
+index 8aa206bb8..5a8b35c19 100644
 --- a/src/compositor/meta-window-actor-private.h
 +++ b/src/compositor/meta-window-actor-private.h
 @@ -106,4 +106,15 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
@@ -289,7 +289,7 @@ index 138ce2c83..abcd695a9 100644
 +void meta_window_actor_update_blur_window_opacity (MetaWindowActor *self);
  #endif /* META_WINDOW_ACTOR_PRIVATE_H */
 diff --git a/src/compositor/meta-window-actor-wayland.c b/src/compositor/meta-window-actor-wayland.c
-index 468229751..eefd9c26b 100644
+index e1f341048..ae34238a5 100644
 --- a/src/compositor/meta-window-actor-wayland.c
 +++ b/src/compositor/meta-window-actor-wayland.c
 @@ -24,10 +24,36 @@
@@ -329,8 +329,8 @@ index 468229751..eefd9c26b 100644
  };
  
  G_DEFINE_TYPE (MetaWindowActorWayland, meta_window_actor_wayland, META_TYPE_WINDOW_ACTOR)
-@@ -104,18 +130,54 @@ meta_window_actor_wayland_get_topmost_surface (MetaWindowActor *actor)
-   return NULL;
+@@ -109,18 +135,54 @@ meta_window_actor_wayland_get_scanout_candidate (MetaWindowActor *actor)
+   return topmost_surface_actor;
  }
  
 +static void
@@ -384,7 +384,7 @@ index 468229751..eefd9c26b 100644
  }
  
  static void
-@@ -131,10 +193,287 @@ meta_window_actor_wayland_queue_frame_drawn (MetaWindowActor *actor,
+@@ -136,10 +198,287 @@ meta_window_actor_wayland_queue_frame_drawn (MetaWindowActor *actor,
  {
  }
  
@@ -672,7 +672,7 @@ index 468229751..eefd9c26b 100644
  }
  
  static void
-@@ -165,12 +504,29 @@ meta_window_actor_wayland_can_freeze_commits (MetaWindowActor *actor)
+@@ -170,12 +509,29 @@ meta_window_actor_wayland_can_freeze_commits (MetaWindowActor *actor)
    return FALSE;
  }
  
@@ -702,7 +702,7 @@ index 468229751..eefd9c26b 100644
    g_autoptr (GList) children = NULL;
    GList *l;
  
-@@ -183,7 +539,19 @@ meta_window_actor_wayland_dispose (GObject *object)
+@@ -188,7 +544,19 @@ meta_window_actor_wayland_dispose (GObject *object)
            child_actor != CLUTTER_ACTOR (surface_actor))
          clutter_actor_remove_child (CLUTTER_ACTOR (window_actor), child_actor);
      }
@@ -723,15 +723,15 @@ index 468229751..eefd9c26b 100644
    G_OBJECT_CLASS (meta_window_actor_wayland_parent_class)->dispose (object);
  }
  
-@@ -191,6 +559,7 @@ static void
+@@ -196,6 +564,7 @@ static void
  meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
  {
    MetaWindowActorClass *window_actor_class = META_WINDOW_ACTOR_CLASS (klass);
 +  ClutterActorClass *actor_class = CLUTTER_ACTOR_CLASS (klass);
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
  
-   window_actor_class->get_topmost_surface = meta_window_actor_wayland_get_topmost_surface;
-@@ -204,10 +573,19 @@ meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
+   window_actor_class->get_scanout_candidate = meta_window_actor_wayland_get_scanout_candidate;
+@@ -209,10 +578,19 @@ meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
    window_actor_class->update_regions = meta_window_actor_wayland_update_regions;
    window_actor_class->can_freeze_commits = meta_window_actor_wayland_can_freeze_commits;
  
@@ -752,7 +752,7 @@ index 468229751..eefd9c26b 100644
 +                              self);
  }
 diff --git a/src/compositor/meta-window-actor-x11.c b/src/compositor/meta-window-actor-x11.c
-index 9e64462ea..7c003a342 100644
+index 82eaa428b..3d3bb2178 100644
 --- a/src/compositor/meta-window-actor-x11.c
 +++ b/src/compositor/meta-window-actor-x11.c
 @@ -142,7 +142,8 @@ surface_repaint_scheduled (MetaSurfaceActor *actor,
@@ -765,7 +765,7 @@ index 9e64462ea..7c003a342 100644
    actor_x11->repaint_scheduled = TRUE;
  }
  
-@@ -438,6 +439,8 @@ surface_size_changed (MetaSurfaceActor *actor,
+@@ -458,6 +459,8 @@ surface_size_changed (MetaSurfaceActor *actor,
    MetaWindowActorX11 *actor_x11 = META_WINDOW_ACTOR_X11 (user_data);
  
    meta_window_actor_x11_update_shape (actor_x11);
@@ -774,7 +774,7 @@ index 9e64462ea..7c003a342 100644
  }
  
  static void
-@@ -576,6 +579,9 @@ has_shadow (MetaWindowActorX11 *actor_x11)
+@@ -596,6 +599,9 @@ has_shadow (MetaWindowActorX11 *actor_x11)
    if (meta_window_get_frame (window))
      return TRUE;
  
@@ -784,7 +784,7 @@ index 9e64462ea..7c003a342 100644
    /*
     * Do not add shadows to non-opaque (ARGB32) windows, as we can't easily
     * generate shadows for them.
-@@ -732,6 +738,8 @@ clip_shadow_under_window (MetaWindowActorX11 *actor_x11)
+@@ -752,6 +758,8 @@ clip_shadow_under_window (MetaWindowActorX11 *actor_x11)
  
    if (window->frame)
      return TRUE;
@@ -793,7 +793,7 @@ index 9e64462ea..7c003a342 100644
  
    return meta_window_actor_is_opaque (META_WINDOW_ACTOR (actor_x11));
  }
-@@ -1074,6 +1082,11 @@ update_shape_region (MetaWindowActorX11 *actor_x11)
+@@ -1094,6 +1102,11 @@ update_shape_region (MetaWindowActorX11 *actor_x11)
      {
        region = cairo_region_reference (window->shape_region);
      }
@@ -805,7 +805,7 @@ index 9e64462ea..7c003a342 100644
    else
      {
        /* If we don't have a shape on the server, that means that
-@@ -1081,7 +1094,7 @@ update_shape_region (MetaWindowActorX11 *actor_x11)
+@@ -1101,7 +1114,7 @@ update_shape_region (MetaWindowActorX11 *actor_x11)
         * entire window. */
        region = cairo_region_create_rectangle (&client_area);
      }
@@ -814,7 +814,7 @@ index 9e64462ea..7c003a342 100644
    if (window->shape_region || window->frame)
      build_and_scan_frame_mask (actor_x11, region);
  
-@@ -1189,6 +1202,23 @@ update_opaque_region (MetaWindowActorX11 *actor_x11)
+@@ -1209,6 +1222,23 @@ update_opaque_region (MetaWindowActorX11 *actor_x11)
    cairo_region_destroy (opaque_region);
  }
  
@@ -838,7 +838,7 @@ index 9e64462ea..7c003a342 100644
  static void
  update_frame_bounds (MetaWindowActorX11 *actor_x11)
  {
-@@ -1196,8 +1226,13 @@ update_frame_bounds (MetaWindowActorX11 *actor_x11)
+@@ -1216,8 +1246,13 @@ update_frame_bounds (MetaWindowActorX11 *actor_x11)
      meta_window_actor_get_meta_window (META_WINDOW_ACTOR (actor_x11));
  
    g_clear_pointer (&actor_x11->frame_bounds, cairo_region_destroy);
@@ -854,7 +854,7 @@ index 9e64462ea..7c003a342 100644
  }
  
  static void
-@@ -1342,7 +1377,10 @@ meta_window_actor_x11_paint (ClutterActor        *actor,
+@@ -1362,7 +1397,10 @@ meta_window_actor_x11_paint (ClutterActor        *actor,
        cairo_region_t *clip = actor_x11->shadow_clip;
        CoglFramebuffer *framebuffer;
  
@@ -867,7 +867,7 @@ index 9e64462ea..7c003a342 100644
  
        /* The frame bounds are already subtracted from actor_x11->shadow_clip
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index 9cee56a37..a721737a2 100644
+index ae1fa4d90..a5a5286fa 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
 @@ -41,6 +41,9 @@
@@ -1737,10 +1737,10 @@ index 536d9dd57..1889b27a7 100644
 +  return FALSE;
 +}
 diff --git a/src/meson.build b/src/meson.build
-index 7b456f524..35d4b07aa 100644
+index 13a69c1a6..10e29db76 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -174,6 +174,18 @@ if get_option('verbose')
+@@ -173,6 +173,18 @@ if get_option('verbose')
    ]
  endif
  
@@ -1759,7 +1759,7 @@ index 7b456f524..35d4b07aa 100644
  mutter_sources = [
    'backends/edid.h',
    'backends/edid-parse.c',
-@@ -463,6 +475,8 @@ mutter_sources = [
+@@ -462,6 +474,8 @@ mutter_sources = [
    'x11/window-x11-private.h',
    'x11/xprops.c',
    'x11/xprops.h',
@@ -1768,7 +1768,7 @@ index 7b456f524..35d4b07aa 100644
  ]
  
  if have_egl_device
-@@ -1017,7 +1031,8 @@ subdir('meta')
+@@ -1016,7 +1030,8 @@ subdir('meta')
  mutter_built_sources += mutter_enum_types
  
  libmutter = shared_library(libmutter_name,

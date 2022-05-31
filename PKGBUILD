@@ -8,8 +8,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=42.1
-pkgrel=1.1
+pkgver=42.2
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -25,15 +25,9 @@ provides=(libmutter-10.so mutter)
 conflicts=(mutter)
 install=mutter-rounded.install
 
-_commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808  # tags/42.1^0
+_commit=10cece870cf25c15daa8b20130d328257ec5f132  # tags/42.2^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-setting"
-
-# Mirrors in Gitee
-if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
-  _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
-  _settings_src="mutter_settings::git+https://gitee.com/lluo/mutter-rounded-setting/"
-fi
 
 source=("$_mutter_src"
         "$_settings_src"
@@ -48,7 +42,7 @@ source=("$_mutter_src"
         )
 sha256sums=('SKIP'
             'SKIP'
-            '0e9cca76641e4d4158d1fb4546d5736da6a9f631ced42fbdf6d50c397264e44a'
+            '71a533c3a398068025ade421b4f28dbba46eb408068a922334a64a8e0838aefc'
             '369390774cf8607f9033a077e0ac76113ffc1c0997627949e087c757a5f41844'
             'a78e0bdbf4d0b5c8c0f83ede60b531bf0d5d616bfee30293a1f27d32d738dbc6'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
