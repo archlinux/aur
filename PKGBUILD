@@ -1,8 +1,9 @@
+# Maintainer: Christian Hesse <mail@eworm.de>
 # Contributor: James Pearson <james.m.pearson+arch@gmail.com>
 
 pkgname=perl-digest-md4
 pkgver=1.9
-pkgrel=1
+pkgrel=9
 pkgdesc='Digest::MD4::Perl - Perl interface to the MD4 Algorithm'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/Digest-MD4'

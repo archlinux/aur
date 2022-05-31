@@ -1,7 +1,7 @@
 pkgbase = perl-digest-md4
 	pkgdesc = Digest::MD4::Perl - Perl interface to the MD4 Algorithm
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 9
 	url = http://search.cpan.org/dist/Digest-MD4
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = perl-digest-md4
 	sha256sums = 665110bba32470f398f311cd6462fd8975d7c83675ff674bc2f6c7b72b0caaa6
 
 pkgname = perl-digest-md4
-
