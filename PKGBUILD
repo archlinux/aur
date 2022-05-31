@@ -4,7 +4,7 @@
 
 pkgname=mit-scheme
 pkgver=11.2
-pkgrel=3
+pkgrel=4
 pkgdesc='MIT/GNU Scheme'
 url='https://www.gnu.org/software/mit-scheme/'
 arch=('x86_64')
@@ -21,7 +21,7 @@ validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@ch
 
 build() {
     cd "$pkgname-$pkgver"/src
-    ./configure CFLAGS=-Wno-array-parameter --prefix=/usr \
+    ./configure CFLAGS="-Wno-array-parameter -Wno-error=use-after-free" --prefix=/usr \
         --with-x \
         --enable-x11 \
         --enable-native-code
