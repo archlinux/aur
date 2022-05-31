@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem-git
-pkgver=4.10.r20211113
+pkgver=4.11.r20220405
 epoch=2
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method from git'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack' 'arpack' 'parmetis' 'cblas' 'blis' 'mumps')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack' 'arpack' 'parmetis' 'cblas' 'openblas' 'mumps')
 makedepends=('git' 'texlive-core' 'gcc-fortran' 'unzip' 'openmpi' 'gsl')
 provides=('freefem' 'freefem++')
 conflicts=('freefem' 'freefem++')
@@ -18,7 +18,7 @@ options=('!makeflags')
 
 pkgver() {
   cd FreeFem
-  printf "%s.r%s" $(grep AC_INIT configure.ac| cut -d, -f2|tr - .) $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  printf "%s.r%s" $(grep AC_INIT configure.ac| cut -d, -f2|tr - .|tr -d [|tr -d ]) $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
 prepare() {

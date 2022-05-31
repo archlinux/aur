@@ -1,6 +1,6 @@
 pkgbase = freefem-git
 	pkgdesc = A PDE oriented language using the finite element method from git
-	pkgver = 4.10.r20211113
+	pkgver = 4.11.r20220405
 	pkgrel = 1
 	epoch = 2
 	url = https://freefem.org/index.html
@@ -23,7 +23,7 @@ pkgbase = freefem-git
 	depends = arpack
 	depends = parmetis
 	depends = cblas
-	depends = blis
+	depends = openblas
 	depends = mumps
 	provides = freefem
 	provides = freefem++
