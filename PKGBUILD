@@ -1,7 +1,7 @@
 # Maintainer: Barfin
 pkgname=outline-client-appimage
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks."
 arch=(x86_64)
 url="https://getoutline.org"
