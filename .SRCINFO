@@ -6,10 +6,6 @@ pkgbase = xencelabs
 	install = xencelabs.install
 	arch = x86_64
 	license = LGPL3
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = icu
-	depends = openssl
 	source_x86_64 = https://download01.xencelabs.com/file/20220527/XencelabsLinux_1.2.1-11.zip
 	sha256sums_x86_64 = 0ee73309d9c2f6681c47542ae1c0efaea8c49f273c835046968d9271b7c7ed03
 
