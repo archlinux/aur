@@ -1,7 +1,7 @@
 pkgbase = r-feather
 	pkgdesc = Read and write feather files, a lightweight binary columnar data store designed for maximum speed.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=feather
 	arch = any
 	license = Apache-2.0
