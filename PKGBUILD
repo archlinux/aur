@@ -2,7 +2,7 @@
 
 _upname=ftCLI
 pkgname=ftcli
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A command line font editor'
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$_upname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('8bf85777c86e99af92a5f5e02a2c1b576454767cf71f5e0fcf074b32c244c97f')
+sha256sums=('76955ec319432ae6ed57a32fed3ec18495778a670fa7efe11e1f9c3f77d85754')
 
 build() {
 	cd "$_archive"
