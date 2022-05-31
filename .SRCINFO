@@ -11,6 +11,6 @@ pkgbase = nct6775-master-dkms-git
 	source = nct6775-master-dkms-git::git+https://github.com/tonylambiris/nct6775
 	source = dkms.conf.in
 	sha256sums = SKIP
-	sha256sums = 991980f5e5d4b0c45d3b8ef823d983c1fe6059ad4f9ea462900a6d11e137ae74
+	sha256sums = 9ab9c96b13dee285a5e31e5312d7dff4fe36c5de02ceb1431e577e91d8209b63
 
 pkgname = nct6775-master-dkms-git
