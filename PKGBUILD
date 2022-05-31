@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/YoRyan/nuxhash"
 license=('GPL3')
 depends=('python' 'python-requests' 'curl' 'nvidia' 'opencl-nvidia' 'cuda')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 optdepends=('python-wxpython: GUI support'
             'python-pypubsub: GUI support')
 source=("git+https://github.com/YoRyan/nuxhash.git"
