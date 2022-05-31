@@ -30,11 +30,6 @@ build() {
     meson compile -C build
 }
 
-check() {
-    cd "$_gitname"
-    meson test -C build
-}
-
 package() {
     cd "$_gitname"
     meson install --destdir="$pkgdir" -C build
