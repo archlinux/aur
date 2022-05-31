@@ -1,0 +1,17 @@
+pkgbase = r-feather
+	pkgdesc = Read and write feather files, a lightweight binary columnar data store designed for maximum speed.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=feather
+	arch = any
+	license = Apache-2.0
+	checkdepends = r-testthat
+	depends = r-rcpp
+	depends = r-tibble>=2.0.0
+	depends = r-hms
+	source = https://cran.r-project.org/src/contrib/feather_0.3.5.tar.gz
+	source = APACHE::https://www.apache.org/licenses/LICENSE-2.0.txt
+	sha512sums = 6343e06f2e05dd61d615cf00ef6045053ebf2e4a4237f417d798eedb41cb244d9bec373500580ce79d6a2093bef83798c723d00a1fc5ba4e7082c3ea698521ac
+	sha512sums = 98f6b79b778f7b0a15415bd750c3a8a097d650511cb4ec8115188e115c47053fe700f578895c097051c9bc3dfb6197c2b13a15de203273e1a3218884f86e90e8
+
+pkgname = r-feather
