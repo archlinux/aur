@@ -1,0 +1,12 @@
+pkgbase = bareos-scripts
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/snuglinux/bareos-scripts
+	install = bareos-scripts.install
+	arch = any
+	license = GPL2
+	depends = python2-bareos
+	source = https://github.com/snuglinux/bareos-scripts/archive/0.0.2.zip
+	md5sums = e061869925ae5faf7c807649e2dc4cb1
+
+pkgname = bareos-scripts
