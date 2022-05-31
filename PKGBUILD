@@ -1,14 +1,14 @@
 # Maintainer: deadc0de6 <info@deadc0de.ch>
 
 pkgname=dotdrop
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
 url="https://github.com/deadc0de6/dotdrop"
 license=('GPL')
 groups=()
-depends=('python' 'python-setuptools' 'python-jinja' 'python-docopt' 'python-ruamel-yaml' 'python-magic-ahupp' 'python-requests' 'python-packaging')
+depends=('python' 'python-setuptools' 'python-jinja' 'python-docopt' 'python-ruamel-yaml' 'python-magic-ahupp' 'python-requests' 'python-packaging' 'python-toml')
 makedepends=('git')
 source=("git+https://github.com/deadc0de6/dotdrop.git#tag=v${pkgver}")
 md5sums=('SKIP')
