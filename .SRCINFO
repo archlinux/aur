@@ -16,4 +16,3 @@ pkgbase = brother-mfc-l8690cdw
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-l8690cdw
-
