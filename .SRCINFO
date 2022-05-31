@@ -1,0 +1,19 @@
+pkgbase = ruby-eventmachine-1.0
+	pkgdesc = Fast, single-threaded engine for arbitrary network communications
+	pkgver = 1.0.9.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/eventmachine/versions/1.0.9.1
+	arch = x86_64
+	license = Ruby
+	license = GPL2
+	makedepends = ruby-rdoc
+	depends = gcc-libs
+	depends = glibc
+	depends = ruby
+	depends = openssl
+	provides = ruby-eventmachine=1.0.9.1
+	options = !emptydirs
+	source = ruby-eventmachine-1.0.9.1.tar.gz::https://github.com/eventmachine/eventmachine/archive/v1.0.9.1.tar.gz
+	b2sums = ee5468cde4ba76922180e164e50c186837b5be7792aa8bb03306fdb4500131fdb6c9707dc34861f5e1ab5103f5fa31aaa54d2cc80627648265152f2c3530e095
+
+pkgname = ruby-eventmachine-1.0
