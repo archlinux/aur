@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-git
-pkgver=4.5a.r3522.a5cbf3a0
+pkgver=4.5a.r3528.16e397e1
 pkgrel=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -53,7 +53,8 @@ build() {
 	      --enable-flac \
 	      --enable-sqlite \
 	      --enable-ssl \
-	      --enable-gstreamer 
+	      --enable-gstreamer \
+	      --disable-mqtt
   
   EXTRALIBS="-ldl -lresolv -lunistring -lpcre -lgmp -lm -lc" make build compile-bee
 }
