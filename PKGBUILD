@@ -3,7 +3,7 @@
 pkgname=mongosh-bin
 _pkgname=mongosh
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive shell to connect with MongoDB with syntax highlighting, autocomplete, contextual help and error messages.'
 arch=('x86_64' 'aarch64')
 depends=('krb5')
