@@ -1,19 +1,20 @@
-# Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
+
 pkgname=autopsy
-pkgver=4.17.0
+pkgver=4.19.2
 pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-_skver=4.10.1
-depends=(java-runtime=8 testdisk sleuthkit 'sleuthkit-java=4.10.1' java8-openjfx)
+_skver=4.11.1
+depends=(java-runtime=11 testdisk sleuthkit 'sleuthkit-java=4.11.1' java11-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
 source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
-md5sums=('215827f4395006e535a6909841bf5957'
-         'ab18f5bf01a624774a6e4eccd21dd398')
+sha256sums=('428cda6c169971b073b1db33f27b9e172b51695f06b1c8a0c8762c622ce8da5f'
+            'be382bc92f5e98dfebbbf31dc927fc44af0fecee6911f7122ba8e7c55d281262')
 
 package() {
   cd "${pkgname}-${pkgver}"
