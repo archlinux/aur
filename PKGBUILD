@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-sound-output-device-chooser-git
-pkgver=r303.a48682f
+pkgver=r314.9af403c
 pkgrel=1
 pkgdesc="Enable selection of sound source and sink devices."
 arch=('any')
@@ -14,22 +14,22 @@ source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	make build
+    make build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	INSTALL_DIR="${pkgdir}/usr/share/gnome-shell/extensions"
-	install -dm755 "${INSTALL_DIR}"
+    INSTALL_DIR="${pkgdir}/usr/share/gnome-shell/extensions"
+    install -dm755 "${INSTALL_DIR}"
 
-	make INSTALL_DIR="${INSTALL_DIR}" install
+    make INSTALL_DIR="${INSTALL_DIR}" install
 }
