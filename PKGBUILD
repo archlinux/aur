@@ -1,22 +1,22 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba2-git
-pkgver=2.2.1.r33.g71dc35da
+pkgver=2.2.1.r38.g4e7628c6
 pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
 license=('custom')
 groups=()
-depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'tbb')
+depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml')
 makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'python-sphinx' 'python-guzzle-sphinx-theme' 'python-sphinxcontrib-bibtex' 'jq')
 checkdepends=('python-pytest' 'python-pytest-xdist' 'python-numpy')
 install=
 source=('swap_pybind.patch'
         'swap_pugixml.patch'
-        'swap_tbb.patch'
         'swap_pybind_enoki.patch'
         'git+https://github.com/mitsuba-renderer/mitsuba2.git'
+        'git+https://github.com/wjakob/tbb.git'
         'git+https://github.com/mitsuba-renderer/asmjit.git'
         'git+https://github.com/mitsuba-renderer/enoki.git'
         'git+https://github.com/mitsuba-renderer/tinyformat.git'
@@ -24,8 +24,8 @@ source=('swap_pybind.patch'
         'git+https://github.com/mitsuba-renderer/openexr.git')
 md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          '617bd32eecbebd8c7036f738b8275e5f'
-         '3d896789646b5de546668d9f158697d1'
          'eee8327568bbe7e0fa0a8d873eb2dea0'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -44,10 +44,11 @@ prepare() {
 	# mitsuba itself so that ABIs line up
 	git config submodule.ext/asmjit.url     $srcdir/asmjit
 	git config submodule.ext/enoki.url      $srcdir/enoki
+	git config submodule.ext/tbb.url        $srcdir/tbb
 	git config submodule.ext/tinyformat.url $srcdir/tinyformat
 	git config submodule.ext/openexr.url    $srcdir/openexr
 	git config submodule.resources/data.url $srcdir/mitsuba-data
-	git submodule update --init ext/asmjit ext/enoki ext/tinyformat ext/openexr resources/data
+	git submodule update --init ext/asmjit ext/enoki ext/tbb ext/tinyformat ext/openexr resources/data
 
 	# system versions of these modules are used
 	rmdir ext/zlib ext/libpng ext/libjpeg
@@ -56,7 +57,6 @@ prepare() {
 	rmdir ext/pugixml ext/pybind11
 	git apply -v $srcdir/swap_pybind.patch
 	git apply -v $srcdir/swap_pugixml.patch
-	git apply -v $srcdir/swap_tbb.patch
 	git -C ext/enoki apply -v $srcdir/swap_pybind_enoki.patch
 
 	# not used with the current build options
