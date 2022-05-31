@@ -1,10 +1,9 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: gkmcd <g@dramati.cc>
 
-## Must use git to pull sources because of python-setuptools-scm
-
 pkgname=python-pyscaffold
-pkgver=4.2.1
+_pkg=PyScaffold
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://github.com/pyscaffold/pyscaffold"
@@ -25,19 +24,19 @@ optdepends=(
 	'python-pytest-runner: Use the integrated unit testing.'
 	'python-pytest-cov: Generate a coverage report for your project.')
 makedepends=(
-	'git'
+	'python-setuptools'
 	'python-setuptools-scm'
 	'python-build'
 	'python-installer'
 	'python-wheel')
 # checkdepends=('python-pytest' 'python-pytest-virtualenv')
 changelog=CHANGELOG.rst
-source=("$pkgname::git+$url/#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('11be56d21a0047ea604e7bc4349e95592cdc734b0a405082a6a4f2a7028dc896')
 
 build() {
-	cd "$pkgname"
-	python -m build --wheel --no-isolation
+	cd "$_pkg-$pkgver"
+	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
 ## FIXME: test fails due to git config
@@ -51,13 +50,12 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \
-		"$_site/PyScaffold-$pkgver.dist-info/LICENSE.txt" \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
