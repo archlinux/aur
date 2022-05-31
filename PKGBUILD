@@ -2,10 +2,10 @@
 # Build order: armv7l-binutils -> armv7l-linux-api-headers -> armv7l-gcc-bootstrap -> armv7l-glibc -> armv7l-gcc -> armv7l-glibc (again)
 
 _arch=armv7l
-_target=$_arch-unknown-linux-gnu
+_target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
