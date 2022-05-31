@@ -1,6 +1,6 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=geda-gaf
 pkgver=1.10.2
