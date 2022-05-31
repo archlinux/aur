@@ -3,7 +3,7 @@
 
 pkgname=perl-text-qrcode
 pkgver=0.05
-pkgrel=1
+pkgrel=3
 pkgdesc='Text-QRCode for Perl'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Text-QRCode'
