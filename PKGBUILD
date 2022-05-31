@@ -2,12 +2,12 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-lite
-pkgver=20210326
-_commit=7697007fcb3563290d73f41f56a70d5d559d828c
+pkgver=20220502
+_commit=c5481f3a1b57d54190a4e7881103033fbbbcec0c
 pkgrel=1
-pkgdesc="Google Noto TTF fonts (lite version)"
+pkgdesc='Google Noto TTF fonts (lite version)'
 arch=(any)
-url="https://www.google.com/get/noto/"
+url='https://www.google.com/get/noto/'
 license=(custom:SIL)
 optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters'
             'noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
@@ -20,36 +20,36 @@ source=("${_url}/hinted/ttf/NotoSans/NotoSans-"{Black,BlackItalic,Bold,BoldItali
         "noto-fonts-license::${_url}/LICENSE"
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('2059bc762f958866a4e58b7c202396af5c8557382a9e34dbbd82f978499a8b1b'
-            'fa3be6b4a77521d040ed94a13ae002229239d3fffcafc0aa2e5d90cbc4bc061b'
-            '4439dc44113d49beb0abfdc0def48719deda6f163f3337122ea509c90eed1d0d'
-            '83f5f027d9678405e3fa5769f32cc85d0c5c15e85e7c2428e3393389b43c17a6'
-            '156aa6fc822430fabe600b4f6515aafb35417cac9104d3004a5d77f1d480352b'
-            '193cf399bcc7105760398f727e41952bebe4a4f8e2a8ea49f3181ec0fb4a2368'
-            '1b2620d30e70bdd068e9bf6f70d61584042f1ba17d268f3764e654d238d6d6ae'
-            '30ca1a9e9caae1ea676ba5fe3aec1b852c5f57c5455bc61742fcf3ed3a75053e'
-            'a4846fb96fb83c21bd3fde31519f8c4154ca958a95613f4fad2b46f693655539'
-            '9cb49a54e520423033f9727be2e53e4805a60656deb09c219740d8e5f3e033ac'
-            '827da4cc7d7e7131fb4e674f828ca3b95fb721195a2bde6c0aacfba43754f364'
-            'a4b2eb960006d5fa69d96753d8c2382c5873e14286410dda8e15366f2793cad9'
-            '9156b21358155c81b686fdf44c98aecc40de6133ab4d5ede1d83328d6509b24a'
-            '7e792fb65447c8d795c2d8f4ef95c779079e8b4dc1fc506d831d98d8992e7796'
-            '6e04dad05b80683319b8bfa272815c18f49c29f446f3fcf0516585228a352ed4'
-            '756123f714fea75cd12fa9607296dc30cb0235fd0eed6295be7741f4d20986dc'
-            '3f5a1e36b94c53ec88894e1335e3a4b87417559d0b63cac5b3235bdd2e41f41f'
-            '6a248f0958c3605ed565c0cab2127c0f4604cdab52288e1c059a812f7279c64f'
-            'f5a0540073071ed1032014b9953fc010c2ec1171a4015acfed27570280b720ed'
-            'f0b0112006c42accffd01001ba6a58ece8fb97ee39413c211ceabfa504149e57'
-            '5835c48e68d809ec784c728e61c0949c18d5a6c6ec5a0ae809559fdaab21e3ab'
-            '3609c22b9bae99f384fe4e1db7b647a9af4e5bac479ee9571b2e81bc4a845101'
-            '2cb18340bec25ce4217aff7c355f07a10a268127a57c3ee9bbfd7287493cfecb'
-            'd77a2278496084ddd5d87cf71e137b2a239418f1f4e94ac9dea066a31c0f17a3'
-            'd920185223f498aead09ef7a130f58d9195362ac261518fb59b16290ba5b33e3'
-            '9bacecc19c24810f6e8759c71e61299164f23c366a134ea8322948a5ffeaed76'
-            '280aa961b093ac1dd94c8848bfcf9cd53ae82f84b18d378b2efaddd919436a84'
-            '6e89afb8b30132aa91b308045758a4793f5af3176b2823385cc66a8c2dd75774'
-            '85a591b0726722a2fcff5eb0d8d27ff9775654684904be8151d91c66289e0fb9'
-            'c91b97bc4414eb4440125242e6127f7e09324cca6fbcb77206b75cc68942bcd7'
+sha256sums=('a03bf1c41a16a0989a5bcd6bb76b15720653622787b81bd11e460bb848cbab7e'
+            'dc8c17d8a749542a496c1c23733583a802a8959f71feb48305e9fb58e6fbd7a2'
+            '0f3f608baf8d88480f399747871b374144eaf9e6f8880d2cb19cfca3ac256697'
+            'eb9a9bad5cf7a88cc306573ba9e2239b95443e285cc84f5f02c38848c1b06f91'
+            '7bd35300bb8a6f6aa2f4314a0202c7fe2cb9d5078a903339b8b8340a78f3c312'
+            'f4ed61228d5c49981ef9b2ef88d2eb69046529e1a5a381a9fa7c705b1fb33433'
+            'c1f52c7492de60333d9867ed70bf5f75e9b752412644e391f7224bdfc62276dc'
+            'eb7abaf945b97ce8c187287d5d9672d70a427614f86bb0e48e1801e24f5a5f22'
+            '74313efaf679694d4fb1f05a076f859e67134fded187b1faa525913fd8458af7'
+            '3c8397ec9650d0ef85bd07fc2099da91fa964ebb29dbe39a38b946177ef79d9b'
+            '2694960bdf7d2c0a44f9fbce3e9d535c0779c9e1970cf181008a25252dc39fe7'
+            '296534ad4ac47e4ed000c586a40c9b1cda8ec52062f873058c76eb555e86de65'
+            'e599306da8f33a6877d0a9813c4a75350f43bcd97363eb6bb75484f1be14168c'
+            'beb857bd799a114de7d5d90cc75cc69f4b6ee8d401f4ab20697e6f9719a66dfc'
+            '39f8b3344468adc1d7b9b18645a5a3931d1e061a699b8086932bb565c253c191'
+            'b1e09ba9f3607d81aedc9e4e1cbe225a0df85c77bde267931a1ab28577840edd'
+            'd9e2b23d19f8230be7146f409a52b1d23117e635e28f2e2892cf91b7382f325b'
+            '0c83f9a06ebe5dba0c7da07422bafb520721b6b5e8141912c982458ebb585422'
+            'acac62af2bdf1d910f53722b074b12eabc7d49280b4779288bffda365bb0b632'
+            'cfe07948bb7feb196582e85f1ea21610fefd7f351c0cd6a5164c8b0c875823ca'
+            '3b2086a869bcded2aeb4416fc281ceec9d6ce3c06756cda19f8f763636204e7d'
+            '4fb8737145b4a503d548af4b517afdfc532e44a96ac15378257e825741334eec'
+            '0ea81d6b54fc8aa5dff0fd6ebe7cfa431e9e6cf747a8d4aa33581fa0aaccffea'
+            '7c94d858283a1d58917eac88ad8a277c831f5ef88b2db48df2268e907ebb4b17'
+            '912196050a6532aa1ec385211f5fb7dd515324874a42e95f035ddd5896613044'
+            '90eeb03ad7b03e67037091c061c13b12dba7d21e63f54d19d196f181c5958f86'
+            'a45b7e6cfa740f00694bd4ec6da14470a742e8c3843c663ad1282900be63a647'
+            'c8f669ceb2c9c60ccf55198b305e08a997ffca79a38cc7eeb551e643cbe66505'
+            '618b857291d8607ef94ad22bbaf4c67e98078d01d3f1a1049d8ed597c9818a82'
+            '6cf1bb2d1e87e5387c10ff3ae00f141289fffd07c567dac2c5b2a2f69baffe4e'
             '0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
