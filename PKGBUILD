@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=universal-android-debloater-git
-pkgver=0.5.0.r10.5df9cee
+pkgver=0.5.0.r14.dabf7a6
 pkgrel=1
 epoch=
 pkgdesc="An android debloater application written in rust credit to w1nst0n (0x192) @github"
@@ -33,12 +33,12 @@ build() {
 	cd universal-android-debloater
 	rustup toolchain install nightly
 	rustup override set nightly
-	cargo build
+	cargo build --release
 }
 
 package() {
     cd universal-android-debloater
-    install -Dm755 target/debug/uad_gui "${pkgdir}/usr/bin/universal-android-debloater-gui" 
+    install -Dm755 target/release/uad_gui "${pkgdir}/usr/bin/universal-android-debloater-gui" 
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
