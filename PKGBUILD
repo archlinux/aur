@@ -4,7 +4,7 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r5763.758d1e2a
+pkgver=r6557.a1f15c2c
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/0001-use-llvm13.patch"
+    #patch --forward --strip=1 --input="${srcdir}/0001-use-llvm13.patch"
     sed -i "s/linux\/libraylib.a/system:raylib/g" "vendor/raylib/raylib.odin"
     make release
 }
