@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-driver-git
-pkgver=20.04.50.r0.gab5bdf1
+pkgver=20.04.55.r0.g09ff50e
 pkgrel=1
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
@@ -59,7 +59,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname}"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
