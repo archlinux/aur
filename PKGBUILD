@@ -10,7 +10,7 @@ _confdir=conf
 _scriptsdir=scripts
 
 pkgname=$_pkgname
-pkgver=0.12.7
+pkgver=0.12.8
 pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
@@ -29,7 +29,7 @@ backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('0591cee315e8f1bb10aef69cbc52dcb11e5fa4206629c63a44ee8923e00bb085163f03045bb7ee67488ada60e9a85f9a47aeda674bbbc7fa976f3a9dcc6a570e'
+sha512sums=('b5a395d7f66f5bd9e7c7f4cec7db83516ffc3bcbd79744e888ce1452935a73c265222b5ce1328b078c5ae59877613de4beddac912f96d9d6e54c22414def8610'
             '763ea6857a2bd28d1e6d95f58d67de0503b3f36ee1419dd1efce6ae187d7f529e4f1674b160a5902f16bc180983f3b29bcbe4ec8fc3c0d32de7374939ea364c5'
             '162c9dd3b5c5f2910b3887109d460dcb82631b2e5b8d906699e5a581c3350a9b0511ccc470621828f8839ad7bac240439d01461ae5fb3efdee948307ef195c2d')
 _goroot='/usr/lib/go'
