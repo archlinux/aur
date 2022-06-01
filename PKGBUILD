@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=btdu
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='sampling disk usage profiler for btrfs'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ncurses' 'd-runtime')
 makedepends=('d-compiler' 'dub' 'dtools')
 
 # these should match dub.selections.json
-_d_ae_ver=0.0.3100
+_d_ae_ver=0.0.3141
 _d_btrfs_ver=0.0.12
 _d_ncurses_ver=0.0.149
 _d_emsi_containers_ver=0.9.0
@@ -22,8 +22,8 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/CyberShadow/${pkgname}/a
 		ncurses-${_d_ncurses_ver}.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v${_d_ncurses_ver}.tar.gz
 		emsi_containers-${_d_emsi_containers_ver}.tar.gz::https://github.com/dlang-community/containers/archive/v${_d_emsi_containers_ver}.tar.gz
 	   )
-sha256sums=('760b2f0d28920a78b7967dd34c429125135688a3aefc57ab3a92d07bc3ef10cb'
-            '86fa09ef6c1be4cbe8ad1c85729054e5d691b41ff57c7980d99937ec0f45b950'
+sha256sums=('1377d2ee14367deed6f0b17407a0de437450a4f381819265d98c38fbc05f792f'
+            '5ae60c637050c11733da8a67735a43e16d6082d18b74ce64b04e24e42d8f5f5f'
             'cf2b1fa3e94a0aa239d465adbac239514838835283521d632f571948aa517f92'
             '2c8497f5dd93f9d3a05ca7ed57c4fcaee1e988fd25a24de106917ddf72f34646'
             '5e256b84bbdbd2bd625cba0472ea27a1fde6d673d37a85fe971a20d52874acaa')
