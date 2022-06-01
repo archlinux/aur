@@ -4,7 +4,7 @@
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
 pkgver=2.8.13
-pkgrel=1
+pkgrel=2
 _pythonversion=3.10
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
@@ -19,8 +19,6 @@ sha512sums=('571cbb2c47980f224d58d5c9f7ce4688f5a464d880a9b3bc383c2fad3b352619b79
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  # Remove unnecessary files
-  rm -r CHANGELOG COPYING
 
   # Install the plugin
   install -d "${pkgdir}/usr/lib/python${_pythonversion}/site-packages/gajim/data/plugins/${_pkgname}"
