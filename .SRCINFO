@@ -1,13 +1,12 @@
 pkgbase = python-discord-git
 	pkgdesc = A modern, easy to use, feature-rich, and async ready API wrapper for Discord
-	pkgver = r1919.91e00d84
+	pkgver = r4318.823d650e
 	pkgrel = 1
 	url = https://github.com/Rapptz/discord.py
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
-	depends = python-websockets
 	depends = python-aiohttp
 	optdepends = python-pynacl: Voice support
 	optdepends = libffi: Voice support
@@ -17,4 +16,3 @@ pkgbase = python-discord-git
 	md5sums = SKIP
 
 pkgname = python-discord-git
-

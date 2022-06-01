@@ -1,12 +1,12 @@
-# Maintainer: silvermight <silver@silvermight.com>
+# Contributor: silvermight <silver@silvermight.com>
 pkgname=python-discord-git
-pkgver=r1919.91e00d84
+pkgver=r4318.823d650e
 pkgrel=1
 pkgdesc="A modern, easy to use, feature-rich, and async ready API wrapper for Discord"
 arch=('any')
 url="https://github.com/Rapptz/discord.py"
 license=('MIT')
-depends=('python' 'python-websockets' 'python-aiohttp')
+depends=('python' 'python-aiohttp')
 optdepends=('python-pynacl: Voice support'
             'libffi: Voice support')
 makedepends=('git')
