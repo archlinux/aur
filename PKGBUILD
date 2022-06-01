@@ -1,7 +1,7 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=jagr-bin
 pkgver=0.4.1
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc='Java AutoGrader, implemented in Kotlin'
 arch=('x86_64')
