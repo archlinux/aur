@@ -3,7 +3,7 @@
 
 pkgname='perl-module-compile'
 pkgver='0.38'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl Module Compilation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
