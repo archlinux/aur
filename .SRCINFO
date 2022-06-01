@@ -1,7 +1,7 @@
 pkgbase = ocaml-curses
 	pkgdesc = Objective Caml libs for curses
 	pkgver = 1.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbacarella/curses
 	arch = i686
 	arch = x86_64

@@ -5,7 +5,7 @@
 
 pkgname=ocaml-curses
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 arch=('i686' 'x86_64')
 pkgdesc="Objective Caml libs for curses"
@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "${srcdir}/curses-${pkgver}"
-    DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+    DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "/usr/lib/ocaml"
     install -dm755 "${pkgdir}/usr/share/"
     mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
