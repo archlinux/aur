@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-methodattributes
 	pkgdesc = code attribute introspection
 	pkgver = 0.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/MooseX-MethodAttributes
 	arch = any
 	license = PerlArtistic
@@ -17,4 +17,3 @@ pkgbase = perl-moosex-methodattributes
 	md5sums = f18009f821e62b3fd9c2605820a0e61b
 
 pkgname = perl-moosex-methodattributes
-
