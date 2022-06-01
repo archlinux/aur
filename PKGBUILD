@@ -3,19 +3,19 @@
 
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
-pkgver=2.0.14
-pkgrel=2
+pkgver=2.0.15
+pkgrel=1
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
-license=('unknown')
+license=('AGPL3')
 depends=(electron14)
 optdepends=('pandoc: docx export.')
 provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz"
 "$_pkgname.sh"
 "$_pkgname.desktop")
-sha512sums=('eec047f665a0de886caee56f2d486b68d9363636aeb34cc418dc04720308651a6d5af7ad24fd3e55a77625590fef9cebc9463262856572e6313be71ab2e42894'
+sha512sums=('754d513784b5c1d6e9b560c6622f5687b57e33bc3b7d35969ce9d6898f673f5cd9439640ba9d958bbfda0338e3f08ad585291d64aed98350c0d43dfacfb6ae35'
             '423e88f4d7d06452f284803477b90e59f835bea7f1dc931a0e5fbaf596bcb68acdd7b545f01869f11424c76d9312aad51d915a57234781af2ed4eada0f745092'
             '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
 
