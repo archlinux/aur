@@ -1,8 +1,9 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=psych
-_cranver=2.1.9
+_cranver=2.2.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +14,7 @@ license=(GPL2 GPL3)
 depends=(r r-mnormt)
 optdepends=(r-psychtools r-gparotation r-lavaan r-lme4 r-rcsdp r-graph r-knitr r-rgraphviz)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('1475e03a17f1ae6837834f01c2472aed68887c89d90a84a3e09a532ce218500c')
+sha512sums=('a804bad30bd08aa73ffc24c03d3c68fa8b60595a6ecc8b10e3652d0d7a71509943617b49ee038c7c618528f34333cb2bcbf6b88f6a783655c48aad87a0b05770')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
