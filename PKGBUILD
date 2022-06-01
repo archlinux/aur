@@ -1,4 +1,5 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
+# Maintainer: Jairo Abreu <jairoabreeu@gmail.com>
+#Contributor Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 _pkgname=numix-folders
 pkgname=$_pkgname-git
