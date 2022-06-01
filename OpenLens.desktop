@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenLens
+GenericName=Kubernetes IDE
+Comment=The Kubernetes IDE
+Icon=open-lens
+Exec=open-lens %U
+Categories=System;
+StartupNotify=true
+StartupWMClass=Lens
+MimeType=x-scheme-handler/lens;
