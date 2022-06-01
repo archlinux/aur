@@ -3,11 +3,12 @@ _cranname=collections
 _cranver=0.3.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides high performance container data types such as queues, stacks, deques, dicts and ordered dicts"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
+depends=(r)
 checkdepends=("r-testthat>=2.3.1")
 optdepends=("r-covr>=3.4.0")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
