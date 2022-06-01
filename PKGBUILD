@@ -9,6 +9,7 @@ url='http://flask-seasurf.readthedocs.io'
 license=('BSD')
 depends=('python-flask')
 makedepends=('python-setuptools')
+checkdepends=('python-mock')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/maxcountryman/flask-seasurf/archive/$pkgver.tar.gz")
 sha256sums=('c7e715a80d7a469561b7712f2406164494ed9da43d4cbbce3efa907548c6ddbb')
