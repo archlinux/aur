@@ -2,8 +2,8 @@
 
 pkgname=pam_exec-gpg
 pkgver=20220601
-pkgrel=1
-pkgcommit=6d52187
+pkgrel=2
+pkgcommit=8f76da7
 pkgdesc="Unlock GnuPG keys keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-gpg"
