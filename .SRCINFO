@@ -1,7 +1,7 @@
 pkgbase = perl-compass-points
 	pkgdesc = Convert between compass point names, abbreviations and values
 	pkgver = 0.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Compass-Points
 	arch = any
 	license = GPL
