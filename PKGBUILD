@@ -1,9 +1,9 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=clipdl
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="A simple script for downloading the most recent media link coppied to your clipboard"
+pkgdesc="A simple script for downloading videos from linkss coppied to your primary clipboard"
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
@@ -13,12 +13,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '8fab18834876e0a0a3344707d1c7c56f0f98e54542334d027e1002aafddf92ff94325b53c3f107bebc336ba7aaba24d35b477124127ead3b1ae757ab1022beff'
-  '4d4d3cb3674516a6dfb6e703b6909139d9655454c385e7b18972eabb1d98240445cbda72ab1dad1028f7032d685d23db455b4dde7b75c05ef8ee7e9c20aaee5f'
+  '6e6b59128d22bbcd26f00d203286b6a5942985fcea16a2ec8d16901e395b26ab9d8a2520e7d1371563f00b11cd501131f698c3297f3927df99950331b8e46b32'
+  '6103b1ba6d76cd324b6c25c00838a8cfc847d4c36e0170a47b56da94138f5d3a5050653b073278fc8e1b880fbfa34f63b7c29620a283ac61853983084e42c018'
   )
 md5sums=(
-  '600f548232610bd593ede1d0e8758b75'
-  'dba4c4a8b4373c0ee850910c5469fbf8'
+  '79fdbf13adbf0af41b9714b8aa9a8f9f'
+  '1d4ede612d182bef01ea177538e7f5c8'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
