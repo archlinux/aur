@@ -1,0 +1,23 @@
+pkgbase = faiss-mkl
+	pkgver = 1.7.2
+	pkgrel = 0
+	url = https://github.com/facebookresearch/faiss
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = swig
+	makedepends = python-setuptools
+	makedepends = cmake
+	depends = blas
+	depends = lapack
+	depends = intel-mkl
+	source = faiss-1.7.2.zip::https://github.com/facebookresearch/faiss/archive/refs/tags/v1.7.2.zip
+	sha256sums = bd583f711c15bf9dc8247ccdf0884b971887e2c4679d11f7403b18ab2a4742d8
+
+pkgname = faiss-mkl
+	pkgdesc = A library for efficient similarity search and clustering of dense vectors (with MKL+AVX2 support).
+	provides = faiss
+	conflicts = faiss
