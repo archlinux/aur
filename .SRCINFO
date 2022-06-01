@@ -1,15 +1,13 @@
 pkgbase = r-pracma
 	pkgdesc = Provides a large number of functions.
-	pkgver = 2.3.3
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pracma
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL-2
 	license = GPL-3
 	depends = r>=3.1.0
-	source = http://cran.r-project.org/src/contrib/pracma_2.3.3.tar.gz
-	sha256sums = cf1f8d7724a385d9a2e1a5496d9ba0e9908940b85669fb2c506b9059722cb93c
+	source = http://cran.r-project.org/src/contrib/pracma_2.3.8.tar.gz
+	sha512sums = 67592275a802fd056e4a81311adce7ea86fa0d0787aeb3764580a3df3f2eac5df3c7e15c9f5dea9d00bbc3c9248e267ed346f4ef5d31979db2fbf93f6b2e6821
 
 pkgname = r-pracma
-
