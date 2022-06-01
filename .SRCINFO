@@ -1,7 +1,7 @@
 pkgbase = perl-nvidia-ml-pl
 	pkgdesc = Perl bindings to the NVIDIA Management Library NVML
 	pkgver = 4.304.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/nvidia-ml-pl
 	arch = x86_64
 	arch = i686
@@ -15,4 +15,3 @@ pkgbase = perl-nvidia-ml-pl
 	sha512sums = 41a6f2198d37b829361adb7ca568dd0b023cb56e78b1f1c88a9ed72b2119d607e7495153663aa620ab6889635830722634b6ea1549f852f99e8f0e9ebf497e01
 
 pkgname = perl-nvidia-ml-pl
-

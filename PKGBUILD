@@ -3,7 +3,7 @@
 
 pkgname='perl-nvidia-ml-pl'
 pkgver='4.304.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Perl bindings to the NVIDIA Management Library NVML"
 arch=('x86_64' 'i686')
 license=('PerlArtistic' 'GPL')
