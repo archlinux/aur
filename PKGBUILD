@@ -7,7 +7,7 @@
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=13.1
+pkgrel=13.3
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/pod/Goo::Canvas"
