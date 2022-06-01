@@ -1,9 +1,10 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-htpc
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
-_snaprev=3002-f753d4a0
+_snapid=81OP06hEXlwmMrpMAhe5hyLy5bQ9q6Kz
+_snaprev=9
 pkgdesc="Plex HTPC application for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -11,12 +12,12 @@ license=('unknown')
 makedepends=('squashfs-tools')
 depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'mpv')
 optdepends=('qt5-wayland: Wayland support' 'libva: GPU accelerated decoding')
-source=("https://downloads.plex.tv/htpc/${pkgver}.${_snaprev}/linux/plex-htpc_${pkgver}_amd64.snap" "qt.conf")
-sha256sums=('a08cc5b852a1be101212b6f3694449d70ba4c87bab934ac63c86e61c5f14307a'
+source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap" "qt.conf")
+sha256sums=('8d52b7082d7957d1c2018e251f4003565f56d26f6519210ab05e29047e4137aa'
             '40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083')
 
 prepare() {
-  unsquashfs -q -f -d "${srcdir}/${pkgname}" "plex-htpc_${pkgver}_amd64.snap"
+  unsquashfs -q -f -d "${srcdir}/${pkgname}" "${_snapid}_${_snaprev}.snap"
 }
 
 package() {
