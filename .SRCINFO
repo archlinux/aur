@@ -1,7 +1,7 @@
 pkgbase = perl-file-countlines
 	pkgdesc = Efficiently count the number of line breaks in a file
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-CountLines
 	arch = any
 	license = PerlArtistic
@@ -14,4 +14,3 @@ pkgbase = perl-file-countlines
 	sha512sums = 84adcb4b8ba24f4ea2f23fe4df6da925cdc0f5ff5354a509af50398dfbe58114af7e940f358d4fbcae6acc1af5229e80d0f337d7cbcdaeafb15e856514dcfa41
 
 pkgname = perl-file-countlines
-

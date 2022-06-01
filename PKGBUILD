@@ -3,7 +3,7 @@
 
 pkgname='perl-file-countlines'
 pkgver='0.0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Efficiently count the number of line breaks in a file"
 arch=('any')
 license=('PerlArtistic' 'GPL')
