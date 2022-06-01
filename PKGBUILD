@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux-sqlite
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc='Wrapper classes and utilities of the original SQLite3 CAPI'
@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://github.com/buck-yeh/bux-sqlite.git'
 license=('MIT')
 groups=()
-depends=('sqlite' 'fmt')
+depends=('sqlite' 'bux' 'fmt')
 makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
 optdepends=()
