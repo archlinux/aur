@@ -3,7 +3,7 @@
 
 pkgname='perl-file-monitor-lite'
 pkgver='0.652003'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Monitor file changes"
 arch=('any')
 license=('PerlArtistic' 'GPL')

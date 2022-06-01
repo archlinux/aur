@@ -1,7 +1,7 @@
 pkgbase = perl-file-monitor-lite
 	pkgdesc = Monitor file changes
 	pkgver = 0.652003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/File-Monitor-Lite
 	arch = any
 	license = PerlArtistic
@@ -16,4 +16,3 @@ pkgbase = perl-file-monitor-lite
 	sha512sums = 78a2aa47d7a3900c47798d2e129dd2384d345cdd5d3d5c67dc2a44d8ebf7b49f44ea880379c351917c225f5ad6c56d0a1db50fd11eac3db9fa5d4af2f6564a69
 
 pkgname = perl-file-monitor-lite
-
