@@ -2,18 +2,18 @@
 # Contributor: Omar Roth <omarroth@protonmail.com>
 
 pkgname=urbit
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="An operating function"
 arch=('x86_64')
 url="https://github.com/urbit/urbit"
 license=('MIT')
 conflicts=('urbit-git')
-source=($pkgname-$pkgver.tgz::https://bootstrap.urbit.org/$pkgname-v$pkgver-linux64.tgz)
-sha256sums=('d3c498ea6e47ece9abf8c2b80a83987f9785ec3f84eb5425ea16e88a5d0a56a0')
+source=($pkgname::https://bootstrap.urbit.org/vere/live/$pkgver/vere-v$pkgver-x86_64-linux)
+sha256sums=('852c3a550b04315f79ac50f354659a14084f6750e59e81b884d438435561941a')
 
 package() {
   msg2 'Installing...'
   install -d "${pkgdir}/usr/bin"
-  install ${srcdir}/$pkgname-v$pkgver-$arch-linux/{urbit,urbit-king,urbit-worker} "$pkgdir/usr/bin"
+  install ${srcdir}/$pkgname "$pkgdir/usr/bin"
 }
