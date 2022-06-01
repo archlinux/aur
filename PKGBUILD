@@ -3,7 +3,7 @@
 
 pkgname='perl-convert-uu'
 pkgver='0.5201'
-pkgrel='1'
+pkgrel='2'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
