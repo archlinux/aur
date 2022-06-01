@@ -1,6 +1,6 @@
 pkgbase = r-ggpp
 	pkgdesc = Extensions to 'ggplot2' respecting the grammar of graphics paradigm.
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggpp
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-ggpp
 	optdepends = r-gginnards
 	optdepends = r-ggrepel
 	optdepends = r-magick
-	source = https://cran.r-project.org/src/contrib/ggpp_0.4.2.tar.gz
-	sha256sums = 122ad3773ad2f33d85c2d81d9ce59d6761c32361a0b9d4fda71d778a67c25c54
+	source = https://cran.r-project.org/src/contrib/ggpp_0.4.4.tar.gz
+	sha512sums = bb124c49154c7768c66ab2d49f3fa4d28b365ed2814d21ed26700fbe91462e5950a4b3e4232d6abf51f9607efd7b42e22e2eea2f29825050afad6f34d5a86509
 
 pkgname = r-ggpp
