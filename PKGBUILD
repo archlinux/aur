@@ -5,7 +5,7 @@
 _cpanname=Gtk2-TrayIcon
 pkgname=perl-gtk2-trayicon
 pkgver=0.07
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="Perl interface to the EggTrayIcon library"
 arch=('x86_64' 'i686')
 url="https://search.cpan.org/dist/${_cpanname}/"
