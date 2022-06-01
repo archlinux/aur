@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=packwiz-bin
-pkgver=r211.e71b63e
+pkgver=r212.f47d71f
 pkgrel=1
 pkgdesc='A command line tool for editing and distributing Minecraft modpacks (Git auto-update)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ source_aarch64=("packwiz-aarch64-$pkgver.zip::https://nightly.link/packwiz/packw
 provides=('packwiz')
 conflicts=('packwiz' 'packwiz-git')
 makedepends=('curl' 'git' 'htmlq')
-sha256sums_x86_64=('6312fdfeee415125eee2cb1993ceff8cf85123852269ed7cb5917b05867173d1')
-sha256sums_aarch64=('b633a432d2a29387b0e137ccdc5d60bb80ba3902517dedf629cb05df45823b8c')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 pkgver() {
 	commit_count="$(curl 'https://github.com/packwiz/packwiz/' | htmlq --text '.d-sm-inline strong')"
