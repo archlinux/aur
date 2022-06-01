@@ -5,7 +5,7 @@
 pkgbase=dxvk-async
 pkgname=('dxvk-async')
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine (Windows DLL)'
 url='https://github.com/Sporif/dxvk-async'
 license=('zlib/libpng')
@@ -15,9 +15,9 @@ optdepends=('lib32-vulkan-icd-loader: 32-bit Windows application support')
 makedepends=('ninja' 'meson>=0.49' 'glslang' 'mingw-w64-gcc' 'wine')
 provides=('dxvk' 'd9vk')
 conflicts=('dxvk' 'd9vk')
-options=(!strip !buildflags staticlibs)
+options=(!strip staticlibs)
 source=("dxvk-$pkgver.tar.gz::https://codeload.github.com/doitsujin/dxvk/tar.gz/refs/tags/v$pkgver"
-    "$url/raw/1.10.1/dxvk-async.patch")
+    "$url/raw/$pkgver/dxvk-async.patch")
 sha256sums=('ae767e829f9528e889df943a76b34b11dea54f6706af8d625553a83e45a8e9cf'
     'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68')
 
@@ -29,6 +29,12 @@ prepare() {
 }
 
 build() {
+    CFLAGS="${CFLAGS/ -fstack-clash-protection/}"
+    CXXFLAGS="${CXXFLAGS/ -fstack-clash-protection/}"
+    LDFLAGS="${LDFLAGS/,-z,now/}"
+    LDFLAGS="${LDFLAGS/,-z,relro/}"
+    [[ $CFLAGS == *'-D_FORTIFY_SOURCE=2'* || $CXXFLAGS == *'-D_FORTIFY_SOURCE=2'* ]] && LDFLAGS=' -lssp'
+
     meson dxvk build/x64 \
         --cross-file dxvk/build-win64.txt \
         --prefix /usr/share/dxvk/x64 \
