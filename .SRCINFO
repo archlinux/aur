@@ -1,0 +1,19 @@
+pkgbase = freckles-bin
+	pkgdesc = simple dotfiles manager
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/rsteube/freckles-bin
+	license = MIT
+	conflicts = freckles-bin
+	provides = freckles-bin
+	arch = aarch64
+	source_aarch64 = https://github.com/rsteube/freckles-bin/releases/download/v0.0.2/freckles-bin_0.0.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f1685603ddfc90e0cc7e01451408a6543942307d3260a2e53b53ff5f1b6e111e
+	arch = i686
+	source_i686 = https://github.com/rsteube/freckles-bin/releases/download/v0.0.2/freckles-bin_0.0.2_Linux_i386.tar.gz
+	sha256sums_i686 = 8d99df623572b940c6443064badb08647c3711674cd9fc397bb836b1ce9a8bc8
+	arch = x86_64
+	source_x86_64 = https://github.com/rsteube/freckles-bin/releases/download/v0.0.2/freckles-bin_0.0.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 48bdf537513911302314f0fac141045482529341f9af69350319d87d360dd9d7
+	
+pkgname = freckles-bin
