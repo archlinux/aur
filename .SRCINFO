@@ -1,5 +1,5 @@
 pkgbase = farpdf-git
-	pkgdesc = A feature-rich dictionary lookup program, supporting multiple dictionary formats.
+	pkgdesc = A experimental PDF software designed for serious readers.
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/slbtty/far2
@@ -12,7 +12,7 @@ pkgbase = farpdf-git
 	depends = libmupdf
 	depends = qt6-base
 	provides = farpdf
-	source = farpdf-git::git+https://gitlab.com/slbtty/far2#branch=csd
+	source = farpdf-git::git+https://gitlab.com/slbtty/far2#tag=v0.2
 	md5sums = SKIP
 
 pkgname = farpdf-git

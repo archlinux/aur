@@ -3,7 +3,7 @@
 pkgname=farpdf-git
 pkgver=0.2
 pkgrel=1
-pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
+pkgdesc="A experimental PDF software designed for serious readers."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/slbtty/far2"
 license=('AGPL3')
