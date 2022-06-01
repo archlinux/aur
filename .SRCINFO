@@ -1,7 +1,7 @@
 pkgbase = perl-asa
 	pkgdesc = Lets your class/object say it works like something else
 	pkgver = 1.04
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/asa
 	arch = any
 	license = PerlArtistic
@@ -13,4 +13,3 @@ pkgbase = perl-asa
 	sha512sums = 8584036c1c520741fe1bd4fb2875a86a46e2abd07d441078ef64bd90a31ba13b001079b020263add298ff004e094f8380b2ec590aacfc808cc1ba4be6b177b0a
 
 pkgname = perl-asa
-
