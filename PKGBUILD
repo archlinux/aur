@@ -1,18 +1,17 @@
 # Contributor: Richard Stöckl<richard.stoeckl@aon.at>
 pkgname=('libelektra' 'libelektra-docs')
 pkgver=0.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A universal hierarchical configuration store"
 url="https://www.libelektra.org"
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 depends=('yajl' 'qt5-declarative' 'qt5-base' 'lua' 'python'
   'libuv' 'libgit2' 'libev' 'zeromq' 'gpgme' 'hicolor-icon-theme'
-  'discount' 'xerces-c' 'yaml-cpp' 'java-runtime')
+  'discount' 'yaml-cpp' 'java-runtime')
 optdepends=('ruby: for ruby bindings'
-  'python2: for python2-bindings'
-  'xerces-c: for python2-bindings')
-makedepends=('cmake' 'doxygen' 'git' 'swig')
+  'python2: for python2-bindings')
+makedepends=('cmake' 'doxygen' 'git' 'swig' 'xerces-c')
 provides=('libelektra' 'elektra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ElektraInitiative/libelektra/archive/$pkgver.tar.gz")
 sha256sums=('12e94a58d1a707f8cf359d888c19c8f4e059b3bacc0c35c86dfc309ebd0a385b')
