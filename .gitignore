@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!client-Handle-removal-of-GTK_FRAME_EXTENTS.patch
+!gaps.patch
+!.gitignore
