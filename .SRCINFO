@@ -1,0 +1,15 @@
+pkgbase = gaalop-git
+	pkgdesc = Geometic Algebra Algorithms Optimizer
+	pkgver = r911.d752c334
+	pkgrel = 1
+	url = https://github.com/CallForSanity/Gaalop
+	arch = any
+	license = GPL3
+	makedepends = maven
+	depends = jre8-openjdk
+	source = gaalop-git::git+https://github.com/CallForSanity/Gaalop
+	source = gaalop
+	sha256sums = SKIP
+	sha256sums = 89614f248e87acda7478bb9b83b7cab9f823a69742a645dedda43f3bd068970e
+
+pkgname = gaalop-git
