@@ -11,9 +11,6 @@ url="https://gitlab.freedesktop.org/"
 license=('custom')
 makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
 depends=('xorg-fonts-alias-misc')
-replaces=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
-provides=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
-conflicts=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
 source=(${url}/xorg/font/arabic-misc/-/archive/master/arabic-misc-master.tar.gz
         ${url}/xorg/font/cursor-misc/-/archive/master/cursor-misc-master.tar.gz
         ${url}/xorg/font/daewoo-misc/-/archive/master/daewoo-misc-master.tar.gz
