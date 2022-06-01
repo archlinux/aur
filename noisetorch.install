@@ -2,7 +2,7 @@ post_install() {
 	setcap 'CAP_SYS_RESOURCE=+ep' usr/bin/noisetorch
 
     # Disclaimer about a potential compromise of the source code
-    echo "NOTE: The original developer can not guarantee the security of the code of previous versions. Additionally development has shifted to a new repository."
+    echo "NOTE: The original developer can not guarantee the security of the code of versions before 0.11.6. Additionally development has shifted to a new repository."
     echo "The current codebase has been audited by the community, as can be seen here: https://github.com/noisetorch/NoiseTorch/discussions/275"
 }
 

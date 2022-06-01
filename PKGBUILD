@@ -7,8 +7,8 @@
 # https://lists.archlinux.org/pipermail/aur-general/2021-May/036230.html
 
 pkgname=noisetorch
-pkgver=0.11.6
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/noisetorch/NoiseTorch
@@ -17,14 +17,33 @@ depends=('pulseaudio' 'polkit' 'hicolor-icon-theme')
 makedepends=('go' 'cmake' 'git')
 provides=('noisetorch')
 install="${pkgname}.install"
-source=("git+${url}.git#tag=${pkgver}")
-md5sums=('SKIP')
+source=(
+    "$pkgname::git+https://github.com/noisetorch/NoiseTorch.git#tag=v${pkgver}"
+    "git+https://github.com/noisetorch/c-ringbuf.git"
+    "git+https://github.com/noisetorch/rnnoise.git"
+)
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+
+prepare() {
+    cd "$pkgname"
+
+    git submodule init
+    git config submodule.c-ringbuf.url "${srcdir}/c-ringbuf"
+    git config submodule.rnnoise.url "${srcdir}/rnnoise"
+    git submodule update
+}
 
 build() {
+    cd "$pkgname"
+
 	export GOPATH="$srcdir/go"
-	cd NoiseTorch/c/ladspa
+
+    pushd "c/ladspa"
 	make
-	cd ${srcdir}/NoiseTorch
+    popd
 
 	vendor_flags="-X main.version=${pkgver} -X main.distribution=archlinux"
 
@@ -39,7 +58,8 @@ build() {
 }
 
 package() {
-	cd NoiseTorch
+	cd "$pkgname"
+
 	install -D -m755 bin/noisetorch "${pkgdir}/usr/bin/noisetorch"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 assets/noisetorch.desktop "${pkgdir}/usr/share/applications/noisetorch.desktop"
