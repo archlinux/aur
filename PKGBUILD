@@ -1,6 +1,6 @@
 # Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 
-# Based on the 'quilt-server' AUR package by:
+# Based on the 'fabric-server' AUR package by:
 # Maintainer: lgm <lgm dot aur at outlook dot com>
 # Contributor: Ndoskrnl <lollipop.studio.cn@gmail.com>
 # Contributor: flying <flyinghat42@gmail.com>
