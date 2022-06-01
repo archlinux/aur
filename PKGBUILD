@@ -22,7 +22,7 @@ prepare () {
 package() {
     ## Install Preset and Default Libraries
     mkdir -p "$pkgdir/opt/Audio Assault/aIR" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
-    cp -rf "$srcdir/Linux $pkgver/aIR"/{"Default IRs","IRlinks","aIR.settings"} "$pkgdir/opt/Audio Assault/aIR"
+    cp -rf "$srcdir/Linux $pkgver/aIR"/{"Default IRs",IRlinks,Presets,aIR.settings} "$pkgdir/opt/Audio Assault/aIR"
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Linux $pkgver/aIR Impulse Loader.so" "$pkgdir/usr/lib/vst/aIR Impulse Loader.so"
