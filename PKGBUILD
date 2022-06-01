@@ -5,8 +5,8 @@
 pkgname=rstudio-desktop
 _vermajor="2022"
 _verminor="02"
-_verpatch="2"
-_versuffix="+485"
+_verpatch="3"
+_versuffix="+492"
 _gitcommit="8acbd38"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
@@ -17,7 +17,7 @@ _nodever=14.17.5
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -36,16 +36,14 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "sigstksz_gcc11.patch"
         "10952.patch"
         "pandoc_version.patch")
 
-sha256sums=('a9351fcd3bb4ab1f7d526b289dad06f02800d5b883655d9a49fa4b7c1ce6b299'
+sha256sums=('e0e520d992445db85dc30bdfe3fb6477f50605ce96f0b89eac19b618860032d9'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82'
             '71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726'
             '71cc9986a02c209960309f0e1dd50f08a8f7e59c1bc09ec45d10058a89299939')
 
@@ -53,7 +51,6 @@ noextract=("gin-${_ginver}.zip")
 
 prepare() {
     cd ${srcdir}/${_srcname}
-    patch -p1 < ${srcdir}/sigstksz_gcc11.patch
     # Fix for quarto/pandoc location
     # https://github.com/rstudio/rstudio/pull/10952
     patch -p1 < ${srcdir}/10952.patch
