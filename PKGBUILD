@@ -1,5 +1,5 @@
 pkgname="inet-comm"
-pkgver=3.9
+pkgver=3.10
 pkgrel=0
 pkgdesc="ipv4 internet tcp socket c++ library"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=("log-console>=1.18-1")
 _srcprefix="https://raw.githubusercontent.com/$author/$pkgname/$branch"
 source=("$_srcprefix/$pkgname")
-md5sums=("7c2b16cde8bfef5de0507ed9ded1c3d7")
+md5sums=("23f4d20ec8ff267681bcdbfbd9571072")
 
 prepare()
 {
