@@ -1,0 +1,22 @@
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 3d82ee7..5a9d916 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Licensed under the MIT License.
+ 
+ set(SOURCES msh3.cpp)
+-add_library(msh3 SHARED ${SOURCES})
++add_library(msh3 STATIC ${SOURCES})
+ target_link_libraries(msh3 PRIVATE inc warnings msquic ls-qpack msh3_headers)
+ 
+ if(WIN32)
+@@ -20,7 +20,7 @@ install(TARGETS msh3 EXPORT msh3 DESTINATION lib)
+ install(FILES ../msh3.h DESTINATION include)
+ configure_file(msh3-config.cmake.in ${CMAKE_BINARY_DIR}/msh3-config.cmake)
+ install(FILES ${CMAKE_BINARY_DIR}/msh3-config.cmake DESTINATION share/msh3)
+-install(EXPORT msh3 DESTINATION share/msh3)
++# install(EXPORT msh3 DESTINATION share/msh3)
+ configure_file(libmsh3.pc.in ${CMAKE_BINARY_DIR}/libmsh3.pc)
+ if(NOT WIN32)
+     install(FILES ${CMAKE_BINARY_DIR}/libmsh3.pc DESTINATION lib/pkgconfig)

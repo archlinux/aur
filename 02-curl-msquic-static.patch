@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index d24daeab8..f8250299a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3090,7 +3090,7 @@ if test X"$want_msh3" != Xno; then
+     LDFLAGS="$LDFLAGS $LD_MSH3"
+     CPPFLAGS="$CPPFLAGS $CPP_MSH3"
+   fi
+-  LIBS="-lmsh3 $LIBS"
++  LIBS="-lmsh3 -lstdc++ -lls-qpack -lmsquic -lm $LIBS"
+ 
+   AC_CHECK_LIB(msh3, MsH3ApiOpen,
+     [
