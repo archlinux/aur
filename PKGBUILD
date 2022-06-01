@@ -21,7 +21,7 @@ pkgver=1.3
 _dataver=1.3
 pkgrel=2
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
 url='https://mb.srb2.org/showthread.php?t=43708'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
@@ -43,7 +43,7 @@ sha256sums=('SKIP'
 build() {
   cd "$srcdir"/Kart-Public/src
 
-  [ "$CARCH" == "x86_64" ] && _buildflags+="LINUX64=1 " || _buildflags+="LINUX=1 "
+  [ "$CARCH" == "x86_64" -o "$CARCH" == "aarch64" ] && _buildflags+="LINUX64=1 " || _buildflags+="LINUX=1 "
 
   if [ "${_use_discordrpc}" = "y" ]; then
     _buildflags+="HAVE_DISCORDRPC=1"
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-  [ "$CARCH" == "x86_64" ] && IS64BIT="64" || IS64BIT=""
+  [ "$CARCH" == "x86_64" -o "$CARCH" == "aarch64" ] && IS64BIT="64" || IS64BIT=""
   install -Dm755 "$srcdir"/Kart-Public/bin/Linux$IS64BIT/Release/lsdl2srb2kart \
     "$pkgdir"/usr/bin/srb2kart
 

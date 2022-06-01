@@ -5,6 +5,7 @@ pkgbase = srb2kart
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = mesa
 	makedepends = glu
