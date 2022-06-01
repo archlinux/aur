@@ -1,7 +1,7 @@
 pkgbase = python-minecraft-launcher-lib
 	pkgdesc = A Python library for creating a custom minecraft launcher
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/JakobDev/minecraft-launcher-lib
 	arch = any
 	license = BSD
@@ -10,6 +10,6 @@ pkgbase = python-minecraft-launcher-lib
 	depends = python
 	depends = python-requests
 	source = python-minecraft-launcher-lib-4.6.tar.gz::https://gitlab.com/JakobDev/minecraft-launcher-lib/-/archive/4.6/minecraft-launcher-lib-4.6.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = c323b5eada3a52bc2012df55ebaefa25fb427b987a094e0f971087e8e941541c
 
 pkgname = python-minecraft-launcher-lib
