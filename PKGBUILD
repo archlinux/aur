@@ -33,7 +33,7 @@ md5sums=('394719936ca96d2a7e28eb2d7da27b93'
          '2935854d25c83b99ff259294c4f92971'
          '7b6219f801b85979015e2323815630d0'
          '462360fcefb35ac56a1041fca8aa81dc'
-         '3ea7849b7cdefc4025484dd30047364c'
+         '5e5dcc6abed6801a663a6949ff3fa55a'
          '48db5e5193c134ec52fef48b1d133c5e')
 
 _package_version=$pkgname" ("$pkgver"-"$pkgrel")"
