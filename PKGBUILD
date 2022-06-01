@@ -1,4 +1,5 @@
-# Maintainer: ebiadsu
+# Contributor: Marcell Meszaros
+# Contributor: ebiadsu
 # Contributor: Det
 # Contributor: josephgbr
 
@@ -157,4 +158,3 @@ package() {
         permission java.awt.AWTPermission \"accessClipboard\";" \
     -i "$pkgdir"/etc/java32-$_jname/security/java.policy
 }
-
