@@ -9,6 +9,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(Apache-2.0)
 depends=(
+    r
     r-rcpp
     'r-tibble>=2.0.0'
     r-hms

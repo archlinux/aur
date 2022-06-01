@@ -6,6 +6,7 @@ pkgbase = r-feather
 	arch = any
 	license = Apache-2.0
 	checkdepends = r-testthat
+	depends = r
 	depends = r-rcpp
 	depends = r-tibble>=2.0.0
 	depends = r-hms
