@@ -1,0 +1,5 @@
+*.tar.xz
+*.tar.zst
+farpdf-git
+pkg
+src

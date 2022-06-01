@@ -1,0 +1,18 @@
+pkgbase = farpdf-git
+	pkgdesc = A feature-rich dictionary lookup program, supporting multiple dictionary formats.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/slbtty/far2
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = libmupdf
+	depends = qt6-base
+	provides = farpdf
+	source = farpdf-git::git+https://gitlab.com/slbtty/far2#branch=csd
+	md5sums = SKIP
+
+pkgname = farpdf-git
