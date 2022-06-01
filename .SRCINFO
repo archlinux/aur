@@ -33,6 +33,6 @@ pkgbase = r-move
 	optdepends = r-bcpa
 	optdepends = r-embc
 	source = https://cran.r-project.org/src/contrib/move_4.1.6.tar.gz
-	sha256sums = 2925c46ef0d9bec7cefe467fad9b6d791ac1b4de90615c645e46ac59e2ab297e
+	sha512sums = 174bad1df0345c73588bdbed19ba5ac72723ddbb9f5960cc1001011c52ea2a6d0845e9f713a36d0a49ba70935ef6d882028d1ab910d6127ee133be54714ec02c
 
 pkgname = r-move
