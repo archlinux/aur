@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=ffuf
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Fast web fuzzer written in Go"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('89b4bd4b3bbad7402d9c81d0d9f21b679c80d0a19bb9a190e45e395736058889')
+sha256sums=('70dc411c014c826f9c8a7b021e01d5bc50e2cba17e0dcc4df3e2e2574ad12073')
 
 build() {
     cd $pkgname-$pkgver
@@ -38,5 +38,6 @@ check() {
 package() {
     cd $pkgname-$pkgver
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
