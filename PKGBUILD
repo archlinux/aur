@@ -4,7 +4,7 @@
 pkgbase=sia
 pkgname=('siad')
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Sia - Decentralized storage for the post-cloud world'
 arch=('x86_64')
 makedepends=('git' 'go')
@@ -28,6 +28,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   
   make release
+  
+  PATH="$srcdir/bin/" siac utils bash-completion "siac.bash-completion"
 }
 
 package() {
@@ -44,6 +46,8 @@ package() {
   
   install -dm 755 "$pkgdir/usr/share/man/man1"
   cp -dp doc/manpages/* "$pkgdir/usr/share/man/man1"
+  
+  install -Dm 644 "siac.bash-completion" "$pkgdir/usr/share/bash-completion/completions/siac"
   
   install -Dm 755 "$srcdir/bin/siad" -t "$pkgdir/usr/bin"
   install -Dm 755 "$srcdir/bin/siac" -t "$pkgdir/usr/bin"
