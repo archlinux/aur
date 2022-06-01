@@ -1,7 +1,7 @@
 pkgbase = perl-convert-pem
 	pkgdesc = Read/write encrypted ASN.1 PEM files
 	pkgver = 0.08
-	pkgrel = 4
+	pkgrel = 5
 	url = http://metacpan.org/release/Convert-PEM
 	arch = any
 	license = PerlArtistic
