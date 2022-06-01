@@ -12,7 +12,7 @@ makedepends=(git cmake ninja)
 conflicts=()
 provides=('farpdf')
 replaces=()
-source=("$pkgname::git+https://gitlab.com/slbtty/far2#branch=csd")
+source=("$pkgname::git+https://gitlab.com/slbtty/far2#tag=v0.2")
 md5sums=('SKIP')
 
 prepare() {
