@@ -25,6 +25,4 @@ package() {
 	mkdir -p ${pkgdir}/etc/modprobe.d
 	install -m 644 99-rz608.rules ${pkgdir}/etc/udev/rules.d/99-rz608.rules
 	install -m 644 rz608.conf ${pkgdir}/etc/modprobe.d/rz608.conf
-	udevadm control -R
-
 }
