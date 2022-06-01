@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-plugin-static-simple
 	pkgdesc = Make serving static pages painless.
 	pkgver = 0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Catalyst-Plugin-Static-Simple
 	arch = any
 	license = PerlArtistic
@@ -16,4 +16,3 @@ pkgbase = perl-catalyst-plugin-static-simple
 	sha512sums = 6901c6ebdd73caecd5f6c21017be82f62537efd2fc466fd96be0593a5fa946419c1d25b1b97520825d34d731d90b8c358f169bc252194fd40281e8e0e1721d15
 
 pkgname = perl-catalyst-plugin-static-simple
-

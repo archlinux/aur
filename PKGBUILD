@@ -3,7 +3,7 @@
 
 pkgname='perl-catalyst-plugin-static-simple'
 pkgver='0.37'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Make serving static pages painless."
 arch=('any')
 license=('PerlArtistic' 'GPL')
