@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux-mariadb-client
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc='Loose-coupled throw-on-error C++20 wrapper classes and utilities of mysql/mariadb Connector/C API'
@@ -13,7 +13,7 @@ arch=('x86_64')
 url='https://github.com/buck-yeh/bux-mariadb-client.git'
 license=('MIT')
 groups=()
-depends=('bux' 'fmt')
+depends=('mariadb-libs' 'bux' 'fmt')
 makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
 optdepends=()
