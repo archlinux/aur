@@ -4,12 +4,12 @@
 _pkgname=virt-viewer
 pkgname=$_pkgname-light
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch drop the header bar.'
 arch=('x86_64')
 url='https://gitlab.com/virt-viewer/virt-viewer'
 license=('GPL')
-depends=('gtk-vnc' 'libvirt' 'spice-gtk')
+depends=('gtk-vnc' 'libvirt' 'libvirt-glib' 'spice-gtk')
 makedepends=('meson' 'intltool' 'spice-protocol' 'gobject-introspection' 'bash-completion')
 replaces=("${_pkgname}")
 provides=("${_pkgname}")
