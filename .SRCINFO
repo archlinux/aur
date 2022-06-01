@@ -1,7 +1,7 @@
 pkgbase = perl-authen-pam
 	pkgdesc = Perl interface to PAM library
 	pkgver = 0.16
-	pkgrel = 9
+	pkgrel = 10
 	url = https://metacpan.org/release/Authen-PAM
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = perl-authen-pam
 	sha512sums = 2419698193697cb8c9ac3a1527a25abefffd9f15f4b492006081b2c8e7fe9e01e00f33e8fed6a07611b725b38ed92d9feb51b8ba61e4c23313cc5ff9ea1c05fd
 
 pkgname = perl-authen-pam
-
