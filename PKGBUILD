@@ -2,7 +2,7 @@
 # Contributor: Ryan Farley <ryan.farley@gmx.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=xorg-fonts-100dpi-otb
+pkgname=xorg-fonts-cyrillic-otb
 pkgver=1.0.3
 pkgrel=6
 pkgdesc="X.org cyrillic fonts (OTB version)"

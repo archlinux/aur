@@ -1,4 +1,4 @@
-pkgbase = xorg-fonts-100dpi-otb
+pkgbase = xorg-fonts-cyrillic-otb
 	pkgdesc = X.org cyrillic fonts (OTB version)
 	pkgver = 1.0.3
 	pkgrel = 6
@@ -23,4 +23,4 @@ pkgbase = xorg-fonts-100dpi-otb
 	md5sums = 7ec6f2e510314b0ddbf6526997f7ac4b
 	md5sums = 0e4554730f898dd6dc0e05d1047c7840
 
-pkgname = xorg-fonts-100dpi-otb
+pkgname = xorg-fonts-cyrillic-otb
