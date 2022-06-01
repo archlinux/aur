@@ -1,8 +1,8 @@
 # Maintainer: Steven De Bondt <egnappah at gmail dot com>
 
 pkgname=graphite-web
-pkgver=1.1.8
-pkgrel=3
+pkgver=1.1.10
+pkgrel=1
 pkgdesc="a Django-based web application that renders graphs and dashboards"
 url="https://github.com/graphite-project/graphite-web/"
 license=('Apache')
