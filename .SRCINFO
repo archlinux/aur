@@ -21,7 +21,7 @@ pkgbase = dxvk-mingw
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.10.1
-	source = dxvk-async-1.10.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/1.10/dxvk-async.patch
+	source = dxvk-async-1.10.1.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/1.10.1/dxvk-async.patch
 	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
 	source = setup_dxvk

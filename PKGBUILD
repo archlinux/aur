@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=1.10.1
-_asyncver=1.10
+_asyncver=1.10.1
 pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
