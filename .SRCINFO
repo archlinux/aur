@@ -1,6 +1,6 @@
 pkgbase = git-get
 	pkgdesc = Blazingly fast, incredibly handy git clone alternative
-	pkgver = v0.1
+	pkgver = v0.2
 	pkgrel = 1
 	url = https://github.com/b1f6c1c4/git-get
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = git-get
 	depends = bash
 	depends = grep
 	depends = sed
-	depends = awk
-	source = git-get-v0.1.tar.xz::https://github.com/b1f6c1c4/git-get/releases/download/v0.1/git-get.tar.xz
-	sha256sums = 14c5a0e6e395427c4ae4cb032b6b7caa060eac83ddcc2e446b0482e734a86e9c
+	source = git-get-v0.2.tar.xz::https://github.com/b1f6c1c4/git-get/releases/download/v0.2/git-get.tar.xz
+	sha256sums = daeb45c89921c6c43682ee38e4a9b9025fe7aaa60a05a71a8c5b18c8c4048d54
 
 pkgname = git-get
-
