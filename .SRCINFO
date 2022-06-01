@@ -1,6 +1,6 @@
 pkgbase = mask
 	pkgdesc = A CLI task runner defined by a simple markdown file
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/jakedeichert/mask
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = mask
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = mask-0.11.1.tar.gz::https://github.com/jakedeichert/mask/archive/v0.11.1.tar.gz
-	sha256sums = 49de25ee23bfa2f04f09750cf9b223a8ff5024280dca4ea40893e53212bef0b0
+	source = mask-0.11.2.tar.gz::https://github.com/jakedeichert/mask/archive/v0.11.2.tar.gz
+	sha256sums = abe5fddc7ea1a1ffab59c8f0823a95c7a6fdcfe86749f816b06d7690319d56aa
 
 pkgname = mask

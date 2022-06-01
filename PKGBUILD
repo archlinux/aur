@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=mask
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='A CLI task runner defined by a simple markdown file'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('49de25ee23bfa2f04f09750cf9b223a8ff5024280dca4ea40893e53212bef0b0')
+sha256sums=('abe5fddc7ea1a1ffab59c8f0823a95c7a6fdcfe86749f816b06d7690319d56aa')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -27,5 +27,6 @@ build() {
 package() {
     cd $pkgname-$pkgver
     install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
