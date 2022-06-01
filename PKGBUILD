@@ -1,10 +1,10 @@
-# Maintainer:  Gerasimos Chourdakis <chourdak at in dot tum dot de>
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=openfoam
 pkgname=${_base}-com-precice
 _gitcommit=e88aca117eb180b3f55ba07ea4d4623cd6fd621e
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="preCICE adapter for OpenFOAM"
 arch=(x86_64)
 url="https://github.com/precice/${_base}-adapter"
@@ -23,7 +23,7 @@ prepare() {
     echo
     return 1
   fi
-  # Enable if want see enable debug messages, see https://precice.org/adapter-openfoam-get.html
+  # Uncomment next line ff want see enable debug messages, see https://precice.org/adapter-openfoam-get.html
   # sed -i 's/ADAPTER_PREP_FLAGS=""/ADAPTER_PREP_FLAGS="-DADAPTER_DEBUG_MODE"/' ${_base}-adapter/Allwmake
   sed -i 's/ADAPTER_TARGET_DIR="${FOAM_USER_LIBBIN:-}"/ADAPTER_TARGET_DIR="${pkgdir}${FOAM_LIBBIN}"/' ${_base}-adapter/Allwmake
 }
