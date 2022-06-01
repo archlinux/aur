@@ -3,7 +3,7 @@
 pkgname="wwise-audio-tools-git"
 pkgver=0.8.0.r3.g7ad7a49
 pkgrel=1
-pkgdesc="Tools for working with Wwise file types (only extraction at the moment)"
+pkgdesc="Tools for working with Wwise file types"
 arch=("x86_64")
 url="https://github.com/WolvenKit/wwise-audio-tools"
 license=("MIT")
