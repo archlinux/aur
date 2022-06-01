@@ -1,7 +1,7 @@
 #Maintainer: aaditya <aaditya_gnulinux@zoho.com>
 
 pkgname=timeset-gui
-pkgver=2.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A GUI for managing system date and time."
 url="https://github.com/aadityabagga/timeset-gui"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gksu' 'python-gobject' 'ntp')
 optdepends=('ntp-openrc: openrc ntp service')
 source=("https://github.com/aadityabagga/timeset-gui/archive/${pkgver}.tar.gz")
-sha1sums=('a0f05e10f3de59673b2fd12451f4bf90af4a2fe3')
+sha1sums=('f9add9aa9a90568ca228170576e3b9df87cd2feb')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
