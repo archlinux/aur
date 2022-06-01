@@ -1,7 +1,7 @@
 pkgbase = perl-www-curl
 	pkgdesc = Perl/CPAN Module WWW::Curl
 	pkgver = 4.17
-	pkgrel = 14
+	pkgrel = 15
 	url = https://search.cpan.org/dist/WWW-Curl/
 	arch = x86_64
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = perl-www-curl
 	sha256sums = da51d5f2a2993dd33f5a7baf358a61086440abb50e4dd3ca1f4939ea262d3cc2
 
 pkgname = perl-www-curl
-
