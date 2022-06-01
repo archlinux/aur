@@ -1,7 +1,7 @@
 pkgbase = perl-gd-securityimage
 	pkgdesc = Security image (captcha) generator
 	pkgver = 1.75
-	pkgrel = 4
+	pkgrel = 5
 	url = https://search.cpan.org/dist/GD-SecurityImage
 	arch = any
 	license = GPL
