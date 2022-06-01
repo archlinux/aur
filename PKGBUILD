@@ -1,35 +1,35 @@
+# Maintainer: AvianaCruz <gwencroft@proton.me>
 # Contributor: Rowisi < nomail <at> private <dot> com >
-# Maintainer: So1ar <so1ar114514@gmail.com>
+# Contributor: So1ar <so1ar114514@gmail.com>
 
 pkgname=hmcl-new
 _ver=3.5.3
 _build=220
-pkgver=${_ver}.${_build}
-pkgrel=1
-pkgdesc="An unofficial build of HMCL that trying to compile and run with the latest version of java. "
+pkgver=$_ver.$_build
+pkgrel=2
+pkgdesc='An unofficial build of HMCL that trying to compile and run with the latest version of java.'
 arch=('any')
-url="https://github.com/so1ar/HMCL-build"
+url='https://github.com/skbeh/HMCL-build'
 license=('GPL3')
 depends=('java-openjfx')
 provides=('hmcl')
 conflicts=('hmcl')
-source=("hmcl.desktop"
-        "hmcl-launch-script"
-        "craft_table.png"
-        "LICENSE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE"
-        "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/so1ar/HMCL-build/releases/download/${pkgver}/HMCL-${pkgver}.jar")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '1fba7fdb03be595a773813d43a49064dcc552ad06350456ee6862b2160fca906')
-
-noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
+source=('hmcl.desktop'
+  'hmcl-launch-script'
+  'craft_table.png'
+  'LICENSE::https://raw.githubusercontent.com/huanghongxun/HMCL/javafx/LICENSE'
+  "$pkgname-$pkgver-$pkgrel.jar::$url/releases/download/v$pkgver/HMCL-$pkgver.jar")
+sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
+  '534e391a637394e47cdeb0d9dfe24cd6fd1dedb863c085951403ec24f1470d06'
+  '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
+  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+  'efff66ef3516f857036bd126ea87f793d71ab167a133226a66167317b9f8e6de')
+noextract=("$pkgname-$pkgver-$pkgrel.jar")
 
 package() {
-  install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgname}-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-  install -Dm644 "craft_table.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
-  install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 'hmcl-launch-script' "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 'hmcl.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$pkgname-$pkgver-$pkgrel.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm644 'craft_table.png' "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
+  install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
