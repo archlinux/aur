@@ -1,13 +1,13 @@
 # Mostly a copy of linux-firmware PKGBUILD by Thomas Bächler <thomas@archlinux.org>
-# Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
+# Maintainer: Victor Dmitriev <mrvvitek@gmail.com>
 # Contributor: xduugu
 
 pkgbase=linux-firmware-git
-pkgver=20220124.eb8ea1b
-pkgrel=1
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
+pkgver=20220531.eaee2da
+pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
@@ -17,27 +17,19 @@ options=(!strip)
 #branch=main
 source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed"
          0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
+         0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
          allow-inplace-rebuild.patch)
 sha256sums=('SKIP'
             '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7'
+            '0e1840112f4c439da51860437181a5ec3673546744d41716238dc1b357fc2880'
             '33a486fc036ec2d2e99799550b61eab395e2dd27b0e02e52e0bd8b9f3810d003')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
-
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
-}
 
 prepare() {
   cd ${pkgbase}
 
   # add firmware compression support - patch taken from Fedora
-  patch -Np1 -i ../0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
+  patch -Np1 -i ../0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
   patch -Np1 -i ../allow-inplace-rebuild.patch
 }
 
@@ -63,12 +55,22 @@ build() {
     bsdtar --null -cf - --format=newc @- > amd-ucode.img
 }
 
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
 package_linux-firmware-whence-git() {
   conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-git}=$pkgver")
   pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
-  cd "$pkgbase"
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 WHENCE
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${pkgbase}/WHENCE"
 }
 
 package_linux-firmware-git() {
@@ -87,7 +89,8 @@ package_linux-firmware-git() {
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 LICEN*
 
   # split
-  cd "$pkgdir"
+  cd "${pkgdir}"
+
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname%-git}/LICENCE.Netronome
 
