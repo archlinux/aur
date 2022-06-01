@@ -3,7 +3,7 @@
 
 pkgname='perl-math-random'
 pkgver='0.72'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Random Number Generators"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
