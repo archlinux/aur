@@ -3,7 +3,7 @@
 
 pkgname='perl-class-role'
 pkgver='0.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Support for the role object model"
 arch=('any')
 license=('PerlArtistic' 'GPL')
