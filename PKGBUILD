@@ -46,7 +46,7 @@ sha512sums_i386=('SKIP')
 source_aarch64=("${_repo}/aarch64/${pkgname}_${pkgver}-${_commit}_aarch64.deb")
 sha512sums_aarch64=('SKIP')
 
-source_armv7h=("${_repo}/armv7h/${pkgname}_${pkgver}-${_commit}_armv7h.deb")
+source_armv7h=("${_repo}/armv7h/${pkgname}_${pkgver}-${_commit}_armhf.deb")
 sha512sums_armv7h=('SKIP')
   
 validpgpkeys=("1FDCB4DDF9D85AC5C07C742DB203A80C260BB20F") # Team XLink <crunchbite@teamxlink.co.uk>
@@ -62,7 +62,7 @@ prepare() {
         DEBIAN_ARCH=amd64
         ;;
     armv7h)
-        DEBIAN_ARCH=armv7
+        DEBIAN_ARCH=armhf
         ;;
     aarch64)
         DEBIAN_ARCH=aarch64
