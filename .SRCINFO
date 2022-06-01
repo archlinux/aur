@@ -1,15 +1,11 @@
 pkgbase = faiss-mkl
 	pkgver = 1.7.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = python
-	makedepends = python-numpy
-	makedepends = swig
-	makedepends = python-setuptools
 	makedepends = cmake
 	depends = blas
 	depends = lapack

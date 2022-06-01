@@ -5,11 +5,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
 pkgver=1.7.2
-pkgrel=0
+pkgrel=1
 source=(faiss-${pkgver}.zip::https://github.com/facebookresearch/faiss/archive/refs/tags/v${pkgver}.zip)
 sha256sums=('bd583f711c15bf9dc8247ccdf0884b971887e2c4679d11f7403b18ab2a4742d8')
 depends=('blas' 'lapack' 'intel-mkl')
-makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
+makedepends=('git' 'cmake')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
