@@ -1,0 +1,22 @@
+pkgbase = ozbe-pocket-cli-git
+	pkgdesc = Command-line interface to interact with Pocket API (Rust)
+	pkgver = r21.42164f8
+	pkgrel = 1
+	url = https://github.com/ozbe/pocket-cli
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	depends = gcc-libs
+	provides = pocket
+	options = !emptydirs
+	source = git+https://github.com/ozbe/pocket-cli
+	sha256sums = SKIP
+
+pkgname = ozbe-pocket-cli-git
