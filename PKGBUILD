@@ -3,7 +3,7 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf-patched
-pkgver=9.26
+pkgver=9.30
 pkgrel=0
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with pixbuf, fixed font spacing, fixed line spacing, vi-bindings for matcher and fixed opacity.'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'line-spacing-fix.patch'
         'background-opacity.patch'
         'matcher-vi-bindings.patch')
-sha1sums=('d325d8cdea6bcb8e0b8b219b8451bf5c690b6c62'
+sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
