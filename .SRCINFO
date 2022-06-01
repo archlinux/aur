@@ -1,7 +1,7 @@
 pkgbase = perl-class-void
 	pkgdesc = A class that stringifies to nothing for whatever you do with it
 	pkgver = 0.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Class-Void
 	arch = any
 	license = PerlArtistic

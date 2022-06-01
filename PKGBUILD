@@ -3,7 +3,7 @@
 
 pkgname='perl-class-void'
 pkgver='0.05'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A class that stringifies to nothing for whatever you do with it"
 arch=('any')
 license=('PerlArtistic' 'GPL')
