@@ -10,10 +10,6 @@ arch=('any')
 url="https://gitlab.freedesktop.org/"
 license=('custom')
 makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
-replaces=('xorg-fonts-cyrillic')
-provides=('xorg-fonts-cyrillic')
-conflicts=('xorg-fonts-cyrillic')
-makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
 depends=('xorg-fonts-alias-cyrillic')
 source=(${url}/xorg/font/cronyx-cyrillic/-/archive/master/cronyx-cyrillic-master.tar.gz
         ${url}/xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
