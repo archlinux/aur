@@ -3,8 +3,8 @@
 
 pkgname=audio-offset-finder
 pkgver=1.0
-pkgrel=1
-pkgdesc="${pkgname} is a simple tool CLI for finding the offset of an audio file within another file. Can help to post-synchronize audio on a video "
+pkgrel=2
+pkgdesc="${pkgname} is used to replace the audio of a video to another audio recordered in another device"
 arch=('any')
 url="https://github.com/abramhindle/${pkgname}"
 license=("Apache License v2.0")
