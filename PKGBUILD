@@ -3,7 +3,7 @@
 
 pkgname='perl-moosex-classattribute'
 pkgver='0.29'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Declare class attributes Moose-style"
 arch=('any')
 license=('PerlArtistic' 'GPL')
