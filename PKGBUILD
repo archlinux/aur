@@ -1,32 +1,35 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='pythontexfigures'
-pkgname="python-${_pkgname}"
-
+_base=pythontexfigures
+pkgname=python-${_base}
+pkgdesc="Embed matplotlib figures into LaTeX documents using PythonTeX"
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
+arch=(any)
 _commit_version='55bf83a495cf7b4f0d408fa834f430e3fcd5d95f'
-
-pkgdesc='Embed matplotlib figures into LaTeX documents using PythonTeX'
-arch=('any')
-url='https://github.com/mje-nz/pythontexfigures'
-_url_pypi='https://pypi.org/project/pythontexfigures'
-license=('BSD')
-depends=('python-matplotlib' 'python-pygments')
-makedepends=('git' 'python-setuptools')
-source=("${pkgname}::git+${url}.git#commit=${_commit_version}")
-sha256sums=('SKIP')
+url="https://github.com/mje-nz/${_base}"
+license=('custom:BSD-3-clause')
+depends=(python-matplotlib python-pygments)
+makedepends=(git python-setuptools)
+# checkdepends=(python-pytest texlive-pictures fvextra) # python-seaborn
+source=("git+${url}.git#commit=${_commit_version}")
+sha512sums=('SKIP')
 
 build() {
-  cd "${pkgname}"
+  cd ${_base}
   python setup.py build
 }
 
-package() {
-  cd "${pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'Readme.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
-}
+# check() {
+#   cd ${_base}
+#   # https://github.com/mje-nz/pythontexfigures/blob/master/.circleci/config.yml#L23
+#   python -m pytest
+# }
 
-# vim: ts=2 sw=2 et:
+package() {
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 Readme.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
