@@ -4,7 +4,7 @@
 _pkgname=OpenLens
 pkgname=openlens-bin
 pkgver=5.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444'
 arch=('x86_64')
 license=('MIT')
@@ -38,7 +38,7 @@ package() {
 
   # symlink binary
   mkdir -p "${pkgdir}"/usr/bin
-  ln -sf /usr/share/${_pkgname}/lens \
+  ln -sf /usr/share/${_pkgname}/open-lens \
     "${pkgdir}"/usr/bin/open-lens
 
   # clean and fix permissions
