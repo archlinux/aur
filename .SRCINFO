@@ -1,7 +1,7 @@
 pkgbase = perl-net-rawip
 	pkgdesc = Perl extension to manipulate raw IP packets with interface to B<libpcap>
 	pkgver = 0.25
-	pkgrel = 14.1
+	pkgrel = 14.2
 	url = http://search.cpan.org/dist/Net-RawIP
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = perl-net-rawip
 	sha512sums = c48c77389db9dc8d5c64d67e5c62bac5e3314dbc36bcfa51aa20d07224492edaa65f5c71d47ca0b804ac62b1b02387e172cd3561eadaa3a1a8040968b182b3ca
 
 pkgname = perl-net-rawip
-
