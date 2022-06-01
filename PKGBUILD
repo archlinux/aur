@@ -2,7 +2,7 @@
 
 pkgname=pam_exec-gpg
 pkgver=20220601
-pkgrel=2
+pkgrel=3
 pkgcommit=8f76da7
 pkgdesc="Unlock GnuPG keys keys on login using PAM."
 arch=(any)
