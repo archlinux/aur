@@ -1,24 +1,18 @@
 # Maintainer: x70b1
 
 pkgname=pam_exec-ssh
-pkgver=r17.c377620
-pkgrel=3
+pkgver=20220601
+pkgrel=1
+pkgcommit=311b153
 pkgdesc="Unlock SSH keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-ssh"
 license=("The Unlicense")
 makedepends=("git")
 depends=("pam" "expect")
-source=("${pkgname}::git+${url}.git#commit=$(echo ${pkgver} | cut -d '.' -f 2)")
+source=("${pkgname}::git+${url}.git#commit=${pkgcommit}")
 noextract=()
 sha256sums=('SKIP')
-
-pkgver() {
-    cd ${pkgname}
-    set -o pipefail
-    git describe --long 2> /dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
     cd ${pkgname}
