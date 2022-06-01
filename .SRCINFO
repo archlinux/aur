@@ -1,7 +1,7 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
 	pkgver = 20220527.r0.gd3fde8ff50ab
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -36,7 +36,3 @@ pkgname = linux-next-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux NEXT kernel
 	depends = linux-next-git
 	depends = pahole
-
-pkgname = linux-next-git-docs
-	pkgdesc = Documentation for the Linux NEXT kernel
-	depends = linux-next-git
