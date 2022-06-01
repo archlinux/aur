@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=geil-git
-pkgver=v0.0.1.alpha.0.r11.g091b5b9
+pkgver=v0.0.1.alpha.0.r17.g00f5bb0
 pkgrel=1
 arch=('any')
 pkgdesc='Update your git repos and see which need cleanup.'

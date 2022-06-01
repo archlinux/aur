@@ -1,6 +1,6 @@
 pkgbase = geil-git
 	pkgdesc = Update your git repos and see which need cleanup.
-	pkgver = v0.0.1.alpha.0.r11.g091b5b9
+	pkgver = v0.0.1.alpha.0.r17.g00f5bb0
 	pkgrel = 1
 	url = https://github.com/Nukesor/geil
 	arch = any
