@@ -1,0 +1,12 @@
+pkgbase = rz608-fix-git
+	pkgdesc = Allows use of the RZ608/MT7921K WiFi module in kernels < 5.17
+	pkgver = 22.05.r2.b88b447
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/rz608-fix
+	arch = any
+	license = GPL
+	makedepends = git
+	source = rz608-fix::git+https://github.com/ShadowBlip/rz608-fix.git
+	sha256sums = SKIP
+
+pkgname = rz608-fix-git
