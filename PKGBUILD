@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jove-git
-pkgver=132.20200218
+pkgver=206.20220530
 pkgrel=1
 pkgdesc=" Emacs-like editor without Lisp from github"
 url="https://github.com/jonmacs/jove/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('termcap' 'glibc')
 provides=('jove')
 conflicts=('jove')
-source=("git+$url#branch=moraes")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
