@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=dosbox-x-sdl2
-pkgver=0.83.25
+pkgver=0.84.0
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
@@ -12,7 +12,7 @@ makedepends=(glu)
 optdepends=()
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
-sha256sums=('f9691acf81f953371a166b1ccc9c8b3e58b984216f0145edf2d6f5a05e794ede')
+sha256sums=('564fbf8f0ab090c8b32bc38637c8204358c386b9cbffcb4f99a81bc82fddbad7')
 
 build() {
   cd "$srcdir/dosbox-x-dosbox-x-v$pkgver"

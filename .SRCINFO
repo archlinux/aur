@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-sdl2
 	pkgdesc = x86 emulator with builtin DOS, with patches and more features
-	pkgver = 0.83.25
+	pkgver = 0.84.0
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = dosbox-x-sdl2
 	conflicts = dosbox-x-git
 	conflicts = dosbox-x
 	conflicts = dosbox-x-sdl2-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.25.tar.gz
-	sha256sums = f9691acf81f953371a166b1ccc9c8b3e58b984216f0145edf2d6f5a05e794ede
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.84.0.tar.gz
+	sha256sums = 564fbf8f0ab090c8b32bc38637c8204358c386b9cbffcb4f99a81bc82fddbad7
 
 pkgname = dosbox-x-sdl2
