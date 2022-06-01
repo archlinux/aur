@@ -3,19 +3,26 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=muserv-git
 _pkgname=muserv
-pkgver=v0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="muserv (UPnP server for music)"
-arch=(any)
+arch=(
+  aarch64
+  armv7h
+  x86_64
+)
 url="https://$_pkgorg/$_pkgname/"
 license=('GPL3')
 depends=(
   mailcap
 )
 makedepends=(
-    git
-    go-pie
+  bash
+  git
+  go
+  make
 )
+provides=(muserv)
 source=("git+https://$_pkgorg/$_pkgname.git")
 sha256sums=('SKIP')
 
@@ -25,31 +32,19 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p gopath/src/$_pkgorg
-  ln -rTsf $_pkgname gopath/src/$_pkgorg/$_pkgname
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_pkgorg/$_pkgname
+    cd "$srcdir/$_pkgname"
+    ( set -o pipefail
+        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_pkgorg/$_pkgname
-  make VERSION=$pkgver
+  cd "$srcdir/$_pkgname"
+  make
 }
 
 package() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/$_pkgorg/$_pkgname
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" install
-  cd -
-
-  cd $_pkgname
-  ls -al
-  install -Dm0644 systemd/muserv.service "$pkgdir"/etc/systemd/system/muserv.service
-  install -Dm0644 cfg/sysusers.conf "$pkgdir"/usr/lib/sysusers.d/muserv.conf
-  install -Dm0644 cfg/config-default.json "$pkgdir"/etc/muserv/config-default.json
-  install -Dm0644 cfg/ContentDirectory.xml "$pkgdir"/etc/muserv/ContentDirectory.xml
-  install -Dm0644 cfg/ConnectionManager.xml "$pkgdir"/etc/muserv/ConnectionManager.xml
-  install -Dm0644 resources/logo_dark_300px.png "$pkgdir"/etc/muserv/icons/icon_dark.png
-  install -Dm0644 resources/logo_light_300px.png "$pkgdir"/etc/muserv/icons/icon_light.png
 }
