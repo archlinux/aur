@@ -5,16 +5,17 @@
 
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=yogo
-pkgver=3.3.0
-pkgchecksum=9336e16c7b130998ae074b1ba1eea885
+pkgver=3.6.0
+pkgchecksum=84053eae6dc2700792e64f48ad4b0a1e
 pkgrel=1
 pkgdesc="Interact with yopmail from command-line"
 arch=('x86_64')
 url="https://github.com/antham/yogo"
 license=('GPL')
-source=("https://github.com/antham/yogo/releases/download/v$pkgver/yogo_linux_amd64")
+source=("https://github.com/antham/yogo/releases/download/v${pkgver}/yogo_${pkgver}_linux_amd64.tar.gz")
 md5sums=($pkgchecksum)
 
 package() {
-    install -Dm755 "yogo_linux_amd64" "$pkgdir/usr/bin/$pkgname"
+    tar xf "yogo_${pkgver}_linux_amd64.tar.gz"
+    install -Dm755 "yogo" "${pkgdir}/usr/bin/${pkgname}"
 }
