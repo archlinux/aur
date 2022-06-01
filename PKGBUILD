@@ -2,8 +2,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gtk4-telegrand
-pkgver=4.6.4
-pkgrel=2
+pkgver=4.6.5
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
 arch=(x86_64)
@@ -20,7 +20,7 @@ provides=(gtk4 libgtk-4.so)
 makedepends=(git meson shaderc sassc gobject-introspection
              wayland-protocols python-gobject python-docutils)
 checkdepends=(weston)
-_commit=1e6bad6c4f412dc0eb7b2f508cb4465929a04303  # tags/4.6.4^0
+_commit=3e766a4fe2e3a5ade7cef1e76f37b46a1daab258  # tags/4.6.5^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         'https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.hook)
