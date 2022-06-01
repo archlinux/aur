@@ -1,41 +1,39 @@
-# Maintainer: Ryan Farley <ryan.farley@gmx.com>
+# Maintainer: pkfbcedkrz <pkfbcedkrz@gmail.com>
+# Contributor: Ryan Farley <ryan.farley@gmx.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xorg-fonts-75dpi-otb
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="X.org 75dpi fonts (OTB version)"
-arch=(any)
-url="https://xorg.freedesktop.org/"
+arch=('any')
+url="https://gitlab.freedesktop.org/"
 license=('custom')
-makedepends=('fonttosfnt' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
+makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
 depends=('xorg-fonts-alias-75dpi')
 replaces=('xorg-fonts-75dpi')
 provides=('xorg-fonts-75dpi')
 conflicts=('xorg-fonts-75dpi')
-source=(${url}/releases/individual/font/font-adobe-75dpi-1.0.3.tar.bz2
-        ${url}/releases/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
-        ${url}/releases/individual/font/font-bh-75dpi-1.0.3.tar.bz2
-        ${url}/releases/individual/font/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2
-        ${url}/releases/individual/font/font-bitstream-75dpi-1.0.3.tar.bz2)
-md5sums=('6c9f26c92393c0756f3e8d614713495b'
-         'e99276db3e7cef6dccc8a57bc68aeba7'
-         '565494fc3b6ac08010201d79c677a7a7'
-         'f6d65758ac9eb576ae49ab24c5e9019a'
-         'd7c0588c26fac055c0dd683fdd65ac34')
+source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
+        ${url}/xorg/font/adobe-utopia-75dpi/-/archive/master/adobe-utopia-75dpi-master.tar.gz
+        ${url}/xorg/font/bh-75dpi/-/archive/master/bh-75dpi-master.tar.gz
+        ${url}/xorg/font/bh-lucidatypewriter-75dpi/-/archive/master/bh-lucidatypewriter-75dpi-master.tar.gz
+        ${url}/xorg/font/bitstream-75dpi/-/archive/master/bitstream-75dpi-master.tar.gz)
+md5sums=('0cba842df3c423f4e297e1b538f3c533'
+         'c9fc3977d1b52566588dcbb4ddaaf49e'
+         '0aebf329ab88ad11c6222a793892100c'
+         '9763ec6ee2e3629f0c371cb2aa4f0633'
+         '5735aaf5395840732382f1864a0e33d8')
 
 build() {
   cd "${srcdir}"
   for dir in *; do
     if [ -d "${dir}" ]; then
       pushd "${dir}"
-      ./configure --prefix=/usr \
-          --with-fontdir=/usr/share/fonts/75dpi
-      make
       shopt -s nullglob
-      for f in *.pcf.gz; do
-        fonttosfnt -r -o "${f/pcf.gz/otb}" "$f"
+      for f in *.bdf; do
+        fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
       done
       shopt -u nullglob
       popd
@@ -46,10 +44,10 @@ build() {
 package() {
   cd "${srcdir}"
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m755 -d "${pkgdir}/usr/share/fonts/75dpi"
   for dir in *; do
     if [ -d "${dir}" ]; then
       pushd "${dir}"
-      make DESTDIR="${pkgdir}" install
       install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir%-75dpi-*}"
       shopt -s nullglob
       for f in *.otb; do
@@ -59,6 +57,4 @@ package() {
       popd
     fi
   done
-  rm -f "${pkgdir}"/usr/share/fonts/75dpi/fonts.*
-  rm "${pkgdir}"/usr/share/fonts/75dpi/*.pcf.gz
 }
