@@ -3,7 +3,7 @@
 
 pkgname='perl-spreadsheet-writeexcel'
 pkgver='2.40'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Write to a cross-platform Excel binary file."
 arch=('any')
 license=('PerlArtistic' 'GPL')
