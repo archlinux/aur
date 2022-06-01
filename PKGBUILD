@@ -1,38 +1,37 @@
-#Maintainer: Ryan Farley <ryan.farley@gmx.com>
-#Contributor: Jan de Groot <jgc@archlinux.org>
+# Maintainer: pkfbcedkrz <pkfbcedkrz@gmail.com>
+# Contributor: Ryan Farley <ryan.farley@gmx.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=xorg-fonts-cyrillic-otb
+pkgname=xorg-fonts-100dpi-otb
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="X.org cyrillic fonts (OTB version)"
-arch=(any)
-url="https://xorg.freedesktop.org/"
+arch=('any')
+url="https://gitlab.freedesktop.org/"
 license=('custom')
+makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
 replaces=('xorg-fonts-cyrillic')
 provides=('xorg-fonts-cyrillic')
 conflicts=('xorg-fonts-cyrillic')
-makedepends=('fonttosfnt' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
+makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
 depends=('xorg-fonts-alias-cyrillic')
-source=(${url}/releases/individual/font/font-cronyx-cyrillic-${pkgver}.tar.bz2
-        ${url}/releases/individual/font/font-misc-cyrillic-${pkgver}.tar.bz2
-        ${url}/releases/individual/font/font-screen-cyrillic-1.0.4.tar.bz2
-        ${url}/releases/individual/font/font-winitzki-cyrillic-${pkgver}.tar.bz2)
-md5sums=('e452b94b59b9cfd49110bb49b6267fba'
-         '96109d0890ad2b6b0e948525ebb0aba8'
-         '6f3fdcf2454bf08128a651914b7948ca'
-         '829a3159389b7f96f629e5388bfee67b')
+source=(${url}/xorg/font/cronyx-cyrillic/-/archive/master/cronyx-cyrillic-master.tar.gz
+        ${url}/xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
+        ${url}/xorg/font/screen-cyrillic/-/archive/master/screen-cyrillic-master.tar.gz
+        ${url}/xorg/font/winitzki-cyrillic/-/archive/master/winitzki-cyrillic-master.tar.gz)
+md5sums=('5a799bab6b679de660740c70adac78d8'
+         'f34c5292f5e12ea4b045baf4c723a2bf'
+         '7ec6f2e510314b0ddbf6526997f7ac4b'
+         '0e4554730f898dd6dc0e05d1047c7840')
 
 build() {
   cd "${srcdir}"
   for dir in *; do
     if [ -d "${dir}" ]; then
       pushd "${dir}"
-      ./configure --prefix=/usr \
-		      --with-fontdir=/usr/share/fonts/cyrillic
-      make
       shopt -s nullglob
-      for f in *.pcf.gz; do
-        fonttosfnt -r -o "${f/pcf.gz/otb}" "$f"
+      for f in *.bdf; do
+        fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
       done
       shopt -u nullglob
       popd
@@ -41,12 +40,12 @@ build() {
 }
 
 package() {
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${srcdir}"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m755 -d "${pkgdir}/usr/share/fonts/cyrillic"
   for dir in *; do
     if [ -d "${dir}" ]; then
       pushd "${dir}"
-      make DESTDIR="${pkgdir}" install
       install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir%-*}"
       shopt -s nullglob
       for f in *.otb; do
@@ -54,8 +53,6 @@ package() {
       done
       shopt -u nullglob
       popd
-    fi    
+    fi
   done
-  rm -f "${pkgdir}"/usr/share/fonts/*/fonts.*
-  rm ${pkgdir}/usr/share/fonts/cyrillic/*.pcf.gz
 }
