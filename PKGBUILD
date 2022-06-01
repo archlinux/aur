@@ -3,7 +3,7 @@
 
 pkgname='perl-perlio-layers'
 pkgver='0.012'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Querying your filehandle's capabilities"
 arch=('any')
 license=('PerlArtistic' 'GPL')
