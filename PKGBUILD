@@ -3,7 +3,7 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.01'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
