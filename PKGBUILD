@@ -3,8 +3,8 @@
 
 pkgbase=sia
 pkgname=('siad')
-pkgver=1.5.7
-pkgrel=2
+pkgver=1.5.8
+pkgrel=1
 pkgdesc='Sia - Decentralized storage for the post-cloud world'
 arch=('x86_64')
 makedepends=('git' 'go')
