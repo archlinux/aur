@@ -1,7 +1,7 @@
 pkgbase = perl-chemistry-elements
 	pkgdesc = Perl extension for working with Chemical Elements
 	pkgver = 1.075
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Chemistry-Elements
 	arch = any
 	license = PerlArtistic
