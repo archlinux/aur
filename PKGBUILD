@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=payload-dumper-go
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="An Android OTA payload dumper written in Go."
