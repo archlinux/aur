@@ -50,9 +50,9 @@ conflicts=(anki)
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki-$pkgver-$_py-abi3-manylinux_2_28_$arch.whl"
 	"https://files.pythonhosted.org/packages/py3/${_aqt::1}/$_aqt/$_aqt-$pkgver-py3-none-any.whl"
-	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/runanki.py"
-	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.desktop"
-	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
+	"runanki-$pkgver.py::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/runanki.py"
+	"anki-$pkgver.desktop::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.desktop"
+	"anki-$pkgver.png::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
 )
 noextract=("${source[@]##*/}")
 sha256sums=('54f1b28b0c7f83bab0a009255741e9ec02ccfaf19c6a99e5ed50c5a91eb3caf4'
@@ -64,7 +64,7 @@ sha256sums=('54f1b28b0c7f83bab0a009255741e9ec02ccfaf19c6a99e5ed50c5a91eb3caf4'
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 
-	install -Dm755 runanki.py "$pkgdir/usr/bin/anki"
-	install -Dm644 anki.desktop "$pkgdir/usr/share/applications/anki.desktop"
-	install -Dm644 anki.png "$pkgdir/usr/share/pixmaps/anki.png"
+	install -Dm755 runanki-$pkgver.py "$pkgdir/usr/bin/anki"
+	install -Dm644 anki-$pkgver.desktop "$pkgdir/usr/share/applications/anki.desktop"
+	install -Dm644 anki-$pkgver.png "$pkgdir/usr/share/pixmaps/anki.png"
 }
