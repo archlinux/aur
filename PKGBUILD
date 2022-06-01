@@ -6,7 +6,7 @@ _pkgname=perl-coro
 _realname=Coro
 pkgver=6.57
 pkgrel=1
-pkgdesc="CPAN/Coro - the only real threads in perl"
+pkgdesc="Support for cooperative threads which don't run in parallel"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 provides=("${_pkgname}=${pkgver}")

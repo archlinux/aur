@@ -1,5 +1,5 @@
 pkgbase = perl-coro.any_perl_version
-	pkgdesc = CPAN/Coro - the only real threads in perl
+	pkgdesc = Support for cooperative threads which don't run in parallel
 	pkgver = 6.57
 	pkgrel = 1
 	url = https://metacpan.org/release/Coro
