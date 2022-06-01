@@ -1,6 +1,6 @@
 pkgbase = perl-math-derivative
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Math-Derivative
 	arch = any
 	license = PerlArtistic
@@ -13,4 +13,3 @@ pkgbase = perl-math-derivative
 	sha512sums = 8fb13bb64b205892f39ba732f864010971cb08eef26987e9ef31e43c2b0eae2758992cbb719d38cbbb0858c0e55067a0d009322e65f31817d713a84d157e7805
 
 pkgname = perl-math-derivative
-

@@ -3,7 +3,7 @@
 
 pkgname='perl-math-derivative'
 pkgver='1.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
