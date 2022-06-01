@@ -1,15 +1,15 @@
 # Maintainer: Beshr Ghalil <bshrghalil@gmail.com>
 pkgname=todome-git
 _pkgname=todome
-pkgver=77__2022.01.10
-pkgrel=2
+pkgver=37__2022.06.01
+pkgrel=1
 epoch=
-pkgdesc="Language agnostic tool that collects TODOs, FIXMEs and BUGs in the source code."
+pkgdesc="Language agnostic tool that collects TODOs, FIXMEs ,BUGs, NOTEs and DONEs in the source code."
 arch=('x86_64' 'i686')
 url="https://www.github.com/BishrGhalil/todome.git"
 license=('GPL')
-depends=('sqlite' 'ncurses' 'git')
-optdepends=('pandoc')
+depends=('git')
+optdepends=('')
 makedepends=('git' 'make')
 provides=('todome')
 conflicts=('todome')
@@ -25,13 +25,14 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	make 
+	cd "$_pkgname/src"
+	make
 }
 
 package() {
-	cd "$_pkgname"
+	cd "$_pkgname/src"
 	sudo make PREFIX=/usr DESTDIR="$pkgdir/" install
+	cd "../"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
