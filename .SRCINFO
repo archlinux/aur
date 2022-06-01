@@ -1,7 +1,7 @@
 pkgbase = pam_exec-gpg
     pkgdesc = Unlock GnuPG keys keys on login using PAM.
     pkgver = 20220601
-    pkgrel = 4
+    pkgrel = 6
     url = https://github.com/x70b1/pam_exec-gpg
     arch = any
     license = The Unlicense
