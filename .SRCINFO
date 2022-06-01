@@ -7,7 +7,7 @@ pkgbase = pam_exec-gpg
     license = The Unlicense
     makedepends = git
     depends = pam
-    source = pam_exec-ssh::git+https://github.com/x70b1/pam_exec-gpg.git
+    source = pam_exec-gpg::git+https://github.com/x70b1/pam_exec-gpg.git
     sha256sums = SKIP
 
 pkgname = pam_exec-gpg
