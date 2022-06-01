@@ -3,7 +3,7 @@
 
 pkgname='perl-math-combinatorics'
 pkgver='0.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perform combinations and permutations on lists"
 arch=('any')
 license=('PerlArtistic' 'GPL')

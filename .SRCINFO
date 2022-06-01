@@ -1,7 +1,7 @@
 pkgbase = perl-math-combinatorics
 	pkgdesc = Perform combinations and permutations on lists
 	pkgver = 0.09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Math-Combinatorics
 	arch = any
 	license = PerlArtistic
@@ -13,4 +13,3 @@ pkgbase = perl-math-combinatorics
 	sha512sums = 6d2727f4c74242ef3b74d2ca453eab4dc08bc7bf783f27564dee0617c52936477ca120740faca7337e5e5690abe3fcc062d4a3ad90bbb06b04f66bf435357b9e
 
 pkgname = perl-math-combinatorics
-
