@@ -3,12 +3,12 @@ pkgname=ecs-tasks-ops
 pkgdesc="Ecs Tasks Ops - Manage ssh connections to ECS docker containers"
 url="https://github.com/ppalazon/ecs-tasks-ops"
 license=('MIT')
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 arch=('x86_64')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0db0960a42d71985f036885ccea2d85f085a84e52599102256a0096370b9cd96')
+sha256sums=('b9909a5698c285e27a1da66aeb531611f90bc03ed52e7f73683c222eee1ee7a8')
 
 depends=("python-click" "python-boto3" "python-tabulate" "python-moto" "python-sshpubkeys")
 
