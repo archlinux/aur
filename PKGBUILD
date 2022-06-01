@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=100.0.2
-pkgrel=5
+pkgver=101.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -36,11 +36,13 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git"
         "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
-        "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git")
+        "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
+        "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('dc109861204f6938fd8f147af89a694eb516f3d4bb64ce3f0116452d654a8417'
+sha256sums=('55ab5b517d58bbcbc837640263a8371cf1fba3d9f508e54537c4d2cbbfb86095'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,6 +63,9 @@ prepare() {
   local _librewolf_patches_dir
   _librewolf_patches_dir="${srcdir}/librewolf-source/patches"
 
+  local _cachyos_patches_dir
+  _cachyos_patches_dir="${srcdir}/cachyos-source/patches"
+
   sed -i 's/lib\/librewolf/lib\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
   sed -i 's/lib64\/librewolf/lib64\/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
   sed -i 's/librewolf/firedragon/g' "${_librewolf_patches_dir}/mozilla_dirs.patch"
@@ -70,6 +75,9 @@ prepare() {
   popd
   pushd "${_librewolf_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
   popd
+  pushd "${_cachyos_patches_dir}" && sh "${srcdir}/common/rebrand.sh"
+  popd
+
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -174,12 +182,11 @@ fi
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
   # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
 
   # KDE menu
-  # patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde.patch
-  # custom patch that does not conflict with the unity patch
-  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/kde/0001-kde-unity.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch  
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch

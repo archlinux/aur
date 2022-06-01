@@ -2,4 +2,7 @@ common/
 pkg/
 settings/
 src/
-*.tar.xz
+cachyos-source
+librewolf-settings
+librewolf-source
+*.tar.xz*
