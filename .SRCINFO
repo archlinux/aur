@@ -1,21 +1,28 @@
 pkgbase = bin32-jre
-	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit)
-	pkgver = 8u321
+	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit) with desktop integration (GUI, sound)
+	pkgver = 8.u333
 	pkgrel = 1
 	url = https://www.java.com/en/download/linux_manual.jsp
 	install = bin32-jre.install
 	arch = x86_64
-	license = custom:Oracle
+	license = custom:Oracle-OTN
+	depends = bash
 	depends = ca-certificates-java
 	depends = hicolor-icon-theme
 	depends = java32-runtime-common
+	depends = lib32-alsa-lib
 	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-gtk3
+	depends = lib32-libgl
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = lib32-libxi
 	depends = lib32-libxrender
 	depends = lib32-libxtst
-	depends = lib32-nss
+	depends = lib32-libxxf86vm
 	depends = xdg-utils
-	optdepends = lib32-alsa-lib: for basic sound support
-	optdepends = lib32-gtk2: for Gtk+ look and feel (desktop)
+	optdepends = lib32-gtk2: for GTK2 desktop (GUI) support
 	provides = java32-runtime=8
 	provides = java32-runtime-headless=8
 	provides = java32-web-start=8
@@ -23,6 +30,7 @@ pkgbase = bin32-jre
 	provides = java32-runtime-headless-jre=8
 	provides = java32-web-start-jre=8
 	provides = java32-openjfx=8
+	options = !strip
 	backup = etc/java32-jre8/i386/jvm.cfg
 	backup = etc/java32-jre8/images/cursors/cursors.properties
 	backup = etc/java32-jre8/management/jmxremote.access
@@ -38,11 +46,11 @@ pkgbase = bin32-jre
 	backup = etc/java32-jre8/psfont.properties.ja
 	backup = etc/java32-jre8/psfontj2d.properties
 	backup = etc/java32-jre8/sound.properties
-	source = jre-8u321-1-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245795_df5ad55fdd604472a86a45a217032c7d
-	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
+	source = jre-oracle-8u333-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=246462_2dee051a5d0647d5be72a7c0abff270e
+	source = jce_policy-oracle-8.zip::http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool32-jre8.desktop
-	sha256sums = b3811c0986a08581394ac48405aaa6c8bfc523553eb3cc7f040eb545da0d282f
-	sha256sums = 9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6
-	sha256sums = b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8
+	b2sums = 05f998edbf2f283c869db7794cd7982b53d00cb089e76bdbc3ac736d2a1d3ea05f53266e5afb76093d6add10c8be7503d6a3e6fd922f5b7947309edb5c1fb391
+	b2sums = b37dde063e52817af2c492b44807f56a07e6867f6d797320b511e5f288c8b3b18106aac61fae0473be7260a2842f998d28de5f8484d6df24f225a7c2a1965693
+	b2sums = a28581f53d2e862da835b4d7e499e8508b9c074c7e4ed442a494260fe99d6e17817a8e58eddc2456f8349f3e8f8c037f9c769a78cdfd5acef65b3dd112f2c841
 
 pkgname = bin32-jre

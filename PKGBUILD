@@ -3,35 +3,44 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_bundleid=245795
-_hash=df5ad55fdd604472a86a45a217032c7d
+_bundleid=246462
+_hash=2dee051a5d0647d5be72a7c0abff270e
 _major=8
-_minor=321
+_minor=333
 _pkgname=jre
 
 pkgname=bin32-jre
-pkgver=${_major}u${_minor}
+pkgver="${_major}.u${_minor}"
 pkgrel=1
-pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
+pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit) with desktop integration (GUI, sound)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
-license=('custom:Oracle')
-depends=('ca-certificates-java'
-		 'hicolor-icon-theme'
-		 'java32-runtime-common'
-		 'lib32-gcc-libs'
-		 'lib32-libxrender'
-		 'lib32-libxtst'
-		 'lib32-nss'
-		 'xdg-utils')
-optdepends=('lib32-alsa-lib: for basic sound support'
-            'lib32-gtk2: for Gtk+ look and feel (desktop)')
+license=('custom:Oracle-OTN')
+depends=(
+    'bash'
+    'ca-certificates-java'
+    'hicolor-icon-theme'
+    'java32-runtime-common'
+    'lib32-alsa-lib'
+    'lib32-gcc-libs'
+    'lib32-glibc'
+    'lib32-gtk3'
+    'lib32-libgl'
+    'lib32-libx11'
+    'lib32-libxext'
+    'lib32-libxi'
+    'lib32-libxrender'
+    'lib32-libxtst'
+    'lib32-libxxf86vm'
+    'xdg-utils'
+)
+optdepends=('lib32-gtk2: for GTK2 desktop (GUI) support')
 provides=("java32-runtime=$_major"
-		  "java32-runtime-headless=$_major"
-		  "java32-web-start=$_major"
+          "java32-runtime-headless=$_major"
+          "java32-web-start=$_major"
           "java32-runtime-jre=$_major"
-		  "java32-runtime-headless-jre=$_major"
-		  "java32-web-start-jre=$_major"
+          "java32-runtime-headless-jre=$_major"
+          "java32-web-start-jre=$_major"
           "java32-openjfx=$_major")
 
 # Variables
@@ -56,13 +65,14 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
 source=(
-  "${_pkgname}-${pkgver}-${pkgrel}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
-  "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
+  "${_pkgname}-oracle-${pkgver/.u/u}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
+  "jce_policy-oracle-$_major.zip::http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('b3811c0986a08581394ac48405aaa6c8bfc523553eb3cc7f040eb545da0d282f'
-            '9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
-            'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
+b2sums=('05f998edbf2f283c869db7794cd7982b53d00cb089e76bdbc3ac736d2a1d3ea05f53266e5afb76093d6add10c8be7503d6a3e6fd922f5b7947309edb5c1fb391'
+        'b37dde063e52817af2c492b44807f56a07e6867f6d797320b511e5f288c8b3b18106aac61fae0473be7260a2842f998d28de5f8484d6df24f225a7c2a1965693'
+        'a28581f53d2e862da835b4d7e499e8508b9c074c7e4ed442a494260fe99d6e17817a8e58eddc2456f8349f3e8f8c037f9c769a78cdfd5acef65b3dd112f2c841')
+options=('!strip')  # Don't modify foreign binaries
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -70,7 +80,6 @@ package() {
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
     install -d "$pkgdir"/usr/lib32/jvm/java32-$_major-$_pkgname/jre/bin
-    install -d "$pkgdir"/usr/lib32/mozilla/plugins
     install -d "$pkgdir"/usr/share/licenses/java${_major}-${_pkgname}32
 
     msg2 "Removing redundancies..."
@@ -97,12 +106,12 @@ package() {
     # Fix .desktop paths
     sed -e "s|Exec=|Exec=$_jvmdir/bin/|" \
         -e "s|.png|32-$_jname.png|" \
-		-i lib/desktop/applications/*
+        -i lib/desktop/applications/*
 
-	# Make JavaWS version visible to end user
-	sed -e "s|Name=JavaWS|Name=JavaWS 8 (32-bit)|" \
-		-e "s|Comment=JavaWS|Comment=Java Web Start 8 (32-bit)|" \
-		-i lib/desktop/applications/sun-javaws32-jre8.desktop
+    # Make JavaWS version visible to end user
+    sed -e "s|Name=JavaWS|Name=JavaWS 8 (32-bit)|" \
+        -e "s|Comment=JavaWS|Comment=Java Web Start 8 (32-bit)|" \
+        -i lib/desktop/applications/sun-javaws32-jre8.desktop
 
     # Move .desktops + icons to /usr/share
     mv lib/desktop/* "$pkgdir"/usr/share/
@@ -117,9 +126,6 @@ package() {
         install -Dm644 "$old_usr_path" "$pkgdir/$new_etc_path"
         ln -sf "/$new_etc_path" "$old_usr_path"
     done
-
-    # Link NPAPI plugin
-    ln -sf $_jvmdir/lib/i386/libnpjp2.so "$pkgdir"/usr/lib32/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
