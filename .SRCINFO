@@ -1,0 +1,18 @@
+pkgbase = eject-applet
+	pkgdesc = Simple external disk manager that sits in the tray
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Akmadan23/eject-applet
+	arch = any
+	license = GPL-3
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-gobject
+	provides = eject-applet
+	source = https://files.pythonhosted.org/packages/c7/51/06ed9fa5dce94404b9d9c4458ae8f3c718fbe312ce0b5ceca113fa29f4f7/eject-applet-0.1.0.tar.gz
+	md5sums = b101b948dbb57f42ace7d07a406fabc3
+	sha256sums = 0fff216796df98c8c6caae14ea2a5e090906eb207534a24d0f36efa94e2d5bfc
+
+pkgname = eject-applet
