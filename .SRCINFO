@@ -1,0 +1,33 @@
+pkgbase = r-languageserver
+	pkgdesc = An implementation of the Language Server Protocol for R. The Language Server protocol is used by an editor client to integrate features like auto completion. See <https://microsoft.github.io/language-server-protocol/> for details.
+	pkgver = 0.3.13
+	pkgrel = 1
+	url = https://cran.r-project.org/package=languageserver
+	arch = any
+	license = MIT
+	checkdepends = r-covr>=3.4.0
+	checkdepends = r-magrittr>=1.5
+	checkdepends = r-mockery>=0.4.2
+	checkdepends = r-processx>=3.4.1
+	checkdepends = r-purrr>=0.3.3
+	checkdepends = r-testthat>=2.1.0
+	checkdepends = r-withr>=2.3.0
+	checkdepends = r-rmarkdown>=2.0
+	depends = r-callr>=3.0.0
+	depends = r-collections>=0.3.0
+	depends = r-fs>=1.3.1
+	depends = r-jsonlite>=1.6
+	depends = r-lintr>=2.0.1
+	depends = r-parallel
+	depends = r-r6>=2.4.1
+	depends = r-roxygen2>=7.0.0
+	depends = r-stringi>=1.1.7
+	depends = r-styler>=1.5.1
+	depends = r-xml2>=1.2.2
+	depends = r-xmlparsedata>=1.0.3
+	source = https://cran.r-project.org/src/contrib/languageserver_0.3.13.tar.gz
+	source = CRANMITTEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha512sums = 12e22e06329d2e0a584f2e08b2a688d0d3fc4c1c95a5197b148503241cb4ae176c80dd5be36340347d7f4f25f03946d0177e8703de0f8fe8bd4de273b96d0317
+	sha512sums = 20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5
+
+pkgname = r-languageserver
