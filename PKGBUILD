@@ -3,7 +3,7 @@
 
 pkgname='perl-astro-fits-cfitsio'
 pkgver='1.15'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for using the cfitsio library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')

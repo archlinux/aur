@@ -1,7 +1,7 @@
 pkgbase = perl-astro-fits-cfitsio
 	pkgdesc = Perl extension for using the cfitsio library
 	pkgver = 1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Astro-FITS-CFITSIO
 	arch = i686
 	arch = x86_64
