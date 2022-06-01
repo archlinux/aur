@@ -1,7 +1,7 @@
-From 1f504c13f7203f7a2122f789ea1d70d8c3182e71 Mon Sep 17 00:00:00 2001
+From a714e865efe41aa1112f6f9c8479112660dacd6f Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 27 Jan 2022 20:19:17 -0700
-Subject: [PATCH 4/5] Linux-5.17: kernel func complete_and_exit renamed
+Subject: [PATCH 04/12] Linux-5.17: kernel func complete_and_exit renamed
 
 Handle the Linux kernel function rename made in commit
  "exit: Rename complete_and_exit to kthread_complete_and_exit"
@@ -13,12 +13,13 @@ complete_and_exit.
 
 Replace calls to complete_and_exit with kthread_complete_and_exit.
 
-Change-Id: If8db2d0abb1de8b08f511e9ff67612ef605cd603
 Reviewed-on: https://gerrit.openafs.org/14882
 Tested-by: BuildBot <buildbot@rampaginggeek.com>
 Reviewed-by: Andrew Deason <adeason@sinenomine.net>
 Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit a651d4db7f86a24ea6784f6f27d5c8482667267b)
+
+Change-Id: Ibe96b92a84a8f876dda4019c221c37dabde93244
 ---
  src/afs/LINUX/osi_compat.h  |  4 ++++
  src/afs/afs_call.c          | 18 ++++++++++--------
@@ -136,5 +137,5 @@ index 0ca3e4463..cd4afe914 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.35.1
+2.36.1
 

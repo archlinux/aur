@@ -1,7 +1,7 @@
-From 26434fb4376a5db1f38fca8807825fbabc81be7b Mon Sep 17 00:00:00 2001
+From 006616bd8e88b2d386a5ddc23973cf3e625cb80d Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Sat, 4 Apr 2020 22:28:21 -0500
-Subject: [PATCH 1/5] Add autoconf-archive to src/external
+Subject: [PATCH 01/12] Add autoconf-archive to src/external
 
 Add autoconf-archive to the src/external mechanism, so we can more
 easily import and update the AX_* m4 macros we pull in from
@@ -13,12 +13,13 @@ include that in the list of files. While we're here, also include a
 few more macros for checking compiler flags, which will be used in
 subsequent commits.
 
-Change-Id: I8c6288fc1d48a47837ca08f8b9207e0ada921af8
 Reviewed-on: https://gerrit.openafs.org/14133
 Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
 Tested-by: BuildBot <buildbot@rampaginggeek.com>
 Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit a072c65bba86cbcd81157e354d3719ac41a2c97d)
+
+Change-Id: I785607be9abe85e43287c4880103a365e264473b
 ---
  src/external/autoconf-archive-author | 1 +
  src/external/autoconf-archive-files  | 5 +++++
@@ -45,5 +46,5 @@ index 000000000..42c7c3852
 +m4/ax_gcc_func_attribute.m4	m4/ax_gcc_func_attribute.m4
 +m4/ax_require_defined.m4	m4/ax_require_defined.m4
 -- 
-2.35.1
+2.36.1
 
