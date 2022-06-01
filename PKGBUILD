@@ -3,7 +3,7 @@
 
 pkgname='perl-math-utils'
 pkgver='1.14'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Useful mathematical functions not in Perl."
 arch=('any')
 license=('PerlArtistic' 'GPL')
