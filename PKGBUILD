@@ -1,7 +1,8 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=polynom
-_cranver=1.4-0
+_cranver=1.4-1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +13,7 @@ license=(GPL2)
 depends=(r)
 optdepends=(r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('c5b788b26f7118a18d5d8e7ba93a0abf3efa6603fa48603c70ed63c038d3d4dd')
+sha512sums=('2621734254943215ee10026a163234a4a102f40933dd79f0ad32f7103f020fdbe165d96006c252d7ac23ca6d95145218fca0de20d6415ee97a737a50c368c1da')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
