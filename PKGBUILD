@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=wiznote-electron
 _pkgname=wiznote
-pkgver=0.1.73
+pkgver=0.1.78
 pkgrel=1
 pkgdesc='A powerful note-taking tool.'
 arch=('any')
@@ -14,19 +14,19 @@ provides=("wiznote")
 source=("$_pkgname-$pkgver.AppImage::https://get.wiz.cn/x/wiznote-desktop-${pkgver}-linux-x86_64.AppImage"
 "${_pkgname}".sh
 )
-sha256sums=('20383a6a37f309079d00bcaf9dff6c4365c60894d3dd79fc65e70b79c652541c'
+sha256sums=('3ec0dcb13ed6900f48c33bfe04a733867a5b0b6d0bf828b9d08fb2b3f7d1ca2e'
             'ba433c18cd2c82e234d1921ed125c46d6a8ab6a20688e10181834bdbd5650bb1')
 
 prepare() {
 	cd $srcdir
 	
-	7z x $_pkgname-$pkgver.AppImage
+	7z x -aoa $_pkgname-$pkgver.AppImage
 	cd resources
 	asar e app.asar ${_pkgname}
-	install -Dm644  assets/icons/tray/trayTemplate.png \
-            ${_pkgname}/assets/icons/tray/trayTemplate.png
+	cp -rf   assets \
+            ${_pkgname}/
 	asar p ${_pkgname} app.asar
-	rm -rf ${_pkgname} 
+	rm -rf ${_pkgname} assets
 	
 }
 
