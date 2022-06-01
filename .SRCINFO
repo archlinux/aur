@@ -1,15 +1,15 @@
 pkgbase = treefrog-framework
 	pkgdesc = High-speed C++ MVC Framework for Web Application
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/treefrogframework/treefrog-framework
 	arch = x86_64
-	license = BSD
+	license = custom:BSD-3-clause
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-declarative
 	depends = libmongoc
-	source = treefrog-framework-2.3.0.tar.gz::https://github.com/treefrogframework/treefrog-framework/archive/v2.3.0.tar.gz
-	sha512sums = 74dffc630fc5b32ddd58344995d049e69b1aecf8614f2bdbd48fbfec75ee82da0ea04142609c4604b5ea108090e89cfab2c4f16722badaf64858ff442a1a2dea
+	source = treefrog-framework-2.3.1.tar.gz::https://github.com/treefrogframework/treefrog-framework/archive/v2.3.1.tar.gz
+	sha512sums = cc6dd66cd0dbe715ecac6e081adaff244c3b951755513d6edc03274e31029e33b1ebe74c0e720884e5b1fadaaf0e335d879dd00322dd157213d40e116c3c960e
 
 pkgname = treefrog-framework
