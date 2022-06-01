@@ -4,7 +4,7 @@
 pkgname=katago-avx2
 _pkgname=KataGo
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AlphaZero-like open source Go bot, built for AVX2'
 url='https://github.com/lightvector/KataGo'
 provides=('katago')
@@ -12,14 +12,13 @@ arch=('x86_64')
 license=('MIT')
 depends=('libzip' 'boost-libs')
 makedepends=('git' 'cmake' 'boost' 'eigen')
-
-# Neural net from: https://katagotraining.org/
-_nnet=kata1-b40c256-s11101799168-d2715431527.bin.gz
-
-source=("git+https://github.com/lightvector/KataGo#tag=v${pkgver}"
-        "https://media.katagotraining.org/uploaded/networks/models/kata1/${_nnet}")
+source=("git+https://github.com/lightvector/KataGo.git#tag=v${pkgver}"
+	"https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b15c192-s1672170752-d466197061.txt.gz")
 sha256sums=('SKIP'
-            'c67482ee3a0ef5cb3bca6aa145d7a82decd71ece412713f92315195f238ef1bb')
+            '09456899f1b9155217f4ca059cf8a68f79b7eba22cf6b7c00ffb7f17ce067967')
+
+# To enable fast playouts on this CPU-bound katago, we ship the strongest
+# 15-block, 192-channel neural network. See: https://katagotraining.org/
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
@@ -37,5 +36,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	install -Dm755 cpp/katago "${pkgdir}/usr/bin/katago"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/katago-cpu/LICENSE"
-	install -Dm644 "../${_nnet}" "${pkgdir}/usr/share/katago/model.gz"
+	install -d "${pkgdir}/usr/share/katago"
+	cp ../kata1-* "${pkgdir}/usr/share/katago"
 }
