@@ -1,7 +1,7 @@
 pkgbase = start-stop-daemon
 	pkgdesc = Start and stop system daemon programs
 	pkgver = 1.21.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://packages.debian.org/source/sid/dpkg
 	arch = i686
 	arch = x86_64

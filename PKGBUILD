@@ -4,7 +4,7 @@
 
 pkgname=start-stop-daemon
 pkgver=1.21.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -25,7 +25,7 @@ build() {
 package() {
   cd dpkg-$pkgver
   install -D -m 755 utils/start-stop-daemon "$pkgdir/usr/bin/start-stop-daemon"
-  install -D -m 644 man/start-stop-daemon.8 "$pkgdir/usr/share/man/man8"
+  install -D -m 644 man/start-stop-daemon.8 "$pkgdir/usr/share/man/man8/start-stop-daemon.8"
 }
 
 # vim:set ts=2 sw=2 et:
