@@ -1,0 +1,19 @@
+pkgbase = nerolinux4
+	pkgdesc = Nero Burning ROM for linux (legacy version)
+	pkgver = 4.0.0.0b
+	pkgrel = 2
+	url = http://www.nero.com
+	install = nerolinux.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = nerolinux
+	conflicts = nerolinux
+	source = nerolinux-4.0.0.0b-x86.rpm::http://nero-mirror.com/support/NeroLINUX/nerolinux-4.0.0.0b-x86.rpm
+	md5sums = f49f49c588729c2afdbecb546d9b6041
+	depends_i686 = gtk2
+	depends_i686 = pangox-compat
+	depends_x86_64 = lib32-gtk2
+	depends_x86_64 = lib32-pangox-compat
+
+pkgname = nerolinux4
