@@ -2,7 +2,7 @@
 # Contributor: Danct12 <danct12@disroot.org>
 pkgname=osk-sdl
 pkgver=0.66
-pkgrel=6
+pkgrel=7
 pkgdesc="SDL2 On-screen Keyboard for FDE"
 arch=(x86_64)
 url="https://gitlab.com/postmarketOS/osk-sdl"
@@ -40,4 +40,4 @@ md5sums=('fb608060dea423d221bdfff9a6101624'
          '3a4a2945ce9fa98451273833e1a615cd'
          '3025fb91626943901f33437ac74a748c'
          '8fef952dada64ff63040b5406e71ecac'
-         'ab7ba70454e57b67a713dc3f7aa869cf')
+         'e6dff50a2f9a27d5de92437394e9cfda')
