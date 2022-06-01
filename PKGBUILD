@@ -3,7 +3,7 @@
 
 pkgname='perl-encoding-fixlatin'
 pkgver='1.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="takes mixed encoding input and produces UTF-8 output"
 arch=('any')
 license=('PerlArtistic' 'GPL')
