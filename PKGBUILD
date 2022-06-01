@@ -1,9 +1,10 @@
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=fenicsprecice
 pkgname=python-${_base}
 pkgdesc="FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/precice/${_base/precice/-adapter}"
 license=(LGPL3)
@@ -17,7 +18,6 @@ build() {
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
   cd ${_base/precice/-adapter}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
