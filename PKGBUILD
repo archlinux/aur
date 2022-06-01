@@ -3,7 +3,7 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-regexp-assemble'
 pkgver='0.38'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Assemble multiple Regular Expressions into a single RE"
 arch=('any')
 license=('PerlArtistic' 'GPL')
