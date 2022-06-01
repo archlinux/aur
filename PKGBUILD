@@ -6,7 +6,7 @@ epoch=1
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
 _commit=efdfce4ace49b3101d8580af006d6aa2a51fbe9b
-pkgrel=1
+pkgrel=2
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
 url="https://openxcom.org/forum/index.php/topic,5251.0.html"
@@ -18,22 +18,24 @@ optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
 provides=('openxcom' 'openxcom-git')
 conflicts=('openxcom')
 install="${pkgname}.install"
-source=(openxcom-extended::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_commit}")
+source=(${pkgname}::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_commit}")
 md5sums=('SKIP')
 sha1sums=('SKIP')
 
 prepare() {
-  mkdir -p openxcom-extended/build
-  sed -i 's:openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6):openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6):' openxcom-extended/docs/CMakeLists.txt
+  mkdir -p ${pkgname}/build
 }
 
 build() {
-  cd openxcom-extended/build
+  cd ${pkgname}/build
   cmake -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" ..
   make
 }
 
 package() {
-  cd openxcom-extended/build
+  cd ${pkgname}/build
   make DESTDIR="${pkgdir}" install
+
+  # Fix manpage location
+  install -Dm644 "${srcdir}/${pkgname}/docs/openxcom.6" "${pkgdir}/usr/share/man/man6/openxcom.6"
 }
