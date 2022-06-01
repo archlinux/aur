@@ -6,9 +6,13 @@
 ## Discord Rich Presence integration
 ## Required for game invites.
 if [ -z ${_use_discordrpc+x} ]; then
-  _use_discordrpc=n
+  # Automatically enable discord rpc integration if `discord-rpc-git` is installed
+  if (pacman -Q discord-rpc-git >/dev/null); then
+    _use_discordrpc=y
+  else
+    _use_discordrpc=n
+  fi
 fi
-
 # Don't compress with UPX, don't dump symbols to speed up compiling
 _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
@@ -18,33 +22,33 @@ _dataver=1.3
 pkgrel=2
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('GPL3')
 url='https://mb.srb2.org/showthread.php?t=43708'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
 
 if [ "${_use_discordrpc}" = "y" ]; then
-  depends+=('discord-rpc-api')
+  depends+=('discord-rpc-git')
 fi
 
 options=(!buildflags)
 source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"
-        "srb2kart.desktop"
-        "srb2kart-opengl.desktop")
+  "srb2kart.desktop"
+  "srb2kart-opengl.desktop")
 sha256sums=('SKIP'
-            '4ccc9d2d2379722416c351dd8c34105dc8d7ec595ec37d75089c4a990536585b'
-            'dea04abae8639a7bbf081ea40ff0c7c5ffa34c95e8295d37613b632d5452df73')
+  '4ccc9d2d2379722416c351dd8c34105dc8d7ec595ec37d75089c4a990536585b'
+  'dea04abae8639a7bbf081ea40ff0c7c5ffa34c95e8295d37613b632d5452df73')
 
 build() {
   cd "$srcdir"/Kart-Public/src
 
   [ "$CARCH" == "x86_64" ] && _buildflags+="LINUX64=1 " || _buildflags+="LINUX=1 "
-  
+
   if [ "${_use_discordrpc}" = "y" ]; then
     _buildflags+="HAVE_DISCORDRPC=1"
   fi
-  
+
   echo "Build options: $_buildflags"
   make $_buildflags
 }
