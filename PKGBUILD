@@ -1,7 +1,7 @@
 # Maintainer: aaditya <aaditya_gnulinux@zoho.com>
 
 pkgname=pdf2png
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Convert PDFs to PNG, JPG, and other image formats"
 url="https://github.com/abchk1234/pdf2png"
@@ -11,7 +11,7 @@ depends=('python-gobject' 'ghostscript')
 makedepends=()
 conflicts=('pdf2img-git')
 source=("https://github.com/abchk1234/pdf2png/archive/${pkgver}.tar.gz")
-md5sums=('715f12b459d72b8db216c66a3b7287bf')
+md5sums=('473eb4da10a52eafe265831ff0f06ce7')
 
 package() {
   cd "${pkgname}-${pkgver}"
