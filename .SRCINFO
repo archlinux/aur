@@ -1,7 +1,7 @@
 pkgbase = perl-net-libdnet
 	pkgdesc = Binding for Dug Song's libdnet
 	pkgver = 0.99
-	pkgrel = 3.1
+	pkgrel = 3.2
 	url = https://metacpan.org/release/Net-Libdnet
 	arch = i686
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = perl-net-libdnet
 	sha512sums = fe62a7f59cf752fb6dd05233b83773ecd98db4b5cce447ba6c8fdbe4a173a061487003274eaf3ee6c1da5dc6a9da55f10ba021cb5b2140b673fa7bcd91a2f0c5
 
 pkgname = perl-net-libdnet
-
