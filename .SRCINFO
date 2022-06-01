@@ -1,13 +1,14 @@
 pkgbase = salad
 	pkgdesc = Allows gamers to mine crypto in their downtime.
-	pkgver = 0.5.8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://salad.com/
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
+	makedepends = libxcrypt-compat
 	depends = nodejs
-	source = https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/0.5.8.zip
-	sha256sums = 41f6c033c5e1e4950de8c080e2142df741bf033d3d9782f32e9e96cf9a0216f4
+	source = salad-applications-1.0.0.tar.gz::https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = fd347d7a06cff8a2dad1f61233a2ca8fd51b446031331d8ceffefde8249facdf
 
 pkgname = salad
