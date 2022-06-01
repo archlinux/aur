@@ -3,7 +3,7 @@ pkgname=python-stego-lsb
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver="1.3.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="Least Significant Bit Steganography for .bmp, .png, WAV sound files, and byte sequences."
 arch=('any')
 url="https://github.com/ragibson/Steganography"
@@ -17,7 +17,7 @@ source=(
 md5sums=('d2f23896f41dfb16e925ecafb94ed6d3')
 
 package() {
-  pip install --quiet --root="$pkgdir" --no-deps *.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location *.whl
   di="${_name}-${pkgver}.dist-info"
   install -D -m644 "${di}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
