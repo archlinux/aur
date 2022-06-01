@@ -3,7 +3,7 @@
 
 pkgname='perl-math-spline'
 pkgver='0.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
