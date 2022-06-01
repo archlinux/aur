@@ -1,6 +1,6 @@
 pkgname=air-impulse-loader-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault AIR Impulse Response Loader"
 arch=('x86_64')
 url="https://audio-assault.com/air.php"
@@ -21,8 +21,8 @@ prepare () {
 
 package() {
     ## Install Preset and Default Libraries
-    mkdir -p "$pkgdir/opt/Audio Assault/AHM5050"/{IRs,Presets} "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
-    cp -rf "$srcdir/Linux $pkgver/aIR" "$pkgdir/opt/Audio Assault/aIR"
+    mkdir -p "$pkgdir/opt/Audio Assault/aIR" "$pkgdir/usr/bin" "$pkgdir/usr/share/applications"
+    cp -rf "$srcdir/Linux $pkgver/aIR"/{"Default IRs","IRlinks","aIR.settings"} "$pkgdir/opt/Audio Assault/aIR"
 
     ## Install VST Plugin
     install -Dm755 "$srcdir/Linux $pkgver/aIR Impulse Loader.so" "$pkgdir/usr/lib/vst/aIR Impulse Loader.so"

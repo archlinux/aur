@@ -1,7 +1,7 @@
 pkgbase = air-impulse-loader-bin
 	pkgdesc = Audio Assault AIR Impulse Response Loader
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audio-assault.com/air.php
 	arch = x86_64
 	groups = pro-audio
