@@ -1,7 +1,7 @@
 pkgbase = perl-tk-zinc
 	pkgdesc = Another Canvas which proposes many new functions, some based on openGL
 	pkgver = 3.306
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Tk-Zinc
 	arch = i686
 	arch = x86_64

@@ -1,8 +1,9 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Andras Wacha < awacha at gmail dot com >
+# Submitter: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-tk-zinc
 pkgver=3.306
-pkgrel=1
+pkgrel=2
 pkgdesc='Another Canvas which proposes many new functions, some based on openGL'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/dist/Tk-Zinc'
