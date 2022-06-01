@@ -1,7 +1,7 @@
 pkgbase = perl-file-map
 	pkgdesc = Memory mapping made simple and safe.
 	pkgver = 0.67
-	pkgrel = 1
+	pkgrel = 3
 	url = https://metacpan.org/release/File-Map
 	arch = i686
 	arch = x86_64

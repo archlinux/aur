@@ -3,7 +3,7 @@
 
 pkgname='perl-file-map'
 pkgver='0.67'
-pkgrel='1'
+pkgrel='3'
 pkgdesc="Memory mapping made simple and safe."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
