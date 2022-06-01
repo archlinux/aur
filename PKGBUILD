@@ -3,7 +3,7 @@
 pkgname=dxvk-mingw
 pkgver=1.10.1
 _asyncver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -28,8 +28,8 @@ prepare() {
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-    #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
-    #patch -p1 -i "$srcdir"/dxvk-async-conf.patch
+    patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
+    patch -p1 -i "$srcdir"/dxvk-async-conf.patch
 
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
@@ -126,4 +126,4 @@ sha256sums=('SKIP'
             'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
-            'b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96')
+            'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
