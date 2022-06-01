@@ -3,7 +3,7 @@
 
 pkgname='perl-term-twiddle'
 pkgver='2.73'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Twiddles a thingy while-u-wait"
 arch=('any')
 license=('PerlArtistic' 'GPL')
