@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='go-jira-cli-bin'
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='simple jira command line client'
 url='https://github.com/rsteube/go-jira-cli'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('go-jira-cli')
 conflicts=('go-jira-cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.3/gj_0.2.3_Linux_arm64.tar.gz")
-sha256sums_aarch64=('6e29dc0f39cd3b815d80bc8e597b8db5d0ed12afc6d8e27a1c3cbecf61905f98')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.4/gj_0.2.4_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a734f743513537e06511476161e39152fcf2aabee1d3579ba619817bfe9135d5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.3/gj_0.2.3_Linux_i386.tar.gz")
-sha256sums_i686=('9014308026b432a6146526a3f71ca7cef96ca5c9066cddb704acd78334eaf16a')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.4/gj_0.2.4_Linux_i386.tar.gz")
+sha256sums_i686=('798a7a862de2d11c25f6b7d102a97362b0788bfbe094c9d78286cecc276a2c57')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.3/gj_0.2.3_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('409e16f3e8fcc222a761d02f5a3d0b3802e467306d3d639d2c94757055fa6e30')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/go-jira-cli/releases/download/v0.2.4/gj_0.2.4_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('5aa74197303323ed25e41c241acb3e238e5dbaf58ae23ceb625fac8d8b7f6240')
 
 package() {
   install -Dm755 "./gj" "${pkgdir}/usr/bin/gj"
