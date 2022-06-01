@@ -1,0 +1,43 @@
+Index: opencascade-7.5.0/CMakeLists.txt
+===================================================================
+--- opencascade-7.5.0.orig/CMakeLists.txt
++++ opencascade-7.5.0/CMakeLists.txt
+@@ -1156,7 +1156,7 @@ foreach (OCCT_CONFIGURATION ${CMAKE_CONF
+ endforeach()
+ # install OpenCASCADE config file with compile definitions and C/C++ flags ONLY for current configuration
+ install (CODE "string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWER)")
+-install (CODE "configure_file(\"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" COPYONLY)")
++install (CODE "configure_file(\"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" \"$ENV{DESTDIR}/${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" COPYONLY)")
+ 
+ foreach (OCCT_MODULE ${OCCT_MODULES})
+   if (BUILD_MODULE_${OCCT_MODULE})
+Index: opencascade-7.5.0/adm/templates/OpenCASCADEConfig.cmake.in
+===================================================================
+--- opencascade-7.5.0.orig/adm/templates/OpenCASCADEConfig.cmake.in
++++ opencascade-7.5.0/adm/templates/OpenCASCADEConfig.cmake.in
+@@ -27,7 +27,7 @@ get_filename_component (OpenCASCADE_INST
+ if (OpenCASCADE_INSTALL_PREFIX MATCHES "/cmake$")
+   get_filename_component (OpenCASCADE_INSTALL_PREFIX "${OpenCASCADE_INSTALL_PREFIX}" PATH)
+ endif()
+-if (OpenCASCADE_INSTALL_PREFIX MATCHES "/lib$")
++if (OpenCASCADE_INSTALL_PREFIX MATCHES "/lib$" OR OpenCASCADE_INSTALL_PREFIX MATCHES "/lib64$")
+   get_filename_component (OpenCASCADE_INSTALL_PREFIX "${OpenCASCADE_INSTALL_PREFIX}" PATH)
+ endif()
+ if (OpenCASCADE_INSTALL_PREFIX MATCHES "/libs/${CMAKE_ANDROID_ARCH_ABI}$")
+Index: opencascade-7.5.0/adm/cmake/occt_toolkit.cmake
+===================================================================
+--- opencascade-7.5.0.orig/adm/cmake/occt_toolkit.cmake
++++ opencascade-7.5.0/adm/cmake/occt_toolkit.cmake
+@@ -244,9 +244,9 @@ else()
+ 
+   install (TARGETS ${PROJECT_NAME}
+            EXPORT OpenCASCADE${CURRENT_MODULE}Targets
+-           RUNTIME DESTINATION "${INSTALL_DIR_BIN}\${OCCT_INSTALL_BIN_LETTER}"
+-           ARCHIVE DESTINATION "${INSTALL_DIR_LIB}\${OCCT_INSTALL_BIN_LETTER}"
+-           LIBRARY DESTINATION "${INSTALL_DIR_LIB}\${OCCT_INSTALL_BIN_LETTER}")
++           RUNTIME DESTINATION "${INSTALL_DIR_BIN}"
++           ARCHIVE DESTINATION "${INSTALL_DIR_LIB}"
++           LIBRARY DESTINATION "${INSTALL_DIR_LIB}")
+ 
+   if (NOT WIN32)
+     if (BUILD_SHARED_LIBS AND NOT "${BUILD_SHARED_LIBRARY_NAME_POSTFIX}" STREQUAL "")
