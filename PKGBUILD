@@ -3,7 +3,7 @@
 
 pkgname='perl-term-sk'
 pkgver='0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for displaying a progress indicator on a terminal."
 arch=('any')
 license=('PerlArtistic' 'GPL')
