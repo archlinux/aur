@@ -1,7 +1,7 @@
 pkgbase = perl-io-interface
 	pkgdesc = Perl extension for access to network card configuration information
 	pkgver = 1.09
-	pkgrel = 9.1
+	pkgrel = 9.2
 	url = http://search.cpan.org/perldoc?IO::Interface
 	arch = i686
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = perl-io-interface
 	sha512sums = a23a4793e23ba0fbb0583c6692d7138e4a9b0a6959c9fa81489954090fa51ca6edfe79841a8f69ab7f7a52aec31a477cb01705f6d66d5c7e8b69f76301360cd5
 
 pkgname = perl-io-interface
-
