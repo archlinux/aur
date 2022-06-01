@@ -1,7 +1,7 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname='qbittorrent-enhanced-qt5-git'
-pkgver=4.4.3.11.r2.gcdd700126
+pkgver=4.4.3.12.r0.g683ecc7a7
 pkgrel=1
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
