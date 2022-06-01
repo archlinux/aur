@@ -1,6 +1,6 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=termsaver-git 
-pkgver=r125.5a683f7
+pkgver=r126.cf2410b
 pkgrel=1
 pkgdesc="Simple text-based Terminal Screensaver"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python3' 'python-pillow')
 makedepends=('git') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git://github.com/brunobraga/termsaver.git")
+source=("${pkgname%-git}::git+https://github.com/brunobraga/termsaver.git")
 md5sums=('SKIP')
 
 pkgver() {

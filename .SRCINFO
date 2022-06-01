@@ -1,6 +1,6 @@
 pkgbase = termsaver-git
 	pkgdesc = Simple text-based Terminal Screensaver
-	pkgver = r125.5a683f7
+	pkgver = r126.cf2410b
 	pkgrel = 1
 	url = http://termsaver.brunobraga.net/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = termsaver-git
 	depends = python-pillow
 	provides = termsaver
 	conflicts = termsaver
-	source = termsaver::git://github.com/brunobraga/termsaver.git
+	source = termsaver::git+https://github.com/brunobraga/termsaver.git
 	md5sums = SKIP
 
 pkgname = termsaver-git
