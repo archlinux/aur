@@ -1,7 +1,7 @@
 pkgbase = perl-moosex-enumeration
 	pkgdesc = a native attribute trait for enums
 	pkgver = 0.010
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/MooseX-Enumeration
 	arch = any
 	license = PerlArtistic
@@ -18,4 +18,3 @@ pkgbase = perl-moosex-enumeration
 	sha512sums = 66ac7d0d0ad8196d259d4b5c5e160021a4507021eb6dfcf565e52e04c808b3d3a9a2f6c1a16b7aafb8bdcb2449412891dae4f193c703e98a0ac62591f34fabdd
 
 pkgname = perl-moosex-enumeration
-

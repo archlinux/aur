@@ -3,7 +3,7 @@
 
 pkgname='perl-moosex-enumeration'
 pkgver='0.010'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a native attribute trait for enums"
 arch=('any')
 license=('PerlArtistic' 'GPL')
