@@ -1,7 +1,7 @@
-From d82a2aa279ddf3ba36e753fe4f9d360ec3ee3206 Mon Sep 17 00:00:00 2001
+From ea2a0e128d71802f61b8da2e44de3c6325c5f328 Mon Sep 17 00:00:00 2001
 From: Andrew Deason <adeason@sinenomine.net>
 Date: Sat, 4 Apr 2020 22:35:07 -0500
-Subject: [PATCH 3/5] Use autoconf-archive m4 from src/external
+Subject: [PATCH 03/12] Use autoconf-archive m4 from src/external
 
 Switch to using the m4 macros from autoconf-archive in our
 src/external mechanism, instead of manually-copied versions in src/cf.
@@ -12,12 +12,13 @@ also a few new macros pulled in, but they are currently unused.
 Increase our AC_PREREQ in configure.ac to 2.64, to match the AC_PREREQ
 in some of the new files.
 
-Change-Id: I8acfe4df7b9a22d9b9e69004c3438034a2dacadb
 Reviewed-on: https://gerrit.openafs.org/14135
 Tested-by: BuildBot <buildbot@rampaginggeek.com>
 Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
 Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit ca847ddf35e336a8bc3159ce4b26f0162417bbd5)
+
+Change-Id: Ifa43b3869e426fada5bd925b0ae002a0f6436232
 ---
  LICENSE      | 15 +++++++++++++++
  configure.ac |  2 +-
@@ -80,5 +81,5 @@ index 3ada36c6b..3ae1987f0 100755
    echo "No aclocal found on your system (looked for aclocal & aclocal-1.10)"
    exit 1
 -- 
-2.35.1
+2.36.1
 

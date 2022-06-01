@@ -1,7 +1,7 @@
-From 3dd58d1b0d417fcda3b7679aa0f0691f55740c93 Mon Sep 17 00:00:00 2001
+From d3782b1d4e6fd81c5432e95112eb44305f07f272 Mon Sep 17 00:00:00 2001
 From: Autoconf Archive Maintainers <autoconf-archive-maintainers@gnu.org>
 Date: Tue, 7 Apr 2020 10:23:16 -0500
-Subject: [PATCH 2/5] Import of code from autoconf-archive
+Subject: [PATCH 02/12] Import of code from autoconf-archive
 
 This commit updates the code imported from autoconf-archive to
 24358c8c5ca679949ef522964d94e4d1cd1f941a (v2019.01.06)
@@ -13,12 +13,13 @@ New files are:
 	m4/ax_gcc_func_attribute.m4
 	m4/ax_require_defined.m4
 
-Change-Id: I64e14d1b4d41ebfee82fa92da10239f73e28b4c9
 Reviewed-on: https://gerrit.openafs.org/14138
 Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
 Tested-by: BuildBot <buildbot@rampaginggeek.com>
 Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 (cherry picked from commit d8205bbb482554812fbe66afa3c337d991a247b6)
+
+Change-Id: Ibc18f5ddef8b63ba258fa666ada60577a845aa8f
 ---
  src/external/autoconf-archive-last            |   1 +
  .../m4/ax_append_compile_flags.m4             |  46 ++++
@@ -496,5 +497,5 @@ index 000000000..17c3eab7d
 +  m4_ifndef([$1], [m4_fatal([macro ]$1[ is not defined; is a m4 file missing?])])
 +])dnl AX_REQUIRE_DEFINED
 -- 
-2.35.1
+2.36.1
 

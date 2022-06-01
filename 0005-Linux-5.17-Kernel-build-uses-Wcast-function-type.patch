@@ -1,7 +1,7 @@
-From e71816dc640462aab0870fc46cf1d56b63575f45 Mon Sep 17 00:00:00 2001
+From 449d1faf87e2841e80be38cf2b4a5cf5ff4df2d8 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 28 Jan 2022 14:10:46 -0700
-Subject: [PATCH 5/5] Linux-5.17: Kernel build uses -Wcast-function-type
+Subject: [PATCH 05/12] Linux-5.17: Kernel build uses -Wcast-function-type
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -35,12 +35,13 @@ Note: upstream heimdal has committed a fix for this in:
    hcrypto: Fix return type for null_Init, null_Update and null_Final
    (fc4b3ce49b)
 
-Change-Id: I05b716867016a33ca02a791ed6bc5a7d846de608
 Reviewed-on: https://gerrit.openafs.org/14881
 Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 Tested-by: BuildBot <buildbot@rampaginggeek.com>
 Reviewed-by: Andrew Deason <adeason@sinenomine.net>
 (cherry picked from commit 6bdfa976731ce07f3236893ecf12abb9e169b882)
+
+Change-Id: Ibd354f663d5876c421a8b4e89b8943c9e3d59ebc
 ---
  CODING                            | 12 +++++++++++-
  src/cf/osconf.m4                  |  4 ++++
@@ -123,5 +124,5 @@ index d98fa05ad..8e98afd56 100644
  CFLAGS_rand-timer-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
  CFLAGS_rand-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
 -- 
-2.35.1
+2.36.1
 
