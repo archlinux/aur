@@ -19,12 +19,12 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 pkgname=srb2kart
 pkgver=1.3
 _dataver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
 url='https://mb.srb2.org/showthread.php?t=43708'
-depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
+depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver" 'curl')
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
 
