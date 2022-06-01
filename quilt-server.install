@@ -1,0 +1,37 @@
+_fabric_name="fabric"
+_fabric_user="fabric"
+_server_root="/srv/${_fabric_name}"
+
+post_install() {
+	if ! getent group "$_fabric_user" &>/dev/null; then
+		echo "Adding ${_fabric_user} system group..."
+		groupadd -r "$_fabric_user" 1>/dev/null
+	fi
+
+	if ! getent passwd "$_fabric_user" &>/dev/null; then
+		echo "Adding ${_fabric_user} system user..."
+		useradd -r -g "${_fabric_user}" -d "$_server_root" "$_fabric_user" 1>/dev/null
+	fi
+
+	chown -R "${_fabric_user}:${_fabric_user}" "$_server_root"
+
+	echo "The world data is stored under ${_server_root} and the server runs as the fabric user to increase security."
+	echo "Use the ${_fabric_name}d script under /usr/bin/${_fabric_name}d to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/${_fabric_name} to your liking."
+	echo -e "`tput setaf 3`To start the server you have to accept the EULA in ${_server_root}/eula.txt ${_fabric_name}d.service will fail to start otherwise!`tput sgr0`"
+}
+
+post_upgrade() {
+	chown -R "${_fabric_user}:${_fabric_user}" "${_server_root}"
+
+	echo "The management script switched from GNU screen to tmux."
+	echo "Manual intervention is needed to close any previous GNU screen sessions:"
+	echo "Use \`sudo -u ${_user} screen -S ${_game} -rx\` to attach to the ${_game} session and stop it."
+	echo "Do the same for the \`idle_server_${_game}\` session if one is running."
+}
+
+post_remove() {
+	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} have been kept on your system."
+	echo "The configuration in /etc/conf.d/ has been kept on your system."
+	echo "The ${_fabric_user} user has been kept on your system."
+}
