@@ -1,7 +1,8 @@
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=calculix-precice
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="preCICE-adapter for the CSM code CalculiX"
 url="https://github.com/${pkgname/calculix-/}/${pkgname/precice/adapter}"
 license=(GPL3)
