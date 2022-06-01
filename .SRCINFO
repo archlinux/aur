@@ -5,6 +5,7 @@ pkgbase = dell-h825cdw-s2825cdn
 	url = https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers
 	arch = x86_64
 	license = custom
+	makedepends = unzip
 	depends = cups
 
 pkgname = dell-h825cdw-s2825cdn
