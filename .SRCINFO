@@ -1,18 +1,18 @@
 pkgbase = new-bin
 	pkgdesc = cookiecutter wrapper, let you search through github for template
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
-	depends = cookiecutter
+	depends = python-cookiecutter
 	conflicts = new
 	provides = new
 	arch = aarch64
-	source_aarch64 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 45c1a314a7b51335628fce6f5a1e3ba82ec171cd186c93838bafe67a5b751e1a
+	source_aarch64 = https://github.com/mJehanno/new/releases/download/v0.1.4/new_0.1.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d72626cf71ca2d18d75e8b414af0a7db7c859ea41677b588d706fe510a18f7fb
 	arch = i686
-	source_i686 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_i386.tar.gz
-	sha256sums_i686 = 97df4e6b34f3f2fa42c94e4cecc9c8004e219e0881dbd7f9e5bbcf4334b08116
+	source_i686 = https://github.com/mJehanno/new/releases/download/v0.1.4/new_0.1.4_Linux_i386.tar.gz
+	sha256sums_i686 = 245604df2a27a7ba23354ae53e49cdceecf758dfbe7f72e04c99cd092718baed
 	arch = x86_64
-	source_x86_64 = https://github.com/mJehanno/new/releases/download/v0.1.3/new_0.1.3_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f960801dc9fef0db3943566e86ddc72847ea838d050b160613fa94340681cc95
+	source_x86_64 = https://github.com/mJehanno/new/releases/download/v0.1.4/new_0.1.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a8b9cb289a9c68e32264d850741db199f263a3501121cd639ebf326ca72a3298
 	
 pkgname = new-bin
