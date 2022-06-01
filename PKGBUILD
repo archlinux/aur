@@ -3,7 +3,7 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-chemistry-elements'
 pkgver='1.075'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl extension for working with Chemical Elements"
 arch=('any')
 license=('PerlArtistic' 'GPL')
