@@ -3,7 +3,7 @@
 
 pkgname='perl-coerce-types-standard'
 pkgver='0.000007'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Coercing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
