@@ -1,0 +1,25 @@
+From e85843b4094c9779be797e42f58c8fd3aaaa5ca2 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 29 May 2022 15:59:36 +0200
+Subject: [PATCH 2/3] fix: make utils/fix_xc7_carry.py executable
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
+---
+ utils/fix_xc7_carry.py | 1 +
+ 1 file changed, 1 insertion(+)
+ mode change 100644 => 100755 utils/fix_xc7_carry.py
+
+diff --git a/utils/fix_xc7_carry.py b/utils/fix_xc7_carry.py
+old mode 100644
+new mode 100755
+index 9b911dcb..8eaef2f3
+--- a/utils/fix_xc7_carry.py
++++ b/utils/fix_xc7_carry.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python3
+ """ Script for addressing CARRY4 output congestion in elaborated netlists.
+ 
+ Usage:
+-- 
+2.36.1
+

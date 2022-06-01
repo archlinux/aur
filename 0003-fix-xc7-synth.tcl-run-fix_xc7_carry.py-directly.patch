@@ -1,0 +1,25 @@
+From cdf9496a23197128a33573fb13346ab8a4b35c84 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 29 May 2022 16:24:04 +0200
+Subject: [PATCH 3/3] fix(xc7/synth.tcl): run fix_xc7_carry.py directly
+
+---
+ xc/xc7/yosys/synth.tcl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xc/xc7/yosys/synth.tcl b/xc/xc7/yosys/synth.tcl
+index 6944fabb..ac858c6d 100644
+--- a/xc/xc7/yosys/synth.tcl
++++ b/xc/xc7/yosys/synth.tcl
+@@ -144,7 +144,7 @@ techmap -map  $::env(TECHMAP_PATH)/carry_map.v
+ clean_processes
+ write_json $::env(OUT_JSON).carry_fixup.json
+ 
+-exec $::env(PYTHON3) $::env(UTILS_PATH)/fix_xc7_carry.py < $::env(OUT_JSON).carry_fixup.json > $::env(OUT_JSON).carry_fixup_out.json
++exec $::env(UTILS_PATH)/fix_xc7_carry.py < $::env(OUT_JSON).carry_fixup.json > $::env(OUT_JSON).carry_fixup_out.json
+ design -push
+ read_json $::env(OUT_JSON).carry_fixup_out.json
+ 
+-- 
+2.36.1
+
