@@ -5,82 +5,50 @@
 # Contributor: Sigmund Lahn <sigmund@lahn.no>
 
 pkgname=rethinkdb
-pkgver=2.4.1
-_node=6.11.0
-pkgrel=5
+pkgver=2.4.2
+pkgrel=1
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
 license=(Apache)
-depends=(curl jemalloc)
-makedepends=(clang boost git python2 make)
+depends=(curl jemalloc openssl protobuf zlib)
+makedepends=(clang git python make boost)
 backup=(etc/rethinkdb/instances.d/default.conf)
 install=rethinkdb.install
 options=(!emptydirs)
 source=(
-  $pkgname::git+https://github.com/rethinkdb/rethinkdb.git#tag=v$pkgver
-  https://nodejs.org/dist/v$_node/node-v$_node.tar.gz
+  https://github.com/rethinkdb/rethinkdb/archive/refs/tags/v2.4.2.tar.gz
   rethinkdb@.service
   rethinkdb.sysusers.d
   rethinkdb.tmpfiles.d
-  mksnapshot_crash_fix.patch
-  v8_g++7_build_fix.patch::https://github.com/nodejs/node/commit/66c1197f3aefd5b9f36533e6b617f2046acc2c0f.patch
-  fix_node_limit.patch
 )
-noextract=(node-v$_node.tar.gz)
-sha512sums=('SKIP'
-            'a298232f6393735f2d459eb23f78089dd7eb1bae4907dfe61b286ceb8f93d3131c2dd45f09643089d00e2a4bef0f35739c9c8984f88b34c0ab515793f38eda46'
+sha512sums=('afb01bd273f7ec76e96db9af601467ed63131e1078647e80ea4bec3f026f86e2d3c7614634db4d504cc6f6e9251ab1a1c8bf3b4130ef921b0960b00c76740542'
             'd0e86e86010fafcfdad7a58fe9ed9e93deefb1ab803aa283f60cccaf7a0ee11990c59b9ab01872b1c97b08418d7b53064e938b428e50a310442b32aa385277d9'
             'cab680a7e765e0a844b72ab3a57f19f3268d9a717bbe19230bd79537f0424179a56037c368326d2173a4a9cde075a67c85ce9b5a32733afb7d44806df1eac0ac'
-            '112bc0f9ecfdfae6efba5d8cc3f773085b3f345d33d350188dc70609c425e6c656a0a3069ae5c66cdc684a94fd442e990a88c0ca8d1875f085f660c76c3d7250'
-            '8deea735b2c7b6fc0221a49e818d4347869330fa9e35a94c15d54f7bc64ac0b8a573906fea6cc64c05a177f3065c96d8b4d0e2a3724b6137d7f12ba7a7b419f7'
-            '346020fea3e10628c687dd89fc2d9aec97e1b6734fd83828d390b4187c96c085a6e99efedb8b2f87491a4c1237de06c73aee0d0671c259935eedaddcf7f505f1'
-            '891699ec693e2c2cd96c6ae019f1353098cea206ac5e826e8326177285aa8130d0720d2818c941d61045446449246f462bdb39d1f82387019bad39f95a6076fa')
+            '112bc0f9ecfdfae6efba5d8cc3f773085b3f345d33d350188dc70609c425e6c656a0a3069ae5c66cdc684a94fd442e990a88c0ca8d1875f085f660c76c3d7250')
 
 prepare() {
   # There are a ton of hard dependencies on Python 2
   # Let's KISS and pretend `python` points to Python 2
 
-  if [ ! -f bin/python ]
-  then
-    mkdir -p bin
-    ln -s /usr/bin/python2 bin/python
-  fi
-
-  cd $pkgname
-
-  patch -p0 < ../mksnapshot_crash_fix.patch
+  cd $pkgname-$pkgver
+  echo $pkgver > VERSION
 
   PATH="$srcdir"/bin:$PATH ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --dynamic jemalloc \
-    --allow-fetch \
-    --fetch npm \
-    --fetch protobuf \
-    --fetch boost \
     CXX=clang++
-
-  # Manually fetch the Node version used, so we can patch it
-  if [ ! -d external/node_$_node ]
-  then
-    cd external
-    tar zxfp ../../node-v$_node.tar.gz
-    mv node{-v,_}$_node
-    cd node_$_node
-    patch -p1 < "$srcdir"/v8_g++7_build_fix.patch
-    patch -p0 < "$srcdir"/fix_node_limit.patch
-  fi
 }
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   PATH="$srcdir"/bin:$PATH make -j`nproc`
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
   rm -r "$pkgdir"/etc/init.d
