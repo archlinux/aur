@@ -19,7 +19,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 pkgname=srb2kart
 pkgver=1.3
 _dataver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
