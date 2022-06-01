@@ -11,6 +11,7 @@ pkgbase = rxvt-unicode-pixbuf-patched
 	depends = startup-notification
 	depends = rxvt-unicode-terminfo
 	depends = gdk-pixbuf2
+	depends = libptytty
 	optdepends = gtk2-perl: to use the urxvt-tabbed
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
