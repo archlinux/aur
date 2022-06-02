@@ -16,10 +16,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
-	'fix-autostart-path.diff'
 )
-sha512sums=('SKIP'
-            'a38d053f249ab291049edb1afb61dcf4e513ab2ca15787861db6d06a181d41fa1a5a690688237bff4bb28efc8a09eae7759742699b1da5c124a037709c6f0eca')
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -48,7 +46,7 @@ prepare() {
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
-	patch --forward -p1 < '../fix-autostart-path.diff'
+	sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.js
 }
 
 pkgver() {
