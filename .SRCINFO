@@ -1,6 +1,6 @@
 pkgbase = python-fontools
 	pkgdesc = FONtools: The Feature Object Notation tools
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/vejnar/FONtools
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-fontools
 	depends = python
 	depends = python-pyfnutils
 	depends = python-pyfaidx
-	source = https://github.com/vejnar/FONtools/archive/refs/tags/v0.4.1.tar.gz
-	sha1sums = f2caaee59649d2ffd2015281575b180f89a3f3de
+	source = https://github.com/vejnar/FONtools/archive/refs/tags/v0.4.2.tar.gz
+	sha1sums = 9b0ee9ba5d25417f3d5feec0be9dd88c6eaee617
 
 pkgname = python-fontools
