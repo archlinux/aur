@@ -2,7 +2,7 @@
 
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
@@ -22,9 +22,7 @@ _repo='OpenColorIO'
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-	'81fc7853a490031632a69c73716bc6ac271b395e2ba0e2587af9995c2b0efb5f'
-)
+sha256sums=('6c6d153470a7dbe56136073e7abea42fa34d06edc519ffc0a159daf9f9962b0b')
 
 _srcdir="${_repo}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -35,12 +33,12 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF -DOCIO_USE_SS
 		
 prepare() {
 	cd "${_srcdir}"
-	sed -i -r 's/if\(NOT WIN32\)/if\(NOT WIN32 OR MINGW\)/' 'src/OpenColorIO/CMakeLists.txt'
-	sed -i -r 's/if\(WIN32\)/if\(WIN32 AND NOT MINGW\)/' 'src/OpenColorIO/CMakeLists.txt'
-	sed -i -r 's/\$\{OCIO_LIBNAME_SUFFIX\}_\$\{OpenColorIO_VERSION_MAJOR\}_\$\{OpenColorIO_VERSION_MINOR\}/${OCIO_LIBNAME_SUFFIX}/' 'src/OpenColorIO/CMakeLists.txt'
-	sed -i -r 's/add_test\(test_utils_exec test_utils_exec\)/add_test\(NAME test_utils_exec COMMAND test_utils_exec\)/' 'tests/utils/CMakeLists.txt'
-	sed -i -r 's/add_test\(\$\{TEST_NAME\} \$\{TEST_BINARY\}\)/add_test(NAME ${TEST_NAME} COMMAND ${TEST_BINARY})/' 'tests/cpu/CMakeLists.txt'
-	sed -i -r "s/filename = tmpFilename;/filename = tmpFilename[0] == '\\\\\\\\' ? tmpFilename + 1 : tmpFilename;/" 'src/OpenColorIO/Platform.cpp'
+	sed -i 's/if(NOT WIN32)/if(NOT WIN32 OR MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
+	sed -i 's/if(WIN32)/if(WIN32 AND NOT MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
+	#sed -i -r 's/_WIN32/_MVS_VER/;s/::strto/strto/' 'src/utils/NumberUtils.h'
+	sed -i 's/_str/str/g;s/_l(/(/g;s/, loc.local//g;s|static const Locale loc;|//static const Locale loc;|' 'src/utils/NumberUtils.h'
+	#sed -i 's/${OCIO_LIBNAME_SUFFIX}_${OpenColorIO_VERSION_MAJOR}_${OpenColorIO_VERSION_MINOR}${OCIO_LIBNAME_SUFFIX}/' 'src/OpenColorIO/CMakeLists.txt'
+	#sed -i 's/_WIN32/MSVC/g' 'src/utils/NumberUtils.h'
 }
 
 build() {	
