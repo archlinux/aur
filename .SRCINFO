@@ -1,10 +1,11 @@
 pkgbase = rofi-cmus-git
 	pkgdesc = Rofi frontend for Cmus
 	pkgver = r5.2269e2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vojdel/rofi-cmus.git
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = rofi
 	depends = cmus
 	provides = rofi-cmus
