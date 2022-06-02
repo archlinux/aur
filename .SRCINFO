@@ -1,6 +1,6 @@
 pkgbase = cudatext-qt5-bin
 	pkgdesc = Cross-platform text editor, written in Lazarus. Qt5 edition.
-	pkgver = 1.165.0.3
+	pkgver = 1.165.2.0
 	pkgrel = 0
 	url = http://uvviewsoft.com/cudatext
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cudatext-qt5-bin
 	provides = cudatext
 	conflicts = cudatext-gtk2-bin
 	options = !strip
-	source = http://www.uvviewsoft.com/cudatext/files_linux/cudatext-linux-qt5-amd64-1.165.0.3.tar.xz
-	sha256sums = eb63314e1d11b5bf144b160fcc36d458265252b47b8934d8442ac06347e97388
+	source = http://www.uvviewsoft.com/cudatext/files_linux/cudatext-linux-qt5-amd64-1.165.2.0.tar.xz
+	sha256sums = ec1a2408cc7680ed88d5d3777613d1387d8e60b90c9b71bb552c87e91173c6bd
 
 pkgname = cudatext-qt5-bin
