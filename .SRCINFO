@@ -1,6 +1,6 @@
 pkgbase = nickvision-application-git
 	pkgdesc = A template for creating Nickvision applications
-	pkgver = 2022.5.0.r1.1a4ea65
+	pkgver = 2022.5.0.r2
 	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionApplication
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = nickvision-application-git
 	depends = libadwaita
 	depends = jsoncpp
 	depends = libcurlpp
-	provides = nickvision-application
-	conflicts = nickvision-application
 	source = git+https://github.com/nlogozzo/NickvisionApplication.git
-	md5sums = SKIP
+	source = git+https://github.com/Makman2/GCR_CMake.git
+	sha256sums = SKIP
 
 pkgname = nickvision-application-git

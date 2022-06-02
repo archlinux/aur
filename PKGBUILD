@@ -1,7 +1,6 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
-_name=nickvision-application
-pkgname=$_name-git
-pkgver=2022.5.0.r1.1a4ea65
+pkgname=nickvision-application-git
+pkgver=2022.5.0.r2
 pkgrel=1
 pkgdesc="A template for creating Nickvision applications"
 arch=(x86_64)
@@ -9,17 +8,15 @@ url="https://github.com/nlogozzo/NickvisionApplication"
 license=(GPL3)
 depends=(gtk4 libadwaita jsoncpp libcurlpp)
 makedepends=(git cmake)
-provides=($_name)
-conflicts=($_name)
-source=("git+https://github.com/nlogozzo/NickvisionApplication.git")
-md5sums=("SKIP")
+source=("git+https://github.com/nlogozzo/NickvisionApplication.git"
+        "git+https://github.com/Makman2/GCR_CMake.git")
+sha256sums=("SKIP")
 
 prepare() {
 	mkdir -p build
-    mkdir -p ~/.local/share/icons/hicolor
     cd $srcdir/NickvisionApplication
-    git checkout -q 1a4ea65
     git submodule init
+    git config submodule.GCR_CMake.url "${srcdir}/GCR_CMake"
     git submodule update
 }
 
@@ -27,13 +24,12 @@ build() {
 	cd build
     cmake $srcdir/NickvisionApplication \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Release
     make
 }
 
 package() {
 	cd build
 	make DESTDIR="$pkgdir/" install
-    sudo touch /usr/share/icons/hicolor ~/.local/share/icons/hicolor
-    sudo gtk-update-icon-cache
+    ln -s /usr/bin/org.nickvision.application ${pkgdir}/usr/bin/nickvision
 }
