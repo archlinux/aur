@@ -1,52 +1,37 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
+
 pkgname=aws-sdk-cpp-git
-pkgver=1.7.283.r0.gc9d2aeb1c5
+pkgver=1.9.270.r0.g3c6705ee29
 pkgrel=1
-pkgdesc="AWS SDK for C++"
-arch=('x86_64')
-url="https://github.com/aws/aws-sdk-cpp"
-license=('Apache')
-depends=('cmake')
-makedepends=('openssl' 'curl' 'zlib' 'libutil-linux')
-conclits=('aws-checksums-git')
-#_gitcommit='1ecade03d980285cb543fe16aa7f64573a651d45'
-#source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp#commit=${_gitcommit}")
-source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp")
+pkgdesc='AWS SDK for C++'
+arch=(x86_64)
+url='https://github.com/aws/aws-sdk-cpp'
+license=(Apache)
+depends=(openssl curl zlib util-linux-libs aws-c-common aws-c-event-stream libpulse aws-crt-cpp)
+makedepends=(cmake ninja)
+conflicts=(aws-sdk-cpp)
+provides=(aws-sdk-cpp)
+source=("${pkgname}::git+https://github.com/aws/aws-sdk-cpp#branch=main")
 sha256sums=('SKIP')
 
-# disable until aws engineers can settle on their fucking build process
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	mkdir -p build
-	cd build
-
-	export CC="/usr/bin/gcc" CXX="/usr/bin/g++"
-
-	CMAKE_FLAGS="-Wno-dev \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCMAKE_INSTALL_INCLUDEDIR=/usr/include \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DENABLE_TESTING=OFF \
-		-DSTATIC_LINKING=1 \
-		-DNO_HTTP_CLIENT=1 \
-		-DMINIMIZE_SIZE=ON \
-		-DCMAKE_VERBOSE_MAKEFILE=ON \
-		-DBUILD_SHARED_LIBS=OFF"
-	cmake $CMAKE_FLAGS ..
-
-	make ${MAKEFLAGS}
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCUSTOM_MEMORY_MANAGEMENT=OFF -DENABLE_TESTING=OFF -DBUILD_DEPS=OFF \
+        -DCMAKE_MODULE_PATH=/usr/lib/cmake \
+        -S . -B build -G Ninja
+    ninja -C build -j 2 # the build is so heavy that it gets OOM killed even at powerful machines
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	make -C build DESTDIR="${pkgdir}" install
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    DESTDIR="${pkgdir}" ninja -C build install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
