@@ -2,7 +2,7 @@
 
 _srcname=pythondata-cpu-blackparrot
 pkgname="python-$_srcname-git"
-pkgver=2020.08.r1.g4264d9b0
+pkgver=2020.08.r18.gba50883f
 pkgrel=1
 pkgdesc="Python module containing system_verilog files for blackparrot cpu (for use with LiteX)"
 arch=(any)
@@ -29,7 +29,7 @@ package() {
   cd "$_srcname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  install -Dm644 "${_srcname//-/_}/system_verilog/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${_srcname//-/_}/system_verilog/black-parrot/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set et ts=2 syntax=PKGBUILD:

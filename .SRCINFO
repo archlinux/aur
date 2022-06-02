@@ -1,6 +1,6 @@
 pkgbase = python-pythondata-cpu-blackparrot-git
 	pkgdesc = Python module containing system_verilog files for blackparrot cpu (for use with LiteX)
-	pkgver = 2020.08.r1.g4264d9b0
+	pkgver = 2020.08.r18.gba50883f
 	pkgrel = 1
 	url = https://github.com/litex-hub/pythondata-cpu-blackparrot
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = python-pythondata-cpu-blackparrot-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	provides = python-pythondata-cpu-blackparrot=2020.08.r1.g4264d9b0
+	provides = python-pythondata-cpu-blackparrot=2020.08.r18.gba50883f
 	conflicts = python-pythondata-cpu-blackparrot
 	source = git+https://github.com/litex-hub/pythondata-cpu-blackparrot
 	sha256sums = SKIP
 
 pkgname = python-pythondata-cpu-blackparrot-git
-
