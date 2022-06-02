@@ -1,14 +1,15 @@
-# Maintainer: marcin mikołajczak <me@mkljczk.pl>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: marcin mikołajczak <me@mkljczk.pl>
 
 pkgname=tokodon-git
-pkgver=r47.0ca83fe
+pkgver=r202.c80bd74
 pkgrel=1
 pkgdesc='A native Mastodon client'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/network/tokodon'
 license=(LGPL)
-depends=(kirigami2 qtkeychain-qt5 kdbusaddons)
-makedepends=(extra-cmake-modules qt5-tools git)
+depends=(kirigami2 qtkeychain-qt5 kdbusaddons ki18n qt5-websockets knotifications)
+makedepends=(extra-cmake-modules qt5-tools git qt5-svg qt5-multimedia qt5-websockets qt5-quickcontrols2 kcoreaddons ki18n knotifications knotifyconfig qqc2-desktop-style )
 optdepends=()
 conflicts=(tokodon)
 provides=(tokodon)
