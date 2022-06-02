@@ -2,7 +2,7 @@
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=v1.3.0.r98.gad3c4fe
+pkgver=1.3.0.r101.g97cda48
 pkgrel=1
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
