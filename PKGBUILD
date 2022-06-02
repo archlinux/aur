@@ -6,13 +6,14 @@
 _pkgname=ardentryst
 pkgname=${_pkgname}-git
 pkgver=r48.a135dba
-pkgrel=1
+pkgrel=2
 pkgdesc="An action/RPG sidescoller with a focus on story and character development"
 arch=('any')
 conflicts=(${_pkgname})
 url="https://github.com/ardentryst/ardentryst"
 license=('GPL3' 'CCPL')
 depends=('python-pygame') 
+makedepends=('git') 
 source=(git+https://github.com/ardentryst/ardentryst.git
         ${_pkgname}.sh)
 md5sums=('SKIP'
