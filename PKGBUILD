@@ -12,12 +12,9 @@ depends=(gtk3)
 makedepends=(git go)
 options=(!lto)
 source=("${pkgname}::git+${url}.git#branch=main"
-        picocrypt.svg
-        picocrypt.desktop
-) 
+        picocrypt.desktop)
 sha512sums=('SKIP'
-            '7fd03c82479b44b6a83cb2bd8d0052a833924d2c62312db90460d34fe30ebd53ac14ea8cd739bcb1470f99023db45a56806388e6cba2343e82c099d4e6e84a33'
-            'af4ab8fb1765563e4cdc3baedde147cb1b979dee9b71ba4c41b0dec95046cc9cc99d76c89b5a002d6c9c5fb4f737876b857e564dadb3187605f0c7c957b4e967')
+            '38c48400411613744ee77c662373a4966a55edd00717107383de9a3c7e2ef161bf6b4d75f6f2b6e714d8c67245f1f027ff80b96a12d1c15c79feb3525978cb76')
 
 pkgver() {
   cd "$pkgname"
@@ -38,6 +35,6 @@ build() {
 }
 package(){
     install -Dm755 "${pkgname}/src/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 picocrypt.svg -t "${pkgdir}/usr/share/icons"
+    install -Dm644 "${pkgname}/images/key.svg" "${pkgdir}/usr/share/pixmaps/picocrypt.svg"
     install -Dm644 picocrypt.desktop -t "${pkgdir}/usr/share/applications"
 }
