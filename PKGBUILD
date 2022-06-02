@@ -3,7 +3,12 @@
 ## Discord Rich Presence integration
 ## Required for game invites.
 if [ -z ${_use_discordrpc+x} ]; then
+  # Automatically enable discord rpc integration if `discord-rpc-git` is installed
+  if ( pacman -Q discord-rpc-git >/dev/null ); then
+    _use_discordrpc=y
+  else
     _use_discordrpc=n
+  fi
 fi
 
 # Don't compress with UPX, don't dump symbols to speed up compiling
@@ -12,7 +17,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 pkgname=srb2-uncapped-plus-git
 pkgver=r12808.c9d40cb59
 _dataver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nightly/Rolling Release custom build of SRB2, with the latest community made features. Inspired on SRB2Kart Moe Mansion."
 arch=('x86_64')
 url="https://mb.srb2.org/addons/srb2-uncapped-plus.3248/"
@@ -27,7 +32,7 @@ sha256sums=('SKIP'
             'e7cfd4775f15cacd191cef491ca4a604509a9cdac463cfd3d2387fa2625e004c')
 
 if [ "${_use_discordrpc}" = "y" ]; then
-    depends+=('discord-rpc-api')
+    depends+=('discord-rpc-git')
 fi
 
 pkgver() {
