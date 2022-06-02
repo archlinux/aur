@@ -12,5 +12,5 @@ source=("dummy-project-4-testing-gha-release-on-aur.sh")
 sha256sums=('__DIGEST__')
 
 package() {
-  install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}.sh"
+  install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
 }

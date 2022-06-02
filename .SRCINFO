@@ -1,7 +1,7 @@
 pkgbase = dummy-project-4-testing-gha-release-on-aur
 	pkgdesc = A dummy project aimted at testing the automation of AUR releases via GitHub Actions
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gciatto/aur-release-action
 	arch = any
 	license = Apache
