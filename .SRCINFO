@@ -1,7 +1,7 @@
 pkgbase = jdk-microsoft-openjdk
 	pkgdesc = Microsoft Build of OpenJDK
 	pkgver = 17.0.3.u7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/openjdk
 	install = install_jdk-microsoft-openjdk.sh
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = jdk-microsoft-openjdk
 	provides = jdk-openjdk=17.0.3.u7
 	provides = openjdk17-src=17.0.3.u7
 	provides = openjdk-src=17.0.3.u7
-	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.3.7-linux-x64.tar.gz
+	source = https://aka.ms/download-jdk/microsoft-jdk-17.0.3-linux-x64.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = bbdbd56349c06ffefd7f980c7042d74e1c8e26b8fc4baa318b77cb047ea42ec9
+	sha256sums = 8d1507aea8439e846ab0e319db85e8a8ad01db1f645990bbb59086ea4537b667
 	sha256sums = 7ed68488d8178733a23d4f009977ee6d3bebcdca3ed074fb6d0be6039c451d7d
 	sha256sums = 67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844
 	sha256sums = 424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597

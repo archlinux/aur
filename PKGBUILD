@@ -7,7 +7,7 @@ _jdkver="$_completever.u$_updatever"
 
 pkgname=jdk-microsoft-openjdk
 pkgver="${_jdkver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft Build of OpenJDK'
 arch=(x86_64)
 url=https://www.microsoft.com/openjdk
@@ -30,11 +30,11 @@ provides=("java-runtime-headless=$_majorver"
           "openjdk$_majorver-src=$_jdkver"
           "openjdk-src=$_jdkver")
 install=install_jdk-microsoft-openjdk.sh
-source=("https://aka.ms/download-jdk/microsoft-jdk-${_jdkver/\.u/.}-linux-x64.tar.gz"
+source=("https://aka.ms/download-jdk/microsoft-jdk-$_completever-linux-x64.tar.gz"
         freedesktop-java.desktop
 				freedesktop-jconsole.desktop
 				freedesktop-jshell.desktop)
-sha256sums=('bbdbd56349c06ffefd7f980c7042d74e1c8e26b8fc4baa318b77cb047ea42ec9'
+sha256sums=('8d1507aea8439e846ab0e319db85e8a8ad01db1f645990bbb59086ea4537b667'
             '7ed68488d8178733a23d4f009977ee6d3bebcdca3ed074fb6d0be6039c451d7d'
             '67c0102694dbfdc1141c6cbc2fa1a7153cbfa81f596744860d7c801a6b1df844'
             '424ee7a00116757a819b62bd670d583eea90e0ebee4a679f54b71980dbb28597')
