@@ -1,6 +1,6 @@
 pkgbase = geesefs-git
-	pkgdesc = A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go.
-	pkgver = 2.3.38
+	pkgdesc = A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go (Git version).
+	pkgver = 0.31.2
 	pkgrel = 1
 	url = https://github.com/yandex-cloud/geesefs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = geesefs-git
 	depends = fuse3
 	provides = geesefs
 	conflicts = geesefs
-	conflicts = geesefs-git
+	conflicts = geesefs-bin
 	source = geesefs-git::git+https://github.com/yandex-cloud/geesefs
 	sha512sums = SKIP
 
