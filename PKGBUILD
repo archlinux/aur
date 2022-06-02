@@ -10,8 +10,8 @@ pkgrel=1
 arch=("x86_64")
 makedepends=("git" "go")
 depends=("fuse3")
-provides=("geesefs")
-conflicts=("geesefs" "geesefs-git")
+provides=("$_pkgbin")
+conflicts=("$_pkgbin" "$_pkgbin-bin")
 source=("$pkgname::git+$url")
 sha512sums=("SKIP")
 
