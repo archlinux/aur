@@ -1,6 +1,6 @@
 pkgbase = nickvision-application-git
 	pkgdesc = A template for creating Nickvision applications
-	pkgver = 2022.5.0.r0.0261fcc
+	pkgver = 2022.5.0.r0.1a4ea65
 	pkgrel = 1
 	url = https://github.com/nlogozzo/NickvisionApplication
 	arch = x86_64
