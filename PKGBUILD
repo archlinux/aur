@@ -1,12 +1,12 @@
 pkgname=openwsman
-pkgver=2.7.0
-pkgrel=1.3
+pkgver=2.7.1
+pkgrel=1.0
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
 license=('custom:BSD')
 depends=('curl' 'libxml2' 'openssl' 'sblim-sfcc')
-makedepends=('cmake' 'swig'
+makedepends=('cmake>=3.13' 'swig'
              'perl'
              'python'
              'ruby' 'ruby-docs' 'ruby-rdoc')
@@ -18,38 +18,33 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
 source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('5b50610e810939922f41a3d5122954f1')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	rm -rf build
-	mkdir build
-}
+sha256sums=('d260464c8af4c009c743778c667df02a2f558a216a5dfb79ebbef75fc947ba6f')
 
 build() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	cmake -DCMAKE_BUILD_TYPE=Release \
-	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
-	      -DCMAKE_CXX_FLAGS="$CFXXLAGS $CPPFLAGS" \
+	cmake -B build \
+	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' \
+	      -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DPACKAGE_ARCHITECTURE=$CARCH \
 	      -DLIB=lib \
 	      -DBUILD_PYTHON=OFF \
 	      -DBUILD_PYTHON3=ON \
 	      -DBUILD_RUBY_GEM=OFF \
-	      -DBUILD_JAVA=OFF \
-	..
+	      -DBUILD_JAVA=OFF
 
-	make
+	make -C build
 }
 
 # TODO: find out why tests fail for python/perl/ruby bindings
 #       and report a bug upstream if needed
-#check() {
-#	 cd "$pkgname-$pkgver"/build
-#	 make ARGS="-V" test
-#}
+check() {
+	cd "$pkgname-$pkgver"
+
+	 make -n -C build ARGS="-V" test
+}
 
 _perl_depends() {
 # template start; name=perl-binary-module-dependency; version=1;
@@ -62,23 +57,24 @@ fi
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+
+	make -C build DESTDIR="$pkgdir/" install
 
 	mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin"
 	rmdir "$pkgdir/usr/sbin/"
 
-	install -Dp -m644 package/"$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-	install -Dp -m644 ../package/"$pkgname.firewalld" "$pkgdir/usr/lib/firewalld/services/$pkgname.xml"
+	install -Dp -m644 build/package/"$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dp -m644 package/"$pkgname.firewalld"     "$pkgdir/usr/lib/firewalld/services/$pkgname.xml"
 
 	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-	cp -Rp "bindings/ruby/html/"   "$pkgdir/usr/share/doc/$pkgname/rdoc"
+	cp -Rp build/bindings/ruby/html/ "$pkgdir/usr/share/doc/$pkgname/rdoc"
 
-	install -Dp -m644 ../COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-	install -Dp -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-	install -Dp -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
+	install -Dp -m644 AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+	install -Dp -m644 ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
 
 	find "$pkgdir" -name '.packlist' -delete
 	find "$pkgdir" -name '*.pod' -delete
