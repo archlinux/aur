@@ -1,5 +1,5 @@
 src
 pkg
-armitage
-*pkg.tar.xz
+armitage-git
+*pkg.tar.*
 tags

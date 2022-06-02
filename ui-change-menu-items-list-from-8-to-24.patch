@@ -1,7 +1,7 @@
-diff --git a/scripts/attacks.sl b/scripts/attacks.sl
+diff --git a/armitage/src/main/resources/scripts/attacks.sl b/armitage/src/main/resources/scripts/attacks.sl
 index 9771d0c..8a65057 100644
---- a/scripts/attacks.sl
-+++ b/scripts/attacks.sl
+--- a/armitage/src/main/resources/scripts/attacks.sl
++++ b/armitage/src/main/resources/scripts/attacks.sl
 @@ -625,7 +625,7 @@ sub host_attack_items {
  				}, \$exploit, $hosts => $2));
  

@@ -1,7 +1,7 @@
-diff --git a/scripts/targets.sl b/scripts/targets.sl
+diff --git a/armitage/src/main/resources/scripts/targets.sl b/armitage/src/main/resources/scripts/targets.sl
 index 864f7518..b1e431f1 100644
---- a/scripts/targets.sl
-+++ b/scripts/targets.sl
+--- a/armitage/src/main/resources/scripts/targets.sl
++++ b/armitage/src/main/resources/scripts/targets.sl
 @@ -122,6 +122,12 @@ on sessions {
  		}
  	}
@@ -40,10 +40,10 @@ index 864f7518..b1e431f1 100644
  		}
  	}
  
-diff --git a/src/graph/NetworkGraph.java b/src/graph/NetworkGraph.java
+diff --git a/armitage/src/main/java/graph/NetworkGraph.java b/armitage/src/main/java/graph/NetworkGraph.java
 index 859b0ffe..3f3d0784 100644
---- a/src/graph/NetworkGraph.java
-+++ b/src/graph/NetworkGraph.java
+--- a/armitage/src/main/java/graph/NetworkGraph.java
++++ b/armitage/src/main/java/graph/NetworkGraph.java
 @@ -445,7 +445,7 @@ public void setRoutes(Route[] routes) {
  
  	protected Map tooltips = new HashMap();
@@ -53,10 +53,10 @@ index 859b0ffe..3f3d0784 100644
  		nodeImages.put(id, image);
  
  		if (label.length() > 0) {
-diff --git a/src/graph/RefreshGraph.java b/src/graph/RefreshGraph.java
+diff --git a/armitage/src/main/java/graph/RefreshGraph.java b/armitage/src/main/java/graph/RefreshGraph.java
 index 803b26c9..76fdea98 100644
---- a/src/graph/RefreshGraph.java
-+++ b/src/graph/RefreshGraph.java
+--- a/armitage/src/main/java/graph/RefreshGraph.java
++++ b/armitage/src/main/java/graph/RefreshGraph.java
 @@ -17,6 +17,7 @@
  
  	private static class Node {
@@ -86,10 +86,10 @@ index 803b26c9..76fdea98 100644
  			}
  
  			/* setup routes */
-diff --git a/src/graph/Refreshable.java b/src/graph/Refreshable.java
+diff --git a/armitage/src/main/java/graph/Refreshable.java b/armitage/src/main/java/graph/Refreshable.java
 index 47d740fe..6d1739d8 100644
---- a/src/graph/Refreshable.java
-+++ b/src/graph/Refreshable.java
+--- a/armitage/src/main/java/graph/Refreshable.java
++++ b/armitage/src/main/java/graph/Refreshable.java
 @@ -7,7 +7,7 @@
  	public void start();
  
@@ -99,10 +99,10 @@ index 47d740fe..6d1739d8 100644
  
  	/* setup all of our routes in one fell swoop */
  	public void setRoutes(Route[] routes);
-diff --git a/src/table/NetworkTable.java b/src/table/NetworkTable.java
+diff --git a/armitage/src/main/java/table/NetworkTable.java b/armitage/src/main/java/table/NetworkTable.java
 index da265458..c29811a9 100644
---- a/src/table/NetworkTable.java
-+++ b/src/table/NetworkTable.java
+--- a/armitage/src/main/java/table/NetworkTable.java
++++ b/armitage/src/main/java/table/NetworkTable.java
 @@ -15,6 +15,7 @@
  import graph.Route;
  import graph.GraphPopup;

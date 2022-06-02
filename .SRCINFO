@@ -1,18 +1,17 @@
 pkgbase = armitage-git
 	pkgdesc = Metasploit GUI Front ened written in java
-	pkgver = 1248.c8ca6c0
-	pkgrel = 2
+	pkgver = 1.0.0.r1.gcf60646
+	pkgrel = 1
 	url = http://www.fastandeasyhacking.com/
 	install = armitage.install
 	arch = any
 	license = GPL
-	makedepends = apache-ant
 	depends = metasploit
 	depends = java-environment
 	depends = postgresql
 	provides = armitage
 	conflicts = armitage
-	source = armitage::git+https://github.com/rsmudge/armitage
+	source = armitage-git::git+https://github.com/r00t0v3rr1d3/armitage
 	source = armitage.install
 	source = armitage.desktop
 	source = metasploit.png
@@ -30,8 +29,7 @@ pkgbase = armitage-git
 	sha256sums = b4b4e77895712d16ab9d7402ee53fafcb34c667b7394ae7136d6686be8ee1a2f
 	sha256sums = ac521ad84eddf680c50c90bbeab3de5c3141da856702de8ac8c31e1ef66154e0
 	sha256sums = df69997f77fb6460d5f7aba0ff5b592eef5890ce52d2f9e2614e8836fc56eade
-	sha256sums = 7d7565a6095de77def21960409a3c57a1583246042af7e21bf6367f0bf23380e
-	sha256sums = 0aa46b5583ba21126eaa60279617af3e8380e6d927b5a836ae7bada7de31a94d
+	sha256sums = 83b3cdd5f5ca0d92f4a407700ca8eff716deb0459b557d85aa82d2c4646e5f65
+	sha256sums = b56531b052f3110a0928633974f1adcbe55b116b53d6c7e3e148ff1b1ec7d461
 
 pkgname = armitage-git
-
