@@ -12,23 +12,20 @@
 #  - Specify our build host type
 #  - Disabled distcc
 #  - Strip out Arch x86 multilib
-#  - Don't --enable-static-pie, broken on ARM
 #  - Don't --enable-cet, x86 only
 
 pkgname=glibc-widevine
 provides=("glibc=2.35")
 conflicts=("glibc")
 pkgver=2.35
-pkgrel=2
+_commit=28ea43f8d64f0dd1f2de75525157730e1532e600
+pkgrel=5.1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
 makedepends=(git gd python)
-optdepends=('perl: for mtrace')
-options=(!strip staticlibs !lto !distcc)
-#_commit=3de512be7ea6053255afed6154db9ee31d4e557a
-#source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
-source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
+options=(debug staticlibs !lto !distcc)
+source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
         locale.gen.txt
         locale-gen
         sdt.h sdt-config.h
@@ -37,9 +34,7 @@ source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-
-b2sums=('623c728884f070cd87ffeb9203f74206197c52405ac9bc44f3dd519a3468b8e8ae2536c883e5d17d94417dbd1e91775de2e674314e4ff7424f9720026d6b7063'
-        'SKIP'
+b2sums=('SKIP'
         '46d533d25c7a2ce4ae75d452eee7ebb8e3ce4d191af9be3daa43718b78cb81d33cfd8046a117a15d87de9f5e940448c66005b0490515bf731c9e4691c53908d6'
         '1f6d927b4972220b1c00abee5329c5d6bc01ed5bee57b20db0c7d7433292f7d666b02baf9968267f8e378b1f3bb273e8eef0ccbf22d21400ac36949d7615a474'
         'a6a5e2f2a627cc0d13d11a82458cfd0aa75ec1c5a3c7647e5d5a3bb1d4c0770887a3909bfda1236803d5bc9801bfd6251e13483e9adf797e4725332cd0d91a0e'
@@ -51,7 +46,7 @@ b2sums=('623c728884f070cd87ffeb9203f74206197c52405ac9bc44f3dd519a3468b8e8ae2536c
 prepare() {
   mkdir -p glibc-build
 
-  [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc 
+  [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc
   cd glibc
 
   # Disable clone3 syscall for now
@@ -73,12 +68,9 @@ build() {
       --prefix=/usr
       --with-headers=/usr/include
       --with-bugurl=https://github.com/archlinuxarm/PKGBUILDs/issues
-      --enable-add-ons
       --enable-bind-now
-      --enable-lock-elision
       --disable-multi-arch
       --enable-stack-protector=strong
-      --enable-stackguard-randomization
       --enable-systemtap
       --disable-profile
       --disable-crypt
@@ -88,8 +80,8 @@ build() {
   cd "$srcdir/glibc-build"
 
   # ALARM: Specify build host types
-  [[ $CARCH == "armv7h" ]] && CONFIGFLAG="--host=armv7l-unknown-linux-gnueabihf --build=armv7l-unknown-linux-gnueabihf"
-  [[ $CARCH == "aarch64" ]] && CONFIGFLAG="--host=aarch64-unknown-linux-gnu --build=aarch64-unknown-linux-gnu"
+  [[ $CARCH == "armv7h" ]] && _configure_flags+=(--host=armv7l-unknown-linux-gnueabihf --build=armv7l-unknown-linux-gnueabihf)
+  [[ $CARCH == "aarch64" ]] && _configure_flags+=(--host=aarch64-unknown-linux-gnu --build=aarch64-unknown-linux-gnu --enable-memory-tagging)
 
   echo "slibdir=/usr/lib" >> configparms
   echo "rtlddir=/usr/lib" >> configparms
@@ -104,8 +96,7 @@ build() {
   "$srcdir/glibc/configure" \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
-      "${_configure_flags[@]}" \
-      $CONFIGFLAG
+      "${_configure_flags[@]}"
 
   # build libraries with fortify disabled
   echo "build-programs=no" >> configparms
@@ -116,7 +107,7 @@ build() {
   echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
   make -O
 
-  # build info pages manually for reprducibility
+  # build info pages manually for reproducibility
   make info
 }
 
@@ -140,11 +131,7 @@ check() {
 
   # The following tests fail due to restrictions in the Arch build system
   # The correct fix is to add the following to the systemd-nspawn call:
-  # --capability=CAP_IPC_LOCK --system-call-filter="@clock @pkey"
-  skip_test test-ntp_gettime-time64  sysdeps/unix/sysv/linux/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
-  skip_test test-ntp_gettimex-time64 sysdeps/unix/sysv/linux/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
-  skip_test tst-adjtime-time64      time/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
-  skip_test tst-clock2-time64       time/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
+  # --system-call-filter="@clock @memlock @pkey"
   skip_test test-errno-linux sysdeps/unix/sysv/linux/Makefile
   skip_test tst-ntp_gettime  sysdeps/unix/sysv/linux/Makefile
   skip_test tst-ntp_gettimex sysdeps/unix/sysv/linux/Makefile
@@ -159,17 +146,15 @@ check() {
 package() {
   pkgdesc='GNU C Library'
   depends=('linux-api-headers>=4.10' tzdata filesystem)
-  optdepends=('gd: for memusagestat')
+  optdepends=('gd: for memusagestat'
+              'perl: for mtrace')
   install=glibc.install
   backup=(etc/gai.conf
           etc/locale.gen
           etc/nscd.conf)
 
-  install -dm755 "$pkgdir/etc"
-  touch "$pkgdir/etc/ld.so.conf"
-
   make -C glibc-build install_root="$pkgdir" install
-  rm -f "$pkgdir"/etc/ld.so.{cache,conf}
+  rm -f "$pkgdir"/etc/ld.so.cache
 
   # Shipped in tzdata
   rm -f "$pkgdir"/usr/bin/{tzselect,zdump,zic}
@@ -191,24 +176,8 @@ package() {
   sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
     "$srcdir/glibc/localedata/SUPPORTED" >> "$pkgdir/etc/locale.gen"
 
-  if check_option 'debug' n; then
-    find "$pkgdir"/usr/bin -type f -executable -exec strip $STRIP_BINARIES {} + 2> /dev/null || true
-    find "$pkgdir"/usr/lib -name '*.a' -type f -exec strip $STRIP_STATIC {} + 2> /dev/null || true
-
-    # Do not strip these for gdb and valgrind functionality, but strip the rest
-    find "$pkgdir"/usr/lib \
-      -not -name 'ld-*.so' \
-      -not -name 'libc-*.so' \
-      -not -name 'libpthread-*.so' \
-      -not -name 'libthread_db-*.so' \
-      -name '*-*.so' -type f -exec strip $STRIP_SHARED {} + 2> /dev/null || true
-  fi
-
   # Provide tracing probes to libstdc++ for exceptions, possibly for other
   # libraries too. Useful for gdb's catch command.
   install -Dm644 "$srcdir/sdt.h" "$pkgdir/usr/include/sys/sdt.h"
   install -Dm644 "$srcdir/sdt-config.h" "$pkgdir/usr/include/sys/sdt-config.h"
-
-  # Provided by libxcrypt; keep the old shared library for backwards compatibility
-  rm -f "$pkgdir"/usr/include/crypt.h "$pkgdir"/usr/lib/libcrypt.{a,so}
 }
