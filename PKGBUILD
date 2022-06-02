@@ -43,6 +43,9 @@ prepare() {
 
 	# Initialise the recipes submodule
 	git submodule init
+	cd "$srcdir/$_sourcedirectory/recipes"
+	git reset --hard
+	cd "$srcdir/$_sourcedirectory/"
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
