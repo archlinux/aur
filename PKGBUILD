@@ -10,14 +10,14 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=0.178.0.r3855.f2acd615
+pkgver=0.178.0.r3885.eac54347
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
 license=('GPL2')
 depends=('python' 'python-m2crypto' 'diffstat')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-sphinx')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
             'obs-service-download_files: for running the download_files source service'
@@ -38,11 +38,6 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     python setup.py build
-}
-
-check() {
-    cd "${srcdir}/${_pkgname}"
-    python setup.py test
 }
 
 package() {
