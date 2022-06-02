@@ -4,7 +4,7 @@
 
 pkgname=istio-bin
 _pkgname=istio
-pkgver=1.13.4
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='An open platform to connect, manage, and secure microservices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,9 +20,9 @@ source_x86_64=("$_source_base/istio-$pkgver-linux-amd64.tar.gz")
 source_armv7h=("$_source_base/istio-$pkgver-linux-armv7.tar.gz")
 source_aarch64=("$_source_base/istio-$pkgver-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('a7066afc8ff91266f8903ce6c3c994aafc12da80175c5a3f9f7ab0ed7eaa020f')
-sha256sums_armv7h=('d1d5b03551184ca5fd599cb66c464ebddf97a3908ec0beca1c3b70b7f4f97358')
-sha256sums_aarch64=('1d6f68e6ae636ad858f4acb97a4691818bb7b6a589d2fdb76b4615a0d482253c')
+sha256sums_x86_64=('b2c048bf142282afcf806872731bd45e4958d3006e79bd2affa6d8204d37f328')
+sha256sums_armv7h=('d3e936e3cadc4449e9f4f2c0e3c5791dc77d91a85e401d576b96e726d33a6e78')
+sha256sums_aarch64=('5827cd123412de804a1ffe0e37fc7de495458fe6c80d1794608dcfc25460bbda')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
