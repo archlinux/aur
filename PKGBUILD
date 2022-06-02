@@ -17,6 +17,7 @@ makedepends=(intltool itstool docbook-xsl networkmanager
 options=(!emptydirs)
 conflicts=(evolution)
 replaces=(evolution)
+provides=(evolution)
 source=("git+https://gitlab.gnome.org/gnumdk/evolution.git#branch=archlinux")
 sha256sums=('SKIP')
 

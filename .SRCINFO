@@ -24,6 +24,7 @@ pkgbase = evolution-csd-git
 	depends = gspell
 	depends = libcryptui
 	depends = gnome-autoar
+	provides = evolution
 	conflicts = evolution
 	replaces = evolution
 	options = !emptydirs
