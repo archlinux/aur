@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r3011.a29b8d28
+pkgver=r3781.d9431853
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,6 @@ makedepends=('git'
 source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/ocornut/imgui.git'
         'git+https://github.com/ocornut/imgui_club.git'
-        'git+https://github.com/mateidavid/zstr.git'
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/fmtlib/fmt.git'
@@ -43,10 +42,17 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/herumi/xbyak'
         'git+https://github.com/grumpycoders/zep'
         'git+https://github.com/mackron/miniaudio.git'
-        'git+https://github.com/cameron314/concurrentqueue.git'
+        'git+https://github.com/TartanLlama/expected.git'
+        'git+https://github.com/grumpycoders/vixl.git'
+        'git+https://github.com/mity/md4c.git'
+        'git+https://github.com/mekhontsev/imgui_md.git'
+        'git+https://github.com/iafonov/multipart-parser-c.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -80,7 +86,6 @@ prepare() {
   git submodule init
   git config submodule.third_party/imgui.url "$srcdir/imgui"
   git config submodule.third_party/imgui_club.url "$srcdir/imgui_club"
-  git config submodule.third_party/zstr.url "$srcdir/zstr"
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
   git config submodule.third_party/fmt.url "$srcdir/fmt"
@@ -97,11 +102,14 @@ prepare() {
   git config submodule.third_party/xbyak.url "$srcdir/xbyak"
   git config submodule.third_party/zep.url "$srcdir/zep"
   git config submodule.third_party/miniaudio.url "$srcdir/miniaudio"
-  git config submodule.third_party/concurrentqueue.url "$srcdir/concurrentqueue"
+  git config submodule.third_party/expected.url "$srcdir/expected"
+  git config submodule.third_party/vixl.url "$srcdir/vixl"
+  git config submodule.third_party/md4c.url "$srcdir/md4c"
+  git config submodule.third_party/imgui_md.url "$srcdir/imgui_md"
+  git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
-                       third_party/zstr \
                        third_party/uC-sdk \
                        third_party/googletest \
                        third_party/fmt \
@@ -118,7 +126,11 @@ prepare() {
                        third_party/xbyak \
                        third_party/zep \
                        third_party/miniaudio \
-                       third_party/concurrentqueue
+                       third_party/expected \
+                       third_party/vixl \
+                       third_party/md4c \
+                       third_party/imgui_md \
+                       third_party/multipart-parser-c
 
   cd third_party/luv
   git submodule init
