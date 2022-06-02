@@ -1,8 +1,8 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasview
 pkgver=5.0.4
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Small-Angle Scattering Analysis"
 arch=(x86_64)
 url="https://sasview.org"
 license=('BSD')
@@ -15,7 +15,6 @@ depends=( python-setuptools
           python-pillow 
           python-pylint
           python-periodictable
-          python-bumps
           python-numpy
           python-scipy
           python-pyqt5
@@ -24,8 +23,7 @@ depends=( python-setuptools
           python-sphinx
           python-pyopencl
           python-ipykernel
-          ipython
-          jupyter
+          python-qtconsole
           python-twisted
 	  python-qt5reactor
 	  python-service-identity
@@ -44,10 +42,10 @@ build() {
 	python setup.py build_sphinx
 }
 
-#check() {
-#	cd "$pkgname-$pkgver"
-#	python setup.py test
-#}
+check() {
+	cd "${pkgname}-${pkgver}/test"
+	python utest_sasview.py
+}
 
 package() {
 	cd "$pkgname-$pkgver"
