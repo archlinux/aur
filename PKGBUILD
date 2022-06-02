@@ -387,6 +387,7 @@ package_lib32-gcc-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
   provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+  conflicts=(lib32-gcc-libs)
   groups=(multilib-devel)
   options=(!emptydirs !strip)
 

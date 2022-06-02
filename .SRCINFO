@@ -80,6 +80,7 @@ pkgname = lib32-gcc-libs-git
 	provides = libgfortran.so
 	provides = libubsan.so
 	provides = libasan.so
+	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
 
