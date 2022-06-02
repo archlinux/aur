@@ -1,11 +1,12 @@
 pkgbase = sencrypt
 	pkgdesc = sencrypt and sdecrypt are utilities for encrypting and decrypting data with the AES, DES, 3DES, and RC4 algorithms.
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.guido-berhoerster.org/projects/sencrypt/
 	arch = x86_64
 	arch = aarch64
 	license = CUSTOM
+	makedepends = libxslt
 	source = https://code.guido-berhoerster.org/projects/sencrypt/downloads/sencrypt-4.tar.gz
 	source = LICENSE
 	sha256sums = 3f2f9111a5a581b31d9ad85acefe692640dbdc1cd34816b8a115fbbe5ef4d3fe

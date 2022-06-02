@@ -2,10 +2,11 @@
 
 pkgname=sencrypt
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc='sencrypt and sdecrypt are utilities for encrypting and decrypting data with the AES, DES, 3DES, and RC4 algorithms.'
 url="https://code.guido-berhoerster.org/projects/sencrypt/"
 license=('CUSTOM')
+makedepends=('libxslt')
 arch=('x86_64' 'aarch64')
 source=("https://code.guido-berhoerster.org/projects/sencrypt/downloads/sencrypt-${pkgver}.tar.gz"
         "LICENSE")
