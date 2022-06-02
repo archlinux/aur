@@ -17,7 +17,7 @@ optdepends=('gconf: gconf configuration backend')
 conflicts=('libdesktop-agnostic')
 provides=('libdesktop-agnostic')
 backup=("etc/xdg/libdesktop-agnostic/desktop-agnostic.ini")
-source=("git://github.com/p12tic/libdesktop-agnostic.git")
+source=("git+https://github.com/p12tic/libdesktop-agnostic.git")
 md5sums=('SKIP')
 
 pkgver() {
