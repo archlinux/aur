@@ -58,7 +58,6 @@ pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (git version)
 	depends = glibc>=2.27
 	provides = gcc-libs-git=13.0.0_r193646.g3164de6ac1b-1
-	provides = gcc-libs
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	provides = libgo.so
@@ -74,8 +73,9 @@ pkgname = gcc-libs-git
 
 pkgname = lib32-gcc-libs-git
 	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
-	groups = multilib-devel
+	groups = multilib-devel-git
 	depends = lib32-glibc>=2.27
+	provides = lib32-gcc-libs
 	provides = libgo.so
 	provides = libgfortran.so
 	provides = libubsan.so
@@ -88,7 +88,7 @@ pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC (git version)
 	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
-	provides = gcc-fortran-git
+	provides = gcc-fortran
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-fortran
@@ -98,7 +98,6 @@ pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
 	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
-	provides = gcc-objc-git
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-objc

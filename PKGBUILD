@@ -40,8 +40,8 @@ checkdepends=(
 options=(!emptydirs !lto !debug)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=(git://gcc.gnu.org/git/gcc.git
-        c89 c99
-        gcc-ada-repro.patch
+  c89 c99
+  gcc-ada-repro.patch
 )
 sha256sums=('SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
@@ -72,33 +72,33 @@ prepare() {
 
 build() {
   local _confflags=(
-      --prefix=/usr
-      --libdir=/usr/lib
-      --libexecdir=/usr/lib
-      --mandir=/usr/share/man
-      --infodir=/usr/share/info
-      --with-bugurl=https://bugs.archlinux.org/
-      --with-linker-hash-style=gnu
-      --with-system-zlib
-      --enable-__cxa_atexit
-      --enable-cet=auto
-      --enable-checking=release
-      --enable-clocale=gnu
-      --enable-default-pie
-      --enable-default-ssp
-      --enable-gnu-indirect-function
-      --enable-gnu-unique-object
-      --enable-linker-build-id
-      --enable-lto
-      --enable-multilib
-      --enable-plugin
-      --enable-shared
-      --enable-threads=posix
-      --disable-libssp
-      --disable-libstdcxx-pch
-      --disable-werror
-      --with-build-config=bootstrap-lto
-      --enable-link-serialization=1
+    --prefix=/usr
+    --libdir=/usr/lib
+    --libexecdir=/usr/lib
+    --mandir=/usr/share/man
+    --infodir=/usr/share/info
+    --with-bugurl=https://bugs.archlinux.org/
+    --with-linker-hash-style=gnu
+    --with-system-zlib
+    --enable-__cxa_atexit
+    --enable-cet=auto
+    --enable-checking=release
+    --enable-clocale=gnu
+    --enable-default-pie
+    --enable-default-ssp
+    --enable-gnu-indirect-function
+    --enable-gnu-unique-object
+    --enable-linker-build-id
+    --enable-lto
+    --enable-multilib
+    --enable-plugin
+    --enable-shared
+    --enable-threads=posix
+    --disable-libssp
+    --disable-libstdcxx-pch
+    --disable-werror
+    --with-build-config=bootstrap-lto
+    --enable-link-serialization=1
   )
 
   cd gcc-build
@@ -116,10 +116,10 @@ build() {
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-          BOOT_CFLAGS="$CFLAGS" \
-          BOOT_LDFLAGS="$LDFLAGS" \
-          LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          bootstrap
+    BOOT_CFLAGS="$CFLAGS" \
+    BOOT_LDFLAGS="$LDFLAGS" \
+    LDFLAGS_FOR_TARGET="$LDFLAGS" \
+    bootstrap
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
@@ -136,10 +136,10 @@ build() {
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-          BOOT_CFLAGS="$CFLAGS" \
-          BOOT_LDFLAGS="$LDFLAGS" \
-          LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          all-gcc
+    BOOT_CFLAGS="$CFLAGS" \
+    BOOT_LDFLAGS="$LDFLAGS" \
+    LDFLAGS_FOR_TARGET="$LDFLAGS" \
+    all-gcc
 
   cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
@@ -155,8 +155,8 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC (git version)'
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgo.so libgfortran.so
-            libubsan.so libasan.so libtsan.so liblsan.so)
+  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so
+  libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs)
   replaces=(gcc-multilib-git)
 
@@ -165,14 +165,14 @@ package_gcc-libs-git() {
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
   for lib in libatomic \
-             libgfortran \
-             libgo \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub,t}san \
-             libstdc++-v3/src \
-             libvtv; do
+    libgfortran \
+    libgo \
+    libgomp \
+    libitm \
+    libquadmath \
+    libsanitizer/{a,l,ub,t}san \
+    libstdc++-v3/src \
+    libvtv; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
@@ -180,8 +180,8 @@ package_gcc-libs-git() {
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
   for lib in libgomp \
-             libitm \
-             libquadmath; do
+    libitm \
+    libquadmath; do
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
@@ -282,7 +282,7 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-fortran-git gcc-multilib{,-git})
+  provides=(gcc-fortran gcc-multilib{,-git})
   conflicts=(gcc-fortran)
   replaces=(gcc-multilib-git)
 
@@ -306,7 +306,7 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-objc-git gcc-multilib{,-git})
+  provides=(gcc-multilib{,-git})
   conflicts=(gcc-objc)
   replaces=(gcc-multilib-git)
 
@@ -386,9 +386,9 @@ package_gcc-go-git() {
 package_lib32-gcc-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
   depends=('lib32-glibc>=2.27')
-  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+  provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
   conflicts=(lib32-gcc-libs)
-  groups=(multilib-devel)
+  groups=(multilib-devel-git)
   options=(!emptydirs !strip)
 
   cd gcc-build
@@ -397,14 +397,14 @@ package_lib32-gcc-libs-git() {
   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
 
   for lib in libatomic \
-             libgfortran \
-             libgo \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub}san \
-             libstdc++-v3/src \
-             libvtv; do
+    libgfortran \
+    libgo \
+    libgomp \
+    libitm \
+    libquadmath \
+    libsanitizer/{a,l,ub}san \
+    libstdc++-v3/src \
+    libvtv; do
     make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
 
