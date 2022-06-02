@@ -12,7 +12,7 @@
 # 'cacule-rdb' - select 'CacULE-RDB scheduler'
 # 'bore' - select 'Burst-Oriented Response Enhancer'
 # 'cfs' - select 'Completely Fair Scheduler'
-_cpusched='bore'
+_cpusched='bmq'
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -112,9 +112,9 @@ _thin_lto_cachedir=
 _use_kcfi=
 
 if [ -n "$_use_llvm_lto" ]; then
-    pkgbase=linux-cachyos-lto
+    pkgbase=linux-cachyos-${_cpusched}-lto
 else
-    pkgbase=linux-cachyos
+    pkgbase=linux-cachyos-${_cpusched}
 fi
 _major=5.18
 _minor=1
@@ -127,7 +127,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
+pkgdesc='Linux BMQ scheduler Kernel by CachyOS with other patches and improvements'
 pkgrel=4
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -709,8 +709,7 @@ done
 
 sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
             '4c29c60f2a466df0be5b75a267611a2bf8f2f83b8cd69b0c262321d32e50147a'
-            '4ad6f3aedcf2b39d7e44b7f03639e0afee8267ea256192a0555dd973f09400a9'
-            'e8179f661dc9ba2ad89455f0c7e952e9dd9b4d6445476384cbac2730cdd46b65'
+            'c6c332c3cd44bdbb82923cdeb6b8c6bfc539ed42e439b11d82093d575c79bbc0'
             '85eeddbd0b1fdb44333c450e6d93e370dcd7e230cecccce47667aaa746bea3ae'
             '2bfe45a67732a97cea01bf760a8f9fb297057c2488eb9e61720a0bb26c9b11e2'
             '56f58801a73e6d930d7680806dc734b50b69617a0eef96244627d7a946b62efd'
