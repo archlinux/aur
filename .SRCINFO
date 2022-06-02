@@ -1,0 +1,17 @@
+pkgbase = otis-theme-git
+	pkgdesc = An elegant dark theme for gnome
+	pkgver = r51.5842557
+	pkgrel = 1
+	url = https://github.com/EliverLara/Otis
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Otis::git+https://github.com/EliverLara/Otis.git
+	sha256sums = SKIP
+
+pkgname = otis-theme-git

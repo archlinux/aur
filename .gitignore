@@ -1,0 +1,5 @@
+src
+pkg
+Otis
+*.pkg.tar.*
+tags
