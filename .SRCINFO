@@ -1,7 +1,7 @@
 pkgbase = libvirt-remote-only
 	pkgdesc = API for controlling virtualization engines (remote)
 	pkgver = 8.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libvirt.org/
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,6 @@ pkgbase = libvirt-remote-only
 	makedepends = libxslt
 	makedepends = iproute2
 	makedepends = rpcsvc-proto
-	depends = fuse3
 	depends = gnutls
 	depends = libssh
 	depends = libxml2
