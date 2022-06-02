@@ -1,0 +1,14 @@
+pkgbase = ttf-encom
+	pkgdesc = patched encom ttf font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://disneydigitalbooks.go.com/tron
+	arch = any
+	license = OFL
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	source = git+http://github.com/papuSpartan/ttf-encom.git
+	b2sums = SKIP
+
+pkgname = ttf-encom
