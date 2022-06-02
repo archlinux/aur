@@ -5,8 +5,8 @@
 
 _basename='gst-plugins-ugly'
 pkgname="lib32-${_basename}"
-pkgver=1.18.5
-pkgrel=2
+pkgver=1.20.2
+pkgrel=1
 pkgdesc='Multimedia graph framework - ugly plugins (32-bit)'
 url='https://gstreamer.freedesktop.org/'
 arch=('x86_64')
@@ -21,38 +21,33 @@ depends=(
     'lib32-x264'
 )
 makedepends=(
-    'git'
     'meson'
     'python'
 )
-_commit='bd1dfb44475ab04d42b217acdf90942e0b7893b5' # tags/1.18.5^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/${_basename}.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${_basename}"
-
-    git describe --tags | sed 's/-/+/g'
-}
+source=("${url}src/"${_basename}"/"${_basename}"-${pkgver}.tar.xz")
+sha256sums=('b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf')
 
 prepare() {
-    cd "${_basename}"
-}
+    # disable Python module import during build, which is not actually used for release versions
+    sed -e 's/python3/#python3/' -i "${_basename}-${pkgver}/meson.build"
 
-build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
+    export CFLAGS+=" ${LDFLAGS}"    # otherwise meson (or the project) ignores LDFLAGS
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    arch-meson "${_basename}" 'build' \
+    arch-meson "${_basename}-${pkgver}" 'build' \
         --libdir='lib32' \
         --libexecdir='lib32' \
         -Ddoc='disabled' \
+        -Dgpl='enabled' \
         -Dsidplay='disabled' \
         -Dgobject-cast-checks='disabled' \
-        -Dpackage-name='GStreamer Ugly Plugins (Arch Linux)' \
+        -Dpackage-name="Arch Linux ${pkgname} ${pkgver}-${pkgrel}" \
         -Dpackage-origin='https://www.archlinux.org/'
+}
 
+build() {
     meson compile -C 'build'
 }
 
