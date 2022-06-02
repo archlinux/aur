@@ -1,6 +1,6 @@
 pkgbase = tio
 	pkgdesc = The simple TTY terminal I/O application
-	pkgver = 1.37
+	pkgver = 1.38
 	pkgrel = 1
 	url = http://tio.github.io/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tio
 	makedepends = meson
 	depends = glibc
 	depends = libinih
-	source = https://github.com/tio/tio/releases/download/v1.37/tio-1.37.tar.xz
-	sha256sums = a54cd09baeaabd306fdea486b8161eea6ea75bb970b27cae0e8e407fb2dd7181
+	source = https://github.com/tio/tio/releases/download/v1.38/tio-1.38.tar.xz
+	sha256sums = 5945b0ff27756bc5728c34bce7557d8160829c6abb05f21790a5458e9d6324b5
 
 pkgname = tio
