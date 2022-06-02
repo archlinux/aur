@@ -16,4 +16,3 @@ pkgbase = ros-melodic-tf2-py
 	sha256sums = 4955f3ca30d194b0e0842f59b97a72d0e933908c20c56c8c374c152ab02568d1
 
 pkgname = ros-melodic-tf2-py
-

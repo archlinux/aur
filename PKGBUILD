@@ -52,9 +52,9 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
-		-DPYTHON_BASENAME=.cpython-39 \
+		-DPYTHON_INCLUDE_DIR=/usr/include/python3.10 \
+		-DPYTHON_LIBRARY=/usr/lib/libpython3.10.so \
+		-DPYTHON_BASENAME=.cpython-310 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
