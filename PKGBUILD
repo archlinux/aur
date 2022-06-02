@@ -1,21 +1,19 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: ValHue <vhuelamo at gmail dot com>
 
 _pkgname="mate-window-applets"
 pkgname="mate-window-buttons-applet"
-pkgver=20.04.0
+pkgver=21.04.0
 pkgrel=1
 pkgdesc="An applet for mate-panel to shows the close,minimize,actions in a panel."
 url="https://github.com/ubuntu-mate/mate-window-applets"
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('mate-panel')
 makedepends=('meson' 'vala')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
-options=('!strip')
-source=("mate-window-applets-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('788dd84b1c8b8d9fe38453612f9058485d87e9f152ff7ea9e1681f005a360a48')
+source=("mate-window-applets-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('721c1a65fb47f0d80a12798897c65e9c48ef6cc78d1132e2018681e22f00a89d')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -26,10 +24,6 @@ build() {
 
 package() {
     cd "${_pkgname}-${pkgver}/build"
-    export DESTDIR="${pkgdir}"
-    ninja install
+    DESTDIR="${pkgdir}" ninja install
     cp -a ../data/pixmaps/* "${pkgdir}/usr/share/icons/"
-    install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=4 sw=4 et syn=sh ft=sh:
