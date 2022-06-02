@@ -2,12 +2,13 @@
 
 _pkgname=schain
 pkgname="${_pkgname}-git"
-pkgver=r98.a3954f5
+pkgver=r128.e27446d
 pkgrel=1
 pkgdesc='A simple habit tracker'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${_pkgname}"
 license=('MIT')
+makedepends=('git')
 source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
