@@ -30,8 +30,6 @@ pkgbase = ferdium-git
 	provides = ferdium
 	conflicts = ferdium
 	source = ferdium-git::git+https://github.com/ferdium/ferdium-app#branch=develop
-	source = fix-autostart-path.diff
 	sha512sums = SKIP
-	sha512sums = a38d053f249ab291049edb1afb61dcf4e513ab2ca15787861db6d06a181d41fa1a5a690688237bff4bb28efc8a09eae7759742699b1da5c124a037709c6f0eca
 
 pkgname = ferdium-git
