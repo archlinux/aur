@@ -2,7 +2,7 @@
 # Co-Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 pkgname=vale-bin
 _pkgname=vale
-pkgver=2.15.5
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 provides=('vale')
@@ -14,9 +14,9 @@ source=("${_pkgname}-${pkgver}-bin.tar.gz::${url}/releases/download/v${pkgver}/$
         "${_pkgname}-${pkgver}_LICENSE::https://raw.githubusercontent.com/errata-ai/${_pkgname}/v${pkgver}/LICENSE"
         "${_pkgname}-${pkgver}_README.md::https://raw.githubusercontent.com/errata-ai/${_pkgname}/v${pkgver}/README.md")
 
-sha256sums=('6df0e54dec7b114d69e374d68c998d99a174ab8c28ee2506cb3e85ac641a7dc3'
+sha256sums=('d4f107141594debe06c9e5a5f385f9ed11f7b213536a6b69028a5914697d0ce6'
             'a47705b82ea39864e55f418911a5046bbc66533755d4dd9302bb76abe38fadb3'
-            '8efbedd9f8fdd0f29285cfca1b53d71cc7607e48ad83e319fff66214f4301632')
+            '427b465fd2d85dbd5adf398c395b063cd40ae833ab73e4754afaf96113b1d095')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
