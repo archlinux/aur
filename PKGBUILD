@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.17.0
+pkgver=0.20.beta1
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -21,8 +21,9 @@ makedepends=(
 	vala
 	wayland-protocols
 )
+_commit=0.20.0_beta1
 source=(
-	"git+${url}.git#tag=v${pkgver}"
+	"git+${url}.git#tag=v${_commit}"
 	"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
 )
 b2sums=('SKIP' 'SKIP')
