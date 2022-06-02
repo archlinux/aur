@@ -4,3 +4,6 @@ gst-plugins-ugly/
 *.pkg.tar
 pkg/
 src/
+*.orig
+*.bak
+*.backup
