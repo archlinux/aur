@@ -1,6 +1,6 @@
-# Maintainer: AvianaCruz <gwencroft@proton.me>
+# Maintainer: AvianaCruz <gwencroft <at> proton <dot> me>
 # Contributor: Rowisi < nomail <at> private <dot> com >
-# Contributor: So1ar <so1ar114514@gmail.com>
+# Contributor: So1ar <so1ar114514 <at> gmail <dot> com>
 
 pkgname=hmcl-new
 _ver=3.5.3
@@ -11,7 +11,7 @@ pkgdesc='An unofficial build of HMCL that trying to compile and run with the lat
 arch=('any')
 url='https://github.com/skbeh/HMCL-build'
 license=('GPL3')
-depends=('java-openjfx')
+depends=('java-openjfx>=17')
 provides=('hmcl')
 conflicts=('hmcl')
 source=('hmcl.desktop'
