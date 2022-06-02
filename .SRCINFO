@@ -1,7 +1,7 @@
 pkgbase = xsnow-comp-patch-git
 	pkgdesc = Compositor-friendly patch for Xsnow
 	pkgver = 16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protractorninja/xsnow-comp-patch
 	arch = i686
 	arch = x86_64
