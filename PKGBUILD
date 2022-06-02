@@ -1,7 +1,7 @@
 # Maintainer: FineFindus <Finefindusgh@gmail.com>
 pkgname=artem
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert images from multiple formats (jpg, png, webp, etc…) to ASCII art, written in Rust'
 arch=('x86_64' 'aarch64')
 url='https://github.com/finefindus/artem'
@@ -37,7 +37,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	cargo test --frozen
+	cargo test --frozen --test '*'
 }
 
 package() {
