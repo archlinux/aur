@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ginkgo-git
-pkgver=v2.1.4.r0.g4fbf042
+pkgver=2.1.4.r4.g71ebb74
 pkgrel=1
 pkgdesc="BDD Testing Framework for Go"
 arch=('x86_64')
@@ -10,41 +10,37 @@ license=('MIT')
 depends=()
 makedepends=('go')
 optdepends=()
-conflicts=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/onsi/ginkgo.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	mkdir -p "${srcdir}/go/src/github.com/onsi"
-	cp -a "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/onsi/ginkgo"
-
-	cd "${srcdir}/go/src/github.com/onsi/ginkgo"
-
-	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-	go get -v -t ./...
+    mkdir -p "${srcdir}/go/src/github.com/onsi"
+    ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/onsi/ginkgo"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/onsi/ginkgo"
+    cd "${srcdir}/go/src/github.com/onsi/ginkgo"
 
     mkdir -p build
 
-	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-	go build \
-        -trimpath -ldflags "-s -w" \
-        -o ./build/ginkgo ./ginkgo
+    export GOPATH="${srcdir}/go"
+    go build \
+        -trimpath -modcacherw -ldflags "-s -w" \
+        -o build/ginkgo ./ginkgo
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/onsi/ginkgo"
+    cd "${srcdir}/go/src/github.com/onsi/ginkgo"
 
-	install -Dm755 "build/ginkgo" "${pkgdir}/usr/bin/ginkgo"
+    install -Dm755 build/ginkgo "${pkgdir}/usr/bin/ginkgo"
 }

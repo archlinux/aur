@@ -1,11 +1,13 @@
 pkgbase = ginkgo-git
 	pkgdesc = BDD Testing Framework for Go
-	pkgver = v2.1.4.r0.g4fbf042
+	pkgver = 2.1.4.r4.g71ebb74
 	pkgrel = 1
 	url = http://onsi.github.io/ginkgo/
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	provides = ginkgo
+	conflicts = ginkgo
 	source = ginkgo-git::git+https://github.com/onsi/ginkgo.git
 	sha256sums = SKIP
 
