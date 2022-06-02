@@ -4,12 +4,12 @@
 _pkgname=libvirt
 pkgname=${_pkgname}-remote-only
 pkgver=8.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="API for controlling virtualization engines (remote)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
-depends=('gnutls' 'libssh' 'libxml2' 'polkit' 'openbsd-netcat')
+depends=('gnutls' 'libxml2' 'openbsd-netcat')
 replaces=("${_pkgname}")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -32,6 +32,7 @@ build() {
     -Dbash_completion=disabled \
     -Dblkid=disabled \
     -Dcapng=disabled \
+    -Dcurl=disabled \
     -Ddocs=disabled \
     -Ddriver_bhyve=disabled \
     -Ddriver_ch=disabled \
@@ -44,6 +45,8 @@ build() {
     -Ddriver_network=disabled \
     -Ddriver_openvz=disabled \
     -Ddriver_qemu=disabled \
+    -Ddriver_remote=enabled \
+    -Ddriver_secrets=disabled \
     -Ddriver_test=disabled \
     -Ddriver_vbox=disabled \
     -Ddriver_vmware=disabled \
@@ -57,6 +60,7 @@ build() {
     -Dlibiscsi=disabled \
     -Dlibnl=disabled \
     -Dlibpcap=disabled \
+    -Dlibssh2=disabled \
     -Dlibssh=disabled \
     -Dlogin_shell=disabled \
     -Dnetcf=disabled \
@@ -67,6 +71,7 @@ build() {
     -Dopenwsman=disabled \
     -Dpciaccess=disabled \
     -Dpm_utils=disabled \
+    -Dpolkit=disabled \
     -Dsanlock=disabled \
     -Dsasl=disabled \
     -Dsecdriver_apparmor=disabled \
