@@ -1,0 +1,24 @@
+pkgbase = noto-fonts-variable-ar
+	pkgdesc = Google Noto TTF variable fonts for Arabic Scripts
+	pkgver = 20220406
+	pkgrel = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = custom:SIL
+	optdepends = noto-fonts-emoji: Emoji characters
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/unhinted/variable-ttf/NotoKufiArabic-VF.ttf
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/unhinted/variable-ttf/NotoNaskhArabic-VF.ttf
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/unhinted/variable-ttf/NotoNaskhArabicUI-VF.ttf
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/unhinted/variable-ttf/NotoSansArabic-VF.ttf
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/unhinted/variable-ttf/NotoSansArabicUI-VF.ttf
+	source = https://github.com/googlefonts/noto-fonts/raw/c129ad2a857a10a429b20300f82bb90262008c17/LICENSE
+	source = 70-noto-ar.conf
+	sha256sums = 979c3f5deedf862d52ff355ac1f4f048356df213988d116f0fdef6cbf77d2b88
+	sha256sums = 04b2d1843cb5f83bfddace0bdde2696ee4ccafdcdad77419279e1971b6534d9c
+	sha256sums = 3eda34aba1c8fb30f2a9dc8e38c8f183c28efcaf851607e746ef4960bb44cddb
+	sha256sums = f37d1410cef1c92913cc119e8369f36e6e935b7e38f635774898210c0f9d12ff
+	sha256sums = 5757c1b8e2083ea51e96e70c3755dd5fcf645ef6a987472fea82b0b052082674
+	sha256sums = 0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb
+	sha256sums = e9eac74b4b261bea372d464e8a04ab225aa2faba0ba1f9e85ab63bf1222e8b8b
+
+pkgname = noto-fonts-variable-ar
