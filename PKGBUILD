@@ -5,14 +5,14 @@
 _pkgname='pass-rotate'
 pkgname="${_pkgname}-git"
 pkgver=0.1+13.r73.20220113.06c7034
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool and library for rotating your password on online services."
 arch=('any')
 url="https://git.sr.ht/~sircmpwn/pass-rotate"
 license=('MIT')
 groups=()
 depends=(
-  'python'
+  'python>=3'
   'python-beautifulsoup4'
   'python-docopt'
   'python-html5lib'
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'python-setuptools'
 )
 provides=(
   "${_pkgname}=${pkgver}"
