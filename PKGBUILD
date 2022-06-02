@@ -3,7 +3,7 @@
 pkgname=perl-coro
 _realname=Coro
 pkgver=6.57
-pkgrel=1
+pkgrel=1.1
 pkgdesc="CPAN/Coro - the only real threads in perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
