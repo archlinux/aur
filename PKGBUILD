@@ -12,7 +12,7 @@
 # 'cacule-rdb' - select 'CacULE-RDB scheduler'
 # 'bore' - select 'Burst-Oriented Response Enhancer'
 # 'cfs' - select 'Completely Fair Scheduler'
-_cpusched='bmq'
+_cpusched='bore'
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -112,9 +112,9 @@ _thin_lto_cachedir=
 _use_kcfi=
 
 if [ -n "$_use_llvm_lto" ]; then
-    pkgbase=linux-cachyos-${_cpusched}-lto
+    pkgbase=linux-cachyos-lto
 else
-    pkgbase=linux-cachyos-${_cpusched}
+    pkgbase=linux-cachyos
 fi
 _major=5.18
 _minor=1
@@ -127,8 +127,8 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux BMQ scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgdesc='Linux BORE scheduler Kernel by CachyOS with other patches and improvements'
+pkgrel=4
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -160,7 +160,11 @@ if [ "$_cpusched" = "cacule-rdb" ]; then
     source+=("${_patchsource}/sched/0001-cacULE-5.18.patch")
 fi
 if [ "$_cpusched" = "bore" ]; then
-    source+=("${_patchsource}/sched/0001-bore-sched.patch")
+    source+=("${_patchsource}/sched/0001-bore-sched.patch"
+             "${_patchsource}/0001-migrate.patch")
+fi
+if [ "$_cpusched" = "cfs" ]; then
+             source+=("${_patchsource}/0001-migrate.patch")
 fi
 source+=(
     "${_patchsource}/0001-amd-perf.patch"
@@ -704,20 +708,21 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('83d14126c660186a7a1774a4a5c29d38e170fa5e52cfd2d08fd344dcf1f57d22'
-            '1f846f3f08d97322fbb97045d768ab4bf90020ae77ead1407e05d5b463c31f16'
-            'c6c332c3cd44bdbb82923cdeb6b8c6bfc539ed42e439b11d82093d575c79bbc0'
-            '9824cd3a41db040bf28d6538aa4805f869333139cbcf43e0422e1b42f5401270'
+            '4c29c60f2a466df0be5b75a267611a2bf8f2f83b8cd69b0c262321d32e50147a'
+            '4ad6f3aedcf2b39d7e44b7f03639e0afee8267ea256192a0555dd973f09400a9'
+            'e8179f661dc9ba2ad89455f0c7e952e9dd9b4d6445476384cbac2730cdd46b65'
+            '85eeddbd0b1fdb44333c450e6d93e370dcd7e230cecccce47667aaa746bea3ae'
             '2bfe45a67732a97cea01bf760a8f9fb297057c2488eb9e61720a0bb26c9b11e2'
             '56f58801a73e6d930d7680806dc734b50b69617a0eef96244627d7a946b62efd'
-            '09d2b3d6b919091f0f313609bdfd7603bfaa8765f0edeaf15efca2aec78284eb'
-            '3e217f0cb056bd823b0d593e5fb66e6acd891a21e1ba6343b7b976c4f9075521'
+            '3754c1ad6bc2fb4e73e9d77137e9f245b3be1a73a05685f0ca03f4c086e5d04d'
+            'e2266d499cebdd5d195a044048ae4a13755f1d3edb3ece2c3f8837228b4cd521'
             'c2bf57d37db1f93c5f3eeff2e2957f01618f4786613c13755f9ae6989d2b745c'
             '30fd4ca078cb1eee0bc4005700da4d15515a577ccdb96ea7922040aa9086d6b7'
-            'abc95e53c38673adb1be0f961c1ce1b5fdc22d150149bffae4b70a21201bc726'
-            'fa8beb48c2e78f5337c6b08d1b6b6575bd01e2f34673d4056f35a1b28165d1ce'
+            '75aabb11608394725b8f38a7d813a12e6fb1a521a48eb3c078df80419c2675c7'
+            '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
             'c1aae07261bafc711c2d66e26c2c30e444e11509cacc7aec148dc021761294cd'
-            '17e8ec78d3df7a1965d3b1667c3323479e94c15a6d3fe59ba17cd73f06a21394'
-            '65a1a31af7923f5f99b11fe45305f176d75904e05addff168d09517c403e45e1'
+            '781cd26d7b0794d11f103ada94140061117c628471a4c49f0228f22f0a6cf425'
+            '99b18e00ca3e038481a23f4c83bc285a1ad0e209d049a8476c8f997627aaea79'
             'd2c542b3d44ef11364248c550d20ec7b52261cd98ee5191c24d59c9e0a69392e'
             '8edf9b9b1a9c26cc4d6dfaf5f14c06b197a04c5bbb8459dd292c033aa2534d19'
             'efe8558b63feb0e76b61d69952c5300ad54c951d9044101be7c01932a54fb4fb'
