@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=aws-c-common-git
-pkgver=v0.7.0.r0.g9b2a8b75
+pkgver=0.7.4.r2.g5fa42756
 pkgrel=1
 pkgdesc="AWS SDK for C++"
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
