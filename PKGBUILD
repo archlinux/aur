@@ -2,7 +2,7 @@
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=v1.3.0.r99.g7ccaba6
+pkgver=1.3.0.r102.ga02b845
 pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
