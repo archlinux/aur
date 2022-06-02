@@ -1,0 +1,5 @@
+pkg/
+src/
+LICENSE
+geesefs-linux-amd64
+*.tar.zst
