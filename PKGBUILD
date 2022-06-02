@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=boston-icon-theme-git
-pkgver=r268.ccaf46d
+pkgver=r330.c4081fe
 pkgrel=1
 pkgdesc="Boston is a highly minimalist icon theme, with a sober color palette inspired on basic hues."
 arch=('any')
