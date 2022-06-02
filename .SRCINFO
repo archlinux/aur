@@ -1,12 +1,12 @@
 pkgbase = adwaita-shell-theme
 	pkgdesc = GNOME's default shell theme, without any third-party tweaks
-	pkgver = 40.3
+	pkgver = 42.2
 	pkgrel = 1
-	url = https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme
+	url = https://gitlab.gnome.org/GNOME/gnome-shell/-/tree/main/data/theme
 	arch = any
 	license = GPL
 	makedepends = sassc
-	source = https://gitlab.gnome.org/GNOME/gnome-shell/-/archive/40.3/gnome-shell-40.3.tar.gz
-	sha256sums = 19456eb16e613694053416f2c2d5eb50a38352c334879975d10626b35ecf1f7c
+	source = https://gitlab.gnome.org/GNOME/gnome-shell/-/archive/42.2/gnome-shell-42.2.tar.gz
+	sha256sums = 6e609f863c8831fd5f2728ffc3fab94c37425ae318ea9947747c5a508aa925d5
 
 pkgname = adwaita-shell-theme
