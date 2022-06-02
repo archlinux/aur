@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.17.9.arch1.r1075854.40eaef7e8049
-_srcver_tag=v5.17.9.arch1
+pkgver=v5.18.1.arch1.r1092057.fad6d13aa55f
+_srcver_tag=v5.18.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -92,7 +92,7 @@ _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 source=(
     "${_reponame}::git+${_repo_url}#branch=master"
     "${_reponame_arch}::git+${_repo_url_arch}"
-    "${_reponame_upstream}::git+${_repo_url_upstream}"
+    #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
 )
@@ -105,8 +105,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '026d34f348b148b56f5a962bbffd6f353178e2c9f3226548a703572208aee0ec09657f1d77f49e2ab76294d7d5d51f4784f9b981dcda97454367c0d346a790f8')
+            '57c24da65fe1f59ef03ad4b22717aa26c3c183ca0e1b996f9b62b69715b45701cba086e660a0c26c2333a70e941a52726334ed88aaa0d9a78cc21527c439d89f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
