@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OFToast
+GenericName=Open Fortress installing and updating tool.
+Comment=Open Fortress frontend for Toast (TVN).
+Icon=toast
+Type=Application
+Categories=Application;Game;Tools;Network
+Exec=oftoast
+Terminal=false
