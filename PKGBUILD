@@ -10,7 +10,8 @@ depends=(gtk4 libadwaita jsoncpp libcurlpp)
 makedepends=(git cmake)
 source=("git+https://github.com/nlogozzo/NickvisionApplication.git"
         "git+https://github.com/Makman2/GCR_CMake.git")
-sha256sums=("SKIP")
+sha256sums=("SKIP"
+            "SKIP")
 
 prepare() {
 	mkdir -p build
@@ -31,5 +32,5 @@ build() {
 package() {
 	cd build
 	make DESTDIR="$pkgdir/" install
-    ln -s /usr/bin/org.nickvision.application ${pkgdir}/usr/bin/nickvision
+    sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
 }

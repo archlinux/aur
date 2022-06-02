@@ -14,5 +14,6 @@ pkgbase = nickvision-application-git
 	source = git+https://github.com/nlogozzo/NickvisionApplication.git
 	source = git+https://github.com/Makman2/GCR_CMake.git
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nickvision-application-git
