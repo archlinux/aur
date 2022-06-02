@@ -9,8 +9,8 @@
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
-pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,libgccjit}-git)
-pkgver=13.0.0_r192889.g0c723bb4be2
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,libgccjit}-git)
+pkgver=13.0.0_r193646.g3164de6ac1b
 _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
@@ -71,33 +71,35 @@ prepare() {
 }
 
 build() {
-  local _confflags="--prefix=/usr \
-      --libdir=/usr/lib \
-      --libexecdir=/usr/lib \
-      --mandir=/usr/share/man \
-      --infodir=/usr/share/info \
-      --with-bugurl=https://bugs.archlinux.org/ \
-      --with-linker-hash-style=gnu \
-      --with-system-zlib \
-      --enable-__cxa_atexit \
-      --enable-cet=auto \
-      --enable-checking=release \
-      --enable-clocale=gnu \
-      --enable-default-pie \
-      --enable-default-ssp \
-      --enable-gnu-indirect-function \
-      --enable-gnu-unique-object \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-multilib \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads=posix \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-werror \
-      --with-build-config=bootstrap-lto \
-      --enable-link-serialization=1"
+  local _confflags=(
+      --prefix=/usr
+      --libdir=/usr/lib
+      --libexecdir=/usr/lib
+      --mandir=/usr/share/man
+      --infodir=/usr/share/info
+      --with-bugurl=https://bugs.archlinux.org/
+      --with-linker-hash-style=gnu
+      --with-system-zlib
+      --enable-__cxa_atexit
+      --enable-cet=auto
+      --enable-checking=release
+      --enable-clocale=gnu
+      --enable-default-pie
+      --enable-default-ssp
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-linker-build-id
+      --enable-lto
+      --enable-multilib
+      --enable-plugin
+      --enable-shared
+      --enable-threads=posix
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-werror
+      --with-build-config=bootstrap-lto
+      --enable-link-serialization=1
+  )
 
   cd gcc-build
 
@@ -110,14 +112,14 @@ build() {
   "$srcdir/gcc/configure" \
     --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
     --enable-bootstrap \
-    $_confflags
+    "${_confflags[@]:?_confflags unset}"
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
           BOOT_CFLAGS="$CFLAGS" \
           BOOT_LDFLAGS="$LDFLAGS" \
           LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          profiledbootstrap
+          bootstrap
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
@@ -130,7 +132,7 @@ build() {
     --enable-languages=jit \
     --disable-bootstrap \
     --enable-host-shared \
-    $_confflags
+    "${_confflags[@]:?_confflags unset}"
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
@@ -153,10 +155,10 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC (git version)'
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so
+  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs)
-  replaces=(gcc-multilib-git libgphobos-git)
+  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -280,7 +282,7 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-fortran gcc-multilib{,-git})
+  provides=(gcc-fortran-git gcc-multilib{,-git})
   conflicts=(gcc-fortran)
   replaces=(gcc-multilib-git)
 
@@ -304,7 +306,7 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-multilib{,-git})
+  provides=(gcc-objc-git gcc-multilib{,-git})
   conflicts=(gcc-objc)
   replaces=(gcc-multilib-git)
 
@@ -381,42 +383,40 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-#package_lib32-gcc-libs-git() {
-#  pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
-#  depends=('lib32-glibc>=2.27')
-#  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
-#  groups=(multilib-devel)
-#  options=(!emptydirs !strip)
-#
-#  cd gcc-build
-#
-#  make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
-#  rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
-#
-#  for lib in libatomic \
-#             libgfortran \
-#             libgo \
-#             libgomp \
-#             libitm \
-#             libquadmath \
-#             libsanitizer/{a,l,ub}san \
-#             libstdc++-v3/src \
-#             libvtv; do
-#    make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
-#  done
-#
-#  make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
-#
-#  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-#  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
-#
-#  # remove files provided by gcc-libs
-#  rm -rf "$pkgdir"/usr/lib
-#
-#  # Install Runtime Library Exception
-#  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
-#    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
-#}
+package_lib32-gcc-libs-git() {
+  pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
+  depends=('lib32-glibc>=2.27')
+  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+  groups=(multilib-devel)
+  options=(!emptydirs !strip)
+
+  cd gcc-build
+
+  make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
+  rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
+
+  for lib in libatomic \
+             libgfortran \
+             libgo \
+             libgomp \
+             libitm \
+             libquadmath \
+             libsanitizer/{a,l,ub}san \
+             libstdc++-v3/src \
+             libvtv; do
+    make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+  done
+
+  make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
+
+  # remove files provided by gcc-libs
+  rm -rf "$pkgdir"/usr/lib
+
+  # Install Runtime Library Exception
+  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
+    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+
+}
 
 package_libgccjit-git() {
   pkgdesc="Just-In-Time Compilation with GCC backend (git version)"

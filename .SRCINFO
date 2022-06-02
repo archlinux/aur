@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 13.0.0_r192889.g0c723bb4be2
+	pkgver = 13.0.0_r193646.g3164de6ac1b
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
 	groups = base-devel-git
-	depends = gcc-libs-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-libs-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
@@ -57,7 +57,7 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (git version)
 	depends = glibc>=2.27
-	provides = gcc-libs=13.0.0_r192889.g0c723bb4be2-1
+	provides = gcc-libs-git=13.0.0_r193646.g3164de6ac1b-1
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	provides = libgo.so
@@ -68,15 +68,25 @@ pkgname = gcc-libs-git
 	provides = liblsan.so
 	conflicts = gcc-libs
 	replaces = gcc-multilib-git
-	replaces = libgphobos-git
+	options = !emptydirs
+	options = !strip
+
+pkgname = lib32-gcc-libs-git
+	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
+	groups = multilib-devel
+	depends = lib32-glibc>=2.27
+	provides = libgo.so
+	provides = libgfortran.so
+	provides = libubsan.so
+	provides = libasan.so
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
-	provides = gcc-fortran
+	provides = gcc-fortran-git
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-fortran
@@ -84,8 +94,9 @@ pkgname = gcc-fortran-git
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
+	provides = gcc-objc-git
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-objc
@@ -93,7 +104,7 @@ pkgname = gcc-objc-git
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT) (git version)
-	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
 	provides = gcc-ada
 	provides = gcc-multilib
@@ -105,7 +116,7 @@ pkgname = gcc-ada-git
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
 	provides = go=1.18
 	provides = gcc-multilib
@@ -117,5 +128,5 @@ pkgname = gcc-go-git
 
 pkgname = libgccjit-git
 	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
-	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
 	depends = libisl.so
