@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=cvechecker-git
-pkgver=cvechecker.4.0.r17.gb4cda96
+pkgver=4.0.r25.g16ccb70
 pkgrel=1
 pkgdesc="a local CVE checker tool"
 arch=('i686' 'x86_64')
@@ -15,31 +15,31 @@ conflicts=('cvechecker')
 replaces=()
 backup=()
 options=()
-install='cvechecker.install'
+install=cvechecker.install
 noextract=()
 source=("${pkgname}::git+https://github.com/sjvermeu/cvechecker.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g;s/^cvechecker.//'
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	autoreconf -ivf
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--enable-sqlite3
-	make
+    autoreconf -ivf
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --enable-sqlite3
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 }

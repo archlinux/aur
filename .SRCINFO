@@ -1,6 +1,6 @@
 pkgbase = cvechecker-git
 	pkgdesc = a local CVE checker tool
-	pkgver = cvechecker.4.0.r17.gb4cda96
+	pkgver = 4.0.r25.g16ccb70
 	pkgrel = 1
 	url = https://github.com/sjvermeu/cvechecker
 	install = cvechecker.install
@@ -18,6 +18,6 @@ pkgbase = cvechecker-git
 	provides = cvechecker
 	conflicts = cvechecker
 	source = cvechecker-git::git+https://github.com/sjvermeu/cvechecker.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = cvechecker-git
