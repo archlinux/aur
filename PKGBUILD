@@ -6,7 +6,7 @@
 
 pkgname=lib32-libmikmod
 pkgver=3.3.11.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Module player library supporting many formats, including MOD, S3M, IT and XM (32-bit)"
 url=http://mikmod.sourceforge.net
 license=(
