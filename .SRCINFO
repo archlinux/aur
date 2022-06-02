@@ -1,0 +1,27 @@
+pkgbase = r-here
+	pkgdesc = Constructs paths to your project's files
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=here
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	checkdepends = r-rlang
+	checkdepends = r-uuid
+	checkdepends = r-withr
+	depends = r
+	depends = r-rprojroot>=2.0.2
+	optdepends = r-covr
+	optdepends = r-conflicted
+	optdepends = r-fs
+	optdepends = r-knitr
+	optdepends = r-palmerpenguins
+	optdepends = r-plyr
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/here_1.0.1.tar.gz
+	source = CRANMIT::https://cran.r-project.org/web/licenses/MIT
+	sha512sums = 7710f4c85e6c24cb4f7b24c5f904535432475a4d28e29ebe957e511bc13e8806d52f2c04583335a2a0419dcf524b4e9631d62b2e8d6bcfb2d0f018ae55cd3ba2
+	sha512sums = 20e82bfce7b50a3adfccad5f56e13c82449da19a8dfb92f8395210dd6cf69a1962aaa114743faae02388132431d855361880b2bb26e2e30da9630a05360f42f5
+
+pkgname = r-here
