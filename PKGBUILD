@@ -4,7 +4,7 @@
 # It's dependencies requiere to be build in this order:
 # wine -> vkd3d-valve -> wine-valve -> proton
 pkgname=legendary
-pkgver=0.20.25
+pkgver=0.20.26
 pkgrel=1
 pkgdesc="A free and open-source replacement for the Epic Games Launcher "
 arch=('any')
@@ -30,7 +30,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('4ad0a56a73298b5686ebfbc22ce476619db1af4b40ce288ff64fa985ee975262')
+sha256sums=('fe360e9c29641689d850369c04eb9a152a03292826956ddfee751cac3975972c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
