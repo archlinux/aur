@@ -1,0 +1,4 @@
+/pkg
+/src
+/polars-*.tar.gz
+/python-polars-*.tar*
