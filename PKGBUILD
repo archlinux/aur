@@ -2,13 +2,13 @@
 
 pkgname=warp-share-files-git
 _pkgname=warp
-pkgver=0.1.1.r5.g338a51e
+pkgver=0.1.2.r108.g917f435
 pkgrel=1
 pkgdesc="Share files with each other effortlessly"
 arch=('x86_64')
-url="https://gitlab.gnome.org/felinira/warp"
+url="https://gitlab.gnome.org/World/warp"
 license=('GPL3')
-depends=('glib2' 'libadwaita')
+depends=('glib2' 'libadwaita' 'magic-wormhole')
 makedepends=('git' 'meson' 'rust' 'itstool')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
@@ -29,9 +29,9 @@ build() {
   meson compile -C build
 }
 
-check() {
-  meson test -C build
-}
+#check() {
+#  meson test -C build
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
