@@ -1,35 +1,28 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='harvest'
-pkgver=0.4
-pkgrel=2
+_tag='1ef58c952d54924a8afc11afe1a2b8d126be5a62' # git rev-parse v${pkgver}
+pkgver=0.8
+pkgrel=1
 pkgdesc='Tool to sort large collections of files according to common typologies'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/dyne/harvest'
 license=('GPL3')
-depends=('zsh')
-source=(https://files.dyne.org/$pkgname/$pkgname-$pkgver.tar.gz
-        https://files.dyne.org/$pkgname/$pkgname-$pkgver.tar.gz.asc)
-sha512sums=('6a2de69e5ac5d7a3c79c2f27ceae52f4c8386fa648b1c8521cf6925b09b7334429b95f3352adba842e82b8f66214bd7b74f479fad96bc5df08a2d11e103419d8'
-            '1277ff4d225867eb01c7e1b05c7a44bc9d82b987df720052509f457d546e6c3fa96338e02f3e48e84e1b91cb03cf3de162cd7fe599bb145d830a7f1df8dcd176')
-_prefix=usr
-
-# The public key is found at https://keybase.io/jaromil
-# gpg --recv-keys 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
-validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
+makedepends=('git' 'lua-inspect' 'luajit' 'luastatic' 'pkg-config')
+source=("git+https://github.com/dyne/harvest.git#tag=$_tag")
+sha512sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i -e "s|/usr/local/share/harvest|/$_prefix/share/harvest|" harvest
+  cd "$pkgname"
+  git submodule update --init --recursive
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  make
+  cd "$pkgname"
+  make PREFIX=/usr LDADD="/usr/lib/libluajit-5.1.so -lm -ldl"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -d "$pkgdir/$_prefix/bin"
-  make PREFIX="$pkgdir/$_prefix/" install
+  cd "$pkgname"
+  install -Dm755 "$pkgname" "$pkgdir"/usr/bin/$pkgname
 }
