@@ -5,11 +5,14 @@ pkgbase = gaalop-git
 	url = https://github.com/CallForSanity/Gaalop
 	arch = any
 	license = GPL3
+	makedepends = jdk8-openjdk
 	makedepends = maven
 	depends = jre8-openjdk
 	source = gaalop-git::git+https://github.com/CallForSanity/Gaalop
+	source = gaalop.desktop
 	source = gaalop
 	sha256sums = SKIP
+	sha256sums = c71c36ccb96d8a48882ea732f8de0de33718d96596e42e67e9de923e623258b7
 	sha256sums = 89614f248e87acda7478bb9b83b7cab9f823a69742a645dedda43f3bd068970e
 
 pkgname = gaalop-git

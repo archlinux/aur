@@ -8,10 +8,12 @@ arch=('any')
 url='https://github.com/CallForSanity/Gaalop'
 license=('GPL3')
 depends=('jre8-openjdk')
-makedepends=('maven')
+makedepends=('jdk8-openjdk' 'maven')
 source=("${pkgname}::git+https://github.com/CallForSanity/Gaalop"
-       'gaalop')
+        'gaalop.desktop'
+        'gaalop')
 sha256sums=('SKIP'
+            'c71c36ccb96d8a48882ea732f8de0de33718d96596e42e67e9de923e623258b7'
             '89614f248e87acda7478bb9b83b7cab9f823a69742a645dedda43f3bd068970e')
 
 # Dynamically update Package Version from Git
@@ -31,15 +33,15 @@ package() {
     mkdir -p $pkgdir/usr/bin/
     cp -v gaalop $pkgdir/usr/bin/
 
-    #mkdir -p $pkgdir/usr/share/applications
-    #cp -v *.desktop $pkgdir/usr/share/applications
+    mkdir -p $pkgdir/usr/share/applications
+    cp -v *.desktop $pkgdir/usr/share/applications
 
-    #mkdir -p $pkgdir/usr/share/$_pkgname
-    #cp -v logo.png $pkgdir/usr/share/$_pkgname
+    cd ${pkgname}
+    mkdir -p $pkgdir/usr/share/$_pkgname
+    cp -v gui/src/main/resources/de/gaalop/gui/icon.png $pkgdir/usr/share/$_pkgname
 
-    cd ${pkgname}/distribution/target/distribution-*-bin/
+    cd distribution/target/distribution-*-bin/
     rm -rv nativeLibraries start.bat
 
-    mkdir -p $pkgdir/usr/share/$_pkgname
     cp -rv * $pkgdir/usr/share/$_pkgname
 }
