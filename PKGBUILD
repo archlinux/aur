@@ -4,7 +4,7 @@
 _pkgname=aalib
 pkgname=lib32-$_pkgname
 pkgver=1.4rc5
-pkgrel=2
+pkgrel=3
 pkgdesc="A portable ASCII art graphic library (32 bit)"
 arch=('x86_64')
 url="http://aa-project.sourceforge.net/aalib/"
