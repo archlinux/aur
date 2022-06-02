@@ -4,13 +4,13 @@
 _name=EasyOCR
 pkgname=python-easyocr
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
 license=("Apache-2.0")
-depends=('hdf5' 'python' 'python-numpy' 'python-opencv' 'python-torchvision' 'python-pillow'
-         'python-pyaml' 'python-pytorch' 'python-scikit-image' 'python-scipy')
+depends=('hdf5' 'python' 'python-bidi' 'python-numpy' 'python-opencv' 'python-torchvision'
+         'python-pillow' 'python-pyaml' 'python-pytorch' 'python-scikit-image' 'python-scipy')
 makedepends=('python-setuptools')
 provides=('python-easyocr')
 conflicts=('python-easyocr-git')
@@ -25,6 +25,6 @@ build() {
 
 package() {
     cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
