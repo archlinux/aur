@@ -37,7 +37,7 @@ _dir="catkin-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/catkin/archive/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}-7fa3eb3.patch"::"https://github.com/ros/catkin/commit/7fa3eb3508ba12c34d85b8e54bbdf4bbdc60a5c1.patch")
 sha256sums=('8a86803b9081b19d2d37c3d028cc9f7bdfc7122f6204ec7e77ae0cbfda57ff71'
-            '96c39f295fedb8efd47dd7b899ac4aaa221c4a9731e117e09db001388642dbeb')
+            '7e11d02c941edb78d5558ab2dda30249f4aba734a3d24d685a58b2ce307cefef')
 
 prepare() {
 	cd ${srcdir}/${_dir}
