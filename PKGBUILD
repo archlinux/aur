@@ -1,7 +1,8 @@
+# Maintainer: Robert Greener <me@r0bert.dev>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=chron
-_cranver=2.3-56
+_cranver=2.3-57
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +13,7 @@ license=(GPL2)
 depends=('r>=2.12.0')
 optdepends=(r-scales r-ggplot2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('863ecbb951a3da994761ea9062fa96d34e94e19fbc4122521ac179274dfa3f5d')
+sha512sums=("3ce30bfba3a462530e61e97ac64eb49ed4e03ad78fe79fa9c3c1c1c9e1c96034f196110b2df67497f138ba3cb62df0470b2c9ddbf7483c4ab085c6f4a4039026")
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
