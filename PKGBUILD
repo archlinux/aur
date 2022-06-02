@@ -4,7 +4,7 @@ pkgname=ivy-calc
 _srcname=ivy
 _binname=ivyc
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An APL-like calculator.'
 arch=('i686' 'x86_64')
 url='https://github.com/robpike/ivy'
@@ -12,6 +12,7 @@ license=('BSD')
 makedepends=('go')
 provides=("${_binname}")
 conflicts=("${_binname}")
+replaces=('ivy-git')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('36344aa566bcf59ee0733cb79f55261d1cb7c84c5534815a2e9177fcf06fa3d3')
 
