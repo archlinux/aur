@@ -4,7 +4,7 @@
 
 pkgname=wxpython2.8
 pkgver=2.8.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A wxWidgets GUI toolkit for Python"
 arch=(i686 x86_64)
 license=(custom:wxWindows)
@@ -31,6 +31,8 @@ prepare() {
   export WXPORT=gtk2
   export UNICODE=1
   export WX_CONFIG=/usr/bin/wx-config-2.8 
+  export CFLAGS='-w'
+  export CXXFLAGS='-w'
 }
 
 build() {
