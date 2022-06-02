@@ -1,0 +1,22 @@
+pkgbase = r-mockr
+	pkgdesc = Provides a means to mock a package function, i.e., temporarily substitute it for testing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mockr
+	arch = any
+	license = GPL3
+	checkdepends = r-testthat
+	depends = r
+	depends = r-rlang
+	depends = r-withr
+	optdepends = r-covr
+	optdepends = r-fs
+	optdepends = r-knitr
+	optdepends = r-pkgload
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-usethis
+	source = https://cran.r-project.org/src/contrib/mockr_0.2.0.tar.gz
+	b2sums = aaa04da0af31028290f6dd72cc089d5a0f725bcc63648964a78325d76edad54ada33ba3530f6af3bbd9f164fee485cbcac548a55674675cb53929ee7b2b7870d
+
+pkgname = r-mockr
