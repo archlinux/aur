@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=dive-git
-pkgver=v0.10.0.r2.gc7d121b
-pkgrel=4
+pkgver=0.10.0.r2.gc7d121b
+pkgrel=1
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/dive"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
