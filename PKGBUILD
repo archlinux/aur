@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-asyncstdlib
 _name=${pkgname#python-}
-pkgver=3.10.4
+pkgver=3.10.5
 pkgrel=1
 pkgdesc="The missing toolbox for an async world"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-typing_extensions')
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('146bce9c51739a6e6d066dd7f42df51b567ffced487ab705d6a8ca388615dcc7')
+sha256sums=('ae1064f7d4ef3270dc80520cc23fb684a064c6a67d422d9eb9042a74289f9f1a')
 
 build() {
   cd "$_name-$pkgver"
