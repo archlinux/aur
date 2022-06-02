@@ -10,8 +10,8 @@
 
 pkgname=aseprite
 pkgver=1.2.35
-_skiaver=m96
-_skiahash=2f1f21b8a9
+_skiaver=m102
+_skiahash=861e4743af
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -52,7 +52,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('407ee1cf9c4ac47cc0033d1ce597591d33f9c39bb8cfc5b95728c6195378be14'
-            'aa999a6d457f657e0a895340870aa84256ef9b7b65d1c4f107b51461119495ff'
+            '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             '821f1354dbbc0bb3fa700e63037ed3c89b0d32bd2ab253450f91eeacd7d47c06'
             'd7f2f8c43d24382453273ed17b1c0e05928980a36ad0b7c988da3aa0fe32de53'
