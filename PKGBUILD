@@ -1,19 +1,19 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 _pkgname=super_unko
 pkgname=$_pkgname-git
-pkgver=r405.93c23d8
-pkgrel=3
+pkgver=r420.a73b56d
+pkgrel=1
 pkgdesc="Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world."
 arch=('i686' 'x86_64')
 url="https://github.com/unkontributors/super_unko"
 license=('custom:unko')
 makedepends=(git)
-depends=('echo-sd')
 optdepends=('toilet: for unko.toilet'
             'xterm: for unko.puzzle'
             'xdotool: for unko.puzzle'
             'bc: for unko.puzzle'
-            'cowsay: for unko.think')
+            'cowsay: for unko.think'
+            'echo-sd: for unko.shout')
 conflicts=(super_unko)
 provides=(super_unko)
 source=("$_pkgname::git+https://github.com/unkontributors/super_unko.git#branch=oshiri")
