@@ -7,7 +7,7 @@
 
 pkgname=lib32-sdl_mixer
 pkgver=1.2.12
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple multi-channel audio mixer'
 arch=('x86_64')
 url='https://www.libsdl.org/projects/SDL_mixer/'
