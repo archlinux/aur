@@ -13,4 +13,3 @@ pkgbase = pass-update
 	sha512sums = 0e58890a2e661080e5e7248a6e3497a2558db14af3a695377c923aeca43bde361d6bafa88ebc35c9a132dfdacb167df76f7fcf1016e51a589baad7c37b32f96d
 
 pkgname = pass-update
-
