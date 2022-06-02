@@ -1,0 +1,17 @@
+pkgbase = aws-c-io-git
+	pkgdesc = AWS SDK module to handle all IO and TLS work for application protocols
+	pkgver = 0.11.2.r0.g8b93aae
+	pkgrel = 1
+	url = https://github.com/awslabs/aws-c-io
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = aws-c-common
+	depends = aws-c-cal
+	depends = s2n-tls
+	provides = aws-c-io
+	conflicts = aws-c-io
+	source = aws-c-io-git::git+https://github.com/awslabs/aws-c-io#branch=main
+	sha256sums = SKIP
+
+pkgname = aws-c-io-git

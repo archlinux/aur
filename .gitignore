@@ -1,0 +1,5 @@
+src
+pkg
+aws-c-io-git
+*pkg.tar.*
+tags
