@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.13.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
 arch=(x86_64 aarch64)
