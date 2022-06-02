@@ -6,7 +6,7 @@ pkgdesc="A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written i
 license=("Apache")
 url="https://github.com/yandex-cloud/geesefs"
 pkgver=0.31.2
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 makedepends=("git" "go")
 depends=("fuse3")
@@ -31,6 +31,7 @@ build() {
   cd $pkgname
   export GOPATH="$srcdir"
   go install
+  go clean -modcache
 }
 
 
