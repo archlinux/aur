@@ -1,10 +1,17 @@
 pkgbase = r-usethis
 	pkgdesc = Automate Package and Project Setup
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=usethis
 	arch = any
-	license = GPL3
+	license = MIT
+	checkdepends = r-magick
+	checkdepends = r-rmarkdown
+	checkdepends = r-roxygen2>=7.1.2
+	checkdepends = r-spelling>=1.2
+	checkdepends = r-styler>=1.2.0
+	checkdepends = r-testthat>=3.1.0
+	checkdepends = r-mockr
 	depends = r>=3.4
 	depends = r-cli>=3.0.1
 	depends = r-clipr>=0.3.0
@@ -19,7 +26,7 @@ pkgbase = r-usethis
 	depends = r-lifecycle>=1.0.0
 	depends = r-purrr
 	depends = r-rappdirs
-	depends = r-rlang>=0.4.10
+	depends = r-rlang>=1.0.0
 	depends = r-rprojroot>=1.2
 	depends = r-rstudioapi
 	depends = r-whisker
@@ -31,11 +38,13 @@ pkgbase = r-usethis
 	optdepends = r-mockr
 	optdepends = r-pkgload
 	optdepends = r-rmarkdown
-	optdepends = r-roxygen2
-	optdepends = r-spelling
-	optdepends = r-styler
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/usethis_2.1.5.tar.gz
-	sha256sums = 7d539e16ecdc1cd45ba1a215d42d8b9c16bc38280ddd27048003dbb37b16f052
+	optdepends = r-roxygen2>=7.1.2
+	optdepends = r-spelling>=1.2
+	optdepends = r-styler>=1.2.0
+	optdepends = r-testthat>=3.1.0
+	source = https://cran.r-project.org/src/contrib/usethis_2.1.6.tar.gz
+	source = CRAN_MIT::https://cran.r-project.org/web/licenses/MIT
+	b2sums = 6007ce73a41747d42f37c79c3fe2d1f1563e534d2d8a6015ed8a4aaa6505ed5310f2f3a80def5d56dec9f8fb59ebf823615bedde568456afdda8aebb6222c08a
+	b2sums = 22fe7f7fb60ace9cc3217127a3ea2ceee8d1821ae3d806dfe0f27d115a8e105251355a8f085ad31268884c94df64f51189676e71a2dd7bde6082dd50426cae01
 
 pkgname = r-usethis
