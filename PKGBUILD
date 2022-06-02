@@ -3,7 +3,7 @@
 
 pkgname=ergochat
 _upstream_pkgname=ergo
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="A modern IRC server written in Go"
 arch=('x86_64')
