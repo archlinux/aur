@@ -14,8 +14,8 @@ depends=(
   'python-zxcvbn'
 )
 makedepends=('python-setuptools')
-source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
-        https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
+source=("https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
 sha512sums=('3036340b31612a52826c13ea558def3a3ca49164eb9b3c516f4923d99126cbe5e85150bca9f8ca26d70375bf92e1b06d606f39a3679de60770ab14f6f24a8267'
             'SKIP')
 
