@@ -3,8 +3,8 @@
 #
 
 pkgname=jsignpdf
-pkgver=2.1.0
-_releasedate="2021-12-19"
+pkgver=2.2.0
+_releasedate="2022-03-16"
 pkgrel=1
 pkgdesc="Digitally sign PDF files with X.509 certificates in GUI and CLI."
 arch=('any')
@@ -19,10 +19,10 @@ source=(
   jsignpdf_48.png::"https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_48x48x32.png"
   jsignpdf_128.png::"https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_128x128x32.png"
   "supplementary.tar.zst")
-md5sums=('be5a966be3a4a303f09a42c28b9b9a22'
+md5sums=('327182016506f57109270d4875851784'
          'a44ef91da28d94fb949e361d19adbbd5'
          'bf2d11e38c706fe183900cce1fab0e38'
-         '52a3ccd032a31311c23f7e9d2c255811')
+         'e45374c55c83559e1f66f09e8fd0cd1a')
 changelog=changelog
 backup=('usr/share/java/jsignpdf/conf/conf.properties'
         'usr/share/java/jsignpdf/conf/pkcs11.cfg')
