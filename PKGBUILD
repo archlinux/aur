@@ -40,6 +40,11 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd "${srcdir}/${_pkgname}"
+    python setup.py test
+}
+
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
