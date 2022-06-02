@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter
-pkgver=1.13
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
@@ -24,7 +24,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER="2" \
     -DWITH_LTO="ON" \
-	-DENABLE_LIBRAW="ON"
+	-DENABLE_LIBRAW="ON" \
+	-DENABLE_MIMALLOC="ON"
 
   make
 }
