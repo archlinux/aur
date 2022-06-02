@@ -1,6 +1,6 @@
 # Mainteiner: Perseo <pgutierrez@gmail.com>
 pkgname=xsct
-pkgver=1.6.1
+pkgver=1.8
 pkgrel=1
 gitname=sct
 
@@ -11,7 +11,7 @@ license=('Public Domain')
 depends=()
 makedepends=('git' 'libx11' 'libxrandr')
 source=("https://github.com/faf0/sct/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('944acb63bd30e2b5b73112b928f79241')
+md5sums=('dfc7cb20e65c350c5858ee93d155445b')
 
 package() {
   cd "$srcdir/${gitname}-${pkgver}"
