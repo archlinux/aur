@@ -2,7 +2,7 @@
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=v1.3.0.r139.gc23e375
+pkgver=1.3.0.r145.gdac5847
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
