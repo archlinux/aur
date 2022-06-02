@@ -4,13 +4,13 @@
 _name=EasyOCR
 pkgname=python-easyocr
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
 license=("Apache-2.0")
-depends=('python-torchvision' 'python-pytorch' 'python-scikit-image'
-         'python-pillow' 'python-numpy' 'opencv' 'hdf5' 'python-scipy' 'python-pyaml')
+depends=('hdf5' 'python' 'python-numpy' 'python-opencv' 'python-torchvision' 'python-pillow'
+         'python-pyaml' 'python-pytorch' 'python-scikit-image' 'python-scipy')
 makedepends=('python-setuptools')
 provides=('python-easyocr')
 conflicts=('python-easyocr-git')
