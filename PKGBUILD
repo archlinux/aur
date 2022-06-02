@@ -22,10 +22,10 @@ source_aarch64=(
     "armcord.desktop"
     "armcord.png"
 )
-sha256sums_x86_64=('f651fe845ff62b68a775e8ef9e28bfbbc665dc9226b5e8d79e6038b6b8cc82e9'
+sha256sums_x86_64=('785e5d52b803afa52c8fe0371258053a25f357c629b3e4a4a104306e0e08906f'
                    'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
                    '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
-sha256sums_aarch64=('9a67ec20c19b0ea56c779fd4d450f544216186ef3ae6c3822566450e7049ca8c'
+sha256sums_aarch64=('15284da6424625969de4afa4e1298324925051a17a1ed48fa7230cbb131629c5'
                     'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
                     '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 
