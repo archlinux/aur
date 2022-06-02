@@ -5,7 +5,7 @@
 pkgname="lib32-libid3tag"
 _pkgname="libid3tag"
 pkgver=0.15.1b
-pkgrel=2
+pkgrel=3
 pkgdesc="library for id3 tagging, lib32."
 arch=('x86_64')
 url="https://www.underbit.com/products/mad/"
