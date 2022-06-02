@@ -1,8 +1,0 @@
-post_install() {
-	ln -sf /usr/bin/die.sh /usr/bin/die
-	ln -sf /usr/bin/diec.sh /usr/bin/diec
-}
-
-pre_remove() {
-	rm -f /usr/bin/die /usr/bin/diec
-}

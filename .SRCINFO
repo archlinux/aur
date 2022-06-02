@@ -1,6 +1,6 @@
 pkgbase = detect-it-easy
-	pkgdesc = Detect It Easy is a packer identifier
-	pkgver = 3.03
+	pkgdesc = Detect It Easy, or abbreviated "DIE" is a program for determining types of files
+	pkgver = 3.04
 	pkgrel = 1
 	url = http://ntinfo.biz/index.html
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = detect-it-easy
 	depends = glibc
 	options = !emptydirs
 	options = !strip
-	source = detect-it-easy-3.03.deb::https://github.com/horsicq/DIE-engine/releases/download/3.03/die_3.03_Debian_10_amd64.deb
+	source = detect-it-easy-3.04.deb::https://github.com/horsicq/DIE-engine/releases/download/3.04/die_3.04_Debian_11_amd64.deb
 	source = LICENSE
-	sha256sums = 5b64063e5a4950144b731224c87d20a57be5bf6759e5c708775676d4fe56e630
+	sha256sums = d67eb149342cf50f6a62f3a556750e88817cbf9093821c2114aee7b7d6edbe0c
 	sha256sums = f78bf193f3aebf1225e4b5be12f7184178ca4fa3a3d3444e2ac933d86af9dc68
 
 pkgname = detect-it-easy
