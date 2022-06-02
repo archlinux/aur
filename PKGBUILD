@@ -4,15 +4,15 @@
 
 pkgname=teams-for-linux-git
 pkgver=1.0.24.r0.g0b66032
-pkgrel=4
+pkgrel=5
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
 license=("GPL3")
 conflicts=("teams-for-linux")
 provides=("teams-for-linux")
-depends=("gtk3" "libxss" "nss" "electron16")
-makedepends=("git" "nodejs-lts-fermium" "node-gyp" "python2" "yarn")
+depends=("gtk3" "libxss" "nss" "electron")
+makedepends=("git" "nodejs-lts-gallium" "node-gyp" "python2" "yarn")
 source=(
   "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=develop"
   "${pkgname%-git}.desktop"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             '9e9ea701b445953383b70133cb52ac6a6ec2872bba419b079a7d0ca13e50dac2'
-            '4939a6b1421c6f2cd981bc103a62d80fa6c6d28463755d83263af06f6ecc538b')
+            '3a34153e962e4478e02deb898577403549268e12eeb058a44303783cf3bcb1b6')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -30,8 +30,8 @@ pkgver() {
 # ;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g"
 
 prepare() {
-  export _electronDist=/usr/lib/electron16
-  export _electronVer="$(tail /usr/lib/electron16/version)"
+  export _electronDist=/usr/lib/electron
+  export _electronVer="$(tail /usr/lib/electron/version)"
   cd "${srcdir}/${pkgname%-git}"
   sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g" package.json
 }

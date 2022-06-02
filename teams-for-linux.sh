@@ -1,3 +1,3 @@
 #! /bin/sh
 
-exec /usr/bin/electron16 /opt/teams-for-linux/app.asar "$@"
+exec /usr/bin/electron /opt/teams-for-linux/app.asar "$@"
