@@ -4,7 +4,7 @@
 
 pkgbase=evolution-csd-git
 pkgname=evolution-csd-git
-pkgver=3.44.2+16+gb4a75d1ee3
+pkgver=3.44.2+21+g1bd7f04bf7
 pkgrel=1
 pkgdesc="Manage your email, contacts and schedule"
 url="https://wiki.gnome.org/Apps/Evolution"
