@@ -1,11 +1,11 @@
 # Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 
-# Based on the 'fabric-server' AUR package by:
+# Based on the `fabric-server` AUR package by:
 # Maintainer: lgm <lgm dot aur at outlook dot com>
 # Contributor: Ndoskrnl <lollipop.studio.cn@gmail.com>
 # Contributor: flying <flyinghat42@gmail.com>
 
-# Based on the 'forge-server' AUR package by:
+# Based on the `forge-server` AUR package by:
 # Contributor: Nitroretro <nitroretro@protonmail.com>
 
 # Based on the `minecraft-server` AUR package by:
@@ -13,8 +13,12 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.18.2_0.4.2_0.16.1-1"
-_minecraft_ver_latest="1.18.2"
+_ver="1.18.2_0.4.2_0.16.1-1" # <mcver_installerver_loaderver>
+# installer ver can be gotten at https://meta.quiltmc.org/v3/versions/installer
+# loader ver can be gotten at https://meta.quiltmc.org/v3/versions/loader
+# stay on stable loader releases for the time being.
+# bump installer ver only on loader ver bump, no need to bump purely for installer 
+# unless things break.
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -32,14 +36,8 @@ _mng_ver=1.0.2
 
 _pkgver=${_ver_temp[0]//_/-}
 
-if [ "$_minecraft_ver" = "$_minecraft_ver_latest" ]; then
-	pkgname="quilt-server"
-	_quilt_name="quilt"
-else
-	pkgname="quilt-server-${_minecraft_ver}"
-	_quilt_name="quilt-${_minecraft_ver}"
-fi
-
+pkgname="quilt-server"
+_quilt_name="quilt"
 pkgver=${_ver_temp[0]}
 pkgrel=${_ver_temp[1]}
 pkgdesc="Minecraft Quilt server unit files, script and jar"
