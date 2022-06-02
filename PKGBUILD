@@ -2,7 +2,7 @@
 
 pkgname=ant-dracula-theme-git
 _pkgname=Ant-Dracula
-pkgver=v3.0.r36.g317d6cb
+pkgver=3.0.r46.g74522c7
 pkgrel=1
 pkgdesc="Dracula variant of the Ant theme"
 arch=("any")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
