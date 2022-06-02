@@ -1,7 +1,7 @@
 pkgbase = perl-glib-ev
 	pkgdesc = Coerce Glib into using the EV module as event loop
 	pkgver = 2.02
-	pkgrel = 13.1
+	pkgrel = 13.2
 	url = http://search.cpan.org/perldoc?Glib::EV
 	arch = i686
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = perl-glib-ev
 	sha512sums = 1dd382c969b0a425df406e46d670bb50dcd168c381055ff3f361a2ee662a69065c782cf7952070e4bd133842449c8945185bfaf10665a3e2a1ed8c190cd065be
 
 pkgname = perl-glib-ev
-
