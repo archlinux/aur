@@ -12,13 +12,10 @@ pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
 license=('GPL3')
-install=${pkgname}.install
-
-source=(
-        https://files.dyne.org/tomb/releases/Tomb-${pkgver}.tar.gz
-        https://files.dyne.org/tomb/releases/Tomb-${pkgver}.tar.gz.sha
-        https://files.dyne.org/tomb/releases/Tomb-${pkgver}.tar.gz.asc
-        )
+install=tomb.install
+source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
+        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.sha"
+        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc")
 
 # The first hash comes from the .sha file
 sha256sums=('b3a23c6680815f7557a3c4bd73d2b2dbde870a62357fcbf9b33089afae75d68c'
@@ -30,13 +27,13 @@ sha256sums=('b3a23c6680815f7557a3c4bd73d2b2dbde870a62357fcbf9b33089afae75d68c'
 validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
 
 build() {
-  cd "${srcdir}/Tomb-${pkgver}/extras/kdf-keys"
+  cd "$srcdir/Tomb-$pkgver/extras/kdf-keys"
   make
 }
 
 # The checks require root access
 #check() {
-#  cd "${srcdir}/Tomb-${pkgver}"
+#  cd "$srcdir/Tomb-$pkgver"
 #  make test
 #}
 
@@ -51,14 +48,14 @@ package_tomb() {
   )
   arch=('any')
 
-  cd "${srcdir}/Tomb-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$srcdir/Tomb-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
 package_tomb-kdf() {
   pkgdesc="Crypto Undertaker extensions to improve password security"
   depends=('libgcrypt')
 
-  cd "${srcdir}/Tomb-${pkgver}/extras/kdf-keys"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$srcdir/Tomb-$pkgver/extras/kdf-keys"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
