@@ -1,13 +1,12 @@
 pkgbase = shellshock
 	pkgdesc = A top-down space shooter written for Bash
-	pkgver = 1.14
-	pkgrel = 3
+	pkgver = 1.15
+	pkgrel = 1
 	url = http://www.dhampir.no
 	arch = any
 	license = GPL2
 	depends = bash
 	source = https://dhampir.no/stuff/bash/shellshock
-	sha512sums = c2a0b0e1c6c245b208b1b18f135a9e113a19d8ce9cb5930658021cb2cdb4c89d753be7edb36bc5e0ddb9ed32a545ad98241f2ad6eca67a6566b723c1ad065f27
+	sha512sums = 17ce85e8c14bf489f14de092f180707f36376de11c778845458540710f8a666daa37bae2d1dad725ffa760a623986c776f2c66fdd24a90fc580ecf31d228cff2
 
 pkgname = shellshock
-
