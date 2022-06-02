@@ -1,11 +1,11 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=albert-git
-pkgver=v0.17.2.r12.gedd178d2
-pkgrel=1
+pkgver=0.17.2.r12.gedd178d2
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
-url="https://github.com/albertlauncher"
+url="https://github.com/albertlauncher/albert"
 license=('GPL')
 provides=('albert')
 conflicts=('albert')
@@ -14,10 +14,10 @@ makedepends=('cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'qt5-svg' 'virt
 optdepends=('muparser: Calculator plugin'
             'python: Python extension'
             'virtualbox: VirtualBox plugin')
-source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git"
-        "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
-        "mirrors/python::git+https://github.com/albertlauncher/python.git"
-        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
+source=("albertlauncher/albert::git+https://github.com/albertlauncher/albert.git"
+        "albertlauncher/plugins::git+https://github.com/albertlauncher/plugins.git"
+        "albertlauncher/python::git+https://github.com/albertlauncher/python.git"
+        "albertlauncher/pybind11::git+https://github.com/pybind/pybind11.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/albert"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
