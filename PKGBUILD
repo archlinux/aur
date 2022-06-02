@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net
 
 pkgname=double-conversion-git
-pkgver=v3.2.0.r6.ga109d7d
-pkgrel=1
+pkgver=3.2.0.r6.ga109d7d
+pkgrel=2
 pkgdesc='Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
 arch=(i686 x86_64)
 url='https://github.com/google/double-conversion'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
