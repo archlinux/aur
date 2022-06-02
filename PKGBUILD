@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fclones
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Efficient Duplicate File Finder"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5bfa28a77eb6453d91b66e644faf8c989f411cccb18b0b188488e0c6a7a75905b21548f05887fe1892fac5b4cadb6a462ca88d4583dbd3d255af2b70896804e0')
+sha512sums=('8642caf0b81d4eabde66d7e3330cda67b78be358eb9fce3774e9d57b069cadcac14d97fc1b1ef6647f0b6c958b44d6fe9ca5e54f3e9f58d4114305e85225f81c')
 
 prepare() {
   cd "$pkgname-$pkgver"
