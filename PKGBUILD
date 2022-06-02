@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=aws-checksums-git
-pkgver=v0.1.12.r4.gac351fe
-pkgrel=1
+pkgver=0.1.12.r4.gac351fe
+pkgrel=2
 pkgdesc="Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations."
 arch=('x86_64')
 conflicts=('aws-checksums')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
