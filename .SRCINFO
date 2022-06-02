@@ -1,7 +1,7 @@
 pkgbase = perl-event
 	pkgdesc = Event loop processing
 	pkgver = 1.28
-	pkgrel = 1
+	pkgrel = 1.1
 	url = http://search.mcpan.org/dist/Event
 	arch = i686
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = perl-event
 	sha512sums = 8c7e676c3f659f85ae53ff3b60142943c72881f101f2c66dfd1a7e47babfade0171b78a2062476b6e061f12370b279b73abbe3ab01b07d7088145fa9508e7d0c
 
 pkgname = perl-event
-
