@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="5.2.5.7"
+pkgver="5.2.6.3"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'aa54f0b7df31a3ad40200a169f00de079115442149fc2dd20b2257a4e2eaa500'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
-            'c6d8dff9306532babf5100629ea48a5322561823a4c7416f02dacbbee5ab30da')
+            '636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f')
 
 prepare() {
     cd ${srcdir}/asf/ArchiSteamFarm/overlay/linux

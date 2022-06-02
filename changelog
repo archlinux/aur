@@ -1,3 +1,10 @@
+2022-06-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.6.3-1:
+    This release includes new major version of NLog v5. If you're using custom NLog.config logging configuration for ASF, you may want to update your logging in accordance to new defaults in order to silence ASP.NET logs that will now use your config exclusively. Check out newly added rules for Microsoft and System on our wiki. Users that are not using custom NLog.config logging configuration do not require any action (@JustArchi).
+    Added std command for STD plugin users willing to trigger submission routine earlier than expected (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-05-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.5.7-1:
     Fixed Steam breaking change that made it impossible for ASF to decline trade offers (#2572, @JustArchi).
