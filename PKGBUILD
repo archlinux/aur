@@ -14,11 +14,8 @@ optdepends=('noto-fonts-emoji: Emoji characters'
 provides=(ttf-font noto-fonts noto-fonts-extra)
 conflicts=(noto-fonts noto-fonts-extra)
 _url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
-source=("${_url}"/unhinted/variable-ttf/NotoSans-Italic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSans-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSansMono-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSerif-Italic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSerif-VF.ttf
+source=("${_url}"/unhinted/variable-ttf/NotoSans{-Italic-VF,-VF,Mono-VF}.ttf
+        "${_url}"/unhinted/variable-ttf/NotoSerif-{Italic-VF,VF}.ttf
         "${_url}"/LICENSE
         {46,66}-noto-{mono,serif,sans}.conf)
 sha256sums=('79fbb24b91750e3ada1a5a5a30a8c6fcd1a88574515d77fcb541d4289e0c2f86'
