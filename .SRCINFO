@@ -1,22 +1,20 @@
 pkgbase = ablavema-bin
 	pkgdesc = A Blender launcher and version manager
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/AlexChaplinBraz/Ablavema
 	arch = x86_64
 	license = MIT
-	depends = fontconfig
-	depends = freetype2
-	depends = glibc
 	depends = xz
 	depends = bzip2
 	depends = libx11
 	depends = gcc-libs
+	depends = glibc
 	optdepends = zenity: graphical dialog
 	optdepends = kdialog: graphical dialog
 	conflicts = ablavema
 	conflicts = ablavema-git
-	source_x86_64 = https://github.com/AlexChaplinBraz/Ablavema/releases/download/0.4.1/ablavema-0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bbf640440a5d1ef977482f09025832092d73ed427306760a7f6b24950aa8af2e
+	source_x86_64 = https://github.com/AlexChaplinBraz/Ablavema/releases/download/0.4.2/ablavema-0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e4bb9149510b57d3c92c24d5aae361f063c7ae80c67c8b60dbe358dd72f97c5c
 
 pkgname = ablavema-bin
