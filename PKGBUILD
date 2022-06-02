@@ -4,7 +4,7 @@
 _name=manim
 pkgname=python-${_name}gl
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
 url="https://github.com/3b1b/manim"
@@ -27,7 +27,6 @@ depends=(
     'ipython'
     'python-opengl'
     # AUR packages
-    'python-glcontext'
     'python-mapbox-earcut'
     'python-moderngl'
     'python-moderngl-window'
