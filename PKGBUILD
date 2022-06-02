@@ -1,7 +1,7 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
 # get this with `git describe --tags` in fvim repo
-_pkgtag="v0.3.528+g5190942"
+_pkgtag="v0.3.536+gb836b56"
 pkgver=$(echo "${_pkgtag}" | tail -c +2 | sed -e "s/\+/_/g")
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
