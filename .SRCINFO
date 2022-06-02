@@ -21,4 +21,3 @@ pkgbase = pass-import
 	sha512sums = 741dd37d905e786e6de05bdc4334ef654d05b15d524a5cfad31d1277878eba422fa26be95dc2938032bee36b934b2169e64bd4933c753acfd89ce31fdef3aa60
 
 pkgname = pass-import
-

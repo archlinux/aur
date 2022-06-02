@@ -20,8 +20,8 @@ optdepends=(
   'python-cryptography: password encrypted otp import'
   'python-magic: Detection of file decryption'
 )
-source=(https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz
-        https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc)
+source=("https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
 sha512sums=('2414382060dd87a88023760c795f2fc1f71121fafd11349e64994dddecc8ca1d3c2ef732df3699c550ac0aa8800a6c0ab85fc15236f1b71397c53ae3b94d20d9'
             '741dd37d905e786e6de05bdc4334ef654d05b15d524a5cfad31d1277878eba422fa26be95dc2938032bee36b934b2169e64bd4933c753acfd89ce31fdef3aa60')
 
