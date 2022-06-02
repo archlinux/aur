@@ -3,11 +3,11 @@
 
 pkgname=blockout2
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="3D tetris, free adaptation of the original BlockOut DOS game edited by California Dreams in 1989. Pre-compiled."
 arch=("any")
 url="http://www.blockout.net/blockout2/"
-depends=("libgl" "glu" "libxext" "sdl" "sdl_mixer")
+depends=("libgl" "glu" "libxext" "sdl" "sdl_mixer" "alsa-lib")
 license=("GPL")
 conflicts=("blockout2-bin")
 source=(
