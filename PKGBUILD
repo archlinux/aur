@@ -4,7 +4,7 @@
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
 pkgver=2.8.15
-pkgrel=1
+pkgrel=2
 _pythonversion=3.10
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
@@ -17,7 +17,7 @@ source=("https://ftp.gajim.org/plugins/master/${_pkgname}/${_pkgname}_${pkgver}.
 sha512sums=('5c3322239a149512f96b35359f0f423070f2e16f660885f62485306aaf6baeade564c8e5ab2fcfb63c1554dca8624c5d6fda5c0435c83aaafb484c98092fce48')
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"
 
 
   # Install the plugin
