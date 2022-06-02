@@ -2,7 +2,7 @@
 
 _name='mausoleum'
 pkgname="$_name-git"
-pkgver=0.8.3.r23.g3bdc9e8
+pkgver=0.8.3.r31.g7ef5e30
 pkgrel=1
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
@@ -16,9 +16,10 @@ depends=(
   'python-click'
   'python-appdirs'
 )
+makedepends=('git')
 conflicts=("$_name")
 provides=("$_name" "$_name-gui")
-source=("$_name::git://github.com/mandeep/Mausoleum.git"
+source=("$_name::git+https://github.com/mandeep/Mausoleum.git"
         "mausoleum.desktop")
 sha512sums=('SKIP'
             'fdb2db16c6e8fa3f86a51198d732e50387ea174384ed5f23d7db35f62c00137c84add144fb2e0305d1ea52ee233f8f9f779ef49778ac97f26410ae1a2a2d8ed3')
