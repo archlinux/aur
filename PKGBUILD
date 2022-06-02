@@ -5,7 +5,7 @@
 pkgname=chapel
 pkgver=1.26.0
 pkgrel=1
-pkgdesc="Programming language designed for productive parallel computing at scale"
+pkgdesc="[please use chapel-git until 1.27 release] Programming language designed for productive parallel computing at scale"
 url="https://chapel-lang.org/"
 arch=('x86_64' 'arm')
 license=('Apache')
