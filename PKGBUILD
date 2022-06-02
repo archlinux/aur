@@ -6,7 +6,7 @@
 _basename='gst-plugins-ugly'
 pkgname="lib32-${_basename}"
 pkgver=1.18.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Multimedia graph framework - ugly plugins (32-bit)'
 url='https://gstreamer.freedesktop.org/'
 arch=('x86_64')
@@ -17,7 +17,6 @@ depends=(
     'lib32-libcdio'
     'lib32-libdvdread'
     'lib32-libmpeg2'
-    'lib32-libsidplay'
     'lib32-opencore-amr'
     'lib32-x264'
 )
@@ -49,6 +48,7 @@ build() {
         --libdir='lib32' \
         --libexecdir='lib32' \
         -Ddoc='disabled' \
+        -Dsidplay='disabled' \
         -Dgobject-cast-checks='disabled' \
         -Dpackage-name='GStreamer Ugly Plugins (Arch Linux)' \
         -Dpackage-origin='https://www.archlinux.org/'
