@@ -1,0 +1,14 @@
+# disable version check. updates come via package management
+Index: chatty-0.8.2/src/chatty/Chatty.java
+===================================================================
+--- chatty-0.8.2.orig/src/chatty/Chatty.java	2016-04-26 22:46:41.680640379 +0200
++++ chatty-0.8.2/src/chatty/Chatty.java	2016-04-26 22:50:03.208841787 +0200
+@@ -58,7 +58,7 @@
+      * Enable Version Checker (if you compile and distribute this yourself, you
+      * may want to disable this)
+      */
+-    public static final boolean VERSION_CHECK_ENABLED = true;
++    public static final boolean VERSION_CHECK_ENABLED = false;
+     
+     /**
+      * The regular URL of the textfile where the most recent version is stored.
