@@ -16,6 +16,7 @@ md5sums=("SKIP")
 
 prepare() {
     mkdir -p build
+    mkdir -p ~/.local/share/icons/hicolor
     cd $srcdir/NickvisionTagger
     git checkout -q d056dd9
     git submodule init
