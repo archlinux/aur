@@ -2,7 +2,7 @@
 
 _pkgbin=geesefs
 pkgname=$_pkgbin-git
-pkgdesc="A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go."
+pkgdesc="A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go (Git version)."
 license=("Apache")
 url="https://github.com/yandex-cloud/geesefs"
 pkgver=0.31.2
