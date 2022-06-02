@@ -3,7 +3,7 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=3.7.4
+pkgver=3.7.5
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
@@ -21,7 +21,7 @@ provides=("telegram-desktop")
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz")
-sha512sums=('4c8a78a2708ed2765d7ca36bc486d710f752c48b01b515569f3ecf00c59263fd1f8b0a29408483ade1f124c5628d4be7fd7152901e88b122ff4b501962127927')
+sha512sums=('f8faa2816ae01c341f7153c1a1bfeb1300b4832d34f16758ad77642541a00f47ad0cbada3b26949f5cd2b55ef5057e062b7958fe33359518519d9d3e455a7696')
 
 build() {
     cd $_pkgname-v$pkgver-full
