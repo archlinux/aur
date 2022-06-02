@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting
 
 pkgname=zwavejs2mqtt
-pkgver=6.7.4
+pkgver=6.11.0
 pkgrel=1
 epoch=1
 pkgdesc="Zwave to Mqtt gateway and Control Panel Web UI."
@@ -15,7 +15,7 @@ source=("https://github.com/zwave-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.sysusers"
 	"$pkgname.tmpfiles"
 	"$pkgname.service")
-b2sums=('e86b1ef2a1916b00ba9403db65ca633785378987378423d8e8b202f442606acd777e3b901e0841b5ed0915351c0f5452279644b90b3ba45224a0c52c1a17957f'
+b2sums=('e003f7638b11c92af67f59473226029078354214de16f313e12d5ce9b33ad3327fa395c50c2c4d933b1d8406fd637be8a728628418b52550fb27260961cb2d21'
         'd4a834bd7c8e4c832128f9f9c0ffb9d4409424402ba9c28a430a2d41d19cf780ba606c27b5f3b71f7640caa9883724647f2779cfa3cf2714564eb5e58b6144e2'
         '2324c50252e1005b1ec06bf73e9d05937472397f5fc533e7ab468d416bcb6b5d01b87055a41d3b3a5b44b24e02ca45fafb5f79085833988ec458ee72c1d8c31b'
         '0e7238f3858a9ce4b21e2c3493079648adbe1885ed32d1ae666b8a79f5b4c6c0d59c572a81159fc75c8db6a2a8f716b221a7ea857866462bb2d2a4b537c93ae7')
