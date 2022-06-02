@@ -1,6 +1,6 @@
 pkgbase = deepin-mail-bin
 	pkgdesc = Deepin mail
-	pkgver = 5.4.1_1
+	pkgver = 5.4.3_1
 	pkgrel = 1
 	url = https://www.deepin.com/
 	arch = x86_64
@@ -8,8 +8,10 @@ pkgbase = deepin-mail-bin
 	depends = qt5-webengine
 	depends = dtkwidget
 	depends = leveldb
+	depends = poppler-qt5
+	depends = libical
 	provides = deepin-mail
-	source_x86_64 = https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-mail/deepin-mail_5.4.1-1_amd64.deb
-	sha512sums_x86_64 = 4d01dc191a0af652787cf8513c1e5f99e72039ffa5fc313322ca3e46fe6872be8423986c86138ec4aad12b8ecdd139357faa897137abdc8ed3a3ed115bef4bb1
+	source_x86_64 = https://community-packages.deepin.com/deepin/pool/non-free/d/deepin-mail/deepin-mail_5.4.3-1_amd64.deb
+	sha512sums_x86_64 = 4f65aaf3365d236f19c376b742451fe048e8e937df7b6c7044933863bdd178cb82616a9aca577811bb3be263eac9ea5fe68c134a21664e7803b13c3eef134a7f
 
 pkgname = deepin-mail-bin
