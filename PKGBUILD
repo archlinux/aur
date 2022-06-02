@@ -5,7 +5,7 @@
 #  Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="A real-time web analytics platform"
 arch=("any")
@@ -20,8 +20,8 @@ install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=("00f4bcf3178501e14132db2e354e6233bf855251cb6bd1dc69750d921570b824"
-            "342eda4a52913667f3eff743ac9ae23869ef25ba393a1285793389b7259444bc")
+sha256sums=("4cddb1cb760786db9ec268bb87dbed30a125448f2e58ebe76331b54652064f75"
+            "f04d8e942c93578ac9a95a7cb0fe103b241f80327f83fcac556fa81cd3e01ce3")
 
 validpgpkeys=("F529A27008477483777FC23D63BB30D0E5D2C749")
 
@@ -29,7 +29,7 @@ package() {
   install -d "${pkgdir}/usr/share/webapps"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}"
   # Some extensions want to append to piwik.js (matomo.js from 3.8.0 onwards),
-  # so we relectantly let them.
+  # so we reluctantly let them.
   chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/piwik.js"
   chmod g+w "${pkgdir}/usr/share/webapps/${pkgname}/matomo.js"
 
