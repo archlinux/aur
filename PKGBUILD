@@ -2,7 +2,7 @@
 
 pkgname="pulse-sms"
 pkgver="4.5.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="A native desktop implementation of Pulse"
 arch=('x86_64')
 url="https://messenger.klinkerapps.com/"

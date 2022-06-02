@@ -1,7 +1,7 @@
 pkgbase = pulse-sms
 	pkgdesc = A native desktop implementation of Pulse
 	pkgver = 4.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://messenger.klinkerapps.com/
 	arch = x86_64
 	license = APACHE
@@ -9,8 +9,7 @@ pkgbase = pulse-sms
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = https://github.com/maplemedia/pulse-sms-desktop/releases/download/v${pkgver}/pulse-sms-${pkgver}-amd64.deb
+	source = https://github.com/maplemedia/pulse-sms-desktop/releases/download/v4.5.2/pulse-sms-4.5.2-amd64.deb
 	sha512sums = 33f3c6c0ac8cc26c688c7a04f9568f8aceae8c95627ce77f152ef428ab31d32439af6dcef077ff20ddc316a240e45f7e9e12e63324681f6b3838a5722805d384
 
 pkgname = pulse-sms
-
