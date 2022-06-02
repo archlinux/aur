@@ -1,0 +1,16 @@
+# Maintainer:  Giovanni Ciatto <giovanni.ciatto at gmail dot com>
+
+pkgname=dummy-project-4-testing-gha-release-on-aur
+pkgver=__VERSION__
+pkgrel=1
+pkgdesc='A dummy project aimted at testing the automation of AUR releases via GitHub Actions'
+arch=('any')
+url='https://github.com/gciatto/aur-release-action'
+license=('Apache')
+depends=('bash')
+source=("dummy-project-4-testing-gha-release-on-aur.sh")
+sha256sums=('__DIGEST__')
+
+package() {
+  install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}.sh"
+}
