@@ -12,10 +12,7 @@ license=(custom:SIL)
 optdepends=('noto-fonts-emoji: Emoji characters')
 _url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
 source=("${_url}"/unhinted/variable-ttf/NotoKufiArabic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoNaskhArabic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoNaskhArabicUI-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSansArabic-VF.ttf
-        "${_url}"/unhinted/variable-ttf/NotoSansArabicUI-VF.ttf
+        "${_url}"/unhinted/variable-ttf/Noto{Naskh,Sans}Arabic{,UI}-VF.ttf
         "${_url}"/LICENSE
         70-noto-ar.conf)
 sha256sums=('979c3f5deedf862d52ff355ac1f4f048356df213988d116f0fdef6cbf77d2b88'
