@@ -3,7 +3,7 @@
 pkgname=roonbridge
 _pkgname=RoonBridge
 pkgver=1.8.943
-pkgrel=3
+pkgrel=4
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -17,7 +17,7 @@ source=('roonbridge.service'
 source_x86_64=("http://download.roonlabs.com/builds/RoonBridge_linuxx64.tar.bz2")
 source_armv7h=("http://download.roonlabs.com/builds/RoonBridge_linuxarmv7hf.tar.bz2")
 source_aarch64=("http://download.roonlabs.com/builds/RoonBridge_linuxarmv8.tar.bz2")
-sha256sums=('141a57f660165f5b04614c643392e941825192bf3f4243aa2ecd75ed099462eb'
+sha256sums=('e24bfbb30142bcf819928c0cd87947ad2d988968aef4aa06e13f3abb578a1588'
             '31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93')
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
