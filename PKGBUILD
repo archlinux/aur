@@ -10,7 +10,7 @@ _neovim="n"
 
 _name='vim-closetag'
 pkgname="${_name}-git"
-pkgver=r55.c0779ef
+pkgver=r57.d0a562f
 pkgrel=1
 pkgdesc="Auto close (X)HTML tags"
 arch=('any')
