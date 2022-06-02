@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.5.0
-Build: posix/59-3246-g69b4f119f4a (151)
+Version: v5.6.0
+Build: posix/59-3268-g950879406d2 (176)
 
-Date: 1st March 2022
+Date: 28th April 2022
 
-Extensible Virtual Display Interface version included: v1.10.1 (f11e36c)
+Extensible Virtual Display Interface version included: v1.11.0-3 (39da217)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.10.1 (f11e36c)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.5.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v5.6.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -45,6 +45,20 @@ I.  Future development
 C.  Bugs fixed in this release
 ==============================
 
+C.5  Changes in 5.6 release
+-----------------------------
+- Added preliminary support for kernel 5.18
+- Added support for Ubuntu 22.04
+- DL-6xxx series: Improve 10M/100M Ethernet performance of some devices (VIFR-994)
+- Fixed laggy video experience on machines with AMD GPUs on XServer (PS-1828)
+- Improved stability of connection for some of DL-6xxx devices (PS-1820)
+- Improved installer experience (PS-1825)
+- DL-5xxx series: System shows unsupported 4kp60 mode on display modes list (PS-1780)
+- Fixed installation on Raspberry Pi 64bit (PS-1154)
+- Some laptops with DisplayLink driver stuck with black screen before log-in screen appears (PS-1808)
+- Fix kernel bugcheck in dma-buf on device plug-in (PS-1691)
+- Fixed drm device leaks on evdi module unload (PS-1839)
+
 C.4  Changes in 5.5 release
 -----------------------------
 - Added preliminary support for kernel 5.17
@@ -54,7 +68,7 @@ C.4  Changes in 5.5 release
 - Fix displays blinking on device connect (PS-1674)
 - Mitigate problems with some DP monitors that are black on some DL-6xx0 devices (PS-1560)
 - Fix corruptions under cursor in X session on DL-3xx0 devices
-- Fix runit scripts for displaylink-driver daemon
+- Fix runit scripts for displayLink-driver daemon
 
 C.3  Changes in 5.5 beta release
 -----------------------------
@@ -84,11 +98,11 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 21.10, 20.04, 19.04 and 18.04.
+This release has been prepared to be compatible with Ubuntu 22.04, 21.10, 20.04, 19.04 and 18.04.
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
-Supported Linux Kernel version range is from 4.15 to 5.16.
+Supported Linux Kernel version range is from 4.15 to 5.17.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
