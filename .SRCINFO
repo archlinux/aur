@@ -14,4 +14,3 @@ pkgbase = pass-tomb
 	sha512sums = 7f1d4b25cf3a5b1710491c3883cc1db332f4a72152c19830c9ddbacf28a06f9d37d1ce3e6d2869e12ae5c85d4afc7602f951028c4aea06da4f2bfb52ef22a827
 
 pkgname = pass-tomb
-
