@@ -3,14 +3,14 @@
 _pkgbase=WolkenWelten
 _pkgname=${_pkgbase,,}
 pkgname=${_pkgname}-git
-pkgver=r1777.98f5ecdd
+pkgver=r2018.3488672d
 pkgrel=1
 pkgdesc='Gamemix between Minecraft, Quake ]I[ and Emacs in C99'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://wolkenwelten.net/"
 license=('GNU')
 depends=('ffmpeg' 'sdl2' 'sdl2_mixer')
-makedepends=('clang')
+makedepends=('clang' 'git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=(${_pkgname}::"git+https://git.sr.ht/~melchizedek6809/${_pkgbase}")

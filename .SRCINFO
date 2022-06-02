@@ -1,6 +1,6 @@
 pkgbase = wolkenwelten-git
 	pkgdesc = Gamemix between Minecraft, Quake ]I[ and Emacs in C99
-	pkgver = r1777.98f5ecdd
+	pkgver = r2018.3488672d
 	pkgrel = 1
 	url = https://wolkenwelten.net/
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = wolkenwelten-git
 	arch = aarch64
 	license = GNU
 	makedepends = clang
+	makedepends = git
 	depends = ffmpeg
 	depends = sdl2
 	depends = sdl2_mixer
