@@ -18,7 +18,7 @@ depends=(
 )
 conflicts=("$_name-git")
 provides=("$_name" "$_name-gui")
-source=("https://github.com/mandeep/Mausoleum/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mandeep/Mausoleum/archive/v$pkgver.tar.gz"
         "mausoleum.desktop")
 sha512sums=('23ec29c2393125558da0db9f04bbdf995a46d8166dee8ba6dbe4d66bb669f48c6ce8f40c41db2073897deb5f329fe8c203ac3ba42da8d2aefddb3d5068d53106'
             'fdb2db16c6e8fa3f86a51198d732e50387ea174384ed5f23d7db35f62c00137c84add144fb2e0305d1ea52ee233f8f9f779ef49778ac97f26410ae1a2a2d8ed3')
