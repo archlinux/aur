@@ -1,6 +1,6 @@
 pkgbase = grin-wallet-bin
 	pkgdesc = Reference implementation of Grin's wallet.
-	pkgver = 5.0.3
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/mimblewimble/grin-wallet
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = grin-wallet-bin
 	provides = grin-wallet
 	conflicts = grin-wallet
 	options = !strip
-	source = https://github.com/mimblewimble/grin-wallet/releases/download/v5.0.3/grin-wallet-v5.0.3-linux-amd64.tar.gz
-	sha256sums = 4dd24a03be40e91cefdeb2d95a01e009d1b2b1a473beab6a50281fcbfa576f72
+	source = https://github.com/mimblewimble/grin-wallet/releases/download/v5.1.0/grin-wallet-v5.1.0-linux-amd64.tar.gz
+	sha256sums = aaf0d6b658d1756289bccae82cfea3e084de1bec11d47e86f3254cbe80a3cc60
 
 pkgname = grin-wallet-bin
-
