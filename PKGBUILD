@@ -5,7 +5,7 @@ _cranname=usethis
 _cranver=2.1.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate Package and Project Setup"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -71,7 +71,7 @@ check() {
 package() {
 	install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-	cp -a --no-preserve=ownership "${srcdir}/build" "${pkgdir}/usr/lib/R/library"
+	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
 	install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 CRAN_MIT "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
