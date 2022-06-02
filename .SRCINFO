@@ -1,8 +1,8 @@
 pkgbase = rasdaemon
 	pkgdesc = Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog
-	pkgver = 0.6.7
-	pkgrel = 2
-	url = https://pagure.io/rasdaemon
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/mchehab/rasdaemon
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,7 @@ pkgbase = rasdaemon
 	depends = dmidecode
 	depends = perl
 	depends = perl-dbd-sqlite
-	source = https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-0.6.7.tar.bz2
-	sha256sums = 5d0a2236f52fc0572bff3002dd32f9172352b7e64ddd1298394e6ca23c156dee
+	source = https://github.com/mchehab/rasdaemon/archive/refs/tags/v0.6.8.tar.gz
+	sha256sums = d7c9ad61a13ca230e376db4014ae3192992eff10908adf38fad1917609f7d341
 
 pkgname = rasdaemon
-

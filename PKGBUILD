@@ -1,11 +1,11 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.6.8
+pkgrel=1
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
-url="https://pagure.io/rasdaemon"
+url="https://github.com/mchehab/rasdaemon"
 license=(GPL2)
 depends=(
   # For rasdaemon:
@@ -15,9 +15,8 @@ depends=(
   perl
   perl-dbd-sqlite
 )
-source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-$pkgver.tar.bz2")
-sha256sums=('5d0a2236f52fc0572bff3002dd32f9172352b7e64ddd1298394e6ca23c156dee')
-# Git tree: http://git.infradead.org/users/mchehab/rasdaemon.git
+source=("https://github.com/mchehab/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d7c9ad61a13ca230e376db4014ae3192992eff10908adf38fad1917609f7d341')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
