@@ -155,7 +155,7 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC (git version)'
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so
+  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgo.so libgfortran.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs)
   replaces=(gcc-multilib-git)
