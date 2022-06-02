@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gomplate-git
-pkgver=3.10.0.r169.g4337ba71
+pkgver=3.10.0.r216.g795ddbd8
 pkgrel=1
 pkgdesc='A flexible commandline tool for template rendering.'
 arch=(i686 x86_64)
@@ -24,17 +24,10 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/hairyhenderson/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
-
-	cd "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
-
-	export GOPATH="${srcdir}/go"
-	go get -v -d ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/hairyhenderson/gomplate"
-
-	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
 	make
