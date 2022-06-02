@@ -1,17 +1,17 @@
-pkgbase = python-rssd-usermode
+pkgbase = python-rssd
 	pkgdesc = A service for displaying the latest news from RSS feeds via notify.
-	pkgver = 1.7392dd0
+	pkgver = 1.1e62ca2
 	pkgrel = 1
 	url = https://gitflic.ru/project/ksandr/python-rssd
-	install = python-rssd-usermode.install
+	install = python-rssd.install
 	arch = any
 	license = GPL
-	makedepends = gendesk
 	depends = python
 	depends = dbus-python
 	depends = python-feedparser
-	provides = python-rssd
-	source = git+https://gitflic.ru/project/ksandr/python-rssd.git#commit=7392dd0
+	source = git+https://gitflic.ru/project/ksandr/python-rssd.git#commit=1e62ca2
 	md5sums = SKIP
+
+pkgname = python-rssd
 
 pkgname = python-rssd-usermode
