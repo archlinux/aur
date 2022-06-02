@@ -1,11 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: chimeracoder <dev@chimeracoder.net>
-# Generator  : CPANPLUS::Dist::Arch 1.29
 
 _distname=Hash-Merge-Simple
 pkgname=perl-${_distname,,}
 pkgver=0.051
-pkgrel=4
+pkgrel=5
 pkgdesc='Recursively merge two or more hashes, simply'
 arch=(any)
 url="https://search.cpan.org/dist/$_distname"

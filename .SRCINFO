@@ -1,7 +1,7 @@
 pkgbase = perl-hash-merge-simple
 	pkgdesc = Recursively merge two or more hashes, simply
 	pkgver = 0.051
-	pkgrel = 4
+	pkgrel = 5
 	url = https://search.cpan.org/dist/Hash-Merge-Simple
 	arch = any
 	license = PerlArtistic
