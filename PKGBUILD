@@ -8,7 +8,7 @@
 
 pkgname=dolphin-root
 _pkgname=dolphin
-pkgver=21.12.3
+pkgver=22.04.1
 pkgrel=1
 pkgdesc='KDE File Manager, patched to be able to run as root'
 arch=(x86_64)
@@ -23,9 +23,9 @@ conflicts=('dolphin')
 groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         '0001-Defuse-root-block.patch')
-sha256sums=('5812238be9a4ee204e864cd30166285af599c6478eb9ce53cf9a552091c2b654'
+sha256sums=('9cf51ac21ffc3d12a919e99cca80f3bb14741eed2a3af54b4499332ccd979a7b'
             'SKIP'
-            'e55397192734011de342ade949a1b9ab0fce1bd760533bbccd11e99fde070cd7')
+            '00654a86c84389b35a12f5e20c215b06229c4cc378ca6cbf8aeae154259d47c8')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
