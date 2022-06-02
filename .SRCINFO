@@ -1,7 +1,7 @@
 pkgbase = warp-share-files
 	pkgdesc = Share files with each other effortlessly
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/warp
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = warp-share-files
 	makedepends = itstool
 	depends = glib2
 	depends = libadwaita
+	depends = magic-wormhole
 	source = https://gitlab.gnome.org/World/warp/-/archive/v0.1.2/warp-v0.1.2.tar
 	b2sums = 742bde1c4a1aa42ff8eef1b5f56ffd4b92fb623827c7bc1e554b45a3d6275c4343a1e1d19cd6d7f212c699d578ecc091d650afc16e8644f500a40c2e1539516c
 

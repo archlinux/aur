@@ -3,12 +3,12 @@
 pkgname=warp-share-files
 _pkgname=warp
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Share files with each other effortlessly"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/warp"
 license=('GPL3')
-depends=('glib2' 'libadwaita')
+depends=('glib2' 'libadwaita' 'magic-wormhole')
 makedepends=('meson' 'rust' 'itstool')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar)
