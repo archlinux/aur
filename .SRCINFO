@@ -1,7 +1,7 @@
 pkgbase = libvirt-remote-only
 	pkgdesc = API for controlling virtualization engines (remote)
 	pkgver = 8.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libvirt.org/
 	arch = x86_64
 	license = LGPL
@@ -16,7 +16,6 @@ pkgbase = libvirt-remote-only
 	depends = libxml2
 	depends = polkit
 	depends = openbsd-netcat
-	depends = yajl
 	provides = libvirt
 	conflicts = libvirt
 	replaces = libvirt

@@ -4,12 +4,12 @@
 _pkgname=libvirt
 pkgname=${_pkgname}-remote-only
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (remote)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
-depends=('fuse3' 'gnutls' 'libssh' 'libxml2' 'polkit' 'openbsd-netcat' 'yajl')
+depends=('fuse3' 'gnutls' 'libssh' 'libxml2' 'polkit' 'openbsd-netcat')
 replaces=("${_pkgname}")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -87,7 +87,8 @@ build() {
     -Dsysctl_config=disabled \
     -Dtests=disabled \
     -Dudev=disabled \
-    -Dwireshark_dissector=disabled
+    -Dwireshark_dissector=disabled \
+    -Dyajl=disabled
 
   ninja -C build
 }
