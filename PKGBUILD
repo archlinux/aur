@@ -5,7 +5,7 @@
 _pkgname=libavc1394
 pkgname=lib32-libavc1394
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to control A/V devices using the 1394ta AV/C commands (32-bit)"
 arch=("x86_64")
 url="https://sourceforge.net/projects/libavc1394/"
