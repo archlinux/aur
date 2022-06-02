@@ -3,7 +3,7 @@
 _pkgbasename=speex
 pkgname=lib32-$_pkgbasename
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free codec for free speech (32-bit)"
 arch=(x86_64)
 url="https://speex.org/"
