@@ -1,19 +1,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 # Maintainer: András Wacha < awacha at gmail >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-pdl-stats'
-pkgver='0.81'
+pkgver='0.82'
 pkgrel='1'
 pkgdesc="a collection of statistics modules in Perl Data Language, with a quick-start guide for non-PDL people."
-arch=('any')
+arch=('x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-pdl>=0')
-makedepends=()
+depends=('perl-pdl')
 url='https://metacpan.org/release/PDL-Stats'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/PDL-Stats-${pkgver}.tar.gz")
-md5sums=('79556212839f3a1c7b20efd2502dfba3')
-sha512sums=('228a678d2c244cddd1a30526f592b9fcd6373c00796942886611884a2b0bb473cfbec95238d75563438d9a1143280185c45e5b8332d983f192bcf13a0c180d4a')
+source=("https://search.cpan.org/CPAN/authors/id/E/ET/ETJ/PDL-Stats-${pkgver}.tar.gz")
+sha512sums=('9c4f165e7ae60e271b37de5c10d84a344ca2a9281d8f75ddebe1b7d44921082174919619f58cb4cebc8ab88e21d17e82de74124bc5924b9b8dcfaf3a22e217c8')
 _distdir="PDL-Stats-${pkgver}"
 
 build() {
