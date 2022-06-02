@@ -1,7 +1,7 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=google-cloud-cpp
-pkgver=1.40.2
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('gcc' 'cmake' 'm4')
 depends=('protobuf' 'grpc' 'nlohmann-json' 'c-ares' 'zlib' 'openssl' 'curl' 'abseil-cpp' 'google-crc32c')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v$pkgver.tar.gz")
-sha256sums=('394595d8ce0f17ad9f1a1e3efa1c54118a1246df617a7388da7111dfb299b05b')
+sha256sums=('02ea232bbac826e36ad1140a45cfe2f4552e7e1fbb8f86e839fa2fb3620cdd64')
 
 build() {
   cd "$pkgname-$pkgver"
