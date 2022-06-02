@@ -4,7 +4,7 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -34,6 +34,9 @@ prepare() {
 
   # Use bdsup2subpp instead of java app
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
+
+  # fix version
+  sed 's|app.setApplicationVersion("5.5.9")|app.setApplicationVersion("5.5.10")|g' -i MKVExtractorQt5.py
 
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
