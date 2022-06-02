@@ -40,10 +40,35 @@ build() {
     if [ -f "$DRI_driver" ]; then
         add_binary "$DRI_driver"
     fi
+    DRI_driver=/usr/lib/dri/iris_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
+    DRI_driver=/usr/lib/dri/nouveau_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
+    DRI_driver=/usr/lib/dri/r300_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
+    DRI_driver=/usr/lib/dri/r600_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
+    DRI_driver=/usr/lib/dri/radeonsi_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
+    DRI_driver=/usr/lib/dri/zink_dri.so
+    if [ -f "$DRI_driver" ]; then
+        add_binary "$DRI_driver"
+    fi
     DRI_driver=/usr/lib/dri/kms_swrast_dri.so
     if [ -f "$DRI_driver" ]; then
         add_binary "$DRI_driver"
     fi
+
     GL_library=/usr/lib/libGLESv2.so.2
     if [ -f "$GL_library" ]; then
         add_binary "$GL_library"
