@@ -1,0 +1,19 @@
+pkgbase = nickvision-application-git
+	pkgdesc = A template for creating Nickvision applications
+	pkgver = 2022.5.0.r0.0261fcc
+	pkgrel = 1
+	url = https://github.com/nlogozzo/NickvisionApplication
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gtk4
+	depends = libadwaita
+	depends = jsoncpp
+	depends = libcurlpp
+	provides = nickvision-application
+	conflicts = nickvision-application
+	source = git+https://github.com/nlogozzo/NickvisionApplication.git
+	md5sums = SKIP
+
+pkgname = nickvision-application-git
