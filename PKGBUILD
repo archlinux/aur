@@ -3,12 +3,12 @@
 _name=moderngl
 pkgname=python-$_name
 pkgver=5.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='ModernGL: High performance rendering for Python 3'
 arch=(x86_64)
 url='https://github.com/moderngl/moderngl'
 license=('MIT')
-depends=(python)
+depends=(python python-glcontext)
 # For python-setuptools, see here: https://aur.archlinux.org/packages/python-moderngl#comment-864201.
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
