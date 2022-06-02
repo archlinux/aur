@@ -1,5 +1,5 @@
 pkgname='python-calc'
-pkgver=12.661d17e
+pkgver=23.6c0d495
 pkgrel=1
 pkgdesc='A minimalist scientific calculator for python.'
 arch=('any')
