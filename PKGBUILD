@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ghw-git
-pkgver=v0.9.0.r7.g2ea05cb
+pkgver=0.9.0.r16.gdac2f19
 pkgrel=1
 pkgdesc="Golang hardware discovery/inspection library"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
