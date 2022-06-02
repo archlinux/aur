@@ -1,0 +1,12 @@
+--- kernel/thread.orig	2022-06-01 11:44:29.563747178 -0400
++++ kernel/thread.h	2022-06-01 11:46:19.093752131 -0400
+@@ -3005,7 +3005,8 @@
+   #endif /* Slowaris 5.7 / 7.x or newer */
+ #elif defined( _AIX ) || defined( __Android__ ) || defined( __CYGWIN__ ) || \
+ 	  ( defined( __hpux ) && ( OSVERSION >= 11 ) ) || \
+-	  defined( __NetBSD__ ) || defined( __QNX__ ) || defined( __UCLIBC__ )
++	  defined( __NetBSD__ ) || defined( __QNX__ ) || \
++	  defined( __UCLIBC__ ) || defined(__linux__)
+   #define THREAD_YIELD()		sched_yield()
+ #elif defined( __XMK__ )
+   /* The XMK underlying scheduling object is the process context, for which

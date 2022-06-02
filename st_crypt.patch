@@ -1,0 +1,11 @@
+--- orig/src/syncterm/st_crypt.h	2022-06-02 13:05:13.210790443 -0400
++++ new/src/syncterm/st_crypt.h	2022-06-02 13:07:18.857457650 -0400
+@@ -4,7 +4,7 @@
+ #define _ST_CRYPT_H_
+ 
+ #ifndef WITHOUT_CRYPTLIB
+-#include <cryptlib.h>
++#include "../../3rdp/src/cl/cryptlib.h"
+ #if CRYPTLIB_VERSION < 3400
+ #if CRYPTLIB_VERSION < 340 || CRYPTLIB_VERSION > 999
+ #define CRYPT_ATTRIBUTE_ERRORMESSAGE	CRYPT_ATTRIBUTE_INT_ERRORMESSAGE
