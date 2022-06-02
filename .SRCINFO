@@ -5,7 +5,7 @@ pkgbase = hmcl-new
 	url = https://github.com/skbeh/HMCL-build
 	arch = any
 	license = GPL3
-	depends = java-openjfx
+	depends = java-openjfx>=17
 	provides = hmcl
 	conflicts = hmcl
 	noextract = hmcl-new-3.5.3.220-2.jar
