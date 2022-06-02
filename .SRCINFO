@@ -1,6 +1,6 @@
 pkgbase = phoc
 	pkgdesc = Wlroots based Phone compositor
-	pkgver = 0.13.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phoc
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = phoc
 	makedepends = vala
 	makedepends = wayland-protocols
 	depends = mutter
-	depends = wlroots>=0.14.0
-	depends = wlroots<0.15.0
-	source = https://gitlab.gnome.org/World/Phosh/phoc/-/archive/v0.13.1/phoc-v0.13.1.tar.gz
-	b2sums = 6606855efe7099d12c8be3ee16c401bbcc618aaed2f264abe982cc4a49ccbc0e65fac1b7d8da62de4261bdf3a322f4313a15723c7b7cb7a9ce279957dbf89c78
+	depends = wlroots
+	source = https://gitlab.gnome.org/World/Phosh/phoc/-/archive/v0.20.0/phoc-v0.20.0.tar.gz
+	b2sums = 88ddf67905282fb8a9fc0f1cfce048ed837abb159a250c2a28ac5a0da33e1a4f0ba5a5ef3a49e089073d123039dbac7296c4c1f5bf5454324d2fab47d7a0e4a3
 
 pkgname = phoc
