@@ -1,0 +1,35 @@
+pkgbase = r-reticulate
+	pkgdesc = Interface to 'Python' modules, classes, and functions
+	pkgver = 1.25
+	pkgrel = 1
+	url = https://cran.r-project.org/package=reticulate
+	arch = any
+	license = Apache
+	checkdepends = r-testthat
+	checkdepends = python-numpy
+	checkdepends = python-pandas
+	checkdepends = python-pipenv
+	checkdepends = python-poetry
+	checkdepends = python-scipy
+	checkdepends = python-matplotlib
+	checkdepends = python-virtualenv
+	checkdepends = python-plotly
+	depends = python>=2.7.0
+	depends = r>=3.0
+	depends = r-matrix
+	depends = r-rcpp>=0.12.7
+	depends = r-rcpptoml
+	depends = r-here
+	depends = r-jsonlite
+	depends = r-png
+	depends = r-rappdirs
+	depends = r-withr
+	optdepends = r-callr
+	optdepends = r-knitr
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/reticulate_1.25.tar.gz
+	sha512sums = 0bed6f67b67dc796a89cf82215fd4b37c6d5dc4999c5c61c34b66657a7c3afb70c880f1d27c8f458102410f797a278c777440e8a134fb073e0d70bb01c7e5478
+
+pkgname = r-reticulate
