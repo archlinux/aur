@@ -3,8 +3,8 @@
 
 pkgname=glade-perl
 _cpanname=Gtk2-GladeXML
-pkgver=1.007
-pkgrel=18.2
+pkgver=1.008
+pkgrel=1.0
 pkgdesc="Gtk2-GladeXML perl bindings for glade 2.x"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
@@ -12,8 +12,9 @@ license=('LGPL' 'PerlArtistic')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 depends=('libglade' 'gtk2-perl' 'perl')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/T/TS/TSCH/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('e6ca234e2a9f0221263acd2a593c583b')
+#source=("https://cpan.metacpan.org/authors/id/T/TS/TSCH/${_cpanname}-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/X/XA/XAOC/${_cpanname}-${pkgver}.tar.gz")
+md5sums=('e4eba9d654198eb5bc4da7418d93d30a')
 
 build() {
   cd  $_cpanname-$pkgver

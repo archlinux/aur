@@ -1,7 +1,7 @@
 pkgbase = glade-perl
 	pkgdesc = Gtk2-GladeXML perl bindings for glade 2.x
-	pkgver = 1.007
-	pkgrel = 18.2
+	pkgver = 1.008
+	pkgrel = 1.0
 	url = https://metacpan.org/release/Gtk2-GladeXML
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = glade-perl
 	depends = gtk2-perl
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/T/TS/TSCH/Gtk2-GladeXML-1.007.tar.gz
-	md5sums = e6ca234e2a9f0221263acd2a593c583b
+	source = https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk2-GladeXML-1.008.tar.gz
+	md5sums = e4eba9d654198eb5bc4da7418d93d30a
 
 pkgname = glade-perl
