@@ -1,20 +1,21 @@
 # Maintainer: Brian Bidulock <bidulock at openss7 dot org>
 
 pkgname=perl-ev-glib
+_cpanname=EV-Glib
 pkgver=2.01
-pkgrel=15.1
+pkgrel=15.2
 pkgdesc="Embed the glib main loop into EV"
 arch=('i686' 'x86_64')
-url='http://search.cpan.org/perldoc?EV::Glib'
+url="http://metacpan.org/dist/${_cpanname}"
 license=('GPL' 'PerlArtistic')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/EV-Glib-${pkgver}.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/${_cpanname}-${pkgver}.tar.gz")
 depends=('glib-perl' 'perl-ev')
 makedepends=('perl-extutils-pkgconfig')
 sha512sums=('2e042a0e460a55ab7499c2a82adc13afbb4815edeb8601eb3a7642dbdfa6a2e3d19d75e6b5b508b7962aa4e26473ff54fc5953381ba6373fa13faf75420f65b3')
 
 build() {
-	cd "$srcdir/EV-Glib-$pkgver"
+	cd ${_cpanname}-$pkgver
 
 	# install module in vendor directories
 	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
@@ -30,7 +31,7 @@ fi
 # template end;
 }
 package() {
-	cd "$srcdir/EV-Glib-$pkgver"
+	cd ${_cpanname}-$pkgver
 	make install DESTDIR="$pkgdir/"
 
 	#remove perllocal.pod and .packlist
