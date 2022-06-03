@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nvtop-git
-pkgver=2.0.1.r2.g123908f
+pkgver=2.0.1.r14.gb7d1b14
 pkgrel=1
 pkgdesc="A (h)top like task monitor for NVIDIA GPUs"
 arch=('x86_64')
@@ -24,7 +24,6 @@ build() {
 	cd "${srcdir}/${pkgname}"
 
 	mkdir -p build
-
     cmake . -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release -B build
 	make -C build
@@ -34,6 +33,5 @@ package() {
 	cd "${srcdir}/${pkgname}"
 
     make -C build DESTDIR="$pkgdir/" install
-
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
