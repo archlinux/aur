@@ -4,9 +4,9 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Cedric Brancourt <cedric.brancourt at gmail dot com>
 
-pkgname=('imagemagick-no-hdri')
+pkgname='imagemagick-no-hdri'
 pkgver=7.1.0.36
-pkgrel=1
+pkgrel=2
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
 arch=(i686 x86_64)
@@ -36,8 +36,8 @@ sha256sums=('4911c5fc4106c3af029fa46420ab72aa5bcc9d228ead500fbdfc5a50f51793c8'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
-options=(debug !docs !emptydirs libtool)
-provides=('imagemagick' 'libmagick')
+options=(!docs !emptydirs libtool)
+provides=("imagemagick=${pkgver}" "libmagick=${pkgver}")
 conflicts=('imagemagick' 'imagemagick6' 'libmagick' 'libmagick6')
 backup=(etc/$_relname/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
 

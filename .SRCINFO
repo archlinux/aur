@@ -1,7 +1,7 @@
 pkgbase = imagemagick-no-hdri
 	pkgdesc = An image viewing/manipulation program
 	pkgver = 7.1.0.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.imagemagick.org/
 	arch = i686
 	arch = x86_64
@@ -55,13 +55,12 @@ pkgbase = imagemagick-no-hdri
 	optdepends = djvulibre: DJVU support
 	optdepends = pango: Text rendering
 	optdepends = imagemagick-doc: manual and API docs
-	provides = imagemagick
-	provides = libmagick
+	provides = imagemagick=7.1.0.36
+	provides = libmagick=7.1.0.36
 	conflicts = imagemagick
 	conflicts = imagemagick6
 	conflicts = libmagick
 	conflicts = libmagick6
-	options = debug
 	options = !docs
 	options = !emptydirs
 	options = libtool
