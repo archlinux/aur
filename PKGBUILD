@@ -1,6 +1,8 @@
+# Maintainer: so1ar <so1ar114514@gmail.com>
+
 pkgname=rime-symbols-git
 pkgver=20220603.r4.ce9c2b9
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese to symbols support for rime"
 arch=('any')
 url="https://github.com/so1ar/rime-symbols"
