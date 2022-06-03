@@ -1,26 +1,54 @@
-# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: portaloffreedom
-
+# Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=gdtools
-_cranver=0.2.3
+_cranver=0.2.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Utilities for Graphical Rendering"
-arch=(i686 x86_64)
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=(r 'r-rcpp>=0.12.12' 'r-systemfonts>=0.1.1' cairo freetype2 fontconfig)
-optdepends=(r-htmltools r-testthat r-fontquiver r-curl)
+depends=(
+	cairo
+	fontconfig
+	freetype2
+	r
+	r-rcpp
+	r-systemfonts
+)
+checkdepends=(
+	r-htmltools
+	r-testthat
+	r-fontquiver
+	r-curl
+)
+optdepends=(
+	r-htmltools
+	r-testthat
+	r-fontquiver
+	r-curl
+)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('972bbbfc45054513ddfc7d77d4626b4050c3d4da6881eee4300ebdcb31b871dc')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+	mkdir -p build
+	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
+
+check() {
+	if [ -d "${_cranname}/tests" ]
+	then
+  		cd "${_cranname}/tests"
+		for i in *.R; do
+			R_LIBS="${srcdir}/build" Rscript --vanilla $i
+		done
+	fi
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+	install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+
+sha256sums=('32884ce1aa49be1fd897b4f808cdbc8727cb0d881ff8961e899220b2cac33028')
