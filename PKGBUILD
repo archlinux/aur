@@ -2,7 +2,7 @@
 
 pkgname=mitsuba2-git
 pkgver=2.2.1.r38.g4e7628c6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
