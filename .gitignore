@@ -1,0 +1,5 @@
+src
+pkg
+giblib*.tar.gz
+*pkg.tar.*
+tags
