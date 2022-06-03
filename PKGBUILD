@@ -3,7 +3,7 @@
 
 pkgname=rime-solarpinyin
 pkgver=1.2.0.20220603
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified pinyin input for rime"
 arch=('x86_64')
 url="https://github.com/so1ar/rime-cloverpinyin"
@@ -23,8 +23,9 @@ build(){
 package() {
   cd $srcdir
   rm build/*.txt
-  rm -rf opencc
+  rm -rf opencc/symbol*
+  rm -rf opencc/emoji*
   install -Dm644 *.yaml -t "$pkgdir"/usr/share/rime-data/
   install -Dm644 build/* -t "$pkgdir"/usr/share/rime-data/build/
-  #install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc
+  install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc
 }
