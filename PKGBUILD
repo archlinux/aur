@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=scorecard
-pkgver=4.1.0
+pkgver=4.3.1 # renovate: datasource=github-tags depName=ossf/scorecard
 pkgrel=1
 pkgdesc='Security health metrics for Open Source'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/ossf/scorecard'
 license=(APACHE)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ossf/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f8a4a13b38c671210868bcd47f6ee8cb05f0931c5a25d368f3a5687d1a3625f06b5f85ccf4e1e443354395e483a797b0b53c3e759fcf2b819b9d7d89f366d5fe')
+b2sums=('57cc90eae3b637613fd0bbe032ca0f702b1d4c6e569e41f4bca51e0388fdc54262b816335a4189668f91ace951998a6011e7ef2f7bd935f6050093ca0091e4f9')
 
 build() {
   cd $pkgname-$pkgver
