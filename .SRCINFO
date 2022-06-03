@@ -1,0 +1,24 @@
+pkgbase = i2pd-qt-git
+	pkgdesc = i2pd with Qt based GUI
+	pkgver = 2.41.0.r3.d733e15
+	pkgrel = 1
+	url = https://i2pd.website/
+	arch = any
+	groups = i2p
+	license = custom: BSD3
+	makedepends = git
+	makedepends = boost
+	makedepends = miniupnpc
+	makedepends = openssl
+	makedepends = zlib
+	depends = qt5-base
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+	depends = zlib
+	provides = i2pd-qt
+	conflicts = i2pd-qt
+	source = i2pd-qt::git+https://github.com/PurpleI2P/i2pd-qt.git
+	md5sums = SKIP
+
+pkgname = i2pd-qt-git
