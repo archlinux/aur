@@ -38,4 +38,7 @@ package() {
 
 	# Install binary
 	install -Dm755 "$_appimage" "$pkgdir/usr/bin/figma-linux"
+
+    # This is required for browser login to work
+    xdg-mime default figma-linux.desktop x-scheme-handler/figma
 }
