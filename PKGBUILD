@@ -4,7 +4,7 @@
 
 pkgname=radio-cli-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple radio cli for listening to your favourite streams from the console"
 url="https://github.com/margual56/radio-cli"
 license=("GPL2")
