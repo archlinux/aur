@@ -3,8 +3,8 @@
 
 pkgname='ivideon-server'
 pkgver='3.12.0'
-pkgrel='8311'
-_rel='4f9cc18'
+pkgrel='8419'
+_rel='ed3a5d7'
 pkgdesc='Ivideon Server (with QT5 GUI)'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -15,7 +15,7 @@ noextract=("${source[@]%%::*}")
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
 	"https://packages.ivideon.com/ubuntu/pool/non-free/libq/libqt54-ivideon/libqt54-ivideon_5.4.2.0_amd64.deb"
 	"${pkgname}_infinity_camera_list.patch")
-sha256sums=('0105cef1b013108084a58fea0cb538b8bec09534ae480d0d2b6d5cec9f41d7c8'
+sha256sums=('106e5cf5d666ddd26f3cc22be9281f017a773e8e4f1f31c25c8e040ffe739006'
             'cbc6481b30a058a2bd8707bfaa06d600ce7be0304140a92ac56340ae13b1e062'
             'a220cf727c7520d8c94fe11a28e7fb9a17614dff8f41343e35070c1ff59f754f')
 
@@ -23,6 +23,7 @@ build() {
   cd "${srcdir}"
   bsdtar xf "${srcdir}/ivideon-video-server_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
   bsdtar xf "data.tar.xz"
+  bsdtar xf "data.tar.gz"
   patch -p1 -i "${srcdir}/${pkgname}_infinity_camera_list.patch"
   cd "${srcdir}/opt/ivideon/${pkgname}"
   ln -fs ../qtlibs54/platforms platforms
