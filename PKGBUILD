@@ -6,13 +6,13 @@
 
 pkgname=ncpfs
 pkgver=2.2.6
-pkgrel=11
+pkgrel=12
 pkgdesc="Utilities to use resources from Novell NetWare servers"
 url="http://www.novell.com/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('linux' 'pam')
-_url="http://ftp.de.debian.org/debian/pool/main/n/$pkgname"
+_url="http://archive.debian.org/debian/pool/main/n/$pkgname"
 source=("${_url}/${pkgname}_${pkgver}.orig.tar.gz"
         '01-linux3.0_uname.patch'
         '02-legacy.patch'

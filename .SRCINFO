@@ -1,14 +1,14 @@
 pkgbase = ncpfs
 	pkgdesc = Utilities to use resources from Novell NetWare servers
 	pkgver = 2.2.6
-	pkgrel = 11
+	pkgrel = 12
 	url = http://www.novell.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = linux
 	depends = pam
-	source = http://ftp.de.debian.org/debian/pool/main/n/ncpfs/ncpfs_2.2.6.orig.tar.gz
+	source = http://archive.debian.org/debian/pool/main/n/ncpfs/ncpfs_2.2.6.orig.tar.gz
 	source = 01-linux3.0_uname.patch
 	source = 02-legacy.patch
 	source = 03-multiple_security_issues.patch
@@ -24,4 +24,3 @@ pkgbase = ncpfs
 	md5sums = 660e851a1f6ab6e9f5464006de844b7e
 
 pkgname = ncpfs
-
