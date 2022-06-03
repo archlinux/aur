@@ -1,6 +1,6 @@
 pkgbase = lammps-git
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 30248.7bfa368
+	pkgver = 30896.ceb9466
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = lammps-git
 	makedepends = cmake>=3.1
 	depends = fftw
 	optdepends = openmpi-slurm: support openmpi in slurm-llnl
+	optdepends = ffmpeg: dump movie
+	optdepends = libpng: dump movie
 	provides = lammps
 	conflicts = lammps
-	source = git+https://github.com/lammps/lammps.git
+	source = git+https://github.com/lammps/lammps.git#branch=release
 	sha512sums = SKIP
 
 pkgname = lammps-git
