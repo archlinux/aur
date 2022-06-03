@@ -1,0 +1,2 @@
+d /var/lib/mjolnir 0770 mjolnir mjolnir - -
+d /etc/mjolnir     0770 mjolnir mjolnir - -

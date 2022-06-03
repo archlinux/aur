@@ -1,0 +1,23 @@
+pkgbase = mjolnir
+	pkgdesc = A moderation tool for Matrix.
+	pkgver = 1.4.2
+	pkgrel = 4
+	url = https://github.com/matrix-org/mjolnir
+	arch = any
+	license = Apache
+	makedepends = yarn
+	depends = nodejs
+	optdepends = pantalaimon: encrypted room support
+	backup = etc/mjolnir/config/production.yaml
+	source = https://github.com/matrix-org/mjolnir/archive/refs/tags/v1.4.2.tar.gz
+	source = mjolnir
+	source = mjolnir.service
+	source = mjolnir.sysusers
+	source = mjolnir.tmpfiles
+	sha256sums = 41e801dde7ea889901a45decdb3669e619316571c2ce2a69b438f603bac610d9
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mjolnir

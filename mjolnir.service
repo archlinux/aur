@@ -1,0 +1,53 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit mjolnir.service
+# See "man systemd.service" for details.
+
+[Unit]
+Description=Mjolnir
+Documentation=https://github.com/matrix-org/mjolnir/blob/main/config/default.yaml
+
+# https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/mjolnir
+WorkingDirectory=/etc/mjolnir
+
+# Make sure the config directory is readable by the service user
+PermissionsStartOnly=true
+ExecStartPre=/bin/chgrp -R mjolnir /etc/mjolnir
+
+Type=simple
+Restart=on-failure
+TimeoutStartSec=infinity
+TimeoutStopSec=600
+
+# Directory creation and permissions
+####################################
+
+User=mjolnir
+Group=mjolnir
+
+# /etc/mjolnir
+ConfigurationDirectory=mjolnir
+ConfigurationDirectoryMode=0770
+
+# /var/lib/mjolnir
+StateDirectory=mjolnir
+StateDirectoryMode=0770
+
+# Hardening measures
+####################
+
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+PrivateDevices=true
+MemoryDenyWriteExecute=false
+
+[Install]
+WantedBy=multi-user.target

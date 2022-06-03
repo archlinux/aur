@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+NODE_ENV=production node /opt/mjolnir/lib/index.js
