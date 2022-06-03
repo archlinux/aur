@@ -1,4 +1,4 @@
-From b43c3da5cd860e4a92f484b29d0f3911fcbcd5ed Mon Sep 17 00:00:00 2001
+From 2265e21cd475ea98aca60ac064f428f52eab622c Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 3 Mar 2022 19:58:41 +0100
 Subject: [PATCH 1/3] makepkg: Remove external stuff
@@ -9,7 +9,7 @@ Subject: [PATCH 1/3] makepkg: Remove external stuff
  2 files changed, 32 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f93b41ca..d7ba53ac 100644
+index 83b1db52..90bd7134 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -11,7 +11,6 @@ include("${IMHEX_BASE_FOLDER}/cmake/build_helpers.cmake")

@@ -1,4 +1,4 @@
-From 3d5f9a055a54d7d875064c405c14a72cc37a2fd2 Mon Sep 17 00:00:00 2001
+From ca88340ab05fd46956e706a5c18000bdcaf27278 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Tue, 24 May 2022 15:27:25 +0200
 Subject: [PATCH 3/3] fix: Build errors with GCC 12.1.0

@@ -1,4 +1,4 @@
-From aef95356265d5720a2ead68726fb1c10762c9547 Mon Sep 17 00:00:00 2001
+From a775d4d8db350a0db34270183cc9d22d6c0580b4 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 20:20:40 +0100
 Subject: [PATCH 2/3] archlinux-compat: Remove unused mbedTLS code from libcurl
