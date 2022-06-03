@@ -8,7 +8,6 @@ pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
 url='https://github.com/mandeep/Mausoleum'
 license=('GPL3')
-makedepends=('python-setuptools')
 depends=(
   'tomb'
   'python-pyqt5'
@@ -16,6 +15,7 @@ depends=(
   'python-click'
   'python-appdirs'
 )
+makedepends=('python-setuptools')
 conflicts=("$_name-git")
 provides=("$_name" "$_name-gui")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mandeep/Mausoleum/archive/v$pkgver.tar.gz"
