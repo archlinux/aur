@@ -2,11 +2,13 @@
 
 pkgname=rime-symbols-git
 pkgver=20220603.r4.ce9c2b9
-pkgrel=2
+pkgrel=3
 pkgdesc="Chinese to symbols support for rime"
 arch=('any')
 url="https://github.com/so1ar/rime-symbols"
 license=('LGPL')
+provides=('rime-symbols')
+conflicts=('rime-symbols')
 source=(git+${url})
 sha512sums=('SKIP')
 
