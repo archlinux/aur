@@ -4,7 +4,7 @@
 
 pkgname=clingo
 pkgver=5.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Grounding tools for (disjunctive) logic programs'
 arch=('i686' 'x86_64' 'pentium4')
 url='https://potassco.org/'
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('lua' 'python')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
+options=('!lto')
 source=("git+https://github.com/potassco/clingo#tag=v${pkgver}")
 sha256sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = clingo
 	pkgdesc = Grounding tools for (disjunctive) logic programs
 	pkgver = 5.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://potassco.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = clingo
 	depends = lua
 	depends = python
 	conflicts = clasp
+	options = !lto
 	source = git+https://github.com/potassco/clingo#tag=v5.5.2
 	sha256sums = SKIP
 
