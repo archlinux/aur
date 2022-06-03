@@ -1,7 +1,7 @@
 pkgbase = virtua-racing
 	pkgdesc = Racing game, published by TIME WARNER INTERACTIVE, which was released in Europe in 1995 for the Sega Saturn.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://en.wikipedia.org/wiki/Virtua_Racing
 	arch = any
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = virtua-racing
 	source = saturn-template.desktop
 	source = com.sega.VirtuaRacing.png
 	sha256sums = 0ddf863a7e3c0cef646a06543ca82b02dc1435336d7f4436d79fb52d873255c7
-	sha256sums = dc63bb6e7c472c2827fd4c7ab386180bdf61474805eb542719902200d13c0a6c
+	sha256sums = cddae03b9321eecd3d2db2b23d09494eca063b01ddb3661d9e5a61689a2eba6d
 	sha256sums = 3ac6338d2c974c39b0a5b0df450bb46d55af336ad719b237fcb61a0b2309f4a1
 
 pkgname = virtua-racing
