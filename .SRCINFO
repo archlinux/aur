@@ -1,6 +1,6 @@
 pkgbase = src-cli-bin
 	pkgdesc = A command line interface to Sourcegraph
-	pkgver = 3.40.2
+	pkgver = 3.40.7
 	pkgrel = 1
 	url = https://github.com/sourcegraph/src-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = src-cli-bin
 	license = APACHE
 	provides = src-cli
 	conflicts = src-cli
-	source_x86_64 = https://github.com/sourcegraph/src-cli/releases/download/3.40.2/src-cli_3.40.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4c6d48c5fef56882d51e8570ff72dade296135baccf01529441f4508b6e4b1d9
-	source_aarch64 = https://github.com/sourcegraph/src-cli/releases/download/3.40.2/src-cli_3.40.2_linux_aarch64.tar.gz
-	sha256sums_aarch64 = a1a4ba41de9a1f4c6cd23de11b5c54d7f5060648110164da5e58bbbb85360861
+	source_x86_64 = https://github.com/sourcegraph/src-cli/releases/download/3.40.7/src-cli_3.40.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 92cf24f0dbc1d95ac96edec284ed0b830b097b55285755eb5ef0680a22b9668c
+	source_aarch64 = https://github.com/sourcegraph/src-cli/releases/download/3.40.7/src-cli_3.40.7_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 7332e90054bc90c279028b24571e5aea35d204e010433c5b3b72a8f80e848fe5
 
 pkgname = src-cli-bin
