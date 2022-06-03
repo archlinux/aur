@@ -1,51 +1,56 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-pod-eventual'
-pkgver='0.094001'
-pkgrel='1'
-pkgdesc="read a POD document as a series of trivial events"
+_distname='Pod-Eventual'
+pkgver=0.094002
+pkgrel=1
+pkgdesc='Read a POD document as a series of trivial events'
 arch=('any')
+url="https://metacpan.org/dist/${_distname}"
 license=('PerlArtistic' 'GPL')
+depends=(
+  'perl>=5.012'
+  'perl-carp'
+  'perl-mixin-linewise>=0.102'
+)
+makedepends=(
+  'perl-extutils-makemaker>=6.78'
+  'perl-file-path'
+)
+checkdepends=(
+  'perl-perlio-utf8-strict'
+  'perl-test-deep'
+)
 options=('!emptydirs')
-depends=('perl-mixin-linewise')
-makedepends=()
-checkdepends=('perl-test-deep' 'perl-perlio-utf8-strict')
-url='https://metacpan.org/release/Pod-Eventual'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Eventual-0.094001.tar.gz')
-md5sums=('627de0dc05c84f147643d51dc132015a')
-sha512sums=('f892653f6895381b3f493b44e8c295d02bf78e70e64c23b9c8602e6692517790524cd5996bb6d84aed7b4e8da60eebe99330a53e5f26f75e4ab017d6e8d317e6')
-_distdir="Pod-Eventual-0.094001"
+_pkgtarname="${_distname}-${pkgver}"
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/${_pkgtarname}.tar.gz")
+b2sums=('c59637efc78b5b4360e83608220083e95ae73648e7acfc74a49ec1d66372f33d4540d6063c883405eb8a520284d46c52de21c83c38b59de9d9bd53b629f49389')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_AUTOINSTALL='--skipdeps'                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+      MODULEBUILDRC='/dev/null'
 
-    cd "$srcdir/$_distdir"
+    cd "${_pkgtarname}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "${_pkgtarname}"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${_pkgtarname}"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" -name '.packlist' -o -name 'perllocal.pod' -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
