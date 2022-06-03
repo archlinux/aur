@@ -1,15 +1,12 @@
 pkgbase = addinclude
 	pkgdesc = Add include statements to header and sourcefiles, for C and C++
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://addinclude.roboticoverlords.org/
+	url = https://github.com/xyproto/addinclude
 	arch = x86_64
 	license = GPL2
 	makedepends = go
-	source = https://addinclude.roboticoverlords.org/addinclude-1.1.1.tar.xz
-	source = https://addinclude.roboticoverlords.org/addinclude-1.1.1.tar.xz.asc
-	validpgpkeys = 962855F072C7A01846405864FCF3C8CB5CF9C8D4
-	b2sums = 46a174a39a2e0ba03345707af94443525c8766fd760c48be149bb86314591c949c09b000f5b5dd51fdc410dbd884c5e2e33fac84d9733be38aba2a63e0b2d27e
-	b2sums = SKIP
+	source = https://github.com/xyproto/addinclude/releases/download/v1.2.0/addinclude-1.2.0.tar.xz
+	b2sums = 0ae646d99549fa6e3e9d76aea1c4b3046215339129caaf5c7d21a2629bbe841fd5fc91cdbffcd72ba717d3b325ed880e5173947781beca8ea55f7937423a2a8e
 
 pkgname = addinclude
