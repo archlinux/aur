@@ -4,7 +4,7 @@
 
 ################################################################################
 # This PKGBUILD features:
-# - the pure-GTK3 rendering backend is enabled.
+# - the pure GTK3 rendering backend is enabled.
 # - the xwidgets is enabled (you can surf the Internet via 
 #   a modern browser(webkit) in Emacs!).
 # - link-time optimization is disabled by default.
@@ -103,7 +103,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.156571
+pkgver=29.0.50.156996
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -112,9 +112,9 @@ license=('GPL3')
 depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git' 'mold')
-provides=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs-git' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
+provides=('emacs')
+conflicts=('emacs')
+replaces=('emacs')
 source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
