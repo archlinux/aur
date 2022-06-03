@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=zafiro-icon-theme-git
-pkgver=1.2.r37.gf60cede
+pkgver=1.2.r38.g4cebe71
 pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
