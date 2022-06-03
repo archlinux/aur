@@ -2,14 +2,14 @@
 _pkgname=mwrogue 
 pkgname=python-mwrogue-git
 pkgdesc="A library is a client for connecting to, and occasionally editing, the Fandom/Gamepedia esports wikis"
-pkgver=dcadb82
+pkgver=1cae5a2
 pkgrel=1
 arch=('any')
 url="https://github.com/RheingoldRiver/mwrogue"
 license=('MIT')
 depends=('python' 'python-mwparserfromhell' 'python-pytz' 'python-mwclient' 'python-mwcleric-git' 'python-unidecode')
 makedepends=('git' 'python-setuptools')
-source=('git://github.com/RheingoldRiver/mwrogue')
+source=('git+https://github.com/RheingoldRiver/mwrogue')
 md5sums=('SKIP')
 
 pkgver() {
