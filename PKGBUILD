@@ -1,7 +1,7 @@
 # Maintainer: Sergei Marochkin <me@ziggi.org>
 
 pkgname='warspear'
-pkgver=10.3.4
+pkgver=10.3.5
 pkgrel=0
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='amd64'
 
 source=("http://distr.warspear-online.com/linux/pool/non-free/w/warspear/warspear_${pkgver}_${_arch}.deb")
-sha512sums=('e5b767660376e750469a28155db183d39d467a938cec07523f173ad9efd7dd1dc083e76979bfde8fd046b4739ae5bae486d2182a8750a58166787350590ec796')
-[ "$CARCH" = "x86_64" ] && sha512sums=('c8fb74f7b11761be9f468b1cee6f0fc67099b1969fa7c9302620f427998bdeda7d4eb7621c22f30edb1082d75b3d0c5da10ebabbc6ce6007f8af02a354d8af64')
+sha512sums=('e99d1f6c976294d2184629b97c410b9e59d0cd1eff684280d8b4a79c62ec903c1424a20d797a30813b6a85f34994b2e51b2aa67ba8f555127fc3447fb8b2a3c8')
+[ "$CARCH" = "x86_64" ] && sha512sums=('5de9bd67fe96425cd3055102e27d44e0944ed55af7dfd2b12c550a36c4c1dc53d47de4893b70f24aac4684a5ad856cf694c81edf384d26927991f1bb908c5697')
 
 package() {
 	cd $srcdir
