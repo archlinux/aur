@@ -35,6 +35,8 @@ JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
+AOT="YES"         # Compile all elisp files.
+
 CLI=              # CLI only binary.
 
 GPM=              # Mouse support in Linux console using gpmd.
@@ -77,7 +79,7 @@ else
   pkgname="emacs-git"
 fi
 pkgver=29.0.50.156996
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -86,7 +88,6 @@ depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
 provides=('emacs')
-conflicts=('emacs')
 replaces=('emacs')
 #source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
@@ -315,7 +316,11 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # are reusing your src directory!
   #
 
-  make
+  if [[ $JIT=="YES" ]] && [[ $AOT == "YES" ]]; then
+    make NATIVE_FULL_AOT=1
+  else
+    make
+  fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
