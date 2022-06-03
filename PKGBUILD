@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-firmware-daemon-git
-pkgver=1.0.39.r0.g80455fa
+pkgver=1.0.39.r1.gf71ce23
 pkgrel=1
 pkgdesc="System76 Firmware Daemon provides a daemon for installing firmware updates."
 arch=('any')
