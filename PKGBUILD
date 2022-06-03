@@ -2,7 +2,7 @@
 pkgname=hexyl-git
 pkgdesc="A command-line hex viewer"
 pkgrel=1
-pkgver=v0.9.0.r26.ga23645d
+pkgver=0.10.0.r1.gc622c82
 arch=('i686' 'x86_64')
 conflicts=("hexyl")
 provides=("hexyl")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
