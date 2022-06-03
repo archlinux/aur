@@ -1,26 +1,53 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
-
+# Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=nloptr
-_cranver=1.2.2.3
+_cranver=2.0.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="R Interface to NLopt"
-arch=(i686 x86_64)
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL3)
-depends=(r 'nlopt>=2.4.0')
-optdepends=(r-testthat r-knitr r-rmarkdown r-inline)
+depends=(
+	r
+	r-testthat
+	nlopt
+)
+checkdepends=(
+	r-knitr
+	r-rmarkdown
+	r-xml2
+	"r-testthat>=3.0.0"
+	r-covr
+)
+optdepends=(
+	r-knitr
+	r-rmarkdown
+	r-xml2
+	"r-testthat>=3.0.0"
+	r-covr
+)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('af08b74fd5e7b4cb455fe67ed759346cbb8f3b9a4178f5f117e0092e5c9af6ff')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+	mkdir -p build
+	R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
+
+check() {
+	if [ -d "${_cranname}/tests" ]
+	then
+  		cd "${_cranname}/tests"
+		for i in *.R; do
+			R_LIBS="${srcdir}/build" Rscript --vanilla $i
+		done
+	fi
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+	install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+
+sha256sums=('7b26ac1246fd1bd890817b0c3a145456c11aec98458b8518de863650b99616d7')
