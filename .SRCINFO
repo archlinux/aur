@@ -1,0 +1,14 @@
+pkgbase = schily-tools
+	pkgdesc = Set of tools maintained by Jorg Schilling
+	pkgver = 2021.09.18
+	pkgrel = 1
+	url = http://schilytools.sourceforge.net/
+	arch = x86_64
+	license = custom:CDDL
+	depends = libcap
+	source = https://sourceforge.net/projects/schilytools/files/schily-2021-09-18.tar.bz2
+	b2sums = b9dba48d64aa4924517b75dfba4231ac367e60121d03b47e093d82dfb69a70a5b80788c535206305ec094686e2210d254a1aa19abc8774f6d6afbc11d8ab1407
+
+pkgname = schily-tools-sdd
+
+pkgname = schily-tools-star
