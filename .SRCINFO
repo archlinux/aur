@@ -1,9 +1,10 @@
 pkgbase = r-leaps
 	pkgdesc = Regression Subset Selection
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=leaps
 	arch = any
+	license = GPL
 	makedepends = gcc-fortran
 	depends = r
 	optdepends = r-biglm

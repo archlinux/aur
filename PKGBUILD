@@ -3,11 +3,11 @@ _cranname=leaps
 _cranver=3.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Regression Subset Selection"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=()
+license=(GPL)
 depends=(
 	r
 )
