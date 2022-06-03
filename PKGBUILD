@@ -1,7 +1,7 @@
 # Maintainer: Sup3Legacy <constantin {dot} gierczak {dot} galle (at) protonmail [dot] com>
 
 pkgname=wordle-tui-git
-pkgver=0.4.0.r33.gca246cd
+pkgver=0.4.0.r37.g8108327
 pkgrel=1
 pkgdesc='TUI Wordle'
 arch=('x86_64')
