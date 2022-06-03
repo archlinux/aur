@@ -1,0 +1,37 @@
+--- meson.build.old	2021-02-15 14:23:04.609036200 +0200
++++ meson.build.new	2022-06-03 11:01:25.629915217 +0300
+@@ -141,7 +141,7 @@
+   input: 'libvirt-gconfig-1.0.pc.in',
+   output: 'libvirt-gconfig-1.0.pc',
+   configuration: conf_data,
+-  install: true,
++  install: false,
+   install_dir: pkgconfdir
+ )
+ 
+@@ -149,7 +149,7 @@
+   input: 'libvirt-gobject-1.0.pc.in',
+   output: 'libvirt-gobject-1.0.pc',
+   configuration: conf_data,
+-  install: true,
++  install: false,
+   install_dir: pkgconfdir
+ )
+ 
+@@ -530,11 +530,11 @@
+ 
+ 
+ subdir('libvirt-glib')
+-subdir('libvirt-gconfig')
+-subdir('libvirt-gobject')
+-subdir('po')
+-subdir('examples')
+-subdir('docs')
++#subdir('libvirt-gconfig')
++#subdir('libvirt-gobject')
++#subdir('po')
++#subdir('examples')
++#subdir('docs')
+ if build_tests
+   subdir('tests')
+ endif

@@ -1,0 +1,25 @@
+pkgbase = libvirt-glib-vnc
+	pkgdesc = Libvirt-Glib runtime libraries and headers exclusively for VNC support.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://gitlab.com/libvirt/libvirt-glib
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = meson
+	makedepends = python
+	makedepends = vala
+	depends = libcap-ng
+	depends = libvirt-vnc
+	conflicts = libvirt-glib
+	source = https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz
+	source = https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz.asc
+	source = libvirt-glib-meson.build.patch
+	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
+	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
+	sha256sums = 8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd
+	sha256sums = SKIP
+	sha256sums = 274acd43b641abfc5b378ad866ac0dad78abd942ac347e2049eefa3ce2e5362c
+
+pkgname = libvirt-glib-vnc
