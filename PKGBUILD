@@ -2,7 +2,7 @@
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=ns3
-pkgver=3.36
+pkgver=3.36.1
 pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('any')
@@ -34,7 +34,7 @@ source=("https://www.nsnam.org/releases/ns-allinone-$pkgver.tar.bz2"
         "click-git::git+https://github.com/kohler/click"
         "openflow-hg::hg+https://code.nsnam.org/openflow"
         "pybindgen-git::git+https://github.com/gjcarneiro/pybindgen")
-sha256sums=('8919f90f7c6eff90a549c7b756021f78f6c5278a238cfa0890cd07e9bb46c8be'
+sha256sums=('7c81c2ff5e25e8a90f4b07a0147cea721401949ff3bd8be4f7976128d3144269'
             'SKIP'
             'SKIP'
             'SKIP'
