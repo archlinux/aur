@@ -1,8 +1,8 @@
 pkgbase = grim-git
 	pkgdesc = Grab images from a Wayland compositor
-	pkgver = r69.fb7261f
+	pkgver = 1.4.0.r6.g1573b1020ce2
 	pkgrel = 1
-	url = http://github.com/emersion/grim
+	url = https://sr.ht/~emersion/grim
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -17,8 +17,7 @@ pkgbase = grim-git
 	conflicts = grim
 	options = debug
 	options = !strip
-	source = grim::git+https://github.com/emersion/grim.git
+	source = grim::git+https://git.sr.ht/~emersion/grim
 	sha1sums = SKIP
 
 pkgname = grim-git
-

@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=grim-git
 _pkgname=grim
-pkgver=r69.fb7261f
+pkgver=1.4.0.r6.g1573b1020ce2
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab images from a Wayland compositor'
@@ -13,8 +13,8 @@ depends=(
 	"libjpeg-turbo"
 )
 arch=("i686" "x86_64")
-url='http://github.com/emersion/grim'
-source=("${pkgname%-*}::git+https://github.com/emersion/grim.git")
+url='https://sr.ht/~emersion/grim'
+source=("${pkgname%-*}::git+https://git.sr.ht/~emersion/grim")
 sha1sums=('SKIP')
 provides=('grim')
 conflicts=('grim')
@@ -22,7 +22,7 @@ options=(debug !strip)
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
