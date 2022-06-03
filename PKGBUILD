@@ -2,7 +2,7 @@
 # Contributors: Felix Seidel, Claudia Pellegrino, Liu Yuxuan
 
 pkgname=1password-cli
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
@@ -11,22 +11,17 @@ license=('custom')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
-case "$CARCH" in
-  arm*) _pkgarch='arm'
-    sha256sums+=('732b903d2ef2b4a8cedbbdc063a796621c6786124f16403c4a311613c81e91a1')
-    ;;
-  aarch64) _pkgarch='arm64'
-    sha256sums+=('47e78fc2128a8181ff797b814b40ddcc8e5e1d39c11c037fa962d3162e42c8e9')
-    ;;
-  i686) _pkgarch='386'
-    sha256sums+=('59e6ec64df969981820ac0c0d88533d62407c68751617d12c89814c9c959ae7a')
-    ;;
-  x86_64) _pkgarch='amd64'
-    sha256sums+=('453d5333b29aec941cdfe6cbd4590ec101b3e2e356c51e469483c364dac190e2')
-    ;;
-esac
+source_x86_64=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_amd64_v${pkgver}.zip")
+source_i686=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_386_v${pkgver}.zip")
+source_arm=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_arm_v${pkgver}.zip")
+source_armv6h=("${source_arm}")
+source_aarch64=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_arm64_v${pkgver}.zip")
 
-source+=("https://cache.agilebits.com/dist/1P/op2/pkg/v${pkgver}/op_linux_${_pkgarch}_v${pkgver}.zip")
+sha256sums_x86_64=('cf68cc312f96aef1e9b69496b4c42fa581473f00b8ce0965b876702e8dd965d6')
+sha256sums_i686=('e86e312107e0d7766255d4b89732966ab7ea04e86ad09709a3b59cd2f7c46a5f')
+sha256sums_arm=('0087188e9609bf25b889b68eed6bd198f0ebf098f227e7a4dc30bb7b537ce008')
+sha256sums_armv6h=('0087188e9609bf25b889b68eed6bd198f0ebf098f227e7a4dc30bb7b537ce008')
+sha256sums_aarch64=('be81ac11cc0c0d08256aff255af360d16d82937d24691f895fc8c384177b74b8')
 
 check() {
   if (( ! SKIPPGPCHECK )); then
