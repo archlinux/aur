@@ -79,7 +79,7 @@ else
   pkgname="emacs-git"
 fi
 pkgver=29.0.50.156996
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -344,7 +344,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -d -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin
+  install -D -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin/nemacs
   
   #if [[ ! $CLI == "YES" ]]; then
 
