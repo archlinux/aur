@@ -1,8 +1,8 @@
-# Maintainers: NNNN4 <NNNN4Four@gmail.com>
+# Maintainers: NNNN4 <NNNNFour4@gmail.com>
 
 pkgname=etterna
 pkgver=0.71.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
