@@ -1,7 +1,7 @@
 # Maintainer: Joey Miller <maintainer at joeeey dot com>
 
 pkgname=eversticky
-pkgver=0.95.2
+pkgver=0.96.0
 pkgrel=1
 pkgdesc="A sticky note client that sync to Evernote."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("qt5-webengine>=5.12.2" "qt5-x11extras>=5.12.2" )
 conflicts=("eversticky")
 replaces=("eversticky")
 source=("https://github.com/itsmejoeeey/eversticky/releases/download/v${pkgver}/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('dc77765df293dedb60711a96128e7c04292c3f95d0cb28bff6b423e5f6e1d497')
+sha256sums=('19499ff0c40eef9e1f6284b7ae1b6f330b9396bb6d47fb4de248f8883b744932')
 
 package() {
     echo "  -> Extracting the installer..."
