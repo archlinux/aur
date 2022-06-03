@@ -6,7 +6,7 @@
 _basename='gst-plugins-ugly'
 pkgname="lib32-${_basename}"
 pkgver=1.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Multimedia graph framework - ugly plugins (32-bit)'
 url='https://gstreamer.freedesktop.org/'
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
     'lib32-x264'
 )
 makedepends=(
+    'cmake'
     'meson'
     'python'
 )
