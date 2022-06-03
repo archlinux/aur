@@ -7,7 +7,7 @@ pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=28.0
 _pkgver=28.0.92
-pkgrel=0.922
+pkgrel=0.923
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. -- Retagged because msnspk is an idiot."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -69,7 +69,7 @@ package() {
   #mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1}
 
-  install -d -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin
+  install -D -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin/nemacs
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root

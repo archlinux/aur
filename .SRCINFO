@@ -1,7 +1,7 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version. -- Retagged because msnspk is an idiot.
 	pkgver = 28.0
-	pkgrel = 0.922
+	pkgrel = 0.923
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
