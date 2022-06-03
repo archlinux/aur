@@ -1,7 +1,7 @@
 # Maintainer: Sarat Chandra <me at saratchandra dot in>
 
 pkgname=doggo-bin
-_pkgver=0.5.2
+_pkgver=0.5.3
 pkgver=v${_pkgver}
 pkgrel=1
 pkgdesc="Command-line DNS client for humans "
@@ -14,8 +14,8 @@ provides=('doggo')
 conflicts=('doggo')
 source_x86_64=("https://github.com/mr-karan/doggo/releases/download/${pkgver}/doggo_${_pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/mr-karan/doggo/releases/download/${pkgver}/doggo_${_pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('2af897755ee603cb14326940d8f991ecf52c93e9ecedd95749024a8f2bbbd444')
-sha256sums_aarch64=('7c9b56152e75da41621483e2d9b55a3049affeb907a9417e1ab784c363a5a57f')
+sha256sums_x86_64=('94576179ae9ec3e69f06f76219e5e952e7e3b59d3809ee19cf8a3f9e1b4acd14')
+sha256sums_aarch64=('7fc6a311b7a030b44ef712cedb55d094eb0f2cc6bcf7c911b946c4064fcf6e45')
 
 package() {
     cd "${srcdir}"
