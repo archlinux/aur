@@ -1,16 +1,16 @@
 pkgbase = genmonify
 	pkgdesc = precision control for xfce4-panels genmon plugin
-	pkgver = 2020.11.24.2
+	pkgver = 2022.06.03.1
 	pkgrel = 1
 	url = https://github.com/budlabs/genmonify
 	arch = any
 	license = BSD
+	makedepends = gawk
 	depends = bash
 	depends = sed
 	depends = gawk
-	optdepends = xfce4-genmon-plugin
-	source = https://github.com/budlabs/genmonify/archive/2020.11.24.2/genmonify-2020.11.24.2.tar.gz
-	sha256sums = ae1468cbc44b3ac363308aec7d84a427ef06e5fa852c73a293b85b857c2456f6
+	depends = xfce4-genmon-plugin
+	source = https://github.com/budlabs/genmonify/archive/2022.06.03.1.tar.gz
+	sha256sums = e59e7df4c49dbdac701a24417afa65316fcff64e7c9a4538968bef9568be7f4e
 
 pkgname = genmonify
-
