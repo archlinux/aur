@@ -7,15 +7,15 @@
 
 _pkgname=libxml2
 pkgname=python2-$_pkgname
-pkgver=2.9.13
-pkgrel=2
+pkgver=2.9.14
+pkgrel=1
 pkgdesc='XML parsing library, version 2'
 url='https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home'
 arch=(aarch64 i686 pentium4 x86_64)
 license=(MIT)
 depends=(python2 $_pkgname zlib readline ncurses xz icu)
 makedepends=(git)
-_commit=a075d256fd9ff15590b86d981b75a50ead124fca  # tags/v2.9.13^0
+_commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
 source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         no-fuzz.diff # Do not run fuzzing tests
