@@ -2,7 +2,7 @@
 
 pkgname=slit-git
 pkgver=1.3.0.r4.gb552962
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
 url="https://github.com/tigrawap/slit"
@@ -24,19 +24,14 @@ prepare() {
 
 	install -m755 -d "${srcdir}/go/src/github.com/tigrawap/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/tigrawap/slit"
-
-	cd "${srcdir}/go/src/github.com/tigrawap/slit"
-
-	export GOPATH="${srcdir}/go"
-	go get -modcacherw -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/tigrawap/slit"
 
-	mkdir -p build
-
 	export GOPATH="${srcdir}/go"
+
+	mkdir -p build
 	go build -o build/slit \
 		-trimpath -modcacherw -ldflags "-s -w" \
 		./cmd/slit
