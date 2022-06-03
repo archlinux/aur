@@ -1,7 +1,7 @@
 pkgbase = python2-msgpack
 	pkgdesc = MessagePack serializer implementation for Python
-	pkgver = 0.6.2
-	pkgrel = 4
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/msgpack/msgpack-python
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = python2-msgpack
 	makedepends = cython2
 	makedepends = python2-setuptools
 	depends = python2
-	source = msgpack-python-0.6.2.tar.gz::https://github.com/msgpack/msgpack-python/archive/v0.6.2.tar.gz
-	sha512sums = be4a65592acf3c2a4fcd5d6c603f5a3346f0bccb4864d82a729d47308a11d990f7137e66a9d6df7309a892d189f62e8a9efbda022b7ef2a09338012aa1634b6d
+	source = msgpack-python-1.0.4.tar.gz::https://github.com/msgpack/msgpack-python/archive/v1.0.4.tar.gz
+	sha256sums = 4fd3e3e99c652e8ef435940a7f59ae751f3c5f4ef89fa5aa1b951e7cc80c1972
 
 pkgname = python2-msgpack
