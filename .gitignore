@@ -1,0 +1,5 @@
+src
+pkg
+vt-cli-git
+*.pkg.tar.*
+tags
