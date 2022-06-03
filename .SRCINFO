@@ -1,18 +1,47 @@
 pkgbase = crash-bandicoot
 	pkgdesc = 1996 platform video game developed by Naughty Dog and published by Sony Computer Entertainment for the PlayStation.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://en.wikipedia.org/wiki/Crash_Bandicoot_(video_game)
 	arch = any
 	license = custom
 	depends = duckstation
+	source = SCUS-94900.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28USA%29.zip/Crash%20Bandicoot%20%28USA%29.bin
+	source = SCUS-94900.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28USA%29.zip/Crash%20Bandicoot%20%28USA%29.cue
 	source = SCES-00344.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.bin
 	source = SCES-00344.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.zip/Crash%20Bandicoot%20%28Europe%29%20%28EDC%29.cue
+	source = SCPS-10031.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Crash%20Bandicoot%20%28Japan%29.7z
 	source = psx-template.desktop
+	source = launcher
 	source = com.naughtydog.CrashBandicoot.png::https://upload.wikimedia.org/wikipedia/en/4/44/Crash_Bandicoot_Cover.png
+	sha256sums = 35d4b837108adc4c5313a45c0f203aa76bc0911873204e908512187379eb98ec
+	sha256sums = 25b0c6fa83c3ad867684f551e769ce721fd81c23649b3fd389ad3f1a2ececbdb
 	sha256sums = a086b6fdd8d908393ff8a7e29be1e7add7cc0a495a221f526c6aa0e784329a54
 	sha256sums = 866e0e0e9450d605b2b906a069ec74e2d51131fbd65f13d03462943f685bd51e
-	sha256sums = fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6
+	sha256sums = f799a6bd213d9fc78adc277197570bfa0f0bac7103d12ec723f935e86e0a4897
+	sha256sums = 517b82624fe3f0ea13ca4f9eea1e11088e30ff8449ae69f37b7a1412744c734d
+	sha256sums = 243e129901670aafd6c10384ba334af7ea7a2d8d7686ab94c50595318bec0a02
 	sha256sums = 7cdc92303677967e8213e45934f2c5a45fa3a6b684dd01b8ecc5b03ba10e07b4
 
 pkgname = crash-bandicoot
+
+pkgname = crash-bandicoot-de
+	depends = crash-bandicoot-it
+
+pkgname = crash-bandicoot-en
+	depends = duckstation
+	depends = crash-bandicoot
+
+pkgname = crash-bandicoot-es
+	depends = crash-bandicoot-it
+
+pkgname = crash-bandicoot-fr
+	depends = crash-bandicoot-it
+
+pkgname = crash-bandicoot-it
+	depends = duckstation
+	depends = crash-bandicoot
+
+pkgname = crash-bandicoot-jp
+	depends = duckstation
+	depends = crash-bandicoot
