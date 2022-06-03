@@ -1,13 +1,13 @@
 pkgbase = mssql-tools
 	pkgdesc = Microsoft® SQL Server® Tools for Linux
-	pkgver = 17.8.1.1
+	pkgver = 18.0.1.1
 	pkgrel = 1
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	arch = x86_64
 	license = custom
 	depends = msodbcsql
 	options = !strip
-	source = https://packages.microsoft.com/rhel/8/prod/mssql-tools-17.8.1.1-1.x86_64.rpm
-	sha512sums = 6676597c6002fc8816874443e609393b41e260f3a068f9ff485288b07c242ccc5839b0f8cb0636c711b9952c8009919176c0ffbc77d872f55bb2d6f6dfa6ca81
+	source = https://packages.microsoft.com/rhel/8/prod/mssql-tools18-18.0.1.1-1.x86_64.rpm
+	sha512sums = 81b2ab5dbda99f0612bf71ad4434df2d4fc137d80813bfb3ea9a46a8ae6bc766a5172a7594eb6e623fcd8ec463671fef701a04ce0ac82b0275131ebba1a3afb9
 
 pkgname = mssql-tools
