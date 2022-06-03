@@ -2,8 +2,8 @@
 # Contributor: Frank Siegert <frank dot siegert at googlemail dot com>
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
-pkgver=6.4.0
-pkgrel=3
+pkgver=6.5.1
+pkgrel=1
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
@@ -12,7 +12,7 @@ makedepends=('cython')
 depends=('python')
 install=lhapdf.install
 source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz")
-sha256sums=('7d2f0267e2d65b0ddee048553b342d7c893a6dbabe1e326cad62de0010dd810c')
+sha256sums=('1256419e2227d1a4f93387fe1da805e648351417d3755e8af5a30a35a6a66751')
 
 prepare() {
   cd "${srcdir}/LHAPDF-${pkgver}"
