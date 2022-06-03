@@ -1,6 +1,6 @@
 pkgbase = filebrowser-bin
 	pkgdesc = Web File Manager which can be used as a middleware or standalone app.
-	pkgver = 2.21.1
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://github.com/filebrowser/filebrowser
 	install = filebrowser-bin.install
@@ -23,9 +23,9 @@ pkgbase = filebrowser-bin
 	sha256sums = 6246fbeac57750e146216892ed6eb1d43a995f987bb89ef12bcbfb3963f5aa2d
 	sha256sums = fd3da1de58e98185e0043070f55b46a86a78b9ebcdda949d0cd8a83e9b0b230c
 	sha256sums = 1fc20cab3a7d67d7997126a98dd151a362dc4600201ca37fd608b959d25985db
-	source_x86_64 = linux-amd64-filebrowser-2.21.1.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v2.21.1/linux-amd64-filebrowser.tar.gz
-	sha256sums_x86_64 = 6b6633ea4cd4568b7120a4d22ca7a79d6868bbd8401cabe019255fe00a187d9a
-	source_aarch64 = linux-aarch64-filebrowser-2.21.1.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v2.21.1/linux-arm64-filebrowser.tar.gz
-	sha256sums_aarch64 = 3e14150cd2377ac887ff83e30121e7eebecc6d68f6ee91a058c0f1ed8749c45c
+	source_x86_64 = linux-amd64-filebrowser-2.22.0.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v2.22.0/linux-amd64-filebrowser.tar.gz
+	sha256sums_x86_64 = 4017a0c1407bbbd781d4abf4941697a802c448b2d3b818c66a978e39f96c9619
+	source_aarch64 = linux-aarch64-filebrowser-2.22.0.tar.gz::https://github.com/filebrowser/filebrowser/releases/download/v2.22.0/linux-arm64-filebrowser.tar.gz
+	sha256sums_aarch64 = 26033be8f05ac10f0557647fea4f6a782e3526d5136b63c74c74a5d20e24e1c3
 
 pkgname = filebrowser-bin
