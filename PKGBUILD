@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('isisdl')
 depends=('zlib')
 source=("https://github.com/Emily3403/isisdl/releases/download/V1.3/isisdl-linux.bin")
-sha256sums=('9dbfdcc18d1187e20b44f3f144571fab43c2c962c01f8b9dae1df0fe3887798d')
+sha256sums=('b7eea579201fae32ee41a7cd58384daa2324a943948d6c9a6d1d25037ed7ca18')
 
 OPTIONS=(!strip)
 
