@@ -3,7 +3,7 @@
 # Contributor: bohoomil <bohoomil at zoho dot com>
 
 pkgname=freetype2-infinality-remix
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="TrueType font rendering library with Infinality Remix patches"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         infinality-settings.sh
         xft-settings.sh)
 
-sha256sums=('ef5c336aacc1a079ff9262d6308d6c2a066dd4d2a905301c4adda9b354399033'
+sha256sums=('4766f20157cc4cf0cd292f80bf917f92d1c439b243ac3018debf6b9140c41a7f'
             'SKIP'
             'ac11a24b62a6c044cc245ea9fa2a0cbd9e2e62f2371873dd33084c28a76e7176'
             '6d563b1f9f9ef52379818ff3ede26b44e0b4cb6e3cf46ea44ca5d36b6d29ae9d'
