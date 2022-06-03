@@ -2,7 +2,7 @@
 
 pkgname=etterna
 pkgver=0.71.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
