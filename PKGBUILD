@@ -2,8 +2,8 @@ pkgname=manyverse-bin
 _pkgname=manyverse
 pkgdesc="A social network off the grid"
 pkgrel=0
-pkgver=0.2205.4
-_pkgver=0.2205.4-beta
+pkgver=0.2206.3
+_pkgver=0.2206.3-beta
 arch=('x86_64')
 url="https://manyver.se"
 license=('MPL2')
@@ -13,7 +13,7 @@ source=(
 	'manyverse.desktop'
 	'manyverse.sh')
 sha256sums=(
-	'2d3060972ecddc4f54549a6b8b66b82d8072d80feb33a53c2f6aae69e5af0496'
+	'56840ca072388713343af72849af899d862173d43d0feba9e719d8ad5c188206'
 	'8fe2216da0a258fc9eb3bd2488a6b09ccc4c8cd753b74cba85e827d5c792998e'
 	'60fbacb296707f47c57659c78d15c68a82c5363d9c629d12f210a303a13b6379'
 	'3da5580a758dd55df3cbb4329662face1fdc594bd72618b962387dba7e9b93ce')
