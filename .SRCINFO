@@ -1,7 +1,7 @@
 pkgbase = libdill-git
 	pkgdesc = Structured concurrency in C
 	pkgver = 2.14.r17.gfa01648
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libdill.org/
 	arch = i686
 	arch = x86_64

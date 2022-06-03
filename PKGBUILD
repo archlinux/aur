@@ -2,7 +2,7 @@
 
 pkgname=libdill-git
 pkgver=2.14.r17.gfa01648
-pkgrel=1
+pkgrel=2
 pkgdesc='Structured concurrency in C'
 arch=('i686' 'x86_64')
 url='http://libdill.org/'
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
