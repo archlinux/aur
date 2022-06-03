@@ -5,24 +5,39 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=27.2
+pkgver=28.1
 _pkgver_major=${pkgver/.*}
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'gnutls' 'jansson' 'libxrandr' 'libxinerama' 'libxfixes' 'lcms2')
-optdepends=('desktop-file-utils')
-conflicts=('emacs')
+depends=(
+  alsa-lib
+  dbus
+  gmp
+  gnutls
+  gpm
+  hicolor-icon-theme
+  jansson
+  lcms2
+  libgccjit
+  librsvg
+  libxfixes
+  libxinerama
+  libxrandr
+  m17n-lib
+)
+optdepends=(desktop-file-utils)
+conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
-validpgpkeys=('E6C9029C363AD41D787A8EBB91C1262F01EB8D39'
-              '28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
+options=(debug)
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-md5sums=('4c3d9ff35b2ab2fe518dc7eb3951e128'
-         'SKIP')
+sha256sums=('28b1b3d099037a088f0a4ca251d7e7262eab5ea1677aabffa6c4426961ad75e1'
+            'SKIP')
 
 build() {
   cd "$srcdir"/emacs-$pkgver
@@ -31,12 +46,10 @@ build() {
   # with PIE (https://debbugs.gnu.org/cgi/bugreport.cgi?bug=18784).
   export HARDENING_PIE=0
 
-  export PKG_CONFIG_PATH="/usr/lib/imagemagick6/pkgconfig"
-
-  ./configure \
+ ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
       --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
-      --with-modules \
+      --with-modules --with-native-compilation \
       --program-transform-name='s/^ctags$/ctags.emacs/'
 
   make
