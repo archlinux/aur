@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=251.r65.g620ecc9c4b
+pkgver=251.r58161.311f57a402
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -17,13 +17,13 @@ makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'
              'lib32-curl' 'lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2'
              'lib32-gnutls' 'lib32-libelf' 'lib32-libidn2' 'lib32-pcre2'
              'libxslt' 'meson' 'python-jinja')
-options=(!ccache)
 source=('git+https://github.com/systemd/systemd')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbasename"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _major=`grep -m1 version meson.build | cut -d\' -f2`
+  printf "%s.r%s.%s" "${_major}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -49,12 +49,6 @@ build() {
   local _meson_options=(
     --libexecdir  /usr/lib32
     --libdir    /usr/lib32
-
-    # internal version comparison is incompatible with pacman:
-    #   249~rc1 < 249 < 249.1 < 249rc
-    -Dversion-tag="${pkgver/-/\~}-${pkgrel}-arch"
-    -Dshared-lib-tag="${pkgver/-/\~}-${pkgrel}-arch"
-    -Dmode=release
 
     # features
     -Daudit=false
@@ -126,6 +120,8 @@ build() {
     -Drpmmacrosdir=no
     -Dsysvinit-path=
     -Dsysvrcnd-path=
+
+    -Dtests=false
   )
 
   arch-meson "$_pkgbasename" build "${_meson_options[@]}"
