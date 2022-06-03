@@ -1,8 +1,8 @@
 diff --git a/dlls/winex11.drv/window.c b/dlls/winex11.drv/window.c
-index 221f4392aa9..5485eb0f8e8 100644
+index f456f8948cb..f5e1e0aa2c3 100644
 --- a/dlls/winex11.drv/window.c
 +++ b/dlls/winex11.drv/window.c
-@@ -1034,8 +1034,17 @@ static void set_initial_wm_hints( Display *display, Window window )
+@@ -869,8 +869,17 @@ static void set_initial_wm_hints( Display *display, Window window )
      /* class hints */
      if ((class_hints = XAllocClassHint()))
      {
