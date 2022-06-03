@@ -1,6 +1,6 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=nixfmt
-pkgver=0.4.0
+pkgver=0.5.0 # renovate: datasource=github-tags depName=serokell/nixfmt
 pkgrel=4
 pkgdesc="A formatter for Nix code "
 url="https://github.com/serokell/nixfmt"
@@ -9,7 +9,7 @@ arch=('x86_64')
 makedepends=('cabal-install')
 depends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/serokell/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('fbb2c7f4fe4b42cce604bc2f349fe086b34a983b4be98d256e23379b8a86007bba1b3912b35ecf92f11a6a11f6be61071dfbd95fc12f2b573df0d158943df112')
+b2sums=('32918a990ac535731ee93630d69cf04ece641d10f0b0150b5c3f092bb3fda8a0bfc809f74a2cadf404732837743110b154ae7353b760d175769c0167f6329a8f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
