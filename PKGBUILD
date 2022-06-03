@@ -6,7 +6,7 @@
 _basename='gst-plugins-ugly'
 pkgname="lib32-${_basename}"
 pkgver=1.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Multimedia graph framework - ugly plugins (32-bit)'
 url='https://gstreamer.freedesktop.org/'
 arch=('x86_64')
@@ -29,8 +29,10 @@ source=("${url}src/"${_basename}"/"${_basename}"-${pkgver}.tar.xz")
 sha256sums=('b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf')
 
 prepare() {
-    # disable Python module import during build, which is not actually used for release versions
-    sed -e 's/python3/#python3/' -i "${_basename}-${pkgver}/meson.build"
+    # disable doc dir inclusion and Python module import (latter is not needed for release version)
+    sed -e 's/python3/#python3/' \
+        -e "s/\(subdir('docs')\)/#\1/" \
+        -i "${_basename}-${pkgver}/meson.build"
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
