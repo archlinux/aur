@@ -2,7 +2,7 @@
 
 pkgname=gotty-git
 pkgver=2.0.0.alpha.3.r0.ga080c85
-pkgrel=1
+pkgrel=2
 pkgdesc='Share your terminal as a web application'
 url=https://github.com/yudai/gotty
 arch=('any')
@@ -14,35 +14,28 @@ source=("${pkgname}::git+https://github.com/yudai/gotty.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	install -m755 -d "${srcdir}/go/src/github.com/yudai/"
-	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/yudai/gotty"
-
-	cd "${srcdir}/go/src/github.com/yudai/gotty"
-
-	export GOPATH="${srcdir}/go"
-	go get -v -d ./...
+    install -m755 -d "${srcdir}/go/src/github.com/yudai/"
+    ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/yudai/gotty"
 }
 
 build() {
-	cd "${srcdir}/go/src/github.com/yudai/gotty"
+    cd "${srcdir}/go/src/github.com/yudai/gotty"
 
-	mkdir -p build
-
-	export GOPATH="${srcdir}/go"
-	make
+    export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
+    make
 }
 
 package() {
-	cd "${srcdir}/go/src/github.com/yudai/gotty"
+    cd "${srcdir}/go/src/github.com/yudai/gotty"
 
-	install -Dm755 gotty "${pkgdir}/usr/bin/gotty"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "gotty" "${pkgdir}/usr/bin/gotty"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
