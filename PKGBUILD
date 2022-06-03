@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie DOT magee AT gmail DOT com>
 _npmname=@zeit/cosmosdb-server
 pkgname=cosmosdb-server
-pkgver=0.13.1
+pkgver=0.13.4 # renovate: datasource=github-tags depName=vercel/cosmosdb-server
 pkgrel=2
 pkgdesc="A Cosmos DB server implementation for testing your applications locally."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('nodejs')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('d9b347b839c7f248f882af04977c463cb1480a9ed5fc1c6d7b0eac110f175efa75a3d4f0a8cb82b6d0bcf70ecadafe45debed598f831ae28b3e191107a864c14')
+b2sums=('34744d347fb0caee6a0cb6e263113369d82f8754527324fc32d14163beafe1f1138f6befb10f85f06d157bf7a3f32027b6fde32f3847cda30c34983a76c7ea4b')
 
 package() {
   cd "$srcdir"
