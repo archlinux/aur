@@ -1,11 +1,11 @@
 post_install() {
-	printf "NoiseTorch provides a self-update feature as part of the GUI.\n"
-	printf "The feature won't work with this package.\n"
-	printf "Don't attempt to update if prompted via the GUI\n"
-	printf "See the project page for details.\n\n"
-	printf "https://github.com/lawl/NoiseTorch\n\n"
+	setcap 'CAP_SYS_RESOURCE=+ep' usr/bin/noisetorch
+
+    # Disclaimer about a potential compromise of the source code
+    echo "NOTE: The original developer can not guarantee the security of the code of versions before 0.11.6. Additionally development has shifted to a new repository."
+    echo "The current codebase has been audited by the community, as can be seen here: https://github.com/noisetorch/NoiseTorch/discussions/275"
 }
 
 post_upgrade() {
-	post_install
+	post_install "$1"
 }
