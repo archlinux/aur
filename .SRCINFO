@@ -1,14 +1,14 @@
 pkgbase = r-rbibutils
-	pkgdesc = Read 'Bibtex' Files and Convert Between Bibliography Formats
-	pkgver = 2.2.7
+	pkgdesc = Read and write 'Bibtex' files
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rbibutils
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
-	depends = r>=2.10
+	checkdepends = r-testthat
+	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rbibutils_2.2.7.tar.gz
-	sha256sums = 7c9e6719556b8caa9fb58743b717e89f45e8e7018371bf16f07dc3c1f96a55c5
+	source = https://cran.r-project.org/src/contrib/rbibutils_2.2.8.tar.gz
+	sha256sums = f1aecdeeba99042d34de19234238c5bbdc18a26f271f6adf9c9b7e349d50d152
 
 pkgname = r-rbibutils
