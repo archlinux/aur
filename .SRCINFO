@@ -1,12 +1,26 @@
 pkgbase = figma-linux-bin
-	pkgdesc = Unofficial Figma desktop client for Linux
-	pkgver = 0.2.2
-	pkgrel = 2
-	url = https://github.com/ChugunovRoman/figma-linux
+	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux (AppImage)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Figma-linux/figma-linux
 	arch = x86_64
-	license = MIT
-	source = https://github.com/ChugunovRoman/figma-linux/releases/download/v0.2.2/figma-linux-0.2.2.pacman
-	sha256sums = b29a1fa43fb5e34c6c5f032ba6e673f167914bfaac2d9a70a620d63e105f9652
+	arch = aarch64
+	license = GPL2
+	provides = figma-linux
+	conflicts = figma-linux
+	options = !strip
+	source = figma-linux.desktop
+	source = 24x24.png
+	source = 36x36.png
+	source = 48x48.png
+	source = 64x64.png
+	source = 72x72.png
+	source = 96x96.png
+	source = 128x128.png
+	source = 192x192.png
+	source = 256x256.png
+	source = 384x384.png
+	source = 512x512.png
+	source = https://github.com/Figma-linux/figma-linux/releases/download/v0.10.0/figma-linux_0.10.0_linux_x86_64.AppImage
 
 pkgname = figma-linux-bin
-

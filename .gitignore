@@ -1,4 +1,5 @@
-*.pacman
-*.tar.xz
-/pkg
-/src
+/*.AppImage
+/*.tar
+/*.tar.*
+/pkg/
+/src/

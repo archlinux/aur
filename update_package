@@ -1,0 +1,34 @@
+#!/bin/sh
+
+B="\x1b[1m"
+C="\x1b[0m"
+GRN="\x1b[32m"
+YEL="\x1b[33m"
+BLU="\x1b[34m"
+# FIGMA="\x1b[38;2;238,49,122m"
+col2="$BLU::$C"
+
+url=https://github.com/Figma-linux/figma-linux
+current=`cat current_version`
+echo -e "$col2 Getting latest version..." >/dev/stderr
+_latest=`basename $(curl -Ls -o /dev/null -w %{url_effective} "$url/releases/latest")`
+latest="${_latest:1}"
+
+if [ "$current" = "$latest" ] && [ "$1" != "-f" ]; then
+  echo -e "$col2 Current $GRN$current$C is latest, no update required" >/dev/stderr
+  exit 1
+fi
+
+echo -e "$col2 Update required from $YEL$current$C to $GRN$latest$C"
+# echo -e "$col2 Downloading latest $B${FIGMA}Figma Linux$C appimage..."
+# appimage="figma-linux_${latest}_linux_x86_64.AppImage"
+# curl "$url/releases/download/$latest/$appimage" -LO
+
+echo -e "$col2 Writing current version..."
+echo -e "$latest" > current_version
+# sha256sum "$appimage" | cut -d' ' -f1 > checksum
+
+echo -e "$col2 Writing .SRCINFO file..."
+makepkg --printsrcinfo > .SRCINFO
+
+echo -e "$col2 Done"
