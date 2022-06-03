@@ -1,0 +1,12 @@
+pkgbase = r-gbrd
+	pkgdesc = Provides utilities for processing Rd objects and files. Extract argument descriptions and other parts of the help pages of functions
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gbRd
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gbRd_0.4-11.tar.gz
+	sha256sums = 0251f6dd6ca987a74acc4765838b858f1edb08b71dbad9e563669b58783ea91b
+
+pkgname = r-gbrd
