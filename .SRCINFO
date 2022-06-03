@@ -1,7 +1,7 @@
 pkgbase = etterna
 	pkgdesc = A advanced cross-platform rhythm game focused on keyboard play
 	pkgver = 0.71.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://etternaonline.com
 	install = etterna.install
 	arch = i686
