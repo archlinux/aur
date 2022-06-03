@@ -6,7 +6,7 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8
 _tar="${_tarver}/${pkgbase}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes"
 arch=('x86_64')
 url="https://www.dune-project.org/modules/${pkgbase}"
@@ -15,7 +15,7 @@ makedepends=('dune-grid>=2.8.0' 'doxygen' 'graphviz' 'python-setuptools') # 'dlm
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://gitlab.dune-project.org/extensions/${pkgbase}/-/archive/releases/${_tar})
-sha512sums=('9dd13a702d35ecf6a4022f70a54227892615a363e7a29b52f9f109c3f1397a6fcd0e43a46821bd92e211dab8c72d68dbe9fa18f30ff1b456e26c1ce1941f8ba8')
+sha512sums=('36402403d0a969a0969404c093c37856f590629b6c0e2f8620fde7c0e22c4bde8806136c3f6503a03479c2bbdcf57273a590c633fa54b77f0d9d9ce5361995ca')
 
 build() {
   cmake \
