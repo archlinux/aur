@@ -1,6 +1,6 @@
 pkgbase = msodbcsql
-	pkgdesc = Microsoft® ODBC Driver 17 for SQL Server®
-	pkgver = 17.8.1.1
+	pkgdesc = Microsoft® ODBC Driver 18 for SQL Server®
+	pkgver = 18.0.1.1
 	pkgrel = 1
 	url = https://blogs.msdn.microsoft.com/sqlnativeclient/
 	install = msodbcsql.install
@@ -10,7 +10,7 @@ pkgbase = msodbcsql
 	depends = krb5
 	depends = curl
 	options = !strip
-	source = https://packages.microsoft.com/rhel/8/prod/msodbcsql17-17.8.1.1-1.x86_64.rpm
-	sha256sums = b9c22b1b4ad33616909307ad2490b3ae5ee819c2710c4d8a30fd86aa259e165e
+	source = https://packages.microsoft.com/rhel/8/prod/msodbcsql18-18.0.1.1-1.x86_64.rpm
+	sha256sums = dc2539948ffce330bd921b4459411db87c89c6fa705cf6ea9aa4965ed4c5459c
 
 pkgname = msodbcsql
