@@ -7,8 +7,8 @@ pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=28.0
 _pkgver=28.0.92
-pkgrel=0.92
-pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
+pkgrel=0.921
+pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. -- Retagged because msnspk is an idiot."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
@@ -24,8 +24,10 @@ conflicts=('emacs')
 # PGP keyservers are all but dead. PGP signatures are useless for all practical purpose. Kudos to the EU.
 #source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}) # PGP keyserver are all but dead.
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
-source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz)
-b2sums=('3a0a1e6cec79dd56c36d7f3227654f10e1d0d1a7b933a269e25bdd0da6bcec6653500ee0775b70bafdb09bb59d0976474535b82316eee592fafc8fa9e4d7c0e7')
+source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz
+        nemacs)
+b2sums=('3a0a1e6cec79dd56c36d7f3227654f10e1d0d1a7b933a269e25bdd0da6bcec6653500ee0775b70bafdb09bb59d0976474535b82316eee592fafc8fa9e4d7c0e7'
+        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 
 build() {
   cd "$srcdir"/$_pkgname-$_pkgver
@@ -60,7 +62,7 @@ build() {
 
 package() {
   cd "$srcdir"/$_pkgname-$_pkgver
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install FULL_NATIVE_AOT=1
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
