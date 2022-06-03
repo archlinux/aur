@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tauonmusicbox.rocks
 	arch = any
 	license = GPL3
@@ -31,6 +31,7 @@ pkgbase = tauon-music-box
 	depends = mpg123
 	depends = libpulse
 	depends = opusfile
+	depends = wavpack
 	depends = libvorbis
 	depends = libappindicator-gtk3
 	depends = libopenmpt
