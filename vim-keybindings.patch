@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index ce3cd13..451d8ec 100644
+index b765248..50b32f5 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -503,7 +503,7 @@ static const struct {
+@@ -507,7 +507,7 @@ static const struct {
     const char* info;
  } helpLeft[] = {
     { .key = "    Tab: ",  .roInactive = false, .info = "switch to next screen tab" },
@@ -11,16 +11,16 @@ index ce3cd13..451d8ec 100644
     { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
     { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
     { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
-@@ -531,7 +531,7 @@ static const struct {
+@@ -535,7 +535,7 @@ static const struct {
     { .key = "  Space: ", .roInactive = false, .info = "tag process" },
     { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
     { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
 -   { .key = "   F9 k: ", .roInactive = true,  .info = "kill process/tagged processes" },
 +   { .key = "   F9 x: ", .roInactive = true,  .info = "kill process/tagged processes" },
     { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
-    { .key = "   F8 [: ", .roInactive = false, .info = "lower priority (+ nice)" },
+    { .key = "   F8 [: ", .roInactive = true,  .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_AFFINITY))
-@@ -539,12 +539,12 @@ static const struct {
+@@ -543,12 +543,12 @@ static const struct {
  #endif
     { .key = "      e: ", .roInactive = false, .info = "show process environment" },
     { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
@@ -36,7 +36,7 @@ index ce3cd13..451d8ec 100644
     { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -718,12 +718,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -747,12 +747,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index ce3cd13..451d8ec 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -733,17 +735,15 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -762,17 +764,15 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
