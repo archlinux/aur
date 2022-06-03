@@ -1,4 +1,4 @@
-# Maintainer: Mado <madoushi@tutanota.com>
+# Maintainers: NNNN4 <NNNN4Four@gmail.com>, Mado <madoushi@tutanota.com>
 
 pkgname=etterna
 pkgver=0.71.2
