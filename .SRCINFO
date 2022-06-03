@@ -1,6 +1,6 @@
 pkgbase = python-py-pde
 	pkgdesc = Python package for solving partial differential equations
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/zwicker-group/py-pde
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-py-pde
 	optdepends = python-pandas: for handling tabular data
 	optdepends = python-tqdm: for display progress bars during calculations
 	optdepends = napari: for displaying images interactively
-	source = https://github.com/zwicker-group/py-pde/archive/v0.19.0.tar.gz
-	sha512sums = e60af593ee8ce47f928f09473d56c939df03b963abb26022ad0f38b6ed157399ff26f2e45479ba63638f933992133459682bb78ef531fad6c1d615b77a25a19d
+	source = https://github.com/zwicker-group/py-pde/archive/v0.19.1.tar.gz
+	sha512sums = f51ef4a196c438d3932b3c137bedd2a68df62c90851245e953c0fdebd1cb801b35d90a0697d71efaaa853862f44f2d68d9be6f2a8093ca16c102a822e6827b71
 
 pkgname = python-py-pde

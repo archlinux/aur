@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-tqdm: for display progress bars during calculations'
   'napari: for displaying images interactively')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e60af593ee8ce47f928f09473d56c939df03b963abb26022ad0f38b6ed157399ff26f2e45479ba63638f933992133459682bb78ef531fad6c1d615b77a25a19d')
+sha512sums=('f51ef4a196c438d3932b3c137bedd2a68df62c90851245e953c0fdebd1cb801b35d90a0697d71efaaa853862f44f2d68d9be6f2a8093ca16c102a822e6827b71')
 
 build() {
   cd ${_base}-${pkgver}
@@ -29,7 +29,6 @@ build() {
 
 package() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
