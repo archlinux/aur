@@ -1,6 +1,6 @@
 pkgbase = pidgin-znchelper
 	pkgdesc = Pidgin plugin, removing double-timestamps when replaying messages from ZNC
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/kgraefe/pidgin-znc-helper
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = pidgin-znchelper
 	license = GPL
 	makedepends = intltool
 	depends = pidgin
-	source = pidgin-znc-helper-1.9.tar.gz::https://github.com/kgraefe/pidgin-znc-helper/archive/v1.9.tar.gz
-	md5sums = be84f8b5ee32c9352bb1c600fd7d6014
+	source = pidgin-znc-helper-1.10.tar.gz::https://github.com/kgraefe/pidgin-znc-helper/archive/v1.10.tar.gz
+	sha256sums = 25e144dd495b57bc4bb59912a67a676f03d49e4bc3681b240b9477e8e13e1267
 
 pkgname = pidgin-znchelper
-
