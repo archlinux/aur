@@ -3,7 +3,7 @@
 _pkgname="toppler-upstream-levels"
 pkgname="${_pkgname}-git"
 _pkgver=latest
-pkgver=1.3+r534.20220206.5e3e581
+pkgver=1.3+8.r542.20220323.c8bf02b
 pkgrel=1
 pkgdesc='Provides the upstream levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.'
 arch=(
@@ -46,7 +46,7 @@ sha256sums=(
 
 pkgver () {
   cd "${srcdir}/toppler"
-  _ver="$(git describe --tags | sed 's|^v||' | sed 's|-[^-]*$||' | tr '-' '+')"
+  _ver="$(git describe --tags | sed 's|^[vV]||' | sed 's|-[^-]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -55,7 +55,7 @@ pkgver () {
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
