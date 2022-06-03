@@ -8,7 +8,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 _base=petsc
 pkgname=${_base}-complex
-pkgver=3.17.1
+pkgver=3.17.2
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -40,7 +40,7 @@ optdepends=('trilinos: support for trilinos'
 install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
-sha512sums=('8c81cc148b1a899a55e54a013d61519ec7b44f98f7ae30c3f8d0e83ba285b23f4b4d9e2cd483c531d337bc41887e4079b727ba73676b1b653910140291e93575'
+sha512sums=('a51735fc67b2b50a2eb3e6b0eec6072d27edbfae7196e87bb6eb62626a5380f81e49c965d04df82f98212b9411cc99ae39cde83dde3272e6f6512f9b52496abe'
   'f485f2cce6bb0601fe3bcbb3070892861d25394fc00bf3f6ca2eb8b030dc94dd42ec40d31a958fb860e955e82dc39073267d8c29be8ad8f33cdb3165a47e4a46')
 
 _install_dir=/opt/${_base}/${_config}
@@ -63,7 +63,7 @@ build() {
 
   echo ${CONFOPTS}
   python ./configure --prefix=${_install_dir} ${CONFOPTS} \
-                     --COPTFLAGS=${OPTFLAGS} --CXXOPTFLAGS=${OPTFLAGS} --FOPTFLAGS=${OPTFLAGS}
+    --COPTFLAGS=${OPTFLAGS} --CXXOPTFLAGS=${OPTFLAGS} --FOPTFLAGS=${OPTFLAGS}
 
   make ${MAKEFLAGS} all
   make DESTDIR=${srcdir}/tmp install
