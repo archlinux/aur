@@ -1,33 +1,32 @@
 pkgbase = nginx-amplify-agent
-	pkgdesc = NGINX Amplify Agent
-	pkgver = 1.7.0_5
+	pkgdesc = A Python application that provides system and NGINX metric collection
+	pkgver = 1.8.0_2
 	pkgrel = 1
 	url = https://www.nginx.com/products/nginx-amplify/
 	arch = any
 	license = BSD
-	makedepends = python2-setuptools
-	depends = python2-netifaces
-	depends = python2-psutil
-	depends = python2-gevent
-	depends = python2-flup
-	depends = python2-pyhamcrest
-	depends = python2-daemon
-	depends = python2-ujson
-	depends = python2-rstr
-	depends = python2-setproctitle
-	depends = python2-pyparsing
-	depends = python2-requests
-	depends = python2-netaddr
-	depends = python2-crossplane
-	depends = python2-scandir
+	makedepends = python-setuptools
 	depends = nginx
+	depends = python-gevent>=21.12.0
+	depends = python-greenlet>=1.1.1
+	depends = python-netifaces>=0.11.0
+	depends = python-netaddr>=0.8.0
+	depends = python-flup>=1.0.3
+	depends = python-crossplane>=0.5.7
+	depends = python-rstr>=3.0.0
+	depends = python-psutil>=5.8.0
+	depends = python-daemon>=2.2.4
+	depends = python-requests>=2.26.0
+	depends = python-ujson>=5.1.0
+	depends = python-pymysql>=1.0.2
+	depends = python-setproctitle>=1.1.10
+	depends = python-scandir>=1.5
 	backup = etc/amplify-agent/agent.conf
-	source = https://github.com/nginxinc/nginx-amplify-agent/archive/v1.7.0-5.tar.gz
+	source = nginx-amplify-agent-1.8.0-2.tar.gz::https://github.com/nginxinc/nginx-amplify-agent/archive/v1.8.0-2.tar.gz
 	source = amplify-agent.service
 	source = tmpfile.conf
-	sha256sums = af8792a92fa3caf20c1114d204a18261a26eb7d30baecafb5843f98e277f017a
-	sha256sums = b848ed0386666a3c03b7f720ee08a40d4e434362c14145d244ef4370bb92f038
-	sha256sums = 3024f05029e2ca4d2565a8f9201f8d72ee29d956fd0c75cdba912607f81e0e05
+	b2sums = cb99e22cd0e5f4473727653f401bec97b1d65e19b700213ac9e9a6e4607f0adf0e078613ef83d8e6cf54064a04904bf2765438bbf290a5e47dee4d7aaeba84f4
+	b2sums = ae469466413cc086d943fa2eee41615333cdfdb6d2029e5f3dd80dcf889e49b76be8e6ca8fabd1f2511a084263c860b4ef6bfb30aeb06ed58ee95bd9a8c6a209
+	b2sums = cb408a4d33586db82096fd92e801d72f461adc657007c4c78a137a8c0edaf3ec191118b465c37bb109f8d1d03a743cecff3ddd1d39f5d70f10342ecc70e3f07f
 
 pkgname = nginx-amplify-agent
-
