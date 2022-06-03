@@ -1,7 +1,3 @@
-572c572
-< subdir('icons')
----
-> #subdir('icons')
 574,576c574,576
 < subdir('po')
 < subdir('man')

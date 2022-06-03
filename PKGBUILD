@@ -3,7 +3,7 @@
 
 pkgname=libvirt-vnc-viewer
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Libvirt VNC Viewer GUI application.'
 arch=('x86_64')
 url='https://gitlab.com/virt-viewer/virt-viewer'
@@ -33,7 +33,7 @@ sha256sums=(
   'a43fa2325c4c1c77a5c8c98065ac30ef0511a21ac98e590f22340869bad9abd0'
   'SKIP'
   '53a905df3678fdf1be238e3e5e27a8b60126d9238a5058da8476fdcb80ccaf71'
-  '617b62b11b4357505e98661950d5b7bf16b67f9ae24b4899886ee155b016d822'
+  'c50cc3766e4c93530c1a79ea406a2015c804b7575b32d4c1d32fe3168a53d265'
   '18f8eff99c1bc199ac60863bf6851ba8afe9b0e42d1a0f528507792c4a3a4338'
 )
 validpgpkeys=(
