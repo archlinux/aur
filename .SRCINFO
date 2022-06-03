@@ -1,7 +1,7 @@
 pkgbase = apt-cacher-ng
-pkgdesc = A caching proxy specialized for package files.
+pkgdesc = A caching proxy specialized for package files
 pkgver = 3.7.4
-pkgrel = 1
+pkgrel = 2
 url = http://www.unix-ag.uni-kl.de/~bloch/acng/
 install = apt-cacher-ng.install
 arch = i686
@@ -17,6 +17,7 @@ depends = xz
 depends = openssl
 depends = libwrap
 depends = libevent
+depends = c-ares
 backup = etc/apt-cacher-ng/acng.conf
 source = http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.7.4.orig.tar.xz
 source = acng.conf.patch

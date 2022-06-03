@@ -1,4 +1,5 @@
-# Maintainer: sulaweyo <sledge.sulaweyo@gmail.com>
+# Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
+# Contributor: sulaweyo <sledge.sulaweyo@gmail.com>
 # Contributor: dequis <dx@dxzone.com.ar>
 # Contributor: Jan Was <janek.jan+arch@gmail.com>
 # Great Contributor: mainiak <mainiak@gmail.com> (first maintainer)
@@ -9,12 +10,12 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=1
-pkgdesc="A caching proxy specialized for package files."
+pkgrel=2
+pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('custom')
-depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap' 'libevent')
+depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap' 'libevent' 'c-ares')
 makedepends=('cmake')
 source=("http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'
@@ -30,15 +31,20 @@ sha256sums=('63140473a669c42f5e2219e38fa9d7c733f9047699dde52c3bd828e372929a5f'
 
 install=apt-cacher-ng.install
 
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  # === uncomment the next line to update mirrors [w3m package is needed]; it will take some time ===
+  #make -f scripts/Makefile.release gendbs
+}
+
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   rm -rf builddir
   mkdir -p builddir
-  src=$PWD
 
   cd builddir
 
-  cmake $src -DCMAKE_BUILD_TYPE=Release \
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DRUNDIR=/run \
     -DACNG_CACHE_DIR=/var/cache/apt-cacher-ng \
