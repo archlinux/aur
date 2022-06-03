@@ -1,16 +1,15 @@
 pkgbase = pyg3t-git
 	pkgdesc = Python GetText Translation Toolkit
-	pkgver = 0.5.1.r328.417e7a8
+	pkgver = 0.5.1.r335.c6ee292
 	pkgrel = 1
-	url = https://github.com/pyg3t/pyg3t
+	url = https://gitlab.com/pyg3t/pyg3t
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python-dateutil
 	provides = pyg3t
 	conflicts = pyg3t
-	source = git+https://github.com/pyg3t/pyg3t.git
+	source = git+https://gitlab.com/pyg3t/pyg3t.git
 	md5sums = SKIP
 
 pkgname = pyg3t-git
-

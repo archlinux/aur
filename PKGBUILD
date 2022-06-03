@@ -2,11 +2,11 @@
 
 _name=pyg3t
 pkgname=$_name-git
-pkgver=0.5.1.r328.417e7a8
+pkgver=0.5.1.r335.c6ee292
 pkgrel=1
 pkgdesc="Python GetText Translation Toolkit"
 arch=(any)
-url="https://github.com/pyg3t/pyg3t"
+url="https://gitlab.com/pyg3t/pyg3t"
 license=('GPL3')
 depends=('python-dateutil')
 makedepends=('git')
