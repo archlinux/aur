@@ -44,7 +44,7 @@ NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                
 PGTK=             # Use native GTK3 build. Supports Wayland, yay!
 
-GTK3="YES"             # GTK3 old windowing interface.
+GTK3="YES"        # GTK3 old windowing interface.
 
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
@@ -77,7 +77,7 @@ else
   pkgname="emacs-git"
 fi
 pkgver=29.0.50.156996
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
