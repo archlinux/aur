@@ -1,0 +1,147 @@
+Description: Move cl_intel_accelerator to cl_intel.h
+
+Beignet's own headers define cl_intel_accelerator etc directly in
+cl_ext.h, but khronos-opencl-headers 2.2~ places these in a separate
+file cl_ext_intel.h, and older versions do not include it at all.
+
+Author: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+Forwarded: https://lists.freedesktop.org/archives/beignet/2018-July/009217.html
+
+--- a/include/CL/cl_intel.h
++++ b/include/CL/cl_intel.h
+@@ -26,6 +26,115 @@
+ extern "C" {
+ #endif
+ 
++#if defined(__CL_EXT_H) && !defined(cl_intel_accelerator)
++#ifdef CL_VERSION_2_2
++#include "CL/cl_ext_intel.h"
++#else
++/*********************************
++* cl_intel_accelerator extension *
++*********************************/
++#define cl_intel_accelerator 1
++#define cl_intel_motion_estimation 1
++
++typedef struct _cl_accelerator_intel*     cl_accelerator_intel;
++typedef cl_uint                           cl_accelerator_type_intel;
++typedef cl_uint                           cl_accelerator_info_intel;
++
++typedef struct _cl_motion_estimation_desc_intel {
++    cl_uint mb_block_type;
++    cl_uint subpixel_mode;
++    cl_uint sad_adjust_mode;
++    cl_uint search_path_type;
++} cl_motion_estimation_desc_intel;
++
++/* Error Codes */
++#define CL_INVALID_ACCELERATOR_INTEL            -1094
++#define CL_INVALID_ACCELERATOR_TYPE_INTEL       -1095
++#define CL_INVALID_ACCELERATOR_DESCRIPTOR_INTEL -1096
++#define CL_ACCELERATOR_TYPE_NOT_SUPPORTED_INTEL -1097
++
++/* Deprecated Error Codes */
++#define CL_INVALID_ACCELERATOR_INTEL_DEPRECATED            -6000
++#define CL_INVALID_ACCELERATOR_TYPE_INTEL_DEPRECATED       -6001
++#define CL_INVALID_ACCELERATOR_DESCRIPTOR_INTEL_DEPRECATED -6002
++#define CL_ACCELERATOR_TYPE_NOT_SUPPORTED_INTEL_DEPRECATED -6003
++
++/* cl_accelerator_type_intel */
++#define CL_ACCELERATOR_TYPE_MOTION_ESTIMATION_INTEL     0x0
++
++/* cl_accelerator_info_intel */
++#define CL_ACCELERATOR_DESCRIPTOR_INTEL                 0x4090
++#define CL_ACCELERATOR_REFERENCE_COUNT_INTEL            0x4091
++#define CL_ACCELERATOR_CONTEXT_INTEL                    0x4092
++#define CL_ACCELERATOR_TYPE_INTEL                       0x4093
++
++/*cl_motion_detect_desc_intel flags */
++#define CL_ME_MB_TYPE_16x16_INTEL                       0x0
++#define CL_ME_MB_TYPE_8x8_INTEL                         0x1
++#define CL_ME_MB_TYPE_4x4_INTEL                         0x2
++
++#define CL_ME_SUBPIXEL_MODE_INTEGER_INTEL               0x0
++#define CL_ME_SUBPIXEL_MODE_HPEL_INTEL                  0x1
++#define CL_ME_SUBPIXEL_MODE_QPEL_INTEL                  0x2
++
++#define CL_ME_SAD_ADJUST_MODE_NONE_INTEL                0x0
++#define CL_ME_SAD_ADJUST_MODE_HAAR_INTEL                0x1
++
++#define CL_ME_SEARCH_PATH_RADIUS_2_2_INTEL              0x0
++#define CL_ME_SEARCH_PATH_RADIUS_4_4_INTEL              0x1
++#define CL_ME_SEARCH_PATH_RADIUS_16_12_INTEL            0x5
++
++extern CL_API_ENTRY cl_accelerator_intel CL_API_CALL
++clCreateAcceleratorINTEL(
++    cl_context                  /* context */,
++    cl_accelerator_type_intel   /* accelerator_type */,
++    size_t                      /* descriptor_size */,
++    const void*                 /* descriptor */,
++    cl_int*                     /* errcode_ret */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++typedef CL_API_ENTRY cl_accelerator_intel
++    (CL_API_CALL *clCreateAcceleratorINTEL_fn)(
++    cl_context                  /* context */,
++    cl_accelerator_type_intel   /* accelerator_type */,
++    size_t                      /* descriptor_size */,
++    const void*                 /* descriptor */,
++    cl_int*                     /* errcode_ret */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++extern CL_API_ENTRY cl_int CL_API_CALL
++clGetAcceleratorInfoINTEL
++(
++    cl_accelerator_intel        /* accelerator */,
++    cl_accelerator_info_intel   /* param_name */,
++    size_t                      /* param_value_size */,
++    void*                       /* param_value */,
++    size_t*                     /* param_value_size_ret */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++typedef CL_API_ENTRY cl_int
++    (CL_API_CALL *clGetAcceleratorInfoINTEL_fn)(
++    cl_accelerator_intel        /* accelerator */,
++    cl_accelerator_info_intel   /* param_name */,
++    size_t                      /* param_value_size */,
++    void*                       /* param_value */,
++    size_t*                     /* param_value_size_ret */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++extern CL_API_ENTRY cl_int CL_API_CALL
++clRetainAcceleratorINTEL(
++    cl_accelerator_intel        /* accelerator */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++typedef CL_API_ENTRY cl_int
++    (CL_API_CALL *clRetainAcceleratorINTEL_fn)(
++    cl_accelerator_intel        /* accelerator */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++extern CL_API_ENTRY cl_int CL_API_CALL
++clReleaseAcceleratorINTEL(
++    cl_accelerator_intel        /* accelerator */ ) CL_EXT_SUFFIX__VERSION_1_2;
++
++typedef CL_API_ENTRY cl_int
++    (CL_API_CALL *clReleaseAcceleratorINTEL_fn)(
++    cl_accelerator_intel        /* accelerator */ ) CL_EXT_SUFFIX__VERSION_1_2;
++#endif
++#endif
++
+ #define CL_MEM_PINNABLE (1 << 10)
+ 
+ /* Track allocations and report current number of unfreed allocations */
+--- a/src/cl_accelerator_intel.h
++++ b/src/cl_accelerator_intel.h
+@@ -4,6 +4,7 @@
+ #include "cl_base_object.h"
+ #include "CL/cl.h"
+ #include "CL/cl_ext.h"
++#include "CL/cl_intel.h"
+ #include <stdint.h>
+ 
+ struct _cl_accelerator_intel {
+--- a/src/cl_driver.h
++++ b/src/cl_driver.h
+@@ -24,6 +24,7 @@
+ #include <stdlib.h>
+ #include "cl_driver_type.h"
+ #include "CL/cl_ext.h"
++#include "CL/cl_intel.h"
+ /* Various limitations we should remove actually */
+ #define GEN_MAX_SURFACES 256
+ #define GEN_MAX_SAMPLERS 16

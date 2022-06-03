@@ -1,0 +1,41 @@
+Description: Reduce error spew on unsupported hardware
+
+Loading beignet on unsupported hardware produces ~20 errors, even
+if another ICD is also installed that does support the hardware.
+Replace these with one message that explicitly says what to do.
+
+Author: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+
+--- a/src/cl_device_id.c
++++ b/src/cl_device_id.c
+@@ -797,10 +797,10 @@ glk12eu_break:
+     case PCI_CHIP_SANDYBRIDGE_BRIDGE_S:
+     case PCI_CHIP_SANDYBRIDGE_S_GT:
+       // Intel(R) HD Graphics SandyBridge not supported yet
++    default:
++      fprintf(stderr, "beignet-opencl-icd: no supported GPU found, this is probably the wrong opencl-icd package for this hardware\n(If you have multiple ICDs installed and OpenCL works, you can ignore this message)\n");
+       ret = NULL;
+       break;
+-    default:
+-      printf("cl_get_gt_device(): error, unknown device: %x\n", device_id);
+   }
+ 
+   if (ret == NULL)
+--- a/src/intel/intel_driver.c
++++ b/src/intel/intel_driver.c
+@@ -263,7 +263,6 @@ if(!intel_driver_is_active(intel)) {
+ }
+ 
+ if(!intel_driver_is_active(intel)) {
+-  fprintf(stderr, "Device open failed, aborting...\n");
+   return CL_DEVICE_NOT_FOUND;
+ }
+ 
+@@ -324,7 +323,6 @@ drm_client_t client;
+ // usually dev_name = "/dev/dri/card%d"
+ dev_fd = open(dev_name, O_RDWR);
+ if (dev_fd == -1) {
+-  fprintf(stderr, "open(\"%s\", O_RDWR) failed: %s\n", dev_name, strerror(errno));
+   return 0;
+ }
+ 

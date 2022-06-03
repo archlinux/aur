@@ -1,0 +1,63 @@
+Description: Fix broken links and list syntax in documentation
+
+The upstream documentation is meant to be a part of a larger wiki,
+and does not work properly when built as-is on its own
+
+Author: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+
+--- a/docs/Beignet.mdwn
++++ b/docs/Beignet.mdwn
+@@ -11,7 +11,7 @@ about the compiler, please refer to `bac
+ 
+ News
+ ----
+-[[Beignet project news|Beignet/NEWS]]
++[[Beignet project news|NEWS]]
+ 
+ Prerequisite
+ ------------
+@@ -139,6 +139,7 @@ need to refer the "Known Issues" section
+ 
+ Normally, beignet needs to run under X server environment as normal user. If there isn't X server,
+ beignet provides two alternative to run:
++
+ * Run as root without X.
+ * Enable the drm render nodes by passing drm.rnodes=1 to the kernel boot args, then you can run beignet with non-root and without X.
+ 
+@@ -288,15 +289,15 @@ Please specify your hardware when report
+ 
+ Documents for OpenCL application developers
+ -------------------------------------------
+-- [[Cross compile (yocto)|Beignet/howto/cross-compiler-howto]]
+-- [[Work with old system without c++11|Beignet/howto/oldgcc-howto]]
+-- [[Kernel Optimization Guide|Beignet/optimization-guide]]
+-- [[Libva Buffer Sharing|Beignet/howto/libva-buffer-sharing-howto]]
+-- [[V4l2 Buffer Sharing|Beignet/howto/v4l2-buffer-sharing-howto]]
++- [[Cross compile (yocto)|howto/cross-compiler-howto]]
++- [[Work with old system without c++11|howto/oldgcc-howto]]
++- [[Kernel Optimization Guide|optimization-guide]]
++- [[Libva Buffer Sharing|howto/libva-buffer-sharing-howto]]
++- [[V4l2 Buffer Sharing|howto/v4l2-buffer-sharing-howto]]
+-- [[OpenGL Buffer Sharing|Beignet/howto/gl-buffer-sharing-howto]]
+-- [[Video Motion Estimation|Beignet/howto/video-motion-estimation-howto]]
+-- [[Stand Alone Unit Test|Beignet/howto/stand-alone-utest-howto]]
+-- [[Android build|Beignet/howto/android-build-howto]]
++- [[OpenGL Buffer Sharing|howto/gl-buffer-sharing-howto]]
++- [[Video Motion Estimation|howto/video-motion-estimation-howto]]
++- [[Stand Alone Unit Test|howto/stand-alone-utest-howto]]
++- [[Android build|howto/android-build-howto]]
+ 
+ The wiki URL is as below:
+ [http://www.freedesktop.org/wiki/Software/Beignet/](http://www.freedesktop.org/wiki/Software/Beignet/)
+--- a/docs/howto/video-motion-estimation-howto.mdwn
++++ b/docs/howto/video-motion-estimation-howto.mdwn
+@@ -66,6 +66,6 @@ Please go through it for details.
+ More references
+ ---------------
+ 
+-https://www.khronos.org/registry/cl/extensions/intel/cl_intel_accelerator.txt
+-https://www.khronos.org/registry/cl/extensions/intel/cl_intel_motion_estimation.txt
+-https://software.intel.com/en-us/articles/intro-to-motion-estimation-extension-for-opencl
++[https://www.khronos.org/registry/cl/extensions/intel/cl_intel_accelerator.txt](https://www.khronos.org/registry/cl/extensions/intel/cl_intel_accelerator.txt)
++[https://www.khronos.org/registry/cl/extensions/intel/cl_intel_motion_estimation.txt](https://www.khronos.org/registry/cl/extensions/intel/cl_intel_motion_estimation.txt)
++[https://software.intel.com/en-us/articles/intro-to-motion-estimation-extension-for-opencl](https://software.intel.com/en-us/articles/intro-to-motion-estimation-extension-for-opencl)

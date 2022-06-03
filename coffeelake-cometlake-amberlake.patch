@@ -1,0 +1,289 @@
+Description: Add Comet Lake/Amber Lake/more Coffee Lake support
+
+Minimally tested, I suggest using intel-opencl-icd instead if possible
+
+Author: Ridley Combs
+Bug-Ubuntu: https://launchpad.net/bugs/1905340
+Origin: https://github.com/intel/beignet/pull/20/files
+
+--- a/backend/src/backend/gen_program.cpp
++++ b/backend/src/backend/gen_program.cpp
+@@ -211,6 +211,10 @@ namespace gbe {
+       ctx = GBE_NEW(KblContext, unit, name, deviceID, relaxMath);
+     } else if (IS_COFFEELAKE(deviceID)) {
+       ctx = GBE_NEW(KblContext, unit, name, deviceID, relaxMath);
++    } else if (IS_COMETLAKE(deviceID)) {
++      ctx = GBE_NEW(KblContext, unit, name, deviceID, relaxMath);
++    } else if (IS_AMBERLAKE(deviceID)) {
++      ctx = GBE_NEW(KblContext, unit, name, deviceID, relaxMath);
+     } else if (IS_GEMINILAKE(deviceID)) {
+       ctx = GBE_NEW(GlkContext, unit, name, deviceID, relaxMath);
+     }
+@@ -331,6 +335,8 @@ namespace gbe {
+                                       (IS_BROXTON(deviceID) && MATCH_BXT_HEADER(binary)) || \
+                                       (IS_KABYLAKE(deviceID) && MATCH_KBL_HEADER(binary)) || \
+                                       (IS_COFFEELAKE(deviceID) && MATCH_KBL_HEADER(binary)) || \
++                                      (IS_COMETLAKE(deviceID) && MATCH_KBL_HEADER(binary)) || \
++                                      (IS_AMBERLAKE(deviceID) && MATCH_KBL_HEADER(binary)) || \
+                                       (IS_GEMINILAKE(deviceID) && MATCH_GLK_HEADER(binary)) \
+                                       )
+ 
+@@ -441,6 +447,10 @@ namespace gbe {
+         FILL_KBL_HEADER(*binary);
+       }else if(IS_COFFEELAKE(prog->deviceID)){
+         FILL_KBL_HEADER(*binary);
++      }else if(IS_COMETLAKE(prog->deviceID)){
++        FILL_KBL_HEADER(*binary);
++      }else if(IS_AMBERLAKE(prog->deviceID)){
++        FILL_KBL_HEADER(*binary);
+       }else if(IS_GEMINILAKE(prog->deviceID)){
+         FILL_GLK_HEADER(*binary);
+       }else {
+--- a/src/cl_device_data.h
++++ b/src/cl_device_data.h
+@@ -376,6 +376,8 @@
+ #define PCI_CHIP_COFFEELAKE_S_GT1_2  0x3E93
+ #define PCI_CHIP_COFFEELAKE_S_GT1_3  0x3E99
+ 
++#define PCI_CHIP_COFFEELAKE_H_GT1_1  0x3E9C
++
+ #define PCI_CHIP_COFFEELAKE_U_GT1_1  0x3EA1
+ #define PCI_CHIP_COFFEELAKE_U_GT1_2  0x3EA4
+ 
+@@ -383,6 +385,7 @@
+ #define PCI_CHIP_COFFEELAKE_S_GT2_2  0x3E92
+ #define PCI_CHIP_COFFEELAKE_S_GT2_3  0x3E96
+ #define PCI_CHIP_COFFEELAKE_S_GT2_4  0x3E9A
++#define PCI_CHIP_COFFEELAKE_S_GT2_5  0x3E98
+ 
+ #define PCI_CHIP_COFFEELAKE_H_GT2_1  0x3E94
+ #define PCI_CHIP_COFFEELAKE_H_GT2_2  0x3E9B
+@@ -401,6 +404,7 @@
+     (devid == PCI_CHIP_COFFEELAKE_S_GT1_1 || \
+      devid == PCI_CHIP_COFFEELAKE_S_GT1_2 || \
+      devid == PCI_CHIP_COFFEELAKE_S_GT1_3 || \
++     devid == PCI_CHIP_COFFEELAKE_H_GT1_1 || \
+      devid == PCI_CHIP_COFFEELAKE_U_GT1_1 || \
+      devid == PCI_CHIP_COFFEELAKE_U_GT1_2)
+ 
+@@ -409,6 +413,7 @@
+      devid == PCI_CHIP_COFFEELAKE_S_GT2_2 || \
+      devid == PCI_CHIP_COFFEELAKE_S_GT2_3 || \
+      devid == PCI_CHIP_COFFEELAKE_S_GT2_4 || \
++     devid == PCI_CHIP_COFFEELAKE_S_GT2_5 || \
+      devid == PCI_CHIP_COFFEELAKE_H_GT2_1 || \
+      devid == PCI_CHIP_COFFEELAKE_H_GT2_2 || \
+      devid == PCI_CHIP_COFFEELAKE_U_GT2_1 || \
+@@ -424,7 +429,65 @@
+ 
+ #define IS_COFFEELAKE(devid) (IS_CFL_GT1(devid) || IS_CFL_GT2(devid) || IS_CFL_GT3(devid))
+ 
+-#define IS_GEN9(devid)     (IS_SKYLAKE(devid) || IS_BROXTON(devid) || IS_KABYLAKE(devid) || IS_GEMINILAKE(devid) || IS_COFFEELAKE(devid))
++#define PCI_CHIP_COMETLAKE_S_GT1_1   0x9BA5
++#define PCI_CHIP_COMETLAKE_S_GT1_2   0x9BA8
++
++#define PCI_CHIP_COMETLAKE_H_GT1_1   0x9BA4
++#define PCI_CHIP_COMETLAKE_H_GT1_2   0x9BA2
++
++#define PCI_CHIP_COMETLAKE_U_GT1_1   0x9B21
++#define PCI_CHIP_COMETLAKE_U_GT1_2   0x9BAA
++#define PCI_CHIP_COMETLAKE_U_GT1_3   0x9BAC
++
++#define PCI_CHIP_COMETLAKE_S_GT2_1   0x9BC5
++#define PCI_CHIP_COMETLAKE_S_GT2_2   0x9BC8
++
++#define PCI_CHIP_COMETLAKE_H_GT2_1   0x9BC4
++#define PCI_CHIP_COMETLAKE_H_GT2_2   0x9BC2
++
++#define PCI_CHIP_COMETLAKE_W_GT2_1   0x9BC6
++#define PCI_CHIP_COMETLAKE_W_GT2_2   0x9BE6
++#define PCI_CHIP_COMETLAKE_W_GT2_3   0x9BF6
++
++#define PCI_CHIP_COMETLAKE_U_GT2_1   0x9B41
++#define PCI_CHIP_COMETLAKE_U_GT2_2   0x9BCA
++#define PCI_CHIP_COMETLAKE_U_GT2_3   0x9BCC
++
++#define IS_CML_GT1(devid) \
++    (devid == PCI_CHIP_COMETLAKE_S_GT1_1   || \
++     devid == PCI_CHIP_COMETLAKE_S_GT1_2   || \
++     devid == PCI_CHIP_COMETLAKE_H_GT1_1   || \
++     devid == PCI_CHIP_COMETLAKE_H_GT1_2   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT1_1   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT1_2   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT1_3)
++
++#define IS_CML_GT2(devid) \
++    (devid == PCI_CHIP_COMETLAKE_S_GT2_1   || \
++     devid == PCI_CHIP_COMETLAKE_S_GT2_2   || \
++     devid == PCI_CHIP_COMETLAKE_H_GT2_1   || \
++     devid == PCI_CHIP_COMETLAKE_H_GT2_2   || \
++     devid == PCI_CHIP_COMETLAKE_W_GT2_1   || \
++     devid == PCI_CHIP_COMETLAKE_W_GT2_2   || \
++     devid == PCI_CHIP_COMETLAKE_W_GT2_3   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT2_1   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT2_2   || \
++     devid == PCI_CHIP_COMETLAKE_U_GT2_3)
++
++#define IS_COMETLAKE(devid) (IS_CML_GT1(devid) || IS_CML_GT2(devid))
++
++#define PCI_CHIP_AMBERLAKE_Y_GT2_1   0x591C
++#define PCI_CHIP_AMBERLAKE_Y_GT2_2   0x87C0
++#define PCI_CHIP_AMBERLAKE_Y_GT2_3   0x87CA
++
++#define IS_AML_GT2(devid) \
++    (devid == PCI_CHIP_AMBERLAKE_Y_GT2_1   || \
++     devid == PCI_CHIP_AMBERLAKE_Y_GT2_2   || \
++     devid == PCI_CHIP_AMBERLAKE_Y_GT2_3)
++
++#define IS_AMBERLAKE(devid) (IS_AML_GT2(devid))
++
++#define IS_GEN9(devid)     (IS_SKYLAKE(devid) || IS_BROXTON(devid) || IS_KABYLAKE(devid) || IS_GEMINILAKE(devid) || IS_COFFEELAKE(devid) || IS_COMETLAKE(devid) || IS_AMBERLAKE(devid))
+ 
+ #define MAX_OCLVERSION(devid) (IS_GEN9(devid) ? 200 : 120)
+ 
+--- a/src/cl_device_id.c
++++ b/src/cl_device_id.c
+@@ -304,6 +304,36 @@ static struct _cl_device_id intel_cfl_gt3_device = {
+ #include "cl_gen9_device.h"
+ };
+ 
++static struct _cl_device_id intel_cml_gt1_device = {
++  .max_compute_unit = 12,
++  .max_thread_per_unit = 7,
++  .sub_slice_count = 2,
++  .max_work_item_sizes = {512, 512, 512},
++  .max_work_group_size = 256,
++  .max_clock_frequency = 1000,
++#include "cl_gen9_device.h"
++};
++
++static struct _cl_device_id intel_cml_gt2_device = {
++  .max_compute_unit = 24,
++  .max_thread_per_unit = 7,
++  .sub_slice_count = 3,
++  .max_work_item_sizes = {512, 512, 512},
++  .max_work_group_size = 256,
++  .max_clock_frequency = 1000,
++#include "cl_gen9_device.h"
++};
++
++static struct _cl_device_id intel_aml_gt2_device = {
++  .max_compute_unit = 24,
++  .max_thread_per_unit = 7,
++  .sub_slice_count = 3,
++  .max_work_item_sizes = {512, 512, 512},
++  .max_work_group_size = 256,
++  .max_clock_frequency = 1000,
++#include "cl_gen9_device.h"
++};
++
+ LOCAL cl_device_id
+ cl_get_gt_device(cl_device_type device_type)
+ {
+@@ -819,6 +849,8 @@ cl_get_gt_device(cl_device_type device_type)
+     case PCI_CHIP_COFFEELAKE_S_GT1_2:
+     case PCI_CHIP_COFFEELAKE_S_GT1_3:
+       DECL_INFO_STRING(cfl_gt1_break, intel_cfl_gt1_device, name, "Intel(R) UHD Graphics Coffee Lake Desktop GT1");
++    case PCI_CHIP_COFFEELAKE_H_GT1_1:
++      DECL_INFO_STRING(cfl_gt1_break, intel_cfl_gt1_device, name, "Intel(R) UHD Graphics Coffee Lake Halo GT1");
+     case PCI_CHIP_COFFEELAKE_U_GT1_1:
+     case PCI_CHIP_COFFEELAKE_U_GT1_2:
+       DECL_INFO_STRING(cfl_gt1_break, intel_cfl_gt1_device, name, "Intel(R) UHD Graphics Coffee Lake Mobile GT1");
+@@ -837,6 +869,7 @@ cl_get_gt_device(cl_device_type device_type)
+     case PCI_CHIP_COFFEELAKE_S_GT2_2:
+     case PCI_CHIP_COFFEELAKE_S_GT2_3:
+     case PCI_CHIP_COFFEELAKE_S_GT2_4:
++    case PCI_CHIP_COFFEELAKE_S_GT2_5:
+       DECL_INFO_STRING(cfl_gt2_break, intel_cfl_gt2_device, name, "Intel(R) UHD Graphics Coffee Lake Desktop GT2");
+     case PCI_CHIP_COFFEELAKE_H_GT2_1:
+     case PCI_CHIP_COFFEELAKE_H_GT2_2:
+@@ -873,6 +906,67 @@ cl_get_gt_device(cl_device_type device_type)
+       cl_intel_platform_enable_extension(ret, cl_khr_fp16_ext_id);
+       break;
+ 
++    case PCI_CHIP_COMETLAKE_S_GT1_1:
++    case PCI_CHIP_COMETLAKE_S_GT1_2:
++      DECL_INFO_STRING(cml_gt1_break, intel_cml_gt1_device, name, "Intel(R) UHD Graphics Comet Lake Desktop GT1");
++    case PCI_CHIP_COMETLAKE_H_GT1_1:
++    case PCI_CHIP_COMETLAKE_H_GT1_2:
++      DECL_INFO_STRING(cml_gt1_break, intel_cml_gt1_device, name, "Intel(R) UHD Graphics Comet Lake Halo GT1");
++    case PCI_CHIP_COMETLAKE_U_GT1_1:
++    case PCI_CHIP_COMETLAKE_U_GT1_2:
++    case PCI_CHIP_COMETLAKE_U_GT1_3:
++      DECL_INFO_STRING(cml_gt1_break, intel_cml_gt1_device, name, "Intel(R) UHD Graphics Comet Lake Mobile GT1");
++cml_gt1_break:
++      intel_cml_gt1_device.device_id = device_id;
++      intel_cml_gt1_device.platform = cl_get_platform_default();
++      ret = &intel_cml_gt1_device;
++      cl_intel_platform_get_default_extension(ret);
++#ifdef ENABLE_FP64
++      cl_intel_platform_enable_extension(ret, cl_khr_fp64_ext_id);
++#endif
++      cl_intel_platform_enable_extension(ret, cl_khr_fp16_ext_id);
++      break;
++
++    case PCI_CHIP_COMETLAKE_S_GT2_1:
++    case PCI_CHIP_COMETLAKE_S_GT2_2:
++      DECL_INFO_STRING(cml_gt2_break, intel_cml_gt2_device, name, "Intel(R) UHD Graphics Comet Lake Desktop GT2");
++    case PCI_CHIP_COMETLAKE_H_GT2_1:
++    case PCI_CHIP_COMETLAKE_H_GT2_2:
++      DECL_INFO_STRING(cml_gt2_break, intel_cml_gt2_device, name, "Intel(R) UHD Graphics Comet Lake Halo GT2");
++    case PCI_CHIP_COMETLAKE_W_GT2_1:
++    case PCI_CHIP_COMETLAKE_W_GT2_2:
++    case PCI_CHIP_COMETLAKE_W_GT2_3:
++      DECL_INFO_STRING(cml_gt2_break, intel_cml_gt2_device, name, "Intel(R) UHD Graphics Comet Lake Workstation GT2");
++    case PCI_CHIP_COMETLAKE_U_GT2_1:
++    case PCI_CHIP_COMETLAKE_U_GT2_2:
++    case PCI_CHIP_COMETLAKE_U_GT2_3:
++      DECL_INFO_STRING(cml_gt2_break, intel_cml_gt2_device, name, "Intel(R) UHD Graphics Comet Lake Mobile GT2");
++cml_gt2_break:
++      intel_cml_gt2_device.device_id = device_id;
++      intel_cml_gt2_device.platform = cl_get_platform_default();
++      ret = &intel_cml_gt2_device;
++      cl_intel_platform_get_default_extension(ret);
++#ifdef ENABLE_FP64
++      cl_intel_platform_enable_extension(ret, cl_khr_fp64_ext_id);
++#endif
++      cl_intel_platform_enable_extension(ret, cl_khr_fp16_ext_id);
++      break;
++
++    case PCI_CHIP_AMBERLAKE_Y_GT2_1:
++    case PCI_CHIP_AMBERLAKE_Y_GT2_2:
++    case PCI_CHIP_AMBERLAKE_Y_GT2_3:
++      DECL_INFO_STRING(aml_gt2_break, intel_aml_gt2_device, name, "Intel(R) UHD Graphics Amber Lake ULX GT2");
++aml_gt2_break:
++      intel_aml_gt2_device.device_id = device_id;
++      intel_aml_gt2_device.platform = cl_get_platform_default();
++      ret = &intel_aml_gt2_device;
++      cl_intel_platform_get_default_extension(ret);
++#ifdef ENABLE_FP64
++      cl_intel_platform_enable_extension(ret, cl_khr_fp64_ext_id);
++#endif
++      cl_intel_platform_enable_extension(ret, cl_khr_fp16_ext_id);
++      break;
++
+     case PCI_CHIP_SANDYBRIDGE_BRIDGE:
+     case PCI_CHIP_SANDYBRIDGE_GT1:
+     case PCI_CHIP_SANDYBRIDGE_GT2:
+@@ -1083,7 +1177,10 @@ LOCAL cl_bool is_gen_device(cl_device_id device) {
+          device == &intel_glk12eu_device ||
+          device == &intel_cfl_gt1_device ||
+          device == &intel_cfl_gt2_device ||
+-         device == &intel_cfl_gt3_device;
++         device == &intel_cfl_gt3_device ||
++         device == &intel_cml_gt1_device ||
++         device == &intel_cml_gt2_device ||
++         device == &intel_aml_gt2_device;
+ }
+ 
+ LOCAL cl_int
+@@ -1513,7 +1610,8 @@ cl_device_get_version(cl_device_id device, cl_int *ver)
+         || device == &intel_kbl_gt4_device || device == &intel_kbl_gt15_device
+         || device == &intel_glk18eu_device || device == &intel_glk12eu_device
+         || device == &intel_cfl_gt1_device || device == &intel_cfl_gt1_device
+-        || device == &intel_cfl_gt3_device) {
++        || device == &intel_cfl_gt3_device || device == &intel_cml_gt1_device
++        || device == &intel_cml_gt2_device || device == &intel_aml_gt2_device) {
+     *ver = 9;
+   } else
+     return CL_INVALID_VALUE;

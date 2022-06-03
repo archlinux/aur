@@ -1,0 +1,49 @@
+Description: Set compiler flags
+
+Respect CFLAGS,CXXFLAGS,LDFLAGS (security hardening etc.)
+Be verbose
+Disable non-policy-compliant instruction set assumptions (slows the
+OpenCL compiler by ~few%, no effect on OpenCL execution speed)
+
+Author: Simon Richter <sjr@debian.org>,Rebecca Palmer <rebecca_palmer@zoho.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,7 +31,6 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINA
+
+ INCLUDE (FindPkgConfig)
+
+-SET(CMAKE_VERBOSE_MAKEFILE "false")
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake/")
+ INCLUDE (GNUInstallDirs OPTIONAL)
+ # support old CMake without GNUInstallDirs
+@@ -73,9 +72,9 @@ ADD_DEFINITIONS(-DGEN7_SAMPLER_CLAMP_BOR
+
+ # compiler flag setting
+ if (COMPILER STREQUAL "GCC")
+-  set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS} -funroll-loops -fstrict-aliasing -msse2 -msse3 -mssse3 -msse4.1 -fPIC -Wall -mfpmath=sse -Wcast-align -Wl,-E")
++  set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS} -funroll-loops -fstrict-aliasing -fPIC -Wall -Wcast-align -Wl,-E")
+ elseif (COMPILER STREQUAL "CLANG")
+-  set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS} -funroll-loops -fstrict-aliasing -msse2 -msse3 -mssse3 -msse4.1 -fPIC -Wall")
++  set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS} -funroll-loops -fstrict-aliasing -fPIC -Wall")
+ elseif (COMPILER STREQUAL "ICC")
+   set (CMAKE_C_CXX_FLAGS "${CMAKE_C_CXX_FLAGS}  -wd2928 -Wall -fPIC -fstrict-aliasing -fp-model fast -msse4.1 -Wl,-E")
+ endif ()
+--- a/backend/src/sys/platform.hpp
++++ b/backend/src/sys/platform.hpp
+@@ -41,15 +41,6 @@
+ #define __X86__
+ #endif
+
+-/* We require SSE ... */
+-#ifndef __SSE__
+-#define __SSE__
+-#endif
+-
+-/* ... and SSE2 */
+-#ifndef __SSE2__
+-#define __SSE2__
+-#endif
+
+ #if defined(_INCLUDED_IMM)
+ // #define __AVX__
+

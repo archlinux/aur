@@ -1,0 +1,49 @@
+diff -git a/backend/src/gbe_bin_generater.cpp b/backend/src/gbe_bin_generater.cpp
+--- a/backend/src/gbe_bin_generater.cpp
++++ b/backend/src/gbe_bin_generater.cpp
+@@ -108,7 +108,7 @@
+         return *this;
+     }
+
+-    const char* file_map_open (void) throw (int);
++    const char* file_map_open (void) noexcept(false);
+
+     const char* get_code (void) {
+         return code;
+@@ -144,8 +144,8 @@
+         return 1;
+     }
+
+-    void build_program(void) throw(int);
+-    void serialize_program(void) throw(int);
++    void build_program(void) noexcept(false);
++    void serialize_program(void) noexcept(false);
+ };
+
+ string program_build_instance::bin_path;
+@@ -153,7 +153,7 @@
+ #define OUTS_UPDATE_SZ(elt) SERIALIZE_OUT(elt, oss, header_sz)
+ #define OUTF_UPDATE_SZ(elt) SERIALIZE_OUT(elt, ofs, header_sz)
+
+-void program_build_instance::serialize_program(void) throw(int)
++void program_build_instance::serialize_program(void) noexcept(false)
+ {
+     ofstream ofs;
+     ostringstream oss;
+@@ -271,7 +271,7 @@
+ }
+
+
+-void program_build_instance::build_program(void) throw(int)
++void program_build_instance::build_program(void) noexcept(false)
+ {
+     gbe_program  opaque = NULL;
+     if(gen_pci_id){
+@@ -289,7 +289,7 @@
+     }
+ }
+
+-const char* program_build_instance::file_map_open(void) throw(int)
++const char* program_build_instance::file_map_open(void) noexcept(false)
+ {
+     void * address;
