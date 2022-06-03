@@ -1,8 +1,8 @@
 pkgbase = odilia
 	pkgdesc = Odilia Screenreader -- Make Linux Accessible!
-	pkgver = 0.1b
+	pkgver = 0.2b
 	pkgrel = 1
-	url = https://yggdrasil-sr.github.io/
+	url = https://odilia.app/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
