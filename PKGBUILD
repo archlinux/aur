@@ -13,8 +13,8 @@ pkgdesc='XML parsing library, version 2'
 url='https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home'
 arch=(aarch64 i686 pentium4 x86_64)
 license=(MIT)
-depends=(zlib readline ncurses xz icu)
-makedepends=(python2 git)
+depends=(python2 $_pkgname zlib readline ncurses xz icu)
+makedepends=(git)
 _commit=a075d256fd9ff15590b86d981b75a50ead124fca  # tags/v2.9.13^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
 source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
