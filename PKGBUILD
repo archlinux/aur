@@ -2,7 +2,7 @@
 # Contributor: w0rty <mawo97 at gmail.com>
 
 pkgname=wgcf-git
-pkgver=2.2.12.r0.dc97b7d
+pkgver=2.2.15.r0.140f983
 pkgrel=1
 pkgdesc='Generate WireGuard profile from Cloudflare Warp account'
 arch=('x86_64' 'aarch64')
