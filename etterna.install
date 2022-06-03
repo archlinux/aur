@@ -1,5 +1,5 @@
 function post_upgrade {
-    echo "All game data will be stored in ~/.etterna, do not modify anything in /opt/etterna"
+    echo "All game data will be stored in ~/.etterna, if you previous had game data in /opt/etterna it will need to be moved to ~/.etterna"
 }
 
 function post_remove {
