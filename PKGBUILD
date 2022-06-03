@@ -2,7 +2,7 @@
 
 pkgname=mitsuba2-git
 pkgver=2.2.1.r38.g4e7628c6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -16,6 +16,7 @@ source=('swap_pybind.patch'
         'swap_pugixml.patch'
         'swap_pybind_enoki.patch'
         'python_collections.patch'
+        'test_scene.xml'
         'git+https://github.com/mitsuba-renderer/mitsuba2.git'
         'git+https://github.com/wjakob/tbb.git'
         'git+https://github.com/mitsuba-renderer/asmjit.git'
@@ -27,6 +28,7 @@ md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          '617bd32eecbebd8c7036f738b8275e5f'
          'eee8327568bbe7e0fa0a8d873eb2dea0'
          'fcd771afe770b24492938482d6facfed'
+         '1f848b2cc184f5662b4a16b7a9b67cdd'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -88,6 +90,10 @@ build() {
 
 	ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
 	ninja -C "$srcdir/build" mkdoc
+}
+
+check() {
+	$srcdir/build/dist/mitsuba $srcdir/test_scene.xml
 }
 
 package() {
