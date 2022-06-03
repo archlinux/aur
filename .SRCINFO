@@ -1,19 +1,17 @@
 pkgbase = sbagen
 	pkgdesc = A binural brainwave generator
 	pkgver = 1.4.5
-	pkgrel = 7
+	pkgrel = 8
 	url = http://uazu.net/sbagen
-	install = sbagen.install
-	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	license = GPL
 	makedepends = libmad
 	makedepends = libvorbis
+	makedepends = gcc-multilib
 	depends = bash
 	depends = perl
+	depends = lib32-gcc-libs
+	depends = libpulse
 	options = !strip
 	source = http://uazu.net/sbagen/sbagen-1.4.5.tgz
 	source = http://uazu.net/sbagen/sbagen-river-1.4.1.tgz
@@ -31,8 +29,5 @@ pkgbase = sbagen
 	sha512sums = a84e774f1a4c1f57716f3097228baebb8caf5424bd1316ce1d8f596cac44e9a16c1a56814405b48b87557108db1d4cf4fee56875b82d7390ec3c41d4e2a280a8
 	sha512sums = db30da37feb3c970f1dcc5271aa9350b3694c48fdb5585db2e6f3f178f9cd26af1fd48d238786ccac19d2f65ebcccff9622b358b2a16396696e94448e66648f5
 	sha512sums = f16fe080432c0ea1ba6e43a0f0fa78121706ad86fc8503509d7289f62459618abc0243e398eab157808c092a5c2e2dc8b1826fc3a22340cdb5896684ed6bacaa
-	depends_x86_64 = lib32-glibc
-	makedepends_x86_64 = gcc-multilib
 
 pkgname = sbagen
-

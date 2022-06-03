@@ -6,17 +6,14 @@ pkgver=1.4.5
 _river_ver=1.4.1
 _rhybag_ver=0.1.1
 _binauralanalysis_ver=20040521
-pkgrel=7
+pkgrel=8
 pkgdesc='A binural brainwave generator'
 url='http://uazu.net/sbagen'
 license=('GPL')
-depends=('bash' 'perl')
-makedepends=('libmad' 'libvorbis')
-depends_x86_64+=('lib32-glibc')
-makedepends_x86_64+=('gcc-multilib')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+depends=('bash' 'perl' 'lib32-gcc-libs' 'libpulse')
+makedepends=('libmad' 'libvorbis' 'gcc-multilib')
+arch=('x86_64')
 options=('!strip')
-install=$pkgname.install
 
 source=(
   "$url/$pkgname-$pkgver.tgz"
@@ -68,12 +65,19 @@ build() {
 }
 
 package() {
+  ### Add /usr/bin to the package
+  install -d "$pkgdir/usr/bin"
+
   ### Install rhybag
-  install -Dm755 rhybag-$_rhybag_ver/rhybag "$pkgdir/usr/bin/rhybag"
+  install -Dm755 rhybag-$_rhybag_ver/rhybag "$pkgdir/usr/lib/sbagen/rhybag"
+
+  ### Add rhybag script
+  printf '%s\n\n%s' '#!/usr/bin/env bash' 'padsp /usr/lib/sbagen/rhybag "$@"' > "$pkgdir/usr/bin/rhybag"
+  chmod 755 "$pkgdir/usr/bin/rhybag"
 
   ### Install river sounds
-  install -Dm644 $pkgname-$_river_ver/river1.ogg "$pkgdir/usr/share/$pkgname/media/river1.ogg"
-  install -Dm644 $pkgname-$_river_ver/river2.ogg "$pkgdir/usr/share/$pkgname/media/river2.ogg"
+  install -Dm644 $pkgname-$_river_ver/river1.ogg "$pkgdir/usr/share/sbagen/media/river1.ogg"
+  install -Dm644 $pkgname-$_river_ver/river2.ogg "$pkgdir/usr/share/sbagen/media/river2.ogg"
 
   ### Install Binaural analysis tools
   install -Dm755 binaural-analysis/anarange "$pkgdir/usr/bin/anarange"
@@ -86,10 +90,14 @@ package() {
 
   ### Install sbagen
   cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 $pkgname "$pkgdir/usr/lib/sbagen/sbagen"
+
+  ### Add sbagen script
+  printf '%s\n\n%s' '#!/usr/bin/env bash' 'padsp /usr/lib/sbagen/sbagen "$@"' > "$pkgdir/usr/bin/sbagen"
+  chmod 755 "$pkgdir/usr/bin/sbagen"
 
   # Install supplimentary files
-  find . -type f -name '[a-z]*.txt' -exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgname/doc/"'{}' \;
-  find examples -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgname/"'{}' \;
-  find scripts -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgname/"'{}' \;
+  find . -type f -name '[a-z]*.txt' -exec install -Dm644 '{}' "$pkgdir/usr/share/sbagen/doc/"'{}' \;
+  find examples -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/sbagen/"'{}' \;
+  find scripts -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/sbagen/"'{}' \;
 }
