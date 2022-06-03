@@ -1,0 +1,18 @@
+pkgbase = r-biglm
+	pkgdesc = Bounded Memory Linear and Generalized Linear Models
+	pkgver = 0.9.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=biglm
+	arch = any
+	license = GPL
+	checkdepends = r-rsqlite
+	checkdepends = r-rodbc
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-dbi
+	optdepends = r-rsqlite
+	optdepends = r-rodbc
+	source = https://cran.r-project.org/src/contrib/biglm_0.9-2.1.tar.gz
+	sha256sums = 6dcf3c9e7c3f56cdaac94cc0c427f606880467e1e753fe7ea45c10bc44eec947
+
+pkgname = r-biglm
