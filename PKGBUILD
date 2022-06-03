@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=mamba
 pkgname=micro${_base}-bin
-pkgver=0.23.3
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums=('041c0b844b92619c6a97166c171ab5291744c2014128d383365fdabb45a6c1e96cf5d0c6feef200799f4bed571c1489f6d340940d216ce5c5aa84b69058648ff')
+sha512sums=('82eae2399fdad476dff2891a728c73ad82a3fc6b72d1f9cc0eaf38d328dae1b368cba54393749f858ce34c1545323a3a69442f2efd57fe3b9dacdc04d4130983')
 
 check() {
   export PREFIX="${srcdir}"
