@@ -28,8 +28,8 @@ source=(figma-linux.desktop
         "https://github.com/Figma-linux/figma-linux/releases/download/v$_pkgver/$_appimage")
 
 package() {
-    install -Dm644 "$srcdir"/figma-linux.desktop "$pkgdir"/usr/share/applications/figma-linux.desktop
-    install -Dm644 "$srcdir"/256x256.png "$pkgdir"/usr/share/pixmaps/figma-linux.png
+    install -Dm644 "$srcdir/figma-linux.desktop" "$pkgdir/usr/share/applications/figma-linux.desktop"
+    install -Dm644 "$srcdir/256x256.png" "$pkgdir/usr/share/pixmaps/figma-linux.png"
 
     for size in 24 36 48 64 72 96 128 192 256 384 512; do
         install -Dm644 "$srcdir/${size}x${size}.png" \
