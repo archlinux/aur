@@ -1,7 +1,7 @@
 pkgbase = sox-dsd-git
 	pkgdesc = SoX Resampler library dsd branch
 	pkgver = 14.4.2.r69.g0be259ea
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sox.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = sox-dsd-git
 	optdepends = wavpack: for wavpack plugin
 	optdepends = libpulse: for pulse plugin
 	optdepends = opusfile: for opus plugin
-	provides = sox
+	provides = sox=14.4.2.r69.g0be259ea
 	conflicts = sox
 	source = sox-dsd-git::git+https://github.com/mansr/sox
 	sha256sums = SKIP
