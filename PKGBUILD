@@ -2,14 +2,14 @@
 _pkgname=mwcleric
 pkgname=python-mwcleric-git
 pkgdesc="General purpose tools for MediaWiki editing using Python"
-pkgver=0e94b5c
+pkgver=237876c
 pkgrel=1
 arch=('any')
 url="https://github.com/RheingoldRiver/mwcleric"
 license=('MIT')
 depends=('python' 'python-mwparserfromhell' 'python-pytz' 'python-mwclient')
 makedepends=('git' 'python-setuptools')
-source=('git://github.com/RheingoldRiver/mwcleric')
+source=('git+https://github.com/RheingoldRiver/mwcleric')
 md5sums=('SKIP')
 
 pkgver() {
