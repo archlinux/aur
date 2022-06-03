@@ -79,7 +79,7 @@ else
   pkgname="emacs-git"
 fi
 pkgver=29.0.50.156996
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -89,11 +89,13 @@ depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
 provides=('emacs')
 replaces=('emacs')
-#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git"
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
+        "nemacs")
 options=(!strip)
 install=emacs-git.install
-b2sums=('SKIP')
+b2sums=('SKIP'
+        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 ################################################################################
 
 ################################################################################
@@ -341,6 +343,10 @@ package() {
   cd "$srcdir/emacs-git/build"
 
   make DESTDIR="$pkgdir/" install
+
+  install -d -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin
+  
+  #if [[ ! $CLI == "YES" ]]; then
 
   # Install optional documentation formats
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
