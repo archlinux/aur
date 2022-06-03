@@ -1,6 +1,6 @@
 pkgbase = hx-git
 	pkgdesc = Futuristic take on hexdump (git)
-	pkgver = 0.4.1.r2.gfa69448
+	pkgver = 0.4.2.r2.g21b2304
 	pkgrel = 1
 	url = https://github.com/sitkevij/hex
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hx-git
 	makedepends = git
 	provides = hex
 	conflicts = hex
-	source = git+https://github.com/sitkevij/hex
+	source = hx-git::git+https://github.com/sitkevij/hex
 	sha512sums = SKIP
 
 pkgname = hx-git

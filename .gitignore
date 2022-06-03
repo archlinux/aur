@@ -1,5 +1,6 @@
+hx-git
 src
 pkg
 hx-git
-*pkg.tar.xz
+*.pkg.tar.*
 tags
