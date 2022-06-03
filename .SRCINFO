@@ -13,7 +13,7 @@ pkgbase = python-mwrogue-git
 	depends = python-mwclient
 	depends = python-mwcleric-git
 	depends = python-unidecode
-	source = git://github.com/RheingoldRiver/mwrogue
+	source = git+https://github.com/RheingoldRiver/mwrogue
 	md5sums = SKIP
 
 pkgname = python-mwrogue-git
