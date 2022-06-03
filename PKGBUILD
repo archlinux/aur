@@ -30,7 +30,7 @@ b2sums=('d3c6300b43085ed2ba8471a132b24f832b61c9ad2b25fcd407004ce9d3aa0d24060bb89
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_AUTOINSTALL='--skipdeps'                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC='/dev/null'
@@ -52,5 +52,5 @@ package() {
   cd "${_pkgtarname}"
   make install
 
-  find "$pkgdir" -name .packlist -o -name 'perllocal.pod' -delete
+  find "$pkgdir" -name '.packlist' -o -name 'perllocal.pod' -delete
 }
