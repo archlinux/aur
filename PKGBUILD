@@ -1,5 +1,5 @@
 pkgname='perl-extutils-parsexs-aur'
-pkgver='3.35'
+pkgver='3.44'
 pkgrel='1'
 pkgdesc="Converts Perl XS code into C code"
 arch=('any')
@@ -8,8 +8,8 @@ license=('PerlArtistic' 'GPL')
 depends=('perl')
 options=('!emptydirs')
 provides=(perl-extutils-parsexs=${pkgver})
-source=("http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-$pkgver.tar.gz")
-md5sums=('2ae41036d85e98e1369645724962dd16')
+source=("http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/ExtUtils-ParseXS-$pkgver.tar.gz")
+sha256sums=('77effdf31af36ef656f09aa7c15356d238dab6d1afaa7278ae15c1b6bcf86266')
 _src_dir='$srcdir/ExtUtils-ParseXS-$pkgver'
 
 build() {
