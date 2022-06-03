@@ -2,7 +2,7 @@
 
 _pkgname=f4pga
 pkgname="$_pkgname-git"
-pkgver=r765.42fc3f8
+pkgver=r781.5c805fa
 pkgrel=2
 pkgdesc="F4PGA tools"
 arch=(any)
@@ -15,8 +15,10 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "symbiflow-arch-defs-toolchain")
 source=(
 	"git+$url.git"
+	"0001-Use-actual-paths-instead-of-requiring-users-to-pass-.patch"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '977906a106fb3a0cb908317d025df979fd71c04bc0b5929e779dd6c7ad568ebd')
 
 pkgver() {
 	cd "$_pkgname"
@@ -27,7 +29,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 
-	find f4pga/wrappers/sh -type f | xargs sed -i -e 's#\$F4PGA_ENV_SHARE#/usr/share/symbiflow#g'
+	patch -p1 < "$srcdir/0001-Use-actual-paths-instead-of-requiring-users-to-pass-.patch"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = f4pga-git
 	pkgdesc = F4PGA tools
-	pkgver = r765.42fc3f8
+	pkgver = r781.5c805fa
 	pkgrel = 2
 	url = https://github.com/chipsalliance/f4pga
 	arch = any
@@ -13,10 +13,12 @@ pkgbase = f4pga-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
-	provides = f4pga=r765.42fc3f8
+	provides = f4pga=r781.5c805fa
 	conflicts = f4pga
 	conflicts = symbiflow-arch-defs-toolchain
 	source = git+https://github.com/chipsalliance/f4pga.git
+	source = 0001-Use-actual-paths-instead-of-requiring-users-to-pass-.patch
 	sha256sums = SKIP
+	sha256sums = 977906a106fb3a0cb908317d025df979fd71c04bc0b5929e779dd6c7ad568ebd
 
 pkgname = f4pga-git

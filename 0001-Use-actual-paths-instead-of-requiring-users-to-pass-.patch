@@ -1,0 +1,36 @@
+From d8e6e152c56feda578023e0578c465bdcf33f577 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Fri, 3 Jun 2022 19:03:04 +0200
+Subject: [PATCH] Use actual paths instead of requiring users to pass env
+ variables
+
+---
+ f4pga/wrappers/sh/__init__.py | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/f4pga/wrappers/sh/__init__.py b/f4pga/wrappers/sh/__init__.py
+index fc59c3e..f61b6bd 100644
+--- a/f4pga/wrappers/sh/__init__.py
++++ b/f4pga/wrappers/sh/__init__.py
+@@ -32,15 +32,9 @@ F4PGA_FAM = f4pga_environ.get('F4PGA_FAM', 'xc7')
+ isQuickLogic = F4PGA_FAM == 'eos-s3'
+ SH_SUBDIR = 'quicklogic' if isQuickLogic else F4PGA_FAM
+ 
+-F4PGA_INSTALL_DIR = f4pga_environ.get('F4PGA_INSTALL_DIR')
+-if F4PGA_INSTALL_DIR is None:
+-    raise(Exception("Required environment variable F4PGA_INSTALL_DIR is undefined!"))
+-F4PGA_INSTALL_DIR_PATH = Path(F4PGA_INSTALL_DIR)
+-
+-f4pga_environ['F4PGA_ENV_BIN'] = f4pga_environ.get('F4PGA_ENV_BIN', str(F4PGA_INSTALL_DIR_PATH / F4PGA_FAM / 'conda/bin'))
+-f4pga_environ['F4PGA_ENV_SHARE'] = f4pga_environ.get('F4PGA_ENV_SHARE', str(F4PGA_INSTALL_DIR_PATH / F4PGA_FAM / (
+-    'share' if isQuickLogic else 'install/share/symbiflow'
+-)))
++# PATCHED BY f4pga-git AUR PACKAGE
++f4pga_environ['F4PGA_ENV_BIN'] = '/usr/bin'  # TODO figure out where this is supposed to point (quicklogic only)
++f4pga_environ['F4PGA_ENV_SHARE'] = '/usr/share/symbiflow'
+ 
+ 
+ def run_sh(script):
+-- 
+2.36.1
+
