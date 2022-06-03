@@ -6,6 +6,7 @@ ES_HOME=/usr/share/elasticsearch
 
 # now set the classpath
 ES_CLASSPATH="$ES_HOME/lib/*"
+LAUNCHERS_CLASSPATH="$ES_CLASSPATH:$ES_HOME/lib/launchers/*"
 
 # now set the path to java
 ES_JAVA_HOME=${ES_JAVA_HOME:-/usr/lib/jvm/default-runtime}
@@ -42,7 +43,7 @@ else
 fi
 
 # check the Java version
-"$JAVA" "$XSHARE" -cp "$ES_CLASSPATH" org.elasticsearch.tools.java_version_checker.JavaVersionChecker
+"$JAVA" "$XSHARE" -cp "$LAUNCHERS_CLASSPATH" org.elasticsearch.tools.java_version_checker.JavaVersionChecker
 
 export HOSTNAME=$HOSTNAME
 
@@ -53,7 +54,7 @@ ES_DISTRIBUTION_TYPE=rpm
 ES_BUNDLED_JDK=false
 
 if [ -z "$ES_TMPDIR" ]; then
-  ES_TMPDIR=`"$JAVA" -cp "$ES_CLASSPATH" org.elasticsearch.tools.launchers.TempDirectory`
+  ES_TMPDIR=`"$JAVA" -cp "$LAUNCHERS_CLASSPATH" org.elasticsearch.tools.launchers.TempDirectory`
 fi
 
 cd "$ES_HOME"
