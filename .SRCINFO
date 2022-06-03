@@ -1,0 +1,17 @@
+pkgbase = r-mitools
+	pkgdesc = Tools for Multiple Imputation of Missing Data
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mitools
+	arch = any
+	license = GPL2
+	checkdepends = r-rodbc
+	checkdepends = r-foreign
+	depends = r
+	depends = r-dbi
+	optdepends = r-rodbc
+	optdepends = r-foreign
+	source = https://cran.r-project.org/src/contrib/mitools_2.4.tar.gz
+	sha256sums = f204f3774e29d79810f579f128de892539518f2cbe6ed237e08c8e7283155d30
+
+pkgname = r-mitools
