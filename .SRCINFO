@@ -1,0 +1,27 @@
+pkgbase = libvirt-vnc-viewer
+	pkgdesc = Libvirt VNC Viewer GUI application.
+	pkgver = 11.0
+	pkgrel = 1
+	url = https://gitlab.com/virt-viewer/virt-viewer
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = meson
+	depends = gtk-vnc
+	depends = libvirt-glib-vnc
+	depends = libvirt-vnc
+	conflicts = virt-viewer
+	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz
+	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz.asc
+	source = https://gitlab.com/Paper_/virt-viewer/-/commit/41cc016278e713d3db156761fce6437dff81a53a.patch
+	source = meson.build.patch
+	source = src-meson.build.patch
+	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
+	sha256sums = a43fa2325c4c1c77a5c8c98065ac30ef0511a21ac98e590f22340869bad9abd0
+	sha256sums = SKIP
+	sha256sums = 53a905df3678fdf1be238e3e5e27a8b60126d9238a5058da8476fdcb80ccaf71
+	sha256sums = 617b62b11b4357505e98661950d5b7bf16b67f9ae24b4899886ee155b016d822
+	sha256sums = 18f8eff99c1bc199ac60863bf6851ba8afe9b0e42d1a0f528507792c4a3a4338
+
+pkgname = libvirt-vnc-viewer
