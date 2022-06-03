@@ -1,7 +1,7 @@
 # Maintainer: Greg Hurrell <greg@hurrell.net>
 pkgname=clipper-git
 pkgver=2.0.0_20_g8984a2e
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipboard access for local and remote tmux sessions"
 arch=(x86_64)
 url="https://github.com/wincent/clipper"
@@ -17,7 +17,7 @@ source=(
   "service.patch"
 )
 sha256sums=('SKIP'
-            '283fa2d114a62fb09e14b08a50b94293d5ef2af1979c202ba6194526268ab3d3')
+            'd3bbb206593832a7f25bc37e957286e0769ef0714bc8d38ca3cbe2a1b2976aa3')
 
 prepare() {
   cd "$pkgname"
