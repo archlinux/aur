@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=5.1.r106749.g55e0b041b3
+pkgver=5.1.r107046.gc6364b711b
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -44,21 +44,26 @@ conflicts=('ffmpeg')
 _svt_hevc_ver='6e677e0017cb27bfdd62effcfd2a0dc83b48bb16'
 _svt_vp9_ver='41819e71950883655dcfa2a8b60cf0a75d50db74'
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        #"020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        #"030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        #"040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        #"010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        #"020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        #"030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         'LICENSE')
 sha256sums=('SKIP'
             #'778030cdd6a097c013e562d3be091280ff92fbd625e5336cd075fbee93589ed0'
             #'1cdedb9e8c2912986d6acf20dd9d8ef0f1e21995d9b1898120dc55b714b4de0d'
+            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
+            '0d6b53940a81ebaf4e6b1a2208a178eb8a824d6a3d8e863bf9c4c7e0060d88ec'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-    # add svt codec support for hevc and av1
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    #patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    #patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
 
 pkgver() { 
