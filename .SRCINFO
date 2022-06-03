@@ -1,6 +1,6 @@
 pkgbase = mod_dmext-git
 	pkgdesc = Module Data Model Extension
-	pkgver = 0.3.3.r0.g695d6c6
+	pkgver = 0.3.4.r0.g5201db6
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/mod-dmext.git
 	arch = x86_64

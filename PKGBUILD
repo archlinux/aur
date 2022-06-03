@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=mod_dmext-git
-pkgver=0.3.3.r0.g695d6c6
+pkgver=0.3.4.r0.g5201db6
 pkgrel=1
 pkgdesc="Module Data Model Extension"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
