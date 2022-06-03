@@ -1,10 +1,10 @@
 # Author of software: jedisct1
 # Maintainer of this package: Jan Ole Zabel <joz@spline.de>
-# Package contributor: mys_721tx
+# Package contributors: mys_721tx, dreieck
 pkgname=doh-proxy
 reponame=doh-server
 pkgver=0.9.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jedisct1/$reponame"
@@ -20,6 +20,10 @@ prepare() {
 }
 
 build() {
+	# Handle manually enabled LTO
+	RUSTFLAGS="${RUSTFLAGS/-C lto/}"
+	export RUSTFLAGS
+
 	cd "$reponame-$pkgver"
 	cargo build --release
 }
