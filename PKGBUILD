@@ -29,5 +29,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-    ln -s /usr/bin/org.nickvision.tagger "${pkgdir}/usr/bin/${$pkgname}"
+    ln -s /usr/bin/org.nickvision.tagger "${pkgdir}/usr/bin/${pkgname}"
 }
