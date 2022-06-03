@@ -11,7 +11,7 @@ pkgbase = python-mwcleric-git
 	depends = python-mwparserfromhell
 	depends = python-pytz
 	depends = python-mwclient
-	source = git://github.com/RheingoldRiver/mwcleric
+	source = git+https://github.com/RheingoldRiver/mwcleric
 	md5sums = SKIP
 
 pkgname = python-mwcleric-git
