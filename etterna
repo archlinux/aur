@@ -1,0 +1,18 @@
+#!/bin/sh
+
+[ ! -d ~/.etterna ] && mkdir ~/.etterna
+cp -ru "/opt/etterna/Default_Announcers/." ~/.etterna/Announcers
+cp -ru "/opt/etterna/Default_Assets/." ~/.etterna/Assets
+cp -ru "/opt/etterna/Default_BackgroundEffects/." ~/.etterna/BackgroundEffects
+cp -ru "/opt/etterna/Default_BackgroundTransitions/." ~/.etterna/BackgroundTransitions
+cp -ru "/opt/etterna/Default_BGAnimations/." ~/.etterna/BGAnimations
+cp -ru "/opt/etterna/Default_Data/." ~/.etterna/Data
+cp -ru "/opt/etterna/Default_NoteSkins/." ~/.etterna/NoteSkins
+cp -ru "/opt/etterna/Default_Scripts/." ~/.etterna/Scripts
+cp -ru "/opt/etterna/Default_Songs/." ~/.etterna/Songs
+cp -ru "/opt/etterna/Default_Themes/." ~/.etterna/Themes
+
+cp -u "/opt/etterna/crashpad_handler" ~/.etterna/crashpad_handler
+cp -u "/opt/etterna/Etterna" ~/.etterna/Etterna
+cd ~/.etterna
+./Etterna

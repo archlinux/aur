@@ -1,8 +1,8 @@
 # Maintainer: Mado <madoushi@tutanota.com>
 
 pkgname=etterna
-pkgver=0.70.4
-pkgrel=1
+pkgver=0.71.2
+pkgrel=0
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
@@ -15,61 +15,38 @@ conflicts=('etterna-git')
 install='etterna.install'
 changelog=
 source=(
+    "${pkgname}-${pkgver}-Linux.tar.gz::https://github.com/etternagame/${pkgname}/releases/download/v${pkgver}/Etterna-${pkgver}-Linux.tar.gz"
     "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame/${pkgname}/archive/v${pkgver}.tar.gz"
     "${pkgname}.desktop"
-    "cmake_warn_fix.patch"
+    "${pkgname}"
 )
-sha256sums=('c5ac4ceb6eb872ed3bbcc25ccd11b0e784d454f588df409c7c42ee79d8d32dae'
-            '652b94614a6371c227ccf5a034e7ea98e937a0f350723f50ea40d03724c799a4'
-            'c19f63ab90cdd0cc1c9be17a3994bf8fe61e142bff1c644945f6290bc41c8db4'
+sha256sums=('18b2db6cec8a9c241ce3f750f83fa312b2f3cb00f05d735e5142e39e156d9c47'
+            '560e9f7af1d719f95d50fc01847af849df3711783e2d51b1f8148442c2c99d85'
+            '476cba5bb1821fb1e76bae58b31f9a27641e85a22c38bf60b9b037895c114123'
+            '6487ffe86bd2de027d83e9eabbdc5c80b0dfe1b6c96df92b60ab0991d9e28c9f'
 )
-
-prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    sed -i CMakeLists.txt -e 's/\(set(OPENSSL_USE_STATIC_LIBS\) ON/\1 OFF/'
-    cd "$srcdir"
-    patch --forward --strip=1 --input="${srcdir}/cmake_warn_fix.patch"
-}
-
-build() {
-    cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
-    mkdir -p build
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -G 'Unix Makefiles' ..
-    make
-}
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
-    install -dm777 "${pkgdir}/opt/${pkgname}"
-    chmod +s "${pkgdir}/opt/${pkgname}"
-    install -dm777 "${pkgdir}/opt/${pkgname}/Cache"
+    install -dm755 "${pkgdir}/opt"
+    
+    cp -r -t "${pkgdir}/opt" "${srcdir}/Etterna-${pkgver}-Linux/Etterna" 
+    mv "${pkgdir}/opt/Etterna" "${pkgdir}/opt/${pkgname}"
 
-    install -Dm755 "Etterna" "${pkgdir}/opt/${pkgname}/Etterna"
-    
-    cp -r -t "${pkgdir}/opt/${pkgname}" \
-        "Assets/" \
-        "BackgroundEffects/" \
-        "Data/" \
-        "NoteSkins/" \
-        "Scripts/" \
-        "Songs/" \
-        "Themes/" \
-        "portable.ini"
-    
-    install -Dm644 "CMake/CPack/Windows/Install.ico" "$pkgdir/opt/${pkgname}/icon.ico" 
-
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    
     cd "${pkgdir}/opt/${pkgname}"
-    
-    chmod 777 -R \
-        "Assets/" \
-        "BackgroundEffects/" \
-        "Data/" \
-        "NoteSkins/" \
-        "Scripts/" \
-        "Songs/" \
-        "Themes/"
+    mv "Announcers" "Default_Announcers"
+    mv "Assets" "Default_Assets"
+    mv "BackgroundEffects" "Default_BackgroundEffects"
+    mv "BackgroundTransitions" "Default_BackgroundTransitions"
+    mv "BGAnimations" "Default_BGAnimations"
+    mv "Data" "Default_Data"
+    mv "NoteSkins" "Default_NoteSkins"
+    mv "Scripts" "Default_Scripts"
+    mv "Songs" "Default_Songs"
+    mv "Themes" "Default_Themes"
+
+    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/Etterna-${pkgver}-Linux/Etterna/Themes/_fallback/Graphics/Common window icon.png" "$pkgdir/opt/${pkgname}/icon.png" 
+
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

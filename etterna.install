@@ -1,7 +1,7 @@
 function post_upgrade {
-    test -d ~/.stepmania-5.0/Save && cp -ar ~/.stepmania-5.0/Save/ /opt/etterna/
-#rm -rf /opt/etterna/Cache
+    echo "All game data will be stored in ~/.etterna, do not modify anything in /opt/etterna"
 }
+
 function post_remove {
-    echo "Etterna has been uninstalled - all data in /opt/etterna is gone forever!"
+    echo "Any game data copied to ~/.etterna will remain behind"
 }
