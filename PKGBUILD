@@ -24,8 +24,8 @@ checkdepends=(
   'perl-test-warnings'
   'perl-test-exception'
 )
-_pkgtar="${_distname}-v${pkgver}"
-source=("https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtar}.tar.gz")
+_pkgtarname="${_distname}-v${pkgver}"
+source=("https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtarname}.tar.gz")
 b2sums=('d3c6300b43085ed2ba8471a132b24f832b61c9ad2b25fcd407004ce9d3aa0d24060bb89d1c8958c3f705cfed737629bfb6e24ff06730d0cf6fa37cb4a9f0fbf8')
 
 build() {
@@ -35,21 +35,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC='/dev/null'
 
-    cd "${_pkgtar}"
+    cd "${_pkgtarname}"
     /usr/bin/perl 'Makefile.PL'
     make
   )
 }
 
 check() {
-  cd "${_pkgtar}"
+  cd "${_pkgtarname}"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${_pkgtar}"
+  cd "${_pkgtarname}"
   make install
 
   find "$pkgdir" -name .packlist -o -name 'perllocal.pod' -delete
