@@ -4,24 +4,30 @@
 pkgbase=flatbuffers-git
 _gitbase=flatbuffers
 pkgname=(flatbuffers-git python-flatbuffers-git)
-pkgver=1856
-pkgrel=1
+pkgver=2.0.6.r107.g967df08b
+pkgrel=2
 pkgdesc='An efficient cross platform serialization library for C++, with support for Java, C# and Go'
 arch=(x86_64)
 url='https://google.github.io/flatbuffers/'
 license=(Apache)
 depends=(gcc-libs)
-makedepends=(cmake python-setuptools)
-source=(git+https://github.com/google/flatbuffers)
-sha256sums=('SKIP')
+makedepends=(cmake git python-setuptools)
+source=(git+https://github.com/google/flatbuffers remove-nested-verifier-test.patch)
+sha256sums=(
+    'SKIP'
+    '1c9b01f82312e3974acf6551e90cca9d4bd3e06b0877f1ad223a95163e9a3a26'
+)
 
 pkgver() {
   cd ${srcdir}/${_gitbase}
-  git rev-list --count HEAD
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   sed -i 's/-Werror=/-W/g;s/-Werror//g' $_gitbase/CMakeLists.txt
+
+  # patch necessary for https://github.com/google/flatbuffers/issues/7336
+  patch -p1 --input="${srcdir}/remove-nested-verifier-test.patch" --directory="$_gitbase"
 }
 
 build() {
@@ -41,12 +47,15 @@ build() {
 check() {
   cd $_gitbase
   make test
-  ./tests/PythonTest.sh
+
+  # python tests currently test multiple interpreters/benchmarks
+  # and we don't need that
+  # ./tests/PythonTest.sh
 }
 
 package_flatbuffers-git() {
   conflicts=('flatbuffers')
-  provides=('flatbuffers')
+  provides=("flatbuffers=$pkgver")
   cd $_gitbase
   make DESTDIR="$pkgdir" install
   install -Dm755 flatc -t "$pkgdir"/usr/bin
@@ -54,9 +63,10 @@ package_flatbuffers-git() {
 
 package_python-flatbuffers-git() {
   pkgdesc='An efficient cross platform serialization library for Python'
+  arch=(any)
   conflicts=('python-flatbuffers')
   depends=(python)
-  provides=('python-flatbuffers')
+  provides=("python-flatbuffers=$pkgver")
 
   cd $_gitbase/python
   VERSION=$pkgver python setup.py install --root="$pkgdir" --optimize=1 --skip-build
