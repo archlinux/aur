@@ -11,7 +11,7 @@ makedepends=('go' 'scdoc')
 provides=('prunef')
 conflicts=('prunef')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~apreiml/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('27c11e895082821e85bf353d46e9afb9bf1126ea1b78291e9fc263275f3a791e')
+sha256sums=('26211ec89deef5ee33562966c843a35aeee38c053691e427545885f21dd0d660')
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
