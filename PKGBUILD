@@ -14,12 +14,16 @@
 #
 
 #
-_pkg_name=codelite
-_pkg_ver=16.0.0-1
-#_commit=70ff062252ca69617fd227472a6492720dc19cfd
+_pkg_name="codelite"
+_pkg_ver="16.1.0-1"
+#_commit=52c724d1132d78ea44894bfe2eaca44f38a9bd85
+
+
+_ctags_pkg_name="eranif-ctags"
+_ctags_pkg_ident="${_ctags_pkg_name}-52c724d"
 
 # pkg
-pkgname=${_pkg_name}-unstable
+pkgname="${_pkg_name}-unstable"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
@@ -27,7 +31,8 @@ pkgrel=1
 
 
 # version
-_pkg_ident="${_pkg_ver}"
+_pkg_ver="${pkgver}"
+_pkg_ident="${_pkg_name}-${pkgver}"
 _pkg_name_ver="${_pkg_name}-${_pkg_ver}"
 #_pkg_name_ver="${_pkg_name}-${_pkg_ver//_/-}"
 
@@ -42,7 +47,7 @@ arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk3'
+depends=('wxgtk3-dev-opt'
           'webkit2gtk'
           'clang' 'lldb'
           'libedit'
@@ -67,11 +72,13 @@ conflicts=('codelite')
 
 
 source=(
-    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
+    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ver}.tar.gz"
+    "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/52c724d1132d78ea44894bfe2eaca44f38a9bd85"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-sha256sums=('96c6c3c0889ed05a176a569e9fb697a0f82c877efd49eaf1700a476b65fb091d'
+sha256sums=('97adfada8a3ba6f3aaf9baba30f741ef4d380f8af1c2ce0693732f38b4a9e0f5'
+            '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -96,7 +103,10 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  cd "${srcdir}/${_pkg_name_ver}"
+  # eranif-ctags-52c724d
+  cd "${srcdir}/${_pkg_ident}"
+  rmdir ctags
+  ln -s ../eranif-ctags-52c724d ctags
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
 }
 
@@ -106,7 +116,7 @@ prepare()
 #
 build()
 {
-cd "${srcdir}/${_pkg_name_ver}"
+cd "${srcdir}/${_pkg_ident}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
@@ -114,7 +124,8 @@ export CXXFLAGS
 # cmake find_package() will try env var WX_CONFIG as wx-config tool path before checking its builtin hardcoded naming conbinations for wx-config tool
 #WX_CONFIG="wx-config"
 #WX_CONFIG="wx-config-gtk2"
-WX_CONFIG="wx-config-gtk3"
+#WX_CONFIG="wx-config-gtk3"
+WX_CONFIG="/opt/wxgtk-dev/bin/wx-config"
 export WX_CONFIG
 
 mkdir -p "${BUILD_DIR}"
@@ -130,7 +141,7 @@ make -C "${BUILD_DIR}"
 #
 package()
 {
-cd "${srcdir}/${_pkg_name_ver}"
+cd "${srcdir}/${_pkg_ident}"
 
 make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
 install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
@@ -138,8 +149,8 @@ install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/lice
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 
 # universal-ctags experiment
-mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
-ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
+#mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
+#ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
 
 }
 
