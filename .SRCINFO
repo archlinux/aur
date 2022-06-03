@@ -1,0 +1,12 @@
+pkgbase = r-compquadform
+	pkgdesc = Distribution Function of Quadratic Forms in Normal Variables
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=CompQuadForm
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/CompQuadForm_1.4.3.tar.gz
+	sha256sums = 042fc56c800dd8f5f47a017e2efa832caf74f0602824abf7099898d9708660c4
+
+pkgname = r-compquadform
