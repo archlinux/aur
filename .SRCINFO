@@ -1,6 +1,6 @@
 pkgbase = litecoin-daemon
 	pkgdesc = Peer-to-peer digital currency (includes litecoind and litecoin-cli)
-	pkgver = 0.21.2
+	pkgver = 0.21.2.1
 	pkgrel = 1
 	url = https://www.litecoin.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = litecoin-daemon
 	depends = openssl
 	depends = sqlite
 	depends = zeromq
-	source = litecoin-daemon-0.21.2.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v0.21.2.tar.gz
+	source = litecoin-daemon-0.21.2.1.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v0.21.2.1.tar.gz
 	source = Fix-build-with-Boost-1.77.0.patch
-	sha256sums = d6c00ae33d9ec3a5b5afefa6b4bbdd60288ab48ca8e3917d713a3618fba23392
+	sha256sums = 533516ebbf5f4efa5b2a789cb93ae9805172c1f547d6cd77c1e8f2bd0e89e00c
 	sha256sums = 0eb6bb4bb1c82560b063da9e0c2d0404df90637ab13b5db4a75f7959e29bfa44
 
 pkgname = litecoin-daemon
