@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=hackrf-git
-pkgver=v2021.03.1.r190.g8feda094
+pkgver=2021.03.1.r192.gdfadf6a3
 pkgrel=1
 pkgdesc="Driver for HackRF, allowing general purpose software defined radio (SDR)."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$pkgname"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
