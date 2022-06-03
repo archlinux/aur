@@ -10,7 +10,6 @@ pkgbase = prunef
 	provides = prunef
 	conflicts = prunef
 	source = prunef-0.2.0.tar.gz::https://git.sr.ht/~apreiml/prunef/archive/v0.2.0.tar.gz
-	sha256sums = 27c11e895082821e85bf353d46e9afb9bf1126ea1b78291e9fc263275f3a791e
+	sha256sums = 26211ec89deef5ee33562966c843a35aeee38c053691e427545885f21dd0d660
 
 pkgname = prunef
-
