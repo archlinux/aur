@@ -28,7 +28,7 @@ elif [[ $CARCH == 'x86_64' ]]; then
 	_bits=64
 fi
 
-prepare() {
+build() {
 	cd "${srcdir}"/Xilinx_ISE_DS_Lin_14.7_1015_1
 
 	# Generate a sample batch install file

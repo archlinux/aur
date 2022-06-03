@@ -24,4 +24,3 @@ pkgbase = xilinx-ise
 	sha256sums_x86_64 = 74b1bf6d07520314dec833a777ebc47a166992c3aeb771b20dca9562288da47a
 
 pkgname = xilinx-ise
-
