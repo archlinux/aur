@@ -1,0 +1,8 @@
+if [ "$(id -u)" != 0 ]; then
+    echo "####################################"
+    echo "You need to run this command as root"
+    echo "####################################"
+    exit 1
+fi
+
+pacman -U 'https://gitlab.com/Tomkoid/tomkoid-repo/x86_64/cairo-1.16.0-2-x86_64.pkg.tar.xz'
