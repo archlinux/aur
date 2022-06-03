@@ -23,21 +23,21 @@ _bldtype=Release
 # https://osdn.net/users/utuhiro/pf/utuhiro/files/
 #*************************************************************
 
-_mozcver=2.28.4715.102
-_utdicdate=20220423
+_mozcver=2.28.4740.102
+_utdicdate=20220525
 _utdicver=1
 
 pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
-pkgver=2.28.4715.102_20220423_2.26.4660.102.r106.g4c5d516f
+pkgver=2.28.4740.102_20220525_2.26.4660.102.r163.g73f28998
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
 makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel' 'python-six')
-source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/38/38352/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/google/protobuf.git" "git+https://github.com/abseil/abseil-cpp.git" "android-fix.patch")
+source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/38/38446/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/protocolbuffers/protobuf" "git+https://github.com/abseil/abseil-cpp.git" "android-fix.patch")
 sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
@@ -98,7 +98,7 @@ build() {
 
   echo "Starting make..."
 
-  bazel --output_user_root="$srcdir/bazel-cache" build package --config oss_linux -c opt
+  bazel --output_user_root="$srcdir/bazel-cache" build package --config oss_linux -c opt --verbose_failures
 
   if [[ "$_ibus_mozc" == "yes" ]]; then
       sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
