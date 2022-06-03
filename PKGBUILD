@@ -1,6 +1,6 @@
 # Maintainer: Dicebot <public@dicebot.lv>
 pkgname=dstep
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Automatic C header to D module translator"
 arch=('x86_64')
