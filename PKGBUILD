@@ -5,14 +5,15 @@
 pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
-pkgver=0.0.0.r29.e1d4b12
+pkgver=0.0.0.r31.e9b06f4
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon (git version)"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=(UKSMD-BUILTIN procps-ng libcap-ng)
-makedepends=(git)
+depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
+makedepends=(meson)
+makedepends+=(git)
 source=(${_reponame}::git+${url}.git)
 sha256sums=('SKIP')
 conflicts=("${_reponame}")
@@ -26,13 +27,13 @@ pkgver() {
 build() {
 	cd "${_reponame}"
 
-	make
+	arch-meson . build
+
+	meson compile -C build
 }
 
 package() {
 	cd "${_reponame}"
 
-	make DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${_reponame}.service
+	meson install -C build --destdir "${pkgdir}"
 }
