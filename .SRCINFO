@@ -1,11 +1,11 @@
 pkgbase = tinyionice
 	pkgdesc = Tiny I/O Nice, a drop-in replacement for ionice
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/xyproto/tinyionice
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/xyproto/tinyionice/releases/download/v1.0.1/tinyionice-1.0.1.tar.gz
-	b2sums = SKIP
+	source = https://github.com/xyproto/tinyionice/releases/download/v1.0.2/tinyionice-1.0.2.tar.gz
+	b2sums = 7d7a6963c39d6973da2f07018153e9b5e5216ed698ba8ce309ac3f8e816e82fd7a94aa2398277ed9501f04b9e43d6e9477cf9754335e7f350b53fb4f7946b3d1
 
 pkgname = tinyionice
