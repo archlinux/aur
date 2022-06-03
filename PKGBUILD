@@ -2,10 +2,10 @@
 
 _pkgname=vscodium
 _electron=electron17
-_nodejs='16.13.0'
+_nodejs='16.14.2'
 
 pkgname=${_pkgname}-electron
-pkgver=1.66.2
+pkgver=1.67.2
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,7 +24,7 @@ source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
 		"${_pkgname}-uri-handler.desktop")
 sha256sums=('SKIP'
             'SKIP'
-            '6e4add6d548e71ec488c5262bb797c53c28b214338fa37d22f890094751c4b6b'
+            '617d3fa88b6daa988d65f37c07d77673dd1dc3a6174db177ffa4f8d81e40503a'
             '43eab45670ca1d447eaa409932a54ee11a5f4a81fa859f459d0758053934c75f'
             '7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8'
             '204ed8761e4f57e095833aee800f5fe662667aa06c2a213ef8b733929c639237'
