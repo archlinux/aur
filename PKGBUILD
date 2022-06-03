@@ -1,10 +1,10 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
-#
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux-python2
-pkgver=3.0
+pkgver=3.3
 pkgrel=1
 pkgdesc="SELinux library and simple utilities (python 2.x bindings)"
 arch=('i686' 'x86_64' 'armv6h')
@@ -16,9 +16,9 @@ depends=('libsepol>=3.0' 'pcre')
 optdepends=('python: python bindings'
 	    'python2: python 2.X bindings'
             'ruby: ruby bindings')
-source=("https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-${pkgver}.tar.gz"
+source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/libselinux-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433'
+sha256sums=('acfdee27633d2496508c28727c3d41d3748076f66d42fccde2e6b9f3463a7057'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
