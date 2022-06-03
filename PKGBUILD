@@ -14,7 +14,7 @@ conflicts=("radio-cli")
 depends=("mpv")
 optdepends=("youtube-dl")
 source=("https://github.com/margual56/radio-cli/releases/download/v$pkgver/radio-cli-$pkgver-x86_64.tar.gz")
-sha256sums=("177c60bd36fb479faa30ca8e7cfe6cf207fae730a2b165d9bb3ed73d954bd129")
+sha256sums=("f146308906e148ef73447e2b05eece321bed30c1883955d6e487b0ccb6598192")
 
 package() {
     install -Dm755 radio-cli -t "$pkgdir/usr/bin"
