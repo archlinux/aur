@@ -35,10 +35,6 @@ JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
-AOT=              # Precompile all included elisp. It takes a long time.
-                  # You still need to enable on-demand compilation
-                  # for your own packages.
-
 CLI=              # CLI only binary.
 
 GPM=              # Mouse support in Linux console using gpmd.
@@ -319,11 +315,8 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
-  if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
-    make NATIVE_FULL_AOT=1
-  else
-    make
-  fi
+
+  make
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
