@@ -1,7 +1,7 @@
 pkgbase = q5go-git
 	pkgdesc = Everyday SGF editor for Go players
-	pkgver = 20220508.b1b78a7
-	pkgrel = 2
+	pkgver = 20220603.077f0c1
+	pkgrel = 1
 	url = https://github.com/bernds/q5go
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = q5go-git
 	provides = q5go
 	conflicts = q5go
 	source = git+https://github.com/bernds/q5go.git
-	source = https://github.com/bernds/q5go/pull/66/commits/64c04f76ea94a453d66d80ce903c9988b70b2c9f.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = q5go-git
