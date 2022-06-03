@@ -3,12 +3,12 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-test-compile'
-_modulename='Test-Compile'
+_distname='Test-Compile'
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="Check whether Perl files compile correctly."
 arch=('any')
-url="https://metacpan.org/release/${_modulename}"
+url="https://metacpan.org/release/${_distname}"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=(
@@ -24,7 +24,7 @@ checkdepends=(
   'perl-test-warnings'
   'perl-test-exception'
 )
-_pkgtar="${_modulename}-v${pkgver}"
+_pkgtar="${_distname}-v${pkgver}"
 source=("https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtar}.tar.gz")
 b2sums=('d3c6300b43085ed2ba8471a132b24f832b61c9ad2b25fcd407004ce9d3aa0d24060bb89d1c8958c3f705cfed737629bfb6e24ff06730d0cf6fa37cb4a9f0fbf8')
 
