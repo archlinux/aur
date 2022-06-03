@@ -2,19 +2,18 @@
 
 pkgname=dvd-slideshow
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts for creating slideshow DVDs with menus, audio, and fancy effects."
 arch=('any')
 url="http://dvd-slideshow.sourceforge.net"
 license=('GPL')
-depends=('dvdauthor>0.6.11' 'imagemagick>5.5.4' 'sox>14' 'ffmpeg>0.4.8' 'mjpegtools' 'cdrtools' 'bc' 'jhead')
+depends=('dvdauthor>0.6.11' 'imagemagick>5.5.4' 'sox>14' 'ffmpeg' 'mjpegtools' 'cdrtools' 'bc' 'jhead')
 optdepends=('lame: MP3 audio support'
             'vorbis-tools: Ogg audio support'
             'faad2: m4a audio support'
             'vcdimager: vcd/svcd .cue, .bin support'
             'toolame: Faster mpeg2 audio encoding'
             'graphicsmagick: Alternative to imagemagick'
-            'libav-no-libs: avconv alternative to ffmpeg'
             'perl-image-exiftool: Alternative to jhead'
             'gsfonts: URW fonts')
 install="$pkgname.install"

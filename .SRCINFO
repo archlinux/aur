@@ -1,7 +1,7 @@
 pkgbase = dvd-slideshow
 	pkgdesc = Scripts for creating slideshow DVDs with menus, audio, and fancy effects.
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dvd-slideshow.sourceforge.net
 	install = dvd-slideshow.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dvd-slideshow
 	depends = dvdauthor>0.6.11
 	depends = imagemagick>5.5.4
 	depends = sox>14
-	depends = ffmpeg>0.4.8
+	depends = ffmpeg
 	depends = mjpegtools
 	depends = cdrtools
 	depends = bc
@@ -20,7 +20,6 @@ pkgbase = dvd-slideshow
 	optdepends = vcdimager: vcd/svcd .cue, .bin support
 	optdepends = toolame: Faster mpeg2 audio encoding
 	optdepends = graphicsmagick: Alternative to imagemagick
-	optdepends = libav-no-libs: avconv alternative to ffmpeg
 	optdepends = perl-image-exiftool: Alternative to jhead
 	optdepends = gsfonts: URW fonts
 	source = http://downloads.sourceforge.net/dvd-slideshow/dvd-slideshow-0.8.6-1.tar.gz
@@ -31,4 +30,3 @@ pkgbase = dvd-slideshow
 	sha1sums = ae1bf3490fdc78a8e00c0b5c86bdeaaf3cc09a2d
 
 pkgname = dvd-slideshow
-
