@@ -1,12 +1,12 @@
 pkgbase = r-dichromat
-	pkgdesc = Color Schemes for Dichromats
-	pkgver = 2.0.0
+	pkgdesc = Collapse red-green or green-blue distinctions to simulate the effects of different types of color-blindness
+	pkgver = 2.0.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dichromat
 	arch = any
 	license = GPL2
 	depends = r>=2.10
-	source = https://cran.r-project.org/src/contrib/dichromat_2.0-0.tar.gz
-	sha256sums = 31151eaf36f70bdc1172da5ff5088ee51cc0a3db4ead59c7c38c25316d580dd1
+	source = https://cran.r-project.org/src/contrib/dichromat_2.0-0.1.tar.gz
+	sha256sums = a10578e9ad8a581bd8fe0d8a8370051f3cdcf12c7d282f3af2a18dacda566081
 
 pkgname = r-dichromat
