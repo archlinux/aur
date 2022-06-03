@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Marchioro <marciozgaming@gmail.com>
 pkgname=apple-fonts
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Apple San Francisco, New York fonts, directly from Apple official source"
 arch=(x86_64)
@@ -37,6 +37,14 @@ package() {
     mv Library/Fonts/* $pkgdir/fontfiles
     cd ..
 
+    curl -O https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg
+    7z x SF-Arabic.dmg
+    cd SFArabicFonts
+    7z x 'SF Arabic Fonts.pkg'
+    7z x 'Payload~'
+    mv Library/Fonts/* $pkgdir/fontfiles
+    cd ..
+
     curl -O https://devimages-cdn.apple.com/design/resources/download/NY.dmg
     7z x NY.dmg
     cd NYFonts
@@ -45,7 +53,7 @@ package() {
     mv Library/Fonts/* $pkgdir/fontfiles
     cd ..
 
-    rm -r *.dmg NYFonts SFCompactFonts SFProFonts SFMonoFonts
+    rm -r *.dmg NYFonts SFCompactFonts SFProFonts SFMonoFonts SFArabicFonts
 
     mkdir -p $pkgdir/usr/share/fonts/OTF $pkgdir/usr/share/fonts/TTF
     mv $pkgdir/fontfiles/*.otf $pkgdir/usr/share/fonts/OTF
