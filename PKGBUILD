@@ -1,4 +1,5 @@
 # Maintainer: tjhexf <jhonatan@justin.com.br>
+# Contributor: Eden Rose <eenov1988@gmail.com>
 # Contributor: M Novick <mnovick1988@gmail.com>
 # Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: MrBougo <bougospam at gmail dot com>
@@ -28,7 +29,6 @@ depends=(
 makedepends=('git' 'p7zip' 'zip' 'unzip' 'sdl2' 'mesa' 'imagemagick')
 optdepends=(
 	'libtheora: recording in ogv'
-	'xonotic-desktop: shortcuts for desktop environments'
 )
 provides=('xonotic' 'xonotic-glx' 'xonotic-sdl' 'xonotic-dedicated' 'xonotic-icons' 'xonotic-tools' 'xonotic-git' 'nexuiz-compatible.pk3')
 conflicts=('xonotic' 'xonotic-glx' 'xonotic-sdl' 'xonotic-dedicated' 'xonotic-icons' 'xonotic-tools' 'xonotic-git')
@@ -321,8 +321,9 @@ package() {
  	
  	mkdir -p "$pkgdir"/usr/share/icons
  	install -m644 "$srcdir"/$_gitname/misc/logos/xonotic_icon.svg "$pkgdir"/usr/share/icons
-# 	install -m755 xonotic-glx.desktop ### Upstream doesnt want .desktop files :(
-# 	install -m755 xonotic-sdl.desktop ### Upstream doesnt want .desktop files :(
-# 	install -m755 xonotic-dedicated.desktop ### Upstream doesnt want .desktop files :(
+ 	install -m755 xonotic-glx.desktop "$pkgdir"/usr/share/applications
+ 	install -m755 xonotic-sdl.desktop "$pkgdir"/usr/share/applications
+ 	install -m755 xonotic-dedicated.desktop "$pkgdir"/usr/share/applications
+	#readded these, sorry upstream! doubt anyone cares tho, since this package is basically dead.
 #        msg "NOT WRITTEN YET!"
 }

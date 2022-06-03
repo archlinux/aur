@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Xonotic-sdl
+Categories=Qt;KDE;Game;Xonotic;
+Exec=xonotic-sdl
+Icon=xonotic_icon.svg
+Terminal=false
+StartupNotify=false 

@@ -29,7 +29,6 @@ pkgbase = xonotic-git
 	depends = curl
 	depends = unzip
 	optdepends = libtheora: recording in ogv
-	optdepends = xonotic-desktop: shortcuts for desktop environments
 	provides = xonotic
 	provides = xonotic-glx
 	provides = xonotic-sdl
