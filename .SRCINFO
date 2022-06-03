@@ -1,0 +1,14 @@
+pkgbase = melwalletd
+	pkgdesc = Wallet daemon for Themelio
+	pkgver = 0.3.15
+	pkgrel = 1
+	url = https://themelio.org/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	source = melwalletd-0.3.15.tar.gz::https://github.com/themeliolabs/melwalletd/archive/refs/tags/v0.3.15.tar.gz
+	sha512sums = debc5df249415188c33afeee8c45cd1015ee4f28b8e95bbaf1b046cf76112f21fc4566f7e8ea5e9d1001bba1e06a57459f193196a8fc6a954112e2946c37f654
+
+pkgname = melwalletd
