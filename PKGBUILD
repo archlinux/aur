@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=src
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'rcs')
 optdepends=('rcs-fast-import: required for src fast-import'
             'sccs: alternative backend')
 source=("https://gitlab.com/esr/src/-/archive/$pkgver/src-$pkgver.tar.gz")
-b2sums=('9d40cd7c765ebeb127d20a82d048d2484e61766ed5ed326470ff238b0969ba1389f8a05c37a1fa39097041f8cc56de77a7ed1e2b3cd68fb2a41d4a7e1b12c129')
+b2sums=('3ba27ca2873bf09947770c8bcb8ce4b807f3cded24195988cf73074a725fbcb881636e7a31bef560f2440b6c8951e68cd08c2400f2675e6936310d9063b08019')
 
 package() {
   cd "$pkgname-$pkgver"
