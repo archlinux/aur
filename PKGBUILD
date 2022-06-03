@@ -2,8 +2,8 @@
 
 pkgname='chs-git'
 _pkgname='chs'
-pkgver='2.2.0.r4.gc3eda7c'
-pkgrel=2
+pkgver=3.0.0.r3.gf9c7b1b
+pkgrel=1
 pkgdesc='Play chess against the Stockfish engine in your terminal.'
 url='https://github.com/nickzuber/chs'
 depends=('python' 'python-chess' 'python-editdistance')
@@ -13,7 +13,7 @@ provides=("chs")
 conflicts=("chs")
 license=('MIT')
 arch=('any')
-source=("${_pkgname}::git://github.com/nickzuber/chs")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
