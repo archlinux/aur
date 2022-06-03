@@ -7,12 +7,11 @@
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
 license=('GPL3')
-install=tomb.install
 source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
         "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.sha"
         "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc")
