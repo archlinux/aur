@@ -5,7 +5,7 @@
 pkgname='perl-pod-eventual'
 _distname='Pod-Eventual'
 pkgver=0.094002
-pkgrel=1
+pkgrel=2
 pkgdesc='Read a POD document as a series of trivial events'
 arch=('any')
 url="https://metacpan.org/dist/${_distname}"
@@ -20,8 +20,9 @@ makedepends=(
   'perl-file-path'
 )
 checkdepends=(
-  'perl-perlio-utf8-strict'
+  'perl-cpan-meta>=2.120900'
   'perl-test-deep'
+  'perl-test-simple>=0.96'
 )
 options=('!emptydirs')
 _pkgtarname="${_distname}-${pkgver}"
