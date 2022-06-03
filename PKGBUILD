@@ -14,23 +14,20 @@ sha256sums=("SKIP"
             "SKIP")
 
 prepare() {
-	mkdir -p build
-    cd $srcdir/NickvisionApplication
+	cd "$srcdir/NickvisionApplication"
     git submodule init
     git config submodule.GCR_CMake.url "${srcdir}/GCR_CMake"
     git submodule update
 }
 
 build() {
-	cd build
-    cmake $srcdir/NickvisionApplication \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-    make
+	cmake -B build -S NickvisionApplication \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE="Release"
+    cmake --build build
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir/" install
-    sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
+	DESTDIR="$pkgdir" cmake --install build
+    ln -s /usr/bin/org.nickvision.tagger "${pkgdir}/usr/bin/${$pkgname}"
 }
