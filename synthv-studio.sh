@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-SVPACKAGE="/opt/synthv-studio/dist.zip"
+INFOPATH="/opt/synthv-studio/info.txt"
 SVPREFIX="$HOME/.synthv-studio"
 
 if [ ! -d "$SVPREFIX" ]; then
-    mkdir "$SVPREFIX"
+    xdg-open "$INFOPATH"
+    exit 0
 fi
-cd "$SVPREFIX"
-if [ ! -f "./_installed" ]; then
-    echo "Installing..."
-    SVTYPE=`bsdtar -tf "$SVPACKAGE" | head -1`
-    bsdtar -xf "$SVPACKAGE"
-    mv "./$SVTYPE/"* "."
-    rmdir "./$SVTYPE"
-    touch "./_installed"
-fi
-exec "./synthv-studio"
+exec "$SVPREFIX/synthv-studio"

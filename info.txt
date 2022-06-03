@@ -1,0 +1,13 @@
+OwO Hello!
+
+Please read and do the following to complete the initialization of Synthesizer V Studio:
+
+1. Please open https://auth.dreamtonics.com/store/download and input your activation code to download "Synthesizer V Studio Pro"
+   or open https://dreamtonics.com/en/synthesizerv and download "Synthesizer V Studio Basic"
+
+2. Unzip the package you downloaded and put its only subdirectory (generally the "Synthesizer V Studio Pro" or "Synthesizer V Studio Basic") to your $HOME
+   and rename the directory to ".synthv-studio"
+
+3. Relaunch and play!
+
+When you need to update the software, please unzip the downloaded package and merge (not overwrite, overwriting will break your license) it with $HOME/.synthv-studio
