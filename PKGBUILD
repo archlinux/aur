@@ -1,7 +1,7 @@
 # Maintainer: CaptainYukinoshitaHachiman <CaptainYukinoshitaHachiman at ProtonMail dot com>
 pkgname=mellis
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Official GUI wallet for Themelio"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://themelio.org/"
