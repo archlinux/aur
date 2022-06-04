@@ -3,17 +3,17 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-perl
-pkgver=1.045
-pkgrel=8
+pkgver=1.048
+pkgrel=1
 pkgdesc="Perl bindings for libgnome"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="http://gtk2-perl.sourceforge.net/"
+url="https://metacpan.org/dist/Gnome2"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
 depends=('gnomecanvas-perl' 'gnome-vfs-perl' 'libgnomeui' 'perl')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gnome2-${pkgver}.tar.gz)
-md5sums=('95c06139f9d950df17c9cb0340c74168')
+source=(https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gnome2-${pkgver}.tar.gz)
+md5sums=('38408e8195e86b1dda0704a0054ae5a8')
 
 build() {
   cd Gnome2-$pkgver
