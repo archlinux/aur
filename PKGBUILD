@@ -2,7 +2,7 @@
 # Contributor: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 _pkgname=arc-kde
 pkgname=$_pkgname-git
-pkgver=20180614.r11.g04873ca
+pkgver=20220603.r3.g1de56a8
 pkgrel=1
 epoch=2
 pkgdesc="Arc theme for KDE Plasma 5"
@@ -21,7 +21,6 @@ optdepends=(
 )
 provides=("$_pkgname" 'kvantum-theme-arc')
 conflicts=("$_pkgname" 'kvantum-theme-arc')
-options=('!strip')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
