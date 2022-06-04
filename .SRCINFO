@@ -1,6 +1,6 @@
 pkgbase = bubblemail-git
 	pkgdesc = New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts
-	pkgver = 1.7.1.r1.g561b1f2
+	pkgver = 1.7.1.r25.gf919b41
 	pkgrel = 1
 	url = https://framagit.org/razer/bubblemail/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = bubblemail-git
 	depends = python
 	depends = python-dbus
 	depends = python-gobject
-	depends = python-requests
+	depends = python-pysocks
 	depends = python-pyxdg
 	depends = libsecret
 	depends = gnome-keyring

@@ -1,6 +1,6 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=bubblemail-git
-pkgver=1.7.1.r1.g561b1f2
+pkgver=1.7.1.r25.gf919b41
 pkgrel=1
 pkgdesc="New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts"
 pkgbasename=bubblemail
@@ -10,7 +10,7 @@ arch=(any)
 url="https://framagit.org/razer/bubblemail/"
 license=('GPL2')
 makedepends=('python-setuptools' 'python-pillow' 'vala' 'folks')
-depends=('python' 'python-dbus' 'python-gobject' 'python-requests' 'python-pyxdg' 'libsecret' 'gnome-keyring')
+depends=('python' 'python-dbus' 'python-gobject' 'python-pysocks' 'python-pyxdg' 'libsecret' 'gnome-keyring')
 optdepends=('gnome-online-accounts' 'gnome-shell-extension-bubblemail-git' 'folks')
 source=("git+https://framagit.org/razer/bubblemail.git/")
 sha256sums=('SKIP')
