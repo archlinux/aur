@@ -57,7 +57,7 @@ build() {
 			-DBUILD_TESTS=ON \
 			-DBUILD_PYTHON=OFF \
 			-DBUILD_GUI=OFF    \
-			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_BUILD_TYPE=None \
 			-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
 			-DUSE_OPENMP=ON	\
 			..
