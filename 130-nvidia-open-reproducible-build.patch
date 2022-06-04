@@ -1,6 +1,6 @@
 --- a/utils.mk
-+++ v/utils.mk
-@@ -101,13 +101,13 @@ MKDIR                 ?= mkdir -p
++++ b/utils.mk
+@@ -101,16 +101,13 @@ MKDIR                 ?= mkdir -p
  RM                    ?= rm -f
  TOUCH                 ?= touch
  HARDLINK              ?= ln -f
@@ -11,9 +11,12 @@
  OBJCOPY               ?= objcopy
  XZ                    ?= xz
 -WHOAMI                ?= whoami
--HOSTNAME              ?= hostname
+-
+-ifndef HOSTNAME
+-  HOSTNAME             = $(shell hostname)
+-endif
 +WHOAMI                ?= printf '%s\n' archlinux_builder
 +HOSTNAME              ?= printf '%s\n' archlinux
  
+ 
  NV_AUTO_DEPEND        ?= 1
- NV_VERBOSE            ?= 0

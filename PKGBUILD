@@ -2,8 +2,8 @@
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=515.43.04.r10.gd8f3bcff9
-pkgrel=3
+pkgver=515.48.07.r0.g965db9855
+pkgrel=1
 pkgdesc='NVIDIA open GPU kernel modules (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -17,7 +17,7 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
 sha256sums=('SKIP'
             '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            'deb3a33519fe62a60eb9d35861576dd8d67fc3d17834195e54fe374c6ece387b')
+            'b7ac1ca4d72fc8392e6682df616d53ba4e9d4e761217ac6339d32c377990cf64')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -42,8 +42,7 @@ build() {
     then
         KERNEL_UNAME="$(uname -r)"
     else
-        KERNEL_UNAME="$(find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d | head -n1)"
-        KERNEL_UNAME="${KERNEL_UNAME##*/}"
+        KERNEL_UNAME="$(find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d | head -n1 | sed 's|.*/||')"
     fi
     
     unset -v SYSSRC

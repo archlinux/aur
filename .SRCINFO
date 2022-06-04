@@ -1,7 +1,7 @@
 pkgbase = nvidia-open-git
 	pkgdesc = NVIDIA open GPU kernel modules (git version)
-	pkgver = 515.43.04.r10.gd8f3bcff9
-	pkgrel = 3
+	pkgver = 515.48.07.r0.g965db9855
+	pkgrel = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
 	arch = x86_64
 	license = MIT
@@ -18,13 +18,13 @@ pkgbase = nvidia-open-git
 	sha256sums = SKIP
 	sha256sums = 009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
-	sha256sums = deb3a33519fe62a60eb9d35861576dd8d67fc3d17834195e54fe374c6ece387b
+	sha256sums = b7ac1ca4d72fc8392e6682df616d53ba4e9d4e761217ac6339d32c377990cf64
 
 pkgname = nvidia-open-git
 	depends = linux
-	depends = nvidia-utils=515.43.04
+	depends = nvidia-utils=515.48.07
 	depends = libglvnd
-	provides = nvidia-open=515.43.04.r10.gd8f3bcff9
+	provides = nvidia-open=515.48.07.r0.g965db9855
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
@@ -32,9 +32,9 @@ pkgname = nvidia-open-git
 pkgname = nvidia-open-dkms-git
 	pkgdesc = NVIDIA open GPU kernel modules (sources; git version)
 	depends = dkms
-	depends = nvidia-utils=515.43.04
+	depends = nvidia-utils=515.48.07
 	depends = libglvnd
-	provides = nvidia-open=515.43.04.r10.gd8f3bcff9
+	provides = nvidia-open=515.48.07.r0.g965db9855
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
