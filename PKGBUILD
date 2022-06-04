@@ -8,7 +8,7 @@ arch=("any")
 license=("MIT")
 groups=()
 depends=("pkgfile" "zsh")
-makedepends=()
+makedepends=("tar")
 checkdepends=()
 optdepends=(
   "pamac-cli: Prompts user to enter password and fetches regular, aur, flatpak, snap, etc. packages"
@@ -21,15 +21,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("uninstall.sh" "cmd-not-found.zsh")
-sha256sums=('4ea211759bb6f865f98c01eb972c8ba3a3040f785736c55d8183e6d12c68e3e9'
-  '61ba8632993f374b21b626c31e31fda87f6331f948429aa31fb06ab58f56b251')
+source=(
+  "$pkgname-$pkgver.tar.gz::https://codeload.github.com/jewlexx/$pkgname/tar.gz/refs/tags/v$pkgver"
+  "uninstall.sh"
+)
+sha256sums=('2045ba998c499be78e270b9fec3d6bc12d1cb1f5a139cce66bdeac090f085a1f'
+  '4ea211759bb6f865f98c01eb972c8ba3a3040f785736c55d8183e6d12c68e3e9')
 
 noextract=()
 validpgpkeys=()
 
 package() {
-  install -Dm755 "$srcdir/$pkgname.zsh" "$pkgdir/usr/share/zsh/functions/$pkgname.zsh"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname.zsh" "$pkgdir/usr/share/zsh/functions/$pkgname.zsh"
 
   echo "Add the following line to your zshrc:"
   echo "  source /usr/share/zsh/functions/$pkgname.zsh"
