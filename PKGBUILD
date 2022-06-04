@@ -2,20 +2,25 @@
 
 pkgname=workbench-git
 _pkgname=Workbench
-pkgver=r115.aaf9446
+pkgver=r175.b86cdfb
 pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/sonnyp/Workbench"
 license=('GPL3')
-depends=('libadwaita' 'glib2' 'gtksourceview5' 'gjs' 'vte4-git' 'libportal-gtk4')
-makedepends=('git' 'meson')
+depends=('gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vte4-git')
+makedepends=('git' 'meson' 'npm')
+optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
+            'highlight: syntax highlighting'
+            'libadwaita-demos: Adwaita Demo')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
-
+source=('git+https://github.com/sonnyp/Workbench.git'
+        'git+https://github.com/sonnyp/troll.git')
+sha256sums=('SKIP'
+            'SKIP')
+            
 pkgver() {
   cd "${_pkgname%-git}"
   ( set -o pipefail
@@ -23,23 +28,30 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
-
 prepare() {
-   cd "${_pkgname%-git}"
-   git submodule init
-   git submodule update
-   sed -i 's/\/app\//\/usr\//' src/re.sonny.Workbench
+  cd "$srcdir/Workbench"
+  git submodule init
+  git config submodule.src/troll.url "$srcdir/troll"
+  git submodule update
+
+  sed -i 's|app/share|usr/share|g' src/re.sonny.Workbench
 }
 
 build() {
-  arch-meson "${_pkgname%-git}" build
+  cd "$srcdir/Workbench"
+  export npm_config_cache="$srcdir/npm_cache"
+  npm install
+
+  arch-meson . build
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build
-#}
+check() {
+  cd "$srcdir/Workbench"
+  meson test -C build --print-errorlogs || :
+}
 
 package() {
+  cd "$srcdir/Workbench"
   meson install -C build --destdir "$pkgdir"
 }
