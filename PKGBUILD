@@ -2,9 +2,9 @@
 # Contributor: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-xilinx-git
-pkgver=cd8b15d_20211117
+pkgver=r2847.3bfb3d01
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="nextpnr portable FPGA place and route tool - for Xilinx"
 arch=(x86_64)
 url="https://github.com/gatecat/nextpnr-xilinx"
@@ -38,6 +38,11 @@ _DEVICES=(
         "xc7a35tftg256-1"
         "xc7a50tfgg484-1"
 )
+
+pkgver() {
+	cd "$srcdir/nextpnr"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 _PREFIX="/usr"
 prepare() {
