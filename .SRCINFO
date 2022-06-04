@@ -9,10 +9,8 @@ pkgbase = topcoder-applet
 	source = http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp
 	source = topcoder_logo.png
 	source = topcoder-applet.desktop
-	source = exception.sites
 	md5sums = 938ae37090f43dfc69ffe03efddf6f5c
 	md5sums = e678ae8884b6b3a0d3a4fc4539b26a50
 	md5sums = 64e45a763b70e950f716d7d81cd6435a
-	md5sums = 49169bb9782db7bd1b3748e30952a720
 
 pkgname = topcoder-applet
