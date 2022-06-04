@@ -1,0 +1,23 @@
+pkgbase = openttd-n-ice
+	pkgdesc = OpenTTD with n-ice patches.
+	pkgver = 12.2
+	pkgrel = 1
+	url = http://www.n-ice.org/openttd/forum/index.php?topic=609.msg3555
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	depends = fluidsynth
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libpng
+	optdepends = openttd-opengfx: free graphics
+	optdepends = openttd-openmsx: free musicset
+	optdepends = openttd-opensfx: free soundset
+	conflicts = openttd
+	source = https://cdn.openttd.org/openttd-releases/12.2/openttd-12.2-source.tar.xz
+	source = openttd-n-ice-patches.zip::https://www.dropbox.com/s/pn8vepuxi26hj9x/OpenTTD_12.2_122A_patch.zip?dl=1
+	sha256sums = 81508f0de93a0c264b216ef56a05f8381fff7bffa6d010121a21490b4dace95c
+	sha256sums = 6efe936b6ef605e60372ba565cf91c977eced7096bf4fdbd569af5607adfa56a
+
+pkgname = openttd-n-ice
