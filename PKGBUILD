@@ -1,6 +1,6 @@
 # Maintainer: <abishekj274@gmail.com>
 pkgname=salad-git
-pkgver=0.5.8.r54.gf5bc456f
+pkgver=1.0.1.r1.g0fd98789
 pkgrel=1
 pkgdesc="Allows gamers to mine crypto in their downtime [git version]."
 arch=(x86_64)
@@ -19,15 +19,16 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_sldver=$(echo $pkgver | sed 's/[r].*//' | sed 's/.$//')
+_oldver=0.5.8
+# _sldver=$(echo $pkgver | sed 's/[r].*//' | sed 's/.$//')
 
 prepare() {
 	cd "salad-applications/packages/desktop-app"
-	sed -i 's/: "electron-builder/: "electron-builder --linux pacman/g' package.json	
+	sed -i 's/: "electron-builder/: "electron-builder --linux pacman/g' package.json
 }
 
 build() {
-	cd "salad-applications/packages/desktop-app"	
+	cd "salad-applications/packages/desktop-app"
 	yarn install
 	yarn run lint
 	yarn run build-app
@@ -37,7 +38,7 @@ build() {
 
 package() {
 	cd "salad-applications/packages/desktop-app/dist/app"
-	tar xf "Salad-${_sldver}.pacman" --directory="${pkgdir}"
+	tar xf "Salad-${_oldver}.pacman" --directory="${pkgdir}"
 	rm "${pkgdir}/.MTREE"
 	rm "${pkgdir}/.INSTALL"
 	rm "${pkgdir}/.PKGINFO"
