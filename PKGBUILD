@@ -4,7 +4,7 @@
 # match! alpha[0-9]*$
 
 pkgname=gedit-menubar
-pkgver=42.0
+pkgver=42.1
 pkgrel=1
 pkgdesc="GNOME Text Editor (Patched to show menubar)"
 url="https://wiki.gnome.org/Apps/Gedit"
