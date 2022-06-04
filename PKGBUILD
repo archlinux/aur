@@ -1,32 +1,32 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer:
+# Contributor: Alexander F. RÃ¸dseth <xyproto@archlinux.org>
+
 pkgname=sharpconstruct
 pkgver=0.12
-pkgrel=5
-pkgdesc="Create 3D models by sculpting"
-arch=('x86_64' 'i686')
-url="http://sourceforge.net/projects/sharp3d/"
-depends=('gtkglextmm' 'libglademm' 'libsigc++')
-makedepends=('addinclude')
-license=('GPL2')
-sha256sums=('520195c8d96f73610eb14aefe6d1b79c835006490295ec79cc56011e9f396f0e'
-            '1bf80724f4c75e3fb0c0bd4903bd0fc4fe1a024daf6d13c9dee852263cf0bbe0')
+pkgrel=6
+pkgdesc='Create 3D models by sculpting (currently does not compile)'
+arch=(x86_64)
+url='https://sourceforge.net/projects/sharp3d/'
+depends=(gtkglextmm libglademm libsigc++)
+makedepends=(addinclude)
+license=(GPL2)
 source=('http://downloads.sourceforge.net/sourceforge/sharp3d/sharpconstruct-0.12-rc3.tar.bz2'
-        'arch.patch')
+        arch.patch)
+b2sums=('8d5d961788afa94c2f2a95d1e4410ce660508e62c6c92b0197f2e48435760547ce67bfbf40946ee1320607b31c8fb0f1c9509eeb076d8bb921a3bcbbd750ee29'
+        '555fbd561ba4a3bffc48f748902835d71d9bb19455354ba44c528552a13ce499e8dd7c29e0845d949fbb022e4e923c1111c8bd5f54b66c5772ae8a81ab67b534')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd $pkgname-$pkgver
   patch -p0 < ../../arch.patch
   addinclude include/DataDir.hh malloc
-  ./configure --enable-sse --prefix=/usr --mandir=/usr/share/man
+  export CFLAGS+=' -std=c11 -Wfatal-errors'
+  export CXXFLAGS+=' -std=c++11 -Wfatal-errors'
+  ./configure --enable-sse --mandir=/usr/share/man --prefix=/usr
   make -j1
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
