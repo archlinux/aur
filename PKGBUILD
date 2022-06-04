@@ -2,7 +2,7 @@
 
 pkgname=aliyundrive-webdav-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="阿里云盘 WebDAV 服务"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 options=("!strip" "emptydirs")
 install="${_pkgname}.install"
 source=("${url}/releases/download/v${pkgver}/aliyundrive-webdav_${pkgver}_amd64.deb")
-sha256sums=('370b880c396637afdca6e75877222577fa8f387c883b3875efe5c3c8e7c35290')
+sha256sums=('f4f2376d6898d65d96206d45e1444b6838e9ed4eefe3f67dc2c81984de354dc4')
 
 prepare() {
     mkdir ${srcdir}/build
