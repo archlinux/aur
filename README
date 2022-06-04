@@ -10,8 +10,8 @@ Country specific files are stored in /usr/share/xt_geoip directory.
 For more information, see:
   man iptables-extensions
   man xtables-addons
-  http://xtables-addons.sourceforge.net/geoip.php
-  http://xtables-addons.sourceforge.net/
+  https://inai.de/projects/xtables-addons/geoip.php
+  https://inai.de/projects/xtables-addons/
 
 
 Legal Attribution:
