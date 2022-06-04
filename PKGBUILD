@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.17
-_major=5.17
+_srcname=linux-5.18
+_major=5.18
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=7
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -30,12 +30,6 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
-  0003-tick-Detect-and-fix-jiffies-update-stall.patch
-  0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
-  0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
-  0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
-  0007-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -43,18 +37,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('632b99c8b4e3d19ef1f971163fd3dff5beee9f98132fc03876d6a1ec12c292b34bce48b2674a688612ceb95a74b6dece587442392ef30172c8fc38bb12f7feb9'
+b2sums=('4a8663b91aad6c103b36a36f03ee56b3befad999bf5a3b23bfa973915fa71fc237a3b271febf4c2526d6e262794051d7defb929e4f77fa8d05e68cb3f6618367'
         'SKIP'
-        '1c1b1f59404becef201c28d6677a2a52a828a51903d0fe5b38a931fa25694d766eeb222b02f674d95ea8c67c29e0f3420b88f94bdccfc2f9bd575c2605e8f229'
+        '20c17fac495d5c7a9951a6e7693479294bf2ec60d82f7b97d12390a890409a8b7edd3aed346fa478069f91e99b72f86dff7cf223bbb33831953dc13e5fa80738'
         'SKIP'
-        'a1a93cf57d199419c94e30cee3d0a7e18168166a72d278db32da8a19eb00ec9373888146643eb5c874daa74789c03f1272955a6a0b2dcc18e8f2672eb360e121'
-        'e226fb1f498a739a9a65cf8bb542978b0573ba7630e82516d2393dcdcdd42910adc7107d6174eed349a513643092a737acf552c19d27f896f4f771de3d1e00f1'
-        '2b892907b904240f3cd1c3d75d168e4b6de7d1d31342de754f63a78fa1d33a9217ee4b98d13ddf8eea713710289258ce7639a90af9411283044ca218157fd2ca'
-        '29b4c2928352779050b3414905cb0dd9f8fdaba6cddd765e20d6b33dc8f2d9f22f60299202a75174a4e2a36502500cafacd70b02df946a5e5e19bd3601f75846'
-        '6d54cf6d55d036f15870fd0531dbab2d6dc84c47ac92240c991b76f8c441f283257d612c6ce41f60a190f87cec10c04b28fefba58656d6fced34fb8011e35aa5'
-        'fbc9290ef523e85a292f9c369396229e708ccabb5785a4422bac5eb43a24e2be6a6dec7799b3639d911437b48b76c5f3d857d6d61ec944d50a88c0d7145cf3da'
-        'cc2b7c3327d4050c3ce09b80b2a148ca8c31dc8ba11d2da39274b746ecf648fd3b902673c7a84ea611e85f9cc329d6f39b04e040acfd1c3c3ef3da1c2b6422a8'
-        '847d2bad98c5473aa4cc955618ffd84fabf805c6290fb7d4afd7c41a7dfb685ec22b1370ed5e31923bad4f1fb7ee435e588a55ab805cbeea5ac86dd33519fdb8')
+        '1ba21ee9cb3e47f14c3ef9c5f0533332706b4a14c6cb34bee0da91558910eaf79df2bed73d215e7eac0e7f378154facd19b1576af68f07962e3310760efe2764'
+        'e226fb1f498a739a9a65cf8bb542978b0573ba7630e82516d2393dcdcdd42910adc7107d6174eed349a513643092a737acf552c19d27f896f4f771de3d1e00f1')
 
 
 export KBUILD_BUILD_HOST=archlinux
