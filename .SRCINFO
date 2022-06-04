@@ -1,13 +1,14 @@
 pkgbase = flamerobin-git
 	pkgdesc = A tool to handle Firebird database management
-	pkgver = 0.9.3.1
+	pkgver = 0.9.3.11.r7.gde8f182d
 	pkgrel = 1
 	url = http://www.flamerobin.org/
 	arch = i686
 	arch = x86_64
-	license = expat
+	license = MIT
 	makedepends = git
-	depends = wxgtk
+	makedepends = cmake
+	depends = wxgtk3
 	depends = libfbclient
 	depends = boost
 	provides = flamerobin
@@ -16,4 +17,3 @@ pkgbase = flamerobin-git
 	md5sums = SKIP
 
 pkgname = flamerobin-git
-

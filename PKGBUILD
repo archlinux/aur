@@ -4,14 +4,14 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=flamerobin-git
-pkgver=0.9.3.1
+pkgver=0.9.3.11.r7.gde8f182d
 pkgrel=1
 pkgdesc='A tool to handle Firebird database management'
 arch=('i686' 'x86_64')
 url="http://www.flamerobin.org/"
-license=('expat')
-depends=('wxgtk' 'libfbclient' 'boost')
-makedepends=('git')
+license=('MIT')
+depends=('wxgtk3' 'libfbclient' 'boost')
+makedepends=('git' 'cmake')
 provides=('flamerobin')
 conflicts=('flamerobin')
 source=("$pkgname"::'git+https://github.com/mariuz/flamerobin.git')
@@ -24,13 +24,22 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-
-  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config
-
-  make
+  
+  # Dirty hack to work around the fact that the build scripts invoke
+  # wx-config which may not exist anymore since wxgtk3
+  OLDPATH="$PATH"
+  export PATH="$(pwd):$PATH"
+  ln -s /usr/bin/wx-config-gtk3 ./wx-config
+  
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk3
+  cmake -B build -S "./" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev
+  cmake --build build
+  
+  rm ./wx-config
+  export PATH="$OLDPATH"
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
