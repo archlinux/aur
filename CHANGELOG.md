@@ -1,1 +1,1 @@
-See `maestral` changelog for release notes.
+For release notes, please refer to [Maestral](https://www.github.com/samschott/maestral).
