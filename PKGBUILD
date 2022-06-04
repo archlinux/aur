@@ -3,21 +3,23 @@
 _pkgname=balong-usbdload
 pkgname="${_pkgname}-git"
 _pkgver=latest
-pkgver=r83.fdcec46
-pkgrel=3
+pkgver=2.20.r89.20191227.c0ebd14
+pkgrel=1
 pkgdesc='Low level USB Flashing/ downloader utility for Huawei E3372 and other modems baesd on Balong v7. Includes temporary usb loader "firmware" for some devices.'
 arch=('i686' 'x86_64')
 url="http://github.com/forth32/balong-usbdload"
 license=('GPL3')
-depends=()
+depends=('glibc')
 optdepends=("balongflash: For flashing firmware after downloading temporary USB downloader code with ${_pkgname}.")
 makedepends=('git')
 provides=(
   "${_pkgname}=${pkgver}"
   "balong-usbdload-data=${pkgver}"
 )
-conflicts=("${_pkgname}")
-options=()
+conflicts=(
+  "${_pkgname}"
+  'balong-usbdload-data'
+)
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/balong-usbdload.git"
@@ -33,16 +35,29 @@ sha256sums=(
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  _ver="$(grep -E 'варийный USB-загрузчик Balong-чипсета, версия' balong-usbdload.c | head -n1 | sed -E 's|.*версия ([^[:space:]]*).*|\1|' | tr -d ',')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
+
   install -v -d -m755 "${pkgdir}/usr/bin/"
   install -v -m755 balong-usbdload loader-patch ptable-injector "${pkgdir}/usr/bin"
   install -v -d -m755 "${pkgdir}/usr/share/${_pkgname}/data"
