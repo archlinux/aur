@@ -1,13 +1,13 @@
 # Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=aom-psy-git
-pkgver=r32422.g48d21fe00
-pkgrel=2
-pkgdesc="An open, royalty-free video coding format, includes tune=vmaf and BlueSwordM's psy patches"
+pkgver=r32664.g5da8885ae
+pkgrel=1
+pkgdesc="An open, royalty-free video coding format, includes tune=(vmaf|butteraugli) and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
 license=('BSD' 'custom:PATENTS')
-depends=('gcc-libs' 'vmaf')
+depends=('gcc-libs' 'vmaf' 'libjxl-metrics-git')
 makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm' 'clang')
 optdepends=('aocc: AMD Optimizing Compiler')
 provides=('aom' 'aom-git' 'libaom.so')
@@ -25,23 +25,31 @@ pkgver() {
 
 build() {
   cd "aom"
+  export LDFLAGS="-fuse-ld=lld -Wl,--thinlto-jobs=all"
+  COMMON_FLAGS="-O3 -march=native -flto=thin -pipe $LD_FLAGS"
+  export CC=clang CXX=clang++
+  export CPPFLAGS="${COMMON_FLAGS}" CCXFLAGS="${COMMON_FLAGS}"
 
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_C_COMPILER="clang" \
-    -DCMAKE_CXX_COMPILER="clang++" \
-    -DAOM_EXTRA_C_FLAGS="-march=native -O3 -flto=thin" \
-    -DAOM_EXTRA_CXX_FLAGS="-march=native -O3 -flto=thin" \
-    -DAOM_EXTRA_EXE_LINKER_FLAGS="-flto=thin" \
+    -DCMAKE_C_COMPILER="${CC}" \
+    -DCMAKE_CXX_COMPILER="${CXX}" \
+    -DCMAKE_C_FLAGS="$COMMON_FLAGS" \
+    -DCMAKE_CXX_FLAGS="$COMMON_FLAGS" \
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DAOM_EXTRA_C_FLAGS="$COMMON_FLAGS" \
+    -DAOM_EXTRA_CXX_FLAGS="$COMMON_FLAGS" \
+    -DAOM_EXTRA_EXE_LINKER_FLAGS="$LDFLAGS" \
     -DBUILD_SHARED_LIBS=1 \
     -DENABLE_TESTS=0 \
     -DENABLE_EXAMPLES=1 \
     -DCONFIG_AV1_ENCODER=1 \
     -DCONFIG_AV1_DECODER=1 \
     -DCONFIG_TUNE_VMAF=1 \
+    -DCONFIG_TUNE_BUTTERAUGLI=1 \
     -DCONFIG_THREE_PASS=0 \
     ./
   make -C "_build"
