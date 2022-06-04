@@ -1,0 +1,17 @@
+pkgbase = cheatsheet-git
+	pkgdesc = A command-line cheatsheet for the command-line
+	pkgver = r27.189de39
+	pkgrel = 1
+	url = https://github.com/atlasamerican/cheatsheet
+	install = cheatsheet.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = git
+	provides = cheatsheet
+	conflicts = cheatsheet
+	source = cheatsheet::git+https://github.com/atlasamerican/cheatsheet
+	md5sums = SKIP
+
+pkgname = cheatsheet-git
