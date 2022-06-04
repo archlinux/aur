@@ -3,7 +3,7 @@
 
 pkgname=juce-bin
 pkgver=6.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform c++ framework for creating audio applications"
 arch=("x86_64")
 url="https://github.com/juce-framework/JUCE"
@@ -29,7 +29,7 @@ package() {
 	install -Dm644 "${srcdir}/Projucer.desktop" "${pkgdir}/usr/share/applications/Projucer.desktop"
 
 	#icon for desktop
-	install -Dm755 "${srcdir}/JUCE/examples/Assets/juce_icon.png" "${pkgdir}/usr/share/pixmaps/Projucer"
+	install -Dm755 "${srcdir}/JUCE/examples/Assets/juce_icon.png" "${pkgdir}/usr/share/pixmaps/Projucer.png"
 
 	# License
 	install -Dm755 "${srcdir}/JUCE/LICENSE.md" "${pkgdir}/usr/share/licenses/juce-bin/LICENSE.md"
