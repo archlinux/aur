@@ -10,6 +10,7 @@ pkgbase = dieharder-git
 	makedepends = automake
 	makedepends = autoconf
 	depends = gsl
+	conflicts = dieharder
 	source = dieharder::git+https://github.com/christopherkobayashi/dieharder.git
 	sha512sums = SKIP
 

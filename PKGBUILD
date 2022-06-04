@@ -9,6 +9,7 @@ license=('GPL2')
 url="https://github.com/christopherkobayashi/dieharder"
 depends=( 'gsl' )
 makedepends=('automake' 'autoconf' )
+conflicts=('dieharder')
 source=('dieharder::git+https://github.com/christopherkobayashi/dieharder.git')
 sha512sums=('SKIP')
 
