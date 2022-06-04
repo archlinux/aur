@@ -4,16 +4,16 @@
 _pkgname="balongflash"
 pkgname="${_pkgname}-git"
 pkgver=3.0+290.r112.20211111.bf43faa
-pkgrel=1
+pkgrel=2
 pkgdesc='Flashing utility for Huawei E3372 and other modems baesd on Balong v7'
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/balongflash"
 license=('GPL3')
 depends=('zlib')
 makedepends=('git')
-provides=("balongflash=${pkgver}")
-conflicts=(balongflash)
-options=()
+optdepends=()
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 
 source=(
   "${_pkgname}::git+https://github.com/forth32/balongflash.git"
@@ -39,7 +39,6 @@ pkgver() {
   else
     printf '%s' "${_ver}+${_buildno}.r${_rev}.${_date}.${_hash}"
   fi
-
 }
 
 build() {
