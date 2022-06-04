@@ -1,24 +1,28 @@
 pkgbase = nextpnr-xilinx-git
 	pkgdesc = nextpnr portable FPGA place and route tool - for Xilinx
-	pkgver = cd8b15d_20211117
+	pkgver = r2847.3bfb3d01
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/gatecat/nextpnr-xilinx
-	arch = any
+	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
+	makedepends = prjxray-db>=r258
+	makedepends = pypy3
 	depends = python
 	depends = boost-libs
-	conflicts = nextpnr-git
-	options = !strip
-	source = nextpnr::git+https://github.com/gatecat/nextpnr-xilinx.git
+	conflicts = nextpnr
+	source = nextpnr-xilinx::git+https://github.com/gatecat/nextpnr-xilinx
+	source = nextpnr-xilinx-meta::git+https://github.com/gatecat/nextpnr-xilinx-meta.git
+	source = 0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e4faf96ecffea231c31e5b2e481bb48a8646982bc98ad71a463cabb078ff4856
 
 pkgname = nextpnr-xilinx-git
