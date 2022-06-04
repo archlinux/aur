@@ -1,18 +1,17 @@
 # Maintainer: <abishekj274@gmail.com>
 pkgname=saladbind-git
-pkgver=1.7.7.r7.g2728655
+pkgver=1.7.8.r2.g41cc995
 pkgrel=1
 pkgdesc='A tool for Salad to customize your miner [git version]'
 arch=('x86_64')
 url="https://github.com/vtheskeleton/SaladBind"
-license=("GPL3" "custom:'vukmoji'")
+license=("GPL3")
 makedepends=("nodejs" "npm" "git")
-source=("git+https://github.com/vtheskeleton/SaladBind.git" "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/LICENSE")
+source=("git+https://github.com/vtheskeleton/SaladBind.git")
 options=("!strip")
 provides=("saladbind")
 conflicts=("saladbind")
-sha256sums=('SKIP'
-            '07d8a5e0a4ddae657a6839142ebcc54f94b8cba92920bedded536f3ffcc43809')
+sha256sums=('SKIP')
 
 _gitname="SaladBind"
 
@@ -28,7 +27,6 @@ build(){
 }
 
 package(){
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/vukmoji_license.txt"
 	install -Dm644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/saladbind_license.txt"
 	install -Dm777 "${srcdir}/${_gitname}/bin/saladbind" "${pkgdir}/usr/bin/saladbind"
 }

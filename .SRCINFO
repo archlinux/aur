@@ -1,11 +1,10 @@
 pkgbase = saladbind-git
 	pkgdesc = A tool for Salad to customize your miner [git version]
-	pkgver = 1.7.7.r7.g2728655
+	pkgver = 1.7.8.r2.g41cc995
 	pkgrel = 1
 	url = https://github.com/vtheskeleton/SaladBind
 	arch = x86_64
 	license = GPL3
-	license = custom:'vukmoji'
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
@@ -13,8 +12,6 @@ pkgbase = saladbind-git
 	conflicts = saladbind
 	options = !strip
 	source = git+https://github.com/vtheskeleton/SaladBind.git
-	source = https://raw.githubusercontent.com/Vukkyy/vukmoji/master/LICENSE
 	sha256sums = SKIP
-	sha256sums = 07d8a5e0a4ddae657a6839142ebcc54f94b8cba92920bedded536f3ffcc43809
 
 pkgname = saladbind-git
