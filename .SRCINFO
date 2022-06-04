@@ -1,6 +1,6 @@
 pkgbase = gg
 	pkgdesc = A command-line tool for one-click proxy in your research and development without installing v2ray or anything else (only for linux).
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/mzz2017/gg
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gg
 	makedepends = go
 	depends = glibc
 	provides = gg
-	source = gg-0.2.3.tar.gz::https://github.com/mzz2017/gg/archive/v0.2.3.tar.gz
-	sha256sums = ae508f1df0798c6b4c16c13035baa49c1e103a883c8f91ea2149446489ff1c78
+	source = gg-0.2.5.tar.gz::https://github.com/mzz2017/gg/archive/v0.2.5.tar.gz
+	sha256sums = 269e5f856dabcb1ad8635a729f8e07f3cd57324e20a9cf1f9c409b0db92bd5ce
 
 pkgname = gg
