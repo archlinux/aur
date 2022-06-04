@@ -7,6 +7,7 @@ pkgbase = kepubify
 	license = MIT
 	makedepends = go
 	conflicts = kepubify-bin
+	options = !lto
 	source = https://github.com/pgaskin/kepubify/archive/v4.0.4.tar.gz
 	sha256sums = a3bf118a8e871b989358cb598746efd6ff4e304cba02fd2960fe35404a586ed5
 

@@ -9,6 +9,7 @@ url='https://pgaskin.net/kepubify/'
 license=('MIT')
 conflicts=('kepubify-bin')
 makedepends=('go')
+options=(!lto)
 source=("https://github.com/pgaskin/kepubify/archive/v$pkgver.tar.gz")
 sha256sums=('a3bf118a8e871b989358cb598746efd6ff4e304cba02fd2960fe35404a586ed5')
 
@@ -20,7 +21,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
+    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o $pkgname \
     github.com/pgaskin/kepubify/v4/cmd/kepubify/
 
@@ -29,7 +30,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
+    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o covergen \
     github.com/pgaskin/kepubify/v4/cmd/covergen/
 
@@ -38,7 +39,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-	-ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
+    -ldflags "-linkmode=external -extldflags=$LDFLAGS -X main.version=$pkgver" \
     -o seriesmeta \
     github.com/pgaskin/kepubify/v4/cmd/seriesmeta/
 }
