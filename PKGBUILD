@@ -3,13 +3,13 @@
 pkgname=vt-cli-git
 _pkgname=${pkgname%-git}
 pkgver=0.10.2.r2.g031203c
-pkgrel=1
+pkgrel=2
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url=https://virustotal.github.io/vt-cli/
 license=('Apache')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${pkgname}::git+https://github.com/VirusTotal/vt-cli")

@@ -1,12 +1,13 @@
 pkgbase = vt-cli-git
 	pkgdesc = VirusTotal Command Line Interface
 	pkgver = 0.10.2.r2.g031203c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://virustotal.github.io/vt-cli/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	provides = vt-cli
 	conflicts = vt-cli
