@@ -1,4 +1,4 @@
-From 3a3b4f3c576fd742faffd1a59cc9eca44a9dd39e Mon Sep 17 00:00:00 2001
+From b8b954d02c0080056bd07b56bd8eeece834bcf26 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 Date: Fri, 18 Mar 2022 17:13:20 +0100
 Subject: [PATCH] Make ZKG state dir configurable
@@ -23,5 +23,5 @@ index 0f36d4c05..fe353da36 100644
      configure_file(
          ${CMAKE_CURRENT_SOURCE_DIR}/zkg-config.in
 -- 
-2.36.0
+2.36.1
 

@@ -2,7 +2,7 @@
 # Contributor: Nick Skelsey <nskelsey@gmail.com>
 
 pkgname=zeek
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
@@ -13,10 +13,10 @@ makedepends=(cmake swig bison flex openssl geoip gperftools shadow)
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
         zeek.tmpfiles.conf
         0001-Make-ZKG-state-dir-configurable.patch)
-sha256sums=('6b13489b30494c7c5dda453fc50981e5943d6715b6c9b5b7a85abb80bbe6d116'
+sha256sums=('f50dd7db8b809a74a72d402494afa00b432ef1e87cd5913687feee21573c700c'
             'SKIP'
             'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91'
-            'c214e2106ba8380806fff5837a54f7b6dcd70a5a8874c2d14130094ce6ad9378')
+            '572eb29f448fb851e51b6c45c4c904b34be649363f302c00d4dbf8ac8221e046')
 validpgpkeys=(
   962FD2187ED5A1DD82FC478A33F15EAEF8CB8019 # The Zeek Team <info@zeek.org>
 )
