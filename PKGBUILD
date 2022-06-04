@@ -1,13 +1,13 @@
-# Maintainer: esrh : email at esrh at netc dot eu
+# Maintainer: esrh : email at esrh.me/pages/contact.html
 pkgname=ames
-pkgver=0.1.4
+pkgver=v0.1.4.r3.gf0e1fca
 pkgrel=1
 pkgdesc="Update anki cards with desktop audio and images"
 arch=('any')
 url="https://github.com/eshrh/ames"
 license=('GPL3')
 depends=('pulseaudio' 'ffmpeg' 'maim' 'xdotool' 'libnotify' 'xsel')
-source=("ames::git+https://github.com/Ajatt-Tools/ames")
+source=("git+https://github.com/eshrh/ames")
 md5sums=('SKIP')
 install="ames.install"
 
