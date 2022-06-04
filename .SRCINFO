@@ -1,0 +1,13 @@
+pkgbase = stardict-tr-2011
+	pkgdesc = Turkish Language Association's Turkish dictionary (2011) for Stardict
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/kunamech/stardict-con/
+	arch = any
+	license = custom:public domain
+	optdepends = stardict: view the dictionary
+	optdepends = sdcv: view the dictionary in CLI
+	source = https://github.com/kunamech/stardict-con/raw/master/dist/guncel-turkce-sozluk_turk-dil-kurumu-2011/stardict-guncel-turkce-sozluk_turk-dil-kurumu-2011.tar.gz
+	md5sums = 1647f6ddf7a42b16253f2bb2fba4bb7d
+
+pkgname = stardict-tr-2011
