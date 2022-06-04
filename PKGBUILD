@@ -1,7 +1,7 @@
 # Maintainer: Filip Graliński <filipg@amu.edu.pl>
 
 pkgname=python-transformers
-pkgver=4.11.3
+pkgver=4.19.2
 pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ depends=('cuda'
          'python-tokenizers'
          'python-tqdm')
 
-source=("https://files.pythonhosted.org/packages/52/9a/d7a8dea8ebab15198877ed5b6d718ed04373987854a21e91c1948d555456/transformers-${pkgver}.tar.gz")
-sha256sums=('755b052df58906f122f7166c573c22531416eab8a9f59c44ff7148be12e62621')
+source=("https://github.com/huggingface/transformers/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a1cdffb59b0a409cb5de414fcfaf5208f4526023cd021245f37f309bb15673a9')
 
 build() {
     cd transformers-$pkgver
