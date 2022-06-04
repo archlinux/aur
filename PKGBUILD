@@ -3,17 +3,17 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-vfs-perl
-pkgver=1.082
-pkgrel=7
+pkgver=1.084
+pkgrel=1
 pkgdesc="Gnome2-VFS perl bindings for gnome-vfs"
 arch=(i686 x86_64)
 license=('LGPL')
-url="http://gtk2-perl.sourceforge.net/"
+url="https://metacpan.org/pod/Gnome2::VFS"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
 depends=('gtk2-perl' 'gnome-vfs' 'perl')
 options=('!emptydirs')
-source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gnome2-VFS-${pkgver}.tar.gz)
-md5sums=('374e7d611d080d893bb3da9d40c64733')
+source=(https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gnome2-VFS-${pkgver}.tar.gz)
+md5sums=('1dada72fb56a97e3397c9cb4304f81ab')
 
 build() {
   cd Gnome2-VFS-$pkgver

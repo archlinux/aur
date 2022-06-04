@@ -1,8 +1,8 @@
 pkgbase = gnome-vfs-perl
 	pkgdesc = Gnome2-VFS perl bindings for gnome-vfs
-	pkgver = 1.082
-	pkgrel = 7
-	url = http://gtk2-perl.sourceforge.net/
+	pkgver = 1.084
+	pkgrel = 1
+	url = https://metacpan.org/pod/Gnome2::VFS
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -12,8 +12,7 @@ pkgbase = gnome-vfs-perl
 	depends = gnome-vfs
 	depends = perl
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gnome2-VFS-1.082.tar.gz
-	md5sums = 374e7d611d080d893bb3da9d40c64733
+	source = https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gnome2-VFS-1.084.tar.gz
+	md5sums = 1dada72fb56a97e3397c9cb4304f81ab
 
 pkgname = gnome-vfs-perl
-
