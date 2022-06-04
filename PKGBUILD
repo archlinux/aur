@@ -16,7 +16,7 @@ depends=(
 	"boost-libs"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost" "pypy3")
 conflicts=(
 	"nextpnr-git"
 )
@@ -66,7 +66,7 @@ build() {
     echo "Generating device database, it will take some time, have a coffee..."
     for i in ${_DEVICES[@]}; do
         echo "### Generating device $i ###"
-        [ ! -f "xilinx/$i.bba" ] && python3 xilinx/python/bbaexport.py --device $i --bba xilinx/$i.bba
+        [ ! -f "xilinx/$i.bba" ] && pypy3 xilinx/python/bbaexport.py --device $i --bba xilinx/$i.bba
         [ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
     done
     cd ..
