@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/dieharder"
-    ./autogen.sh && make
+    ./autogen.sh && configure --prefix=/usr && make
 }
 
 package() {
