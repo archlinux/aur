@@ -7,7 +7,7 @@ pkgver=22.04.4+dev+56+a3ccbe5
 pkgrel=1
 pkgdesc="Run menubar commands, much like the unity 7 HUD (Development branch with new features)"
 arch=('any')
-url="https://github.com/ubuntu-mate/mate-hud"
+url="https://github.com/twa022/mate-hud/tree/dev"
 license=('GPL2')
 depends=('rofi' 'python-gobject' 'mate-desktop' 'appmenu-gtk-module' 'python-pkgconfig'
          'dbus-python' 'python-psutil' 'python-setproctitle' 'python-xlib' 'python-pyinotify')
