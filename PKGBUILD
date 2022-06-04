@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
-pkgver="1.2.0"
-pkgrel="1"
+pkgver="1.1.0"
+pkgrel="2"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url="https://github.com/jewlexx/cmd-not-found"
 arch=("any")
