@@ -10,7 +10,7 @@ url='https://inspect.dev'
 license=('proprietary')
 depends=('libimobiledevice')
 source=("https://github.com/inspectdev/inspect-release/releases/download/v${pkgver}/Inspect-${pkgver}-linux-amd64.deb")
-sha256sums=('06087a0745c789c05c223197da03c8c5ac723cf4e79ac4f310394225b716825b')
+sha256sums=('6061ae7db99a5c9563fd4376366019cab9c07776185d17808d635f6c19f5488e')
 
 prepare() {
   bsdtar -x -f data.tar.xz
