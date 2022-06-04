@@ -1,0 +1,13 @@
+pkgbase = unfatarians-studio
+	pkgdesc = dockerized ardour6 with a rich set of plugins
+	pkgver = 1
+	pkgrel = 1
+	url = https://codeberg.org/pacew/unfatarians-studio
+	arch = any
+	license = GPL
+	depends = docker
+	depends = pipewire
+	source = git+https://codeberg.org/pacew/unfatarians-studio.git
+	md5sums = SKIP
+
+pkgname = unfatarians-studio
