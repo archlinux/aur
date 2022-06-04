@@ -2,8 +2,8 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=python-caldav
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="a caldav client library"
 arch=('any')
 url="https://pypi.python.org/pypi/caldav"
@@ -13,7 +13,7 @@ optdepends=('python-pytz: Resolves https://github.com/collective/icalendar/issue
 	    'python-tzlocal: Resolves https://github.com/collective/icalendar/issues/333')
 options=(!emptydirs)
 source=("https://github.com/python-caldav/caldav/archive/v${pkgver}.tar.gz")
-sha256sums=('a18f343a1f8f1d71ff18c4f90334510814bd8ebda1b844ec419c5e7ffaae2ea6')
+sha256sums=('1ba065850b92f5f9916ecd022af042ab39e727e9f2507645efaa341e71e2e780')
 
 package() {
   cd "$srcdir/caldav-$pkgver"
