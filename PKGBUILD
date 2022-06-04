@@ -1,7 +1,7 @@
 # Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 
 pkgname=nwchem-data
-_pkgver=6.8+47+gitdf6c956-3
+_pkgver=7.0.2-1
 _pkgver_tmp="${_pkgver//\+/\.}"
 pkgver="${_pkgver_tmp//-/\.}"
 pkgrel=1
@@ -11,7 +11,7 @@ url="http://www.nwchem-sw.org"
 license=("custom:ECL2.0" "GPL3")
 options=("!strip" "libtool" "staticlibs")
 source=("http://http.us.debian.org/debian/pool/main/n/nwchem/nwchem-data_${_pkgver}_all.deb")
-sha256sums=('597fcfcaa3c0b5bb3a695513584967c4da419a1edd74fc901e52221b5365b67a')
+sha256sums=('08ffd4c18948e56619b54cabb7bf23e6a0b5aa902b9aa45b109b21ccc3086987')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
