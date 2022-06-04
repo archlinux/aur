@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.10.1
+pkgver=4.12.2
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -34,17 +34,16 @@ depends=('python-bleach'
          'python-pillow'
          'python-cairo'
          'python-gobject'
-         'python-pyparsing<3.0'
+         'python-pyparsing'
          'python-pygments'
          'python-dateutil'
          'python-redis-lock'
          'python-requests'
          'python-sentry_sdk'
-         'python-setuptools'
          'python-siphashc'
          'python-social-auth-core>=4.1.0'
          'python-social-auth-app-django'
-         'translate-toolkit<3.5'
+         'translate-toolkit'
          'python-pyicumessageformat'
          'python-translation-finder'
          'python-user-agents'
@@ -53,6 +52,7 @@ depends=('python-bleach'
          'python-waitress'
          'python-cssselect'
          'python-ahocorasick'
+         'python-charset-normalizer'
          'systemd')
 optdepends=('python-psycopg2: postgres support'
             'python-mysqlclient: MySQL support'
@@ -60,11 +60,11 @@ optdepends=('python-psycopg2: postgres support'
             'python-ruamel-yaml: Yaml support'
             'git-review: gerrit support')
 checkdepends=('python-selenium' 'python-responses')
+makedepends=('python-setuptools')
 backup=('etc/webapps/weblate/settings.py' 'etc/celery/weblate.conf')
 install=weblate.install
 
 source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "0001-go-back-to-pyparsing2.patch"
         'sysusers-weblate.conf'
         'tmpfiles-weblate.conf'
         'weblate.service'
@@ -72,8 +72,7 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('dba0e27008b6eab6a57191201bf7ffb2ab13f48552ee0800fc6b70cb9abf6cdf'
-            'a0c2b05c47acf3f84c9839079c88eae546df42e9fdbabee230ab935088ca263d'
+sha256sums=('1c99fc135026671bb270af2bfc74d5e0e7db51900ae0544eb6eeaed749153627'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
             '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
@@ -84,8 +83,6 @@ install=weblate.install
 
 build() {
 	cd $_pkgname-$pkgver
-        # revert the pyparsing upgrade patch. Newer version isn't packaged yet :-/
-        patch -Np1 -i ../0001-go-back-to-pyparsing2.patch
         # don't pin any packages, this will just lead to runtime breakage
         # downgrade translate-toolkit and pyparsing requirements. We can't use those yet, see above. (translate-toolkit 3.5.x depends on pyparsing 3.0.x as well.)
 	sed -i -e 's/,.*$//' -e 's/==/>=/' -e 's/translate-toolkit>=3.5.1/translate-toolkit>=3.4.0/' -e 's/pyparsing>=3.0.5/pyparsing>=2.0/' requirements.txt
