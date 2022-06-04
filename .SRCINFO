@@ -1,0 +1,15 @@
+pkgbase = playerctld-systemd-unit
+	pkgdesc = A systemd user unit for playerctld
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/MPRIS#Playerctl
+	install = playerctld.install
+	arch = any
+	license = GPL
+	depends = playerctl
+	source = playerctld.install
+	source = playerctld.service
+	sha256sums = ecef02c870f81c6cc9d48f99a9eeb6e5037b983cdb5e50d123697e259f26fd8d
+	sha256sums = f021d030adda9e9b0366880685a0706f41afd3bc962de10ced1cc132bddf28be
+
+pkgname = playerctld-systemd-unit
