@@ -4,7 +4,7 @@ pkgname=plasma5-wallpapers-wallpaper-engine
 _pkgname=wallpaper-engine-kde-plugin
 pkgver=0.5.2
 _pkgver_glslang=11.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A KDE wallpaper plugin integrating wallpaper engine'
 arch=('x86_64')
 url='https://github.com/catsout/wallpaper-engine-kde-plugin'
@@ -23,14 +23,11 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}-${pkgver}"
-	mkdir -p build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) ..
-	make
+	cmake -B build -S "${_pkgname}-${pkgver}" \
+	  -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+	cmake --build build
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
-	cd build
-	make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 }
