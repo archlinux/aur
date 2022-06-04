@@ -63,13 +63,13 @@ build() {
 
 	make -C build
 
-	cd "$_pkgname"
-
 	echo "Generating device database, it will take some time, have a coffee..."
-	for i in ${_DEVICES[@]}; do
+
+	mkdir -p devicedbs
+	for i in "${_DEVICES[@]}"; do
 		echo "### Generating device $i ###"
-		[ ! -f "xilinx/$i.bba" ] && pypy3 xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device $i --bba xilinx/$i.bba
-		[ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
+		pypy3 "$_pkgname"/xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device "$i" --bba "devicedbs/$i.bba"
+		build/bbasm --le "devicedbs/$i.bba" "devicedbs/$i.bin"
 	done
 }
 
@@ -80,10 +80,9 @@ check() {
 package() {
 	make -C build DESTDIR="${pkgdir}" install
 
-	cd "$_pkgname"
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
-	for i in ${_DEVICES[@]}; do
-		install -Dm644 "xilinx/$i.bin" "${pkgdir}/usr/share/nextpnr/xilinx-chipdb/$i.bin"
+	install -Dm644 "$_pkgname/COPYING" "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+	for i in "${_DEVICES[@]}"; do
+		install -Dm644 "devicedbs/$i.bin" "${pkgdir}/usr/share/nextpnr/xilinx-chipdb/$i.bin"
 	done
 }
 
