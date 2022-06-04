@@ -1,13 +1,14 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Aki-nyan <aur@catgirl.link>
 
-pkgname=nextpnr-xilinx-git
+_pkgname=nextpnr-xilinx
+pkgname=$_pkgname-git
 pkgver=r2847.3bfb3d01
 pkgrel=1
 epoch=2
 pkgdesc="nextpnr portable FPGA place and route tool - for Xilinx"
 arch=(x86_64)
-url="https://github.com/gatecat/nextpnr-xilinx"
+url="https://github.com/gatecat/$_pkgname"
 license=("custom:ISC")
 groups=()
 depends=(
@@ -15,13 +16,13 @@ depends=(
 	"boost-libs"
 )
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost" "prjxray-db>=r258" "pypy3")
+makedepends=("git" "gcc" "cmake" "pkgconf" "gawk" "eigen" "boost" "prjxray-db>=r258" "pypy3")
 conflicts=(
 	"nextpnr"
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/gatecat/nextpnr-xilinx.git"
+	"$_pkgname::git+$url"
 	"nextpnr-xilinx-meta::git+https://github.com/gatecat/nextpnr-xilinx-meta.git"
 	"0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch"
 )
@@ -40,56 +41,48 @@ _DEVICES=(
 )
 
 pkgver() {
-	cd "$srcdir/nextpnr"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-_PREFIX="/usr"
 prepare() {
-	cd "${srcdir}/nextpnr"
-	patch -p1 < "$srcdir/0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch"
+	cd "$_pkgname"
 
-	mkdir -p build-xilinx
-	cd ..
+	patch -p1 < "$srcdir/0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch"
 }
 
 build() {
-	cd "${srcdir}/nextpnr"
-	cd build-xilinx
-		cmake -G Ninja        \
-			-DARCH=xilinx     \
-			-DBUILD_TESTS=ON \
-			-DBUILD_PYTHON=OFF \
-			-DBUILD_GUI=OFF    \
-			-DCMAKE_BUILD_TYPE=None \
-			-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
-			-DUSE_OPENMP=ON	\
-			..
-	cd ..
-	ninja -C build-xilinx
-#    echo "Generating device xc7a35t"
-#    [ ! -f "xilinx/xc7a35t.bba" ] && python3 xilinx/python/bbaexport.py --device xc7a35tcsg324-1 --bba xilinx/xc7a35t.bba
-#    [ ! -f "xilinx/xc7a35t.bin" ] && build-xilinx/bbasm --l xilinx/xc7a35t.bba xilinx/xc7a35t.bin
+	cmake -S "$_pkgname" -B build \
+		-DARCH=xilinx     \
+		-DBUILD_TESTS=ON \
+		-DBUILD_PYTHON=OFF \
+		-DBUILD_GUI=OFF    \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DUSE_OPENMP=ON
+
+	make -C build
+
+	cd "$_pkgname"
+
     echo "Generating device database, it will take some time, have a coffee..."
     for i in ${_DEVICES[@]}; do
         echo "### Generating device $i ###"
         [ ! -f "xilinx/$i.bba" ] && pypy3 xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device $i --bba xilinx/$i.bba
         [ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
     done
-    cd ..
 }
 
 check() {
-	cd "${srcdir}/nextpnr"
-	ninja -C build-xilinx test
+	make -C build test
 }
 
 package() {
-	cd "${srcdir}/nextpnr"
-	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-xilinx install
-	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/$pkgname/COPYING"
+	make -C build DESTDIR="${pkgdir}" install
+
+	cd "$_pkgname"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
     for i in ${_DEVICES[@]}; do
-        install -Dm644 "${srcdir}/nextpnr/xilinx/$i.bin" "${pkgdir}${_PREFIX}/share/nextpnr/xilinx-chipdb/$i.bin"
+        install -Dm644 "xilinx/$i.bin" "${pkgdir}/usr/share/nextpnr/xilinx-chipdb/$i.bin"
     done
-    cd ..
 }
