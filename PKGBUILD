@@ -2,13 +2,14 @@
 
 _pkgname=grume
 pkgname="${_pkgname}-git"
-pkgver=r2540.b1062dea
+pkgver=r2726.af2fd9c0
 pkgrel=1
 pkgdesc='A 3D Action RPG by Paul Wortmann.'
 arch=('x86_64')
 url="https://github.com/Paul-Wortmann/grume"
 license=('GPL2')
 depends=("assimp" "glfw" "glm" "openal" "mesa" "physfs" "libvorbis")
+makedepends=("git")
 source=("git+https://github.com/Paul-Wortmann/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})

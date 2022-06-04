@@ -1,10 +1,11 @@
 pkgbase = grume-git
 	pkgdesc = A 3D Action RPG by Paul Wortmann.
-	pkgver = r2540.b1062dea
+	pkgver = r2726.af2fd9c0
 	pkgrel = 1
 	url = https://github.com/Paul-Wortmann/grume
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = assimp
 	depends = glfw
 	depends = glm
