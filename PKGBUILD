@@ -3,7 +3,7 @@
 
 pkgname=inspect
 pkgdesc='Developer tool to inspect and debug mobile web apps and websites on iOS devices'
-pkgver=0.8.0
+pkgver=0.7.9
 pkgrel=1
 arch=('x86_64')
 url='https://inspect.dev'

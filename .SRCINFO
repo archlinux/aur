@@ -1,6 +1,6 @@
 pkgbase = inspect
 	pkgdesc = Developer tool to inspect and debug mobile web apps and websites on iOS devices
-	pkgver = 0.8.0
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://inspect.dev
 	arch = x86_64
