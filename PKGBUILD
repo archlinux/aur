@@ -18,7 +18,7 @@ sha256sums=("defdb65b6f560720f0495fbf56c72af5c30033acc52c33bfad3225b43c29db01"
             "00536b0e88b0ba3ee3d7f5ddd41a07daad6d796fa0d57f4eba60f7a55d075c07"
             "70e16da40fc2971dbb9b9c8872f345b3895e510ce8e9accb6c4ccf6aa2cae6ed"
             "cf710b63f2766563b8db39669708907d5b3873d58cef5226f02c1d3599a0128b"
-            "33e1986926c63488628d853f617ae956a8cb04de8f70a1d0a61897dc94f122a2")
+            "1954fb1584c3e541d941d582ebcfc35c3d07044e5813ba2f712c531e3a5a0011")
 
 fix_script() {
     script="$1"
@@ -50,28 +50,29 @@ package() {
     cp lib/*.jar -t "$jardest"
     cp -r lib/extensions "$jardest"
     cp -r * "$dest"
-    rm -rf "$dest/"{bat,bin,lib,*.bat,QuickSetup.app,Uninstall.app,uninstall*}
+    rm -rf "$dest"{bat,bin,lib,*.bat,QuickSetup.app,Uninstall.app,uninstall*}
 
-    mkdir -p "$dest/bin" "$dest/lib"
-    cp lib/*.sh "$dest/lib/"
+    mkdir -p "$dest"bin "$dest"lib
+    cp lib/*.sh "$dest"lib/
+    ln -s "$jardir"extensions "$dest"lib/extensions
 
-    fix_script "$dest/setup"
-    fix_script "$dest/upgrade"
-    sed -i "/export SCRIPT_NAME/a SCRIPT_ARGS=\"-Dorg.opends.quicksetup.Root=/usr/share/opendj/ \${SCRIPT_ARGS}\"" "$dest/setup"
-    for script in "$dest/lib/"*.sh; do
+    fix_script "$dest"setup
+    fix_script "$dest"upgrade
+    sed -i "/export SCRIPT_NAME/a SCRIPT_ARGS=\"-Dorg.opends.quicksetup.Root=/usr/share/opendj/ \${SCRIPT_ARGS}\"" "$dest"setup
+    for script in "$dest"lib/*.sh; do
         fix_script "$script"
     done
 
     for script in bin/*; do
         if [ -f "$script" ] && [ "$script" != "bin/create-rc-script" ]; then
             name=$(basename "$script")
-            cp "$script" "$dest/$script"
-            fix_script "$dest/$script"
+            cp "$script" "$dest$script"
+            fix_script "$dest$script"
             ln -s "${sharedir}bin/$name" "${bindir}opendj-$name"
         fi
     done
 
-    echo "/var/lib/opendj" > "${dest}/instance.loc"
+    echo "/var/lib/opendj" > "${dest}instance.loc"
 
     install -Dm 755 "../opendj-check-config" -t "${bindir}"
     install -Dm 644 "../opendj.service" -t "${pkgdir}/usr/lib/systemd/system"

@@ -1,2 +1,3 @@
 d /var/lib/opendj 755 opendj opendj
 h /var/lib/opendj/db -   -        -        - +C
+d /var/lib/opendj/lib/extensions 755 opendj opendj
