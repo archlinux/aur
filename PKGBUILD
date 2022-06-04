@@ -1,4 +1,5 @@
-# Maintainer: whriedplanck
+# Maintainer: Trevor Tilby <trevor dot tilby at gmail dot com>
+# Contributor: whriedplanck
 
 pkgname=powdertoy-bin
 pkgver=96.2
