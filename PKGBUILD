@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
-pkgver="1.1.0"
+pkgver="1.2.0"
 pkgrel="1"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url=""
@@ -10,7 +10,10 @@ groups=()
 depends=("pkgfile" "zsh")
 makedepends=()
 checkdepends=()
-optdepends=("pamac-cli")
+optdepends=(
+  "pamac-cli: Prompts user to enter password and fetches regular, aur, flatpak, snap, etc. packages"
+  "yay: An aur helper that also prompts user to enter password and fetches regular and aur packages. (if both are installed, pamac is preferred)"
+)
 provides=()
 conflicts=()
 replaces=()
