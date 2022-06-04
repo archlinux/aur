@@ -1,7 +1,7 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
-	pkgver = 96.0
-	pkgrel = 4
+	pkgver = 102.0
+	pkgrel = 1
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = iridium-rpm
 	conflicts = chromium
 	options = !emptydirs
 	options = !strip
-	source = https://downloads.iridiumbrowser.de/openSUSE_Leap_15.3/iridium-browser-2021.12.96.0-bp153.1636.1.x86_64.rpm
-	sha256sums = 41a7256fefa04f0fec0f80ea4839bc4478aa285a643609aa65c5b38617f610fd
+	source = https://downloads.iridiumbrowser.de/epel9/iridium-browser-2022.04.100.0-1.el9.x86_64.rpm
+	sha256sums = 621921dfc5e353bc44c6d12797a2e5cd71b8caf1efade0a0f19f3362de89b0da
 
 pkgname = iridium-rpm
