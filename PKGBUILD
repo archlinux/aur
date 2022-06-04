@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('rofi' 'python-gobject' 'mate-desktop' 'appmenu-gtk-module' 'python-pkgconfig'
          'dbus-python' 'python-psutil' 'python-setproctitle' 'python-xlib' 'python-pyinotify')
 makedepends=('python-setuptools' 'python-distutils-extra' 'git' 'bc')
-optdepends=('PLOTINUS-DBUS: plotinus backend')
+optdepends=('DBUS-PLOTINUS: plotinus backend')
 provides=("${_pkgname}=${_pkgver}")
 conflicts=("${_pkgname}")
 _branch='dev'

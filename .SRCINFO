@@ -19,7 +19,7 @@ pkgbase = mate-hud-dev
 	depends = python-setproctitle
 	depends = python-xlib
 	depends = python-pyinotify
-	optdepends = PLOTINUS-DBUS: plotinus backend
+	optdepends = DBUS-PLOTINUS: plotinus backend
 	provides = mate-hud=22.04.4
 	conflicts = mate-hud
 	source = mate-hud::git+https://github.com/twa022/mate-hud#branch=dev
