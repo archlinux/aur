@@ -1,0 +1,17 @@
+pkgbase = python-cq_warehouse-git
+	pkgdesc = A cadquery parametric part collection, dev branch
+	pkgver = v0.6.0.r32.gbe12a7d
+	pkgrel = 1
+	url = https://github.com/gumyr/cq_warehouse
+	arch = x86_64
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = git
+	depends = python-cadquery
+	provides = python-cq_warehouse
+	conflicts = python-cq_warehouse
+	source = git+https://github.com/gumyr/cq_warehouse.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = python-cq_warehouse-git
