@@ -1,6 +1,6 @@
 pkgbase = cargo-workspaces
 	pkgdesc = Cargo plugin for managing cargo workspaces and their crates
-	pkgver = 0.2.33
+	pkgver = 0.2.34
 	pkgrel = 1
 	url = https://github.com/pksunkara/cargo-workspaces
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cargo-workspaces
 	depends = openssl
 	depends = zlib
 	options = !lto
-	source = cargo-workspaces-0.2.33.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v0.2.33.tar.gz
-	sha512sums = cfb8763911a2b90f2cd54b2664f5e6aad2a6ee5969906b6ce97087577a0fe6a7ed09c89a25ace068de0b5826a2e8dd4ff379b0d20f69f7dec581b7e110259a2d
+	source = cargo-workspaces-0.2.34.tar.gz::https://github.com/pksunkara/cargo-workspaces/archive/v0.2.34.tar.gz
+	sha512sums = 50684f19cde1c9c7f35938abe1ff152efb4137a0b5b1e2648761e1e2c7e107aa892e6a0aa78b69d010513effd1df95dc2f6e072c559af8986a59c9de406f2fa5
 
 pkgname = cargo-workspaces
