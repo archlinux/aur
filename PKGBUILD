@@ -6,13 +6,14 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2021.11.4_r526_g9256a033a6
+pkgver=2022.6.1_r225_g0829bec1c3
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
 depends=(
   gcc
+  python-aiodiscover
   python-aiohttp
   python-aiohttp-cors
   python-astral
@@ -27,6 +28,7 @@ depends=(
   python-defusedxml
   python-httpx
   python-jinja
+  python-lru-dict
   python-mutagen
   python-pillow
   python-pip
@@ -44,6 +46,8 @@ depends=(
 )
 makedepends=(
   git
+  python-build
+  python-pip
   python-setuptools
 )
 optdepends=(
@@ -59,7 +63,7 @@ source=(
   home-assistant.service
 )
 b2sums=('SKIP'
-        'c56b88e4d8d6d10ea132d22916468109ffaa83c1176a75e0c0ead16b261c34fe4c279cec6dca415b1addfcd873ad35b294f60a3e1ba62cc917a9dbb73cce47d4')
+        'b5e181e00e499cd0c6e3922af44afe7e8043063d49c89c207beeff9b56ea2920a6f7b6d211be027cb4b6cf8450396623515dadcebdbdbdf0f934d3d16963790e')
 
 pkgver() {
   cd home-assistant
@@ -73,20 +77,19 @@ pkgver() {
 prepare() {
   cd home-assistant
   # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i requirements.txt setup.py homeassistant/package_constraints.txt
+  sed 's/==/>=/g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
   # allow pip >= 20.3 to be used
-  sed 's/,<20.3//g' -i requirements.txt setup.py homeassistant/package_constraints.txt
+  sed 's/,<20.3//g' -i requirements.txt setup.cfg homeassistant/package_constraints.txt
 }
 
 build() {
   cd home-assistant
-  python setup.py build
+  python -m build
 }
 
 package() {
-  cd home-assistant
-  python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
-  install -Dm 644 ../home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps home-assistant/dist/*.whl
+  install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
 # vim: ts=2 sw=2 et:
