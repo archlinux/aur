@@ -1,0 +1,24 @@
+From 8f0cf99eba23b575616e45c43266145eaac77dd7 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 4 Jun 2022 11:33:13 +0200
+Subject: [PATCH 5/7] fix(cmake): fix missing gtest linker argument
+
+---
+ src/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b95872e..63502e5 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -102,6 +102,7 @@ add_executable(parse_fasm_tests
+   ${ANTLR_FasmParser_CXX_OUTPUTS})
+ target_link_libraries(parse_fasm_tests ${ANTLR4_RUNTIME})
+ target_link_libraries(parse_fasm_tests gtest_main)
++target_link_libraries(parse_fasm_tests gtest)
+ #target_compile_options(parse_fasm_tests PRIVATE -Wno-attributes) # Disable warning from antlr4-runtime
+ 
+ # Standalone executable
+-- 
+2.36.1
+

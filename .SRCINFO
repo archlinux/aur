@@ -1,10 +1,11 @@
 pkgbase = python-fasm-git
 	pkgdesc = FPGA Assembly (FASM) Parser and Generation library
-	pkgver = 0.0.2.r67.gaf39a4f
+	pkgver = 0.0.2.r98.g9a73d70
 	pkgrel = 2
 	url = https://github.com/SymbiFlow/fasm
 	arch = x86_64
 	license = ISC
+	checkdepends = gtest
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
@@ -14,15 +15,26 @@ pkgbase = python-fasm-git
 	depends = python
 	depends = python-textx
 	depends = antlr4-runtime
-	provides = python-fasm=0.0.2.r67.gaf39a4f
+	provides = python-fasm=0.0.2.r98.g9a73d70
 	conflicts = fasm
 	conflicts = python-fasm
 	source = git+https://github.com/SymbiFlow/fasm.git
-	source = git+https://github.com/antlr/antlr4
-	source = git+https://github.com/google/googletest
+	source = FindANTLR.cmake
+	source = 0001-ANTLR4-4.10-compatibility.patch
+	source = 0002-cmake-use-native-gtest.patch
+	source = 0003-cmake-use-native-antlr.patch
+	source = 0004-cmake-install-parse_fasm.so.patch
+	source = 0005-fix-cmake-fix-missing-gtest-linker-argument.patch
+	source = 0006-Use-cmake-directly-instead-of-letting-setup.py-try-t.patch
+	source = 0007-cmake-install-tags.py-properly.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ff8bb6b28f8e4724aeac01526ea7fa193f4bfa979de24ac99dbae92ee7116488
+	sha256sums = d70b631453501e731e63cfa21d24c12386a2e3343631b5e4e7edbba2f4dc7ace
+	sha256sums = 66404ae75ab1e761bcf22de598e76882cc52cad57a95368e751b8a078ecca9ce
+	sha256sums = 8c973830b1309fa636e101ce520d7d617adf09364ca86b5c8a5111b1597fb57f
+	sha256sums = aff2f899aa8bc8b9b93d48430c63d97012c1d53b41106b2f4294e8dbcacb0110
+	sha256sums = 6be3cebb42c8f40359c7b0d5bbbaba0434920ba21276ee78dc362e7084739d03
+	sha256sums = 24b86a0575317b2349ec4ae488592f949995d5e9cabbf0bc41b2d133a91c6591
+	sha256sums = 8f4b57b2bbbfa601b53003489a786ee889db00b92f67a34356e7efcaa7b83683
 
 pkgname = python-fasm-git
-
