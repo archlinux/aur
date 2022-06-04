@@ -2,26 +2,35 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=workbench
-pkgver=1.2.0
-pkgrel=2
+pkgver=42.0
+pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/sonnyp/Workbench"
 license=('GPL3')
 depends=('gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vte4-git')
-makedepends=('git' 'meson' 'npm')
+makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson' 'npm' 'vala')
 checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
-source=("git+https://github.com/sonnyp/Workbench.git#tag=v$pkgver"
+_commit=b86cdfb3e6440e4e034fcb6c609ff84401630faa
+source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
+        'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
+
+pkgver() {
+  cd "$srcdir/Workbench"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/Workbench"
   git submodule init
+  git config submodule.icon-development-kit-www.url "$srcdir/icon-development-kit-www"
   git config submodule.src/troll.url "$srcdir/troll"
   git submodule update
 
@@ -45,4 +54,7 @@ check() {
 package() {
   cd "$srcdir/Workbench"
   meson install -C build --destdir "$pkgdir"
+
+  # Some icons conflict with other packages like Geary and Extension Manager
+  rm -rf "$pkgdir/usr/share/icons/hicolor/scalable/actions/"
 }
