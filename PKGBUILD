@@ -10,7 +10,6 @@ arch=("any")
 url="https://github.com/gatecat/nextpnr-xilinx"
 license=("custom:ISC")
 groups=()
-options=("!strip")
 depends=(
 	"python"
 	"boost-libs"
