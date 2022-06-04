@@ -1,7 +1,7 @@
 pkgbase = aom-psy-git
 	pkgdesc = An open, royalty-free video coding format, includes tune=(vmaf|butteraugli) and BlueSwordM's psy patches
-	pkgver = r32664.g5da8885ae
-	pkgrel = 1
+	pkgver = r32687.g2b3394525
+	pkgrel = 2
 	url = https://aomedia.org/
 	arch = i686
 	arch = x86_64

@@ -1,8 +1,8 @@
 # Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=aom-psy-git
-pkgver=r32664.g5da8885ae
-pkgrel=1
+pkgver=r32687.g2b3394525
+pkgrel=2
 pkgdesc="An open, royalty-free video coding format, includes tune=(vmaf|butteraugli) and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
@@ -26,9 +26,9 @@ pkgver() {
 build() {
   cd "aom"
   export LDFLAGS="-fuse-ld=lld -Wl,--thinlto-jobs=all"
-  COMMON_FLAGS="-O3 -march=native -flto=thin -pipe $LD_FLAGS"
+  COMMON_FLAGS="-O3 -march=native -flto=thin -pipe"
   export CC=clang CXX=clang++
-  export CPPFLAGS="${COMMON_FLAGS}" CCXFLAGS="${COMMON_FLAGS}"
+  export CFLAGS="${COMMON_FLAGS}" CXXFLAGS="${COMMON_FLAGS}"
 
   cmake \
     -B "_build" \
@@ -37,12 +37,12 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DCMAKE_C_COMPILER="${CC}" \
     -DCMAKE_CXX_COMPILER="${CXX}" \
-    -DCMAKE_C_FLAGS="$COMMON_FLAGS" \
-    -DCMAKE_CXX_FLAGS="$COMMON_FLAGS" \
-    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-    -DAOM_EXTRA_C_FLAGS="$COMMON_FLAGS" \
-    -DAOM_EXTRA_CXX_FLAGS="$COMMON_FLAGS" \
-    -DAOM_EXTRA_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_C_FLAGS="${CFLAGS}" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -DAOM_EXTRA_C_FLAGS="${CFLAGS}" \
+    -DAOM_EXTRA_CXX_FLAGS="${CXXFLAGS}" \
+    -DAOM_EXTRA_EXE_LINKER_FLAGS="${LDFLAGS}" \
     -DBUILD_SHARED_LIBS=1 \
     -DENABLE_TESTS=0 \
     -DENABLE_EXAMPLES=1 \
