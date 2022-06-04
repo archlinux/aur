@@ -7,7 +7,7 @@
 # match! -rc[0-9]+$
 
 pkgname=libvirt-xen
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -90,7 +90,7 @@ backup=(
 )
 source=("https://libvirt.org/sources/${pkgname%*-xen}-$pkgver.tar.xz"{,.asc}
 		"find_programs.ini")
-sha256sums=('be229b9ad1d48be7007e7bf341fc990c65e24aea624c16db6b36d02c820df5eb'
+sha256sums=('601a6e9bb03a43d05659f63e4a403df253ab0975b4a973f10a5607f3bbc018dd'
             'SKIP'
             '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
