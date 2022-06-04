@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=uclibc-ng
-pkgver=1.0.37
+pkgver=1.0.41
 pkgrel=1
 epoch=
 pkgdesc="A C library for embedded Linux"
@@ -28,12 +23,13 @@ source=(
 	"https://downloads.uclibc-ng.org/releases/$pkgver/uClibc-ng-$pkgver.tar.xz"
 )
 noextract=()
-sha512sums=('e09cffe3462b292f1070a0ff92faef2a39e1f704b41c35c8fc71902ef335b8e357a58c35d1640481797df443b15c08d1e95dd0aa88b223158ab0850d67a2c771')
+sha512sums=('15a5d617b6571bdd77e6d66d850ace76f6f4d82ce566b7d1b969e7f83f240c51a1593fb437740be52503273c429280625703806bd8e7028dd7c280af76d36070')
 
 prepare() {
 	cd "uClibc-ng-$pkgver"
 	ARCH=x86_64 make defconfig
 	sed -i 's,KERNEL_HEADERS.*,KERNEL_HEADERS="/usr/include/",g' .config
+	sed -i 's,# UCLIBC_HAS_RESOLVER_SUPPORT.*,UCLIBC_HAS_RESOLVER_SUPPORT=y,g' .config
 }
 
 build() {
