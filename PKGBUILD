@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
 url='https://earthly.dev/'
-license=('custom: BSL1.1')
+license=('MPL2')
 depends=('docker')
 makedepends=('git' 'go')
 BUILDENV+=('!check')
@@ -39,5 +39,4 @@ check() {
 
 package() {
     install -D -m755 earthly/build/earthly -t "${pkgdir}/usr/bin"
-    install -D -m644 earthly/licenses/BSL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
