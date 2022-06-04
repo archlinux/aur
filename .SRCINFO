@@ -1,7 +1,7 @@
 pkgbase = juce-bin
 	pkgdesc = Cross-platform c++ framework for creating audio applications
 	pkgver = 6.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juce-framework/JUCE
 	install = juce-bin.install
 	arch = x86_64

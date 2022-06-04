@@ -1,8 +1,9 @@
-# Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
+# Maintainer : silverhikari <kerrickethan@gmail.com>
+# Contributor: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 
 pkgname=juce-bin
 pkgver=6.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform c++ framework for creating audio applications"
 arch=("x86_64")
 url="https://github.com/juce-framework/JUCE"
@@ -26,6 +27,9 @@ package() {
 	# Install Projucer binary
 	install -Dm755 "${srcdir}/JUCE/Projucer" "${pkgdir}/usr/bin/Projucer"
 	install -Dm644 "${srcdir}/Projucer.desktop" "${pkgdir}/usr/share/applications/Projucer.desktop"
+
+	#icon for desktop
+	install -Dm755 "${srcdir}/JUCE/examples/Assets/juce_icon.png" "${pkgdir}/usr/share/pixmaps/Projucer"
 
 	# License
 	install -Dm755 "${srcdir}/JUCE/LICENSE.md" "${pkgdir}/usr/share/licenses/juce-bin/LICENSE.md"
