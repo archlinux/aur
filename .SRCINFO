@@ -1,12 +1,10 @@
 pkgbase = python2-msgpack
 	pkgdesc = MessagePack serializer implementation for Python
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/msgpack/msgpack-python
 	arch = x86_64
 	license = Apache
-	checkdepends = python2-pytest
-	checkdepends = python2-six
 	makedepends = cython2
 	makedepends = python2-setuptools
 	depends = python2
