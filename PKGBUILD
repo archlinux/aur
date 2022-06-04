@@ -30,14 +30,14 @@ sha256sums=('SKIP'
             'SKIP'
             'e4faf96ecffea231c31e5b2e481bb48a8646982bc98ad71a463cabb078ff4856')
 _DEVICES=(
-        "xc7a100tcsg324-1"
-        "xc7a100tfgg676-1"
-        "xc7a200tffg1156-1"
-        "xc7a200tsbg484-1"
-        "xc7a35tcpg236-1"
-        "xc7a35tcsg324-1"
-        "xc7a35tftg256-1"
-        "xc7a50tfgg484-1"
+	"xc7a100tcsg324-1"
+	"xc7a100tfgg676-1"
+	"xc7a200tffg1156-1"
+	"xc7a200tsbg484-1"
+	"xc7a35tcpg236-1"
+	"xc7a35tcsg324-1"
+	"xc7a35tftg256-1"
+	"xc7a50tfgg484-1"
 )
 
 pkgver() {
@@ -53,10 +53,10 @@ prepare() {
 
 build() {
 	cmake -S "$_pkgname" -B build \
-		-DARCH=xilinx     \
+		-DARCH=xilinx \
 		-DBUILD_TESTS=ON \
 		-DBUILD_PYTHON=OFF \
-		-DBUILD_GUI=OFF    \
+		-DBUILD_GUI=OFF \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_OPENMP=ON
@@ -65,12 +65,12 @@ build() {
 
 	cd "$_pkgname"
 
-    echo "Generating device database, it will take some time, have a coffee..."
-    for i in ${_DEVICES[@]}; do
-        echo "### Generating device $i ###"
-        [ ! -f "xilinx/$i.bba" ] && pypy3 xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device $i --bba xilinx/$i.bba
-        [ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
-    done
+	echo "Generating device database, it will take some time, have a coffee..."
+	for i in ${_DEVICES[@]}; do
+		echo "### Generating device $i ###"
+		[ ! -f "xilinx/$i.bba" ] && pypy3 xilinx/python/bbaexport.py --xray /usr/share/xray/database/artix7 --meta "$srcdir/nextpnr-xilinx-meta/artix7" --device $i --bba xilinx/$i.bba
+		[ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
+	done
 }
 
 check() {
@@ -82,7 +82,9 @@ package() {
 
 	cd "$_pkgname"
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
-    for i in ${_DEVICES[@]}; do
-        install -Dm644 "xilinx/$i.bin" "${pkgdir}/usr/share/nextpnr/xilinx-chipdb/$i.bin"
-    done
+	for i in ${_DEVICES[@]}; do
+		install -Dm644 "xilinx/$i.bin" "${pkgdir}/usr/share/nextpnr/xilinx-chipdb/$i.bin"
+	done
 }
+
+# vim: set noet:
