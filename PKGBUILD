@@ -18,7 +18,7 @@ depends=(
 optdepends=()
 makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost" "prjxray-db>=r258" "pypy3")
 conflicts=(
-	"nextpnr-git"
+	"nextpnr"
 )
 replaces=()
 source=(
