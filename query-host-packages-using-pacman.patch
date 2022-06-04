@@ -1,0 +1,12 @@
+diff -aur package.pristine/pbuilder-checkparams package.new/pbuilder-checkparams
+--- package.pristine/pbuilder-checkparams	2019-04-02 11:33:15.000000000 +0200
++++ package.new/pbuilder-checkparams	2021-04-23 16:20:57.360850335 +0200
+@@ -391,7 +391,7 @@
+     if [ "$USECGROUP" = "yes" ]; then
+         # v215 is required for systemd-escape
+         if systemctl is-system-running --quiet >/dev/null 2>&1 && \
+-                dpkg --compare-versions "$(dpkg-query -W --showformat='${Version}' systemd)" gt 215; then
++                dpkg --compare-versions "$(pacman -Q systemd | cut -d' ' -f2)" gt 215; then
+             # --description uses that no-spaces string because the quoting sucks
+             # right now, and it would end up trying to execute $PBUILDER_OPERATION…
+             # long-term solution is to turn $CHROOTEXEC into a command and properly
