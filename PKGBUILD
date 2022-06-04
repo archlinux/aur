@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/arch
 		"50-bitfocus-companion.rules"
 		"bitfocus-companion.desktop")
 
-sha256sums=('e0daa9058af42df623892f933000301257c699b4086ebb246fabbd897e0a3765'
+sha256sums=('a88ae7c376849de25569b531b7aec562324c6fc37a419b642ad7107104c47ad6'
             'c0e7cd1f730a7b4381e654b53f6fdd1c06911b2593bdfe07bba5e198fc61d5d9'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
@@ -35,7 +35,9 @@ _ensure_local_nvm() {
 prepare() {
 	_ensure_local_nvm
 
+	rm -Rf "${srcdir}/npm"
 	mkdir "${srcdir}/npm"
+	rm -Rf "${srcdir}/yarn"
 	mkdir "${srcdir}/yarn"
 
 	nvm install 14.19.0
