@@ -1,0 +1,14 @@
+[Unit]
+Description=Gitaly is a Git RPC service for handling all the git calls made by GitLab.
+
+[Service]
+Type=simple
+User=gitlab
+Group=gitlab
+WorkingDirectory=/usr/share/webapps/gitlab
+SyslogIdentifier=gitlab-gitaly
+PIDFile=/run/gitlab/gitaly.pid
+ExecStart=/usr/bin/gitaly /etc/gitlab-gitaly/config.toml
+
+[Install]
+WantedBy=multi-user.target

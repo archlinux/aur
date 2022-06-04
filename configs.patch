@@ -1,0 +1,82 @@
+diff '--color=auto' -Naur a/config.toml.example b/config.toml.example
+--- a/config.toml.example	2022-06-04 09:04:55.882280459 +1000
++++ b/config.toml.example	2022-06-04 09:08:35.230703194 +1000
+@@ -2,10 +2,10 @@
+ # Documentation lives at https://docs.gitlab.com/ee/administration/gitaly/ and
+ # https://docs.gitlab.com/ee//administration/gitaly/reference
+ 
+-socket_path = "/home/git/gitlab/tmp/sockets/private/gitaly.socket"
++socket_path = "/run/gitlab/gitlab-gitaly.socket"
+ 
+ # The directory where Gitaly's executables are stored
+-bin_dir = "/home/git/gitaly/_build/bin"
++bin_dir = "/usr/bin"
+ 
+ # # Optional: The directory where Gitaly can create all files required to
+ # # properly operate at runtime. If not set, Gitaly will create a directory in
+@@ -22,7 +22,7 @@
+ # # Optional: configure where the Gitaly creates the sockets for internal connections. If unset, Gitaly will create a randomly
+ # # named temp directory each time it boots.
+ # # Non Gitaly clients should never connect to these sockets.
+-# internal_socket_dir = "/home/git/gitlab/tmp/sockets/private/internal"
++# internal_socket_dir = "run/gitlab/private"
+ 
+ # # Optional: authenticate Gitaly requests using a shared secret
+ # [auth]
+@@ -30,8 +30,8 @@
+ # transitioning = false # Set `transitioning` to true to temporarily allow unauthenticated while rolling out authentication.
+ 
+ # [tls]
+-# certificate_path = '/home/git/cert.cert'
+-# key_path = '/home/git/key.pem'
++# certificate_path = '/var/lib/gitlab/cert.cert'
++# key_path = '/var/lib/gitlab/key.pem'
+ 
+ # # Git settings
+ # [git]
+@@ -43,7 +43,7 @@
+ 
+ [[storage]]
+ name = "default"
+-path = "/home/git/repositories"
++path = "/var/lib/gitlab/repositories"
+ 
+ # # You can optionally configure more storages for this Gitaly instance to serve up
+ #
+@@ -55,7 +55,7 @@
+ # # You can optionally configure Gitaly to output JSON-formatted log messages to stdout
+ # [logging]
+ # # The directory where Gitaly stores extra log files
+-dir = "/home/git/gitlab/log"
++dir = "/var/log/gitlab"
+ # format = "json"
+ # # Optional: Set log level to only log entries with that severity or above
+ # # One of, in order: debug, info, warn, errror, fatal, panic
+@@ -73,7 +73,7 @@
+ 
+ [gitaly-ruby]
+ # The directory where gitaly-ruby is installed
+-dir = "/home/git/gitaly/ruby"
++dir = "/usr/share/webapps/gitlab-gitaly/ruby"
+ 
+ # # Gitaly-ruby resident set size (RSS) that triggers a memory restart (bytes)
+ # max_rss = 200000000
+@@ -93,14 +93,14 @@
+ 
+ [gitlab-shell]
+ # The directory where gitlab-shell is installed
+-dir = "/home/git/gitlab-shell"
++dir = "/usr/share/webapps/gitlab-shell"
+ 
+ [hooks]
+-custom_hooks_dir = "/home/git/custom_hooks"
++custom_hooks_dir = "/var/lib/gitlab/custom_hooks"
+ 
+ [gitlab]
+-secret_file = "/home/git/gitlab-shell/.gitlab_shell_secret"
+-url = "http+unix://%2Fhome%2Fgit%2Fgitlab%2Ftmp%2Fsockets%2Fgitlab-workhorse.socket"
++secret_file = "/etc/webapps/gitlab-shell/secret"
++url = "http+unix://%2Frun%2Fgitlab%2Fgitlab.socket"
+ # Only needed if a UNIX socket is used in `url` and GitLab is configured to
+ # use a relative path (e.g. /gitlab).
+ # relative_url_root = '/'
