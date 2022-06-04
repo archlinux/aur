@@ -45,7 +45,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir" install
-	gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 	install -Dt "$pkgdir/usr/share/applications/" -m644 "$pkgname.desktop"
 	install -Dt "$pkgdir/usr/share/pixmaps/" -m644 "icons/$pkgname.xpm"
 }
