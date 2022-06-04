@@ -1,0 +1,9 @@
+post_install() {
+  echo "If you want to remove proprietary stuff to avoid asking for a Lens ID, you"
+  echo "can delete the folder /usr/share/lens/resources/extensions/lenscloud*"
+  echo "# sudo rm -vr /usr/share/lens/resources/extensions/lenscloud*"
+}
+
+post_upgrade() {
+  post_install
+}

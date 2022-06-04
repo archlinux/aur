@@ -14,9 +14,12 @@ url='https://k8slens.dev'
 depends=('gtk3' 'libxss' 'nss')
 provides=('lens')
 conflicts=('lens')
+install="${_pkgname}.install"
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${_pkgdate}.${arch}.AppImage"
+        "${_pkgname}.install"
         "${_pkgname}.desktop")
 b2sums=('2b0ec661593b728edde68d9404169487303e65c9b8ac34a15abb8bcef1c21c65829a546dac2fe70dd7e34969fa6ed542fd673400ebea708de4c9588ad61e8196'
+        '824c9dcfd5700335632d814c2c1edc3861e18e5f82f0866474895f7b40d0177097d308d6802944ef1c1b6eda2f58b33647a3b2221e3c482f7cf2085fb97ab6b3'
         '2aea209098a22d8e4b263a059f6e67b2a3e8f8dfb0c15ac81e33edb4c2be81fd7a6f419a04a77be5b5c8d81b160e6e3f159b4d8639ccab705fffecf149255a36')
 
 prepare() {
