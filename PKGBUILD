@@ -2,11 +2,11 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
-url="https://xushengfeng.github.io/eSearch-website/"
+url="https://esearch.vercel.app/"
 license=('GPL3')
 groups=('')
 depends=('electron18' 'at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
@@ -18,7 +18,7 @@ conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/eSearch_${pkgver}.aur")
-sha512sums=('4714159c6336a5bca1483afba4e9ec95c196f36753327b1c446849f3d548ee5cc48b6c3ba13ac6099e51fa69ec04977f08019ad5c093b0c34e29ece78c3dff4b')
+sha512sums=('322298d14cdf4f4b1f75e9d4780c26a9bc85c8d97cb4d5711747d195dfbf42fc8ed64becd0dd91ca7617cd30cdd22fd73fe3b61f2b27339651cd6d6242fc6784')
 
 package(){
 
