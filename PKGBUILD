@@ -1,7 +1,7 @@
 # Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
 
 pkgname=opendj
-pkgver=4.4.11
+pkgver=4.5.0
 pkgrel=2
 pkgdesc="OpenDJ is an LDAPv3 compliant directory service"
 arch=("any")
@@ -14,7 +14,7 @@ source=("https://github.com/OpenIdentityPlatform/OpenDJ/releases/download/$pkgve
         "opendj.service"
         "opendj.sysusers"
         "opendj.tmpfiles")
-sha256sums=("00ac826b9d55e7c320f427a103e9f256b4b55dd9994af72302e0946f042f653f"
+sha256sums=("defdb65b6f560720f0495fbf56c72af5c30033acc52c33bfad3225b43c29db01"
             "00536b0e88b0ba3ee3d7f5ddd41a07daad6d796fa0d57f4eba60f7a55d075c07"
             "70e16da40fc2971dbb9b9c8872f345b3895e510ce8e9accb6c4ccf6aa2cae6ed"
             "cf710b63f2766563b8db39669708907d5b3873d58cef5226f02c1d3599a0128b"
