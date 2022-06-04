@@ -23,6 +23,7 @@ sha256sums=('SKIP')
 
 build() {
   cd ulauncher
+  python setup.py build_prefs
   env PATH=$(getconf PATH) python setup.py build
 }
 
