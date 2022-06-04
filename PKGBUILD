@@ -23,7 +23,7 @@ options=()
 install=
 changelog=
 source=(
-	"https://www.valgrind.org/downloads/$pkgname-$pkgver.tar.bz2"
+	"https://sourceware.org/pub/valgrind/$pkgname-$pkgver.tar.bz2"
 	"includes.patch"
 )
 noextract=()

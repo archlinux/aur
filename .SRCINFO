@@ -8,10 +8,9 @@ pkgbase = valkyrie
 	makedepends = gendesk
 	depends = valgrind>=3.6.0
 	depends = qt4
-	source = https://www.valgrind.org/downloads/valkyrie-2.0.0.tar.bz2
+	source = https://sourceware.org/pub/valgrind/valkyrie-2.0.0.tar.bz2
 	source = includes.patch
 	sha512sums = 435abb17ecad114c3e492fa193e508bad7ca61884bd09bf1bf0b8398c63151d33e571fea927b84f05bc2b647183af441da1550161a6f766db9e9a15d00cfc888
 	sha512sums = f1ff0ebdeb6b2e865e6442df629f3f67d146f178f6fd1ea03a74a511d58a661e11fe8d10c16935b8adbdfd01b0d70d23e9f42b6925b9660c89ba41ac5be3dd31
 
 pkgname = valkyrie
-
