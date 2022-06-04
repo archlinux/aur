@@ -1,14 +1,15 @@
 pkgbase = pacseek-bin
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages (binary version)
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
 	license = GPL2
 	depends = pacman
+	optdepends = xdg-utils: open URL on click support
 	provides = pacseek
 	conflicts = pacseek
-	source = https://github.com/moson-mo/pacseek/releases/download/v1.3.1/pacseek-linux-x64-v1.3.1.tar.gz
-	sha256sums = f570e21a875429da3269618abfff90e2f61ce21723209b824d815877719e38e6
+	source = https://github.com/moson-mo/pacseek/releases/download/v1.3.2/pacseek-linux-x64-v1.3.2.tar.gz
+	sha256sums = b1326c8d53f2b0953164ea92a9c4eb4beb5c2512a9b729b4322d3d9eb447d7dc
 
 pkgname = pacseek-bin
