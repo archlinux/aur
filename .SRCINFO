@@ -14,6 +14,6 @@ pkgbase = mellis
 	source = git+https://github.com/themeliolabs/mellis.git#tag=v0.3.6
 	source = file://ginkou-loader-wrapper
 	sha256sums = SKIP
-	sha256sums = c067389bd0331916456c40f7806e7b1203b44edeb57ec3e4c7667badea2b2e05
+	sha256sums = ab8068086631322ff4f85ae126d2a7e0c0cc30b33ec2ff42849d48c454ed3863
 
 pkgname = mellis

@@ -13,7 +13,7 @@ source=(
 	"file://ginkou-loader-wrapper"
 )
 sha256sums=(
-	'SKIP'	'c067389bd0331916456c40f7806e7b1203b44edeb57ec3e4c7667badea2b2e05'
+	'SKIP'	'ab8068086631322ff4f85ae126d2a7e0c0cc30b33ec2ff42849d48c454ed3863'
 )
 
 prepare() {
@@ -21,7 +21,11 @@ prepare() {
 	git submodule init
 	git submodule update
 
-	cd "ginkou-loader"
+	cd "ginkou"
+	rm package-lock.json
+	npm i
+
+	cd "../ginkou-loader"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -30,15 +34,13 @@ build() {
 
 	# build web assets
 	cd "ginkou"
-	rm package-lock.json
-	npm i
 	npm run build
 
 	# build loader
 	cd "../ginkou-loader"
 	export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
