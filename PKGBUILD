@@ -82,7 +82,7 @@ check() {
 package() {
 	cd "${srcdir}/nextpnr"
 	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-xilinx install
-	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-xilinx/COPYING"
+	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/$pkgname/COPYING"
     for i in ${_DEVICES[@]}; do
         install -Dm644 "${srcdir}/nextpnr/xilinx/$i.bin" "${pkgdir}${_PREFIX}/share/nextpnr/xilinx-chipdb/$i.bin"
     done
