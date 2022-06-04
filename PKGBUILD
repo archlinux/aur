@@ -7,8 +7,8 @@ pkgdesc="A Random Number Test Suite (that actually compiles)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
 url="https://github.com/christopherkobayashi/dieharder"
-#depends=()
-makedepends=('automake')
+depends=( 'gsl' )
+makedepends=('automake' 'autoconf' )
 source=('dieharder::git+https://github.com/christopherkobayashi/dieharder.git')
 sha512sums=('SKIP')
 
