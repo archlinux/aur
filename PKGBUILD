@@ -29,7 +29,7 @@ source=("http://topcoder.com/contest/arena/ContestAppletProd7.2.jnlp"
           "topcoder-applet.desktop"
           "exception.sites")
 noextract=()
-md5sums=('938ae37090f43dfc69ffe03efddf6f5c' 'e678ae8884b6b3a0d3a4fc4539b26a50' '24f7a3136e9aa46353a26c1cbf8d6a30' '49169bb9782db7bd1b3748e30952a720')
+md5sums=('938ae37090f43dfc69ffe03efddf6f5c' 'e678ae8884b6b3a0d3a4fc4539b26a50' '64e45a763b70e950f716d7d81cd6435a' '49169bb9782db7bd1b3748e30952a720')
 validpgpkeys=()
 programname="ContestAppletProd7.2.jnlp"
 logoname="topcoder_logo.png"
