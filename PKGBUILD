@@ -1,4 +1,6 @@
-# Maintainer: CrunchySnake
+# Maintainer: jasper1378
+# Contributor: ZeekSpin
+# Contributor: CrunchySnake
 
 _gitname=lua-pam
 pkgname=lua-pam-git
