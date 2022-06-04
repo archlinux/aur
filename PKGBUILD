@@ -3,25 +3,26 @@
 # Contributor: Sergio Jovani Guzman <moret.sjg@gmail.com>
 # Contributor: royrocks <royrocks13@gmail.com>
 
+_pkgtype=sdl2
 pkgname=tuxpaint
-pkgver=0.9.27
+pkgver=0.9.28
 pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='http://tuxpaint.org/' # no https available
 license=('GPL')
 backup=('etc/tuxpaint/tuxpaint.conf')
-depends=('fribidi' 'libpaper' 'librsvg' 'libimagequant' 'sdl_image'
-         'sdl_gfx' 'sdl_mixer' 'sdl_pango' 'sdl_ttf')
+depends=('fribidi' 'libpaper' 'librsvg' 'libimagequant' 'sdl2_image'
+         'sdl2_gfx' 'sdl2_mixer' 'sdl2_pango' 'sdl2_ttf')
 makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
             'python2: zh_tw font generator script')
-source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('ab2b80e89df88228cd0ec0a6c90b49d543cb157aa38fb90cbd3a29f00140557a')
+source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver-$_pkgtype.tar.gz")
+sha256sums=('4f1ed9330feab324070b93630d79ced50ccc4816ab76750119f012b5d904709d')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver-$_pkgtype"
 
   # python2 fix
   for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
@@ -42,11 +43,11 @@ prepare() {
 }
 
 build() {
-  make -C "$pkgname-$pkgver" PREFIX=/usr clean translations all -j1
+  make -C "$pkgname-$pkgver-$_pkgtype" PREFIX=/usr clean translations all -j1
 }
 
 package() {
-  make -C "$pkgname-$pkgver" \
+  make -C "$pkgname-$pkgver-$_pkgtype" \
     PREFIX=/usr \
     GNOME_PREFIX=/usr \
     X11_ICON_PREFIX="$pkgdir/usr/share/pixmaps" \
@@ -62,7 +63,7 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname"
 
   # desktop shortcut
-  install -Dm644 "$pkgname-$pkgver/src/$pkgname.desktop" \
+  install -Dm644 "$pkgname-$pkgver-$_pkgtype/src/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
