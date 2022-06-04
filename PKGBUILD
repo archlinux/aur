@@ -2,7 +2,7 @@
 
 pkgname=torrserver-bin
 pkgver=MatriX.116
-pkgrel=2
+pkgrel=3
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
@@ -34,4 +34,4 @@ package() {
 
 b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
         '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440'
-        '56ffd0277cb412b856c7c07d5c366a7dbf24864144b450f919d00b45b7727a441bfb6ae5bf0992de37f46aa867eaddf0933d82f00ba35c277a050ed2e59204a9')
+        'SKIP')
