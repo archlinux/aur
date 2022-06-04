@@ -1,6 +1,6 @@
 # Maintainer: Prokop Randáček <prokop@randacek.dev>
 pkgname=mingw-w64-spirv-tools
-pkgver=2021.4
+pkgver=2022.2
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git' 'make' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d68de260708dda785d109ff1ceeecde2d2ab71142fa5bf59061bb9f47dd3bb2c')
+sha256sums=('909fc7e68049dca611ca2d57828883a86f503b0353ff78bc594eddc65eb882b9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
