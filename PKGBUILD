@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=tut
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='A TUI for Mastodon with vim inspired keys'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('010e4d87bcae72b03c3f2fcf1396f9a1d0271d323abb9f27099dbdc1e1137245')
+sha256sums=('9b039109fc1af188ae8f6d92f511d76e6d71b3901fb2d2df8000b6c888c83829')
 
 build() {
   cd $pkgname-$pkgver
@@ -23,6 +23,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -Dm644 config.example.ini "$pkgdir"/usr/share/doc/$pkgname/config.example.ini
   install -Dm644 config/toot.tmpl "$pkgdir"/usr/share/doc/$pkgname/toot.tmpl
   install -Dm644 config/user.tmpl "$pkgdir"/usr/share/doc/$pkgname/user.tmpl
