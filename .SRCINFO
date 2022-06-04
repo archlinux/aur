@@ -1,0 +1,20 @@
+pkgbase = perl-mail-mboxparser
+	pkgdesc = Module for working with UNIX-flavoured mailboxes
+	pkgver = 0.55
+	pkgrel = 1
+	url = https://metacpan.org/release/Mail-MboxParser
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-mime-tools
+	optdepends = perl-mail-mbox-messageparser
+	optdepends = perl-uri-find: If you want to use Mail::MboxParser::Mail::Body->extract_urls
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/V/VP/VPARSEVAL/Mail-MboxParser-0.55.tar.gz
+	source = perl-Mail-MboxParser-0.55-Fix-garbled-attachment-name-RT-66576.patch
+	sha256sums = 33f025e9b10956b9a58ef01774b92b790aacca5fb00b1c755ada77ad4e5c7d3b
+	sha256sums = c0d0f6f6da5324dabe66a0cd37f304ce7b222c0644b434367647e1c37d1fa404
+
+pkgname = perl-mail-mboxparser
