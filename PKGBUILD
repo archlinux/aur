@@ -1,34 +1,45 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko'
-pkgver=v0.2.6
-pkgrel=1
+pkgver=0.2.6
+pkgrel=2
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
 arch=('x86_64' 'i686' 'aarch64')
 license=('APACHE')
 
 depends=()
-makedepends=()
+makedepends=('git' 'go')
 optdepends=()
 
-_basedownloadurl="https://github.com/ldez/${pkgname}/releases/download/${pkgver}"
-_basearchive="${pkgname}_${pkgver}_linux"
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/ldez/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('1db11bf6154d06822c0aab4021d584883523804d15606928d1712830bf4987e550ab1dbc444f5f964a462abdeb6449416b0497d802fdb7fedb3e94b894a4e7c3')
+b2sums=('79569026a00df23e6a8edbb3d9383139febae607f74291a37067f0b1dedd9c8ffa26a553f0b5c858593dc74301091937a64df41a186cd79dd3ebabde454c1fe2')
 
-source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('8b24710f277662ed9ab06acf094291ac2bd989469aaacd831b1e98b8c7c16dbb')
+build() {
+	cd "${pkgname}-${pkgver}"
 
-source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('9d9226f426f428b358300ac59215d53b8a739af85e5cbe5e7857525c3ab7fd4e')
+	export BUILD_DATE=$(date -u '+%Y-%m-%d_%I:%M:%S%p')
 
-source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('7fdd13ce98a6095e4019fedabd552bc727309c778ef20e12675ce25a3ed36358')
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+	go build -ldflags="-w -s -linkmode=external -X 'main.version=v${pkgver}' -X 'main.date=${BUILD_DATE}'"
+
+	ls -alF
+	chmod +x "./${pkgname}"
+}
 
 package() {
+	cd "${pkgname}-${pkgver}"
+	ls -alF
+
 	# Bin
-	rm -f "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dsm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# License
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
