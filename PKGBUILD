@@ -6,7 +6,7 @@
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=42.0+58+g91ae72acd
+pkgver=42.1+113+gd1a85c34c
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -18,7 +18,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              xorg-server-xvfb wayland-protocols)
-provides=(mutter libmutter-10.so)
+provides=(mutter libmutter-10.so libmutter-10.so=0-64)
 conflicts=(mutter)
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git")

@@ -1,6 +1,6 @@
 pkgbase = mutter-git
 	pkgdesc = A window manager for GNOME.
-	pkgver = 42.0+58+g91ae72acd
+	pkgver = 42.1+113+gd1a85c34c
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = mutter-git
 	depends = libxkbfile
 	provides = mutter
 	provides = libmutter-10.so
+	provides = libmutter-10.so=0-64
 	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
 	sha256sums = SKIP
