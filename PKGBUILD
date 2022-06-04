@@ -4,7 +4,7 @@
 _pkgname=claws-mail
 pkgname=$_pkgname-title-superset
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ based e-mail client - patched to use charset supersets to decode titles"
 arch=('x86_64')
 license=('GPL3')
@@ -40,17 +40,23 @@ conflicts=('claws-mail')
 install=$_pkgname.install
 source=(https://www.claws-mail.org/download.php?file=releases/claws-mail-$pkgver.tar.xz{,.asc}
         0001_encoding.diff
+        20cope_with_fix_for_1009149.patch
         bash_completion)
 sha256sums=('0e1a9ca0db8d2a9e058ae30cdc7fc919779214ec3c56ee0c8a7f88cc23817a8e'
             'SKIP'
             '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
+            'fd606c966a05be36b6bf6184067b71bcdb46d08df1b64514a973b9825e69aaab'
             '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
 validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mail.org>
-
+#options=(!makeflags)
 
 prepare() {
   cd "${_pkgname}"-${pkgver}
   patch -Np1 -i ../0001_encoding.diff
+  # Debian patch fixing build errors with recent gcc/perl versions
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1009473
+  patch -Np1 -i ../20cope_with_fix_for_1009149.patch
+#  # upstream fixes
 }
 
 build() {
