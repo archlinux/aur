@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt' 'python-cmyt' 'python-tqdm')
 makedepends=('cython')
 optdepends=(
-    'jupyter'
+    'jupyterlab: interactive analysis'
     'openmp: multithred support'
     'python-astropy: reading FITS files'
     'python-f90nml: reading RAMSES namelist files'
