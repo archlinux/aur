@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/XapaJIaMnu/translateLocally'
 license=('MIT')
 depends=('qt5-base' 'qt5-svg' 'pcre2' 'libarchive' 'protobuf')
-makedepends=('git' 'cmake' 'qt5-tools' 'gcc-libs' 'make' 'binutils' 'intel-mkl-static')
+makedepends=('git' 'cmake' 'qt5-tools' 'clang' 'make' 'binutils' 'intel-mkl-static')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -23,7 +23,7 @@ build() {
   cd translateLocally
   mkdir -p build
   cd build
-  cmake .. \
+  CC=clang CXX=clang++ cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
