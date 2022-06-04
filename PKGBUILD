@@ -1,7 +1,8 @@
-# Maintainer: Cullen Ross <cullenrss@gmail.com>
-pkgver=0.5.0.0
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Cullen Ross <cullenrss@gmail.com>
+pkgver=0.5.0.3
 pkgrel=1
-sha256sums=('7e8c4e3190b6be4cd092c319ef6c9e26a49df40a87fbd74eca52adf19def50d1')
+sha256sums=('dfb17dc0fdb437c7206a853e2f38e58edfc703e0b9234f194cb9f5d223bf1f2b')
 
 pkgname=hascard
 pkgdesc="A TUI for reviewing notes using 'flashcards' written with markdown-like syntax."
