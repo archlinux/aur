@@ -1,6 +1,6 @@
 pkgbase = colutius-desktop-git
 	pkgdesc = A cross-platform, easy-to-use and beautiful IRC client
-	pkgver = r34.9b3fda3
+	pkgver = r1.16ee9c4
 	pkgrel = 1
 	url = https://github.com/colutius/colutius-desktop
 	arch = x86_64
