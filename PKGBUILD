@@ -92,7 +92,8 @@ makedepends=(
 checkdepends=('xorg-server-xvfb')
 optdepends=('lib32-nvidia-utils: nvcodec plugin')
 options=('!emptydirs')
-source=("${url}src/${_basename}/${_basename}-${pkgver}.tar.xz"
+_tarname="${_basename}-${pkgver}"
+source=("${_tarname}.tar.xz::${url}src/${_basename}/${_tarname}.tar.xz"
         '1267.patch'
         'wpe-1.1.diff')
 sha256sums=('a164923b94f0d08578a6fcaeaac6e0c05da788a46903a1086870e9ca45ad678e'
@@ -100,14 +101,12 @@ sha256sums=('a164923b94f0d08578a6fcaeaac6e0c05da788a46903a1086870e9ca45ad678e'
             '841988d7dffaf98adeff046cfeed97505a66d268c156361ac29c2b7a112cf984')
 
 prepare() {
-    cd "${_basename}"
-
     # Neon 0.32.x
     # https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1267
-    patch -Np3 -i ../1267.patch
+    patch -Np3 --directory="${_tarname}" --input='../1267.patch'
 
     # wpe-webkit-1.1 (libsoup3)
-    patch -Np1 -i ../wpe-1.1.diff
+    patch -Np1 --directory="${_tarname}" --input='../wpe-1.1.diff'
 
     # configure
     export CC='gcc -m32'
@@ -115,7 +114,7 @@ prepare() {
     export CFLAGS+=" ${LDFLAGS}"    # otherwise meson (or the project) ignores LDFLAGS
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    arch-meson $_basename 'build' \
+    arch-meson "${_tarname}" 'build' \
         --libdir='lib32' \
         --libexecdir='lib32' \
         -Dintrospection='disabled' \
