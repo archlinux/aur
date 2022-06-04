@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
 pkgver="1.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url="https://github.com/jewlexx/cmd-not-found"
 arch=("any")
@@ -25,7 +25,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://codeload.github.com/jewlexx/$pkgname/tar.gz/refs/tags/v$pkgver"
   "uninstall.sh"
 )
-sha256sums=('2045ba998c499be78e270b9fec3d6bc12d1cb1f5a139cce66bdeac090f085a1f'
+sha256sums=('072fa4b69b0bf0c34309660eb7bf451da37c147aa32ce61eaba49e67f7036d5d'
   '4ea211759bb6f865f98c01eb972c8ba3a3040f785736c55d8183e6d12c68e3e9')
 
 noextract=()
