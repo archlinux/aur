@@ -13,7 +13,7 @@ pkgbase = plotinus-dbus
 	makedepends = cmake
 	depends = gtk3
 	provides = plotinus=0.2.0+1+g0ce7a4b
-	provides = PLOTINUS-DBUS
+	provides = DBUS-PLOTINUS
 	conflicts = plotinus
 	conflicts = plotinus-git
 	source = plotinus::git+https://github.com/p-e-w/plotinus.git

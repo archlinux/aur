@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gtk3')
 makedepends=('git' 'vala' 'cmake')
 conflicts=("${_pkgname}"{,-git})
-provides=("${_pkgname}=${pkgver%%+}" 'PLOTINUS-DBUS')
+provides=("${_pkgname}=${pkgver%%+}" 'DBUS-PLOTINUS')
 source=("${_pkgname}::git+https://github.com/p-e-w/plotinus.git"
         'plotinus.sh')
 sha256sums=('SKIP'
