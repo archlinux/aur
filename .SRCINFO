@@ -1,0 +1,21 @@
+pkgbase = balong-fbtools-git
+	pkgdesc = Utilities for working with flash modems on the balong platform. Contains 'fbrflash'.
+	pkgver = r36.20171009.22a228c
+	pkgrel = 2
+	url = https://github.com/forth32/balong-fbtools
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libusb
+	provides = balong-fbtools
+	provides = fbrflash
+	provides = fbrflash-git=r36.20171009.22a228c
+	conflicts = balong-fbtools
+	conflicts = fbrflash
+	source = balong-fbtools::git+https://github.com/forth32/balong-fbtools.git
+	source = helpmessages_english.md::http://ix.io/3Znm
+	sha256sums = SKIP
+	sha256sums = ab70bd1ab7b324ea73e3225d13500b1ecda7663434a8fa71b5457dd229087440
+
+pkgname = balong-fbtools-git
