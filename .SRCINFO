@@ -1,12 +1,12 @@
 pkgbase = ulipad-git
-	pkgdesc = A wxPython powered, programmer oriented and flexible editor
+	pkgdesc = Programmer oriented and flexible editor
 	pkgver = r13.4c7d590
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/limodou/ulipad
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = wxpython
+	depends = python2-wxpython3-gtk3
 	optdepends = python2-pyenchant: spell-checking support
 	source = ulipad-git::git+https://github.com/limodou/ulipad.git
 	source = ulipad.desktop
