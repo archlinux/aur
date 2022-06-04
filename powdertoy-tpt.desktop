@@ -6,4 +6,4 @@ Type=Application
 Comment=Physics sandbox game
 Categories=Game;Simulation
 Icon=powdertoy.png
-Exec=powder64
+Exec=powder
