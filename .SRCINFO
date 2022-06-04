@@ -1,6 +1,6 @@
 pkgbase = podman-tui
 	pkgdesc = Podman Terminal User Interface
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 0
 	url = https://github.com/containers/podman-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = podman-tui
 	makedepends = make
 	makedepends = gcc
 	conflicts = podman-tui-git
-	source = podman-tui-0.3.1.tar.gz::https://github.com/containers/podman-tui/archive/v0.3.1.tar.gz
-	sha256sums = 50651a33d8a13e1d88c280b7e40a67958bb33e491eae2187fa1e4dea3a18257f
+	source = podman-tui-0.4.0.tar.gz::https://github.com/containers/podman-tui/archive/v0.4.0.tar.gz
+	sha256sums = 41aaf9a6978debe5ca22282bc723f6af969b9e9c644c102e95437867159ca08a
 
 pkgname = podman-tui
