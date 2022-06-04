@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
-pkgver=2022.605.0
+pkgver=2022.528.0
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
@@ -29,13 +29,12 @@ source=(
 )
 noextract=("osu.AppImage")
 sha256sums=(
-  "f944b07e417ae09b5890662dfafe2429e46d40736113a42bbf55a72ee125e57a"
+  "07d7f3303f6d613bf83bd709405c01f2902194b8b96ff895126945bff10ec0f7"
   "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
   "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
   "43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801"
   "baeea5b234e65707a4e6a563eacac89063bf20047d64125cd1f26c3c52aae957"
 )
-
 package() {
   cd "$srcdir"
 
@@ -46,5 +45,5 @@ package() {
   # Install pixmap, desktop and license file
   install -Dm644 lazer.png "$pkgdir/usr/share/pixmaps/osu-lazer.png"
   install -Dm644 -t "$pkgdir/usr/share/applications" osu-lazer.desktop
-  install -Dm644 LICENCE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENCE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
