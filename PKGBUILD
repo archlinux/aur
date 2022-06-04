@@ -5,13 +5,13 @@
 _gitname=lua-pam
 pkgname=lua-pam-git
 pkgver=r12.4820711
-pkgrel=3
+pkgrel=4
 pkgdesc="A module for lua to use PAM"
 arch=(x86_64)
 url="https://github.com/RMTT/${_gitname}"
 license=('MIT')
 depends=(pam lua)
-makedepends=(cmake)
+makedepends=(cmake git)
 provides=(lua-pam)
 install=lua-pam-git.install
 source=("git+${url}.git")
