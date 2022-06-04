@@ -1,7 +1,8 @@
 # Maintainer: Kelly Prescott <kprescott@coolip.net>
+# Contributor: Chris Kobayashi <software+aur@disavowed.jp>
 
 pkgname=onerng
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="driver for the OneRNG open hardware random number generator and entropy source"
 arch=('any')
@@ -12,8 +13,8 @@ depends=('at'
 	'python-gnupg')
 backup=('etc/onerng.conf')
 install=onerng.install
-source=(https://github.com/OneRNG/onerng.github.io/raw/master/sw/onerng_3.6.orig.tar.gz)
-sha512sums=('d2f2bceb458e1441c4321526e5477ecb26df9f84e8554df723b97c3f09ad4c04149ac844bb88a182abf5350566cd5762c35137ba3c6b71685671a69ba12ccc58')
+source=(https://github.com/OneRNG/onerng.github.io/raw/master/sw/onerng_3.7.orig.tar.gz)
+sha512sums=('6150787fc8415c7aaa13d6e98c3dc72e9160308eb912d97b7c9f59c6d4f5a9612917a7ff34084ba52a80e0aac6c65dd29653dd3bd211bd261fb89273f02be830')
 provides=('onerng')
 conflicts=('onerng')
 
