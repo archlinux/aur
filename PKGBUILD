@@ -4,6 +4,7 @@
 # Contributors: jdc, rayman2200, TheCycoONE
 
 pkgname=corsix-th
+# TODO: fix versioning next time if needed: 0.66_beta is higher than 0.66
 pkgver=0.66_beta1
 _tagver=0.66-beta1
 pkgrel=1
