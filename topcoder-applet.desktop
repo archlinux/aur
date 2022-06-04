@@ -2,7 +2,7 @@
 Type=Application
 Name=Topcoder Applet
 Comment=Topcoder applet for participating and practicing on topcoder competitive programming events
-Exec=javaws /usr/local/topcoder/ContestAppletProd7.2.jnlp
+Exec=/usr/lib/jvm/java-8-jre/jre/bin/javaws /usr/local/topcoder/ContestAppletProd7.2.jnlp
 Icon=/usr/local/topcoder/topcoder_logo.png
 Terminal=false
 Categories=Education;
