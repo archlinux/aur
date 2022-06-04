@@ -1,0 +1,18 @@
+pkgbase = qhuaweiflash-git
+	pkgdesc = Graphic utility for flashing HUAWEI modems and routers and editing firmware files (GUI is in russian only).
+	pkgver = r143.20190905.54ec963
+	pkgrel = 1
+	url = https://github.com/forth32/qhuaweiflash
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = qhuaweiflash
+	conflicts = qhuaweiflash
+	source = qhuaweiflash::git+https://github.com/forth32/qhuaweiflash.git
+	source = helpmessages_english.md::http://ix.io/3Znx
+	sha256sums = SKIP
+	sha256sums = 816e0028dcb780c9749618c4ac294a4809b9f45e468dcc0cfc75e392db2d4d9e
+
+pkgname = qhuaweiflash-git
