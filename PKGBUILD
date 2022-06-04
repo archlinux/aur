@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 url="https://github.com/jewlexx/ignoreit"
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
 )
 
-sha256sums=('4bcb5d8fcc504cf92a475fd5c785a86383d1402bf3599c63ad346c24a06caed9')
+sha256sums=('b7593635324db58c1a7ae5981a6087f9584737452d3ac9477f1d44a6b6840d2e')
 
 build() {
     return 0
