@@ -5,9 +5,9 @@
 
 _pkgname=qmk
 pkgname=qmk-lite
-pkgver=1.0.0
+pkgver=1.1.0
 _qmk_udev_pkgver=0.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards - device-specific dependencies set as optional"
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -38,7 +38,7 @@ provides=('qmk')
 conflicts=('qmk')
 source=("https://files.pythonhosted.org/packages/source/q/qmk/qmk-${pkgver}.tar.gz"
         "qmk-udev-${_qmk_udev_pkgver}.tar.gz::https://github.com/qmk/qmk_udev/archive/refs/tags/v${_qmk_udev_pkgver}.tar.gz")
-sha256sums=('da62eec73c4548cc37b0b9be3937202dc3a301dc2f2663610ecca751a610f9ca'
+sha256sums=('771577c9e68eb7fe08969bab36aeb420713a525062dce52a06eda40da8cda5e1'
             'e6cde001890e1d030d13bbe18799b76754aaea8a6d1309ce8c7956d713714920')
 
 build() {
