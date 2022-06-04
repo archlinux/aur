@@ -1,0 +1,19 @@
+pkgbase = tetra-kit-git
+	pkgdesc = TETRA downlink decoder/recorder kit
+	pkgver = d7d2f459
+	pkgrel = 1
+	url = https://gitlab.com/larryth/tetra-kit
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	depends = gnuradio-companion
+	depends = gnuradio-osmosdr
+	depends = rapidjson
+	depends = sox
+	depends = zlib
+	depends = ncurses
+	source = tetra-kit-git::git+https://gitlab.com/larryth/tetra-kit.git
+	sha256sums = SKIP
+
+pkgname = tetra-kit-git
