@@ -54,6 +54,7 @@ build() {
 	cd build-xilinx
 		cmake -G Ninja        \
 			-DARCH=xilinx     \
+			-DBUILD_TESTS=ON \
 			-DBUILD_PYTHON=OFF \
 			-DBUILD_GUI=OFF    \
 			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -72,6 +73,11 @@ build() {
         [ ! -f "xilinx/$i.bin" ] && build-xilinx/bbasm --l xilinx/$i.bba xilinx/$i.bin
     done
     cd ..
+}
+
+check() {
+	cd "${srcdir}/nextpnr"
+	ninja -C build-xilinx test
 }
 
 package() {
