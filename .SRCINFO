@@ -10,8 +10,7 @@ pkgbase = eruler-git
 	depends = efl
 	provides = eruler=0.1.0.r18.ef5c032
 	conflicts = eruler
-	source = git+https://git.enlightenment.org/apps/eruler.git
+	source = git+https://git.enlightenment.org/enlightenment/eruler.git
 	sha256sums = SKIP
 
 pkgname = eruler-git
-
