@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 
 pkgname=dh-golang
-pkgver=1.53
+pkgver=1.56
 pkgrel=1
 pkgdesc="debhelper add-on for packaging software written in Go"
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$url/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.bz2")
-sha512sums=('c17496c68c48e6d792bfef9d83aeb147be3f5cfc9e28ff746dbe584983905257925483a7323eb72a1119abc48a7a13fe114e82b9c2f55772c4a3379d8f3d5d51')
+sha512sums=('821ded7cbe147ca05282b6a2cd92e42379772436724516245a9f081fba0b08193394bacdf6d104de20f06588cbe6089b39c34adebfdbb954b6663f46c6c02753')
 
 build() {
   cd "$srcdir/$pkgname-debian-$pkgver"
