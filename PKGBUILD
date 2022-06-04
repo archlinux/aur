@@ -87,6 +87,5 @@ package() {
     for i in ${_DEVICES[@]}; do
         install -Dm644 "${srcdir}/nextpnr/xilinx/$i.bin" "${pkgdir}${_PREFIX}/share/nextpnr/xilinx-chipdb/$i.bin"
     done
-    ln -s "xc7a35tcsg324-1.bin" "${pkgdir}${_PREFIX}/share/nextpnr/xilinx-chipdb/xc7a35t.bin"
-	cd ..
+    cd ..
 }
