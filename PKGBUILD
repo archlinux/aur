@@ -2,11 +2,13 @@
 
 pkgname='motoko'
 pkgver=0.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
 arch=('x86_64' 'i686' 'aarch64')
 license=('APACHE')
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin")
 
 depends=()
 makedepends=('git' 'go')
