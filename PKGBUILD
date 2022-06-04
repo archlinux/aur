@@ -1,47 +1,36 @@
-# Maintainer: Batuhan Baserdem <lastname dot firstname at gmail>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
-_name=maestral-qt
-
-pkgname="${_name}-git"
-provides=("${_name}")
-conflicts=("${_name}")
-pkgver=1.4.4
+pkgname=maestral-qt-git
+pkgver=1.6.3.r0.gf4f8030
 pkgrel=1
-pkgdesc='A Qt interface for the Maestral daemon'
+pkgdesc='Qt interface for the Maestral daemon'
 arch=('any')
-url="https://github.com/SamSchott/${_name}"
+url="https://github.com/SamSchott/maestral-qt"
 license=('MIT')
-source=("git+${url}#branch=develop")
-makedepends=('git' 'python' 'python-setuptools' 'python-wheel')
-depends=(
-    'python-click>=7.1.1'
-    'python'
-    'maestral>=1.4.3'
-    'python-click>=7.1.1'
-    'python-markdown2'
-    'python-packaging'
-    'python-pyqt5>=5.9')
+depends=("maestral>=${pkgver%.r*}" 'python-click' 'python-markdown2' 'python-packaging' 'python-pyqt6')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
-md5sums=('SKIP')
+provides=("${pkgname%-git}=${pkgver%.r*}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_name}"
-  git describe --long --tags | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|^v||g'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${srcdir}/${_name}"
-  python setup.py build
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  # Change into the source git directory
-  cd "${srcdir}/${_name}"
-
-  # Run python setup function
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-
-  # Install the licence
-  install -Dm644 "${srcdir}/${_name}/LICENSE.txt" \
-    "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/maestral_qt-${pkgver%.r*}.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
