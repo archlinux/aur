@@ -4,17 +4,17 @@
 
 pkgname=gnomecanvas-perl
 _realname=Gnome2-Canvas
-pkgver=1.002
-pkgrel=18
+pkgver=1.006
+pkgrel=1
 pkgdesc="Gnome2-Canvas perl bindings for libgnomecanvas"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="http://gtk2-perl.sourceforge.net/"
+url="https://metacpan.org/pod/Gnome2::Canvas"
 makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends')
 depends=('gtk2-perl' 'libgnomecanvas' 'perl')
 options=(!emptydirs)
-source=(http://downloads.sourceforge.net/sourceforge/gtk2-perl/${_realname}-${pkgver}.tar.gz)
-md5sums=('93405a987ba4bbd03c2f91592b88f5cb')
+source=(https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gnome2-Canvas-${pkgver}.tar.gz)
+md5sums=('61176cad7e995ec40b273766ffed3592')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
