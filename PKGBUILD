@@ -6,7 +6,7 @@ pkgver=0.11.5.r68.ga902168
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
-url=https://github.com/lawl/NoiseTorch
+url=https://github.com/noisetorch/NoiseTorch
 license=('GPL3')
 depends=('polkit' 'hicolor-icon-theme')
 optdepends=('pulseaudio' 'pipewire>=0.3.28')
