@@ -8,6 +8,8 @@ pkgbase = dieharder-git
 	arch = aarch64
 	license = GPL2
 	makedepends = automake
+	makedepends = autoconf
+	depends = gsl
 	source = dieharder::git+https://github.com/christopherkobayashi/dieharder.git
 	sha512sums = SKIP
 
