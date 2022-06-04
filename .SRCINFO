@@ -1,6 +1,6 @@
 pkgbase = python-yt
 	pkgdesc = A community-developed analysis and visualization toolkit for volumetric data.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = http://yt-project.org
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-yt
 	optdepends = python-xarray: input/output to xarray format
 	optdepends = python-glue: input/output to glueviz format
 	options = !emptydirs
-	source = https://pypi.io/packages/source/y/yt/yt-4.0.3.tar.gz
-	sha256sums = 3f697bd8027b8fd0fc9c3485c5cd9e4e23462ce81e6e7d72f1431222fc12ed51
+	source = https://pypi.io/packages/source/y/yt/yt-4.0.4.tar.gz
+	sha256sums = 2cd58c3579efb88c3aefadc343ee6e399d893a2be5c60e61606a0fba6148b692
 
 pkgname = python-yt
