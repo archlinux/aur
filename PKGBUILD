@@ -1,8 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=simpleini
-pkgver=4.17
-pkgrel=3
+pkgver=4.19
+pkgrel=1
 pkgdesc="Cross-platform C++ library providing a simple API to read and write INI-style configuration files"
 arch=('any')
 url="https://github.com/brofield/simpleini"
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=(https://github.com/brofield/simpleini/archive/$pkgver.tar.gz)
-sha256sums=('14e5bc1cb318ed374d45d6faf48da0b79db7e069c12ec6e090523b8652ef47c7')
+sha256sums=('dc10df3fa363be2c57627d52cbb1b5ddd0689d474bf13908e822c1522df8377e')
 
 package() {
   install -D -m644 "${srcdir}"/"${pkgname}"-"${pkgver}"/SimpleIni.h "${pkgdir}"/usr/include/SimpleIni.h
