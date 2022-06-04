@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 url="https://github.com/jewlexx/ignoreit"
 makedepends=('rust' 'cargo')
