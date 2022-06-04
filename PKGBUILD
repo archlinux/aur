@@ -18,7 +18,7 @@ source=(
   "curl-impersonate.tar.gz::https://github.com/lwthiker/curl-impersonate/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-md5sums=('77760f18eeea4e169b5abf469e43e61c')
+md5sums=('94bb6a6616ad7daba4cbb669db5f0348')
 
 build () {
   cd curl-impersonate-${pkgver/v/}
