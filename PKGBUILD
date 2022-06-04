@@ -18,8 +18,6 @@ md5sums=('e8065b2ffb411bb74ae32efa475f9817')
 sha256sums_i686=('ecde1d1a403ccf366def3f6199f84992ded5e4626eeb6399395ad76f0e3d7643')
 sha256sums_x86_64=('74b1bf6d07520314dec833a777ebc47a166992c3aeb771b20dca9562288da47a')
 
-PKGEXT=".pkg.tar"
-
 if [[ $CARCH == 'i686' ]]; then
 	_arch=lin
 	_bits=32
