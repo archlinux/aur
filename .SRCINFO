@@ -1,0 +1,26 @@
+pkgbase = python-runnotebook
+	pkgdesc = IPython notebook sphinx extensions
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ngoldbaum/RunNotebook
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = jupyter-nbformat
+	checkdepends = jupyter-nbconvert
+	checkdepends = python-docutils
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/R/RunNotebook/RunNotebook-0.3.1.tar.gz
+	source = https://raw.githubusercontent.com/ngoldbaum/RunNotebook/master/LICENSE
+	md5sums = 67ddf123b72f97369831ba684a426962
+	md5sums = SKIP
+
+pkgname = python-runnotebook
+	depends = python-sphinx
+	depends = jupyter-notebook
+	depends = python-qtconsole
+	depends = jupyter_console
+	depends = jupyter-nbconvert
+	depends = python-ipykernel
+	depends = python-ipywidgets
+	depends = jupyter-nbformat
