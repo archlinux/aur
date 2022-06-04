@@ -20,7 +20,7 @@ source=('hugetracker::git+https://github.com/SuperDisk/hUGETracker'
         'git+https://github.com/SuperDisk/hUGEDriver'
         'git+https://github.com/olivluca/rackctls'
         'non-portable.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'e05144d04670d724a1333ba25258e4dab51d106f17917eac12bc2499a7df4958')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' '75bcfd713eb8e2934c5df9fa6f8e12e9be3611d9b8a2373d5590303dd91690ec')
 
 
 ## CONFIGURATION

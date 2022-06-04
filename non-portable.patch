@@ -50,7 +50,7 @@ index aaa0f47..f157f6f 100644
      end;
  
 diff --git a/hUGETracker.lpr b/hUGETracker.lpr
-index d2f94d0..becfbf0 100644
+index d2f94d0..7cdca86 100644
 --- a/hUGETracker.lpr
 +++ b/hUGETracker.lpr
 @@ -39,11 +39,20 @@ function PangoCairoFontMapGetDefault: Pointer; cdecl; External 'libpangocairo-1.
@@ -75,6 +75,15 @@ index d2f94d0..becfbf0 100644
  
    InitializeTrackerSettings;
  
+@@ -67,7 +76,7 @@ begin
+ 
+   {$if defined(LINUX) or defined(FREEBSD) or defined(OPENBSD)}
+     // https://gitlab.gnome.org/GNOME/gtk/-/issues/3886
+-    if FcConfigAppFontAddFile(nil, PChar('PixeliteTTF.ttf')) = 0 then
++    if FcConfigAppFontAddFile(nil, PChar('/usr/share/hugetracker/PixeliteTTF.ttf')) = 0 then
+       Writeln(StdErr, '[ERROR] Couldn''t load Pixelite!!!');
+ 
+     PangoFcFontMapConfigChanged(PangoCairoFontMapGetDefault);
 diff --git a/tracker.pas b/tracker.pas
 index 80a800a..a4afbff 100644
 --- a/tracker.pas
