@@ -3,16 +3,14 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=2.11.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"
 arch=(
-    x86_64
-    arm
-    armv6h
-    armv7h
     aarch64
- )
+    armv7h
+    x86_64
+)
 url="https://$_pkgorg/$_pkgname"
 license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
@@ -25,8 +23,6 @@ depends=(
     sudo
 )
 depends_x86_64=(devtools)
-depends_arm=(devtools-alarm)
-depends_armv6h=(devtools-alarm)
 depends_armv7h=(devtools-alarm)
 depends_aarch64=(devtools-alarm)
 makedepends=(
