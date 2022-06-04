@@ -2,8 +2,8 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral-git
-pkgver=1.5.3.r1.gbf70c762
-pkgrel=2
+pkgver=1.6.3.r0.g7b8e7a53
+pkgrel=1
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -27,10 +27,10 @@ depends=(
 optdepends=(
 	'maestral-qt: Qt interface for the maestral daemon'
 	'python-importlib-metadata: REQUIRED for python<3.8')
-makedepends=('git' 'python-build' 'python-install' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
-provides=('maestral')
-conflicts=('maestral')
+provides=("${pkgname%-git}=${pkgver%.r*}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url"
         'maestral@.service')
 sha256sums=('SKIP'
@@ -42,7 +42,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -51,9 +51,12 @@ check() {
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/maestral-${pkgver%.r*}.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
