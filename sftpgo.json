@@ -17,6 +17,7 @@
     "data_retention_hook": "",
     "max_total_connections": 0,
     "max_per_host_connections": 20,
+    "whitelist_file": "",
     "defender": {
       "enabled": false,
       "driver": "memory",
@@ -30,7 +31,9 @@
       "entries_soft_limit": 100,
       "entries_hard_limit": 150,
       "safelist_file": "",
-      "blocklist_file": ""
+      "blocklist_file": "",
+      "safelist": [],
+      "blocklist": []
     },
     "rate_limiters": [
       {
@@ -51,6 +54,22 @@
       }
     ]
   },
+  "acme": {
+    "domains": [],
+    "email": "",
+    "key_type": "4096",
+    "certs_path": "/var/lib/sftpgo/certs",
+    "ca_endpoint": "https://acme-v02.api.letsencrypt.org/directory",
+    "renew_days": 30,
+    "http01_challenge": {
+      "port": 80,
+      "proxy_header": "",
+      "webroot": ""
+    },
+    "tls_alpn01_challenge": {
+      "port": 0
+    }
+  },
   "sftpd": {
     "bindings": [
       {
@@ -62,14 +81,18 @@
     "max_auth_tries": 0,
     "banner": "",
     "host_keys": [],
+    "host_certificates": [],
+    "host_key_algorithms": [],
     "kex_algorithms": [],
     "ciphers": [],
     "macs": [],
     "trusted_user_ca_keys": [],
+    "revoked_user_certs_file": "",
     "login_banner_file": "",
     "enabled_ssh_commands": [
       "md5sum",
       "sha1sum",
+      "sha256sum",
       "cd",
       "pwd",
       "scp"
@@ -86,6 +109,9 @@
         "address": "",
         "apply_proxy_config": true,
         "tls_mode": 0,
+        "certificate_file": "",
+        "certificate_key_file": "",
+        "min_tls_version": 12,
         "force_passive_ip": "",
         "passive_ip_overrides": [],
         "client_auth_type": 0,
@@ -117,10 +143,15 @@
         "port": 0,
         "address": "",
         "enable_https": false,
+        "certificate_file": "",
+        "certificate_key_file": "",
+        "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "prefix": "",
-        "proxy_allowed": []
+        "proxy_allowed": [],
+        "client_ip_proxy_header": "",
+        "client_ip_header_depth": 0
       }
     ],
     "certificate_file": "",
@@ -155,6 +186,9 @@
     "username": "",
     "password": "",
     "sslmode": 0,
+    "root_cert": "",
+    "client_cert": "",
+    "client_key": "",
     "connection_string": "",
     "sql_tables_prefix": "",
     "track_quota": 2,
@@ -169,7 +203,6 @@
     "external_auth_hook": "",
     "external_auth_scope": 0,
     "credentials_path": "/var/lib/sftpgo/credentials",
-    "prefer_database_credentials": false,
     "pre_login_hook": "",
     "post_login_hook": "",
     "post_login_scope": 0,
@@ -196,9 +229,15 @@
     },
     "password_caching": true,
     "update_mode": 0,
-    "skip_natural_keys_validation": false,
     "create_default_admin": false,
-    "is_shared": 0
+    "naming_rules": 1,
+    "is_shared": 0,
+    "backups_path": "/srv/sftpgo/backups",
+    "auto_backup": {
+      "enabled": true,
+      "hour": "0",
+      "day_of_week": "*"
+    }
   },
   "httpd": {
     "bindings": [
@@ -208,24 +247,80 @@
         "enable_web_admin": true,
         "enable_web_client": true,
         "enable_https": false,
+        "certificate_file": "",
+        "certificate_key_file": "",
+        "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "proxy_allowed": [],
+        "client_ip_proxy_header": "",
+        "client_ip_header_depth": 0,
         "hide_login_url": 0,
         "render_openapi": true,
-        "web_client_integrations": []
+        "web_client_integrations": [],
+        "oidc": {
+          "client_id": "",
+          "client_secret": "",
+          "config_url": "",
+          "redirect_base_url": "",
+          "username_field": "",
+          "role_field": "",
+          "implicit_roles": false,
+          "custom_fields": []
+        },
+        "security": {
+          "enabled": false,
+          "allowed_hosts": [],
+          "allowed_hosts_are_regex": false,
+          "hosts_proxy_headers": [],
+          "https_redirect": false,
+          "https_host": "",
+          "https_proxy_headers": [],
+          "sts_seconds": 0,
+          "sts_include_subdomains": false,
+          "sts_preload": false,
+          "content_type_nosniff": false,
+          "content_security_policy": "",
+          "permissions_policy": "",
+          "cross_origin_opener_policy": "",
+          "expect_ct_header": ""
+        },
+        "branding": {
+          "web_admin": {
+            "name": "",
+            "short_name": "",
+            "favicon_path": "",
+            "logo_path": "",
+            "login_image_path": "",
+            "disclaimer_name": "",
+            "disclaimer_path": "",
+            "default_css": "",
+            "extra_css": []
+          },
+          "web_client": {
+            "name": "",
+            "short_name": "",
+            "favicon_path": "",
+            "logo_path": "",
+            "login_image_path": "",
+            "disclaimer_name": "",
+            "disclaimer_path": "",
+            "default_css": "",
+            "extra_css": []
+          }
+        }
       }
     ],
-    "templates_path": "/usr/share/sftpgo/templates",
-    "static_files_path": "/usr/share/sftpgo/static",
-    "openapi_path": "/usr/share/sftpgo/openapi",
-    "backups_path": "/srv/sftpgo/backups",
+    "templates_path": "templates",
+    "static_files_path": "static",
+    "openapi_path": "openapi",
     "web_root": "",
     "certificate_file": "",
     "certificate_key_file": "",
     "ca_certificates": [],
     "ca_revocation_lists": [],
     "signing_passphrase": "",
+    "token_validation": 0,
     "max_upload_file_size": 1048576000,
     "cors": {
       "enabled": false,
@@ -248,6 +343,7 @@
     "auth_user_file": "",
     "certificate_file": "",
     "certificate_key_file": "",
+    "min_tls_version": 12,
     "tls_cipher_suites": []
   },
   "http": {
@@ -259,6 +355,11 @@
     "certificates": [],
     "skip_tls_verify": false,
     "headers": []
+  },
+  "command": {
+    "timeout": 30,
+    "env": [],
+    "commands": []
   },
   "kms": {
     "secrets": {
@@ -285,7 +386,7 @@
     "auth_type": 0,
     "encryption": 0,
     "domain": "",
-    "templates_path": "/usr/share/sftpgo/templates"
+    "templates_path": "templates"
   },
   "plugins": []
 }
