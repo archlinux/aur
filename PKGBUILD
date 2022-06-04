@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname="thunderhub"
-pkgver=0.13.11
+pkgver=0.13.13
 pkgrel=1
 pkgdesc="Lightning Node Manager"
 arch=(any)
@@ -10,7 +10,7 @@ depends=("nodejs>=10")
 makedepends=("npm")
 optdepends=('lnd-bin')
 source=("https://github.com/apotdevin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "env" "accounts.yaml" "${pkgname}.user" "pacman-01-chown.hook" "${pkgname}.service")
-sha256sums=(27c465ea6d795657e7402ca7a27c353ae2e0055c4b2f1844ee930d6a4ad7a9f4 SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(432a13c9fbb2f5b3ec21f4ea77e543ab2c301a60b768409fa55eb08dd65459c9 SKIP SKIP SKIP SKIP SKIP)
 options=('!strip')
 backup=("etc/${pkgname}/accounts.yaml" "etc/${pkgname}/env")
 install=${pkgname}.install
@@ -36,6 +36,7 @@ package() {
   mkdir -p  "${pkgdir}/var/lib"
   cp -a "${srcdir}/${pkgname}-${pkgver}"  "${pkgdir}/var/lib/${pkgname}"
   rm "${pkgdir}/var/lib/${pkgname}/.env"
+  rm -rf  "${pkgdir}/var/lib/thunderhub/src/client/.next"
   
   install -Dm 644 "$srcdir/env" "$pkgdir/etc/${pkgname}/env"
   install -Dm 640 "$srcdir/accounts.yaml" "$pkgdir/etc/${pkgname}/accounts.yaml"
