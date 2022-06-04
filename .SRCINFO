@@ -1,0 +1,18 @@
+pkgbase = balong-nvtool-git
+	pkgdesc = A utility to process NVRAM images of devices on the HiSilicon Balong chipset.
+	pkgver = 1.0+215.r72.20200731.4f5eb89
+	pkgrel = 1
+	url = https://github.com/forth32/balong-nvtool
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libmd
+	provides = balong-nvtool=1.0+215.r72.20200731.4f5eb89
+	conflicts = balong-nvtool
+	source = balong-nvtool::git+https://github.com/forth32/balong-nvtool.git
+	source = helpmessages_english.md::http://ix.io/3Znw
+	sha256sums = SKIP
+	sha256sums = d58174921af787ea952f659a6e41c651c1719fc9f248e0f1ba633ddd9973b000
+
+pkgname = balong-nvtool-git
