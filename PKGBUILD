@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
@@ -16,9 +16,10 @@ depends=('python' 'python-alembic' 'python-azure-storage-blob' 'python-click'
 optdepends=('python-scikit-learn' 'python-pyarrow' 'python-boto3' 'python-mleap'
     'python-google-cloud-storage' 'python-azureml-core' 'python-pysftp'
     'python-kubernetes' 'python-mlflow-dbstore' 'python-aliyunstoreplugin')
-makedepends=('python' 'python-setuptools' 'npm')
+makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
+             'python-setuptools' 'npm')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
-sha256sums=('b773f613099b3c957e6c4c0925bb623787240c2ba62e9889ce1e3b7db2db1a0f')
+sha256sums=('9158ca81480c4f06efb08074119be36662ff44bc72854a97b505e9aa78d385fe')
 
 _pkgname=mlflow
 
@@ -29,10 +30,10 @@ build() {
   npm run build
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
