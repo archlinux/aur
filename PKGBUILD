@@ -2,7 +2,7 @@
 
 pkgname=libjxl-metrics-git
 pkgver=v0.3.7.1056.g7d047b5f
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG XL image format reference implementation with butteraugli and ssimulacra (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -59,18 +59,18 @@ pkgver() {
 
 build() {
     export LDFLAGS="-fuse-ld=lld -Wl,--thinlto-jobs=all"
-    COMMON_FLAGS="-O3 -march=native -flto=thin -pipe $LD_FLAGS"
+    COMMON_FLAGS="-O3 -march=native -flto=thin -pipe"
     export CC=clang CXX=clang++
-    export CPPFLAGS="${COMMON_FLAGS}" CCXFLAGS="${COMMON_FLAGS}"
+    export CFLAGS="${COMMON_FLAGS}" CXXFLAGS="${COMMON_FLAGS}"
 
     cmake -B build -S libjxl \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_C_COMPILER="${CC}" \
         -DCMAKE_CXX_COMPILER="${CXX}" \
-        -DCMAKE_C_FLAGS="$COMMON_FLAGS" \
-        -DCMAKE_CXX_FLAGS="$COMMON_FLAGS" \
-        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_C_FLAGS="${CFLAGS}" \
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+        -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
         -DBUILD_SHARED_LIBS=1 \
         -DBUILD_TESTING=0 \
         -DJPEGXL_ENABLE_FUZZERS=0 \

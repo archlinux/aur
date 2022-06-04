@@ -1,7 +1,7 @@
 pkgbase = libjxl-metrics-git
 	pkgdesc = JPEG XL image format reference implementation with butteraugli and ssimulacra (git version)
 	pkgver = v0.3.7.1056.g7d047b5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD
