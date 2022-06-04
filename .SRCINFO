@@ -1,7 +1,7 @@
 pkgbase = thunderhub
 	pkgdesc = Lightning Node Manager
 	pkgver = 0.13.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apotdevin/thunderhub
 	install = thunderhub.install
 	arch = any

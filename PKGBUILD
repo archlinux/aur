@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname="thunderhub"
 pkgver=0.13.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Node Manager"
 arch=(any)
 url="https://github.com/apotdevin/${pkgname}"
@@ -36,7 +36,6 @@ package() {
   mkdir -p  "${pkgdir}/var/lib"
   cp -a "${srcdir}/${pkgname}-${pkgver}"  "${pkgdir}/var/lib/${pkgname}"
   rm "${pkgdir}/var/lib/${pkgname}/.env"
-  rm -rf  "${pkgdir}/var/lib/thunderhub/src/client/.next"
   
   install -Dm 644 "$srcdir/env" "$pkgdir/etc/${pkgname}/env"
   install -Dm 640 "$srcdir/accounts.yaml" "$pkgdir/etc/${pkgname}/accounts.yaml"
