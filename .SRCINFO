@@ -1,0 +1,14 @@
+pkgbase = resticpy
+	pkgdesc = A Python wrapper for Restic (<https://restic.net/>) using a json configuration file.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stefphd/ResticPy
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-argparse
+	source = git+https://github.com/stefphd/ResticPy.git
+	md5sums = SKIP
+
+pkgname = resticpy
