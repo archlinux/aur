@@ -1,6 +1,6 @@
 # Maintainer: Cian Ormond <aur@cianormond.com>
 pkgname='vatprism'
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="VATSIM map and data explorer"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('java-runtime>=15')
 makedepends=('maven' 'java-environment>=15')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marvk/vatprism/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e76b015809eff1ff17a83bf6bfd674994bee236798c4d32dccdaed4f8c80174d')
+sha256sums=('6767546af54b9c97e4aab11fac159da0f15ebbe355e99781fc5b0241a7068bf7')
 
 build() {
 	cd "$pkgname-$pkgver"
