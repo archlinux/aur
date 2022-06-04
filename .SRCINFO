@@ -1,5 +1,5 @@
 pkgbase = topcoder-applet
-	pkgdesc = Topcoder applet for participating and practicing on topcoder competitive programming events
+	pkgdesc = TopCoder applet for participating and practicing on TopCoder competitive programming events. All rights to the TopCoder applet are reserved by TopCoder, Inc.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.topcoder.com/community/arena
