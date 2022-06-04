@@ -1,0 +1,17 @@
+pkgbase = rcraid-dkms-9
+	pkgdesc = NVMe/SATA RAID driver (DKMS) for AMD AM4, TR4 and sTRX4 socket motherboard chipsets
+	pkgver = 9.3.0.00276
+	pkgrel = 1
+	url = https://www.amd.com/en/support/chipsets/amd-socket-strx4/trx40
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers>=5.8
+	depends = linux>=5.8
+	depends = dkms
+	source = manual://raid_linux_driver_930_00276.zip
+	source = dkms.conf
+	md5sums = 70f899661c9d8036b67efde9b7495c08
+	md5sums = 3a14dcc84daf257a62727bcde1882edf
+
+pkgname = rcraid-dkms-9

@@ -1,0 +1,8 @@
+# SDK zip file
+raid_linux_driver*
+
+# Build artifacts
+pkg/
+src/
+rcraid-dkms-*-x86_64.pkg.tar.xz
+rcraid-dkms-*-x86_64.pkg.tar.zst
