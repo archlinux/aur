@@ -1,8 +1,8 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
 
 pkgname=('qodana-cli')
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Simple cross-platform command-line tool to run Qodana linters anywhere with minimum effort required."
 arch=('x86_64' 'aarch64')
 url="https://github.com/JetBrains/qodana-cli"
@@ -12,7 +12,7 @@ makedepends=('go>=1.16')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JetBrains/qodana-cli/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('7a294427f1ddaed5a4c4e930c581eb8e42421acb8a70fcccaa1af68a72e3510c')
+sha256sums=('f614329d6d76332bb76d94f4885371505b954113c755edcd8566d7d24d024376')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
