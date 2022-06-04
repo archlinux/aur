@@ -3,7 +3,7 @@
 _pkgbase=luau
 pkgname=luau-git
 pkgver=0.530.55a0268
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 
 sha512sums=(
   'SKIP'
-  430480ea8d40db9f8f60419bc6e317f72b5718ff830877f676313e1d64906ef5168d51bd9a45c816cfb74c6f4838034b84661b4737a84daf1ad6d4988024c372
+  '430480ea8d40db9f8f60419bc6e317f72b5718ff830877f676313e1d64906ef5168d51bd9a45c816cfb74c6f4838034b84661b4737a84daf1ad6d4988024c372'
 )
 
 pkgver() {
