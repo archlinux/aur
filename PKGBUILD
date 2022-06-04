@@ -24,7 +24,7 @@ makedepends=(
     'cmake'
     'meson'
 )
-source=("${url}src/"${_basename}"/"${_basename}"-${pkgver}.tar.xz")
+source=("${url}src/${_basename}/${_basename}-${pkgver}.tar.xz")
 sha256sums=('b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf')
 
 prepare() {
@@ -61,7 +61,7 @@ package() {
     # 64-bit lib not needed during build, only if package is installed, for shared header includes
     depends+=("${_basename}>=${pkgver}")
 
-    meson install -C 'build' --destdir "$pkgdir"
+    meson install -C 'build' --destdir "${pkgdir}"
 
     rm -rf "${pkgdir}/usr/share"
 }
