@@ -2,7 +2,7 @@
 #Contributor: yochananmarqos <mark dot wagie at tutanota dot com>
 
 pkgname=winegui
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A user-friendly WINE manager (build from source)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 	'git'
 )
 source=("https://gitlab.melroy.org/melroy/winegui/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('38473c3dd3f339cdd17ae115b0f15a4630ea6cc268347c7196a6b214315a5e49')
+sha256sums=('96545926684671a98b0952ea584fe3508c70f292e024c0ae42220566a234d36c')
 
 prepare(){
 	sed -i "s/\${GIT_TAG_VERSION}/$pkgver/g" winegui-v$pkgver/CMakeLists.txt
