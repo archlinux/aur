@@ -1,6 +1,6 @@
 pkgbase = libgdsii-git
 	pkgdesc = C++ library for working with GDSII binary data files
-	pkgver = 20181030
+	pkgver = 20190411
 	pkgrel = 1
 	url = https://github.com/HomerReid/libGDSII
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = libgdsii-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-libs
+	provides = libgdsii=20190411
 	options = !emptydirs
 	source = libgdsii::git+https://github.com/HomerReid/libGDSII
 	md5sums = SKIP
 
 pkgname = libgdsii-git
-

@@ -1,13 +1,13 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
-
 pkgname=libgdsii-git
 pkgdesc='C++ library for working with GDSII binary data files'
-pkgver=20181030
+pkgver=20190411
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/HomerReid/libGDSII"
 license=('GPL2')
 depends=('gcc-libs')
+provides=("libgdsii=${pkgver}")
 optdepends=()
 makedepends=('git')
 options=(!emptydirs)
