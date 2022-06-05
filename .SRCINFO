@@ -1,0 +1,17 @@
+pkgbase = r-cghcall
+	pkgdesc = Calling aberrations for array CGH tumor profiles.
+	pkgver = 2.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CGHcall
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-cghbase
+	depends = r-dnacopy
+	depends = r-impute
+	depends = r-snowfall
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CGHcall_2.58.0.tar.gz
+	sha256sums = c5e86b9234685462b7330c85b91ca648a801a76c99f3e98cd509ac47ee8afae2
+
+pkgname = r-cghcall
