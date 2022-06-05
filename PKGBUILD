@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -25,7 +25,7 @@ sha256sums=('ce755ee6e407904eba3f6b3c9efcdd48eb4f58a26b06e1892166d05f19a75973'
             '44a7fac721abcd93470e1a7e466bdea0c668c253dee93e4f1ea9a72dbce4ba31'
             'ddee63cdc6515c90bab89572b13e1627b145916cb8ede075ef8446cbb83f0a48'
             '707f2217f0e7aeb62d7b76830a271056d665542bf5f7a54e40adf4d5f299ca93'
-            'ee1ca61050eb85704112fe58eb4ad5f70f3b8fa57f66a37ab1178bb2e9e0b368'
+            'SKIP'
             '84cd40751e041edd48489eca59f1702bba08a402b25162e4cf061de45abc2bde')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _diropencl="$(basename "$_opencl")-$(basename "${source[1]}" ".tar.gz")"
