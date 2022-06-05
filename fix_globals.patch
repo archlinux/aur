@@ -1,0 +1,30 @@
+--- src/ccl.c	2021-10-26 22:32:44.000000000 +0300
++++ src/ccl.c	2022-01-17 21:19:43.601790157 +0300
+@@ -28,11 +28,11 @@
+ 		int d_current, dfact_current ;
+ 		double **X_current ;
+ 	} CDAT ;
+ 
+ /*********** In utils.c *******/
+-int *h_done ;
++static int *h_done ;
+ 
+ typedef struct Tnode
+ 	{
+ 		unsigned int g : 4 ; 
+ 		unsigned int h : 4 ;
+--- src/hcl.c	2021-10-26 22:32:44.000000000 +0300
++++ src/hcl.c	2022-01-17 21:19:31.992727767 +0300
+@@ -24,11 +24,11 @@
+ 	int d_current, dfact_current ;
+ 	double **X_current ;
+ } CDAT ;
+ 
+ /*********** In utils.c *******/
+-int *h_done ;
++static int *h_done ;
+ 
+ typedef struct Tnode
+ {
+ 	unsigned int g : 4 ; 
+ 	unsigned int h : 4 ;
