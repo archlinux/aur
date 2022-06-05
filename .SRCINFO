@@ -1,0 +1,17 @@
+pkgbase = r-cctensor
+	pkgdesc = CUR/CX Tensor Decomposition
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ccTensor
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-fields
+	depends = r-igraph
+	depends = r-rtensor
+	optdepends = r-nntensor
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ccTensor_1.0.2.tar.gz
+	sha256sums = cae2d0200507b892f2637338f98677d66a66828cc81d7e3f9b5d043b4bc72ce4
+
+pkgname = r-cctensor
