@@ -1,0 +1,12 @@
+pkgbase = r-awsmethods
+	pkgdesc = Class and Methods Definitions for Packages 'aws', 'adimpro', 'fmri', 'dwi'
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=awsMethods
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/awsMethods_1.1-1.tar.gz
+	sha256sums = 50934dc20cf4e015f1304a89de6703fed27e7bd54c6b9fc9fb253cdf2ecb7541
+
+pkgname = r-awsmethods
