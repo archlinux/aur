@@ -1,0 +1,14 @@
+pkgbase = r-clonality
+	pkgdesc = Clonality testing
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Clonality
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dnacopy
+	optdepends = r-gdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Clonality_1.44.0.tar.gz
+	sha256sums = 96ac9677fd0099f8bf252fe8e6686f4c452e2f9b183af679ff34cf937248e623
+
+pkgname = r-clonality
