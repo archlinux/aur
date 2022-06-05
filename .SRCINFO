@@ -1,4 +1,4 @@
-pkgbase = joe
+pkgbase = joe-hg
 	pkgdesc = Joe's own editor - hg checkout
 	pkgver = 4.6.r1077.8078f28eb18c
 	pkgrel = 1
@@ -7,6 +7,8 @@ pkgbase = joe
 	license = GPL
 	depends = ncurses
 	optdepends = gpm: console mouse support
+	provides = joe
+	conflicts = joe
 	backup = etc/joe/ftyperc
 	backup = etc/joe/jicerc.ru
 	backup = etc/joe/jmacsrc
@@ -17,4 +19,4 @@ pkgbase = joe
 	source = joe::hg+http://hg.code.sf.net/p/joe-editor/mercurial
 	sha256sums = SKIP
 
-pkgname = joe
+pkgname = joe-hg

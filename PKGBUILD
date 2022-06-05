@@ -1,7 +1,7 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=joe
+pkgname=joe-hg
 pkgver=4.6.r1077.8078f28eb18c
 pkgrel=1
 pkgdesc="Joe's own editor - hg checkout"
@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://joe-editor.sourceforge.io/"
 license=('GPL')
 depends=('ncurses')
+conflicts=('joe')
+provides=('joe')
 optdepends=('gpm: console mouse support')
 backup=('etc/joe/ftyperc' 'etc/joe/jicerc.ru' 'etc/joe/jmacsrc'
         'etc/joe/joerc' 'etc/joe/jpicorc' 'etc/joe/jstarrc' 'etc/joe/rjoerc')
