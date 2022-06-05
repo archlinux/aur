@@ -1,0 +1,12 @@
+pkgbase = r-algdesign
+	pkgdesc = Algorithmic Experimental Design
+	pkgver = 1.2.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=AlgDesign
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/AlgDesign_1.2.1.tar.gz
+	sha256sums = 5989626c526bd7c3d9bdda326c962056879be03392065a0b7ddb9b8cf9309d05
+
+pkgname = r-algdesign
