@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'
 license=('MIT')
@@ -12,18 +12,19 @@ depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat)
 optdepends=(
   'dialog: Required by many lfp functions outside the scope of image and video previews'
   'dunst: To receive notifications upon task completion and so forth'
+  'git: cloning repos from within lfp'
   )
 source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'b5e7bfef3955dc3825dcbf83a97580ecd534b284b830b87f1dcae5a38a81c49608609b591cbb038754fac5549d5641c2081156387db3f80254082c7f2af3d517'
-  '09b2c6709f03f71b3a95114f7f131c455c5c0796c0462242d5b3818e43071a766e3ef0ae3fe91e31e1152841fc3e35aab9b5ddb14133991f02b14700ce136472'
+  '16c2e9127e4b955bbf74a45724e2aa8ae5acd9abce288e25602f4e9ba826247cee7d506c907e62f19551ff69739abbf594f39a041147b7c383bb423b0d3157fb'
+  'f96b1f6d101fcd9414d7d8b631856671165138c9a89a61e446616d2a77f11ca207df1daa5fce7eae52c944c4a91bd88f8d5484e87e5a7fa6f050f8a50366af4e'
   )
 md5sums=(
-  'e3d3edf16cf07b6ce134948be94e3233'
-  'b73ff64bc74931468c4dc2d406279f04'
+  '0769d35e036faa60c80b32a2376ebd6b'
+  'e6737f5c6474f7bd4b9c2cad612a01c8'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
