@@ -1,0 +1,16 @@
+pkgbase = r-bstats
+	pkgdesc = Bayesian statistics
+	pkgver = 0.0.0.9002
+	pkgrel = 1
+	url = https://github.com/AlexanderLyNL/bstats
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = r
+	depends = r-hypergeo
+	depends = r-purrr
+	depends = r-suppdists
+	source = git+https://github.com/AlexanderLyNL/bstats.git
+	sha256sums = SKIP
+
+pkgname = r-bstats
