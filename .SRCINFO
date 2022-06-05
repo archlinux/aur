@@ -1,0 +1,26 @@
+pkgbase = r-cexor
+	pkgdesc = An R package to uncover high-resolution protein-DNA interactions in ChIP-exo replicates
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CexoR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomation
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-idr
+	depends = r-iranges
+	depends = r-rcolorbrewer
+	depends = r-rsamtools
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CexoR_1.34.0.tar.gz
+	sha256sums = 3c2bfdd3ced6bb7216b5ccca45266547aa10def6a74e93551197309e0d28f0ea
+
+pkgname = r-cexor
