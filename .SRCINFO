@@ -1,0 +1,21 @@
+pkgbase = r-densestbayes
+	pkgdesc = Density Estimation via Bayesian Inference Engines
+	pkgver = 1.0.2.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=densEstBayes
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rstan
+	depends = r-stanheaders
+	depends = make
+	depends = r-rstantools
+	source = https://cran.r-project.org/src/contrib/densEstBayes_1.0-2.1.tar.gz
+	sha256sums = 4b7066e18902ee2a0ea084513b237b5fb8e43fe3102354c2fb216d5a8c7df5df
+
+pkgname = r-densestbayes
