@@ -1,0 +1,25 @@
+pkgbase = r-depmap
+	pkgdesc = Cancer Dependency Map Data Package
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/depmap
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationhub
+	depends = r-dplyr
+	depends = r-experimenthub
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	optdepends = r-tibble
+	optdepends = r-tidyr
+	optdepends = r-viridis
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/depmap_1.10.0.tar.gz
+	sha256sums = 4ca3376c1c1a49aeb014589ee6d60b1bedf71d6a263b2d5d07844ce2195de80c
+
+pkgname = r-depmap
