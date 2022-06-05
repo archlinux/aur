@@ -1,0 +1,21 @@
+pkgbase = r-cn.mops
+	pkgdesc = cn.mops - Mixture of Poissons for CNV detection in NGS data
+	pkgver = 1.42.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/cn.mops
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-exomecopy
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = r-s4vectors
+	optdepends = r-dnacopy
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cn.mops_1.42.0.tar.gz
+	sha256sums = c583dca34f12133aeeaedd64f8633d4e92e46f44dc29cb040adf7b66ad4d5494
+
+pkgname = r-cn.mops
