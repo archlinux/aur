@@ -1,0 +1,18 @@
+pkgbase = r-alluvial
+	pkgdesc = Alluvial Diagrams
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=alluvial
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-devtools
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/alluvial_0.1-2.tar.gz
+	sha256sums = 77b6dc4651b33b03aaaf1e09a35f9c3536e5fddac2eda34f5a34e0ae33cf2e0d
+
+pkgname = r-alluvial
