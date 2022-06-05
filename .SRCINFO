@@ -1,0 +1,13 @@
+pkgbase = r-arrayhelpers
+	pkgdesc = Convenience Functions for Arrays
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=arrayhelpers
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-svunit
+	source = https://cran.r-project.org/src/contrib/arrayhelpers_1.1-0.tar.gz
+	sha256sums = 5fddd5dd4fb8237bcb24465ef823bc8715ba53e6e5fd7a716c31c48ec128340b
+
+pkgname = r-arrayhelpers
