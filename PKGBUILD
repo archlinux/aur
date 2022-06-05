@@ -14,7 +14,8 @@ depends=('python-numpy'
          'vapoursynth-plugin-remapframes'
          'vapoursynth-plugin-fillborders')
 makedepends=('git'
-             'python-setuptools')
+             'python-pip'
+             'python-wheel')
 optdepends=('vapoursynth-plugin-placebo: VapourSynth placebo plugin'
             'vapoursynth-plugin-descale: VapourSynth descale plugin')
 provides=("vapoursynth-plugin-${_plug}")
@@ -29,10 +30,13 @@ pkgver() {
 
 build() {
     cd "${_plug}"
-    python setup.py build
+    pip wheel --no-deps . -w dist
 }
 
 package() {
     cd "${_plug}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+    pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
