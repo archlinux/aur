@@ -1,12 +1,12 @@
 pkgbase = python-arcsi
 	pkgdesc = Atmospheric and Radiometric Correction of Satellite Imagery
 	pkgver = 3.8.1
-	pkgrel = 2
-	url = https://www.remotesensing.info/arcsi/
+	pkgrel = 3
+	url = https://github.com/remotesensinginfo/arcsi
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-rsgislib
+	depends = python-rsgislib=4.1.95
 	depends = python-kealib
 	depends = gdal
 	depends = python-rios

@@ -3,13 +3,13 @@
 _pkgname='arcsi'
 pkgname=("python-$_pkgname")
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Atmospheric and Radiometric Correction of Satellite Imagery"
 arch=('any')
-url='https://www.remotesensing.info/arcsi/'
+url='https://github.com/remotesensinginfo/arcsi'
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-rsgislib' 'python-kealib' 'gdal' 'python-rios' 'python-py6s')
+depends=('python-rsgislib=4.1.95' 'python-kealib' 'gdal' 'python-rios' 'python-py6s')
 options=(!emptydirs)
 source=("https://github.com/remotesensinginfo/arcsi/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('83b069487e363b26de6a2708256b55846e19a6a8a906086ac025152268208877')
