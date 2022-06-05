@@ -1,0 +1,23 @@
+pkgbase = r-cnviz
+	pkgdesc = Copy Number Visualization
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CNViz
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-copynumberplots
+	depends = r-dplyr
+	depends = r-dt
+	depends = r-genomicranges
+	depends = r-karyoploter
+	depends = r-magrittr
+	depends = r-plotly
+	depends = r-scales
+	depends = r-shiny
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNViz_1.4.0.tar.gz
+	sha256sums = 19015daaa78a39212ab5a19d9a6c3aa4ed612a196a7c3e1f3ed1b55423c85918
+
+pkgname = r-cnviz
