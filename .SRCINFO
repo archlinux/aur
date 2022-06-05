@@ -1,7 +1,8 @@
 pkgbase = perl-io-stty
 	pkgdesc = lib/IO/Stty.pm
-	pkgver = 0.40.0
+	pkgver = 0.04
 	pkgrel = 1
+	epoch = 1
 	url = http://search.cpan.org/dist/IO-Stty/
 	arch = any
 	license = PerlArtistic
@@ -13,4 +14,3 @@ pkgbase = perl-io-stty
 	sha256sums = 5c9509f1a8693d8287fa013def0bf87aa64cd927138461ef8deb55503c6651c2
 
 pkgname = perl-io-stty
-
