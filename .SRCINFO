@@ -1,0 +1,26 @@
+pkgbase = r-brainsaber
+	pkgdesc = Brain Span Atlas in Biobase Expressionset R toolset
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BrainSABER
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocfilecache
+	depends = r-biomart
+	depends = r-data.table
+	depends = r-lsa
+	depends = r-s4vectors
+	depends = r-shiny
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-complexheatmap
+	optdepends = r-fastcluster
+	optdepends = r-heatmaply
+	optdepends = r-knitr
+	optdepends = r-plotly
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BrainSABER_1.6.0.tar.gz
+	sha256sums = 3601e9b856ce2568c99235c5ab3c2eff4bb46b35b639d2d50c72d197817384e5
+
+pkgname = r-brainsaber
