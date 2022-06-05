@@ -1,0 +1,14 @@
+pkgbase = r-cocitestats
+	pkgdesc = Different test statistics based on co-citation.
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CoCiteStats
+	arch = any
+	license = CPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-org.hs.eg.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoCiteStats_1.68.0.tar.gz
+	sha256sums = be90d733faedf289bb3df3f85367559006914375b336e9993fdff5f7fbeceaa9
+
+pkgname = r-cocitestats
