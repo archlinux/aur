@@ -1,0 +1,26 @@
+pkgbase = r-alevinqc
+	pkgdesc = Generate QC Reports For Alevin Output
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/alevinQC
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cowplot
+	depends = r-dplyr
+	depends = r-dt
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-rjson
+	depends = r-rlang
+	depends = r-rmarkdown
+	depends = r-shiny
+	depends = r-shinydashboard
+	depends = r-tximport
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alevinQC_1.12.1.tar.gz
+	sha256sums = 6b8d0f47204e73ed7931d62099e8db687ca6ec8634252b5b8b1c4075bec5e53c
+
+pkgname = r-alevinqc
