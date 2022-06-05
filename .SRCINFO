@@ -1,0 +1,12 @@
+pkgbase = r-aggregation
+	pkgdesc = p-Value Aggregation Methods
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=aggregation
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/aggregation_1.0.1.tar.gz
+	sha256sums = 86f88a02479ddc8506bafb154117ebc3b1a4a44fa308e0193c8c315109302f49
+
+pkgname = r-aggregation
