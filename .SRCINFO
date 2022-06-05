@@ -1,0 +1,13 @@
+pkgbase = r-degseq
+	pkgdesc = Identify Differentially Expressed Genes from RNA-seq data
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DEGseq
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-qvalue
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEGseq_1.50.0.tar.gz
+	sha256sums = 2e84bf5351579f092df72afba90bab08a70c536e56400a05ae6d80ba1cec5ede
+
+pkgname = r-degseq
