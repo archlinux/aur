@@ -8,7 +8,7 @@ pkgbase = perl-device-usb
 	arch = armv7h
 	license = GPL
 	license = PerlArtistic
-	makedepends = perl-extutils-makemaker-aur
+	makedepends = perl-extutils-makemaker
 	makedepends = perl-inline-c
 	depends = perl>=5.10.0
 	depends = libusb-compat
@@ -17,4 +17,3 @@ pkgbase = perl-device-usb
 	sha256sums = f0c36379db4913406dc9bd546a6cfd4da20d58f7c2cc085893a2fe67a43465dc
 
 pkgname = perl-device-usb
-
