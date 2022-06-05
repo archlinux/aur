@@ -1,7 +1,7 @@
-Index: alire-1.1.0/alr_env.gpr
+Index: alire-1.2.0/alr_env.gpr
 ===================================================================
---- alire-1.1.0.orig/alr_env.gpr
-+++ alire-1.1.0/alr_env.gpr
+--- alire-1.2.0.orig/alr_env.gpr
++++ alire-1.2.0/alr_env.gpr
 @@ -3,22 +3,22 @@ aggregate project Alr_Env is
     for Create_Missing_Dirs use "True";
  
@@ -10,34 +10,34 @@ Index: alire-1.1.0/alr_env.gpr
 -                         "deps/ada-toml",
 -                         "deps/ajunitgen",
 -                         "deps/ansi",
+-                         "deps/clic",
 -                         "deps/gnatcoll-slim",
 -                         "deps/minirest",
 -                         "deps/optional",
 -                         "deps/semantic_versioning",
--                         "deps/simple_logging",
 -                         "deps/si_units",
+-                         "deps/simple_logging",
+-                         "deps/spdx",
 -                         "deps/stopwatch",
 -                         "deps/toml_slicer",
 -                         "deps/uri-ada",
--                         "deps/xmlezout",
--                         "deps/spdx",
--                         "deps/clic");
+-                         "deps/xmlezout"
 +                         "../aaa",
 +                         "../ada-toml",
 +                         "../ajunitgen",
 +                         "../ansi-ada",
++                         "../clic",
 +                         "../gnatcoll-slim",
 +                         "../minirest",
 +                         "../optional",
 +                         "../semantic_versioning",
-+                         "../simple_logging",
 +                         "../si_units",
++                         "../simple_logging",
++                         "../spdx_ada",
 +                         "../stopwatch",
 +                         "../toml_slicer",
 +                         "../uri-ada",
-+                         "../xmlezout",
-+                         "../spdx_ada",
-+                         "../clic");
++                         "../xmlezout"
+                         );
  
     for Project_Files use ("alr.gpr");
- 
