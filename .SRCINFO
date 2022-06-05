@@ -1,0 +1,15 @@
+pkgbase = r-cobs
+	pkgdesc = Constrained B-Splines (Sparse Matrix Based)
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cobs
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-quantreg
+	depends = r-sparsem
+	optdepends = r-matrix
+	source = https://cran.r-project.org/src/contrib/cobs_1.3-5.tar.gz
+	sha256sums = 7fae7da8f940975d544120c836e2d3b874f9b0cbab9631851ce986709f51c611
+
+pkgname = r-cobs
