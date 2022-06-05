@@ -1,0 +1,14 @@
+pkgbase = r-clst
+	pkgdesc = Classification by local similarity threshold
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/clst
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-roc
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clst_1.44.0.tar.gz
+	sha256sums = a510afcd9e39858a542103ba01cd6c4fd0c6074d276a3445fb20cc6ce034b96a
+
+pkgname = r-clst
