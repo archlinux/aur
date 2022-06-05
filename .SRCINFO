@@ -1,0 +1,15 @@
+pkgbase = r-aricode
+	pkgdesc = Efficient Computations of Standard Clustering Comparison Measures
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=aricode
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/aricode_1.0.0.tar.gz
+	sha256sums = 9463d63c25466ce8827329a32cfd01c399d4caca2f4ba6bb8a5213bfa0f5db44
+
+pkgname = r-aricode
