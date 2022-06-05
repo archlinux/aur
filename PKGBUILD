@@ -1,6 +1,6 @@
 # Maintainer: Look <notkool@protonmail.com>
 pkgname=miru-bin
-pkgver=2.3.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL-3.0')
 depends=('xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/ThaUnknown/miru/releases/download/v2.3.0/linux-Miru-2.3.0.deb")
-sha512sums_x86_64=('7899d6fbd395452d1c6a8b662ec263e83ad19f1f81d4bbbedff605268314b81e252d029ce10023807a118fd770934181c074d83cd608e88342d9d7b08ac37833')
+source_x86_64=("https://github.com/ThaUnknown/miru/releases/download/v2.4.2/linux-Miru-2.4.2.deb")
+sha512sums_x86_64=('e3c4ef866fa8431cf9cc9d9c4f8d3bfe68e9321183cf9f9272c19cb50c03ca2da589facf6258e9cc18f699650790bf29e6d78788d3da80fea7bf50ba5e0abb58')
 
 package(){
 
