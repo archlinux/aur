@@ -1,0 +1,27 @@
+pkgbase = r-conumee
+	pkgdesc = Enhanced copy-number variation analysis using Illumina DNA methylation arrays
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/conumee
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dnacopy
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-illuminahumanmethylation450kanno.ilmn12.hg19
+	depends = r-illuminahumanmethylation450kmanifest
+	depends = r-illuminahumanmethylationepicanno.ilm10b2.hg19
+	depends = r-illuminahumanmethylationepicmanifest
+	depends = r-iranges
+	depends = r-minfi
+	depends = r-rtracklayer
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-minfidata
+	optdepends = r-rcurl
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/conumee_1.30.0.tar.gz
+	sha256sums = c80828acdc1855186d6c85cd15c84871a344e2060a43cdf974ad4ffdf736efdf
+
+pkgname = r-conumee
