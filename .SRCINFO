@@ -1,0 +1,23 @@
+pkgbase = r-cmdfun
+	pkgdesc = Framework for Building Interfaces to Shell Commands
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=cmdfun
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-r.utils
+	depends = r-rlang
+	depends = r-testthat
+	depends = r-usethis
+	optdepends = r-cli
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-processx
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/cmdfun_1.0.2.tar.gz
+	sha256sums = 7288d35777260156bf67ea0c036af12e3130b51378f80a9fc5955111e1c16cdd
+
+pkgname = r-cmdfun
