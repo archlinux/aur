@@ -1,0 +1,37 @@
+pkgbase = r-aroma.core
+	pkgdesc = Core Methods and Classes Used by 'aroma.*' Packages Part of the Aroma Framework
+	pkgver = 3.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=aroma.core
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biocmanager
+	depends = r-future
+	depends = r-listenv
+	depends = r-matrixstats
+	depends = r-pscbs
+	depends = r-r.cache
+	depends = r-r.devices
+	depends = r-r.filesets
+	depends = r-r.methodss3
+	depends = r-r.oo
+	depends = r-r.rsp
+	depends = r-r.utils
+	depends = r-rcolorbrewer
+	optdepends = r-aroma.light
+	optdepends = r-cairo
+	optdepends = r-dnacopy
+	optdepends = r-ebimage
+	optdepends = r-expectile
+	optdepends = r-glad
+	optdepends = r-haarseg
+	optdepends = r-kernsmooth
+	optdepends = r-mpcbs
+	optdepends = r-png
+	optdepends = r-preprocesscore
+	optdepends = r-sfit
+	source = https://cran.r-project.org/src/contrib/aroma.core_3.2.2.tar.gz
+	sha256sums = 35e0312e403a1894da036afac12d1d727c937e666d7eb400bfe4018b21244855
+
+pkgname = r-aroma.core
