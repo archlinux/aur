@@ -1,0 +1,17 @@
+pkgbase = r-cointreg
+	pkgdesc = Parameter Estimation and Inference in a Cointegrating Regression
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cointReg
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-checkmate
+	depends = r-matrixstats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/cointReg_0.2.0.tar.gz
+	sha256sums = 84b7a3ad15f99c8d4993f689410833a99f2acad1827ddc64ae99c2ad12409a58
+
+pkgname = r-cointreg
