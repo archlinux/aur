@@ -1,0 +1,17 @@
+pkgbase = gohack-git
+	pkgdesc = Make temporary edits to your Go module dependencies
+	pkgver = 1.0.2.r7.g03d2ff3
+	pkgrel = 1
+	url = https://github.com/rogpeppe/gohack
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = rsync
+	provides = gohack
+	conflicts = gohack
+	source = gohack::git+https://github.com/rogpeppe/gohack#branch=master
+	sha256sums = SKIP
+
+pkgname = gohack-git
