@@ -2,8 +2,7 @@
 
 pkgname=yesplaymusic
 pkgver=0.4.5
-subver=
-pkgrel=2
+pkgrel=1
 pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
 url="https://github.com/qier222/YesPlayMusic"
