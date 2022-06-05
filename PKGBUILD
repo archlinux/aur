@@ -4,7 +4,7 @@ _ver=v0.2.1
 
 pkgname='discordrpc'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Discord RPC Client written in Rust'
 arch=('x86_64')
 url="https://github.com/$_repo"
@@ -33,7 +33,7 @@ package() {
   target/release/$pkgname --print-completions fish -c 'none' -d 'none' > "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 
   mkdir -p "$pkgdir/usr/share/man/man1"
-  target/release/$pkgname manpage | gzip > "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+  target/release/$pkgname --print-manpage -c 'none' -d 'none' | gzip > "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
 
-  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
