@@ -1,0 +1,24 @@
+pkgbase = r-celldex
+	pkgdesc = Reference Index for Cell Types
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/celldex
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-annotationhub
+	depends = r-delayedarray
+	depends = r-delayedmatrixstats
+	depends = r-experimenthub
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-dt
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/celldex_1.6.0.tar.gz
+	sha256sums = 20f483a5a4fc4dd6fb289936467a0c8763de11db8d16ac46f6e6f9b4606d54ba
+
+pkgname = r-celldex
