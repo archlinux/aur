@@ -1,0 +1,13 @@
+pkgbase = r-bader
+	pkgdesc = Bayesian Analysis of Differential Expression in RNA Sequencing Data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BADER
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-pasilla
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BADER_1.34.0.tar.gz
+	sha256sums = f56af452a2bbac0cec2afded4d290c93c1805a8ed8795926861d066d450ebd44
+
+pkgname = r-bader
