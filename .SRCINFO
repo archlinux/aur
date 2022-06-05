@@ -1,0 +1,18 @@
+pkgbase = r-ccdralgorithm
+	pkgdesc = CCDr Algorithm for Learning Sparse Gaussian Bayesian Networks
+	pkgver = 0.0.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ccdrAlgorithm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-sparsebnutils
+	optdepends = r-graph
+	optdepends = r-igraph
+	optdepends = r-matrix
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ccdrAlgorithm_0.0.6.tar.gz
+	sha256sums = e55e2b9a4cc39442e2621b2131f1ffba330ced0fa8fe12ae750340c0b5188b5f
+
+pkgname = r-ccdralgorithm
