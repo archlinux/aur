@@ -1,0 +1,21 @@
+pkgbase = r-demixt
+	pkgdesc = Cell type-specific deconvolution of heterogeneous tumor samples with two or three components using expression data from RNAseq or microarray platforms
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DeMixT
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-base64enc
+	depends = r-ggplot2
+	depends = r-knitr
+	depends = r-matrixcalc
+	depends = r-matrixstats
+	depends = r-rcpp
+	depends = r-rmarkdown
+	depends = r-summarizedexperiment
+	depends = r-truncdist
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeMixT_1.12.0.tar.gz
+	sha256sums = ce42e26ce92ffd15299325b9b72ef14d368544110b05310aa20540ab9bd1a687
+
+pkgname = r-demixt
