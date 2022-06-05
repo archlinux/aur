@@ -3,9 +3,10 @@ pkgname=(
     'python-sdbus-git'
     'python-sdbus-notifications-git'
     'python-sdbus-networkmanager-git'
+    'python-sdbus-secrets-git'
 )
 pkgbase='python-sdbus-git'
-pkgver=r534.f59d2d7
+pkgver=r591.9da0fa3
 pkgrel=1
 pkgdesc="Modern Python library for D-Bus"
 arch=('x86_64')
