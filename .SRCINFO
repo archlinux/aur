@@ -1,0 +1,14 @@
+pkgbase = r-assertive.models
+	pkgdesc = Assertions to Check Properties of Models
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.models
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.models_0.0-2.tar.gz
+	sha256sums = b9a6d8786f352d53371dbe8c5f2f2a62a7866e30313f268e69626d5c3691c42e
+
+pkgname = r-assertive.models
