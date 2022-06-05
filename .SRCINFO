@@ -1,0 +1,22 @@
+pkgbase = vegastrike-engine
+	pkgdesc = A spaceflight simulator in massive universe
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://www.vega-strike.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	depends = python
+	depends = freeglut
+	depends = gtk3
+	depends = libvorbis
+	depends = openal
+	depends = sdl
+	depends = glu
+	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v0.8.0
+	sha256sums = SKIP
+
+pkgname = vegastrike-engine
