@@ -1,0 +1,25 @@
+pkgbase = r-cn.farms
+	pkgdesc = cn.FARMS - factor analysis for copy number estimation
+	pkgver = 1.44.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/cn.farms
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-affxparser
+	depends = r-biobase
+	depends = r-dbi
+	depends = r-dnacopy
+	depends = r-ff
+	depends = r-oligo
+	depends = r-oligoclasses
+	depends = r-preprocesscore
+	depends = r-snow
+	optdepends = r-pd.genomewidesnp.5
+	optdepends = r-pd.genomewidesnp.6
+	optdepends = r-pd.mapping250k.nsp
+	optdepends = r-pd.mapping250k.sty
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cn.farms_1.44.0.tar.gz
+	sha256sums = e4a435fd9f5dcc61e1675c437b9d0ed7c8520c557c846389249e22584a83c0b7
+
+pkgname = r-cn.farms
