@@ -1,0 +1,15 @@
+pkgbase = r-aws
+	pkgdesc = Adaptive Weights Smoothing
+	pkgver = 2.5.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=aws
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-awsmethods
+	depends = r-gsl
+	source = https://cran.r-project.org/src/contrib/aws_2.5-1.tar.gz
+	sha256sums = e8abadc5614f132edc3fb9cb1c82ce4dacc1315b727fbd49db7399aee24115ba
+
+pkgname = r-aws
