@@ -1,7 +1,7 @@
 pkgbase = discordrpc
 	pkgdesc = Fast Discord RPC Client written in Rust
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MedzikUser/discordrpc
 	arch = x86_64
 	license = GPL3
