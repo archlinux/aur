@@ -1,0 +1,13 @@
+pkgbase = r-bsgenome.hsapiens.ucsc.hg38
+	pkgdesc = Full genome sequences for Homo sapiens (UCSC version hg38, based on GRCh38.p13)
+	pkgver = 1.4.4
+	pkgrel = 4
+	url = https://bioconductor.org/packages/BSgenome.Hsapiens.UCSC.hg38
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/BSgenome.Hsapiens.UCSC.hg38_1.4.4.tar.gz
+	sha256sums = 024e3571b70f8e07bd50c4dd4d2dc05288497bf5409a9ac4ef12db94b081b50f
+
+pkgname = r-bsgenome.hsapiens.ucsc.hg38
