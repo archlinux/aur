@@ -17,7 +17,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 package() {
+    mkdir -p ~/go/bin/
     cd $pkgname
-    go build -o $pkgname
-    mv $pkgname /usr/local/bin/
+    go install
 }
