@@ -1,0 +1,20 @@
+pkgbase = r-affyplm
+	pkgdesc = Methods for fitting probe-level models
+	pkgver = 1.72.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affyPLM
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-gcrma
+	depends = r-preprocesscore
+	depends = r-zlibbioc
+	optdepends = r-affydata
+	optdepends = r-mass
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affyPLM_1.72.0.tar.gz
+	sha256sums = 932db803d97c031303b72c7b42c6ede1b87b2f49b041fa7236e4a577772d76d4
+
+pkgname = r-affyplm
