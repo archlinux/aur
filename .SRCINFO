@@ -1,0 +1,16 @@
+pkgbase = r-beat
+	pkgdesc = BEAT - BS-Seq Epimutation Analysis Toolkit
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BEAT
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biostrings
+	depends = r-bsgenome
+	depends = r-genomicranges
+	depends = r-shortread
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEAT_1.34.0.tar.gz
+	sha256sums = afee30daa5aa4f2b34635ad6800b15ee0eaf9128b2e0fdfb479f0c2a8a8ff8c1
+
+pkgname = r-beat
