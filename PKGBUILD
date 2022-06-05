@@ -2,10 +2,10 @@
 
 pkgname=onevpl-cpu-git
 pkgver=2022.1.4.r0.g83a0537
-pkgrel=1
+pkgrel=2
 pkgdesc='oneVPL runtime implementation for CPU (git version)'
 arch=('x86_64')
-url='https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html'
+url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('ffmpeg')
 makedepends=('git' 'cmake' 'onevpl' 'openh264' 'svt-hevc')
