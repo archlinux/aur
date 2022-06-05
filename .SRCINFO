@@ -1,0 +1,16 @@
+pkgbase = hitome-git
+	pkgdesc = A quick & dirty system monitor that's light on resources
+	pkgver = r100.bf200ae
+	pkgrel = 1
+	url = https://github.com/artefact2/hitome
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = rust
+	optdepends = nvidia-utils: support monitoring NVIDIA GPUs
+	provides = hitome
+	conflicts = hitome
+	source = hitome::git+https://github.com/artefact2/hitome.git
+	md5sums = SKIP
+
+pkgname = hitome-git
