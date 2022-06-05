@@ -1,0 +1,25 @@
+pkgbase = r-bbmle
+	pkgdesc = Tools for General Maximum Likelihood Estimation
+	pkgver = 1.0.25
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bbmle
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bdsmatrix
+	depends = r-mvtnorm
+	depends = r-numderiv
+	optdepends = r-aiccmodavg
+	optdepends = r-emdbook
+	optdepends = r-ggplot2
+	optdepends = r-hmisc
+	optdepends = r-knitr
+	optdepends = r-mumin
+	optdepends = r-optimx
+	optdepends = r-rms
+	optdepends = r-runit
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bbmle_1.0.25.tar.gz
+	sha256sums = 86a8c69902fbf6caf337f9bc532afe89dc2a59dd24287a2423d781797010b255
+
+pkgname = r-bbmle
