@@ -2,14 +2,14 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 _base=racket
 pkgname=${_base}-git
-pkgver=8.4.0.8.r593.8f5eee4
+pkgver=8.5.0.8.gfd1b706
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
 url="https://${_base}-lang.org"
 license=('Apache' 'GPL3' 'LGPL3' 'custom')
-depends=(bash libffi)
-makedepends=(git awk)
+depends=('bash' 'libffi')
+makedepends=('git' 'awk')
 provides=(${_base})
 conflicts=(${_base})
 options=('!strip' '!emptydirs')
@@ -17,7 +17,7 @@ source=(git+https://github.com/${_base}/${_base}.git)
 md5sums=('SKIP')
 
 pkgver() {
-  printf %s.%s.%s.%s.r%s.%s \
+  printf %s.%s.%s.%s.g%s \
   $(awk '/ MZSCHEME_VERSION_X / {print $3}' \
 	 "${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h) \
   $(awk '/ MZSCHEME_VERSION_Y /{print $3}' \
@@ -26,7 +26,7 @@ pkgver() {
 	"${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h| head -1) \
   $(awk '/ MZSCHEME_VERSION_W / {print $3}'  \
 	"${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h| head -1) \
-  "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
+  $(git log -1 --format='%h')
 }
 
 build() {
