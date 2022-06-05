@@ -5,7 +5,7 @@
 
 _gitname=dylint
 pkgname=cargo-dylint
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=0
 pkgdesc="A tool for running Rust lints from dynamic libraries"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/trailofbits/${_gitname}"
 license=('MIT')
 makedepends=('rust')
 source=("https://github.com/trailofbits/${_gitname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f5a7d02c778fca6246536c64a34d647c04094e3d02592e7d159ae27d576226c')
+sha256sums=('edd84877eae488c44f17e5993a8f77201d55c86cb513a448321237b37338ee8d')
 
 build() {
   cd "$srcdir/${_gitname}-${pkgver}"
