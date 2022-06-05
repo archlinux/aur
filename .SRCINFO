@@ -1,0 +1,12 @@
+pkgbase = r-dama
+	pkgdesc = Efficient design and analysis of factorial two-colour microarray data
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/daMA
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/daMA_1.68.0.tar.gz
+	sha256sums = 551ccc88053c2060de0bd2c887c208a726e1b77b5ac5a1f2bbb5694e04ddf2d6
+
+pkgname = r-dama
