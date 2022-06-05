@@ -1,0 +1,20 @@
+pkgbase = r-anylib
+	pkgdesc = Install and Load Any Package from CRAN, Bioconductor or Github
+	pkgver = 1.0.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=anyLib
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = r
+	depends = r-biocmanager
+	depends = r-curl
+	depends = r-devtools
+	depends = r-httr
+	depends = r-withr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/anyLib_1.0.5.tar.gz
+	sha256sums = 759b53ecc58136458220108a72004f360404ad2769cbf6ead48dcf09212a3df5
+
+pkgname = r-anylib
