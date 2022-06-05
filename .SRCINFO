@@ -10,6 +10,7 @@ pkgbase = conky19
 	makedepends = docbook2x
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
+	depends = tolua++
 	depends = libxml2
 	depends = curl
 	depends = cairo
@@ -17,6 +18,8 @@ pkgbase = conky19
 	depends = glib2
 	depends = libxdamage
 	depends = imlib2
+	depends = lua
+	depends = librsvg
 	provides = conky
 	source = conky-1.9.0.tar.gz::https://github.com/brndnmtthws/conky/archive/1.9.0.tar.gz
 	source = conky.h.patch
@@ -24,4 +27,3 @@ pkgbase = conky19
 	md5sums = 3a4ebcc2e18685302945944f7bc0c87b
 
 pkgname = conky19
-

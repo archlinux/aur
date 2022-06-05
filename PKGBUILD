@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky/"
 license=('GPL3')
 provides=('conky')
-depends=('libxml2' 'curl' 'cairo' 'libxft' 'glib2' 'libxdamage' 'imlib2')
+depends=('tolua++' 'libxml2' 'curl' 'cairo' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua' 'librsvg')
 makedepends=('pkgconfig' 'docbook2x' 'docbook-xml' 'docbook-xsl')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/brndnmtthws/${_pkgname}/archive/${pkgver}.tar.gz" "conky.h.patch")
 md5sums=('b13f2c7d52e18d94bfbfcd5157406db7' '3a4ebcc2e18685302945944f7bc0c87b')
@@ -39,18 +39,17 @@ build() {
               --disable-rss \
               --disable-ibm \
               --enable-imlib2 \
-              --disable-lua \
-              --disable-lua-cairo \
-              --disable-lua-imlib2 \
+              --enable-lua \
+              --enable-lua-cairo \
+              --enable-lua-imlib2 \
               --disable-nvidia \
               --disable-ncurses \
               --disable-hddtemp \
               --disable-apcupsd \
               --disable-math \
-              --disable-mmpd \
+              --disable-mpd \
               --disable-moc \
               --disable-argb \
-              --disable-lua \
               --disable-alsa \
               --program-suffix=19
   make
