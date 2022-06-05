@@ -1,17 +1,17 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=mpb-git
-pkgver=1.6.1.r5.g866d2f6
+pkgver=1.11.1.r12.g84de012
 pkgrel=1
 pkgdesc='MIT Photonic-Bands: computation of photonic band structures in periodic media'
 arch=('i686' 'x86_64')
-url='https://github.com/stevengj/mpb'
+url='https://github.com/NanoComp/mpb'
 license=('GPL2')
-depends=('lapack' 'hdf5' 'fftw-mpi' 'libctl-git')
+depends=('lapack' 'hdf5' 'fftw' 'libctl-git')
 makedepends=('gcc-fortran')
 optdepends=('h5utils: visualization and conversion of scientific data')
-provides=('mpb')
+provides=("mpb=${pkgver}")
 conflicts=('mpb')
-source=('git+https://github.com/stevengj/mpb.git')
+source=('git+https://github.com/NanoComp/mpb.git')
 sha256sums=('SKIP')
 
 pkgver() {
