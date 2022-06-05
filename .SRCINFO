@@ -1,0 +1,24 @@
+pkgbase = r-biseq
+	pkgdesc = Processing and analyzing bisulfite sequencing data
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiSeq
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-betareg
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-formula
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-globaltest
+	depends = r-iranges
+	depends = r-lokern
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.36.0.tar.gz
+	sha256sums = c139f26284a15a82225c81f7976aa9e2d9b44cb1fb30dc951a0a80d2d981dab2
+
+pkgname = r-biseq
