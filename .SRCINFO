@@ -1,0 +1,15 @@
+pkgbase = ctrlr-maurodecarolis-korg-05rw-panel
+	pkgdesc = Ctrlr panel from Mauro De Carolis (mdeca) for the Korg 05R/W, installed under /usr/share/ctrlr/panel/MauroDeCarolis.
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://ctrlr.org/korg-05rw-editor/
+	arch = any
+	groups = pro-audio
+	license = GPLv3
+	depends = ctrlr
+	provides = ctrlr-maurodecarolis-korg-05rw-panel
+	conflicts = ctrlr-maurodecarolis-korg-05rw-panel
+	source = 05RW_0_99_2017-07-15_17-36.bpanelz::https://ctrlr.org/wp-content/uploads/delightful-downloads/2017/09/05RW_0_99_2017-07-15_17-36.bpanelz
+	sha256sums = SKIP
+
+pkgname = ctrlr-maurodecarolis-korg-05rw-panel
