@@ -9,7 +9,7 @@ arch=(i686 x86_64 armv7h)
 url="https://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'libusb-compat')
-makedepends=('perl-extutils-makemaker-aur' 'perl-inline-c')
+makedepends=('perl-extutils-makemaker' 'perl-inline-c')
 options=('!emptydirs')
 source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
 sha256sums=(f0c36379db4913406dc9bd546a6cfd4da20d58f7c2cc085893a2fe67a43465dc)
