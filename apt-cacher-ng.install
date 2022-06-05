@@ -4,13 +4,15 @@ pre_install() {
 }
 
 post_install() {
-  chown -R apt-cacher-ng:apt-cacher-ng /var/cache/apt-cacher-ng /run/apt-cacher-ng /var/log/apt-cacher-ng
+  chown -R apt-cacher-ng:apt-cacher-ng /var/cache/apt-cacher-ng /var/log/apt-cacher-ng
+  chown apt-cacher-ng:apt-cacher-ng /etc/apt-cacher-ng/security.conf
   echo "You may want to customize the backends in /etc/apt-cacher-ng"
 }
 
 post_upgrade() {
   echo "Warning: If after upgrading apt-cacher-ng fails to start, owner of a few directories might have to be adjusted:"
   echo "chown -R apt-cacher-ng:apt-cacher-ng /var/cache/apt-cacher-ng /run/apt-cacher-ng /var/log/apt-cacher-ng"
+  chown apt-cacher-ng:apt-cacher-ng /etc/apt-cacher-ng/security.conf
   systemctl daemon-reload
   systemd-tmpfiles --create
 }
