@@ -1,0 +1,27 @@
+pkgbase = r-arsenal
+	pkgdesc = An Arsenal of 'R' Functions for Large-Scale Statistical Summaries
+	pkgver = 3.6.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=arsenal
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-knitr
+	optdepends = r-broom
+	optdepends = r-coin
+	optdepends = r-geepack
+	optdepends = r-magrittr
+	optdepends = r-mass
+	optdepends = r-pander
+	optdepends = r-proc
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-splines
+	optdepends = r-survival
+	optdepends = r-testthat
+	optdepends = r-xtable
+	optdepends = r-yaml
+	source = https://cran.r-project.org/src/contrib/arsenal_3.6.3.tar.gz
+	sha256sums = bace6e1cf66574db8edb142a2cc4f81feda511e612c3f69e955636241a1d7a63
+
+pkgname = r-arsenal
