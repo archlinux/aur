@@ -9,16 +9,16 @@ pkgdesc="gEDA/gaf suite - Contains gschem, gnetlist, gsymcheck, gattrib, utiliti
 arch=('x86_64')
 url="http://geda-project.org/"
 license=('GPL')
-depends=('gtk2' 'guile' 'guile2.0' 'libstroke' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('pkg-config' 'perl-xml-parser' 'flex' 'gawk')
+depends=('gtk2' 'guile' 'libstroke' 'shared-mime-info' 'hicolor-icon-theme')
+makedepends=('pkg-config' 'perl-xml-parser' 'flex' 'awk')
 optdepends=('python2: for several of the commands (garchive, tragesym, xorn)'
             'gawk: for sw2asc'
             'imagemagick: png/pdf output'
             'graphviz: graph output')
 replaces=('geda-suite' 'geda-libs')
 source=(http://ftp.geda-project.org/geda-gaf/stable/v1.10/$pkgver/$pkgname-$pkgver.tar.gz)
-# signature was dropped in 1.10.0
 md5sums=('39377764735bd4ce5360371614541a25')
+# signature was dropped in 1.10.0
 validpgpkeys=('6073BA0D62E91251C421C17067B19BABB83BBE9A')
 
 # 1.10.0 adds an optional dep on libfam/libgamin (prefers gamin?)
