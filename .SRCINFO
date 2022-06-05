@@ -1,0 +1,25 @@
+pkgbase = r-ccmap
+	pkgdesc = Combination Connectivity Mapping
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ccmap
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biocmanager
+	depends = r-ccdata
+	depends = r-data.table
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-lsa
+	depends = r-xgboost
+	optdepends = r-crossmeta
+	optdepends = r-knitr
+	optdepends = r-lydata
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ccmap_1.22.0.tar.gz
+	sha256sums = c7cbf2e562b392ec795aebd9bd52313866cfd10add80af012399064bc1143c0f
+
+pkgname = r-ccmap
