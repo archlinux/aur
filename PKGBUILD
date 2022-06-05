@@ -2,7 +2,7 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.6' 'python-psutil>=2.0.0'  'python-psycopg2>=2.8' 'python-py
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('3923eebc1380a00088d904dd103a60ec')
+md5sums=('a3705051bddd8f3337677076d9ce1762')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
