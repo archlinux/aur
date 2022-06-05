@@ -1,0 +1,13 @@
+pkgbase = r-aods3
+	pkgdesc = Analysis of Overdispersed Data using S3 Methods
+	pkgver = 0.4.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=aods3
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lme4
+	source = https://cran.r-project.org/src/contrib/aods3_0.4-1.1.tar.gz
+	sha256sums = 3b9f089c8924b67b579761260513bcbac37411734653d9b802f54f5bda7fb5cd
+
+pkgname = r-aods3
