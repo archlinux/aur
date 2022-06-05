@@ -1,0 +1,24 @@
+pkgbase = r-aldex2
+	pkgdesc = Analysis Of Differential Abundance Taking Sample Variation Into Account
+	pkgver = 1.28.1
+	pkgrel = 3
+	url = https://bioconductor.org/packages/ALDEx2
+	arch = any
+	license = custom
+	depends = r
+	depends = r-biocparallel
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-multtest
+	depends = r-rfast
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-zcompositions
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ALDEx2_1.28.1.tar.gz
+	sha256sums = 492e774d4e72c86511028420eac13ec3cd49a210849c10e9257f51aa45e9f776
+
+pkgname = r-aldex2
