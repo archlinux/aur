@@ -1,0 +1,21 @@
+pkgbase = r-cmapr
+	pkgdesc = CMap Tools in R
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cmapR
+	arch = any
+	license = custom
+	depends = r
+	depends = r-data.table
+	depends = r-flowcore
+	depends = r-matrixstats
+	depends = r-rhdf5
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cmapR_1.8.0.tar.gz
+	sha256sums = 32c27584bf4842da8f8960518c4e9de0b249cc90d299430574962cf8918b0942
+
+pkgname = r-cmapr
