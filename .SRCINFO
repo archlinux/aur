@@ -1,0 +1,20 @@
+pkgbase = r-bigparallelr
+	pkgdesc = Easy Parallel Tools
+	pkgver = 0.3.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bigparallelr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bigassertr
+	depends = r-doparallel
+	depends = r-flock
+	depends = r-foreach
+	depends = r-parallelly
+	depends = r-rhpcblasctl
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bigparallelr_0.3.2.tar.gz
+	sha256sums = 5a3312699fdf6521e982b6fce844977dd7e9c3188354a7c3106c24495e643393
+
+pkgname = r-bigparallelr
