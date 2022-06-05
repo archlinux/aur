@@ -1,0 +1,18 @@
+pkgbase = r-bitseq
+	pkgdesc = Transcript expression inference and differential expression analysis for RNA-seq data
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BitSeq
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-iranges
+	depends = r-rhtslib
+	depends = r-rsamtools
+	depends = r-s4vectors
+	depends = make
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BitSeq_1.40.0.tar.gz
+	sha256sums = d0152f9f4068f635a777b1559ada2428fbf22407107fe07ed4c7ba5f026bda5d
+
+pkgname = r-bitseq
