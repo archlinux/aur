@@ -2,20 +2,19 @@
 _base=fenics-plotly
 pkgname=python-${_base}
 pkgdesc="A package for plotting FEniCS objects using plotly"
-pkgver=2021.0.1
-pkgrel=2
+pkgver=2022.0.0
+pkgrel=1
 arch=(any)
 url="https://github.com/finsberg/${_base}"
 license=(MIT)
-depends=(python-dolfin python-plotly)
+depends=(python-dolfin python-ipywidgets python-plotly)
 makedepends=(python-setuptools)
-checkdepends=(python-ipywidgets python-pytest)
+checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bcaeca430d149b8ec5ed855dc0994c13877584bb4835c3e05b3b862a949d6b7c874f5f24d7b4802e9f4660e73bb443474ebe38d4202f19697d7445ded22fd032')
+sha512sums=('456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
