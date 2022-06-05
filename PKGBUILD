@@ -8,7 +8,7 @@ pkgdesc='Plugin for VapourSynth: rekt (GIT version)'
 arch=('x86_64')
 url='https://github.com/OpusGang/rekt'
 license=('MIT')
-depends=('vapoursynth' 'vapoursynth-plugin-vsutil')
+depends=('vapoursynth-plugin-vsutil')
 makedepends=('git'
              'python-pip'
              'python-wheel')

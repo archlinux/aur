@@ -8,7 +8,6 @@ pkgbase = vapoursynth-plugin-rekt-git
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python-wheel
-	depends = vapoursynth
 	depends = vapoursynth-plugin-vsutil
 	provides = vapoursynth-plugin-rekt
 	conflicts = vapoursynth-plugin-rekt
