@@ -1,0 +1,18 @@
+pkgbase = r-biganalytics
+	pkgdesc = Utilities for 'big.matrix' Objects from Package 'bigmemory'
+	pkgver = 1.1.21
+	pkgrel = 4
+	url = https://cran.r-project.org/package=biganalytics
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-bh
+	depends = r-biglm
+	depends = r-bigmemory
+	depends = r-foreach
+	depends = r-rcpp
+	optdepends = r-methods
+	source = https://cran.r-project.org/src/contrib/biganalytics_1.1.21.tar.gz
+	sha256sums = debd18d8ed2e1a49fe25c69f8a636b955b1cabedd36ec69c0bff53b64d8eb9a5
+
+pkgname = r-biganalytics
