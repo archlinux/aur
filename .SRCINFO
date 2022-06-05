@@ -1,25 +1,17 @@
 pkgbase = vegastrike-release-git
-	pkgdesc = A spaceflight simulator in massive universe
-	pkgver = rev.13847
+	pkgdesc = Vega Strike - Upon the Coldest Sea. Latest Release of game Assets
+	pkgver = rev.11493
 	pkgrel = 1
 	url = www.vega-strike.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = boost-libs
-	depends = python
-	depends = freeglut
-	depends = gtk2
-	depends = openal
-	depends = sdl
-	depends = glu
-	depends = vegastrike-data
+	depends = expat
+	depends = vegastrike-engine
 	provides = vegastrike
 	conflicts = vegastrike
-	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.6.x
+	source = git+https://github.com/vegastrike/Assets-Production#branch=0.8.x
 	sha1sums = SKIP
 
 pkgname = vegastrike-release-git
-
