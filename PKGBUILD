@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -107,6 +107,7 @@ source=(
   '0008-kernel-5.13-dropped-tty_check_change.patch'
   '0009-kernel-5.14-task_struct.state-unsigned-tty.patch'
   '0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0011-kernel-5.17-change-PDE_DATA.patch'
   'npreal2.sh'
 )
 #_srcdir="${pkgname}"
@@ -124,6 +125,7 @@ md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          'd5da78ee96047557af03b6e496164160'
          '16504fb58a0416a26fe04e8e3d9867a7'
          'd3716370fdd8b1ad888498fc82fca9f4'
+         '9f62a0a931436bda473259832d9ebc5b'
          '90ac27b669542c11b0a9b6763f6e0d9b')
 sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
@@ -136,6 +138,7 @@ sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             'f8496f2e62a4e57d57df5ce27d2bd92eed234581331c8ee6b7b9e139e0e7ac13'
             '7c9380a794725418015d62411f697850096b3c8a62666f5ec9e562e93ba3ee4c'
             'd61ca42d7fe58b409c1a1c7237788d412c36042acaa61e95008e48ec580b5153'
+            '609388af991dd4095300dec76f85d5abceb68395fde5e157fa084fb4af8cad60'
             '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -289,6 +292,11 @@ prepare() {
   #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   patch -Nbup0 -i "${srcdir}/0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
+  #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0011-kernel-5.17-change-PDE_DATA.patch'
+  patch -Nbup0 -i "${startdir}/0011-kernel-5.17-change-PDE_DATA.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

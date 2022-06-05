@@ -1,0 +1,15 @@
+--- npreal2.c.orig	2022-06-05 01:21:16.795161588 -0400
++++ npreal2.c	2022-06-05 01:21:50.662167567 -0400
+@@ -3387,10 +3387,12 @@ npreal_net_open (
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 
+ 	nd = (struct nd_struct *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	nd = pde_data(inode);
+ #else
+ 
+ 	//nd = (struct nd_struct *) &npvar_net_nodes[0];
+ 	nd = (struct nd_struct *) PDE_DATA(inode);
+ #endif /* 3,10,0 */
