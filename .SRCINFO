@@ -1,0 +1,14 @@
+pkgbase = r-consensusclusterplus
+	pkgdesc = ConsensusClusterPlus
+	pkgver = 1.60.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ConsensusClusterPlus
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-all
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ConsensusClusterPlus_1.60.0.tar.gz
+	sha256sums = f7809db4eef81367be8b92b327e64dfd373e689893f0a99dd238e54a7a644180
+
+pkgname = r-consensusclusterplus
