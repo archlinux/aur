@@ -1,0 +1,15 @@
+pkgbase = r-affycomp
+	pkgdesc = Graphics Toolbox for Assessment of Affymetrix Expression Measures
+	pkgver = 1.72.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affycomp
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	optdepends = r-affycompdata
+	optdepends = r-splines
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affycomp_1.72.0.tar.gz
+	sha256sums = 405ec78b47675d669eadfefd1820645fada40518e5b4073d506b5fac4db9052b
+
+pkgname = r-affycomp
