@@ -10,7 +10,7 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source=("http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${
         'apt-cacher-ng.tmpfile'
 )
 
-backup=('etc/apt-cacher-ng/acng.conf')
+backup=('etc/apt-cacher-ng/acng.conf' 'etc/apt-cacher-ng/security.conf')
 sha256sums=('63140473a669c42f5e2219e38fa9d7c733f9047699dde52c3bd828e372929a5f'
             '695c074de35a75730e6b711960993f00f120634276349c8640db2ad883a5ad09'
             'c89335ea833fc04ec2ce6598e3fdaf86aa8f2fa0892203eef4c0a5cb24d6c188'
@@ -72,6 +72,7 @@ package() {
   mkdir -p ${pkgdir}/var/log/apt-cacher-ng
   mkdir -p ${pkgdir}/var/cache/apt-cacher-ng
 
+  chmod 600 ${pkgdir}/etc/apt-cacher-ng/security.conf
 }
 
 
