@@ -1,0 +1,17 @@
+pkgbase = r-cand
+	pkgdesc = Perform Chromosomal Ancestry Differences (CAnD) Analyses
+	pkgver = 1.27.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CAnD
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = r-reshape
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAnD_1.27.0.tar.gz
+	sha256sums = 6bd69498e5248e8c8aa952c838016cad48e22c4fdeea5f628ca1b6b363a9a093
+
+pkgname = r-cand
