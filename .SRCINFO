@@ -1,0 +1,27 @@
+pkgbase = r-deeppincs
+	pkgdesc = Protein Interactions and Networks with Compounds based on Sequences using Deep Learning
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DeepPINCS
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-catencoders
+	depends = r-keras
+	depends = r-matlab
+	depends = r-prroc
+	depends = r-purrr
+	depends = r-rcdk
+	depends = r-reticulate
+	depends = r-stringdist
+	depends = r-tensorflow
+	depends = r-tokenizers
+	depends = r-ttgsea
+	depends = r-webchem
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeepPINCS_1.4.0.tar.gz
+	sha256sums = 6f6713aae492a916fd3d16ebe830ae8d61d8eeed6c4ced3c96230aca026f7d1a
+
+pkgname = r-deeppincs
