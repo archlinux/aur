@@ -7,7 +7,7 @@ _cupswrapper_ver="1.1.4"
 
 pkgname="brother-$_brother_model"
 pkgver="1.1.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother DCP-9017CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -23,14 +23,14 @@ source=(
     'cupswrapper-license.txt'
     'lpr-license.txt'
 )
-md5sums=('3a99a20267fd8db51b861097fe0d40e2'
-         'e0af5c747096abcaed076ca063035cc8'
-         '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d')
+sha256sums=('c12874970464291f247561b5c7513486a7635c24d9e5a6d75b7b5d96ab24936e'
+            'cb50a840940d41cbca94e715baf0df0513be986827d2e5fec61cf645636b117b'
+            '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
+            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
 
 prepare() {
   #  do not install in '/usr/local'
-  if [ -d "$srcdir/usr/local/Brother"]; then
+  if [ -d "$srcdir/usr/local/Brother" ]; then
     install -d "$srcdir"/usr/share
     mv "$srcdir"/usr/local/Brother/ "$srcdir"/usr/share/brother
     rm -rf "$srcdir"/usr/local
@@ -42,7 +42,7 @@ prepare() {
   #  go to the cupswrapper directory and find the source file from wich to generate a ppd- and wrapper-file
   cd `find . -type d -name 'cupswrapper'`
   if [ -f cupswrapper* ]; then
-    _wrapper_source="$(ls cupswrapper*)"
+    local _wrapper_source="$(echo cupswrapper*)"
     sed -i '/^\/etc\/init.d\/cups/d' "$_wrapper_source"
     sed -i '/^sleep/d' "$_wrapper_source"
     sed -i '/^lpadmin/d' "$_wrapper_source"
@@ -54,10 +54,10 @@ prepare() {
     ./$_wrapper_source
     sed -i 's|$srcdir||' "$srcdir"/usr/lib/cups/filter/*lpdwrapper*
     sed -i "s|$srcdir||" "$srcdir"/usr/lib/cups/filter/*lpdwrapper*
-    rm $_wrapper_source
+    rm -- "$_wrapper_source"
   fi
   #  /etc/printcap is managed by cups
-  rm `find "$srcdir" -type f -name 'setupPrintcap*'`
+  find "$srcdir" -type f -name 'setupPrintcap*' -delete
 }
 
 package() {
