@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/atlasamerican/cheatsheet"
 license=('MIT')
 depends=('git')
-makedepends=('git' 'go')
+makedepends=('go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=cheatsheet.install
@@ -25,6 +25,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	make
 }
 
