@@ -1,0 +1,27 @@
+pkgbase = r-cyanofilter
+	pkgdesc = Phytoplankton Population Identification using Cell Pigmentation and/or Complexity
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cyanoFilter
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biobase
+	depends = r-cytometree
+	depends = r-flowclust
+	depends = r-flowcore
+	depends = r-flowdensity
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-mrfdepth
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-purrr
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	optdepends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cyanoFilter_1.4.0.tar.gz
+	sha256sums = d8642c9b953eec74128750fc16309804c8e6843f2a9bad41fadc0ed669c26064
+
+pkgname = r-cyanofilter
