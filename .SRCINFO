@@ -1,0 +1,14 @@
+pkgbase = r-agdex
+	pkgdesc = Agreement of Differential Expression Analysis
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/AGDEX
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-gseabase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AGDEX_1.44.0.tar.gz
+	sha256sums = 29ebdfbb41e4c50bd10c2b4dc5b050984209b6a6c3e604c8084c36a90a778430
+
+pkgname = r-agdex
