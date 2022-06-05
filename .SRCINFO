@@ -1,0 +1,24 @@
+pkgbase = r-arraymvout
+	pkgdesc = multivariate outlier detection for expression array QA
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/arrayMvout
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-affy
+	depends = r-affycontam
+	depends = r-biobase
+	depends = r-lumi
+	depends = r-mdqc
+	depends = r-parody
+	optdepends = r-affydata
+	optdepends = r-affyplm
+	optdepends = r-hgu133atagcdf
+	optdepends = r-lumibarnes
+	optdepends = r-maqcsubset
+	optdepends = r-mvoutdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayMvout_1.54.0.tar.gz
+	sha256sums = 56e6a68b292adfdf9c6ec739c7dc4685d404791af183ebcf0824609c1a8404f2
+
+pkgname = r-arraymvout
