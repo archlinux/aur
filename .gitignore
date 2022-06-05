@@ -1,1 +1,6 @@
-*
+sway-asan/
+sway/
+
+src/
+pkg/
+*.pkg.*

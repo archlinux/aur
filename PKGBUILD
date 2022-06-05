@@ -46,6 +46,7 @@ sha512sums=("SKIP"
 provides=("sway" "sway-git=${pkgver}")
 conflicts=("sway")
 options=(debug)
+install=sway.install
 
 pkgver() {
 	cd "$_pkgname"
