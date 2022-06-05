@@ -7,4 +7,4 @@ Icon=yesplaymusic
 StartupWMClass=YesPlayMusic
 Comment=A third party music player for Netease Music (OSD edition)
 Comment[zh_CN]=第三方网易云音乐播放器（桌面歌词版）
-Categories=Music; AudioVideo;Player;
+Categories=Music;AudioVideo;Player;
