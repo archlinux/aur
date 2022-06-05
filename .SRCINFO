@@ -1,0 +1,24 @@
+pkgbase = r-crul
+	pkgdesc = HTTP Client
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=crul
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-curl
+	depends = r-httpcode
+	depends = r-jsonlite
+	depends = r-mime
+	depends = r-r6
+	depends = r-urltools
+	optdepends = r-fauxpas
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	optdepends = r-webmockr
+	source = https://cran.r-project.org/src/contrib/crul_1.2.0.tar.gz
+	sha256sums = be1a149b21cf219ef55adfb56a6a5eb9892a9acf0d5f5421a22e52f2a7066f8c
+
+pkgname = r-crul
