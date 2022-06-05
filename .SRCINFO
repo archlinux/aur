@@ -1,0 +1,19 @@
+pkgbase = r-chk
+	pkgdesc = Check User-Supplied Function Arguments
+	pkgver = 0.8.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=chk
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-lifecycle
+	depends = r-rlang
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/chk_0.8.0.tar.gz
+	sha256sums = fe24b081a7e35d5399412f55121b6b35b363b2023acb94fbdb08c55701d8ec81
+
+pkgname = r-chk
