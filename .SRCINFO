@@ -1,0 +1,14 @@
+pkgbase = r-conicfit
+	pkgdesc = Algorithms for Fitting Circles, Ellipses and Conics Based on the Work by Prof. Nikolai Chernov
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=conicfit
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-geigen
+	depends = r-pracma
+	source = https://cran.r-project.org/src/contrib/conicfit_1.0.4.tar.gz
+	sha256sums = ed24be4c32908e77319c64e6dab14718845e107a18566dbbe3ab621f5f27e0b4
+
+pkgname = r-conicfit
