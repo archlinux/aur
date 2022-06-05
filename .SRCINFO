@@ -1,0 +1,24 @@
+pkgbase = r-cliprofiler
+	pkgdesc = A package for the CLIP data visualization
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cliProfiler
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-bsgenome
+	depends = r-dplyr
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-bookdown
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cliProfiler_1.2.0.tar.gz
+	sha256sums = 5b108d2d4404e8b91676618009a9d225cc2a6ac7b7b4c640260e0a327f921b22
+
+pkgname = r-cliprofiler
