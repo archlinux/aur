@@ -1,0 +1,25 @@
+pkgbase = r-cafe
+	pkgdesc = Chromosmal Aberrations Finder in Expression data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CAFE
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-annotate
+	depends = r-biobase
+	depends = r-biovizbase
+	depends = r-genomicranges
+	depends = r-ggbio
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-iranges
+	depends = tk
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAFE_1.32.0.tar.gz
+	sha256sums = c2cc6ea9899ab81128313564652d1460e85736e8cbdb3542c64da044e17395d5
+
+pkgname = r-cafe
