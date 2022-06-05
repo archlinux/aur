@@ -1,0 +1,14 @@
+pkgbase = r-caomicsv
+	pkgdesc = Visualization of multi-dimentional cancer genomics data
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/caOmicsV
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bc3net
+	depends = r-igraph
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/caOmicsV_1.25.0.tar.gz
+	sha256sums = 5f8fc5982eda405b31aaa8b0f9bb3ed77df42cd62e08ed1d6f5a5718658d2482
+
+pkgname = r-caomicsv
