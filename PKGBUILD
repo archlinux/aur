@@ -1,18 +1,23 @@
 # Maintainer: heitzmann <heitzmann@gmail.com>
 pkgname=python-toptica-lasersdk
 _name=${pkgname#python-}
-pkgver=2.1.0
-pkgrel=1
+pkgver=3.0.1
+pkgrel=0
 pkgdesc="Easy control of TOPTICA laser products using Python"
 arch=('any')
-url="https://www.gnu.org/software/patch/patch.html"
+url='https://toptica.github.io/python-lasersdk/'
 license=('MIT')
 depends=('python-pyserial')
-makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('d42b7013d751b5517b75b1a60189812dc2aefd9ff086de383bb631f6870f6c75')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
+sha256sums=('b465b9f6787135e6a44b2eb88771bd047b7d4094ca4f59121d1452a32aa1cf06')
+
+build() {
+    cd "${_name/-/_}-$pkgver"
+    python setup.py build
+}
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location *.whl
-  #python -O -m compileall "${pkgdir}/usr/lib"
+    cd "${_name/-/_}-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
 }

@@ -1,14 +1,13 @@
 pkgbase = python-toptica-lasersdk
 	pkgdesc = Easy control of TOPTICA laser products using Python
-	pkgver = 2.1.0
-	pkgrel = 1
-	url = https://www.gnu.org/software/patch/patch.html
+	pkgver = 3.0.1
+	pkgrel = 0
+	url = https://toptica.github.io/python-lasersdk/
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python-pyserial
-	source = https://files.pythonhosted.org/packages/py3/t/toptica-lasersdk/toptica_lasersdk-2.1.0-py3-none-any.whl
-	sha256sums = d42b7013d751b5517b75b1a60189812dc2aefd9ff086de383bb631f6870f6c75
+	source = https://files.pythonhosted.org/packages/source/t/toptica-lasersdk/toptica_lasersdk-3.0.1.tar.gz
+	sha256sums = b465b9f6787135e6a44b2eb88771bd047b7d4094ca4f59121d1452a32aa1cf06
 
 pkgname = python-toptica-lasersdk
-
