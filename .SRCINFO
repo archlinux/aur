@@ -1,0 +1,18 @@
+pkgbase = r-basicstarrseq
+	pkgdesc = Basic peak calling on STARR-seq data
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BasicSTARRseq
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BasicSTARRseq_1.24.0.tar.gz
+	sha256sums = 6158a5432c2230158f353349d34ffd94c83473eba83fe6d014110104198fad62
+
+pkgname = r-basicstarrseq
