@@ -1,0 +1,15 @@
+pkgbase = r-cba
+	pkgdesc = Clustering for Business Analytics
+	pkgver = 0.2.21
+	pkgrel = 4
+	url = https://cran.r-project.org/package=cba
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-proxy
+	optdepends = r-colorspace
+	optdepends = r-gclus
+	source = https://cran.r-project.org/src/contrib/cba_0.2-21.tar.gz
+	sha256sums = a61e787458e2df5049bea797bb442d6c86ebc9aa9b4dfbf043e23adac15d5048
+
+pkgname = r-cba
