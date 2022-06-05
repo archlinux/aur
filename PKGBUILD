@@ -29,9 +29,9 @@ package() {
 	PREFIX="${pkgdir}/usr"
 	SHAREPATH="${PREFIX}/share"
 	PANELSPATH="${SHAREPATH}/ctrlr/panels"
-	ANDERSPATH="${PANELSPATH}/AndersEriksson"
+	AUTHORPATH="${PANELSPATH}/AndersEriksson"
 
 	# Create local folders and copy panels
-	mkdir -p "${ANDERSPATH}"
-	cp "D50-editor-${pkgver}.bpanelz" "${ANDERSPATH}"
+	mkdir -p "${AUTHORPATH}"
+	cp "D50-editor-${pkgver}.bpanelz" "${AUTHORPATH}"
 }
