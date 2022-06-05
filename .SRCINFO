@@ -1,0 +1,12 @@
+pkgbase = r-adgoftest
+	pkgdesc = Anderson-Darling GoF test
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ADGofTest
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/ADGofTest_0.3.tar.gz
+	sha256sums = 9cd9313954f6ecd82480d373f6c5371ca84ab33e3f5c39d972d35cfcf1096846
+
+pkgname = r-adgoftest
