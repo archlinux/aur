@@ -17,8 +17,10 @@ depends=("motion"
          "python-pillow"
          "python-pycurl"
          "python-tornado"
-         "python-six")
-makedepends=("python-setuptools")
+         "python-six"
+         "python-babel"
+         "python-boto3")
+makedepends=("python-setuptools" "python-pip")
 backup=("etc/motioneye/motioneye.conf")
 source=("git+$url#branch=dev"
         "motioneye.service")
