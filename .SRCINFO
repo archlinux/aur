@@ -1,7 +1,7 @@
 pkgbase = shepherd
 	pkgdesc = Service manager that looks after the herd.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/shepherd/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = shepherd
 	makedepends = gawk
 	makedepends = sed
 	depends = guile
-	depends = guile-fibers-git
+	depends = guile-fibers
 	source = https://ftp.gnu.org/gnu/shepherd/shepherd-0.9.1.tar.gz
 	sha1sums = 52bcd330ba7b4c77d4183d58d0a8d1b798761ff6
 
