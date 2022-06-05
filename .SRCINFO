@@ -1,0 +1,14 @@
+pkgbase = r-cormotif
+	pkgdesc = Correlation Motif Fit
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Cormotif
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-limma
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Cormotif_1.42.0.tar.gz
+	sha256sums = 2359d455031eaf67e2ef9d7d4bb58fd28e9d4d93a70a9eac1ee2c583d24f8373
+
+pkgname = r-cormotif
