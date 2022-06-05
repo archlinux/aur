@@ -1,0 +1,13 @@
+pkgbase = r-bootstrap
+	pkgdesc = Functions for the Book "An Introduction to the Bootstrap"
+	pkgver = 2019.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bootstrap
+	arch = x86_64
+	license = BSD
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/bootstrap_2019.6.tar.gz
+	sha256sums = 5252fdfeb944cf1fae35016d35f9333b1bd1fc8c6d4a14e33901160e21968694
+
+pkgname = r-bootstrap
