@@ -1,0 +1,17 @@
+pkgbase = capitaine-cursors-full-git
+	pkgdesc = Fork of capitaine cursors, all variants will be built including macOS, Nord, Gruvbox, Everforest, Edge
+	pkgver = 4.r12.g0f93f5d
+	pkgrel = 1
+	url = https://github.com/sainnhe/capitaine-cursors
+	arch = any
+	license = LGPL3
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	makedepends = bc
+	makedepends = git
+	provides = capitaine-cursors
+	conflicts = capitaine-cursors
+	source = git+https://github.com/sainnhe/capitaine-cursors.git#branch=master
+	sha256sums = SKIP
+
+pkgname = capitaine-cursors-full-git
