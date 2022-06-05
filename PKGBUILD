@@ -2,7 +2,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-asan-git
 _pkgname=sway
-pkgver=r6934.251a648e
+pkgver=r6936.956b689d
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)"
