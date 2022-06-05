@@ -1,0 +1,20 @@
+pkgbase = r-arrayquality
+	pkgdesc = Assessing array quality on spotted arrays
+	pkgver = 1.74.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/arrayQuality
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-gridbase
+	depends = r-hexbin
+	depends = r-limma
+	depends = r-marray
+	depends = r-rcolorbrewer
+	optdepends = r-heebodata
+	optdepends = r-mclust
+	optdepends = r-meebodata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/arrayQuality_1.74.0.tar.gz
+	sha256sums = e5945bf9dda071806a800a6b74afa73ad4675a04adb3322739a46b60bcb51d2f
+
+pkgname = r-arrayquality
