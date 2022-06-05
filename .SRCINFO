@@ -1,0 +1,14 @@
+pkgbase = r-biodist
+	pkgdesc = Different distance measures
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/bioDist
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	optdepends = r-locfit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bioDist_1.68.0.tar.gz
+	sha256sums = 60799077105207bb4e242798539425f96841f57bc3a2282eb21ac8bb59ded912
+
+pkgname = r-biodist
