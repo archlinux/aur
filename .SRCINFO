@@ -1,0 +1,22 @@
+pkgbase = r-awst
+	pkgdesc = Asymmetric Within-Sample Transformation
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/awst
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-summarizedexperiment
+	optdepends = r-airway
+	optdepends = r-biocstyle
+	optdepends = r-edaseq
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-refmanager
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/awst_1.4.0.tar.gz
+	sha256sums = 5b51b755897f6fcf926def677a9007a9fdd93d91800b777aabb9245999ff8347
+
+pkgname = r-awst
