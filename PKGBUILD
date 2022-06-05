@@ -4,13 +4,13 @@
 
 pkgname=qualcoder
 _pkgname=QualCoder
-pkgver=2.9
-pkgrel=2
-pkgdesc="Qualitative data analysis for text, images, audio, video. Cross platform. Python 3.6 or newer and PyQt5."
+pkgver=3.0
+pkgrel=1
+pkgdesc="Qualitative data analysis for text, images, audio, video. Cross platform. Python 3.6 or newer and PyQt6."
 arch=('any')
 url='https://github.com/ccbogel/QualCoder'
 license=('MIT')
-depends=('python-pyqt5'
+depends=('python-pyqt6'
          'python-lxml'
          'python-pillow'
          'python-ebooklib'
@@ -18,11 +18,13 @@ depends=('python-pyqt5'
          'python-ply'
          'python-chardet'
          'python-openpyxl'
+         'python-pandas'
+         'python-plotly'
          'python-pydub'
          'python-speechrecognition')
 makedepends=('python-setuptools')
 _name=${pkgname#python-}
-source=("https://github.com/ccbogel/QualCoder/archive/refs/tags/2.9.tar.gz")
+source=("https://github.com/ccbogel/QualCoder/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
