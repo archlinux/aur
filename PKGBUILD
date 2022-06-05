@@ -3,7 +3,7 @@
 # Contributor: Imperator Storm <ImperatorStorm11@protonmail.com>
 pkgname=ferium-git
 _pkgname=ferium
-pkgver=4.1.0.r0.g4e1459e
+pkgver=4.1.1.r2.gce2934f
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64")
