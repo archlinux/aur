@@ -1,0 +1,12 @@
+pkgbase = r-ccp
+	pkgdesc = Significance Tests for Canonical Correlation Analysis (CCA)
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=CCP
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/CCP_1.2.tar.gz
+	sha256sums = 7e3906abf51f4c7046730760800711b915f52855fbb2bfd33eca8fa75e70f618
+
+pkgname = r-ccp
