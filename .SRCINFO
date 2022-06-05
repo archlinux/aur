@@ -1,0 +1,12 @@
+pkgbase = r-biasedurn
+	pkgdesc = Biased Urn Model Distributions
+	pkgver = 1.07
+	pkgrel = 4
+	url = https://cran.r-project.org/package=BiasedUrn
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/BiasedUrn_1.07.tar.gz
+	sha256sums = 2377c2e59d68e758a566452d7e07e88663ae61a182b9ee455d8b4269dda3228e
+
+pkgname = r-biasedurn
