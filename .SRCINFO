@@ -11,7 +11,7 @@ pkgbase = ytmdl
 	depends = ffmpeg
 	depends = yt-dlp>=2022.03.08.1
 	depends = python-mutagen
-	depends = python-beautifulsoup4
+	depends = python-bs4
 	depends = python-colorama
 	depends = downloader-cli
 	depends = python-itunespy

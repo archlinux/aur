@@ -11,7 +11,7 @@ depends=(
 		"ffmpeg"
 		"yt-dlp>=2022.03.08.1"
 		"python-mutagen"
-		"python-beautifulsoup4"
+		"python-bs4"
 		"python-colorama"
 		"downloader-cli"
 		"python-itunespy"
