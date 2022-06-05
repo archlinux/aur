@@ -1,0 +1,12 @@
+pkgbase = r-catnet
+	pkgdesc = Categorical Bayesian Network Inference
+	pkgver = 1.15.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=catnet
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/catnet_1.15.7.tar.gz
+	sha256sums = 0f09e439e66fc08108582d63359be211076080a073c873cea5b748096682b804
+
+pkgname = r-catnet
