@@ -1,0 +1,21 @@
+pkgbase = r-candisc
+	pkgdesc = Visualizing Generalized Canonical Discriminant and Canonical Correlation Analysis
+	pkgver = 0.8.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=candisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-car
+	depends = r-heplots
+	optdepends = r-corrplot
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-rgl
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-rpart.plot
+	source = https://cran.r-project.org/src/contrib/candisc_0.8-6.tar.gz
+	sha256sums = 9645a3c0f8a0f7ee1e0c4de6cac4d3432177e6d3975fa538cdb060f5e480709d
+
+pkgname = r-candisc
