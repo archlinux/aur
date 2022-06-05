@@ -1,0 +1,15 @@
+pkgbase = r-assertive.data
+	pkgdesc = Assertions to Check Properties of Data
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.data
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	depends = r-assertive.strings
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.data_0.0-3.tar.gz
+	sha256sums = 5a00fb48ad870d9b3c872ce3d6aa20a7948687a980f49fe945b455339e789b01
+
+pkgname = r-assertive.data
