@@ -1,14 +1,14 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="ArcH Linux ReposItory MANager"
+pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://github.com/arcan1s/ahriman"
 license=('GPL3')
-depends=('devtools' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-srcinfo')
-makedepends=('python-pip')
+depends=('devtools' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-requests' 'python-srcinfo')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('breezy: -bzr packages support'
             'darcs: -darcs packages support'
             'mercurial: -hg packages support'
@@ -32,18 +32,23 @@ backup=('etc/ahriman.ini'
 build() {
   cd "$pkgname"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname"
 
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" "dist/$pkgname-$pkgver-py3-none-any.whl"
+
+  # python-installer actually thinks that you cannot just copy files to root
+  # thus we need to copy them manually
+  install -Dm644 "$pkgdir/usr/share/$pkgname/settings/ahriman.ini" "$pkgdir/etc/ahriman.ini"
+  install -Dm644 "$pkgdir/usr/share/$pkgname/settings/ahriman.ini.d/logging.ini" "$pkgdir/etc/ahriman.ini.d/logging.ini"
 
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('85351e69c9409e3edd110fe01aacea9ea9e045228d2797ed71adf38d88ac71d511fb5eb2e07af300f09855b538c28964ab8ade6d8fadf4cd5c167f7223c28d05'
+sha512sums=('38b3ba57e6b776f4fe7ff8dbd4caaca9811398d345aff572393ac8a7af9a9c68a98f0e48aa76388c498dce7ad4ef7e1f76ca35001920f606b638939d1b7fa2d8'
             '53d37efec812afebf86281716259f9ea78a307b83897166c72777251c3eebcb587ecee375d907514781fb2a5c808cbb24ef9f3f244f12740155d0603bf213131'
             '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
