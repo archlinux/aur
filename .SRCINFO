@@ -1,0 +1,15 @@
+pkgbase = r-bwstest
+	pkgdesc = Baumgartner Weiss Schindler Test of Equal Distributions
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=BWStest
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-memoise
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BWStest_0.2.2.tar.gz
+	sha256sums = faff1dd698f1673a6befacb94d14281077d4c19be035a0a3bf85d77c1dfd5509
+
+pkgname = r-bwstest
