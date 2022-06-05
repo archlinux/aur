@@ -1,0 +1,14 @@
+pkgbase = r-clusteval
+	pkgdesc = Evaluation of Clustering Algorithms
+	pkgver = 0.1
+	pkgrel = 6
+	url = https://cran.r-project.org/package=clusteval
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/Archive/clusteval/clusteval_0.1.tar.gz
+	sha256sums = 329f0f1fd5b9fcd1fa253d0c8d1373d7b0eed919eacc51bfd30d7947685ba0d1
+
+pkgname = r-clusteval
