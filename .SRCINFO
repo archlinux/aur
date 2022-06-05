@@ -1,0 +1,17 @@
+pkgbase = r-bibitr
+	pkgdesc = R Wrapper for Java Implementation of BiBit
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BiBitR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biclust
+	depends = r-dendextend
+	depends = r-randomcolor
+	depends = r-viridis
+	depends = java-runtime-common
+	source = https://cran.r-project.org/src/contrib/BiBitR_0.3.1.tar.gz
+	sha256sums = 66bbbedfcac8abcc1276ea5ceb4b05f68b8a24f3299220075950046e0dbcdc71
+
+pkgname = r-bibitr
