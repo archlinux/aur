@@ -1,0 +1,16 @@
+pkgbase = r-aws.signature
+	pkgdesc = Amazon Web Services Request Signatures
+	pkgver = 0.6.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=aws.signature
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-base64enc
+	depends = r-digest
+	optdepends = r-aws.ec2metadata
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/aws.signature_0.6.0.tar.gz
+	sha256sums = f7fe4f686979be21e5a8ba7ae11f0fade4f5aaf4e98063b5349ee0962dbb9496
+
+pkgname = r-aws.signature
