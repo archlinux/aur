@@ -1,0 +1,23 @@
+pkgbase = r-cellhts2
+	pkgdesc = Analysis of cell-based screens - revised version of cellHTS
+	pkgver = 2.60.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cellHTS2
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-category
+	depends = r-genefilter
+	depends = r-gseabase
+	depends = r-hwriter
+	depends = r-locfit
+	depends = r-rcolorbrewer
+	depends = r-splots
+	depends = r-vsn
+	optdepends = r-ggplot2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cellHTS2_2.60.0.tar.gz
+	sha256sums = 76ef0a1ca710c771c2ffe39eb4cdfe699adb4dae285bc47e647b2f065b3d2ed7
+
+pkgname = r-cellhts2
