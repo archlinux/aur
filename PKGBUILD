@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xbyak
 pkgname=$_pkgname-git
-pkgver=5.995.r3.gc313a87
+pkgver=6.60.r0.ge9cec75
 pkgrel=1
 pkgdesc="C++ header-only JIT assembler library for x86/x86-64"
 arch=('any')
