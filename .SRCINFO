@@ -6,7 +6,6 @@ pkgbase = clapper
 	arch = any
 	license = GPL-3.0
 	makedepends = meson>=0.50
-	makedepends = git
 	makedepends = gobject-introspection
 	depends = gtk4
 	depends = gjs

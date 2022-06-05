@@ -42,7 +42,6 @@ depends=(
 )
 makedepends=(
 	"meson>=0.50"
-	"git"
 	"gobject-introspection" # /usr/sbin/g-ir-scanner
 )
 optdepends=(
