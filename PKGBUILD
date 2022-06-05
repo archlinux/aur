@@ -1,15 +1,16 @@
 # Contributor: Paige Aran <paige.aran@gmail.com>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 _base=racket
 pkgname=${_base}-git
-pkgver=8.5.0.8.gfd1b706
+pkgver=8.5.0.8.g1977693
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
 url="https://${_base}-lang.org"
 license=('Apache' 'GPL3' 'LGPL3' 'custom')
 depends=('bash' 'libffi')
-makedepends=('git' 'awk')
+makedepends=('git' 'awk' 'fontconfig')
 provides=(${_base})
 conflicts=(${_base})
 options=('!strip' '!emptydirs')
