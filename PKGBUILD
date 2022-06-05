@@ -15,12 +15,12 @@ source=("${pkgname%-$_color-git}::git+https://github.com/vinceliuice/Tela-icon-t
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-$_color-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-$_color-git}"
   install -d "$pkgdir/usr/share/icons"
   ./install.sh -d "$pkgdir/usr/share/icons" $_color
 }
