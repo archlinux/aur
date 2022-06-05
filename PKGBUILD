@@ -16,6 +16,7 @@ depends=(
   'ruby-native-package-installer>=1.0.3'
   'ruby-pkg-config>=1.3.5'
 )
+provides=("${pkgname%-*}=${pkgver}")
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
