@@ -1,24 +1,22 @@
 pkgbase = vapoursynth-plugin-awsmfunc-git
 	pkgdesc = Plugin for VapourSynth: awsmfunc (GIT version)
-	pkgver = r168.11af7cb
+	pkgver = 1.3.2.r3.g41cf38e
 	pkgrel = 1
-	url = https://git.concertos.live/AHD/awsmfunc
+	url = https://github.com/OpusGang/awsmfunc
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = vapoursynth>=R49
+	depends = python-numpy
 	depends = vapoursynth-plugin-vsutil
 	depends = vapoursynth-plugin-rekt
 	depends = vapoursynth-plugin-remapframes
 	depends = vapoursynth-plugin-fillborders
-	depends = python-numpy
 	optdepends = vapoursynth-plugin-placebo: VapourSynth placebo plugin
 	optdepends = vapoursynth-plugin-descale: VapourSynth descale plugin
 	provides = vapoursynth-plugin-awsmfunc
 	conflicts = vapoursynth-plugin-awsmfunc
-	source = awsmfunc::git+https://git.concertos.live/AHD/awsmfunc.git
+	source = awsmfunc::git+https://github.com/OpusGang/awsmfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-awsmfunc-git
-
