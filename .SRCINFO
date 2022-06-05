@@ -1,0 +1,26 @@
+pkgbase = r-altcdfenvs
+	pkgdesc = alternative CDF environments (aka probeset mappings)
+	pkgver = 2.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/altcdfenvs
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-hypergraph
+	depends = r-makecdfenv
+	depends = r-s4vectors
+	optdepends = r-hgu133a.db
+	optdepends = r-hgu133acdf
+	optdepends = r-hgu133aprobe
+	optdepends = r-hgu95acdf
+	optdepends = r-plasmodiumanophelescdf
+	optdepends = r-rcolorbrewer
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/altcdfenvs_2.58.0.tar.gz
+	sha256sums = 2617c2036660b16450b8128f505c4c05d4a75693cd671cc9cb0e0ffe004c5c31
+
+pkgname = r-altcdfenvs
