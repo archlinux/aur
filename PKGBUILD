@@ -2,22 +2,18 @@
 
 pkgname=maui-manager-git
 _pkgname=${pkgname%-git}
-pkgver=r7.7ad380e
+pkgver=r5.c1e4887
 pkgrel=1
-pkgdesc='Maui Settings Manager'
-url='https://github.com/Nitrux/maui-manager'
+pkgdesc='Maui Manager Library. Server and public library API.'
+url='https://invent.kde.org/maui/mauiman'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
-depends=(kcoreaddons
-         ki18n
-         mauikit
-         qt5-base
-         qt5-declarative)
+depends=(qt5-base)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=(git+$url.git)
+provides=($_pkgname mauiman)
+conflicts=($_pkgname mauiman)
+source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
