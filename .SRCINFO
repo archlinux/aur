@@ -1,0 +1,14 @@
+pkgbase = r-assertive.reflection
+	pkgdesc = Assertions for Checking the State of R
+	pkgver = 0.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.reflection
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.reflection_0.0-5.tar.gz
+	sha256sums = c2ca9b27cdddb9b9876351afd2ebfaf0fbe72c636cd12aa2af5d64e33fbf34bd
+
+pkgname = r-assertive.reflection
