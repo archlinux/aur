@@ -1,0 +1,12 @@
+pkgbase = r-ccdata
+	pkgdesc = Data for Combination Connectivity Mapping (ccmap) Package
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ccdata
+	arch = any
+	license = MIT
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ccdata_1.22.0.tar.gz
+	sha256sums = cc5057a0cdd38adc36fa3642df5d5fa40c4f94029840b8e38b57e0f307cb8fbe
+
+pkgname = r-ccdata
