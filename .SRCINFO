@@ -1,0 +1,29 @@
+pkgbase = r-available
+	pkgdesc = Check if the Title of a Package is Available, Appropriate and Interesting
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=available
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-clisymbols
+	depends = r-crayon
+	depends = r-desc
+	depends = r-glue
+	depends = r-jsonlite
+	depends = r-memoise
+	depends = r-snowballc
+	depends = r-stringdist
+	depends = r-tibble
+	depends = r-tidytext
+	depends = r-udapi
+	depends = r-yesno
+	optdepends = r-biocmanager
+	optdepends = r-covr
+	optdepends = r-testthat
+	optdepends = r-usethis
+	source = https://cran.r-project.org/src/contrib/available_1.0.5.tar.gz
+	sha256sums = c59f6c1c92bb846ed7eedbfae02da4854129626716966c2b68a3aaa95dfd9ed6
+
+pkgname = r-available
