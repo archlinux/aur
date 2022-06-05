@@ -1,0 +1,19 @@
+pkgbase = r-decomplexdisease
+	pkgdesc = A tool for differential expression analysis and DEGs based investigation to complex diseases by bi-clustering analysis
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DEComplexDisease
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-complexheatmap
+	depends = r-deseq2
+	depends = r-edger
+	depends = r-rcpp
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEComplexDisease_1.16.0.tar.gz
+	sha256sums = 2da1ab65f19c627f4dffb4d2f58f782f1fa3a17c3609c8a55f67db1cfa314925
+
+pkgname = r-decomplexdisease
