@@ -1,0 +1,40 @@
+THIS_JRE='java-11-jbr-xdg'
+
+fix_default() {
+    if [ ! -x /usr/bin/java ]; then
+        /usr/bin/archlinux-java unset
+        echo ""
+    else
+        /usr/bin/archlinux-java get
+    fi
+}
+
+post_install() {
+    default=$(fix_default)
+    case ${default} in
+        "")
+            /usr/bin/archlinux-java set ${THIS_JRE}
+            ;;
+        ${THIS_JRE})
+            # Nothing
+            ;;
+        *)
+            echo "Default Java environment is already set to '${default}'"
+            echo "See 'archlinux-java help' to change it"
+            ;;
+    esac
+}
+
+post_upgrade() {
+    if [ -z "$(fix_default)" ]; then
+        /usr/bin/archlinux-java set ${THIS_JRE}
+    fi
+}
+
+# Local Variables:
+# indent-tabs-mode: nil
+# mode: sh
+# sh-shell: bash
+# tab-width: 4
+# End:
+# vim: filetype=bash tabstop=4 shiftwidth=4 expandtab:

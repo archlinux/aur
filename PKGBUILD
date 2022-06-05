@@ -1,0 +1,363 @@
+# Maintainer: Burgess Chang<bsc@brsvh.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Guillaume ALAUX <guillaume@archlinux.org>
+
+_majorver=11
+_minorver=0
+_securityver=15
+_updatever=0
+_cyclever=2043
+_ver=56
+
+if [ $_updatever -eq 0 ]; then
+    _git_tag=${_majorver}_${_minorver}_${_securityver}b${_cyclever}.${_ver}
+else
+    _git_tag=${_majorver}_${_minorver}_${_securityver}_${_updatever}b${_cyclever}.${_ver}
+fi
+
+pkgbase=java11-jbr-xdg
+pkgname=(
+    'jre11-jbr-xdg-headless'
+    'jre11-jbr-xdg'
+    'jdk11-jbr-xdg'
+    'jbr11-xdg-src'
+    'jbr11-xdg-doc'
+)
+pkgver=$_majorver.$_minorver.$_securityver.$_updatever.b$_cyclever.$_ver
+pkgrel=1
+arch=('x86_64')
+url="https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime"
+license=('custom')
+
+makedepends=(
+    'alsa-lib'
+    'bash'
+    'cpio'
+    'freetype2'
+    'giflib'
+    'gcc-libs'
+    'glibc'
+    'graphviz'
+    'harfbuzz'
+    'java-environment>=10'
+    'java-environment<12'
+    'libcups'
+    'libelf'
+    'libjpeg-turbo'
+    'libnet'
+    'libpng'
+    'libx11'
+    'libxrender'
+    'libxt'
+    'libxext'
+    'libxrandr'
+    'libxtst'
+    'pandoc'
+    'lcms2'
+    'unzip'
+    'zip'
+)
+options=(!lto)
+source=(
+    https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr${_git_tag}.tar.gz
+    xdg-user-directories-compliant.patch
+)
+
+sha256sums=(
+    '036858070dcf27d554f2d1f6463b836b1c84d28b8655916a47183622c015bd4a'
+    '79906107716310b34f6548af9145b50cf3c99376379ce88e827923d7f66b3bf6'
+)
+
+case "${CARCH}" in
+    x86_64) _JARCH='x86_64';;
+    i686)   _JARCH='x86';;
+esac
+
+_jvmdir=/usr/lib/jvm/java-${_majorver}-jbr-xdg
+_jdkdir=JetBrainsRuntime-jbr${_git_tag}
+_imgdir=${_jdkdir}/build/linux-${_JARCH}-normal-server-release/images
+
+_nonheadless=(
+    lib/libawt_xawt.{so,debuginfo}
+    lib/libjawt.{so,debuginfo}
+    lib/libjsound.{so,debuginfo}
+    lib/libsplashscreen.{so,debuginfo}
+)
+
+prepare() {
+    cd ${_jdkdir}
+    patch -p1 -i ../xdg-user-directories-compliant.patch
+}
+
+build() {
+    cd ${_jdkdir}
+
+    NUM_PROC_OPT=''
+    MAKEFLAG_J=$(echo ${MAKEFLAGS} | sed -En 's/.*-j([0-9]+).*/\1/p')
+    if [ -n "${MAKEFLAG_J}" ]; then
+        # http://hg.openjdk.java.net/jdk10/jdk10/file/85e6cb013b98/make/InitSupport.gmk#l105
+        echo "Removing '-j${MAKEFLAG_J}' from MAKEFLAGS to prevent build fail. Passing it directly to ./configure."
+        export MAKEFLAGS=${MAKEFLAGS/-j${MAKEFLAG_J}/}
+        NUM_PROC_OPT="--with-num-cores=${MAKEFLAG_J}"
+    fi
+
+    # Avoid optimization of HotSpot being lowered from O3 to O2
+    local _CFLAGS="${CFLAGS//-O2/-O3} ${CPPFLAGS} -fcommon"
+    local _CXXFLAGS="${CXXFLAGS//-O2/-O3} ${CPPFLAGS} -fcommon"
+    local _LDFLAGS=${LDFLAGS}
+    if [[ ${CARCH} = i686 ]]; then
+        echo "Removing '-fno-plt' from CFLAGS and CXXFLAGS to prevent build fail with this architecture"
+        _CFLAGS=${CFLAGS/-fno-plt/}
+        _CXXFLAGS=${CXXFLAGS/-fno-plt/}
+    fi
+
+    # CFLAGS, CXXFLAGS and LDFLAGS are ignored as shown by a warning
+    # in the output of ./configure unless used like such:
+    #  --with-extra-cflags="${CFLAGS}"
+    #  --with-extra-cxxflags="${CXXFLAGS}"
+    #  --with-extra-ldflags="${LDFLAGS}"
+    # See also paragraph "Configure Control Variables from "jdk${_majorver}-${_git_tag}/common/doc/building.md
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+
+    bash configure \
+         --with-version-build="${_updatever}" \
+         --with-version-pre="" \
+         --with-version-opt="" \
+         --with-stdc++lib=dynamic \
+         --with-extra-cflags="${_CFLAGS}" \
+         --with-extra-cxxflags="${_CXXFLAGS}" \
+         --with-extra-ldflags="${_LDFLAGS}" \
+         --with-libjpeg=system \
+         --with-giflib=system \
+         --with-libpng=system \
+         --with-lcms=system \
+         --with-zlib=system \
+         --with-harfbuzz=system \
+         --with-jvm-features=zgc \
+         --enable-unlimited-crypto \
+         --disable-warnings-as-errors \
+         ${NUM_PROC_OPT}
+    #--disable-javac-server
+
+    make images legacy-jre-image docs
+
+    # https://bugs.openjdk.java.net/browse/JDK-8173610
+    find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
+}
+
+check() {
+    cd ${_jdkdir}
+    # TODO package jtreg
+    # make -k check
+}
+
+package_jre11-jbr-xdg-headless() {
+    pkgdesc="JetBrainsRuntime Java ${_majorver} headless runtime environment - - with improved Support for the XDG Base Directory Specification"
+    depends=(
+        'ca-certificates-utils'
+        'freetype2'
+        'glibc'
+        'gcc-libs'
+        'harfbuzz'
+        'java-runtime-common>=3'
+        'libjpeg-turbo'
+        'lcms2'
+        'libnet'
+        'nss'
+        'libfreetype.so'
+        'libharfbuzz.so'
+        'libjpeg.so'
+        'liblcms2.so'
+    )
+    optdepends=(
+        'java-rhino: for some JavaScript support'
+    )
+    provides=(
+        "java-runtime-headless=${_majorver}"
+        "java-runtime-headless-jbr-xdg=${_majorver}"
+        "jre${_majorver}-jbr-xdg-headless=${pkgver}-${pkgrel}"
+    )
+    backup=(
+        etc/${pkgbase}/logging.properties
+        etc/${pkgbase}/management/jmxremote.access
+        etc/${pkgbase}/management/jmxremote.password.template
+        etc/${pkgbase}/management/management.properties
+        etc/${pkgbase}/net.properties
+        etc/${pkgbase}/security/java.policy
+        etc/${pkgbase}/security/java.security
+        etc/${pkgbase}/security/policy/README.txt
+        etc/${pkgbase}/security/policy/limited/default_US_export.policy
+        etc/${pkgbase}/security/policy/limited/default_local.policy
+        etc/${pkgbase}/security/policy/limited/exempt_local.policy
+        etc/${pkgbase}/security/policy/unlimited/default_US_export.policy
+        etc/${pkgbase}/security/policy/unlimited/default_local.policy
+        etc/${pkgbase}/sound.properties
+    )
+    install=jre-jbr-xdg-headless.install
+
+    cd ${_imgdir}/jre
+
+    install -dm 755 "${pkgdir}${_jvmdir}"
+
+    cp -a bin lib \
+       "${pkgdir}${_jvmdir}"
+
+    for f in "${_nonheadless[@]}"; do
+        rm "${pkgdir}${_jvmdir}/${f}"
+    done
+
+    cp ../jdk/release "${pkgdir}${_jvmdir}"
+    cp ../jdk/lib/modules "${pkgdir}${_jvmdir}/lib"
+
+    # Conf
+    install -dm 755 "${pkgdir}/etc"
+    cp -r conf "${pkgdir}/etc/${pkgbase}"
+    ln -s /etc/${pkgbase} "${pkgdir}/${_jvmdir}/conf"
+
+    # Legal
+    install -dm 755 "${pkgdir}/usr/share/licenses"
+    cp -r legal "${pkgdir}/usr/share/licenses/${pkgbase}"
+    ln -s ${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s /usr/share/licenses/${pkgbase} "${pkgdir}/${_jvmdir}/legal"
+
+    # Man pages
+    for f in man/man1/* man/ja/man1/*; do
+        install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-jbr-xdg${_majorver}.1}"
+    done
+    ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+
+    # Link JKS keystore from ca-certificates-utils
+    rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
+    ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
+}
+
+package_jre11-jbr-xdg() {
+    pkgdesc="JetBrainsRuntime Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
+    depends=(
+        'gcc-libs'
+        'giflib'
+        'glibc'
+        "jre${_majorver}-jbr-xdg-headless=${pkgver}-${pkgrel}"
+        'libpng'
+        'libgif.so'
+    )
+    optdepends=(
+        'alsa-lib: for basic sound support'
+        'gtk2: for the Gtk+ 2 look and feel - desktop usage'
+        'gtk3: for the Gtk+ 3 look and feel - desktop usage'
+    )
+    provides=(
+        "java-runtime=${_majorver}"
+        "java-runtime-jbr-xdg=${_majorver}"
+        "jre${_majorver}-jbr-xdg=${pkgver}-${pkgrel}"
+    )
+    install=jre-jbr-xdg.install
+
+    cd ${_imgdir}/jre
+
+    install -dm 755 "${pkgdir}${_jvmdir}"
+
+    for f in "${_nonheadless[@]}"; do
+        install -Dm 644 ${f} "${pkgdir}${_jvmdir}/${f}"
+    done
+
+    # Licenses
+    install -dm 755 "${pkgdir}/usr/share/licenses"
+    ln -s ${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_jdk11-jbr-xdg() {
+    pkgdesc="JetBrainsRuntime Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification"
+    depends=(
+        'glibc'
+        'gcc-libs'
+        'hicolor-icon-theme'
+        "jre${_majorver}-jbr-xdg=${pkgver}-${pkgrel}"
+        'java-environment-common=3'
+        'libelf'
+    )
+    provides=(
+        "java-environment=${_majorver}"
+        "java-environment-jbr-xdg=${_majorver}"
+        "jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}"
+    )
+    install=jdk-jbr-xdg.install
+
+    cd ${_imgdir}/jdk
+
+    install -dm 755 "${pkgdir}${_jvmdir}"
+
+    cp -a bin demo include jmods lib \
+       "${pkgdir}${_jvmdir}"
+
+    rm "${pkgdir}${_jvmdir}/lib/src.zip"
+
+    # Remove files held by JRE
+    pushd ../jre
+    for d in bin lib; do
+        find ${d} ! -type d -exec rm "${pkgdir}${_jvmdir}/{}" \;
+    done
+    popd
+    find "${pkgdir}${_jvmdir}/lib" -type d -empty -delete
+
+    # Conf files all belong to JRE
+
+    # Legal
+    install -dm 755 "${pkgdir}/usr/share/licenses"
+    cp -r legal "${pkgdir}/usr/share/licenses/${pkgbase}"
+    pushd ../jre/legal
+    find . ! -type d -exec rm "${pkgdir}/usr/share/licenses/${pkgbase}/{}" \;
+    popd
+    find "${pkgdir}/usr/share/licenses" -type d -empty -delete
+    ln -s ${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    # Man pages
+    for f in man/man1/* man/ja/man1/*; do
+        if [ ! -e "../jre/${f}" ]; then
+            install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-jbr-xdg${_majorver}.1}"
+        fi
+    done
+
+    # Icons
+    for s in 16 24 32 48; do
+        install -Dm 644 \
+                "${srcdir}/${_jdkdir}/src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps/${pkgbase}.png"
+    done
+}
+
+package_jbr11-xdg-src() {
+    pkgdesc="JetBrainsRuntime Java ${_majorver} sources - with improved Support for the XDG Base Directory Specification"
+    # Depends on JDK to get license files
+    depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
+    provides=("jbr${_majorver}-src=${pkgver}-${pkgrel}")
+
+    install -Dm 644 -t "${pkgdir}${_jvmdir}/lib" ${_imgdir}/jdk/lib/src.zip
+
+    install -dm 755 "${pkgdir}/usr/share/licenses"
+    ln -s ${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_jbr11-xdg-doc() {
+    pkgdesc="JetBrainsRuntime Java ${_majorver} documentation - with improved Support for the XDG Base Directory Specification"
+    # Depends on JDK to get license files
+    depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
+    provides=("jbr${_majorver}-doc=${pkgver}-${pkgrel}")
+
+    install -dm 755 "${pkgdir}/usr/share/doc"
+    cp -r ${_imgdir}/docs "${pkgdir}/usr/share/doc/${pkgbase}"
+
+    install -dm 755 "${pkgdir}/usr/share/licenses"
+    ln -s ${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+# Local Variables:
+# indent-tabs-mode: nil
+# mode: sh
+# sh-shell: bash
+# tab-width: 4
+# End:
+# vim: filetype=bash tabstop=4 shiftwidth=4 expandtab:

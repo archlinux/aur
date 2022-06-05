@@ -1,0 +1,112 @@
+pkgbase = java11-jbr-xdg
+	pkgver = 11.0.15.0.b2043.56
+	pkgrel = 1
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
+	arch = x86_64
+	license = custom
+	makedepends = alsa-lib
+	makedepends = bash
+	makedepends = cpio
+	makedepends = freetype2
+	makedepends = giflib
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = graphviz
+	makedepends = harfbuzz
+	makedepends = java-environment>=10
+	makedepends = java-environment<12
+	makedepends = libcups
+	makedepends = libelf
+	makedepends = libjpeg-turbo
+	makedepends = libnet
+	makedepends = libpng
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = libxtst
+	makedepends = pandoc
+	makedepends = lcms2
+	makedepends = unzip
+	makedepends = zip
+	options = !lto
+	source = https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr11_0_15b2043.56.tar.gz
+	source = xdg-user-directories-compliant.patch
+	sha256sums = 036858070dcf27d554f2d1f6463b836b1c84d28b8655916a47183622c015bd4a
+	sha256sums = 79906107716310b34f6548af9145b50cf3c99376379ce88e827923d7f66b3bf6
+
+pkgname = jre11-jbr-xdg-headless
+	pkgdesc = JetBrainsRuntime Java 11 headless runtime environment - - with improved Support for the XDG Base Directory Specification
+	install = jre-jbr-xdg-headless.install
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = harfbuzz
+	depends = java-runtime-common>=3
+	depends = libjpeg-turbo
+	depends = lcms2
+	depends = libnet
+	depends = nss
+	depends = libfreetype.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = liblcms2.so
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-jbr-xdg=11
+	provides = jre11-jbr-xdg-headless=11.0.15.0.b2043.56-1
+	backup = etc/java11-jbr-xdg/logging.properties
+	backup = etc/java11-jbr-xdg/management/jmxremote.access
+	backup = etc/java11-jbr-xdg/management/jmxremote.password.template
+	backup = etc/java11-jbr-xdg/management/management.properties
+	backup = etc/java11-jbr-xdg/net.properties
+	backup = etc/java11-jbr-xdg/security/java.policy
+	backup = etc/java11-jbr-xdg/security/java.security
+	backup = etc/java11-jbr-xdg/security/policy/README.txt
+	backup = etc/java11-jbr-xdg/security/policy/limited/default_US_export.policy
+	backup = etc/java11-jbr-xdg/security/policy/limited/default_local.policy
+	backup = etc/java11-jbr-xdg/security/policy/limited/exempt_local.policy
+	backup = etc/java11-jbr-xdg/security/policy/unlimited/default_US_export.policy
+	backup = etc/java11-jbr-xdg/security/policy/unlimited/default_local.policy
+	backup = etc/java11-jbr-xdg/sound.properties
+
+pkgname = jre11-jbr-xdg
+	pkgdesc = JetBrainsRuntime Java 11 full runtime environment - with improved Support for the XDG Base Directory Specification
+	install = jre-jbr-xdg.install
+	depends = gcc-libs
+	depends = giflib
+	depends = glibc
+	depends = jre11-jbr-xdg-headless=11.0.15.0.b2043.56-1
+	depends = libpng
+	depends = libgif.so
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=11
+	provides = java-runtime-jbr-xdg=11
+	provides = jre11-jbr-xdg=11.0.15.0.b2043.56-1
+
+pkgname = jdk11-jbr-xdg
+	pkgdesc = JetBrainsRuntime Java 11 development kit - with improved Support for the XDG Base Directory Specification
+	install = jdk-jbr-xdg.install
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = jre11-jbr-xdg=11.0.15.0.b2043.56-1
+	depends = java-environment-common=3
+	depends = libelf
+	provides = java-environment=11
+	provides = java-environment-jbr-xdg=11
+	provides = jdk11-jbr-xdg=11.0.15.0.b2043.56-1
+
+pkgname = jbr11-xdg-src
+	pkgdesc = JetBrainsRuntime Java 11 sources - with improved Support for the XDG Base Directory Specification
+	depends = jdk11-jbr-xdg=11.0.15.0.b2043.56-1
+	provides = jbr11-src=11.0.15.0.b2043.56-1
+
+pkgname = jbr11-xdg-doc
+	pkgdesc = JetBrainsRuntime Java 11 documentation - with improved Support for the XDG Base Directory Specification
+	depends = jdk11-jbr-xdg=11.0.15.0.b2043.56-1
+	provides = jbr11-doc=11.0.15.0.b2043.56-1
