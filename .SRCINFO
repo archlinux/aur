@@ -1,0 +1,17 @@
+pkgbase = r-aroma.light
+	pkgdesc = Light-Weight Methods for Normalization and Visualization of Microarray Data using Only Basic R Data Types
+	pkgver = 3.26.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/aroma.light
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-matrixstats
+	depends = r-r.methodss3
+	depends = r-r.oo
+	depends = r-r.utils
+	optdepends = r-princurve
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/aroma.light_3.26.0.tar.gz
+	sha256sums = da6fd263bcf8a66b8b6f09bc16a1360fc5c92c4c415794d22b4038bd79da8088
+
+pkgname = r-aroma.light
