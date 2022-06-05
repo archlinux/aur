@@ -2,13 +2,13 @@
 
 pkgname=aom-psy-git
 pkgver=r32687.g2b3394525
-pkgrel=2
+pkgrel=3
 pkgdesc="An open, royalty-free video coding format, includes tune=(vmaf|butteraugli) and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
 license=('BSD' 'custom:PATENTS')
 depends=('gcc-libs' 'vmaf' 'libjxl-metrics-git')
-makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm' 'clang')
+makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm' 'clang' 'lld')
 optdepends=('aocc: AMD Optimizing Compiler')
 provides=('aom' 'aom-git' 'libaom.so')
 conflicts=('aom' 'aom-git')
