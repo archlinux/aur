@@ -1,0 +1,31 @@
+pkgbase = r-bench
+	pkgdesc = High Precision Timing of R Expressions
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bench
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-glue
+	depends = r-pillar
+	depends = r-profmem
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-forcats
+	optdepends = r-ggbeeswarm
+	optdepends = r-ggplot2
+	optdepends = r-ggridges
+	optdepends = r-jsonlite
+	optdepends = r-mockery
+	optdepends = r-parallel
+	optdepends = r-scales
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-vctrs
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/bench_1.1.2.tar.gz
+	sha256sums = af910a768db79fe68597e6e79ff1012b810b8f88fb29c04432cded058ec2439b
+
+pkgname = r-bench
