@@ -1,0 +1,17 @@
+pkgbase = r-ape
+	pkgdesc = Analyses of Phylogenetics and Evolution
+	pkgver = 5.6.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ape
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-expm
+	optdepends = r-gee
+	optdepends = r-igraph
+	optdepends = r-phangorn
+	source = https://cran.r-project.org/src/contrib/ape_5.6-2.tar.gz
+	sha256sums = 9b62450a0390a1f07df007d348ad4cedcd814d42cb11c5a300ed33550fd41257
+
+pkgname = r-ape
