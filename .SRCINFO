@@ -1,0 +1,27 @@
+pkgbase = r-delayedtensor
+	pkgdesc = R package for sparse and out-of-core arithmetic and decomposition of Tensor
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DelayedTensor
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocsingular
+	depends = r-delayedarray
+	depends = r-delayedrandomarray
+	depends = r-einsum
+	depends = r-hdf5array
+	depends = r-irlba
+	depends = r-rtensor
+	optdepends = r-biocstyle
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-markdown
+	optdepends = r-reticulate
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedTensor_1.2.0.tar.gz
+	sha256sums = a17c0f2808a263e19c8cce46a72b8fdee2ffceea9c2b92507fc15456b28a4cdd
+
+pkgname = r-delayedtensor
