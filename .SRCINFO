@@ -1,0 +1,21 @@
+pkgbase = r-chromheatmap
+	pkgdesc = Heat map plotting by genome coordinate
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ChromHeatMap
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotate
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rtracklayer
+	optdepends = r-all
+	optdepends = r-hgu95av2.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChromHeatMap_1.50.0.tar.gz
+	sha256sums = 146c75c6786aa41392019a3aa364a0a4b7216fc877ff886d3e48f182692bfccc
+
+pkgname = r-chromheatmap
