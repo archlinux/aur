@@ -1,0 +1,15 @@
+pkgbase = r-affydata
+	pkgdesc = Affymetrix Data for Demonstration Purpose
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affydata
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	optdepends = r-hgu133acdf
+	optdepends = r-hgu95av2cdf
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/affydata_1.44.0.tar.gz
+	sha256sums = 77c912b6bea03affe1a00a2b9486cbf8fb3fa783b0e434ce36a3e8098fae11b5
+
+pkgname = r-affydata
