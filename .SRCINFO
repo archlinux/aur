@@ -1,10 +1,11 @@
 pkgbase = pip2arch-git
 	pkgdesc = Tool to convert entries in the pypi database to PKGBUILDs
 	pkgver = r65.f2a2aff
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lclarkmichalek/pip2arch
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = python
 	source = pip2arch-git::git+https://github.com/lclarkmichalek/pip2arch.git
 	md5sums = SKIP

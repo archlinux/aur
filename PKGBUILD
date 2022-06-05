@@ -1,12 +1,14 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+
 pkgname=pip2arch-git
-pkgrel=2
+pkgrel=3
 pkgver=r65.f2a2aff
 pkgdesc='Tool to convert entries in the pypi database to PKGBUILDs'
 arch=('any')
 url="https://github.com/lclarkmichalek/pip2arch"
 license=('GPL2')
 depends=('python')
+makedepends=('git')
 md5sums=('SKIP')
 
 source=("${pkgname}"::'git+https://github.com/lclarkmichalek/pip2arch.git')
