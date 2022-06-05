@@ -1,0 +1,35 @@
+pkgbase = r-biomartr
+	pkgdesc = Genomic Data Retrieval
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=biomartr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-biostrings
+	depends = r-curl
+	depends = r-data.table
+	depends = r-downloader
+	depends = r-dplyr
+	depends = r-fs
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-philentropy
+	depends = r-purrr
+	depends = r-r.utils
+	depends = r-rcurl
+	depends = r-readr
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-xml
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
+	optdepends = r-seqinr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/biomartr_1.0.2.tar.gz
+	sha256sums = 7fd6cccd915aa39e593fb7591107ab9792d98a119dd42f3f666e5184f4e42743
+
+pkgname = r-biomartr
