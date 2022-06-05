@@ -1,0 +1,28 @@
+pkgbase = r-condformat
+	pkgdesc = Conditional Formatting in Data Frames
+	pkgver = 0.9.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=condformat
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-dplyr
+	depends = r-gridextra
+	depends = r-gtable
+	depends = r-htmltable
+	depends = r-htmltools
+	depends = r-knitr
+	depends = r-magrittr
+	depends = r-openxlsx
+	depends = r-rlang
+	depends = r-rmarkdown
+	depends = r-scales
+	depends = r-tibble
+	depends = r-tidyselect
+	optdepends = r-promises
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/condformat_0.9.0.tar.gz
+	sha256sums = 0ba040378d5db99078d27c9a4448ca3a6423d898a6a6e426a3b1c865b3bd3994
+
+pkgname = r-condformat
