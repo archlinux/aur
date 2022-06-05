@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.3.0.dev1.r7195.6af10d29
+pkgver=3.3.0.dev1.r7557.e6be39c8
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -52,7 +52,7 @@ check() {
   pytest --deselect=test/unit/test_version.py
 
   desktop-file-validate data/${_appdata_id}.desktop
-  appstream-util validate-relax --nonet data/${_appdata_id}.metainfo.xml
+  appstream-util validate-relax --nonet data/${_appdata_id}.appdata.xml
 }
 
 package() {
