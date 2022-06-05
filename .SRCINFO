@@ -1,0 +1,20 @@
+pkgbase = r-biocstyle
+	pkgdesc = Standard styles for vignettes and other Bioconductor documents
+	pkgver = 2.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiocStyle
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocmanager
+	depends = r-bookdown
+	depends = r-knitr
+	depends = r-rmarkdown
+	depends = r-yaml
+	optdepends = r-biocgenerics
+	optdepends = r-htmltools
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocStyle_2.24.0.tar.gz
+	sha256sums = 459527c4b14b003f9446f13ec7518b76032a4bc612c398420f38ad00c48a91db
+
+pkgname = r-biocstyle
