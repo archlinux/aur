@@ -1,0 +1,15 @@
+pkgbase = r-aod
+	pkgdesc = Analysis of Overdispersed Data
+	pkgver = 1.3.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=aod
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-boot
+	optdepends = r-lme4
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/aod_1.3.2.tar.gz
+	sha256sums = 9b85be7b12b31ac076f2456853a5b18d8a79ce2b86d00055264529a0cd28515c
+
+pkgname = r-aod
