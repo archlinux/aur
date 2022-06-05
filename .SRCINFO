@@ -1,0 +1,18 @@
+pkgbase = r-covrna
+	pkgdesc = Multivariate Analysis of Transcriptomic Data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/covRNA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ade4
+	depends = r-biobase
+	depends = r-genefilter
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/covRNA_1.22.0.tar.gz
+	sha256sums = f1f6f208cad6bb30a31bc5f113da4e07b0d7d1e0b104465989b5688dbfea3b0c
+
+pkgname = r-covrna
