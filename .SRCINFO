@@ -1,0 +1,23 @@
+pkgbase = dumpvdl2-git
+	pkgdesc = VDL Mode 2 message decoder and protocol analyzer
+	pkgver = r794.fc653ae
+	pkgrel = 1
+	url = https://github.com/szpajder/dumpvdl2
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libacars
+	depends = glib2
+	optdepends = rtl-sdr: RTLSDR dongles support
+	optdepends = libmirisdr4: FOSS driver for RSP1-based devices.
+	optdepends = soapysdr
+	optdepends = libsdrplay: Proprietary API service for SDRplay devices.
+	optdepends = sqlite: for enriching messages with aircraft data read from SQB database
+	optdepends = statsd-c-client: for Etsy StatsD statistics
+	optdepends = protobuf-c: for binary format support
+	optdepends = zeromq: for ZeroMQ networked output
+	source = dumpvdl2-git::git+https://github.com/szpajder/dumpvdl2
+	md5sums = SKIP
+
+pkgname = dumpvdl2-git
