@@ -1,8 +1,8 @@
 pkgbase = h5utils-git
 	pkgdesc = A set of utilities for visualization and conversion of scientific data in the free, portable HDF5 format
-	pkgver = 1.13.r9.ge17b135
+	pkgver = 1.13.1.r5.ge68ec74
 	pkgrel = 1
-	url = https://github.com/stevengj/h5utils
+	url = https://github.com/NanoComp/h5utils
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,11 +10,10 @@ pkgbase = h5utils-git
 	depends = hdf5
 	depends = libpng
 	optdepends = libmatheval: support symbolic expressions
-	provides = h5utils
+	provides = h5utils=1.13.1.r5.ge68ec74
 	conflicts = h5utils
 	options = !makeflags
-	source = git+https://github.com/stevengj/h5utils.git
+	source = git+https://github.com/NanoComp/h5utils.git
 	sha256sums = SKIP
 
 pkgname = h5utils-git
-
