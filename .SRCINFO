@@ -1,0 +1,15 @@
+pkgbase = huekeys
+	pkgdesc = Control the keyboard backlight on System76 laptops
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/BitPonyLLC/huekeys
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = gtk3
+	depends = libayatana-appindicator
+	source = git+https://github.com/BitPonyLLC/huekeys.git#commit=da72dc74a2168b5d5227dadf6624362bb6e182d7
+	sha256sums = SKIP
+
+pkgname = huekeys
