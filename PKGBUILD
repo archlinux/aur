@@ -2,7 +2,7 @@
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=gwenhywfar-git
-pkgver=5.7.0beta+137+g23e6944f
+pkgver=5.9.0+18+d819db8e
 pkgrel=1
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
@@ -18,7 +18,28 @@ sha256sums=(SKIP)
 _sourcedir=gwenhywfar
 
 pkgver() {
-  git -C $_sourcedir describe --tags | sed 's/-/+/g'
+  # In the gwenhywfar repository, the Git tag that we want is
+  # usually not reachable from the current HEAD.
+  # To work around that issue, extract the version number from
+  # configure.ac instead.
+  _version_base="$(
+    awk -F= \
+      -e '/^GWENHYWFAR_VERSION_(MAJOR|MINOR|PATCHLEVEL)=/ {
+        a[substr($1, 20)] = $2
+      }' \
+      -e 'END {
+        if (length(a) < 3) {
+          exit 64 + length(a)
+        }
+        print a["MAJOR"]"."a["MINOR"]"."a["PATCHLEVEL"]
+      }' \
+      "$_sourcedir/configure.ac"
+  )"
+
+  printf "%s+%s+%s\n" \
+    "${_version_base}" \
+    "$(git -C "$_sourcedir" rev-list --count "^${_version_base}" @)" \
+    "$(git -C "$_sourcedir" describe --always --exclude='*')"
 }
 
 prepare() {
