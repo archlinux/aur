@@ -1,0 +1,14 @@
+pkgbase = r-acde
+	pkgdesc = Artificial Components Detection of Differentially Expressed Genes
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/acde
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/acde_1.26.0.tar.gz
+	sha256sums = 422ea9a915143b151d26c910dbcc35c742534c1b593ac3d6777462e20d29f851
+
+pkgname = r-acde
