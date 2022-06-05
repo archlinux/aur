@@ -10,12 +10,13 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('custom')
 depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap' 'libevent' 'c-ares')
+optdepends=('mailcap: to get correct Content-Type header on doc html served by apt-cacher-ng')
 makedepends=('cmake')
 source=("http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
         'acng.conf.patch'

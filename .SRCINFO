@@ -1,7 +1,7 @@
 pkgbase = apt-cacher-ng
 pkgdesc = A caching proxy specialized for package files
 pkgver = 3.7.4
-pkgrel = 4
+pkgrel = 5
 url = http://www.unix-ag.uni-kl.de/~bloch/acng/
 install = apt-cacher-ng.install
 arch = i686
@@ -18,6 +18,7 @@ depends = openssl
 depends = libwrap
 depends = libevent
 depends = c-ares
+optdepends = mailcap: to get correct Content-Type header on doc html served by apt-cacher-ng
 backup = etc/apt-cacher-ng/acng.conf
 backup = etc/apt-cacher-ng/security.conf
 source = http://deb.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.7.4.orig.tar.xz
