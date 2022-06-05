@@ -1,0 +1,22 @@
+pkgbase = r-carnival
+	pkgdesc = A CAusal Reasoning tool for Network Identification (from gene expression data) using Integer VALue programming
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CARNIVAL
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-igraph
+	depends = r-lpsolve
+	depends = r-readr
+	depends = r-rjson
+	depends = r-rmarkdown
+	depends = r-stringr
+	depends = r-tidyr
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CARNIVAL_2.6.0.tar.gz
+	sha256sums = 19a33992d6e760651139e51846d00003767e2d35940be42314bba67d65141c2c
+
+pkgname = r-carnival
