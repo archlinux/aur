@@ -1,0 +1,32 @@
+pkgbase = r-ddpcr
+	pkgdesc = Analysis and Visualization of Droplet Digital PCR in R and on the Web
+	pkgver = 1.15
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ddpcr
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-dt
+	depends = r-ggplot2
+	depends = r-lazyeval
+	depends = r-magrittr
+	depends = r-mixtools
+	depends = r-plyr
+	depends = r-readr
+	depends = r-shiny
+	depends = r-shinyjs
+	depends = r-tibble
+	optdepends = r-ggextra
+	optdepends = r-graphics
+	optdepends = r-grid
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-stats
+	optdepends = r-testthat
+	optdepends = r-utils
+	source = https://cran.r-project.org/src/contrib/ddpcr_1.15.tar.gz
+	sha256sums = 9ad78906d8aec5ca0f57f403d15a2f09e913a726686515cd4b1d8fa7a6990213
+
+pkgname = r-ddpcr
