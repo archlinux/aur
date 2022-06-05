@@ -1,0 +1,15 @@
+pkgbase = r-correp
+	pkgdesc = Multivariate Correlation Estimator and Statistical Inference Procedures.
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CORREP
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-e1071
+	optdepends = r-cluster
+	optdepends = r-mass
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CORREP_1.62.0.tar.gz
+	sha256sums = 7f28a02e7c09db5b4b248ec2367796b033ec64a43ec0cb214e7dc93bafb76f52
+
+pkgname = r-correp
