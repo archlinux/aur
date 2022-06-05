@@ -4,10 +4,10 @@
 pkgname=perl-math-geometry-planar-gpc-polygon
 _cpanname=Math-Geometry-Planar-GPC-Polygon
 pkgver=0.05
-pkgrel=2
+pkgrel=3
 pkgdesc="OO wrapper to gpc library"
 arch=('any')
-url="http://search.cpan.org/~Math/${_cpanname}"
+url="https://metacpan.org/pod/Math::Geometry::Planar::GPC::Polygon"
 license=('GPL' 'PerlArtistic')
 depends=('perl-inline>=0.44')
 options=('!emptydirs')
