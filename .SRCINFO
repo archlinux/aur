@@ -1,0 +1,12 @@
+pkgbase = r-atsa
+	pkgdesc = Alternative Time Series Analysis
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=aTSA
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/aTSA_3.1.2.tar.gz
+	sha256sums = a43cf1a68520d3992dce76c1c069be067162bc13d35cb4264440760db4ba7adc
+
+pkgname = r-atsa
