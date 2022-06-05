@@ -1,0 +1,16 @@
+pkgbase = r-apcluster
+	pkgdesc = Affinity Propagation Clustering
+	pkgver = 1.4.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=apcluster
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-biostrings
+	optdepends = r-kebabs
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/apcluster_1.4.10.tar.gz
+	sha256sums = a214f72fa2f84563f3ca1aabb5322ef3e266007a6273ee8434bc2e2a7b9040a0
+
+pkgname = r-apcluster
