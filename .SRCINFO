@@ -1,0 +1,18 @@
+pkgbase = r-benchmarkmedata
+	pkgdesc = Data Set for the 'benchmarkme' Package
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=benchmarkmeData
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-tibble
+	optdepends = r-benchmarkme
+	optdepends = r-covr
+	optdepends = r-dt
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/benchmarkmeData_1.0.4.tar.gz
+	sha256sums = 6e0768db1c783d2fa84d5214f3d8024dc9c69c7cc4d108059fa652fcd4949bd8
+
+pkgname = r-benchmarkmedata
