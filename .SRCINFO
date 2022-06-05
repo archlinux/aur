@@ -1,0 +1,15 @@
+pkgbase = vegastrike
+	pkgdesc = Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://www.vega-strike.org/
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = vegastrike-engine
+	options = !strip
+	source = git+https://github.com/vegastrike/Assets-Production#tag=v0.8.0
+	sha256sums = SKIP
+
+pkgname = vegastrike
