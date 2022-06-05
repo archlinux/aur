@@ -37,7 +37,7 @@ pkgbase = java-jbr-xdg
 	sha256sums = 09e6f320362ca0a0bd1ce380c9e89ea145131aa56a3f258607c6bd9ded586739
 
 pkgname = jre-jbr-xdg-headless
-	pkgdesc = JetBrainsRuntime Java 17 headless runtime environment
+	pkgdesc = JetBrainsRuntime Java 17 headless runtime environment - with improved Support for the XDG Base Directory Specification
 	install = jre-jbr-xdg-headless.install
 	depends = ca-certificates-utils
 	depends = freetype2
@@ -73,7 +73,7 @@ pkgname = jre-jbr-xdg-headless
 	backup = etc/java-jbr-xdg/sound.properties
 
 pkgname = jre-jbr-xdg
-	pkgdesc = JetBrainsRuntime Java 17 full runtime environment
+	pkgdesc = JetBrainsRuntime Java 17 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = jre-jbr-xdg.install
 	depends = gcc-libs
 	depends = giflib
@@ -89,7 +89,7 @@ pkgname = jre-jbr-xdg
 	provides = jre17-jbr-xdg=17.0.3.0.b463.3-1
 
 pkgname = jdk-jbr-xdg
-	pkgdesc = JetBrainsRuntime Java 17 development kit
+	pkgdesc = JetBrainsRuntime Java 17 development kit - with improved Support for the XDG Base Directory Specification
 	install = jdk-jbr-xdg.install
 	depends = glibc
 	depends = gcc-libs
@@ -102,11 +102,11 @@ pkgname = jdk-jbr-xdg
 	provides = jdk17-jbr-xdg=17.0.3.0.b463.3-1
 
 pkgname = jbr-xdg-src
-	pkgdesc = JetBrainsRuntime Java 17 sources
+	pkgdesc = JetBrainsRuntime Java 17 sources - with improved Support for the XDG Base Directory Specification
 	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
 	provides = jbr17-xdg-src=17.0.3.0.b463.3-1
 
 pkgname = jbr-xdg-doc
-	pkgdesc = JetBrainsRuntime Java 17 documentation
+	pkgdesc = JetBrainsRuntime Java 17 documentation - with improved Support for the XDG Base Directory Specification
 	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
 	provides = jbr17-xdg-doc=17.0.3.0.b463.3-1
