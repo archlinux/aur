@@ -1,0 +1,19 @@
+pkgbase = r-codex
+	pkgdesc = A Normalization and Copy Number Variation Detection Method for Whole Exome Sequencing
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CODEX
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-bsgenome.hsapiens.ucsc.hg19
+	depends = r-genomeinfodb
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = r-s4vectors
+	optdepends = r-wes.1kg.wugsc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CODEX_1.28.0.tar.gz
+	sha256sums = b7ed677581582b814253c3416c6c455184983b902e95b9ae200f42503d14f886
+
+pkgname = r-codex
