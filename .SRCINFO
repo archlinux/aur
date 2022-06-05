@@ -1,0 +1,31 @@
+pkgbase = r-bridgesampling
+	pkgdesc = Bridge Sampling for Marginal Likelihoods and Bayes Factors
+	pkgver = 1.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bridgesampling
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-brobdingnag
+	depends = r-coda
+	depends = r-mvtnorm
+	depends = r-scales
+	depends = r-stringr
+	optdepends = r-bayesfactor
+	optdepends = r-knitr
+	optdepends = r-mcmcpack
+	optdepends = r-nimble
+	optdepends = r-r.rsp
+	optdepends = r-r2jags
+	optdepends = r-rcpp
+	optdepends = r-rcppeigen
+	optdepends = r-rjags
+	optdepends = r-rmarkdown
+	optdepends = r-rstan
+	optdepends = r-rstanarm
+	optdepends = r-runjags
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bridgesampling_1.1-2.tar.gz
+	sha256sums = 54ecd39aa2e36d4d521d3d36425f9fe56a3f8547df6048c814c5931d790f3e6b
+
+pkgname = r-bridgesampling
