@@ -1,0 +1,14 @@
+pkgbase = r-brglm
+	pkgdesc = Bias Reduction in Binomial-Response Generalized Linear Models
+	pkgver = 0.7.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=brglm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-profilemodel
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/brglm_0.7.2.tar.gz
+	sha256sums = 56098d2ce238478e7a27cacc4cdec0bc65f287fe746b38fbb1edda20c1675023
+
+pkgname = r-brglm
