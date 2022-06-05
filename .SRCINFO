@@ -1,0 +1,23 @@
+pkgbase = r-ashr
+	pkgdesc = Methods for Adaptive Shrinkage, using Empirical Bayes
+	pkgver = 2.2.54
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ashr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-etrunct
+	depends = r-invgamma
+	depends = r-mixsqp
+	depends = r-rcpp
+	depends = r-squarem
+	depends = r-truncnorm
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rebayes
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ashr_2.2-54.tar.gz
+	sha256sums = ea39ad1d4fcb2f7a331c6629f8d69d1038abd1271be3338ef1de307bd5d0fd9c
+
+pkgname = r-ashr
