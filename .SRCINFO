@@ -1,0 +1,14 @@
+pkgbase = r-acgh
+	pkgdesc = Classes and functions for Array Comparative Genomic Hybridization data
+	pkgver = 1.74.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/aCGH
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-multtest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/aCGH_1.74.0.tar.gz
+	sha256sums = edf4f0cb28b59c0e3183a450f2ba82abc21c9ddbe5a1e8de1b6323e3f904d102
+
+pkgname = r-acgh
