@@ -1,0 +1,17 @@
+pkgbase = r-boomspikeslab
+	pkgdesc = MCMC for Spike and Slab Regression
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BoomSpikeSlab
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-boom
+	optdepends = r-igraph
+	optdepends = r-mass
+	optdepends = r-mlbench
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BoomSpikeSlab_1.2.5.tar.gz
+	sha256sums = bc88ad95075b91799476e9e56281e4bf421106601acdbee5de783c9048b22bf8
+
+pkgname = r-boomspikeslab
