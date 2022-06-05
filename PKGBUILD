@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=html-eslint
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='ESLint plugin for HTML'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm' 'typescript')
 optdepends=('eslint: for use via eslint')
 install=$pkgname.install
 source=("https://github.com/yeonjuan/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('9122edb60dec4e48aaa373a0cb9eaafb2f9f59bb8a9210952ae275f44e4b21bb977d47a81f8f0d9d410dbbccc39d1568cc1c4e1d5139ba1472c6e5a11bc226bf')
+b2sums=('7ee41dc44b82bf6e92f5bccb9acb50f90ea5c10f4be9bc6cbaead920ebdf6817bce2933b970d922ededdc511ffcd66fcb5730c286fa5d24ef550a44e5062d86d')
 
 prepare() {
   cd $pkgname-$pkgver
