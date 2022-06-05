@@ -1,0 +1,18 @@
+pkgbase = r-bayesfm
+	pkgdesc = Bayesian Inference for Factor Modeling
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BayesFM
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-checkmate
+	depends = r-coda
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-plyr
+	source = https://cran.r-project.org/src/contrib/BayesFM_0.1.5.tar.gz
+	sha256sums = 11a9d20f0e4f1a66839f69fc865842df4dd17bde62646f7cae6680ec8a54d7f4
+
+pkgname = r-bayesfm
