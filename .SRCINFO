@@ -1,0 +1,12 @@
+pkgbase = r-cmap
+	pkgdesc = A data package containing annotation data for cMAP
+	pkgver = 1.15.1
+	pkgrel = 5
+	url = https://bioconductor.org/packages/cMAP
+	arch = any
+	license = LGPL
+	depends = r
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/cMAP_1.15.1.tar.gz
+	sha256sums = 3bf24aca1ce63ebff4ac0172467ecd8acbb0c1f8a240cd0f8b8abd7c44fdf15f
+
+pkgname = r-cmap
