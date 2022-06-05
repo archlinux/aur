@@ -1,0 +1,30 @@
+pkgbase = r-assertive
+	pkgdesc = Readable Check Functions to Ensure Code Integrity
+	pkgver = 0.3.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	depends = r-assertive.code
+	depends = r-assertive.data
+	depends = r-assertive.data.uk
+	depends = r-assertive.data.us
+	depends = r-assertive.datetimes
+	depends = r-assertive.files
+	depends = r-assertive.matrices
+	depends = r-assertive.models
+	depends = r-assertive.numbers
+	depends = r-assertive.properties
+	depends = r-assertive.reflection
+	depends = r-assertive.sets
+	depends = r-assertive.strings
+	depends = r-assertive.types
+	depends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive_0.3-6.tar.gz
+	sha256sums = c403169e83c433b65e911f7fd640b378e2a4a4765a36063584b8458168a4ea0a
+
+pkgname = r-assertive
