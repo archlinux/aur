@@ -1,0 +1,12 @@
+pkgbase = r-bezier
+	pkgdesc = Toolkit for Bezier Curves and Splines
+	pkgver = 1.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bezier
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/bezier_1.1.2.tar.gz
+	sha256sums = 262ff2d4f81a8f4b5ba3a5347b906c346f29384bb5b9a0781f2741b4910885ef
+
+pkgname = r-bezier
