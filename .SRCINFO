@@ -1,0 +1,14 @@
+pkgbase = r-boolnet
+	pkgdesc = Construction, Simulation and Analysis of Boolean Networks
+	pkgver = 2.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=BoolNet
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-igraph
+	depends = r-xml
+	source = https://cran.r-project.org/src/contrib/BoolNet_2.1.5.tar.gz
+	sha256sums = 13579536a816cf0fa424916dfa1f868309421f8a3ed389d3fa63ba9d06d3de85
+
+pkgname = r-boolnet
