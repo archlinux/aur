@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.4.3.r15.g36d9b5a
+pkgver=1.4.3.r17.g008cf3b
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -25,6 +25,8 @@ makedepends=(
   "dbus"
   "xfconf"
   "mesa"
+  "opencl-headers"
+  "ocl-icd"
   # "libmagick6"
   # "sqlite3"
   # "rpm-tools"
@@ -44,6 +46,7 @@ optdepends=(
   "zlib: Faster image output when using kitty graphics protocol"
   "xfconf: XFWM theme + xfce-terminal font"
   "mesa: OpenGL module"
+  "ocl-icd: OpenCL module"
   # "libmagick6: ImageMagick 6 support" 
   # "sqlite3: rpm package count"
   # "rpm-tools: slower rpm package count fallback"
