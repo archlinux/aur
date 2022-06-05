@@ -2,8 +2,8 @@
 
 pkgname=ldr-translate-gtk
 pkgdata=ldr-translate
-pkgver=1.3.1
-pkgrel=10
+pkgver=1.4.0
+pkgrel=1
 epoch=
 pkgdesc="一个翻译软件，更适合gnome桌面，专注文献翻译，可以截图翻译、复制翻译等，顺带显示网速等系统信息"
 arch=('x86_64')
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(a5bf142da605f3116159aa0ca10fb355)
+md5sums=(457eb424ba171da1a9addd698ddc7263)
 validpgpkeys=()
 
 prepare() {
