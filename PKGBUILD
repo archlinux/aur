@@ -2,8 +2,8 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-resumable-media
-_name="${pkgname#python-}"
-pkgver=2.3.2
+_pkg="${pkgname#python-}"
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -15,20 +15,23 @@ optdepends=(
 	'python-requests: for requests support'
 	'python-aiohttp: for aiohttp support')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1cb9fd19cc3c31c6e66bba7ac5f1dd75ec3d3b12b50c8d4cf4cfecf9c60c9562')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('27c52620bd364d1c8116eaac4ea2afcbfb81ae9139fb3199652fcac1724bfb6c')
 
 build() {
-	cd "$_name-python-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 # tests require preset credentials
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "$_name-python-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/${_pkg//-/_}-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
