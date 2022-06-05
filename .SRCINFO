@@ -1,0 +1,112 @@
+pkgbase = java-jbr-xdg
+	pkgver = 17.0.3.0.b463.3
+	pkgrel = 1
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
+	arch = x86_64
+	license = custom
+	makedepends = alsa-lib
+	makedepends = bash
+	makedepends = cpio
+	makedepends = freetype2
+	makedepends = giflib
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = graphviz
+	makedepends = harfbuzz
+	makedepends = java-environment>=10
+	makedepends = java-environment<12
+	makedepends = libcups
+	makedepends = libelf
+	makedepends = libjpeg-turbo
+	makedepends = libnet
+	makedepends = libpng
+	makedepends = libx11
+	makedepends = libxrender
+	makedepends = libxt
+	makedepends = libxext
+	makedepends = libxrandr
+	makedepends = libxtst
+	makedepends = pandoc
+	makedepends = lcms2
+	makedepends = unzip
+	makedepends = zip
+	options = !lto
+	source = https://github.com/JetBrains/JetBrainsRuntime/archive/refs/tags/jbr17.0.3b463.3.tar.gz
+	source = xdg-user-directories-compliant.patch
+	sha256sums = 311605e3a30367e455cf95d20bd1923ae9adec1acbe86199400ee778bca1ba04
+	sha256sums = 09e6f320362ca0a0bd1ce380c9e89ea145131aa56a3f258607c6bd9ded586739
+
+pkgname = jre-jbr-xdg-headless
+	pkgdesc = JetBrainsRuntime Java 17 headless runtime environment
+	install = jre-jbr-xdg-headless.install
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = glibc
+	depends = gcc-libs
+	depends = harfbuzz
+	depends = java-runtime-common>=3
+	depends = libjpeg-turbo
+	depends = lcms2
+	depends = libnet
+	depends = nss
+	depends = libfreetype.so
+	depends = libharfbuzz.so
+	depends = libjpeg.so
+	depends = liblcms2.so
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-jbr-xdg=17
+	provides = jre17-jbr-xdg-headless=17.0.3.0.b463.3-1
+	backup = etc/java-jbr-xdg/logging.properties
+	backup = etc/java-jbr-xdg/management/jmxremote.access
+	backup = etc/java-jbr-xdg/management/jmxremote.password.template
+	backup = etc/java-jbr-xdg/management/management.properties
+	backup = etc/java-jbr-xdg/net.properties
+	backup = etc/java-jbr-xdg/security/java.policy
+	backup = etc/java-jbr-xdg/security/java.security
+	backup = etc/java-jbr-xdg/security/policy/README.txt
+	backup = etc/java-jbr-xdg/security/policy/limited/default_US_export.policy
+	backup = etc/java-jbr-xdg/security/policy/limited/default_local.policy
+	backup = etc/java-jbr-xdg/security/policy/limited/exempt_local.policy
+	backup = etc/java-jbr-xdg/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-jbr-xdg/security/policy/unlimited/default_local.policy
+	backup = etc/java-jbr-xdg/sound.properties
+
+pkgname = jre-jbr-xdg
+	pkgdesc = JetBrainsRuntime Java 17 full runtime environment
+	install = jre-jbr-xdg.install
+	depends = gcc-libs
+	depends = giflib
+	depends = glibc
+	depends = jre17-jbr-xdg-headless=17.0.3.0.b463.3-1
+	depends = libpng
+	depends = libgif.so
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=17
+	provides = java-runtime-jbr-xdg=17
+	provides = jre17-jbr-xdg=17.0.3.0.b463.3-1
+
+pkgname = jdk-jbr-xdg
+	pkgdesc = JetBrainsRuntime Java 17 development kit
+	install = jdk-jbr-xdg.install
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = jre17-jbr-xdg=17.0.3.0.b463.3-1
+	depends = java-environment-common=3
+	depends = libelf
+	provides = java-environment=17
+	provides = java-environment-jbr-xdg=17
+	provides = jdk17-jbr-xdg=17.0.3.0.b463.3-1
+
+pkgname = jbr-xdg-src
+	pkgdesc = JetBrainsRuntime Java 17 sources
+	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
+	provides = jbr17-xdg-src=17.0.3.0.b463.3-1
+
+pkgname = jbr-xdg-doc
+	pkgdesc = JetBrainsRuntime Java 17 documentation
+	depends = jdk17-jbr-xdg=17.0.3.0.b463.3-1
+	provides = jbr17-xdg-doc=17.0.3.0.b463.3-1
