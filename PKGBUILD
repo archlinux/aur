@@ -1,4 +1,4 @@
-# Maintainer: MalusVeritas <malusveritas[att]riseup[dott]net>
+# Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 _plug=rekt
 pkgname=vapoursynth-plugin-${_plug}-git
