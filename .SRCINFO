@@ -1,0 +1,13 @@
+pkgbase = r-affyio
+	pkgdesc = Tools for parsing Affymetrix data files
+	pkgver = 1.66.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affyio
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-zlibbioc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affyio_1.66.0.tar.gz
+	sha256sums = d7bd8ba9f3a24f6a74c28226765cecc6e917dbf1028cfa04dce6cfbfb1409ca5
+
+pkgname = r-affyio
