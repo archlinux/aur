@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-data-messagepack
-pkgver=1.01
-pkgrel=3
+pkgver=1.02
+pkgrel=1
 pkgdesc='MessagePack serializing/deserializing'
 arch=(x86_64)
 license=(PerlArtistic GPL)
@@ -13,8 +13,8 @@ makedepends=('perl-devel-ppport>=3.42' 'perl-module-build>=0.4005'
 checkdepends=(perl-test-requires)
 url=https://metacpan.org/release/Data-MessagePack
 source=("https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/Data-MessagePack-$pkgver.tar.gz")
-md5sums=(f75e916e948076d3f059e593064199ea)
-sha512sums=(7440f658df717ed54b20851b0af2eb22e5edf3dec1c749cae4974a30cb8c68105f0c326f06393be35f73ea8b1ef08a4f490aa8ca85b6b53430472084e092f957)
+md5sums=(23afe56c52a6e7f345a801710dcfabbe)
+sha512sums=(a78a035091f42c888cb3d7b952d89588ba52988a6807e4c6dc347b12a751830b1b1d36ea93b8852339e1601dad197d42c762061b95ca2d8fdb4a6c29f6fda900)
 _ddir="Data-MessagePack-$pkgver"
 
 build()
