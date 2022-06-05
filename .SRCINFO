@@ -1,14 +1,14 @@
 pkgbase = brackets-bin
-	pkgdesc = A code editor for HTML, CSS and JavaScript.
+	pkgdesc = A code editor for HTML, CSS and JavaScript. (Waiting for new release for Linux, hold on.)
 	pkgver = 1.14.1
 	pkgrel = 1
-	url = http://brackets.io
+	url = https://brackets.io
 	install = brackets-bin.install
 	arch = x86_64
 	license = MIT
 	depends = gconf
 	depends = libgcrypt15
-	depends = nodejs
+	depends = nodejs>=12
 	depends = nspr
 	depends = nss
 	depends = systemd
@@ -24,10 +24,9 @@ pkgbase = brackets-bin
 	conflicts = brackets-git
 	noextract = data.tar.xzaa
 	noextract = data.tar.xzab
-	source = https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzaa
-	source = https://github.com/Hritik14/brackets-bin/raw/master/data.tar.xzab
+	source = https://cdn.jsdelivr.net/gh/kuohuanhuan-forkonly/brackets-bin@master/data.tar.xzaa
+	source = https://cdn.jsdelivr.net/gh/kuohuanhuan-forkonly/brackets-bin@master/data.tar.xzab
 	sha512sums = 2094065e915650bccd9707334ab73b70dd0fcf3bfb397608329e58f91a58fa0cffe7855483c0e152cda4b6231f54918774a2d467efe719c14c19fbbef026a8d1
 	sha512sums = 0dd731232b642dfd0fe9eb7533fcfe2a32de5bb8ab1c72f458b3437db9f893b840fc3323f58240b2ec0ee6324c5cef45bdda05a763ecb442d02d75d5ab3cf200
 
 pkgname = brackets-bin
-
