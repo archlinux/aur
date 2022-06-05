@@ -1,0 +1,13 @@
+pkgbase = r-cpgassoc
+	pkgdesc = Association Between Methylation and a Phenotype of Interest
+	pkgver = 2.60
+	pkgrel = 4
+	url = https://cran.r-project.org/package=CpGassoc
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-qvalue
+	source = https://cran.r-project.org/src/contrib/CpGassoc_2.60.tar.gz
+	sha256sums = de9e609cad85beb9c1ff95b8139ef6e5d481065af4a823ad5482ca7e5147a1ff
+
+pkgname = r-cpgassoc
