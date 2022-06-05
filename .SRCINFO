@@ -1,0 +1,36 @@
+pkgbase = r-caretensemble
+	pkgdesc = Ensembles of Caret Models
+	pkgver = 2.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=caretEnsemble
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-caret
+	depends = r-data.table
+	depends = r-digest
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-pbapply
+	depends = r-plyr
+	optdepends = r-catools
+	optdepends = r-e1071
+	optdepends = r-gbm
+	optdepends = r-glmnet
+	optdepends = r-ipred
+	optdepends = r-kernlab
+	optdepends = r-klar
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-mass
+	optdepends = r-mlbench
+	optdepends = r-nnet
+	optdepends = r-proc
+	optdepends = r-randomforest
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/caretEnsemble_2.0.1.tar.gz
+	sha256sums = 7e595e604ce2d9d32afbc5404e6fcbcd7f80e687316e9ca3303aca3e44c3ef88
+
+pkgname = r-caretensemble
