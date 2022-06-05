@@ -1,0 +1,19 @@
+pkgbase = r-codelink
+	pkgdesc = Manipulation of Codelink microarray data
+	pkgver = 1.64.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/codelink
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotate
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-limma
+	optdepends = r-genefilter
+	optdepends = r-knitr
+	optdepends = r-parallel
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/codelink_1.64.0.tar.gz
+	sha256sums = e56063c90ae97286ff0a2009df20d1391e0fe75db555bbb61f03897ffacf3a64
+
+pkgname = r-codelink
