@@ -1,0 +1,14 @@
+pkgbase = r-clomial
+	pkgdesc = Infers clonal composition of a tumor
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Clomial
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-matrixstats
+	depends = r-permute
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Clomial_1.32.0.tar.gz
+	sha256sums = 82518ba0ccf08a45b4f8c46bdc9e2ee2a1ca1c3af33dbf7296180a707d213f50
+
+pkgname = r-clomial
