@@ -1,0 +1,25 @@
+pkgbase = r-daglogo
+	pkgdesc = dagLogo: a Bioconductor package for visualizing conserved amino acid sequence pattern in groups based on probability theory
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/dagLogo
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biomart
+	depends = r-biostrings
+	depends = r-motifstack
+	depends = r-pheatmap
+	depends = r-uniprot.ws
+	optdepends = r-biocstyle
+	optdepends = r-grimport
+	optdepends = r-grimport2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dagLogo_1.34.0.tar.gz
+	sha256sums = 34b88306ecda9b474516ffa0835710a388539c336df57f87069c03f74039eacc
+
+pkgname = r-daglogo
