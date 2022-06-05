@@ -1,0 +1,16 @@
+pkgbase = r-dart
+	pkgdesc = Denoising Algorithm based on Relevance network Topology
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DART
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	optdepends = r-biobase
+	optdepends = r-breastcancermainz
+	optdepends = r-breastcancervdx
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DART_1.44.0.tar.gz
+	sha256sums = 5a855bebf2600cfc2a88efbdffbc755bc1fd54d61fcbfe70aeb3b7e4b81aae80
+
+pkgname = r-dart
