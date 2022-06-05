@@ -1,0 +1,27 @@
+pkgbase = r-biocsingular
+	pkgdesc = Singular Value Decomposition for Bioconductor Packages
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiocSingular
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-beachmat
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-delayedarray
+	depends = r-irlba
+	depends = r-rcpp
+	depends = r-rsvd
+	depends = r-s4vectors
+	depends = r-scaledmatrix
+	depends = gcc
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-residualmatrix
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSingular_1.12.0.tar.gz
+	sha256sums = 7dd45d85c0c8248406caab4accb74b483d0066443e443b51bc5049602df32aeb
+
+pkgname = r-biocsingular
