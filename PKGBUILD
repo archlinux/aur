@@ -1,8 +1,8 @@
 # Maintainer: naruto522ru <itachi522ru@gmail.com>
 _pkgname=zsh-sudo
 pkgname=zsh-sudo-git
-pkgver=r6232.f1dd97bb2
-pkgrel=1
+pkgver=r6614.6622210d7
+pkgrel=2
 pkgdesc="Easily prefix your current or previous commands with sudo by pressing esc twice"
 arch=(any)
 url="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo"
@@ -10,7 +10,7 @@ license=('unknown')
 depends=("zsh")
 makedepends=("git")
 install="${pkgname}.install"
-source=(git://github.com/ohmyzsh/ohmyzsh.git)
+source=(git+https://github.com/ohmyzsh/ohmyzsh.git)
 sha256sums=('SKIP')
 
 pkgver() {
