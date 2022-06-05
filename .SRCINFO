@@ -1,6 +1,6 @@
 pkgbase = perl-svn-look
 	pkgdesc = svnlook perl bindings
-	pkgver = 0.41
+	pkgver = 0.43
 	pkgrel = 1
 	url = http://search.cpan.org/dist/SVN-Look/
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = perl-svn-look
 	depends = perl-list-moreutils
 	depends = subversion
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/SVN-Look-0.41.tar.gz
-	md5sums = 2b51270445a774c30ba5a94086201809
+	source = http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/SVN-Look-0.43.tar.gz
+	md5sums = 75f5eb52b58cc2eaf49342a2a094ebca
 
 pkgname = perl-svn-look
-

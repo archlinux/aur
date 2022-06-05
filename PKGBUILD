@@ -1,7 +1,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=perl-svn-look
-pkgver=0.41
+pkgver=0.43
 pkgrel=1
 pkgdesc="svnlook perl bindings"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=('perl' 'perl-extutils-makemaker'
 	 'subversion')
 options=(!emptydirs)
 source=(http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/SVN-Look-$pkgver.tar.gz)
-md5sums=('2b51270445a774c30ba5a94086201809')
+md5sums=('75f5eb52b58cc2eaf49342a2a094ebca')
 
 build() {
   cd $srcdir/SVN-Look-${pkgver}
