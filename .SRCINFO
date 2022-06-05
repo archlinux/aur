@@ -1,10 +1,11 @@
 pkgbase = joe-hg
 	pkgdesc = Joe's own editor - hg checkout
 	pkgver = 4.6.r1077.8078f28eb18c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joe-editor.sourceforge.io/
 	arch = x86_64
 	license = GPL
+	makedepends = mercurial
 	depends = ncurses
 	optdepends = gpm: console mouse support
 	provides = joe

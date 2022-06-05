@@ -3,7 +3,7 @@
 
 pkgname=joe-hg
 pkgver=4.6.r1077.8078f28eb18c
-pkgrel=1
+pkgrel=2
 pkgdesc="Joe's own editor - hg checkout"
 arch=('x86_64')
 url="https://joe-editor.sourceforge.io/"
@@ -12,6 +12,7 @@ depends=('ncurses')
 conflicts=('joe')
 provides=('joe')
 optdepends=('gpm: console mouse support')
+makedepends=('mercurial')
 backup=('etc/joe/ftyperc' 'etc/joe/jicerc.ru' 'etc/joe/jmacsrc'
         'etc/joe/joerc' 'etc/joe/jpicorc' 'etc/joe/jstarrc' 'etc/joe/rjoerc')
 source=("joe::hg+http://hg.code.sf.net/p/joe-editor/mercurial")
