@@ -1,0 +1,12 @@
+pkgbase = r-demand
+	pkgdesc = DeMAND
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DeMAND
+	arch = any
+	license = custom
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DeMAND_1.26.0.tar.gz
+	sha256sums = 23452c739a8e296e4fad3f3782073710362a06db1d715404ea91b047c4359637
+
+pkgname = r-demand
