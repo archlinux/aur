@@ -1,6 +1,6 @@
 pkgbase = blackbox-tools-git
 	pkgdesc = tools for examining blackbox logs
-	pkgver = r65.f49c110
+	pkgver = r96.6350f77
 	pkgrel = 1
 	url = https://github.com/cleanflight/blackbox-tools.git
 	arch = i686
@@ -8,12 +8,13 @@ pkgbase = blackbox-tools-git
 	arch = arm
 	arch = armv6h
 	arch = armv7h
-	license = GPLv3
+	license = GPL3
 	makedepends = git
+	depends = cairo
 	provides = blackbox-tools
 	conflicts = blackbox-tools
+	conflicts = blackbox-tools-inav
 	source = blackbox-tools::git+https://github.com/cleanflight/blackbox-tools.git
 	sha512sums = SKIP
 
 pkgname = blackbox-tools-git
-

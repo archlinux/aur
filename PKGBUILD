@@ -2,15 +2,16 @@
 
 _pkgname=blackbox-tools
 pkgname=blackbox-tools-git
-pkgver=r65.f49c110
+pkgver=r96.6350f77
 pkgrel=1
 pkgdesc='tools for examining blackbox logs'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/cleanflight/blackbox-tools.git'
-license=('GPLv3')
+license=('GPL3')
 makedepends=('git')
+depends=('cairo')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "blackbox-tools-inav")
 source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
 
