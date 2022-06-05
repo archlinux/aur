@@ -1,0 +1,16 @@
+diff --git a/peroxide.service b/peroxide.service
+index 8d1e895..4227d50 100644
+--- a/peroxide.service
++++ b/peroxide.service
+@@ -5,7 +5,7 @@ After=network.target
+ 
+ [Service]
+ Type=simple
+-ExecStart=/usr/sbin/peroxide -log-file=/var/log/peroxide/peroxide.log -log-level Info
++ExecStart=/usr/bin/peroxide --log-level Info
+ User=peroxide
+ Group=peroxide
+ ExecReload=/bin/kill -HUP $MAINPID
+-- 
+2.36.1
+

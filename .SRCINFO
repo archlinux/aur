@@ -1,0 +1,18 @@
+pkgbase = peroxide
+	pkgdesc = A third-party ProtonMail bridge serving SMTP and IMAP
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ljanyst/peroxide
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://github.com/ljanyst/peroxide/archive/refs/tags/v0.4.0.tar.gz
+	source = peroxide.sysusers
+	source = peroxide.tmpfiles
+	source = systemd.patch
+	sha512sums = 4db68af13a78dd0538f26a792526f0b178b4f817bdd334e6d7a93a14bfa1075d7579f3519e2d49c851ef842bf70f554fb6c91070ca78f2d696475ac5602a7711
+	sha512sums = e4b350dea5619b53ed3585be1701d5cbdb9dc7e408fe41f3f64ea98d73e623e698a860343bb15edf06ad335848850b55ee3f094d8c5a823f381853b2ba4786c6
+	sha512sums = d91809c612fbe972ae245c2f46ac839456765e77ba724dd4c3f3f0ca97c8c2d0d1edd61d0e85b269985c911ba5310d9afa14af303250383ffac9942b85d38437
+	sha512sums = 551cf027678b3dc7eb348c9123f62c3f44c46896a366f2d176cf132540228c10dd17bc1cd28f290c376af40e67991f903e187b01afe76843c2a4b82631854dd9
+
+pkgname = peroxide

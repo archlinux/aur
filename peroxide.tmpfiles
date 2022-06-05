@@ -1,0 +1,2 @@
+d /etc/peroxide		0755 peroxide peroxide -
+d /var/cache/peroxide	0700 peroxide peroxide -
