@@ -1,0 +1,30 @@
+pkgbase = r-aiccmodavg
+	pkgdesc = Model Selection and Multimodel Inference Based on (Q)AIC(c)
+	pkgver = 2.3.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=AICcmodavg
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-unmarked
+	depends = r-vgam
+	depends = r-xtable
+	optdepends = r-betareg
+	optdepends = r-coxme
+	optdepends = r-fitdistrplus
+	optdepends = r-glmmtmb
+	optdepends = r-jagsui
+	optdepends = r-lavaan
+	optdepends = r-lme4
+	optdepends = r-lmertest
+	optdepends = r-maxlike
+	optdepends = r-nnet
+	optdepends = r-ordinal
+	optdepends = r-pscl
+	optdepends = r-r2jags
+	optdepends = r-r2openbugs
+	optdepends = r-r2winbugs
+	source = https://cran.r-project.org/src/contrib/AICcmodavg_2.3-1.tar.gz
+	sha256sums = d0517da15a38e9b1df20fa73f5342b586624e65792d266e7dff278ad7fc458b0
+
+pkgname = r-aiccmodavg
