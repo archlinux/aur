@@ -1,0 +1,29 @@
+pkgbase = r-ade4
+	pkgdesc = Analysis of Ecological Data: Exploratory and Euclidean Methods in Environmental Sciences
+	pkgver = 1.7.19
+	pkgrel = 5
+	url = https://cran.r-project.org/package=ade4
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-pixmap
+	depends = r-sp
+	optdepends = r-ade4tkgui
+	optdepends = r-adegraphics
+	optdepends = r-adephylo
+	optdepends = r-ape
+	optdepends = r-circstats
+	optdepends = r-deldir
+	optdepends = r-doparallel
+	optdepends = r-foreach
+	optdepends = r-iterators
+	optdepends = r-lattice
+	optdepends = r-parallel
+	optdepends = r-progress
+	optdepends = r-spdep
+	optdepends = r-splancs
+	optdepends = r-waveslim
+	source = https://cran.r-project.org/src/contrib/ade4_1.7-19.tar.gz
+	sha256sums = c85111881ff93a261ca34a5b5ef313d1c0ff9b84f0b23596bc56cfa696f165ef
+
+pkgname = r-ade4
