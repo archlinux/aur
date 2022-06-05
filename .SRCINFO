@@ -1,0 +1,23 @@
+pkgbase = r-apeglm
+	pkgdesc = Approximate posterior estimation for GLM coefficients
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/apeglm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-emdbook
+	depends = r-genomicranges
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppnumerical
+	depends = r-summarizedexperiment
+	optdepends = r-airway
+	optdepends = r-deseq2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/apeglm_1.18.0.tar.gz
+	sha256sums = 7e65e0dc1441fc273cb8d51e9271d6a1a13444a0706ba7f1858674631e99fcde
+
+pkgname = r-apeglm
