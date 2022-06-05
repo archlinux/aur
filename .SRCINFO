@@ -1,7 +1,7 @@
 pkgbase = 5up
 	pkgdesc = Handy screenshot making tool. Take screenshots, crop them, draw on them by using built-in editor and share your screenshots over the Internet by instant upload to img.5cm.ru image hosting server.
 	pkgver = 1.7.3b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/~luza-mbox
 	arch = x86_64
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = 5up
 	sha256sums = 08452fee102b49e8f9e3846c5a20bb7b0cdedb77806afa068768def0552a7476
 
 pkgname = 5up
-
