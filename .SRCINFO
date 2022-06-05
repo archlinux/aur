@@ -1,0 +1,15 @@
+pkgbase = r-clustercrit
+	pkgdesc = Clustering Indices
+	pkgver = 1.2.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=clusterCrit
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = gcc-fortran
+	optdepends = r-rbenchmark
+	optdepends = r-runit
+	source = https://cran.r-project.org/src/contrib/clusterCrit_1.2.8.tar.gz
+	sha256sums = f375d68b94e5b473c94a439abb15559003b331b84fd93efc1475ae36e30aff82
+
+pkgname = r-clustercrit
