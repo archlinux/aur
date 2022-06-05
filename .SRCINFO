@@ -1,0 +1,17 @@
+pkgbase = r-affxparser
+	pkgdesc = Affymetrix File Parsing SDK
+	pkgver = 1.68.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affxparser
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = make
+	depends = gcc
+	optdepends = r-affymetrixdatatestfiles
+	optdepends = r-r.oo
+	optdepends = r-r.utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affxparser_1.68.1.tar.gz
+	sha256sums = 9a462b6dc5c3592b32cdc06afc4cc3d50bdb0f419c9156c9f7ed1faff913a99b
+
+pkgname = r-affxparser
