@@ -1,0 +1,18 @@
+pkgbase = r-decipher
+	pkgdesc = Tools for curating, analyzing, and manipulating biological sequences
+	pkgver = 2.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DECIPHER
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-dbi
+	depends = r-iranges
+	depends = r-rsqlite
+	depends = r-s4vectors
+	depends = r-xvector
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DECIPHER_2.24.0.tar.gz
+	sha256sums = 059fbb6df17a7e5dc0e6bd4b95677c44cd4babcd30ef9f3dfc3ee0f7dd12b810
+
+pkgname = r-decipher
