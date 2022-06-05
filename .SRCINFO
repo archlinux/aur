@@ -1,6 +1,6 @@
 pkgbase = hitome-git
 	pkgdesc = A quick & dirty system monitor that's light on resources
-	pkgver = r100.bf200ae
+	pkgver = r100.8469ca3
 	pkgrel = 1
 	url = https://github.com/artefact2/hitome
 	arch = x86_64
