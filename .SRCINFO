@@ -1,0 +1,14 @@
+pkgbase = r-assertive.numbers
+	pkgdesc = Assertions to Check Properties of Numbers
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.numbers
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.numbers_0.0-2.tar.gz
+	sha256sums = bae18c0b9e5b960a20636e127eb738ecd8a266e5fc29d8bc5ca712498cd68349
+
+pkgname = r-assertive.numbers
