@@ -1,0 +1,18 @@
+pkgbase = r-csar
+	pkgdesc = Statistical tools for the analysis of ChIP-seq data
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CSAR
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biostrings
+	optdepends = r-shortread
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CSAR_1.48.0.tar.gz
+	sha256sums = 3cb0c292dd35eb964ab11a81c812e28ad26b46a685b1c2a52cce12d408a2ed53
+
+pkgname = r-csar
