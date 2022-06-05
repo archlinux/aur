@@ -1,0 +1,14 @@
+pkgbase = r-cghregions
+	pkgdesc = Dimension Reduction for Array CGH Data with Minimal Information Loss.
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CGHregions
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-cghbase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CGHregions_1.54.0.tar.gz
+	sha256sums = 9590e848d5a60db2ed66073f4fb40f5261366a67f4d5b7b947d2cf75f11868a2
+
+pkgname = r-cghregions
