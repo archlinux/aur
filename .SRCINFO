@@ -1,0 +1,12 @@
+pkgbase = r-agilp
+	pkgdesc = Agilent expression array processing package
+	pkgver = 3.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/agilp
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/agilp_3.28.0.tar.gz
+	sha256sums = ce87c755f89e160ead947a531f0b65aedfd25abe00f7f750ea96392b7c12a3de
+
+pkgname = r-agilp
