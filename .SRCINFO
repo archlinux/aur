@@ -1,0 +1,14 @@
+pkgbase = r-assertive.sets
+	pkgdesc = Assertions to Check Properties of Sets
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.sets
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.sets_0.0-3.tar.gz
+	sha256sums = 876975a16ed911ea1ad12da284111c6eada6abfc0118585033abc0edb5801bb3
+
+pkgname = r-assertive.sets
