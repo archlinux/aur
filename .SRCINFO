@@ -1,0 +1,12 @@
+pkgbase = r-cispath
+	pkgdesc = Visualization and management of the protein-protein interaction networks.
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cisPath
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cisPath_1.36.0.tar.gz
+	sha256sums = e418294118503ef827bb98bf1e8482b562ccb3e105172f36f5f20bdb2b22091e
+
+pkgname = r-cispath
