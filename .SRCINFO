@@ -1,0 +1,14 @@
+pkgbase = r-bsgenome.drerio.ucsc.danrer7
+	pkgdesc = Full genome sequences for Danio rerio (UCSC version danRer7)
+	pkgver = 1.4.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/BSgenome.Drerio.UCSC.danRer7
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	optdepends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/BSgenome.Drerio.UCSC.danRer7_1.4.0.tar.gz
+	sha256sums = ef2e7e27508d7dbfc63e09ae36f96d2578590af1f12b82912fe029898084a39f
+
+pkgname = r-bsgenome.drerio.ucsc.danrer7
