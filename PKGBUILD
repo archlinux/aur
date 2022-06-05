@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=99.0.4840.0
+pkgver=104.0.5083.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -72,7 +72,7 @@ source=(
         # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-EnumTable-crash.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-system-libdrm.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-cross-compile.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
 #
@@ -89,7 +89,7 @@ sha256sums=(
             # Patch form Gentoo
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
             '31620c30a1e6b77fdafbc4be3b499420f7862c30957d43f5962fb346614164db'
-            '2543b0b4b54119484c9ba881840a9b035d4885802da9f246b5627a62a966c326'
+            '9f8e90672e7914e1974ea73de48336800204a188b94d8b03e3ddd64a97f5e630'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
             # Misc Patches
 #
@@ -168,6 +168,7 @@ _keeplibs=(
            'third_party/ced'
            'third_party/cld_3'
            'third_party/closure_compiler'
+           'third_party/cpuinfo'
            'third_party/crashpad'
            'third_party/crashpad/crashpad/third_party/lss'
            'third_party/crashpad/crashpad/third_party/zlib'
@@ -175,8 +176,8 @@ _keeplibs=(
            'third_party/cros_system_api'
            'third_party/dav1d'
            'third_party/dawn'
+           'third_party/dawn/third_party/gn/webgpu-cts'
            'third_party/dawn/third_party/khronos'
-           'third_party/dawn/third_party/tint'
            'third_party/depot_tools'
            'third_party/devscripts'
            'third_party/devtools-frontend'
@@ -205,9 +206,11 @@ _keeplibs=(
            'third_party/fft2d'
            'third_party/ffmpeg'
            'third_party/flatbuffers'
+           'third_party/fp16'
            'third_party/freetype'
            'third_party/freetype-testing'
            'third_party/fusejs'
+           'third_party/fxdiv'
            'third_party/gemmlowp'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
@@ -223,7 +226,6 @@ _keeplibs=(
            'third_party/jstemplate'
            'third_party/khronos'
            'third_party/leveldatabase'
-           'third_party/libXNVCtrl'
            'third_party/libaddressinput'
            'third_party/libaom'
            'third_party/libaom/source/libaom/third_party/fastfeat'
@@ -247,9 +249,7 @@ _keeplibs=(
            'third_party/libwebm'
            'third_party/libx11'
            'third_party/libxcb-keysyms'
-           'third_party/libxml'
            'third_party/libxml/chromium'
-           'third_party/libxslt'
            'third_party/libyuv'
            'third_party/libzip'
            'third_party/llvm'
@@ -271,7 +271,6 @@ _keeplibs=(
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
            'third_party/one_euro_filter'
-           'third_party/opencv'
            'third_party/openh264'
            'third_party/openscreen'
            'third_party/openscreen/src/third_party/mozilla'
@@ -296,6 +295,7 @@ _keeplibs=(
            'third_party/private_membership'
            'third_party/protobuf'
            'third_party/protobuf/third_party/six'
+           'third_party/pthreadpool'
            'third_party/pyjson5'
            'third_party/qcms'
            'third_party/re2'
@@ -316,19 +316,17 @@ _keeplibs=(
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
-           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
-           'third_party/tcmalloc'
+           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv'
+           'third_party/swiftshader/third_party/SPIRV-Tools'
            'third_party/tensorflow-text'
            'third_party/tflite'
            'third_party/tflite/src/third_party/eigen3'
            'third_party/tflite/src/third_party/fft2d'
-           'third_party/tcmalloc'
            'third_party/ruy'
            'third_party/six'
            'third_party/snappy'
            'third_party/ukey2'
            'third_party/unrar'
-           'third_party/usrsctp'
            'third_party/utf'
            'third_party/vulkan'
            'third_party/wayland'
@@ -348,6 +346,7 @@ _keeplibs=(
            'third_party/wuffs'
            'third_party/x11proto'
            'third_party/xcbproto'
+           'third_party/xnnpack'
            'third_party/zxcvbn-cpp'
            'third_party/zlib' # /google
            'url/third_party/mozilla'
@@ -422,6 +421,7 @@ _flags=(
         'use_system_wayland_scanner=true'
         'rtc_use_pipewire=true'
         'rtc_link_pipewire=true'
+        'enable_js_type_check=false' # https://crbug.com/1192875
         )
 
 # Set the bundled/external components.
@@ -439,13 +439,13 @@ _use_system=(
              'libpng'
 #              'libvpx'
              'libwebp'
-#              'libxml'
-#              'libxslt'
+             'libxml'
+             'libxslt'
 #              'openh264'
              'opus'
 #              're2'
 #              'snappy'
-#              'zlib'         # NaCL needs it
+#              'zlib'         # NaCL needs the bundled one
              )
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
@@ -482,22 +482,6 @@ _lld="ld.lld"
 
 prepare() {
   cd "${srcdir}/chromium-${pkgver}"
-
-  # Py3toniced.
-  2to3 -w --no-diff third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
-
-  # Remove most bundled libraries. Some are still needed.
-  msg2 "Removing unnecessary components to save disk space."
-  build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
-
-  msg2 "Changing bundle libraries to system ones."
-  build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
-
-  msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
-  build/download_nacl_toolchains.py --packages saigo_newlib,nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
-
-  msg2 "Download prebuild clang from Google"
-  tools/clang/scripts/update.py
 
   # Use chromium-dev as brand name.
   sed -e 's|=Chromium|&-Dev|g' \
@@ -553,6 +537,7 @@ prepare() {
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
   patch -p1 -i "${srcdir}/chromium-98-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-cross-compile.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
@@ -592,6 +577,23 @@ prepare() {
   # Use system opus.
   rm -fr third_party/opus/src/include
   ln -sf /usr/include/opus/ third_party/opus/src/include
+
+  # Remove most bundled libraries. Some are still needed.
+  msg2 "Removing unnecessary components to save disk space."
+  build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
+
+  msg2 "Changing bundle libraries to system ones."
+  build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
+
+  msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
+  build/download_nacl_toolchains.py --packages saigo_newlib,nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
+
+  # https://crbug.com/1306914.
+  sed '/<limits.h>/a#undef PTHREAD_STACK_MIN\n#define PTHREAD_STACK_MIN 16384' -i native_client/src/shared/platform/posix/nacl_threads.c
+  sed '/man.h>/a#undef SIGSTKSZ\n#define SIGSTKSZ 8192' -i native_client/src/trusted/service_runtime/posix/nacl_signal_stack.c
+
+  msg2 "Download prebuild clang from Google"
+  tools/clang/scripts/update.py
 }
 
 build() {
@@ -680,7 +682,7 @@ package() {
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
-  for i in lib*.so swiftshader/lib*.so; do
+  for i in lib*.so; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
     strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
@@ -720,7 +722,8 @@ package() {
   _resources=(
               'chrome_100_percent.pak'
               'chrome_200_percent.pak'
-              'headless_lib.pak'
+              'headless_lib_data.pak'
+              'headless_lib_strings.pak'
               'resources.pak'
               )
   for i in "${_resources[@]}"; do
