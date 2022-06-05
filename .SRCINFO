@@ -1,0 +1,16 @@
+pkgbase = r-affycontam
+	pkgdesc = structured corruption of affymetrix cel file data
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/affyContam
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-affy
+	depends = r-affydata
+	depends = r-biobase
+	optdepends = r-hgu95av2cdf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affyContam_1.54.0.tar.gz
+	sha256sums = 176c148c1bf570a66d25993e5a7812a06fa74884fc2408f74c23dc6b6426cddf
+
+pkgname = r-affycontam
