@@ -1,0 +1,12 @@
+pkgbase = r-colorramps
+	pkgdesc = Builds color tables
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=colorRamps
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/colorRamps_2.3.1.tar.gz
+	sha256sums = 61f1290824380ae2fe4649f296649e0a155b73ced41479686150400f8a9c568a
+
+pkgname = r-colorramps
