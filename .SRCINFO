@@ -1,0 +1,18 @@
+pkgbase = r-ccapp
+	pkgdesc = (Robust) Canonical Correlation Analysis via Projection Pursuit
+	pkgver = 0.3.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ccaPP
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-pcapp
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-robustbase
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/ccaPP_0.3.3.tar.gz
+	sha256sums = 134246c12bec9b7da5be2a46ec6baec9098e91d233c23f1d9ca0a463607c08dc
+
+pkgname = r-ccapp
