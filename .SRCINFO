@@ -1,0 +1,21 @@
+pkgbase = r-codedepends
+	pkgdesc = Analysis of R Code for Reproducible Research and Code Comprehension
+	pkgver = 0.6.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=CodeDepends
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-graph
+	depends = r-xml
+	optdepends = r-highlight
+	optdepends = r-knitr
+	optdepends = r-rcpp
+	optdepends = r-rcurl
+	optdepends = r-rgraphviz
+	optdepends = r-rjsonio
+	optdepends = r-runit
+	source = https://cran.r-project.org/src/contrib/CodeDepends_0.6.5.tar.gz
+	sha256sums = 18067d49d67c3f8f0cca1f3890680dcee9ffc90a0469561c7da074aec68ef350
+
+pkgname = r-codedepends
