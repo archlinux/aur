@@ -1,0 +1,15 @@
+pkgbase = r-blme
+	pkgdesc = Bayesian Linear Mixed-Effects Models
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=blme
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lme4
+	optdepends = r-expint
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/blme_1.0-5.tar.gz
+	sha256sums = 679a4f19d34a584c2390ffab37810a31f6834b913fceaa2409d297ccdf912310
+
+pkgname = r-blme
