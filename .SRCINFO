@@ -1,0 +1,12 @@
+pkgbase = r-circstats
+	pkgdesc = Circular Statistics, from "Topics in Circular Statistics" (2001)
+	pkgver = 0.2.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=CircStats
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/CircStats_0.2-6.tar.gz
+	sha256sums = 8efed93b75b314577341effea214e3dd6e0a515cfe1212eb051047a1f3276f1d
+
+pkgname = r-circstats
