@@ -1,0 +1,45 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=CopyNumberPlots
+_pkgver=1.12.0
+pkgname=r-${_pkgname,,}
+pkgver=1.12.0
+pkgrel=1
+pkgdesc='Create Copy-Number Plots using karyoploteR functionality'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('Artistic2.0')
+depends=(
+  r
+  r-cn.mops
+  r-genomeinfodb
+  r-genomicranges
+  r-iranges
+  r-karyoploter
+  r-regioner
+  r-rhdf5
+  r-rsamtools
+  r-summarizedexperiment
+  r-variantannotation
+)
+optdepends=(
+  r-biocstyle
+  r-bsgenome.hsapiens.ucsc.hg19.masked
+  r-dnacopy
+  r-knitr
+  r-panelcn.mops
+  r-rmarkdown
+  r-testthat
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('e89c8716dbe5453021f988739b0587cb79e02597ac4ef68e440ff22cf5ab5d07')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
