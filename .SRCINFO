@@ -1,0 +1,14 @@
+pkgbase = r-acme
+	pkgdesc = Algorithms for Calculating Microarray Enrichment (ACME)
+	pkgver = 2.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ACME
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ACME_2.52.0.tar.gz
+	sha256sums = 454cde118e4336b7a5b5ccd6128a578dbc11bbe8df03d65d7c8754c2eed38c46
+
+pkgname = r-acme
