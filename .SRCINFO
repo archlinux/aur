@@ -1,0 +1,14 @@
+pkgbase = r-cocor
+	pkgdesc = Comparing Correlations
+	pkgver = 1.1.3
+	pkgrel = 7
+	url = https://cran.r-project.org/package=cocor
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-rkward
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/cocor_1.1-3.tar.gz
+	sha256sums = 22503ef02f450e2c60056d286603faa3ac0789fc45ed0b9e9788c6eb73f6df80
+
+pkgname = r-cocor
