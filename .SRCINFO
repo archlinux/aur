@@ -104,9 +104,9 @@ pkgname = jdk11-jbr-xdg
 pkgname = jbr11-xdg-src
 	pkgdesc = JetBrainsRuntime Java 11 sources - with improved Support for the XDG Base Directory Specification
 	depends = jdk11-jbr-xdg=11.0.15.0.b2043.56-1
-	provides = jbr11-src=11.0.15.0.b2043.56-1
+	provides = jbr11-xdg-src=11.0.15.0.b2043.56-1
 
 pkgname = jbr11-xdg-doc
 	pkgdesc = JetBrainsRuntime Java 11 documentation - with improved Support for the XDG Base Directory Specification
 	depends = jdk11-jbr-xdg=11.0.15.0.b2043.56-1
-	provides = jbr11-doc=11.0.15.0.b2043.56-1
+	provides = jbr11-xdg-doc=11.0.15.0.b2043.56-1

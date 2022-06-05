@@ -333,7 +333,7 @@ package_jbr11-xdg-src() {
     pkgdesc="JetBrainsRuntime Java ${_majorver} sources - with improved Support for the XDG Base Directory Specification"
     # Depends on JDK to get license files
     depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
-    provides=("jbr${_majorver}-src=${pkgver}-${pkgrel}")
+    provides=("jbr${_majorver}-xdg-src=${pkgver}-${pkgrel}")
 
     install -Dm 644 -t "${pkgdir}${_jvmdir}/lib" ${_imgdir}/jdk/lib/src.zip
 
@@ -345,7 +345,7 @@ package_jbr11-xdg-doc() {
     pkgdesc="JetBrainsRuntime Java ${_majorver} documentation - with improved Support for the XDG Base Directory Specification"
     # Depends on JDK to get license files
     depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
-    provides=("jbr${_majorver}-doc=${pkgver}-${pkgrel}")
+    provides=("jbr${_majorver}-xdg-doc=${pkgver}-${pkgrel}")
 
     install -dm 755 "${pkgdir}/usr/share/doc"
     cp -r ${_imgdir}/docs "${pkgdir}/usr/share/doc/${pkgbase}"
