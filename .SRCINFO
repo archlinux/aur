@@ -1,0 +1,19 @@
+pkgbase = r-biocgraph
+	pkgdesc = Graph examples and use cases in Bioinformatics
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/biocGraph
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-geneplotter
+	depends = r-graph
+	depends = r-rgraphviz
+	optdepends = r-fibroeset
+	optdepends = r-geneplotter
+	optdepends = r-hgu95av2.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocGraph_1.58.0.tar.gz
+	sha256sums = d69a0cf93f2f83d6e430b7f75a0b8ac8ba1f07ea138acfc50b164245d851a9f8
+
+pkgname = r-biocgraph
