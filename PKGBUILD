@@ -1,0 +1,29 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=additivityTests
+_pkgver=1.1-4
+pkgname=r-${_pkgname,,}
+pkgver=1.1.4
+pkgrel=4
+pkgdesc='Additivity Tests in the Two Way Anova with Single Sub-class Numbers'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+)
+optdepends=(
+  r-knitr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('5c07556fc8410aada729c586ae115c7436ad0ca84359e86df0b249cc41d20d11')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
