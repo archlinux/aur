@@ -1,7 +1,9 @@
 # Contributor: Loui Chang <louipc [dot.] ist [at@] gmail.com>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=jove
-pkgver=4.17.2.7
+pkgver=4.17.4.1
 pkgrel=1
 pkgdesc="Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp."
 url="https://github.com/jonmacs/jove"
@@ -11,9 +13,9 @@ depends=('ncurses')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/jonmacs/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e0728e2ae6abe65dedc0835c4b4ea6ae')
-sha1sums=('58eddc609814ddacffcb8861d0dd9827eb0bde88')
-sha256sums=('878312176a903cfeae3a990b193b373411fa74e370b7997b6e1d0994797c7f8f')
+md5sums=('ee248ad169f7d13d275b987e0e328c76')
+sha1sums=('6ed9f67aeeb1f711a197ae4d19fb58ba8307bda4')
+sha256sums=('3fd763625367962de39a66b8fa103b41e17c87d3a0bdf9cac7a93e26e135198c')
 
 
 build() {
