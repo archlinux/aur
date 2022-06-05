@@ -6,7 +6,6 @@ pkgbase = cheatsheet-git
 	install = cheatsheet.install
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	depends = git
 	provides = cheatsheet
