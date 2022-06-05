@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "${_plug}"
-    
+
     pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
