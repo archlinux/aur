@@ -1,0 +1,13 @@
+pkgbase = r-catencoders
+	pkgdesc = Encoders for Categorical Variables
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=CatEncoders
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	source = https://cran.r-project.org/src/contrib/CatEncoders_0.1.1.tar.gz
+	sha256sums = 74a66c700f65da394742cdc58a39e20b9175bba6aa98857cfa88296a00fe3ce1
+
+pkgname = r-catencoders
