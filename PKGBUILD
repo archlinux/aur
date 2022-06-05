@@ -1,9 +1,9 @@
 # Maintainer: eggy <eggyrules at gmail dot com>
 
 pkgname=mandown-git
-pkgver=r85.b7a92f7
+pkgver=r97.b79b4bb
 pkgrel=1
-pkgdesc="Comic/manga downloader and EPUB/CBZ converter application and Python library"
+pkgdesc="Comic/manga downloader and EPUB/CBZ/PDF converter application and Python library"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
@@ -13,7 +13,7 @@ depends=(
 	"python-typer"
 	"python-feedparser"
 	"python-beautifulsoup4"
-	"python-natsort"
+	"python-slugify"
 	"python-lxml"
 )
 makedepends=("git" "python-build" "python-installer")

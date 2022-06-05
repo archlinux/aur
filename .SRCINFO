@@ -1,6 +1,6 @@
 pkgbase = mandown-git
-	pkgdesc = Comic/manga downloader and EPUB/CBZ converter application and Python library
-	pkgver = r78.259b9e6
+	pkgdesc = Comic/manga downloader and EPUB/CBZ/PDF converter application and Python library
+	pkgver = r97.b79b4bb
 	pkgrel = 1
 	url = https://github.com/potatoeggy/mandown
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mandown-git
 	depends = python-typer
 	depends = python-feedparser
 	depends = python-beautifulsoup4
-	depends = python-natsort
+	depends = python-slugify
 	depends = python-lxml
 	optdepends = python-pillow: Image processing
 	conflicts = mandown
