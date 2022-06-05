@@ -1,0 +1,16 @@
+pkgbase = r-depmixs4
+	pkgdesc = Dependent Mixture Models - Hidden Markov Models of GLMs and Other Distributions in S4
+	pkgver = 1.5.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=depmixS4
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rsolnp
+	optdepends = r-gamlss
+	optdepends = r-gamlss.dist
+	optdepends = r-rdonlp2
+	source = https://cran.r-project.org/src/contrib/depmixS4_1.5-0.tar.gz
+	sha256sums = 288ab5f08d5c10c8835de662cf3dfa8aee859b0385aaa5fd98da915a38dc4cdd
+
+pkgname = r-depmixs4
