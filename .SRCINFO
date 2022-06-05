@@ -1,0 +1,26 @@
+pkgbase = r-cma
+	pkgdesc = Synthesis of microarray-based classification
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CMA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	optdepends = r-class
+	optdepends = r-corpcor
+	optdepends = r-e1071
+	optdepends = r-gbm
+	optdepends = r-glmnet
+	optdepends = r-limma
+	optdepends = r-mass
+	optdepends = r-mgcv
+	optdepends = r-mvtnorm
+	optdepends = r-nnet
+	optdepends = r-plsgenomics
+	optdepends = r-randomforest
+	optdepends = r-st
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CMA_1.54.0.tar.gz
+	sha256sums = 7f31d827fee2e0f874f3d6c1686e76d24a5474b054c3bab7317394d05b90882e
+
+pkgname = r-cma
