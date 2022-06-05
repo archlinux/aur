@@ -1,0 +1,24 @@
+pkgbase = r-bamsignals
+	pkgdesc = Extract read count signals from bam files
+	pkgver = 1.28.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/bamsignals
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-rhtslib
+	depends = r-zlibbioc
+	depends = make
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rsamtools
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bamsignals_1.28.0.tar.gz
+	sha256sums = 7ea6ee5fcbc6aa916771a271fa012adaed7e753ee79ab54a8694c12410ee8b7b
+
+pkgname = r-bamsignals
