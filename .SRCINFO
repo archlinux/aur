@@ -1,0 +1,29 @@
+pkgbase = r-bayestools
+	pkgdesc = Tools for Bayesian Analyses
+	pkgver = 0.2.10
+	pkgrel = 4
+	url = https://cran.r-project.org/package=BayesTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bridgesampling
+	depends = r-coda
+	depends = r-extradistr
+	depends = r-ggplot2
+	depends = r-mvtnorm
+	depends = r-rdpack
+	depends = r-rjags
+	depends = r-runjags
+	depends = jags
+	optdepends = r-bayesfactor
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rstan
+	optdepends = r-scales
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/BayesTools_0.2.10.tar.gz
+	sha256sums = a271fccbee55ca4de85a0d173d0a6a7e0069b1fa36beaa8070add6e4b8390631
+
+pkgname = r-bayestools
