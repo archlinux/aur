@@ -1,0 +1,12 @@
+pkgbase = r-contfrac
+	pkgdesc = Continued Fractions
+	pkgver = 1.1.12
+	pkgrel = 5
+	url = https://cran.r-project.org/package=contfrac
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/contfrac_1.1-12.tar.gz
+	sha256sums = 95bfc5e970513416c080486a1cd8dfd9f8d59fb691b02ef6ccbe0ce1ed61056b
+
+pkgname = r-contfrac
