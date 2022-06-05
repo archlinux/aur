@@ -1,0 +1,16 @@
+pkgbase = r-cghmcr
+	pkgdesc = Find chromosome regions showing common gains/losses
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cghMCR
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-cntools
+	depends = r-dnacopy
+	depends = r-limma
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cghMCR_1.54.0.tar.gz
+	sha256sums = 2d0bf433495203d6e3c34db11457c71937ae00d7937f4973ed5bbd2e95bcc11c
+
+pkgname = r-cghmcr
