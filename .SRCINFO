@@ -1,0 +1,20 @@
+pkgbase = r-basilisk
+	pkgdesc = Freezing Python Dependencies Inside Bioconductor Packages
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/basilisk
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-basilisk.utils
+	depends = r-dir.expiry
+	depends = r-reticulate
+	optdepends = r-biocstyle
+	optdepends = r-callr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/basilisk_1.8.0.tar.gz
+	sha256sums = f07b0f309c697e74baa563e927de2b86b7a90b7c9f7856dfc537f3a410e620dd
+
+pkgname = r-basilisk
