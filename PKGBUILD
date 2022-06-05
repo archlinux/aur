@@ -2,39 +2,43 @@
 
 pkgname=onevpl
 pkgver=2022.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
-url='https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html'
+url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
-depends=('libva')
+depends=('libdrm' 'libva' 'wayland')
 optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
-makedepends=('cmake' 'libdrm' 'pybind11' 'python' 'libx11' 'wayland-protocols')
-options=('!emptydirs')
+makedepends=('cmake' 'libx11' 'pybind11' 'python' 'wayland-protocols')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('939f158ea7f011be14069326ee0a95be1776c364032e6ca800b01d2f2b2e9597')
 
 build() {
+    local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    
     cmake -B build -S "oneVPL-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
         -DBUILD_PYTHON_BINDING:BOOL='ON' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
+        -DBUILD_TESTS:BOOL='ON' \
         -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
+        -DONEAPI_INSTALL_LICENSEDIR:STRING="share/licenses/${pkgname}" \
+        -DONEAPI_INSTALL_PYTHONDIR:STRING="lib/python${_pyver}" \
+        -DPYTHON_INSTALL_DIR:STRING="lib/python${_pyver}" \
         -Wno-dev
     make -C build
 }
 
+check() {
+    make -C build test
+}
+
 package() {
     make -C build DESTDIR="$pkgdir" install
-    install -d -m755 "${pkgdir}/usr/share/licenses"
-    mv "${pkgdir}/usr/share/vpl/licensing" "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    local _pyver
-    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-    mv "${pkgdir}/usr/lib/python"{,"$_pyver"}
     
     local _file
     while read -r -d '' _file
