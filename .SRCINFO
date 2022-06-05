@@ -10,7 +10,7 @@ pkgbase = tela-icon-theme-purple-git
 	depends = gtk-update-icon-cache
 	conflicts = tela-icon-theme
 	options = !strip
-	source = tela-icon-theme-purple::git+https://github.com/vinceliuice/Tela-icon-theme.git
+	source = tela-icon-theme::git+https://github.com/vinceliuice/Tela-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = tela-icon-theme-purple-git

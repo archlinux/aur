@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
 conflicts=("tela-icon-theme")
 options=('!strip')
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/Tela-icon-theme.git")
+source=("${pkgname%-$_color-git}::git+https://github.com/vinceliuice/Tela-icon-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {
