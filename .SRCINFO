@@ -1,0 +1,23 @@
+pkgbase = plater-git
+	pkgdesc = 3D-printer parts placer and plate generator
+	pkgver = r175.e0b4389
+	pkgrel = 1
+	url = https://github.com/Rhoban/Plater
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom:CC BY-NC
+	makedepends = cmake
+	depends = qt5-base
+	depends = libffi
+	provides = plater
+	conflicts = plater
+	source = git+https://github.com/Rhoban/Plater.git
+	source = plater-gui.desktop
+	sha256sums = SKIP
+	sha256sums = d04fa30ae0281febc9b4be2cb385c5a5c5a72822083a1ad779612221c63a3538
+
+pkgname = plater-git

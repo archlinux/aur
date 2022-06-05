@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Graphics;3DGraphics
+Keywords=3D;Printing;Manufacturing
+Comment=Plater allows for efficiently arranging STL models on a plate for use in 3D printing
+Exec=plater-gui
+GenericName=Latency Tester
+Name=Plater (GUI)
+StartupNotify=true
+Terminal=false
+Type=Application
