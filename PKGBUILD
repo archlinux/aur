@@ -1,0 +1,62 @@
+# Maintainer: Hu Butui <hot123tea123@gmail.com>
+
+_pkgname=bayestestR
+_pkgver=0.12.1
+pkgname=r-${_pkgname,,}
+pkgver=0.12.1
+pkgrel=2
+pkgdesc='Understand and Describe Bayesian Models and Posterior Distributions'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-datawizard
+  r-insight
+)
+optdepends=(
+  r-bayesfactor
+  r-bayesqr
+  r-blavaan
+  r-bridgesampling
+  r-brms
+  r-dplyr
+  r-effectsize
+  r-emmeans
+  r-ggally
+  r-ggplot2
+  r-ggridges
+  r-httr
+  r-kernsmooth
+  r-knitr
+  r-lavaan
+  r-lme4
+  r-logspline
+  r-mass
+  r-mclust
+  r-mediation
+  r-modelbased
+  r-parameters
+  r-performance
+  r-rmarkdown
+  r-rstan
+  r-rstanarm
+  r-see
+  r-spelling
+  r-stringr
+  r-testthat
+  r-tidyr
+  r-tweedie
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('3f80c00222028236255e57107136793ea8413ab4c8c0e39dcaf6ffc29eba73b9')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
