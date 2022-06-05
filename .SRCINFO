@@ -1,0 +1,18 @@
+pkgbase = r-bumpymatrix
+	pkgdesc = Bumpy Matrix of Non-Scalar Objects
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BumpyMatrix
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BumpyMatrix_1.4.0.tar.gz
+	sha256sums = 3b0a0451e68b6e474a2bc550e30b6271cc89faa0444896fbcac4edbdb138c93f
+
+pkgname = r-bumpymatrix
