@@ -1,0 +1,14 @@
+pkgbase = r-agricolae
+	pkgdesc = Statistical Procedures for Agricultural Research
+	pkgver = 1.3.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=agricolae
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-algdesign
+	depends = r-klar
+	source = https://cran.r-project.org/src/contrib/agricolae_1.3-5.tar.gz
+	sha256sums = 83822535608b5307ca7d0067dbcf1ea3b7f2b1be17a52a55b72cc9f3c6bdec5d
+
+pkgname = r-agricolae
