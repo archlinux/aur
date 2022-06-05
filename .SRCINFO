@@ -1,0 +1,12 @@
+pkgbase = r-combinat
+	pkgdesc = combinatorics utilities
+	pkgver = 0.0.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=combinat
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/combinat_0.0-8.tar.gz
+	sha256sums = 1513cf6b6ed74865bfdd9f8ca58feae12b62f38965d1a32c6130bef810ca30c1
+
+pkgname = r-combinat
