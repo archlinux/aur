@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-lockdown
-pkgver=1.37+r182+g6a41fb2
+pkgver=1.38+r185+g1915db4
 pkgrel=1
-_mw='1.37'
-_commit='6a41fb2693772bcabd8d4e881be99cc8beaf342f' # git rev-parse "REL${_mw/./_}"
+_mw='1.38'
+_commit='1915db494940bbec1ba8ce3922f47509c758dd76' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that implements a way to restrict access to specific namespaces and special pages to a given set of user groups'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:Lockdown'
