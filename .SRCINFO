@@ -1,0 +1,12 @@
+pkgbase = r-cdft
+	pkgdesc = Downscaling and Bias Correction via Non-Parametric CDF-Transform
+	pkgver = 1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=CDFt
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/CDFt_1.2.tar.gz
+	sha256sums = c1a88b31fb2ad2e174bdfcd1ab980ee5581920f3a555e5b4d5ea25b886535da5
+
+pkgname = r-cdft
