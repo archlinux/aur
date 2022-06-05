@@ -1,0 +1,18 @@
+pkgbase = r-biclust
+	pkgdesc = BiCluster Algorithms
+	pkgver = 2.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=biclust
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-additivitytests
+	depends = r-colorspace
+	depends = r-flexclust
+	depends = r-ggplot2
+	depends = r-tidyr
+	optdepends = r-isa2
+	source = https://cran.r-project.org/src/contrib/biclust_2.0.3.tar.gz
+	sha256sums = 97b6927e580a188b218377a37bb37cbfe9de54bee8a8c759311936029c60fe51
+
+pkgname = r-biclust
