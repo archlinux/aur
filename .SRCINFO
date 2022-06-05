@@ -1,0 +1,25 @@
+pkgbase = r-adaptgauss
+	pkgdesc = Gaussian Mixture Models (GMM)
+	pkgver = 1.5.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=AdaptGauss
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-datavisualizations
+	depends = r-pracma
+	depends = r-rcpp
+	depends = r-shiny
+	optdepends = r-dqrng
+	optdepends = r-foreach
+	optdepends = r-ggplot2
+	optdepends = r-grid
+	optdepends = r-knitr
+	optdepends = r-mclust
+	optdepends = r-paralleldist
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/AdaptGauss_1.5.6.tar.gz
+	sha256sums = b07773123f9c2f63ae83066b48a9ac866ef7dd24dae292e024d82b72b195d21c
+
+pkgname = r-adaptgauss
