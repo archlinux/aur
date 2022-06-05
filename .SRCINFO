@@ -1,0 +1,17 @@
+pkgbase = r-brainstars
+	pkgdesc = query gene expression data and plots from BrainStars
+	pkgver = 1.38.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/BrainStars
+	arch = any
+	license = Artistic2.0
+	makedepends = git
+	makedepends = tar
+	depends = r
+	depends = r-rcurl
+	depends = r-biobase
+	depends = r-rjsonio
+	source = git+https://git.bioconductor.org/packages/BrainStars.git
+	sha256sums = SKIP
+
+pkgname = r-brainstars
