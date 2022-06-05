@@ -1,0 +1,12 @@
+pkgbase = r-calibrate
+	pkgdesc = Calibration of Scatterplot and Biplot Axes
+	pkgver = 1.7.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=calibrate
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/calibrate_1.7.7.tar.gz
+	sha256sums = 713b09b415c954e1ef5216088acd40621b0546c45afbb8c2c6f118ecb5cd6fa6
+
+pkgname = r-calibrate
