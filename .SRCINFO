@@ -1,0 +1,22 @@
+pkgbase = r-biodbuniprot
+	pkgdesc = biodbUniprot, a library for connecting to the Uniprot Database
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/biodbUniprot
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-biodb
+	depends = r-r6
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-lgr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biodbUniprot_1.2.0.tar.gz
+	sha256sums = ead2117c520c11e488c1131f75c48e19d4a98c29f977768477115fa78b5cac8e
+
+pkgname = r-biodbuniprot
