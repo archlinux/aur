@@ -1,0 +1,15 @@
+pkgbase = r-breastcancervdx
+	pkgdesc = Gene expression datasets published by Wang et al. [2005] and Minn et al. [2007] (VDX).
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/breastCancerVDX
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-biobase
+	optdepends = r-genefu
+	optdepends = r-survcomp
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/breastCancerVDX_1.34.0.tar.gz
+	sha256sums = 41e1343dfd64d63c0cf5f7b9585036cdf7e1b45bf2e740815001351a366a3b70
+
+pkgname = r-breastcancervdx
