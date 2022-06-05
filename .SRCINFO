@@ -1,0 +1,14 @@
+pkgbase = r-assertive.properties
+	pkgdesc = Assertions to Check Properties of Variables
+	pkgver = 0.0.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=assertive.properties
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.properties_0.0-5.tar.gz
+	sha256sums = b68954f53082561f0242682611bf3373e0bf30d8ac2256d82474edc5f992f4dd
+
+pkgname = r-assertive.properties
