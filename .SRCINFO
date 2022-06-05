@@ -9,6 +9,8 @@ pkgbase = ferium-gui-bin
 	depends = bzip2
 	provides = ferium
 	conflicts = ferium-bin
+	conflicts = ferium-gui-git
+	conflicts = ferium-git
 	source = ferium-gui-4.1.1-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.1.1/ferium-linux-gnu-xdg.zip
 	sha256sums = e95104c179b43adc97f00ba909f36b9aa666ebd88601f6afc5883ff670e01013
 
