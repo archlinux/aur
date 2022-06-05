@@ -1,0 +1,14 @@
+pkgbase = r-bmp
+	pkgdesc = Read Windows Bitmap (BMP) Images
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bmp
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-pixmap
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bmp_0.3.tar.gz
+	sha256sums = bdf790249b932e80bc3a188a288fef079d218856cf64ffb88428d915423ea649
+
+pkgname = r-bmp
