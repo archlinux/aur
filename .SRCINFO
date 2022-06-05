@@ -1,0 +1,23 @@
+pkgbase = r-blacksheepr
+	pkgdesc = Outlier Analysis for pairwise differential comparison
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/blacksheepr
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-circlize
+	depends = r-complexheatmap
+	depends = r-pasilla
+	depends = r-rcolorbrewer
+	depends = r-summarizedexperiment
+	depends = r-viridis
+	optdepends = r-biocstyle
+	optdepends = r-curl
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/blacksheepr_1.10.0.tar.gz
+	sha256sums = 071aea68f55c55e4887cdb7817684742f42baa18665e1b1bed9dc4fc339071ac
+
+pkgname = r-blacksheepr
