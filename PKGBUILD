@@ -2,7 +2,7 @@
 
 pkgname=ctrlr-anderseriksson-roland-d50-panel
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Ctrlr panel from Anders Eriksson (meastempo) for the Roland D-50, installed under /usr/share/ctrlr/panel/AndersEriksson."
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=()
 optdepends=()
 provides=('ctrlr-anderseriksson-roland-d50-panel')
 conflicts=('ctrlr-anderseriksson-roland-d50-panel')
-replaces=()
+replaces=('ctrlr-anders-roland-d50-panel')
 backup=()
 options=()
 install=
