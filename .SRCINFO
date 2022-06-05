@@ -1,0 +1,20 @@
+pkgbase = r-compositions
+	pkgdesc = Compositional Data Analysis
+	pkgver = 2.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=compositions
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bayesm
+	depends = r-robustbase
+	depends = r-tensora
+	optdepends = r-combinat
+	optdepends = r-energy
+	optdepends = r-knitr
+	optdepends = r-rgl
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/compositions_2.0-4.tar.gz
+	sha256sums = 7b9c7a3bf654fb02d9eb1b4a7566469b2f5232f3b2c1b324c02239fd31060faf
+
+pkgname = r-compositions
