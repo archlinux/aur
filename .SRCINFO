@@ -1,0 +1,19 @@
+pkgbase = r-bnstruct
+	pkgdesc = Bayesian Network Structure Learning from Data with Missing Values
+	pkgver = 1.0.12
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bnstruct
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bitops
+	depends = r-igraph
+	optdepends = r-graph
+	optdepends = r-knitr
+	optdepends = r-qgraph
+	optdepends = r-rgraphviz
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bnstruct_1.0.12.tar.gz
+	sha256sums = 86c024d33a4249666aec6d1a4ba1dc66b5bb0f98824dd21a808bafb3bad83413
+
+pkgname = r-bnstruct
