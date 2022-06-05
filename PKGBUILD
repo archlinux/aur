@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname="dl-librescore"
-pkgver="0.34.3"
+pkgver="0.34.6"
 pkgrel="1"
 pkgdesc="Download sheet music from MuseScore."
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 depends=("nodejs")
 makedepends=("npm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("a86ab66c799c77e6c21b8a64547d0eb3719652212fddaa0ab551ada4a0bf73bdefc362b03d25966ba40a825a97282834b91db2ed0161eefa759885037bb88f44")
+sha512sums=("94f0d081e8a63ae4b08f258fad9e5a293c0e144de37d92ecfee6376f27501fd454a5264d8355779cfe7d1fe021fec62dc8c4e712bcd940fb9c0036f34f302786")
 
 build()
 {
