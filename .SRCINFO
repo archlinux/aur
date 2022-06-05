@@ -1,0 +1,18 @@
+pkgbase = ruby-gobject-introspection-3.4
+	pkgdesc = Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.
+	pkgver = 3.4.5
+	pkgrel = 2
+	url = http://ruby-gnome2.sourceforge.jp/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gobject-introspection
+	makedepends = ruby-native-package-installer
+	depends = ruby
+	depends = gobject-introspection-runtime
+	depends = ruby-glib2=3.4.5
+	noextract = gobject-introspection-3.4.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gobject-introspection-3.4.5.gem
+	sha1sums = 234dd7a7c5249e704aa9356fe887caf2a4eb519f
+
+pkgname = ruby-gobject-introspection-3.4
