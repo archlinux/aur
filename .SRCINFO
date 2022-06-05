@@ -1,0 +1,12 @@
+pkgbase = r-cmap2data
+	pkgdesc = Connectivity Map (version 2) Data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cMap2data
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/cMap2data_1.32.0.tar.gz
+	sha256sums = b4bfc598c267618d27ff8c9ad920437278fe54f1ad2eb15086249de00dc148f4
+
+pkgname = r-cmap2data
