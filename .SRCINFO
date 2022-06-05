@@ -1,0 +1,18 @@
+pkgbase = r-config
+	pkgdesc = Manage Environment Specific Configuration Values
+	pkgver = 0.3.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=config
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-yaml
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/config_0.3.1.tar.gz
+	sha256sums = d48878be8f47041e4ffeaa449dd1e5f48f6174a4592e465913e72b6cf6b95f50
+
+pkgname = r-config
