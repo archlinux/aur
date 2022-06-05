@@ -1,0 +1,19 @@
+pkgbase = r-cplm
+	pkgdesc = Compound Poisson Linear Models
+	pkgver = 0.7.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=cplm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biglm
+	depends = r-coda
+	depends = r-ggplot2
+	depends = r-minqa
+	depends = r-reshape2
+	depends = r-statmod
+	depends = r-tweedie
+	source = https://cran.r-project.org/src/contrib/cplm_0.7-10.tar.gz
+	sha256sums = b3533e031f79579ce31d7dd3765ff0ea3b44435fafc258d84a18162340981257
+
+pkgname = r-cplm
