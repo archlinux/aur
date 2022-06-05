@@ -2,8 +2,8 @@
 # Maintainer: CrunchBite <crunchbite@teamxlink.com>
 
 pkgname=xlinkkai
-pkgver=7.4.42
-_commit=594048352
+pkgver=7.4.43
+_commit=606669993
 pkgrel=1
 pkgdesc='XLink Kai is a global gaming network - that allows you to play system-link/LAN enabled games online for free.'
 
@@ -46,7 +46,7 @@ sha512sums_i386=('SKIP')
 source_aarch64=("${_repo}/aarch64/${pkgname}_${pkgver}-${_commit}_aarch64.deb")
 sha512sums_aarch64=('SKIP')
 
-source_armv7h=("${_repo}/armv7h/${pkgname}_${pkgver}-${_commit}_armhf.deb")
+source_armv7h=("${_repo}/armhf/${pkgname}_${pkgver}-${_commit}_armhf.deb")
 sha512sums_armv7h=('SKIP')
   
 validpgpkeys=("1FDCB4DDF9D85AC5C07C742DB203A80C260BB20F") # Team XLink <crunchbite@teamxlink.co.uk>
