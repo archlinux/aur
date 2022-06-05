@@ -1,0 +1,17 @@
+pkgbase = r-deconstructsigs
+	pkgdesc = Identifies Signatures Present in a Tumor Sample
+	pkgver = 1.8.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=deconstructSigs
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bsgenome
+	depends = r-bsgenome.hsapiens.ucsc.hg19
+	depends = r-genomeinfodb
+	depends = r-reshape2
+	optdepends = r-variantannotation
+	source = https://cran.r-project.org/src/contrib/deconstructSigs_1.8.0.tar.gz
+	sha256sums = 2ab8f6c0fd674bd270035ba2112f1a79d63de1155ba9698c4169c92196059d04
+
+pkgname = r-deconstructsigs
