@@ -2,7 +2,7 @@
 
 pkgname="dieharder-git"
 pkgver=20220604.g3742fd7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Random Number Test Suite (that actually compiles)"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL2')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/dieharder"
-    ./autogen.sh && configure --prefix=/usr && make
+    ./autogen.sh && ./configure --prefix=/usr && make
 }
 
 package() {
