@@ -1,0 +1,15 @@
+pkgbase = r-absseq
+	pkgdesc = ABSSeq: a new RNA-Seq analysis method based on modelling absolute expression differences
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ABSSeq
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-limma
+	depends = r-locfit
+	optdepends = r-edger
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ABSSeq_1.50.0.tar.gz
+	sha256sums = 9bd68ac6b6109af6800b18b810e439758614b57d14ef7537a7eb2d8ed90394cf
+
+pkgname = r-absseq
