@@ -1,0 +1,12 @@
+pkgbase = r-akmbiclust
+	pkgdesc = Alternating K-Means Biclustering
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=akmbiclust
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/akmbiclust_0.1.0.tar.gz
+	sha256sums = dcf98b48d5c94b99484623884edb8142dd4c98e850dbfc9f1acef84cb708b2a5
+
+pkgname = r-akmbiclust
