@@ -1,0 +1,17 @@
+pkgbase = r-clstutils
+	pkgdesc = Tools for performing taxonomic assignment
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/clstutils
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-clst
+	depends = r-rjson
+	depends = r-rsqlite
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clstutils_1.44.0.tar.gz
+	sha256sums = 87ab16be28e65671c9f23488179791efe4b990b6302111204635b94e449c4f70
+
+pkgname = r-clstutils
