@@ -1,0 +1,23 @@
+pkgbase = r-a4
+	pkgdesc = Automated Affymetrix Array Analysis Umbrella Package
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/a4
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-a4base
+	depends = r-a4classif
+	depends = r-a4core
+	depends = r-a4preproc
+	depends = r-a4reporting
+	optdepends = r-all
+	optdepends = r-cairo
+	optdepends = r-gostats
+	optdepends = r-mlp
+	optdepends = r-nlcv
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4_1.44.0.tar.gz
+	sha256sums = 1958e1912fe8d1f211858e37531900644ad06225024dd2ab86eeb4568d7648ff
+
+pkgname = r-a4
