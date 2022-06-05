@@ -1,0 +1,14 @@
+pkgbase = r-brain
+	pkgdesc = Baffling Recursive Algorithm for Isotope distributioN calculations
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BRAIN
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-polynomf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BRAIN_1.42.0.tar.gz
+	sha256sums = 16ff1c9e1bf33e55184c2272f7021cfb34b47748e10aedda7dfbd10236944e2c
+
+pkgname = r-brain
