@@ -1,0 +1,25 @@
+pkgbase = r-bsplus
+	pkgdesc = Adds Functionality to the R Markdown + Shiny Bootstrap Framework
+	pkgver = 0.1.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bsplus
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-glue
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-lubridate
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rmarkdown
+	depends = r-stringr
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bsplus_0.1.3.tar.gz
+	sha256sums = bd57c232992e52f3fb9bb11edfda88264fe616741ad3b3f084aee0de451436bf
+
+pkgname = r-bsplus
