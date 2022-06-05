@@ -1,0 +1,18 @@
+pkgbase = r-clustersim
+	pkgdesc = Searching for Optimal Clustering Procedure for a Data Set
+	pkgver = 0.50.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=clusterSim
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ade4
+	depends = r-e1071
+	depends = r-r2html
+	depends = r-rgl
+	optdepends = r-mlbench
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/clusterSim_0.50-1.tar.gz
+	sha256sums = 8a91671775362d51460e539d146ebd43b50be26edaa2fd2ed5bf259a70b89738
+
+pkgname = r-clustersim
