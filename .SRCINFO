@@ -1,0 +1,13 @@
+pkgbase = r-bayesknockdown
+	pkgdesc = BayesKnockdown: Posterior Probabilities for Edges from Knockdown Data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BayesKnockdown
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BayesKnockdown_1.22.0.tar.gz
+	sha256sums = c5ec4b08146d34186a911a6ed76e0a5fed50c1cca908bb197fd30dbd29785b88
+
+pkgname = r-bayesknockdown
