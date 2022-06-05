@@ -1,0 +1,64 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=DEGreport
+_pkgver=1.32.0
+pkgname=r-${_pkgname,,}
+pkgver=1.32.0
+pkgrel=1
+pkgdesc='Report of DEG analysis'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('MIT')
+depends=(
+  r
+  r-biobase
+  r-biocgenerics
+  r-broom
+  r-circlize
+  r-complexheatmap
+  r-consensusclusterplus
+  r-cowplot
+  r-deseq2
+  r-dplyr
+  r-edger
+  r-ggdendro
+  r-ggplot2
+  r-ggrepel
+  r-knitr
+  r-lasso2
+  r-logging
+  r-magrittr
+  r-nozzle.r1
+  r-psych
+  r-rcolorbrewer
+  r-reshape
+  r-rlang
+  r-s4vectors
+  r-scales
+  r-stringr
+  r-summarizedexperiment
+  r-tibble
+  r-tidyr
+)
+optdepends=(
+  r-annotationdbi
+  r-biocstyle
+  r-limma
+  r-pheatmap
+  r-rmarkdown
+  r-statmod
+  r-testthat
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('4614dc10ae1ce19a7b54c19313e9dc36eb6bf40257273b25b4c1b6e1fd0fff51')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+# vim:set ts=2 sw=2 et:
