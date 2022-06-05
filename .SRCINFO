@@ -1,7 +1,7 @@
 pkgbase = perl-device-usb
 	pkgdesc = Perl wrapper around the libusb 0.1 library
 	pkgver = 0.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://search.cpan.org/dist/Device-USB
 	arch = i686
 	arch = x86_64
