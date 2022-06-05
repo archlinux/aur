@@ -4,15 +4,15 @@
 
 pkgname=harminv
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free program to solve the problem of harmonic inversion"
 arch=('i686' 'x86_64')
-url="https://github.com/stevengj/harminv"
+url="https://github.com/NanoComp/harminv"
 license=('GPL')
 depends=('lapack')
 makedepends=('gcc-fortran')
 options=('!libtool')
-source=("https://github.com/stevengj/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/NanoComp/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('e1b923c508a565f230aac04e3feea23b888b47d8e19b08816a97ee4444233670')
 
 build() {
