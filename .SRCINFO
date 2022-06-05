@@ -1,0 +1,22 @@
+pkgbase = r-bayesrules
+	pkgdesc = Datasets and Supplemental Functions from Bayes Rules! Book
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bayesrules
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-e1071
+	depends = r-ggplot2
+	depends = r-groupdata2
+	depends = r-janitor
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rstanarm
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/bayesrules_0.0.2.tar.gz
+	sha256sums = 8bc801d95109c8e38867ffd9036566ce53f974601883d60b4a3eab90b00a2a28
+
+pkgname = r-bayesrules
