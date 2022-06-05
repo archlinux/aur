@@ -1,0 +1,12 @@
+pkgbase = r-bac
+	pkgdesc = Bayesian Analysis of Chip-chip experiment
+	pkgver = 1.56.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BAC
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BAC_1.56.0.tar.gz
+	sha256sums = 0256bc2d850e9848c759f4904ca1051a93a264fcb69d5396354e8b8606397c36
+
+pkgname = r-bac
