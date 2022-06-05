@@ -1,0 +1,16 @@
+pkgbase = r-binom
+	pkgdesc = Binomial Confidence Intervals For Several Parameterizations
+	pkgver = 1.1.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=binom
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-lattice
+	optdepends = r-polynom
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/binom_1.1-1.1.tar.gz
+	sha256sums = ee215f41223bb1ca80f91f54b99dc75339aac74906db57698e7c2b0d9a86befb
+
+pkgname = r-binom
