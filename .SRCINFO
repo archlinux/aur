@@ -1,0 +1,21 @@
+pkgbase = r-concaveman
+	pkgdesc = A Very Fast 2D Concave Hull Algorithm
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=concaveman
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-sf
+	depends = r-v8
+	depends = geos
+	depends = proj
+	depends = gdal
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/concaveman_1.1.0.tar.gz
+	sha256sums = 9fd1d6aeee3d9bfff7f8ab3ba9b020c2201bb00ca9948eef386b4560fce86e2c
+
+pkgname = r-concaveman
