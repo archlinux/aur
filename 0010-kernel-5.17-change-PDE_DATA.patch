@@ -1,0 +1,119 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_dpa_ops.c b/driver/2.6.27/dgrp_dpa_ops.c
+--- a/driver/2.6.27/dgrp_dpa_ops.c	2022-06-05 01:06:30.412698077 -0400
++++ b/driver/2.6.27/dgrp_dpa_ops.c	2022-06-05 01:06:56.105865450 -0400
+@@ -332,10 +332,12 @@ static int dgrp_dpa_open(struct inode *i
+ 	if (!de) {
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	nd = pde_data(inode);
+ #else
+ 	nd = (struct nd_struct *)PDE_DATA(inode);
+ #endif
+ 	if (!nd) {
+ 		rtn = -ENXIO;
+diff -pNaru5 a/driver/2.6.27/dgrp_mon_ops.c b/driver/2.6.27/dgrp_mon_ops.c
+--- a/driver/2.6.27/dgrp_mon_ops.c	2022-06-05 01:06:30.412698077 -0400
++++ b/driver/2.6.27/dgrp_mon_ops.c	2022-06-05 01:07:32.049073042 -0400
+@@ -294,10 +294,12 @@ static int dgrp_mon_open(struct inode *i
+ 	if (!de) {
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	nd = pde_data(inode);
+ #else
+ 	nd = (struct nd_struct *)PDE_DATA(inode);
+ #endif
+ 	if (!nd) {
+ 		rtn = -ENXIO;
+diff -pNaru5 a/driver/2.6.27/dgrp_net_ops.c b/driver/2.6.27/dgrp_net_ops.c
+--- a/driver/2.6.27/dgrp_net_ops.c	2022-06-05 01:06:30.412698077 -0400
++++ b/driver/2.6.27/dgrp_net_ops.c	2022-06-05 01:07:45.312388401 -0400
+@@ -1485,10 +1485,12 @@ static int dgrp_net_open(struct inode *i
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 
+ 	nd = (struct nd_struct *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	nd = pde_data(inode);
+ #else
+ 	nd = (struct nd_struct *) PDE_DATA(inode);
+ 
+ #endif
+ 	if (!nd) {
+diff -pNaru5 a/driver/2.6.27/dgrp_ports_ops.c b/driver/2.6.27/dgrp_ports_ops.c
+--- a/driver/2.6.27/dgrp_ports_ops.c	2022-06-05 01:06:30.416031385 -0400
++++ b/driver/2.6.27/dgrp_ports_ops.c	2022-06-05 01:07:57.855717730 -0400
+@@ -284,10 +284,12 @@ static int dgrp_ports_open(struct inode
+ 	if (!de) {
+ 		rtn = -ENXIO;
+ 		goto done;
+ 	}
+ 	nd = (struct nd_struct *)de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	nd = pde_data(inode);
+ #else
+ 	nd = (struct nd_struct *)PDE_DATA(inode);
+ #endif
+ 	if (!nd) {
+ 		rtn = -ENXIO;
+diff -pNaru5 a/driver/2.6.27/dgrp_specproc.c b/driver/2.6.27/dgrp_specproc.c
+--- a/driver/2.6.27/dgrp_specproc.c	2022-06-05 01:06:30.416031385 -0400
++++ b/driver/2.6.27/dgrp_specproc.c	2022-06-05 01:09:03.378681962 -0400
+@@ -467,10 +467,12 @@ static int dgrp_gen_proc_open(struct ino
+ 		ret = -ENXIO;
+ 		goto done;
+ 	}
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	entry = pde_data(file_inode(file));
+ #else /* >=3,10,0 */
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+ #endif
+ 	if (!entry) {
+ 		ret = -ENXIO;
+@@ -512,10 +514,12 @@ static int dgrp_gen_proc_close(struct in
+ 	if (!de || !de->data) {
+ 		goto done;
+ 	}
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	entry = pde_data(file_inode(file));
+ #else /* >=3,10,0 */
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+ #endif
+ 	if (!entry)
+ 		goto done;
+@@ -548,10 +552,12 @@ static ssize_t dgrp_gen_proc_read(struct
+ #endif
+ 	if (!de || !de->data)
+ 		return -ENXIO;
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	entry = pde_data(file_inode(file));
+ #else /* >=3,10,0 */
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+ #endif
+ 	if (!entry)
+ 		return -ENXIO;
+@@ -589,10 +595,12 @@ static ssize_t dgrp_gen_proc_write(struc
+ #endif
+ 	if (!de || !de->data)
+ 		return-ENXIO;
+ 
+ 	entry = (struct dgrp_proc_entry *) de->data;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++	entry = pde_data(file_inode(file));
+ #else /* >=3,10,0 */
+ 	entry = (struct dgrp_proc_entry *) PDE_DATA(file_inode(file));
+ #endif
+ 	if (!entry)
+ 		return -ENXIO;

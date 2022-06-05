@@ -105,7 +105,7 @@ pkgname='dgrp'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 _pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='7'
+pkgrel='8'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -197,6 +197,7 @@ source=(
   '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
   '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
+  '0010-kernel-5.17-change-PDE_DATA.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -245,7 +246,8 @@ md5sums=('175349c08d19158c88ad582c76916397'
          '60a06421a819bc65bd5ba0c3841e0500'
          '5dfc03b8f6b8d190b63271b8ef32986c'
          'f60c03c266bec028b4df4b7996deaacb'
-         '3b51a73b29843bfc6db748351dea464b')
+         '3b51a73b29843bfc6db748351dea464b'
+         'a841defc71b4b1da33ac9b24cdff52ca')
 sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -289,7 +291,8 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             'eaab5a80791644a24950fe0c6db2c09535655c63ed3a263eb70791ab30f86ab9'
             '50975ac2377ffd24874746df4b820de1734f53eb322bd25ccc9d51148129a2e0'
             '0ae424e8211836edbededafd308cf9ae73cdb791752c4fc43e1c194db7b77cab'
-            '1d6ab72eec4977b7789d0f5af3dc907bebdd21e417abb5dcfdac80c460a77bae')
+            '1d6ab72eec4977b7789d0f5af3dc907bebdd21e417abb5dcfdac80c460a77bae'
+            'd1c641d3f024e8e11c4a36bf58570afb4b63fcaa4a22f05c59b513a35a6a4af7')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -426,6 +429,11 @@ prepare() {
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
   patch -Nup1 -i "${startdir}/0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch"
+
+  # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0010-kernel-5.17-change-PDE_DATA.patch'
+  patch -Nup1 -i "${startdir}/0010-kernel-5.17-change-PDE_DATA.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
