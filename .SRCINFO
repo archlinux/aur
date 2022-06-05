@@ -1,6 +1,6 @@
 pkgbase = czkawka-git
 	pkgdesc = Multi functional app to find duplicates, empty folders etc.
-	pkgver = 4.0.1.r15.gaa07d73
+	pkgver = 4.1.0.r16.g56fc29f
 	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = czkawka-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	depends = gtk3>=3.22
+	depends = gtk4
 	provides = czkawka
 	conflicts = czkawka
 	conflicts = czkawka-gui
