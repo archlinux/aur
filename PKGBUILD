@@ -15,7 +15,7 @@ makedepends=('pkg-config' 'python' 'pcre' 'libffi' 'libelf')
 options=('!docs' '!emptydirs')
 license=('LGPL')
 
-provides=('glib2')
+# provides=('glib2')  #  Current pkgver is so old that it should not provide glib2 to Arch
 conflicts=('glib2')
 
 source=(http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver:0:4}/glib-$pkgver.tar.xz

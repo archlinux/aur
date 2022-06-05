@@ -15,7 +15,6 @@ pkgbase = glib2-quiet
 	depends = libffi
 	optdepends = python: for gdbus-codegen and gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2
 	conflicts = glib2
 	options = !docs
 	options = !emptydirs
@@ -31,4 +30,3 @@ pkgbase = glib2-quiet
 	sha256sums = 3c5d812cd1e8905f89de14b0d5272e733c612a8c47bd648da97a3545a727044a
 
 pkgname = glib2-quiet
-
