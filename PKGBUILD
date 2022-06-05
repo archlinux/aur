@@ -3,7 +3,7 @@
 _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
 pkgname=python-monai
 _pkgname=MONAI
-pkgver=0.8.1
+pkgver=0.9.0rc2
 pkgrel=1
 pkgdesc='AI Toolkit for Healthcare Imaging'
 arch=('x86_64')
@@ -14,8 +14,10 @@ depends=(
   python-numpy
 )
 makedepends=(
+  gcc10
   python-pip
   python-setuptools
+  python-wheel
 )
 optdepends=(
   gdown
@@ -35,11 +37,13 @@ optdepends=(
   tensorboard
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Project-MONAI/MONAI/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('ad0043c730eece395e03e907604dd40fb254e8494396a210463cabe8cbc5fb0d8b45f9d3fa55afb599ab85856c554340ea48f77cc6c4ca643585065e2bb28cb0')
+sha512sums=('cb1d5a63cde17142dc65866bd9341d4c307933891efcf91526291f723f21fe687e61d7c8e0ab1b4768a434cfedd1ccaf60d308ccb252a0b66a454cba94e01ea9')
 
 build() {
   cd "${_pkgname}-${pkgver}"
   BUILD_MONAI=1 \
+  CC=gcc-10 \
+  CXX=g++-10 \
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   python setup.py build
@@ -48,6 +52,8 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   BUILD_MONAI=1 \
+  CC=gcc-10 \
+  CXX=g++-10 \
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
