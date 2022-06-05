@@ -3,17 +3,15 @@
 pkgname=libdeltachat
 _srcname=deltachat-core-rust
 pkgver=1.85.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/deltachat/deltachat-core-rust/"
 license=('MPL')
 depends=('sqlcipher')
-makedepends=('rust')
-provides=('libdeltachat')
-conflicts=('libdeltachat-git')
+makedepends=('rust' 'cmake')
 source=(
-    "$_srcname::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/${pkgver}.tar.gz"
+    "$pkgname-$pkgver::https://github.com/deltachat/deltachat-core-rust/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('77a53a256cf8fed54ac3c504f44cc5c61b57739b3dd35a42fc1adcd65e3b3c0e')
 
