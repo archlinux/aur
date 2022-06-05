@@ -1,0 +1,21 @@
+pkgbase = r-derfinderhelper
+	pkgdesc = derfinder helper package
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/derfinderHelper
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-refmanager
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/derfinderHelper_1.30.0.tar.gz
+	sha256sums = e5527df3b13f13cbfee97af8f60019df8ef2394e0d7911b4640556b74a5fff64
+
+pkgname = r-derfinderhelper
