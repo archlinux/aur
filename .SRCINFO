@@ -1,0 +1,21 @@
+pkgbase = r-bearscc
+	pkgdesc = BEARscc (Bayesian ERCC Assesstment of Robustness of Single Cell Clusters)
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BEARscc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-singlecellexperiment
+	optdepends = r-biocstyle
+	optdepends = r-cowplot
+	optdepends = r-knitr
+	optdepends = r-nmf
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BEARscc_1.16.0.tar.gz
+	sha256sums = 127756c354c3c3baef196ba215e9550211c05d5834ae8a53283e70cc34f4546f
+
+pkgname = r-bearscc
