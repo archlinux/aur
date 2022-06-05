@@ -1,0 +1,23 @@
+pkgbase = r-assign
+	pkgdesc = Adaptive Signature Selection and InteGratioN (ASSIGN)
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ASSIGN
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-gplots
+	depends = r-msm
+	depends = r-rlab
+	depends = r-sva
+	depends = r-yaml
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASSIGN_1.32.0.tar.gz
+	sha256sums = 36d5cc893dbe40e11860301618b663f48249e13db2225c6d416e33546ec434b8
+
+pkgname = r-assign
