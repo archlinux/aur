@@ -1,8 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=uefi-run
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Directly run UEFI applications in QEMU"
 arch=('x86_64')
 url=https://github.com/Richard-W/uefi-run
