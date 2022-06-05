@@ -1,0 +1,14 @@
+pkgbase = r-anocva
+	pkgdesc = A Non-Parametric Statistical Test to Compare Clustering Structures
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=anocva
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-igraph
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/anocva_0.1.1.tar.gz
+	sha256sums = 39374e5849fbd2ee428bc0d4b90168c3c884b04fb06819400a331c452520cfaf
+
+pkgname = r-anocva
