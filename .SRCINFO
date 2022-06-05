@@ -1,0 +1,23 @@
+pkgbase = r-anvilpublish
+	pkgdesc = Publish Packages and Other Resources to AnVIL Workspaces
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/AnVILPublish
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-anvil
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-readr
+	depends = r-rmarkdown
+	depends = r-whisker
+	depends = r-yaml
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILPublish_1.6.0.tar.gz
+	sha256sums = 3db141bc70bcbd24393d7945853e518a53102dec3ca56c89d397c54c81a99bc7
+
+pkgname = r-anvilpublish
