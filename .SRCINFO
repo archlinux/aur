@@ -1,0 +1,19 @@
+pkgbase = r-cubature
+	pkgdesc = Adaptive Multivariate Integration over Hypercubes
+	pkgver = 2.0.4.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=cubature
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = make
+	optdepends = r-benchr
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/cubature_2.0.4.4.tar.gz
+	sha256sums = 087b3b2c4f25d873fa95e9d38766a17a7201d03a6f4960f1e080a8db8b67d569
+
+pkgname = r-cubature
