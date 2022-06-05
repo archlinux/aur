@@ -1,0 +1,13 @@
+pkgbase = r-ash
+	pkgdesc = David Scott's ASH Routines
+	pkgver = 1.0.15
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ash
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/ash_1.0-15.tar.gz
+	sha256sums = 8b0a7bc39dd0ce2172f09edc5b5e029347d041a4d508bbff3f3fd6f69450c2ab
+
+pkgname = r-ash
