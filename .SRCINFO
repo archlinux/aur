@@ -1,0 +1,12 @@
+pkgbase = r-clusterrepro
+	pkgdesc = Reproducibility of Gene Expression Clusters
+	pkgver = 0.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=clusterRepro
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/clusterRepro_0.9.tar.gz
+	sha256sums = 940d84529ff429b315cf4ad25700f93e1156ccacee7b6c38e4bdfbe2d4c6f868
+
+pkgname = r-clusterrepro
