@@ -1,0 +1,16 @@
+pkgbase = r-cp4p
+	pkgdesc = Calibration Plot for Proteomics
+	pkgver = 0.3.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=cp4p
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-limma
+	depends = r-mess
+	depends = r-multtest
+	depends = r-qvalue
+	source = https://cran.r-project.org/src/contrib/cp4p_0.3.6.tar.gz
+	sha256sums = 6d21e6c0c194d1016eef953ac2da6880f7e51c17c8043ec7646e5b0fe49cadfd
+
+pkgname = r-cp4p
