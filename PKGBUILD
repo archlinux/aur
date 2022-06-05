@@ -1,6 +1,6 @@
 # Maintainer: Thomas Pointhuber <thomas.pointhuber@gmx.at>
 pkgname=sparselizard
-pkgver=2021.11
+pkgver=2022.05
 pkgrel=1
 pkgdesc="C++ FEM library | user-friendly | multi-physics | hp-adaptive | HPC"
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/halbux/sparselizard/archive/refs/tags/v.$pkgver.tar.gz")
 noextract=()
-sha256sums=("d72882473d7bf23ac7aa833b5283ad8bb9ba498ace1b6c0eda2e6ee396248c5d")
+sha256sums=("0d5216c79369215d11d3a9dd0fcd2c36eccad02131f9db0bb6ecb7f8c4491a15")
 
 build() {
   cd "sparselizard-v.$pkgver"
