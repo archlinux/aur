@@ -1,0 +1,23 @@
+pkgbase = r-camera
+	pkgdesc = Collection of annotation related methods for mass spectrometry data
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CAMERA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-graph
+	depends = r-hmisc
+	depends = r-igraph
+	depends = r-rbgl
+	depends = r-xcms
+	optdepends = r-biocgenerics
+	optdepends = r-faahko
+	optdepends = r-rmpi
+	optdepends = r-runit
+	optdepends = r-snow
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAMERA_1.52.0.tar.gz
+	sha256sums = 257b25b53fe9e73b6b6d1a366ca0a9160d307527eecd2fbf47c1a1872a88e84b
+
+pkgname = r-camera
