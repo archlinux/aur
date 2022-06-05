@@ -1,0 +1,21 @@
+pkgbase = r-biocworkflowtools
+	pkgdesc = Tools to aid the development of Bioconductor Workflow packages
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BiocWorkflowTools
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biocstyle
+	depends = r-bookdown
+	depends = r-git2r
+	depends = r-httr
+	depends = r-knitr
+	depends = r-rmarkdown
+	depends = r-rstudioapi
+	depends = r-stringr
+	depends = r-usethis
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocWorkflowTools_1.22.0.tar.gz
+	sha256sums = b464008286bbd9ca4d39896d3f1c7cee061adb9df0edd1bd716967382f8b44ca
+
+pkgname = r-biocworkflowtools
