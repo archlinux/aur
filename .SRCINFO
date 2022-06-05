@@ -1,8 +1,8 @@
 pkgbase = cfg2html-linux-git
 	pkgdesc = script similar to getsysinfo or get_config that creates HTML/ASCII system documentation
 	pkgver = r520.b479f8d
-	pkgrel = 1
-	url = http://www.cfg2html.com
+	pkgrel = 2
+	url = https://www.cfg2html.com
 	arch = any
 	license = gpl3
 	depends = setserial

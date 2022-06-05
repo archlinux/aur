@@ -1,11 +1,11 @@
 # Contributor: aking9 <arking@gmail.com>
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=cfg2html-linux-git
-pkgrel=1
+pkgrel=2
 pkgver=r520.b479f8d
 pkgdesc='script similar to getsysinfo or get_config that creates HTML/ASCII system documentation'
 arch=('any')
-url="http://www.cfg2html.com"
+url="https://www.cfg2html.com"
 license=('gpl3')
 depends=('setserial' 'python' 'make')
 md5sums=('SKIP')
