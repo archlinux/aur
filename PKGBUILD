@@ -1,7 +1,7 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=furtherance
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Track your time without being tracked'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=('gtk4' 'libadwaita' 'sqlite')
 makedepends=('meson' 'rust')
 source=($url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('b5b18e417721cb0c19b844596df053ae575cccce060e03c0d99a672e9112515d')
+sha256sums=('6bf035640fe161440d2acd65af9694285c4ef5a73197a007d09fa07a941c4964')
 
 build() {
 	arch-meson Furtherance-$pkgver build
