@@ -1,0 +1,15 @@
+pkgbase = r-assertive.data.uk
+	pkgdesc = Assertions to Check Properties of Strings
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.data.uk
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	depends = r-assertive.strings
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.data.uk_0.0-2.tar.gz
+	sha256sums = ab48dab6977e8f43d6fffb33228d158865f68dde7026d123c693d77339dcf2bb
+
+pkgname = r-assertive.data.uk
