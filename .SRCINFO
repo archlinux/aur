@@ -1,0 +1,17 @@
+pkgbase = r-ahocorasicktrie
+	pkgdesc = Fast Searching for Multiple Keywords in Multiple Texts
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=AhoCorasickTrie
+	arch = x86_64
+	license = Apache
+	depends = r
+	depends = r-rcpp
+	depends = gcc
+	optdepends = r-biostrings
+	optdepends = r-microbenchmark
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/AhoCorasickTrie_0.1.2.tar.gz
+	sha256sums = f8968a278178bc919f366d1f1c47eea1e124f9fe01644c8d5c1d54d464f1037e
+
+pkgname = r-ahocorasicktrie
