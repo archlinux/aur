@@ -1,0 +1,14 @@
+pkgbase = r-assertive.matrices
+	pkgdesc = Assertions to Check Properties of Matrices
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.matrices
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.matrices_0.0-2.tar.gz
+	sha256sums = 3462a7a7e11d7cc24180330d48cc3067cf92eab1699b3e4813deec66d99f5e9b
+
+pkgname = r-assertive.matrices
