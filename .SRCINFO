@@ -1,0 +1,21 @@
+pkgbase = r-anota2seq
+	pkgdesc = Generally applicable transcriptome-wide analysis of translational efficiency using anota2seq
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/anota2seq
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-deseq2
+	depends = r-edger
+	depends = r-limma
+	depends = r-multtest
+	depends = r-qvalue
+	depends = r-rcolorbrewer
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/anota2seq_1.18.0.tar.gz
+	sha256sums = a41098c57b6632594681f579da0274dfc86993e648ea3717c657d0c66ce04f56
+
+pkgname = r-anota2seq
