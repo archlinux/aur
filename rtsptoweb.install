@@ -1,0 +1,7 @@
+post_upgrade() {
+  echo -e "To enable streams to edited using the web user interface:\n   chown rtsptoweb:rtsptoweb /etc/rtsptoweb.json"
+}
+
+post_install() {
+  post_upgrade
+}

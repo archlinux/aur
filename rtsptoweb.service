@@ -1,0 +1,12 @@
+[Unit]
+Description=RTSPtoWeb server
+After=network.target
+
+[Service]
+Type=simple
+User=rtsptoweb
+WorkingDirectory=/usr/lib/rtsptoweb
+ExecStart=/usr/lib/rtsptoweb/rtsptoweb --config=/etc/rtsptoweb.json
+
+[Install]
+WantedBy=multi-user.target
