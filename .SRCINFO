@@ -1,0 +1,15 @@
+pkgbase = r-arm
+	pkgdesc = Data Analysis Using Regression and Multilevel/Hierarchical Models
+	pkgver = 1.12.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=arm
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-coda
+	depends = r-lme4
+	source = https://cran.r-project.org/src/contrib/arm_1.12-2.tar.gz
+	sha256sums = 816ba1c31eec00feef472c57e280488d3d233b592f6f0a1a30e4abb903cb4f5d
+
+pkgname = r-arm
