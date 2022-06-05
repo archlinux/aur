@@ -1,0 +1,14 @@
+pkgbase = r-bsgenome.mmusculus.ucsc.mm9
+	pkgdesc = Full genome sequences for Mus musculus (UCSC version mm9)
+	pkgver = 1.4.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/BSgenome.Mmusculus.UCSC.mm9
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	optdepends = r-txdb.mmusculus.ucsc.mm9.knowngene
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/BSgenome.Mmusculus.UCSC.mm9_1.4.0.tar.gz
+	sha256sums = 3110745e93ae7c470b826921efc308fd5805efacdf497b7b8d5f890706c739ae
+
+pkgname = r-bsgenome.mmusculus.ucsc.mm9
