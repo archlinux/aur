@@ -1,0 +1,21 @@
+pkgbase = r-clustvarsel
+	pkgdesc = Variable Selection for Gaussian Model-Based Clustering
+	pkgver = 2.3.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=clustvarsel
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bma
+	depends = r-foreach
+	depends = r-iterators
+	depends = r-mclust
+	optdepends = r-doparallel
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/clustvarsel_2.3.4.tar.gz
+	sha256sums = 3da13e4a58116f5bff59a934721f41c277569f03d57459929123cca02573fb43
+
+pkgname = r-clustvarsel
