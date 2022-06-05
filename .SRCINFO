@@ -1,0 +1,13 @@
+pkgbase = r-alabama
+	pkgdesc = Constrained Nonlinear Optimization
+	pkgver = 2022.4.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=alabama
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-numderiv
+	source = https://cran.r-project.org/src/contrib/alabama_2022.4-1.tar.gz
+	sha256sums = a8c62859b39a8340ecf7bbf411fac303c059e4237d28ff7bba9ba3daaca1d36c
+
+pkgname = r-alabama
