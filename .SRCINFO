@@ -1,0 +1,14 @@
+pkgbase = r-changepoint
+	pkgdesc = Methods for Changepoint Detection
+	pkgver = 2.2.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=changepoint
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-zoo
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/changepoint_2.2.3.tar.gz
+	sha256sums = 9255f16583a5296a8af02d2a50925a0888b74eae57489d0a28763f3cd3efedc2
+
+pkgname = r-changepoint
