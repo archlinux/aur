@@ -1,0 +1,19 @@
+pkgbase = r-aplpack
+	pkgdesc = Another Plot Package: 'Bagplots', 'Iconplots', 'Summaryplots', Slider Functions and Others
+	pkgver = 1.3.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=aplpack
+	arch = any
+	license = GPL
+	depends = r
+	depends = tk
+	optdepends = r-jpeg
+	optdepends = r-png
+	optdepends = r-splines
+	optdepends = r-tcltk
+	optdepends = r-tkrplot
+	optdepends = r-utils
+	source = https://cran.r-project.org/src/contrib/aplpack_1.3.5.tar.gz
+	sha256sums = 4454bc05cf70d5f3690b211e46b89b90a817de768b986098a3500c84f8d2664f
+
+pkgname = r-aplpack
