@@ -1,0 +1,17 @@
+pkgbase = r-conting
+	pkgdesc = Bayesian Analysis of Contingency Tables
+	pkgver = 1.7.9999
+	pkgrel = 1
+	url = https://github.com/vandenman/conting
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = r
+	depends = r-mvtnorm
+	depends = r-gtools
+	depends = r-tseries
+	depends = r-coda
+	source = git+https://github.com/vandenman/conting.git
+	sha256sums = SKIP
+
+pkgname = r-conting
