@@ -1,0 +1,21 @@
+pkgbase = r-constand
+	pkgdesc = Data normalization by matrix raking
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/CONSTANd
+	arch = any
+	license = custom
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-cairo
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-magick
+	optdepends = r-rmarkdown
+	optdepends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONSTANd_1.4.0.tar.gz
+	sha256sums = ffba0f74911f526ef4c711e44c65369745b70772331e4c7fede9248672199c12
+
+pkgname = r-constand
