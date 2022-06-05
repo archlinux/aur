@@ -1,0 +1,26 @@
+pkgbase = r-clue
+	pkgdesc = Cluster Ensembles
+	pkgver = 0.3.61
+	pkgrel = 1
+	url = https://cran.r-project.org/package=clue
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-ape
+	optdepends = r-cba
+	optdepends = r-cclust
+	optdepends = r-e1071
+	optdepends = r-flexclust
+	optdepends = r-flexmix
+	optdepends = r-kernlab
+	optdepends = r-lpsolve
+	optdepends = r-mclust
+	optdepends = r-modeltools
+	optdepends = r-movmf
+	optdepends = r-quadprog
+	optdepends = r-relations
+	optdepends = r-rweka
+	source = https://cran.r-project.org/src/contrib/clue_0.3-61.tar.gz
+	sha256sums = 71311b16ce380fd9a8834be95b55b3d1b47e4ee2b8acb35b8d481138c314dc31
+
+pkgname = r-clue
