@@ -13,7 +13,7 @@
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.17
+pkgver=1.36.18
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
