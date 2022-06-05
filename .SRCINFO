@@ -1,0 +1,20 @@
+pkgbase = r-cosmiq
+	pkgdesc = cosmiq - COmbining Single Masses Into Quantities
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/cosmiq
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-faahko
+	depends = r-massspecwavelet
+	depends = r-pracma
+	depends = r-rcpp
+	depends = r-xcms
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cosmiq_1.30.0.tar.gz
+	sha256sums = 953823ebdc0672f57330df4bb3a320bb7afb9265ed9c862ee958d84749c314a8
+
+pkgname = r-cosmiq
