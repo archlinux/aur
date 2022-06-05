@@ -1,0 +1,26 @@
+pkgbase = r-deqms
+	pkgdesc = a tool to perform statistical analysis of differential protein expression for quantitative proteomics data.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DEqMS
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-limma
+	depends = r-matrixstats
+	optdepends = r-biocstyle
+	optdepends = r-experimenthub
+	optdepends = r-farms
+	optdepends = r-ggrepel
+	optdepends = r-knitr
+	optdepends = r-lsd
+	optdepends = r-markdown
+	optdepends = r-plyr
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEqMS_1.14.0.tar.gz
+	sha256sums = e6c2ae792914199a04218bae8a6120dbcf17cfcafd51368a74eda0af612d6311
+
+pkgname = r-deqms
