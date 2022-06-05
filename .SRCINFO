@@ -1,0 +1,17 @@
+pkgbase = r-bbmisc
+	pkgdesc = Miscellaneous Helper Functions for B. Bischl
+	pkgver = 1.12
+	pkgrel = 3
+	url = https://cran.r-project.org/package=BBmisc
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-checkmate
+	depends = r-data.table
+	optdepends = r-codetools
+	optdepends = r-microbenchmark
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/BBmisc_1.12.tar.gz
+	sha256sums = 900a633f69b7d9b13d58709eeae2fca2c1bc510765d778623a2af32cc870053e
+
+pkgname = r-bbmisc
