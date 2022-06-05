@@ -155,7 +155,7 @@ check() {
 }
 
 package_jre-jbr-xdg-headless() {
-    pkgdesc="JetBrainsRuntime Java ${_majorver} headless runtime environment"
+    pkgdesc="JetBrainsRuntime Java ${_majorver} headless runtime environment - with improved Support for the XDG Base Directory Specification"
     depends=(
         'ca-certificates-utils'
         'freetype2'
@@ -235,7 +235,7 @@ package_jre-jbr-xdg-headless() {
 }
 
 package_jre-jbr-xdg() {
-    pkgdesc="JetBrainsRuntime Java ${_majorver} full runtime environment"
+    pkgdesc="JetBrainsRuntime Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
     depends=(
         'gcc-libs'
         'giflib'
@@ -270,7 +270,7 @@ package_jre-jbr-xdg() {
 }
 
 package_jdk-jbr-xdg() {
-    pkgdesc="JetBrainsRuntime Java ${_majorver} development kit"
+    pkgdesc="JetBrainsRuntime Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification"
     depends=(
         'glibc'
         'gcc-libs'
@@ -330,7 +330,7 @@ package_jdk-jbr-xdg() {
 }
 
 package_jbr-xdg-src() {
-    pkgdesc="JetBrainsRuntime Java ${_majorver} sources"
+    pkgdesc="JetBrainsRuntime Java ${_majorver} sources - with improved Support for the XDG Base Directory Specification"
     # Depends on JDK to get license files
     depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
     provides=("jbr${_majorver}-xdg-src=${pkgver}-${pkgrel}")
@@ -342,7 +342,7 @@ package_jbr-xdg-src() {
 }
 
 package_jbr-xdg-doc() {
-    pkgdesc="JetBrainsRuntime Java ${_majorver} documentation"
+    pkgdesc="JetBrainsRuntime Java ${_majorver} documentation - with improved Support for the XDG Base Directory Specification"
     # Depends on JDK to get license files
     depends=("jdk${_majorver}-jbr-xdg=${pkgver}-${pkgrel}")
     provides=("jbr${_majorver}-xdg-doc=${pkgver}-${pkgrel}")
