@@ -23,4 +23,3 @@ pkgbase = mingw-w64-librtmp0
 	sha256sums = 79300f9f7502df9e893f6419e2c88eeca3340a2f5ca4c28619096e90d569106f
 
 pkgname = mingw-w64-librtmp0
-

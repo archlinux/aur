@@ -58,7 +58,7 @@ package() {
     source mingw-env ${_arch}
 
     cd "${srcdir}/build-${_arch}"
-    make install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
+    make -j1 install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
 
     rm -rf "$pkgdir"/usr/${_arch}/man
     find "$pkgdir"/usr/${_arch}/bin -type l -delete
