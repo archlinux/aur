@@ -5,14 +5,14 @@ _gemname='gobject-introspection'
 pkgname="ruby-${_gemname}-3.4"
 pkgver=3.4.9
 pkgrel=1
-pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
+pkgdesc='A Ruby binding of GObjectIntrospection (legacy 3.4.x version)'
 arch=('x86_64')
 url="https://rubygems.org/gems/${_gemname}/versions/${pkgver}"
 license=('LGPL2.1')
 depends=(
   'gobject-introspection-runtime'
   'ruby'
-  "ruby-glib2=${pkgver}"
+  'ruby-glib2>=3.4.9'   'ruby-glib2<3.5'
 )
 makedepends=(
   'gobject-introspection'

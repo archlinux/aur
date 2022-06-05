@@ -1,5 +1,5 @@
 pkgbase = ruby-gobject-introspection-3.4
-	pkgdesc = Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.
+	pkgdesc = A Ruby binding of GObjectIntrospection (legacy 3.4.x version)
 	pkgver = 3.4.9
 	pkgrel = 1
 	url = https://rubygems.org/gems/gobject-introspection/versions/3.4.9
@@ -9,7 +9,8 @@ pkgbase = ruby-gobject-introspection-3.4
 	makedepends = ruby-native-package-installer
 	depends = gobject-introspection-runtime
 	depends = ruby
-	depends = ruby-glib2=3.4.9
+	depends = ruby-glib2>=3.4.9
+	depends = ruby-glib2<3.5
 	provides = ruby-gobject-introspection=3.4.9
 	noextract = gobject-introspection-3.4.9.gem
 	options = !emptydirs
