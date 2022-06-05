@@ -1,0 +1,17 @@
+pkgbase = r-adehabitatma
+	pkgdesc = Tools to Deal with Raster Maps
+	pkgver = 0.3.14
+	pkgrel = 4
+	url = https://cran.r-project.org/package=adehabitatMA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-filehash
+	depends = r-sp
+	optdepends = r-maptools
+	optdepends = r-mass
+	optdepends = r-tkrplot
+	source = https://cran.r-project.org/src/contrib/adehabitatMA_0.3.14.tar.gz
+	sha256sums = 3e22a35b34836030871c212286765791d2b1d56befac325a05075f0e5e7ad851
+
+pkgname = r-adehabitatma
