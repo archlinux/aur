@@ -1,0 +1,27 @@
+pkgbase = r-crisprseekplus
+	pkgdesc = crisprseekplus
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/crisprseekplus
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biocmanager
+	depends = r-bsgenome
+	depends = r-crisprseek
+	depends = r-dt
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-guideseq
+	depends = r-hash
+	depends = r-shiny
+	depends = r-shinyjs
+	optdepends = r-knitr
+	optdepends = r-r.rsp
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/crisprseekplus_1.22.0.tar.gz
+	sha256sums = d7719ce16778bd5743c174e421c023cbacce55511f3b15e16de77bad97e4b1a3
+
+pkgname = r-crisprseekplus
