@@ -1,0 +1,37 @@
+pkgbase = r-bigstatsr
+	pkgdesc = Statistical Tools for Filebacked Big Matrices
+	pkgver = 1.5.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=bigstatsr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bigassertr
+	depends = r-bigparallelr
+	depends = r-cowplot
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-ps
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rmio
+	depends = r-rspectra
+	depends = r-tibble
+	optdepends = r-biglasso
+	optdepends = r-bigmemory
+	optdepends = r-bigreadr
+	optdepends = r-covr
+	optdepends = r-data.table
+	optdepends = r-dplyr
+	optdepends = r-glmnet
+	optdepends = r-hexbin
+	optdepends = r-memuse
+	optdepends = r-modelmetrics
+	optdepends = r-ppcor
+	optdepends = r-rhpcblasctl
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bigstatsr_1.5.6.tar.gz
+	sha256sums = ed4c57538d8afd0b88977f05191df23763f153da91f2da28e8992726b24b39d6
+
+pkgname = r-bigstatsr
