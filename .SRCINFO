@@ -1,0 +1,15 @@
+pkgbase = r-a4reporting
+	pkgdesc = Automated Affymetrix Array Analysis Reporting Package
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/a4Reporting
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-xtable
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/a4Reporting_1.44.0.tar.gz
+	sha256sums = 6059a6ca5822d8e52400d7f7c104eb7fac0d5ec8784e0f0dc3efa000bdba5e0f
+
+pkgname = r-a4reporting
