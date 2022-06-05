@@ -4,7 +4,7 @@
 export GIT_LFS_SKIP_SMUDGE=1
 
 pkgname=tahoma2d
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Software for producing a 2D animation"
 arch=(x86_64)
