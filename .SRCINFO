@@ -1,0 +1,12 @@
+pkgbase = r-arrmdata
+	pkgdesc = Example dataset for normalization of Illumina 450k Methylation data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ARRmData
+	arch = any
+	license = Artistic2.0
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ARRmData_1.32.0.tar.gz
+	sha256sums = b7b436b24e702a0ead5c8f70561006db890227fd7c7cc997f8491b4150c95fb2
+
+pkgname = r-arrmdata
