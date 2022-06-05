@@ -1,0 +1,23 @@
+pkgbase = appaya-git
+	pkgdesc = Gnome app to monitor and control Syncthing daemon
+	pkgver = 0.2.0.r3.g83e3108
+	pkgrel = 1
+	url = https://git.sr.ht/~fabrixxm/appaya
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = vala
+	makedepends = blueprint-compiler
+	depends = gtk4
+	depends = libadwaita
+	depends = zint
+	provides = appaya
+	conflicts = appaya
+	source = git+https://git.sr.ht/~fabrixxm/appaya
+	sha256sums = SKIP
+
+pkgname = appaya-git
