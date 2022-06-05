@@ -1,0 +1,33 @@
+pkgbase = r-data.tree
+	pkgdesc = General Purpose Hierarchical Data Structure
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=data.tree
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-r6
+	depends = r-stringi
+	optdepends = r-ape
+	optdepends = r-diagrammer
+	optdepends = r-doparallel
+	optdepends = r-foreach
+	optdepends = r-formula
+	optdepends = r-graphics
+	optdepends = r-htmlwidgets
+	optdepends = r-igraph
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-mockery
+	optdepends = r-networkd3
+	optdepends = r-party
+	optdepends = r-partykit
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-testthat
+	optdepends = r-treemap
+	optdepends = r-yaml
+	source = https://cran.r-project.org/src/contrib/data.tree_1.0.0.tar.gz
+	sha256sums = 40674c90a5bd00f5185db9adbd221c6f1114043e69095249f5fa8b3044af3f5e
+
+pkgname = r-data.tree
