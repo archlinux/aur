@@ -2,10 +2,10 @@
 
 pkgname=onevpl-cpu
 pkgver=2022.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='oneVPL runtime implementation for CPU'
 arch=('x86_64')
-url='https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html'
+url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('ffmpeg')
 makedepends=('cmake' 'onevpl' 'openh264' 'svt-hevc')
