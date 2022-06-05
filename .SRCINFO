@@ -1,0 +1,14 @@
+pkgbase = r-asafe
+	pkgdesc = Ancestry Specific Allele Frequency Estimation
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ASAFE
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ASAFE_1.22.0.tar.gz
+	sha256sums = da12f5ce477c234c1a21a141bfe0615d486aae2ce0d58cf913dce41a05c731d1
+
+pkgname = r-asafe
