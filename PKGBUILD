@@ -1,10 +1,10 @@
 # Maintainer: Nil Geisweiller <ngeiswei at the giant g>
 
-pkgname=ctrlr-anders-roland-d50-panel
+pkgname=ctrlr-anderseriksson-roland-d50-panel
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 epoch=
-pkgdesc="Ctrlr panel from Anders (meastempo) for the Roland D-50, installed under /usr/share/ctrlr/panel/Anders."
+pkgdesc="Ctrlr panel from Anders Eriksson (meastempo) for the Roland D-50, installed under /usr/share/ctrlr/panel/AndersEriksson."
 arch=('any')
 url="https://ctrlr.org/roland-d50-editor/"
 license=()
@@ -13,8 +13,8 @@ depends=('ctrlr')
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('ctrlr-anders-roland-d50-panel')
-conflicts=('ctrlr-anders-roland-d50-panel')
+provides=('ctrlr-anderseriksson-roland-d50-panel')
+conflicts=('ctrlr-anderseriksson-roland-d50-panel')
 replaces=()
 backup=()
 options=()
@@ -29,7 +29,7 @@ package() {
 	PREFIX="${pkgdir}/usr"
 	SHAREPATH="${PREFIX}/share"
 	PANELSPATH="${SHAREPATH}/ctrlr/panels"
-	ANDERSPATH="${PANELSPATH}/Anders"
+	ANDERSPATH="${PANELSPATH}/AndersEriksson"
 
 	# Create local folders and copy panels
 	mkdir -p "${ANDERSPATH}"
