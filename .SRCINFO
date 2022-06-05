@@ -1,0 +1,15 @@
+pkgbase = r-daewr
+	pkgdesc = Design and Analysis of Experiments with R
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=daewr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-frf2
+	depends = r-stringi
+	optdepends = r-r.rsp
+	source = https://cran.r-project.org/src/contrib/daewr_1.2-7.tar.gz
+	sha256sums = 87ea6cc327f2acd5479bf1ae749f4203ebddac5679d3c8b2588dfd5173ad108d
+
+pkgname = r-daewr
