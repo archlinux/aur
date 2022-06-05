@@ -1,7 +1,7 @@
 pkgbase = ctrlr-anders-roland-d50-panel
-	pkgdesc = Ctrlr panel from Anders (meastempo) for the Roland D-50, installed under /usr/share/ctrlr/panel/Anders.
+	pkgdesc = Obsolete, ctrlr-anderseriksson-roland-d50-panel instead.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ctrlr.org/roland-d50-editor/
 	arch = any
 	groups = pro-audio

@@ -20,6 +20,7 @@ backup=()
 options=()
 install=
 changelog=
+source=("D50-editor-${pkgver}.bpanelz"::"https://ctrlr.org/wp-content/uploads/delightful-downloads/2017/02/D50-editor-${pkgver}.bpanelz")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
