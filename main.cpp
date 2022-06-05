@@ -2,5 +2,5 @@
 #include <hpx/iostream.hpp>
 
 int main(int argc, char *argv[]) {
-    hpx::cout << "Hello" << hpx::endl;
+    hpx::cout << "Hello" << std::endl;
 }
