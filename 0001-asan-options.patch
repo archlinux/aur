@@ -1,0 +1,15 @@
+diff --git a/sway/main.c b/sway/main.c
+index a46e5231..72788fbc 100644
+--- a/sway/main.c
++++ b/sway/main.c
+@@ -32,6 +32,10 @@ static struct rlimit original_nofile_rlimit = {0};
+ struct sway_server server = {0};
+ struct sway_debug debug = {0};
+ 
++const char* __asan_default_options() {
++	return "detect_leaks=0";
++}
++
+ void sway_terminate(int exit_code) {
+ 	if (!server.wl_display) {
+ 		// Running as IPC client

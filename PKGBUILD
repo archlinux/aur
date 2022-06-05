@@ -2,7 +2,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-asan-git
 _pkgname=sway
-pkgver=r6934.251a648e
+pkgver=r6936.956b689d
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)"
@@ -40,9 +40,11 @@ backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-asan-*}::git+https://github.com/swaywm/sway.git"
-	50-systemd-user.conf)
-sha512sums=("SKIP"
-            "57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e")
+	50-systemd-user.conf
+	0001-asan-options.patch)
+sha512sums=('SKIP'
+            '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e'
+            '9e24967087b7e062b77e735260c4b30cd8dcf77c03358e658ec854b8387d66310c99d93fde11ec00de45073e949a1df0c4c721d765e62944ae227913b667be6e')
 provides=("sway" "sway-git=${pkgver}")
 conflicts=("sway")
 options=(debug)
@@ -51,6 +53,13 @@ install=sway.install
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$_pkgname"
+    for f in "$srcdir"/*.patch; do
+		patch -p1 < "$f"
+	done
 }
 
 build() {
