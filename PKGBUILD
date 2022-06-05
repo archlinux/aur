@@ -8,7 +8,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.3
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
