@@ -1,0 +1,14 @@
+pkgbase = r-bus
+	pkgdesc = Gene network reconstruction
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/BUS
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-infotheo
+	depends = r-minet
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUS_1.52.0.tar.gz
+	sha256sums = b17a651c44382dfb3bc8d0673b7b9080941d55286a3a67a137ab9b895f3a0df0
+
+pkgname = r-bus
