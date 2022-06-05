@@ -4,20 +4,19 @@
 
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2022-04-29
+_pkgver=2022-05-29
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
-makedepends=('grep')
+makedepends=('grep' 'sassc')
 optdepends=('kvantum-theme-qogir-git: Matching Kvantum theme'
             'qogir-icon-theme: Matching icon theme'
             'vimix-cursors: Matching cursor theme'
-            'tela-icon-theme: Recommended icon theme'
-            'sassc: used to compile sass files to css for theme installation')
+            'tela-icon-theme: Recommended icon theme')
 backup=(etc/qogir-gtk-theme/options.txt)
 conflicts=('qogir-gtk-themes-git')
 options=('!strip')
@@ -25,7 +24,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('4cbeab82b362fb3ac849009b501112695e7c8a4ae2e6b65d72bac54c3e14703c'
+sha256sums=('a4a507e3e34e88428b61e4939d50e7568003b5ede631c707042b1532903fec99'
             '1d38ce625d24f5ff6f083783802a2f86c5f6a8e80155b5b65e3c602359d262dd')
 
 build() {
