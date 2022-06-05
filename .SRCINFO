@@ -1,0 +1,19 @@
+pkgbase = r-clvalid
+	pkgdesc = Validation of Clustering Results
+	pkgver = 0.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=clValid
+	arch = any
+	license = LGPL
+	depends = r
+	optdepends = r-annotate
+	optdepends = r-biobase
+	optdepends = r-go.db
+	optdepends = r-kohonen
+	optdepends = r-mclust
+	optdepends = r-moe430a.db
+	optdepends = r-rankaggreg
+	source = https://cran.r-project.org/src/contrib/clValid_0.7.tar.gz
+	sha256sums = 037da469891462021eb177f9c9e18caefa8532f08c68fb576fae1668a1f451a1
+
+pkgname = r-clvalid
