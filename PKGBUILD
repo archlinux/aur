@@ -1,8 +1,9 @@
-# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+# Maintainer: Patrick Oppenlander <patrick.oppenlander@gmail.com>
+# Contributor: Jiuyang Liu <liujiuyang1994@gmail.com>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 pkgname=riscv-openocd-git
-pkgver=v20180629.r1233.gc116dc50b
+pkgver=v20180629.r2363.g9906763b8
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has RISC-V support'
 arch=('x86_64')
@@ -12,6 +13,7 @@ depends=('libftdi' 'hidapi')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool')
 source=("$pkgname::git+https://github.com/riscv/riscv-openocd.git#branch=riscv")
 sha1sums=('SKIP')
+pkgdatadir="/usr/share/riscv-openocd"
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -26,19 +28,21 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
 
+  # rename info file so we don't clash with a normal openocd install
+  sed -i 's/openocd.info/riscv-openocd.info/' doc/openocd.texi
+
   ./bootstrap
   ./configure \
     --prefix=/usr \
-    --program-prefix=riscv64-linux-gnu- \
+    --program-prefix=riscv- \
     --disable-werror \
     --with-gnu-ld
 
-  make pkgdatadir="/usr/share/$pkgname"
+  make pkgdatadir="$pkgdatadir"
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make pkgdatadir="/usr/riscv64-linux-gnu/share/$pkgname" DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/share/info"
+  make pkgdatadir="$pkgdatadir" DESTDIR="$pkgdir" install
 }
 

@@ -1,6 +1,6 @@
 pkgbase = riscv-openocd-git
 	pkgdesc = Fork of OpenOCD that has RISC-V support
-	pkgver = v20180629.r1233.gc116dc50b
+	pkgver = v20180629.r2363.g9906763b8
 	pkgrel = 1
 	url = https://github.com/riscv/riscv-openocd
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = riscv-openocd-git
 	sha1sums = SKIP
 
 pkgname = riscv-openocd-git
-
