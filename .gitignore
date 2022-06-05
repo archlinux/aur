@@ -2,4 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!arch-fonts.diff
+!*.diff
+!*.patch

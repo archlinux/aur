@@ -1,7 +1,7 @@
 pkgbase = imagemagick-no-hdri
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.1.0.36
-	pkgrel = 2
+	pkgver = 7.1.0.37
+	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = i686
 	arch = x86_64
@@ -55,12 +55,14 @@ pkgbase = imagemagick-no-hdri
 	optdepends = djvulibre: DJVU support
 	optdepends = pango: Text rendering
 	optdepends = imagemagick-doc: manual and API docs
-	provides = imagemagick=7.1.0.36
-	provides = libmagick=7.1.0.36
+	provides = imagemagick=7.1.0.37
+	provides = libmagick=7.1.0.37
+	provides = libmagick7
+	provides = libMagick++-7.Q8.so
+	provides = libMagickCore-7.Q8.so
+	provides = libMagickWand-7.Q8.so
 	conflicts = imagemagick
 	conflicts = imagemagick6
-	conflicts = libmagick
-	conflicts = libmagick6
 	options = !docs
 	options = !emptydirs
 	options = libtool
@@ -74,11 +76,11 @@ pkgbase = imagemagick-no-hdri
 	backup = etc/ImageMagick-7/type.xml
 	backup = etc/ImageMagick-7/type-dejavu.xml
 	backup = etc/ImageMagick-7/type-ghostscript.xml
-	source = https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-7.1.0-36.tar.xz
-	source = https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-7.1.0-36.tar.xz.asc
+	source = https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-7.1.0-37.tar.xz
+	source = https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-7.1.0-37.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 4911c5fc4106c3af029fa46420ab72aa5bcc9d228ead500fbdfc5a50f51793c8
+	sha256sums = 9a0cb5218ea687fad28eedf143dff9f0724eb62c73264231d690fe844ecce5ec
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
