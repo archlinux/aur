@@ -1,0 +1,15 @@
+pkgbase = r-assertive.files
+	pkgdesc = Assertions to Check Properties of Files
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=assertive.files
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	depends = r-assertive.numbers
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/assertive.files_0.0-2.tar.gz
+	sha256sums = be6adda6f18a0427449249e44c2deff4444a123244b16fe82c92f15d24faee0a
+
+pkgname = r-assertive.files
