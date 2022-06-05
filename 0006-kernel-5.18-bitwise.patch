@@ -1,0 +1,16 @@
+diff -pNaru5 a/serial_core.h b/serial_core.h
+--- a/serial_core.h	2022-06-05 01:45:17.038405817 -0400
++++ b/serial_core.h	2022-06-05 01:47:38.946404560 -0400
+@@ -433,11 +433,11 @@ struct uart_icount {
+ 	__u32	parity;
+ 	__u32	brk;
+ 	__u32	buf_overrun;
+ };
+ 
+-typedef unsigned int __bitwise__ upf_t;
++typedef unsigned int __bitwise upf_t;
+ 
+ struct uart_port {
+ 	spinlock_t		lock;			/* port lock */
+ 	unsigned long		iobase;			/* in/out[bwl] */
+ 	unsigned char __iomem	*membase;		/* read/write[bwl] */
