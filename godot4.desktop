@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Godot V4
+Comment=Application for making games
+Exec=/usr/bin/godot4 %U
+Icon=godot4
+Terminal=false
+Type=Application
+Categories=Development;
