@@ -1,0 +1,30 @@
+pkgbase = r-bayesfactor
+	pkgdesc = Computation of Bayes Factors for Common Designs
+	pkgver = 0.9.12.4.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BayesFactor
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-coda
+	depends = r-gtools
+	depends = r-hypergeo
+	depends = r-matrixmodels
+	depends = r-mvtnorm
+	depends = r-pbapply
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-stringr
+	optdepends = r-arm
+	optdepends = r-domc
+	optdepends = r-foreach
+	optdepends = r-knitr
+	optdepends = r-languager
+	optdepends = r-lme4
+	optdepends = r-markdown
+	optdepends = r-testthat
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/BayesFactor_0.9.12-4.3.tar.gz
+	sha256sums = dcf9f88f31e7ac0451925528b025674ce38fe0c068868821c115ed42485e309c
+
+pkgname = r-bayesfactor
