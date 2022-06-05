@@ -1,0 +1,20 @@
+pkgbase = r-aws.s3
+	pkgdesc = 'AWS S3' Client Package
+	pkgver = 0.3.21
+	pkgrel = 4
+	url = https://cran.r-project.org/package=aws.s3
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-aws.signature
+	depends = r-base64enc
+	depends = r-curl
+	depends = r-digest
+	depends = r-httr
+	depends = r-xml2
+	optdepends = r-datasets
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/aws.s3_0.3.21.tar.gz
+	sha256sums = bd21054ab63555d294e7465dcb6c86f107db52ba841aeac5bdf4d00af0674c8c
+
+pkgname = r-aws.s3
