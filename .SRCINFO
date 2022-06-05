@@ -13,8 +13,7 @@ pkgbase = java-jbr-xdg
 	makedepends = glibc
 	makedepends = graphviz
 	makedepends = harfbuzz
-	makedepends = java-environment>=10
-	makedepends = java-environment<12
+	makedepends = java-environment=17
 	makedepends = libcups
 	makedepends = libelf
 	makedepends = libjpeg-turbo
