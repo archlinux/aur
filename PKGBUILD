@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=102.0
-pkgrel=1
+pkgrel=2
 _folder='iridium-browser'
 _name='iridium-browser'
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
@@ -15,9 +15,9 @@ depends=('ffmpeg4.4' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
-source=('https://downloads.iridiumbrowser.de/epel9/iridium-browser-2022.04.100.0-1.el9.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.04.100.0-1.el8.x86_64.rpm')
 
-sha256sums=('621921dfc5e353bc44c6d12797a2e5cd71b8caf1efade0a0f19f3362de89b0da')
+sha256sums=('9c280fd7f77f5afc0300d61fdc3c087b7e8b8075bfc25e49470631dadde8f44c')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
@@ -35,5 +35,5 @@ package() (
     #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libavcodec.so.58.134" "libavcodec.so.58"
     #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libavformat.so.58.76" "libavformat.so.58"
     #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libavutil.so.56.70" "libavutil.so.56"
-    #ln -s "/usr/bin/iridium" "${pkgdir}/usr/bin/iridium-browser"
+    ln -s "${pkgdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium"
 )
