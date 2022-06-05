@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-titlekey
-pkgver=1.37+r228+g78124c2
+pkgver=1.38+r229+g248881c
 pkgrel=1
-_mw='1.37'
-_commit='78124c217001f883b63977e791856b2701b4c40b' # git rev-parse "REL${_mw/./_}"
+_mw='1.38'
+_commit='248881c4472df0158f729d6bb9a51ddc8c2eeac3' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that provides a case-insensitive page title prefix search'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:TitleKey'
