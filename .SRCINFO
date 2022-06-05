@@ -1,0 +1,16 @@
+pkgbase = gpc-git
+	pkgdesc = Geometic Algebra Algorithms Optimizer (Precompiler)
+	pkgver = r1146.e7691789
+	pkgrel = 1
+	url = https://github.com/CallForSanity/Gaalop
+	arch = any
+	license = GPL3
+	makedepends = jdk8-openjdk
+	makedepends = maven
+	depends = jre8-openjdk
+	source = gpc-git::git+https://github.com/CallForSanity/Gaalop#branch=gaalop_precompiler
+	source = gpc
+	sha256sums = SKIP
+	sha256sums = 78b118ebcfa8eff2f39f74606c56ee0fb62f9f941a00b3583d8ba44324fc7b12
+
+pkgname = gpc-git
