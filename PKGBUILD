@@ -2,10 +2,10 @@
 
 pkgname=onevpl-intel-gpu
 pkgver=22.4.2
-pkgrel=1
-pkgdesc='oneVPL runtime implementation for Intel GPU (TigerLake and later)'
+pkgrel=2
+pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer)'
 arch=('x86_64')
-url='https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html'
+url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('libdrm' 'libva')
 makedepends=('cmake')
@@ -23,7 +23,7 @@ build() {
     cmake -B build -S "oneVPL-intel-gpu-intel-onevpl-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DBUILD_TESTS:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='OFF' \
         -Wno-dev
     make -C build
 }
