@@ -1,0 +1,26 @@
+pkgbase = r-adimpute
+	pkgdesc = Adaptive Dropout Imputer (ADImpute)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ADImpute
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-checkmate
+	depends = r-data.table
+	depends = r-drimpute
+	depends = r-kernlab
+	depends = r-rsvd
+	depends = r-s4vectors
+	depends = r-saver
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ADImpute_1.6.0.tar.gz
+	sha256sums = 9c286b2d88ed2cac092c6e6e10668f7a335c0735f192d0efbf92d75b519b0521
+
+pkgname = r-adimpute
