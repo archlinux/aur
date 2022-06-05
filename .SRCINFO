@@ -1,0 +1,14 @@
+pkgbase = r-bsgenome.celegans.ucsc.ce2
+	pkgdesc = Full genome sequences for Caenorhabditis elegans (UCSC version ce2)
+	pkgver = 1.4.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/BSgenome.Celegans.UCSC.ce2
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	optdepends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/BSgenome.Celegans.UCSC.ce2_1.4.0.tar.gz
+	sha256sums = a8ab86ce9314223440a3e59a64fff37a42e408b08af0a829be59d6f375dcf6f4
+
+pkgname = r-bsgenome.celegans.ucsc.ce2
