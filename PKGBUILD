@@ -2,31 +2,35 @@
 
 _plug=rekt
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r38.3da2b2f
+pkgver=1.0.0.r0.g2fbd63b
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: rekt (GIT version)'
 arch=('x86_64')
-url='https://gitlab.com/Ututu/rekt'
-license=('GPL')
+url='https://github.com/OpusGang/rekt'
+license=('MIT')
 depends=('vapoursynth' 'vapoursynth-plugin-vsutil')
 makedepends=('git'
-             'python-setuptools')
+             'python-pip'
+             'python-wheel')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://gitlab.com/Ututu/rekt.git")
+source=("${_plug}::git+https://github.com/OpusGang/rekt.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${_plug}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${_plug}"
-    python setup.py build
+    pip wheel --no-deps . -w dist
 }
 
 package() {
     cd "${_plug}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    
+    pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
