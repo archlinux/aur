@@ -1,0 +1,14 @@
+pkgbase = r-ca
+	pkgdesc = Simple, Multiple and Joint Correspondence Analysis
+	pkgver = 0.71.1
+	pkgrel = 7
+	url = https://cran.r-project.org/package=ca
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-rgl
+	optdepends = r-vcd
+	source = https://cran.r-project.org/src/contrib/ca_0.71.1.tar.gz
+	sha256sums = 040c2fc94c356075f116cc7cd880530b3c9e02206c0035182c03a525ee99b424
+
+pkgname = r-ca
