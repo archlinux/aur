@@ -1,0 +1,23 @@
+pkgbase = r-irkernel
+	pkgdesc = Native R Kernel for the 'Jupyter Notebook'
+	pkgver = 1.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=IRkernel
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-crayon
+	depends = r-digest
+	depends = r-evaluate
+	depends = r-irdisplay
+	depends = r-jsonlite
+	depends = r-pbdzmq
+	depends = r-repr
+	depends = r-uuid
+	depends = jupyter
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/IRkernel_1.3.tar.gz
+	sha256sums = 5a7fcbfd978dfb3cca6702a68a21c147551995fc400084ae8382ffcbbdae1903
+
+pkgname = r-irkernel
