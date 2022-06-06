@@ -1,0 +1,16 @@
+pkgbase = r-energy
+	pkgdesc = E-Statistics: Multivariate Inference via the Energy of Data
+	pkgver = 1.7.10
+	pkgrel = 5
+	url = https://cran.r-project.org/package=energy
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gsl
+	depends = r-rcpp
+	optdepends = r-compquadform
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/energy_1.7-10.tar.gz
+	sha256sums = 543de4875c46cc90e711e71c45b082d962fbb5158a094f9f10d37d3f57e1bea7
+
+pkgname = r-energy
