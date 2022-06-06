@@ -1,0 +1,19 @@
+pkgbase = r-slgi
+	pkgdesc = Synthetic Lethal Genetic Interaction
+	pkgver = 1.54.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/SLGI
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-go.db
+	depends = r-scisi
+	optdepends = r-go.db
+	optdepends = r-org.sc.sgd.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SLGI_1.54.0.tar.gz
+	sha256sums = 3a23957fbd9a5f0cee491cbeb6985a611b5550a2868d73dcd03e1332096e5c0e
+
+pkgname = r-slgi
