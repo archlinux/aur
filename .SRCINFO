@@ -1,0 +1,17 @@
+pkgbase = r-dmwr
+	pkgdesc = Data Mining with R, learning with case studies
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=DMwR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-xts
+	depends = r-quantmod
+	depends = r-zoo
+	depends = r-abind
+	depends = r-rocr
+	source = https://cran.r-project.org/src/contrib/Archive/DMwR/DMwR_0.4.1.tar.gz
+	sha256sums = 8ead6a21194e165d516196259c2d5f3b4d587b2e3dc6001023f5edf6139d3ee3
+
+pkgname = r-dmwr
