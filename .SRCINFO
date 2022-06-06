@@ -1,0 +1,17 @@
+pkgbase = r-randomcolor
+	pkgdesc = Generate Attractive Random Colors
+	pkgver = 1.1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=randomcoloR
+	arch = any
+	license = CC0
+	depends = r
+	depends = r-colorspace
+	depends = r-rtsne
+	depends = r-scales
+	depends = r-stringr
+	depends = r-v8
+	source = https://cran.r-project.org/src/contrib/randomcoloR_1.1.0.1.tar.gz
+	sha256sums = cbae51a47a92b2cc3d5ab48877818404429fb73fc795430ec622a8dff20f1067
+
+pkgname = r-randomcolor
