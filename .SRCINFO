@@ -1,0 +1,12 @@
+pkgbase = r-rcaspar
+	pkgdesc = A package for survival time prediction based on a piecewise baseline hazard Cox regression model.
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RCASPAR
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCASPAR_1.42.0.tar.gz
+	sha256sums = 7f39ed65f352b0ff4e68a90ad79deeeaaf1be62ec20cd9a6b69141f3f403ef7f
+
+pkgname = r-rcaspar
