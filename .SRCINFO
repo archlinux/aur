@@ -1,0 +1,13 @@
+pkgbase = r-illuminahumanmethylationepicanno.ilm10b2.hg19
+	pkgdesc = Annotation for Illumina's EPIC methylation arrays
+	pkgver = 0.6.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/IlluminaHumanMethylationEPICanno.ilm10b2.hg19
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-minfi
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/IlluminaHumanMethylationEPICanno.ilm10b2.hg19_0.6.0.tar.gz
+	sha256sums = 4decdbc78a6a8d02bf8aecb0d6e1d81134ae9dbc2375add52574f07829e8cd69
+
+pkgname = r-illuminahumanmethylationepicanno.ilm10b2.hg19
