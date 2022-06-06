@@ -1,0 +1,17 @@
+pkgbase = r-rgenometracksdata
+	pkgdesc = Demonstration Data from rGenomeTracks Package
+	pkgver = 0.99.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/rGenomeTracksData
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationhub
+	optdepends = r-biocmanager
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/rGenomeTracksData_0.99.0.tar.gz
+	sha256sums = 6a0a73f0a24c8ae370d8e0ce8d564148d16072fea7c23f75b666819500412fad
+
+pkgname = r-rgenometracksdata
