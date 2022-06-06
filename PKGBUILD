@@ -76,7 +76,7 @@ prepare() {
     ## tlsf_cpp
     git -C $srcdir/ros2/src/ros2/realtime_support cherry-pick fa9a5545db8f641212de78c5924f1305e01bc7a8
     ## osrf_testing_tools_cpp
-    git -C $srcdir/osrf/osrf_testing_tools_cpp cherry-pick 869da204dd829308380df5a33e432670e474e54a
+    git -C $srcdir/ros2/src/osrf/osrf_testing_tools_cpp cherry-pick 869da204dd829308380df5a33e432670e474e54a
 }
 
 build() {
