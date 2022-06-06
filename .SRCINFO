@@ -1,7 +1,7 @@
 pkgbase = autokey
 	pkgdesc = A desktop automation utility for Linux and X11
 	pkgver = 0.96.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autokey/autokey
 	arch = any
 	license = GPL3
@@ -35,7 +35,6 @@ pkgname = autokey-gtk
 	depends = libnotify
 	depends = zenity
 	optdepends = python-atspi
-	conflicts = autokey-qt
 
 pkgname = autokey-qt
 	pkgdesc = A desktop automation utility for Linux and X11 - Qt frontend
@@ -45,4 +44,3 @@ pkgname = autokey-qt
 	depends = qt5-svg
 	depends = kdialog
 	optdepends = qt-at-spi
-	conflicts = autokey-gtk

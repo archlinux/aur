@@ -4,7 +4,7 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.96.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop automation utility for Linux and X11"
 arch=('any')
 url="https://github.com/autokey/autokey"
@@ -49,7 +49,6 @@ package_autokey-gtk() {
   depends=('autokey-common' 'python-gobject' 'gtksourceview3' 'libappindicator-gtk3'
            'libnotify' 'zenity')
   optdepends=('python-atspi')
-  conflicts=("$pkgbase-qt")
 
   cd "$pkgbase-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
@@ -73,7 +72,6 @@ package_autokey-qt() {
   pkgdesc+=" - Qt frontend"
   depends=('autokey-common' 'python-pyqt5' 'python-qscintilla-qt5' 'qt5-svg' 'kdialog')
   optdepends=('qt-at-spi')
-  conflicts=("$pkgbase-gtk")
 
   cd "$pkgbase-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
