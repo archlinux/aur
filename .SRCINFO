@@ -1,0 +1,34 @@
+pkgbase = r-pcalg
+	pkgdesc = Methods for Graphical Models and Causal Inference
+	pkgver = 2.7.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=pcalg
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-bdsmatrix
+	depends = r-bh
+	depends = r-clue
+	depends = r-corpcor
+	depends = r-fastica
+	depends = r-ggm
+	depends = r-graph
+	depends = r-igraph
+	depends = r-rbgl
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-robustbase
+	depends = r-sfsmisc
+	depends = r-vcd
+	optdepends = r-dagitty
+	optdepends = r-ggplot2
+	optdepends = r-huge
+	optdepends = r-mass
+	optdepends = r-matrix
+	optdepends = r-mvtnorm
+	optdepends = r-rgraphviz
+	source = https://cran.r-project.org/src/contrib/pcalg_2.7-6.tar.gz
+	sha256sums = 93be0aa037dccd219a4ce298f23955b6fed434557c00736a0a5bf856026d0431
+
+pkgname = r-pcalg
