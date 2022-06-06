@@ -17,7 +17,9 @@ makedepends=('git'
              'python-pip'
              'python-wheel')
 optdepends=('vapoursynth-plugin-placebo: VapourSynth placebo plugin'
-            'vapoursynth-plugin-descale: VapourSynth descale plugin')
+            'vapoursynth-plugin-descale: VapourSynth descale plugin'
+            'vapoursynth-plugin-bilateral'
+            'vapoursynth-plugin-fpng')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/OpusGang/awsmfunc.git")
