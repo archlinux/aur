@@ -1,0 +1,16 @@
+pkgbase = r-procoil
+	pkgdesc = Prediction of Oligomerization of Coiled Coil Proteins
+	pkgver = 2.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/procoil
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-kebabs
+	depends = r-s4vectors
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/procoil_2.24.0.tar.gz
+	sha256sums = 90227c689c375126b83df9f8519defc079ad16131c396a6dac447149a54e85fb
+
+pkgname = r-procoil
