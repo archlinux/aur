@@ -1,0 +1,12 @@
+pkgbase = r-mpm
+	pkgdesc = Multivariate Projection Methods
+	pkgver = 1.0.23
+	pkgrel = 3
+	url = https://cran.r-project.org/package=mpm
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/mpm_1.0-23.tar.gz
+	sha256sums = d2abda28246842b187b796a730c6e0590182960fda3bbf16ce4a1d5e5b13fbca
+
+pkgname = r-mpm
