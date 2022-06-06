@@ -1,6 +1,6 @@
 pkgbase = prosody-mod-invites-page
 	pkgdesc = Generate friendly web page for invitations
-	pkgver = 2021.01.27
+	pkgver = 2022.02.02
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_invites_page.html
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = prosody-mod-invites-page
 	makedepends = mercurial
 	depends = prosody
 	optdepends = prosody-mod-register-apps: Configuring list of XMPP clients
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=2c47b8110c48
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=09b8144051ea
 	sha1sums = SKIP
 
 pkgname = prosody-mod-invites-page
-
