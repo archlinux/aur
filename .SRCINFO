@@ -1,0 +1,15 @@
+pkgbase = r-swathxtend
+	pkgdesc = SWATH extended library generation and statistical data analysis
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SwathXtend
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-e1071
+	depends = r-openxlsx
+	depends = r-venndiagram
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SwathXtend_2.18.0.tar.gz
+	sha256sums = e4fe1af7d1d3a75494066dcf203af22ec46f52958e4470b7d0f7ef0b8080930a
+
+pkgname = r-swathxtend
