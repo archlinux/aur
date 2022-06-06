@@ -1,0 +1,25 @@
+pkgbase = r-segmenter
+	pkgdesc = Perform Chromatin Segmentation Analysis in R by Calling ChromHMM
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/segmenter
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bamsignals
+	depends = r-chipseeker
+	depends = r-chromhmmdata
+	depends = r-complexheatmap
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-gviz
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/segmenter_1.2.0.tar.gz
+	sha256sums = 5372daaa1ad1a0b0941b37225f3cd760dad302528f1e132749aea036a4e96de0
+
+pkgname = r-segmenter
