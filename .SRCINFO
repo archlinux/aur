@@ -1,0 +1,16 @@
+pkgbase = r-medme
+	pkgdesc = Modelling Experimental Data from MeDIP Enrichment
+	pkgver = 1.56.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MEDME
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-drc
+	optdepends = r-bsgenome.hsapiens.ucsc.hg18
+	optdepends = r-bsgenome.mmusculus.ucsc.mm9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEDME_1.56.0.tar.gz
+	sha256sums = 3f9b3f2491cbb29fe413ebb4e560aebb4601ee0033cd6ad190856cc496c8d849
+
+pkgname = r-medme
