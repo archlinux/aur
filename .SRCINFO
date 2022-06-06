@@ -1,6 +1,6 @@
 pkgbase = groestlcoin
 	pkgver = 23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.groestlcoin.org/
 	changelog = Changelog
 	arch = x86_64
@@ -34,7 +34,6 @@ pkgbase = groestlcoin
 pkgname = groestlcoin-daemon
 	pkgdesc = Groestlcoin is a peer-to-peer network based digital currency - daemon
 	depends = boost-libs
-	depends = db=5.3.28
 	depends = libevent
 	depends = miniupnpc
 	depends = libminiupnpc.so
@@ -59,7 +58,6 @@ pkgname = groestlcoin-qt
 	depends = protobuf
 	depends = zeromq
 	depends = hicolor-icon-theme
-	depends = db=5.3.28
 	depends = gmp
 
 pkgname = groestlcoin-tx
