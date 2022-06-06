@@ -26,5 +26,5 @@ build() {
 
 package() {
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/target/release/cfonts/rust" "${pkgdir}/usr/bin/cfonts"
+    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/rust/target/release/cfonts" "${pkgdir}/usr/bin/cfonts"
 }
