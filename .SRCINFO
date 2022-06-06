@@ -1,0 +1,14 @@
+pkgbase = r-readstata13
+	pkgdesc = Import 'Stata' Data Files
+	pkgver = 0.10.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=readstata13
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/readstata13_0.10.0.tar.gz
+	sha256sums = e9986d52f447cce78dc85d968eb164151830d58bb7d78906b2306cddbfaba72c
+
+pkgname = r-readstata13
