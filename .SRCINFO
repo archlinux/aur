@@ -1,0 +1,15 @@
+pkgbase = r-hardyweinberg
+	pkgdesc = Statistical Tests and Graphics for Hardy-Weinberg Equilibrium
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=HardyWeinberg
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-mice
+	depends = r-rcpp
+	depends = r-rsolnp
+	source = https://cran.r-project.org/src/contrib/HardyWeinberg_1.7.5.tar.gz
+	sha256sums = cfd8ac4aaf0a315c77f4ad62f1fe3751707ed0e97b0aade61a4c379000ff7a2c
+
+pkgname = r-hardyweinberg
