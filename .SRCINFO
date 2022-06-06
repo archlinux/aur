@@ -1,0 +1,16 @@
+pkgbase = r-geneselectmmd
+	pkgdesc = Gene selection based on the marginal distributions of gene profiles that characterized by a mixture of three-component multivariate distributions
+	pkgver = 2.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeneSelectMMD
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-biobase
+	depends = r-limma
+	optdepends = r-all
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneSelectMMD_2.40.0.tar.gz
+	sha256sums = 0a37ca863108ff5d7df92d3475f144f0178faba9ede0d612dbded7073c4708a7
+
+pkgname = r-geneselectmmd
