@@ -1,0 +1,14 @@
+pkgbase = r-selex
+	pkgdesc = Functions for analyzing SELEX-seq data
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SELEX
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-rjava
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SELEX_1.28.0.tar.gz
+	sha256sums = 7c652396a860488307219ecfd831b0955fb3ce8200e6c24f8751e792d30cc84d
+
+pkgname = r-selex
