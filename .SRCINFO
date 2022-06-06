@@ -1,0 +1,24 @@
+pkgbase = r-orfhunter
+	pkgdesc = Predict open reading frames in nucleotide sequences
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ORFhunteR
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-bsgenome.hsapiens.ucsc.hg38
+	depends = r-data.table
+	depends = r-peptides
+	depends = r-randomforest
+	depends = r-rcpp
+	depends = r-rtracklayer
+	depends = r-stringr
+	depends = r-xfun
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ORFhunteR_1.4.0.tar.gz
+	sha256sums = ebfc0f74a4f4e056251d55c1cd943a8879e7eb5c32e5b676234cda32969d018d
+
+pkgname = r-orfhunter
