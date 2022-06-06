@@ -1,0 +1,19 @@
+pkgbase = r-optimr
+	pkgdesc = A Replacement and Extension of the 'optim' Function
+	pkgver = 2019.12.16
+	pkgrel = 4
+	url = https://cran.r-project.org/package=optimr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-numderiv
+	depends = r-optextras
+	depends = r-rcgmin
+	depends = r-rvmmin
+	depends = r-setrng
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/optimr_2019-12.16.tar.gz
+	sha256sums = 73b1ed560ffd74599517e8baa4c5b293aa062e9c8d50219a3a24b63e72fa7c00
+
+pkgname = r-optimr
