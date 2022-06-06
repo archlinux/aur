@@ -1,0 +1,17 @@
+pkgbase = r-matchingr
+	pkgdesc = Matching Algorithms in R and C++
+	pkgver = 1.3.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=matchingR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/matchingR_1.3.3.tar.gz
+	sha256sums = 2fdaa4a49d6835f0df31eaeb98a002332152dd76523cc44467bad81e957221f3
+
+pkgname = r-matchingr
