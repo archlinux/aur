@@ -1,0 +1,16 @@
+pkgbase = r-icluster
+	pkgdesc = Integrative clustering of multiple genomic data types
+	pkgver = 2.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=iCluster
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-catools
+	depends = r-gdata
+	depends = r-gplots
+	depends = r-gtools
+	source = https://cran.r-project.org/src/contrib/iCluster_2.1.0.tar.gz
+	sha256sums = d97cdcba3b53cf10160c333976d2244c2ad5abb8154e194b1568b48376374326
+
+pkgname = r-icluster
