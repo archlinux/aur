@@ -1,0 +1,21 @@
+pkgbase = r-treemap
+	pkgdesc = Treemap Visualization
+	pkgver = 2.4.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=treemap
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-gridbase
+	depends = r-igraph
+	depends = r-rcolorbrewer
+	depends = r-shiny
+	optdepends = r-knitr
+	optdepends = r-markdown
+	source = https://cran.r-project.org/src/contrib/treemap_2.4-3.tar.gz
+	sha256sums = 040f9f104f70e22097bd71636e2a7568b39da3e8592d31acaea7a3c19f7fe8b9
+
+pkgname = r-treemap
