@@ -1,0 +1,20 @@
+pkgbase = r-metapone
+	pkgdesc = Conducts pathway test of metabolomics data using a weighted permutation test
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/metapone
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocparallel
+	depends = r-fields
+	depends = r-markdown
+	depends = r-fdrtool
+	depends = r-fgsea
+	depends = r-ggrepel
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metapone_1.2.0.tar.gz
+	sha256sums = c93d868d8e3e8d0ea4435c58e305166f39b74f8c283be85c0703b8880d030987
+
+pkgname = r-metapone
