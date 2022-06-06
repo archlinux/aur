@@ -1,0 +1,14 @@
+pkgbase = r-txdb.dmelanogaster.ucsc.dm6.ensgene
+	pkgdesc = Annotation package for TxDb object(s)
+	pkgver = 3.12.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/TxDb.Dmelanogaster.UCSC.dm6.ensGene
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/TxDb.Dmelanogaster.UCSC.dm6.ensGene_3.12.0.tar.gz
+	sha256sums = 042317df9bddefa7979c815a8b88e17b5b55947b42e784c608b9d689fd3f327a
+
+pkgname = r-txdb.dmelanogaster.ucsc.dm6.ensgene
