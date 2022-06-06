@@ -1,0 +1,15 @@
+pkgbase = r-ibh
+	pkgdesc = Interaction Based Homogeneity for Evaluating Gene Lists
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ibh
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-simpintlists
+	optdepends = r-stats
+	optdepends = r-yeastcc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ibh_1.44.0.tar.gz
+	sha256sums = 5324e5da152032a2062c3e520ee1ed9a466f8bea158027e91f67c331bd19e450
+
+pkgname = r-ibh
