@@ -17,19 +17,41 @@ _buildfx='b09'
 _hashfx='165374ff4ea84ef0bbd821706e29b123'
 pkgver="${_major}u${_minorjd}"
 pkgverfx="${_major}u${_minorfx}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
 arch=('any')
-url='http://www.oracle.com/technetwork/java/javase/downloads/index.html'
+url='https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html'
 license=('custom:Oracle')
 depends=("java-environment>=${_major}")
 options=('!strip')
+_srcfil="jdk-${pkgver}-docs-all.zip"
 source=(
   "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_buildjd}/${_hashjd}/jdk-${pkgver}-docs-all.zip"
   "https://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minorfx}-${_buildfx}/${_hashfx}/javafx-${pkgverfx}-apidocs.zip"
   'LICENSE-Documentation.txt'
   'LICENSE-Oracle-Legal-Notices.txt'
 )
+# from oracle-sqldeveloper
+DLAGENTS+=("manual::${startdir:-}/readme.sh %o %u")
+source[0]="manual://${_srcfil}"
+if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
+  XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD 2>/dev/null)" || :
+  if [ -z "${XDG_DOWNLOAD_DIR}" ]; then
+    XDG_DOWNLOAD_DIR=~/'Downloads'
+  fi
+  if [ -s "${XDG_DOWNLOAD_DIR}/${_srcfil}" ] && [ ! -e "${_srcfil}" ]; then
+    if type msg > /dev/null 2>&1; then
+      set +u
+      msg "Scooping files from ${XDG_DOWNLOAD_DIR}" 1>&2
+      msg2 "${_srcfil}" 1>&2
+      set -u
+      ln -sr "${XDG_DOWNLOAD_DIR}/${_srcfil}"
+    fi
+  fi
+fi
+unset _srcfil
+unset XDG_DOWNLOAD_DIR
+
 sha256sums=('f239e56e5edbff116c6dbe10844a69712f008530323aa75c31be9685e1752f02'
             '753a7a3bae59891b1359d0f0b3e9e390cf2b8762465e1f79895bfb43204c72d9'
             '14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7'
