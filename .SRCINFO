@@ -1,0 +1,18 @@
+pkgbase = r-scatterhatch
+	pkgdesc = Creates hatched patterns for scatterplots
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scatterHatch
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-plyr
+	depends = r-spatstat.geom
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scatterHatch_1.2.0.tar.gz
+	sha256sums = fd56d4513e196880988abef1ce55c472666702420c1bd6003cf0c69fdaea6528
+
+pkgname = r-scatterhatch
