@@ -1,0 +1,16 @@
+pkgbase = r-mgsz
+	pkgdesc = Gene set analysis based on GSZ-scoring function and asymptotic p-value
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=mGSZ
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-gsa
+	depends = r-ismev
+	depends = r-limma
+	source = https://cran.r-project.org/src/contrib/mGSZ_1.0.tar.gz
+	sha256sums = f0978d2c6468c26399432f1f49aca1c04189322ef76f3d539f080a584e448922
+
+pkgname = r-mgsz
