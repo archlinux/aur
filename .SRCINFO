@@ -1,0 +1,14 @@
+pkgbase = r-lowmacaannotation
+	pkgdesc = LowMACAAnnotation
+	pkgver = 0.99.3
+	pkgrel = 4
+	url = https://bioconductor.org/packages/LowMACAAnnotation
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/LowMACAAnnotation_0.99.3.tar.gz
+	sha256sums = 959348611155b78a4b58452230a547af13028b674c06a826e748931259002366
+
+pkgname = r-lowmacaannotation
