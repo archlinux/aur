@@ -1,0 +1,18 @@
+pkgbase = r-statebins
+	pkgdesc = Create United States Uniform Cartogram Heatmaps
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=statebins
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-scales
+	optdepends = r-covr
+	optdepends = r-rcolorbrewer
+	optdepends = r-tinytest
+	optdepends = r-viridis
+	source = https://cran.r-project.org/src/contrib/statebins_1.4.0.tar.gz
+	sha256sums = fdc68770dcff0f26a523ab946cfad3ea5d70f81951448b9538e6e134926ac7ec
+
+pkgname = r-statebins
