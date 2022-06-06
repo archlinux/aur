@@ -1,7 +1,7 @@
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 pkgname=oftoast-bin
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Open Fortress installing and updating tool. Frontend for the Toast (TVN)."
 arch=(x86_64)
@@ -10,10 +10,10 @@ license=(GPL3)
 provides=('oflauncher' 'oflauncher-rei')
 makedepends=("imagemagick")
 optdepends=("steam")
-source=('oftoast::https://toast.openfortress.fun/toast/oftoast-linux.bin'
+source=('oftoast::https://toast-eu-1.openfortress.fun/toast/oftoast-0.1.4-linux.bin'
 		'https://github.com/int-72h/oflauncher-rei/raw/main/ofrei/toast.png'
 		'oftoast-bin.desktop')
-sha256sums=('c8718e0d97cb34c85dbcfbc357bbab91c2321d38deb73f49f86643cf3e55cc3d'
+sha256sums=('3c537293e31dbdf45428235f2139cf7f8a7055c9374ced870c218368dbbba052'
 			'91a2daf9cb92bf552595e352536df8f58ac3a86f069fb48ccb605bc11f8eb7d8'
 			'f5c1cf0758431ecac6d011a270c27d306a14ffe7cd6cc71a010c3462f3be32a1')
 
