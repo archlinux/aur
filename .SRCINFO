@@ -1,0 +1,13 @@
+pkgbase = r-rwekajars
+	pkgdesc = R/Weka Interface Jars
+	pkgver = 3.9.3.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=RWekajars
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rjava
+	source = https://cran.r-project.org/src/contrib/RWekajars_3.9.3-2.tar.gz
+	sha256sums = 16e6b019aab1646f89c5203f0d6fc1cb800129e5169b15aaef30fd6236f5da1a
+
+pkgname = r-rwekajars
