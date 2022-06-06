@@ -1,0 +1,19 @@
+pkgbase = r-protr
+	pkgdesc = Generating Various Numerical Representation Schemes for Protein Sequences
+	pkgver = 1.6.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=protr
+	arch = any
+	license = BSD
+	depends = r
+	optdepends = r-biostrings
+	optdepends = r-doparallel
+	optdepends = r-foreach
+	optdepends = r-gosemsim
+	optdepends = r-knitr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/protr_1.6-2.tar.gz
+	sha256sums = 56f5db5f4b0f71f59c89dbeb587f422157f014d3261a57a4173c608c278e6f8f
+
+pkgname = r-protr
