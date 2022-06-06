@@ -1,0 +1,18 @@
+pkgbase = r-phosphonormalizer
+	pkgdesc = Compensates for the bias introduced by median normalization in
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/phosphonormalizer
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-matrixstats
+	depends = r-plyr
+	optdepends = r-knitr
+	optdepends = r-msnbase
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phosphonormalizer_1.20.0.tar.gz
+	sha256sums = 29541b0b1fde9db8c7499db91b2085e11aef41f04b426e870251be381eef8f55
+
+pkgname = r-phosphonormalizer
