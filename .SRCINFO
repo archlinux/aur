@@ -1,0 +1,24 @@
+pkgbase = r-keggprofile
+	pkgdesc = An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway
+	pkgver = 1.36.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/KEGGprofile
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = tar
+	depends = r
+	depends = r-annotationdbi
+	depends = r-png
+	depends = r-teachingdemos
+	depends = r-xml
+	depends = r-keggrest
+	depends = r-biomart
+	depends = r-rcurl
+	depends = r-ggplot2
+	depends = r-reshape2
+	depends = r-kegg.db
+	source = git+https://git.bioconductor.org/packages/KEGGprofile.git
+	sha256sums = SKIP
+
+pkgname = r-keggprofile
