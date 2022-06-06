@@ -1,0 +1,25 @@
+pkgbase = r-ggplotify
+	pkgdesc = Convert Plot to 'grob' or 'ggplot' Object
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggplotify
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridgraphics
+	depends = r-yulab.utils
+	optdepends = r-aplot
+	optdepends = r-colorspace
+	optdepends = r-cowplot
+	optdepends = r-ggimage
+	optdepends = r-knitr
+	optdepends = r-lattice
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-utils
+	optdepends = r-vcd
+	source = https://cran.r-project.org/src/contrib/ggplotify_0.1.0.tar.gz
+	sha256sums = 178f73d6d3dc391c3efb1a62c95fe38587044f9e3288dffb915d3687941bb38a
+
+pkgname = r-ggplotify
