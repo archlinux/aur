@@ -3,7 +3,7 @@
 
 pkgname=heliocron-git
 _pkgname=${pkgname%-*}
-pkgver=0.5.0.r3.g791f3b8
+pkgver=0.6.0.r0.g37909ef
 pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other solar events.'
 arch=('x86_64')
