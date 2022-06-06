@@ -1,0 +1,15 @@
+pkgbase = r-hgnchelper
+	pkgdesc = Identify and Correct Invalid HGNC Human Gene Symbols and MGI Mouse Gene Symbols
+	pkgver = 0.8.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=HGNChelper
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/HGNChelper_0.8.1.tar.gz
+	sha256sums = aa3f0b3a8691ed93d63bec8f36d2954c6fcfd0b8b3efc705379248544c999363
+
+pkgname = r-hgnchelper
