@@ -1,0 +1,15 @@
+pkgbase = r-settings
+	pkgdesc = Software Option Settings Manager for R
+	pkgver = 0.2.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=settings
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/settings_0.2.7.tar.gz
+	sha256sums = 651a02d59fe64fded64a9b7bc252f7ab9e3124445a6d44727f698b8b669131c5
+
+pkgname = r-settings
