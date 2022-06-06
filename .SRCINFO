@@ -1,0 +1,12 @@
+pkgbase = r-nnlasso
+	pkgdesc = Non-Negative Lasso and Elastic Net Penalized Generalized Linear Models
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=nnlasso
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/nnlasso_0.3.tar.gz
+	sha256sums = 646250cba6189cdc83fcea7f7b9b07a4f7ba79593d75c77dfac1e0576956f3d8
+
+pkgname = r-nnlasso
