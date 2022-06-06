@@ -1,0 +1,24 @@
+pkgbase = r-flowai
+	pkgdesc = Automatic and interactive quality control for flow cytometry data
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowAI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-changepoint
+	depends = r-flowcore
+	depends = r-ggplot2
+	depends = r-knitr
+	depends = r-plyr
+	depends = r-rcolorbrewer
+	depends = r-reshape2
+	depends = r-rmarkdown
+	depends = r-scales
+	optdepends = r-biocstyle
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowAI_1.26.0.tar.gz
+	sha256sums = f4e35c824f68036cea5746236a026ad8e336c2595411d15d303d45fbc02526a5
+
+pkgname = r-flowai
