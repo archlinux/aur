@@ -1,0 +1,12 @@
+pkgbase = r-gamlss.dist
+	pkgdesc = Distributions for Generalized Additive Models for Location Scale and Shape
+	pkgver = 6.0.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=gamlss.dist
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gamlss.dist_6.0-3.tar.gz
+	sha256sums = ec90ea83cd81b894c73f987f69814077697be33abf0708e0f3e2a39d02c912bf
+
+pkgname = r-gamlss.dist
