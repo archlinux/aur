@@ -1,0 +1,16 @@
+pkgbase = r-subspace
+	pkgdesc = Interface to OpenSubspace
+	pkgver = 1.0.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=subspace
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-ggvis
+	depends = r-rjava
+	depends = r-stringr
+	source = https://cran.r-project.org/src/contrib/subspace_1.0.4.tar.gz
+	sha256sums = 7b905d61101fb0643b4886b5152d5568cd28ff49d928dac90ed50fc92d05525c
+
+pkgname = r-subspace
