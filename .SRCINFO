@@ -1,0 +1,24 @@
+pkgbase = r-sjlabelled
+	pkgdesc = Labelled Data Utility Functions
+	pkgver = 1.2.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=sjlabelled
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-insight
+	depends = r-datawizard
+	optdepends = r-dplyr
+	optdepends = r-haven
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-sjmisc
+	optdepends = r-sjplot
+	optdepends = r-snakecase
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sjlabelled_1.2.0.tar.gz
+	sha256sums = 731c7e907361971dbc890ad80bc95a38ecc38455a0217fdbc3dbb7c60b3648ed
+
+pkgname = r-sjlabelled
