@@ -1,0 +1,21 @@
+pkgbase = r-msfeatures
+	pkgdesc = Functionality for Mass Spectrometry Features
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MsFeatures
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-mscoreutils
+	depends = r-protgenerics
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-pheatmap
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsFeatures_1.4.0.tar.gz
+	sha256sums = 037b64dada359ed60c4c5ad474c20560251ba13e827c24c9ba250c4c30c33184
+
+pkgname = r-msfeatures
