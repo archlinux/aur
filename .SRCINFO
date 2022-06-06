@@ -1,0 +1,16 @@
+pkgbase = r-dpeak
+	pkgdesc = dPeak (Deconvolution of Peaks in ChIP-seq Analysis)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/dpeak
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bsgenome
+	depends = r-iranges
+	depends = r-rcpp
+	optdepends = r-bsgenome.ecoli.ncbi.20080805
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dpeak_1.8.0.tar.gz
+	sha256sums = 96bd43ba71162cdc40172646961194b99c5d16c49c34c255fa3cb6929a479b1d
+
+pkgname = r-dpeak
