@@ -1,0 +1,13 @@
+pkgbase = r-impcdata
+	pkgdesc = Retrieves data from IMPC database
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IMPCdata
+	arch = any
+	license = custom
+	depends = r
+	depends = r-rjson
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IMPCdata_1.32.0.tar.gz
+	sha256sums = c6ea8d2d69045077fd3a5273e7e8f36407d7bb23963a35ebb84367d9b85da327
+
+pkgname = r-impcdata
