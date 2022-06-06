@@ -1,0 +1,17 @@
+pkgbase = r-pengls
+	pkgdesc = Fit Penalised Generalised Least Squares models
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pengls
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-glmnet
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pengls_1.2.0.tar.gz
+	sha256sums = 1ad3d84a255a7fa9b07b34cbad5e131f02c6a87459bcb0bdb735b0fe7d72687e
+
+pkgname = r-pengls
