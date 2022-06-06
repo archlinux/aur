@@ -1,0 +1,26 @@
+pkgbase = r-sqldataframe
+	pkgdesc = Representation of SQL database in DataFrame metaphor
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SQLDataFrame
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-dbi
+	depends = r-dbplyr
+	depends = r-dplyr
+	depends = r-lazyeval
+	depends = r-rsqlite
+	depends = r-s4vectors
+	depends = r-tibble
+	optdepends = r-bigrquery
+	optdepends = r-delayedarray
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rmysql
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SQLDataFrame_1.10.0.tar.gz
+	sha256sums = 168897f1e96f733298a53d01f867c5444f6a0c9005e81ea4d55426e76095775e
+
+pkgname = r-sqldataframe
