@@ -1,0 +1,25 @@
+pkgbase = r-fastqcleaner
+	pkgdesc = A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FastqCleaner
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-biostrings
+	depends = r-dt
+	depends = r-htmltools
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-s4vectors
+	depends = r-shiny
+	depends = r-shinybs
+	depends = r-shortread
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FastqCleaner_1.13.0.tar.gz
+	sha256sums = fbd397aff31d036f40c7ebb55d9d197395195a5f3c00cdc8bf7a7bf105450f90
+
+pkgname = r-fastqcleaner
