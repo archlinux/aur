@@ -1,0 +1,24 @@
+pkgbase = r-shinymethyl
+	pkgdesc = Interactive visualization for Illumina methylation arrays
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/shinyMethyl
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-illuminahumanmethylation450kmanifest
+	depends = r-matrixstats
+	depends = r-minfi
+	depends = r-rcolorbrewer
+	depends = r-shiny
+	optdepends = r-biocstyle
+	optdepends = r-digest
+	optdepends = r-knitr
+	optdepends = r-minfidata
+	optdepends = r-runit
+	optdepends = r-shinymethyldata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/shinyMethyl_1.32.0.tar.gz
+	sha256sums = deff47a3cb2508b0d54d3963f2aa135e6e52fe3c38fb4b6c2b741493dcf06698
+
+pkgname = r-shinymethyl
