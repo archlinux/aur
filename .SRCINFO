@@ -1,0 +1,12 @@
+pkgbase = r-robustrankaggreg
+	pkgdesc = Methods for robust rank aggregation
+	pkgver = 1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RobustRankAggreg
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/RobustRankAggreg_1.1.tar.gz
+	sha256sums = 23ab88f6f1e56ae85a45bf5107ad0c37202dde275d799ed9fe214a1ab2c754df
+
+pkgname = r-robustrankaggreg
