@@ -1,0 +1,12 @@
+pkgbase = r-distillery
+	pkgdesc = Method Functions for Confidence Intervals and to Distill Information from an Object
+	pkgver = 1.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=distillery
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/distillery_1.2-1.tar.gz
+	sha256sums = 4b88f0b34e472b9134ad403fb32283424f1883a5943e52c55f1fe05995efb5fa
+
+pkgname = r-distillery
