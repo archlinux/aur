@@ -1,0 +1,26 @@
+pkgbase = r-mfa
+	pkgdesc = Bayesian hierarchical mixture of factor analyzers for modelling genomic bifurcations
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mfa
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-coda
+	depends = r-dplyr
+	depends = r-ggmcmc
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-mcmcglmm
+	depends = r-mcmcpack
+	depends = r-rcpp
+	depends = r-tibble
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mfa_1.18.0.tar.gz
+	sha256sums = 1f413a7f38fa7419cd3962264df246b7e19e13afe86fff43ae191dd9a8e29977
+
+pkgname = r-mfa
