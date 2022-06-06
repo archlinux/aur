@@ -1,0 +1,16 @@
+pkgbase = r-tippy
+	pkgdesc = Add Tooltips to 'R markdown' Documents or 'Shiny' Apps
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tippy
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/tippy_0.1.0.tar.gz
+	sha256sums = 96c9477de8092e9d43b92fa2d284b943e3b631448a8d7e79e9809eae0ed88901
+
+pkgname = r-tippy
