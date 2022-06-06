@@ -1,0 +1,21 @@
+pkgbase = r-sparsebn
+	pkgdesc = Learning Sparse Bayesian Networks from High-Dimensional Data
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=sparsebn
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ccdralgorithm
+	depends = r-discretecdalgorithm
+	depends = r-sparsebnutils
+	optdepends = r-graph
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sparsebn_0.1.2.tar.gz
+	sha256sums = 85f1b4c912ed27db5ac4ae7defcfb79ddc7494be1df7239499ac573b6c0026ac
+
+pkgname = r-sparsebn
