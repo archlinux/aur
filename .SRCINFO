@@ -1,0 +1,14 @@
+pkgbase = r-evmix
+	pkgdesc = Extreme Value Mixture Modelling, Threshold Estimation and Boundary Corrected Kernel Density Estimation
+	pkgver = 2.12
+	pkgrel = 3
+	url = https://cran.r-project.org/package=evmix
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gsl
+	depends = r-sparsem
+	source = https://cran.r-project.org/src/contrib/evmix_2.12.tar.gz
+	sha256sums = 6e47d53463b68ac2782201bcc6240fbc5263b2db1ac0d383062032ab135b2a0b
+
+pkgname = r-evmix
