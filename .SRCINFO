@@ -1,0 +1,22 @@
+pkgbase = r-synextend
+	pkgdesc = Tools for Working With Synteny Objects
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SynExtend
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-decipher
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SynExtend_1.8.0.tar.gz
+	sha256sums = 3524da3f42919653233adb8773d0d88248a4a9b5adb89ec2866b592ed88f607c
+
+pkgname = r-synextend
