@@ -1,0 +1,22 @@
+pkgbase = r-paralleldist
+	pkgdesc = Parallel Distance Matrix Computation using Multiple Threads
+	pkgver = 0.2.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=parallelDist
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppparallel
+	depends = gcc
+	optdepends = r-dtw
+	optdepends = r-ggplot2
+	optdepends = r-proxy
+	optdepends = r-rcpparmadillo
+	optdepends = r-rcppxptrutils
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/parallelDist_0.2.6.tar.gz
+	sha256sums = 30c6b3b85cf78c04a7dcd17ea7ed64356971f6ce48d15794078a18c53b249e06
+
+pkgname = r-paralleldist
