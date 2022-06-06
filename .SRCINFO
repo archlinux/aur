@@ -1,0 +1,12 @@
+pkgbase = r-dtt
+	pkgdesc = Discrete Trigonometric Transforms
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=dtt
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/dtt_0.1-2.tar.gz
+	sha256sums = b6ee86fb571b3ee04ac1d8d04fbc76b12515c09afee688d56a4f39ea63910f59
+
+pkgname = r-dtt
