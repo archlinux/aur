@@ -1,0 +1,27 @@
+pkgbase = r-ebimage
+	pkgdesc = Image processing and analysis toolbox for R
+	pkgver = 4.38.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EBImage
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-abind
+	depends = r-biocgenerics
+	depends = r-fftwtools
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jpeg
+	depends = r-locfit
+	depends = r-png
+	depends = r-rcurl
+	depends = r-tiff
+	optdepends = r-biocstyle
+	optdepends = r-digest
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBImage_4.38.0.tar.gz
+	sha256sums = 510381699581592915aa5e73271f99b8ca73fe2a92fb96b86a699ac157219ded
+
+pkgname = r-ebimage
