@@ -1,0 +1,23 @@
+pkgbase = r-spqn
+	pkgdesc = Spatial quantile normalization
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/spqn
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-ggplot2
+	depends = r-ggridges
+	depends = r-matrixstats
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	optdepends = r-spqndata
+	optdepends = r-tools
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spqn_1.8.0.tar.gz
+	sha256sums = 5877f07c6452c91cf68dbe5aea15d82af6006ce86d49cd9b4fcb9640730cad09
+
+pkgname = r-spqn
