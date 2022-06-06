@@ -1,34 +1,37 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=warp-git
-pkgver=r5.b140373
+pkgver=0.1.2.r125.g6a0a35a
 pkgrel=1
-pkgdesc='A fast preprocessor for C and C++'
-arch=(i686 x86_64)
-url='https://github.com/facebook/warp'
-license=(custom)
-depends=(gcc-libs)
-makedepends=(git gdc)
-source=(git+https://github.com/facebook/warp.git)
-md5sums=('SKIP')
+pkgdesc="Fast and secure file transfer"
+arch=('x86_64')
+url="https://gitlab.gnome.org/World/warp"
+license=('GPL3')
+depends=('glib2' 'libadwaita' 'magic-wormhole')
+makedepends=('git' 'meson' 'rust' 'itstool')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+$url.git)
+b2sums=('SKIP')
 
 pkgver() {
-  cd warp
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd warp
-  make
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  cd warp
-
-  install -d "$pkgdir"/usr/bin
-  install fwarp fwarpdrive_gcc4_7_1 fwarpdrive_gcc4_8_1 fwarpdrive_clang3_2 fwarpdrive_clang3_4 fwarpdrive_clangdev "$pkgdir"/usr/bin
-
-  # boost-like license
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
 }
-

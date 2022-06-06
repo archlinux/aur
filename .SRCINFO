@@ -1,16 +1,21 @@
 pkgbase = warp-git
-	pkgdesc = A fast preprocessor for C and C++
-	pkgver = r5.b140373
+	pkgdesc = Fast and secure file transfer
+	pkgver = 0.1.2.r125.g6a0a35a
 	pkgrel = 1
-	url = https://github.com/facebook/warp
-	arch = i686
+	url = https://gitlab.gnome.org/World/warp
 	arch = x86_64
-	license = custom
+	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
-	makedepends = gdc
-	depends = gcc-libs
-	source = git+https://github.com/facebook/warp.git
-	md5sums = SKIP
+	makedepends = meson
+	makedepends = rust
+	makedepends = itstool
+	depends = glib2
+	depends = libadwaita
+	depends = magic-wormhole
+	provides = warp
+	conflicts = warp
+	source = git+https://gitlab.gnome.org/World/warp.git
+	b2sums = SKIP
 
 pkgname = warp-git
-
