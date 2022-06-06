@@ -1,0 +1,18 @@
+pkgbase = r-einsum
+	pkgdesc = Einstein Summation
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=einsum
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-glue
+	depends = r-mathjaxr
+	depends = r-rcpp
+	depends = gcc
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/einsum_0.1.0.tar.gz
+	sha256sums = fcbc2c4dc7ac3f35cb5d738297cf01b1e50a3274f2bcd29085784d8806032305
+
+pkgname = r-einsum
