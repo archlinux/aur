@@ -1,0 +1,13 @@
+pkgbase = r-jaspar2018
+	pkgdesc = Data package for JASPAR 2018
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://bioconductor.org/packages/JASPAR2018
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-tfbstools
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/JASPAR2018_1.1.1.tar.gz
+	sha256sums = 87a22b2549eb6cd2f6db8692542fbb2a4aa1dc8bde9bd01b63022a9f435905c7
+
+pkgname = r-jaspar2018
