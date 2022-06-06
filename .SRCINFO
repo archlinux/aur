@@ -1,0 +1,13 @@
+pkgbase = r-flowplots
+	pkgdesc = flowPlots: analysis plots and data class for gated flow cytometry data
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowPlots
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-vcd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowPlots_1.44.0.tar.gz
+	sha256sums = 9e5cad3622b012b1b71b152ce887f6da9654a477e86ef44ec88a3428ecc6687c
+
+pkgname = r-flowplots
