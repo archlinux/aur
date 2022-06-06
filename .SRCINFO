@@ -1,0 +1,21 @@
+pkgbase = r-xtrasnplocs.hsapiens.dbsnp144.grch37
+	pkgdesc = Extra SNP locations for Homo sapiens (dbSNP Build 144)
+	pkgver = 0.99.12
+	pkgrel = 4
+	url = https://bioconductor.org/packages/XtraSNPlocs.Hsapiens.dbSNP144.GRCh37
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biostrings
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/XtraSNPlocs.Hsapiens.dbSNP144.GRCh37_0.99.12.tar.gz
+	sha256sums = cb3d78d07a7fc00aee25b48728a6a568d72e8dca9e9f7a48abb35589b71b024d
+
+pkgname = r-xtrasnplocs.hsapiens.dbsnp144.grch37
