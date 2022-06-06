@@ -1,0 +1,25 @@
+pkgbase = r-hubpub
+	pkgdesc = Utilities to create and use Bioconductor Hubs
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HubPub
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-available
+	depends = r-aws.s3
+	depends = r-biocmanager
+	depends = r-biocthis
+	depends = r-dplyr
+	depends = r-fs
+	depends = r-usethis
+	optdepends = r-annotationhubdata
+	optdepends = r-biocstyle
+	optdepends = r-experimenthubdata
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HubPub_1.4.0.tar.gz
+	sha256sums = 45015f9ad9e568906975fc8ad32de5c789ac9e317a33d86e4ef5c654b7983df6
+
+pkgname = r-hubpub
