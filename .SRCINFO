@@ -1,0 +1,16 @@
+pkgbase = r-reqon
+	pkgdesc = Recalibrating Quality Of Nucleotides
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ReQON
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rjava
+	depends = r-rsamtools
+	depends = r-seqbias
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReQON_1.42.0.tar.gz
+	sha256sums = 991cb5ee9a944f30179059fa884b4f31e146e07d2858b300dd7c78872abdb7b8
+
+pkgname = r-reqon
