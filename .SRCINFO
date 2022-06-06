@@ -1,0 +1,25 @@
+pkgbase = r-mkmisc
+	pkgdesc = Miscellaneous Functions from M. Kohl
+	pkgver = 1.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MKmisc
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-limma
+	depends = r-rcolorbrewer
+	depends = r-robustbase
+	depends = r-scales
+	optdepends = r-amelia
+	optdepends = r-doparallel
+	optdepends = r-exactranktests
+	optdepends = r-foreach
+	optdepends = r-gplots
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/MKmisc_1.8.tar.gz
+	sha256sums = f4b59779935343b5865558731c0cef2762e00b11ffba0eda2b813b07a4dd24b5
+
+pkgname = r-mkmisc
