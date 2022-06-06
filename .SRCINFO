@@ -1,0 +1,20 @@
+pkgbase = r-mirnameconverter
+	pkgdesc = Convert miRNA Names to Different miRBase Versions
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/miRNAmeConverter
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-dbi
+	depends = r-mirbaseversions.db
+	depends = r-reshape2
+	optdepends = r-knitr
+	optdepends = r-methods
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRNAmeConverter_1.24.0.tar.gz
+	sha256sums = 68060075d15af865d3580ff45f46c476faf991274c96b7da92ebb5e9b9486183
+
+pkgname = r-mirnameconverter
