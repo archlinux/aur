@@ -1,0 +1,18 @@
+pkgbase = r-ebcoexpress
+	pkgdesc = EBcoexpress for Differential Co-Expression Analysis
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EBcoexpress
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ebarrays
+	depends = r-mclust
+	depends = r-minqa
+	optdepends = r-colorspace
+	optdepends = r-graph
+	optdepends = r-igraph
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EBcoexpress_1.40.0.tar.gz
+	sha256sums = 97be4f60279f9849f2a81a1dd97a008a0c7ff92a3636b24f1cdf00e85356331f
+
+pkgname = r-ebcoexpress
