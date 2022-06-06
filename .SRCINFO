@@ -1,0 +1,12 @@
+pkgbase = r-rapidjsonr
+	pkgdesc = 'Rapidjson' C++ Header Files
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rapidjsonr
+	arch = x86_64
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/rapidjsonr_1.2.0.tar.gz
+	sha256sums = 62c94fcdcf5d0fbdfa2f6168affe526bf547c37c16d94e2e1b78d7bf608eed1f
+
+pkgname = r-rapidjsonr
