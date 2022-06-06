@@ -1,0 +1,21 @@
+pkgbase = r-gsubfn
+	pkgdesc = Utilities for Strings and Function Arguments
+	pkgver = 0.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gsubfn
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-proto
+	optdepends = r-boot
+	optdepends = r-chron
+	optdepends = r-grid
+	optdepends = r-lattice
+	optdepends = r-quantreg
+	optdepends = r-svunit
+	optdepends = r-tcltk
+	optdepends = r-zoo
+	source = https://cran.r-project.org/src/contrib/gsubfn_0.7.tar.gz
+	sha256sums = 89351df9e65722d2862f26a0a3985666de3c86e8400808ced8a6eb6e165a4602
+
+pkgname = r-gsubfn
