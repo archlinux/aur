@@ -1,0 +1,14 @@
+pkgbase = r-gnorm
+	pkgdesc = Generalized Normal/Exponential Power Distribution
+	pkgver = 1.0.0
+	pkgrel = 5
+	url = https://cran.r-project.org/package=gnorm
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/gnorm_1.0.0.tar.gz
+	sha256sums = 173399d6b810b6455799c34be11dd66d2d635f33332117232c931fb0381e049e
+
+pkgname = r-gnorm
