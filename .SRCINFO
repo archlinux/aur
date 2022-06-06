@@ -1,0 +1,12 @@
+pkgbase = r-grr
+	pkgdesc = Alternative Implementations of Base R Functions
+	pkgver = 0.9.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=grr
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/grr_0.9.5.tar.gz
+	sha256sums = 292606de2983ac5840c90d3e0977441b482c9e73c1674b662f8b4fb8f3632b2b
+
+pkgname = r-grr
