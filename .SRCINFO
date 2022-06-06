@@ -1,0 +1,28 @@
+pkgbase = r-visnetwork
+	pkgdesc = Network Visualization using 'vis.js' Library
+	pkgver = 2.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=visNetwork
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-magrittr
+	optdepends = r-colourpicker
+	optdepends = r-flashclust
+	optdepends = r-ggraph
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-shiny
+	optdepends = r-shinywidgets
+	optdepends = r-sparkline
+	optdepends = r-tidygraph
+	optdepends = r-webshot
+	source = https://cran.r-project.org/src/contrib/visNetwork_2.1.0.tar.gz
+	sha256sums = a2b91e7fbbd9d08a9929a5b2c891d9c0bca5977ad772fa37510d96656af1152f
+
+pkgname = r-visnetwork
