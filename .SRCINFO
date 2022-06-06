@@ -1,0 +1,13 @@
+pkgbase = r-generecommender
+	pkgdesc = A gene recommender algorithm to identify genes coexpressed with a query set of genes
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/geneRecommender
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneRecommender_1.68.0.tar.gz
+	sha256sums = 8c223947666229b7648e4236914eb9bfaa2d49e7a88c02658f537f7b3ead88ea
+
+pkgname = r-generecommender
