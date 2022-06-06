@@ -1,0 +1,16 @@
+pkgbase = r-weights
+	pkgdesc = Weighting and Weighted Statistics
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=weights
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gdata
+	depends = r-hmisc
+	depends = r-lme4
+	depends = r-mice
+	source = https://cran.r-project.org/src/contrib/weights_1.0.4.tar.gz
+	sha256sums = efbe65e8a9d05824a86095d45ed62ce24d82101d4ca3b94828d443e08e83ccba
+
+pkgname = r-weights
