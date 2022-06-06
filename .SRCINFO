@@ -1,0 +1,24 @@
+pkgbase = r-padog
+	pkgdesc = Pathway Analysis with Down-weighting of Overlapping Genes (PADOG)
+	pkgver = 1.38.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PADOG
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-dorng
+	depends = r-foreach
+	depends = r-gsa
+	depends = r-hgu133a.db
+	depends = r-hgu133plus2.db
+	depends = r-keggdzpathwaysgeo
+	depends = r-keggrest
+	depends = r-limma
+	optdepends = r-doparallel
+	optdepends = r-parallel
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PADOG_1.38.0.tar.gz
+	sha256sums = d8420ef25b091d58641b6bcba3aba69bdc080f3b175449580deea5c1512adc94
+
+pkgname = r-padog
