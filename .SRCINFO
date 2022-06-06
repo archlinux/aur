@@ -1,0 +1,13 @@
+pkgbase = r-mapplots
+	pkgdesc = Data Visualisation on Maps
+	pkgver = 1.5.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=mapplots
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-shapefiles
+	source = https://cran.r-project.org/src/contrib/mapplots_1.5.1.tar.gz
+	sha256sums = 37e96d34f37922180e07bb63b4514e07d42eee5bbf0885b278286ee48cf142a3
+
+pkgname = r-mapplots
