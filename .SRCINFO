@@ -1,0 +1,20 @@
+pkgbase = r-gwasurvivr
+	pkgdesc = gwasurvivr: an R package for genome wide survival analysis
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gwasurvivr
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-gwastools
+	depends = r-matrixstats
+	depends = r-snprelate
+	depends = r-summarizedexperiment
+	depends = r-variantannotation
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gwasurvivr_1.14.0.tar.gz
+	sha256sums = 60aa60868bda623df825377e0b24d5cc63af49d176316e4eb427901507b4b3b1
+
+pkgname = r-gwasurvivr
