@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@offend.me.uk>
 pkgname=ride-git
 pkgrel=1
-pkgver=v4.4.3682
+pkgver=v4.5.3692
 pkgdesc='A remote IDE for Dyalog APL'
 url='https://github.com/Dyalog/ride'
 arch=('x86_64')
@@ -25,12 +25,13 @@ sha256sums=(
 
 pkgver() {
     cd ride
-    git describe --tags | sed -e 's/-.*//'
+    npm i &>/dev/null
+    node mk
 }
 
 build() {
     cd ride
-    npm i || true  # npm is weird
+    npm i || true
     node mk linux
 }
 
