@@ -1,0 +1,12 @@
+pkgbase = r-rsvgtipsdevice
+	pkgdesc = An R SVG Graphics Device with Dynamic Tips and Hyperlinks
+	pkgver = 1.0.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RSVGTipsDevice
+	arch = any
+	license = GPL
+	depends = r
+	source = https://github.com/cran/RSVGTipsDevice/archive/refs/tags/1.0-7.tar.gz
+	sha256sums = 7a32f363b53289da992b4660031c008231b3990e1789cdc85ab47f3c786d1c54
+
+pkgname = r-rsvgtipsdevice
