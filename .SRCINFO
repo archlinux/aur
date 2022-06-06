@@ -1,0 +1,19 @@
+pkgbase = r-residualmatrix
+	pkgdesc = Creating a DelayedMatrix of Regression Residuals
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ResidualMatrix
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-delayedarray
+	depends = r-s4vectors
+	optdepends = r-biocsingular
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ResidualMatrix_1.6.0.tar.gz
+	sha256sums = 445b280e890d70303200a48599211c25841c03b564928cdf15924ba0f61b59de
+
+pkgname = r-residualmatrix
