@@ -1,0 +1,22 @@
+pkgbase = r-rhdf5client
+	pkgdesc = Access HDF5 content from h5serv
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rhdf5client
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-delayedarray
+	depends = r-s4vectors
+	depends = r-httr
+	depends = r-r6
+	depends = r-rjson
+	optdepends = r-knitr
+	optdepends = r-testthat
+	optdepends = r-biocstyle
+	optdepends = r-dt
+	optdepends = r-markdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5client_1.18.0.tar.gz
+	sha256sums = 2eb9e886214a22a9f5171f090af4df511011d50da3794706c37d7f88bdbdabd7
+
+pkgname = r-rhdf5client
