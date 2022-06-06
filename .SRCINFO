@@ -1,0 +1,16 @@
+pkgbase = r-rgraphviz
+	pkgdesc = Provides plotting capabilities for R graph objects
+	pkgver = 2.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rgraphviz
+	arch = x86_64
+	license = EPL
+	depends = r
+	depends = r-graph
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	optdepends = r-xml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rgraphviz_2.40.0.tar.gz
+	sha256sums = 94a4ce168efe39046fe10e2d75a9e459158716b4ef6ef977a0ced725f871cee4
+
+pkgname = r-rgraphviz
