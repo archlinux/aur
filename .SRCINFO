@@ -1,0 +1,25 @@
+pkgbase = r-gosemsim
+	pkgdesc = GO-terms Semantic Similarity Measures
+	pkgver = 2.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GOSemSim
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-go.db
+	depends = r-rcpp
+	optdepends = r-annotationhub
+	optdepends = r-biocmanager
+	optdepends = r-clusterprofiler
+	optdepends = r-dose
+	optdepends = r-knitr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-rocr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOSemSim_2.22.0.tar.gz
+	sha256sums = 6d93c0bd9075bb3fb3b65d08906a657ddb8ee5d3ced337914b0f54d0fe2de1c2
+
+pkgname = r-gosemsim
