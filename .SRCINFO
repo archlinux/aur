@@ -1,0 +1,20 @@
+pkgbase = r-triplex
+	pkgdesc = Search and visualize intramolecular triplex-forming sequences in DNA
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/triplex
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-biostrings
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-xvector
+	optdepends = r-bsgenome.celegans.ucsc.ce10
+	optdepends = r-rgl
+	optdepends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/triplex_1.36.0.tar.gz
+	sha256sums = 08bf4e0c1ddb048cf356037133fe86072c9919e23adfdc360c82efbc37a8ce1f
+
+pkgname = r-triplex
