@@ -1,0 +1,13 @@
+pkgbase = r-reportroc
+	pkgdesc = An Easy Way to Report ROC Analysis
+	pkgver = 3.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=reportROC
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-proc
+	source = https://cran.r-project.org/src/contrib/reportROC_3.5.tar.gz
+	sha256sums = 16d9d1032cfc4de25b23f686ec3e1379a38760bd81ac516fd013ae427e6f7bb8
+
+pkgname = r-reportroc
