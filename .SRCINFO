@@ -1,0 +1,16 @@
+pkgbase = r-rgin
+	pkgdesc = gin in R
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rgin
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcppeigen
+	depends = r-rcpp
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rgin_1.15.0.tar.gz
+	sha256sums = 6ae18bf9e748671366ad65c3de03552da49db4cff6ba08601759ef5c9a90bff4
+
+pkgname = r-rgin
