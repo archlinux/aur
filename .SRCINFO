@@ -1,0 +1,18 @@
+pkgbase = r-metams
+	pkgdesc = MS-based metabolomics annotation pipeline
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/metaMS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-camera
+	depends = r-robustbase
+	depends = r-xcms
+	optdepends = r-metamsdata
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaMS_1.32.0.tar.gz
+	sha256sums = eab942c6554365441204f54b01bf61e87362ce3ecbee1ebbfdb2593ce6d8ad02
+
+pkgname = r-metams
