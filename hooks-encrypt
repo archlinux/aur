@@ -60,6 +60,19 @@ EOF
         cryptname="root"
     fi
 
+    IFS=, read cryptdev cryptdevpath <<EOF
+$cryptdev
+EOF
+
+    if [ -n "${cryptdevpath}" ]; then
+        if mount --mkdir "defaults" "${cryptdev}" /run/cryptdev; then
+            cryptdev="${cryptdevpath}"
+            echo "Device ${cryptdev} mounted successfully over /run/cryptdev"
+        else
+            echo "Can't mount device ${cryptdev} over /run/cryptdev"
+        fi
+    fi
+
     # This may happen if third party hooks do the crypt setup
     if [ -b "/dev/mapper/${cryptname}" ]; then
         echo "Device ${cryptname} already exists, not doing any crypt setup."
