@@ -1,0 +1,18 @@
+pkgbase = r-rtnduals
+	pkgdesc = Analysis of co-regulation and inference of 'dual regulons'
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RTNduals
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-rtn
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTNduals_1.20.0.tar.gz
+	sha256sums = 77a8a289b08c3a804059235719d6ebade83d5f8f851d691cb58469485afdf451
+
+pkgname = r-rtnduals
