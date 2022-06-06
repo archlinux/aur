@@ -1,0 +1,22 @@
+pkgbase = r-msstatssamplesize
+	pkgdesc = Simulation tool for optimal design of high-dimensional MS-based proteomics experiment
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MSstatsSampleSize
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocparallel
+	depends = r-caret
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-msstats
+	depends = r-reshape2
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsSampleSize_1.10.0.tar.gz
+	sha256sums = 979ec5f12f65703989c53531961435f87534ddcc0de8bdd9681468e132a78c25
+
+pkgname = r-msstatssamplesize
