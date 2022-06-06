@@ -1,0 +1,14 @@
+pkgbase = r-mbcb
+	pkgdesc = MBCB (Model-based Background Correction for Beadarray)
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MBCB
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-preprocesscore
+	depends = r-tcltk2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBCB_1.50.0.tar.gz
+	sha256sums = d1114ef2d1d24a547bfc42744b1152b4aa2c450a2d15eefd96103dbd237e54e3
+
+pkgname = r-mbcb
