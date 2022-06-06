@@ -1,0 +1,13 @@
+pkgbase = r-hash
+	pkgdesc = Full Feature Implementation of Hash/Associated Arrays/Dictionaries
+	pkgver = 2.2.6.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=hash
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/hash_2.2.6.2.tar.gz
+	sha256sums = 75a3a64014d2a99f08d12594d14fdade136f278abcf6252119cc20558ed14c9f
+
+pkgname = r-hash
