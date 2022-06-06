@@ -1,0 +1,15 @@
+pkgbase = r-rocit
+	pkgdesc = Performance Assessment of Binary Classifier with Visualization
+	pkgver = 2.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ROCit
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ROCit_2.1.1.tar.gz
+	sha256sums = a5287c111b028d15ef00e4ae0af2a27380769e710e8ffb3fe458a179e064a669
+
+pkgname = r-rocit
