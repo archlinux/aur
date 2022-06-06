@@ -1,7 +1,7 @@
 pkgbase = teamviewer-beta
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
-	pkgver = 15.30.3
-	pkgrel = 5
+	pkgver = 15.31.1
+	pkgrel = 1
 	url = https://www.teamviewer.com/en-us/download/linux/
 	install = teamviewer.install
 	arch = i686
@@ -18,14 +18,14 @@ pkgbase = teamviewer-beta
 	provides = teamviewer=15
 	conflicts = teamviewer
 	options = !strip
-	source_i686 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.30.3_i386.deb
-	sha256sums_i686 = 024b58ec2810e16cbfed61f8a75d5ca3602557c15be326392b5da1e72bcdc299
-	sha512sums_i686 = de13a2df7b0c330581779165dd173752246cc0389522a26e3c849b88b53a3352d1b98b5d7f91f241eef6ce5a9e6548ff951db6a41333a5e84258d99f9bfde4a7
-	source_x86_64 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.30.3_amd64.deb
-	sha256sums_x86_64 = f98285c7ec21c13fb1968f1d545292759fab2d9906d962b7edd1cf9b1f49812c
-	sha512sums_x86_64 = cba19f905930ae93f23f9ae59bdd6869af3f7cb5f815e0da8c515493de9b9dab48828f8a08018838945b2df5778f581f505dd462d97ee423507faef745c6790d
-	source_armv7h = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.30.3_armhf.deb
-	sha256sums_armv7h = 760e7f4b4f964220464c89eca95c60e0597f0cba1a6008fb0a0b73217a6c5d5e
-	sha512sums_armv7h = dde832cfb523fa6dbb69e6247796c3b95a239bb47616237bb730a8355731414ffcb020513a876b15089d4248227231afaa6d2d3c0d5e1ffc33350ec06e6060e9
+	source_i686 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.31.1_i386.deb
+	sha256sums_i686 = 99418ebbccbc75d6b2f1bd5261da2324422cf94c6f89270379a5b40b22cd032a
+	sha512sums_i686 = 596cecac347b58ed2512e9d1c9c0d74da811f2bcc7f63b525ceacc077a9d422b22a137abfc7eaa7961136d16f9b764afad936aa0431ce0ce2b7164dd3a3ac0e6
+	source_x86_64 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.31.1_amd64.deb
+	sha256sums_x86_64 = e28b4e7fa128d00b792441c72cd451b24b166c10631b5bcf0493053fc9ed67f6
+	sha512sums_x86_64 = 9bf563273a02a67f9b953f45ec82abe20ba01b35e1a2d001b4639387c82af1ff4a5bd1050854ec2b6baedb2c948f0be51b2cee035292e2f1c5e1c620ac37f1cc
+	source_armv7h = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.31.1_armhf.deb
+	sha256sums_armv7h = 8dc6a7971137857566224bcb66e884a4d3247fceb720328ba8be5fbe58c2fc15
+	sha512sums_armv7h = cb7a9e052518bb230691707b207ee9a4865d10eaf3f9aa357d1ba853fe0abc769dda11531f9704312d068f329a602c1d44767a61d99408452da05953ef2aa05d
 
 pkgname = teamviewer-beta
