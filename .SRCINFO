@@ -1,0 +1,13 @@
+pkgbase = r-tspair
+	pkgdesc = Top Scoring Pairs for Microarray Classification
+	pkgver = 1.53.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tspair
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tspair_1.53.0.tar.gz
+	sha256sums = b3a00f4f49371e46b138a728d5430f4fb0084dd7816e3418b4d3d61146cdbd13
+
+pkgname = r-tspair
