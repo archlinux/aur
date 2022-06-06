@@ -1,0 +1,14 @@
+pkgbase = r-ssize
+	pkgdesc = Estimate Microarray Sample Size
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ssize
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-gdata
+	depends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ssize_1.70.0.tar.gz
+	sha256sums = f3fdaeb82351874bcbe2eabd8cecad01c57cd7bc475c28c776a2c8667ae26d21
+
+pkgname = r-ssize
