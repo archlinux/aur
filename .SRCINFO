@@ -1,0 +1,24 @@
+pkgbase = r-rcwl
+	pkgdesc = An R interface to the Common Workflow Language
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rcwl
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-basilisk
+	depends = r-batchtools
+	depends = r-biocparallel
+	depends = r-diagrammer
+	depends = r-r.utils
+	depends = r-s4vectors
+	depends = r-shiny
+	depends = r-yaml
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rcwl_1.12.0.tar.gz
+	sha256sums = 324d0cabc10c5ce0d939c37237f010306f63c27610161e9852d2903ae07f20e0
+
+pkgname = r-rcwl
