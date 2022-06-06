@@ -1,0 +1,22 @@
+pkgbase = r-made4
+	pkgdesc = Multivariate analysis of microarray data using ADE4
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/made4
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ade4
+	depends = r-biobase
+	depends = r-gplots
+	depends = r-rcolorbrewer
+	depends = r-scatterplot3d
+	depends = r-summarizedexperiment
+	optdepends = r-affy
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/made4_1.70.0.tar.gz
+	sha256sums = 052fd352f96e07f2cfa773e3b41d6c4f84ce0f2752e915fcc7299d5b454b3bf3
+
+pkgname = r-made4
