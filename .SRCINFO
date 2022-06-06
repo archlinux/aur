@@ -5,6 +5,7 @@ pkgbase = petit-git
 	url = https://www.github.com/weebcyberpunk/petit
 	arch = x86_64
 	license = MIT
+	depends = python
 	provides = petit
 	source = git+https://www.github.com/weebcyberpunk/petit
 	md5sums = SKIP
