@@ -2,7 +2,7 @@
 
 pkgname=qt-aseman
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of C++ and QML tools and modules that helps you develop your projects easier and better."
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -30,8 +30,10 @@ package() {
 	install -dm755 "${pkgdir}"/usr/lib/qt/qml/AsemanQml
 	install -dm755 "${pkgdir}"/usr/lib/qt/qml/QtQuick
 	install -dm755 "${pkgdir}"/usr/lib/qt/mkspecs/modules
+	install -dm755 "${pkgdir}"/usr/lib/qt/mkspecs/modules-inst
 	cp -r ./QtAseman/build/lib/* "${pkgdir}"/usr/lib
 	cp -r ./QtAseman/build/mkspecs/modules/* "${pkgdir}"/usr/lib/qt/mkspecs/modules
+	cp -r ./QtAseman/build/mkspecs/modules-inst/* "${pkgdir}"/usr/lib/qt/mkspecs/modules-inst
 	cp -r ./QtAseman/build/include/* "${pkgdir}"/usr/include
 	cp -r ./QtAseman/build/qml/AsemanQml/* "${pkgdir}"/usr/lib/qt/qml/AsemanQml
 	cp -r ./QtAseman/build/qml/QtQuick/* "${pkgdir}"/usr/lib/qt/qml/QtQuick
