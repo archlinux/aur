@@ -1,0 +1,24 @@
+pkgbase = r-jaspdistributions
+	pkgdesc = Distributions Module for JASP
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspDistributions
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-car
+	depends = r-fitdistrplus
+	depends = r-ggplot2
+	depends = r-goftest
+	depends = r-gnorm
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-sgt
+	depends = r-sn
+	source = git+https://github.com/jasp-stats/jaspDistributions.git
+	sha256sums = SKIP
+
+pkgname = r-jaspdistributions
