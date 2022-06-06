@@ -1,0 +1,32 @@
+pkgbase = r-summarytools
+	pkgdesc = Tools to Quickly and Neatly Summarize Data
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=summarytools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-base64enc
+	depends = r-checkmate
+	depends = r-dplyr
+	depends = r-htmltools
+	depends = r-lubridate
+	depends = r-magick
+	depends = r-matrixstats
+	depends = r-pander
+	depends = r-pryr
+	depends = r-rapportools
+	depends = r-tibble
+	depends = r-tidyr
+	depends = tk
+	optdepends = r-forcats
+	optdepends = r-formatr
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	source = https://cran.r-project.org/src/contrib/summarytools_1.0.1.tar.gz
+	sha256sums = fdf5a802321821777cebf1c8f3c81f700d690f3713be0eb4890d29191a2b293f
+
+pkgname = r-summarytools
