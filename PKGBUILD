@@ -2,13 +2,14 @@
 
 _pkgbase=jool
 pkgname=${_pkgbase}-dkms-git
-pkgver=4.0.9.r0.g3e1e8fd1
+pkgver=4.1.8.r2.g5604a61f
 pkgrel=1
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=('i686' 'x86_64')
 url="https://www.jool.mx"
 license=('GPL2')
 depends=('dkms' 'libnl')
+makedepend=('git')
 
 source=("git+https://github.com/NICMx/Jool.git")
 md5sums=(SKIP)
