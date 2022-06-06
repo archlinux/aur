@@ -1,0 +1,25 @@
+pkgbase = r-lrcell
+	pkgdesc = Differential cell type change analysis using Logistic/linear Regression
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/LRcell
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-annotationhub
+	depends = r-biocparallel
+	depends = r-dplyr
+	depends = r-experimenthub
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-magrittr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-lrcelltypemarkers
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LRcell_1.4.0.tar.gz
+	sha256sums = 7ec8b599a45e4aa84927aa8919962e342110f8d4236bb19f6625859e4317837a
+
+pkgname = r-lrcell
