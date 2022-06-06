@@ -1,0 +1,27 @@
+pkgbase = r-jaspmixedmodels
+	pkgdesc = Mixed Models Module for JASP
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspMixedModels
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspcommon
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-afex
+	depends = r-emmeans
+	depends = r-ggplot2
+	depends = r-ggpol
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-lme4
+	depends = r-loo
+	depends = r-mgcv
+	depends = r-rstan
+	depends = r-rstanarm
+	depends = r-stanova
+	source = git+https://github.com/jasp-stats/jaspMixedModels.git
+	sha256sums = SKIP
+
+pkgname = r-jaspmixedmodels
