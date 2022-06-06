@@ -1,0 +1,19 @@
+pkgbase = r-lhs
+	pkgdesc = Latin Hypercube Samples
+	pkgver = 1.1.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=lhs
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-assertthat
+	optdepends = r-covr
+	optdepends = r-doe.base
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/lhs_1.1.5.tar.gz
+	sha256sums = 7a3c6fdcc953490e51026e17a0b1a9dc0ca8d03e6fc989457a7cdda2075b6339
+
+pkgname = r-lhs
