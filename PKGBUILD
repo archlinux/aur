@@ -1,4 +1,4 @@
-pkgname='perl-extutils-parsexs-aur'
+pkgname='perl-extutils-parsexs'
 pkgver='3.45'
 pkgrel='1'
 pkgdesc="Converts Perl XS code into C code"
@@ -7,7 +7,6 @@ url='https://metacpan.org/release/ExtUtils-ParseXS'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 options=('!emptydirs')
-provides=(perl-extutils-parsexs=${pkgver})
 #source=("http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/ExtUtils-ParseXS-$pkgver.tar.gz")
 source=("http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/ExtUtils-ParseXS-3.44.tar.gz" 'https://src.fedoraproject.org/rpms/perl-ExtUtils-ParseXS/raw/rawhide/f/ExtUtils-ParseXS-3.44-Upgrade-to-3.45.patch')
 sha256sums=('77effdf31af36ef656f09aa7c15356d238dab6d1afaa7278ae15c1b6bcf86266'
