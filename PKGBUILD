@@ -1,16 +1,16 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
 url="https://git.sr.ht/~tsdh/swayr"
 license=('GPL3')
-depends=('gcc-libs')
+depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 
-sha256sums=('704018bb88ee526aac0e7fa4515b2a317153560386c73d2710950ebd381d84d4')
+sha256sums=('4181790149171e0d2432a445a196043a655a2386abd73f26f93fb451010ce56a')
 
 build() {
    cd $pkgname-$pkgver
@@ -19,7 +19,7 @@ build() {
 
 check() {
    cd $pkgname-$pkgver
-   RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
+   RUSTUP_TOOLCHAIN=stable HOME=. cargo test --release --locked --target-dir=target
 }
 
 package() {
