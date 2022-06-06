@@ -1,0 +1,12 @@
+pkgbase = r-poilog
+	pkgdesc = Poisson lognormal and bivariate Poisson lognormal distribution
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=poilog
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/poilog_0.4.1.tar.gz
+	sha256sums = b126416e50d87c758fc058d05c6c4c9fd74fa1a6850da66acc7faf50c415389f
+
+pkgname = r-poilog
