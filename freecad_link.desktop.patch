@@ -1,0 +1,17 @@
+--- squashfs-root/freecad_link.desktop
++++ squashfs-root/freecad_link.desktop
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Version=1.0
+-Name=FreeCAD Link Branch
+-Exec=AppRun
+-Icon=freecad_link
++Name=FreeCAD Assembly3
++Exec=/usr/bin/freecad-asm3 %F
++Icon=freecad-asm3-appimage
+ Type=Application
+-Categories=Engineering;
++Categories=Engineering;Construction;Development;
+ Comment=Feature based Parametric Modeler
+ Terminal=false
+ StartupNotify=true
