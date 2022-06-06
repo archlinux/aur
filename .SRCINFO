@@ -1,0 +1,31 @@
+pkgbase = r-spatstat.core
+	pkgdesc = Core Functionality of the 'spatstat' Family
+	pkgver = 2.4.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=spatstat.core
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-goftest
+	depends = r-spatstat.data
+	depends = r-spatstat.geom
+	depends = r-spatstat.sparse
+	depends = r-spatstat.utils
+	depends = r-spatstat.random
+	depends = r-tensor
+	optdepends = r-fftwtools
+	optdepends = r-gsl
+	optdepends = r-locfit
+	optdepends = r-maptools
+	optdepends = r-nleqslv
+	optdepends = r-randomfields
+	optdepends = r-randomfieldsutils
+	optdepends = r-sm
+	optdepends = r-spatial
+	optdepends = r-spatstat
+	optdepends = r-spatstat.linnet
+	source = https://cran.r-project.org/src/contrib/spatstat.core_2.4-4.tar.gz
+	sha256sums = e38c39efe8b14d6e8fdbee8dd870b90c52f78ea571ab7988fd3685f48347d13b
+
+pkgname = r-spatstat.core

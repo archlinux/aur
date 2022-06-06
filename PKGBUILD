@@ -1,0 +1,47 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=spatstat.core
+_pkgver=2.4-4
+pkgname=r-${_pkgname,,}
+pkgver=2.4.4
+pkgrel=3
+pkgdesc="Core Functionality of the 'spatstat' Family"
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-abind
+  r-goftest
+  r-spatstat.data
+  r-spatstat.geom
+  r-spatstat.sparse
+  r-spatstat.utils
+  r-spatstat.random
+  r-tensor
+)
+optdepends=(
+  r-fftwtools
+  r-gsl
+  r-locfit
+  r-maptools
+  r-nleqslv
+  r-randomfields
+  r-randomfieldsutils
+  r-sm
+  r-spatial
+  r-spatstat
+  r-spatstat.linnet
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('e38c39efe8b14d6e8fdbee8dd870b90c52f78ea571ab7988fd3685f48347d13b')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
