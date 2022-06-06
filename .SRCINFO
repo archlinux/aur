@@ -1,0 +1,29 @@
+pkgbase = r-learnr
+	pkgdesc = Interactive Tutorials for R
+	pkgver = 0.10.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=learnr
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-checkmate
+	depends = r-ellipsis
+	depends = r-evaluate
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-knitr
+	depends = r-markdown
+	depends = r-rappdirs
+	depends = r-renv
+	depends = r-rmarkdown
+	depends = r-rprojroot
+	depends = r-shiny
+	depends = r-withr
+	optdepends = r-callr
+	optdepends = r-rlang
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/learnr_0.10.1.tar.gz
+	sha256sums = 6174932b8dbdb7c458c8d89e242359b0903040332cd1e5741b1e956e74adbc23
+
+pkgname = r-learnr
