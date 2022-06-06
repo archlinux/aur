@@ -1,0 +1,18 @@
+pkgbase = r-paircompviz
+	pkgdesc = Multiple comparison test visualization
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/paircompviz
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rgraphviz
+	optdepends = r-multcomp
+	optdepends = r-plyr
+	optdepends = r-reshape
+	optdepends = r-rpart
+	optdepends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/paircompviz_1.34.0.tar.gz
+	sha256sums = 11a84692fb27414bbcc0273114a273fe85850ca4c75d385ca4882be150e5d801
+
+pkgname = r-paircompviz
