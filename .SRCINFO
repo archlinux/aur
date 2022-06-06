@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-fpng-git
+	pkgdesc = Plugin for VapourSynth: fpng (GIT version)
+	pkgver = r3.6c49a7a
+	pkgrel = 1
+	url = https://github.com/Mikewando/vsfpng
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-fpng
+	conflicts = vapoursynth-plugin-fpng
+	source = fpng::git+https://github.com/Mikewando/vsfpng.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-fpng-git
