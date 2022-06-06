@@ -1,0 +1,23 @@
+pkgbase = r-smurf
+	pkgdesc = Sparse Multi-Type Regularized Feature Modeling
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=smurf
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-catdata
+	depends = r-glmnet
+	depends = r-rcolorbrewer
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-speedglm
+	optdepends = r-bookdown
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/smurf_1.1.3.tar.gz
+	sha256sums = eb0d3764321760e9ab6da26575c9136cef96cd73324e8b9a51209fb0f46f2959
+
+pkgname = r-smurf
