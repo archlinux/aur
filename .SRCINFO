@@ -1,0 +1,17 @@
+pkgbase = r-excluster
+	pkgdesc = ExCluster robustly detects differentially expressed exons between two conditions of RNA-seq data, requiring at least two independent biological replicates per condition
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ExCluster
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-matrixstats
+	depends = r-rsubread
+	depends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExCluster_1.14.0.tar.gz
+	sha256sums = 5d12ec03811e864422fb118aafc93b8469e9d6adf02bd847e064d79f2885b3ef
+
+pkgname = r-excluster
