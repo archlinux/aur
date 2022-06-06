@@ -1,0 +1,12 @@
+pkgbase = r-weibullness
+	pkgdesc = Goodness-of-Fit Test for Weibull Distribution (Weibullness)
+	pkgver = 1.19.8
+	pkgrel = 5
+	url = https://cran.r-project.org/package=weibullness
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/weibullness_1.19.8.tar.gz
+	sha256sums = b9a6296e68d18fd37a2b7e3d5cb9e76bffa446965e43dd5d7c165ad67b2544a7
+
+pkgname = r-weibullness
