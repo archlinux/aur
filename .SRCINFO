@@ -1,0 +1,20 @@
+pkgbase = r-getoptlong
+	pkgdesc = Parsing Command-Line Arguments and Simple Variable Interpolation
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GetoptLong
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-crayon
+	depends = r-globaloptions
+	depends = r-rjson
+	depends = perl
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/GetoptLong_1.0.5.tar.gz
+	sha256sums = 8c237986ed3dfb72d956ad865ef7768644eebf144675ad66140acfd1aca9d701
+
+pkgname = r-getoptlong
