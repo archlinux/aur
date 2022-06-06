@@ -1,0 +1,16 @@
+pkgbase = r-lumihumanall.db
+	pkgdesc = Illumina Human Illumina expression annotation data (chip lumiHumanAll)
+	pkgver = 1.22.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/lumiHumanAll.db
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-org.hs.eg.db
+	optdepends = r-annotate
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/lumiHumanAll.db_1.22.0.tar.gz
+	sha256sums = a2c1bd766e756eb7e01cf196c1809c8a282a4c4caaf1482a0d1961b2c2a8c24e
+
+pkgname = r-lumihumanall.db
