@@ -1,0 +1,18 @@
+pkgbase = r-htqpcr
+	pkgdesc = Automated analysis of high-throughput qPCR data
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HTqPCR
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-gplots
+	depends = r-limma
+	depends = r-rcolorbrewer
+	optdepends = r-statmod
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HTqPCR_1.50.0.tar.gz
+	sha256sums = 0c2b386c94727d0a70c2d2c0cab12aef063b2c2eec081af0f273c4cb7f46a92a
+
+pkgname = r-htqpcr
