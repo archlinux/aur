@@ -1,0 +1,26 @@
+pkgbase = r-pram
+	pkgdesc = Pooling RNA-seq datasets for assembling transcript models
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pram
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-data.table
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pram_1.12.0.tar.gz
+	sha256sums = e4e3fd790bac0259d7fd228774de349faed77beaecc96576a48e8fc1e68919ea
+
+pkgname = r-pram
