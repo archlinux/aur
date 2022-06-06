@@ -1,0 +1,16 @@
+pkgbase = r-powerlaw
+	pkgdesc = Analysis of Heavy Tailed Distributions
+	pkgver = 0.70.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=poweRlaw
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-pracma
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/poweRlaw_0.70.6.tar.gz
+	sha256sums = efc091449c5c6494c1c13c85a8eb95625d1c55ffffebe86c7ea16e4abbafa191
+
+pkgname = r-powerlaw
