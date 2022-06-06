@@ -1,0 +1,17 @@
+pkgbase = r-investr
+	pkgdesc = Inverse Estimation/Calibration Functions
+	pkgver = 1.4.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=investr
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-boot
+	optdepends = r-datasets
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/investr_1.4.2.tar.gz
+	sha256sums = 2a07537777b95370f574b597e1d97279cd700ec9d17d2bad8a1c8ef846dc198a
+
+pkgname = r-investr
