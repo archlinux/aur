@@ -2,7 +2,7 @@
 # Contributor: Sasasu <lizhaolong0123@gmail.com>
 
 pkgname=hex2bin-git
-pkgver=r20.578c77c
+pkgver=r45.141f873
 pkgrel=1
 pkgdesc="Hex to binary converter."
 arch=('any')

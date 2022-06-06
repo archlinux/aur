@@ -1,6 +1,6 @@
 pkgbase = hex2bin-git
 	pkgdesc = Hex to binary converter.
-	pkgver = r20.578c77c
+	pkgver = r45.141f873
 	pkgrel = 1
 	url = https://github.com/Keidan/hex2bin
 	arch = any
