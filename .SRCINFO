@@ -1,0 +1,15 @@
+pkgbase = r-hmeasure
+	pkgdesc = The H-Measure and Other Scalar Classification Performance Metrics
+	pkgver = 1.0.2
+	pkgrel = 5
+	url = https://cran.r-project.org/package=hmeasure
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-class
+	optdepends = r-mass
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/hmeasure_1.0-2.tar.gz
+	sha256sums = 1c56689e76a72bbef60dab92b23e87908793ce68afdaa0546c6d8a51bca59650
+
+pkgname = r-hmeasure
