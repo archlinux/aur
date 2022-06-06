@@ -1,0 +1,25 @@
+pkgbase = r-ggridges
+	pkgdesc = Ridgeline Plots in 'ggplot2'
+	pkgver = 0.5.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggridges
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-plyr
+	depends = r-scales
+	depends = r-withr
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-forcats
+	optdepends = r-ggplot2movies
+	optdepends = r-knitr
+	optdepends = r-patchwork
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggridges_0.5.3.tar.gz
+	sha256sums = f5eafab17f2d4a8a2a83821ad3e96ae7c26b62bbce9de414484c657383c7b42e
+
+pkgname = r-ggridges
