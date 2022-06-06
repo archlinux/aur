@@ -1,0 +1,15 @@
+pkgbase = r-mgfm
+	pkgdesc = Marker Gene Finder in Microarray gene expression data
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MGFM
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotate
+	depends = r-annotationdbi
+	optdepends = r-hgu133a.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MGFM_1.30.0.tar.gz
+	sha256sums = 6902a7ee07780b33b0292e2b31a4d7ed4afaff9594cfb6c90ca39828f6a50e38
+
+pkgname = r-mgfm
