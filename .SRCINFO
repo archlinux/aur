@@ -1,0 +1,14 @@
+pkgbase = r-mlapi
+	pkgdesc = Abstract Classes for Building 'scikit-learn' Like API
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mlapi
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-r6
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/mlapi_0.1.1.tar.gz
+	sha256sums = d9ce7932a2c07fa07689f8a120afad77293544fb227ad22e8909add44d8cd1e3
+
+pkgname = r-mlapi
