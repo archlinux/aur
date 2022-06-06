@@ -1,0 +1,27 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=pmm
+_pkgver=1.28.0
+pkgname=r-${_pkgname,,}
+pkgver=1.28.0
+pkgrel=1
+pkgdesc='Parallel Mixed Model'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-lme4
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('f98ec298b22c5db51d08f2f91cf026035587980ef2a35919bd5a421692254be8')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:

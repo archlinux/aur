@@ -1,0 +1,13 @@
+pkgbase = r-pmm
+	pkgdesc = Parallel Mixed Model
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pmm
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lme4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pmm_1.28.0.tar.gz
+	sha256sums = f98ec298b22c5db51d08f2f91cf026035587980ef2a35919bd5a421692254be8
+
+pkgname = r-pmm
