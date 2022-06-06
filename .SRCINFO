@@ -1,0 +1,24 @@
+pkgbase = r-edger
+	pkgdesc = Empirical Analysis of Digital Gene Expression Data in R
+	pkgver = 3.38.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/edgeR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-limma
+	depends = r-locfit
+	depends = r-rcpp
+	depends = gcc
+	optdepends = r-annotationdbi
+	optdepends = r-biobase
+	optdepends = r-jsonlite
+	optdepends = r-org.hs.eg.db
+	optdepends = r-readr
+	optdepends = r-rhdf5
+	optdepends = r-splines
+	optdepends = r-summarizedexperiment
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/edgeR_3.38.1.tar.gz
+	sha256sums = 3356f4f1349267091db058367f2f74faf78b5a7b42dfc7c1f0af94604e1d23e1
+
+pkgname = r-edger
