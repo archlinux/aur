@@ -1,0 +1,14 @@
+pkgbase = r-invariantcausalprediction
+	pkgdesc = Invariant Causal Prediction
+	pkgver = 0.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=InvariantCausalPrediction
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-glmnet
+	depends = r-mboost
+	source = https://cran.r-project.org/src/contrib/InvariantCausalPrediction_0.8.tar.gz
+	sha256sums = 542ecf1dacc153bca2d9c055da57f8650d4e8925aa850df2bcadd344e5f69305
+
+pkgname = r-invariantcausalprediction
