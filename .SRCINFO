@@ -1,0 +1,27 @@
+pkgbase = r-hipathia
+	pkgdesc = HiPathia: High-throughput Pathway Analysis
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/hipathia
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationhub
+	depends = r-coin
+	depends = r-delayedarray
+	depends = r-igraph
+	depends = r-limma
+	depends = r-matrixstats
+	depends = r-multiassayexperiment
+	depends = r-preprocesscore
+	depends = r-s4vectors
+	depends = r-servr
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hipathia_2.12.0.tar.gz
+	sha256sums = 50a7c8166c0b97169c907fffc541c98f6d3048fca9093b495f6c4a1250f5ef95
+
+pkgname = r-hipathia
