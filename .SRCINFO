@@ -1,0 +1,14 @@
+pkgbase = r-diffr
+	pkgdesc = Display Differences Between Two Files using Codediff Library
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=diffr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-htmlwidgets
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/diffr_0.1.tar.gz
+	sha256sums = e82ec76b4eadee8ec682f83a8a9d3ffe6309fc31e6c66db573d6e7f8fdb5bc79
+
+pkgname = r-diffr
