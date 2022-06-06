@@ -1,0 +1,16 @@
+pkgbase = r-sn
+	pkgdesc = The Skew-Normal and Related Distributions Such as the Skew-t and the SUN
+	pkgver = 2.0.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=sn
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mnormt
+	depends = r-numderiv
+	depends = r-quantreg
+	optdepends = r-r.rsp
+	source = https://cran.r-project.org/src/contrib/sn_2.0.2.tar.gz
+	sha256sums = 957b49027c2111f51893433e902486141a942a5ed384ca605714605de80d1790
+
+pkgname = r-sn
