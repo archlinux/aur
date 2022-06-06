@@ -13,10 +13,10 @@ source=(
     "${url}/releases/download/v${pkgver}/ck-server-linux-amd64-v${pkgver}"
     "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-    90aee78dff01f64cec81429d00f771f0ee39923690364b674a84cb728dcc59c8
-    a5b137280eccadd5cfb0132b783477ede6096741855d5fd6ced8ea42727f7fd1
-    3397c389d2917b0df6f733a96a7ff82babe14963398ba109e9cf60b19be30ee1
+sha512sums=(
+    'd2b6d91d4cd49470096773824783d9b2f017dcfe5e647ee8165a4495b3f62d7e03d4dc84671a014e3cf0c13b0fe39240545045dc4bf7bb4bce47189d693120d2'
+    '8daf98edcd611bf248cb3ea32cb44d2dc0d3ad31bfbbcc70b7fa25a10c6def1e07b51627a53ec8f477015d43ec3ce2c93a21638ad53f6a52909e594171a4d5d5'
+    'f75ca585cd2aabfd2a3cd9c66686876ce8c1d58677d16053bf5e7c66e48068d6d73377313f9d67faa1c4ffef81e8f37754c275ea530a12df7f5b5de8dca71de1'
 )
 backup=(
     'etc/cloak/ckclient.json'
