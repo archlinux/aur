@@ -1,0 +1,36 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=drawer
+_pkgver=0.2.0.0
+pkgname=r-${_pkgname,,}
+pkgver=0.2.0.0
+pkgrel=3
+pkgdesc='An Interactive HTML Image Editing Tool'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-bsplus
+  r-glue
+  r-htmltools
+  r-magrittr
+  r-shiny
+  r-stringr
+)
+optdepends=(
+  r-ggplot2
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('f3be1ad0164022a67e21bfde58db178854a6127fdeaeb2710ad59d0126965d5a')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
