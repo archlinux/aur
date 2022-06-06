@@ -1,0 +1,18 @@
+pkgbase = r-spbayes
+	pkgdesc = Univariate and Multivariate Spatial-Temporal Modeling
+	pkgver = 0.4.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=spBayes
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-coda
+	depends = r-formula
+	depends = r-magic
+	depends = r-sp
+	optdepends = r-geor
+	optdepends = r-mba
+	source = https://cran.r-project.org/src/contrib/spBayes_0.4-6.tar.gz
+	sha256sums = 5c96d11c7ab8f7a800062296a1a084f7f2bd984986560eff0ed98a8116746014
+
+pkgname = r-spbayes
