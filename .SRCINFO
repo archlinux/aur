@@ -1,0 +1,18 @@
+pkgbase = r-ideoviz
+	pkgdesc = Plots data (continuous/discrete) along chromosomal ideogram
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IdeoViz
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcolorbrewer
+	depends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IdeoViz_1.32.0.tar.gz
+	sha256sums = 034a6ab0dd566698113740807898ed8e778240b7951d4e51a917cad85c1c90f3
+
+pkgname = r-ideoviz
