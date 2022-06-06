@@ -1,0 +1,19 @@
+pkgbase = r-fme
+	pkgdesc = A Flexible Modelling Environment for Inverse Modelling, Sensitivity, Identifiability and Monte Carlo Analysis
+	pkgver = 1.3.6.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=FME
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-coda
+	depends = r-desolve
+	depends = r-minpack.lm
+	depends = r-minqa
+	depends = r-rootsolve
+	optdepends = r-diagram
+	source = https://cran.r-project.org/src/contrib/FME_1.3.6.2.tar.gz
+	sha256sums = 65a200f8171e27f0a3d7ffce3e49b01561f219a11f3cb515ff613a45927ff618
+
+pkgname = r-fme
