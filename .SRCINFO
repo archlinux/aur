@@ -1,0 +1,12 @@
+pkgbase = r-ineq
+	pkgdesc = Measuring Inequality, Concentration, and Poverty
+	pkgver = 0.2.13
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ineq
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/ineq_0.2-13.tar.gz
+	sha256sums = e0876403f59a3dfc2ea7ffc0d965416e1ecfdecf154e5856e5f54800b3efda25
+
+pkgname = r-ineq
