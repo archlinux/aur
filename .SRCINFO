@@ -1,0 +1,17 @@
+pkgbase = r-targetscore
+	pkgdesc = TargetScore: Infer microRNA targets using microRNA-overexpression data and sequence information
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TargetScore
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-pracma
+	optdepends = r-biobase
+	optdepends = r-geoquery
+	optdepends = r-gplots
+	optdepends = r-targetscoredata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TargetScore_1.34.0.tar.gz
+	sha256sums = 230860688b44fb52750aaa914862bc578758338d36385e5245dd8e5776932cfb
+
+pkgname = r-targetscore
