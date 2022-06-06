@@ -1,0 +1,17 @@
+pkgbase = r-ranger
+	pkgdesc = A Fast Implementation of Random Forests
+	pkgver = 0.13.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ranger
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppeigen
+	optdepends = r-covr
+	optdepends = r-survival
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ranger_0.13.1.tar.gz
+	sha256sums = 60934f0accc21edeefddbb4ddebfdd7cd10a3d3e90b31aa2e6e4b7f50d632d0a
+
+pkgname = r-ranger
