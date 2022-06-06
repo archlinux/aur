@@ -1,0 +1,15 @@
+pkgbase = r-jade
+	pkgdesc = Blind Source Separation Methods Based on Joint Diagonalization and Some BSS Performance Criteria
+	pkgver = 2.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=JADE
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-clue
+	optdepends = r-ics
+	optdepends = r-icsnp
+	source = https://cran.r-project.org/src/contrib/JADE_2.0-3.tar.gz
+	sha256sums = 56d68a993fa16fc6dec758c843960eee840814c4ca2271e97681a9d2b9e242ba
+
+pkgname = r-jade
