@@ -1,0 +1,14 @@
+pkgbase = r-neuralnet
+	pkgdesc = Training of Neural Networks
+	pkgver = 1.44.2
+	pkgrel = 5
+	url = https://cran.r-project.org/package=neuralnet
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-deriv
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
+	sha256sums = 5f66cd255db633322c0bd158b9320cac5ceff2d56f93e4864a0540f936028826
+
+pkgname = r-neuralnet
