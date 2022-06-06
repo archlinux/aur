@@ -1,0 +1,18 @@
+pkgbase = murse-git
+	pkgdesc = Open Fortress installing and updating tool. A CLI rewrite of the oftoast GUI tool.
+	pkgver = latest
+	pkgrel = 1
+	url = https://git.sr.ht/~welt/murse
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	optdepends = steam
+	provides = murse
+	provides = oflauncher
+	provides = oflauncher-rei
+	provides = oftoast
+	source = git+https://git.sr.ht/~welt/murse
+	sha256sums = SKIP
+
+pkgname = murse-git
