@@ -1,0 +1,17 @@
+pkgbase = r-flowvs
+	pkgdesc = Variance stabilization in flow cytometry (and microarrays)
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowVS
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-flowcore
+	depends = r-flowstats
+	depends = r-flowviz
+	optdepends = r-knitr
+	optdepends = r-vsn
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowVS_1.28.0.tar.gz
+	sha256sums = 4d4839d2055ad0bd1309837205d8aab25af01ffb2010fa874076447920af0eba
+
+pkgname = r-flowvs
