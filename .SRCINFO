@@ -1,0 +1,21 @@
+pkgbase = r-mlr3misc
+	pkgdesc = Helper Functions for 'mlr3'
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mlr3misc
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-backports
+	depends = r-checkmate
+	depends = r-data.table
+	depends = r-digest
+	depends = r-r6
+	optdepends = r-callr
+	optdepends = r-evaluate
+	optdepends = r-paradox
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mlr3misc_0.10.0.tar.gz
+	sha256sums = 2154c39887d473d23b3a2c68405db3aaf878ee7d69c937d6acfa981e64f4dff2
+
+pkgname = r-mlr3misc
