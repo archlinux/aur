@@ -1,0 +1,21 @@
+pkgbase = r-fitdistrplus
+	pkgdesc = Help to Fit of a Parametric Distribution to Non-Censored or Censored Data
+	pkgver = 1.1.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=fitdistrplus
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-actuar
+	optdepends = r-gamlss.dist
+	optdepends = r-generalizedhyperbolic
+	optdepends = r-ggplot2
+	optdepends = r-hmisc
+	optdepends = r-knitr
+	optdepends = r-mc2d
+	optdepends = r-rgenoud
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/fitdistrplus_1.1-8.tar.gz
+	sha256sums = f3c72310f40773b3839a9506c3cb781d044e09b94f2f38d332bb24e5f9960f5a
+
+pkgname = r-fitdistrplus
