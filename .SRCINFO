@@ -1,12 +1,13 @@
 pkgbase = onevpl-intel-gpu-git
 	pkgdesc = oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)
-	pkgver = 22.4.2.r17.g0801ad72
+	pkgver = 22.4.2.r19.g617a5b2d
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	depends = intel-media-driver
 	depends = libdrm
 	depends = libva
 	provides = onevpl-intel-gpu

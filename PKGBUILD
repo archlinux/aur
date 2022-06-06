@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu-git
-pkgver=22.4.2.r17.g0801ad72
+pkgver=22.4.2.r19.g617a5b2d
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
-depends=('libdrm' 'libva')
+depends=('intel-media-driver' 'libdrm' 'libva')
 makedepends=('git' 'cmake')
 provides=('onevpl-intel-gpu' 'onevpl-runtime')
 conflicts=('onevpl-intel-gpu')
