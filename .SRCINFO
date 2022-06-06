@@ -1,0 +1,14 @@
+pkgbase = r-reportr
+	pkgdesc = A General Message and Error Reporting System
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=reportr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ore
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/reportr_1.3.0.tar.gz
+	sha256sums = fc5a5684e974784bc80cb692f44bd9d574293e1f5f6751d910aeae8d3bbdd67f
+
+pkgname = r-reportr
