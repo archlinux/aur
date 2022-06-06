@@ -1,0 +1,20 @@
+pkgbase = r-ppinfer
+	pkgdesc = Inferring functionally related proteins using protein interaction networks
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PPInfer
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biomart
+	depends = r-fgsea
+	depends = r-ggplot2
+	depends = r-httr
+	depends = r-igraph
+	depends = r-kernlab
+	depends = r-stringdb
+	depends = r-yeastexpdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PPInfer_1.22.0.tar.gz
+	sha256sums = 42d7784fe9a8b1293eb3ad6149e940c5fec0304ca9e983971015f1a9e753fc78
+
+pkgname = r-ppinfer
