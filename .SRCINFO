@@ -1,0 +1,15 @@
+pkgbase = r-undo
+	pkgdesc = Unsupervised Deconvolution of Tumor-Stromal Mixed Expressions
+	pkgver = 1.38.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/UNDO
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-nnls
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UNDO_1.38.0.tar.gz
+	sha256sums = d9f7233f0745dfa1a22f78dbd6f4c44e4230ecabb4e3ac1c6dd932e045535a39
+
+pkgname = r-undo
