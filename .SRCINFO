@@ -1,0 +1,19 @@
+pkgbase = r-r.devices
+	pkgdesc = Unified Handling of Graphics Devices
+	pkgver = 2.17.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=R.devices
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-base64enc
+	depends = r-r.methodss3
+	depends = r-r.oo
+	depends = r-r.utils
+	optdepends = r-cairo
+	optdepends = r-digest
+	optdepends = r-r.rsp
+	source = https://cran.r-project.org/src/contrib/R.devices_2.17.0.tar.gz
+	sha256sums = c2d4b12949e0faab414c9f7575e39ee9dbf50ea12d858143df529f15ea365fb6
+
+pkgname = r-r.devices
