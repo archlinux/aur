@@ -1,0 +1,26 @@
+pkgbase = r-ggspavis
+	pkgdesc = Visualization functions for spatially resolved transcriptomics data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ggspavis
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-ggside
+	depends = r-singlecellexperiment
+	depends = r-spatialexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-bumpymatrix
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-scater
+	optdepends = r-scran
+	optdepends = r-stexampledata
+	optdepends = r-testthat
+	optdepends = r-uwot
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggspavis_1.2.0.tar.gz
+	sha256sums = 0e7f0cfc3cb1dcc2033a7cfef060fe1f09d0033e0a1f5130fcc7caf0b9761c54
+
+pkgname = r-ggspavis
