@@ -1,0 +1,12 @@
+pkgbase = r-gamlss.data
+	pkgdesc = Data for Generalised Additive Models for Location Scale and Shape
+	pkgver = 6.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gamlss.data
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gamlss.data_6.0-2.tar.gz
+	sha256sums = dbb3b6f855540928ccdbda497f8d552144895e34565799e8b595e704096db71e
+
+pkgname = r-gamlss.data
