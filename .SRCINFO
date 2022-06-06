@@ -1,0 +1,15 @@
+pkgbase = r-randomforest
+	pkgdesc = Breiman and Cutler's Random Forests for Classification and Regression
+	pkgver = 4.7.1.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=randomForest
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-mass
+	optdepends = r-rcolorbrewer
+	source = https://cran.r-project.org/src/contrib/randomForest_4.7-1.1.tar.gz
+	sha256sums = f59ea87534480edbcd6baf53d7ec57e8c69f4532c2d2528eacfd48924efa2cd6
+
+pkgname = r-randomforest
