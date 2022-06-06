@@ -1,0 +1,23 @@
+pkgbase = r-methimpute
+	pkgdesc = Imputation-guided re-construction of complete methylomes from WGBS data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/methimpute
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-data.table
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-minpack.lm
+	depends = r-rcpp
+	depends = r-reshape2
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methimpute_1.18.0.tar.gz
+	sha256sums = 67dbb0249c52f7b3cfa2def1de16da01e6ba93f1fbe42bb479ca3a389c3f29b4
+
+pkgname = r-methimpute
