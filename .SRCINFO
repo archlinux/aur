@@ -1,0 +1,14 @@
+pkgbase = r-influencer
+	pkgdesc = Software Tools to Quantify Structural Importance of Nodes in a Network
+	pkgver = 0.1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=influenceR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-igraph
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/influenceR_0.1.0.1.tar.gz
+	sha256sums = 63c46f1175fced33fb1b78d4d56e37fbee09b408945b0106dac36e3344cd4766
+
+pkgname = r-influencer
