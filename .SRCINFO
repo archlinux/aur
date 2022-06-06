@@ -1,0 +1,24 @@
+pkgbase = r-iasva
+	pkgdesc = Iteratively Adjusted Surrogate Variable Analysis
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iasva
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-irlba
+	depends = r-summarizedexperiment
+	optdepends = r-corrplot
+	optdepends = r-desctools
+	optdepends = r-knitr
+	optdepends = r-pheatmap
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-rtsne
+	optdepends = r-sva
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iasva_1.14.0.tar.gz
+	sha256sums = a182f3950eee66a3075312a9e335ec13045a505bf7172c855f2fd4ee906a0b1c
+
+pkgname = r-iasva
