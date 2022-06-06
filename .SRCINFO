@@ -1,0 +1,17 @@
+pkgbase = r-fithic
+	pkgdesc = Confidence estimation for intra-chromosomal contact maps
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FitHiC
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-fdrtool
+	depends = r-rcpp
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FitHiC_1.22.0.tar.gz
+	sha256sums = 7896421fd485d1e45cc89f87b6742892fa5857f776ca8c11fd509f37ba276147
+
+pkgname = r-fithic
