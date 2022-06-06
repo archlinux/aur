@@ -1,0 +1,12 @@
+pkgbase = r-gwasexacthw
+	pkgdesc = Exact Hardy-Weinburg testing for Genome Wide Association Studies
+	pkgver = 1.01
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GWASExactHW
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/GWASExactHW_1.01.tar.gz
+	sha256sums = e850ed40fbf14b02eb3798603cfb111fe3718bb69d74c0ff4cb6f679209a15a7
+
+pkgname = r-gwasexacthw
