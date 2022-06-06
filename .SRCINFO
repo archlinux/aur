@@ -1,0 +1,25 @@
+pkgbase = r-hiannotator
+	pkgdesc = Functions for annotating GRanges objects
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/hiAnnotator
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bsgenome
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iterators
+	depends = r-rtracklayer
+	depends = r-scales
+	optdepends = r-biocgenerics
+	optdepends = r-doparallel
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hiAnnotator_1.30.0.tar.gz
+	sha256sums = a2049b873ee5731a322938fb1c32d0d21b91ed3cb90db7d964af254031ad3138
+
+pkgname = r-hiannotator
