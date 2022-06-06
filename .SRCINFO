@@ -1,0 +1,12 @@
+pkgbase = r-lpe
+	pkgdesc = Methods for analyzing microarray data using Local Pooled Error (LPE) method
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/LPE
+	arch = any
+	license = LGPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LPE_1.70.0.tar.gz
+	sha256sums = d8b72f10f76e6cbeca69b553258f05becf4e5be62cadf07391cd7e24d98d020e
+
+pkgname = r-lpe
