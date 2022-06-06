@@ -1,0 +1,14 @@
+pkgbase = r-ffield
+	pkgdesc = Force field simulation for a set of points
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=FField
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	source = https://cran.r-project.org/src/contrib/FField_0.1.0.tar.gz
+	sha256sums = 18c5fbcf3f7c9151ee528df3be1156febf5d3f6fc650e1ec829898bdc5360117
+
+pkgname = r-ffield
