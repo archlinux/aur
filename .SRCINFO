@@ -1,0 +1,13 @@
+pkgbase = r-diagram
+	pkgdesc = Functions for Visualising Simple Graphs (Networks), Plotting Flow Diagrams
+	pkgver = 1.6.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=diagram
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-shape
+	source = https://cran.r-project.org/src/contrib/diagram_1.6.5.tar.gz
+	sha256sums = e9c03e7712e0282c5d9f2b760bafe2aac9e99a9723578d9e6369d60301f574e4
+
+pkgname = r-diagram
