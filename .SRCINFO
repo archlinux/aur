@@ -1,0 +1,26 @@
+pkgbase = r-maigespack
+	pkgdesc = Functions to handle cDNA microarray data, including several methods of data analysis
+	pkgver = 1.60.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/maigesPack
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-convert
+	depends = r-graph
+	depends = r-limma
+	depends = r-marray
+	optdepends = r-amap
+	optdepends = r-annotate
+	optdepends = r-class
+	optdepends = r-e1071
+	optdepends = r-mass
+	optdepends = r-multtest
+	optdepends = r-olin
+	optdepends = r-r2html
+	optdepends = r-rgl
+	optdepends = r-som
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/maigesPack_1.60.0.tar.gz
+	sha256sums = 77fd2ab0f35df4c2b11c1f82f6918dc03dc54aef8e53d6405ad1c291e5d1b8c6
+
+pkgname = r-maigespack
