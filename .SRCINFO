@@ -1,0 +1,13 @@
+pkgbase = r-irr
+	pkgdesc = Various Coefficients of Interrater Reliability and Agreement
+	pkgver = 0.84.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=irr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lpsolve
+	source = https://cran.r-project.org/src/contrib/irr_0.84.1.tar.gz
+	sha256sums = e7bae8476b723a2246564c013194e8b7fcc9b34affc0ab5fcd55875231f544c3
+
+pkgname = r-irr
