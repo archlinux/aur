@@ -1,0 +1,14 @@
+pkgbase = r-rebus.base
+	pkgdesc = Core Functionality for the 'rebus' Package
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rebus.base
+	arch = any
+	license = Unlimited
+	depends = r
+	optdepends = r-stringi
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rebus.base_0.0-3.tar.gz
+	sha256sums = deeccf9ac75c3b4e8242ff481e9f95895b11fb2178b695ce303329cfbe8653d8
+
+pkgname = r-rebus.base
