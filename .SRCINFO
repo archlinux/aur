@@ -1,0 +1,20 @@
+pkgbase = r-moda
+	pkgdesc = MODA: MOdule Differential Analysis for weighted gene co-expression network
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MODA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-amountain
+	depends = r-dynamictreecut
+	depends = r-igraph
+	depends = r-rcolorbrewer
+	depends = r-wgcna
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MODA_1.22.0.tar.gz
+	sha256sums = a34f7bdd353f99d6333623a8b158e13fdbb67dd4840de46f1e3814e1bf7845a9
+
+pkgname = r-moda
