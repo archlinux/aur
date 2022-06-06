@@ -1,0 +1,13 @@
+pkgbase = r-r4rna
+	pkgdesc = An R package for RNA visualization and analysis
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/R4RNA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/R4RNA_1.24.0.tar.gz
+	sha256sums = e183ca03ebd5bf213cfefd0e417fd3eea9106071514ccc94e86d704f42080689
+
+pkgname = r-r4rna
