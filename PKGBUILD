@@ -1,7 +1,7 @@
 # Maintainer: robiot <me@robiot.dev>
 
 pkgname=xclicker
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A blazing fast gui autoclicker for linux'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm 644 img/icon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm 644 assets/icon.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
   install -Dm 755 build/release/src/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  install -Dm 755 xclicker.desktop ${pkgdir}/usr/share/applications/xclicker.desktop
+  install -Dm 755 assets/xclicker.desktop ${pkgdir}/usr/share/applications/xclicker.desktop
 }
-
