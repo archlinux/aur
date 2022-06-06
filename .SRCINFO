@@ -1,0 +1,16 @@
+pkgbase = r-wheatmap
+	pkgdesc = Incrementally Build Complex Plots using Natural Semantics
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=wheatmap
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-rcolorbrewer
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/wheatmap_0.2.0.tar.gz
+	sha256sums = b76dff6f668874d08acb5f6d3849288645470ab2e3be34b6eabda065336d9118
+
+pkgname = r-wheatmap
