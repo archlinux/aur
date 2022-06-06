@@ -1,27 +1,33 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=linkcomm
-_cranver=1.0-11
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-linkcomm
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Tools for Generating, Visualizing, and Analysing Link Communities in Networks"
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=linkcomm
+_pkgver=1.0-14
+pkgname=r-${_pkgname,,}
+pkgver=1.0.14
+pkgrel=4
+pkgdesc='Tools for Generating, Visualizing, and Analysing Link Communities in Networks'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
-depends=('r' 'r-igraph' 'r-rcolorbrewer' 'r-dynamictreecut')
+depends=(
+  r
+  r-dynamictreecut
+  r-igraph
+  r-rcolorbrewer
+)
+optdepends=(
+  r-fastcluster
+  r-r.rsp
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('36f1557c65d862fc87635eedfad77f18a5deb66da00895e50e2d5eac0f23b597')
 
-optdepends=('r-fastcluster')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('8bc5a1623c3db3d6c7072cf15ff67065')
-replaces=('r-cran-linkcomm')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
