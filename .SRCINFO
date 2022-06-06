@@ -1,0 +1,16 @@
+pkgbase = r-envisionquery
+	pkgdesc = Retrieval from the ENVISION bioinformatics data portal into R
+	pkgver = 1.42.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/ENVISIONQuery
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = tar
+	depends = r
+	depends = r-rjava
+	depends = r-xml
+	source = git+https://git.bioconductor.org/packages/ENVISIONQuery.git
+	sha256sums = SKIP
+
+pkgname = r-envisionquery
