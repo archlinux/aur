@@ -1,0 +1,17 @@
+pkgbase = r-flowfp
+	pkgdesc = Fingerprinting for Flow Cytometry
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowFP
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-flowcore
+	depends = r-flowviz
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowFP_1.54.0.tar.gz
+	sha256sums = ba12d5bd4dc784997f30435314fe61f86b0c28d99c4458f7e8f9b76daa54b442
+
+pkgname = r-flowfp
