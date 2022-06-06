@@ -1,0 +1,25 @@
+pkgbase = r-normr
+	pkgdesc = Normalization and difference calling in ChIP-seq data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/normr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bamsignals
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-qvalue
+	depends = r-rcpp
+	depends = r-rtracklayer
+	depends = gcc
+	optdepends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/normr_1.22.0.tar.gz
+	sha256sums = 90c5743124cba187cd8366c7fd7415e2f9b889f2a2966d731f18de8926293dec
+
+pkgname = r-normr
