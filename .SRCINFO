@@ -1,0 +1,13 @@
+pkgbase = r-squadd
+	pkgdesc = Add-on of the SQUAD Software
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SQUADD
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rcolorbrewer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SQUADD_1.46.0.tar.gz
+	sha256sums = 95b3e9b50ae05636f86d74063c44693f8dac6568c3bdcabb81edaf3e6440e38d
+
+pkgname = r-squadd
