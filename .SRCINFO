@@ -1,0 +1,17 @@
+pkgbase = r-sradb
+	pkgdesc = A compilation of metadata from NCBI SRA and tools
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SRAdb
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-geoquery
+	depends = r-graph
+	depends = r-rcurl
+	depends = r-rsqlite
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SRAdb_1.58.0.tar.gz
+	sha256sums = 7e1531eee90fa4d9de7dc46ac6f2facb167235567e5c96355e2c4a3923a541e4
+
+pkgname = r-sradb
