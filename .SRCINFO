@@ -1,0 +1,13 @@
+pkgbase = r-mpmi
+	pkgdesc = Mixed-Pair Mutual Information Estimators
+	pkgver = 0.43.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=mpmi
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = gcc-fortran
+	source = https://cran.r-project.org/src/contrib/mpmi_0.43.2.tar.gz
+	sha256sums = f41e7ad19a11db267044f657a24f0c3dc0ecd4c1302f51fb9986b4176dd6aea9
+
+pkgname = r-mpmi
