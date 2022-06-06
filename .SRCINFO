@@ -1,0 +1,13 @@
+pkgbase = r-effsize
+	pkgdesc = Efficient Effect Size Computation
+	pkgver = 0.8.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=effsize
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/effsize_0.8.1.tar.gz
+	sha256sums = fcb407644e4003089242ba873fdf3b1822f56ed054dc0ffb6a94b8739e80acd4
+
+pkgname = r-effsize
