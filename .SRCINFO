@@ -1,0 +1,12 @@
+pkgbase = r-gparotation
+	pkgdesc = GPA Factor Rotation
+	pkgver = 2022.4.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=GPArotation
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/GPArotation_2022.4-1.tar.gz
+	sha256sums = 231e7edcdcc091fbecfb4f2e88d1a4344967cf7ea58074b385a4b8b48d9da224
+
+pkgname = r-gparotation
