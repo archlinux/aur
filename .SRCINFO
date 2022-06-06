@@ -1,0 +1,26 @@
+pkgbase = r-motifdb
+	pkgdesc = An Annotated Collection of Protein-DNA Binding Sequence Motifs
+	pkgver = 1.38.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MotifDb
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-splitstackshape
+	optdepends = r-biocstyle
+	optdepends = r-formatr
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	optdepends = r-seqlogo
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MotifDb_1.38.0.tar.gz
+	sha256sums = 7165a40692d2c906cfbe6513e5e2759ff6efd3e00547d5e288b16d0f28f8ceb3
+
+pkgname = r-motifdb
