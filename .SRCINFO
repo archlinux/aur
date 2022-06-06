@@ -1,0 +1,20 @@
+pkgbase = r-mosaiccore
+	pkgdesc = Common Utilities for Other MOSAIC-Family Packages
+	pkgver = 0.9.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=mosaicCore
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-rlang
+	depends = r-tidyr
+	optdepends = r-ggformula
+	optdepends = r-mosaic
+	optdepends = r-mosaicdata
+	optdepends = r-nhanes
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mosaicCore_0.9.0.tar.gz
+	sha256sums = dfa1527f8bea0356a8f963b469ddf031039c369032a1665b16c477a2ecef71c0
+
+pkgname = r-mosaiccore
