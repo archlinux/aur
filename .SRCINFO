@@ -1,0 +1,20 @@
+pkgbase = r-shinyjqui
+	pkgdesc = 'jQuery UI' Interactions and Effects for Shiny
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinyjqui
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-shiny
+	optdepends = r-ggplot2
+	optdepends = r-highcharter
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/shinyjqui_0.4.1.tar.gz
+	sha256sums = 611f11b5a77fad6f738810dbad76fc211b1636c0754f0aecba6679afcfe7af8c
+
+pkgname = r-shinyjqui
