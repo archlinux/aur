@@ -1,0 +1,22 @@
+pkgbase = r-tracktables
+	pkgdesc = Build IGV tracks and HTML reports
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tracktables
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcolorbrewer
+	depends = r-rsamtools
+	depends = r-stringr
+	depends = r-tractor.base
+	depends = r-xml
+	depends = r-xvector
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tracktables_1.30.0.tar.gz
+	sha256sums = 20d069b120bfe05ed06f32d836999ad8b164b08455d82966034153be15b26477
+
+pkgname = r-tracktables
