@@ -1,0 +1,17 @@
+pkgbase = r-writexl
+	pkgdesc = Export Data Frames to Excel 'xlsx' Format
+	pkgver = 1.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=writexl
+	arch = x86_64
+	license = BSD
+	depends = r
+	optdepends = r-bit64
+	optdepends = r-nycflights13
+	optdepends = r-readxl
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/writexl_1.4.0.tar.gz
+	sha256sums = 3e77e37aa5f7eba5456d7f969bab6f89df1f0c7e780934dc2bbdf46291f5df55
+
+pkgname = r-writexl
