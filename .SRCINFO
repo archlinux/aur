@@ -1,0 +1,18 @@
+pkgbase = r-pkgdeptools
+	pkgdesc = Package Dependency Tools
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pkgDepTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-graph
+	depends = r-rbgl
+	optdepends = r-biobase
+	optdepends = r-biocmanager
+	optdepends = r-rcurl
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pkgDepTools_1.62.0.tar.gz
+	sha256sums = 2fa5f60cef79c0fad1141263107c5023e718b4bed8aa5fda9a3466b5e3a6edba
+
+pkgname = r-pkgdeptools
