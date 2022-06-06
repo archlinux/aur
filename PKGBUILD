@@ -13,15 +13,21 @@ arch=('i686' 'x86_64')
 url="https://github.com/${_basename}/${_basename}"
 license=('GPL3')
 depends=(
+    'bzip2'
     'ffmpeg'
+    'gcc-libs'
+    'glibc'
     'hunspell'
     'libao'
     'libeb'
     'libiconv'
+    'libtiff'
     'libvorbis'
+    'libx11'
     'libxtst'
     'lzo'
     'opencc'
+    'qt5-base'
     'qt5-multimedia'
     'qt5-svg'
     'qt5-tools'
@@ -29,6 +35,7 @@ depends=(
     'qt5-x11extras'
     'xz'
     'zlib'
+    'zstd'
 )
 makedepends=('git')
 provides=("${_basename}=${pkgver}")
