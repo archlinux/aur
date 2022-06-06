@@ -1,0 +1,17 @@
+pkgbase = r-frenchfish
+	pkgdesc = Poisson Models for Quantifying DNA Copy-number from FISH Images of Tissue Sections
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/frenchFISH
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-mcmcpack
+	depends = r-nhpoisson
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/frenchFISH_1.8.0.tar.gz
+	sha256sums = d720c119304ca1b7a3fd4591aa6f9fffc2c4ae05c22dc6e5d8aeab89dbefd18a
+
+pkgname = r-frenchfish
