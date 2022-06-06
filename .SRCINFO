@@ -1,0 +1,14 @@
+pkgbase = r-itertools
+	pkgdesc = Iterator Tools
+	pkgver = 0.1.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=itertools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-iterators
+	optdepends = r-foreach
+	source = https://cran.r-project.org/src/contrib/itertools_0.1-3.tar.gz
+	sha256sums = b69b0781318e175532ad2d4f2840553bade9637e04de215b581704b5635c45d3
+
+pkgname = r-itertools
