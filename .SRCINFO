@@ -1,0 +1,14 @@
+pkgbase = r-ptw
+	pkgdesc = Parametric Time Warping
+	pkgver = 1.9.16
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ptw
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-nloptr
+	depends = r-rcppde
+	source = https://cran.r-project.org/src/contrib/ptw_1.9-16.tar.gz
+	sha256sums = 7e87c34b9eeaeabe3bfb937162e6cda4dd48d6bd6a97b9db8bb8303d131caa66
+
+pkgname = r-ptw
