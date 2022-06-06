@@ -33,6 +33,7 @@ prepare() {
 build() {
     cd ${srcdir}/build
     cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
+          -DRELEASE_BUILD=ON \
           -DCMAKE_BUILD_TYPE=Release \
           "${srcdir}/Memento-${pkgver}-beta"
     make -j $(grep -c ^processor /proc/cpuinfo)
