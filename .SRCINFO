@@ -1,0 +1,24 @@
+pkgbase = r-nanostringqcpro
+	pkgdesc = Quality metrics and data processing methods for NanoString mRNA gene expression data
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/NanoStringQCPro
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-knitr
+	depends = r-nmf
+	depends = r-org.hs.eg.db
+	depends = r-png
+	depends = r-rcolorbrewer
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NanoStringQCPro_1.28.0.tar.gz
+	sha256sums = 3a93768f1b029772c4ca3310e81a3dfec4c213fe8b3721aaaed39846e2ef50ee
+
+pkgname = r-nanostringqcpro
