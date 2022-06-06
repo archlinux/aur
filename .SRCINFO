@@ -1,0 +1,14 @@
+pkgbase = r-spatialextremes
+	pkgdesc = Modelling Spatial Extremes
+	pkgver = 2.1.0
+	pkgrel = 5
+	url = https://cran.r-project.org/package=SpatialExtremes
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-fields
+	depends = r-maps
+	source = https://cran.r-project.org/src/contrib/SpatialExtremes_2.1-0.tar.gz
+	sha256sums = 438694a02f4354ccd740675936cb409d9fd634e95d66357583e87b1d6ee73a7c
+
+pkgname = r-spatialextremes
