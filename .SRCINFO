@@ -1,0 +1,13 @@
+pkgbase = r-stepnorm
+	pkgdesc = Stepwise normalization functions for cDNA microarrays
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/stepNorm
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-marray
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/stepNorm_1.68.0.tar.gz
+	sha256sums = f16bef9cd92d91d9f7e99398f552ee8cc614d1d2aff9831ea14c41ccd282f4b3
+
+pkgname = r-stepnorm
