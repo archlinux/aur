@@ -1,0 +1,24 @@
+pkgbase = r-seqcombo
+	pkgdesc = Visualization Tool for Sequence Recombination and Reassortment
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/seqcombo
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-cowplot
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-igraph
+	depends = r-magrittr
+	depends = r-yulab.utils
+	optdepends = r-emojifont
+	optdepends = r-knitr
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-tibble
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqcombo_1.18.0.tar.gz
+	sha256sums = 172918ba29e0d39b1f3f5d5528d336d64cf3e2d32f036ad3b3656f407fd817f9
+
+pkgname = r-seqcombo
