@@ -1,0 +1,16 @@
+pkgbase = r-ggbeeswarm
+	pkgdesc = Categorical Scatter (Violin Point) Plots
+	pkgver = 0.6.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggbeeswarm
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-beeswarm
+	depends = r-ggplot2
+	depends = r-vipor
+	optdepends = r-gridextra
+	source = https://cran.r-project.org/src/contrib/ggbeeswarm_0.6.0.tar.gz
+	sha256sums = bbac8552f67ff1945180fbcda83f7f1c47908f27ba4e84921a39c45d6e123333
+
+pkgname = r-ggbeeswarm
