@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
-pkgver='1.146.0'
+pkgver='1.147.0'
 pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
@@ -13,10 +13,10 @@ license=('custom')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
-#_bootstrap_version='1.22.0'
-#_bootstrap_checksum='465300ac2ac6e80e70d7e73642c57a567946643d22efee9fc1c555923eb4ea2f'
-#_launcher_version='1.146.0'
-#_launcher_checksum='4c9236503c0b56a81ef6c2fc64b2f1b4e2dcb44a17e8c95fb5149274c712b08e'
+#_bootstrap_version='1.23.0'
+#_bootstrap_checksum='88b391db476040dd3e7aae05f186a17adc96979e4ca99f80dac815daaef519eb'
+#_launcher_version='1.147.0'
+#_launcher_checksum='7c5051d63d1e014b7d32f1b7d3700b56f91e2b12ce4e8373e7dc282cb7bd78d5'
 
 _repo='https://tlaun.ch/repo'
 # Try one of these if the above one fails:
@@ -36,10 +36,10 @@ _repo='https://tlaun.ch/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.22.0-465300ac.jar::${_repo}/update/aur/bootstrap/465300ac2ac6e80e70d7e73642c57a567946643d22efee9fc1c555923eb4ea2f.jar"
+  "tl-bootstrap-1.23.0-88b391db.jar::${_repo}/update/aur/bootstrap/88b391db476040dd3e7aae05f186a17adc96979e4ca99f80dac815daaef519eb.jar"
 
   # Launcher
-  "tl-launcher-1.146.0-4c923650.jar::${_repo}/update/aur/launcher/4c9236503c0b56a81ef6c2fc64b2f1b4e2dcb44a17e8c95fb5149274c712b08e.jar"
+  "tl-launcher-1.147.0-7c5051d6.jar::${_repo}/update/aur/launcher/7c5051d63d1e014b7d32f1b7d3700b56f91e2b12ce4e8373e7dc282cb7bd78d5.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -88,14 +88,14 @@ source=(
 
 noextract=(
   "${source[@]##*/}"
-  "tl-bootstrap-1.22.0-465300ac.jar"
-  "tl-launcher-1.146.0-4c923650.jar"
+  "tl-bootstrap-1.23.0-88b391db.jar"
+  "tl-launcher-1.147.0-7c5051d6.jar"
 )
 
 sha256sums=(
-  '465300ac2ac6e80e70d7e73642c57a567946643d22efee9fc1c555923eb4ea2f' # tl-bootstrap-1.22.0-465300ac.jar
+  '88b391db476040dd3e7aae05f186a17adc96979e4ca99f80dac815daaef519eb' # tl-bootstrap-1.23.0-88b391db.jar
 
-  '4c9236503c0b56a81ef6c2fc64b2f1b4e2dcb44a17e8c95fb5149274c712b08e' # tl-launcher-1.146.0-4c923650.jar
+  '7c5051d63d1e014b7d32f1b7d3700b56f91e2b12ce4e8373e7dc282cb7bd78d5' # tl-launcher-1.147.0-7c5051d6.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'd5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9' # com.google.guava:guava:31.0.1-jre
@@ -150,8 +150,8 @@ package() {
   done
 
   # install launcher
-  install -Dm0644 "${srcdir}/tl-bootstrap-1.22.0-465300ac.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl-launcher-1.146.0-4c923650.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-1.23.0-88b391db.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-1.147.0-7c5051d6.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
