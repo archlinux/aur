@@ -1,0 +1,18 @@
+pkgbase = r-rontotools
+	pkgdesc = R Onto-Tools suite
+	pkgver = 2.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ROntoTools
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = r
+	depends = r-graph
+	depends = r-kegggraph
+	depends = r-keggrest
+	depends = r-rgraphviz
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROntoTools_2.24.0.tar.gz
+	sha256sums = dec7ec0d6d709fbdb44d595d776fc462420957e5c23c7bd6d2d63f5a44df04dd
+
+pkgname = r-rontotools
