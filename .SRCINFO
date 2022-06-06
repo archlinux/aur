@@ -1,0 +1,18 @@
+pkgbase = r-phastcons100way.ucsc.hg19
+	pkgdesc = UCSC phastCons conservation scores for hg19
+	pkgver = 3.7.2
+	pkgrel = 3
+	url = https://bioconductor.org/packages/phastCons100way.UCSC.hg19
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-genomicscores
+	depends = r-iranges
+	depends = r-s4vectors
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/phastCons100way.UCSC.hg19_3.7.2.tar.gz
+	sha256sums = ca052a0f6e874bcc8079b29e3cc1a29cb6b852b32d5a7a45dea5cff7c924acca
+
+pkgname = r-phastcons100way.ucsc.hg19
