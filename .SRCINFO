@@ -1,0 +1,22 @@
+pkgbase = r-rwikipathways
+	pkgdesc = rWikiPathways - R client library for the WikiPathways API
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rWikiPathways
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-data.table
+	depends = r-httr
+	depends = r-rcurl
+	depends = r-rjson
+	depends = r-tidyr
+	depends = r-xml
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rWikiPathways_1.16.0.tar.gz
+	sha256sums = d3d51f099162e75303f667dde471498f76c9d58af9cbe9279bd0a710987cdd16
+
+pkgname = r-rwikipathways
