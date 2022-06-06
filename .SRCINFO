@@ -1,0 +1,16 @@
+pkgbase = r-panr
+	pkgdesc = Posterior association networks and functional modules inferred from rich phenotypes of gene perturbations
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PANR
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-igraph
+	depends = r-pvclust
+	depends = r-reder
+	optdepends = r-snow
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PANR_1.42.0.tar.gz
+	sha256sums = 50895360b76f47c63aae73fd103d68caba2dd32c0233e547073cbf4f7a3161bc
+
+pkgname = r-panr
