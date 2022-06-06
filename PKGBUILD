@@ -2,7 +2,7 @@
 # Maintainer: stratumfarm <pool@stratum.farm>
 
 pkgname='derocli-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='a cli tool to fetch information from a dero rpc node'
 url='https://stratum.farm'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('derocli')
 conflicts=('derocli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('13a265850769ceacd02865644dcc847234833567bb10aa79dcc2b84a6e4c65a1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.2.0/derocli-v0.2.0-linux-arm64.tar.gz")
+sha256sums_aarch64=('ded6ca70e12e1d05f8a6e1f59f0775c32d3c2e409de0d3da05e5ab284f48ba4b')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-armv7.tar.gz")
-sha256sums_armv7h=('a15eb59e42a1f5dee53a49adbc6c490dea2274f43bdd9d9e76f12a91c7e223e9')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.2.0/derocli-v0.2.0-linux-armv7.tar.gz")
+sha256sums_armv7h=('3ab257911e6bc7956b752ebc308eac38dd6331bb24262d1b196e9c8db538e3e2')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-386.tar.gz")
-sha256sums_i686=('8eb9c6bf411bd65fb9990694a6b7d39a8ef29a5d808f83809d8c9760187f9799')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.2.0/derocli-v0.2.0-linux-386.tar.gz")
+sha256sums_i686=('7dcdce48add82270908ff17da41e6462ed18cb98c2759e9571bb41614e90eabb')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.1.0/derocli-v0.1.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('ded8b1e9c175d273633e0619ee9f3b46c40c2a611718eb5975afdeb0350c2cdd')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/stratumfarm/derocli/releases/download/v0.2.0/derocli-v0.2.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('303f9f523873ebaa12f755196237c4097daddb7724f42f88e426a71de93918ce')
 
 package() {
   # bin
