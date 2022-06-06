@@ -1,0 +1,22 @@
+pkgbase = r-mosaics
+	pkgdesc = MOSAiCS (MOdel-based one and two Sample Analysis and Inference for ChIP-Seq)
+	pkgver = 2.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mosaics
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-rsamtools
+	depends = r-s4vectors
+	depends = perl
+	optdepends = r-mosaicsexample
+	optdepends = r-parallel
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mosaics_2.34.0.tar.gz
+	sha256sums = beb8eab0d9f55f11f53b650db341a90c6365278bb1e098d55404092504f9dca4
+
+pkgname = r-mosaics
