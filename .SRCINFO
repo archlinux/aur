@@ -1,0 +1,17 @@
+pkgbase = r-upsetr
+	pkgdesc = A More Scalable Alternative to Venn and Euler Diagrams for Visualizing Intersecting Sets
+	pkgver = 1.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=UpSetR
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-plyr
+	depends = r-scales
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/UpSetR_1.4.0.tar.gz
+	sha256sums = 351e5fee64204cf77fd378cf2a2c0456cc19d4d98a2fd5f3dac74b69a505f100
+
+pkgname = r-upsetr

@@ -1,0 +1,34 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=UpSetR
+_pkgver=1.4.0
+pkgname=r-${_pkgname,,}
+pkgver=1.4.0
+pkgrel=4
+pkgdesc='A More Scalable Alternative to Venn and Euler Diagrams for Visualizing Intersecting Sets'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('MIT')
+depends=(
+  r
+  r-ggplot2
+  r-gridextra
+  r-plyr
+  r-scales
+)
+optdepends=(
+  r-knitr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('351e5fee64204cf77fd378cf2a2c0456cc19d4d98a2fd5f3dac74b69a505f100')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+# vim:set ts=2 sw=2 et:
