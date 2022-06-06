@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-aioconsole
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Asynchronous console and interfaces for asyncio"
 url="https://github.com/vxgmichel/aioconsole"
 license=('GPL')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-repeat')
 source=("https://github.com/vxgmichel/aioconsole/archive/v$pkgver/$pkgname-$pkgver.tar.gz.tar.gz")
-sha512sums=('70ea0cca07711f31e261ec45d96a0901f9cf4d007b3195389a1b81e87054b6cb20429f9bb47faac66022824f412957b68e7fad928c78e65ce18b0e9db822ec94')
+sha512sums=('2c3d713fa6571c7cb790d4740a3dab1881013b0017942d98b5e610328cd51016ab24a1760d700177d041d44c92138b63b38c51f28ff53bcc9f1d8a3b4937445c')
 
 build() {
   cd aioconsole-$pkgver
