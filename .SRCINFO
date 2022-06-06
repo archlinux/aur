@@ -1,0 +1,13 @@
+pkgbase = r-illuminahumanmethylation450kanno.ilmn12.hg19
+	pkgdesc = Annotation for Illumina's 450k methylation arrays
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = https://bioconductor.org/packages/IlluminaHumanMethylation450kanno.ilmn12.hg19
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-minfi
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.1.tar.gz
+	sha256sums = 3627d75a6303f4d307fa6daf0c5afd57649c60a268b3d4be7e8ac8edc4b1e288
+
+pkgname = r-illuminahumanmethylation450kanno.ilmn12.hg19
