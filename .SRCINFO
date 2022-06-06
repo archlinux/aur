@@ -1,0 +1,19 @@
+pkgbase = r-trajectorygeometry
+	pkgdesc = This Package Discovers Directionality in Time and Pseudo-times Series of Gene Expression Patterns
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TrajectoryGeometry
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-pracma
+	depends = r-rgl
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TrajectoryGeometry_1.4.0.tar.gz
+	sha256sums = 3a9cd2380a28929ef14711416cf1df75696ef244c110cc57727a15dcc4d4bd8d
+
+pkgname = r-trajectorygeometry
