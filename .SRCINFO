@@ -1,0 +1,24 @@
+pkgbase = r-rcdk
+	pkgdesc = Interface to the 'CDK' Libraries
+	pkgver = 3.6.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=rcdk
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-fingerprint
+	depends = r-iterators
+	depends = r-itertools
+	depends = r-png
+	depends = r-rcdklibs
+	depends = r-rjava
+	depends = jdk11-openjdk
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/rcdk_3.6.0.tar.gz
+	sha256sums = 9dd1978af1f8a930ab1ecad123395b1c31f58669d2e771951e9766280009716c
+
+pkgname = r-rcdk
