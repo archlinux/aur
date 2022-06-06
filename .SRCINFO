@@ -1,0 +1,18 @@
+pkgbase = r-interp
+	pkgdesc = Interpolation Methods
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=interp
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-deldir
+	depends = r-rcpp
+	depends = r-rcppeigen
+	optdepends = r-deriv
+	optdepends = r-sp
+	source = https://cran.r-project.org/src/contrib/interp_1.1-2.tar.gz
+	sha256sums = 1900cfb84897ad427cd37a0cb2a4d4e99457ce4f6690a5fde7a86f35b73eb2d7
+
+pkgname = r-interp
