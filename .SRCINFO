@@ -1,0 +1,22 @@
+pkgbase = r-webbioc
+	pkgdesc = Bioconductor Web Interface
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/webbioc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-annaffy
+	depends = r-biobase
+	depends = r-biocmanager
+	depends = r-gcrma
+	depends = r-multtest
+	depends = r-qvalue
+	depends = r-vsn
+	depends = perl
+	depends = netpbm
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/webbioc_1.68.0.tar.gz
+	sha256sums = 5005ec147b6bdb261735bc6d46b9da8357c95d0a9e7c4ef2b00c3ba174cf7abc
+
+pkgname = r-webbioc
