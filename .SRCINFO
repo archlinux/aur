@@ -1,0 +1,12 @@
+pkgbase = r-ppcor
+	pkgdesc = Partial and Semi-Partial (Part) Correlation
+	pkgver = 1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ppcor
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/ppcor_1.1.tar.gz
+	sha256sums = 6a78f0c4d9caa17ab0252c5d351c2371e4ffb9047ebd13964877018dd6142bf5
+
+pkgname = r-ppcor
