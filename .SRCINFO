@@ -1,0 +1,21 @@
+pkgbase = r-proteomm
+	pkgdesc = Multi-Dataset Model-based Differential Expression Proteomics Analysis Platform
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ProteoMM
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biomart
+	depends = r-gdata
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-gtools
+	depends = r-matrixstats
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProteoMM_1.14.0.tar.gz
+	sha256sums = d4e398247f3130219a13f4f5a545dbb879a64e28d27f20a791bcec758e26b050
+
+pkgname = r-proteomm
