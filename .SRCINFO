@@ -1,0 +1,15 @@
+pkgbase = r-longitudinaldata
+	pkgdesc = Longitudinal Data
+	pkgver = 2.4.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=longitudinalData
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-clv
+	depends = r-misc3d
+	depends = r-rgl
+	source = https://cran.r-project.org/src/contrib/longitudinalData_2.4.1.tar.gz
+	sha256sums = 6d8b155726b5e1913711c84af3e0fc56bb3a1097e0471628572b88239f63db52
+
+pkgname = r-longitudinaldata
