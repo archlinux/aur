@@ -1,0 +1,17 @@
+pkgbase = r-excelr
+	pkgdesc = A Wrapper of the 'JavaScript' Library 'jExcel'
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=excelR
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	optdepends = r-covr
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/excelR_0.4.0.tar.gz
+	sha256sums = 80671840972057e801f5ae6a574d9de42c75293e5bca7760de65cb4f8ad764dd
+
+pkgname = r-excelr
