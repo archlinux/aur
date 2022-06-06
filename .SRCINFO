@@ -1,0 +1,18 @@
+pkgbase = r-saver
+	pkgdesc = Single-Cell RNA-Seq Gene Expression Recovery
+	pkgver = 1.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=SAVER
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-glmnet
+	depends = r-iterators
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/SAVER_1.1.2.tar.gz
+	sha256sums = a8840bb2624e914a8dcf064c4d97067f93c6c14c1613ee409247aad922e233e8
+
+pkgname = r-saver
