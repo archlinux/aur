@@ -1,0 +1,25 @@
+pkgbase = r-hiver
+	pkgdesc = 2D and 3D Hive Plots for R
+	pkgver = 0.3.63
+	pkgrel = 3
+	url = https://cran.r-project.org/package=HiveR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-jpeg
+	depends = r-plyr
+	depends = r-png
+	depends = r-rcolorbrewer
+	depends = r-rgl
+	depends = tk
+	optdepends = r-bipartite
+	optdepends = r-funcmap
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sna
+	optdepends = r-tint
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/HiveR_0.3.63.tar.gz
+	sha256sums = 83c16ab55324f51ac3f5d0377244fddcb7a009ae30cee4dd67270035c42422ee
+
+pkgname = r-hiver
