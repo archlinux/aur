@@ -1,0 +1,27 @@
+pkgbase = r-usort
+	pkgdesc = uSORT: A self-refining ordering pipeline for gene selection
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/uSORT
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-fpc
+	depends = r-gplots
+	depends = r-igraph
+	depends = r-monocle
+	depends = r-plyr
+	depends = r-rann
+	depends = r-rspectra
+	depends = r-vgam
+	depends = tk
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-runit
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/uSORT_1.22.0.tar.gz
+	sha256sums = 0dc22a065263af8a0f07d57d5644f1651d41279ec064b800dbbfbd0914fe09bb
+
+pkgname = r-usort
