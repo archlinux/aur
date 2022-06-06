@@ -1,0 +1,22 @@
+pkgbase = r-roar
+	pkgdesc = Identify differential APA usage from RNA-seq alignments
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/roar
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/roar_1.32.0.tar.gz
+	sha256sums = ccf12975ea2694002d85db69c13b201b75c8063560e5ba194922c1e254be017f
+
+pkgname = r-roar
