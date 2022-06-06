@@ -1,0 +1,20 @@
+pkgbase = r-openstats
+	pkgdesc = A Robust and Scalable Software Package for Reproducible Analysis of High-Throughput genotype-phenotype association
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OpenStats
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-aiccmodavg
+	depends = r-car
+	depends = r-hmisc
+	depends = r-jsonlite
+	depends = r-knitr
+	depends = r-rlist
+	depends = r-summarytools
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OpenStats_1.8.0.tar.gz
+	sha256sums = e006c348bc36c38e725fb468c34425c4271652a8263fa276d0a53fe3468b2223
+
+pkgname = r-openstats
