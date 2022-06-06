@@ -1,0 +1,13 @@
+pkgbase = r-fftw
+	pkgdesc = Fast FFT and DCT Based on the FFTW Library
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=fftw
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = fftw
+	source = https://cran.r-project.org/src/contrib/fftw_1.0-7.tar.gz
+	sha256sums = f69f63467b84e107f3e0b18d1f034a37140545e6f50e6be3b887df2b4eec3a1e
+
+pkgname = r-fftw
