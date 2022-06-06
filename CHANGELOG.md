@@ -1,5 +1,18 @@
 # Changelog
-## 1.7.0 (UNRELEASED)
+## 1.7.1 (2022-05-25)
+
+### Enhancements
+None
+
+### Bug Fixes
+* Fairly serious bug which affected fastapi integrations with more than 1 request level singleton. The bug caused the 
+definitions of the singletons to all point to the last defined singleton. Fixed in #197 thanks to Dag for reporting and
+helping with replication.
+
+### Backwards incompatible changes
+None
+
+## 1.7.0 (2021-11-30)
 
 ### Enhancements
 * Request lifetime instances with cleanup (using ContextManagers) for the FastApi integration.
