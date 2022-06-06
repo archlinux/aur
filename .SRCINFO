@@ -1,0 +1,22 @@
+pkgbase = r-extradistr
+	pkgdesc = Additional Univariate and Multivariate Distributions
+	pkgver = 1.9.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=extraDistr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = gcc
+	optdepends = r-actuar
+	optdepends = r-evd
+	optdepends = r-hoa
+	optdepends = r-laplacesdemon
+	optdepends = r-skellam
+	optdepends = r-testthat
+	optdepends = r-triangle
+	optdepends = r-vgam
+	source = https://cran.r-project.org/src/contrib/extraDistr_1.9.1.tar.gz
+	sha256sums = 9990348c4dbc611684fcb58ab8db7e856dfde1c9c86ffb7705f4b3dff6b2d7bf
+
+pkgname = r-extradistr
