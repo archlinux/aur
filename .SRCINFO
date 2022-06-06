@@ -1,0 +1,25 @@
+pkgbase = r-omicslonda
+	pkgdesc = Omics Longitudinal Differential Analysis
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OmicsLonDA
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-ggplot2
+	depends = r-gss
+	depends = r-plyr
+	depends = r-pracma
+	depends = r-summarizedexperiment
+	depends = r-zoo
+	optdepends = r-biocmanager
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmicsLonDA_1.12.0.tar.gz
+	sha256sums = b87c110c3fc1d3d0c6590a2f6f26d65b2f1dd87c7592d760d72f9a58bf96b188
+
+pkgname = r-omicslonda
