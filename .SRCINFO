@@ -1,0 +1,12 @@
+pkgbase = r-soniclength
+	pkgdesc = Estimating Abundance of Clones from DNA Fragmentation Data
+	pkgver = 1.4.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sonicLength
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/sonicLength_1.4.7.tar.gz
+	sha256sums = af097ff97eff9a0ae58afc5523d6c30ba750325eb102d5a8ab6c0662a6646df3
+
+pkgname = r-soniclength
