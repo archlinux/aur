@@ -1,0 +1,26 @@
+pkgbase = r-reactable
+	pkgdesc = Interactive Data Tables Based on 'React Table'
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=reactable
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-digest
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-reactr
+	optdepends = r-covr
+	optdepends = r-crosstalk
+	optdepends = r-dplyr
+	optdepends = r-leaflet
+	optdepends = r-mass
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-sparkline
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/reactable_0.3.0.tar.gz
+	sha256sums = 38e4d49a235f6900e6d7dcb33245c925860edf0b3eb443c78ee0330b6a0c304d
+
+pkgname = r-reactable
