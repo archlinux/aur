@@ -1,0 +1,22 @@
+pkgbase = r-tiledbarray
+	pkgdesc = Using TileDB as a DelayedArray Backend
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TileDBArray
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-delayedarray
+	depends = r-rcpp
+	depends = r-s4vectors
+	depends = r-tiledb
+	optdepends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-matrix
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TileDBArray_1.6.0.tar.gz
+	sha256sums = eda6a520af6e96da5709e0d5dfbd8527f3a5ddd44224c824d779290c4e00c058
+
+pkgname = r-tiledbarray
