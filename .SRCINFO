@@ -1,0 +1,18 @@
+pkgbase = r-picante
+	pkgdesc = Integrating Phylogenies and Ecology
+	pkgver = 1.8.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=picante
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-vegan
+	optdepends = r-brglm
+	optdepends = r-circular
+	optdepends = r-corpcor
+	optdepends = r-quantreg
+	source = https://cran.r-project.org/src/contrib/picante_1.8.2.tar.gz
+	sha256sums = 56565ca7f7c37f49c961372a816724967c21a4f5025cd69b8b671122bfdc4aa7
+
+pkgname = r-picante
