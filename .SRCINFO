@@ -1,0 +1,14 @@
+pkgbase = r-qdapregex
+	pkgdesc = Regular Expression Removal, Extraction, and Replacement Tools
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=qdapRegex
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-stringi
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/qdapRegex_0.7.5.tar.gz
+	sha256sums = 0b931c66a9daf7aa492fca4fe994eea256b50e7a1bcdd399c120eecc99a7b1c1
+
+pkgname = r-qdapregex
