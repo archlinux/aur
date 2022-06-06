@@ -1,0 +1,27 @@
+pkgbase = r-omicsprint
+	pkgdesc = Cross omic genetic fingerprinting
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/omicsPrint
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-matrixstats
+	depends = r-multiassayexperiment
+	depends = r-raggedexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-fdb.infiniummethylation.hg19
+	optdepends = r-genomicranges
+	optdepends = r-geoquery
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rsamtools
+	optdepends = r-snpstats
+	optdepends = r-testthat
+	optdepends = r-variantannotation
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicsPrint_1.16.0.tar.gz
+	sha256sums = c32aa01f863536063f37854582bcf7d656cfd5e002a08ab1d732a8b33f16fb21
+
+pkgname = r-omicsprint
