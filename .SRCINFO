@@ -1,0 +1,28 @@
+pkgbase = r-wgcna
+	pkgdesc = Weighted Correlation Network Analysis
+	pkgver = 1.71
+	pkgrel = 1
+	url = https://cran.r-project.org/package=WGCNA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-doparallel
+	depends = r-dynamictreecut
+	depends = r-fastcluster
+	depends = r-foreach
+	depends = r-go.db
+	depends = r-hmisc
+	depends = r-impute
+	depends = r-matrixstats
+	depends = r-preprocesscore
+	depends = r-rcpp
+	optdepends = r-entropy
+	optdepends = r-infotheo
+	optdepends = r-minet
+	optdepends = r-org.hs.eg.db
+	optdepends = r-org.mm.eg.db
+	source = https://cran.r-project.org/src/contrib/WGCNA_1.71.tar.gz
+	sha256sums = 21f5349e888ea76241912600ee5c35a0d2fd50180568b9b08b2b597f099bf708
+
+pkgname = r-wgcna
