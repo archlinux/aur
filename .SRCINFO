@@ -1,0 +1,28 @@
+pkgbase = r-mboost
+	pkgdesc = Model-Based Boosting
+	pkgver = 2.9.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mboost
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-nnls
+	depends = r-partykit
+	depends = r-quadprog
+	depends = r-stabs
+	optdepends = r-bayesx
+	optdepends = r-fields
+	optdepends = r-gbm
+	optdepends = r-kangar00
+	optdepends = r-mass
+	optdepends = r-mlbench
+	optdepends = r-nnet
+	optdepends = r-randomforest
+	optdepends = r-rcolorbrewer
+	optdepends = r-rpart
+	optdepends = r-testthat
+	optdepends = r-th.data
+	source = https://cran.r-project.org/src/contrib/mboost_2.9-7.tar.gz
+	sha256sums = 0242cb91656280c4bd705643b65674900a1475305d9f80cfc12ef4b5fa069606
+
+pkgname = r-mboost
