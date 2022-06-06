@@ -6,7 +6,6 @@ pkgbase = scaramanga
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
