@@ -1,0 +1,12 @@
+pkgbase = r-drugvsdiseasedata
+	pkgdesc = Drug versus Disease Data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DrugVsDiseasedata
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/DrugVsDiseasedata_1.32.0.tar.gz
+	sha256sums = d4d629199a29d9044955fe491505f79e93fbec21a9977540a78012d11c279650
+
+pkgname = r-drugvsdiseasedata
