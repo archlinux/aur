@@ -1,0 +1,16 @@
+pkgbase = r-pryr
+	pkgdesc = Tools for Computing on the Language
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=pryr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-lobstr
+	depends = r-rcpp
+	depends = r-stringr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/pryr_0.1.5.tar.gz
+	sha256sums = 7b1653ec51850f4633cee8e2eb7d0b2724fb587b801539488b426cf88f0f770b
+
+pkgname = r-pryr
