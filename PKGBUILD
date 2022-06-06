@@ -10,7 +10,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched-with-scrolling
 pkgver=9.26
-pkgrel=2
+pkgrel=3
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and scrolling in pages'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
