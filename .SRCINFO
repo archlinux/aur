@@ -1,0 +1,22 @@
+pkgbase = r-perfect
+	pkgdesc = Permutation filtration for microbiome data
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PERFect
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-fitdistrplus
+	depends = r-ggplot2
+	depends = r-phyloseq
+	depends = r-psych
+	depends = r-sn
+	depends = r-zoo
+	optdepends = r-ggpubr
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PERFect_1.10.0.tar.gz
+	sha256sums = 462919106e9c5022727310f4104f6b75a7694e6c82cff81b7afbe6b5c6dccb0c
+
+pkgname = r-perfect
