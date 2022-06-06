@@ -1,6 +1,6 @@
 pkgbase = imd-git
 	pkgdesc = Improved MarkDown Reader
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/Noah-Arcouette/imd.git
 	arch = any
