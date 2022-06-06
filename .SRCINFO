@@ -1,0 +1,23 @@
+pkgbase = r-xde
+	pkgdesc = XDE: a Bayesian hierarchical model for cross-study analysis of differential gene expression
+	pkgver = 2.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/XDE
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-genefilter
+	depends = r-genemeta
+	depends = r-gtools
+	depends = r-mvtnorm
+	depends = r-rcolorbrewer
+	depends = r-siggenes
+	optdepends = r-coda
+	optdepends = r-mass
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/XDE_2.42.0.tar.gz
+	sha256sums = 0d6cba9c7be399ab87db0f195792bc7d27bbd2e895c67fca9688c92be4ccdb0a
+
+pkgname = r-xde
