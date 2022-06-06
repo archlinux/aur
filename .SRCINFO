@@ -1,0 +1,16 @@
+pkgbase = r-org.rn.eg.db
+	pkgdesc = Genome wide annotation for Rat
+	pkgver = 3.15.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/org.Rn.eg.db
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	optdepends = r-annotate
+	optdepends = r-dbi
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Rn.eg.db_3.15.0.tar.gz
+	sha256sums = e09eb3e6a7d8c73ba3de018d8e9715b353ad5f5dfd8a488d67e016d115dea47b
+
+pkgname = r-org.rn.eg.db
