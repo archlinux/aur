@@ -1,0 +1,27 @@
+pkgbase = r-mai
+	pkgdesc = Mechanism-Aware Imputation
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MAI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-caret
+	depends = r-doparallel
+	depends = r-e1071
+	depends = r-foreach
+	depends = r-future
+	depends = r-future.apply
+	depends = r-missforest
+	depends = r-pcamethods
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-tidyverse
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAI_1.2.0.tar.gz
+	sha256sums = d1a688d9b2bb2aa0cf211985a1f7adda2f4d83c88c9fd1da0579bc9b678d59dc
+
+pkgname = r-mai
