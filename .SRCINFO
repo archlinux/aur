@@ -1,0 +1,13 @@
+pkgbase = r-shinythemes
+	pkgdesc = Themes for Shiny
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinythemes
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/shinythemes_1.2.0.tar.gz
+	sha256sums = 37d68569ce838c7da9f0ea7e2b162ecf38fba2ae448a4888b6dd29c4bb5b2963
+
+pkgname = r-shinythemes
