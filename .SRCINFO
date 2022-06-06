@@ -1,0 +1,21 @@
+pkgbase = r-tanggle
+	pkgdesc = Visualization of Phylogenetic Networks
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tanggle
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ape
+	depends = r-ggplot2
+	depends = r-ggtree
+	depends = r-phangorn
+	optdepends = r-biocstyle
+	optdepends = r-ggimage
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tanggle_1.2.0.tar.gz
+	sha256sums = ec38f5534bb7913d02df0352013cae436ddfcfc67dde5f89a780f3847bc504e4
+
+pkgname = r-tanggle
