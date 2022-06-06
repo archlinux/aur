@@ -1,0 +1,20 @@
+pkgbase = r-titancna
+	pkgdesc = Subclonal copy number and LOH prediction from whole genome sequencing of tumours
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TitanCNA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-variantannotation
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TitanCNA_1.34.0.tar.gz
+	sha256sums = 7dc833477da7bf9f976149232419cd450d759801777e7b1882329b6afdd4bd92
+
+pkgname = r-titancna
