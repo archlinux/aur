@@ -1,0 +1,14 @@
+pkgbase = r-rdrtoolbox
+	pkgdesc = A package for nonlinear dimension reduction with Isomap and LLE.
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RDRToolbox
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rgl
+	optdepends = r-golubesets
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RDRToolbox_1.46.0.tar.gz
+	sha256sums = 5c31e0f8383522c16bc2c607ecb3de48fb2b5e556c05e62eced1d8f40238878d
+
+pkgname = r-rdrtoolbox
