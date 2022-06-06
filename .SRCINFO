@@ -1,0 +1,13 @@
+pkgbase = r-objectproperties
+	pkgdesc = A Factory of Self-Describing Properties
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=objectProperties
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-objectsignals
+	source = https://cran.r-project.org/src/contrib/objectProperties_0.6.8.tar.gz
+	sha256sums = dfa97111f348862a3174356e1d4fb18d3614215129c9b7ffc8da60c0c5ed2b0b
+
+pkgname = r-objectproperties
