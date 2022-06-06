@@ -1,0 +1,22 @@
+pkgbase = r-graper
+	pkgdesc = Adaptive penalization in high-dimensional regression and classification with external covariates using variational Bayes
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/graper
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-cowplot
+	depends = r-ggplot2
+	depends = r-matrixstats
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/graper_1.12.0.tar.gz
+	sha256sums = 67918e9e349458e3e2b7e6b76f8d7efcd24d71684f2d8ed6abff75961a99aea1
+
+pkgname = r-graper
