@@ -1,0 +1,24 @@
+pkgbase = r-gprofiler2
+	pkgdesc = Interface to the 'g:Profiler' Toolset
+	pkgver = 0.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gprofiler2
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-crosstalk
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-jsonlite
+	depends = r-plotly
+	depends = r-rcurl
+	depends = r-tidyr
+	depends = r-viridislite
+	optdepends = r-knitr
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/gprofiler2_0.2.1.tar.gz
+	sha256sums = 2fac15b65921d95b1d360ad3f60bf9c077ab806dd69702736aeff73216191064
+
+pkgname = r-gprofiler2
