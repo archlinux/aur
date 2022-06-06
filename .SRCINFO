@@ -1,0 +1,14 @@
+pkgbase = r-graphat
+	pkgdesc = Graph Theoretic Association Tests
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GraphAT
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-graph
+	depends = r-mcmcpack
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphAT_1.68.0.tar.gz
+	sha256sums = c1e93243abe1dcf75b247224f87ae65377256bf7c45c5ae1c21ce7eba667b8e8
+
+pkgname = r-graphat
