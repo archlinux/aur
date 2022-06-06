@@ -1,0 +1,12 @@
+pkgbase = r-graphalignment
+	pkgdesc = GraphAlignment
+	pkgver = 1.60.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GraphAlignment
+	arch = x86_64
+	license = custom
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GraphAlignment_1.60.0.tar.gz
+	sha256sums = 155df0af2de5a4cf016c9cd565d69305121830cd0d4ca86989daf48c16d6f26a
+
+pkgname = r-graphalignment
