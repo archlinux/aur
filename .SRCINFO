@@ -1,0 +1,12 @@
+pkgbase = r-parmigene
+	pkgdesc = Parallel Mutual Information Estimation for Gene Network Reconstruction
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=parmigene
+	arch = x86_64
+	license = AGPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/parmigene_1.1.0.tar.gz
+	sha256sums = 44db54941dc81c8b145a857df961e3901f518853e7050da4d42ef8ef71c7f918
+
+pkgname = r-parmigene
