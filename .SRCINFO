@@ -1,0 +1,25 @@
+pkgbase = r-hippo
+	pkgdesc = Heterogeneity-Induced Pre-Processing tOol
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HIPPO
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-gridextra
+	depends = r-irlba
+	depends = r-magrittr
+	depends = r-reshape2
+	depends = r-rlang
+	depends = r-rtsne
+	depends = r-singlecellexperiment
+	depends = r-umap
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HIPPO_1.8.0.tar.gz
+	sha256sums = 7b7dbe14560cd7875968674aa4001afe71f33a75710bf8d997519f520a5bc978
+
+pkgname = r-hippo
