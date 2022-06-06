@@ -1,0 +1,16 @@
+pkgbase = sku-git
+	pkgdesc = Simple TUI sudoku written in go
+	pkgver = r4.f16efa6
+	pkgrel = 1
+	url = https://github.com/fedeztk/sku
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = sku
+	conflicts = sku
+	source = git+https://github.com/fedeztk/sku.git
+	sha256sums = SKIP
+
+pkgname = sku-git
