@@ -1,0 +1,16 @@
+pkgbase = r-pasilla
+	pkgdesc = Data package with per-exon and per-gene read counts of RNA-seq samples of Pasilla knock-down by Brooks et al., Genome Research 2011.
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pasilla
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-dexseq
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/pasilla_1.24.0.tar.gz
+	sha256sums = 2b7a79ec31df14c8b3d7244d7f17a074c9acba964fbfa2715b334fb1eb815def
+
+pkgname = r-pasilla
