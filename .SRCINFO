@@ -1,0 +1,20 @@
+pkgbase = r-redseq
+	pkgdesc = Analysis of high-throughput sequencing data processed by restriction enzyme digestion
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/REDseq
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-bsgenome
+	depends = r-bsgenome.celegans.ucsc.ce2
+	depends = r-chippeakanno
+	depends = r-iranges
+	depends = r-multtest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/REDseq_1.42.0.tar.gz
+	sha256sums = 17053c28855ad7ef12774baab2e18547114140bdb557a5bf1f8b5379e6c7389a
+
+pkgname = r-redseq
