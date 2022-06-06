@@ -1,0 +1,13 @@
+pkgbase = r-flock
+	pkgdesc = Process Synchronization Using File Locks
+	pkgver = 0.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=flock
+	arch = x86_64
+	license = Apache
+	depends = r
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/flock_0.7.tar.gz
+	sha256sums = 47ebdeaeeb63ec93c800782bafa7f2846f73bb905adb6a3b5c44b248ce1de9fd
+
+pkgname = r-flock
