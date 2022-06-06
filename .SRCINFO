@@ -1,0 +1,14 @@
+pkgbase = r-rrdp
+	pkgdesc = Interface to the RDP Classifier
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rRDP
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	optdepends = r-rrdpdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rRDP_1.30.0.tar.gz
+	sha256sums = c2534175ea08b266fe0b758746846cac3f21cbebf7d50b54b0bb32a0178b3724
+
+pkgname = r-rrdp
