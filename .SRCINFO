@@ -1,0 +1,14 @@
+pkgbase = r-scattermore
+	pkgdesc = Scatterplots with More Points
+	pkgver = 0.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=scattermore
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-scales
+	source = https://cran.r-project.org/src/contrib/scattermore_0.8.tar.gz
+	sha256sums = dbdd73d8261cb063464bb29d5c17733b7e87bc50a19948bc80439e19f2a9f8e5
+
+pkgname = r-scattermore
