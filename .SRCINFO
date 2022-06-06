@@ -1,0 +1,14 @@
+pkgbase = r-gprege
+	pkgdesc = Gaussian Process Ranking and Estimation of Gene Expression time-series
+	pkgver = 1.39.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gprege
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-gptk
+	optdepends = r-spam
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gprege_1.39.0.tar.gz
+	sha256sums = e8a88b04301dc258f87f718b1a74ab707ed7f1566ca8111b3488c9a3cef2d28b
+
+pkgname = r-gprege
