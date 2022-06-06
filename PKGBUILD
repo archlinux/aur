@@ -26,9 +26,6 @@ _makenconfig=
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 
-## Enable Anbox
-_anbox=
-
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
 #
@@ -86,11 +83,11 @@ _lrng_enable=y
 ## Apply Kernel automatic Optimization
 _use_auto_optimization=y
 
-## Apply Kernel Optimization selecting
-_use_optimization_select=
+## Apply Kernel automatic Optimization
+_use_auto_optimization=
 
-## Enable zram/zswap ZSTD compression
-_zstd_compression=y
+## Apply Kernel Optimization selecting
+_use_optimization_select=y
 
 _nf_cone=y
 
@@ -102,16 +99,25 @@ _use_llvm_lto=
 ## Change the thin lto cachedir for fixing building several dkms modules including zfs
 _thin_lto_cachedir=
 
+# KCFI is a proposed forward-edge control-flow integrity scheme for
+# Clang, which is more suitable for kernel use than the existing CFI
+# scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
+# alter function references to point to a jump table, and won't break
+# function address equality.
+# ATTENTION!: you do need a patched llvm for the usage of kcfi,
+# you can find a patched llvm-git in the cachyos-repo's.
+# The packagename is called "llvm-kcfi"
+_use_kcfi=
 
 if [ -n "$_use_llvm_lto" ]; then
     pkgbase=linux-cachyos-rc-lto
 else
     pkgbase=linux-cachyos-rc
 fi
-_major=5.18
-_minor=0
+_major=5.19
+#_minor=
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -120,7 +126,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux CFS scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=4
+pkgrel=1
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -140,45 +146,44 @@ source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
 "config")
 if [ "$_cpusched" = "bmq" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+    source+=("${_patchsource}/sched/0001-prjc-5.19.patch")
 fi
 if [ "$_cpusched" = "pds" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+    source+=("${_patchsource}/sched/0001-prjc-5.19.patch")
 fi
 if [ "$_cpusched" = "cacule" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18.patch")
+    source+=("${_patchsource}/sched/0001-cacULE-5.19.patch")
 fi
 if [ "$_cpusched" = "cacule-rdb" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18.patch")
+    source+=("${_patchsource}/sched/0001-cacULE-5.19.patch")
 fi
 if [ "$_cpusched" = "tt" ]; then
-    source+=("${_patchsource}/sched/0001-tt.patch")
+    source+=("${_patchsource}/sched/0001-tt-5.19.patch")
 fi
 if [ "$_cpusched" = "bore" ]; then
-    source+=("${_patchsource}/sched/0001-bore-sched.patch")
+    source+=("${_patchsource}/sched/0001-bore-5.19.patch")
 fi
 source+=(
-    "${_patchsource}/0001-amd-perf.patch"
     "${_patchsource}/0001-arch.patch"
-    "${_patchsource}/0001-bbr2.patch"
     "${_patchsource}/0001-cachy.patch"
-    "${_patchsource}/0001-ck-hrtimer.patch"
-    "${_patchsource}/0001-clearlinux.patch"
     "${_patchsource}/0001-cpu.patch"
     "${_patchsource}/0001-Extend-DAMOS-for-Proactive-LRU-lists-Sorting.patch"
-    "${_patchsource}/0001-fixes.patch"
-    "${_patchsource}/0001-fs-patches.patch"
     "${_patchsource}/0001-futex-winesync.patch"
-    "${_patchsource}/0001-hwmon.patch"
-    "${_patchsource}/0001-kbuild.patch"
-    "${_patchsource}/0001-kcfi.patch"
-    #     "${_patchsource}/0001-latency_nice.patch"
-    "${_patchsource}/0001-lrng.patch"
-    "${_patchsource}/0001-lru-le9-spf.patch"
-    "${_patchsource}/0001-migrate.patch"
-    "${_patchsource}/0001-randstruct.patch"
+#    "${_patchsource}/0001-lrng.patch"
+    "${_patchsource}/0001-ksm.patch"
+    "${_patchsource}/0001-zram-entropy-calculation.patch"
     "auto-cpu-optimization.sh"
 )
+
+if [ -n "$_use_kcfi" ]; then
+source+=("${_patchsource}/0001-kcfi.patch")
+depends+=(clang llvm lld python)
+BUILD_FLAGS=(
+    CC=clang
+    LD=ld.lld
+    LLVM=1
+)
+fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -234,13 +239,13 @@ prepare() {
         scripts/config --enable CACULE_SCHED \
                        --enable CACULE_RDB \
                        --set-val RDB_INTERVAL 19
-    elif [ "$_cpusched" = "tt" ]; then
-        echo "Enable TT CPU scheduler..."
-        scripts/config --enable TT_SCHED \
-                       --enable TT_ACCOUNTING_STATS
     elif [ "$_cpusched" = "bore" ]; then
         echo "Selecting BORE Scheduler..."
         scripts/config --enable SCHED_BORE
+    elif [ "$_cpusched" = "tt" ]; then
+        echo "Selecting TT Scheduler..."
+        scripts/config --enable TT_SCHED
+        scripts/config --enable TT_ACCOUNTING_STATS
     elif [ "$_cpusched" = "cfs" ]; then
         echo "Selecting Completely Fair Scheduler..."
     else
@@ -253,8 +258,8 @@ prepare() {
         exit
     fi
 
-    if [ -n "$_use_cfi" ]; then
-        echo "Enabling CFI"
+    if [ -n "$_use_kcfi" ]; then
+        echo "Enabling kCFI"
         scripts/config --enable ARCH_SUPPORTS_CFI_CLANG \
                        --enable CFI_CLANG
     fi
@@ -496,27 +501,32 @@ prepare() {
                        --set-str ZRAM_DEF_COMP zstd \
                        --disable ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
                        --enable ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
-                       --set-str ZSWAP_COMPRESSOR_DEFAULT zstd
+                       --set-str ZSWAP_COMPRESSOR_DEFAULT zstd \
+                       --enable ZRAM_ENTROPY \
+                       --set-val ZRAM_ENTROPY_THRESHOLD 100000
     fi
 
-    if [ -n "$_anbox" ]; then
-        echo "Enable Anbox..."
-        scripts/config --enable ASHMEM \
-                       --enable ANDROID \
-                       --enable ANDROID_BINDER_IPC \
-                       --enable ANDROID_BINDERFS \
-                       --enable ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
-    fi
-
+    if [ -n "$_disable_debug" ]; then
     scripts/config --disable DEBUG_INFO \
-                   --disable DEBUG_INFO_BTF \
-                   --disable DEBUG_INFO_DWARF4 \
-                   --disable PAHOLE_HAS_SPLIT_BTF \
-                   --disable DEBUG_INFO_BTF_MODULES
+                       --disable DEBUG_INFO_BTF \
+                       --disable DEBUG_INFO_DWARF4 \
+                       --disable DEBUG_INFO_DWARF5 \
+                       --disable PAHOLE_HAS_SPLIT_BTF \
+                       --disable DEBUG_INFO_BTF_MODULES \
+                       --disable SLUB_DEBUG \
+                       --disable PM_DEBUG \
+                       --disable PM_ADVANCED_DEBUG \
+                       --disable PM_SLEEP_DEBUG \
+                       --disable ACPI_DEBUG \
+                       --disable SCHED_DEBUG \
+                       --disable LATENCYTOP \
+                       --disable DEBUG_PREEMPT
+    fi
 
+    echo "Enable ZRAM_ENTROPY"
+	  scripts/config --enable ZRAM_ENTROPY
     echo "Enable USER_NS_UNPRIVILEGED"
     scripts/config --enable USER_NS
-
     echo "Enable WINE FASTSYNC"
     scripts/config --enable WINESYNC
 
@@ -571,10 +581,11 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
-    optdepends=('crda: to set the correct wireless channels of your country'
-        'linux-firmware: firmware images needed for some devices'
-    'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
+                  'linux-firmware: firmware images needed for some devices'
+                  'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
+                  'uksmd: Userspace KSM helper daemon')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN)
 
     cd $_srcname
 
@@ -614,10 +625,10 @@ _package-headers() {
     # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-#    # required when DEBUG_INFO_BTF_MODULES is enabled
-#    if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
-#        install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-#    fi
+    # required when DEBUG_INFO_BTF_MODULES is enabled
+    if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
+        install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    fi
 
     echo "Installing headers..."
     cp -t "$builddir" -a include
@@ -689,25 +700,14 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('da477700e2a5e91ae5b0a6f5c70b2618aab07aa39dcfe78106b9d742df411a24'
-            '23c95af5f4377143592316f474ea64cd4194035c72b9a9a4c07cecdafb825383'
-            'e08fb439ba424c9c8db8f41fe9328dd3e30d4405094b6972dcce3863f04a9f46'
-            'fb32360e492ee63e87dcaeaab9fec75871480d20e6c24f74a8856585b2dc70aa'
-            '2bfe45a67732a97cea01bf760a8f9fb297057c2488eb9e61720a0bb26c9b11e2'
-            '56f58801a73e6d930d7680806dc734b50b69617a0eef96244627d7a946b62efd'
-            'd5dbbe9a3a4d643fa0daa154dc8f3e5f42f3adc5c692f7272b0b62c5c98a1a67'
-            '097e6faccc2dc15e7c02fc4e22616608c7d26e515a3580f3ef1a6a2ef705ef68'
-            'd6e9d3a5a87b4d43ceb4a415e9a15a949c755a2b65f9cf3dcc4bfac15a68af02'
-            'c2bf57d37db1f93c5f3eeff2e2957f01618f4786613c13755f9ae6989d2b745c'
-            '30fd4ca078cb1eee0bc4005700da4d15515a577ccdb96ea7922040aa9086d6b7'
-            'a54bb0fe432c787971d481f9b2fcf41b24c1f7242f6fbd44fa8894149b40b52b'
-            '9ea85b97b92c01a8d620a74ab3c375c5cb5017a8f3a5c9996bfff31997521f61'
-            '67134052d1dc7332ba5a991ec54a2a957539bec4eb4a1a0ed0f0ad7daa8fe763'
-            'c1aae07261bafc711c2d66e26c2c30e444e11509cacc7aec148dc021761294cd'
-            '4746c9b16f41403c78c6d20c8dc5d09f49dc8e0f73441faa260c1b6f022529aa'
-            '7c2ffee8e2a983df812aacdae6db21337a883494e6ddb4f0bc48a6dd485411be'
-            'c8b76830adc1cbc82cc4d12859e4f4cc0006d90c9824296c8350fc6ace741ad9'
-            '9d5556c194fe3dbd75125cd8e17e34cb6cc5b94d6ff24d596c52225c46fbf868'
-            'e8179f661dc9ba2ad89455f0c7e952e9dd9b4d6445476384cbac2730cdd46b65'
-            'b152bc0af497c3ac9fd9ee91140e753464306cd09b2abe458462fc88e703c25d'
-            '65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
+sha256sums=('c2d2400bbf52688a1d2d1e45171331ddbc69ba1c3864e922c1c3f5b546b4d21b'
+            '342a952420fa373daac811b4bf04746c6a3ba75eb76f72dd24fee566ae89d827'
+            '114de325b79abf71532047001d6000f77f6b255c3542f7eeedb36ce99c14d4a9'
+            '8cb5f04d2b4da0db29cac021f97152e2eb2346547685f49532c1e352be05fb4a'
+            'fb091f718c8e683c158dc0d3f3aa8f80f8dfd710f09da257e6bc5a418e16c2b9'
+            'a3befe7b001470decc08b1e7cae0e436b5bc355c2f2b43148c6ab30ed9821ec7'
+            '0df9c5ae437a7a685493afebf7b5274ce1b73e89a090c31bd3af0b0fdf18ff9e'
+            '7cf2e27ae7ca49c8d20a6c10b0a34187f8c63f2dab3063b3649a692d65065fad'
+            'f94ee42a540d935c3fa05d27485b7f6b66d6220ea2e603db8a3d9ca55e19f7ef'
+            'f31972b5cdb0a9ffebe63070ce5706b9d28e47c96f5979820b3fb57f236a93bf'
+            'be21f15aeb22b2ca1e35e4975590d30736af0483ea7464e3464a60d993e37e22')
