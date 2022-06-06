@@ -1,6 +1,6 @@
 pkgbase = mate-hud-dev
 	pkgdesc = Run menubar commands, much like the unity 7 HUD (Development branch with new features)
-	pkgver = 22.04.4+dev+56+a3ccbe5
+	pkgver = 22.04.4+dev+58+67742aa
 	pkgrel = 1
 	url = https://github.com/twa022/mate-hud/tree/dev
 	arch = any
@@ -8,21 +8,21 @@ pkgbase = mate-hud-dev
 	makedepends = python-setuptools
 	makedepends = python-distutils-extra
 	makedepends = git
-	makedepends = bc
-	depends = rofi
-	depends = python-gobject
-	depends = mate-desktop
 	depends = appmenu-gtk-module
-	depends = python-pkgconfig
 	depends = dbus-python
+	depends = hicolor-icon-theme
+	depends = mate-desktop
+	depends = python-gobject
+	depends = python-pkgconfig
 	depends = python-psutil
+	depends = python-pyinotify
 	depends = python-setproctitle
 	depends = python-xlib
-	depends = python-pyinotify
+	depends = rofi
 	optdepends = DBUS-PLOTINUS: plotinus backend
 	provides = mate-hud=22.04.4
 	conflicts = mate-hud
-	source = mate-hud::git+https://github.com/twa022/mate-hud#branch=dev
+	source = mate-hud::git+https://github.com/twa022/mate-hud#commit=67742aae5d55750f666bf7be7ff02acb347f2f3a
 	sha256sums = SKIP
 
 pkgname = mate-hud-dev
