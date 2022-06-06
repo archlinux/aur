@@ -1,0 +1,16 @@
+pkgbase = r-rtreemix
+	pkgdesc = Rtreemix: Mutagenetic trees mixture models.
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rtreemix
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-graph
+	depends = r-hmisc
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rtreemix_1.58.0.tar.gz
+	sha256sums = 75f7a837a65cebd359f9cbf0fd9aef4338c439abf3ff0146fc46fe0a6cad3759
+
+pkgname = r-rtreemix
