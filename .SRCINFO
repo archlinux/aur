@@ -1,16 +1,16 @@
 pkgbase = papirus-icon-theme-stripped
 	pkgdesc = Papirus icon theme, stripped to only base (default + dark) variations.
-	pkgver = 20220508
+	pkgver = 20220606
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 	arch = any
 	license = GPL3
 	provides = papirus-icon-theme
 	conflicts = papirus-icon-theme
-	noextract = papirus-icon-theme-20220508.tar.gz
+	noextract = papirus-icon-theme-20220606.tar.gz
 	options = !strip
 	options = !emptydirs
-	source = papirus-icon-theme-20220508.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/20220508.tar.gz
-	sha256sums = 0b17c824de8498dae0e2a0e27d24bf79f42eae4041003b509decb2c1ec69d8db
+	source = papirus-icon-theme-20220606.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/20220606.tar.gz
+	sha256sums = 139d18bada63d72779f2b604dbe893987d74000de728165ef1cb8baa4624b9c6
 
 pkgname = papirus-icon-theme-stripped
