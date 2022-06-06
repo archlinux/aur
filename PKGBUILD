@@ -10,7 +10,7 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=6
+pkgrel=7
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -39,7 +39,7 @@ prepare() {
   #make -f scripts/Makefile.release gendbs
 
   # === uncomment next line to add archlinuxarm mirrors to archlx_mirrors file ===
-  #grep '^# Server' ${srcdir}/mirrorlist|sed -e 's/^# Server = //' -e 's/$arch\/$repo$//' >> conf/archlx_mirrors
+  #grep '^.*Server' mirrorlist|sed -e 's/^.*Server = //' -e 's/$arch\/$repo$//' >> conf/archlx_mirrors
 }
 
 build() {
