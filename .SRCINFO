@@ -1,0 +1,13 @@
+pkgbase = r-truncdist
+	pkgdesc = Truncated Random Variables
+	pkgver = 1.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=truncdist
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-evd
+	source = https://cran.r-project.org/src/contrib/truncdist_1.0-2.tar.gz
+	sha256sums = b848b68bdd983bd496fa7327632ffa8add8d2231229b8af5c8bc29d823e1300a
+
+pkgname = r-truncdist
