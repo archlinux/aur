@@ -1,0 +1,28 @@
+pkgbase = r-text2vec
+	pkgdesc = Modern Text Mining Framework for R
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=text2vec
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-digest
+	depends = r-lgr
+	depends = r-mlapi
+	depends = r-r6
+	depends = r-rcpp
+	depends = r-rsparse
+	depends = r-stringi
+	optdepends = r-covr
+	optdepends = r-glmnet
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-proxy
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-udpipe
+	source = https://cran.r-project.org/src/contrib/text2vec_0.6.1.tar.gz
+	sha256sums = f10aa50abee9f4b0dc686126dace49594f5417c9e9662338d4168602c2c83a2e
+
+pkgname = r-text2vec
