@@ -1,0 +1,14 @@
+pkgbase = r-tester
+	pkgdesc = Tests and checks characteristics of R objects
+	pkgver = 0.1.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tester
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tester_0.1.7.tar.gz
+	sha256sums = b9c645119c21c69450f3d366c911ed92ac7c14ef61652fd676a38fb9d420b5f4
+
+pkgname = r-tester
