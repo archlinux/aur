@@ -1,7 +1,7 @@
 pkgbase = hyprland-bin
-	pkgdesc = Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
+	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
 	pkgver = 0.4.0beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaxerski/Hyprland
 	arch = any
 	license = BSD
@@ -33,9 +33,8 @@ pkgbase = hyprland-bin
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
 	depends = xorg-xwayland
-	conflicts = hyprland-git
+	provides = hyprland
 	conflicts = hyprland
-	conflicts = hyprland-bin
 	source = hyprland-bin-0.4.0beta.tar.gz::https://github.com/vaxerski/Hyprland/releases/download/v0.4.0beta/v0.4.0beta.tar.gz
 	sha256sums = 5969e5f88426f90acdfb5958644733d8a9409389c2d345514c58a66cf74d2f91
 
