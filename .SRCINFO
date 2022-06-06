@@ -1,0 +1,26 @@
+pkgbase = r-feast
+	pkgdesc = FEAture SelcTion (FEAST) for Single-cell clustering
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FEAST
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-irlba
+	depends = r-matrixstats
+	depends = r-mclust
+	depends = r-sc3
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	depends = r-tscan
+	optdepends = r-biocstyle
+	optdepends = r-ggpubr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-seurat
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FEAST_1.4.0.tar.gz
+	sha256sums = 39e8051755293eb29896f6f1ff8b744e2541c521eda65ae47f8995ca113d1514
+
+pkgname = r-feast
