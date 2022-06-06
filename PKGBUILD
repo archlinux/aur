@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cq_warehouse
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A cadquery parametric part collection"
 arch=(x86_64)
@@ -11,12 +11,18 @@ license=('Apache')
 depends=(
 python-cadquery
 )
+makedepends=(
+python-build
+python-installer
+)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gumyr/cq_warehouse/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3f928eebde439b3c7c161059bb8a8442cf243c4f401916e4bda6ec97099768dc')
+sha256sums=('6c2783f7a948e7e2743d57b487568e733cd6f5b477565def31bed7bbb44b33b6')
 
 prepare() {
   cd cq_warehouse-${pkgver}
+  rm -rf dist
+  #curl --silent https://patch-diff.githubusercontent.com/raw/gumyr/cq_warehouse/pull/37.patch | patch -p1
 }
 
 build() {
@@ -31,7 +37,6 @@ check() {
 
 package() {
   cd cq_warehouse-${pkgver}
-  # python -m installer --destdir="${pkgdir}" dist/*.whl
-  python -m installer --destdir="${pkgdir}" dist/cq_warehouse-${pkgver}*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
