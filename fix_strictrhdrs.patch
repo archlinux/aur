@@ -1,0 +1,991 @@
+--- src/FeatureWeightsPosDepC.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/FeatureWeightsPosDepC.cpp	2022-01-24 17:03:58.996033520 +0300
+@@ -54,11 +54,11 @@
+         iter = kh_get(pdfw, pdfwmap, keys[i]);
+ 
+         if (iter == kh_end(pdfwmap))
+         {
+             Rprintf("key %llu not found in hashmap during determination of feature weights\n", keys[i]);
+-            Free(keys);
++            R_Free(keys);
+             return(FALSE);
+         }
+ 
+         colIndex = keys[i] / dimFeatureSpace;
+         featIndex = keys[i] % dimFeatureSpace;
+@@ -71,21 +71,21 @@
+         iter = kh_get(pdfi, pdfimap, featIndex);
+ 
+         if (iter == kh_end(pdfimap))
+         {
+             Rprintf("pattern %llu not found in hashmap during determination of feature weights\n", featIndex);
+-            Free(keys);
++            R_Free(keys);
+             return(FALSE);
+         }
+ 
+         INTEGER(slot_i)[currElem++] = kh_value(pdfimap, iter);
+     }
+ 
+     while (currCol < numCols)
+         INTEGER(slot_p)[++currCol] = currElem;
+ 
+-    Free(keys);
++    R_Free(keys);
+     return(TRUE);
+ }
+ 
+ bool getPDFeatureWeights(SEXP *pdFeatWeights, khash_t(pdfw) *pdfwmap, khash_t(pdfi) *pdfimap, bool posSpecific,
+                          int k, uint64_t dimFeatureSpace, int featIndexSize, uint64_t numKeys, void *keys)
+--- src/GappyPairC.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/GappyPairC.cpp	2022-01-24 17:03:29.547988824 +0300
+@@ -1621,11 +1621,11 @@
+     if (!zeroFeatures || features.length > 0 || countNonzeroFeatures)
+     {
+         if (normalized && !(zeroFeatures && features.length < 1))
+         {
+             calcKernelValue = TRUE;
+-            *normValues = (double *) Calloc(sizeX, double);
++            *normValues = (double *) R_Calloc(sizeX, double);
+             pNormValues = *normValues;
+ 
+             if (useHash)
+             {
+                 fchmap = kh_init(fc);
+@@ -1633,11 +1633,11 @@
+             }
+             else
+             {
+                 DEFINE_BITARRAY(usedFeatures, dimFeatureSpace);
+                 featuresInSample = usedFeatures;
+-                featureCounts = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++                featureCounts = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+                 pFeatureCounts = featureCounts;
+             }
+         }
+         else
+             calcKernelValue = FALSE;
+@@ -1725,11 +1725,11 @@
+                 }
+             }
+         }
+         else
+         {
+-            featIndexMap = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++            featIndexMap = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+             pFeatureMap = featIndexMap;
+             *indexMap = (void *) featIndexMap;
+ 
+             if (features.length < 1)
+             {
+@@ -2321,11 +2321,11 @@
+     IntegerVector annotationIndexMap(MAX_CHAR);
+     IntegerVector reverseAnnotationMap(MAX_CHAR);
+ 
+     if (normalized && normValues == NULL)
+     {
+-        normValues = (double *) Calloc(sizeX, double);
++        normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = normValues;
+         calcKernelValue = TRUE;
+     }
+     else
+         calcKernelValue = FALSE;
+@@ -2686,11 +2686,11 @@
+ 
+ 
+ 
+     if (normalized && normValues == NULL)
+     {
+-        normValues = (double *) Calloc(sizeX, double);
++        normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = normValues;
+         saveKernelValue = TRUE;
+     }
+     else
+         saveKernelValue = FALSE;
+@@ -4230,11 +4230,11 @@
+ 
+     if (kh_size(pdfwmap) == 0)
+         return(TRUE);
+ 
+     // create mapping to index
+-    *keys = (T *) Calloc(kh_size(pdfimap) + 1, T);
++    *keys = (T *) R_Calloc(kh_size(pdfimap) + 1, T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfimap); iter != kh_end(pdfimap); iter++)
+     {
+         if (kh_exist(pdfimap, iter))
+@@ -4255,11 +4255,11 @@
+     if (posSpecific)
+         limit = 0;
+     else
+         limit = weightLimit;
+ 
+-    *keys = (T *) Calloc(kh_size(pdfwmap), T);
++    *keys = (T *) R_Calloc(kh_size(pdfwmap), T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfwmap); iter != kh_end(pdfwmap); iter++)
+     {
+         if (numEntries % USER_INTERRUPT_LIMIT == 0)
+@@ -4271,11 +4271,11 @@
+ 
+     // Realloc to shrink size
+     if (*numKeys != numEntries)
+     {
+         *numKeys = numEntries;
+-        *keys = (T *) Realloc(*keys, *numKeys, T);
++        *keys = (T *) R_Realloc(*keys, *numKeys, T);
+     }
+ 
+     // sort keys according to position and feature index
+     sortArray(maxUnSignedIndex, *keys, 1, *numKeys);
+ 
+@@ -4477,11 +4477,11 @@
+         newAnnIndex = NULL;
+     }
+ 
+     if (normalized)
+     {
+-        normValues = (double *) Calloc(numSamples, double);
++        normValues = (double *) R_Calloc(numSamples, double);
+         pNormValues = normValues;
+         fchmap = kh_init(fc);
+         pFeatureCountsHMap = fchmap;
+         calcKernelValue = TRUE;
+     }
+@@ -4813,17 +4813,17 @@
+ 
+ void freeHeapGappyPair()
+ {
+     if (pNormValues != NULL)
+     {
+-        Free(pNormValues);
++        R_Free(pNormValues);
+         pNormValues = NULL;
+     }
+ 
+     if (pFeatureCounts != NULL)
+     {
+-        Free(pFeatureCounts);
++        R_Free(pFeatureCounts);
+         pFeatureCounts = NULL;
+     }
+ 
+     if (pFeatureCountsHMap != NULL)
+     {
+@@ -4831,11 +4831,11 @@
+         pFeatureCountsHMap = NULL;
+     }
+ 
+     if (pFeatureMap != NULL)
+     {
+-        Free(pFeatureMap);
++        R_Free(pFeatureMap);
+         pFeatureMap = NULL;
+     }
+ 
+     if (pFeatureHMap != NULL)
+     {
+--- src/MismatchC.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/MismatchC.cpp	2022-01-24 17:02:36.579907797 +0300
+@@ -983,11 +983,11 @@
+         powAlpha[i] = pow(alphaInf->numAlphabetChars, i);
+ 
+     if (normalized && !(zeroFeatures && features.length < 1))
+     {
+         calcKernelValue = TRUE;
+-        *normValues = (double *) Calloc(sizeX, double);
++        *normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = *normValues;
+ 
+         if (useHash)
+         {
+             fchmap = kh_init(fc);
+@@ -995,11 +995,11 @@
+         }
+         else
+         {
+             DEFINE_BITARRAY(usedFeatures, dimFeatureSpace);
+             featuresInSample = usedFeatures;
+-            featureCounts = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++            featureCounts = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+             pFeatureCounts = featureCounts;
+         }
+     }
+     else
+         calcKernelValue = FALSE;
+@@ -1019,21 +1019,21 @@
+             pIndexHMap = indset;
+         }
+     }
+     else
+     {
+-        featIndexMap = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++        featIndexMap = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+         pfeatIndexMap = featIndexMap;
+         *indexMap = (void *) featIndexMap;
+         vmax = vmaxget();
+         hmap = NULL;
+         pFeatureHMap = NULL;
+         pIndexHMap = NULL;
+ 
+         if (!calcKernelValue)
+         {
+-            indexSet = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++            indexSet = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+             pIndexMap = indexSet;
+         }
+ 
+         if (features.length < 1)
+         {
+@@ -1395,11 +1395,11 @@
+     khash_t(fim) *hmap;
+     struct ifMutateFeature intf;
+ 
+     if (normalized && normValues == NULL)
+     {
+-        normValues = (double *) Calloc(sizeX, double);
++        normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = normValues;
+         calcKernelValue = TRUE;
+     }
+     else
+         calcKernelValue = FALSE;
+@@ -2316,11 +2316,11 @@
+         featuresToHashmapMismatch(featureWeights, svmIndex, k, m, &alphaInf);
+     }
+ 
+     if (normalized)
+     {
+-        normValues = (double *) Calloc(numSamples, double);
++        normValues = (double *) R_Calloc(numSamples, double);
+         pNormValues = normValues;
+         fchmap = kh_init(fc);
+         pFeatureCountsHMap = fchmap;
+         calcKernelValue = TRUE;
+     }
+@@ -2417,23 +2417,23 @@
+ 
+ void freeHeapMismatch()
+ {
+     if (pNormValues != NULL)
+     {
+-        Free(pNormValues);
++        R_Free(pNormValues);
+         pNormValues = NULL;
+     }
+ 
+     if (pfeatIndexMap != NULL)
+     {
+-        Free(pfeatIndexMap);
++        R_Free(pfeatIndexMap);
+         pfeatIndexMap = NULL;
+     }
+ 
+     if (pIndexMap != NULL)
+     {
+-        Free(pIndexMap);
++        R_Free(pIndexMap);
+         pIndexMap = NULL;
+     }
+ 
+     if (pFeatureHMap != NULL)
+     {
+--- src/MotifC.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/MotifC.cpp	2022-01-24 17:02:12.430870578 +0300
+@@ -764,11 +764,11 @@
+                 // new key
+                 if (*keyPoolSize < *poolNextFree + 10 + intf.motifLength)
+                 {
+                     // realloc pool
+                     (*keyPoolSize) *= 2;
+-                    pKeypool = (char *) Realloc(*keyPool, *keyPoolSize, char);
++                    pKeypool = (char *) R_Realloc(*keyPool, *keyPoolSize, char);
+                     *keyPool = pKeypool;
+                 }
+ 
+                 pKey = &((*keyPool)[*poolNextFree]);
+                 memcpy(&((*keyPool)[*poolNextFree]), localKey, pos);
+@@ -803,11 +803,11 @@
+         entryData.counter = 0;
+ 
+         if (numEntries > 0)
+         {
+             // get key pointers
+-            char **keys = (char **) Calloc(numEntries, char *);
++            char **keys = (char **) R_Calloc(numEntries, char *);
+             pKeys = keys;
+             curr = 0;
+ 
+             for (iter = kh_begin(featMap); iter != kh_end(featMap); iter++)
+             {
+@@ -850,11 +850,11 @@
+                     entryData.featureIndex = featureIndex++;
+                     kh_value(featMap, iter) = entryData;
+                 }
+             }
+ 
+-            Free(pKeys);
++            R_Free(pKeys);
+             pKeys = NULL;
+         }
+     }
+ 
+     return;
+@@ -952,11 +952,11 @@
+ {
+     int i, j, arraySize, currIndex, currPos;
+     bool substGroupOpen;
+ 
+     arraySize = motifs.length * 2; // start with two unweighted positions per motif on average
+-    pUnweightedPos = (uint32_t *) Calloc(arraySize, uint32_t);
++    pUnweightedPos = (uint32_t *) R_Calloc(arraySize, uint32_t);
+     *unweightedPos = pUnweightedPos;
+     currIndex = 0;
+ 
+     for (i = 0; i < motifs.length; i++)
+     {
+@@ -985,11 +985,11 @@
+                     if (motifs.ptr[i][j] == '.')
+                     {
+                         if (currIndex >=  arraySize)
+                         {
+                             arraySize = arraySize * 2;
+-                            pUnweightedPos = Realloc(pUnweightedPos, arraySize, uint32_t);
++                            pUnweightedPos = R_Realloc(pUnweightedPos, arraySize, uint32_t);
+                             *unweightedPos = pUnweightedPos;
+                         }
+ 
+                         (*unweightedPos)[currIndex++] = currPos;
+                     }
+@@ -1044,11 +1044,11 @@
+         // new key
+         if (*intf->keyPoolSize < *intf->poolNextFree + 10 + motifLength)
+         {
+             // realloc pool
+             *intf->keyPoolSize *= 2;
+-            pKeypool = (char *) Realloc(intf->keyPool, *intf->keyPoolSize, char);
++            pKeypool = (char *) R_Realloc(intf->keyPool, *intf->keyPoolSize, char);
+             intf->keyPool = pKeypool;
+         }
+ 
+         pKey = &(intf->keyPool[*intf->poolNextFree]);
+         memcpy(&(intf->keyPool[*intf->poolNextFree]), localKey, pos);
+@@ -1598,12 +1598,12 @@
+                         else
+                         {
+                             if (intf->elemIndex >= intf->currFeatVecLength)
+                             {
+                                 intf->currFeatVecLength = intf->currFeatVecLength * 1.4;
+-                                intf->pFeatVecIndex = (uint32_t *) Realloc(intf->pFeatVecIndex, intf->currFeatVecLength, uint32_t);
+-                                intf->pFeatVecValue = (int32_t *) Realloc(intf->pFeatVecValue, intf->currFeatVecLength, int32_t);
++                                intf->pFeatVecIndex = (uint32_t *) R_Realloc(intf->pFeatVecIndex, intf->currFeatVecLength, uint32_t);
++                                intf->pFeatVecValue = (int32_t *) R_Realloc(intf->pFeatVecValue, intf->currFeatVecLength, int32_t);
+                             }
+ 
+                             intf->pFeatVecValue[intf->elemIndex] = *motifBegin - intf->offset + 1;
+                             intf->pFeatVecIndex[intf->elemIndex++] = intf->pTree->node[currNext].ib.idx[MAX_ALPHA_SIZE - 1];
+                             intf->kernelValue++;
+@@ -1647,13 +1647,13 @@
+                                     else
+                                     {
+                                         if (intf->elemIndex >= intf->currFeatVecLength)
+                                         {
+                                             intf->currFeatVecLength = intf->currFeatVecLength * 1.4;
+-                                            intf->pFeatVecIndex = (uint32_t *) Realloc(intf->pFeatVecIndex, intf->currFeatVecLength,
++                                            intf->pFeatVecIndex = (uint32_t *) R_Realloc(intf->pFeatVecIndex, intf->currFeatVecLength,
+                                                                                        uint32_t);
+-                                            intf->pFeatVecValue = (int32_t *) Realloc(intf->pFeatVecValue, intf->currFeatVecLength,
++                                            intf->pFeatVecValue = (int32_t *) R_Realloc(intf->pFeatVecValue, intf->currFeatVecLength,
+                                                                                       int32_t);
+                                         }
+ 
+                                         intf->pFeatVecValue[intf->elemIndex] = *motifBegin - intf->offset + 1;
+                                         intf->pFeatVecIndex[intf->elemIndex++] = intf->pTree->node[currGroup].ib.idx[MAX_ALPHA_SIZE - 1];
+@@ -1697,12 +1697,12 @@
+                     else
+                     {
+                         if (intf->elemIndex >= intf->currFeatVecLength)
+                         {
+                             intf->currFeatVecLength = intf->currFeatVecLength * 1.4;
+-                            intf->pFeatVecIndex = (uint32_t *) Realloc(intf->pFeatVecIndex, intf->currFeatVecLength, uint32_t);
+-                            intf->pFeatVecValue = (int32_t *) Realloc(intf->pFeatVecValue, intf->currFeatVecLength, int32_t);
++                            intf->pFeatVecIndex = (uint32_t *) R_Realloc(intf->pFeatVecIndex, intf->currFeatVecLength, uint32_t);
++                            intf->pFeatVecValue = (int32_t *) R_Realloc(intf->pFeatVecValue, intf->currFeatVecLength, int32_t);
+                         }
+ 
+                         intf->pFeatVecValue[intf->elemIndex] = *motifBegin - intf->offset + 1;
+                         intf->pFeatVecIndex[intf->elemIndex++] = intf->pTree->node[curr].ib.idx[MAX_ALPHA_SIZE - 1];
+                         intf->kernelValue++;
+@@ -1972,11 +1972,11 @@
+         struct fmData entryData;
+ 
+         if (numEntries > 0)
+         {
+             // get key pointers
+-            char **keys = (char **) Calloc(numEntries, char *);
++            char **keys = (char **) R_Calloc(numEntries, char *);
+             pKeys = keys;
+             curr = 0;
+ 
+             for (iter = kh_begin(featMap); iter != kh_end(featMap); iter++)
+             {
+@@ -2014,11 +2014,11 @@
+                             REAL(slot_x)[(*jIdx)++] = entryData.counter;
+                     }
+                 }
+             }
+ 
+-            Free(keys);
++            R_Free(keys);
+             pKeys = NULL;
+         }
+     }
+ 
+     return;
+@@ -2065,11 +2065,11 @@
+         // allocate key pool
+         keyPoolSize = INIT_POOL_SIZE;
+         intf.keyPoolSize = &keyPoolSize;
+         poolNextFree = 0;
+         intf.poolNextFree = &poolNextFree;
+-        intf.keyPool = (char *) Calloc(keyPoolSize, char);
++        intf.keyPool = (char *) R_Calloc(keyPoolSize, char);
+         pKeypool = intf.keyPool;
+ 
+         unweightedPos = &unweightedPositions;
+ 
+         findUnweightedPositions(motifs, &unweightedPosStart, unweightedPos);
+@@ -2232,11 +2232,11 @@
+                          fDim, i, alphaInf, maxMotifLength);
+     }
+ 
+     if (pKeypool != NULL)
+     {
+-        Free(pKeypool);
++        R_Free(pKeypool);
+         pKeypool = NULL;
+     }
+ 
+     // sort feature vectors
+     sort2Arrays(MAXUINT32, featVectorIndex, featVectorValue, numSamples, fDim, NULL);
+@@ -2269,20 +2269,20 @@
+     numSamples = sizeX;
+ 
+     if (!symmetric)
+         numSamples += sizeY;
+ 
+-    double *normValues = (double *) Calloc(numSamples, double);
++    double *normValues = (double *) R_Calloc(numSamples, double);
+ 
+     // allocate arrays for sparse feature vectors with 32 or 64 bit index
+     // store only unnormalized k-mer counts to avoid double space usage
+     // add one for the sentinel
+     fDim = 2 * maxSeqLength + 1;
+     
+-    featVectorValue = (int32_t *) Calloc(numSamples * fDim, int32_t);
+-    featVectorIndex = (uint32_t *) Calloc(numSamples * fDim, uint32_t);
+-    featVectorsStart = (uint64_t *) Calloc(numSamples + 1, uint64_t);
++    featVectorValue = (int32_t *) R_Calloc(numSamples * fDim, int32_t);
++    featVectorIndex = (uint32_t *) R_Calloc(numSamples * fDim, uint32_t);
++    featVectorsStart = (uint64_t *) R_Calloc(numSamples + 1, uint64_t);
+ 
+     // alloc mem for prefix tree
+     maxNoOfNodes = MAX_BLOCK;
+ 
+     if (nodeLimit < maxNoOfNodes)
+@@ -2294,27 +2294,27 @@
+ 
+     if (pTree == NULL)
+     {
+         Rprintf("Allocation of heap for tree failed\n");
+         initMatrixWithNA(km, sizeX, sizeY);
+-        Free(featVectorIndex);
+-        Free(featVectorValue);
+-        Free(featVectorsStart);
+-        Free(normValues);
++        R_Free(featVectorIndex);
++        R_Free(featVectorValue);
++        R_Free(featVectorsStart);
++        R_Free(normValues);
+         return;
+     }
+ 
+     //create tree for motifs
+     if (!createMotifTree(motifs, maxMotifLength, pTree, maxNoOfNodes, &freeNode, &nullBlock,
+                          &printWarning, alphaInf, TRUE))
+     {
+         Rprintf("Creation of tree failed\n");
+         initMatrixWithNA(km, sizeX, sizeY);
+-        Free(featVectorIndex);
+-        Free(featVectorValue);
+-        Free(featVectorsStart);
+-        Free(normValues);
++        R_Free(featVectorIndex);
++        R_Free(featVectorValue);
++        R_Free(featVectorsStart);
++        R_Free(normValues);
+         return;
+     }
+ 
+     intf.markUsedOnly = FALSE;
+     intf.markMotifsInSample = FALSE;
+@@ -2384,14 +2384,14 @@
+ 
+     computeKernelMatrixPos(MAXUINT32, featVectorIndex, featVectorValue, featVectorsStart, km,
+                            normValues, maxFeaturesPerSample, motifs.length, sizeX, sizeY, normalized, symmetric,
+                            FALSE, distWeight);
+     
+-    Free(featVectorIndex);
+-    Free(featVectorValue);
+-    Free(featVectorsStart);
+-    Free(normValues);
++    R_Free(featVectorIndex);
++    R_Free(featVectorValue);
++    R_Free(featVectorsStart);
++    R_Free(normValues);
+ 
+     return;
+ }
+ 
+ void getERDMotif(NumericMatrix erd, ByteStringVector x, int sizeX, IntegerVector selX, ByteStringVector annCharset,
+@@ -2630,11 +2630,11 @@
+         // allocate key pool
+         keyPoolSize = INIT_POOL_SIZE;
+         intf.keyPoolSize = &keyPoolSize;
+         poolNextFree = 0;
+         intf.poolNextFree = &poolNextFree;
+-        intf.keyPool = (char *) Calloc(keyPoolSize, char);
++        intf.keyPool = (char *) R_Calloc(keyPoolSize, char);
+         pKeypool = intf.keyPool;
+         unweightedPos = &unweightedPositions;
+         
+         findUnweightedPositions(motifs, &unweightedPosStart, unweightedPos);
+         
+@@ -3140,16 +3140,16 @@
+     intf.currFeatVecLength = sizeX * maxSeqLength * 2;
+ 
+     if (intf.currFeatVecLength > MAX_FEAT_VEC_LENGTH)
+         intf.currFeatVecLength = MAX_FEAT_VEC_LENGTH;
+ 
+-    *featVectorIndex = (uint32_t *) Calloc(intf.currFeatVecLength, uint32_t);
+-    *featVectorValue = (int32_t *) Calloc(intf.currFeatVecLength, int32_t);
+-    *startIndex = (uint64_t *) Calloc(sizeX + 1, uint64_t);
++    *featVectorIndex = (uint32_t *) R_Calloc(intf.currFeatVecLength, uint32_t);
++    *featVectorValue = (int32_t *) R_Calloc(intf.currFeatVecLength, int32_t);
++    *startIndex = (uint64_t *) R_Calloc(sizeX + 1, uint64_t);
+ 
+     if (normalized)
+-        *kernelValue = (double *) Calloc(sizeX, double);
++        *kernelValue = (double *) R_Calloc(sizeX, double);
+ 
+     intf.markUsedOnly = FALSE;
+     intf.markMotifsInSample = FALSE;
+     intf.zeroFeatures = TRUE;
+     intf.presence = FALSE;
+@@ -3272,25 +3272,25 @@
+                 kh_value(pdfwmap, iter) = normFactor * coefs[sel[0]];
+             else
+                 kh_value(pdfwmap, iter) = kh_value(pdfwmap, iter) + normFactor * coefs[sel[0]];
+         }
+ 
+-        Free(featVectorIndex);
+-        Free(featVectorValue);
+-        Free(startIndex);
++        R_Free(featVectorIndex);
++        R_Free(featVectorValue);
++        R_Free(startIndex);
+ 
+         if (normalized)
+-            Free(kernelValue);
++            R_Free(kernelValue);
+     }
+ 
+     *numKeys = kh_size(pdfwmap);
+ 
+     if (kh_size(pdfwmap) == 0)
+         return(TRUE);
+ 
+     // create mapping to index
+-    *keys = (T *) Calloc(kh_size(pdfimap) + 1, T);
++    *keys = (T *) R_Calloc(kh_size(pdfimap) + 1, T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfimap); iter != kh_end(pdfimap); iter++)
+     {
+         if (kh_exist(pdfimap, iter))
+@@ -3311,11 +3311,11 @@
+     if (posSpecific)
+         limit = 0;
+     else
+         limit = weightLimit;
+ 
+-    *keys = (T *) Calloc(kh_size(pdfwmap), T);
++    *keys = (T *) R_Calloc(kh_size(pdfwmap), T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfwmap); iter != kh_end(pdfwmap); iter++)
+     {
+         if (numEntries % USER_INTERRUPT_LIMIT == 0)
+@@ -3327,11 +3327,11 @@
+ 
+     // Realloc to shrink size
+     if (*numKeys != numEntries)
+     {
+         *numKeys = numEntries;
+-        *keys = (T *) Realloc(*keys, *numKeys, T);
++        *keys = (T *) R_Realloc(*keys, *numKeys, T);
+     }
+ 
+     // sort keys according to position and feature index
+     sortArray(maxUnSignedIndex, *keys, 1, *numKeys);
+ 
+@@ -3560,11 +3560,11 @@
+         // allocate key pool
+         keyPoolSize = INIT_POOL_SIZE;
+         intf.keyPoolSize = &keyPoolSize;
+         poolNextFree = 0;
+         intf.poolNextFree = &poolNextFree;
+-        pKeypool = (char *) Calloc(keyPoolSize, char);
++        pKeypool = (char *) R_Calloc(keyPoolSize, char);
+         keyPool = pKeypool;
+         intf.keyPool = keyPool;
+     }
+     else
+     {
+@@ -3687,21 +3687,21 @@
+         pFeatureHMap = NULL;
+     }
+ 
+     if (pKeypool != NULL)
+     {
+-        Free(pKeypool);
++        R_Free(pKeypool);
+         pKeypool = NULL;
+     }
+ 
+     if (pKeys != NULL)
+     {
+-        Free(pKeys);
++        R_Free(pKeys);
+         pKeys = NULL;
+     }
+ 
+     if (pUnweightedPos != NULL)
+     {
+-        Free(pUnweightedPos);
++        R_Free(pUnweightedPos);
+         pUnweightedPos = NULL;
+     }
+ }
+--- src/SpectrumC.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/SpectrumC.cpp	2022-01-24 17:01:43.209825264 +0300
+@@ -1193,11 +1193,11 @@
+     if (!zeroFeatures || features.length > 0 || countNonzeroFeatures)
+     {
+         if (normalized && !(zeroFeatures && features.length < 1))
+         {
+             calcKernelValue = TRUE;
+-            *normValues = (double *) Calloc(sizeX, double);
++            *normValues = (double *) R_Calloc(sizeX, double);
+             pNormValues = *normValues;
+ 
+             if (useHash)
+             {
+                 fchmap = kh_init(fc);
+@@ -1205,11 +1205,11 @@
+             }
+             else
+             {
+                 DEFINE_BITARRAY(usedFeatures, dimFeatureSpace);
+                 featuresInSample = usedFeatures;
+-                featureCounts = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++                featureCounts = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+                 pFeatureCounts = featureCounts;
+             }
+         }
+         else
+             calcKernelValue = FALSE;
+@@ -1282,11 +1282,11 @@
+                 }
+             }
+         }
+         else
+         {
+-            featIndexMap = (uint32_t *) Calloc(dimFeatureSpace, uint32_t);
++            featIndexMap = (uint32_t *) R_Calloc(dimFeatureSpace, uint32_t);
+             pFeatureMap = featIndexMap;
+             *indexMap = (void *) featIndexMap;
+ 
+             if (features.length < 1)
+             {
+@@ -2022,11 +2022,11 @@
+     IntegerVector annotationIndexMap(MAX_CHAR);
+     IntegerVector reverseAnnotationMap(MAX_CHAR);
+ 
+     if (normalized && normValues == NULL)
+     {
+-        normValues = (double *) Calloc(sizeX, double);
++        normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = normValues;
+         calcKernelValue = TRUE;
+     }
+     else
+         calcKernelValue = FALSE;
+@@ -2425,11 +2425,11 @@
+     IntegerVector reverseAnnotationMap(MAX_CHAR);
+ 
+ 
+     if (normalized && normValues == NULL)
+     {
+-        normValues = (double *) Calloc(sizeX, double);
++        normValues = (double *) R_Calloc(sizeX, double);
+         pNormValues = normValues;
+         saveKernelValue = TRUE;
+     }
+     else
+         saveKernelValue = FALSE;
+@@ -3791,11 +3791,11 @@
+ 
+     if (kh_size(pdfwmap) == 0)
+         return(TRUE);
+ 
+     // create mapping to index
+-    *keys = (T *) Calloc(kh_size(pdfimap) + 1, T);
++    *keys = (T *) R_Calloc(kh_size(pdfimap) + 1, T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfimap); iter != kh_end(pdfimap); iter++)
+     {
+         if (kh_exist(pdfimap, iter))
+@@ -3808,21 +3808,21 @@
+     {
+         iter = kh_get(pdfi, pdfimap, (*keys)[i]);
+         kh_value(pdfimap, iter) = i;
+     }
+ 
+-    Free(*keys);
++    R_Free(*keys);
+     
+     // perform weight pruning for pos specific kernels
+     // for pos dependent kernels weight pruning is done at prediction or
+     // profile generation when the actual weights are calculated
+     if (posSpecific)
+         limit = 0;
+     else
+         limit = weightLimit;
+ 
+-    *keys = (T *) Calloc(kh_size(pdfwmap), T);
++    *keys = (T *) R_Calloc(kh_size(pdfwmap), T);
+     numEntries = 0;
+ 
+     for (iter = kh_begin(pdfwmap); iter != kh_end(pdfwmap); iter++)
+     {
+         if (numEntries % USER_INTERRUPT_LIMIT == 0)
+@@ -3834,11 +3834,11 @@
+ 
+     // Realloc to shrink size
+     if (*numKeys != numEntries)
+     {
+         *numKeys = numEntries;
+-        *keys = (T *) Realloc(*keys, *numKeys, T);
++        *keys = (T *) R_Realloc(*keys, *numKeys, T);
+     }
+ 
+     // sort keys according to position and feature index
+     sortArray(maxUnSignedIndex, *keys, 1, *numKeys);
+ 
+@@ -4039,11 +4039,11 @@
+                                   annCharset, annotationIndexMap);
+     }
+ 
+     if (normalized)
+     {
+-        normValues = (double *) Calloc(numSamples, double);
++        normValues = (double *) R_Calloc(numSamples, double);
+         pNormValues = normValues;
+         fchmap = kh_init(fc);
+         pFeatureCountsHMap = fchmap;
+         calcKernelValue = TRUE;
+     }
+@@ -4447,17 +4447,17 @@
+ 
+ void freeHeapSpectrum()
+ {
+     if (pNormValues != NULL)
+     {
+-        Free(pNormValues);
++        R_Free(pNormValues);
+         pNormValues = NULL;
+     }
+ 
+     if (pFeatureCounts != NULL)
+     {
+-        Free(pFeatureCounts);
++        R_Free(pFeatureCounts);
+         pFeatureCounts = NULL;
+     }
+ 
+     if (pFeatureCountsHMap != NULL)
+     {
+@@ -4465,11 +4465,11 @@
+         pFeatureCountsHMap = NULL;
+     }
+ 
+     if (pFeatureMap != NULL)
+     {
+-        Free(pFeatureMap);
++        R_Free(pFeatureMap);
+         pFeatureMap = NULL;
+     }
+ 
+     if (pFeatureHMap != NULL)
+     {
+@@ -4477,11 +4477,11 @@
+         pFeatureHMap = NULL;
+     }
+ 
+     if (pUnweightedPos != NULL)
+     {
+-        Free(pUnweightedPos);
++        R_Free(pUnweightedPos);
+         pUnweightedPos = NULL;
+     }
+ 
+     if (hmap != NULL)
+     {
+--- src/Utils.cpp	2021-10-26 22:06:39.000000000 +0300
++++ src/Utils.cpp	2022-01-24 17:00:39.189724898 +0300
+@@ -157,13 +157,13 @@
+     
+     // set initial size and growth factor for i and x arrays
+     vectorSize = sizeX + sizeY;
+     growBy = 1.6;
+     
+-    pptr = (int *) Calloc(sizeY + 1, int);
+-    iptr = (int *) Calloc(vectorSize, int);
+-    xptr = (double *) Calloc(vectorSize, double);
++    pptr = (int *) R_Calloc(sizeY + 1, int);
++    iptr = (int *) R_Calloc(vectorSize, int);
++    xptr = (double *) R_Calloc(vectorSize, double);
+     ptrP = pptr;
+     ptrI = iptr;
+     ptrX = xptr;
+     
+     nextFree = 0;
+@@ -203,12 +203,12 @@
+                     // new element - check if enough space
+                     if (((uint64_t) nextFree + 1) > vectorSize)
+                     {
+                         // realloc arrays i and x
+                         vectorSize *= growBy;
+-                        iptr = (int *) Realloc(iptr, vectorSize, int);
+-                        xptr = (double *) Realloc(xptr, vectorSize, double);
++                        iptr = (int *) R_Realloc(iptr, vectorSize, int);
++                        xptr = (double *) R_Realloc(xptr, vectorSize, double);
+                         ptrI = iptr;
+                         ptrX = xptr;
+                     }
+                     
+                     iptr[nextFree] = i;
+@@ -258,12 +258,12 @@
+                     // new element - check if enough space
+                     if (((uint64_t) nextFree + 1) > vectorSize)
+                     {
+                         // realloc arrays i and x
+                         vectorSize = (uint64_t) (vectorSize * growBy);
+-                        iptr = (int *) Realloc(iptr, vectorSize, int);
+-                        xptr = (double *) Realloc(xptr, vectorSize, double);
++                        iptr = (int *) R_Realloc(iptr, vectorSize, int);
++                        xptr = (double *) R_Realloc(xptr, vectorSize, double);
+                         ptrI = iptr;
+                         ptrX = xptr;
+                     }
+                     
+                     iptr[nextFree] = i;
+@@ -278,18 +278,18 @@
+     vmaxset(vmax);
+ 
+     if (nextFree == 0)  // realloc with 0 bytes does not work on Ubuntu
+     {
+         // shrink to one element
+-        iptr = (int *) Realloc(iptr, 1, int);
+-        xptr = (double *) Realloc(xptr, 1, double);
++        iptr = (int *) R_Realloc(iptr, 1, int);
++        xptr = (double *) R_Realloc(xptr, 1, double);
+     }
+     else
+     {
+         // shrink to actual size
+-        iptr = (int *) Realloc(iptr, nextFree, int);
+-        xptr = (double *) Realloc(xptr, nextFree, double);
++        iptr = (int *) R_Realloc(iptr, nextFree, int);
++        xptr = (double *) R_Realloc(xptr, nextFree, double);
+     }
+ 
+     // allocate sparse km as dgCMatrix
+     numProtect = 0;
+     spm = PROTECT(NEW_OBJECT(MAKE_CLASS("dgCMatrix")));
+@@ -317,29 +317,29 @@
+     SET_SLOT(spm, Rf_mkChar("p"), slot_p);
+     
+     for (i=0; i < sizeY + 1; i++)
+         INTEGER(slot_p)[i] = pptr[i];
+     
+-    Free(pptr);
++    R_Free(pptr);
+     ptrP = NULL;
+     
+     slot_i = PROTECT(Rf_allocVector(INTSXP, nextFree));
+     SET_SLOT(spm, Rf_mkChar("i"), slot_i);
+     
+     for (i=0; i < nextFree; i++)
+         INTEGER(slot_i)[i] = iptr[i];
+     
+-    Free(iptr);
++    R_Free(iptr);
+     ptrI = NULL;
+     
+     slot_x = PROTECT(Rf_allocVector(REALSXP, nextFree));
+     SET_SLOT(spm, Rf_mkChar("x"), slot_x);
+     
+     for (i=0; i < nextFree; i++)
+         REAL(slot_x)[i] = xptr[i];
+     
+-    Free(xptr);
++    R_Free(xptr);
+     ptrX = NULL;
+     
+     numProtect += 3;
+     
+     UNPROTECT(numProtect);
+@@ -451,23 +451,23 @@
+ 
+ void freeHeapLinearKernelC()
+ {
+     if (ptrP != NULL)
+     {
+-        Free(ptrP);
++        R_Free(ptrP);
+         ptrP = NULL;
+     }
+ 
+     if (ptrI != NULL)
+     {
+-        Free(ptrI);
++        R_Free(ptrI);
+         ptrI = NULL;
+     }
+ 
+     if (ptrX != NULL)
+     {
+-        Free(ptrX);
++        R_Free(ptrX);
+         ptrX = NULL;
+     }
+ }
+ 
+ }
