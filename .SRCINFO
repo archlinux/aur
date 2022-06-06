@@ -1,0 +1,22 @@
+pkgbase = r-scan.upc
+	pkgdesc = Single-channel array normalization (SCAN) and Universal exPression Codes (UPC)
+	pkgver = 2.38.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/SCAN.UPC
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-affy
+	depends = r-affyio
+	depends = r-biobase
+	depends = r-biostrings
+	depends = r-foreach
+	depends = r-geoquery
+	depends = r-iranges
+	depends = r-oligo
+	depends = r-sva
+	optdepends = r-pd.hg.u95a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCAN.UPC_2.38.0.tar.gz
+	sha256sums = 52726214e4771863369d5f582fc852b741977b096a7fcfdd9d4de784ab333f66
+
+pkgname = r-scan.upc
