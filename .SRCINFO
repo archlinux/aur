@@ -1,0 +1,26 @@
+pkgbase = r-rgsepd
+	pkgdesc = Gene Set Enrichment / Projection Displays
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rgsepd
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biomart
+	depends = r-deseq2
+	depends = r-go.db
+	depends = r-goseq
+	depends = r-gplots
+	depends = r-hash
+	depends = r-org.hs.eg.db
+	depends = r-summarizedexperiment
+	optdepends = r-biocgenerics
+	optdepends = r-boot
+	optdepends = r-knitr
+	optdepends = r-tools
+	optdepends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rgsepd_1.28.0.tar.gz
+	sha256sums = bd51bb3f139753072a655abf2e5acee843930b168ae4554fc0054f884b0f6121
+
+pkgname = r-rgsepd
