@@ -1,0 +1,23 @@
+pkgbase = r-mait
+	pkgdesc = Statistical Analysis of Metabolomic Data
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MAIT
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-agricolae
+	depends = r-camera
+	depends = r-caret
+	depends = r-e1071
+	depends = r-gplots
+	depends = r-pls
+	depends = r-plsgenomics
+	depends = r-rcpp
+	depends = r-xcms
+	optdepends = r-faahko
+	optdepends = r-rgl
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAIT_1.30.0.tar.gz
+	sha256sums = 317ac538b70fba92f6e9cd357f1d3ce7e1783951c913e568045a7238bb851b2e
+
+pkgname = r-mait
