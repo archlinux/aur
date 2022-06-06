@@ -7,7 +7,6 @@ pkgbase = bootcommander
 	license = GPL
 	makedepends = cmake
 	depends = libopenblt
-	depends = libusb>=1.0
 	source = bootcommander-1.13.0.zip::https://nav.dl.sourceforge.net/project/openblt/OpenBLT%20stable/version%201.13.00/openblt_v011300.zip
 	md5sums = 08dc23dc326eb4f402746b388c345881
 
