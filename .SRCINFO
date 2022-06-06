@@ -1,0 +1,21 @@
+pkgbase = r-ggpa
+	pkgdesc = graph-GPA: A graphical model for prioritizing GWAS results and investigating pleiotropic architecture
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GGPA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ggally
+	depends = r-matrixstats
+	depends = r-network
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-scales
+	depends = r-sna
+	depends = make
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GGPA_1.8.0.tar.gz
+	sha256sums = d3c2306c2ad7c0604a1fb94eeb158984c17f1ad77cf194645154b0e95a99e322
+
+pkgname = r-ggpa
