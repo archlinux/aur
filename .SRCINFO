@@ -1,0 +1,23 @@
+pkgbase = r-tmixclust
+	pkgdesc = Time Series Clustering of Gene Expression with Gaussian Mixed-Effects Models and Smoothing Splines
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TMixClust
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocparallel
+	depends = r-flexclust
+	depends = r-gss
+	depends = r-mvtnorm
+	depends = r-spem
+	depends = r-zoo
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TMixClust_1.18.0.tar.gz
+	sha256sums = 9c7c26a7c8c58858583c8b1739e84a898861f33b14191ab2f5797d3844c9d787
+
+pkgname = r-tmixclust
