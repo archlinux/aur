@@ -1,0 +1,17 @@
+pkgbase = r-rcppde
+	pkgdesc = Global Optimization by Differential Evolution in C++
+	pkgver = 0.1.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=RcppDE
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-deoptim
+	optdepends = r-inline
+	optdepends = r-lattice
+	source = https://cran.r-project.org/src/contrib/RcppDE_0.1.6.tar.gz
+	sha256sums = c9386709f72cdc33505b3ac675c173013fe098434b7c21bc09eb625b529132c5
+
+pkgname = r-rcppde
