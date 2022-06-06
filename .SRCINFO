@@ -1,0 +1,18 @@
+pkgbase = r-shinyalert
+	pkgdesc = Easily Create Pretty Popup Messages (Modals) in 'Shiny'
+	pkgver = 3.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinyalert
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-knitr
+	depends = r-shiny
+	depends = r-uuid
+	optdepends = r-colourpicker
+	optdepends = r-shinydisconnect
+	source = https://cran.r-project.org/src/contrib/shinyalert_3.0.0.tar.gz
+	sha256sums = d4ea859610cda4adb7b48d8c7301112d598da9c442709b4ba9cf620bf5469abf
+
+pkgname = r-shinyalert
