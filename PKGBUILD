@@ -10,6 +10,7 @@ arch=("x86_64")
 url="https://github.com/markuskimius/SDL2_Pango"
 license=("LGPL")
 depends=("pango" "sdl2")
+makedepends=("git")
 _commit=748d126fb6900107e6344ee962b8b48e2b73c88e
 source=("sdl2_pango-$_commit::git+$url.git#commit=$_commit")
 sha256sums=(SKIP)
