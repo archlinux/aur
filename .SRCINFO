@@ -1,0 +1,18 @@
+pkgbase = r-simat
+	pkgdesc = GC-SIM-MS data processing and alaysis tool
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SIMAT
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-mzr
+	depends = r-rcpp
+	depends = r-reshape2
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIMAT_1.28.0.tar.gz
+	sha256sums = 6b80c8374c9c2451b3190a157a825965921afc1ae4f317b46af889f988bfc419
+
+pkgname = r-simat
