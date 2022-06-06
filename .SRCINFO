@@ -1,0 +1,27 @@
+pkgbase = r-vulcan
+	pkgdesc = VirtUaL ChIP-Seq data Analysis using Networks
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/vulcan
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-catools
+	depends = r-chippeakanno
+	depends = r-csaw
+	depends = r-deseq2
+	depends = r-diffbind
+	depends = r-genomicranges
+	depends = r-gplots
+	depends = r-locfit
+	depends = r-s4vectors
+	depends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	depends = r-viper
+	depends = r-wordcloud
+	depends = r-zoo
+	optdepends = r-vulcandata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vulcan_1.18.0.tar.gz
+	sha256sums = 5c388c810df921125c0fad9ce5b196a3dea1baff739a338f026fd850afaf2f39
+
+pkgname = r-vulcan
