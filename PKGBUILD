@@ -1,7 +1,7 @@
 # Maintainer: robertoszek <robertoszek@robertoszek.xyz>
 pkgname=python-pleroma-bot
 _name=${pkgname#python-}
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Bot for mirroring one or multiple Twitter accounts in Pleroma/Mastodon."
 arch=("any")
@@ -10,8 +10,9 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
+backup=("etc/pleroma-bot/config.yml" "usr/lib/systemd/system/pleroma-bot.service")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("f7272844170a746a73781dc26539deddb1de36f36b2199ac308a0b69a37ee510")
+sha256sums=("a0f6553b868ecd97765df49afadb1aca45ad8a262bd0dd6fea919a58a2437bd70")
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
