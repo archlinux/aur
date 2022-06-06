@@ -1,0 +1,20 @@
+pkgbase = r-swfdr
+	pkgdesc = Estimation of the science-wise false discovery rate and the false discovery rate conditional on covariates
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/swfdr
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-qvalue
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/swfdr_1.22.0.tar.gz
+	sha256sums = de6af07af8945a1e09a03dc49e0ac8abc7b5b870573d3bf32e1158e6d0a86abe
+
+pkgname = r-swfdr
