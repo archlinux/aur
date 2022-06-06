@@ -1,0 +1,26 @@
+pkgbase = r-gtrellis
+	pkgdesc = Genome Level Trellis Layout
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gtrellis
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-circlize
+	depends = r-genomicranges
+	depends = r-getoptlong
+	depends = r-iranges
+	optdepends = r-cairo
+	optdepends = r-complexheatmap
+	optdepends = r-jpeg
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-png
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tiff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gtrellis_1.28.0.tar.gz
+	sha256sums = ce3d81fdeb7c0e4674e0841837322e87035208c2ec7531b69fe243b3ff679de8
+
+pkgname = r-gtrellis
