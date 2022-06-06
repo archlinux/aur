@@ -1,0 +1,21 @@
+pkgbase = r-oncomix
+	pkgdesc = Identifying Genes Overexpressed in Subsets of Tumors from Tumor-Normal mRNA Expression Data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/oncomix
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-mclust
+	depends = r-rcolorbrewer
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rmysql
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/oncomix_1.18.0.tar.gz
+	sha256sums = 0c777838f6e5ef7b94c155ffafba01e503a64a60166d0761f018c13bb7b8407a
+
+pkgname = r-oncomix
