@@ -1,0 +1,24 @@
+pkgbase = r-heatmaps
+	pkgdesc = Flexible Heatmaps for Functional Genomics and Sequence Features
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/heatmaps
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-ebimage
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-plotrix
+	depends = r-rcolorbrewer
+	optdepends = r-bsgenome.drerio.ucsc.danrer7
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/heatmaps_1.20.0.tar.gz
+	sha256sums = 0f7cffdf261c0bf712b0c36169917f1e3417f6853d3b3769b6820feb305dec8c
+
+pkgname = r-heatmaps
