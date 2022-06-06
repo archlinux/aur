@@ -1,0 +1,21 @@
+pkgbase = r-desingle
+	pkgdesc = DEsingle for detecting three types of differential expression in single-cell RNA-seq data
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DEsingle
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bbmle
+	depends = r-biocparallel
+	depends = r-gamlss
+	depends = r-maxlik
+	depends = r-pscl
+	depends = r-vgam
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-singlecellexperiment
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEsingle_1.16.0.tar.gz
+	sha256sums = f3838ccc43eba65df7b638fc1a3b34e0edeaf67ebab0db6eb0568290f0fa823f
+
+pkgname = r-desingle
