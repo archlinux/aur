@@ -1,0 +1,26 @@
+pkgbase = r-factoextra
+	pkgdesc = Extract and Visualize the Results of Multivariate Data Analyses
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=factoextra
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-dendextend
+	depends = r-factominer
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-ggrepel
+	depends = r-reshape2
+	depends = r-tidyr
+	optdepends = r-ade4
+	optdepends = r-ca
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-mclust
+	source = https://cran.r-project.org/src/contrib/factoextra_1.0.7.tar.gz
+	sha256sums = 624ff01c74933352aca55966f8a052b1ccc878f52c2c307e47f88e0665db94aa
+
+pkgname = r-factoextra
