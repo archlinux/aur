@@ -2,12 +2,12 @@
 
 pkgname=oftoast-bin
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Fortress installing and updating tool. Frontend for the Toast (TVN)."
 arch=(x86_64)
 url="https://openfortress.fun"
 license=(GPL3)
-provides=('oflauncher' 'oflauncher-rei')
+provides=('oflauncher' 'oflauncher-rei' 'oftoast')
 makedepends=("imagemagick")
 optdepends=("steam")
 source=('oftoast::https://toast-eu-1.openfortress.fun/toast/oftoast-0.1.4-linux.bin'

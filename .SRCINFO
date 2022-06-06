@@ -1,7 +1,7 @@
 pkgbase = oftoast-bin
 	pkgdesc = Open Fortress installing and updating tool. Frontend for the Toast (TVN).
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openfortress.fun
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = oftoast-bin
 	optdepends = steam
 	provides = oflauncher
 	provides = oflauncher-rei
+	provides = oftoast
 	source = oftoast::https://toast-eu-1.openfortress.fun/toast/oftoast-0.1.4-linux.bin
 	source = https://github.com/int-72h/oflauncher-rei/raw/main/ofrei/toast.png
 	source = oftoast-bin.desktop
