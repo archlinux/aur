@@ -1,0 +1,13 @@
+pkgbase = r-nor1mix
+	pkgdesc = Normal aka Gaussian (1-d) Mixture Models (S3 Classes and Methods)
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=nor1mix
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-cluster
+	source = https://cran.r-project.org/src/contrib/nor1mix_1.3-0.tar.gz
+	sha256sums = 9ce4ee92f889a4a4041b5ea1ff09396780785a9f12ac46f40647f74a37e327a0
+
+pkgname = r-nor1mix
