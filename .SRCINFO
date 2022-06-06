@@ -1,0 +1,25 @@
+pkgbase = r-safe
+	pkgdesc = Significance Analysis of Function and Expression
+	pkgver = 3.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/safe
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-sparsem
+	optdepends = r-breastcancerupp
+	optdepends = r-dorng
+	optdepends = r-foreach
+	optdepends = r-go.db
+	optdepends = r-gostats
+	optdepends = r-hgu133a.db
+	optdepends = r-pfam.db
+	optdepends = r-reactome.db
+	optdepends = r-rgraphviz
+	optdepends = r-survival
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/safe_3.36.0.tar.gz
+	sha256sums = db243291e7a4d1691e2f11ae1247308433666c8ae26a5964e0b521f2beb81da6
+
+pkgname = r-safe
