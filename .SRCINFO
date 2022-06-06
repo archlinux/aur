@@ -1,0 +1,14 @@
+pkgbase = r-kegg.db
+	pkgdesc = A set of annotation maps for KEGG
+	pkgver = 3.2.4
+	pkgrel = 7
+	url = https://bioconductor.org/packages/3.11/data/annotation/html/KEGG.db.html
+	arch = any
+	license = custom
+	depends = r
+	depends = r-annotationdbi
+	optdepends = r-dbi
+	source = https://bioconductor.org/packages/3.11/data/annotation/src/contrib/KEGG.db_3.2.4.tar.gz
+	sha256sums = 2e60d1b664cbd1491cc00ed13a22904706c5a4651150f70daca04bf3ba9ead88
+
+pkgname = r-kegg.db
