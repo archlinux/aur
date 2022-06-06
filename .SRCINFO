@@ -1,0 +1,21 @@
+pkgbase = r-myvariant
+	pkgdesc = Accesses MyVariant.info variant query and annotation services
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/myvariant
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-hmisc
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-s4vectors
+	depends = r-variantannotation
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/myvariant_1.26.0.tar.gz
+	sha256sums = 2963bfba57737c88ce7bce19dd05e297ceb08507309cf2efe8a8384aeb9ddf24
+
+pkgname = r-myvariant
