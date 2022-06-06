@@ -1,0 +1,15 @@
+pkgbase = r-sigsquared
+	pkgdesc = Gene signature generation for functionally validated signaling pathways
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sigsquared
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sigsquared_1.28.0.tar.gz
+	sha256sums = 4981f478558a191bba773a5d04187b576b15284e6166d65bc5be90a1075dbb8d
+
+pkgname = r-sigsquared
