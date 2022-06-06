@@ -1,0 +1,14 @@
+pkgbase = r-sushi
+	pkgdesc = Tools for visualizing genomics data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Sushi
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-zoo
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Sushi_1.34.0.tar.gz
+	sha256sums = 7804a420ba9d4acfb5fdfbaafe49dba50433f3e4d79b82878779a4f657e6ba29
+
+pkgname = r-sushi
