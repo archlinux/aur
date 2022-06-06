@@ -1,0 +1,16 @@
+pkgbase = r-phosphoricons
+	pkgdesc = 'Phosphor' Icons for R
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=phosphoricons
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	optdepends = r-covr
+	optdepends = r-shiny
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/phosphoricons_0.1.2.tar.gz
+	sha256sums = d85a48ec49e434e6dae33a05c4a4fa283af1f975db9ef460f606cfedb92217df
+
+pkgname = r-phosphoricons
