@@ -1,26 +1,29 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=stringdist
-_cranver=0.9.5.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-stringdist
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Approximate String Matching and String Distance Functions"
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=stringdist
+_pkgver=0.9.8
+pkgname=r-${_pkgname,,}
+pkgver=0.9.8
+pkgrel=4
+pkgdesc='Approximate String Matching, Fuzzy Text Search, and String Distance Functions'
 arch=('x86_64')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r' )
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+)
+optdepends=(
+  r-tinytest
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('efccd6ccc5c74c578be95b7dae1099c52b0d7805452ab14ee91ca34adb8261bb')
 
-optdepends=('r-testthat')
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('a1cf825039e43e36a368e00986396559')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
