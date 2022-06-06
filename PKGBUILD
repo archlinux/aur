@@ -2,12 +2,12 @@
 
 pkgname=onevpl-intel-gpu
 pkgver=22.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer)'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
-depends=('libdrm' 'libva')
+depends=('intel-media-driver' 'libdrm' 'libva')
 makedepends=('cmake')
 provides=('onevpl-runtime')
 source=("https://github.com/oneapi-src/oneVPL-intel-gpu/archive/intel-onevpl-${pkgver}/${pkgname}-${pkgver}.tar.gz"
