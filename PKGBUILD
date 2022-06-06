@@ -8,8 +8,8 @@ source=(
 	'black_pycharm_formatter.sh'
 	'black_pycharm_formatter.py')
 sha512sums=(
-	'e68cc3887e5b4f573507aaa3db068639158ecb405b3b7dc4521942b4ff80e8e0f3137792f193451103a816340cc6ad81c6a47e0427582fb6797f48f39ca5e24a'
-	'9569ff2f472db738c249dc7109bce024e9bd3b83b02aa2bfe188ce40c1204e25efa12f497ffafac8d813e9578629d9926f76060fe832caa8b0b903e2bfebb7ee')
+	'f5d0e60df4a6b09721f66e8379e90897ab1e3512be1764116a8c3efef0d71e2d449c487f80d5adb639a5ad5d37b38a14df79cccdda337ba4c42619c6bdaba3be'
+	'7f6912459431d10c61fbcf0ba18cbd672d3f8ef87d75130a08fdd8da160a88ec5414d935b82455a5dae08da9c12a51e27a28e2711765e5e601e0285f61ceaff0')
 
 package() {
 	install -Dm755 $srcdir/black_pycharm_formatter.sh $pkgdir/usr/bin/black_pycharm_formatter.sh

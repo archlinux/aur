@@ -4,22 +4,22 @@ file_path=$1
 ext=${file_path##*.}
 case $ext in
 "py")
-	black -l 88 -S -C $file_path
+	/usr/bin/black -l 88 -S -C $file_path
 	;;
 "ipynb")
-	black -l 88 -S -C $file_path
+	/usr/bin/black -l 88 -S -C $file_path
 	# jupytext $file_path --pipe "black -l 88 -S -C {}"
 	;;
 "sh")
-	shfmt -w $file_path
+	/usr/bin/shfmt -w $file_path
 	;;
 "yml")
-	prettier --print-width 88 --write $file_path
+	/usr/bin/prettier --print-width 88 --write $file_path
 	;;
 "yaml")
-	prettier --print-width 88 --write $file_path
+	/usr/bin/prettier --print-width 88 --write $file_path
 	;;
 "json")
-	prettier --print-width 88 --write $file_path
+	/usr/bin/prettier --print-width 88 --write $file_path
 	;;
 esac
