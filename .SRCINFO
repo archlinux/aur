@@ -1,0 +1,12 @@
+pkgbase = r-poibin
+	pkgdesc = The Poisson Binomial Distribution
+	pkgver = 1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=poibin
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/poibin_1.5.tar.gz
+	sha256sums = 3b395e001db8f4b0a56f3645c5eef645978418baa6f8f6a7d58d9acff9f6b9eb
+
+pkgname = r-poibin
