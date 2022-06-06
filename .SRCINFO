@@ -1,0 +1,16 @@
+pkgbase = r-metacycle
+	pkgdesc = Evaluate Periodicity in Large Scale Data
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MetaCycle
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gnm
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/MetaCycle_1.2.0.tar.gz
+	sha256sums = 1300172b57264c71d0a4fb877a7c102db2a1f01d4896dfa32c179ccfb2ae01d2
+
+pkgname = r-metacycle
