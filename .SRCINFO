@@ -1,0 +1,14 @@
+pkgbase = r-zcompositions
+	pkgdesc = Treatment of Zeros, Left-Censored and Missing Values in Compositional Data Sets
+	pkgver = 1.4.0.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=zCompositions
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-nada
+	depends = r-truncnorm
+	source = https://cran.r-project.org/src/contrib/zCompositions_1.4.0-1.tar.gz
+	sha256sums = 33ee11f635cb87cc9c0617e1cfc91f1ac41c6cfe2b70fc441e226015939230e7
+
+pkgname = r-zcompositions
