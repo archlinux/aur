@@ -1,0 +1,16 @@
+pkgbase = r-tkwidgets
+	pkgdesc = R based tk widgets
+	pkgver = 1.74.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tkWidgets
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-dyndoc
+	depends = r-widgettools
+	optdepends = r-biobase
+	optdepends = r-hgu95av2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tkWidgets_1.74.0.tar.gz
+	sha256sums = 60124d00b1b0839b6a25befcaa76433ec9c4b867b0457219592335f43561f12c
+
+pkgname = r-tkwidgets
