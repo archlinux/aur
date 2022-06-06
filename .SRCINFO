@@ -1,0 +1,18 @@
+pkgbase = r-fdb.infiniummethylation.hg19
+	pkgdesc = Annotation package for Illumina Infinium DNA methylation probes
+	pkgver = 2.2.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/FDb.InfiniumMethylation.hg19
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biostrings
+	depends = r-genomicfeatures
+	depends = r-org.hs.eg.db
+	depends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-fdb.ucsc.snp135common.hg19
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/FDb.InfiniumMethylation.hg19_2.2.0.tar.gz
+	sha256sums = 605aa3643588a2f40a942fa760b92662060a0dfedb26b4e4cd6f1a78b703093f
+
+pkgname = r-fdb.infiniummethylation.hg19
