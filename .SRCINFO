@@ -1,0 +1,15 @@
+pkgbase = r-timecourse
+	pkgdesc = Statistical Analysis for Developmental Microarray Time Course Data
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/timecourse
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-limma
+	depends = r-marray
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/timecourse_1.68.0.tar.gz
+	sha256sums = 403da1af6f77a5326d71414ef9db4e0839a6325433205d9e9ea5a4579bb0f181
+
+pkgname = r-timecourse
