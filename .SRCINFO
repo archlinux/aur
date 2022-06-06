@@ -1,0 +1,12 @@
+pkgbase = r-icens
+	pkgdesc = NPMLE for Censored and Truncated Data
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Icens
+	arch = any
+	license = Artistic2.0
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Icens_1.68.0.tar.gz
+	sha256sums = cc6f213796853039e607fcc5242127e58279739e20516ce3037c212dcf76cb4a
+
+pkgname = r-icens
