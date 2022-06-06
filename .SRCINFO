@@ -1,0 +1,17 @@
+pkgbase = r-icare
+	pkgdesc = A Tool for Individualized Coherent Absolute Risk Estimation (iCARE)
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iCARE
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gtools
+	depends = r-hmisc
+	depends = r-plotrix
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iCARE_1.24.0.tar.gz
+	sha256sums = b44372092ac207c700555ab80130ed1cce626870c1fc9a3a232c0322bec109ac
+
+pkgname = r-icare
