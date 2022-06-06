@@ -1,0 +1,16 @@
+pkgbase = plctool-plugins-git
+	pkgdesc = Blink attack plugin for PLCTool
+	pkgver = v1.1.0.r0.gd9ef4de
+	pkgrel = 1
+	url = https://github.com/TarlogicSecurity/PLCTool-BlinkAttackPlugin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt6-base
+	provides = plctool-plugins
+	conflicts = plctool-plugins
+	source = plctool-plugins-git::git+https://github.com/TarlogicSecurity/PLCTool-Plugins.git
+	sha256sums = SKIP
+
+pkgname = plctool-plugins-git
