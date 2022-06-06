@@ -1,0 +1,18 @@
+pkgbase = r-r.filesets
+	pkgdesc = Easy Handling of and Access to Files Organized in Structured Directories
+	pkgver = 2.14.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=R.filesets
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-digest
+	depends = r-r.cache
+	depends = r-r.methodss3
+	depends = r-r.oo
+	depends = r-r.utils
+	optdepends = r-gtools
+	source = https://cran.r-project.org/src/contrib/R.filesets_2.14.0.tar.gz
+	sha256sums = 707dd7c099aeadbecebbd2ba57e6400405aa44487c641f3729ce06c4c642bb23
+
+pkgname = r-r.filesets
