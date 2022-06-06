@@ -1,0 +1,17 @@
+pkgbase = r-hgu133a2.db
+	pkgdesc = Affymetrix Affymetrix HG-U133A_2 Array annotation data (chip hgu133a2)
+	pkgver = 3.13.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/hgu133a2.db
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-org.hs.eg.db
+	optdepends = r-annotate
+	optdepends = r-dbi
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/hgu133a2.db_3.13.0.tar.gz
+	sha256sums = 1a6f84ab9d62e0aae4f6573f99d388230b77ca07eeb26eaab59f54c7a171b272
+
+pkgname = r-hgu133a2.db
