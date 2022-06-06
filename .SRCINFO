@@ -1,0 +1,17 @@
+pkgbase = r-difflogo
+	pkgdesc = DiffLogo: A comparative visualisation of biooligomer motifs
+	pkgver = 2.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DiffLogo
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cba
+	optdepends = r-knitr
+	optdepends = r-motifdb
+	optdepends = r-seqlogo
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DiffLogo_2.20.0.tar.gz
+	sha256sums = b69ef9c1c3a17c7467f24483462324e8062e560cfcc631c29e6daa07a01ab921
+
+pkgname = r-difflogo
