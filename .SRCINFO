@@ -1,0 +1,34 @@
+pkgbase = r-htmltable
+	pkgdesc = Advanced Tables for Markdown/HTML
+	pkgver = 2.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=htmlTable
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-checkmate
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-knitr
+	depends = r-magrittr
+	depends = r-rstudioapi
+	depends = r-stringr
+	optdepends = r-chron
+	optdepends = r-dplyr
+	optdepends = r-glue
+	optdepends = r-hmisc
+	optdepends = r-lubridate
+	optdepends = r-purrr
+	optdepends = r-reshape
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	optdepends = r-tidyr
+	optdepends = r-tidyselect
+	optdepends = r-xml
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/htmlTable_2.4.0.tar.gz
+	sha256sums = 4ca2b5616d77cfeee8ae5ca74307b86407d478b12d1ce17ba9c447e233b89a9d
+
+pkgname = r-htmltable
