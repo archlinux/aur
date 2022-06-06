@@ -1,0 +1,18 @@
+pkgbase = r-msar
+	pkgdesc = Multiple Sequence Alignment for R Shiny
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://cran.r-project.org/package=msaR
+	arch = any
+	license = Boost
+	depends = r
+	depends = r-ape
+	depends = r-htmlwidgets
+	optdepends = r-biostrings
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/msaR_0.6.0.tar.gz
+	sha256sums = ddaf80d4ac508950b34b99d528e3af9cb346ebbae727843cfb35b48228dea689
+
+pkgname = r-msar
