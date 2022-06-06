@@ -1,0 +1,20 @@
+pkgbase = r-formattable
+	pkgdesc = Create 'Formattable' Data Structures
+	pkgver = 0.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=formattable
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-knitr
+	depends = r-rmarkdown
+	optdepends = r-covr
+	optdepends = r-dt
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/formattable_0.2.1.tar.gz
+	sha256sums = 4f0d4d2267d87a42da777066dd992c44fcc8ba9c0bdd2cbfc72980573b88bded
+
+pkgname = r-formattable
