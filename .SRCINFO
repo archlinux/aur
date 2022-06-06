@@ -1,0 +1,26 @@
+pkgbase = r-scdd
+	pkgdesc = Mixture modeling of single-cell RNA-seq data to identify genes with differential distributions
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scDD
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-arm
+	depends = r-biocparallel
+	depends = r-ebseq
+	depends = r-fields
+	depends = r-ggplot2
+	depends = r-mclust
+	depends = r-outliers
+	depends = r-s4vectors
+	depends = r-scran
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scDD_1.20.0.tar.gz
+	sha256sums = 609e55cbef26c0312a55c425e752c9f2a93b132c08ae79d2130e978fc6e05c2e
+
+pkgname = r-scdd
