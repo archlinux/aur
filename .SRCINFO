@@ -1,0 +1,17 @@
+pkgbase = r-intergraph
+	pkgdesc = Coercion Routines for Network Data Objects
+	pkgver = 2.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=intergraph
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	depends = r-network
+	optdepends = r-knitr
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/intergraph_2.0-2.tar.gz
+	sha256sums = 6cbe77f1e87fa1c110db2d46010f2f3ae72bfdb708ce2ca84c1cdc2cd6eb47a1
+
+pkgname = r-intergraph
