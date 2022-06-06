@@ -1,0 +1,12 @@
+pkgbase = r-spatest
+	pkgdesc = Score Test and Meta-Analysis Based on Saddlepoint Approximation
+	pkgver = 3.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=SPAtest
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/SPAtest_3.1.2.tar.gz
+	sha256sums = b3d74ed2b0a6475a9966dd50eb5d363d0b2985636271dfbf82f0472b8d22b9f4
+
+pkgname = r-spatest
