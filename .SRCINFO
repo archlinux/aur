@@ -1,0 +1,22 @@
+pkgbase = r-netprior
+	pkgdesc = A model for network-based prioritisation of genes
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/netprioR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-doparallel
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-proc
+	depends = r-sparsemvn
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-pander
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netprioR_1.22.0.tar.gz
+	sha256sums = e3e184364f9fa836d82d47af6c8e4d2cd7c5a19c30917edd5456b38941667071
+
+pkgname = r-netprior
