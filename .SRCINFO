@@ -1,0 +1,20 @@
+pkgbase = r-phylobase
+	pkgdesc = Base Package for Phylogenetic Structures and Comparative Data
+	pkgver = 0.8.10
+	pkgrel = 4
+	url = https://cran.r-project.org/package=phylobase
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ade4
+	depends = r-ape
+	depends = r-rcpp
+	depends = r-rncl
+	depends = r-rnexml
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/phylobase_0.8.10.tar.gz
+	sha256sums = 5a44380ff49bab333a56f6f96157324ade8afb4af0730e013194c4badb0bf94b
+
+pkgname = r-phylobase
