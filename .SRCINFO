@@ -1,0 +1,30 @@
+pkgbase = r-ggextra
+	pkgdesc = Add Marginal Histograms to 'ggplot2', and More 'ggplot2' Enhancements
+	pkgver = 0.10.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ggExtra
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-colourpicker
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-miniui
+	depends = r-r6
+	depends = r-scales
+	depends = r-shiny
+	depends = r-shinyjs
+	depends = pandoc
+	optdepends = r-devtools
+	optdepends = r-fontquiver
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-svglite
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/ggExtra_0.10.0.tar.gz
+	sha256sums = dc6855bbb7e81ffa58d6b65b594d22718fa36b7f50b2284386f70fa8ccc6a3e5
+
+pkgname = r-ggextra
