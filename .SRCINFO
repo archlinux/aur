@@ -1,0 +1,15 @@
+pkgbase = r-rmir.hs.mirna
+	pkgdesc = Various databases of microRNA Targets
+	pkgver = 1.0.7
+	pkgrel = 4
+	url = https://bioconductor.org/packages/RmiR.Hs.miRNA
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	optdepends = r-hgug4112a.db
+	optdepends = r-methods
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/RmiR.Hs.miRNA_1.0.7.tar.gz
+	sha256sums = 649da235d09f1c8d8cbb0a84bce7085f70ac945b80410bf9d4d9d18a40e2cb5f
+
+pkgname = r-rmir.hs.mirna
