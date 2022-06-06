@@ -1,0 +1,13 @@
+pkgbase = r-rafalib
+	pkgdesc = Convenience Functions for Routine Data Exploration
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rafalib
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-rcolorbrewer
+	source = https://cran.r-project.org/src/contrib/rafalib_1.0.0.tar.gz
+	sha256sums = 13d424a09e0feac38d4a6221de188e14181249434a790e97cfafb9650c95bdb6
+
+pkgname = r-rafalib
