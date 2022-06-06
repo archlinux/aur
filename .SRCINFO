@@ -1,0 +1,15 @@
+pkgbase = r-isva
+	pkgdesc = Independent Surrogate Variable Analysis
+	pkgver = 1.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=isva
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fastica
+	depends = r-jade
+	depends = r-qvalue
+	source = https://cran.r-project.org/src/contrib/isva_1.9.tar.gz
+	sha256sums = 9fd016e0b34034d271d45f8a0d0db62780bf0187112e45f610aa9237014e1d17
+
+pkgname = r-isva
