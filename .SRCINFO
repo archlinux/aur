@@ -1,0 +1,24 @@
+pkgbase = r-rtpca
+	pkgdesc = Thermal proximity co-aggregation with R
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rtpca
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-dplyr
+	depends = r-fdrtool
+	depends = r-ggplot2
+	depends = r-proc
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tpp
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rtpca_1.6.0.tar.gz
+	sha256sums = 4740e1c9a17b097955381a60212d8874c477fae02a1f81c0f2cd322187f460b3
+
+pkgname = r-rtpca
