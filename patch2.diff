@@ -1,0 +1,11 @@
+--- save.c.org	2012-04-29 21:07:26.000000000 +0200
++++ save.c	2022-06-06 20:49:11.993370658 +0200
+@@ -43,7 +43,7 @@
+ 		return FALSE;
+ 
+ 	if ((outf = creat(buf, 0644)) < 0) {
+-		error(sys_errlist[errno]);
++		//error(sys_errlist[errno]);
+ 		return FALSE;
+ 	}
+ 	Error (buf);

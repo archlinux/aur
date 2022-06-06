@@ -1,29 +1,32 @@
-pkgname=('xmille')
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+pkgname=xmille
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A X11 mille borne game'
 license=('unknown')
-source=('Xmille::git+https://git.code.sf.net/p/xmille/code#commit=2e0e7ef1dfd71004209210d0f2da6ea5c2c130a0'
-        'patch.diff')
-md5sums=(SKIP
-         'f325d30a07542f384514059255543b38')
+source=('https://master.dl.sourceforge.net/project/xmille/Xmille.tar.gz'
+        'patch.diff'
+        'patch2.diff')
+sha256sums=('3520fe1936a38eccf641e5265ba46522358e3faf817ff1c4decee79f6b9bbf0c'
+            'de9bfb716dcd3fedad019a96f93d5cb04d200cbab0f6ab16ccbe922d9cdb9200'
+            '1366802562e1e92fd422bd789fc4c9eda93ff767d06ce72e6f375dabce924525')
 arch=('x86_64')
 depends=('libxext')
-makedepends=('libxext')
 
 package() {
-  cd "$srcdir/Xmille"
-  make install DESTDIR="$pkgdir/usr"
-  make install.man DESTDIR="$pkgdir/usr/share"
+  cd "${srcdir}/Xmille"
+  make install DESTDIR="${pkgdir}/usr"
+  make install.man DESTDIR="${pkgdir}/usr/share"
 }
 
 prepare() {
-  cd "$srcdir/Xmille"
-  patch <../../patch.diff
+  cd "${srcdir}/Xmille"
+  patch <${startdir}/patch.diff
+  patch <${startdir}/patch2.diff
 }
 
 build() {
-  cd "$srcdir/Xmille"
+  cd "${srcdir}/Xmille"
   make clean
   make
 }
