@@ -1,0 +1,13 @@
+pkgbase = posy-improved-cursors
+	pkgdesc = Posy's improved cursors by Michiel de Boer, available as cursor themes.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/simtrami/posy-improved-cursor-linux
+	arch = any
+	license = unknown
+	provides = posy-cursors
+	conflicts = posy-cursors
+	source = https://github.com/simtrami/posy-improved-cursor-linux/archive/refs/tags/1.4.tar.gz
+	sha256sums = 343011eb42b78871f0343c1d7911abea10a05d6baf4089dcabb9f081d32d4ce1
+
+pkgname = posy-improved-cursors
