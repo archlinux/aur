@@ -1,0 +1,12 @@
+pkgbase = r-pdist
+	pkgdesc = Partitioned Distance Function
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pdist
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/pdist_1.2.1.tar.gz
+	sha256sums = 06904ee8c609cebd62553b5593c5d4e08abd3ed95b9f96c64e47c380a2466f2f
+
+pkgname = r-pdist
