@@ -1,0 +1,13 @@
+pkgbase = r-dmt
+	pkgdesc = Dependency Modeling Toolkit
+	pkgver = 0.8.20
+	pkgrel = 4
+	url = https://cran.r-project.org/package=dmt
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/dmt_0.8.20.tar.gz
+	sha256sums = fc8474b0f8b330d0a33c7bd07037a3aa4b2f5e50c88fa5a98686783113458c67
+
+pkgname = r-dmt
