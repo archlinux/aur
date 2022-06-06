@@ -1,0 +1,21 @@
+pkgbase = r-deltagseg
+	pkgdesc = deltaGseg
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/deltaGseg
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-changepoint
+	depends = r-fbasics
+	depends = r-ggplot2
+	depends = r-pvclust
+	depends = r-reshape
+	depends = r-scales
+	depends = r-tseries
+	depends = r-wavethresh
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/deltaGseg_1.36.0.tar.gz
+	sha256sums = bbc9d3bb22e55f2fa264d0a08db1b40b0627758434ce07c6cb5058847a2557a8
+
+pkgname = r-deltagseg
