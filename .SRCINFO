@@ -1,0 +1,27 @@
+pkgbase = r-syuzhet
+	pkgdesc = Extracts Sentiment and Sentiment-Derived Plot Arcs from Text
+	pkgver = 1.0.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=syuzhet
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-dtt
+	depends = r-nlp
+	depends = r-rlang
+	depends = r-textshape
+	depends = r-tidyr
+	depends = r-zoo
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-pander
+	optdepends = r-parallel
+	optdepends = r-readxl
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/syuzhet_1.0.6.tar.gz
+	sha256sums = fbcb68d060bea5452c4ac60b490c8af039fec6e7d3406505e25100be1a662c9a
+
+pkgname = r-syuzhet
