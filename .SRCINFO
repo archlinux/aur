@@ -1,0 +1,17 @@
+pkgbase = r-poissonbinomial
+	pkgdesc = Efficient Computation of Ordinary and Generalized Poisson Binomial Distributions
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=PoissonBinomial
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = fftw
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/PoissonBinomial_1.2.5.tar.gz
+	sha256sums = 5ea2da23abe46898dceecc59f78c1b8c06cd450b54d5dbead9cb4d7122cc9e01
+
+pkgname = r-poissonbinomial
