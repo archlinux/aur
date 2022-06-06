@@ -1,0 +1,16 @@
+pkgbase = r-rocr
+	pkgdesc = Visualizing the Performance of Scoring Classifiers
+	pkgver = 1.0.11
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ROCR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gplots
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ROCR_1.0-11.tar.gz
+	sha256sums = 57385a773220a3aaef5b221a68b2d9c2a94794d4f9e9fc3c1eb9521767debb2a
+
+pkgname = r-rocr
