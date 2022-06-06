@@ -1,0 +1,20 @@
+pkgbase = r-msgfgui
+	pkgdesc = A shiny GUI for MSGFplus
+	pkgver = 1.28.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/MSGFgui
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-msgfplus
+	depends = r-mzid
+	depends = r-mzr
+	depends = r-shiny
+	depends = r-shinyfiles
+	depends = r-xlsx
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSGFgui_1.28.0.tar.gz
+	sha256sums = 8cf4fa4f0ece77a22ac5abba735deb37419fc15621b9ba16d964f7b297157236
+
+pkgname = r-msgfgui
