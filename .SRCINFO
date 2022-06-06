@@ -1,0 +1,13 @@
+pkgbase = r-kohonen
+	pkgdesc = Supervised and Unsupervised Self-Organising Maps
+	pkgver = 3.0.11
+	pkgrel = 3
+	url = https://cran.r-project.org/package=kohonen
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/kohonen_3.0.11.tar.gz
+	sha256sums = 018d820acdb7dfa716275ba24c4d671cb0202cb1fee584b673d0118e2c9063ae
+
+pkgname = r-kohonen
