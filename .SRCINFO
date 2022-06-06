@@ -1,0 +1,16 @@
+pkgbase = r-spatstat.data
+	pkgdesc = Datasets for 'spatstat' Family
+	pkgver = 2.2.0
+	pkgrel = 7
+	url = https://cran.r-project.org/package=spatstat.data
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-spatstat.utils
+	optdepends = r-spatstat.core
+	optdepends = r-spatstat.geom
+	optdepends = r-spatstat.linnet
+	source = https://cran.r-project.org/src/contrib/spatstat.data_2.2-0.tar.gz
+	sha256sums = d3943bb4f6509d60bf68e79ce4533c5ec5261f411da6b0ef5238c124fc37c3e5
+
+pkgname = r-spatstat.data
