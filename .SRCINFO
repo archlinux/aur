@@ -1,0 +1,13 @@
+pkgbase = r-metbrewer
+	pkgdesc = Color Palettes Inspired by Works at the Metropolitan Museum of Art
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=MetBrewer
+	arch = any
+	license = CC0
+	depends = r
+	depends = r-ggplot2
+	source = https://cran.r-project.org/src/contrib/MetBrewer_0.2.0.tar.gz
+	sha256sums = e7be2881416d909672462d49c6cc82aa63132423102765f3208036967e79a174
+
+pkgname = r-metbrewer
