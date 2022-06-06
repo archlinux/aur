@@ -1,0 +1,51 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=scMerge
+_pkgver=1.12.0
+pkgname=r-${_pkgname,,}
+pkgver=1.12.0
+pkgrel=1
+pkgdesc='scMerge: Merging multiple batches of scRNA-seq data'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-biocparallel
+  r-biocsingular
+  r-delayedarray
+  r-delayedmatrixstats
+  r-distr
+  r-igraph
+  r-m3drop
+  r-pdist
+  r-proxy
+  r-ruv
+  r-s4vectors
+  r-singlecellexperiment
+  r-summarizedexperiment
+)
+optdepends=(
+  r-badger
+  r-biocstyle
+  r-covr
+  r-hdf5array
+  r-knitr
+  r-matrix
+  r-rmarkdown
+  r-scales
+  r-scater
+  r-testthat
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('638a1a80d07d20acac70d3b4f9104a244602cfa6f1ec06cd3bb6cd2fc0fda55c')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
