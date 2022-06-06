@@ -1,0 +1,20 @@
+pkgbase = r-goseq
+	pkgdesc = Gene Ontology analyser for RNA-seq and other length biased data
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/goseq
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biasedurn
+	depends = r-biocgenerics
+	depends = r-genelendatabase
+	depends = r-go.db
+	optdepends = r-edger
+	optdepends = r-org.hs.eg.db
+	optdepends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/goseq_1.48.0.tar.gz
+	sha256sums = 88b45cf35e363e3c9b2edd6619d62be902ad97f40c835dfce9e2ee89e1e719f0
+
+pkgname = r-goseq
