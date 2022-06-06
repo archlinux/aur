@@ -1,0 +1,20 @@
+pkgbase = r-shinyheatmaply
+	pkgdesc = Deploy 'heatmaply' using 'shiny'
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=shinyHeatmaply
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-heatmaply
+	depends = r-htmltools
+	depends = r-plotly
+	depends = r-readxl
+	depends = r-rmarkdown
+	depends = r-shiny
+	depends = r-xtable
+	source = https://cran.r-project.org/src/contrib/shinyHeatmaply_0.2.0.tar.gz
+	sha256sums = 0416b64aa4f9f45e00be46cb43250b1da414f95cc03178855778a6b5773becd8
+
+pkgname = r-shinyheatmaply
