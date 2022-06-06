@@ -1,0 +1,13 @@
+pkgbase = r-truncnorm
+	pkgdesc = Truncated Normal Distribution
+	pkgver = 1.0.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=truncnorm
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/truncnorm_1.0-8.tar.gz
+	sha256sums = 49564e8d87063cf9610201fbc833859ed01935cc0581b9e21c42a0d21a47c87e
+
+pkgname = r-truncnorm
