@@ -1,0 +1,24 @@
+pkgbase = r-gramm4r
+	pkgdesc = Generalized correlation analysis and model construction strategy for metabolome and microbiome
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/gramm4R
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = tar
+	depends = r
+	depends = r-basictrendline
+	depends = r-investr
+	depends = r-minerva
+	depends = r-psych
+	depends = r-delayedarray
+	depends = r-summarizedexperiment
+	depends = r-phyloseq
+	depends = r-dmwr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = git+https://git.bioconductor.org/packages/gramm4R.git
+	sha256sums = SKIP
+
+pkgname = r-gramm4r
