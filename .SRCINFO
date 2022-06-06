@@ -1,0 +1,16 @@
+pkgbase = r-macat
+	pkgdesc = MicroArray Chromosome Analysis Tool
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/macat
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotate
+	depends = r-biobase
+	optdepends = r-hgu95av2.db
+	optdepends = r-stjudem
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/macat_1.70.0.tar.gz
+	sha256sums = 482f267f6a601ac41e4783a21f24706f54abe3d515039737eaf08f748b066af0
+
+pkgname = r-macat
