@@ -1,0 +1,12 @@
+pkgbase = r-sparsesvd
+	pkgdesc = Sparse Truncated Singular Value Decomposition (from 'SVDLIBC')
+	pkgver = 0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sparsesvd
+	arch = x86_64
+	license = BSD
+	depends = r
+	source = https://cran.r-project.org/src/contrib/sparsesvd_0.2.tar.gz
+	sha256sums = 1a1f54d6b0dca6ae83e3f729a1895c91c58bfe55427dacc50ddb0d2c5d32a9f6
+
+pkgname = r-sparsesvd
