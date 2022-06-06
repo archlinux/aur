@@ -1,0 +1,27 @@
+pkgbase = r-stanova
+	pkgdesc = Bayesian Models with Categorical Variables
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bayesstuff/stanova
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = r
+	depends = r-lme4
+	depends = r-coda
+	depends = r-rstan
+	depends = r-emmeans
+	optdepends = r-testthat
+	optdepends = r-rstanarm
+	optdepends = r-brms
+	optdepends = r-memss
+	optdepends = r-afex
+	optdepends = r-glmmtmb
+	optdepends = r-bayesplot
+	optdepends = r-tibble
+	optdepends = r-tidybayes
+	optdepends = r-tidyverse
+	source = git+https://github.com/bayesstuff/stanova.git
+	sha256sums = SKIP
+
+pkgname = r-stanova
