@@ -1,0 +1,37 @@
+pkgbase = r-metafor
+	pkgdesc = Meta-Analysis Package for R
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metafor
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mathjaxr
+	depends = r-pbapply
+	depends = r-metadat
+	optdepends = r-ape
+	optdepends = r-biasedurn
+	optdepends = r-boot
+	optdepends = r-compquadform
+	optdepends = r-crayon
+	optdepends = r-dfoptim
+	optdepends = r-epi
+	optdepends = r-glmmadaptive
+	optdepends = r-gsl
+	optdepends = r-lme4
+	optdepends = r-minqa
+	optdepends = r-multcomp
+	optdepends = r-mvtnorm
+	optdepends = r-nloptr
+	optdepends = r-numderiv
+	optdepends = r-optimparallel
+	optdepends = r-r.rsp
+	optdepends = r-rmarkdown
+	optdepends = r-sp
+	optdepends = r-survival
+	optdepends = r-testthat
+	optdepends = r-ucminf
+	source = https://cran.r-project.org/src/contrib/metafor_3.4-0.tar.gz
+	sha256sums = 92e1bc21c4d135b6e651fbefc4b40666fc02c66a6a4f6f28effee0e73a21c26e
+
+pkgname = r-metafor
