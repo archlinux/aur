@@ -1,0 +1,27 @@
+pkgbase = r-oveseg
+	pkgdesc = OVESEG-test to detect tissue/cell-specific markers
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OVESEG
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-fdrtool
+	depends = r-limma
+	depends = r-rcpp
+	depends = r-summarizedexperiment
+	depends = gcc
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-grid
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OVESEG_1.12.0.tar.gz
+	sha256sums = d1c843b7d97849505e37f2ba858b4de61b000ebe01df88725b439d17c20de5a7
+
+pkgname = r-oveseg
