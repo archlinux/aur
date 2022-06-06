@@ -1,0 +1,15 @@
+pkgbase = r-sigpathway
+	pkgdesc = Pathway Analysis
+	pkgver = 1.64.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sigPathway
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-annotationdbi
+	optdepends = r-hgu133a.db
+	optdepends = r-xml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sigPathway_1.64.0.tar.gz
+	sha256sums = 2e6aaf7037c3a45c3e5d1be13e89ffa9f462d3525554adcf57c6b8d717e453b0
+
+pkgname = r-sigpathway
