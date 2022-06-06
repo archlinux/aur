@@ -1,0 +1,27 @@
+pkgbase = r-rgmql
+	pkgdesc = GenoMetric Query Language for R/Bioconductor
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RGMQL
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-genomicranges
+	depends = r-glue
+	depends = r-httr
+	depends = r-plyr
+	depends = r-rgmqllib
+	depends = r-rjava
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-xml2
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGMQL_1.16.0.tar.gz
+	sha256sums = 7b426bcb87c1f92dca498d80da80940136c513f3871cd1befe5cf60a0dc48caf
+
+pkgname = r-rgmql
