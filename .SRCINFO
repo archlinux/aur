@@ -8,7 +8,7 @@ pkgbase = cfonts
     makedepends = rust
     makedepends = git
     provides = cfonts
-    source = https://github.com/dominikwilkowski/cfonts/archive/refs/tags/v1.0.4.tar.gz
+    source = https://github.com/dominikwilkowski/cfonts/archive/refs/tags/v1.0.4rust.tar.gz
     sha256sums = c8b82256e74091dc15570ccd1447259d27923cdb2eba16d26487b497518d33cc
 
 pkgname = cfonts
