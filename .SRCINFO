@@ -1,0 +1,16 @@
+pkgbase = r-ggplot.multistats
+	pkgdesc = Multiple Summary Statistics for Binned Stats/Geometries
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggplot.multistats
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-hexbin
+	depends = r-rlang
+	depends = r-scales
+	source = https://cran.r-project.org/src/contrib/ggplot.multistats_1.0.0.tar.gz
+	sha256sums = 34825fa78bd7008ea27affc54c50e9eaca01fc0cf5bccbd92288b06d9072dfa9
+
+pkgname = r-ggplot.multistats
