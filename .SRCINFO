@@ -1,0 +1,17 @@
+pkgbase = r-qlcmatrix
+	pkgdesc = Utility Sparse Matrix Functions for Quantitative Language Comparison
+	pkgver = 0.9.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qlcMatrix
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-docopt
+	depends = r-slam
+	depends = r-sparsesvd
+	optdepends = r-knitr
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/qlcMatrix_0.9.7.tar.gz
+	sha256sums = 1ef5e0350cfbdb07fca761fc7251584d39d3da2958ea813498b467e4f7661347
+
+pkgname = r-qlcmatrix
