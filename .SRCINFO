@@ -1,0 +1,14 @@
+pkgbase = r-mgfr
+	pkgdesc = Marker Gene Finder in RNA-seq data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MGFR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotate
+	depends = r-biomart
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MGFR_1.22.0.tar.gz
+	sha256sums = d69988e2e3924efe5173f5c944cd70a9c4eb708eee7d9e3f969314a2b5a42aed
+
+pkgname = r-mgfr
