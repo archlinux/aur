@@ -1,0 +1,20 @@
+pkgbase = r-spsutil
+	pkgdesc = 'systemPipeShiny' Utility Functions
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=spsUtil
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-crayon
+	depends = r-glue
+	depends = r-httr
+	depends = r-magrittr
+	depends = r-r6
+	depends = r-stringr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/spsUtil_0.2.2.tar.gz
+	sha256sums = 86b60f4717b418e32a834949aa959d1cd633ad9794b4f0545377e75797f811c2
+
+pkgname = r-spsutil
