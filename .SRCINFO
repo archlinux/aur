@@ -1,0 +1,25 @@
+pkgbase = r-spscomps
+	pkgdesc = 'systemPipeShiny' UI and Server Components
+	pkgver = 0.3.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=spsComps
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-crayon
+	depends = r-glue
+	depends = r-htmltools
+	depends = r-magrittr
+	depends = r-r6
+	depends = r-shiny
+	depends = r-shinyace
+	depends = r-shinytoastr
+	depends = r-stringr
+	optdepends = r-shinyjqui
+	optdepends = r-spsutil
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/spsComps_0.3.2.0.tar.gz
+	sha256sums = 57246223508d7b11e196ea53f28c65aedc117be3bce3679f6d53462ba589b1d9
+
+pkgname = r-spscomps
