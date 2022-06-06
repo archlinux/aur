@@ -1,0 +1,15 @@
+pkgbase = r-rsbml
+	pkgdesc = R support for SBML, using libsbml
+	pkgver = 2.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rsbml
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-graph
+	depends = libsbml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rsbml_2.54.0.tar.gz
+	sha256sums = 1bac8280b809ab1655aaf7612da0b076c1864946bcf3c7946eddd03aafbe21ec
+
+pkgname = r-rsbml
