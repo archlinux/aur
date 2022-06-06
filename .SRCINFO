@@ -1,0 +1,16 @@
+pkgbase = r-gnm
+	pkgdesc = Generalized Nonlinear Models
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gnm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-qvcalc
+	depends = r-relimp
+	optdepends = r-testthat
+	optdepends = r-vcdextra
+	source = https://cran.r-project.org/src/contrib/gnm_1.1-2.tar.gz
+	sha256sums = 2a173923eaadc51ce0577d2006e5d912f2ffaa73ba98c71f82535f17ec76f0fb
+
+pkgname = r-gnm
