@@ -35,6 +35,8 @@ pkgver () {
 build () {
 	cd "imd"
 
+	make clean
+
 	make -j 1 build
 }
 
@@ -44,6 +46,7 @@ package() {
 	# setup dirs
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/etc/imd/"
+	mkdir -p "${pkgdir}/etc/imd/src/"
 	mkdir -p "${pkgdir}/usr/share/man/man1/"
 
 	# make binary root owned and executable
@@ -55,9 +58,9 @@ package() {
 	cp "${srcdir}/imd/imd.1.gz" "${pkgdir}/usr/share/man/man1/imd.1.gz"
 
 	# copy sources
-	cp ${srcdir}/imd/src/* "${pkgdir}/etc/imd/src"
-	cp ${srcdir}/imd/inc/* "${pkgdir}/etc/imd/src"
-	cp "${srcdir}/LICENSE.TXT" "${pkgdir}/etc/imd"
+	cp ${srcdir}/imd/src/* "${pkgdir}/etc/imd/src/"
+	cp ${srcdir}/imd/inc/* "${pkgdir}/etc/imd/src/"
+	cp "${srcdir}/imd/LICENSE.TXT" "${pkgdir}/etc/imd/"
 
 	# copy binary
 	mv "${srcdir}/imd/bin/imd" "${pkgdir}/usr/bin/imd"

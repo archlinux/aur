@@ -2,3 +2,4 @@ imd/
 pkg/
 src/
 md-git*
+*.zst
