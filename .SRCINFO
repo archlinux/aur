@@ -1,0 +1,26 @@
+pkgbase = r-powertcr
+	pkgdesc = Model-Based Comparative Analysis of the TCR Repertoire
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/powerTCR
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-cubature
+	depends = r-doparallel
+	depends = r-evmix
+	depends = r-foreach
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-truncdist
+	depends = r-vegan
+	depends = r-vgam
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/powerTCR_1.16.0.tar.gz
+	sha256sums = d13f120fc2f9b681fb6ddc8d8a0dc268a8d971f1533b56ebb8ea83ac21ecaa71
+
+pkgname = r-powertcr
