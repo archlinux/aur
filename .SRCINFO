@@ -1,0 +1,12 @@
+pkgbase = r-rama
+	pkgdesc = Robust Analysis of MicroArrays
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rama
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rama_1.70.0.tar.gz
+	sha256sums = 0ce6943e8efe2009f7e43d867c2cfe9889bec394c925f517e31a8f8604f620d0
+
+pkgname = r-rama
