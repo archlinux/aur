@@ -1,0 +1,18 @@
+pkgbase = r-targetsearch
+	pkgdesc = A package for the analysis of GC-MS metabolite profiling data
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TargetSearch
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-ncdf4
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-targetsearchdata
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TargetSearch_1.52.0.tar.gz
+	sha256sums = ed7618988867be05a770a63758bb34e203b9eace3fb54e730efd71a70b4cf25d
+
+pkgname = r-targetsearch
