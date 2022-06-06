@@ -1,0 +1,23 @@
+pkgbase = r-easyreporting
+	pkgdesc = Helps creating report for improving Reproducible Computational Research
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/easyreporting
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-rlang
+	depends = r-rmarkdown
+	depends = r-shiny
+	optdepends = r-biocstyle
+	optdepends = r-distill
+	optdepends = r-edaseq
+	optdepends = r-edger
+	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-readxl
+	optdepends = r-statmod
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/easyreporting_1.8.0.tar.gz
+	sha256sums = 7be6ec68eb2e2f5f7e78e19e7a15d81cbe611800a2c50914c5d0e25f8a52efca
+
+pkgname = r-easyreporting
