@@ -1,0 +1,27 @@
+pkgbase = r-tm
+	pkgdesc = Text Mining Package
+	pkgver = 0.7.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-nlp
+	depends = r-rcpp
+	depends = r-slam
+	depends = r-xml2
+	optdepends = r-antiword
+	optdepends = r-filehash
+	optdepends = r-methods
+	optdepends = r-pdftools
+	optdepends = r-rcampdf
+	optdepends = r-rgraphviz
+	optdepends = r-rpoppler
+	optdepends = r-snowballc
+	optdepends = r-testthat
+	optdepends = r-tm.lexicon.generalinquirer
+	source = https://cran.r-project.org/src/contrib/tm_0.7-8.tar.gz
+	sha256sums = b1eb1683d956db1a207b61cc086ae08b3ca7f46b6b8bc46d09ba5a4fafa66256
+
+pkgname = r-tm
