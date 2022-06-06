@@ -1,0 +1,12 @@
+pkgbase = r-italicsdata
+	pkgdesc = ITALICSData
+	pkgver = 2.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ITALICSData
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ITALICSData_2.34.0.tar.gz
+	sha256sums = 8405465931a7c64feef035bda7bbc143d02aad0f8507662b4ce0d8111056e56d
+
+pkgname = r-italicsdata
