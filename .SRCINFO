@@ -1,0 +1,17 @@
+pkgbase = r-specond
+	pkgdesc = Condition specific detection from expression data
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SpeCond
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-fields
+	depends = r-hwriter
+	depends = r-mclust
+	depends = r-rcolorbrewer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpeCond_1.50.0.tar.gz
+	sha256sums = 9ce17fd1731a2646ebbd8228721aca5acd57996ceb7ebb407b8a5ff9af353714
+
+pkgname = r-specond
