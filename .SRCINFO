@@ -1,0 +1,21 @@
+pkgbase = r-stabs
+	pkgdesc = Stability Selection with Error Control
+	pkgver = 0.6.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=stabs
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-gamboostlss
+	optdepends = r-glmnet
+	optdepends = r-hdi
+	optdepends = r-knitr
+	optdepends = r-lars
+	optdepends = r-mboost
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-th.data
+	source = https://cran.r-project.org/src/contrib/stabs_0.6-4.tar.gz
+	sha256sums = f8507337789f668e421a6ee7b11dd5ea331bf8bff0f9702dd1b93f46c2f3c1d9
+
+pkgname = r-stabs
