@@ -1,0 +1,18 @@
+pkgbase = r-interactivedisplaybase
+	pkgdesc = Base package for enabling powerful shiny web displays of Bioconductor objects
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/interactiveDisplayBase
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-dt
+	depends = r-shiny
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rstudioapi
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/interactiveDisplayBase_1.34.0.tar.gz
+	sha256sums = af2d2e7d806a349bf87b0eb969da661c160ce1ff0747375b5708320059e9bc39
+
+pkgname = r-interactivedisplaybase
