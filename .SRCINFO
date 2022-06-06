@@ -1,0 +1,20 @@
+pkgbase = r-msstatsconvert
+	pkgdesc = Import Data from Various Mass Spectrometry Signal Processing Tools to MSstats Format
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MSstatsConvert
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-checkmate
+	depends = r-data.table
+	depends = r-log4r
+	depends = r-stringi
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsConvert_1.6.0.tar.gz
+	sha256sums = cf697bc02fc27d079406642f4fb71c20ce5e8c21b2d6dd8e7563ae58d4013007
+
+pkgname = r-msstatsconvert
