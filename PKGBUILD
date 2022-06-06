@@ -19,7 +19,7 @@ set -u
 pkgname=teamviewer
 pkgname+='-beta'
 pkgver=15.31.1
-pkgrel=1
+pkgrel=2
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://www.teamviewer.com/en-us/download/linux/'
@@ -35,16 +35,6 @@ depends=(
 	'qt5-x11extras'
 	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
 )
-#depends_x86_64=(
-# libdepends:
-#	'lib32-libxtst'
-#	'lib32-libxinerama'
-#	'lib32-libxrandr'
-#	'lib32-libxdamage'
-#	'lib32-fontconfig'
-#	'lib32-libsm')
-#depends_i686=()
-#depends_armv7h=()
 optdepends=(
   'teamviewer-openrc: OpenRC scripts'
 )
@@ -54,11 +44,11 @@ source_x86_64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver
 source_i686=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
 source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
 #source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
-sha256sums_i686=('99418ebbccbc75d6b2f1bd5261da2324422cf94c6f89270379a5b40b22cd032a')
-sha256sums_x86_64=('e28b4e7fa128d00b792441c72cd451b24b166c10631b5bcf0493053fc9ed67f6')
+sha256sums_i686=('c73edd62d8217d9543bafb24460ca30fb746f8035ff97f1b9dc208dc10f4faa8')
+sha256sums_x86_64=('d81e3adf43d7b1d6c5fb7df8e8361d1a9e91c790743a2552094e1693d8ede957')
 sha256sums_armv7h=('8dc6a7971137857566224bcb66e884a4d3247fceb720328ba8be5fbe58c2fc15')
-sha512sums_i686=('596cecac347b58ed2512e9d1c9c0d74da811f2bcc7f63b525ceacc077a9d422b22a137abfc7eaa7961136d16f9b764afad936aa0431ce0ce2b7164dd3a3ac0e6')
-sha512sums_x86_64=('9bf563273a02a67f9b953f45ec82abe20ba01b35e1a2d001b4639387c82af1ff4a5bd1050854ec2b6baedb2c948f0be51b2cee035292e2f1c5e1c620ac37f1cc')
+sha512sums_i686=('e5fc93fcfc577326f01a886589abc45f96535b21a51650d80a5b294abf888957549cfe76f159a8e30cc2a722d90436ae142fffc82c8801c5f880896706fdee2b')
+sha512sums_x86_64=('c413002d0cf75f4d8a11c9f9cbc41024dd4408d7358e9100ada366dabcdf2230eaea8df48dfa82242233f3582aa5ac123e54054f55468e2e8188ae40d6bba7bb')
 sha512sums_armv7h=('cb7a9e052518bb230691707b207ee9a4865d10eaf3f9aa357d1ba853fe0abc769dda11531f9704312d068f329a602c1d44767a61d99408452da05953ef2aa05d')
 #PKGEXT='.tar.gz'
 
