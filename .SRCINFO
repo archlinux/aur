@@ -1,0 +1,19 @@
+pkgbase = r-foldgo
+	pkgdesc = Package for Fold-specific GO Terms Recognition
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FoldGO
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-tidyr
+	depends = r-topgo
+	optdepends = r-devtools
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FoldGO_1.14.0.tar.gz
+	sha256sums = e527f5f785fe8f0b9a0a3d3e180e02c9b2aa561c1725e63316823daedebd8db7
+
+pkgname = r-foldgo
