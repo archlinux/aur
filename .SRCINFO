@@ -1,0 +1,15 @@
+pkgbase = r-gsalightning
+	pkgdesc = Fast Permutation-based Gene Set Analysis
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GSALightning
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSALightning_1.24.0.tar.gz
+	sha256sums = 627b6c2bfb6e02596594f59e2e65af8660ccfc29a44815343d702051c044535c
+
+pkgname = r-gsalightning
