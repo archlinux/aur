@@ -1,0 +1,25 @@
+pkgbase = r-msbackendmassbank
+	pkgdesc = Mass Spectrometry Data Backend for MassBank record Files
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MsBackendMassbank
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocparallel
+	depends = r-dbi
+	depends = r-iranges
+	depends = r-mscoreutils
+	depends = r-protgenerics
+	depends = r-s4vectors
+	depends = r-spectra
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rsqlite
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsBackendMassbank_1.4.0.tar.gz
+	sha256sums = ecb4125b27a163e4d4577beef7948ef5f9c5bd3456bb858411811d91bb804bc9
+
+pkgname = r-msbackendmassbank
