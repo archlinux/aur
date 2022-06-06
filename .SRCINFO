@@ -1,0 +1,17 @@
+pkgbase = r-farms
+	pkgdesc = FARMS - Factor Analysis for Robust Microarray Summarization
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/farms
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	optdepends = r-affydata
+	optdepends = r-biobase
+	optdepends = r-utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/farms_1.48.0.tar.gz
+	sha256sums = ec90b14754489c40f0ed8a84809b06fb1a7c0d0a93df305ee8d22b43507bd5d6
+
+pkgname = r-farms
