@@ -1,0 +1,23 @@
+pkgbase = r-superheat
+	pkgdesc = A Graphical Tool for Exploring Complex Datasets Using Heatmaps
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=superheat
+	arch = any
+	license = CC0
+	depends = r
+	depends = r-dplyr
+	depends = r-ggdendro
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-scales
+	optdepends = r-knitr
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/superheat_0.1.0.tar.gz
+	sha256sums = 03bdc76167e10e0fbfcf3ef849399fa3a018b29ec35f53a954aeccd0afd16807
+
+pkgname = r-superheat
