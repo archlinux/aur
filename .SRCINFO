@@ -1,0 +1,23 @@
+pkgbase = r-scate
+	pkgdesc = SCATE: Single-cell ATAC-seq Signal Extraction and Enhancement
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SCATE
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-mclust
+	depends = r-preprocesscore
+	depends = r-rtsne
+	depends = r-scatedata
+	depends = r-splines2
+	depends = r-xgboost
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCATE_1.6.0.tar.gz
+	sha256sums = d069e53dac4e22b3ff876840c7388565fbba5db110d0e550939d0f50872ff593
+
+pkgname = r-scate
