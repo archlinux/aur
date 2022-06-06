@@ -1,0 +1,17 @@
+pkgbase = r-spp
+	pkgdesc = ChIP-Seq Processing Pipeline
+	pkgver = 1.16.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=spp
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-catools
+	depends = r-rcpp
+	depends = r-rsamtools
+	optdepends = r-methods
+	source = https://cran.r-project.org/src/contrib/spp_1.16.0.tar.gz
+	sha256sums = 3c890f3c414183167f9643b556621dcdc14ce6a1b54a04d618c74070fdebfd23
+
+pkgname = r-spp
