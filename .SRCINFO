@@ -1,0 +1,22 @@
+pkgbase = r-funchip
+	pkgdesc = Clustering and Alignment of ChIP-Seq peaks based on their shapes
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FunChIP
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-doparallel
+	depends = r-fda
+	depends = r-foreach
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-rcolorbrewer
+	depends = r-rcpp
+	depends = r-rsamtools
+	depends = r-shiny
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FunChIP_1.22.0.tar.gz
+	sha256sums = 2dc03f76130401857678fe864c41dcbc7bd08deb14d01b6c745da2f563f786b1
+
+pkgname = r-funchip
