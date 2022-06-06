@@ -1,0 +1,12 @@
+pkgbase = r-qualv
+	pkgdesc = Qualitative Validation Methods
+	pkgver = 0.3.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qualV
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/qualV_0.3-4.tar.gz
+	sha256sums = ab10da9f4b330364951ea000aaa35f2b4a7ca0945586615869a80428d4fe7266
+
+pkgname = r-qualv
