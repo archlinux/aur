@@ -1,0 +1,21 @@
+pkgbase = r-genegeneinter
+	pkgdesc = Tools for Testing Gene-Gene Interaction at the Gene Level
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeneGeneInteR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-factominer
+	depends = r-genomicranges
+	depends = r-igraph
+	depends = r-iranges
+	depends = r-kernlab
+	depends = r-mvtnorm
+	depends = r-rsamtools
+	depends = r-snpstats
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneGeneInteR_1.22.0.tar.gz
+	sha256sums = febba02a4ff2472e6d992923f693a59626752df380a8d6d189c794e965e39db1
+
+pkgname = r-genegeneinter
