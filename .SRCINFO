@@ -1,0 +1,16 @@
+pkgbase = r-factdesign
+	pkgdesc = Factorial designed microarray experiment analysis
+	pkgver = 1.72.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/factDesign
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	optdepends = r-affy
+	optdepends = r-genefilter
+	optdepends = r-multtest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/factDesign_1.72.0.tar.gz
+	sha256sums = c76162df27ea688d6e8ffdc66d0911dca9ce2e164eedc853c86b68b3dd68cb60
+
+pkgname = r-factdesign
