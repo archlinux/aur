@@ -1,0 +1,18 @@
+pkgbase = r-flowbeads
+	pkgdesc = flowBeads: Analysis of flow bead data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowBeads
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-flowcore
+	depends = r-knitr
+	depends = r-rrcov
+	depends = r-xtable
+	optdepends = r-flowviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowBeads_1.34.0.tar.gz
+	sha256sums = 27c92437f8dcc1f07526a7112cd2e032a35a69e8e17eb5171cfb823ff64cc1da
+
+pkgname = r-flowbeads
