@@ -1,0 +1,13 @@
+pkgbase = r-help
+	pkgdesc = Tools for HELP data analysis
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HELP
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HELP_1.54.0.tar.gz
+	sha256sums = 41affa68235628cf5c0244d97734d6f1e4dd1c927adf0c9e89ba82d4c62063ea
+
+pkgname = r-help
