@@ -131,7 +131,6 @@ source=(
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     wine-more_8x5_res.patch
     0001-AUR-pkgbuild-changes.patch
-    0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     proton-user_compat_data.patch
 )
 noextract=(
@@ -267,7 +266,6 @@ prepare() {
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Remove repos from srcdir to save space
@@ -405,5 +403,4 @@ sha256sums=('SKIP'
             '25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             '011396ea6cb09cbf2b0cc28520a4d2d43b9ac77b1c9d7190ecc7839b3670f74e'
-            '45f6f159cd30746cd8c2794e7a052a98332ab99a401fcebf6d338d9d21a49a42'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
