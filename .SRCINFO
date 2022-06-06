@@ -1,0 +1,16 @@
+pkgbase = r-logicfs
+	pkgdesc = Identification of SNP Interactions
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/logicFS
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-logicreg
+	depends = r-mcbiopi
+	optdepends = r-genefilter
+	optdepends = r-siggenes
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/logicFS_2.16.0.tar.gz
+	sha256sums = ef31f8b034bd88cefbcced3c00c0fe42345fcb71b51e7e20a9e1683b1d31c01b
+
+pkgname = r-logicfs
