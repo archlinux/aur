@@ -1,0 +1,12 @@
+pkgbase = r-gap.datasets
+	pkgdesc = Datasets for 'gap'
+	pkgver = 0.0.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=gap.datasets
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gap.datasets_0.0.5.tar.gz
+	sha256sums = 2299b52efee322ce0eaf66c66ae440f46618b647701cd741568c08bdc3111c9c
+
+pkgname = r-gap.datasets
