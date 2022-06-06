@@ -1,0 +1,21 @@
+pkgbase = r-flowcut
+	pkgdesc = Precise and Accurate Automated Removal of Outlier Events and Flagging of Files Based on Time Versus Fluorescence Analysis
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowCut
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-cairo
+	depends = r-e1071
+	depends = r-flowcore
+	depends = r-flowdensity
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCut_1.6.0.tar.gz
+	sha256sums = 28c55710a56237ac691baef4a6e19e2a83fee24dbb06f2a0bb89c381437f155d
+
+pkgname = r-flowcut
