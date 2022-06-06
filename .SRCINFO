@@ -1,0 +1,19 @@
+pkgbase = r-sispa
+	pkgdesc = SISPA: Method for Sample Integrated Set Profile Analysis
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SISPA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-changepoint
+	depends = r-data.table
+	depends = r-genefilter
+	depends = r-ggplot2
+	depends = r-gsva
+	depends = r-plyr
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SISPA_1.26.0.tar.gz
+	sha256sums = c76d09558e8cfd205146a55447b93122ecefed50be19a8382bf0a7bc4b96f49f
+
+pkgname = r-sispa
