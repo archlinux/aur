@@ -1,0 +1,12 @@
+pkgbase = r-nbclust
+	pkgdesc = Determining the Best Number of Clusters in a Data Set
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=NbClust
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/NbClust_3.0.1.tar.gz
+	sha256sums = 1a9b0e89156fb98ce486f033cb845a6550bfbff80fb22e8c0df791fe3ec9b04c
+
+pkgname = r-nbclust
