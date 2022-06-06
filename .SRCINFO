@@ -1,0 +1,14 @@
+pkgbase = r-txdb.rnorvegicus.ucsc.rn4.ensgene
+	pkgdesc = Annotation package for TxDb object(s)
+	pkgver = 3.2.2
+	pkgrel = 4
+	url = https://bioconductor.org/packages/TxDb.Rnorvegicus.UCSC.rn4.ensGene
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/TxDb.Rnorvegicus.UCSC.rn4.ensGene_3.2.2.tar.gz
+	sha256sums = 15325d09a9da4292678768164e1850a78595dd96351970553844f5eeac5f683f
+
+pkgname = r-txdb.rnorvegicus.ucsc.rn4.ensgene
