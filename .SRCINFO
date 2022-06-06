@@ -1,0 +1,13 @@
+pkgbase = r-ichip
+	pkgdesc = Bayesian Modeling of ChIP-chip Data Through Hidden Ising Models
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iChip
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-limma
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iChip_1.50.0.tar.gz
+	sha256sums = 2e8b8fe909789bf02a9840fd761b092af18f085e9bd1baa23994a42c3d10b65c
+
+pkgname = r-ichip
