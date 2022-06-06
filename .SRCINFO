@@ -1,0 +1,27 @@
+pkgbase = r-topdownr
+	pkgdesc = Investigation of Fragmentation Conditions in Top-Down Proteomics
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/topdownr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-ggplot2
+	depends = r-msnbase
+	depends = r-mzr
+	depends = r-protgenerics
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-ranger
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-topdownrdata
+	optdepends = r-xml2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/topdownr_1.18.0.tar.gz
+	sha256sums = ca2bacb6e2775fdb3e19ab63ac4829cc5b494e2987b225440b05412af47a32e3
+
+pkgname = r-topdownr
