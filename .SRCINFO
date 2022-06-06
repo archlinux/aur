@@ -1,0 +1,15 @@
+pkgbase = r-shinycustomloader
+	pkgdesc = Custom Loader for Shiny Outputs
+	pkgver = 0.9.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinycustomloader
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-glue
+	depends = r-shiny
+	optdepends = r-shinycssloaders
+	source = https://cran.r-project.org/src/contrib/shinycustomloader_0.9.0.tar.gz
+	sha256sums = cee1f758eb30bc4cb76c3ac463482b31e2167150312e689c7ce0199177389dce
+
+pkgname = r-shinycustomloader
