@@ -1,0 +1,22 @@
+pkgbase = r-profia
+	pkgdesc = Preprocessing of FIA-HRMS data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/proFIA
+	arch = x86_64
+	license = CeCILL
+	depends = r
+	depends = r-biobase
+	depends = r-biocparallel
+	depends = r-minpack.lm
+	depends = r-missforest
+	depends = r-pracma
+	depends = r-ropls
+	depends = r-xcms
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-plasfia
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/proFIA_1.22.0.tar.gz
+	sha256sums = 4d929e5e066314a8fbe7126ff182c7f10ad123d0c474e8b0dba9e33a56cbf932
+
+pkgname = r-profia
