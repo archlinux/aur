@@ -1,0 +1,17 @@
+pkgbase = r-dnabarcodes
+	pkgdesc = A tool for creating and analysing DNA barcodes used in Next Generation Sequencing multiplexing experiments
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DNABarcodes
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-rcpp
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DNABarcodes_1.26.0.tar.gz
+	sha256sums = 867590e663f88db8f757b275f28cd5c75dc6e14eff1d91d7c83d43c9eea65858
+
+pkgname = r-dnabarcodes
