@@ -1,0 +1,15 @@
+pkgbase = r-rots
+	pkgdesc = Reproducibility-Optimized Test Statistic
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ROTS
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ROTS_1.24.0.tar.gz
+	sha256sums = d92416bf45bd1dddcd9de246fb1e1819848b05043efa9a9a2f944d74d1292a08
+
+pkgname = r-rots
