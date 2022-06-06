@@ -1,0 +1,18 @@
+pkgbase = r-splots
+	pkgdesc = Visualization of high-throughput assays in microtitre plate or slide format
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/splots
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-rcolorbrewer
+	optdepends = r-assertthat
+	optdepends = r-biocstyle
+	optdepends = r-hd2013sgi
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/splots_1.62.0.tar.gz
+	sha256sums = d5dd41514aaeba73a1b655c6d12f3b3223e4956909a079243cfa83b40999b922
+
+pkgname = r-splots
