@@ -1,0 +1,20 @@
+pkgbase = r-shinybusy
+	pkgdesc = Busy Indicator for 'Shiny' Applications
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shinybusy
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-shiny
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/shinybusy_0.3.1.tar.gz
+	sha256sums = 74d682ea7eeea04824b3761c2a2814d9e9260e1e56f6b334c298bc1b4d2107b1
+
+pkgname = r-shinybusy
