@@ -1,0 +1,18 @@
+pkgbase = r-digittests
+	pkgdesc = Tests for Detecting Irregular Digit Patterns
+	pkgver = 0.1.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=digitTests
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-benford.analysis
+	optdepends = r-benfordtests
+	optdepends = r-beyondbenford
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/digitTests_0.1.1.tar.gz
+	sha256sums = fbbe4e65197a8607e6f79efeb04288c1ebac0007581fce0fb104abb5bfd733e1
+
+pkgname = r-digittests
