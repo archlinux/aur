@@ -1,0 +1,17 @@
+pkgbase = r-immunoclust
+	pkgdesc = immunoClust - Automated Pipeline for Population Detection in Flow Cytometry
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/immunoClust
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-flowcore
+	depends = gsl
+	optdepends = r-biocstyle
+	optdepends = r-testthat
+	optdepends = r-utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/immunoClust_1.28.0.tar.gz
+	sha256sums = 17327b6ebca59e2760e30d71d6cfb660d7c94975a8ed084fd2683c1ed2a3bc81
+
+pkgname = r-immunoclust
