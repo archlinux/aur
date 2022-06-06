@@ -1,0 +1,22 @@
+pkgbase = r-loci2path
+	pkgdesc = Loci2path: regulatory annotation of genomic intervals based on tissue-specific expression QTLs
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/loci2path
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocparallel
+	depends = r-data.table
+	depends = r-genomicranges
+	depends = r-pheatmap
+	depends = r-rcolorbrewer
+	depends = r-s4vectors
+	depends = r-wordcloud
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/loci2path_1.16.0.tar.gz
+	sha256sums = 459da55e47b57009dcd73fa05d6dac8736e6e7b943323a0a3bdfa560acfcf80d
+
+pkgname = r-loci2path
