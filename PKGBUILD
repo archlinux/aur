@@ -7,8 +7,9 @@ pkgdesc="Unofficial MTK reverse engineering and flash tool"
 arch=('any')
 url="https://github.com/bkerler/mtkclient"
 license=('GPL')
-depends=('python' 'python-pyusb' 'python-pycryptodome' 'python-colorama')
+depends=('libusb' 'python' 'python-pyusb' 'python-pycryptodome' 'python-colorama')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+install=mtkclient.install
 source=("https://github.com/bkerler/mtkclient/archive/refs/tags/$pkgver.tar.gz"
         "usb.patch")
 sha256sums=('5a9363cdcb65392ed4dd19f8442d73f0560d2195b67e790abcee7d7ea34e9ff2'
