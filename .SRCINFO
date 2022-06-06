@@ -1,0 +1,13 @@
+pkgbase = r-genlasso
+	pkgdesc = Path Algorithm for Generalized Lasso Problems
+	pkgver = 1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=genlasso
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-igraph
+	source = https://cran.r-project.org/src/contrib/genlasso_1.5.tar.gz
+	sha256sums = de1cfe83a5e851f41a0de55ebf58980c849ffbf978751c401fcdc767377ec01d
+
+pkgname = r-genlasso
