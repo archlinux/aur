@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-deepl
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="DeepL language translation API"
 arch=('any')
@@ -33,7 +33,5 @@ package() {
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/deepl-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/deepl-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
