@@ -1,0 +1,26 @@
+pkgbase = r-rjmcmcnucleosomes
+	pkgdesc = Bayesian hierarchical model for genome-wide nucleosome positioning with high-throughput short-read data (MNase-Seq)
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RJMCMCNucleosomes
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-consensusseeker
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-s4vectors
+	depends = gsl
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-nucleosim
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RJMCMCNucleosomes_1.20.0.tar.gz
+	sha256sums = d10545eb88718f21c716e2b6959a201f9d61b8d64e97aecc5ce2b2e8e9d61955
+
+pkgname = r-rjmcmcnucleosomes
