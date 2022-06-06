@@ -1,0 +1,19 @@
+pkgbase = r-imman
+	pkgdesc = Interlog protein network reconstruction by Mapping and Mining ANalysis
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IMMAN
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-igraph
+	depends = r-seqinr
+	depends = r-stringdb
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IMMAN_1.16.0.tar.gz
+	sha256sums = 0592f000577309a17f3192afcd117dfbff15ba5ce36ec9682a36af3819dbe0b9
+
+pkgname = r-imman
