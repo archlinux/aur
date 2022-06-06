@@ -1,0 +1,24 @@
+pkgbase = r-pfp
+	pkgdesc = Pathway Fingerprint Framework in R
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PFP
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-clusterprofiler
+	depends = r-ggplot2
+	depends = r-graph
+	depends = r-igraph
+	depends = r-kegggraph
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-tidyr
+	optdepends = r-knitr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PFP_1.4.0.tar.gz
+	sha256sums = 09b86f7bc69f27793e332337ebe35b2a1e5e5c6809940869e1b63e2270acf4b5
+
+pkgname = r-pfp
