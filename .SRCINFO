@@ -1,0 +1,16 @@
+pkgbase = r-scrime
+	pkgdesc = Analysis of High-Dimensional Categorical Data Such as SNP Data
+	pkgver = 1.3.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=scrime
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-dbi
+	optdepends = r-mass
+	optdepends = r-oligoclasses
+	optdepends = r-rsqlite
+	source = https://cran.r-project.org/src/contrib/scrime_1.3.5.tar.gz
+	sha256sums = 5d97d3e57d8eb30709340fe572746029fd139456d7a955421c4e3aa75d825578
+
+pkgname = r-scrime
