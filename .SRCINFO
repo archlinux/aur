@@ -1,7 +1,7 @@
 pkgbase = cloak-obfuscation-bin
-	pkgdesc = A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship
+	pkgdesc = A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship (binary version)
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cbeuw/Cloak
 	arch = x86_64
 	arch = arm
