@@ -10,17 +10,17 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=41.4
+pkgver=42.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
 arch=(x86_64)
-depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
-         gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3
-         libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
-         gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese
-         libgudev bolt udisks2 libhandy gsound colord-gtk)
+depends=(accountsservice cups-pk-helper gnome-bluetooth-3.0 gnome-desktop-4
+         gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas
+         gtk4 libgtop libnma-gtk4 sound-theme-freedesktop upower libpwquality
+         gnome-color-manager smbclient libmm-glib libgnomekbd libibus libgudev
+         bolt udisks2 libadwaita gsound colord-gtk4 gcr libmalcontent)
 makedepends=(docbook-xsl modemmanager git python meson)
 checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 conflicts=($_pkgname)
@@ -32,17 +32,19 @@ optdepends=('system-config-printer: Printer settings'
             'openssh: remote login'
             'power-profiles-daemon: Power profiles support')
 groups=(gnome)
-_commit=d08fac3f0be63f0a4c65d26f47d3b77f8738cfab  # tags/41.4^0
+_commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b  # tags/42.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/10b4141256e5027b6df14eaa6659f15c523b2b8b/fractional-scaling.patch")
+        "display-Allow-fractional-scaling-to-be-enabled.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/42b777253d328c5034fa6182288a555e6be5486a/debian/patches/ubuntu/display-Allow-fractional-scaling-to-be-enabled.patch"
+        "display-Support-UI-scaled-logical-monitor-mode.patch::https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/42b777253d328c5034fa6182288a555e6be5486a/debian/patches/ubuntu/display-Support-UI-scaled-logical-monitor-mode.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '03fa5d2382dd3be039200b578529af0351735c07e784faf09acfacebd249ad28')
+            '62ee5ff981e1648f85a9891cdb7efa80c216e33d67692514483e0cccfe0935ac'
+            'fe7868d62177643d0d493ec121bb6cc15c0cbe7a4058ac097546a245c4344b5d')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -55,12 +57,18 @@ prepare() {
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
 
-  # Support UI scaled logical monitor mode (Marco Trevisan, Robert Ancell, and Georg Wagner)
-  patch -p1 -i "${srcdir}/fractional-scaling.patch"
+  # Support UI scaled logical monitor mode (Marco Trevisan, Robert Ancell)
+  patch -p1 -i "${srcdir}/display-Support-UI-scaled-logical-monitor-mode.patch"
+  patch -p1 -i "${srcdir}/display-Allow-fractional-scaling-to-be-enabled.patch"
 }
 
 build() {
-  arch-meson $_pkgname build -D documentation=true
+  local meson_options=(
+    -D documentation=true
+    -D malcontent=true
+  )
+
+  arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
 }
 
