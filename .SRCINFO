@@ -1,0 +1,16 @@
+pkgbase = r-trigger
+	pkgdesc = Transcriptional Regulatory Inference from Genetics of Gene ExpRession
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/trigger
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-corpcor
+	depends = r-qtl
+	depends = r-qvalue
+	depends = r-sva
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/trigger_1.42.0.tar.gz
+	sha256sums = 1df680e50b584a9c272844eaae8575425039cc823ac7c1eb6ca5bb783964eb25
+
+pkgname = r-trigger
