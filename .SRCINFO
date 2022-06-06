@@ -1,0 +1,13 @@
+pkgbase = r-evd
+	pkgdesc = Functions for Extreme Value Distributions
+	pkgver = 2.3.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=evd
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-akima
+	source = https://cran.r-project.org/src/contrib/evd_2.3-6.tar.gz
+	sha256sums = 8edb8bc4f06d246c4343fd923bb5d5df99724d6db8821bfd996220343a834cb6
+
+pkgname = r-evd
