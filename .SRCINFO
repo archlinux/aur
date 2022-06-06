@@ -1,0 +1,18 @@
+pkgbase = r-mirbaseconverter
+	pkgdesc = A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/miRBaseConverter
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rtracklayer
+	optdepends = r-runit
+	optdepends = r-utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/miRBaseConverter_1.20.0.tar.gz
+	sha256sums = a7e05e84929947365daf3593736554d21d0939dc650bde16a60aab5a9293597c
+
+pkgname = r-mirbaseconverter
