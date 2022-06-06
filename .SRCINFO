@@ -1,0 +1,16 @@
+pkgbase = r-genebreak
+	pkgdesc = Gene Break Detection
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeneBreak
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cghbase
+	depends = r-cghcall
+	depends = r-genomicranges
+	depends = r-qdnaseq
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneBreak_1.26.0.tar.gz
+	sha256sums = c25d6ccfb32b4f338d358a59a9d0a7c761c530e35b3f23cc131edcae7ec98537
+
+pkgname = r-genebreak
