@@ -1,0 +1,21 @@
+pkgbase = r-gemini
+	pkgdesc = GEMINI: Variational inference approach to infer genetic interactions from pairwise CRISPR screens
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gemini
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-mixtools
+	depends = r-pbmcapply
+	depends = r-scales
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gemini_1.10.0.tar.gz
+	sha256sums = 593546124c8f8164355f7c0fddd362b45baa2c0466a134674c564fd5cb42a34f
+
+pkgname = r-gemini
