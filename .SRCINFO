@@ -1,0 +1,32 @@
+pkgbase = r-survminer
+	pkgdesc = Drawing Survival Curves using 'ggplot2'
+	pkgver = 0.4.9
+	pkgrel = 3
+	url = https://cran.r-project.org/package=survminer
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-broom
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-ggtext
+	depends = r-gridextra
+	depends = r-magrittr
+	depends = r-maxstat
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-scales
+	depends = r-survmisc
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-cmprsk
+	optdepends = r-flexsurv
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/survminer_0.4.9.tar.gz
+	sha256sums = df1e597fd90d4dade9f1ddfd393790d4cc682bed6463ab7f6edcc9d53a07d02f
+
+pkgname = r-survminer
