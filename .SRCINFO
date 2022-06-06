@@ -1,0 +1,28 @@
+pkgbase = r-metadat
+	pkgdesc = Meta-Analysis Datasets
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metadat
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mathjaxr
+	optdepends = r-ape
+	optdepends = r-biasedurn
+	optdepends = r-clubsandwich
+	optdepends = r-dfoptim
+	optdepends = r-digest
+	optdepends = r-gridextra
+	optdepends = r-igraph
+	optdepends = r-lme4
+	optdepends = r-meta
+	optdepends = r-metafor
+	optdepends = r-mvtnorm
+	optdepends = r-netmeta
+	optdepends = r-numderiv
+	optdepends = r-rms
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/metadat_1.2-0.tar.gz
+	sha256sums = f0cce5e30c3d256eaf5a41e4f52ffc7108e195016a4b99409e0ab4c2ef58f5b8
+
+pkgname = r-metadat
