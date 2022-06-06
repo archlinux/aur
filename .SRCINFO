@@ -1,0 +1,14 @@
+pkgbase = r-seqminer
+	pkgdesc = Efficiently Read Sequence Data (VCF Format, BCF Format, METAL Format and BGEN Format) into R
+	pkgver = 8.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=seqminer
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-skat
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/seqminer_8.4.tar.gz
+	sha256sums = e8856b5896df4bc5ddc09d9f7855699e8a1f9579835805e1f1f9c196380c7dd5
+
+pkgname = r-seqminer
