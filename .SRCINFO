@@ -1,0 +1,13 @@
+pkgbase = r-rook
+	pkgdesc = Rook - a web server interface for R
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Rook
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-brew
+	source = https://cran.r-project.org/src/contrib/Rook_1.1-1.tar.gz
+	sha256sums = 00f4ecfa4c5c57018acbb749080c07154549a6ecaa8d4130dd9de79427504903
+
+pkgname = r-rook
