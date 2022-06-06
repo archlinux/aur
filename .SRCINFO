@@ -1,0 +1,26 @@
+pkgbase = r-wppi
+	pkgdesc = Weighting protein-protein interactions
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/wppi
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-igraph
+	depends = r-logger
+	depends = r-magrittr
+	depends = r-omnipathr
+	depends = r-progress
+	depends = r-purrr
+	depends = r-rcurl
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/wppi_1.4.0.tar.gz
+	sha256sums = 2ec5380c777773f20e74420c8c1377b0ae03557b6e07cf82114d9fb5d2d00880
+
+pkgname = r-wppi
