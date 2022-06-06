@@ -1,0 +1,17 @@
+pkgbase = r-fmrs
+	pkgdesc = Variable Selection in Finite Mixture of AFT Regression and FMR
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/fmrs
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-utils
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fmrs_1.6.0.tar.gz
+	sha256sums = df96a1f93b557030b032fb9131cac791407204830fc05a6fb2b749f71501bac9
+
+pkgname = r-fmrs
