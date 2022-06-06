@@ -1,0 +1,25 @@
+pkgbase = r-vcfarray
+	pkgdesc = Representing on-disk / remote VCF files as array-like objects
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/VCFArray
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-delayedarray
+	depends = r-genomicfiles
+	depends = r-genomicranges
+	depends = r-rsamtools
+	depends = r-s4vectors
+	depends = r-variantannotation
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-seqarray
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VCFArray_1.12.0.tar.gz
+	sha256sums = 490a97af0ee4ee1a4482bf03d322fde6ad7bb1ff09544fbf97220566d1e6ef9f
+
+pkgname = r-vcfarray
