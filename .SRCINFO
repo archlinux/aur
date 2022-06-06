@@ -1,0 +1,17 @@
+pkgbase = r-rainbow
+	pkgdesc = Bagplots, Boxplots and Rainbow Plots for Functional Data
+	pkgver = 3.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rainbow
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-hdrcde
+	depends = r-ks
+	depends = r-pcapp
+	optdepends = r-forecast
+	source = https://cran.r-project.org/src/contrib/rainbow_3.6.tar.gz
+	sha256sums = 63d1246f88a498f3db0321b46a552163631b288a25b24400935db41326636e87
+
+pkgname = r-rainbow
