@@ -1,0 +1,21 @@
+pkgbase = r-dnet
+	pkgdesc = Integrative Analysis of Omics Data in Terms of Network, Evolution and Ontology
+	pkgver = 1.1.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=dnet
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-graph
+	depends = r-igraph
+	depends = r-rgraphviz
+	depends = r-suprahex
+	optdepends = r-biobase
+	optdepends = r-doparallel
+	optdepends = r-foreach
+	optdepends = r-limma
+	optdepends = r-survival
+	source = https://cran.r-project.org/src/contrib/dnet_1.1.7.tar.gz
+	sha256sums = ac2be6d2b64dd6f63002c80b4646506fadf3ec9dc690249193db40d1d17db816
+
+pkgname = r-dnet
