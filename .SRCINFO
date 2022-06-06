@@ -1,0 +1,21 @@
+pkgbase = r-grmetrics
+	pkgdesc = Calculate growth-rate inhibition (GR) metrics
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GRmetrics
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-drc
+	depends = r-ggplot2
+	depends = r-plotly
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytex
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GRmetrics_1.22.0.tar.gz
+	sha256sums = 72f49ce3013e087f7f83db99309fd028c93f663f4088fa0baf245ccb915ce2e3
+
+pkgname = r-grmetrics
