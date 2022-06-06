@@ -1,22 +1,26 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=0.9.5
-pkgname=r-startupmsg
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=startupmsg
+_pkgver=0.9.6
+pkgname=r-${_pkgname,,}
+pkgver=0.9.6
+pkgrel=4
 pkgdesc='Utilities for Start-Up Messages'
 arch=('any')
-url='https://cran.r-project.org/package=startupmsg'
-license=('LGPL3')
-depends=('r' )
-replaces=('r-cran-startupmsg')
-source=("https://cran.r-project.org/src/contrib/startupmsg_"$_cranver".tar.gz")
-md5sums=('4386dd50612aea6ccaca1a4de95c5383')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('LGPL')
+depends=(
+  r
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('1d60ff13bb260630f797bde66a377a5d4cd65d78ae81a3936dc4374572ec786e')
 
-build(){
-    R CMD INSTALL startupmsg_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -d "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership startupmsg "$pkgdir"/usr/lib/R/library
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
