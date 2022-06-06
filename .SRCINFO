@@ -1,0 +1,12 @@
+pkgbase = r-setrng
+	pkgdesc = Set (Normal) Random Number Generator and Seed
+	pkgver = 2022.4.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=setRNG
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/setRNG_2022.4-1.tar.gz
+	sha256sums = 61c06e6bd6b43c295472c6990266fe87ca41e57db04d3460e756a35ef24e0824
+
+pkgname = r-setrng
