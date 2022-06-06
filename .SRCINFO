@@ -1,0 +1,15 @@
+pkgbase = r-rvmmin
+	pkgdesc = Variable Metric Nonlinear Function Minimization
+	pkgver = 2018.4.17.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Rvmmin
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-optextras
+	optdepends = r-knitr
+	optdepends = r-markdown
+	source = https://cran.r-project.org/src/contrib/Rvmmin_2018-4.17.1.tar.gz
+	sha256sums = 55000ac4ff57d42f172c46c7d6b0a603da3b65866d6440d6b32bac4d2b81814e
+
+pkgname = r-rvmmin
