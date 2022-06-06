@@ -1,0 +1,13 @@
+pkgbase = r-proteinprofiles
+	pkgdesc = Protein Profiling
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/proteinProfiles
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/proteinProfiles_1.36.0.tar.gz
+	sha256sums = 345d411a57abff9328663bcb4916b8663248584c2c9f5250af17e746d44d4234
+
+pkgname = r-proteinprofiles
