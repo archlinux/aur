@@ -5,7 +5,7 @@
 
 pkgname=libopenshot
 pkgver=0.2.7
-pkgrel=10
+pkgrel=11
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
