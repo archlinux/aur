@@ -1,0 +1,18 @@
+pkgbase = r-phastcons100way.ucsc.hg38
+	pkgdesc = UCSC phastCons conservation scores for hg38
+	pkgver = 3.7.1
+	pkgrel = 3
+	url = https://bioconductor.org/packages/phastCons100way.UCSC.hg38
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-genomicscores
+	depends = r-iranges
+	depends = r-s4vectors
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/phastCons100way.UCSC.hg38_3.7.1.tar.gz
+	sha256sums = 607ba9035ef1ce21768e4471efe6ec96199d02db8f5d2fd9e2a391be731a6a36
+
+pkgname = r-phastcons100way.ucsc.hg38
