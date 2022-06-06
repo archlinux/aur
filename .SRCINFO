@@ -1,0 +1,16 @@
+pkgbase = r-pwr
+	pkgdesc = Basic Functions for Power Analysis
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=pwr
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	source = https://cran.r-project.org/src/contrib/pwr_1.3-0.tar.gz
+	sha256sums = 5bb00747aa599b11f133e94c6e4999e592456e966cba3607bbd1fcb1c7f1dfcd
+
+pkgname = r-pwr
