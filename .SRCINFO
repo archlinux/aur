@@ -1,0 +1,15 @@
+pkgbase = r-multtest
+	pkgdesc = Resampling-based multiple hypothesis testing
+	pkgver = 2.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/multtest
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	optdepends = r-snow
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multtest_2.52.0.tar.gz
+	sha256sums = 02f5d868a59d849e7c9d528d7242843af2791312d36e5a5f9770f3307965fc0c
+
+pkgname = r-multtest
