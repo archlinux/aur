@@ -1,0 +1,16 @@
+pkgbase = r-ic.infer
+	pkgdesc = Inequality Constrained Inference in Linear Normal Situations
+	pkgver = 1.1.6
+	pkgrel = 6
+	url = https://cran.r-project.org/package=ic.infer
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-quadprog
+	depends = r-mvtnorm
+	depends = r-kappalab
+	optdepends = r-relaimpo
+	source = https://cran.r-project.org/src/contrib/ic.infer_1.1-6.tar.gz
+	sha256sums = fea55a85cef922b2fc96a2e770cf8feea2c9a71208d7e4e7277989544ae76c93
+
+pkgname = r-ic.infer
