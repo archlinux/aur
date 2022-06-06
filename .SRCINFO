@@ -1,0 +1,15 @@
+pkgbase = r-elliptic
+	pkgdesc = Weierstrass and Jacobi Elliptic Functions
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://cran.r-project.org/package=elliptic
+	arch = any
+	license = GPL
+	depends = r
+	depends = pari
+	optdepends = r-calibrator
+	optdepends = r-emulator
+	source = https://cran.r-project.org/src/contrib/elliptic_1.4-0.tar.gz
+	sha256sums = b65729b1a1c7a84a5b1a59bfc893a2d35106853eaadcae31cda5c9ee3c500bb6
+
+pkgname = r-elliptic
