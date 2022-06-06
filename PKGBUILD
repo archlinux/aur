@@ -83,8 +83,8 @@ build () {
         -D sysconfdir=/etc \
         -D b_ndebug=true \
         -D platforms=auto \
-        -D gallium-drivers=auto \
-        -D vulkan-drivers=auto \
+        -D gallium-drivers=auto,zink,d3d12 \
+        -D vulkan-drivers=auto,virtio-experimental,microsoft-experimental \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
         -D egl=enabled \
