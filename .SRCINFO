@@ -1,0 +1,27 @@
+pkgbase = r-rearrr
+	pkgdesc = Rearranging Data
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rearrr
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-checkmate
+	depends = r-dplyr
+	depends = r-lifecycle
+	depends = r-plyr
+	depends = r-purrr
+	depends = r-r6
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-plotly
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-xpectr
+	source = https://cran.r-project.org/src/contrib/rearrr_0.3.0.tar.gz
+	sha256sums = eba669166e6120eee212d87b33c12b6cd9abae415284c2f7bd38d41fe92c0a32
+
+pkgname = r-rearrr
