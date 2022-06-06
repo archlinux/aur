@@ -1,0 +1,15 @@
+pkgbase = r-hypergeo
+	pkgdesc = The Gauss Hypergeometric Function
+	pkgver = 1.2.13
+	pkgrel = 4
+	url = https://cran.r-project.org/package=hypergeo
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-contfrac
+	depends = r-desolve
+	depends = r-elliptic
+	source = https://cran.r-project.org/src/contrib/hypergeo_1.2-13.tar.gz
+	sha256sums = 6d5b78353aad1d13091ccbeb340867dad7b9eb00d0e2185286dc7e13848f4d8e
+
+pkgname = r-hypergeo
