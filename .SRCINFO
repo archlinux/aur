@@ -1,0 +1,16 @@
+pkgbase = r-ridge
+	pkgdesc = Ridge Regression with Automatic Selection of the Penalty Parameter
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ridge
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = gsl
+	optdepends = r-covr
+	optdepends = r-datasets
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ridge_3.3.tar.gz
+	sha256sums = 5c2daecf6f97aa099ef5fa54f8448518c4f2ed6e44dd29fc60621a70721c60f5
+
+pkgname = r-ridge
