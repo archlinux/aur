@@ -1,0 +1,14 @@
+pkgbase = r-cvauc
+	pkgdesc = Cross-Validated Area Under the ROC Curve Confidence Intervals
+	pkgver = 1.1.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=cvAUC
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-data.table
+	depends = r-rocr
+	source = https://cran.r-project.org/src/contrib/cvAUC_1.1.4.tar.gz
+	sha256sums = 48b4a3c34e9beb63239e9c7372dd125fe87648262ad5490e0bee2a1f14285ed4
+
+pkgname = r-cvauc
