@@ -1,0 +1,13 @@
+pkgbase = r-process
+	pkgdesc = Ciphergen SELDI-TOF Processing
+	pkgver = 1.72.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PROcess
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-icens
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PROcess_1.72.0.tar.gz
+	sha256sums = d092a53ce8e1d73596be1fc32b38a516e916fb1d39cf1a725978d7547feaf70e
+
+pkgname = r-process
