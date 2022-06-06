@@ -1,0 +1,15 @@
+pkgbase = r-sift.hsapiens.dbsnp137
+	pkgdesc = PROVEAN/SIFT Predictions for Homo sapiens dbSNP build 137
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/SIFT.Hsapiens.dbSNP137
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-rsqlite
+	depends = r-variantannotation
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/SIFT.Hsapiens.dbSNP137_1.0.0.tar.gz
+	sha256sums = 48d25a7afcd0107dde7bb57a946ce068b2f3e0efa1a06cbd8f9f2fabf052e290
+
+pkgname = r-sift.hsapiens.dbsnp137
