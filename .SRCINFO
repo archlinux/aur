@@ -1,0 +1,22 @@
+pkgbase = r-scoreinvhap
+	pkgdesc = Get inversion status in predefined regions
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scoreInvHap
+	arch = any
+	license = custom
+	depends = r
+	depends = r-biocparallel
+	depends = r-biostrings
+	depends = r-genomicranges
+	depends = r-snpstats
+	depends = r-summarizedexperiment
+	depends = r-variantannotation
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scoreInvHap_1.18.0.tar.gz
+	sha256sums = 58c5dffd5c140762a4f899f39a58e520a643e72663472c63e1528e742b743782
+
+pkgname = r-scoreinvhap
