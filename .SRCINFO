@@ -1,0 +1,22 @@
+pkgbase = r-cancerinsilico
+	pkgdesc = An R interface for computational modeling of tumor progression
+	pkgver = 2.16.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/CancerInSilico
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-rcpp
+	optdepends = r-biocstyle
+	optdepends = r-gplots
+	optdepends = r-knitr
+	optdepends = r-rgl
+	optdepends = r-rmarkdown
+	optdepends = r-rtsne
+	optdepends = r-testthat
+	optdepends = r-viridis
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CancerInSilico_2.16.0.tar.gz
+	sha256sums = c0aaa86cdbf00da3a2e741d5946f6e9678840d577dafa9261dbd14d02f755cf7
+
+pkgname = r-cancerinsilico
