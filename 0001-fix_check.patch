@@ -1,0 +1,83 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98f80df..c36ea0c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,15 +88,6 @@ add_subdirectory(kbdgentables)
+ add_custom_target(check COMMENT "run all regression tests")
+ add_subdirectory(regress)
+ add_dependencies(check check-regress)
+-if(BUILD_PYTHON)
+-  add_dependencies(check check-extinttest check-modtest check-timertest)
+-endif(BUILD_PYTHON)
+-if(BUILD_TCL)
+-  add_dependencies(check check-tcltest)
+-endif(BUILD_TCL)
+-if(BUILD_VERILOG)
+-  add_dependencies(check check-verilog)
+-endif(BUILD_VERILOG)
+ 
+ # debian package target
+ find_program(DPKG dpkg)
+diff --git a/regress/extinttest/CMakeLists.txt b/regress/extinttest/CMakeLists.txt
+index 18ee24b..aaba3ba 100644
+--- a/regress/extinttest/CMakeLists.txt
++++ b/regress/extinttest/CMakeLists.txt
+@@ -30,5 +30,6 @@ if(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+   add_custom_target(check-extinttest PYTHONPATH=${pypath} ${PYTHON_EXECUTABLE} -m regress_unittest ${results}
+                                      COMMENT "run tests for external interrupts"
+                                      DEPENDS pysimulavr ${results})
++  add_dependencies(check check-extinttest)
+ 
+-endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+\ No newline at end of file
++endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+diff --git a/regress/modtest/CMakeLists.txt b/regress/modtest/CMakeLists.txt
+index 11f4aa0..28b6ba4 100644
+--- a/regress/modtest/CMakeLists.txt
++++ b/regress/modtest/CMakeLists.txt
+@@ -84,5 +84,6 @@ if(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+   add_custom_target(check-modtest PYTHONPATH=${pypath} ${PYTHON_EXECUTABLE} -m regress_unittest ${results}
+                                   COMMENT "run tests for peripheral units"
+                                   DEPENDS pysimulavr ${results})
++  add_dependencies(check check-modtest)
+ 
+-endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+\ No newline at end of file
++endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+diff --git a/regress/tcl/CMakeLists.txt b/regress/tcl/CMakeLists.txt
+index 815b3d2..4d59315 100644
+--- a/regress/tcl/CMakeLists.txt
++++ b/regress/tcl/CMakeLists.txt
+@@ -15,5 +15,6 @@ if(BUILD_TCL AND AVR_CC)
+                                                       ${CMAKE_CURRENT_SOURCE_DIR}/tcl-test.tcl
+                                   COMMENT "tcl test result:"
+                                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/main.elf simtcl)
++  add_dependencies(check check-tcltest)
+ 
+-endif(BUILD_TCL AND AVR_CC)
+\ No newline at end of file
++endif(BUILD_TCL AND AVR_CC)
+diff --git a/regress/timertest/CMakeLists.txt b/regress/timertest/CMakeLists.txt
+index d32a690..fdd0f14 100644
+--- a/regress/timertest/CMakeLists.txt
++++ b/regress/timertest/CMakeLists.txt
+@@ -105,5 +105,6 @@ if(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+   add_custom_target(check-timertest PYTHONPATH=${pypath} ${PYTHON_EXECUTABLE} -m regress_unittest ${results}
+                                     COMMENT "run tests for timer units"
+                                     DEPENDS pysimulavr ${results})
++  add_dependencies(check check-timertest)
+ 
+-endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+\ No newline at end of file
++endif(PYTHONINTERP_FOUND AND AVR_CC AND BUILD_PYTHON)
+diff --git a/regress/verilog/CMakeLists.txt b/regress/verilog/CMakeLists.txt
+index f1c121c..dd29102 100644
+--- a/regress/verilog/CMakeLists.txt
++++ b/regress/verilog/CMakeLists.txt
+@@ -21,5 +21,6 @@ if(BUILD_VERILOG AND AVR_CC)
+ 
+   add_custom_target(check-verilog COMMENT "run verilog test"
+                                   DEPENDS ${verilog_result} ${verilog_timestamp})
++  add_dependencies(check check-verilog)
+ 
+ endif(BUILD_VERILOG AND AVR_CC)

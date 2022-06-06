@@ -16,6 +16,8 @@ pkgbase = simulavr-git
 	provides = simulavr
 	conflicts = simulavr
 	source = simulavr-git::git+https://git.savannah.nongnu.org/git/simulavr.git
+	source = 0001-fix_check.patch
 	sha256sums = SKIP
+	sha256sums = b8e271804031dcd9536553851e41296f24523e6a2c5a0e2154750f0ad80ef309
 
 pkgname = simulavr-git

@@ -23,19 +23,26 @@ depends=()
 makedepends=('cmake' 'git' 'help2man' 'iverilog' 'python' 'swig' 'tcl' 'texinfo')
 provides=('simulavr')
 conflicts=('simulavr')
-source=("${pkgname}::git+https://git.savannah.nongnu.org/git/simulavr.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://git.savannah.nongnu.org/git/simulavr.git"
+        '0001-fix_check.patch')
+sha256sums=('SKIP'
+            'b8e271804031dcd9536553851e41296f24523e6a2c5a0e2154750f0ad80ef309')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --long --tags --match 'release-*' | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch -p1 -i ../0001-fix_check.patch
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
 
   cmake -S . -B build \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_TCL=ON \
     -DBUILD_PYTHON=ON \
     -DBUILD_VERILOG=ON
@@ -47,7 +54,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}/build"
 
-  make -j1 install
+  make DESTDIR="${pkgdir}" install
 
   mv "${pkgdir}/usr/share/doc/common" "${pkgdir}/usr/share/doc/simulavr"
 
