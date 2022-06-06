@@ -1,0 +1,20 @@
+pkgbase = r-xlsx
+	pkgdesc = Read, Write, Format Excel 2007 and Excel 97/2000/XP/2003 Files
+	pkgver = 0.6.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=xlsx
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rjava
+	depends = r-xlsxjars
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rprojroot
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/xlsx_0.6.5.tar.gz
+	sha256sums = 378c5ed475a3d7631ea1ea13e0a69d619c1a52260922abda42818752dbb32107
+
+pkgname = r-xlsx
