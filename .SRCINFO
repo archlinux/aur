@@ -1,0 +1,20 @@
+pkgbase = r-guitar
+	pkgdesc = Guitar
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Guitar
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-dplyr
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-knitr
+	depends = r-magrittr
+	depends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Guitar_2.12.0.tar.gz
+	sha256sums = 102acc26d342cc16ba3312b7bab366ffea9293569012283fadf94c6bb5d2f925
+
+pkgname = r-guitar
