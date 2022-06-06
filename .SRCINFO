@@ -1,0 +1,14 @@
+pkgbase = r-rmio
+	pkgdesc = Provides 'mio' C++11 Header Files
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=rmio
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bigassertr
+	depends = r-ff
+	source = https://cran.r-project.org/src/contrib/rmio_0.4.0.tar.gz
+	sha256sums = 1ed6046ee36f34fca5357e0f18ab2f53b9d85032ec2cbcadb9f33a8fa7456dbe
+
+pkgname = r-rmio
