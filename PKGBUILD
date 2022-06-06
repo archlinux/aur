@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=muserv-git
 _pkgname=muserv
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="muserv (UPnP server for music)"
 arch=(
@@ -27,11 +27,6 @@ source=("git+https://$_pkgorg/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
     cd "$srcdir/$_pkgname"
     ( set -o pipefail
         git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
