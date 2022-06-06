@@ -1,0 +1,15 @@
+pkgbase = r-ggpointdensity
+	pkgdesc = A Cross Between a 2D Density Plot and a Scatter Plot
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggpointdensity
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	optdepends = r-dplyr
+	optdepends = r-viridis
+	source = https://cran.r-project.org/src/contrib/ggpointdensity_0.1.0.tar.gz
+	sha256sums = 3ea646cf183c8bf7869b122a4ee972b53709056ff443ea71551b823524092a31
+
+pkgname = r-ggpointdensity
