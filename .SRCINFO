@@ -1,0 +1,20 @@
+pkgbase = r-transomics2cytoscape
+	pkgdesc = A tool set for 3D Trans-Omic network visualization with Cytoscape
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/transomics2cytoscape
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-dplyr
+	depends = r-keggrest
+	depends = r-rcy3
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/transomics2cytoscape_1.6.1.tar.gz
+	sha256sums = 150a9a01c6a732c24eaa02789b72f010d007f9bff8dc5a4c75a8fdb67e2d4795
+
+pkgname = r-transomics2cytoscape
