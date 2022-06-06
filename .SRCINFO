@@ -1,0 +1,16 @@
+pkgbase = r-mirnatap.db
+	pkgdesc = Data for miRNAtap
+	pkgver = 0.99.10
+	pkgrel = 4
+	url = https://bioconductor.org/packages/miRNAtap.db
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-dbi
+	depends = r-mirnatap
+	depends = r-rsqlite
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/miRNAtap.db_0.99.10.tar.gz
+	sha256sums = 43e735987bae9aa68b6e7544c5d1d87ebf7edcc075427114508eb8b47c7d91c8
+
+pkgname = r-mirnatap.db
