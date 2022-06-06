@@ -1,0 +1,12 @@
+pkgbase = r-mppa
+	pkgdesc = Statistics for analysing multiple simultaneous point processes on the real line
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=mppa
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/mppa_1.0.tar.gz
+	sha256sums = a4337a3b92d49878d554a87854c7b42cb7c5cb65db3fd10f208b406705de661b
+
+pkgname = r-mppa
