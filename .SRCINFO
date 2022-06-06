@@ -1,0 +1,21 @@
+pkgbase = r-similarpeak
+	pkgdesc = Metrics to estimate a level of similarity between two ChIP-Seq profiles
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/similaRpeak
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-r6
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-genomicalignments
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rsamtools
+	optdepends = r-rtracklayer
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/similaRpeak_1.28.0.tar.gz
+	sha256sums = 505335c3854662b2ed4439fd82bb537bdf5cfc73d0ff85ce7fa883ceb9ab7391
+
+pkgname = r-similarpeak
