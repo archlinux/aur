@@ -1,0 +1,20 @@
+pkgbase = r-peca
+	pkgdesc = Probe-level Expression Change Averaging
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PECA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-aroma.affymetrix
+	depends = r-aroma.core
+	depends = r-genefilter
+	depends = r-limma
+	depends = r-preprocesscore
+	depends = r-rots
+	optdepends = r-spikein
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PECA_1.32.0.tar.gz
+	sha256sums = 986fd49d1f092c194cd8f804e919d14a8524b9378becbb0d8a3fd99b305b909e
+
+pkgname = r-peca
