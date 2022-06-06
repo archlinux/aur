@@ -1,0 +1,17 @@
+pkgbase = r-rmagpie
+	pkgdesc = MicroArray Gene-expression-based Program In Error rate estimation
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rmagpie
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-e1071
+	depends = r-kernlab
+	depends = r-pamr
+	optdepends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rmagpie_1.52.0.tar.gz
+	sha256sums = 5bc0b854c31af6445b7dbfda494cb53bce9666b1c4092bf0d43fa6d7e5d02cc5
+
+pkgname = r-rmagpie
