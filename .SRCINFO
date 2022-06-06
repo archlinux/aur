@@ -1,0 +1,14 @@
+pkgbase = r-nls2
+	pkgdesc = Non-linear regression with brute force
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nls2
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-proto
+	optdepends = r-nlstools
+	source = https://cran.r-project.org/src/contrib/nls2_0.3-3.tar.gz
+	sha256sums = 74d2fa178320823b98ddb72118d968ab9852f82123ae7183bb3289775dc7b116
+
+pkgname = r-nls2
