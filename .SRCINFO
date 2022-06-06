@@ -1,0 +1,26 @@
+pkgbase = r-egad
+	pkgdesc = Extending guilt by association by degree
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EGAD
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-geoquery
+	depends = r-gplots
+	depends = r-igraph
+	depends = r-impute
+	depends = r-limma
+	depends = r-plyr
+	depends = r-rcolorbrewer
+	depends = r-rcurl
+	depends = r-zoo
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EGAD_1.24.0.tar.gz
+	sha256sums = 359e6834ebbb56b02cadf483747771f0a9a009f2103a51c7baf72a96d67417f1
+
+pkgname = r-egad
