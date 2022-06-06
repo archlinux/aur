@@ -6,6 +6,7 @@ pkgbase = mingw-w64-spirv-tools
 	arch = any
 	license = Apache
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-spirv-headers
 	makedepends = git
 	makedepends = make
 	makedepends = python
