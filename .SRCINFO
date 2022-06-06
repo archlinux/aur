@@ -1,0 +1,19 @@
+pkgbase = r-ggstar
+	pkgdesc = Multiple Geometric Shape Point Layer for 'ggplot2'
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggstar
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-scales
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/ggstar_1.0.3.tar.gz
+	sha256sums = 23df22864a38321346f75a059d8266df28c4789ff40af3958e02b508bac62635
+
+pkgname = r-ggstar
