@@ -1,0 +1,16 @@
+pkgbase = r-liquidassociation
+	pkgdesc = LiquidAssociation
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/LiquidAssociation
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-geepack
+	depends = r-org.sc.sgd.db
+	depends = r-yeastcc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LiquidAssociation_1.50.0.tar.gz
+	sha256sums = 0e50f7c46abf93435979548e252158715bea3fe240f787add470138fcaa67888
+
+pkgname = r-liquidassociation
