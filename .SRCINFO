@@ -1,0 +1,16 @@
+pkgbase = r-omicade4
+	pkgdesc = Multiple co-inertia analysis of omics datasets
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/omicade4
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ade4
+	depends = r-biobase
+	depends = r-made4
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/omicade4_1.36.0.tar.gz
+	sha256sums = 920ad985b7d71c5e8905a461c941025272d6de5616613a0131af46fd991efcd0
+
+pkgname = r-omicade4
