@@ -1,0 +1,17 @@
+pkgbase = r-metap
+	pkgdesc = Meta-Analysis of Significance Values
+	pkgver = 1.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=metap
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mathjaxr
+	depends = r-mutoss
+	depends = r-rdpack
+	depends = r-tfisher
+	depends = r-qqconf
+	source = https://cran.r-project.org/src/contrib/metap_1.8.tar.gz
+	sha256sums = ee9501a8de8a4c47af1632e6053e42ef53fc4b8bdf0f2759edc4d3eefaf5552b
+
+pkgname = r-metap
