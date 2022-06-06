@@ -1,0 +1,15 @@
+pkgbase = r-primme
+	pkgdesc = Eigenvalues and Singular Values and Vectors from Large Matrices
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=PRIMME
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = make
+	optdepends = r-matrix
+	source = https://cran.r-project.org/src/contrib/Archive/PRIMME/PRIMME_3.2-2.tar.gz
+	sha256sums = 53149390aacc093a3313e8fadf7e3aebeceb867623e105e1abcfccf997f7552e
+
+pkgname = r-primme
