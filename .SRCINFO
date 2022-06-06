@@ -1,0 +1,12 @@
+pkgbase = r-mustat
+	pkgdesc = Prentice Rank Sum Test and McNemar Test
+	pkgver = 1.7.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=muStat
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/muStat_1.7.0.tar.gz
+	sha256sums = 9f9f425b562ceb2754bbd82f725ea0fc5c661a4f2b50ebdab50ca698643fe2a0
+
+pkgname = r-mustat
