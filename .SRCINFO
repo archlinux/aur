@@ -1,0 +1,29 @@
+pkgbase = r-ggalt
+	pkgdesc = Extra Coordinate Systems, 'Geoms', Statistical Transformations, Scales and Fonts for 'ggplot2'
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggalt
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-ash
+	depends = r-dplyr
+	depends = r-extrafont
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-maps
+	depends = r-plotly
+	depends = r-proj4
+	depends = r-rcolorbrewer
+	depends = r-scales
+	depends = r-tibble
+	optdepends = r-ggthemes
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ggalt_0.4.0.tar.gz
+	sha256sums = ec4ad778d15895d199b843d0ce7b8dd23ebe3e96e7cb9f99697007d2c8114a6b
+
+pkgname = r-ggalt
