@@ -2,7 +2,7 @@
 
 pkgname=sierrabreeze-kwin-decoration-git
 _gitname=SierraBreeze
-pkgver=r70.c2776ee
+pkgver=r71.3512961
 pkgrel=1
 pkgdesc="OSX-like window decoration for KDE Plasma written in C++ (git version)"
 arch=('x86_64')
@@ -22,6 +22,12 @@ pkgver() {
   
 }
 
+prepare() {
+   
+   
+   cd ${srcdir}/${_gitname}
+   git pull https://github.com/alex1701c/SierraBreeze.git 
+}
 
 build() {
   
