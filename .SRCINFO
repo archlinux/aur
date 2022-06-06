@@ -1,0 +1,25 @@
+pkgbase = r-scalign
+	pkgdesc = An alignment and integration method for single cell genomics
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scAlign
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fnn
+	depends = r-ggplot2
+	depends = r-irlba
+	depends = r-purrr
+	depends = r-rtsne
+	depends = r-seurat
+	depends = r-singlecellexperiment
+	depends = r-tensorflow
+	depends = python
+	depends = tensorflow
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scAlign_1.9.0.tar.gz
+	sha256sums = 6dd70ff42fee440bd5a58d04955a1a3e907783f70fd44fac31961b50034b403c
+
+pkgname = r-scalign
