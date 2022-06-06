@@ -1,0 +1,23 @@
+pkgbase = r-stan
+	pkgdesc = The Genomic STate ANnotation Package
+	pkgver = 2.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/STAN
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-gviz
+	depends = r-iranges
+	depends = r-poilog
+	depends = r-rsolnp
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-gplots
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STAN_2.24.0.tar.gz
+	sha256sums = 9da3ecf5cc8d9fd7020dd1f16c9215d06a129af37af10c6031c9266b94430aa3
+
+pkgname = r-stan
