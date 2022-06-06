@@ -1,0 +1,12 @@
+pkgbase = r-rlmm
+	pkgdesc = A Genotype Calling Algorithm for Affymetrix SNP Arrays
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RLMM
+	arch = any
+	license = LGPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RLMM_1.58.0.tar.gz
+	sha256sums = 51f3a51efde6dc0a45e07f8c358ec99ac4d4af32ce2782032b442fb4d4c9b166
+
+pkgname = r-rlmm
