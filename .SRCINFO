@@ -1,0 +1,26 @@
+pkgbase = r-dose
+	pkgdesc = Disease Ontology Semantic and Enrichment analysis
+	pkgver = 3.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DOSE
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biocparallel
+	depends = r-do.db
+	depends = r-fgsea
+	depends = r-ggplot2
+	depends = r-gosemsim
+	depends = r-qvalue
+	depends = r-reshape2
+	optdepends = r-clusterprofiler
+	optdepends = r-knitr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DOSE_3.22.0.tar.gz
+	sha256sums = 97372511adc7b87f16237a61f6e03c232acc73e22dfcf1b8b8a4c40528268f86
+
+pkgname = r-dose
