@@ -1,0 +1,29 @@
+pkgbase = r-metabma
+	pkgdesc = Bayesian Model Averaging for Random and Fixed Effects Meta-Analysis
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metaBMA
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = r
+	depends = r-bh
+	depends = r-bridgesampling
+	depends = r-coda
+	depends = r-laplacesdemon
+	depends = r-logspline
+	depends = r-mvtnorm
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rstan
+	depends = r-rstantools
+	depends = r-stanheaders
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/metaBMA_0.6.7.tar.gz
+	sha256sums = 330bccb4b2297bc3a8b7291197c5e978b90b002907f762ede40f2d3e383367da
+
+pkgname = r-metabma
