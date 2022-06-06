@@ -10,7 +10,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=12
+pkgrel=13
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -75,6 +75,8 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/rviz apply $srcdir/rviz_assimp_vendor.patch
     ## tlsf_cpp
     git -C $srcdir/ros2/src/ros2/realtime_support cherry-pick fa9a5545db8f641212de78c5924f1305e01bc7a8
+    ## osrf_testing_tools_cpp
+    git -C $srcdir/osrf/osrf_testing_tools_cpp cherry-pick 869da204dd829308380df5a33e432670e474e54a
 }
 
 build() {
