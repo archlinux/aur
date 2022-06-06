@@ -1,0 +1,22 @@
+pkgbase = r-italics
+	pkgdesc = ITALICS
+	pkgver = 2.56.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ITALICS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affxparser
+	depends = r-dbi
+	depends = r-glad
+	depends = r-italicsdata
+	depends = r-oligo
+	depends = r-oligoclasses
+	depends = r-pd.mapping50k.xba240
+	optdepends = r-pd.mapping250k.nsp
+	optdepends = r-pd.mapping250k.sty
+	optdepends = r-pd.mapping50k.hind240
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ITALICS_2.56.0.tar.gz
+	sha256sums = 659ac41e07be074223784a25e5d9ab6c680845a49d158a95c8371ee220771394
+
+pkgname = r-italics
