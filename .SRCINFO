@@ -1,0 +1,22 @@
+pkgbase = r-m3c
+	pkgdesc = Monte Carlo Reference-based Consensus Clustering
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/M3C
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-corpcor
+	depends = r-doparallel
+	depends = r-dosnow
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-matrixcalc
+	depends = r-rtsne
+	depends = r-umap
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/M3C_1.18.0.tar.gz
+	sha256sums = 22000ad361ab267d09593e16f56cd3538e95d291515068686828b137df690f88
+
+pkgname = r-m3c
