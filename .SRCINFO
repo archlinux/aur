@@ -1,0 +1,23 @@
+pkgbase = r-grain
+	pkgdesc = Graphical Independence Networks
+	pkgver = 1.3.10
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gRain
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-graph
+	depends = r-grbase
+	depends = r-igraph
+	depends = r-magrittr
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppeigen
+	depends = r-rgraphviz
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/gRain_1.3.10.tar.gz
+	sha256sums = e5ad461c5f12172f3efa5ac590a1685ca6f5720fa503afc189d8f6fc041771af
+
+pkgname = r-grain
