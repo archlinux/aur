@@ -1,0 +1,16 @@
+pkgbase = r-summix
+	pkgdesc = Summix: A method to estimate and adjust for population structure in genetic summary data
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Summix
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-nloptr
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Summix_2.2.0.tar.gz
+	sha256sums = 8b436a78ba35b23c72b577a7db93b2c1f66e7462eee5534b69b38968476ec721
+
+pkgname = r-summix
