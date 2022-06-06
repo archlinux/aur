@@ -1,0 +1,20 @@
+pkgbase = r-nanotime
+	pkgdesc = Nanosecond-Resolution Time Support for R
+	pkgver = 0.3.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=nanotime
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bit64
+	depends = r-rcpp
+	depends = r-rcppcctz
+	depends = r-rcppdate
+	depends = r-zoo
+	optdepends = r-data.table
+	optdepends = r-tinytest
+	optdepends = r-xts
+	source = https://cran.r-project.org/src/contrib/nanotime_0.3.6.tar.gz
+	sha256sums = df751a5cb11ca9ac8762cd1e33bc73e7d20fde9339d2c46bc6f85873388568df
+
+pkgname = r-nanotime
