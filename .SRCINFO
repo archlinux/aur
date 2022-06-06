@@ -1,0 +1,13 @@
+pkgbase = r-drawr
+	pkgdesc = Discriminative Random Walk with Restart
+	pkgver = 1.0.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=DRaWR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rocr
+	source = https://cran.r-project.org/src/contrib/DRaWR_1.0.3.tar.gz
+	sha256sums = e86475e90565f70315efafd4dc7777d1e1743ef52ac1ba8d7f2cff1012834cdf
+
+pkgname = r-drawr
