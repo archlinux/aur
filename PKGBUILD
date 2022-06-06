@@ -3,20 +3,20 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt
-pkgver=4.22
+pkgver=4.23
 pkgrel=1
-_date=202111241800
+_date=202203080310
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
 license=('EPL')
-depends=('java-runtime>=8' 'libxtst')
+depends=('java-runtime>=11' 'libxtst')
 makedepends=(
   'ant'
   'glu'
   'gtk3'
   'gtk4'
-  'jdk8-openjdk'
+  'jdk11-openjdk'
   'pkgconfig'
   'unzip'
   'webkit2gtk'
@@ -27,27 +27,31 @@ _archive="${pkgname}-${pkgver}-gtk-linux-${arch}.zip"
 source=(
   "https://download.eclipse.org/eclipse/downloads/drops4/R-${pkgver}-${_date}/${_archive}"
   "build-swt.xml"
+  "fix-libjawt-detection.patch"
 )
 noextract=("$_archive")
 sha256sums=(
-  '55b46b575e8c93172be81e096fb72bce83b60df8087b4863a1a057aaead30b1f'
-  'c2557350f11ebe935e727e3a1b16a69076569e4ebbdabac263aaf60e92996907'
+  'c3dedfc39ba684e7df29db0b61faebe4ae9ae8a76833024339e914e31fec7b15'
+  'a5e60b4d1b23a728f62f0b46d32717e7c4a8ea773c3539ca2091a19bed898fad'
+  'c93dfc8f9762d150c03dccb595052041177652990ebb27174bfc91889f80e195'
 )
 
 prepare() {
   unzip -oq "$_archive" -d "$pkgname-$pkgver"
+
+  cd "$pkgname-$pkgver"
+
+  unzip -oq src.zip
+
+  patch --forward --strip=1 --input="$srcdir/fix-libjawt-detection.patch"
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  unzip -oq src.zip
-  cp $srcdir/build-swt.xml .
-
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-
-  ant -f build-swt.xml compile
-  ant -f build-swt.xml jar
+  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  ant -f $srcdir/build-swt.xml compile
+  ant -f $srcdir/build-swt.xml jar
 }
 
 package() {

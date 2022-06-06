@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !build-swt.xml
+!fix-libjawt-detection.patch

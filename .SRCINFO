@@ -1,6 +1,6 @@
 pkgbase = swt
 	pkgdesc = An open source widget toolkit for Java
-	pkgver = 4.22
+	pkgver = 4.23
 	pkgrel = 1
 	url = https://www.eclipse.org/swt/
 	arch = x86_64
@@ -9,19 +9,21 @@ pkgbase = swt
 	makedepends = glu
 	makedepends = gtk3
 	makedepends = gtk4
-	makedepends = jdk8-openjdk
+	makedepends = jdk11-openjdk
 	makedepends = pkgconfig
 	makedepends = unzip
 	makedepends = webkit2gtk
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	depends = libxtst
 	optdepends = glu
 	optdepends = gtk3
 	optdepends = gtk4
-	noextract = swt-4.22-gtk-linux-x86_64.zip
-	source = https://download.eclipse.org/eclipse/downloads/drops4/R-4.22-202111241800/swt-4.22-gtk-linux-x86_64.zip
+	noextract = swt-4.23-gtk-linux-x86_64.zip
+	source = https://download.eclipse.org/eclipse/downloads/drops4/R-4.23-202203080310/swt-4.23-gtk-linux-x86_64.zip
 	source = build-swt.xml
-	sha256sums = 55b46b575e8c93172be81e096fb72bce83b60df8087b4863a1a057aaead30b1f
-	sha256sums = c2557350f11ebe935e727e3a1b16a69076569e4ebbdabac263aaf60e92996907
+	source = fix-libjawt-detection.patch
+	sha256sums = c3dedfc39ba684e7df29db0b61faebe4ae9ae8a76833024339e914e31fec7b15
+	sha256sums = a5e60b4d1b23a728f62f0b46d32717e7c4a8ea773c3539ca2091a19bed898fad
+	sha256sums = c93dfc8f9762d150c03dccb595052041177652990ebb27174bfc91889f80e195
 
 pkgname = swt
