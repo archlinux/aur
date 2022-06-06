@@ -1,0 +1,21 @@
+pkgbase = r-fci
+	pkgdesc = f-divergence Cutoff Index for Differential Expression Analysis in Transcriptomics and Proteomics
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/fCI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fnn
+	depends = r-gtools
+	depends = r-psych
+	depends = r-rgl
+	depends = r-venndiagram
+	depends = r-zoo
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fCI_1.26.0.tar.gz
+	sha256sums = ca2bfb6ca34fe0ef3ef4028576b104199dc31044334a0f7443a11240ab9ded9d
+
+pkgname = r-fci
