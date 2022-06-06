@@ -1,0 +1,18 @@
+pkgbase = r-meigor
+	pkgdesc = MEIGO - MEtaheuristics for bIoinformatics Global Optimization
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MEIGOR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cnorode
+	depends = r-desolve
+	depends = r-rsolnp
+	depends = r-snowfall
+	optdepends = r-cellnoptr
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEIGOR_1.29.0.tar.gz
+	sha256sums = 382ac0cdc5d4787a396038ec5c11d495a8f648fc8af842505afabed68ba0c9e5
+
+pkgname = r-meigor
