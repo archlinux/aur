@@ -1,0 +1,15 @@
+pkgbase = r-sbmlr
+	pkgdesc = SBML-R Interface and Analysis Tools
+	pkgver = 1.92.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SBMLR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-desolve
+	depends = r-xml
+	optdepends = r-rsbml
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SBMLR_1.92.0.tar.gz
+	sha256sums = 0bb7caa1f3e172440a5bffa4b5c0547ee437614a9625cfaea2b86b8d96201a17
+
+pkgname = r-sbmlr
