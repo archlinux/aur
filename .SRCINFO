@@ -1,0 +1,13 @@
+pkgbase = r-rcppdate
+	pkgdesc = 'date' C++ Header Library for Date and Time Functionality
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RcppDate
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/RcppDate_0.0.3.tar.gz
+	sha256sums = 9c5ee7cf76d63cd51e8faff831f5f865762868d7d705395960c0f22e9b238bdb
+
+pkgname = r-rcppdate
