@@ -1,0 +1,20 @@
+pkgbase = r-mirintegrator
+	pkgdesc = Integrating microRNA expression into signaling pathways for pathway analysis
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mirIntegrator
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-ggplot2
+	depends = r-graph
+	depends = r-org.hs.eg.db
+	depends = r-rgraphviz
+	depends = r-rontotools
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mirIntegrator_1.26.0.tar.gz
+	sha256sums = 6ecb5f86e275a3541a9a85352be127bc4f5555d2206e511b54fbcdbb084dffe1
+
+pkgname = r-mirintegrator
