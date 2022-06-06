@@ -1,0 +1,13 @@
+pkgbase = r-lassopv
+	pkgdesc = Nonparametric P-Value Estimation for Predictors in Lasso
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=lassopv
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lars
+	source = https://cran.r-project.org/src/contrib/lassopv_0.2.0.tar.gz
+	sha256sums = 3f65b1fe1b0d4e700c0a7129db12333bd2cad2523df998c7bc5e0e03b8b45c79
+
+pkgname = r-lassopv
