@@ -1,0 +1,26 @@
+pkgbase = r-origami
+	pkgdesc = Generalized Framework for Cross-Validation
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=origami
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-assertthat
+	depends = r-data.table
+	depends = r-future
+	depends = r-future.apply
+	depends = r-listenv
+	optdepends = r-class
+	optdepends = r-forecast
+	optdepends = r-glmnet
+	optdepends = r-knitr
+	optdepends = r-randomforest
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/origami_1.0.5.tar.gz
+	sha256sums = 8d0d08aaecc428cbbf5db4615ad3623777c10c6d7947a1cc3ccc7f8db8cb5263
+
+pkgname = r-origami
