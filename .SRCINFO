@@ -1,0 +1,23 @@
+pkgbase = r-pagerank
+	pkgdesc = Temporal and Multiplex PageRank for Gene Regulatory Network Analysis
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pageRank
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomicranges
+	depends = r-igraph
+	depends = r-motifmatchr
+	optdepends = r-annotate
+	optdepends = r-bcellviper
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-genomicfeatures
+	optdepends = r-jaspar2018
+	optdepends = r-org.hs.eg.db
+	optdepends = r-tfbstools
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pageRank_1.6.0.tar.gz
+	sha256sums = d8527c576332f18a93a4c28ac4e31952bd47c91213f6d0009f542a97bf61a929
+
+pkgname = r-pagerank
