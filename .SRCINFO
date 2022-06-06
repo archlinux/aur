@@ -1,0 +1,23 @@
+pkgbase = r-greylistchip
+	pkgdesc = Grey Lists -- Mask Artefact Regions Based on ChIP Inputs
+	pkgver = 1.28.1
+	pkgrel = 3
+	url = https://bioconductor.org/packages/GreyListChIP
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-rsamtools
+	depends = r-rtracklayer
+	depends = r-summarizedexperiment
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GreyListChIP_1.28.1.tar.gz
+	sha256sums = 0f367385fc951724a1d494819618ea3880633d400b90ad570a14672537dfa270
+
+pkgname = r-greylistchip
