@@ -1,0 +1,14 @@
+pkgbase = r-isa2
+	pkgdesc = The Iterative Signature Algorithm
+	pkgver = 0.3.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=isa2
+	arch = x86_64
+	license = CCPL:by-nc-sa
+	depends = r
+	optdepends = r-biclust
+	optdepends = r-igraph
+	source = https://cran.r-project.org/src/contrib/isa2_0.3.5.tar.gz
+	sha256sums = 9b9d41747b14b0e5ddd7b7abb143ab7fc9e818df24995ea680197e6d4002759f
+
+pkgname = r-isa2
