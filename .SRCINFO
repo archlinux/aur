@@ -1,0 +1,25 @@
+pkgbase = r-httpgd
+	pkgdesc = A 'HTTP' Server Graphics Device
+	pkgver = 1.3.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=httpgd
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bh
+	depends = r-cpp11
+	depends = r-later
+	depends = r-systemfonts
+	depends = libpng
+	depends = cairo
+	depends = freetype2
+	depends = fontconfig
+	optdepends = r-fontquiver
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/httpgd_1.3.0.tar.gz
+	sha256sums = f3d6cdac150a8209283121e1394c8e27dd4cb89ecae1c436fb5f5bf774f3f35f
+
+pkgname = r-httpgd
