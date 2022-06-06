@@ -1,0 +1,13 @@
+pkgbase = r-sets
+	pkgdesc = Sets, Generalized Sets, Customizable Sets and Intervals
+	pkgver = 1.0.21
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sets
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-proxy
+	source = https://cran.r-project.org/src/contrib/sets_1.0-21.tar.gz
+	sha256sums = 5733f0be59189c058c069583f5c4dc1d772bfad5abbfd16081131414d6002ac0
+
+pkgname = r-sets
