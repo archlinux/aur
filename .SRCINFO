@@ -1,0 +1,26 @@
+pkgbase = r-opweight
+	pkgdesc = Optimal p-value weighting with independent information
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OPWeight
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-qvalue
+	depends = r-tibble
+	optdepends = r-airway
+	optdepends = r-biocstyle
+	optdepends = r-cowplot
+	optdepends = r-deseq2
+	optdepends = r-devtools
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-matrix
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OPWeight_1.18.0.tar.gz
+	sha256sums = 83d0eb08b84c268572e5a242ef6ecbc44a7fa3838bad3f2f4c94d224de7298cc
+
+pkgname = r-opweight
