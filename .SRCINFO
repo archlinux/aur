@@ -1,0 +1,27 @@
+pkgbase = r-tfruns
+	pkgdesc = Training Run Tools for 'TensorFlow'
+	pkgver = 1.5.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tfruns
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-base64enc
+	depends = r-config
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-reticulate
+	depends = r-rlang
+	depends = r-rstudioapi
+	depends = r-tidyselect
+	depends = r-whisker
+	depends = r-yaml
+	optdepends = r-here
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/tfruns_1.5.0.tar.gz
+	sha256sums = 898a45a5e8420af1542919874a26cf8c00ae12638e6842197773b818de648e12
+
+pkgname = r-tfruns
