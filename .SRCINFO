@@ -1,0 +1,28 @@
+pkgbase = r-labelled
+	pkgdesc = Manipulating Labelled Data
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=labelled
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-haven
+	depends = r-lifecycle
+	depends = r-rlang
+	depends = r-stringr
+	depends = r-tidyr
+	depends = r-vctrs
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-memisc
+	optdepends = r-questionr
+	optdepends = r-rmarkdown
+	optdepends = r-snakecase
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-utf8
+	source = https://cran.r-project.org/src/contrib/labelled_2.9.1.tar.gz
+	sha256sums = 9eb10b245f64f3fb7346121aa4cd98638946e1cc4208dd5e28791ef8fd62fa40
+
+pkgname = r-labelled
