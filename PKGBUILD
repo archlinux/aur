@@ -152,12 +152,12 @@ _check() (
   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
-  pipewire_session_manager=$(pacman -Qq pipewire-session-manager)
+  local _pipewire_session_manager=$(pacman -Qq pipewire-session-manager)
 
   pipewire &
   _p1=$!
 
-  $pipewire_session_manager &
+  $_pipewire_session_manager &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
