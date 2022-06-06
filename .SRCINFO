@@ -1,0 +1,19 @@
+pkgbase = r-geometadb
+	pkgdesc = A compilation of metadata from NCBI GEO
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GEOmetadb
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-geoquery
+	depends = r-rsqlite
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tm
+	optdepends = r-wordcloud
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOmetadb_1.58.0.tar.gz
+	sha256sums = a3bad9ab5b0055b986f26bc0474b88249a810bf6dbc09034d93954519752a28b
+
+pkgname = r-geometadb
