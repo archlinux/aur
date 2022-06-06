@@ -1,0 +1,34 @@
+pkgbase = r-mlr3learners
+	pkgdesc = Recommended Learners for 'mlr3'
+	pkgver = 0.5.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=mlr3learners
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-checkmate
+	depends = r-data.table
+	depends = r-mlr3
+	depends = r-mlr3misc
+	depends = r-paradox
+	depends = r-r6
+	optdepends = r-dicekriging
+	optdepends = r-distr6
+	optdepends = r-e1071
+	optdepends = r-glmnet
+	optdepends = r-kknn
+	optdepends = r-knitr
+	optdepends = r-lgr
+	optdepends = r-mass
+	optdepends = r-mlr3proba
+	optdepends = r-nnet
+	optdepends = r-pracma
+	optdepends = r-ranger
+	optdepends = r-rgenoud
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-xgboost
+	source = https://cran.r-project.org/src/contrib/mlr3learners_0.5.3.tar.gz
+	sha256sums = ed0310419906fbace1c54ffb4c9bf4c8e13d0aae267b79d8d6fde9b3e3151121
+
+pkgname = r-mlr3learners
