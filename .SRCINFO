@@ -1,0 +1,14 @@
+pkgbase = r-logging
+	pkgdesc = R Logging Package
+	pkgver = 0.10.108
+	pkgrel = 4
+	url = https://cran.r-project.org/package=logging
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-crayon
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/logging_0.10-108.tar.gz
+	sha256sums = 85c91aa5a313f5f9fbb0394cda3f924a2495cca3cc5cd68dde0695fe3c20ed8d
+
+pkgname = r-logging
