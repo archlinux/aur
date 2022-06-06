@@ -1,0 +1,17 @@
+pkgbase = r-tfautograph
+	pkgdesc = Autograph R for 'Tensorflow'
+	pkgver = 0.3.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tfautograph
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-backports
+	depends = r-reticulate
+	optdepends = r-rlang
+	optdepends = r-tensorflow
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tfautograph_0.3.2.tar.gz
+	sha256sums = 42821583679d32fa4abb4304b6831e8c3b4dce9468e1a3b570af7bf95ec0aa3a
+
+pkgname = r-tfautograph
