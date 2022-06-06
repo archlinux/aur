@@ -1,0 +1,17 @@
+pkgbase = r-polylabelr
+	pkgdesc = Find the Pole of Inaccessibility (Visual Center) of a Polygon
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=polylabelr
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcpp
+	optdepends = r-covr
+	optdepends = r-sf
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/polylabelr_0.2.0.tar.gz
+	sha256sums = c27de763f847d2bcca794b61d2a07b06beeba1421b736bdae2dda25728d86205
+
+pkgname = r-polylabelr
