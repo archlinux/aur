@@ -1,0 +1,20 @@
+pkgbase = r-rmdformats
+	pkgdesc = HTML Output Formats and Templates for 'rmarkdown' Documents
+	pkgver = 1.0.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=rmdformats
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bookdown
+	depends = r-htmltools
+	depends = r-knitr
+	depends = r-rmarkdown
+	optdepends = r-dt
+	optdepends = r-ggplot2
+	optdepends = r-palmerpenguins
+	optdepends = r-questionr
+	source = https://cran.r-project.org/src/contrib/rmdformats_1.0.4.tar.gz
+	sha256sums = 9f29c4a8214849d551f2efbff8d463645e06c19a7fa951cd263ee8493b672c02
+
+pkgname = r-rmdformats
