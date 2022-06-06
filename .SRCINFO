@@ -1,0 +1,12 @@
+pkgbase = r-eigenmodel
+	pkgdesc = Semiparametric Factor and Regression Models for Symmetric Relational Data
+	pkgver = 1.11
+	pkgrel = 5
+	url = https://cran.r-project.org/package=eigenmodel
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/eigenmodel_1.11.tar.gz
+	sha256sums = 8dac650db4331c427c1afbfc7296889d3eb164c0b5feee99e9c37533ce0776d0
+
+pkgname = r-eigenmodel
