@@ -1,0 +1,25 @@
+pkgbase = r-paa
+	pkgdesc = PAA (Protein Array Analyzer)
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PAA
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-e1071
+	depends = r-gplots
+	depends = r-gtools
+	depends = r-limma
+	depends = r-mrmre
+	depends = r-randomforest
+	depends = r-rcpp
+	depends = r-rocr
+	depends = r-sva
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	optdepends = r-vsn
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAA_1.30.0.tar.gz
+	sha256sums = ffbf5ece1ca149497a052bee86b4ad7ebb6d4446615e173370257d1b394c075b
+
+pkgname = r-paa
