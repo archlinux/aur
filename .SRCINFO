@@ -1,0 +1,25 @@
+pkgbase = r-srgnet
+	pkgdesc = An R package for studying synergistic response to gene mutations from transcriptomics data
+	pkgver = 1.20.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/SRGnet
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = tar
+	depends = r
+	depends = r-ebcoexpress
+	depends = r-igraph
+	depends = r-pvclust
+	depends = r-gdm
+	depends = r-limma
+	depends = r-matrixstats
+	depends = r-hmisc
+	depends = r-dmwr
+	depends = r-gbm
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = git+https://git.bioconductor.org/packages/SRGnet.git
+	sha256sums = SKIP
+
+pkgname = r-srgnet
