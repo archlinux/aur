@@ -1,0 +1,12 @@
+pkgbase = r-lymphoseqdb
+	pkgdesc = LymphoSeq annotation databases
+	pkgver = 0.99.2
+	pkgrel = 4
+	url = https://bioconductor.org/packages/LymphoSeqDB
+	arch = any
+	license = Artistic2.0
+	depends = r
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/LymphoSeqDB_0.99.2.tar.gz
+	sha256sums = 27e322948b2a61df048d8f84ab65d09da9e8f926acd9af87c89f4059a3b0beb1
+
+pkgname = r-lymphoseqdb
