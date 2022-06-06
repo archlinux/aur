@@ -1,0 +1,15 @@
+pkgbase = r-kboost
+	pkgdesc = Inference of gene regulatory networks from gene expression data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/KBoost
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KBoost_1.4.0.tar.gz
+	sha256sums = 8155221c3995feae716ba2eee83b5c31df47621b56781c9ee886d1a5cd9f340f
+
+pkgname = r-kboost
