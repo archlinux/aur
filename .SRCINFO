@@ -1,0 +1,23 @@
+pkgbase = r-selectksigs
+	pkgdesc = Selecting the number of mutational signatures using a perplexity-based measure and cross-validation
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/selectKSigs
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gtools
+	depends = r-hilda
+	depends = r-magrittr
+	depends = r-rcpp
+	optdepends = r-biocstyle
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/selectKSigs_1.8.0.tar.gz
+	sha256sums = 09d8f77065dc14503d306705f164c946ff5c83caececcc437b4f96d6a65a8b03
+
+pkgname = r-selectksigs
