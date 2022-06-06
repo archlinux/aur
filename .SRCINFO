@@ -1,0 +1,17 @@
+pkgbase = r-rebus
+	pkgdesc = Build Regular Expressions in a Human Readable Way
+	pkgver = 0.1.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rebus
+	arch = any
+	license = Unlimited
+	depends = r
+	depends = r-rebus.base
+	depends = r-rebus.datetimes
+	depends = r-rebus.numbers
+	depends = r-rebus.unicode
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rebus_0.1-3.tar.gz
+	sha256sums = 2d3df9da8d95c7ed299052f8cfd849ac4beae7c187ca779997033bf04c6d4357
+
+pkgname = r-rebus
