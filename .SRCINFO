@@ -1,0 +1,18 @@
+pkgbase = r-wordcloud2
+	pkgdesc = Create Word Cloud by 'htmlwidget'
+	pkgver = 0.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=wordcloud2
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-base64enc
+	depends = r-htmlwidgets
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-webshot
+	source = https://cran.r-project.org/src/contrib/wordcloud2_0.2.1.tar.gz
+	sha256sums = d3f4f49114a503ef206e64771b5160069b5095d7be6f807b8b041763972058a8
+
+pkgname = r-wordcloud2
