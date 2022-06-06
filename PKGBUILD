@@ -2,8 +2,8 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 pkgname=lightly-git
 _gitname=Lightly
-pkgver=r2120.be20234d
-pkgrel=1
+pkgver=r2172.121a61e5
+pkgrel=2
 pkgdesc="A modern style for qt applications"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Luwx/$_gitname"
@@ -12,12 +12,18 @@ depends=("frameworkintegration" "kdecoration" "breeze-icons" "kwayland" "hicolor
 makedepends=("git" "cmake" "extra-cmake-modules" "kcmutils" "kdecoration" "qt5-declarative" "qt5-x11extras")
 provides=("lightly-qt")
 conflicts=("lightly-qt")
-source=("git+$url")
-sha512sums=('SKIP')
+source=("git+$url" "https://github.com/Luwx/Lightly/pull/177.patch")
+sha512sums=('SKIP'
+            '0705dc4b9c2fac0fb2a2c5caa26da9c7d90f1ebab716a9fc21543707ce4544e6a6984b9e850dba4b4bd3b3c124f60b495f2960091d4867c314998bb7040673f1')
 
 pkgver() {
   cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  patch -p1 < "$srcdir/177.patch"
 }
 
 build() {
