@@ -1,0 +1,25 @@
+pkgbase = r-rcmdrmisc
+	pkgdesc = R Commander Miscellaneous Functions
+	pkgver = 2.7.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=RcmdrMisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-car
+	depends = r-colorspace
+	depends = r-e1071
+	depends = r-haven
+	depends = r-hmisc
+	depends = r-nortest
+	depends = r-readstata13
+	depends = r-readxl
+	depends = r-sandwich
+	optdepends = r-boot
+	optdepends = r-cardata
+	optdepends = r-datasets
+	source = https://cran.r-project.org/src/contrib/RcmdrMisc_2.7-2.tar.gz
+	sha256sums = 838fc795127ba6b2a4fd6dac1dd58fbccd418299252c659950427fd3aecdbb64
+
+pkgname = r-rcmdrmisc
