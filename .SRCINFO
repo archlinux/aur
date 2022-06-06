@@ -1,0 +1,19 @@
+pkgbase = r-mafdb.1kgenomes.phase3.hs37d5
+	pkgdesc = Minor allele frequency data from 1000 Genomes Phase 3 for hs37d5
+	pkgver = 3.10.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/MafDb.1Kgenomes.phase3.hs37d5
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-genomicscores
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/MafDb.1Kgenomes.phase3.hs37d5_3.10.0.tar.gz
+	sha256sums = 0d997b1985eaaed3954d314dee3d7e2ef4423615464c8ab5fb7add35fceb4bb0
+
+pkgname = r-mafdb.1kgenomes.phase3.hs37d5
