@@ -1,0 +1,20 @@
+pkgbase = r-fastdummies
+	pkgdesc = Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables
+	pkgver = 1.6.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fastDummies
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-data.table
+	depends = r-stringr
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fastDummies_1.6.3.tar.gz
+	sha256sums = bd3934fe19d7dff2723438bbb7b89334118143f8ce151d98477ae964ee5d81df
+
+pkgname = r-fastdummies
