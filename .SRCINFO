@@ -1,0 +1,26 @@
+pkgbase = r-tofsims
+	pkgdesc = Import, process and analysis of Time-of-Flight Secondary Ion Mass Spectrometry (ToF-SIMS) imaging data
+	pkgver = 1.22.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/tofsims
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-als
+	depends = r-alsace
+	depends = r-protgenerics
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-signal
+	optdepends = r-biocparallel
+	optdepends = r-ebimage
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tofsimsdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tofsims_1.22.0.tar.gz
+	sha256sums = c5fc9186e49526545d00ed4d461715f5e280da267f7c747d1028b3c507414435
+
+pkgname = r-tofsims
