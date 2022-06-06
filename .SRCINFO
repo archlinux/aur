@@ -1,0 +1,16 @@
+pkgbase = r-missforest
+	pkgdesc = Nonparametric Missing Value Imputation using Random Forest
+	pkgver = 1.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=missForest
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-foreach
+	depends = r-itertools
+	depends = r-randomforest
+	depends = r-dorng
+	source = https://cran.r-project.org/src/contrib/missForest_1.5.tar.gz
+	sha256sums = 417055a03b02ad8359cf1bdc8f89d49531a3a8ee2c98edf90c8a01432f44838d
+
+pkgname = r-missforest
