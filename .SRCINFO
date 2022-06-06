@@ -1,0 +1,26 @@
+pkgbase = r-gridtext
+	pkgdesc = Improved Text Rendering Support for 'Grid' Graphics
+	pkgver = 0.1.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gridtext
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-jpeg
+	depends = r-markdown
+	depends = r-png
+	depends = r-rcpp
+	depends = r-rcurl
+	depends = r-rlang
+	depends = r-stringr
+	depends = r-xml2
+	depends = gcc
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/gridtext_0.1.4.tar.gz
+	sha256sums = c1cca9c68c6de4095546d2dab0ffff1d6e4fcf9ca2b9e878dc7a7237ede1338c
+
+pkgname = r-gridtext
