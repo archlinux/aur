@@ -1,0 +1,16 @@
+pkgbase = r-rtca
+	pkgdesc = Open-source toolkit to analyse data from xCELLigence System (RTCA)
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RTCA
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-gtools
+	depends = r-rcolorbrewer
+	optdepends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTCA_1.48.0.tar.gz
+	sha256sums = eb33060d370bb94bf0702871129d583b3fb1bd99e9c11fbb235e481347f06c19
+
+pkgname = r-rtca
