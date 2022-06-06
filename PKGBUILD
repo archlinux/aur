@@ -12,7 +12,7 @@ makedepends=("python-setuptools")
 conflicts=("${pkgname}" "${pkgname}-git")
 backup=("etc/pleroma-bot/config.yml" "usr/lib/systemd/system/pleroma-bot.service")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("a0f6553b868ecd97765df49afadb1aca45ad8a262bd0dd6fea919a58a2437bd70")
+sha256sums=("a0f6553b868ecd97765df49afadb1aca45ad8a262bd0dd6fea919a58a2437bd7")
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
