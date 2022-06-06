@@ -1,0 +1,20 @@
+pkgbase = r-runjags
+	pkgdesc = Interface Utilities, Model Templates, Parallel Computing Methods and Additional Distributions for MCMC Models in JAGS
+	pkgver = 2.2.1.7
+	pkgrel = 5
+	url = https://cran.r-project.org/package=runjags
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-coda
+	depends = jags
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-modeest
+	optdepends = r-rjags
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/runjags_2.2.1-7.tar.gz
+	sha256sums = e81fdb15e59cdceda125d6ae7cf0cde93361ba80b123d51afd1ecdc993f25016
+
+pkgname = r-runjags
