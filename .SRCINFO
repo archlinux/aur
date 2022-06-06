@@ -1,0 +1,20 @@
+pkgbase = r-jaspdescriptives
+	pkgdesc = Descriptives Module for JASP
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspDescriptives
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspcommon
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-stringr
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	source = git+https://github.com/jasp-stats/jaspDescriptives.git
+	sha256sums = SKIP
+
+pkgname = r-jaspdescriptives
