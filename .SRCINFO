@@ -1,0 +1,37 @@
+pkgbase = r-rnexml
+	pkgdesc = Semantically Rich I/O for the 'NeXML' Format
+	pkgver = 2.4.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=RNeXML
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-ape
+	depends = r-dplyr
+	depends = r-httr
+	depends = r-lazyeval
+	depends = r-plyr
+	depends = r-reshape2
+	depends = r-stringi
+	depends = r-stringr
+	depends = r-tidyr
+	depends = r-uuid
+	depends = r-xml
+	depends = r-xml2
+	optdepends = r-covr
+	optdepends = r-geiger
+	optdepends = r-knitcitations
+	optdepends = r-knitr
+	optdepends = r-phytools
+	optdepends = r-rdflib
+	optdepends = r-rfigshare
+	optdepends = r-rlang
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-taxadb
+	optdepends = r-testthat
+	optdepends = r-xslt
+	source = https://cran.r-project.org/src/contrib/RNeXML_2.4.7.tar.gz
+	sha256sums = cb311d6dda33a95521a6df360a2d2f4e6d6bc6b330ac5e19ea721ca665bce6fe
+
+pkgname = r-rnexml
