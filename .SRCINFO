@@ -1,0 +1,13 @@
+pkgbase = r-lars
+	pkgdesc = Least Angle Regression, Lasso and Forward Stagewise
+	pkgver = 1.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=lars
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/lars_1.3.tar.gz
+	sha256sums = c69e6a8da6a3344c0915dd1fd4c78fec5cdf50c62cf6297476e9bb7dc10b549d
+
+pkgname = r-lars
