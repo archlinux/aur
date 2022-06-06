@@ -1,0 +1,32 @@
+pkgbase = r-webchem
+	pkgdesc = Chemical Information from the Web
+	pkgver = 1.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=webchem
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-base64enc
+	depends = r-data.tree
+	depends = r-dplyr
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-rvest
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-xml2
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-plot.matrix
+	optdepends = r-rcdk
+	optdepends = r-rmarkdown
+	optdepends = r-robotstxt
+	optdepends = r-testthat
+	optdepends = r-usethis
+	optdepends = r-vcr
+	source = https://cran.r-project.org/src/contrib/webchem_1.1.2.tar.gz
+	sha256sums = b72fee1b862b554626a79ac4dc37c62dd19ab6041393cc0328dd72f36f7ebfd1
+
+pkgname = r-webchem
