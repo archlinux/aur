@@ -1,0 +1,20 @@
+pkgbase = r-epivizrserver
+	pkgdesc = WebSocket server infrastructure for epivizr apps and packages
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/epivizrServer
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-httpuv
+	depends = r-mime
+	depends = r-r6
+	depends = r-rjson
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrServer_1.24.0.tar.gz
+	sha256sums = 137351a0606eaf837717bb8a36b39cf231bba8bf3ad4e802cbefae0b8ea04963
+
+pkgname = r-epivizrserver
