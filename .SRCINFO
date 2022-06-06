@@ -1,0 +1,16 @@
+pkgbase = r-relimp
+	pkgdesc = Relative Contribution of Effects in a Regression Model
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=relimp
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-mass
+	optdepends = r-nnet
+	optdepends = r-rcmdr
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/relimp_1.0-5.tar.gz
+	sha256sums = acac7cf72ea39916761b51c825db0ffcb2bb1640e0a04086831fb78e9e40b679
+
+pkgname = r-relimp
