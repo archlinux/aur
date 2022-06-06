@@ -1,0 +1,20 @@
+pkgbase = r-generegionscan
+	pkgdesc = GeneRegionScan
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeneRegionScan
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affxparser
+	depends = r-biobase
+	depends = r-biostrings
+	depends = r-rcolorbrewer
+	depends = r-s4vectors
+	optdepends = r-affy
+	optdepends = r-annotationdbi
+	optdepends = r-bsgenome
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneRegionScan_1.52.0.tar.gz
+	sha256sums = 8573daa6274119cc043d2156e25afb96cf396b0f218a7abe967124061595ee61
+
+pkgname = r-generegionscan
