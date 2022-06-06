@@ -1,0 +1,15 @@
+pkgbase = r-isingfit
+	pkgdesc = Fitting Ising Models Using the ELasso Method
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=IsingFit
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-glmnet
+	depends = r-qgraph
+	optdepends = r-isingsampler
+	source = https://cran.r-project.org/src/contrib/IsingFit_0.3.1.tar.gz
+	sha256sums = 8741d65b63818c927819155f13a62d21f7d7f4942b9d218e6f93ce12eeff2ddf
+
+pkgname = r-isingfit
