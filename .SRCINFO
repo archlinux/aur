@@ -1,0 +1,20 @@
+pkgbase = r-pics
+	pkgdesc = Probabilistic inference of ChIP-seq
+	pkgver = 2.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PICS
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = gsl
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rtracklayer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PICS_2.40.0.tar.gz
+	sha256sums = ee1d5960bf0cabcf5ea65c15a87f55cfcc20e4fe1e5a1db7a00df01995d71e12
+
+pkgname = r-pics
