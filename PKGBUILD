@@ -2,7 +2,7 @@
 
 name=colutius-desktop
 pkgname=colutius-desktop-git
-pkgver=r43.bb6f50c
+pkgver=r44.5e15b0b
 pkgrel=1
 pkgdesc="A cross-platform, easy-to-use and beautiful IRC client"
 arch=('x86_64')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+    mkdir build
     cd build
     cmake ../$name
     make
@@ -37,11 +38,12 @@ build() {
 
 package() {
     cd $name
+    sed -i "s/\/opt\/colutius-desktop/\/opt\/colutius-desktop-git/g" ./pkg/$name.desktop
     install -Dm644 ./resource/img/icon.svg $pkgdir/usr/share/icons/colutius.svg
     install -Dm644 ./pkg/$name.desktop $pkgdir/usr/share/applications/$name.desktop
+    install -Dm666 ./README.md $pkgdir/opt/$pkgname/logs/README.md
+    chmod 777 $pkgdir/opt/$pkgname/logs
     cd ../build
-    install -D ./$name -t $pkgdir/opt/$name
-    install -Dm644 ./libs/* $pkgdir/opt/$name/libs
-    mkdir logs
-    install -Dm666 ./logs/ $pkgdir/opt/$name/logs
+    install -D ./$name $pkgdir/opt/$pkgname/$name
+    install -D ./libs/* -t $pkgdir/opt/$pkgname/libs
 }
