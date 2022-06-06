@@ -1,0 +1,18 @@
+pkgbase = r-repmis
+	pkgdesc = Miscellaneous Tools for Reproducible Research
+	pkgver = 0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=repmis
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-digest
+	depends = r-httr
+	depends = r-plyr
+	depends = r-r.cache
+	optdepends = r-xlsx
+	source = https://cran.r-project.org/src/contrib/repmis_0.5.tar.gz
+	sha256sums = 65a5d32349baceb68e8761f3d585cb8450c5f22b2373a5005dd21341f592b57c
+
+pkgname = r-repmis
