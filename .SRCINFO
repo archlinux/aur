@@ -1,0 +1,21 @@
+pkgbase = r-ggrastr
+	pkgdesc = Rasterize Layers for 'ggplot2'
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggrastr
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cairo
+	depends = r-ggbeeswarm
+	depends = r-ggplot2
+	depends = r-png
+	depends = r-ragg
+	optdepends = r-knitr
+	optdepends = r-maps
+	optdepends = r-rmarkdown
+	optdepends = r-sf
+	source = https://cran.r-project.org/src/contrib/ggrastr_1.0.1.tar.gz
+	sha256sums = 82d6e90fa38dec85e829f71018532ed5b709a50a585455fc07cb3bae282f5d1f
+
+pkgname = r-ggrastr
