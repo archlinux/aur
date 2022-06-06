@@ -2,8 +2,8 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-ar
-pkgver=20220406
-_commit=c129ad2a857a10a429b20300f82bb90262008c17
+pkgver=20220502
+_commit=d70330618e34283444ef864bcdd82362701f390c
 pkgrel=1
 pkgdesc="Google Noto TTF variable fonts for Arabic Scripts"
 arch=(any)
@@ -15,7 +15,7 @@ source=("${_url}"/unhinted/variable-ttf/NotoKufiArabic-VF.ttf
         "${_url}"/unhinted/variable-ttf/Noto{Naskh,Sans}Arabic{,UI}-VF.ttf
         "${_url}"/LICENSE
         70-noto-ar.conf)
-sha256sums=('979c3f5deedf862d52ff355ac1f4f048356df213988d116f0fdef6cbf77d2b88'
+sha256sums=('b49761a09c4910e5bfff7667ecbecd5766b679761d988cc45a96c32fbdbd1854'
             '04b2d1843cb5f83bfddace0bdde2696ee4ccafdcdad77419279e1971b6534d9c'
             '3eda34aba1c8fb30f2a9dc8e38c8f183c28efcaf851607e746ef4960bb44cddb'
             'f37d1410cef1c92913cc119e8369f36e6e935b7e38f635774898210c0f9d12ff'
