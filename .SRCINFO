@@ -1,0 +1,18 @@
+pkgbase = r-pcan
+	pkgdesc = Phenotype Consensus ANalysis (PCAN)
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PCAN
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = r
+	depends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-reactome.db
+	optdepends = r-rmarkdown
+	optdepends = r-stringdb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PCAN_1.24.0.tar.gz
+	sha256sums = 9ddd69f3d345422c0416500a1aef84df4e95bbb7199cb1220af3cba36ae499b0
+
+pkgname = r-pcan
