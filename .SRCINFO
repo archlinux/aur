@@ -1,0 +1,18 @@
+pkgbase = r-metid
+	pkgdesc = Network-based prioritization of putative metabolite IDs
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MetID
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-chemminer
+	depends = r-devtools
+	depends = r-igraph
+	depends = r-stringr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetID_1.14.0.tar.gz
+	sha256sums = ea3e21ae8e7528ebbdd81a1e7d19719ee032d08ca1000afe5fbe64f5d3b0240a
+
+pkgname = r-metid
