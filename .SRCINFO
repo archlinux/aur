@@ -1,0 +1,18 @@
+pkgbase = r-shinyfeedback
+	pkgdesc = Display User Feedback in Shiny Apps
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinyFeedback
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-fontawesome
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-shiny
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/shinyFeedback_0.4.0.tar.gz
+	sha256sums = 21d0985f268e90891d64c34ddadfb0708d461ecf454ce2c1027372d204b6dff5
+
+pkgname = r-shinyfeedback
