@@ -1,0 +1,13 @@
+pkgbase = r-sparsepca
+	pkgdesc = Sparse Principal Component Analysis (SPCA)
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sparsepca
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rsvd
+	source = https://cran.r-project.org/src/contrib/sparsepca_0.1.2.tar.gz
+	sha256sums = 646f2244a57ae8d2e490e0913d4dc9dcf3dafeffb1104d225aaf847b46b56272
+
+pkgname = r-sparsepca
