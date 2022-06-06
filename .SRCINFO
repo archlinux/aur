@@ -1,0 +1,28 @@
+pkgbase = r-vim
+	pkgdesc = Visualization and Imputation of Missing Values
+	pkgver = 6.1.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=VIM
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-car
+	depends = r-colorspace
+	depends = r-data.table
+	depends = r-e1071
+	depends = r-laeken
+	depends = r-magrittr
+	depends = r-ranger
+	depends = r-rcpp
+	depends = r-robustbase
+	depends = r-sp
+	depends = r-vcd
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-reactable
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/VIM_6.1.1.tar.gz
+	sha256sums = 7581adca64cf20b93d5a111da83f663215b4529868b065b3463c4238bca97739
+
+pkgname = r-vim
