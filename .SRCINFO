@@ -1,13 +1,12 @@
 pkgbase = python-enocean-git
 	pkgdesc = EnOcean library for Python
 	pkgver = 0.31.r174.80a253b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kipe/enocean
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
-	depends = python-enum-compat
 	depends = python-beautifulsoup4
 	depends = python-pyserial
 	provides = python-enocean

@@ -2,13 +2,13 @@
 pkgname=python-enocean-git
 _name="enocean"
 pkgver=0.31.r174.80a253b
-pkgrel=1
+pkgrel=2
 pkgdesc="EnOcean library for Python"
 arch=("any")
 url="https://github.com/kipe/enocean"
 license=('MIT')
 groups=()
-depends=('python' 'python-enum-compat' 'python-beautifulsoup4' 'python-pyserial')
+depends=('python' 'python-beautifulsoup4' 'python-pyserial')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
