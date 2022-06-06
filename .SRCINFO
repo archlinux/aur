@@ -1,0 +1,24 @@
+pkgbase = r-ipath
+	pkgdesc = iPath pipeline for detecting perturbed pathways at individual level
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iPath
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-matrixstats
+	depends = r-mclust
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-survminer
+	depends = gcc
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iPath_1.2.0.tar.gz
+	sha256sums = 1c4ef038ce63d99aa32028b008d1720fdacd39081bb6517f6f3e17e6861c7cbe
+
+pkgname = r-ipath
