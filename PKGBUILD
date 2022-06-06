@@ -14,7 +14,7 @@ url="https://github.com/dgarage/${_pkgname}"
 license=("MIT")
 depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-sdk" "postgresql")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("a4100e9f1bb37f97a0c9d527ceffc97ced00df463f530d4804dba8e30e31e97081fb89775d16662b63a5b219abd7821e5ac32c661409bcaf365b36ce2e91f0c4")
+sha512sums=("54d54b8a3a23b32bbfc2bf4368dbbb60e11ce66dffa1079d2fff04c20c4afd08c604cd3c3bc7db6119fc1a1a230a32ab813f67b65dc8c23eb538cd79537e8b41")
 
 build()
 {
