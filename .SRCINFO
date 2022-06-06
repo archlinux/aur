@@ -1,0 +1,14 @@
+pkgbase = r-mqtl
+	pkgdesc = Metabolomic Quantitative Trait Locus Mapping
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=mQTL
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-outliers
+	depends = r-qtl
+	source = https://cran.r-project.org/src/contrib/mQTL_1.0.tar.gz
+	sha256sums = 21193861fbf2d280f2b7284ba87d68adce515e35fbe4e71821439fa8b14d1b72
+
+pkgname = r-mqtl
