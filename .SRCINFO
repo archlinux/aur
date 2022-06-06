@@ -1,0 +1,16 @@
+pkgbase = r-diffcorr
+	pkgdesc = Analyzing and Visualizing Differential Correlation Networks in Biological Data
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DiffCorr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fdrtool
+	depends = r-igraph
+	depends = r-multtest
+	depends = r-pcamethods
+	source = https://cran.r-project.org/src/contrib/DiffCorr_0.4.2.tar.gz
+	sha256sums = 39d652b207468d8813a1f0c06d9d882662639d3cac8d49d40d794985fda6fa60
+
+pkgname = r-diffcorr
