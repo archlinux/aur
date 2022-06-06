@@ -1,0 +1,21 @@
+pkgbase = r-precrec
+	pkgdesc = Calculate Accurate Precision-Recall and ROC (Receiver Operator Characteristics) Curves
+	pkgver = 0.12.9
+	pkgrel = 3
+	url = https://cran.r-project.org/package=precrec
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-rcpp
+	depends = r-withr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/precrec_0.12.9.tar.gz
+	sha256sums = 150b198464175a5fe4e1f5080279e459e6211b060f2a4072a18273d17116dfb5
+
+pkgname = r-precrec
