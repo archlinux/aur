@@ -1,0 +1,27 @@
+pkgbase = r-doby
+	pkgdesc = Groupwise Statistics, LSmeans, Linear Contrasts, Utilities
+	pkgver = 4.6.13
+	pkgrel = 1
+	url = https://cran.r-project.org/package=doBy
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-broom
+	depends = r-curry
+	depends = r-deriv
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-microbenchmark
+	depends = r-pbkrtest
+	depends = r-tibble
+	optdepends = r-geepack
+	optdepends = r-knitr
+	optdepends = r-lme4
+	optdepends = r-multcomp
+	optdepends = r-survival
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/doBy_4.6.13.tar.gz
+	sha256sums = 7fed787bcf4ff7683abac990e4a2c3edd1f121db06e741690d6d96970967ce62
+
+pkgname = r-doby
