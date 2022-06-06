@@ -1,0 +1,16 @@
+pkgbase = r-multiomicsviz
+	pkgdesc = Plot the effect of one omics data on other omics data along the chromosome
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/multiOmicsViz
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-summarizedexperiment
+	optdepends = r-biocgenerics
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiOmicsViz_1.20.0.tar.gz
+	sha256sums = 265c847461e3bfd4e6960eab9bd3bf671ba36729b80d841589ac8ca4aa187f31
+
+pkgname = r-multiomicsviz
