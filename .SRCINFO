@@ -1,0 +1,16 @@
+pkgbase = r-parody
+	pkgdesc = Parametric And Resistant Outlier DYtection
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/parody
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/parody_1.54.0.tar.gz
+	sha256sums = e7673feb9e43f84518e0e6ec0cb9d3991bf3f70907ebd763b4d12f400226273d
+
+pkgname = r-parody
