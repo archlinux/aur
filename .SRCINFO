@@ -1,0 +1,14 @@
+pkgbase = r-rebus.numbers
+	pkgdesc = Numeric Extensions for the 'rebus' Package
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rebus.numbers
+	arch = any
+	license = Unlimited
+	depends = r
+	depends = r-rebus.base
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rebus.numbers_0.0-1.tar.gz
+	sha256sums = 43da0fcf06576ef146cf9d363a087ac74fe918f0394d695822920804fed72f37
+
+pkgname = r-rebus.numbers
