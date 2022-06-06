@@ -1,0 +1,18 @@
+pkgbase = r-imp4p
+	pkgdesc = Imputation for Proteomics
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=imp4p
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-iso
+	depends = r-missforest
+	depends = r-missmda
+	depends = r-norm
+	depends = r-rcpp
+	depends = r-truncnorm
+	source = https://cran.r-project.org/src/contrib/imp4p_1.2.tar.gz
+	sha256sums = 40bb74d35305aef10e0ff8f520a0cbcdd6f4d48a3f1e6dfba949469aa55ca8d1
+
+pkgname = r-imp4p
