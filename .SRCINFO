@@ -1,0 +1,13 @@
+pkgbase = r-kpmt
+	pkgdesc = Known Population Median Test
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=kpmt
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-matrixstats
+	source = https://cran.r-project.org/src/contrib/kpmt_0.1.0.tar.gz
+	sha256sums = 6342ad02c93bfa7a764d028821bb6115bb8bc8c55b057a5860736cc0e034a295
+
+pkgname = r-kpmt
