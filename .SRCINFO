@@ -1,0 +1,27 @@
+pkgbase = r-mira
+	pkgdesc = Methylation-Based Inference of Regulatory Activity
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MIRA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-bsseq
+	depends = r-data.table
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-annotationhub
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-lola
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MIRA_1.18.0.tar.gz
+	sha256sums = a10bf6b4c801fea7ffda74dce0fd18d8fd60f968d669b06b87c8fb05939e9d9f
+
+pkgname = r-mira
