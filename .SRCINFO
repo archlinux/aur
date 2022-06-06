@@ -1,0 +1,18 @@
+pkgbase = r-mapscape
+	pkgdesc = mapscape
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mapscape
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-base64enc
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-stringr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mapscape_1.20.0.tar.gz
+	sha256sums = 848b44c0d1e504e2278b691fbc2d8dc297c4609c8194e9febcb6f6a99c2124f5
+
+pkgname = r-mapscape
