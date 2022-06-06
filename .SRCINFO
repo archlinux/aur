@@ -1,0 +1,24 @@
+pkgbase = r-trajectoryutils
+	pkgdesc = Single-Cell Trajectory Analysis Utilities
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TrajectoryUtils
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	depends = r-s4vectors
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocneighbors
+	optdepends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-delayedarray
+	optdepends = r-delayedmatrixstats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TrajectoryUtils_1.4.0.tar.gz
+	sha256sums = b28d84853b05ddbbc8e96285ca4ea958cd520d0009f21118a79f767affc80c1e
+
+pkgname = r-trajectoryutils
