@@ -1,0 +1,15 @@
+pkgbase = r-gcatest
+	pkgdesc = Genotype Conditional Association TEST
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gcatest
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-lfa
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gcatest_1.26.0.tar.gz
+	sha256sums = 2a14c226038176b632001d8529c5ac8b0ff68d930d972a76038709d83cd3d1ac
+
+pkgname = r-gcatest
