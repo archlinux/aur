@@ -1,0 +1,26 @@
+pkgbase = r-igvr
+	pkgdesc = igvR: integrative genomics viewer
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/igvR
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biocgenerics
+	depends = r-browserviz
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-httpuv
+	depends = r-motifdb
+	depends = r-rcolorbrewer
+	depends = r-rtracklayer
+	depends = r-seqlogo
+	depends = r-variantannotation
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/igvR_1.16.0.tar.gz
+	sha256sums = d7594ccdcba77fad19a46359dabf3924e22f921cfc9b0b49eb4147d600305249
+
+pkgname = r-igvr
