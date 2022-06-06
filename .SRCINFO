@@ -1,0 +1,12 @@
+pkgbase = r-memuse
+	pkgdesc = Memory Estimation Utilities
+	pkgver = 4.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=memuse
+	arch = x86_64
+	license = BSD
+	depends = r
+	source = https://cran.r-project.org/src/contrib/memuse_4.2-1.tar.gz
+	sha256sums = f5e9dbaad4efbbfe219a93f446e318a00cad5b294bfc60ca2146eca894b47cf3
+
+pkgname = r-memuse
