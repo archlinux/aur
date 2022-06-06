@@ -1,0 +1,26 @@
+pkgbase = r-mess
+	pkgdesc = Miscellaneous Esoteric Statistical Scripts
+	pkgver = 0.5.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=MESS
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-geem
+	depends = r-geepack
+	depends = r-ggformula
+	depends = r-ggplot2
+	depends = r-glmnet
+	depends = r-kinship2
+	depends = r-mvtnorm
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-knitr
+	optdepends = r-lme4
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/MESS_0.5.7.tar.gz
+	sha256sums = 48d23e83b75a33e0ca101d0ce89a0717ef82d468b989c4ef1020ffaf0fd06e30
+
+pkgname = r-mess
