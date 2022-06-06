@@ -1,0 +1,16 @@
+pkgbase = r-haplo.stats
+	pkgdesc = Statistical Analysis of Haplotypes with Traits and Covariates when Linkage Phase is Ambiguous
+	pkgver = 1.8.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=haplo.stats
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-arsenal
+	depends = r-rms
+	optdepends = r-r.rsp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/haplo.stats_1.8.9.tar.gz
+	sha256sums = a057e3739c3a76f93da7b5c53c8eb045471a13482f1d4732dfab83e1089fe95a
+
+pkgname = r-haplo.stats
