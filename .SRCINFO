@@ -1,0 +1,13 @@
+pkgbase = r-gss
+	pkgdesc = General Smoothing Splines
+	pkgver = 2.2.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gss
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gss_2.2-3.tar.gz
+	sha256sums = 24306401cf4e5869f8a690eca7e17c044ece83edd66969bd2daf5976272d244b
+
+pkgname = r-gss
