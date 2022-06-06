@@ -1,0 +1,19 @@
+pkgbase = r-tcc
+	pkgdesc = TCC: Differential expression analysis for tag count data with robust normalization strategies
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TCC
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bayseq
+	depends = r-deseq2
+	depends = r-edger
+	depends = r-roc
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	optdepends = r-snow
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCC_1.36.0.tar.gz
+	sha256sums = f1779c8a186975df0828c72ecf75c2361532b22bb8dc243cef63f1185c91ef1c
+
+pkgname = r-tcc
