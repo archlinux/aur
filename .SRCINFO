@@ -1,0 +1,12 @@
+pkgbase = r-genkern
+	pkgdesc = Functions for generating and manipulating binned kernel density estimates
+	pkgver = 1.2.60
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GenKern
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/Archive/GenKern/GenKern_1.2-60.tar.gz
+	sha256sums = cc74225fe6a092b4b98bebcc42b5ce5632dd492cc2368b4e8087fed87c6a158b
+
+pkgname = r-genkern
