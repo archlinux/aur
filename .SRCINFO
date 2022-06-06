@@ -1,0 +1,17 @@
+pkgbase = r-kinswingr
+	pkgdesc = KinSwingR: network-based kinase activity prediction
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/KinSwingR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-data.table
+	depends = r-sqldf
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KinSwingR_1.14.0.tar.gz
+	sha256sums = c0a080cd51333f590288fae7d709ee451c89f46948ca5b9a375b94fbaa9b039c
+
+pkgname = r-kinswingr
