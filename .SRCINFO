@@ -1,0 +1,24 @@
+pkgbase = r-dominoeffect
+	pkgdesc = Identification and Annotation of Protein Hotspot Residues
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DominoEffect
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biomart
+	depends = r-biostrings
+	depends = r-data.table
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-summarizedexperiment
+	depends = r-variantannotation
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DominoEffect_1.16.0.tar.gz
+	sha256sums = e94b1cf155d2cf0035c725fd63d4833211dc682ad53f82846442e3497c1dcd47
+
+pkgname = r-dominoeffect
