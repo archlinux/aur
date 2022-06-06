@@ -1,0 +1,26 @@
+pkgbase = r-sevenbridges
+	pkgdesc = Seven Bridges Platform API Client and Common Workflow Language Tool Builder in R
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sevenbridges
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-curl
+	depends = r-data.table
+	depends = r-docopt
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-objectproperties
+	depends = r-s4vectors
+	depends = r-stringr
+	depends = r-uuid
+	depends = r-yaml
+	optdepends = r-knitr
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sevenbridges_1.26.0.tar.gz
+	sha256sums = fdd84dad5f0aeb4bf25f9b99f88c3f52c0cdaf34dcb6c64635c1064b7ed4159c
+
+pkgname = r-sevenbridges
