@@ -1,0 +1,18 @@
+pkgbase = r-jaspvisualmodeling
+	pkgdesc = Visual Modeling Module for JASP
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspVisualModeling
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-flexplot
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	source = git+https://github.com/jasp-stats/jaspVisualModeling.git
+	sha256sums = SKIP
+
+pkgname = r-jaspvisualmodeling
