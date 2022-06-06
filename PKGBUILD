@@ -133,7 +133,6 @@ source=(
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     0001-AUR-pkgbuild-changes.patch
-    0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     proton-user_compat_data.patch
 )
 noextract=(
@@ -275,7 +274,6 @@ prepare() {
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Remove repos from srcdir to save space
@@ -412,5 +410,4 @@ sha256sums=('SKIP'
             'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             'e258b4111e3ec8b0720db2b789ef8dcd9e482770c70a2f4a12ad470f587b83ad'
-            '16e865bd4fe885ae2a763a5238418ec821381f0690af297710f1a6f99f451862'
             '3cebd3d1bc920bcfacb7b0dfe2bdf386bdb9c031317e7f7b45148853b618ed78')
