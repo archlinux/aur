@@ -1,0 +1,21 @@
+pkgbase = r-xina
+	pkgdesc = Multiplexes Isobaric Mass Tagged-based Kinetics Data for Network Analysis
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/XINA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-alluvial
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-igraph
+	depends = r-mclust
+	depends = r-plyr
+	depends = r-stringdb
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/XINA_1.14.0.tar.gz
+	sha256sums = 2f6c32baecee1a82572332382622076b209edfd44abbe4ed14a1737b713dee0d
+
+pkgname = r-xina
