@@ -1,0 +1,26 @@
+pkgbase = r-mscoreutils
+	pkgdesc = Core Utils for Mass Spectrometry Data
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MsCoreUtils
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-clue
+	depends = r-rcpp
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-impute
+	optdepends = r-imputelcmd
+	optdepends = r-knitr
+	optdepends = r-norm
+	optdepends = r-pcamethods
+	optdepends = r-preprocesscore
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	optdepends = r-vsn
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsCoreUtils_1.8.0.tar.gz
+	sha256sums = f0f7d14b2d8560043a06dcad0c957d4c2070922cc7caa7ea54a81fe1d90ffd1c
+
+pkgname = r-mscoreutils
