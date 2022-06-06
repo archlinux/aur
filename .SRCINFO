@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-patched-with-scrolling
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and scrolling in pages
 	pkgver = 9.26
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
