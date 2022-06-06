@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG_DIR="$HOME/.config/Ride-4.4"
+CONFIG_DIR="$HOME/.config/Ride-4.5"
 
 if [ ! -d "$CONFIG_DIR" ]; then
     mkdir "$CONFIG_DIR"
@@ -9,4 +9,4 @@ if [ ! -d "$CONFIG_DIR" ]; then
 EOF
 fi
 
-/usr/share/ride/Ride-4.4
+/usr/share/ride/Ride-4.5

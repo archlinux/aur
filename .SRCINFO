@@ -1,6 +1,6 @@
 pkgbase = ride-git
 	pkgdesc = A remote IDE for Dyalog APL
-	pkgver = v4.4.3524
+	pkgver = v4.5.3692
 	pkgrel = 1
 	url = https://github.com/Dyalog/ride
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = ride-git
 	source = git+https://github.com/dyalog/ride
 	source = ride.sh
 	sha256sums = SKIP
-	sha256sums = 560181d7b26d3c58d053ee10904bc691a4c7d9ae7f8ae29f939463b61f6b1f6a
+	sha256sums = 26953c40c0ff6434d0dbd932701811c7037f8e65e06b65065fc15780b2481bb9
 
 pkgname = ride-git
-

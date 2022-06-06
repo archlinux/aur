@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@offend.me.uk>
 pkgname=ride-git
 pkgrel=1
-pkgver=v4.4.3524
+pkgver=v4.4.3682
 pkgdesc='A remote IDE for Dyalog APL'
 url='https://github.com/Dyalog/ride'
 arch=('x86_64')
@@ -20,12 +20,12 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '560181d7b26d3c58d053ee10904bc691a4c7d9ae7f8ae29f939463b61f6b1f6a'
+    '26953c40c0ff6434d0dbd932701811c7037f8e65e06b65065fc15780b2481bb9'
 )
 
 pkgver() {
     cd ride
-    git describe --tags
+    git describe --tags | sed -e 's/-.*//'
 }
 
 build() {
@@ -38,7 +38,7 @@ package() {
     mkdir -p $pkgdir/usr/share/ride/
     mkdir -p $pkgdir/usr/bin/
 
-    cp -a $srcdir/ride/_/ride44/Ride-4.4-linux-x64/* $pkgdir/usr/share/ride/
+    cp -a $srcdir/ride/_/ride45/Ride-4.5-linux-x64/* $pkgdir/usr/share/ride/
 
     install -m755 ride.sh $pkgdir/usr/bin/ride
 }
