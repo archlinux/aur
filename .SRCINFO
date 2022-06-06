@@ -1,0 +1,21 @@
+pkgbase = r-metacyto
+	pkgdesc = MetaCyto: A package for meta-analysis of cytometry data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MetaCyto
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fastcluster
+	depends = r-flowcore
+	depends = r-flowsom
+	depends = r-ggplot2
+	depends = r-metafor
+	depends = r-tidyr
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaCyto_1.18.0.tar.gz
+	sha256sums = ca678168a2061973fc3d2d23ecac8a67fb830819bb14e151bb52c2f42334b850
+
+pkgname = r-metacyto
