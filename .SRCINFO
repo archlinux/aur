@@ -1,0 +1,14 @@
+pkgbase = r-rmsnumpress
+	pkgdesc = 'Rcpp' Bindings to Native C++ Implementation of MS Numpress
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RMSNumpress
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/RMSNumpress_1.0.1.tar.gz
+	sha256sums = b1eb54fc8ea74d52abaadb339ffc8085529b3b7c1c8344f75c02df89d46d06f9
+
+pkgname = r-rmsnumpress
