@@ -1,0 +1,24 @@
+pkgbase = r-teachingdemos
+	pkgdesc = Demonstrations for Teaching and Learning
+	pkgver = 2.12
+	pkgrel = 4
+	url = https://cran.r-project.org/package=TeachingDemos
+	arch = any
+	license = Artistic2.0
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-lattice
+	optdepends = r-logspline
+	optdepends = r-manipulate
+	optdepends = r-maptools
+	optdepends = r-mass
+	optdepends = r-png
+	optdepends = r-r2wd
+	optdepends = r-rgl
+	optdepends = r-tcltk
+	optdepends = r-tcltk2
+	optdepends = r-tkrplot
+	source = https://cran.r-project.org/src/contrib/TeachingDemos_2.12.tar.gz
+	sha256sums = 3e75405ce1affa406d6df85e06f96381412bc7a2810b25d8c81bfe64c4698644
+
+pkgname = r-teachingdemos
