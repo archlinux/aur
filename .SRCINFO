@@ -1,0 +1,19 @@
+pkgbase = r-fgarch
+	pkgdesc = Rmetrics - Autoregressive Conditional Heteroskedastic Modelling
+	pkgver = 3042.83.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fGarch
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-fastica
+	depends = r-fbasics
+	depends = r-timedate
+	depends = r-timeseries
+	optdepends = r-runit
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/fGarch_3042.83.2.tar.gz
+	sha256sums = a39465d89650799693af457e65ff728c28e9b9375301a28f5dac80b70e708619
+
+pkgname = r-fgarch
