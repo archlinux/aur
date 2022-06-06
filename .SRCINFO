@@ -1,0 +1,15 @@
+pkgbase = r-roi
+	pkgdesc = R Optimization Infrastructure
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ROI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-registry
+	depends = r-slam
+	optdepends = r-numderiv
+	source = https://cran.r-project.org/src/contrib/ROI_1.0-0.tar.gz
+	sha256sums = b0d87fb4ed2137d982734f3c5cdc0305aabe6e80f95de29655d02a9e82a0a341
+
+pkgname = r-roi
