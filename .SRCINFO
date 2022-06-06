@@ -1,0 +1,13 @@
+pkgbase = r-mirbase.db
+	pkgdesc = miRBase: the microRNA database
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/mirbase.db
+	arch = any
+	license = custom
+	depends = r
+	depends = r-annotationdbi
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/mirbase.db_1.2.0.tar.gz
+	sha256sums = b335df59433f2ad0e61938d3563e0106e48b6d52386cb1950930e0a36280ea50
+
+pkgname = r-mirbase.db
