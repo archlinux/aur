@@ -1,0 +1,15 @@
+pkgbase = r-splitstackshape
+	pkgdesc = Stack and Reshape Datasets After Splitting Concatenated Values
+	pkgver = 1.4.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=splitstackshape
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/splitstackshape_1.4.8.tar.gz
+	sha256sums = 656032c3f1e3dd5b8a3ee19ffcae617e07104c0e342fc3da4d863637a770fe56
+
+pkgname = r-splitstackshape
