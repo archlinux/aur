@@ -8,10 +8,10 @@
 _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
-_pkgmajor=2.37
-_realver=${_pkgmajor}.2
+_pkgmajor=2.38
+_realver=${_pkgmajor}
 pkgver=${_realver/-/}
-pkgrel=1.1
+pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -30,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${_base
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9'
+sha256sums=('6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64'
             'SKIP'
-            '41ce470339c84c7c6ab32ba112437e96fd3ff71520fbd555d9fabed951670c2e'
+            'b1f2bf1145354664fac932b313db9599f55de5ff25c5c6f3c003c76da78ae39c'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
@@ -61,7 +61,6 @@ build() {
     --localstatedir=/var \
     --enable-usrdir-path \
     --enable-fs-paths-default=/usr/bin:/usr/local/bin \
-    --enable-raw \
     --enable-vipw \
     --enable-newgrp \
     --enable-chfn-chsh \
@@ -74,11 +73,11 @@ build() {
 
 package_util-linux-aes() {
   conflicts=('rfkill' 'hardlink' "${_basename}")
-  provides=('rfkill' 'hardlink' "${_basename}=2.37")
+  provides=('rfkill' 'hardlink' "${_basename}=2.38")
   replaces=('rfkill' 'hardlink')
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
            'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
-           'libmagic.so' 'libncursesw.so' 'libreadline.so')
+           'libmagic.so' 'libncursesw.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
   backup=(etc/pam.d/chfn
@@ -135,7 +134,7 @@ package_util-linux-aes() {
 
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.37")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.38")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
 
