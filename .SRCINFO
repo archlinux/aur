@@ -20,6 +20,7 @@ pkgbase = nteract
 	optdepends = python2-ipykernel: support for Python 2
 	optdepends = r: support for R (requires the "IRkernel" package)
 	optdepends = sagemath-jupyter: support for SageMath
+	conflicts = nteract-bin
 	source = v0.28.0.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/v0.28.0.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE
 	sha256sums = 5132a05ca269aa3b1b0a96cbe4a7b9956454069029173f6f1cb3d73a59a83073

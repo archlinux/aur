@@ -21,6 +21,7 @@ source=(v${pkgver}.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/
 				'LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE')
 sha256sums=('5132a05ca269aa3b1b0a96cbe4a7b9956454069029173f6f1cb3d73a59a83073'
 						'866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
+conflicts=('nteract-bin')
 
 prepare() {
 	cd nteract-${pkgver}
