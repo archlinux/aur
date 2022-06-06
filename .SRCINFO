@@ -1,0 +1,21 @@
+pkgbase = r-emdbook
+	pkgdesc = Support Functions and Data for "Ecological Models and Data"
+	pkgver = 1.3.12
+	pkgrel = 4
+	url = https://cran.r-project.org/package=emdbook
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bbmle
+	depends = r-coda
+	depends = r-plyr
+	optdepends = r-ellipse
+	optdepends = r-numderiv
+	optdepends = r-r2jags
+	optdepends = r-rgl
+	optdepends = r-suppdists
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/emdbook_1.3.12.tar.gz
+	sha256sums = 0646caf9e15aaa61ff917a4b5fdf82c06ac17ef221a61dec3fbb554e7bff4353
+
+pkgname = r-emdbook
