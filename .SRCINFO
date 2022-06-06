@@ -1,0 +1,21 @@
+pkgbase = r-dmrcaller
+	pkgdesc = Differentially Methylated Regions caller
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DMRcaller
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-betareg
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rcpp
+	depends = r-rcpproll
+	depends = r-s4vectors
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMRcaller_1.28.0.tar.gz
+	sha256sums = 362b23674874b7d9b5dcc18ded37731386e4949594da63d337baca2de8e02d8b
+
+pkgname = r-dmrcaller
