@@ -1,0 +1,16 @@
+pkgbase = r-msmstests
+	pkgdesc = LC-MS/MS Differential Expression Tests
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/msmsTests
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-edger
+	depends = r-msmseda
+	depends = r-msnbase
+	depends = r-qvalue
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msmsTests_1.34.0.tar.gz
+	sha256sums = b1837cfa35400bef42d3e4465a5ff7d3a9a9b94bbdfa3afb2022579e2ef8edf3
+
+pkgname = r-msmstests
