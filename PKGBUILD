@@ -1,0 +1,40 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=doRNG
+_pkgver=1.8.2
+pkgname=r-${_pkgname,,}
+pkgver=1.8.2
+pkgrel=4
+pkgdesc="Generic Reproducible Parallel Backend for 'foreach' Loops"
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-foreach
+  r-iterators
+  r-rngtools
+)
+optdepends=(
+  r-bibtex
+  r-devtools
+  r-dompi
+  r-doparallel
+  r-doredis
+  r-knitr
+  r-pkgmaker
+  r-rbenchmark
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('33e9d45b91b0fde2e35e911b9758d0c376049121a98a1e4c73a1edfcff11cec9')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
