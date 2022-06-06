@@ -2,7 +2,7 @@
 # Maintainer: Daniel Quinn <scratch+archlinuxaur at danielquinn dot org>
 
 pkgname="python-vosk-bin"
-pkgver=0.3.32
+pkgver=0.3.42
 pkgrel=1
 pkgdesc="Offline open source speech recognition API based on Kaldi and Vosk"
 arch=("any")
@@ -13,13 +13,17 @@ depends=("python"
 "python-pycparser")
 makedepends=("python-setuptools"
 "python-pip")
-provides=("python-vosk")
-source_x86_64=("https://github.com/alphacep/vosk-api/releases/download/v${pkgver}/vosk-${pkgver}-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl")
-source_armv7l=("https://github.com/alphacep/vosk-api/releases/download/v${pkgver}/vosk-${pkgver}-py3-none-linux_armv7l.whl")
+provides=("python-vosk=${pkgver}")
+conflicts=("python-vosk")
+
 source_aarch64=("https://github.com/alphacep/vosk-api/releases/download/v${pkgver}/vosk-${pkgver}-py3-none-linux_aarch64.whl")
-sha512sums_x86_64=("25dc2fd4ce52754612f3b40fd3a60509460c1df5e958026b2c57e5d81d847d823e5c01f43332427933f46ea8227808a321f7f224c00c00deda989f4c7b88745b")
-sha512sums_armv7l=("154bb90aece18a7fa0d0a6277c111b21ebef03190b6f71a07a29f70bd24a9230f9bddb36f6bdb61e41e3832c62ebbfeccc4f1d8419ad3320559ba76aaf096e60")
-sha512sums_aarch64=("2e23db08bf47a5c05ec887e4fce295c682a87afc15b586459f3143de648d2d7d3affe568ac30304c19d4b117ca691e287e5ab16bb8cd4d27296365dbd7ab5f49")
+source_armv7l=("https://github.com/alphacep/vosk-api/releases/download/v${pkgver}/vosk-${pkgver}-py3-none-linux_armv7l.whl")
+source_x86_64=("https://github.com/alphacep/vosk-api/releases/download/v${pkgver}/vosk-${pkgver}-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl")
+
+sha512sums_aarch64=("19300c50becaad1e68dd1ec7778b200f0e2a8288385a4cf43a69a7a8e3ada5f61c022f3ede79c6bb0876f009f410965b646cc493cf7ee501d7b0735e546ba3f1")
+sha512sums_armv7l=("da157084cadc7132a2ca42a481ae831a9949fc36858f0d798840a712aef7d1f46252c61e5ae9680c57769174c36965d029bf632ec108c4639caa8d516bdf5c8c")
+sha512sums_x86_64=("1649742ead66c2fdc9fa4fb23e11c79e33d76bbf7e33b92c9484a2f20fbabc73684bace83898f233d463a010e4ebdb327e50160f219b09040161a10f4e883ae2")
+
 noextract=("${source_x86_64[@]##*/}"
 "${source_aarch64[@]##*/}"
 "${source_armv7l[@]##*/}")
