@@ -1,0 +1,14 @@
+pkgbase = r-heatmap3
+	pkgdesc = An Improved Heatmap Package
+	pkgver = 1.1.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=heatmap3
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fastcluster
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/heatmap3_1.1.9.tar.gz
+	sha256sums = 594c33947b2be2cc8a592075f41a0df2398c892add7d63a15c613a5eeb8fdb69
+
+pkgname = r-heatmap3
