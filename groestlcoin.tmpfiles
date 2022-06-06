@@ -1,0 +1,2 @@
+d /var/lib/groestlcoind 0770 groestlcoin groestlcoin - -
+d /etc/groestlcoin     0770 groestlcoin groestlcoin - -
