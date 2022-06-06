@@ -1,0 +1,19 @@
+pkgbase = r-rcppnumerical
+	pkgdesc = 'Rcpp' Integration for Numerical Computing Libraries
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RcppNumerical
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppeigen
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	optdepends = r-prettydoc
+	optdepends = r-rcppeigen
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/RcppNumerical_0.4-0.tar.gz
+	sha256sums = 33e659b65b1ec05034d4f3c3fa204df396e476e49dcd3e43b650c66a287622a9
+
+pkgname = r-rcppnumerical
