@@ -1,6 +1,6 @@
 # Maintainer Stefano Lovato <stefano.lovato.1@phd.unipd.it>
 pkgname=sbbhost
-pkgver=0.1.r.
+pkgver=0.1.r1.92322ac
 pkgrel=1
 pkgdesc="Application for host communication with the self-balancing-bike microcontroller."
 arch=('any')

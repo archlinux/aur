@@ -1,6 +1,6 @@
 pkgbase = sbbhost
 	pkgdesc = Application for host communication with the self-balancing-bike microcontroller.
-	pkgver = 0.1.r.
+	pkgver = 0.1.r1.92322ac
 	pkgrel = 1
 	url = https://github.com/stefphd/SBBHost
 	arch = any
