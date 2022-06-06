@@ -1,0 +1,22 @@
+pkgbase = r-strucchange
+	pkgdesc = Testing, Monitoring, and Dating Structural Changes
+	pkgver = 1.5.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=strucchange
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-sandwich
+	depends = r-zoo
+	optdepends = r-car
+	optdepends = r-dynlm
+	optdepends = r-e1071
+	optdepends = r-foreach
+	optdepends = r-lmtest
+	optdepends = r-mvtnorm
+	optdepends = r-stats4
+	optdepends = r-tseries
+	source = https://cran.r-project.org/src/contrib/strucchange_1.5-2.tar.gz
+	sha256sums = 7d247c5ae6f5a63c80e478799d009c57fb8803943aa4286d05f71235cc1002f8
+
+pkgname = r-strucchange
