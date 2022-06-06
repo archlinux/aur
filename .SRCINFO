@@ -1,0 +1,15 @@
+pkgbase = r-shinydashboard
+	pkgdesc = Create Dashboards with 'Shiny'
+	pkgver = 0.7.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinydashboard
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-htmltools
+	depends = r-promises
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/shinydashboard_0.7.2.tar.gz
+	sha256sums = a56ee48572649830cd8d82f1caa2099411461e19e19223cbad36a375299f3843
+
+pkgname = r-shinydashboard
