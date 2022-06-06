@@ -1,0 +1,21 @@
+pkgbase = r-snakecase
+	pkgdesc = Convert Strings into any Case
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=snakecase
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-stringi
+	depends = r-stringr
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-purrrlyr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/snakecase_0.11.0.tar.gz
+	sha256sums = 998420a58391ac85785e60bcdf6fd6927c82758ad2859a9a73a0e57299e8c1cf
+
+pkgname = r-snakecase
