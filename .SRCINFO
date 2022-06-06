@@ -1,0 +1,16 @@
+pkgbase = r-gmedian
+	pkgdesc = Geometric Median, k-Medians Clustering and Robust Median PCA
+	pkgver = 1.2.6
+	pkgrel = 5
+	url = https://cran.r-project.org/package=Gmedian
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-robustbase
+	depends = r-rspectra
+	source = https://cran.r-project.org/src/contrib/Gmedian_1.2.6.tar.gz
+	sha256sums = ad48721ca190dc4bdf3af693c298843c605764b054ca03365d05d394930366cd
+
+pkgname = r-gmedian
