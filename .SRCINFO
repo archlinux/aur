@@ -1,0 +1,24 @@
+pkgbase = r-dmchmm
+	pkgdesc = Differentially Methylated CpG using Hidden Markov Model
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DMCHMM
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-calibrate
+	depends = r-fdrtool
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-multcomp
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMCHMM_1.18.0.tar.gz
+	sha256sums = b21e154c731b394854d77a82251452d0bab5054006be93c3e3ec4d864c39cb90
+
+pkgname = r-dmchmm
