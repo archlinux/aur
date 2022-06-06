@@ -1,0 +1,23 @@
+pkgbase = r-survcomp
+	pkgdesc = Performance Assessment and Comparison for Survival Analysis
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/survcomp
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-bootstrap
+	depends = r-ipred
+	depends = r-prodlim
+	depends = r-rmeta
+	depends = r-suppdists
+	depends = r-survivalroc
+	optdepends = r-biobase
+	optdepends = r-biocmanager
+	optdepends = r-clinfun
+	optdepends = r-hmisc
+	optdepends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/survcomp_1.46.0.tar.gz
+	sha256sums = f10797d09f8a96ed1ecc700341c802d3ded183be74ce27b4b3bf7205b6d169ac
+
+pkgname = r-survcomp
