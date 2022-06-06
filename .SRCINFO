@@ -1,0 +1,13 @@
+pkgbase = r-phyclust
+	pkgdesc = Phylogenetic Clustering (Phyloclustering)
+	pkgver = 0.1.30
+	pkgrel = 4
+	url = https://cran.r-project.org/package=phyclust
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ape
+	source = https://cran.r-project.org/src/contrib/phyclust_0.1-30.tar.gz
+	sha256sums = f7645bfaecfe7a19d213a7d5c42c750f0ccbdd85549dae6e8ba9d2ba4bc2c93b
+
+pkgname = r-phyclust
