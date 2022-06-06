@@ -1,0 +1,23 @@
+pkgbase = r-ggtext
+	pkgdesc = Improved Text Rendering Support for 'ggplot2'
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggtext
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridtext
+	depends = r-rlang
+	depends = r-scales
+	optdepends = r-cowplot
+	optdepends = r-dplyr
+	optdepends = r-glue
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggtext_0.1.1.tar.gz
+	sha256sums = 4b281497fbefa2ae65e8dc22b8f498e9f409b06d264fe69daf6723ed196d2958
+
+pkgname = r-ggtext
