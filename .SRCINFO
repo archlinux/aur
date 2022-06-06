@@ -1,0 +1,24 @@
+pkgbase = r-semplot
+	pkgdesc = Path Diagrams and Visual Analysis of Various SEM Packages' Output
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=semPlot
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-corpcor
+	depends = r-igraph
+	depends = r-lavaan
+	depends = r-lisreltor
+	depends = r-openmx
+	depends = r-plyr
+	depends = r-qgraph
+	depends = r-rockchalk
+	depends = r-sem
+	depends = r-xml
+	optdepends = r-mplusautomation
+	source = https://cran.r-project.org/src/contrib/semPlot_1.1.5.tar.gz
+	sha256sums = 6cd39e6f80cf9e5c5045e7f8f2e888ea1b0355e084909b1b1c1ddac4b04ffb34
+
+pkgname = r-semplot
