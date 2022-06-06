@@ -1,0 +1,16 @@
+pkgbase = r-rqubic
+	pkgdesc = Qualitative biclustering algorithm for expression data analysis in R
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rqubic
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biclust
+	depends = r-biobase
+	depends = r-biocgenerics
+	optdepends = r-rcolorbrewer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rqubic_1.42.0.tar.gz
+	sha256sums = c36826b17a0c9e16568fa167c097a64f06650faf278089869c8f12d0fbe11581
+
+pkgname = r-rqubic
