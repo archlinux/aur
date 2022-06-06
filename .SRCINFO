@@ -1,0 +1,16 @@
+pkgbase = r-tagcloud
+	pkgdesc = Tag Clouds
+	pkgver = 0.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tagcloud
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcolorbrewer
+	depends = r-rcpp
+	optdepends = r-extrafont
+	optdepends = r-knitr
+	source = https://cran.r-project.org/src/contrib/tagcloud_0.6.tar.gz
+	sha256sums = 94db4eb51471d3ffbc91704337645e5b418c613fad5d9369a7f2229b0480f913
+
+pkgname = r-tagcloud
