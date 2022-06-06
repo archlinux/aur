@@ -1,0 +1,16 @@
+pkgbase = r-stroma4
+	pkgdesc = Assign Properties to TNBC Patients
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/STROMA4
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocparallel
+	depends = r-matrixstats
+	optdepends = r-breastcancermainz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STROMA4_1.20.0.tar.gz
+	sha256sums = 32b215f7b7cad3f0ab72e9e0533afe7cb609e027e3c2fd8e7a75a679953d1f93
+
+pkgname = r-stroma4
