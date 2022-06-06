@@ -1,0 +1,23 @@
+pkgbase = r-sqldf
+	pkgdesc = Manipulate R Data Frames Using SQL
+	pkgver = 0.4.11
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sqldf
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-chron
+	depends = r-dbi
+	depends = r-gsubfn
+	depends = r-proto
+	depends = r-rsqlite
+	optdepends = r-mass
+	optdepends = r-rh2
+	optdepends = r-rmysql
+	optdepends = r-rpostgresql
+	optdepends = r-svunit
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/sqldf_0.4-11.tar.gz
+	sha256sums = cee979d4e8c67b4924655365d925a8d67104e62adf71741f645cdc5196de2260
+
+pkgname = r-sqldf
