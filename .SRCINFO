@@ -1,0 +1,25 @@
+pkgbase = r-tnbc.cms
+	pkgdesc = TNBC.CMS: Prediction of TNBC Consensus Molecular Subtypes
+	pkgver = 1.12.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/TNBC.CMS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-e1071
+	depends = r-forestplot
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-ggpubr
+	depends = r-gsva
+	depends = r-pheatmap
+	depends = r-pracma
+	depends = r-quadprog
+	depends = r-r.utils
+	depends = r-rcolorbrewer
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TNBC.CMS_1.12.0.tar.gz
+	sha256sums = edc7fb0197010f52df303ffbbfc6b11c58dd5c6233af740744c9b2ebc61d848b
+
+pkgname = r-tnbc.cms
