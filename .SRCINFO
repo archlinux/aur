@@ -1,0 +1,15 @@
+pkgbase = r-tweedie
+	pkgdesc = Evaluation of Tweedie Exponential Family Models
+	pkgver = 2.3.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tweedie
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-stabledist
+	optdepends = r-statmod
+	source = https://cran.r-project.org/src/contrib/tweedie_2.3.3.tar.gz
+	sha256sums = a032cad512dac37a8619e6f66cb513eb82a88a5a2ffbe91e92c2d44d1756d0d9
+
+pkgname = r-tweedie
