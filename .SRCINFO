@@ -1,0 +1,17 @@
+pkgbase = r-vegamc
+	pkgdesc = VegaMC: A Package Implementing a Variational Piecewise Smooth Model for Identification of Driver Chromosomal Imbalances in Cancer
+	pkgver = 3.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/VegaMC
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = r
+	depends = r-biobase
+	depends = r-biomart
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VegaMC_3.34.0.tar.gz
+	source = fix_globals.patch
+	sha256sums = 53b37fa6c189ff844bbade0ebcf8675d3035042737fdfe40c1fe2be23f515a9c
+	sha256sums = a45787150bdf297482a8623da5ab7257adb2828108d797a688abd73e87490233
+
+pkgname = r-vegamc

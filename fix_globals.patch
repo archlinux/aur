@@ -1,0 +1,51 @@
+--- src/run_vegaMC.c	2021-10-26 21:59:00.000000000 +0300
++++ src/run_vegaMC.c	2022-01-24 15:29:50.464668427 +0300
+@@ -11,13 +11,13 @@
+ 
+ 
+ #define ROUND_CNST 1000
+ 
+ /* Input parameters */
+-char *dataset;
+-char *output_file_name;
+-float beta;
++static char *dataset;
++static char *output_file_name;
++static float beta;
+ int min_region_probe_size;
+ int min_region_bp_size;
+ float loss_threshold;
+ float gain_threshold;
+ int baf[1];
+--- src/sort_data.c	2021-10-26 21:59:00.000000000 +0300
++++ src/sort_data.c	2022-01-24 15:29:55.690685035 +0300
+@@ -13,12 +13,12 @@
+ #define ROUND_CNST 1000
+ 
+ /*
+  * Input parameters 
+  */
+-char *dataset;
+-char *output_file_name;
++static char *dataset;
++static char *output_file_name;
+ 
+ /*
+  * Probes have to be sorted 
+  */
+ struct probe **probes;
+--- src/vegaMC.c	2021-10-26 21:59:00.000000000 +0300
++++ src/vegaMC.c	2022-01-24 15:30:01.098702101 +0300
+@@ -58,11 +58,11 @@
+ 
+ /* number of samples*/
+ int num_of_samples;
+ 
+ /* constant used in the stop condition*/
+-float beta;
++static float beta;
+ 
+ char messages[MSGSIZE];
+ 
+ typedef float priority;
+ 
