@@ -1,0 +1,17 @@
+pkgbase = r-pcxn
+	pkgdesc = Exploring, analyzing and visualizing functions utilizing the pcxnData package
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pcxn
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-pcxndata
+	depends = r-pheatmap
+	optdepends = r-annotate
+	optdepends = r-igraph
+	optdepends = r-org.hs.eg.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pcxn_2.18.0.tar.gz
+	sha256sums = 88fb13ddd6834b6523973fb96370ef31a109d5e4bf2e6f18b467e7f52c5a8323
+
+pkgname = r-pcxn
