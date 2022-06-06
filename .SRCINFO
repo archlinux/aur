@@ -1,0 +1,29 @@
+pkgbase = r-paramhelpers
+	pkgdesc = Helpers for Parameters in Black-Box Optimization, Tuning and Machine Learning
+	pkgver = 1.14
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ParamHelpers
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-backports
+	depends = r-bbmisc
+	depends = r-checkmate
+	depends = r-fastmatch
+	optdepends = r-akima
+	optdepends = r-covr
+	optdepends = r-eaf
+	optdepends = r-emoa
+	optdepends = r-ggally
+	optdepends = r-ggplot2
+	optdepends = r-grid
+	optdepends = r-gridextra
+	optdepends = r-irace
+	optdepends = r-lhs
+	optdepends = r-plyr
+	optdepends = r-reshape2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ParamHelpers_1.14.tar.gz
+	sha256sums = b17652d0a69de3241a69f20be4ad1bfe02c413328a17f3c1ac7b73886a6ba2eb
+
+pkgname = r-paramhelpers
