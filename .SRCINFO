@@ -1,0 +1,14 @@
+pkgbase = r-unifiedwmwqpcr
+	pkgdesc = Unified Wilcoxon-Mann Whitney Test for testing differential expression in qPCR data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/unifiedWMWqPCR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-htqpcr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/unifiedWMWqPCR_1.32.0.tar.gz
+	sha256sums = 9013050e114abc0e579bccb677afef6fb9c0b1dbc57d42102b602fa348d26eea
+
+pkgname = r-unifiedwmwqpcr
