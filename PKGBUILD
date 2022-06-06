@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
 pkgver=515.48.07
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
