@@ -1,0 +1,20 @@
+pkgbase = r-repviz
+	pkgdesc = Replicate oriented Visualization of a genomic region
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RepViz
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rsamtools
+	depends = r-s4vectors
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RepViz_1.12.0.tar.gz
+	sha256sums = 983fba6cc823efaa31eb14f2f57aeb7482c4ab65e4449d7f240385994f5ec0f8
+
+pkgname = r-repviz
