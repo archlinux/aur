@@ -1,0 +1,13 @@
+pkgbase = r-praznik
+	pkgdesc = Tools for Information-Based Feature Selection and Scoring
+	pkgver = 11.0.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=praznik
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/praznik_11.0.0.tar.gz
+	sha256sums = c6d6ff8ad0c37dbc25d42dcf4c35dd0fdd6bff445176a71e7346e55974b165a1
+
+pkgname = r-praznik
