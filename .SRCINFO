@@ -1,0 +1,17 @@
+pkgbase = r-phylogram
+	pkgdesc = Dendrograms for Evolutionary Analysis
+	pkgver = 2.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=phylogram
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ape
+	optdepends = r-dendextend
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/phylogram_2.1.0.tar.gz
+	sha256sums = 5bd0de13106ad0ba07f84b25d71e22b6accaea98126014d8bfa50296e32d90dc
+
+pkgname = r-phylogram
