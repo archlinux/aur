@@ -1,0 +1,23 @@
+pkgbase = r-ggmcmc
+	pkgdesc = Tools for Analyzing MCMC Simulations from Bayesian Inference
+	pkgver = 1.5.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggmcmc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggally
+	depends = r-ggplot2
+	depends = r-tidyr
+	optdepends = r-cairo
+	optdepends = r-coda
+	optdepends = r-extrafont
+	optdepends = r-ggthemes
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/ggmcmc_1.5.1.1.tar.gz
+	sha256sums = 41d883fe5341c4aa3f5653f10178cc12b164bbae702a827433105518b150def8
+
+pkgname = r-ggmcmc
