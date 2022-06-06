@@ -1,0 +1,12 @@
+pkgbase = r-kmsurv
+	pkgdesc = Data sets from Klein and Moeschberger (1997), Survival Analysis
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=KMsurv
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/KMsurv_0.1-5.tar.gz
+	sha256sums = 55627bc301245e0a4d6be04565fbaabd9cc360e2e5e4bc1e38341354e6de2542
+
+pkgname = r-kmsurv
