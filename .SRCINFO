@@ -1,0 +1,13 @@
+pkgbase = r-optextras
+	pkgdesc = Tools to Support Optimization Possibly with Bounds and Masks
+	pkgver = 2019.12.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=optextras
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-numderiv
+	source = https://cran.r-project.org/src/contrib/optextras_2019-12.4.tar.gz
+	sha256sums = 59006383860826be502ea8757e39ed94338f04d246c4fc398a088e004d8b13eb
+
+pkgname = r-optextras
