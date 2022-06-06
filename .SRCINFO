@@ -1,0 +1,14 @@
+pkgbase = r-rsvd
+	pkgdesc = Randomized Singular Value Decomposition
+	pkgver = 1.0.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rsvd
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-ggplot2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rsvd_1.0.5.tar.gz
+	sha256sums = e40686b869acd4f71fdb1e8e7a6c64cd6792fc9d52a78f9e559a7176ab84e21e
+
+pkgname = r-rsvd
