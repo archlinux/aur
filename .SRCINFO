@@ -1,0 +1,18 @@
+pkgbase = r-onewaytests
+	pkgdesc = One-Way Tests in Independent Groups Designs
+	pkgver = 2.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=onewaytests
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-car
+	depends = r-ggplot2
+	depends = r-moments
+	depends = r-nortest
+	optdepends = r-aid
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/onewaytests_2.6.tar.gz
+	sha256sums = 39a2e7dc107d9b7848d7b9cc27718c56840a254c02505263d4fba65e4c8e0217
+
+pkgname = r-onewaytests
