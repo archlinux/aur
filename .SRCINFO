@@ -1,0 +1,14 @@
+pkgbase = r-lexicon
+	pkgdesc = Lexicons for Text Analysis
+	pkgver = 1.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=lexicon
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-syuzhet
+	source = https://cran.r-project.org/src/contrib/lexicon_1.2.1.tar.gz
+	sha256sums = cc0023d16309fc24e0a3a1f01887b19d05f2eb3a7ee9102415595d0335d3f974
+
+pkgname = r-lexicon

@@ -1,0 +1,28 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=lexicon
+_pkgver=1.2.1
+pkgname=r-${_pkgname,,}
+pkgver=1.2.1
+pkgrel=4
+pkgdesc='Lexicons for Text Analysis'
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-data.table
+  r-syuzhet
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('cc0023d16309fc24e0a3a1f01887b19d05f2eb3a7ee9102415595d0335d3f974')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
