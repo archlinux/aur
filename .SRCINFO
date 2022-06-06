@@ -1,0 +1,15 @@
+pkgbase = r-irdisplay
+	pkgdesc = 'Jupyter' Display Machinery
+	pkgver = 1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=IRdisplay
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-repr
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/IRdisplay_1.1.tar.gz
+	sha256sums = 83eb030ff91f546cb647899f8aa3f5dc9fe163a89a981696447ea49cc98e8d2b
+
+pkgname = r-irdisplay
