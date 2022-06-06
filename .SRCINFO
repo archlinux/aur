@@ -1,0 +1,13 @@
+pkgbase = r-sagenhaft
+	pkgdesc = Collection of functions for reading and comparing SAGE libraries
+	pkgver = 1.66.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sagenhaft
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-sparsem
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sagenhaft_1.66.0.tar.gz
+	sha256sums = 5e7e179fb211cb8442f3556adfeea79f03cfaedf98383cb77a9db8361093eb33
+
+pkgname = r-sagenhaft
