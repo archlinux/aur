@@ -1,0 +1,18 @@
+pkgbase = r-philentropy
+	pkgdesc = Similarity and Distance Quantification Between Probability Functions
+	pkgver = 0.6.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=philentropy
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-rcpp
+	depends = r-poorman
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/philentropy_0.6.0.tar.gz
+	sha256sums = 138acf2aedab17c9d367def378e35c8aba80d9e786284b2866955cea1c24eeb6
+
+pkgname = r-philentropy
