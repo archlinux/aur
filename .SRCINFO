@@ -1,0 +1,26 @@
+pkgbase = r-genestructuretools
+	pkgdesc = Tools for spliced gene structure manipulation and analysis
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeneStructureTools
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-biostrings
+	depends = r-bsgenome.mmusculus.ucsc.mm10
+	depends = r-data.table
+	depends = r-genomicranges
+	depends = r-gviz
+	depends = r-iranges
+	depends = r-plyr
+	depends = r-rtracklayer
+	depends = r-s4vectors
+	depends = r-stringdist
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneStructureTools_1.16.0.tar.gz
+	sha256sums = 5bf2d639ebddabb739b8757acbb56890a86fdc5a6185df0994d4a408aea62eb2
+
+pkgname = r-genestructuretools
