@@ -1,0 +1,18 @@
+pkgbase = r-genomeintervals
+	pkgdesc = Operations on genomic intervals
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/genomeIntervals
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-intervals
+	depends = r-iranges
+	depends = r-s4vectors
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomeIntervals_1.52.0.tar.gz
+	sha256sums = b7add31f7a6859d555fa47016fe08550a9a0cde1a71cb4133b2ad844db0a51ac
+
+pkgname = r-genomeintervals
