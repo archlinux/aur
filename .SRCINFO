@@ -1,0 +1,13 @@
+pkgbase = r-suppdists
+	pkgdesc = Supplementary Distributions
+	pkgver = 1.1.9.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=SuppDists
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-rcppziggurat
+	source = https://cran.r-project.org/src/contrib/SuppDists_1.1-9.7.tar.gz
+	sha256sums = 6b5527e2635c0ff762eb7af8154704c85e66d7f79a9524089a5c98dfa94dab08
+
+pkgname = r-suppdists
