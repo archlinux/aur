@@ -1,0 +1,15 @@
+pkgbase = r-xml2r
+	pkgdesc = EasieR XML data collection
+	pkgver = 0.0.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=XML2R
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-plyr
+	depends = r-rcurl
+	depends = r-xml
+	source = https://cran.r-project.org/src/contrib/XML2R_0.0.6.tar.gz
+	sha256sums = 65767bde43d276698e99ab8e6e0941fe1f4a5b1df3ef60c76467890c4a82ee2b
+
+pkgname = r-xml2r
