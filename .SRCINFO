@@ -1,0 +1,17 @@
+pkgbase = r-profilescoredist
+	pkgdesc = Profile score distributions
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/profileScoreDist
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-biocgenerics
+	depends = r-rcpp
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-motifdb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/profileScoreDist_1.24.0.tar.gz
+	sha256sums = e6a1b6404886272853e0d1940579aab0ca0877488633df59a29ba99f00cf7b12
+
+pkgname = r-profilescoredist
