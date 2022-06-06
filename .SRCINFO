@@ -1,0 +1,16 @@
+pkgbase = r-heatplus
+	pkgdesc = Heatmaps with row and/or column covariates and colored clusters
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Heatplus
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rcolorbrewer
+	optdepends = r-biobase
+	optdepends = r-hgu95av2.db
+	optdepends = r-limma
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Heatplus_3.4.0.tar.gz
+	sha256sums = 61c12945ed1d37cfe24892d3c555a5145ca4ec5507953bd2b511e7aa7dff352c
+
+pkgname = r-heatplus
