@@ -1,0 +1,17 @@
+pkgbase = r-plogo2
+	pkgdesc = Plot Gene Ontology and KEGG pathway Annotation and Abundance
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PloGO2
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-go.db
+	depends = r-gostats
+	depends = r-httr
+	depends = r-openxlsx
+	depends = r-xtable
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PloGO2_1.8.0.tar.gz
+	sha256sums = baa0e01b069d5e66965a156bee6d3f6adf8cb0957f3cb9b0442dfbd0458d9fbb
+
+pkgname = r-plogo2
