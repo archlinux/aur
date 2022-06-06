@@ -1,0 +1,19 @@
+pkgbase = r-mafdb.exac.r1.0.nontcga.hs37d5
+	pkgdesc = Minor allele frequency data from ExAC release 1.0 subset of nonTCGA exomes for hs37d5
+	pkgver = 3.10.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/MafDb.ExAC.r1.0.nonTCGA.hs37d5
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-genomicscores
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-snplocs.hsapiens.dbsnp144.grch37
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/MafDb.ExAC.r1.0.nonTCGA.hs37d5_3.10.0.tar.gz
+	sha256sums = a507120e7d266dee30a339fb3e5db0b6094e3c9c25d5cdf18d34829e6c623ceb
+
+pkgname = r-mafdb.exac.r1.0.nontcga.hs37d5
