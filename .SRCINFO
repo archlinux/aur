@@ -1,0 +1,12 @@
+pkgbase = r-nada
+	pkgdesc = Nondetects and Data Analysis for Environmental Data
+	pkgver = 1.6.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=NADA
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/NADA_1.6-1.1.tar.gz
+	sha256sums = 670ff6595ba074ed0a930b7a09624d5ef20616379a20e768c1a7b37332aee44a
+
+pkgname = r-nada
