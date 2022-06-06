@@ -1,0 +1,15 @@
+pkgbase = r-geneclassifiers
+	pkgdesc = Application of gene classifiers
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/geneClassifiers
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneClassifiers_1.20.0.tar.gz
+	sha256sums = 9c2daa734a9259dc93833aabc972851671082ff8cad0a76e606c3035e9006b82
+
+pkgname = r-geneclassifiers
