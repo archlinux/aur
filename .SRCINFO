@@ -1,0 +1,29 @@
+pkgbase = r-janitor
+	pkgdesc = Simple Tools for Examining and Cleaning Dirty Data
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=janitor
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-lifecycle
+	depends = r-lubridate
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-snakecase
+	depends = r-stringi
+	depends = r-stringr
+	depends = r-tidyr
+	depends = r-tidyselect
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sf
+	optdepends = r-testthat
+	optdepends = r-tibble
+	optdepends = r-tidygraph
+	source = https://cran.r-project.org/src/contrib/janitor_2.1.0.tar.gz
+	sha256sums = d60615940fbe174f67799c8abc797f27928eca4ac180418527c5897a4aaad826
+
+pkgname = r-janitor
