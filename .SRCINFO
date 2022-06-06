@@ -1,0 +1,17 @@
+pkgbase = r-survivalsvm
+	pkgdesc = Survival Support Vector Analysis
+	pkgver = 0.0.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=survivalsvm
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-hmisc
+	depends = r-kernlab
+	depends = r-pracma
+	depends = r-quadprog
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/survivalsvm_0.0.5.tar.gz
+	sha256sums = ea4d39ebecb38e4e4e89891b2d5c2ba222344879bcdd8dac9be0078c73cb90ac
+
+pkgname = r-survivalsvm
