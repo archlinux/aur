@@ -1,0 +1,24 @@
+pkgbase = r-factominer
+	pkgdesc = Multivariate Exploratory Data Analysis and Data Mining
+	pkgver = 2.4
+	pkgrel = 3
+	url = https://cran.r-project.org/package=FactoMineR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-car
+	depends = r-dt
+	depends = r-ellipse
+	depends = r-flashclust
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-leaps
+	depends = r-scatterplot3d
+	optdepends = r-factoshiny
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-missmda
+	source = https://cran.r-project.org/src/contrib/FactoMineR_2.4.tar.gz
+	sha256sums = b9e3adce9a66b4daccc85fa67cb0769d6be230beeb126921b386ccde5db2e851
+
+pkgname = r-factominer
