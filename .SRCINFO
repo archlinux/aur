@@ -1,0 +1,18 @@
+pkgbase = r-ttmap
+	pkgdesc = Two-Tier Mapper: a clustering tool based on topological data analysis
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TTMap
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-colorramps
+	depends = r-rgl
+	depends = r-summarizedexperiment
+	optdepends = r-airway
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TTMap_1.18.0.tar.gz
+	sha256sums = a8084384216eef827105f629ddd980a1d52c94bf00b63e0e686510b7ac2e7206
+
+pkgname = r-ttmap
