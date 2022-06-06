@@ -1,0 +1,13 @@
+pkgbase = r-fit.models
+	pkgdesc = Compare Fitted Models
+	pkgver = 0.64
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fit.models
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/fit.models_0.64.tar.gz
+	sha256sums = f70806bfa85a05337fa5a665264d640e307584714a07a329fbe96c86b0e864da
+
+pkgname = r-fit.models
