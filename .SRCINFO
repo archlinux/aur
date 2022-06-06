@@ -1,0 +1,20 @@
+pkgbase = r-probamr
+	pkgdesc = Generating SAM file for PSMs in shotgun proteomics data
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/proBAMr
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biostrings
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-rtracklayer
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/proBAMr_1.30.0.tar.gz
+	sha256sums = 76505b3a5a3b491f6f19527e5430b4ba848fa4202e11ecadf1b5a618a514651a
+
+pkgname = r-probamr
