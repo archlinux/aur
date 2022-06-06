@@ -1,0 +1,12 @@
+pkgbase = split700
+	pkgdesc = Extracts BRR samples from SNES SPC700 format (*.spc)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/gocha/split700
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = split700-2.0.tar.gz::https://github.com/gocha/split700/archive/v2.0.tar.gz
+	sha512sums = ba3a339840d637b5b49c702303c36362f659072fdc8d1eec77a260f68c59d40295bc16d0f9b01b6188829737bff359903ce9f575bf5e84b7571e2126f1c69d94
+
+pkgname = split700
