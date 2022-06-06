@@ -1,0 +1,26 @@
+pkgbase = r-scnorm
+	pkgdesc = Normalization of single cell RNA-seq data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SCnorm
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-data.table
+	depends = r-forcats
+	depends = r-ggplot2
+	depends = r-moments
+	depends = r-quantreg
+	depends = r-s4vectors
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCnorm_1.18.0.tar.gz
+	sha256sums = ade0254cac5009f6b5112615122f1623fcd0f9210fd966280c8ca9a9ecf1a12d
+
+pkgname = r-scnorm
