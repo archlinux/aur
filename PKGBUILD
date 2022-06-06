@@ -1,14 +1,15 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Charles Bos <charlesbos1 AT gmail>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Colin Shea <colins@evaryont.ath.cx>
 
 pkgname=cave9
 pkgver=0.4
 _dataver=4
-pkgrel=3
+pkgrel=4
 pkgdesc="A 3D gravity cave-exploration game based on the classic SFCave"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/cave9/"
+url="https://code.google.com/p/cave9/"
 license=('LGPL3' 'custom')
 depends=('mesa' 'sdl_image' 'sdl_ttf')
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}_src-${pkgver}.tgz"
@@ -20,7 +21,7 @@ sha256sums=('285fd1070e9fadade890ddd64f30db6bcfeaa5326c99d6e69744abab80da93d8'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  CFLAGS='-Wno-error=cpp -Wno-error=int-in-bool-context' LDFLAGS='' make
+  CFLAGS='-Wno-error=cpp -Wno-error=int-in-bool-context -Wno-format-truncation' LDFLAGS='' make
 }
 
 package() {
@@ -42,5 +43,3 @@ package() {
   install -m644 AUTHORS.txt README.txt "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 ../data/README.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_DATA.txt"
 }
-
-# vim:set ts=2 sw=2 et:
