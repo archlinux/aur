@@ -1,0 +1,15 @@
+pkgbase = r-qpcr
+	pkgdesc = Modelling and Analysis of Real-Time PCR Data
+	pkgver = 1.4.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qpcR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-minpack.lm
+	depends = r-rgl
+	depends = r-robustbase
+	source = https://cran.r-project.org/src/contrib/qpcR_1.4-1.tar.gz
+	sha256sums = 5b6fd10577d8f33a31d6a7781435866de78373481c03f642f7a9f0b1e5c101e4
+
+pkgname = r-qpcr
