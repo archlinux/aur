@@ -1,0 +1,12 @@
+pkgbase = r-rmeta
+	pkgdesc = Meta-Analysis
+	pkgver = 3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rmeta
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/rmeta_3.0.tar.gz
+	sha256sums = b9f9d405935cffcd7a5697ff13b033f9725de45f4dc7b059fd68a7536eb76b6e
+
+pkgname = r-rmeta
