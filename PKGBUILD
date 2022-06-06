@@ -2,7 +2,7 @@
 # Contributor: Sebastian J. Bronner <waschtl@sbronner.com>
 
 pkgname=gwenhywfar-git
-pkgver=5.9.0+18+d819db8e
+pkgver=5.9.0+18+gd819db8e
 pkgrel=1
 pkgdesc="OS abstraction functions for various projects"
 arch=(x86_64 i686)
@@ -36,7 +36,7 @@ pkgver() {
       "$_sourcedir/configure.ac"
   )"
 
-  printf "%s+%s+%s\n" \
+  printf "%s+%s+g%s\n" \
     "${_version_base}" \
     "$(git -C "$_sourcedir" rev-list --count "^${_version_base}" @)" \
     "$(git -C "$_sourcedir" describe --always --exclude='*')"
