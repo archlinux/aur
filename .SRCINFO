@@ -1,0 +1,14 @@
+pkgbase = r-downloader
+	pkgdesc = Download Files over HTTP and HTTPS
+	pkgver = 0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=downloader
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/downloader_0.4.tar.gz
+	sha256sums = 1890e75b028775154023f2135cafb3e3eed0fe908138ab4f7eff1fc1b47dafab
+
+pkgname = r-downloader
