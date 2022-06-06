@@ -1,0 +1,27 @@
+pkgbase = r-mlp
+	pkgdesc = Mean Log P Analysis
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MLP
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-gplots
+	optdepends = r-annotate
+	optdepends = r-go.db
+	optdepends = r-gostats
+	optdepends = r-graph
+	optdepends = r-keggrest
+	optdepends = r-limma
+	optdepends = r-mouse4302.db
+	optdepends = r-org.cf.eg.db
+	optdepends = r-org.hs.eg.db
+	optdepends = r-org.mm.eg.db
+	optdepends = r-org.rn.eg.db
+	optdepends = r-reactome.db
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLP_1.44.0.tar.gz
+	sha256sums = 0acfd854d25161f3e30935f3de35288dd9a67f5e2f3e05fa41a855e041982c99
+
+pkgname = r-mlp
