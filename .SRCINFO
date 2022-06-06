@@ -1,0 +1,27 @@
+pkgbase = r-transite
+	pkgdesc = RNA-binding protein motif analysis
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/transite
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-dplyr
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-ggseqlogo
+	depends = r-gridextra
+	depends = r-rcpp
+	depends = r-scales
+	depends = r-tfmpvalue
+	depends = gcc
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/transite_1.14.0.tar.gz
+	sha256sums = 568d171babee92e3ff129cc54e0bfaa77d8d9ebb693833c102bfaa40a74acd40
+
+pkgname = r-transite
