@@ -1,0 +1,19 @@
+pkgbase = r-sarks
+	pkgdesc = Suffix Array Kernel Smoothing for discovery of correlative sequence motifs and multi-motif domains
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sarks
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-binom
+	depends = r-biostrings
+	depends = r-iranges
+	depends = r-rjava
+	optdepends = r-biocgenerics
+	optdepends = r-ggplot2
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sarks_1.8.0.tar.gz
+	sha256sums = 0908a277dab49bdca3ac96bfe3b36063a8b9f062afd44083a25ee4e356df45b5
+
+pkgname = r-sarks
