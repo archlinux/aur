@@ -1,0 +1,18 @@
+pkgbase = r-phenogeneranker
+	pkgdesc = PhenoGeneRanker: A gene and phenotype prioritization tool
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PhenoGeneRanker
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = r
+	depends = r-doparallel
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhenoGeneRanker_1.4.0.tar.gz
+	sha256sums = 5711510899f5d1df1f69ec574b12fe6fc2453542212a74184498d518074bee73
+
+pkgname = r-phenogeneranker
