@@ -1,7 +1,7 @@
 #Maintainer: Mearaj Bhagad <mearajbhagad at gmail dot com>
 
 pkgname=nordlayer
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=2
 pkgdesc="Proprietary VPN client for linux"
 arch=('i686' 'x86_64')
