@@ -1,0 +1,14 @@
+pkgbase = r-spem
+	pkgdesc = S-system parameter estimation method
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SPEM
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-rsolnp
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPEM_1.36.0.tar.gz
+	sha256sums = 539d2181a96f498d23073804b239a591939a6cd9ae915aff914c7cace4e9deda
+
+pkgname = r-spem
