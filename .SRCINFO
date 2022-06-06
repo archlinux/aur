@@ -1,0 +1,24 @@
+pkgbase = r-pairkat
+	pkgdesc = PaIRKAT
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pairkat
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-compquadform
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-igraph
+	depends = r-keggrest
+	depends = r-magrittr
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-tibble
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pairkat_1.2.0.tar.gz
+	sha256sums = fe47d0150914e934ddc6cb2b5570a00b97c178905a9f087b072366b7561d9115
+
+pkgname = r-pairkat
