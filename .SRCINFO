@@ -1,0 +1,14 @@
+pkgbase = r-fds
+	pkgdesc = Functional Data Sets
+	pkgver = 1.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=fds
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rainbow
+	depends = r-rcurl
+	source = https://cran.r-project.org/src/contrib/fds_1.8.tar.gz
+	sha256sums = 203a5e7671e542dcb83d4c75d0f4012aaebc32d54f94657afaf9e71e99dd0489
+
+pkgname = r-fds
