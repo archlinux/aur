@@ -1,0 +1,25 @@
+pkgbase = r-scfeaturefilter
+	pkgdesc = A correlation-based method for quality filtering of single-cell RNAseq data
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scFeatureFilter
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-biocstyle
+	optdepends = r-cowplot
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-scrnaseq
+	optdepends = r-singlecellexperiment
+	optdepends = r-summarizedexperiment
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scFeatureFilter_1.16.0.tar.gz
+	sha256sums = 5175bf36ebed250c960f8ada764eb902be19552927045a048cc86461624bdc5a
+
+pkgname = r-scfeaturefilter
