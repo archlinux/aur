@@ -1,0 +1,23 @@
+pkgbase = r-rnits
+	pkgdesc = R Normalization and Inference of Time Series data
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rnits
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-ggplot2
+	depends = r-impute
+	depends = r-limma
+	depends = r-qvalue
+	depends = r-reshape2
+	optdepends = r-biocstyle
+	optdepends = r-geoquery
+	optdepends = r-knitr
+	optdepends = r-stringr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rnits_1.29.0.tar.gz
+	sha256sums = d034d60c8924200e662073c9e65fcd162b3d8af3ffd8f96cb55e9f9b5874ca54
+
+pkgname = r-rnits
