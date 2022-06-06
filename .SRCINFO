@@ -1,0 +1,17 @@
+pkgbase = r-snapcgh
+	pkgdesc = Segmentation, normalisation and processing of aCGH data
+	pkgver = 1.66.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/snapCGH
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-acgh
+	depends = r-dnacopy
+	depends = r-glad
+	depends = r-limma
+	depends = r-tilingarray
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/snapCGH_1.66.0.tar.gz
+	sha256sums = 98da3ca6b2f2acda2d1cf82ba1f664d1e8d62d9e4f423a13dd8ec80b9f19bf0e
+
+pkgname = r-snapcgh
