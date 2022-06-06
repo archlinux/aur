@@ -1,0 +1,25 @@
+pkgbase = r-gsar
+	pkgdesc = Gene Set Analysis in R
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GSAR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	optdepends = r-all
+	optdepends = r-annotate
+	optdepends = r-biobase
+	optdepends = r-biocstyle
+	optdepends = r-edger
+	optdepends = r-genefilter
+	optdepends = r-gseabase
+	optdepends = r-gsvadata
+	optdepends = r-hgu95av2.db
+	optdepends = r-mass
+	optdepends = r-org.hs.eg.db
+	optdepends = r-tweedeseqcountdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSAR_1.30.0.tar.gz
+	sha256sums = ab79bc26ce656da1d37fa9f784be3130df5bd0a1cb393fbc71fd9747e1a0e12c
+
+pkgname = r-gsar
