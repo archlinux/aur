@@ -1,0 +1,17 @@
+pkgbase = r-enrichr
+	pkgdesc = Provides an R Interface to 'Enrichr'
+	pkgver = 3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=enrichR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-httr
+	depends = r-rjson
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/enrichR_3.0.tar.gz
+	sha256sums = 43f9b7f66f76fde41bd24781e4df7a2632b4e341aec81f8c3da4d7e908767344
+
+pkgname = r-enrichr
