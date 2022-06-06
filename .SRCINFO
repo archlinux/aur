@@ -1,0 +1,21 @@
+pkgbase = r-frma
+	pkgdesc = Frozen RMA and Barcode
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/frma
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-dbi
+	depends = r-oligo
+	depends = r-oligoclasses
+	depends = r-preprocesscore
+	optdepends = r-frmaexampledata
+	optdepends = r-hgu133afrmavecs
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/frma_1.48.0.tar.gz
+	sha256sums = dd1b674d55e86e3b3377000587052536845d6d793b7742bb6c1cff3a251918f0
+
+pkgname = r-frma
