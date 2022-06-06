@@ -1,0 +1,23 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 348cdce..36d4168 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,6 @@ requires = [
+     "wheel",
+     "pyusb",
+     "pycryptodome",
+-    "colorama",
+-    "usb"
++    "colorama"
+ ]
+ build-backend = "setuptools.build_meta"
+diff --git a/requirements.txt b/requirements.txt
+index 946fe9a..cde3398 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,5 +2,3 @@ wheel
+ pyusb
+ pycryptodome
+ colorama
+-usb
+-
