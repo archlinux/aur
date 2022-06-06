@@ -1,0 +1,19 @@
+pkgbase = r-mdp
+	pkgdesc = Molecular Degree of Perturbation calculates scores for transcriptome data samples based on their perturbation from controls
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mdp
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridextra
+	optdepends = r-biocmanager
+	optdepends = r-fgsea
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mdp_1.16.0.tar.gz
+	sha256sums = 516a48889b6822e0919c84bfb7120a51d992e6de56ad6b9dcc6128837f3dfce4
+
+pkgname = r-mdp
