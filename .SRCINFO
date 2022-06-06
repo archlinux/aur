@@ -1,0 +1,20 @@
+pkgbase = r-ggfittext
+	pkgdesc = Fit Text Inside a Box in 'ggplot2'
+	pkgver = 0.9.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggfittext
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-shades
+	depends = r-stringi
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggfittext_0.9.1.tar.gz
+	sha256sums = ae1460061eec92d0d71103acfaf6a565e36fe995093b7a36cd5e90ce95919379
+
+pkgname = r-ggfittext
