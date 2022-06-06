@@ -1,0 +1,16 @@
+pkgbase = r-rmisc
+	pkgdesc = Rmisc: Ryan Miscellaneous
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Rmisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-plyr
+	optdepends = r-hmisc
+	optdepends = r-latticeextra
+	optdepends = r-stats4
+	source = https://cran.r-project.org/src/contrib/Rmisc_1.5.1.tar.gz
+	sha256sums = 1d65d5c8f93448924acb13dfb95dd419b6b2325c49da53394d15fac93b58d2c0
+
+pkgname = r-rmisc
