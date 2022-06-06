@@ -1,0 +1,20 @@
+pkgbase = r-sparsematrixstats
+	pkgdesc = Summary Statistics for Rows and Columns of Sparse Matrices
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/sparseMatrixStats
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-matrixgenerics
+	depends = r-matrixstats
+	depends = r-rcpp
+	optdepends = r-bench
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparseMatrixStats_1.8.0.tar.gz
+	sha256sums = a28fe0592793913b2c9c553bb15c71f741992ce88d27544475eb977bbc9a225c
+
+pkgname = r-sparsematrixstats
