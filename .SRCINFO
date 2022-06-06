@@ -1,0 +1,13 @@
+pkgbase = r-fabia
+	pkgdesc = FABIA: Factor Analysis for Bicluster Acquisition
+	pkgver = 2.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/fabia
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fabia_2.42.0.tar.gz
+	sha256sums = bb758c3f9c501a09a959ef1b61042b25994ec3f50a3cbf5adc05aaa6aae75711
+
+pkgname = r-fabia
