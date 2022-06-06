@@ -1,0 +1,28 @@
+pkgbase = r-ggforce
+	pkgdesc = Accelerating 'ggplot2'
+	pkgver = 0.3.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggforce
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-polyclip
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rlang
+	depends = r-scales
+	depends = r-tidyselect
+	depends = r-tweenr
+	depends = r-withr
+	optdepends = r-concaveman
+	optdepends = r-covr
+	optdepends = r-deldir
+	optdepends = r-reshape2
+	optdepends = r-sessioninfo
+	optdepends = r-units
+	source = https://cran.r-project.org/src/contrib/ggforce_0.3.3.tar.gz
+	sha256sums = 2a283bb409da6b96929863a926b153bcc59b2c6f00551805db1d1d43e5929f2f
+
+pkgname = r-ggforce
