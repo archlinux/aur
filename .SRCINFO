@@ -1,0 +1,27 @@
+pkgbase = r-rtnsurvival
+	pkgdesc = Survival analysis using transcriptional networks inferred by the RTN package
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RTNsurvival
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-data.table
+	depends = r-dunn.test
+	depends = r-egg
+	depends = r-ggplot2
+	depends = r-pheatmap
+	depends = r-rcolorbrewer
+	depends = r-rtn
+	depends = r-rtnduals
+	depends = r-scales
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-fletcher2013b
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTNsurvival_1.20.0.tar.gz
+	sha256sums = 24687a8bac08714b7143bb7253d09a93d4551b8661ba778859a9d8a9754181ef
+
+pkgname = r-rtnsurvival
