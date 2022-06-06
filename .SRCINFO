@@ -1,0 +1,26 @@
+pkgbase = r-xgboost
+	pkgdesc = Extreme Gradient Boosting
+	pkgver = 1.6.0.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=xgboost
+	arch = x86_64
+	license = Apache
+	depends = r
+	depends = r-data.table
+	depends = r-jsonlite
+	optdepends = r-ckmeans.1d.dp
+	optdepends = r-crayon
+	optdepends = r-diagrammer
+	optdepends = r-float
+	optdepends = r-ggplot2
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-titanic
+	optdepends = r-vcd
+	source = https://cran.r-project.org/src/contrib/xgboost_1.6.0.1.tar.gz
+	sha256sums = 9ae99a20997e1b02ffd21cabada2a55e53f5754746238ee900de5eb6cd964ebd
+
+pkgname = r-xgboost
