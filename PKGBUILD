@@ -17,7 +17,7 @@ checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
 conflicts=($_pkgname)
-provides=($_pkgname=$pkgver)
+# provides=($_pkgname=$pkgver)  # Current pkgver is so old that it should not provide glib2 to Arch
 options=(!emptydirs)
 _commit=0a63daa96426715498b55318f68a67baee40c509  # tags/2.60.6^0
 _clcommit=c57f2dff8fa0f25043e4d2ce608a2abd57ee7860  # tags/2.60.6-98^0

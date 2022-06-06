@@ -20,7 +20,6 @@ pkgbase = glib2-clear
 	depends = zlib
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.60.6
 	conflicts = glib2
 	options = !emptydirs
 	source = git+https://github.com/GNOME/glib.git#commit=0a63daa96426715498b55318f68a67baee40c509
@@ -35,4 +34,3 @@ pkgbase = glib2-clear
 	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
 
 pkgname = glib2-clear
-
