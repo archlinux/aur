@@ -1,0 +1,21 @@
+pkgbase = r-encodexplorerdata
+	pkgdesc = A compilation of ENCODE metadata
+	pkgver = 0.99.5
+	pkgrel = 4
+	url = https://bioconductor.org/packages/ENCODExplorerData
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-data.table
+	depends = r-jsonlite
+	depends = r-rcurl
+	optdepends = r-annotationhub
+	optdepends = r-biocgenerics
+	optdepends = r-curl
+	optdepends = r-httr
+	optdepends = r-knitr
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/ENCODExplorerData_0.99.5.tar.gz
+	sha256sums = 70cfc18dd800a084ec186826f3740c4397cf80359c4ac219d12ef78b68a9ee01
+
+pkgname = r-encodexplorerdata
