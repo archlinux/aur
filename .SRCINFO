@@ -1,0 +1,15 @@
+pkgbase = r-qpcrnorm
+	pkgdesc = Data-driven normalization strategies for high-throughput qPCR data.
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/qpcrNorm
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-limma
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qpcrNorm_1.54.0.tar.gz
+	sha256sums = b18fc0dd9b40349c7d77d5d399f37281209aad46d57c96f472593bea7ff5611a
+
+pkgname = r-qpcrnorm
