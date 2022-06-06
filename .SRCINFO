@@ -1,0 +1,26 @@
+pkgbase = r-loomexperiment
+	pkgdesc = LoomExperiment container
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/LoomExperiment
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocio
+	depends = r-delayedarray
+	depends = r-genomicranges
+	depends = r-hdf5array
+	depends = r-rhdf5
+	depends = r-s4vectors
+	depends = r-singlecellexperiment
+	depends = r-stringr
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-reticulate
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LoomExperiment_1.14.0.tar.gz
+	sha256sums = 128d32484ab30e2a25009faee61dea449a4cacee3f7ddf5c417ed37e97ddd6e6
+
+pkgname = r-loomexperiment
