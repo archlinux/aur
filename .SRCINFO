@@ -1,0 +1,27 @@
+pkgbase = r-methylmix
+	pkgdesc = MethylMix: Identifying methylation driven cancer genes
+	pkgver = 2.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MethylMix
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-digest
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-impute
+	depends = r-limma
+	depends = r-r.matlab
+	depends = r-rcolorbrewer
+	depends = r-rcurl
+	depends = r-rpmm
+	optdepends = r-biocstyle
+	optdepends = r-doparallel
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethylMix_2.26.0.tar.gz
+	sha256sums = de3bba6df2ee2a17b471bf2c48a2dcb03799d519f617509382f9d499888abab9
+
+pkgname = r-methylmix
