@@ -1,0 +1,27 @@
+pkgbase = r-pwomics
+	pkgdesc = Pathway-based data integration of omics data
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pwOmics
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-annotationhub
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biomart
+	depends = r-data.table
+	depends = r-genomicranges
+	depends = r-gplots
+	depends = r-graph
+	depends = r-igraph
+	depends = r-rbiopaxparser
+	depends = r-stringdb
+	optdepends = r-ebdbnet
+	optdepends = r-longitudinal
+	optdepends = r-mfuzz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pwOmics_1.28.0.tar.gz
+	sha256sums = de9b0c43d030fe28dd402476829de3c43a885a3a47e03a047e2c74d6ce443e6e
+
+pkgname = r-pwomics
