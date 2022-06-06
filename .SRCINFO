@@ -1,0 +1,19 @@
+pkgbase = r-psicquic
+	pkgdesc = Proteomics Standard Initiative Common QUery InterfaCe
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PSICQUIC
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biomart
+	depends = r-httr
+	depends = r-iranges
+	depends = r-plyr
+	depends = r-rcurl
+	optdepends = r-org.hs.eg.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PSICQUIC_1.34.0.tar.gz
+	sha256sums = fd3146e664239fa05413de434774fafe4587b5aac1722c928dec28c156ef733e
+
+pkgname = r-psicquic
