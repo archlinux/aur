@@ -1,0 +1,14 @@
+pkgbase = r-pvclust
+	pkgdesc = Hierarchical Clustering with P-Values via Multiscale Bootstrap Resampling
+	pkgver = 2.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=pvclust
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-mass
+	optdepends = r-parallel
+	source = https://cran.r-project.org/src/contrib/pvclust_2.2-0.tar.gz
+	sha256sums = 7892853bacd413b5a921006429641ad308a344ca171b3081c15e4c522a8b0201
+
+pkgname = r-pvclust
