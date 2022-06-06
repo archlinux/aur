@@ -1,0 +1,13 @@
+pkgbase = r-inum
+	pkgdesc = Interval and Enum-Type Representation of Vectors
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=inum
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-libcoin
+	source = https://cran.r-project.org/src/contrib/inum_1.0-4.tar.gz
+	sha256sums = 5febef69c43a4b95b376c1418550a949d988a5f26b1383ca01c9728a94fc13ce
+
+pkgname = r-inum
