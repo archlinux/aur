@@ -1,0 +1,15 @@
+pkgbase = r-snpstats
+	pkgdesc = SnpMatrix and XSnpMatrix classes and methods
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/snpStats
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-zlibbioc
+	optdepends = r-hexbin
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/snpStats_1.46.0.tar.gz
+	sha256sums = 42911ba76e4b38f4d3a01d5de81e59d10462d79f5cc642a62c26d9c3b02dab28
+
+pkgname = r-snpstats
