@@ -1,0 +1,22 @@
+pkgbase = r-pdinfobuilder
+	pkgdesc = Platform Design Information Package Builder
+	pkgver = 1.60.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pdInfoBuilder
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-affxparser
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-dbi
+	depends = r-iranges
+	depends = r-oligo
+	depends = r-oligoclasses
+	depends = r-rsqlite
+	depends = r-s4vectors
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pdInfoBuilder_1.60.0.tar.gz
+	sha256sums = 202791cf6efe2764e7b690c8a4a568d89727379804f8730dd29453fd269c9092
+
+pkgname = r-pdinfobuilder
