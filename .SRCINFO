@@ -1,0 +1,18 @@
+pkgbase = r-dmwr2
+	pkgdesc = Functions and Data for the Second Edition of "Data Mining with R"
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=DMwR2
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dbi
+	depends = r-dplyr
+	depends = r-quantmod
+	depends = r-readr
+	depends = r-xts
+	depends = r-zoo
+	source = https://cran.r-project.org/src/contrib/DMwR2_0.0.2.tar.gz
+	sha256sums = 2902e83a8bd8b37c478c71eba005b436a7b4f2136dbc78a1c8481630c55feeef
+
+pkgname = r-dmwr2
