@@ -1,0 +1,17 @@
+pkgbase = r-rdgidb
+	pkgdesc = R Wrapper for DGIdb
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rDGIdb
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-httr
+	depends = r-jsonlite
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rDGIdb_1.22.0.tar.gz
+	sha256sums = e0a094fb66c5c055d25567a81340babc729a5e6645480055cc6828b8769ff887
+
+pkgname = r-rdgidb
