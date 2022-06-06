@@ -1,0 +1,15 @@
+pkgbase = r-distrex
+	pkgdesc = Extensions of Package 'distr'
+	pkgver = 2.8.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=distrEx
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-distr
+	depends = r-startupmsg
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/distrEx_2.8.0.tar.gz
+	sha256sums = b064cde7d63ce93ec9969c8c4463c1e327758b6f8ea7765217d77f9ba9d590bf
+
+pkgname = r-distrex
