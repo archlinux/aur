@@ -1,0 +1,23 @@
+pkgbase = r-ga
+	pkgdesc = Genetic Algorithms
+	pkgver = 3.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-cli
+	depends = r-crayon
+	depends = r-foreach
+	depends = r-iterators
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-doparallel
+	optdepends = r-dorng
+	optdepends = r-knitr
+	optdepends = r-parallel
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/GA_3.2.2.tar.gz
+	sha256sums = 6245c634a11b8414bde7ed326b8c615512645489b19969619484c865e900bf8c
+
+pkgname = r-ga
