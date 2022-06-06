@@ -1,0 +1,13 @@
+pkgbase = r-nsga2r
+	pkgdesc = Elitist Non-dominated Sorting Genetic Algorithm based on R
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=nsga2R
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-mco
+	source = https://cran.r-project.org/src/contrib/nsga2R_1.1.tar.gz
+	sha256sums = 645111e633b5cd5b512e05ec9b943349c409fef6f8cf2ae81ae19958439b73ac
+
+pkgname = r-nsga2r
