@@ -1,0 +1,21 @@
+pkgbase = r-parallelmap
+	pkgdesc = Unified Interface to Parallelization Back-Ends
+	pkgver = 1.5.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=parallelMap
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-bbmisc
+	depends = r-checkmate
+	optdepends = r-batchjobs
+	optdepends = r-batchtools
+	optdepends = r-data.table
+	optdepends = r-rmpi
+	optdepends = r-rpart
+	optdepends = r-snow
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/parallelMap_1.5.1.tar.gz
+	sha256sums = c108a634a335ed47b0018f532a52b032487e239c5061f939ba32355dfefde7e1
+
+pkgname = r-parallelmap
