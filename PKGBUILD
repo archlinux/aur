@@ -20,7 +20,7 @@ _merge_requests_to_use=('1441' '1877')
 pkgbase=mutter-performance
 pkgname=(mutter-performance mutter-performance-docs)
 pkgver=42.2+r11+gcd52c57bc
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -31,7 +31,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
+checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
 _commit=cd52c57bc65a25363a25ee575b0c9d1d4e471ba8  # tags/42.2^11
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
@@ -152,11 +152,12 @@ _check() (
   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
+  pipewire_session_manager=$(pacman -Qq pipewire-session-manager)
 
   pipewire &
   _p1=$!
 
-  wireplumber &
+  $pipewire_session_manager &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
