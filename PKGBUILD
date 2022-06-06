@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=flax
-pkgname=python-$_modulename
-pkgver=0.3.4
+pkgname=python-flax
+_name=${pkgname#python-}
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="A neural network library and ecosystem for JAX designed for flexibility"
 arch=(any)
@@ -16,13 +16,16 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('625acc6c3dce6eef6349eff5076db5519dec4aa04bd1338dcb38bcc156696f95')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(d4c179e343601c1443b4d3fdb1078ffa2531fa50e4853b439151c7c0373697e6)
+
 build() {
-  cd "$srcdir/$_modulename-$pkgver/"
-  python setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
+
 package() {
-  cd "$srcdir/$_modulename-$pkgver/"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
