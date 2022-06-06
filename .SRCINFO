@@ -1,0 +1,18 @@
+pkgbase = r-path2ppi
+	pkgdesc = Prediction of pathway-related protein-protein interaction networks
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Path2PPI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Path2PPI_1.26.0.tar.gz
+	sha256sums = 571abbfa2b86e7e36002ff4fcd110cd9aa3cba61a5c3e334f455d9ad70645833
+
+pkgname = r-path2ppi
