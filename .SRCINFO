@@ -1,0 +1,16 @@
+pkgbase = r-rngtools
+	pkgdesc = Utility Functions for Working with Random Number Generators
+	pkgver = 1.5.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rngtools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	optdepends = r-covr
+	optdepends = r-runit
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rngtools_1.5.2.tar.gz
+	sha256sums = 7f8c76ca4c7851b69a86e27be09b02ddc86357f0388659ef8787634682e8a74d
+
+pkgname = r-rngtools
