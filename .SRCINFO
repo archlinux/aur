@@ -1,0 +1,19 @@
+pkgbase = r-waiter
+	pkgdesc = Loading Screen for 'Shiny'
+	pkgver = 0.2.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=waiter
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-r6
+	depends = r-shiny
+	optdepends = r-httr
+	optdepends = r-knitr
+	optdepends = r-packer
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/waiter_0.2.5.tar.gz
+	sha256sums = 9ac25e979db9242598bd0492ff862360009b51ce672184ec9f4eeb2232164979
+
+pkgname = r-waiter
