@@ -1,0 +1,14 @@
+pkgbase = r-txdb.mmusculus.ucsc.mm10.knowngene
+	pkgdesc = Annotation package for TxDb object(s)
+	pkgver = 3.10.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/TxDb.Mmusculus.UCSC.mm10.knownGene
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/TxDb.Mmusculus.UCSC.mm10.knownGene_3.10.0.tar.gz
+	sha256sums = 696281749d01737c94894564d62093433045bc007a4528cc3d94f205edb54977
+
+pkgname = r-txdb.mmusculus.ucsc.mm10.knowngene
