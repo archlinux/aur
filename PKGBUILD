@@ -1,6 +1,6 @@
 pkgbase="imd-git"
 pkgname="imd-git"
-pkgver=2.4.r74afc2a0b
+pkgver=2.4
 pkgrel=1
 pkgdesc="Improved MarkDown Reader"
 
@@ -66,4 +66,5 @@ package() {
 
 	# copy binary
 	mv "${srcdir}/imd/bin/imd" "${pkgdir}/usr/bin/imd"
+	mv "${srcdir}/imd/rebuild/imd-rebuild" "${pkgdir}/usr/bin/imd-rebuild"
 }
