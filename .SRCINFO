@@ -1,0 +1,15 @@
+pkgbase = r-permute
+	pkgdesc = Functions for Generating Restricted Permutations of Data
+	pkgver = 0.9.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=permute
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-parallel
+	optdepends = r-testthat
+	optdepends = r-vegan
+	source = https://cran.r-project.org/src/contrib/permute_0.9-7.tar.gz
+	sha256sums = eff88ffb579aaeb994e9f8609b776b2d9d9d56bc2879ddf180e3a2ad19f48dc0
+
+pkgname = r-permute
