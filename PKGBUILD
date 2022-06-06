@@ -4,12 +4,12 @@
 _basename=gperftools
 pkgname=lib32-$_basename
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, multi-threaded malloc and nifty performance analysis tools (32-bit)"
 arch=('x86_64')
 url="https://github.com/gperftools/gperftools"
 license=('BSD')
-depends=('gperftools' 'lib32-gcc-libs')
+depends=('gperftools' 'lib32-gcc-libs' 'lib32-libunwind')
 provides=('libtcmalloc.so'
           'libprofiler.so'
           'libtcmalloc_debug.so'
@@ -32,7 +32,11 @@ build() {
 
   cd "$_basename"
 
-  ./configure --prefix=/usr --libdir=/usr/lib32 --enable-frame-pointers
+  ./configure \
+      --prefix=/usr \
+      --libdir=/usr/lib32 \
+      --enable-frame-pointers \
+      --enable-libunwind
   make
 }
 
