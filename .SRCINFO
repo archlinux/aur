@@ -1,0 +1,16 @@
+pkgbase = r-genetics
+	pkgdesc = Population Genetics
+	pkgver = 1.3.8.1.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=genetics
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-combinat
+	depends = r-gdata
+	depends = r-gtools
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/genetics_1.3.8.1.3.tar.gz
+	sha256sums = fef2c95f6a57f32b3cf4acf003480439462bb28297c501c617de307bfeee9252
+
+pkgname = r-genetics
