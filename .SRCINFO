@@ -1,0 +1,30 @@
+pkgbase = r-ggprism
+	pkgdesc = A 'ggplot2' Extension Inspired by 'GraphPad Prism'
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggprism
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	depends = r-ggplot2
+	depends = r-glue
+	depends = r-gtable
+	depends = r-rlang
+	depends = r-scales
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-ggbeeswarm
+	optdepends = r-ggnewscale
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-patchwork
+	optdepends = r-rmarkdown
+	optdepends = r-rstatix
+	optdepends = r-tidyr
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/ggprism_1.0.3.tar.gz
+	sha256sums = 57324fcd31c084cc11fedb63ba399aa76ec1a4e23a9bb95a89c1e8925106b025
+
+pkgname = r-ggprism
