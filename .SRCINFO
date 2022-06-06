@@ -1,0 +1,22 @@
+pkgbase = r-metabcombiner
+	pkgdesc = Method for Combining LC-MS Metabolomics Feature Measurements
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/metabCombiner
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-caret
+	depends = r-dplyr
+	depends = r-matrixstats
+	depends = r-rlang
+	depends = r-s4vectors
+	depends = r-tidyr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metabCombiner_1.6.0.tar.gz
+	sha256sums = abd76a1d18aa4ce364aa7339df732475b0fa5e97c917092675d7ceeff002d0ee
+
+pkgname = r-metabcombiner
