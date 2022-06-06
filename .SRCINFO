@@ -1,0 +1,15 @@
+pkgbase = r-msmseda
+	pkgdesc = Exploratory Data Analysis of LC-MS/MS data by spectral counts
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/msmsEDA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gplots
+	depends = r-msnbase
+	depends = r-rcolorbrewer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msmsEDA_1.34.0.tar.gz
+	sha256sums = 822c41164202b7243e8a3d11cd65f236941bccdc30a909dd1dce569255c2ca4a
+
+pkgname = r-msmseda
