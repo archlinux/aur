@@ -1,0 +1,25 @@
+pkgbase = r-seqvartools
+	pkgdesc = Tools for variant data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SeqVarTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-data.table
+	depends = r-gdsfmt
+	depends = r-genomicranges
+	depends = r-gwasexacthw
+	depends = r-iranges
+	depends = r-logistf
+	depends = r-s4vectors
+	depends = r-seqarray
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	optdepends = r-stringr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqVarTools_1.34.0.tar.gz
+	sha256sums = 6a2c3275c4adc0d6fab912b5d00747456fd80c2c8063172ac6de250cde5c2abe
+
+pkgname = r-seqvartools
