@@ -1,0 +1,13 @@
+pkgbase = r-illuminahumanmethylation450kmanifest
+	pkgdesc = Annotation for Illumina's 450k methylation arrays
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/IlluminaHumanMethylation450kmanifest
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-minfi
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/IlluminaHumanMethylation450kmanifest_0.4.0.tar.gz
+	sha256sums = 41b2e54bac3feafc7646fe40bce3aa2b92c10871b0a13657c5736517792fa763
+
+pkgname = r-illuminahumanmethylation450kmanifest
