@@ -1,0 +1,16 @@
+pkgbase = r-proftools
+	pkgdesc = Profile Output Processing Tools for R
+	pkgver = 0.99.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=proftools
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-boot
+	optdepends = r-graph
+	optdepends = r-knitr
+	optdepends = r-rgraphviz
+	source = https://cran.r-project.org/src/contrib/proftools_0.99-3.tar.gz
+	sha256sums = e034eb1531af54013143da3e15229e1d4c2260f8eb79c93846014db3bdefb724
+
+pkgname = r-proftools
