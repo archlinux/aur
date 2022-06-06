@@ -1,0 +1,22 @@
+pkgbase = r-sigfuge
+	pkgdesc = SigFuge
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SigFuge
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-matlab
+	depends = r-reshape
+	depends = r-sigclust
+	optdepends = r-biocstyle
+	optdepends = r-org.hs.eg.db
+	optdepends = r-prebsdata
+	optdepends = r-rsamtools
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SigFuge_1.34.0.tar.gz
+	sha256sums = 8f7563e7cedf6392f894d6206d8e543e71f2ec897276dba84c5f90b30c9d17cf
+
+pkgname = r-sigfuge
