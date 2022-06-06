@@ -1,0 +1,25 @@
+pkgbase = r-methylscaper
+	pkgdesc = Visualization of Methylation Data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/methylscaper
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-biostrings
+	depends = r-data.table
+	depends = r-rfast
+	depends = r-seqinr
+	depends = r-seriation
+	depends = r-shiny
+	depends = r-shinyfiles
+	depends = r-shinyjs
+	depends = r-summarizedexperiment
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylscaper_1.4.0.tar.gz
+	sha256sums = fc9117f4dbb897a66795b94c8d53b805c390547f1a423817ec72e3632e2477a7
+
+pkgname = r-methylscaper
