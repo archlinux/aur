@@ -1,0 +1,12 @@
+pkgbase = r-emdist
+	pkgdesc = Earth Mover's Distance
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=emdist
+	arch = any
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/emdist_0.3-2.tar.gz
+	sha256sums = d09a7b22e280466366838f18cab3acb82d12d6a42bfa3f13ae6095506137bb16
+
+pkgname = r-emdist
