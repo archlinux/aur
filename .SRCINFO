@@ -1,0 +1,15 @@
+pkgbase = r-ic10
+	pkgdesc = A Copy Number and Expression-Based Classifier for Breast Tumours
+	pkgver = 1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=iC10
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ic10trainingdata
+	depends = r-impute
+	depends = r-pamr
+	source = https://cran.r-project.org/src/contrib/iC10_1.5.tar.gz
+	sha256sums = b471088158320778bac7b145233eeaaf9480061e2a5ac12c58ad7381caee06f7
+
+pkgname = r-ic10
