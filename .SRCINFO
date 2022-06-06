@@ -1,0 +1,17 @@
+pkgbase = r-hgu95av2.db
+	pkgdesc = Affymetrix Affymetrix HG_U95Av2 Array annotation data (chip hgu95av2)
+	pkgver = 3.13.0
+	pkgrel = 4
+	url = https://bioconductor.org/packages/hgu95av2.db
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-org.hs.eg.db
+	optdepends = r-annotate
+	optdepends = r-dbi
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/hgu95av2.db_3.13.0.tar.gz
+	sha256sums = ff722f64852a02bcc2c31e5329847df3cb16796c327993f1525d7c74d3aa63fe
+
+pkgname = r-hgu95av2.db
