@@ -29,3 +29,4 @@ SCDOC=scdoc
 
 # Where to store build artifacts
 HARECACHE=.cache
+BINOUT=.bin
