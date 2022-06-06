@@ -1,0 +1,14 @@
+pkgbase = r-discriminer
+	pkgdesc = Tools of the Trade for Discriminant Analysis
+	pkgver = 0.1.29
+	pkgrel = 4
+	url = https://cran.r-project.org/package=DiscriMiner
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-factominer
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/DiscriMiner_0.1-29.tar.gz
+	sha256sums = 5aab7671086ef9940e030324651976456f0e84dab35edb7048693ade885228c6
+
+pkgname = r-discriminer
