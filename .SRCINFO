@@ -1,0 +1,26 @@
+pkgbase = r-phenstat
+	pkgdesc = Statistical analysis of phenotypic data
+	pkgver = 2.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PhenStat
+	arch = any
+	license = custom
+	depends = r
+	depends = r-car
+	depends = r-corrplot
+	depends = r-ggplot2
+	depends = r-graph
+	depends = r-knitr
+	depends = r-lme4
+	depends = r-logistf
+	depends = r-msgps
+	depends = r-nortest
+	depends = r-pingr
+	depends = r-reshape
+	depends = r-smoothwin
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhenStat_2.32.0.tar.gz
+	sha256sums = 14136ff15fc6e9aee10e6decd4192acf3690c0de67d50aef3680ce2d0a390fbd
+
+pkgname = r-phenstat
