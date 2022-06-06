@@ -1,0 +1,18 @@
+pkgbase = r-readbitmap
+	pkgdesc = Simple Unified Interface to Read Bitmap Images (BMP,JPEG,PNG,TIFF)
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=readbitmap
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-bmp
+	depends = r-jpeg
+	depends = r-png
+	depends = r-tiff
+	optdepends = r-pixmap
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/readbitmap_0.1.5.tar.gz
+	sha256sums = 737d7d585eb33de2c200da64d16781e3c9522400fe2af352e1460c6a402a0291
+
+pkgname = r-readbitmap
