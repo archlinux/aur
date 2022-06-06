@@ -1,0 +1,21 @@
+pkgbase = r-multibac
+	pkgdesc = Multiomic Batch effect Correction
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MultiBaC
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-multiassayexperiment
+	depends = r-plotrix
+	depends = r-ropls
+	depends = r-pcamethods
+	optdepends = r-biocstyle
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MultiBaC_1.6.0.tar.gz
+	sha256sums = fa88046c5ad8ebb395dfd71329dec7c2c51fd971b89b87464d11139467611209
+
+pkgname = r-multibac
