@@ -1,0 +1,15 @@
+pkgbase = r-massspecwavelet
+	pkgdesc = Mass spectrum processing by wavelet-based algorithms
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MassSpecWavelet
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-waveslim
+	optdepends = r-catools
+	optdepends = r-xcms
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MassSpecWavelet_1.62.0.tar.gz
+	sha256sums = 69b44651c7b7862523617d8f9b4700652af01b5485e0e574fd011e377cfb313d
+
+pkgname = r-massspecwavelet
