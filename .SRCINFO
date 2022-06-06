@@ -1,0 +1,15 @@
+pkgbase = r-r.huge
+	pkgdesc = Methods for Accessing Huge Amounts of Data [deprecated]
+	pkgver = 0.9.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=R.huge
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-r.methodss3
+	depends = r-r.oo
+	depends = r-r.utils
+	source = https://cran.r-project.org/src/contrib/R.huge_0.9.0.tar.gz
+	sha256sums = f12d113a965603cfdbbb46e1a57331d267916235555b22f2bbc06caa302ae58e
+
+pkgname = r-r.huge
