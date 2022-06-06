@@ -1,0 +1,13 @@
+pkgbase = r-reffreeewas
+	pkgdesc = EWAS using Reference-Free DNA Methylation Mixture Deconvolution
+	pkgver = 2.2
+	pkgrel = 7
+	url = https://bioconductor.org/packages/RefFreeEWAS
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-quadprog
+	source = https://github.com/cran/RefFreeEWAS/archive/refs/tags/2.2.tar.gz
+	sha256sums = 7d24a61eb1c80e14b42eb21c3a7482149489673e257917b5f4a7e9638ee83039
+
+pkgname = r-reffreeewas
