@@ -1,0 +1,19 @@
+pkgbase = r-fbasics
+	pkgdesc = Rmetrics - Markets and Basic Statistics
+	pkgver = 3042.89.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fBasics
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gss
+	depends = r-stabledist
+	depends = r-timedate
+	depends = r-timeseries
+	optdepends = r-akima
+	optdepends = r-runit
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/fBasics_3042.89.1.tar.gz
+	sha256sums = ad242043c2e7d2788706518570596e3ff7f536e09008ed87656de93d930b1dd5
+
+pkgname = r-fbasics
