@@ -1,0 +1,28 @@
+pkgbase = r-sombrero
+	pkgdesc = SOM Bound to Realize Euclidean and Relational Outputs
+	pkgver = 1.4.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=SOMbrero
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-ggwordcloud
+	depends = r-igraph
+	depends = r-interp
+	depends = r-markdown
+	depends = r-metr
+	depends = r-scatterplot3d
+	depends = r-shiny
+	optdepends = r-hexbin
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-shinybs
+	optdepends = r-shinycssloaders
+	optdepends = r-shinyjqui
+	optdepends = r-shinyjs
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/SOMbrero_1.4-1.tar.gz
+	sha256sums = e2b2364da9f68dd34ed7190138b5f5d8c34fe9f8fdd8be3f151f1e0372473c2d
+
+pkgname = r-sombrero
