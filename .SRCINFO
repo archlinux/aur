@@ -1,0 +1,19 @@
+pkgbase = r-nxtirfdata
+	pkgdesc = Data for NxtIRF
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/NxtIRFdata
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biocfilecache
+	depends = r-experimenthub
+	depends = r-r.utils
+	depends = r-rtracklayer
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/NxtIRFdata_1.2.0.tar.gz
+	sha256sums = e551f0191c0516732d4e817a823f0890c29ce15529ce54873244fbb6b2281211
+
+pkgname = r-nxtirfdata
