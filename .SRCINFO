@@ -1,0 +1,19 @@
+pkgbase = r-matrixextra
+	pkgdesc = Extra Methods for Sparse Matrices
+	pkgver = 0.1.10
+	pkgrel = 3
+	url = https://cran.r-project.org/package=MatrixExtra
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-float
+	depends = r-rcpp
+	depends = r-rhpcblasctl
+	optdepends = r-data.table
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/MatrixExtra_0.1.10.tar.gz
+	sha256sums = 2818f825646a8e16c3a1b8a7799320596f9b4af6c8b836f44be0886bf8d3c601
+
+pkgname = r-matrixextra
