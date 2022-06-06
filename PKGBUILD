@@ -1,0 +1,25 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=pinfsc50
+_pkgver=1.2.0
+pkgname=r-${_pkgname,,}
+pkgver=1.2.0
+pkgrel=3
+pkgdesc="Sequence, Annotation and Variants for 17 Samples of P. Infestans and 1 P. Mirabilis"
+arch=('any')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('ed1fe214b9261feef8abfbf724c2bd9070d68e99a6ea95208aff2c57bbef8794')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
