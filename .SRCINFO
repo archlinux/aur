@@ -1,0 +1,21 @@
+pkgbase = r-npgsea
+	pkgdesc = Permutation approximation methods for gene set enrichment analysis (non-permutation GSEA)
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/npGSEA
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-gseabase
+	optdepends = r-all
+	optdepends = r-biocstyle
+	optdepends = r-genefilter
+	optdepends = r-hgu95av2.db
+	optdepends = r-limma
+	optdepends = r-reportingtools
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/npGSEA_1.32.0.tar.gz
+	sha256sums = 49888f67ea0141f9f320059d1ca70d292d8105552d4ee64d4d7304c0496b8916
+
+pkgname = r-npgsea
