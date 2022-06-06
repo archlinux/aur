@@ -1,0 +1,14 @@
+pkgbase = r-rbioinf
+	pkgdesc = RBioinf
+	pkgver = 1.56.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RBioinf
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-graph
+	optdepends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RBioinf_1.56.0.tar.gz
+	sha256sums = c354426eff98c72d572a71ff8cb647b71542fcb38d094c811754e18d5d89a3d6
+
+pkgname = r-rbioinf
