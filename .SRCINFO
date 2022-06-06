@@ -1,0 +1,20 @@
+pkgbase = r-survmisc
+	pkgdesc = Miscellaneous Functions for Survival Data
+	pkgver = 0.5.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=survMisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-km.ci
+	depends = r-kmsurv
+	depends = r-knitr
+	depends = r-xtable
+	depends = r-zoo
+	source = https://cran.r-project.org/src/contrib/survMisc_0.5.6.tar.gz
+	sha256sums = d911125bc374dfc67f31a81ebeaf98a09cac8f81e30259655ab136ebf4718c04
+
+pkgname = r-survmisc
