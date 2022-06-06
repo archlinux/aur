@@ -1,0 +1,14 @@
+pkgbase = r-venndiagram
+	pkgdesc = Generate High-Resolution Venn and Euler Plots
+	pkgver = 1.7.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=VennDiagram
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-futile.logger
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/VennDiagram_1.7.3.tar.gz
+	sha256sums = e7c2475f7613241787e6c85bd03315e4fd88413ccbbb735959756a8c2eeb8c46
+
+pkgname = r-venndiagram
