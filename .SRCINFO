@@ -1,0 +1,20 @@
+pkgbase = r-tfarm
+	pkgdesc = Transcription Factors Association Rules Miner
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TFARM
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-arules
+	depends = r-fields
+	depends = r-genomicranges
+	depends = r-gplots
+	depends = r-stringr
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-plyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFARM_1.18.0.tar.gz
+	sha256sums = b4a5b6782264352db874a475c676d7aa66ba70a4465ca5c4316555344d3ebc66
+
+pkgname = r-tfarm
