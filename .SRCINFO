@@ -1,0 +1,18 @@
+pkgbase = r-rnasense
+	pkgdesc = Analysis of Time-Resolved RNA-Seq Data
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RNAsense
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-nbpseq
+	depends = r-qvalue
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAsense_1.10.0.tar.gz
+	sha256sums = ce56b8ec13a11b2fe2d59830f1b5166d8300ba26daa9c059e132c89afede24a7
+
+pkgname = r-rnasense
