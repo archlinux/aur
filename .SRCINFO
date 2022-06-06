@@ -1,0 +1,20 @@
+pkgbase = r-mzid
+	pkgdesc = An mzIdentML parser for R
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mzID
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-iterators
+	depends = r-plyr
+	depends = r-protgenerics
+	depends = r-xml
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mzID_1.34.0.tar.gz
+	sha256sums = c1245fd0cb5cd23601794520b9786e37f63887532d8f7a3449a4d9a4bcc72ae0
+
+pkgname = r-mzid
