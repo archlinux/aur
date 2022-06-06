@@ -1,0 +1,17 @@
+pkgbase = r-ruv
+	pkgdesc = Detect and Remove Unwanted Variation using Negative Controls
+	pkgver = 0.9.7.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ruv
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-scales
+	optdepends = r-colourpicker
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/ruv_0.9.7.1.tar.gz
+	sha256sums = a0c54e56ba3d8f6ae178ae4d0e417a79295abf5dcb68bbae26c4b874734d98d8
+
+pkgname = r-ruv
