@@ -1,0 +1,45 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=tRNAdbImport
+_pkgver=1.14.0
+pkgname=r-${_pkgname,,}
+pkgver=1.14.0
+pkgrel=1
+pkgdesc='Importing from tRNAdb and mitotRNAdb as GRanges objects'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-biocgenerics
+  r-biostrings
+  r-genomicranges
+  r-httr
+  r-iranges
+  r-modstrings
+  r-s4vectors
+  r-stringr
+  r-structstrings
+  r-trna
+  r-xml2
+)
+optdepends=(
+  r-biocstyle
+  r-httptest
+  r-knitr
+  r-rmarkdown
+  r-rtracklayer
+  r-testthat
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('988069a20569e1ef8a715e7592a378896451e6fb14817d658cfee4d646af72b0')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:
