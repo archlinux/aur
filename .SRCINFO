@@ -1,0 +1,31 @@
+pkgbase = r-qgraph
+	pkgdesc = Graph Plotting Methods, Psychometric Data Visualization and Graphical Model Estimation
+	pkgver = 1.9.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qgraph
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-colorspace
+	depends = r-corpcor
+	depends = r-fdrtool
+	depends = r-ggplot2
+	depends = r-glasso
+	depends = r-gtools
+	depends = r-hmisc
+	depends = r-igraph
+	depends = r-jpeg
+	depends = r-lavaan
+	depends = r-pbapply
+	depends = r-plyr
+	depends = r-png
+	depends = r-psych
+	depends = r-rcpp
+	depends = r-reshape2
+	optdepends = r-bdgraph
+	optdepends = r-huge
+	source = https://cran.r-project.org/src/contrib/qgraph_1.9.2.tar.gz
+	sha256sums = baf190f6db30c4d5a3dc7ab5043b8ec0f79071d515c818c8e7666b9bcf2a4264
+
+pkgname = r-qgraph
