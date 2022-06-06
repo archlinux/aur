@@ -1,0 +1,16 @@
+pkgbase = r-textshape
+	pkgdesc = Tools for Reshaping Text
+	pkgver = 1.7.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=textshape
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-slam
+	depends = r-stringi
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/textshape_1.7.3.tar.gz
+	sha256sums = ba9ddfc0bc41501594fa98a09ef2808b6da7de69cfb7c3f2c542bee9bbb4314d
+
+pkgname = r-textshape
