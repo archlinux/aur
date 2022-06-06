@@ -1,0 +1,16 @@
+pkgbase = r-rapportools
+	pkgdesc = Miscellaneous (stats) helper functions with sane defaults for reporting
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=rapportools
+	arch = any
+	license = AGPL
+	depends = r
+	depends = r-pander
+	depends = r-plyr
+	depends = r-reshape
+	depends = r-reshape2
+	source = https://cran.r-project.org/src/contrib/rapportools_1.1.tar.gz
+	sha256sums = b5fab34bed484d20bb6cf27028f3d9009c482b079298d31a344f84675b342863
+
+pkgname = r-rapportools
