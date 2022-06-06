@@ -1,0 +1,20 @@
+pkgbase = r-gggenes
+	pkgdesc = Draw Gene Arrow Maps in 'ggplot2'
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gggenes
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggfittext
+	depends = r-ggplot2
+	depends = r-rlang
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/gggenes_0.4.1.tar.gz
+	sha256sums = 53a29d35d7169af18926e54a6adfa1bbcf09624cf40c109734841bf0c4b793e8
+
+pkgname = r-gggenes
