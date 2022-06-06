@@ -1,0 +1,20 @@
+pkgbase = r-dygraphs
+	pkgdesc = Interface to 'Dygraphs' Interactive Time Series Charting Library
+	pkgver = 1.1.1.6
+	pkgrel = 5
+	url = https://cran.r-project.org/package=dygraphs
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-magrittr
+	depends = r-xts
+	depends = r-zoo
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/dygraphs_1.1.1.6.tar.gz
+	sha256sums = c3d331f30012e721a048e04639f60ea738cd7e54e4f930ac9849b95f0f005208
+
+pkgname = r-dygraphs
