@@ -1,0 +1,32 @@
+pkgbase = r-tidygraph
+	pkgdesc = A Tidy API for Graph Manipulation
+	pkgver = 1.2.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=tidygraph
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-igraph
+	depends = r-magrittr
+	depends = r-pillar
+	depends = r-r6
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-ape
+	optdepends = r-covr
+	optdepends = r-data.tree
+	optdepends = r-graph
+	optdepends = r-influencer
+	optdepends = r-methods
+	optdepends = r-netrankr
+	optdepends = r-netswan
+	optdepends = r-network
+	optdepends = r-seriation
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tidygraph_1.2.1.tar.gz
+	sha256sums = 2fbdc2db18c5ad48c72f14d2d04111f4b0d4c434ad87c280eda3bcb98673ad36
+
+pkgname = r-tidygraph
