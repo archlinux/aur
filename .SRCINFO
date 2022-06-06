@@ -1,0 +1,14 @@
+pkgbase = r-easypubmed
+	pkgdesc = Search and Retrieve Scientific Publication Records from PubMed
+	pkgver = 2.13
+	pkgrel = 4
+	url = https://cran.r-project.org/package=easyPubMed
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/easyPubMed_2.13.tar.gz
+	sha256sums = ad94b76d7386594c1bd6fb008a7c2ee708d49712575632eef36f9e8f7d8ba8f1
+
+pkgname = r-easypubmed
