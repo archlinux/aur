@@ -1,0 +1,34 @@
+pkgbase = r-prophet
+	pkgdesc = Automatic Forecasting Procedure
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=prophet
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	depends = r
+	depends = r-bh
+	depends = r-dplyr
+	depends = r-dygraphs
+	depends = r-extradistr
+	depends = r-ggplot2
+	depends = r-lubridate
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rlang
+	depends = r-rstan
+	depends = r-rstantools
+	depends = r-scales
+	depends = r-stanheaders
+	depends = r-tidyr
+	depends = r-xts
+	optdepends = r-knitr
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/prophet_1.0.tar.gz
+	sha256sums = 94bea364c7c625bd34fee08da221b7a6c4d3ef939869f22229b2273fb7f2b91a
+
+pkgname = r-prophet
