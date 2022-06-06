@@ -189,7 +189,6 @@ build() {
     --enable-win64 \
     --with-xattr
 
-  MAKEFLAGS="-j1" \
   make
 
   msg2 "Building Wine-32..."
@@ -216,7 +215,6 @@ build() {
     --libdir=/usr/lib32 \
     --with-wine64="$srcdir/$pkgname-64-build"
 
-  MAKEFLAGS="-j1" \
   make
 }
 
