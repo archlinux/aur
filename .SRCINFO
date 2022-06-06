@@ -1,0 +1,16 @@
+pkgbase = r-urltools
+	pkgdesc = Vectorised Tools for URL Handling and Parsing
+	pkgver = 1.7.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=urltools
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcpp
+	depends = r-triebeard
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/urltools_1.7.3.tar.gz
+	sha256sums = 6020355c1b16a9e3956674e5dea9ac5c035c8eb3eb6bbdd841a2b5528cafa313
+
+pkgname = r-urltools
