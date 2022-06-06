@@ -1,0 +1,31 @@
+pkgbase = r-ggalluvial
+	pkgdesc = Alluvial Plots in 'ggplot2'
+	pkgver = 0.12.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggalluvial
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-lazyeval
+	depends = r-rlang
+	depends = r-tidyr
+	depends = r-tidyselect
+	optdepends = r-alluvial
+	optdepends = r-babynames
+	optdepends = r-ggfittext
+	optdepends = r-ggrepel
+	optdepends = r-grid
+	optdepends = r-htmltools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sessioninfo
+	optdepends = r-shiny
+	optdepends = r-sp
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggalluvial_0.12.3.tar.gz
+	sha256sums = 032e5959be201df54b19ebe2bc2e3f900a48375cdd0b517594dd8fd75fb26a56
+
+pkgname = r-ggalluvial
