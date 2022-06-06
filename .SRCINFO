@@ -1,0 +1,19 @@
+pkgbase = r-fastseg
+	pkgdesc = fastseg - a fast segmentation algorithm
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/fastseg
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-dnacopy
+	optdepends = r-oligo
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fastseg_1.42.0.tar.gz
+	sha256sums = 1e2644aa7bcabe41e91a6e9db44cbc52d425693d7486e3ee0f3fdcb7645821b3
+
+pkgname = r-fastseg
