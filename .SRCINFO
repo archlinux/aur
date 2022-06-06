@@ -1,0 +1,22 @@
+pkgbase = r-gispa
+	pkgdesc = GISPA: Method for Gene Integrated Set Profile Analysis
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GISPA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-changepoint
+	depends = r-data.table
+	depends = r-genefilter
+	depends = r-gseabase
+	depends = r-hh
+	depends = r-latticeextra
+	depends = r-plyr
+	depends = r-scatterplot3d
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GISPA_1.20.0.tar.gz
+	sha256sums = 30e5bf2e785f35c8ddc03cfa70b9571cf8eb25771292453d63e696a0b833fce2
+
+pkgname = r-gispa
