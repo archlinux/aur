@@ -1,0 +1,16 @@
+pkgbase = r-eva
+	pkgdesc = Extreme Value Analysis with Goodness-of-Fit Testing
+	pkgver = 0.2.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=eva
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-envstats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-spatialextremes
+	source = https://cran.r-project.org/src/contrib/eva_0.2.6.tar.gz
+	sha256sums = c2b8d972a6229bfdcd529576bd5f056c10343eed7b42ee876129f0d51ecfb0ac
+
+pkgname = r-eva
