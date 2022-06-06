@@ -1,0 +1,14 @@
+pkgbase = r-rismed
+	pkgdesc = Download Content from NCBI Databases
+	pkgver = 2.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RISmed
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-httr
+	depends = r-xml2
+	source = https://cran.r-project.org/src/contrib/RISmed_2.3.0.tar.gz
+	sha256sums = 0bd191bde3868c80d017caf2af7ccdf38763f892e94b68cd2e28a7f81f42f16e
+
+pkgname = r-rismed
