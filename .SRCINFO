@@ -1,0 +1,15 @@
+pkgbase = r-pgca
+	pkgdesc = PGCA: An Algorithm to Link Protein Groups Created from MS/MS Data
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pgca
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pgca_1.20.0.tar.gz
+	sha256sums = bd449f135a7e4de5ba8f2cdc91f01b2f2463bb830e10f551d86229ea480136d7
+
+pkgname = r-pgca
