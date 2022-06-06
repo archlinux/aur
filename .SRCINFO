@@ -1,0 +1,13 @@
+pkgbase = r-smoother
+	pkgdesc = Functions Relating to the Smoothing of Numerical Data
+	pkgver = 1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=smoother
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ttr
+	source = https://cran.r-project.org/src/contrib/smoother_1.1.tar.gz
+	sha256sums = 91b55b82f805cfa1deedacc0a4e844a2132aa59df593f3b05676954cf70a195b
+
+pkgname = r-smoother
