@@ -1,0 +1,19 @@
+pkgbase = r-msstatsqcgui
+	pkgdesc = A graphical user interface for MSstatsQC package
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MSstatsQCgui
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-dplyr
+	depends = r-ggextra
+	depends = r-gridextra
+	depends = r-msstatsqc
+	depends = r-plotly
+	depends = r-shiny
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsQCgui_1.16.0.tar.gz
+	sha256sums = b32d03de7479653493f488744c89636bee66c4059efef1d2ae3b9837edc7305b
+
+pkgname = r-msstatsqcgui
