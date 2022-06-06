@@ -1,0 +1,13 @@
+pkgbase = r-rcsdp
+	pkgdesc = R Interface to the CSDP Semidefinite Programming Library
+	pkgver = 0.1.57.2
+	pkgrel = 7
+	url = https://cran.r-project.org/package=Rcsdp
+	arch = x86_64
+	license = CPL
+	depends = r
+	optdepends = r-matrix
+	source = https://cran.r-project.org/src/contrib/Rcsdp_0.1.57.2.tar.gz
+	sha256sums = a70a84d33750a148657d5f91b181e228311da435e55ab00340e8b41a29c5321f
+
+pkgname = r-rcsdp
