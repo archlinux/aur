@@ -1,0 +1,20 @@
+pkgbase = r-ppistats
+	pkgdesc = Protein-Protein Interaction Statistical Package
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ppiStats
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-category
+	depends = r-graph
+	depends = r-rcolorbrewer
+	optdepends = r-ppidata
+	optdepends = r-scisi
+	optdepends = r-xtable
+	optdepends = r-yeastexpdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ppiStats_1.62.0.tar.gz
+	sha256sums = 01a9a0f95d0abb2d32d28bf064eb08a087cebc89c8ba2239e9a07801959baf70
+
+pkgname = r-ppistats
