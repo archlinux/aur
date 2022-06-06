@@ -1,0 +1,15 @@
+pkgbase = r-statip
+	pkgdesc = Statistical Functions for Probability Distributions and Regression
+	pkgver = 0.2.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=statip
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-clue
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/statip_0.2.3.tar.gz
+	sha256sums = 56a81a1882856cd1c5711ba133417b64f09071dda356e74280a0dba0db60d54f
+
+pkgname = r-statip
