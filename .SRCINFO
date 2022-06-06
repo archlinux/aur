@@ -1,0 +1,18 @@
+pkgbase = r-shinyfiles
+	pkgdesc = A Server-Side File System Viewer for Shiny
+	pkgver = 0.9.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=shinyFiles
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fs
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-shiny
+	depends = r-tibble
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/shinyFiles_0.9.2.tar.gz
+	sha256sums = 8fbe4b8e1478c5e5efdb8fddcbe210fd2275e61d9ff06efa1672f61dd3268ad0
+
+pkgname = r-shinyfiles
