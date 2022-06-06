@@ -1,0 +1,15 @@
+pkgbase = r-rfast
+	pkgdesc = A Collection of Efficient and Extremely Fast R Functions
+	pkgver = 2.0.6
+	pkgrel = 3
+	url = https://cran.r-project.org/package=Rfast
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppziggurat
+	source = https://cran.r-project.org/src/contrib/Rfast_2.0.6.tar.gz
+	sha256sums = 34694b5c67ce8fcbdc90aac2ac80a74d4b66515f383e6301aea7c020009ebe7f
+
+pkgname = r-rfast
