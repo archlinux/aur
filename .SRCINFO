@@ -1,0 +1,17 @@
+pkgbase = r-sna
+	pkgdesc = Tools for Social Network Analysis
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sna
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-network
+	depends = r-statnet.common
+	optdepends = r-numderiv
+	optdepends = r-rgl
+	optdepends = r-sparsem
+	source = https://cran.r-project.org/src/contrib/sna_2.7.tar.gz
+	sha256sums = 440fa4347c7b437e93c73127d34894068afd240d3128898474a7201e740a434d
+
+pkgname = r-sna
