@@ -1,0 +1,26 @@
+pkgbase = r-geodiff
+	pkgdesc = Count model based differential expression and normalization on GeoMx RNA data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GeoDiff
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-biobase
+	depends = r-geomxtools
+	depends = r-lme4
+	depends = r-nanostringnctools
+	depends = r-plyr
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-robust
+	depends = r-roptim
+	depends = r-testthat
+	depends = r-withr
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeoDiff_1.2.0.tar.gz
+	sha256sums = 9fc1c6f910bcbc8ecd8d592fdac0fff6a34667128ebfb2e78a59ed234d670b68
+
+pkgname = r-geodiff
