@@ -1,0 +1,22 @@
+pkgbase = r-qrqc
+	pkgdesc = Quick Read Quality Control
+	pkgver = 1.50.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/qrqc
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-biovizbase
+	depends = r-brew
+	depends = r-ggplot2
+	depends = r-plyr
+	depends = r-reshape
+	depends = r-rhtslib
+	depends = r-testthat
+	depends = r-xtable
+	depends = make
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qrqc_1.50.0.tar.gz
+	sha256sums = 0578b7ca92825fe506aa36432057c386d8088da3bd9e01f3dfccce5e9ee86637
+
+pkgname = r-qrqc
