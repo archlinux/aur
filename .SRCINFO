@@ -1,0 +1,13 @@
+pkgbase = r-flowsorted.blood.450k
+	pkgdesc = Illumina HumanMethylation data on sorted blood cell populations
+	pkgver = 1.34.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/FlowSorted.Blood.450k
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-minfi
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/FlowSorted.Blood.450k_1.34.0.tar.gz
+	sha256sums = db8e1cd0208d0111ec02359460e73d9eb647a815d08e28fcfb87ea259f49209e
+
+pkgname = r-flowsorted.blood.450k
