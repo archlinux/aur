@@ -8,7 +8,7 @@ arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/cbeuw/Cloak'
 license=('GPL3')
 conflicts=("cloak-obfuscation" "cloak-obfuscation-git")
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("cloak-obfuscation-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source_x86_64=(
     "${url}/releases/download/v${pkgver}/ck-client-linux-amd64-v${pkgver}"
     "${url}/releases/download/v${pkgver}/ck-server-linux-amd64-v${pkgver}"
