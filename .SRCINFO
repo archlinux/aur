@@ -1,0 +1,25 @@
+pkgbase = r-trendy
+	pkgdesc = Breakpoint analysis of time-course expression data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Trendy
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocparallel
+	depends = r-dt
+	depends = r-gplots
+	depends = r-magrittr
+	depends = r-s4vectors
+	depends = r-segmented
+	depends = r-shiny
+	depends = r-shinyfiles
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Trendy_1.18.0.tar.gz
+	sha256sums = ff1b32949ae3bc55ab8533b9f5e86a2c45774c896f9b50053d2ee339528d321b
+
+pkgname = r-trendy
