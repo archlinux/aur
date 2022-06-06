@@ -1,0 +1,29 @@
+pkgbase = r-korpus
+	pkgdesc = Text Analysis with Emphasis on POS Tagging, Readability, and Lexical Diversity
+	pkgver = 0.13.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=koRpus
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-sylly
+	optdepends = r-knitr
+	optdepends = r-korpus.lang.de
+	optdepends = r-korpus.lang.en
+	optdepends = r-korpus.lang.es
+	optdepends = r-korpus.lang.fr
+	optdepends = r-korpus.lang.it
+	optdepends = r-korpus.lang.nl
+	optdepends = r-korpus.lang.pt
+	optdepends = r-korpus.lang.ru
+	optdepends = r-rkward
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	optdepends = r-snowballc
+	optdepends = r-testthat
+	optdepends = r-tm
+	source = https://cran.r-project.org/src/contrib/koRpus_0.13-8.tar.gz
+	sha256sums = 0e9a4a332eeb33a0c9d0feab36ca1554ce5a3192717dc97a9ca3f011bf132a65
+
+pkgname = r-korpus
