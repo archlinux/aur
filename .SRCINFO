@@ -1,0 +1,12 @@
+pkgbase = r-isolde
+	pkgdesc = Integrative Statistics of alleLe Dependent Expression
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ISoLDE
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ISoLDE_1.24.0.tar.gz
+	sha256sums = b7ff7b1af71480fb709ba984cbc72cf67a452a1fa43b81a71bd4789261f18f8d
+
+pkgname = r-isolde
