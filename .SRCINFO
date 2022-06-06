@@ -1,0 +1,19 @@
+pkgbase = r-yaimpute
+	pkgdesc = Nearest Neighbor Observation Imputation and Evaluation Tools
+	pkgver = 1.0.32
+	pkgrel = 4
+	url = https://cran.r-project.org/package=yaImpute
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-ccapp
+	optdepends = r-fastica
+	optdepends = r-gam
+	optdepends = r-gower
+	optdepends = r-parallel
+	optdepends = r-randomforest
+	optdepends = r-vegan
+	source = https://cran.r-project.org/src/contrib/yaImpute_1.0-32.tar.gz
+	sha256sums = 08eee5d851b80aad9c7c80f9531aadd50d60e4b16b3a80657a50212269cd73ff
+
+pkgname = r-yaimpute
