@@ -1,0 +1,31 @@
+pkgbase = r-multipanelfigure
+	pkgdesc = Infrastructure to Assemble Multi-Panel Figures (from Grobs)
+	pkgver = 2.1.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=multipanelfigure
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertive.base
+	depends = r-assertive.files
+	depends = r-assertive.numbers
+	depends = r-assertive.properties
+	depends = r-assertive.types
+	depends = r-ggplot2
+	depends = r-gridgraphics
+	depends = r-gtable
+	depends = r-magick
+	depends = r-magrittr
+	depends = r-stringi
+	optdepends = r-complexheatmap
+	optdepends = r-grdevices
+	optdepends = r-knitr
+	optdepends = r-lattice
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-venndiagram
+	source = https://cran.r-project.org/src/contrib/multipanelfigure_2.1.2.tar.gz
+	sha256sums = eca98888d2f7c8887764443633bd557e9100f73694b2e5df68a63b304f5ba532
+
+pkgname = r-multipanelfigure
