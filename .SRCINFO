@@ -1,0 +1,23 @@
+pkgbase = r-seqmagick
+	pkgdesc = Sequence Manipulation Utilities
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=seqmagick
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-magrittr
+	optdepends = r-downloader
+	optdepends = r-genomicalignments
+	optdepends = r-genomicranges
+	optdepends = r-iranges
+	optdepends = r-knitr
+	optdepends = r-muscle
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-rsamtools
+	source = https://cran.r-project.org/src/contrib/seqmagick_0.1.5.tar.gz
+	sha256sums = 6facd51e9b7bb68c1b59e61c6fea07a6042d26d78f81eda4ba754c84ba6e3b40
+
+pkgname = r-seqmagick
