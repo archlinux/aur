@@ -1,0 +1,16 @@
+pkgbase = r-qvcalc
+	pkgdesc = Quasi Variances for Factor Effects in Statistical Models
+	pkgver = 1.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qvcalc
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-mass
+	optdepends = r-psychotools
+	optdepends = r-relimp
+	optdepends = r-survival
+	source = https://cran.r-project.org/src/contrib/qvcalc_1.0.2.tar.gz
+	sha256sums = 90cdacc5d1bd429ef7b1ba91f77b5bebee3e4f7f1506b8dcf2a3ac89cefe562d
+
+pkgname = r-qvcalc
