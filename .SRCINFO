@@ -1,0 +1,19 @@
+pkgbase = r-soupx
+	pkgdesc = Single Cell mRNA Soup eXterminator
+	pkgver = 1.6.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=SoupX
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-seurat
+	optdepends = r-dropletutils
+	optdepends = r-formatr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-rstan
+	source = https://cran.r-project.org/src/contrib/SoupX_1.6.1.tar.gz
+	sha256sums = 2539371ed9e47f5e3c8d86ed6aef155adbe2372a873e225f3b51f1f867f47320
+
+pkgname = r-soupx
