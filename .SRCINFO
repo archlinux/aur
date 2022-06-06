@@ -1,0 +1,25 @@
+pkgbase = r-networktoolbox
+	pkgdesc = Methods and Measures for Brain, Cognitive, and Psychometric Network Analysis
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=NetworkToolbox
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-corrplot
+	depends = r-doparallel
+	depends = r-fdrtool
+	depends = r-foreach
+	depends = r-igraph
+	depends = r-isingfit
+	depends = r-pbapply
+	depends = r-ppcor
+	depends = r-psych
+	depends = r-pwr
+	depends = r-qgraph
+	depends = r-r.matlab
+	optdepends = r-googledrive
+	source = https://cran.r-project.org/src/contrib/NetworkToolbox_1.4.2.tar.gz
+	sha256sums = c70fab7c5d7f77d2801ab8783ef1da1b3a5abc88f869fdfea555f7a0eb8fcf08
+
+pkgname = r-networktoolbox
