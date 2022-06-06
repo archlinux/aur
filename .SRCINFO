@@ -1,0 +1,20 @@
+pkgbase = r-jaspcochrane
+	pkgdesc = Cochrane Module for JASP
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspCochrane
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-jaspdescriptives
+	depends = r-jaspmetaanalysis
+	optdepends = r-testthat
+	source = git+https://github.com/jasp-stats/jaspCochrane.git
+	sha256sums = SKIP
+
+pkgname = r-jaspcochrane
