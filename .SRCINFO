@@ -1,0 +1,13 @@
+pkgbase = r-ensdb.hsapiens.v75
+	pkgdesc = Ensembl based annotation package
+	pkgver = 2.99.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/EnsDb.Hsapiens.v75
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ensembldb
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/EnsDb.Hsapiens.v75_2.99.0.tar.gz
+	sha256sums = 2c59f95959f344b2a3eaa65a00086b01a420823e30b0810fc81e49b08dcba64b
+
+pkgname = r-ensdb.hsapiens.v75
