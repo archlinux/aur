@@ -1,0 +1,23 @@
+pkgbase = r-doser
+	pkgdesc = doseR
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/doseR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	depends = r-edger
+	depends = r-lme4
+	depends = r-matrixstats
+	depends = r-mclust
+	depends = r-runit
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/doseR_1.12.0.tar.gz
+	sha256sums = 1cec66aee584e794eaf03780308d9a0b9e2663cadc21bacfbe36a903ae1de9bc
+
+pkgname = r-doser
