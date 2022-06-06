@@ -1,7 +1,7 @@
 # Maintainer: Yongchun Jiang <me at JSpringYC@gmail.com>
 pkgname=clash-for-windows-chinese
 pkgver=0.19.20
-pkgrel=0
+pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
@@ -48,7 +48,7 @@ package() {
         -exec install -Dm 755 {} "${pkgdir}/opt/${pkgname}"/{} \;
     cd ../
     install -Dm 755 cfw ${pkgdir}/usr/bin/cfw
-    install -Dm 644 clash.png ${pkgdir}/usr/share/pixmaps/clash.png
+    install -Dm 644 clash.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/clash.png
     install -Dm 644 clash-for-windows-chinese.desktop ${pkgdir}/usr/share/applications/clash-for-windows-chinese.desktop
     cp "${srcdir}/app.asar" "${pkgdir}/opt/${pkgname}/resources/"
 }
