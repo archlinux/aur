@@ -1,0 +1,16 @@
+pkgbase = r-org.dr.eg.db
+	pkgdesc = Genome wide annotation for Zebrafish
+	pkgver = 3.15.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/org.Dr.eg.db
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	optdepends = r-annotate
+	optdepends = r-dbi
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/org.Dr.eg.db_3.15.0.tar.gz
+	sha256sums = 96143b221a67d91c6c925647a1dfe323b0f5e8c32317c692e27a138d30e6af5a
+
+pkgname = r-org.dr.eg.db
