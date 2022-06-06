@@ -1,15 +1,14 @@
 pkgbase = r-mcmc
 	pkgdesc = Markov Chain Monte Carlo
-	pkgver = 0.9.5
-	pkgrel = 1
+	pkgver = 0.9.7
+	pkgrel = 4
 	url = https://cran.r-project.org/package=mcmc
 	arch = x86_64
 	license = MIT
 	depends = r
-	optdepends = r-xtable
 	optdepends = r-iso
-	source = https://cran.r-project.org/src/contrib/mcmc_0.9-5.tar.gz
-	md5sums = b935c93882c1ea87c90dd7e562fb6ade
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/mcmc_0.9-7.tar.gz
+	sha256sums = b7c4d3d5f9364c67a4a3cd49296a61c315ad9bd49324a22deccbacb314aa8260
 
 pkgname = r-mcmc
-
