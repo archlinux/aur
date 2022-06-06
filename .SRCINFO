@@ -1,0 +1,19 @@
+pkgbase = r-synapsis
+	pkgdesc = An R package to automate the analysis of double-strand break repair during meiosis
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/synapsis
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ebimage
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyverse
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/synapsis_1.2.0.tar.gz
+	sha256sums = 5ef2a5d2958353d6e54360527f3df872bde68382ebfa0b081ff76a4445d112d5
+
+pkgname = r-synapsis
