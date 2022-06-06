@@ -1,0 +1,24 @@
+pkgbase = r-marr
+	pkgdesc = Maximum rank reproducibility
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/marr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-rcpp
+	depends = r-rlang
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/marr_1.6.0.tar.gz
+	sha256sums = adf2e709e663dbdd9722d6c04384866f9e37e7393ac714b898b89cd93918faf8
+
+pkgname = r-marr
