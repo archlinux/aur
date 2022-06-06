@@ -1,0 +1,25 @@
+pkgbase = r-translatome
+	pkgdesc = Comparison between multiple levels of gene expression
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tRanslatome
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-anota
+	depends = r-biobase
+	depends = r-deseq2
+	depends = r-edger
+	depends = r-gosemsim
+	depends = r-gplots
+	depends = r-heatplus
+	depends = r-limma
+	depends = r-org.hs.eg.db
+	depends = r-plotrix
+	depends = r-rankprod
+	depends = r-sigpathway
+	depends = r-topgo
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tRanslatome_1.34.0.tar.gz
+	sha256sums = ea2fbde3e86387f4a7cb9c89d03bc6bf2cae3195ffcc31d2be4e3bf0320d615f
+
+pkgname = r-translatome
