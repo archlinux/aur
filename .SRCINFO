@@ -1,0 +1,14 @@
+pkgbase = r-smoothie
+	pkgdesc = Two-Dimensional Field Smoothing
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=smoothie
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-fields
+	optdepends = r-spatialvx
+	source = https://cran.r-project.org/src/contrib/smoothie_1.0-3.tar.gz
+	sha256sums = 086f2ed935ec2a26865f8776da91c7ba4f50988b4e6f535e57cdeb4db62231ab
+
+pkgname = r-smoothie
