@@ -1,0 +1,22 @@
+pkgbase = r-reactomecontentservice4r
+	pkgdesc = Interface for the Reactome Content Service
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ReactomeContentService4R
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-data.table
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-magick
+	optdepends = r-knitr
+	optdepends = r-pdftools
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ReactomeContentService4R_1.4.0.tar.gz
+	sha256sums = d7c5ce67ac851982182e6a65bc4348d5951850df4809e50bf9523ab7bc0c99ec
+
+pkgname = r-reactomecontentservice4r
