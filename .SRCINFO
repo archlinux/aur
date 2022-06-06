@@ -1,0 +1,15 @@
+pkgbase = r-freqprof
+	pkgdesc = Frequency Profiles Computing and Plotting
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=FreqProf
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-reshape2
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/FreqProf_0.0.1.tar.gz
+	sha256sums = a409b4e24b302e9aa9d41833f4935177639f7606aad6b299834f0b5a061116fb
+
+pkgname = r-freqprof
