@@ -1,0 +1,14 @@
+pkgbase = r-rcppannoy
+	pkgdesc = 'Rcpp' Bindings for 'Annoy', a Library for Approximate Nearest Neighbors
+	pkgver = 0.0.19
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RcppAnnoy
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/RcppAnnoy_0.0.19.tar.gz
+	sha256sums = 89b209900516f3096b53c90937081fb8965c605c867aa465f1b3b68092b7688a
+
+pkgname = r-rcppannoy
