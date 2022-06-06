@@ -1,0 +1,27 @@
+pkgbase = r-ivas
+	pkgdesc = Identification of genetic Variants affecting Alternative Splicing
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IVAS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-genomeinfodb
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-ggfortify
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-lme4
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IVAS_2.16.0.tar.gz
+	sha256sums = fc4f84625abfd79cc7b31d64919e713365f86e4b7a9397adcde29e758a829aba
+
+pkgname = r-ivas
