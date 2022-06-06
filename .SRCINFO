@@ -1,0 +1,14 @@
+pkgbase = r-icsnp
+	pkgdesc = Tools for Multivariate Nonparametrics
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ICSNP
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ics
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/ICSNP_1.1-1.tar.gz
+	sha256sums = cd9d70977c448e46dd37b718e9127859cb7d081579f81897c652d6c66798c0fd
+
+pkgname = r-icsnp
