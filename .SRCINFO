@@ -1,0 +1,15 @@
+pkgbase = r-paireddata
+	pkgdesc = Paired Data Analysis
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=PairedData
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gld
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/PairedData_1.1.1.tar.gz
+	sha256sums = b8e45503734eae1893a50cd0ae60b0a41fcb90f28138a61605d7f1e94873c51f
+
+pkgname = r-paireddata
