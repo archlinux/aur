@@ -1,0 +1,22 @@
+pkgbase = r-meshes
+	pkgdesc = MeSH Enrichment and Semantic analyses
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/meshes
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-annotationhub
+	depends = r-dose
+	depends = r-enrichplot
+	depends = r-gosemsim
+	depends = r-meshdbi
+	depends = r-yulab.utils
+	optdepends = r-knitr
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/meshes_1.22.0.tar.gz
+	sha256sums = f82a6ef9986abf229e649bc4d0994225dcba2fefb124049fa0f3f32cf8d1cea9
+
+pkgname = r-meshes
