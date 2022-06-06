@@ -1,0 +1,21 @@
+pkgbase = r-polyester
+	pkgdesc = Simulate RNA-seq reads
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/polyester
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biostrings
+	depends = r-iranges
+	depends = r-limma
+	depends = r-logspline
+	depends = r-s4vectors
+	depends = r-zlibbioc
+	optdepends = r-ballgown
+	optdepends = r-knitr
+	optdepends = r-markdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/polyester_1.32.0.tar.gz
+	sha256sums = fe7cee66c8bb7bd1eab3a26852c34742524478b2b762bc5806a07b83df5345d0
+
+pkgname = r-polyester
