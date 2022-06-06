@@ -1,0 +1,17 @@
+pkgbase = r-rhdf5lib
+	pkgdesc = hdf5 library as an R package
+	pkgver = 1.18.2
+	pkgrel = 3
+	url = https://bioconductor.org/packages/Rhdf5lib
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-mockery
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhdf5lib_1.18.2.tar.gz
+	sha256sums = 8f9893a4c8173f5d154e2a0b9f73f0f575ac17481a3bf943f99e88c30e44ebca
+
+pkgname = r-rhdf5lib
