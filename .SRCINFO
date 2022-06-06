@@ -1,0 +1,18 @@
+pkgbase = r-pathvar
+	pkgdesc = Methods to Find Pathways with Significantly Different Variability
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pathVar
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-data.table
+	depends = r-emt
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-matching
+	depends = r-mclust
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pathVar_1.26.0.tar.gz
+	sha256sums = 386a70a4049379964c683fd6c02e6cba039609aaebb03e40760c2518accfede0
+
+pkgname = r-pathvar
