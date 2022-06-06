@@ -1,0 +1,18 @@
+pkgbase = r-rentrez
+	pkgdesc = 'Entrez' in R
+	pkgver = 1.2.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rentrez
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-xml
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rentrez_1.2.3.tar.gz
+	sha256sums = fb256597ebe7780e38bef9c4c2626b3feacd60c7a5a29fc6a218cf0d8d132f74
+
+pkgname = r-rentrez
