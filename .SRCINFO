@@ -1,0 +1,15 @@
+pkgbase = r-lavaan
+	pkgdesc = Latent Variable Analysis
+	pkgver = 0.6.11
+	pkgrel = 4
+	url = https://cran.r-project.org/package=lavaan
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mnormt
+	depends = r-numderiv
+	depends = r-pbivnorm
+	source = https://cran.r-project.org/src/contrib/lavaan_0.6-11.tar.gz
+	sha256sums = 2cc193b82463a865cd8dadb7332409fdebf47e4035d5fe8dbf3414a7ae18d308
+
+pkgname = r-lavaan
