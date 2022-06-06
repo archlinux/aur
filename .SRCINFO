@@ -1,0 +1,16 @@
+pkgbase = r-scale4c
+	pkgdesc = Scale4C: an R/Bioconductor package for scale-space transformation of 4C-seq data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Scale4C
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-smoothie
+	depends = r-summarizedexperiment
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Scale4C_1.18.0.tar.gz
+	sha256sums = 33c2d3cab4b59a4178cb06cf23c49243ffb558d23450bf038da85225d1d5c358
+
+pkgname = r-scale4c
