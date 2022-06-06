@@ -1,0 +1,14 @@
+pkgbase = r-plpe
+	pkgdesc = Local Pooled Error Test for Differential Expression with Paired High-throughput Data
+	pkgver = 1.56.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PLPE
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-lpe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PLPE_1.56.0.tar.gz
+	sha256sums = 63035d9b25c2c4ef2befe8f6787b5857ac1ae358fbdbf18f1af98f71feeb421f
+
+pkgname = r-plpe
