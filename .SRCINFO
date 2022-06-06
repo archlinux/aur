@@ -1,0 +1,23 @@
+pkgbase = r-vsn
+	pkgdesc = Variance stabilization and calibration for microarray data
+	pkgver = 3.64.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/vsn
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-ggplot2
+	depends = r-limma
+	optdepends = r-affydata
+	optdepends = r-biocstyle
+	optdepends = r-dplyr
+	optdepends = r-hgu95av2cdf
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/vsn_3.64.0.tar.gz
+	sha256sums = 0ebf308a53caf996c5cb93685cddef071bb68975df25770a0dc7f4b765db47c9
+
+pkgname = r-vsn
