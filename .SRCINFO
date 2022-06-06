@@ -1,0 +1,17 @@
+pkgbase = r-scico
+	pkgdesc = Colour Palettes Based on the Scientific Colour-Maps
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=scico
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-scales
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/scico_1.3.0.tar.gz
+	sha256sums = 234a7ba14042e5c7efd3e2782922ca591021a8f467446b0e6f1be8d2e472f921
+
+pkgname = r-scico
