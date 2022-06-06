@@ -1,0 +1,21 @@
+pkgbase = r-maxlik
+	pkgdesc = Maximum Likelihood Estimation and Related Tools
+	pkgver = 1.5.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=maxLik
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-generics
+	depends = r-misctools
+	depends = r-sandwich
+	optdepends = r-clue
+	optdepends = r-dlm
+	optdepends = r-mass
+	optdepends = r-plot3d
+	optdepends = r-tibble
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/maxLik_1.5-2.tar.gz
+	sha256sums = 7cee05be0624b6a76911fa7b0d66f3e1b78460e0c55ed8bc904ce1e8af7bb15d
+
+pkgname = r-maxlik
