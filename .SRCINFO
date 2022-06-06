@@ -1,0 +1,27 @@
+pkgbase = r-newwave
+	pkgdesc = Negative binomial model for scRNA-seq
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/NewWave
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocsingular
+	depends = r-delayedarray
+	depends = r-irlba
+	depends = r-sharedobject
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-mclust
+	optdepends = r-rcpp
+	optdepends = r-rmarkdown
+	optdepends = r-rtsne
+	optdepends = r-splatter
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NewWave_1.6.0.tar.gz
+	sha256sums = 6bc7ce0d0a49e10385517a196890d623753d080f1333f9f09cb6c549fdf69fcc
+
+pkgname = r-newwave
