@@ -2,7 +2,7 @@
 
 pkgname=paper-note-git
 _pkgname=paper
-pkgver=r122.1db7cfb
+pkgver=r169.52d48a8
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64')
@@ -21,15 +21,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-	cd "${_pkgname%-git}"
-	
-	mv data/markdown.lang data/paper_markdown.lang
-	
-	sed -i 's/markdown.lang/paper_markdown.lang/g' \
-    data/meson.build
 }
 
 build() {
