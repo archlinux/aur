@@ -2,7 +2,7 @@
 # vim: ts=2 sw=2 et:
 
 pkgname=cfonts
-pkgver=1.0.3rust
+pkgver=1.0.4rust
 pkgrel=1
 pkgdesc='Sexy ANSI fonts for the console'
 arch=('x86_64')

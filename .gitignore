@@ -1,0 +1,6 @@
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+.tmp
+temp
+tmp
