@@ -1,0 +1,18 @@
+pkgbase = r-tfhaz
+	pkgdesc = Transcription Factor High Accumulation Zones
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TFHAZ
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TFHAZ_1.18.0.tar.gz
+	sha256sums = 32f634af62429d904f786ab2352626f5425bb763b83528ca6e28e4b6df81b6b0
+
+pkgname = r-tfhaz
