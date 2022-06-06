@@ -1,0 +1,17 @@
+pkgbase = r-phater
+	pkgdesc = PHATE - Potential of Heat-Diffusion for Affinity-Based Transition Embedding
+	pkgver = 1.0.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=phateR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-memoise
+	depends = r-reticulate
+	optdepends = r-cowplot
+	optdepends = r-gridgraphics
+	source = https://cran.r-project.org/src/contrib/phateR_1.0.7.tar.gz
+	sha256sums = c5c221d644f6ee6f69f03f7b73c93392c3bfe456cb71490a20022805bc33ab9b
+
+pkgname = r-phater
