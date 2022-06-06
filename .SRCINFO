@@ -1,0 +1,20 @@
+pkgbase = r-wrench
+	pkgdesc = Wrench normalization for sparse count data
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Wrench
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-limma
+	depends = r-locfit
+	depends = r-matrixstats
+	optdepends = r-deseq2
+	optdepends = r-edger
+	optdepends = r-knitr
+	optdepends = r-metagenomeseq
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Wrench_1.14.0.tar.gz
+	sha256sums = 8afd0fa42accbd4058cf62a1edba2659047c49b911612d7441928753892ea6ff
+
+pkgname = r-wrench
