@@ -1,0 +1,24 @@
+pkgbase = r-preda
+	pkgdesc = Position Related Data Analysis
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PREDA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotate
+	depends = r-biobase
+	depends = r-lokern
+	depends = r-multtest
+	optdepends = r-affy
+	optdepends = r-catools
+	optdepends = r-limma
+	optdepends = r-predasampledata
+	optdepends = r-quantsmooth
+	optdepends = r-qvalue
+	optdepends = r-rmpi
+	optdepends = r-rsprng
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PREDA_1.42.0.tar.gz
+	sha256sums = 0fabad5239a683e41d522cc6b7a0ec6879379e14d1db42c2b01e8e7e4a437483
+
+pkgname = r-preda
