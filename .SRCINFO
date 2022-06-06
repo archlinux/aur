@@ -1,0 +1,21 @@
+pkgbase = r-metama
+	pkgdesc = Meta-analysis for MicroArrays
+	pkgver = 3.1.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=metaMA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-limma
+	depends = r-smvar
+	optdepends = r-annaffy
+	optdepends = r-geoquery
+	optdepends = r-hgu133a.db
+	optdepends = r-hgu133plus2.db
+	optdepends = r-hgu95av2.db
+	optdepends = r-org.hs.eg.db
+	optdepends = r-venndiagram
+	source = https://cran.r-project.org/src/contrib/metaMA_3.1.3.tar.gz
+	sha256sums = 3a0c0351b83419984095cb2c1d77d222d1cdb7158dd8c80fc384bf175ab9358e
+
+pkgname = r-metama
