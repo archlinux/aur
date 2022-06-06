@@ -1,0 +1,15 @@
+pkgbase = r-orgmassspecr
+	pkgdesc = Organic Mass Spectrometry
+	pkgver = 0.5.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=OrgMassSpecR
+	arch = any
+	license = BSD
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-lattice
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/OrgMassSpecR_0.5-3.tar.gz
+	sha256sums = 88f9dd92969a0e9cb5c5bc0abd67143f8f1dbb75f01bc13cf4d8b5b0326aa9b7
+
+pkgname = r-orgmassspecr
