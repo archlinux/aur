@@ -1,0 +1,21 @@
+pkgbase = r-edge
+	pkgdesc = Extraction of Differential Gene Expression
+	pkgver = 2.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/edge
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-biobase
+	depends = r-jackstraw
+	depends = r-qvalue
+	depends = r-snm
+	depends = r-sva
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-reshape2
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/edge_2.28.0.tar.gz
+	sha256sums = 6600186e2835fedc5c6dbe6e3416e26f79d75082ce584b17b9ae723efe3d8db6
+
+pkgname = r-edge
