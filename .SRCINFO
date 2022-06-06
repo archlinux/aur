@@ -1,0 +1,23 @@
+pkgbase = r-peco
+	pkgdesc = A Supervised Approach for **P**r**e**dicting **c**ell Cycle Pr**o**gression using scRNA-seq data
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/peco
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-circular
+	depends = r-conicfit
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-genlasso
+	depends = r-scater
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/peco_1.8.0.tar.gz
+	sha256sums = 76c68d47e11486936c94be526d68a2d10f48515bbb9460f9fb8736ebd941b88a
+
+pkgname = r-peco
