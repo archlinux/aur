@@ -1,0 +1,18 @@
+pkgbase = r-sylly
+	pkgdesc = Hyphenation and Syllable Counting for Text Analysis
+	pkgver = 0.1.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sylly
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-sylly.de
+	optdepends = r-sylly.en
+	optdepends = r-sylly.es
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sylly_0.1-6.tar.gz
+	sha256sums = b5d601178384ac24c4bca752690ea30b0901673e4b92e449a87eba125a9a0338
+
+pkgname = r-sylly
