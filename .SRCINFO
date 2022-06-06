@@ -1,0 +1,15 @@
+pkgbase = r-rmixmod
+	pkgdesc = Classification with Mixture Modelling
+	pkgver = 2.1.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Rmixmod
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = make
+	source = https://cran.r-project.org/src/contrib/Rmixmod_2.1.6.tar.gz
+	sha256sums = daa8e00d0ebf6ec11af327518bda1cdc043c6568c45b5f607b4c6b3999c7376f
+
+pkgname = r-rmixmod
