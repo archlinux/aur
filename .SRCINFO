@@ -1,0 +1,13 @@
+pkgbase = r-minet
+	pkgdesc = Mutual Information NETworks
+	pkgver = 3.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/minet
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-infotheo
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/minet_3.54.0.tar.gz
+	sha256sums = 5531aea23ec8b14b690c1a35e10b0dbdb6c30af9cfab7fa5f538d189a5e0d260
+
+pkgname = r-minet
