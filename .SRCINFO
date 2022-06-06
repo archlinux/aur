@@ -1,0 +1,23 @@
+pkgbase = r-gnet2
+	pkgdesc = Constructing gene regulatory networks from expression data through functional module inference
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GNET2
+	arch = x86_64
+	license = Apache
+	depends = r
+	depends = r-diagrammer
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-igraph
+	depends = r-matrixstats
+	depends = r-rcpp
+	depends = r-reshape2
+	depends = r-summarizedexperiment
+	depends = r-xgboost
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GNET2_1.12.0.tar.gz
+	sha256sums = deaf080cd9d2d45ad2716b8c3fccd5c5684912bd8f876b57ba252e07a16709e8
+
+pkgname = r-gnet2
