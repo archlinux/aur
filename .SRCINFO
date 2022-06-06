@@ -1,15 +1,16 @@
 pkgbase = ect
 	pkgdesc = file compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/fhanau/Efficient-Compression-Tool
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = nasm
+	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	source = Efficient-Compression-Tool-0.9.1.tar.gz::https://github.com/fhanau/Efficient-Compression-Tool/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = b4af4f1da55ca5ebc1f02029bb7fc7de9c6a45593d1866f35cdca839e01c1a1f
+	source = git+https://github.com/fhanau/Efficient-Compression-Tool.git#commit=f920e54bb1b584d3c3d75d3d90d8cfedd04d2fbe
+	md5sums = SKIP
 
 pkgname = ect

@@ -4,15 +4,15 @@
 pkgname=ect
 _pkgname=Efficient-Compression-Tool
 pkgver=0.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc='file compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files.'
 url='https://github.com/fhanau/Efficient-Compression-Tool'
 arch=('i686' 'x86_64')
 license=('Apache')
-source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4af4f1da55ca5ebc1f02029bb7fc7de9c6a45593d1866f35cdca839e01c1a1f')
+source=("git+https://github.com/fhanau/Efficient-Compression-Tool.git#commit=f920e54bb1b584d3c3d75d3d90d8cfedd04d2fbe")
+md5sums=('SKIP')
 depends=('gcc-libs')
-makedepends=('nasm' 'cmake')
+makedepends=('nasm' 'git' 'cmake')
 
 prepare() {
   cd ${_pkgname}
@@ -29,9 +29,8 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}/src
-
-  PREFIX=/usr/ DESTDIR="${pkgdir}" make install
+  cd ${_pkgname}/build
+  install -Dm755 ect "$pkgdir"/usr/bin/ect 
   cd "${pkgdir}"/usr/bin
 
   # Some things expect this to be an all-caps name
