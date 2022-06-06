@@ -1,0 +1,35 @@
+pkgbase = r-rsample
+	pkgdesc = General Resampling Infrastructure
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rsample
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-ellipsis
+	depends = r-furrr
+	depends = r-generics
+	depends = r-lifecycle
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-slider
+	depends = r-tibble
+	depends = r-tidyr
+	depends = r-tidyselect
+	depends = r-vctrs
+	optdepends = r-broom
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-modeldata
+	optdepends = r-recipes
+	optdepends = r-rmarkdown
+	optdepends = r-stats
+	optdepends = r-testthat
+	optdepends = r-utils
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/rsample_0.1.1.tar.gz
+	sha256sums = 5f10359723a971d1bdf03d74292d1b0c7778d5f8ab9a2559daab6ff78984bc07
+
+pkgname = r-rsample
