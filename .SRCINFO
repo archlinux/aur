@@ -1,0 +1,32 @@
+pkgbase = r-heatmaply
+	pkgdesc = Interactive Cluster Heat Maps Using 'plotly' and 'ggplot2'
+	pkgver = 1.3.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=heatmaply
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-colorspace
+	depends = r-dendextend
+	depends = r-egg
+	depends = r-ggplot2
+	depends = r-htmlwidgets
+	depends = r-magrittr
+	depends = r-plotly
+	depends = r-rcolorbrewer
+	depends = r-reshape2
+	depends = r-scales
+	depends = r-seriation
+	depends = r-viridis
+	depends = r-webshot
+	optdepends = r-covr
+	optdepends = r-gplots
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyselect
+	source = https://cran.r-project.org/src/contrib/heatmaply_1.3.0.tar.gz
+	sha256sums = 0a5d269c4837dd66fbfa6b87fd648bdef222f1ad6f33df3f695d5164d6f71ef1
+
+pkgname = r-heatmaply
