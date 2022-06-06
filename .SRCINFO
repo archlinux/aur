@@ -1,0 +1,24 @@
+pkgbase = r-qcmetrics
+	pkgdesc = A Framework for Quality Control
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/qcmetrics
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-knitr
+	depends = r-pander
+	depends = r-s4vectors
+	depends = r-xtable
+	optdepends = r-affy
+	optdepends = r-biocstyle
+	optdepends = r-ggplot2
+	optdepends = r-lattice
+	optdepends = r-msnbase
+	optdepends = r-mzr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qcmetrics_1.34.0.tar.gz
+	sha256sums = 6c4646f92f5acab080dd804b80e551c752f80108b1feb7dd22d1a179da9122f7
+
+pkgname = r-qcmetrics
