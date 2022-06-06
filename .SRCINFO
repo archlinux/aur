@@ -1,0 +1,26 @@
+pkgbase = r-enhancedvolcano
+	pkgdesc = Publication-ready volcano plots with enhanced colouring and labeling
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EnhancedVolcano
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggalt
+	depends = r-ggplot2
+	depends = r-ggrastr
+	depends = r-ggrepel
+	optdepends = r-airway
+	optdepends = r-biocgenerics
+	optdepends = r-deseq2
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-pasilla
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnhancedVolcano_1.14.0.tar.gz
+	sha256sums = e2d30184c0b420bb18bb4f2a091563905b5a17ebf2c25fea368a8b05bdab1abe
+
+pkgname = r-enhancedvolcano
