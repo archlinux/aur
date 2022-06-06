@@ -1,0 +1,13 @@
+pkgbase = r-reshape
+	pkgdesc = Flexibly Reshape Data
+	pkgver = 0.8.9
+	pkgrel = 3
+	url = https://cran.r-project.org/package=reshape
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-plyr
+	source = https://cran.r-project.org/src/contrib/reshape_0.8.9.tar.gz
+	sha256sums = 791178b3b5f30c166ebf5910a5ab1c67b54e7023b10b6c2e2ddd1cc02a1e4048
+
+pkgname = r-reshape
