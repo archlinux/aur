@@ -1,0 +1,14 @@
+pkgbase = r-rarpack
+	pkgdesc = Solvers for Large Scale Eigenvalue and SVD Problems
+	pkgver = 0.11.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rARPACK
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-rspectra
+	optdepends = r-matrix
+	source = https://cran.r-project.org/src/contrib/rARPACK_0.11-0.tar.gz
+	sha256sums = c33401e2e31d272d485ce2ed22e7fe43ac641fd7c0a45a9b848d3ad60df1028a
+
+pkgname = r-rarpack
