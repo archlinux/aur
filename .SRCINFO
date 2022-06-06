@@ -1,0 +1,31 @@
+pkgbase = r-sjmisc
+	pkgdesc = Data and Variable Transformation Functions
+	pkgver = 2.8.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sjmisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-insight
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-sjlabelled
+	depends = r-tidyselect
+	optdepends = r-ggplot2
+	optdepends = r-graphics
+	optdepends = r-haven
+	optdepends = r-knitr
+	optdepends = r-mice
+	optdepends = r-nnet
+	optdepends = r-rmarkdown
+	optdepends = r-sjplot
+	optdepends = r-sjstats
+	optdepends = r-stringdist
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/sjmisc_2.8.9.tar.gz
+	sha256sums = 78b05741ce9e1cc783fda97a0f18caff689822fdd4bdf733dc20f7c94ac2f3bf
+
+pkgname = r-sjmisc
