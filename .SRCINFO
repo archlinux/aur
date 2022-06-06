@@ -1,0 +1,17 @@
+pkgbase = r-gghalves
+	pkgdesc = Compose Half-Half Plots Using Your Favourite Geoms
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gghalves
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-ggplot2
+	depends = r-gtable
+	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/gghalves_0.1.3.tar.gz
+	sha256sums = 44f388b762a505268c68960225f659f436892900aefa53fc438ff7efd06044d2
+
+pkgname = r-gghalves
