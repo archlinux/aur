@@ -1,0 +1,17 @@
+pkgbase = r-qdaptools
+	pkgdesc = Tools for the 'qdap' Package
+	pkgver = 1.3.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qdapTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-chron
+	depends = r-data.table
+	depends = r-rcurl
+	depends = r-xml
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/qdapTools_1.3.5.tar.gz
+	sha256sums = 8c8828877ab63ad705b69e187c01d7c7098a88989bdde9e956ac559cc6de7e25
+
+pkgname = r-qdaptools
