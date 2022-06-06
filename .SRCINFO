@@ -1,0 +1,16 @@
+pkgbase = r-maxstat
+	pkgdesc = Maximally Selected Rank Statistics
+	pkgver = 0.7.25
+	pkgrel = 4
+	url = https://cran.r-project.org/package=maxstat
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-exactranktests
+	depends = r-mvtnorm
+	optdepends = r-survival
+	optdepends = r-th.data
+	source = https://cran.r-project.org/src/contrib/maxstat_0.7-25.tar.gz
+	sha256sums = 6fc13b8d83797e10fc148183eb440a30584442fdf73628652c606ede790e9f84
+
+pkgname = r-maxstat
