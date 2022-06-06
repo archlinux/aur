@@ -1,0 +1,15 @@
+pkgbase = r-spatialtools
+	pkgdesc = Tools for Spatial Data Analysis
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=SpatialTools
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-spbayes
+	source = https://cran.r-project.org/src/contrib/SpatialTools_1.0.4.tar.gz
+	sha256sums = 3828fba9296bf4159d771c938ff12c972b943d663ef862368c9b4ed1f5cfeb49
+
+pkgname = r-spatialtools
