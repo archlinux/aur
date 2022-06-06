@@ -1,0 +1,14 @@
+pkgbase = r-rpostgresql
+	pkgdesc = R Interface to the 'PostgreSQL' Database System
+	pkgver = 0.7.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=RPostgreSQL
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dbi
+	depends = postgresql-libs
+	source = https://cran.r-project.org/src/contrib/RPostgreSQL_0.7-3.tar.gz
+	sha256sums = bdbca10329aeb357f05364772964716dfb5ce2470f7eb4a33770862b6ded71b9
+
+pkgname = r-rpostgresql
