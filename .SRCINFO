@@ -1,0 +1,12 @@
+pkgbase = r-kpeaks
+	pkgdesc = Determination of K Using Peak Counts of Features for Clustering
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=kpeaks
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/kpeaks_1.1.0.tar.gz
+	sha256sums = 0d5e857aa09fdb43189a9626b55327e231bbf669c3e420f3fb0c53042c76fd14
+
+pkgname = r-kpeaks
