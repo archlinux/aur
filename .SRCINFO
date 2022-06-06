@@ -1,0 +1,15 @@
+pkgbase = r-roi.plugin.lpsolve
+	pkgdesc = 'lp_solve' Plugin for the 'R' Optimization Infrastructure
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ROI.plugin.lpsolve
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lpsolveapi
+	depends = r-roi
+	optdepends = r-slam
+	source = https://cran.r-project.org/src/contrib/ROI.plugin.lpsolve_1.0-1.tar.gz
+	sha256sums = 4fcb0927c05601b4ee9d44031577fee3cc04af4523942492f924ad7cf064a9c0
+
+pkgname = r-roi.plugin.lpsolve
