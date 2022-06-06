@@ -1,0 +1,23 @@
+pkgbase = r-stringdb
+	pkgdesc = STRINGdb (Search Tool for the Retrieval of Interacting proteins database)
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = https://bioconductor.org/packages/STRINGdb
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gplots
+	depends = r-hash
+	depends = r-igraph
+	depends = r-plotrix
+	depends = r-plyr
+	depends = r-png
+	depends = r-rcolorbrewer
+	depends = r-rcurl
+	depends = r-sqldf
+	optdepends = r-biocgenerics
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STRINGdb_2.8.4.tar.gz
+	sha256sums = e90ce12a57bc8f3de656c3cc2cff850de317465fee91acf1fd2701b30102c6ca
+
+pkgname = r-stringdb
