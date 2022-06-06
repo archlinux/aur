@@ -1,0 +1,42 @@
+# system requirements: xml2, GNU make, C++11
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=flowDensity
+_pkgver=1.30.0
+pkgname=r-${_pkgname,,}
+pkgver=1.30.0
+pkgrel=1
+pkgdesc='Sequential Flow Cytometry Data Gating'
+arch=('any')
+url="https://bioconductor.org/packages/${_pkgname}"
+license=('Artistic2.0')
+depends=(
+  r
+  r-car
+  r-flowcore
+  r-flowviz
+  r-flowworkspace
+  r-gplots
+  r-rfoc
+  r-rgeos
+  r-sp
+  libxml2
+  make
+  gcc
+)
+optdepends=(
+  r-knitr
+  r-rmarkdown
+)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('c321b395d6f1ae24d1428319401b225ae5e31fee5051127e43142d96f820103d')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:

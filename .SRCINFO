@@ -1,0 +1,25 @@
+pkgbase = r-flowdensity
+	pkgdesc = Sequential Flow Cytometry Data Gating
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowDensity
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-car
+	depends = r-flowcore
+	depends = r-flowviz
+	depends = r-flowworkspace
+	depends = r-gplots
+	depends = r-rfoc
+	depends = r-rgeos
+	depends = r-sp
+	depends = libxml2
+	depends = make
+	depends = gcc
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowDensity_1.30.0.tar.gz
+	sha256sums = c321b395d6f1ae24d1428319401b225ae5e31fee5051127e43142d96f820103d
+
+pkgname = r-flowdensity
