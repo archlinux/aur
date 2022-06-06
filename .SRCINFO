@@ -1,0 +1,18 @@
+pkgbase = r-ics
+	pkgdesc = Tools for Exploring Multivariate Data via ICS/ICA
+	pkgver = 1.3.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ICS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mvtnorm
+	depends = r-survey
+	optdepends = r-icsnp
+	optdepends = r-mass
+	optdepends = r-pixmap
+	optdepends = r-robustbase
+	source = https://cran.r-project.org/src/contrib/ICS_1.3-1.tar.gz
+	sha256sums = 9106f6bf89c57af44e89ea174150376e6dfba861cd78fcd0f26f45f637e46c74
+
+pkgname = r-ics
