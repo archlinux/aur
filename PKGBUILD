@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1032
+pkgver=mainline.0.1043
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -79,6 +79,10 @@ prepare() {
 }
 
 build() {
+	if [[ $CXX != clang* ]]; then
+		# https://github.com/yuzu-emu/yuzu/pull/8282#issue-1219047830
+		CXXFLAGS+=" -Wno-array-bounds -Wno-maybe-uninitialized -Wno-stringop-overread"
+	fi
 	cmake -S yuzu-mainline -B build \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/.0./-} \
