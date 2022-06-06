@@ -1,0 +1,29 @@
+pkgbase = r-pkgmaker
+	pkgdesc = Development Utilities for R Packages
+	pkgver = 0.32.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=pkgmaker
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-assertthat
+	depends = r-digest
+	depends = r-registry
+	depends = r-stringr
+	depends = r-withr
+	depends = r-xtable
+	optdepends = r-biobase
+	optdepends = r-datasets
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rbibutils
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-runit
+	optdepends = r-testthat
+	optdepends = r-yaml
+	source = https://cran.r-project.org/src/contrib/pkgmaker_0.32.2.tar.gz
+	sha256sums = ce45b22def771a9c90a414093823e6befe7e23489c500eeccee5154b44d3ef91
+
+pkgname = r-pkgmaker
