@@ -1,0 +1,29 @@
+pkgbase = r-sortable
+	pkgdesc = Drag-and-Drop in 'shiny' Apps with 'SortableJS'
+	pkgver = 0.4.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sortable
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-assertthat
+	depends = r-ellipsis
+	depends = r-htmltools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-learnr
+	depends = r-rlang
+	depends = r-shiny
+	optdepends = r-base64
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-webshot
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/sortable_0.4.5.tar.gz
+	sha256sums = a37d6739041d088a167f0d542b75b54aa565aa284f00869b69ec169b66667ec5
+
+pkgname = r-sortable
