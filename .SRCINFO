@@ -1,0 +1,14 @@
+pkgbase = r-korpus.lang.en
+	pkgdesc = Language Support for 'koRpus' Package: English
+	pkgver = 0.1.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=koRpus.lang.en
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-korpus
+	depends = r-sylly.en
+	source = https://cran.r-project.org/src/contrib/koRpus.lang.en_0.1-4.tar.gz
+	sha256sums = 629cfc278a2d9aa28cb31323bc5f0077322273aefff8532232ea48c98b0152b9
+
+pkgname = r-korpus.lang.en
