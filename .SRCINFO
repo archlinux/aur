@@ -1,0 +1,17 @@
+pkgbase = r-smartsva
+	pkgdesc = Fast and Robust Surrogate Variable Analysis
+	pkgver = 0.1.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=SmartSVA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-isva
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rspectra
+	depends = r-sva
+	source = https://cran.r-project.org/src/contrib/SmartSVA_0.1.3.tar.gz
+	sha256sums = d7925743d04bd52dee575a477cc7e8395fedb08f5dbb8427e61e3d6dbfd04881
+
+pkgname = r-smartsva
