@@ -1,0 +1,15 @@
+pkgbase = r-softimpute
+	pkgdesc = Matrix Completion via Iterative Soft-Thresholded SVD
+	pkgver = 1.4.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=softImpute
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/softImpute_1.4-1.tar.gz
+	sha256sums = ea4c39831dee834204f6d6594aad6b937540ba4f2adf3f37fb4546844c234aec
+
+pkgname = r-softimpute
