@@ -1,0 +1,24 @@
+pkgbase = r-grbase
+	pkgdesc = A Package for Graphical Modelling in R
+	pkgver = 1.8.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=gRbase
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-graph
+	depends = r-igraph
+	depends = r-magrittr
+	depends = r-rbgl
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppeigen
+	depends = r-rgraphviz
+	depends = r-biocmanager
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/gRbase_1.8.7.tar.gz
+	sha256sums = 01d77e1b029ac22b4e13f07384285f363733a42aba842eddfc5e1aceea99f808
+
+pkgname = r-grbase
