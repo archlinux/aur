@@ -1,0 +1,27 @@
+pkgbase = r-distinct
+	pkgdesc = distinct: a method for differential analyses via hierarchical permutation tests
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/distinct
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-doparallel
+	depends = r-dorng
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-limma
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-scater
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	depends = r-rfast
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-upsetr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/distinct_1.8.0.tar.gz
+	sha256sums = 145c8f7b1dc9427e4a6d9a6cd1f34d47ed6a75d21eb5e2a10cff03546748e53c
+
+pkgname = r-distinct
