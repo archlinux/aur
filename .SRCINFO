@@ -1,0 +1,13 @@
+pkgbase = r-hem
+	pkgdesc = Heterogeneous error model for identification of differentially expressed genes under multiple conditions
+	pkgver = 1.68.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HEM
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HEM_1.68.0.tar.gz
+	sha256sums = 981b300fb2b5baec61aca4eaa5c1de5b98724633807d13ab233ad22c738a06c3
+
+pkgname = r-hem
