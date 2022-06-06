@@ -11,6 +11,7 @@ makedepends=(
   'git'
   'rust'
 )
+conflicts=('dovi_tool')
 provides=('dovi_tool')
 source=(git+https://github.com/quietvoid/dovi_tool.git)
 sha256sums=('SKIP')
