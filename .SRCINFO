@@ -1,0 +1,27 @@
+pkgbase = r-scry
+	pkgdesc = Small-Count Analysis Methods for High-Dimensional Data
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/scry
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocsingular
+	depends = r-delayedarray
+	depends = r-glmpca
+	depends = r-hdf5array
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocgenerics
+	optdepends = r-covr
+	optdepends = r-duoclustering2018
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-tenxpbmcdata
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scry_1.8.0.tar.gz
+	sha256sums = 2305da481bad80a1e1336e82d433045ebe1469cb2ea3df588ec8cb907210b29a
+
+pkgname = r-scry
