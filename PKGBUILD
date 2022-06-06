@@ -15,7 +15,7 @@ _hashjd='61ae65e088624f5aaa0b1d2d801acb16'
 _minorfx='331'
 _buildfx='b09'
 _hashfx='165374ff4ea84ef0bbd821706e29b123'
-pkgverjd="${_major}u${_minorjd}"
+pkgver="${_major}u${_minorjd}"
 pkgverfx="${_major}u${_minorfx}"
 pkgrel='2'
 pkgdesc="Documentation for Oracle Java ${_major} Development Kit"
@@ -25,7 +25,7 @@ license=('custom:Oracle')
 depends=("java-environment>=${_major}")
 options=('!strip')
 source=(
-  "https://download.oracle.com/otn-pub/java/jdk/${pkgverjd}-${_buildjd}/${_hashjd}/jdk-${pkgverjd}-docs-all.zip"
+  "https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_buildjd}/${_hashjd}/jdk-${pkgver}-docs-all.zip"
   "https://download.oracle.com/otn-pub/java/javafx/${_major}.0.${_minorfx}-${_buildfx}/${_hashfx}/javafx-${pkgverfx}-apidocs.zip"
   'LICENSE-Documentation.txt'
   'LICENSE-Oracle-Legal-Notices.txt'
