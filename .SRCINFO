@@ -1,0 +1,19 @@
+pkgbase = r-ppclust
+	pkgdesc = Probabilistic and Possibilistic Cluster Analysis
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ppclust
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-inaparc
+	optdepends = r-cluster
+	optdepends = r-factoextra
+	optdepends = r-fclust
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-vegclust
+	source = https://cran.r-project.org/src/contrib/ppclust_1.1.0.tar.gz
+	sha256sums = 9bf672724d6f7a65f64b7ca268aa43bad066afe2cc7d1a1546c8c677bc94af6e
+
+pkgname = r-ppclust
