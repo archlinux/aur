@@ -1,0 +1,13 @@
+pkgbase = r-flashclust
+	pkgdesc = Implementation of optimal hierarchical clustering
+	pkgver = 1.01.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=flashClust
+	arch = any
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	source = https://cran.r-project.org/src/contrib/flashClust_1.01-2.tar.gz
+	sha256sums = 48a7849bb86530465ff3fbfac1c273f0df4b846e67d5eee87187d250c8bf9450
+
+pkgname = r-flashclust
