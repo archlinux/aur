@@ -1,0 +1,21 @@
+pkgbase = r-modeest
+	pkgdesc = Mode Estimation
+	pkgver = 2.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=modeest
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-fbasics
+	depends = r-stable
+	depends = r-stabledist
+	depends = r-statip
+	optdepends = r-evd
+	optdepends = r-knitr
+	optdepends = r-mvtnorm
+	optdepends = r-testthat
+	optdepends = r-vgam
+	source = https://cran.r-project.org/src/contrib/modeest_2.4.0.tar.gz
+	sha256sums = 1a949409bf64679d32400d20aa3d53e65a9a20f5bd1a40993b95f81100e0ed20
+
+pkgname = r-modeest
