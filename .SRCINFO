@@ -1,6 +1,6 @@
 pkgbase = petit-git
 	pkgdesc = Keep track of your books in Python.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://www.github.com/weebcyberpunk/petit
 	arch = x86_64
