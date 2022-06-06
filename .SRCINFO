@@ -1,0 +1,16 @@
+pkgbase = r-protviz
+	pkgdesc = Visualizing and Analyzing Mass Spectrometry Related Data in Proteomics
+	pkgver = 0.7.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=protViz
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-lattice
+	optdepends = r-testthat
+	optdepends = r-xtable
+	source = https://cran.r-project.org/src/contrib/protViz_0.7.3.tar.gz
+	sha256sums = dc923cbd46f904a736496e4552209ed7aac1c0a4adc4f1363c838388d9e7d238
+
+pkgname = r-protviz
