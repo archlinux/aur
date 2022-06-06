@@ -1,0 +1,16 @@
+pkgbase = r-rain
+	pkgdesc = Rhythmicity Analysis Incorporating Non-parametric Methods
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/rain
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-gmp
+	depends = r-multtest
+	optdepends = r-biocstyle
+	optdepends = r-lattice
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rain_1.30.0.tar.gz
+	sha256sums = 9189503e44387a4d9fed4dabf4e074676af1306721c44a630c8c1ad40017c6ba
+
+pkgname = r-rain
