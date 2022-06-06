@@ -1,0 +1,12 @@
+pkgbase = r-rwave
+	pkgdesc = Time-Frequency Analysis of 1-D Signals
+	pkgver = 2.6.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Rwave
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/Rwave_2.6-0.tar.gz
+	sha256sums = eb6338e9e3ee774cc4fcabe366fef5ef97bd291cc83f22d8537d16bbaa8a24ea
+
+pkgname = r-rwave
