@@ -1,0 +1,20 @@
+pkgbase = r-imagehts
+	pkgdesc = Analysis of high-throughput microscopy-based screens
+	pkgver = 1.45.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/imageHTS
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biobase
+	depends = r-cellhts2
+	depends = r-e1071
+	depends = r-ebimage
+	depends = r-hwriter
+	depends = r-vsn
+	optdepends = r-biocstyle
+	optdepends = r-mass
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/imageHTS_1.45.1.tar.gz
+	sha256sums = 550bec6b7b74d187a363828e43394d56f0980393d19ed1f927f5eda0750d9ba1
+
+pkgname = r-imagehts
