@@ -1,0 +1,13 @@
+pkgbase = r-strawr
+	pkgdesc = Fast Implementation of Reading/Dump for .hic Files
+	pkgver = 0.0.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=strawr
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/strawr_0.0.9.tar.gz
+	sha256sums = 7f72d26572cee8e7235fe86a935abadafe11156884f3830e880d0937708705bd
+
+pkgname = r-strawr
