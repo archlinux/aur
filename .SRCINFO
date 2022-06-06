@@ -1,0 +1,12 @@
+pkgbase = r-hsmmsinglecell
+	pkgdesc = Single-cell RNA-Seq for differentiating human skeletal muscle myoblasts (HSMM)
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/HSMMSingleCell
+	arch = any
+	license = Artistic2.0
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/HSMMSingleCell_1.16.0.tar.gz
+	sha256sums = db845055caab8e5e29972bbf6aa6463a96fe9e893fe532d5eac190442fe8908b
+
+pkgname = r-hsmmsinglecell
