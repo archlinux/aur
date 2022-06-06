@@ -1,0 +1,27 @@
+pkgbase = r-geneplast
+	pkgdesc = Evolutionary and plasticity analysis of orthologous groups
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/geneplast
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-data.table
+	depends = r-igraph
+	depends = r-snow
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-fletcher2013b
+	optdepends = r-geneplast.data.string.v91
+	optdepends = r-ggplot2
+	optdepends = r-ggpubr
+	optdepends = r-knitr
+	optdepends = r-plyr
+	optdepends = r-rmarkdown
+	optdepends = r-rtn
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneplast_1.22.0.tar.gz
+	sha256sums = 2c17e11c316090381a6fa5308684995904a287c22b10a341328aab2558347acc
+
+pkgname = r-geneplast
