@@ -1,0 +1,22 @@
+pkgbase = r-topicmodels
+	pkgdesc = Topic Models
+	pkgver = 0.2.12
+	pkgrel = 3
+	url = https://cran.r-project.org/package=topicmodels
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-modeltools
+	depends = r-slam
+	depends = r-tm
+	depends = gsl
+	optdepends = r-corpus.jss.papers
+	optdepends = r-lasso2
+	optdepends = r-lattice
+	optdepends = r-lda
+	optdepends = r-oaiharvester
+	optdepends = r-snowballc
+	source = https://cran.r-project.org/src/contrib/topicmodels_0.2-12.tar.gz
+	sha256sums = afd83a4381bf39e470446ebefd41ed03f314be400c1b2f702a4b1060eb8fd1b4
+
+pkgname = r-topicmodels
