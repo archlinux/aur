@@ -1,0 +1,15 @@
+pkgbase = r-polyphen.hsapiens.dbsnp131
+	pkgdesc = PolyPhen Predictions for Homo sapiens dbSNP build 131
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = https://bioconductor.org/packages/PolyPhen.Hsapiens.dbSNP131
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-rsqlite
+	depends = r-variantannotation
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/PolyPhen.Hsapiens.dbSNP131_1.0.2.tar.gz
+	sha256sums = ecb8092a63f8a8f0ea4e42ba488c100fd77c8948e0c388f3b03a9048e7f333ce
+
+pkgname = r-polyphen.hsapiens.dbsnp131
