@@ -1,0 +1,30 @@
+pkgbase = r-smacof
+	pkgdesc = Multidimensional Scaling
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=smacof
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-candisc
+	depends = r-colorspace
+	depends = r-doparallel
+	depends = r-e1071
+	depends = r-ellipse
+	depends = r-foreach
+	depends = r-hmisc
+	depends = r-nnls
+	depends = r-plotrix
+	depends = r-polynom
+	depends = r-weights
+	depends = r-wordcloud
+	optdepends = r-calibrate
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-mpsychor
+	optdepends = r-prefmod
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/smacof_2.1-5.tar.gz
+	sha256sums = fb0369a94bbdcb2b024d11731f2dda1a783b535aa243a00dd783a47a86192ac5
+
+pkgname = r-smacof
