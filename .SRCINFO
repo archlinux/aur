@@ -1,0 +1,15 @@
+pkgbase = r-verification
+	pkgdesc = Weather Forecast Verification Utilities
+	pkgver = 1.42
+	pkgrel = 3
+	url = https://cran.r-project.org/package=verification
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-circstats
+	depends = r-dtw
+	depends = r-fields
+	source = https://cran.r-project.org/src/contrib/verification_1.42.tar.gz
+	sha256sums = 3c2adb4b924fe09258f35719d0be8010a1c305f15d304813a9eaa5cacedbb85d
+
+pkgname = r-verification
