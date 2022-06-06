@@ -1,0 +1,18 @@
+pkgbase = r-metapod
+	pkgdesc = Meta-Analyses on P-Values of Differential Analyses
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/metapod
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = gcc
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metapod_1.4.0.tar.gz
+	sha256sums = ebe8d6ce014448fe43b21cb5525339be95457931246a104ec6983caa1060e9a5
+
+pkgname = r-metapod
