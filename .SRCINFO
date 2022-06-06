@@ -1,0 +1,14 @@
+pkgbase = r-proto
+	pkgdesc = Prototype Object-Based Programming
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=proto
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/proto_1.0.0.tar.gz
+	sha256sums = 9294d9a3b2b680bb6fac17000bfc97453d77c87ef68cfd609b4c4eb6d11d04d1
+
+pkgname = r-proto
