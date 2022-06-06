@@ -1,0 +1,14 @@
+pkgbase = r-getpass
+	pkgdesc = Masked User Input
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=getPass
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-rstudioapi
+	optdepends = r-argon2
+	source = https://cran.r-project.org/src/contrib/getPass_0.2-2.tar.gz
+	sha256sums = 8cfdc7e8cabeae5dd325015d735b139d9828bd54ea8e7c2dcb636a00a153cd0f
+
+pkgname = r-getpass
