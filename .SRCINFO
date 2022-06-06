@@ -1,0 +1,17 @@
+pkgbase = r-flagme
+	pkgdesc = Analysis of Metabolomics GC/MS Data
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flagme
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-camera
+	depends = r-gcspikelite
+	depends = r-gplots
+	depends = r-sparsem
+	depends = r-xcms
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flagme_1.52.0.tar.gz
+	sha256sums = acc59f731dbff35dd479c4a7087ea7da3bcb345353272fb123d33d00763af590
+
+pkgname = r-flagme
