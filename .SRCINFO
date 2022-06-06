@@ -1,0 +1,13 @@
+pkgbase = r-mixsmsn
+	pkgdesc = Fitting Finite Mixture of Scale Mixture of Skew-Normal Distributions
+	pkgver = 1.1.10
+	pkgrel = 4
+	url = https://cran.r-project.org/package=mixsmsn
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/mixsmsn_1.1-10.tar.gz
+	sha256sums = 7dec9a14f17786c32ab6fd290e9051f66da8c15f84af4310ffc2285a4c5e61f0
+
+pkgname = r-mixsmsn
