@@ -1,0 +1,24 @@
+pkgbase = r-hireadsprocessor
+	pkgdesc = Functions to process LM-PCR reads from 454/Illumina data
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/hiReadsProcessor
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-biostrings
+	depends = r-dplyr
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-hiannotator
+	depends = r-readxl
+	depends = r-soniclength
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hiReadsProcessor_1.32.0.tar.gz
+	sha256sums = 915d4c927e292ed222abda75585f10ca435a2ba789732b755dab0b5674ccc031
+
+pkgname = r-hireadsprocessor
