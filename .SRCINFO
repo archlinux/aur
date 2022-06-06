@@ -1,0 +1,24 @@
+pkgbase = r-gpumagic
+	pkgdesc = An openCL compiler with the capacity to compile R functions and run the code on GPU
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gpuMagic
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-deriv
+	depends = r-desctools
+	depends = r-digest
+	depends = r-pryr
+	depends = r-rcpp
+	depends = r-stringr
+	depends = ocl-icd
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gpuMagic_1.12.0.tar.gz
+	sha256sums = f423dae0cfeb14ec90f361cb3565fb3653c4fc53b1981d8780ce48c981eedfbc
+
+pkgname = r-gpumagic
