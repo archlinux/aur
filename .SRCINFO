@@ -1,0 +1,12 @@
+pkgbase = r-survivalroc
+	pkgdesc = Time-dependent ROC curve estimation from censored survival data
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=survivalROC
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/survivalROC_1.0.3.tar.gz
+	sha256sums = 1449e7038e048e6ad4d3f7767983c0873c9c7a7637ffa03a4cc7f0e25c31cd72
+
+pkgname = r-survivalroc
