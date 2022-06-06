@@ -1,0 +1,12 @@
+pkgbase = r-gaia
+	pkgdesc = GAIA: An R package for genomic analysis of significant chromosomal aberrations.
+	pkgver = 2.39.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/gaia
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gaia_2.39.0.tar.gz
+	sha256sums = ea92176588f246094ef4ee7f5957ba3390438d0f8dc6a00e3cd136e39be07508
+
+pkgname = r-gaia
