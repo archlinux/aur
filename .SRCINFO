@@ -1,0 +1,15 @@
+pkgbase = r-penalized
+	pkgdesc = L1 (Lasso and Fused Lasso) and L2 (Ridge) Penalized Estimation in GLMs and in the Cox Model
+	pkgver = 0.9.52
+	pkgrel = 1
+	url = https://cran.r-project.org/package=penalized
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-globaltest
+	source = https://cran.r-project.org/src/contrib/penalized_0.9-52.tar.gz
+	sha256sums = d8e38e6c4e993c74998ca8f986b4e11e09c0b9971103e1d5c7ebdee75f6d6a21
+
+pkgname = r-penalized
