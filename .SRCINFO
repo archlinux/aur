@@ -1,0 +1,21 @@
+pkgbase = r-rhandsontable
+	pkgdesc = Interface to the 'Handsontable.js' Library
+	pkgver = 0.3.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rhandsontable
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-magrittr
+	optdepends = r-htmltools
+	optdepends = r-knitr
+	optdepends = r-miniui
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/rhandsontable_0.3.8.tar.gz
+	sha256sums = 901ed9c59936f7fa52ad8db3111c8904ab962f9c74f1b6cd40f81683af35d21d
+
+pkgname = r-rhandsontable
