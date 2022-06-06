@@ -1,0 +1,15 @@
+pkgbase = r-fracdiff
+	pkgdesc = Fractionally Differenced ARIMA aka ARFIMA(P,d,q) Models
+	pkgver = 1.5.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fracdiff
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-forecast
+	optdepends = r-longmemo
+	optdepends = r-urca
+	source = https://cran.r-project.org/src/contrib/fracdiff_1.5-1.tar.gz
+	sha256sums = b8103b32a4ca3a59dda1624c07da08ecd144c7a91a747d1f4663e99421950eb6
+
+pkgname = r-fracdiff
