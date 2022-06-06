@@ -1,0 +1,18 @@
+pkgbase = r-gsreg
+	pkgdesc = Gene Set Regulation (GS-Reg)
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GSReg
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	depends = r-homo.sapiens
+	depends = r-org.hs.eg.db
+	optdepends = r-genomicranges
+	optdepends = r-gsbenchmark
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSReg_1.30.0.tar.gz
+	sha256sums = 403f72a631545e995c85f1cb14041a0c4261bdd1e2b247509c1b2398e022123c
+
+pkgname = r-gsreg
