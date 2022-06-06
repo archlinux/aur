@@ -1,0 +1,24 @@
+pkgbase = r-singlecellexperiment
+	pkgdesc = S4 Classes for Single Cell Data
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SingleCellExperiment
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-delayedarray
+	depends = r-genomicranges
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-matrix
+	optdepends = r-rmarkdown
+	optdepends = r-rtsne
+	optdepends = r-scrnaseq
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleCellExperiment_1.18.0.tar.gz
+	sha256sums = f76ccbb90d2cf14edca37f34815b3242e25eb18dd749eedd97f15b47f7c22a68
+
+pkgname = r-singlecellexperiment
