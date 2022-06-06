@@ -1,0 +1,26 @@
+pkgbase = r-netboost
+	pkgdesc = Network Analysis Supported by Boosting
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/netboost
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-colorspace
+	depends = r-dynamictreecut
+	depends = r-impute
+	depends = r-r.utils
+	depends = r-rcpp
+	depends = r-rcppparallel
+	depends = r-wgcna
+	depends = make
+	depends = bash
+	depends = perl
+	depends = gzip
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netboost_2.4.0.tar.gz
+	sha256sums = d5622bb7f620f04f66e690abb816d560c237591b8d715db474f0a12e2f4cd31d
+
+pkgname = r-netboost
