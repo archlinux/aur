@@ -1,0 +1,19 @@
+pkgbase = r-drimpute
+	pkgdesc = Imputing Dropout Events in Single-Cell RNA-Sequencing Data
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=DrImpute
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-devtools
+	optdepends = r-irlba
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	source = https://cran.r-project.org/src/contrib/DrImpute_1.0.tar.gz
+	sha256sums = 6b88b44cf3d8e4d626295955dd950d8ddf9c2ed7d88bfef015482ccc7356bfa9
+
+pkgname = r-drimpute
