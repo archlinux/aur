@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=YSoccer
+Exec=/usr/bin/ysoccer
+Icon=ysoccer
+Type=Application
+Categories=Game;
+Comment=Soccer game in the style of Sensible Soccer

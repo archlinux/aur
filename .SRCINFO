@@ -1,15 +1,18 @@
 pkgbase = ysoccer
 	pkgdesc = Soccer game in the style of Sensible Soccer
-	pkgver = 16
-	pkgrel = 2
-	url = http://ysoccer.sourceforge.net/dloads.htm
-	arch = x86_64
+	pkgver = 19
+	pkgrel = 1
+	url = https://ysoccer.sourceforge.net/
+	arch = any
 	license = GPL2
 	depends = java-runtime
-	source = https://downloads.sourceforge.net/project/ysoccer/YSoccer16/ysoccer16_linux64.tar.gz?r=http%3A%2F%2Fysoccer.sourceforge.net%2Fdloads.htm&ts=1505217790&use_mirror=netix
+	depends = bash
+	depends = hicolor-icon-theme
+	source = https://master.dl.sourceforge.net/project/ysoccer/YSoccer19/ysoccer19.zip
 	source = ysoccer.sh
-	md5sums = 74e048e805ab552e3c16be4210c723db
-	md5sums = ae3b207fb6e6c39053c7ef5916a68897
+	source = ysoccer.desktop
+	sha256sums = 17ed9e1083570ec58ce72adc2c7e22e43b9538dc5efbfe792dcf319f523e2e9c
+	sha256sums = d127da36a791db4ca372935551dfa5a919ddc744e597f6c22dc1ad7074c4aa28
+	sha256sums = db6554a93ab690876e7594022d467e68fc23458904144cdbed5b5482fedfda19
 
 pkgname = ysoccer
-
