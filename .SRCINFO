@@ -1,0 +1,12 @@
+pkgbase = r-rapiserialize
+	pkgdesc = R API Serialization
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RApiSerialize
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/RApiSerialize_0.1.0.tar.gz
+	sha256sums = 324d42c655c27b4647d194bfcd7c675da95c67ea3a74ce99853502022792a23e
+
+pkgname = r-rapiserialize
