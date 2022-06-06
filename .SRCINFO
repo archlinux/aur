@@ -1,0 +1,19 @@
+pkgbase = r-gdm
+	pkgdesc = Generalized Dissimilarity Modeling
+	pkgver = 1.5.0.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=gdm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-raster
+	depends = r-rcpp
+	depends = r-reshape2
+	depends = r-vegan
+	depends = r-pbapply
+	source = https://cran.r-project.org/src/contrib/gdm_1.5.0-3.tar.gz
+	sha256sums = 68d60a8a59fbf288f5b83a7f582f94d765f4cba9ae25668a82f69b41cf4543ee
+
+pkgname = r-gdm
