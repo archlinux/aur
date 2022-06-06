@@ -1,0 +1,23 @@
+pkgbase = r-lpsymphony
+	pkgdesc = Symphony integer linear programming solver in R
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/lpsymphony
+	arch = x86_64
+	license = EPL
+	depends = r
+	depends = coin-or-asl
+	depends = coin-or-clp
+	depends = coin-or-coinutils
+	depends = coin-or-osi
+	depends = coin-or-cgl
+	depends = make
+	depends = glpk
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-slam
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lpsymphony_1.24.0.tar.gz
+	sha256sums = 6f8c96972863d3c1ed8f55b937ceaf4e43832d59350d0231e2dfafa23502874d
+
+pkgname = r-lpsymphony
