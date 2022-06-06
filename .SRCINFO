@@ -1,0 +1,27 @@
+pkgbase = r-ggparty
+	pkgdesc = 'ggplot' Visualizations for the 'partykit' Package
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggparty
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-checkmate
+	depends = r-ggplot2
+	depends = r-gtable
+	depends = r-partykit
+	depends = r-rlang
+	optdepends = r-aer
+	optdepends = r-coin
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-mlbench
+	optdepends = r-pander
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-th.data
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggparty_1.0.0.tar.gz
+	sha256sums = 0e7b29ee4519306c81f5c17f08131d6c466f3ee68f4b65e41d7482916ec9d068
+
+pkgname = r-ggparty
