@@ -1,0 +1,23 @@
+pkgbase = r-planet
+	pkgdesc = Placental DNA methylation analysis tools
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/planet
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-magrittr
+	depends = r-tibble
+	optdepends = r-epidish
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-minfi
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/planet_1.4.0.tar.gz
+	sha256sums = 5dc847ed27f0f18ea9a50f69ed06a42e5c086b534ba6b88c8a8dd0611d750c3f
+
+pkgname = r-planet
