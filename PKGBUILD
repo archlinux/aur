@@ -1,26 +1,29 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=tricks
-pkgver=0.2.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="The social network for programmers!"
 arch=('x86_64')
 url="https://tricks.aseman.io/"
-license=('none')
-
+license=('GPL3')
+makedepends=('gcc' 'qt5-base' 'git' 'syntax-highlighting' 'qt-aseman')
 conflicts=('tricks-bin')
 options=('!emptydirs' '!strip')
-source=("https://tricks.aseman.io/tricks/static/downloads/Tricks-${pkgver}_linux.tar.xz"
-        "tricks.desktop")
-sha256sums=('5c0ffca54997a0775e36f4035a75af7ff7eafef8323d33c6565a0e2c862c92e0'
-            '8cb921da1169ae970e26f46007e2ff4471c3804302bc0089809c09aac35577eb')
+source=("git+https://github.com/Aseman-Land/Tricks.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
-prepare() {
-    tar xf "Tricks-${pkgver}_linux.tar.xz"
+build() {
+	cd ${srcdir}/Tricks/
+	mkdir -p build && cd build
+	qmake -r .. APP_SECRET_ID="tapp_eb7536ef1cdc592f6b503addeaddd8e6c94cfb110f0e08a15b0bc97cef0beb1d" CONFIG+="qtquickcompiler"
+	make -j4
 }
 
 package() {
-    install -D -m644 tricks.desktop -t "${pkgdir}"/usr/share/applications/
-    install -D -m755 tricks-"${pkgver}"_linux/tricks.bin -T "${pkgdir}"/usr/bin/tricks
-    install -D -m644 tricks-"${pkgver}"_linux/icon.png -T "${pkgdir}"/usr/share/icons/tricks.png
+	mkdir -p "${pkgdir}"/usr/share/icons/hicolor/
+	install -D -m644 Tricks/configurations/default/linux/share/Tricks.desktop -t "${pkgdir}"/usr/share/applications/
+	install -D -m755 Tricks/build/tricks -T "${pkgdir}"/usr/bin/tricks
+	cp -r Tricks/configurations/default/linux/share/hicolor/* "${pkgdir}"/usr/share/icons/hicolor/
+	install -D -m644 Tricks/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
