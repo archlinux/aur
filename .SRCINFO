@@ -1,0 +1,18 @@
+pkgbase = r-goprofiles
+	pkgdesc = goProfiles: an R package for the statistical analysis of functional profiles
+	pkgver = 1.58.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/goProfiles
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-compquadform
+	depends = r-go.db
+	depends = r-stringr
+	optdepends = r-org.hs.eg.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/goProfiles_1.58.0.tar.gz
+	sha256sums = 9cbaa761fdabf14d55412b0ad5ecbd750301a78d29d0959c4b6e3d0096c6b6b1
+
+pkgname = r-goprofiles
