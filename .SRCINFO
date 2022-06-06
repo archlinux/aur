@@ -1,0 +1,20 @@
+pkgbase = r-snplocs.hsapiens.dbsnp144.grch37
+	pkgdesc = SNP locations for Homo sapiens (dbSNP Build 144)
+	pkgver = 0.99.20
+	pkgrel = 4
+	url = https://bioconductor.org/packages/SNPlocs.Hsapiens.dbSNP144.GRCh37
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-bsgenome
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	optdepends = r-biostrings
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/SNPlocs.Hsapiens.dbSNP144.GRCh37_0.99.20.tar.gz
+	sha256sums = 3f8e047e5b27a95ae5bc7acbfb4de6aec6c6a65a9edda3eb915b863807e913fd
+
+pkgname = r-snplocs.hsapiens.dbsnp144.grch37
