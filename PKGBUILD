@@ -1,6 +1,6 @@
 pkgbase="imd-git"
 pkgname="imd-git"
-pkgver=2.4
+pkgver=2.4.r74afc2a0b
 pkgrel=1
 pkgdesc="Improved MarkDown Reader"
 
@@ -61,6 +61,8 @@ package() {
 	cp ${srcdir}/imd/src/* "${pkgdir}/etc/imd/src/"
 	cp ${srcdir}/imd/inc/* "${pkgdir}/etc/imd/src/"
 	cp "${srcdir}/imd/LICENSE.TXT" "${pkgdir}/etc/imd/"
+
+	cp "${srcdir}/imd/rebuild/makefile" "${pkgdir}/etc/imd/"
 
 	# copy binary
 	mv "${srcdir}/imd/bin/imd" "${pkgdir}/usr/bin/imd"
