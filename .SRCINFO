@@ -1,0 +1,18 @@
+pkgbase = r-network
+	pkgdesc = Classes for Relational Data
+	pkgver = 1.17.2
+	pkgrel = 3
+	url = https://cran.r-project.org/package=network
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-magrittr
+	depends = r-statnet.common
+	depends = r-tibble
+	optdepends = r-covr
+	optdepends = r-sna
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/network_1.17.2.tar.gz
+	sha256sums = 9588a198807c8c68da147f479ca9af5bcb4468cf91b6a90b8044d313d9fa30f7
+
+pkgname = r-network
