@@ -1,0 +1,14 @@
+pkgbase = r-flowpeaks
+	pkgdesc = An R package for flow data clustering
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowPeaks
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = gsl
+	optdepends = r-flowcore
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowPeaks_1.42.0.tar.gz
+	sha256sums = ae98124c0574364bf8cd47be7704ad90b2b7d3dabbdd8df7744cbfaf81d665a8
+
+pkgname = r-flowpeaks
