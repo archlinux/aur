@@ -1,0 +1,22 @@
+pkgbase = r-paper
+	pkgdesc = A Toolbox for Writing Pretty Papers and Reports
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=papeR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-car
+	depends = r-gmodels
+	depends = r-xtable
+	optdepends = r-foreign
+	optdepends = r-knitr
+	optdepends = r-lme4
+	optdepends = r-nlme
+	optdepends = r-rmarkdown
+	optdepends = r-survival
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/papeR_1.0-5.tar.gz
+	sha256sums = 9d547faf50d121644ada432525f04357759520063bd497cc2d540f68f673b824
+
+pkgname = r-paper
