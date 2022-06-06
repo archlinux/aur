@@ -1,6 +1,6 @@
 pkgbase = python-pytrimal
 	pkgdesc = Cython bindings and Python interface to trimAl, a tool for automated alignment trimming.
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/althonos/pytrimal
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = python-pytrimal
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pytrimal/pytrimal-0.1.2.tar.gz
-	sha256sums = 4d179c12795f3e9f50075bcf201f31a15d379ee9698b5c3514c6a66799dc143a
+	source = https://files.pythonhosted.org/packages/source/p/pytrimal/pytrimal-0.2.0.tar.gz
+	sha256sums = 432e7d01cbcc5dcc268cd9728154c364fb783e4530aa64fe3e37651d7cd3627b
 
 pkgname = python-pytrimal
