@@ -1,0 +1,13 @@
+pkgbase = r-rsolnp
+	pkgdesc = General Non-Linear Optimization
+	pkgver = 1.16
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Rsolnp
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-truncnorm
+	source = https://cran.r-project.org/src/contrib/Rsolnp_1.16.tar.gz
+	sha256sums = 3142776062beb8e2b45cdbc4fe6e5446b6d33505253d79f2890fe4178d9cf670
+
+pkgname = r-rsolnp
