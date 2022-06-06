@@ -1,0 +1,15 @@
+pkgbase = r-iterclust
+	pkgdesc = Iterative Clustering
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iterClust
+	arch = any
+	license = custom
+	depends = r
+	depends = r-biobase
+	optdepends = r-bcellviper
+	optdepends = r-tsne
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iterClust_1.18.0.tar.gz
+	sha256sums = 84f25ddca628714bab4654be002d59887389229e9aacd427ee1c6c84bcd64686
+
+pkgname = r-iterclust
