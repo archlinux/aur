@@ -1,0 +1,22 @@
+pkgbase = r-mcmcglmm
+	pkgdesc = MCMC Generalised Linear Mixed Models
+	pkgver = 2.33
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MCMCglmm
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-coda
+	depends = r-corpcor
+	depends = r-cubature
+	depends = r-tensora
+	depends = gcc
+	optdepends = r-combinat
+	optdepends = r-mvtnorm
+	optdepends = r-orthopolynom
+	optdepends = r-rgl
+	source = https://cran.r-project.org/src/contrib/MCMCglmm_2.33.tar.gz
+	sha256sums = b56d72e799f8ed5fa2a05ecc743e5b8051f9cc2de57ad3e6de2dcb1c1715d4fc
+
+pkgname = r-mcmcglmm
