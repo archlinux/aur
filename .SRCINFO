@@ -1,0 +1,14 @@
+pkgbase = r-txdb.celegans.ucsc.ce6.ensgene
+	pkgdesc = Annotation package for TxDb object(s)
+	pkgver = 3.2.2
+	pkgrel = 4
+	url = https://bioconductor.org/packages/TxDb.Celegans.UCSC.ce6.ensGene
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/TxDb.Celegans.UCSC.ce6.ensGene_3.2.2.tar.gz
+	sha256sums = 20c51a06664f1135500b3ce1b9eeacf5154995ab4847217524beb131d4bef7e9
+
+pkgname = r-txdb.celegans.ucsc.ce6.ensgene
