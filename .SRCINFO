@@ -1,0 +1,17 @@
+pkgbase = r-rcppml
+	pkgdesc = Rcpp Machine Learning Library
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RcppML
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	depends = r-rcppeigen
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/RcppML_0.3.7.tar.gz
+	sha256sums = 325c6515085527eb9123cc5e87e028547065771ed4d623048f41886ae28908c6
+
+pkgname = r-rcppml
