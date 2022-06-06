@@ -1,0 +1,150 @@
+# system requirements: gdal (optional), geos (optional), proj (optional),udunits (optional), gsl (optional), gmp (optional), glu(optional), jags (optional), mpfr (optional), openmpi(optional)
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=mlr
+_pkgver=2.19.0
+pkgname=r-${_pkgname,,}
+pkgver=2.19.0
+pkgrel=4
+pkgdesc='Machine Learning in R'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('BSD')
+depends=(
+  r
+  r-backports
+  r-bbmisc
+  r-checkmate
+  r-data.table
+  r-ggplot2
+  r-parallelmap
+  r-paramhelpers
+  r-stringi
+  r-xml
+)
+optdepends=(
+  r-ada
+  r-adabag
+  r-bartmachine
+  r-batchtools
+  r-bit64
+  r-brnn
+  r-bst
+  r-c50
+  r-care
+  r-caret
+  r-class
+  r-clue
+  r-cluster
+  r-clusterr
+  r-clustersim
+  r-cmaes
+  r-cowplot
+  r-crs
+  r-cubist
+  r-deepnet
+  r-dicekriging
+  r-discriminer
+  r-e1071
+  r-earth
+  r-elasticnet
+  r-emoa
+  r-evtree
+  r-extratrees
+  r-fda.usc
+  r-fdboost
+  r-fnn
+  r-forecast
+  r-fpc
+  r-frbs
+  r-fselector
+  r-fselectorrcpp
+  r-gbm
+  r-gensa
+  r-ggpubr
+  r-glmnet
+  r-gpfit
+  r-h2o
+  r-hmisc
+  r-irace
+  r-kernlab
+  r-kknn
+  r-klar
+  r-knitr
+  r-lagp
+  r-liblinear
+  r-lintr
+  r-mass
+  r-mboost
+  r-mco
+  r-mda
+  r-memoise
+  r-mlbench
+  r-mldr
+  r-mlrmbo
+  r-mmpf
+  r-modeltools
+  r-mrmre
+  r-neuralnet
+  r-nnet
+  r-nodeharvest
+  r-numderiv
+  r-pamr
+  r-pander
+  r-party
+  r-pec
+  r-penalized
+  r-pls
+  r-pmcmrplus
+  r-praznik
+  r-randomforest
+  r-randomforestsrc
+  r-ranger
+  r-rappdirs
+  r-refund
+  r-rex
+  r-rferns
+  r-rgenoud
+  r-rknn
+  r-rmarkdown
+  r-rmpi
+  r-rocr
+  r-rotationforest
+  r-rpart
+  r-rrf
+  r-rrlda
+  r-rsm
+  r-rsnns
+  r-rucrdtw
+  r-rweka
+  r-sda
+  r-sf
+  r-smoof
+  r-snow
+  r-sparselda
+  r-stepplr
+  r-survauc
+  r-svglite
+  r-swarmsvm
+  r-testthat
+  r-tgp
+  r-th.data
+  r-tidyr
+  r-tsfeatures
+  r-vdiffr
+  r-wavelets
+  r-xgboost
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('1149c9b453896481c85906045aa82d511d96979ddecbe5a3faf04f9f4a5e6113')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+# vim:set ts=2 sw=2 et:
