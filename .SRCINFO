@@ -1,0 +1,15 @@
+pkgbase = r-tdaracne
+	pkgdesc = Network reverse engineering from time course data.
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TDARACNE
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-genkern
+	depends = r-rgraphviz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TDARACNE_1.46.0.tar.gz
+	sha256sums = 587911d599007baff0f9156ad01aa1ed4891f5db454b2245944f978095b2d9e7
+
+pkgname = r-tdaracne
