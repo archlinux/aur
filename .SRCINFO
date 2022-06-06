@@ -1,0 +1,27 @@
+pkgbase = r-netboxr
+	pkgdesc = netboxr
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/netboxr
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-clusterprofiler
+	depends = r-data.table
+	depends = r-dt
+	depends = r-gplots
+	depends = r-igraph
+	depends = r-jsonlite
+	depends = r-plyr
+	depends = r-rcolorbrewer
+	optdepends = r-biocstyle
+	optdepends = r-cgdsr
+	optdepends = r-knitr
+	optdepends = r-org.hs.eg.db
+	optdepends = r-paxtoolsr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netboxr_1.7.1.tar.gz
+	sha256sums = ad03faa1b976e3458f3c40499e46792dd1bed97673c303a49e2197233806ec1a
+
+pkgname = r-netboxr
