@@ -1,0 +1,37 @@
+pkgbase = r-openmx
+	pkgdesc = Extended Structural Equation Modelling
+	pkgver = 2.20.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=OpenMx
+	arch = x86_64
+	license = Apache
+	makedepends = gcc-fortran
+	makedepends = make
+	depends = r
+	depends = r-bh
+	depends = r-digest
+	depends = r-lifecycle
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rpf
+	depends = r-stanheaders
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-ifatools
+	optdepends = r-knitr
+	optdepends = r-lme4
+	optdepends = r-markdown
+	optdepends = r-mvtnorm
+	optdepends = r-numderiv
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rpf
+	optdepends = r-snowfall
+	optdepends = r-testthat
+	optdepends = r-umx
+	source = https://cran.r-project.org/src/contrib/OpenMx_2.20.6.tar.gz
+	sha256sums = 65c50ce09f9c006b41b7311ec05eba3ae77926d84fb44e3905905208404826ed
+
+pkgname = r-openmx
