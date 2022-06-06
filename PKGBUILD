@@ -28,11 +28,10 @@ source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${_pkgn
         'hooks-encrypt'
         'install-encrypt'
         'install-sd-encrypt')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'd325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57'
-            '46af2f1353db1909fc483f20e3fa1e13f1e7c0d14f44c0d6163ce0862916c613')
+sha256sums=("fc0df945188172264ec5bf1d0bda08264fadc8a3f856d47eba91f31fe354b507"
+	    "04a71fb784b708a1022177f150bb459c58f5f58dab47ed7accf220ee1623e6ac"
+	    "817686b47e5ffd32913bcae7efe717f3377a48062b6311549d4440cfd3eadf17"
+	    "5d68a359fd85b5132456f96c2405916de5009efc8e7edf51aef6bf2d2ffd0bd5")
 
 build() {
   cd "${srcdir}"/$_pkgname-${pkgver}
