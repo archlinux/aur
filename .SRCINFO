@@ -1,0 +1,14 @@
+pkgbase = r-splancs
+	pkgdesc = Spatial and Space-Time Point Pattern Analysis
+	pkgver = 2.01.43
+	pkgrel = 5
+	url = https://cran.r-project.org/package=splancs
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-sp
+	source = https://cran.r-project.org/src/contrib/splancs_2.01-43.tar.gz
+	sha256sums = b351565e1f69f6c86a29d921d3a18d5896c4586e2ab8c73bb3df8e75630fc448
+
+pkgname = r-splancs
