@@ -4,7 +4,7 @@ pkgver=1.13.0
 pkgrel=1
 pkgdesc="The OpenBLT Host Library contains an API for communicating with a microcontroller running the OpenBLT bootloader"
 arch=(x86_64)
-url="https://feaser.github.io/libopenblt"
+url="https://www.feaser.com/openblt/doku.php?id=manual:libopenblt"
 license=('GPL')
 depends=('libusb>=1.0')
 makedepends=('cmake')
