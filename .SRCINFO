@@ -1,0 +1,12 @@
+pkgbase = r-genalg
+	pkgdesc = R Based Genetic Algorithm
+	pkgver = 0.2.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=genalg
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/genalg_0.2.1.tar.gz
+	sha256sums = caee6c5f3c04176c39f03037d2ee164eebac0429f9a522460eedfe8274f898f8
+
+pkgname = r-genalg
