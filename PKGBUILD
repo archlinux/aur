@@ -1,0 +1,27 @@
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=NBPSeq
+_pkgver=0.3.0
+pkgname=r-${_pkgname,,}
+pkgver=0.3.0
+pkgrel=4
+pkgdesc='Negative Binomial Models for RNA-Sequencing Data'
+arch=('x86_64')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-qvalue
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('7e251fa017d91ffa7b0c5e740859db4aa4f9bc3b46632983e03c4da161a79e50')
+
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+}
+
+package() {
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+}
+# vim:set ts=2 sw=2 et:

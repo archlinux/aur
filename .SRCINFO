@@ -1,0 +1,13 @@
+pkgbase = r-nbpseq
+	pkgdesc = Negative Binomial Models for RNA-Sequencing Data
+	pkgver = 0.3.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=NBPSeq
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-qvalue
+	source = https://cran.r-project.org/src/contrib/NBPSeq_0.3.0.tar.gz
+	sha256sums = 7e251fa017d91ffa7b0c5e740859db4aa4f9bc3b46632983e03c4da161a79e50
+
+pkgname = r-nbpseq
