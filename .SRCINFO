@@ -1,0 +1,17 @@
+pkgbase = r-msgfplus
+	pkgdesc = An interface between R and MS-GF+
+	pkgver = 1.28.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/MSGFplus
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mzid
+	depends = r-protgenerics
+	depends = java-runtime-headless
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSGFplus_1.28.0.tar.gz
+	sha256sums = feac6d5fc46a4d111502da37849b3d9990c46eee1d7e841a948fcc9708a818cc
+
+pkgname = r-msgfplus
