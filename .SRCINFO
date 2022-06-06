@@ -1,0 +1,17 @@
+pkgbase = r-shinypanel
+	pkgdesc = Shiny Control Panel
+	pkgver = 0.1.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=shinypanel
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-shiny
+	depends = r-shinybs
+	depends = r-shinyjs
+	source = https://cran.r-project.org/src/contrib/shinypanel_0.1.5.tar.gz
+	sha256sums = 3264a5a75a306881e6a1622413298d7f3cda3dc78f54446171925774bab97a00
+
+pkgname = r-shinypanel
