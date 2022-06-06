@@ -1,0 +1,23 @@
+pkgbase = r-fresh
+	pkgdesc = Create Custom 'Bootstrap' Themes to Use in 'Shiny'
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fresh
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-htmltools
+	depends = r-rstudioapi
+	depends = r-sass
+	depends = r-shiny
+	optdepends = r-bs4dash
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-shinydashboard
+	optdepends = r-shinywidgets
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fresh_0.2.0.tar.gz
+	sha256sums = a92db254ae88e8371efac44efe2cf1f5be7cce62291fdf994ebd68c14dad079d
+
+pkgname = r-fresh
