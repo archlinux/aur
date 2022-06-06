@@ -1,0 +1,19 @@
+pkgbase = r-svgpanzoom
+	pkgdesc = R 'Htmlwidget' to Add Pan and Zoom to Almost any R Graphic
+	pkgver = 0.3.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=svgPanZoom
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmlwidgets
+	optdepends = r-gridsvg
+	optdepends = r-htmltools
+	optdepends = r-knitr
+	optdepends = r-svglite
+	optdepends = r-xml
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/svgPanZoom_0.3.4.tar.gz
+	sha256sums = 02368f3640853cae6c9ea478fe4dc038c05e1d136a2568c221b8b8ee177ff4c5
+
+pkgname = r-svgpanzoom
