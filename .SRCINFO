@@ -1,0 +1,17 @@
+pkgbase = r-shinyscreenshot
+	pkgdesc = Capture Screenshots of Entire Pages or Parts of Pages in 'Shiny'
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=shinyscreenshot
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-base64enc
+	depends = r-jsonlite
+	depends = r-shiny
+	depends = r-uuid
+	optdepends = r-timevis
+	source = https://cran.r-project.org/src/contrib/shinyscreenshot_0.2.0.tar.gz
+	sha256sums = 63cef8a89e59dc00b9afe596c7042ef948e71e072ee1622404428e0c18177507
+
+pkgname = r-shinyscreenshot
