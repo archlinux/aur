@@ -1,8 +1,8 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=audenc
-pkgver=3.3.5
-pkgrel=2
+pkgver=3.3.6
+pkgrel=1
 pkgdesc='a batch shell script for encoding audio files in directories from one format to another.'
 arch=(any)
 url='https://audenc.sourceforge.io/'
@@ -24,7 +24,7 @@ optdepends=(
     'vorbis-tools: OGG encoder'
 )
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0cada50cedf5b3c84c2d5c85f6567e6780cd612504fb7eab38e0e638c0724535')
+sha256sums=('f61825adf485d425300dd8f05be3d33226398a7444575a3b532dbe381216f8b0')
 
 prepare() {
     cd $pkgname-$pkgver
