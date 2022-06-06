@@ -1,0 +1,16 @@
+pkgbase = r-wordcloud
+	pkgdesc = Word Clouds
+	pkgver = 2.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=wordcloud
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-rcolorbrewer
+	depends = r-rcpp
+	optdepends = r-slam
+	optdepends = r-tm
+	source = https://cran.r-project.org/src/contrib/wordcloud_2.6.tar.gz
+	sha256sums = 53716954430acd4f164bfd8eacd7068a908ee3358293ded6cd992d53b7f72649
+
+pkgname = r-wordcloud
