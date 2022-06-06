@@ -1,0 +1,16 @@
+pkgbase = plctool-git
+	pkgdesc = A PRIME/DLMS graphical swiss-knife
+	pkgver = v1.1.0.r0.ga4c1ac2
+	pkgrel = 1
+	url = https://github.com/TarlogicSecurity/PLCTool
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt6-base
+	provides = plctool
+	conflicts = plctool
+	source = plctool-git::git+https://github.com/TarlogicSecurity/PLCTool.git
+	sha256sums = SKIP
+
+pkgname = plctool-git
