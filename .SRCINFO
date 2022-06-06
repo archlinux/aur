@@ -1,0 +1,16 @@
+pkgbase = r-genomictools.filehandler
+	pkgdesc = File Handlers for Genomic Data Analysis
+	pkgver = 0.1.5.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GenomicTools.fileHandler
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-data.table
+	depends = r-snpstats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/GenomicTools.fileHandler_0.1.5.9.tar.gz
+	sha256sums = 0c1991cc85eddddc7b2a14c1d861bc84956061407de4031b4b442e741c3f8826
+
+pkgname = r-genomictools.filehandler
