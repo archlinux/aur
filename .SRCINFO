@@ -1,0 +1,29 @@
+pkgbase = r-leiden
+	pkgdesc = R Implementation of Leiden Clustering Algorithm
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=leiden
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-igraph
+	depends = r-reticulate
+	optdepends = r-bipartite
+	optdepends = r-covr
+	optdepends = r-data.table
+	optdepends = r-devtools
+	optdepends = r-graphsim
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-multinet
+	optdepends = r-multiplex
+	optdepends = r-network
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/leiden_0.4.2.tar.gz
+	sha256sums = cace86748c4aa1720508210658ee2f63f7875be5bac215084001fdc59d22e2bd
+
+pkgname = r-leiden
