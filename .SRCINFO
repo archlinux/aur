@@ -1,0 +1,15 @@
+pkgbase = r-reldist
+	pkgdesc = Relative Distribution Methods
+	pkgver = 1.7.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=reldist
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-densestbayes
+	depends = r-hmisc
+	optdepends = r-locfit
+	source = https://cran.r-project.org/src/contrib/reldist_1.7-1.tar.gz
+	sha256sums = 2693ab9660e34a3f5e27bf8eec985f7f8dcd625df14779367c93557c15c66b9e
+
+pkgname = r-reldist
