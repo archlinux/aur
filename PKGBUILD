@@ -1,6 +1,7 @@
-## Maintainer:     barfin <barfin@protonmail.com>
-## Co-Maintainer:  Jaja <jaja@mailbox.org>
+## Maintainer:     Jaja <jaja@mailbox.org>
 ## Co-Maintainer:  floriplum <floriplum@mailbox.org>
+## Co-Maintainer:  various people submitting to 'chaotic-aur' repo
+## Credits:        barfin <barfin@protonmail.com>
 
 ## Linted using:
 ##   $ shellcheck PKGBUILD -e SC2034,SC2148,SC2154
