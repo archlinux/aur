@@ -1,0 +1,34 @@
+pkgbase = r-hmisc
+	pkgdesc = Harrell Miscellaneous
+	pkgver = 4.7.0
+	pkgrel = 5
+	url = https://cran.r-project.org/package=Hmisc
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-base64enc
+	depends = r-data.table
+	depends = r-formula
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-gtable
+	depends = r-htmltable
+	depends = r-htmltools
+	depends = r-latticeextra
+	depends = r-viridis
+	depends = r-stringi
+	optdepends = r-acepack
+	optdepends = r-chron
+	optdepends = r-knitr
+	optdepends = r-mice
+	optdepends = r-plotly
+	optdepends = r-plyr
+	optdepends = r-rlang
+	optdepends = r-rms
+	optdepends = r-tables
+	optdepends = r-vgam
+	source = https://cran.r-project.org/src/contrib/Hmisc_4.7-0.tar.gz
+	sha256sums = 29ec2d9ca11c790c350e93323126bef4f498c69c41c31bb335fd04671e0f87bd
+
+pkgname = r-hmisc
