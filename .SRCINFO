@@ -1,0 +1,22 @@
+pkgbase = r-meshr
+	pkgdesc = Tools for conducting enrichment analysis of MeSH
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/meshr
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocstyle
+	depends = r-category
+	depends = r-fdrtool
+	depends = r-knitr
+	depends = r-markdown
+	depends = r-meshdbi
+	depends = r-rmarkdown
+	depends = r-rsqlite
+	depends = r-s4vectors
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/meshr_2.2.0.tar.gz
+	sha256sums = b43933d6d71d7aed07bacdc1b4926fdbf67d5cb7c03704dd8ddd78d5ca975dbd
+
+pkgname = r-meshr
