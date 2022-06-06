@@ -1,0 +1,35 @@
+pkgbase = r-epir
+	pkgdesc = Tools for the Analysis of Epidemiological Data
+	pkgver = 2.0.48
+	pkgrel = 3
+	url = https://cran.r-project.org/package=epiR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biasedurn
+	depends = r-lubridate
+	depends = r-pander
+	depends = r-sf
+	depends = r-zoo
+	depends = r-flextable
+	depends = r-officer
+	optdepends = r-foreign
+	optdepends = r-ggplot2
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-mapproj
+	optdepends = r-maptools
+	optdepends = r-mass
+	optdepends = r-plyr
+	optdepends = r-rcolorbrewer
+	optdepends = r-rgdal
+	optdepends = r-rgeos
+	optdepends = r-rmarkdown
+	optdepends = r-scales
+	optdepends = r-spatstat
+	optdepends = r-spdata
+	optdepends = r-tidyverse
+	source = https://cran.r-project.org/src/contrib/epiR_2.0.48.tar.gz
+	sha256sums = 2a0b5d47c3d96c8dd91d408c17550ef2297941bbca8c9e31f65ab3bc662ae1f3
+
+pkgname = r-epir
