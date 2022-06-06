@@ -1,0 +1,22 @@
+pkgbase = r-suprahex
+	pkgdesc = supraHex: a supra-hexagonal map for analysing tabular omics data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/supraHex
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ape
+	depends = r-dplyr
+	depends = r-hexbin
+	depends = r-igraph
+	depends = r-magrittr
+	depends = r-purrr
+	depends = r-readr
+	depends = r-stringr
+	depends = r-tibble
+	depends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/supraHex_1.34.0.tar.gz
+	sha256sums = b1f5f7b18a812a7a1420a01308609949ff32203e142ada10ac3e37cb9cd3e798
+
+pkgname = r-suprahex
