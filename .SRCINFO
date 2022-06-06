@@ -1,11 +1,11 @@
 pkgbase = docker-credential-gcr-bin
 	pkgdesc = Google Container Registry's standalone, gcloud SDK-independent Docker credential helper
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/docker-credential-gcr
 	arch = x86_64
 	license = Apache
-	source = docker-credential-gcr-bin-2.1.4.tar.gz::https://github.com/GoogleCloudPlatform/docker-credential-gcr/releases/download/v2.1.4/docker-credential-gcr_linux_amd64-2.1.4.tar.gz
-	sha256sums = 750afc8d9f530a11949b676c9cd592b003a35f5f2d9ae5e8a78b423c91fb4a0e
+	source = docker-credential-gcr-bin-2.1.5.tar.gz::https://github.com/GoogleCloudPlatform/docker-credential-gcr/releases/download/v2.1.5/docker-credential-gcr_linux_amd64-2.1.5.tar.gz
+	sha256sums = 091677f1c10fa1dad66e572a6cf0fb9a4dcc2e476cfb5046fad1f3fa3130784f
 
 pkgname = docker-credential-gcr-bin
