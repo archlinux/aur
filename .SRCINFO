@@ -1,0 +1,18 @@
+pkgbase = r-isogene
+	pkgdesc = Order-Restricted Inference for Microarray Experiments
+	pkgver = 1.0.24
+	pkgrel = 3
+	url = https://cran.r-project.org/package=IsoGene
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affy
+	depends = r-biobase
+	depends = r-ff
+	depends = r-iso
+	depends = r-xtable
+	depends = tk
+	source = https://cran.r-project.org/src/contrib/IsoGene_1.0-24.tar.gz
+	sha256sums = 19049382c45c870cd8e51e47ec1ec9b38bbfa1ff4af31fd5a07b5af57505953a
+
+pkgname = r-isogene
