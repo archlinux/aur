@@ -1,0 +1,17 @@
+pkgbase = r-rmir
+	pkgdesc = Package to work with miRNAs and miRNA targets with R
+	pkgver = 1.49.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/RmiR
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-dbi
+	depends = r-rmir.hs.mirna
+	depends = r-rsvgtipsdevice
+	optdepends = r-hgug4112a.db
+	optdepends = r-org.hs.eg.db
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RmiR_1.49.0.tar.gz
+	sha256sums = 4ad28fb669731a44e39bde01b440a30c752a8aee0204472a8b7ee3931481dc9a
+
+pkgname = r-rmir
