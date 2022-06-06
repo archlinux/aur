@@ -1,0 +1,25 @@
+pkgbase = r-idpr
+	pkgdesc = Profiling and Analyzing Intrinsically Disordered Proteins in R
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/idpr
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-biostrings
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-jsonlite
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-rlang
+	optdepends = r-ape
+	optdepends = r-knitr
+	optdepends = r-msa
+	optdepends = r-rmarkdown
+	optdepends = r-seqinr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/idpr_1.6.0.tar.gz
+	sha256sums = 43bc0d17f09729f054a8475e459d80c13085aad2c82a55b21903784e431d87f6
+
+pkgname = r-idpr
