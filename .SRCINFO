@@ -1,0 +1,22 @@
+pkgbase = r-tensorflow
+	pkgdesc = R Interface to 'TensorFlow'
+	pkgver = 2.9.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=tensorflow
+	arch = any
+	license = Apache
+	depends = r
+	depends = r-config
+	depends = r-processx
+	depends = r-reticulate
+	depends = r-rstudioapi
+	depends = r-tfautograph
+	depends = r-tfruns
+	depends = r-yaml
+	optdepends = r-callr
+	optdepends = r-keras
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tensorflow_2.9.0.tar.gz
+	sha256sums = d27e017fe48a8179a192099bec31e41abe24e8bbe9fe3b95c4ce3cd27bb38689
+
+pkgname = r-tensorflow
