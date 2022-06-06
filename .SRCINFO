@@ -1,0 +1,24 @@
+pkgbase = r-geneattribution
+	pkgdesc = Identification of candidate genes associated with genetic variation
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/geneAttribution
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomeinfodb
+	depends = r-genomicfeatures
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-org.hs.eg.db
+	depends = r-rtracklayer
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geneAttribution_1.22.0.tar.gz
+	sha256sums = e76f0ffa5e348ea59f59fd3955cb2723eeac1b6cb20e15134e657fe8a8ca1638
+
+pkgname = r-geneattribution
