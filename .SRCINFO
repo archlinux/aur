@@ -1,0 +1,27 @@
+pkgbase = r-mirtarrnaseq
+	pkgdesc = mirTarRnaSeq
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/mirTarRnaSeq
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-assertthat
+	depends = r-catools
+	depends = r-corrplot
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-pheatmap
+	depends = r-pscl
+	depends = r-purrr
+	depends = r-r.utils
+	depends = r-reshape2
+	depends = r-ggplot2
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-r.cache
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mirTarRnaSeq_1.4.0.tar.gz
+	sha256sums = c1df6520d00af1bd102e14708504be425d61f6bfe08ac9d157ca7beadaf08083
+
+pkgname = r-mirtarrnaseq
