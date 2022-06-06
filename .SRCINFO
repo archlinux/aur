@@ -1,0 +1,16 @@
+pkgbase = r-uchardet
+	pkgdesc = The Universal Character Encoding Detector
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=uchardet
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-curl
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/uchardet_1.1.0.tar.gz
+	sha256sums = 3f51152380a3a7c79a9533291fcfcd799f0a5eae818dbdb03ef4cc6b0b89dbb6
+
+pkgname = r-uchardet
