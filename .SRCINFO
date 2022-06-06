@@ -1,0 +1,26 @@
+pkgbase = r-enrichedheatmap
+	pkgdesc = Making Enriched Heatmaps
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/EnrichedHeatmap
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-circlize
+	depends = r-complexheatmap
+	depends = r-genomicranges
+	depends = r-getoptlong
+	depends = r-iranges
+	depends = r-locfit
+	depends = r-matrixstats
+	depends = r-rcpp
+	optdepends = r-genefilter
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnrichedHeatmap_1.26.0.tar.gz
+	sha256sums = d4c22b06da685fc0ee864f7ccd9a6dcd14329cb958be169ba9d1f24b6055c0a4
+
+pkgname = r-enrichedheatmap
