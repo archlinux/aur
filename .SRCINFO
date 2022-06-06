@@ -1,0 +1,17 @@
+pkgbase = r-rbowtie2
+	pkgdesc = An R Wrapper for Bowtie2 and AdapterRemoval
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Rbowtie2
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-magrittr
+	depends = r-rsamtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rbowtie2_2.2.0.tar.gz
+	sha256sums = 6f5a2fef2fdd45307f1a3e0f07fb49f1325a55c265613095230dcebc8fe80d36
+
+pkgname = r-rbowtie2
