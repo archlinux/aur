@@ -1,0 +1,13 @@
+pkgbase = r-noiseq
+	pkgdesc = Exploratory analysis and differential expression for RNA-seq data
+	pkgver = 2.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/NOISeq
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NOISeq_2.40.0.tar.gz
+	sha256sums = 47cc6c13a1904f31f1b7ab206e438321208b6614d646ada72445900d6953062a
+
+pkgname = r-noiseq
