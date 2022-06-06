@@ -1,0 +1,26 @@
+pkgbase = r-rpf
+	pkgdesc = Response Probability Functions
+	pkgver = 1.0.11
+	pkgrel = 5
+	url = https://cran.r-project.org/package=rpf
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = r
+	depends = r-lifecycle
+	depends = r-mvtnorm
+	depends = r-rcpp
+	depends = r-rcppeigen
+	optdepends = r-ggplot2
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-mirt
+	optdepends = r-numderiv
+	optdepends = r-reshape2
+	optdepends = r-roxygen2
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/rpf_1.0.11.tar.gz
+	sha256sums = e1fd670ae7c3e947db08ce50d6b16ce1b3b8f63a9016b03baba760aee78921fb
+
+pkgname = r-rpf
