@@ -1,0 +1,21 @@
+pkgbase = r-dmrscan
+	pkgdesc = Detection of Differentially Methylated Regions
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/DMRScan
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-mvtnorm
+	depends = r-rcpproll
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DMRScan_1.18.0.tar.gz
+	sha256sums = 75347a1bbda3cbd3fc4dbd7cb0e0219ffa1ecbb49d5d3f6d9c9868785eadae3e
+
+pkgname = r-dmrscan
