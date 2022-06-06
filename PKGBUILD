@@ -4,21 +4,20 @@ pkgname=cgmnlm
 pkgrel=1
 pkgver=1.4
 pkgdesc="colorful gemini line mode client - fork of gmni"
-url="https://src.clttr.info/rwa/cgmnlm"
+url="https://code.clttr.info/cgmnlm/file/README.md.html"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://src.clttr.info/rwa/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}::git://git.clttr.info/cgmnlm.git#tag=${pkgver}")
 conflicts=('gmni-git' 'cgmnlm-git')
 optdepends=('xdg-utils')
 depends=('bearssl')
 makedepends=('scdoc')
-sha256sums=('54dcd0dc807462dc1e72289bf17bebe87f714a8744e78581d0691e7a475a49b2')
+sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}"
 
     mkdir -p build && cd build
-    # errors? what errors :)
     ../configure --prefix=/usr
     make PREFIX="/usr"
 }
