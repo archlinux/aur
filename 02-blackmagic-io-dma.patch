@@ -1,0 +1,105 @@
+diff --git a/bm_mm.c b/bm_mm.c
+index 64ab876..7b2d6a0 100644
+--- a/blackmagic-io-12.3a10/bm_mm.c
++++ b/blackmagic-io-12.3a10/bm_mm.c
+@@ -54,7 +54,9 @@ struct bm_mmap
+ 	bm_user_mem_t umem; // Must be last member in struct
+ };
+ 
+-#if KERNEL_VERSION_OR_LATER(2, 6, 27)
++#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++	#define bm_pci_dma_mapping_error(dev, addr) dma_mapping_error(dev, addr)
++#elif KERNEL_VERSION_OR_LATER(2, 6, 27)
+ 	#define bm_pci_dma_mapping_error(dev, addr) pci_dma_mapping_error(dev, addr)
+ #else
+ 	#define bm_pci_dma_mapping_error(dev, addr) pci_dma_mapping_error(addr)
+@@ -223,8 +225,13 @@ bm_dma_list_t* bm_dma_map_user_buffer(bm_pci_device_t* pci, bm_user_mem_t* umem,
+ 
+ 	for (i = 0; i < umem->length; ++i)
+ 	{
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		dlist->addrs[i] = dma_map_page(&pci->pdev->dev, umem->pages[i], 0, PAGE_SIZE, dir);
++		if (bm_pci_dma_mapping_error(&pci->pdev->dev, dlist->addrs[i]))
++	#else
+ 		dlist->addrs[i] = pci_map_page(pci->pdev, umem->pages[i], 0, PAGE_SIZE, dir);
+ 		if (bm_pci_dma_mapping_error(pci->pdev, dlist->addrs[i]))
++	#endif
+ 		{
+ 			bm_dma_unmap_buffer(pci, dlist, dir);
+ 			return NULL;
+@@ -246,8 +253,13 @@ bm_dma_list_t* bm_dma_map_kernel_buffer(bm_pci_device_t* pci, void* addr, vm_siz
+ 	dlist->contig = 1;
+ 	dlist->length = size;
+ 
++#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++	dlist->addrs[0] = dma_map_single(&pci->pdev->dev, addr, size, dir);
++	if (bm_pci_dma_mapping_error(&pci->pdev->dev, dlist->addrs[0]))
++#else
+ 	dlist->addrs[0] = pci_map_single(pci->pdev, addr, size, dir);
+ 	if (bm_pci_dma_mapping_error(pci->pdev, dlist->addrs[0]))
++#endif
+ 	{
+ 		bm_dma_unmap_buffer(pci, dlist, dir);
+ 		return NULL;
+@@ -275,8 +287,13 @@ bm_dma_list_t* bm_dma_map_kernel_buffer_vmalloc(bm_pci_device_t* pci, void* addr
+ 	for (i = 0; i < n_pages; ++i, offset += PAGE_SIZE)
+ 	{
+ 		struct page* page = vmalloc_to_page((void*)(aligned_addr + offset));
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		dlist->addrs[i] = dma_map_page(&pci->pdev->dev, page, 0, PAGE_SIZE, dir);
++		if (bm_pci_dma_mapping_error(&pci->pdev->dev, dlist->addrs[i]))
++	#else
+ 		dlist->addrs[i] = pci_map_page(pci->pdev, page, 0, PAGE_SIZE, dir);
+ 		if (bm_pci_dma_mapping_error(pci->pdev, dlist->addrs[i]))
++	#endif
+ 		{
+ 			bm_dma_unmap_buffer(pci, dlist, dir);
+ 			return NULL;
+@@ -292,7 +309,11 @@ void bm_dma_unmap_buffer(bm_pci_device_t* pci, bm_dma_list_t* dlist, bm_dma_dire
+ 	size_t i;
+ 	if (dlist->contig)
+ 	{
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		dma_unmap_single(&pci->pdev->dev, dlist->addrs[0], dlist->length, dir);
++	#else
+ 		pci_unmap_single(pci->pdev, dlist->addrs[0], dlist->length, dir);
++	#endif
+ 		bm_atomic_sub(&statistics.memory_mapped, dlist->length);
+ 	}
+ 	else
+@@ -301,7 +322,11 @@ void bm_dma_unmap_buffer(bm_pci_device_t* pci, bm_dma_list_t* dlist, bm_dma_dire
+ 		{
+ 			if (dlist->addrs[i])
+ 			{
++			#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++				dma_unmap_page(&pci->pdev->dev, dlist->addrs[i], PAGE_SIZE, dir);
++			#else
+ 				pci_unmap_page(pci->pdev, dlist->addrs[i], PAGE_SIZE, dir);
++			#endif
+ 				bm_atomic_sub(&statistics.pages_mapped, 1);
+ 			}
+ 		}
+diff --git a/bm_pci.c b/bm_pci.c
+index 7c21e66..7e5be29 100644
+--- a/blackmagic-io-12.3a10/bm_pci.c
++++ b/blackmagic-io-12.3a10/bm_pci.c
+@@ -76,11 +76,19 @@ bool bm_pci_start(bm_pci_device_t* pci)
+ 
+ 	pci_set_master(pci->pdev);
+ 
++#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++	if (dma_set_mask(&pci->pdev->dev, BM_DMA_64BIT_MASK) < 0)
++	{
++		if (dma_set_mask(&pci->pdev->dev, BM_DMA_32BIT_MASK) < 0)
++			goto bail;
++	}
++#else
+ 	if (pci_set_dma_mask(pci->pdev, BM_DMA_64BIT_MASK) < 0)
+ 	{
+ 		if (pci_set_dma_mask(pci->pdev, BM_DMA_32BIT_MASK) < 0)
+ 			goto bail;
+ 	}
++#endif
+ 
+ 	if (strcmp(default_irq_type, "msi") == 0)
+ 		pci_enable_msi(pci->pdev);

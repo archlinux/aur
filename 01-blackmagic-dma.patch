@@ -1,0 +1,118 @@
+diff --git a/blackmagic_core.c b/blackmagic_core.c
+index 0400061..19706f2 100644
+--- a/blackmagic-12.3a10/blackmagic_core.c
++++ b/blackmagic-12.3a10/blackmagic_core.c
+@@ -485,11 +485,19 @@ bool dl_pci_start(void* pci_dev)
+ 	#define BMD_DMA_32_MASK		DMA_32BIT_MASK
+ #endif
+ 
++#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++	if (dma_set_mask(&pdev->dev, BMD_DMA_64_MASK) < 0)
++	{
++		if (dma_set_mask(&pdev->dev, BMD_DMA_32_MASK) < 0)
++			goto fail;
++	}
++#else
+ 	if (pci_set_dma_mask(pdev, BMD_DMA_64_MASK) < 0)
+ 	{
+ 		if (pci_set_dma_mask(pdev, BMD_DMA_32_MASK) < 0)
+ 			goto fail;
+ 	}
++#endif
+ 
+ 	return true;
+ 
+diff --git a/blackmagic_dma.c b/blackmagic_dma.c
+index f44235c..7a8bddf 100644
+--- a/blackmagic-12.3a10/blackmagic_dma.c
++++ b/blackmagic-12.3a10/blackmagic_dma.c
+@@ -53,6 +53,7 @@
+ #include <asm/uaccess.h>
+ 
+ #include "blackmagic_lib.h"
++#include "blackmagic_version.h"
+ 
+ struct dl_dma_entry
+ {
+@@ -81,13 +82,23 @@ static inline int bmd_to_linux_direction(int direction)
+ {
+ 	switch (direction)
+ 	{
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		case DL_DMA_TO_DEVICE: return DMA_TO_DEVICE;
++		case DL_DMA_FROM_DEVICE: return DMA_FROM_DEVICE;
++		case DL_DMA_BIDIRECTIONAL: return DMA_BIDIRECTIONAL;
++	#else
+ 		case DL_DMA_TO_DEVICE: return PCI_DMA_TODEVICE;
+ 		case DL_DMA_FROM_DEVICE: return PCI_DMA_FROMDEVICE;
+ 		case DL_DMA_BIDIRECTIONAL: return PCI_DMA_BIDIRECTIONAL;
++	#endif
+ 		default:
+ 			break;
+ 	}
++#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++ 	return DMA_NONE;
++#else
+	return PCI_DMA_NONE;
++#endif
+ }
+ 
+ static unsigned long dl_dma_get_num_pages(void *address, unsigned long size)
+@@ -136,7 +147,11 @@ dl_dma_map_user_buffer(void* page_array, unsigned long num_pages, int direction,
+ 
+ 	for (i = 0; i < num_pages; i++)
+ 	{
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		e->dma_addr = dma_map_page(pdev, pages[i], 0, PAGE_SIZE, direction);
++	#else
+ 		e->dma_addr = pci_map_page(pdev, pages[i], 0, PAGE_SIZE, direction);
++	#endif
+ 		e = next_entry(e);
+ 	}
+ 
+@@ -171,14 +186,22 @@ dl_dma_map_kernel_buffer(void *address, unsigned long size, int direction, int i
+ 		{
+ 			page = vmalloc_to_page((void*)(unsigned long)start_addr + offset);
+ 			offset += PAGE_SIZE;
++		#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++			e->dma_addr = dma_map_page(pdev, page, 0, PAGE_SIZE, direction);
++		#else
+ 			e->dma_addr = pci_map_page(pdev, page, 0, PAGE_SIZE, direction);
++		#endif
+ 			e = next_entry(e);
+ 		}
+ 		sl->num_pages = num_pages;
+ 	}
+ 	else
+ 	{
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		e->dma_addr = dma_map_single(pdev, address, size, direction);
++	#else
+ 		e->dma_addr = pci_map_single(pdev, address, size, direction);
++	#endif
+ 		sl->dma_is_single = 1;
+ 		sl->size = size;
+ 	}
+@@ -226,12 +249,21 @@ void dl_dma_unmap_kernel_buffer(struct dl_dma_list* sl, int direction)
+ 	{
+ 		for (i = 0; i < sl->num_pages; i++)
+ 		{
++		#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++			dma_unmap_page(&sl->pdev->dev, e->dma_addr, PAGE_SIZE, direction);
++		#else
+ 			pci_unmap_page(sl->pdev, e->dma_addr, PAGE_SIZE, direction);
++		#endif
+ 			e = next_entry(e);
+ 		}
+ 	}
+-	else
++	else {
++	#if KERNEL_VERSION_OR_LATER(5, 18, 0)
++		dma_unmap_single(&sl->pdev->dev, e->dma_addr, sl->size, direction);
++	#else
+ 		pci_unmap_single(sl->pdev, e->dma_addr, sl->size, direction);
++	#endif
++	}
+ 
+ 	destroy_dl_dma_entry(sl);
+ }
