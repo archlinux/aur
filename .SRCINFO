@@ -1,0 +1,22 @@
+pkgbase = r-switchde
+	pkgdesc = Switch-like differential expression across single-cell trajectories
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/switchde
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-numderiv
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/switchde_1.22.0.tar.gz
+	sha256sums = 5e80d4b0fbe1b47f82b1bba2f052dda5a9696a27b7c9ecd1dc11ce6bda70f155
+
+pkgname = r-switchde
