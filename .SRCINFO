@@ -1,0 +1,16 @@
+pkgbase = r-dtangle
+	pkgdesc = Cell Type Deconvolution from Gene Expressions
+	pkgver = 2.0.9
+	pkgrel = 4
+	url = https://cran.r-project.org/package=dtangle
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-deoptimr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/dtangle_2.0.9.tar.gz
+	sha256sums = c375068c1877c2e8cdc5601cfd5a9c821645c3dff90ddef64817f788f372e179
+
+pkgname = r-dtangle
