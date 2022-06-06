@@ -1,0 +1,12 @@
+pkgbase = r-infotheo
+	pkgdesc = Information-Theoretic Measures
+	pkgver = 1.2.0.1
+	pkgrel = 3
+	url = https://cran.r-project.org/package=infotheo
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/infotheo_1.2.0.1.tar.gz
+	sha256sums = c0fb8ec97ad3a49f231c4c993b5eee70c6a61c8c30dc4a46197867e4763a29d4
+
+pkgname = r-infotheo
