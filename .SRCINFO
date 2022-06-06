@@ -1,0 +1,16 @@
+pkgbase = r-ggnewscale
+	pkgdesc = Multiple Fill and Colour Scales in 'ggplot2'
+	pkgver = 0.4.7
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ggnewscale
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	optdepends = r-covr
+	optdepends = r-testthat
+	optdepends = r-vdiffr
+	source = https://cran.r-project.org/src/contrib/ggnewscale_0.4.7.tar.gz
+	sha256sums = 6b12ac9947fd3161941b2bb85c00a18d5fc794ad8b1e22a6f37f63ac8d3f0a81
+
+pkgname = r-ggnewscale
