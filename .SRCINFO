@@ -1,0 +1,12 @@
+pkgbase = r-tensora
+	pkgdesc = Advanced Tensor Arithmetic with Named Indices
+	pkgver = 0.36.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=tensorA
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/tensorA_0.36.2.tar.gz
+	sha256sums = 8e8947566bd3b65a54de4269df1abaa3d49cf5bfd2a963c3274a524c8a819ca7
+
+pkgname = r-tensora
