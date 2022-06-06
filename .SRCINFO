@@ -1,0 +1,25 @@
+pkgbase = r-globalancova
+	pkgdesc = Global test for groups of variables via model comparisons
+	pkgver = 4.14.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GlobalAncova
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-annotate
+	depends = r-annotationdbi
+	depends = r-biobase
+	depends = r-corpcor
+	depends = r-dendextend
+	depends = r-globaltest
+	depends = r-gseabase
+	depends = r-vgam
+	optdepends = r-go.db
+	optdepends = r-golubesets
+	optdepends = r-hu6800.db
+	optdepends = r-rgraphviz
+	optdepends = r-vsn
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GlobalAncova_4.14.0.tar.gz
+	sha256sums = 641b24765da7bdbc5fa76c9a3edd19e37274c1e99dc4714e432e3a06e8048507
+
+pkgname = r-globalancova
