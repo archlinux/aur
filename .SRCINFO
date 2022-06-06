@@ -1,0 +1,13 @@
+pkgbase = r-mle.tools
+	pkgdesc = Expected/Observed Fisher Information and Bias-Corrected Maximum Likelihood Estimate(s)
+	pkgver = 1.0.0
+	pkgrel = 7
+	url = https://cran.r-project.org/package=mle.tools
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-fitdistrplus
+	source = https://cran.r-project.org/src/contrib/mle.tools_1.0.0.tar.gz
+	sha256sums = 2bbf68738d58636bd35775852f13275f225bea2cb816807cca3f0c17836cd60b
+
+pkgname = r-mle.tools
