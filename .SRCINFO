@@ -1,0 +1,14 @@
+pkgbase = r-txdb.hsapiens.ucsc.hg38.knowngene
+	pkgdesc = Annotation package for TxDb object(s)
+	pkgver = 3.15.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/TxDb.Hsapiens.UCSC.hg38.knownGene
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/TxDb.Hsapiens.UCSC.hg38.knownGene_3.15.0.tar.gz
+	sha256sums = e92069ef6ccf6ec5ab6395d195c9f83b11ef944012b0be06f1f6f13227c42ef9
+
+pkgname = r-txdb.hsapiens.ucsc.hg38.knowngene
