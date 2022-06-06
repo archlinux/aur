@@ -1,0 +1,17 @@
+pkgbase = r-shadowtext
+	pkgdesc = Shadow Text Grob and Layer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=shadowtext
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = r-scales
+	optdepends = r-knitr
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/shadowtext_0.1.2.tar.gz
+	sha256sums = 253c4e737dbb302aa0729e5074e84cbfde2a73bfd7a0fd2c74b557cb728bae7d
+
+pkgname = r-shadowtext
