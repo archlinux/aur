@@ -1,0 +1,19 @@
+pkgbase = r-glmpca
+	pkgdesc = Dimension Reduction of Non-Normally Distributed Data
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=glmpca
+	arch = any
+	license = LGPL
+	depends = r
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-logisticpca
+	optdepends = r-markdown
+	optdepends = r-matrix
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/glmpca_0.2.0.tar.gz
+	sha256sums = 048a9cdb303279275aa2b23bb01777dffdeaec0752709b382c2289f21e70b20b
+
+pkgname = r-glmpca
