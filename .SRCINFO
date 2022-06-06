@@ -1,0 +1,14 @@
+pkgbase = r-mltools
+	pkgdesc = Machine Learning Tools
+	pkgver = 0.3.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=mltools
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-data.table
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mltools_0.3.5.tar.gz
+	sha256sums = 7093ffceccdf5d4c3f045d8c8143deaa8ab79935cc6d5463973ffc7d3812bb10
+
+pkgname = r-mltools
