@@ -1,0 +1,16 @@
+pkgbase = r-sitmo
+	pkgdesc = Parallel Pseudo Random Number Generator (PPRNG) 'sitmo' Header Files
+	pkgver = 2.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sitmo
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-rcpp
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/sitmo_2.0.2.tar.gz
+	sha256sums = 448ef8d56e36783354011845daf33f1efb83ea3b9685eea75eaf5134e24fa8c2
+
+pkgname = r-sitmo
