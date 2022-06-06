@@ -1,0 +1,13 @@
+pkgbase = r-sylly.en
+	pkgdesc = Language Support for 'sylly' Package: English
+	pkgver = 0.1.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sylly.en
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-sylly
+	source = https://cran.r-project.org/src/contrib/sylly.en_0.1-3.tar.gz
+	sha256sums = 23d166feda7177f6204c607da7122d5bbdcf53bc6c5f36f5d95b9c602346844b
+
+pkgname = r-sylly.en
