@@ -1,0 +1,23 @@
+pkgbase = r-pandar
+	pkgdesc = PANDA Algorithm
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pandaR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-ggplot2
+	depends = r-hexbin
+	depends = r-igraph
+	depends = r-matrixstats
+	depends = r-plyr
+	depends = r-reshape
+	depends = r-runit
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pandaR_1.28.0.tar.gz
+	sha256sums = b9a07de85518f8b5106bae00b45d7bee33d975982fb0aa4ddc481ceeaff811d0
+
+pkgname = r-pandar
