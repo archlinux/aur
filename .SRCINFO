@@ -1,0 +1,16 @@
+pkgbase = r-orqa
+	pkgdesc = Order Restricted Assessment Of Microarray Titration Experiments
+	pkgver = 0.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=orQA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genefilter
+	depends = r-gtools
+	depends = r-rcpp
+	depends = make
+	source = https://cran.r-project.org/src/contrib/Archive/orQA/orQA_0.2.1.tar.gz
+	sha256sums = 18378f62fbfc7f751dda71ca21e438fb3677dd0c293e74801784e2c56e963b6e
+
+pkgname = r-orqa
