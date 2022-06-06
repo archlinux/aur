@@ -1,0 +1,14 @@
+pkgbase = r-seqinr
+	pkgdesc = Biological Sequences Retrieval and Analysis
+	pkgver = 4.2.16
+	pkgrel = 3
+	url = https://cran.r-project.org/package=seqinr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ade4
+	depends = r-segmented
+	source = https://cran.r-project.org/src/contrib/seqinr_4.2-16.tar.gz
+	sha256sums = c4f3253832fc255197bdce7b4dd381db606c6b787d2e888751b4963acf3a4032
+
+pkgname = r-seqinr
