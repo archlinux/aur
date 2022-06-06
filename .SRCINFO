@@ -1,0 +1,26 @@
+pkgbase = r-spectraltad
+	pkgdesc = SpectralTAD: Hierarchical TAD detection using spectral clustering
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SpectralTAD
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-biocparallel
+	depends = r-dplyr
+	depends = r-genomicranges
+	depends = r-hiccompare
+	depends = r-magrittr
+	depends = r-primme
+	optdepends = r-bioccheck
+	optdepends = r-biocmanager
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SpectralTAD_1.12.0.tar.gz
+	sha256sums = e58de2567bf955c30acc0eadcc3f7d8c40aee07fb161f4291b534c6c6e257b6b
+
+pkgname = r-spectraltad
