@@ -1,0 +1,25 @@
+pkgbase = r-metamisc
+	pkgdesc = Meta-Analysis of Diagnosis and Prognosis Research Studies
+	pkgver = 0.2.5
+	pkgrel = 6
+	url = https://cran.r-project.org/package=metamisc
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-lme4
+	depends = r-metafor
+	depends = r-mvtnorm
+	depends = r-plyr
+	depends = r-proc
+	optdepends = r-coda
+	optdepends = r-ggmcmc
+	optdepends = r-logistf
+	optdepends = r-rjags
+	optdepends = r-runjags
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/metamisc_0.2.5.tar.gz
+	sha256sums = 11684457c59a6ceb97159e591aa71b89b063ae7518f325bacc379293b598e6b9
+
+pkgname = r-metamisc
