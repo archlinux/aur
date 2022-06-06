@@ -1,0 +1,15 @@
+pkgbase = r-polynomf
+	pkgdesc = Polynomials in R
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=PolynomF
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/PolynomF_2.0-5.tar.gz
+	sha256sums = a86f7a8c768c9361a5203a7152532a39e038800f6db9b49b8591c8e2de135b2b
+
+pkgname = r-polynomf
