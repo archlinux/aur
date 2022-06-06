@@ -1,0 +1,23 @@
+pkgbase = r-tin
+	pkgdesc = Transcriptome instability analysis
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TIN
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-aroma.affymetrix
+	depends = r-data.table
+	depends = r-impute
+	depends = r-squash
+	depends = r-stringr
+	depends = r-wgcna
+	optdepends = r-affxparser
+	optdepends = r-aroma.light
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TIN_1.28.0.tar.gz
+	sha256sums = 96bc9b27e344939ae3e9d9661d880a1e3c486b38c934f869afcd15175b21facd
+
+pkgname = r-tin
