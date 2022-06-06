@@ -1,0 +1,14 @@
+pkgbase = r-rcgmin
+	pkgdesc = Conjugate Gradient Minimization of Nonlinear Functions
+	pkgver = 2022.4.30
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Rcgmin
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-numderiv
+	depends = r-optextras
+	source = https://cran.r-project.org/src/contrib/Rcgmin_2022-4.30.tar.gz
+	sha256sums = 2684b8e7fb970da2afbc00e482031cf4447416249d04c4c1740400ad112fb911
+
+pkgname = r-rcgmin
