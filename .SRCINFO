@@ -1,0 +1,13 @@
+pkgbase = r-wesanderson
+	pkgdesc = A Wes Anderson Palette Generator
+	pkgver = 0.3.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=wesanderson
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-ggplot2
+	source = https://cran.r-project.org/src/contrib/wesanderson_0.3.6.tar.gz
+	sha256sums = 22b6ea042a01d68a3bb471fc747f12c9beee61e1e4a4cf8ec0b2e12ac535b926
+
+pkgname = r-wesanderson
