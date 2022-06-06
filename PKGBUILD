@@ -2,12 +2,12 @@
 
 pkgname=cgmnlm-git
 pkgrel=1
-pkgver=1.3
+pkgver=1.4
 pkgdesc="colorful gemini line mode client - fork of gmni"
-url="https://src.clttr.info/rwa/cgmnlm"
+url="https://code.clttr.info/cgmnlm/file/README.md.html"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-source=("${pkgname}::git+https://src.clttr.info/rwa/cgmnlm.git")
+source=("${pkgname}::git://git.clttr.info/cgmnlm.git")
 conflicts=('gmni-git' 'cgmnlm')
 depends=('bearssl')
 optdepends=('xdg-utils')
