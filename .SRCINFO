@@ -1,0 +1,14 @@
+pkgbase = r-gptk
+	pkgdesc = Gaussian Processes Tool-Kit
+	pkgver = 1.08
+	pkgrel = 3
+	url = https://cran.r-project.org/package=gptk
+	arch = any
+	license = BSD
+	depends = r
+	depends = r-fields
+	optdepends = r-spam
+	source = https://cran.r-project.org/src/contrib/gptk_1.08.tar.gz
+	sha256sums = f4a84b4e275be4aea5e245748a16ede47cef28f7dc2d26acf0245a871c62663a
+
+pkgname = r-gptk
