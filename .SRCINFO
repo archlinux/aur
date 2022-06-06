@@ -1,0 +1,18 @@
+pkgbase = r-turbonorm
+	pkgdesc = A fast scatterplot smoother suitable for microarray normalization
+	pkgver = 1.44.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TurboNorm
+	arch = x86_64
+	license = LGPL
+	depends = r
+	depends = r-affy
+	depends = r-convert
+	depends = r-limma
+	depends = r-marray
+	optdepends = r-affydata
+	optdepends = r-biocstyle
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TurboNorm_1.44.0.tar.gz
+	sha256sums = c894ef77621907d6522b612c360c7f780e125c3d212ee4f3ccb79fa9db7a2f03
+
+pkgname = r-turbonorm
