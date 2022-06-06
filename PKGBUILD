@@ -5,7 +5,7 @@ pkgver=1.6.5.g80aa8af
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API)'
 arch=('any')
-url='https://github.com/quietvoid/dovi_tool/dolby_vision'
+url='https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision'
 license=('MIT')
 depends=(
   gcc-libs
