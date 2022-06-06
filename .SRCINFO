@@ -1,0 +1,24 @@
+pkgbase = r-pepstat
+	pkgdesc = Statistical analysis of peptide microarrays
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pepStat
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-data.table
+	depends = r-fields
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-limma
+	depends = r-plyr
+	optdepends = r-knitr
+	optdepends = r-pepdat
+	optdepends = r-pviz
+	optdepends = r-shiny
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pepStat_1.30.0.tar.gz
+	sha256sums = 6301ddfc629d761f6d57200c108171b78b176abdcc82898fa6a7f61f8c1543ba
+
+pkgname = r-pepstat
