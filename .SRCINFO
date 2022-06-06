@@ -1,0 +1,12 @@
+pkgbase = r-entropyexplorer
+	pkgdesc = Tools for Exploring Differential Shannon Entropy, Differential Coefficient of Variation and Differential Expression
+	pkgver = 1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=EntropyExplorer
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/Archive/EntropyExplorer/EntropyExplorer_1.1.tar.gz
+	sha256sums = 04961645e63085b5b74b4b42144b6b28ce3243eed49a6573a6e475af12b6920a
+
+pkgname = r-entropyexplorer
