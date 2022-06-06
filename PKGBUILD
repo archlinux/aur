@@ -7,7 +7,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 
+makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses'
              'libxml2' 'python-sphinx' 'python-recommonmark')
 options=('staticlibs')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz"
@@ -50,7 +50,7 @@ build() {
 
 package_llvm10() {
   pkgdesc="Collection of modular and reusable compiler and toolchain technologies"
-  depends=('llvm-libs' 'perl')
+  depends=('llvm10-libs' 'perl')
   optdepends=('python-setuptools: for using lit (LLVM Integrated Tester)')
 
   cd "$srcdir/llvm-$pkgver.src/build"
@@ -72,7 +72,7 @@ package_llvm10() {
     mv "$pkgdir/opt/llvm10/include/llvm/Config/llvm-config"{,-64}.h
     cp "$srcdir/llvm-config.h" "$pkgdir/opt/llvm10/include/llvm/Config/llvm-config.h"
   fi
-  
+
   cp -rf "$pkgdir"/usr/{bin,lib} "$pkgdir/opt/llvm10"
   rm -rf "$pkgdir"/usr
 
@@ -93,10 +93,10 @@ package_llvm10-libs() {
   # https://bugs.archlinux.org/task/28479
   install -d "$pkgdir/opt/llvm10/lib/bfd-plugins"
   ln -s ../LLVMgold.so "$pkgdir/opt/llvm10/lib/bfd-plugins/LLVMgold.so"
-  
+
   install -Dm644 "/dev/null" \
     "$pkgdir/etc/ld.so.conf.d/70-llvm10-libs.conf"
-  
+
   echo "/opt/llvm10/lib" > "$pkgdir/etc/ld.so.conf.d/70-llvm10-libs.conf"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \

@@ -24,7 +24,7 @@ pkgbase = llvm10
 
 pkgname = llvm10
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs
+	depends = llvm10-libs
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
 
