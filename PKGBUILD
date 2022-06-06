@@ -3,7 +3,7 @@
 
 pkgname=cfonts
 pkgver=1.0.4rust
-pkgrel=2
+pkgrel=3
 pkgdesc='Sexy ANSI fonts for the console'
 arch=('x86_64')
 url='https://github.com/dominikwilkowski/cfonts'
