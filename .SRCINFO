@@ -1,0 +1,16 @@
+pkgbase = r-quaternaryprod
+	pkgdesc = Computes the Quaternary Dot Product Scoring Statistic for Signed and Unsigned Causal Graphs
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/QuaternaryProd
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-rcpp
+	depends = r-yaml
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/QuaternaryProd_1.30.0.tar.gz
+	sha256sums = efc0718145336f99368172ffe32a349f1badb343b4ec0f3783709c7fce480733
+
+pkgname = r-quaternaryprod
