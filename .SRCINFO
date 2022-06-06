@@ -1,0 +1,22 @@
+pkgbase = r-xcir
+	pkgdesc = XCI-inference
+	pkgver = 1.7.0
+	pkgrel = 2
+	url = https://bioconductor.org/packages/XCIR
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-readxl
+	depends = r-s4vectors
+	depends = r-seqminer
+	depends = r-variantannotation
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/XCIR_1.7.0.tar.gz
+	sha256sums = 9cd249f510c3cd3c29074a5f9a29e18a7fd365e433f9050d983a6c1e00bf8258
+
+pkgname = r-xcir
