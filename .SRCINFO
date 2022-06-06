@@ -1,0 +1,12 @@
+pkgbase = r-fis
+	pkgdesc = Human Functional Interactions (FIs) for splineTimeR package
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/FIs
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/FIs_1.24.0.tar.gz
+	sha256sums = 416fea2b68a03db2d4cb162cf8af3f0c5be8f4146021063f612a84358677bfee
+
+pkgname = r-fis
