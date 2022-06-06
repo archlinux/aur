@@ -1,0 +1,17 @@
+pkgbase = r-svgui
+	pkgdesc = SciViews - Manage GUIs in R
+	pkgver = 1.0.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=svGUI
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/svGUI_1.0.1.tar.gz
+	sha256sums = e9a477b41276b8c4b5040b594fad1ddf8173481ff5f63d78929d0c345d7b0532
+
+pkgname = r-svgui
