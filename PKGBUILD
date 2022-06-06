@@ -1,10 +1,9 @@
 # Maintainer: groestlcoin <groestlcoin@gmail.com>
 
-#_dbver=5.3.28
 pkgbase=groestlcoin
 pkgname=('groestlcoin-daemon' 'groestlcoin-cli' 'groestlcoin-qt' 'groestlcoin-tx' 'groestlcoin-wallet' 'groestlcoin-util')
 pkgver=23.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.groestlcoin.org/"
 makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq' 'gmp')
@@ -34,13 +33,13 @@ prepare() {
 
 build() {
   cd $pkgbase-$pkgver
-  ./configure --prefix=/usr --with-gui=qt5 #LDFLAGS="-L$srcdir/db5/lib/ $LDFLAGS" CPPFLAGS="-I$srcdir/db5/include/ $CPPFLAGS"
+  ./configure --prefix=/usr --with-gui=qt5
   make
 }
 
 package_groestlcoin-qt() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - Qt"
-  depends=(boost-libs libevent qt5-base miniupnpc libminiupnpc.so qrencode protobuf zeromq hicolor-icon-theme db gmp)
+  depends=(boost-libs libevent qt5-base miniupnpc libminiupnpc.so qrencode protobuf zeromq hicolor-icon-theme db=5.3.28 gmp)
 
   cd $pkgbase-$pkgver
   install -Dm755 src/qt/groestlcoin-qt "$pkgdir"/usr/bin/groestlcoin-qt
@@ -63,7 +62,7 @@ package_groestlcoin-qt() {
 
 package_groestlcoin-daemon() {
   pkgdesc="Groestlcoin is a peer-to-peer network based digital currency - daemon"
-  depends=(boost-libs db libevent miniupnpc libminiupnpc.so sqlite zeromq gmp)
+  depends=(boost-libs db=5.3.28 libevent miniupnpc libminiupnpc.so sqlite zeromq gmp)
   backup=('etc/groestlcoin/groestlcoin.conf')
 
   cd $pkgbase-$pkgver
@@ -135,5 +134,3 @@ package_groestlcoin-util() {
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
-# vim:set ts=2 sw=2 et:
