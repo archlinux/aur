@@ -1,15 +1,12 @@
 pkgbase = cloak-obfuscation-bin
-	pkgdesc = Cloak is a pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship
+	pkgdesc = A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship
 	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/cbeuw/Cloak
 	arch = x86_64
 	license = GPL3
-	optdepends = shadowsocks: tool to use with
-	optdepends = shadowsocks-libev: tool to use with
-	optdepends = openvpn: tool to use with
-	optdepends = tor: tool to use with
-	conflicts = cloak-obfuscation-bin-git
+	conflicts = cloak-obfuscation
+	conflicts = cloak-obfuscation-git
 	backup = etc/cloak/ckclient.json
 	backup = etc/cloak/ckserver.json
 	source = https://github.com/cbeuw/Cloak/releases/download/v2.5.2/ck-client-linux-amd64-v2.5.2
@@ -20,4 +17,3 @@ pkgbase = cloak-obfuscation-bin
 	sha256sums = 3397c389d2917b0df6f733a96a7ff82babe14963398ba109e9cf60b19be30ee1
 
 pkgname = cloak-obfuscation-bin
-
