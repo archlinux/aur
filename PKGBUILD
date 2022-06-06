@@ -1,7 +1,7 @@
 # Maintainer Stefano Lovato <stefano.lovato.1@phd.unipd.it>
 pkgname=resticpy
-pkgver=1.0.r3.07eaf56
-pkgrel=1
+pkgver=1.0.r5.dd16efa
+pkgrel=2
 pkgdesc="A Python wrapper for Restic (<https://restic.net/>) using a json configuration file."
 arch=('any')
 url="https://github.com/stefphd/ResticPy"
