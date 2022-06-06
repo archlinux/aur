@@ -1,0 +1,13 @@
+pkgbase = r-illuminahumanmethylationepicmanifest
+	pkgdesc = Manifest for Illumina's EPIC methylation arrays
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/IlluminaHumanMethylationEPICmanifest
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-minfi
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/IlluminaHumanMethylationEPICmanifest_0.3.0.tar.gz
+	sha256sums = e39a69d98486cec981e97c56f45bbe47d2ccb5bbb66a1b16fa0685575493902a
+
+pkgname = r-illuminahumanmethylationepicmanifest
