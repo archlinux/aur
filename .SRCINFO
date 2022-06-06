@@ -1,0 +1,19 @@
+pkgbase = r-matrixtests
+	pkgdesc = Fast Statistical Hypothesis Tests on Rows and Columns of Matrices
+	pkgver = 0.1.9.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=matrixTests
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-matrixstats
+	optdepends = r-car
+	optdepends = r-cosinor
+	optdepends = r-cosinor2
+	optdepends = r-moments
+	optdepends = r-pmcmrplus
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/matrixTests_0.1.9.1.tar.gz
+	sha256sums = 3d02c6b91c8e2aed109f2daec7e0b6d82a5fa8710eea38b7871a549e97fc3dba
+
+pkgname = r-matrixtests
