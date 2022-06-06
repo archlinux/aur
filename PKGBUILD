@@ -7,7 +7,7 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.05.2204250"
+_wechat_devtools_ver="1.06.2206020"
 # https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1052203030&version_type=1
 _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=${_wechat_devtools_ver//\./}&version_type=1"
 # _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
@@ -20,7 +20,7 @@ _node_version="16.4.2"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=2   # 修订版本号release
+pkgrel=1   # 修订版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
@@ -32,7 +32,7 @@ makedepends=('p7zip' 'python2' 'openssl' 'gcc' 'make' 'libssh2' 'krb5')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2204250-2/compiler.tar.gz"
+        "compiler-v${_wechat_devtools_ver}-${pkgrel}.tar.gz::https://mirror.ghproxy.com/https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${_wechat_devtools_ver}-${pkgrel}/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "wechat-devtools"
@@ -45,22 +45,22 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_pack.js"
         "wxvpkg_unpack.js"
         "fix-other.sh")
-md5sums=(ac7680788544c457daee11aaf69798fe   # nwjs
-         "${_wechat_devtools_md5}"
-         4d14589085ebbf79ce504dc27330d33b   # nodejs
-         4dc5a6b3b5087afb1bba353c20bdb30a   # compiler
-         4d3f5273be80a74741c841fcfa4185d3   # desktop
-         0f4353664123320280ea4d6bb295dce2   # svg
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP")
+md5sums=('ac7680788544c457daee11aaf69798fe'
+         'd2c63697658b85716e356bf04dec7679'
+         '4d14589085ebbf79ce504dc27330d33b'
+         '6afd75b2f4f73b1a6a72855aaca1e662'
+         '4d3f5273be80a74741c841fcfa4185d3'
+         '0f4353664123320280ea4d6bb295dce2'
+         'ae685283b21becd9c097aca4571f7556'
+         '912b5948dc8a968e1b53390173c9d363'
+         '951538b31000bf541446502069dcd92f'
+         '468facecd8c3a4fbf4da03b5ceae1320'
+         '8b89d614f85de88ab1504cd7c838e03b'
+         'cbb717017abaad7ef1acf4de42421ddb'
+         'd43f68ce696b5dad3ea4e7ff89b9d4ad'
+         '38f8ed65b632c50ee5cef1231984f224'
+         '66b98acbdfcaa249082d526ccac8e7d8'
+         'b8827f817617c615be6ae1226850c7ec')
 options=('!strip')
 
 prepare() {
