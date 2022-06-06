@@ -1,0 +1,14 @@
+pkgbase = r-rebus.unicode
+	pkgdesc = Unicode Extensions for the 'rebus' Package
+	pkgver = 0.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=rebus.unicode
+	arch = any
+	license = Unlimited
+	depends = r
+	depends = r-rebus.base
+	optdepends = r-stringi
+	source = https://cran.r-project.org/src/contrib/rebus.unicode_0.0-2.tar.gz
+	sha256sums = b5c9cf237174fdfc0598bc35fdb8a35ffd0ee5452737d79a32f77e02f908a3a0
+
+pkgname = r-rebus.unicode
