@@ -1,0 +1,15 @@
+pkgbase = r-sem
+	pkgdesc = Structural Equation Models
+	pkgver = 3.1.15
+	pkgrel = 4
+	url = https://cran.r-project.org/package=sem
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-mi
+	optdepends = r-diagrammer
+	optdepends = r-polycor
+	source = https://cran.r-project.org/src/contrib/sem_3.1-15.tar.gz
+	sha256sums = ad023b00e6e8eb20d107039caf1008c4b05104c7c69709e59c66fbddbf381316
+
+pkgname = r-sem
