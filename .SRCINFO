@@ -1,0 +1,14 @@
+pkgbase = r-rbcbook1
+	pkgdesc = Support for Springer monograph on Bioconductor
+	pkgver = 1.64.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RbcBook1
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biobase
+	depends = r-graph
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RbcBook1_1.64.0.tar.gz
+	sha256sums = 84381a8b782b3bbf5e07ee93915b4b8a776cd5995572ce0c79f2cbd0252473c7
+
+pkgname = r-rbcbook1
