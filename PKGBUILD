@@ -3,9 +3,9 @@
 
 pkgname=cfonts
 pkgver=1.0.4rust
-pkgrel=3
+pkgrel=4
 pkgdesc='Sexy ANSI fonts for the console'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/dominikwilkowski/cfonts'
 license=('GPL-3.0-or-later')
 makedepends=('rust' 'make')
