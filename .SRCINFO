@@ -1,0 +1,19 @@
+pkgbase = r-timescape
+	pkgdesc = Patient Clonal Timescapes
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/timescape
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-gtools
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	depends = r-stringr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/timescape_1.20.0.tar.gz
+	sha256sums = e574b97ae0a7a14ac924bc76916c73de225c5c45aa236f43fff01093c85cf270
+
+pkgname = r-timescape
