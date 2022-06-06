@@ -1,0 +1,19 @@
+pkgbase = r-vipor
+	pkgdesc = Plot Categorical Data Using Quasirandom Noise and Density Estimates
+	pkgver = 0.4.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=vipor
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-beanplot
+	optdepends = r-beeswarm
+	optdepends = r-ggbeeswarm
+	optdepends = r-ggplot2
+	optdepends = r-lattice
+	optdepends = r-testthat
+	optdepends = r-vioplot
+	source = https://cran.r-project.org/src/contrib/vipor_0.4.5.tar.gz
+	sha256sums = 7d19251ac37639d6a0fed2d30f1af4e578785677df5e53dcdb2a22771a604f84
+
+pkgname = r-vipor
