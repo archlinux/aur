@@ -1,0 +1,23 @@
+pkgbase = r-ribor
+	pkgdesc = An R Interface for Ribo Files
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ribor
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-hash
+	depends = r-rhdf5
+	depends = r-rlang
+	depends = r-s4vectors
+	depends = r-tidyr
+	depends = r-yaml
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ribor_1.8.0.tar.gz
+	sha256sums = 12f0556fd44913ecc717abbddbcf32c90346415028fec6b8786547262ceb9fcb
+
+pkgname = r-ribor
