@@ -1,0 +1,17 @@
+pkgbase = r-proper
+	pkgdesc = PROspective Power Evaluation for RNAseq
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PROPER
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-edger
+	optdepends = r-biocstyle
+	optdepends = r-deseq2
+	optdepends = r-dss
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PROPER_1.28.0.tar.gz
+	sha256sums = 3ec8a3ef19072cb05debe94fe6800f369e49ee3c02c3f334dfe2f13c9eccd905
+
+pkgname = r-proper
