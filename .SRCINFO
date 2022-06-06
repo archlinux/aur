@@ -1,0 +1,26 @@
+pkgbase = r-macsquantifyr
+	pkgdesc = Fast treatment of MACSQuantify FACS data
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MACSQuantifyR
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-gridextra
+	depends = r-latticeextra
+	depends = r-png
+	depends = r-prettydoc
+	depends = r-readxl
+	depends = r-rmarkdown
+	depends = r-rvest
+	depends = r-xml2
+	optdepends = r-knitr
+	optdepends = r-r.utils
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MACSQuantifyR_1.10.0.tar.gz
+	sha256sums = d895512ca4cd8e8d4cdcb4fefa2a02612e3c9100b1c1569fa01b413b30511218
+
+pkgname = r-macsquantifyr
