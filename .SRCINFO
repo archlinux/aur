@@ -1,0 +1,26 @@
+pkgbase = r-jaspfactor
+	pkgdesc = Factor Module for JASP
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspFactor
+	arch = x86_64
+	groups = r-jasp
+	groups = r-jaspcommon
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-ggplot2
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-jaspsem
+	depends = r-lavaan
+	depends = r-psych
+	depends = r-qgraph
+	depends = r-reshape2
+	depends = r-semplot
+	depends = r-gparotation
+	depends = r-rcsdp
+	source = git+https://github.com/jasp-stats/jaspFactor.git
+	sha256sums = SKIP
+
+pkgname = r-jaspfactor
