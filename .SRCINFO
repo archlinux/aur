@@ -1,0 +1,22 @@
+pkgbase = r-gpa
+	pkgdesc = GPA (Genetic analysis incorporating Pleiotropy and Annotation)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GPA
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dt
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-plyr
+	depends = r-rcpp
+	depends = r-shiny
+	depends = r-shinybs
+	depends = r-vegan
+	depends = make
+	optdepends = r-gpaexample
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GPA_1.8.0.tar.gz
+	sha256sums = c36909c0e933487a84fc0f8cc830d7c58507e732d45683820075bfd31182987c
+
+pkgname = r-gpa
