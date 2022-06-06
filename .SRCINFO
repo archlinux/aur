@@ -1,0 +1,20 @@
+pkgbase = r-gem
+	pkgdesc = GEM: fast association study for the interplay of Gene, Environment and Methylation
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GEM
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-ggplot2
+	depends = tk
+	optdepends = r-biocgenerics
+	optdepends = r-knitr
+	optdepends = r-markdown
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEM_1.22.0.tar.gz
+	sha256sums = 315040bcd12de176b5949ffc37e501033e9a847b9b121d817fef416c37b3b76f
+
+pkgname = r-gem
