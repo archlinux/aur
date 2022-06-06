@@ -1,0 +1,21 @@
+pkgbase = r-ggpol
+	pkgdesc = Visualizing Social Science Data with 'ggplot2'
+	pkgver = 0.0.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ggpol
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-glue
+	depends = r-gtable
+	depends = r-plyr
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/ggpol_0.0.7.tar.gz
+	sha256sums = 35684f5be49148e584269d63e5cc34cc46b6c16e9e90ca435952cecaa711b987
+
+pkgname = r-ggpol
