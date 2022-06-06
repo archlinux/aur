@@ -15,7 +15,6 @@ pkgbase = goldendict-git
 	depends = hunspell
 	depends = libao
 	depends = libeb
-	depends = libiconv
 	depends = libtiff
 	depends = libvorbis
 	depends = libx11

@@ -20,7 +20,6 @@ depends=(
     'hunspell'
     'libao'
     'libeb'
-    'libiconv'
     'libtiff'
     'libvorbis'
     'libx11'
