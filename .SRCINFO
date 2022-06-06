@@ -1,0 +1,22 @@
+pkgbase = r-transview
+	pkgdesc = Read density map construction and accession. Visualization of ChIPSeq and RNASeq data sets
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TransView
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-genomicranges
+	depends = r-gplots
+	depends = r-iranges
+	depends = r-rhtslib
+	depends = r-s4vectors
+	depends = r-zlibbioc
+	optdepends = r-biocmanager
+	optdepends = r-pasillabamsubset
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TransView_1.40.0.tar.gz
+	sha256sums = 8ee47ec6b52f9ef36dad623776ac7c334a60dcbb164313cfada20ad839d06ecc
+
+pkgname = r-transview
