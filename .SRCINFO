@@ -1,0 +1,12 @@
+pkgbase = r-rpmg
+	pkgdesc = Graphical User Interface (GUI) for Interactive R Analysis Sessions
+	pkgver = 2.2.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=RPMG
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/RPMG_2.2-3.tar.gz
+	sha256sums = 74d5bada6a51d280296cb36fae4938c16ba9ed2fa37f3bfb60cf7c541c5b22b6
+
+pkgname = r-rpmg
