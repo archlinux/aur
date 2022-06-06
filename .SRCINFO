@@ -1,0 +1,17 @@
+pkgbase = r-repo
+	pkgdesc = A Data-Centered Data Flow Manager
+	pkgver = 2.1.5
+	pkgrel = 4
+	url = https://cran.r-project.org/package=repo
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-digest
+	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-shiny
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/repo_2.1.5.tar.gz
+	sha256sums = c9910453465c1ec3a899b16596a9f2b30187045cc5b86bc2ad44af79869aed8d
+
+pkgname = r-repo
