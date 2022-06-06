@@ -1,0 +1,26 @@
+pkgbase = r-medips
+	pkgdesc = DNA IP-seq data analysis
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MEDIPS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-biostrings
+	depends = r-bsgenome
+	depends = r-dnacopy
+	depends = r-edger
+	depends = r-genomicranges
+	depends = r-gtools
+	depends = r-iranges
+	depends = r-preprocesscore
+	depends = r-rsamtools
+	depends = r-rtracklayer
+	optdepends = r-biocstyle
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-medipsdata
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEDIPS_1.48.0.tar.gz
+	sha256sums = a025c9f0c5846ecd9e16ba3945c6522080272789c46ebaffb1cb422c8f12afe3
+
+pkgname = r-medips
