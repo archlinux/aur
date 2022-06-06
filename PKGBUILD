@@ -14,7 +14,7 @@ depends=('bash')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.nordlayer.com/linux/latest/debian/pool/main/${pkgname}_${pkgver}_amd64.deb")
-sha512sums_x86_64=('e0a05bb72c4275321f745732051623ee36c0f7360377e7e7e237b02fede3beb7d6c40765ee2234d58dfbafbb390020b947de2d07e24dc7f7d6c6d3fef38ceebd')
+sha512sums_x86_64=('fd6b11a89a31aea20c6cd798b6d249eddf7d5c4ab636d66a501c0f713183f753c95f4f62b5d8edc5e903fd49454b66ca7f68f12164b82d40aac8e94d9293d354')
 
 package(){
 	# Extract package data
