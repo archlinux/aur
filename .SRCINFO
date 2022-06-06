@@ -1,0 +1,24 @@
+pkgbase = r-zfpkm
+	pkgdesc = A suite of functions to facilitate zFPKM transformations
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/zFPKM
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-checkmate
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-summarizedexperiment
+	depends = r-tidyr
+	optdepends = r-edger
+	optdepends = r-geoquery
+	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-printr
+	optdepends = r-rmarkdown
+	optdepends = r-stringr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/zFPKM_1.18.0.tar.gz
+	sha256sums = 51d62045cede92b2a08c713c566b3fa1279b34c6bea1ab6b9db5ac974729efc0
+
+pkgname = r-zfpkm
