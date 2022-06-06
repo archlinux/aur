@@ -1,0 +1,22 @@
+pkgbase = r-swath2stats
+	pkgdesc = Transform and Filter SWATH Data for Statistical Packages
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SWATH2stats
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biomart
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-reshape2
+	optdepends = r-alfq
+	optdepends = r-knitr
+	optdepends = r-msstats
+	optdepends = r-peca
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SWATH2stats_1.26.0.tar.gz
+	sha256sums = 63fe6d19737a15cd575182fe82b030cc89aafc224480b2b05a79d84551b9ca58
+
+pkgname = r-swath2stats
