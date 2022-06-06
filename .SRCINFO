@@ -1,0 +1,23 @@
+pkgbase = r-optimx
+	pkgdesc = Expanded Replacement and Extension of the 'optim' Function
+	pkgver = 2022.4.30
+	pkgrel = 1
+	url = https://cran.r-project.org/package=optimx
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-numderiv
+	optdepends = r-bb
+	optdepends = r-dfoptim
+	optdepends = r-knitr
+	optdepends = r-lbfgs
+	optdepends = r-lbfgsb3c
+	optdepends = r-minqa
+	optdepends = r-rmarkdown
+	optdepends = r-setrng
+	optdepends = r-subplex
+	optdepends = r-ucminf
+	source = https://cran.r-project.org/src/contrib/optimx_2022-4.30.tar.gz
+	sha256sums = ebe9887a22296cf4b2db07981aaa1f898bf7c17fb61a4b398c228d4077d0b410
+
+pkgname = r-optimx
