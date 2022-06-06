@@ -1,0 +1,19 @@
+pkgbase = r-elmer.data
+	pkgdesc = Data for the ELMER package
+	pkgver = 2.20.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/ELMER.data
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-genomicranges
+	optdepends = r-biocstyle
+	optdepends = r-devtools
+	optdepends = r-dplyr
+	optdepends = r-dt
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ELMER.data_2.20.0.tar.gz
+	sha256sums = 6e5ff8712d3601a4f8713038d7d5583fbad190c70fd58bf5d501a4e980a3d645
+
+pkgname = r-elmer.data
