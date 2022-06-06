@@ -1,0 +1,14 @@
+pkgbase = r-shinybs
+	pkgdesc = Twitter Bootstrap Components for Shiny
+	pkgver = 0.61.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=shinyBS
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-htmltools
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/shinyBS_0.61.1.tar.gz
+	sha256sums = 0aed72473060531d0e782ba62092493002137df6b251af9e2294e2a40a32a140
+
+pkgname = r-shinybs
