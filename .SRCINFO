@@ -1,0 +1,13 @@
+pkgbase = r-mcl
+	pkgdesc = Markov Cluster Algorithm
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MCL
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-expm
+	source = https://cran.r-project.org/src/contrib/MCL_1.0.tar.gz
+	sha256sums = 3193ebeca9dc2c198354825e8fd9b47d67bd961a339a7f4f81459406378166f0
+
+pkgname = r-mcl
