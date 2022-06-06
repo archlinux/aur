@@ -1,0 +1,26 @@
+pkgbase = r-methylinheritance
+	pkgdesc = Permutation-Based Analysis associating Conserved Differentially Methylated Elements Across Multiple Generations to a Treatment Effect
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/methylInheritance
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocparallel
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-iranges
+	depends = r-methylkit
+	depends = r-rebus
+	depends = r-s4vectors
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-methinheritsim
+	optdepends = r-rmarkdown
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylInheritance_1.20.0.tar.gz
+	sha256sums = 2d9af29e478cbf27c172d7de99c4f813a38c42b1cb1382f5edf04993467c1928
+
+pkgname = r-methylinheritance
