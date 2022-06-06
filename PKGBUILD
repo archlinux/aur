@@ -1,4 +1,5 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
+# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Alex Taber <aft dot pokemon at gmail dot com>
 # Contributor: Louis Tim Larsen <louis(a)louis.dk>
 # Contributor: Ignacio <nachohc89 at gmail dot com>
@@ -24,7 +25,7 @@ pkgname+='-beta'
 #pkgver=15.5.6
 #pkgver=15.6.7
 #pkgver=15.13.6
-pkgver=15.14.5
+pkgver=15.30.2
 pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
@@ -60,12 +61,9 @@ source_x86_64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver
 source_i686=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
 source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
 #source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_13.2.13582_armhf.deb")
-md5sums_i686=('49295c6c7cab605e8ac6c2f3d4ab1118')
-md5sums_x86_64=('e364da3834a4e4413cae17e16e9dfa1c')
-md5sums_armv7h=('13a77a1aa8cb04f38630942599937ce0')
-sha256sums_i686=('a8be05043062d6b12f2095b53ef3c0f3e9b3f9eb47b3facb280ee4abe63369ec')
-sha256sums_x86_64=('833c73dab4430f43cf5b22a0a3820fbbc3184cce26843afb990693128fb5b64a')
-sha256sums_armv7h=('7102cd134fd374c3699d796fa6578b55747ae6f2f3a6fd2176f6404d8295e825')
+sha256sums_i686=('fce564505cd45f1a5a9c8b6d858f92031483e48382a5a4169080fef8103da690')
+sha256sums_x86_64=('ddf336c847e90c957c7f0935b6569331f52778d9b16eaf1d10cc33f7961d1e96')
+sha256sums_armv7h=('ee30005646a3321379bf483011c762db2aea3806bc0f476b75a1e310f512963e')
 #PKGEXT='.tar.gz'
 
 case "${_opt_Type}" in
