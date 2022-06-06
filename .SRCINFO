@@ -1,0 +1,19 @@
+pkgbase = r-mcmcprecision
+	pkgdesc = Precision of Discrete Parameters in Transdimensional MCMC
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MCMCprecision
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-combinat
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppeigen
+	depends = r-rcppprogress
+	optdepends = r-r.rsp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/MCMCprecision_0.4.0.tar.gz
+	sha256sums = 4e419c325a9e66cab67ea2c141062791bd52a6e6308395731b5307b323641864
+
+pkgname = r-mcmcprecision
