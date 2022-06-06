@@ -1,0 +1,18 @@
+pkgbase = r-isocorrectorgui
+	pkgdesc = Graphical User Interface for IsoCorrectoR
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IsoCorrectoRGUI
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-isocorrector
+	depends = r-readxl
+	depends = r-tcltk2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IsoCorrectoRGUI_1.12.0.tar.gz
+	sha256sums = 7547e2ef10d68a2bebf31292dd770251a7ff387561f6fe4d85942be6e177da83
+
+pkgname = r-isocorrectorgui
