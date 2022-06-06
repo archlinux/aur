@@ -1,0 +1,27 @@
+pkgbase = r-pmp
+	pkgdesc = Peak Matrix Processing and signal batch correction for metabolomics datasets
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pmp
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-impute
+	depends = r-matrixstats
+	depends = r-missforest
+	depends = r-pcamethods
+	depends = r-reshape2
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-magick
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pmp_1.8.0.tar.gz
+	sha256sums = 692aad74ef842f485969ac2b22dc7d79645cb52f5e9f653fd999eeae375b6e89
+
+pkgname = r-pmp
