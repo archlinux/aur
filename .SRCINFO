@@ -1,15 +1,13 @@
 pkgbase = r-tnet
-	pkgdesc = Software for Analysis of Weighted, Two-Mode, and Longitudinal Networks
-	pkgver = 3.0.14
+	pkgdesc = Weighted, Two-Mode, and Longitudinal Networks Analysis
+	pkgver = 3.0.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tnet
 	arch = any
-	license = GPL3
+	license = GPL
 	depends = r
 	depends = r-igraph
-	replaces = r-cran-tnet
-	source = https://cran.r-project.org/src/contrib/tnet_3.0.14.tar.gz
-	md5sums = 129a06065f7a0252f2fac3e5e6211f6e
+	source = https://cran.r-project.org/src/contrib/tnet_3.0.16.tar.gz
+	sha256sums = 890ac3a8c144d6d755bcd4bf53b0889cbd09dfeaddf11c05fdea13b37ef24224
 
 pkgname = r-tnet
-

@@ -1,27 +1,27 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranname=tnet
-_cranver=3.0.14
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-tnet
-pkgver=${_cranver//[:-]/.}
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+
+_pkgname=tnet
+_pkgver=3.0.16
+pkgname=r-${_pkgname,,}
+pkgver=3.0.16
 pkgrel=1
-pkgdesc="Software for Analysis of Weighted, Two-Mode, and Longitudinal Networks"
+pkgdesc='Weighted, Two-Mode, and Longitudinal Networks Analysis'
 arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r' 'r-igraph')
+url="https://cran.r-project.org/package=${_pkgname}"
+license=('GPL')
+depends=(
+  r
+  r-igraph
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('890ac3a8c144d6d755bcd4bf53b0889cbd09dfeaddf11c05fdea13b37ef24224')
 
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('129a06065f7a0252f2fac3e5e6211f6e')
-replaces=('r-cran-tnet')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
 }
-
+# vim:set ts=2 sw=2 et:
