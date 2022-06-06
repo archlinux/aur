@@ -1,0 +1,24 @@
+pkgbase = r-genotypeeval
+	pkgdesc = QA/QC of a gVCF or VCF file
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/genotypeeval
+	arch = any
+	license = custom
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biocparallel
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-rtracklayer
+	depends = r-variantannotation
+	optdepends = r-rmarkdown
+	optdepends = r-snplocs.hsapiens.dbsnp141.grch38
+	optdepends = r-testthat
+	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genotypeeval_1.28.0.tar.gz
+	sha256sums = 265b6d342f52a6638fb5b301afb14b1a171d3fa79f66c01364f573d605cafe8e
+
+pkgname = r-genotypeeval
