@@ -1,7 +1,7 @@
 pkgbase = python-polars
 	pkgdesc = Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model
 	pkgver = 0.13.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pola.rs/
 	arch = x86_64
 	makedepends = maturin
