@@ -1,0 +1,15 @@
+pkgbase = r-gmwt
+	pkgdesc = Generalized Mann-Whitney Type Tests
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=gMWT
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-clinfun
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	source = https://cran.r-project.org/src/contrib/gMWT_1.1.1.tar.gz
+	sha256sums = 2318f11f58f9f8a8a1b4298b4769628846dd967fe392e2b308c065ef10297ced
+
+pkgname = r-gmwt
