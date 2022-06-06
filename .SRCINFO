@@ -1,0 +1,15 @@
+pkgbase = r-gaprediction
+	pkgdesc = Prediction of gestational age with Illumina HumanMethylation450 data
+	pkgver = 1.22.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GAprediction
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-glmnet
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GAprediction_1.22.0.tar.gz
+	sha256sums = 605edf88ec64b3ede62339942c9dcc7614707bc3f76fd5a69aa61777929fb023
+
+pkgname = r-gaprediction
