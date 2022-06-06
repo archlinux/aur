@@ -1,12 +1,12 @@
 pkgbase = blender-docs
 	pkgdesc = Set of HTML documentation for blender
-	pkgver = 3.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://docs.blender.org/
 	arch = any
 	license = custom:CC BY-SA 4.0
 	options = docs
-	source = blender-docs-3.1.zip::https://docs.blender.org/manual/en/latest/blender_manual_html.zip
+	source = blender-docs-3.1.2.zip::https://docs.blender.org/manual/en/latest/blender_manual_html.zip
 	source = LICENCE
 	b2sums = 4d9b734b40a4245bcdc1b03aa1eab7c4e7accc46aca91541a7d35bdfd6cf4f86127694f069026fa9d1e4ddbc513f2288a6c2f2a97dea4e3663dde112118a4274
 	b2sums = d1e99ef6842a6b5e4ac63cc3ab5bd7a4fd0fec5a871eec5b8bc031d8a6b2ae89f76eca2f98b0946e78e19d5fa9b2dea51cb2bb0985d064f54ea4ed9759999205

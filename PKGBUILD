@@ -1,7 +1,7 @@
 # Maintainer: Utkarsh Singh <utkarsh190601 at gmail dot com>
 
 pkgname='blender-docs'
-pkgver=3.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='Set of HTML documentation for blender'
 arch=('any')
