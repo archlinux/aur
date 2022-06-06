@@ -3,13 +3,13 @@
 pkgname=php-phalcon-git
 _pkgname=cphalcon
 pkgver=5.0.0RC1.r0.g88b4f9ea04
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
 url="https://phalcon.io/"
 license=('BSD')
 depends=('php' 'php-psr' 're2c' 'pcre')
-makedepends=('git' 'gcc')
+makedepends=('git')
 optionaldepends=('php-sqlite: Sqlite support'
   'php-pgsql: PgSQL backend model support'
   'php-mongodb: MongoDB ODM support'
