@@ -1,0 +1,24 @@
+pkgbase = r-semtools
+	pkgdesc = Useful Tools for Structural Equation Modeling
+	pkgver = 0.5.6
+	pkgrel = 6
+	url = https://cran.r-project.org/package=semTools
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-lavaan
+	depends = r-pbivnorm
+	optdepends = r-amelia
+	optdepends = r-blavaan
+	optdepends = r-emmeans
+	optdepends = r-foreign
+	optdepends = r-gparotation
+	optdepends = r-mass
+	optdepends = r-mice
+	optdepends = r-mnormt
+	optdepends = r-parallel
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/semTools_0.5-6.tar.gz
+	sha256sums = f522ce3c02ac580ad49af7a7278141dae39fdfaeccc7d1379faf1266ce9fcaf2
+
+pkgname = r-semtools
