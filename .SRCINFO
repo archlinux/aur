@@ -1,0 +1,16 @@
+pkgbase = r-isingsampler
+	pkgdesc = Sampling Methods and Distribution Functions for the Ising Model
+	pkgver = 0.2.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=IsingSampler
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-dplyr
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/IsingSampler_0.2.1.tar.gz
+	sha256sums = fb9d1c851941d74d218ae5be6d45ea3e9c228c938ef9cdfd34de9535cadc44b3
+
+pkgname = r-isingsampler
