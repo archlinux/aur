@@ -1,0 +1,16 @@
+pkgbase = r-qpdf
+	pkgdesc = Split, Combine and Compress PDF Files
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=qpdf
+	arch = x86_64
+	license = Apache
+	depends = r
+	depends = r-askpass
+	depends = r-curl
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/qpdf_1.2.0.tar.gz
+	sha256sums = d03db36a2024e8db3792f96b5c694578a5ccd36b86c58a0cf82451d1d43f2da8
+
+pkgname = r-qpdf
