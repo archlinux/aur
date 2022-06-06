@@ -2,19 +2,21 @@
 
 pkgbase=jool
 pkgname=(jool-tools jool-dkms)
-pkgver=4.1.5
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Open Source SIIT and NAT64 for Linux."
 arch=('x86_64')
 url="https://www.jool.mx"
 license=('GPL2')
-makedepends=('libnl' 'iptables')
+makedepends=('libnl')
+optdepends=('iptables')
 source=("https://github.com/NICMx/Jool/releases/download/v${pkgver}/jool-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/ydahhrk/packaging/master/Jool/debian/jool-tools.jool.service"
-        "https://raw.githubusercontent.com/ydahhrk/packaging/master/Jool/debian/jool-tools.jool_siit.service")
-sha512sums=('b1ddd4738ac3c2af607ca6cf298f949f087436b01d5b168d3f3496ba6f1586014958a348393c172599d9c5d42ba2e6e097895ef45db27e2759c89118a3ba33c9'
-            'd3f6b88d4551c501455f1c1f8c33b7fbc667ae3d69c1793d230dcfc7b7b96fda46ac18449cacde54121e69f08de9a8eb97a5927b540381274b966cdeb3a84690'
-            '4078ea3a99831c7aa8d7b8d05529f27aaa7289a8cfae90d122fe69d782a30ea4d31f8f71a9edcdcec774b12cd329123607522640fcfc4eac4b588bbec70b5d92')
+        "jool.service"
+        "jool_siit.service"
+        )
+sha256sums=('31fab9f9994e769b117354934742cfd8fc35a6a0aabcf4bab912bae4868c3778'
+            '2d50ad60e284876f09051a4d44d4cc51da4b354cb4ff7acf85de864427d360b5'
+            '0de3cc336ec9587bb3d62c81062977687a439403cc30d14d9798502d8626ce5f')
 
 prepare() {
   cp -a "${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}-dkms"
@@ -31,8 +33,8 @@ package_jool-tools() {
   depends=('libnl')
   cd "${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -D -m0644 "${srcdir}/jool-tools.jool.service" "${pkgdir}/usr/lib/systemd/system/jool.service"
-  install -D -m0644 "${srcdir}/jool-tools.jool_siit.service" "${pkgdir}/usr/lib/systemd/system/jool_siit.service"
+  install -D -m0644 "${srcdir}/jool.service" "${pkgdir}/usr/lib/systemd/system/jool.service"
+  install -D -m0644 "${srcdir}/jool_siit.service" "${pkgdir}/usr/lib/systemd/system/jool_siit.service"
 }
 
 package_jool-dkms() {
