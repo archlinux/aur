@@ -1,0 +1,14 @@
+pkgbase = r-qap
+	pkgdesc = Heuristics for the Quadratic Assignment Problem (QAP)
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=qap
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/qap_0.1-1.tar.gz
+	sha256sums = 60bd564bb0e6325de44351af33870177d84b1c00ded142a2efb12a16a20d4d34
+
+pkgname = r-qap
