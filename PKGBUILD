@@ -3,7 +3,7 @@
 
 pkgname=authenticator
 _pkgname=Authenticator
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer' 'gst-plugins-base' 
 makedepends=('meson' 'gobject-introspection' 'rust' 'clang')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-b2sums=('79302c047e486b1f3f96b9c5896a8c345e6f7cc15051ed09dbc80f451823b13a7ba8b4dc35a79b3f1706809a175d5e3b1b0d377d48a11cd79e8af80a35ab1f8b')
+b2sums=('4d7849ee05763ac4a24a9faf8c39917b870cb56f8ab45ca91abcefa4e86e7e929fae107ef5112aa0d3de98cb18a3607ba66a3ff8404ddde294880890045ad2af')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build
