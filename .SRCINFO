@@ -1,0 +1,20 @@
+pkgbase = r-ensemblvep
+	pkgdesc = R Interface to Ensembl Variant Effect Predictor
+	pkgver = 1.37.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/ensemblVEP
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-genomeinfodb
+	depends = r-genomicranges
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-variantannotation
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ensemblVEP_1.37.1.tar.gz
+	sha256sums = 0a35985b3b4212cce66fc4c59e21c067523b702938ac346d4b55a6f4d1821365
+
+pkgname = r-ensemblvep
