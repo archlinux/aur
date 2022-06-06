@@ -1,0 +1,22 @@
+pkgbase = r-randrotation
+	pkgdesc = Random Rotation Methods for High Dimensional Data with Batch Structure
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/randRotation
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rdpack
+	optdepends = r-biocparallel
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-lme4
+	optdepends = r-nlme
+	optdepends = r-rmarkdown
+	optdepends = r-sva
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/randRotation_1.8.0.tar.gz
+	sha256sums = b6f31996b059335d36373663010ea8c333c5076cd2be9d976872f06dfcbe2269
+
+pkgname = r-randrotation
