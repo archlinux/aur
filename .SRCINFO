@@ -1,0 +1,17 @@
+pkgbase = r-kutils
+	pkgdesc = Project Management Tools
+	pkgver = 1.70
+	pkgrel = 5
+	url = https://cran.r-project.org/package=kutils
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-openxlsx
+	depends = r-plyr
+	depends = r-runit
+	depends = r-xtable
+	optdepends = r-rockchalk
+	source = https://cran.r-project.org/src/contrib/kutils_1.70.tar.gz
+	sha256sums = 67d0a03ad600ed7f4eea072476baa0664c3fb2d116c326856b550ebcb831531a
+
+pkgname = r-kutils
