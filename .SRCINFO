@@ -1,0 +1,12 @@
+pkgbase = r-massarray
+	pkgdesc = Analytical Tools for MassArray Data
+	pkgver = 1.48.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MassArray
+	arch = any
+	license = GPL
+	depends = r
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MassArray_1.48.0.tar.gz
+	sha256sums = 133469de8b524edd32ecdf455f143202983dffffb37859252b01b425b7aa44dd
+
+pkgname = r-massarray
