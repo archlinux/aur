@@ -1,0 +1,13 @@
+pkgbase = r-faahko
+	pkgdesc = Saghatelian et al. (2004) FAAH knockout LC/MS data
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/faahKO
+	arch = any
+	license = LGPL
+	depends = r
+	depends = r-xcms
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/faahKO_1.36.0.tar.gz
+	sha256sums = b33d457561c1195c79f4de52ad0147923f5dfdc206569794d33ab847ad6043fc
+
+pkgname = r-faahko
