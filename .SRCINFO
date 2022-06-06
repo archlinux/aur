@@ -1,0 +1,24 @@
+pkgbase = r-powsc
+	pkgdesc = Simulation, power evaluation, and sample size recommendation for single cell RNA-seq
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/POWSC
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-ggplot2
+	depends = r-limma
+	depends = r-mast
+	depends = r-pheatmap
+	depends = r-rcolorbrewer
+	depends = r-singlecellexperiment
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/POWSC_1.4.0.tar.gz
+	sha256sums = bc5bc23c33017a8d6d03cf63bd33723969b01c3b5584a4b34780495bb9df2b1c
+
+pkgname = r-powsc
