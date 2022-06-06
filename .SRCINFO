@@ -1,0 +1,15 @@
+pkgbase = r-princurve
+	pkgdesc = Fit a Principal Curve in Arbitrary Dimension
+	pkgver = 2.1.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=princurve
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-devtools
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/princurve_2.1.6.tar.gz
+	sha256sums = 0216332390eb27013b6ba62232782156dfc99ca640087fcaff53d2be9218f373
+
+pkgname = r-princurve
