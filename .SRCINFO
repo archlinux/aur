@@ -1,0 +1,14 @@
+pkgbase = r-pastecs
+	pkgdesc = Package for Analysis of Space-Time Ecological Series
+	pkgver = 1.3.21
+	pkgrel = 4
+	url = https://cran.r-project.org/package=pastecs
+	arch = any
+	license = GPL
+	depends = r
+	optdepends = r-covr
+	optdepends = r-svunit
+	source = https://cran.r-project.org/src/contrib/pastecs_1.3.21.tar.gz
+	sha256sums = 8c1ef2affe88627f0b23295aa5edb758b8fd6089ef09f60f37c46445128b8d7c
+
+pkgname = r-pastecs
