@@ -1,0 +1,21 @@
+pkgbase = r-pairadise
+	pkgdesc = PAIRADISE: Paired analysis of differential isoform expression
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PAIRADISE
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-abind
+	depends = r-biocparallel
+	depends = r-nloptr
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAIRADISE_1.12.0.tar.gz
+	sha256sums = b3a230d1eddac4f0ebbb3d7c42ca91a663426bf803bcec41476833b85af71cdc
+
+pkgname = r-pairadise
