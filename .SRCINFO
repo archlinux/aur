@@ -1,0 +1,26 @@
+pkgbase = r-podcall
+	pkgdesc = Positive Droplet Calling for DNA Methylation Droplet Digital PCR
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/PoDCall
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-diptest
+	depends = r-dt
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-laplacesdemon
+	depends = r-mclust
+	depends = r-purrr
+	depends = r-readr
+	depends = r-rlist
+	depends = r-shiny
+	depends = r-shinyjs
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PoDCall_1.4.0.tar.gz
+	sha256sums = 8a65fbecda0f089f339bddd0eb62f94bd9c8b04524a4b22fd6e4b3cdec8b87cc
+
+pkgname = r-podcall
