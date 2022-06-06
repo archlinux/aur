@@ -1,0 +1,26 @@
+pkgbase = r-modstrings
+	pkgdesc = Working with modified nucleotide sequences
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/Modstrings
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-biocgenerics
+	depends = r-biostrings
+	depends = r-crayon
+	depends = r-genomicranges
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-stringi
+	depends = r-stringr
+	depends = r-xvector
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-usethis
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Modstrings_1.12.0.tar.gz
+	sha256sums = fb47950d0974efe0cee8194271a73b23ad379f0677857a0e3d8970d1bd70be61
+
+pkgname = r-modstrings
