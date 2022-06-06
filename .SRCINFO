@@ -1,0 +1,19 @@
+pkgbase = r-flowclean
+	pkgdesc = flowClean
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/flowClean
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-bit
+	depends = r-changepoint
+	depends = r-flowcore
+	depends = r-sfsmisc
+	optdepends = r-flowviz
+	optdepends = r-grid
+	optdepends = r-gridextra
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowClean_1.34.0.tar.gz
+	sha256sums = b1ba48be9f90df83b29090871b431e864fa592883020216da5176333c2117896
+
+pkgname = r-flowclean
