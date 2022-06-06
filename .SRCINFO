@@ -1,0 +1,17 @@
+pkgbase = r-r2jags
+	pkgdesc = Using R to Run 'JAGS'
+	pkgver = 0.7.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=R2jags
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-abind
+	depends = r-coda
+	depends = r-r2winbugs
+	depends = r-rjags
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/R2jags_0.7-1.tar.gz
+	sha256sums = 3b097261c0b20b89a021bbc5087523a24f17249fa14c527cd54c5e5b2970226a
+
+pkgname = r-r2jags
