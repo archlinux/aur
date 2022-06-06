@@ -1,0 +1,26 @@
+pkgbase = r-pulsedsilac
+	pkgdesc = Analysis of pulsed-SILAC quantitative proteomics data
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://bioconductor.org/packages/pulsedSilac
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-cowplot
+	depends = r-ggplot2
+	depends = r-ggridges
+	depends = r-mumin
+	depends = r-r.utils
+	depends = r-robustbase
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	depends = r-tarifx
+	depends = r-upsetr
+	optdepends = r-gridextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pulsedSilac_1.9.1.tar.gz
+	sha256sums = 8b4a5597eaf54181566e0ff3d6bf5d72d81e71583c6fa7abcd2c1398f4ef68fd
+
+pkgname = r-pulsedsilac
