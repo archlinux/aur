@@ -19,7 +19,7 @@ set -u
 pkgname=teamviewer
 pkgname+='-beta'
 pkgver=15.30.3
-pkgrel=2
+pkgrel=3
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://www.teamviewer.com/en-us/download/linux/'
