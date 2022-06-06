@@ -1,0 +1,25 @@
+pkgbase = r-eulerr
+	pkgdesc = Area-Proportional Euler and Venn Diagrams with Ellipses
+	pkgver = 6.1.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=eulerr
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gensa
+	depends = r-polyclip
+	depends = r-polylabelr
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-lattice
+	optdepends = r-pbrackets
+	optdepends = r-rconics
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/eulerr_6.1.1.tar.gz
+	sha256sums = 294c38b4b39e3ed25f4fb4d569d98c3b9fa3507fc220779047a0e11486b88d52
+
+pkgname = r-eulerr
