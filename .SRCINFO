@@ -1,0 +1,17 @@
+pkgbase = r-rgsea
+	pkgdesc = Random Gene Set Enrichment Analysis
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/RGSEA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-geoquery
+	optdepends = r-knitr
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGSEA_1.30.0.tar.gz
+	sha256sums = 3857a3ac1e8cf9a6eb87b757600688c367939a4404aa24a6578915715c77035c
+
+pkgname = r-rgsea
