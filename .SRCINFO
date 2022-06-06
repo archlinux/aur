@@ -1,0 +1,22 @@
+pkgbase = r-genetclassifier
+	pkgdesc = Classify diseases and build associated gene networks using gene expression profiles
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/geNetClassifier
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-e1071
+	depends = r-ebarrays
+	depends = r-minet
+	optdepends = r-biocgenerics
+	optdepends = r-igraph
+	optdepends = r-infotheo
+	optdepends = r-leukemiaseset
+	optdepends = r-rcolorbrewer
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/geNetClassifier_1.36.0.tar.gz
+	sha256sums = e03892355bdf3dab7842e1b8b7ebbc09ba11cf26fc34466768fe5800cbad07ce
+
+pkgname = r-genetclassifier
