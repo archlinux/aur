@@ -1,0 +1,17 @@
+pkgbase = r-sim
+	pkgdesc = Integrated Analysis on two human genomic datasets
+	pkgver = 1.66.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/SIM
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-globaltest
+	depends = r-quantreg
+	depends = r-quantsmooth
+	optdepends = r-biomart
+	optdepends = r-rcolorbrewer
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SIM_1.66.0.tar.gz
+	sha256sums = 8466cb05d9b75062e973342e1628eb88cd1ec65b4e3db04120891e485cf76a4f
+
+pkgname = r-sim
