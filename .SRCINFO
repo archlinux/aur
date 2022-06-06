@@ -1,0 +1,13 @@
+pkgbase = r-mpinet
+	pkgdesc = The package can implement the network-based metabolite pathway identification of pathways.
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=MPINet
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biasedurn
+	source = https://cran.r-project.org/src/contrib/MPINet_1.0.tar.gz
+	sha256sums = 1acd288a03f4d21c77d05a2992389a8d37d73b545d30a870794f5d0871bc83ff
+
+pkgname = r-mpinet
