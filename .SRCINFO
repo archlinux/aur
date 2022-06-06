@@ -1,0 +1,25 @@
+pkgbase = r-struct
+	pkgdesc = Statistics in R Using Class-based Templates
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/struct
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-knitr
+	depends = r-ontologyindex
+	depends = r-rols
+	depends = r-s4vectors
+	depends = r-summarizedexperiment
+	optdepends = r-biocstyle
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-magick
+	optdepends = r-openxlsx
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/struct_1.8.0.tar.gz
+	sha256sums = 4080796019da2faed837b098731402a66fda365cfa6e88539ae0822ace168d0d
+
+pkgname = r-struct
