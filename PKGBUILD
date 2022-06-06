@@ -2,8 +2,8 @@
 pkgname=cloak-obfuscation
 _pkgname=Cloak
 pkgver=2.6.0
-pkgrel=4
-pkgdesc='A censorship circumvention tool to evade detection by authoritarian state adversaries'
+pkgrel=5
+pkgdesc='A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/cbeuw/Cloak"
 license=('GPL3')
