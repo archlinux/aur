@@ -1,0 +1,12 @@
+pkgbase = r-gensa
+	pkgdesc = Generalized Simulated Annealing
+	pkgver = 1.1.7
+	pkgrel = 4
+	url = https://cran.r-project.org/package=GenSA
+	arch = x86_64
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/GenSA_1.1.7.tar.gz
+	sha256sums = 9d99d3d0a4b7770c3c3a6de44206811272d78ab94481713a8c369f7d6ae7b80f
+
+pkgname = r-gensa
