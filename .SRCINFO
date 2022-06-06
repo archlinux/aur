@@ -1,0 +1,26 @@
+pkgbase = r-rhdf5
+	pkgdesc = R Interface to HDF5
+	pkgver = 2.40.0
+	pkgrel = 3
+	url = https://bioconductor.org/packages/rhdf5
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-rhdf5filters
+	depends = r-rhdf5lib
+	optdepends = r-biocstyle
+	optdepends = r-bit64
+	optdepends = r-dplyr
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-mockery
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	options = !lto
+	options = !buildflags
+	options = staticlibs
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5_2.40.0.tar.gz
+	sha256sums = ce4585ddf67848e3b34c531e02df7ee712874127dd54eaa21ce8a2652b489701
+
+pkgname = r-rhdf5
