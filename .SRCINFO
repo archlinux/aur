@@ -1,0 +1,24 @@
+pkgbase = r-tcseq
+	pkgdesc = Time course sequencing data analysis
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/TCseq
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biocgenerics
+	depends = r-e1071
+	depends = r-edger
+	depends = r-genomicalignments
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-locfit
+	depends = r-reshape2
+	depends = r-rsamtools
+	depends = r-summarizedexperiment
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCseq_1.20.0.tar.gz
+	sha256sums = 33dbffcefe708652d5912e99dc32aecef3a7fe9d8c10dd017373f540de5e1373
+
+pkgname = r-tcseq
