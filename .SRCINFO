@@ -1,0 +1,19 @@
+pkgbase = r-ffbase
+	pkgdesc = Basic Statistical Functions for Package 'ff'
+	pkgver = 0.13.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=ffbase
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bit
+	depends = r-fastmatch
+	depends = r-ff
+	optdepends = r-biglm
+	optdepends = r-laf
+	optdepends = r-parallel
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/Archive/ffbase/ffbase_0.13.3.tar.gz
+	sha256sums = b3f61f80ba6851130247779786903d42a24ee5219aa24556c8470aece8a2e6b6
+
+pkgname = r-ffbase
