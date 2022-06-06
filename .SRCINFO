@@ -1,0 +1,22 @@
+pkgbase = r-tloh
+	pkgdesc = Assessment of evidence for LOH in spatial transcriptomics pre-processed data using Bayes factor calculations
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/tLOH
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-genomicranges
+	depends = r-ggplot2
+	depends = r-matrixgenerics
+	depends = r-purrr
+	depends = r-scales
+	depends = r-variantannotation
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/tLOH_1.4.0.tar.gz
+	sha256sums = 3531a1b6e6469e0a3b358d2682fe46a613d310e52be1d3a9a5aeda7f0f2b570d
+
+pkgname = r-tloh
