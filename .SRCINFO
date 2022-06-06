@@ -1,0 +1,16 @@
+pkgbase = r-vscdebugger
+	pkgdesc = Support for Visual Studio Code Debugger
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/ManuelHentschel/vscDebugger
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-jsonlite
+	depends = r-r6
+	source = https://github.com/ManuelHentschel/vscDebugger/releases/download/v0.4.7/vscDebugger_0.4.7.tar.gz
+	source = LICENSE::https://github.com/ManuelHentschel/vscDebugger/raw/master/LICENSE.md
+	sha256sums = a0b863f1c9a06eb5454cbd90e07946c8032cf6e466ad6da37b3ef99547723575
+	sha256sums = 54ee5b8054493e7cd776fded707521874c45a87b945fc1bf518e4e263132541c
+
+pkgname = r-vscdebugger
