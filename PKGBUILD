@@ -10,7 +10,7 @@ url="http://phalconphp.com"
 arch=('x86_64' 'i686')
 [[ $CARCH == 'i686' ]] && cd _arch=32bits || _arch=64bits
 license=('PHP')
-depends=('php80' 'php-psr')
+depends=('php' 'php-psr')
 makedepends=('gcc')
 backup=('etc/php/conf.d/phalcon.ini')
 source=("https://github.com/phalcon/cphalcon/archive/v$pkgver.zip")
