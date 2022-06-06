@@ -1,0 +1,17 @@
+pkgbase = r-partitions
+	pkgdesc = Additive Partitions of Integers
+	pkgver = 1.10.4
+	pkgrel = 5
+	url = https://cran.r-project.org/package=partitions
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-gmp
+	depends = r-mathjaxr
+	depends = r-polynom
+	depends = r-sets
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/partitions_1.10-4.tar.gz
+	sha256sums = b10091416c3453eb9e9fd46c8cdd35668236579676db43d0267d79e7856467c6
+
+pkgname = r-partitions
