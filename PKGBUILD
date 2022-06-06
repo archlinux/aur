@@ -2,11 +2,12 @@
 # Maintainer 2022-: spyophobia <76800505+spyophobia@users.noreply.github.com>
 pkgname=cloak-obfuscation-bin
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/cbeuw/Cloak'
 license=('GPL3')
+provides=('cloak-obfuscation')
 conflicts=("cloak-obfuscation" "cloak-obfuscation-git")
 source=("cloak-obfuscation-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source_x86_64=(
