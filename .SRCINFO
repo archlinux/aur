@@ -1,0 +1,16 @@
+pkgbase = r-intrinsicdimension
+	pkgdesc = Intrinsic Dimension Estimation
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=intrinsicDimension
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-yaimpute
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/intrinsicDimension_1.2.0.tar.gz
+	sha256sums = 6cc9180a83aa0d123f1e420136bb959c0d5877867fa170b79536f5ee22106a32
+
+pkgname = r-intrinsicdimension
