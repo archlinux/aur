@@ -1,0 +1,19 @@
+pkgbase = r-geomap
+	pkgdesc = Topographic and Geologic Mapping
+	pkgver = 2.5.0
+	pkgrel = 3
+	url = https://cran.r-project.org/package=GEOmap
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-fields
+	depends = r-mba
+	depends = r-rpmg
+	depends = r-splancs
+	optdepends = r-geomapdata
+	optdepends = r-maps
+	optdepends = r-rfoc
+	source = https://cran.r-project.org/src/contrib/GEOmap_2.5-0.tar.gz
+	sha256sums = 82e5608eda7330632bc67aa662b649e7b7b3ccdfda6a18a19d2e3379e0db1093
+
+pkgname = r-geomap
