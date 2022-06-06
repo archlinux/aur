@@ -1,0 +1,19 @@
+pkgbase = r-dirichletreg
+	pkgdesc = Dirichlet Regression
+	pkgver = 0.7.1
+	pkgrel = 4
+	url = https://cran.r-project.org/package=DirichletReg
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-formula
+	depends = r-maxlik
+	optdepends = r-formatr
+	optdepends = r-knitr
+	optdepends = r-rgl
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/DirichletReg_0.7-1.tar.gz
+	sha256sums = b11fd9a4504077170e9ba8f11324d1aa0476f0b334db6864f206ac7f16af85e2
+
+pkgname = r-dirichletreg
