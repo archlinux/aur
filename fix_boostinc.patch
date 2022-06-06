@@ -1,0 +1,14 @@
+--- src/fastBMA.hpp	2021-10-26 21:59:30.000000000 +0300
++++ src/fastBMA.hpp	2022-01-24 16:46:35.377507014 +0300
+@@ -16,10 +16,11 @@
+ #include <vector>
+ #include <algorithm>
+ #include <queue>
+ #include <boost/math/tools/minima.hpp>
+ #include <boost/math/special_functions/fpclassify.hpp>
++#include <boost/cstdint.hpp>
+ #include <stdio.h>
+ #include <bitset>
+ #include "MurmurHash3.h"
+ #ifdef USEMPI
+ #include <boost/mpi.hpp>

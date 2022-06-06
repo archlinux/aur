@@ -1,0 +1,22 @@
+pkgbase = r-networkbma
+	pkgdesc = Regression-based network inference using Bayesian Model Averaging
+	pkgver = 2.35.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/networkBMA
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = r
+	depends = r-bh
+	depends = r-bma
+	depends = r-leaps
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rcppeigen
+	depends = lapack
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/networkBMA_2.35.0.tar.gz
+	source = fix_boostinc.patch
+	sha256sums = a29156b5bcc82d61f512436a96d29d6518a7042a684c3cd335795d754e5a4075
+	sha256sums = fe3b4f88661542b0053dc01af9755514e1f889166a68dd1735df29d7e459cfbf
+
+pkgname = r-networkbma
