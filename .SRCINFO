@@ -1,0 +1,14 @@
+pkgbase = r-fastcluster
+	pkgdesc = Fast Hierarchical Clustering Routines for R and 'Python'
+	pkgver = 1.2.3
+	pkgrel = 4
+	url = https://cran.r-project.org/package=fastcluster
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-flashclust
+	optdepends = r-stats
+	source = https://cran.r-project.org/src/contrib/fastcluster_1.2.3.tar.gz
+	sha256sums = 1f229129e1cddc78c7bb5ecc90c4d28ed810ee68cf210004c7cdfa12cfaf2a01
+
+pkgname = r-fastcluster
