@@ -1,0 +1,14 @@
+pkgbase = r-peptides
+	pkgdesc = Calculate Indices and Theoretical Physicochemical Properties of Protein Sequences
+	pkgver = 2.4.4
+	pkgrel = 4
+	url = https://cran.r-project.org/package=Peptides
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rcpp
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/Peptides_2.4.4.tar.gz
+	sha256sums = fc870bd9184f23e25f9a8d20c24c2f5e32aa1333ceacab6b256765a0345bf7fa
+
+pkgname = r-peptides
