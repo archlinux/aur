@@ -1,0 +1,18 @@
+pkgbase = r-veloviz
+	pkgdesc = VeloViz: RNA-velocity informed 2D embeddings for visualizing cell state trajectories
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/veloviz
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-igraph
+	depends = r-rcpp
+	depends = r-rspectra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/veloviz_1.2.0.tar.gz
+	sha256sums = a16170053626b6514e6b358fbb0e86fe8800d2d6e005786e3c69efa4b0833b55
+
+pkgname = r-veloviz
