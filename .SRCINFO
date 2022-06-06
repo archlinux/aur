@@ -1,0 +1,29 @@
+pkgbase = r-googlecloudstorager
+	pkgdesc = Interface with Google Cloud Storage API
+	pkgver = 0.7.0
+	pkgrel = 4
+	url = https://cran.r-project.org/package=googleCloudStorageR
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-assertthat
+	depends = r-cli
+	depends = r-curl
+	depends = r-googleauthr
+	depends = r-httr
+	depends = r-jsonlite
+	depends = r-openssl
+	depends = r-yaml
+	depends = r-zip
+	optdepends = r-fs
+	optdepends = r-googlecomputeenginer
+	optdepends = r-knitr
+	optdepends = r-readr
+	optdepends = r-rmarkdown
+	optdepends = r-sodium
+	optdepends = r-testthat
+	optdepends = r-usethis
+	source = https://cran.r-project.org/src/contrib/googleCloudStorageR_0.7.0.tar.gz
+	sha256sums = 37f8bc52a75adc481945384130b9dfc5a2905a6731e57953a36a9e100f82e8fa
+
+pkgname = r-googlecloudstorager
