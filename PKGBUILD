@@ -2,7 +2,7 @@
 
 name=colutius-desktop
 pkgname=colutius-desktop-git
-pkgver=r44.5e15b0b
+pkgver=r45.c956edd
 pkgrel=1
 pkgdesc="A cross-platform, easy-to-use and beautiful IRC client"
 arch=('x86_64')
@@ -45,5 +45,5 @@ package() {
     chmod 777 $pkgdir/opt/$pkgname/logs
     cd ../build
     install -D ./$name $pkgdir/opt/$pkgname/$name
-    install -D ./libs/* -t $pkgdir/opt/$pkgname/libs
+    install -D ./libs/* -t $pkgdir/usr/lib
 }
