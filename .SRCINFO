@@ -1,0 +1,25 @@
+pkgbase = r-plethy
+	pkgdesc = R framework for exploration and analysis of respirometry data
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/plethy
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-biobase
+	depends = r-biocgenerics
+	depends = r-dbi
+	depends = r-ggplot2
+	depends = r-iranges
+	depends = r-plyr
+	depends = r-rcolorbrewer
+	depends = r-reshape2
+	depends = r-rsqlite
+	depends = r-s4vectors
+	depends = r-streamer
+	optdepends = r-biocstyle
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plethy_1.34.0.tar.gz
+	sha256sums = 8228060a7e263a7d19cfab2d32402b8c53066e11aac29271ff8280f5630c43d2
+
+pkgname = r-plethy
