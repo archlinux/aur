@@ -1,0 +1,21 @@
+pkgbase = r-matrixrider
+	pkgdesc = Obtain total affinity and occupancies for binding site matrices on a given sequence
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/MatrixRider
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-biostrings
+	depends = r-iranges
+	depends = r-s4vectors
+	depends = r-tfbstools
+	depends = r-xvector
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-jaspar2014
+	optdepends = r-runit
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MatrixRider_1.28.0.tar.gz
+	sha256sums = 17d3988d7c5b10504601880d25a17c339c2d483dd2f2a1ec11e3dafcaaf465f4
+
+pkgname = r-matrixrider
