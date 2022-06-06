@@ -1,0 +1,13 @@
+pkgbase = r-metahdep
+	pkgdesc = Hierarchical Dependence in Meta-Analysis
+	pkgver = 1.54.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/metahdep
+	arch = x86_64
+	license = GPL
+	depends = r
+	optdepends = r-affyplm
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metahdep_1.54.0.tar.gz
+	sha256sums = 9bc2ebbbcdd856358073bd7279079065b6f6148c135d8c2cea2a78390eca17f9
+
+pkgname = r-metahdep
