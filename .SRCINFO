@@ -1,0 +1,27 @@
+pkgbase = r-qckitfastq
+	pkgdesc = FASTQ Quality Control
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/qckitfastq
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-data.table
+	depends = r-dplyr
+	depends = r-ggplot2
+	depends = r-magrittr
+	depends = r-rcpp
+	depends = r-reshape2
+	depends = r-rlang
+	depends = r-rseqan
+	depends = r-seqtools
+	depends = r-zlibbioc
+	depends = make
+	optdepends = r-kableextra
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qckitfastq_1.12.0.tar.gz
+	sha256sums = a151243887699606f99f7281d3f9992718d555a4fef7489167273a52a54048f6
+
+pkgname = r-qckitfastq
