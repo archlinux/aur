@@ -1,0 +1,28 @@
+pkgbase = r-rms
+	pkgdesc = Regression Modeling Strategies
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rms
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-digest
+	depends = r-ggplot2
+	depends = r-hmisc
+	depends = r-htmltable
+	depends = r-htmltools
+	depends = r-multcomp
+	depends = r-polspline
+	depends = r-quantreg
+	depends = r-sparsem
+	optdepends = r-boot
+	optdepends = r-knitr
+	optdepends = r-mice
+	optdepends = r-plotly
+	optdepends = r-rmsb
+	optdepends = r-tcltk
+	source = https://cran.r-project.org/src/contrib/rms_6.3-0.tar.gz
+	sha256sums = 6c41eb670daf5e4391cc2f2a19e20a591f90769c124300a7ccf555820140d3f9
+
+pkgname = r-rms
