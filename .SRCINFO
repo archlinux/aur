@@ -1,0 +1,18 @@
+pkgbase = r-homo.sapiens
+	pkgdesc = Annotation package for the Homo.sapiens object
+	pkgver = 1.3.1
+	pkgrel = 3
+	url = https://bioconductor.org/packages/Homo.sapiens
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-annotationdbi
+	depends = r-genomicfeatures
+	depends = r-go.db
+	depends = r-org.hs.eg.db
+	depends = r-organismdbi
+	depends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/Homo.sapiens_1.3.1.tar.gz
+	sha256sums = 014809fc6ef6410be8dc1094c9cb083719f20d999065ae4bf388855be0913b94
+
+pkgname = r-homo.sapiens
