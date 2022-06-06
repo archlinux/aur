@@ -1,0 +1,16 @@
+pkgbase = r-ibbig
+	pkgdesc = Iterative Binary Biclustering of Genesets
+	pkgver = 1.40.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/iBBiG
+	arch = x86_64
+	license = Artistic2.0
+	depends = r
+	depends = r-ade4
+	depends = r-biclust
+	depends = r-xtable
+	optdepends = r-methods
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iBBiG_1.40.0.tar.gz
+	sha256sums = 37f2a30edee461853db9eeaec2e25263f5281ed557fa5b835ca8fa60fc8ce982
+
+pkgname = r-ibbig
