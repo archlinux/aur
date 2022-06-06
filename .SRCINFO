@@ -1,15 +1,20 @@
 pkgbase = collision-git
-	pkgdesc = Collision window navigation module for AwesomeWM
-	pkgver = r77.7940772
+	pkgdesc = Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes
+	pkgver = 3.0.3.r4.g0d3ed82
 	pkgrel = 1
-	url = https://github.com/Elv13/collision
-	arch = any
-	license = unknown
+	url = https://github.com/GeopJr/Collision
+	arch = x86_64
+	license = BSD2
 	makedepends = git
-	depends = awesome
+	makedepends = crystal
+	makedepends = gobject-introspection
+	makedepends = gobject-introspection-runtime
+	makedepends = shards
+	makedepends = spglib
+	depends = libadwaita
 	provides = collision
-	source = git+https://github.com/Elv13/collision.git
-	md5sums = SKIP
+	conflicts = collision
+	source = git+https://github.com/GeopJr/Collision.git
+	b2sums = SKIP
 
 pkgname = collision-git
-
