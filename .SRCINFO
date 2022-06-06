@@ -1,0 +1,12 @@
+pkgbase = r-trust
+	pkgdesc = Trust Region Optimization
+	pkgver = 0.1.8
+	pkgrel = 4
+	url = https://cran.r-project.org/package=trust
+	arch = any
+	license = MIT
+	depends = r
+	source = https://cran.r-project.org/src/contrib/trust_0.1-8.tar.gz
+	sha256sums = 952e348b62aec35988b103fd152329662cb6a451538f184549252fbf49d7dcac
+
+pkgname = r-trust
