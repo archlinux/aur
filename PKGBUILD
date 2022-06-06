@@ -4,11 +4,10 @@
 pkgname=php-phalcon
 _pkgname=cphalcon
 pkgver=5.0.0RC1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
 arch=('x86_64' 'i686')
-[[ $CARCH == 'i686' ]] && cd _arch=32bits || _arch=64bits
 license=('PHP')
 depends=('php' 'php-psr')
 makedepends=('gcc')
@@ -70,4 +69,5 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
   echo 'extension=phalcon.so' > phalcon.ini
   install -Dm644 phalcon.ini "$pkgdir/etc/php/conf.d/phalcon.ini"
+  install -Dm644 "$srcdir/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/php-phalcon/LICENSE.txt"
 }
