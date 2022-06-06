@@ -1,0 +1,16 @@
+pkgbase = r-np
+	pkgdesc = Nonparametric Kernel Smoothing Methods for Mixed Data Types
+	pkgver = 0.60.11
+	pkgrel = 3
+	url = https://cran.r-project.org/package=np
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-cubature
+	depends = r-quadprog
+	depends = r-quantreg
+	optdepends = r-mass
+	source = https://cran.r-project.org/src/contrib/np_0.60-11.tar.gz
+	sha256sums = a3b31b8ad70c42826076786b2b1b63b79cdbadfa55fe126773bc357686fd33a9
+
+pkgname = r-np
