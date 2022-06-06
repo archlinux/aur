@@ -1,0 +1,12 @@
+pkgbase = r-objectsignals
+	pkgdesc = objectSignals
+	pkgver = 0.10.3
+	pkgrel = 3
+	url = https://cran.r-project.org/package=objectSignals
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/objectSignals_0.10.3.tar.gz
+	sha256sums = 2d766beade3b0c914f0cd3d4c77ede2d80d87fe2787dd57eeef80f0ebb9df020
+
+pkgname = r-objectsignals
