@@ -1,0 +1,17 @@
+pkgbase = r-oncoscore
+	pkgdesc = A tool to identify potentially oncogenic genes
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/OncoScore
+	arch = any
+	license = custom
+	depends = r
+	depends = r-biomart
+	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OncoScore_1.24.0.tar.gz
+	sha256sums = b733e13bf39a2eee704bed8dff99692324b7e69eaf3ae2b05ab4321b6ef1460b
+
+pkgname = r-oncoscore
