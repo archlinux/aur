@@ -1,0 +1,24 @@
+pkgbase = r-ks
+	pkgdesc = Kernel Smoothing
+	pkgver = 1.13.5
+	pkgrel = 3
+	url = https://cran.r-project.org/package=ks
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-fnn
+	depends = r-kernlab
+	depends = r-mclust
+	depends = r-multicool
+	depends = r-mvtnorm
+	depends = r-plot3d
+	depends = r-pracma
+	optdepends = r-geometry
+	optdepends = r-mass
+	optdepends = r-misc3d
+	optdepends = r-oz
+	optdepends = r-rgl
+	source = https://cran.r-project.org/src/contrib/ks_1.13.5.tar.gz
+	sha256sums = d1c4d06d704f301628455787ba929add1e774debc343d0952a768abea6cc7815
+
+pkgname = r-ks
