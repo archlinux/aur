@@ -1,0 +1,23 @@
+pkgbase = r-gsca
+	pkgdesc = GSCA: Gene Set Context Analysis
+	pkgver = 2.26.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GSCA
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-gplots
+	depends = r-rcolorbrewer
+	depends = r-reshape2
+	depends = r-rhdf5
+	depends = r-shiny
+	depends = r-sp
+	optdepends = r-affyhgu133a2expr
+	optdepends = r-affyhgu133aexpr
+	optdepends = r-affyhgu133plus2expr
+	optdepends = r-affymoe4302expr
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSCA_2.26.0.tar.gz
+	sha256sums = 71e318ae640e1c541dbe32de860b7b725d2ccfa163e3277f55c02396c9fd2f6f
+
+pkgname = r-gsca
