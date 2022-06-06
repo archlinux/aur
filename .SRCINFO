@@ -1,0 +1,20 @@
+pkgbase = r-fst
+	pkgdesc = Lightning Fast Serialization of Data Frames
+	pkgver = 0.9.8
+	pkgrel = 3
+	url = https://cran.r-project.org/package=fst
+	arch = x86_64
+	license = AGPL
+	depends = r
+	depends = r-rcpp
+	depends = r-fstcore
+	optdepends = r-bit64
+	optdepends = r-crayon
+	optdepends = r-data.table
+	optdepends = r-lintr
+	optdepends = r-nanotime
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fst_0.9.8.tar.gz
+	sha256sums = 44c7e889879c2a3a704b70152196e27b6fc1d700062056f9a9c0a49cb98d2665
+
+pkgname = r-fst
