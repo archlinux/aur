@@ -1,14 +1,13 @@
 pkgbase = python-adafruit_bbio-git
 	pkgdesc = Adafruit's BeagleBone IO Python Library
-	pkgver = 1.0.0.r13.gd1e8dc1
+	pkgver = 1.1.2.r16.g7361d9a
 	pkgrel = 1
 	url = https://github.com/adafruit/adafruit-beaglebone-io-python
 	arch = x86_64
 	arch = armv7h
 	license = GPLv3
 	depends = python
-	source = git://github.com/adafruit/adafruit-beaglebone-io-python
-	md5sums = SKIP
+	source = git+https://github.com/adafruit/adafruit-beaglebone-io-python
+	sha256sums = SKIP
 
 pkgname = python-adafruit_bbio-git
-

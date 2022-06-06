@@ -1,10 +1,6 @@
-# Maintainer: razer <razer[at]neuf[dot]fr>
+# Maintainer: Christopher Kobayashi <software+aur@disavowed.jp>
 pkgname=python-adafruit_bbio-git
-pkgver='1.0.0.r13.gd1e8dc1'
-pkgver() {
-  cd adafruit-beaglebone-io-python
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgver=1.1.2.r16.g7361d9a
 pkgrel=1
 pkgdesc="Adafruit's BeagleBone IO Python Library" 
 url="https://github.com/adafruit/adafruit-beaglebone-io-python"
@@ -16,13 +12,18 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-install=()
-source=("git://github.com/adafruit/adafruit-beaglebone-io-python")
-md5sums=('SKIP')
+source=('git+https://github.com/adafruit/adafruit-beaglebone-io-python')
 
-package() {
-  cd "${srcdir}/adafruit-beaglebone-io-python"
-  python setup.py install --root="$pkgdir/" --optimize=1
+sha256sums=(
+	'SKIP'
+)
+
+pkgver() {
+	cd adafruit-beaglebone-io-python
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+	cd "${srcdir}/adafruit-beaglebone-io-python"
+	python setup.py install --root="$pkgdir/" --optimize=1
+}
