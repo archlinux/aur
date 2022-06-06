@@ -1,0 +1,23 @@
+pkgbase = r-gcsscore
+	pkgdesc = GCSscore: an R package for microarray analysis for Affymetrix/Thermo Fisher arrays
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/GCSscore
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-affxparser
+	depends = r-biobase
+	depends = r-biocmanager
+	depends = r-data.table
+	depends = r-devtools
+	depends = r-dplr
+	depends = r-rsqlite
+	depends = r-stringr
+	optdepends = r-geoquery
+	optdepends = r-r.utils
+	optdepends = r-siggenes
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GCSscore_1.10.0.tar.gz
+	sha256sums = 44e4441b954fcc03c961005a6af11eb1d5a573ca0801cc252be979c695d8b031
+
+pkgname = r-gcsscore
