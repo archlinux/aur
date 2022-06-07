@@ -1,13 +1,12 @@
 pkgbase = tydra
 	pkgdesc = Shortcut menu-based task runner, inspired by Emacs Hydra
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Mange/tydra
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/Mange/tydra/archive/v1.0.2.tar.gz
-	sha512sums = a10b1f40c0cc7bf61e912717f980ad0b4d98a24f0bc5821668edcdf5fe710c30042491dd22dff6779b726d03cb2eb2b1044565c0c69084a91e8839eb358faa4c
+	source = https://github.com/Mange/tydra/archive/v1.0.3.tar.gz
+	sha512sums = f1c91962f7a77c39ac3a8199e1c9c8ee5f7c328e16ab7dfeeb88f4494aaafb61ab019e20be7bda12b39439542208d84658d0e977fd08dfe0ea0833f60482a072
 
 pkgname = tydra
-

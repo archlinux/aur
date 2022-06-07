@@ -1,6 +1,6 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 pkgname=tydra
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Shortcut menu-based task runner, inspired by Emacs Hydra"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Mange/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('a10b1f40c0cc7bf61e912717f980ad0b4d98a24f0bc5821668edcdf5fe710c30042491dd22dff6779b726d03cb2eb2b1044565c0c69084a91e8839eb358faa4c')
+sha512sums=('f1c91962f7a77c39ac3a8199e1c9c8ee5f7c328e16ab7dfeeb88f4494aaafb61ab019e20be7bda12b39439542208d84658d0e977fd08dfe0ea0833f60482a072')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,11 +19,11 @@ build() {
   # Generate completion scripts
   mkdir -p target/release/completions
   "./target/release/$pkgname" \
-    --generate-completions bash > "target/release/completions/$pkgname.bash"
+    --generate-completions bash >"target/release/completions/$pkgname.bash"
   "./target/release/$pkgname" \
-    --generate-completions fish > "target/release/completions/$pkgname.fish"
+    --generate-completions fish >"target/release/completions/$pkgname.fish"
   "./target/release/$pkgname" \
-    --generate-completions zsh > "target/release/completions/_$pkgname"
+    --generate-completions zsh >"target/release/completions/_$pkgname"
 }
 
 package() {
@@ -50,9 +50,8 @@ package() {
   install -Dm644 doc/*.png "$pkgdir/usr/share/doc/${pkgname}"
 
   # Since README and doc/ files are flattened, remove the "doc/" prefix inside the README.md.
-  sed 's#doc/##g' "$readme_path" > "$readme_path.new"
+  sed 's#doc/##g' "$readme_path" >"$readme_path.new"
   mv "$readme_path.new" "$readme_path"
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-
