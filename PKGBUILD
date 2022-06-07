@@ -4,7 +4,7 @@ _pkgname=sampSurf
 _pkgver=0.7-6
 pkgname=r-${_pkgname,,}
 pkgver=0.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Sampling Surface Simulation for Areal Sampling Methods'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-rgeos
   r-rgl
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('63deaaed014dac52e855c7b620ade058cc1887eef984a5536c6083dfb36b56b8')
 
 build() {

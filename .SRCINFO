@@ -1,7 +1,7 @@
 pkgbase = r-sampsurf
 	pkgdesc = Sampling Surface Simulation for Areal Sampling Methods
 	pkgver = 0.7.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=sampSurf
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-sampsurf
 	depends = r-sp
 	optdepends = r-rgeos
 	optdepends = r-rgl
-	source = https://cran.r-project.org/src/contrib/sampSurf_0.7-6.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/sampSurf/sampSurf_0.7-6.tar.gz
 	sha256sums = 63deaaed014dac52e855c7b620ade058cc1887eef984a5536c6083dfb36b56b8
 
 pkgname = r-sampsurf
