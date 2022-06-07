@@ -30,7 +30,7 @@ depends=(
   r-s4vectors
   r-tibble
   r-tidyr
-  jre11-openjdk
+  java-runtime
 )
 optdepends=(
   r-biocfilecache
