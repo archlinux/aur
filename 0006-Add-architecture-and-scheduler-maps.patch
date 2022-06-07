@@ -13,7 +13,7 @@ command.
  1 file changed, 4 insertions(+)
 
 diff --git a/osc/util/packagequery.py b/osc/util/packagequery.py
-index 93a439b5da17c718ff664a37e7b6c4d03082532c..c3aa2c0dec5377be4edf00fab6e481b1272fbbc5 100644
+index e07a6bbef3d0b5816a2986a652f48c5642743a24..e32a0bf6e82d0bdb096502deba22efeb78d9b92d 100644
 --- a/osc/util/packagequery.py
 +++ b/osc/util/packagequery.py
 @@ -18,6 +18,10 @@ class PackageQueries(dict):

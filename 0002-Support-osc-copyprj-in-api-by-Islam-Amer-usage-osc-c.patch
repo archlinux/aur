@@ -13,7 +13,7 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 81 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 9180f9256b9351e24667be7b51c115085272a859..b5ce2169e384c6203583e960a20b660be199fa6c 100644
+index 64e5a8f15ba652a2915aa8cdc17a737385ca9982..8cbf708e2f0a82f1d2246cc2c131db37e95b43b6 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -3203,6 +3203,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
@@ -77,10 +77,10 @@ index 9180f9256b9351e24667be7b51c115085272a859..b5ce2169e384c6203583e960a20b660b
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index 2d07c7f7d54ea32a2b9219efa0137fb978c365be..93aa7dd20f6dd71f7e934534896d3330fffab4fc 100644
+index c6e251f7430d5cc6568a24daa4b7683defc95b42..a2676949684c08ed97d234f3bc07f226e9d269f5 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5620,6 +5620,34 @@ def copy_pac(src_apiurl, src_project, src_package,
+@@ -5664,6 +5664,34 @@ def copy_pac(src_apiurl, src_project, src_package,
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  
