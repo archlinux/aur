@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text xhtml2pdf-0.2.7/docs/source/conf.py xhtml2pdf-0.2.7_patched/docs/source/conf.py
+--- xhtml2pdf-0.2.7/docs/source/conf.py	2022-04-01 00:40:27.000000000 +0200
++++ xhtml2pdf-0.2.7_patched/docs/source/conf.py	2022-06-07 09:10:11.796716045 +0200
+@@ -254,6 +254,7 @@
+ htmlhelp_basename = 'xhtml2pdfdoc'
+ 
+ # -- Options for LaTeX output ---------------------------------------------
++latex_engine = 'xelatex'
+ 
+ latex_elements = {
+      # The paper size ('letterpaper' or 'a4paper').
