@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=falcon-sensor
-pkgver=6.35.0_13207
+pkgver=6.39.0_13601
 pkgrel=1
 pkgdesc="Crowdstrike Falcon Sensor daemon and kernel modules"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  "3a21f0d70e1d0cba66e86a00266293d2c47a851a89298ca6cb513bd3fbd5e93c"
+  "0c0a41ebd49f0c5836de52ad5ab40349a3e6bf3c7ce00c16fc25902659c3ed84"
   "76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9"
 )
 
