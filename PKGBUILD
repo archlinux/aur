@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_hash'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 pkgdesc='A ppx rewriter that generates hash functions from type expressions and definitions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppx_compare>=0.14.0' 'ocaml-ppx_sexp_conv>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_compare>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bfd7d82db037329239db5ea73b7ec08bb40979263d43858c649826408b66db2e')
+sha512sums=('333d2b232b1d5c15fe144bafb7ad4c843e5381e71b21b25a6fb9c03b1ee98ba81580de7036580ac2d04dcdfed0af20003875b9374412b8ef130b4647c30fee6a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
