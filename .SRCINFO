@@ -1,7 +1,7 @@
 pkgbase = r-rcdk
 	pkgdesc = Interface to the 'CDK' Libraries
 	pkgver = 3.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=rcdk
 	arch = any
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = r-rcdk
 	depends = r-png
 	depends = r-rcdklibs
 	depends = r-rjava
-	depends = jdk11-openjdk
+	depends = java-runtime
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown

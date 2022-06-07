@@ -5,7 +5,7 @@ _pkgname=rcdk
 _pkgver=3.6.0
 pkgname=r-${_pkgname,,}
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Interface to the 'CDK' Libraries"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ depends=(
   r-png
   r-rcdklibs
   r-rjava
-  jdk11-openjdk
+  java-runtime
 )
 optdepends=(
   r-devtools
