@@ -1,12 +1,12 @@
 
 _pkgname=KEGGprofile
-_pkgver=1.36.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
-pkgrel=2
+pkgver=1.32.0
+pkgrel=1
 pkgdesc='An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.12/bioc/html/KEGGprofile.html"
 license=('GPL')
 depends=(
   r

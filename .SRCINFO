@@ -1,8 +1,8 @@
 pkgbase = r-keggprofile
 	pkgdesc = An annotation and visualization package for multi-types and multi-groups expression data in KEGG pathway
-	pkgver = 1.36.0
-	pkgrel = 2
-	url = https://bioconductor.org/packages/KEGGprofile
+	pkgver = 1.32.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/3.12/bioc/html/KEGGprofile.html
 	arch = any
 	license = GPL
 	makedepends = git
