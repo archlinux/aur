@@ -14,13 +14,20 @@ arch=('x86_64')
 url='https://gmic.eu/'
 license=('custom:CeCILL')
 depends=(
+  'curl'
   'fftw'
+  'gcc-libs'
+  'glibc'
   'graphicsmagick'
+  'libjpeg'
+  'libpng'
+  'libtiff'
+  'libx11'
   'openexr'
+  'zlib'
 )
 makedepends=(
   'cmake'
-  'openexr'
   'qt5-base'
   'qt5-tools'
 )
