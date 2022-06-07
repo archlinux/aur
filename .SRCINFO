@@ -1,6 +1,6 @@
 pkgbase = rivet
 	pkgdesc = A particle physics package for data analysis and validation of Monte Carlo event generators
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = http://rivet.hepforge.org
 	arch = x86_64
@@ -16,9 +16,7 @@ pkgbase = rivet
 	optdepends = texlive-core: Plotting functionality
 	optdepends = ghostscript: PDF plot output
 	optdepends = imagemagick: PNG plot output
-	source = http://www.hepforge.org/archive/rivet/Rivet-3.1.5.tar.gz
-	source = https://gitlab.com/hepcedar/rivet/-/commit/efb47ae662431c08ae4deec046bff0c56a8119ab.diff
-	md5sums = 7f3397b16386c0bfcb49420c2eb395b1
-	md5sums = f2ffdbf1800e2ba8eec23e10d3785d33
+	source = http://www.hepforge.org/archive/rivet/Rivet-3.1.6.tar.gz
+	md5sums = 2c179a8987ec13db356d07a66b590f47
 
 pkgname = rivet
