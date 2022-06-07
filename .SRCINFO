@@ -1,4 +1,4 @@
-pkgbase = rlbot-gui-rust-git
+pkgbase = rlbotgui-rust-git
 	pkgdesc = A Rust GUI for the RLBot framework
 	pkgver = 0.1.0.55dc73b
 	pkgrel = 1
@@ -9,7 +9,8 @@ pkgbase = rlbot-gui-rust-git
 	makedepends = git
 	makedepends = sed
 	depends = python
+	replaces = rlbot-gui-rust-git
 	source = git+https://github.com/VirxEC/rlbot_gui_rust
 	sha512sums = SKIP
 
-pkgname = rlbot-gui-rust-git
+pkgname = rlbotgui-rust-git
