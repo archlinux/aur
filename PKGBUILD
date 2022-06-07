@@ -4,7 +4,7 @@ _pkgname=loose.rock
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Tools for Survival Analysis and Data Science'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-survival
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f934b6258ee7d8607fc8e3832d1855af769eff8382c8c7d962c34651d1ade38e')
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = r-loose.rock
 	pkgdesc = Tools for Survival Analysis and Data Science
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=loose.rock
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-loose.rock
 	optdepends = r-roxygen2
 	optdepends = r-survival
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/loose.rock_1.2.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/loose.rock/loose.rock_1.2.0.tar.gz
 	sha256sums = f934b6258ee7d8607fc8e3832d1855af769eff8382c8c7d962c34651d1ade38e
 
 pkgname = r-loose.rock
