@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_module_timer'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 pkgdesc='Ppx rewriter that records top-level module startup times'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppx_base>=0.14.0' 'ocaml-ppxlib>=0.11.0' 'ocaml-stdio>=0.14.0' 'ocaml-time_now>=0.14.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_base>=0.15.0' 'ocaml-ppxlib>=0.23.0' 'ocaml-stdio>=0.15.0' 'ocaml-time_now>=0.15.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('860d86d71fc5a21f63c74b71ca86b6feeb14a1307d2594e02520dfab7d1df995')
+sha512sums=('4cd55dce6872cbed1d34c34043500651e605c406747914173584cee1d8f3ff298a75efeb8a4beb7840df76b5d7c7db98d15399d3c4a3a5dca2a11d57339df6de')
 
 _sourcedirectory="$_projectname-$pkgver"
 
