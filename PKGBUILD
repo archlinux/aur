@@ -7,7 +7,7 @@ pkgver=1.22.0
 pkgrel=2
 pkgdesc='Generate PanViz visualisations from your pangenome'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.13/bioc/html/PanVizGenerator.html"
 license=('GPL')
 depends=(
   r
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.13/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('4d0ccdf162d78f8bf7bc676862b104b61c401682d999b001a02bb15998141d66')
 
 build() {

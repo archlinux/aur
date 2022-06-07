@@ -2,7 +2,7 @@ pkgbase = r-panvizgenerator
 	pkgdesc = Generate PanViz visualisations from your pangenome
 	pkgver = 1.22.0
 	pkgrel = 2
-	url = https://bioconductor.org/packages/PanVizGenerator
+	url = https://bioconductor.org/packages/3.13/bioc/html/PanVizGenerator.html
 	arch = any
 	license = GPL
 	depends = r
@@ -16,7 +16,7 @@ pkgbase = r-panvizgenerator
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PanVizGenerator_1.22.0.tar.gz
+	source = https://bioconductor.org/packages/3.13/bioc/src/contrib/PanVizGenerator_1.22.0.tar.gz
 	sha256sums = 4d0ccdf162d78f8bf7bc676862b104b61c401682d999b001a02bb15998141d66
 
 pkgname = r-panvizgenerator
