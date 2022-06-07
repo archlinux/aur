@@ -1,6 +1,6 @@
 pkgbase = conky-lua
 	pkgdesc = Lightweight system monitor for X, with Lua support enabled
-	pkgver = 1.11.5
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = http://github.com/brndnmtthws/conky
 	arch = i686
@@ -29,13 +29,12 @@ pkgbase = conky-lua
 	depends = lua52
 	depends = tolua++
 	depends = wireless_tools
-	provides = conky=1.11.5
+	provides = conky=1.12.2
 	conflicts = conky
 	options = !emptydirs
 	backup = etc/conky/conky.conf
 	backup = etc/conky/conky_no_x11.conf
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.5.tar.gz
-	sha1sums = 623628667fdb159a51a7a44784fec4390ae6139d
+	source = https://github.com/brndnmtthws/conky/archive/v1.12.2.tar.gz
+	sha1sums = 3beb6048a7146f4a19cfdb1b994ead3ec051773b
 
 pkgname = conky-lua
-
