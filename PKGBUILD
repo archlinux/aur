@@ -4,7 +4,7 @@ _pkgname=SPARQL
 _pkgver=1.16
 pkgname=r-${_pkgname,,}
 pkgver=1.16
-pkgrel=3
+pkgrel=4
 pkgdesc='SPARQL client'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-rcurl
   r-xml
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('2cb366b2b93804c12f17254a1c37687887fc12047b58b13aab0d7a6f000e533d')
 
 build() {

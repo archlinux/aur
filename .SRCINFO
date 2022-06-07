@@ -1,14 +1,14 @@
 pkgbase = r-sparql
 	pkgdesc = SPARQL client
 	pkgver = 1.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=SPARQL
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-rcurl
 	depends = r-xml
-	source = https://cran.r-project.org/src/contrib/SPARQL_1.16.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/SPARQL/SPARQL_1.16.tar.gz
 	sha256sums = 2cb366b2b93804c12f17254a1c37687887fc12047b58b13aab0d7a6f000e533d
 
 pkgname = r-sparql
