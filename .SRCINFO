@@ -1,0 +1,12 @@
+pkgbase = gopoggers
+	pkgdesc = POGGERS pixelart printer for celebrating accomplishments
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/poggeroni/gopoggers
+	arch = any
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/poggeroni/gopoggers#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = gopoggers
