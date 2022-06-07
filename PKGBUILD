@@ -20,7 +20,9 @@ _modulename='ax99100'
 
 set -u
 pkgname="asix-${_modulename,,}"
-pkgver='1.7.0'; _dl='1162'
+#pkgver='1.6.0'; _dl='529'
+#pkgver='1.7.0'; _dl='1162'
+pkgver='1.8.0'; _dl='1229'
 pkgrel='1'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
@@ -33,12 +35,15 @@ _srcdir="AX99100_SP_PP_SPI_Linux_Driver_v${pkgver}_Source"
 source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/${_dl}")
 source+=('0000-ax99100_sp.c-ch.patch')
 source+=('0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch')
-md5sums=('f8cee4f0e231750613066e4acf9c1fcb'
+source+=('0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch')
+md5sums=('eb1f8c5e347b308702a9082c79bd469b'
          'e992800dddd65a174ac531448e3f1498'
-         'ab3d71682ad549eb51ae8a13aa90efc5')
-sha256sums=('e561c874f5d3c7cd1e8ddea6bb1dfcbb55e4d73014e2ff6bebf3b2fddbb7baab'
+         'ab3d71682ad549eb51ae8a13aa90efc5'
+         '8bf51364274f661b3f88fafb23b61f87')
+sha256sums=('d4eda7e48f335e670c6f5286d744dcf111aaa7304dc921ac89089cf253e5cf1d'
             '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36'
-            '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54')
+            '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54'
+            'be4b1bf9b404b6704002e6d6866af42bb69bda487f5ad063e575a374192969d5')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -72,11 +77,19 @@ prepare() {
 
   sed -e 's:\r$::g' -i $(grep -l $'\r$' *)
 
-  # diff -pNau5 ax99100_sp.c{.orig,} > '0000-ax99100_sp.c-ch.patch'
-  #patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
+  if [ "$(vercmp "${pkgver}" '1.7.0')" -ne 0 ]; then
+    # diff -pNau5 ax99100_sp.c{.orig,} > '0000-ax99100_sp.c-ch.patch'
+    patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
+  fi
 
-  # diff -pNau5 ax99100_sp.c{.orig,} > '0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch'
-  patch -Nup0 -i "${srcdir}/0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch"
+  if [ "$(vercmp "${pkgver}" '1.8.0')" -lt 0 ]; then
+    # diff -pNau5 ax99100_sp.c{.orig,} > '0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch'
+    patch -Nup0 -i "${srcdir}/0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch"
+  fi
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch'
+  patch -Nup1 -i "${srcdir}/0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch"
 
   # Make package and DKMS compatible
   # cp -p 'Makefile' 'Makefile.Arch'
