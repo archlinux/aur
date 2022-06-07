@@ -15,7 +15,7 @@ depends=(
   'python-cffi'
   'python-cryptography'
   'python-feedparser'
-  'python-cparser'
+  'python-pycparser'
   'python-configobj'
   'python-cherrypy'
   'python-cheroot'
