@@ -3,7 +3,7 @@
 
 pkgname=conky-lua
 _pkgname=conky
-pkgver=1.11.5
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
@@ -36,11 +36,10 @@ provides=("conky=$pkgver")
 conflicts=('conky')
 backup=('etc/conky/conky.conf' 'etc/conky/conky_no_x11.conf')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('623628667fdb159a51a7a44784fec4390ae6139d')
+sha1sums=('3beb6048a7146f4a19cfdb1b994ead3ec051773b')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
- 
     CPPFLAGS="${CXXFLAGS}" LIBS="${LDFLAGS}" LUA_LIBS="-llua5.1" LUA_CFLAGS="-I/usr/include/lua5.1" \
         cmake \
         -D CMAKE_INSTALL_PREFIX=/usr \
@@ -53,15 +52,14 @@ build() {
         -D BUILD_IMLIB2=ON \
         -D BUILD_RSS=ON \
         -D BUILD_WEATHER_METAR=ON \
-        -D BUILD_WEATHER_XOAP=ON \
         -D BUILD_XDBE=ON \
         -D BUILD_WLAN=ON \
         -D BUILD_PULSEAUDIO=ON \
+        -D MAINTAINER_MODE=OFF \
         .
-
     make
 }
- 
+
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
