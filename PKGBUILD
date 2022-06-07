@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_optional'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 pkgdesc='Pattern matching on flat options'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8a7db222cb6b6ca7b946890182d060edb2492912b29b36f74ef22b7c9d3c2be9')
+sha512sums=('a2cd8390877c9ec256523c796995a5ade2f97f396afe86493ac46ca1bd1fe15264423986f5a27d5b88908b92673305405e508e744335205ff17f6c2b7d7d0809')
 
 _sourcedirectory="$_projectname-$pkgver"
 
