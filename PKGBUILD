@@ -6,10 +6,10 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="2e881c9916dd4babb5f9922fb07dce2345b3cb4b"
-_gtkver=3.24.30
+__arch_pkg_commit="ef36b28a894a3de835464d89a3ac0bc2898c2317"
+_gtkver=3.24.34
 
-_gtk3_classic_commit="b6ade1bee1c9c0cb3682a8dd4e5e92a28fee540b"
+_gtk3_classic_commit="221a3257c5d804520e3a26270ac2fc4673d39eb4"
 
 pkgbase=gtk3-classic-noatk-64
 pkgname=($pkgbase)
@@ -23,7 +23,7 @@ provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-print-backends
 arch=(x86_64)
 license=(LGPL)
 makedepends=(
-	git gobject-introspection libcanberra meson quilt
+	git gobject-introspection libcanberra meson quilt sassc
 
 	atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 fribidi
 	libxcomposite libxdamage pango shared-mime-info libxkbcommon
@@ -38,7 +38,7 @@ source=(
 	settings.ini
 )
 sha256sums=('SKIP'
-            'ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9'
+            'dbc69f90ddc821b8d1441f00374dc1da4323a2eafa9078e61edbe5eeefa852ec'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 prepare()
@@ -49,27 +49,31 @@ prepare()
 
 	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
 	cat "$srcdir/$pkgbase/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
-	#./configure --enable-x11-backend --disable-installed-tests --disable-win32-backend --disable-dependency-tracking --disable-nls --disable-cups --disable-papi --disable-cloudprint --with-x --disable-gtk-doc 
+	#./configure --enable-x11-backend --disable-installed-tests --disable-win32-backend --disable-dependency-tracking --disable-nls --disable-cups --disable-papi --disable-cloudprint --with-x --disable-gtk-doc
 }
 
 build()
 {
-        #CFLAGS=" -DG_DISABLE_CAST_CHECKS -O3 -pipe -fno-plt"
-        #CXXFLAGS=" -Os -pipe -fno-plt"
-        #
-	CFLAGS+="  -O3 -pipe -fno-plt  -DG_DISABLE_CAST_CHECKS"
-        CXXFLAGS+=" -Os -pipe -fno-plt "
+    #CFLAGS=" -DG_DISABLE_CAST_CHECKS -O3 -pipe -fno-plt"
+    #CXXFLAGS=" -Os -pipe -fno-plt"
+    #
+
+    CFLAGS+="  -O3 -pipe -fno-plt  -DG_DISABLE_CAST_CHECKS"
+    CXXFLAGS+=" -Os -pipe -fno-plt "
+
 
 	# Remove atk - patch (aka at-spi/atk-bridge removal patch)
 	# Installed atk package (libs) still required for build.
         # Original NETBSD patch included but not used ( file: original.NETBSD.atk-bridge.patch )
         # Here the same patch trough sed util:
+
 	sed -i 's/atk_bridge_adaptor_init.*$//g' "gtk+-$_gtkver/gtk/a11y/gtkaccessibility.c"
 	sed -i 's/^#.*atk-bridge.h.$//g' "gtk+-$_gtkver/gtk/a11y/gtkaccessibility.c"
 
 	# 64-bit build
-	# Enable or disable options by commenting lines ( or change true / false ) 
-        arch-meson --buildtype minsize --strip --optimization=3 gtk+-$_gtkver build \
+	# Enable or disable options by commenting lines ( or change true / false )
+        
+        arch-meson --buildtype release --strip gtk+-$_gtkver build \
                 -D broadway_backend=false \
                 -D demos=false \
                 -D tests=false \
@@ -77,7 +81,7 @@ build()
                 -D print_backends=file \
                 -D win32_backend=false \
                 -D quartz_backend=false  \
-                -D colord=auto \
+                -D colord=no \
                 -D cloudproviders=false \
                 -D gtk_doc=false \
                 -D examples=false \
