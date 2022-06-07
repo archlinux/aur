@@ -1,13 +1,13 @@
 pkgbase = sonixd-appimage
 	pkgdesc = The latest stable AppImage of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/jeffvli/sonixd
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	options = !strip
-	source = https://github.com/jeffvli/sonixd/releases/download/v0.15.1/Sonixd-0.15.1-linux-x86_64.AppImage
-	sha256sums = db7594d67c2faf3cb0d09f8fa659b725bb12723271bbe4619b05687bf3e3a336
+	source = https://github.com/jeffvli/sonixd/releases/download/v0.15.2/Sonixd-0.15.2-linux-x86_64.AppImage
+	sha256sums = 88bc74d637c4c0be7bdc193ae9f75da83797e7681eb6b01ef0d3b4b1cc6c0d34
 
 pkgname = sonixd-appimage
