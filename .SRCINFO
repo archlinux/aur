@@ -1,0 +1,14 @@
+pkgbase = spc2it
+	pkgdesc = Convert SPC files to IT (Impulse Tracker) files
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/uyjulian/spc2it
+	arch = any
+	license = unknown
+	makedepends = meson
+	source = spc2it-0.4.0.tar.gz::https://github.com/uyjulian/spc2it/archive/v0.4.0.tar.gz
+	source = fix-meson-build.patch
+	sha512sums = cedf6e26a419933bc371bfec33193eed5d571fc8a1cfc627754c82ef87e9f6d23656ad4b4e5750e281ed0f7e8c3346d46b315cf24f1959dc5543821fec669564
+	sha512sums = b51f42bb26645828dba7189b9ff39c11737bc2fa19e1f5fa337e0045d8f0c42b2c6d0125f0f7a8d53d42270c360bb2b637e2c8ebc83ab91ab3c5dddf8ac09fe7
+
+pkgname = spc2it

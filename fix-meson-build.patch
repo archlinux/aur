@@ -1,0 +1,10 @@
+diff --git a/meson.build b/meson.build
+index b41cba8..8682037 100644
+--- a/meson.build
++++ b/meson.build
+@@ -38,4 +38,5 @@ executable(
+ 	sources: spc2it_src,
+ 	c_args: spc2it_cflags,
+ 	link_args: spc2it_ldflags,
++	install: true,
+ )
