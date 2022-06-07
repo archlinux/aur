@@ -52,6 +52,7 @@ build() {
         -D BUILD_IMLIB2=ON \
         -D BUILD_RSS=ON \
         -D BUILD_WEATHER_METAR=ON \
+        -D BUILD_WEATHER_XOAP=ON \
         -D BUILD_XDBE=ON \
         -D BUILD_WLAN=ON \
         -D BUILD_PULSEAUDIO=ON \
