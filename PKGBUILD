@@ -1,8 +1,8 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 _gitname=PyTMX
 pkgname=python-pytmx
-pkgver=3.24
-_commit=eb96efea30d57b731654b2a167d86b8b553b147d
+pkgver=3.31
+_commit=2ef7dcac8526d9b5085c147b70b1078666542f12
 pkgrel=1
 pkgdesc="Python library to read Tiled Map Editor's TMX maps"
 arch=('i686' 'x86_64')
@@ -16,6 +16,11 @@ source=("git+https://github.com/bitcraft/$_gitname.git#commit=$_commit")
 sha256sums=('SKIP')
 
 package(){
-  cd $_gitname
+  cd "$srcdir"/$_gitname
   python setup.py install --root="$pkgdir" --prefix=/usr
+}
+
+check() {
+    cd "$srcdir"/$_gitname
+    python -m unittest tests/pytmx/test_pytmx.py
 }
