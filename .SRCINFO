@@ -1,6 +1,6 @@
 pkgbase = rpi-imager-git
 	pkgdesc = Raspberry Pi imaging utility
-	pkgver = 1.6.2.r59.gbe40f05
+	pkgver = 1.7.2.r0.g8d943ce
 	pkgrel = 1
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = i686

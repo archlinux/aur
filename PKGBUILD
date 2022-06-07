@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rpi-imager-git
-pkgver=1.6.2.r59.gbe40f05
+pkgver=1.7.2.r0.g8d943ce
 pkgrel=1
 pkgdesc="Raspberry Pi imaging utility"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    ./
+    src
   make -C "_build"
 }
 
