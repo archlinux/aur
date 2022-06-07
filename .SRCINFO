@@ -1,0 +1,22 @@
+pkgbase = scsi2sd-v6-git
+	pkgdesc = Utilities for SCSI2SD (v6 hardware)
+	pkgver = r278.57d0051a
+	pkgrel = 1
+	url = http://www.codesrc.com/mediawiki/index.php?title=SCSI2SD
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = wxgtk3
+	depends = hidapi
+	depends = zlib
+	depends = expat
+	depends = dfu-util
+	source = git://www.codesrc.com/git/SCSI2SD-V6
+	source = SCSI2SD-V6.diff
+	source = http://www.codesrc.com/files/scsi2sd-v6/latest/firmware.dfu
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = scsi2sd-v6-git

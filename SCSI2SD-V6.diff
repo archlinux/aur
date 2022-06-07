@@ -1,0 +1,55 @@
+diff --git a/include/scsi2sd.h b/include/scsi2sd.h
+index 9a988bf0..75817829 100755
+--- a/include/scsi2sd.h
++++ b/include/scsi2sd.h
+@@ -62,8 +62,8 @@ typedef enum
+ 
+ typedef enum
+ {
+-	S2S_CFG_ENABLE_TERMINATOR = 1
+-	//S2S_CFG_ENABLE_BLIND_WRITES = 2, // Obosolete
++	S2S_CFG_ENABLE_TERMINATOR = 1,
++	S2S_CFG_ENABLE_BLIND_WRITES = 2 // Obsolete, but still referred to?
+ } S2S_CFG_FLAGS6;
+ 
+ typedef enum
+diff --git a/src/scsi2sd-util6/Makefile b/src/scsi2sd-util6/Makefile
+index 76ac0234..1646f256 100755
+--- a/src/scsi2sd-util6/Makefile
++++ b/src/scsi2sd-util6/Makefile
+@@ -38,7 +38,8 @@ LIBZIPPER_CONFIG = --disable-shared LDFLAGS="-L../zlib" CPPFLAGS="-I../zlib"
+ endif
+ 
+ ifeq ($(USE_SYSTEM_WX),Yes)
+-LDFLAGS_WX=$(shell wx-config-3.0 --libs)
++CPPFLAGS_WX=$(shell wx-config-gtk3 --cflags)
++LDFLAGS_WX=$(shell wx-config-gtk3 --libs)
+ else
+ LDFLAGS_WX=$(shell $(BUILD)/wx/wx-config --libs)
+ endif
+@@ -47,6 +48,7 @@ CPPFLAGS = $(CPPFLAGS_HIDAPI) -I. -I ../../include -ITerminalWx/src \
+ 	-Ilibzipper-1.0.4 \
+ 	$(CPPFLAGS_ZLIB) \
+ 	$(CPPFLAGS_LIBUSB) \
++	$(CPPFLAGS_WX) \
+ 	-DHAVE_LIBUSB_1_0 \
+ 
+ 
+@@ -260,7 +262,7 @@ $(BUILD)/%.o: %.cc
+ ifneq ($(USE_SYSTEM_WX),Yes)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `$(BUILD)/wx/wx-config --cxxflags` $< -c -o $@
+ else
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-3.0 --cxxflags` $< -c -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-gtk3 --cxxflags` $< -c -o $@
+ endif
+ 
+ $(BUILD)/%.o: %.cpp
+@@ -268,7 +270,7 @@ $(BUILD)/%.o: %.cpp
+ ifneq ($(USE_SYSTEM_WX),Yes)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `$(BUILD)/wx/wx-config --cxxflags` $< -c -o $@
+ else
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-3.0 --cxxflags` $< -c -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-gtk3 --cxxflags` $< -c -o $@
+ endif
+ 
+ $(BUILD)/scsi2sd-util6$(EXE): $(OBJ) $(WXOBJ) $(BUILD)/scsi2sd-util.o
