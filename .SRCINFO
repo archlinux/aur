@@ -1,16 +1,16 @@
 pkgbase = ruby-rack-1
 	pkgdesc = Provides an interface for developing web applications in Ruby
-	pkgver = 1.6.4
-	pkgrel = 3
-	url = https://rubygems.org/gems/rack/versions/1.6.4
+	pkgver = 1.6.13
+	pkgrel = 1
+	url = https://rubygems.org/gems/rack/versions/1.6.13
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = rubygems
-	provides = ruby-rack=1.6.4
+	provides = ruby-rack=1.6.13
 	conflicts = ruby-rack
-	noextract = rack-1.6.4.gem
-	source = https://rubygems.org/downloads/rack-1.6.4.gem
-	b2sums = 609bc7671947c2abfd00f0848e1870fcf46d5a92320427bea4b7104c1dbd6d4a9d0a89e3846e774c409d570ecc8fdb8d8099e553c5d73384f10a9f6e636765ca
+	noextract = rack-1.6.13.gem
+	source = https://rubygems.org/downloads/rack-1.6.13.gem
+	b2sums = c1bdfa1149bb43a667965a0ca63f5bf2ee0b3c4446122cacd4671cee72d96edba0fe72fc284ab1dc02d4b4fe3c924824ec3cdd109c7ed915608e0eba5c19bce4
 
 pkgname = ruby-rack-1
