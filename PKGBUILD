@@ -53,7 +53,7 @@ package() {
 
 	ln -s /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
-  desktop-file-install -m 644 --dir $pkgname.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
+  desktop-file-install -m 644 --dir ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
 
 	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
