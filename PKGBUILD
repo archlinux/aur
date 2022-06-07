@@ -2,10 +2,10 @@
 
 pkgname=qt-aseman
 pkgver=3.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of C++ and QML tools and modules that helps you develop your projects easier and better."
 arch=('x86_64')
-url="https://protonmail.com/bridge"
+url="https://github.com/Aseman-Land/QtAseman"
 license=('LGPL3')
 makedepends=('gcc' 'make' 'qt5-base' 'git')
 options=('!emptydirs' '!strip')

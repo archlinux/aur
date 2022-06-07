@@ -1,8 +1,8 @@
 pkgbase = qt-aseman
 	pkgdesc = A set of C++ and QML tools and modules that helps you develop your projects easier and better.
 	pkgver = 3.1.5
-	pkgrel = 3
-	url = https://protonmail.com/bridge
+	pkgrel = 4
+	url = https://github.com/Aseman-Land/QtAseman
 	arch = x86_64
 	license = LGPL3
 	makedepends = gcc
