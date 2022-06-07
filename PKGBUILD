@@ -3,7 +3,7 @@
 #Contributor: A. Klitzing <aklitzing@gmail.com>
 
 pkgname=pbuilder-ubuntu
-pkgver=0.230.4
+pkgver=0.231build1
 pkgrel=1
 pkgdesc="personal package builder for Debian packages"
 arch=(any)
@@ -17,7 +17,7 @@ provides=('pbuilder')
 conflicts=('pbuilder')
 source=(http://archive.ubuntu.com/ubuntu/pool/universe/p/pbuilder/pbuilder_${pkgver}_all.deb)
 backup=('etc/pbuilderrc')
-md5sums=('ee9e072399746ab1228b3680ad0f5c7c')
+md5sums=('af95de7b05b1a95c2721d614aac40884')
 
 package() {
   ar x pbuilder_${pkgver}_all.deb
