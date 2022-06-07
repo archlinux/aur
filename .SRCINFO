@@ -1,0 +1,12 @@
+pkgbase = rancher-k3d
+	pkgdesc = k3s is the lightweight Kubernetes distribution by Rancher
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = https://github.com/k3d-io/k3d
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = rancher-k3d-5.4.2.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v5.4.2.tar.gz
+	sha256sums = fae4ffc61987321b58b562d7d6c6c0e60c148eb47a9dfeddb330937ef06b3523
+
+pkgname = rancher-k3d
