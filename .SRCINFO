@@ -1,7 +1,7 @@
 pkgbase = inform7-ide-bin
 	pkgdesc = Inform 7 IDE for the Inform 7 programming language for interactive fiction
 	pkgver = 2.0.0.rc2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ptomato/inform7-ide
 	install = inform7-ide.install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = inform7-ide-bin
 	license = Artistic2.0
 	license = GPL3
 	depends = goocanvas2
+	depends = gtksourceview4
+	depends = webkit2gtk
 	provides = inform7-ide
 	conflicts = inform7-ide
 	options = !strip
