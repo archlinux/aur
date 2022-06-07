@@ -1,6 +1,9 @@
+# To disable Qt6, set USE_QT6 variable to OFF. For example:
+# USE_QT6=OFF makepkg -si
+
 pkgname=qbittorrent-enhanced-ua
 pkgver=4.4.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _name="qBittorrent-Enhanced-Edition"
@@ -36,7 +39,7 @@ build() {
     cmake -B "build" -GNinja "${_snapshot}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT6=ON
+        -DQT6="${USE_QT6:-ON}"
 
     ninja -C "build"
 }
