@@ -1,6 +1,6 @@
 pkgbase = ocaml-core_kernel
 	pkgdesc = Industrial strength alternative to OCaml's standard library (system-independent part)
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_kernel
@@ -13,29 +13,12 @@ pkgbase = ocaml-core_kernel
 	license = MIT
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.08.0
-	depends = ocaml-base>=0.14.0
-	depends = ocaml-base_bigstring>=0.14.0
-	depends = ocaml-base_quickcheck>=0.14.0
-	depends = ocaml-bin_prot>=0.14.0
-	depends = ocaml-fieldslib>=0.14.0
-	depends = ocaml-jane-street-headers>=0.14.0
-	depends = ocaml-jst-config>=0.14.0
-	depends = ocaml-ppx_assert>=0.14.0
-	depends = ocaml-ppx_base>=0.14.0
-	depends = ocaml-ppx_hash>=0.14.0
-	depends = ocaml-ppx_inline_test>=0.14.0
-	depends = ocaml-ppx_jane>=0.14.0
-	depends = ocaml-ppx_optcomp>=0.14.3
-	depends = ocaml-ppx_sexp_conv>=0.14.0
-	depends = ocaml-ppx_sexp_message>=0.14.0
-	depends = ocaml-sexplib>=0.14.0
-	depends = ocaml-splittable_random>=0.14.0
-	depends = ocaml-stdio>=0.14.0
-	depends = ocaml-time_now>=0.14.0
-	depends = ocaml-typerep>=0.14.0
-	depends = ocaml-variantslib>=0.14.0
+	depends = ocaml-base>=0.15.0
+	depends = ocaml-core>=0.15.0
+	depends = ocaml-int_repr>=0.15.0
+	depends = ocaml-ppx_jane>=0.15.0
 	options = !strip
-	source = ocaml-core_kernel-1:0.14.2-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.14.2.tar.gz
-	sha256sums = 66f5353964d35a994ec7fdc88fe60ae5d497ac89a8042786f3e37d9e2202ce4b
+	source = ocaml-core_kernel-1:0.15.0-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.15.0.tar.gz
+	sha512sums = da28f11374fda2e869b5ef3f7131461c6d896b52413654f2aeb7c74bc77ba4a8e2a25830eb3e3ef393e0bbae903db20f54773b356c53cab75c1bba1b9ce265bc
 
 pkgname = ocaml-core_kernel
