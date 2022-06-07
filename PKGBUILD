@@ -4,7 +4,7 @@ _pkgname=sparsebn
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Learning Sparse Bayesian Networks from High-Dimensional Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('85f1b4c912ed27db5ac4ae7defcfb79ddc7494be1df7239499ac573b6c0026ac')
 
 build() {
