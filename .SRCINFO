@@ -1,0 +1,18 @@
+pkgbase = stdm-git
+	pkgdesc = A linux man page search engine
+	pkgver = 1.r15.4f02c43
+	pkgrel = 1
+	url = https://gitlab.com/NEON-MMD/stdm.git
+	install = stdm-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = fzf
+	depends = tabulate
+	depends = man
+	depends = tldr
+	provides = stdm-git
+	source = git+https://gitlab.com/NEON-MMD/stdm.git
+	md5sums = SKIP
+
+pkgname = stdm-git
