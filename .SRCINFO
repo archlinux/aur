@@ -1,10 +1,9 @@
 pkgbase = dahdi-linux-ck-git-dkms
 	pkgdesc = DAHDI drivers for Asterisk, patched to support older cards
 	pkgver = 20220326.g9b3d416
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.asterisk.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = LGPLv2
 	makedepends = linux-headers
 	depends = dkms

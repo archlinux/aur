@@ -3,8 +3,8 @@
 pkgname="dahdi-linux-ck-git-dkms"
 pkgdesc="DAHDI drivers for Asterisk, patched to support older cards"
 pkgver=20220326.g9b3d416
-pkgrel=1
-arch=("i686" "x86_64")
+pkgrel=2
+arch=('any')
 url="http://www.asterisk.org/"
 license=("LGPLv2")
 depends=('dkms')
@@ -24,5 +24,6 @@ package() {
   local install_dir="${pkgdir}/usr/src/dahdi-linux-${pkgver}"
 
   # Copy sources
+  mkdir -p "${install_dir}"
   cp -r "${srcdir}"/dahdi-linux/* "${install_dir}"/
 }
