@@ -4,7 +4,7 @@ _pkgname=jackstraw
 _pkgver=1.3.1
 pkgname=r-${_pkgname,,}
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Statistical Inference for Unsupervised Learning'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-parallel
   r-rmarkdown
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('41a987fa4c3ef259afc2f068e36b3c06a8a7eee4973ef6ef7f46d6a5bd572051')
 
 build() {
