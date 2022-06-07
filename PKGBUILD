@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='jane-street-headers'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 pkgdesc='Jane Street C header files'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
@@ -12,7 +12,7 @@ depends=('ocaml>=4.04.2')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4413d2aa4a11bd360491e8b85c14cd799d07fa55c6ef3471b5a89bf11bf4c9cf')
+sha512sums=('749c56ed79276004099a2e9cbaecd98fae1663991b69588ce5ae78bcbdc56f34d87b074239e229dd86e4552dd8d1b0db05611714ba59d92683ba46d9a0ef0948')
 
 _sourcedirectory="$_projectname-$pkgver"
 
