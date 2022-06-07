@@ -1,0 +1,20 @@
+pkgbase = vita3k-bin
+	pkgdesc = Experimental PlayStation Vita emulator
+	pkgver = r2634.a1588d44
+	pkgrel = 1
+	url = https://vita3k.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = gtk3
+	depends = sdl2
+	provides = vita3k
+	conflicts = vita3k
+	source = vita3k.zip::https://github.com/Vita3K/Vita3K/releases/download/continuous/ubuntu-latest.zip
+	source = vita3k.desktop
+	b2sums = SKIP
+	b2sums = 6331bd061fe93fea5fb9ae57667cdb7ff081efa27681e25b94c54da748809e52d933afa96465b7d14ca0d286b0c47e66328a5080acef6760a88a39c65bf2321c
+
+pkgname = vita3k-bin
