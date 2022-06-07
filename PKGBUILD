@@ -2,10 +2,11 @@
 
 pkgname=bosce
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="boost::statechart extractor"
 makedepends=('gcc' 'make' 'cmake')
 depends=('boost')
+optdepends=('plantuml: Generate PNG files')
 arch=('x86_64' 'aarch64')
 url="https://github.com/kanje/bosce"
 license=("Boost")
