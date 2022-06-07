@@ -1,6 +1,6 @@
 pkgbase = ocaml-jst-config
 	pkgdesc = Compile-time configuration for Jane Street libraries
-	pkgver = 0.14.1
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/janestreet/jst-config
 	arch = x86_64
@@ -11,12 +11,11 @@ pkgbase = ocaml-jst-config
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.04.2
-	depends = ocaml-base>=0.14.0
-	depends = ocaml-ppx_assert>=0.14.0
-	depends = ocaml-stdio>=0.14.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-base>=0.15.0
+	depends = ocaml-ppx_assert>=0.15.0
 	options = !strip
-	source = ocaml-jst-config-0.14.1-1.tar.gz::https://github.com/janestreet/jst-config/archive/v0.14.1.tar.gz
-	sha512sums = 0a43ba941c2915afb30b3cdc09c3c83e05d5b1367bf89aaa4b3adb72878c8435e07838bcf345452c25482d7621d2a7277b92328a2a8842ec172d4bf73005d9c2
+	source = ocaml-jst-config-0.15.1-1.tar.gz::https://github.com/janestreet/jst-config/archive/v0.15.1.tar.gz
+	sha512sums = 389854aad6775756fd51374a036c748947f186eae4b48a4863549e7d8efafee25bdfc7c525dd2c466d9f0e0265b48a6e7b950042b6c9014051f8288393173147
 
 pkgname = ocaml-jst-config

@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='jst-config'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.1'
+pkgver='0.15.1'
 pkgrel='1'
 pkgdesc='Compile-time configuration for Jane Street libraries'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppx_assert>=0.14.0' 'ocaml-stdio>=0.14.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_assert>=0.15.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0a43ba941c2915afb30b3cdc09c3c83e05d5b1367bf89aaa4b3adb72878c8435e07838bcf345452c25482d7621d2a7277b92328a2a8842ec172d4bf73005d9c2')
+sha512sums=('389854aad6775756fd51374a036c748947f186eae4b48a4863549e7d8efafee25bdfc7c525dd2c466d9f0e0265b48a6e7b950042b6c9014051f8288393173147')
 
 _sourcedirectory="$_projectname-$pkgver"
 
