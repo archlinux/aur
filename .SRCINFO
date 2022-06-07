@@ -1,0 +1,15 @@
+pkgbase = sdrpp-headers-git
+	pkgdesc = SDR++ headers for building modules
+	pkgver = r1120.79a15ed
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdrpp-git
+	provides = sdrpp-headers
+	conflicts = sdrpp-headers
+	source = git+https://github.com/AlexandreRouma/SDRPlusPlus
+	md5sums = SKIP
+
+pkgname = sdrpp-headers-git
