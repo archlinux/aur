@@ -4,12 +4,13 @@
 pkgname='perl-convert-uu'
 pkgver='0.5201'
 pkgrel='2'
-pkgdesc=""
+pkgdesc="Perl replacement for uuencode/uudecode"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
+checkdepends=('perl-test-pod' 'perl-test-pod-coverage')
 url='https://metacpan.org/release/Convert-UU'
 source=('http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/Convert-UU-0.5201.tar.gz')
 md5sums=('f60f49d15770503efa5ed0c81296ef2f')
