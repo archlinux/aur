@@ -4,7 +4,7 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.7.3
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
@@ -13,33 +13,33 @@ license=(GPL2)
 depends=(glibc hicolor-icon-theme python-dateutil python-discid
 python-fasteners python-markdown python-mutagen python-pyjwt python-pyqt5
 python-yaml)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 optdepends=(
   'chromaprint: fingerprinting'
   'qt5-multimedia: media player toolbar'
   'qt5-translations: full UI translation'
 )
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha512sums=('48585bd99bf0460b7b9aed1484b195169edd86dd1440d18109e80207563497aa97b5b18571e2725adc080bf3a37d260b9c744fdcecaf844d00b26d2ed461adcd'
+source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz{,.asc})
+sha512sums=('9dc81b048568359d1f33af7bc53fec15dddb618fd711bce160b86c07926cd615a402514a463de74c25340b4b46de554b403b33717a77c145fabd20cafb5d3c90'
             'SKIP')
-b2sums=('02a4ea12f1192ef3e0d2f5caba4c87da76af0f8d4a84ea654f6739ad7b1052d7079e53ca57838536e0a1df581a95cd34905dbd2d839dfeb902d36882d35cd085'
+b2sums=('d10329ba3cd51ceaf192ac4b2f46870adebdea3ce466bff685d7c3ebbe9d0ec7a15257630f23cfed6bb506d2b16fccfbbbdf6d29b83ba4ef3636746892f1873d'
         'SKIP')
 # NOTE: GPG signed tags and artifacts are being evaluated: https://tickets.metabrainz.org/browse/PICARD-1934
 validpgpkeys=('68990DD0B1EDC129B856958167997E14D563DA7C') # MusicBrainz Picard Developers <picard@metabrainz.org>
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py build
+  cd $pkgname-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  pytest -v
+  cd $pkgname-$pkgver
+  pytest -vv
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --optimize=1 --root="${pkgdir}" --disable-autoupdate
-  install -vDm 644 {AUTHORS.txt,{CONTRIBUTING,NEWS,README}.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cd $pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 {AUTHORS.txt,{CONTRIBUTING,NEWS,README}.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 }
