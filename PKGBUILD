@@ -5,7 +5,7 @@ pkgver=v1.0.0.r0.abf98ec
 pkgrel=1
 pkgdesc="a simple ncurses-based hex editor"
 arch=('x86_64' 'i686')
-url="https://bengel.xyz"
+url="https://github.com/Baseng0815/vex.git"
 license=('GPL')
 groups=()
 depends=('ncurses>=6.3-3')
