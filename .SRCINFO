@@ -1,7 +1,7 @@
 pkgbase = 123-bin
 	pkgdesc = Lotus 1-2-3 for Unix release 3.0
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taviso/123elf
 	arch = i386
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = 123-bin
 	makedepends = cpio
 	makedepends = gcc
 	makedepends = binutils
+	makedepends = wget
 	depends = lib32-ncurses
 	provides = 123
 	noextract = 123UNIX1.IMG
