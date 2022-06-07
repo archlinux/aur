@@ -2,12 +2,12 @@
 pkgname=minetest-lazarr
 _pkgname=lazarr
 _pkgauthor=Wuzzy
-pkgver=1.2
-_cdbrel=10174
+pkgver=1.3.1
+_cdbrel=11670
 pkgrel=1
 pkgdesc="Laser puzzle game"
 license=("GPLv3")
-sha256sums=('650c293155d33050c07d982b2f906902fe5d409aaadfb3f53956edfdbfca2dbf')
+sha256sums=('bd17518ee01a1c5337dd4d3775d44806aadd668bc95a1600a1491e063376c87a')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
