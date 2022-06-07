@@ -2,15 +2,15 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 pkgname=debianutils
-pkgver=4.11.2
+pkgver=5.7
 pkgrel=1
 pkgdesc="Miscellaneous utilities specific to Debian"
 arch=('i686' 'x86_64')
 url="http://packages.qa.debian.org/d/debianutils.html"
 license=('GPL')
 depends=('run-parts' 'which')
-source=("http://cdn-fastly.deb.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('0bd9098beee78b3c8dae839f0c29e9f142cbb22f2ced473cf7ae47a14d9493ba882c1829eba213780392a87a3223b3689729754c8ded80a091efaef3f6f903fd')
+source=("http://deb.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
+sha512sums=('79acd8885abca93842d696167171a359011c49a40f38deeb25bc94d62905f95afa3a7b2540d3bd4b0ffd363c5c48a439a1a68139a29d6c033980b019cea75d92')
 
 build() {
   cd "${srcdir}/${pkgname}"
