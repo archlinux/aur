@@ -1,14 +1,14 @@
 pkgbase = ruby-uuidtools
-	pkgdesc = A simple universally unique ID generation library.
-	pkgver = 2.1.5
+	pkgdesc = A simple universally unique ID generator library.
+	pkgver = 2.2.0
 	pkgrel = 1
-	url = https://github.com/sporkmonger/uuidtools
+	url = https://rubygems.org/gems/uuidtools/versions/2.2.0
 	arch = any
+	license = Apache
 	depends = ruby
-	noextract = uuidtools-2.1.5.gem
+	noextract = uuidtools-2.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/uuidtools-2.1.5.gem
-	sha512sums = c56e6329e48638bd5049d348beedec7fadb9ee7a133a5013ddd41ae98baa8213d8944903059729c9ca4f38b24d9b565b5653332685982337a4233f11d4865ac0
+	source = https://rubygems.org/downloads/uuidtools-2.2.0.gem
+	b2sums = 1760c3fcb193901a552b8d32acddd67a0737b95a79bde47854c11a3a6378b008b0e17339ac2e95157329314f35612adc9355068eaef90f93f4d1976fdd430182
 
 pkgname = ruby-uuidtools
-
