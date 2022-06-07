@@ -2,7 +2,7 @@
 # Maintainer: Vilsol <me at vil dot so>
 
 pkgname='ficsit-cli-bin'
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc='A CLI for managing mods for the game Satisfactory'
 url='https://github.com/Vilsol/ficsit-cli'
@@ -11,17 +11,17 @@ license=('GPL3')
 provides=('ficsit')
 conflicts=('ficsit')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.21/ficsit_linux_arm64")
-sha256sums_aarch64=('650ac2f1d4daadf095c3660a7b86b0c05c5562df0a15aaa25479020bb151a37d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.22/ficsit_linux_arm64")
+sha256sums_aarch64=('d73a2ecfaf7c995762694cb02b5f90ee855f828e1781ba64ee10be3db7c79809')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.21/ficsit_linux_armv7")
-sha256sums_armv7h=('39268be0ea285573c9b1b6b92f5957dca9914e16ae0a37a028577e9b06b780fa')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.22/ficsit_linux_armv7")
+sha256sums_armv7h=('84fd4494ce21f945c6cad7964471e462a8322fc109a7e0ba9b0424412831a61f')
 
-source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.21/ficsit_linux_386")
-sha256sums_i686=('34b0092d18c55487e30d733d6c2e64f48ead0070a81320e92c28a7ab1afe7931')
+source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.22/ficsit_linux_386")
+sha256sums_i686=('b13c26fc2eef3085e0b6ab80070b661935d38b797e0c6992685ba7d7363bda47')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.21/ficsit_linux_amd64")
-sha256sums_x86_64=('23b39c146dfefdd14135d06a176df79bca0837460bd3566339d1625a96c72b60')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.22/ficsit_linux_amd64")
+sha256sums_x86_64=('da44d4f350a3065f21b43a4e016e7d1c37f8ed94e2e0c63344b8664359ac5ddc')
 
 package() {
   install -Dm755 "./${pkgname}_${pkgver}_${CARCH}.binary" "${pkgdir}/usr/bin/ficsit"
