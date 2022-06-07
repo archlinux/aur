@@ -1,9 +1,8 @@
-# PKGBUILD copied from Chocobo1 (thanks)
-# edited by cuzrawr
 # Maintainer: cuzrawr
+# original PKGBUILD copied from Chocobo1 ( pkg busybox-git ) ( thanks )
 
 pkgname=busybox-alpinevariant-git
-pkgver=1.34.0.r120.g04ad683bf
+pkgver=1.35.0.r133.g8d67007a4
 pkgrel=1
 pkgdesc="This variant of busybox primary focus on ash shell and optimized for everyday use as an light alternative to bash."
 arch=('x86_64')
@@ -27,21 +26,26 @@ pkgver() {
 build() {
   cd "busybox"
 
-  cp "$srcdir/../config-example-latest" "$srcdir/busybox/.config"
-  # This patch made by myself 
-  # it just removes line numbers in history command
-  # and made history more readable and grepable.
+
+  # .config: ( check readme.md )
+  # cp "$srcdir/../config-example-latest" "$srcdir/busybox/.config"
+  #
+  # patch:
+  # This patch just removes line numbers in history command
+  # and making history output more readable and grepable.
+
   cp "$srcdir/../show_history-patch.lineedit.c.patch" "$srcdir/busybox/lineedit.c.patch"
 
-  # If you want pure alpine busybox config then uncoment this line:
-  # cp "$srcdir/../config" "$srcdir/busybox/.config"
+  # For pure alpine busybox config uncoment this line:
+  cp "$srcdir/../config" "$srcdir/busybox/.config"
   yes "" | make oldconfig
 
-  # Uncoment to make custom changes
-  #make menuconfig
-  # Apply fancy show_history output patch
+  # Uncomment to make custom changes
+  #
+   #make menuconfig
+
+  # Apply fancy "show history output" patch
   patch -p0 < lineedit.c.patch
-  
   export KCONFIG_NOTIMESTAMP=1  # reproducible build
   make
 }
@@ -57,8 +61,7 @@ package() {
 
   install -Dm755 "busybox" -t "$pkgdir/usr/bin"
 
-   # uncomment next lines for docs and manpages:
-   
+   # uncomment next lines for installing docs and manpages:
   #install -Dm644 "docs/busybox.1" -t "$pkgdir/usr/share/man/man1"
   #install -Dm644 "docs"/BusyBox.{html,txt} -t "$pkgdir/usr/share/doc/busybox"
 }
