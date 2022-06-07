@@ -1,12 +1,15 @@
 pkgbase = jinx
 	pkgdesc = A meta-build-system for building OS distributions
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/mintsuki/jinx
 	arch = x86_64
 	license = BSD
 	depends = docker
-	source = https://raw.githubusercontent.com/mintsuki/jinx/v0.0.1/jinx
+	depends = git
+	depends = mercurial
+	depends = curl
+	source = https://raw.githubusercontent.com/mintsuki/jinx/v0.0.2/jinx
 	sha256sums = SKIP
 
 pkgname = jinx
