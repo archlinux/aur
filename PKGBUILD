@@ -4,7 +4,7 @@
 pkgname=manjaro-zsh-config-git
 _pkgname=manjaro-zsh-config
 pkgver=r69.a9b56f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Zsh configuration from manjaro forked for archlinux"
 arch=(any)
 url="https://github.com/ayr-ton/$_pkgname"
@@ -20,7 +20,7 @@ depends=('zsh-autosuggestions'
 	'zsh-theme-powerlevel10k')
 makedepends=('git')
 provides=(${pkgname%-*}=$pkgver)
-conflicts=(${_pkgname%-*})
+conflicts=(${pkgname%-*})
 #source=("$_pkgname.tar.gz::$url/archive/$_gitcommit.tar.gz")
 source=($_pkgname::git+https://github.com/ayr-ton/${_pkgname}.git)
 sha256sums=('SKIP')
