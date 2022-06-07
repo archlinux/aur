@@ -11,7 +11,7 @@
 
 pkgname=courier-mta
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -128,7 +128,4 @@ package() {
   # because Arch bin and sbin are same location the binary would be overwritten by the link
   install -m 755 "${srcdir}/courier-${pkgver}/courier/imapd" "${pkgdir}/usr/lib/courier/courierimapd"
   sed -i 's/\/usr\/bin\/imapd/\/usr\/lib\/courier\/courierimapd/' "${pkgdir}/usr/share/imapd" "${pkgdir}/usr/share/imapd-ssl"
-
-  # patch just for ths version - in anticipation of it being added to official courier release shortly.
-  sed -i '76 a restart)\n\t/usr/bin/courierlogger -pid=$SSLPIDFILE -restart\n\t;;' "${pkgdir}/usr/share/imapd-ssl"
 }
