@@ -1,13 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ENVISIONQuery
-_pkgver=1.42.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
-pkgrel=3
+pkgver=1.38.0
+pkgrel=1
 pkgdesc='Retrieval from the ENVISION bioinformatics data portal into R'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.12/bioc/html/ENVISIONQuery.html"
 license=('GPL')
 depends=(
   r
