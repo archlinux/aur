@@ -1,7 +1,7 @@
 pkgbase = r-cgdsr
 	pkgdesc = R-Based API for Accessing the MSKCC Cancer Genomics Data Server (CGDS)
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=cgdsr
 	arch = any
 	license = LGPL
@@ -10,7 +10,7 @@ pkgbase = r-cgdsr
 	depends = r-r.methodss3
 	depends = r-r.oo
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/cgdsr_1.3.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/cgdsr/cgdsr_1.3.0.tar.gz
 	sha256sums = 4aa2a3564cee2449c3ff39ab2ad631deb165d4c78b8107e0ff77a9095340cc1f
 
 pkgname = r-cgdsr
