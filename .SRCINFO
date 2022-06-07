@@ -1,12 +1,12 @@
 pkgbase = r-htm2txt
 	pkgdesc = Convert Html into Text
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=htm2txt
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/htm2txt_2.1.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/htm2txt/htm2txt_2.1.1.tar.gz
 	sha256sums = 5b3657d7a025ab1951b960d67ea857330149aedec92da2c672a162e4bd110027
 
 pkgname = r-htm2txt

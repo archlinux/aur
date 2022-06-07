@@ -4,7 +4,7 @@ _pkgname=htm2txt
 _pkgver=2.1.1
 pkgname=r-${_pkgname,,}
 pkgver=2.1.1
-pkgrel=4
+pkgrel=6
 pkgdesc='Convert Html into Text'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   r
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('5b3657d7a025ab1951b960d67ea857330149aedec92da2c672a162e4bd110027')
 
 build() {
