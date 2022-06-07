@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_enumerate'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generate a list containing all values of a finite type'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('75952f880fd65ab9c4f9c57295a96afcd36635435823e7484f856ef576c3fbba')
+sha512sums=('3118942fd77a3b86eeaf79fdb09639d503d4c80c2215cb06b357f53ab631fbc23e05109107863fa785aeecbb62ebc80e95b45f472ee9cf6d3c826b6767a7b8cd')
 
 _sourcedirectory="$_projectname-$pkgver"
 
