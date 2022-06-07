@@ -1,0 +1,7 @@
+/.vscode
+/src
+/pkg
+/vspcplay
+*.log
+*.pkg.*
+*.tar.*
