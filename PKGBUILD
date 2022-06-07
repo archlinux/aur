@@ -1,13 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SRGnet
-_pkgver=1.20.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='An R package for studying synergistic response to gene mutations from transcriptomics data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.12/bioc/html/SRGnet.html"
 license=('GPL')
 depends=(
   r
