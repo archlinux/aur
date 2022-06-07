@@ -1,8 +1,8 @@
 pkgbase = r-swimr
 	pkgdesc = A Suite of Analytical Tools for Quantification of C. elegans Swimming Behavior
-	pkgver = 1.32.0
-	pkgrel = 2
-	url = https://bioconductor.org/packages/SwimR
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/3.13/bioc/html/SwimR.html
 	arch = any
 	license = LGPL
 	makedepends = git
