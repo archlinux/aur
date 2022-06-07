@@ -3,7 +3,7 @@
 
 pkgname=wait4x
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
 url="https://github.com/atkrad/wait4x"
@@ -39,6 +39,8 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
+
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
