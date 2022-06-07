@@ -1,13 +1,13 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BrainStars
-_pkgver=1.38.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
-pkgrel=2
+pkgver=1.34.0
+pkgrel=1
 pkgdesc='query gene expression data and plots from BrainStars'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.12/bioc/html/${_pkgname}.html"
 license=('Artistic2.0')
 depends=(
   r
