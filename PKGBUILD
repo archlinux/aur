@@ -1,6 +1,6 @@
 # PKGBUILD created by using cargo-aur-packer
 pkgname='gitini-git'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Init repository on Github and upload the current folder'
 arch=('any')

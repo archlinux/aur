@@ -1,6 +1,6 @@
 pkgbase = gitini-git
-	pkgdesc = Create repository on Github and upload the current folder
-	pkgver = 0.3.0
+	pkgdesc = Init repository on Github and upload the current folder
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/florianfelix/gitini
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = gitini-git
 	sha256sums = SKIP
 
 pkgname = gitini-git
-
