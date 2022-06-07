@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=fastkde
-pkgname=python-$_modulename
+pkgname=python-fastkde
+_name=${pkgname#python-}
 pkgver=1.0.16
-pkgrel=1
+pkgrel=3
 pkgdesc="Fast kernel density estimation"
 arch=(any)
 url="https://bitbucket.org/lbl-cascade/fastkde"
@@ -16,10 +16,15 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/get/v${pkgver}.tar.gz")
-sha256sums=('3ed7043573766ce2e71b091541c9d41690c4758f95c12cf7bd4fabfb6a991050')
-package() {
-  cd "$srcdir/$(tar -tf v${pkgver}.tar.gz | head -n1)"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(09ed51ae65848c4a8bc4cf607d4bb7371ac5140c0350601d0383f4f64e1ad375)
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
+
+package() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
