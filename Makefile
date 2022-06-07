@@ -5,5 +5,5 @@ build:
 
 .PHONY: clean
 clean:
-	@rm -f manjaro-zsh-config*
+	@rm -rf manjaro-zsh-config*
 	@rm -rf pkg src
