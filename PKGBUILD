@@ -10,7 +10,7 @@ url="http://www.codesrc.com/mediawiki/index.php?title=SCSI2SD"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('git')
-depends=('wxgtk3' 'hidapi' 'zlib' 'expat' 'dfu-util')
+depends=('wxgtk3' 'hidapi' 'zlib' 'expat' 'dfu-util' 'webkit2gtk')
 source=('git://www.codesrc.com/git/SCSI2SD-V6'
 	'SCSI2SD-V6.diff'
 	'https://www.codesrc.com/files/scsi2sd-v6/latest/firmware.V6.2020.dfu'
