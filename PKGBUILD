@@ -1,9 +1,9 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard
-pkgver=1.6.1
+pkgver=1.6.2
 _src_folder="OpenBoard-${pkgver}"
-pkgrel=6
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -17,20 +17,16 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
 source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
-source+=("https://github.com/letsfindaway/OpenBoard/commit/8a3835c9139c47709358a1ec8eef9b4f816182c8.patch")
 source+=(ffmpeg.patch)
-sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
+sha256sums=('300b440edad8aa0aeb726e4cca0565a5ea4fc9b5446ddc2bd4710be3fa9f1b7f'
             '64289f9d91cb25fa79fb988f19d43a542d67380fcf27668d0da1ee4ba1e705eb'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
-            '0a9d037336dab3dbd99652b71934a94cd1e9801650fe5e72f4dd1de1718dd4c1'
+            '816fc5c6bf2032fd3c2270ee9dc19d9b5b7c3419fdad68d5b16f1fe353e5707a'
             'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14'
-            '8e15b88ea217a068bdd5affdcaf350ffc5c22ea6614abbfe904533127d965941'
             'b2c8d92275c976af195f1b8f8df0ae1a61781a1c20ccc10b41fdc81178427bd3')
 
 prepare() {
   cd "$srcdir"/$_src_folder
-  msg2 "poppler"
-  patch -f -p1 < "$srcdir"/8a3835c9139c47709358a1ec8eef9b4f816182c8.patch
   msg2 "drop_ThirdParty_repo"
   patch -f -p1 < "$srcdir"/drop_ThirdParty_repo.patch || true
   msg2 "qchar"

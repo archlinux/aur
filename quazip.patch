@@ -6,9 +6,9 @@ diff -Naur OpenBoard-1.6.0a3.orig/OpenBoard.pro OpenBoard-1.6.0a3/OpenBoard.pro
      #LIBS += -lprofiler
      LIBS += -lX11
 -    LIBS += -lquazip5
--    INCLUDEPATH += "/usr/include/quazip"
+-    INCLUDEPATH += "/usr/include/quazip5"
 +    LIBS += "-lquazip1-qt5"
-+    INCLUDEPATH += /usr/include/QuaZip-Qt5-1.2/quazip
++    INCLUDEPATH += /usr/include/QuaZip-Qt5-1.3/quazip
  
      LIBS += -lpoppler
      INCLUDEPATH += "/usr/include/poppler"
@@ -41,7 +41,7 @@ diff -Naur OpenBoard-1.6.0a3.orig/plugins/cffadaptor/UBCFFAdaptor.pro OpenBoard-
 -DEPENDPATH  += $$THIRD_PARTY_PATH/quazip/
 -INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
 -include($$THIRD_PARTY_PATH/quazip/quazip.pri)
-+INCLUDEPATH += /usr/include/QuaZip-Qt5-1.2/quazip
++INCLUDEPATH += /usr/include/QuaZip-Qt5-1.3/quazip
  
  
  SOURCES += \
