@@ -1,0 +1,18 @@
+pkgbase = ruby-sinatra-1
+	pkgdesc = Classy web-development dressed in a DSL (1.x version)
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://rubygems.org/gems/sinatra/versions/1.4.8
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack>=1.5
+	depends = ruby-rack-protection>=1.4
+	depends = ruby-tilt>=1.3
+	depends = ruby-tilt<3
+	provides = ruby-sinatra=1.4.8
+	options = !emptydirs
+	source = sinatra-1.4.8.tar.gz::https://github.com/sinatra/sinatra/archive/refs/tags/v1.4.8.tar.gz
+	b2sums = 961aa7b4c92b116e4ed23f6a7500437224906d0089e757aeddf49c87dc2a0637b22988ffa953bcec49a35aad268ed0a988f2299bc9e7118b1b5f9145b84dfee0
+
+pkgname = ruby-sinatra-1
