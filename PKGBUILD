@@ -4,10 +4,10 @@ _pkgname=GeneAnswers
 _pkgver=2.36.0
 pkgname=r-${_pkgname,,}
 pkgver=2.36.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Integrated Interpretation of Genes'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/GeneAnswers.html"
 license=('LGPL')
 depends=(
   r
@@ -34,7 +34,7 @@ optdepends=(
   r-org.rn.eg.db
   r-reactome.db
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9f5ee500199e11112b88b0624dd52133aa578611d70fc682f7708e90221c18b9')
 
 build() {

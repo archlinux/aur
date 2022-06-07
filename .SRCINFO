@@ -1,8 +1,8 @@
 pkgbase = r-geneanswers
 	pkgdesc = Integrated Interpretation of Genes
 	pkgver = 2.36.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/GeneAnswers
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.14/bioc/html/GeneAnswers.html
 	arch = any
 	license = LGPL
 	depends = r
@@ -26,7 +26,7 @@ pkgbase = r-geneanswers
 	optdepends = r-org.mm.eg.db
 	optdepends = r-org.rn.eg.db
 	optdepends = r-reactome.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneAnswers_2.36.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/GeneAnswers_2.36.0.tar.gz
 	sha256sums = 9f5ee500199e11112b88b0624dd52133aa578611d70fc682f7708e90221c18b9
 
 pkgname = r-geneanswers
