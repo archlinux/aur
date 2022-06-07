@@ -3,8 +3,8 @@
 pkgname="asix-ax99100-dkms"
 pkgdesc="DKMS driver for ASIX AX99100 PCIe-to-serial/parallel controller"
 pkgver=1.8.0
-pkgrel=1
-arch=("i686" "x86_64")
+pkgrel=2
+arch=('any')
 url='https://www.asix.com.tw/'
 license=('GPL')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch' 'linux-headers')

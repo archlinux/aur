@@ -1,10 +1,9 @@
 pkgbase = asix-ax99100-dkms
 	pkgdesc = DKMS driver for ASIX AX99100 PCIe-to-serial/parallel controller
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asix.com.tw/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = gzip
 	makedepends = findutils
