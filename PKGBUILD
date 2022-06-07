@@ -1,11 +1,11 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=py2nb
-pkgname=python-$_modulename
+pkgname=python-py2nb
+_name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Convert python scripts to jupyter notebooks"
 arch=(any)
-url="https://github.com/williamjameshandley/${_modulename}"
+url="https://github.com/williamjameshandley/${_name}"
 license=('GPL')
 groups=()
 depends=('jupyter-notebook')
@@ -16,9 +16,15 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('07e89af96e6b8138570e199482bf8a413edd0579bf13b9529165f9164a9236b9')
-package() {
-  cd "$srcdir/$_modulename-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(d250d734407d635288d38b8fd5ab434b9caa38047258fb4a567bd4feeb3248c9)
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
+
+package() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
