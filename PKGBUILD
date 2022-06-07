@@ -2,7 +2,7 @@
 pkgname=rlbotgui-rust-git
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rlbot_gui
-pkgver=0.1.0.55dc73b
+pkgver=0.1.0.b10b749
 pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
 arch=("x86_64")
@@ -30,5 +30,5 @@ package() {
 
 pkgver() {
   cd "$srcdir/$git_pkgname/tauri-src"
-  echo "$(cargo pkgid | sed "s/^.*://").$(git rev-parse --short HEAD)"
+  echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-parse --short HEAD)"
 }
