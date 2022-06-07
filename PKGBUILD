@@ -1,6 +1,6 @@
 pkgname=carla-bridges-win64
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Carla Windows VST 64-Bit Bridge (Stable)"
 arch=('x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -37,7 +37,7 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
-  make -j$(nproc) win64 HAVE_LIBLO=false
+  make win64 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
   export CC=gcc
@@ -49,7 +49,7 @@ build() {
   export WIN32=$_win32
   export WIN64=$_win64
   export JACKBRIDGE_FLAGS="-D__WIDL_objidl_generated_name_0000000C="
-  make -j$(nproc) wine64
+  make wine64
 }
 
 package() {
