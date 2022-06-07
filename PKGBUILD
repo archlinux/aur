@@ -1,39 +1,31 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-fastparquet'
 _module='fastparquet'
-pkgver='0.4.0'
+pkgver='0.8.1'
 pkgrel=1
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
-checkdepends=('python-pytest'
-    'python-snappy'
-    'python-lz4')
-depends=('python' 'python-numba'
-    'python-numpy'
-    'python-thrift')
+checkdepends=('python-pytest')
+depends=(python python-cramjam python-fsspec)
 makedepends=('cython' 'python-setuptools')
-optdepends=('python-snappy'
-    'python-lz4'
-    'python-lzo'
-    'python-brotli'
-    'python-zstandard')
+optdepends=('python-s3fs')
 license=('Apache')
 arch=('x86_64')
 source=("https://github.com/dask/fastparquet/archive/$pkgver.tar.gz")
-sha256sums=('34c0a94e36710cc7615770661888d9c610da3925cd2bd6164bc6d5682530814c')
+sha256sums=('591e20b128da87e369aa23178a29f2aaff4e4e69feab845be7ea456b3213fc96')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py build
 }
 
 check() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py build_ext --inplace
     pytest
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
