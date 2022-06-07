@@ -1,7 +1,7 @@
 pkgbase = wait4x
 	pkgdesc = Wait4X allows you to wait for a port or a service to enter the requested state
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atkrad/wait4x
 	arch = x86_64
 	arch = x86
