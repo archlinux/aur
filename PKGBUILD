@@ -2,12 +2,12 @@
 pkgname=minetest-alter
 _pkgname=alter
 _pkgauthor=yaman
-pkgver=0.1.3
-_cdbrel=10376
+pkgver=0.2.1
+_cdbrel=12378
 pkgrel=1
 pkgdesc="A challenging puzzle game in a dystopian future."
 license=("AGPLv3")
-sha256sums=('1e762a15054562e24af1b5d7eacefea86bcc7314569c5247ec549ca148609a15')
+sha256sums=('9507824982bd497a58471271fd97073a6d2c32b6b6447447969504c20169a40c')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
