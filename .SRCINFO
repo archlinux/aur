@@ -1,8 +1,8 @@
 pkgbase = r-rgalaxy
 	pkgdesc = Make an R function available in the Galaxy web platform
 	pkgver = 1.38.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/RGalaxy
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.14/bioc/html/RGalaxy.html
 	arch = any
 	license = Artistic2.0
 	depends = r
@@ -19,7 +19,7 @@ pkgbase = r-rgalaxy
 	optdepends = r-rsclient
 	optdepends = r-rserve
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RGalaxy_1.38.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/RGalaxy_1.38.0.tar.gz
 	sha256sums = ad7a8b0e466f1c07443de1b73e2a3de4845af92be8e3a0322a16b12219b2da6d
 
 pkgname = r-rgalaxy
