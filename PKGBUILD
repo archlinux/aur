@@ -3,7 +3,7 @@
 
 pkgname='ruby-mixlib-log'
 _gemname="${pkgname#ruby-}"
-pkgver=1.6.0
+pkgver=3.0.9
 pkgrel=1
 pkgdesc='A gem that provides a simple mixin for log functionality'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-b2sums=('227904e69a292b283d791c33350153bc4ffdd207cc729ed794dd6fd2602e321e3305b71bff7b6a47cb96a1afbcf76d8c55e9524058c8c86cdc416a74b10fa510')
+b2sums=('249a8c5e88109e9d95d0a6afa74de3a395797594598605d018cc93a8accb824409033028cd62e21b60fd514f5ec1b3c9a0a6237d6fa038b1c1412ce170529eec')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
