@@ -1,8 +1,8 @@
-# Maintainer: Jonathan Kirszling <jkirsz@gmail.com>
+# Maintainer: Jonathan Kirszling <jonathan.kirszling@runbox.com>
 pkgname=upaste
 pkgrel=1
-pkgver=0.1.3
-pkgdesc="Paste and upload files on x0.at"
+pkgver=0.1.4
+pkgdesc="Paste and upload files"
 arch=('any')
 url="https://github.com/eoli3n/$pkgname"
 license=('UNLICENSE')
@@ -11,7 +11,7 @@ optdepends=('wl-clipboard: Command-line copy/paste utilities for Wayland',
 depends=('curl')
 source=("up"
 		"UNLICENSE")
-sha256sums=("ed78a5f4a4c0f78be67c71c725f842aff57b68e77f60e24ba51e6131e513c765"
+sha256sums=("3654beb706bdcd61a41224da7bb13ae299fb2c8a23ed0462d1e5d747a0a38961"
 "6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e")
 
 package() {

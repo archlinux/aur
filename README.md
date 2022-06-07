@@ -1,5 +1,5 @@
 # upaste
-x0.at paste client.  
+paste client.  
 
 ### Usage
 # Upload a file

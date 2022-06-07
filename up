@@ -1,17 +1,18 @@
 #!/usr/bin/env sh
 
-# x0.at paste client
+# paste client
 
 # Vars
 
 autocopy=0
+url="https://0x0.st/"
 
 # Functions
 
 usage () {
   filename=$(basename "$0")
   cat <<- EOF
-x0.at paste client
+$url paste client
 
 Usage :
 
@@ -61,7 +62,7 @@ upload () {
   args="$file;$ext"
 
   # Curl call
-  curl -s -F "$args" 'https://x0.at/'
+  curl -s -F "$args" "$url"
 }
 
 autocopy () {
