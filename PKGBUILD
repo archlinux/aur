@@ -10,7 +10,8 @@ license=('MIT')
 depends=('python' 'python-numpy')
 optdepends=('python-pandas: for interoperability with pandas frames'
             'python-pyarrow: for interoperability with arrow types'
-            'python-pytz: to enable conversion to python datetimes with timezones')
+            'python-pytz: to enable conversion to python datetimes with timezones'
+            'python-fsspec: to transparently open files locally or remotely')
 makedepends=('maturin' 'rust-nightly' 'cmake' 'python-installer')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

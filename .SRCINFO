@@ -14,6 +14,7 @@ pkgbase = python-polars
 	optdepends = python-pandas: for interoperability with pandas frames
 	optdepends = python-pyarrow: for interoperability with arrow types
 	optdepends = python-pytz: to enable conversion to python datetimes with timezones
+	optdepends = python-fsspec: to transparently open files locally or remotely
 	source = https://files.pythonhosted.org/packages/source/p/polars/polars-0.13.43.tar.gz
 	sha512sums = 0f3c9c8a43d2c0e81eee13b7ed2db0039f54501a6bf6490b8631d5abb22d82329de316e82c577aba3a1bd77b9872ba38ebac1f10e6968465c416e55f70fec3ff
 
