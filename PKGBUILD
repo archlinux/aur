@@ -5,7 +5,6 @@
 # Contributor: farid <farid at archlinuc-br.org>
 # Contributor: Archie <Mymaud@gmail.com>
 
-# pkgbase='gmic'
 pkgname='gmic-no-opencv'
 _basename="${pkgname%%-*}"
 pkgver=3.1.2
@@ -17,6 +16,7 @@ license=('custom:CeCILL')
 depends=(
   'fftw'
   'graphicsmagick'
+  'openexr'
 )
 makedepends=(
   'cmake'
@@ -25,7 +25,6 @@ makedepends=(
   'qt5-base'
   'qt5-tools'
 )
-# makedepends+=(gimp opencv) # dropped
 optdepends=('qt5-base: for the Qt UI')
 provides=("${_basename}=${pkgver}")
 conflicts=("${_basename}" 'cimg')
@@ -45,22 +44,50 @@ prepare() {
   mkdir -p "${_tardirname}/cmake"
   mv 'FindCImg.cmake' 'FindGMicStdlib.cmake' "${_tardirname}/cmake"
 
+  printf 'Checking if ccache is enabled for makepkg... '
+
+  if check_buildoption "ccache" "y"; then
+    printf 'yes\n'
+    printf 'Enabling C ccache for CMake...\n'
+    export CMAKE_C_COMPILER_LAUNCHER='ccache'
+    printf 'Enabling C++ ccache for CMake...\n'
+    export CMAKE_CXX_COMPILER_LAUNCHER='ccache'
+  else
+    printf 'no\n'
+  fi
+
+  printf 'Configuring to use CPPFLAGS in CMake...\n\n'
+  export CFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
+  export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
+
+  printf 'Configuring gmic build with CMake...\n\n'
+  # CMake also ignores system LDFLAGS if not passed to special LINKER_FLAGS_INIT
   cmake -B 'build' -S "${_tardirname}" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_DYNAMIC_LINKING='ON' \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
     -DBUILD_LIB_STATIC='OFF' \
+    -DENABLE_DYNAMIC_LINKING='ON' \
     -DENABLE_OPENCV='OFF'
 
-  LDFLAGS="$LDFLAGS -L../build"
+  printf 'Configuring gmic-qt build with CMake...\n\n'
+  # CMake also ignores system LDFLAGS if not passed to special LINKER_FLAGS_INIT
+  LDFLAGS="${LDFLAGS} -L../build"
   cmake -B 'build-qt' -S "${_tardirname}/gmic-qt" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
     -DENABLE_DYNAMIC_LINKING='ON' \
     -DGMIC_PATH="${srcdir}/${_tardirname}/src" \
     -DGMIC_QT_HOST='none'
 }
 
 build() {
+  printf 'Building gmic with CMake...\n\n'
   cmake --build 'build'
+  printf 'Building gmic-qt with CMake...\n\n'
   cmake --build 'build-qt'
 }
 

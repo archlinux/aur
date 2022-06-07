@@ -12,6 +12,7 @@ pkgbase = gmic-no-opencv
 	makedepends = qt5-tools
 	depends = fftw
 	depends = graphicsmagick
+	depends = openexr
 	optdepends = qt5-base: for the Qt UI
 	provides = gmic=3.1.2
 	conflicts = gmic
