@@ -1,7 +1,7 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname='organizr-git'
 _pkgname='organizr'
-pkgver=r3541.cf2b91b0
+pkgver=r3852.4f2e6c5f
 pkgrel=1
 pkgdesc='HTPC/HomeLab services organizer (git version).'
 arch=('any')
@@ -35,4 +35,6 @@ package() {
     
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/plugins" "${pkgdir}/var/lib/${_pkgname}/"
     ln -s "/var/lib/${_pkgname}/plugins" "${pkgdir}/usr/share/webapps/${_pkgname}/plugins"
+
+    ln -s "/var/lib/${_pkgname}/data" "${pkgdir}/usr/share/webapps/${_pkgname}/data"
 }
