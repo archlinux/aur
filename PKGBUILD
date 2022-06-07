@@ -27,6 +27,4 @@ sha256sums=('565924751aec3d6237419abe5d632dd469bd7680c456c91baaa785353bf40244')
 prepare() {
 	uname -r # Outputs kernel info
 }
-package() {
-	mv ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst chromium-bin.pkg.tar.zst
-}
+package() {}
