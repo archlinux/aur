@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_here'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Expands [%here] into its location'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9acc67b2a040181373f1db2da8913d873f01458a01e2d3e72d0c092e7abc6f90')
+sha512sums=('708bd2edf9390f251e1c76e63462692c01372c7d7c7b54e45347e87ee7da999392148b61a187f2106fbc37d626663260d331982a005bd2f98f9bd6bc8f326cf5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
