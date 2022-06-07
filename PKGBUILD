@@ -4,7 +4,7 @@ pkgname='wasmer-bin'
 pkgver='2.3.0'
 _shortver="${pkgver%.*}"
 _majorver="${_shortver%.*}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Universal WebAssembly runtime'
 arch=('x86_64')
 license=('MIT')
@@ -13,12 +13,10 @@ _repo='https://github.com/wasmerio/wasmer'
 depends=('bash')
 conflicts=(
   'wasmer'
-  'wapm'
 )
 provides=(
   'wasmer'
   'wasmer-headless'
-  'wapm'
   'wasm.h'
   'wasmer_wasm.h'
   'wasmer.h'
@@ -42,20 +40,11 @@ options=(
   'staticlibs'
 )
 
-build() {
-  cd "$srcdir"
-
-  msg2 'Creating shell completion files for wapm...'
-  for shell in bash zsh fish; do
-    ./bin/wapm completions "$shell" >"wapm-$shell-completions"
-  done
-}
-
 package() {
   cd "$srcdir"
 
   msg2 'Installing executable commands...'
-  for name in wasmer wapm wax wasmer-headless; do
+  for name in wasmer wasmer-headless; do
     install -Dm755 "bin/$name" "$pkgdir/usr/bin/$name"
   done
 
@@ -68,11 +57,6 @@ package() {
   ln -s "libwasmer.so.$pkgver" "$pkgdir/usr/lib/libwasmer.so.$_shortver"
   ln -s "libwasmer.so.$pkgver" "$pkgdir/usr/lib/libwasmer.so.$_majorver"
   ln -s "libwasmer.so.$pkgver" "$pkgdir/usr/lib/libwasmer.so"
-
-  msg2 'Installing shell completion files for wapm...'
-  install -Dm644 wapm-bash-completions "$pkgdir/usr/share/bash-completion/completions/wapm"
-  install -Dm644 wapm-zsh-completions "$pkgdir/usr/share/zsh/site-functions/_wapm"
-  install -Dm644 wapm-fish-completions "$pkgdir/usr/share/fish/completions/wapm.fish"
 
   msg2 'Installing license...'
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

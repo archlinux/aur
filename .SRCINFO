@@ -1,14 +1,13 @@
 pkgbase = wasmer-bin
 	pkgdesc = Universal WebAssembly runtime
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wasmer.io/
 	arch = x86_64
 	license = MIT
 	depends = bash
 	provides = wasmer
 	provides = wasmer-headless
-	provides = wapm
 	provides = wasm.h
 	provides = wasmer_wasm.h
 	provides = wasmer.h
@@ -18,7 +17,6 @@ pkgbase = wasmer-bin
 	provides = libwasmer.so.2
 	provides = libwamser.so=2.3.0
 	conflicts = wasmer
-	conflicts = wapm
 	options = strip
 	options = libtool
 	options = staticlibs
