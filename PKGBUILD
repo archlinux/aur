@@ -24,5 +24,5 @@ build() {
 package() {
     cd $pkgname-$pkgver
     make DESTDIR="$pkgdir/" install
-    install -Dm644 "../xdemineur.desktop" "$pkgdir/usr/share/applications/xdemineur.desktop"
+    install -Dm644 "../xdemineur.desktop" "$pkgdir/usr/share/applications/xdemineur.desktop" # I'm sure ../ is not the correct way to refer to this file, but it works for now
 }
