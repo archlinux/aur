@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-tbb
 	pkgdesc = High level abstract threading library (mingw-w64)
 	pkgver = 2021.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oneapi-src/oneTBB
 	arch = any
 	license = APACHE

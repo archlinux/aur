@@ -1,6 +1,6 @@
 pkgname=mingw-w64-tbb
 pkgver=2021.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
 replaces=('mingw-w64-intel-tbb')
