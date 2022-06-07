@@ -7,8 +7,9 @@
 
 pkgname='python2-h5py'
 _name="${pkgname#python2-}"
-pkgver=2.10.0
-pkgrel=3
+_commit='497d6a8ccbf3519fea2cd10093d0cee5da72358a'  #latest commit on '2.10.x' branch
+pkgver=2.10.0.r9.g497d6a8c
+pkgrel=1
 pkgdesc='General-purpose Python bindings for the HDF5 library'
 arch=('x86_64')
 url='https://www.h5py.org/'
@@ -20,6 +21,7 @@ depends=(
 )
 makedepends=(
   'cython2'
+  'git'
   'python2-pkgconfig'
 )
 # checkdepends=(
@@ -27,9 +29,10 @@ makedepends=(
 #   'python2-unittest2'
 # )
 conflicts=('hdf5-openmpi')
-_tarname="${_name}-${pkgver}"
-source=("${_tarname}.tar.gz::https://pypi.python.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
-b2sums=('2e9da02224493b79b2df75ff9aa5cb16ab668d07bb95066356749be09091c54032efb3db8b53bdf0fbbbac2bcde532f9f051627327dcf3f35fb578b701ecc165')
+_sourcedirname="${_name}-${pkgver}"
+# source=("${_sourcedirname}.tar.gz::https://pypi.python.org/packages/source/${_name::1}/${_name}/${_sourcedirname}.tar.gz")
+source=("${_sourcedirname}::git+https://github.com/h5py/h5py.git#commit=${_commit}")
+b2sums=('SKIP')
 
 prepare() {
   # Remove RPATH
@@ -37,19 +40,33 @@ prepare() {
   cp -a ${_name}-${pkgver}{,-py2}
 }
 
+pkgver() {
+    cd "${_sourcedirname}"
+
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+    echo "${_gitversion}" | sed \
+        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+        -e 's|\([0-9]\+-g\)|r\1|' \
+        -e 's|-|.|g'
+}
+
 build() {
-  cd "${_tarname}"
+  cd "${_sourcedirname}"
   python2 setup.py build
 }
 
 # check() {
-#   cd "${_tarname}"
+#   cd "${_sourcedirname}"
 #   # https://github.com/h5py/h5py/issues/1435
 #   python2 setup.py test || warning "Tests failed"
 # }
 
 package() {
-  cd "${_tarname}"
+  cd "${_sourcedirname}"
   python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 
   install -Dm 644 'licenses/license.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"
