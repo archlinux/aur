@@ -5,10 +5,10 @@ _pkgname=MSGFplus
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An interface between R and MS-GF+'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/MSGFplus.html"
 license=('GPL')
 depends=(
   r
@@ -20,7 +20,7 @@ optdepends=(
   r-knitr
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('feac6d5fc46a4d111502da37849b3d9990c46eee1d7e841a948fcc9708a818cc')
 
 build() {
