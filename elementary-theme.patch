@@ -1,0 +1,14 @@
+diff --git a/src/Application.vala b/src/Application.vala
+index 026cad4..f521e73 100644
+--- a/src/Application.vala
++++ b/src/Application.vala
+@@ -63,6 +63,9 @@ namespace App {
+          * @return {@code void}
+          */
+         public override void activate () {
++            Gtk.Settings.get_default ().gtk_theme_name = "io.elementary.stylesheet.blueberry";
++            Gtk.Settings.get_default ().gtk_icon_theme_name = "elementary";
++        
+             if (controller == null) {
+                 controller = new AppController (this);
+             }
