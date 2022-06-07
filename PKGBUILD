@@ -4,7 +4,7 @@ _pkgname=mGSZ
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Gene set analysis based on GSZ-scoring function and asymptotic p-value'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-ismev
   r-limma
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f0978d2c6468c26399432f1f49aca1c04189322ef76f3d539f080a584e448922')
 
 build() {
