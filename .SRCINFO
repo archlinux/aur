@@ -1,8 +1,8 @@
 pkgbase = r-alsace
 	pkgdesc = ALS for the Automatic Chemical Exploration of mixtures
 	pkgver = 1.30.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/alsace
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.14/bioc/html/alsace.html
 	arch = any
 	license = GPL
 	depends = r
@@ -10,7 +10,7 @@ pkgbase = r-alsace
 	depends = r-ptw
 	optdepends = r-knitr
 	optdepends = r-lattice
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alsace_1.30.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/alsace_1.30.0.tar.gz
 	sha256sums = f63765eb8e61520ec7c5a0e238333fbc80d077b6a744a881f45ad0f188c94d9d
 
 pkgname = r-alsace

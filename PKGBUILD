@@ -4,10 +4,10 @@ _pkgname=alsace
 _pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=1.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc='ALS for the Automatic Chemical Exploration of mixtures'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/${_pkgname}.html"
 license=('GPL')
 depends=(
   r
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
   r-lattice
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f63765eb8e61520ec7c5a0e238333fbc80d077b6a744a881f45ad0f188c94d9d')
 
 build() {
