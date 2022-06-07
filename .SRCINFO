@@ -1,0 +1,17 @@
+pkgbase = python-cramjam
+	pkgdesc = Thin Python bindings to de/compression algorithms in Rust
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/dask/s3fs
+	arch = x86_64
+	license = MIT
+	checkdepends = python-memory-profiler
+	checkdepends = python-pytest
+	makedepends = python-installer
+	makedepends = maturin
+	makedepends = rust
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cramjam/cramjam-2.5.0.tar.gz
+	sha256sums = a92c0c2db4c6a3804eaffa253c7ca49f849e7a893a31c902a8123d7c36b2b487
+
+pkgname = python-cramjam
