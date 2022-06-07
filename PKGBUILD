@@ -6,13 +6,13 @@ pkgver=1.7.r1.gd93cd9c
 pkgrel=2
 arch=('any')
 license=(CCPL:by-sa)
-url="http://github.com/bbidulock/xde-icons"
+url="https://github.com/bbidulock/xde-icons"
 groups=('xde-git')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}" 'ayatana-indicator-session')
 depends=('hicolor-icon-theme' 'mist-icon-theme')
 makedepends=('librsvg' 'git')
-source=("$pkgname::git://github.com/bbidulock/$_pkgname.git")
+source=("$pkgname::git+https://github.com/bbidulock/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
