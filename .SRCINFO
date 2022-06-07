@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic-noatk-64
 	pkgdesc = GTK3 patched to provide a more classic experience. No ATK. No 32-bit libs. No printing, cloudproviders, etc. ( see PKGBUILD for details ) .
-	pkgver = 3.24.30
+	pkgver = 3.24.34
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
@@ -11,6 +11,7 @@ pkgbase = gtk3-classic-noatk-64
 	makedepends = libcanberra
 	makedepends = meson
 	makedepends = quilt
+	makedepends = sassc
 	makedepends = atk
 	makedepends = cairo
 	makedepends = libxcursor
@@ -31,8 +32,8 @@ pkgbase = gtk3-classic-noatk-64
 	makedepends = mesa
 	makedepends = gtk-update-icon-cache
 	makedepends = adwaita-icon-theme
-	provides = gtk3=3.24.30
-	provides = gtk3-typeahead=3.24.30
+	provides = gtk3=3.24.34
+	provides = gtk3-typeahead=3.24.34
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -41,12 +42,12 @@ pkgbase = gtk3-classic-noatk-64
 	conflicts = gtk3-classic
 	conflicts = gtk3-typeahead
 	conflicts = gtk3-print-backends
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=b6ade1bee1c9c0cb3682a8dd4e5e92a28fee540b
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.30.tar.xz
-	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/2e881c9916dd4babb5f9922fb07dce2345b3cb4b/trunk/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=221a3257c5d804520e3a26270ac2fc4673d39eb4
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.34.tar.xz
+	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/ef36b28a894a3de835464d89a3ac0bc2898c2317/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	sha256sums = SKIP
-	sha256sums = ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9
+	sha256sums = dbc69f90ddc821b8d1441f00374dc1da4323a2eafa9078e61edbe5eeefa852ec
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 
