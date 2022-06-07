@@ -1,8 +1,8 @@
 pkgbase = r-msstatstmtptm
 	pkgdesc = Post Translational Modification (PTM) Significance Analysis in shotgun mass spectrometry-based proteomic experiments with tandem mass tag (TMT) labeling
 	pkgver = 1.1.2
-	pkgrel = 2
-	url = https://bioconductor.org/packages/MSstatsTMTPTM
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.13/bioc/html/MSstatsTMTPTM.html
 	arch = x86_64
 	license = Artistic2.0
 	depends = r
@@ -19,7 +19,7 @@ pkgbase = r-msstatstmtptm
 	optdepends = r-msstats
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsTMTPTM_1.1.2.tar.gz
-	sha256sums = 45aa59e4e2f490bfe80a0b0aa403c902f7f946ba35b7a94a7652420e796b169b
+	source = https://bioconductor.org/packages/3.13/bioc/src/contrib/MSstatsTMTPTM_1.1.2.tar.gz
+	sha256sums = 9b0008d448c2a99ff8981cf09e4bc55fd441cb68a3180679465b830c3435de90
 
 pkgname = r-msstatstmtptm

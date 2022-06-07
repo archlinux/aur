@@ -4,10 +4,10 @@ _pkgname=MSstatsTMTPTM
 _pkgver=1.1.2
 pkgname=r-${_pkgname,,}
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Post Translational Modification (PTM) Significance Analysis in shotgun mass spectrometry-based proteomic experiments with tandem mass tag (TMT) labeling'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.13/bioc/html/MSstatsTMTPTM.html"
 license=('Artistic2.0')
 depends=(
   r
@@ -27,8 +27,8 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('45aa59e4e2f490bfe80a0b0aa403c902f7f946ba35b7a94a7652420e796b169b')
+source=("https://bioconductor.org/packages/3.13/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('9b0008d448c2a99ff8981cf09e4bc55fd441cb68a3180679465b830c3435de90')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
