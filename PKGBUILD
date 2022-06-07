@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bench'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.1'
-pkgrel='4'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line benchmarks in ocaml code'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-ppx_inline_test>=0.14.0' 'ocaml-ppxlib>=0.14.0')
+depends=('ocaml>=4.08.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6eb8b9495d9d66ea4ebe0518b1cac022109aae4a3922464c27094dfd896323cb')
+sha512sums=('f3ab84c7c820735c429ae2250462226efc61d7099071a91dd9471d2052b807dca57c07661336d7f908e2104c1bc0095512429865b2528749cbc407e314e845df')
 
 _sourcedirectory="$_projectname-$pkgver"
 
