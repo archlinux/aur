@@ -18,6 +18,7 @@ sha512sums=("0f3c9c8a43d2c0e81eee13b7ed2db0039f54501a6bf6490b8631d5abb22d82329de
 
 build() {
     cd $_name-$pkgver
+    rm ../wheels -rf
     maturin build -o ../wheels --release
 }
 
