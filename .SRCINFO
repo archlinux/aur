@@ -14,9 +14,10 @@ pkgbase = ruby-thin-1.6
 	depends = ruby-rack<2
 	depends = ruby-eventmachine>=1.0.4
 	depends = ruby-eventmachine<2
-	noextract = ruby-thin-1.6.4.gem
+	provides = ruby-thin=1.6.4
+	noextract = thin-1.6.4.gem
 	options = !emptydirs
-	source = ruby-thin-1.6.4.gem::https://rubygems.org/downloads/thin-1.6.4.gem
+	source = thin-1.6.4.gem::https://rubygems.org/downloads/thin-1.6.4.gem
 	b2sums = 24db6f88d350755e3894b78bedb87e1af3e8dfb900ced0aad124eb0bc86725d5b566109c3e93142a511c3c8b891a5651fad613279dc7a849ac876a9dad300815
 
 pkgname = ruby-thin-1.6
