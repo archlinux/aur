@@ -1,21 +1,21 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dualKS
-_pkgver=1.53.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.53.0
-pkgrel=3
+pkgver=1.52.0
+pkgrel=1
 pkgdesc='Dual KS Discriminant Analysis and Classification'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.13/bioc/html/dualKS.html"
 license=('LGPL')
 depends=(
   r
   r-affy
   r-biobase
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3c0f8ef3eb8d61489f9a12b0f87ccf6be153efa249140490e848b25aa9678e99')
+source=("https://bioconductor.org/packages/3.13/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('ab4508a8f7f08d6409b6e00fce91d8e32c3c3706a38391825bdfd45571598d8f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

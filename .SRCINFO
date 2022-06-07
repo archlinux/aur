@@ -1,14 +1,14 @@
 pkgbase = r-dualks
 	pkgdesc = Dual KS Discriminant Analysis and Classification
-	pkgver = 1.53.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/dualKS
+	pkgver = 1.52.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/3.13/bioc/html/dualKS.html
 	arch = any
 	license = LGPL
 	depends = r
 	depends = r-affy
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dualKS_1.53.0.tar.gz
-	sha256sums = 3c0f8ef3eb8d61489f9a12b0f87ccf6be153efa249140490e848b25aa9678e99
+	source = https://bioconductor.org/packages/3.13/bioc/src/contrib/dualKS_1.52.0.tar.gz
+	sha256sums = ab4508a8f7f08d6409b6e00fce91d8e32c3c3706a38391825bdfd45571598d8f
 
 pkgname = r-dualks
