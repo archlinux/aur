@@ -1,14 +1,14 @@
 pkgbase = vspcplay-git
 	pkgdesc = A terminal-based visual SNES sound file (SPC) player and optimisation tool
-	pkgver = 1.3
-	pkgrel = 3
+	pkgver = 1.3.r52.414c9ab
+	pkgrel = 1
 	url = http://vspcplay.raphnet.net/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = sdl
 	source = git+https://github.com/raphnet/vspcplay
 	md5sums = SKIP
 
 pkgname = vspcplay-git
-
