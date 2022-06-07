@@ -13,10 +13,11 @@ pkgbase = quaternion-git
 	depends = qt5-tools
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
 	optdepends = qtkeychain: Store access tokens in a keyring
 	provides = quaternion
-	source = git://github.com/QMatrixClient/Quaternion
-	source = git://github.com/quotient-im/libQuotient
+	source = git+https://github.com/QMatrixClient/Quaternion
+	source = git+https://github.com/quotient-im/libQuotient
 	sha256sums = SKIP
 	sha256sums = SKIP
 
