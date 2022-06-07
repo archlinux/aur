@@ -2,12 +2,12 @@
 pkgname=minetest-farlands-reloaded
 _pkgname=farlands_reloaded
 _pkgauthor=wsor4035
-pkgver=2022.01.18
-_cdbrel=10683
+pkgver=2022.03.27
+_cdbrel=11666
 pkgrel=1
 pkgdesc="a game" # tfw
 license=("MIT")
-sha256sums=('b8664c367e953125d3655f04b50456ae5d4b32201501054a80b1d79984810ab1')
+sha256sums=('ebdacfe84515997bc0d868528ca1343ee77ebdf720a40b1cb5bc7ece728d1b7c')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

@@ -1,14 +1,14 @@
 pkgbase = minetest-farlands-reloaded
 	pkgdesc = a game
-	pkgver = 2022.01.18
+	pkgver = 2022.03.27
 	pkgrel = 1
 	url = https://content.minetest.net/packages/wsor4035/farlands_reloaded/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = farlands_reloaded-2022.01.18.zip
+	noextract = farlands_reloaded-2022.03.27.zip
 	options = !strip
-	source = farlands_reloaded-2022.01.18.zip::https://content.minetest.net/packages/wsor4035/farlands_reloaded/releases/10683/download/
-	sha256sums = b8664c367e953125d3655f04b50456ae5d4b32201501054a80b1d79984810ab1
+	source = farlands_reloaded-2022.03.27.zip::https://content.minetest.net/packages/wsor4035/farlands_reloaded/releases/11666/download/
+	sha256sums = ebdacfe84515997bc0d868528ca1343ee77ebdf720a40b1cb5bc7ece728d1b7c
 
 pkgname = minetest-farlands-reloaded
