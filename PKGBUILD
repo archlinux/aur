@@ -30,7 +30,7 @@ source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${_pkgn
         'install-sd-encrypt')
 sha256sums=("fc0df945188172264ec5bf1d0bda08264fadc8a3f856d47eba91f31fe354b507"
 	    "SKIP"
-	    "7af2a67d2d2256d1256941d97f1285c112f78ff042f01a6d395022c803a98c59"
+	    "SKIP"
 	    "817686b47e5ffd32913bcae7efe717f3377a48062b6311549d4440cfd3eadf17"
 	    "5d68a359fd85b5132456f96c2405916de5009efc8e7edf51aef6bf2d2ffd0bd5")
 
