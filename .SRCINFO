@@ -1,14 +1,14 @@
 pkgbase = minetest-jail-escape
 	pkgdesc = Escape the Jail! Don't get caught!
-	pkgver = 1.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://content.minetest.net/packages/StarNinjas/jail_escape/
 	arch = any
 	license = CC0
 	depends = minetest-common
-	noextract = jail_escape-1.1.zip
+	noextract = jail_escape-2.3.zip
 	options = !strip
-	source = jail_escape-1.1.zip::https://content.minetest.net/packages/StarNinjas/jail_escape/releases/10205/download/
-	sha256sums = d9f906ef68c0c85b17e7924856862793f8a667cd06df500c266590ae5680e9a9
+	source = jail_escape-2.3.zip::https://content.minetest.net/packages/StarNinjas/jail_escape/releases/11625/download/
+	sha256sums = 35bb33bb56e71e791a4310c78d8df9221d4680e20a810c177428d32b5b446534
 
 pkgname = minetest-jail-escape

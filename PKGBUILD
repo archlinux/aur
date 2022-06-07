@@ -2,12 +2,12 @@
 pkgname=minetest-jail-escape
 _pkgname=jail_escape
 _pkgauthor=StarNinjas
-pkgver=1.1
-_cdbrel=10205
+pkgver=2.3
+_cdbrel=11625
 pkgrel=1
 pkgdesc="Escape the Jail! Don't get caught!"
 license=("CC0")
-sha256sums=('d9f906ef68c0c85b17e7924856862793f8a667cd06df500c266590ae5680e9a9')
+sha256sums=('35bb33bb56e71e791a4310c78d8df9221d4680e20a810c177428d32b5b446534')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
