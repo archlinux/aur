@@ -8,7 +8,7 @@
 pkgname='gmic-no-opencv'
 _basename="${pkgname%%-*}"
 pkgver=3.1.2
-pkgrel=3
+pkgrel=3.0
 pkgdesc="GREYC's Magic Image Converter (without OpenCV camera input processing)"
 arch=('x86_64')
 url='https://gmic.eu/'

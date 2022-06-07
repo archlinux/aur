@@ -1,7 +1,7 @@
 pkgbase = gmic-no-opencv
 	pkgdesc = GREYC's Magic Image Converter (without OpenCV camera input processing)
 	pkgver = 3.1.2
-	pkgrel = 3
+	pkgrel = 3.0
 	url = https://gmic.eu/
 	arch = x86_64
 	license = custom:CeCILL
