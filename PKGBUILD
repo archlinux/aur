@@ -2,12 +2,12 @@
 pkgname=minetest-colour-hop
 _pkgname=colourhop
 _pkgauthor=talas
-pkgver=1.1.5
-_cdbrel=10744
+pkgver=1.2.1
+_cdbrel=11925
 pkgrel=1
 pkgdesc="Help the jumping blobs defeat the evil dragons and bring colour back to the world."
 license=("GPLv3")
-sha256sums=('366a105351d1c7b3facd548ffdff2359967e47031cd260bb85acac5c9886c7aa')
+sha256sums=('e202610082c403c69f4f95319e2b535e8f758a33a07c0f8075ccaa8c53427fd6')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
