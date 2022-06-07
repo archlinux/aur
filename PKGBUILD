@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 _srcname=ZMusic-${pkgver}
 source=("${_srcname}.tar.gz::https://github.com/coelckers/ZMusic/archive/${pkgver}.tar.gz"
         '0001-Use-correct-soundfont-path.patch')
-sha256sums=('73082f661b7b0bb33348d1d186c132deec9132a1613480348a00172b49c9fd68'
+sha256sums=('4bf39917028bbe2f382748b4400a1cbaeb8975157fe404cff53411297d6ac68c'
             '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f')
 
 prepare() {
