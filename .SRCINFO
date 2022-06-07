@@ -1,11 +1,11 @@
 pkgbase = srv-bin
 	pkgdesc = Http dev server written in Rust
-	pkgver = 1.0.0_rc.7
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Tim-Paik/srv
 	arch = x86_64
 	license = MPL2
-	source = srv-x86_64-v1.0.0-rc.7.tar.gz::https://github.com/Tim-Paik/srv/releases/download/v1.0.0-rc.7/srv-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = cd42796f7a025fd272ecd1d002a6ae3df466be1dcc7bc0571bef5b1097f490d6
+	source = srv-x86_64-v1.0.1.tar.gz::https://github.com/Tim-Paik/srv/releases/download/v1.0.1//srv-v1.0.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 65c362aa9458614eb7500df507abb7773c21f5471d982a459955e0862f3083b2
 
 pkgname = srv-bin
