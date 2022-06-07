@@ -20,7 +20,6 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'eigen'
   'openexr'
   'qt5-base'
   'qt5-tools'
@@ -33,16 +32,19 @@ _tardirname="${_tarname/_/-}"
 source=("${url}files/source/${_tarname}.tar.gz"
         'CMakeLists.txt'
         'FindCImg.cmake'
-        'FindGMicStdlib.cmake')
+        'FindGMicStdlib.cmake'
+        'FindGraphicsMagick.cmake'
+)
 sha256sums=('d5070c559c75161a225d74a99c19faf2485a3983139290f998cc6359bb318ba4'
             '089c4ad204a1ed43c9425e3f39e5a3a8bab3d6e8c4fb5a6dfc69e0fca15abd15'
             '5ad1b499cb0a9e3d9fff6a851346d6f356dfc592442183d6330726a29ee25384'
-            '83e4635a6fd101511381bc865255f4de88834da51911ce3eb45ddac2558cabcc')
+            '83e4635a6fd101511381bc865255f4de88834da51911ce3eb45ddac2558cabcc'
+            '9240da9240a0c9c76ac4b503d53f4aec54af544cef3d9cc1f7ad7994d1cda0f9')
 
 prepare() {
   mv 'CMakeLists.txt' "${_tardirname}"
   mkdir -p "${_tardirname}/cmake"
-  mv 'FindCImg.cmake' 'FindGMicStdlib.cmake' "${_tardirname}/cmake"
+  mv 'FindCImg.cmake' 'FindGMicStdlib.cmake' 'FindGraphicsMagick.cmake' "${_tardirname}/cmake"
 
   printf 'Checking if ccache is enabled for makepkg... '
 
@@ -99,4 +101,3 @@ package() {
 
   install -Dm 644 "${_tardirname}/resources/gmic_cluts.gmz" -t "${pkgdir}/usr/share/${_basename}"
 }
-
