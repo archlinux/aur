@@ -2,12 +2,12 @@
 pkgname=minetest-exile
 _pkgname=exile
 _pkgauthor=Mantar
-pkgver=0.3.5
-_cdbrel=10746
+pkgver=0.3.7
+_cdbrel=12399
 pkgrel=1
 pkgdesc="Challenging, at times brutal, wilderness survival with simple technology. Actively in development!"
 license=("LGPLv3")
-sha256sums=('c90fdd9a3341ebf8d29c6480c21658465d97fb784eb117a76589f2195b4a0173')
+sha256sums=('ba86406d91e2b354b2b8a018065f6886b352e6b8175d62eb4241d00384e549d3')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

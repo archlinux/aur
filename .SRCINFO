@@ -1,14 +1,14 @@
 pkgbase = minetest-exile
 	pkgdesc = Challenging, at times brutal, wilderness survival with simple technology. Actively in development!
-	pkgver = 0.3.5
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Mantar/exile/
 	arch = any
 	license = LGPLv3
 	depends = minetest-common
-	noextract = exile-0.3.5.zip
+	noextract = exile-0.3.7.zip
 	options = !strip
-	source = exile-0.3.5.zip::https://content.minetest.net/packages/Mantar/exile/releases/10746/download/
-	sha256sums = c90fdd9a3341ebf8d29c6480c21658465d97fb784eb117a76589f2195b4a0173
+	source = exile-0.3.7.zip::https://content.minetest.net/packages/Mantar/exile/releases/12399/download/
+	sha256sums = ba86406d91e2b354b2b8a018065f6886b352e6b8175d62eb4241d00384e549d3
 
 pkgname = minetest-exile
