@@ -1,8 +1,9 @@
-# Maintainer: Severin Kaderli <severin@kaderli.dev>
+# Maintainer: EXtremeExploit <pedro.montes.alcalde@gmail.com>
+# Contributor: Severin Kaderli <severin@kaderli.dev>
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
 pkgname="${_pkgname}-git"
-pkgver=r2386.d59a0443
+pkgver=r2634.a1588d44
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -48,7 +49,7 @@ build() {
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
 
-	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
+	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=OFF -DUSE_DISCORD_RICH_PRESENCE=OFF
 	cmake --build build-linux
 }
 
