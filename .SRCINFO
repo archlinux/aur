@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_jane
 	pkgdesc = Standard Jane Street ppx rewriters
-	pkgver = 0.14.0
-	pkgrel = 3
+	pkgver = 0.15.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_jane
 	arch = x86_64
@@ -12,32 +12,35 @@ pkgbase = ocaml-ppx_jane
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.04.2
-	depends = ocaml-base_quickcheck>=0.14.0
-	depends = ocaml-ppx_assert>=0.14.0
-	depends = ocaml-ppx_base>=0.14.0
-	depends = ocaml-ppx_bench>=0.14.0
-	depends = ocaml-ppx_bin_prot>=0.14.0
-	depends = ocaml-ppx_custom_printf>=0.14.0
-	depends = ocaml-ppx_expect>=0.14.0
-	depends = ocaml-ppx_fields_conv>=0.14.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-base_quickcheck>=0.15.0
+	depends = ocaml-ppx_assert>=0.15.0
+	depends = ocaml-ppx_base>=0.15.0
+	depends = ocaml-ppx_bench>=0.15.0
+	depends = ocaml-ppx_bin_prot>=0.15.0
+	depends = ocaml-ppx_custom_printf>=0.15.0
+	depends = ocaml-ppx_disable_unused_warnings>=0.15.0
+	depends = ocaml-ppx_expect>=0.15.0
+	depends = ocaml-ppx_fields_conv>=0.15.0
 	depends = ocaml-ppx_fixed_literal
-	depends = ocaml-ppx_here>=0.14.0
-	depends = ocaml-ppx_inline_test>=0.14.0
-	depends = ocaml-ppx_let>=0.14.0
-	depends = ocaml-ppx_module_timer>=0.14.0
-	depends = ocaml-ppx_optcomp>=0.14.0
-	depends = ocaml-ppx_optional>=0.14.0
-	depends = ocaml-ppx_pipebang>=0.14.0
-	depends = ocaml-ppx_sexp_message>=0.14.0
-	depends = ocaml-ppx_sexp_value>=0.14.0
-	depends = ocaml-ppx_stable>=0.14.0
-	depends = ocaml-ppx_string>=0.14.0
-	depends = ocaml-ppx_typerep_conv>=0.14.0
-	depends = ocaml-ppx_variants_conv>=0.14.0
-	depends = ocaml-ppxlib>=0.11.0
+	depends = ocaml-ppx_here>=0.15.0
+	depends = ocaml-ppx_ignore_instrumentation>=0.15.0
+	depends = ocaml-ppx_inline_test>=0.15.0
+	depends = ocaml-ppx_let>=0.15.0
+	depends = ocaml-ppx_log>=0.15.0
+	depends = ocaml-ppx_module_timer>=0.15.0
+	depends = ocaml-ppx_optcomp>=0.15.0
+	depends = ocaml-ppx_optional>=0.15.0
+	depends = ocaml-ppx_pipebang>=0.15.0
+	depends = ocaml-ppx_sexp_message>=0.15.0
+	depends = ocaml-ppx_sexp_value>=0.15.0
+	depends = ocaml-ppx_stable>=0.15.0
+	depends = ocaml-ppx_string>=0.15.0
+	depends = ocaml-ppx_typerep_conv>=0.15.0
+	depends = ocaml-ppx_variants_conv>=0.15.0
+	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_jane-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_jane/archive/v0.14.0.tar.gz
-	sha256sums = fc0d1aaa9ff120eef1eeed5c2fcfb406b27c6ef865439dfeac38cce181d0c771
+	source = ocaml-ppx_jane-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_jane/archive/v0.15.0.tar.gz
+	sha512sums = e594a0caea66e0f976615b2a1db50aad89389888678d9ec7c023b2adb3211817a841a5065de9a65956bde0cb6088ce1b0b3afed6b57b618b9b50e5c07684e3fa
 
 pkgname = ocaml-ppx_jane
