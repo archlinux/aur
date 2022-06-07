@@ -1,9 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 # Maintainer: Paul Irofti <paul@irofti.net>
-_modulename=scholarly
-pkgname=python-$_modulename
+pkgname=python-scholarly
+_name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Retrieve author and publication information from Google Scholar in a friendly, Pythonic way"
 arch=(any)
 url="https://github.com/OrganicIrradiation/scholarly"
@@ -19,11 +19,16 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c71da5e8733e497ca16a8e058180e5c4a9b527235ea3c8a39c91c3b5fb56220d')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(c322e23321fcc0491da62b9ccbfccc2b76780b94487fc8e61a1a429a058e2cde)
+
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$(tar -tf v${pkgver}.tar.gz | head -n1)"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
