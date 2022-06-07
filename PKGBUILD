@@ -4,7 +4,7 @@
 
 pkgname=gexif
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc='View and edit the EXIF tags contained in JPG and TIFF files'
 arch=('i686' 'x86_64')
 url='https://libexif.github.io'
@@ -19,9 +19,7 @@ md5sums=('SKIP'
 build() {
   cd "${srcdir}/${pkgname}"
 
-  mv po/Makevars.template savefile
   autoreconf -if
-  mv savefile po/Makevars.template
   ./configure --prefix=/usr
   make
 }

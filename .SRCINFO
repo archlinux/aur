@@ -1,7 +1,7 @@
 pkgbase = gexif
 	pkgdesc = View and edit the EXIF tags contained in JPG and TIFF files
 	pkgver = 0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://libexif.github.io
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = gexif
 	md5sums = c717c9f555d17eabb0dd63d35f0bb5d9
 
 pkgname = gexif
-
