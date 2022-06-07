@@ -1,15 +1,15 @@
 pkgbase = r-abadata
 	pkgdesc = Averaged gene expression in human brain regions from Allen Brain Atlas
 	pkgver = 1.24.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/ABAData
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.14/data/experiment/html/ABAData.html
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-abaenrichment
 	optdepends = r-biocstyle
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/ABAData_1.24.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/data/experiment/src/contrib/ABAData_1.24.0.tar.gz
 	sha256sums = f9cf68f990d227fbff72dfc58b497a1553e64b1cb9c7617a3352ee150f8ef6f1
 
 pkgname = r-abadata
