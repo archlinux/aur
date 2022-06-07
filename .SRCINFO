@@ -1,14 +1,14 @@
 pkgbase = minetest-regnum
 	pkgdesc = Fight monsters, collect XP, craft battleaxes, armor, guns and lots more.
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://content.minetest.net/packages/1248/regnum/
 	arch = any
 	license = LGPLv2.1
 	depends = minetest-common
-	noextract = regnum-3.6.1.zip
+	noextract = regnum-3.6.2.zip
 	options = !strip
-	source = regnum-3.6.1.zip::https://content.minetest.net/packages/1248/regnum/releases/8411/download/
-	sha256sums = 2716a04283a95962fb767a1d000a4a15bda2fabc06fc4c3422994a267bf5a309
+	source = regnum-3.6.2.zip::https://content.minetest.net/packages/1248/regnum/releases/12150/download/
+	sha256sums = 59f99e93274489aee6937caa46e6ba26bf632232bfc58b5337f3dcf114d730ed
 
 pkgname = minetest-regnum
