@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.busybox.net/"
 license=('GPL')
 makedepends=('git' 'ncurses')
-provides=('busybox')
+provides=('busybox-alpinevariant-git')
 conflicts=("busybox" "busybox-custom" "busybox-custom-git" "mindi-busybox" "busybox-norootreboot" "busybox-git")
 source=("git+https://git.busybox.net/busybox"
         "config::https://git.alpinelinux.org/aports/plain/main/busybox/busyboxconfig")
@@ -30,7 +30,7 @@ build() {
   cp "$srcdir/../config-example-latest" "$srcdir/busybox/.config"
   # This patch made by myself 
   # it just removes line numbers in history command
-  # and made history more readable 
+  # and made history more readable and grepable.
   cp "$srcdir/../show_history-patch.lineedit.c.patch" "$srcdir/busybox/lineedit.c.patch"
 
   # If you want pure alpine busybox config then uncoment this line:
