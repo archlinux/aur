@@ -2,7 +2,7 @@
 
 pkgname='fondo'
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper App for Linux'
 arch=('x86_64')
 changelog='CHANGELOG'
