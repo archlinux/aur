@@ -1,7 +1,7 @@
 # Maintainer: flovo <flovo-git-commit at f-voegele dot de>
 
 pkgname=katago-opencl
-pkgver=1.9.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Baduk engine with no human-provided knowledge."
 arch=('x86_64')
@@ -18,7 +18,6 @@ sha512sums=('SKIP'
             '668e6c6e7504a22e105c9ea432bc4c4d0db633b6d8445e19659a0179e72f85fb0955d9b2d132baccb43ccb7a622f88f148f7358bb01b626cf112aba79a8f4e23'
             '32766531050b3e3701cf4abe2895956d132c6cac56c8a5c83f1f2b1439fe3c0ff07bcb4ac342164bc166c3ef85abd0d8492d55514a2aa669b4859fccf49f9654'
             '566f1752222f3c3f7b8076e8796a956ec3b302c5963fae31640604ccd6462fa8dea836548b12b4a44aa9d031152f825a924c95303b886a13803b613f650b7a03')
-
 prepare() {
   cd $srcdir/$pkgname
   git submodule init
@@ -38,4 +37,3 @@ package() {
   install -Dm644 $srcdir/g170-b40c256x2-s5095420928-d1229425124.bin.gz $pkgdir/usr/share/katago/networks/weights-b40.bin.gz
   install -Dm644 $srcdir/katago-opencl/LICENSE $pkgdir/usr/share/licenses/katago-opencl/LICENSE
 }
-
