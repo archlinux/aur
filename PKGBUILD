@@ -1,6 +1,6 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=dwl-git
-pkgver=0.2.1.r17.823cefd
+pkgver=0.3.1.r27.d969289
 pkgrel=1
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
@@ -18,7 +18,10 @@ sha256sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	cp "$srcdir/config.h" config.h
+	# Use a custom config.h if the file is not empty
+	if [ -s "$srcdir/config.h" ]; then
+		cp -f "$srcdir/config.h" config.h
+	fi
 	# Uncomment to compile with XWayland support
 	#sed -i -e '/-DXWAYLAND/s/^#//' config.mk
 }
