@@ -1,6 +1,6 @@
 pkgname=('mingw-w64-llvm')
 pkgver=13.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
