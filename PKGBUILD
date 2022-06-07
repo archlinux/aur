@@ -2,32 +2,32 @@
 
 _name=bincopy
 pkgname=python-bincopy
-pkgver=17.10.1
+pkgver=17.10.2
 pkgrel=1
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
 url="https://github.com/eerimoq/bincopy"
 license=(MIT)
 depends=(python-argparse-addons python-humanfriendly python-pyelftools)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('25f698ff3ff86a4299e56ecefcb077a1f6815b12d454a8d57cde0e42d6de700c629fc74500b9450a6c77c82b7e447ef8a09cc007a35af38639aede70bdd3858b')
-b2sums=('d17876ab8b54b703801c3ff76b58e5ff7053bb8afdfa8eab73113cae28590c6dfdf55251f4fc0e181385ce2c0ec8208ea7bfec2a73fee0e464fc0a394bd5954c')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha512sums=('bdda0342271a93be6be47791b3cca64bf0c40e24b59ae6d6e92656b4dee0aa3e2f23c5b88d6ac8566fe0d8fff5e3696736ec3edb5f456c6424655bf28857021f')
+b2sums=('8aa9e897f0d732217182755d2c4d3b2166dbc877d4005031af9164efe5c9fd76aeeea92a0172a9cd791dd7c926f8f724055f010605dc9c18e0c16aac24545e56')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd $_name-$pkgver
-  pytest -v
+  pytest -vv
 }
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
