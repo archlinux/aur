@@ -1,7 +1,7 @@
 pkgbase = r-flexmix
 	pkgdesc = Flexible Mixture Modeling
-	pkgver = 2.3.17
-	pkgrel = 4
+	pkgver = 2.3.18
+	pkgrel = 1
 	url = https://cran.r-project.org/package=flexmix
 	arch = any
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = r-flexmix
 	optdepends = r-mvtnorm
 	optdepends = r-suppdists
 	optdepends = r-survival
-	source = https://cran.r-project.org/src/contrib/flexmix_2.3-17.tar.gz
-	sha256sums = 36019b7833032409ac61720dd625fa5a581a1d8bcba9045b04979c90907b5649
+	source = https://cran.r-project.org/src/contrib/flexmix_2.3-18.tar.gz
+	sha256sums = 462201ef49088845c83083e4ed6725cf069aafb12a814041618aaf09ebd69b51
 
 pkgname = r-flexmix

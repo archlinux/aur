@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flexmix
-_pkgver=2.3-17
+_pkgver=2.3-18
 pkgname=r-${_pkgname,,}
-pkgver=2.3.17
-pkgrel=4
+pkgver=2.3.18
+pkgrel=1
 pkgdesc='Flexible Mixture Modeling'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-survival
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('36019b7833032409ac61720dd625fa5a581a1d8bcba9045b04979c90907b5649')
+sha256sums=('462201ef49088845c83083e4ed6725cf069aafb12a814041618aaf09ebd69b51')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
