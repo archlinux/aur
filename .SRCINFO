@@ -1,0 +1,17 @@
+pkgbase = vex-git
+	pkgdesc = a simple ncurses-based hex editor
+	pkgver = v1.0.0.r0.abf98ec
+	pkgrel = 1
+	url = https://bengel.xyz
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = ncurses>=6.3-3
+	provides = vex
+	conflicts = vex
+	source = git+https://github.com/Baseng0815/vex.git
+	md5sums = SKIP
+
+pkgname = vex-git
