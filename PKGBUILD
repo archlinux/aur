@@ -3,8 +3,8 @@
 
 pkgname='perl-math-spline'
 pkgver='0.02'
-pkgrel='2'
-pkgdesc=""
+pkgrel='3'
+pkgdesc="Cubic spline interpolation of data"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
