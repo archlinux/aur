@@ -1,0 +1,15 @@
+pkgbase = r-weightr
+	pkgdesc = Estimating Weight-Function Models for Publication Bias
+	pkgver = 2.0.2
+	pkgrel = 4
+	url = https://cran.r-project.org/package=weightr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-scales
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/weightr_2.0.2.tar.gz
+	sha256sums = 8b064feb6e185bcda4f58867c3935ae4d11ce3721762e33822fbb519d2545ee3
+
+pkgname = r-weightr
