@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_typerep_conv
 	pkgdesc = Generation of runtime types from type declarations
-	pkgver = 0.14.2
-	pkgrel = 2
+	pkgver = 0.15.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_typerep_conv
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = ocaml-ppx_typerep_conv
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.04.2
-	depends = ocaml-base>=0.14.0
-	depends = ocaml-typerep>=0.14.0
-	depends = ocaml-ppxlib>=0.22.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-base>=0.15.0
+	depends = ocaml-typerep>=0.15.0
+	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_typerep_conv-1:0.14.2-2.tar.gz::https://github.com/janestreet/ppx_typerep_conv/archive/v0.14.2.tar.gz
-	sha256sums = 1670dc267cacc8ea27a0b3aab4c08ed13fd622280e8169b93cea329def583abc
+	source = ocaml-ppx_typerep_conv-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_typerep_conv/archive/v0.15.0.tar.gz
+	sha512sums = 3f5bb2c70674e5f6219daa883fe948023a60558c9560c5d8e6b187e0420adf8767ce4f5cca06fe7edccd52e531b2e79d962f7fdc7502cb63280c364627621c73
 
 pkgname = ocaml-ppx_typerep_conv
