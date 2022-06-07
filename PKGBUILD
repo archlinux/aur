@@ -2,7 +2,7 @@
 
 pkgname=python-s3fs
 _pkgname=s3fs
-pkgver=2022.01.0
+pkgver=2022.5.0
 pkgrel=1
 pkgdesc="A python file interface to S3."
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-dask' 'python-flask-cors' 'python-moto' 'python-pytest' 'p
 optdepends=()
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fsspec/s3fs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('45f6703e6922104c77439bae1075d2caa8aa6f53acfc798f62629b36c94826ef')
+sha256sums=('4b9aa7309eb1c1c216c446fe484a1f16f443a4178de4cd6390fdba3e2fa4d2a0')
 
 build(){
   cd "$_pkgname-$pkgver"
