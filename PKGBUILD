@@ -1,8 +1,9 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 _name=pylink-square
+_name_=pylink
 pkgname=python-pylink-square
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
@@ -15,23 +16,23 @@ conflicts=(pylink)
 provides=(pylink)
 replaces=(pylink)
 # sdist on pypi.org has no tests: https://github.com/square/pylink/issues/119
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=("$_name-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ff56205ea3b504e8e87d67d48e10b4bcb9b046ba67c1a6833a20c643361329be94b3abe7589ebfc95889c06502c9a9672697603a8bf40c22be0d511fa2c4b7e1')
-b2sums=('504a0f1b9ae98f91c1bcd6224c79eb8254854bed7220303e120c6a66785b1deab03d5edc4b4a6ea1c7aa286ba1fd7917308e0c39f5f74dd77dd7b2633c5bea59')
+# source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+source=($_name_-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz)
+sha512sums=('42878069fec6d1c9706ed5ae9b6af103d047b05e24c356b74c37cb4ed3b0e31257a66b200b087cbddb8188c4ca10c1c357e71352cc6a74a3f01790fb703860b6')
+b2sums=('1350c553d2cbc6c433c7cff09455bb7e691a9786222f2ed20654b551f1e4591e3c7b6f02f59627491c8498f294d1967de6fb8c521c5aa565651df25b09cd45f5')
 
 build() {
-  cd pylink-$pkgver
+  cd $_name_-$pkgver
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd pylink-$pkgver
+  cd $_name_-$pkgver
   pytest -v
 }
 
 package() {
-  cd pylink-$pkgver
+  cd $_name_-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
