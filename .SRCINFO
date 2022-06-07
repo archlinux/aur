@@ -1,12 +1,12 @@
 pkgbase = r-vbsr
 	pkgdesc = Variational Bayes Spike Regression Regularized Linear Models
 	pkgver = 0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=vbsr
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/vbsr_0.0.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/vbsr/vbsr_0.0.5.tar.gz
 	sha256sums = 6bf49550ac7bab22a372daa751c9be5e93b61d83cf66a25e93d246dffb9a7aab
 
 pkgname = r-vbsr

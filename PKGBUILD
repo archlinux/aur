@@ -4,7 +4,7 @@ _pkgname=vbsr
 _pkgver=0.0.5
 pkgname=r-${_pkgname,,}
 pkgver=0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Variational Bayes Spike Regression Regularized Linear Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   r
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('6bf49550ac7bab22a372daa751c9be5e93b61d83cf66a25e93d246dffb9a7aab')
 
 build() {
