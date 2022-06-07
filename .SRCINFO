@@ -1,6 +1,6 @@
 pkgbase = nextpnr-xilinx-git
 	pkgdesc = nextpnr portable FPGA place and route tool - for Xilinx
-	pkgver = r2847.3bfb3d01
+	pkgver = r2849.a81a3612
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/gatecat/nextpnr-xilinx
@@ -20,9 +20,7 @@ pkgbase = nextpnr-xilinx-git
 	conflicts = nextpnr
 	source = nextpnr-xilinx::git+https://github.com/gatecat/nextpnr-xilinx
 	source = nextpnr-xilinx-meta::git+https://github.com/gatecat/nextpnr-xilinx-meta.git
-	source = 0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e4faf96ecffea231c31e5b2e481bb48a8646982bc98ad71a463cabb078ff4856
 
 pkgname = nextpnr-xilinx-git

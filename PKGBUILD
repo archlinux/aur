@@ -3,7 +3,7 @@
 
 _pkgname=nextpnr-xilinx
 pkgname=$_pkgname-git
-pkgver=r2847.3bfb3d01
+pkgver=r2849.a81a3612
 pkgrel=1
 epoch=2
 pkgdesc="nextpnr portable FPGA place and route tool - for Xilinx"
@@ -24,11 +24,9 @@ replaces=()
 source=(
 	"$_pkgname::git+$url"
 	"nextpnr-xilinx-meta::git+https://github.com/gatecat/nextpnr-xilinx-meta.git"
-	"0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'e4faf96ecffea231c31e5b2e481bb48a8646982bc98ad71a463cabb078ff4856')
+            'SKIP')
 _DEVICES=(
 	"xc7a100tcsg324-1"
 	"xc7a100tfgg676-1"
@@ -47,8 +45,6 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-
-	patch -p1 < "$srcdir/0001-fix-xilinx_device-patch-export-for-xc7a35t-fabric.patch"
 }
 
 build() {
