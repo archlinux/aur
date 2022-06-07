@@ -9,14 +9,14 @@ url="http://www.codesrc.com/mediawiki/index.php?title=SCSI2SD"
 arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
 makedepends=('git')
-depends=('wxgtk3' 'hidapi' 'zlib' 'expat')
+depends=('wxgtk3' 'hidapi' 'zlib' 'expat' 'webkit2gtk')
 source=('git://www.codesrc.com/git/SCSI2SD'
 	'SCSI2SD.diff'
-	'http://www.codesrc.com/files/scsi2sd/latest/firmware/firmware_bundle-v4.8.03.scsi2sd'
+	'https://www.codesrc.com/files/scsi2sd/latest/firmware/firmware_bundle-v4.8.04.scsi2sd'
 	)
 sha256sums=(	'SKIP'
 		'SKIP'
-		'6ea2a98eefffa76a923ad1afa7cd08b45926c49742a489ce4452846b0feffb60'
+		'504c106ebff5a2f2f7483cf6ccfb33521e3a39bd9e9986a523ce8f01759cf0ea'
 	)
 
 pkgver() {
@@ -43,5 +43,7 @@ build() {
 package() {
   cd "$_gitname/software/scsi2sd-util"
   make install DESTDIR="${pkgdir}"
-  install -D -m 644 "${srcdir}/firmware_bundle-v4.8.03.scsi2sd" "${pkgdir}/usr/share/scsi2sd/firmware_bundle-v4.8.03.scsi2sd"
+  for i in "${srcdir}"/*.scsi2sd; do
+    install -D -m 644 "${i}" "${pkgdir}/usr/share/scsi2sd/$(basename ${i})"
+  done
 }
