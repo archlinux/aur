@@ -1,8 +1,8 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 
 pkgname=python-yappi
-pkgver=1.3.3
-_commit=e991cdf92052d8c647412b07dddcea58b478f957
+pkgver=1.3.5
+_commit=1f41868a2cdfd1e935a5a60808f7bb09c871fa53
 pkgrel=1
 pkgdesc='Yet Another Python Profiler, but this time thread&coroutine aware.'
 url='https://github.com/sumerc/yappi'
@@ -11,15 +11,12 @@ arch=('x86_64')
 depends=(python)
 makedepends=(python-setuptools git)
 checkdepends=(python-gevent)
-source=("yappi-release::git+https://github.com/sumerc/yappi.git#commit=$_commit"
-        "skip-test.patch")
+source=("yappi-release::git+https://github.com/sumerc/yappi.git#commit=$_commit")
 
-sha256sums=('SKIP'
-            'ca2a65fb92709b4ff48d8cf45592bb839c9ea2df3a19380fbc56bfe7ae937ea5')
+sha256sums=('SKIP')
 
 prepare() {
     cd yappi-release
-    git apply ../skip-test.patch
 }
 
 build() {
