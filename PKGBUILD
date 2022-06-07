@@ -1,7 +1,7 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
 url="https://git.sr.ht/~tsdh/swayr"
@@ -19,7 +19,7 @@ build() {
 
 check() {
    cd $pkgname-$pkgver
-   RUSTUP_TOOLCHAIN=stable HOME=. cargo test --release --locked --target-dir=target
+   RUSTUP_TOOLCHAIN=stable HOME=`pwd` cargo test --release --locked --target-dir=target
 }
 
 package() {
