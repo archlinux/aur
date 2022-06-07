@@ -1,7 +1,7 @@
 pkgbase = toybox
 	pkgdesc = All-in-one Linux command line
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://landley.net/toybox
 	arch = i686
 	arch = x86_64

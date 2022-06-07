@@ -5,7 +5,7 @@
 
 pkgname=toybox
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-one Linux command line'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://landley.net/toybox'
@@ -24,7 +24,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make defconfig
-  make
+  NOSTRIP=1 make
 }
 
 package() {
