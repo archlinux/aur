@@ -1,7 +1,7 @@
 pkgbase = debianutils
 	pkgdesc = Miscellaneous utilities specific to Debian
 	pkgver = 5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.qa.debian.org/d/debianutils.html
 	arch = i686
 	arch = x86_64
