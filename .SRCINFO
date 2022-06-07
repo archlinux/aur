@@ -1,8 +1,8 @@
 pkgbase = r-scclassifr
 	pkgdesc = Pretrained learning models for cell type prediction on single cell RNA-sequencing data
 	pkgver = 1.2.0
-	pkgrel = 2
-	url = https://bioconductor.org/packages/scClassifR
+	pkgrel = 3
+	url = https://bioconductor.org/packages/3.14/bioc/html/scClassifR.html
 	arch = any
 	license = MIT
 	depends = r
@@ -22,7 +22,7 @@ pkgbase = r-scclassifr
 	optdepends = r-rmarkdown
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scClassifR_1.2.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/scClassifR_1.2.0.tar.gz
 	sha256sums = ff8b75c0b67f144986b7a6da513b531644ec262f3e58bc71ee0a281b0b4e345d
 
 pkgname = r-scclassifr

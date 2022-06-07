@@ -4,10 +4,10 @@ _pkgname=scClassifR
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Pretrained learning models for cell type prediction on single cell RNA-sequencing data'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/scClassifR.html"
 license=('MIT')
 depends=(
   r
@@ -30,7 +30,7 @@ optdepends=(
   r-scrnaseq
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ff8b75c0b67f144986b7a6da513b531644ec262f3e58bc71ee0a281b0b4e345d')
 
 build() {
