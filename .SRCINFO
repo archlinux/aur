@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-freetype2
 	pkgdesc = Font rasterization library (mingw-w64)
 	pkgver = 2.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = any
 	license = GPL
