@@ -2,7 +2,7 @@
 
 _name=pyocd
 pkgname=python-pyocd
-pkgver=0.33.1
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
@@ -23,32 +23,22 @@ depends=(
   python-six
   python-typing-extensions
 )
-makedepends=(python-setuptools python-setuptools-scm python-toml python-wheel)
+makedepends=(python-build python-installer python-setuptools python-setuptools-scm python-toml python-wheel)
 checkdepends=(python-pytest python-typing-extensions)
 provides=(pyocd)
 conflicts=(pyocd)
 replaces=(pyocd)
 source=(
-  "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+  https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
   $pkgname-0.33.1-optional_libusb_package.patch
-  $pkgname-0.33.1-support_prettytable3.patch
 )
-sha512sums=('52acb68a5e938509df25d79b12af4374cbc98a4beb7771d039fa9de31ebb779bf098398c311ed96ddf7f38ee1b29e5eb1cdc950ad458a86187185cef1e7d12d5'
-            'cbcf65ead4f72025c28e9d42e7947db9671c8de62a797dc27d1198dbdb164afe51b5cafb83224e5c0797b5ae6ea8a9f91080aae81f00934309645a47d0154eaf'
-            '196bd3ad3718baf881ab3ca30d7e135be180e1185ccbc0e8f854a5754d5bf53d048985f970cbe943fb02228e82c0d07e56d74ddb28b72b078bdb997464b3d35c')
-b2sums=('2dfefd23fef60bc667de095781e071afcfd93299792473a19b9f508ee856ae1dfd0ff7be075ddcddae79717424134b4b30a0ec224a174397ba3303952cfa0cc0'
-        'dfed46c4e852cf28029573acd49aef06e51a3280851111ebc40bd7110c1900f480e77ade970c9b4d5574e9966cab996014b503991fdb8879aa9113f9d8091edb'
-        '4447a64d11b4cb480762d323681c08b3f5e0d8e50f2b776faf6a53ed69eb3b492973146d837a310b272e7aac9578c7e54e641100229d8df783ee6179b30857ba')
+sha512sums=('e74c95259e4528af132179088d3dd43047bbf6cf0b2f87a14d90b9be4f0245019f54a71ff109f41f17afbf18e5c08da936a05a3d88df21aaaa4e56ead6ac692d'
+            'cbcf65ead4f72025c28e9d42e7947db9671c8de62a797dc27d1198dbdb164afe51b5cafb83224e5c0797b5ae6ea8a9f91080aae81f00934309645a47d0154eaf')
+b2sums=('d293b251f1c74a6827440384fee8387eedabc7a4e502eda6b3bd4f4e8c8f208412b5e59576ac3e3945f90e0deceb5daf67fdebb5d0521803ac128203cae79cc6'
+        'dfed46c4e852cf28029573acd49aef06e51a3280851111ebc40bd7110c1900f480e77ade970c9b4d5574e9966cab996014b503991fdb8879aa9113f9d8091edb')
 
 prepare() {
   cd $_name-$pkgver
-  # support prettytable >= 3.0: https://github.com/pyocd/pyOCD/pull/1330
-  patch -Np1 -i ../$pkgname-0.33.1-support_prettytable3.patch
-
-  # python-pyocd-pemicro drags in obfuscated prebuilt shared objects via python-pypemicro:
-  # https://github.com/NXPmicro/pypemicro/issues/10
-  # https://github.com/pyocd/pyOCD/issues/1319
-  sed '/pyocd_pemicro/d' -i setup.cfg
 
   # we remove the dependency for libusb-package, because it would vendor libusb
   # https://github.com/pyocd/pyOCD/issues/1331
@@ -62,20 +52,22 @@ prepare() {
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd $_name-$pkgver
-  export PYTHONPATH="build:$PYTHONPATH"
-  # do not run tests that would require packaging python-elapsedtimer
-  # https://github.com/pyocd/pyOCD/issues/1333
-  pytest -v --ignore test/unit/test_semihosting.py
+  # install to temporary location
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
+  pytest -vv
 }
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 udev/*.rules -t "$pkgdir/usr/lib/udev/rules.d/"
 }
