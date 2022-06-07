@@ -1,0 +1,23 @@
+pkgbase = asix-ax99100-dkms
+	pkgdesc = DKMS driver for ASIX AX99100 PCIe-to-serial/parallel controller
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://www.asix.com.tw/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gzip
+	makedepends = findutils
+	makedepends = sed
+	makedepends = diffutils
+	makedepends = patch
+	makedepends = linux-headers
+	depends = dkms
+	source = AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source.tar.bz2::https://www.asix.com.tw/en/support/download/file/1229
+	source = fix_deprecated.patch
+	source = dkms.conf
+	sha256sums = d4eda7e48f335e670c6f5286d744dcf111aaa7304dc921ac89089cf253e5cf1d
+	sha256sums = 57158e2b13ff7631988484fd74c5727f936f1b753b68ea3d3ce4ff8ad7b7ff81
+	sha256sums = da8f1e1129ff86162b4a38dd4bffc56f716a0968f7cb81241f339a85c06cbbb4
+
+pkgname = asix-ax99100-dkms

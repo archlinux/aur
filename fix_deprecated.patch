@@ -1,0 +1,69 @@
+diff -urN AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source/ax99100_sp.c AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source-fixed/ax99100_sp.c
+--- AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source/ax99100_sp.c	2022-01-25 11:19:13.000000000 +0900
++++ AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source-fixed/ax99100_sp.c	2022-06-07 15:17:46.448920317 +0900
+@@ -2823,9 +2823,9 @@
+ 			serial99100_ports[index].dma_tx=1;
+ 
+ 			serial99100_ports[index].dma_tx_buf_v =
+-				(char *)pci_alloc_consistent(dev,DMA_TX_BUFFER_SZ,&serial99100_ports[index].dma_tx_buf_p);
++				(char *)dma_alloc_coherent(&dev->dev,DMA_TX_BUFFER_SZ,&serial99100_ports[index].dma_tx_buf_p,GFP_ATOMIC);
+ 			serial99100_ports[index].dma_tx_buf_v_start =
+-				(char *)pci_alloc_consistent(dev,DMA_TX_BUFFER_SZ,&serial99100_ports[index].dma_tx_buf_p_start);
++				(char *)dma_alloc_coherent(&dev->dev,DMA_TX_BUFFER_SZ,&serial99100_ports[index].dma_tx_buf_p_start,GFP_ATOMIC);
+ 			
+ 			memset(serial99100_ports[index].dma_tx_buf_v,0,DMA_TX_BUFFER_SZ);
+ 			memset(serial99100_ports[index].dma_tx_buf_v_start,0,DMA_TX_BUFFER_SZ);
+@@ -2844,7 +2844,7 @@
+ 		if (uart_99100_contxts[index].rx_dma_en == 1) {
+ 			serial99100_ports[index].dma_rx=1;
+ 			serial99100_ports[index].dma_rx_buf_v =
+-				(char *)pci_alloc_consistent(dev,DMA_RX_BUFFER_SZ,&serial99100_ports[index].dma_rx_buf_p);
++				(char *)dma_alloc_coherent(&dev->dev,DMA_RX_BUFFER_SZ,&serial99100_ports[index].dma_rx_buf_p,GFP_ATOMIC);
+ 			memset(serial99100_ports[index].dma_rx_buf_v,0,DMA_RX_BUFFER_SZ);			
+ 			serial99100_ports[index].part_done_recv_cnt=0;	
+ 			serial99100_ports[index].rx_dma_done_cnt=0;
+@@ -2989,9 +2989,9 @@
+ 		uart->port.dev = NULL;		
+ 		up(&serial99100_sem);
+ 		
+-		pci_free_consistent(dev,DMA_TX_BUFFER_SZ,uart->dma_tx_buf_v,uart->dma_tx_buf_p);
+-		pci_free_consistent(dev,DMA_TX_BUFFER_SZ,uart->dma_tx_buf_v_start,uart->dma_tx_buf_p_start);
+-		pci_free_consistent(dev,DMA_RX_BUFFER_SZ,uart->dma_rx_buf_v,uart->dma_rx_buf_p);
++		dma_free_coherent(&dev->dev,DMA_TX_BUFFER_SZ,uart->dma_tx_buf_v,uart->dma_tx_buf_p);
++		dma_free_coherent(&dev->dev,DMA_TX_BUFFER_SZ,uart->dma_tx_buf_v_start,uart->dma_tx_buf_p_start);
++		dma_free_coherent(&dev->dev,DMA_RX_BUFFER_SZ,uart->dma_rx_buf_v,uart->dma_rx_buf_p);
+ 		pci_disable_device(dev);
+ 
+ 		//Initialise the uart_99100_port arrays port specific element to the default state
+diff -urN AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source/ax99100_spi.c AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source-fixed/ax99100_spi.c
+--- AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source/ax99100_spi.c	2017-08-03 23:38:04.000000000 +0900
++++ AX99100_SP_PP_SPI_Linux_Driver_v1.8.0_Source-fixed/ax99100_spi.c	2022-06-07 15:14:50.405637369 +0900
+@@ -392,8 +392,8 @@
+ 	device = MKDEV(axspi->dev_major, axspi->dev_minor);
+ 
+ 	/* DMA free */
+-	pci_free_consistent(dev, DMA_BUFFER_SZ, axspi->tx_dma_v,axspi->tx_dma_p);
+-	pci_free_consistent(dev, DMA_BUFFER_SZ, axspi->rx_dma_v,axspi->rx_dma_p);
++	dma_free_coherent(&dev->dev, DMA_BUFFER_SZ, axspi->tx_dma_v,axspi->tx_dma_p);
++	dma_free_coherent(&dev->dev, DMA_BUFFER_SZ, axspi->rx_dma_v,axspi->rx_dma_p);
+ 	
+ 	if  (dev->subsystem_device != PCI_SUBVEN_ID_AX99100_SPI) {
+ 		dev_err(&dev->dev, "Not AX99100 SPI device when remove!\n");
+@@ -460,7 +460,7 @@
+ 	
+ 	/* DMA for TX */
+ 	axspi->tx_dma_v =
+-		(char *)pci_alloc_consistent(dev,DMA_BUFFER_SZ,&axspi->tx_dma_p);
++		(char *)dma_alloc_coherent(&dev->dev,DMA_BUFFER_SZ,&axspi->tx_dma_p,GFP_ATOMIC);
+ 	memset(axspi->tx_dma_v,0,DMA_BUFFER_SZ);
+ 	
+ 	DEBUG("tx_dma_v=0x%x tx_dma_p=0x%x\n",(unsigned int)axspi->tx_dma_v,
+@@ -468,7 +468,7 @@
+ 	
+ 	/* DMA for RX */
+ 	axspi->rx_dma_v =
+-		(char *)pci_alloc_consistent(dev,DMA_BUFFER_SZ,&axspi->rx_dma_p);
++		(char *)dma_alloc_coherent(&dev->dev,DMA_BUFFER_SZ,&axspi->rx_dma_p,GFP_ATOMIC);
+ 	memset(axspi->rx_dma_v,0,DMA_BUFFER_SZ);
+ 	
+ 	DEBUG("rx_dma_v=0x%x rx_dma_p=0x%x\n",(unsigned int)axspi->rx_dma_v,
