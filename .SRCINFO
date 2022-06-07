@@ -1,0 +1,23 @@
+pkgbase = vasteroids-git
+	pkgdesc = Clone of the Asteroids game written in V (Development version)
+	pkgver = r17.c7fdeee
+	pkgrel = 1
+	url = https://github.com/islonely/vasteroids
+	arch = x86_64
+	makedepends = git
+	makedepends = vlang-git
+	depends = glibc
+	depends = libx11
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = libxcb
+	depends = libxrender
+	depends = libxfixes
+	depends = libxext
+	depends = libxau
+	depends = libxdmcp
+	source = vasteroids-git::git+https://github.com/islonely/vasteroids#branch=master
+	md5sums = SKIP
+
+pkgname = vasteroids-git
