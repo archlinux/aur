@@ -1,14 +1,14 @@
 pkgbase = r-basictrendline
 	pkgdesc = Add Trendline and Confidence Interval of Basic Regression Models to Plot
 	pkgver = 2.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=basicTrendline
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-investr
 	depends = r-scales
-	source = https://cran.r-project.org/src/contrib/basicTrendline_2.0.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/basicTrendline/basicTrendline_2.0.5.tar.gz
 	sha256sums = 11be56caab57b2a8f2e4d1a7803638050a215524271f36eae85a8c38eab60210
 
 pkgname = r-basictrendline
