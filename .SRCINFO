@@ -1,6 +1,6 @@
 pkgbase = pocsuite3
 	pkgdesc = Open-sourced remote vulnerability testing framework
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/knownsec/pocsuite3
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = pocsuite3
 	depends = python-faker
 	depends = python-pycryptodomex
 	optdepends = python-pyopenssl: self-signed certificate support
-	source = https://github.com/knownsec/pocsuite3/archive/v1.9.3/pocsuite3-1.9.3.tar.gz
-	sha512sums = 56e37b0c12f6330fbd0bd4bdc90e414efd15230bbbba2d5c90b89996f1b2ae37c482c316fdfe8bf9b0728d2f31432258b867cdf22f66d4c0ab097542427538e5
+	source = https://github.com/knownsec/pocsuite3/archive/v1.9.4/pocsuite3-1.9.4.tar.gz
+	sha512sums = bf2e42371196f802750a3468aa59964712486bf6f81458b720516243af224aacf9c407069e1e85d6e6a89e88d1c2dafa741e5b56e580251122c90ad1acdc92d3
 
 pkgname = pocsuite3
