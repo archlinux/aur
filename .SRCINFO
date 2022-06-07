@@ -1,7 +1,7 @@
 pkgbase = ruby-thin-1.6
 	pkgdesc = Thin and fast Ruby web server, 1.6.x version
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/thin/versions/1.6.4
 	arch = i686
 	arch = x86_64
