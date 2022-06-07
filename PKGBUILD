@@ -3,34 +3,35 @@ _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-pytest)
-makedepends=(python-build python-flit-core python-install)
+makedepends=(python-virtualenv)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('e841ed11c8cd8e73b888bdee3ceda82193e0ed0441d623c586c69c45412039656a09e9f872f187c72d4e245ac8ee99b4a099ed9ae1a13f88f564bc0b9fae69f6')
 
+# prepare() {
+#   sed -i 's/requires = \["setuptools>=61"\]/requires = \["setuptools>=60"\]/' ${_base}-${pkgver}/pyproject.toml
+# }
+
 build() {
   cd ${_base}-${pkgver}
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m venv --system-site-packages venv
+  . venv/bin/activate
+  venv/bin/python -m pip install --upgrade setuptools
+  venv/bin/python -c "from setuptools import setup; setup();" build
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
-  test-env/bin/python -m pytest -p pytester
+  venv/bin/python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -p pytester
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base}-$pkgver.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
