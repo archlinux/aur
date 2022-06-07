@@ -6,7 +6,7 @@
 _pkgname=cryptsetup
 pkgname=$_pkgname-nested-cryptkey
 pkgver=2.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt'
 arch=('i686' 'pentium4' 'x86_64')
 license=('GPL')
@@ -30,7 +30,7 @@ source=("https://www.kernel.org/pub/linux/utils/cryptsetup/v${pkgver%.*}/${_pkgn
         'install-sd-encrypt')
 sha256sums=("fc0df945188172264ec5bf1d0bda08264fadc8a3f856d47eba91f31fe354b507"
 	    "SKIP"
-	    "55995690a26f2a75d5003054ae8974a56ea3a5d72f618bd34724365c336b949c"
+	    "7af2a67d2d2256d1256941d97f1285c112f78ff042f01a6d395022c803a98c59"
 	    "817686b47e5ffd32913bcae7efe717f3377a48062b6311549d4440cfd3eadf17"
 	    "5d68a359fd85b5132456f96c2405916de5009efc8e7edf51aef6bf2d2ffd0bd5")
 
