@@ -17,6 +17,6 @@ pkgbase = python2-pytest
 	depends = python2-pathlib2
 	depends = python2-importlib-metadata
 	source = python2-pytest-4.6.11.tar.gz::https://github.com/pytest-dev/pytest/archive/4.6.11.tar.gz
-	sha512sums = 2be8549c67573c8544366198ef94f74e0aacfa5b321705a7262c069de7e532f7d29ab93ee69be6cc83828aad91af23eb9b8b7cf01d02c0badf488ef841ee4880
+	b2sums = de50a9ea274aaffc5eca402c61f66ec89a0e562a9ad022cdc13bf091535c79f9eda9889d495d03818487d7ebd383bee3a8d8dd5ecde518ffba25bcdc5830eda7
 
 pkgname = python2-pytest
