@@ -4,10 +4,10 @@ _pkgname=MSGFgui
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A shiny GUI for MSGFplus'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/MSGFgui.html"
 license=('GPL')
 depends=(
   r
@@ -22,7 +22,7 @@ optdepends=(
   r-knitr
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8cf4fa4f0ece77a22ac5abba735deb37419fc15621b9ba16d964f7b297157236')
 
 build() {
