@@ -1,7 +1,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: DuckSoft <realducksoft at gmail>
 pkgname=proverif
-pkgver=2.03
+pkgver=2.04
 pkgrel=1
 pkgdesc='Cryptographic protocol verifier in the formal model'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('ocaml')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'lablgtk2')
 optdepends=('graphviz: for displaying graphs of found attacks')
 source=("http://prosecco.gforge.inria.fr/personal/bblanche/proverif/proverif$pkgver.tar.gz")
-sha1sums=('b671c29e54ee187d0d2cdaa45df6f953572fb0ab')
-sha256sums=('8739bcc82a5282dddf11414b84fa2deb9101e7589f61c56aa45e264063bab5e0')
+sha1sums=('37481ce4b86cd00545ce50b60ce723139dadc6f3')
+sha256sums=('a96e5ec13f35c9ead7a0e960df69bc4018eb6a46939da501613d9d93cab5fc75')
 
 build() {
   cd "$srcdir/proverif$pkgver"
