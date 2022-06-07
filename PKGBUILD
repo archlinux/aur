@@ -2,12 +2,12 @@
 
 pkgname=bbmap
 pkgver=38.96
-pkgrel=1
+pkgrel=5
 pkgdesc="A short read aligner and other bioinformatic tools"
 arch=('x86_64')
 url=https://jgi.doe.gov/data-and-tools/bbtools/
 license=('BSD')
-depends=('jre8-openjdk' 'jdk8-openjdk')
+depends=('java-environment')
 optdepends=(
   'env-modules: for any scripts requiring `module`' 
   'pigz: for parallel GZIP (de)compression'
@@ -21,13 +21,12 @@ prepare() {
   make -f makefile.linux clean
 }
 
-build() {
-  cd "${srcdir}"/"${pkgname}"/jni
-  # Headers for JNI are found in this Arch Linux specific location
-  env JAVA_HOME=/usr/lib/jvm/default make -f makefile.linux
-}
 
 package() {
+  cd "${srcdir}"/"${pkgname}"/jni
+  archlinux-java fix
+  # Headers for JNI are found in this Arch Linux specific location
+  env JAVA_HOME=/usr/lib/jvm/default   make -f makefile.linux
   cd "${srcdir}"/"${pkgname}"
 
   mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/

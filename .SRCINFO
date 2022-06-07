@@ -1,12 +1,11 @@
 pkgbase = bbmap
 	pkgdesc = A short read aligner and other bioinformatic tools
 	pkgver = 38.96
-	pkgrel = 1
+	pkgrel = 5
 	url = https://jgi.doe.gov/data-and-tools/bbtools/
 	arch = x86_64
 	license = BSD
-	depends = jre8-openjdk
-	depends = jdk8-openjdk
+	depends = java-environment
 	optdepends = env-modules: for any scripts requiring `module`
 	optdepends = pigz: for parallel GZIP (de)compression
 	optdepends = samtools: for BAM output
