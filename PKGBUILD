@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clasp-cl-git
-pkgver=1.0.0.r214.gfdfb2e6d3
+pkgver=1.0.0_262_g0eb80f93e
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -15,14 +15,19 @@ conflicts=('cando-git')
 source=('git+https://github.com/clasp-developers/clasp.git')
 sha512sums=('SKIP')
 
+prepare() {
+  cd clasp
+  ./koga --package-path=$pkgdir --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
+  ./koga --skip-sync --update-version
+}
+
 pkgver() {
   cd clasp
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  sbcl --noinform --non-interactive --eval "(write-string (substitute #\_ #\- (getf (with-open-file (s \"version.sexp\") (read s)) :version)))"
 }
 
 build() {
   cd clasp
-  ./koga --package-path=$pkgdir --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ninja -C build
 }
 
