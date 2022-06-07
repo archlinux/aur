@@ -25,15 +25,17 @@ EOF
 $ckarg2
 EOF
                     mkdir /ckey
-                    mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
+                    mount --mkdir -t "$ckfs1" "$resolved" /ckey
+                    echo "$(ls /ckey)"
                     ckey="/ckey/${ckpath1}"
                     if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                        echo "Passhrase for ${ckey}"
                         cryptsetup open --type luks "${ckey}" ckey;
                         mount --mkdir -r -t "$ckfs2" "/dev/mapper/ckey" /ckey2
                         ckey="/ckey2/${ckpath2}"
                     fi
                     dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
-                    if ! mountpoint -q /ckey2; then
+                    if mountpoint -q /ckey2; then
                         umount /ckey2
                         cryptsetup close --type luks ckey;
                     fi
