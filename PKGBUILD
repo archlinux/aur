@@ -5,10 +5,12 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 _modname="${pkgname#nginx-mainline-mod-}"
 pkgdesc="Fancy index module for the nginx-mainline web server"
-arch=('x86_64')
+arch=('x86_64'
+      'aarch64'
+      'armv7h')
 url="https://www.nginx.com/resources/wiki/modules/fancy_index/"
 license=('BSD')
 depends=('nginx-mainline')
