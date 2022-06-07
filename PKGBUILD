@@ -26,22 +26,25 @@ depends=(
   python-websocket-client
   zbar
 )
-makedepends=(python-requests python-setuptools)
-source=(electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/refs/tags/$pkgver)
-b2sums=(b3327f6bcf23b5caca6196e380e62f154a9f56a5b636a8d0cc49e08ed0ab5a05b4b1a81d9869b92125526339924ccb9b555a704eb7fa98bce59eac6088c7ebfe)
+makedepends=(python-setuptools)
+source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
+validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
+b2sums=(
+  77a3f3969d435492216fa93afe48228bec1e3897d83eb5ebce5aee7088304ae54ceeeb030c6250a761a1f5c02abe554bc5e38c055b9979c1b390304a2f4a0966
+  SKIP
+)
 
 prepare() {
-  sed -i -r 's/sh.+(electrum.+)"/\1/' electrum-ltc-$pkgver/electrum-ltc.desktop
+  sed -i -r 's/sh.+(electrum.+)"/\1/' Electrum-LTC-$pkgver/electrum-ltc.desktop
 }
 
 build() {
-  cd electrum-ltc-$pkgver
-  contrib/pull_locale
+  cd Electrum-LTC-$pkgver
   ./setup.py build
 }
 
 package() {
-  cd electrum-ltc-$pkgver
+  cd Electrum-LTC-$pkgver
   ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
