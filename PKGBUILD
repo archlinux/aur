@@ -4,7 +4,7 @@ _pkgname=mQTL
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.0
-pkgrel=3
+pkgrel=5
 pkgdesc='Metabolomic Quantitative Trait Locus Mapping'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-outliers
   r-qtl
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('21193861fbf2d280f2b7284ba87d68adce515e35fbe4e71821439fa8b14d1b72')
 
 build() {
