@@ -1,4 +1,4 @@
-pkgbase = linux-acs-manjaro
+pkgbase = linux-vfio-manjaro
 	pkgver = 5.17.13
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -72,7 +72,7 @@ pkgbase = linux-acs-manjaro
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
 	sha256sums = 2542b5cea79ab5817ce3d30c54acd045966b9c14587bfb0b2f50d473da48a1d5
 
-pkgname = linux-acs-manjaro
+pkgname = linux-vfio-manjaro
 	pkgdesc = The Linux Manjaro standart kernel and modules with ACS patch
 	depends = coreutils
 	depends = linux-firmware
@@ -84,7 +84,7 @@ pkgname = linux-acs-manjaro
 	replaces = virtualbox-guest-modules
 	replaces = wireguard
 
-pkgname = linux-acs-manjaro-headers
+pkgname = linux-vfio-manjaro-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Manjaro standart kernel with ACS patch
 	depends = gawk
 	depends = python
