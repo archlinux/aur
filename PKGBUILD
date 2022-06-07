@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bin_prot'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of bin_prot readers and writers from types'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-bin_prot>=0.14.0' 'ocaml-ppx_here>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-bin_prot>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('fecad38f08b09a95eed95e541e88574bc35b2c2b6047671461a7df7f45f91f8b')
+sha512sums=('3fdc7e9431458b752d553f093762e3ed3c96af3a789eceeb94895284de961a887e358d137c21da372cadf6c0e6329628f6c698499581f672e0e1913b3274cc14')
 
 _sourcedirectory="$_projectname-$pkgver"
 
