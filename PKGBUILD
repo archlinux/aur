@@ -4,10 +4,10 @@ _pkgname=predictionet
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=1.40.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Inference for predictive networks designed for (but not limited to) genomic data'
 arch=('x86_64')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/predictionet.html"
 license=('Artistic2.0')
 depends=(
   r
@@ -21,7 +21,7 @@ optdepends=(
   r-minet
   r-network
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f0e5e55bc1851924820f5733e161e3c0cef35b1e22e90545af4953eb18856fb8')
 
 build() {

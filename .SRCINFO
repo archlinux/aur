@@ -1,8 +1,8 @@
 pkgbase = r-predictionet
 	pkgdesc = Inference for predictive networks designed for (but not limited to) genomic data
 	pkgver = 1.40.0
-	pkgrel = 3
-	url = https://bioconductor.org/packages/predictionet
+	pkgrel = 4
+	url = https://bioconductor.org/packages/3.14/bioc/html/predictionet.html
 	arch = x86_64
 	license = Artistic2.0
 	depends = r
@@ -13,7 +13,7 @@ pkgbase = r-predictionet
 	optdepends = r-knitr
 	optdepends = r-minet
 	optdepends = r-network
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/predictionet_1.40.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/predictionet_1.40.0.tar.gz
 	sha256sums = f0e5e55bc1851924820f5733e161e3c0cef35b1e22e90545af4953eb18856fb8
 
 pkgname = r-predictionet
