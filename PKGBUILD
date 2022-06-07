@@ -3,7 +3,7 @@
 
 pkgname=tachidesk
 pkgver=0.6.3_r1100
-pkgrel=1
+pkgrel=2
 __pkgname=tachidesk-server
 __PkgName=Tachidesk-Server
 __pkgver="${pkgver%_*}"
@@ -18,12 +18,20 @@ provides=("$pkgname" "$__pkgname")
 conflicts=("$pkgname-preview")
 __jar=$__PkgName-v$__pkgver-$__revnum.jar
 source=("$url/releases/download/v$__pkgver/$__jar"
+        "$__pkgname.service"
+        "$__pkgname.sysusers"
+        "$__pkgname.tmpfiles"
+        "$__pkgname.conf"
         "$__pkgname.desktop"
         "$__pkgname.png"
         "$__pkgname-browser-launcher.sh"
         "$__pkgname-debug-launcher.sh"
         "$__pkgname-electron-launcher.sh")
 sha256sums=('533afe39862d2af2826b9c8b5e31653b63ffd13c3fc20512e33814caa39eb5ca'
+            'b8ae15e5dec2d20bedf4827b56a65d48b0155bd86a21147604fb714ee4208c59'
+            'd968233df273640b51cd3daf61bab809df6fb844bee92f4f5887c09d95c482aa'
+            '715b5ad6ecdcab24f7a7663c3b606654a6c7bd6323540d29ad1440b0116e046d'
+            'f0645eb6855fcb854dd42c000ad0ca1895b67017234d79a93cefb9b90e9b3ef6'
             '7ec4e0722d0312384672ccd01d939cce0fe356cf16d23f3473e7502cdddbccd3'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
             '1a075de252d4d1e4a025e26d379985995893e03d2ac9182ab8a48624b7076470'
@@ -33,11 +41,15 @@ sha256sums=('533afe39862d2af2826b9c8b5e31653b63ffd13c3fc20512e33814caa39eb5ca'
 noextract=("$__jar")
 
 package() {
-    install -Dm644 "$srcdir/$__jar"             "$pkgdir/usr/share/java/$__pkgname/$__pkgname.jar"
-    install -Dm644 "$srcdir/$__pkgname.desktop" "$pkgdir/usr/share/applications/$__pkgname.desktop"
-    install -Dm644 "$srcdir/$__pkgname.png"     "$pkgdir/usr/share/pixmaps/$__pkgname.png"
+    install -Dm644 "$srcdir/$__jar"                 "$pkgdir/usr/share/java/$__pkgname/$__pkgname.jar"
+    install -Dm644 "$srcdir/$__pkgname.service"     "$pkgdir/usr/lib/systemd/system/$__pkgname.service"
+    install -Dm644 "$srcdir/$__pkgname.conf"        "$pkgdir/etc/$pkgname/server.conf"
+    install -Dm644 "$srcdir/$__pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$__pkgname.conf"
+    install -Dm644 "$srcdir/$__pkgname.tmpfiles"    "$pkgdir/usr/lib/tmpfiles.d/$__pkgname.conf"
+    install -Dm644 "$srcdir/$__pkgname.desktop"     "$pkgdir/usr/share/applications/$__pkgname.desktop"
+    install -Dm644 "$srcdir/$__pkgname.png"         "$pkgdir/usr/share/pixmaps/$__pkgname.png"
     install -Dm755 "$srcdir/$__pkgname-browser-launcher.sh"  "$pkgdir/usr/bin/$__pkgname-browser"
     install -Dm755 "$srcdir/$__pkgname-debug-launcher.sh"    "$pkgdir/usr/bin/$__pkgname-debug"
     install -Dm755 "$srcdir/$__pkgname-electron-launcher.sh" "$pkgdir/usr/bin/$__pkgname-electron"
-    ln -sr  "$pkgdir/usr/bin/$__pkgname-browser" "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
+    ln -sr  "$pkgdir/usr/bin/$__pkgname-browser"    "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
 }
