@@ -2,7 +2,7 @@
 
 pkgbase=netinstall
 pkgname=(netinstall netinstall-gui)
-pkgver=7.2.3
+pkgver=7.3
 pkgrel=1
 pkgdesc='Mikrotik Netinstall for RouterOS'
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ source=("https://download.mikrotik.com/routeros/${pkgver}/netinstall-${pkgver}.z
         'netinstall.desktop'
         'netinstall.sh'
         'netinstall-gui.c')
-sha256sums=('0026208c73ea1af345c1a375d14091b2a7a9332ed66e9ba1c282b54de3bd8ad7'
-            '1a5469cbabd99803f6c59f09cbdcd58931f2fdf0810225662ea838898d9fdc47'
+sha256sums=('a6d04985512a5f68183bec906ea672e20453780ab03176c472292799fb2e42b5'
+            '262dcac27dc3f615fda504199d3b81b586a158f3d10ee2ddd84439bbb87ee7e5'
             '285e32e9ba8bad9791cf3d5d3653b6e21bd771adcc32ea2036fe32dc9dafcfe0'
-            'f074f8c93e33a2278fd7209747a3e2c6d725935b5670b5e992ab1e4ece6e808e'
+            'd45ecf4585047769ee64957b7066910d8992eb6da4a60b4773328460e912794a'
             'b5efb376a6705c376465bff6f52dc0713c15fbd5cd861fdc39969cbb22c233b4')
 
 build() {
@@ -30,7 +30,7 @@ package_netinstall() {
   optdepends=('sudo: invoke as non-root')
 
   install -D -m0755 netinstall.sh ${pkgdir}/usr/bin/netinstall
-  install -D -m0755 netinstall ${pkgdir}/usr/lib/netinstall/netinstall
+  install -D -m0755 netinstall-cli ${pkgdir}/usr/lib/netinstall/netinstall-cli
 }
 
 package_netinstall-gui() {

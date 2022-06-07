@@ -71,4 +71,4 @@ ip link set dev "${INTERFACE}" netns netinstall
 ip netns exec netinstall ip addr add 192.168.88.2/24 dev "${INTERFACE}"
 ip netns exec netinstall ip link set dev "${INTERFACE}" up
 ip netns exec netinstall ip route add default dev "${INTERFACE}"
-ip netns exec netinstall /usr/lib/netinstall/netinstall "${OPTIONS[@]}" -a 192.168.88.1 "${PACKAGES[@]}"
+ip netns exec netinstall /usr/lib/netinstall/netinstall-cli "${OPTIONS[@]}" -a 192.168.88.1 "${PACKAGES[@]}"
