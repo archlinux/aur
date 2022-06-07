@@ -2,13 +2,13 @@ pkgbase = ruby-mixlib-log
 	pkgdesc = A gem that provides a simple mixin for log functionality
 	pkgver = 1.6.0
 	pkgrel = 1
-	url = http://www.opscode.com/
+	url = https://rubygems.org/gems/mixlib-log/
 	arch = any
+	license = Apache
 	depends = ruby
 	noextract = mixlib-log-1.6.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/mixlib-log-1.6.0.gem
-	sha512sums = 59103c7bc5383a30a393b290ae293a210d15c072a85a9085189c4697345469d251a32528cad963378458b16acf9c0cf1bd452afb90b989c13a3e024778141c2a
+	b2sums = 227904e69a292b283d791c33350153bc4ffdd207cc729ed794dd6fd2602e321e3305b71bff7b6a47cb96a1afbcf76d8c55e9524058c8c86cdc416a74b10fa510
 
 pkgname = ruby-mixlib-log
-
