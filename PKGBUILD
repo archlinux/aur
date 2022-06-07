@@ -3,7 +3,7 @@
 
 pkgname=treemap
 pkgver=3b1243
-pkgrel=1
+pkgrel=3
 pkgdesc="a tool for analysing relationships between evolutionary histories of ecologically linked species"
 arch=('x86_64')
 url="https://sites.google.com/site/cophylogeny/treemap/"
@@ -13,11 +13,7 @@ source=("treemap.desktop" "treemap.png")
 sha256sums=('dd308f7e4596edef57be9bbbfc7a7088a27f75763feae02e446c9d16518940e5'
             '514cbfcb94803808141cc6fae9b58eabfe58ba7a55d5d5f3f1061cd7a154b28e')
 depends=(
-	'jre-openjdk-headless'
-	'jre-openjdk'
-	'jdk-openjdk'
-	'openjdk-doc'
-	'openjdk-src'
+    'java-runtime'
 )
 package() {
     wget "https://sites.google.com/site/cophylogeny/software/TreeMap${pkgver}.jar"
