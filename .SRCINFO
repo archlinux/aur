@@ -1,6 +1,6 @@
 pkgbase = wlopm-git
 	pkgdesc = Wayland output power management.
-	pkgver = r15.4ffa093
+	pkgver = v0.1.0.r0.2430741
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/wlopm
 	arch = x86_64
