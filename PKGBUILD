@@ -4,7 +4,7 @@
 _gemname='thin'
 pkgname="ruby-${_gemname}-1.6"
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Thin and fast Ruby web server, 1.6.x version'
 arch=('i686' 'x86_64')
 url="https://rubygems.org/gems/${_gemname}/versions/${pkgver}"
@@ -13,7 +13,7 @@ depends=(
   'glibc'
   'ruby'
   'ruby-daemons>=1.0.9'       'ruby-daemons<2'
-  'ruby-rack>=1.0'            'ruby-rack<2'
+  'ruby-rack>=1.0'
   'ruby-eventmachine>=1.0.4'  'ruby-eventmachine<2'
 )
 provides=("${pkgname%-*}=${pkgver}")
