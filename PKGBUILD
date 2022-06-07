@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_compare'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='3'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of comparison functions from types'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.11.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9ecd7d68da862913b4ebc70d2e9f5d31baf45063b61a6e86a6f4a71182c5d525')
+sha512sums=('2c2ae8bdaf08a478bcabdcdcd724abb53773c8633273d3d7a9f8a8eab01d04c281d11299f2890a2f9919adcf38a65bcfcfd79c613f27325e536e2d7cf0527781')
 
 _sourcedirectory="$_projectname-$pkgver"
 
