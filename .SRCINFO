@@ -1,6 +1,6 @@
 pkgbase = backup
-	pkgdesc = Python wrapper for rsync
-	pkgver = 0.4.1
+	pkgdesc = Easily configure and reproducibly run complex backups
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/jnphilipp/backup
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = backup
 	makedepends = help2man
 	depends = python
 	depends = python-lxml
-	depends = rsync
+	optdepends = rsync: as backup tool
+	optdepends = tar: as backup tool or for snapshots
 	optdepends = python-notify2: Desktop notifications
-	source = git://github.com/jnphilipp/backup.git
+	source = git+https://github.com/jnphilipp/backup.git
 	md5sums = SKIP
 
 pkgname = backup
