@@ -1,4 +1,4 @@
-From 4daa1663a0fe0fb0cbf416ee064e0382bd5d5bda Mon Sep 17 00:00:00 2001
+From 99e82d0644fee9a21e967b7b8708ff253e7528d5 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Tue, 25 Feb 2020 12:53:07 +0100
 Subject: [PATCH] Fix file paths
@@ -9,7 +9,7 @@ Subject: [PATCH] Fix file paths
  2 files changed, 3 insertions(+), 21 deletions(-)
 
 diff --git a/src/common/platform/posix/sdl/i_main.cpp b/src/common/platform/posix/sdl/i_main.cpp
-index b52561fdf..7260dab91 100644
+index a28b90f01..7299029fd 100644
 --- a/src/common/platform/posix/sdl/i_main.cpp
 +++ b/src/common/platform/posix/sdl/i_main.cpp
 @@ -175,19 +175,7 @@ int main (int argc, char **argv)
@@ -30,11 +30,11 @@ index b52561fdf..7260dab91 100644
 -		progdir = "./";
 -	}
 +	progdir = "/usr/lib/gzdoom/";
- 	
+ 
  	I_StartupJoysticks();
  
 diff --git a/src/gameconfigfile.cpp b/src/gameconfigfile.cpp
-index 830cef232..2b49b26d9 100644
+index 17898f3ae..7bfb63205 100644
 --- a/src/gameconfigfile.cpp
 +++ b/src/gameconfigfile.cpp
 @@ -119,8 +119,6 @@ FGameConfigFile::FGameConfigFile ()
@@ -69,5 +69,5 @@ index 830cef232..2b49b26d9 100644
  		SetValueForKey("Path", "/usr/share/doom/fm_banks", true);
  		SetValueForKey("Path", "/usr/share/games/doom/soundfonts", true);
 -- 
-2.32.0
+2.34.1
 
