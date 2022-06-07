@@ -7,7 +7,7 @@
 
 pkgname=nrf5x-command-line-tools
 _pkgname=nrf-command-line-tools
-pkgver=10.15.4
+pkgver=10.16.0
 pkgrel=0
 pkgdesc="Tools for programming Nordic nRF51, nRF52, nRF53 and nRF91 Series devices"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('jlink-software-and-documentation')
 provides=('nrfjprog' 'mergehex')
 options=()
 source_x86_64=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_Linux-amd64.tar.gz")
-sha256sums_x86_64=('E5FFDF5BF7786268FE01DD2335328A89AECC99C0B8497F1CA8D1F908A36B8882')
+sha256sums_x86_64=('0e036afa51c83de7824ef75d34e165ed55efc486697b8ff105639644bce988e5')
 
 package() {
     cd ${srcdir}
