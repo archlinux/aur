@@ -27,4 +27,6 @@ sha256sums=('565924751aec3d6237419abe5d632dd469bd7680c456c91baaa785353bf40244')
 prepare() {
 	uname -r # Outputs kernel info
 }
-package() {}
+package() {
+	msg2 "downloaded package."
+}
