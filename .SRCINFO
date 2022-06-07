@@ -1,8 +1,8 @@
 pkgbase = manjaro-zsh-config-git
-	pkgdesc = Zsh configuration for manjaro
-	pkgver = 0.20
+	pkgdesc = Zsh configuration from manjaro forked for archlinux
+	pkgver = 0.20.1
 	pkgrel = 1
-	url = https://github.com/Chrysostomus/manjaro-zsh-config
+	url = https://github.com/ayr-ton/manjaro-zsh-config
 	arch = any
 	license = MIT
 	depends = zsh-autosuggestions
@@ -15,7 +15,7 @@ pkgbase = manjaro-zsh-config-git
 	depends = zsh-theme-powerlevel10k
 	conflicts = grml-zsh-config
 	backup = root/.zshrc
-	source = manjaro-zsh-config.tar.gz::https://github.com/Chrysostomus/manjaro-zsh-config/archive/22e8f42e90470f7ac8ec1b322b5f7b979272d85f.tar.gz
-	sha256sums = ebfce2d188227c0425d5a0cf58b9ea530964fb09f4f959187a08a142b36d26d8
+	source = manjaro-zsh-config.tar.gz::https://github.com/ayr-ton/manjaro-zsh-config/archive/a9b56f606ec86deec893ed67f5941652bc8c2b6d.tar.gz
+	sha256sums = b0bf0006867878e3e4778cdeed40269242cf962ddd27ee98d0a40233a35e82d5
 
 pkgname = manjaro-zsh-config-git
