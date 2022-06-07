@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-freetype2-bootstrap
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
 url='https://www.freetype.org/'
@@ -56,7 +56,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/freetype-${pkgver}/build-${_arch}"
     cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    ${_arch}-meson --default-library both -D zlib=enabled -D bzip2=enabled -D png=disabled -D brotli=enabled
+    ${_arch}-meson --default-library both -D zlib=enabled -D bzip2=enabled -D png=disabled -D brotli=enabled -D b_lto=false
     ninja
   done
 }
