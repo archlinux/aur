@@ -25,6 +25,9 @@ source=("$_p2hname-poppler-$_popplerver.tar.xz::$_popplerurl-$_popplerver.tar.xz
         "$_p2hname-fontforge-$_fontforgever.tar.gz::$_fontforgeurl/$_fontforgever.tar.gz"
         "$_p2hname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "50-disable-pdf2htmlex-tests.patch"
+        "poppler-private.patch"
+        "StringFormatter.patch"
+        "StringFormatter_h.patch"
         "popplerFlags" "fontforgeFlags")
 sha256sums=('fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c'
             '1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012'
@@ -32,6 +35,9 @@ sha256sums=('fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c'
             'a1d320f155eaffe78e4af88e288ed5e8217e29031acf6698d14623c59a7c5641'
             '28d81fc2344dc3a612886e2e159d8bdd0da8de62b28cb2ef16a45b1ccf364af4'
 # above: 50.patch -- below: popplerFlags
+            'fae07ecef209ae212fa71dc3ab23a35b6d7754d942ce7ee78a8ffcb090f13c30'
+            '2c2231ef294fcd8048614731644b7c49341f4b38a52cb3196dc51aa353dc2505'
+            '8cdc16f9738cb95b3f1585f8d6f93851c68c3541e81fcabac8d3f0c5a8520c15'
             '55558182468c5b96a0c0ed0c3ce7d936c906d1cf3ec232d0a37735cdd8190a10'
             '35e431f050037d653a61654f9d9d3a13fe790178f4803ce045964fed4d9b7228')
 
@@ -44,6 +50,10 @@ prepare() {
 	mv "../fontforge-$_fontforgever/" "fontforge/"
 	rm -rf "pdf2htmlEX/build"
 	mkdir "poppler/build/" "fontforge/build/" "pdf2htmlEX/build"
+
+    patch "poppler/glib/poppler-private.h" "${srcdir}/poppler-private.patch"
+    patch "pdf2htmlEX/src/StringFormatter.cc" "${srcdir}/StringFormatter.patch"
+    patch "pdf2htmlEX/src/StringFormatter.h" "${srcdir}/StringFormatter_h.patch"
 }
 
 build() {

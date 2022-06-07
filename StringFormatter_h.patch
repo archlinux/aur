@@ -1,0 +1,11 @@
+--- src/pdf2htmlEX-0.18.8.rc1/pdf2htmlEX/src/StringFormatter.h	2020-08-20 04:43:25.000000000 +0800
++++ StringFormatter.h	2022-06-07 23:08:24.073903982 +0800
+@@ -21,7 +21,7 @@
+         GuardedPointer(StringFormatter * sf) : sf(sf) { ++(sf->buf_cnt); }
+         GuardedPointer(const GuardedPointer & gp) : sf(gp.sf) { ++(sf->buf_cnt); }
+         ~GuardedPointer(void) { --(sf->buf_cnt); }
+-        operator char* () const { return &(sf->buf.front()); }
++        operator char* () const { return sf->buf.data(); }
+     private:
+         StringFormatter * sf;
+     };

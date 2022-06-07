@@ -1,0 +1,18 @@
+--- src/pdf2htmlEX-0.18.8.rc1/pdf2htmlEX/src/StringFormatter.cc	2020-08-20 04:43:25.000000000 +0800
++++ StringFormatter.cc	2022-06-07 22:58:57.561853874 +0800
+@@ -12,13 +12,13 @@
+ 
+     va_list vlist;
+     va_start(vlist, format);
+-    int l = vsnprintf(&buf.front(), buf.capacity(), format, vlist);
++    int l = vsnprintf(buf.data(), buf.capacity(), format, vlist);
+     va_end(vlist);
+     if(l >= (int)buf.capacity()) 
+     {
+         buf.reserve(std::max<long>((long)(l+1), (long)buf.capacity() * 2));
+         va_start(vlist, format);
+-        l = vsnprintf(&buf.front(), buf.capacity(), format, vlist);
++        l = vsnprintf(buf.data(), buf.capacity(), format, vlist);
+         va_end(vlist);
+     }
+     assert(l >= 0); // we should fail when vsnprintf fail
