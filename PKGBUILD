@@ -2,11 +2,11 @@
 
 pkgname=freecad-assembly3-appimage
 pkgver=2022.04.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
 url="https://github.com/realthunder/FreeCAD"
-license=('GPL3')
+license=('LGPLv2')
 depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 

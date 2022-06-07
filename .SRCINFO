@@ -1,10 +1,10 @@
 pkgbase = freecad-assembly3-appimage
 	pkgdesc = Assembly3 workbench for FreeCAD.
 	pkgver = 2022.04.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realthunder/FreeCAD
 	arch = x86_64
-	license = GPL3
+	license = LGPLv2
 	depends = fuse2
 	noextract = FreeCAD-asm3-2022.04.30.AppImage
 	options = !strip
