@@ -2,7 +2,7 @@
 
 pkgname=qt-aseman
 pkgver=3.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of C++ and QML tools and modules that helps you develop your projects easier and better."
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -37,5 +37,12 @@ package() {
 	cp -r ./QtAseman/build/include/* "${pkgdir}"/usr/include
 	cp -r ./QtAseman/build/qml/AsemanQml/* "${pkgdir}"/usr/lib/qt/qml/AsemanQml
 	cp -r ./QtAseman/build/qml/QtQuick/* "${pkgdir}"/usr/lib/qt/qml/QtQuick
+	
+	sed -i "s|${srcdir}/QtAseman/build/include|/usr/include|g" "${pkgdir}"/usr/lib/qt/mkspecs/modules/*.pri
+	sed -i "s|${srcdir}/QtAseman/build/lib|/usr/lib|g" "${pkgdir}"/usr/lib/qt/mkspecs/modules/*.pri
+	sed -i "s|${srcdir}/QtAseman/build/bin|/usr/bin|g" "${pkgdir}"/usr/lib/qt/mkspecs/modules/*.pri
+	sed -i "s|${srcdir}/QtAseman/build|/usr/lib/qt|g" "${pkgdir}"/usr/lib/qt/mkspecs/modules/*.pri
+	sed -i "s|${srcdir}/QtAseman/build|/usr|g" "${pkgdir}"/usr/lib/*.prl
+
 	install -D -m644 ./QtAseman/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
