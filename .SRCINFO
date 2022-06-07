@@ -23,7 +23,9 @@ pkgbase = nteract
 	conflicts = nteract-bin
 	source = v0.28.0.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/v0.28.0.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE
+	source = nteract.desktop
 	sha256sums = 5132a05ca269aa3b1b0a96cbe4a7b9956454069029173f6f1cb3d73a59a83073
 	sha256sums = 866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71
+	sha256sums = b2d43d3d75ca35ccbacbf4db73cbd64a6e5b2346218152731df0de39d58a7fa1
 
 pkgname = nteract

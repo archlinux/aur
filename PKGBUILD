@@ -18,9 +18,11 @@ optdepends=('ihaskell-git: support for Haskell'
             'r: support for R (requires the "IRkernel" package)'
             'sagemath-jupyter: support for SageMath')
 source=(v${pkgver}.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/v${pkgver}.tar.gz
-				'LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE')
+				'LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE'
+        'nteract.desktop')
 sha256sums=('5132a05ca269aa3b1b0a96cbe4a7b9956454069029173f6f1cb3d73a59a83073'
-						'866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71')
+						'866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71'
+            'b2d43d3d75ca35ccbacbf4db73cbd64a6e5b2346218152731df0de39d58a7fa1')
 conflicts=('nteract-bin')
 
 prepare() {
@@ -54,5 +56,6 @@ package() {
 	ln -s /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
   install -Dm 644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
+
 	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
