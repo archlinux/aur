@@ -1,11 +1,11 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=pybobyqa
-pkgname=python-$_modulename
+pkgname=python-pybobyqa
+_name=Py-BOBYQA
 pkgver=1.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Python-based Derivative-Free Optimization with Bound Constraints"
 arch=(any)
-url="https://github.com/numericalalgorithmsgroup/$_modulename"
+url="https://github.com/numericalalgorithmsgroup/$_name"
 license=()
 groups=()
 depends=(python-numpy python-scipy python-pandas)
@@ -16,10 +16,15 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('16d8a86e7f9efcf38c6b3ad19d64091dbb201ac1a8d06ad66e28489e5cb3aa97')
-package() {
-  cd "$srcdir/$_modulename-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(7b0b27b7b9a7cfef94557c8832c0c30757e86764e32878677427381f0691a8fb)
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
+
+package() {
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+

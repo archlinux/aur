@@ -1,15 +1,15 @@
 pkgbase = python-pybobyqa
 	pkgdesc = Python-based Derivative-Free Optimization with Bound Constraints
 	pkgver = 1.3
-	pkgrel = 1
-	url = https://github.com/numericalalgorithmsgroup/pybobyqa
+	pkgrel = 3
+	url = https://github.com/numericalalgorithmsgroup/Py-BOBYQA
 	arch = any
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
 	options = !emptydirs
-	source = https://github.com/numericalalgorithmsgroup/pybobyqa/archive/v1.3.tar.gz
-	sha256sums = 16d8a86e7f9efcf38c6b3ad19d64091dbb201ac1a8d06ad66e28489e5cb3aa97
+	source = https://files.pythonhosted.org/packages/source/P/Py-BOBYQA/Py-BOBYQA-1.3.tar.gz
+	sha256sums = 7b0b27b7b9a7cfef94557c8832c0c30757e86764e32878677427381f0691a8fb
 
 pkgname = python-pybobyqa
