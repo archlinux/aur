@@ -7,7 +7,7 @@ pkgver=1.12.0
 pkgrel=3
 pkgdesc='Putting the fun in LINCS L1000 data analysis'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://bioconductor.org/packages/3.14/bioc/html/slinky.html"
 license=('MIT')
 depends=(
   r
