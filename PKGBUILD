@@ -13,9 +13,15 @@ makedepends=('git')
 depends=('wxgtk3' 'hidapi' 'zlib' 'expat' 'dfu-util')
 source=('git://www.codesrc.com/git/SCSI2SD-V6'
 	'SCSI2SD-V6.diff'
-	'http://www.codesrc.com/files/scsi2sd-v6/latest/firmware.dfu'
+	'https://www.codesrc.com/files/scsi2sd-v6/latest/firmware.V6.2020.dfu'
+	'https://www.codesrc.com/files/scsi2sd-v6/latest/firmware.V6.2021-FS.dfu'
+	'https://www.codesrc.com/files/scsi2sd-v6/latest/firmware.V6.2021.dfu'
+	'https://www.codesrc.com/files/scsi2sd-v6/latest/firmware.V6.revF.dfu'
 	)
 sha256sums=(	'SKIP'
+		'SKIP'
+		'SKIP'
+		'SKIP'
 		'SKIP'
 		'SKIP'
 	)
@@ -45,5 +51,7 @@ build() {
 package() {
   cd "$_gitname/src/scsi2sd-util6"
   make install DESTDIR="${pkgdir}"
-  install -D -m 644 "${srcdir}/firmware.dfu" "${pkgdir}/usr/share/scsi2sd-v6/firmware.dfu"
+  for i in "${srcdir}"/*.dfu; do
+    install -D -m 644 "${i}" "${pkgdir}/usr/share/scsi2sd-v6/$(basename ${i})"
+  done
 }
