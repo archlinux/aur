@@ -1,4 +1,4 @@
-*.pkg.tar
+*.pkg.*
 katago-cpu
 weights-b20.bin.gz
 weights-b30.bin.gz
