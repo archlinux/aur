@@ -1,29 +1,32 @@
-# Maintainer: Avery Murray <averylapine@gmail.com> 
+# Maintainer: KuoHuanHuan <hi@nekohuan.cyou>
 
-pkgname=ungoogled-chromium-binary
-pkgver=87.0.4280.88
-pkgrel=1
-pkgdesc="A lightweight approach to removing Google web service dependency (binary version)"
-arch=('x86_64')
-url="https://github.com/Eloston/ungoogled-chromium"
-license=('BSD')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'json-glib'
-         'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp' 'openjpeg2'
-	 'minizip' 'snappy' 're2')
-optdepends=('pepper-flash: support for Flash content'
-            'kdialog: needed for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet'
-            'libva-intel-driver: for hardware video acceleration with Intel GPUs'
-            'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
-            'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
-conflicts=("chromium" "ungoogled-chromium")
-provides=("chromium")
-source=("https://github.com/mcstrugs/ungoogled-chromium-binaries/releases/download/${pkgver}-${pkgrel}/ungoogled-chromium-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
-sha256sums=("e882de51fbe927babdbf1c147c91ed7056e2fb8512bda24cc117511a2096bced")
+pkgname=ungoogled-chromium-bin
+pkgver=102.0.5005.61
+pkgrel=3
+epoch=1
+pkgdesc='A lightweight approach to removing Google web service dependency (binary release)'
+arch=(x86_64)
+url=https://github.com/Eloston/ungoogled-chromium
+license=(BSD)
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt' 'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva' 'desktop-file-utils' 'hicolor-icon-theme'
+				)
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
+            'kdialog: support for native dialogs in Plasma'
+            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+            'kwallet: support for storing passwords in KWallet on Plasma'
+						)
+provides=('chromium')
+conflicts=("ungoogled-chromium" "chromium")
+options=()
+source=(
+				"https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
+				)
+noextract=("ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
+sha256sums=('565924751aec3d6237419abe5d632dd469bd7680c456c91baaa785353bf40244')
 
-# Copy files
+prepare() {
+	uname -r # Outputs kernel info
+}
 package() {
-   cp -r "$srcdir/usr" "$pkgdir"
+	mv ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst chromium-bin.pkg.tar.zst
 }
