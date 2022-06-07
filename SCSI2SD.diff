@@ -1,0 +1,32 @@
+diff --git a/software/scsi2sd-util/Makefile b/software/scsi2sd-util/Makefile
+index 548b07f..e9c573d 100755
+--- a/software/scsi2sd-util/Makefile
++++ b/software/scsi2sd-util/Makefile
+@@ -28,7 +28,8 @@ LIBZIPPER_CONFIG = --disable-shared LDFLAGS="-L../zlib" CPPFLAGS="-I../zlib"
+ endif
+ 
+ ifeq ($(USE_SYSTEM_WX),Yes)
+-LDFLAGS_WX=$(shell wx-config-3.0 --libs)
++CPPFLAGS_WX=$(shell wx-config-gtk3 --cflags)
++LDFLAGS_WX=$(shell wx-config-gtk3 --libs)
+ else
+ LDFLAGS_WX=$(shell $(BUILD)/wx/wx-config --libs)
+ endif
+@@ -190,7 +191,7 @@ $(BUILD)/%.o: %.cc
+ ifneq ($(USE_SYSTEM_WX),Yes)
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `$(BUILD)/wx/wx-config --cxxflags` $< -c -o $@
+ else
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-3.0 --cxxflags` $< -c -o $@
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) `wx-config-gtk3 --cxxflags` $< -c -o $@
+ endif
+ 
+ $(BUILD)/scsi2sd-util$(EXE): $(OBJ) $(BUILD)/scsi2sd-util.o
+@@ -203,7 +204,7 @@ $(BUILD)/scsi2sd-monitor$(EXE): $(OBJ) $(BUILD)/scsi2sd-monitor.o
+ 
+ $(BUILD)/scsi2sd-bulk$(EXE): $(CONSOLEOBJ) $(BUILD)/scsi2sd-bulk.o
+ 	mkdir -p $(dir $@)
+-	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) -o $@
++	$(CXX) $(CXXFLAGS) $^ $(LDFLAGS) $(LDFLAGS_WX) -o $@
+ 
+ clean:
+ 	rm $(BUILD)/scsi2sd-util$(EXE) $(OBJ) $(BUILD)/libzipper/buildstamp

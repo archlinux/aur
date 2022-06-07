@@ -1,0 +1,22 @@
+pkgbase = scsi2sd-git
+	pkgdesc = Utilities for SCSI2SD (v5.x hardware)
+	pkgver = r171.026583b
+	pkgrel = 1
+	url = http://www.codesrc.com/mediawiki/index.php?title=SCSI2SD
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = wxgtk3
+	depends = hidapi
+	depends = zlib
+	depends = expat
+	source = git://www.codesrc.com/git/SCSI2SD
+	source = SCSI2SD.diff
+	source = http://www.codesrc.com/files/scsi2sd/latest/firmware/firmware_bundle-v4.8.03.scsi2sd
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6ea2a98eefffa76a923ad1afa7cd08b45926c49742a489ce4452846b0feffb60
+
+pkgname = scsi2sd-git
