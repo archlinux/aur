@@ -3,13 +3,14 @@
 
 pkgname='perl-math-utils'
 pkgver='1.14'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Useful mathematical functions not in Perl."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
+checkdepends=('perl-test-pod')
 url='https://metacpan.org/release/Math-Utils'
 source=("http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Utils-${pkgver}.tar.gz")
 md5sums=('be0504c2d0e6c08bf59c9b7754eddb70')
