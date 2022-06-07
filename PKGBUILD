@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_variants_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.2'
+pkgver='0.15.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Generation of accessor and iteration functions for ocaml variant types'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-variantslib>=0.14.0' 'ocaml-ppxlib>=0.23.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-variantslib>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2d668233089e90d20e893f0dadb39ae2e046b9c79c7b8bf950f8cb28e21ea619')
+sha512sums=('549b8d7af75cb98bc6cfe3bc53d43a9bee5c767de149905faf76c0a97c5be86d14d784377805c3932423d4dc698375edbd52f1cf508a4d0f3ea8e79f7e284224')
 
 _sourcedirectory="$_projectname-$pkgver"
 
