@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=anesthetic
-pkgname=python-$_modulename
-pkgver=1.3.6
-pkgrel=4
+pkgname=python-anesthetic
+_name=${pkgname#python-}
+pkgver=2.0.0b11
+pkgrel=1
 pkgdesc="nested sampling visualisation"
 arch=(any)
 url="https://github.com/williamjameshandley/anesthetic"
@@ -16,13 +16,15 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9c4a97905fb94a5d832f002140b356f3a7bff9cfb7d662dbccb9f76b60963ee3')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=(45bfea3a2d5debf2f18080c90c2044ef263091ced6679cfab0c55200aede6314)
 build() {
-  cd "$srcdir/$_modulename-$pkgver/"
-  python setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
+
 package() {
-  cd "$srcdir/$_modulename-$pkgver/"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
