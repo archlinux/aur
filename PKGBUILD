@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd
-pkgver=3.5.3
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
@@ -12,8 +12,10 @@ depends=(
   'par2cmdline'
   'python'
   'python-six'
+  'python-cffi'
   'python-cryptography'
   'python-feedparser'
+  'python-cparser'
   'python-configobj'
   'python-cherrypy'
   'python-cheroot'
@@ -25,6 +27,17 @@ depends=(
   'python-cheetah3'
   'python-sabyenc3'
   'python-pysocks'
+  'python-jaraco'
+  'python-jaraco.context'
+  'python-more-itertools'
+  'python-zc.lockfile'
+  'python-dateutil'
+  'python-tempora'
+  'python-pytz'
+  'python-sgmllib3k'
+  'python-portend'
+  'python-babelfish'
+  'python-rebulk'
   'sqlite'
   'unrar'
   'unzip'
@@ -48,7 +61,7 @@ source=(
   'sabnzbd.tmpfiles'
 )
         
-sha256sums=('c1257100057428d81841ce681c104fe6c0a2472c10d490f71bc89faa50d3790c'
+sha256sums=('a3d04ae5ea88639469e3df5db3a64e33aa2bf19fa0f8d499cfca72b51ef2f7d5'
             'c1bcdb5ce7787aab5ab4f07508c1451441f42df0ec7be85a5dedda0a5ee70014'
             '4c4ff2882de744d1b5435470ed829d58defcc84fafc56e6211d1298c0b22813f'
             '525f294372963fde09db08b0368c80078a16d4cefcb34f8179706336709afdf7'
