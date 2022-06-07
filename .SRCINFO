@@ -1,10 +1,12 @@
 pkgbase = perl-math-derivative
+	pkgdesc = Numeric 1st and 2nd order differentiation
 	pkgver = 1.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Math-Derivative
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-pod
 	depends = perl>=0
 	depends = perl-math-utils
 	options = !emptydirs

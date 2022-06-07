@@ -3,13 +3,14 @@
 
 pkgname='perl-math-derivative'
 pkgver='1.01'
-pkgrel='2'
-pkgdesc=""
+pkgrel='3'
+pkgdesc="Numeric 1st and 2nd order differentiation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0' 'perl-math-utils')
 makedepends=()
+checkdepends=('perl-test-pod')
 url='https://metacpan.org/release/Math-Derivative'
 source=("http://search.cpan.org/CPAN/authors/id/J/JG/JGAMBLE/Math-Derivative-${pkgver}.tar.gz")
 md5sums=('6672c09e229f74cd115c3f028b1522cb')
