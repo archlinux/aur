@@ -4,7 +4,7 @@ _pkgname=taRifx
 _pkgver=1.0.6.2
 pkgname=r-${_pkgname,,}
 pkgver=1.0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Collection of Utility and Convenience Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-stringr
   r-xtable
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('89d031db00a94ae57c7ace0d9aa39ba2f960f96fd48d2d1e4c7ebb62a2969b15')
 
 build() {

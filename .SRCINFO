@@ -1,7 +1,7 @@
 pkgbase = r-tarifx
 	pkgdesc = Collection of Utility and Convenience Functions
 	pkgver = 1.0.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=taRifx
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-tarifx
 	optdepends = r-rsqlite
 	optdepends = r-stringr
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/taRifx_1.0.6.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/taRifx/taRifx_1.0.6.2.tar.gz
 	sha256sums = 89d031db00a94ae57c7ace0d9aa39ba2f960f96fd48d2d1e4c7ebb62a2969b15
 
 pkgname = r-tarifx
