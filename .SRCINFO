@@ -1,0 +1,21 @@
+pkgbase = ficsit-cli-bin
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/Vilsol/ficsit-cli
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	provides = ficsit
+	conflicts = ficsit
+	source_aarch64 = ficsit-cli-bin_0.0.16_aarch64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.16/ficsit_linux_arm64
+	sha256sums_aarch64 = 5f69399c03f0b2fdffed4338d6ba08da8284b450e27aad1f521ee9ab0283633a
+	source_armv7h = ficsit-cli-bin_0.0.16_armv7h.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.16/ficsit_linux_armv7
+	sha256sums_armv7h = 0d4dd29d60ffe4d5e139d5d9b22328d436711ec8786091f5c3d351e8b07004af
+	source_i686 = ficsit-cli-bin_0.0.16_i686.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.16/ficsit_linux_386
+	sha256sums_i686 = 7e5b70a3101f47a13c7b727dd1ae5d651c193991c1f5ffddf8172c2ac1e75f7a
+	source_x86_64 = ficsit-cli-bin_0.0.16_x86_64.binary::https://github.com/Vilsol/ficsit-cli/releases/download/v0.0.16/ficsit_linux_amd64
+	sha256sums_x86_64 = c5951c4d91fd9b77c5011423d68b4f003fa188c561ad38bc8685a77e81a12ad1
+
+pkgname = ficsit-cli-bin
