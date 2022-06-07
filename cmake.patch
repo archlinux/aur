@@ -1,0 +1,43 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index b0037061e..d1662621f 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -609,10 +609,11 @@ endif(WITH_SFTP)
+ ###########################################
+ 
+ if (UNIX AND NOT APPLE)
+-    SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
+-    SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
++    SET(CMAKE_SKIP_RPATH FALSE)
++    SET(CMAKE_SKIP_BUILD_RPATH TRUE)
++    SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+     SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+-    set(CMAKE_INSTALL_RPATH "${PLUGINS_DIR}")
++    list(PREPEND CMAKE_INSTALL_RPATH "${PLUGINS_DIR}")
+ endif(UNIX AND NOT APPLE)
+ 
+ if ( WITH_PCH )
+@@ -761,5 +762,3 @@ elseif(APPLE)
+     install(TARGETS ctags DESTINATION ${CMAKE_BINARY_DIR}/codelite.app/Contents/MacOS PERMISSIONS ${EXE_PERM})
+     CL_INSTALL_NAME_TOOL_STD(${CMAKE_BINARY_DIR}/codelite.app/Contents/MacOS/codelite-ctags)
+ endif()
+-
+-
+diff --git CodeLite/CMakeLists.txt CodeLite/CMakeLists.txt
+index 20606f50a..0d609cc68 100644
+--- CodeLite/CMakeLists.txt
++++ CodeLite/CMakeLists.txt
+@@ -6,10 +6,11 @@ project(libcodelite)
+ include( "${wxWidgets_USE_FILE}" )
+ 
+ if (UNIX AND NOT APPLE)
+-    SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
++    SET(CMAKE_SKIP_RPATH FALSE)
++    SET(CMAKE_SKIP_BUILD_RPATH TRUE)
+     SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+     SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+-    set(CMAKE_INSTALL_RPATH "${PLUGINS_DIR}")
++    list(PREPEND CMAKE_INSTALL_RPATH "${PLUGINS_DIR}")
+ endif(UNIX AND NOT APPLE)
+ 
+ # Flex files

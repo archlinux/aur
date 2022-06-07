@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.1.0-1"
+_pkg_ver="16.1.0"
 #_commit=52c724d1132d78ea44894bfe2eaca44f38a9bd85
 
 
@@ -27,7 +27,7 @@ pkgname="${_pkg_name}-unstable"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=1
+pkgrel=2
 
 
 # version
@@ -108,6 +108,7 @@ prepare()
   rmdir ctags
   ln -s ../eranif-ctags-52c724d ctags
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
+  patch -p0 < "${startdir}/cmake.patch"
 }
 
 
@@ -132,6 +133,7 @@ mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
 cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
+#-DCMAKE_INSTALL_RPATH=/opt/wxgtk-dev/lib
 make -C "${BUILD_DIR}"
 
 }
