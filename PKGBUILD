@@ -10,6 +10,7 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('fae4ffc61987321b58b562d7d6c6c0e60c148eb47a9dfeddb330937ef06b3523')
 makedepends=('go')
+provides=('k3d')
 
 build() {
   cd $pkgname-$pkgver
