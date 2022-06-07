@@ -6,7 +6,7 @@ _cranname=Rcpp
 _cranver=1.0.8.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Seamless R and C++ Integration"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" RunAllRcppTests=yes Rscript --vanilla tinytest.R
+  R_LIBS="${srcdir}/build" LC_MESSAGES=C RunAllRcppTests=yes Rscript --vanilla tinytest.R
 }
 
 package() {
