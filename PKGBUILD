@@ -39,6 +39,7 @@ package() {
 	# These folders needs 777 permissions because vita3k creates files in them
 	chmod 777 "${pkgdir}/opt/vita3k/"
 	chmod 777 "${pkgdir}/opt/vita3k/data"
+	chmod 755 "${pkgdir}/opt/vita3k/Vita3K"
 
 	# Provided blob doesn't have README.md
 	install -Dm644 "data/image/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
