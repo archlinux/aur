@@ -2,12 +2,12 @@
 pkgname=minetest-arcade3d
 _pkgname=pacman
 _pkgauthor=Thunder1035
-pkgver=2022.01.14
-_cdbrel=10620
+pkgver=2022.04.26
+_cdbrel=11982
 pkgrel=1
 pkgdesc="A Pacman inspired game"
 license=("GPLv3")
-sha256sums=('3f71a07e37b50d0bac817f7fe8f6772a66ec631bba10b29dcbe8f40608eb495a')
+sha256sums=('83b6a4c76abeebcdf2e3ab2aef25d51406eaad27b52326e77a7df208a487d079')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

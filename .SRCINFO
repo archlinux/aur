@@ -1,14 +1,14 @@
 pkgbase = minetest-arcade3d
 	pkgdesc = A Pacman inspired game
-	pkgver = 2022.01.14
+	pkgver = 2022.04.26
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Thunder1035/pacman/
 	arch = any
 	license = GPLv3
 	depends = minetest-common
-	noextract = pacman-2022.01.14.zip
+	noextract = pacman-2022.04.26.zip
 	options = !strip
-	source = pacman-2022.01.14.zip::https://content.minetest.net/packages/Thunder1035/pacman/releases/10620/download/
-	sha256sums = 3f71a07e37b50d0bac817f7fe8f6772a66ec631bba10b29dcbe8f40608eb495a
+	source = pacman-2022.04.26.zip::https://content.minetest.net/packages/Thunder1035/pacman/releases/11982/download/
+	sha256sums = 83b6a4c76abeebcdf2e3ab2aef25d51406eaad27b52326e77a7df208a487d079
 
 pkgname = minetest-arcade3d
