@@ -2,26 +2,22 @@
 
 pkgname=onevpl-cpu-git
 pkgver=2022.1.4.r0.g83a0537
-pkgrel=2
+pkgrel=3
 pkgdesc='oneVPL runtime implementation for CPU (git version)'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
-depends=('ffmpeg')
-makedepends=('git' 'cmake' 'onevpl' 'openh264' 'svt-hevc')
+depends=('gcc-libs')
+makedepends=('git' 'cmake' 'meson' 'nasm' 'onevpl' 'python' 'xxhash' 'yasm')
 provides=('onevpl-cpu' 'onevpl-runtime')
 conflicts=('onevpl-cpu')
-options=('!emptydirs')
 source=('git+https://github.com/oneapi-src/oneVPL-cpu.git'
-        '010-onevpl-cpu-fix-libs.patch'
-        '020-onevpl-cpu-googletest-remove-werror.patch')
+        '010-onevpl-cpu-fix-build.patch')
 sha256sums=('SKIP'
-            '3e27f4634dfb3b563dfec9d85082e20abbeb58bf489782e901fab102106ca7c5'
-            'a0caaa1dd7701b6a13ebe58bc6917c4f10f787f33d4d7e53d52766ddf985b980')
+            'f8a04899239250cd32edde782823cf76be46249a17c3147fc29f3742a21f710c')
 
 prepare() {
-    patch -d oneVPL-cpu -Np1 -i "${srcdir}/010-onevpl-cpu-fix-libs.patch"
-    patch -d oneVPL-cpu -Np1 -i "${srcdir}/020-onevpl-cpu-googletest-remove-werror.patch"
+    patch -d oneVPL-cpu -Np1 -i "${srcdir}/010-onevpl-cpu-fix-build.patch"
 }
 
 pkgver() {
@@ -29,18 +25,33 @@ pkgver() {
 }
 
 build() {
-    local -x VPL_BUILD_DEPENDENCIES='/usr'
+    export CFLAGS+=' -ffat-lto-objects'
+    export CXXFLAGS+=' -ffat-lto-objects'
+    local -x PKG_CONFIG_LIBDIR="${srcdir}/install-deps/lib"
+    local -x VPL_BUILD_DEPENDENCIES="${srcdir}/install-deps"
+    
+    . oneVPL-cpu/script/bootstrap gpl
+    
+    local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    
     cmake -B build -S oneVPL-cpu \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
-        -DBUILD_TESTS:BOOL='OFF' \
+        -DCMAKE_PREFIX_PATH:PATH="${srcdir}/install-deps" \
+        -DBUILD_GPL_X264:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='ON' \
+        -DONEAPI_INSTALL_LICENSEDIR:STRING="share/licenses/${pkgname}" \
+        -DONEAPI_INSTALL_PYTHONDIR:STRING="lib/python${_pyver}" \
         -Wno-dev
     make -C build
 }
 
+check() {
+    make -C build test
+}
+
 package() {
     make -C build DESTDIR="$pkgdir" install
-    install -d -m755 "${pkgdir}/usr/share/licenses"
-    mv "${pkgdir}/usr/share/oneVPL-cpu/licensing" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
