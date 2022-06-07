@@ -2,7 +2,7 @@
 pkgname='organizr-git'
 _pkgname='organizr'
 pkgver=r3852.4f2e6c5f
-pkgrel=1
+pkgrel=2
 pkgdesc='HTPC/HomeLab services organizer (git version).'
 arch=('any')
 url='https://github.com/causefx/Organizr'
@@ -23,6 +23,7 @@ pkgver() {
 
 package() {
     install -dm 755 "${pkgdir}/usr/share/webapps/${_pkgname}"
+    install -dm 755 "${pkgdir}/usr/share/webapps/${_pkgname}/data"
     install -dm 755 "${pkgdir}/var/lib/${_pkgname}"
     
     cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/usr/share/webapps/${_pkgname}/"
@@ -36,5 +37,5 @@ package() {
     mv "${pkgdir}/usr/share/webapps/${_pkgname}/plugins" "${pkgdir}/var/lib/${_pkgname}/"
     ln -s "/var/lib/${_pkgname}/plugins" "${pkgdir}/usr/share/webapps/${_pkgname}/plugins"
 
-    ln -s "/var/lib/${_pkgname}/data" "${pkgdir}/usr/share/webapps/${_pkgname}/data"
+    ln -s "/var/lib/${_pkgname}/data/"{cache,favicon,pages,plugins,routes,themes,userTabs} "${pkgdir}/usr/share/webapps/${_pkgname}/data/"
 }

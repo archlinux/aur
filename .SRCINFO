@@ -1,7 +1,7 @@
 pkgbase = organizr-git
 	pkgdesc = HTPC/HomeLab services organizer (git version).
 	pkgver = r3852.4f2e6c5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/causefx/Organizr
 	install = organizr.install
 	arch = any
