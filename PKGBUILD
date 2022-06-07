@@ -49,7 +49,6 @@ prepare()
 
 	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
 	cat "$srcdir/$pkgbase/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
-	#./configure --enable-x11-backend --disable-installed-tests --disable-win32-backend --disable-dependency-tracking --disable-nls --disable-cups --disable-papi --disable-cloudprint --with-x --disable-gtk-doc
 }
 
 build()
