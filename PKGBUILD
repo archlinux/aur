@@ -5,13 +5,14 @@
 _gemname='rack'
 pkgname="ruby-${_gemname}-1"
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides an interface for developing web applications in Ruby'
 arch=('any')
 url="https://rubygems.org/gems/${_gemname}/versions/${pkgver}"
 license=('MIT')
 depends=('ruby' 'rubygems')
 provides=("${pkgname%-*}=${pkgver}")
+conflicts=("${pkgname%-*}")   # Conflicts with /usr/bin/rackup
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
 b2sums=('609bc7671947c2abfd00f0848e1870fcf46d5a92320427bea4b7104c1dbd6d4a9d0a89e3846e774c409d570ecc8fdb8d8099e553c5d73384f10a9f6e636765ca')
