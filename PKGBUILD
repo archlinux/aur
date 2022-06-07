@@ -8,7 +8,7 @@
 pkgname='python2-h5py'
 _name="${pkgname#python2-}"
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose Python bindings for the HDF5 library'
 arch=('x86_64')
 url='https://www.h5py.org/'
@@ -22,10 +22,10 @@ makedepends=(
   'cython2'
   'python2-pkgconfig'
 )
-checkdepends=(
-  'python2-pytest' 
-  'python2-unittest2'
-)
+# checkdepends=(
+#   'python2-pytest' 
+#   'python2-unittest2'
+# )
 conflicts=('hdf5-openmpi')
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}.tar.gz::https://pypi.python.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
@@ -42,11 +42,11 @@ build() {
   python2 setup.py build
 }
 
-check() {
-  cd "${_tarname}"
-  # https://github.com/h5py/h5py/issues/1435
-  python2 setup.py test || warning "Tests failed"
-}
+# check() {
+#   cd "${_tarname}"
+#   # https://github.com/h5py/h5py/issues/1435
+#   python2 setup.py test || warning "Tests failed"
+# }
 
 package() {
   cd "${_tarname}"

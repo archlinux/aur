@@ -1,12 +1,10 @@
 pkgbase = python2-h5py
 	pkgdesc = General-purpose Python bindings for the HDF5 library
 	pkgver = 2.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.h5py.org/
 	arch = x86_64
 	license = BSD
-	checkdepends = python2-pytest
-	checkdepends = python2-unittest2
 	makedepends = cython2
 	makedepends = python2-pkgconfig
 	depends = hdf5
