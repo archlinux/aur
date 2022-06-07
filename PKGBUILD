@@ -2,12 +2,12 @@
 pkgname=minetest-labyrinthus
 _pkgname=labyrinthus
 _pkgauthor=1248
-pkgver=2.9.0
-_cdbrel=9332
+pkgver=2.10.1
+_cdbrel=12203
 pkgrel=1
 pkgdesc="Can you help the nyancat to find her rainbow block??"
 license=("LGPLv2.1")
-sha256sums=('e4529b4d4fb9e8aadfd7f8ba1f40a8ed44165d33b5a4a2bc9405ecc8ef1d82a7')
+sha256sums=('9b306158ba074f64b67398db7794c1ee5d5a748313115605838ea5e0545c90a0')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
