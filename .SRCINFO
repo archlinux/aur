@@ -1,4 +1,4 @@
-pkgbase = ungoogled-chromium-bin
+pkgbase = ungoogled-chromium-binary
 	pkgdesc = A lightweight approach to removing Google web service dependency (binary release)
 	pkgver = 102.0.5005.61
 	pkgrel = 3
@@ -32,4 +32,4 @@ pkgbase = ungoogled-chromium-bin
 	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/102.0.5005.61-3/ungoogled-chromium-102.0.5005.61-3-x86_64.pkg.tar.zst
 	sha256sums = 565924751aec3d6237419abe5d632dd469bd7680c456c91baaa785353bf40244
 
-pkgname = ungoogled-chromium-bin
+pkgname = ungoogled-chromium-binary

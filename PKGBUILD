@@ -1,6 +1,6 @@
 # Maintainer: KuoHuanHuan <hi@nekohuan.cyou>
 
-pkgname=ungoogled-chromium-bin
+pkgname=ungoogled-chromium-binary
 pkgver=102.0.5005.61
 pkgrel=3
 epoch=1
