@@ -46,14 +46,13 @@ package() {
   mkdir "$pkgdir"/usr/share/licenses
   mkdir "$pkgdir"/usr/share/licenses/$pkgname
 
-	cp -a nteract-${pkgver}/applications/desktop/dist/linux-unpacked "$pkgdir"/opt/$pkgname
-	cp -a nteract-${pkgver}/applications/desktop/static "$pkgdir"/opt/$pkgname/resources/
+  cp -a nteract-${pkgver}/applications/desktop/dist/linux-unpacked "$pkgdir"/opt/$pkgname
+  cp -a nteract-${pkgver}/applications/desktop/static "$pkgdir"/opt/$pkgname/resources/
 
   chmod u+s "$pkgdir"/opt/$pkgname/chrome-sandbox
 
 	ln -s /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
 
-  desktop-file-install -m 644 --dir ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
-
+  install -Dm 644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
 	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
