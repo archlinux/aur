@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aisleriot-git
-pkgver=3.22.21.r8.gde390345
+pkgver=3.22.23.r1.g1ad43def
 pkgrel=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
@@ -16,18 +16,12 @@ optdepends=('pysolfc: for PySol card sets'
             'pysolfc-cardsets: for PySol card sets'
 	   'libkdegames: for KDE cardsets ')
 options=('!makeflags' '!strip' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/aisleriot.git" meson_fix.patch)
-sha256sums=('SKIP'
-            '14e1fde5c00eb285917c22099ae3552b2ae145acd3fdb7049ff78bce53d0c8d4')
+source=("git+https://gitlab.gnome.org/GNOME/aisleriot.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   git describe --tags | sed 's/-/.r/' | tr - .
-}
-
-prepare() {
-  cd ${pkgname%-git}
-  git apply "$srcdir"/meson_fix.patch
 }
 
 build() {
