@@ -1,7 +1,7 @@
 # Maintainer: Bastian Engel <bastian.engel00 at gmail.com>
 
 pkgname=vex-git
-pkgver=v1.0.0.r0.abf98ec
+pkgver=v1.0.1
 pkgrel=1
 pkgdesc="a simple ncurses-based hex editor"
 arch=('x86_64' 'i686')
