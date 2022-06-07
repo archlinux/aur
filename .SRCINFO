@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-protobuf
 	pkgdesc = Protocol Buffers - Google's data interchange format (mingw-w64)
 	pkgver = 3.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/protocol-buffers/
 	arch = any
 	license = BSD

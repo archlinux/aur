@@ -1,7 +1,7 @@
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
 pkgver=3.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
 url='https://developers.google.com/protocol-buffers/'
@@ -16,6 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
+  curl -L https://github.com/protocolbuffers/protobuf/pull/9936.patch | patch -p1
 }
 
 build() {
