@@ -1,15 +1,17 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.23
 
-pkgname='perl-moosex-traits'
-pkgver='0.13'
-pkgrel='1'
+pkgname=perl-moosex-traits
+pkgver=0.13
+pkgrel=2
 pkgdesc="automatically apply roles at object creation time"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-moose>=0.84' 'perl-namespace-autoclean' 'perl-sub-exporter')
+depends=('perl-moose>=0.84' 'perl-namespace-autoclean' 'perl-sub-exporter' 'perl-moosex-role-parameterized')
 makedepends=('perl-moose' 'perl-test-exception' 'perl-test-use-ok')
+checkdepends=('perl-test-requires')
 url='http://search.cpan.org/dist/MooseX-Traits'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Traits-${pkgver}.tar.gz")
 md5sums=('232530e9645abc20a4e7f14fdd022546')
@@ -39,7 +41,7 @@ check() {
 package() {
   cd "$_distdir"
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
 
 # Local Variables:

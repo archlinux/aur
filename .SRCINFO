@@ -1,21 +1,22 @@
 pkgbase = perl-moosex-traits
 	pkgdesc = automatically apply roles at object creation time
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/MooseX-Traits
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-requires
 	makedepends = perl-moose
 	makedepends = perl-test-exception
 	makedepends = perl-test-use-ok
 	depends = perl-moose>=0.84
 	depends = perl-namespace-autoclean
 	depends = perl-sub-exporter
+	depends = perl-moosex-role-parameterized
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Traits-0.13.tar.gz
 	md5sums = 232530e9645abc20a4e7f14fdd022546
 	sha512sums = b5128105e66f2889b6ddfb5b5b871fd952bfe6e08f038cabcc5fa49e9f9f4a806dab06acf9756507613cb6c99e6d633f80c561d85be1d3a1a756039ed29acca2
 
 pkgname = perl-moosex-traits
-
