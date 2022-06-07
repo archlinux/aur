@@ -1,7 +1,7 @@
 # Maintainer: krumelmonster <krumelmonster@zoho.com>
 
 pkgname=fileshelter
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A self-hosted software to share files over the Web"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost')
 source=("https://github.com/epoupon/fileshelter/archive/v$pkgver.tar.gz"
         "fileshelter.sysusers"
         "fileshelter.tmpfiles")
-sha256sums=('2bb8af641194e8621032b16f8373c239414c8054fd39bd32a84303552c277eec'
+sha256sums=('0914ade5065f174e80ee526d8ae58ba6143ef05771c8e55edb3c77ab6bcfc01d'
             '886d3e08bd72b279f81b6ddbad2b7da00b746566aed4ea8a63baae3bdc4ccfd1'
             'bd578276480969f7c006e7ed51708a7484bd901060b83d2e7aa0b0a22f88c185')
 
