@@ -2,12 +2,12 @@
 pkgname=minetest-prang
 _pkgname=prang
 _pkgauthor=luk3yx
-pkgver=2021.11.14
-_cdbrel=9660
+pkgver=2022.05.23
+_cdbrel=12345
 pkgrel=1
 pkgdesc="An unofficial port of PRANG!, a 2D arcade-style game. "
 license=("MIT")
-sha256sums=('ce70dc7a330e652ca5b9ab4657c676327d6c5680c35c8c077629b78c303b20ce')
+sha256sums=('328aab74ad7848b9c77653fa7189a2c40ca977ab054556548c26f96dedee4d16')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
