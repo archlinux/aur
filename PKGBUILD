@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.8pre+267+g196d2efc8
+pkgver=4.8pre+493+g989dcfcf1
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,6 +11,7 @@ depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
+         'libvpx'
          'openal'
          'sdl2'
          'zmusic>=1.1.8')
@@ -59,6 +60,7 @@ build() {
     cmake -B build \
           -D CMAKE_BUILD_TYPE=Release \
           -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/gzdoom\\\"" \
+          -D INSTALL_RPATH=/usr/lib \
           -D DYN_GTK=OFF \
           -D DYN_OPENAL=OFF
     make -C build
