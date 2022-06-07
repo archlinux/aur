@@ -133,6 +133,9 @@ package() {
 	install -d -m755 "${pkgdir}/usr/bin/"
     ln -s "/opt/$pkgname/$_pkgname" ${pkgdir}/usr/bin/$_pkgname
 
+    # Fix permissions of chrome-sandbox for those running the hardened kernel
+    chmod 4755 "${pkgdir}/opt/$pkgname/chrome-sandbox"
+
     # Create a .desktop file
 	install -dm755 "$pkgdir/usr/share/applications/"
 	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
