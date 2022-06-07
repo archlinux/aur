@@ -8,13 +8,12 @@
 #
 # This is original kernel of Manjaro Linux + ACS patch
 
-
 pkgbase=linux-vfio-manjaro
 pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
 _kernelname=-VFIO-MANJARO
-_basekernel=5.15
-_basever=515
-pkgver=5.15.14
+_basekernel=5.17
+_basever=517
+pkgver=5.17.13
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -36,24 +35,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
-        '0002-PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch'
-        '0003-iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch'
-        '0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch'
-        '0005-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch'
-        '0006-lg-laptop_Recognize_more_models.patch'
+        '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+        '0103-tick-Detect_and_fix_jiffies_update_stall.patch'
+        '0104-tick-rcu-Remove_obsolete_parameters.patch'
+        '0105-tick-rcu-Stop_allowing_RCU_SOFTIRQ_in_idle.patch'
+        '0106-lib-irq_poll-Declare_IRQ_POLL_softirq_vector_as_ksoftirqd-parking_safe.patch'
+        '0107-NFSv4.1_provide_mount_option_to_toggle_trunking_discovery.patch'
         # MANJARO Patches
-        '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
-#        '0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch'
-        '0103-futex.patch' # https://github.com/sirlucjan/kernel-patches
-        '0104-revert-xhci-Add-support-for-Renesas-controller-with-memory.patch'
-        '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
-        '0108-drm_i915_Add_workaround_numbers_to_GEN7_COMMON_SLICE_CHICKEN1_whitelisting.patch::https://patchwork.freedesktop.org/patch/463650/raw/'
-        # Lenovo + AMD
-        '0201-lenovo-wmi2.patch'
-        # other patches
+        '0201-rtl_bt_fix_load_firmware.patch'
         # Bootsplash
-        '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'        
+        '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
         '0303-revert-fbcon-remove-soft-scrollback-code.patch'
         '0401-bootsplash.patch'
@@ -69,22 +60,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0411-bootsplash.patch'
         '0412-bootsplash.patch'
         '0413-bootsplash.gitpatch'
+        # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '283bf58378a8f8ff457fc1259dd2864dc4de92295482ef3ae868e13e017250ee'
-            '7c65b68bd250de8726c3dd5befa556cde515393c871dd0e0b599f40a5c33ac41'
-            '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
-            'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
-            'ce53090a4572cd6162d22225113082f7e4df5028a1230529d170460e26dcf849'
-            'ab0360eac59329eb84f028c2f402ee4a17e4b3dfacb7957355e6178d35af87b9'
-            '76701599bbafa49b90ccb073ef29ce2dc3731566e8fa852bd1e9e7796e184754'
-            'a2a0a0542055a6a921542fbb05cedb6eb6f3d3fb0c038bfb2304bfd3931a0f71'
-            '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
-            '844e66a95d7df754c55ac2f1ce7e215b1e56e20ca095462d926a993d557b20e0'
-            'd9330ea593829a6ef3b824db9570253280cbff7da2b4beb47cbc037824d1a29b'
-            '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
-            'e8e6120035977903a7117ba215809b9b162b64a789848107513f219180baaada'
-            '1d58ef2991c625f6f0eb33b4cb8303932f53f1c4694e42bae24c9cd36d2ad013'
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
+            'e021118c2c4307cf1e0df7bcec8484dc96c40a3fe3e2ae105f3b98001343967c'
+            'fd4881ab23e542cc84922ccc4219d400e88a165ab1edc7e4dac357f4ebfb18f4'
+            'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
+            'f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad'
+            'e17f4175131fd5224b438be00b55ac6496ec6c25ac2c6fcc3ec6f9a94e6b3221'
+            'ca5bb1ba3cb70020d712fa7f684de7d20d2bd6ad2efe6d92b578ab3b12749b04'
+            '6a7cd911548f2b6618ce667f8b88cf1159e6b455e64b74d802710b4fe83ef0a2'
+            '305e5f1844c5f919f8de1873e11b88dec305dfa8cc2245e75e7c157e01bc1443'
+            'e96d2093539cc23824a6c0dc725332b9c626da14c1bec00dc5ca537ccafb0194'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '1f18c5c10a3c63e41ecd05ad34cd9f6653ba96e9f1049ce2b7bb6da2578ae710'
@@ -101,7 +88,7 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
             '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
-            '6d6b327ec7c7798f628f98ab964f4457d3cf043bad2632eb8f27548478a83cc1')
+            '2542b5cea79ab5817ce3d30c54acd045966b9c14587bfb0b2f50d473da48a1d5')
 
 prepare() {
   cd "linux-${_basekernel}"
@@ -136,9 +123,6 @@ prepare() {
   msg "set extraversion to pkgrel"
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-  # set patchlevel to 14
-  #sed -ri "s|^(PATCHLEVEL =).*|\1 14|" Makefile
-
   msg "don't run depmod on 'make install'"
   # We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -160,7 +144,7 @@ build() {
 package_linux-vfio-manjaro() {
   pkgdesc="The Linux Manjaro standart kernel and modules with ACS patch"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules wireguard)
 
@@ -239,6 +223,9 @@ package_linux-vfio-manjaro-headers() {
 
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "${_builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   # remove unneeded architectures
   local _arch
