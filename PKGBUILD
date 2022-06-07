@@ -3,7 +3,7 @@
 
 pkgbase=yesplaymusicosd-git
 pkgname=(yesplaymusicosd-git yesplaymusicosd-electron-git)
-pkgver=0.4.5.r22.g80aa862
+pkgver=0.4.5.r22.g7a9fd28
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux 支持桌面歌词！"
 arch=("x86_64" "aarch64")
