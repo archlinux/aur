@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ParallelLogger
-_pkgver=3.0.0
+_pkgver=3.0.1
 pkgname=r-${_pkgname,,}
-pkgver=3.0.0
-pkgrel=4
+pkgver=3.0.1
+pkgrel=1
 pkgdesc='Support for Parallel Computation, Logging, and Function Automation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1358ee0327671852daf3234cd286c740e212d81f79a2e7873e7f0ddcfe0c70ef')
+sha256sums=('a276b8b7dff85c52b7269a6a8bc6cc56e204482e1c5fec04a9b016f99cc77892')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
