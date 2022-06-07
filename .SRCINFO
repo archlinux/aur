@@ -1,7 +1,7 @@
 pkgbase = python-montepython
 	pkgdesc = The Monte Carlo code for class in Python
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/brinckmann/montepython_public
 	arch = any
 	makedepends = python-setuptools
