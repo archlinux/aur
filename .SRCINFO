@@ -1,12 +1,12 @@
 pkgbase = r-graddescent
 	pkgdesc = Gradient Descent for Regression Tasks
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=gradDescent
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/gradDescent_3.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/gradDescent/gradDescent_3.0.tar.gz
 	sha256sums = e9acd505aea624c381cfe95839460a2dad4df4f4937007d65c65e2c4a5ddafcb
 
 pkgname = r-graddescent
