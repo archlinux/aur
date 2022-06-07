@@ -2,18 +2,18 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_message'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.1'
-pkgrel='2'
+pkgver='0.15.0'
+pkgrel='1'
 epoch='1'
 pkgdesc='A ppx rewriter for easy construction of s-expressions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppx_here>=0.14.0' 'ocaml-ppx_sexp_conv>=0.14.0' 'ocaml-ppxlib>=0.18.0')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e625145e9cd6f89e3cecd3b14f6d68e0ac09ed24f629a407f9019685167a119')
+sha512sums=('2b671a1fa020c785ffb02b67998653dedcce892ab68fc23665ce8c88534ae9f5e1df2f148e1f9ea965444f4a48d896735e2bdc313db2787101a5aee2e5f9f025')
 
 _sourcedirectory="$_projectname-$pkgver"
 
