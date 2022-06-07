@@ -1,28 +1,28 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
-# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
 
-pkgname=python2-funcsigs
+pkgname='python2-funcsigs'
+_name="${pkgname#python2-}"
 pkgver=1.0.2
 pkgrel=3
-pkgdesc="Python function signatures from PEP362"
+pkgdesc='Python function signatures from PEP362'
 arch=('any')
-url="https://pypi.python.org/pypi/funcsigs/"
+url="https://pypi.python.org/pypi/${_name}/"
 license=('Apache')
 depends=('python2')
 makedepends=('python2-setuptools')
 checkdepends=('python2-nose' 'python2-unittest2')
-#source=(https://pypi.python.org/packages/source/f/funcsigs/funcsigs-${pkgver}.tar.gz)
-source=(https://pypi.python.org/packages/94/4a/db842e7a0545de1cdb0439bb80e6e42dfe82aaeaadd4072f2263a4fbed23/funcsigs-1.0.2.tar.gz)
-sha256sums=('a7bb0f2cf3a3fd1ab2732cb49eba4252c2af4240442415b4abce3b87022a8f50')
+_tarname="${_name}-${pkgver}"
+source=("${_tarname}.tar.gz::https://pypi.python.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
+b2sums=('3006d46018ae040b930e397c3f11575ae0ef18a8b2c9b6c10075804d83d23bea1fb81179de85180146673e0bd4c775a68c0ff624cdaceb1894efe5b2c8fd753c')
 
 package() {
-  cd "$srcdir/funcsigs-$pkgver"
+  cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}"  --optimize=1
 }
 
 check() {
-  cd "$srcdir/funcsigs-$pkgver/tests"
+  cd "${_tarname}/tests"
   nosetests2 .
 }
-
-# vim:ts=2:sw=2:et:
