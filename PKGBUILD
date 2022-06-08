@@ -17,7 +17,7 @@ source=("https://github.com/aide/aide/releases/download/v${pkgver}/aide-${pkgver
         "aide.conf")
 sha256sums=('c81505246f3ffc2e76036d43a77212ae82895b5881d9b9e25c1361b1a9b7a846' # aide-${pkgver}.tar.gz sha256sum
             'SKIP'
-            'c56b3d360d659614df2552c8dbf5ea500e44974d38c34c07f6cdd3ce4c4ad615') # aide.conf sha256sum
+            'dd8f40a6e0a298dd0f457e6d814bc29c3fd5e5061cc9007386e2c2c3c7887f1a') # aide.conf sha256sum
 validpgpkeys=('2BBBD30FAAB29B3253BCFBA6F6947DAB68E7B931') # Hannes von Haugwitz <hannes@vonhaugwitz.com>
 
 build() {
