@@ -15,6 +15,13 @@ depends=(
 	"harec-git"
 )
 
+optdepends=(
+	"aarch64-linux-gnu-gcc: aarch64 cross compilation support"
+	"aarch64-linux-gnu-binutils: aarch64 cross compilation support"
+	"riscv64-linux-gnu-gcc: riscv64 cross compilation support"
+	"riscv64-linux-gnu-binutils: riscv64 cross compilation support"
+)
+
 arch=("x86_64")
 url="https://harelang.org"
 source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
