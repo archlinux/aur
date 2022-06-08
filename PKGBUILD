@@ -2,8 +2,8 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=2.4.0
-pkgrel=6
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
@@ -15,10 +15,10 @@ optdepends=('nginx: TLS support'
 			'docker: Container support'
                         'sqlite: Database support')
 depends=()
-source=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver//_/-}/pufferpanel_${pkgver//_/-}_linux_amd64.zip
+source=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver//_/-}/pufferpanel_${pkgver//_/-}_linux_amd64.zip.zip
 		https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/systemd/servicefiles/pufferpanel.service
                https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/config.linux.json)
-b2sums=('ba9de04c7932332a4a48b04a60015cb1f35c3c85da6dce2cc9f60bff9f03617edf02c9de33b157054a2a6ba54e7666cc7b333f6bb17a80bdd40e50a0eb116e3f'
+b2sums=('0c1a3dba974b6c8ca158d0a2d6c885fcea533b8926abd99069656dbe7c8ad453b40dfd0239f2552cdd45669a92150a97b267b0e76344162f385ed74d8e441330'
         'ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141'
         '87d5cbcd6652209913527fc595ec457659ff05c759b6b4ff4d0154e856adc2056640b4dceff9216b0a118751e24bf1b43b80ff6fe3ad74e0ce45f5c82bc59f7e')
 package() {
