@@ -5,10 +5,10 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='1.0.0'
-_rc='-rc4'
+_rc='-rc5'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=4
+pkgrel=5
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -34,10 +34,10 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}armhf.tar.gz"
 )
-sha256sums=('ffa0a31aad701bdc939923ef7299eb5fc40282e159aecb2c82d08f293e61aa07'
-            '798a9ccf3ca26a0450c62bc8ad2d4fddbbfdd27501a83bb771af3d60a007c001'
-            '13f849a09634341be5bf93b660f852a0d3c793408a45c4b059cb17e37225a565'
-            '7fd7b4e8d1dbc069383b3b3dc488552543f2ec622a30023284d0375a61c5d53d')
+sha256sums=('ff2de52136829a476073c9c42b64eced06f389cdcadf2f9c591c7f1246d9ee4f'
+            '1eae647fd57ba7859c9cb61d9ab82e6a803cf76b24def008f26cb1d3a7660ba3'
+            'd8bfdadb86bbcdbd1fbf39b41a3d56d039974b6cc0f2e139525373b2f13ea5ce'
+            '56e4e02278cc35cc4779c902b2625e8e51e0964a8160cd48652f74a5cdd76223')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -94,13 +94,13 @@ mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 cd $_pkgdir
 _msg2 'installing binaries'
-install -Dm755 ${pkgdir}/test/*/skywire-visor ${_pkgdir}/${_skybin}/
+install -Dm755 ${pkgdir}/test/skywire-visor ${_pkgdir}/${_skybin}/
 ln -rTsf ${_pkgdir}/${_skybin}/skywire-visor ${_pkgdir}/usr/bin/skywire-visor
-install -Dm755 ${pkgdir}/test/*/skywire-cli ${_pkgdir}/${_skybin}/
+install -Dm755 ${pkgdir}/test/skywire-cli ${_pkgdir}/${_skybin}/
 ln -rTsf ${_pkgdir}/${_skybin}/skywire-cli ${_pkgdir}/usr/bin/skywire-cli
 
 _msg2 'installing app binaries'
-_apps=${pkgdir}/test/*/apps
+_apps=${pkgdir}/test/apps
 install -Dm755 ${_apps}/skychat ${_pkgdir}/${_skyapps}/
 ln -rTsf ${_pkgdir}/${_skyapps}/skychat ${_pkgdir}/usr/bin/skychat
 install -Dm755 ${_apps}/skysocks ${_pkgdir}/${_skyapps}/
@@ -126,7 +126,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${pkgdir}/test/*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${pkgdir}/test/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
@@ -134,7 +134,6 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir
 #this is to overwrites any previous file not provided by this package
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}-hypervisor.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
 #desktop integration
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
