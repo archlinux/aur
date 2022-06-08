@@ -73,8 +73,8 @@ EOF
 
     if [ -n "${cryptdevpath}" ]; then
         if mount --mkdir -o "defaults" "${cryptdev}" /run/cryptdev; then
-            cryptdev="${cryptdevpath}"
             echo "Device ${cryptdev} mounted successfully over /run/cryptdev"
+            cryptdev="/run/cryptdev/${cryptdevpath}"
         else
             echo "Can't mount device ${cryptdev} over /run/cryptdev"
         fi
