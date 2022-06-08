@@ -7,7 +7,7 @@ pkgver=1.7.3
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
 _charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
-pkgrel=8
+pkgrel=9
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
@@ -38,7 +38,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   export CXXFLAGS="$CXXFLAGS -DNDEBUG"
-  cmake . -GNinja -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MERGED_PLUGINS=Off -DENABLE_EXTERNAL_PLUGINS=On
+  cmake . -GNinja -Bbuild -DBUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MERGED_PLUGINS=Off -DENABLE_EXTERNAL_PLUGINS=On -Wno-dev
   cmake --build build
 }
 
