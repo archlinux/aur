@@ -53,6 +53,7 @@ package() {
     cd ${srcdir}/${pkgname}/build
     make DESTDIR="${pkgdir}" install
     cd ${srcdir}/${pkgname}/build-ng
-    make DESTDIR="${pkgdir}/e" install
+    make DESTDIR="${pkgdir}" install
+    rm "$pkgdir"/usr/include/{,un}zip.h
     install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
