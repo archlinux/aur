@@ -2,12 +2,12 @@
 
 pkgname=python-pytest-black
 pkgver=0.3.12
-pkgrel=5
+pkgrel=6
 pkgdesc="A pytest plugin to enable format checking with black"
 arch=('any')
 license=('MIT')
 url="https://github.com/shopkeep/pytest-black/"
-depends=('python-black' 'python-pytest')
+depends=('python-black' 'python-pytest' 'python-toml')
 makedepends=('python-setuptools-scm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shopkeep/pytest-black/archive/$pkgver.tar.gz"
         $pkgname-pytest6.patch::https://github.com/shopkeep/pytest-black/pull/53.patch)
