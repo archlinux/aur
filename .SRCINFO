@@ -6,6 +6,7 @@ pkgbase = python-dt-schema
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-ruamel-yaml
 	depends = python-rfc3987
