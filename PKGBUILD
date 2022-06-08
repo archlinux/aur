@@ -2,12 +2,12 @@
 
 pkgname=python-yg.lockfile
 pkgver=2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Lockfile object with timeouts and context manager"
 url="https://github.com/yougov/yg.lockfile"
 license=('MIT')
 arch=('any')
-depends=('python-zc.lockfile' 'python-tempora' 'python-jaraco')
+depends=('python-zc.lockfile' 'python-tempora' 'python-jaraco.functools')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest')
 source=("https://github.com/yougov/yg.lockfile/archive/$pkgver/$pkgname-$pkgver.tar.gz")
