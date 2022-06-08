@@ -14,7 +14,7 @@ optdepends=('sudo')
 provides=('modprobed-db')
 conflicts=('modprobed-db')
 url="https://wiki.archlinux.org/index.php/Modprobed-db"
-source=("git://github.com/graysky2/modprobed-db")
+source=("git+https://github.com/graysky2/modprobed-db")
 sha256sums=('SKIP')
 install=readme.install
 
