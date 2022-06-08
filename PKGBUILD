@@ -1,8 +1,10 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 
 _cranname=carData
-_cranver=3.0-4
+_cranver=3.0-5
+_updatedate=2022-06-08
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,8 +13,8 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.5.0')
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('cda6f5e3efc1d955a4a0625e9c33f90d49f5455840e88b3bd757129b86044724')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('02e77159b33e3afb8cd9cfab11cf5a996a93175f924b07d991ce44bc6e16451a')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
