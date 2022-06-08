@@ -2,7 +2,7 @@
 
 pkgname=quictls-openssl
 pkgver=1.1.1o+quic
-pkgrel=1
+pkgrel=2
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
@@ -31,6 +31,10 @@ prepare() {
 
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/../ca-dir.patch"
+
+	# ensure version is default version system from OpenSSL (without the
+	# 81-prefix found in the fork)
+	patch -p0 -i "$srclib/../shlib-version.patch"
 }
 
 build() {
