@@ -1,0 +1,16 @@
+pkgbase = pylinuxwheel
+	pkgdesc = A graphical program developed in gtk3 to configure your Logitech Steering Wheel in Linux
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://odintdh.itch.io/pylinuxwheel
+	arch = x86_64
+	license = GPL3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-pyudev
+	depends = python-evdev
+	depends = gtk3
+	source = https://gitlab.com/OdinTdh/pyLinuxWheel/-/archive/0.6.1/pyLinuxWheel-0.6.1.tar.gz
+	sha256sums = 736b6897b2e21694ebf5ca07e0ebf9fcc9c96b6bfa6f26cfc5699fae9f5c3559
+
+pkgname = pylinuxwheel
