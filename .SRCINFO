@@ -1,0 +1,18 @@
+pkgbase = python-flit-scm
+	pkgdesc = A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit to build the package.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://gitlab.com/WillDaSilva/flit_scm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-flit-core
+	depends = python-setuptools-scm
+	depends = python-tomli
+	source = python-flit-scm-1.6.2.tar.gz::https://gitlab.com/WillDaSilva/flit_scm/-/archive/1.6.2/flit_scm-1.6.2.tar.gz
+	sha256sums = 78afc9d2364e15df9d6ff7f27940e41d43d0d6b7fb659d37a7b2df1f1c97ad66
+
+pkgname = python-flit-scm

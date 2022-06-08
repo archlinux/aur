@@ -1,0 +1,5 @@
+pkg/
+src/
+
+python-flit-scm-*.tar.*
+python-flit-scm-*.pkg.*
