@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNASeqR
-_pkgver=1.12.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='RNASeqR: an R package for automated two-group RNA-Seq analysis workflow'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -45,10 +45,14 @@ optdepends=(
   r-rmarkdown
   r-rnaseqrdata
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('25bf668244e24a52bc2a6425b4ea10f41674656d77fe6bfce3aaa245c9cc59b8')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
