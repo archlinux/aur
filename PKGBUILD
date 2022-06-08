@@ -25,9 +25,6 @@ sha256sums=('bbcfd023bccf92e58615f34802175f47c36b34569e3f4c6edc09bb40217aa1e7'
 
 build()
 {   
-    # extract the tar.gz
-    tar xzf "mapsetverifier-$pkgver.tar.gz"
-
     # disable the built in updater because it always errors on linux
     sed -i "218d" "$srcdir/mapsetverifier-$pkgver/resources/app/main.js"
 }
