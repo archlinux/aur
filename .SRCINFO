@@ -1,7 +1,7 @@
 pkgbase = adw-gtk-theme
-	pkgdesc = LibAdwaita Theme for all GTK3 and GTK4 Apps
+	pkgdesc = LibAdwaita Theme for all GTK3 and GTK4 Apps. NOTE: This is a meta package which uses adw-gtk3 for GTK3 and official LibAdwaita theme for GTK4
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	install = adw-gtk-theme.install
 	arch = any
 	depends = libadwaita
