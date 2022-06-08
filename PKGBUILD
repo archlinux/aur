@@ -1,6 +1,6 @@
 # Maintainer Nathan Fisher <jeang3nie at hitchhiker-linux dot org>
 pkgname=eva-browser
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A gemini browser in Gtk4'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4')
 makedepends=('rust')
 source=("https://codeberg.org/jeang3nie/eva/archive/v$pkgver.tar.gz")
 sha512sums=(
-  'da02703b275450d83f051bf33b2be4595e41592e397bab242e2eac23a1a12b8583142d6a5d7338231689f2ff45756214b0e542e2295f713d649ae5e0dc35133f'
+  '3841a9a26efc842b65a585c2a573498a0389b0c0b38bc1afbd60f630f4d68685ba34276c6fa1efa1cd70739a9c649edeba1a030ed38122409d66c0fbf7731754'
 )
 
 build() {
