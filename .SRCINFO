@@ -1,0 +1,13 @@
+pkgbase = python-sphinx-version-warning
+	pkgdesc = Sphinx extension to add a warning banner
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://sphinx-version-warning.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-version-warning/sphinx-version-warning-1.1.2.tar.gz
+	md5sums = b17e016b32add34e5deaa80b4a9af799
+
+pkgname = python-sphinx-version-warning
+	depends = python-sphinx
