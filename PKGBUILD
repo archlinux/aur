@@ -3,7 +3,7 @@
 
 pkgname=ca-certificates-icp_br
 pkgver=20220505
-pkgrel=2
+pkgrel=3
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
 url="https://www.gov.br/iti/pt-br/assuntos/repositorio/repositorio-ac-raiz"
@@ -13,7 +13,7 @@ makedepends=('unzip')
 _source="icpbr_certs-${pkgver}-${pkgrel}"
 
 source=("$_source.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('ed02c8539d943ed4fda4573c4051f3e5bcb8c81011adda8c962d1fc10abb6b3f952938c162697dae9dc62c265ded3a602efe19bbbdf7bd2a1d0245666e97fe2c')
+sha512sums=('c56645ba7d8283006e19261d763c7ffd77ce98811f82d9063d7012c2d37193641c451d70dee67653a3bc27221b707d619ecc31ba0d3c0172da9f732173b54d2b')
 noextract=("$_source.zip")
 
 prepare() {
