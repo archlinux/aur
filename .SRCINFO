@@ -7,16 +7,10 @@ pkgbase = python-stsci.imagemanip
 	arch = x86_64
 	license = BSD
 	checkdepends = python-stsci.tools
-	checkdepends = python2-stsci.tools
-	checkdepends = python2-pytest32
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = python-numpy
-	makedepends = python2-numpy
 	makedepends = python-d2to1
-	makedepends = python2-d2to1
 	makedepends = python-stsci.distutils
-	makedepends = python2-stsci.distutils
 	source = https://files.pythonhosted.org/packages/source/s/stsci.imagemanip/stsci.imagemanip-1.1.4.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/stsci.imagemanip/master/LICENSE.txt
 	md5sums = cc40be0b4583cfc2afae038af1899731
@@ -24,7 +18,3 @@ pkgbase = python-stsci.imagemanip
 
 pkgname = python-stsci.imagemanip
 	depends = python-stsci.tools
-
-pkgname = python2-stsci.imagemanip
-	depends = python2-stsci.tools
-
