@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.34.1
+pkgver=1.2.35
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -35,7 +35,7 @@ provides=(aseprite)
 conflicts=(aseprite)
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
-        "https://github.com/aseprite/skia/releases/download/m96-2f1f21b8a9/Skia-Linux-Release-x64.zip"
+        "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Linux-Release-x64.zip"
         desktop.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
@@ -44,8 +44,8 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-skia-deps.patch
         optional-pixman.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
-sha256sums=('3dba4972048e25a06719e6227535937f17e6ff0f637bb337d97703cd7bdb0b41'
-            '4d1fea6e960113b80c79eb82f1e7174cefee8e9d38748178f2c615de13efc4d1'
+sha256sums=('407ee1cf9c4ac47cc0033d1ce597591d33f9c39bb8cfc5b95728c6195378be14'
+            '47693b85d7ee9e4bab3663c04de2bae37f67d566e091183b0a22c97837b7dcbe'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
             'e7662539c6279f29594a634998216643df13545202597df7f9990e00a5f0a3af'
@@ -76,7 +76,7 @@ build() {
 -DENABLE_{UPDATER,SCRIPTING,WEBSOCKET}=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$srcdir/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
 -DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
--DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++" \
+-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++" -DCMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libc++ \
 -DWEBP_INCLUDE_DIR="$srcdir/skia/third_party/externals/libwebp/src" \
 -DWEBP{,MUX,DEMUX}_LIBRARY= # Use Skia's already-bundled WebP library (link to no additional libs)
 	ninja -C build
