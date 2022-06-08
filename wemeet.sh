@@ -1,7 +1,4 @@
 #!/bin/sh
-export PATH=$PATH:/opt/wemeet/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/wemeet
-export QT_PLUGIN_PATH="/usr/lib/qt/plugins"
 export XDG_SESSION_TYPE=x11
 export QT_QPA_PLATFORM=xcb
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
@@ -24,7 +21,7 @@ echo ${QT_IM_MODULE}
 
 if [ -f "/usr/bin/bwrap" ];then
     mkdir -p $FONTCONFIG_DIR
-    bwrap --dev-bind / / --tmpfs $HOME/.config --ro-bind $FONTCONFIG_DIR $FONTCONFIG_DIR wemeetapp $*;
+    bwrap --dev-bind / / --tmpfs $HOME/.config --ro-bind $FONTCONFIG_DIR $FONTCONFIG_DIR /opt/wemeet/bin/wemeetapp $*;
 else
-    exec wemeetapp $*;
+    exec /opt/wemeet/bin/wemeetapp $*;
 fi; 

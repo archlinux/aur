@@ -5,7 +5,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=3.8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -19,8 +19,9 @@ depends=('qt5-x11extras'    'libxrandr'  'libxinerama' 'qt5-webengine'
 'pulseaudio')
 # 无 'pulseaudio' 无法连接到系统音频 
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
+makedepends=('patchelf')
 sha512sums=('974bc6c4a3ab80333c957f4b4c3e11a7a6b67f24501a1090b537aba47341302123b236c98433f796c9fb077bb306fa66bb19048092351b10f1ea254f68d4c39a'
-            'ba7fc976a18f07a95954910b8e3d6908b2c47ba29c86383a41a0b44b48cc403cb2eeb06de7470aec050a69fb00c8d00c51093e0316f3cac94045b819c957cc33')
+            '6e72981eb85d1a87c0ccf28201c0f98f2b98311deb200eb83be4321ca3ae594130c33f8a7ce8fe4e6fe8da42c9fa265abe30a5897cf527079ba9fc164ee6b2b0')
 
 prepare(){
     tar xpf data.tar.xz -C ${srcdir}
@@ -39,7 +40,8 @@ prepare(){
             ${srcdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}app.png;
     done
     
-    sed -i 's|^Pre.*|Prefix = /usr/lib/qt|g' bin/qt.conf
+    rm bin/qt.conf
+    patchelf --set-rpath /usr/lib/${_pkgname} bin/wemeetapp
 }
 
 package() {
@@ -52,6 +54,12 @@ package() {
     
     install -Dm755 lib/{libwemeet*,libxcast.so,libxnn*,libui*,libdesktop_common.so,libImSDK.so,libxcast_codec.so} \
         -t ${pkgdir}/usr/lib/${_pkgname}
+        
+    for lib in ${pkgdir}/usr/lib/${_pkgname}/*
+    do
+        patchelf --set-rpath '$ORIGIN' $lib
+    done;
+    
     mkdir -p ${pkgdir}/opt/${_pkgname}
     cp -rf  bin   ${pkgdir}/opt/${_pkgname}
     cp -rf  bin/raw/xcast.conf ${pkgdir}/opt/${_pkgname}/bin
