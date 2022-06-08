@@ -2,15 +2,15 @@
 _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-pytest)
 makedepends=(python-virtualenv)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e841ed11c8cd8e73b888bdee3ceda82193e0ed0441d623c586c69c45412039656a09e9f872f187c72d4e245ac8ee99b4a099ed9ae1a13f88f564bc0b9fae69f6')
+sha512sums=('4c3d91488550373832c8dd45b39873ae3810b423147b3b9524afc8e205605324092b4462b62acf2e34e70b5456795834cae511d9c9a06e08288a46cdb38b1778')
 
 # prepare() {
 #   sed -i 's/requires = \["setuptools>=61"\]/requires = \["setuptools>=60"\]/' ${_base}-${pkgver}/pyproject.toml
