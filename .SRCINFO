@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-asdf
 	pkgdesc = Sphinx plugin for generating documentation from ASDF schemas
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/spacetelescope/sphinx-asdf
 	arch = any
 	license = BSD
@@ -9,12 +9,12 @@ pkgbase = python-sphinx-asdf
 	checkdepends = python-sphinx
 	checkdepends = python-yaml
 	checkdepends = python-mistune=0.8.4
-	checkdepends = python-sphinx-bootstrap-theme
 	makedepends = python-setuptools-scm
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.1.2.tar.gz
-	sha256sums = 926c881b2492b6cdfd1ad40cbea63d6f21825b075259b8860aa954f86f269dbe
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-asdf/sphinx-asdf-0.1.3.tar.gz
+	sha256sums = 9b594350a1ddb7464d598584c541883e57736a275f976dfb2ea90835a3084e67
 
 pkgname = python-sphinx-asdf
 	depends = python-yaml
 	depends = python-mistune=0.8.4
+	depends = python-sphinx
 	depends = python-sphinx-bootstrap-theme
