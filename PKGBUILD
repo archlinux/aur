@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SLGI
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
-pkgrel=3
+pkgver=1.56.0
+pkgrel=1
 pkgdesc='Synthetic Lethal Genetic Interaction'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,10 +21,14 @@ optdepends=(
   r-go.db
   r-org.sc.sgd.db
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3a23957fbd9a5f0cee491cbeb6985a611b5550a2868d73dcd03e1332096e5c0e')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
