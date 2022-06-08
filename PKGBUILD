@@ -1,7 +1,7 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='utf-8-steg-git'
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
 url="https://github.com/yadayadajaychan/utf-8-steg"
@@ -11,9 +11,9 @@ makedepends=('git' 'gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-_tag=05f8b7df05d5f007cd8a5e45b30de6f8dc04a34e
-source=(git+https://github.com/yadayadajaychan/utf-8-steg.git?signed#tag=$_tag)
+source=(git+https://github.com/yadayadajaychan/utf-8-steg.git?signed#branch=master)
 md5sums=('SKIP')
+validpgpkeys=(1624691AAB618B49D8AE10BE046F1347562492CC)
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
