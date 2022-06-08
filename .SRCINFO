@@ -1,6 +1,6 @@
 pkgbase = palemoon-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 31.0.0
+	pkgver = 31.1.0
 	pkgrel = 1
 	epoch = 1
 	url = http://linux.palemoon.org/
@@ -16,16 +16,16 @@ pkgbase = palemoon-bin
 	depends = mime-types
 	depends = nss
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=31.0.0
+	provides = palemoon=31.1.0
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha256sums = 6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7
-	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-31.0.0.linux-x86_64-gtk2.tar.xz
-	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-31.0.0.linux-x86_64-gtk2.tar.xz.sig
-	sha256sums_x86_64 = e176d287df900a4838c905c858ec5d3b010b6b8d0a8e101567854ea8779bca68
+	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-31.1.0.linux-x86_64-gtk2.tar.xz
+	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-31.1.0.linux-x86_64-gtk2.tar.xz.sig
+	sha256sums_x86_64 = a33fb3bc6487023121d735784aa69b0fe60bba3fca7f47f5c6962b873914213b
 	sha256sums_x86_64 = SKIP
 
 pkgname = palemoon-bin
