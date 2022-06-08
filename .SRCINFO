@@ -1,0 +1,20 @@
+pkgbase = fluxvis
+	pkgdesc = Tools for accessing a floppy drive at the raw flux level
+	pkgver = 1.0.0a4
+	pkgrel = 1
+	url = https://github.com/adafruit/fluxvis
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-click
+	depends = python-scikit-image
+	source = https://files.pythonhosted.org/packages/source/f/fluxvis/fluxvis-1.0.0a4.tar.gz
+	sha256sums = b999b7f25c52fb133612290fa978b40ce2a58becd4b50588d507d5c27f236c12
+
+pkgname = fluxvis
