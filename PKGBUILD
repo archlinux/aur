@@ -1,14 +1,16 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.4.3.r17.g008cf3b
+pkgver=1.5.1.r0.gdbe24c7
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
 
-depends=()
+depends=(
+  "glibc"
+)
 makedepends=(
   "git"
   "cmake"
