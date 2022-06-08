@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=Gmedian
-_pkgver=1.2.6
+_pkgver=1.2.7
 pkgname=r-${_pkgname,,}
-pkgver=1.2.6
-pkgrel=5
+pkgver=1.2.7
+pkgrel=1
 pkgdesc='Geometric Median, k-Medians Clustering and Robust Median PCA'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
   r-rspectra
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ad48721ca190dc4bdf3af693c298843c605764b054ca03365d05d394930366cd')
+sha256sums=('5378666a91de7a7bed078626869362ed5f0d0587dd5e78b1ec3d54e249b92e55')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
