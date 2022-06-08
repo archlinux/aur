@@ -3,7 +3,7 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=8.0.2
+pkgver=8.2.0
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -17,7 +17,7 @@ makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-sha512sums=('fc6f45f2b6ac2507c70a14baa931d5c66f0b115c914081d24c95f40afa6c266a718026df895f7a182ea837c6abf70da15b09dccba39eedd6a71ba7b6301edf7c')
+sha512sums=('8179b8704ea688ba412496d0e149c5a47b89fd557b613a49f3addb9721f166cd3aa23ff2549832d9940e5065893e3257ce7287e75018a3468aa7847392398930')
 
 build() {
   cd $pkgname-$pkgver
