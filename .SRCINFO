@@ -1,14 +1,17 @@
 pkgbase = python-sphinx-hoverxref
 	pkgdesc = Sphinx extension to embed content in a tooltip on xref hover
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://sphinx-hoverxref.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-sphinx
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-hoverxref/sphinx-hoverxref-1.0.1.tar.gz
-	md5sums = e672de49538134f2efd39994dd275633
+	checkdepends = python-nose
+	makedepends = python-flit-core
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-hoverxref/sphinx-hoverxref-1.1.1.tar.gz
+	md5sums = f719b64a5642f955fd65235cd3dec22c
 
 pkgname = python-sphinx-hoverxref
-	depends = python
+	depends = python-sphinx>=1.8
