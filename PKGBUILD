@@ -11,7 +11,7 @@ depends=('java-environment')
 source=("https://github.com/GoogleContainerTools/${pkgname}/releases/download/v${pkgver}-cli/${pkgname}-jre-${pkgver}.zip"
         "jib")
 sha256sums=('1b48fd04e73573bbf902c85dc1019c38ea4968dc0dbac4eb0658a2650ca5a18e'
-            '3e38b0935f882bf5d709b6f06d12fb529ea506948a0d1f94abd9f45bb1544d33')
+            'a01567b27f7ba0a7360f0fa61c87939509fcbef0f40ab09d397f2a5ae1a51bdc')
 
 package() {
   install -m755 -D -t "${pkgdir}/usr/bin/" "${srcdir}/${pkgname}"

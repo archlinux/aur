@@ -1,2 +1,2 @@
-#!/usr/sh
+#!/bin/sh
 exec java $JAVA_OPTS $JIB_OPTS -classpath /usr/share/java/jib/* com.google.cloud.tools.jib.cli.JibCli "$@"
