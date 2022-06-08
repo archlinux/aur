@@ -20,13 +20,13 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}.git#branch=crypto")
+source=("${pkgname}::git+https://gitlab.archlinux.org/tallero/${_pkgname}.git#branch=crypto")
 sha256sums=('SKIP')
 
 check() {
-  make -k check -C $_pkgname
+  make -k check -C $pkgname
 }
 
 package() {
-  make DESTDIR="$pkgdir/" PREFIX=/usr install -C $_pkgname
+  make DESTDIR="$pkgdir/" PREFIX=/usr install -C $pkgname
 }
