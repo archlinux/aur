@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=bluealsa
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Bluetooth audio ALSA backend'
 arch=( x86_64
@@ -20,13 +20,13 @@ optdepends=( 'lame: build with mp3 support'
              'ncurses: build with hcitop tool'
              'readline: build with bluealsa-rfcomm tool'
              'spandsp: build mSBC codec support' )
-source=( git+https://github.com/Arkq/$reponame )
-sha512sums=( SKIP )
+source=( https://github.com/Arkq/bluez-alsa/archive/refs/tags/v$pkgver.tar.gz )
+sha512sums=('8a79e5a1189db2d39b2d772cb8f8cd51ebb96b9bd91489556195e83dfd16f40a581dce68c5ad9e886b66cec8a03ae7f959e8288bb4c5c87ea5a2bbd6aee9c5f0')
 
 build() {
 	local flags
 
-	cd $reponame
+    cd $srcdir/$reponame-$pkgver
 	autoreconf --install
 	flags=( #--with-libopenaptx
 		  #--enable-a2dpconf
@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-	cd $reponame
+    cd $srcdir/$reponame-$pkgver
 	make DESTDIR=$pkgdir install
 	install -Dm0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
