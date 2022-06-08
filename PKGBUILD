@@ -2,7 +2,7 @@
 
 pkgname=adguardhome-bin
 _pkgname=AdGuardHome
-pkgver=0.107.6
+pkgver=0.107.7
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='Network-wide ads and trackers blocking DNS server (binary version).'
@@ -21,12 +21,12 @@ source_armv5h=("${_pkgname}-${pkgver}.tar.gz::${_releaseurl}/${_pkgname}_linux_a
 source_armv6h=("${_pkgname}-${pkgver}.tar.gz::${_releaseurl}/${_pkgname}_linux_armv6.tar.gz")
 source_armv7h=("${_pkgname}-${pkgver}.tar.gz::${_releaseurl}/${_pkgname}_linux_armv7.tar.gz")
 
-sha256sums_i686=('03a22c0d16d11f2534f8850a92bb9d2af94a88991534db35d8caca43a465a4c4')
-sha256sums_x86_64=('9cf72a024d26d5ef62ce4ca506e35c6ad1c44a0bd27b047e30a995773f8705e7')
-sha256sums_aarch64=('213919755534dc51bd01400c803ea7942ca2a0f257df9ef007d9b58d874f952e')
-sha256sums_armv5h=('ee77bacc11e57d34b1327856ecf8e2b889fd06dca3c3766967bd1df5c3a4103b')
-sha256sums_armv6h=('57c0b073845c5351ed630191772c8dcb7cd8d3678ed019390ca9c1e37b7d73e5')
-sha256sums_armv7h=('164041df108e04c7cc06f3e3e03d6156b304566f352595f34cba63229762e505')
+sha256sums_i686=('3f63ec49da56e62da1c013d429bfaf8987b09551d3111fde064c0fa779286b0a')
+sha256sums_x86_64=('71b4e5541946745804cf66faa5bd1227bc947f8c055e76702c2926bd7ef91735')
+sha256sums_aarch64=('4ca6776ce339a2adf41ad2e7f627cdc98ebed8b8b89dfd7eaf62f41311bfd747')
+sha256sums_armv5h=('78aab72050d1d1722bb37b58ab74422df908e839b35b008dafd9a538fb8cb984')
+sha256sums_armv6h=('226ce75c40ce1c772e8c0c60f16498364d5f0598ab715c41278709a5c6b9d5a0')
+sha256sums_armv7h=('bb3b977e59674c1aa41b2826f7c8b79116d39913af87a4be983fcbdd583fba0b')
 
 package() {
     install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/var/lib/adguardhome/${_pkgname}"
