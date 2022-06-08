@@ -3,7 +3,7 @@
 _gemname=gyoku
 pkgname=ruby-$_gemname
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gyoku translates Ruby Hashes to XML'
 arch=(any)
 url='https://github.com/savonrb/gyoku'
@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-builder>=2.1.2' 'ruby-rexml')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('12ebab28273346842d13060386db7d96c71224a4f562f2a4a496ea5dbd2341cdf8850148d6cb37ffb193724f428d82e4978e79de97d4e5205c8d346d69df4745')
+sha512sums=('10c16f62ba683236892a269e661e84c1e4ed5190732c03de546c1ed00db11c4a3f442b2ac45f5134a2c452a7f27310a60a44be7df636231db3219c3e546945ee')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

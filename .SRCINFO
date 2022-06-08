@@ -1,7 +1,7 @@
 pkgbase = ruby-gyoku
 	pkgdesc = Gyoku translates Ruby Hashes to XML
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonrb/gyoku
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = ruby-gyoku
 	noextract = gyoku-1.4.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/gyoku-1.4.0.gem
-	sha512sums = 12ebab28273346842d13060386db7d96c71224a4f562f2a4a496ea5dbd2341cdf8850148d6cb37ffb193724f428d82e4978e79de97d4e5205c8d346d69df4745
+	sha512sums = 10c16f62ba683236892a269e661e84c1e4ed5190732c03de546c1ed00db11c4a3f442b2ac45f5134a2c452a7f27310a60a44be7df636231db3219c3e546945ee
 
 pkgname = ruby-gyoku
