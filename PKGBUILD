@@ -1,7 +1,7 @@
 _pkgname=bird
 pkgname=$_pkgname-babel-rtt-git
 pkgver=r3826.4c582913
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon (with babel-rtt)'
 arch=('x86_64')
 url='https://github.com/tohojo/bird'
@@ -32,8 +32,8 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --runstatedir=/run/$pkgname \
-    --docdir=/usr/share/doc/$pkgname
+    --runstatedir=/run/$_pkgname \
+    --docdir=/usr/share/doc/$_pkgname
   make
 }
 

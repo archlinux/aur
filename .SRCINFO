@@ -1,7 +1,7 @@
 pkgbase = bird-babel-rtt-git
 	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon (with babel-rtt)
 	pkgver = r3826.4c582913
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tohojo/bird
 	arch = x86_64
 	license = GPL2
