@@ -1,15 +1,16 @@
-# Maintained by johnnyapol (arch@johnnyapol.me)
-# Contributors: huyizheng
+# Maintainer: Zoddo <archlinux+aur@zoddo.fr>
+# Contributor: huyizheng
+# Contributor: johnnyapol <arch@johnnyapol.me>
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 pkgname=discord_arch_electron
 _pkgname=discord
-pkgver=0.0.17
-pkgrel=3
+pkgver=0.0.18
+pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
 conflicts=('discord')
-url='https://discordapp.com'
+url='https://discord.com'
 license=('custom')
 depends=('electron16')
 makedepends=('asar')
@@ -18,9 +19,9 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('728c760f04770b197635d1fc1a2833c707ab462708cc0bf6fb165691c1375e14e3192f3806d3719325790459b39bd3425f5942d69a53019695f02c965214a5c9'
-             SKIP
-             SKIP)
+sha512sums=('a9c5de48186542fa4385c5cf4ffb54484dee008cde5230a9f8a0e71a84e1e7ce680e170aca2018ad2217618ed2d4a4882836a408a5d0a5cab054c0954c1b55be'
+            SKIP
+            SKIP)
 
 prepare() {
   cd Discord
