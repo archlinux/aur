@@ -3,7 +3,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-git
-pkgver=2.13.r3.g5169138
+pkgver=2.14.r0.g0171394
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM"
 arch=('i686' 'x86_64')
@@ -16,38 +16,32 @@ depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11')
 backup=("etc/pam.d/i3lock")
 options=('docs')
 makedepends=('git')
-source=('git+https://github.com/i3/i3lock#branch=master')
+source=('git+https://github.com/i3/i3lock#branch=main')
 sha1sums=('SKIP')
 
-_gitname='i3lock'
-
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/i3lock"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_gitname"
+  cd "i3lock"
 
   # Fix ticket FS#31544, sed line taken from gentoo
   sed -i -e 's:login:system-auth:' pam/i3lock
-
-  autoreconf -fiv
 }
 
 build() {
-  cd "$_gitname"
+  cd "i3lock"
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
-  make
+  arch-meson ../build
+  meson compile -C ../build
 }
 
 
 package() {
-  cd "$_gitname"
-  make DESTDIR="${pkgdir}" install
+  cd "i3lock"
+  DESTDIR="${pkgdir}" meson install -C ../build
 
   install -Dm644 i3lock.1 ${pkgdir}/usr/share/man/man1/i3lock.1
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
