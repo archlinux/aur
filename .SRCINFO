@@ -1,6 +1,6 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = http://fritzing.org
 	install = fritzing.install
@@ -13,9 +13,13 @@ pkgbase = fritzing
 	depends = libgit2
 	depends = qt5-serialport
 	depends = qt5-svg
-	source = git+https://github.com/fritzing/fritzing-app.git#commit=f0af53a9077f7cdecef31d231b85d8307de415d4
-	source = git+https://github.com/fritzing/fritzing-parts.git#commit=640fa25650211afccd369f960375ade8ec3e8653
+	depends = quazip-qt5
+	depends = ngspice
+	source = git+https://github.com/fritzing/fritzing-app.git#commit=29c2cede3a0475ed770db1ee502fdebf6bf3a23d
+	source = git+https://github.com/fritzing/fritzing-parts.git#commit=4713511c894cb2894eae505b9307c6555afcc32c
+	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt5-on-Arc.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 38de6f5092987b9d53ced366f1b0fb77981f3cf45159c2d204ac3c72b85c456b
 
 pkgname = fritzing
