@@ -1,0 +1,27 @@
+pkgbase = protonvpn-cli-community-git
+	pkgdesc = A Community Linux CLI for ProtonVPN
+	pkgver = 2.2.10.r3.g3614101
+	pkgrel = 1
+	url = https://github.com/ProtonVPN/linux-cli-community
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = openvpn
+	depends = dialog
+	depends = python-pythondialog
+	depends = python-setuptools
+	depends = python-docopt
+	depends = python-requests
+	depends = python-jinja
+	depends = python-distro
+	provides = protonvpn-cli-community=2.2.10.r3.g3614101
+	provides = protonvpn-cli-ng-git
+	conflicts = protonvpn-cli
+	conflicts = protonvpn-gui
+	conflicts = protonvpn-cli-community
+	conflicts = protonvpn-cli-ng-git
+	replaces = protonvpn-cli-ng-git
+	source = git+https://github.com/ProtonVPN/linux-cli-community
+	sha256sums = SKIP
+
+pkgname = protonvpn-cli-community-git

@@ -1,0 +1,5 @@
+linux-cli-community
+src/
+pkg/
+*.pkg.*
+*.log
