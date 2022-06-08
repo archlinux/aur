@@ -2,13 +2,13 @@
 
 _gemname=gyoku
 pkgname=ruby-$_gemname
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Gyoku translates Ruby Hashes to XML'
 arch=(any)
 url='https://github.com/savonrb/gyoku'
 license=(MIT)
-depends=('ruby' 'ruby-builder>=2.1.2')
+depends=('ruby' 'ruby-builder>=2.1.2' 'ruby-rexml')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
