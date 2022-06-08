@@ -1,0 +1,10 @@
+pkgbase = huxdemp
+	pkgdesc = A better hexdump
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kiedtl/huxdemp
+	arch = x86_64
+	source = https://github.com/kiedtl/huxdemp/releases/download/1.0.0/huxd-Linux-x86_64-1.0.0.tar.xz
+	sha256sums = e7269b4b931366b3ca85eb8be604aae87de41948af09c891b6744903c1125d54
+
+pkgname = huxdemp
