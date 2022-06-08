@@ -78,8 +78,8 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.156996
-pkgrel=5
+pkgver=29.0.50.157115
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -152,7 +152,7 @@ elif [[ $PGTK == "YES" ]]; then
 fi
 
 if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
-  depends+=( 'libjpeg-turbo' 'libpng' 'giflib' 'libwebp' 'libtiff' );
+  depends+=( 'libjpeg-turbo' 'libpng' 'giflib' 'libwebp' 'libtiff' 'libxpm');
 elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
