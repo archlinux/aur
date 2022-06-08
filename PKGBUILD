@@ -9,10 +9,10 @@ depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 provides=('signal-desktop-beta')
-_pkgver=5.46.0-beta.1
+_pkgver=5.46.0-beta.2
 pkgver=${_pkgver/-/}
 source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_${_pkgver}_amd64.deb")
-sha256sums=('66bee980e22fec1ee3c2bb9c86ef3acd9c6a6a879f24223ffc22351b19028797')
+sha256sums=('966aea18914ec88547e05eac61b443850184aab1d80b7db0a223855738771b56')
 
 package(){
 	# Extract package data
