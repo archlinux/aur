@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=evolution-csd-git
-pkgver=3.44.2+21+g1bd7f04bf7
+pkgver=3.44.2+20+g02bc7bd59d
 pkgrel=1
 pkgdesc="Manage your email, contacts and schedule"
 url="https://wiki.gnome.org/Apps/Evolution"
