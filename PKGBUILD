@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=dra
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A command line tool to download assets from GitHub releases"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('76cc64bca53606b8cd4e4cb93bbfba120fad35d572e05c8622377f7453f1b485e1c11e7dfa108e5c17c7b10c6130e53616b47721b3ca73fa5387ca01b4b1f7c8')
+sha512sums=('8dbff7c115e5bbd4963bac9168b84029e666495c21f8cfc9a558eb36c7585fd31da5e3dca579d1098f07b15d86751a3e5331b72caa752c654860c86427828e37')
 options=('!lto')
 
 prepare() {
