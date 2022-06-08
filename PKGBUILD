@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-recommended
-pkgver=7.0.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='Recommended shareable config for stylelint'
 arch=('any')
