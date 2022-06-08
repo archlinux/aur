@@ -1,17 +1,16 @@
 pkgbase = r-mnormt
 	pkgdesc = The Multivariate Normal and t Distributions
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mnormt
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL
 	makedepends = gcc-fortran
 	depends = r>=2.2.0
 	depends = gcc-fortran
 	depends = r-tmvnsim>=1.0.2
-	source = https://cran.r-project.org/src/contrib/mnormt_2.0.2.tar.gz
-	sha256sums = 5c6aa036d3f1035ffe8f9a8e95bb908b191b126b016591cf893c50472851f334
+	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/mnormt_2.1.0.tar.gz
+	sha256sums = 2d498505e32d8aa9fa54a1ab328c35ae3a85e0b20a0cf0d519a4df84e2b307b8
 
 pkgname = r-mnormt
