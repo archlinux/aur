@@ -1,0 +1,16 @@
+pkgbase = perl-gtk3-notify
+	pkgdesc = Perl GTK3 interface to libnotify
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/Gtk3::Notify
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-gtk3
+	depends = perl-glib-object-introspection
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TV/TVIGNAUD/Gtk3-Notify-0.03.tar.gz
+	sha256sums = 0f06bb3a1a6ee1f1d2111b5e467a5ee27c60c3ab23f5a9e1e51e3a08773ed326
+
+pkgname = perl-gtk3-notify
