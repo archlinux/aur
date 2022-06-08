@@ -3,7 +3,7 @@
 pkgname=detekt-bin
 pkgdesc="Static code analysis for Kotlin"
 pkgver=1.20.0
-rc=1
+rc=2
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="https://github.com/detekt/detekt"
@@ -18,5 +18,5 @@ package() {
   mkdir -p "$pkgdir/opt/detekt-cli"
   mkdir -p "$pkgdir/usr/bin"
   cp -R "${srcdir}/detekt-cli-$realversion/." "$pkgdir/opt/detekt-cli"
-  ln -s "$pkgdir/opt/detekt-cli/bin/detekt-cli" "${pkgdir}/usr/bin/detekt-cli"
+  ln -s "/opt/detekt-cli/bin/detekt-cli" "${pkgdir}/usr/bin/detekt-cli"
 }
