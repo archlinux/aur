@@ -1,10 +1,11 @@
 pkgbase = r-chetah
 	pkgdesc = Fast and accurate scRNA-seq cell type identification
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CHETAH
 	arch = any
 	license = custom
+	makedepends = git
 	depends = r
 	depends = r-biodist
 	depends = r-corrplot
@@ -24,7 +25,7 @@ pkgbase = r-chetah
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CHETAH_1.9.0.tar.gz
-	sha256sums = 431eb0d188319f5bc928db0eb76c80873420f3e61d652648820ebe3cef47dfd9
+	source = git+https://git.bioconductor.org/packages/CHETAH
+	sha256sums = SKIP
 
 pkgname = r-chetah

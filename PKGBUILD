@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CHETAH
-_pkgver=1.9.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Fast and accurate scRNA-seq cell type identification'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,10 +32,14 @@ optdepends=(
   r-testthat
   r-vdiffr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('431eb0d188319f5bc928db0eb76c80873420f3e61d652648820ebe3cef47dfd9')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
