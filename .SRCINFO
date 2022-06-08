@@ -1,10 +1,11 @@
 pkgbase = r-proteomicsannotationhubdata
 	pkgdesc = Transform public proteomics data resources into Bioconductor Data Structures
-	pkgver = 1.24.0
-	pkgrel = 2
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ProteomicsAnnotationHubData
 	arch = any
 	license = Artistic2.0
+	makedepends = git
 	depends = r
 	depends = r-annotationhub
 	depends = r-annotationhubdata
@@ -19,7 +20,7 @@ pkgbase = r-proteomicsannotationhubdata
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ProteomicsAnnotationHubData_1.24.0.tar.gz
-	sha256sums = 686a12c9b5f74cba37eb40d36603698cd3a137eee2d6a87ac787f37bfa824563
+	source = git+https://git.bioconductor.org/packages/ProteomicsAnnotationHubData
+	sha256sums = SKIP
 
 pkgname = r-proteomicsannotationhubdata
