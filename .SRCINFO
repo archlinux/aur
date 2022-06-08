@@ -1,24 +1,22 @@
 pkgbase = r-fsa
-	pkgdesc = Simple Fisheries Stock Assessment Methods
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=FSA
-	arch = any
-	license = GPL2
-	license = GPL3
-	depends = r>=3.5.0
+	arch = x86_64
+	license = GPL
+	depends = r
 	depends = r-car
-	depends = r-dplyr
 	depends = r-dunn.test
 	depends = r-lmtest
 	depends = r-plotrix
-	depends = r-sciplot
 	depends = r-withr
 	optdepends = r-desctools
+	optdepends = r-dplyr
 	optdepends = r-fishmethods
 	optdepends = r-fsadata
 	optdepends = r-knitr
 	optdepends = r-marked
+	optdepends = r-nlme
 	optdepends = r-nlstools
 	optdepends = r-pkgdown
 	optdepends = r-plyr
@@ -28,7 +26,7 @@ pkgbase = r-fsa
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/FSA_0.9.1.tar.gz
-	sha256sums = 766196ccf3528d058822df7fbc10da731a3a6fe65cf90f1a3a1013cf99c94ca5
+	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/FSA_0.9.3.tar.gz
+	sha256sums = 3c102c2bab42ae3ffbf1180eaca4d48814f11fd0af3f684ef2f68593430a5d81
 
 pkgname = r-fsa
