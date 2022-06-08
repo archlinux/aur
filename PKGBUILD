@@ -1,7 +1,9 @@
+# Maintainer: Robert Greener <me@r0bert.dev>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=metadynminer3d
-_cranver=0.0.1
+_cranver=0.0.2
+_updatedate=2022-06-08
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,8 +13,8 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.3.0' r-metadynminer r-rgl r-rcpp r-misc3d)
 optdepends=(r-testthat)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('e5dfd7281f98603d10842cb94f8f739208275a134b5a524fcd009209a1c83866')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('55e2b7a17e08f0ebcfbb621ea0c03ebce73576c9de2409491a3be353aed32cf8')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
