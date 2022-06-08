@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ScISI
-_pkgver=1.65.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.65.0
-pkgrel=3
+pkgver=1.68.0
+pkgrel=1
 pkgdesc='In Silico Interactome'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,10 +22,14 @@ optdepends=(
   r-ppidata
   r-xtable
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1c7a5299b15230c9aae69cf8ff86fb560ba394e225c487547ad4c1bb55b6b60')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 

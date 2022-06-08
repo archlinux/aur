@@ -1,10 +1,11 @@
 pkgbase = r-scisi
 	pkgdesc = In Silico Interactome
-	pkgver = 1.65.0
-	pkgrel = 3
+	pkgver = 1.68.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ScISI
 	arch = any
 	license = LGPL
+	makedepends = git
 	depends = r
 	depends = r-annotate
 	depends = r-annotationdbi
@@ -14,7 +15,7 @@ pkgbase = r-scisi
 	depends = r-rpsixml
 	optdepends = r-ppidata
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ScISI_1.65.0.tar.gz
-	sha256sums = e1c7a5299b15230c9aae69cf8ff86fb560ba394e225c487547ad4c1bb55b6b60
+	source = git+https://git.bioconductor.org/packages/ScISI
+	sha256sums = SKIP
 
 pkgname = r-scisi
