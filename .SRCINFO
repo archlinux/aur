@@ -1,25 +1,26 @@
 pkgbase = r-dbplyr
 	pkgdesc = A 'dplyr' Back End for Databases
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
 	license = MIT
 	depends = r>=3.1
 	depends = r-assertthat>=0.2.0
+	depends = r-cli>=3.3.0
 	depends = r-blob>=1.2.0
 	depends = r-dbi>=1.0.0
-	depends = r-dplyr>=1.0.4
-	depends = r-ellipsis
+	depends = r-dplyr>=1.0.9
 	depends = r-glue>=1.2.0
 	depends = r-lifecycle>=1.0.0
 	depends = r-magrittr
+	depends = r-pillar>=1.5.0
 	depends = r-purrr>=0.2.5
 	depends = r-r6>=2.2.2
-	depends = r-rlang>=0.2.0
+	depends = r-rlang>=1.0.0
 	depends = r-tibble>=1.4.2
 	depends = r-tidyselect>=0.2.4
-	depends = r-vctrs
+	depends = r-vctrs>=0.4.1
 	depends = r-withr
 	optdepends = r-bit64
 	optdepends = r-covr
@@ -34,7 +35,7 @@ pkgbase = r-dbplyr
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/dbplyr_2.1.1.tar.gz
-	sha256sums = aba4cf47b85ab240fd3ec4cd8d512f6e1958201e151577c1a2ebc3d6ebc5bc08
+	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/dbplyr_2.2.0.tar.gz
+	sha256sums = 4a6e092c9349f8b3030c752f8c6cc551637d6fbca3c84be0da89968f1e9adce1
 
 pkgname = r-dbplyr
