@@ -7,16 +7,18 @@ _Pkgname=Vial
 pkgname="${_pkgname}"-appimage
 pkgname=vial-appimage
 pkgver=v0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA."
 arch=('x86_64')
 url="https://get.vial.today/"
 license=("GPL2")
 options=(!strip)
 _appimage="${_Pkgname}-${pkgver}-x86_64.AppImage"
-source_x86_64=("${_appimage}::https://github.com/vial-kb/vial-gui/releases/download/${pkgver}/${_Pkgname}-${pkgver}-x86_64.AppImage")
+source_x86_64=("${_appimage}::https://github.com/vial-kb/vial-gui/releases/download/${pkgver}/${_Pkgname}-${pkgver}-x86_64.AppImage"
+               "92-viia.rules")
 noextract=("${_appimage}")
-sha256sums_x86_64=('d846a98a4998efd2907681e7cf503b804ad55c137c0fcd2bd4624c290e6020cd')
+sha256sums_x86_64=('d846a98a4998efd2907681e7cf503b804ad55c137c0fcd2bd4624c290e6020cd'
+                   '4a063ab984aac666fd17a0e090c11bb081098ce89872b773ac678e8650ad98ee')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -33,7 +35,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${startdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_Pkgname}.desktop"\
@@ -47,7 +49,8 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_Pkgname}"
 
-    install -dm755 "${pkgdir}/etc/udev/rules.d"
-    echo 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"' > ${pkgdir}/etc/udev/rules.d/92-viia.rules
+    # Create udev rule
+    mkdir -p /etc/udev/rules.d
+    install -Dm644 "$srcdir/92-viia.rules" "$pkgdir/etc/udev/rules.d/92-viia.rules"
 }
 
