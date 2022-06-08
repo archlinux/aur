@@ -1,7 +1,7 @@
 pkgbase = protonvpn-cli-community
-	pkgdesc = A Community Linux CLI for ProtonVPN.
+	pkgdesc = A Community Linux CLI for ProtonVPN
 	pkgver = 2.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/linux-cli-community
 	arch = any
 	license = GPL3
@@ -13,8 +13,9 @@ pkgbase = protonvpn-cli-community
 	depends = python-requests
 	depends = python-jinja
 	depends = python-distro
-	provides = protonvpn-cli-ng=2.2.11
+	provides = protonvpn-cli-ng
 	conflicts = protonvpn-cli
+	conflicts = protonvpn-gui
 	conflicts = protonvpn-cli-ng
 	replaces = protonvpn-cli-ng
 	source = linux-cli-community-2.2.11.tar.gz::https://github.com/ProtonVPN/linux-cli-community/archive/refs/tags/v2.2.11.tar.gz
