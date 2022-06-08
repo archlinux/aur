@@ -1,8 +1,9 @@
 # Maintainer: dhn <neilson+aur@sent.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=gdata
 pkgname=r-$_pkgname
-pkgver=2.18.0
+pkgver=2.18.0.1
 pkgrel=1
 pkgdesc='Various R Programming Tools for Data Manipulation'
 arch=('any')
@@ -12,7 +13,7 @@ depends=('r-gtools')
 makedepends=()
 optdepends=('perl-spreadsheet-parsexlsx')
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_$pkgver.tar.gz")
-sha512sums=('609a412970d46bed0d12191b1015fac96b48244cb9fb35506be07ae0544583566669c0e233a52f418dafdfc787a92cfbbf6554cb336af06c257b3bb6058e4fd5')
+sha512sums=('f51f3d4289237fea7b981318da015969956c793f3882ffca553e08dde56bc3e38bff23de2becbe613a9b19d3e390d0597bcc753e51a504285be8268372f6ebe7')
 
 build(){
     R CMD INSTALL ${_pkgname}_$pkgver.tar.gz -l "$srcdir"
