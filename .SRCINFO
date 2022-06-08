@@ -1,0 +1,12 @@
+pkgbase = moonglmath
+	pkgdesc = Math library for MoonGL
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/stetre/moonglmath/
+	arch = x86_64
+	license = MIT
+	depends = lua
+	source = https://github.com/stetre/moonglmath/archive/v0.6.tar.gz
+	sha256sums = 5ae8937d6e0510c77455c934a1e9e5e1627eb1036c969ef4f28f97ff213d9590
+
+pkgname = moonglmath
