@@ -3,7 +3,7 @@
 
 pkgname=libflame-git
 pkgver=r90.9fdb4fd1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance object-based library for DLA computations"
 arch=('i686' 'x86_64')
 license=('BSD')
