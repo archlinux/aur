@@ -30,7 +30,7 @@ prepare() {
   fi
 
   # static build is only needed in some cases. We can make a separate -static package if needed
-  ./configure --prefix=/usr --enable-dynamic-build $ENABLE_SSE --enable-multithreading=openmp --enable-supermatrix --enable-lapack2flame --enable-max-arg-list-hack --enable-gpu
+  ./configure --prefix=/usr --enable-dynamic-build $ENABLE_SSE --enable-multithreading=openmp --enable-supermatrix --enable-lapack2flame --enable-max-arg-list-hack
 }
 
 build() {
