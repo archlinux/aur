@@ -1,7 +1,7 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=objcryst-fox
 pkgver=2022.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A program for the ab initio structure determination from powder diffraction'
 arch=('i686' 'x86_64')
 url='http://fox.vincefn.net/FoxWiki'
@@ -13,7 +13,7 @@ _boost_ver=1.68.0
 source=(
 "Fox.desktop"
 "objcryst-${pkgver}.tar.gz::https://github.com/vincefn/objcryst/archive/${_objcryst_ver}.tar.gz"
-"https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.bz2"
+"https://sourceforge.net/projects/boost/files/boost/1.68.0/boost_1_68_0.tar.bz2"
 "http://downloads.sourceforge.net/project/objcryst/3rdPartyLibraries/cctbx.tar.bz2")
 noextract=("cctbx.tar.bz2" "boost_${_boost_ver//./_}.tar.bz2")
 sha256sums=('d55bafe20672f01a800b8406ad2892f9f34aa545f6b3faa554399198c3dd9492'
@@ -52,3 +52,7 @@ package() {
 	install -Dm644 ${srcdir}/Fox.desktop "${pkgdir}/usr/share/applications/Fox.desktop"
 	install -Dm644 Fox/src/Fox.xpm "${pkgdir}/usr/share/pixmaps/Fox.xpm"
 }
+sha256sums=('d55bafe20672f01a800b8406ad2892f9f34aa545f6b3faa554399198c3dd9492'
+            '9cf4f214e4baccd52ad62eab368619cb0ae8a4e6d7b17dbdc9ffc71080223f8b'
+            '7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7'
+            '9cd4c221cfde091a529236c542b5511b1ad8df420dbe2287bd69a492868e3bda')
