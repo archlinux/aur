@@ -2,13 +2,13 @@
 
 pkgname=tricks
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The social network for programmers!"
 arch=('x86_64')
 url="https://tricks.aseman.io/"
 license=('GPL3')
-makedepends=('gcc' 'qt5-base' 'git')
-depends=('qt-aseman' 'syntax-highlighting')
+makedepends=('gcc' 'git' 'qt5-svg')
+depends=('qt-aseman' 'syntax-highlighting' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols2')
 conflicts=('tricks-bin')
 options=('!emptydirs' '!strip')
 source=("git+https://github.com/Aseman-Land/Tricks.git#tag=v${pkgver}")
