@@ -5,7 +5,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -32,14 +32,16 @@ prepare() {
 }
 
 build() {
+  WXGTK_PATH=/opt/wxgtk-dev
+
   cd "${srcdir}"/moneymanagerex
 
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
-  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config-gtk3 .
+  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=${WXGTK_PATH}/bin/wx-config-gtk3 .
 
   # Make sure the linker bakes the non-standard path for wxWidgets into the executable
-  export LD_RUN_PATH=/opt/wxgtk-dev/lib
+  export LD_RUN_PATH=${WXGTK_PATH}/lib
   cmake --build . --target package
 }
 
