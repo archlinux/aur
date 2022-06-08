@@ -38,6 +38,7 @@ EOF
                         ckey="/ckey2/${ckpath2}"
                     fi
                     ls /ckey2
+                    echo "${ckeyfile}"
                     dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
                     if mountpoint -q /ckey2; then
                         umount /ckey2
@@ -71,7 +72,7 @@ $cryptdev
 EOF
 
     if [ -n "${cryptdevpath}" ]; then
-        if mount --mkdir "defaults" "${cryptdev}" /run/cryptdev; then
+        if mount --mkdir -o "defaults" "${cryptdev}" /run/cryptdev; then
             cryptdev="${cryptdevpath}"
             echo "Device ${cryptdev} mounted successfully over /run/cryptdev"
         else
