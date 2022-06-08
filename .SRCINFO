@@ -1,6 +1,6 @@
 pkgbase = c-evo
 	pkgdesc = Empire Building Game, C-evo: New Horizons
-	pkgver = 1.3.0.420
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://app.zdechov.net/c-evo
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = c-evo
 	conflicts = c-evo
 	conflicts = c-evo-bin
 	conflicts = c-evo-nh-bin
-	source = c-evo-nh-1.3.0.420.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.0.420+dfsg.orig.tar.xz
-	source = c-evo-nh-1.3.0.420.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.0.420+dfsg-1.debian.tar.xz
-	sha256sums = 1c6c9b8728839b614d1f1fb7a77ea52f880ac00d5eaf4a263a610f45bbccbce6
-	sha256sums = bb37acbae0572e600fce964f914818bfc712b9fa0e83192f8d1f3e21ed73815d
+	source = c-evo-nh-1.3.1.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.1+dfsg.orig.tar.xz
+	source = c-evo-nh-1.3.1.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.1+dfsg-1.debian.tar.xz
+	sha256sums = 2b3b189e3209702f3474a743f79cbd1b3f914f59484ef55f541826612b70b087
+	sha256sums = 5de90963712f7ead4507d820a7f59bb7e5e61e1a296421236dd98d5016308461
 
 pkgname = c-evo-nh

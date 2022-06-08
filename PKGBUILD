@@ -1,13 +1,18 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Build package from OBS source
-# 22-Feb-2022
-# See http://www.c-evo.org/
+# 7-Jun-2022
+# See http://www.c-evo.org
+# https://app.zdechov.net/c-evo
 # https://build.opensuse.org/package/show/home:PeterBBB/c-evo
+#
+# Based on Upstream Svn revision 446
+#
 
 pkgname=c-evo-nh
 pkgbase=c-evo
 _shortpkgname=c-evo
-pkgver=1.3.0.420
+pkgver=1.3.1
+_svn=446
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -19,23 +24,26 @@ depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-nh-bin')
 source=("$pkgname-$pkgver.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg.orig.tar.xz"
-        "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg-1.debian.tar.xz")
-sha256sums=('1c6c9b8728839b614d1f1fb7a77ea52f880ac00d5eaf4a263a610f45bbccbce6'
-            'bb37acbae0572e600fce964f914818bfc712b9fa0e83192f8d1f3e21ed73815d')
+      "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg-1.debian.tar.xz")
+sha256sums=('2b3b189e3209702f3474a743f79cbd1b3f914f59484ef55f541826612b70b087'
+            '5de90963712f7ead4507d820a7f59bb7e5e61e1a296421236dd98d5016308461')
 
 prepare() {
   cd "${srcdir}"
-  rm -fr "$pkgname-$pkgver"/debian
-  mv -t  "$pkgname-$pkgver" debian
-  cd "$pkgname-$pkgver"
+  rm -fr "$pkgname-$pkgver.$_svn"/debian
+  mv -t  "$pkgname-$pkgver.$_svn" debian
+  cd "$pkgname-$pkgver.$_svn"
   patch -Np1 < debian/patches/001-directories.patch
   patch -Np1 < debian/patches/004-stdai.patch
+  patch -Np1 < debian/patches/004a-customai.patch
+  patch -Np1 < debian/patches/004b-toolai.patch
+  patch -Np1 < debian/patches/004c-barbarina.patch
+  patch -Np1 < debian/patches/004d-ai.patch
   patch -Np1 < debian/patches/005-cityscreen.patch
   patch -Np1 < debian/patches/006-mapsizes.patch
   patch -Np1 < debian/patches/008-compiler.patch
   patch -Np1 < debian/patches/009-stacktrace.patch
   patch -Np1 < debian/patches/010-splash.patch
-  patch -Np1 < debian/patches/012-manual.patch
   patch -Np1 < debian/patches/014-invalidate.patch
   patch -Np1 < debian/patches/016-unsupported.patch
   patch -Np1 < debian/patches/017-citywalls.patch
@@ -77,7 +85,7 @@ prepare() {
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver.$_svn"
 
   # Set temporary folder for lazarus primary config
   rm -fr "$srcdir/config"
@@ -132,7 +140,7 @@ build() {
 
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver.$_svn"
 
   install -Dm 644 "debian/extras/$_shortpkgname-gtk2.desktop"         -t "$pkgdir/usr/share/applications"
   install -Dm 644 "debian/extras/$_shortpkgname-manual-gtk2.desktop"  -t "$pkgdir/usr/share/applications"
