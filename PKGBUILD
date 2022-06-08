@@ -6,7 +6,7 @@
 pkgname='goldendict-git'
 _basename="${pkgname%-git}"
 pkgver=1.5.0rc2.r521.g99982a1c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
