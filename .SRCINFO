@@ -1,11 +1,12 @@
 pkgbase = x48
 	pkgdesc = An HP 48 x/sx/g/gx Emulator
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects
 	install = x48.install
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = readline
 	depends = libxext
@@ -20,4 +21,3 @@ pkgbase = x48
 	md5sums = a08249c9a75d52671045dbb9c35321fa
 
 pkgname = x48
-

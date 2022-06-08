@@ -1,10 +1,10 @@
-# Maintainer: Eric Waller <ewwaller+aur@gmail.com>
+# Maintainer: Christopher Kobayashi <software+aur@disavowed.jp>
 
 pkgname=x48
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="An HP 48 x/sx/g/gx Emulator"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64' 'aarch64')
 url="http://sourceforge.net/projects"
 license=(GPL3)
 depends=(readline libxext)
@@ -30,6 +30,7 @@ build() {
     autoconf
     ./configure --prefix /usr
     sed -i '698s/inline/static inline/' src/emulate.c
+    sed -i 's/-Werror=format-security/-Wformat-security/g' Makefile src/Makefile
     make
     bzcat gxrom.bz2 > gxrom
     bzcat sxrom.bz2 > sxrom
