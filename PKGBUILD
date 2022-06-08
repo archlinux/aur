@@ -1,13 +1,14 @@
-# Maintainer: Dave Reisner <d@falconindy.com>
+# Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=ngtcp2-git
-pkgver=r2657.d9524643
+pkgver=r3266.6d618dd1
 pkgrel=1
 pkgdesc="An effort to implement IETF QUIC protocol"
 arch=('x86_64')
 url="https://github.com/ngtcp2/ngtcp2"
 license=('MIT')
 depends=('gnutls')
+optdepends=('quictls-openssl')
 makedepends=('git')
 checkdepends=('cunit')
 provides=('ngtcp2' 'libngtcp2.so')
@@ -26,8 +27,13 @@ build() {
 
 	autoreconf -fisv
 
+	WITH="--with-gnutls"
+	if [ pacman -Q quictls-openssl > /dev/null 2>&1 ]; then
+		WITH="$WITH --with-openssl"
+	fi
+
 	./configure \
-      --prefix=/usr --with-gnutls
+      --prefix=/usr $WITH
 
 	make
 }
