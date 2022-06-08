@@ -1,0 +1,15 @@
+pkgbase = perl-desktop-notify
+	pkgdesc = Communicate with the Desktop Notifications framework
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/pod/Desktop::Notify
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-net-dbus
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SA/SACAVILIA/Desktop-Notify-0.05.tar.gz
+	sha256sums = 5ec52aa13387a6819402554b74997830954aa5e908a711eb8bb19dd3334b101d
+
+pkgname = perl-desktop-notify
