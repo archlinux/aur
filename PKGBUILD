@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=perturbatr
-_pkgver=1.13.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc='Statistical Analysis of High-Throughput Genetic Perturbation Screens'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -34,10 +34,14 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('61784a30329cbce1505cd7371ffb61a458d5d8b7e20b7d42b22b42413243536b')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 

@@ -1,10 +1,11 @@
 pkgbase = r-perturbatr
 	pkgdesc = Statistical Analysis of High-Throughput Genetic Perturbation Screens
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/perturbatr
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = r
 	depends = r-assertthat
 	depends = r-diffusr
@@ -26,7 +27,7 @@ pkgbase = r-perturbatr
 	optdepends = r-lintr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/perturbatr_1.13.0.tar.gz
-	sha256sums = 61784a30329cbce1505cd7371ffb61a458d5d8b7e20b7d42b22b42413243536b
+	source = git+https://git.bioconductor.org/packages/perturbatr
+	sha256sums = SKIP
 
 pkgname = r-perturbatr
