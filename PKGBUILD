@@ -4,7 +4,7 @@ _pkgname=slinky
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=3
+pkgrel=5
 pkgdesc='Putting the fun in LINCS L1000 data analysis'
 arch=('any')
 url="https://bioconductor.org/packages/3.14/bioc/html/slinky.html"
@@ -32,7 +32,7 @@ optdepends=(
   r-rtsne
   r-testthat
 )
-source=("https://bioconductor.riken.jp/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('7b6c1d58e4655744e2ba5f8422c4b2c95f184cd3e1c3a5e0fa568eef77f3dc17')
 
 build() {

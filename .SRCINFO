@@ -1,7 +1,7 @@
 pkgbase = r-slinky
 	pkgdesc = Putting the fun in LINCS L1000 data analysis
 	pkgver = 1.12.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://bioconductor.org/packages/3.14/bioc/html/slinky.html
 	arch = any
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = r-slinky
 	optdepends = r-rmarkdown
 	optdepends = r-rtsne
 	optdepends = r-testthat
-	source = https://bioconductor.riken.jp/packages/3.14/bioc/src/contrib/slinky_1.12.0.tar.gz
+	source = https://bioconductor.org/packages/3.14/bioc/src/contrib/slinky_1.12.0.tar.gz
 	sha256sums = 7b6c1d58e4655744e2ba5f8422c4b2c95f184cd3e1c3a5e0fa568eef77f3dc17
 
 pkgname = r-slinky
