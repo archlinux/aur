@@ -1,10 +1,11 @@
 pkgbase = r-methcp
 	pkgdesc = Differential methylation anlsysis for bisulfite sequencing data
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/MethCP
 	arch = any
 	license = Artistic2.0
+	makedepends = git
 	depends = r
 	depends = r-biocparallel
 	depends = r-bsseq
@@ -18,7 +19,7 @@ pkgbase = r-methcp
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MethCP_1.7.0.tar.gz
-	sha256sums = 76aef5e5e09d13775d9e1fb292b2aa81b393c2d7a44cd78ddbf14df672e5b0ea
+	source = git+https://git.bioconductor.org/packages/MethCP
+	sha256sums = SKIP
 
 pkgname = r-methcp

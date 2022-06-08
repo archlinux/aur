@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethCP
-_pkgver=1.7.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Differential methylation anlsysis for bisulfite sequencing data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,10 +26,14 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('76aef5e5e09d13775d9e1fb292b2aa81b393c2d7a44cd78ddbf14df672e5b0ea')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
