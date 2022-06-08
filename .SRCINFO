@@ -1,5 +1,5 @@
 pkgbase = wxgtk-dev
-	pkgver = 3.1.6
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = https://wxwidgets.org
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = wxgtk-dev
 	makedepends = libnotify
 	makedepends = gtk2
 	options = !emptydirs
-	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.6/wxWidgets-3.1.6.tar.bz2
-	sha1sums = 266be7de43351e7d75c308f7f45469a5c433479c
-	sha256sums = 4980e86c6494adcd527a41fc0a4e436777ba41d1893717d7b7176c59c2061c25
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.7/wxWidgets-3.1.7.tar.bz2
+	sha1sums = 893e7886bc1e9fcf691bd4db0c9e49dc8413f674
+	sha256sums = 3d666e47d86192f085c84089b850c90db7a73a5d26b684b617298d89dce84f19
 
 pkgname = wxgtk2-dev
 	pkgdesc = GTK+2 implementation of wxWidgets API for GUI
