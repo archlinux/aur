@@ -3,7 +3,7 @@
 
 pkgname='python-nestedtext'
 _pkgname=${pkgname#python-}
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
@@ -17,15 +17,6 @@ makedepends=(
   'python-inform'
   'python-setuptools'
   'python-sphinx'
-)
-sha256sums=(
-  '5f2f2e9e215b10aff09d7703aea086c4bd5ee0b0e71a11d47d77e25375e4acc5'
-)
-sha512sums=(
-  '1879ba6d2d01d8f5fe9ba4dd2aaba65601e2a4a701780ee740e6fd48c8a89620848da250e6bd0dfb6b92c77c27cf17c88e53cc0e18ffed47ef0c47d5a36d862d'
-)
-b2sums=(
-  '5933aa5276728511336c37fec5ee3384df81a10151a9145d463c12b0511229109f5479e06ec9f3dc8370047142b907823bcc2be1dd2faf6052a72f6a61f93334'
 )
 
 build() {
@@ -48,5 +39,15 @@ package() {
     install -Dm0644 "$fname" "$pkgdir/usr/share/doc/$pkgname/$fname"
   done
 }
+
+sha256sums=(
+  'f2591fdddc6ddc83e861812e1727417f06e2e13468f35cd510f5de994e1da8ce'
+)
+sha512sums=(
+  '2b478793e83b66a420261aad1b1e7e5c18c36d1957882cac1de4951c007c9760766f1df6605f6a30f935a42766f7dac7d7a41db9516ed8d7ee4187fab842f503'
+)
+b2sums=(
+  '6fa88f8dede653abb42db420e563ba6efe019aa5bdffc2c777999e6215f337410686522c8b7185a955541532de0a10da0a4647aebceb816ccae1435b5bcc5085'
+)
 
 # eof
