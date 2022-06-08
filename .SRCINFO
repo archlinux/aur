@@ -1,10 +1,11 @@
 pkgbase = r-countclust
 	pkgdesc = Clustering and Visualizing RNA-Seq Expression Data using Grade of Membership Models
-	pkgver = 1.21.0
-	pkgrel = 3
+	pkgver = 1.23.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/CountClust
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = r
 	depends = r-cowplot
 	depends = r-flexmix
@@ -25,7 +26,7 @@ pkgbase = r-countclust
 	optdepends = r-rcolorbrewer
 	optdepends = r-roxygen2
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CountClust_1.21.0.tar.gz
-	sha256sums = 580fce08ae67513398fc6c37b3e8c6341201b928bb23589c90e07379a74cfd9e
+	source = git+https://git.bioconductor.org/packages/CountClust
+	sha256sums = SKIP
 
 pkgname = r-countclust

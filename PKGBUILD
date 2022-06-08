@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CountClust
-_pkgver=1.21.0
+_pkgver=1.23.1
 pkgname=r-${_pkgname,,}
-pkgver=1.21.0
-pkgrel=3
+pkgver=1.23.1
+pkgrel=1
 pkgdesc='Clustering and Visualizing RNA-Seq Expression Data using Grade of Membership Models'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -33,10 +33,14 @@ optdepends=(
   r-roxygen2
   r-xtable
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('580fce08ae67513398fc6c37b3e8c6341201b928bb23589c90e07379a74cfd9e')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
