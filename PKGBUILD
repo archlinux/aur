@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ABAEnrichment
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
-pkgrel=3
+pkgver=1.26.0
+pkgrel=1
 pkgdesc='Gene expression enrichment in human brain regions'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,10 +23,14 @@ optdepends=(
   r-knitr
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8400e2c51de1e2199b830d02519ce98ef36c3dd74b90de9b1028d39fc571e3ea')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 

@@ -1,10 +1,11 @@
 pkgbase = r-abaenrichment
 	pkgdesc = Gene expression enrichment in human brain regions
-	pkgver = 1.24.0
-	pkgrel = 3
+	pkgver = 1.26.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ABAEnrichment
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = r
 	depends = r-abadata
 	depends = r-data.table
@@ -15,7 +16,7 @@ pkgbase = r-abaenrichment
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ABAEnrichment_1.24.0.tar.gz
-	sha256sums = 8400e2c51de1e2199b830d02519ce98ef36c3dd74b90de9b1028d39fc571e3ea
+	source = git+https://git.bioconductor.org/packages/ABAEnrichment
+	sha256sums = SKIP
 
 pkgname = r-abaenrichment
