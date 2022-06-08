@@ -24,11 +24,12 @@ pkgbase = evolution-csd-git
 	depends = gspell
 	depends = libcryptui
 	depends = gnome-autoar
+	depends = libgweather
+	depends = cmark
 	provides = evolution
 	conflicts = evolution
-	replaces = evolution
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/gnumdk/evolution.git#branch=archlinux
+	source = evolution-csd::git+https://gitlab.gnome.org/gnumdk/evolution.git#branch=archlinux
 	sha256sums = SKIP
 
 pkgname = evolution-csd-git
@@ -42,6 +43,8 @@ pkgname = evolution-csd-git
 	depends = gspell
 	depends = libcryptui
 	depends = gnome-autoar
+	depends = libgweather
+	depends = cmark
 	depends = libcamel-1.2.so
 	depends = libebook-1.2.so
 	depends = libebook-contacts-1.2.so

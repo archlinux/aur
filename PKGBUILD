@@ -1,8 +1,7 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Cédric Bellegarde <cedric.bellegarde@adishatz.org>
 
-pkgbase=evolution-csd-git
 pkgname=evolution-csd-git
 pkgver=3.44.2+21+g1bd7f04bf7
 pkgrel=1
@@ -11,27 +10,22 @@ url="https://wiki.gnome.org/Apps/Evolution"
 arch=(x86_64)
 license=(GPL)
 depends=(gnome-desktop evolution-data-server libcanberra libpst libytnef
-         dconf gspell libcryptui gnome-autoar)
+         dconf gspell libcryptui gnome-autoar libgweather cmark)
 makedepends=(intltool itstool docbook-xsl networkmanager
              highlight gtk-doc yelp-tools git cmake ninja)
 options=(!emptydirs)
-conflicts=(evolution)
-replaces=(evolution)
 provides=(evolution)
-source=("git+https://gitlab.gnome.org/gnumdk/evolution.git#branch=archlinux")
+conflicts=(evolution)
+source=("${pkgname%-git}::git+https://gitlab.gnome.org/gnumdk/evolution.git#branch=archlinux")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd evolution
+  cd evolution-csd
   git describe --tags | sed 's/^EVOLUTION_//;s/_/./g;s/-/+/g'
 }
 
-prepare() {
-  cd evolution
-}
-
 build() {
-  cmake -S evolution -B build -G Ninja \
+  cmake -S evolution-csd -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DSYSCONF_INSTALL_DIR=/etc \
