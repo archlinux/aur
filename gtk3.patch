@@ -1,0 +1,13 @@
+--- snestracker-git/pc/Makefile.bad	2022-06-08 09:37:31.020954195 -0500
++++ snestracker-git/pc/Makefile	2022-06-08 09:37:47.269983216 -0500
+@@ -115,8 +115,8 @@
+ 	CPPFLAGS += -fpermissive
+ 	# NFD
+ 	CSOURCES += $(PROJ_DIR)/NativeFileDialog/nfd_gtk.c
+-	gtk_cflags = $(shell pkg-config --cflags gtk+-2.0)
+-	gtk_ldflags = $(shell pkg-config --libs gtk+-2.0)
++	gtk_cflags = $(shell pkg-config --cflags gtk+-3.0)
++	gtk_ldflags = $(shell pkg-config --libs gtk+-3.0)
+ 	#CPPFLAGS += $(gtk_cflags)
+ 	LDFLAGS += $(gtk_ldflags)
+ 	BOOST_LDFLAGS := -lboost_system -lboost_filesystem

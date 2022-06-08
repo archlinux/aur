@@ -1,0 +1,24 @@
+pkgbase = snestracker-git
+	pkgdesc = SNES Tracker aims to become a full-featured cross-platform music production software for the Super Nintendo Entertainment System (SNES), aka the Super Famicom.
+	pkgver = 0.0.r967.b384741b
+	pkgrel = 1
+	url = https://github.com/bazz1tv/snestracker
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = boost
+	depends = imagemagick
+	depends = alsa-lib
+	depends = gtk2
+	options = !makeflags
+	options = !buildflags
+	source = snestracker-git::git+https://github.com/bazz1tv/snestracker
+	source = sortFix.patch
+	source = gtk3.patch
+	sha256sums = SKIP
+	sha256sums = 3925ceec0599253071ee2e92f62ab6831d05e2f045a232a1fbf4130ccdf29ee8
+	sha256sums = 1cf91315ca23f83c9cebb65a316dbb5568ebd9e69780e1fbbe3825224d1efd19
+
+pkgname = snestracker-git
