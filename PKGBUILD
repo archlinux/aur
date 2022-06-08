@@ -1,14 +1,14 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='utf-8-steg-git'
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
 url="https://github.com/yadayadajaychan/utf-8-steg"
 license=('GPL3')
 depends=()
 makedepends=('git' 'gcc')
-provides=("${pkgname%-git}" 'steg')
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 _tag=05f8b7df05d5f007cd8a5e45b30de6f8dc04a34e
