@@ -1,0 +1,20 @@
+pkgbase = r-traminer
+	pkgdesc = Trajectory Miner: a Toolbox for Exploring and Rendering Sequences
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=TraMineR
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-cluster
+	depends = r-colorspace
+	depends = r-rcolorbrewer
+	depends = r-weights
+	depends = r-cnorm
+	depends = r-boot
+	optdepends = r-xtable
+	optdepends = r-traminerextras
+	source = https://cran.r-project.org/src/contrib/TraMineR_2.2-3.tar.gz
+	sha256sums = 3c698e4f79555fbe70358b679c75f9c72c23256568da46c775bbebe8668b72cb
+
+pkgname = r-traminer
