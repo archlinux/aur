@@ -1,10 +1,11 @@
 pkgbase = cfg2html-linux-git
 	pkgdesc = script similar to getsysinfo or get_config that creates HTML/ASCII system documentation
 	pkgver = r520.b479f8d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cfg2html.com
 	arch = any
 	license = gpl3
+	makedepends = git
 	depends = setserial
 	depends = python
 	depends = make
