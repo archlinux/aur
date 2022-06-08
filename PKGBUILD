@@ -81,10 +81,10 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.17
-_minor=13
+_major=5.18
+_minor=2
 _srcname=linux-${_major}
-_clr=${_major}.11-1148
+_clr=${_major}.2-1151
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -104,8 +104,8 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6c29f5a54ba99cca11730cd0c85b1b77a2e02aa8/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6c29f5a54ba99cca11730cd0c85b1b77a2e02aa8/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -133,7 +133,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec | grep -Ev '^Patch0110' | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec | grep -Ev '^Patch0132' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -416,9 +416,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
+sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
-            'e021118c2c4307cf1e0df7bcec8484dc96c40a3fe3e2ae105f3b98001343967c'
+            '4f59498ccb07ae20d5b14f8e92285b34d034e62027064f0c97058bd99b918aea'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
