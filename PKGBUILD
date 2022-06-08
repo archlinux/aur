@@ -3,7 +3,7 @@
 # Maintainer: Luke Briggs <lukebriggs02@gmail.com>
 pkgname=pepys
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A straightforward markdown editor"
 arch=('any')
