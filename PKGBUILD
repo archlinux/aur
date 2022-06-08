@@ -3,7 +3,7 @@
 # Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=lttoolbox
-pkgver=3.6.4
+pkgver=3.6.6
 pkgrel=1
 pkgdesc="Finite state compiler, processor and helper tools used by apertium"
 url="https://wiki.apertium.org/wiki/Lttoolbox"
@@ -12,10 +12,9 @@ makedepends=('pkgconf' 'gcc' 'make' 'utf8cpp')
 depends=('libxml2>=2.6.17' 'gcc-libs' 'icu')
 arch=('i686' 'x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/lttoolbox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c17802cea31f84144ec225209339b6a0fa541ff2c7c79eabf23482f31872da73')
+sha256sums=('e22d8a0635fc627e21679d168aad019f05279ae811d4913f58ebc3c8bf271f61')
 
 build() {
-	export CXXFLAGS="$CXXFLAGS -I/usr/include/utf8cpp"
 	cd "$srcdir/$pkgname-$pkgver"
 	./autogen.sh --prefix=/usr
 	make
