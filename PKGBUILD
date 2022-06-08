@@ -1,28 +1,63 @@
-# Maintainer: Tuhana GAYRETLİ <tuhana at tuta dot io>
+# Maintainer: Tuhana GAYRETLİ <tuhana at cok dot gay>
+# shellcheck disable=SC2034,SC2148,SC2164,SC2154,SC2128
 
-pkgname=catppuccin-grub-theme-git
-pkgver=r24.3f62cd4
-pkgrel=3
-pkgdesc="Soothing pastel theme for GRUB2."
-arch=("any")
-url="https://github.com/catppuccin/grub"
-license=("MIT")
-makedepends=("git")
-source=("$pkgname::git+https://github.com/catppuccin/grub.git")
-sha256sums=("SKIP")
-install="$pkgname.install"
+pkgname=(
+  catppuccin-frappe-grub-theme-git
+  catppuccin-latte-grub-theme-git
+  catppuccin-macchiato-grub-theme-git
+  catppuccin-mocha-grub-theme-git
+)
+pkgbase=catppuccin-grub-theme-git
+pkgver=r25.4f6ac65
+pkgrel=1
+pkgdesc='Soothing pastel theme for GRUB2'
+arch=(any)
+url='https://github.com/catppuccin/grub'
+license=(MIT)
+makedepends=(git)
+source=("git+$url.git")
+sha256sums=(SKIP)
 
-pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+package_catppuccin-frappe-grub-theme-git() {
+  pkgdesc+=' - frappe color scheme'
+  install=$pkgname.install
+
+  cd "$srcdir/grub"
+
+  install -d "$pkgdir/usr/share/grub/themes"
+  cp -r "src/${pkgname%-git}" "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
-package() {
-  cd $pkgname
+package_catppuccin-latte-grub-theme-git() {
+  pkgdesc+=' - latte color scheme'
+  install=$pkgname.install
 
-  install -dm755 "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+  cd "$srcdir/grub"
+
+  install -d "$pkgdir/usr/share/grub/themes"
+  cp -r "src/${pkgname%-git}" "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+}
 
-  cp -r --no-preserve=ownership ${pkgname%-git}/* "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+package_catppuccin-macchiato-grub-theme-git() {
+  pkgdesc+=' - macchiato color scheme'
+  install=$pkgname.install
+
+  cd "$srcdir/grub"
+
+  install -d "$pkgdir/usr/share/grub/themes"
+  cp -r "src/${pkgname%-git}" "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}
+
+package_catppuccin-mocha-grub-theme-git() {
+  pkgdesc+=' - mocha color scheme'
+  install=$pkgname.install
+
+  cd "$srcdir/grub"
+
+  install -d "$pkgdir/usr/share/grub/themes"
+  cp -r "src/${pkgname%-git}" "$pkgdir/usr/share/grub/themes/${pkgname%-grub-theme-git}"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

@@ -1,0 +1,15 @@
+. /usr/share/makepkg/util/message.sh
+colorize
+
+post_install() {
+  msg "Installed Catppuccin Macchiato GRUB2 theme."
+  msg2 "To enable the theme, change 'GRUB_THEME' variable in '/etc/default/grub' file to"
+  msg2 "'/usr/share/grub/themes/catppuccin-macchiato', uncomment it and update GRUB config with running"
+  msg2 "'grub-mkconfig -o /boot/grub/grub.cfg' as root."
+}
+
+post_remove() {
+  warning "Uninstalled Catppuccin Macchiato GRUB2 theme."
+  msg2 "To disable the theme, comment 'GRUB_THEME' variable in '/etc/default/grub' file"
+  msg2 "and update GRUB config with running 'grub-mkconfig -o /boot/grub/grub.cfg' as root."
+}
