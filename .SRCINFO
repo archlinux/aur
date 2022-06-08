@@ -1,10 +1,11 @@
 pkgbase = r-coexnet
 	pkgdesc = coexnet: An R package to build CO-EXpression NETworks from Microarray Data
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = https://bioconductor.org/packages/coexnet
 	arch = any
 	license = LGPL
+	makedepends = git
 	depends = r
 	depends = r-acde
 	depends = r-affy
@@ -21,7 +22,7 @@ pkgbase = r-coexnet
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coexnet_1.15.0.tar.gz
-	sha256sums = d309e6ed4c557fbd55a525095a8725717c0483a0e882e75b5bf89433653e74c0
+	source = git+https://git.bioconductor.org/packages/coexnet
+	sha256sums = SKIP
 
 pkgname = r-coexnet

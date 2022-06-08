@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=coexnet
-_pkgver=1.15.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.15.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='coexnet: An R package to build CO-EXpression NETworks from Microarray Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,10 +29,14 @@ optdepends=(
   r-knitr
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d309e6ed4c557fbd55a525095a8725717c0483a0e882e75b5bf89433653e74c0')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
