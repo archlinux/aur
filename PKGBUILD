@@ -17,8 +17,8 @@ groups=('selinux')
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/setroubleshoot'
 license=('GPL2')
-conflicts=("setroubleshoot" "setroubleshoot-server")
-provides=("setroubleshoot" "setroubleshoot-server" "setroubleshoot-git" "setroubleshoot-server-git")
+conflicts=("setroubleshoot")
+provides=("setroubleshoot-git" "setroubleshoot-server-git")
 makedepends=('audit' 'dbus' 'desktop-file-utils' 'gtk3' 'libnotify' 'libreport'
              'policycoreutils' 'polkit' 'python-gobject' 'python-pydbus'
              'python-slip' 'python-systemd' 'xdg-utils' 'python-dasbus')
@@ -53,7 +53,7 @@ build() {
 
 package_setroubleshoot-git() {
   pkgdesc="Provides tools to help diagnose SELinux problems - GUI"
-  depends=('setroubleshoot-server' 'hicolor-icon-theme' 'python')
+  depends=('setroubleshoot-server-git' 'hicolor-icon-theme' 'python')
 
   cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
