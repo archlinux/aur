@@ -1,0 +1,17 @@
+pkgbase = perl-http-request-params
+	pkgdesc = Retrieve GET/POST Parameters from HTTP Requests
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://metacpan.org/pod/HTTP::Request::Params
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-http-message
+	depends = perl-cgi
+	depends = perl-email-mime
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KI/KIZ/HTTP-Request-Params-1.02.tar.gz
+	sha256sums = 9c12880ae20bda79366a89cab05eca53d728d94e5e99e988763effc013e8ee8c
+
+pkgname = perl-http-request-params
