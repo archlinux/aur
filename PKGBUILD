@@ -2,7 +2,7 @@
 
 pkgname='zwcad-bin'
 _pkgname='zwcad'
-pkgver=22.2.3.5
+pkgver=23.0.3.4
 _year=20${pkgver:0:2}
 pkgrel=1
 epoch=1
@@ -11,56 +11,44 @@ arch=('x86_64' 'aarch64')
 license=('unknown')
 url="https://www.zwcad.com"
 provides=("zwcad")
-depends=('freeimage' 'qrencode'  'freetype2' 'python')
-source_x86_64=("${_pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/SP2/zwcad${_year}_${pkgver}_zh-cn_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}-${arch}.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/SP2/zwcad${_year}_${pkgver}_zh-cn_arm64.deb")
-sha512sums_x86_64=('445b0039355faa6516395492db6cc2f65e0e71b8e9ee5610aa96b08222b06aa918415b60492d3e7e5ae364ac39cf02f511611592a7d80eb3f8d3d960078744f8')
-sha512sums_aarch64=('445b0039355faa6516395492db6cc2f65e0e71b8e9ee5610aa96b08222b06aa918415b60492d3e7e5ae364ac39cf02f511611592a7d80eb3f8d3d960078744f8')
+depends=('freeimage' 'qrencode'  'freetype2' 'python' 'openssl' 'log4cpp' 'gmp')
+makedepends=('patchelf')
+source=('zwcad.sh')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/Official/zwcad${_year}_${pkgver}_chs_amd64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://download.zwcad.com/zwcad/cad_linux/${_year}/Official/zwcad${_year}_${pkgver}_chs_arm64.deb")
+sha512sums=('3f978fc46a39c8e65551a8e581f234526183b6b811b1e857fb17903549b10442b676713c342880d144a47fc5da76882152901533abd898a24588b7e9bbbc207c')
+sha512sums_x86_64=('3d124586fff017d624ae3e6dac5c08bc7cc527930def4cf0c06d410904fa60599874f56a4679d7ec7da454bc85c679f8af9e207004be52a1d6617cb494a173af')
+sha512sums_aarch64=('507df24ab0a9772a13944e3d1e6a8f8c13e5188ff07c3becfe848b03506f4db48cb0f91c45d1ec5a4d4f15699d7ce563e1be8af3031d2df7d8e0cfc324e1cbcc')
 options=(!strip)
+# no need to strip, it only decreases the installed size by 24.44 MiB.
 
 prepare(){
     cd $srcdir
     tar -xJf data.tar.xz -C "${srcdir}"
-    cd $srcdir/opt/ZWSOFT/ZWCAD${_year}
-    #system qt
-    rm -rf lib/{libQt*,libpng*} plugins libpng*
-    sed -i "4c Prefix = /usr/lib/qt" qt.conf
     
+    cp zwcad.sh zwlmgr.sh
+    sed -i '$d' zwlmgr.sh
+    echo './ZwLmgr /language zh-CN /language zh-CN' >>zwlmgr.sh
+    
+    cd $srcdir/opt/apps/zwcad${_year}
+    #system qt
+    rm -rf lib/{libQt*,libpng*} plugins libpng* qt.conf
+
     #system python
     cd ZwPyRuntime
     _pyver=$(python -V | cut -d' ' -f2)
     test -d python${_pyver%.*} || mkdir python${_pyver%.*}
     cp python3.7/ZwPyRuntime.so python${_pyver%.*}
     rm -rf python3.{4,5,6,7}
-    cd python${_pyver%.*}
-    sed -i "s|libpython3.7m.so.1.0|libpython${_pyver%.*}.so.1.0|g" ZwPyRuntime.so
     
-    cd $srcdir/opt/ZWSOFT/ZWCAD${_year}
+    cd $srcdir/opt/apps/zwcad${_year}
     rm -rf libZwPythonLoad{4,5,6}.so
     _midver=$(echo ${_pyver} |cut  -d'.' -f2)
     mv libZwPythonLoad7.so libZwPythonLoad${_midver}.so
-    sed -i 's|libpython3.7m.so.1.0|libpython${_pyver%.*}.so.1.0|g' libZwPythonLoad${_midver}.so
 }
 build(){
-    cd $srcdir/opt/ZWSOFT/ZWCAD${_year}
-    echo '''#!/bin/bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/zwcad:/opt/zwcad/lib:/opt/zwcad/lib/mono/lib
-export MONO_PATH=$MONO_PATH:/opt/zwcad/lib/mono/lib/mono/4.5
-export QT_IM_MODULE=fcitx
-export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
-export QT_PLUGIN_PATH=/usr/lib/qt/plugins
-export QT_QPA_PLATFORM=xcb
-export GDAL_ALLOW_LARGE_LIBJPEG_MEM_ALLOC=1
-cd /opt/zwcad/
-#./ZWCAD -platformpluginpath /opt/zwcad/plugins -platform xcb "$1"
-./ZWCAD "$1" "$2"
-
-''' >zwcad 
-    chmod 0755 zwcad 
     
-    cp zwcad zwlmgr
-    sed -i '$d' zwlmgr
-    echo './ZwLmgr /language zh-CN /language zh-CN' >>zwlmgr
+    cd $srcdir/opt/apps/zwcad${_year}
     
     # Fix ./ZWLMGRRUN.sh and ./ZWCADRUN.sh not found
     sed -i 's|ZWLMGRRUN.sh|zwlmgr\x0\x0\x0\x0\x0\x0|g' ZWCAD
@@ -68,31 +56,50 @@ cd /opt/zwcad/
     
     # Fix desktop
     cd $srcdir/usr/share/applications/
-    sed -i 's|^Exec=.*|Exec=zwcad %F|g;s|^Icon=.*|Icon=ZWCAD|g'   "ZWCAD${_year}.desktop"
-    sed -i 's|^Exec=.*|Exec=zwlmgr|g;s|^Icon=.*|Icon=ZWCAD|g'   "ZwLmgr${_year}.desktop"
+    sed -i 's|^Exec=.*|Exec=zwcad %F|g;s|^Icon=.*|Icon=ZWCAD|g'   "zwcad${_year}.desktop"
+    sed -i 's|^Exec=.*|Exec=zwlmgr|g;s|^Icon=.*|Icon=ZWCAD|g'   "zwlmgr${_year}.desktop"
     
 }
 
 package(){
     mkdir -p "$pkgdir"/opt
-    mv "${srcdir}"/usr   "$pkgdir"
+    cp -rf  "${srcdir}"/usr   "$pkgdir"
     mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
-    mv "${srcdir}"/opt/ZWSOFT/ZWCAD${_year} "${pkgdir}"/opt/zwcad
+    cp -rf  "${srcdir}"/opt/apps/zwcad${_year} "${pkgdir}"/opt/zwcad
+    chmod a-x "${pkgdir}"/opt/zwcad/Icons/ZWCAD.svg
     mv "${pkgdir}"/opt/zwcad/Icons/ZWCAD.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
     
     # create executable
-    cp "$pkgdir"/opt/zwcad/zwcad  "$pkgdir"/opt/zwcad/zwlmgr
-    sed -i "s/ZWCAD/ZwLmgr/g" "$pkgdir"/opt/zwcad/zwlmgr
-    mkdir -p "$pkgdir"/usr/bin/
-    ln -s /opt/zwcad/zwcad "$pkgdir"/usr/bin/zwcad
-    ln -s /opt/zwcad/zwlmgr "$pkgdir"/usr/bin/zwlmgr
+    install -Dm755 ${srcdir}/zwcad.sh "$pkgdir"/usr/bin/zwcad
+    install -Dm755 ${srcdir}/zwlmgr.sh "$pkgdir"/usr/bin/zwlmgr
+    
+    
+    cd "$pkgdir"/opt/zwcad
+    install -Dm644 sense4_usb.rules  ${pkgdir}/etc/udev/rules.d/sense4_usb.rules
+    
+    # patch rpath
+    for lib in ${pkgdir}/opt/zwcad/lib*.so
+    do
+        echo patching $lib
+        patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' $lib
+    done;
+    _pyver=$(python -V | cut -d' ' -f2)
+    patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' ${pkgdir}/opt/zwcad/ZwPyRuntime/python${_pyver%.*}/ZwPyRuntime.so
+    patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' ${pkgdir}/opt/zwcad/ZWCAD
+    
+    # move libs
+    mkdir -p ${pkgdir}/usr/lib/zwcad
+    mv "$pkgdir"/opt/zwcad/{lib/libSpaA*,libdwf*,libsw*,libfsdk*}  ${pkgdir}/usr/lib/zwcad
+    
+    # Cheat ZwPyRuntime.so to use libpython3.10.so as libpython3.7m.so.1.0
+    ln -s /usr/lib/libpython${_pyver%.*}.so ${pkgdir}/usr/lib/zwcad/libpython3.7m.so.1.0
+
     
     
     # remove unused files
     rm -rf "$pkgdir"/opt/zwcad/{Icons,ZWCADRUN.sh,ZWLMGRRUN.sh}
-    rm -rf ${pkgdir}/opt/zwcad/{libfree*,libqren*}
+    rm -rf ${pkgdir}/opt/zwcad/{libfree*,libqren*,libcrypto*,libgmp*,liblog4cpp*,libssl*,*.rules}
+    rm -rf ${pkgdir}/opt/zwcad/lib/{libicu*,libpcre*}
     
-    cd "$pkgdir"/opt/zwcad
-    install -Dm644 sense4_usb.rules  ${pkgdir}/etc/udev/rules.d/sense4_usb.rules
     
 }
