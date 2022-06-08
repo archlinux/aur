@@ -20,6 +20,7 @@ makedepends=(
 	libhandy
 	meson
 	vala
+	vulkan-headers
 	wayland-protocols
 )
 provides=(phoc)

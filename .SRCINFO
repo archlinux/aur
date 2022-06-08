@@ -11,6 +11,7 @@ pkgbase = phoc-embedded-wlroots
 	makedepends = libhandy
 	makedepends = meson
 	makedepends = vala
+	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	depends = mutter
 	depends = seatd
