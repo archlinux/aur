@@ -1,13 +1,17 @@
 pkgbase = python-exceptiongroup
 	pkgdesc = Backport of PEP 654 (exception groups)
-	pkgver = 1.0.0rc7
+	pkgver = 1.0.0rc8
 	pkgrel = 1
 	url = https://github.com/agronholm/exceptiongroup
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-flit-scm
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/py3/e/exceptiongroup/exceptiongroup-1.0.0rc7-py3-none-any.whl
-	sha256sums = 82dc1cfc21bb5f921a25925e80ec696c71b7d108c6c63bd8a786abe2b73c3263
+	source = python-exceptiongroup-1.0.0rc8.tar.gz::https://github.com/agronholm/exceptiongroup/archive/1.0.0rc8.tar.gz
+	sha256sums = eea886105f6b88625ce391b2cba78334f6f20edb6c9a2b613eaaffbe9b2dcf96
 
 pkgname = python-exceptiongroup

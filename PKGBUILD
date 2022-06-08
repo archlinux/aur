@@ -2,19 +2,37 @@
 
 _name=exceptiongroup
 pkgname=python-${_name}
-pkgver=1.0.0rc7
+pkgver=1.0.0rc8
 pkgrel=1
 pkgdesc="Backport of PEP 654 (exception groups)"
 arch=('any')
 url="https://github.com/agronholm/${_name}"
 license=('MIT')
 depends=('python')
-makedepends=('python-pip')
-_wheelname="${_name/-/_}-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}")
-sha256sums=('82dc1cfc21bb5f921a25925e80ec696c71b7d108c6c63bd8a786abe2b73c3263')
+makedepends=(
+	'python-build'
+	'python-flit-scm'
+	'python-installer'
+	'python-wheel'
+)
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('eea886105f6b88625ce391b2cba78334f6f20edb6c9a2b613eaaffbe9b2dcf96')
 
+
+build() {
+    cd "$_name-$pkgver"
+    export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$_name-$pkgver"
+    pytest
+}
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location "${_wheelname}"
+    cd "$_name-$pkgver"
+    export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

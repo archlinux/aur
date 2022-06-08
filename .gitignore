@@ -2,4 +2,4 @@ pkg/
 src/
 
 python-exceptiongroup-*.tar.*
-exceptiongroup-*.whl
+python-exceptiongroup-*.pkg.*
