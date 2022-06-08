@@ -1,11 +1,12 @@
 pkgbase = intel-ucode-git
 	pkgdesc = Microcode update files for Intel CPUs
-	pkgver = 20220207.r0.g115c3e4
+	pkgver = 20220510.r2.g6c0c469
 	pkgrel = 1
 	url = https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
 	arch = any
 	license = custom
 	makedepends = iucode-tool
+	makedepends = git
 	provides = intel-ucode
 	conflicts = intel-ucode
 	replaces = microcode_ctl
