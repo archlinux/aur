@@ -1,7 +1,7 @@
 # Maintainer: Jacob Parnell <aur@jakepenguins.xyz>
 _pkgbin=moderndeck
 pkgname=moderndeck-bin
-pkgver=9.4.4
+pkgver=9.4.5
 pkgrel=1
 pkgdesc="A beautiful, powerful Twitter client for desktop."
 package="ModernDeck_x86_64.AppImage"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://moderndeck.org'
 license=('MIT')
 source=("${package}::https://github.com/dangeredwolf/ModernDeck/releases/download/v${pkgver}/${package}")
-sha256sums=('5c443686107f09d632ed8917e6ef9a80b6b65ee25cb40ff1aef79dd24acb3394')
+sha256sums=('6a90fdc5dbc0795edefa121f43329c4edd6d575abdcfa246b48acfabc9fa44e9')
 
 build() {
 	# Extract files from AppImage
