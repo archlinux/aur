@@ -2,7 +2,7 @@
 
 pkgname=jib
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility for reproducable builds of OCI or Docker container images'
 arch=('any')
 url="https://github.com/GoogleContainerTools/${pkgname}"
