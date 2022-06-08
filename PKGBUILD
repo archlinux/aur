@@ -2,7 +2,7 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=1.20.0.r3.g15c279203
+pkgver=1.28.0.r4.ga73a86bbc
 pkgrel=1
 pkgdesc="Tool to automatically receive and install X.509 certificates to enable TLS on servers"
 arch=('any')
