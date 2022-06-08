@@ -3,19 +3,16 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
 url='https://rancherdesktop.io/'
 makedepends=('npm' 'nvm' 'nodejs' 'imagemagick' 'go')
-optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
-            'nerdctl-bin: Docker-compatible CLI for containerd'
-            'helm: for Apps section, only useful if your deploy uses helm or plan to use it')
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c50001a79510bf95c2b700e1d07ace26ae09eb29f5a6077360a9cb089b2d810c')
+sha256sums=('a4209f3007ed59814f28e6d89961a013d166595c0158a517e80ea4c9f20f6314')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -26,7 +23,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 16.14.0
+    nvm install 16.15.1
 
 
     cd "${pkgname}-${pkgver}"
