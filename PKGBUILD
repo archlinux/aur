@@ -30,6 +30,7 @@ sha256sums=('c216e3fba401a36fa22f0456ae9262c1ff6adcf6d29921218329553939f0921c')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
+    cp -R "${srcdir}/opt" "${pkgdir}/"
     rm -rf "${pkgdir}/usr/share/icons/ubuntu-mono-dark"
     rm -rf "${pkgdir}/usr/share/doc"
 }
