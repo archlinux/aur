@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TSRchitect
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Promoter identification from large-scale TSS profiling data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -32,10 +32,14 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('31c50f0af34aee8c22b2847451774510194863a2896c86d2f793e7e42dfa3fed')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
