@@ -113,7 +113,7 @@ EOF
     IFS="$OLDIFS"
     unset OLDIFS
     resolved=$(cryptsetup isLuks "${cryptdev}" >/dev/null 2>&1 && echo "${cryptdev}")
-    [ "${resolved}" != "" ] || resolved=$(resolve_device "${cryptdev}" ${rootdelay})
+    [ "${resolved}" = "" ] && resolved=$(resolve_device "${cryptdev}" ${rootdelay})
     if $resolved; then
         if cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
             [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
