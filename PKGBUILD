@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='certspotter'
 pkgname="$_pkgname-git"
-pkgver='0.10.r1.g6d5e239'
-pkgrel='2'
+pkgver='0.12.r0.g270cdab'
+pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
@@ -11,7 +11,7 @@ makedepends=('git' 'go>=1.5')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 _bindir="$pkgname-bin"
@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	git describe --long --tags | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
@@ -34,10 +34,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-	go mod init "software.sslmate.com/src/$_pkgname"
-	go mod tidy
-	export GOFLAGS="$GOFLAGS -mod=readonly"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	go build -v -o "$srcdir/$_bindir/" './...'
 }
 
