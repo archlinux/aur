@@ -1,6 +1,7 @@
 # Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=Rdpack
-_cranver=2.3
+_cranver=2.3.1
+_updatedate=2022-06-08
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -23,7 +24,7 @@ optdepends=(
 	r-rprojroot
 	r-gbrd
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
 
 build() {
 	mkdir -p build
@@ -46,4 +47,4 @@ package() {
 	cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
 
-sha256sums=('c45e1ab8352b92ce03f26ece1f4db3716959fca2af9e826d5bd3c76b2151f7c5')
+sha256sums=('b53e5e9db53e31f514e2fef46bafa00bc7cd8828e36e5c933e28e9ac892d448a')
