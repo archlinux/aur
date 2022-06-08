@@ -2,7 +2,7 @@
 
 pkgname=webviewer
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal display of a website. Useful for web versions of messengers."
 arch=('any')
 url="https://github.com/LeAlex27/webviewer"
@@ -24,7 +24,7 @@ prepare() {
     if [ -n "$_whatsapp_web" ]; then
         wget "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/766px-WhatsApp.svg.png"
         gendesk --pkgname "whatsapp_web" --name "WhatsApp Web" --categories "Network;InstantMessaging" \
-        --exec "python -m webviewer --storage-name whatsapp_web --strip-user-agent https://web.whatsapp.com"
+        --exec "env QT_QUICK_CONTROLS_STYLE=Material QT_QUICK_CONTROLS_MATERIAL_THEME=Dark QT_QUICK_CONTROLS_MATERIAL_ACCENT=#00a884 python -m webviewer --storage-name whatsapp_web --strip-user-agent https://web.whatsapp.com"
     fi
 
     if [ -n "$_threema_web" ]; then
