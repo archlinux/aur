@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=libflame-git
-pkgver=r87.b112dd8f
+pkgver=r90.9fdb4fd1
 pkgrel=1
 pkgdesc="High-performance object-based library for DLA computations"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('libflame')
 conflicts=('libflame')
 source=("$pkgname::git+https://github.com/flame/libflame.git")
 sha1sums=('SKIP')
-options=('staticlibs')
+# options=('staticlibs')
 
 pkgver() {
   cd "${pkgname}"
@@ -29,8 +29,8 @@ prepare() {
     ENABLE_SSE=--enable-vector-intrinsics=sse
   fi
 
-  # static build is necessary for some packages and programs (e. g. GAMESS)
-  ./configure --prefix=/usr --enable-static-build --enable-dynamic-build $ENABLE_SSE --enable-multithreading=openmp --enable-supermatrix --enable-lapack2flame --enable-max-arg-list-hack
+  # static build is only needed in some cases. We can make a separate -static package if needed
+  ./configure --prefix=/usr --enable-dynamic-build $ENABLE_SSE --enable-multithreading=openmp --enable-supermatrix --enable-lapack2flame --enable-max-arg-list-hack --enable-gpu
 }
 
 build() {
