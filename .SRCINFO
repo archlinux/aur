@@ -1,7 +1,7 @@
 pkgbase = aptdec-git
 	pkgdesc = NOAA APT satellite imagery decoder
-	pkgver = r184.794d69c
-	pkgrel = 2
+	pkgver = r190.b1cc748
+	pkgrel = 1
 	url = https://github.com/Xerbo/aptdec
 	arch = x86_64
 	arch = arm
@@ -14,8 +14,6 @@ pkgbase = aptdec-git
 	provides = aptdec
 	conflicts = aptdec
 	source = git+https://github.com/Xerbo/aptdec
-	source = 0001-Fix-GCC-A-may-be-used-uninitialized-warning.patch
 	md5sums = SKIP
-	md5sums = 129dbf2c66891cb179482a6e2539676f
 
 pkgname = aptdec-git
