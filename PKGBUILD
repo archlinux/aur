@@ -1,19 +1,21 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=ipred
-_cranver=0.9-12
+_cranver=0.9-13
+_updatedate=2022-06-08
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Improved Predictors"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(GPL2 GPL3)
+license=(GPL)
 depends=('r>=2.10' r-prodlim)
 optdepends=(r-mvtnorm r-mlbench r-th.data r-randomforest r-party)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d6e1535704d39415a799d7643141ffa4f6f55597f03e763f4ccd5d8106005843')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('6168a062d93c2d3063c064a8f242cd3716dee99822e20363a1801261319c4c98')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
