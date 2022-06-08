@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=XCIR
-_pkgver=1.7.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='XCI-inference'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,10 +24,14 @@ optdepends=(
   r-knitr
   r-rmarkdown
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9cd249f510c3cd3c29074a5f9a29e18a7fd365e433f9050d983a6c1e00bf8258')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
