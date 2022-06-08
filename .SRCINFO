@@ -1,6 +1,6 @@
 pkgbase = communist
 	pkgdesc = Communist is a simple GTK4 based p2p messenger
-	pkgver = 1.1.2
+	pkgver = 1.2
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = communist
 	depends = icu
 	provides = communist
 	options = strip
-	source = https://github.com/ProfessorNavigator/communist/archive/refs/tags/v1.1.2.tar.gz
-	md5sums = a29fb86ca3be045036763e5a502a9ec3
+	source = https://github.com/ProfessorNavigator/communist/archive/refs/tags/v1.2.tar.gz
+	md5sums = 2daa134156ae8eaefc4f81c8eeb9f55a
 
 pkgname = communist
