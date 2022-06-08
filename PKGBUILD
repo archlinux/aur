@@ -1,10 +1,12 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Robert Greener <me@r0bert.dev>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=git2r
-_cranver=0.29.0
+_cranver=0.30.1
+_updatedate=2022-06-08
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,8 +17,8 @@ license=(GPL2)
 depends=('r>=3.1' libgit2 zlib openssl)
 optdepends=(r-getpass
             'libssh2: SSH transport support')
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f8f7a181dc0ac761f2a0c4099bfd744ded01c0e0832cab32dc5b4da32accd48e')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('85d913ddc7659e32c1b98ebc247fa1cc1b7717a5bd413fa78ea84696986ca840')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

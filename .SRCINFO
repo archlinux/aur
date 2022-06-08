@@ -1,6 +1,6 @@
 pkgbase = r-git2r
 	pkgdesc = Provides Access to Git Repositories
-	pkgver = 0.29.0
+	pkgver = 0.30.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=git2r
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = r-git2r
 	depends = openssl
 	optdepends = r-getpass
 	optdepends = libssh2: SSH transport support
-	source = https://cran.r-project.org/src/contrib/git2r_0.29.0.tar.gz
-	sha256sums = f8f7a181dc0ac761f2a0c4099bfd744ded01c0e0832cab32dc5b4da32accd48e
+	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/git2r_0.30.1.tar.gz
+	sha256sums = 85d913ddc7659e32c1b98ebc247fa1cc1b7717a5bd413fa78ea84696986ca840
 
 pkgname = r-git2r
