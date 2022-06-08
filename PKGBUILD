@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Herper
-_pkgver=1.3.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='The Herper package is a simple toolset to install and manage conda packages and environments from R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,10 +22,14 @@ optdepends=(
   r-seqcna
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.zip")
-sha256sums=('79a7aeb091795e58b0fec8780306f5e7e5df9045c8d95bd3aefb9dbfec560c0d')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
