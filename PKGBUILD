@@ -1,8 +1,8 @@
 # Maintainer: intothegnu <intothegnu@protonmail.com>
 
 pkgname="nyaash"
-pkgver="1.2.0"
-pkgrel="2"
+pkgver="1.2.1"
+pkgrel="1"
 pkgdesc="Shell script CLI shell script to query nyaa instances."
 arch=('any')
 depends=('lynx' 'curl')
@@ -10,7 +10,7 @@ optdepends=('noto-fonts-cjk: chinese, japanese, and korean characters')
 license=('GPL')
 url="https://notabug.org/BezierQuadratic/nyaash"
 source=("https://notabug.org/BezierQuadratic/nyaash/archive/$pkgver.tar.gz")
-md5sums=('4a677521ea25b99ff5daae0cf8c007ba')
+md5sums=('ac0cb99469703920c159cc58ca22b44e')
 package(){
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/doc/nyaash

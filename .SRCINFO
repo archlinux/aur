@@ -1,8 +1,8 @@
 pkgbase = nyaash
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	pkgdesc = Shell script CLI shell script to query nyaa instances.
-	md5sums = 4a677521ea25b99ff5daae0cf8c007ba 
+	md5sums = ac0cb99469703920c159cc58ca22b44e 
 	url = https://notabug.org/BezierQuadratic/nyaash
 	license = GPL
 	arch = any
