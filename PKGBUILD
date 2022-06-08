@@ -8,7 +8,7 @@ pkgdesc='Set of HTML documentation for blender'
 arch=('any')
 url='https://docs.blender.org/'
 license=('custom:CC BY-SA 4.0')
-options=(docs)
+options=(!strip)
 source=("blender-manual-$pkgver.zip::https://docs.blender.org/manual/en/latest/blender_manual_html.zip"
 	"blender-api-$pkgver.zip::https://docs.blender.org/api/current/blender_python_reference_${_spkgver/./_}.zip"
 	LICENCE)
