@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r2557.0f7b539e
+pkgver=r2577.259c1176
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -20,7 +20,7 @@ url="https://harelang.org"
 source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
 	config.x86_64.mk)
 sha512sums=('SKIP'
-            '70efd406abd2b6a96fd67bec18602810a91aed0a3adac9f1fcc0d6103dacc1abe0e20d3c13c1f56d76728bb3cb8f46c448fc580110a85f761e4a228db116a111')
+            'bf0f1985de8ae414352b2a5c542c7c5f3ede8cdf4af5e22753226dc7d5192695fa55ef495bb10d9be682858533bdd771d38990d3271d9a4fa955fb15509b384f')
 provides=("hare")
 conflicts=("hare")
 # options=(debug)
