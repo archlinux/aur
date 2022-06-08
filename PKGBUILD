@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.0.r0.g9c06980275
+pkgver=0.7.28.r0.g176b574403
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=(
 	'pixman'
 	'python-yaml'
 	'samurai'
-	'tomlplusplus>=3.1.0'
-	'xxhash>=0.7.4.r137'
+	'tomlplusplus>=3.1'
+	'xxhash>=0.8'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -49,7 +49,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
