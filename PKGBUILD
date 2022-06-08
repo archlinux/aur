@@ -33,7 +33,7 @@ build() {
 #}
 
 package_python-sphinx-tabs() {
-    depends=('python-sphinx<5' 'python-pygments')
+    depends=('python-sphinx' 'python-pygments')
     optdepends=('python-pre-commit: code_style')
     cd ${srcdir}/${_pyname}-${pkgver}
 
