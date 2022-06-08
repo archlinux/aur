@@ -13,7 +13,7 @@ options=("!strip")
 provides=("siyuan")
 optdepends=('pandoc: docx export')
 source=("https://release.b3log.org/siyuan/${_pkgname}")
-sha512sums=("ae5c7e9e200e0f4205bc797a91e756fe10abed2036aac11a242053bbc7ed0c703afc2626ade3283c3555b389f8a5add41fa48773c9517e04605b750e17e6ec4b")
+sha512sums=("c8cf30c88df46a40ad3f3a685f366bf579c64defd0386188dc26e7fb5ca44a34b52c8d7dd8ecbd07d0ac9b04acb2acb8f8c6b75f5ffde3bff8f5cf5bfc361c71")
 
 _installdir=/opt/appimages
 
