@@ -1,12 +1,12 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
-	pkgver = 2022.6
+	pkgver = 2022.7
 	pkgrel = 1
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
 	license = custom:PyInstaller
 	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/py2.py3/p/pyinstaller-hooks-contrib/pyinstaller_hooks_contrib-2022.6-py2.py3-none-any.whl
-	sha512sums = dd9a499b1f0959bcfd6e2c241fa2d458606055d4bc14f8ba5053cca0e1a92fb4b2765da2c5005383ac4fcef1cd17d70a8a8d13b7fe68aae1c6eec9f6ced41344
+	source = https://files.pythonhosted.org/packages/py2.py3/p/pyinstaller-hooks-contrib/pyinstaller_hooks_contrib-2022.7-py2.py3-none-any.whl
+	sha512sums = 597b08a2432ac7b09ea4e804d61a1777a0e577e6ab991582e37f18da67a86b45d41573f627cfb054e51b29f8e93f93e614bb2c6f0537af09486a2a86617efa8f
 
 pkgname = pyinstaller-hooks-contrib
