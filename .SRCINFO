@@ -1,7 +1,7 @@
 pkgbase = webviewer
 	pkgdesc = Minimal display of a website. Useful for web versions of messengers.
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LeAlex27/webviewer
 	arch = any
 	license = GPL3
