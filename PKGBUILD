@@ -24,9 +24,9 @@ build() {
   meson compile -C build
 }
 
-check() {
-  meson test -C build
-}
+#check() {
+#  meson test -C build
+#}
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
