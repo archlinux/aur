@@ -1,12 +1,16 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Make Arch package using OBS binaries
-# 22-Feb-2022 
-# See http://www.c-evo.org/
+# 7-Jun-2022
+# See http://www.c-evo.org
+# https://app.zdechov.net/c-evo
 # https://build.opensuse.org/package/show/home:PeterBBB/c-evo
+#
+# Based on Upstream Svn revision 446
+#
 
 pkgname=c-evo-nh-bin
 pkgbase=c-evo-bin
-pkgver=1.3.0.420.1
+pkgver=1.3.1.1
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -15,17 +19,15 @@ license=('GPL2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-nh' 'c-evo-bin')
-source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_1.3.0.420+dfsg-1_all.deb"
-       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_1.3.0.420+dfsg-1_amd64.deb"
-        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_1.3.0.420+dfsg-1_amd64.deb")
-sha256sums=('49e39dbf3f29b0d10955652e1f78ee985b2305de0ba0bc137cbbe5ee4dcfea76'
-            '88c9fe71a46cdee394c7ac7fb4cba86efdf1add8da4e8fed4200579f98bfa5ce'
-            '53935cbd6c310ae895842d368e387d9aca3fdfe0ae6c885871dc23c3c9a597d9')
-
+source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_1.3.1+dfsg-1_all.deb"
+       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_1.3.1+dfsg-1_amd64.deb"
+        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_1.3.1+dfsg-1_amd64.deb")
+sha256sums=('368df30e37cde36c8e99629ff5c2b678c21797b9ee55d97ed3decc0d229eb59d'
+            '4c1d4387f08119829caf9751732de89ad2b101e710e19f5f5c9778dbe74ba6fa'
+            '884d1fe30416d7a6083b7062f095176121f05aba70b8bbbe83f77628d72640be')
 noextract=("$pkgname-$pkgver.data.deb"
 	  "$pkgname-$pkgver.stdai.deb"
 	  "$pkgname-$pkgver.gtk2.deb")
-
 
 prepare() {
    cd "${srcdir}"
@@ -59,7 +61,6 @@ prepare() {
    sed -i "s|share/games|share|"   usr/bin/c-evo-launch-gtk2
    sed -i "s|/usr/games|/usr/bin|" usr/bin/c-evo-launch-gtk2
  }
-
 
 package() {
     cd $srcdir
