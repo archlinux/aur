@@ -1,11 +1,12 @@
 pkgbase = creduce
 	pkgdesc = A C/C++ program reducer
 	pkgver = 2.10.0.r94.4ae77d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://embed.cs.utah.edu/creduce/
 	arch = i686
 	arch = x86_64
 	license = custom:University of Illinois Open Source License
+	makedepends = git
 	depends = astyle
 	depends = clang>=9.0.0
 	depends = indent
