@@ -6,10 +6,10 @@
     sha256sum kubenav.desktop
     # LICENSE file
     curl -s https://raw.githubusercontent.com/kubenav/kubenav/master/LICENSE | sha256sum
-    # AppRelease file
-    pkgname=$(cat PKGBUILD | grep 'pkgname=' | awk -F "=" '{print $2}') && \
+    # released zip file
+    pkgname=$(cat PKGBUILD | grep '_pkgname=' | awk -F "=" '{print $2}') && \
     pkgver=$(cat PKGBUILD | grep 'pkgver=' | awk -F "=" '{print $2}') && \
-    curl -L "https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-amd64.AppImage" | sha256sum
+    curl -L "https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-amd64.zip" | sha256sum
     ```
 
 - Bump `pkgver` and `pkgrel` at [PKGBUILD](PKGBUILD#L4) accordingly

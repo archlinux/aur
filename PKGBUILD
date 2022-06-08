@@ -1,27 +1,28 @@
-# Maintainer: Francisco Guimaraes <francisco at gmail dot com>
+# Maintainer: Ralf Meyer <dev dot ralfmeyer at gmail dot com>
 
 _pkgname=kubenav
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
-pkgrel=1
+pkgver=3.9.0
+pkgrel=0
 pkgdesc="kubenav is the navigator for your Kubernetes clusters right in your pocket"
 arch=("x86_64")
 url="https://kubenav.io"
-license=("custom")
+license=("MIT")
+# depends on imagemagick to resize icons
 makedepends=("imagemagick")
-# We cannot strip the AppImage binary otherwise it will cause an invalid binary
+# We cannot strip the zip file binary otherwise it will cause an invalid binary
 options=(!strip)
 source=(
   "${_pkgname}.png"
   "${_pkgname}.desktop"
   "https://raw.githubusercontent.com/${_pkgname}/${_pkgname}/master/LICENSE"
-  "${_pkgname}::https://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-amd64.AppImage"
+  "${_pkgname}::https://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip"
 )
 sha256sums=(
   "517ed89a60aff62e88728a7dde46aa379dc13298ba8d9603b22e0f7c2d7acf44"
   "d3237a646a381281e7b34fea6098b95a1ce44c22f08659e74d18b47af645b1e3"
-  "0bfdaf7208f7267c5ff99d52d5ee69a2edf2c3ff677a7dba80a18a230645dbbe"
-  "736d6737bc3371198c699b6eedd31b39b2ba3f34bd932188523a91ad2e7a2e01"
+  "56c443ef0e654b4568e4e2091a9ac016f6708421e03056f119d610ee95ad0ae7"
+  "cc0ff2346e78c6ad9f450ea05290f25a9ff54fd8c7fe330219fabe346b785a57"
 )
 iconsha256sum=${sha256sums[0]}
 tmpdesktopfile="/tmp/${_pkgname}.desktop"
