@@ -3,7 +3,7 @@
 
 pkgname=python-gym
 _pkgname=gym
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
@@ -14,8 +14,8 @@ optdepends=('python-atari-py' 'python-pillow' 'python-opengl')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/openai/gym/master/LICENSE.md")
-b2sums=('45d5f92aeef98a8a2e74e36e2106223017d287bcff779c965bfa2b9be9235dcc6651a03389ac26ff3fd5feda661d4606feb09c1a1835aa3b69168f5cdc173cc5'
-        '8d39c5fdf160392eb735ae19d5dcb9227c32d6ead9aa9b0f9b59b0b45be63c42412da9b0c97cc7f33a24b16fdcd982f470dab65742849d229f6e43b2d845e758')
+b2sums=('80e5dbb2eec28c2b80fb24199f98f18004a602fdf1be243f143034c65b842bc0d49337d036530326ed64b619ebbd5fc856a30010a9bb3837cc2eae61fb115a58'
+        '26bc4de9e957160dbc9d218a8bf7304cd64ebe6c3037b171ee2657424a76279f27438598e48a476ed625be129310fa12b0b084ea2ddf92156f9522458e999c7b')
 
 build() {
   cd ${_pkgname}-${pkgver}
