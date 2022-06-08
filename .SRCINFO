@@ -8,8 +8,7 @@ pkgbase = r-plot3drgl
 	depends = r>=3.2.3
 	depends = r-rgl
 	depends = r-plot3d
-	source = https://cran.r-project.org/src/contrib/plot3Drgl_1.0.2.tar.gz
-	sha256sums = aa874891446a395f01791d80a5a0f1f9a1c2c41f029de3a8d5af9aa47f46a496
+	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/plot3Drgl_1.0.2.tar.gz
+	sha256sums = 805513029895cf5a81f18ede4123ef2525a236cd555437609229fe720c346e14
 
 pkgname = r-plot3drgl
-
