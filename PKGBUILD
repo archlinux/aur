@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RmiR
-_pkgver=1.49.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.49.0
-pkgrel=3
+pkgver=1.52.0
+pkgrel=1
 pkgdesc='Package to work with miRNAs and miRNA targets with R'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,10 +19,14 @@ optdepends=(
   r-hgug4112a.db
   r-org.hs.eg.db
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4ad28fb669731a44e39bde01b440a30c752a8aee0204472a8b7ee3931481dc9a')
+makedepends=(
+  git
+)
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
 
 build() {
+  tar -zcvf ${_pkgname}_${_pkgver}.tar.gz  ${_pkgname}
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
