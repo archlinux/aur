@@ -2,12 +2,12 @@
 
 pkgname=qt-aseman
 pkgver=3.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of C++ and QML tools and modules that helps you develop your projects easier and better."
 arch=('x86_64')
 url="https://github.com/Aseman-Land/QtAseman"
 license=('LGPL3')
-makedepends=('gcc' 'make' 'qt5-base' 'git')
+makedepends=('gcc' 'make' 'git' 'qt5-base' 'qt5-multimedia' 'qt5-quickcontrols2')
 options=('!emptydirs' '!strip')
 
 # Source to compile to a specific tag
