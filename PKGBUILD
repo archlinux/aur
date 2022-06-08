@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=cando-git
-pkgver=1.0.0_262_g0eb80f93e_gbcbf18c5
+pkgver=1.0.0_276_g108eb3dd9_g06ea9a4f
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together, including Cando"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd clasp
-  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --jupyter --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --jupyter-path=/usr/share/jupyter/
+  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ./koga --skip-sync --extensions=cando,seqan-clasp --update-version
 }
 
