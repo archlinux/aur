@@ -1,15 +1,15 @@
 pkgbase = python-sphinxcontrib-pdfembed-git
 	pkgdesc = Sphinx extension to embed a pdf file in a webpage
 	pkgver = r17.d75fb37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SuperKogito/sphinxcontrib-pdfembed
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-sphinx
-	provides = sphinxcontrib-pdfembed
-	conflicts = sphinxcontrib-pdfembed
+	provides = python-sphinxcontrib-pdfembed
+	conflicts = python-sphinxcontrib-pdfembed
 	source = sphinxcontrib-pdfembed::git+https://github.com/SuperKogito/sphinxcontrib-pdfembed.git
 	md5sums = SKIP
 
