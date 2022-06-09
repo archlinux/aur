@@ -1,8 +1,7 @@
 # Maintainer: robertfoster
 
-_pkgname=gnome-multi-writer
-pkgname=${_pkgname}-git
-pkgver=3.35.90.g33decbc
+pkgname=gnome-multi-writer-git
+pkgver=3.35.90.r324.469c911
 pkgrel=1
 pkgdesc="Write an ISO file to multiple USB devices at once"
 arch=('i686' 'x86_64')
@@ -11,26 +10,24 @@ license=('GPL2')
 depends=('gtk3' 'libcanberra' 'libgusb' 'udisks2')
 makedepends=('appstream-glib' 'docbook-sgml' 'docbook-utils' 'git' 'intltool' 'meson' 'perl-sgmls')
 optdepends=('gnome-icon-theme-extras: show device icons')
-replaces=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=(${_pkgname}::git+https://git.gnome.org/browse/${_pkgname}/)
-install=$_pkgname.install
+replaces=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/gnome-multi-writer")
+install="${pkgname%-git}.install"
 
 build() {
-    arch-meson ${_pkgname} build -D b_pie='false'
-    ninja -C build
+  arch-meson ${pkgname%-git} build -D b_pie='false'
+  ninja -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 pkgver() {
-    cd $srcdir/${_pkgname}
-    LVERSION=`git describe --long| sed "s/_/./g"`
-    VERSION=`git describe --tag| sed "s/_/./g" | cut -c 20-`
-    COMMIT=${LVERSION##*-}
-    echo "$VERSION.$COMMIT"
+  cd "${srcdir}/${pkgname%-git}"
+  version=$(git describe --tag | cut -d "-" -f1 | cut -c 20- | sed "s/_/./g")
+  printf "%s.r%s.%s" "${version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
