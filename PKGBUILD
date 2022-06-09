@@ -1,8 +1,8 @@
 # Maintainer: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-desktop-git
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -34,10 +34,12 @@ depends=(
         'wl-clipboard'
         'brightnessctl'
         'playerctl'
+        'wayvnc'
         'wtype'
         'wlogout'
         'wofi'
         'nwg-drawer'
+        'nwg-look'
         'bemenu-wlroots'
         'dex'
 		'perl-file-mimeinfo'
