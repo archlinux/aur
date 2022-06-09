@@ -1,5 +1,5 @@
 pkgbase = wpc
-	pkgdesc = Automatic Wallpaper Changer which can retrieve wallpapers from wallhaven, Bing and Reddit
+	pkgdesc = Automatic Wallpaper Changer which can retrieve wallpapers from wallhaven and Reddit
 	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/jkotra/wpc
