@@ -4,6 +4,27 @@
 
 [1]: https://pypi.org/project/google-cloud-storage/#history
 
+## [2.4.0](https://github.com/googleapis/python-storage/compare/v2.3.0...v2.4.0) (2022-06-07)
+
+
+### Features
+
+* add AbortIncompleteMultipartUpload lifecycle rule ([#765](https://github.com/googleapis/python-storage/issues/765)) ([b2e5150](https://github.com/googleapis/python-storage/commit/b2e5150f191c04acb47ad98cef88512451aff81d))
+* support OLM Prefix/Suffix ([#773](https://github.com/googleapis/python-storage/issues/773)) ([187cf50](https://github.com/googleapis/python-storage/commit/187cf503194cf636640ca8ba787f9e8c216ea763))
+
+
+### Bug Fixes
+
+* fix rewrite object in CMEK enabled bucket ([#807](https://github.com/googleapis/python-storage/issues/807)) ([9b3cbf3](https://github.com/googleapis/python-storage/commit/9b3cbf3789c21462eac3c776cd29df12701e792f))
+
+
+### Documentation
+
+* fix changelog header to consistent size ([#802](https://github.com/googleapis/python-storage/issues/802)) ([4dd0907](https://github.com/googleapis/python-storage/commit/4dd0907b68e20d1ffcd0fe350831867197917e0d))
+* **samples:** Update the Recovery Point Objective (RPO) sample output ([#725](https://github.com/googleapis/python-storage/issues/725)) ([b0bf411](https://github.com/googleapis/python-storage/commit/b0bf411f8fec8712b3eeb99a2dd33de6d82312f8))
+* Update generation_metageneration.rst with a missing space ([#798](https://github.com/googleapis/python-storage/issues/798)) ([1e7cdb6](https://github.com/googleapis/python-storage/commit/1e7cdb655beb2a61a0d1b984c4d0468ec31bf463))
+* update retry docs ([#808](https://github.com/googleapis/python-storage/issues/808)) ([c365d5b](https://github.com/googleapis/python-storage/commit/c365d5bbd78292adb6861da3cdfae9ab7b39b844))
+
 ## [2.3.0](https://github.com/googleapis/python-storage/compare/v2.2.1...v2.3.0) (2022-04-12)
 
 
@@ -22,7 +43,7 @@
 
 * fix links in blob module ([#759](https://github.com/googleapis/python-storage/issues/759)) ([9b29314](https://github.com/googleapis/python-storage/commit/9b2931430b0796ffb23ec4efacd82dacad36f40f))
 
-### [2.2.1](https://github.com/googleapis/python-storage/compare/v2.2.0...v2.2.1) (2022-03-15)
+## [2.2.1](https://github.com/googleapis/python-storage/compare/v2.2.0...v2.2.1) (2022-03-15)
 
 
 ### Bug Fixes
@@ -105,7 +126,7 @@
 * add README to samples subdirectory ([#639](https://www.github.com/googleapis/python-storage/issues/639)) ([58af882](https://www.github.com/googleapis/python-storage/commit/58af882c047c31f59486513c568737082bca6350))
 * update samples readme with cli args ([#651](https://www.github.com/googleapis/python-storage/issues/651)) ([75dda81](https://www.github.com/googleapis/python-storage/commit/75dda810e808074d18dfe7915f1403ad01bf2f02))
 
-### [1.42.3](https://www.github.com/googleapis/python-storage/compare/v1.42.2...v1.42.3) (2021-09-30)
+## [1.42.3](https://www.github.com/googleapis/python-storage/compare/v1.42.2...v1.42.3) (2021-09-30)
 
 
 ### Bug Fixes
@@ -114,7 +135,7 @@
 * check response code in batch.finish ([#609](https://www.github.com/googleapis/python-storage/issues/609)) ([318a286](https://www.github.com/googleapis/python-storage/commit/318a286d709427bfe9f3a37e933c255ac51b3033))
 * skip tests that use unspecified pap until we get the change in ([#600](https://www.github.com/googleapis/python-storage/issues/600)) ([38b9b55](https://www.github.com/googleapis/python-storage/commit/38b9b5582e2c6bbd1acab2b49410084170466fad))
 
-### [1.42.2](https://www.github.com/googleapis/python-storage/compare/v1.42.1...v1.42.2) (2021-09-16)
+## [1.42.2](https://www.github.com/googleapis/python-storage/compare/v1.42.1...v1.42.2) (2021-09-16)
 
 
 ### Bug Fixes
@@ -123,7 +144,7 @@
 * add unpinned protobuf for python3 ([#592](https://www.github.com/googleapis/python-storage/issues/592)) ([53f7ad0](https://www.github.com/googleapis/python-storage/commit/53f7ad0204ad425011da9162d1a78f8276c837eb))
 * pin six as a required dependency ([#589](https://www.github.com/googleapis/python-storage/issues/589)) ([9ca97bf](https://www.github.com/googleapis/python-storage/commit/9ca97bf9139c71cd033c78af73da904b27d8ff50))
 
-### [1.42.1](https://www.github.com/googleapis/python-storage/compare/v1.42.0...v1.42.1) (2021-09-07)
+## [1.42.1](https://www.github.com/googleapis/python-storage/compare/v1.42.0...v1.42.1) (2021-09-07)
 
 
 ### Bug Fixes
@@ -154,7 +175,7 @@
 
 * update supported / removed Python versions in README ([#519](https://www.github.com/googleapis/python-storage/issues/519)) ([1f1b138](https://www.github.com/googleapis/python-storage/commit/1f1b138865fb171535ee0cf768aff1987ed58914))
 
-### [1.41.1](https://www.github.com/googleapis/python-storage/compare/v1.41.0...v1.41.1) (2021-07-20)
+## [1.41.1](https://www.github.com/googleapis/python-storage/compare/v1.41.0...v1.41.1) (2021-07-20)
 
 
 ### Bug Fixes
@@ -232,7 +253,7 @@
 
 * revise docstrings for generate_signed_url ([#408](https://www.github.com/googleapis/python-storage/issues/408)) ([f090548](https://www.github.com/googleapis/python-storage/commit/f090548437142b635191e90dcee1acd4c38e565c))
 
-### [1.37.1](https://www.github.com/googleapis/python-storage/compare/v1.37.0...v1.37.1) (2021-04-02)
+## [1.37.1](https://www.github.com/googleapis/python-storage/compare/v1.37.0...v1.37.1) (2021-04-02)
 
 
 ### Bug Fixes
@@ -252,14 +273,14 @@
 
 * update user_project usage and documentation in bucket/client class methods ([#396](https://www.github.com/googleapis/python-storage/issues/396)) ([1a2734b](https://www.github.com/googleapis/python-storage/commit/1a2734ba6d316ce51e4e141571331e86196462b9))
 
-### [1.36.2](https://www.github.com/googleapis/python-storage/compare/v1.36.1...v1.36.2) (2021-03-09)
+## [1.36.2](https://www.github.com/googleapis/python-storage/compare/v1.36.1...v1.36.2) (2021-03-09)
 
 
 ### Bug Fixes
 
 * update batch connection to request api endpoint info from client ([#392](https://www.github.com/googleapis/python-storage/issues/392)) ([91fc6d9](https://www.github.com/googleapis/python-storage/commit/91fc6d9870a36308b15a827ed6a691e5b4669b62))
 
-### [1.36.1](https://www.github.com/googleapis/python-storage/compare/v1.36.0...v1.36.1) (2021-02-19)
+## [1.36.1](https://www.github.com/googleapis/python-storage/compare/v1.36.0...v1.36.1) (2021-02-19)
 
 
 ### Bug Fixes
@@ -283,7 +304,7 @@
 * pass the unused parameter ([#349](https://www.github.com/googleapis/python-storage/issues/349)) ([5c60d24](https://www.github.com/googleapis/python-storage/commit/5c60d240aa98d2a1dcc6933d6da2ce60ea1b7559))
 * set custom_time on uploads ([#374](https://www.github.com/googleapis/python-storage/issues/374)) ([f048be1](https://www.github.com/googleapis/python-storage/commit/f048be10416f51cea4e6c8c5b805df7b5d9c4d32)), closes [#372](https://www.github.com/googleapis/python-storage/issues/372)
 
-### [1.35.1](https://www.github.com/googleapis/python-storage/compare/v1.35.0...v1.35.1) (2021-01-28)
+## [1.35.1](https://www.github.com/googleapis/python-storage/compare/v1.35.0...v1.35.1) (2021-01-28)
 
 
 ### Bug Fixes
@@ -342,14 +363,14 @@
 * self-upload files for Unicode system test ([#296](https://www.github.com/googleapis/python-storage/issues/296)) ([6f865d9](https://www.github.com/googleapis/python-storage/commit/6f865d97a19278884356055dfeeaae92f7c63cc1))
 * use version.py for versioning, avoid issues with discovering version via get_distribution ([#288](https://www.github.com/googleapis/python-storage/issues/288)) ([fcd1c4f](https://www.github.com/googleapis/python-storage/commit/fcd1c4f7c947eb95d6937783fd69670a570f145e))
 
-### [1.31.2](https://www.github.com/googleapis/python-storage/compare/v1.31.1...v1.31.2) (2020-09-23)
+## [1.31.2](https://www.github.com/googleapis/python-storage/compare/v1.31.1...v1.31.2) (2020-09-23)
 
 
 ### Documentation
 
 * fix docstring example for 'blob.generate_signed_url' ([#278](https://www.github.com/googleapis/python-storage/issues/278)) ([2dc91c9](https://www.github.com/googleapis/python-storage/commit/2dc91c947e3693023b4478a15c460693808ea2d9))
 
-### [1.31.1](https://www.github.com/googleapis/python-storage/compare/v1.31.0...v1.31.1) (2020-09-16)
+## [1.31.1](https://www.github.com/googleapis/python-storage/compare/v1.31.0...v1.31.1) (2020-09-16)
 
 
 ### Bug Fixes
@@ -442,7 +463,7 @@
 * fix upload object with bucket cmek enabled ([#158](https://www.github.com/googleapis/python-storage/issues/158)) ([5f27ffa](https://www.github.com/googleapis/python-storage/commit/5f27ffa3b1b55681453b594a0ef9e2811fc5f0c8))
 * set default POST policy scheme to "http" ([#172](https://www.github.com/googleapis/python-storage/issues/172)) ([90c020d](https://www.github.com/googleapis/python-storage/commit/90c020d69a69ebc396416e4086a2e0838932130c))
 
-### [1.28.1](https://www.github.com/googleapis/python-storage/compare/v1.28.0...v1.28.1) (2020-04-28)
+## [1.28.1](https://www.github.com/googleapis/python-storage/compare/v1.28.0...v1.28.1) (2020-04-28)
 
 
 ### Bug Fixes

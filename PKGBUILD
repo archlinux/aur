@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -25,13 +25,12 @@ makedepends=(
 # checkdepends=('python-pytest-runner' 'python-mock' 'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73bc63caf791a2ccbe5ac3f4181a423fa679fb64a74da637ca8f29d002ee96bb')
+sha256sums=('67012db5a1b7a6de7263c25460c2c5b8f899a72ec9b596f00ce5023027abc803')
 
 build() {
 	cd "python-storage-$pkgver"
 	python -m build --wheel --no-isolation
-	cd docs
-	PYTHONPATH=../ sphinx-build -b man ./ build
+	PYTHONPATH="$PWD" sphinx-build -b man docs/ docs/build
 }
 
 ## tests require set environment variables
