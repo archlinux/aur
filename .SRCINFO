@@ -1,6 +1,6 @@
 pkgbase = apifox
 	pkgdesc = API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.1.19
+	pkgver = 2.1.21
 	pkgrel = 1
 	url = https://www.apifox.cn/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = apifox
 	options = !strip
 	source = https://cdn.apifox.cn/download/Apifox-linux-latest.zip
 	source = apifox.desktop
-	sha256sums = 2d4d2da1837046bd005d4394630a2b656e498a8f4d417fc7147a8c03adfee367
+	sha256sums = f639d1cadd3845ff5e6d33cb34bb745924dda09a8b638430f87d50d258089d27
 	sha256sums = 538bd986b582053799128254b4fcd6edfd51d096b127cf6398555664497d76b0
 
 pkgname = apifox
