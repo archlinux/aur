@@ -2,7 +2,7 @@
 
 pkgname=python-torchio
 _pkgname=torchio
-pkgver=0.18.77
+pkgver=0.18.78
 pkgrel=1
 pkgdesc='Tools for medical image processing in deep learning and PyTorch'
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   python-click
   python-deprecated
   python-humanize
+  python-matplotlib
   python-nibabel
   python-numpy
   python-pytorch
@@ -21,20 +22,23 @@ depends=(
   python-tqdm
 )
 makedepends=(
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fepegar/torchio/archive/v${pkgver}.tar.gz")
-sha512sums=('4e6074601d26af00cc2a75e0ad9cc09de02d835f028bd75e372e41177c4f079d601cc3011df2adeb132d33b0ebdca83ddd305c01a33795e4dcd834c4c91bd639')
+sha512sums=('3c9d3738746f78d898d26e797e06000392f16aa059f75e8e2cdc6e2908f52b8b1cacaa33c097f93dfc785cdcdc33991bbee5cb09a8941694fd4b3a82b580128a')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
