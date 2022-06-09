@@ -1,7 +1,7 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=fsrx
-pkgver=0.2.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc=" flow state reading in the terminal"
 arch=('x86_64')
 url="https://github.com/coloradocolby/fsrx"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0b300a81759dc9468be4a7685f645a866b5e1cc9719fe4dad803bff4bbf7c78da95f2f29cdb459f4574779612e705b440f15a11bd2039ee4d02572c05ec751b3')
+sha512sums=('4085c791ed7830de7923b7cdf5122b61639597cad6481f97d64b3f41d803759acee6092644bf250ea1214136e4eac77d0e00eb4e86545273a813866d3c75236d')
 
 prepare() {
   cd "$pkgname-$pkgver"
