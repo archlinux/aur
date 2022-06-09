@@ -1,13 +1,12 @@
-# Maintainer: TuxnVape Elrondo46 <elrond94athotmail.com>
-# CoMaintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Maintainer: Straw <strawATpinnoto.org>
+# Contributor: TuxnVape Elrondo46 <elrond94athotmail.com>
+# Contributor: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=3.3.1.r7.gaad1bff
+pkgver=3.3.1-18-gaf55605
 pkgrel=1
-pkgdesc="A nice developer editor, highly recommended by Epitech 
-(aka Episteak) French 
-School - git version"
-arch=('i686' 'x86_64')
+pkgdesc="The nice editor, easy to use for the beginner and powerful enough for the wizard - git version"
+arch=('i686' 'x86_64' 'aarch64')
 url="http://ne.di.unimi.it/"
 license=('GPL3')
 makedepends=('git')
@@ -24,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/ne"
-make 
+  make
 }
 
 package() {
