@@ -3,7 +3,7 @@
 
 _pkgname=Responder
 pkgname=responder
-pkgver=3.0.6.0
+pkgver=3.1.2.0
 pkgrel=1
 pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
@@ -11,12 +11,12 @@ depends=('python')
 makedepends=('git')
 url='https://github.com/lgandx/responder/'
 license=('GPL3')
-source=("https://github.com/lgandx/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("https://github.com/lgandx/Responder/archive/refs/tags/v${pkgver}.tar.gz"
         'responder.sh'
         'responder.patch')
-sha256sums=('76336421327cd2c89eb348d5758f53d95f65431284b3abcd34798a32a7c56899'
-            'ac1ac36c7e75b2bbd387f3b915211999e36d46c4aac086402dffef3a53198990'
-            '64b6649338157fdb62cc004e60e814156305b59804e9f532615dfbfc9ee57c0d')
+sha256sums=('2e769bc1277749a352dcba193ee1b46d47c45e1385f7de9d34da428cc6966141'
+            '3feef53e8c408439bc518474264b91919f9a43593f3bbf656958b9a8a216bc4b'
+            '8cb4ecdbe6b43ee8c5b5fccd71ac1762c55675e2d569c5fbbf002b9cf7d98f9f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
