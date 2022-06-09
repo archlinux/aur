@@ -6,7 +6,7 @@ pkgdesc="An easy-to-use YouTube video downloader"
 arch=(x86_64)
 url="https://github.com/nlogozzo/NickvisionTubeConverter"
 license=(GPL3)
-depends=(gtk4 libadwaita jsoncpp libcurlpp yt-dlp)
+depends=(gtk4 libadwaita jsoncpp libcurlpp yt-dlp webkit2gtk-5.0)
 makedepends=(git cmake)
 source=("git+https://github.com/nlogozzo/NickvisionTubeConverter.git#tag=${pkgver}"
         "git+https://github.com/Makman2/GCR_CMake.git")
