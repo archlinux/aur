@@ -1,6 +1,6 @@
 pkgbase = maui-shell-git
 	pkgdesc = Maui Shell is a convergent shell for desktops, tablets, and phones.
-	pkgver = v0.5.0.r27.g8eac33b
+	pkgver = v0.5.0.r31.g7cfc7c8
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-shell
 	arch = x86_64
@@ -59,6 +59,7 @@ pkgbase = maui-shell-git
 	depends = qt5-wayland
 	depends = solid
 	depends = sound-theme-freedesktop
+	optdepends = maui-settings-git: Settings Manager Apps for the Maui DE
 	provides = maui-shell
 	conflicts = maui-shell
 	source = git+https://github.com/Nitrux/maui-shell.git

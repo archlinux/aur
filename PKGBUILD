@@ -2,7 +2,7 @@
 
 pkgname=maui-shell-git
 _pkgname=${pkgname%-git}
-pkgver=v0.5.0.r27.g8eac33b
+pkgver=v0.5.0.r31.g7cfc7c8
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
@@ -55,6 +55,7 @@ depends=(bluedevil
          solid
          sound-theme-freedesktop)
 makedepends=(git extra-cmake-modules)
+optdepends=('maui-settings-git: Settings Manager Apps for the Maui DE')
 groups=(maui)
 provides=($_pkgname)
 conflicts=($_pkgname)
