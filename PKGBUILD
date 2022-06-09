@@ -24,7 +24,7 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'freetype2' 'fribidi' 'glibc' 'gmp' 'gn
          'libxext' 'libxml2' 'libxv' 'opencore-amr' 'openjpeg' 'opus' 'sdl2'
          'speex' 'v4l-utils' 'vid.stab' 'x264' 'x265' 'xvidcore' 'xz' 'zlib')
 depends_x86_64=('libmfx')
-makedepends=('ladspa' 'libomxil-bellagio' 'yasm')
+makedepends=('ladspa' 'libomxil-bellagio' 'nasm')
 optdepends=('ladspa: LADSPA filters'
             'libomxil-bellagio: HW acceleration on mobile platforms')
 optdepends_x86_64=('intel-media-sdk: for Intel QuickSync HW acceleration support (experimental)')
