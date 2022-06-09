@@ -1,0 +1,16 @@
+pkgbase = tela-icon-theme-green-git
+	pkgdesc = A flat colorful design icon theme (only green variant)
+	pkgver = 2022.02.21.r14.g47b82d4c
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Tela-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	conflicts = tela-icon-theme
+	options = !strip
+	source = tela-icon-theme::git+https://github.com/vinceliuice/Tela-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = tela-icon-theme-green-git
