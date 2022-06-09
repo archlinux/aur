@@ -4,10 +4,10 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=pcre-static
-pkgver=8.44
-pkgrel=5
+pkgver=8.45
+pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.pcre.org/"
 license=('BSD')
 depends=('gcc-libs')
@@ -15,7 +15,7 @@ options=('staticlibs' '!libtool')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')
 source=(https://sourceforge.net/projects/pcre/files/pcre/${pkgver}/pcre-${pkgver}.tar.bz2)
 
-sha256sums=('19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d')
+sha256sums=('4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8')
 
 build() {
   cd "${srcdir}"/pcre-${pkgver}
