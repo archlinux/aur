@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasview
-pkgver=5.0.4
-pkgrel=2
+pkgver=5.0.5
+pkgrel=1
 pkgdesc="Small-Angle Scattering Analysis"
 arch=(x86_64)
 url="https://sasview.org"
@@ -32,14 +32,23 @@ depends=( python-setuptools
 )
 checkdepends=(python-unittest-xml-reporting)
 
-makedepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SasView/sasview/archive/v${pkgver}.tar.gz")
-md5sums=('bd43ab43e5fc6a4a1ea4a8f44277147a')
+makedepends=(texlive-latexextra)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/SasView/sasview/archive/v${pkgver}.tar.gz"
+	'sphinx-docs.patch'
+)
+md5sums=('52da09f7ec3ea63c7d5ab4f7a989ef1f' 'SKIP')
+sha256sums=('8c92ecc113cf861f675a4ff5024920e036b58d178fd6e7afb77bd2fac41d5077' 'SKIP')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	patch --forward --strip=1 --input="${srcdir}/sphinx-docs.patch"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
 	python setup.py build
-	python setup.py build_sphinx
+	(cd docs/sphinx-docs && make html )
+	(cd docs/sphinx-docs && make latexpdf )
 }
 
 check() {
@@ -50,8 +59,8 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p ${pkgdir}/usr/share/doc/sasview/tutorials
-	cp ${srcdir}/${pkgname}-${pkgver}/docs/sasview/*.pdf ${pkgdir}/usr/share/doc/sasview/tutorials/
-	cp -R ${srcdir}/${pkgname}-${pkgver}/build/sphinx/html ${pkgdir}/usr/share/doc/sasview/
+	cp ${srcdir}/${pkgname}-${pkgver}/docs/sphinx-docs/build/latex/SasView.pdf ${pkgdir}/usr/share/doc/sasview/SasView.pdf
+	cp -R ${srcdir}/${pkgname}-${pkgver}/docs/sphinx-docs/build/html ${pkgdir}/usr/share/doc/sasview/
 	python setup.py install --root="$pkgdir/" --optimize=1
 	
 }

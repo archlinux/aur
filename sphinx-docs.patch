@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text sasview-5.0.5/docs/sphinx-docs/Makefile sasview-5.0.5_patched/docs/sphinx-docs/Makefile
+--- sasview-5.0.5/docs/sphinx-docs/Makefile	2022-05-31 21:48:18.000000000 +0200
++++ sasview-5.0.5_patched/docs/sphinx-docs/Makefile	2022-06-09 09:25:31.143137109 +0200
+@@ -15,7 +15,7 @@
+ # Internal variables.
+ PAPEROPT_a4     = -D latex_paper_size=a4
+ PAPEROPT_letter = -D latex_paper_size=letter
+-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source-temp
++ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+ # the i18n builder cannot share the environment and doctrees with the others
+ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
+ 
