@@ -1,7 +1,7 @@
 pkgbase = xenlism-storm-icon-theme
 	pkgdesc = None form icons theme for X11 Desktop
 	pkgver = 2018.05beta2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xenlism/Storm
 	arch = any
 	license = GPL3
@@ -11,4 +11,3 @@ pkgbase = xenlism-storm-icon-theme
 	md5sums = 6d5b2df688c1a2016c87af6e1e2d1c08
 
 pkgname = xenlism-storm-icon-theme
-

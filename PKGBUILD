@@ -1,9 +1,9 @@
-# Maintainer: Thomas Quillan <tjquillan@gmail.com>
+# Maintainer: Luis Perez <luis dot perez at proton dot me>
 
 pkgname=xenlism-storm-icon-theme
 _themename=Storm
 pkgver=2018.05beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="None form icons theme for X11 Desktop"
 arch=("any")
 url="https://github.com/xenlism/Storm"
