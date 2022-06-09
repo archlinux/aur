@@ -2,13 +2,13 @@
 
 pkgname=hobbits
 pkgver=0.53.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform GUI for bit-based analysis, processing, and visualization"
 arch=('x86_64')
 url="https://github.com/Mahlet-Inc/hobbits"
 license=('MIT')
 makedepends=(cmake qt5-tools)
-depends=(python qt5-base pffft-git)
+depends=("python>=3.8.0" qt5-base pffft-git)
 _dist_filename="$pkgname-$pkgver"
 source=("${_dist_filename}::https://github.com/Mahlet-Inc/hobbits/archive/refs/tags/v${pkgver}.tar.gz")
 
