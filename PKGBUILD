@@ -15,12 +15,14 @@ options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
 	bin.patch
+	startup-scripts-paths.patch
         neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
 sha256sums=('b0a0fa18f8285f5860ad79d51f6a343143d31e37c9637f457da53631704a114e'
             '3d6485fe74e174044954216cbfecf0e87611952d9cb0a2e4dd5758aecbaaf3ae'
+	    '40848f03cb4fac18e992b7e2ed017d247fd5936e22599ee758f18ef77c2652aa'
             '40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103'
 	    'f1c083521502749200cb24fb5dcf20ab2f988f3b31fef278d774e7089f034208'
             '4e56e56e38cfe91755adf76642972bece509a9fd3f7d1851d65715fff762b9db'
