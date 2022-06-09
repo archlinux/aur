@@ -6,10 +6,10 @@
 
 pkgname=patchage
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=(x86_64)
-url="https://drobilla.net/software/patchage"
+url="https://drobilla.net/software/patchage.html"
 license=(GPL3)
 depends=(atkmm cairo cairomm dbus-glib gcc-libs gdk-pixbuf2 glibc
 libsigc++ pangomm)
