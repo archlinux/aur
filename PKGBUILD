@@ -2,8 +2,8 @@
 # Contributor: Yuanji <self@gimo.me>
 # Contributor: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 pkgname=hardcode-tray-git
-pkgver=4.3.r214.ga6ecf12
-pkgrel=1
+pkgver=4.3.r224.ga91b4b7
+pkgrel=2
 pkgdesc="Fixes hardcoded tray icons"
 arch=('x86_64')
 url="https://github.com/bil-elmoussaoui/Hardcode-Tray"
@@ -29,7 +29,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  sed -i 's|resources/||g' data/database/bitwarden.electron.json
+
+  # Correct app.asar path for community bitwarden package
+  sed -i 's|/usr/lib/bitwarden/resources/|/usr/lib/bitwarden/|g' \
+    data/database/bitwarden.electron.json
 }
 
 build() {
