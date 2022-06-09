@@ -1,13 +1,14 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=ec-devutil-git
-pkgver=r8984.c07167406d
+pkgver=r24225.7ff6aace21c
 pkgrel=1
 pkgdesc='Host development utilities for Chromium OS EC'
 url='https://www.chromium.org/chromium-os/ec-development'
 arch=(any)
-provides=(ec-devutil python2-ec3po-git)
-depends=(python2)
+provides=(ec-devutil python-ec3po-git)
+makedepends=(git)
+depends=(python python-setuptools)
 license=(BSD)
 source=(git+https://chromium.googlesource.com/chromiumos/platform/ec)
 sha1sums=('SKIP')
@@ -19,10 +20,10 @@ pkgver() {
 
 check() {
   cd ec
-  python2 setup.py test
+  python setup.py test
 }
 
 package() {
   cd ec
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
