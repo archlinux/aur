@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPpeakAnno
-_pkgver=3.30.0
+_pkgver=3.30.1
 pkgname=r-${_pkgname,,}
-pkgver=3.30.0
+pkgver=3.30.1
 pkgrel=1
 pkgdesc='Batch annotation of the peaks identified from either ChIP-seq, ChIP-chip experiments or any experiments resulted in large number of chromosome ranges'
 arch=('any')
@@ -69,7 +69,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6e3669676cf13cc9d98c6b6eff396cd9396e8696bb1442ad63d0b43fa41906b2')
+sha256sums=('1ed141ec6994a7a548e7dcd41de3bfd54352cb7e85b42dab77ecb3de287d4628')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
