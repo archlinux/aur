@@ -3,7 +3,7 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -35,6 +35,7 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    unset DISPLAY
     /usr/bin/perl Build test
   )
 }
