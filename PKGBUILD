@@ -30,6 +30,7 @@ sha256sums=('b0a0fa18f8285f5860ad79d51f6a343143d31e37c9637f457da53631704a114e'
 prepare() {
   cd $srcdir/neo4j-enterprise-$pkgver
   patch -Np1 -i ../bin.patch
+  patch --strip=2 < ../startup-scripts-paths.patch
 }
 package() {
   cd $srcdir/neo4j-enterprise-$pkgver
