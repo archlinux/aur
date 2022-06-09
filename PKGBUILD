@@ -8,9 +8,8 @@ url='https://github.com/vdudouyt/stm8flash'
 license=('GPL2')
 depends=('libusb')
 makedepends=('git')
-source=('git://github.com/vdudouyt/stm8flash.git')
+source=('git+https://github.com/vdudouyt/stm8flash.git')
 md5sums=('SKIP')
-
 
 pkgver() {
   cd "$srcdir/$_pkgname"
