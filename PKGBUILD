@@ -9,7 +9,7 @@ pkgname=ffmpeg-compat-58
 pkgver=4.4.2
 pkgrel=1
 pkgdesc="Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL')
 depends=(
@@ -83,9 +83,9 @@ optdepends=(
   'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 
-provides=('libavcodec.so=58' 'libavdevice.so=58' 'libavfilter.so=7'
-          'libavformat.so=58' 'libavutil.so=56'
-          'libpostproc.so=55' 'libswresample.so=3' 'libswscale.so=5')
+provides=('libavcodec.so=58-64' 'libavdevice.so=58-64' 'libavfilter.so=7-64'
+          'libavformat.so=58-64' 'libavutil.so=56-64'
+          'libpostproc.so=55-64' 'libswresample.so=3-64' 'libswscale.so=5-64')
 
 conflicts=('ffmpeg4.4')
 

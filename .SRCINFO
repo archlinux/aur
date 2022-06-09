@@ -3,7 +3,6 @@ pkgbase = ffmpeg-compat-58
 	pkgver = 4.4.2
 	pkgrel = 1
 	url = http://ffmpeg.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = amf-headers
@@ -68,14 +67,14 @@ pkgbase = ffmpeg-compat-58
 	optdepends = intel-media-sdk: Intel QuickSync support
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
-	provides = libavcodec.so=58
-	provides = libavdevice.so=58
-	provides = libavfilter.so=7
-	provides = libavformat.so=58
-	provides = libavutil.so=56
-	provides = libpostproc.so=55
-	provides = libswresample.so=3
-	provides = libswscale.so=5
+	provides = libavcodec.so=58-64
+	provides = libavdevice.so=58-64
+	provides = libavfilter.so=7-64
+	provides = libavformat.so=58-64
+	provides = libavutil.so=56-64
+	provides = libpostproc.so=55-64
+	provides = libswresample.so=3-64
+	provides = libswscale.so=5-64
 	conflicts = ffmpeg4.4
 	source = http://ffmpeg.org/releases/ffmpeg-4.4.2.tar.xz
 	sha256sums = af419a7f88adbc56c758ab19b4c708afbcae15ef09606b82b855291f6a6faa93
