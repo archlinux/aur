@@ -1,0 +1,18 @@
+pkgbase = hiprompt-gtk-py-git
+	pkgdesc = A GTK+ Himitsu prompter for Wayland
+	pkgver = r12.9c457a9
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/himitsu
+	install = hiprompt-gtk-py-git.install
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = meson
+	makedepends = python
+	makedepends = gtk-layer-shell
+	makedepends = gtk3
+	provides = hiprompt-gtk
+	conflicts = hiprompt-gtk-git
+	source = git+https://git.sr.ht/~sircmpwn/hiprompt-gtk-py
+	sha256sums = SKIP
+
+pkgname = hiprompt-gtk-py-git
