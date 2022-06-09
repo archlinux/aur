@@ -7,7 +7,7 @@ pkgname=${_pkgname}-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-pkgver=v2.9.1.r114.g0e956a2e-1
+pkgver=v2.9.1.r114.g0e956a2e
 pkgrel=1
 
 _repo=pybind/$_pkgname
