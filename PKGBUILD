@@ -1,5 +1,6 @@
 # Maintainer: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
+# Contributor: Denes Turei <turei.denes@gmail.com>
 pkgname=neo4j-enterprise
 pkgver=4.4.7
 pkgrel=1
