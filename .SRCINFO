@@ -1,6 +1,6 @@
 pkgbase = kappa-launcher-git
 	pkgdesc = Twitch launcher using rofi
-	pkgver = r92.14e0dd6
+	pkgver = r93.b76bb77
 	pkgrel = 1
 	url = https://github.com/jp1995/kappa-launcher
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = kappa-launcher-git
 	optdepends = xdg-utils: browser function
 	provides = kappa-launcher-git
 	conflicts = kappa-launcher-git
-	source = git://github.com/jp1995/kappa-launcher.git
+	source = git+https://github.com/jp1995/kappa-launcher.git
 	sha1sums = SKIP
 
 pkgname = kappa-launcher-git

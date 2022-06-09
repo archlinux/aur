@@ -1,7 +1,7 @@
  # Maintainer: poncho
 pkgname=kappa-launcher-git
 _pkgname=kappa-launcher
-pkgver=r92.14e0dd6
+pkgver=r93.b76bb77
 pkgrel=1
 pkgdesc="Twitch launcher using rofi"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   'xdg-utils: browser function'
 )
 makedepends=('git')
-source=("git://github.com/jp1995/kappa-launcher.git")
+source=("git+https://github.com/jp1995/kappa-launcher.git")
 sha1sums=('SKIP')
 
 pkgver() {
