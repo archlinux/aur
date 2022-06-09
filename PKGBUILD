@@ -2,23 +2,24 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=python-fmf
-pkgver=1.0.0
+_pkg="${pkgname#python-}"
+pkgver=1.1.0
 pkgrel=1
 arch=('any')
 license=('GPL2')
 pkgdesc='Flexible Metadata Format'
 url='https://github.com/psss/fmf'
-depends=('python-ruamel-yaml' 'python-filelock')
-makedepends=('python-setuptools' 'python-docutils')
-checkdepends=('python-pytest-runner' 'git')
-provides=('fmf')
-conflicts=('fmf')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('a614293d6893cb36af73fc21cd90d691c96f5e659d7d350894f4eb29934b3724')
+depends=('python-ruamel-yaml' 'python-filelock' 'python-jsonschema')
+makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest' 'git')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f32700451b41a80c1f3410a14f32e5be566a3874b575236461f3b0bbd4703cc4')
 
 build() {
-	cd "fmf-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 
 	local _tmp=$(mktemp -d)
 	cp docs/header.txt "$_tmp/man.rst"
@@ -27,12 +28,12 @@ build() {
 }
 
 check() {
-	cd "fmf-$pkgver"
-	python setup.py pytest
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD" pytest -x
 }
 
 package_python-fmf() {
-	cd "fmf-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm 644 fmf.1 -t "$pkgdir/usr/share/man/man1/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 fmf.1 -t "$pkgdir/usr/share/man/man1/"
 }
