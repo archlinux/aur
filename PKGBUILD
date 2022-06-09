@@ -1,9 +1,9 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=csfml-git
-pkgver=2.5.r12.gea80483
+pkgver=2.5.1.r4.g980a165
 pkgrel=1
-pkgdesc='Official binding of SFML for C. Git repository.'
+pkgdesc='C bindings for sfml'
 arch=('i686' 'x86_64')
 url='https://www.sfml-dev.org/'
 license=('custom:zlib')
@@ -36,5 +36,5 @@ package() {
 
   DESTDIR="$pkgdir/" ninja -C build install
 
-  install -Dm644 license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 license.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

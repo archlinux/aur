@@ -1,6 +1,6 @@
 pkgbase = csfml-git
-	pkgdesc = Official binding of SFML for C. Git repository.
-	pkgver = 2.5.r12.gea80483
+	pkgdesc = C bindings for sfml
+	pkgver = 2.5.1.r4.g980a165
 	pkgrel = 1
 	url = https://www.sfml-dev.org/
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = csfml-git
 	md5sums = SKIP
 
 pkgname = csfml-git
-
