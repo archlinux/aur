@@ -1,11 +1,11 @@
 pkgbase = fsrx
 	pkgdesc = flow state reading in the terminal
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coloradocolby/fsrx
 	arch = x86_64
+	license = MIT
 	makedepends = cargo
-	makedepends = jq
 	source = fsrx-0.2.1.tar.gz::https://github.com/coloradocolby/fsrx/archive/refs/tags/v0.2.1.tar.gz
 	sha512sums = 0b300a81759dc9468be4a7685f645a866b5e1cc9719fe4dad803bff4bbf7c78da95f2f29cdb459f4574779612e705b440f15a11bd2039ee4d02572c05ec751b3
 
