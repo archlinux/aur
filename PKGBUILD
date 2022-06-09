@@ -1,15 +1,15 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kubech
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-_commit=f2e337ed1bf8b92db3e84be16c53654cbb9c56cd
+_commit=43364720ea24b36211c4eb9a22d098f478121406
 pkgdesc='Set kubectl contexts/namespaces per shell/terminal to manage multi Kubernetes cluster at the same time.'
 arch=('x86_64')
 url='https://github.com/aabouzaid/kubech'
 license=('Apache')
 makedepends=('git' 'go')
-source=("git://github.com/aabouzaid/kubech.git#commit=$_commit"
+source=("git+https://github.com/aabouzaid/kubech.git#commit=$_commit"
         )
 sha256sums=('SKIP'
             )
