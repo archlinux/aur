@@ -3,12 +3,14 @@
 _name=polars
 pkgname=python-${_name}-bin
 pkgver=0.13.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model"
 arch=("x86_64")
 url="https://www.pola.rs/"
 license=('MIT')
 depends=('python' 'python-numpy')
+conflicts=('python-polars')
+provides=('python-polars')
 optdepends=('python-pandas: for interoperability with pandas frames'
             'python-pyarrow: for interoperability with arrow types'
             'python-pytz: to enable conversion to python datetimes with timezones'
