@@ -1,13 +1,13 @@
 pkgbase = hobbits
 	pkgdesc = A multi-platform GUI for bit-based analysis, processing, and visualization
 	pkgver = 0.53.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mahlet-Inc/hobbits
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = qt5-tools
-	depends = python
+	depends = python>=3.8.0
 	depends = qt5-base
 	depends = pffft-git
 	source = hobbits-0.53.2::https://github.com/Mahlet-Inc/hobbits/archive/refs/tags/v0.53.2.tar.gz
