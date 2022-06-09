@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=geopard
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Colorful, adaptive gemini browser"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('libadwaita')
 makedepends=('blueprint-compiler' 'cargo' 'gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ranfdev/Geopard/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e0e5ce1123dfb1b25625135bb371816b5aab29eede299b2485708825e49f1ce')
+sha256sums=('ddfaf917bb38418e60e3f70600b2396642bd586fe0fa78af3489e9203e9e820e')
 
 prepare() {
   cd "Geopard-$pkgver"
