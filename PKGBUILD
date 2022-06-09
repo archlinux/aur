@@ -3,8 +3,8 @@
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
-pkgver=0.9.16
-pkgrel=2
+pkgver=0.9.17
+pkgrel=1
 pkgdesc='Simple XML editor and XSD viewer'
 arch=('x86_64')
 url='https://qxmledit.org/'
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('glu' 'hicolor-icon-theme' 'qt5-scxml' 'qt5-svg' 'qt5-xmlpatterns')
 makedepends=('qt5-tools')
 source=("https://downloads.sourceforge.net/qxmledit/$pkgname-$pkgver-src.tgz")
-sha256sums=('e86443d640b2d2486b8278a200e098425c52607f82908a1b5676c42af057caa8')
+sha256sums=('29229ef470b32539db59c0308f2cc9f8e3ed7fd9d8b0cd1f49b44f5731a7e1b5')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -27,7 +27,8 @@ build() {
     QXMLEDIT_INST_LIB_DIR=/usr/lib \
     QXMLEDIT_INST_INCLUDE_DIR=/usr/include/$pkgname \
     QXMLEDIT_INST_DATA_DIR=/usr/share/$pkgname \
-    QXMLEDIT_INST_DOC_DIR=/usr/share/doc/$pkgname
+    QXMLEDIT_INST_DOC_DIR=/usr/share/doc/$pkgname \
+    QXMLEDIT_INST_DISABLE_COMPILE_WARNINGS=1
   make
 }
 
