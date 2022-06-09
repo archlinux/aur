@@ -2,16 +2,17 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
 url='https://github.com/globus/globus-cli'
 license=('Apache')
 depends=(
+	'python>=3.7'
 	'python-globus-sdk'
 	'python-click'
-	'python-jmespath=0.10.0'
+	'python-jmespath'
 	'python-requests'
 	'python-cryptography')
 makedepends=(
@@ -28,7 +29,8 @@ validpgpkeys=('FC694E40DC03A8B702D96372CF7E843C41E814C9')
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --no-isolation
+	## python-jmespath 0.10.0 no longer available in arch repos
+	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {

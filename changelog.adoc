@@ -2,6 +2,27 @@
 
 // scriv-insert-here
 
+== 3.6.0 (2022-06-08)
+
+Enhancements:
+
+* Commands which have required arguments will print their helptext if invoked
+  with no arguments. They still `exit(2)` (usage error). This only applies to
+  the case of a command with required arguments being called with no arguments
+  at all.
+
+Bugfixes:
+
+* Fix behavior of `globus api` to respect formatting options. `--jmespath` can
+  be used on results, and `-Fjson` will pretty-print JSON responses if the
+  original response body is compact JSON
+
+Other:
+
+* Increase the maximum width of help output to 80% of the terminal size.
+* Remove support for python3.6 . Users on python3.6 should still be able to
+  install `globus-cli` but will not be able to update to the latest version.
+
 == 3.5.0 (2022-05-05)
 
 Bugfixes:
