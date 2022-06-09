@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application-decent-sampler/x-dspreset">
+    <comment>decent sampler preset</comment>
+    <glob pattern="*.dspreset"/>
+  </mime-type>
+  <mime-type type="application-decent-sampler/x-dslibrary">
+    <comment>decent sampler library</comment>
+    <glob pattern="*.dslibrary"/>
+  </mime-type>
+</mime-info>
