@@ -29,6 +29,7 @@ package() {
     # Install directory and contents
     install -d "${pkgdir}/usr/share/${pkgname}"
     install -d "${pkgdir}/var/log/${pkgname}"
+    install -d "${pkgdir}/var/lib/${pkgname}"
     cp -ar * "${pkgdir}/usr/share/${pkgname}/"
 
     # Docs
