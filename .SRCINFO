@@ -1,0 +1,18 @@
+pkgbase = disk-utilities-git
+	pkgdesc = Collection of utilities for ripping, dumping, analysing, and modifying disk images
+	pkgver = r818.28b3ee8
+	pkgrel = 1
+	url = https://github.com/keirf/disk-utilities
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = capsimage
+	optdepends = capsimage: Support for IPF and CT Raw files
+	provides = disk-utilities
+	conflicts = disk-utilities
+	source = git+https://github.com/keirf/disk-utilities.git
+	source = 01-ldflags.patch
+	sha256sums = SKIP
+	sha256sums = ff9ad3fda44a1480b7c82bd0597473dabd9628eceaae375b6e601aa9fba975e2
+
+pkgname = disk-utilities-git
