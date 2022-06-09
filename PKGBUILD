@@ -2,8 +2,8 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-msgpack-numpy
-pkgver=0.4.7.1
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="Serialize numpy arrays using msgpack"
 url="https://pypi.org/project/msgpack-numpy/"
 depends=(python-numpy
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 license=(BSD)
 arch=(any)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lebedov/msgpack-numpy/archive/${pkgver}.tar.gz")
-sha256sums=('c1f3fc082efbf733aeb24aa638db622b8f6d6320a82b19116dc97e7afd0ab5cc')
+sha256sums=('730a6fab30bf6656003d7322a834b3673a36a85949d0539d504665f63cd95a44')
 
 build() {
     cd "msgpack-numpy-${pkgver}"
