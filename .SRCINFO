@@ -1,7 +1,7 @@
 pkgbase = python-wxpython-dev
 	pkgdesc = Cross-platform GUI toolkit. Developer version
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wxpython.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -19,6 +19,14 @@ pkgbase = python-wxpython-dev
 	provides = python-wxpython
 	conflicts = python-wxpython
 	source = https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-4.1.1.tar.gz
+	source = https://github.com/wxWidgets/Phoenix/commit/aa3dca0e40bd0701e82ce40297a982b5b84844dc.patch
+	source = https://github.com/wxWidgets/Phoenix/commit/f5a55e6bf38ab5a0e7b7161477d2d523d057ec29.patch
+	source = d9725119d742ff25e815d0824c62abd8953a61df.patch
+	source = 7afcc7fbc68506b55b5bb85970871a5f3df6eac4.patch
 	sha512sums = 00924008b97bbecb824c3fffd46fc76a5a3115d9346eb95baccc6cca99c080aa80b586af42fece8a3b4d234f2d07ffa8b66b50a164c41cbd95abc9b139c32809
+	sha512sums = 7e44c7ed5cf2688f1082dcb51e3cbaad22be67e18bb64536ec2820a3defcdc982ac0b8570b62d69157019163eaad673612708d882bb0c9105ee67ab1a4e41029
+	sha512sums = 923a0a10c90792f3f9383c69079ab07b3254bf8d7467c8340fc3fceb21860645da75e99794dc13b3abb92bc16dedba012c730fbc507aa5e378ab3dfe60334f54
+	sha512sums = 1627314f9ccfda1189f295a293a834559d009d5ed0ca2c5fb4d7843120341a65900dc788c747b1203279435614fa8d9341c0997553bbfffb7884d071fc5bcb49
+	sha512sums = d70fda4dc90fcc6cdee465fa2e96702245045e71eb5710c690a95eb1b09f3009fb5beca6dfb3d975aa38aec1926e8b603f58293073abd523f1d39a8b1d0e2b3e
 
 pkgname = python-wxpython-dev
