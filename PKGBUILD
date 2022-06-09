@@ -2,7 +2,7 @@
 
 pkgname=web-greeter
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern, visually appealing greeter for LightDM'
 arch=('x86_64')
 url='https://github.com/JezerM/web-greeter'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('lightdm' 'python3' 'python-gobject' 'python-pyqt5' 'python-pyqt5-webengine' 'python-ruamel-yaml' 'python-pyinotify' 'python-xlib' 'qt5-webengine' 'gobject-introspection' 'libxcb' 'libx11')
 makedepends=('rsync' 'zip' 'make' 'gcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz" "package.patch")
-sha512sums=('c0b03f924e5e2753aa9e729a5d2fa3bcea80b4894455359e6e9f35caacbee80714af30d77ea77f6d1f76c36fbed3d69c22ff9414f09c35ee8deedbf5b08b205a'
+sha512sums=('fdfe60f777857e06e9691ffbd38e53256267fa42a6b152ff1d25e5406530bba8d86850f82637b6748a316964afc329e8f9c172bf1433b55b707e745875f65e4f'
             '8146f3e6047fff6ebd24cd6a2fda91322e75bef24d54cad5112e4f0daffc4f0713505f062dfb9c24255de0c2a08856f3224fe57a668247941eba73f434cad0d6')
 
 prepare() {
