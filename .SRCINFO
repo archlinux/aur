@@ -1,0 +1,23 @@
+pkgbase = apm
+	pkgdesc = Atom package manager
+	pkgver = 2.6.5
+	pkgrel = 4
+	url = https://github.com/atom/apm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = libsecret
+	depends = nodejs
+	provides = nodejs-atom-package-manager
+	conflicts = nodejs-atom-package-manager
+	replaces = nodejs-atom-package-manager
+	options = !emptydirs
+	source = https://github.com/atom/apm/archive/ade8fbe124b18f5949a6b20b8e02a551d5405d67/apm-ade8fbe124b18f5949a6b20b8e02a551d5405d67.tar.gz
+	source = apm.js
+	source = no-scripts.patch
+	sha512sums = 3788ccc2f6b2fe63792463c282ebb1710aaf2dccb595c3177494cd8800fc5e5df3f3b49481f6342fcff770882c50c2d171d9d53a985184e84b875f386c5a2039
+	sha512sums = dd6786d44278f1edbfb87d4a4a639da4fd4b8ab9aca85ae430e113256befd3850b1fb375353afb5f1f4b99ad3dc2666b37d6d6c31c7563d992d8c034d0d2750a
+	sha512sums = a962ecc1557bcfe92c8d771a44c3bbbd72d0bf9c81285662ef26a1f99f3604efcca0307e7edb59eb99c2cbc83db4ab844f0db0532ca990581eff28e50c42acd6
+
+pkgname = apm
