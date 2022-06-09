@@ -3,12 +3,12 @@
 pkgname=remindme-git
 pkgdesc="Simple tool to add remind(1) task using natural language processing"
 url="https://git.sr.ht/~primalmotion/remindme"
-pkgver=v1.0.1.r0.g3412aee
+pkgver=v1.2.0.r0.g7cfef70
 pkgrel=1
 license=(GPL3)
 arch=(any)
 depends=(remind)
-makedepends=(go)
+makedepends=(go pandoc)
 source=("${pkgname}::git+${url}")
 sha1sums=('SKIP')
 
@@ -19,9 +19,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	go build -trimpath
+	make remindme
+	make man
 }
 
 package() {
-	install -Dm755 ${srcdir}/${pkgname}/remindme ${pkgdir}/usr/bin/remindme
+	# install -Dm755 ${srcdir}/${pkgname}/remindme ${pkgdir}/usr/bin/remindme
+	cd "${srcdir}/${pkgname}"
+	PREFIX=${pkgdir}/usr make install
 }
