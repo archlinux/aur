@@ -2,7 +2,7 @@
 # GitLab repo is temporarily unavailable
 pkgname=blurry-text-fix
 pkgver=2
-pkgrel=6
+pkgrel=7
 pkgdesc="Fixes blurry text in GTK4 / GTK3 and Flatpak"
 license=('GPL3')
 provides=('blurry-text-fix')

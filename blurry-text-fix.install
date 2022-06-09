@@ -16,34 +16,29 @@ post_install() {
     # GTK 4
     if [[ ! -f "/usr/share/gtk-4.0/settings-old.ini" ]]
     then
-        echo "Renaming gtk-4.0/settings.ini to gtk-4.0/settings-old.ini."
+        echo "> Renaming gtk-4.0/settings.ini to gtk-4.0/settings-old.ini."
         mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
     fi
 
-    echo "Installing modified config to gtk-4.0/settings.ini."
+    echo "> Installing modified config to gtk-4.0/settings.ini."
     cp /etc/blurry-text-fix/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings.ini
 
     if [[ -f "/usr/bin/flatpak" ]]
     then
-        echo "Flatpak found! Overriding flatpak for GTK 4.0.."
+        echo "> Overriding flatpak"
         flatpak override --filesystem=xdg-config/gtk-4.0
+        flatpak override --filesystem=xdg-config/gtk-3.0
     fi
     
     # GTK 3
     if [[ ! -f "/usr/share/gtk-3.0/settings-old.ini" ]]
     then
-        echo "Renaming gtk-3.0/settings.ini to gtk-3.0/settings-old.ini."
+        echo "> Renaming gtk-3.0/settings.ini to gtk-3.0/settings-old.ini."
         mv /usr/share/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings-old.ini
     fi
 
-    echo "Installing modified config to gtk-3.0/settings.ini."
+    echo "> Installing modified config to gtk-3.0/settings.ini."
     cp /etc/blurry-text-fix/gtk-3.0/settings.ini /usr/share/gtk-3.0/settings.ini
-
-    if [[ -f "/usr/bin/flatpak" ]]
-    then
-        echo "Flatpak found! Overriding flatpak for GTK 3.0.."
-        flatpak override --filesystem=xdg-config/gtk-3.0
-    fi
 
     echo "INFO: Your backup file is in /usr/share/gtk-<version>/settings-old.ini"
     echo "INFO: If you want to edit settings.ini, then edit this file /etc/blurry-text-fix and then run blurry-text-fix-reload"
@@ -57,15 +52,15 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "Removing modified gtk-4.0/settings.ini."
+    echo "> Removing modified gtk-4.0/settings.ini."
     rm /usr/share/gtk-4.0/settings.ini
-    echo "Restoring old gtk-4.0/settings.ini."
+    echo "> Restoring old gtk-4.0/settings.ini."
     mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
-    echo "Removing modified gtk-3.0/settings.ini."
+    echo "> Removing modified gtk-3.0/settings.ini."
     rm /usr/share/gtk-3.0/settings.ini
-    echo "Restoring old gtk-3.0/settings.ini."
+    echo "> Restoring old gtk-3.0/settings.ini."
     mv /usr/share/gtk-3.0/settings-old.ini /usr/share/gtk-3.0/settings.ini
 
-    echo "The old config file is stored in /usr/share/gtk-<version>/settings.ini."
+    echo "INFO: The old config file is stored in /usr/share/gtk-<version>/settings.ini."
     echo "### Done. Please relog to apply changes."
 }
