@@ -1,14 +1,13 @@
 # Maintainer: Aleksana QWQ <me@aleksana.moe>
 
 pkgname=hyfetch
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
 license=('MIT')
-depends=('python' 'python-hypyutils')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-typing_extensions')
 source=("$pkgname::git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
