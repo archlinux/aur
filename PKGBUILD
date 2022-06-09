@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=lua-emmy-language-server-bin
-pkgver=0.3.6
+pkgver=0.4.19
 pkgrel=1
 pkgdesc="Language server for Lua from the Emmy IntelliJ IDEA plugin."
 arch=(any)
@@ -10,8 +10,8 @@ depends=()
 provides=('lua-emmy-language-server')
 conflicts=('lua-emmy-language-server')
 source=("emmylua-$pkgver.jar::https://github.com/EmmyLua/EmmyLua-LanguageServer/releases/download/$pkgver/EmmyLua-LS-all.jar")
-md5sums=('85e39b2fe5c919389e7c34e8550fa970')
-sha256sums=('24ab060cb86fd734a4da49853109f18fdbc006246b4f5d895600993af8d83877')
+md5sums=('df1734a0a3abf627fbf8ef6ab739d08f')
+sha256sums=('e60ab0fc86774553e2ace1aa0b2664278cebe4af90bbbeb581389f22ea8a3964')
 noextract=('EmmyLua-LS-all.jar')
 
 package() {
