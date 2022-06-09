@@ -13,7 +13,7 @@
 # Orginally based on a Debian Squeeze package
 
 pkgname=zoneminder
-pkgver=1.36.18
+pkgver=1.36.19
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -33,7 +33,7 @@ depends=('polkit' 'ffmpeg'
          # Needed for encryption
          'perl-crypt-eksblowfish' 'perl-data-entropy'
          )
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 optdepends=('mariadb'
             'apache'
             'nginx'
@@ -49,35 +49,42 @@ backup=("etc/nginx/sites-available/${pkgname}.conf"
         "etc/httpd/conf/extra/${pkgname}.conf"
         "etc/php/conf.d/${pkgname}.ini")
 install=${pkgname}.install
-source=("${pkgname}-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=${pkgver}"
-        "zoneminder-nginx.conf"
-        "zoneminder-httpd.conf"
-        "zoneminder-php.ini"
-        "zoneminder.service"
-        "zoneminder-tmpfile.conf"
-        "fcgiwrap-multiwatch.service"
-        "zmsetup.sh")
-sha256sums=('SKIP'
+source=("ZoneMinder.tar.gz::https://github.com/ZoneMinder/zoneminder/archive/refs/tags/${pkgver}.tar.gz"
+        'CakePHP.tar.gz::https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/refs/tags/1.0-zm.tar.gz'
+        'Crud.tar.gz::https://github.com/FriendsOfCake/crud/archive/refs/tags/v3.2.0.tar.gz'
+        'RtspServer.zip::https://github.com/ZoneMinder/RtspServer/archive/refs/heads/master.zip'
+        'zoneminder-nginx.conf'
+        'zoneminder-httpd.conf'
+        'zoneminder-php.ini'
+        'fcgiwrap-multiwatch.service')
+sha256sums=('0271afe97a24e879102e5efd935ff817c54b87e044a5c3c356a61bac3faed3f7'
+            'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
+            '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
+            '57556adbeec7eebf1d00f7873930e144094ab26442d0852b63c1397f4b3af6d5'
             'c60e855428a56cc327214aa13d02a70011bf3b63a94a0d845b1c5ea1fab28ad2'
             '1f0d2276861065caf0b6c030ba27a6edb6a2988c7a1ac0fdf4e8fcb856972715'
             '2d7f5ac073687be75c7724b0acd3785d8c358e4f65341e60d39eb6006f31389b'
-            '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
-            'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0'
-            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260'
-            '255374c400e01c7666cc7b3e1f06da8445dc57afda631868d33ced62ba631c98')
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
 
 prepare () {
-    cd ${pkgname}-git
-
-    # Download and move extra PHP plugins into place
-    git submodule update --init --recursive
+    cd ${pkgname}-${pkgver}
 
     # Fix the launcher
     sed -i 's|localhost/zm|localhost:8095|g' misc/${pkgname}.desktop.in
+
+    # Tweak the systemd service file
+    sed -i 's|After=network.target mysqld.service httpd.service|After=network.target mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
+    sed -i 's|Requires=mysqld.service httpd.service|Wants=mysqld.service httpd.service nginx.service|g' misc/${pkgname}.service.in
+
+    # Move third-party plugins into place
+    mv ../CakePHP-Enum-Behavior-1.0-zm/* web/api/app/Plugin/CakePHP-Enum-Behavior
+    mv ../crud-3.2.0/* web/api/app/Plugin/Crud
+    mv ../RtspServer-master/* dep/RtspServer
+
 }
 
 build() {
-    cd ${pkgname}-git
+    cd ${pkgname}-${pkgver}
 
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DZM_CONFIG_DIR=/etc/${pkgname} \
@@ -96,7 +103,7 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-git
+    cd ${pkgname}-${pkgver}
 
     make DESTDIR=${pkgdir} install
 
@@ -126,17 +133,11 @@ package() {
     chmod 644                                                   ${pkgdir}/etc/${pkgname}/zm.conf
     chmod 644                                                   ${pkgdir}/etc/${pkgname}/conf.d/*
 
-    # Nginx conf file
+    # Nginx
     install -Dm644 $srcdir/${pkgname}-nginx.conf                ${pkgdir}/etc/nginx/sites-available/${pkgname}.conf
 
-    # Apache conf file
+    # Apache
     install -Dm644 $srcdir/${pkgname}-httpd.conf                ${pkgdir}/etc/httpd/conf/extra/${pkgname}.conf
-
-    # systemd service
-    install -Dm644 $srcdir/${pkgname}.service                   ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
-
-    # systemd tmpfile
-    install -Dm644 $srcdir/${pkgname}-tmpfile.conf              ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
 
     # php.ini extension
     install -Dm644 $srcdir/${pkgname}-php.ini                   ${pkgdir}/etc/php/conf.d/${pkgname}.ini
@@ -144,8 +145,11 @@ package() {
     # fcgiwrap-multiwatch service
     install -Dm644 $srcdir/fcgiwrap-multiwatch.service          ${pkgdir}/usr/lib/systemd/system/fcgiwrap-multiwatch.service
 
-    # optional install script
-    install -Dm755 $srcdir/zmsetup.sh                           ${pkgdir}/usr/bin/zmsetup.sh
+    # systemd service
+    install -Dm644 misc/${pkgname}.service                      ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+
+    # systemd tmpfile
+    install -Dm644 misc/${pkgname}-tmpfiles.conf                ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
 
     # logrotate conf file
     install -Dm644 misc/logrotate.conf                          ${pkgdir}/etc/logrotate.d/${pkgname}

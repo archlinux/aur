@@ -18,14 +18,10 @@ post_install() {
     echo "4) After the previous steps are complete, you will also need to refresh systemd's tmpfiles."
     echo
     echo
-    echo "   For more detailed info on how to configure ZoneMinder, you should check the following links:"
+    echo "   More information on how to setup and use ZoneMinder can be obtained at the following links:"
     echo
-    echo "   * https://wiki.archlinux.org/index.php/ZoneMinder"
+    echo "   * https://wiki.archlinux.org/title/ZoneMinder"
     echo "   * https://zoneminder.readthedocs.io/en/latest/"
-    echo
-    echo "   You can also run '/usr/bin/zmsetup.sh' if you wish to automate part or all of the configuration process."
-    echo
-    echo "   Bug reports and packaging suggestions are always welcome at https://aur.archlinux.org/packages/zoneminder/"
     echo
 }
 
