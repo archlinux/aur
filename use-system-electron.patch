@@ -1,0 +1,214 @@
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,6 @@
+     "url": "https://github.com/atom/atom/issues"
+   },
+   "license": "MIT",
+-  "electronVersion": "11.4.12",
+   "dependencies": {
+     "@atom/fuzzy-native": "^1.2.0",
+     "@atom/nsfw": "^1.0.27",
+--- a/script/build
++++ b/script/build
+@@ -33,7 +33,6 @@
+   .wrap(yargs.terminalWidth())
+   .argv
+ 
+-const checkChromedriverVersion = require('./lib/check-chromedriver-version')
+ const cleanOutputDirectory = require('./lib/clean-output-directory')
+ const codeSignOnMac = require('./lib/code-sign-on-mac')
+ const codeSignOnWindows = require('./lib/code-sign-on-windows')
+@@ -65,13 +64,9 @@
+ 
+ const CONFIG = require('./config')
+ 
+-// Used by the 'github' package for Babel configuration
+-process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
+-
+ let binariesPromise = Promise.resolve()
+ 
+ if (!argv.existingBinaries) {
+-  checkChromedriverVersion()
+   cleanOutputDirectory()
+   copyAssets()
+   transpilePackagesWithCustomTranspilerPaths()
+@@ -90,74 +85,5 @@
+ 
+ if (!argv.generateApiDocs) {
+   binariesPromise
+-    .then(packageApplication)
+     .then(packagedAppPath => generateStartupSnapshot(packagedAppPath).then(() => packagedAppPath))
+-    .then(async packagedAppPath => {
+-      switch (process.platform) {
+-        case 'darwin': {
+-          if (argv.codeSign) {
+-            await codeSignOnMac(packagedAppPath)
+-            await notarizeOnMac(packagedAppPath)
+-          } else if (argv.testSign) {
+-            testSignOnMac(packagedAppPath)
+-          } else {
+-            console.log('Skipping code-signing. Specify the --code-sign option to perform code-signing'.gray)
+-          }
+-          break
+-        }
+-        case 'win32': {
+-          if (argv.testSign) {
+-            console.log('Test signing is not supported on Windows, skipping.'.gray)
+-          }
+-
+-          if (argv.codeSign) {
+-            const executablesToSign = [ path.join(packagedAppPath, CONFIG.executableName) ]
+-            if (argv.createWindowsInstaller) {
+-              executablesToSign.push(path.join(__dirname, 'node_modules', '@atom', 'electron-winstaller', 'vendor', 'Squirrel.exe'))
+-            }
+-            codeSignOnWindows(executablesToSign)
+-          } else {
+-            console.log('Skipping code-signing. Specify the --code-sign option to perform code-signing'.gray)
+-          }
+-          if (argv.createWindowsInstaller) {
+-            return createWindowsInstaller(packagedAppPath)
+-              .then((installerPath) => {
+-                argv.codeSign && codeSignOnWindows([installerPath])
+-                return packagedAppPath
+-              })
+-          } else {
+-            console.log('Skipping creating installer. Specify the --create-windows-installer option to create a Squirrel-based Windows installer.'.gray)
+-          }
+-          break
+-        }
+-        case 'linux': {
+-          if (argv.createDebianPackage) {
+-            createDebianPackage(packagedAppPath)
+-          } else {
+-            console.log('Skipping creating debian package. Specify the --create-debian-package option to create it.'.gray)
+-          }
+-
+-          if (argv.createRpmPackage) {
+-            createRpmPackage(packagedAppPath)
+-          } else {
+-            console.log('Skipping creating rpm package. Specify the --create-rpm-package option to create it.'.gray)
+-          }
+-          break
+-        }
+-      }
+-
+-      return Promise.resolve(packagedAppPath)
+-    }).then(packagedAppPath => {
+-      if (argv.compressArtifacts) {
+-        compressArtifacts(packagedAppPath)
+-      } else {
+-        console.log('Skipping artifacts compression. Specify the --compress-artifacts option to compress Atom binaries (and symbols on macOS)'.gray)
+-      }
+-
+-      if (argv.install != null) {
+-        installApplication(packagedAppPath, argv.install)
+-      } else {
+-        console.log('Skipping installation. Specify the --install option to install Atom'.gray)
+-      }
+-    })
+ }
+--- a/script/lib/generate-startup-snapshot.js
++++ b/script/lib/generate-startup-snapshot.js
+@@ -288,17 +288,14 @@
+         CONFIG.executableName
+       );
+     } else {
+-      nodeBundledInElectronPath = path.join(
+-        packagedAppPath,
+-        CONFIG.executableName
+-      );
++      nodeBundledInElectronPath = '@ELECTRON@';
+     }
+     childProcess.execFileSync(
+       nodeBundledInElectronPath,
+       [verifySnapshotScriptPath, snapshotScriptPath],
+       { env: Object.assign({}, process.env, { ELECTRON_RUN_AS_NODE: 1 }) }
+     );
+-
++    /*
+     console.log('Generating startup blob with mksnapshot');
+     childProcess.spawnSync(process.execPath, [
+       path.join(
+@@ -340,5 +337,6 @@
+         destinationPath
+       );
+     }
++    */
+   });
+ };
+--- a/script/package.json
++++ b/script/package.json
+@@ -12,9 +12,7 @@
+     "coffeelint": "1.15.7",
+     "colors": "1.1.2",
+     "donna": "1.0.16",
+-    "electron-chromedriver": "^11.0.0",
+     "electron-link": "^0.6.0",
+-    "electron-mksnapshot": "^11.0.1",
+     "electron-packager": "^15.1.0",
+     "eslint": "^5.16.0",
+     "eslint-config-prettier": "^4.2.0",
+--- a/src/compile-cache.js
++++ b/src/compile-cache.js
+@@ -135,7 +135,7 @@ exports.install = function(resourcesPath, nodeRequire) {
+       return {
+         column,
+         line: row,
+-        source: path.join(resourcesPath, 'app', 'static', relativePath),
++        source: path.join(resourcesPath, 'static', relativePath),
+         name: null
+       };
+     }
+--- a/src/module-cache.js
++++ b/src/module-cache.js
+@@ -270,7 +270,7 @@
+ function registerBuiltins(devMode) {
+   if (
+     devMode ||
+-    !cache.resourcePath.startsWith(`${process.resourcesPath}${path.sep}`)
++    !cache.resourcePath.startsWith('/usr/lib/atom/')
+   ) {
+     const fs = require('fs-plus');
+     const atomJsPath = path.join(cache.resourcePath, 'exports', 'atom.js');
+--- a/src/package-manager.js
++++ b/src/package-manager.js
+@@ -949,7 +949,7 @@
+   isBundledPackagePath(packagePath) {
+     if (
+       this.devMode &&
+-      !this.resourcePath.startsWith(`${process.resourcesPath}${path.sep}`)
++      !this.resourcePath.startsWith('/usr/lib/atom/')
+     ) {
+       return false;
+     }
+--- a/src/task-bootstrap.js
++++ b/src/task-bootstrap.js
+@@ -3,7 +3,7 @@
+ 
+ const CompileCache = require('./compile-cache');
+ CompileCache.setCacheDirectory(compileCachePath);
+-CompileCache.install(`${process.resourcesPath}`, require);
++CompileCache.install('/usr/lib/atom', require);
+ 
+ const setupGlobals = function() {
+   global.attachEvent = function() {};
+--- a/static/index.js
++++ b/static/index.js
+@@ -40,7 +40,7 @@
+       const devMode =
+         getWindowLoadSettings().devMode ||
+         !getWindowLoadSettings().resourcePath.startsWith(
+-          process.resourcesPath + path.sep
++          '/usr/lib/atom'
+         );
+       useSnapshot = !devMode && typeof snapshotResult !== 'undefined';
+ 
+@@ -134,7 +134,7 @@
+       ? snapshotResult.customRequire('../src/compile-cache.js')
+       : require('../src/compile-cache');
+     CompileCache.setAtomHomeDirectory(process.env.ATOM_HOME);
+-    CompileCache.install(process.resourcesPath, require);
++    CompileCache.install('/usr/lib/atom', require);
+ 
+     const ModuleCache = useSnapshot
+       ? snapshotResult.customRequire('../src/module-cache.js')

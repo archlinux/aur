@@ -1,0 +1,13 @@
+--- a/static/index.js
++++ b/static/index.js
+@@ -85,6 +85,10 @@
+         );
+       }
+ 
++      if (!devMode) {
++        process.env.NODE_ENV = 'production';
++      }
++
+       const FileSystemBlobStore = useSnapshot
+         ? snapshotResult.customRequire('../src/file-system-blob-store.js')
+         : require('../src/file-system-blob-store');

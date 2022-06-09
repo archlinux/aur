@@ -1,0 +1,11 @@
+--- a/static/index.js
++++ b/static/index.js
+@@ -13,6 +13,8 @@
+   let blobStore = null;
+   let useSnapshot = false;
+ 
++  process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
++
+   const startupMarkers = electron.remote.getCurrentWindow().startupMarkers;
+ 
+   if (startupMarkers) {

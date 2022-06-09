@@ -1,0 +1,22 @@
+--- a/src/main-process/atom-application.js
++++ b/src/main-process/atom-application.js
+@@ -697,7 +697,7 @@
+     );
+     this.openPathOnEvent(
+       'application:open-license',
+-      path.join(process.resourcesPath, 'LICENSE.md')
++      '/usr/share/licenses/atom/LICENSE.md'
+     );
+ 
+     this.configFile.onDidChange(settings => {
+--- a/src/workspace.js
++++ b/src/workspace.js
+@@ -1301,7 +1301,7 @@
+ 
+   // Open Atom's license in the active pane.
+   openLicense() {
+-    return this.open(path.join(process.resourcesPath, 'LICENSE.md'));
++    return this.open('/usr/share/licenses/atom/LICENSE.md');
+   }
+ 
+   // Synchronously open the given URI in the active pane. **Only use this method

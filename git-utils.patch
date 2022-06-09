@@ -1,0 +1,11 @@
+--- a/binding.gyp
++++ b/binding.gyp
+@@ -162,6 +162,8 @@
+         'deps/libgit2/src/message.h',
+         'deps/libgit2/src/mwindow.c',
+         'deps/libgit2/src/mwindow.h',
++        'deps/libgit2/src/net.c',
++        'deps/libgit2/src/net.h',
+         'deps/libgit2/src/netops.c',
+         'deps/libgit2/src/netops.h',
+         'deps/libgit2/src/notes.c',

@@ -1,0 +1,14 @@
+--- a/lib/tag-generator.js
++++ b/lib/tag-generator.js
+@@ -79,9 +79,8 @@
+   generate() {
+     let tags = {};
+     const packageRoot = this.getPackageRoot();
+-    const command = path.join(packageRoot, 'vendor', `ctags-${process.platform}`);
+-    const defaultCtagsFile = path.join(packageRoot, 'lib', 'ctags-config');
+-    const args = [`--options=${defaultCtagsFile}`, '--fields=+KS'];
++    const command = 'ctags';
++    const args = ['--fields=+KS'];
+ 
+     if (atom.config.get('symbols-view.useEditorGrammarAsCtagsLanguage')) {
+       const language = this.getLanguage();
