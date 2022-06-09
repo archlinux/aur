@@ -16,56 +16,53 @@ depends=(
   alsa-lib
   aom
   bzip2
+  dav1d
   fontconfig
+  freetype2
   fribidi
   gmp
   gnutls
   gsm
   jack
   lame
-  libass.so
+  libass
   libavc1394
-  libbluray.so
-  libdav1d.so
+  libbluray
   libdrm
-  libfreetype.so
   libiec61883
   libmfx
   libmodplug
   libpulse
-  librav1e.so
   libraw1394
-  librsvg-2.so
+  librsvg
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  libva
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
+  libvorbis
+  libvpx
   libwebp
   libx11
-  libx264.so
-  libx265.so
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
   opencore-amr
   openjpeg2
   opus
+  rav1e
   sdl2
   speex
   srt
   svt-av1
   v4l-utils
+  vid.stab
+  x264
+  x265
+  xvidcore
   xz
+  zimg
   zlib
 )
 
@@ -107,10 +104,13 @@ build() {
     --disable-doc \
     --disable-programs \
     --disable-static \
+    --enable-alsa \
     --enable-amf \
     --enable-avisynth \
+    --enable-bzlib \
     --enable-cuda-llvm \
     --enable-lto \
+    --enable-ffnvcodec \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gnutls \
@@ -144,7 +144,6 @@ build() {
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
-    --disable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
@@ -154,10 +153,17 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-lzma \
     --enable-nvdec \
     --enable-nvenc \
+    --enable-sdl2 \
     --enable-shared \
-    --enable-version3
+    --disable-sndio \
+    --enable-vaapi \
+    --enable-vdpau \
+    --enable-version3 \
+    --enable-xlib \
+    --enable-zlib
 
   make
 }
