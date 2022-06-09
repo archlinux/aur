@@ -1,0 +1,13 @@
+pkgbase = libpfm
+	pkgdesc = Library to encode performance events for use by perf tool
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = http://perfmon2.sourceforge.net
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = libpfm::git+https://git.code.sf.net/p/perfmon2/libpfm4#commit=414e482ace00d334015341e032a8b325d80e92eb
+	b2sums = SKIP
+
+pkgname = libpfm
