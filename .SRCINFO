@@ -1,9 +1,9 @@
 pkgbase = blurry-text-fix
 	pkgdesc = Fixes blurry text in GTK4 / GTK3 and Flatpak
 	pkgver = 2
-	pkgrel = 5
+	pkgrel = 6
 	install = blurry-text-fix.install
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = gtk4
 	optdepends = flatpak
