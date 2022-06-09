@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=blaeu-git
-pkgver=1.1.6.r1.3577de1
+pkgver=1.1.7.r2.3956cce
 pkgrel=1
 pkgdesc="A set of Python programs to start distributed Internet measurements on the network of RIPE Atlas probes, and to analyze their results"
 arch=(any)
@@ -23,9 +23,8 @@ build() {
   python setup.py build
 }
 
-
 package() {
   cd "$srcdir/${pkgname%-git}"
   python setup.py install --root="$pkgdir" --prefix=/usr
-  install -Dm644 LICENCE "$pkgdir"/usr/shjare/licenses/blaeu-git/LICENCE
+  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/blaeu-git/LICENCE
 }
