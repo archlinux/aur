@@ -4,7 +4,7 @@
 # created by cantabile <cantabile dot desu at gmail dot com>
 
 pkgname=xkb-qwerty-fr
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Keyboard layout based on the QWERTY layout with extra symbols and diacritics so that typing both in French and English is easy and fast. It is also easy to learn!"
 arch=('any')
@@ -14,9 +14,9 @@ depends=('xkeyboard-config' 'perl')
 install=${pkgname}.install
 source=("https://github.com/qwerty-fr/qwerty-fr/releases/download/v${pkgver}/qwerty-fr_${pkgver}_linux.deb"
         "xkb-qwerty-fr.hook")
-md5sums=('24aa11a33d6fed8930603ecf6593fd8a'
+md5sums=('52fc298b130964f5d2745bc706a4265d'
          'a48aeeed95e5309eb22399ec4455bfd3')
-sha256sums=('81d265a6780aa203ea1bcd2653099b828b33711a3bbe9ed3fac644e6e77f7f22'
+sha256sums=('a31d5386e9361b468a828debb982b5247fd317cd2dd6a87bfb09f6b9b245cfe5'
             '093d2b1d27f77ac5d0cff9a6057ceff18ddc73901a9636ba6533a8e40a63e3cc')
 
 build() {

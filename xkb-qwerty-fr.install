@@ -4,7 +4,7 @@ post_install() {
 }
 
 pre_remove() {
-    echo "==> Removing curent qwerty-fr keyboard layout"
+    echo "==> Removing current qwerty-fr keyboard layout"
     /usr/share/libalpm/scripts/xkb-qwerty-fr.uninstall triggered
 }
 
