@@ -1,6 +1,6 @@
 pkgbase = r-hicdcplus
 	pkgdesc = Hi-C Direct Caller Plus
-	pkgver = 1.4.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HiCDCPlus
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = r-hicdcplus
 	optdepends = r-rappdirs
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCDCPlus_1.4.0.tar.gz
-	sha256sums = cf873101072533e7497188540c650d3852be20da5134a5faa9b70646c6d9b1e7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HiCDCPlus_1.4.2.tar.gz
+	sha256sums = 8844af1b7bb48d9488c9e4ed886193d7afdf5fccfef751f6b4be544235e15c5f
 
 pkgname = r-hicdcplus
