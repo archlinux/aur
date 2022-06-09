@@ -3,7 +3,7 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="YouTube viewer based on saturnon"
 arch=('any')
@@ -25,4 +25,5 @@ package() {
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/subscribe"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/install_dirs"
 	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/info"
+	install -Dm 755 -t "$pkgdir/usr/share/saturnon"    "scripts/comments"
 }
