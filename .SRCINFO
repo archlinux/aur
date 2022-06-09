@@ -6,7 +6,6 @@ pkgbase = dragonfly-bin
 	arch = x86_64
 	arch = aarch64
 	license = BSL
-	depends = openssl
 	depends = boost-libs
 	depends = libunwind
 	source = https://github.com/dragonflydb/dragonfly/releases/download/v0.2.0/dragonfly-x86_64.tar.gz
