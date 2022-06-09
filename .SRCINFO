@@ -7,7 +7,6 @@ pkgbase = vmware-unlocker
 	license = MIT
 	makedepends = git
 	makedepends = zsh
-	makedepends = go
 	conflicts = vmware-unlocker-bin
 	source = vmware-unlocker::git+https://github.com/DrDonk/unlocker#tag=v4.2.1
 	source = vmware-unlocker-post.hook

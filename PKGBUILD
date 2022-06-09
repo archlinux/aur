@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/DrDonk/unlocker"
 license=('MIT')
 #depends=('vmware-workstation>=16.0.0')
-makedepends=("git" "zsh" "go")
+makedepends=("git" "zsh")
 conflicts=('vmware-unlocker-bin')
 source=("$pkgname::git+https://github.com/DrDonk/unlocker#tag=v$pkgver" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
 sha512sums=('SKIP'
