@@ -1,0 +1,26 @@
+pkgbase = vncscreen
+	pkgdesc = Remote desktop application for Kirigami KDE based on VNC standard
+	pkgver = 0.3
+	pkgrel = 3
+	url = https://invent.kde.org/marcellodgl/vnc-screen
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = qt5-svg
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	depends = knotifications
+	depends = kirigami2
+	depends = plasma-framework
+	depends = libvncserver
+	source = https://invent.kde.org/marcellodgl/vnc-screen/-/archive/0.3.3/vnc-screen-0.3.3.tar.gz
+	sha256sums = 821d2bc99c82c0ec3babe326af4c802a9a0389bb7b29150b2f47de9a2fd2b99d
+
+pkgname = vncscreen
