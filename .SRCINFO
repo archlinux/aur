@@ -16,6 +16,7 @@ pkgbase = ffmpeg3.4
 	depends = alsa-lib
 	depends = bzip2
 	depends = fontconfig
+	depends = freetype2
 	depends = fribidi
 	depends = glibc
 	depends = gmp
@@ -57,7 +58,7 @@ pkgbase = ffmpeg3.4
 	depends = zlib
 	optdepends = ladspa: LADSPA filters
 	optdepends = libomxil-bellagio: HW acceleration on mobile platforms
-	provides = ffmpeg-compat-57
+	provides = ffmpeg-compat-57=3.4.11
 	provides = libavcodec.so=57
 	provides = libavdevice.so=57
 	provides = libavfilter.so=6
@@ -74,10 +75,10 @@ pkgbase = ffmpeg3.4
 	source = https://ffmpeg.org/releases/ffmpeg-3.4.11.tar.xz.asc
 	source = fs56089.patch
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
-	sha256sums = 9c310072bcdcc78a1ee82a36b2b6e648b21dd2e790618200e45876d4d96e32e6
-	sha256sums = SKIP
-	sha256sums = 0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427
+	b2sums = 4602b3ea2cfad937219c1d69ebb5a2214a796ad41cb4b07ac07bdc5ee8d723bff2c3282eb466d8dfaf0a811bcc02276bfda3af9459dfc132010fafeb8e0be011
+	b2sums = SKIP
+	b2sums = 42141778d3c18939b4f3c59a8163cecff3cedc02010f00a064948183b5aba4e51c9576ec2f559581a590360645a104c9a4abc272e120dbdf2891745d358bc009
+	depends_x86_64 = libmfx
 	optdepends_x86_64 = intel-media-sdk: for Intel QuickSync HW acceleration support (experimental)
-	makedepends_x86_64 = libmfx
 
 pkgname = ffmpeg3.4
