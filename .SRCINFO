@@ -1,6 +1,6 @@
 pkgbase = dolphin-nospace
 	pkgdesc = KDE File Manager (with DuckSoft's Space Patch)
-	pkgver = 22.04.1
+	pkgver = 22.04.2
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = dolphin-nospace
 	optdepends = packagekit-qt5: service menu installer
 	provides = dolphin
 	conflicts = dolphin
-	source = https://download.kde.org/stable/release-service/22.04.1/src/dolphin-22.04.1.tar.xz
+	source = https://download.kde.org/stable/release-service/22.04.2/src/dolphin-22.04.2.tar.xz
 	source = ducksoft-want-my-space-back.patch
-	sha256sums = 9cf51ac21ffc3d12a919e99cca80f3bb14741eed2a3af54b4499332ccd979a7b
+	sha256sums = c2e3c4c16ff42a224f3dc72c79b2f641d1648d439bfa8c06635784843e58d147
 	sha256sums = 21a50881ce6dce2a831d8fc0e2d1339a158aaabc65986bbe3c9e990a4a71fcbe
 
 pkgname = dolphin-nospace
