@@ -1,6 +1,6 @@
 pkgbase = geocrop
 	pkgdesc = Small tool based on GDAL/PROJ4 to automatic crop box on GeoTIFF maps (in most cases - Russians)
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/h4tr3d/geocrop
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = geocrop
 	makedepends = cmake
 	depends = gdal
 	depends = proj
-	source = geocrop-1.0.tar.gz::https://github.com/h4tr3d/geocrop/archive/v1.0.tar.gz
-	md5sums = bf4b47787e71b9df2f33c2c1ed5eb8ed
+	source = geocrop-2.0.tar.gz::https://github.com/h4tr3d/geocrop/archive/v2.0.tar.gz
+	md5sums = 9b2463ba4d0bb49f6b1967e2d0ee4cbc
 
 pkgname = geocrop
-
