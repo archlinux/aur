@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plotgardener
-_pkgver=1.2.3
+_pkgver=1.2.5
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Coordinate-Based Genomic Visualization Package for R'
 arch=('x86_64')
@@ -46,7 +46,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('06ee0e26b5870f85cebeaaa13a71e753ee4c703c014622f601a11ac7c1df5418')
+sha256sums=('02ed1b79b097826a74f1b8a0780f80dda557308b4ed0a074161c4ceeb4e68962')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
