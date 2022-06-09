@@ -1,12 +1,12 @@
 # Maintainer: L B
 pkgname=asusctltray-git
-pkgver=r22.8665f1f
+pkgver=r23.99a8731
 pkgrel=1
 pkgdesc="Simple tray profile switcher for asusctl"
 url="https://github.com/Baldomo/asusctltray"
 license=("MIT")
 arch=("any")
-depends=("python3" "supergfxctl" "asusctl")
+depends=("python3" "supergfxctl" "asusctl" "dbus" "dbus-python")
 makedepends=("git")
 provides=("asusctltray")
 source=("${pkgname%-git}::git+https://github.com/Baldomo/asusctltray.git")
