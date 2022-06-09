@@ -1,16 +1,16 @@
 # Maintainer: Frederik Holm Strøm <frederikstroem@pm.me>
 
-# Inspiration from https://aur.archlinux.org/packages/monero-feather-git/, https://aur.archlinux.org/packages/nault-bin/ and https://aur.archlinux.org/packages/bisq-bin/.
+# Thanks to AUR users: Trebuchette, tobtoht
 
 _pkgname=feather
 pkgname="monero-${_pkgname}-bin"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Monero desktop wallet"
 arch=('x86_64')
 url="https://featherwallet.org"
 license=('GPL')
-depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'zeromq' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'libgcrypt' 'qrencode' 'libsodium' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'zbar', 'fuse2fs')
+depends=('tor' 'fuse2fs')
 provides=("$pkgname")
 conflicts=("monero-${_pkgname}" "monero-${_pkgname}-git")
 options=(!strip)
