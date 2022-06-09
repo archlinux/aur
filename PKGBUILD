@@ -3,7 +3,7 @@
 
 _gemname="sup"
 pkgname="${_gemname}"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Console-based email client for people with a lot of email. Great mutt alternative.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'ruby-mime-types>2.0'
   'ruby-ncursesw>=1.4.0'        'ruby-ncursesw<1.5'
   'ruby-optimist'
-  'ruby-rmail>=1.1'             'ruby-rmail<2'
+  'ruby-rmail>=1.1.2'           'ruby-rmail<2'
   'ruby-unicode>=0.4.4'         'ruby-unicode<0.5'
   'ruby-unicode-display_width'
   'ruby-xapian-ruby>=1.2'       'ruby-xapian-ruby<2'
@@ -30,7 +30,7 @@ optdepends=(
 conflicts=('sup-git')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-b2sums=('1c1864b4380e39c425fb41fc2904dd182fd2be446d0685671b943096b24a9d5a60bd1d91b49c26e2b2a7233e959d4f41ef3f2843bfff5a370bae00051b31abb0')
+b2sums=('a43e54efbc1a92d04f7ba924ad5cc442542201d4c450c5d2b36e20b9d4efc3c77a38a38dcc3470a739914d15f0f747f4068b81f6e3be0347286c8762ddd6b24d')
 
 package() {
   cd "$srcdir"
