@@ -2,7 +2,7 @@
 # Attention: Currently it is not possible to install!
 
 pkgname=isisdl
-pkgver=1.3.6
+pkgver=1.3.10
 pkgrel=1
 pkgdesc='A downloading utility for ISIS of TU-Berlin. Download all your files and videos from ISIS.'
 url='https://github.com/Emily3403/isisdl'
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('isisdl')
 depends=('zlib')
 source=("https://github.com/Emily3403/isisdl/releases/download/V1.3/isisdl-linux.bin")
-sha256sums=('b7eea579201fae32ee41a7cd58384daa2324a943948d6c9a6d1d25037ed7ca18')
+sha256sums=('0137bcc5f684a36c59a4485b3af683c13207eef74cd5d064b6604bef115509f2')
 
 OPTIONS=(!strip)
 
