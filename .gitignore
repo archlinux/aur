@@ -1,0 +1,6 @@
+*.pkg.tar.zst 
+*.ttf
+*.zip
+pkg/
+src/
+
