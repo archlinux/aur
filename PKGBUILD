@@ -3,7 +3,7 @@
 # Contributor: Frederic Bezies < fredbezies at gmail dot com>
 
 pkgname=ne-git
-pkgver=3.3.1-18-gaf55605
+pkgver=3.3.1.18.gaf55605
 pkgrel=1
 pkgdesc="The nice editor, easy to use for the beginner and powerful enough for the wizard - git version"
 arch=('i686' 'x86_64' 'aarch64')
