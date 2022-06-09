@@ -1,11 +1,11 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 
 pkgname=gnome-bluetooth
 pkgver=3.34.5
-pkgrel=3
-pkgdesc="The GNOME Bluetooth Subsystem"
+pkgrel=4
+pkgdesc="GNOME Bluetooth Subsystem (legacy)"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
 arch=(x86_64)
 license=(GPL LGPL)
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd gnome-bluetooth
-  git describe --tags | sed 's/^GNOMEBT_V_//;s/_fixed//;s/_/./g;s/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
