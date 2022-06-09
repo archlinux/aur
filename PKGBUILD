@@ -1,49 +1,34 @@
 # Maintainer: robertfoster
 
-pkgbase=python-html5lib-git
-pkgname=('python2-html5lib-git' 'python-html5lib-git')
-pkgver=0.999999.r4.g935783d
+pkgname=python-html5lib-git
+pkgver=1.1.r9.gf7cab6f
 pkgrel=1
+pkgdesc="A Python HTML parser/tokenizer based on the WHATWG HTML5 spec"
 arch=('any')
 url="https://github.com/html5lib"
 license=('MIT')
-makedepends=('python2' 'python' 'unzip' 'python-webencodings' 'python2-webencodings')
-checkdepends=('python-six' 'python2-six' 'python2-pytest' 'python-pytest' 'python-lxml' 'python2-lxml' 'python-mock' 'python2-mock') 
-source=($pkgbase::git+https://github.com/html5lib/html5lib-python.git#commit=935783d086498481fec1246a727d4fd01ec7017e
-	LICENSE)
-provides=('python-html5lib')
-replaces=('python-html5lib')
-conflicts=('python-html5lib')
-package_python-html5lib-git() {
-pkgdesc="A Python HTML parser/tokenizer based on the WHATWG HTML5 spec"
 depends=('python' 'python-six' 'python-webencodings')
 provides=('python-html5lib')
 replaces=('python-html5lib')
 conflicts=('python-html5lib')
+makedepends=('python' 'unzip' 'python-webencodings')
+checkdepends=('python-six' 'python-pytest' 'python-lxml' 'python-mock')
+source=("${pkgname}::git+https://github.com/html5lib/html5lib-python.git"
+  LICENSE
+)
 
-    cd ${srcdir}/${pkgbase}
+package() {
+  cd ${srcdir}/${pkgname}
 
-    python3 setup.py install --root=${pkgdir}
-    install -Dm755 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE  
-}
-
-package_python2-html5lib-git() {
-depends=('python2' 'python2-six' 'python2-webencodings')
-pkgdesc="A Python2 HTML parser/tokenizer based on the WHATWG HTML5 spec"
-provides=('python2-html5lib')
-replaces=('python2-html5lib')
-conflicts=('python2-html5lib')
-
-    cd ${srcdir}/${pkgbase}
-
-    python2 setup.py install --root=${pkgdir}
-    install -Dm755 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE  
+  python3 setup.py install --root=${pkgdir}
+  install -Dm755 "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 pkgver() {
-  cd ${pkgbase}
+  cd ${srcdir}/${pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-md5sums=('SKIP'
-         '838c366f69b72c5df05c96dff79b35f2')
+sha256sums=('SKIP'
+            '89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e')
