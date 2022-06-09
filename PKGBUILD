@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=0.9.556
+pkgver=0.9.563
 pkgrel=1
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/a
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('8c1353f2fa4586088a53c3321a490f4fe285ef430de57190839304d7cd340839'
+sha256sums=('1add047e10b567d0748002117e12f30ee0cb9c160a0efa4c27fbbc1ff1872ee1'
             '5d5f7f6f87966e8adc4106fb2e37d189b70a5f0935abfd3e8f48fce4131d3632')
 
 build() {
@@ -28,12 +28,11 @@ build() {
   export QUARTO_VERSION=${pkgver}
 
   mkdir -p "package/dist/bin/tools"
-  cd "package/dist/bin/tools"
-  cp /usr/bin/deno .
-  ./deno cache --reload ../../../../src/quarto.ts --unstable --importmap=../../../../src/import_map.json
-  cd ../../../src/
-  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts configure --log-level info
-  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts prepare-dist --log-level info
+  cp /usr/bin/deno package/dist/bin/tools
+
+  cd package/src
+  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts configure --log-level info
+  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts prepare-dist --log-level info
 
   msg "Building Deno Stdlib..."
   cd "${srcdir}/deno-dom-${_denodomver}"
