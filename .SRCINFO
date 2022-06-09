@@ -1,0 +1,14 @@
+pkgbase = python-beautifultable
+	pkgdesc = Python package for printing visually appealing tables on a terminal
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pri22296/beautifultable
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-wcwidth
+	optdepends = python-pandas: BeautifulTable.from_df and BeautifulTable.to_df
+	source = python-beautifultable-1.1.0.tar.gz::https://github.com/pri22296/beautifultable/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = fa7fc37acd73ea44ad6caa353b9ac39f8ef01d5befada27ec05ae6232edd7eff
+
+pkgname = python-beautifultable
