@@ -1,0 +1,17 @@
+pkgbase = isolyzer
+	pkgdesc = Verify size of ISO image for consistency with file system (ISO 9660, UDF, HFS, HFS+) header fields
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/KBNLresearch/isolyzer
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/i/isolyzer/isolyzer-1.4.0.tar.gz
+	sha256sums = 39e29be05cba4d73bc68e5726ba4f0d8042ff5f01eb1dc265248546fdaf1acd3
+
+pkgname = isolyzer
