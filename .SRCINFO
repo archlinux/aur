@@ -8,7 +8,6 @@ pkgbase = vmware-unlocker
 	makedepends = git
 	makedepends = zsh
 	makedepends = go
-	depends = vmware-workstation>=16.0.0
 	conflicts = vmware-unlocker-bin
 	source = vmware-unlocker::git+https://github.com/DrDonk/unlocker#tag=v4.2.1
 	source = vmware-unlocker-post.hook
