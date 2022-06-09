@@ -1,9 +1,9 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
-# Last images added on 2022-03-06
+# Last images added on 2022-06-09
 
 pkgname="trougnouf-backgrounds"
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -45,6 +45,7 @@ _images=(
   'Padjelantaleden_in_Stora_Sjöfallet_National_Park_(DSCF0981).jpg'
   'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'  # 19h55 to 20h25 = 30 minutes
   'Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg'  # 20h25 to 20h55 = 30 minutes
+  'Sunset_in_Pacific_Spirit_Regional_Park_(DSCF0706).jpg'  # 20h47 to 20h55 = 8 minutes
   'Reflected_trees_over_Babcock_Lake_(DSCF3423).jpg'  # 20h55 to 21h01 = 6min
   'Isaac_Lake_during_golden_hour,_moments_before_a_storm_(DSCF2631).jpg'  # 21h01
   'Western_moose_in_the_Bowron_Slough_(DSCF4301).jpg'  # 21h11
@@ -89,7 +90,8 @@ _stimes=(
   840  # 18h28 to 18h42 = 14 minutes      Hallerbos (DSC 2258).jpg
   4380 # 18h42 to 19h55 = 73 minutes      Padjelantaleden_in_Stora_Sjöfallet_National_Park_(DSCF0981).jpg
   1800 # 19h55 to 20h25 = 30 minutes      Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg
-  1800 # 20h25 to 20h55 = 30 minutes      Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg
+  1320 # 20h25 to 20h47 = 22 minutes      Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg
+  480  #  20h47 to 20h55 = 8 minutes      Sunset in Pacific Spirit Regional Park (DSCF0706).jpg
   360  # 20h55 to 21h01 = 6min            Reflected_trees_over_Babcock_Lake_(DSCF3423).jpg
   600  # 21h01 to 21h11 = 10 minutes      Isaac_Lake_during_golden_hour,_moments_before_a_storm_(DSCF2631).jpg
   1980 # 21h11 to 21h44 = 33 minutes      Western_moose_in_the_Bowron_Slough_(DSCF4301).jpg
@@ -133,6 +135,7 @@ sha256sums=('4e51508df22826986f7d6aafdf43db7178b7615c4bd77bb9f68c0aefa8211990'
             '70cc32f1f7c3d1c53b30002af9b5d148860cb6d41bf928556b43bd1d338e4a92'
             '514845799c8e44b4faaeda29420cb0f2de708ed722f99ce10627704a8d6d6328'
             'c609f60318d57135e43314a81ff5a95c9b8290190d18bb5cb0d720f1616b9f4a'
+            'e761a2ca36e9c1bff6189868804ac9c150aa3b340bf65e152d25a04bc3814f89'
             '01bd043afb615dd379cf22ee353812ac976b92641d91b4af32d5a169bbd4665c'
             '85159d35fe2fdf70d0f13397097b3704d20643261e7196ff9a613ae77877fa89'
             '4e3af24a5800706fa7d0d3648770db90f6b4f8ea16fdbb5155db9781e5cff1a7'
