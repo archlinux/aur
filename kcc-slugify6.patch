@@ -1,0 +1,11 @@
+--- kindlecomicconverter/shared.py.orig	2022-06-09 14:31:52.779848604 +0200
++++ kindlecomicconverter/shared.py	2022-06-09 14:31:56.995860466 +0200
+@@ -117,7 +117,7 @@
+         except ImportError:
+             missing.append('psutil 5.0.0+')
+         try:
+-            from slugify import __version__ as slugifyVersion
++            from slugify.__version__ import __version__ as slugifyVersion
+             if StrictVersion('1.2.1') > StrictVersion(slugifyVersion):
+                 missing.append('python-slugify 1.2.1+')
+         except ImportError:
