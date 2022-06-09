@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.18.0 Kernel Configuration
+# Linux/um 5.18.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -15,6 +15,7 @@ CONFIG_CC_CAN_LINK=y
 CONFIG_CC_CAN_LINK_STATIC=y
 CONFIG_CC_HAS_ASM_GOTO=y
 CONFIG_CC_HAS_ASM_GOTO_OUTPUT=y
+CONFIG_CC_HAS_ASM_GOTO_TIED_OUTPUT=y
 CONFIG_CC_HAS_ASM_INLINE=y
 CONFIG_CC_HAS_NO_PROFILE_FN_ATTR=y
 CONFIG_PAHOLE_VERSION=123
@@ -592,6 +593,7 @@ CONFIG_GENERIC_CPU_DEVICES=y
 # end of ARM System Control and Management Interface Protocol
 
 # CONFIG_GOOGLE_FIRMWARE is not set
+# CONFIG_EFI_DISABLE_RUNTIME is not set
 
 #
 # Tegra firmware driver
