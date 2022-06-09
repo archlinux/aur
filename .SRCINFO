@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-compat-58
 	pkgdesc = Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = x86_64
 	license = GPL
