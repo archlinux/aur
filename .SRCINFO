@@ -1,0 +1,12 @@
+pkgbase = ttf-bmono
+	pkgdesc = Mono font that SuperB
+	pkgver = 11.2.2
+	pkgrel = 1
+	url = https://github.com/NNBnh/bmono
+	arch = any
+	license = OFL
+	provides = ttf-font
+	source = https://github.com/NNBnh/bmono/releases/download/v1.2-11.2.2/bmono-ttf.zip
+	sha256sums = 30f4c2d5f55c77ead535f191d377f3b91e9a250f60c99e953772973718f219af
+
+pkgname = ttf-bmono
