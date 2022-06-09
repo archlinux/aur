@@ -1,5 +1,5 @@
 pkgname=litecoin-bin
-pkgver=0.21.2
+pkgver=0.21.2.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
@@ -14,7 +14,7 @@ source_x86_64=("https://download.litecoin.org/litecoin-${pkgver}/linux/litecoin-
 sha256sums=('512d0d7de9be2736e4a2d7bf948d16b61319b2c402c032be7c4d3acc06febe16'
             'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
             'f3f26c3c29d78523fd80083e8726802be4743f537d3c79adf9a163cb72b08264')
-sha256sums_x86_64=('94a10a217d91d29e97e7a0088bc1545f34b188297c3ce5b87b07e775d8d00b12'
+sha256sums_x86_64=('6e545d1ef0842b9c4ecaf2e22b43f17fd3fba73599b0d6cc1db0c9310f1a74ff'
                    'SKIP')
 validpgpkeys=(
   'D35621D53A1CC6A3456758D03620E9D387E55666'  # David Burkett

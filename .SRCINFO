@@ -1,6 +1,6 @@
 pkgbase = litecoin-bin
 	pkgdesc = Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)
-	pkgver = 0.21.2
+	pkgver = 0.21.2.1
 	pkgrel = 1
 	url = http://www.litecoin.org/
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = litecoin-bin
 	sha256sums = 512d0d7de9be2736e4a2d7bf948d16b61319b2c402c032be7c4d3acc06febe16
 	sha256sums = fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94
 	sha256sums = f3f26c3c29d78523fd80083e8726802be4743f537d3c79adf9a163cb72b08264
-	source_x86_64 = https://download.litecoin.org/litecoin-0.21.2/linux/litecoin-0.21.2-x86_64-linux-gnu.tar.gz
-	source_x86_64 = https://download.litecoin.org/litecoin-0.21.2/linux/litecoin-0.21.2-x86_64-linux-gnu.tar.gz.asc
-	sha256sums_x86_64 = 94a10a217d91d29e97e7a0088bc1545f34b188297c3ce5b87b07e775d8d00b12
+	source_x86_64 = https://download.litecoin.org/litecoin-0.21.2.1/linux/litecoin-0.21.2.1-x86_64-linux-gnu.tar.gz
+	source_x86_64 = https://download.litecoin.org/litecoin-0.21.2.1/linux/litecoin-0.21.2.1-x86_64-linux-gnu.tar.gz.asc
+	sha256sums_x86_64 = 6e545d1ef0842b9c4ecaf2e22b43f17fd3fba73599b0d6cc1db0c9310f1a74ff
 	sha256sums_x86_64 = SKIP
 
 pkgname = litecoin-bin
