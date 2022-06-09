@@ -16,7 +16,6 @@ pkgbase = discover-overlay-git
 	depends = python-cairo
 	depends = python-pillow
 	depends = python-xlib
-	depends = dbus-python
 	optdepends = gtk-layer-shell: Wayland support
 	provides = discover-overlay
 	conflicts = discover-overlay

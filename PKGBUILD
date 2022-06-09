@@ -22,7 +22,6 @@ depends=(
     "python-cairo"
     "python-pillow"
     "python-xlib"
-    "dbus-python"
 )
 conflicts=("discover-overlay")
 provides=("discover-overlay")
