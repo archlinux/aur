@@ -1,6 +1,6 @@
 pkgbase = tmd-git
 	pkgdesc = A Tiny Markdown Parser
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/WebReflection/tmd/#readme
 	arch = any
