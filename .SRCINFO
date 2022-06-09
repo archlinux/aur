@@ -1,6 +1,6 @@
 pkgbase = firejail-no-apparmor
 	pkgdesc = Linux namespaces sandbox program, compiled without dependency to apparmor
-	pkgver = 0.9.68
+	pkgver = 0.9.70
 	pkgrel = 1
 	url = https://github.com/netblue30/firejail
 	changelog = RELNOTES
@@ -11,10 +11,10 @@ pkgbase = firejail-no-apparmor
 	conflicts = firejail
 	backup = etc/firejail/login.users
 	backup = etc/firejail/firejail.config
-	source = https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.68.tar.xz
-	source = https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.68.tar.xz.asc
+	source = https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.70.tar.xz
+	source = https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.70.tar.xz.asc
 	validpgpkeys = F951164995F5C4006A73411E2CCB36ADFC5849A7
-	sha256sums = a322395597d89d2e5ea21fb11cb3f2afc44b00fca5439bf44c7636c5cffa652f
+	sha256sums = b77b67a4db7c01d69cb033a50aa7b1132dfaeb2cd97ce6412285235265b71b17
 	sha256sums = SKIP
 
 pkgname = firejail-no-apparmor
