@@ -2,8 +2,8 @@
 # Contributor:  Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-variable-lite
-pkgver=20220322
-_commit=fa04494301719f310f62c8236b7e6bdeea1f656b
+pkgver=20220607
+_commit=3b4605e3125ff121bdfb65eecc6f891c0b347cb4
 pkgrel=1
 pkgdesc="Google Noto TTF variable fonts (lite version)"
 arch=(any)
@@ -19,7 +19,7 @@ source=("${_url}"/unhinted/variable-ttf/NotoSans{-Italic-VF,-VF,Mono-VF}.ttf
         "${_url}"/LICENSE
         {46,66}-noto-{mono,serif,sans}.conf)
 sha256sums=('79fbb24b91750e3ada1a5a5a30a8c6fcd1a88574515d77fcb541d4289e0c2f86'
-            '181ad053fcdde639798249f4da47a1320dafcc91c6e6ed791e8f95b5cc838771'
+            '2af0393ceff5554cbcd6a51a017046f624525046cb0a218f5c7f94fe2324d673'
             '92243cb284614c1f2589f53d8ba516a9bbca654772c1b3a032e289814906873f'
             'a1a1d326d4ff86d89df0169e49b14056689791e784a4b43a95565533e1b61b7c'
             'b278fb545d310982fb9dc0165925c98e4ff5a6dc14dfd0e6dd085c0c8b89d000'
