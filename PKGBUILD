@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=himitsu-git
 _pkgname=${pkgname%-git}
-pkgver=r59.7683be9
+pkgver=r96.414e5c3
 pkgrel=1
 pkgdesc='Himitsu is a secret storage system for Unix systems'
 url='https://sr.ht/~sircmpwn/himitsu'
@@ -11,9 +11,8 @@ depends=()
 makedepends=(hare-git hiprompt-gtk-git)
 conflicts=()
 provides=(himitsu)
-source=("git+https://git.sr.ht/~sircmpwn/hiprompt-gtk"
-	    "git+https://git.sr.ht/~sircmpwn/himitsu")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://git.sr.ht/~sircmpwn/himitsu")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
