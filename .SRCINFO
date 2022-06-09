@@ -1,0 +1,18 @@
+pkgbase = python-torchfunc
+	pkgdesc = PyTorch functions and utilities to make your life easier
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/szymonmaszke/torchfunc
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-torchvision
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pytorch
+	source = https://github.com/szymonmaszke/torchfunc/archive/v0.2.0/python-torchfunc-0.2.0.tar.gz
+	sha512sums = b3ab75b0277fa5c67465f39a6e7cadcca3522c585b16faf46819b8ac434ddd1f4c2a918f8971f3c98b26f4b7019f14349d5961a1127fc65d8820e759367cc8e5
+
+pkgname = python-torchfunc
