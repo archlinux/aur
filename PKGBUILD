@@ -1,6 +1,6 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-llvm-lines
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="Count the number of lines of LLVM IR across all instantiations of a generic function"
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/dtolnay/cargo-llvm-lines'
 license=('Apache' 'MIT')
 depends=('cargo' 'rust-nightly' 'rustfmt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1dc5a726b3b7b3ac2d01e190e605415b394c95cc44144fb91ddea643d35eda78')
+sha256sums=('32fdfdb4eea5f7d9118445a8beadfb1cea2e12c5949766453cee35584afae127')
 
 build() {
 	cd "$pkgname-$pkgver"
