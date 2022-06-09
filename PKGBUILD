@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=abricotine
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libxss')
 makedepends=('npm' 'nodejs')
 source=("abricotine-${pkgver}.tar.gz::https://github.com/brrd/abricotine/archive/${pkgver}.tar.gz"
         "abricotine.desktop")
-sha256sums=('de44d12873f2cc9a104faafd675fa1ed344d07bc6fbe5b7d19426497b0f1622f'
+sha256sums=('1c1fd67770a75e3fc8cae00a8c8151c6914b7b886a295844075c5039837824dd'
             '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
 
 build() {
