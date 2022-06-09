@@ -3,10 +3,7 @@
 
 
 # Things that need to be updated on new build
-pkgver=1.22.4
-# cri-o releases package their tarballs using the commit sha of the tag
-commit_sha=861ff3a5c6ab4220b821b8a64063de01230fc484
-sha256sums_x86_64=(fb2fae26fe0e790a14b6cdcfcd5a66ae2fd6c2cfa68194931a7418ced5df1341)
+pkgver=1.24.1
 pkgrel=1
 
 # Things that will stay the same
@@ -14,7 +11,7 @@ pkgname=crio-bin
 pkgdesc='Open Container Initiative-based implementation of Kubernetes Container Runtime Interface'
 license=('Apache2')
 url='https://cri-o.io/'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=(cni-plugins conntrack-tools runc crictl)
 makedepends=()
 provides=(crio crio-bin cri-o)
@@ -22,9 +19,11 @@ conflicts=(crio crio-bin crio-git cri-o cri-o-git)
 
 # Using source and source_x86_64 is just a dumb hack so I can put the single sha hash up above
 source=("https://raw.githubusercontent.com/cri-o/cri-o/580db0719d68b3ff3bb30f60397c3892be383eb5/LICENSE")
-source_x86_64=("https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.${commit_sha}.tar.gz")
+source_x86_64=("https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v${pkgver}.tar.gz")
+source_aarch64=("https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v${pkgver}.tar.gz")
 sha256sums=(b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1)
-sha256sums_x86_64=(fb2fae26fe0e790a14b6cdcfcd5a66ae2fd6c2cfa68194931a7418ced5df1341)
+sha256sums_x86_64=(03579f33697d9f53722a241e6657b66c28cd4bf587f262319a1fc14eb96f5a32)
+sha256sums_aarch64=(835fc3d7d467b7903a8e1e947f8c3567f9c39b1041c53e14b39dba0273d2d0e9)
 
 backup=("etc/crio/crio.conf"
         "etc/cni/net.d/10-crio-bridge.conf"
