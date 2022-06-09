@@ -3,7 +3,7 @@
 
 _gemname=hiera-eyaml
 pkgname=ruby-$_gemname
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='OpenSSL Encryption backend for Hiera'
 arch=(any)
