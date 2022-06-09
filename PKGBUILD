@@ -7,7 +7,8 @@ pkgdesc="Neofetch with LGBTQ pride flags."
 arch=('any')
 url='https://github.com/hykilpikonna/hyfetch'
 license=('MIT')
-makedepends=('git' 'python-setuptools' 'python-typing_extensions')
+depends=('python' 'python-setuptools' 'python-typing_extensions')
+makedepends=('git')
 source=("$pkgname::git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
