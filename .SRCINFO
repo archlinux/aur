@@ -1,0 +1,21 @@
+pkgbase = sherpa-git
+	pkgdesc = A particle physics package for Monte Carlo simulation of collider events - git version
+	pkgver = v3.0.0alpha1.r354.g21a28e795
+	pkgrel = 1
+	url = http://sherpa.hepforge.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = lhapdf
+	depends = fastjet
+	depends = hepmc
+	depends = hepmc2
+	depends = openmpi
+	depends = openloops
+	depends = rivet
+	provides = sherpa
+	conflicts = sherpa
+	source = git+https://gitlab.com/sherpa-team/sherpa.git
+	md5sums = SKIP
+
+pkgname = sherpa-git
