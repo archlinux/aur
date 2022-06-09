@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
 license=('GPL3')
 groups=()
-depends=('exiv2' 'qt6-base' 'dlib' 'qt6-multimedia' 'opencv')
+depends=('exiv2' 'qt6-base' 'dlib' 'qt6-multimedia' 'opencv' 'jsoncpp')
 makedepends=('cmake' 'magic_enum' 'qt6-tools' 'imagemagick')
 optdepends=()
 provides=('photobroom')
@@ -21,7 +21,7 @@ source=(photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=mas
         cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=bf447aeb3bf57680f0c257f9d77ea7f5ef90b0ec
         qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
         face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
-        github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
+        github_api::git+https://github.com/Kicer86/github_api.git#commit=32355e98c154d6f1f8cda309dfbe87cda2459d74
 )
 noextract=()
 md5sums=('SKIP'
