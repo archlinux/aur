@@ -3,8 +3,8 @@
  
 pkgname=openttd-btpro
 _pkgname=openttd
-_btpro_release=1112A
-pkgver=1.11.2
+_btpro_release=122A
+pkgver=12.2
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe. BTPro patches applied.'
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("https://proxy.binaries.openttd.org/openttd-releases/${pkgver}/${_pkgnam
         "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_${pkgver}_${_btpro_release}_patch.zip"
         "http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf")
 sha256sums=(
-            '0fba935a2a815f4fe8cd6dc2e2ae33f72769538731228f848a63b3a6e9482e6d'
-            'b7efb3429662efb232044e230b3e650a4623cbf71f51624bc149d5d2625531aa'
+            '81508f0de93a0c264b216ef56a05f8381fff7bffa6d010121a21490b4dace95c'
+            '6efe936b6ef605e60372ba565cf91c977eced7096bf4fdbd569af5607adfa56a'
             '1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b')
 conflicts=('openttd')
  

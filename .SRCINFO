@@ -1,6 +1,6 @@
 pkgbase = openttd-btpro
 	pkgdesc = An engine for running Transport Tycoon Deluxe. BTPro patches applied.
-	pkgver = 1.11.2
+	pkgver = 12.2
 	pkgrel = 1
 	url = http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = openttd-btpro
 	optdepends = openttd-openmsx: free musicset
 	optdepends = openttd-opensfx: free soundset
 	conflicts = openttd
-	source = https://proxy.binaries.openttd.org/openttd-releases/1.11.2/openttd-1.11.2-source.tar.xz
-	source = http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_1.11.2_1112A_patch.zip
+	source = https://proxy.binaries.openttd.org/openttd-releases/12.2/openttd-12.2-source.tar.xz
+	source = http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_12.2_122A_patch.zip
 	source = http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf
-	sha256sums = 0fba935a2a815f4fe8cd6dc2e2ae33f72769538731228f848a63b3a6e9482e6d
-	sha256sums = b7efb3429662efb232044e230b3e650a4623cbf71f51624bc149d5d2625531aa
+	sha256sums = 81508f0de93a0c264b216ef56a05f8381fff7bffa6d010121a21490b4dace95c
+	sha256sums = 6efe936b6ef605e60372ba565cf91c977eced7096bf4fdbd569af5607adfa56a
 	sha256sums = 1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b
 
 pkgname = openttd-btpro
