@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starlink-ast'
-pkgver='3.01'
-pkgrel='6'
+pkgver='3.02'
+pkgrel='1'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -13,8 +13,8 @@ makedepends=('perl-module-build')
 checkdepends=('perl-test-deep>=0' 'perl-test-number-delta>=0')
 url='https://metacpan.org/release/Starlink-AST'
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.tar.gz")
-md5sums=('db53bc018bd349e3a0c85bd8c6883f3c')
-sha512sums=('0beddc6c7c76f260725aa0958b2c82c2496b80c94529fca37e912493d45b09a07494f2b1bb3b0eb0ca99f61c6f415a6671240e9e69a8bef166d6b1591a00ddcf')
+md5sums=('f8fa07d0e92b984578fda0d95faaa0ff')
+sha512sums=('4fcba8772fe35d83803ca262f885f032efa025d2bfa3950faae1b675496cfff724b0b17ded16314006bf57f582db90353cccf09f7c2e412f4ef3f64aabdb3f59')
 _distdir="Starlink-AST-${pkgver}"
 
 
@@ -28,8 +28,7 @@ build() {
 
     cd "$srcdir/$_distdir"
     /usr/bin/perl Build.PL
-    # lib/Starlink/AST.xs in version 3.01 has some unlucky parts where the default "-Werror=format-security" in Perl's Config.pm errors out.
-    /usr/bin/perl Build --config optimize="${CFLAGS} -W'no-error=format-security'"
+    /usr/bin/perl Build 
   )
 }
 

@@ -1,7 +1,7 @@
 pkgbase = perl-starlink-ast
 	pkgdesc = Interface to the Starlink AST library
-	pkgver = 3.01
-	pkgrel = 6
+	pkgver = 3.02
+	pkgrel = 1
 	url = https://metacpan.org/release/Starlink-AST
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = perl-starlink-ast
 	depends = perl-tk
 	depends = perl-tk-zinc
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-3.01.tar.gz
-	md5sums = db53bc018bd349e3a0c85bd8c6883f3c
-	sha512sums = 0beddc6c7c76f260725aa0958b2c82c2496b80c94529fca37e912493d45b09a07494f2b1bb3b0eb0ca99f61c6f415a6671240e9e69a8bef166d6b1591a00ddcf
+	source = http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-3.02.tar.gz
+	md5sums = f8fa07d0e92b984578fda0d95faaa0ff
+	sha512sums = 4fcba8772fe35d83803ca262f885f032efa025d2bfa3950faae1b675496cfff724b0b17ded16314006bf57f582db90353cccf09f7c2e412f4ef3f64aabdb3f59
 
 pkgname = perl-starlink-ast
