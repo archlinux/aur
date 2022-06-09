@@ -2,7 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-hardened
-_ver=1.1.1k
+_ver=1.1.1o
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -17,12 +17,10 @@ replaces=('openssl-perl' 'openssl-doc')
 backup=('etc/ssl/openssl.cnf')
 provides=(openssl)
 conflicts=(openssl)
-source=("https://artfiles.org/openssl.org/source/openssl-1.1.1k.tar.gz"
+source=("https://artfiles.org/openssl.org/source/openssl-${_ver}.tar.gz"
 	'ca-dir.patch')
-sha256sums=('SKIP'
-	    'SKIP')
-#validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-#	       '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+sha256sums=('9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f'
+            '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 
 prepare() {
 	cd "$srcdir/openssl-$_ver"
