@@ -1,6 +1,6 @@
 pkgbase = groops-git
 	pkgdesc = A C++ software toolkit to perform core geodetic tasks.
-	pkgver = r24.55a6c54
+	pkgver = r37.292ccda
 	pkgrel = 1
 	url = https://github.com/groops-devs/groops
 	install = post.install
@@ -18,8 +18,7 @@ pkgbase = groops-git
 	optdepends = erfa: for high-precision Earth rotation.
 	optdepends = openmpi: or another MPI to parallelize resource intensive tasks.
 	optdepends = gmt6: visualization of data sets
-	source = git://github.com/groops-devs/groops.git
+	source = git+https://github.com/groops-devs/groops.git
 	md5sums = SKIP
 
 pkgname = groops-git
-
