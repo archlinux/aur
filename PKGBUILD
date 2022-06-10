@@ -2,14 +2,14 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=6.8.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
 license=('MPL2')
 # See "engines" in https://github.com/mozilla/web-ext/blob/master/package.json
-depends=('nodejs>=12.0.0')
+depends=('nodejs>=14.0.0')
 makedepends=('npm' 'node-gyp')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
@@ -18,7 +18,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('7a07c0c8a7f921f24c0af5595347b6375f166152e33a1b805b57ccf4d460d4d2')
+sha256sums=('b6e03f288e41469612bd2017989922ba26b01c04755ec979190c9b4d13859598')
 
 prepare() {
   cd "$srcdir"
@@ -32,7 +32,7 @@ build() {
 
   npm install
   NODE_ENV=production npm run build
-  cp -r dist "$srcdir/$pkgname-$pkgver"
+  cp -r lib "$srcdir/$pkgname-$pkgver"
 
   cd "$srcdir/$pkgname-$pkgver"
   npm install --production
@@ -52,12 +52,8 @@ package() {
   cp -r --no-preserve=ownership $pkgname-$pkgver "$_npmdir/$pkgname"
 
   # dtrace-provider (brought in by bunyan) is not used on Linux, and its build artifacts makes this package unreproducible
-  rm -r "$_npmdir"/web-ext/node_modules/dtrace-provider/build/
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  rm -rv "$_npmdir"/web-ext/node_modules/dtrace-provider/build/
 
   install -Ddm755 "$pkgdir/usr/bin"
-  ln -s "/usr/lib/node_modules/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/lib/node_modules/$pkgname/bin/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
 }
