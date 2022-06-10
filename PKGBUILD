@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bamlss
-_pkgver=1.1-7
+_pkgver=1.1-8
 pkgname=r-${_pkgname,,}
-pkgver=1.1.7
-pkgrel=3
+pkgver=1.1.8
+pkgrel=1
 pkgdesc='Bayesian Additive Models for Location, Scale, and Shape (and Beyond)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -49,7 +49,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d68b6284d086c4e8c37f6ed57eba5116f61280c8f2f9d9d3fa4893f1818215b')
+sha256sums=('d99930b2bbc7514aecd76399cd37bebf9c717fa910947f202bf1ee1c0079688c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

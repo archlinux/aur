@@ -1,7 +1,7 @@
 pkgbase = r-bamlss
 	pkgdesc = Bayesian Additive Models for Location, Scale, and Shape (and Beyond)
-	pkgver = 1.1.7
-	pkgrel = 3
+	pkgver = 1.1.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=bamlss
 	arch = x86_64
 	license = GPL
@@ -40,7 +40,7 @@ pkgbase = r-bamlss
 	optdepends = r-statmod
 	optdepends = r-tensorflow
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/bamlss_1.1-7.tar.gz
-	sha256sums = 2d68b6284d086c4e8c37f6ed57eba5116f61280c8f2f9d9d3fa4893f1818215b
+	source = https://cran.r-project.org/src/contrib/bamlss_1.1-8.tar.gz
+	sha256sums = d99930b2bbc7514aecd76399cd37bebf9c717fa910947f202bf1ee1c0079688c
 
 pkgname = r-bamlss
