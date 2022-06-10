@@ -2,7 +2,7 @@
 
 _pkgname=gandi-live-dns
 pkgname=gandi-live-dns-rust
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Automatically updates your IP address for Gandi's Live DNS."
 _repo_path="SeriousBug/gandi-live-dns-rust"
@@ -47,7 +47,7 @@ sha256sums=('4f9dd02e0e03fd838081c3a8dd88b386411204853399f78fa83e8781271a012f'
             '7ae1a8fa18e0ef41aa42c94b4a364fdab0a6c9520cbea486f8c9c7f5da22e88f'
             'cd3b1ab682d421e8b9f230d9f44c07a9afe54ce12e55a2990fcbe606e4ccb9a3'
             'a0e652bf8fd879dcbb96488322cac572346fa9a1dbbc2cac08b94b12d9629128')
-sha256sums_x86_64=('cb9ba25a7819e7d1aba4dd96f3aaf291c67798df85bd3c5ab5f9e331d09aed35')
-sha256sums_armv6h=('c5ba7edebb28304124bcd36632dbe710f2a939615950148d61429bd09c06645f')
-sha256sums_armv7h=('e9ab1d51b408efdd5d850bb5aa604324af6736548bab5ed014cbe2940470e60d')
-sha256sums_aarch64=('83662c4e8659da706ea71f7fb5caed3c2af1a8ab0c93ffe7563d78e82c951f32')
+sha256sums_x86_64=('ff80efb83aa9b90dcb3748d59eefb98b4df9748e0d96097c9137dd700dd715a3')
+sha256sums_armv6h=('2cefa4a944c04a12a1311c7fbbb25ca7c8df3fede34762b779d7a56a02e9f99c')
+sha256sums_armv7h=('f91170d9883201020a4c6efb69967ba473f180f45d1f6cd331f05cf6e3ab29fb')
+sha256sums_aarch64=('5a94d76071b15e4435b699facaad319eb709b5a14de28ff57e76f91aced6c88a')
