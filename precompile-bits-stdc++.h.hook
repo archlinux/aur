@@ -1,0 +1,10 @@
+# Precompile the <bits/stdc++.h> header file
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = gcc
+[Action]
+Description = Precompiling bits/stdc++.h...
+When = PostTransaction
+Exec = /usr/bin/sh -c "g++ /usr/include/c++/*/x86_64-pc-linux-gnu/bits/stdc++.h"
