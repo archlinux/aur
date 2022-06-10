@@ -1,6 +1,6 @@
 # Maintainer: Matthias Ellmer <matthias at x four eight dot org but eight is really nine>
 pkgname=groops-git
-pkgver=r24.55a6c54
+pkgver=r37.292ccda
 pkgrel=1
 pkgdesc="A C++ software toolkit to perform core geodetic tasks."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('netcdf-cxx: for reading and writing NetCDF files.'
             'openmpi: or another MPI to parallelize resource intensive tasks.'
             'gmt6: visualization of data sets')
 install=post.install
-source=('git://github.com/groops-devs/groops.git')
+source=('git+https://github.com/groops-devs/groops.git')
 md5sums=('SKIP')
 
 pkgver() {
