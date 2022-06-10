@@ -1,15 +1,14 @@
 pkgbase = python2-libvhdi
 	pkgdesc = Library and tools to access the Virtual Hard Disk (VHD) image format
-	pkgver = 20151220
+	pkgver = 20210425
 	pkgrel = 1
-	url = https://github.com/libyal/libvhdi/
+	url = https://github.com/libyal/libvhdi
 	arch = any
-	license = LGPLv3+
-	makedepends = python2
+	license = LGPL
+	makedepends = python2-setuptools
 	makedepends = gcc
 	depends = python2
-	source = https://pypi.python.org/packages/source/l/libvhdi-python/libvhdi-python-20151220.tar.gz#md5=d7e90dce45125825519b16c86d3fb3be
-	md5sums = d7e90dce45125825519b16c86d3fb3be
+	source = https://pypi.org/packages/source/l/libvhdi-python/libvhdi-python-20210425.tar.gz
+	sha512sums = 105c0a6b8cf5d0202e219e87932887651f66ad9c14be000499dd9a35e8d314704cce6d74afc61044522e0c69576c094bfce4a4ad1a6258bc958229825b58c479
 
 pkgname = python2-libvhdi
-
