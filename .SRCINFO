@@ -1,0 +1,19 @@
+pkgbase = applet-window-buttons
+	pkgdesc = This is a Plasma 5 applet that shows window buttons in your panels
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/psifidotos/applet-window-buttons
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = kdecoration
+	provides = applet-window-buttons
+	conflicts = applet-window-buttons-git
+	source = applet-window-buttons::git+https://github.com/psifidotos/applet-window-buttons.git
+	md5sums = SKIP
+
+pkgname = applet-window-buttons
