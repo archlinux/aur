@@ -1,7 +1,7 @@
 pkgbase=tal-drum
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://tal-software.com/products/tal-drum"
 license=('EULA')
