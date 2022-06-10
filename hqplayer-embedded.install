@@ -1,6 +1,7 @@
 post_install () {
-chown -R hqplayer:hqplayer /var/hqplayer
-chown -R hqplayer:hqplayer /etc/hqplayer
+mkdir -p /var/lib/hqplayer/home
+chown -R root:root /var/lib/hqplayer
+chown -R root:root /etc/hqplayer
 cd /usr/lib
 if [ ! -f "libgupnp-1.2.so.0" ]; then
 ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
@@ -18,8 +19,9 @@ fi
 }
 
 post_upgrade() {
-chown -R hqplayer:hqplayer /var/hqplayer
-chown -R hqplayer:hqplayer /etc/hqplayer
+mkdir -p /var/lib/hqplayer/home
+chown -R root:root /var/lib/hqplayer
+chown -R root:root /etc/hqplayer
 cd /usr/lib
 if [ ! -f "libgupnp-1.2.so.0" ]; then
 ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
