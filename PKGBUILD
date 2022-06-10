@@ -4,9 +4,9 @@ _gemname=nanoc-live
 pkgname=ruby-$_gemname
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Provides support for auto-recompiling Nanoc sites"
+pkgdesc='Provides support for auto-recompiling Nanoc sites'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
@@ -23,7 +23,7 @@ source=(
 )
 noextract=("$_gemname-$pkgver.gem")
 b2sums=('5df1b76425a74d7f9302dd4ea7c80c0c935ff40a98f4a13ee0594d5f1f7342d8e0a54a815624bd21983a7b922fe3dede0e9420b7f6e5208a2a8a33de4d7f9cca'
-        'e2de6741a4b7e28ea98b87fe43eefdbfa27ce4404be103f75a058717cea87d8b9031fd4714d5e5c461520c1d3a7dd58001b6523afdc3b014db5d32270fcb3fa6')
+        '39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
