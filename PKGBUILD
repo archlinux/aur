@@ -3,7 +3,7 @@ _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
 license=(MIT)
@@ -21,13 +21,12 @@ sha512sums=('907641d061685c82ae9897151e7a04014a5e3ab5f203cb2911befa85dde2b9a273d
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest tests -k 'not diff_present and not return_code and not version and not black'
+  python -m pytest tests -k 'not diff_present and not return_code and not version and not black and not pylint_works'
 }
 
 package() {
