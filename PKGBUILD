@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64')
 url="https://github.com/LinusDierheimer/fastfetch"
 license=('MIT')
-depends=('bash')
+depends=('glibc')
 makedepends=('chafa' 'cmake' 'dbus' 'dconf' 'imagemagick' 'libxcb' 'libxrandr' 'mesa'
              'ocl-icd' 'opencl-headers' 'pciutils' 'vulkan-headers' 'vulkan-icd-loader'
              'wayland' 'xfconf' 'zlib')
