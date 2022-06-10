@@ -1,0 +1,13 @@
+pkgbase = gradle-language-server
+	pkgdesc = Microsoft's Gradle language server
+	pkgver = 3.12.1
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode-gradle
+	arch = any
+	license = custom:MIT
+	depends = java-runtime
+	provides = gradle-language-server
+	source = https://github.com/microsoft/vscode-gradle/releases/download/3.12.1/vscjava.vscode-gradle-3.12.1.vsix
+	md5sums = SKIP
+
+pkgname = gradle-language-server
