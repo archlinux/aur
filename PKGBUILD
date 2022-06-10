@@ -2,7 +2,7 @@
 
 pkgname=sabnzbd
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')
@@ -22,8 +22,11 @@ depends=(
   'python-dateutil'
   'python-feedparser'
   'python-guessit'
-  'python-jaraco'
+  'python-jaraco.classes'
+  'python-jaraco.collections'
   'python-jaraco.context'
+  'python-jaraco.functools'
+  'python-jaraco.text'
   'python-more-itertools'
   'python-notify2'
   'python-portend'
