@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=uniqtag
-_pkgver=1.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Abbreviate Strings to Short, Unique Identifiers'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a88c021901511383c20d4045f69dd5d58480f85a672817b80c76ecf66b38b808')
+sha256sums=('25ba0731ff61857ea4c1d06c99018ed3b0d1121689b6269b79776371092fad6e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
