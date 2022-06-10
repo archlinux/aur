@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-risc-v"
-pkgver=6.22a
+pkgver=6.30
 pkgrel=1
 pkgdesc="Segger Embedded Studio for RISC-V"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,13 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_x64.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_arm64.tar.gz")
 
-md5sums_x86_64=('75f552176d700cfa81d4c9f5e974bae3')
-md5sums_aarch64=('0598d2aa074644ddc88c38dd355a57e5')
+md5sums_x86_64=('1ea6b9e47a2d8bc778d6e368dee1ee72')
+md5sums_aarch64=('e7c11216e88b376d1c2ed6ab98800d34')
 
 prepare(){
+	# Delete potential previous build
+	rm -rf embedded-studio-risc-v
+	
 	# Change src path name
 	if [ ${CARCH} = "x86_64" ]; then
 		mv riscv_segger_embedded_studio_v${pkgver/./}_linux_x64 embedded-studio-risc-v
