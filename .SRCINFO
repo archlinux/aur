@@ -1,11 +1,12 @@
 pkgbase = ilua-git
 	pkgdesc = Portable Lua kernel for Jupyter
 	pkgver = 0.2.1.r135.05eb181
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guysv/ilua
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = lua
 	depends = python-jupyter_core
