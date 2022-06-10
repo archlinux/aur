@@ -2,11 +2,11 @@
 
 _gemname=nanoc-cli
 pkgname=ruby-$_gemname
-pkgver=4.12.4
+pkgver=4.12.7
 pkgrel=1
-pkgdesc="Command-line interface for Nanoc"
+pkgdesc='Command-line interface for Nanoc'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
@@ -22,9 +22,9 @@ source=(
   "$pkgname-LICENSE-$_nanocver::https://raw.githubusercontent.com/nanoc/nanoc/$_nanocver/$_gemname/LICENSE"
 )
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('566c586b7d45a451e5a88d9f5108cd9816d9178e53dc96dbfa7d17ef1c73e209c4ea13fdfd4a3c04de2ea6f210add76b293c1c5a287ccdf8b23ee617385b60ce'
+sha512sums=('89d58cff8a36f4b9374acfe5efaaabe4745606211fe5ae143c15c3c3e6627704f74d9b676a98934defd913767df9adcede6422dee1093d9e47d310572cb2990c'
             '49ae9cce13b06699eb6d7fbb6566d535c2344a6366c2fd35d72c3df8a531686f5a3992f223ce516f33dcf6cdbb8c6ba64468038c5e453ccbf5fe94e44de4db50')
-b2sums=('59eba6f784b6a246ec77a2fad82b127d715c9c8f390817609c991ff408fac5f75e040bac1bbb847d9d5cb94dbf55d1e8cff372d9a2b350692eefae43beafbd94'
+b2sums=('fc811d66f475f0762c9a6ecd17545db1c3d91c6f5a91ef646c4a43201b30fd942208b3fe5dc9e88757aeedd699675ea94331ad59b573eeddb25d408d6af5118c'
         '39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630')
 
 package() {
