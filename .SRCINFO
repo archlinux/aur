@@ -1,0 +1,12 @@
+pkgbase = dum
+	pkgdesc = An npm scripts runner written in Rust.
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = https://github.com/egoist/dum
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = dum-0.1.19.tar.gz::https://github.com/egoist/dum/archive/v0.1.19.tar.gz
+	sha256sums = 94af37a8f9a0689ea27d7f338b495793349b75f56b516c17cd207e7c47c52c4f
+
+pkgname = dum
