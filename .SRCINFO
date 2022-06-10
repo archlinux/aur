@@ -1,6 +1,6 @@
 pkgbase = pixterm-rust
 	pkgdesc = CLI to show images in a terminal
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/RubixDev/pixterm
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pixterm-rust
 	license = GPL3
 	makedepends = cargo
 	conflicts = pixterm
-	source = pixterm-0.1.2.tar.gz::https://static.crates.io/crates/pixterm/pixterm-0.1.2.crate
-	sha256sums = 5b57c5e1ebbe14418592069e7026962677c7d28fa8f73ffd68229c61351bb67a
+	source = pixterm-0.2.0.tar.gz::https://static.crates.io/crates/pixterm/pixterm-0.2.0.crate
+	sha256sums = 0dab4e1dbaa821cf9ad1911050ca18be5764d44e5561a391a9ada355f8eb5047
 
 pkgname = pixterm-rust
