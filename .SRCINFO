@@ -1,14 +1,15 @@
 pkgbase = python-epc
 	pkgdesc = EPC (RPC stack for Emacs Lisp) for Python
 	pkgver = 0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tkf/python-epc
 	arch = any
 	license = GPL3
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-sexpdata
 	source = python-epc-0.0.5.tar.gz::https://github.com/tkf/python-epc/archive/v0.0.5.tar.gz
 	sha256sums = e70e619efd25f2cbe44dfad4ac5613475eca0ad374b2a451b12969ffad705eeb
 
 pkgname = python-epc
-
