@@ -1,28 +1,35 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: Joshua Leahy <jleahy@gmail.com>
 
-pkgname=python-freetype-py
-_pkgname=freetype-py
-pkgver=2.2.0
+_base=freetype-py
+pkgname=python-${_base}
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="FreeType Python bindings"
-arch=('any')
-url="https://github.com/rougier/freetype-py/"
+arch=(any)
+url="https://github.com/rougier/${_base}"
 license=('BSD')
-depends=('python' 'freetype2')
-makedepends=('python-setuptools' 'python-setuptools-scm')
-source=("https://files.pythonhosted.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.zip")
-sha1sums=('d7ad11b5ac66b8fd1f270f1640d5a065b197eeae')
+depends=(python freetype2)
+makedepends=(python-setuptools-scm)
+checkdepends=(python-pytest)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('877641b16d7dbf16e41333733844c76dcefbbe1f88edd6cf4ab2158de4c1c05d23e18982d2a34a5c3e8ea0d5d92c40136788b0cb1afaad2a4ada17226517c8c6')
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --skip-build --optimize=1
-  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+check() {
+  cd ${_base}-${pkgver}
+  python -m pytest tests
 }
 
-# vim:set ts=2 sw=2 et ft=sh:
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
