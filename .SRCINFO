@@ -1,0 +1,16 @@
+pkgbase = jdk-android-studio
+	pkgdesc = Integrate android-studio provided JDK with archlinux-java
+	pkgver = 1
+	pkgrel = 1
+	url = https://developer.android.com/studio
+	install = jdk-android-studio.install
+	arch = x86_64
+	license = APACHE
+	depends = android-studio
+	depends = java-environment-common
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+
+pkgname = jdk-android-studio
