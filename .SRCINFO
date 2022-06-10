@@ -1,0 +1,22 @@
+pkgbase = g4music
+	pkgdesc = Play your music
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/neithern/g4music
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = vala
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = taglib
+	depends = tracker3
+	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v0.2/g4music-v0.2.tar.gz
+	b2sums = 7b9cc80d33b8dd3530570a33435b2f85fd50fa89bdc95c88354fd8421eac8de0b874c991e1bd002bfc78bfe7042d7e65a60e5863c4f79cf5fea326e963d1ff6b
+
+pkgname = g4music
