@@ -10,7 +10,7 @@ depends=('qt5-base')
 makedepends=('git' 'cmake' 'gcc')
 optdepends=()
 install=post.install
-source=('groopsgui::git://github.com/groops-devs/groops.git')
+source=('groopsgui::git+https://github.com/groops-devs/groops.git')
 md5sums=('SKIP')
 
 pkgver() {
