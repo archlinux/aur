@@ -1,0 +1,16 @@
+pkgbase = python-efficientnet-pytorch
+	pkgdesc = PyTorch implementation of EfficientNet
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lukemelas/EfficientNet-PyTorch
+	arch = any
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-pytorch
+	source = python-efficientnet-pytorch-1.0.tar.gz::https://github.com/lukemelas/EfficientNet-PyTorch/archive/refs/tags/1.0.tar.gz
+	sha256sums = 01789984000ff1de132094cadf85fb2973f474aab61715cc8acab6918d59bd80
+
+pkgname = python-efficientnet-pytorch
