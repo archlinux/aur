@@ -17,7 +17,7 @@ pkgbase = groops-git
 	optdepends = netcdf-cxx: for reading and writing NetCDF files.
 	optdepends = erfa: for high-precision Earth rotation.
 	optdepends = openmpi: or another MPI to parallelize resource intensive tasks.
-	optdepends = gmt6: visualization of data sets
+	optdepends = gmt: visualization of data sets
 	source = git+https://github.com/groops-devs/groops.git
 	md5sums = SKIP
 

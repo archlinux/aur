@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'gcc' 'gcc-fortran')
 optdepends=('netcdf-cxx: for reading and writing NetCDF files.'
             'erfa: for high-precision Earth rotation.'
             'openmpi: or another MPI to parallelize resource intensive tasks.'
-            'gmt6: visualization of data sets')
+            'gmt: visualization of data sets')
 install=post.install
 source=('git+https://github.com/groops-devs/groops.git')
 md5sums=('SKIP')
