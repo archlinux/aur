@@ -1,12 +1,12 @@
 pkgbase = cwonf
 	pkgdesc = Synchronize your configurations files with a common context
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://codeberg.org/Eternahl/cwonf
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = cwonf-0.1.0.tar.gz::https://codeberg.org/Eternahl/cwonf/archive/0.1.0.tar.gz
-	md5sums = d4d4fd12fb5f54a004bc597845388cc4
+	source = cwonf-0.1.1.tar.gz::https://codeberg.org/Eternahl/cwonf/archive/0.1.1.tar.gz
+	md5sums = 352877690d7cc825a2678751ecd4b6fd
 
 pkgname = cwonf
