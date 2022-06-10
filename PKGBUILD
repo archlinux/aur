@@ -44,9 +44,7 @@ JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
-AOT="YES"         # Precompile all included elisp. It takes a long time.
-                  # You still need to enable on-demand compilation
-                  # for your own packages.
+AOT="YES"         # Compile all elisp files.
 
 CLI=              # CLI only binary.
 
@@ -98,14 +96,15 @@ license=('GPL3')
 depends_nox=('gnutls' 'libxml2' 'jansson')
 depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
-provides=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
-conflicts=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
-#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
+provides=('emacs')
+replaces=('emacs')
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git"
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
+        "nemacs")
 options=(!strip)
 install=emacs-git.install
-b2sums=('SKIP')
+b2sums=('SKIP'
+        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 ################################################################################
 
 ################################################################################
@@ -162,7 +161,7 @@ elif [[ $PGTK == "YES" ]]; then
 fi
 
 if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
-  depends+=( 'libjpeg-turbo' 'giflib' );
+  depends+=( 'libjpeg-turbo' 'libpng' 'giflib' 'libwebp' 'libtiff' 'libxpm');
 elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
@@ -248,7 +247,6 @@ build() {
 # If you insist you'll need to read that bug report in *full*.
 # Good luck!
    --without-gconf
-   --without-gsettings
   )
 
 ################################################################################
@@ -281,6 +279,10 @@ elif [[ $GTK3 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 elif [[ $PGTK == "YES" ]]; then
   _conf+=( '--with-pgtk' '--without-xaw3d' );
+fi
+
+if [[ ! $PGTK == "YES" ]]; then
+    _conf+=( '--without-gsettings' ) :
 fi
 
 if [[ $NOCAIRO == "YES" || $CLI == "YES" || $NOTKIT == "YES" || $LUCID == "YES" ]]; then
@@ -324,7 +326,8 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   #
-  if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+
+  if [[ $JIT=="YES" ]] && [[ $AOT == "YES" ]]; then
     make NATIVE_FULL_AOT=1
   else
     make
@@ -349,6 +352,10 @@ package() {
   cd "$srcdir/emacs-git/build"
 
   make DESTDIR="$pkgdir/" install
+
+  install -D -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin/nemacs
+
+  #if [[ ! $CLI == "YES" ]]; then
 
   # Install optional documentation formats
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
