@@ -1,6 +1,6 @@
 pkgbase = smokegen-git
 	pkgdesc = A general purpose C++ parser with a plugin infrastructure. It is currently used for generating the various SMOKE libraries
-	pkgver = 4.14.3
+	pkgver = v4.14.3.r8.f7126dc
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
