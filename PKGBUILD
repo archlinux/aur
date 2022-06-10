@@ -30,16 +30,16 @@ export provides=("gradle-language-server")
 export replaces=()
 export options=()
 
-ls_jar='extension/lib/gradle-language-server.jar'
+_ls_jar='extension/lib/gradle-language-server.jar'
 
 check() {
 	local payload='{"jsonrpc":"2.0","id":1,"method":"exit","params":{}}'
 	local message="Content-Length: ${#payload}\r\n\r\n${payload}"
-	timeout 10s bash -c "echo -ne '$message' | java -jar '$ls_jar'"
+	timeout 10s bash -c "echo -ne '$message' | java -jar '$_ls_jar'"
 	exec test $? -eq 0
 }
 
 package() {
-	install -Dm 644 "$ls_jar" "$pkgdir/usr/share/java/gradle-language-server.jar"
+	install -Dm 644 "$_ls_jar" "$pkgdir/usr/share/java/gradle-language-server.jar"
 	install -Dm 644 "extension/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
