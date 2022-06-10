@@ -5,7 +5,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-pkgver=2022.2.beta1
+pkgver=2022.2.beta2
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=b02998e203ef50c2f799051d149fdb6083c51a5c
+_tag=aa6dfc23fef8af3c09150ca0d077949863318095
 _commit=b63c5c8c7977963aeb585b6ddd4537dffe2aeeec
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -141,15 +141,15 @@ package() {
 
   # Install main files
   install -d "$pkgdir/opt/Mullvad VPN"
-  cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
+  cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
 
   # Symlink daemon service to correct directory
   install -d "$pkgdir/usr/lib/systemd/system"
   ln -s "/opt/Mullvad VPN/resources/mullvad-daemon.service" \
-    "$pkgdir/usr/lib/systemd/system"
+    "$pkgdir/usr/lib/systemd/system/"
 
   # Install binaries
-  install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin"
+  install -Dm755 dist-assets/{mullvad,mullvad-exclude} -t "$pkgdir/usr/bin/"
 
   # Link to the problem report binary
   ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
@@ -159,22 +159,22 @@ package() {
   install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
   # Install completions
-  install -Dm755 dist-assets/shell-completions/mullvad.bash \
+  install -Dm644 dist-assets/shell-completions/mullvad.bash \
     "$pkgdir/usr/share/bash-completion/completions/mullvad"
-  install -Dm755 dist-assets/shell-completions/_mullvad -t \
-    "$pkgdir/usr/share/zsh/site-functions"
-  install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
-    "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm644 dist-assets/shell-completions/_mullvad -t \
+    "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 dist-assets/shell-completions/mullvad.fish -t \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
 
   # Install desktop file & icons from deb
   cd dist
   ar x *.deb
   bsdtar -xf data.tar.xz
   install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
-    "$pkgdir/usr/share/applications"
+    "$pkgdir/usr/share/applications/"
 
   for icon_size in 16 32 48 64 128 256 512 1024; do
     icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-    install -Dm644 ${icons_dir}/${pkgname%-beta}.png -t "$pkgdir/${icons_dir}"
+    install -Dm644 ${icons_dir}/${pkgname%-beta}.png -t "$pkgdir/${icons_dir}/"
   done
 }
