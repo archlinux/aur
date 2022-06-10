@@ -2,7 +2,7 @@
 pkgname=mullvad-vpn-beta-bin
 _pkgver=2022.2
 _channel=beta
-_rel=1
+_rel=2
 # beta
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
@@ -21,13 +21,13 @@ source=(
 #        "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc} # stable
         "${pkgname%-*-*}.sh"
        )
-sha256sums=('015b1781fff117c32a0d7c5ebeaf186f605835273dd41d4d2788a7938327077b'
+sha256sums=('0a130871321e347455ecd0a964eda0bbfb3a038f4d5d7ccc807560838623e611'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
 package() {
-  bsdtar -xvf data.tar.xz -C "$pkgdir"
+  bsdtar -xvf data.tar.xz -C "$pkgdir/"
 
   # Link to the GUI binary
   install -m755 "$srcdir/${pkgname%-*-*}.sh" "$pkgdir/usr/bin/${pkgname%-*-*}"
@@ -35,9 +35,9 @@ package() {
   # Symlink daemon service to correct directory
   install -d "$pkgdir/usr/lib/systemd/system"
   ln -s "/opt/Mullvad VPN/resources/mullvad-daemon.service" \
-    "$pkgdir/usr/lib/systemd/system"
+    "$pkgdir/usr/lib/systemd/system/"
 
   # Move ZSH completions to correct directory
-  mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share"
+  mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
   rm -rf "$pkgdir/usr/local"
 }
