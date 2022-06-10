@@ -1,5 +1,5 @@
 --- src/nemo-window-manage-views.c.orig	2022-06-10 13:40:24.163601093 -0400
-+++ src/nemo-window-manage-views.c	2022-06-10 13:51:46.293628485 -0400
++++ src/nemo-window-manage-views.c	2022-06-10 14:19:56.107029775 -0400
 @@ -69,6 +69,20 @@
   */
  #include "nemo-desktop-window.h"
@@ -9,24 +9,24 @@
 +int
 +chdir_g_file(GFile *file_path)
 +{
-+    char * path = g_file_get_path(file_path);
-+    int result;
-+    if (path != NULL) {
-+	result = chdir(path);
-+        g_free(path);
-+    }
-+    return result;
++	char * path = g_file_get_path(file_path);
++	int result = -1;
++	if (path != NULL) {
++		result = chdir(path);
++		g_free(path);
++	}
++	return result;
 +}
 +
  /* This number controls a maximum character count for a URL that is
   * displayed as part of a dialog. It's fairly arbitrary -- big enough
   * to allow most "normal" URIs to display in full, but small enough to
-@@ -113,6 +127,8 @@
-         GFile *bookmark_location;
-         gboolean recreate;
+@@ -1607,6 +1621,8 @@
+ {
+ 	char *uri;
  
-+	chdir_g_file(location);
++	chdir_g_file(nemo_window_slot_get_location(slot));
 +
-         if (slot->current_location_bookmark == NULL || location == NULL) {
-                 recreate = TRUE;
-         } else {
+ 	uri = nemo_window_slot_get_location_uri (slot);
+ 	if (uri) {
+ 		DEBUG ("Finished loading window for uri %s", uri);
