@@ -1,16 +1,16 @@
 pkgbase = ruby-memo_wise
 	pkgdesc = The wise choice for Ruby memoization
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/panorama-ed/memo_wise
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = memo_wise-1.5.0.gem
+	noextract = memo_wise-1.7.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/memo_wise-1.5.0.gem
-	sha512sums = 1576ccf2f4d6a4f665239c524d820ccb2bec5ce9cfea4c3e397d722e9b800b5864393b91dc9e423a75f75ab7586db276c7cab43839eb4f257c9e7cfb25617bb7
-	b2sums = 4e5053f96089021106c60e386463d0e3ba7d5f0bb5c39e5f18d3bea3fad87087fc126dcab29b96ae228383b687f50b7d667c2a4ea5f660a08a532caf5665eb8f
+	source = https://rubygems.org/downloads/memo_wise-1.7.0.gem
+	sha512sums = 2e41323e89e220e48693dd0ef8d40d7e0de4863935bc1b705941db35420305191251b7d72b6542c59bcf73e4b5646136fdcdefded500d50178bc52759d761ad7
+	b2sums = b3fd72a97d8eff2d73c3eb5fb623c0b5c027185028f8e5acb641b544fb632b7be452906f8284e8eb7d0f353de249ea1f808a503a9d0a2d0b0d1640a003134ccc
 
 pkgname = ruby-memo_wise
