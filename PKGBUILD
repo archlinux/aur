@@ -4,9 +4,9 @@ _gemname=nanoc-external
 pkgname=ruby-$_gemname
 pkgver=1.0.5
 pkgrel=1
-pkgdesc="Provides an :external filter for Nanoc"
+pkgdesc='Provides an :external filter for Nanoc'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
