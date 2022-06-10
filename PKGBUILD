@@ -1,13 +1,13 @@
 pkgbase=tal-drum
 pkgname=("${pkgbase}-vst" "${pkgbase}-vst3")
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://tal-software.com/products/tal-drum"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-Drum_64_linux.zip')
-md5sums=('c6c70683dabd72b44f567a27586e2b10')
+md5sums=('0771d6a66f1553c7f1a7ed780e1f4813')
 
 package_tal-drum-vst() {
   pkgdesc="A Simple To Use Drum Sampler By TAL Software (VST)"
