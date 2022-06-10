@@ -19,9 +19,9 @@ pkgbase = lfp
 	source = https://concise.cc/pkg/lfp-2.2-1-x86_64.pkg.tar.zst
 	source = https://concise.cc/pkg/lfp-2.2-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 70b39be6bd098244ff8b8dcf3458382b
-	md5sums = c29415c611a90e5953978030aa0d7928
-	sha512sums = fe7d0143105488d4a7e046e0031ceaad0e4c1dffa4499c0b765d0038ee1c5cb0c110f5120b680d5bb0bcb6e1f3c3b8dd4c43d9f57388e90cfc9cfd477338383f
-	sha512sums = 1ccbb1183823678d78bfbfd1b9157dbe83cf351ef55e8302ff5997a58a39a3aeb9ea1dc2afee9c73fba0ca1730105343e0bf8c608d1aab1fb07255fff749f0ea
+	md5sums = bdf7ee567f4e848fcddfcc8af50c1fea
+	md5sums = bf4ea7c2824d5ce258d66ae0a6b3d82d
+	sha512sums = 016076cd9609e82ba4560d28e5108df8c64d099e4d55c04de3f76a378dde790da0495c7a42e0d3c4cac76cc503bfea9f6c3fd8c3a926f89139a9e86cb1ef14ea
+	sha512sums = fe9979abbd20a36c5934802338ffe5254881b46e20488b1374c5ed7686b2036c091483356cb86d4f4bbdebdbdc4fd2d43fe4c65542535491346afa98ae0c4f4e
 
 pkgname = lfp
