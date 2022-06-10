@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-katex
 	pkgdesc = A Sphinx extension for rendering math in HTML pages
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hagenw/sphinxcontrib-katex
 	arch = any
 	license = MIT
