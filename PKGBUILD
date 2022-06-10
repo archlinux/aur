@@ -2,11 +2,11 @@
 
 _gemname=nanoc-deploying
 pkgname=ruby-$_gemname
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Provides the 'deploy' subcommand and associated functionality for Nanoc"
+pkgdesc='Provides the 'deploy' subcommand and associated functionality for Nanoc'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
@@ -21,7 +21,7 @@ source=(
   "LICENSE-$_nanocver::https://raw.githubusercontent.com/nanoc/nanoc/$_nanocver/$_gemname/LICENSE"
 )
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('d646f56eada30fc5059069627f6b07fc6620cc952605086100e954aa9b79e7f696ecfe87ad85f1951fca1de75482943af869a28f6f4465fffc3497af9db36b7f'
+b2sums=('6f06a33c08105e59a928277efccf48371d0c93f0cb4427951431462afc4b9d88c677ac17a2627f7511a7675a7b350c2887f62b88112c2d10e1e203a44252a387'
         '39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630')
 
 package() {
