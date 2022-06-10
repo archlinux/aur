@@ -6,11 +6,11 @@
 # from: snap beta
 # what: whatpulse
 _snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
-_rev_amd64=12 # snap:revision
+_rev_amd64=13 # snap:revision
 
 pkgname=whatpulse
-pkgver=3.7
-pkgrel=6
+pkgver=4.0
+pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
 source_x86_64=("${pkgname%*-bin}-$pkgver.sfs::https://api.snapcraft.io/api/v1/snaps/download/${_snap}_${_rev_amd64}.snap")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('e84c50788c5cf201759fa76ff0d8530959c6fca46fc9022d9d94aea573c76824')
+sha256sums_x86_64=('c62927cfd6d10b663e8fae94ff2aba06a24e66b8aa51df79b51d2709abe2b4e3')
 
 prepare() {
 	rm -rf sfs
