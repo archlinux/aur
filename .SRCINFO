@@ -1,0 +1,12 @@
+pkgbase = linux-dynamic-wallpapers-git
+	pkgdesc = Dynamic Wallpapers for Linux (Gnome). Note: this project is named Linux_Dynamic_Wallpapers, but is meant to support Gnome's dynamic wallpapers (and maybe related DEs).
+	pkgver = r407.aec7d27
+	pkgrel = 1
+	url = https://github.com/saint-13/Linux_Dynamic_Wallpapers
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/saint-13/Linux_Dynamic_Wallpapers.git
+	md5sums = SKIP
+
+pkgname = linux-dynamic-wallpapers-git
