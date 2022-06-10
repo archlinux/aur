@@ -5,7 +5,7 @@
 _name=smokegen
 
 pkgname=$_name-git
-pkgver=4.14.3
+pkgver=v4.14.3.r8.f7126dc
 pkgrel=1
 pkgdesc="A general purpose C++ parser with a plugin infrastructure. It is currently used for generating the various SMOKE libraries"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ pkgver() {
 build() {
 	mkdir "$srcdir/$_name/build"
 	cd "$srcdir/$_name/build"
-	cmake ../
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
 	make
 }
 
