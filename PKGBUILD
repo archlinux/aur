@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_ubus-git
-pkgver=3.0.18.r0.gb75326d
+pkgver=3.0.19.r0.gf6a1666
 pkgrel=1
 pkgdesc="Ubus baapi back-end"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
