@@ -2,7 +2,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgname="mkdocs-material-pymdownx-extras"
-pkgver=2.0.3
+pkgver=2.1
 pkgrel=1
 pkgdesc="MkDocs Material additions used for pymdownx documentation"
 url="https://github.com/facelessuser/mkdocs_pymdownx_material_extras"
@@ -11,10 +11,10 @@ arch=("any")
 provides=("mkdocs-pymdownx-material-extras")
 conflicts=("python-mkdocs-material-pymdownx-extras-git")
 replaces=("python-mkdocs-material-pymdownx-extras-git")
-depends=("mkdocs-material>=5.0.2")
+depends=("mkdocs-material>=8.3.3")
 makedepends=("python-setuptools" "git" 'python-wheel' 'python-build' 'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c93c5f3eaed84b791615e784611deca3613209a3d74a8fae8e3e823b428a37b1')
+sha256sums=('a6e614d28cf01bd761a94f6a71b9efa0eabe2673bbd52b115008d0ab92d5a4a4')
 
 build(){
     cd "mkdocs_pymdownx_material_extras-${pkgver}"
