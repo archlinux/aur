@@ -4,9 +4,9 @@
 
 pkgname=thunar-archive-plugin-zstd
 _pkgname=thunar-archive-plugin
-pkgver=0.4.0
-pkgrel=2
-pkgdesc="Create and extract archives in Thunar - zstd support"
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="thunar-archive-plugin with added zstd support"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/thunar/archive"
 license=('GPL2')
@@ -20,8 +20,9 @@ optdepends=('file-roller'
             'xarchiver')
 source=("https://archive.xfce.org/src/thunar-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2"
         "zstd.patch")
-sha256sums=('bf82fa86a388124eb3c4854249c30712b2922e61789607268ee14548549b3115'
-            'eb8a0e63170deecad0f0de834cf5c28ff7018d890530e0b0a8f3a66cb03441fc')
+
+sha256sums=('8eca88a358282a5acdea72984db0d930efdf658b4bc5b82ef7bcd06224366ffa'
+            '949175314d08d268b4747e7b13a3ba966056ffe50e8ab5335f216eca8949d6df')
 
 prepare() {
   patch -p1 -u -i "$srcdir/zstd.patch"
@@ -45,4 +46,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
