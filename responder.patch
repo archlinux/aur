@@ -1,43 +1,31 @@
 diff --git a/Responder.conf b/Responder.conf
-index 5c1b94e..9493f30 100755
+index 5c1b94e..9590db3 100755
 --- a/Responder.conf
 +++ b/Responder.conf
-@@ -24,6 +24,11 @@ Challenge = Random
+@@ -24,6 +24,9 @@ Challenge = Random
  ; Delete this file to re-capture previously captured hashes
--Database = Responder.db
-+Database = /var/lib/responder/Responder.db
+ Database = Responder.db
  
-+
 +; Path to log folder
 +LogPath = /var/log/responder
-+
 +
  ; Default log file
  SessionLog = Responder-Session.log
  
 diff --git a/settings.py b/settings.py
-index 095f5b5..3b7d9c9 100755
+index 095f5b5..6ec5341 100755
 --- a/settings.py
 +++ b/settings.py
-@@ -83,6 +83,8 @@ class Settings:
- 		# Config parsing
- 		config = ConfigParser.ConfigParser()
- 		config.read(os.path.join(self.ResponderPATH, 'Responder.conf'))
-+
-+		self.LogPath = config.get('Responder Core', 'LogPath')
- 		
- 		# Servers
- 		self.HTTP_On_Off     = self.toBool(config.get('Responder Core', 'HTTP'))
-@@ -101,10 +103,10 @@ class Settings:
+@@ -101,10 +101,10 @@ class Settings:
  		self.Krb_On_Off      = self.toBool(config.get('Responder Core', 'Kerberos'))
  
  		# Db File
 -		self.DatabaseFile    = os.path.join(self.ResponderPATH, config.get('Responder Core', 'Database'))
-+		self.DatabaseFile    = os.path.join(self.LogPath, config.get('Responder Core', 'Database'))
++		self.DatabaseFile    = os.path.join("/var/lib/responder", config.get('Responder Core', 'Database'))
  
  		# Log Files
 -		self.LogDir = os.path.join(self.ResponderPATH, 'logs')
-+		self.LogDir = os.path.join(self.LogPath, 'logs')
++		self.LogDir = config.get('Responder Core', 'LogPath')
  
  		if not os.path.exists(self.LogDir):
  			os.mkdir(self.LogDir)
