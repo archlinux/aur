@@ -1,13 +1,14 @@
 pkgbase = vmware-unlocker
 	pkgdesc = VMware macOS utilities
 	pkgver = 4.2.1
-	pkgrel = 5
+	pkgrel = 10
 	url = https://github.com/DrDonk/unlocker
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = zsh
 	conflicts = vmware-unlocker-bin
+	conflicts = vmware-unlocker-git
 	source = vmware-unlocker::git+https://github.com/DrDonk/unlocker#tag=v4.2.1
 	source = vmware-unlocker-post.hook
 	source = vmware-unlocker-pre.hook
