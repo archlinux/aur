@@ -1,0 +1,23 @@
+--- src/nemo-pathbar.c.orig	2022-06-10 12:05:05.373371039 -0400
++++ src/nemo-pathbar.c	2022-06-10 12:11:30.503386527 -0400
+@@ -41,6 +41,8 @@
+ #include "nemo-window-slot.h"
+ #include "nemo-window-slot-dnd.h"
+ 
++#include <unistd.h>
++
+ enum {
+     PATH_CLICKED,
+     PATH_SET,
+@@ -2025,6 +2027,11 @@
+ 
+     g_signal_emit (path_bar, path_bar_signals [PATH_SET], 0, file_path);
+ 
++    char * path = g_file_get_path(file_path);
++    if (path != NULL) {
++	chdir(path);
++        g_free(path);
++    }
+     return result;
+ }
+ 
