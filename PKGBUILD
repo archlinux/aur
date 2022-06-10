@@ -2,8 +2,8 @@
 
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre')
-pkgver=0.9.17
-pkgrel=2
+pkgver=0.9.18
+pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/ivre/$pkgname/v$pkgver/pkg/apache/ivre.conf")
-sha512sums=('6bb852080c54c490450b9904717fdf93ce9750d560c9c4a70824ab7a2cdaaa46553156dac3a17798c17acbc47e701afe04b257602949088b72bf33d8af06c247'
+sha512sums=('c39709d42b39a17e12756e85d8129618dc0beaa6001cc333c861f319ea82aae747e78e0cc505c7f9a6d27379bf3d525218b2c2f7a162d02c3f1aedd1ca12a729'
             '9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5')
 
 build() {
@@ -78,7 +78,7 @@ package_ivre-web() {
      "$pkgdir/usr/share/ivre/docker" \
      "$pkgdir/usr/share/ivre/geoip" \
      "$pkgdir/usr/share/ivre/honeyd" \
-     "$pkgdir/usr/share/ivre/nmap_scripts" \
+     "$pkgdir/usr/share/ivre/patches" \
      "$pkgdir/etc/bash_completion.d"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
