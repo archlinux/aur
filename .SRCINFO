@@ -1,0 +1,18 @@
+pkgbase = podman-desktop-bin
+	pkgdesc = Manage Podman and other container engines from a single UI and tray
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/containers/podman-desktop
+	arch = x86_64
+	license = Apache-2.0
+	provides = podman-desktop
+	source = podman-desktop-bin-0.0.4.tar.gz::https://github.com/containers/podman-desktop/releases/download/v0.0.4/podman-desktop-0.0.4.tar.gz
+	source = icon.svg
+	source = podman-desktop.desktop
+	source = run.sh
+	sha256sums = da23251e3c5cacc5fd77aee46cfde8fba45a317e531310165ad5870e1168174d
+	sha256sums = 81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a
+	sha256sums = 453b9cdc041f5e85d13ee7f23c7e9cc8865b646097443e5b0c46f00abf8160c5
+	sha256sums = 64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a
+
+pkgname = podman-desktop-bin
