@@ -4,6 +4,7 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = gcc
+Target = precompile-bits-stdc++.h
 [Action]
 Description = Precompiling bits/stdc++.h...
 When = PostTransaction

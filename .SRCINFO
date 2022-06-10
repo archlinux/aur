@@ -1,6 +1,6 @@
 pkgbase = precompile-bits-stdc++.h
 	pkgdesc = Precompiles the bits/stdc++.h header file useful for competitive programming
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/precompile-bits-stdc++.h
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = precompile-bits-stdc++.h
 	depends = gcc
 	source = precompile-bits-stdc++.h.hook
 	source = remove-precompiled-bits-stdc++.h.hook
-	sha256sums = 572d1ba766e1cb5bee6c29d3f8ec55b87ca5184bd68e207c518be946c87e77ef
-	sha256sums = 9e83d042097d5b6967874a2d0b5fc3315cfd689541597c71c0cd3ae0ecd01f23
+	sha256sums = be91217bbd00135dd2c217cdc067ef9accefc1c5fcb3462ad4a18f7a06e31189
+	sha256sums = 676e3148beb2d67d3b60823b847000897936d881f5330cf17f10cc6045e31a0b
 
 pkgname = precompile-bits-stdc++.h

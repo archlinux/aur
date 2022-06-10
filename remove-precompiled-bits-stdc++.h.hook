@@ -4,6 +4,7 @@ Operation = Upgrade
 Operation = Remove
 Type = Package
 Target = gcc
+Target = precompile-bits-stdc++.h
 [Action]
 Description = Removing precompiled bits/stdc++.h...
 When = PreTransaction
