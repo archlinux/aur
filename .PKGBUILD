@@ -15,10 +15,10 @@ sha512sums=('SKIP'
   '9562d829c593d45fd77eee19652b30ef3c33b0c67057b7e3fb4d39695d6b39659ddc06f64d0325ea02a400121a050e2bd0858a606e2a6627a40af8e87c8a378b'
   'c95c021915665fbda50c4ce739b76d92c0616d102e05033aa5b4e0ebd933e61b775ffb6ef0cf65eaf392958b8bb4125932c3cf49dd705ebb6f43cc121eccb0b3'
 )
-#pkgver() {
-#   cd "$srcdir/$pkgname"
-#  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 build() {
   export PATH="$PATH:$HOME/go/bin"
   go install github.com/tc-hib/go-winres@latest
