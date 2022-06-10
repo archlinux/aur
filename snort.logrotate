@@ -2,16 +2,20 @@
 	sharedscripts
 	missingok
 	notifempty
+	postrotate
+		/usr/bin/systemctl try-restart snort.service > /dev/null 2>&1 || true
+	endscript
 }
 
-/var/log/snort/alert_fast.txt /var/log/snort/*.log.* {
+/var/log/snort/alert_*.txt /var/log/snort/*.log.* {
 	nocompress
 	nocreate
         olddir /var/log/snort/old
 	sharedscripts
 	missingok
+	notifempty
 	postrotate
-		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'alert_fast.*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
+		/usr/bin/find /var/log/snort/old -maxdepth 1 -name 'alert_*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
 		/usr/bin/find /var/log/snort/old -maxdepth 1 -name '*.log*' -type f -mtime +60 -exec /usr/bin/rm '{}' ';' > /dev/null 2>&1 || true
 		/usr/bin/systemctl try-restart snort.service > /dev/null 2>&1 || true
 	endscript
