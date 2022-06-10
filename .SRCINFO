@@ -1,17 +1,16 @@
 pkgbase = smokegen-git
-	pkgdesc = A general purpose C++ parser with a plugin infrastructure
-	pkgver = 20150630
+	pkgdesc = A general purpose C++ parser with a plugin infrastructure. It is currently used for generating the various SMOKE libraries
+	pkgver = 4.14.3
 	pkgrel = 1
-	url = http://kde.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = LGPL
-	license = FDL
-	makedepends = cmake
-	makedepends = automoc4
 	makedepends = git
-	conflicts = kdebindings-smokegen
+	makedepends = cmake
+	depends = qt4
+	provides = smokegen-git
+	conflicts = smokegen-git
+	source = git+https://github.com/KDE/smokegen.git
+	md5sums = SKIP
 
 pkgname = smokegen-git
-
