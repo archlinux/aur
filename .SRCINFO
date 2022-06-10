@@ -1,7 +1,7 @@
 pkgbase = thunar-archive-plugin-zstd
-	pkgdesc = Create and extract archives in Thunar - zstd support
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgdesc = thunar-archive-plugin with added zstd support
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://docs.xfce.org/xfce/thunar/archive
 	arch = x86_64
 	license = GPL2
@@ -16,10 +16,9 @@ pkgbase = thunar-archive-plugin-zstd
 	optdepends = xarchiver
 	provides = thunar-archive-plugin
 	conflicts = thunar-archive-plugin
-	source = https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/0.4/thunar-archive-plugin-0.4.0.tar.bz2
+	source = https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/0.5/thunar-archive-plugin-0.5.0.tar.bz2
 	source = zstd.patch
-	sha256sums = bf82fa86a388124eb3c4854249c30712b2922e61789607268ee14548549b3115
-	sha256sums = eb8a0e63170deecad0f0de834cf5c28ff7018d890530e0b0a8f3a66cb03441fc
+	sha256sums = 8eca88a358282a5acdea72984db0d930efdf658b4bc5b82ef7bcd06224366ffa
+	sha256sums = 949175314d08d268b4747e7b13a3ba966056ffe50e8ab5335f216eca8949d6df
 
 pkgname = thunar-archive-plugin-zstd
-
