@@ -1,7 +1,7 @@
 # Maintainer: Matt Taylor <64.delta@proton.me>
 pkgname=mlibc
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable C standard library"
 arch=(x86_64)
 url="https://github.com/managarm/mlibc"
@@ -27,13 +27,15 @@ validpgpkeys=()
 build() {
 	cd "$pkgname-$pkgver"
 
-	# The default CFLAGS includes -fexceptions which is a problem for us.
-	CFLAGS="-march=native -O3 -pipe"
-	CXXFLAGS="${CFLAGS}"
-	# The default LDFLAGS includes -z,now which we don't support.
-	LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro"
+	# The default flags include -fexceptions which requires libgcc.
+	CFLAGS=${CFLAGS//"-fexceptions"}
+	CXXFLAGS=${CXXFLAGS//"-fexceptions"}
 
-	meson --prefix=/usr/share/mlibc -Dbuild_tests=true build
+	# The default LDFLAGS includes -z,now which we don't support.
+	LDFLAGS=${LDFLAGS//",-z,now"}
+
+	# Install to /usr/share/mlibc so it doesn't conflict with the host libc.
+	meson --prefix=/usr/share/mlibc -Dbuild_tests=true -Dbuildtype=release build
 
 	cd build
 	ninja

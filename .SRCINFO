@@ -1,7 +1,7 @@
 pkgbase = mlibc
 	pkgdesc = A portable C standard library
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/managarm/mlibc
 	arch = x86_64
 	license = MIT
