@@ -7,7 +7,7 @@ pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo 
 arch=("x86_64")
 
 url='https://github.com/MrGlockenspiel/activate-linux'
-makedepends=('make' 'clang' 'git' 'pkgconf')
+makedepends=('make' 'clang' 'pkgconf' 'libxfixes' 'libxinerama')
 depends=('cairo' 'libxi' 'libx11' 'libxt')
 conflicts=('activate-linux-git')
 license=('custom')
