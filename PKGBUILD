@@ -3,25 +3,38 @@
 
 pkgname=console-bridge
 _pkgname=console_bridge
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7hv' 'aarch64')
 url="http://www.ros.org/"
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('cmake')
-source=("https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('2ff175a9bb2b1849f12a6bf972ce7e4313d543a2bbc83b60fdae7db6e0ba353f')
+makedepends=('cmake' 'cppcheck')
+source=("https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz" "fix_repository_path.patch")
+sha256sums=('303a619c01a9e14a3c82eb9762b8a428ef5311a6d46353872ab9a904358be4a4'
+            '2a5df5a0876791793805111b82e3ae159d3cdc04218f351f014b4d9461ceb26d')
+
+prepare() {
+    patch -d "$_pkgname-$pkgver" -p0 -i "$srcdir/fix_repository_path.patch"
+}
 
 build() {
-    cd "$_pkgname-$pkgver"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
-    make
+    cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
+        -DBUILD_TESTING=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
+}
+
+check() {
+    AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1 cmake --build "build-$pkgver" -t test
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --install "build-$pkgver"
+
+    # install licence
+    install -Dm644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
