@@ -25,8 +25,5 @@ noextract=("ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
 sha256sums=('565924751aec3d6237419abe5d632dd469bd7680c456c91baaa785353bf40244')
 
 prepare() {
-	uname -r # Outputs kernel info
-}
-package() {
-	msg2 "downloaded package."
+	msg2 "Package downloaded!"
 }
