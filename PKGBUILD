@@ -3,7 +3,7 @@
 
 _modname=boongui
 pkgname=0ad-${_modname}
-pkgver=2.0.2
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="User interface mod for the RTS game 0 A.D."
 arch=('any')
