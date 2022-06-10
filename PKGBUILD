@@ -1,13 +1,13 @@
 # Maintainer: Polis Minus <polisminus2247@tuta.io>
 pkgname=activate-linux-git
 _pkgname=activate-linux
-pkgver=r142.12a31ac
+pkgver=r146.61dc73a
 pkgrel=1
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
 
 url='https://github.com/MrGlockenspiel/activate-linux'
-makedepends=('make' 'clang' 'git' 'pkgconf')
+makedepends=('make' 'clang' 'git' 'pkgconf' 'libxfixes' 'libxinerama')
 depends=('cairo' 'libxi' 'libx11' 'libxt')
 license=('custom')
 conflict=('activate-linux')
