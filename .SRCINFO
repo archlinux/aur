@@ -1,0 +1,22 @@
+pkgbase = codecommit-sign-bin
+	pkgdesc = Generate a signed AWS V4 CodeCommit URL directly from an IAM role. No dedicated CodeCommit credentials needed
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/gembaadvantage/codecommit-sign
+	license = MIT
+	conflicts = codecommit-sign
+	provides = codecommit-sign
+	arch = aarch64
+	source_aarch64 = https://github.com/gembaadvantage/codecommit-sign/releases/download/v1.4.0/codecommit-sign_1.4.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 0cbaf480c380db6f6a59de0fa93afd2944f99c21e68352da559e1e0cad04e981
+	arch = armv7h
+	source_armv7h = https://github.com/gembaadvantage/codecommit-sign/releases/download/v1.4.0/codecommit-sign_1.4.0_linux-arm.tar.gz
+	sha256sums_armv7h = a4ac07d680aee7ba0ecdf116310e0148cca924bf95ef211f8001077d0a62d25e
+	arch = i686
+	source_i686 = https://github.com/gembaadvantage/codecommit-sign/releases/download/v1.4.0/codecommit-sign_1.4.0_linux-i386.tar.gz
+	sha256sums_i686 = e8994f85865709644bc8f5c44425257cd848d486e95501be09f43594460eeb35
+	arch = x86_64
+	source_x86_64 = https://github.com/gembaadvantage/codecommit-sign/releases/download/v1.4.0/codecommit-sign_1.4.0_linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2dec529867db98cb4dcf60ed37f18ccbfbc88c2428e59ec252b51d164d34894f
+	
+pkgname = codecommit-sign-bin
