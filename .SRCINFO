@@ -1,0 +1,19 @@
+pkgbase = python-pystiche
+	pkgdesc = Framework for Neural Style Transfer (NST) built upon PyTorch
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/pystiche/pystiche
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-pillow
+	depends = python-tqdm
+	source = git+https://github.com/pystiche/pystiche.git#tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = python-pystiche
