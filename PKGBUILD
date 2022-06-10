@@ -4,9 +4,9 @@ _gemname=nanoc-checking
 pkgname=ruby-$_gemname
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Provides checking functionality for Nanoc"
+pkgdesc='Provides checking functionality for Nanoc'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
