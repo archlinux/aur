@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-cacule
+pkgbase = linux-cacule
 	pkgdesc = Linux cacULE scheduler Kernel by CachyOS with other patches and improvements
 	pkgver = 5.18.3
 	pkgrel = 1
@@ -65,7 +65,7 @@ pkgbase = linux-cachyos-cacule
 	sha256sums = cb2494f5ad43fd260e26d771305dade3f9499fa1ffaf53cb9ef8c19b66dab7d7
 	sha256sums = be21f15aeb22b2ca1e35e4975590d30736af0483ea7464e3464a60d993e37e22
 
-pkgname = linux-cachyos-cacule
+pkgname = linux-cacule
 	pkgdesc = The Linux cacULE scheduler Kernel by CachyOS with other patches and improvements kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -79,7 +79,7 @@ pkgname = linux-cachyos-cacule
 	provides = KSMBD-MODULE
 	provides = UKSMD-BUILTIN
 
-pkgname = linux-cachyos-cacule-headers
+pkgname = linux-cacule-headers
 	pkgdesc = Headers and scripts for building modules for the Linux cacULE scheduler Kernel by CachyOS with other patches and improvements kernel
 	depends = pahole
-	depends = linux-cachyos-cacule
+	depends = linux-cacule

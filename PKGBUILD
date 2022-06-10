@@ -117,11 +117,11 @@ _use_kcfi=
 _build_zfs=
 
 if [ -n "$_use_llvm_lto" ]; then
-    pkgsuffix=cachyos-${_cpusched}-lto
+    pkgsuffix=${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
 
 else
-    pkgsuffix=cachyos-${_cpusched}
+    pkgsuffix=${_cpusched}
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
