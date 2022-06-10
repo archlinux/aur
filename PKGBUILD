@@ -1,25 +1,51 @@
-# Contributor:  boteium <echo Ym90ZWl1bUBnbWFpbC5jb20=|base64 -d>
+# Maintainer: Moritz Bunkus <mo@bunkus.online>
 
-pkgname=perl-authen-oath
-pkgver=2.0.1
-pkgrel=1
-pkgdesc="Perl/CPAN module Authen::OATH "
-url="http://search.cpan.org/~sifukurt/Authen-OATH/"
-license=(GPL)
+pkgname="perl-authen-oath"
+pkgver="2.0.1"
+pkgrel="2"
+pkgdesc="OATH One Time Passwords"
+url="https://metacpan.org/pod/Authen::OATH"
+license=("GPL")
 arch=('any')
-source=("http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Authen-OATH-2.0.1.tar.gz")
-md5sums=('111532b8899c686429584aa9ad1d9660')
+depends=(
+  "perl-digest-hmac"
+  "perl-moo>=2.002004"
+  "perl-type-tiny"
+)
+makedepends=(
+  "perl-test-needs"
+)
+source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Authen-OATH-${pkgver}.tar.gz")
+sha256sums=('1a813dbdc05c3fbd9dd39dbcfd85e2cfb0ba3d0f652cf6b26ec83ab8146ddc77')
+
+prepare_environment() {
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+    PERL_AUTOINSTALL=--skipdeps                            \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Authen-OATH-${pkgver}"
+}
 
 build() {
-  cd  "$srcdir/Authen-OATH-${pkgver}"
-  /usr/bin/perl Makefile.PL \
-      INSTALLSITELIB=/usr/lib/perl5/site_perl/
-  /usr/bin/make || return 1
+  prepare_environment
+  /usr/bin/perl Makefile.PL
+  make
 }
 
-package(){
-  cd  "$srcdir/Authen-OATH-${pkgver}"
-  /usr/bin/make DESTDIR=$pkgdir/ install
-  /usr/bin/find $startdir/pkg -name '.packlist' -delete
-  /usr/bin/find $startdir/pkg -name '*.pod' -delete
+check() {
+  prepare_environment
+  make test
 }
+
+package() {
+  prepare_environment
+  make install
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:

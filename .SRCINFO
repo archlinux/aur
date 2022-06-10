@@ -1,12 +1,15 @@
 pkgbase = perl-authen-oath
-	pkgdesc = Perl/CPAN module Authen::OATH
+	pkgdesc = OATH One Time Passwords
 	pkgver = 2.0.1
-	pkgrel = 1
-	url = http://search.cpan.org/~sifukurt/Authen-OATH/
+	pkgrel = 2
+	url = https://metacpan.org/pod/Authen::OATH
 	arch = any
 	license = GPL
-	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Authen-OATH-2.0.1.tar.gz
-	md5sums = 111532b8899c686429584aa9ad1d9660
+	makedepends = perl-test-needs
+	depends = perl-digest-hmac
+	depends = perl-moo>=2.002004
+	depends = perl-type-tiny
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Authen-OATH-2.0.1.tar.gz
+	sha256sums = 1a813dbdc05c3fbd9dd39dbcfd85e2cfb0ba3d0f652cf6b26ec83ab8146ddc77
 
 pkgname = perl-authen-oath
-
