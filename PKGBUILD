@@ -109,6 +109,8 @@ prepare()
   ln -s ../eranif-ctags-52c724d ctags
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
   patch -p0 < "${startdir}/cmake.patch"
+  # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7
+  mv wxcrafter wxcrafter.disable
 }
 
 
