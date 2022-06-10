@@ -1,5 +1,4 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
-# Contributor:Moritz Kaspar Rudert (mortzu) <me@mortzu.de>
 
 pkgname=chaosvpn
 pkgver=2.19
