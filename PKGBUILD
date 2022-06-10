@@ -7,11 +7,11 @@
 
 _gemname=nanoc
 pkgname=ruby-$_gemname
-pkgver=4.12.4
+pkgver=4.12.7
 pkgrel=1
-pkgdesc="A static-site generator with a focus on flexibility"
+pkgdesc='A static-site generator with a focus on flexibility'
 arch=('any')
-url="https://nanoc.app"
+url='https://nanoc.app'
 license=('MIT')
 depends=(
   'ruby'
@@ -30,8 +30,8 @@ depends=(
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('14241fbdf6c4d65d4146a008f38ca43c1282d20e21d240ce10fe5e4c2db7f49a42ea18dd7db0def28539cf7a98e8e76e4a517b2f4ef3595e27c014c4634fa586')
-b2sums=('07686c24d47fa978120bc2c1309d1cbf244a76757d4633965e491292426af2aa839095d6f115ba2b2acddf951dac69db00f7506af67b53c8aa83cc38e7bb7e48')
+sha512sums=('ef048b1a68518b3c425bd0325a0ba4dc1467a2b1acebce65a91ea25ef8da8799176a9da870dce6bd4789eb6062e7b7b76fc6dc3b22a9ffd794701694c0e45d27')
+b2sums=('81b9d42bb4e599ad755cb4c6ede27c5fc3fb3666e9516c182e4b22a6ac0d96e1f25af69a29a8479e93f234d6bd68077fbc68dd3550f0e74f04c506d856ff015e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
