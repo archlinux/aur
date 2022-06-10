@@ -27,9 +27,9 @@ optdepends=('cinnamon-translations: i18n'
             'odt2txt: search helpers support for LibreOffice files'
             'poppler: search helpers support for PDF')
 makedepends=(meson samurai gobject-introspection intltool libgsf)
-source=(${url}/archive/${pkgver}/${rootname}-${pkgver}.tar.gz)
-sha512sums=('0aa3f7e0c2bdb9d7f1874c17caea0e4a3da062fc243de1f1657bdb83090a1afb099baa404f211092f83cf6852c423b244482faf0ad6beaaddc072cbce17cc6d4')
-b2sums=('dc6efb24921d5408938ff5b8660653789a77d6607e2e023d73eb5722a0a8bc75cd22d1241f5e852d0429d05f6ec4fd1abb798b8be1ecf513eeed108a256e506c')
+source=(${url}/archive/${pkgver}/${rootname}-${pkgver}.tar.gz 'chdir.patch' 'chdir_callback.patch')
+sha512sums=('0aa3f7e0c2bdb9d7f1874c17caea0e4a3da062fc243de1f1657bdb83090a1afb099baa404f211092f83cf6852c423b244482faf0ad6beaaddc072cbce17cc6d4' SKIP SKIP)
+b2sums=('dc6efb24921d5408938ff5b8660653789a77d6607e2e023d73eb5722a0a8bc75cd22d1241f5e852d0429d05f6ec4fd1abb798b8be1ecf513eeed108a256e506c' SKIP SKIP)
 
 prepare() {
   cd ${rootname}-${pkgver}
@@ -37,8 +37,8 @@ prepare() {
   # Rename 'Files' app name to avoid having the same as nautilus
   sed -i '/^\[Desktop Entry/,/^\[Desktop Action/ s/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
 
-  patch -u src/nemo-window-manage-views.c -i ../../chdir.patch
-  patch -u src/nemo-window.c -i ../../chdir_callback.patch
+  patch -u src/nemo-window-manage-views.c -i ../chdir.patch
+  patch -u src/nemo-window.c -i ../chdir_callback.patch
 }
 
 build() {
