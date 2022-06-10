@@ -1,6 +1,6 @@
 pkgbase = lib_amxo-git
 	pkgdesc = Generic C-implementation for ODL (Object Definition Language)
-	pkgver = 2.0.16.r0.g0bafbaf
+	pkgver = 2.0.17.r0.g4290d38
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxo.git
 	arch = x86_64
