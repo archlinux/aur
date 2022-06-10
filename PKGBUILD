@@ -1,31 +1,152 @@
-# Maintainer: juliosueiras <juliosueiras [at] gmail [dot] com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: moormaster < user on aur.archlinux.org >
+# Contributor: juliosueiras <juliosueiras [at] gmail [dot] com>
 
-pkgname=ansible-docs-git
-pkgdesc="Ansible HTML documentation"
-pkgver=20170225
+_reponame='ansible'
+pkgname="${_reponame}-docs-git"
+pkgdesc='HTML documentation of Ansible'
+pkgver=2.11.0b4.r1444.g3fa377387e0
 pkgrel=1
+epoch=1
 arch=('any')
-url="https://github.com/ansible/ansible"
-license=('GPL3')                # true?
+url="https://github.com/${_reponame}/${_reponame}"
+license=('GPL3')
+
+makedepends=(
+    'git'
+    'python'
+)
+
+# # Not using repo or AUR packages because the needed versions can change rapidly
+# # or be too new or too old compared to the versions provided there.
+# makedepends+=(
+#     'python-aiofiles'
+#     'python-aiohttp'
+#     'python-aiosignal'
+#     'python-async-timeout'
+#     'python-attrs'
+#     'python-babel'
+#     'python-certifi'
+#     'python-charset-normalizer'
+#     'python-click'
+#     'python-frozenlist'
+#     'python-imagesize'
+#     'python-markupsafe'
+#     'python-multidict'
+#     'python-packaging'
+#     'python-pydantic'
+#     'python-pygments'
+#     'python-pyparsing'
+#     'python-pytz'
+#     'python-requests'
+#     'python-semantic-version'
+#     'python-sh'
+#     'python-snowballstemmer'
+#     'python-sphinx'
+#     'python-sphinx_rtd_theme'
+#     'python-sphinxcontrib-applehelp'
+#     'python-sphinxcontrib-devhelp'
+#     'python-sphinxcontrib-htmlhelp'
+#     'python-sphinxcontrib-jsmath'
+#     'python-sphinxcontrib-qthelp'
+#     'python-sphinxcontrib-serializinghtml'
+#     'python-straight.plugin'
+#     'python-typing_extensions'
+#     'python-urllib3'
+#     'python-wheel'
+#     'python-yaml'
+#     'python-yarl'
+# )
+# # makedepends+=('rstcheck') # Repo version too new, also buggy (lacks mandatory depends 'types-docutils')
+# 
+# # The following "hidden" makedepends are not in Arch repos as of this commit,
+# # so I'm adding them here as a reference.
+# _makedepends_nonrepo=(
+#     'python-alabaster'
+#     'python-ansible-pygments'
+#     'python-antsibull-core'
+#     'python-antsibull-docs'
+#     'python-asyncio-pool'
+#     'python-jinja2'
+#     'python-perky'
+#     'python-sphinx-ansible-theme'
+#     'python-sphinx-notfound-page'
+#     'python-sphinx-intl'
+#     'python-twiggy'
+# )
+# # Exposing the missing or AUR-only makedepends as optdepends. If they are present at
+# # build-time, they will be used instead of letting pip download them from PyPI.
+# optdepends=(
+#     "${_makedepends_nonrepo[@]/%/: use this installed package during (the next) build}"
+# )
+
+provides=("${pkgname%-git}=${pkgver}")
 options=('!strip')
-makedepends=('git' 'python2-sphinx')
-source=('git://github.com/ansible/ansible.git')
-md5sums=('SKIP')
+source=("git+${url}.git")
+b2sums=('SKIP')
+_py_venv_dir=("venv-${pkgname%-git}")
 
 pkgver() {
-    date "+%Y%m%d"
+    cd "${_reponame}"
+
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 2.11.0b4.r1444.g3fa377387e0
+    echo "${_gitversion}" | sed \
+        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+        -e 's|\([0-9]\+-g\)|r\1|' \
+        -e 's|-|.|g'
 }
 
 prepare() {
-    find "$srcdir"/ansible -name '*.py' -exec \
-        sed -i 's|^#!/usr/bin/env python|#!/usr/bin/env python2|' {} +
+    cd "${_reponame}"
+
+    echo "Setting up Python venv dir: ${srcdir}/${_py_venv_dir}"
+    echo '# We need this because Arch and AUR are missing a lot of needed makedepends.'
+    # Disabled venv option: --system-site-packages, because Arch/AUR packages likely mismatch
+    # too much compared to the versions needed by build's actual requirements.
+    python -m 'venv' \
+        --upgrade-deps \
+        "${srcdir}/${_py_venv_dir}"
+
+    echo "Activating Python venv in dir: ${srcdir}/${_py_venv_dir}"
+    source "${srcdir}/${_py_venv_dir}/bin/activate"
+
+    echo "Installing Python modules missing from root to venv dir \"${_py_venv_dir}\"..."
+    pip install wheel       # this needs to be installed first
+    pip install \
+        --compile \
+        --require-virtualenv \
+        --upgrade \
+        --upgrade-strategy eager \
+        --requirement 'docs/docsite/requirements.txt' \
+        'types-docutils'    # seems it is not declared but needed
+
+    echo "Deactivating Python venv in dir: ${srcdir}/${_py_venv_dir}"
+    deactivate
+
+    echo 'Patching Makefile to use one parallel job (one CPU thread). Otherwise'
+    echo 'the build processes will fill the whole RAM and eventually crash.'
+    sed -e '/CPUS ?= $(shell nproc)/c CPUS = 1' \
+        -i 'docs/docsite/Makefile'
 }
 
-build(){
-    make -C "$srcdir"/ansible webdocs
+build() {
+    cd "${_reponame}"
+
+    echo "Activating Python venv in dir: ${srcdir}/${_py_venv_dir}"
+    source "${srcdir}/${_py_venv_dir}/bin/activate"
+
+    echo "Building ${pkgname%-git} from source..."
+    make -C 'docs/docsite' 'all'
+
+    echo "Deactivating Python venv in dir: ${srcdir}/${_py_venv_dir}"
+    deactivate
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/share/doc/ansible/html"
-    cp -r "$srcdir"/ansible/docs/docsite/_build/html/* "$pkgdir/usr/share/doc/ansible/html/"
+    install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}/html"
+    cp --recursive --dereference --target-directory="${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/${_reponame}/docs/docsite/_build/html" 
 }
