@@ -1,4 +1,4 @@
-# Maintainer: Gerard Ribugent Navarro <ribugent@gmail.com>
+# Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=keepassxc-wordlist-catalan
 pkgver=0.20170609
 pkgrel=1
