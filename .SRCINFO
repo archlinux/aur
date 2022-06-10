@@ -1,0 +1,14 @@
+pkgbase = python-dicom_parser
+	pkgdesc = A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O RDF
+	pkgver = v1.2.2.r34.g859c522
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/prov/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	optdepends = python-pandas
+	source = python-dicom_parser::git+https://github.com/open-dicom/dicom_parser.git
+	sha1sums = SKIP
+
+pkgname = python-dicom_parser
