@@ -1,6 +1,6 @@
 pkgbase = avizo
 	pkgdesc = A neat notification daemon
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/misterdanb/avizo
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = avizo
 	optdepends = brightnessctl: for helper script lightctl
 	optdepends = light: for helper script lightctl
 	optdepends = pamixer: for helper script volumectl
-	source = avizo-1.2.tar.gz::https://github.com/misterdanb/avizo/archive/refs/tags/1.2.tar.gz
-	sha256sums = af44eda6d5247817396dc675b6823905f2c060f5bcefaa64f2c19ff61a7a7e36
+	source = avizo-1.2.1.tar.gz::https://github.com/misterdanb/avizo/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = efd4763db7c802d22e8939dac909d4886f5967aefbfc3fd526735da2a814b91b
 
 pkgname = avizo
