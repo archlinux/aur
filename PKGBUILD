@@ -1,8 +1,9 @@
-# Maintainer: JumperPunk <spartan074 _at_ gmail dot com>
+# Maintainer: a172 <spartan074 _at_ gmail dot com>
 
 pkgname=udiskie-dmenu-git
 _gitroot='udiskie-dmenu'
-pkgver=0.3.0.r5.378d374
+epoch=1
+pkgver=0.3.0.r10.0b538f9
 pkgrel=1
 pkgdesc='manage removable devices via dmenu (or rofi)'
 arch=('any')
@@ -13,7 +14,7 @@ optdepends=('rofi: use rofi as the front-end')
 makedepends=('git')
 conflicts=()
 provides=()
-source=("git://github.com/fogine/${_gitroot}.git")
+source=("git+https://github.com/fogine/${_gitroot}.git")
 md5sums=('SKIP')
 
 pkgver() {
