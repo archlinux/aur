@@ -1,29 +1,27 @@
-# Maintainer: Tim Hütz <tim@huetz.biz>
+# Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 # Contributor: Tim Hütz <tim@huetz.biz>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Sebastien Binet <binet@cern.ch>
-
 pkgname=python2-mpi4py
-pkgver=1.3.1
-pkgrel=2
+_name=${pkgname#python2-}
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="Python2 bindings of the Message Passing Interface (MPI)"
-depends=('python' 'openmpi')
+depends=('python2' 'openmpi')
 arch=('i686' 'x86_64')
-url="http://mpi4py.scipy.org"
+url='https://github.com/mpi4py/mpi4py'
 license=('BSD')
-makedepends=('python2' 'python2-setuptools' 'openmpi')
-source=("https://bitbucket.org/mpi4py/mpi4py/downloads/${pkgname//python2-/}-${pkgver}.tar.gz")
-sha512sums=('15e81f2a1e6f6af7a54f0e8ec43ddf36cc565b7fe9e3dd35603c9d128199c5acd1584757ffca999c8826c0bbccf371175d40a7a24c85d3369efd77da5b3b603f')
+makedepends=('python2-setuptools')
+source=("$url/releases/download/$pkgver/$_name-$pkgver.tar.gz")
+sha256sums=('f1e9fae1079f43eafdd9f817cdb3fd30d709edc093b5d5dada57a461b2db3008')
 
 build() {
-  cd mpi4py-${pkgver}
+  cd "$srcdir/$_name-$pkgver"
   python2 setup.py build
 }
 
 package() {
-  cd "mpi4py-${pkgver}"
+  cd "$srcdir/$_name-$pkgver"
   python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
-  
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rst"
 }
-
