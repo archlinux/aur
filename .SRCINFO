@@ -1,10 +1,10 @@
 pkgbase = metricbeat-oss-bin
 	pkgdesc = Metrics collection and shipping beats component (precompiled)
-	pkgver = 7.15.2
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://www.elastic.co/products/beats
 	install = metricbeat.install
-	arch = i686
+	arch = aarch64
 	arch = x86_64
 	license = APACHE
 	optdepends = elasticsearch: for running standalone installation
@@ -18,9 +18,9 @@ pkgbase = metricbeat-oss-bin
 	sha256sums = 1399976457d5c848a5274fa739ade7bdd187b035b5885dc77691051c3b5da718
 	sha256sums = f4c4c85169d27ceea967c046109baacf54aa99e6569cd8acbedcab530dba48e3
 	sha256sums = dd96ec7ab1f0464f6aa193d710d482aff8784c489b0cf6c7dadd7e3aabdf499a
-	source_i686 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-7.15.2-linux-x86.tar.gz
-	sha512sums_i686 = 085898645b9fcf1691cc36e5bae63b2c79c39758c837e006d0edc8e591e90120ac50ff4d3819a6f155e59eb1e95e0a373465885e1420e3776bd12511be827818
-	source_x86_64 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-7.15.2-linux-x86_64.tar.gz
-	sha512sums_x86_64 = 203dfc3004280b05df0e6acb4a72d6f2bc6315088c6404106a15ca50390ad500d994254d76ba36e8382ce710c98cb23bf0681848268e26c716ff4aee1dd580a0
+	source_aarch64 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-8.2.0-linux-arm64.tar.gz
+	sha512sums_aarch64 = 51004ff8aaf13f78c682c1e54412ffe4040c3b12047c910caf3a2d4568aea48c0334f63bafebc0f92a776e0a87945283bb1a0ab97c54fb2a62dfe84bd34ebf0c
+	source_x86_64 = https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-8.2.0-linux-x86_64.tar.gz
+	sha512sums_x86_64 = de7e0e2820d6491041ae829bf89b305902a2edf719a9e4ff8d2d870aa2bde5ebf258c60040796b57fbcf2ec62cc17546fbc41fbb78be4c0d03aff8fc7d86f1fe
 
 pkgname = metricbeat-oss-bin
