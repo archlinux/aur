@@ -1,6 +1,6 @@
 pkgbase = oscam-git
 	pkgdesc = Open Source Conditional Access Module software
-	pkgver = 11691
+	pkgver = 11711
 	pkgrel = 1
 	url = http://www.streamboard.tv/oscam
 	install = oscam.install
@@ -26,4 +26,3 @@ pkgbase = oscam-git
 	sha256sums = 3adbbfa4f388c6510b365719da251360dee9cc2885c5f82e06d56c246fcd26b0
 
 pkgname = oscam-git
-
