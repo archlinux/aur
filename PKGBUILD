@@ -5,19 +5,19 @@
 pkgname=atom
 _tag=1.61.0-beta0
 pkgver=${_tag//-}
-pkgrel=4
+pkgrel=3
 pkgdesc='A hackable text editor for the 21st Century'
 arch=(x86_64)
 url="https://github.com/atom/$pkgname"
 license=(MIT)
-_electron=electron14
+_electron=electron11
 depends=(apm
          $_electron
          libxkbfile
          ripgrep)
 makedepends=(git
              node-gyp
-             nodejs
+             nodejs-lts-gallium
              npm)
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration'
