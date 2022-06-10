@@ -3,7 +3,7 @@
 
 pkgname=baidu-translate-client-bin
 _pkgname=baidu-translate-client
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="baidu translate "
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "${_pkgname}-${pkgver}.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.baidu.translateclient/com.baidu.translateclient_${pkgver}_amd64.deb"
   "$_pkgname.sh"
 )
-sha512sums=('0d01d242aa8b5660427570ffaa1a1ece57cf3de7fb43ea92026863b9568ac59b30d64ea1ed850ba19f4ac07c4b0286d7a9e3591944aa5c43e21124345ed9b8cc'
+sha512sums=('2943df6829acf43aba537da0cea31d41f94bb7ceb3df88ddbec32199cb102e6f58209e4ee66d5dc2d29719bace94c05536e284c993f49a64ecd3cdf4613b5441'
             'fab6f76c73e0dd5e126adc1e74d4cd372cf917f4e0fb708ecfae59d12d5a42080cbae0ed66e9239f94ac87a1e00c41db9ad8562f49f2e579536b917f29efcb22')
 
 
