@@ -1,6 +1,6 @@
 pkgbase = trilium-bin-cn
 	pkgdesc = A hierarchical note taking application built on modern technologies with Simplified Chinese translation.
-	pkgver = 0.52.0_20220601
+	pkgver = 0.52.2_20220610
 	pkgrel = 1
 	url = https://github.com/Nriver/trilium-translation
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = trilium-bin-cn
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	source = https://github.com/Nriver/trilium-translation/releases/download/v0.52.0_20220601/trilium-cn-linux-x64.zip
-	sha256sums = 47764e3e2352778dd78f8454049a0fafb2e57c4e908039bfd028a6f430c326c3
+	source = https://github.com/Nriver/trilium-translation/releases/download/v0.52.2_20220610/trilium-cn-linux-x64.zip
+	sha256sums = 26367c91acd1d56d7ec4d32936ca370ca035aa753012917caf20debb36f356c3
 
 pkgname = trilium-bin-cn
