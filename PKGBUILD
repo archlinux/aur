@@ -4,17 +4,19 @@
 pkgname=apm
 pkgver=2.6.5
 _sha=ade8fbe124b18f5949a6b20b8e02a551d5405d67
-pkgrel=4
+pkgrel=3
 pkgdesc='Atom package manager'
 arch=(x86_64)
 url="https://github.com/atom/$pkgname"
 license=(MIT)
-_electron=electron14 # must match atom package
+_electron=electron11 # must match atom package
 depends=(# libgit2{,.so} # see https://bugs.archlinux.org/task/74164
          libsecret
-         nodejs)
+         nodejs-lts-gallium)
 makedepends=(git
+             # node-gyp
              npm)
+             # python)
 provides=(nodejs-atom-package-manager)
 conflicts=(nodejs-atom-package-manager)
 replaces=(nodejs-atom-package-manager)
