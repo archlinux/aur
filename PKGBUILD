@@ -19,7 +19,7 @@ set -u
 pkgname=teamviewer
 pkgname+='-beta'
 pkgver=15.31.3
-pkgrel=6
+pkgrel=10
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://www.teamviewer.com/en-us/download/linux/'
@@ -43,8 +43,8 @@ _dl='https://dl.tvcdn.de'
 source_x86_64=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_amd64.deb")
 source_i686=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer_${pkgver}_i386.deb")
 source_armv7h=("${_dl}/download/linux/version_${pkgver%%.*}x/teamviewer-host_${pkgver}_armhf.deb")
-sha512sums_i686=('276a91c1a299986dbcc5813c09e041f5e1897dcc1d00692484573e25c822005918b8113756aa3ba68944cb4cd36a3d401779d6a15f1dacc2c56b60d6d155c3f8')
-sha512sums_x86_64=('1a1777257a3207865cee1fcd843c91ebb017b5e818f8762997ed2fb848d169898017c2ca36e50d438f29b4a3b071787a9cd3a6141cdad88ce3adea85ef94e99a')
+sha512sums_i686=('dba8af1e1587009e69feeba60c79b0c1acb21b405738304cb11c66244b76f4e59ee78eb15c357493bd6a6f3c3463d44b92728ca13a66bf56a81d1a385c4e217c')
+sha512sums_x86_64=('7a9f0d00dfd9576c47435ddce4e5f7a18c5523983e495038e3ccd28105676982d2fd25782c10b93ed0e8cab45a908cb9de0928b519a8e7e526dd88b142377117')
 sha512sums_armv7h=('9743296c0617aeec20e00417c3b96a3e467ad4a8c3cd3a42729f455244ec964657d3fbd689e5a207440cbcf734c08464ee7c030bb1d15d4bb593826a5a137751')
 
 case "${_opt_Type}" in
