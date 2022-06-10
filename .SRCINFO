@@ -1,7 +1,7 @@
 pkgbase = teamviewer-beta
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
 	pkgver = 15.31.3
-	pkgrel = 1
+	pkgrel = 5
 	url = https://www.teamviewer.com/en-us/download/linux/
 	install = teamviewer.install
 	arch = i686
