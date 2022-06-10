@@ -1,5 +1,5 @@
 pkgname=ayam
-pkgver=1.23
+pkgver=1.30
 pkgrel=1
 pkgdesc="Ayam is a free 3D modelling environment for the RenderMan interface."
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ conflicts=()
 
 _prefix=/opt/$pkgname
 
-source_i686=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.linux.i386.tar.gz)
-source_x86_64=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.linux.amd64.tar.gz)
+source_i686=(http://sourceforge.net/projects/ayam/files/Ayam/$pkgver/$pkgname-$pkgver.linux32.tar.gz)
+source_x86_64=(http://sourceforge.net/projects/ayam/files/Ayam/$pkgver/$pkgname-$pkgver.linux64.tar.gz)
 
-md5sums_i686=('175769c393cd97b07f194fc6a237d18a')
-md5sums_x86_64=('69a29c81706452ad751ea86c1c83352e')
+md5sums_i686=('b2c0864aa26a00137a67bc25e98234f2')
+md5sums_x86_64=('1b17d38057e02604bcbc5fcc2d45196d')
 
 package() {
   cd "$srcdir"
