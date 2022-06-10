@@ -1,15 +1,14 @@
 pkgbase = python2-liblnk
 	pkgdesc = Library and tools to access the Windows Shortcut File (LNK) format
-	pkgver = 20151205
+	pkgver = 20210417
 	pkgrel = 1
-	url = https://github.com/libyal/liblnk/
+	url = https://github.com/libyal/liblnk
 	arch = any
-	license = LGPLv3+
-	makedepends = python2
+	license = LGPL
+	makedepends = python2-setuptools
 	makedepends = gcc
 	depends = python2
-	source = https://pypi.python.org/packages/source/l/liblnk-python/liblnk-python-20151205.tar.gz#md5=e1bc3423fb60fc4d365e2ab094b97a39
-	md5sums = e1bc3423fb60fc4d365e2ab094b97a39
+	source = https://pypi.org/packages/source/l/liblnk-python/liblnk-python-20210417.tar.gz
+	sha512sums = d39d4225ee15da850a5b280a5483331a0d5772dbdfd815eee61b4dd29d6a27f10e2b8cad10e43224d790fa864c0512fce43725a7b8ccabc5ee8deb4705cfa2cb
 
 pkgname = python2-liblnk
-
