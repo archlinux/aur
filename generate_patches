@@ -91,7 +91,7 @@ sed \
 	-e 's#^;extension_dir = "\./"$#extension_dir = "/usr/lib/php/modules/"#g' \
 	-i php.ini-production
 
-diff -u configure.orig sapi/apache2handler/config.m4 | filterdiff --clean --remove-timestamps > ../../apache.patch
+diff -u configure sapi/apache2handler/config.m4 | filterdiff --clean --remove-timestamps > ../../apache.patch
 diff -u sapi/apache2handler/config.m4.orig sapi/apache2handler/config.m4 | filterdiff --clean --remove-timestamps > ../../apache.patch
 
 {

@@ -24,26 +24,29 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=8.0.3
+pkgver=8.1.7
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
-makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
+makedepends=('apache' 'aspell' 'c-client' 'db' 'gdbm' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl'
              'oniguruma')
 checkdepends=('procps-ng')
+options=(debug)
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('c9816aa9745a9695672951eaff3a35ca5eddcb9cacf87a4f04b9fb1169010251'
+sha256sums=('f042322f1b5a9f7c2decb84b7086ef676896c2f7178739b9672afafa964ed0e5'
             'SKIP'
             'c24122c0a742d3f153d52076137e737da0191584dab178bafed547b3bf2a28e8'
             'aee6ee73d1b3cf161069c355e8472a2ceda0886e98bf6a69d57c1dcf6b09ab17'
-            '2228131cc65139bd819b617bba06c2406e559c55fbfb38a29f9853ce48c58eeb'
+            'aa55fa4fc5c2b2493065bbd00cfe3c97a1b22b3dc7d34f8fd303de18cafe844f'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            'b538a7c974adde626c35481e4a66d506dc12c598f369dfe79f3fcb9585d8b920')
-validpgpkeys=('1729F83938DA44E27BA0F4D3DBDB397470D12172'
-              'BFDDD28642824F8118EF77909B67A5C12229118F')
+            'b3b3385f1c36e272671c7db238b2a69896e11a82db90dafd74964f2eabbfa2f2')
+validpgpkeys=('F1F692238FBC1666E5A5CCD4199F9DFEF6FFBAFD',
+              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E'
+              '39B641343D8C104B2B146DC3F9C39DC0B9698544')
+_interpreter=${pkgver%.*}
 
 prepare() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -70,6 +73,7 @@ build() {
 		--with-config-file-scan-dir=/etc/php/conf.d \
 		--disable-rpath \
 		--mandir=/usr/share/man \
+		--disable-gcc-global-regs \
 		"
 
 	local _phpextensions="\
@@ -181,10 +185,11 @@ check() {
 
 package_php-zts() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development(ZTS enabled)'
-	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2' 'oniguruma')
+	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2' 'oniguruma' 'db' 'gdbm')
 	replaces=("${_pkgbase}" 'php-ldap')
 	conflicts=("${_pkgbase}" 'php-ldap')
 	provides=("${_pkgbase}=${pkgver}" "php-ldap=${pkgver}")
+
 	backup=('etc/php/php.ini')
 
 	cd "${srcdir}/build"
