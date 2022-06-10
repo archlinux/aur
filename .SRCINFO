@@ -1,6 +1,6 @@
 pkgbase = lfp
 	pkgdesc = LF-Preview, a wrapper for the lf file manager with image previews, and other features
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://gitlab.com/a4to/lfp
 	install = lfp.install
@@ -16,12 +16,12 @@ pkgbase = lfp
 	optdepends = dialog: Required by many lfp functions outside the scope of image and video previews
 	optdepends = dunst: To receive notifications upon task completion and so forth
 	optdepends = git: cloning repos from within lfp
-	source = https://concise.cc/pkg/lfp-2.1-1-x86_64.pkg.tar.zst
-	source = https://concise.cc/pkg/lfp-2.1-1-x86_64.pkg.tar.zst.sig
+	source = https://concise.cc/pkg/lfp-2.2-1-x86_64.pkg.tar.zst
+	source = https://concise.cc/pkg/lfp-2.2-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = eff6f236a5177f0e87830aa542f275c6
-	md5sums = ab44feb47fc0fe4dc069c61b2de5f930
-	sha512sums = e25ce8568ac9f906bab4400052ccdddae95014c6b42b86a21a11def0e12400cf2820f6db34c27d5578d8e095e645aa74ad6307bff990bcde697bc47d63b34491
-	sha512sums = 96053ded7f628d5c537a51342c0f177a4cb8eae381bb92fb2bc09d05679e9789ac311a9c2c2147ec8079c94a7a8f871a61ca9c301c4552af347cecf6d41712b2
+	md5sums = 234df6b6cc8668660536df96c0afd624
+	md5sums = 37c2c28ca265492d2a3f2af952856d3e
+	sha512sums = 0a6947c6bff4434de7c34a365e89ab057519faca1d7dcbcf5e368660495d99f029d8dc6058025b348d6cc1eb73a036727c4ce4c1ef60b7bc52adfc84af57e817
+	sha512sums = 73a3066695b0216a889ed693b7fde93f498a73cd2775a2a32ca382c9780f06af6cc3988be309908b398647c7dbe2f988c4f0fe1e8ce64d0999444fe7381d9d74
 
 pkgname = lfp
