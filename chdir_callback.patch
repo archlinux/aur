@@ -1,0 +1,28 @@
+--- src/nemo-window.c.orig	2022-06-10 16:01:47.437275161 -0400
++++ src/nemo-window.c	2022-06-10 17:11:00.884108795 -0400
+@@ -1958,10 +1958,25 @@
+  */
+ 
+ static void
++chdir_callback(NemoWindow *window, void *_)
++{
++	NemoWindowSlot *slot = nemo_window_get_active_slot(window);
++	if (slot == NULL) return;
++	GFile *location = nemo_window_slot_get_location(slot);
++	if (location == NULL) return;
++	char * path = g_file_get_path(location);
++	if (path == NULL) return;
++	chdir(path);
++	g_free(path);
++}
++
++static void
+ nemo_window_init (NemoWindow *window)
+ {
+     GtkWindowGroup *window_group;
+ 
++	g_signal_connect(window, "focus-in-event", G_CALLBACK(chdir_callback), NULL);
++
+ 	window->details = G_TYPE_INSTANCE_GET_PRIVATE (window, NEMO_TYPE_WINDOW, NemoWindowDetails);
+ 
+ 	window->details->panes = NULL;
