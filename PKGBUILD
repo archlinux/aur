@@ -2,7 +2,7 @@
 pkgname=activate-linux
 pkgver=0.0.2
 _pkg="$pkgname-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
 
