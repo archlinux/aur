@@ -1,22 +1,23 @@
 # Maintainer: Jonathan Waldrep <spartan074@gmail.com>
 pkgname=vim-racket-git
-pkgver=r141.55aba05
+pkgver=r159.32ad231
 pkgrel=1
 pkgdesc="Syntax and supporting functionality for the racket filetype"
 arch=('any')
 url="https://github.com/wlangstroth/vim-racket"
 license=('MIT')
+depends=('vim')
 makedepends=('git')
-source=('git://github.com/wlangstroth/vim-racket.git')
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/vim-racket
+  cd vim-racket
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $srcdir/vim-racket
+  cd vim-racket
 
   # Install license
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
