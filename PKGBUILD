@@ -10,7 +10,7 @@ provides=('libxft')
 conflicts=('libxft')
 url="https://gitlab.freedesktop.org/xorg/lib/libxft.git"
 depends=('fontconfig' 'libxrender' 'xorg-util-macros')
-makedepends=('git' 'pkgconf' 'automake' 'autoconf')
+makedepends=('git' 'pkgconf' 'automake' 'autoconf' 'patch' 'make' 'libtool' 'gcc')
 source=("git+$url" '1.patch')
 md5sums=('SKIP' '49c10bb362132e2c0e37296ae95db279')
 
