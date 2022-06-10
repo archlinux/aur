@@ -7,7 +7,7 @@ declare pkgdir
 
 export pkgname="gradle-language-server"
 export pkgver="3.12.1"
-export pkgrel="2"
+export pkgrel="3"
 export epoch=
 export pkgdesc="Microsoft's Gradle language server"
 export url="https://github.com/microsoft/vscode-gradle"
@@ -21,7 +21,7 @@ export md5sums=("SKIP")
 export groups=()
 export arch=("any")
 export backup=()
-export depends=("java-runtime")
+export depends=("java-runtime" "bash")
 export makedepends=()
 export checkdepends=()
 export optdepends=()
@@ -39,6 +39,8 @@ check() {
 }
 
 package() {
-	install -Dm 644 "$_ls_jar" "$pkgdir/usr/share/java/gradle-language-server.jar"
+	install -d "$pkgdir/usr/share/java"
+	cp -r "extension" "$pkgdir/usr/share/java/gradle-language-server"
+
 	install -Dm 644 "extension/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
