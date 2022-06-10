@@ -2,7 +2,7 @@
 # Contributor: danb (danb) <danb (at) hasi.it>
 
 pkgname=avizo
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A neat notification daemon"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('af44eda6d5247817396dc675b6823905f2c060f5bcefaa64f2c19ff61a7a7e36')
+sha256sums=('efd4763db7c802d22e8939dac909d4886f5967aefbfc3fd526735da2a814b91b')
 
 build() {
   cd $pkgname-$pkgver
