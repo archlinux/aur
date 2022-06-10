@@ -1,7 +1,7 @@
 pkgbase = irssi-python
 	pkgdesc = Provides Python scripting support for Irssi
 	pkgver = test5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://irssi.org/
 	install = irssi-python.install
 	arch = x86_64

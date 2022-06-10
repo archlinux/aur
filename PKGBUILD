@@ -7,7 +7,7 @@
 
 pkgname=irssi-python
 pkgver=test5
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides Python scripting support for Irssi"
 url="http://irssi.org/"
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
     export PKG_CONFIG_PATH="$srcdir/irssi-python"
     autoreconf -ivf -I.
     # Build
-    ./configure
+    ./configure --prefix=/usr
     make -C src constants
     make
     libtool --finish /usr/lib/irssi/modules
