@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=bitburner
-pkgver=1.6.4
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Bitburner is a programming-based incremental game"
 arch=('x86_64')
 url="https://github.com/danielyxie/bitburner"
@@ -10,7 +10,8 @@ depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('steam: achievement support'
             'steam-native-runtime: achievement support')
-source=("git+$url#tag=v$pkgver"
+_commit='535812a0fc4307a7bf767fdcca760f39d3206ade'  # latest master
+source=("git+$url#commit=$_commit"
         "bitburner.desktop")
 sha256sums=('SKIP'
             '475d10bd934a85f5487f5359a5843fdb6f0dff03d8a88c4c81cba45b4cb07114')
