@@ -1,6 +1,6 @@
 pkgbase="imd-git"
 pkgname="imd-git"
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Improved MarkDown Reader"
 
