@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -46,7 +46,7 @@ sha512sums=('61f7da4500d11907326a2ee656f143e4942e19a259a726239132ffa43c157027aa0
 
 build() {
   cd "SOGo-${pkgver}"
-  ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) --disable-debug
+  ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) --disable-debug --enable-mfa
   make
 }
 
