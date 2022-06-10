@@ -37,7 +37,7 @@ prepare() {
   # Rename 'Files' app name to avoid having the same as nautilus
   sed -i '/^\[Desktop Entry/,/^\[Desktop Action/ s/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in
 
-  patch -u src/nemo-pathbar.c -i ../../chdir.patch
+  patch -u src/nemo-window-manage-views.c -i ../../chdir.patch
 }
 
 build() {
