@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab_code_formatter
 pkgver=1.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
 url=https://pypi.org/project/${pkgname//_/-}
