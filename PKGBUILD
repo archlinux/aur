@@ -2,8 +2,8 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=gittyup
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://github.com/Murmele/${pkgname^}"
 arch=(x86_64)
@@ -56,6 +56,7 @@ prepare() {
 	git config submodule.dep/openssl/openssl.url "$srcdir/$pkgname-openssl"
 	git config submodule.dep/cmark/cmark.url "$srcdir/$pkgname-cmark"
 	git submodule update
+	sed -i -e 's/cmark_exe/cmark/' src/app/CMakeLists.txt
 	# https://github.com/Murmele/Gittyup/issues/167
 	sed -i \
 		-e '/CONF_DIR/{s!SOURCE!BINARY!;s!/conf!/Resources!}' \
