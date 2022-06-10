@@ -8,4 +8,4 @@ Target = precompile-bits-stdc++.h
 [Action]
 Description = Removing precompiled bits/stdc++.h...
 When = PreTransaction
-Exec = /usr/bin/sh -c "rm /usr/include/c++/*/x86_64-pc-linux-gnu/bits/stdc++.h"
+Exec = /usr/bin/sh -c "rm /usr/include/c++/*/x86_64-pc-linux-gnu/bits/stdc++.h.gch"
