@@ -1,14 +1,14 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=terraboard
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=3
 pkgdesc="A web dashboard to inspect Terraform States."
 arch=('x86_64')
 url="https://github.com/camptocamp/terraboard/"
 license=('Apache-2')
 source=("${pkgname}-${pkgver}_linux_amd64.zip::https://github.com/camptocamp/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.zip")
-sha256sums=('d43f3bff8d95138fed816f4dcd025df6dbcfcfdc73579fe96ceaeaae85caafd4')
+sha256sums=('4c490da80d6934a3830274ca01537981489c88fb95b26df52a66f79d2dbf3f58')
 
 package() {
   cd "${srcdir}"
