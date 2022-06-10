@@ -3,7 +3,7 @@
 
 pkgname=gittyup
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://github.com/Murmele/${pkgname^}"
 arch=(x86_64)
@@ -56,6 +56,11 @@ prepare() {
 	git config submodule.dep/openssl/openssl.url "$srcdir/$pkgname-openssl"
 	git config submodule.dep/cmark/cmark.url "$srcdir/$pkgname-cmark"
 	git submodule update
+	# https://github.com/Murmele/Gittyup/issues/167
+	sed -i \
+		-e '/CONF_DIR/{s!SOURCE!BINARY!;s!/conf!/Resources!}' \
+		-e '/L10N_DIR/{s!/l10n!/Resources/l10n!}' \
+		src/conf/CMakeLists.txt
 }
 
 build() {
