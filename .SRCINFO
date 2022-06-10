@@ -1,0 +1,15 @@
+pkgbase = quiltflower
+	pkgdesc = Java decompiler focused on improving code quality, speed, and usabiltiy.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/QuiltMC/quiltflower/
+	arch = any
+	license = Apache
+	depends = java-runtime
+	depends = sh
+	provides = fernflower-git=r482.7f65f48b
+	noextract = quiltflower-1.8.1.jar
+	source = https://github.com/QuiltMC/quiltflower/releases/download/1.8.1/quiltflower-1.8.1.jar
+	sha256sums = aac513ef9f9ddafca94ba2992b2a5cab68d18694f07f2c638d0f92110956e01b
+
+pkgname = quiltflower
