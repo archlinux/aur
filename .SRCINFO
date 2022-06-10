@@ -1,6 +1,6 @@
 pkgbase = lib_amxb-git
 	pkgdesc = Generic C-implementation for Ambiorix Backend library
-	pkgver = 4.2.7.r0.g472866e
+	pkgver = 4.2.8.r0.g5e35b69
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxb.git
 	arch = x86_64
