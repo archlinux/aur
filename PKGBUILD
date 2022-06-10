@@ -321,9 +321,9 @@ package() {
  	
  	mkdir -p "$pkgdir"/usr/share/icons
  	install -m644 "$srcdir"/$_gitname/misc/logos/xonotic_icon.svg "$pkgdir"/usr/share/icons
- 	install -m755 xonotic-glx.desktop "$pkgdir"/usr/share/applications
- 	install -m755 xonotic-sdl.desktop "$pkgdir"/usr/share/applications
- 	install -m755 xonotic-dedicated.desktop "$pkgdir"/usr/share/applications
+ 	install -m755 "$srcdir"/xonotic-glx.desktop "$pkgdir"/usr/share/applications
+ 	install -m755 "$srcdir"/xonotic-sdl.desktop "$pkgdir"/usr/share/applications
+ 	install -m755 "$srcdir"/xonotic-dedicated.desktop "$pkgdir"/usr/share/applications
 	#readded these, sorry upstream! doubt anyone cares tho, since this package is basically dead.
 #        msg "NOT WRITTEN YET!"
 }
