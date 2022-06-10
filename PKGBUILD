@@ -2,12 +2,12 @@
 pkgname=python-jaraco.packaging
 _name=${pkgname#python-}
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
 url="https://github.com/jaraco/jaraco.packaging"
 license=('MIT')
-depends=('python' 'python-jaraco' 'python-pep517')
+depends=('python' 'python-pep517')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 #makedepends+=('python-pip' 'python-rst.linker' 'python-sphinx') # for building docs
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
