@@ -2,7 +2,7 @@
 
 _pkgname="fluent-reader"
 pkgname="$_pkgname-bin"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 
 pkgdesc="Modern desktop RSS reader built with Electron, React, and Fluent UI."
@@ -23,7 +23,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/yang991178/fluent-reader/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('e2e3ff10d18fb715569cd1853026f9c381d2bb1f7186bd4acdda9844ccdbc9d13d7095a884f719dae83c8e74133e9388ac06fd8f842f89e2db6944a2b21e7a65'
+b2sums=('9579e64c74bdecc930acc4662562930875e6fb9b92580b90582feb84531f15162fdd81f18093374a83ebdabfa25e6bfff513f381388f2516a2c6fdcf0f0e8760'
 	'0a8e04b682d991c30efd88ff67147b221eaf09e12c7234a776a90897bbedeb8379f73c5d853121f1b37d54bb510ea1bf223b8ef0f480ad3156c4159cbd78f0ac')
 
 prepare() {
@@ -49,6 +49,8 @@ package() {
 		chmod -v 755 "${pkgdir}/opt/${pkgname}/$d"
 		find "${pkgdir}/opt/${pkgname}/$d" -type d -exec chmod -v 755 {} +
 	done
+        chown root:root "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+        chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
 	# Link entry point
 	install -vdm 755 "${pkgdir}/usr/bin"
