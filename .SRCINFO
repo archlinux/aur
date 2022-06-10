@@ -1,7 +1,7 @@
 pkgbase = gradle-language-server
 	pkgdesc = Microsoft's Gradle language server
 	pkgver = 3.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode-gradle
 	arch = any
 	license = custom:MIT

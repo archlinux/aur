@@ -7,7 +7,7 @@ declare pkgdir
 
 export pkgname="gradle-language-server"
 export pkgver="3.12.1"
-export pkgrel="1"
+export pkgrel="2"
 export epoch=
 export pkgdesc="Microsoft's Gradle language server"
 export url="https://github.com/microsoft/vscode-gradle"
@@ -36,7 +36,6 @@ check() {
 	local payload='{"jsonrpc":"2.0","id":1,"method":"exit","params":{}}'
 	local message="Content-Length: ${#payload}\r\n\r\n${payload}"
 	timeout 10s bash -c "echo -ne '$message' | java -jar '$_ls_jar'"
-	exec test $? -eq 0
 }
 
 package() {
