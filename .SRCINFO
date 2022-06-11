@@ -1,13 +1,13 @@
 pkgbase = hare-irc
 	pkgdesc = IRC client protocol implementation for Hare
-	pkgver = r26.be10813
+	pkgver = r29.5ed3d5e
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-irc
 	arch = any
 	license = MPL2
 	makedepends = git
 	depends = hare
-	source = hare-irc::git+https://git.sr.ht/~sircmpwn/hare-irc#commit=be10813e1898314be0851d2c50d5fbafd9ac39aa
+	source = hare-irc::git+https://git.sr.ht/~sircmpwn/hare-irc#commit=5ed3d5e98d2cfe4e07bc81f395a996ff997d1a06
 	md5sums = SKIP
 
 pkgname = hare-irc
