@@ -17,7 +17,7 @@ _url='https://github.com/uutils/coreutils'
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
 conflicts=('coreutils' 'coreutils-hybrid')
 provides=('coreutils' 'coreutils-hybrid')
-makedepends=('rust' 'cargo' 'gperf')
+makedepends=('rust' 'cargo' 'gperf' 'rsync')
 source=("coreutils::git+https://git.savannah.gnu.org/git/coreutils.git"
         "uutils::git+https://github.com/uutils/coreutils.git")
 sha512sums=('SKIP'
@@ -36,7 +36,7 @@ build() {
       --prefix=/usr \
       --libexecdir=/usr/lib \
       --with-openssl \
-      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,env,echo,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tac,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,who,wc,whoami,yes"
+      --enable-no-install-program="groups,hostname,kill,uptime,arch,base32,base64,basename,cat,chgrp,chmod,chown,chroot,cksum,comm,csplit,cut,dircolors,dirname,du,env,echo,expand,factor,false,fmt,fold,groups,head,hostid,hostname,id,kill,link,logname,mkdir,mkfifo,mknod,mktemp,mv,nice,nl,nohup,nproc,paste,pathk,pinky,printenv,ptx,pwd,readlink,relpath,rm,rmdir,seq,shred,shuf,sleep,stdbuf,sum,sync,tee,timeout,tr,true,truncate,tsort,tty,uname,unexpand,uniq,unlink,uptime,users,who,wc,whoami,yes"
 }
 
 package() {
