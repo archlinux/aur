@@ -1,13 +1,13 @@
 pkgbase = hare-md5
 	pkgdesc = MD5 implementation for Hare
-	pkgver = r1.85e0e0b
+	pkgver = r3.65e68b1
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-md5
 	arch = any
 	license = MPL2
 	makedepends = git
 	depends = hare
-	source = hare-md5::git+https://git.sr.ht/~sircmpwn/hare-md5#commit=85e0e0bc6255e23a28eff729ff04f20e00d14774
+	source = hare-md5::git+https://git.sr.ht/~sircmpwn/hare-md5#commit=65e68b144edef9a84ce663b7e5064c8dd72cdb06
 	md5sums = SKIP
 
 pkgname = hare-md5
