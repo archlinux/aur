@@ -1,7 +1,7 @@
 pkgbase = r-mungesumstats
 	pkgdesc = Standardise summary statistics from GWAS
-	pkgver = 1.4.4
-	pkgrel = 3
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = https://bioconductor.org/packages/MungeSumstats
 	arch = any
 	license = Artistic2.0
@@ -38,7 +38,7 @@ pkgbase = r-mungesumstats
 	optdepends = r-snplocs.hsapiens.dbsnp144.grch38
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MungeSumstats_1.4.4.tar.gz
-	sha256sums = 652d2ef82fc808fb8ee4e1e248c6e3962f6cf30e82759d213bdd7939bf21a93a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MungeSumstats_1.4.5.tar.gz
+	sha256sums = a2f5affb853cf643f6084aa043e699e7f1559979b971d6c03fee5e794b7f8891
 
 pkgname = r-mungesumstats
