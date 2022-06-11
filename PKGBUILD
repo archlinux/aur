@@ -2,13 +2,13 @@
 
 pkgname=sdkmanager
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a drop-in replacement for sdkmanager from the Android SDK written in Python"
 arch=('any')
 url="https://gitlab.com/fdroid/sdkmanager"
 license=('AGPL3')
 depends=(python python-argcomplete python-requests)
-optdepends=(gpg)
+optdepends=(gnupg)
 makedepends=(python-setuptools)
 source=("https://gitlab.com/fdroid/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
