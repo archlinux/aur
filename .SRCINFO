@@ -1,0 +1,14 @@
+pkgbase = python-ale-py
+	pkgdesc = The Arcade Learning Environment (ALE) - a platform for AI research.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/mgbellemare/Arcade-Learning-Environment
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = vcpkg
+	makedepends = python-pytest
+	source = python-ale-py-0.7.5.tar.gz::https://github.com/mgbellemare/Arcade-Learning-Environment/archive/v0.7.5.tar.gz
+	md5sums = f6c0d5298b0a2ce469902f188271acb4
+
+pkgname = python-ale-py
