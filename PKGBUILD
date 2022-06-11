@@ -9,7 +9,7 @@
 # Maintainer: Demir Yerli <mrquantumoff@protonmail.com>
 pkgname=quartzctl
 pkgver=v0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="libquartz based apps control utility"
 arch=(x86_64)
 url="https://github.com/Bultek/quartzctl"
@@ -20,7 +20,7 @@ makedepends=('git' 'cargo' 'rust')
 replaces=()
 backup=()
 options=()
-source=(git+https://github.com/Bultek/quartzctl.git)
+source=("https://github.com/Bultek/quartzctl/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 
