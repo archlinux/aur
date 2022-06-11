@@ -37,6 +37,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
 
   patch --strip=1 < "${srcdir}/string.patch"
+  sed -i 's/putstr/printf/g' gazebo/gui/qgv/private/QGVCore.h
 }
 
 build() {
