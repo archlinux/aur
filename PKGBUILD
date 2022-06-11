@@ -2,12 +2,12 @@
 # template start; name=git; version=1;
 # template start; name=git-source; version=1;
 pkgname=skylobby-git
-pkgver=0.7.75.r0.g2f3363d
+pkgver=0.8.38.r5.gf5533d4
 pkgdesc="A Spring RTS lobby and replay viewer written in Clojure"
 pkgrel=1
 arch=('any')
-makedepends+=('git' 'clojure' 'java-environment>=14')
-depends+=('sh' 'java-runtime>=14')
+makedepends+=('git' 'clojure' 'java-environment=17' 'java17-openjfx')
+depends+=('sh' 'java-runtime=17' 'java17-openjfx')
 license=('MIT')
 url="https://github.com/skynet-gh/skylobby"
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
@@ -33,6 +33,9 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 build() {
   cd ${_gitname:-$pkgname}
+  export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+  export JAVA_CMD="$JAVA_HOME/bin/java"
+  export PATH="$JAVA_HOME/bin:$PATH"
   clojure -M:uberjar
 }
 
