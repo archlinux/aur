@@ -1,7 +1,7 @@
 pkgbase = t-twitter-cli
 	pkgdesc = A command-line power tool for Twitter
 	pkgver = 3.1.0.git20200213
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sferik/t
 	arch = x86_64
 	license = custom
@@ -10,11 +10,11 @@ pkgbase = t-twitter-cli
 	options = !emptydirs
 	source = t::git+https://github.com/sferik/t.git#commit=d8b549fc1c78427f16de31a75d0f56cbca32536d
 	source = Gemfile.lock
-	source = http-ruby27.patch::https://github.com/httprb/http/commit/2d9921b45e1afcd1adac5eafe97be521a54d464f.patch
-	source = twitter-procnew.patch::https://github.com/sferik/twitter/commit/adb918178295de0eaf022241f71d0544123b83ab.patch
+	source = http-ruby27.patch::https://github.com/httprb/http/commit/2d9921b45e1afcd1adac5eafe97be521a54d464f.patch?full_index=1
+	source = twitter-procnew.patch::https://github.com/sferik/twitter/commit/adb918178295de0eaf022241f71d0544123b83ab.patch?full_index=1
 	sha512sums = SKIP
 	sha512sums = 04f26b59753276e91f3a9065210cd18b95f5a61272d9022d04a0beae495c824ec6f359d6af321deff3dbc7fab0197e8c3a57ebdcdd64559a72ec8b17e6cc6d43
-	sha512sums = 2e0149268600a0895f7846045dd6354e67c5d8689ac8438a9458fe5fadc4dee143d95dcb6b34a953df2fe9fff690441cb56dd0c60762001ad073de4504adbcbc
-	sha512sums = 5041bfb1426c594abce7f9790632257a44fd538fa87b7d5a96818b1a337f74cc21bc1d86974f5e83468803f647bf87352c3e9e8da67c1a297c6008118b4fed4e
+	sha512sums = c669b94b859afea0f3d5d8f40b5cd036ca217934e22b50a50958e251efa8388a1da9e99085b05d5291870cc1c2398254977241b60d68d6c3026075f450e76234
+	sha512sums = 6ec76e33c9faff7c59a0e36d7d1ebc0162ea115bee5789600b67f25912dbb9b928e717c52e472c4677bd783930aad0c0b6bd7ee3d3751087398e2d977b713efb
 
 pkgname = t-twitter-cli
