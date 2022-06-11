@@ -2,9 +2,9 @@
 
 pkgname=plasma5-wallpapers-wallpaper-engine
 _pkgname=wallpaper-engine-kde-plugin
-pkgver=0.5.2
-_pkgver_glslang=11.9.0
-pkgrel=2
+pkgver=0.5.3
+_pkgver_glslang=11.10.0
+pkgrel=1
 pkgdesc='A KDE wallpaper plugin integrating wallpaper engine'
 arch=('x86_64')
 url='https://github.com/catsout/wallpaper-engine-kde-plugin'
@@ -15,8 +15,8 @@ optdepends=('qt5-webchannel: for web support'
 	'mpv: alternative video backend')
 source=("https://github.com/catsout/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://github.com/KhronosGroup/glslang/archive/refs/tags/${_pkgver_glslang}.tar.gz")
-sha256sums=('dc4cc8d9282bb8f16662851acaf0a4622d24a096388810e8eb1ff31492c00a0b'
-	'd5744adba19eef9ad3d73f524226b39fec559d94cb582cd442e3c5de930004b2')
+sha256sums=('3278849fe3ec09640ccc0d3f4d88070b5b1b59cd7d5e3e1744e30ad584923184'
+	'8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602')
 
 prepare() {
 	mv -T "glslang-${_pkgver_glslang}" "${_pkgname}-${pkgver}/src/backend_scene/third_party/glslang"
