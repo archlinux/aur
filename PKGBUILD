@@ -5,9 +5,9 @@
 
 pkgname=fldigi
 pkgver=4.1.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Modem Program for Amateur Radio"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://w1hkj.com"
 license=('GPL')
 depends=('cty' 'fltk' 'libsamplerate' 'flxmlrpc>=1.0.1'
