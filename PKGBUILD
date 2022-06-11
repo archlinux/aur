@@ -18,22 +18,22 @@
 pkgname=quiltflower
 pkgdesc='Java decompiler focused on improving code quality, speed, and usabiltiy.'
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/QuiltMC/${pkgname}/"
 license=('Apache')
 depends=('java-runtime' 'sh')
-provides=('fernflower-git=r482.7f65f48b')
+provides=('fernflower=r482.7f65f48b' 'fernflower-git=r482.7f65f48b')
 _file="${pkgname}-${pkgver}.jar"
 source=("${url}releases/download/${pkgver}/${_file}")
 noextract=(${_file})
 sha256sums=('aac513ef9f9ddafca94ba2992b2a5cab68d18694f07f2c638d0f92110956e01b')
 
 package() {
-    # install the jar file
+    # place jar file in /usr/share/java/quiltflower/quiltflower-x.x.x.jar
     install -Dm644 ${_file} "${pkgdir}/usr/share/java/${pkgname}/${_file}"
 
-    # create a script that launches the jar file and can be put in /usr/bin
+    # place a script that will launch the jar file in /usr/bin under the name quiltflower
     install -d "${pkgdir}/usr/bin"
 
     printf "#!/bin/sh\n" > "${pkgdir}/usr/bin/${pkgname}"
