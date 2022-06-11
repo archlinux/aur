@@ -1,0 +1,14 @@
+pkgbase = stardict-urban
+	pkgdesc = Urban Dictionary (English) for StarDict
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://download.huzheng.org/
+	arch = any
+	license = unknown
+	depends = stardict
+	source = http://download.huzheng.org/bigdict/stardict-Urban_Dictionary_P1-2.4.2.tar.bz2
+	source = http://download.huzheng.org/bigdict/stardict-Urban_Dictionary_P2-2.4.2.tar.bz2
+	b2sums = 465ce5c5566332d1afade8c0f0fff02c3f0b2960e530147c0c189f0012ee16cedbce6005a186a5f1471bfb4b582ec6916a8e66431f3280d611e149cb3b36d4ee
+	b2sums = eb1df865de76578b688713df4e4ee04d75c8079143937b2f120edb25d19cd026b5fca087453a08b978f3fa785dbbf27def1ff43d2b47692531f775081c91eb45
+
+pkgname = stardict-urban
