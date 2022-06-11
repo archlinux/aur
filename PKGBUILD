@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-django' 'python-celery' 'python-crontab')
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('ff694e1d30f84de3d2b78822c90005c6c7c1462768e845ae162af71a6a46f1eb')
+sha256sums=('ba24f86ed956ba0ee2b43237a49303ebf5aa7e0fb0ccb7e0542b7e31a463dcba')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
