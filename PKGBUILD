@@ -4,7 +4,7 @@
 
 pkgname=stardict-langdao-ce-gb
 pkgver=2.4.2
-pkgrel=1
+pkgrel=5
 pkgdesc='LangDao Chinese-English dictionary for StarDict'
 arch=('any')
 url='http://download.huzheng.org/'
