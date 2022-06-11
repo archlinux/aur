@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pdal
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="A C++ library for translating and manipulating point cloud data (mingw-w64)"
 arch=('any')
@@ -9,12 +9,13 @@ depends=('mingw-w64-gdal' 'mingw-w64-libgeotiff' 'mingw-w64-jsoncpp' 'mingw-w64-
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/PDAL/PDAL/releases/download/${pkgver}/PDAL-${pkgver}-src.tar.gz")
-sha256sums=('4df8463f68087e3742691048f5ab9db04269fc54bc418e4dc53e2c761bd825f2')
+sha256sums=('582309942dc7b0fe9c3e652aa4c9c3ec3b8c6f56401a0bf3f6237d3347e8f616')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "PDAL-$pkgver-src/"
+  curl -L https://github.com/PDAL/PDAL/pull/3778.patch | patch -p1
 }
 
 build() {
