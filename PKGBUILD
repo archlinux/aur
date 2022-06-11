@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=kernlab
-_cranver=0.9-30
+_cranver=0.9-31
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=(r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('48fc3a839ae57e8ab6ec26a34093ca3306391e7b271bef6e69812e2b4859ee81')
+sha256sums=('7359c665c1c5e6780e1ce44b143347c8eec839301c3079d7f19e29159873278a')
 
 build() {
   mkdir -p build
