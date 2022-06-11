@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=100.0
-pkgrel=1
+pkgver=101.0.1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -17,7 +17,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss ttf-font libpulse
          aom harfbuzz graphite
          libvpx libjpeg zlib icu libevent pipewire dav1d)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
+makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f'
+sha256sums=('b4c76e8bdf81f473f3e56b2f69dbe5119bba5cab38e36ab0f3f38cf0cdc4a9c2'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -61,7 +61,6 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --enable-linker=lld
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
-ac_add_options --with-ccache
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
@@ -132,37 +131,22 @@ END
   # Gentoo patches
   msg2 "---- Gentoo patches"
 
-  patch -Np1 -i ${_patches_dir}/gentoo/0001-Don-t-use-build-id.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0007-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-1516803-Fix-building-sandbox.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0017-Make-PGO-use-toolchain.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0020-Fix-building-with-PGO-when-using-GCC.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-libaom-Use-NEON_FLAGS-instead-of-VPX_ASFLAGS-for-lib.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0022-build-Disable-Werror.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0023-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0024-Disable-FFVPX-with-VA-API.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0025-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0027-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0028-bgo-816975-fix-build-on-x86.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1559213-fix-system-av1-libs.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1762050-fix-pgo-with-virtualenv.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1765361-resolve_objdir_from_virtualenv_if_mozinfo_not_ancestor.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1761691-fix_audio_thread_priority_when_dbus_is_disabled.patch
-  # Use more system libs
-  msg2 "---- Patching for system libs"
-#  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-#  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-#  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
+  for gentoo_patch in "${_patches_dir}/gentoo/"*; do
+      local _patch_name="`basename "${gentoo_patch}"`"
 
+      if [ ${_patch_name} != "0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch" ]; then
+        msg2 "Patching with ${_patch_name}.."
+        patch -Np1 -i "${gentoo_patch}"
+      fi
+  done
+  
+  # address build failure when building with most recent (>=0.24.0) cbindgen
+  # also catch systems (Manjaro, at the time of writing this) where cbindgen
+  # is not yet at 24. probably not elegant, but it works.
+  _cbindgen_ver=$(cbindgen --version | sed -e 's/cbindgen[[:space:]]0.\([0-9]*\).[0-9]/\1/g')
+  if [ "${_cbindgen_ver}" -gt 23 ]; then
+    patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch
+  fi
 
   msg2 "---- Librewolf patches"
   msg2 "Remove some pre-installed addons that might be questionable"
@@ -175,9 +159,9 @@ END
 
   # KDE patches (W. Rosenauer)
   msg2 "---- Patching for KDE"
-  patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde_after_unity.patch
-
+#  patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
+#  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
   msg2  "Disabling Pocket"
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
@@ -194,14 +178,14 @@ END
 
   #msg2  "remove search extensions (experimental)"
   #patch -Np1 -i ${_patches_dir}/search-config.patch
-  cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
+  #cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # fails with 100
 
   msg2 "Assorted patches"
-  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch # fails with 100
- # patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch fails with 100
+  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
   patch -Np1 -i ${_patches_dir}/librewolf/native-messaging-registry-path.patch
 
   #msg2 "allow overriding the color scheme light/dark preference with RFP"
@@ -222,6 +206,7 @@ END
   msg2 "add custom uBO assets (on first launch only)"
   patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
 
+  patch -Np1 -i ${_patches_dir}/librewolf/faster-package-multi-locale.patch
   # ui patches
 
   # Experimental
@@ -258,15 +243,17 @@ END
   msg2 "lw-logo-devtools.patch"
   patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools.patch
 
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/handlers.patch
+
   msg2 "customized pref panel"
   patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
 
-#  msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
- # patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch # fails with 100
+  msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
+  patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
   msg2 "Hide passwordmgr"
   patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
-#  patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
+  patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
   cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
@@ -278,7 +265,9 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  #export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
   # LTO needs more open files
   ulimit -n 4096
