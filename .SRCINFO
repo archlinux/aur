@@ -1,7 +1,7 @@
 pkgbase = colorpanes
 	pkgdesc = Panes in the 8 bright terminal colors with shadows of the respective darker color
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/papojari/colorpanes
 	arch = x86_64
 	arch = i686

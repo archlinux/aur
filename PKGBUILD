@@ -2,7 +2,7 @@
 
 pkgname='colorpanes'
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Panes in the 8 bright terminal colors with shadows of the respective darker color'
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/papojari/$pkgname"
@@ -15,4 +15,5 @@ package() {
   cd "$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   cargo install --path . --root "$pkgdir/usr" --no-track
+  ln -s "$pkgdir/usr/bin/colp" "$pkgdir/usr/bin/colorpanes"
 }
