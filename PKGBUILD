@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.5.6
-pkgrel=3
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64' 'aarch64')
@@ -17,19 +17,13 @@ makedepends=(
   'cmake' 'ruby-ronn'
   'boost' 'libevent' 'libdwarf'
 )
-source=("$pkgname-$pkgver.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.bz2"
-        0001-Attempting-to-fix-57-1.patch)
-cksums=('3786409486'
-        '975092744')
-sha256sums=('11e057e15dadaffacfef8f385abd54181a4babe2098446120fa4f7ba2200fc8f'
-            '81f605921d7d671907c9576a857963379a09120aecb5916d37ad855760d9c1c7')
-b2sums=('6d570de65358238eb8207297529f7cb632533eb6e63b5c27349add978d765e462fbeeb123962695b8092c919425454e7ef7cce6b2247ca46586b9732297ee1d1'
-        '8c173de25161b744f57181f702239f89c5cee5ffaadcfe6b71e591f283fbefc9ee83fdf541f80eca7fef1a2045fe34dab29fab34e97f50df52f7752949a813d4')
+source=("$pkgname-$pkgver.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.bz2")
+cksums=('3387403462')
+sha256sums=('d6968197c6f7b30a946cf77bc94922de78c12e763da42b08c71fdfe87908dc5d')
+b2sums=('8642a9b204b96f8c05933ded570ec7cbcfeb9f01adb97031251faa22cfe76bc1fe09cac4f1ec5496623dcdebeda2f23a79c7e946ca4371c0f58fe0a427d0a2e1')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  patch -Np1 -i "$srcdir/0001-Attempting-to-fix-57-1.patch"
 }
 
 build() {
