@@ -2,11 +2,11 @@
 # Contributor: Fabian Köhler <fabian.koehler (AT) protonmail.ch>
 pkgname=dieharder
 pkgver=3.31.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Random Number Test Suite"
 arch=('i686' 'x86_64')
 makedepends=('gsl')
-url="http://www.phy.duke.edu/~rgb/General/dieharder.php"
+url="https://github.com/christopherkobayashi/dieharder"
 license=('GPL2')
 source=(
     "https://github.com/christopherkobayashi/$pkgname/archive/refs/tags/$pkgver.tar.gz"

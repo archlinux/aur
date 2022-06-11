@@ -1,8 +1,8 @@
 pkgbase = dieharder
 	pkgdesc = A Random Number Test Suite
 	pkgver = 3.31.2
-	pkgrel = 1
-	url = http://www.phy.duke.edu/~rgb/General/dieharder.php
+	pkgrel = 2
+	url = https://github.com/christopherkobayashi/dieharder
 	arch = i686
 	arch = x86_64
 	license = GPL2
