@@ -5,7 +5,7 @@
 pkgname=stardict-langdao-ec-gb
 pkgver=2.4.2
 pkgrel=5
-pkgdesc='LangDao English-Chinse Dictionary for StarDict'
+pkgdesc='LangDao English-Chinese Dictionary for StarDict'
 arch=('any')
 url='http://download.huzheng.org/'
 license=('GPL')
