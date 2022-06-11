@@ -3,7 +3,7 @@
 
 _pkgname=OpenLens
 pkgname=openlens-bin
-pkgver=5.5.3
+pkgver=5.5.4
 pkgrel=1
 pkgdesc='The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('lens')
 conflicts=('lens' 'lens-bin')
 source=(${_pkgname}-${pkgver}.AppImage::"https://github.com/beliys/OpenLens/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('4903ef4991f6cc87651155bcb94965185056c1af8c3557409a5dab7ab54b0740'
+sha256sums=('1b940243881ab21dd69be9857d1a29dd6b3025424f3b68221a05bc614345d68c'
             '30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c')
 
 prepare() {
