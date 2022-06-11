@@ -8,7 +8,8 @@
 
 # Maintainer: Demir Yerli <mrquantumoff@protonmail.com>
 pkgname=quartzctl
-pkgver=v0.1.0
+pkgver=0.1.0
+_pkgver=v${pkgver}
 pkgrel=2
 pkgdesc="libquartz based apps control utility"
 arch=(x86_64)
@@ -20,22 +21,18 @@ makedepends=('git' 'cargo' 'rust')
 replaces=()
 backup=()
 options=()
-source=("https://github.com/Bultek/quartzctl/archive/refs/tags/${pkgver}.tar.gz")
+source=("https://github.com/Bultek/quartzctl/archive/refs/tags/${_pkgver}.tar.gz")
 md5sums=('SKIP')
 
 
-prepare() {
-	cd "$srcdir/quartzctl"
-}
-
 build() {
-	cd ${srcdir}/quartzctl
+	cd ${srcdir}/quartzctl-$pkgver
 	cargo build -r
 	
 }
 
 package() {
-	cd "$srcdir/quartzctl"
+	cd "$srcdir/quartzctl-$pkgver"
 	install -Dm755 -t "${pkgdir}/usr/bin/" target/release/quartzctl 
 	chmod +x ${pkgdir}/usr/bin/quartzctl
 }

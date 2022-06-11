@@ -1,6 +1,6 @@
 pkgbase = quartzctl
 	pkgdesc = libquartz based apps control utility
-	pkgver = v0.1.0
+	pkgver = 0.1.0
 	pkgrel = 2
 	url = https://github.com/Bultek/quartzctl
 	arch = x86_64
