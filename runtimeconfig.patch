@@ -1,0 +1,14 @@
+--- opt/eMudhra/emBridge/emBridge.runtimeconfig.json	2022-06-11 08:08:17.000000000 +0530
++++ opt/eMudhra/emBridge/emBridge.runtimeconfig.json	2022-06-11 08:06:20.057235785 +0530
+@@ -12,7 +12,8 @@
+       }
+     ],
+     "configProperties": {
+-      "System.GC.Server": true
++      "System.GC.Server": true,
++      "System.Globalization.Invariant": true
+     }
+   }
+-}
+\ No newline at end of file
++}

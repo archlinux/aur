@@ -1,7 +1,7 @@
 pkgbase = embridge-bin
 	pkgdesc = Secure channel between network applications and keys stored in hardware tokens
 	pkgver = 3.1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://embridge.emudhra.com
 	arch = x86_64
 	license = custom
@@ -12,6 +12,8 @@ pkgbase = embridge-bin
 	options = staticlibs
 	options = !strip
 	source = emBridge-3.1.7.0.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip
+	source = runtimeconfig.patch
 	sha512sums = cb29bafd903768194f2bf03d3c56286b97891403792dfca4b790b8841640e869b46d94514f710f7f1138871f08d2815c5946156ede38d0a107b7197dc5f5e5fc
+	sha512sums = 566fdfceb9c53614b30f4ba7851f5a9de502e9cfa1e45ed7b1a804d1c6112f25944a302ba07e89f05815acb580952aed3932a81c66dd0141c1913e7d56390309
 
 pkgname = embridge-bin
