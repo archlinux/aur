@@ -1,8 +1,8 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,7 +11,7 @@ depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11
 makedepends=('cmake' 'git' 'python')
 source=("https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v${pkgver}.tar.gz"
         'jwc-10.8.0.tar.gz::https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-10.8.0/dist.zip')
-sha256sums=('3c3c91c96c0905ae5984f6d0c86f823807cfe7f1c6b3360350aa5afe8b84f8b0'
+sha256sums=('08cbe5ca660a1c14d05f71404dcca9c893a0a2aa4b31d5b69e04b203f577bbd4'
             '3fb94bd9ae827a3391c4d89efea9ada1e646d279b265b2e3abc9787560c954b5')
 
 build() {
