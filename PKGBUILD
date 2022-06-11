@@ -1,15 +1,17 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Dashon Wells <me@me.me>
+# Contributor Michael Riegert <michael at eowyn net>
 # Contributor: Evan McCarthy <evan@mccarthy.mn>
 # Contributor: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname='catt'
-pkgver=0.12.1
-pkgrel=2
+pkgver=0.12.7
+pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url=https://github.com/skorokithakis/"${pkgname}"
 license=('BSD')
+
 depends=(
   'python'
   'python-click'
@@ -17,10 +19,12 @@ depends=(
   'python-netifaces'
   'python-pychromecast>=7.5.0'
   'python-requests'
-  'youtube-dl>=2020.06.06')
+  'yt-dlp>=2020.06.06')
+
 makedepends=('python-setuptools')
-source=("${pkgname}"-"${pkgver}".tar.gz::${url}/archive/v"${pkgver}".tar.gz)
-sha256sums=('fbc15d589a21f643aa9d6fdbe05a8e4a6c7884680051769a6be80a9b572eb12c')
+
+source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
+sha256sums=('43d78f5912f0bae4c6fa83ca160ef19f5823e2e0159575317a059dc87dd877dd')
 
 build(){
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
@@ -29,7 +33,7 @@ build(){
 
 package() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  install -Dm644 README.rst "${pkgdir}"/usr/share/doc/"${pkgname}"/README.rst
+  install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
