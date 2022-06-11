@@ -30,6 +30,7 @@ pkgver() {
 }
 
 build() {
+        cd 8814au
 		make clean
 		make
 
