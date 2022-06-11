@@ -1,7 +1,7 @@
 pkgbase = tubefeeder
 	pkgdesc = A Youtube, Lbry and Peertube client made for the Pinephone
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://www.tubefeeder.de
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = tubefeeder
 	optdepends = youtube-dl: Play and download the videos
 	provides = tubefeeder
 	conflicts = tubefeeder
-	source = tubefeeder.tar.gz::https://github.com/Schmiddiii/Tubefeeder/archive/refs/tags/v1.7.0.tar.gz
-	md5sums = e42eaae868b55c0e9ca78e27151b39e0
+	source = tubefeeder.tar.gz::https://github.com/Schmiddiii/Tubefeeder/archive/refs/tags/v1.7.1.tar.gz
+	md5sums = ae242be0278e3f392ec9ba3d88610619
 
 pkgname = tubefeeder
