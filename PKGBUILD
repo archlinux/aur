@@ -1,46 +1,38 @@
-# $Id$
-# Maintainer: Mirco Tischler <mt-ml@gmx.de>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Mirco Tischler <mt-ml@gmx.de>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-_pkgname=appstream-glib
-pkgname=${_pkgname}-git
-pkgver=0.6.4.r26.gb6d6c23
+pkgname=appstream-glib-git
+pkgver=0.7.18.r40.gb6cb98e
 pkgrel=1
-pkgdesc="Provides GObjects and helper methods to make it easy to read and write AppStream metadata (git version)"
-arch=('i686' 'x86_64')
-url="http://people.freedesktop.org/~hughsient/appstream-glib/"
-license=('LGPL')
-depends=('gtk3' 'libyaml' 'pacman' 'gcab' 'libstemmer' 'libsoup')
-makedepends=('intltool' 'git' 'gtk-doc' 'gobject-introspection' 'autoconf-archive')
-provides=('appdata-tools' "appstream-glib=${pkgver}")
-conflicts=('appdata-tools' 'appstream-glib')
-replaces=('appdata-tools')
-source=('git+https://github.com/hughsie/appstream-glib.git')
-md5sums=('SKIP')
+pkgdesc="Objects and methods for reading and writing AppStream metadata"
+url="https://people.freedesktop.org/~hughsient/appstream-glib/"
+arch=(x86_64)
+license=(LGPL)
+depends=(gtk3 libyaml pacman gcab libsoup libstemmer)
+makedepends=(gobject-introspection gtk-doc git gperf meson)
+provides=(appstream-glib libappstream-glib.so)
+conflicts=(appstream-glib)
+source=("git+https://github.com/hughsie/appstream-glib.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-
+  cd "appstream-glib"
   git describe --always| sed 's|^appstream_glib_||;s|\([^-].\)-|\1-r|;s|[-_]|\.|g'
 }
 
 build() {
-  cd "$_pkgname"
-  ./autogen.sh 	--prefix=/usr \
-		--enable-alpm \
-		--enable-stemmer
-  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+  arch-meson appstream-glib build \
+    -D alpm=true \
+    -D gtk-doc=true \
+    -D rpm=false
+  meson compile -C build
 }
 
 check() {
-  cd "$_pkgname"
-  make -k check || :
+  meson test -C build --print-errorlogs || true
 }
 
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
