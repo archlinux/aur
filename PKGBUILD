@@ -2,8 +2,8 @@
 # -*- mode: sh -*-
 
 pkgname='libcanlock'
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc='A standalone RFC 8315 Netnews Cancel-Lock implementation for Unix'
 arch=('x86_64' 'armv7h')
 url='https://micha.freeshell.org/libcanlock/'
@@ -18,21 +18,6 @@ conflicts=(
 )
 source=(
   "https://micha.freeshell.org/libcanlock/src/${pkgname}-${pkgver}.tar.bz2"
-)
-md5sums=(
-  '2f35d85e3ae2c75fafbdb2edd44c2b46'
-)
-sha1sums=(
-  'b352f4ced760c5bd7c6ab013316bf7110e0fa62b'
-)
-sha256sums=(
-  '94b7020af077b18832baf50ab5ca3632979d3524bcf73e60ddb84c31dbb5a6ac'
-)
-sha512sums=(
-  '3d194a37bdbdf640bb6996383ce988c9177573b6f84c29569d759308564c7636d98d5c267988bd034b33681f814400eb7fbecf78d90f54b126edb3bf384f928f'
-)
-b2sums=(
-  'e332c379647c7ad3fbf5f0a8051b888be65674bcb2c9be1b689f009fd35eecbb29644d9f17aaa3812c9405283708207c6f220f630e0dd1c6a5508d41b85a6070'
 )
 
 build() {
@@ -55,3 +40,15 @@ package() {
   install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README  "$pkgdir/usr/share/doc/$pkgname/README"
 }
+
+sha256sums=(
+  'a709f59d6611031c293b483cfa0be6c37d6c68220cc94aee44e4a9eabf76988d'
+)
+sha512sums=(
+  '100d2b4bf3eadedb7da230317cd37b2c1b259bbd783099a74e0d75fdc6ecddb8a6fd854a2b272bda3629bcf1ac1ae2b3d5657fca9137c17e38aad88f30e4c81c'
+)
+b2sums=(
+  '001512a6d2d226aed93882de8d8f4f02a066cc67e6f21b411b8e1ee2ff0d4580732c90a6fc2756a79f992629cd18fbc319510960c39f33284c86bebfed3d4216'
+)
+
+# eof
