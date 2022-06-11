@@ -2,8 +2,8 @@
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-nspektr
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="A distribution package dependency inspector"
 arch=('any')
 url="https://github.com/jaraco/nspektr"
@@ -15,7 +15,7 @@ checkdepends=('python-pytest-black' 'python-pytest-checkdocs' 'python-pytest-cov
               'python-pytest-enabler' 'python-pytest-flake8' 'python-pytest-mypy'
               'python-pip')
 source=("https://github.com/jaraco/nspektr/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fdcf6db3d7cc611bff70ae789e0be32a8dfa52e26efc0b8486a1e78a3cc2a74d')
+sha256sums=('b29969de2a4975d154c43fd09ae7aa439b7b64732d1ab1964658d8ce9f8359ee')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
