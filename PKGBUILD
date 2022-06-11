@@ -2,18 +2,23 @@
 
 _pkgname=dwarfs
 pkgname=${_pkgname}-git
-pkgver=0.2.3.r1.gbdd4b84
+pkgver=0.5.6.r60.gf07e7e3
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64')
 license=('GPL3')
 depends=(
-  'fuse3' 'openssl' 'boost-libs'
+  'fuse3' 'openssl' 'boost-libs' 'jemalloc'
   'lz4' 'xz' 'zstd'
   'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
+  # 'python'
 )
-makedepends=('git' 'cmake' 'sparsehash' 'ruby-ronn' 'boost' 'libevent')
+makedepends=(
+  'git' 'cmake' 'sparsehash' 'ruby-ronn'
+  'boost' 'libevent' 'libaio'
+  # 'liburing' 'libsodium'
+)
 source=("${pkgname}::git+https://github.com/mhx/dwarfs.git")
 sha256sums=('SKIP')
 
@@ -30,10 +35,13 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "${pkgname}" \
+  cd "$pkgname"
+
+  cmake -B "$srcdir/build" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None
-  cmake --build build
+
+  cmake --build "$srcdir/build"
 }
 
 package() {

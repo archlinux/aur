@@ -1,6 +1,6 @@
 pkgbase = dwarfs-git
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.2.3.r1.gbdd4b84
+	pkgver = 0.5.6.r60.gf07e7e3
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = dwarfs-git
 	makedepends = ruby-ronn
 	makedepends = boost
 	makedepends = libevent
+	makedepends = libaio
 	depends = fuse3
 	depends = openssl
 	depends = boost-libs
+	depends = jemalloc
 	depends = lz4
 	depends = xz
 	depends = zstd
@@ -26,4 +28,3 @@ pkgbase = dwarfs-git
 	sha256sums = SKIP
 
 pkgname = dwarfs-git
-
