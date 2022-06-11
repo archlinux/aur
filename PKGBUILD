@@ -1,18 +1,18 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-iobus
-pkgver=r42.9ff0510
+pkgver=r45.0a0d6ff
 pkgrel=1
-pkgdesc="IO Bus abstraction for Hare"
+pkgdesc='IO Bus abstraction for Hare'
 arch=('any')
-url="https://git.sr.ht/~sircmpwn/hare-iobus"
+url='https://git.sr.ht/~sircmpwn/hare-iobus'
 license=('MPL2')
 depends=(
   'hare'
   'hare-linux'
 )
 makedepends=('git')
-_commit='9ff0510080ee38b7badf9c5ae2b83e7ac3991a2d'
+_commit='0a0d6ff6c9bb823bad06f9c6fbddf16919f44881'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 

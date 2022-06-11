@@ -1,6 +1,6 @@
 pkgbase = hare-iobus
 	pkgdesc = IO Bus abstraction for Hare
-	pkgver = r42.9ff0510
+	pkgver = r45.0a0d6ff
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-iobus
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = hare-iobus
 	makedepends = git
 	depends = hare
 	depends = hare-linux
-	source = hare-iobus::git+https://git.sr.ht/~sircmpwn/hare-iobus#commit=9ff0510080ee38b7badf9c5ae2b83e7ac3991a2d
+	source = hare-iobus::git+https://git.sr.ht/~sircmpwn/hare-iobus#commit=0a0d6ff6c9bb823bad06f9c6fbddf16919f44881
 	md5sums = SKIP
 
 pkgname = hare-iobus
