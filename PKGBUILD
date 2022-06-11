@@ -2,14 +2,41 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.5.14.trento.3.r0.g9db34f67
+pkgver=2022.5.28.trento.3.r256.g876e9328
 pkgrel=1
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
 license=(GPL3)
-depends=(python libhandy dconf patool python-yaml p7zip cabextract wine gtksourceview4)
+depends=(
+  cabextract
+  dconf
+  gtk3
+  gtksourceview4
+  hicolor-icon-theme
+  icoextract
+  lib32-gnutls
+  libhandy
+  p7zip
+  patool
+  python
+  python-gobject
+  python-markdown
+  python-requests
+  python-yaml
+  webkit2gtk
+  wine
+  xorg-xdpyinfo
+  )
+optdepends=(
+  gamemode
+  gvfs
+  lib32-vkd3d
+  lib32-vulkan-icd-loader
+  vkd3d
+  vulkan-icd-loader
+  )
 makedepends=(meson ninja git)
 checkdepends=(appstream-glib)
 provides=(bottles)
