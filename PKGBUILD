@@ -17,7 +17,7 @@ _url='https://github.com/uutils/coreutils'
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
 conflicts=('coreutils' 'coreutils-hybrid')
 provides=('coreutils' 'coreutils-hybrid')
-makedepends=('rust' 'cargo' 'gperf' 'rsync' 'wget')
+makedepends=('git' 'rust' 'cargo' 'gperf' 'rsync' 'wget')
 source=("coreutils::git+https://git.savannah.gnu.org/git/coreutils.git"
         "uutils::git+https://github.com/uutils/coreutils.git")
 sha512sums=('SKIP'
