@@ -10,13 +10,18 @@ url="https://www.jool.mx"
 license=('GPL2')
 makedepends=('libnl')
 optdepends=('iptables')
+backup=('etc/jool/jool_siit.conf'
+        'etc/jool/jool.conf'
+       )
 source=("https://github.com/NICMx/Jool/releases/download/v${pkgver}/jool-${pkgver}.tar.gz"
         "jool.service"
         "jool_siit.service"
+        "jool_siit.conf.example"
         )
 sha256sums=('31fab9f9994e769b117354934742cfd8fc35a6a0aabcf4bab912bae4868c3778'
             '2d50ad60e284876f09051a4d44d4cc51da4b354cb4ff7acf85de864427d360b5'
-            '0de3cc336ec9587bb3d62c81062977687a439403cc30d14d9798502d8626ce5f')
+            '0de3cc336ec9587bb3d62c81062977687a439403cc30d14d9798502d8626ce5f'
+            '6a458bf27741f2bc82739a0feead31197f0d95e7fa39719dc090c4fafe056540')
 
 prepare() {
   cp -a "${pkgbase}-${pkgver}" "${pkgbase}-${pkgver}-dkms"
@@ -35,6 +40,7 @@ package_jool-tools() {
   make DESTDIR="${pkgdir}" install
   install -D -m0644 "${srcdir}/jool.service" "${pkgdir}/usr/lib/systemd/system/jool.service"
   install -D -m0644 "${srcdir}/jool_siit.service" "${pkgdir}/usr/lib/systemd/system/jool_siit.service"
+  install -D -m0644 "${srcdir}/jool_siit.conf.example" "${pkgdir}/etc/jool/jool_siit.conf"
 }
 
 package_jool-dkms() {

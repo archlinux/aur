@@ -7,12 +7,16 @@ pkgbase = jool
 	license = GPL2
 	makedepends = libnl
 	optdepends = iptables
+	backup = etc/jool/jool_siit.conf
+	backup = etc/jool/jool.conf
 	source = https://github.com/NICMx/Jool/releases/download/v4.1.7/jool-4.1.7.tar.gz
 	source = jool.service
 	source = jool_siit.service
+	source = jool_siit.conf.example
 	sha256sums = 31fab9f9994e769b117354934742cfd8fc35a6a0aabcf4bab912bae4868c3778
 	sha256sums = 2d50ad60e284876f09051a4d44d4cc51da4b354cb4ff7acf85de864427d360b5
 	sha256sums = 0de3cc336ec9587bb3d62c81062977687a439403cc30d14d9798502d8626ce5f
+	sha256sums = 6a458bf27741f2bc82739a0feead31197f0d95e7fa39719dc090c4fafe056540
 
 pkgname = jool-tools
 	pkgdesc = Open Source SIIT and NAT64 for Linux. - Userspace tools and libraries
