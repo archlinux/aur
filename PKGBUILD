@@ -9,7 +9,7 @@ url="https://github.com/darkhz/invidtui"
 license=('MIT')
 depends=('mpv' 'yt-dlp' 'ffmpeg')
 optdepends=('mpv-mpris: for MPRIS support'
-            'youtube-dl: alternative for yt-dlp'
+            'youtube-dl: yt-dlp alternative'
 	    'screen: Efficiently resume and suspend instances')
 provides=('invidtui')
 conflics=('invidtui')
