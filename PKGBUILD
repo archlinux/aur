@@ -1,22 +1,19 @@
-# Maintainer: 謝致邦 <Yeking@Red54.com>
-# Maintainer: lisongmin <lisongmin9@gmail.com> from 2015-08-25
+# Maintainer: Xiao Pan <gky44px1999@gmail.com>
+# Contributor: lisongmin <lisongmin9@gmail.com>
+# Contributor: 謝致邦 <Yeking@Red54.com>
 
 pkgname=stardict-langdao-ce-gb
 pkgver=2.4.2
-pkgrel=4
-pkgdesc="Chinese-English dictionary of Langdao for Stardict"
+pkgrel=1
+pkgdesc='LangDao Chinese-English dictionary for StarDict'
+arch=('any')
+url='http://download.huzheng.org/'
 license=('GPL')
 depends=('stardict')
-url="http://stardict.huzheng.org"
-md5sums=('8e9700798a0ffeed23207b7cf2592246')
-source=(http://abloz.com/huzheng/stardict-dic/zh_CN/stardict-langdao-ce-gb-$pkgver.tar.bz2)
-arch=('any')
+source=("http://download.huzheng.org/zh_CN/$pkgname-$pkgver.tar.bz2")
+b2sums=('6ba9ee32c580bf57f16821b999535d8bf2d5fe12e1a48d7d11b31f9aedce75d732aae1181957ced5ee212e43f7e2f1d766908bffed1369c4f1c925f40c6d8fb3')
 
-package() {
-	cd $srcdir/stardict-langdao-ce-gb-$pkgver
-	local _dir=$pkgdir/usr/share/stardict/dic/
-	mkdir -p $_dir
-	install -m 644 langdao-ce-gb.dict.dz $_dir
-	install -m 644 langdao-ce-gb.idx $_dir
-	install -m 644 langdao-ce-gb.ifo $_dir
+package()
+{
+	install -Dm644 "$pkgname-$pkgver/"* -t "$pkgdir/usr/share/stardict/dic/${pkgname#stardict-}"
 }
