@@ -1,0 +1,19 @@
+pkgbase = python-hydra-core
+	pkgdesc = A framework for elegantly configuring complex applications
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://hydra.cc
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-packaging
+	depends = python-omegaconf
+	depends = python-antrl4
+	source = python-hydra-core-1.2.0::https://github.com/facebookresearch/hydra/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 19b203fc614426cd6e4bb7c51e73a25a1ceb4606450ec0203345aec67a0a4f6a
+
+pkgname = python-hydra-core
