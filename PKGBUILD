@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firecracker-git
-pkgver=1.0.0.r119.gb3cc3317
+pkgver=1.1.0.r30.g2fc473bb
 pkgrel=1
 epoch=2
 pkgdesc="Secure and fast microVMs for serverless computing"
@@ -27,7 +27,7 @@ prepare() {
   cd "$pkgname"
 
   # download dependencies
-  cargo fetch --locked --target="$_cargo_target"
+  cargo fetch --target="$_cargo_target"
 }
 
 build() {
@@ -38,7 +38,6 @@ build() {
     --package jailer \
     --package seccompiler \
     --release \
-    --frozen \
     --all-features \
     --target-dir=target \
     --target="$_cargo_target"
