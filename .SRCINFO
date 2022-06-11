@@ -1,0 +1,14 @@
+pkgbase = hare-atom
+	pkgdesc = Atom implementation for Hare
+	pkgver = r30.cb360e4
+	pkgrel = 1
+	url = https://git.sr.ht/~chrisppy/hare-atom
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	depends = hare-xml
+	source = hare-atom::git+https://git.sr.ht/~chrisppy/hare-atom#commit=cb360e4b55dbc67a35a8a15343ca8a1d800864a1
+	md5sums = SKIP
+
+pkgname = hare-atom
