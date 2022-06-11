@@ -2,8 +2,8 @@
 _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
-pkgver=2.0.1.r5.g8f34829
-pkgrel=4
+pkgver=2.0.1.r27.g8017734
+pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
 makedepends=('p7zip' 'cmake' 'git')
@@ -15,19 +15,19 @@ noextract=('Space_Cadet.rar' 'Full%20tilt%20pinball.iso')
 url="https://github.com/k4zmu2a/SpaceCadetPinball"
 source=(
   'https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar'
-  'https://archive.org/download/full-tilt-pinball/Full%20tilt%20pinball.iso'
+  'https://archive.org/download/win311_ftiltpball/FULLTILT.ZIP'
   "$pkgname::git+$url"
   'spacecadetpinball.desktop'
 )
 sha256sums=('3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a'
-            'a81b5d31ecd0c903e52f019f546beec44667b4c5695204fd080502cd5b94a865'
+            '183a2219865b3f2199403928b817b7c967837ea6298de14fb8a379944c7b4599'
             'SKIP'
             'SKIP')
 
-_FT_BASEDIR="WIN95/FULLTILT/CADET"
+_FT_BASEDIR="CADET"
 prepare() {
   7z x -y Space_Cadet.rar -oSpace_Cadet/
-  7z x -y 'Full%20tilt%20pinball.iso' -oFullTilt/ "$_FT_BASEDIR/CADET.DAT" "$_FT_BASEDIR/SOUND/*"
+  7z x -y 'FULLTILT.ZIP' -oFullTilt/ "$_FT_BASEDIR/CADET.DAT" "$_FT_BASEDIR/SOUND/*"
 }
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = spacecadetpinball-git
 	pkgdesc = Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux
-	pkgver = 2.0.1.r5.g8f34829
-	pkgrel = 4
+	pkgver = 2.0.1.r27.g8017734
+	pkgrel = 1
 	url = https://github.com/k4zmu2a/SpaceCadetPinball
 	arch = x86_64
 	arch = i686
@@ -22,11 +22,11 @@ pkgbase = spacecadetpinball-git
 	noextract = Space_Cadet.rar
 	noextract = Full%20tilt%20pinball.iso
 	source = https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar
-	source = https://archive.org/download/full-tilt-pinball/Full%20tilt%20pinball.iso
+	source = https://archive.org/download/win311_ftiltpball/FULLTILT.ZIP
 	source = spacecadetpinball-git::git+https://github.com/k4zmu2a/SpaceCadetPinball
 	source = spacecadetpinball.desktop
 	sha256sums = 3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a
-	sha256sums = a81b5d31ecd0c903e52f019f546beec44667b4c5695204fd080502cd5b94a865
+	sha256sums = 183a2219865b3f2199403928b817b7c967837ea6298de14fb8a379944c7b4599
 	sha256sums = SKIP
 	sha256sums = SKIP
 
