@@ -1,0 +1,12 @@
+pkgbase = stardict-mdbg-cc-cedict
+	pkgdesc = MDBG CC-CEDICT Chinese-English Dictionary for StarDict
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://download.huzheng.org/
+	arch = any
+	license = cc-by-sa-3.0
+	depends = stardict
+	source = http://download.huzheng.org/zh_CN/stardict-mdbg-cc-cedict-2.4.2.tar.bz2
+	b2sums = 837ce30b9010560614114b78db85807a6554f4be607111a5efe56b1999a0a6f84d9be03058d4d1eaa67c1eecfb689d953e57cc486d9e45ffbc014158263678c2
+
+pkgname = stardict-mdbg-cc-cedict
