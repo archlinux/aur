@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-ssh
-pkgver=r36.e33ffce
+pkgver=r66.cb28ad3
 pkgrel=1
 pkgdesc='SSH library for Hare'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~sircmpwn/hare-ssh'
 license=('MPL2')
 depends=('hare')
 makedepends=('git')
-_commit='e33ffce51a9a5062959f6fa3d6fa51e52e13c490'
+_commit='cb28ad34192bddf0822cbf2b4ad990ef551ca7af'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
