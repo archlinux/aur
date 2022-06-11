@@ -8,6 +8,7 @@ pkgbase = python-mbedtls
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = cython
 	depends = mbedtls
 	depends = python
 	depends = python-certifi
