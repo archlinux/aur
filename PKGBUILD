@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox-git
-pkgver=1.2.14.r26.458eeb2
+pkgver=1.3.1.r2.0f08186
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
