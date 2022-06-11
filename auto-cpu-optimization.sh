@@ -1,36 +1,43 @@
 #!/bin/bash
-
-#######################################
-#        AUTO-CPU-OPTIMIZATION        #
-#######################################
-#      CREATOR : BL4CKH47H4CK3R       #
-#######################################
-#  HTTPS://GITHUB.COM/BL4CKH47H4CK3R  #
-#######################################
-
-CPU=`gcc -Q -march=native --help=target | grep march | awk '{print $2}' | head -1`
-MARCH=`echo ${CPU} | tr '[:lower:]' '[:upper:]'`&& echo
-
-if [[ ${MARCH} == "ZNVER" ]]
-then
-	MARCH="ZEN"
-
-elif [[ ${MARCH} == "ZNVER2" ]]
-then
-	MARCH="ZEN2"
-
-elif [[ ${MARCH} == "ZNVER3" ]]
-then
-	MARCH="ZEN3"
-
-elif [[ ${MARCH} == "BDVER2" ]]
-then
-	MARCH="MPILEDRIVER"
+CPU=$(gcc -Q -march=native --help=target|grep march=|awk '{print $2}'|head -1)
+MARCH=$(echo $CPU|tr '[:lower:]' '[:upper:]'&&echo)
+if [[ ${MARCH} == "ZNVER" ]]; then
+    MARCH="ZEN"
+elif [[ ${MARCH} == "ZNVER2" ]]; then
+    MARCH="ZEN2"
+elif [[ ${MARCH} == "ZNVER3" ]]; then
+    MARCH="ZEN3"
+elif [[ ${MARCH} == "BDVER1" ]]; then
+    MARCH="BULLDOZER"
+elif [[ ${MARCH} == "BDVER2" ]]; then
+    MARCH="PILEDRIVER"
+elif [[ ${MARCH} == "BDVER3" ]]; then
+    MARCH="STEAMROLLER"
+elif [[ ${MARCH} == "BDVER4" ]]; then
+    MARCH="EXCAVATOR"
+elif [[ ${MARCH} == "BTVER1" ]]; then
+    MARCH="BOBCAT"
+elif [[ ${MARCH} == "BTVER2" ]]; then
+    MARCH="JAGUAR"
+elif [[ ${MARCH} == "AMDFAM10" ]]; then
+    MARCH="MK10"
+elif [[ ${MARCH} == "K8-SSE3" ]]; then
+    MARCH="K8SSE3"
+elif [[ ${MARCH} == "BONNELL" ]]; then
+    MARCH="ATOM"
+elif [[ ${MARCH} == "GOLDMONT-PLUS" ]]; then
+    MARCH="GOLDMONTPLUS"
+elif [[ ${MARCH} == "SKYLAKE-AVX512" ]]; then
+    MARCH="SKYLAKE2"
+elif [[ ${MARCH} == "ICELAKE-CLIENT" ]]; then
+    MARCH="ICELAKE"
 fi
-
+MARCH2=M${MARCH}
+echo
 echo "----------------------------------"
 echo "| APPLYING AUTO-CPU-OPTIMIZATION |"
 echo "----------------------------------"
-echo "[*] DETECTED CPU (MARCH) : ${MARCH}"
-sed -i "/CONFIG_GENERIC_CPU=y/d;s/\# CONFIG_M${MARCH} is not set/CONFIG_M${MARCH}=y/g" .config
-sleep 3 && echo
+echo "[*] DETECTED CPU (MARCH) : ${MARCH2}"
+scripts/config -k --disable CONFIG_GENERIC_CPU
+scripts/config -k --enable CONFIG_${MARCH2}
+sleep 3&&echo
