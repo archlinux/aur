@@ -4,15 +4,15 @@
 # Contributor: dibblethewrecker <dibblethewrecker.at.jiwe.org>
 
 pkgname='gdal-grass'
-pkgver='3.4.0'
+pkgver='1.0.0'
 pkgrel='1'
-pkgdesc='GRASS raster and vector format support for GDAL >= 3.4.0.'
+pkgdesc='GRASS raster and vector format support for GDAL.'
 arch=('i686' 'x86_64')
 url='http://www.gdal.org'
 license=('X11/MIT')
-source=("http://download.osgeo.org/gdal/${pkgver}/gdal-grass-${pkgver}.tar.gz")
-depends=('gdal>=3.4.0' 'grass')
-md5sums=('c6f813219b9df98603547355587767d9')
+source=("https://github.com/OSGeo/gdal-grass/archive/refs/tags/${pkgver}.tar.gz")
+depends=('gdal' 'grass')
+md5sums=('12c3599eabc4ce3ee7754fc231e36f23')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
