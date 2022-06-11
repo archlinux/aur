@@ -9,7 +9,7 @@ pkgbase = keyfinder-cli-git
 	makedepends = git
 	depends = libkeyfinder-git
 	depends = ffmpeg
-	source = keyfinder-cli-git::git+https://github.com/EvanPurkhiser/keyfinder-cli.git
+	source = keyfinder-cli-git::git+https://github.com/EvanPurkhiser/keyfinder-cli
 	md5sums = SKIP
 
 pkgname = keyfinder-cli-git
