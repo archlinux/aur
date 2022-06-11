@@ -8,13 +8,9 @@ pkgbase = python-stsci.convolve
 	license = BSD
 	checkdepends = python2-nose
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = python-numpy
-	makedepends = python2-numpy
 	makedepends = python-d2to1
-	makedepends = python2-d2to1
 	makedepends = python-stsci.distutils
-	makedepends = python2-stsci.distutils
 	source = https://files.pythonhosted.org/packages/source/s/stsci.convolve/stsci.convolve-2.2.2.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/stsci.convolve/master/LICENSE.txt
 	md5sums = fb0feba75f45d85f34d6e4599efcd3db
@@ -22,7 +18,3 @@ pkgbase = python-stsci.convolve
 
 pkgname = python-stsci.convolve
 	depends = python-numpy
-
-pkgname = python2-stsci.convolve
-	depends = python2-numpy
-
