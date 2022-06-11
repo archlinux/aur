@@ -6,34 +6,33 @@ pkgver=0.10.0
 pkgrel=1
 pkgdesc='Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes. Built with the `cover` feature.'
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/hrkfdn/ncspot"
+url='https://github.com/hrkfdn/ncspot'
 license=('BSD')
-depends=('ncurses' 'openssl' 'libpulse' 'libxcb' 'ncurses' 'dbus' 'ueberzug')
-makedepends=('rust' 'cargo' 'git' 'alsa-lib' 'python' 'pkgconf')
+depends=('dbus' 'hicolor-icon-theme' 'libpulse' 'libxcb' 'ncurses' 'openssl' 'ueberzug')
+makedepends=('cargo' 'pkgconf' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-git" )
-source=("https://github.com/hrkfdn/ncspot/archive/v${pkgver}.zip")
-sha512sums=('4d71e56f38385f529cb36fb4c589468a0cd5b4504bb400e0b92efdd7dfb36e6d05891ce6f254c0ca4ad8c7c02dce00be5dfac46cd690f8a9382f56f296bec6a2')
+source=("ncspot-cover.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('7eb190264f119a5d6ce1809b3b93910c827476c138867892ae06aee90f2c846cd172a1faea39307b87d20c2632eac1bc93682a7588980d2fdf4a82a8edded78f')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  cargo fetch --locked
+    cd "${_pkgname}-${pkgver}"
+    cargo fetch --locked
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  cargo build --release --locked --features cover
+    cd "${_pkgname}-${pkgver}"
+    cargo build --release --locked --features cover
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  cargo test --release --locked --features cover
+    cd "${_pkgname}-${pkgver}"
+    cargo test --release --locked --features cover
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  #cargo install --root "${pkgdir}/usr" --path "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "${_pkgname}-${pkgver}"
+    install -Dm 755 -t "${pkgdir}/usr/bin" "target/release/${_pkgname}"
+    install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
+    install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
