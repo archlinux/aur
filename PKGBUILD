@@ -33,6 +33,7 @@ check() {
 package() {
     cd "${_pkgname}-${pkgver}"
     install -Dm 755 -t "${pkgdir}/usr/bin" "target/release/${_pkgname}"
+    install -Dm 644 -t "${pkgdir}/usr/share/applications" "misc/${_pkgname}.desktop"
     install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
     install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
