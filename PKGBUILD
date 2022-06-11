@@ -3,9 +3,9 @@
 pkgname=hare-png
 pkgver=r56.96a09c8
 pkgrel=1
-pkgdesc="PNG implementation for Hare"
+pkgdesc='PNG implementation for Hare'
 arch=('any')
-url="https://git.sr.ht/~sircmpwn/hare-png"
+url='https://git.sr.ht/~sircmpwn/hare-png'
 license=('MPL2')
 depends=('hare' 'hare-compress')
 makedepends=('git')
