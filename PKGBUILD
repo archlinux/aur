@@ -10,7 +10,7 @@ pkgrel=2
 conflicts=('mutagen' 'python-mutagen')
 provides=('mutagen' 'python-mutagen')
 
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 depends=('python-setuptools')
 makedepends=('git')

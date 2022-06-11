@@ -11,7 +11,7 @@ pkgbase = mutagen-git
 	provides = python-mutagen
 	conflicts = mutagen
 	conflicts = python-mutagen
-	source = mutagen-git::git+https://github.com/quodlibet/mutagen.git
+	source = mutagen-git::git+https://github.com/quodlibet/mutagen
 	md5sums = SKIP
 
 pkgname = mutagen-git
