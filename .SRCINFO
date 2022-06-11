@@ -1,0 +1,16 @@
+pkgbase = undither-rs-git
+	pkgdesc = Smart filter to remove Floyd-Steinberg dithering from paletted images (git)
+	pkgver = 0.2.r15.g95755d0
+	pkgrel = 1
+	url = https://github.com/kornelski/undither
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	provides = undither-rs
+	conflicts = undither-rs
+	options = !strip
+	source = git+https://github.com/kornelski/undither.git
+	b2sums = SKIP
+
+pkgname = undither-rs-git
