@@ -1,6 +1,6 @@
 pkgbase = fcitx5-skin-zhuobihaotian-luotianyi
-	pkgdesc = A 倬彼昊天·洛天依 theme from Sogou input method. (A ssf to fcitx5 skin, made by ssfconv.)
-	pkgver = 0.1
+	pkgdesc = "倬彼昊天·洛天依" theme from Sogou input method. (A ssf to fcitx5 skin, made by ssfconv.)
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://pinyin.sogou.com/skins/detail/view/info/477711
 	arch = any
