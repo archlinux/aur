@@ -1,13 +1,15 @@
 pkgbase = mingw-w64-wine
 	pkgdesc = Wine wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = MIT
 	depends = wine
 	source = mingw-wine.sh
 	source = mingw-msiexec.sh
+	source = mingw-winepath.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
