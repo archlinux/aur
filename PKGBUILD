@@ -2,9 +2,9 @@
 
 pkgname=flxmlrpc
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="XMLRPC for fldigi and other Ham Radio apps"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/downloads/flxmlrpc/"
 license=('GPL3')
 depends=('gcc-libs')
