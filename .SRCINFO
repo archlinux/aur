@@ -1,0 +1,12 @@
+pkgbase = magpie
+	pkgdesc = Bidirectional NDP proxy and route maintainer to relay an IPv6 SLAAC network
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Menci/magpie
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = libpcap
+	depends = libpcap
+
+pkgname = magpie
