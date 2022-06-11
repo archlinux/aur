@@ -2,7 +2,7 @@
 # Maintainer: Ilesh Thiada <ileshkt@gmail.com>
 pkgname=ferium-bin
 _pkgname=ferium
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=("ferium-gui-bin" "ferium-git" "ferium-gui-git")
 url="https://github.com/gorilla-devs/ferium"
 license=('MPL2')
 source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-gnu-nogui.zip")
-sha256sums=('c20894712d4e684de43632eec809b107adab2a445d3a10ac58ec8fe45c557b8a')
+sha256sums=('26b08834d667753f1f2a616a34c8d598be25d362cf24635070a42068b9aa8224')
 
 package() {
 	cd "$srcdir"
