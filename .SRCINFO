@@ -1,6 +1,6 @@
 pkgbase = dwarfs-bin
 	pkgdesc = A fast high compression read-only file system (pre-compiled binaries)
-	pkgver = 0.5.6
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = dwarfs-bin
 	depends = double-conversion
 	provides = dwarfs
 	conflicts = dwarfs
-	source = https://github.com/mhx/dwarfs/releases/download/v0.5.6/dwarfs-0.5.6-Linux.tar.xz
-	sha256sums = ffaec2373b40abf24cbc746e54cbe4c12ae2138e33ae71d004e956497057e7f7
+	source = https://github.com/mhx/dwarfs/releases/download/v0.6.0/dwarfs-0.6.0-Linux.tar.xz
+	sha256sums = 138b3f99e39ad9a5aa84f3dcd1d58e2847ca0353644a2e8f629a61ccf8795676
 
 pkgname = dwarfs-bin

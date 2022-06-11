@@ -1,6 +1,6 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
@@ -14,7 +14,7 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums=('ffaec2373b40abf24cbc746e54cbe4c12ae2138e33ae71d004e956497057e7f7')
+sha256sums=('138b3f99e39ad9a5aa84f3dcd1d58e2847ca0353644a2e8f629a61ccf8795676')
 
 package() {
   cd "${srcdir}/dwarfs-${pkgver}-Linux"
@@ -24,9 +24,7 @@ package() {
   install -Dm755 bin/mkdwarfs "${pkgdir}/usr/bin/mkdwarfs"
 
   install -Dm755 sbin/dwarfs "${pkgdir}/usr/bin/dwarfs"
-  install -Dm755 sbin/dwarfs2 "${pkgdir}/usr/bin/dwarfs2"
   ln -s dwarfs "${pkgdir}/usr/bin/mount.dwarfs"
-  ln -s dwarfs2 "${pkgdir}/usr/bin/umount.dwarfs2"
 
   install -Dm644 share/man/man1/dwarfs.1 "$pkgdir/usr/share/man/man1/dwarfs.1"
   install -Dm644 share/man/man1/dwarfsck.1 "$pkgdir/usr/share/man/man1/dwarfsck.1"
