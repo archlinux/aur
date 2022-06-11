@@ -9,9 +9,8 @@ pkgbase = dvb-demod-si2165-fw
 	makedepends = unzip
 	makedepends = wget
 	noextract = model_111xxx_122xxx_driver_6_0_119_31191_WHQL.zip
-	source = https://www.hauppauge.de/files/drivers/model_111xxx_122xxx_driver_6_0_119_31191_WHQL.zip
+	source = https://web.archive.org/web/20200515152229/https://www.hauppauge.de/files/drivers/model_111xxx_122xxx_driver_6_0_119_31191_WHQL.zip
 	md5sums = 76633e7c76b0edee47c3ba18ded99336
 	sha512sums = 30073358ea42b3c8b9b8c9611969d42c8b2070cfb4a27f2df358483ba148016e933a2eef15f6c9c97842ca74fd509103b78d4fc715e46e5459f97660d8ea12d5
 
 pkgname = dvb-demod-si2165-fw
-
