@@ -11,8 +11,7 @@ pkgdesc="A collection of routines used to create PNG format graphics files - 1.4
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
-depends=('lib32-zlib')
-makedepends=('gcc-multilib')
+depends=('lib32-zlib' 'lib32-gcc-libs')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/$_realname/libpng-${pkgver}.tar.xz"
 "http://downloads.sourceforge.net/sourceforge/libpng-apng/libpng14/$pkgver/libpng-${_apngver}-apng.patch.gz")
