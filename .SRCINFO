@@ -1,0 +1,27 @@
+pkgbase = ncspot
+	pkgdesc = Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/hrkfdn/ncspot
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = alsa-lib
+	makedepends = python
+	makedepends = pkgconf
+	depends = ncurses
+	depends = openssl
+	depends = libpulse
+	depends = libxcb
+	depends = ncurses
+	depends = dbus
+	provides = ncspot
+	conflicts = ncspot
+	source = https://github.com/hrkfdn/ncspot/archive/v0.10.0.zip
+	sha512sums = 4d71e56f38385f529cb36fb4c589468a0cd5b4504bb400e0b92efdd7dfb36e6d05891ce6f254c0ca4ad8c7c02dce00be5dfac46cd690f8a9382f56f296bec6a2
+
+pkgname = ncspot
