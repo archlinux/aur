@@ -3,9 +3,9 @@
 
 pkgname=android-sdk-build-tools
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
-_ver=32
+_ver=33
 pkgver=r$_ver
-pkgrel=3
+pkgrel=1
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('x86_64')
 url="https://developer.android.com/studio/releases/build-tools"
@@ -15,12 +15,12 @@ optdepends=('lib32-gcc-libs' 'lib32-zlib')
 
 source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip"
         "package.xml")
-sha512sums=('effdb12758877bbceaa9efb638798cc7c018f3d9e48632a509445bbf5f684d287984f0657d832c6d78c4434d6425dccbc1cda08c0e63aa749c03ec996809eba9'
+sha512sums=('cc30ed55fdd17919b398d88e9e78b4326b17d5706ca464da3f4835010e7af2904afb51d3e18205c4154960e40a5a18e32489ab22afb8182c9e7d5c9bb999994d'
             '3bbb3283d80e42a21e05cd44d0a46a95c6a832c31993cb896a2620f6c39ebd33b0c1ec668e4b79e3f28d25e55e99f6940eff6b85e937e930b6d1326be4ae9e36')
 options=('!strip')
 
 _sdk=android-sdk
-_android=android-12
+_android=android-13
 
 package() {
   cd "$pkgdir"
