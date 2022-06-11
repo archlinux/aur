@@ -1,7 +1,7 @@
 pkgbase = svgbob
 	pkgdesc = Convert your ascii diagram scribbles into happy little SVG
-	pkgver = 0.6.2
-	pkgrel = 1
+	pkgver = 0.6.6
+	pkgrel = 0
 	url = https://github.com/ivanceras/svgbob
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = svgbob
 	depends = gcc-libs
 	provides = svgbob
 	conflicts = svgbob
-	source = svgbob::git+https://github.com/ivanceras/svgbob.git#tag=0.6.2
+	source = svgbob::git+https://github.com/ivanceras/svgbob.git#tag=0.6.6
 	sha1sums = SKIP
 
 pkgname = svgbob
