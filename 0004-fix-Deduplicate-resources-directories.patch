@@ -1,0 +1,56 @@
+From 3e8d62c24299b0da988d3d68d7462c17f02e26af Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Sat, 11 Jun 2022 23:08:31 +0200
+Subject: [PATCH 4/4] fix: Deduplicate resources directories
+
+It seems to actually happens despite xdgpp already doing that...
+---
+ lib/libimhex/include/hex/helpers/utils.hpp | 11 +++++++++++
+ lib/libimhex/source/helpers/fs.cpp         |  4 ++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/lib/libimhex/include/hex/helpers/utils.hpp b/lib/libimhex/include/hex/helpers/utils.hpp
+index b20be7ae..8b122797 100644
+--- a/lib/libimhex/include/hex/helpers/utils.hpp
++++ b/lib/libimhex/include/hex/helpers/utils.hpp
+@@ -234,6 +234,17 @@ namespace hex {
+         return result;
+     }
+ 
++    template<typename T>
++    void deduplicateVector(std::vector<T> &items) {
++        auto end = items.end();
++
++        for (auto it = items.begin(); it != end; ++it) {
++            end = std::remove(it + 1, end, *it);
++        }
++
++        items.erase(end, items.end());
++    }
++
+     std::vector<std::string> splitString(const std::string &string, const std::string &delimiter);
+     std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
+ 
+diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
+index bbd8e641..c6f1f46d 100644
+--- a/lib/libimhex/source/helpers/fs.cpp
++++ b/lib/libimhex/source/helpers/fs.cpp
+@@ -1,4 +1,5 @@
+ #include <hex/helpers/fs.hpp>
++#include <hex/helpers/utils.hpp>
+ 
+ #include <hex/api/content_registry.hpp>
+ #include <hex/helpers/fs_macos.h>
+@@ -242,6 +243,9 @@ namespace hex::fs {
+         if (exePath && !exePath->empty())
+             dataDirs.push_back(exePath->parent_path());
+ 
++        hex::deduplicateVector(configDirs);
++        hex::deduplicateVector(dataDirs);
++
+         switch (path) {
+             case ImHexPath::Patterns:
+                 addUserDirs(dataDirs);
+-- 
+2.36.1
+

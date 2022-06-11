@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -23,6 +23,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         0001-makepkg-Remove-external-stuff.patch
         0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch
         0003-fix-Build-errors-with-GCC-12.1.0.patch
+        0004-fix-Deduplicate-resources-directories.patch
         imhex.desktop)
 cksums=('SKIP'
         'SKIP'
@@ -30,9 +31,10 @@ cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '3374949146'
-        '3561209881'
-        '1302454653'
+        '3601631476'
+        '4179823382'
+        '3168205901'
+        '3422557331'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
@@ -40,9 +42,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0bfff0f03fa8ffe312162e7d43c0c0feb8aaa332e15c497c95fffc6704169c8f'
-            '82a1b0e4e1f02a998eb178dfc0cf75ad9c6b4ca9819cbe0f90d3c65ed07a367d'
-            'cee653d96a96df1792977ab1509cd7cb94c2d10b20540a7ffca75f8e0ebcc847'
+            '336cd1a05bb0604719ff1f6b81a0db66f450f26c3942bab9e3d6fb9e7d0d6f21'
+            '6c7025b9223d53b4f9ac558467caa51a50ab996bc8e240a27d014f493df103f0'
+            'b48628ac32bea0fc8797100c41da1c9471d7f30045dba773243af1f2d6d62ab3'
+            '784bc7b1a6ce2292232521bfaa9efd185fc36b6f6265ae382e9e8489de109706'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
@@ -50,9 +53,10 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'fe6432359f2ab2b7ad9d7541e96d46ab3113999c743bd46b021bc67247ea64d9b409b62580a8ffc857cbee7896c6bf0aeae5cb031c14901655d6a2be30ce3aa5'
-        'a7e624148a9a0cd7617626fb2c6b07c2c6354bc1b0b09d31c93ea7b5dc9058e11a304da03a9b85d9483aea4b874d2ef3b346fec0da8e8df04fcec8bb9430c266'
-        '0de6ce0c2ed58839815571a5f747d8a726893b7daf3898fc338cd46834ce697bb42dd88ea71d5be1fee6c13dabc68f4c431fc67d9339fe7eeda515bb2bb71c14'
+        '3a2e8c935f5969269535cac4c1a4fecf321911bc122db0fa2c6e86644a5dc9a6fbfc4d2da61e6b0d917ff2e13713da3912cdb121812fda0e30e88246d11fbdc2'
+        '4958ecf7ccbb9af1daa5adc8f668832ae510c8f3d070eff19e9704252a20eae8c4b37b3d1609efd9832ee5cdc7a54ec726e543e80bdaf8774753774d9fa4641c'
+        'ed121547ba4412600e3049ece962bcfdf72e2c9febc846165dc50492a7a6f1771660cd5b1b3417c1118f8ebb67be0c760961aa09d05a89bea14c70c761dd06b2'
+        'e538cd745e6cc4bb7997230652dccb16f2372fe5ecb33c9613cdbb5a02e3e2887943b420aa71b817b7024931aac580b09c3bf5f91ab4f361ec5eda27414b7ba1'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 options=(!lto)
 
@@ -71,7 +75,8 @@ prepare() {
   git apply \
     "$srcdir/0001-makepkg-Remove-external-stuff.patch" \
     "$srcdir/0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch" \
-    "$srcdir/0003-fix-Build-errors-with-GCC-12.1.0.patch"
+    "$srcdir/0003-fix-Build-errors-with-GCC-12.1.0.patch" \
+    "$srcdir/0004-fix-Deduplicate-resources-directories.patch"
 }
 
 build() {
