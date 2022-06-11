@@ -1,6 +1,6 @@
 pkgbase = r-processx
 	pkgdesc = Execute and Control System Processes
-	pkgver = 3.5.3
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=processx
 	arch = i686
@@ -13,11 +13,12 @@ pkgbase = r-processx
 	optdepends = r-covr
 	optdepends = r-curl
 	optdepends = r-debugme
+	optdepends = r-rlang
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/processx_3.5.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/processx_3.6.0.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 679629fa56ec185d4fd52ade5b699c78a2a0e875acdf57555b31bc62111f342a
+	sha256sums = 75186769ad934fedf1ddb38ec2942ad85bd4e7862920d83245901a39e786a64f
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-processx
