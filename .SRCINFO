@@ -1,6 +1,6 @@
 pkgbase = r-monocle
 	pkgdesc = Clustering, differential expression, and trajectory analysis for single- cell RNA-Seq
-	pkgver = 2.24.0
+	pkgver = 2.24.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/monocle
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = r-monocle
 	optdepends = r-scater
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/monocle_2.24.0.tar.gz
-	sha256sums = ab51c719f2b9d7fcd32805a057e7e27370e0b0e8f6d5b653f751c808f169d8bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/monocle_2.24.1.tar.gz
+	sha256sums = b6a32e266af4cd3e75100a3ea04d90fd537c0f2d6d2815fa78f0fbe040e7e185
 
 pkgname = r-monocle
