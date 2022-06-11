@@ -29,14 +29,10 @@ pkgver() {
         printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-        cd 8814au
-        make clean
-        make
-}
-
 package() {
         cd 8814au
+		make clean
+		make
         sudo make install
         echo -e "\n\n+----------------------------------------------+"
         echo "| CHANGES WILL BE APPLIED AFTER REBOOT         |"
