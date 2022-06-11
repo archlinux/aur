@@ -1,13 +1,13 @@
 pkgbase = hare-xml
 	pkgdesc = XML support for Hare
-	pkgver = r41.2214874
+	pkgver = r42.1e4db08
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-xml
 	arch = any
 	license = MPL2
 	makedepends = git
 	depends = hare
-	source = hare-xml::git+https://git.sr.ht/~sircmpwn/hare-xml#commit=221487482aa18dca9af5cf7bd5a92fe4c9cc8623
+	source = hare-xml::git+https://git.sr.ht/~sircmpwn/hare-xml#commit=1e4db08b0ccc1168b9c552467f933be3fc6b24f7
 	md5sums = SKIP
 
 pkgname = hare-xml

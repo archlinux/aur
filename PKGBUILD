@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-xml
-pkgver=r41.2214874
+pkgver=r42.1e4db08
 pkgrel=1
-pkgdesc="XML support for Hare"
+pkgdesc='XML support for Hare'
 arch=('any')
-url="https://git.sr.ht/~sircmpwn/hare-xml"
+url='https://git.sr.ht/~sircmpwn/hare-xml'
 license=('MPL2')
 depends=('hare')
 makedepends=('git')
-_commit='221487482aa18dca9af5cf7bd5a92fe4c9cc8623'
+_commit='1e4db08b0ccc1168b9c552467f933be3fc6b24f7'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
