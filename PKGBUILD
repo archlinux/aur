@@ -1,8 +1,8 @@
 # Maintainer: Mattias Giese <mattias.giese@posteo.net>
 pkgname=beammp-server
 _pkgname=BeamMP-Server
-pkgver=v2.3.3.r0.2355327
-_pkgver=2.3.3
+pkgver=v3.0.1.r0.a97763a
+_pkgver=3.0.1
 pkgrel=1
 pkgdesc="Server for BeamMP, providing multiplayer support for the driving simulator beamng.drive"
 arch=(x86_64)
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	cmake .
+	cmake . -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
