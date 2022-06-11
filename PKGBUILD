@@ -12,7 +12,7 @@ depends=('dbus' 'hicolor-icon-theme' 'libpulse' 'libxcb' 'ncurses' 'openssl' 'ue
 makedepends=('cargo' 'pkgconf' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-git" )
-source=("ncspot-cover.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('7eb190264f119a5d6ce1809b3b93910c827476c138867892ae06aee90f2c846cd172a1faea39307b87d20c2632eac1bc93682a7588980d2fdf4a82a8edded78f')
 
 prepare() {
