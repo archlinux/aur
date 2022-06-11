@@ -1,7 +1,7 @@
 # Maintainer: Jagadeesh Kotra <jagadeesh at stdin dot top>
 
 pkgname=wpc
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Automatic Wallpaper Changer which can retrieve wallpapers from wallhaven and Reddit'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("https://github.com/jkotra/wpc/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ed874c0e27e65b9235ec894afa0e93d83d6fe159988201caa21616da759ed23f')
+sha256sums=('1dead6d52e0695080e99792f9d3915f93f2aceaeb72d2322a6f25d5d290dd3ab')
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
