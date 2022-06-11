@@ -14,6 +14,7 @@ pkgbase = invidtui-bin
 	depends = ffmpeg
 	optdepends = mpv-mpris: for MPRIS support
 	optdepends = youtube-dl: alternative for yt-dlp
+	optdepends = screen: Efficiently resume and suspend instances
 	provides = invidtui
 	source_x86_64 = https://github.com/darkhz/invidtui/releases/download/v0.2.0/invidtui_0.2.0_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = 48da43b1ed25953d22485861efd530214bb0c5394280ed4b11f9b952ed3bebe4
