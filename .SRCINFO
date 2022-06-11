@@ -1,6 +1,6 @@
 pkgbase = python-freqtrade
 	pkgdesc = Free, open source crypto trading bot
-	pkgver = 2022.5.1
+	pkgver = 2022.5
 	pkgrel = 1
 	url = https://github.com/freqtrade/freqtrade
 	arch = any
@@ -48,7 +48,7 @@ pkgbase = python-freqtrade
 	optdepends = python-joblib: hyperopt
 	optdepends = python-progressbar: hyperopt
 	optdepends = python-plotly: plot
-	source = https://files.pythonhosted.org/packages/source/f/freqtrade/freqtrade-2022.5.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/freqtrade/freqtrade-2022.5.tar.gz
 	sha256sums = d12cad5c0486afc28b5e61e399e1804a6e557f2cb836626b4acc20172ac0e486
 
 pkgname = python-freqtrade

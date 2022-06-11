@@ -1,6 +1,6 @@
 pkgname=python-freqtrade
 _pkgname=${pkgname:7}
-pkgver=2022.5.1
+pkgver=2022.5
 pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
