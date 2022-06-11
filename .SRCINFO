@@ -1,6 +1,6 @@
 pkgbase = vdu_controls
 	pkgdesc = Visual Display Unit virtual control panel - a GUI front end to ddcutil
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/digitaltrails/vdu_controls
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = vdu_controls
 	depends = python
 	depends = python-pyqt5
 	depends = qt5-multimedia
-	source = vdu_controls-1.6.4.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v1.6.4.tar.gz
+	source = vdu_controls-1.6.5.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v1.6.5.tar.gz
 	source = vdu_controls.desktop
-	sha256sums = 2a1ce32d102fb4aa4d2e94bce86e735e81ca745d7720fb8a08ca6eb923babe02
+	sha256sums = 52df08c568f61f353972113a8bf3d4e4dae3ff073e22d53b496515cf9ddf8fba
 	sha256sums = b29047aeba56c9d26b5b21fb8ced269a69b587ee79835d4b56653934fbb550d5
 
 pkgname = vdu_controls
