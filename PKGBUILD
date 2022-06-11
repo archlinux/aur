@@ -3,8 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jove-git
-pkgver=206.20220530
+pkgver=4.17.4.4
 pkgrel=1
+epoch=1
 pkgdesc=" Emacs-like editor without Lisp from github"
 url="https://github.com/jonmacs/jove/"
 license=('custom')
@@ -17,8 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "%s.%s" $(git rev-list --count HEAD) \
-	 $(git log -1 --format="%cd" --date=short | tr -d '-')
+  git describe --tags | sed 's+-+.+'| tr - .
 }
 
 build() {
@@ -31,6 +31,8 @@ build() {
 package() {
   cd ${pkgname%-git}
   install -d "$pkgdir"/usr/{bin,lib/jove,share/{jove,man/man1}}
+  install -d "$pkgdir"/etc
+  install -d "$pkgdir"/var/lib/jove
   make JOVEHOME="$pkgdir"/usr install
   for _f in "$pkgdir"/usr/man/man1/jove.1  "$pkgdir"/usr/man/man1/teachjove.1
   do
