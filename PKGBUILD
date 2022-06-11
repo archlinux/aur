@@ -1,6 +1,6 @@
 pkgname='rumtricks-git'
 _pkgname=${pkgname%-git}
-pkgver=r154.cd72058
+pkgver=r191.c78eeff
 pkgrel=1
 pkgdesc='Winetricks alternative'
 arch=('x86_64')
@@ -8,8 +8,9 @@ url='https://johncena141.eu.org:8141/johncena141/rumtricks'
 license=('GPL3')
 depends=(curl zstd wine jq)
 provides=('rumtricks')
-source=("https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/rumtricks.sh")
-md5sums=('SKIP')
+source=("https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/rumtricks.sh" "https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/wha.sh")
+md5sums=('SKIP'
+         'SKIP')
 
 prepare() {
   # needed for versioning
@@ -24,4 +25,5 @@ pkgver() {
 
 package() {
     install -Dm755 "rumtricks.sh" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 "wha.sh" "$pkgdir/usr/bin/wha"
 }
