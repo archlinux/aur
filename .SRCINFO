@@ -1,8 +1,9 @@
 pkgbase = workbench
 	pkgdesc = Learn and prototype with GNOME technologies
 	pkgver = 42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Workbench
+	install = workbench.install
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib

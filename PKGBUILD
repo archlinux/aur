@@ -3,7 +3,7 @@
 
 pkgname=workbench
 pkgver=42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Learn and prototype with GNOME technologies"
 arch=('x86_64')
 url="https://github.com/sonnyp/Workbench"
@@ -14,6 +14,7 @@ checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
+install="$pkgname.install"
 _commit=b86cdfb3e6440e4e034fcb6c609ff84401630faa
 source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
@@ -55,6 +56,9 @@ package() {
   cd "$srcdir/Workbench"
   meson install -C build --destdir "$pkgdir"
 
-  # Some icons conflict with other packages like Geary and Extension Manager
-  rm -rf "$pkgdir/usr/share/icons/hicolor/scalable/actions/"
+  # Scalable action icons conflict with numerous other packages
+  # Install to doc folder so they can be copied to user space for use
+  install -d "$pkgdir/usr/share/doc/$pkgname/icons/hicolor/scalable"
+  mv "$pkgdir/usr/share/icons/hicolor/scalable/actions" \
+    "$pkgdir/usr/share/doc/$pkgname/icons/hicolor/scalable/"
 }

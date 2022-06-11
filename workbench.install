@@ -1,0 +1,9 @@
+post_install() {
+  echo "Install scalable action icons locally:"
+  echo ""
+  echo "cp -f /usr/share/doc/workbench/icons/ ~/.local/share/"
+}
+
+post_upgrade() {
+  post_install
+}
