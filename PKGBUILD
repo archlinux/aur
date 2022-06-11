@@ -1,7 +1,7 @@
 # Maintainer: Pace Willisson <pace@alum.mit.edu>
 pkgname=unfatarians-studio
-_tag=6b0e65d7eea42eeb61fc2424b77f793d4d2dd9bb
-pkgver=5
+_tag=cf91fcf2e1ae4428a92a5f5eb2409aad47631302
+pkgver=6
 pkgrel=1
 pkgdesc="dockerized ardour6 with a rich set of plugins"
 arch=('any')
