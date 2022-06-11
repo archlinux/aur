@@ -1,7 +1,7 @@
 # Maintainer: Ryan Petris <ryan@petris.net>
 
 pkgname=ignorefs
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="FUSE filesystem that hides/ignores files and directories based on an ignore file."
@@ -10,7 +10,7 @@ license=('LGPL')
 makedepends=('python-setuptools')
 depends=('python-fuse' 'python-pathspec')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ryanpetris/ignorefs/archive/v${pkgver}.tar.gz")
-sha512sums=('bc932f8f3efce3ded21099cd7ebc26548e36b607bd6d78fac082f4037e82c07c39accde26dc5785a891d08e0ec91f0270dd998045a3c758f596516f2b4ea7efe')
+sha512sums=('1cb7d73b1ca62fd0b45028dcb5ce5b57a02a3026cacf179a240117379af5d2c082d47a0b3e2adf85b050f05381ace155c8cce492c448050f711429c09314e8f6')
 
 build() {
   cd "${pkgname}-${pkgver}"
