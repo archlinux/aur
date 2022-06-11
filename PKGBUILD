@@ -3,8 +3,8 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize-mold
-pkgver=25
-pkgrel=2
+pkgver=26
+pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -17,12 +17,11 @@ optdepends=("upx: Compress executables"
             "polly: Polyhedral model optimization for clang"
             "mold: a modern fast linker"
             "lld: the clang linker"
-            "bolt: use yourself bolted toolchain for compiling"
+            "llvm-bolt: use yourself bolted toolchain for compiling"
             "aocc: use amd's llvm compiler for compiling"
             "aocl: use amd's compiler libary for compiling"
             "buildcache: a alternative to ccache")
-backup=(etc/makepkg-optimize.conf
-        usr/share/makepkg/buildenv/compiler.sh)
+backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,graphite,rice,mold,bolt,buildcache,lld,aocc}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
@@ -35,7 +34,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           '996ed46bddb2898bc8d4a26c019df62721acfea3'
           '14cb27e5e45dacf8e59cfb498235036716393014'
           '53d6d080e26bcb450a3e082cf039f891efa6a88c'
-          '418991215fb59646d3d345a182b5bfc10e15a49a'
+          '73fe5f567888e445b5850d6894e8449049fe0638'
           '22aeaf0766c4de926633f93bfa9aa2ab64bc50f3'
           '7060ba26bf4be4cc25f0e138d3ca27530a8798a8'
           '64ffc9141af0e2c44d327e019c8d4d4a09585259'
@@ -51,7 +50,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           '841853602f93c20dee173341424b1de5bef19243'
           '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '0fb7ea1cb5f259a61a8633638817693e8ed6ecb6'
+          'e1904adda115a4125e3184f262b4ae6ce0825a14'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'

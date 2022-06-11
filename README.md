@@ -45,3 +45,8 @@ After the first building phase, bind the PGO cache:
 - mount -o bind "$CHROOT"/{root,"$USER"}/mnt/pgo
 
 Tip: Use fstab to bind these folders at boot.
+
+## Using buildcache
+
+You can use buildcache if you replace in /usr/share/makepkg/buildenv/compiler.sh with the compiler.sh.in in the repo.
+Then you need to exec the buildcache.sh for setting the symlinks.
