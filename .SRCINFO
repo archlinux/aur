@@ -1,6 +1,6 @@
 pkgbase = bsp-layout-git
 	pkgdesc = Dynamic layout management for bspwm with tall, wide, even, tiled, monocle (Git master)
-	pkgver = 0.0.4
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/phenax/bsp-layout
 	install = .install

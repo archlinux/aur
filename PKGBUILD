@@ -1,6 +1,6 @@
 # Maintainer: Akshay Nair <phenax5@gmail.com>
 pkgname=bsp-layout-git
-pkgver=0.0.4
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Dynamic layout management for bspwm with tall, wide, even, tiled, monocle (Git master)"
 arch=('any')
