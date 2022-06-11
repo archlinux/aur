@@ -3,35 +3,35 @@
 
 pkgname=libkeyfinder-git
 pkgdesc="Musical key detection for digital audio."
-url="http://www.ibrahimshaath.co.uk/keyfinder/"
+url="https://github.com/mixxxdj/libkeyfinder"
 license=('GPL3')
-pkgver=239.0a5ec7f
+pkgver=333.4e1a502
 pkgrel=1
 
 provides=(libkeyfinder)
 conflicts=(libkeyfinder)
 
-source=("$pkgname::git://github.com/ibsh/libKeyFinder.git")
+source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 depends=('fftw')
-makedepends=('git' 'qt5-base')
+makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count main).$(git rev-parse --short main)
 }
 
 build() {
   cd "$srcdir/$pkgname"
 
-  qmake-qt5
-  make
+  # Disable building unit tests so we do not need the catch2 dep
+  cmake -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -S . -B build
+  cmake --build build
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  mkdir -p ${pkgdir}/usr/include/keyfinder
-  make INSTALL_ROOT="${pkgdir}" install
+  cmake --install build
 }
