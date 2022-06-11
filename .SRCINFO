@@ -1,0 +1,27 @@
+pkgbase = coreutils-hybrid-git
+	pkgdesc = GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy
+	pkgver = 0.0.14.r152.gd1f7f51f9
+	pkgrel = 1
+	url = https://www.gnu.org/software/coreutils/
+	arch = x86_64
+	license = GPL3
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gperf
+	depends = glibc
+	depends = acl
+	depends = attr
+	depends = gmp
+	depends = libcap
+	depends = openssl
+	provides = coreutils
+	provides = coreutils-hybrid
+	conflicts = coreutils
+	conflicts = coreutils-hybrid
+	source = coreutils::git+https://git.savannah.gnu.org/git/coreutils.git
+	source = uutils::git+https://github.com/uutils/coreutils.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = coreutils-hybrid-git
