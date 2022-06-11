@@ -3,7 +3,7 @@
 
 pkgname=teamviewer-quicksupport
 epoch=1
-pkgver=15.30.3
+pkgver=15.31.3
 pkgrel=1
 pkgdesc='All-in-one software for remote support and online meetings'
 arch=('x86_64')
@@ -33,7 +33,7 @@ depends=(
 conflicts=('teamviewer')
 license=('custom')
 source=("teamviewer_qs-${pkgver}.tar.gz::https://download.teamviewer.com/download/teamviewer_qs.tar.gz")
-sha256sums=('db65cb7fbc485df94e5f88f67b5538b1a8dd91080cedf2cd344b30c03b8dbacc')
+b2sums=('baaed54141fc43e6bf06ae94364bf4e4a8afe7007085e9adeb2d8067632817f1c6b186d9674bff0a552de056d6b1318a7799b1c0140b1e22803f2043eea77f4e')
 
 prepare() {
 	cd teamviewerqs/
