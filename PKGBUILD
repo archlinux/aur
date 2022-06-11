@@ -1,13 +1,13 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=testdisk-git
-pkgver=7.1.r643.g6d51ce0
-pkgrel=1
+pkgver=7.1.r1029.g305d71ea
+pkgrel=2
 pkgdesc="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 arch=(x86_64)
 url="https://www.cgsecurity.org/index.html?testdisk.html"
 license=(GPL)
-depends=(libjpeg openssl progsreiserfs ntfsprogs)
+depends=(libjpeg openssl ntfs-3g)
 makedepends=(git qt5-base qt5-tools)
 optdepends=('qt5-base: qphotorec')
 provides=(testdisk)

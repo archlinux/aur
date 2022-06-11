@@ -1,7 +1,7 @@
 pkgbase = testdisk-git
 	pkgdesc = Checks and undeletes partitions + PhotoRec, signature based recovery tool
-	pkgver = 7.1.r643.g6d51ce0
-	pkgrel = 1
+	pkgver = 7.1.r1029.g305d71ea
+	pkgrel = 2
 	url = https://www.cgsecurity.org/index.html?testdisk.html
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,7 @@ pkgbase = testdisk-git
 	makedepends = qt5-tools
 	depends = libjpeg
 	depends = openssl
-	depends = progsreiserfs
-	depends = ntfsprogs
+	depends = ntfs-3g
 	optdepends = qt5-base: qphotorec
 	provides = testdisk
 	conflicts = testdisk
@@ -19,4 +18,3 @@ pkgbase = testdisk-git
 	sha256sums = SKIP
 
 pkgname = testdisk-git
-
