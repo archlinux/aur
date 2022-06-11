@@ -1,7 +1,7 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=6.0rc1.r9396.g95f0154c96a
+pkgver=7.10.r14025.gdb5fb59a1ca
 pkgrel=1
 
 source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland
@@ -101,7 +101,7 @@ conflicts=('wine' 'wine64')
 
 pkgver() {
   cd wine
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
+  printf "%s.%s" "$(cat VERSION | grep -Po 'Wine version \K[^$]*')" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.[0-9]*.[0-9]*.[a-zA-Z0-9]*.//')"
 }
 
 prepare() {
