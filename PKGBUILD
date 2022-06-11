@@ -10,7 +10,7 @@ url='https://github.com/jellyfin/jellyfin-media-player'
 provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git'
         'jwc-10.7.6.tar.gz::https://github.com/iwalton3/jellyfin-web-jmp/releases/download/jwc-10.7.6/dist.zip')
 sha256sums=('SKIP'
