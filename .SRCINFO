@@ -8,6 +8,7 @@ pkgbase = jellyfin-media-player
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = python
 	depends = mpv
 	depends = libcec
 	depends = sdl2
