@@ -1,6 +1,6 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='utf-8-steg-git'
-pkgver=0.1.0.r0.g65a6639
+pkgver=0.1.1.r0.gb0a8868
 pkgrel=1
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
@@ -27,6 +27,9 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	cp "$srcdir/${pkgname%-git}/utf-8-steg" "$pkgdir/usr/bin"
+	mv "$srcdir/${pkgname%-git}/utf-8-steg" "$pkgdir/usr/bin"
 	ln -rsT "$pkgdir/usr/bin/utf-8-steg" "$pkgdir/usr/bin/steg"
+
+	mkdir -p "$pkgdir/usr/share/man/man1"
+	cp "$srcdir/${pkgname%-git}/utf-8-steg.1" "$pkgdir/usr/share/man/man1/"
 }
