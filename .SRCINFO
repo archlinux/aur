@@ -1,13 +1,13 @@
 pkgbase = hare-redis
 	pkgdesc = Redis client protocol support for Hare
-	pkgver = r29.1f327b1
+	pkgver = r36.90a0eae
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-redis
 	arch = any
 	license = MPL2
 	makedepends = git
 	depends = hare
-	source = hare-redis::git+https://git.sr.ht/~sircmpwn/hare-redis#commit=1f327b19785df5f0d4f8fb6b0190d6296d8d06d8
+	source = hare-redis::git+https://git.sr.ht/~sircmpwn/hare-redis#commit=90a0eae39d749290787a559dc89424afac2baa90
 	md5sums = SKIP
 
 pkgname = hare-redis
