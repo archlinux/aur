@@ -1,14 +1,12 @@
 pkgbase = dieharder-git
 	pkgdesc = A Random Number Test Suite (that actually compiles)
-	pkgver = 20220604.g3742fd7
+	pkgver = 20220604.gdb218e3
 	pkgrel = 2
 	url = https://github.com/christopherkobayashi/dieharder
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
-	makedepends = automake
-	makedepends = autoconf
 	depends = gsl
 	conflicts = dieharder
 	source = dieharder::git+https://github.com/christopherkobayashi/dieharder.git
