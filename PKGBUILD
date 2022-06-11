@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare-compress
-pkgver=r26.2150858
+pkgver=r28.ad504ee
 pkgrel=1
-pkgdesc="Compression algorithms for Hare"
+pkgdesc='Compression algorithms for Hare'
 arch=('any')
-url="https://git.sr.ht/~sircmpwn/hare-compress"
+url='https://git.sr.ht/~sircmpwn/hare-compress'
 license=('MPL2')
 depends=('hare')
 makedepends=('git')
-_commit='2150858f269f81ff7736d20d30014f7aa7872dd4'
+_commit='ad504ee8520259eb1601f7718a650e43ce25c522'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
