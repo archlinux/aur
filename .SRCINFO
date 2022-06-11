@@ -1,0 +1,17 @@
+pkgbase = casclib-git
+	pkgdesc = Open-source implementation of library for reading CASC storages from Blizzard games
+	pkgver = 2.1.r35.ge078936
+	pkgrel = 1
+	url = http://www.zezula.net/en/casc/casclib.html
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = zlib
+	provides = casclib
+	conflicts = casclib
+	source = git+https://github.com/ladislav-zezula/CascLib.git
+	sha256sums = SKIP
+
+pkgname = casclib-git
