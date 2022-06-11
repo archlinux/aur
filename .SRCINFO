@@ -1,11 +1,11 @@
 pkgbase = cn.com.10jqka
 	pkgdesc = cn.com.10jqka - a tool for scanning the stock infomation
-	pkgver = 2.4.1.0
+	pkgver = 2.6.1.1
 	pkgrel = 0
 	url = https://www.10jqka.com.cn
 	arch = x86_64
 	license = custom
-	source = http://resource.thsi.cn/soft/cn.com.10jqka_2.4.1.0_amd64.deb
-	sha256sums = 500be4c699752fc1c714e0b633b9497bab21ff8a28497313a61ed226a9ae4bb5
+	source = http://resource.thsi.cn/soft/cn.com.10jqka_2.6.1.1_amd64.deb
+	sha256sums = 824e536bba566af60be06e483a98fb3fbee533d7b287c7ed496988a91645fa9e
 
 pkgname = cn.com.10jqka
