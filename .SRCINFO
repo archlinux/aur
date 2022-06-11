@@ -1,0 +1,14 @@
+pkgbase = hare-rss
+	pkgdesc = RSS implementation for Hare
+	pkgver = r9.2fc2dfa
+	pkgrel = 1
+	url = https://git.sr.ht/~chrisppy/hare-rss
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	depends = hare-xml
+	source = hare-rss::git+https://git.sr.ht/~chrisppy/hare-rss#commit=2fc2dfa03ea6671a481a3f2a4317d104084413a9
+	md5sums = SKIP
+
+pkgname = hare-rss
