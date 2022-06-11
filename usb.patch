@@ -1,0 +1,24 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 9a0199a..a2e0af9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -5,7 +5,6 @@ requires = [
+     "pyusb",
+     "pycryptodome",
+     "colorama",
+-    "usb",
+     "shiboken6", 
+     "pyside6",
+     "mock"
+diff --git a/requirements.txt b/requirements.txt
+index ade5059..4ef9d06 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,7 +2,6 @@ wheel
+ pyusb
+ pycryptodome
+ colorama
+-usb
+ shiboken6
+ pyside6
+ mock
