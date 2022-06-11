@@ -1,19 +1,19 @@
 # Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
 
 pkgname=misskey
-pkgver=12.110.1
+pkgver=12.111.0
 pkgrel=1
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 arch=("x86_64")
 license=("AGPL3" "MIT")
-depends=("nodejs-lts-gallium" "npm" "postgresql" "redis" "yarn")
+depends=("nodejs>=18" "npm" "postgresql" "redis" "yarn")
 makedepends=("git" "python")
 install="misskey.install"
 optdepends=("elasticsearch: Search functionality"
             "ffmpeg: Media de-encode functionality"
             "nginx: Reverse-proxy usage")
-_commit="3658f19d9800f331b3331080ac700dbae5db987a" #tag/12.110.1
+_commit="182a1bf653ecfbcf76e4530b3077c6252b0d4827" #tag/12.111.1
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
@@ -23,13 +23,13 @@ source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
 md5sums=('SKIP'
          '1477ba0bb17656e9c26663af8daeb95b'
          '9abc87cea2314b95334d4ad3b309e931'
-         'd8eb96e073b0d49817c64f894762f4b6'
+         '3247c7dd69df09a6268528deb82ccd3e'
          'a3fe48c606eabebf818106648c0bf0d9'
          'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
             'bc5faebd8ad9ebebc0ead16989a1803c8ae8ba65001ad32ff9de46e8809525bc'
             '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
-            '0f5394f96f3fd4a17f58d1144b78883e52cd9cec2beaf0260ca62c03fe224c49'
+            'c566c30c73557f13c756afe5b160e6560d0a24077d6583ab85667e3c7697dc13'
             'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
             'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
 
