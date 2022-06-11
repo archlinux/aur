@@ -8,7 +8,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-smbclient
-pkgver=0.23.6
+pkgver=0.23.7
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music (with buggy smbclient plugin enabled, don't complain upstream!)"
 url="https://www.musicpd.org/"
@@ -30,12 +30,12 @@ source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-$
         "${_pkgname}.conf"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha512sums=('1595fcc53a67f1a68b0c0516697d242da53b91626e37bc2f49095add78eb497a52c67c961a421f20b40f3c57a571557a76559a212838de2a3ec4aec6c7a3288d'
+sha512sums=('2a6b3eb2c8b61a22861ae75fe2f62c8ec6cd391f029438577127e309b910e99d7b735e40afae96d52ed4f161195a0ce7cb89cc51ad45df5a18e04736c16ce3a6'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
             'db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d')
-b2sums=('5ccb4a7c06c4317e3285846a261438bdcc10db5eaf71fcba969bcae8321ca50bb26fe9317e23e38eca1c4a8785015596064d5bfc692bf66f8007d0d2a1b71cbb'
+b2sums=('2c75196c37eb8d075cca2881bb7ed10e434a071d3c64bb7cdb3bb96dfea74c30de2dce5bfdbc51da945df325d9f278cdf8dd03b7ba07c0ad51cea50971f4a143'
         'SKIP'
         '0969a3c477b6a3f34b44e067e515d7f306414dd14e0163584417b9d071e3cc825898219f7ff66ead7905b15429b8411304052d3b2b14a72e560bfabf9bf0adcf'
         '4ab6e415284c77802a39d0913d701fe55e56f3c22b19557661fbef77e456b5e1d151da4202695282b956602e716a7afdb994aa2fc17368b9a0d0d051d47a3afb'
