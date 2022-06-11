@@ -1,6 +1,6 @@
 pkgname=stan-bin
 _pkgname=Stan-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Stan desktop application"
@@ -11,7 +11,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("stan-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/stan-desktop/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Stan-linux-x64.tar.gz")
+source_x86_64=("https://gitlab.com/stan-desktop/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Stan-linux-x64.tar.xz")
 
 package() {
     for dir in Stan-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
