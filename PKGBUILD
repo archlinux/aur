@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=rtl8814au.install
+install=
 changelog=
 source=("git+$url")
 noextract=()
@@ -29,10 +29,14 @@ pkgver() {
         printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-        cd 8814au
+build() {
 		make clean
 		make
+
+}
+
+package() {
+        cd 8814au
         sudo make install
         echo -e "\n\n+----------------------------------------------+"
         echo "| CHANGES WILL BE APPLIED AFTER REBOOT         |"
