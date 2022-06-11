@@ -1,0 +1,40 @@
+From fe1738eb6e1c58b4994ffb72c4742864be87fbc0 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 4 Jun 2022 11:32:59 +0200
+Subject: [PATCH 1/9] cmake: install parse_fasm.so
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
+---
+ setup.py           | 3 +--
+ src/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index cfbaa55..0a1b5a3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -168,8 +168,7 @@ class AntlrCMakeBuild(build_ext):
+                     os.path.dirname(self.get_ext_fullpath(ext.name))),
+                 ext.prefix)
+             cmake_args = [
+-                '-DCMAKE_INSTALL_PREFIX=' + extdir,
+-                '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
++                '-DCMAKE_INSTALL_PREFIX=' + extdir, '-DCMAKE_INSTALL_LIBDIR=.',
+                 '-DPYTHON_EXECUTABLE=' + sys.executable,
+                 '-DANTLR_RUNTIME_TYPE=' + shared_options.antlr_runtime
+             ]
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 94783a6..2fdc164 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -97,6 +97,7 @@ add_library(parse_fasm SHARED ParseFasm.cpp
+   ${ANTLR_FasmLexer_CXX_OUTPUTS}
+   ${ANTLR_FasmParser_CXX_OUTPUTS})
+ target_link_libraries(parse_fasm ${ANTLR4_RUNTIME})
++install(TARGETS parse_fasm)
+ #target_compile_options(parse_fasm PRIVATE -Wno-attributes) # Disable warning from antlr4-runtime
+ 
+ add_executable(parse_fasm_tests
+-- 
+2.36.1
+

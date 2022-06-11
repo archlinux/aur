@@ -1,0 +1,32 @@
+From 707a34851772b3dbf71e5dd112b9757bb90ab21e Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 4 Jun 2022 11:33:46 +0200
+Subject: [PATCH 9/9] Use cmake directly instead of letting setup.py try to
+ handle it
+
+---
+ setup.py | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 51b6dbb..d499a80 100644
+--- a/setup.py
++++ b/setup.py
+@@ -288,13 +288,5 @@ setuptools.setup(
+     entry_points={
+         'console_scripts': ['fasm=fasm.tool:main'],
+     },
+-    ext_modules=[
+-        CMakeExtension('parse_fasm', sourcedir='src', prefix='fasm/parser')
+-    ] + cythonize("fasm/parser/antlr_to_tuple.pyx"),
+-    cmdclass={
+-        'build_ext': AntlrCMakeBuild,
+-        'build': BuildCommand,
+-        'develop': DevelopCommand,
+-        'install': InstallCommand,
+-    },
++    ext_modules=cythonize("fasm/parser/antlr_to_tuple.pyx"),
+ )
+-- 
+2.36.1
+

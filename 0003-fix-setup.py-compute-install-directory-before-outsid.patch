@@ -1,0 +1,58 @@
+From db3b3fc2241005329e02a549ada1a0f099bf070a Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 11 Jun 2022 17:50:59 +0200
+Subject: [PATCH 3/9] fix(setup.py): compute install directory before outside
+ build_extension
+
+This fixes builds with `setup.py develop`/`pip install -e`.
+
+build_ext.run() unsets build_ext.inplace before running
+build_extension(), and only restores it before calling
+copy_extensions_to_source(). Because the cmake extension has to know the
+real install directory in build_extension(), we need to compute it
+before calling build_ext.run() and then retrieve it in build_extension().
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
+---
+ setup.py | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 0a1b5a3..3c783ae 100644
+--- a/setup.py
++++ b/setup.py
+@@ -108,6 +108,19 @@ class AntlrCMakeBuild(build_ext):
+     def run(self):
+         shared_options.load(self)
+         try:
++            # We need to compute the install directory here, because
++            # build_ext.run() unsets build_ext.inplace while running
++            # build_extension(). This means that files would be installed
++            # to the wrong location (to the temporary build directory)
++            # for `setup.py develop`/`pip install -e` builds.
++            self.install_dirs = {}
++            for ext in self.extensions:
++                if isinstance(ext, CMakeExtension):
++                    self.install_dirs[ext] = os.path.join(
++                        os.path.abspath(
++                            os.path.dirname(self.get_ext_fullpath(ext.name))),
++                        ext.prefix)
++
+             super().run()
+ 
+             try:
+@@ -163,10 +176,7 @@ class AntlrCMakeBuild(build_ext):
+ 
+     def build_extension(self, ext):
+         if isinstance(ext, CMakeExtension):
+-            extdir = os.path.join(
+-                os.path.abspath(
+-                    os.path.dirname(self.get_ext_fullpath(ext.name))),
+-                ext.prefix)
++            extdir = self.install_dirs[ext]
+             cmake_args = [
+                 '-DCMAKE_INSTALL_PREFIX=' + extdir, '-DCMAKE_INSTALL_LIBDIR=.',
+                 '-DPYTHON_EXECUTABLE=' + sys.executable,
+-- 
+2.36.1
+

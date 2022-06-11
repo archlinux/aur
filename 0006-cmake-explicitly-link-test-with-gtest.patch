@@ -1,17 +1,21 @@
-From 8f0cf99eba23b575616e45c43266145eaac77dd7 Mon Sep 17 00:00:00 2001
+From 9ebb73009ab9438d670fde2f441dcbff1047af1c Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
-Date: Sat, 4 Jun 2022 11:33:13 +0200
-Subject: [PATCH 5/7] fix(cmake): fix missing gtest linker argument
+Date: Sat, 4 Jun 2022 20:48:31 +0200
+Subject: [PATCH 6/9] cmake: explicitly link test with gtest
 
+With external (distro) gtest, this avoids an error along the lines of
+"DSO missing from command line".
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
 ---
  src/CMakeLists.txt | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index b95872e..63502e5 100644
+index 92d7938..f407785 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -102,6 +102,7 @@ add_executable(parse_fasm_tests
+@@ -108,6 +108,7 @@ add_executable(parse_fasm_tests
    ${ANTLR_FasmParser_CXX_OUTPUTS})
  target_link_libraries(parse_fasm_tests ${ANTLR4_RUNTIME})
  target_link_libraries(parse_fasm_tests gtest_main)

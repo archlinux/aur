@@ -1,0 +1,38 @@
+From 7465af260ab4b09f95372e239120a8d664ff1c9c Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 4 Jun 2022 20:42:09 +0200
+Subject: [PATCH 4/9] setup.py: don't build everything twice
+
+super().run() already builds all the extensions
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
+---
+ setup.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 3c783ae..51b6dbb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -121,8 +121,6 @@ class AntlrCMakeBuild(build_ext):
+                             os.path.dirname(self.get_ext_fullpath(ext.name))),
+                         ext.prefix)
+ 
+-            super().run()
+-
+             try:
+                 out = subprocess.check_output(['cmake', '--version'])
+             except OSError:
+@@ -136,8 +134,7 @@ class AntlrCMakeBuild(build_ext):
+             if cmake_version < '3.7.0':
+                 raise RuntimeError("CMake >= 3.7.0 is required.")
+ 
+-            for ext in self.extensions:
+-                self.build_extension(ext)
++            super().run()
+ 
+         except BaseException as e:
+             print(
+-- 
+2.36.1
+

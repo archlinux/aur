@@ -1,14 +1,14 @@
-From e9d7442de4f0f52ce19629ccfe7ef036030f9669 Mon Sep 17 00:00:00 2001
+From c19b84ec3710584f56f670375971077de48573d6 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sat, 4 Jun 2022 11:22:15 +0200
-Subject: [PATCH 2/7] cmake: use native gtest
+Subject: [PATCH 8/9] cmake: use native gtest
 
 ---
  src/CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 94783a6..caf428a 100644
+index f407785..788864b 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -63,7 +63,7 @@ set(ANTLR_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/antlr4_lib/antlr

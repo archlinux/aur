@@ -1,17 +1,18 @@
-From 30c905970e06caf9bb4b8211d759d6107f863ca0 Mon Sep 17 00:00:00 2001
+From 9522bc49bedac337d79866bdf5dc0828da0d972c Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sat, 4 Jun 2022 19:35:34 +0200
-Subject: [PATCH 7/7] cmake: install tags.py properly
+Subject: [PATCH 2/9] cmake: install tags.py properly
 
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
 ---
  src/CMakeLists.txt | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 63502e5..8d3564f 100644
+index 2fdc164..596949d 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -76,13 +76,15 @@ antlr_target(FasmParser antlr/FasmParser.g4 PARSER VISITOR
+@@ -80,13 +80,15 @@ antlr_target(FasmParser antlr/FasmParser.g4 PARSER VISITOR
  # line 1: Skip lines starting in #define
  #      2: Extract TAGS(...) from dependencies
  #      3: Convert from TAGS('c', long_name) -> long_name = b'c, write to file
@@ -25,11 +26,11 @@ index 63502e5..8d3564f 100644
    VERBATIM
    )
 +add_custom_target(tags_py ALL DEPENDS tags.py)
-+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/tags.py DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/tags.py TYPE LIB)
  
  # Include generated files in project environment
  include_directories(${ANTLR_FasmLexer_OUTPUT_DIR})
-@@ -120,5 +122,3 @@ include(CTest)
+@@ -123,5 +125,3 @@ include(CTest)
  add_test(NAME parse_fasm_tests
           COMMAND parse_fasm_tests)
  enable_testing()

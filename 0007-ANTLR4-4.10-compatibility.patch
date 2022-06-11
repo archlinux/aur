@@ -1,7 +1,7 @@
-From 752ae3a73c5c5c17feacf896d269752956700c11 Mon Sep 17 00:00:00 2001
+From d760aa7784c28cb914e51f7f771652d2bbbd1d32 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sat, 4 Jun 2022 10:47:32 +0200
-Subject: [PATCH 1/7] ANTLR4 4.10 compatibility
+Subject: [PATCH 7/9] ANTLR4 4.10 compatibility
 
 Commit 70b2edcf98[0] removed antlrcpp::Any in favor of std::any.
 

@@ -1,0 +1,26 @@
+From 73d1d20595fc8a6915edcee77adb000790f345ec Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sat, 4 Jun 2022 20:46:44 +0200
+Subject: [PATCH 5/9] cmake: allow overriding ANTLR_EXECUTABLE
+
+Signed-off-by: Xiretza <xiretza@xiretza.xyz>
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 596949d..92d7938 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -57,7 +57,7 @@ include_directories(${ANTLR4_INCLUDE_DIRS})
+ 
+ # set variable pointing to the antlr tool that supports C++
+ # this is not required if the jar file can be found under PATH environment
+-set(ANTLR_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/antlr4_lib/antlr-4.9.3-complete.jar)
++set(ANTLR_EXECUTABLE ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/antlr4_lib/antlr-4.9.3-complete.jar CACHE PATH "antlr4 generator JAR file")
+ 
+ # add macros to generate ANTLR Cpp code from grammar
+ find_package(ANTLR REQUIRED)
+-- 
+2.36.1
+
