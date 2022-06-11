@@ -1,6 +1,6 @@
 pkgbase = globalprotect-openconnect-git
 	pkgdesc = A GlobalProtect VPN client (GUI) for Linux based on Openconnect and built with Qt5, supports SAML auth mode. (development version)
-	pkgver = 1.4.7
+	pkgver = 1.4.7+2snapshot.g6cf909e
 	pkgrel = 1
 	url = https://github.com/yuezk/GlobalProtect-openconnect
 	install = gp.install
@@ -18,7 +18,7 @@ pkgbase = globalprotect-openconnect-git
 	provides = gpservice
 	conflicts = globalprotect-openconnect
 	backup = etc/gpservice/gp.conf
-	source = git+https://github.com/yuezk/GlobalProtect-openconnect#commit=5a485197b7c7b17f064d89bfe98ec1733d60e221
+	source = git+https://github.com/yuezk/GlobalProtect-openconnect#commit=6cf909e34f1ff2ac9a79922feb0ad87ef2bff9db
 	sha256sums = SKIP
 
 pkgname = globalprotect-openconnect-git
