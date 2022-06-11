@@ -39,7 +39,7 @@ package() {
   # Add symlinks to binaries to usr/bin/
   mkdir -p usr/bin/
   # lld is also provided by extra/lld, not creating symlink
-  binaries=$(find "${target}" -maxdepth 1 -type f -executable -printf "%f\n" | grep -v lld)
+  binaries=$(find "${target}" -maxdepth 1 -type f -executable -not -iname lld -printf "%f\n")
   for f in ${binaries[@]}
   do
     ln -s "/$target/$f" "usr/bin/$f"
