@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=heliocron
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other such solar events'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-b2sums=('a3463a20978fdeba23c8c64ad01193857752bc32f6fd8c9330599075772b33cdb577c758e5154eb194f7431177dcb71b8b2ded7f8c2f44b6de44916543a9a75b')
+b2sums=('2a807d96f523137a9cb27a37d5e9943b7466a5ce429eff17295a8aefa5a3d1db13632e28f5667859bfb0d6b588260297124208542d633bdc8022e66f1ac4249f')
 
 prepare() {
   cd $pkgname-$pkgver
