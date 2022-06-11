@@ -1,3 +1,42 @@
+2022-06-10, S3QL 4.0.0
+
+  * The internal file system revision has changed. File systems created with this version
+    of S3QL are NOT COMPATIBLE with prior S3QL versions.
+
+    Existing file systems must be upgraded before they can be used with current
+    S3QL versions. This procedure is NOT REVERSIBLE.
+
+    To update an existing file system, use the `s3qladm upgrade` command. This upgrade
+    process updates only the metadata tables and should not take more than a few minutes.
+
+  * Smaller database size and improved performance on metadata operations.
+
+    S3QL was designed to be able to store multiple blocks in the same backend
+    object. However, this feature was never implemented. The necessary abstraction layer
+    has now been removed, which should increase performance and reduce database size.
+
+  * Workarounds for bugs in sqlite 3.38.0 – 3.38.4.
+
+    Sqlite 3.38 introduced bloom filter optimizations. The first patch releases of sqlite 3.38
+    had some bugs that prevented fsck.s3ql from running properly and made it corrupt the database.
+
+  * Fix handling of rate-limits and responses without Content-Type header
+
+    Some Non-Amazon S3 providers return HTTP 429 when rate-limiting.
+    Additionally, error responses may occasionally come without a Content-Type header.
+    These are now handled, no longer causing file system crashes.
+
+
+  * This is the last release from the current maintainer. S3QL is now no longer maintained
+    or developed. Github issue tracking and pull reuests have therefore been disabled. The
+    mailing list continuens to be available for use.
+
+    If you would like to take over this project, you are welcome to do so. Please fork it
+    and develop the fork for a while. Once there has been 6 months of reasonable activity,
+    please contact Nikolaus@rath.org and I'll be happy to give you ownership of this
+    repository or replace with a pointer to the fork.
+
+
 2022-01-10, S3QL 3.8.1
 
   * Update fsck.s3ql to remove empty direcrtories from local backend's storage
