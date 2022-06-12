@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec @ELECTRON@ /usr/lib/insomnia/app.asar "$@"
+cd /usr/lib/insomnia
+exec @ELECTRON@ resources/app.asar "$@"

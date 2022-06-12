@@ -1,4 +1,6 @@
-pkg
-src
-*.tar.gz
-*.pkg.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!insomnia.sh
+!insomnia.desktop
+!electron_target.patch
