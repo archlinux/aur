@@ -17,6 +17,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
+optdepends=('gnome-control-center-vrr: VRR settings integration')
 _commit=cd52c57bc65a25363a25ee575b0c9d1d4e471ba8  # tags/42.2^11
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1154.patch')
