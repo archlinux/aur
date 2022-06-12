@@ -15,6 +15,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$subdir"
+  rm -f go.mod
+  go mod init github.com/google/gmail-oauth2-tools/go/sendgmail
+  go mod tidy
+}
+
 build() {
   cd "$subdir"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -23,8 +30,6 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GO111MODULE=on
-  go mod init github.com/google/gmail-oauth2-tools/go/sendgmail
-  go mod vendor
   go build -o sendgmail .
 }
 
