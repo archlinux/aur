@@ -1,0 +1,19 @@
+pkgbase = python-monty
+	pkgdesc = Monty is the missing complement to Python
+	pkgver = 2022.4.26
+	pkgrel = 1
+	url = https://github.com/materialsvirtuallab/monty
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-bson
+	checkdepends = python-pandas
+	checkdepends = python-pydantic
+	checkdepends = python-ruamel-yaml
+	checkdepends = python-tqdm
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/materialsvirtuallab/monty/archive/v2022.4.26.tar.gz
+	sha512sums = 1a194dea4872b27927b5044998bdf6b220191be376517afa88fa92835a7123f99c27d4dd81090cb932ed47a26a23852a171477b07454d4cc9c4edaa5a9b0afc2
+
+pkgname = python-monty
