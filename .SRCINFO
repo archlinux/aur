@@ -36,7 +36,8 @@ pkgbase = gnome-control-center-vrr
 	depends = libhandy
 	depends = gsound
 	depends = colord-gtk4
-	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=6b93b355bd45170d7367eb680e4d622385582c99
+	depends = mutter-vrr
+	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = mr734.patch
 	sha256sums = SKIP

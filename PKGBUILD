@@ -12,9 +12,9 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3
          libgtop libnma nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese
-         libgudev bolt udisks2 libhandy gsound colord-gtk4)
+         libgudev bolt udisks2 libhandy gsound colord-gtk4 mutter-vrr)
 makedepends=(docbook-xsl modemmanager git python meson)
-_commit=6b93b355bd45170d7367eb680e4d622385582c99  # tags/42.2^0
+_commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b  # tags/42.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         'mr734.patch')
