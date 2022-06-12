@@ -1,19 +1,20 @@
-# Maintainer: Tobias Frisch <thejackimonster@gmail.com>
+# Original packager: Tobias Frisch <thejackimonster@gmail.com>
+# Maintainer: NeoTheFox <soniczerops at gmail.com>
 
-pkgname=protonup-git
-_realname=protonup
+pkgname=protonup-ng-git
+_realname=protonup-ng
 pkgver=0.1.4.r2.gf60ee76
 pkgrel=1
-pkgdesc="Install and Update Proton-GE"
+pkgdesc="Install and Update Proton-GE, a version for the new naming convention"
 arch=('any')
-url="https://github.com/AUNaseef/protonup"
+url="https://github.com/cloudishBenne/protonup-ng"
 license=('GPL3')
 depends=('python' 'python-requests')
 makedepends=('python-setuptools' 'git')
 provides=(protonup)
 conflicts=(protonup)
 options=(!emptydirs)
-source=("git+https://github.com/AUNaseef/$_realname.git")
+source=("git+https://github.com/cloudishBenne/$_realname.git")
 sha256sums=('SKIP')
 
 pkgver() {
