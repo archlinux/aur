@@ -1,0 +1,14 @@
+pkgbase = zuo-git
+	pkgdesc = A tiny Racket for scripting.
+	pkgver = r14.ea42b63
+	pkgrel = 1
+	url = https://github.com/racket/zuo
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	provides = zuo
+	source = zuo::git+https://github.com/racket/zuo
+	b2sums = SKIP
+
+pkgname = zuo-git
