@@ -2,12 +2,12 @@ pkgbase = dots-manager
 	pkgdesc = A portable tool for managing a single set of dotfiles in an organized fashion
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/EvanPurkhiser/dots
+	url = https://github.com/evanpurkhiser/dots
 	arch = any
 	license = MIT
 	depends = git
 	depends = python
-	source = https://github.com/EvanPurkhiser/dots/archive/v1.0.0.tar.gz
+	source = https://github.com/evanpurkhiser/dots/archive/v1.0.0.tar.gz
 	md5sums = a627e5136cf3162a66f6e211252b1d51
 
 pkgname = dots-manager
