@@ -1,6 +1,6 @@
 pkgbase = nemo-repairer
 	pkgdesc = Nemo extension for filename encoding repair
-	pkgver = 5.2.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = nemo-repairer
 	makedepends = samurai
 	depends = nemo>=3.2
 	replaces = nemo-filename-repairer
-	source = nemo-extensions-5.2.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/5.2.0.tar.gz
-	sha256sums = 92364ac03be3458d3cdfa39ebd4061babd3926c280459e66f8814a6acc42a6a5
+	source = nemo-extensions-5.4.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/5.4.0.tar.gz
+	sha256sums = 49a3e2f132b83fb18958648522ba2e5cb02230b9602fe57b1b5e537bf1f0e6ba
 
 pkgname = nemo-repairer
