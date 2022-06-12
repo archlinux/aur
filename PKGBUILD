@@ -3,7 +3,7 @@
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=nemo-dropbox
-pkgver=5.2.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('nemo' 'dropbox' 'polkit')
 makedepends=('meson' 'samurai')
 groups=('nemo-extensions')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('92364ac03be3458d3cdfa39ebd4061babd3926c280459e66f8814a6acc42a6a5')
+sha256sums=('49a3e2f132b83fb18958648522ba2e5cb02230b9602fe57b1b5e537bf1f0e6ba')
 
 build() {
   mkdir -p "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"/builddir
