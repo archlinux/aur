@@ -3,7 +3,7 @@
 pkgname='blender-docs'
 pkgver=3.1.2
 _spkgver=${pkgver%.[0-9]}	# Short Packgage Version
-pkgrel=2
+pkgrel=3
 pkgdesc='Set of HTML documentation for blender'
 arch=('any')
 url='https://docs.blender.org/'
@@ -16,6 +16,27 @@ source=("blender-manual-$pkgver.zip::https://docs.blender.org/manual/en/latest/b
 b2sums=('4d9b734b40a4245bcdc1b03aa1eab7c4e7accc46aca91541a7d35bdfd6cf4f86127694f069026fa9d1e4ddbc513f2288a6c2f2a97dea4e3663dde112118a4274'
 	'cfb60a2a1fb2274aacd4b6a6be34751ecdc1c05e67b1875b9aa25344cbc92b7b3b684675eaad3a14eb0bb293fffb059617a540dac4fe40dbbe517e34fec04dae'
 	'd1e99ef6842a6b5e4ac63cc3ab5bd7a4fd0fec5a871eec5b8bc031d8a6b2ae89f76eca2f98b0946e78e19d5fa9b2dea51cb2bb0985d064f54ea4ed9759999205')
+
+_replace_manual_ref() {
+    find "$srcdir" \
+	 -type f \
+	 -name '*.html' \
+	 -exec sed -i "s,$1,file:///usr/share/doc/blender/html/," {} +
+}
+
+_replace_api_ref() {
+    find "$srcdir" \
+	 -type f \
+	 -name '*.html' \
+	 -exec sed -i "s,$1,file:///usr/share/doc/blender/api/," {} +
+}
+
+prepare() {
+    _replace_manual_ref 'https://docs.blender.org/manual/en/dev/'
+    _replace_manual_ref 'https://docs.blender.org/manual/en/latest/'
+    _replace_api_ref 'https://docs.blender.org/api/current/'
+    _replace_api_ref 'https://docs.blender.org/api/3.1/'
+}
 
 package() {
     mkdir -p "$pkgdir/usr/share/doc/blender/html/"

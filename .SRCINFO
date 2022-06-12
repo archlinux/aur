@@ -1,7 +1,7 @@
 pkgbase = blender-docs
 	pkgdesc = Set of HTML documentation for blender
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.blender.org/
 	arch = any
 	license = custom:CC BY-SA 4.0
