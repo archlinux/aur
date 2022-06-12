@@ -1,0 +1,13 @@
+pkgbase = python2-py
+	pkgdesc = I/O facilities including logging, local/SVN paths, INI parsing, API control, lazy importing and Python code generation/introspection
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	depends = python2
+	source = python2-py-1.11.0.tar.gz::https://github.com/pytest-dev/py/archive/refs/tags/1.11.0.tar.gz
+	sha256sums = 73845c6278da21cebd41d90e363da84aa93e9dd3485d00f7ced540fedbd41054
+
+pkgname = python2-py
