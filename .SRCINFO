@@ -1,6 +1,6 @@
 pkgbase = skaffold-git
 	pkgdesc = A command line tool that facilitates continuous development for Kubernetes applications
-	pkgver = 1.36.0
+	pkgver = 1.37.2
 	pkgrel = 1
 	url = https://github.com/GoogleContainerTools/skaffold
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = skaffold-git
 	optdepends = bash-completion: Tab autocompletion
 	provides = skaffold
 	conflicts = skaffold
-	source = skaffold-1.36.0.tar.gz::https://github.com/GoogleContainerTools/skaffold/archive/v1.36.0.tar.gz
-	sha256sums = 0e6c3891e7d62d023094c7d985fe5aac86f07ed1e229817d0041d8646b3de833
-	b2sums = 2729d812366330d32f6d9f484654fac9a5a9098781d553c03d98ca79450dcd9061d503b9a3cac8257dc50122bf54587c7503fc53daec417cfc470f5a4e8ee342
+	source = skaffold-1.37.2.tar.gz::https://github.com/GoogleContainerTools/skaffold/archive/v1.37.2.tar.gz
+	sha256sums = d52a4a9c240df9652087e9f88a15995713a3c75f453d3456164da208e9943714
+	b2sums = cf7f9860055aa9798367a8d24c6fd171266014b674afbbaf6dd72d63945de9d89236fc3a12c6fe385895e18492a88ff5d9c6ceffbf1d751c1680f1d9fd9ab1c8
 
 pkgname = skaffold-git

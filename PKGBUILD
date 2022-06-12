@@ -8,7 +8,7 @@ pkgname=skaffold-git
 reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
-pkgver=1.36.0
+pkgver=1.37.2
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
@@ -24,9 +24,9 @@ optdepends=(
 source=(
   "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('0e6c3891e7d62d023094c7d985fe5aac86f07ed1e229817d0041d8646b3de833')
-b2sums=('2729d812366330d32f6d9f484654fac9a5a9098781d553c03d98ca79450dcd9061d503b9a3cac8257dc50122bf54587c7503fc53daec417cfc470f5a4e8ee342')
-_commit="189a55291c18ac850277134d2b8f3eaa2c4f7a1d"
+sha256sums=('d52a4a9c240df9652087e9f88a15995713a3c75f453d3456164da208e9943714')
+b2sums=('cf7f9860055aa9798367a8d24c6fd171266014b674afbbaf6dd72d63945de9d89236fc3a12c6fe385895e18492a88ff5d9c6ceffbf1d751c1680f1d9fd9ab1c8')
+_commit="0d7d66946fcac997f5d0fcb0fd96afb42d89d821"
 
 prepare() {
   cd "${srcdir}/${reponame}-${pkgver}"
@@ -49,6 +49,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw -x -v -ldflags=-linkmode=external"
+  go install github.com/google/go-licenses@latest
   make install
 
   # To avoid issues deleting directories next time
