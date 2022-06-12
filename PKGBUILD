@@ -2,8 +2,8 @@
 
 pkgname=river-levee-git
 _pkgname=levee
-pkgver=0.1.0.r7.g3e383f3
-pkgrel=2
+pkgver=0.1.1.r2.g15c4386
+pkgrel=1
 pkgdesc="Statusbar for the river wayland compositor"
 arch=('x86_64')
 url="https://sr.ht/~andreafeletto/levee"
@@ -16,7 +16,7 @@ source=(
     "git+https://git.sr.ht/~andreafeletto/$_pkgname"
     'git+https://github.com/ifreund/zig-wayland'
     'git+https://github.com/ifreund/zig-pixman'
-    'git+https://git.sr.ht/~andreafeletto/zig-fcft'
+    'git+https://git.sr.ht/~novakane/zig-fcft'
     'git+https://git.sr.ht/~andreafeletto/zig-udev'
     'git+https://github.com/Hejsil/zig-clap'
 )
