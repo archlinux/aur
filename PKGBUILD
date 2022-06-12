@@ -15,16 +15,16 @@ makedepends=('python-distribute' 'git')
 arch=('any')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "$srcdir/$pkgname"
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    python3 setup.py build
+	cd "$srcdir/$pkgname"
+	python3 setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    python3 setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/$pkgname"
+	python3 setup.py install --root="$pkgdir" --optimize=1
 }
