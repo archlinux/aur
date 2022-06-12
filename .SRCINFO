@@ -1,7 +1,7 @@
 pkgbase = donkey-kong-country-returns
 	pkgdesc = Side-scrolling platform game developed by Retro Studios and published by Nintendo for the Wii console.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.wikipedia.org/wiki/Donkey_Kong_Country_Returns
 	arch = any
 	license = custom
