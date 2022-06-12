@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
-pkgver=6.2.31
-pkgrel=6
+pkgver=6.2.40
+pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
 url='https://github.com/goatcorp/FFXIVQuickLauncher/'
@@ -31,12 +31,12 @@ makedepends=('dotnet-sdk>=6')
 optdepends=('steam')
 options=('!strip')
 source=(
-    "https://github.com/goatcorp/FFXIVQuickLauncher/archive/refs/tags/6.2.31.tar.gz"
+    "https://github.com/goatcorp/FFXIVQuickLauncher/archive/refs/tags/6.2.40.tar.gz"
     "https://raw.githubusercontent.com/goatcorp/FFXIVQuickLauncher/master/src/XIVLauncher.Core/Resources/logo.png"
     "XIVLauncher.desktop"
 )
 sha512sums=(
-    '0f2de5ff1d52e5ed5c799180506d570a01f1d4967106c83e6cebf60493db37e432cb6fcbdfb4f3a067301b0f82ba1919ea23e0412347e4353141dc3795f7f280'
+    'dd8a52aac93aef1264a0dfd5ad0b8029c02dd48bfcb9839b1caa00530b27a0bfdfe1058b465427784a8ed9bff06e22b175fb4e8dcecae919ca65ca5d826c4c9d'
     '4f16ba269ecd60c16a125db5e986d0bdabd69ac51d03ccb01a7203ddd04dea9d40147ee412bbfc37921ca83ff70a966258ae729bcada95ce1582b43160686694'
     '5ac774f858d4015c59e6758e2a706b93e822bca9c046ed87210deabc141ac101020d2654fbcf8314f9409a4cfcf921d1e26ec0a3b0beab02d1bcd045fb6e6f14'
 )
@@ -44,7 +44,7 @@ sha512sums=(
 build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/FFXIVQuickLauncher-${pkgver}/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release -p:DefineConstants=WINE_XIV_ARCH_LINUX
 }
 
 package() {
