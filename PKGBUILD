@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=3.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 provides=('btrustbiss')
@@ -14,6 +14,7 @@ source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBIS
 sha256sums=('3ce3a05f538eab59d9212945798d660d71e09f0ab2951e5dc0d3c22198d69341')
 depends=('fakeroot' 'pcsclite' 'glibc' 'gcc-libs' 'xdg-utils' 'zlib')
 options=('!strip' '!emptydirs' '!makeflags')
+install=btrustbiss.install
 
 package(){
     # Extract package
