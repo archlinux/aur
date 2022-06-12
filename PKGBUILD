@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python"
 license=('BSD')
 makedepends=('python-setuptools' 'python-numpy' 'python-d2to1' 'python-stsci.distutils')
-checkdepends=('python2-nose')
+#checkdepends=('python2-nose')
 #             'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/spacetelescope/stsci.convolve/master/LICENSE.txt")

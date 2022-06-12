@@ -6,7 +6,6 @@ pkgbase = python-stsci.convolve
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python2-nose
 	makedepends = python-setuptools
 	makedepends = python-numpy
 	makedepends = python-d2to1
