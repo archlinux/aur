@@ -1,0 +1,13 @@
+pkgbase = mantra
+	pkgdesc = View online manual pages straight from the terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/theooo/mantra.py
+	arch = any
+	license = custom
+	depends = python
+	depends = python-beautifulsoup4
+	source = https://codeberg.org/theooo/mantra.py/raw/branch/main/mantra
+	sha512sums = SKIP
+
+pkgname = mantra
