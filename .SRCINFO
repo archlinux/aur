@@ -1,0 +1,12 @@
+pkgbase = python2-pbr
+	pkgdesc = Python Build Reasonableness (for Python 2)
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://pypi.python.org/pbr
+	arch = any
+	license = Apache
+	depends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/pbr/pbr-5.9.0.tar.gz
+	sha256sums = e8dca2f4b43560edef58813969f52a56cef023146cbb8931626db80e6c1c4308
+
+pkgname = python2-pbr
