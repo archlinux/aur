@@ -1,17 +1,22 @@
 pkgbase = btrustbiss
-	pkgdesc = B-Trust browser independent signing service.
-	pkgver = 2.30
+	pkgdesc = Browser independent signing service.
+	pkgver = 3.10
 	pkgrel = 1
 	url = https://www.b-trust.org
-	arch = any
+	arch = x86_64
 	license = GPL
 	depends = fakeroot
 	depends = pcsclite
+	depends = glibc
+	depends = gcc-lib
+	depends = xdg-utils
+	depends = zlib
+	provides = btrustbiss
 	options = !strip
 	options = !emptydirs
 	options = !makeflags
 	backup = etc/xdg/autostart/btrust_biss.desktop
 	source = https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar
-	sha256sums = 0f59b480b5b64e18eb07e36c48541401112be15e8416562f66503f35eba5ee07
+	sha256sums = 3ce3a05f538eab59d9212945798d660d71e09f0ab2951e5dc0d3c22198d69341
 
 pkgname = btrustbiss
