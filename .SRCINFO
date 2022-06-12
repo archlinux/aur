@@ -1,11 +1,11 @@
 pkgbase = sws-bin
 	pkgdesc = A collection of features that seamlessly integrate into REAPER
 	pkgver = 2.12.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sws-extension.org/
 	arch = x86_64
 	license = MIT
-	depends = reaper-bin>=6.19
+	depends = reaper
 	depends = taglib
 	provides = sws
 	conflicts = sws

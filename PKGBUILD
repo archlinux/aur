@@ -1,12 +1,12 @@
 # Maintainer: Lucas Rooyakkers <lucas rooyakkers @ pm me>
 pkgname=sws-bin
 pkgver=2.12.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="https://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper-bin>=6.19' 'taglib')
+depends=('reaper' 'taglib')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("https://sws-extension.org/download/featured/sws-${pkgver}-Linux-x86_64.tar.xz")
