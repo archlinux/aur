@@ -1,0 +1,19 @@
+pkgbase = numix-frost-themes-git
+	pkgdesc = A modern flat theme with a combination of light and dark elements - Antergos Edition
+	pkgver = latest
+	pkgrel = 1
+	url = https://numixproject.github.io/
+	arch = any
+	license = GPL3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = ruby-sass
+	depends = gtk-engine-murrine
+	provides = numix-frost-themes
+	conflicts = numix-frost-themes
+	source = git+https://github.com/Antergos/Numix-Frost.git
+	source = Numix-Frost-Light::git+https://github.com/Antergos/Numix-Frost.git#branch=numix-frost-light
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = numix-frost-themes-git

@@ -1,0 +1,37 @@
+# Maintainer: neeshy <neeshy@tfwno.gf>
+pkgname=numix-frost-themes-git
+pkgver=latest
+pkgrel=1
+pkgdesc="A modern flat theme with a combination of light and dark elements - Antergos Edition"
+arch=('any')
+url="https://numixproject.github.io/"
+license=('GPL3')
+depends=('gtk-engine-murrine')
+makedepends=('gdk-pixbuf2' 'glib2' 'ruby-sass')
+provides=('numix-frost-themes')
+conflicts=('numix-frost-themes')
+source=("git+https://github.com/Antergos/Numix-Frost.git"
+        "Numix-Frost-Light::git+https://github.com/Antergos/Numix-Frost.git#branch=numix-frost-light")
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/Numix-Frost"
+  make
+
+  cd "$srcdir/Numix-Frost-Light"
+  make
+}
+
+package() {
+  cd "$srcdir/Numix-Frost"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/Numix-Frost-Light"
+  make DESTDIR="$pkgdir" install
+}
