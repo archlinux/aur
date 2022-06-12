@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.18
+pkgver=5.18.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,7 +80,7 @@ makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_th
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=9f1a7da5b1b65b8dd8a9335d0e2af19ab7f571fc
+_arch_config_commit=b4cfe6ae8029f4d58b72a8565ea95ddfcd43c0df
 _prjc_version=5.18-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
@@ -89,18 +89,18 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/733ffb2a9d89395ab3124bb3ab9298a2e6f2ef21.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/8ea8e5623d987f068a6dc037032fa667a57d79bc.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('e2745a69eb70169e90505a9318a3993046eab3020496eecde7d8352ecda0eb71a25b21becf7ce93fc593507dce7d1cd61b94ddcdf82b3094d79c0d3d48508eeb'
+b2sums=('141cc47585905cab087910ece010c69b9f5985484df58f08da99558e51cd3707ea8ea6b12a2f6eb75a208a178724b66eb61166611ec933333b15965bc4382033'
         'SKIP'
-        '09bd1603f4ae4eabbfc4e12c9cf42336d220599bebb14422f6d97233374f028329740ed37f4198ae33185211c8de0ac1085d543cf1dee64e2451a1958bf075c8'
+        'c7d8a6dbf653bb294a81f6522d692fa783806fce1bd9185f1fb52c694dabd5f32972e6a7a5d03a1cfd35825e90963fdac5bdaf2ed75daa8b85ed00a1b07d2d9c'
         '81000dd93c038389ab1bbe04e1e9706062244e70571da03388c2ab0d382bd817d86d8b12adfe607b49adf7bbab3624640a70ba6df2e97bd7f55f9d2def73e88f'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '6112c24c87ecf102bde49a69c779a91e16bddb7265a20f46de487d385e1838b7028366d32d23e8e0d7f0ce1d1b5a46ead93cc71f169469c4dae85e6ff4422b99')
+        '7502bc3c044c81118a5ba75f31582d65978ca4106a91fa20defa067e5d8455c397327a9d3c42c69b02bafc1cb267ab88f7b7ef43e67406d8874a9809491dc592')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
