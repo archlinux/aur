@@ -1,0 +1,18 @@
+pkgbase = akula-git
+	pkgdesc = Next generation Ethereum implementation.
+	pkgver = 0.1.0.r1
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = clang
+	makedepends = rustup
+	provides = akula
+	conflicts = akula
+	source = git+https://github.com/akula-bft/akula.git
+	source = akula.service
+	sha256sums = SKIP
+	sha256sums = f7f4c5110f078ff57e91fb359ba88441a33fc1beaf6ba687c7cbfc6d2be717f5
+
+pkgname = akula-git
