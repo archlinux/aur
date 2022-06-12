@@ -1,4 +1,4 @@
-pkgbase = gerbonara
+pkgbase = python-gerbonara
 	pkgdesc = Pythonic library for reading/modifying/writing Gerber/Excellon/IPC-356 files
 	pkgver = 0.10.7
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = gerbonara
 	source = gerbonara-0.10.7::git+https://gitlab.com/gerbolyze/gerbonara.git#tag=v0.10.7
 	sha256sums = SKIP
 
-pkgname = gerbonara
+pkgname = python-gerbonara
