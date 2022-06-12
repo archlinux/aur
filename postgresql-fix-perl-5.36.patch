@@ -1,0 +1,58 @@
+From c08538734522f27646dd5fe68d61e16a59477f6e Mon Sep 17 00:00:00 2001
+From: Tom Lane <tgl@sss.pgh.pa.us>
+Date: Wed, 1 Jun 2022 16:15:47 -0400
+Subject: [PATCH] Fix pl/perl test case so it will still work under Perl 5.36.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Perl 5.36 has reclassified the warning condition that this test
+case used, so that the expected error fails to appear.  Tweak
+the test so it instead exercises a case that's handled the same
+way in all Perl versions of interest.
+
+This appears to meet our standards for back-patching into
+out-of-support branches: it changes no user-visible behavior
+but enables testing of old branches with newer tools.
+Hence, back-patch as far as 9.2.
+
+Dagfinn Ilmari Mannsåker, per report from Jitka Plesníková.
+
+Discussion: https://postgr.es/m/564579.1654093326@sss.pgh.pa.us
+---
+ src/pl/plperl/expected/plperl.out | 6 +++---
+ src/pl/plperl/sql/plperl.sql      | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/pl/plperl/expected/plperl.out b/src/pl/plperl/expected/plperl.out
+index d8a1ff5dd8d1..e3d7c8896a23 100644
+--- a/src/pl/plperl/expected/plperl.out
++++ b/src/pl/plperl/expected/plperl.out
+@@ -724,9 +724,9 @@ DO $do$ use strict; my $name = "foo"; my $ref = $$name; $do$ LANGUAGE plperl;
+ ERROR:  Can't use string ("foo") as a SCALAR ref while "strict refs" in use at line 1.
+ CONTEXT:  PL/Perl anonymous code block
+ -- check that we can "use warnings" (in this case to turn a warn into an error)
+--- yields "ERROR:  Useless use of sort in scalar context."
+-DO $do$ use warnings FATAL => qw(void) ; my @y; my $x = sort @y; 1; $do$ LANGUAGE plperl;
+-ERROR:  Useless use of sort in scalar context at line 1.
++-- yields "ERROR:  Useless use of sort in void context."
++DO $do$ use warnings FATAL => qw(void) ; my @y; sort @y; 1; $do$ LANGUAGE plperl;
++ERROR:  Useless use of sort in void context at line 1.
+ CONTEXT:  PL/Perl anonymous code block
+ -- make sure functions marked as VOID without an explicit return work
+ CREATE OR REPLACE FUNCTION myfuncs() RETURNS void AS $$
+diff --git a/src/pl/plperl/sql/plperl.sql b/src/pl/plperl/sql/plperl.sql
+index b0d950b2304a..bb0b8ce4cb61 100644
+--- a/src/pl/plperl/sql/plperl.sql
++++ b/src/pl/plperl/sql/plperl.sql
+@@ -469,8 +469,8 @@ DO $$ use blib; $$ LANGUAGE plperl;
+ DO $do$ use strict; my $name = "foo"; my $ref = $$name; $do$ LANGUAGE plperl;
+ 
+ -- check that we can "use warnings" (in this case to turn a warn into an error)
+--- yields "ERROR:  Useless use of sort in scalar context."
+-DO $do$ use warnings FATAL => qw(void) ; my @y; my $x = sort @y; 1; $do$ LANGUAGE plperl;
++-- yields "ERROR:  Useless use of sort in void context."
++DO $do$ use warnings FATAL => qw(void) ; my @y; sort @y; 1; $do$ LANGUAGE plperl;
+ 
+ -- make sure functions marked as VOID without an explicit return work
+ CREATE OR REPLACE FUNCTION myfuncs() RETURNS void AS $$
