@@ -2,14 +2,14 @@ pkgbase = mkinitcpio-colors-git
 	pkgdesc = mkinitcpio hook to set VT console colors during early userspace
 	pkgver = 11.ac5765f
 	pkgrel = 1
-	url = https://github.com/EvanPurkhiser/mkinitcpio-colors
+	url = https://github.com/evanpurkhiser/mkinitcpio-colors
 	install = usage.install
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = mkinitcpio
 	depends = setcolors-git
-	source = mkinitcpio-colors-git::git+https://github.com/EvanPurkhiser/mkinitcpio-colors
+	source = mkinitcpio-colors-git::git+https://github.com/evanpurkhiser/mkinitcpio-colors
 	md5sums = SKIP
 
 pkgname = mkinitcpio-colors-git
