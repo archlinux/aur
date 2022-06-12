@@ -1,7 +1,7 @@
 pkgbase = lib32-mesa-steamos
 	pkgdesc = An open-source implementation of the OpenGL specification (32-bit)
 	pkgver = 22.0.0_devel.148040.radeonsi_20220217
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.mesa3d.org/
 	arch = x86_64
 	license = custom
@@ -54,7 +54,6 @@ pkgname = lib32-vulkan-mesa-layers-steamos
 	provides = lib32-vulkan-mesa-layer
 	provides = lib32-vulkan-mesa-layers
 	conflicts = lib32-vulkan-mesa-layer
-	replaces = lib32-vulkan-mesa-layer
 
 pkgname = lib32-opencl-mesa-steamos
 	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers (32-bit)
@@ -105,8 +104,7 @@ pkgname = lib32-vulkan-swrast-steamos
 	optdepends = lib32-vulkan-mesa-layers: additional vulkan layers
 	provides = lib32-vulkan-driver
 	provides = lib32-vulkan-swrast
-	conflicts = lib32-vulkan-mesa
-	replaces = lib32-vulkan-mesa
+	conflicts = lib32-vulkan-swrast
 
 pkgname = lib32-libva-mesa-driver-steamos
 	pkgdesc = VA-API implementation for gallium (32-bit)
@@ -153,5 +151,3 @@ pkgname = lib32-mesa-steamos
 	provides = lib32-mesa
 	conflicts = lib32-mesa-libgl
 	conflicts = lib32-mesa
-	replaces = lib32-mesa-libgl
-	replaces = lib32-mesa

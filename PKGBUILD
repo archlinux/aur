@@ -9,7 +9,7 @@ pkgname=('lib32-vulkan-mesa-layers-steamos' 'lib32-opencl-mesa-steamos' 'lib32-v
 pkgdesc="An open-source implementation of the OpenGL specification (32-bit)"
 _tag=radeonsi-20220217
 pkgver=22.0.0_devel.148040.radeonsi_20220217
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'xorgproto' 'lib32-libdrm'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libvdpau'
@@ -102,7 +102,6 @@ package_lib32-vulkan-mesa-layers-steamos() {
   pkgdesc="Mesa's Vulkan layers (32-bit)"
   depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-wayland' 'vulkan-mesa-layers' 'python')
   conflicts=('lib32-vulkan-mesa-layer')
-  replaces=('lib32-vulkan-mesa-layer')
   provides=('lib32-vulkan-mesa-layer' 'lib32-vulkan-mesa-layers')
 
   rm -rv fakeinstall/usr/share/vulkan/explicit_layer.d
@@ -159,8 +158,7 @@ package_lib32-vulkan-swrast-steamos() {
   depends=('lib32-wayland' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-libdrm' 'lib32-zstd'
 	   'lib32-llvm-libs')
   optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
-  conflicts=('lib32-vulkan-mesa')
-  replaces=('lib32-vulkan-mesa')
+  conflicts=('lib32-vulkan-swrast')
   provides=('lib32-vulkan-driver' 'lib32-vulkan-swrast')
 
   _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
@@ -201,7 +199,6 @@ package_lib32-mesa-steamos() {
               'lib32-libva-mesa-driver: for accelerated video playback')
   provides=('lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-mesa')
   conflicts=('lib32-mesa-libgl' 'lib32-mesa')
-  replaces=('lib32-mesa-libgl' 'lib32-mesa')
 
   rm -rv fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   rm -rv fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
