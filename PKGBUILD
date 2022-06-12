@@ -35,6 +35,6 @@ prepare() {
 
 package() {
     cd gittab
-    sudo cp tab.sh /usr/bin/tab.sh
-    export tab=/usr/bin/tab.sh
+    sudo cp tab.sh /usr/bin/tab
+    export tab=/usr/bin/tab
 }
