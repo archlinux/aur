@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/BlackCodec/sswb"
 license=('GPL')
 depends=('webkit2gtk' 'python-gobject')
-source=("https://github.com/BlackCodec/$pkgname/archive/master.zip")
+source=("https://github.com/BlackCodec/$_pkgname/archive/master.zip")
 md5sums=('SKIP')
 
 package() {
