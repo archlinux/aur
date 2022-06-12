@@ -1,7 +1,7 @@
 # Maintainer: Ismael González Valverde <ismgonval@gmail.com>
 
 pkgname=rnr-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A CLI tool to rename files and directories that supports regex. Compiled binary'
 provides=('rnr')
@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/ismaelgv/rnr'
 license=('MIT')
 source=("https://github.com/ismaelgv/rnr/releases/download/v$pkgver/rnr-v$pkgver-$arch-unknown-linux-gnu.tar.gz")
-md5sums=('df23350cb90ef9ed93d8baa733723a8a')
+md5sums=('c0cfbedd407d1902a7eef0fb5dcef0c8')
 
 package() {
   local name="rnr"
