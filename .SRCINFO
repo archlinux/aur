@@ -1,0 +1,13 @@
+pkgbase = python2-wcwidth
+	pkgdesc = Library to measure the width of unicode strings in a terminal
+	pkgver = 0.2.5
+	pkgrel = 6
+	url = https://github.com/jquast/wcwidth
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-backports.functools_lru_cache
+	source = python2-wcwidth-0.2.5.tar.gz::https://github.com/jquast/wcwidth/archive/refs/tags/0.2.5.tar.gz
+	sha256sums = b08fa4c7d7be1ba86950c2d746eb0d19de80842ab7457df5b3fcd3bf52e02b08
+
+pkgname = python2-wcwidth
