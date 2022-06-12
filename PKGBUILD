@@ -1,32 +1,32 @@
-# Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
+# Maintainer: Laurence Willetts <laurencewilletts at protonmail dot com>
 pkgname=mpvc-git
-pkgver=r89.dfaac20
+pkgver=1.3.r24.g6890b36
 pkgrel=1
 
 pkgdesc='A mpc-like control interface for mpv.'
-url='https://github.com/wildefyr/mpvc'
+url='https://github.com/lwilletts/mpvc'
 arch=('i686' 'x86_64')
 license=('MIT')
 
-depends=('mpv' 'socat')
+depends=('mpv' 'socat' 'bc')
 
 provides=('mpvc')
 
-source=('git://github.com/wildefyr/mpvc')
+source=("git+$url")
 
 md5sums=('SKIP')
 
 pkgver() {
-  cd mpvc
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/mpvc"
+  git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd mpvc
+  cd "$srcdir/mpvc"
 }
 
 package() {
-  cd mpvc
-  mkdir -p "$pkgdir/usr/bin"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  prefix="/usr"
+  cd "$srcdir/mpvc"
+  make DESTDIR="$pkgdir" PREFIX="$prefix" install
 }
