@@ -1,0 +1,19 @@
+pkgbase = aom-av1-psy-git
+	pkgdesc = aomenc-av1 psy fork
+	pkgver = r32575.76388f643
+	pkgrel = 1
+	url = https://github.com/BlueSwordM/aom-av1-psy
+	arch = x86_64
+	license = BSD
+	license = custom:PATENTS
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = yasm
+	depends = gcc-libs
+	depends = vmaf
+	provides = aom
+	conflicts = aom
+	source = git+https://github.com/BlueSwordM/aom-av1-psy.git#branch=full_build-alpha-4
+	sha256sums = SKIP
+
+pkgname = aom-av1-psy-git
