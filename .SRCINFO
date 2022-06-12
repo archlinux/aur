@@ -1,18 +1,17 @@
 pkgbase = python2-mako
-	pkgdesc = A super-fast templating language that borrows the best ideas from the existing templating languages
-	pkgver = 1.1.5
+	pkgdesc = A fast templating language that borrows the best ideas from other templating languages
+	pkgver = 1.1.6
 	pkgrel = 1
-	url = https://www.makotemplates.org/
+	url = https://pypi.org/project/Mako/1.1.6/
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	depends = python2-markupsafe
 	depends = python2-beaker
-	depends = python2-setuptools
-	source = https://pypi.io/packages/source/M/Mako/Mako-1.1.5.tar.gz
-	source = https://pypi.io/packages/source/M/Mako/Mako-1.1.5.tar.gz.asc
+	depends = python2-markupsafe
+	source = https://pypi.python.org/packages/source/M/Mako/Mako-1.1.6.tar.gz
+	source = https://pypi.python.org/packages/source/M/Mako/Mako-1.1.6.tar.gz.asc
 	validpgpkeys = 83AF7ACE251C13E6BB7DEFBD330239C1C4DAFEE1
-	sha512sums = 3eff75f1a94f8e01131ce118df73be1ade79306562ae2ca68079eb2b64ef82c48c09cfd7ed6eda42819bf50c70941cf4115f8918b4d8187f7489717c7d4a423b
-	sha512sums = SKIP
+	b2sums = bbdf0db9303f5d369b5c6c6644ee44d767630f51305ae259c44c65a3fba959a07d9833fdc69fc8168f7424cc0c3a05e991daae239bef8392c01396c1295967c7
+	b2sums = SKIP
 
 pkgname = python2-mako
