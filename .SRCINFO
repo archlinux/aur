@@ -1,0 +1,14 @@
+pkgbase = python2-chardet
+	pkgdesc = Python 2 module for character encoding auto-detection
+	pkgver = 4.0.0
+	pkgrel = 2
+	url = https://pypi.org/project/chardet/
+	arch = any
+	license = LGPL
+	checkdepends = python2-pytest
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/c/chardet/chardet-4.0.0.tar.gz
+	b2sums = 6a4c49441a9f21215a752fad970820f623f406695ad30518ac2acd423ed1e467cedbcf743fe63e54ce384d426f62aa2f6b0013b086c3efaba28d8d8f976befc9
+
+pkgname = python2-chardet
