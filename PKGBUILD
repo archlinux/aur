@@ -2,7 +2,7 @@
 
 _name=svgelements
 pkgname=python-$_name
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc='Svg Elements Parsing'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('python-numpy: enable npoint() to do lightning fast linearization fo
             'python-scipy: quickly provide the exact correct answer for the arc length')
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3f23028816aa84af0cb974025b00e29a651c6a78f95c078978c22f941e4bcc29')
+sha256sums=('44a2a8b3e7356a1d88f93fe91d03f6ddb82b94b26b96b3e02d1744377d0749e7')
 
 build() {
     cd "$_name-$pkgver"
