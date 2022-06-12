@@ -1,0 +1,15 @@
+pkgbase = rakuenv-git
+	pkgdesc = Raku Environment Manager
+	pkgver = 1.1.1.r27.d08f6ad
+	pkgrel = 1
+	url = https://github.com/skaji/rakuenv
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = rakuenv
+	conflicts = rakuenv
+	source = git+https://github.com/skaji/rakuenv.git
+	sha256sums = SKIP
+
+pkgname = rakuenv-git
