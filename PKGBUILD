@@ -3,7 +3,7 @@
 _name=jarowinkler
 pkgname=python-$_name
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for fast approximate string matching using Jaro and Jaro-Winkler similarity"
 arch=(x86_64)
 url="https://github.com/maxbachmann/JaroWinkler"

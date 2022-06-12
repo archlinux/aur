@@ -1,7 +1,7 @@
 pkgbase = python-jarowinkler
 	pkgdesc = A library for fast approximate string matching using Jaro and Jaro-Winkler similarity
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/maxbachmann/JaroWinkler
 	arch = x86_64
 	license = MIT
