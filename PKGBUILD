@@ -1,4 +1,5 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
