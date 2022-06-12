@@ -19,12 +19,12 @@ depends=('python-numpy'
 makedepends=('git' 'git-lfs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/makehumancommunity/makehuman/archive/refs/tags/v$pkgver.tar.gz"
         "git+${_assets_repo}#commit=$_assets_commit"
-        "$pkgname-int-cast.patch::https://github.com/makehumancommunity/makehuman/commit/7727d80260e56bf2611052afe7fb88d3403a05a9.patch"
-        "$pkgname-fix_77.patch::https://github.com/makehumancommunity/makehuman/commit/02c4269a2d4c57f68159fe8f437a8b1978b99099.patch")
+        "$pkgname-int-cast-2.patch::https://github.com/makehumancommunity/makehuman/commit/7727d80260e56bf2611052afe7fb88d3403a05a9.patch"
+        "$pkgname-fix_77-2.patch::https://github.com/makehumancommunity/makehuman/commit/02c4269a2d4c57f68159fe8f437a8b1978b99099.patch")
 sha512sums=('e15acf536c99f2258abd317e3ff88e908d7447bea07be2c9b2319bd4b1847e76ad3035479e1d71ec5b086aa2442e7530436a6844a11e4c9bfd74abc26c3bd9f5'
             'SKIP'
-            '6d5df51452b955817f10c141751764a4a8a110c1d996b345730703a950077938ca1dbb101d5f02b1c70ae903b4349371041947237724e5795e83f5905f1c77e1'
-            'f8d697fbb76e121343688992135e4a4456f47528d508b156118dbc22d322cf6261f016dc2f2355912eed1a5db0f6d34e96351632ff6ae770c7483284571548cb')
+            '6c654c53bd405deb2dd950567f9bad402987cf6608da11eea467d1cf71e8d873b3ab521d425e98b61e2b655c1322f7e06cdbd3aa919b3facbce193b260c06ce2'
+            '5df80df28d734e4c81855112b42746dbc4586fa734c2a8432bfecb62864073b96baf6c588dbf65ada43990c47a135c6ae19a09dd909f233c8ea56f35a6c10091')
 
 prepare() {
   cd "$pkgname-assets"
@@ -41,7 +41,7 @@ prepare() {
   mkdir -p .git
 
   # fix crash during startup
-  patch -Np1 -i "$srcdir/$pkgname-int-cast.patch"
+  patch -Np1 -i "$srcdir/$pkgname-int-cast-2.patch"
   sed -i -e 's/collections.Callable/collections.abc.Callable/' \
       makehuman/lib/log.py makehuman/apps/gui/guimodifier.py \
       makehuman/core/guicommon.py
@@ -49,7 +49,7 @@ prepare() {
       makehuman/lib/language.py
 
   # fix upstream issue #77
-  patch -Np1 < "$srcdir/$pkgname-fix_77.patch"
+  patch -Np1 < "$srcdir/$pkgname-fix_77-2.patch"
 
   # enable release build and set version information
   cd buildscripts
