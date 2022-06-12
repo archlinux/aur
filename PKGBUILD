@@ -1,8 +1,9 @@
 
 # Maintainer: Demir Yerli <demiryerli@gmail.com>
 pkgname=razer-nari-pipewire-profile
-pkgver=v1.1
-pkgrel=1
+pkgver=1.1
+_pkgver=v$pkgver
+pkgrel=2
 epoch=2
 pkgdesc="Razer Nari headsets pipewire profile"
 arch=("any")
@@ -15,7 +16,7 @@ checkdepends=()
 optdepends=()
 provides=()
 conflicts=('razer-nari-pulseaudio-profile')
-source=("https://github.com/mrquantumoff/razer-nari-pipewire-profile/archive/refs/tags/"$pkgver".tar.gz")
+source=("https://github.com/mrquantumoff/razer-nari-pipewire-profile/archive/refs/tags/"$_pkgver".tar.gz")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
