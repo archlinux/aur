@@ -2,11 +2,11 @@
 pkgname=python2-pbr
 _name="${pkgname#python2-}"
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Build Reasonableness (for Python 2)'
 arch=('any')
 _pypi='https://pypi.python.org'
-url="$_pypi/$_name"
+url="$_pypi/pypi/$_name"
 license=('Apache')
 depends=('python2-setuptools')
 source=("$_pypi/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
