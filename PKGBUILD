@@ -1,8 +1,9 @@
+# Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname='teamviewer-quicksupport'
-epoch=1
+epoch=2
 pkgver=15.31.3
 pkgrel=1
 pkgdesc='All-in-one software for remote support and online meetings'
@@ -97,7 +98,7 @@ package() {
     ln -s /opt/teamviewer/doc/{EULA_en.txt,DPA_en.txt} "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     install -Dm 0755 "${srcdir}/teamviewer.desktop" "${pkgdir}/usr/share/applications/teamviewer.desktop"
-    
+
     for iconsize in 16 20 24 32 48 256; do
         install -Dm 644 "tv_bin/desktop/teamviewer_${iconsize}.png" "${pkgdir}/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/teamviewer.png"
     done
