@@ -1,6 +1,6 @@
 pkgbase = sws
 	pkgdesc = A collection of features that seamlessly integrate into REAPER
-	pkgver = 2.13.0.0
+	pkgver = 2.13.1.0
 	pkgrel = 1
 	url = https://www.sws-extension.org/
 	install = sws.install
@@ -11,11 +11,11 @@ pkgbase = sws
 	makedepends = cmake
 	makedepends = php
 	makedepends = perl
-	depends = reaper-bin>=6.53
+	depends = reaper>=6.60
 	depends = taglib
 	provides = sws
 	conflicts = sws
-	source = git+https://github.com/reaper-oss/sws.git#commit=4ca0494874c3b38cac5372bc56505835e46150ac
+	source = git+https://github.com/reaper-oss/sws.git#commit=60104cef02f75c6ce75bb2ae3ae119e5e9221825
 	sha256sums = SKIP
 
 pkgname = sws
