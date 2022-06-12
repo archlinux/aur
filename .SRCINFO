@@ -7,7 +7,7 @@ pkgbase = sswb-git
 	license = GPL
 	depends = webkit2gtk
 	depends = python-gobject
-	source = https://github.com/BlackCodec/sswb-git/archive/master.zip
+	source = https://github.com/BlackCodec/sswb/archive/master.zip
 	md5sums = SKIP
 
 pkgname = sswb-git
