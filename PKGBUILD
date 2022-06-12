@@ -3,9 +3,9 @@
 
 pkgname=flrig
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Amateur (Ham) Radio Transceiver Control Program"
-arch=('armv7h' 'i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/flrig-help/index.html"
 license=('GPL')
 depends=('fltk' 'systemd-libs' 'flxmlrpc>=1.0.1' 'hamradio-menus')

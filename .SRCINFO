@@ -1,11 +1,12 @@
 pkgbase = flrig
 	pkgdesc = Amateur (Ham) Radio Transceiver Control Program
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.w1hkj.com/flrig-help/index.html
 	arch = armv7h
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = autoconf
 	makedepends = automake
