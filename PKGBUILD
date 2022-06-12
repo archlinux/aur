@@ -9,7 +9,6 @@ url='https://github.com/jellyfin/jellyfin-ffmpeg'
 license=('GPL3')
 depends=(
     'bzip2'
-    'chromaprint-fftw'
     'fontconfig'
     'fribidi'
     'gmp'
@@ -17,6 +16,7 @@ depends=(
     'lame'
     'libass.so'
     'libbluray.so'
+    'libchromaprint.so'
     'libdav1d.so'
     'libdrm'
     'libfreetype.so'
