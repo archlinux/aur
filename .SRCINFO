@@ -6,21 +6,14 @@ pkgbase = gerbolyze
 	arch = any
 	license = AGPL
 	makedepends = python-setuptools
-	makedepends = pkgconf
-	makedepends = git
-	makedepends = clang
-	depends = usvg
-	depends = pugixml
-	depends = opencv
-	depends = pango
-	depends = cairo
 	depends = python-numpy
 	depends = python-slugify
 	depends = python-lxml
 	depends = python-click
-	depends = python-pcb-tools
-	depends = python-pcb-tools-extension
-	source = gerbolyze-2.2.4::git+https://git.jaseg.de/gerbolyze.git#tag=v2.2.4
+	depends = python-appdirs
+	depends = python-text-unidecode
+	depends = resvg
+	source = gerbolyze-2.2.4::git+https://gitlab.com/gerbolyze/gerbolyze.git#tag=v2.2.4
 	sha256sums = SKIP
 
 pkgname = gerbolyze
