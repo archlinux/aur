@@ -6,7 +6,7 @@ pkgbase = git-sendgmail-git
 	arch = x86_64
 	license = APACHE
 	makedepends = go
-	source = git-sendgmail-git::git://github.com/google/gmail-oauth2-tools
+	source = git-sendgmail-git::git+https://github.com/google/gmail-oauth2-tools
 	sha256sums = SKIP
 
 pkgname = git-sendgmail-git

@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/google/gmail-oauth2-tools/tree/master/go/sendgmail"
 license=('APACHE')
 makedepends=('go')
-source=("$pkgname::git://github.com/google/gmail-oauth2-tools")
+source=("$pkgname::git+https://github.com/google/gmail-oauth2-tools")
 sha256sums=('SKIP')
 subdir="$pkgname/go/sendgmail"
 
