@@ -1,14 +1,14 @@
 pkgbase = btrustbiss
 	pkgdesc = Browser independent signing service.
 	pkgver = 3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.b-trust.org
 	arch = x86_64
 	license = GPL
 	depends = fakeroot
 	depends = pcsclite
 	depends = glibc
-	depends = gcc-lib
+	depends = gcc-libs
 	depends = xdg-utils
 	depends = zlib
 	provides = btrustbiss
