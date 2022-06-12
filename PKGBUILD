@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/nikp123/xava'
 license=('MIT')
 depends=('fftw' 'alsa-lib' 'wayland-protocols' 'libx11' 'sdl2' 'portaudio'
-  'libpulse' 'sndio' 'mesa' 'pipewire' 'cairo' 'wayland')
+  'libpulse' 'sndio' 'mesa' 'pipewire' 'cairo' 'wayland' 'glew')
 makedepends=('cmake' 'git' 'imagemagick')
 source=('git+https://github.com/nikp123/xava')
 sha1sums=('SKIP')

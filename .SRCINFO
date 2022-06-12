@@ -20,6 +20,7 @@ pkgbase = xava-git
 	depends = pipewire
 	depends = cairo
 	depends = wayland
+	depends = glew
 	source = git+https://github.com/nikp123/xava
 	sha1sums = SKIP
 
