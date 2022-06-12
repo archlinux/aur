@@ -2,7 +2,7 @@
 
 pkgname=nfs2se-git
 pkgver=v1.3.0.r0.g0e74445
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('x86_64')
 url='https://github.com/zaps166/NFSIISE'
@@ -17,6 +17,10 @@ machine=$(uname -m)
 
 if [ $machine == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
+	optdepends=(
+		'lib32-mesa: Opensource OpenGL drivers'
+		'lib32-nvidia-utils: NVIDIA drivers'
+	)
 	makedepends=('gcc-multilib' 'yasm')
 	SUBMODULE=src/Asm
 else
