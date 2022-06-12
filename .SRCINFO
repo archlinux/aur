@@ -17,6 +17,7 @@ pkgbase = xava
 	depends = sndio
 	depends = mesa
 	depends = pipewire
+	depends = glew
 	provides = xava
 	conflicts = xava-git
 	source = git://github.com/nikp123/xava.git#commit=dc6231415949ed99b30f2af3cf3662bdb6339e51
