@@ -1,0 +1,13 @@
+pkgbase = python2-more-itertools
+	pkgdesc = More routines for operating on iterables, beyond itertools
+	pkgver = 5.0.0
+	pkgrel = 3
+	url = https://github.com/more-itertools/more-itertools
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-six
+	source = python2-more-itertools-5.0.0.tar.gz::https://github.com/more-itertools/more-itertools/archive/refs/tags/5.0.0.tar.gz
+	sha256sums = a2dd59cdb7287d738b3c745558f0812b69b519cda21726b180b09d9d68d8b461
+
+pkgname = python2-more-itertools
