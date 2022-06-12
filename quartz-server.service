@@ -1,0 +1,12 @@
+[Unit]
+Description=Libquartz Server
+After=dnsproxy.service
+
+
+[Service]
+User=root
+ExecStart=/usr/bin/quartz-server 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
