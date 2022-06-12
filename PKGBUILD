@@ -5,7 +5,7 @@
 
 pkgname=gtksourceview
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME library that extends GtkTextView'
 url='http://www.gnome.org/'
 arch=('x86_64' 'i686')
