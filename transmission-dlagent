@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#    transmission-dlagent
+#
+#    ----------------------------------------------------------------------
+#    Copyright © 2022  Pellegrino Prevete
+#
+#    All rights reserved
+#    ----------------------------------------------------------------------
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+
+from argparse import ArgumentParser
+from os import getcwd
+from os.path import basename
+from os.path import join as path_join
+from shutil import move as mv
+from shutil import Error as MoveError
+from subprocess import CalledProcessError, Popen, check_output, run
+
+def makepkg_to_magnet(link):
+    link = link.replace("://", ":?")
+    path_marker = "#path="
+    path = ""
+    if path_marker in link:
+        link, path = link.split(path_marker)
+    return link, path
+
+def magnet_makepkg(link, output_path, download_dir=getcwd()):
+    output_file = output_path.replace(".part", "")
+    magnet_link, torrent_path = makepkg_to_magnet(link)
+    torrent_output_path = path_join(download_dir, torrent_path)
+    output_path = path_join(download_dir, output_file)
+
+    btt_cmd = ["/usr/bin/transmission-cli",
+               f"{magnet_link}",
+               f"--download-dir={download_dir}",
+               "--portmap",
+               f"--finish /usr/bin/transmission-quit",
+               "|| echo 0"]    
+
+    try:
+        btt_out = check_output(btt_cmd)
+
+    except CalledProcessError as err:
+        if f"Failed opening torrent file `{magnet_link}" in str(err.stderr):
+            print(f"Error in the magnet link '{magnet_link}'")
+        else:
+            if err.stderr:
+                error = err.stderr.decode("utf-8")
+                error = error.split("\n")
+                for line in error:
+                    print(line)
+
+    try:
+        mv(torrent_output_path, output_path)
+    except MoveError as e:
+        print(e)
+        return e
+
+def main():
+    parser = ArgumentParser(description="Parse magnet link in makepkg format for Transmission")
+    
+    magnet_link = {'args': ['magnet_link'],
+                   'kwargs': {'nargs': '+',
+                              'action': 'store',
+                              'help': "magnet link in makepkg format"}}
+
+    output_file = {'args': ['output_file'],
+                   'kwargs': {'nargs': 1,
+                              'action': 'store',
+                              'default': [""],
+                              'help': "output file"}}
+ 
+    download_dir = {'args': ['--download-dir'],
+                    'kwargs': {'nargs': 1,
+                               'action': 'store',
+                               'default': [getcwd()],
+                               'help': "download directory"}}
+    
+    parser.add_argument(*magnet_link['args'], **magnet_link['kwargs'])
+    parser.add_argument(*output_file['args'], **output_file['kwargs'])   
+    parser.add_argument(*download_dir['args'], **download_dir['kwargs'])   
+
+    args = parser.parse_args()
+
+    return magnet_makepkg(args.magnet_link[0],
+                          args.output_file[0],
+                          download_dir=args.download_dir[0])
+
+if __name__ == "__main__":
+    main()

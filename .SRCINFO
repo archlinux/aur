@@ -1,0 +1,17 @@
+pkgbase = transmission-dlagent
+	pkgdesc = makepkg download agent for magnet URIs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/transmission-dlagent
+	arch = any
+	license = AGPL3
+	depends = python
+	depends = transmission-cli
+	source = transmission-dlagent
+	source = transmission-quit
+	source = makepkg.conf
+	sha256sums = f2ca5106d9eee48ae9702a27ebe90b0bd4c7fdf2cffa6f953773105acac614cc
+	sha256sums = b07e32b4c1424d8e62adf5c05acd02e82be0a6549c49879aebeaa813b4840411
+	sha256sums = 849a4b3b5f574105f4b5e4afac7c1b16cebd805c8a3ba22910a30a432cc679c6
+
+pkgname = transmission-dlagent
