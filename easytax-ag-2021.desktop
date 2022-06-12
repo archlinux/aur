@@ -2,6 +2,6 @@
 [Desktop Entry]
 Type=Application
 Name=EasyTax 2021 AG
-Exec=/bin/sh "/usr/bin/easytax-ag-2021"
+Exec=INSTALL4J_JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre /bin/sh -c /usr/bin/easytax-ag-2021
 Categories=Office;
 
