@@ -1,13 +1,13 @@
 
 # Maintainer: Demir Yerli <demiryerli@gmail.com>
 pkgname=razer-nari-pipewire-profile
-pkgver=1.0
-pkgrel=3
-epoch=1
+pkgver=v1.1
+pkgrel=1
+epoch=2
 pkgdesc="Razer Nari headsets pipewire profile"
 arch=("any")
 url="https://github.com/mrquantumoff/razer-nari-pipewire-profile"
-license=('UNKNOWN')
+license=('MIT')
 groups=("mrquantumoff")
 depends=('pipewire-pulse' 'bash')
 makedepends=()
@@ -27,8 +27,7 @@ prepare() {
 
 package() {
 	cd $srcdir
-	install -Dm644 -t "$pkgdir/usr/share/alsa-card-profile/mixer/paths/" razer-nari-{input,output-{game,chat}}.conf
+    install -Dm644 -t "$pkgdir/usr/share/alsa-card-profile/mixer/paths/" razer-nari-{input,output-{game,chat}}.conf
     install -Dm644 -t "$pkgdir/usr/share/alsa-card-profile/mixer/profile-sets/" razer-nari-usb-audio.conf
     install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" 91-pulseaudio-razer-nari.rules
-
 }
