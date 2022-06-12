@@ -7,20 +7,20 @@
 pkgname=python-wxpython-dev
 _pkgname=wxPython
 pkgver=4.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Cross-platform GUI toolkit. Developer version'
 arch=('x86_64')
 license=('custom:wxWindows')
 url='https://www.wxpython.org'
 depends=('wxgtk3-dev' 'python-six')
 optdepends=('python-pypubsub: Alternative to the deprecated wx.lib.pubsub API')
-makedepends=('mesa' 'glu' 'webkit2gtk' 'python-requests' 'python-setuptools')
+makedepends=('mesa' 'glu' 'webkit2gtk' 'python-requests' 'python-setuptools' 'patch')
 checkdepends=('xorg-server-xvfb' 'python-pytest-forked' 'python-numpy')
 provides=('python-wxpython')
 conflicts=('python-wxpython')
 source=("https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-$pkgver.tar.gz"
-"https://github.com/wxWidgets/Phoenix/commit/aa3dca0e40bd0701e82ce40297a982b5b84844dc.patch"
-"https://github.com/wxWidgets/Phoenix/commit/f5a55e6bf38ab5a0e7b7161477d2d523d057ec29.patch"
+"aa3dca0e40bd0701e82ce40297a982b5b84844dc.patch"
+"f5a55e6bf38ab5a0e7b7161477d2d523d057ec29.patch"
 "d9725119d742ff25e815d0824c62abd8953a61df.patch"
 "7afcc7fbc68506b55b5bb85970871a5f3df6eac4.patch"
 )
