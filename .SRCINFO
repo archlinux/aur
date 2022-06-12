@@ -1,0 +1,14 @@
+pkgbase = python2-linecache2
+	pkgdesc = Backports of the linecache module
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = https://pypi.python.org/linecache2
+	arch = any
+	license = PSF
+	makedepends = python2-setuptools
+	makedepends = python2-pbr
+	depends = python2
+	source = https://pypi.python.org/packages/source/l/linecache2/linecache2-1.0.0.tar.gz
+	sha256sums = 4b26ff4e7110db76eeb6f5a7b64a82623839d595c2038eeda662f2a2db78e97c
+
+pkgname = python2-linecache2
