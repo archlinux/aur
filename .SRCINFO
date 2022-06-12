@@ -1,14 +1,18 @@
 pkgbase = capitaine-cursors-sainnhe-git
 	pkgdesc = Sainnhe's fork of capitaine cursor theme, patched with some additional variants (Gruvbox, Nord, Palenight)
-	pkgver = 4.r15.ga7622db
+	pkgver = 5.r19.g9b12de9
 	pkgrel = 1
 	url = https://github.com/sainnhe/capitaine-cursors
 	arch = any
 	license = LGPL3
-	makedepends = inkscape
-	makedepends = xorg-xcursorgen
-	makedepends = bc
 	makedepends = git
+	makedepends = libx11
+	makedepends = libxcursor
+	makedepends = libpng
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = python
+	makedepends = python-pip
 	provides = capitaine-cursors
 	conflicts = capitaine-cursors
 	source = git+https://github.com/sainnhe/capitaine-cursors.git#branch=master
