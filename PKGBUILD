@@ -2,7 +2,7 @@
 
 pkgname=o
 pkgver=2.52.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
@@ -26,6 +26,7 @@ optdepends=('asciidoctor: for writing man pages'
             'ghc: for compiling Haskell'
             'google-java-format: for formatting Java'
             'guessica: for updating PKGBUILD files'
+            'hare: for compiling Hare'
             'jad: for decompiling .class files on the fly'
             'java-environment: for compiling Java'
             'kotlin: for compiling Kotlin'
