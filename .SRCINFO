@@ -1,7 +1,7 @@
 pkgbase = python-pybcj
 	pkgdesc = BCJ(Branch-Call-Jump) filter for python
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/miurahr/pybcj
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = python-pybcj
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pybcj/pybcj-0.5.2.tar.gz
-	sha256sums = 050e7bf780b82b0c6ba4368c4a78953a1cf5922cef50e8b251fb8b87f0483ad7
+	source = https://files.pythonhosted.org/packages/source/p/pybcj/pybcj-0.6.0.tar.gz
+	sha256sums = 9013522cc4a51a966bd7f430df9bf23693a5235bb36c7916cbe13f76aca62a0f
 
 pkgname = python-pybcj

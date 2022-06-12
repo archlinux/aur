@@ -2,8 +2,8 @@
 
 pkgname=python-pybcj
 _pyname=${pkgname#python-}
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='BCJ(Branch-Call-Jump) filter for python'
 arch=(x86_64)
 url="https://github.com/miurahr/$_pyname"
@@ -16,7 +16,7 @@ checkdepends=(python-pytest
               python-hypothesis)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('050e7bf780b82b0c6ba4368c4a78953a1cf5922cef50e8b251fb8b87f0483ad7')
+sha256sums=('9013522cc4a51a966bd7f430df9bf23693a5235bb36c7916cbe13f76aca62a0f')
 
 build() {
 	cd "$_archive"
