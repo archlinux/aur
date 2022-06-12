@@ -5,7 +5,7 @@ pkgdesc='Geographic Information System (GIS) that supports vector, raster & data
 url='https://qgis.org/'
 license=('GPL')
 arch=('any')
-depends=('mingw-w64-protobuf' 'mingw-w64-qt5-3d' 'mingw-w64-qt5-imageformats' 'mingw-w64-qt5-serialport' 'mingw-w64-gdal' 'mingw-w64-libzip' 'mingw-w64-qca-qt5' 'mingw-w64-gsl' 'mingw-w64-exiv2' 'mingw-w64-hdf5' 'mingw-w64-libxml2' 'mingw-w64-netcdf' 'mingw-w64-fcgi' 'mingw-w64-qwt' 'mingw-w64-pdal' 'mingw-w64-qscintilla-qt5' 'mingw-w64-spatialindex' 'mingw-w64-qtkeychain-qt5' 'mingw-w64-pdal')
+depends=('mingw-w64-protobuf' 'mingw-w64-qt5-3d' 'mingw-w64-qt5-imageformats' 'mingw-w64-qt5-serialport' 'mingw-w64-gdal' 'mingw-w64-libzip' 'mingw-w64-qca-qt5' 'mingw-w64-gsl' 'mingw-w64-exiv2' 'mingw-w64-hdf5' 'mingw-w64-libxml2' 'mingw-w64-netcdf' 'mingw-w64-fcgi' 'mingw-w64-qwt' 'mingw-w64-pdal' 'mingw-w64-qscintilla-qt5' 'mingw-w64-spatialindex' 'mingw-w64-qtkeychain-qt5' 'mingw-w64-libspatialite')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://qgis.org/downloads/qgis-$pkgver.tar.bz2")
@@ -15,9 +15,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd qgis-$pkgver
-
-  #sed -i "s|QWT_POLAR_VERSION|0x20000|g" src/app/gps/qgsgpsinformationwidget.cpp
-  #sed -i "s|QT_SHARED|QT_STATIC|g" src/customwidgets/CMakeLists.txt
+  sed -i "s|QWT_POLAR_VERSION|0x20000|g" src/app/gps/qgsgpsinformationwidget.cpp
+  sed -i "s|QT_SHARED|QT_STATIC|g" src/customwidgets/CMakeLists.txt
 }
 
 build() {
@@ -43,6 +42,7 @@ build() {
     -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/${_arch}/lib/libqwt.dll.a \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    -DHDF5_ROOT=/usr/${_arch} \
     ..
    make
    popd
