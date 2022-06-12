@@ -9,7 +9,7 @@ pkgname=('vulkan-mesa-layers-steamos' 'opencl-mesa-steamos' 'vulkan-intel-steamo
 pkgdesc="An open-source implementation of the OpenGL specification"
 _tag=radeonsi-20220217
 pkgver=22.0.0_devel.148040.radeonsi_20220217
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
@@ -92,7 +92,6 @@ package_vulkan-mesa-layers-steamos() {
   pkgdesc="Mesa's Vulkan layers"
   depends=('libdrm' 'libxcb' 'wayland' 'python')
   conflicts=('vulkan-mesa-layer')
-  replaces=('vulkan-mesa-layer')
   provides=('vulkan-mesa-layer' 'vulkan-mesa-layers')
 
   _install fakeinstall/usr/share/vulkan/explicit_layer.d
@@ -146,8 +145,7 @@ package_vulkan-swrast-steamos() {
   pkgdesc="Vulkan software rasteriser driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  conflicts=('vulkan-mesa')
-  replaces=('vulkan-mesa')
+  conflicts=('vulkan-swrast')
   provides=('vulkan-driver' 'vulkan-swrast')
 
   _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
@@ -188,7 +186,6 @@ package_mesa-steamos() {
               'libva-mesa-driver: for accelerated video playback')
   provides=('mesa-libgl' 'opengl-driver' 'mesa')
   conflicts=('mesa-libgl')
-  replaces=('mesa-libgl')
 
   _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
   _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json

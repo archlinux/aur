@@ -1,7 +1,7 @@
 pkgbase = mesa-steamos
 	pkgdesc = An open-source implementation of the OpenGL specification
 	pkgver = 22.0.0_devel.148040.radeonsi_20220217
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.mesa3d.org/
 	arch = x86_64
 	license = custom
@@ -53,7 +53,6 @@ pkgname = vulkan-mesa-layers-steamos
 	provides = vulkan-mesa-layer
 	provides = vulkan-mesa-layers
 	conflicts = vulkan-mesa-layer
-	replaces = vulkan-mesa-layer
 
 pkgname = opencl-mesa-steamos
 	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers
@@ -99,8 +98,7 @@ pkgname = vulkan-swrast-steamos
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 	provides = vulkan-swrast
-	conflicts = vulkan-mesa
-	replaces = vulkan-mesa
+	conflicts = vulkan-swrast
 
 pkgname = libva-mesa-driver-steamos
 	pkgdesc = VA-API implementation for gallium
@@ -148,4 +146,3 @@ pkgname = mesa-steamos
 	provides = opengl-driver
 	provides = mesa
 	conflicts = mesa-libgl
-	replaces = mesa-libgl
