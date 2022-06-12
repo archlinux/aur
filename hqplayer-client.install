@@ -1,0 +1,13 @@
+post_install () {
+if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
+mkdir -p /etc/pki/tls/certs
+ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+fi
+}
+
+post_upgrade() {
+if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
+mkdir -p /etc/pki/tls/certs
+ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+fi
+}
