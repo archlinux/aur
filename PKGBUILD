@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=gllvm-git
-pkgver=1.3.001.r20.g938e851
+pkgver=1.3.001.r26.g48db30d
 pkgrel=1
 pkgdesc="Whole Program LLVM: wllvm ported to go"
 arch=('any')
@@ -27,7 +27,7 @@ pkgver() {
 package() {
     cd "$srcdir/$pkgname"
     export GOPATH="$pkgdir/usr"
-    go get github.com/SRI-CSL/gllvm/cmd/...
+    GO111MODULE=off go get github.com/SRI-CSL/gllvm/cmd/...
     rm -rf "$pkgdir/usr/src"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
