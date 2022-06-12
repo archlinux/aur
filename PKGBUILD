@@ -1,38 +1,33 @@
 # Maintainer: HMTheBoy154 <buingoc67@gmail.com>
 # from: git
 
-_pkgname="fcitx5-bamboo"
-pkgbase="fcitx5-bamboo-git"
-pkgname=(
-    "$pkgbase"
-)
+pkgname="fcitx5-bamboo-git"
 pkgver=1.0.0.ad7bf38
 pkgrel=1
 pkgdesc="Bamboo (Vietnamese Input Method) engine support for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx5-bamboo"
 license=('LGPLv2.1+')
-makedepends=('cmake' 'go' 'git' 'extra-cmake-modules' 'fcitx5')
+makedepends=('cmake' 'go' 'git' 'extra-cmake-modules')
+depends=('fcitx5')
 conflicts=('fcitx5-bamboo')
 provides=('fcitx5-bamboo')
-source=(
-    "${pkgbase%*-git}::git+https://github.com/fcitx/fcitx5-bamboo"
-)
+source=("$pkgname"::git+https://github.com/fcitx/fcitx5-bamboo)
 sha256sums=('SKIP')
 
 pkgver()
 {
-    cd "$srcdir/${pkgbase%*-git}"
+    cd "$srcdir/$pkgname"
     printf "1.0.0.%s" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/${pkgbase%*-git}"
+    cd "$srcdir/$pkgname"
 	git submodule update --init
 }
 
 build() {
-    cd "${srcdir}/${pkgbase%*-git}"
+    cd "${srcdir}/$pkgname"
     mkdir -p build
     cd build
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
@@ -40,10 +35,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgbase%*-git}/build"
+    cd "${srcdir}/$pkgname/build"
     make DESTDIR="${pkgdir}" install
 
     # install licence files
-    install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}/"
-    install -Dm644 "${srcdir}/${_pkgname}/LICENSES/LGPL-2.1-or-later.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    install -dm755 "${pkgdir}/usr/share/licenses/${provides}/"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSES/LGPL-2.1-or-later.txt" "${pkgdir}/usr/share/licenses/${provides}/"
 }

@@ -9,10 +9,10 @@ pkgbase = fcitx5-bamboo-git
 	makedepends = go
 	makedepends = git
 	makedepends = extra-cmake-modules
-	makedepends = fcitx5
+	depends = fcitx5
 	provides = fcitx5-bamboo
 	conflicts = fcitx5-bamboo
-	source = fcitx5-bamboo::git+https://github.com/fcitx/fcitx5-bamboo
+	source = fcitx5-bamboo-git::git+https://github.com/fcitx/fcitx5-bamboo
 	sha256sums = SKIP
 
 pkgname = fcitx5-bamboo-git
