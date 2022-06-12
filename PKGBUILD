@@ -1,5 +1,5 @@
 pkgname=arkenfox-user.js-git
-pkgver=100.0.r1.gea139e3
+pkgver=101.0.r0.g1a89996
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
