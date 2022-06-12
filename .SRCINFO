@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libtiff
 	pkgdesc = Library for manipulation of TIFF images (mingw-w64)
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = http://www.simplesystems.org/libtiff/
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = mingw-w64-libtiff
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = http://download.osgeo.org/libtiff/tiff-4.3.0.tar.gz
-	sha256sums = 0e46e5acb087ce7d1ac53cf4f56a09b221537fc86dfc5daaad1c2e89e1b37ac8
+	source = http://download.osgeo.org/libtiff/tiff-4.4.0.tar.gz
+	sha256sums = 917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed
 
 pkgname = mingw-w64-libtiff
-
