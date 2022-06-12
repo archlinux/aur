@@ -1,21 +1,15 @@
 pkgbase = numix-frost-themes
-	pkgdesc = Official Numix GTK theme - Antergos Edition
+	pkgdesc = A modern flat theme with a combination of light and dark elements - Antergos Edition
 	pkgver = 3.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://numixproject.github.io/
 	arch = any
-	groups = themes
-	groups = themes::gtk
 	license = GPL3
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
 	makedepends = ruby-sass
-	makedepends = npm
-	makedepends = gulp
 	depends = gtk-engine-murrine
-	depends = gtk3>=3.18
-	depends = git
-	replaces = gtk-theme-numix-frost
 	source = https://github.com/Antergos/Numix-Frost/archive/3.6.6.tar.gz
-	sha512sums = d5b8c483a9036c0ad49fa47b1c23ec3aa6924f9e15f467b32ec0a0f04bbe9080391e9a9f156ce0b7bb5898ffd91a1c9e60fecdf115ad35bb572035b5871c4864
+	sha256sums = 8b29ebb6aeb2bb56c0992d90937e9fb30ea955dc7ac2ca57b89aa3c325eeeed1
 
 pkgname = numix-frost-themes
-

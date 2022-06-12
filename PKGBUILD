@@ -1,45 +1,27 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: neeshy <neeshy@tfwno.gf>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: David Dotson <dotsdl at gmail dot com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Antergos Devs <dev@antergos.com>
 # Contributor: dmiranda at gmail dot com
-
 pkgname=numix-frost-themes
-_pkgname=Numix-Frost
-_light=Numix-Frost-Light
-_branch=numix-frost-light
 pkgver=3.6.6
-pkgrel=2
-pkgdesc='Official Numix GTK theme - Antergos Edition'
+pkgrel=3
+pkgdesc="A modern flat theme with a combination of light and dark elements - Antergos Edition"
 arch=('any')
-license=('GPL3')
-groups=('themes' 'themes::gtk')
 url="https://numixproject.github.io/"
-depends=('gtk-engine-murrine' 'gtk3>=3.18' 'git')
-makedepends=('ruby-sass' 'npm' 'gulp')
-replaces=('gtk-theme-numix-frost')
-#source=('git+https://github.com/Antergos/Numix-Frost.git')
+license=('GPL3')
+depends=('gtk-engine-murrine')
+makedepends=('gdk-pixbuf2' 'glib2' 'ruby-sass')
 source=("https://github.com/Antergos/Numix-Frost/archive/${pkgver}.tar.gz")
-sha512sums=('d5b8c483a9036c0ad49fa47b1c23ec3aa6924f9e15f467b32ec0a0f04bbe9080391e9a9f156ce0b7bb5898ffd91a1c9e60fecdf115ad35bb572035b5871c4864')
+sha256sums=('8b29ebb6aeb2bb56c0992d90937e9fb30ea955dc7ac2ca57b89aa3c325eeeed1')
 
 build() {
-	git clone https://github.com/Antergos/Numix-Frost.git "${srcdir}/${_pkgname}"
-	git clone https://github.com/Antergos/Numix-Frost.git "${srcdir}/${_light}"
+  cd "$srcdir/Numix-Frost-$pkgver"
+  make
 }
 
 package() {
-
-	# Numix-Frost
-	cd "${srcdir}/${_pkgname}"
-	git checkout "${pkgver}"
-	sed -i 's| unity||g' scripts/utils.sh
-	make DESTDIR="${pkgdir}" install
-
-
-	# Numix-Frost-Light
-	cd "${srcdir}/${_light}"
-	git checkout "${pkgver}-light"
-	sed -i 's| unity||g' scripts/utils.sh
-	make DESTDIR="${pkgdir}" install
-
+  cd "$srcdir/Numix-Frost-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
