@@ -1,33 +1,33 @@
-# Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
-
+# Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python2-configparser
-pkgver=3.3.0r2
-pkgrel=1
-pkgdesc="Brings the updated configparser from Python 3.2+ to Python 2.6-2.7"
+_name=${pkgname#python2-}
+pkgver=4.0.2
+pkgrel=3
+pkgdesc='Backports of the configparser module'
 arch=('any')
-url="https://bitbucket.org/ambv/configparser"
-depends=('python2')
-makedepends=('python2-setuptools')
+_pypi='https://pypi.python.org'
+url="$_pypi/pypi/$_name"
+depends=('python2-backports')
+makedepends=('python2-setuptools-scm')
 license=('MIT')
-options=(!libtool)
-source=(https://pypi.python.org/packages/source/c/configparser/configparser-${pkgver}.tar.gz license)
-md5sums=('dda0e6a43e9d8767b36d10f1e6770f09'
-         'f8e5b03556ed846d7681bacd4126f484')
+source=("$_pypi/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df')
+
+prepare() {
+  cd "$srcdir/$_name-$pkgver"
+  find -name "*.py*" -exec sed -i '1s/python\s*$/python2/' '{}' \;
+}
 
 build() {
-  cd "${srcdir}"/configparser-${pkgver}
-
+  cd "$srcdir/$_name-$pkgver"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}"/configparser-${pkgver}
-
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-
-  sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-    $(find "${pkgdir}" -name '*.py')
-
-  install -D "${srcdir}"/license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$_name-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  find "$pkgdir" -path '*/backports/__init__.py*' -delete
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-
