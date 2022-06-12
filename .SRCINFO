@@ -1,0 +1,13 @@
+pkgbase = easymorse-git
+	pkgdesc = Simple crossplatform tool to learn morse code or automatic traffic on CW
+	pkgver = b8748c3
+	pkgrel = 1
+	url = https://bitbucket.org/Artemia/easymorse
+	arch = any
+	license = GPL3
+	makedepends = base-devel
+	depends = qt5-base
+	source = easymorse-git::git+https://bitbucket.org/Artemia/easymorse.git
+	sha256sums = SKIP
+
+pkgname = easymorse-git
