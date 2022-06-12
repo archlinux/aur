@@ -1,15 +1,15 @@
 pkgbase = lqsd
 	pkgdesc = LiQuid Screen Dim - Dim your screen smoothly
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FunctionalHacker/lqsd
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = asciidoctor
 	depends = light
 	source = lqsd-0.1.1.tar.gz::https://github.com/ReekyMarko/lqsd/archive/v0.1.1.tar.gz
-	sha256sums = 60274d9157f9adba7486255baf38bb5afa538026ca1426a3d739d022a93a981e
+	sha256sums = d1703e70a710d1f9363fe4a55830a4ad65897a803c2f50d9effea7263b53c6d0
 
 pkgname = lqsd
-
