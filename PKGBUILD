@@ -6,23 +6,25 @@
 
 pkgname=dosbox-debug
 srcname=dosbox
-pkgver=0.74
-pkgrel=3
+pkgver=0.74.3
+# Upstream version number
+usver=0.74-3
+pkgrel=1
 pkgdesc='Emulator with builtin DOS for running DOS games (includes debugger for DOS apps)'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='http://dosbox.sourceforge.net/'
 license=('GPL')
 depends=('sdl_net' 'zlib' 'sdl_sound' 'libgl' 'libpng' 'alsa-lib' 'gcc-libs' 'glu')
-# libgl can be provided by mesa-libgl or the nVidia closed-source driver
-makedepends=('libgl' 'gendesk>=0.5.3')
+makedepends=('mesa-libgl' 'gendesk')
 provides=('dosbox')
 conflicts=('dosbox')
-source=("http://downloads.sourceforge.net/$srcname/$srcname-$pkgver.tar.gz"
-        'dosbox.png'
-        'gcc46.patch')
-md5sums=('b9b240fa87104421962d14eee71351e8'
-         '2aac25fc06979e375953fcc36824dc5e'
-         '3fba2e3c7c43290319b2928f40ed30e5')
+source=("http://downloads.sourceforge.net/$srcname/$srcname-$usver.tar.gz"
+        'dosbox.png')
+sha256sums=('c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a'
+            '491c42d16fc5ef7ee2eca1b736f7801249d4ca8c0b236a001aec0d3e24504f3b')
+
+# Can't use -Werror=format-security or the debug version fails to compile
+options=(!buildflags)
 
 prepare() {
   cd "$srcdir"
@@ -32,29 +34,28 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$srcname-$pkgver"
-
-  patch -Np1 -i "$srcdir/gcc46.patch"
-  sed -i 's/png_check_sig/png_sig_cmp/' configure
+  cd "$srcdir/$srcname-$usver"
 
   # Compile alternate version with built-in debugger enabled
-  ./configure   --prefix=/usr \
+  ./configure \
+    --prefix=/usr \
     --enable-debug \
     --sysconfdir=/etc/dosbox
-  make
+  make ${MAKEFLAGS}
   mv src/dosbox src/dosbox-debug
 
   # Compile original version without DOS debugger
-  ./configure   --prefix=/usr \
+  ./configure \
+    --prefix=/usr \
     --sysconfdir=/etc/dosbox
-  make
+  make ${MAKEFLAGS}
 }
 
 package() {
-  cd "$srcdir/$srcname-$pkgver"
+  cd "$srcdir/$srcname-$usver"
 
   # Install everything including the non-debug binary
-  make DESTDIR="$pkgdir" install 
+  make DESTDIR="$pkgdir" install
 
   # Install the debug binary
   install -Dm755 "src/$pkgname" "$pkgdir/usr/bin/$pkgname"
