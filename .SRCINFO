@@ -1,0 +1,13 @@
+pkgbase = python2-scandir
+	pkgdesc = Better directory iterator and faster os.walk() alternative
+	pkgver = 1.10.0
+	pkgrel = 4
+	url = https://github.com/benhoyt/scandir
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-scandir-1.10.0.tar.gz::https://github.com/benhoyt/scandir/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 73a773c58432ce28f32286f2892217101f4cf61ff4bccd8829ebaa7af7c56620
+
+pkgname = python2-scandir
