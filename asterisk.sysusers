@@ -1,2 +1,1 @@
-g asterisk /usr/bin/asterisk
 u asterisk /usr/bin/asterisk "Asterisk PBX and telephony" /run/asterisk

@@ -5,4 +5,4 @@
 !./asterisk.install
 !./asterisk.logrotated
 !./asterisk.sysusers
-!./asterisk.tmpfile
+!./asterisk.tmpfiles

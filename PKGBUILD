@@ -7,7 +7,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=19.3.1
+pkgver=19.4.1
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -42,7 +42,6 @@ _confs=(acl.conf
         alarmreceiver.conf
         alsa.conf
         amd.conf
-        app_mysql.conf
         app_skel.conf
         ari.conf
         ast_debug_tools.conf
@@ -102,7 +101,6 @@ _confs=(acl.conf
         modules.conf
         motif.conf
         musiconhold.conf
-        muted.conf
         ooh323.conf
         osp.conf
         phoneprov.conf
@@ -151,10 +149,10 @@ _archive="$pkgname-$pkgver"
 source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.logrotated"
-        "$pkgname.tmpfile")
-sha256sums=('3e1fa31ef1de7813365dd8b98ef93744ff87902255472814d0232b955c794706'
-            'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
-            'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
+        "$pkgname.tmpfiles")
+sha256sums=('6b0b985163f20fcc8f8878069b8a9ee725eef4cfbdb1c1031fe3840fb32d7abe'
+            '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
+            'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
 
 build() {
@@ -170,9 +168,8 @@ build() {
 		--localstatedir=/var \
 		--sbindir=/usr/bin \
 		--with-imap=system
-	make menuselect.makeopts
-	./menuselect/menuselect --disable BUILD_NATIVE
-	make
+
+	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR=/run/asterisk NOISY_BUILD=1
 }
 
 package(){
@@ -184,7 +181,7 @@ package(){
 	# Backup file list changes frequently and is hard to keep up to date. Check
 	# that our current meta data matches whatever just got packaged, else flunk
 	# with a helpful output of where the lists differ. We have to compare twice
-	# because cmp has a useful exit code, comm hasa useful output, neither both
+	# because cmp has a useful exit code, comm has a useful output, neither both
 	local _backs=($(cd "$pkgdir/etc/$pkgname" && echo *))
 	cmp -s \
 		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
@@ -205,5 +202,5 @@ package(){
 	pushd "$srcdir"
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$pkgname.logrotated" "$pkgdir/etc/logrotate.d/$pkgname"
-	install -Dm644 "$pkgname.tmpfile" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
