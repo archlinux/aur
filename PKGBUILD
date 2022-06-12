@@ -2,11 +2,11 @@
 pkgname=python2-traceback2
 _name="${pkgname#python2-}"
 pkgver=1.4.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Backports of the traceback module'
 arch=('any')
 _pypi='https://pypi.python.org'
-url="$_pypi/$_name"
+url="$_pypi/pypi/$_name"
 license=('Python')
 depends=('python2-linecache2' 'python2-six')
 makedepends=('python2-setuptools' 'python2-pbr')
