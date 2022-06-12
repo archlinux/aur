@@ -8,7 +8,7 @@ pkgname=skaffold-git
 reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
-pkgver=1.32.0
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
@@ -24,9 +24,9 @@ optdepends=(
 source=(
   "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('ea33655b42aa6da98ad614042c1368bab802e2b1cc1b3c6b19b5abf41c341bf9')
-b2sums=('ea6fc056232e94b72240641aaad568b233feadfbccf7a7dd5ad813f57a346f32f8c871d564d1011e0851b979ab788dc2d9a77e05c93f9ecc500b922fb5de3dd8')
-_commit="edd1d458902d64e51e17b83514e1fc693c248259"
+sha256sums=('fc9d5d274d60fd106d1ea7f00155e4070be76cdb3cc782a45840e44bf727efd3')
+b2sums=('c47844de18f940bfa30c4c3c70af2606a1c422416bf29d85d707fe7a67a0612f467615a03c602cc57d89a81fe146c24f093bbe8eb4db77420ca17cdc09a60f87')
+_commit="ec522e6182dbe55193e29b475cfe6244e621a140"
 
 prepare() {
   cd "${srcdir}/${reponame}-${pkgver}"
