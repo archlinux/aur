@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=htm2txt
-_pkgver=2.1.1
+_pkgver=2.2.1
 pkgname=r-${_pkgname,,}
-pkgver=2.1.1
-pkgrel=6
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='Convert Html into Text'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b3657d7a025ab1951b960d67ea857330149aedec92da2c672a162e4bd110027')
+sha256sums=('b6e45130a32c017c9aeb378b76e5f7d70d9a15d9c9979c0da47507433d877068')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
