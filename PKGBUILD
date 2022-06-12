@@ -1,10 +1,10 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.51.0
+pkgver=2.52.0
 pkgrel=1
 pkgdesc='Text editor'
-arch=(aarch64 armv6 armv7 x86_64)
+arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 conflicts=(o)
@@ -25,6 +25,7 @@ optdepends=('asciidoctor: for writing man pages'
             'ghc: for compiling Haskell'
             'google-java-format: for formatting Java'
             'guessica: for updating PKGBUILD files'
+            'hare: for compiling Hare'
             'jad: for decompiling .class files on the fly'
             'java-environment: for compiling Java'
             'kotlin: for compiling Kotlin'
@@ -47,8 +48,8 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('45de6fb5068620136b313c105894c8e14a8b0e25a68f0c2f9577d8a6338ea2fa')
-b2sums=('98c6cc70eb43111ba1496c8d78f91e17228c53f41798febda8ecddbd4811564bb1e26e481ab3765154bb058a2606fbf9efd7e317fbbbbc85db682dfa315d8b84')
+sha256sums=('0f58313339d230c95658f7ef311f83cc54ceb878c085bcf32ba68476e904b327')
+b2sums=('a6a14bec7e9259d23ee7c33bf8294b4285d79d22242653dc0ee3a6634340be0da7c184fe1793fb080479fd053582d015212fcf1607473a052e81972f283689fe')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
