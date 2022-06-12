@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux-python2
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="SELinux library and simple utilities (python 2.x bindings)"
 arch=('i686' 'x86_64' 'armv6h')
@@ -18,7 +18,7 @@ optdepends=('python: python bindings'
             'ruby: ruby bindings')
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/libselinux-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
-sha256sums=('acfdee27633d2496508c28727c3d41d3748076f66d42fccde2e6b9f3463a7057'
+sha256sums=('77c294a927e6795c2e98f74b5c3adde9c8839690e9255b767c5fca6acff9b779'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
 build() {
