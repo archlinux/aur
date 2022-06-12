@@ -5,7 +5,7 @@
 pkgbase=linux-steamos
 _tag=5.13.0-valve10.1
 pkgver=${_tag//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Neptune kernel from SteamOS 3'
 url="https://github.com/LukeShortCloud/steamos-linux-neptune#branch=$_tag"
 arch=(x86_64)

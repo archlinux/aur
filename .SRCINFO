@@ -1,7 +1,7 @@
 pkgbase = linux-steamos
 	pkgdesc = Linux Neptune kernel from SteamOS 3
 	pkgver = 5.13.0.valve10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LukeShortCloud/steamos-linux-neptune#branch=5.13.0-valve10.1
 	arch = x86_64
 	license = GPL2
