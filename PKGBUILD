@@ -7,7 +7,7 @@ pkgdesc="A high-resolution image-to-PCB converter"
 arch=('any')
 url="https://gerbolyze.jaseg.net/"
 license=('AGPL')
-depends=("python-numpy" "python-slugify" "python-lxml" "python-click" "python-appdirs" "python-text-unidecode" "resvg-cairo")
+depends=("python-numpy" "python-slugify" "python-lxml" "python-click" "python-appdirs" "python-text-unidecode" "resvg-cairo" "python-gerbonara")
 makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}::git+https://gitlab.com/gerbolyze/gerbolyze.git#tag=v${pkgver}")
 sha256sums=('SKIP')
