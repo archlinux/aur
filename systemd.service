@@ -1,5 +1,5 @@
 [Unit]
-Description=Promscale service
+Description=TimescaleDB Promscale Service
 Documentation=https://github.com/timescale/promscale
 Requires=network-online.target
 After=network-online.target
@@ -7,13 +7,14 @@ After=network-online.target
 [Service]
 User=promscale
 Group=promscale
+EnvironmentFile=-/etc/promscale.conf
+ExecStart=/usr/bin/promscale $OPTIONS
 Restart=on-failure
 RestartSec=5s
-# If PROMSCALE_ARGS is required, it should be applied using a drop-in
-# systemd file. See `man 5 systemd.unit` for details.
-ExecStart=/usr/bin/promscale $PROMSCALE_ARGS
-ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGINT
 
+# Hardening
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
