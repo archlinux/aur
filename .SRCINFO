@@ -1,7 +1,7 @@
 pkgbase = python-torch-geometric
 	pkgdesc = Graph Neural Network Library for PyTorch
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pytorch-geometric.readthedocs.io
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-torch-geometric
 	depends = python-jinja
 	depends = python-requests
 	depends = python-pyparsing
-	depends = python-hydra
+	depends = python-hydra-core
 	depends = python-scikit-learn
 	depends = python-googledrivedownloader
 	optdepends = python-h5py

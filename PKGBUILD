@@ -2,14 +2,14 @@
 
 pkgname=python-torch-geometric
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Graph Neural Network Library for PyTorch'
 arch=('x86_64')
 url='https://pytorch-geometric.readthedocs.io'
 license=('MIT')
 depends=('python' 'python-tqdm' 'python-yacs' 'python-numpy' 'python-scipy'
          'python-pandas' 'python-jinja' 'python-requests' 'python-pyparsing'
-         'python-hydra' 'python-scikit-learn' 'python-googledrivedownloader')
+         'python-hydra-core' 'python-scikit-learn' 'python-googledrivedownloader')
 makedepends=('python' 'python-setuptools')
 optdepends=('python-h5py' 'python-numba' 'python-rdflib' 'python-trimesh'
             'python-networkx' 'python-tabulate' 'python-matplotlib'
