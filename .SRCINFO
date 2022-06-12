@@ -1,7 +1,7 @@
 pkgbase = task-maker-rust
 	pkgdesc = Tool for building tasks for informatics competitions, with support for cache, distributed computations and more
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://github.com/edomora97/task-maker-rust
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = task-maker-rust
 	license = MPL2
 	makedepends = cargo
 	optdepends = texlive-core: booklet compilations
-	source = https://github.com/edomora97/task-maker-rust/archive/v0.5.5.tar.gz
-	sha256sums = d146eefb041e55083da145a948d3a81bd722f8e401852c80bedf98575967b439
+	source = https://github.com/edomora97/task-maker-rust/archive/v0.5.6.tar.gz
+	sha256sums = 36022d92225b9903a0f1a186ba7a837cbe4117ebc434a4e378e57eff94a0d423
 
 pkgname = task-maker-rust

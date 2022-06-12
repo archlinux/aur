@@ -1,8 +1,8 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Tool for building tasks for informatics competitions, with support for cache, distributed computations and more"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/edomora97/task-maker-rust"
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('cargo')
 optdepends=('texlive-core: booklet compilations')
 source=("https://github.com/edomora97/task-maker-rust/archive/v${pkgver}.tar.gz")
-sha256sums=('d146eefb041e55083da145a948d3a81bd722f8e401852c80bedf98575967b439')
+sha256sums=('36022d92225b9903a0f1a186ba7a837cbe4117ebc434a4e378e57eff94a0d423')
 
 build() {
     cd "$srcdir/task-maker-rust-${pkgver}"
@@ -30,6 +30,9 @@ package() {
     install -Dm644 "target/autocompletion/task-maker-rust.bash" "$pkgdir/usr/share/bash-completion/completions/task-maker-rust"
     install -Dm644 "target/autocompletion/_task-maker-rust" "$pkgdir/usr/share/zsh/site-functions/_task-maker-rust"
     install -Dm644 "target/autocompletion/task-maker-rust.fish" "$pkgdir/usr/share/fish/completions/task-maker-rust.fish"
+    install -Dm644 "target/autocompletion/task-maker-tools.bash" "$pkgdir/usr/share/bash-completion/completions/task-maker-tools"
+    install -Dm644 "target/autocompletion/_task-maker-tools" "$pkgdir/usr/share/zsh/site-functions/_task-maker-tools"
+    install -Dm644 "target/autocompletion/task-maker-tools.fish" "$pkgdir/usr/share/fish/completions/task-maker-tools.fish"
     # vim syntax highlight
     install -Dm644 "tools/vim/ftdetect/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect/cases_gen.vim"
     install -Dm644 "tools/vim/syntax/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/cases_gen.vim"
