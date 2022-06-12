@@ -1,18 +1,49 @@
 pkgbase = crash-bandicoot-2
 	pkgdesc = 1997 platform video game developed by Naughty Dog and published by Sony Computer Entertainment for the PlayStation.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://en.wikipedia.org/wiki/Crash_Bandicoot_2:_Cortex_Strikes_Back
 	arch = any
 	license = custom
 	depends = duckstation
 	source = SCES-00967.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28EDC%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28EDC%29.bin
 	source = SCES-00967.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28EDC%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29%20%28EDC%29.cue
+	source = SCUS-94154.bin::https://archive.org/download/Redump_PSX_2021_06_04_A_C/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28USA%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28USA%29.bin
+	source = SCUS-94154.cue::https://archive.org/download/Redump_PSX_2021_06_04_A_C/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28USA%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20Strikes%20Back%20%28USA%29.cue
+	source = SCPS-10047.bin::https://archive.org/download/Redump_PSX_2021_06_04_A_C/Crash%20Bandicoot%202%20-%20Cortex%20no%20Gyakushuu%21%20%28Japan%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20no%20Gyakushuu%21%20%28Japan%29.bin
+	source = SCPS-10047.cue::https://archive.org/download/Redump_PSX_2021_06_04_A_C/Crash%20Bandicoot%202%20-%20Cortex%20no%20Gyakushuu%21%20%28Japan%29.zip/Crash%20Bandicoot%202%20-%20Cortex%20no%20Gyakushuu%21%20%28Japan%29.cue
 	source = psx-template.desktop
+	source = launcher
 	source = com.naughtydog.CrashBandicoot2.png::https://upload.wikimedia.org/wikipedia/en/e/e6/Crash_Bandicoot_2_Cortex_Strikes_Back_Game_Cover.jpg
 	sha256sums = 9499b6ad8f0cfdb99ee8ae40bc98776f56fdaa91d01e55448f62aaa2c0df7853
 	sha256sums = 6a4bf93ea6b904303254faa946d877cd705893c17458acb2549606dae586fd98
+	sha256sums = a2e2ab37cd6e0d5180876bf7786ac699b3b691208efe8de66afe7779bf4d1605
+	sha256sums = adbf5f4d9d32fbd68833a7d08e13a9cf3fb42459b7ddccb50e7b8fe76cb6760a
+	sha256sums = cbcf40d60cbce68068ee202ee1e0efa72cf3e7505446b5d0fb3a270f91562784
+	sha256sums = 1b6c5951bf16c58953a44a927116f2d9d9fa0eefc88aadfc966bdfa7cda19d81
 	sha256sums = fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6
-	sha256sums = 25672f46b68b4108344292ca5265bc78394ddbc39f3431d2fae6d4bccf8e2773
+	sha256sums = 243e129901670aafd6c10384ba334af7ea7a2d8d7686ab94c50595318bec0a02
+	sha256sums = 7cdc92303677967e8213e45934f2c5a45fa3a6b684dd01b8ecc5b03ba10e07b4
 
 pkgname = crash-bandicoot-2
+
+pkgname = crash-bandicoot-2-de
+	depends = crash-bandicoot-2-it
+
+pkgname = crash-bandicoot-2-en
+	depends = duckstation
+	depends = crash-bandicoot-2
+
+pkgname = crash-bandicoot-2-es
+	depends = crash-bandicoot-2-it
+
+pkgname = crash-bandicoot-2-fr
+	depends = crash-bandicoot-2-it
+
+pkgname = crash-bandicoot-2-it
+	depends = duckstation
+	depends = crash-bandicoot-2
+
+pkgname = crash-bandicoot-2-jp
+	depends = duckstation
+	depends = crash-bandicoot-2
