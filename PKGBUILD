@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=ffmpeg-ndi
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
@@ -94,7 +94,7 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=390d6853d0ef408007feb39c0040682c81c02751
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "ffmpeg-vmaf2.x.patch"
