@@ -1,14 +1,12 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
-	pkgver = 17_beta
-	pkgrel = 4
+	pkgver = 18_beta
+	pkgrel = 1
 	url = https://github.com/OpenVPN/openvpn3-linux
-	install = openvpn3.install
 	arch = any
 	license = AGPL3
 	makedepends = autoconf-archive
 	makedepends = git
-	makedepends = libnl
 	makedepends = python-docutils
 	makedepends = python-jinja
 	makedepends = bash
@@ -17,20 +15,21 @@ pkgbase = openvpn3
 	depends = libcap-ng>=0.7.5
 	depends = lz4>=1.7.3
 	depends = util-linux-libs>=2.23.2
-	depends = protobuf
+	depends = protobuf>=2.4.0
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-systemd
 	depends = tinyxml2>=2.1.0
+	depends = libnl>=3.2.29
 	optdepends = openssl: OpenSSL version
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.105: for systemd-resolved integration
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v17_beta
-	source = archlinux-glib.patch
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v18_beta
 	source = openvpn3.rule
+	source = openvpn3.conf
 	sha256sums = SKIP
-	sha256sums = 004c35951889d00caa09eac4a0d151fc8ecb95042a5a6a95023332b6a92d71ad
 	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
+	sha256sums = a2361bb4060aa351c33bda56f40c470420da64b922d7795ab6ddb19fab16b9c5
 
 pkgname = openvpn3
