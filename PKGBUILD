@@ -2,7 +2,7 @@
 
 pkgname=adplug-git
 pkgver=0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="AdLib sound player library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('libbinio')
 provides=('adplug')
 conflicts=('adplug')
-source=("git://github.com/adplug/adplug.git")
+source=("git+https://github.com/adplug/adplug.git")
 md5sums=('SKIP')
 
 prepare() {
