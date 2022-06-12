@@ -1,0 +1,12 @@
+diff --git a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+index 30b72f90a8e..21855f79a52 100644
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+@@ -125,6 +125,7 @@ export class XtermTerminal extends DisposableStore implements IXtermTerminal {
+ 			letterSpacing: font.letterSpacing,
+ 			lineHeight: font.lineHeight,
+ 			minimumContrastRatio: config.minimumContrastRatio,
++      allowTransparency: true,
+ 			cursorBlink: config.cursorBlinking,
+ 			cursorStyle: config.cursorStyle === 'line' ? 'bar' : config.cursorStyle,
+ 			cursorWidth: config.cursorWidth,
