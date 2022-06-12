@@ -19,11 +19,35 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.40.9
+
+### Added
+
+- A new [templating](https://docs.sourcegraph.com/campaigns/references/batch_spec_templating) variable, `batch_change_link` has been added for more control over where the "Created by Sourcegraph batch change ..." message appears in the published changeset description. [#491](https://github.com/sourcegraph/sourcegraph/pull/35319)
+
+### Fixed
+
+- Global git email gets inserted as plain text when running `src batch new -f <file_name>` and doesn't result in a schema validation failure. [sourcegraph/src-cli#773](https://github.com/sourcegraph/src-cli/pull/773)
+
+## 3.40.8
+
+### Fixed
+
+- Output variables created from batch spec steps will no longer have an extra newline added if the output doesn't end with a newline. [sourcegraph/sourcegraph#36562](https://github.com/sourcegraph/sourcegraph/issues/36562)
+
+## 3.40.5 to 3.40.7
+
+- No substantive changes; these releases were related solely to improving our release machinery.
+
 ## 3.40.4
 
 ### Added
 
 - It's now possible to install src-cli via `npm install -g @sourcegraph/src`. [sourcegraph/src-cli#760](https://github.com/sourcegraph/src-cli/pull/760)
+
+## 3.40.3
+
+- No substantive changes; this release was related solely to improving our release machinery.
 
 ## 3.40.2
 
