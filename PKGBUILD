@@ -5,7 +5,7 @@ _pkgname=frame
 
 pkgname="${_pkgname}"-eth-dev-appimage
 pkgver=0.5.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A privacy focused Ethereum wallet"
 arch=('x86_64')
 url="https://frame.sh/"
@@ -15,9 +15,9 @@ provides=("${_pkgname}-eth")
 conflicts=("${_pkgname}-eth" "${_pkgname}-eth-dev")
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/floating/frame/releases/download/v${pkgver}-beta.18/Frame-${pkgver}-beta.18.AppImage")
+source_x86_64=("${_appimage}::https://github.com/floating/frame/releases/download/v${pkgver}-beta.19/Frame-${pkgver}-beta.19.AppImage")
 noextract=("${_appimage}")
-sha512sums_x86_64=('3565a715ca9b493f84160d6f9df2a4c3d5989773c3f06ce29988ce2b68f719b60e4e31242001600b03b051fddece0f36926f63de7951566378085519e457db52')
+sha512sums_x86_64=('6a4364705f8b75982e9cc9d2220ddac2769262b02befaef0209ba699c90bab5f46f65ec6bb34da95b64cd539f5fe47a0f3d12987b099462a6da66a17fad1bcf1')
 
 prepare() {
     chmod +x "${_appimage}"
