@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
 
 pkgname=misskey
-pkgver=12.111.0
+pkgver=12.111.1
 pkgrel=1
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
@@ -13,7 +13,7 @@ install="misskey.install"
 optdepends=("elasticsearch: Search functionality"
             "ffmpeg: Media de-encode functionality"
             "nginx: Reverse-proxy usage")
-_commit="182a1bf653ecfbcf76e4530b3077c6252b0d4827" #tag/12.111.1
+_commit="1bc856c4513e6bd53bf14b3f227733c7e297c3c9" #tag/12.111.1
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
@@ -72,6 +72,7 @@ build() {
         -o -iname 'darwin-x64' \
         -o -iname 'win32-ia32' \
         -o -iname 'win32-x64' \
+        -o -iname 'linux-arm' \
         -o -iname 'linux-arm64' \) \
         -execdir rm -rf '{}' \;
     find "${srcdir}/${pkgname}" \
