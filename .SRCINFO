@@ -2,7 +2,7 @@ pkgbase = pygtk
 	pkgdesc = Python bindings for the GTK widget set
 	pkgver = 2.24.0
 	pkgrel = 12
-	url = http://www.pygtk.org
+	url = https://wiki.gnome.org/Projects/PyGTK
 	arch = x86_64
 	arch = aarch64
 	license = LGPL
@@ -22,4 +22,3 @@ pkgbase = pygtk
 	sha256sums = 0ca9e910e9bb88897089dd19752a419aa78de15463df766cb19a1d0c2dd45bcb
 
 pkgname = pygtk
-
