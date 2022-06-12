@@ -3,7 +3,7 @@
 _pkgname=foliautils
 pkgname=foliautils-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for working with the FoLiA format, based on libfolia. *NOT* the same as Python package FoLiA-tools!"
 arch=('i686' 'x86_64')
 url="http://proycon.github.io/folia"
@@ -13,7 +13,7 @@ provides=('foliautils')
 conflicts=('foliatools' 'foliautils')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
-source=("git://github.com/languagemachines/foliautils.git")
+source=("git+https://github.com/languagemachines/foliautils.git")
 _gitname=("foliautils")
 noextract=()
 md5sums=('SKIP')
