@@ -1,12 +1,12 @@
-pkgbase = tab-git
+pkgbase = taber-git
 	pkgdesc = This is a simple program that opens a new terminal from your current diriectory
 	pkgver = 1
 	pkgrel = 1
-	url = https://github.com/spynetS/tab
+	url = https://github.com/spynetS/taber
 	arch = x86_64
 	license = GL
 	makedepends = git
-	source = git+https://github.com/spynetS/tab
+	source = git+https://github.com/spynetS/taber
 	md5sums = SKIP
 
-pkgname = tab-git
+pkgname = taber-git
