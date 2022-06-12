@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=fortls
-pkgver=2.6.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A modern Language Server for Fortran."
 arch=(any)
@@ -11,7 +11,7 @@ depends=("python-setuptools")
 provides=("fortran-language-server")
 conflicts=("fortran-language-server")
 source=("https://github.com/gnikit/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61fddb57de1dee190b61674827d1f3d9d3a6338da7c0c4e83acd94f47400f219')
+sha256sums=('ba2549e75894820ffbf5f5a443d0ac2ebea5ec15e77cdb6fbe1afd010d7f209a')
 
 build() {
 	cd "$pkgname-$pkgver"
