@@ -1,0 +1,20 @@
+pkgbase = cattqt
+	pkgdesc = A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/soreau/cattqt
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = catt
+	depends = python-pychromecast>=7.5.0
+	source = https://files.pythonhosted.org/packages/source/c/cattqt/cattqt-3.0.tar.gz
+	source = catt-qt.desktop
+	source = patch
+	sha256sums = 5815f759367554ca3961740f646d86b205667ce140f4c7f58210dc23314fa809
+	sha256sums = 5c9b0c9cfc688c489155b78719bb08b93122db297fdf334df1fb4d1d46b9d40d
+	sha256sums = 458c785d85542b7f79eb3c2fe43cac58cc5007f9f02fca732462d37adfad69d0
+
+pkgname = cattqt

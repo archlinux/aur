@@ -1,0 +1,69 @@
+--- cattqt/cattqt.py	2020-03-15 15:03:11.197120700 -0500
++++ cattqt/cattqt_new.py	2022-06-11 19:17:29.228769683 -0500
+@@ -88,7 +88,7 @@
+     def update_ui_playing(self, time, duration):
+         s = self._self
+         if duration != None:
+-            s.progress_slider.setMaximum(duration)
++            s.progress_slider.setMaximum(int(duration))
+         if self.live:
+             s.skip_forward_button.setEnabled(False)
+             s.progress_slider.setEnabled(False)
+@@ -112,7 +112,7 @@
+     def update_ui_paused(self, time, duration):
+         s = self._self
+         if duration != None:
+-            s.progress_slider.setMaximum(duration)
++            s.progress_slider.setMaximum(int(duration))
+         s.set_progress(time)
+         s.skip_forward_button.setEnabled(True)
+         s.progress_slider.setEnabled(True)
+@@ -143,7 +143,7 @@
+         s.dial.valueChanged.disconnect(s.on_dial_moved)
+         if v != 0:
+             self.unmute_volume = v
+-        s.dial.setValue(v)
++        s.dial.setValue(int(v))
+         s.set_volume_label(v)
+         s.dial.valueChanged.connect(s.on_dial_moved)
+ 
+@@ -346,7 +346,7 @@
+         painter.setPen(QPen(Qt.white, 1.0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+         painter.drawStaticText(
+             QPoint(
+-                hw - status_text_size.width() / 2, h - status_text_size.height() * 2
++                int(hw - status_text_size.width() / 2), int(h - status_text_size.height() * 2)
+             ),
+             QStaticText(self.message),
+         )
+@@ -357,7 +357,7 @@
+         qt_metrics = painter.fontMetrics()
+         qt_text_size = qt_metrics.size(0, "Qt")
+         painter.drawStaticText(
+-            QPoint(hw - qt_text_size.width() / 2, hh - qt_text_size.height() / 2),
++            QPoint(int(hw - qt_text_size.width() / 2), int(hh - qt_text_size.height() / 2)),
+             QStaticText("Qt"),
+         )
+         font.setPixelSize(25)
+@@ -365,9 +365,9 @@
+         version_metrics = painter.fontMetrics()
+         version_text_size = version_metrics.size(0, "v" + self.version)
+         version_pos = QPoint(
+-            hw + qt_text_size.width() / 2 + version_text_size.width() / 2,
+-            ((hh - qt_text_size.width() / 2) + qt_metrics.ascent())
+-            - (version_metrics.ascent()),
++            int(hw + qt_text_size.width() / 2 + version_text_size.width() / 2),
++            int(((hh - qt_text_size.width() / 2) + qt_metrics.ascent())
++            - (version_metrics.ascent())),
+         )
+         painter.setPen(QPen(Qt.black, 1.0, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+         painter.drawStaticText(
+@@ -1080,7 +1080,7 @@
+ 
+     def set_progress(self, v):
+         self.progress_slider.blockSignals(True)
+-        self.progress_slider.setValue(v)
++        self.progress_slider.setValue(int(v))
+         self.progress_slider.blockSignals(False)
+ 
+     def set_volume_label(self, v):
