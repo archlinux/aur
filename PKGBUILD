@@ -19,6 +19,6 @@ package() {
 
 	install -d $pkgdir/usr/lib/
 	install -d $pkgdir/usr/bin/
-	cp -ra linux-x64/. $pkgdir/usr/lib/bililive-recorder
+	cp -ra linux-x64/Release/. $pkgdir/usr/lib/bililive-recorder
 	ln -s /usr/lib/bililive-recorder/BililiveRecorder.Cli "$pkgdir/usr/bin/BililiveRecorder.Cli"
 }
