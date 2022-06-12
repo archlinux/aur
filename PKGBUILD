@@ -1,58 +1,78 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=promscale_extension
-pkgver=0.2.0
-pkgrel=2
-pkgdesc="PostgreSQL extension for Promscale"
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='PostgreSQL extension for Promscale'
 arch=('x86_64')
-url="https://github.com/timescale/promscale_extension"
-license=('Apache' 'custom:Timescale')
-depends=('postgresql')
-makedepends=('rust' 'clang' 'llvm')
-_tslver=2.3.1 # latest version of Timescale - used to pin license version
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "LICENSE-TIMESCALE-$_tslver::https://raw.githubusercontent.com/timescale/timescaledb/$_tslver/tsl/LICENSE-TIMESCALE")
-b2sums=('be01d7835ba13efd104fed3c9380d928580d05763d4e482bb404cba1086de21ce65d01be50af8223d313a153632095fbe0636055e9c3c72ae72c2fe6e94f61d9'
+url='https://github.com/timescale/promscale_extension'
+license=('custom:Timescale')
+depends=(
+  'gcc-libs'
+  'timescaledb'
+  'promscale'
+)
+makedepends=(
+  'git'
+  'rust'
+  'clang'
+  'llvm'
+)
+options=('!lto')
+# last commit to license - used to pin license version
+_license_commit='490e9405874d284735e27e3f9f63a2f6dd31a08f'
+_commit='25dfdb60b92a305cfd7ad5769f3734ee378c8add'
+source=(
+  "$pkgname::git+$url.git#commit=$_commit"
+  "LICENSE-TIMESCALE-$_license_commit::https://raw.githubusercontent.com/timescale/timescaledb/$_license_commit/tsl/LICENSE-TIMESCALE"
+)
+sha512sums=('SKIP'
+            'b7c5ce0ef87c1c5c2d4688910a915874be742732a023319e855a8fbb666b0da42683b714e1c3368975431796e4fcd0e524fae80a999bb8f15e4406d97b14a15e')
+b2sums=('SKIP'
         '9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0')
 
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
+
 prepare() {
-  mkdir cargo
+  cd "$pkgname"
+
+  # download dependencies
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  # this is *very* annoying
+  cargo install cargo-pgx \
+    --git https://github.com/timescale/pgx \
+    --branch promscale-staging \
+    --rev ee52db6bbaa006f6f3674bddeff8516c3b914e71
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  # set environment variable to avoid polluting $HOME
-  export CARGO_HOME="$srcdir/cargo"
+  export PATH="$HOME/.cargo/bin:$PATH"
 
-  # upstream uses their own fork of the pgx library (ref: README.md)
-  # additionally, a different branch/commit is present in Cargo.lock
-  # so this is probably the cleanest method of building
-  local PGX_REPO='https://github.com/JLockerman/pgx.git'
-  local PGX_BRANCH='timescale'
-  local PGX_COMMIT='87e0460e6e88d6ffa9b9eb37dce4b71e4336e31e'
-  cargo install \
-    --git "$PGX_REPO" \
-    --branch "$PGX_BRANCH" \
-    --rev  "$PGX_COMMIT" \
-    cargo-pgx
+  # initialise pgx
+  export _PGMAJOR=$(pg_config --version | sed -e 's/PostgreSQL //' -e 's/\..*//')
+  cargo pgx init "--pg${_PGMAJOR}" pg_config
 
-  # path to pg_config is provided to avoid downloading postgresql libs
-  cargo pgx init --pg13=/usr/bin/pg_config
-
-  # now we can compile
+  # build extension
   make
-
-  # unset environment variable
-  unset CARGO_HOME
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
+
+  export PATH="$HOME/.cargo/bin:$PATH"
+
+  # extension
   make DESTDIR="$pkgdir" install
 
   # licenses
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_tslver" \
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE NOTICE
+  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_license_commit" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE-TIMESCALE"
 }
