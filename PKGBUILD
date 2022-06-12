@@ -18,23 +18,8 @@ replaces=()
 options=()
 source=('systemd-root-password')
 noextract=()
-sha256sums=('3c6e8c7d0fced8df535eac4939b833745c766b4350637a24989ccc4a505abac6')
+sha256sums=('7c99ed88844d2b913894316f1d1c213cd9aaf8f2327dc9cd681c17b500c346c0')
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-#build() {
-#	cd "$pkgname-$pkgver"
-#	./configure --prefix=/usr
-#	make
-#}
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
 
 package() {
     install -Dm644 "systemd-root-password" "${pkgdir}/usr/lib/initcpio/install/systemd-root-password"
