@@ -1,24 +1,32 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
-_pythonmod=contextlib2
+# Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Cedric Girard <girard.cedric@gmail.com>
 pkgname=python2-contextlib2
-pkgver=0.5.1
+_name=${pkgname#python2-}
+pkgver=0.6.0.post1
 pkgrel=1
-pkgdesc="contextlib2 is a backport of the standard library’s contextlib module to earlier Python versions"
+pkgdesc='Backports of the contextlib module'
 arch=('any')
-url="http://pypi.python.org/pypi/${_pythonmod}"
-license=('PSF')
+_pypi='https://pypi.python.org'
+url="$_pypi/pypi/$_name"
+license=('Python')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
-md5sums=('b7f4c5a2b900c419b11b20f59838de1b')
+checkdepends=('python2-unittest2')
+source=("$_pypi/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('01f490098c18b19d2bd5bb5dc445b2054d2fa97f09a4280ba2c5f3c394c8162e')
 
 build() {
-  cd ${srcdir}/${_pythonmod}-$pkgver
+  cd "$srcdir/$_name-$pkgver"
   python2 setup.py build
-  }
+}
+
+check() {
+  cd "$srcdir/$_name-$pkgver"
+  python test_contextlib2.py
+}
 
 package() {
-  cd ${srcdir}/${_pythonmod}-$pkgver
-  python2 setup.py install --root=${pkgdir}
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/$_name-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
