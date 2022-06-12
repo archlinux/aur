@@ -2,8 +2,8 @@
 # Contributor: Tom < reztho at archlinux dot us >
 
 pkgname=openmsx-catapult
-pkgver=17.0
-pkgrel=2
+pkgver=18.0
+pkgrel=1
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
@@ -41,4 +41,4 @@ package() {
   "${pkgdir}/usr/share/applications/openMSX-Catapult.desktop"
 }
 
-md5sums=('8c2a09ec6bdc20684473540cfb4b1883')
+md5sums=('72c626bb16d46b5e6e77bbb0b0fe8be5')
