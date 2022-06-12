@@ -1,6 +1,6 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
-pkgver=0.5.0b3.dev19
+pkgver=0.5.0b3.dev24
 pkgrel=1
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
@@ -16,14 +16,14 @@ optdepends=('caffeine: For AntiStandby plugin'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('65f5ec74671d085310cd0bc3ecabef2d60d87f8c381ab8fe878accc461bea8d2')
+sha256sums=('5daffd2a8991b94b7b06bf9d76b03e028919e1ece787d84434b5379bc659f1cc')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  # fix library versions cryptography, flask-babel
-  sed -e 's/~=3/>=3/g' -i setup.cfg
+  # fix library versions flask-babel
   sed -e 's/l~=1.0/l>=1.0/g' -i setup.cfg
 }
+
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   python setup.py build
