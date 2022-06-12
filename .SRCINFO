@@ -1,0 +1,11 @@
+pkgbase = tellenc
+	pkgdesc = A program to detect the encoding of a text file.
+	pkgver = r35.dac04c7
+	pkgrel = 1
+	url = https://github.com/adah1972/tellenc
+	arch = x86_64
+	license = Unlicense
+	source = git+https://github.com/adah1972/tellenc
+	sha256sums = SKIP
+
+pkgname = tellenc
