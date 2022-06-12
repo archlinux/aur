@@ -1,21 +1,5 @@
 pkgbase = titlegetter
 	pkgdesc = A little tool to get the title of the websites and format the title and the links to markdown or html.
-	pkgver = 2.2.4
-	pkgrel = 1
-	url = https://github.com/WeepingDogel/TitleGetter
-	arch = any
-	license = MIT
-	depends = python>=3.6
-	depends = python-requests
-	depends = python-lxml
-	depends = python-beautifulsoup4
-	depends = python-toml
-	source = titlegetter-2.2.4.tar.gz::https://github.com/WeepingDogel/TitleGetter/archive/2.2.4.tar.gz
-	sha512sums = b04ac61d0c1e6cf84a616b05bc96561d9263fdad2fc9a33a050772ba412c45c05ea4fe39efd22f1fc6a2c1efe6b9d9082bd893da649e61799793ae6e3300efe8
-
-pkgname = titlegetter
-pkgbase = titlegetter
-	pkgdesc = A little tool to get the title of the websites and format the title and the links to markdown or html.
 	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/WeepingDogel/TitleGetter
@@ -27,6 +11,6 @@ pkgbase = titlegetter
 	depends = python-beautifulsoup4
 	depends = python-toml
 	source = titlegetter-2.2.5.tar.gz::https://github.com/WeepingDogel/TitleGetter/archive/2.2.5.tar.gz
-	sha512sums = b04ac61d0c1e6cf84a616b05bc96561d9263fdad2fc9a33a050772ba412c45c05ea4fe39efd22f1fc6a2c1efe6b9d9082bd893da649e61799793ae6e3300efe8
+	sha512sums = 11d2edd0cb66083885d8b4de9850f705e841a9f5fa49c7200a6901773f3df0321a564bc7272d749c02ef9abeec2b561baee48c04190bcc2ab16877907e163b7f
 
 pkgname = titlegetter
