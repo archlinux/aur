@@ -17,7 +17,7 @@ pkgbase = linux-steamos
 	makedepends = openssh
 	options = !strip
 	options = !debug
-	source = steamos-linux-neptune::git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=5.13.0-valve10.1
+	source = git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=5.13.0-valve10.1
 	source = config
 	source = 90-splash.hook
 	source = splash

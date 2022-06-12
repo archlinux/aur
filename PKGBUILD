@@ -17,9 +17,8 @@ makedepends=(
   git openssh
 )
 options=('!strip' '!debug')
-_srcname=steamos-linux-neptune
 source=(
-  "$_srcname::git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=$_tag"
+  "git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=$_tag"
   config         # the main kernel config file
   90-splash.hook
   splash
@@ -41,7 +40,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd "$_srcname"
+  cd steamos-linux-neptune
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -66,7 +65,7 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
+  cd steamos-linux-neptune
   make all
 #  make htmldocs
 }
@@ -79,7 +78,7 @@ _package() {
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd "$_srcname"
+  cd steamos-linux-neptune
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -108,7 +107,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd "$_srcname"
+  cd steamos-linux-neptune
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -186,7 +185,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd "$_srcname"
+  cd steamos-linux-neptune
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
