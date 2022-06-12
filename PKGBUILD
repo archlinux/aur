@@ -9,7 +9,7 @@ pkgname=('lib32-vulkan-mesa-layers-steamos' 'lib32-opencl-mesa-steamos' 'lib32-v
 pkgdesc="An open-source implementation of the OpenGL specification (32-bit)"
 _tag=radeonsi-20220217
 pkgver=22.0.0_devel.148040.radeonsi_20220217
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'xorgproto' 'lib32-libdrm'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libvdpau'
@@ -192,7 +192,7 @@ package_lib32-mesa-vdpau-steamos() {
 package_lib32-mesa-steamos() {
   depends=('lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
            'lib32-libelf' 'lib32-libunwind' 'lib32-llvm-libs' 'lib32-lm_sensors' 'lib32-libglvnd'
-           'lib32-zstd' 'lib32-vulkan-icd-loader' 'mesa')
+           'lib32-zstd' 'lib32-vulkan-icd-loader' 'mesa-steamos')
   depends+=('libsensors.so')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'lib32-mesa-vdpau: for accelerated video playback'
