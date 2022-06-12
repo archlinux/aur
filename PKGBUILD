@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite-git
-pkgver=1.0.0.r116.g0fbe5d88
-pkgrel=1
+pkgver=1.0.5.r4.gabdcadb5
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
@@ -39,7 +39,6 @@ build() {
     -DENABLE_LIBGPOD=OFF \
     -DENABLE_LIBMTP=OFF \
     -DENABLE_LIBPULSE=OFF \
-    -DENABLE_SPARKLE=OFF \
     -DENABLE_VLC=OFF
   make
 }
