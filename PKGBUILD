@@ -59,8 +59,8 @@ fi
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
-pkgver=5.0
-pkgrel=10
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -70,6 +70,7 @@ _dav1dver=1.0.0
 _libristver=0.2.7
 _libvpxver=1.11.0
 _srtver=1.4.3
+_svtav1ver=1.1
 _vmafver=2
 _x264ver=0.164
 _x265ver=3.5
@@ -167,7 +168,7 @@ provides=(
 )
 conflicts=(ffmpeg)
 options=('debug')
-_tag=390d6853d0ef408007feb39c0040682c81c02751
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 _deps_tag=15072cd42722d87c6b3ed1636b22e98c08575f20
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -290,8 +291,13 @@ fi
 ## Add upstream feature for x86_64 build
 if [[ $CARCH == 'x86_64' ]]; then
   _args+=(--enable-lto --enable-libmfx --enable-libsvtav1)
-  depends+=('libmfx' 'svt-av1')
+  depends+=('libmfx')
   optdepends+=('intel-media-sdk: Intel QuickSync support')
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    depends+=('svt-av1')
+  else
+    depends+=("svt-av1>=$_svtav1ver")
+  fi
 else
   _args+=(--disable-lto)
 fi
