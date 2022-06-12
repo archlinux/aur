@@ -7,7 +7,7 @@ pkgname=("python-pytorch-noavx" "python-pytorch-noavx-cuda")
 _pkgname="pytorch"
 pkgver=1.11.0
 _pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
+             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'gcc11')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         # "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
@@ -251,7 +251,9 @@ prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CUDAHOSTCXX=/usr/bin/g++
+  export CUDAHOSTCXX=/usr/bin/g++-11
+  export CC=/usr/bin/gcc-11
+  export CXX=/usr/bin/g++-11
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
   # hide buildt-time CUDA devices
@@ -318,6 +320,7 @@ package_python-pytorch-noavx() {
   pkgdesc="${_pkgdesc} (without AVX CPU optimizations)"
   replaces=(python-pytorch-opt)
   conflicts=(python-pytorch python-pytorch-cuda)
+  provides=(python-pytorch)
   cd "${srcdir}/${_pkgname}-${pkgver}"
   _package
 }
@@ -327,7 +330,7 @@ package_python-pytorch-noavx-cuda() {
   depends+=(cuda cudnn magma)
   replaces=(python-pytorch-opt-cuda)
   conflicts=(python-pytorch python-pytorch-cuda python-pytorch-noavx)
-  provides=(python-pytorch)
+  provides=(python-pytorch python-pytorch-cuda)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   _package
