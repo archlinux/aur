@@ -11,6 +11,6 @@ pkgbase = titlegetter
 	depends = python-beautifulsoup4
 	depends = python-toml
 	source = titlegetter-2.2.5.tar.gz::https://github.com/WeepingDogel/TitleGetter/archive/2.2.5.tar.gz
-	sha512sums = 11d2edd0cb66083885d8b4de9850f705e841a9f5fa49c7200a6901773f3df0321a564bc7272d749c02ef9abeec2b561baee48c04190bcc2ab16877907e163b7f
+	sha512sums = b34ebfd90d5822f5454150d0ae07239d7b48531a6fe7ae27f7231452d8ff1902765ec410137a7d48e3990c8d52a1bf021afd815288eda922609f531b3582b7b4
 
 pkgname = titlegetter

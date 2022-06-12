@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('python>=3.6' 'python-requests' 'python-lxml' 'python-beautifulsoup4' 'python-toml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('11d2edd0cb66083885d8b4de9850f705e841a9f5fa49c7200a6901773f3df0321a564bc7272d749c02ef9abeec2b561baee48c04190bcc2ab16877907e163b7f')
+sha512sums=('b34ebfd90d5822f5454150d0ae07239d7b48531a6fe7ae27f7231452d8ff1902765ec410137a7d48e3990c8d52a1bf021afd815288eda922609f531b3582b7b4')
 package(){
     cd TitleGetter-$pkgver
     install -Dm755 "titlegetter.py" -t "$pkgdir/usr/bin"
