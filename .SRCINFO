@@ -1,13 +1,14 @@
 pkgbase = python2-funcsigs
 	pkgdesc = Python function signatures from PEP362
 	pkgver = 1.0.2
-	pkgrel = 3
-	url = https://pypi.python.org/pypi/funcsigs/
+	pkgrel = 4
+	url = https://pypi.python.org/pypi/funcsigs
 	arch = any
 	license = Apache
+	checkdepends = python2-unittest2
 	makedepends = python2-setuptools
 	depends = python2
-	source = funcsigs-1.0.2.tar.gz::https://pypi.python.org/packages/source/f/funcsigs/funcsigs-1.0.2.tar.gz
-	b2sums = 3006d46018ae040b930e397c3f11575ae0ef18a8b2c9b6c10075804d83d23bea1fb81179de85180146673e0bd4c775a68c0ff624cdaceb1894efe5b2c8fd753c
+	source = https://pypi.python.org/packages/source/f/funcsigs/funcsigs-1.0.2.tar.gz
+	sha256sums = a7bb0f2cf3a3fd1ab2732cb49eba4252c2af4240442415b4abce3b87022a8f50
 
 pkgname = python2-funcsigs
