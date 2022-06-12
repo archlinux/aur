@@ -1,0 +1,16 @@
+pkgbase = python2-importlib-metadata
+	pkgdesc = Read metadata from Python packages
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/python/importlib_metadata
+	arch = any
+	license = Apache
+	makedepends = python-setuptools-scm
+	depends = python2-zipp
+	depends = python2-pathlib2
+	depends = python2-contextlib2
+	depends = python2-configparser
+	source = python2-importlib-metadata-2.1.3.tar.gz::https://github.com/python/importlib_metadata/archive/refs/tags/v2.1.3.tar.gz
+	sha256sums = 85866f546ea983b94ab6a41e5cba67829b8bd97551883f93b4fa87331ce9a256
+
+pkgname = python2-importlib-metadata
