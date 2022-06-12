@@ -3,7 +3,7 @@
 
 pkgname=heliocron-bin
 _pkgname=${pkgname%-*}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Execute tasks relative to sunset, sunrise and other solar events.'
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('Apache' 'MIT')
 provides=('heliocron')
 conflicts=('heliocron-git')
 source=("https://github.com/mfreeborn/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a48daccda9d1c9fcb71fe6334c54e765c8d71dfa7bd00ed74ed067645a8ff20e')
+sha256sums=('5b7c8b24e4a14da44b5a26bbfe4921a47dfc144a3ea6e73820259efdd3f4b465')
 
 package() {
-	cd "$srcdir/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu"
+	cd "$srcdir"
 	install -Dm755 "$_pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$_pkgname"
