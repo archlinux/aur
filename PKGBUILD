@@ -4,7 +4,7 @@
 
 _pkgname=alsa-lib
 pkgname=$_pkgname-x205ta
-pkgver=1.2.6.1
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta."
 arch=('i686' 'pentium4' 'x86_64')
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 source=("https://www.alsa-project.org/files/pub/lib/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
 	"${plbossart_url}/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf"
 	"${plbossart_url}/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf")
-sha512sums=('70e539cf092b5d43e00e4134d8a3e184f0dc34312823e4b58a574320cbf06cb7369bc3251ecb1858033756a7a8c35d36faa8da48d49f6efe0cec905784adbd45'
+sha512sums=('6bd48b07d659fddad792876326a93b2a549ce94bc191131670365599c31f81f737bfd8e94dec6fe296bc5d86df2e3e381bbb7a694d24fe7e8e501f1c994ed084'
             'SKIP'
             '9b65ff4fe9d10e40e4eb69398c53de6d5eb07ba1a5526813a07182008d67ea68e7245ce3db44fc1a69f70eeef928c9ede742c90785e1f90298c07c49db965ba0'
             '4bb154a791fa2df7f1a165eaa8a970df9790e8315c5e2f43c0482ea867413ccf31a5c40700698357b4972de20ca2f4d9a7276e2e4968f4bbafd36ce57574bd32')
