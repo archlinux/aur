@@ -23,10 +23,6 @@ sha512sums=(
 	'0f2a4947761e5b22e2b046dc592c3a73d163a6e9d83717d61e90fedda1c6715cbeffa76bbeabc4866a5830828379c8ab3da516707015343741312c8234b7d011'
 )
 
-prepare() {
-	cd "${pkgname}-${pkgver}"
-}
-
 build() {
 	mkdir -p build
 	arch-meson build "${pkgname}-${pkgver}" -D b_ndebug=true
