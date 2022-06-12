@@ -3,16 +3,16 @@
 
 _pyname=hmmlearn
 pkgname=python-$_pyname
-pkgver=0.2.4
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Hidden Markov Models in Python with scikit-learn like API'
 arch=('x86_64')
-url='http://hmmlearn.readthedocs.org'
+url='https://hmmlearn.readthedocs.org'
 license=('BSD')
 depends=('python-scikit-learn')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools-scm' 'pybind11')
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-sha256sums=('0f5cb598a7494b9703c6188246dc89e529d46cbb6700eca70cc895085f0b3cc3')
+sha256sums=('6b4b2720f27af75da9367ab4d90dcb00f38da33168df6d917f9ec5de6670f6e1')
 
 build() {
   cd "$_pyname-$pkgver"
