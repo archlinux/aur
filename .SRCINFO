@@ -1,0 +1,13 @@
+pkgbase = python2-backports.functools_lru_cache
+	pkgdesc = Backport of functools.lru_cache from Python 3.3 to Python 2.7
+	pkgver = 1.6.4
+	pkgrel = 3
+	url = https://pypi.python.org/pypi/backports.functools_lru_cache
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools-scm
+	depends = python2-backports
+	source = https://pypi.python.org/packages/source/b/backports.functools_lru_cache/backports.functools_lru_cache-1.6.4.tar.gz
+	sha256sums = d5ed2169378b67d3c545e5600d363a923b09c456dab1593914935a68ad478271
+
+pkgname = python2-backports.functools_lru_cache
