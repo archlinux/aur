@@ -18,6 +18,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.7.0] - 2022-06-09
+
+## 🚀 Features
+
+- **Adds `readme fetch` and `readme publish` - @cy, #1128, #1141**
+
+  Adds support for fetching and publishing Apollo Studio graph variant READMEs with `rover readme publish` and `rover readme fetch` commands. Usage for these commands can be found by running `rover readme --help` and documentation can be found [on our docs site](https://www.apollographql.com/docs/rover/readmes). 
+
+## 🐛 Fixes
+
+- **Fix the endpoint `rover-client` uses to fetch Apollo Studio's GraphQL schema- @EverlastingBugstopper, 1126**
+
+  As of v0.6.0, Rover sends all Apollo Studio requests to the new public platform API. When this change was introduced, we changed where we issued our GraphQL requests, but did not update the build step that fetches the schema which could lead to mismatched types. This is now fixed, fields in the public platform API match codegen. 
+
+- **Fix typo in the environment variable `rover-client` uses to fetch Apollo Studio's GraphQL schema - @EverlastingBugstopper, #1125**
+  `s/APOLLO_GPAPHQL_SCHEMA_URL/APOLLO_GRAPHQL_SCHEMA_URL`
+
+## 📚 Documentation
+
+- **Schema checks are now free - @StephenBarlow, #1131**
+
+  Update the documentation to remove references to schema checks being a paid feature, since [they are now free](https://www.apollographql.com/blog/announcement/platform/schema-checks-and-launches-are-now-available-for-free-in-apollo-studio/)!
+
+- **Update ARCHITECTURE.md - @cy #1129**
+
+  Update and clarify a few points in ARCHITECTURE.md.
+
 # [0.6.0] - 2022-05-03
 
 > Important: 1 breaking change below, indicated by **❗ BREAKING ❗**

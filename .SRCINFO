@@ -1,6 +1,6 @@
 pkgbase = apollo-rover
 	pkgdesc = CLI for Apollo's suite of GraphQL developer productivity tools
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/apollographql/rover
 	install = rover.install
@@ -12,7 +12,7 @@ pkgbase = apollo-rover
 	depends = zlib
 	replaces = apollo-rover-fed2
 	options = !lto
-	source = apollo-rover-0.6.0.tar.gz::https://github.com/apollographql/rover/archive/v0.6.0.tar.gz
-	sha256sums = 2dfe76e29f069baa837092ecfa33b8e8505e59c03be39f291285a6bfda88cf09
+	source = apollo-rover-0.7.0.tar.gz::https://github.com/apollographql/rover/archive/v0.7.0.tar.gz
+	sha256sums = e8e271a084123feffac8c0a566402c0323cb7e1ea37f8c740b9fb883f23cad80
 
 pkgname = apollo-rover
