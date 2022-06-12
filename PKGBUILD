@@ -1,12 +1,13 @@
-# Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
+
+# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=river-levee-git
 _pkgname=levee
 pkgver=0.1.1.r2.g15c4386
-pkgrel=1
-pkgdesc="Statusbar for the river wayland compositor"
+pkgrel=2
+pkgdesc='Statusbar for the river wayland compositor'
 arch=('x86_64')
-url="https://sr.ht/~andreafeletto/levee"
+url='https://sr.ht/~andreafeletto/levee'
 license=('MIT')
 depends=('wayland' 'wayland-protocols' 'fcft' 'pixman' 'libpulse')
 makedepends=('zig' 'git')
@@ -45,13 +46,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    zig build -Drelease-safe
+    zig build
 }
 
 
 package() {
     cd "$srcdir/$_pkgname"
-    DESTDIR="$pkgdir" zig build -Drelease-safe --prefix '/usr'
+    DESTDIR="$pkgdir" zig build --prefix '/usr'
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
