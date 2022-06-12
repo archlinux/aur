@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=corepack
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Zero-runtime-dependency package acting as bridge between Node projects and their package managers."
 arch=('any')
@@ -10,9 +10,7 @@ depends=('nodejs')
 makedepends=('yarn')
 provides=('corepack')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('efcea921c603bb53645b65e9ea55bcd093828bf14b3b4687699db650447dcc69')
-
-prepare
+sha256sums=('adeec0b154d5b58f9370053151295daafeeb62e2c1610bd686648652a2554e86')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
