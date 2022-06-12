@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 provides=('btrustbiss')
