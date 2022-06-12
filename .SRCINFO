@@ -1,6 +1,6 @@
 pkgbase = activate-linux-git
 	pkgdesc = The "Activate Windows" watermark ported to Linux with Xlib and cairo in C
-	pkgver = r146.61dc73a
+	pkgver = r148.8a4d6b4
 	pkgrel = 1
 	url = https://github.com/MrGlockenspiel/activate-linux
 	arch = x86_64
