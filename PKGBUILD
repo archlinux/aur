@@ -3,7 +3,7 @@
 _pkgname=toad
 pkgname=toad-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Toad: Trainer Of All Data, the Frog training collection"
 arch=('i686' 'x86_64')
 url="http://languagemachines.github.io/frog"
@@ -13,7 +13,7 @@ provides=('toad')
 conflicts=('toad')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
-source=("git://github.com/LanguageMachines/toad.git")
+source=("git+https://github.com/LanguageMachines/toad.git")
 _gitname=("toad")
 noextract=()
 md5sums=('SKIP')
