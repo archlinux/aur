@@ -1,5 +1,5 @@
 [Unit]
-Description=LokiNET: Anonymous Network layer thingydoo
+Description=Lokinet: Anonymous Network layer thingydoo
 Wants=network-online.target
 After=network-online.target
 Wants=lokinet-bootstrap.service
