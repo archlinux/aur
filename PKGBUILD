@@ -3,7 +3,7 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
-pkgver=10_beta.r19.g9b4d428
+pkgver=18_beta.r0.g5c47318
 pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
@@ -11,15 +11,27 @@ provides=('openvpn3')
 conflicts=('openvpn3')
 url="https://github.com/OpenVPN/$_pkgname"
 license=('AGPL3')
-depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'util-linux-libs>=2.23.2')
-optdepends=(
-  'python>=3.5' 'python-docutils' 'openssl: OpenSSL version' 'mbedtls: mbed TLS version'
-  'python-dbus' 'python-gobject'
+depends=(
+  'glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'util-linux-libs>=2.23.2' 'protobuf>=2.4.0'
+  'python-dbus' 'python-gobject' 'python-systemd' 'tinyxml2>=2.1.0' 'libnl>=3.2.29'
 )
-makedepends=('pkgconf' 'autoconf' 'autoconf-archive' 'automake' 'make' 'gcc')
-install="${pkgname}.install"
-source=("git+https://github.com/OpenVPN/$_pkgname.git")
-sha256sums=('SKIP')
+optdepends=(
+  'openssl: OpenSSL version' 'mbedtls: mbed TLS version' 'polkit>=0.105: for systemd-resolved integration'
+  'repkg: Automatically rebuild the package on dependency updates'
+)
+makedepends=(
+  'autoconf-archive' 'git' 'python-docutils' 'python-jinja' 'bash'
+)
+source=(
+  "git+https://github.com/OpenVPN/$_pkgname.git"
+  'openvpn3.rule'
+  'openvpn3.conf'
+)
+sha256sums=(
+  'SKIP'
+  'ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01'
+  'a2361bb4060aa351c33bda56f40c470420da64b922d7795ab6ddb19fab16b9c5'
+)
 
 pkgver() {
   cd "$_pkgname"
@@ -30,19 +42,22 @@ pkgver() {
 build() {
   cd "$_pkgname"
   ./bootstrap.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
-  make -j $(nproc)
+  ./configure \
+    --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var \
+    --enable-bash-completion --enable-dco
+  make
 }
 
 check() {
   cd "$_pkgname"
 
-  #make check
+  make check
 }
 
 package() {
   cd "$_pkgname"
   make DESTDIR="$pkgdir" install
-  echo "$srcdir/$_pkgname/src/shell/bash-completion/openvpn3"
   install -Dm644 "$srcdir/$_pkgname/src/shell/bash-completion/openvpn3" "$pkgdir/usr/share/bash-completion/completions/openvpn3"
+  install -Dm644 "../openvpn3.rule" "$pkgdir/etc/repkg/rules/system/openvpn3.rule"
+  install -Dm644 "../openvpn3.conf"  "$pkgdir/usr/lib/sysusers.d/openvpn3.conf"
 }
