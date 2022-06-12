@@ -1,0 +1,13 @@
+pkgbase = python2-zipp
+	pkgdesc = Backport of pathlib-compatible object wrapper for zip files
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/jaraco/zipp
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools-scm
+	depends = python2-contextlib2
+	source = python2-zipp-1.2.0.tar.gz::https://github.com/jaraco/zipp/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 2cbf5e1c894df2e16f41133abda23bed5aa464c6fef7362410e33ce47c9c2ff4
+
+pkgname = python2-zipp
