@@ -4,7 +4,7 @@
 pkgname='python2-pretend'
 _name="${pkgname#python2-}"
 pkgver=1.0.9
-pkgrel=8
+pkgrel=9
 pkgdesc="A library for stubbing in Python"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
