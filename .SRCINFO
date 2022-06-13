@@ -1,0 +1,18 @@
+pkgbase = vcf-lv2
+	pkgdesc = VCF LV2 plugins
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://github.com/linuxmao-org/vcf-lv2
+	arch = x86_64
+	arch = aarch64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL2
+	checkdepends = lv2lint
+	makedepends = lv2
+	depends = glibc
+	optdepends = lv2-host: for running the plugins
+	source = vcf-lv2-0.0.2.tar.gz::https://github.com/linuxmao-org/vcf-lv2/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 4dc4c7eb3a81cfcbffaabe2c0bac229e6806f984140c6a0f4d0e74c988600bd7
+
+pkgname = vcf-lv2
