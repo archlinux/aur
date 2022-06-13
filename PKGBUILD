@@ -1,7 +1,7 @@
 # Maintainer: Otto Sabart <aur@seberm.com>
 
 pkgname=qubes-pass
-pkgver=0.0.24
+pkgver=0.0.30
 pkgrel=1
 pkgdesc="An inter-VM password manager for Qubes OS "
 arch=("x86_64" "i686")
@@ -11,7 +11,7 @@ depends=('sh' 'qubes-vm-core')
 makedepends=(pkg-config make)
 
 source=(https://github.com/Rudd-O/qubes-pass/archive/v${pkgver}.tar.gz)
-sha256sums=('c0ecae5b7361ae471ebc07946629f124aa0ea261f934146a2b838214b87a92cc')
+sha256sums=('d4854b8262a71d446de88b8863fa20eb513bf98977cbf7d604d4bd33669cd014')
 
 _srcname="${pkgname}-${pkgver}"
 

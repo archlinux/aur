@@ -1,6 +1,6 @@
 pkgbase = qubes-pass
 	pkgdesc = An inter-VM password manager for Qubes OS
-	pkgver = 0.0.24
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://github.com/Rudd-O/qubes-pass
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qubes-pass
 	makedepends = make
 	depends = sh
 	depends = qubes-vm-core
-	source = https://github.com/Rudd-O/qubes-pass/archive/v0.0.24.tar.gz
-	sha256sums = c0ecae5b7361ae471ebc07946629f124aa0ea261f934146a2b838214b87a92cc
+	source = https://github.com/Rudd-O/qubes-pass/archive/v0.0.30.tar.gz
+	sha256sums = d4854b8262a71d446de88b8863fa20eb513bf98977cbf7d604d4bd33669cd014
 
 pkgname = qubes-pass
