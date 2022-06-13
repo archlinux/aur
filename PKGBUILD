@@ -23,7 +23,7 @@ package() {
     --no-document \
     --install-dir "$pkgdir/$_gemdir" \
     --bindir "$pkgdir/usr/bin" \
-    "$_gemname-$pkgver.gem"
+    "$pkgname-$pkgver.gem"
 
   # delete cache
   cd "$pkgdir/$_gemdir"
