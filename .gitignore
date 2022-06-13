@@ -1,4 +1,5 @@
 /checkout-1162d0e.patch
-/src
-/pkg
+pkg/
+src/
 *.tar.*
+*.zip

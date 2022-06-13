@@ -1,9 +1,10 @@
-# Maintainer: Florian Hülsmann <fh@cbix.de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _projectname=Aether
 pkgname=aether.lv2
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An algorithmic reverb LV2 plugin based on Cloudseed'
 arch=(x86_64 aarch64)
 url='https://dougal-s.github.io/Aether'

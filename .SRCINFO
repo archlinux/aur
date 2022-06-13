@@ -1,7 +1,7 @@
 pkgbase = aether.lv2
 	pkgdesc = An algorithmic reverb LV2 plugin based on Cloudseed
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dougal-s.github.io/Aether
 	arch = x86_64
 	arch = aarch64
