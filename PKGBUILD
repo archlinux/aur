@@ -2,13 +2,14 @@
 
 pkgname=nerd-dictation-git
 _pkgname=nerd-dictation
-pkgver=0.0.r66.9d0b012e73
+pkgver=0.0.r83.609b1ed474
 pkgrel=1
 pkgdesc='Simple, hackable offline speech to text - using the VOSK-API.'
 arch=('any')
 url='https://github.com/ideasman42/nerd-dictation'
 license=('GPL3')
 depends=('libpulse' 'python-vosk' 'xdotool') # libpulse has parec
+provides=('nerd-dictation')
 source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
 
