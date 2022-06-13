@@ -2,7 +2,7 @@
 
 pkgname=ignition-gui
 pkgver=6.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
 together in a convenient unified interface."
@@ -10,16 +10,18 @@ arch=('x86_64')
 url="https://gazebosim.org/libs/gui"
 license=('Apache')
 depends=(
-	qt5-base
-	protobuf
-	tinyxml2
-	ignition-math
-	ignition-common
-	ignition-plugin
-	ignition-transport
-	ignition-rendering
-	ignition-msgs
-	ignition-tools
+    eigen
+    qt5-base
+    qt5-quickcontrols2
+    protobuf
+    tinyxml2
+    ignition-math
+    ignition-common
+    ignition-plugin
+    ignition-transport
+    ignition-rendering
+    ignition-msgs
+    ignition-tools
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-gui/archive/${pkgname}6_${pkgver}.tar.gz")
