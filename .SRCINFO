@@ -1,6 +1,6 @@
 pkgbase = foobar2000-encoders-bin
 	pkgdesc = Encoder binaries for the Converter component
-	pkgver = 20220222
+	pkgver = 20220525
 	pkgrel = 1
 	url = https://www.foobar2000.org/encoderpack
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = foobar2000-encoders-bin
 	optdepends = foobar2000>=1.1.14
 	provides = foobar2000-encoders
 	conflicts = foobar2000-encoders
-	source = https://www.foobar2000.org/files/Free_Encoder_Pack-2022-02-22.exe
-	b2sums = ce1281ed129b46299190a8811fecc464a25b37cb44a923b30617102628e9e469a0232952763dc6898636863f8ddda431e736bbf6f803a22fd89b1f04c2bd132a
+	source = https://www.foobar2000.org/files/Free_Encoder_Pack-2022-05-25.exe
+	b2sums = 5ebf45d3331a1ebeb56df35dc0b62e413fc5d4de67742a2f50f6434f618c0478331a90065ce95c3b360dbc7754d25ff2519a6aaca7832f89ac440f6e9f2fcda4
 
 pkgname = foobar2000-encoders-bin
