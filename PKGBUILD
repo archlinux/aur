@@ -1,13 +1,14 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+
 pkgname=citations-git
-pkgver=0.1.0
+pkgver=r194.54a77ce
 pkgrel=1
 pkgdesc="Manage your bibliographies using the BibTeX format"
 arch=('x86_64')
-url="https://gitlab.gnome.org/msandova/citations"
+url="https://gitlab.gnome.org/World/citations"
 license=('GPL3')
-depends=('glib2' 'libadwaita-git')
-makedepends=('git' 'meson' 'rust')
+depends=('libadwaita-git' 'poppler')
+makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -28,7 +29,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build || :
 }
 
 package() {
