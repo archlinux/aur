@@ -4,7 +4,7 @@
 pkgname='python2-pyasn1'
 _name="${pkgname#python2-}"
 pkgver=0.4.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Pure-Python implementation of ASN.1 types and DER/BER/CER codecs (X.208)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
