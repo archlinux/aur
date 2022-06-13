@@ -5,8 +5,8 @@
 pkgbase=qubes-core-agent-linux
 pkgname=(qubes-vm-core qubes-vm-networking qubes-vm-keyring)
 _gitname=${pkgname%-git*}
-pkgver=4.0.63
-pkgrel=2
+pkgver=4.0.65
+pkgrel=1
 pkgdesc="The Qubes core files for installation inside a Qubes VM."
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-core-agent-linux"
