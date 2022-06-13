@@ -1,0 +1,14 @@
+pkgbase = qfetch-bin
+	pkgdesc = qfetch is a simple fetch tool inspired by pfetch, but written in rust.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/qfetch
+	arch = x86_64
+	license = BSD-2-Clause
+	provides = qfetch
+	conflicts = qfetch
+	replaces = qfetch
+	source = https://github.com/mrquantumoff/qfetch/releases/download/v0.8.0/qfetch-0.8.0-x86_64.tar.gz
+	sha256sums = 0146a208b433f38928435a7d2b40533c3525f13c77ff1352d2d991aaddff3071
+
+pkgname = qfetch-bin
