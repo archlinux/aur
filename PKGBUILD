@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biwt
-_pkgver=1.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Functions to compute the biweight mean vector and covariance & correlation matrices'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-rrcov
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2428758fad46b1569b58e4985806c0df79e9fd3a3115d4902512f5e127ea63d5')
+sha256sums=('9c3528c5a4d2982d992f15086bad6bc8de291fe3c77ab0119b80350e6540e33d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
