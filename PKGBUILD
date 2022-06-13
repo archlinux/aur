@@ -35,7 +35,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   #make DESTDIR="$pkgdir/" install
-  install -Dm644 libokcupid64.so "${pkgdir}/usr/lib64/purple-2/libokcupid64.so"
+  install -Dm644 libokcupid64.so "${pkgdir}/usr/lib/purple-2/libokcupid64.so"
   local icon_sizes="16 22 48"
   for size in ${icon_sizes};do
     install -Dm644 icons/${size}/okcupid.png "${pkgdir}/usr/share/pixmaps/pidgin/protocols/${size}/okcupid.png"
