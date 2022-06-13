@@ -1,0 +1,20 @@
+pkgbase = lsyncd-git
+	pkgdesc = Live Syncing (Mirror) Daemon - Git development version
+	pkgver = 2.3.0.r0.gf02bf70
+	pkgrel = 1
+	url = https://github.com/lsyncd/lsyncd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lua
+	makedepends = cmake
+	depends = lua
+	depends = rsync
+	provides = lsyncd
+	conflicts = lsyncd
+	source = git+https://github.com/lsyncd/lsyncd.git
+	source = lsyncd.service
+	sha256sums = SKIP
+	sha256sums = 538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57
+
+pkgname = lsyncd-git

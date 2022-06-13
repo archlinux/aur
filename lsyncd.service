@@ -1,0 +1,11 @@
+# Author: TamCore <philipp at tamcore dot eu>
+[Unit]
+Description=synchronization daemon
+
+[Service]
+Type=simple
+PIDFile=/run/lsyncd.pid
+ExecStart=/usr/bin/lsyncd -pidfile /run/lsyncd.pid /etc/lsyncd/lsyncd.conf.lua
+
+[Install]
+WantedBy=multi-user.target
