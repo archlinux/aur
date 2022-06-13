@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
 pkgver=r1375.a8b9fc0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -20,12 +20,12 @@ depends=(klipper
          python-zeroconf
          python-jinja
          python-dbus-next
-         python-ldap3
          libgpiod)
 makedepends=(git)
 optdepends=("polkit: enable service and machine control through moonraker"
             "python-preprocess-cancellation: enables exclude object processing"
-            "python-apprise: enable [notifier] module for sending notifications")
+            "python-apprise: enable [notifier] module for sending notifications"
+            "python-ldap3: [authorization] using LDAP")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/klipper/moonraker.conf')
