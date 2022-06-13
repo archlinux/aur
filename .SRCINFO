@@ -1,14 +1,14 @@
 pkgbase = runebook-bin
 	pkgdesc = Arcane Rune Pages manager for League of Legends
-	pkgver = 1.15.0
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://github.com/Soundofdarkness/RuneBook
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Soundofdarkness/RuneBook/releases/download/v1.15.0/RuneBook_1.15.0.tar.xz
+	source = https://github.com/Soundofdarkness/RuneBook/releases/download/v1.16.0/RuneBook_1.16.0.tar.xz
 	source = runebook-logo.png::https://raw.githubusercontent.com/Soundofdarkness/Runebook/master/img/logo.png
 	source = runebook.desktop
-	sha256sums = 9b90a2324ed90fc9fe849c188a5755fc517826584e61afcd0b016e77992573e6
+	sha256sums = 1c87ff07d5b943f4b7c3912a6aa8bfd3f37696661794cdffb01f53ec524f9c78
 	sha256sums = SKIP
 	sha256sums = SKIP
 
