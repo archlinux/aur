@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=5.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -38,17 +38,17 @@ depends=(
   'mingw-w64-sdl2'
   'mingw-w64-speex'
   'mingw-w64-srt'
-  'mingw-w64-vmaf'
   'mingw-w64-x264'
   'mingw-w64-xvidcore'
   'mingw-w64-zimg'
   'mingw-w64-zlib'
   'mingw-w64-x265'
 )
+# 'mingw-w64-vmaf' (see comment below)
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=390d6853d0ef408007feb39c0040682c81c02751
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         ffmpeg-vmaf2.x.patch
@@ -121,7 +121,6 @@ build() {
       --enable-libssh \
       --enable-libtheora \
       --enable-libvidstab \
-      --enable-libvmaf \
       --enable-libvorbis \
       --enable-libvpx \
       --enable-libwebp \
@@ -135,6 +134,13 @@ build() {
       --enable-version3 \
       --disable-doc \
       --x86asmexe=yasm
+
+# VMAF disabled again due to 64 bit binary crashing with
+#
+# Mingw-w64 runtime failure:
+# 32 bit pseudo relocation at ... out of range, targeting ..., yielding the value ... .
+#
+#      --enable-libvmaf \
 
 # (only  64 bit support)
 #      --enable-libsvtav1 \
