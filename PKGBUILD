@@ -1,6 +1,6 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-tagger
-pkgver=2022.6.0
+pkgver=2022.6.1
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=(x86_64)
