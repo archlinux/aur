@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
-pkgver=1.67.1
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
 md5sums=('5d5bd889095a60ffbf1918d5a2a08bdb'
-         '6ae8d016e1ee4711638a72d4e62388bc')
+         'd2616416a959f47e908626f34b61ee83')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
