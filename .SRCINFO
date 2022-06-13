@@ -1,0 +1,17 @@
+pkgbase = python2-flaky
+	pkgdesc = Plugin for nose or py.test that automatically reruns flaky tests
+	pkgver = 3.7.0
+	pkgrel = 3
+	url = https://pypi.org/project/flaky/3.7.0/
+	arch = any
+	license = Apache
+	checkdepends = python2-genty
+	checkdepends = python2-mock
+	checkdepends = python2-nose
+	checkdepends = python2-pytest
+	makedepends = python2-setuptools
+	depends = python2
+	source = flaky-3.7.0.tar.gz::https://github.com/box/flaky/archive/v3.7.0.tar.gz
+	b2sums = 4e4c9fcb0bb1dc80aa9854e0be0cac39ef45a897f17991e7579714e9430a5b8b8cef2172de04728f550c30eb676586bae193d99830aca60b5603319e19ca840d
+
+pkgname = python2-flaky
