@@ -2,7 +2,7 @@
 
 pkgname=ignition-rendering
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
 arch=('x86_64')
@@ -10,10 +10,17 @@ url="https://gazebosim.org/libs/rendering"
 license=('Apache')
 depends=('ignition-common' 'ignition-math' 'ignition-plugin' 'ogre=1.9')
 makedepends=('cmake' 'ignition-cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('8159b14758ac2741f83f8e247613941a94148addd40585a454091a4d7a9a4c21')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/${pkgname}6_${pkgver}.tar.gz"
+        "exchange.patch::https://patch-diff.githubusercontent.com/raw/gazebosim/gz-rendering/pull/650.patch")
+sha256sums=('8159b14758ac2741f83f8e247613941a94148addd40585a454091a4d7a9a4c21'
+            'SKIP')
 
 _dir="gz-rendering-${pkgname}6_${pkgver}"
+
+prepare() {
+  cd "${srcdir}/$_dir"
+  patch -p1 -i "${srcdir}/exchange.patch"
+}
 
 build() {
   cd "$srcdir/$_dir"

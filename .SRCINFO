@@ -1,7 +1,7 @@
 pkgbase = ignition-rendering
 	pkgdesc = C++ library designed to provide an abstraction for different rendering engines. It offers unified APIs for creating 3D graphics applications.
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/rendering
 	arch = x86_64
 	license = Apache
@@ -12,6 +12,8 @@ pkgbase = ignition-rendering
 	depends = ignition-plugin
 	depends = ogre=1.9
 	source = ignition-rendering-6.4.0.tar.gz::https://github.com/gazebosim/gz-rendering/archive/ignition-rendering6_6.4.0.tar.gz
+	source = exchange.patch::https://patch-diff.githubusercontent.com/raw/gazebosim/gz-rendering/pull/650.patch
 	sha256sums = 8159b14758ac2741f83f8e247613941a94148addd40585a454091a4d7a9a4c21
+	sha256sums = SKIP
 
 pkgname = ignition-rendering
