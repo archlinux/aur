@@ -3,7 +3,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
 pkgname="${_pkgname}-git"
-pkgver=r2634.a1588d44
+pkgver=r2665.5a95ee51
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=(
 	'vulkan-headers'
 	'clang'
 	'ninja'
+	'python'
 )
 depends=(
 	'gtk3'
