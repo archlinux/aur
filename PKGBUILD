@@ -4,7 +4,7 @@
 pkgname='python2-pytest-runner'
 _name="${pkgname#python2-}"
 pkgver=5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Invoke py.test as distutils command with dependency resolution'
 arch=('any')
 license=('MIT')
