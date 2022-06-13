@@ -1,0 +1,17 @@
+pkgbase = python-icedata
+	pkgdesc = Datasets Hub for the IceVision Framework
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/airctic/icedata
+	arch = any
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-icevision
+	depends = python-fire
+	source = git+https://github.com/airctic/icedata.git#tag=0.5.2
+	sha256sums = SKIP
+
+pkgname = python-icedata
