@@ -2,9 +2,9 @@
 
 pkgname=parsec-bin
 pkgver=150_28
-pkgrel=3
+pkgrel=4
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
-url='http://parsec.tv'
+url='http://parsec.app'
 license=('custom')
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 provides=('parsec')
