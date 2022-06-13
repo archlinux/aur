@@ -4,7 +4,7 @@
 pkgname='python2-genty'
 _name="${pkgname#python2-}"
 pkgver=1.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc='Allows you to run a test with multiple data sets (deprecated)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
