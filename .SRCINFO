@@ -1,0 +1,24 @@
+pkgbase = python-sahi
+	pkgdesc = Lightweight vision library for performing large scale object detection/ instance segmentation
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/obss/sahi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-tqdm
+	depends = python-shapely
+	depends = python-pyyaml
+	depends = python-fire
+	depends = python-terminaltables
+	depends = python-requests
+	depends = python-click
+	source = git+https://github.com/obss/sahi#tag=0.9.4
+	sha256sums = SKIP
+
+pkgname = python-sahi
