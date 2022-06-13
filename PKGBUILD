@@ -1,26 +1,29 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Harley Wiltzer <harleyw@hotmail.com>
+# Contributor: Filip Grali?ski <filipg at ceti dot pl>
+# Contributor: Andrei Shadrikov <notvuvko@gmail.com>
 
 pkgname='python-hydra'
-pkgver='2.5'
+pkgver='1.2.0'
 pkgrel=1
-pkgdesc='A Python Bloomfilter'
+pkgdesc='A framework for elegantly configuring complex applications'
 arch=('any')
-url='https://github.com/crankycoder/hydra'
+url='https://hydra.cc'
 license=('MIT')
-makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools')
-source=("$pkgname-$pkgver::https://github.com/crankycoder/hydra/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7f52c19b083f3933a576beeb1a47f947bd62caf731d18dac576f0b6fc4382865')
+depends=('python-omegaconf')
+provides=('python-hydra')
+source=("$pkgname-$pkgver::https://github.com/facebookresearch/hydra/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('19b203fc614426cd6e4bb7c51e73a25a1ceb4606450ec0203345aec67a0a4f6a')
 
-_pkgname=hydra
+_pkgname=${pkgname/python-/}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python setup.py install --root "$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

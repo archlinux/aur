@@ -1,16 +1,13 @@
 pkgbase = python-hydra
-	pkgdesc = A Python Bloomfilter
-	pkgver = 2.5
+	pkgdesc = A framework for elegantly configuring complex applications
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/crankycoder/hydra
+	url = https://hydra.cc
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools
-	source = python-hydra-2.5::https://github.com/crankycoder/hydra/archive/refs/tags/2.5.tar.gz
-	sha256sums = 7f52c19b083f3933a576beeb1a47f947bd62caf731d18dac576f0b6fc4382865
+	depends = python-omegaconf
+	provides = python-hydra
+	source = python-hydra-1.2.0::https://github.com/facebookresearch/hydra/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 19b203fc614426cd6e4bb7c51e73a25a1ceb4606450ec0203345aec67a0a4f6a
 
 pkgname = python-hydra
