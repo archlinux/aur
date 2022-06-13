@@ -8,6 +8,7 @@ pkgrel=9
 pkgdesc='File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor)'
 url='https://people.gnome.org/~veillard/gamin'
 url='https://web.archive.org/web/20141226011517/https://people.gnome.org/~veillard/gamin'
+url="https://download.gnome.org/sources/${pkgname}/"
 license=('GPL')
 arch=('x86_64' 'i686')
 depends=('glib2')
@@ -15,7 +16,7 @@ makedepends=('python2')
 optdepends=('python2: for the python module')
 provides=('fam')
 conflicts=('fam')
-source=("$url/sources/${pkgname}-${pkgver}.tar.gz"
+source=("${url}/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         'fix-deprecated-const.patch'
         '18_gam_server_deadlocks.patch'
         '0001-Poll-files-on-nfs4.patch')
