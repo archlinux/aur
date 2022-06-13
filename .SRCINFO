@@ -1,0 +1,30 @@
+pkgbase = python-icevision
+	pkgdesc = An Agnostic Computer Vision Framework
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/airctic/icevision
+	arch = any
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-pillow
+	depends = python-fastcore
+	depends = python-tqdm
+	depends = python-opencv
+	depends = python-albumentations
+	depends = python-importlib-metadata
+	depends = python-ipykernel
+	depends = python-loguru
+	depends = python-resnest
+	depends = python-pycocotools
+	depends = python-effdet
+	depends = python-sahi
+	depends = python-yolov5-icevision
+	source = git+https://github.com/airctic/icevision.git#tag=0.12.0
+	sha256sums = SKIP
+
+pkgname = python-icevision
