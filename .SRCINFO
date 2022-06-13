@@ -1,6 +1,6 @@
 pkgbase = emulsion-palette
 	pkgdesc = Store your palettes in an easy way, and edit them if needed
-	pkgver = 3.2.0
+	pkgver = 3.3.9
 	pkgrel = 1
 	url = https://github.com/lainsce/emulsion
 	arch = x86_64
@@ -9,12 +9,10 @@ pkgbase = emulsion-palette
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = vala
-	depends = glib2
-	depends = gtk4
 	depends = libadwaita
 	depends = json-glib
 	depends = libgee
-	source = emulsion-palette-3.2.0.tar.gz::https://github.com/lainsce/emulsion/archive/3.2.0.tar.gz
-	sha512sums = e22af0da38ce6afbc92787f24ed0bbfa141c6e36a70595f431e0aaa65fce9e4f90299f2d7440c2bbf3319300f504f4114b4d6aa9146ba6ada9c079467cc628f1
+	source = emulsion-palette-3.3.9.tar.gz::https://github.com/lainsce/emulsion/archive/3.3.9.tar.gz
+	sha512sums = b37af2cf047b105b30a6eac0abea7f1e5fa3a361b1157ba09b710106caa88a98d9112074f5de1f23a415440d14a00161f1a9c4f9f272e0f2443bf0968dd107cb
 
 pkgname = emulsion-palette
