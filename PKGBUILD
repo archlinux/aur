@@ -4,7 +4,7 @@
 pkgname='python2-flaky'
 _name="${pkgname#python2-}"
 pkgver=3.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Plugin for nose or py.test that automatically reruns flaky tests'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"

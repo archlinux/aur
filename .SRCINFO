@@ -1,7 +1,7 @@
 pkgbase = python2-flaky
 	pkgdesc = Plugin for nose or py.test that automatically reruns flaky tests
 	pkgver = 3.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/flaky/3.7.0/
 	arch = any
 	license = Apache
