@@ -1,0 +1,15 @@
+pkgbase = pingu-git
+	pkgdesc = ping command implementation but with pingu ascii art
+	pkgver = 0.0.2.r4.0872430
+	pkgrel = 1
+	url = https://github.com/sheepla/pingu
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = pingu
+	conflicts = pingu
+	source = pingu::git+https://github.com/sheepla/pingu
+	md5sums = SKIP
+
+pkgname = pingu-git
