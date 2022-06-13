@@ -1,0 +1,27 @@
+pkgbase = python-lightning-flash
+	pkgdesc = High-level deep learning framework for fast prototyping, baselining, finetuning and solving deep learning problems.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/PyTorchLightning/lightning-flash
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-torchmetrics
+	depends = python-pytorch-lightning
+	depends = python-pydeprecate
+	depends = python-pandas
+	depends = python-jsonargparse
+	depends = python-click
+	depends = python-protobuf
+	optdepends = python-torchvision: image support
+	optdepends = python-timm: image support
+	optdepends = python-pillow: image support
+	optdepends = python-kornia: image support
+	optdepends = python-pystiche: image support
+	optdepends = python-segmentation-models-pytorch: image support
+	source = python-lightning-flash-0.7.5.tar.gz::https://github.com/PyTorchLightning/lightning-flash/archive/refs/tags/0.7.5.tar.gz
+	md5sums = fbfa7ee774a0cd1553bbe24afd9bacd0
+
+pkgname = python-lightning-flash
