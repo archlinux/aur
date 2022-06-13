@@ -11,7 +11,7 @@ groups=('graceful-linux')
 depends=('imlib2' 'lightdm' 'libxrandr' 'libxtst' 'opencv' 'qt5-svg' 'qt5-x11extras')
 makedepends=('qt5-tools' 'openmpi' 'cmake')
 source=("https://github.com/graceful-linux/graceful-greeter/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('27b3733a45b874a834acd2b6c3248bbb645baa4ee9483f7312069831873a95bbd8e6a23843c40cbb3d6cdc15393ce5cca8b3b477ea868fb9bcc42f87bf697a53')
+sha512sums=('5eca42a2ae551ffba3e9c2005ec977e31a55fdc215da51ec1947cc83e45ef16642c841452bdc844612a7d1eacaecd1aa367feff22f9cc64c62c3bb4194efd1fd')
 
 prepare() {
 #mv $pkgver "graceful-greeter-$pkgver"
