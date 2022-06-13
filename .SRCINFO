@@ -1,6 +1,6 @@
 pkgbase = python-pywhat
 	pkgdesc = Identify emails, IP addresses and more
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/bee-san/pyWhat
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pywhat
 	depends = python-click
 	depends = python-rich
 	optdepends = python-orjson: faster JSON serialization and deserialization
-	source = python-pywhat-5.0.0.tar.gz::https://github.com/bee-san/pyWhat/archive/5.0.0.tar.gz
-	sha256sums = 52f74c4cb48cea03aaed25400bb4ef0a570e12f20869d45354be15afe88703ce
+	source = python-pywhat-5.1.0.tar.gz::https://github.com/bee-san/pyWhat/archive/5.1.0.tar.gz
+	sha256sums = 1e8d8052e007c30165b9cb51466dcdc1cfdea555aab0986bf7f11731095f1400
 
 pkgname = python-pywhat
