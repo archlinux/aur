@@ -1,0 +1,15 @@
+pkgbase = tone-bin
+	pkgdesc = A cross platform utility to dump and modify audio metadata for a wide variety of formats.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/sandreas/tone
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	options = !strip
+	source_x86_64 = https://github.com/sandreas/tone/releases/download/v0.0.3/tone-0.0.3-linux-x64.tar.gz
+	sha256sums_x86_64 = dccaaecefcd6abb0294dc2b868bfc72694d7c125ddc25c883ce1fd780dde766a
+	source_aarch64 = https://github.com/sandreas/tone/releases/download/v0.0.3/tone-0.0.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 63748aa556b33c5144b31c586811feab8110058c417a0c023c542fad07cb0083
+
+pkgname = tone-bin
