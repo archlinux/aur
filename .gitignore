@@ -1,0 +1,5 @@
+/fix-segfaults.patch
+pkg/
+src/
+*.tar.*
+*.zip

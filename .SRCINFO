@@ -1,0 +1,25 @@
+pkgbase = swh-plugins.lv2
+	pkgdesc = LV2 port of Steve Harris' plugins suite
+	pkgver = 1.0.16
+	pkgrel = 2
+	url = http://plugin.org.uk/
+	arch = x86_64
+	arch = aarch64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lilv
+	checkdepends = lv2lint
+	makedepends = fftw
+	makedepends = libxslt
+	depends = glibc
+	optdepends = lv2-host: for running the plugins
+	provides = swh-plugins
+	source = swh-plugins.lv2-1.0.16.tar.gz::https://github.com/swh/lv2/archive/refs/tags/v1.0.16.tar.gz
+	source = fix-segfaults.patch::https://patch-diff.githubusercontent.com/raw/swh/lv2/pull/18.patch
+	sha256sums = bc24512de6e2fb7a493226e2e01a80ba8462a318b15c3b0fd0cd914b018c3548
+	sha256sums = 901bf0bb87d0cba518661f80bf64dc1e467629a59622a80b90c437674ada9f0c
+
+pkgname = swh-plugins.lv2
+	depends = glibc
+	depends = libfftw3f.so
