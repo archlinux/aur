@@ -1,14 +1,14 @@
 pkgbase = velvet
 	pkgdesc = Sequence assembler for very short reads
 	pkgver = 1.2.10
-	pkgrel = 3
-	url = https://www.ebi.ac.uk/~zerbino/velvet/
+	pkgrel = 4
+	url = https://github.com/dzerbino/velvet
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	options = !makeflags
-	source = https://www.ebi.ac.uk/~zerbino/velvet/velvet_1.2.10.tgz
-	sha1sums = 216f0941609abf3a73adbba19ef1f364df489d18
+	source = https://github.com/dzerbino/velvet/archive/refs/tags/v1.2.10.tar.gz
+	sha256sums = 4615e52dc2e8a05f1009daf2c0978c218860be364afa044f73677cd298f10c7b
 
 pkgname = velvet
