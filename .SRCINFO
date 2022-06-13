@@ -1,0 +1,27 @@
+pkgbase = klick
+	pkgdesc = An advanced command line based metronome for JACK
+	pkgver = 0.14.2
+	pkgrel = 2
+	url = http://das.nasophon.de/klick/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = boost
+	makedepends = jack
+	makedepends = liblo
+	makedepends = libsndfile
+	makedepends = rubberband
+	makedepends = scons
+	depends = glibc
+	depends = gcc-libs
+	source = klick-0.14.2.tar.gz::https://github.com/Allfifthstuning/klick/archive/refs/tags/0.14.2.tar.gz
+	sha256sums = 5d356b9b4f5abb39cea32fe435a7e5754cabb39f090a2af53dc8f0dfff0167a8
+
+pkgname = klick
+	depends = glibc
+	depends = gcc-libs
+	depends = libjack.so
+	depends = liblo.so
+	depends = librubberband.so
+	depends = libsamplerate.so
+	depends = libsndfile.so
