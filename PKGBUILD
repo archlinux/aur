@@ -1,23 +1,32 @@
-pkgname=devilspie2
-pkgver=0.44
+# Maintainer: Luke Arms <luke@arms.to>
+
+pkgname=devilspie2-git
+_pkgname=${pkgname%-git}
+pkgver=v0.44.r13.g9153e70
 pkgrel=1
-pkgdesc="A window matching utility, allowing the user to perform scripted actions on windows as they are created."
+pkgdesc="A window matching utility, allowing the user to perform scripted actions on windows as they are opened and closed."
 arch=('i686' 'x86_64')
-url="http://www.nongnu.org/$pkgname/"
+url="http://www.nongnu.org/$_pkgname/"
 license=('GPL3')
 depends=('lua>=5.1' 'gtk3' 'libwnck3')
-source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('0a9f1eadd2b22a318163e4180065d495221ba1a43ad2021ea6866cd118042640'
-            'SKIP')
-validpgpkeys=('A523530DD1E9FDDFAD3D5FCAA9B57A926EF302F5') # Darren Salt <devspam@moreofthesa.me.uk>
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+# Alternative: https://git.savannah.gnu.org/git/$_pkgname.git
+source=("git+https://github.com/dsalt/$_pkgname.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir/" PREFIX=/usr install
 
 	# Install documentation

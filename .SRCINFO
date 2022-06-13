@@ -1,6 +1,6 @@
-pkgbase = devilspie2
-	pkgdesc = A window matching utility, allowing the user to perform scripted actions on windows as they are created.
-	pkgver = 0.44
+pkgbase = devilspie2-git
+	pkgdesc = A window matching utility, allowing the user to perform scripted actions on windows as they are opened and closed.
+	pkgver = v0.44.r13.g9153e70
 	pkgrel = 1
 	url = http://www.nongnu.org/devilspie2/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = devilspie2
 	depends = lua>=5.1
 	depends = gtk3
 	depends = libwnck3
-	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-0.44.tar.xz
-	source = http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-0.44.tar.xz.sig
-	validpgpkeys = A523530DD1E9FDDFAD3D5FCAA9B57A926EF302F5
-	sha256sums = 0a9f1eadd2b22a318163e4180065d495221ba1a43ad2021ea6866cd118042640
+	provides = devilspie2
+	conflicts = devilspie2
+	source = git+https://github.com/dsalt/devilspie2.git
 	sha256sums = SKIP
 
-pkgname = devilspie2
+pkgname = devilspie2-git
