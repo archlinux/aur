@@ -5,7 +5,7 @@
 
 _name=gnupg
 pkgname=vim-${_name}-git
-pkgver=2.6.1.r1.g22cbc6b
+pkgver=2.7.1.r3.gf9b608f
 pkgrel=1
 pkgdesc="Plugin for transparent editing of gpg encrypted files"
 arch=('any')
@@ -14,6 +14,7 @@ license=('GPL2')
 groups=('vim-plugins')
 depends=('vim')
 conflicts=('vim-gnupg')
+makedepends=('git')
 source=("${_name}::git+${url}.git")
 sha256sums=( SKIP )
 
