@@ -1,6 +1,6 @@
 pkgbase = qubes-gpg-split
 	pkgdesc = Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” plays another Qubes AppVM.
-	pkgver = 2.0.55
+	pkgver = 2.0.60
 	pkgrel = 1
 	url = https://github.com/QubesOS/qubes-app-linux-split-gpg
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qubes-gpg-split
 	makedepends = pandoc
 	depends = gnupg
 	depends = zenity
-	source = qubes-gpg-split::git+https://github.com/QubesOS/qubes-app-linux-split-gpg.git?signed#tag=v2.0.55
+	source = qubes-gpg-split::git+https://github.com/QubesOS/qubes-app-linux-split-gpg.git?signed#tag=v2.0.60
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
 	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494

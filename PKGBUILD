@@ -6,7 +6,7 @@
 
 pkgname=qubes-gpg-split
 _gitname=${pkgname%-git*}
-pkgver=2.0.55
+pkgver=2.0.60
 pkgrel=1
 pkgdesc="Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” plays another Qubes AppVM."
 arch=("x86_64")
