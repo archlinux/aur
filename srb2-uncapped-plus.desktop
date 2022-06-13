@@ -2,6 +2,6 @@
 Type=Application
 Name=Sonic Robo Blast 2 Uncapped+
 Exec=srb2-uncapped-plus
-Icon=srb2
+Icon=srb2-uncapped-plus
 Terminal=false
 Categories=Game;
