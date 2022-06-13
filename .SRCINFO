@@ -1,7 +1,7 @@
 pkgbase = r-benchmarkme
 	pkgdesc = Crowd Sourced System Benchmarks
-	pkgver = 1.0.7
-	pkgrel = 4
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=benchmarkme
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = r-benchmarkme
 	depends = r-foreach
 	depends = r-httr
 	depends = r-tibble
+	depends = r-stringr
 	optdepends = r-covr
 	optdepends = r-dt
 	optdepends = r-ggplot2
@@ -19,7 +20,7 @@ pkgbase = r-benchmarkme
 	optdepends = r-rcppziggurat
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/benchmarkme_1.0.7.tar.gz
-	sha256sums = 37999b9e2df46dc274ad8aafd2b1c722d099e9680938c780defeda9d7fd7af7a
+	source = https://cran.r-project.org/src/contrib/benchmarkme_1.0.8.tar.gz
+	sha256sums = 1d7100e001a355afc83815b1b698466135f4512c53528c324d13013b3c475f61
 
 pkgname = r-benchmarkme
