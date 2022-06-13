@@ -1,14 +1,14 @@
 pkgbase = pul
-	pkgdesc = C utils library for the average project
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgdesc = Static utilities library for the average C project
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://gitlab.com/ICanOnlySuffer/pul
 	arch = x86_64
 	arch = armv7a
 	groups = pocha
 	license = GPLv3
-	makedepends = nasm
-	source = https://gitlab.com/ICanOnlySuffer/pul/-/archive/v0.5.0/pul-v0.5.0.tar.gz
-	sha256sums = 400822d541c79343e12b4d5de94a6a44de694397949f1be433f89699afd8135f
+	makedepends = fasm
+	source = https://gitlab.com/ICanOnlySuffer/pul/-/archive/v0.6.0/pul-v0.6.0.tar.gz
+	sha256sums = b18e536180819bed393d65256c7fe0df3b886635aa1d91e6ce661c50b4f1aa7b
 
 pkgname = pul
