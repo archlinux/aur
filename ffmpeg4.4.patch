@@ -1,0 +1,48 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -143,25 +143,6 @@ if test -z "$PKG_CONFIG"; then
+     AC_MSG_WARN([please install pkg-config; Debian package: pkg-config])
+ fi
+
+-dnl FFmpeg
+-PKG_CHECK_MODULES([libavformat], [libavformat >= 52.110.0 libavcodec libavutil], [HAVE_LIBAVFORMAT=1], [HAVE_LIBAVFORMAT=0])
+-if test "$HAVE_LIBAVFORMAT" != "1"; then
+-    AC_MSG_WARN([required library libavformat >= 52.110.0 not found:])
+-    AC_MSG_WARN([$libavformat_PKG_ERRORS])
+-    AC_MSG_WARN([libavformat >= 52.110.0 is provided by libav >= 0.7 or FFmpeg >= 0.7])
+-fi
+-PKG_CHECK_MODULES([libavdevice], [libavdevice >= 52.5.0], [HAVE_LIBAVDEVICE=1], [HAVE_LIBAVDEVICE=0])
+-if test "$HAVE_LIBAVDEVICE" != "1"; then
+-    AC_MSG_WARN([required library libavdevice >= 52.5.0 not found:])
+-    AC_MSG_WARN([$libavdevice_PKG_ERRORS])
+-    AC_MSG_WARN([libavdevice >= 52.5.0 is provided by libav >= 0.7 or FFmpeg >= 0.7])
+-fi
+-PKG_CHECK_MODULES([libswscale], [libswscale >= 0.14.1 libavutil], [HAVE_LIBSWSCALE=1], [HAVE_LIBSWSCALE=0])
+-if test "$HAVE_LIBSWSCALE" != "1"; then
+-    AC_MSG_WARN([required library libswscale >= 0.14.1 not found:])
+-    AC_MSG_WARN([$libswscale_PKG_ERRORS])
+-    AC_MSG_WARN([libswscale >= 0.14.1 is provided by libav >= 0.7 or FFmpeg >= 0.7])
+-fi
+ AC_CHECK_FUNCS([sysconf])
+
+ dnl libass
+@@ -400,11 +381,16 @@ UPDATE_DESKTOP_DATABASE=""
+ AC_ARG_VAR([UPDATE_DESKTOP_DATABASE], [update-desktop-database command])
+ AC_CHECK_PROGS([UPDATE_DESKTOP_DATABASE], [update-desktop-database])
+
++dnl ffmpeg4.4 libs
++LIBS+=" /usr/lib/libswscale.so.5"
++LIBS+=" /usr/lib/libavutil.so.56"
++LIBS+=" /usr/lib/libavformat.so.58"
++LIBS+=" /usr/lib/libavdevice.so.58"
++LIBS+=" /usr/lib/libavcodec.so.58"
++CPPFLAGS+=" -I/usr/include/ffmpeg4.4"
++
+ dnl Check if all libraries were found
+ if test "$am_cv_func_iconv" != "yes" \
+-    -o "$HAVE_LIBAVFORMAT" != "1" \
+-    -o "$HAVE_LIBAVDEVICE" != "1" \
+-    -o "$HAVE_LIBSWSCALE" != "1" \
+     -o "$HAVE_LIBASS" != "1" \
+     -o "$HAVE_LIBOPENAL" != "1" \
+     -o "$HAVE_LIBQTOPENGL" != "1" \
