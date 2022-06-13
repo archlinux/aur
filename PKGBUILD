@@ -6,7 +6,7 @@ pkgdesc="Open-source node system framework for simulation and others"
 arch=('x86_64')
 url='https://github.com/zenustech/zeno'
 license=('MPL2')
-depends=("qt5-base" "qt5-svg" "tbb" "openvdb" "openexr" "eigen" "cgal" "lapack" "openblas" "alembic" "hdf5")
+depends=("qt5-base" "qt5-svg" "tbb" "openvdb" "eigen" "cgal" "lapack" "openblas" "alembic" "hdf5")
 makedepends=("git" "cmake" "ninja")
 optdepends=()
 source=("${pkgname}::git+${url}.git")
@@ -20,6 +20,7 @@ pkgver() {
 prepare() {
     cd "${pkgname}"
     git submodule update --init projects/cgmesh/libigl
+    cp misc/ci/CMakePresets.json ./
 }
 
 build() {
