@@ -6,7 +6,7 @@
 _reponame='ansible'
 pkgname="${_reponame}-docs-git"
 pkgdesc='HTML documentation of Ansible'
-pkgver=2.11.0b4.r1444.g3fa377387e0
+pkgver=2.11.0b4.r1446.g95df5cb740c
 pkgrel=1
 epoch=1
 arch=('any')
