@@ -2,8 +2,8 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.5.28.trento.3.r256.g876e9328
-pkgrel=1
+pkgver=2022.5.28.trento.3.r288.gf7bbc06f
+pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(
   cabextract
   dconf
   gtk3
-  gtksourceview4
+  gtksourceview5
   hicolor-icon-theme
   icoextract
   lib32-gnutls
