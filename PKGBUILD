@@ -32,8 +32,9 @@ build() {
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
-  ./autogen.sh \
-    --prefix=/usr
+  rm -rf build
+  meson --prefix=/usr \
+    . build
 
   ninja -C build
 }
