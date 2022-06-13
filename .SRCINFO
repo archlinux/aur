@@ -1,16 +1,18 @@
 pkgbase = python-oead
 	pkgdesc = Library for recent Nintendo EAD formats in first-party games
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.2.4.2
+	pkgrel = 1
 	url = https://github.com/zeldamods/oead
 	arch = any
 	license = GPL2
-	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = cmake
 	makedepends = git
 	makedepends = gcc
 	depends = python
-	source = git+https://github.com/zeldamods/oead#tag=v1.2.3
+	source = git+https://github.com/zeldamods/oead#tag=v1.2.4-2
 	sha256sums = SKIP
 
 pkgname = python-oead
