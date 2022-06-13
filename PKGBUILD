@@ -1,20 +1,20 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Mario Finelli <mario at finel dot li>
 
-_gemname=dry-configurable
-pkgname=ruby-$_gemname
-pkgver=0.14.0
+pkgname=ruby-dry-configurable
+_gemname="${pkgname#ruby-}"
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="A mixin to add configuration functionality to your classes"
+pkgdesc='A mixin to add configuration functionality to your classes'
 arch=('any')
-url="https://github.com/dry-rb/dry-configurable"
+url='https://github.com/dry-rb/dry-configurable'
 license=('MIT')
 depends=('ruby' 'ruby-concurrent' 'ruby-dry-core')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('d1fc8d031031e9754ed9a7ca40f54b670cda5a24a4230f83ce0cedd199bb0d0e48eea09f755b2aa62a05cf600647b6f1453d8b49024eeffedec9cd51e8badd6c')
+b2sums=('43b4b2005cb115b8cfc58482ea8c9e19fb40d43a52c34bbea687c22b59cd1505971e851b94b9149656be69fa1d32bc4e9e2bf4cefd83815d06e5077eb7c52db3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
