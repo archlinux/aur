@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-bin"
 pkgver="0.5.0beta"
-pkgrel=4
+pkgrel=5
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=('x86_64' 'i686')
 url="https://github.com/vaxerski/Hyprland"
@@ -51,5 +51,5 @@ package() {
 	# install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland" see https://github.com/vaxerski/Hyprland/issues/207
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	# install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
