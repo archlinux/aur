@@ -406,7 +406,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal ocl-icd libgl
-    'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp'
+    'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo
   )
   makedepends+=(opencl-headers)
   _args+=(
@@ -417,7 +417,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal --enable-opencl --enable-opengl
-    --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp
+    --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo
   )
   provides+=(ffmpeg-full)
 else
