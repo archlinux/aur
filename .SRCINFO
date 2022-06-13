@@ -1,18 +1,18 @@
 pkgbase = python2-pyopenssl
 	pkgdesc = Wrapper module for OpenSSL, legacy Python 2 version
 	pkgver = 21.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pyopenssl/21.0.0/
 	arch = any
 	license = Apache
 	checkdepends = python2-flaky
 	checkdepends = python2-pretend
-	checkdepends = python2-pytest-runner
+	checkdepends = python2-pytest>=3.0.1
 	makedepends = python2-setuptools
 	depends = openssl
-	depends = python2
-	depends = python2-six
-	depends = python2-cryptography
+	depends = python2>=2.7
+	depends = python2-six>=1.5.2
+	depends = python2-cryptography>=3.3
 	source = pyopenssl-21.0.0.tar.gz::https://github.com/pyca/pyopenssl/archive/21.0.0.tar.gz
 	sha512sums = bad555b8b8faa60992aad779e9c9af27b132a894d4d3e59fb65f423770b31f278f5966127ca7cdcf42184cefe0c7d6fa94b84482d0e97089031e4e508d77c424
 
