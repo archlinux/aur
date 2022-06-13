@@ -1,7 +1,7 @@
 pkgbase = qubes-gui-agent-linux
 	pkgdesc = The Qubes GUI Agent for AppVMs
 	pkgver = 4.0.38
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/QubesOS/qubes-gui-agent-linux
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = qubes-gui-agent-linux
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = libtool
-	makedepends = pulseaudio<=15.0
+	makedepends = pulseaudio<=16.0
 	makedepends = xorg-server-devel
 	makedepends = xorg-util-macros
 	makedepends = libxcomposite

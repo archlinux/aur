@@ -7,13 +7,13 @@ pkgbase=qubes-gui-agent-linux
 pkgname=(qubes-vm-gui qubes-vm-pulseaudio)
 _gitname=${pkgname%-git*}
 pkgver=4.0.38
-pkgrel=2
+pkgrel=3
 pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
 license=('GPL')
 makedepends=(pkg-config make gcc patch git automake autoconf libtool
-             'pulseaudio<=15.0'
+             'pulseaudio<=16.0'
              xorg-server-devel xorg-util-macros libxcomposite libxt pixman lsb-release
              qubes-vm-gui-common qubes-libvchan qubes-db-vm
 )
