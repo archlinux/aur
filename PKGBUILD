@@ -2,7 +2,7 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=libdatachannel
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
