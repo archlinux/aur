@@ -1,7 +1,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 pkgname=samarium
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A dynamic, interpreted language that is transpiled to Python"
@@ -15,7 +15,7 @@ optdepends=()
 source=(
 	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('eba466aca056766338ad861e1a6f873bf127c4187bb5268896bc5a43d3e1e3a7')
+sha256sums=('07b680501104a7a76a4bfc0a30729db6be25e9fbb80296cf21839d177cc9d38f')
 
 build() {
 	cd "$pkgname-$pkgver"
