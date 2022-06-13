@@ -7,7 +7,7 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.06.2206020"
+_wechat_devtools_ver="1.06.2206090"
 # https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1052203030&version_type=1
 _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=${_wechat_devtools_ver//\./}&version_type=1"
 # _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
@@ -46,9 +46,9 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_unpack.js"
         "fix-other.sh")
 md5sums=('ac7680788544c457daee11aaf69798fe'
-         'd2c63697658b85716e356bf04dec7679'
+         'a2e0e0826571daeab239755d5b3347e5'
          '4d14589085ebbf79ce504dc27330d33b'
-         '6afd75b2f4f73b1a6a72855aaca1e662'
+         '2b90ce6acba9778b94c4e085e1c5ca12'
          '4d3f5273be80a74741c841fcfa4185d3'
          '0f4353664123320280ea4d6bb295dce2'
          'ae685283b21becd9c097aca4571f7556'
