@@ -1,18 +1,10 @@
 pkgbase = mutagen-git
-	pkgdesc = An audio metadata tag reader and writer, mercurial version
-	pkgver = 1571.cb363c1
-	pkgrel = 2
-	url = https://github.com/quodlibet/mutagen
+	pkgdesc = Deprecated VCS package for python-mutagen; should be deleted
+	pkgver = 6
+	pkgrel = 6
+	epoch = 6
+	url = https://aur.archlinux.org/packages/python-mutagen-git
 	arch = any
 	license = GPL2
-	makedepends = git
-	depends = python-setuptools
-	provides = mutagen
-	provides = python-mutagen
-	conflicts = mutagen
-	conflicts = python-mutagen
-	source = mutagen-git::git+https://github.com/quodlibet/mutagen
-	md5sums = SKIP
 
 pkgname = mutagen-git
-

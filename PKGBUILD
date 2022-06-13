@@ -1,36 +1,10 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=mutagen-git
-pkgdesc="An audio metadata tag reader and writer, mercurial version"
+pkgdesc='Deprecated VCS package for python-mutagen; should be deleted'
 license=('GPL2')
-url="https://github.com/quodlibet/mutagen"
-pkgver=1571.cb363c1
-pkgrel=2
-
-conflicts=('mutagen' 'python-mutagen')
-provides=('mutagen' 'python-mutagen')
-
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
-depends=('python-setuptools')
-makedepends=('git')
+url='https://aur.archlinux.org/packages/python-mutagen-git'
+pkgver=6
+pkgrel=6
+epoch=6
 arch=('any')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-build() {
-    cd "$srcdir/$pkgname"
-    python setup.py build
-}
-
-package() {
-    cd "$srcdir/$pkgname"
-
-    python setup.py install --skip-build \
-                            --optimize=1 \
-                            --prefix=/usr \
-                            --root="${pkgdir}"
-}
