@@ -1,0 +1,16 @@
+pkgbase = com.classin.deepin
+	pkgdesc = Classin from deepin
+	pkgver = 4.2.6.353deepin6
+	pkgrel = 1
+	url = https://www.classinpaas.com
+	arch = i686
+	arch = x86_64
+	license = 
+	depends = deepin-wine6-stable
+	depends = deepin-wine6-stable-i386
+	depends = p7zip
+	depends = deepin-wine-helper
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.classin.deepin/com.classin.deepin_4.2.6.353deepin6_i386.deb
+	md5sums = 75f951044f720d149f01c4fcd71d66a4
+
+pkgname = com.classin.deepin
