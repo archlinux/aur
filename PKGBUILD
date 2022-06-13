@@ -3,7 +3,7 @@
 
 pkgname=qubes-vm-gui-common
 _gitname=${pkgname%-git*}
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Common files for Qubes GUI - protocol headers."
 arch=("x86_64")

@@ -1,15 +1,14 @@
 pkgbase = qubes-vm-gui-common
 	pkgdesc = Common files for Qubes GUI - protocol headers.
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/QubesOS/qubes-gui-common
 	arch = x86_64
 	license = GPL
-	source = qubes-vm-gui-common::git+https://github.com/QubesOS/qubes-gui-common.git?signed#tag=v4.1.0
+	source = qubes-vm-gui-common::git+https://github.com/QubesOS/qubes-gui-common.git?signed#tag=v4.1.1
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
 	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
 	sha512sums = SKIP
 
 pkgname = qubes-vm-gui-common
-
