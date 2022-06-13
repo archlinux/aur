@@ -6,7 +6,7 @@
 
 pkgname=hyper
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -14,7 +14,7 @@ url="https://hyper.is/"
 license=('MIT')
 groups=()
 depends=('gconf')
-makedepends=('nodejs' 'electron' 'yarn' 'python2')
+makedepends=('nodejs' 'electron' 'yarn' 'python2' 'npm')
 checkdepends=()
 optdepends=()
 provides=()
@@ -29,7 +29,7 @@ changelog=
 _pkgver_project=${pkgver/\.canary/-canary}
 
 source=(
-    "https://github.com/zeit/$pkgname/archive/v${_pkgver_project}.tar.gz"
+    "https://github.com/vercel/$pkgname/archive/v${_pkgver_project}.tar.gz"
     "https://github.com/bnb/awesome-hyper/raw/master/hyper-3-color-logo.svg"
     "Hyper.desktop"
 )
@@ -87,6 +87,7 @@ package() {
     # cd "$_libinstall"
     # rm libnode.so libffmpeg.so
     # ln -s /usr/share/electron/lib{node,ffmpeg}.so .
+
 
     install -Dm644 "$srcdir/Hyper.desktop" "$pkgdir/usr/share/applications/Hyper.desktop"
     install -Dm644 "$srcdir/hyper-3-color-logo.svg" "$pkgdir/usr/share/pixmaps/hyper.svg"
