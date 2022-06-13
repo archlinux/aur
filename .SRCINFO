@@ -7,10 +7,10 @@ pkgbase = nocloud-bin
 	conflicts = NoCloudCLI
 	provides = NoCloudCLI
 	arch = aarch64
-	source_aarch64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r4/nocloud_0.2.2-r4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bb2a2b0b101a67bf264c2d081a002e007df39de60f1680f95992a5e99a182a31
+	source_aarch64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r5/nocloud_0.2.2-r5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 52fa2289b76895f0ce1126d09bd37a6fd6821062d1933d16d97cc1740f92fe8c
 	arch = x86_64
-	source_x86_64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r4/nocloud_0.2.2-r4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 20b0dd7ca18deb53a26f9de0a47c3409b95841f6fa02879332c05539295f8afb
+	source_x86_64 = https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r5/nocloud_0.2.2-r5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a3eec671691ddd74899b0f1aed4abd2539d2b27dad9f5cca8866f628708c2d7b
 	
 pkgname = nocloud-bin
