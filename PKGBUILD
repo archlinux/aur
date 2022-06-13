@@ -12,6 +12,7 @@ url='https://hydra.cc'
 license=('MIT')
 depends=('python-omegaconf')
 provides=('python-hydra')
+makedepends=('python-build' 'python-installer')
 source=("$pkgname-$pkgver::https://github.com/facebookresearch/hydra/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('19b203fc614426cd6e4bb7c51e73a25a1ceb4606450ec0203345aec67a0a4f6a')
 
