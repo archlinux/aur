@@ -1,6 +1,6 @@
 pkgbase = python-monero
 	pkgdesc = A comprehensive Python module for handling Monero cryptocurrency
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/monero-ecosystem/monero-python
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-monero
 	depends = python-varint
 	depends = python-pynacl
 	depends = python-pysocks
-	source = https://github.com/emesik/monero-python/archive/v1.0.1.tar.gz
-	md5sums = a9c8c6f34b4af1ecaee9c808c89de8ad
+	source = https://github.com/emesik/monero-python/archive/v1.0.2.tar.gz
+	md5sums = 76b0149ea754fbb8a9b22ca2297e9736
 
 pkgname = python-monero
