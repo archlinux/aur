@@ -1,14 +1,14 @@
 pkgbase = ryujinx-git
 	pkgdesc = Experimental Nintendo Switch Emulator written in C#
-	pkgver = r2073.6a1a03566
+	pkgver = r2113.b1bd6a50b
 	pkgrel = 1
 	url = https://github.com/Ryujinx/Ryujinx
 	install = ryujinx.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = dotnet-sdk
-	depends = dotnet-runtime
+	makedepends = dotnet-sdk-bin
+	depends = dotnet-runtime-bin
 	provides = Ryujinx
 	options = !strip
 	source = git+https://github.com/Ryujinx/Ryujinx
