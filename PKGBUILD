@@ -3,8 +3,8 @@
 
 _base=racket
 pkgname=${_base}-git
-pkgver=8.5.0.8.g1977693
-pkgrel=1
+pkgver=8.5.0.8.gc1bd043
+pkgrel=2
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
 url="https://${_base}-lang.org"
@@ -47,4 +47,5 @@ package() {
   install -Dm644 etc/config.rktd "$pkgdir"/etc/config.rktd
   cp -r man "$pkgdir"/usr/share
   cp -r share/applications "$pkgdir"/usr/share
+  sed -i 's+.png++' "$pkgdir"/usr/share/slideshow.desktop
 }
