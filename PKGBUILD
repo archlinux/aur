@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-git
-pkgver=d7d2f459
+pkgver=4b7e91d
 pkgrel=1
 pkgdesc="TETRA downlink decoder/recorder kit"
 arch=('any')
