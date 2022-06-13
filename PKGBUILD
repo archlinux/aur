@@ -2,8 +2,8 @@
 
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
-pkgver=1.0.10
-pkgrel=1
+pkgver=1.0.13
+pkgrel=2
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
