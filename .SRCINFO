@@ -1,0 +1,13 @@
+pkgbase = calcer-git
+	pkgdesc = Calculator for i3
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/spynetS/Calcer
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = jre-openjdk
+	source = git+https://github.com/spynetS/Calcer
+	md5sums = SKIP
+
+pkgname = calcer-git
