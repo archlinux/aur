@@ -1,7 +1,7 @@
 pkgbase = python2-unittest2
 	pkgdesc = Backports of the unittest module
 	pkgver = 1.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.voidspace.org.uk/python/articles/unittest2.shtml
 	arch = any
 	license = BSD

@@ -5,7 +5,7 @@
 pkgname=python2-unittest2
 _name="${pkgname#python2-}"
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Backports of the unittest module'
 arch=('any')
 url="http://www.voidspace.org.uk/python/articles/unittest2.shtml"
@@ -23,6 +23,11 @@ prepare() {
 
   # Remove "argparse" dependency (it's actually a standard library)
   sed -ri 's-.argparse.(,|\s)*--' setup.py
+
+  # Remove trial to import "builtins", it's specific to Python 3
+  # and it makes one test fail when a package with that name exists
+  sed -ri '1,14{N;N;s-^\s+|.*import\s+builtins.*--}' \
+    unittest2/test/test_discovery.py
 }
 
 build() {
@@ -32,7 +37,7 @@ build() {
 
 check() {
   cd "$srcdir/$_name-$pkgver"
-  python2 -m unittest2
+  python2 -m unittest2 discover -v -t . -s unittest2/test/
 }
 
 package() {
