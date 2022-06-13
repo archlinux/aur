@@ -1,8 +1,9 @@
 # Maintainer: mrdotx <klassiker@gmx.de>
+# Contributor: ferdig <ferdinand.goldmann@jku.at>
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.30
-pkgrel=4
+pkgrel=5
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -41,6 +42,7 @@ source=(
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
+    'perl-background-fix.patch'
 )
 sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
@@ -50,7 +52,8 @@ sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
           '9883d0c31b45f8521829ea6a2041f2e9eb7abe6a'
           'b5a239179a6da062bcc9c5a36e870387080372d2'
           '5c11265e5c54fdc7e005aa0a3c55de3374f15a73'
-          'a62225c18458ed9d1743699ef98f41d3d157f145')
+          'a62225c18458ed9d1743699ef98f41d3d157f145'
+          '586b3b0de73d78612612c07301313bbcbb15d781')
 _dir="$_pkgname-$pkgver"
 
 prepare() {
@@ -81,6 +84,9 @@ prepare() {
     #                      please contact me!                      #
     #                                                              #
     ################################################################
+
+    # patch to fix perl module background by ferdig
+    patch -p0 -i ../perl-background-fix.patch
 }
 
 build() {
