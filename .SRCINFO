@@ -1,15 +1,15 @@
 pkgbase = spadfs-dkms
 	pkgdesc = SPAD filesystem kernel module (DKMS package)
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/
 	arch = x86_64
 	license = unknown
 	depends = dkms
 	optdepends = spadfs-utils: mkfs and fsck
-	source = https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/download/spadfs-1.0.15.tar.gz
+	source = https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/download/spadfs-1.0.16.tar.gz
 	source = dkms.conf
-	sha256sums = e5827d116512f163979ccc1b3cc7f82a043299152d4a773b28a6cb9172cd1ca5
+	sha256sums = 38518feb65114fce4c5da67efb9c9cd6832a05637518baa98525c8641c0d57cf
 	sha256sums = c19fff6f84ad626459cb08f4accba1320635f9cd7d5a63505b3db527650ecd8d
 
 pkgname = spadfs-dkms
