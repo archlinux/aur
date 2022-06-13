@@ -1,34 +1,3 @@
-diff --git a/build/pkgs/bliss/SPKG.rst b/build/pkgs/bliss/SPKG.rst
-index 236b87a199..77407f16ac 100644
---- a/build/pkgs/bliss/SPKG.rst
-+++ b/build/pkgs/bliss/SPKG.rst
-@@ -10,20 +10,19 @@ canonical forms of graphs.
- License
- -------
- 
--LGPL
-+LGPL3
- 
- 
- Upstream Contact
- ----------------
- 
--Bliss is currently being maintained by Tommi Junttila and Petteri Kaski.
-+Bliss is currently being maintained by Tommi Junttila at
- 
--http://www.tcs.tkk.fi/Software/bliss/index.html
-+https://users.aalto.fi/~tjunttil/bliss/index.html
-+
-+Bliss used to be maintained by Tommi Junttila and Petteri Kaski up to version 0.73 at
- 
--We apply patches generated from https://github.com/mkoeppe/bliss (branch
--apply_debian_patches) as our upstream. This tracks the patches from the
--Debian package, adding an autotools build system and adjusting the
--include file locations.
-+http://www.tcs.tkk.fi/Software/bliss/index.html
- 
- Dependencies
- ------------
 diff --git a/build/pkgs/bliss/checksums.ini b/build/pkgs/bliss/checksums.ini
 index e97d89587b..0c1ebf647b 100644
 --- a/build/pkgs/bliss/checksums.ini
@@ -44,7 +13,7 @@ index e97d89587b..0c1ebf647b 100644
 +cksum=1626493724
 +upstream_url=https://users.aalto.fi/~tjunttil/bliss/downloads/bliss-VERSION.zip
 diff --git a/build/pkgs/bliss/dependencies b/build/pkgs/bliss/dependencies
-index 3546cda461..66d6773d90 100644
+index 4f00de2037..c225c495cc 100644
 --- a/build/pkgs/bliss/dependencies
 +++ b/build/pkgs/bliss/dependencies
 @@ -1,4 +1,4 @@
@@ -60,44 +29,6 @@ index e93ee1376f..9e1e206c41 100644
 @@ -1 +1 @@
 -0.73+debian-1+sage-2016-08-02.p0
 +0.77
-diff --git a/build/pkgs/bliss/patches/bliss-0.77-install.patch b/build/pkgs/bliss/patches/bliss-0.77-install.patch
-new file mode 100644
-index 0000000000..caab14aa40
---- /dev/null
-+++ b/build/pkgs/bliss/patches/bliss-0.77-install.patch
-@@ -0,0 +1,32 @@
-+diff --git a/CMakeLists.txt b/CMakeLists.txt
-+index 01ed093..cfdb0a6 100644
-+--- a/CMakeLists.txt
-++++ b/CMakeLists.txt
-+@@ -62,3 +62,27 @@ if(USE_GMP)
-+   target_link_libraries(bliss-executable ${GMP_LIBRARIES})
-+ endif(USE_GMP)
-+ set_target_properties(bliss-executable PROPERTIES OUTPUT_NAME bliss)
-++
-++include(GNUInstallDirs)
-++
-++set(
-++  BLISS_HEADERS
-++  src/bliss_C.h
-++  src/uintseqhash.hh
-++  src/abstractgraph.hh
-++  src/stats.hh
-++  src/digraph.hh
-++  src/defs.hh
-++  src/heap.hh
-++  src/graph.hh
-++  src/partition.hh
-++  src/kqueue.hh
-++  src/utils.hh
-++  src/orbit.hh
-++  src/timer.hh
-++  src/bignum.hh
-++)
-++
-++install(TARGETS bliss-executable RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-++install(TARGETS bliss LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-++install(FILES ${BLISS_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bliss)
 diff --git a/build/pkgs/bliss/spkg-install.in b/build/pkgs/bliss/spkg-install.in
 index aaf4c3037b..4124a2338e 100644
 --- a/build/pkgs/bliss/spkg-install.in
@@ -143,7 +74,7 @@ index 90073233b7..0000000000
 -
 -
 diff --git a/src/sage/graphs/bliss.pyx b/src/sage/graphs/bliss.pyx
-index bf15833664..4f4e0ee3ca 100644
+index 921bc6a765..1f1f502558 100644
 --- a/src/sage/graphs/bliss.pyx
 +++ b/src/sage/graphs/bliss.pyx
 @@ -47,22 +47,23 @@ cdef extern from "bliss/graph.hh" namespace "bliss":

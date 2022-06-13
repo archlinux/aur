@@ -1,0 +1,48 @@
+diff --git a/src/sage/misc/sagedoc_conf.py b/src/sage/misc/sagedoc_conf.py
+new file mode 100644
+index 00000000..323628a
+--- /dev/null
++++ b/src/sage/misc/sagedoc_conf.py
+@@ -0,0 +1,6 @@
++r"""
++Sphinx configuration shared by sage.misc.sphinxify and sage_docbuild
++"""
++
++# The reST default role (used for this markup: `text`) to use for all documents.
++default_role = 'math'
+diff --git a/src/sage/misc/sphinxify.py b/src/sage/misc/sphinxify.py
+index d196965..8cfa8af 100644
+--- a/src/sage/misc/sphinxify.py
++++ b/src/sage/misc/sphinxify.py
+@@ -87,7 +87,7 @@ def sphinxify(docstring, format='html'):
+     os.makedirs(confdir)
+     with open(os.path.join(confdir, 'conf.py'), 'w') as filed:
+         filed.write(r"""
+-from sage_docbuild.conf import *
++from sage.misc.sagedoc_conf import *
+ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.todo', 'sphinx.ext.extlinks']
+ 
+ templates_path = ['templates']
+diff --git a/src/sage_docbuild/conf.py b/src/sage_docbuild/conf.py
+index c0866c0..12a76ac 100644
+--- a/src/sage_docbuild/conf.py
++++ b/src/sage_docbuild/conf.py
+@@ -14,6 +14,8 @@ from sphinx import highlighting
+ import sphinx.ext.intersphinx as intersphinx
+ from IPython.lib.lexers import IPythonConsoleLexer, IPyLexer
+ 
++# Load configuration shared with sage.misc.sphinxify
++from sage.misc.sagedoc_conf import *
+ 
+ # General configuration
+ # ---------------------
+@@ -149,9 +151,6 @@ release = sage.version.version
+ # separators on all platforms.
+ exclude_patterns = ['.build']
+ 
+-# The reST default role (used for this markup: `text`) to use for all documents.
+-default_role = 'math'
+-
+ # If true, '()' will be appended to :func: etc. cross-reference text.
+ #add_function_parentheses = True
+ 
