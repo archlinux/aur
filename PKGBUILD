@@ -2,7 +2,7 @@
 
 _pkgname=pydantic
 pkgname="python-${_pkgname}-latest"
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Data parsing and validation using Python type hints (up to date version)'
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('python-email-validator: email')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-pytest-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8a02ed110f264f57788e4761f6a772cdcf02dad65b73be280265e7bb4fc66793')
-provides=("python-${_pkgname}")
+sha256sums=('4eddd11262bc0d708ba0ffb88565cc624f34e43b2388cfa61c5d1a0ed154628c')
+provides=("python-${_pkgname}=${pkgver}")
 conflicts=("python-${_pkgname}")
 
 build() {
