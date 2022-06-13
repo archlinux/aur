@@ -24,6 +24,7 @@ pkgver() {
 }
 build() {
    arch-meson "$srcdir/$pkgname" build
+   meson compile -C build
 }
 check() {
   meson test -C build --print-errorlogs
