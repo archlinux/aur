@@ -1,0 +1,14 @@
+pkgbase = python2-pytest-runner
+	pkgdesc = Invoke py.test as distutils command with dependency resolution
+	pkgver = 5.2
+	pkgrel = 3
+	url = https://pypi.org/project/pytest-runner/5.2/
+	arch = any
+	license = MIT
+	makedepends = python2-pytest
+	makedepends = python2-setuptools-scm
+	depends = python2-pytest
+	source = pytest-runner-5.2.tar.gz::https://github.com/pytest-dev/pytest-runner/archive/5.2.tar.gz
+	b2sums = 0241c40b6a51c149a2e52e09fa9c16bbe26177a68c5c51f578008d79036b3bed3756fc6a8f15233030f7339b36b8a6562feb22acb65aaa44156ca1c9d8f54def
+
+pkgname = python2-pytest-runner
