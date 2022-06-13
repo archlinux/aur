@@ -6,12 +6,12 @@ pkgname=lsyncd-git
 _pkgname=lsyncd
 pkgver=2.3.0.r0.gf02bf70
 pkgrel=1
-pkgdesc="Live Syncing (Mirror) Daemon - Git development version"
+pkgdesc="Live Syncing (Mirror) Daemon - development version"
 arch=('i686' 'x86_64')
 url="https://github.com/lsyncd/lsyncd"
 license=('GPL2')
 depends=('lua' 'rsync')
-makedepends=('lua' 'cmake')
+makedepends=('cmake' 'git')
 provides=('lsyncd')
 conflicts=('lsyncd')
 source=("git+https://github.com/lsyncd/lsyncd.git"
@@ -25,7 +25,7 @@ _builddir=build
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -B "${_builddir}" -S .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man -B "${_builddir}" -S .
 }
 
 pkgver() {
@@ -42,5 +42,11 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}/${_builddir}"
     make DESTDIR="${pkgdir}" install
+
+    # Fix examples and doc directory
+    mkdir -p "${pkgdir}/usr/share/lsyncd"
+    mv "${pkgdir}/usr/doc/examples" "${pkgdir}/usr/share/lsyncd"
+
     install -Dm 644 "${srcdir}/lsyncd.service" "${pkgdir}/usr/lib/systemd/system/lsyncd.service"
+    find ${pkgdir} -type d -empty -delete
 }
