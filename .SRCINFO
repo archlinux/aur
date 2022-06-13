@@ -1,0 +1,17 @@
+pkgbase = mindmaster-nativefier
+	pkgdesc = mindmaster desktop built with nativefier
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://mm.edrawsoft.cn/app/create
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = mindmaster-nativefier.desktop
+	sha256sums = 9cbc51bb56ef55c6c0621bfd02b84269e7377254b01c8623b0aaae301bec49ba
+
+pkgname = mindmaster-nativefier
