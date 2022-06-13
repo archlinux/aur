@@ -80,6 +80,6 @@ package() {
 
   DESTDIR="$pkgdir" ninja -C build install
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING COPYING.images licenses/COPYING.{BSD,SMALL}
 }
