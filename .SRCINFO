@@ -1,11 +1,11 @@
 pkgbase = python2-pluggy
 	pkgdesc = A minimalist production ready plugin system
 	pkgver = 0.13.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/pytest-dev/pluggy
 	arch = any
 	license = MIT
-	makedepends = python-setuptools-scm
+	makedepends = python2-setuptools-scm
 	depends = python2-importlib-metadata
 	source = python2-pluggy-0.13.1.tar.gz::https://github.com/pytest-dev/pluggy/archive/refs/tags/0.13.1.tar.gz
 	sha256sums = 25d8e53a6eee6939f13b79dc9053b3edd6f705e5a7ba042ae528a1b5fdd9615c

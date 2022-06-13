@@ -3,13 +3,13 @@
 pkgname=python2-pluggy
 _name=${pkgname#python2-}
 pkgver=0.13.1
-pkgrel=8
+pkgrel=9
 pkgdesc='A minimalist production ready plugin system'
 arch=('any')
 url='https://github.com/pytest-dev/pluggy'
 license=('MIT')
 depends=('python2-importlib-metadata')
-makedepends=('python-setuptools-scm')
+makedepends=('python2-setuptools-scm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('25d8e53a6eee6939f13b79dc9053b3edd6f705e5a7ba042ae528a1b5fdd9615c')
 
