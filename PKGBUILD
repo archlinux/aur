@@ -15,13 +15,21 @@ source=("https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.
 sha512sums=('8f020c50eec23fb7b1af34a07999edc59005c8cd81f63f8320d2714751108513a4930953f4fd60e97b345778627138f0feea28f78b81be2d5c3c0abf5dbe1e8d')
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
-  python -m build --wheel --no-isolation
+    # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
+    if [ -e "$srcdir/../.gitignore" ]; then
+        mv "$srcdir/../.gitignore" "$srcdir/../.gitignore.bak"
+        GITIGNORE_MOVED=1
+    fi
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
+    if [ $GITIGNORE_MOVED = 1 ]; then
+        mv "$srcdir/../.gitignore.bak" "$srcdir/../.gitignore"
+    fi
 }
 
 check() {
-  cd "$srcdir/$_name-$pkgver"
-  pytest
+    cd "$srcdir/$_name-$pkgver"
+    pytest
 }
 
 package() {
