@@ -55,12 +55,12 @@ md5sums=('ac7680788544c457daee11aaf69798fe'
          '912b5948dc8a968e1b53390173c9d363'
          '951538b31000bf541446502069dcd92f'
          '468facecd8c3a4fbf4da03b5ceae1320'
-         '8b89d614f85de88ab1504cd7c838e03b'
+         '1c33cf717c99e4c8625e238ad31a7d95'
          'cbb717017abaad7ef1acf4de42421ddb'
          'd43f68ce696b5dad3ea4e7ff89b9d4ad'
          '38f8ed65b632c50ee5cef1231984f224'
          '66b98acbdfcaa249082d526ccac8e7d8'
-         'b8827f817617c615be6ae1226850c7ec')
+         '122556d1d021adb3094d38ff1d999b0a')
 options=('!strip')
 
 prepare() {
@@ -100,7 +100,7 @@ build() {
     export NW_VERSION=$_nwjs_ver
     # fix-package-name.js使用
     export srcdir=$srcdir
-    export NO_WINE=true
+    export WINE=false
     
     for script in fix-package-name.js fix-cli.sh fix-other.sh fix-menu.sh fix-core.sh rebuild-node-modules.sh; do
         _log "run ${script}"
