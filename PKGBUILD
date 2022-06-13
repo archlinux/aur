@@ -1,5 +1,5 @@
 pkgname=python-anyqt
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PyQt4/PyQt5 compatibility layer"
 url="https://github.com/ales-erjavec/anyqt"
@@ -8,7 +8,7 @@ license=('GPL3')
 makedepends=('python-setuptools')
 depends=('python-pyqt5')
 source=("https://pypi.io/packages/source/A/AnyQt/AnyQt-${pkgver}.tar.gz")
-sha256sums=('aa261a28c3da6e7d9cee16fab209343b272b9f7ab39ad42ae02dc1687834c402')
+sha256sums=('271aee5fd216c14f044917ecc978fadf8b8cd89ecc61060689f0920e51c56276')
 
 build() {
     cd AnyQt-$pkgver
