@@ -1,9 +1,10 @@
-# Maintainer: Florian Hülsmann <fh@cbix.de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
@@ -23,7 +24,7 @@ build() {
     --enable-rdm-tests \
     --enable-ja-rule \
     --enable-e133
-    # --enable-java-libs \
+    # --enable-java-libs
   make
   make doxygen-doc
 }
