@@ -2,7 +2,7 @@
 pkgname=com.classin.deepin
 pkgver=4.2.6.353deepin6
 pkgrel=1
-pkgdesc="Classin from deepin"
+pkgdesc="Classin from deepin-wine"
 arch=('i686' 'x86_64')
 url="https://www.classinpaas.com"
 license=('')
