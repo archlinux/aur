@@ -9,6 +9,6 @@ pkgbase = dragit
 	makedepends = rust
 	depends = gtk3
 	source = https://github.com/sireliah/dragit/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = bead1a25088ea501e17026e4aa0f5ae335a8b4b6f322d3fef310403b7811d258
+	sha256sums = e58c6d7a1d2b1067a84b4aa0b225433f06c1f73f2c3765f20d3275bf5d10f4c8
 
 pkgname = dragit
