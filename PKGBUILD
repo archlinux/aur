@@ -7,7 +7,7 @@
 pkgname=powerdevil-ddcutil
 _pkgname=${pkgname%-ddcutil}
 pkgver=5.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Power management for KDE plasma with DDC/CI enabled'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -16,7 +16,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 depends=(plasma-workspace bluez-qt networkmanager-qt ddcutil)
 makedepends=(extra-cmake-modules kdoctools)
-optdepends=('kinfocenter: for the Energy Information KCM')
+optdepends=('kinfocenter: for the Energy Information KCM' 'power-profiles-daemon: power profiles support')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig}
         '45-ddcutil-i2c.rules'
