@@ -6,7 +6,7 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.15.1.r5884.60.517
+pkgver=2.18.1.r6042.60.517
 
 depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -92,6 +92,8 @@ package() {
 	#	unzip -ou "$f"
 	#	rm "$f"
 	#done
+	# copy changelog where it will be found by the application
+	mv changelog.txt src/
 	# extract lua libs
 	unzip runtime-win32.zip lua/xml.lua lua/base64.lua lua/sha1.lua
 	mv lua/*.lua .
