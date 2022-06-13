@@ -1,12 +1,11 @@
-
-pre_install() {
-    #!/bin/sh
+post_install() {
+    xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
+    sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
+    systemctl enable --now pcscd
 }
 
-post_install() {
-    #!/bin/sh
-    #set -e
+post_upgrade() {
+    xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
+    sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
     systemctl enable --now pcscd
-    btrust_biss
-    return 0
 }
