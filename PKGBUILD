@@ -1,8 +1,9 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=python2-backports
 _name=${pkgname#python2-}
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Namespace for backported Python features'
 arch=('any')
 url='https://github.com/brandon-rhodes/backports'
@@ -24,8 +25,7 @@ build() {
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  _destdir="$pkgdir/usr/lib/python2.7/site-packages/$_name"
-  install -Dm644 "$_name/__init__.py"  "$_destdir/__init__.py"
-  install -Dm644 "$_name/__init__.pyc" "$_destdir/__init__.pyc"
+  find "$_name"/__init__* -exec \
+    install -Dm644 '{}' "$pkgdir/usr/lib/python2.7/site-packages"/'{}' \;
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
