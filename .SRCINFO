@@ -1,0 +1,17 @@
+pkgbase = python-effdet
+	pkgdesc = PyTorch implementation of EfficientDet
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/rwightman/efficientdet-pytorch
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-timm
+	depends = python-pytorch
+	depends = python-pyyaml
+	depends = python-torchvision
+	source = python-effdet-0.2.4.tar.gz::https://github.com/rwightman/efficientdet-pytorch/archive/refs/tags/v0.2.4.tar.gz
+	md5sums = 0eee80ebdf8f9b5d3be772017a3a638e
+
+pkgname = python-effdet
