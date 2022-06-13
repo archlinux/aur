@@ -2,13 +2,13 @@
 
 pkgname=samarium
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A dynamic, interpreted language that is transpiled to Python"
 arch=(any)
 url="https://github.com/samarium-lang/Samarium"
 license=('MIT')
-depends=('python>=3.8')
+depends=('python>=3.9' 'python-termcolor')
 makedepends=('python-build' 'python-installer' 'python-poetry')
 checkdepends=()
 optdepends=()
