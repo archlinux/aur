@@ -9,7 +9,7 @@ url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=( "https://github.com/Eraden/amdgpud/releases/download/v0.1.0.10/amdfand.tar.gz")
 arch=('x86_64')
-md5sums=( '310d64520724a7b06c265bb79297213b')
+md5sums=( '0ce8c3d5e4deff11c1aa8eb93d937270')
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
 optdepends=('amdmond-bin' 'amdguid-glow-bin' 'amdguid-wayland-bin' 'amdvold-bin')
 
