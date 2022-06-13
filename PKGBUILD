@@ -3,9 +3,9 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-bin"
 pkgver="0.5.0beta"
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
-arch=(any)
+arch=('x86_64' 'i686')
 url="https://github.com/vaxerski/Hyprland"
 license=('BSD')
 depends=(
