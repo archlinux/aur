@@ -1,15 +1,17 @@
 pkgbase = python2-nose
 	pkgdesc = A discovery-based unittest extension
 	pkgver = 1.3.7
-	pkgrel = 5
-	url = http://readthedocs.org/docs/nose/
+	pkgrel = 12
+	url = https://readthedocs.org/docs/nose/
 	arch = any
 	license = LGPL2.1
 	makedepends = python2
 	makedepends = python2-setuptools
-	makedepends = python2-sphinx
 	source = https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz
+	source = https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz.asc
+	validpgpkeys = 58B277C0D208F7AC460C07C84548B3A8C0D70C12
 	sha512sums = e65c914f621f8da06b9ab11a0ff2763d6e29b82ce2aaed56da0e3773dc899d9deb1f20015789d44c65a5dad7214520f5b659b3f8d7695fb207ad3f78e5cf1b62
+	sha512sums = SKIP
 
 pkgname = python2-nose
 	depends = python2
