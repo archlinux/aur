@@ -1,6 +1,6 @@
 pkgbase = ivre-git
 	pkgdesc = Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!
-	pkgver = 0.9.18.dev2
+	pkgver = 0.9.18.dev5
 	pkgrel = 1
 	url = https://ivre.rocks/
 	arch = any
