@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('any')
 url="http://www.dominik-ruess.de/scannerExtract/scannerExtract_help_en.html"
 source=(
-"${pkgname}-${pkgver}::https://iweb.dl.sourceforge.net/project/scannedimageextractor/Version-${pkgver}/SIE-${pkgver}.tar.bz2"
+"${pkgname}-${pkgver}::https://master.dl.sourceforge.net/project/scannedimageextractor/Version-${pkgver}/SIE-${pkgver}.tar.bz2"
 "remove-q-foreachcontainer.patch"
 "opencv4-compatibility.diff"
 "buttons.patch"
