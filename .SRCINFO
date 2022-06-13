@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-bigquery-storage
 	pkgdesc = BigQuery Storage API client library
-	pkgver = 2.13.0
+	pkgver = 2.13.2
 	pkgrel = 1
 	url = https://github.com/googleapis/python-bigquery-storage
 	changelog = CHANGELOG.md
@@ -15,10 +15,11 @@ pkgbase = python-google-cloud-bigquery-storage
 	depends = python-google-api-core
 	depends = python-grpcio
 	depends = python-proto-plus
+	depends = python-protobuf
 	optdepends = python-arrow: pyarrow support
 	optdepends = python-fastavro: fastavro support
 	optdepends = python-pandas: pandas support
-	source = python-google-cloud-bigquery-storage-2.13.0.tar.gz::https://github.com/googleapis/python-bigquery-storage/archive/v2.13.0.tar.gz
-	sha256sums = bf72897eed3ecf5224342cb7cb7987eb13c9877ab4b5f925cb7b5bf2955a247a
+	source = python-google-cloud-bigquery-storage-2.13.2.tar.gz::https://github.com/googleapis/python-bigquery-storage/archive/v2.13.2.tar.gz
+	sha256sums = 33e666b8c15498a2b84c217da65d8232f324554badba87705d7f296ab7b274c3
 
 pkgname = python-google-cloud-bigquery-storage
