@@ -2,15 +2,14 @@ pkgbase = python2-bcrypt
 	pkgdesc = Modern password hashing for your software and your servers
 	pkgver = 3.1.7
 	pkgrel = 4
-	url = https://github.com/pyca/bcrypt
+	url = https://pypi.org/project/bcrypt/3.1.7/
 	arch = x86_64
 	license = Apache
 	checkdepends = python2-pytest
 	makedepends = python2-setuptools
 	depends = python2-cffi
 	depends = python2-six
-	source = python2-bcrypt-3.1.7.tar.gz::https://github.com/pyca/bcrypt/archive/3.1.7.tar.gz
+	source = bcrypt-3.1.7.tar.gz::https://github.com/pyca/bcrypt/archive/3.1.7.tar.gz
 	sha512sums = bfe487ac43aa5081a16c7f67787c2aec777a9c42f3f0f64d4dd238e6cf135e248e806a675ecdc5240066e2b5a31773f9c5dd939479e96ec25357e27bced01409
 
 pkgname = python2-bcrypt
-
