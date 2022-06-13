@@ -1,0 +1,12 @@
+pkgbase = peep
+	pkgdesc = A CLI text viewer tool that works interactively like less command on small pane within the terminal window.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/ryochack/peep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = peep-0.1.6.tar.gz::https://github.com/ryochack/peep/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 780b2d99d8a0920a0669e0aaca98ef8111e13b54ec99f38b683ba6fc82e9bc58
+
+pkgname = peep
