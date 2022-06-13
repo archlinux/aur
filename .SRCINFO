@@ -9,6 +9,8 @@ pkgbase = easymorse
 	makedepends = gcc
 	makedepends = qt5-multimedia
 	depends = qt5-base
+	provides = easymorse
+	conflicts = easymorse-git
 	source = easymorse::git+https://bitbucket.org/Artemia/easymorse.git
 	sha256sums = SKIP
 
