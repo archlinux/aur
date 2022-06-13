@@ -1,12 +1,11 @@
 pkgbase = treasure-chest-bin
 	pkgdesc = Full Node Wallet For Pirate Chain (ARRR)
-	pkgver = 5.4.2
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/PirateNetwork/pirate
 	arch = x86_64
 	license = MIT
 	depends = boost-libs
-	depends = hicolor-icon-theme
 	depends = libevent
 	depends = miniupnpc
 	depends = protobuf
@@ -18,7 +17,9 @@ pkgbase = treasure-chest-bin
 	provides = pirate-qt
 	conflicts = pirate-qt
 	conflicts = pirate-cli
-	source = https://github.com/PirateNetwork/pirate/releases/download/v5.4.2/pirate-qt-ubuntu1804-v5.4.2.deb
-	sha256sums = ba480a2fa45a0776814b10a8270fbd8bb25f9a098cf9dabd331a6d2fee9da2f4
+	source = https://github.com/PirateNetwork/pirate/releases/download/v5.5.0/pirate-qt-ubuntu1804-v5.5.0.deb
+	source = COPYING
+	sha256sums = a063f1df2941f284d318b198faf2576cb98a61f2ee931caaf28cb16d3c877460
+	sha256sums = 011f6e7fa0238cff93eb3ea12b6b2743cdc7b3ee638570b6143a1f7bdfe1ba3e
 
 pkgname = treasure-chest-bin
