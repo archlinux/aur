@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=edrawmax
+Name[zh_CN]=亿图图示
+Comment=edrawmax nativefier
+Exec=/opt/edrawmax-nativefier/edrawmax
+Icon=/opt/edrawmax-nativefier/resources/app/icon.png
+Terminal=false
+Categories=AudioVideo;Video;TV;

@@ -1,0 +1,17 @@
+pkgbase = edrawmax-nativefier
+	pkgdesc = edrawmax desktop built with nativefier
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://www.edrawmax.cn/online/zh/
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = edrawmax-nativefier.desktop
+	sha256sums = 2c85f8cd4e6a52bdfba2bb0c13a776f94f2953b3edd7a4d822688c88b45e730e
+
+pkgname = edrawmax-nativefier
