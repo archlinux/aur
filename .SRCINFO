@@ -1,11 +1,11 @@
 pkgbase = python2-importlib-metadata
 	pkgdesc = Read metadata from Python packages
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python/importlib_metadata
 	arch = any
 	license = Apache
-	makedepends = python-setuptools-scm
+	makedepends = python2-setuptools-scm
 	depends = python2-zipp
 	depends = python2-pathlib2
 	depends = python2-contextlib2
