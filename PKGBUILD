@@ -3,9 +3,9 @@
 
 _pkgname=anarki
 pkgname=${_pkgname}-git
-pkgver=3.1.1349.ge1c9fd4
+pkgver=3.1.r1352.gd0e4804
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Community-managed fork of the Arc dialect of Lisp. (GIT version)"
 arch=('any')
 url="https://github.com/arclanguage/anarki"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --tags| cut -c4- | sed 's+-+.+' | tr - .
+  git describe --tags| cut -c4- | sed 's+-+.r+' | tr - .
 }
 
 package() {

@@ -1,8 +1,8 @@
 pkgbase = anarki-git
 	pkgdesc = Community-managed fork of the Arc dialect of Lisp. (GIT version)
-	pkgver = 3.1.1349.ge1c9fd4
+	pkgver = 3.1.r1352.gd0e4804
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/arclanguage/anarki
 	arch = any
 	license = MIT
