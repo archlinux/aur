@@ -1,0 +1,17 @@
+pkgbase = python-ipynbname
+	pkgdesc = Retrieve notebook filename and the full path to notebook when run from Jupyter Lab.
+	pkgver = 2021.3.2
+	pkgrel = 1
+	url = https://github.com/msm1089/ipynbname
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python-ipykernel
+	depends = python-jupyter_core
+	depends = python-traitlets
+	source = https://files.pythonhosted.org/packages/source/i/ipynbname/ipynbname-2021.3.2.tar.gz
+	sha256sums = cf7bae999005dce012738d09610e69a47acd765797c0365c803f96c21ea2f32b
+
+pkgname = python-ipynbname
