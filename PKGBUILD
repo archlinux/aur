@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ruby-jsonpath
-_gemname=jsonpath
-pkgver=1.1.0
+_gemname="${pkgname#ruby-}"
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='JSONPath implementation in Ruby'
 arch=('any')
@@ -10,9 +10,9 @@ url='https://github.com/joshbuddy/jsonpath'
 license=('MIT')
 depends=('ruby' 'ruby-multi_json')
 options=('!emptydirs')
-source=("$_gemname-$pkgver.gem::https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+source=("$pkgname-$pkgver.gem::https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$pkgname-$pkgver.gem")
-b2sums=('1238376fad69a29b1975adcfef01569d7db9d4f1520360718ae4a6acbab06a70f9a2a2f7749e09125ad587442f0e9e7ce6c73ef40853a6ec90bdc8ace10df55f')
+b2sums=('6efed16387fdd9704e9bdca22bbaee37931bf8827ea341aae57dd2bf00adc7db6213609fc80840ac8db332ee96ecdc589f445071a97bf7b58678068e8bc73537')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

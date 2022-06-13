@@ -1,15 +1,15 @@
 pkgbase = ruby-jsonpath
 	pkgdesc = JSONPath implementation in Ruby
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/joshbuddy/jsonpath
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-multi_json
-	noextract = ruby-jsonpath-1.1.0.gem
+	noextract = ruby-jsonpath-1.1.2.gem
 	options = !emptydirs
-	source = jsonpath-1.1.0.gem::https://rubygems.org/downloads/jsonpath-1.1.0.gem
-	b2sums = 1238376fad69a29b1975adcfef01569d7db9d4f1520360718ae4a6acbab06a70f9a2a2f7749e09125ad587442f0e9e7ce6c73ef40853a6ec90bdc8ace10df55f
+	source = ruby-jsonpath-1.1.2.gem::https://rubygems.org/downloads/jsonpath-1.1.2.gem
+	b2sums = 6efed16387fdd9704e9bdca22bbaee37931bf8827ea341aae57dd2bf00adc7db6213609fc80840ac8db332ee96ecdc589f445071a97bf7b58678068e8bc73537
 
 pkgname = ruby-jsonpath
