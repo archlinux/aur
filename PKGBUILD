@@ -2,29 +2,28 @@
 
 pkgname=ca-certificates-postsignum
 pkgver=20220606
-pkgrel=1
+pkgrel=2
 pkgdesc="PostSignum root & qualified certificates"
 arch=(any)
 url="http://www.postsignum.cz/"
 license=('unknown')
 depends=('ca-certificates-utils')
-install='ca-certificates-postsignum.install'
 
 source=(
 	# PostSignum Root QCA 4 
-	'http://crl.postsignum.eu/files/ca/postsignum_qca4_root.pem' # EXP 26.7.2038
-	'http://crl.postsignum.eu/files/ca/postsignum_qca4_sub.pem' # EXP 27.9.2033
-	'http://crl.postsignum.eu/files/ca/postsignum_qca5_sub.pem' # EXP 3.10.2033
-	'http://crl.postsignum.eu/files/ca/postsignum_vca4_sub.pem' # EXP 27.9.2033
-	'http://crl.postsignum.eu/files/ca/postsignum_vca5_sub.pem' # EXP 3.10.2033
+	'https://www.postsignum.cz/files/ca/postsignum_qca4_root.pem' # EXP 26.7.2038
+	'https://www.postsignum.cz/files/ca/postsignum_qca4_sub.pem' # EXP 27.9.2033
+	'https://www.postsignum.cz/files/ca/postsignum_qca5_sub.pem' # EXP 3.10.2033
+	'https://www.postsignum.cz/files/ca/postsignum_vca4_sub.pem' # EXP 27.9.2033
+	'https://www.postsignum.cz/files/ca/postsignum_vca5_sub.pem' # EXP 3.10.2033
 
 	# PostSignum Root QCA 2
-	'http://crl.postsignum.eu/files/ca/postsignum_qca2_root.pem' # EXP 19.1.2025
-	#'http://crl.postsignum.eu/files/ca/postsignum_qca2_sub.pem' # EXP 19.1.2020
-	'http://crl.postsignum.eu/files/ca/postsignum_qca3_sub.pem'  # EXP 26.3.2024, Provoz certifikační autority byl ukončen
-	'http://crl.postsignum.eu/files/ca/postsignum_qca3_sub-tsa.pem' # EXP 19.1.2025, Provoz certifikační autority byl ukončen
-	#'http://crl.postsignum.eu/files/ca/postsignum_vca2_sub.pem'  # EXP 19.1.2020
-	'http://crl.postsignum.eu/files/ca/postsignum_vca3_sub.pem' # EXP 19.1.2025
+	'https://www.postsignum.cz/files/ca/postsignum_qca2_root.pem' # EXP 19.1.2025
+	#'https://www.postsignum.cz/files/ca/postsignum_qca2_sub.pem' # EXP 19.1.2020
+	'https://www.postsignum.cz/files/ca/postsignum_qca3_sub.pem'  # EXP 26.3.2024, Provoz certifikační autority byl ukončen
+	'https://www.postsignum.cz/files/ca/postsignum_qca3_sub-tsa.pem' # EXP 19.1.2025, Provoz certifikační autority byl ukončen
+	#'https://www.postsignum.cz/files/ca/postsignum_vca2_sub.pem'  # EXP 19.1.2020
+	'https://www.postsignum.cz/files/ca/postsignum_vca3_sub.pem' # EXP 19.1.2025
 	)
 
 sha256sums=(
@@ -45,7 +44,7 @@ sha256sums=(
 	)
 
 package() {
-  for cert in *.pem; do
-  	install -Dm644 "${cert}" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/${cert}"
-  done
+	for cert in ${source[@]}; do
+		install -Dt "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/" -m644 "`basename "${srcdir}/${cert%%::*}"`"
+	done
 }
