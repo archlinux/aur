@@ -3,12 +3,12 @@
 
 pkgname=audiotag-thumbnailer
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A nautilus thumbnailer for MP3 and OGG files"
 arch=('any')
 url=""
 license=("custom:WTFPL")
-depends=('mutagen')
+depends=('python2-mutagen')
 install=$pkgname.install
 source=("$pkgname" "$pkgname.schemas")
 sha256sums=('f58b15d8702b1fc0a91fe8e4949df7d23f85290b41c0004c490102b3593e339e'
