@@ -1,0 +1,17 @@
+pkgbase = bilibili-nativefier
+	pkgdesc = bilibili desktop built with nativefier
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://www.bilibili.com
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = bilibili-nativefier.desktop
+	sha256sums = ffa5a1532c61750fc7068283f42485dab4dfe42fe4910341c9796c0ee006a2e1
+
+pkgname = bilibili-nativefier

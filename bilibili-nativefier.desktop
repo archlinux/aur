@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=bilibili
+Name[zh_CN]=哔哩哔哩
+Comment=bilibili nativefier
+Exec=/opt/bilibili-nativefier/bilibili
+Icon=/opt/bilibili-nativefier/resources/app/icon.png
+Terminal=false
+Categories=AudioVideo;Video;TV;
