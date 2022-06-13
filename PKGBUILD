@@ -1,36 +1,35 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
+
 pkgname=easymorse
-pkgver=601035b
+pkgver=r37.601035b
 pkgrel=1
 pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW (Qt5 version)"
-arch=('any')
-license=('GPL3')
-makedepends=('make' 'gcc')
-depends=('qt5-base' 'qt5-multimedia')
-provides=('easymorse')
-conflicts=('easymorse-git')
+arch=(x86_64)
 url="https://bitbucket.org/Artemia/easymorse"
-source=($pkgname::"git+$url.git")
+license=(GPL3)
+depends=(qt5-base qt5-multimedia qt5-serialport)
+makedepends=(git qt5-tools)
+source=("git+$url.git#commit=601035b710487f34eeb5ab4e7ee9dbfd44ae8a5f")
 sha256sums=('SKIP')
 #fallback to qt5 version
-prepare(){
-    cd $srcdir/$pkgname
-    git checkout $pkgver 
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname"
     qmake CONFIG+=release
-    make -j3
+    make
 }
 
 package() {
-    cd $srcdir
-    install -dm755 $pkgdir/usr/bin
-    install -dm755 $pkgdir/opt/$pkgname
-    cp -r $pkgname/* $pkgdir/opt/$pkgname
-    cd $pkgdir/usr/bin
-    ln -s ../../opt/$pkgname/easymorse ./easymorse
-    echo -e "Done!\nAll the source files are located in /opt/$pkgname!"
+    cd $srcdir/$pkgname
+    make install INSTALL_ROOT="${pkgdir}/"
+    rm -r "$pkgdir/opt"
+
+    #bug: translation is not installed but happen running makepkg twice without cleaning the cache
+    install -D translations/* -t "${pkgdir}/usr/share/easymorse/translations/"
 }
 
