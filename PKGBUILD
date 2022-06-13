@@ -1,8 +1,9 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
-_gemname=serverengine
+pkgname=ruby-serverengine
+_gemname="${pkgname#ruby-}"
 pkgname=ruby-$_gemname
-pkgver=2.2.5
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A framework to implement robust multiprocess servers'
 arch=('any')
@@ -12,8 +13,8 @@ depends=('ruby' 'ruby-sigdump')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('fb4abbf35553b8d69447be195a14018e335cbce0756b9ae91160bc4dc8253968a4b94c383f40aad1e1bd20aaeb700efced91341f3b26077a0d44b3dc00aa89c7')
-b2sums=('a7b256c1029c38b35673d104f6aba118bc5644947db7feb185d57456af60baebafb3c6a74996998630b7a0dbe3ee0baa5d4f260538ca7a8abf542b7528cd7204')
+sha512sums=('0887ac556f9f4faa7d8e25743b2f79694153c0e7e39666c8ea02d0313c17835e0e5697da498ad1b23612ec938d8d9f430cfb9699711479ae088011c5a7fee4c4')
+b2sums=('944e0e6b6bd31b6609e21fac0ea688b9a4acac3b02c4c1f06a34fe29a51c67db79e9a55c43243ce601d42a30b31ca1da605caeab05bdd9587536c4fb540bb5ce')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
