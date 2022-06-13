@@ -6,7 +6,7 @@
 pkgname='python2-pyopenssl'
 _name="${pkgname#python2-}"
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wrapper module for OpenSSL, legacy Python 2 version'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -24,6 +24,7 @@ checkdepends=(
   'python2-flaky'
   'python2-pretend'
   'python2-pytest>=3.0.1'
+  'python2-pytest-runner'
 )
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}.tar.gz::https://github.com/pyca/${_name}/archive/${pkgver}.tar.gz")
