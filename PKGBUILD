@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -15,11 +15,11 @@ depends=(
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
         'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
         'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
-        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
-        'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
-        'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
-        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'opencore-amr' 'openjpeg2' 'opus' 'libplacebo' 'libpulse' 'librabbitmq-c'
+        'rav1e' 'librsvg' 'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr'
+        'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora'
+        'twolame' 'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264'
+        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'vulkan-icd-loader' 'libxv' 'libx11' 'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
@@ -140,6 +140,7 @@ build() {
         --enable-libopenmpt \
         --disable-libopenvino \
         --enable-libopus \
+        --enable-libplacebo \
         --enable-libpulse \
         --enable-librabbitmq \
         --enable-librav1e \
