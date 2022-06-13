@@ -38,7 +38,6 @@ boost
 cmake
 coin
 eigen
-gcc-fortran
 git
 ninja
 python-shiboken2
