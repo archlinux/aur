@@ -13,6 +13,8 @@ arch=('x86_64')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
 depends=(
+  'glibc'
+  'python2'
   'python2-cffi'
   'python2-six'
 )
