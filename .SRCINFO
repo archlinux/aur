@@ -1,0 +1,26 @@
+pkgbase = python-yolov5-icevision
+	pkgdesc = Family of object detection architectures and models pretrained on the COCO dataset
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/airctic/yolov5-icevision
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-pyyaml
+	depends = python-requests
+	depends = python-scipy
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-tqdm
+	depends = tensorboard
+	depends = python-pandas
+	depends = python-seaborn
+	depends = python-pytorch-thop-git
+	source = python-yolov5-icevision-6.0.tar.gz::https://github.com/airctic/yolov5-icevision/archive/e7ca90c5c9bc4921941fe5e32e1b88c0cf2946b6.zip
+	md5sums = a4b9f2d8d6207bcdc0bc433e8ce6b38b
+
+pkgname = python-yolov5-icevision
