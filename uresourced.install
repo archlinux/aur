@@ -8,9 +8,8 @@ post_install() {
 }
 
 post_upgrade() {
-	echo "Restart service:"
+	echo "Restart the service:"
 	echo ""
-	echo "systemctl daemon-reload"
 	echo "systemctl restart uresourced"
 	echo ""
 	echo "Restart the user systemd instance; i.e., user@UID.service or reboot"
