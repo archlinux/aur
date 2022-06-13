@@ -4,7 +4,7 @@
 
 pkgname=gns3-gui
 pkgver=2.2.32
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -38,7 +38,7 @@ prepare() {
         -e 's|^sentry-sdk==1\.5\.10$|sentry-sdk>=1.5.10|' \
         -e 's|^psutil==5\.9\.0$|psutil>=5.9.0|' \
         -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
-        -e 's|^setuptools==60\.6\.0|setuptools<=60.6.0|' \
+        -e 's|^setuptools==60\.6\.0|setuptools>=60.6.0|' \
         requirements.txt
 }
 
