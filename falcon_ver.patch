@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 3d84b665..17e3da4e 100755
+--- a/setup.py
++++ b/setup.py
+@@ -96,7 +96,7 @@ setup(
+     entry_points={"console_scripts": ["hug = hug:development_runner.hug.interface.cli"]},
+     packages=["hug"],
+     requires=["falcon", "requests"],
+-    install_requires=["falcon==2.0.0", "requests"],
++    install_requires=["falcon", "requests"],
+     setup_requires=["pytest-runner"],
+     tests_require=["pytest", "mock", "marshmallow"],
+     ext_modules=ext_modules,
