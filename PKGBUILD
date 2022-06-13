@@ -3,19 +3,19 @@
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
-_gemname=mixlib-shellout
-pkgname=ruby-$_gemname
-pkgver=3.2.5
-pkgrel=2
-pkgdesc="Run external commands on Unix or Windows"
+pkgname=ruby-mixlib-shellout
+_gemname="${pkgname#ruby-}"
+pkgver=3.2.7
+pkgrel=1
+pkgdesc='Run external commands on Unix or Windows'
 arch=('any')
-url="https://github.com/chef/mixlib-shellout"
+url='https://github.com/chef/mixlib-shellout'
 license=('Apache')
 depends=('ruby' 'ruby-chef-utils')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('05c35f8d06aa8a7f8fb990e5c673976aa2df0fd3c62adca2dcd3719d390495ce897162df8f1c496a7dd4f577c98884ae5a2e154cd92add43848aadb5725bda17')
+b2sums=('c635398b8d604fc597a9ddb1fa23a8372ebaabb311619658d1b10e4f78359396b8b991fc20449e44ccb322e17e7d3a1a01465a8809c304713395dd90c5612dc9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
