@@ -1,6 +1,6 @@
 pkgbase = decklink-sdk
 	pkgdesc = Blackmagic DeckLink SDK
-	pkgver = 12.2.2
+	pkgver = 12.3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
@@ -10,7 +10,7 @@ pkgbase = decklink-sdk
 	provides = blackmagic-decklink-sdk
 	conflicts = blackmagic-decklink-sdk
 	replaces = blackmagic-decklink-sdk
-	source = Blackmagic_DeckLink_SDK_12.2.2.zip::https://sw.blackmagicdesign.com/DeckLink/v12.2.2/Blackmagic_DeckLink_SDK_12.2.2.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=e4SeksL8uzLjfX+ahIFqAmX7+PWtdNMyIK6yLB6G/fdoHPYIdtozjjoVjfajowuHYj++QJRi8v7ExL7W5jJEQio2vOygdLjJxqPlGN+MhGiua61MewBRTFkzA+FUu0gxOAhPstB3b5l7JgfpYOHxA7ygH51kRyATKHYeswBrhRivoNUji/nlYBmgkOyAx9e/iNbiw4w62VfacUPONlkvfjHOddBiYdiqGvmdlz9URsLUY8iCDk17X4FGaD4mQBtSJTt2A2ZHsjA/6keNdh9D3K0K2vHKa6xdoAX1rTrKnImlxIAWbhv9sHlQDb/TMptNh/Us9DMoH6lPV1oP03pZ5w==&Expires=1642624769
-	sha256sums = 542ed9bdb888c06458379f939becc9dc6efc6787ef6b1d31e8c41f02df68541f
+	source = Blackmagic_DeckLink_SDK_12.3.zip::https://sw.blackmagicdesign.com/DeckLink/v12.3/Blackmagic_DeckLink_SDK_12.3.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=SVuqHAulv0Rmuhf3VTTRHaH45OkuxqhPmfFlD1eDC5LAR0qX9OEJzFQIuntFj7nMyq52u2hXtynTwyKU3+QvJ9nc1RlnUYW7ufx0dD1pG308rg3ylSsM6w5lqRzbcQaRwNRnrtADnCf4ozIAfKRTIMNywTQbY3+yMB/GshfzWP7oLgtqBJ9Mi1jmD4wXCWd5E8Va1Se7TiRfBfCm4z0z1ZF8kACh+DuQatIsboy+RdXrak8GB+MfVmspaIssLvPN7DgszXXX1yZIzJnlL1jVG8L5tYutN4EKJ16G8aBlsUzupe3v3B2WjGqGDIQtQRFyyM6q2LkGLSatdZbl4JZu7g==&Expires=1655095619
+	sha256sums = d523c8b83168f14d6703c269db679523621c80c486939208b64336f59f5e4e53
 
 pkgname = decklink-sdk
