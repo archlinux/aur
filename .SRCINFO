@@ -6,5 +6,6 @@ pkgbase = mutagen-git
 	url = https://aur.archlinux.org/packages/python-mutagen-git
 	arch = any
 	license = GPL2
+	provides = mutagen
 
 pkgname = mutagen-git

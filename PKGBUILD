@@ -8,3 +8,4 @@ pkgver=6
 pkgrel=6
 epoch=6
 arch=('any')
+provides=('mutagen')
