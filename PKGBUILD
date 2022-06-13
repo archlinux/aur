@@ -1,6 +1,7 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: moormaster < user on aur.archlinux.org >
 # Contributor: juliosueiras <juliosueiras [at] gmail [dot] com>
+# Contributor: dmrz < user on aur.archlinux.org >
 
 _reponame='ansible'
 pkgname="${_reponame}-docs-git"
@@ -126,11 +127,6 @@ prepare() {
 
     echo "Deactivating Python venv in dir: ${srcdir}/${_py_venv_dir}"
     deactivate
-
-    echo 'Patching Makefile to use one parallel job (one CPU thread). Otherwise'
-    echo 'the build processes will fill the whole RAM and eventually crash.'
-    sed -e '/CPUS ?= $(shell nproc)/c CPUS = 1' \
-        -i 'docs/docsite/Makefile'
 }
 
 build() {
@@ -139,8 +135,24 @@ build() {
     echo "Activating Python venv in dir: ${srcdir}/${_py_venv_dir}"
     source "${srcdir}/${_py_venv_dir}/bin/activate"
 
+    local templates="${srcdir}/tmp"
+    echo "Creating template stubs in ${templates}"
+    mkdir -p ${templates}
+    touch "${templates}/version_chooser.html"
+
     echo "Building ${pkgname%-git} from source..."
-    make -C 'docs/docsite' 'all'
+    local cleanup_flags="\
+      -D templates_path=${templates}\
+      -D html_context.version=${pkgver}\
+      -D html_theme_options.display_version=1\
+      -D html_theme_options.show_rtd_ethical_ads=0\
+      -D html_theme_options.hubspot_id=''\
+      -D html_theme_options.topbar_links=0\
+      -D html_theme_options.satellite_tracking=0\
+      -D html_theme_options.swift_id=''\
+      -D html_theme_options.tag_manager_id=''\
+    "
+    make -C 'docs/docsite' 'all' O="${cleanup_flags}" CPUS=1
 
     echo "Deactivating Python venv in dir: ${srcdir}/${_py_venv_dir}"
     deactivate
