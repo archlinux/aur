@@ -5,7 +5,7 @@ pkgver=0.20.0.28901.ga5ff515804
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
-url='https://www.freecadweb.org/'
+url='https://www.freecad.org/'
 license=('LGPL')
 depends=(
 boost-libs
