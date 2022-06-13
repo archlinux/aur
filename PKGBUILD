@@ -5,7 +5,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=3.8.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -21,7 +21,7 @@ depends=('qt5-x11extras'    'libxrandr'  'libxinerama' 'qt5-webengine'
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
 sha512sums=('974bc6c4a3ab80333c957f4b4c3e11a7a6b67f24501a1090b537aba47341302123b236c98433f796c9fb077bb306fa66bb19048092351b10f1ea254f68d4c39a'
-            '6e72981eb85d1a87c0ccf28201c0f98f2b98311deb200eb83be4321ca3ae594130c33f8a7ce8fe4e6fe8da42c9fa265abe30a5897cf527079ba9fc164ee6b2b0')
+            'b69985466c76f992bbe1adad5ae4cdf75beabe396a76240b2a523649240decbddf24768404deeea0e7f95d88fc031a30b35b46b60f16ce2af38a2b9a04fef14b')
 
 prepare(){
     tar xpf data.tar.xz -C ${srcdir}
