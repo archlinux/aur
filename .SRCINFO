@@ -1,0 +1,16 @@
+pkgbase = python2-mock
+	pkgdesc = Mocking and patching library for testing (backport unittest.mock) (deprecated)
+	pkgver = 3.0.5
+	pkgrel = 8
+	url = https://pypi.org/project/mock/3.0.5/
+	arch = any
+	license = BSD
+	checkdepends = python2-funcsigs
+	depends = python2
+	depends = python2-funcsigs
+	depends = python2-pbr
+	depends = python2-six
+	source = mock-3.0.5::https://github.com/testing-cabal/mock/archive/3.0.5.tar.gz
+	sha512sums = 9ab4f0c794f5701ba1367d982cf79a5662d4233753d12ed9c88ae20282db1f44be73f84c4d9f6d03ff64926b8c1b6d0c9a79b2a4724a3eb36c247ffd4ab03e2d
+
+pkgname = python2-mock
