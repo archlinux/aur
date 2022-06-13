@@ -14,4 +14,3 @@ pkgbase = python2-nose
 pkgname = python2-nose
 	depends = python2
 	depends = python2-setuptools
-

@@ -1,4 +1,5 @@
-# Maintainer: Konstantin Gizdov <arch@kge.pw>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Dan McGee <dan@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
