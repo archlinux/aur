@@ -47,5 +47,5 @@ package() {
   install -Dm644 etc/config.rktd "$pkgdir"/etc/config.rktd
   cp -r man "$pkgdir"/usr/share
   cp -r share/applications "$pkgdir"/usr/share
-  sed -i 's+.png++' "$pkgdir"/usr/share/slideshow.desktop
+  sed -i 's+.png++' "$pkgdir"/usr/share/applications/{drracket,slideshow}.desktop
 }
