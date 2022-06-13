@@ -4,16 +4,16 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20190518.11675
-pkgrel=1
+pkgver=20220528.13877
+pkgrel=2
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL')
-depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'qt5-base' 'libiconv')
+depends=('perl' 'guile1.8' 'texlive-core' 'python' 'libxext' 'freetype2'
+	 'qt5-svg' 'hicolor-icon-theme' 'gawk')
 # do not remove texlive-core dependency, as it is needed!
 optdepends=('transfig: convert images using fig2ps'
-            'gawk: conversion of some files'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
             'aspell: spell checking')
@@ -35,13 +35,6 @@ prepare() {
   svn export ${_pkgname} ${_pkgname}-build
 
   cd ${_pkgname}-build
-
-  # patch -Np1 -i ../0001-Fix-sage.patch
-
-  sed -i 's/env python/env python2/' \
-    plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
-    TeXmacs/misc/inkscape_extension/texmacs_reedit.py
-  sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
   sed -e 's/-Wno-deprecated-register//' -i src/CMakeLists.txt # Remove wrong flag on Linux
 }
 
@@ -55,7 +48,7 @@ build() {
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DGUILECONFIG_EXECUTABLE=/usr/bin/guile-config1.8
-  make -j$(nproc)
+  make
 }
 
 package() {
