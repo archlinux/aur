@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.0.22.r271.g6b4bd5a75
+pkgver=2.0.22.r339.gbdf141335
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -40,8 +40,6 @@ package() {
 	DESTDIR="${pkgdir}" cmake --install build
 	# For some reason, this isn't named correctly and we have to fix it to reflect the actual staticlib name.
 	sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
-	pwd
-	read
 	install -Dm644 SDL/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	chown -R root:root "$pkgdir"
 }

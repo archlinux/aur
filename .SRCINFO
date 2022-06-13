@@ -1,6 +1,6 @@
 pkgbase = sdl2-git
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)
-	pkgver = 2.0.22.r271.g6b4bd5a75
+	pkgver = 2.0.22.r339.gbdf141335
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = sdl2-git
 	optdepends = jack: JACK audio driver
 	optdepends = pipewire: PipeWire audio driver
 	optdepends = libdecor: Wayland client decorations
-	provides = sdl2=2.0.22.r271.g6b4bd5a75
+	provides = sdl2=2.0.22.r339.gbdf141335
 	conflicts = sdl2
 	conflicts = sdl2-minimal-hg
 	source = git+https://github.com/libsdl-org/SDL
