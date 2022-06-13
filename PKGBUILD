@@ -2,31 +2,37 @@
 
 _pkgname='pyTooling'
 pkgname=python-${_pkgname,,}
-pkgver=1.10.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions"
 arch=(any)
 url="https://github.com/pyTooling/$_pkgname"
 license=('Apache')
 depends=('python' 'python-ruamel-yaml')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-provides=('python-pytooling-packaging')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=(
+	'python-pytest-benchmark'
+	'python-pytest'
+	'python-anytree'
+	'python-itertree'
+	'python-numpy'
+)
 replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9b5e5fcc1e28cc0f1b2cd4ee9d2b34c9a5b6463a3835cf9aa5eacd4053858e9c')
+sha256sums=('bf6ed333992590257a472ecf98d2a94c2652d30228a7f80c6ae067f795d9a6e9')
 
 build() {
   cd "$_pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check(){
   cd "$_pkgname-$pkgver"
-  pytest tests/
+  # testsuite runs performance tests for 5 minutes
+  #pytest tests/
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
