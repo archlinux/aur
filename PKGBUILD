@@ -2,7 +2,7 @@
 
 pkgname=ncspot
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/hrkfdn/ncspot"
@@ -33,6 +33,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   #cargo install --root "${pkgdir}/usr" --path "${srcdir}/${pkgname}-${pkgver}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 644 "misc/ncspot.desktop" "${pkgdir}/usr/share/applications/ncspot.desktop"
   install -Dm 644 "images/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ncspot.svg"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
