@@ -1,21 +1,15 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
-pkgname=easymorse
-pkgver=601035b
+pkgname=easymorse-git
+pkgver=b8748c3
 pkgrel=1
-pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW (Qt5 version)"
+pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW"
 arch=('any')
 license=('GPL3')
-makedepends=('make' 'gcc' 'qt5-multimedia')
-depends=('qt5-base')
+makedepends=('make' 'gcc' 'qt6-multimedia')
+depends=('qt6-base')
 url="https://bitbucket.org/Artemia/easymorse"
 source=($pkgname::"git+$url.git")
 sha256sums=('SKIP')
-#fallback to qt5 version
-prepare(){
-    cd $srcdir/$pkgname
-    git checkout $pkgver 
-}
-
 build(){
     cd $srcdir/$pkgname
     qmake CONFIG+=release
