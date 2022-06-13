@@ -17,10 +17,16 @@ conflicts=('lsyncd')
 source=("git+https://github.com/lsyncd/lsyncd.git"
         "lsyncd.service"
         )
-
 sha256sums=('SKIP'
             '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57'
             )
+_builddir=build
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -B "${_builddir}" -S .
+}
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -28,14 +34,13 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}/${_builddir}"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
     make -j$(nproc --ignore 1)
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}/${_builddir}"
     make DESTDIR="${pkgdir}" install
     install -Dm 644 "${srcdir}/lsyncd.service" "${pkgdir}/usr/lib/systemd/system/lsyncd.service"
 }
