@@ -22,20 +22,16 @@ sha256sums=('SKIP'
             )
 _builddir=build
 
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man -B "${_builddir}" -S .
-}
-
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/release-//;s/\([^-]*-g\)/r\1/;s/-/./g' 
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}/${_builddir}"
+    cd "${srcdir}/${_pkgname}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man -B "${_builddir}" -S .
 
+    cd "${_builddir}"
     make -j$(nproc --ignore 1)
 }
 
