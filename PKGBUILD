@@ -1,21 +1,21 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: farwayer <farwayer@gmail.com>
 
-_gemname=excon
-pkgname=ruby-$_gemname
-pkgver=0.92.1
+pkgname=ruby-excon
+_gemname="${pkgname#ruby-}"
+pkgver=0.92.3
 pkgrel=1
-pkgdesc="EXtended http(s) CONnections"
+pkgdesc='EXtended http(s) CONnections'
 arch=('any')
-url="https://github.com/excon/excon"
+url='https://github.com/excon/excon'
 license=('MIT')
 depends=('ruby')
 makedepends=('rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('48444b667faf01bd74416090d2982bec5284694cdd843954c30c3a68cab0c45e10968e9a2f6d465daa70c4724eadd340548287dd18cfaf10186a9d9e960f0124')
-b2sums=('feebbf8987afb2be0c51fc0e082442045cdddf315e707d3621545fcbcdb8c582f5abfeb4dae60a32000a423eeac7530a1f327284516cd8ca5af981fda06b3ea2')
+sha512sums=('8f739431a44dcdd991e45dad3a220814047831b3dc1debbaba0ee63ec34f66c33299016c63211403f8720eaa582063ebd38c11dd76015eae3c56dfab036b4a38')
+b2sums=('3736fe39b07c5398f253644b26eb15161454c2fe3acba21738c548184b6afe7cab2f0fbe34111c74c2fe656a68a3c2035ec64ae836c006603943d45f698e040e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
