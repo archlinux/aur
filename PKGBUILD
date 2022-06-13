@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r60450.02986e91d80
+pkgver=r60509.daa96893571
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -58,9 +58,9 @@ _sse_workaround=1
 #
 # fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
 #
-_libdvdcss_version="1.4.2-Leia-Beta-5"
+_libdvdcss_version="1.4.3-Next-Nexus-Alpha2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2"
-_libdvdread_version="6.0.0-Leia-Alpha-3"
+_libdvdread_version="6.1.3-Next-Nexus-Alpha2"
 _ffmpeg_version="4.4.1-Nexus-Alpha1"
 _fmt_version="8.0.1"
 _spdlog_version="1.9.2"
@@ -97,9 +97,9 @@ noextract=(
   "libudfread-$_libudfread_version.tar.gz"
 )
 b2sums=('SKIP'
-        '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
+        'c7499013a44e81e1aac736f40802db4bc2a8f70664f4d15a81b9c717861894d99a0e2b58ec922ed2f80f9335cc7647b2607daee2a297252827b17075a50ae739'
         '021da81f82da0a6a47dfa1019ef07f1879cb3fcc41e790726b0afd5ba0591d24c58399c28f8e3e9b60fe4b078853236e1cb49c0c7a57c1508e6cc4d2f8ecaabd'
-        '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
+        'f84f6ac77ba3fb94cf513d602c79014eb34c7d16a4c7c091a6054d7e121175b8c53a8f1339a6e5baa2d9687e8b6d8439ce76781c49612d26593a20d5ede6a388'
         '51d310e7000aeba657d55341c5fdb540474e197b85062228ab4b314c8309ec11985aa7f105193333fc6106529e8e58c86eafe268190894be8532d0e0b9065fa6'
         'b64a4686050a9edb4e5d3ec28a3727a847105ae0b12a89461841e14d6c9c442e391cdcfbca39b2d141d04cdb10d00516ecc8bf605867c792b7d2d6bc99c7b2bc'
         '8e4cce17887509512c0d3a63485f9271098bdf7f853c2a07adb8d46459c1039d93d16d05cb60963c1bbc754f6af6ba3af1a66c69bc421bf234f676231c8c1315'
