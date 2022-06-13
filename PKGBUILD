@@ -1,8 +1,8 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
-pkgname=easymorse-git
+pkgname=easymorse
 pkgver=601035b
 pkgrel=1
-pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW"
+pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW (Qt5 version)"
 arch=('any')
 license=('GPL3')
 makedepends=('make' 'gcc' 'qt5-multimedia')
