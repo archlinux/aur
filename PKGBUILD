@@ -3,13 +3,13 @@
 _pkgname=wanderers
 pkgname=${_pkgname}-git
 pkgver=r97.054c1cd
-pkgrel=1
+pkgrel=2
 pkgdesc="An open world adventure and dungeon crawling game"
 arch=('x86_64')
 url="https://github.com/a-nikolaev/wanderers"
 license=('GPL3')
 depends=('ocaml' 'ocaml-graphics' 'sdl2' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_net' 'sdl2_image')
-makedepends=('sdl2' 'sdl2_mixer' 'sdl2_ttf' 'sdl2_net' 'sdl2_image')
+makedepends=('git')
 source=(
 "${pkgname%-*}::git+https://github.com/a-nikolaev/wanderers.git"
 game.save
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-  make
+  make 
 }
 
 package() {
