@@ -1,0 +1,21 @@
+pkgbase = python-resnest
+	pkgdesc = Split-Attention Network, A New ResNet Variant
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/zhanghang1989/ResNeSt
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-nose
+	depends = python-pytorch
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-requests
+	depends = python-iopath
+	depends = python-fvcore
+	source = python-resnest-0.0.5.tar.gz::https://github.com/zhanghang1989/ResNeSt/archive/refs/tags/v0.0.5.tar.gz
+	md5sums = 7d15e0681ba1ea12f9ec63b0d4842ed6
+
+pkgname = python-resnest
