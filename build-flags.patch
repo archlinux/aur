@@ -1,0 +1,98 @@
+diff -aur a/hpi-cli-apps/Makefile b/hpi-cli-apps/Makefile
+--- a/hpi-cli-apps/Makefile	2021-10-19 20:33:01.000000000 +0200
++++ b/hpi-cli-apps/Makefile	2022-04-30 11:07:14.963316255 +0200
+@@ -33,12 +33,12 @@
+ LD = $(CROSS_COMPILE)ld
+
+ #WARNFULL_CFLAGS = -Wextra -pedantic -std=gnu99 -Wconversion
+-CFLAGS = -pipe -g -O2 -Wall -DHPI_OS_LINUX -DHPI_BUILD_EXCLUDE_ALL_DEPRECATED \
++CFLAGS += -pipe -g -O2 -Wall -DHPI_OS_LINUX -DHPI_BUILD_EXCLUDE_ALL_DEPRECATED \
+ 	$(WARNFULL_CFLAGS)
+
+ # Find out if this is a 64-bit build
+ ar_gcc_arch=$(shell $(CC) -dumpmachine | awk -F- '{ print $$1 }')
+-ifeq ($(ar_gcc_arch),x86_64)
++ifneq (,$(filter $(ar_gcc_arch),x86_64 aarch64))
+ 	CFLAGS += -D HPI_BUILD_64BIT
+ endif
+
+@@ -48,31 +48,31 @@
+ bin-install-dir ?= $(install-prefix)/bin
+
+ asihpirds: $(asihpirds-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asihpi_si4688: $(asihpi-si4688-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asihpitest: $(asihpitest-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asihpirec: $(asihpirec-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -DASIHPIREC -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -DASIHPIREC -o $@ $^ -lhpi -lm
+
+ asihpiplay: $(asihpirec-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -DASIHPIPLAY -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -DASIHPIPLAY -o $@ $^ -lhpi -lm
+
+ asihpitune: $(asihpitune-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asihpiassert: $(asihpiassert-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asihpibl: $(asihpibl-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o $@ $^ -lhpi -lm
+
+ asi_firmware_updater: $(asi-firmware-updater-srcs)
+-	$(CC) $(CFLAGS) $(INCLUDES) -D HPI_BUILD_INCLUDE_INTERNAL -o $@ $^ -lhpiudp -lm -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -D HPI_BUILD_INCLUDE_INTERNAL -o $@ $^ -lhpiudp -lm -lpthread
+
+ setup: $(src-dist-files)
+
+diff -aur a/hpi-lib/Makefile b/hpi-lib/Makefile
+--- a/hpi-lib/Makefile	2021-10-19 20:33:01.000000000 +0200
++++ b/hpi-lib/Makefile	2022-04-30 11:03:32.436651256 +0200
+@@ -52,7 +52,7 @@
+
+ # Find out if this is a 64-bit build
+ ar_gcc_arch=$(shell $(CC) -dumpmachine | awk -F- '{ print $$1 }')
+-ifeq ($(ar_gcc_arch),x86_64)
++ifneq (,$(filter $(ar_gcc_arch),x86_64 aarch64))
+ 	CFLAGS += -D HPI_BUILD_64BIT
+ 	lib-install-dir-candidates = $(install-prefix)/lib64 $(install-prefix)/lib
+ else
+@@ -83,7 +83,7 @@
+ 	$(AR) $(ARFLAGS) $@ $^
+ libhpi.so: $(libhpi-objs)
+ 	-rm -f $@
+-	$(CC) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -o $@.$(lib-version-suffix)
++	$(CC) $(LDFLAGS) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -o $@.$(lib-version-suffix)
+ 	ln -sf $@.$(lib-version-suffix) $@.$(LIB_VER_MAJOR)
+ 	ln -sf $@.$(lib-version-suffix) $@
+
+@@ -99,7 +99,7 @@
+ 	$(AR) $(ARFLAGS) $@ $^
+ libhpiudp.so: $(libhpiudp-objs)
+ 	-rm -f $@
+-	$(CC) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -lpthread -o $@.$(lib-version-suffix)
++	$(CC) $(LDFLAGS) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -lpthread -o $@.$(lib-version-suffix)
+ 	ln -sf $@.$(lib-version-suffix) $@.$(LIB_VER_MAJOR)
+ 	ln -sf $@.$(lib-version-suffix) $@
+
+@@ -115,7 +115,7 @@
+ 	$(AR) $(ARFLAGS) $@ $^
+ libhpimux.so: $(libhpimux-objs)
+ 	-rm -f $@
+-	$(CC) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -lpthread -o $@.$(lib-version-suffix)
++	$(CC) $(LDFLAGS) --shared -fPIC -Wl,-soname,$@.$(LIB_VER_MAJOR) $^ -lm -lrt -lpthread -o $@.$(lib-version-suffix)
+ 	ln -sf $@.$(lib-version-suffix) $@.$(LIB_VER_MAJOR)
+ 	ln -sf $@.$(lib-version-suffix) $@
+
