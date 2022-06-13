@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=blocky
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="Fast and lightweight DNS proxy as ad-blocker"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'blocky.service'
         'blocky.sysusers'
         'blocky.yml')
-sha256sums=('24e0947544a2fa1a9bc95944fc1b6ac96fbdecd98838771bb8020766276234c9'
+sha256sums=('25aa341a836ded4f2c60eb7e3a578d8723148c327c297fdc572c342f8fc79c41'
             '21a56bc11ad08186b0f6d3394106500c8e662662fe9af5bed56d788fc3c91ebb'
             '8ef3cfa71ee8d2ad427dc5d83df7967a6b3e6e1dfafaec8cb4520e7269c2471b'
             'b2240a9a3a0d732920c481b3d6c80c8d78d7f8153129c8cdf33851c9b16e6e39')
