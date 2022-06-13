@@ -1,6 +1,6 @@
 pkgbase = gerbolyze
 	pkgdesc = A high-resolution image-to-PCB converter
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://gerbolyze.jaseg.net/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gerbolyze
 	depends = python-text-unidecode
 	depends = resvg-cairo
 	depends = python-gerbonara
-	source = gerbolyze-3.0.3::git+https://gitlab.com/gerbolyze/gerbolyze.git#tag=v3.0.3
+	source = gerbolyze-3.0.4::git+https://gitlab.com/gerbolyze/gerbolyze.git#tag=v3.0.4
 	sha256sums = SKIP
 
 pkgname = gerbolyze
