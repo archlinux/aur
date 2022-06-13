@@ -1,8 +1,9 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=python2-pathlib2
 _name=${pkgname#python2-}
 pkgver=2.3.7.post1
-pkgrel=1
+pkgrel=2
 pkgdesc='Backports of the pathlib module'
 arch=('any')
 _pypi='https://pypi.python.org'
@@ -16,8 +17,9 @@ sha256sums=('9fe0edad898b83c0c3e199c842b27ed216645d2e177757b2dd67384d4113c641')
 prepare() {
   cd "$srcdir/$_name-$pkgver"
 
-  # Typing isn't available, remove all but comments that depend on it
+  # Remove all but comments that depend on typing
   sed -i 'N;N;s-^.*TypeVar.*--' pathlib2/__init__.py
+  sed -ri 's-(,|\s)*.typing.--' setup.py
 }
 
 build() {
