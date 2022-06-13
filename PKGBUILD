@@ -12,12 +12,12 @@ makedepends=(go jq)
 optdepends=(
 #	"ff2mpv: browser extension"
 	"chromium: supported browser"
-	"firefox: supported browser, untested"
+	"firefox: supported browser"
 	"firefox-developer-edition: supported browser"
-	"google-chrome: supported browser, untested"
-	"librewolf: supported browser, untested"
-	"microsoft-edge: supported browser, untested"
-	"vivaldi: supported browser, untested"
+	"google-chrome: supported browser"
+	"librewolf: supported browser"
+	"microsoft-edge: supported browser"
+	"vivaldi: supported browser"
 )
 conflicts=("${pkgname%-git}" "ff2mpv-native-messaging-host-git" "ff2mpv-native-messaging-host-librewolf-git")
 provides=("${pkgname%-git}" "ff2mpv-native-messaging-host-git" "ff2mpv-native-messaging-host-librewolf-git")
