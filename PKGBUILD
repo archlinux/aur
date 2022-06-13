@@ -1,19 +1,18 @@
-# Maintainer:xgdgsc<xgdgsc at gmail dot com>
-# Contributor R:ay Rashif <schiv@archlinux.org>
+# Maintainer: Alexander Bocken <alexander@bocken.org>
+# Contributor: xgdgsc<xgdgsc at gmail dot com>
+# Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-#pkgbase=opencv
 pkgname=opencv-docs
-_realname=opencv
-pkgver=4.0.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library docs"
 arch=('any')
 license=('BSD')
 url="http://opencv.org/"
 
-source=("http://downloads.sourceforge.net/opencvlibrary/$pkgver/$_realname-$pkgver-docs.zip")
-md5sums=('36c14f195c84336b5c94373c309d4b2a')
+source=("$pkgname-$pkgver.tar.xz::https://docs.opencv.org/$pkgver.tar.xz")
+sha256sums=('62a9e135cde20c7f8582222d3b686122bc9e7673a09b93cc7bed2030301d3936')
 
 build() {
   cd "$srcdir/$pkgver"
