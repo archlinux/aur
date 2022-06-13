@@ -9,18 +9,19 @@ reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
 pkgver=1.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
 url="https://github.com/GoogleContainerTools/${reponame}"
 license=("Apache")
-depends=("docker")
 makedepends=("go")
 optdepends=(
+  "docker: One of tools for building images support by skaffold"
   "minikube: To use Minikube"
-  "kubectl: For Kubernetes support"
+  "kubectl: One of tools for deploying applications support by skaffold"
   "bash-completion: Tab autocompletion"
 )
+
 source=(
   "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
 )
