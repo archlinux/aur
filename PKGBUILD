@@ -1,6 +1,6 @@
 # Maintainer: CYBERDEViL <cyberdevilnl at protonmail dot com>
 pkgname=searx-qt
-_pkgver=0.3-beta1
+_pkgver=0.3-beta2
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Lightweight desktop application for Searx"
@@ -11,7 +11,7 @@ depends=('python-requests' 'python-pyqt5')
 optdepends=('python-pysocks: socks proxy support')
 makedepends=('gettext' 'qt5-tools')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('33f526d594423ec3cc8bfef417bc6bf8ba270eb0ba22c81a218b63de43ef64c3')
+sha256sums=('eba77af3f90f2fc953e98ce3d0239c650a55cbab482c507fba1787fe4e04dd6b')
 
 build() {
     cd "$srcdir/$pkgname"
