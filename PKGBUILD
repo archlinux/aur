@@ -11,12 +11,13 @@
 _name=scipy
 pkgname=python2-scipy
 pkgver=1.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=(x86_64)
 url="https://www.scipy.org/"
 license=(BSD)
 makedepends=(gcc-fortran python2-numpy python2-setuptools)
+checkdepends=(python2-pytest)
 depends=(python2-numpy)
 optdepends=('python2-imaging: for image saving module')
 #source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-$pkgver.tar.xz")
@@ -30,6 +31,18 @@ prepare() {
        sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
+}
+
+check() {
+  cd scipy-$pkgver
+
+  # we need to do a temp install so we can import scipy
+  # also, the tests must not be run from the scipy source directory
+  python2 setup.py config_fc --fcompiler=gnu95 install \
+    --prefix=/usr --root="$srcdir"/test --optimize=1
+  export PYTHONPATH="$srcdir"/test/usr/lib/python2.7/site-packages
+  cd "$srcdir"
+  python2 -c "from scipy import test; test('full')"
 }
 
 build() {
