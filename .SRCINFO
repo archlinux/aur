@@ -6,6 +6,7 @@ pkgbase = devilspie2-git
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = lua>=5.1
 	depends = gtk3
 	depends = libwnck3

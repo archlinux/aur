@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.nongnu.org/$_pkgname/"
 license=('GPL3')
 depends=('lua>=5.1' 'gtk3' 'libwnck3')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 # Alternative: https://git.savannah.gnu.org/git/$_pkgname.git
