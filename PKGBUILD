@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=python-pycamilladsp-plot
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Plotting tools for CamillaDSP'
 url=https://github.com/HEnquist/pycamilladsp-plot
@@ -10,7 +10,7 @@ arch=(any)
 depends=(python-jsonschema python-matplotlib python-numpy)
 makedepends=(python)
 source=(https://github.com/HEnquist/pycamilladsp-plot/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(ca83ca778f4afc01578f3b5eb97538c2298baaceafe93ac52d41e49f30b01fd6)
+sha256sums=('8c980dc694f3edf2ef9f2e62477fa84cce8a17c1c8f4526906630efae53e78dd')
 
 package() {
 	cd $srcdir/pycamilladsp-plot-$pkgver
