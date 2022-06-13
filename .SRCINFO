@@ -1,12 +1,12 @@
 pkgbase = runitor-bin
 	pkgdesc = A command runner with healthchecks.io integration
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/bdd/runitor
 	arch = x86_64
 	arch = aarch64
 	license = 0BSD
-	source = https://github.com/bdd/runitor/releases/download/v0.9.2/runitor-v0.9.2-linux-amd64
-	sha512sums = e87eb39a086cfcdaa664e00460021d4027b1379b486fbddfe78c84ca3cee905ea0e714bfd1dc4568dfdf0c44ddb81b1e9b8b2bcf3741c6407de986c42bd9d906
+	source = https://github.com/bdd/runitor/releases/download/v0.10.1/runitor-v0.10.1-linux-amd64
+	sha512sums = 6678ac3b7c8f6da527ecb0a40246c3aecb07e7161068a46d35b39e3edfc55cce60f57cbaa7df21dcfa65d6166d9c0a3f8c623398c141a708c04c100307b1a565
 
 pkgname = runitor-bin
