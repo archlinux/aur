@@ -2,13 +2,14 @@
 
 pkgname=go-cqhttp-bin
 
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc2
 pkgrel=1
 
 pkgdesc='Lightweight, native cross-platform implementation of cqhttp in Golang.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/Mrs4s/go-cqhttp/releases'
 license=('AGPL3')
+install=go-cqhttp-bin.install
 
 optdepends=('ffmpeg: support voice sending in any format')
 
@@ -21,10 +22,10 @@ source_x86_64=("${pkgname}-x86_64-${origin_pkgver}.tar.gz::https://github.com/Mr
 source_armv7h=("${pkgname}-armv7h-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_armv7.tar.gz")
 source_aarch64=("${pkgname}-aarch64-${origin_pkgver}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${origin_pkgver}/go-cqhttp_linux_arm64.tar.gz")
 
-sha512sums_i686=('cbdad06060ffd4ad77105cdf846743b96ce42c5a862c7fa86cf0941614d7645362eede8dea7b943e9855ea6f42b967ed46fb5bf60da6e044344f1e078856d74b')
-sha512sums_x86_64=('d088950d321a5804aa9e5e658575eddfba5eeff69dee0a35ff600396f15cc28fead5e3d3581ab78c27d39f48d40fa2ec0a5e6dd360b1fbdf2a026be2fc4028fa')
-sha512sums_armv7h=('9f54f98c47137819838e0051ec5cd85748669c2cbe7690f96465056c086de6c25004c7228d78f314bad7ea5ef6c4e9a6dc436888947c0d19ccb85c43ea6a2a2f')
-sha512sums_aarch64=('15467ee2275e33f9fac77bf21cdbac7bb86553875b6f09c6f279c0d28a4eb1aeb49ade76fd251d66bbc46cdc2a054e384ae2e799c7e6c47bb382a18f3d8d755a')
+sha512sums_i686=('00176676b4f203a8018ea82ef7bd862aeddcce2ec373a093cbcb8d6007dac333ff6d10ed2935e3a407900349d3b8fd260caca529cb104c1560f2bf8a21fcdd29')
+sha512sums_x86_64=('53f2b3e138b1ecad1e96416b6185151f3314ff709572e9cf5e6476d115fd651a63c0408703abc0d43661bc30e93d2ab31fbb279bf266d711428aa532231d8af7')
+sha512sums_armv7h=('2c8e05b815f2bdccc937519a9f7f3434754c415ea235947870e777b8af18742d3176d18a1750f8e4c2144db165be2cd7cff8f098d25dd4b2a60db49b5def5330')
+sha512sums_aarch64=('fb4affd44a07158985b3cfeba7c4a0b3a8172170d49ed461f73febbfe53f68236d64bcd128ba6a1b94b9c6a375434fbae3cdc71e98892b1a2ded673684eb6a90')
 
 package() {
     cd "${srcdir}"
