@@ -1,10 +1,10 @@
-# Maintainer: Deon Spengler <deon at spengler dot co dot za>
+# Maintainer: Deon Spengler <deon@spengler.co.za>
 # Contributor:  DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
 pkgdesc="application server used by SOGo"
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 arch=(x86_64)
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
