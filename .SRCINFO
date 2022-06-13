@@ -1,10 +1,11 @@
 pkgbase = r-autotuner
 	pkgdesc = Automated parameter selection for untargeted metabolomics data processing
-	pkgver = 1.7.0
+	pkgver = 1.10.0
 	pkgrel = 2
 	url = https://bioconductor.org/packages/Autotuner
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = r
 	depends = r-assertthat
 	depends = r-biobase
@@ -19,7 +20,7 @@ pkgbase = r-autotuner
 	optdepends = r-mtbls2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Autotuner_1.7.0.tar.gz
-	sha256sums = 1435fc2ffe16942d5dc2642f645c63d2c56ad28434441c49424077bb8c7e074c
+	source = git+https://git.bioconductor.org/packages/Autotuner
+	sha256sums = SKIP
 
 pkgname = r-autotuner
