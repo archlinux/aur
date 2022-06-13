@@ -12,7 +12,7 @@ arch=('x86_64')
 url='http://steghide.sourceforge.net'
 license=('GPL')
 depends=('libmcrypt' 'gcc-libs' 'mhash' 'libjpeg' 'zlib')
-source=("https://iweb.dl.sourceforge.net/project/steghide/steghide/${pkgver}/steghide-${pkgver}.tar.gz"
+source=("steghide-${pkgver}.tar.gz::https://sourceforge.net/projects/steghide/files/steghide/${pkgver}/steghide-${pkgver}.tar.gz/download"
         'buildsystem.patch'
         'gcc-4.2.patch'
          "${pkgname}-climits.patch"

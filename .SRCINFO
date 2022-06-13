@@ -10,7 +10,7 @@ pkgbase = steghide
 	depends = mhash
 	depends = libjpeg
 	depends = zlib
-	source = https://iweb.dl.sourceforge.net/project/steghide/steghide/0.5.1/steghide-0.5.1.tar.gz
+	source = steghide-0.5.1.tar.gz::https://sourceforge.net/projects/steghide/files/steghide/0.5.1/steghide-0.5.1.tar.gz/download
 	source = buildsystem.patch
 	source = gcc-4.2.patch
 	source = steghide-climits.patch
@@ -22,4 +22,3 @@ pkgbase = steghide
 	md5sums = 6dd60a84fccca270fa7315f1102454ff
 
 pkgname = steghide
-
