@@ -62,7 +62,7 @@ package() {
 
   DESTDIR="$pkgdir" ninja -C build install
 
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 
   mv "$pkgdir/usr/bin/enlightenment_start" "$pkgdir/usr/bin/enlightenment_start_real"
