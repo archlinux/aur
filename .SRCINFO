@@ -1,7 +1,7 @@
 pkgbase = amdfand-bin
 	pkgdesc = AMDGPU fan speed management tool
-	pkgver = 1.0.9
-	pkgrel = 6
+	pkgver = 1.0.13
+	pkgrel = 1
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = amdfand-bin
 	optdepends = amdguid-glow-bin
 	optdepends = amdguid-wayland-bin
 	optdepends = amdvold-bin
-	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.9/amdfand.tar.gz
-	md5sums = c95a5072f525096b9e5f13e279b92864
+	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.13/amdfand.tar.gz
+	md5sums = 310d64520724a7b06c265bb79297213b
 
 pkgname = amdfand-bin
