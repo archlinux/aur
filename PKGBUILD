@@ -28,7 +28,7 @@ package() {
     install -dm755 $pkgdir/opt/$pkgname
     cp -r $pkgname/* $pkgdir/opt/$pkgname
     cd $pkgdir/usr/bin
-    ln -s ../../opt/$pkgname/EasyMorse ./easymorse
+    ln -s ../../opt/$pkgname/easymorse ./easymorse
     echo -e "Done!\nAll the source files are located in /opt/$pkgname!"
 }
 
