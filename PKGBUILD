@@ -9,7 +9,7 @@
 _base=petsc
 pkgname=${_base}-complex
 pkgver=3.17.2
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -23,6 +23,7 @@ conflicts=("${_base}")
 provides=("${_base}=${pkgver}")
 depends=('python-numpy' 'openmpi' 'boost' 'lapack')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython')
+checkdepends=('openssh')
 optdepends=('trilinos: support for trilinos'
   'ptscotch: support for ptscotch sequential and parallel graph partitioning library'
   'parmetis: support for parmetis parallel graph partitioning library'

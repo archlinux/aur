@@ -1,12 +1,13 @@
 pkgbase = petsc-complex
 	pkgdesc = Portable, extensible toolkit for scientific computation (complex scalars)
 	pkgver = 3.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://petsc.org
 	install = petsc.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD-2-clause
+	checkdepends = openssh
 	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = cmake
