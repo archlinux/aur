@@ -10,6 +10,6 @@ pkgbase = linux-preserve-modules
 	source = linux-preserve-modules
 	sha256sums = 666c8f92f798a006b83740afae4dc832e4d38209eb866b2019cb32b8798bfdbf
 	sha256sums = 995a5f75dde50626fdf002f1de18fbd06f3b39a5c50d9ea2d44927f7bede11bc
-	sha256sums = e8521c527f0c730799f4bca024c22ccc07662383213e04f4474b2e5166ea709f
+	sha256sums = 6a4ea823aa6020252fdf648792745a731e43a93fd293a663d162ebcf5da3ca5d
 
 pkgname = linux-preserve-modules
