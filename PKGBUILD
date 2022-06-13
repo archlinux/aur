@@ -2,7 +2,7 @@
 
 pkgbase=amdgpu-full-bin
 pkgname=amdgpu-full-bin
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="AMDGPU management tools"
 url="https://github.com/Eraden/amdgpud"

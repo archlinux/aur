@@ -1,6 +1,6 @@
 pkgbase = amdgpu-full-bin
 	pkgdesc = AMDGPU management tools
-	pkgver = 1.0.8
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
