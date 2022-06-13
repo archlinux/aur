@@ -1,26 +1,30 @@
 # Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
+# Maintainer: Jerry Y. Chen <chen@jyny.dev>
 
 pkgname=skaffold-bin
-_pkgname="${pkgname%-bin}"
-pkgver=1.34.0
+reponame=skaffold
+provides=('skaffold')
+conflicts=('skaffold')
+pkgver=1.37.0
 pkgrel=1
-pkgdesc='Command line tool that facilitates continuous development for Kubernetes applications'
-arch=('x86_64')
-_goos='linux'
-_goarch='amd64'
-url='https://skaffold.dev'
-license=('Apache')
-optdepends=('bash-completion: for tab completion')
-provides=("$_pkgname")
-conflicts=(
-	"$_pkgname"
-	"$_pkgname-git"
+pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
+arch=("x86_64")
+url="https://github.com/GoogleContainerTools/${reponame}"
+license=("Apache")
+depends=("docker")
+optdepends=(
+  "minikube: To use Minikube"
+  "kubectl: For Kubernetes support"
+  "bash-completion: Tab autocompletion"
 )
-source=("$pkgname-$pkgver::https://storage.googleapis.com/$_pkgname/releases/v$pkgver/$_pkgname-$_goos-$_goarch")
-b2sums=(7016fccae6850b94b8808cd49654a440c5445352fd02d553d5f413d4b7ce67ea6bb42ea5da808f8c5dc6d35d726984df4ef7f4631c88e2dfbc9e417e674c2157)
+
+case "${CARCH}" in
+  x86_64)    _CARCH=amd64 && sha256sums=('a764386c6f18b678f2bb8782e4cdd62996be2cbce4cc81166dfc6d78569f0aa6');;
+  aarch64)   _CARCH=arm64 && sha256sums=('2e8fa25d9f47009e92e0524aacfe9dce89e82c7ed5fd2ce0de90a4edf8a9a62c');;
+esac
+
+source=("${reponame}-${pkgver}-${_CARCH}::https://github.com/GoogleContainerTools/skaffold/releases/download/v$pkgver/skaffold-linux-${_CARCH}")
 
 package() {
-	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
-	"$pkgdir/usr/bin/$_pkgname" completion bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-	"$pkgdir/usr/bin/$_pkgname" completion zsh | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+  install -Dm 0755 ${reponame}-${pkgver}-${_CARCH} "$pkgdir/usr/bin/skaffold"
 }

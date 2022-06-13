@@ -1,15 +1,17 @@
 pkgbase = skaffold-bin
-	pkgdesc = Command line tool that facilitates continuous development for Kubernetes applications
-	pkgver = 1.34.0
+	pkgdesc = A command line tool that facilitates continuous development for Kubernetes applications
+	pkgver = 1.37.0
 	pkgrel = 1
-	url = https://skaffold.dev
+	url = https://github.com/GoogleContainerTools/skaffold
 	arch = x86_64
 	license = Apache
-	optdepends = bash-completion: for tab completion
+	depends = docker
+	optdepends = minikube: To use Minikube
+	optdepends = kubectl: For Kubernetes support
+	optdepends = bash-completion: Tab autocompletion
 	provides = skaffold
 	conflicts = skaffold
-	conflicts = skaffold-git
-	source = skaffold-bin-1.34.0::https://storage.googleapis.com/skaffold/releases/v1.34.0/skaffold-linux-amd64
-	b2sums = 7016fccae6850b94b8808cd49654a440c5445352fd02d553d5f413d4b7ce67ea6bb42ea5da808f8c5dc6d35d726984df4ef7f4631c88e2dfbc9e417e674c2157
+	source = skaffold-1.37.0-amd64::https://github.com/GoogleContainerTools/skaffold/releases/download/v1.37.0/skaffold-linux-amd64
+	sha256sums = a764386c6f18b678f2bb8782e4cdd62996be2cbce4cc81166dfc6d78569f0aa6
 
 pkgname = skaffold-bin
