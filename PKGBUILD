@@ -4,7 +4,7 @@
 pkgname='python2-pytest-runner'
 _name="${pkgname#python2-}"
 pkgver=5.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Invoke py.test as distutils command with dependency resolution'
 arch=('any')
 license=('MIT')
@@ -27,14 +27,14 @@ source=("${_tarname}.tar.gz::https://github.com/pytest-dev/pytest-runner/archive
 # source+=("${_name}-black-fix.patch::https://github.com/pytest-dev/pytest-runner/commit/18b8fa1ace1b4ac0dbd53e14940da27c10db650d.patch")
 b2sums=('0241c40b6a51c149a2e52e09fa9c16bbe26177a68c5c51f578008d79036b3bed3756fc6a8f15233030f7339b36b8a6562feb22acb65aaa44156ca1c9d8f54def')
 
-prepare() {
+# prepare() {
 #   # disable tests as they were only used for Python 3 and python2- dependencies for that are missing
 #   patch -d "${_tarname}" -p1 < "${_name}-black-fix.patch" || :
-
-  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
-}
+# }
 
 build() {
+  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+
   cd "${_tarname}"
   python2 setup.py build
 }
