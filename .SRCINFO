@@ -1,11 +1,11 @@
 pkgbase = qubes-meta-packages
 	pkgdesc = Meta packages for Qubes-specific components
-	pkgver = 4.0.11
+	pkgver = 4.0.12
 	pkgrel = 1
 	url = https://github.com/QubesOS/qubes-meta-packages
 	arch = x86_64
 	license = GPL
-	source = qubes-vm-dependencies::git+https://github.com/QubesOS/qubes-meta-packages.git?signed#tag=v4.0.11
+	source = qubes-vm-dependencies::git+https://github.com/QubesOS/qubes-meta-packages.git?signed#tag=v4.0.12
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
 	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494

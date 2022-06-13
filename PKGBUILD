@@ -4,7 +4,7 @@
 pkgbase=qubes-meta-packages
 pkgname=(qubes-vm-dependencies qubes-vm-recommended qubes-vm-repo)
 _gitname=${pkgname%-git*}
-pkgver=4.0.11
+pkgver=4.0.12
 pkgrel=1
 pkgdesc="Meta packages for Qubes-specific components"
 arch=("x86_64")
