@@ -1,15 +1,19 @@
 pkgbase = python-pyclipper
 	pkgdesc = Cython wrapper for the C++ translation of the Angus Johnson’s Clipper library
-	pkgver = 1.3.0.post2
+	pkgver = 1.3.0.post3
 	pkgrel = 1
 	url = https://github.com/fonttools/pyclipper
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm-git-archive
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-1.3.0.post2.tar.gz
-	sha256sums = c096703dc32f2e4700a1f7054e8b58c29fe86212fa7a2c2adecb0102cb639fb2
+	source = https://files.pythonhosted.org/packages/source/p/pyclipper/pyclipper-1.3.0.post3.tar.gz
+	sha256sums = 639fbc55569b94487f89261b1656e3e655d06888a582218c5432c426705d1f6f
 
 pkgname = python-pyclipper
