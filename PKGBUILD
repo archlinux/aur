@@ -3,7 +3,7 @@
 _gemname=fpm
 pkgname=$_gemname
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/${_gemname}"
@@ -14,15 +14,11 @@ depends=(ruby
          ruby-backports
          ruby-arr-pm
          ruby-clamp
-         ruby-childprocess
-         ruby-ffi
          ruby-git
          ruby-rexml
          ruby-xz
          ruby-pleaserun
          ruby-stud)
-# makedepends=(ruby-rspec
-#              ruby-insist)
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
 sha256sums=('84b6c3519cbadca010af1d23d04e634375f93337c0452eb7d1842b9103e38d14')
@@ -32,11 +28,6 @@ build() {
   sed -i 's/"clamp", "~> 1.0.0"/"clamp", ">= 1.0.0"/' fpm.gemspec
   make gem
 }
-
-# check() {
-#   cd $srcdir/$_gemname-$pkgver
-#   make test
-# }
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
