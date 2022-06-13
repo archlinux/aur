@@ -7,7 +7,7 @@
 pkgname='python2-bcrypt'
 _name="${pkgname#python2-}"
 pkgver=3.1.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Modern password hashing for your software and your servers'
 arch=('x86_64')
 url="https://pypi.org/project/${_name}/${pkgver}/"
