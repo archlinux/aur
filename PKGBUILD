@@ -2,9 +2,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-o_pkgname=kwallet
+_pkgname=kwallet
 pkgname=kwallet-secrets
-pkgver=5.94.0
+pkgver=5.95.0
 pkgrel=1
 pkgdesc='Secure and unified container for user passwords. Patched for org.freedesktop.secrets support'
 arch=(x86_64)
@@ -16,21 +16,21 @@ optdepends=('kwalletmanager: Configuration GUI')
 provides=(org.freedesktop.secrets kwallet)
 conflicts=(kwallet)
 groups=(kf5)
-source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$o_pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/frameworks/kwallet/-/merge_requests/11.patch)
-sha256sums=('01366b42754ee7543b67fe57deb39bc2a772923eda3e6ea70a59f8ef955e2a32'
+source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$_pkgname-$pkgver.tar.xz{,.sig}
+        secrets.patch::https://invent.kde.org/frameworks/kwallet/-/merge_requests/11.patch)
+sha256sums=('2dcf2bbee473795055bcb11d9f7e717c77c9f827aa21fbd0c11cf64fbc2d65be'
             'SKIP'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 options=(debug)
 
 prepare() {
-    cd "$o_pkgname-$pkgver"
-    patch -Np1 -i "${srcdir}/11.patch"
+    cd "$_pkgname-$pkgver"
+    patch -Np1 -i "${srcdir}/secrets.patch"
 }
 
 build() {
-  cmake -B build -S $o_pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
