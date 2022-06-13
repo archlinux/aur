@@ -5,8 +5,8 @@
 pkgname='python2-mock'
 _name="${pkgname#python2-}"
 pkgver=3.0.5
-pkgrel=8
-pkgdesc='Mocking and patching library for testing (backport unittest.mock) (deprecated)'
+pkgrel=9
+pkgdesc='Mocking and patching library for testing (backport of unittest.mock) (deprecated)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('BSD')
@@ -16,10 +16,9 @@ depends=(
   'python2-pbr'
   'python2-six'
 )
-checkdepends=('python2-funcsigs')
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}::https://github.com/testing-cabal/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('9ab4f0c794f5701ba1367d982cf79a5662d4233753d12ed9c88ae20282db1f44be73f84c4d9f6d03ff64926b8c1b6d0c9a79b2a4724a3eb36c247ffd4ab03e2d')
+b2sums=('b9c49b3627275889d73aff9ea9c7925093f9cafb304448b2f06eda2fff26152a031aafb4844537e4d58bc112709e59a44e08d32602776386a30d039743def29c')
 
 prepare() {
   cd "${_tarname}"
