@@ -1,17 +1,16 @@
 pkgbase = pdftilecut
 	pkgdesc = pdftilecut lets you sub-divide a PDF page(s) into smaller pages
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/oxplot/pdftilecut
 	arch = x86_64
 	license = BSD
-	makedepends = go>=1.13
+	makedepends = go>=1.18
 	makedepends = git
 	makedepends = yasm
 	makedepends = cmake
 	makedepends = coreutils
-	source = git+https://github.com/oxplot/pdftilecut#tag=v0.5
+	source = git+https://github.com/oxplot/pdftilecut#tag=v0.6
 	sha512sums = SKIP
 
 pkgname = pdftilecut
-
