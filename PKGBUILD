@@ -10,17 +10,26 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 
-### MERGE REQUESTS SELECTION
+### PACKAGE OPTIONS
 
+## MERGE REQUESTS SELECTION
 # Merge Requests List: ('579' '1154' '1441' '1877')
 _merge_requests_to_use=('1441' '1877')
+
+## Disable building a DOCS package
+# Remember to unset this variable when producing .SRCINFO
+: "${_disable_docs:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=mutter-performance
-pkgname=(mutter-performance mutter-performance-docs)
+if [ -n "$_disable_docs" ]; then
+  pkgname=mutter-performance
+else
+  pkgname=(mutter-performance mutter-performance-docs)
+fi
 pkgver=42.2+r11+gcd52c57bc
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -159,11 +168,21 @@ prepare() {
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-  arch-meson $pkgname build \
-    -D egl_device=true \
-    -D wayland_eglstream=true \
-    -D docs=true \
-    -D installed_tests=false
+
+  if [ -n "$_disable_docs" ]; then
+    arch-meson $pkgname build \
+      -D egl_device=true \
+      -D wayland_eglstream=true \
+      -D docs=false \
+      -D installed_tests=false
+  else
+    arch-meson $pkgname build \
+      -D egl_device=true \
+      -D wayland_eglstream=true \
+      -D docs=true \
+      -D installed_tests=false
+  fi
+
   meson compile -C build
 }
 
@@ -205,14 +224,19 @@ package_mutter-performance() {
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
-  _pick docs "$pkgdir"/usr/share/mutter-*/doc
+
+  if ! [ -n "$_disable_docs" ]; then
+    _pick docs "$pkgdir"/usr/share/mutter-*/doc
+  fi
 }
 
-package_mutter-performance-docs() {
-  provides=(mutter-docs)
-  conflicts=(mutter-docs)
-  pkgdesc+=" (documentation)"
-  depends=()
+if ! [ -n "$_disable_docs" ]; then
+  package_mutter-performance-docs() {
+    provides=(mutter-docs)
+    conflicts=(mutter-docs)
+    pkgdesc+=" (documentation)"
+    depends=()
 
-  mv docs/* "$pkgdir"
-}
+    mv docs/* "$pkgdir"
+  }
+fi
