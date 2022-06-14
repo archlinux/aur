@@ -1,7 +1,7 @@
 pkgbase = python-hydra
 	pkgdesc = A framework for elegantly configuring complex applications
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hydra.cc
 	arch = any
 	license = MIT
