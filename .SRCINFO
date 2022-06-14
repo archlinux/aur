@@ -1,13 +1,13 @@
 pkgbase = ps7b_libps3000a
 	pkgdesc = Library for PicoScope 3000a series in PicoScope 7 Beta
-	pkgver = 2.1.90_6r3176
+	pkgver = 2.1.89_6r3163
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps3000a/
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps3000a/libps3000a_2.1.90-6r3176_amd64.deb
-	md5sums = bdab93a8a593d81c5cb15cfffee8906a
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps3000a/libps3000a_2.1.89-6r3163_amd64.deb
+	md5sums = ca7216126f99b66e38f575af17afbb4c
 
 pkgname = ps7b_libps3000a
