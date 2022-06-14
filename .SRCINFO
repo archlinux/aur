@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 4.0.0.r18660.g5f74392dcb
+	pkgver = 4.0.0.r19766.g0e448365f6
 	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = i686
@@ -75,11 +75,11 @@ pkgbase = vlc-git
 	depends = libxpm
 	depends = libdca
 	depends = libproxy
-	depends = lua
+	depends = lua52
 	depends = libmatroska
 	depends = taglib
 	depends = libmpcdec
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = faad2
 	depends = libupnp
 	depends = libmad
@@ -168,7 +168,7 @@ pkgbase = vlc-git
 	optdepends = aom: AOM AV1 codec
 	optdepends = srt: SRT input/output plugin
 	optdepends = dav1d: dav1d AV1 decoder
-	provides = vlc=4.0.0.r18660.g5f74392dcb
+	provides = vlc=4.0.0.r19766.g0e448365f6
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
@@ -176,11 +176,9 @@ pkgbase = vlc-git
 	options = debug
 	options = !emptydirs
 	source = git+https://github.com/videolan/vlc.git
-	source = lua53_compat.patch
 	source = vlc-live-media-2021.patch
 	source = update-vlc-plugin-cache.hook
 	sha512sums = SKIP
-	sha512sums = 33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f
 	sha512sums = ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc
 	sha512sums = 2f1015af384559bf4868bb989c06a7d281a8e32afb175ef397dbf1671bae3540a3a6b073a74ed77ed82e79a81f964a5a58a98c2a3f1b5e5cd5e9ea60d58c737f
 
