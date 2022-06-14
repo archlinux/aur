@@ -1,7 +1,7 @@
 # Maintainer: Gamma <GammaFunction@vivaldi.net>
 pkgname=acolor-git
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 license=('ISC')
 pkgdesc='An extensible command colorizer with community scripts'
 url='https://github.com/xPMo/acolor'
