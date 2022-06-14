@@ -1,7 +1,7 @@
 # Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=dosbox-ece
-_pkgver=4477
+_pkgver=4479
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
@@ -18,7 +18,7 @@ source=(
   "dosbox-ece.png"
   "dosbox-ece.desktop"
 )
-sha256sums=('a4d4943d95d5cbf60387bd1f6f2da351922bf3a24007b2a08ea30795a55b39a5'
+sha256sums=('53621a1f62cc602c41b9c25b84cd1e5e13926ab315714eb1fafc3bc1119e51ec'
             'd119e08a87289ec279c6d794f9192c929893563ffdc9b5fe41a519f85d7b988d'
             'f8af5935e8a4d8d8472f491f5f9f2f57a4365b05f093c592d3504b6726afce5e')
 
