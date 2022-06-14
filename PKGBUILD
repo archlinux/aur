@@ -6,7 +6,7 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
-_fragment="#tag=v2.12.2"
+_fragment="#tag=v2.12.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
 pkgrel=1
@@ -40,8 +40,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr
         -DCMAKE_INSTALL_LIBDIR=lib
         -DCMAKE_BUILD_TYPE=Release
-        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
-        -DCOMPILE_CC_CORE_LIB_WITH_TBB=OFF
+        -DCCCORELIB_USE_CGAL:BOOL=ON
+        -DCCCORELIB_USE_TBB:BOOL=OFF
         -DWITH_FFMPEG_SUPPORT:BOOL=ON
         -DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg4.4
         -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib/ffmpeg4.4
@@ -63,8 +63,7 @@ build() {
         -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
         -DPLUGIN_STANDARD_QANIMATION:BOOL=ON
         -DPLUGIN_STANDARD_QBROOM:BOOL=ON
-        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib
-        -DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
+        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib-DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
         -DPLUGIN_STANDARD_QCOMPASS:BOOL=ON
         -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
         -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
