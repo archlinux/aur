@@ -1,7 +1,7 @@
 pkgbase = magpie
 	pkgdesc = Bidirectional NDP proxy and route maintainer to relay an IPv6 SLAAC network
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Menci/magpie
 	arch = any
 	license = MIT
