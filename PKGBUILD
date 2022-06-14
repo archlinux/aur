@@ -22,7 +22,7 @@ source=("${pkgname}::git+${_repo}.git#tag=${pkgver}_official_release")
 md5sums=('SKIP')
 
 prepare() {
-    cd "${pkgname}/yabause"
+    cd "${pkgname}/yabause" || exit
     
     if [[ -d build ]]; then
         rm -rf build
@@ -31,7 +31,9 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}/yabause/build"
+    export CFLAGS+=" -Wno-format -Wno-format-security"
+    export CXXFLAGS="${CFLAGS}"
+    cd "${pkgname}/yabause/build" || exit
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE='Release' \
