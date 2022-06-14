@@ -1,4 +1,4 @@
-# Maintainer: Simon <contact@swz.works>
+# Maintainer: Simon <contact at swz dot works>
 pkgname=rlbotgui-rust-git
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rlbot_gui
