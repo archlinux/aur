@@ -2,7 +2,7 @@
 
 pkgname=wind-bin
 _pkgname=wind
-pkgver=21.5.2.2
+pkgver=22.1.0.14
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -11,10 +11,13 @@ license=("unknown")
 depends=('libidn11')
 provides=("$_pkgname")
 install=wind-bin.install
-source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_${pkgver}_amd64.deb")
+source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wind.wft/com.wind.wft_${pkgver}_amd64.deb"
+"${_pkgname}.sh"
+)
 
 
-sha512sums=('cd062e107dd6703a9024cb66a3c199c9b5f481f8425c5c0b63f30d9499cf1155badfd0cb00472e4b3ffdd9095ebc34961edbbf28245521f329d441614e2ded8b')
+sha512sums=('3a41f85405e1b8b4859747d1adad90a4542b5f9c1b0ec0b0cc77f5d707b37e8bcf1e30eeedea9c54faddd6f419fddda0b3cd3bef3898efd445cf71b8e242f2aa'
+            'ccfa9c937df21012337c07dbcd8cbba977cb6cdad4e701d8396c260bc0876cd94d1bf57a8fd6b8dfac901c47bd4448f99232169bb3d10f49b16616caa7cc43a4')
 
 prepare(){
     cd ${srcdir}
@@ -24,25 +27,13 @@ prepare(){
 package(){
     cd $srcdir
     mkdir -p $pkgdir/opt
-    mv usr $pkgdir/
-    mv opt/apps/com.wind.wft/files   ${pkgdir}/opt/wind
-    mv opt/apps/com.wind.wft/entries/* ${pkgdir}/usr/share
+    cp -rf usr $pkgdir/
+    cp -rf opt/apps/com.wind.wft/files   ${pkgdir}/opt/wind
+    cp -rf opt/apps/com.wind.wft/entries/* ${pkgdir}/usr/share
     
-    sed -i "3,4c Exec=wind \nIcon=com.wind.wft" \
+    sed -i "s|^Exec=.*|Exec=wind|g;s|^Icon=.*|Icon=com.wind.wft|g" \
     $pkgdir/usr/share/applications/com.wind.wft.desktop
     
-    cd ${pkgdir}/opt/wind
-    
-    echo '''#!/bin/bash
-export LD_LIBRARY_PATH=/opt/wind/lib:/opt/wind/lib/3rd:/opt/wind/wbrowser:$LD_LIBRARY_PATH
-cd /opt/wind/bin
-./wmain
-
-''' >"$pkgdir"/opt/wind/wind
-    
-    chmod a+x $pkgdir/opt/wind/wind
-    mkdir -p $pkgdir/usr/bin
-    ln -s /opt/wind/wind $pkgdir/usr/bin/wind
-    
+    install -Dm755 "${_pkgname}.sh" ${pkgdir}/usr/bin/${_pkgname}
 }
  
