@@ -1,7 +1,7 @@
 pkgbase = ocaml-fieldslib
 	pkgdesc = OCaml record fields as first class values
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/fieldslib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ocaml-fieldslib
 	depends = ocaml>=4.08.0
 	depends = ocaml-base>=0.15.0
 	options = !strip
-	source = ocaml-fieldslib-1:0.15.0-1.tar.gz::https://github.com/janestreet/fieldslib/archive/v0.15.0.tar.gz
+	source = ocaml-fieldslib-1:0.15.0-2.tar.gz::https://github.com/janestreet/fieldslib/archive/v0.15.0.tar.gz
 	sha512sums = 75a2802a87b16ed741dc1e845b728eb9f53343b1cec37e09cad690b3af5e4f04439f406df52fe46f0672662e2de28bdc0c6eea78a82f1883ab2a852b9d8343d8
 
 pkgname = ocaml-fieldslib
