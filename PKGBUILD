@@ -2,7 +2,7 @@
 _projectname='ppxfind'
 pkgname="ocaml-$_projectname"
 pkgver='1.4'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Tool combining ocamlfind and ppx'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diml/$_projectname"
@@ -11,22 +11,18 @@ depends=('ocaml>=4.02.3' 'ocaml-findlib' 'ocaml-migrate-parsetree')
 makedepends=('dune>=2.0.0' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('49e2f5cb7fb31e8fc2d482097d1bc96c8915ab50ea37133366da03a9a5ca3604')
+sha512sums=('44beb6a723708a797a13fbe7f159708b88a2abf59338d9416bcf86b8f5ce650d99246d3488bd44e845f13e99e8d1e738456fe5b538f5a37803901dd9941c33bf')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
-
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -r "$pkgdir/usr/doc/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
