@@ -3,7 +3,7 @@
 
 pkgname=kronos
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sega Saturn emulator'
 arch=('i686' 'x86_64' 'pentium4')
 url="https://fcare.github.io"
@@ -16,8 +16,7 @@ depends=('freeglut'
          'qt5-base'
          'qt5-multimedia'
 	 'sdl2')
-makedepends=(
-	     "cmake"
+makedepends=("cmake"
 	     "git")
 source=("${pkgname}::git+${_repo}.git#tag=${pkgver}_official_release")
 md5sums=('SKIP')
