@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=gerbolyze
-pkgver=3.0.4
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="A high-resolution image-to-PCB converter"
 arch=('any')
