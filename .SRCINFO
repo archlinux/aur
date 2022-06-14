@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_log
 	pkgdesc = Ppx_sexp_message-like extension nodes for lazily rendering log messages
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_log
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = ocaml-ppx_log
 	depends = ocaml-sexplib>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_log-0.15.0-1.tar.gz::https://github.com/janestreet/ppx_log/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_log-0.15.0-2.tar.gz::https://github.com/janestreet/ppx_log/archive/v0.15.0.tar.gz
 	sha512sums = 1585f82615def2fc1c94853e9a1b9e3ebd2ef8193067f229f24580ea124c06736a2b361377801b9a44b7347e1938da051ed652764142e2270de3d3e8f375bf46
 
 pkgname = ocaml-ppx_log
