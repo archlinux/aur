@@ -1,6 +1,6 @@
 pkgbase = python-diffsims
 	pkgdesc = Python library for simulating diffraction.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://diffsims.rtfd.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-diffsims
 	depends = python-tqdm
 	depends = python-transforms3d
 	provides = diffsims
-	source = https://github.com/pyxem/diffsims/archive/v0.4.2.tar.gz
-	md5sums = 42a5b4fac37d49f28e28abe00c60809c
+	source = https://github.com/pyxem/diffsims/archive/v0.5.0.tar.gz
+	md5sums = 9aeccac54bfe969f79e85799cc644214
 
 pkgname = python-diffsims
