@@ -1,0 +1,49 @@
+From f783c72a35b0cbf8d04b9d9472e267c72c52e1ff Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 14 Jun 2022 23:13:06 +0200
+Subject: [PATCH 2/3] Fix building for mingw-w64 target
+
+---
+ CMakeLists.txt               | 2 ++
+ src/libjasper/CMakeLists.txt | 8 ++++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 52ad5a8..72257ec 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -723,10 +723,12 @@ message("JAS_INCLUDE_HEIC_CODEC: ${JAS_INCLUDE_HEIC_CODEC}")
+ # Check for the Math library.
+ ################################################################################
+ 
++if(NOT WIN32)
+ find_library(MATH_LIBRARY m)
+ if(NOT MATH_LIBRARY)
+ 	set(MATH_LIBRARY "")
+ endif()
++endif()
+ 
+ ################################################################################
+ # Perform shared library setup.
+diff --git a/src/libjasper/CMakeLists.txt b/src/libjasper/CMakeLists.txt
+index c0b19b3..9fab05f 100644
+--- a/src/libjasper/CMakeLists.txt
++++ b/src/libjasper/CMakeLists.txt
+@@ -182,6 +182,14 @@ target_include_directories(libjasper BEFORE PRIVATE
+ set_target_properties(libjasper PROPERTIES
+   OUTPUT_NAME jasper LINKER_LANGUAGE C)
+ 
++if (MINGW)
++    set_target_properties(libjasper
++                          PROPERTIES
++                          OUTPUT_NAME jasper
++                          RUNTIME_OUTPUT_NAME jasper-${JAS_SO_VERSION}
++                          ARCHIVE_OUTPUT_NAME jasper)
++endif()
++
+ if(MSVC)
+ 	target_compile_definitions(libjasper PRIVATE _CRT_SECURE_NO_WARNINGS)
+ 	target_compile_definitions(libjasper PRIVATE _CRT_SECURE_NO_DEPRECATE)
+-- 
+2.36.1
+

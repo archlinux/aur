@@ -1,7 +1,17 @@
-diff -Naur jasper-version-2.0.22-orig/src/libjasper/jp2/jp2_cod.h jasper-version-2.0.22/src/libjasper/jp2/jp2_cod.h
---- jasper-version-2.0.22-orig/src/libjasper/jp2/jp2_cod.h	2017-09-11 09:36:23.281414800 +0300
-+++ jasper-version-2.0.22/src/libjasper/jp2/jp2_cod.h	2017-09-11 13:16:28.075347800 +0300
-@@ -288,10 +288,10 @@
+From 4f15088f82a2a001f064cee1ef9cfe23d281e957 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 14 Jun 2022 23:12:32 +0200
+Subject: [PATCH 1/3] Fix exports
+
+---
+ src/libjasper/jp2/jp2_cod.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/libjasper/jp2/jp2_cod.h b/src/libjasper/jp2/jp2_cod.h
+index 81d3b7e..4f22fa3 100644
+--- a/src/libjasper/jp2/jp2_cod.h
++++ b/src/libjasper/jp2/jp2_cod.h
+@@ -288,10 +288,10 @@ typedef struct jp2_boxinfo_s {
  * Box class.
  \******************************************************************************/
  
@@ -16,12 +26,14 @@ diff -Naur jasper-version-2.0.22-orig/src/libjasper/jp2/jp2_cod.h jasper-version
  
  JAS_ATTRIBUTE_CONST
  static inline uint_least8_t JP2_DTYPETOBPC(uint_least8_t dtype)
-@@ -309,7 +309,7 @@
+@@ -309,6 +309,6 @@ static inline uint_least8_t JP2_BPCTODTYPE(uint_least8_t bpc)
  #define ICC_CS_YCBCR	0x59436272
  #define ICC_CS_GRAY	0x47524159
  
 -const jp2_cdefchan_t *jp2_cdef_lookup(jp2_cdef_t *cdef, int channo);
 +JAS_DLLEXPORT const jp2_cdefchan_t *jp2_cdef_lookup(jp2_cdef_t *cdef, int channo);
  
- 
  #endif
+-- 
+2.36.1
+

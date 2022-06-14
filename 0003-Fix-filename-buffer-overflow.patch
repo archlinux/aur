@@ -1,0 +1,46 @@
+From 5e697686ff137496f5ede4b1ee21d67ea682186a Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 14 Jun 2022 23:14:10 +0200
+Subject: [PATCH 3/3] Fix filename buffer overflow
+
+---
+ src/libjasper/include/jasper/jas_stream.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/libjasper/include/jasper/jas_stream.h b/src/libjasper/include/jasper/jas_stream.h
+index d8938d1..61a6e66 100644
+--- a/src/libjasper/include/jasper/jas_stream.h
++++ b/src/libjasper/include/jasper/jas_stream.h
+@@ -77,6 +77,7 @@
+ #include <jasper/jas_config.h> /* IWYU pragma: export */
+ 
+ #include <stdio.h>
++#include <limits.h>
+ #if defined(JAS_HAVE_FCNTL_H)
+ #include <fcntl.h>
+ #endif
+@@ -100,6 +101,12 @@ extern "C" {
+ #define O_BINARY	0
+ #endif
+ 
++#ifdef PATH_MAX
++#define JAS_PATH_MAX PATH_MAX
++#else
++#define JAS_PATH_MAX 4096
++#endif
++
+ /*
+  * Stream open flags.
+  */
+@@ -258,7 +265,7 @@ typedef struct {
+ typedef struct {
+ 	int fd;
+ 	int flags;
+-	char pathname[L_tmpnam + 1];
++	char pathname[JAS_PATH_MAX + 1];
+ } jas_stream_fileobj_t;
+ 
+ /* Delete underlying file object upon stream close. */
+-- 
+2.36.1
+
