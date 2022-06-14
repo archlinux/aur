@@ -3,7 +3,7 @@
 _projectname='core'
 pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -26,12 +26,6 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
-	for _copy in 'MLton-license.txt' 'strftime.js-licence.txt' 'THIRD-PARTY.txt'; do
-		install -Dm644 "$_copy" "$pkgdir/usr/share/doc/$pkgname/$_copy"
-	done
-
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	for _license in 'LICENSE.md' 'MLton-license.txt' 'strftime.js-licence.txt' 'THIRD-PARTY.txt'; do
-		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
