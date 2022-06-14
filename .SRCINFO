@@ -1,0 +1,12 @@
+pkgbase = sejda-console
+	pkgdesc = Shell interface for performing pdf manipulations
+	pkgver = 3.2.85
+	pkgrel = 1
+	url = www.sejda.org
+	arch = x86_64
+	license = AGPLv3
+	depends = jre-openjdk-headless>=1.8
+	source = sejda-console-3.2.85.zip::https://github.com/torakiki/sejda/releases/download/v3.2.85/sejda-console-3.2.85-bin.zip
+	sha256sums = a2380aff1904103317a92b61a2008e2018184de0a7ed58e2516bd1b3818a48bf
+
+pkgname = sejda-console
