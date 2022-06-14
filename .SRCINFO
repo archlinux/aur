@@ -1,26 +1,24 @@
 pkgbase = openixcard
 	pkgdesc = Open Source Version of Allwinner PhoenixCard on Linux
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/OpenixCard
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = glibc
 	depends = confuse
-	source = openixcard-1.0.1::git+https://github.com/YuzukiTsuru/OpenixCard.git#tag=1.0.1
+	source = openixcard-1.1.0::git+https://github.com/YuzukiTsuru/OpenixCard.git#tag=1.1.0
 	source = git+https://github.com/YuzukiTsuru/ColorCout.git
 	source = git+https://github.com/p-ranav/argparse.git
 	source = git+https://github.com/arun11299/cpp-subprocess.git
 	source = git+https://github.com/ArthurSonzogni/FTXUI.git
 	source = git+https://github.com/SemaiCZE/inicpp.git
-	source = 0001-DO-NOT-MERGE-Workaround-for-3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f53c3d2493ceaf32f277bbba24be58c684f191e284b0b28fbec5c6eb7e9b8a3e
 
 pkgname = openixcard
