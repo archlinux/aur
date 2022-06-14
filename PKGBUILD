@@ -2,7 +2,7 @@
 _projectname='ppx_gen_rec'
 pkgname="ocaml-$_projectname"
 pkgver='2.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
@@ -12,7 +12,7 @@ makedepends=('dune')
 checkdepends=('ocaml-ppx_deriving')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7c598fe30555153972cd3741441c69508f1d5c7eebfdd0ca863d21c74ac4f8c4')
+sha512sums=('d51bc52e32b887f36e671559cf15ddc86b758240b8a244a1b18408bfe4b538b66836e5713875741a23348efacea98f8dfca456f0486b312ac9afd0766c20a9aa')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -28,11 +28,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
-
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -r "$pkgdir/usr/doc/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
