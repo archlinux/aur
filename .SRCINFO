@@ -1,7 +1,7 @@
 pkgbase = acolor-git
 	pkgdesc = An extensible command colorizer with community scripts
-	pkgver = 0.3
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = https://github.com/xPMo/acolor
 	arch = any
 	license = ISC
@@ -15,4 +15,3 @@ pkgbase = acolor-git
 	sha512sums = SKIP
 
 pkgname = acolor-git
-
