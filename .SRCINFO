@@ -1,14 +1,13 @@
 pkgbase = firefox-userchromejs
 	pkgdesc = Patching Firefox to enable JS injection (userchrome-js)
-	pkgver = 1.7.10
+	pkgver = 101.0b3
 	pkgrel = 1
-	url = https://github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme/tree/master/Multirow%20and%20other%20functions/JS%20Loader
+	url = https://github.com/xiaoxiaoflood/firefox-scripts
 	install = firefox-userchromejs.install
 	arch = any
 	license = MPL2
 	depends = firefox
-	source = https://codeload.github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme/tar.gz/FF84
-	sha512sums = 04873a15fc6ea580029751b6d9a7efdc1d8fb443e125f6875f71efe48b3f276e5efd020db6d59e39ae420156a0087090ad7d55d2d6692970e2c98e191258d8f3
+	source = https://codeload.github.com/xiaoxiaoflood/firefox-scripts/tar.gz/77f56676dc6686af15827f9d51c1e4d3e0989c2a
+	sha512sums = fc9d15ae702dc08ca1ed2202087de4b175bdad51f276aec4f7b700d80cbdc923f618fcb2398d87c6b796eb495659f072e7982608d8b9b7a0137e2214cb52e8ed
 
 pkgname = firefox-userchromejs
-
