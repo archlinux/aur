@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 arch=(x86_64 aarch64)
@@ -17,8 +17,9 @@ makedepends=(
 	clang
 	meson
 )
+options=(debug)
 source=("${url}/-/archive/${pkgver}/decoder-${pkgver}.tar.gz")
-b2sums=('45972a240728dc40d7ff6748ac082ec0c57c6de363efa6e4f3d072142de3ec9aa0278bd0d830899f819ecbd1a0dc2157b93ea4c4ea7cbd78fe19a9e878c7de3b')
+b2sums=('6bfdb60871cfc006bfa57762839e6c4345af6882f5a277cc2142d0a40383def8d7597fbeb248b29c62b2bdc0726f6361dd5daa539618e04ad85529af0a10e25c')
 
 build() {
 	arch-meson decoder-${pkgver} build
