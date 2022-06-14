@@ -2,7 +2,7 @@
 
 pkgname=meta-package-manager-git
 _pkgname=${pkgname%-git}
-pkgver=v5.1.0.r42.g3a916b0
+pkgver=5.1.0.r42.g3a916b0
 pkgrel=1
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
