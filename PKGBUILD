@@ -2,8 +2,8 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.27.r0.ga913f85
-pkgrel=4
+pkgver=3.11.31.beta7.r2.g541ea8f
+pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
