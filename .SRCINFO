@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_enumerate
 	pkgdesc = Generate a list containing all values of a finite type
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_enumerate
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_enumerate
 	depends = ocaml-base>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_enumerate-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_enumerate/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_enumerate-1:0.15.0-2.tar.gz::https://github.com/janestreet/ppx_enumerate/archive/v0.15.0.tar.gz
 	sha512sums = 3118942fd77a3b86eeaf79fdb09639d503d4c80c2215cb06b357f53ab631fbc23e05109107863fa785aeecbb62ebc80e95b45f472ee9cf6d3c826b6767a7b8cd
 
 pkgname = ocaml-ppx_enumerate
