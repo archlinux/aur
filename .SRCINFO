@@ -1,0 +1,26 @@
+pkgbase = gamin-git
+	pkgdesc = File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor) [git version]
+	pkgver = 0.1.10.6.r0.g905a5bf
+	pkgrel = 1
+	url = https://salsa.debian.org/gnome-team/gamin
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = python2
+	makedepends = git
+	depends = glib2
+	optdepends = python2: for the python module
+	provides = fam
+	provides = gamin
+	conflicts = fam
+	conflicts = gamin
+	source = git+https://salsa.debian.org/gnome-team/gamin.git
+	source = fix-deprecated-const.patch
+	source = 18_gam_server_deadlocks.patch
+	source = 0001-Poll-files-on-nfs4.patch
+	sha256sums = SKIP
+	sha256sums = 33af6c9a94b459506fc48892c169d89cb4ad7c68e160f0c4bc74475f19ce5a2f
+	sha256sums = 041eb7fb21d83c50ee5ab8b51e7dc81cce352761355a66e89e8fd0617f113b50
+	sha256sums = 49806b9788dd3c3f362057f7d2919c956ba88c4750867ebab295e6d678c86e1c
+
+pkgname = gamin-git
