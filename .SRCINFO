@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_ignore_instrumentation
 	pkgdesc = Ignore Jane Street specific instrumentation extensions
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_ignore_instrumentation
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ocaml-ppx_ignore_instrumentation
 	depends = ocaml>=4.08.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_ignore_instrumentation-0.15.0-1.tar.gz::https://github.com/janestreet/ppx_ignore_instrumentation/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_ignore_instrumentation-0.15.0-2.tar.gz::https://github.com/janestreet/ppx_ignore_instrumentation/archive/v0.15.0.tar.gz
 	sha512sums = ec411cb7a191fcb36f9a29f8ff3839db6f4031e30fa3444896a07235950ca04562a701b3bc7bc5df95e3ff82cfe8996be75bd5dce4bcce8a491898df1bffc50d
 
 pkgname = ocaml-ppx_ignore_instrumentation
