@@ -1,6 +1,6 @@
 pkgbase = python-prometheus-fastapi-instrumentator
 	pkgdesc = A configurable and modular Prometheus Instrumentator for your FastAPI.
-	pkgver = 5.8.1
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = https://github.com/trallnag/prometheus-fastapi-instrumentator
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-prometheus-fastapi-instrumentator
 	makedepends = python-dephell
 	depends = python-fastapi
 	depends = python-prometheus_client
-	source = python-prometheus-fastapi-instrumentator-5.8.1.tar.gz::https://github.com/trallnag/prometheus-fastapi-instrumentator/archive/v5.8.1.tar.gz
-	sha256sums = f7986fed5a4db57300948dd66f386002eaf1a64ccbd60cf860f9bd9ad9add848
+	source = python-prometheus-fastapi-instrumentator-5.8.2.tar.gz::https://github.com/trallnag/prometheus-fastapi-instrumentator/archive/v5.8.2.tar.gz
+	sha256sums = 7f78181d8994c982ec5028839e470b570c9c3bd84a1067b6e085aef61d42a5e6
 
 pkgname = python-prometheus-fastapi-instrumentator

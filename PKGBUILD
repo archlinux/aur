@@ -1,7 +1,7 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=python-prometheus-fastapi-instrumentator
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 pkgdesc="A configurable and modular Prometheus Instrumentator for your FastAPI."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-fastapi' 'python-prometheus_client')
 makedepends=('python-setuptools' 'python-dephell')
 checkdepends=('python-pytest' 'python-devtools' 'python-pydantic' 'python-dataclasses' 'python-starlette')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f7986fed5a4db57300948dd66f386002eaf1a64ccbd60cf860f9bd9ad9add848')
+sha256sums=('7f78181d8994c982ec5028839e470b570c9c3bd84a1067b6e085aef61d42a5e6')
 
 prepare() {
   cd "prometheus-fastapi-instrumentator-${pkgver}"
