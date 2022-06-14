@@ -1,7 +1,7 @@
 pkgbase = ocaml-jane-street-headers
 	pkgdesc = Jane Street C header files
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/jane-street-headers
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = ocaml-jane-street-headers
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.04.2
 	options = !strip
-	source = ocaml-jane-street-headers-0.15.0-1.tar.gz::https://github.com/janestreet/jane-street-headers/archive/v0.15.0.tar.gz
+	source = ocaml-jane-street-headers-0.15.0-2.tar.gz::https://github.com/janestreet/jane-street-headers/archive/v0.15.0.tar.gz
 	sha512sums = 749c56ed79276004099a2e9cbaecd98fae1663991b69588ce5ae78bcbdc56f34d87b074239e229dd86e4552dd8d1b0db05611714ba59d92683ba46d9a0ef0948
 
 pkgname = ocaml-jane-street-headers
