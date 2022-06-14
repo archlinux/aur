@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_optcomp
 	pkgdesc = Optional compilation for OCaml
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_optcomp
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_optcomp
 	depends = ocaml-stdio>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_optcomp-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_optcomp/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_optcomp-1:0.15.0-2.tar.gz::https://github.com/janestreet/ppx_optcomp/archive/v0.15.0.tar.gz
 	sha512sums = 302c2ab79c46a16b8a256167958ad9a87b34a2e7ddc70c7a5476cfb0feffc7de7bebc79c272526698e87804859555176facfb04bc72f3b4373c1cb138b1264c7
 
 pkgname = ocaml-ppx_optcomp
