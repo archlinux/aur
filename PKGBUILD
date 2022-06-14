@@ -2,7 +2,7 @@
 
 pkgname=ferium
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases.'
 url='https://github.com/theRookieCoder/ferium'
 license=('MPL2')
@@ -32,6 +32,10 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" target/release/ferium
+
+  target/release/ferium complete bash | install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/ferium
+  target/release/ferium complete zsh | install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_ferium
+  target/release/ferium complete fish | install -Dm644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/ferium.fish
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
