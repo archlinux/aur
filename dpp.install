@@ -1,0 +1,12 @@
+post_install() {
+	echo -e "\e[31mNotice cmake find_package() doesn't currently work all the way.\e[0m"
+	echo -e "\e[31mThis is a known upstream issue and will hopefully get fixed eventually.\e[0m"
+	echo -e "\e[31mYou may want to use pkg-config to integrate into your cmake for now.\e[0m"
+	echo ""
+	echo -e "\e[1;33mAlso be aware one of the time conversion tests fail on devices not set to UTC.\e[0m"
+	echo -e "\e[1;33mThis shouldn't affect your server deploys but may play role on your dev machine.\e[0m"
+	echo ""
+	echo -e "\e[32mTo keep things lean and clean, embedded fmt and nlohmann/json\e[0m"
+	echo -e "\e[32mhave been replaced by packaged versions.\e[0m"
+	echo -e "\e[32mMind that when looking up online tutorials.\e[0m"
+}

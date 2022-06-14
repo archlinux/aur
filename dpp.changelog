@@ -1,0 +1,24 @@
+# 10.0.10-1 / 2022-06-14
+
+* first build on the AUR
+	* preceeded by a bunch of test builds and finetuning
+	* consulted and collaborated with upstream
+* cmake integration is semibroken as mentioned in .install
+	* attempts were made to narrow it down a bit
+	* it at least doesn't outright fail after the patches
+	* reported to upstream, may hopefully be eventually fixed
+	* not high priority to upstream
+	* officially recommended to just -ldpp
+* tarballs are not currently signed
+	* commits are but pubkey is not available (on purpose)
+	* may or may not change in the future
+* tests currently turned off as one is failing
+	* shouldn't affect deployments on UTC bound servers
+	* also reported and in investigation
+* embedded fmt and nlohmann/json replaced by packaged versions
+	* other packages follow the fashion, may become cmake flag
+	* mind that when looking up online tutorials
+* attempts have been made to reprobuild
+	* while build should be reproducible, observing discrepancies
+	* likely stemming from slight difference between chroot setup
+	* to be further researched
