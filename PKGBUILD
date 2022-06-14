@@ -14,14 +14,14 @@ url="https://github.com/${_name}/${_name}"
 license=('MIT')
 depends=('python2')
 optdepends=(
-  'python2-brotli: Brotli support'
+#   'python2-brotli: Brotli support'
   'python2-idna: support for internationalized domain names (IDNA)'
   'python2-pyopenssl: security support'
   'python2-pysocks: SOCKS support'
   'python-urllib3-doc: urllib3 documentation'
 )
 makedepends=(
-  'python2-brotli'
+#   'python2-brotli'
   'python2-ndg-httpsclient'
   'python2-setuptools'
   'python2-pyasn1'
@@ -30,13 +30,13 @@ makedepends=(
 )
 _tarname="${_name}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_tarname}.tar.gz"
-        "${_name}-use-brotli-or-brotli-cffi.patch::${url}/pull/2099.patch")
-sha512sums=('5a0f55cba31c987c416d113ddfd4ade64704f70e4ff20092ff6d7370f260dada71e149b14ea62c8967a4c0f5ad79b441325d623446e0016c133c7e9277d3c8be'
-            '16bc19caf4b0d80ccb7aae7ee0cf4a7b6fef754d6d7b9e3bc0da9197afffa4f587f197c7fdffa56c14d40da806633cd409b5d8136ca4d1acef414afaf42d1e0f')
+#         "${_name}-use-brotli-or-brotli-cffi.patch::${url}/pull/2099.patch"
+)
+b2sums=('f5f2a6797836ef3f9fdfcce4fc6b927c74bc0c7e91d8f9321a3375db9a143214c8253b3c45cd860c747053bf621dfe6586bb6f6c6ce7d91ec8333586b6c75e70')
 
-prepare() {
-  patch -d "${_tarname}" -p1 -i "../${_name}-use-brotli-or-brotli-cffi.patch" || :
-}
+# prepare() {
+#   patch -d "${_tarname}" -p1 -i "../${_name}-use-brotli-or-brotli-cffi.patch" || :
+# }
 
 build() {
   cd "${_tarname}"
