@@ -1,0 +1,17 @@
+pkgbase = python2-pysocks
+	pkgdesc = SOCKS4 and SOCKS5 proxy module (deprecated)
+	pkgver = 1.7.1
+	pkgrel = 3
+	url = https://pypi.org/project/PySocks/1.7.1/
+	arch = any
+	license = BSD
+	checkdepends = lib32-glibc
+	checkdepends = python2-twisted
+	checkdepends = python2-tornado
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-socks
+	source = PySocks-1.7.1.tar.gz::https://github.com/Anorov/PySocks/archive/f660e75d4844e64e4b162b0c01f8df8d866ee000.tar.gz
+	b2sums = 7f529112ebb6327886461a26b863c19097f760ce40d695c722a776923fa811c3bffa82d5640927d49324dac41120c851975c78eeb5b0aae116f45b187fa755b1
+
+pkgname = python2-pysocks
