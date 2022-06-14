@@ -5,8 +5,8 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.3+5.r35.20211218.698ae5f
-pkgrel=2
+pkgver=1.2+41.r57.20220526.c0e85cf
+pkgrel=3
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
   'i686'
@@ -42,7 +42,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}/module"
 
-  # patch -p1 -N '50-tty0tty.rules' < "${srcdir}/50-tty0tty.rules.arch.patch"
+  patch -p1 -N '50-tty0tty.rules' < "${srcdir}/50-tty0tty.rules.arch.patch"
 }
 
 pkgver() {
