@@ -1,7 +1,7 @@
 # Maintainer: Leander Oudakker <arch at leanderoudakker dot com>
 pkgname=spectre-cli-git
 pkgver=r479.a5e7aab
-pkgrel=1
+pkgrel=3
 pkgdesc="Spectre introduces a completely new way of thinking about passwords."
 arch=('any')
 url="https://gitlab.com/spectre.app/cli"
