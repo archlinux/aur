@@ -35,7 +35,6 @@ package() {
     cd "$srcdir/PDAL-${pkgver}-src/build-${_arch}"
     make install DESTDIR="$pkgdir"
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
