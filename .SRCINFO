@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 5.0
-	pkgrel = 2
+	pkgver = 5.0.1
+	pkgrel = 1
 	epoch = 2
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lib32-ffmpeg
 	makedepends = git
 	makedepends = lib32-ladspa
 	makedepends = nasm
-	depends = ffmpeg>=2:5.0
+	depends = ffmpeg>=2:5.0.1
 	depends = lib32-alsa-lib
 	depends = lib32-aom
 	depends = lib32-bzip2
@@ -61,6 +61,7 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-zlib
 	optdepends = lib32-ladspa: LADSPA filters
 	optdepends = lib32-nvidia-utils: Nvidia NVDEC/NVENC support
+	options = debug
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=390d6853d0ef408007feb39c0040682c81c02751
 	source = ffmpeg-vmaf2.x.patch
 	source = add-av_stream_get_first_dts-for-chromium.patch
