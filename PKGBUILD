@@ -1,24 +1,39 @@
-# Maintainer: Darvin Delgado <dnmodder@gmail.com>
+# Maintainer: Brody <archfan at brodix dot de>
+# Contributor: Darvin Delgado <dnmodder@gmail.com>
+
 pkgname=oversteer
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Graphical application to configure Logitech Wheels."
-arch=("any")
-url="https://github.com/berarma/oversteer"
+pkgdesc='Graphical application to configure Logitech Wheels'
+arch=('any')
+url='https://github.com/berarma/oversteer'
 license=('GPL3')
-depends=("python" "python-gobject" "python-matplotlib" "python-cairo" "python-pyudev" "python-evdev" "python-xdg" "gettext" "appstream-glib" "desktop-file-utils" "python-scipy")
-makedepends=("meson")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4426fa752e38e9f5d89584ba7d96b5570157b4ea076a89c38e7d6746aa926468')
+depends=(
+  'appstream-glib'
+  'desktop-file-utils'
+  'gettext'
+  'python'
+  'python-cairo'
+  'python-evdev'
+  'python-gobject'
+  'python-matplotlib'
+  'python-pyudev'
+  'python-scipy'
+  'python-xdg'
+)
+makedepends=('meson')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/berarma/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('68686e25ccdee3fd4eee74f598a2c6ea6d3caf46837ea4117ee5b0869f462fc1')
 
 build() {
-	cd "$pkgname-$pkgver"
-	meson build --prefix="/usr"
+	cd "${pkgname}-${pkgver}"
+	meson build --prefix=/usr
 	ninja -C build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	DESTDIR="$pkgdir/" ninja -C build install
+	cd "${pkgname}-${pkgver}"
+	DESTDIR="${pkgdir}" ninja -C build install
 }
 
+# vim: ts=2 sw=2 et:
