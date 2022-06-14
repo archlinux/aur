@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.16.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/multiprocessio/dsq"
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
-checkdepends=('python' 'jq')
+checkdepends=('python' 'jq' 'p7zip')
 options=('!lto')
-_commit='e07058e422b02efb89627bc778119ce23a48d258'
+_commit='240acd1d2f40a125d6b120f78de00cd93d34d34b'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -26,12 +26,6 @@ prepare() {
 
   # download dependencies
   go mod download
-
-  # fix failing test
-  # NOTE: this still fails when _commit is changed, and pkgver is not.
-  sed \
-    -i scripts/test.py \
-    -e "s/dsq latest/dsq $pkgver/"
 }
 
 build() {
@@ -55,7 +49,16 @@ build() {
 check() {
   cd "$pkgname"
 
-  ./scripts/test.py
+  # fix failing test
+  sed \
+    -i scripts/test.py \
+    -e "s/dsq latest/dsq $pkgver/"
+
+  # setup taxi.csv
+  7z e testdata/taxi.csv.7z
+
+  # ensure chatter from systemd-nspawn doesn't modify expected stdout
+  LC_ALL=C ./scripts/test.py
 }
 
 package() {
