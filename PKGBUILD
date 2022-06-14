@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gnome-text-editor
-pkgver=42.1
+pkgver=42.2
 pkgrel=1
 pkgdesc='Simple text editor that focuses on session management'
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ makedepends=(
 options=(debug)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
-b2sums=('d474863171074555366ae2cfe779131c23e0fb3e89764060a135296bd7d70d49d2c2562d16e27ae5d33b8dbcae3091495fef22dc298b018c170b8f1f1de7d015')
+b2sums=('9e40aa5f723d4aa6c8a48c95172c81deff9e873d9c5222e8c63a053c2367341545339f64da4a4600f04ce64f56b43e4909895ff43d41c44b6fa49a4b02c914ad')
 
 build() {
 	arch-meson ${pkgname}-${_commit} build
