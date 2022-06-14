@@ -1,7 +1,8 @@
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
-pkgver=3.20.1
-pkgrel=2
+pkgver=21.1
+_pkgver=3.$pkgver
+pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
 url='https://developers.google.com/protocol-buffers/'
@@ -10,17 +11,16 @@ depends=(mingw-w64-zlib)
 makedepends=(mingw-w64-configure protobuf unzip)
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/protocolbuffers/${_pkgname}/releases/download/v$pkgver/${_pkgname}-all-$pkgver.tar.gz")
-sha256sums=('3a400163728db996e8e8d21c7dfb3c239df54d0813270f086c4030addeae2fad')
+sha256sums=('ad22f1624e237c0b3d362f78de7d96bf88b78d1fe19ae5dfa528a27306c7aaad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  curl -L https://github.com/protocolbuffers/protobuf/pull/9936.patch | patch -p1
+  cd ${srcdir}/${_pkgname}-${_pkgver}
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}-${_pkgver}
   ./autogen.sh
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
@@ -32,7 +32,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/${_pkgname}-${pkgver}/build-${_arch}
+    cd "${srcdir}"/${_pkgname}-${_pkgver}/build-${_arch}
     make DESTDIR="$pkgdir" install
     rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
