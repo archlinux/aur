@@ -1,0 +1,15 @@
+pkgbase = pingu
+	pkgdesc = ping command but with pingu
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/sheepla/pingu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = pingu-0.0.2.tar.gz::https://github.com/sheepla/pingu/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 76f4ca49ac8f9be66a454e042e753813a23589a218703f12ef214400cc8def9b
+	b2sums = ec31807f4f6badcb3a7371d6f6d7493fe083a859c9d44c4ed1688a97ebcae55dec88f3513703c4ed2ff220ecaf0c94c439f25ca7e2315b14fe96ccb5cbcc3790
+
+pkgname = pingu
