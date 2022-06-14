@@ -1,11 +1,12 @@
 pkgbase = python2-mpi4py
 	pkgdesc = Python2 bindings of the Message Passing Interface (MPI)
 	pkgver = 3.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpi4py/mpi4py
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python2-numpy
 	makedepends = python2-setuptools
 	depends = python2
 	depends = openmpi
