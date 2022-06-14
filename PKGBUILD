@@ -1,7 +1,7 @@
 # Maintainer: Leander Oudakker <arch at leanderoudakker dot com>
 pkgname=spectre-cli-git
 pkgver=r479.a5e7aab
-pkgrel=3
+pkgrel=4
 pkgdesc="Spectre introduces a completely new way of thinking about passwords."
 arch=('any')
 url="https://gitlab.com/spectre.app/cli"
@@ -18,32 +18,32 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname}"
 
-  git submodule init
-  git config submodule.api.url "$srcdir/api"
-  git submodule update
+	git submodule init
+	git config submodule.api.url "$srcdir/api"
+	git submodule update
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname}"
 
-  targets='spectre spectre-tests' ./build
+	targets='spectre spectre-tests' ./build
 }
 
 check() {
-  cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname}"
 
-  ./spectre-cli-tests
-  ./spectre-tests
+	./spectre-cli-tests
+	./spectre-tests
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname}"
 
-  install -Dm555 spectre "${pkgdir}/usr/bin/spectre"
+	install -Dm555 spectre "${pkgdir}/usr/bin/spectre"
 }
