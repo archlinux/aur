@@ -1,10 +1,10 @@
-# Maintainer: dtluna dtluna@waifu.club
+# Maintainer: starquake starquake@linuxeverywhere.org
+# Contributor: dtluna dtluna@waifu.club
 pkgname=pacman-backup-hook
 pkgver="1.0.1"
 pkgrel=2
 pkgdesc="A pacman hook that will save the list of your packages to /etc/pkglist.txt on every install and removal"
 arch=('any')
-url="https://git.dtluna.net/dtluna/pacman-backup-hook"
 license=('custom:Unlicense')
 depends=(
     'pacman>=5.1'
