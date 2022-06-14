@@ -2,7 +2,7 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.5.28.trento.3.r288.gf7bbc06f
+pkgver=2022.6.14.brescia.r4.ge69bcc39
 pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
@@ -17,6 +17,7 @@ depends=(
   hicolor-icon-theme
   icoextract
   lib32-gnutls
+  libadwaita-git
   libhandy
   p7zip
   patool
