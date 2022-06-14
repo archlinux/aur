@@ -1,15 +1,13 @@
 pkgbase = qfetch
 	pkgdesc = A simple fetch tool written in rust
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/mrquantumoff/qfetch
 	arch = x86_64
-	groups = mrquantumoff
 	license = BSD-2-Clause
-	makedepends = cargo
-	depends = xdg-desktop-portal
+	makedepends = rust
 	provides = qfetch
-	source = https://github.com/mrquantumoff/qfetch/archive/refs/tags/v0.7.0.tar.gz
-	md5sums = SKIP
+	source = https://github.com/mrquantumoff/qfetch/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 0a6b2ebd064eba0ecaae5fd60ad0c74c5cdadc261c4d46167503fd27b31eacd3
 
 pkgname = qfetch
