@@ -1,0 +1,14 @@
+pkgbase = python2-pytest-cov
+	pkgdesc = Coverage plugin for pytest
+	pkgver = 2.12.1
+	pkgrel = 2
+	url = https://github.com/schlamar/pytest-cov
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-pytest
+	depends = python2-coverage
+	source = python2-pytest-cov-2.12.1.tar.gz::https://github.com/schlamar/pytest-cov/archive/refs/tags/v2.12.1.tar.gz
+	sha256sums = 13e96921e9a20a986f8909b1f546bd9d3ad8ed5fc6256898ff2ba4f46c4b23be
+
+pkgname = python2-pytest-cov
