@@ -1,13 +1,17 @@
 pkgbase = python2-kiwisolver
 	pkgdesc = A fast implementation of the Cassowary constraint solver
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nucleic/kiwi
 	arch = x86_64
-	license = PerlArtistic
+	license = BSD
+	makedepends = python2-wheel
+	makedepends = xxd
 	depends = python2-setuptools
-	source = https://github.com/nucleic/kiwi/archive/1.1.0.tar.gz
-	sha256sums = 48168c0ace18319c649e31907f6d8586f648e503560f506f128798b99393bcdb
+	noextract = kiwisolver-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl
+	source = https://files.pythonhosted.org/packages/3d/78/cb9248b2289ec31e301137cedbe4ca503a74ca87f88cdbfd2f8be52323bf/kiwisolver-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl
+	source = kiwisolver-1.1.0-LICENSE.txt::https://github.com/nucleic/kiwi/raw/1.1.0/LICENSE
+	sha256sums = 05b5b061e09f60f56244adc885c4a7867da25ca387376b02c1efc29cc16bcd0f
+	sha256sums = 95c32f73d43fa54d8146badbcbd73b83acb7fa2cc81a7cef7784b3cd33b146a0
 
 pkgname = python2-kiwisolver
-
