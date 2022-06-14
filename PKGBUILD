@@ -3,7 +3,7 @@
 _projectname='ocplib-endian'
 pkgname="ocaml-$_projectname"
 pkgver='1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/OCamlPro/$_projectname"
@@ -28,11 +28,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
-
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -r "$pkgdir/usr/doc/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -Dm644 'COPYING.txt' "$pkgdir/usr/share/doc/$pkgname/COPYING.txt"
 
