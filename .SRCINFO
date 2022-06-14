@@ -1,6 +1,6 @@
 pkgbase = plasma-nano
 	pkgdesc = A minimal plasma shell package intended for embedded devices.
-	pkgver = 5.24.5
+	pkgver = 5.25.0
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-nano
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = plasma-nano
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
-	source = https://download.kde.org/stable/plasma/5.24.5/plasma-nano-5.24.5.tar.xz
-	sha256sums = 230873425584d68424fd23e95daf31f89a2bb08696c015503191991bdec7bb7f
+	source = https://download.kde.org/stable/plasma/5.25.0/plasma-nano-5.25.0.tar.xz
+	sha256sums = dff79e092d6ca7bf2e8e5a49fee7c0fe633bcfcd1c970e4eb58df6f0f1899341
 
 pkgname = plasma-nano
