@@ -16,7 +16,7 @@ depends=('freeglut'
          'qt5-base'
          'qt5-multimedia'
 	 'sdl2')
-makedepends=("clang"
+makedepends=(
 	     "cmake"
 	     "git")
 source=("${pkgname}::git+${_repo}.git#tag=${pkgver}_official_release")
@@ -35,6 +35,7 @@ build() {
     cd "${pkgname}/yabause/build"
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE='Release' \
       -DYAB_USE_QT5=ON
     make
 }
