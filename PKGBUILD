@@ -5,14 +5,15 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.2+41.r57.20220526.c0e85cf
-pkgrel=1
+pkgver=1.3+5.r35.20211218.698ae5f
+pkgrel=2
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
   'i686'
   'x86_64'
 )
-url="https://github.com/freemed/tty0tty"
+url="https://github.com/freemed/tty0tty"  # Version 1.2
+# url="https://github.com/lcgamboa/tty0tty" # Version 1.3
 license=(
   'GPL2'
 )
@@ -28,7 +29,7 @@ conflicts=(
   "${_pkgname}-pts"
 )
 source=(
-  "${_pkgname}::git+https://github.com/freemed/tty0tty.git"
+  "${_pkgname}::git+${url}.git"
   '50-tty0tty.rules.arch.patch'
   'modules-load-tty0tty.conf'
 )
@@ -41,7 +42,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}/module"
 
-  patch -p1 -N '50-tty0tty.rules' < "${srcdir}/50-tty0tty.rules.arch.patch"
+  # patch -p1 -N '50-tty0tty.rules' < "${srcdir}/50-tty0tty.rules.arch.patch"
 }
 
 pkgver() {

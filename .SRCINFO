@@ -1,16 +1,16 @@
 pkgbase = tty0tty-dkms-git
 	pkgdesc = tty0tty Virtual Serial Cable (DKMS and userspace variant).
-	pkgver = 1.2+41.r57.20220526.c0e85cf
-	pkgrel = 1
+	pkgver = 1.3+5.r35.20211218.698ae5f
+	pkgrel = 2
 	url = https://github.com/freemed/tty0tty
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	provides = tty0tty=1.2+41.r57.20220526.c0e85cf
-	provides = tty0tty-pts=1.2+41.r57.20220526.c0e85cf
-	provides = tty0tty-doc=1.2+41.r57.20220526.c0e85cf
+	provides = tty0tty=1.3+5.r35.20211218.698ae5f
+	provides = tty0tty-pts=1.3+5.r35.20211218.698ae5f
+	provides = tty0tty-doc=1.3+5.r35.20211218.698ae5f
 	conflicts = tty0tty
 	conflicts = tty0tty-pts
 	source = tty0tty::git+https://github.com/freemed/tty0tty.git
