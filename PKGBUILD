@@ -63,7 +63,7 @@ build() {
         -DPLUGIN_IO_QRDB:BOOL=OFF # requires rdblib (package for AUR from http://www.riegl.com/products/software-packages/rdblib/)
         -DPLUGIN_STANDARD_QANIMATION:BOOL=ON
         -DPLUGIN_STANDARD_QBROOM:BOOL=ON
-        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib-DDLIB_ROOT:PATH="/usr" # required by qcanupo plugin
+        -DPLUGIN_STANDARD_QCANUPO:BOOL=ON # requires dlib
         -DPLUGIN_STANDARD_QCOMPASS:BOOL=ON
         -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
         -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
