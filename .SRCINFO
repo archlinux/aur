@@ -1,6 +1,6 @@
 pkgbase = r-chronos
 	pkgdesc = CHRONOS: A time-varying method for microRNA-mediated sub-pathway enrichment analysis
-	pkgver = 1.24.0
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CHRONOS
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-chronos
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CHRONOS_1.24.0.tar.gz
-	sha256sums = 154157f05d7d2608157dcb11519ce5e1d2e965c5ff860413d900c02e5aa93858
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CHRONOS_1.24.1.tar.gz
+	sha256sums = 5f7d3dcf55cf74ffcb628c8916f9dff942c39716756b06e9c403601e69a472f6
 
 pkgname = r-chronos
