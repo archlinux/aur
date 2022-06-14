@@ -4,7 +4,7 @@
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
 # Contributor: Jamesjon <universales@protonmail.com>
 pkgname=plymouth-kcm
-pkgver=5.24.5
+pkgver=5.25.0
 pkgrel=1
 pkgdesc="KCM to manage the Plymouth (Boot) theme"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('plymouth' 'knewstuff' 'kconfig' 'kconfigwidgets' 'ki18n' 'kdeclarative' 'kcmutils')
 makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('99f152423ea2b95d74772ec8218d41ed63f821c028ee87767a04bf0e9308a412'
+sha256sums=('a59f83a483ea28bdaee7bfa1cf697928b703ed448a9c5f7a5860ed2a3eced840'
             'SKIP')
 validpgpkeys=(2D1D5B0588357787DE9EE225EC94D18F7F05997E  # Jonathan Riddell <jr@jriddell.org>
               E0A3EB202F8E57528E13E72FD7574483BB57B18D # Jonathan Riddell <jr@riddell.org>
