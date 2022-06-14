@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=4.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 _pkgdesc_ru='Удобный инструмент для безопасного удаленного доступа и решения задач.'
 arch=('x86_64')
