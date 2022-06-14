@@ -24,7 +24,10 @@ makedepends=('python2-setuptools')
 #   'python2-pysocks'
 #   'python2-trustme'
 # )
-optdepends=('python2-pysocks: SOCKS proxy support')
+optdepends=(
+  'python2-ndg-httpsclient: HTTPS requests with SNI support'
+  'python2-pysocks: SOCKS proxy support'
+)
 _sourcedirname="${_name}-${pkgver}"
 source=("https://github.com/psf/requests/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'certs.patch')
@@ -41,9 +44,10 @@ prepare() {
   patch -p1 -i "${srcdir}/certs.patch"
 
   # Change hashbangs to python2
-  sed -e 's+^\(#!/usr/bin/env python\)+\12+' \
-      -i 'requests/certs.py' \
-      -i 'setup.py'
+  sed -e 's|#![ ]*/usr/bin/python$|#!/usr/bin/python2|' \
+      -e 's|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|' \
+      -e 's|#![ ]*/bin/env python$|#!/usr/bin/env python2|' \
+      -i $(find . -name '*.py')
 }
 
 build() {

@@ -10,6 +10,7 @@ pkgbase = python2-requests
 	depends = python2-chardet
 	depends = python2-idna
 	depends = python2-urllib3
+	optdepends = python2-ndg-httpsclient: HTTPS requests with SNI support
 	optdepends = python2-pysocks: SOCKS proxy support
 	source = https://github.com/psf/requests/archive/v2.27.1/python2-requests-2.27.1.tar.gz
 	source = certs.patch
