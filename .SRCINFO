@@ -12,7 +12,7 @@ pkgbase = gr-ieee802-11-git
 	depends = log4cpp
 	depends = gr-foo
 	provides = gr-ieee802-11
-	source = git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.9
+	source = git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.10
 	sha1sums = SKIP
 
 pkgname = gr-ieee802-11-git

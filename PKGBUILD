@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnuradio' 'log4cpp' 'gr-foo')
 makedepends=('cmake' 'boost')
 provides=('gr-ieee802-11')
-source=('git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.9')
+source=('git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.10')
 sha1sums=('SKIP')
 _gitname=gr-ieee802-11
 
