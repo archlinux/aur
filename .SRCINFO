@@ -1,0 +1,23 @@
+pkgbase = tty0tty-dkms-git
+	pkgdesc = tty0tty Virtual Serial Cable (DKMS and userspace variant).
+	pkgver = 1.2+41.r57.20220526.c0e85cf
+	pkgrel = 1
+	url = https://github.com/freemed/tty0tty
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = tty0tty=1.2+41.r57.20220526.c0e85cf
+	provides = tty0tty-pts=1.2+41.r57.20220526.c0e85cf
+	provides = tty0tty-doc=1.2+41.r57.20220526.c0e85cf
+	conflicts = tty0tty
+	conflicts = tty0tty-pts
+	source = tty0tty::git+https://github.com/freemed/tty0tty.git
+	source = 50-tty0tty.rules.arch.patch
+	source = modules-load-tty0tty.conf
+	sha256sums = SKIP
+	sha256sums = 7db1bdf3aaf90b6e0c8ebe522f73a0947e35f37a47047f7ae4953d0208c3d541
+	sha256sums = 31e97d1ea45da90c70715073d2279fc9482e497179b4fc44645684ffe7371217
+
+pkgname = tty0tty-dkms-git

@@ -1,0 +1,6 @@
+--- 50-tty0tty.rules.org	2022-06-14 11:52:36.899659514 +0100
++++ 50-tty0tty.rules	2022-06-14 11:52:28.399659780 +0100
+@@ -3 +3,2 @@
+-KERNEL=="tnt[0-9]", GROUP="dialout"
++# Setting access rights for tty0tty devices to the same as other serial devices:
++KERNEL=="tnt[0-7]", SUBSYSTEM=="tty", GROUP="uucp", MODE="0660"
