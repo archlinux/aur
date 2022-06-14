@@ -1,6 +1,6 @@
 pkgbase = lighthouse-ethereum
 	pkgdesc = Ethereum 2.0 client
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://lighthouse.sigmaprime.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lighthouse-ethereum
 	provides = lighthouse
 	conflicts = lighthouse
 	replaces = lighthouse
-	source = git+https://github.com/sigp/lighthouse.git#tag=v2.3.0
+	source = git+https://github.com/sigp/lighthouse.git#tag=v2.3.1
 	sha256sums = SKIP
 
 pkgname = lighthouse-ethereum
