@@ -1,7 +1,7 @@
 pkgbase = ocaml-mew
 	pkgdesc = A general modal editing engine generator
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kandu/mew
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-mew
 	depends = ocaml-result
 	depends = ocaml-trie
 	options = !strip
-	source = ocaml-mew-0.1.0-4.tar.gz::https://github.com/kandu/mew/archive/0.1.0.tar.gz
-	sha256sums = 64d38ceb52ef574cb314bdd693f7e4a9c9e483e80a58595db22f2df76a8a59e6
+	source = ocaml-mew-0.1.0-5.tar.gz::https://github.com/kandu/mew/archive/0.1.0.tar.gz
+	sha512sums = 77a68f6dc9f3edc729384d59247a29f32f969dc6d987ed2e6c88b9a64b655822dafa9c3cb424bf40e6cf9ed20cddf9c708738872db245f14a711770e8e938db3
 
 pkgname = ocaml-mew
