@@ -1,7 +1,7 @@
 pkgbase = crunchyroll-bin
 	pkgdesc = Unnofficial CrunchyRoll desktop application
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/crunchyroll/application
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = crunchyroll-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = crunchyroll-git
-	source_x86_64 = https://gitlab.com/crunchyroll/binaries/1.0.0-2/-/raw/main/Crunchyroll-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/crunchyroll/binaries/1.0.1-1/-/raw/main/Crunchyroll-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = crunchyroll-bin

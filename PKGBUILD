@@ -1,7 +1,7 @@
 pkgname=crunchyroll-bin
 _pkgname=Crunchyroll-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial CrunchyRoll desktop application"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("crunchyroll-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/crunchyroll/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Crunchyroll-linux-x64.tar.gz")
+source_x86_64=("https://gitlab.com/crunchyroll/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Crunchyroll-linux-x64.tar.xz")
 
 package() {
     for dir in Crunchyroll-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
