@@ -2,7 +2,7 @@
 # Contributor: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 pkgname=system76-dkms
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-dkms"
@@ -12,9 +12,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('5d491180786faef804da71da9b08090ab902e1cf6f52070115c65fb7546a3376')
 
 package() {
-  local install_dir="$pkgdir/usr/src/system76-$pkgver"
-
   cd "$pkgname-$pkgver"
+  local install_dir="$pkgdir/usr/src/system76-$pkgver"
 
   # Install source files
   for file in {Makefile,*.c,*.h}; do
@@ -30,5 +29,5 @@ package() {
 
   # Load the module at boot
   install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
-    "$pkgdir/etc/modules-load.d/system76.conf"
+    "$pkgdir/usr/lib/modules-load.d/system76.conf"
 }
