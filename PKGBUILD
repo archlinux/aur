@@ -3,7 +3,7 @@
 
 pkgname=mint-backgrounds-vanessa
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The backgrounds included in Linux Mint 21 Vanessa"
 license=('Various')
 arch=('any')
