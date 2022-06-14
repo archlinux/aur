@@ -5,7 +5,7 @@
 _projectname='re'
 pkgname="ocaml-$_projectname"
 pkgver='1.10.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$pkgname"
@@ -40,11 +40,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
-
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -r "$pkgdir/usr/doc/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
