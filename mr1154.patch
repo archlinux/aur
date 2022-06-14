@@ -1,7 +1,7 @@
 From 798fd5475bed4e8c0398e8fa57e7685ee4194b7c Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 4 Jul 2020 01:03:19 +0300
-Subject: [PATCH 01/22] renderer-view: Keep track of the associated MetaOutput
+Subject: [PATCH 01/23] renderer-view: Keep track of the associated MetaOutput
 
 ---
  src/backends/meta-renderer-view.c             | 24 +++++++++++++++++++
@@ -128,7 +128,7 @@ GitLab
 From b5c9bd1301c6b26517c83a710c6c3a8201916c0d Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 17:14:03 +0300
-Subject: [PATCH 02/22] surface-actor: Add "frozen" signal
+Subject: [PATCH 02/23] surface-actor: Add "frozen" signal
 
 This signal is emitted when the surface actor is frozen and will not
 update until it is thawed.
@@ -179,7 +179,7 @@ GitLab
 From 0c7c4e4cd97bb22ffdb9831cd47ae69f2c7a4133 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 19:50:45 +0300
-Subject: [PATCH 03/22] clutter/stage: Allow scheduling stage updates in the
+Subject: [PATCH 03/23] clutter/stage: Allow scheduling stage updates in the
  context of an actor
 
 This is required synchronizing the frame clock to the update rate of
@@ -320,7 +320,7 @@ GitLab
 From 74f3405a954483d1c1ceaa24025139dbb483f320 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 13 Mar 2021 12:55:09 +0200
-Subject: [PATCH 04/22] clutter/frame-clock: Simplify logic around early
+Subject: [PATCH 04/23] clutter/frame-clock: Simplify logic around early
  presented event
 
 A few calculations and assignments are done unnecessarily when the
@@ -402,7 +402,7 @@ GitLab
 From c6c6dd437ba9ef388129a31115e405a918a60912 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 4 Aug 2020 00:28:12 +0300
-Subject: [PATCH 05/22] clutter/frame-clock: Add a mode for variable scheduling
+Subject: [PATCH 05/23] clutter/frame-clock: Add a mode for variable scheduling
 
 A new variable mode is introduced which allows:
   * Immediate update scheduling, even when an update is already
@@ -784,7 +784,7 @@ GitLab
 From ac5f155c2b7802dd8929fd314ad77f578de20ee1 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jul 2020 18:40:07 +0300
-Subject: [PATCH 06/22] backends/native: Introduce MetaRendererViewNative
+Subject: [PATCH 06/23] backends/native: Introduce MetaRendererViewNative
 
 MetaRendererViewNative is a MetaRendererView which contains logic
 specific to views of the native backend. It will be used by following
@@ -1153,7 +1153,7 @@ GitLab
 From ff121f0833b6a20b35efe5a18b15f8dfa9b72094 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 4 Jul 2020 22:13:55 +0300
-Subject: [PATCH 07/22] renderer-view/native: Allow syncing frame clock updates
+Subject: [PATCH 07/23] renderer-view/native: Allow syncing frame clock updates
  with actor updates
 
 Allow per-view tracking of actors for the purpose of synchronizing
@@ -1400,7 +1400,7 @@ GitLab
 From ddfce785b699d1bd405ff689143680683f780f01 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 20:11:48 +0300
-Subject: [PATCH 08/22] wayland/actor-surface: Schedule actor updates for frame
+Subject: [PATCH 08/23] wayland/actor-surface: Schedule actor updates for frame
  callbacks
 
 ---
@@ -1428,7 +1428,7 @@ GitLab
 From 157452e0c41355dac5695ef45e4d4a4e9430f229 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 10:07:54 +0300
-Subject: [PATCH 09/22] clutter/stage: Always schedule actor updates on redraw
+Subject: [PATCH 09/23] clutter/stage: Always schedule actor updates on redraw
 
 When updates are scheduled in the context of specific actors,
 already-scheduled updates may need to be rescheduled based on the
@@ -1493,7 +1493,7 @@ GitLab
 From c57463c2df8709ce10586ab82e0f79c2ae287218 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:39:49 +0200
-Subject: [PATCH 10/22] window: Allow indicating that variable refresh rate is
+Subject: [PATCH 10/23] window: Allow indicating that variable refresh rate is
  supported
 
 ---
@@ -1568,7 +1568,7 @@ GitLab
 From 39832e071ca01eceab176a9799ae80bf9d6c7f96 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 11 Jun 2022 12:50:02 +0300
-Subject: [PATCH 11/22] window: Allow checking if a window covers a rect
+Subject: [PATCH 11/23] window: Allow checking if a window covers a rect
 
 This is just a small function to improve the readability of the code.
 ---
@@ -1616,7 +1616,7 @@ GitLab
 From 8eb6a859916a685d2a8317abd63962e69bae10f9 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 11 Jun 2022 13:03:24 +0300
-Subject: [PATCH 12/22] workspace: Allow searching for the topmost window
+Subject: [PATCH 12/23] workspace: Allow searching for the topmost window
  overlapping a rect
 
 This is useful for determining if a window is the topmost window in
@@ -1677,17 +1677,77 @@ index 3bd517fca6..dd2feb5fe4 100644
 GitLab
 
 
-From 034ad3d899e7ed369c1bed2e0079146410524d43 Mon Sep 17 00:00:00 2001
+From 98fbf055e7d4fe081c46250a2c8a455595b769e6 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 14 Jun 2022 01:04:03 +0300
+Subject: [PATCH 13/23] surface-actor: Allow checking if a surface actor covers
+ a rect
+
+---
+ src/compositor/meta-surface-actor.c | 20 ++++++++++++++++++++
+ src/compositor/meta-surface-actor.h |  3 +++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index 978ccf9e61..883eb7c398 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -521,6 +521,26 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                       stage_view);
+ }
+ 
++gboolean
++meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                  MetaRectangle    *rect)
++{
++  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
++  MetaRectangle surface_rect;
++  float x, y, width, height;
++
++  clutter_actor_get_position (actor, &x, &y);
++  clutter_actor_get_size (actor, &width, &height);
++
++  surface_rect = META_RECTANGLE_INIT (ceilf (x),
++                                      ceilf (y),
++                                      ceilf (width),
++                                      ceilf (height));
++
++  return meta_rectangle_contains_rect (&surface_rect,
++                                       rect);
++}
++
+ void
+ meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                      cairo_region_t   *region)
+diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
+index f69cb15275..3128f513cd 100644
+--- a/src/compositor/meta-surface-actor.h
++++ b/src/compositor/meta-surface-actor.h
+@@ -40,6 +40,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                        ClutterStageView *stage_view,
+                                                        float            *unobscurred_fraction);
+ 
++gboolean meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                           MetaRectangle    *rect);
++
+ void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                           cairo_region_t   *region);
+ void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
+-- 
+GitLab
+
+
+From a49f32b2ba0480cd08d8d2b8715e5c3ca3271636 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 01:44:25 +0200
-Subject: [PATCH 13/22] compositor/native: Request frame sync for compatible
+Subject: [PATCH 14/23] compositor/native: Request frame sync for compatible
  windows
 
 ---
- src/compositor/meta-compositor-native.c | 20 ++++++-
- src/compositor/meta-compositor-native.h |  3 ++
- src/compositor/meta-window-actor.c      | 70 +++++++++++++++++++++++++
- 3 files changed, 92 insertions(+), 1 deletion(-)
+ src/compositor/meta-compositor-native.c | 20 +++++-
+ src/compositor/meta-compositor-native.h |  3 +
+ src/compositor/meta-window-actor.c      | 86 +++++++++++++++++++++++++
+ 3 files changed, 108 insertions(+), 1 deletion(-)
 
 diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
 index bc17704e1b..8c4c419d66 100644
@@ -1762,7 +1822,7 @@ index 2b1c652087..dcb9c7dc15 100644
                                                     MetaBackend *backend);
  
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index ae1fa4d903..82a251f5ba 100644
+index ae1fa4d903..ccbf42325a 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
 @@ -34,6 +34,7 @@
@@ -1785,11 +1845,23 @@ index ae1fa4d903..82a251f5ba 100644
  typedef enum
  {
    INITIALLY_FROZEN,
-@@ -1053,6 +1059,65 @@ meta_window_actor_sync_visibility (MetaWindowActor *self)
+@@ -1053,6 +1059,81 @@ meta_window_actor_sync_visibility (MetaWindowActor *self)
      }
  }
  
 +#ifdef HAVE_NATIVE_BACKEND
++static MetaSurfaceActor *
++meta_window_actor_get_topmost_surface (MetaWindowActor *actor)
++{
++  ClutterActor *topmost_actor;
++
++  topmost_actor = clutter_actor_get_last_child (CLUTTER_ACTOR (actor));
++  if (!topmost_actor || !META_IS_SURFACE_ACTOR (topmost_actor))
++    return NULL;
++
++  return META_SURFACE_ACTOR (topmost_actor);
++}
++
 +static void
 +meta_window_actor_maybe_request_frame_sync (MetaWindowActor  *window_actor,
 +                                            ClutterStageView *stage_view)
@@ -1839,8 +1911,12 @@ index ae1fa4d903..82a251f5ba 100644
 +                                                       &view_layout))
 +    return;
 +
-+  surface_actor = meta_window_actor_get_surface (window_actor);
++  surface_actor = meta_window_actor_get_topmost_surface (window_actor);
 +  if (!surface_actor)
++    return;
++
++  if (!meta_surface_actor_contains_rect (surface_actor,
++                                         &view_layout))
 +    return;
 +
 +  meta_compositor_native_request_frame_sync (compositor_native,
@@ -1851,7 +1927,7 @@ index ae1fa4d903..82a251f5ba 100644
  void
  meta_window_actor_before_paint (MetaWindowActor  *self,
                                  ClutterStageView *stage_view)
-@@ -1061,6 +1126,11 @@ meta_window_actor_before_paint (MetaWindowActor  *self,
+@@ -1061,6 +1142,11 @@ meta_window_actor_before_paint (MetaWindowActor  *self,
      return;
  
    META_WINDOW_ACTOR_GET_CLASS (self)->before_paint (self, stage_view);
@@ -1867,20 +1943,20 @@ index ae1fa4d903..82a251f5ba 100644
 GitLab
 
 
-From 01e03a9e3984a2e0cc7892669501d701ca509306 Mon Sep 17 00:00:00 2001
+From 09f04a1717a1a5fb4834dff142343f443df3c30f Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 4 Aug 2020 22:07:13 +0300
-Subject: [PATCH 14/22] temp: Assume every window supports VRR
+Subject: [PATCH 15/23] temp: Assume every window supports VRR
 
 ---
  src/compositor/meta-window-actor.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index 82a251f5ba..ed4e3516aa 100644
+index ccbf42325a..69219d19f8 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
-@@ -1090,8 +1090,8 @@ meta_window_actor_maybe_request_frame_sync (MetaWindowActor  *window_actor,
+@@ -1102,8 +1102,8 @@ meta_window_actor_maybe_request_frame_sync (MetaWindowActor  *window_actor,
    if (!window)
      return;
  
@@ -1895,10 +1971,10 @@ index 82a251f5ba..ed4e3516aa 100644
 GitLab
 
 
-From 8c120c5986ad618a61a2c1125f63163afabecb78 Mon Sep 17 00:00:00 2001
+From 3b53c38d5fba7e6790c3576a9758e715b543365c Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:42:37 +0200
-Subject: [PATCH 15/22] connector/kms: Detect variable refresh rate capability
+Subject: [PATCH 16/23] connector/kms: Detect variable refresh rate capability
 
 The "vrr_capable" property indicates whether variable refresh rate is
 supported for a connector.
@@ -1956,10 +2032,10 @@ index c2b763548e..381edca973 100644
 GitLab
 
 
-From f46f708eb4cb91f751d76e1445cc9db66ffbbcc7 Mon Sep 17 00:00:00 2001
+From 7226cff4fe556ae9cbdf11bbbf0efbf02a8c7017 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 22:17:59 +0200
-Subject: [PATCH 16/22] update/kms: Allow setting CRTC properties
+Subject: [PATCH 17/23] update/kms: Allow setting CRTC properties
 
 ---
  .../native/meta-kms-impl-device-atomic.c      | 25 ++++++++
@@ -2191,10 +2267,10 @@ index 53fc92eb86..d2e912347b 100644
 GitLab
 
 
-From efff42e005729b7de42c960ad4176c432ecb341c Mon Sep 17 00:00:00 2001
+From b28488356a0018feab092ffb9a03d2cce12476d8 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Thu, 9 Jun 2022 23:49:23 +0300
-Subject: [PATCH 17/22] kms/update: Explicitly track whether ALLOW_MODESET is
+Subject: [PATCH 18/23] kms/update: Explicitly track whether ALLOW_MODESET is
  required
 
 This will be used by a following commit to set the
@@ -2280,10 +2356,10 @@ index d2e912347b..3feb9b05a9 100644
 GitLab
 
 
-From 91de18c8d96c22778380a9f0700e31a4a7427cc8 Mon Sep 17 00:00:00 2001
+From 00ac85b8238e4a435fc0da00911879ecf74beac6 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:44:15 +0200
-Subject: [PATCH 18/22] crtc/kms: Allow setting the "VRR_ENABLED" property on a
+Subject: [PATCH 19/23] crtc/kms: Allow setting the "VRR_ENABLED" property on a
  CRTC
 
 Add the "VRR_ENABLED" CRTC propetry ID and a funtion to update its
@@ -2473,10 +2549,10 @@ index f31e36aad3..2f69c754be 100644
 GitLab
 
 
-From b37b1de36d7d8410ab8922607959d08a8598d534 Mon Sep 17 00:00:00 2001
+From 342fee2fbdbc2a9d1cd244d5e8f722d9d0b4a020 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jun 2022 19:45:47 +0300
-Subject: [PATCH 19/22] output/kms: Allow setting the variable refresh rate
+Subject: [PATCH 20/23] output/kms: Allow setting the variable refresh rate
  mode of an output
 
 Add a function that enables variable refresh rate on a CRTC.
@@ -2638,10 +2714,10 @@ index 52acc6032a..54b1721a42 100644
 GitLab
 
 
-From a195e739ecd5076e215a8d8cce540f2e9d00ffcb Mon Sep 17 00:00:00 2001
+From 81e178c4b418145a05b7ad766b3c7d0861638735 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 20:57:41 +0200
-Subject: [PATCH 20/22] monitor: Allow checking the state of variable refresh
+Subject: [PATCH 21/23] monitor: Allow checking the state of variable refresh
  rate
 
 A monitor is considered to have variable refresh rate support if its
@@ -2700,10 +2776,10 @@ index 066caa7f46..a63300cd0e 100644
 GitLab
 
 
-From 5989fff50c84dc33d904618332671f500117b394 Mon Sep 17 00:00:00 2001
+From c3ba2a68ca4a61fbf851117ddf16b65bf371e664 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 20:52:16 +0200
-Subject: [PATCH 21/22] monitor-manager: Add variable refresh rate
+Subject: [PATCH 22/23] monitor-manager: Add variable refresh rate
  configuration
 
 This allows enabling variable refresh rate on monitors that support it.
@@ -2960,10 +3036,10 @@ index 6d9b7f416b..93094a21cb 100644
 GitLab
 
 
-From c73662672053e1b53c45745e4a30b4980186edc7 Mon Sep 17 00:00:00 2001
+From a98390cd0adde7b86d114edc0e97ced33b261444 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jun 2022 21:12:49 +0300
-Subject: [PATCH 22/22] renderer-view/native: Enable VRR and actor sync when
+Subject: [PATCH 23/23] renderer-view/native: Enable VRR and actor sync when
  applicable
 
 If an actor is tracked for synchronization and VRR is configured to
@@ -2987,7 +3063,7 @@ effectively achieving the VRR effect.
  1 file changed, 26 insertions(+), 1 deletion(-)
 
 diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
-index 14f3c543b2..28665893b9 100644
+index 14f3c543b2..677b975bc8 100644
 --- a/src/backends/native/meta-renderer-view-native.c
 +++ b/src/backends/native/meta-renderer-view-native.c
 @@ -25,6 +25,11 @@
@@ -3002,18 +3078,19 @@ index 14f3c543b2..28665893b9 100644
  
  typedef enum _MetaFrameSyncMode
  {
-@@ -115,8 +120,10 @@ meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_nat
+@@ -115,20 +120,24 @@ meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_nat
  
  static void
  meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
 +                                          MetaOutput             *output,
                                            MetaFrameSyncMode       sync_mode)
  {
-+  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
    ClutterFrameClock *frame_clock =
      clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
++  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
  
-@@ -125,10 +132,12 @@ meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
+   switch (sync_mode)
+     {
      case META_FRAME_SYNC_MODE_ENABLED:
        clutter_frame_clock_set_mode (frame_clock,
                                      CLUTTER_FRAME_CLOCK_MODE_VARIABLE);

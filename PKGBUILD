@@ -1,11 +1,9 @@
 # Maintainer: CorvetteCole <aur@corvettecole.com>
 
-_merge_requests_to_use=('1154')
-
 pkgbase=mutter-vrr
 pkgname=(mutter-vrr mutter-vrr-docs)
 pkgver=42.2+r11+gcd52c57bc
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -23,43 +21,16 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr1154.patch')
 
 sha256sums=('SKIP'
-            '175a256b04383f5ceed0952a61d8faa7b469ee0acffaa9d63845c9b3cecd270b')
+            '523d193b770ddb3e16384d5c3eff8d87e6f01b605673c0f40a6eea1f17cecc6f')
 
 pkgver() {
   cd $pkgname
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
-pick_mr() {
-  for mr in "${_merge_requests_to_use[@]}"; do
-    if [ "$1" = "$mr" ]; then
-      if [ "$2" = "merge" ] || [ -z "$2" ]; then
-        echo "Downloading then Merging $1..."
-        curl -O "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/$mr.diff"
-        git apply "$mr.diff"
-      elif [ "$3" = "revert" ]; then
-        echo "Reverting $1..."
-        git revert "$2" --no-commit
-      elif [ "$3" = "patch" ]; then
-	if [ -e ../"$2" ]; then 
-          echo "Patching with $2..."
-          patch -Np1 -i ../"$2"
-        else
-          echo "Downloading $mr as $2 then patching..."
-          curl -O "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/$mr.diff" -o "$2"
-          patch -Np1 -i "$2"
-        fi
-      else
-        echo "ERROR: wrong argument given: $2"
-      fi
-      break
-    fi
-  done
-}
-
 prepare() {
   cd "$srcdir/$pkgname"
-  pick_mr '1154' 'mr1154.patch' 'patch'
+  patch -p1 < "$srcdir/mr1154.patch"
 }
 
 build() {
@@ -106,7 +77,7 @@ _pick() {
 }
 
 package_mutter-vrr() {
-  provides=(mutter libmutter-10.so mutter-vrr)
+  provides=(mutter libmutter-10.so)
   conflicts=(mutter)
   groups=(gnome)
 
