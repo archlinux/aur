@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_disable_unused_warnings
 	pkgdesc = Expands [@disable_unused_warnings] into [@warning "-20-26-32-33-34-35-36-37-38-39-60-66-67"]
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_disable_unused_warnings
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-ppx_disable_unused_warnings
 	depends = ocaml-base>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_disable_unused_warnings-0.15.0-1.tar.gz::https://github.com/janestreet/ppx_disable_unused_warnings/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_disable_unused_warnings-0.15.0-2.tar.gz::https://github.com/janestreet/ppx_disable_unused_warnings/archive/v0.15.0.tar.gz
 	sha512sums = 837bb96b5cc2623205ce778e6100d97a0a029e8c20a945509c06ee44784e67b8e9033b5387681c0f86c07f48ca4541e356ca62e19c1baa8d1b52c813400bb024
 
 pkgname = ocaml-ppx_disable_unused_warnings
