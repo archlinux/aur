@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_base
 	pkgdesc = Base set of ppx rewriters
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_base
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = ocaml-ppx_base
 	depends = ocaml-ppx_sexp_conv>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_base-0.15.0-1.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_base-0.15.0-2.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.15.0.tar.gz
 	sha512sums = 6843c496bde4e9bccab1a7169da373bf315c5c6a551fd3e71b9e2b589e1d3b9a6361ccf2130ebde4bcb10a6c07d2c25acbf9951463e4b18e91bf289ce04daf72
 
 pkgname = ocaml-ppx_base
