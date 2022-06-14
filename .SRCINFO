@@ -1,15 +1,16 @@
 pkgbase = nextcloud-app-u2f
 	pkgdesc = Two factor U2F provider for Nextcloud
-	pkgver = 6.3.0
-	pkgrel = 2
+	pkgver = 6.3.1
+	pkgrel = 1
 	url = https://github.com/nextcloud-releases/twofactor_u2f
 	arch = any
 	license = AGPL
 	depends = nextcloud>=20.0
+	depends = nextcloud<24.0
 	options = !strip
-	source = twofactor_u2f-6.3.0.tar.gz::https://github.com/nextcloud-releases/twofactor_u2f/releases/download/v6.3.0/twofactor_u2f.tar.gz
+	source = twofactor_u2f-6.3.1.tar.gz::https://github.com/nextcloud-releases/twofactor_u2f/releases/download/v6.3.1/twofactor_u2f.tar.gz
 	source = php-8.1.patch
-	sha256sums = 89c5d3181eb20027fa6b6afc937ace6b52eaff624c5eaaee6b4d59676a3d2d7c
+	sha256sums = 9397bf5a152dfa30e29990b2d2f8e19bb13d2d525ad24f8077c4af2802c6b8db
 	sha256sums = f886f6832bb09de756353f0fe6a01ccba5c96986c6284488019e3e861d8425fa
 
 pkgname = nextcloud-app-u2f
