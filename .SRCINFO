@@ -1,6 +1,6 @@
 pkgbase = lsd-bin
 	pkgdesc = The next gen ls command
-	pkgver = 0.20.1
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/Peltoche/lsd
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = lsd-bin
 	provides = lsd
 	conflicts = lsd
 	conflicts = lsd-git
-	source = lsd.tar.gz::https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd-0.20.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 8ac55367fe25f54dde9d37111abac4c98ef7668b56a36e6c464d5d52ea22c346
+	source = lsd.tar.gz::https://github.com/Peltoche/lsd/releases/download/0.22.0/lsd-0.22.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 0adadefe27ea59cee0de226849d21dee4009064c431eca125b93995289f9ffbc
 
 pkgname = lsd-bin
-
