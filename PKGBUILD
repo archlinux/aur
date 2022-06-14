@@ -1,4 +1,4 @@
-# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=quake3-edawn
 pkgver=1.6.2
