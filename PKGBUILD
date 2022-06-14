@@ -1,5 +1,6 @@
 # Maintainer: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Rob McCathie <korrode at gmail>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
