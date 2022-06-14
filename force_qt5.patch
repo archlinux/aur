@@ -1,0 +1,12 @@
+diff -rupN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2022-06-14 12:18:25.506502296 -0700
++++ b/CMakeLists.txt	2022-06-14 12:18:38.946502190 -0700
+@@ -22,7 +22,7 @@ set(CMAKE_CXX_STANDARD 11)
+ 
+ include(FeatureSummary)
+ 
+-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
++find_package(QT NAMES Qt5 REQUIRED COMPONENTS Core)
+ find_package(Qt${QT_VERSION_MAJOR} 5.6 REQUIRED COMPONENTS
+     Core Widgets PrintSupport Network)
+ if(QT_VERSION_MAJOR GREATER 5)
