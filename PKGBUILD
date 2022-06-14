@@ -6,7 +6,7 @@ pkgname='python2-requests'
 _name="${pkgname#python2-}"
 pkgver=2.27.1
 pkgrel=1
-pkgdesc='HTTP for Humans (for Python 2)'
+pkgdesc='HTTP for Humans (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
@@ -29,7 +29,7 @@ optdepends=(
   'python2-pysocks: SOCKS proxy support'
 )
 _sourcedirname="${_name}-${pkgver}"
-source=("https://github.com/psf/requests/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/psf/${_name}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'certs.patch')
 b2sums=('302fa6f3be95840e7c79a036d5d6bf354f9db0857542969759690c312b31e26fc4779e886b616bd624cb17a53da0342597988bd4aee88dbeb0f6a2442b8a6ced'
         'b6a7c9796a8ffedebcdbf0d2f95c40b1bbfa0beb45a3c7d5b493a459c4516533992291c720cf02e291cdbbf554dd0bf25c1312f4be41e39acd586b41911ad5b0')

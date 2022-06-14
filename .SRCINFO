@@ -1,5 +1,5 @@
 pkgbase = python2-requests
-	pkgdesc = HTTP for Humans (for Python 2)
+	pkgdesc = HTTP for Humans (legacy Python 2 version)
 	pkgver = 2.27.1
 	pkgrel = 1
 	url = https://pypi.org/project/requests/2.27.1/
