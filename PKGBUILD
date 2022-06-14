@@ -1,6 +1,6 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 pkgname=gdx-skin-composer
-pkgver=49
+pkgver=51
 pkgrel=1
 pkgdesc="Create skins for LibGDX's Scene2D.UI"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('java-runtime>=11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raeleus/skin-composer/releases/download/$pkgver/skin-composer-linux.tar.gz"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/raeleus/skin-composer/$pkgver/LICENSE")
-sha256sums=('108fcd931cf66895fd003f27c6718a64b588aa0bcf0f330c36071ebdd1b947bd'
+sha256sums=('7ae3e72e8d746195ec33f3fd7f9e8b3abd2a8f41cc22ffcbc13c6a2bf9e66243'
             '6045b9948f5cdd11712c42bb86fe4d413a579e52db8eba6cea39df818bb876fc')
 
 prepare() {
