@@ -18,7 +18,6 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # cutting off 'foo-' prefix that presents in the git tag
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

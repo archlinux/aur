@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager-git
 	pkgdesc = A wrapper around all package managers (git version)
-	pkgver = v5.1.0.r42.g3a916b0
+	pkgver = 5.1.0.r42.g3a916b0
 	pkgrel = 1
 	url = https://kdeldycke.github.io/meta-package-manager/
 	arch = any
