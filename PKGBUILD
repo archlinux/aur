@@ -2,17 +2,18 @@
 pkgbase=python-myst-nb
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.13.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
 url="https://myst-nb.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+makedepends=('python-flit-core' 'python-build' 'python-installer')
 #'python-sphinx')
-#checkdepends=('python-jupyter_sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton' 'python-myst-parser')
+checkdepends=('python-nose' 'python-myst-parser')
+#checkdepends=('python-jupyter_sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('063ffdcb077f8fe6c3f4db45f3a0a669')
+md5sums=('508620441832bdb282c0eadfd0e1dc7b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -22,24 +23,24 @@ build() {
 #   python setup.py build_sphinx
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    #python setup.py test
-#    pytest #|| warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    #python setup.py test
+    nosetests || warning "Tests failed"
+}
 
 package_python-myst-nb() {
     depends=('python-importlib-metadata'
              'ipython'
-             'python-ipywidgets<8'
              'python-jupyter-cache'
              'python-jupyter_sphinx'
              'python-myst-parser'
-             'jupyter-nbconvert<7'
-             'jupyter-nbformat'
+             'jupyter-nbclient'     # depends on nbformat
              'python-yaml'
-             'python-sphinx-togglebutton')
+             'python-sphinx-togglebutton'
+             'python-typing_extensions'
+             'python-ipykernel')
     optdepends=('python-pre-commit: code_style'
                 'python-alabaster: rtd'
                 'python-altair: rtd'
