@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
 license=(GPL3)
 _dunever=2.8.0
-depends=("opm-common>=${pkgver}" "dune-grid>=${_dunever}" "dune-istl>=${_dunever}" zoltan)
+depends=("opm-common>=${pkgver}" "dune-grid>=${_dunever}" "dune-istl>=${_dunever}" suitesparse zoltan)
 makedepends=(doxygen graphviz git)
 optdepends=('man-db: manual pages for grdecl2vtu and mirror_grid')
 provides=('grdecl2vtu' 'mirror_grid')

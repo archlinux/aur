@@ -11,6 +11,7 @@ pkgbase = opm-grid
 	depends = opm-common>=2022.04
 	depends = dune-grid>=2.8.0
 	depends = dune-istl>=2.8.0
+	depends = suitesparse
 	depends = zoltan
 	optdepends = man-db: manual pages for grdecl2vtu and mirror_grid
 	provides = grdecl2vtu
