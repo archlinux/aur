@@ -3,7 +3,7 @@
 # Contributor: Justin Davis <jrcd83@gmail.com>
 
 pkgname=perl-imager
-pkgver=1.015
+pkgver=1.017
 pkgrel=1
 pkgdesc='Perl extension for Generating 24 bit Images'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('perl' 'libjpeg' 'libpng' 'giflib' 'libtiff' 'freetype2')
 optdepends=('perl-parse-recdescent: needed to parse transform2() expressions')
 url="http://search.cpan.org/dist/Imager"
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TONYC/Imager-${pkgver}.tar.gz")
-sha256sums=('1183998b46578574e9f9665bc3ab14489a1af3d1380158456154522ce1a8e122')
+sha256sums=('91acd2c2b6b8c863073e9e3facced78525976511ce9470eab62e81ce8c3839f5')
 
 build() {
 	cd "${srcdir}/Imager-${pkgver}"
