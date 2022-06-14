@@ -1,7 +1,7 @@
 pkgbase = ocaml-luv
 	pkgdesc = Cross-platform asynchronous I/O and system calls
 	pkgver = 0.5.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aantron/luv
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-luv
 	depends = ocaml-ctypes>=0.14.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-luv-0.5.11-2.tar.gz::https://github.com/aantron/luv/archive/0.5.11.tar.gz
+	source = ocaml-luv-0.5.11-3.tar.gz::https://github.com/aantron/luv/archive/0.5.11.tar.gz
 	sha512sums = 3034b70935bc1bf1f6c2b7a34b0997ebf91e08e232576c48cc6499c59f2ad611e9c69daf8670f1190d74d2e6956a79ae60aa192e5b9f9041ddd6cc8ff389a903
 
 pkgname = ocaml-luv
