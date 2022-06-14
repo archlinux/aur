@@ -1,6 +1,6 @@
 # Maintainer: Leander Oudakker <arch at leanderoudakker dot com>
 pkgname=spectre-cli-git
-pkgver=3.0.ios.alpha.2.r16.a5e7aab
+pkgver=r479.a5e7aab
 pkgrel=1
 pkgdesc="Spectre introduces a completely new way of thinking about passwords."
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname}"
 
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
