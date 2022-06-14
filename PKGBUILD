@@ -1,7 +1,7 @@
 # Maintainer: Atakku <atakkudev@gmail.com>
 _npmname=tailwindcss
 pkgname=tailwind-css
-pkgver=3.0.24
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A utility-first CSS framework for rapidly building custom user interfaces."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha512sums=('1f7b8c999356cc6e9aaa683dab4ed92113486b0a2211c3452837cbf98cce3ee3ec5ee0d7c49c41f6272accb81dcca3708c6dd202ba3687d4986aff1ec173608a')
+sha512sums=('3d124d61d488b61adbf218e6032ca613210df18a3ad53317a73c85529c542de7b2467dd8de0a6fbb0e859514caac9bcaeed85218a467853dfa568bd5c7859e30')
 optdepends=()
 options=(!strip)
 
