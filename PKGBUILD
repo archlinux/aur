@@ -1,4 +1,4 @@
-# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: Andrey Vihrov <andrey.vihrov at gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=quake3-rally
