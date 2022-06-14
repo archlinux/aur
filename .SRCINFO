@@ -1,12 +1,12 @@
 pkgbase = nginx-mod-slowfs-cache
 	pkgdesc = NGINX module that adds ability to cache static files
 	pkgver = 1.10
-	pkgrel = 9
+	pkgrel = 10
 	url = http://labs.frickle.com/nginx_ngx_slowfs_cache
 	arch = x86_64
 	license = CUSTOM
 	makedepends = nginx-src
-	depends = nginx=1.20.2
+	depends = nginx=1.22.0
 	depends = libutil-linux
 	source = nginx-mod-slowfs-cache-1.10::http://labs.frickle.com/files/ngx_slowfs_cache-1.10.tar.gz
 	sha256sums = 1e81453942e5b0877de1f1f06c56ae82918ea9818255cb935bcb673c95a758a1
