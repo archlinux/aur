@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_fixed_literal
 	pkgdesc = Simpler notation for fixed point literals
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_fixed_literal
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-ppx_fixed_literal
 	depends = ocaml-base>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_fixed_literal-0.15.0-1.tar.gz::https://github.com/janestreet/ppx_fixed_literal/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_fixed_literal-0.15.0-2.tar.gz::https://github.com/janestreet/ppx_fixed_literal/archive/v0.15.0.tar.gz
 	sha512sums = 3842162928f6a87b39abaea15cbed8c8f59349b20711d6f8af011cd0dec48a75f59e422db6907425203fc98f438dd758a3e8973900844b60cbf47f27bc9ac394
 
 pkgname = ocaml-ppx_fixed_literal
