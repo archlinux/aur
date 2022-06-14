@@ -1,0 +1,14 @@
+pkgbase = python2-coverage
+	pkgdesc = A tool for measuring code coverage of Python programs (Python 2)
+	pkgver = 5.5
+	pkgrel = 3
+	url = https://coverage.readthedocs.io/en/5.5/
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-toml: For pyproject.toml support
+	source = python2-coverage-5.5.tar.gz::https://github.com/nedbat/coveragepy/archive/refs/tags/5.5.tar.gz
+	sha256sums = fa441d7136aba2f08e0ceca2d7646005e7564c536cd628bb0cb0342e0b482562
+
+pkgname = python2-coverage
