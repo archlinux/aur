@@ -1,6 +1,6 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-tagger
-pkgver=2022.6.1
+pkgver=2022.6.2
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=(x86_64)
@@ -23,7 +23,7 @@ prepare() {
 build() {
     cmake -B build -S NickvisionTagger \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE="Release"
+        -DCMAKE_BUILD_TYPE="RelWithDebInfo"
     cmake --build build
 }
 
