@@ -1,7 +1,7 @@
 pkgbase = rustdesk-bin
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,6 @@ pkgbase = rustdesk-bin
 	conflicts = rustdesk
 	options = !strip
 	source = https://github.com/rustdesk/rustdesk/releases/download/1.1.9/rustdesk-1.1.9-manjaro-arch.pkg.tar.zst
-	sha256sums = a8989ccb6ac7a81a5086f8569aba248d8d3541eed86bb13e4ace924323cfc79d
+	sha256sums = SKIP
 
 pkgname = rustdesk-bin

@@ -3,7 +3,7 @@
 
 pkgname=rustdesk-bin
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio' 'hicolor-icon-theme' 'xdg-utils' 'python-pynput')
 options=('!strip')
 source=("$url/releases/download/${pkgver}/rustdesk-${pkgver}-manjaro-arch.pkg.tar.zst")
-sha256sums=('a8989ccb6ac7a81a5086f8569aba248d8d3541eed86bb13e4ace924323cfc79d')
+sha256sums=('SKIP')
 
 prepare() {
     sed -i "s/^\(Icon=\).*$/\1rustdesk/" "$srcdir/usr/share/rustdesk/files/rustdesk.desktop"
