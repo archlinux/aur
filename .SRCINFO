@@ -1,7 +1,7 @@
 pkgbase = ocaml-core
 	pkgdesc = Industrial strength alternative to OCaml's standard library
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/core
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = ocaml-core
 	depends = ocaml-typerep>=0.15.0
 	depends = ocaml-variantslib>=0.15.0
 	options = !strip
-	source = ocaml-core-1:0.15.0-1.tar.gz::https://github.com/janestreet/core/archive/v0.15.0.tar.gz
+	source = ocaml-core-1:0.15.0-2.tar.gz::https://github.com/janestreet/core/archive/v0.15.0.tar.gz
 	sha512sums = a73a3c1c6f0ade9a9e49917bb896e62afc4fda44dd90ffa99ef9ba24debe7166b4fe1b374500a044cad8318d12f250de7fe2dd935015efde379cf91a2241f51b
 
 pkgname = ocaml-core
