@@ -1,7 +1,7 @@
 pkgbase = ocaml-core_kernel
 	pkgdesc = Industrial strength alternative to OCaml's standard library (system-independent part)
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/core_kernel
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ocaml-core_kernel
 	depends = ocaml-int_repr>=0.15.0
 	depends = ocaml-ppx_jane>=0.15.0
 	options = !strip
-	source = ocaml-core_kernel-1:0.15.0-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.15.0.tar.gz
+	source = ocaml-core_kernel-1:0.15.0-2.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.15.0.tar.gz
 	sha512sums = da28f11374fda2e869b5ef3f7131461c6d896b52413654f2aeb7c74bc77ba4a8e2a25830eb3e3ef393e0bbae903db20f54773b356c53cab75c1bba1b9ce265bc
 
 pkgname = ocaml-core_kernel
