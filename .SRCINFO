@@ -1,7 +1,7 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/bin_prot
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ocaml-bin_prot
 	depends = ocaml-ppx_sexp_conv>=0.15.0
 	depends = ocaml-ppx_variants_conv>=0.15.0
 	options = !strip
-	source = ocaml-bin_prot-1:0.15.0-1.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.15.0.tar.gz
+	source = ocaml-bin_prot-1:0.15.0-2.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.15.0.tar.gz
 	sha512sums = 8e912988568c69b412937eaea7aee54ee3fe8bd751979df37bcbc827ced92b14004dcfd761e3d46c98602d53884a5151a1a6f11f2a5ebb1107571fb80bc11780
 
 pkgname = ocaml-bin_prot
