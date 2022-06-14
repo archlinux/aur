@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_pipebang
 	pkgdesc = A ppx rewriter that inlines reverse application operators |> and |!
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_pipebang
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ocaml-ppx_pipebang
 	depends = ocaml>=4.08.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_pipebang-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_pipebang/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_pipebang-1:0.15.0-2.tar.gz::https://github.com/janestreet/ppx_pipebang/archive/v0.15.0.tar.gz
 	sha512sums = 778dae2cd6176f9ce18f20486e16f6f76e9137095759b29ddc10fee15d8a21f51fff94245c4a750ae68cd75edbd06b9cad6ff1b56aacb38ac9e6d7d71c0bf701
 
 pkgname = ocaml-ppx_pipebang
