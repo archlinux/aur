@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_variants_conv
 	pkgdesc = Generation of accessor and iteration functions for ocaml variant types
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_variants_conv
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_variants_conv
 	depends = ocaml-variantslib>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_variants_conv-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_variants_conv/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_variants_conv-1:0.15.0-2.tar.gz::https://github.com/janestreet/ppx_variants_conv/archive/v0.15.0.tar.gz
 	sha512sums = 549b8d7af75cb98bc6cfe3bc53d43a9bee5c767de149905faf76c0a97c5be86d14d784377805c3932423d4dc698375edbd52f1cf508a4d0f3ea8e79f7e284224
 
 pkgname = ocaml-ppx_variants_conv
