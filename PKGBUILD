@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -85,7 +85,7 @@ optdepends=(
   'lib32-ladspa: LADSPA filters'
   'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
 )
-_tag=390d6853d0ef408007feb39c0040682c81c02751
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 options=(
   debug
 )
