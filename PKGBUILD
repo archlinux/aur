@@ -1,6 +1,6 @@
 # Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-application-git
-pkgver=2022.6.0.r2
+pkgver=2022.6.0.r3
 pkgrel=1
 pkgdesc="A template for creating Nickvision applications"
 arch=(x86_64)
@@ -23,7 +23,7 @@ prepare() {
 build() {
 	cmake -B build -S NickvisionApplication \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_BUILD_TYPE="Release"
+        -DCMAKE_BUILD_TYPE="RelWithDebInfo"
     cmake --build build
 }
 
