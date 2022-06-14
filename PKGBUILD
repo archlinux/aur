@@ -37,7 +37,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	for _license in 'LICENSE.md' 'MLton-license.txt' 'strftime.js-licence.txt' 'THIRD-PARTY.txt'; do
-		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
