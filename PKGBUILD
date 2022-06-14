@@ -1,0 +1,39 @@
+# Maintainer: VxlerieUwU
+# Maintainer: goetzc
+# Maintainer: Skycoder42
+# Maintainer: Kppqju77
+# Contributor: lestb
+# Contributor: Philipp Wolfer
+# Contributor: Joel Pedraza
+# Contributor: Jakub Schmidtke
+
+pkgname=android-platform-32
+_apilevel=32
+_rev=r01
+pkgver=${_apilevel}_${_rev}
+pkgrel=1
+pkgdesc="Android SDK Platform, API 32"
+arch=('any')
+url="http://developer.android.com/sdk/index.html"
+license=('custom')
+options=('!strip')
+source=("https://dl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip"
+         "package.xml")
+sha256sums=('01d8da1c900e70fcf5da39767d5444e39928935b1a5927055ce749fc348ca7ae'
+            '6cce8c9cf729b4bfb6f1509617d6cc1f68fc0d5586ea30fc5d344426d6832a92')
+
+package() {
+  depends=('android-sdk' 'android-sdk-platform-tools')
+  
+  mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
+  find "${srcdir}" -maxdepth 1 -mindepth 1 -type d | grep -P 'android-[0-9]+(\.[0-9]*)*$' | while read directory; do
+      mv "${directory}" "${pkgdir}/opt/android-sdk/platforms/android-${_apilevel}"
+  done
+
+  install -D -m 644 "package.xml" "${pkgdir}/usr/share/licenses/${pkgname}/package.xml"
+
+  ln -s "/usr/share/licenses/${pkgname}/package.xml" \
+    "${pkgdir}/opt/android-sdk/platforms/android-${_apilevel}/"
+
+  chmod -R ugo+rX "${pkgdir}/opt"
+}

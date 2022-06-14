@@ -1,0 +1,16 @@
+pkgbase = android-platform-32
+	pkgdesc = Android SDK Platform, API 32
+	pkgver = 32_r01
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	options = !strip
+	source = https://dl.google.com/android/repository/platform-32_r01.zip
+	source = package.xml
+	sha256sums = 01d8da1c900e70fcf5da39767d5444e39928935b1a5927055ce749fc348ca7ae
+	sha256sums = 6cce8c9cf729b4bfb6f1509617d6cc1f68fc0d5586ea30fc5d344426d6832a92
+
+pkgname = android-platform-32
+	depends = android-sdk
+	depends = android-sdk-platform-tools
