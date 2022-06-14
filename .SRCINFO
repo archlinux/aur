@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_fail
 	pkgdesc = Add location to calls to failwiths
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/janestreet/ppx_fail
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_fail
 	depends = ocaml-ppx_here>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_fail-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_fail/archive/v0.14.0.tar.gz
-	sha256sums = 7b861d99472454d65702b771203d74fa95e7416e3c554ac001e6913bfe9bed27
+	source = ocaml-ppx_fail-1:0.14.0-4.tar.gz::https://github.com/janestreet/ppx_fail/archive/v0.14.0.tar.gz
+	sha512sums = a683430e5cdb50b52846b45d0e25a7b2498f14f34153319cb3ffd30e7b6e493f36790ffc5ea82ec3fbb0281a29e13bb2df10a1754ec32f0e5faad0890b6d211e
 
 pkgname = ocaml-ppx_fail
