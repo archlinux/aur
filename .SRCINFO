@@ -1,0 +1,13 @@
+pkgbase = waydroid-openrc
+	pkgdesc = Waydroid Container Manager as an OpenRC service
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://waydro.id
+	arch = any
+	license = GPL3
+	depends = openrc
+	depends = waydroid
+	source = waydroid-container-manager
+	sha256sums = 98b4bd1e189b6f19690eca2f725f5f2c922d414292b9b985eb487a00d201d847
+
+pkgname = waydroid-openrc
