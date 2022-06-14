@@ -13,11 +13,11 @@ url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-checkdepends=(
-  'lib32-glibc'
-  'python2-twisted'
-  'python2-tornado'
-)
+# checkdepends=(
+#   'lib32-glibc'
+#   'python2-twisted'
+#   'python2-tornado'
+# )
 provides=('python2-socks')
 _sourcedirname="${_name}-${pkgver}"
 source=("${_sourcedirname}.tar.gz::https://github.com/Anorov/PySocks/archive/$_commit.tar.gz")
@@ -40,25 +40,25 @@ build() {
   python2 setup.py build
 }
 
-check_disabled() {
-  cd "${_sourcedirname}/test"
-
-  python2 socks4server.py &
-  _SOCKS4SERVER=$!
-
-  python2 httpproxy.py &
-  _HTTPPROXY=$1
-
-  ./mocks start
-
-  sleep 1
-
-  python2 sockstest.py
-
-  ./mocks shutdown
-
-  kill "${_SOCKS4SERVER}" "${_HTTPPROXY}"
-}
+# check_disabled() {
+#   cd "${_sourcedirname}/test"
+# 
+#   python2 socks4server.py &
+#   _SOCKS4SERVER=$!
+# 
+#   python2 httpproxy.py &
+#   _HTTPPROXY=$1
+# 
+#   ./mocks start
+# 
+#   sleep 1
+# 
+#   python2 sockstest.py
+# 
+#   ./mocks shutdown
+# 
+#   kill "${_SOCKS4SERVER}" "${_HTTPPROXY}"
+# }
 
 package() {
   cd "${_sourcedirname}"
