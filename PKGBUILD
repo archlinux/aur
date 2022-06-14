@@ -1,7 +1,7 @@
 # Maintainer Stefano Lovato <stefano.lovato.1@phd.unipd.it>
 pkgname=resticpy
-pkgver=1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A Python wrapper for Restic (<https://restic.net/>) using a json configuration file."
 arch=('any')
 url="https://github.com/stefphd/ResticPy"
@@ -10,11 +10,6 @@ depends=('python' 'python-argparse')
 makedepends=('git')
 source=("git+https://github.com/stefphd/ResticPy.git")
 md5sums=('SKIP')
-
-pkgver() {
-	cd "${_pkgname}"
-	printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
