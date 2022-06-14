@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=5.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -100,7 +100,7 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=390d6853d0ef408007feb39c0040682c81c02751
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 options=(
   debug
 )
