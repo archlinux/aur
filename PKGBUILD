@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r21473.4ae75bec5
+pkgver=r21515.bd3bfe411
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
@@ -57,8 +57,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu"
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         # sirit dependencies
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
-        'yuzu-gcc12-clang13.patch')
+        'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -75,8 +74,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '0c60d6dae4ae6c5f33c944c584a5a7dc')
+         'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -107,9 +105,6 @@ prepare() {
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
         git submodule update --init
     done
-
-    cd "$srcdir/$_pkgname"
-    patch -p1 < ../yuzu-gcc12-clang13.patch
 }
 
 build() {
@@ -150,3 +145,20 @@ package() {
     cd "$srcdir/$_pkgname/build"
     DESTDIR="$pkgdir" ninja install
 }
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
