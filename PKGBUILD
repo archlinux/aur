@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 _electronversion=18
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-*}")
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
         electron-is-dev-env.patch
         "${pkgname%-*}.sh.in")
-sha256sums=('c4e98b42b396d36a8b4d4a4b4ca19aba94522efaf95aa74dfb62a6ab1d20c29c'
+sha256sums=('1f0f117126fe9b7ae2c9a2e71e8f624803edc811b6c3e6296a4ff6dbc446f389'
             'd4fad8a579a8a955fe2176da0b2fa14cdc010d750c00651c1193a6fba914d4d8'
             '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
 
