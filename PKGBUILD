@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-plugin-session'
-pkgver='0.41'
+pkgver='0.43'
 pkgrel='1'
 pkgdesc="Generic Session plugin - ties together server side storage and client side state required to maintain session data."
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-catalyst-runtime>=5.71001' 'perl-html-parser>=0' 'perl-mro-compat
 makedepends=()
 checkdepends=('perl-test-deep>=0' 'perl-test-exception>=0' 'perl-test-www-mechanize-psgi>=0')
 url='https://metacpan.org/release/Catalyst-Plugin-Session'
-source=('https://cpan.metacpan.org/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.41.tar.gz')
-md5sums=('0f7824d7c906d874466e54819c08df11')
-sha512sums=('684b3489d7259eb50b626cb29e83dca59abeaea8f7a338f09fe96c01bd927db6949ebb432b200c116a02a8501907f882ca2c163e920827f1fc755800f20187e3')
-_distdir="Catalyst-Plugin-Session-0.41"
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Plugin-Session-$pkgver.tar.gz")
+md5sums=('18fc3e30afc60cfbadc2220842b08f65')
+sha512sums=('5e41cab3c37d8dee7aceb386f0b9e8d0f01771d1d4d26403acdf2a4ea5966af81406afbf1032b62178613e6186228d8f8f3b7accd03d9b9db709d6727ac76be1')
+_distdir="Catalyst-Plugin-Session-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
