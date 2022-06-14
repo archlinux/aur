@@ -1,7 +1,7 @@
 pkgbase = srb2-uncapped-plus-git
 	pkgdesc = A Nightly/Rolling Release custom build of SRB2, with the latest community made features. Inspired on SRB2Kart Moe Mansion.
 	pkgver = r12808.c9d40cb59
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mb.srb2.org/addons/srb2-uncapped-plus.3248/
 	arch = x86_64
 	license = GPL2
@@ -17,6 +17,6 @@ pkgbase = srb2-uncapped-plus-git
 	source = git+https://git.do.srb2.org/X.organic/SRB2-modified.git#branch=uncapped-plus
 	source = srb2-uncapped-plus.desktop
 	sha256sums = SKIP
-	sha256sums = e7cfd4775f15cacd191cef491ca4a604509a9cdac463cfd3d2387fa2625e004c
+	sha256sums = 9858fddd0a59473d4ea9b3648e70f009fc6a27ccc035b37d2377a093915dcc5b
 
 pkgname = srb2-uncapped-plus-git

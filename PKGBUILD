@@ -17,7 +17,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 pkgname=srb2-uncapped-plus-git
 pkgver=r12808.c9d40cb59
 _dataver=2.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A Nightly/Rolling Release custom build of SRB2, with the latest community made features. Inspired on SRB2Kart Moe Mansion."
 arch=('x86_64')
 url="https://mb.srb2.org/addons/srb2-uncapped-plus.3248/"
@@ -29,7 +29,7 @@ _reponame="SRB2-modified"
 source=("git+https://git.do.srb2.org/X.organic/$_reponame.git#branch=uncapped-plus"
         "srb2-uncapped-plus.desktop")
 sha256sums=('SKIP'
-            'e7cfd4775f15cacd191cef491ca4a604509a9cdac463cfd3d2387fa2625e004c')
+            '9858fddd0a59473d4ea9b3648e70f009fc6a27ccc035b37d2377a093915dcc5b')
 
 if [ "${_use_discordrpc}" = "y" ]; then
     depends+=('discord-rpc-git')
