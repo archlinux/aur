@@ -1,7 +1,7 @@
 pkgbase = spectre-cli-git
 	pkgdesc = Spectre introduces a completely new way of thinking about passwords.
 	pkgver = r479.a5e7aab
-	pkgrel = 1
+	pkgrel = 4
 	url = https://gitlab.com/spectre.app/cli
 	arch = any
 	license = GPL3
