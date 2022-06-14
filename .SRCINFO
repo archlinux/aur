@@ -42,7 +42,7 @@ pkgbase = project-plus-netplay
 	source = Faster_Project_Plus-x86-64.AppImage::https://github.com/jlambert360/FPM-AppImage/releases/download/v2.29/Faster_Project_Plus-x86-64.AppImage
 	source = Launcher.tar.gz::https://github.com/jlambert360/FPM-AppImage/releases/download/v2.29/Launcher.tar.gz
 	source = ProjectPlusSd2.29.tar.gz::https://github.com/jlambert360/FPM-AppImage/releases/download/v2.29/ProjectPlusSd2.29.tar.gz
-	sha256sums = 0a53fc51c8f20c9a6b9b73fe2f04c3ae9a99fda29729744d11e28b2208ba9b0c
+	sha256sums = 7dcf3d08c591ac087ea766eff8e88c4b0f4f8db2d6011bfd11b7bffb8f3d13ff
 	sha256sums = 3f9653caecb57ad9ce678d19e68daca962203692f81ca130b9f1b3fa50759552
 	sha256sums = b80c44704830fe405ec331bd70148f3c445855a997a15dc7d96705c1ff0feef0
 
