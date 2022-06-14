@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-git
-pkgver=r21515.bd3bfe411
+pkgver=r21531.c6e7ca562
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch'
 arch=('i686' 'x86_64')
@@ -145,20 +145,3 @@ package() {
     cd "$srcdir/$_pkgname/build"
     DESTDIR="$pkgdir" ninja install
 }
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
