@@ -10,7 +10,6 @@ pkgbase = opm-common
 	makedepends = fmt
 	makedepends = cjson
 	makedepends = cppcheck
-	makedepends = suitesparse
 	makedepends = texlive-core
 	makedepends = doxygen
 	makedepends = graphviz

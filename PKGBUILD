@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL3)
 _dunever=2.8.0
-makedepends=("dune-common>=${_dunever}" boost fmt cjson cppcheck suitesparse texlive-core doxygen graphviz pybind11 python-pytest-runner python-setuptools-scm git)
+makedepends=("dune-common>=${_dunever}" boost fmt cjson cppcheck texlive-core doxygen graphviz pybind11 python-pytest-runner python-setuptools-scm git)
 source=("git+${url}.git?signed#tag=release/${pkgver}/final1")
 sha512sums=('SKIP')
 validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>
@@ -32,7 +32,7 @@ build() {
     -DBUILD_EXAMPLES=OFF \
     -DBUILD_TESTING=OFF \
     -Wno-dev
-  cmake --build build-cmake --target all
+  cmake --build build-cmake --target opmcommon_python
 }
 
 package_opm-common() {
