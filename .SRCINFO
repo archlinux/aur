@@ -1,0 +1,29 @@
+pkgbase = meta-package-manager-git
+	pkgdesc = A wrapper around all package managers (git version)
+	pkgver = v5.1.0.r42.g3a916b0
+	pkgrel = 1
+	url = https://kdeldycke.github.io/meta-package-manager/
+	arch = any
+	license = GPL2
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-randomly
+	checkdepends = python-pytest-xdist
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python>=3.7
+	depends = python-boltons
+	depends = python-click
+	depends = python-click-extra
+	depends = python-tabulate
+	depends = python-tomli
+	depends = python-tomli-w
+	depends = python-xmltodict
+	provides = meta-package-manager
+	conflicts = meta-package-manager
+	source = git+https://github.com/kdeldycke/meta-package-manager.git
+	sha512sums = SKIP
+
+pkgname = meta-package-manager-git
