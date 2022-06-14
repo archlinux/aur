@@ -1,7 +1,7 @@
 pkgbase = ocaml-seq
 	pkgdesc = Dummy backward-compatibility package for iterators
 	pkgver = base
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ocaml/opam-repository/tree/master/packages/seq/seq.base
 	arch = x86_64
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = ocaml-seq
 	makedepends = opam
 	depends = ocaml>=4.07.0
 	options = !strip
-	source = ocaml-seq-base-5-opam::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/opam
-	source = ocaml-seq-base-5-META.seq::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/META.seq
-	source = ocaml-seq-base-5-seq.install::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/seq.install
-	source = ocaml-seq-base-5-COPYING::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/COPYING
-	sha256sums = 4524608ea1de87fe2058d7eb39bd82cb001095bea65865254ec50fefad399d5c
-	sha256sums = e95062b4d0519ef8335c02f7d0f1952d11b814c7ab7e6d566a206116162fa2be
-	sha256sums = fff926c2c4d5a82b6c94c60c4c35eb06e3d39975893ebe6b1f0e6557cbe34904
-	sha256sums = 6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03
+	source = ocaml-seq-base-6-opam::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/opam
+	source = ocaml-seq-base-6-META.seq::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/META.seq
+	source = ocaml-seq-base-6-seq.install::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/seq.install
+	source = ocaml-seq-base-6-COPYING::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/COPYING
+	sha512sums = 3c233e2b8015ba229ccdd1906e47b2ffa793e22d4f4466011b7da4a6ec68d8f40cd6d9397aebde053722b2ea466c21d2dcb8dfcaf648c3d194b0009ce9a657a8
+	sha512sums = 1ad76cc25bf663d5d35e5ea9057bff11e7882d8ddc4367b6e38a761df0aa7a8fe76de2fe3b7080a575572dad26556261a05f6044906d7874df89e0157e35e623
+	sha512sums = 915b9de54aa9e0489876094ed83690c653c0436b4e0ef502ab28aa1133d10f3b30baa190306629ccc94b5bfa837bff4426ed32e627cfad8954d32e0d8536a6e0
+	sha512sums = c14f8508ab81ed48588e1de314fd20e54eb0c08bdaaf4c50c2301a6ee2705d45e2d18db863a0f7a1cbb5e5ed11dbb9490378b3e64fb384b16f212c3f0e3d3c81
 
 pkgname = ocaml-seq
