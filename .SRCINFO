@@ -1,13 +1,13 @@
 pkgbase = symfony-cli-bin
 	pkgdesc = The Symfony client helps developers create and manage Symfony applications.
-	pkgver = 5.4.10
+	pkgver = 5.4.11
 	pkgrel = 7
 	url = https://symfony.com/
 	arch = x86_64
 	license = AGPL3
 	provides = symfony-cli
 	conflicts = symfony-cli
-	source = symfony-cli-bin-5.4.10.tar.gz::https://github.com/symfony-cli/symfony-cli/releases/download/v5.4.10/symfony-cli_linux_amd64.tar.gz
-	sha256sums = f196b1b4e934c16f5bd6db9ecd6e5eb633a8daa37c3054c980c946381a43f81a
+	source = symfony-cli-bin-5.4.11.tar.gz::https://github.com/symfony-cli/symfony-cli/releases/download/v5.4.11/symfony-cli_linux_amd64.tar.gz
+	sha256sums = 98321cb3417a396985b7873ccaf4d0892eed8a21d867e427326465b35d10494a
 
 pkgname = symfony-cli-bin
