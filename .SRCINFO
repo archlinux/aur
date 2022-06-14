@@ -8,7 +8,8 @@ pkgbase = python-hydra
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python-omegaconf
-	provides = python-hydra
+	provides = python-hydra-core
+	conflicts = python-hydra-core
 	source = python-hydra-1.2.0::https://github.com/facebookresearch/hydra/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = 19b203fc614426cd6e4bb7c51e73a25a1ceb4606450ec0203345aec67a0a4f6a
 
