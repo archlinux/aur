@@ -1,0 +1,5 @@
+src/
+pkg/
+*.gem
+*.tar.xz
+*.tar.zst
