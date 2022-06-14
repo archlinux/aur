@@ -1,0 +1,16 @@
+pkgbase = python2-ndg-httpsclient
+	pkgdesc = Provides enhanced HTTPS support for httplib and urllib using PyOpenSSL
+	pkgver = 0.5.1
+	pkgrel = 7
+	url = https://pypi.org/project/ndg_httpsclient/0.5.1/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2>=2.7
+	depends = python2-pyasn1
+	depends = python2-pyopenssl
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/n/ndg_httpsclient/ndg_httpsclient-0.5.1.tar.gz
+	b2sums = 1c7f0a8d41b945d2b2a51cd69397ab0943cb91e25013c931f055c5608bc3a0106a99d9b126e8caaac9f8d9b409ec117631fb23f19dfd3194b783548ce3536050
+
+pkgname = python2-ndg-httpsclient
