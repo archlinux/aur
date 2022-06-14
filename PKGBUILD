@@ -3,7 +3,7 @@
 _projectname='ppx_deriving'
 pkgname="ocaml-$_projectname"
 pkgver='5.2.1'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cppo' 'dune>=1.6.3')
 checkdepends=('ocaml-ounit')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e8f9d05ce8d73c7d79c42a750d89e60ac595cb87834275ec20fa11e2b27c5ebf')
+sha512sums=('01d2eb920f3375960a9228138ccb5f2af49bfba1111894795c24b3c37d5a021d6bc95e9de1d867c35d03645334300ccc89f1fca0cb75007ec62e5620f328e078')
 
 _sourcedirectory="$_projectname-$pkgver"
 
@@ -30,11 +30,7 @@ check() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
-
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -r "$pkgdir/usr/doc/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
