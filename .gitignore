@@ -1,5 +1,7 @@
 *
-!001-pirate-pr83-cpp.patch
 !PKGBUILD
+!COPYING
+!pirate.xpm
+!pirate-qt.desktop
 !.SRCINFO
 !.gitignore

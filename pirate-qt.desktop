@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Treasure Chest
+Comment=Full node UI wallet for Pirate
+GenericName=TreasureChest
+Exec=/usr/bin/pirate-qt %u
+Icon=pirate
+Type=Application
+StartupNotify=true
+StartupWMClass=pirate-qt
+Categories=Utility;Network;Finance;
+MimeType=x-scheme-handler/pirate;
+Keywords=TreasureChest;
