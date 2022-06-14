@@ -1,6 +1,6 @@
 pkgbase = substance-designer
 	pkgdesc = Node-based, non-destructive PBR material authoring tool.
-	pkgver = 12.1.0
+	pkgver = 12.1.1
 	pkgrel = 1
 	url = https://www.allegorithmic.com/products/substance-designer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = substance-designer
 	depends = libtiff4
 	depends = libxcrypt-compat
 	options = !strip
-	source = https://download.substance3d.com/adobe-substance-3d-designer/12.x/Adobe_Substance_3D_Designer-12.1.0-5722-linux-x64-standard.rpm
-	sha256sums = c604d887887cae471e84de7b558c238aac1db535309be5754a3b589f65099ac3
+	source = https://download.substance3d.com/adobe-substance-3d-designer/12.x/Adobe_Substance_3D_Designer-12.1.1-5825-linux-x64-standard.rpm
+	sha256sums = 9d8d6288d2cf3a563b6ef371c52a338e198e8d0d90e9e389d8e780cfe3317867
 
 pkgname = substance-designer
