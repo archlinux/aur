@@ -1,7 +1,7 @@
 pkgbase = ocaml-int_repr
 	pkgdesc = Integers of various widths
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/int_repr
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-int_repr
 	depends = ocaml-base>=0.15.0
 	depends = ocaml-ppx_jane>=0.15.0
 	options = !strip
-	source = ocaml-int_repr-0.15.0-1.tar.gz::https://github.com/janestreet/int_repr/archive/v0.15.0.tar.gz
+	source = ocaml-int_repr-0.15.0-2.tar.gz::https://github.com/janestreet/int_repr/archive/v0.15.0.tar.gz
 	sha512sums = 96537591fc597264347f967757df979344224f84594949bca96b40298e4ae1d7b28b40f3705ad4f85e3801724c6388fc048271216703b81fda0e56a314f3e88f
 
 pkgname = ocaml-int_repr
