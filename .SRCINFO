@@ -1,7 +1,7 @@
 pkgbase = python2-pygame
 	pkgdesc = Python game library
-	pkgver = 1.9.6
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = http://www.pygame.org/
 	arch = x86_64
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = python2-pygame
 	depends = sdl_image
 	depends = python2
 	depends = portmidi
-	source = https://pypi.io/packages/source/p/pygame/pygame-1.9.6.tar.gz
-	source = include_stddef_for_offsetof.patch
-	sha256sums = 301c6428c0880ecd4a9e3951b80e539c33863b6ff356a443db1758de4f297957
-	sha256sums = 73874fbf335183ed309242fa648a73fb8f64e78ed89d9becad24a4f1b5d330c8
+	source = https://pypi.io/packages/source/p/pygame/pygame-2.0.3.tar.gz
+	sha256sums = d097f2802a9d0d7fb40c49c789af2984b202baa8fd32701082598755f5973f51
 
 pkgname = python2-pygame
