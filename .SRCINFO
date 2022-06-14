@@ -1,7 +1,7 @@
 pkgbase = ocaml-time_now
 	pkgdesc = Reports the current time
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/time_now
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocaml-time_now
 	depends = ocaml-ppx_base>=0.15.0
 	depends = ocaml-ppx_optcomp>=0.15.0
 	options = !strip
-	source = ocaml-time_now-0.15.0-1.tar.gz::https://github.com/janestreet/time_now/archive/v0.15.0.tar.gz
+	source = ocaml-time_now-0.15.0-2.tar.gz::https://github.com/janestreet/time_now/archive/v0.15.0.tar.gz
 	sha512sums = b24bf9fda05cc84c568cc8637771e8774661df738719b4ad30f86ae4a9a984e9f1d344dc58ab6014d37275e99e92bf3b2d34a8c4dfc474faf00c6096f679e371
 
 pkgname = ocaml-time_now
