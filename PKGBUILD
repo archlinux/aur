@@ -5,12 +5,12 @@
 
 pkgname=bino
 pkgver=1.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc='3D video player with multi-display support'
 arch=('x86_64')
 url='https://bino3d.org/'
 license=('GPL3')
-depends=('ffmpeg' 'freealut' 'freeglut' 'glewmx' 'libass' 'qt5-base')
+depends=('ffmpeg4.4' 'freealut' 'freeglut' 'glewmx' 'libass' 'qt5-base')
 optdepends=('lirc: infrared remote control')
 source=(https://bino3d.org/releases/bino-${pkgver}.tar.xz{,.sig}
 	ffmpeg4.4.patch)

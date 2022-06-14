@@ -31,12 +31,12 @@
  AC_CHECK_PROGS([UPDATE_DESKTOP_DATABASE], [update-desktop-database])
 
 +dnl ffmpeg4.4 libs
-+LIBS+=" /usr/lib/libswscale.so.5"
-+LIBS+=" /usr/lib/libavutil.so.56"
-+LIBS+=" /usr/lib/libavformat.so.58"
-+LIBS+=" /usr/lib/libavdevice.so.58"
-+LIBS+=" /usr/lib/libavcodec.so.58"
-+CPPFLAGS+=" -I/usr/include/ffmpeg4.4"
++LIBS="$LIBS /usr/lib/libswscale.so.5"
++LIBS="$LIBS /usr/lib/libavutil.so.56"
++LIBS="$LIBS /usr/lib/libavformat.so.58"
++LIBS="$LIBS /usr/lib/libavdevice.so.58"
++LIBS="$LIBS /usr/lib/libavcodec.so.58"
++CPPFLAGS="$CPPFLAGS -I/usr/include/ffmpeg4.4"
 +
  dnl Check if all libraries were found
  if test "$am_cv_func_iconv" != "yes" \
