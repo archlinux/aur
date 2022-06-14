@@ -1,12 +1,12 @@
 pkgbase = nginx-mod-rtmp
 	pkgdesc = Module for nginx that adds RTMP support
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arut/nginx-rtmp-module
 	arch = x86_64
 	license = BSD
 	makedepends = nginx-src
-	depends = nginx=1.20.2
+	depends = nginx=1.22.0
 	depends = libutil-linux
 	source = nginx-mod-rtmp-1.2.2::https://github.com/arut/nginx-rtmp-module/archive/v1.2.2.tar.gz
 	sha256sums = 07f19b7bffec5e357bb8820c63e5281debd45f5a2e6d46b1636d9202c3e09d78
