@@ -3,7 +3,7 @@
 _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
-pkgver=1.3.213
+pkgver=1.3.217
 pkgrel=1
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=(any)
@@ -16,7 +16,7 @@ options=(!buildflags staticlibs !strip)
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz"
   'https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch')
-sha256sums=('3cacac2a39026ce74ff96d2bf5d2c85f2729218182cf0be07ae62f58a5301a39'
+sha256sums=('59c0e4934fca328366bbb50b3a8d2dfc3daeab7589fdadd7a29b8a79fe242a7f'
             '55736dff82300a74834beb9c832c8c2937158f7ada5993a01d832664f72c38a9')
 
 _srcdir="${_dirname}-${pkgver}"
