@@ -1,14 +1,15 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 
 pkgname=serviio-twitch-plugin
-pkgver=17
-_commit=edbb4dfe17b9c6ff23c240cd70156f6568ca7ed5
-pkgrel=2
+pkgver=18
+_commit=a206cdb6b5e08f17d0daafa5f956ecf239854c8d
+pkgrel=1
 pkgdesc="Twitch.tv plugin for Serviio"
 arch=('any')
 url="http://forum.serviio.org/viewtopic.php?f=20&t=9216"
 license=('LGPL3')
 depends=('serviio')
+makedepends=('git')
 source=("git+https://github.com/bogenpirat/serviio-plugins.git#commit=${_commit}")
 sha256sums=('SKIP')
 
