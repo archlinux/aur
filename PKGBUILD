@@ -2,7 +2,7 @@
 
 pkgname=roonserver
 _pkgname=RoonServer
-pkgver=1.8.952
+pkgver=1.8.970
 pkgrel=1
 pkgdesc="The music player for music lovers"
 arch=('x86_64')
