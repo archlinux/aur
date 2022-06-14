@@ -1,0 +1,41 @@
+pkgbase = opm-common
+	pkgdesc = Tools for Eclipse reservoir simulation files
+	pkgver = 2022.04
+	pkgrel = 1
+	url = https://github.com/OPM/opm-common
+	arch = x86_64
+	license = GPL3
+	makedepends = dune-common>=2.8.0
+	makedepends = boost
+	makedepends = fmt
+	makedepends = cjson
+	makedepends = cppcheck
+	makedepends = suitesparse
+	makedepends = texlive-core
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = pybind11
+	makedepends = python-pytest-runner
+	makedepends = python-setuptools-scm
+	makedepends = git
+	source = git+https://github.com/OPM/opm-common.git?signed#tag=release/2022.04/final1
+	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
+	sha512sums = SKIP
+
+pkgname = opm-common
+	depends = dune-common>=2.8.0
+	depends = boost
+	depends = fmt
+	depends = cjson
+	optdepends = bash-completion: for completion when using bash
+	optdepends = man-db: manual pages for compareECL, convertECL, opmhash, opmpack, rst_deck and summary
+	provides = arraylist
+	provides = compareECL
+	provides = convertECL
+	provides = rewriteEclFile
+	provides = summary
+
+pkgname = python-opm-common
+	pkgdesc = Tools for Eclipse reservoir simulation files (python bindings)
+	depends = opm-common>=2022.04
+	depends = python-numpy
