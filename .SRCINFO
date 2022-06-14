@@ -1,7 +1,7 @@
 pkgbase = ocaml-base_bigstring
 	pkgdesc = String type based on Bigarray, for use in I/O and C-bindings
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/base_bigstring
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-base_bigstring
 	depends = ocaml-int_repr>=0.15.0
 	depends = ocaml-ppx_jane>=0.15.0
 	options = !strip
-	source = ocaml-base_bigstring-0.15.0-1.tar.gz::https://github.com/janestreet/base_bigstring/archive/v0.15.0.tar.gz
+	source = ocaml-base_bigstring-0.15.0-2.tar.gz::https://github.com/janestreet/base_bigstring/archive/v0.15.0.tar.gz
 	sha512sums = d8311312ea1b3dc3a1a30c87ba4984438ca2c81f8da9cbb7f111dd74fb9b16ad8226166ae2fc2b572a989af15099b07294a667646b0ab22130de4406da53230b
 
 pkgname = ocaml-base_bigstring
