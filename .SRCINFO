@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_sexp_value
 	pkgdesc = A ppx rewriter that simplifies building s-expressions from ocaml values
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_value
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppx_sexp_value
 	depends = ocaml-ppx_sexp_conv>=0.15.0
 	depends = ocaml-ppxlib>=0.23.0
 	options = !strip
-	source = ocaml-ppx_sexp_value-1:0.15.0-1.tar.gz::https://github.com/janestreet/ppx_sexp_value/archive/v0.15.0.tar.gz
+	source = ocaml-ppx_sexp_value-1:0.15.0-2.tar.gz::https://github.com/janestreet/ppx_sexp_value/archive/v0.15.0.tar.gz
 	sha512sums = b6eb67114c8d63b7eeeb63c5ce1c043a4c8879bd6502733449b3b1d665d345c9685ffefc0f8b0a3203b31e169f238f7decc882e72b0436601d1461e86b0f5d03
 
 pkgname = ocaml-ppx_sexp_value
