@@ -2,7 +2,7 @@
 # Contributor: Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2022.5.28
+pkgver=2022.6.14
 pkgrel=5
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -11,6 +11,9 @@ license=('GPL3')
 depends=(
   'lib32-gnutls'
   'gtksourceview4'
+  'gtk4'
+  'libadwaita-git'
+  'gtksourceview5'
   'hicolor-icon-theme' 
   'dconf' 
   'python' 
@@ -35,8 +38,8 @@ optdepends=(
   'vulkan-icd-loader'
   'gamemode')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}-trento-3.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-trento-3.tar.gz")
-sha256sums=('07d8a054abfe8393ae8115761ce4a709735ebb4455a2a923785c9d2ae042949f')
+source=("${pkgname}-${pkgver}-brescia.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-brescia.tar.gz")
+sha256sums=('3a92ad052527854487faa7f05741f316f6f214f8b72f75a1451932be792328cd')
 
 build() {
   if [[ -d Bottles ]]; then 
