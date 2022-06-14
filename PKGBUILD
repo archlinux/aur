@@ -2,7 +2,7 @@
 
 pkgname='python-sabyenc3'
 _name=${pkgname#python-}
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 pkgdesc='yEnc package optimized for use within SABnzbd.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('lgplv3')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('eb05f098bd51099ef6292a8980c8cede0aefb832d6c8cb1bb94fa42661240a63')
+sha256sums=('7a2fd29d58383b2e9c0413f1835e2530c40181b351e0583469afbcb150536346')
 
 package() {
   cd sabyenc3-${pkgver}
