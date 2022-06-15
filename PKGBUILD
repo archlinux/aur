@@ -16,7 +16,6 @@ prepare() {
   # https://github.com/FEniCS/ffcx/pull/468
   sed -i 's/setuptools>=58,<61/setuptools>=58/' ${_base}-${pkgver}/pyproject.toml
   sed -i 's/setuptools >= 58, < 61/setuptools >= 58/' ${_base}-${pkgver}/setup.cfg
-  cat ${_base}-${pkgver}/pyproject.toml ${_base}-${pkgver}/setup.cfg
 }
 
 build() {
