@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=(
-  'imagemagik'
+  'imagemagick'
   'pefile'
   'lib32-gnutls'
   'gtk4'
