@@ -1,0 +1,15 @@
+pkgbase = python-scrap_engine
+	pkgdesc = A 2D ascii game engine for the terminal
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/scrap-engine
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	source = python-scrap_engine::git+https://github.com/lxgr-linux/scrap_engine.git#tag=1.2.0
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = python-scrap_engine
