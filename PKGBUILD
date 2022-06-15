@@ -8,11 +8,11 @@ pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
-         gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas gtk3
-         libgtop libnma nm-connection-editor sound-theme-freedesktop upower libpwquality
-         gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese
-         libgudev bolt udisks2 libhandy gsound colord-gtk4 mutter-vrr)
+depends=(accountsservice cups-pk-helper gnome-bluetooth-3.0 gnome-desktop-4
+         gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas
+         gtk4 libgtop libnma-gtk4 sound-theme-freedesktop upower libpwquality
+         gnome-color-manager smbclient libmm-glib libgnomekbd libibus libgudev
+         bolt udisks2 libadwaita gsound colord-gtk4 gcr libmalcontent mutter-vrr)
 makedepends=(docbook-xsl modemmanager git python meson)
 optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: WebDAV file sharing'
