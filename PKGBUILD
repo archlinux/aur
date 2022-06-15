@@ -5,7 +5,8 @@
 pkgname=logiops-git
 _pkgname="logiops"
 _gitpkgname="logiops"
-pkgver=r206.a0687c8
+epoch=1
+pkgver=0.2.3.r18.gdbe2b28
 pkgrel=1
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64')
@@ -20,7 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_gitpkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # We must pass --tags, because v0.2.3 is a lightweight (not annotated) tag.
+    git describe --tags --long | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
