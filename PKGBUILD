@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=golang-mockery
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
 url='https://github.com/vektra/mockery'
@@ -19,7 +19,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
-  go build -o mockery -ldflags "-linkmode=external -X github.com/vektra/mockery/v2/pkg/config.SemVer=$pkgver" main.go
+  go build -o mockery -ldflags "-linkmode=external -X github.com/vektra/mockery/v2/pkg/config.SemVer=v$pkgver" main.go
 
   for i in bash zsh fish; do
     # --config=/dev/null to avoid reading .mockery.yaml
