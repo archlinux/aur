@@ -1,6 +1,6 @@
 pkgbase = parsergen
 	pkgdesc = Self-hosted LR parser generator in C++20
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/buck-yeh/parsergen.git
 	arch = x86_64
