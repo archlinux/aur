@@ -4,13 +4,13 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_srctag=7.0-2
+_srctag=7.0-3
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.1.2
-_asyncver=1.10.1
-pkgrel=4
+_monover=7.3.0
+_asyncver=1111b69
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -107,7 +107,7 @@ conflicts=('proton-native')
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
+    dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
@@ -197,7 +197,7 @@ prepare() {
 
     _submodules=(
         wine-valve::wine
-        dxvk-valve::dxvk
+        dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
         gstreamer
@@ -406,8 +406,8 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
-            'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
+            '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
+            '14e9011b9aa40fe3dcc7a248735eec717a525aa2866e2bba5fd6fa5662c3dec0'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
             'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
