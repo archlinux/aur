@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 pkgname=libfftranscode
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Proprietary library for ASN.1 APER <-> BER transcoding of RUA/RANAP/HNBAP/S1AP"
 arch=('x86_64')
 url="http://ftp.osmocom.org/binaries/libfftranscode/"
@@ -24,8 +24,8 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/lib"
 	cp "${srcdir}/usr/lib/x86_64-linux-gnu/libfftranscode.so.0.0.0" "${pkgdir}/usr/lib/"
-	ln -s "/usr/lib/libfftranscode.so.0.0.0" "${pkgdir}/usr/lib/libfftranscode.so.0"
-	ln -s "/usr/lib/libfftranscode.so.0.0.0" "${pkgdir}/usr/lib/libfftranscode.so"
+	ln -s "libfftranscode.so.0.0.0" "${pkgdir}/usr/lib/libfftranscode.so.0"
+	ln -s "libfftranscode.so.0.0.0" "${pkgdir}/usr/lib/libfftranscode.so"
 
 	mkdir -p "${pkgdir}/usr/lib/pkgconfig"
 	cp "${srcdir}/usr/lib/x86_64-linux-gnu/pkgconfig/libfftranscode.pc" "${pkgdir}/usr/lib/pkgconfig/"
