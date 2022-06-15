@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-vrr
 	pkgdesc = A window manager for GNOME (with VRR)
 	pkgver = 42.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL
@@ -37,6 +37,12 @@ pkgbase = gnome-control-center-vrr
 	depends = gsound
 	depends = colord-gtk4
 	depends = mutter-vrr
+	optdepends = system-config-printer: Printer settings
+	optdepends = gnome-user-share: WebDAV file sharing
+	optdepends = gnome-remote-desktop: screen sharing
+	optdepends = rygel: media sharing
+	optdepends = openssh: remote login
+	optdepends = power-profiles-daemon: Power profiles support
 	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = mr734.patch

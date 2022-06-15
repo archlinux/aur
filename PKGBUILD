@@ -3,7 +3,7 @@
 pkgbase=gnome-control-center-vrr
 pkgname=(gnome-control-center-vrr)
 pkgver=42.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 arch=(x86_64)
@@ -14,6 +14,12 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese
          libgudev bolt udisks2 libhandy gsound colord-gtk4 mutter-vrr)
 makedepends=(docbook-xsl modemmanager git python meson)
+optdepends=('system-config-printer: Printer settings'
+            'gnome-user-share: WebDAV file sharing'
+            'gnome-remote-desktop: screen sharing'
+            'rygel: media sharing'
+            'openssh: remote login'
+            'power-profiles-daemon: Power profiles support')
 _commit=0bbcc3b8b30583908be7ec129b63bb40d8697b7b  # tags/42.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
