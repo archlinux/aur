@@ -53,18 +53,18 @@ license=("custom")
 _dmca_exemption="https://archive.org/about/dmca.php"
 _archive="https://archive.org/download"
 
-source=("${_uuid_leon["uk"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Europe%29%20%28Disc%201%29.zip"
+source=(
+  "${_uuid_leon["uk"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Europe%29%20%28Disc%201%29.zip"
   "${_uuid_leon["jp"]}.7z::${_archive}/sonyplaystationasiantscj20151103/Biohazard%202%20%28Japan%29%20%28Disc%201%29.7z"
   "${_uuid_leon["it"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Italy%29%20%28Disc%201%29.zip"
   "${_uuid_leon["fr"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28France%29%20%28Disc%201%29.zip"
   "${_uuid_leon["de"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Germany%29%20%28Disc%201%29.zip"
   "${_uuid_leon["es"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Spain%29%20%28Disc%201%29.zip"
   "${_uuid_leon["en"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28USA%29%20%28Disc%201%29.zip"
-  
   "${_uuid_claire["uk"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Europe%29%20%28Disc%202%29.zip"
   "${_uuid_claire["jp"]}.7z::${_archive}/sonyplaystationasiantscj20151103/Biohazard%202%20%28Japan%29%20%28Disc%202%29.7z"
   "${_uuid_claire["it"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Italy%29%20%28Disc%202%29.zip"
-  "${_uuid_claire["fr"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28France%29%20%28Disc%201%29.zip"
+  "${_uuid_claire["fr"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28France%29%20%28Disc%202%29.zip"
   "${_uuid_claire["de"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Germany%29%20%28Disc%202%29.zip"
   "${_uuid_claire["es"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28Spain%29%20%28Disc%202%29.zip"
   "${_uuid_claire["en"]}.zip::${_archive}/redump.psx.p3/Resident%20Evil%202%20%28USA%29%20%28Disc%202%29.zip"
