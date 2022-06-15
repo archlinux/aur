@@ -1,0 +1,37 @@
+# Maintainer: zlfn <elusive1102@naver.com>
+
+pkgname=krita-plus-git
+pkgver=v5.1.0.prealpha.r2151.g93e3db259c
+pkgrel=1
+pkgdesc='Edit and paint images. Krita Plus is a daily build containing bug fixes on top of the latest 5.0 release.'
+arch=(x86_64)
+url='https://krita.org'
+license=(GPL3)
+depends=(kitemviews kitemmodels ki18n kcompletion kguiaddons kcrash qt5-svg qt5-multimedia quazip
+         gsl libraw exiv2 openexr fftw openjpeg2 opencolorio libwebp hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools boost eigen vc poppler-qt5 python-pyqt5 libheif
+             qt5-tools sip kseexpr libmypaint)
+optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
+            'python-pyqt5: for the Python plugins' 'libheif: HEIF filter'
+            'kseexpr: SeExpr generator layer' 'kimageformats: PSD support' 'libmypaint: support for MyPaint brushes'
+            'krita-plugin-gmic: GMic plugin')
+provides=(krita)
+conflicts=(krita)
+source=('krita::git+https://github.com/KDE/krita.git#branch=krita/5.1')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd krita 
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cmake -B build -S krita \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}
