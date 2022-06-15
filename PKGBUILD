@@ -5,12 +5,13 @@
 # Contributor: Marco Melorio <marco.melorio@protonmail.com>
 # Contributor: Bakasura <bakasura@protonmail.ch>
 # Contributor: mazharhussain <realmazharhussain@gmail.com>
+# Contributor: huyz
 
 _pkgname=libadwaita
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-git $_pkgname-git-docs $_pkgname-git-demos)
 pkgver=1.1.0+110+g4e2e3322
-pkgrel=1
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/$_pkgname"
 arch=('i686' 'pentium4' 'x86_64')
@@ -57,7 +58,8 @@ _pick() {
 
 package_libadwaita-git() {
   depends+=(libgtk-4.so)
-  provides+=(libadwaita-1.so)
+  provides=($_pkgname libadwaita-1.so)
+  conflicts=($_pkgname)
 
   meson install -C build --destdir "${pkgdir}"
 
