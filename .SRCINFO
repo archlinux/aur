@@ -1,7 +1,7 @@
 pkgbase = quartzctl
 	pkgdesc = libquartz based apps control utility
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/Bultek/quartzctl
 	arch = x86_64
 	groups = mrquantumoff
@@ -10,7 +10,7 @@ pkgbase = quartzctl
 	makedepends = cargo
 	makedepends = rust
 	depends = openssl
-	source = https://github.com/Bultek/quartzctl/archive/refs/tags/v0.1.0.tar.gz
+	source = https://github.com/Bultek/quartzctl/archive/refs/tags/v0.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = quartzctl

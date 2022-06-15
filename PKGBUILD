@@ -8,9 +8,9 @@
 
 # Maintainer: Demir Yerli <mrquantumoff@protonmail.com>
 pkgname=quartzctl
-pkgver=0.1.0
+pkgver=0.2.0
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="libquartz based apps control utility"
 arch=(x86_64)
 url="https://github.com/Bultek/quartzctl"
