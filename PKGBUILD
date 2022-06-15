@@ -9,7 +9,7 @@
 _pkgname=libadwaita
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-git $_pkgname-git-docs $_pkgname-git-demos)
-pkgver=1.1.rc
+pkgver=1.1.0+110+g4e2e3322
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/$_pkgname"
