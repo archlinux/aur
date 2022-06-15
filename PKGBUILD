@@ -12,7 +12,7 @@ sha256sums=('30b0e02385c43c92a9556689eda6c83731525c431f6eba9dad556b3512aa77a5'
             '93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b')
 
 package() {
-	cd "${srcdir}"
+  cd "${srcdir}"
   install -Dm 0644 -t "${pkgdir}/usr/share/fonts/${pkgname}" *.ttf
   install -Dm 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
