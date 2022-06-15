@@ -1,7 +1,7 @@
 pkgbase = nsxiv
 	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer
 	pkgver = 30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/nsxiv/nsxiv
 	arch = x86_64
 	license = GPL2
