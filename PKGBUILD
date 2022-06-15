@@ -1,14 +1,14 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=terrascan
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=2
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
 url="https://github.com/accurics/terrascan"
 license=('Apache-2')
 source=("https://github.com/accurics/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('86a5fde81086d4e4a165914a8718ebacce930aa2ca0ed24d94418a5e3272c118')
+sha256sums=('9aebcf198f4ee6442435c1682b9f20215063a52a5191e85d91d75d0873a0c227')
 
 package() {
   cd "${srcdir}"
