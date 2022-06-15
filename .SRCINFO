@@ -1,0 +1,14 @@
+pkgbase = pass-xmenu-git
+	pkgdesc = A pass extension that provides an xmenu and autofill capabilities
+	pkgver = 0.1.0.r0.g8549344
+	pkgrel = 1
+	url = https://github.com/onemoresuza/pass-xmenu
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pass
+	depends = xdotool
+	source = git+https://github.com/onemoresuza/pass-xmenu.git
+	md5sums = SKIP
+
+pkgname = pass-xmenu-git
