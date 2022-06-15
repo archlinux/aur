@@ -1,6 +1,6 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
-	pkgver = 3.7.3
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://www.photofilmstrip.org/en/
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = photofilmstrip
 	optdepends = gst-plugins-ugly: additional rendering formats
 	optdepends = gst-libav: additional rendering formats
 	optdepends = python-cairo: slideshow preview
-	source = https://github.com/PhotoFilmStrip/PFS/archive/v3.7.3.tar.gz
-	md5sums = 14a7bcb5b3ef6dcdec1df765f79156ba
+	source = https://github.com/PhotoFilmStrip/PFS/archive/v4.0.0.tar.gz
+	md5sums = 5781cb009ac50c0b2538fdd2dcf354be
 
 pkgname = photofilmstrip
-
