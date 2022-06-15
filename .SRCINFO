@@ -1,17 +1,16 @@
 pkgbase = snap-pac-grub
 	pkgdesc = Pacman hook to update GRUB entries for grub-btrfs after snap-pac made snapshots
-	pkgver = 1.0.4
-	pkgrel = 4
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/maximbaz/snap-pac-grub
 	arch = any
 	license = MIT
 	depends = snap-pac
 	depends = grub-btrfs
-	source = snap-pac-grub-1.0.4.tar.gz::https://github.com/maximbaz/snap-pac-grub/releases/download/1.0.4/snap-pac-grub.tar.gz
-	source = snap-pac-grub-1.0.4.tar.gz.sig::https://github.com/maximbaz/snap-pac-grub/releases/download/1.0.4/snap-pac-grub.tar.gz.sig
-	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = ffc1da79265192e8544bcbce04df397a44414b0087ab78d6855ef0aea14c1429
+	source = snap-pac-grub-2.0.0.tar.gz::https://github.com/maximbaz/snap-pac-grub/releases/download/2.0.0/snap-pac-grub.tar.gz
+	source = snap-pac-grub-2.0.0.tar.gz.sig::https://github.com/maximbaz/snap-pac-grub/releases/download/2.0.0/snap-pac-grub.tar.gz.sig
+	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
+	sha256sums = 7ba4a84e2e03ca13ee52f20b9df3da6ec7fe7750aef33ae9528df1035ef45456
 	sha256sums = SKIP
 
 pkgname = snap-pac-grub
-
