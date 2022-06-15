@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois-git
 _name=galois
-pkgver=r835.53c622e
+pkgver=r947.501a323
 pkgrel=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mhostetter/galois"
 license=('MIT')
 depends=(
     'python-numpy'
-    'python-numba'
+    'python-numba>=0.55.2'
     'python-typing_extensions'
 )
 makedepends=(
@@ -35,12 +35,12 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "${srcdir}/${_name}"
+    python -m pytest tests/
+}
+
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-#check() {
-#    cd "${srcdir}/${_name}"
-#    python -m pytest tests/
-#}
