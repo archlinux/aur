@@ -4,7 +4,7 @@
 
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
-pkgver=7.8.0
+pkgver=7.8.1
 pkgrel=1
 arch=('x86_64')
 url='https://concourse-ci.org'
@@ -12,8 +12,8 @@ license=('Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
         "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
 makedepends=('go' 'yarn')
-sha256sums=('bbbd05f6144411427ddebb9f821419365c95fdbd3d95bf05c098e44a50e0abe6'
-            '72d389453f531de93f1f3e8eb7cfccc21217db6668ea6fae0bb5ba381db0a6d4')
+sha256sums=('42f909315cfea814b2ce0ffb960e6b74bd493060e5df5e083c7ee3cf8814fdf8'
+            '4bc525aabd757e60c4b20af86d791aaa41fa84ee8ae27b852c71231283bec454')
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${srcdir}/go"
