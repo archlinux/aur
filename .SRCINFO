@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-connectivity-static
 	pkgdesc = Provides access to Bluetooth hardware (mingw-w64)
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-connectivity-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtconnectivity-everywhere-src-6.3.0.tar.xz
-	sha256sums = 98f7132e3aa56db2be4800897a0514248a7ae83791b69f8162d628e187b0e61a
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.1/submodules/qtconnectivity-everywhere-src-6.3.1.tar.xz
+	sha256sums = b25ce4710a9c61bc6a5dbaeeb3e2ed907a8bc85478fdb2ab4312297768b695b0
 
 pkgname = mingw-w64-qt6-connectivity-static
