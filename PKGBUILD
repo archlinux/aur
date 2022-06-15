@@ -38,13 +38,13 @@ build() {
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	npm install --build-from-source
 	
-	trilium_src_dir=./dist/trilium-linux-x64-src
-	./bin/copy-trilium.sh $trilium_src_dir
+	_trilium_src_dir=./dist/trilium-linux-x64-src
+	./bin/copy-trilium.sh $_trilium_src_dir
 
-	rm -r $trilium_src_dir/src/public/app-dist/*.mobile.*
+	rm -r $_trilium_src_dir/src/public/app-dist/*.mobile.*
 	
 	npx electron-builder --linux --x64 --dir \
-	    --project=$trilium_src_dir \
+	    --project=$_trilium_src_dir \
 	    -c.electronDist=/usr/lib/electron$_electron_version \
 	    -c.electronVersion=$(electron$_electron_version --version | tail -c +2)
 }
@@ -52,8 +52,8 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	trilium_final_build_dir=dist/trilium-linux-x64-src/dist/linux-unpacked
-	install -vDm644 $trilium_final_build_dir/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+	_trilium_final_build_dir=dist/trilium-linux-x64-src/dist/linux-unpacked
+	install -vDm644 $_trilium_final_build_dir/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm644 package.json -t "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm755 bin/tpl/trilium-safe-mode.sh -t  "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm755 bin/tpl/trilium-no-cert-check.sh -t  "${pkgdir}/usr/lib/${pkgname}"
