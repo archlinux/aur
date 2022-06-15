@@ -2,14 +2,14 @@
 
 pkgname=qt5-qtcsv
 pkgver=1.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Library for reading and writing csv-files in Qt."
 arch=('any')
 url="https://github.com/iamantony/qtcsv"
 license=('MIT')
 groups=()
 depends=(
-    "qt5-tools"
+    "qt5-base"
     )
 makedepends=()
 provides=("qtcsv")
@@ -26,11 +26,11 @@ build() {
     cd "$srcdir/${pkgname#qt5-}-${pkgver}"
     mkdir -pv build
     cd build
-    qmake ../qtcsv.pro CONFIG+=[release]
+    qmake-qt5 ../qtcsv.pro CONFIG+=[release]
     make -j$(nproc)
     mkdir -pv tests
     cd tests
-    qmake ../../tests/tests.pro CONFIG+=[release] LIBS+=-L../
+    qmake-qt5 ../../tests/tests.pro CONFIG+=[release] LIBS+=-L../
     make -j$(nproc)
 }
 
