@@ -1,6 +1,6 @@
 pkgbase = ardour-git
 	pkgdesc = A multichannel hard disk recorder and digital audio workstation (git version)
-	pkgver = 7.0.pre0.r2002.g866ba8b174
+	pkgver = 7.0.pre0.r2972.gd037dff213
 	pkgrel = 1
 	url = https://ardour.org/
 	arch = x86_64
@@ -64,9 +64,9 @@ pkgbase = ardour-git
 	provides = ardour
 	conflicts = ardour
 	source = ardour::git+https://github.com/Ardour/ardour.git
-	source = ardour-6.2-vendor_qm-dsp.patch
+	source = ardour-7.x-vendor_qm-dsp.patch
 	sha256sums = SKIP
-	sha256sums = 304abc95386889aaa878ea1e57233ab08d3d22a8034a7b5bb3d23aad23a8884b
+	sha256sums = 6393d52d2c084e03ba24f657352a76a58d5e9f530cfeecb87babf8990c902cbc
 
 pkgname = ardour-git
 	depends = atkmm

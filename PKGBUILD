@@ -1,12 +1,12 @@
-# Maintainer: Gimmeapill <gimmeapill at gmail.com>
+# Maintainer: Christopher Arndt <aur at chrisarndt.de>
+# Contributor: Gimmeapill <gimmeapill at gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo.it>
 # Contributor: Bernardo Barros <bernardobarros at gmail.com>
 # Contributor: Uli Armbruster <uli_armbruster at web.de>
-# Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=7.0.pre0.r2002.g866ba8b174
+pkgver=7.0.pre0.r2972.gd037dff213
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation (git version)"
 arch=('x86_64')
@@ -29,9 +29,9 @@ optdepends=('harvid: video timeline'
 provides=('ardour')
 conflicts=('ardour')
 source=("${pkgname%-*}::git+https://github.com/Ardour/ardour.git"
-        'ardour-6.2-vendor_qm-dsp.patch')
+        'ardour-7.x-vendor_qm-dsp.patch')
 sha256sums=('SKIP'
-            '304abc95386889aaa878ea1e57233ab08d3d22a8034a7b5bb3d23aad23a8884b')
+            '6393d52d2c084e03ba24f657352a76a58d5e9f530cfeecb87babf8990c902cbc')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
@@ -42,10 +42,7 @@ prepare() {
   cd "${srcdir}/${pkgname%-*}"
 
   # using vendored version of qm-dsp because qm-dsp >= 1.8.0 is not compatible
-  patch -Np1 -i "${srcdir}/ardour-6.2-vendor_qm-dsp.patch"
-
-  #~# Set icon for .adour files
-  #~patch -Np1 -i "${srcdir}/ardour-mime-icon.patch"
+  patch -Np1 -r - -i "$srcdir"/ardour-7.x-vendor_qm-dsp.patch
 
   # https://bugs.archlinux.org/task/54389
   sed -e '8iexport GTK2_RC_FILES=/dev/null' -i gtk2_ardour/ardour.sh.in
@@ -54,18 +51,18 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname%-*}"
 
-  python waf configure  --prefix=/usr \
-                        --configdir=/etc \
-                        --cxx11 \
-                        --freedesktop \
-                        --libjack=weak \
-                        --nls \
-                        --no-phone-home \
-                        --optimize \
-                        --ptformat \
-                        --use-external-libs \
-                        --with-backends=alsa,dummy,jack,pulseaudio
-
+  python waf configure \
+    --prefix=/usr \
+    --configdir=/etc \
+    --cxx11 \
+    --freedesktop \
+    --libjack=weak \
+    --nls \
+    --no-phone-home \
+    --optimize \
+    --ptformat \
+    --use-external-libs \
+    --with-backends=alsa,dummy,jack,pulseaudio
   python waf build $MAKEFLAGS
 }
 
@@ -87,13 +84,15 @@ package() {
   python waf --destdir="${pkgdir}" i18n
   python waf --destdir="${pkgdir}" install
 
-  # XDG integration
+  # Install XDG integration
   # File types
   install -vDm 644 "build/gtk2_${pkgname%-*}/${pkgname%-*}.xml" \
     -t "${pkgdir}/usr/share/mime/packages/"
-  # Install freedesktop.org compatible application starter desktop file
+
+  # application starter desktop file
   install -vDm644 "build/gtk2_${pkgname%-*}/${pkgname%-*}${pkgver%%.*}.desktop" \
     "${pkgdir}/usr/share/applications/ardour.desktop"
+
   # Icons
   for size in 16 22 32 48; do
     install -vdm 755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes"
@@ -105,6 +104,7 @@ package() {
     ln -sf "/usr/share/ardour6/resources/Ardour-icon_${size}px.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname%-*}${pkgver%%.*}.png"
   done
-  # man pages
+
+  # Man pages
   install -vDm 644 "${pkgname%-*}.1"* -t "${pkgdir}/usr/share/man/man1/"
 }
