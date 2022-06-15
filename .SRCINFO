@@ -1,6 +1,6 @@
 pkgbase = xbacklight-notify
 	pkgdesc = XBacklight volume notification
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ikrivosheev/xbacklight-notify
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xbacklight-notify
 	makedepends = cmake
 	depends = libnotify
 	depends = libxcb
-	source = xbacklight-notify-1.0.0.tar.gz::https://github.com/ikrivosheev/xbacklight-notify/archive/v1.0.0.tar.gz
-	md5sums = 263d9163d37dd580e8cda3bd7ee26fc5
+	source = xbacklight-notify-1.1.0.tar.gz::https://github.com/ikrivosheev/xbacklight-notify/archive/v1.1.0.tar.gz
+	md5sums = d0b32801d819e4e763f11aeba388393c
 
 pkgname = xbacklight-notify

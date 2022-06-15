@@ -1,7 +1,7 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=xbacklight-notify
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="XBacklight volume notification"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify libxcb)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('d0b32801d819e4e763f11aeba388393c')
+md5sums=('3d147ca1d93375c5e29318ffd7aab73c')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
