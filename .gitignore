@@ -2,5 +2,7 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!ark-git.install
-
+!*.diff
+!*.hook
+!*.install
+!*.patch
