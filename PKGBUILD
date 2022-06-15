@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2022.01.15.r12.gbdcd8dd
+pkgver=2022.06.15.r0.g94f164c
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
@@ -45,7 +45,7 @@ package() {
 
   # Plank theme
   install -Dm644 src/plank/theme/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
-  install -Dm644 src/plank/theme-light/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent-Light"
+  install -Dm644 src/plank/theme-Light/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent-Light"
 
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
