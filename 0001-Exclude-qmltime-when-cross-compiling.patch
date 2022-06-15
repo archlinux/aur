@@ -1,4 +1,4 @@
-From 45eccd359a9a11e87e8cc627bef27b8501490f49 Mon Sep 17 00:00:00 2001
+From 306826507f0814b1da3e119dde347ca9086a0571 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 5 Feb 2021 02:22:45 +0100
 Subject: [PATCH] Exclude qmltime when cross compiling
@@ -14,10 +14,10 @@ That's likely also why upstream did not notice this problem so far.
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
-index c12152343d..88b7c33e83 100644
+index 48545ff2d2..dafcad8a2e 100644
 --- a/tools/CMakeLists.txt
 +++ b/tools/CMakeLists.txt
-@@ -35,7 +35,9 @@ if(QT_FEATURE_qml_preview AND QT_FEATURE_thread AND NOT ANDROID AND NOT WASM AND
+@@ -33,7 +33,9 @@ if(QT_FEATURE_qml_preview AND QT_FEATURE_thread AND NOT ANDROID AND NOT WASM AND
  endif()
  if(QT_BUILD_SHARED_LIBS AND QT_FEATURE_thread AND TARGET Qt::Quick AND NOT ANDROID AND NOT WASM AND NOT IOS AND NOT rtems)
      add_subdirectory(qmlscene)
@@ -26,8 +26,8 @@ index c12152343d..88b7c33e83 100644
 +        add_subdirectory(qmltime)
 +    endif()
  endif()
- if(QT_BUILD_SHARED_LIBS AND QT_FEATURE_process AND QT_FEATURE_regularexpression AND QT_FEATURE_thread AND TARGET Qt::Quick AND NOT ANDROID AND NOT WASM AND NOT rtems)
-     add_subdirectory(qmlplugindump)
+ if(QT_BUILD_SHARED_LIBS
+         AND QT_FEATURE_process
 -- 
-2.35.1
+2.36.1
 
