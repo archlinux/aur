@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.3.0
+_qtver=6.3.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -38,16 +38,24 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
-        '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
-sha256sums=('b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99'
-            'bff8b8af7b4eec0961890190bc1d31d98c2270985698a8071b5ee1434a12f13a'
-            'bdc4834c7c88176113770356e24104040622c30779a770da3292e487d0b451c8'
-            '08647a0b4f3beef39a2308cea4ed7b63887e58ef7b8f53294ba8d136eaf32109'
-            'e1f619607afca17031c3eebdc01a95a7de4296b8ce01b15c9797475a4e7918f1'
-            '1994ab8f69ac4146c9332aff1bbaacecb87fcfc1d2c521ddfa0f6fd7e3b1aa63'
-            'e9170a6b158b500e34913b0ee78641bf95fcfb5f84d27934a8a7c08b7a45e345'
-            '45a0bf8e485d0c21e916c8260ebbf4a1869d9902f4d749a41804535f05ef54b4'
-            'a018bb72f3424c30c04f1f72429d891dd6b615566c98642d55a9a72e6110fd76')
+        '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch'
+        '0009-Find-fontconfig-via-pkg-config-for-correct-handling-.patch'
+        '0010-Fix-dependency-of-xcb-image-on-xcb-util.patch'
+        '0011-Allow-using-properties-of-PkgConfig-targets-for-glib.patch'
+        '0012-Allow-using-properties-of-PkgConfig-targets-for-Wayl.patch')
+sha256sums=('0a64421d9c2469c2c48490a032ab91d547017c9cc171f3f8070bc31888f24e03'
+            'b50847b70210657d5579bbc6fe88c5343f675d63e0059183705777a2d0c0fcf6'
+            'c2e2499413b281be496de2b62385ff947c38b92f98028336b4c1a06230f5a180'
+            '16cd13db60b669f1b84bc98910b40a50b28e75b00b839883c0dd69e457a997b0'
+            'e6d6b86b2a4a9f30ce361b6baa6e5d32d1567828581d6bc65f6986a15a4ae0ab'
+            '34d6083183e58e02d8bc53db6fbeb2059766a23b3fe9ccdc0b53c861eefbfdb0'
+            '53e83363b0508d8005987fea8f752d2f0d804f07d434c0a7a1a39ebf9668d433'
+            'b90c472eda3caa44981d14b8081039c56653a0c85bd60175ff37d0d48ed43078'
+            '8ee1b3c4554be7d4f2ec5ac24727887ea4c47704e1ddcf80aacece93b9e54dda'
+            '0d8f78df6da2dd3bf7610fdc7b3018cb2698bbe6f523925ad4c3565e7ecb03c9'
+            'ae0d2140f3be5fa16ff32cb9715144de72139e509dacd937ad643c14177c14ce'
+            'c811240dc3f6e95a636bfbb8f05f5a074b6d82ac2bf623cdc32bf74cd9f39548'
+            '87e00cc7c4e47494f3eb117f930432cb2385ee5016280e22a719e775664512c7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

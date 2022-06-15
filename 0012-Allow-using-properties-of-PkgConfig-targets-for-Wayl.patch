@@ -1,0 +1,53 @@
+From 9523e0cf6abf56d32da8c44619b9a30e32f18ffb Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 1 May 2022 23:28:26 +0200
+Subject: [PATCH 12/12] Allow using properties of PkgConfig targets for Wayland
+ to handle deps of static libs
+
+Change-Id: I2a4acf0acaf5a363d551384bb4c33c48a3792f27
+---
+ .../find-modules/FindWayland.cmake            | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindWayland.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindWayland.cmake
+index 233cc88d02..875c71377c 100644
+--- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindWayland.cmake
++++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindWayland.cmake
+@@ -75,6 +75,13 @@
+ # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #=============================================================================
+ 
++option(WAYLAND_USE_PKG_CONFIG "Use properties from PkgConfig targets" OFF)
++if(WAYLAND_USE_PKG_CONFIG)
++  find_package(PkgConfig QUIET)
++  pkg_check_modules(PC_WAYLAND_Client QUIET wayland-client IMPORTED_TARGET)
++  pkg_check_modules(PC_WAYLAND_Server QUIET wayland-server IMPORTED_TARGET)
++endif()
++
+ include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
+ 
+ ecm_find_package_version_check(Wayland)
+@@ -136,6 +143,20 @@ find_package_handle_standard_args(Wayland
+     HANDLE_COMPONENTS
+ )
+ 
++# pull dependencies via package config
++if(WAYLAND_USE_PKG_CONFIG)
++  foreach(TARGET_NAME Client Server)
++    if(TARGET "Wayland::${TARGET_NAME}")
++      foreach(PROP_NAME INTERFACE_LINK_OPTIONS INTERFACE_LINK_LIBRARIES
++                        INTERFACE_COMPILE_OPTIONS INTERFACE_COMPILE_DEFINITIONS
++                        INTERFACE_INCLUDE_DIRECTORIES)
++        get_target_property(PROP_VAL "PkgConfig::PC_WAYLAND_${TARGET_NAME}" "${PROP_NAME}")
++        set_target_properties("Wayland::${TARGET_NAME}" PROPERTIES "${PROP_NAME}" "${PROP_VAL}")
++      endforeach()
++    endif()
++  endforeach()
++endif()
++
+ include(FeatureSummary)
+ set_package_properties(Wayland PROPERTIES
+     URL "http://wayland.freedesktop.org"
+-- 
+2.36.1
+
