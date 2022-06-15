@@ -1,7 +1,7 @@
-pkgbase = krita-next
-	pkgdesc = Edit and paint images. Krita Next is a preview of Krita 5.1. Install at your own risk! It is alpha!
+pkgbase = krita-plus
+	pkgdesc = Edit and paint images. Krita Plus containing bug fixes on top of the latest 5.0 release.
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://krita.org
 	arch = x86_64
 	license = GPL3
@@ -45,10 +45,5 @@ pkgbase = krita-next
 	optdepends = krita-plugin-gmic: GMic plugin
 	provides = krita
 	conflicts = krita
-	source = https://github.com/KDE/krita/archive/refs/tags/v5.2.0-prealpha.tar.gz
-	validpgpkeys = 05D00A8B73A686789E0A156858B9596C722EA3BD
-	validpgpkeys = E9FB29E74ADEACC5E3035B8AB69EB4CF7468332F
-	validpgpkeys = 064182440C674D9F8D0F6F8B4DA79EDA231C852B
-	sha256sums = SKIP
 
-pkgname = krita-next
+pkgname = krita-plus
