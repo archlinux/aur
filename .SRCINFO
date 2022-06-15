@@ -1,16 +1,14 @@
 pkgbase = libfftranscode
 	pkgdesc = Proprietary library for ASN.1 APER <-> BER transcoding of RUA/RANAP/HNBAP/S1AP
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ftp.osmocom.org/binaries/libfftranscode/
 	arch = x86_64
 	groups = devel
 	license = proprietary
 	source = http://ftp.osmocom.org/binaries/libfftranscode/libfftranscode-dev_0.3_amd64.deb
 	source = http://ftp.osmocom.org/binaries/libfftranscode/libfftranscode0_0.3_amd64.deb
-	source = libfftranscode.pc
 	md5sums = 88c83c41fb3136b518e323a827987985
 	md5sums = 22e949d93831b13d01bbe2c917aceed9
-	md5sums = 8bec20223f254ba236f3821ceca718b9
 
 pkgname = libfftranscode
