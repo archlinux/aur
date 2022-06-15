@@ -1,7 +1,7 @@
 post_install() {
     oacs_service=oacs-5-10
     oacs_dir=/usr/lib/openacs
-    db_name=oacs-5-9
+    db_name=oacs-5-10
     ns_install_dir=/usr/lib/naviserver
     #if postgres is not running, start it
     if pgrep "postgres" > /dev/null 

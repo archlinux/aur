@@ -40,7 +40,7 @@ set proxy_mode		false
 # Which database do you want? postgres or oracle
 set database              postgres 
 
-set db_name               oacs-5-9
+set db_name               oacs-5-10
 
 if { $database eq "oracle" } {
     set db_password           "mysitepassword"
