@@ -1,6 +1,6 @@
 pkgbase = gtklock-git
 	pkgdesc = GTK-based lockscreen for Wayland
-	pkgver = 1.0.0.r16.g4c699fe
+	pkgver = 1.1.0.r0.g851c400
 	pkgrel = 1
 	url = https://github.com/jovanlanik/gtklock
 	arch = x86_64
