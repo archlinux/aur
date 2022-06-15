@@ -3,13 +3,13 @@
 pkgbase=amdguid-wayland-bin
 pkgname=amdguid-wayland-bin
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/amdguid-wayland.tar.gz")
 arch=('x86_64')
-md5sums=( '2edda576321f62d3bd04b75a5478f8dc')
+md5sums=( '27db95bb6c493658a65c9f50b46dac02' )
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
 depends=('amdfand-bin')
 optdepends=('amdmond-bin' 'amdvold-bin')
