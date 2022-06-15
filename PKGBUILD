@@ -3,7 +3,7 @@
 
 pkgname=caj2pdf-git
 epoch=1
-pkgver=r159.2cb5f46
+pkgver=r166.db1e1ba
 pkgrel=1
 provides=('caj2pdf')
 conflicts=('caj2pdf')
@@ -23,7 +23,7 @@ source=(
     "lib.patch"
 )
 sha256sums=('SKIP'
-            '862fe43245941b3f06c6ffc34b6981881cb072967668f1e0542400fe9a2db9e3'
+            '776f121d9218176517f81ed02adb4075b738814009f3734d55d69867d544fb66'
             '77332e30219430f96420826c37742d2bc6f2fe9cbe0627fed24aa073daead37c')
 
 pkgver() {

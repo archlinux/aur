@@ -1,5 +1,5 @@
 diff --git a/cajparser.py b/cajparser.py
-index 1c5e523..ce0eae3 100644
+index 577e4d3..3645bbc 100644
 --- a/cajparser.py
 +++ b/cajparser.py
 @@ -156,9 +156,9 @@ class CAJParser(object):
@@ -58,8 +58,8 @@ index 1c5e523..ce0eae3 100644
          try:
 -            add_outlines(self.get_toc(), "pdf_toc.pdf", dest)
 +            add_outlines(self.get_toc(), "/tmp/caj2pdf_toc.pdf", dest)
-         except utils.PdfReadError as e:
-             print("utils.PdfReadError:", str(e))
+         except errors.PdfReadError as e:
+             print("errors.PdfReadError:", str(e))
 -            copy("pdf_toc.pdf", dest)
 +            copy("/tmp/caj2pdf_toc.pdf", dest)
              pass
@@ -70,12 +70,26 @@ index 1c5e523..ce0eae3 100644
  
      def _convert_hn(self, dest):
          caj = open(self.filename, "rb")
+@@ -397,10 +397,10 @@ class CAJParser(object):
+                         if (SOFn != 0xFFC0):
+                             # neither works, try brute-force
+                             import imagesize
+-                            with open(".tmp.jpg", "wb") as f:
++                            with open("/tmp/caj2pdf-tmp.jpg", "wb") as f:
+                                 f.write(image_data)
+-                                (width, height) = imagesize.get(".tmp.jpg")
+-                            os.remove(".tmp.jpg")
++                                (width, height) = imagesize.get("/tmp/caj2pdf-tmp.jpg")
++                            os.remove("/tmp/caj2pdf-tmp.jpg")
+                     if (image_type_enum == 1):
+                         # non-inverted JPEG Images
+                         height = -height
 @@ -422,11 +422,11 @@ class CAJParser(object):
          if (len(image_list) == 0):
              raise SystemExit("File is pure-text HN; cannot convert to pdf")
          pdf_data = convert_ImageList(image_list)
 -        with open('pdf_toc.pdf', 'wb') as f:
-+        with open("/tmp/caj2pdf_toc.pdf", 'wb') as f:
++        with open('/tmp/caj2pdf_toc.pdf', 'wb') as f:
              f.write(pdf_data)
          # Add Outlines
 -        add_outlines(self.get_toc(), "pdf_toc.pdf", dest)

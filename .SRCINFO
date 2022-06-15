@@ -1,6 +1,6 @@
 pkgbase = caj2pdf-git
 	pkgdesc = Convert CAJ (China Academic Journals) files to PDF.
-	pkgver = r160.8cbc3c5
+	pkgver = r166.db1e1ba
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/caj2pdf/caj2pdf
@@ -16,7 +16,7 @@ pkgbase = caj2pdf-git
 	source = tmp.patch
 	source = lib.patch
 	sha256sums = SKIP
-	sha256sums = 862fe43245941b3f06c6ffc34b6981881cb072967668f1e0542400fe9a2db9e3
+	sha256sums = 776f121d9218176517f81ed02adb4075b738814009f3734d55d69867d544fb66
 	sha256sums = 77332e30219430f96420826c37742d2bc6f2fe9cbe0627fed24aa073daead37c
 
 pkgname = caj2pdf-git
