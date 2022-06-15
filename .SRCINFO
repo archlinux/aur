@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-multimedia-static
 	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = mingw-w64-qt6-multimedia-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtmultimedia-everywhere-src-6.3.0.tar.xz
-	sha256sums = d050247ff82974a8480c05ce602fd39e03d9e2d1b82bb78a3f42cf29b3a7fe3e
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.1/submodules/qtmultimedia-everywhere-src-6.3.1.tar.xz
+	sha256sums = 7e03242aadd634ff2d9fcf08948290f03da3d9a5012369d908da89f82b1d7336
 
 pkgname = mingw-w64-qt6-multimedia-static
