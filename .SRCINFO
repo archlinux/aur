@@ -1,7 +1,7 @@
 pkgbase = meshmixer-wine
 	pkgdesc = Meshmixer is state-of-the-art software for working with triangle meshes
 	pkgver = 3.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.meshmixer.com
 	arch = x86_64
 	license = proprietary
@@ -17,7 +17,7 @@ pkgbase = meshmixer-wine
 	source = meshmixer.desktop
 	source = http://www.meshmixer.com/downloads/Autodesk_Meshmixer_v3p5_Win64.exe
 	sha256sums = 07bb0d678fc153c60f51a30176ca557d4533f6163b29a320855eeaf8afc45e93
-	sha256sums = d56b8bd84beb8544be85000da853f98d7159a83eb9fd6ef09aa6a1513a3c975c
+	sha256sums = 6bd305f5b9d05d33c15bedbdd9192a9856ee32b49bc39d0d62e4ffa71a79fdce
 	sha256sums = 5d08cb6254e4d4280137d6d37ec689fc3f0c61dad08bbc978a451ac16b7f271c
 
 pkgname = meshmixer-wine
