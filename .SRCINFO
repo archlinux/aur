@@ -1,6 +1,6 @@
 pkgbase = nhiicc
 	pkgdesc = 台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)
-	pkgver = 20220110
+	pkgver = 20220530
 	pkgrel = 1
 	epoch = 1
 	url = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm
@@ -14,8 +14,8 @@ pkgbase = nhiicc
 	source = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.20220110.tar.gz
 	source = nhiicc.service
 	source = regen-certs.sh
-	md5sums = 156de24023a454f9bf779e874d83eb77
-	md5sums = 82b85491957f25f22b43beffca53b9ab
-	md5sums = ba0495f8d54384ac95a93f221366049f
+	md5sums = af4c8e12bdadef7e6ab2b9b1dabb21d4
+	md5sums = 3a7ba068b49eab2edca614ea2495e706
+	md5sums = 605ed8db0ec700bb07ca256c5282ae6a
 
 pkgname = nhiicc

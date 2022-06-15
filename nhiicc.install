@@ -6,7 +6,7 @@ post_install() {
 }
 
 post_upgrade() {
-  /usr/share/NHIICC/regen-certs.sh
+  /usr/share/nhiicc/regen-certs.sh
   cat <<EOF
 >>>
 >>> Certificates for the NHIICC program are generated. You may need to restart browsers to load new certificates.

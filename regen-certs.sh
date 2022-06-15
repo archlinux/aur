@@ -4,7 +4,7 @@
 org=nhi-localhost-ca
 domain=localhost
 # Upstream script generates 50 year leaf cert and 30 day CA cert. 10
-# years for both sound a better choice
+# years for both sound like a better choice
 days=3650
 
 set -eu

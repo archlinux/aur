@@ -6,8 +6,9 @@ Type=simple
 ExecStart=/usr/bin/mLNHIICC
 PrivateTmp=true
 DynamicUser=true
+# XXX: upstream binary appears to hard-code /usr/local/share/NHIICC :/
 TemporaryFileSystem=/usr/local/share:ro
-BindReadOnlyPaths=/usr/share/NHIICC:/usr/local/share/NHIICC
+BindReadOnlyPaths=/usr/share/nhiicc:/usr/local/share/NHIICC
 BindReadOnlyPaths=/var/lib/nhiicc/cert:/usr/local/share/NHIICC/cert
 # Use undocumented /run/credentials as BindReadOnlyPaths= require
 # absolute paths and don't accept environment variables like
