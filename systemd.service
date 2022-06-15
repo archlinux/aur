@@ -1,0 +1,45 @@
+[Unit]
+Description=A scalable long-term storage for Prometheus
+Documentation=https://grafana.com/docs/mimir/latest/
+After=network-online.target
+
+[Service]
+User=mimir
+Group=mimir
+WorkingDirectory=/var/lib/mimir
+ReadWritePaths=/var/lib/mimir
+Restart=on-failure
+RestartSec=1
+ExecStart=/usr/bin/mimir -config.file /etc/mimir.yaml
+
+# hardening options
+UMask=0077
+NoNewPrivileges=true
+LimitNOFILE=1048576
+ProtectSystem=strict
+ProtectHome=true
+PrivateUsers=yes
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
+
