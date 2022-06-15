@@ -1,6 +1,6 @@
 pkgbase = lubuntu-artwork
 	pkgdesc = artwork of Lubuntu
-	pkgver = 20.04.3
+	pkgver = 22.10.1
 	pkgrel = 1
 	url = http://wiki.ubuntu.com/Lubuntu/Artwork
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = lubuntu-artwork
 	optdepends = elementary-icon-theme: icons support
 	optdepends = gtk-engine-unico: gtk3 theme support
 	options = !strip
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_20.04.3.tar.xz
-	sha512sums = 39c34df49159296c8961c5c522f675b56242eb39d1ce0581870769a5b6f4c7262162338663bb2d10b8af4c9cf8d7927109df5514ba84042d9c569c7fa9233a3c
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_22.10.1.tar.xz
+	sha512sums = 9b2e7616f151ec8f48bc0a5be3c52a30a3f12e3af3629c87777d0de8b4ef72b1cb2afa4c1bd04381834dcde3cd27a14692c0b0e4ea887c947fc55ec1002ceb9e
 
 pkgname = lubuntu-artwork
-
