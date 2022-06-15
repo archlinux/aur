@@ -1,6 +1,6 @@
 pkgbase = sxhkhm-git
 	pkgdesc = Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github
-	pkgver = r100.94b04de
+	pkgver = r102.281d0cd
 	pkgrel = 1
 	url = https://github.com/fiskhest/aur-sxhkhm-git
 	install = sxhkhm-git.install
