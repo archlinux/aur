@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.0.1.345'
+pkgver='8.1.1.155'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -48,18 +48,16 @@ depends=('pulseaudio'
 install="${pkgname}-client.install"
 _channel=stable
 source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.zst")
-sha512sums=('c6753d160d26572e176f66fbf0e2542a22e332621cfd896a3155b5dc70933cb1f2061e65cc3b63dfa6baa33429659da2c1fd7a073c8c454d02a4dae87ca22237')
+sha512sums=('adaba72acc28156dc59668e2c732ad216ddb4cbc68f832528525c4051e0dd04eb4cdd1487ef777ddb99ff0f18d9d3c44dda24fe69f50e244206f9a7920fd0c82')
 
 package() {
   cd "${srcdir}"
   install -Dm 755 "${srcdir}/opt/${pkgname}/TrueConf" "${pkgdir}/opt/${pkgname}/TrueConf"
-  install -Dm 755 "${srcdir}/opt/${pkgname}/${pkgname}-client" "${pkgdir}/opt/${pkgname}/${pkgname}-client"
-  install -Dm 755 "${srcdir}/opt/${pkgname}/${pkgname}-client-autostart" "${pkgdir}/opt/${pkgname}/${pkgname}-client-autostart"
-  install -Dm 644 "${srcdir}/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
+  install -Dm 755 "${srcdir}/opt/${pkgname}/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+  install -Dm 755 "${srcdir}/opt/${pkgname}/${pkgname}-autostart" "${pkgdir}/opt/${pkgname}/${pkgname}-autostart"
   install -Dm 644 "${srcdir}/opt/${pkgname}/${pkgname}-autostart.desktop" "${pkgdir}/opt/${pkgname}/${pkgname}-autostart.desktop"
-  install -Dm 644 "${srcdir}/usr/share/appdata/${pkgname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname}.appdata.xml"
+  install -Dm 644 "${srcdir}/usr/share/metainfo/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
   install -Dm 644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm 644 "${srcdir}/usr/share/menu/${pkgname}" "${pkgdir}/usr/share/menu/${pkgname}"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}16.png" "${pkgdir}/usr/share/pixmaps/${pkgname}16.png"
   #libs

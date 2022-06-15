@@ -1,82 +1,16 @@
-cmd_present() {
-	command -v "$1" >/dev/null 2>&1
-}
-
-pre_install() {
-	echo ""
-}
-
 post_install() {
-  	BASE_TC_PATH="/opt/trueconf"
-	LINK_FILE="/usr/bin/trueconf"
-
-	chmod a+x ${BASE_TC_PATH}/trueconf-client
-	chmod a+x ${BASE_TC_PATH}/trueconf-client-autostart
-
-	ln -f -s ${BASE_TC_PATH}/trueconf-client ${LINK_FILE}
-
-	if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
-		xdg-desktop-menu install --novendor --mode system /opt/trueconf/trueconf.desktop
-	else
-		echo "WARNING: Could not find xdg-desktop-menu" >&2
-	fi
-
-	if cmd_present "kbuildsycoca4"; then
-		kbuildsycoca4 --noincremental
-	fi
-
-	if cmd_present "appstreamcli"; then
-		appstreamcli refresh
-	fi
-
-	binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
-	if [ -n "$binpid" ]; then
-		for process in "$binpid"; do
-			kill -s 50 $process 
-		done
-	fi
-
-	startupbin=$(ps axco pid,command | awk '$2 == "trueconf-client" {print $1; }')
-	if [ -n "$startupbin" ]; then
-		for process in "$startupbin"; do
-			kill -s 50 $process 
-		done
-	fi
-}
-
-pre_upgrade() {
-	echo ""
+    chmod a+x /opt/trueconf/trueconf
+    chmod a+x /opt/trueconf/trueconf-autostart
+    
+    ln -f -s /opt/trueconf/trueconf /usr/bin/trueconf
+    
+    if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
+        xdg-desktop-menu install --novendor --mode system /usr/share/applications/trueconf.desktop > /dev/null 2>&1 || true
+    fi
+    update-desktop-database > /dev/null 2>&1 || true
 }
 
 post_upgrade() {
-	post_install
+    post_install
 }
 
-pre_remove() {    
-	binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
-	if [ -n "$binpid" ]; then
-		for process in "$binpid"; do
-			kill -9 $process 
-		done
-	fi
-
-	startupbin=$(ps axco pid,command | awk '$2 == "trueconf-client" {print $1; }')
-	if [ -n "$startupbin" ]; then
-		for process in "$startupbin"; do
-			kill -9 $process 
-		done
-	fi
-}
-
-post_remove() {	
-	LINK_FILE="/usr/bin/trueconf"
-	if [ -f ${LINK_FILE} ]; then
-	    rm ${LINK_FILE}
-	fi
-
-	if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
-		xdg-desktop-menu forceupdate --mode system
-	else
-		echo "WARNING: Could not find xdg-desktop-menu" >&2
-	fi
-}
