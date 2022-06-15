@@ -2,9 +2,10 @@
 
 pkgname='gstarcad-bin'
 _pkgname='gstarcad'
-pkgver=20211020
-_pkgver=22sp
+pkgver=2.4_2022.3.16
+_pkgver=22sp1
 pkgrel=1
+epoch=1
 pkgdesc="浩辰 CAD"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -12,54 +13,42 @@ url="https://www.gstarcad.com/cad_linux/"
 provides=(${_pkgname})
 depends=('qt5-svg' 'qt5-imageformats' 'hicolor-icon-theme')
 optdepends=('deepin-qt5integration: deepin DE integration')
-source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://hccad.gstarcad.cn/linux20${_pkgver:0:2}/v2.3/uos/com.gstarcad.cad_${_pkgver}_amd64.deb")
-sha512sums_x86_64=('0fc458dcd349d4b2400a17e7d9ae858df9b42f453975d33c24bc654cbd6c695780a6b83faa7b17bd4604bcc3637dcea588a5c738ce1fd4d9f5976080ad01705a')
-sha512sums_aarch64=('9a4c35d23b108c4bd2e550acaf6d15d8f4ef9c53e173042d3d53bfdd7f45129e54f4145c66b58151fbdc9f43035fb95bdf8c4948716f4390be0c2941a1dab59f')
-source_aarch64=("${pkgname}-${pkgver}-${arch}.deb::https://hccad.gstarcad.cn/linux20${_pkgver:0:2}/v2.3/uos/com.gstarcad.cad_${_pkgver}_arm64.deb")
-
+makedepends=('patchelf')
+source=('gcad.sh')
+source_x86_64=("${pkgname}-${pkgver}-x86-64.deb::https://hccad.gstarcad.cn/linux${pkgver:4:4}/v${pkgver}/uos/com.gstarcad${pkgver:4:4}.cad_${_pkgver}_amd64.deb")
+sha512sums=('f7d6c9af07a570c00c48d51ba6d248c34c880a402cebe3c6d0e0b5458a0b12055164b1fc057250807ec45fc0bdd34696c15169b3fc37240832d98f6fffa289e4')
+sha512sums_x86_64=('9150289f84fce3476aa27f2301c4a5d2387ae95b8a945db6acd348a3a515e8994a174d84adf18db5b8254cd61c74674c17075e21066818d85f15e91cc9bd596f')
+sha512sums_aarch64=('9150289f84fce3476aa27f2301c4a5d2387ae95b8a945db6acd348a3a515e8994a174d84adf18db5b8254cd61c74674c17075e21066818d85f15e91cc9bd596f')
+source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://hccad.gstarcad.cn/linux${pkgver:4:4}/v${pkgver}/uos/com.gstarcad${pkgver:4:4}.cad_${_pkgver}_amd64.deb")
+# options=(!strip)
 prepare(){
     cd $srcdir
     tar -xJvf data.tar.xz -C "${srcdir}"
+    cd $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/entries
+    sed -i "s|^Exec=.*|Exec=gcad %F|g;s|^Icon=.*|Icon=gcad|g" applications/*.desktop
 }
 
 package(){
     
     mkdir -p ${pkgdir}/usr/
-    mv $srcdir/opt/apps/com.gstarcad.cad/entries ${pkgdir}/usr/share
-    
-    cd ${pkgdir}/usr/share
-    rmdir autostart 
-    
+    cp -rf  $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/entries ${pkgdir}/usr/share
+    rmdir ${pkgdir}/usr/share/autostart 
     
     mkdir -p "$pkgdir"/opt/
-    mv ${srcdir}/opt/apps/com.gstarcad.cad/files   "$pkgdir"/opt/${_pkgname}
+    cp -rf  $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/files   "$pkgdir"/opt/${_pkgname}
     mkdir -p ${pkgdir}/usr/lib/${_pkgname}
     
     mv "$pkgdir"/opt/${_pkgname}/{*.so,*.tx,*.txv,drivers/*.so}  ${pkgdir}/usr/lib/${_pkgname}/
-    
-    sed -i '16c Exec=gstarcad %F'   "$pkgdir/usr/share/applications/com.${_pkgname}.cad.desktop"
-    sed -i '17c Icon=gcad'     "$pkgdir/usr/share/applications/com.${_pkgname}.cad.desktop"
-    
+
     # create executable
-    mkdir -p "$pkgdir"/usr/bin/
+    install -Dm755 ${srcdir}/gcad.sh ${pkgdir}/usr/bin/gcad
     
-    echo """#!/bin/bash
-export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/lib/${_pkgname}/
-export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/${_pkgname}/
-export XMODIFIERS=@im=fcitx  
-export XIM=fcitx
-export XIM_PROGRAM=fcitx  
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-/opt/${_pkgname}/gcad "\$@"
-""" >"$pkgdir"/opt/${_pkgname}/${_pkgname}
-    chmod 0755 "$pkgdir"/opt/${_pkgname}/${_pkgname}
+#     patchelf --set-rpath '$ORIGIN/drivers:/usr/lib/gstarcad' "$pkgdir"/opt/${_pkgname}/gcad
+#     strip ${pkgdir}/usr/lib/gstarcad/* || true
+#     patchelf --add-rpath '$ORIGIN' "$pkgdir"/opt/${_pkgname}/gcad
     
-    ln -s /opt/${_pkgname}/${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
-    
-    sed -i '2c Plugins =/usr/lib/qt/plugins' "$pkgdir"/opt/${_pkgname}/qt.conf
-    
+    install -Dm644 "$pkgdir"/opt/${_pkgname}/*.xml -t ${pkgdir}/usr/share/mime/application
     # remove unused files
     rm -rf "$pkgdir"/opt/${_pkgname}/{platforminputcontexts,qtplugins,systemlibs,properties-xml-new/*.txt}
-    rm -rf "$pkgdir"/opt/${_pkgname}/{gcad.*}
+    rm -rf "$pkgdir"/opt/${_pkgname}/{gcad.{png,log,ico},qt.conf,*.xml,*.sh,Qt*}
 }
