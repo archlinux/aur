@@ -1,0 +1,13 @@
+pkgbase = argh
+	pkgdesc = Minimalist argument handler
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/adishavit/argh
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = clang
+	source = argh-1.3.2.tar.gz::https://github.com/adishavit/argh/archive/refs/tags/v1.3.2.tar.gz
+	sha256sums = 4b76d8c55e97cc0752feee4f00b99dc58464dd030dea9ba257c0a7d24a84f9dd
+
+pkgname = argh
