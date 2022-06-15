@@ -3,7 +3,7 @@
 
 pkgname=granite-git
 _pkgname=granite
-pkgver=6.1.1.r36.11fcf9d6
+pkgver=6.2.0.r15.3fc535f5
 pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
@@ -11,7 +11,6 @@ url=https://github.com/elementary/granite
 license=(LGPL3)
 groups=(pantheon-unstable)
 depends=(
-  glib2
   gtk3
   libgee
 )
@@ -26,7 +25,6 @@ provides=(
   granite
   libgranite.so
 )
-conflicts=(granite)
 source=(git+https://github.com/elementary/granite.git)
 sha256sums=(SKIP)
 

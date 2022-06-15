@@ -1,6 +1,6 @@
 pkgbase = granite-git
 	pkgdesc = Library that extends GTK with common widgets and utilities
-	pkgver = 6.1.1.r36.11fcf9d6
+	pkgver = 6.2.0.r15.3fc535f5
 	pkgrel = 1
 	url = https://github.com/elementary/granite
 	arch = x86_64
@@ -11,12 +11,10 @@ pkgbase = granite-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
-	depends = glib2
 	depends = gtk3
 	depends = libgee
 	provides = granite
 	provides = libgranite.so
-	conflicts = granite
 	source = git+https://github.com/elementary/granite.git
 	sha256sums = SKIP
 
