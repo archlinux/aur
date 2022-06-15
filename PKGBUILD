@@ -2,7 +2,7 @@
 # Contirbutor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xfig
-pkgver=3.2.8
+pkgver=3.2.8b
 pkgrel=1
 pkgdesc="An interactive drawing tool"
 arch=('x86_64' 'i686')
@@ -13,17 +13,14 @@ optdepends=('fig2dev: to use the frontend to convert fig files')
 makedepends=('fig2dev' 'libxaw')
 options=('!makeflags' '!emptydirs')
 source=(http://downloads.sourceforge.net/mcj/${pkgname}-${pkgver}.tar.xz
-	xfig-aspell.patch xfig-3.2.5-color-resources.patch
-        LICENSE)
-sha1sums=('93229765f9e764f76e10585309a6c690554cec64'
-          'a57fcc3c8396d58b19061f9cdd93beea728e38e5'
-          'dd41e0a007bb74b74e1af50b6b04aa6aec61ab22'
+	xfig.patch LICENSE)
+sha1sums=('8cbec8fdbcbdb69a2d50b2adff16e1ea1431fc0a'
+          '683ec9bb1b6e40a8e13b3c2da037bb5fb5f8fcd5'
           '31edf4cfab708820ea3f114d095dfef5aa88e5aa')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-   patch -p1 -i "${srcdir}/xfig-aspell.patch"
-   patch -p1 -i "${srcdir}/xfig-3.2.5-color-resources.patch"
+  patch -Np2 -i ../xfig.patch
 }
 
 build() {

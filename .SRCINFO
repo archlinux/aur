@@ -1,6 +1,6 @@
 pkgbase = xfig
 	pkgdesc = An interactive drawing tool
-	pkgver = 3.2.8
+	pkgver = 3.2.8b
 	pkgrel = 1
 	url = http://mcj.sourceforge.net/
 	arch = x86_64
@@ -18,14 +18,11 @@ pkgbase = xfig
 	optdepends = fig2dev: to use the frontend to convert fig files
 	options = !makeflags
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/mcj/xfig-3.2.8.tar.xz
-	source = xfig-aspell.patch
-	source = xfig-3.2.5-color-resources.patch
+	source = http://downloads.sourceforge.net/mcj/xfig-3.2.8b.tar.xz
+	source = xfig.patch
 	source = LICENSE
-	sha1sums = 93229765f9e764f76e10585309a6c690554cec64
-	sha1sums = a57fcc3c8396d58b19061f9cdd93beea728e38e5
-	sha1sums = dd41e0a007bb74b74e1af50b6b04aa6aec61ab22
+	sha1sums = 8cbec8fdbcbdb69a2d50b2adff16e1ea1431fc0a
+	sha1sums = 683ec9bb1b6e40a8e13b3c2da037bb5fb5f8fcd5
 	sha1sums = 31edf4cfab708820ea3f114d095dfef5aa88e5aa
 
 pkgname = xfig
-

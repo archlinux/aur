@@ -1,0 +1,51 @@
+diff -up src/xfig-3.2.8b/app-defaults/Fig-color.bisque.orig src/xfig-3.2.8b/app-defaults/Fig-color.bisque
+--- src/xfig-3.2.8b/app-defaults/Fig-color.bisque.orig	2019-10-29 03:19:05.000000000 -0600
++++ src/xfig-3.2.8b/app-defaults/Fig-color.bisque	2022-06-14 18:41:52.180000000 -0600
+@@ -72,7 +72,7 @@ Fig*mixedEdit.background:			navajowhite2
+ Fig*topruler.background:			gray95
+ Fig*sideruler.background:			gray95
+ Fig*List*background:				gray95
+-Fig*Scrollbar.background:			gray95
++! Fig*Scrollbar.background:			gray95
+ 
+ Fig*cancel.background:				navajowhite1
+ Fig*dismiss.background:				navajowhite1
+@@ -92,8 +92,8 @@ Fig*upd_ctrl_form.upd_ctrl_btns*shadowWi
+ Fig*menu_divider.foreground:			red
+ 
+ !##### Shadows
+-Fig*shadowWidth:				2
+-Fig*Label.shadowWidth:				1
++! Fig*shadowWidth:				2
++! Fig*Label.shadowWidth:			1
+ Fig*horizontal.shadowWidth:			2
+ Fig*Scrollbar.shadowWidth:			2
+ ! no shadows for update indicators
+@@ -124,3 +124,15 @@ Fig*color_box*topShadowPixel:			gray80
+ 
+ Fig*toggle*bottomShadowPixel:			gray80
+ Fig*toggle*topShadowPixel:			gray50
++
++! repare damage done to scrollbar shadows non color resources file
++
++Fig*horizontal.topShadowPixel: gray95
++Fig*horizontal.bottomShadowPixel: gray50
++Fig*horizontal.topShadow: gray95
++Fig*horizontal.bottomShadow: gray50
++
++Fig*Scrollbar.topShadow: gray95
++Fig*Scrollbar.bottomShadow: gray50
++Fig*Scrollbar.topShadowPixel: gray95
++Fig*Scrollbar.bottomShadowPixel: gray50
+diff -up src/xfig-3.2.8b/app-defaults/Fig.in.orig src/xfig-3.2.8b/app-defaults/Fig.in
+--- src/xfig-3.2.8b/app-defaults/Fig.in.orig	2020-08-03 02:22:41.000000000 -0600
++++ src/xfig-3.2.8b/app-defaults/Fig.in	2022-06-14 18:42:22.860000000 -0600
+@@ -34,7 +34,7 @@ Fig.pdfviewer:			xdg-open %f
+ ! Spell check program - put your favorite spelling check program here.
+ !		It must write the misspelled words to standard output.
+ 
+-Fig.spellcheckcommand:		spell %f
++Fig.spellcheckcommand:		aspell %f
+ 
+ ! delay before spinner automatically counts when pressed (milliseconds)
+ Fig.spinner_delay:		1000
