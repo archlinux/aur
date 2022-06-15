@@ -3,15 +3,15 @@
 
 pkgname=xfig-git
 _pkgname=xfig
-pkgver=3.2.7b.r18.g1c7eeec
+pkgver=3.2.8b.r6.g92215fa
 pkgrel=1
 pkgdesc="An interactive drawing tool"
 arch=('x86_64' 'i686')
 url="http://mcj.sourceforge.net/"
 license=('custom')
-depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm')
+depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm' 'ghostscript')
 optdepends=('fig2dev: to use the frontend to convert fig files')
-makedepends=('git' 'fig2dev')
+makedepends=('git' 'fig2dev' 'htmldoc')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")
 options=('!makeflags' '!emptydirs')
