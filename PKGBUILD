@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
-pkgver=2.2206.5
+pkgver=2.2206.16
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -23,16 +23,17 @@ sha256sums=(
 
 build() {
   cd "${srcdir}"
-  
+
   nativefier \
     --name "WhatsApp" \
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
-    --user-agent "safari" \
+    --user-agent "firefox" \
     --inject "${pkgname}-inject.js" \
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
+    --electron-version 19.0.4 \
     --single-instance \
     --tray \
     "${url}"
@@ -48,8 +49,7 @@ package() {
   ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
-  do
+  for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
     convert "${srcdir}/${pkgname}.png" -strip -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   done
