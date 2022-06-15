@@ -5,7 +5,7 @@
 
 pkgname=abiword-git
 pkgver=3.1.0.20713.7f124ca95
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('wv' 'goffice' 'redland' 'libical' 'loudmouth' 'enchant' 'libwpg'
 	 'libwmf' 'aiksaurus' 'libots' 'libchamplain' 'psiconv' 'libwps'
 	 'telepathy-glib')
-makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'autoconf-archive')
+makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'libwpd' 'autoconf-archive')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 source=("git+https://gitlab.gnome.org/World/AbiWord.git"
@@ -46,7 +46,7 @@ prepare() {
 
 build() {
   cd AbiWord
-  export CXXFLAGS+=" -O3"
+  export CXXFLAGS+=" -O3 -Wno-deprecated-declarations"
 
   LANG=C LC_CTYPE=C ./autogen.sh --prefix=/usr \
       --enable-shared \

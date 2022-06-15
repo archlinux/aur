@@ -1,7 +1,7 @@
 pkgbase = abiword-git
 	pkgdesc = Fully-featured word processor from official gnome gitlab mirror
 	pkgver = 3.1.0.20713.7f124ca95
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.abisource.com
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = abiword-git
 	makedepends = asio
 	makedepends = boost
 	makedepends = gobject-introspection
-	makedepends = python2
 	makedepends = libwpd
 	makedepends = autoconf-archive
 	depends = wv
