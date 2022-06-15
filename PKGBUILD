@@ -2,20 +2,21 @@
 # Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
-_gemname=mixlib-config
-pkgname=ruby-$_gemname
-pkgver=3.0.9
+pkgname=ruby-mixlib-config
+_gemname="${pkgname#ruby-}"
+pkgver=3.0.27
 pkgrel=1
-pkgdesc="A class based configuration library"
+pkgdesc='A class based configuration library'
 arch=('any')
-url="https://github.com/chef/mixlib-config"
+url='https://github.com/chef/mixlib-config'
 license=('Apache')
 depends=('ruby-tomlrb')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('562b7dba2745843fad64f2318eb8e08bf7a32c57ad4bb4e4e2add9ff67725328eb3d93f8a0232383eb368c5e8d84b9ed35777f0c6ce6150ec8fcd6b0049e5067')
+sha512sums=('c184e300fc7de233fd9612928a0d8a9216ddc2ff964df8c0c7086306fe4356d2c77786c009bfea8c9a1e3ebf3bccbd95644e36563c808fffd307ef20dd0dd642')
+b2sums=('e4eae25e83ca924db1e098de6d2b1d6cf8e5d617e2b281f83fad02be5fa2e04ada9df077145a719a0d209819832dd4f8f9718a11b8d3b6e7365b0d31ef50d6ef')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
