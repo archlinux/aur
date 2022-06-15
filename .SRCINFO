@@ -8,6 +8,7 @@ pkgbase = mingw-w64-gdal
 	makedepends = perl
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-wine
+	makedepends = protobuf
 	depends = mingw-w64-curl
 	depends = mingw-w64-hdf5
 	depends = mingw-w64-netcdf
