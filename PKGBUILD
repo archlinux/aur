@@ -73,7 +73,7 @@ _kyber_disable=y
 _lru_enable=y
 
 ## Enable DAMON
-_damon=
+_damon=y
 
 ## enable SPECULATIVE_PAGE_FAULT
 _spf_enable=y
@@ -81,11 +81,18 @@ _spf_enable=y
 ## Enable Linux Random Number Generator
 _lrng_enable=y
 
-## Apply Kernel automatic Optimization
-_use_auto_optimization=y
+# CPU compiler optimizations - Defaults to prompt at kernel config if left empty
+# AMD CPUs : "k8" "k8sse3" "k10" "barcelona" "bobcat" "jaguar" "bulldozer" "piledriver" "steamroller" "excavator" "zen" "zen2" "zen3"
+# Intel CPUs : "mpsc"(P4 & older Netburst based Xeon) "atom" "core2" "nehalem" "westmere" "silvermont" "sandybridge" "ivybridge" "haswell" "broadwell" "skylake" "skylakex" "cannonlake" "icelake" "goldmont" "goldmontplus" "cascadelake" "cooperlake" "tigerlake" "sapphirerapids" "rocketlake" "alderlake"
+# Other options :
+# - "native_amd" (use compiler autodetection - Selecting your arch manually in the list above is recommended instead of this option)
+# - "native_intel" (use compiler autodetection and will prompt for P6_NOPS - Selecting your arch manually in the list above is recommended instead of this option)
+# - "generic" (kernel's default - to share the package between machines with different CPU µarch as long as they are x86-64)
+#
+# Or use the _use_auto_optimization with _use_auto_optimization=y
+_processor_opt=
 
-## Apply Kernel Optimization selecting
-_use_optimization_select=
+_use_auto_optimization=y
 
 # disable debug to lower the size of the kernel
 _disable_debug=y
@@ -116,6 +123,9 @@ _use_kcfi=
 # Build the zfs module builtin in to the kernel
 _build_zfs=
 
+# Enable bcachefs
+_bcachefs=
+
 if [ -n "$_use_llvm_lto" ]; then
     pkgsuffix=cachyos-${_cpusched}-lto
     pkgbase=linux-$pkgsuffix
@@ -125,7 +135,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -157,7 +167,8 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
 "config")
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/ptr1337/zfs.git#commit=8941b63a931ca6fdc6d0ab46c037540569ba04a4")
+    source+=("git+https://github.com/ptr1337/zfs.git#commit=24414b85f1b0fce4b13c10be4af47ebb826fef27")
+    sha256sums+=('SKIP')
 fi
 if [ "$_cpusched" = "bmq" ]; then
     source+=("${_patchsource}/sched/0001-prjc.patch")
@@ -204,7 +215,6 @@ source+=(
     "${_patchsource}/0001-lru-le9-spf.patch"
     "${_patchsource}/0001-ksm.patch"
     "${_patchsource}/0001-zram-entropy-calculation.patch"
-    "${_patchsource}/0001-PCI-Allow-BAR-movement-during-boot-and-hotplug.patch"
     "auto-cpu-optimization.sh"
 )
 
@@ -216,6 +226,10 @@ if [ -n "$_use_kcfi" ]; then
         LD=ld.lld
         LLVM=1
     )
+fi
+
+if [ -n "$_bcachefs" ]; then
+    source+=("${_patchsource}/0001-bcachefs.patch")
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -485,7 +499,8 @@ prepare() {
             --enable DAMON_DBGFS \
             --enable DAMON_SYSFS \
             --enable DAMON_PADDR \
-            --enable DAMON_RECLAIM
+            --enable DAMON_RECLAIM \
+            --enable DAMON_LRU_SORT
     fi
 
     if [ -n "$_lrng_enable" ]; then
@@ -805,23 +820,22 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('c70cb405076c3cfd73e4de729430b0342ea21b92a04d8284a03fac664ef1cfea'
-    '83425e8b1553f4ad0d8fdadbad3980b71f7a36742b3238813ff4d00cd3bf08f8'
-    'e8179f661dc9ba2ad89455f0c7e952e9dd9b4d6445476384cbac2730cdd46b65'
-    '326d129f9435145add756dc967accd56ffe1d8ff1b6650f84d2578c41bd6dfd6'
-    '2bfe45a67732a97cea01bf760a8f9fb297057c2488eb9e61720a0bb26c9b11e2'
-    'dc2898751118804bc3f36b5a6928a2927d04919ce41c0ce013009f5564d6d232'
-    '3754c1ad6bc2fb4e73e9d77137e9f245b3be1a73a05685f0ca03f4c086e5d04d'
-    'e2266d499cebdd5d195a044048ae4a13755f1d3edb3ece2c3f8837228b4cd521'
-    'c2bf57d37db1f93c5f3eeff2e2957f01618f4786613c13755f9ae6989d2b745c'
-    '30fd4ca078cb1eee0bc4005700da4d15515a577ccdb96ea7922040aa9086d6b7'
-    '6b6c8d1fbefe7aa165fc62aef527665777d474133e2507e1dc9d09b12282f857'
-    'f4ed599589fdd44270229492505f5f88e20d79e93b8044f8041a2fc90486bb4e'
-    '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
-    '344806f8ea9f0f7da883e2c27835153944df7a4b15bb3f97ec6b7b7709682f5d'
-    '99b18e00ca3e038481a23f4c83bc285a1ad0e209d049a8476c8f997627aaea79'
-    'd2c542b3d44ef11364248c550d20ec7b52261cd98ee5191c24d59c9e0a69392e'
-    '8edf9b9b1a9c26cc4d6dfaf5f14c06b197a04c5bbb8459dd292c033aa2534d19'
-    'efe8558b63feb0e76b61d69952c5300ad54c951d9044101be7c01932a54fb4fb'
-    'cb2494f5ad43fd260e26d771305dade3f9499fa1ffaf53cb9ef8c19b66dab7d7'
-'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f')
+sha256sums=('4b7193476f79c56b0d9988f68777dd0f885a1965e6fd55ec015922aa789492dd'
+            '0eef0883fcf7d1e6f9d8c9c5ea50066004e19d08d3ed183ad92e5d8f76ef1fbf'
+            'e8179f661dc9ba2ad89455f0c7e952e9dd9b4d6445476384cbac2730cdd46b65'
+            '326d129f9435145add756dc967accd56ffe1d8ff1b6650f84d2578c41bd6dfd6'
+            '2bfe45a67732a97cea01bf760a8f9fb297057c2488eb9e61720a0bb26c9b11e2'
+            'dc2898751118804bc3f36b5a6928a2927d04919ce41c0ce013009f5564d6d232'
+            '2d89b2b95cc61623cbd5d0a7bbce68711cb1c9c77f338cd7201cf4d9ab24a1a2'
+            'e2266d499cebdd5d195a044048ae4a13755f1d3edb3ece2c3f8837228b4cd521'
+            'c2bf57d37db1f93c5f3eeff2e2957f01618f4786613c13755f9ae6989d2b745c'
+            '71c33bf75dbf84673ad26a35c20b0f9ae0fa9944d91cd93a0b128752ca2eab0e'
+            'adace5a6666cee4ec5fccde405bc99d06b395bc9812c31b046826cc93f7d364c'
+            '5d1e60a13e2dfe002d31392172ca8df758b822ecd784f9c35c18202a33874d6f'
+            '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
+            'b14fc8ef91b4558220920d129808f42462f0c05b315e532a60423cd164752e9b'
+            '73baad17b251566783730e4ff881fe38d6b9566a0c1acd95ada354166e65e4f3'
+            'd2c542b3d44ef11364248c550d20ec7b52261cd98ee5191c24d59c9e0a69392e'
+            '8edf9b9b1a9c26cc4d6dfaf5f14c06b197a04c5bbb8459dd292c033aa2534d19'
+            'efe8558b63feb0e76b61d69952c5300ad54c951d9044101be7c01932a54fb4fb'
+            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f')
