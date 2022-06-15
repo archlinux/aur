@@ -10,9 +10,7 @@ pkgbase = flatbuffers-git
 	makedepends = python-setuptools
 	depends = gcc-libs
 	source = git+https://github.com/google/flatbuffers
-	source = remove-nested-verifier-test.patch
 	sha256sums = SKIP
-	sha256sums = 62993fce5b8fe683fc5ea61c60376b385764afc28e95cfb2094494df184d61ba
 
 pkgname = flatbuffers-git
 	provides = flatbuffers=2.0.6.r118.g987aa5b5

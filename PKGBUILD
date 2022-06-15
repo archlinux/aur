@@ -12,11 +12,8 @@ url='https://google.github.io/flatbuffers/'
 license=(Apache)
 depends=(gcc-libs)
 makedepends=(cmake git python-setuptools)
-source=(git+https://github.com/google/flatbuffers remove-nested-verifier-test.patch)
-sha256sums=(
-    'SKIP'
-    '62993fce5b8fe683fc5ea61c60376b385764afc28e95cfb2094494df184d61ba'
-)
+source=(git+https://github.com/google/flatbuffers)
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_gitbase}
@@ -25,14 +22,12 @@ pkgver() {
 
 prepare() {
   sed -i 's/-Werror=/-W/g;s/-Werror//g' $_gitbase/CMakeLists.txt
-
-  # patch necessary for https://github.com/google/flatbuffers/issues/7336
-  patch -p1 --input="${srcdir}/remove-nested-verifier-test.patch" --directory="$_gitbase"
 }
 
 build() {
   cd $_gitbase
   cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DFLATBUFFERS_BUILD_FLATLIB=OFF \
