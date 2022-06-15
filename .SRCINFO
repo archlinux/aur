@@ -1,6 +1,6 @@
 pkgbase = pokeshell-git
 	pkgdesc = A shell program to show pokemon sprites in the terminal.
-	pkgver = r42.40026ce
+	pkgver = r90.e283991
 	pkgrel = 1
 	url = https://github.com/acxz/pokeshell
 	arch = any

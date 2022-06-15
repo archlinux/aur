@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=pokeshell-git
-pkgver=r42.40026ce
+pkgver=r90.e283991
 pkgrel=1
 pkgdesc="A shell program to show pokemon sprites in the terminal."
 arch=('any')
@@ -28,11 +28,11 @@ package() {
     cd "${srcdir}/${_pkgname}"
 
     mkdir -p ${pkgdir}/usr/bin
-    cp -v pokeshell ${pkgdir}/usr/bin
+    cp -v bin/pokeshell ${pkgdir}/usr/bin
 
     mkdir -p ${pkgdir}/usr/share/bash-completion/completions
-    cp -v pokeshell-completion.bash ${pkgdir}/usr/share/bash-completion/completions/pokeshell
+    cp -v share/bash-completion/completions/pokeshell ${pkgdir}/usr/share/bash-completion/completions/pokeshell
 
-    mkdir -p ${pkgdir}/usr/share/zsh/site-functions
-    cp -v pokeshell-completion.bash ${pkgdir}/usr/share/zsh/site-functions/_pokeshell
+    # mkdir -p ${pkgdir}/usr/share/zsh/site-functions
+    # cp -v share/zsh/site-functions/_pokeshell ${pkgdir}/usr/share/zsh/site-functions/_pokeshell
 }
