@@ -1,0 +1,47 @@
+From 8ce7f128bf110f60658ef996d4f48e548e9b72d3 Mon Sep 17 00:00:00 2001
+From: Sebastian Keller <skeller@gnome.org>
+Date: Tue, 14 Jun 2022 22:54:30 +0200
+Subject: [PATCH] compositor/native: Consider SSD when determining window view
+
+When determining the view corresponding to a window, get_window_view()
+was always using the buffer_rect. The buffer_rect for SSD windows,
+however only corresponds to the size of the client, but does not include
+the decoration. As a result for maximized SSD windows on monitors
+without panels, there was no view that was considered to be entirely
+covered by the window. This then prevented direct scanout in these
+cases.
+
+Fixes: https://gitlab.gnome.org/GNOME/mutter/-/issues/2304
+---
+ src/compositor/meta-compositor-native.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
+index bc17704e1b..dc5c563714 100644
+--- a/src/compositor/meta-compositor-native.c
++++ b/src/compositor/meta-compositor-native.c
+@@ -44,6 +44,12 @@ get_window_view (MetaRenderer *renderer,
+ {
+   GList *l;
+   MetaRendererView *view_found = NULL;
++  MetaRectangle *covered_rect;
++
++  if (meta_window_is_client_decorated (window))
++    covered_rect = &window->buffer_rect;
++  else
++    covered_rect = &window->rect;
+ 
+   for (l = meta_renderer_get_views (renderer); l; l = l->next)
+     {
+@@ -52,7 +58,7 @@ get_window_view (MetaRenderer *renderer,
+ 
+       clutter_stage_view_get_layout (stage_view, &view_layout);
+ 
+-      if (meta_rectangle_equal (&window->buffer_rect,
++      if (meta_rectangle_equal (covered_rect,
+                                 &view_layout))
+         {
+           if (view_found)
+-- 
+GitLab
+
