@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=rnix-lsp
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A Language Server for Nix"
 url="https://github.com/nix-community/rnix-lsp"
@@ -12,9 +12,9 @@ depends_i686=('gcc-libs')
 makedepends=('git' 'cargo')
 conflicts=('rnix-lsp-git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-cksums=('2987763063')
-sha256sums=('0b1cac474fa81ebd4b4ffb3016ad0f7fe1a093ebf29b6f13caa18818f6cce8cb')
-b2sums=('0881b662ba812f07e6e0fb62c66a5058287a80d3ba33d8c57ff956ff32a5be20d4c60aed44583704dc70c2e493074725f386069ed9da26583978a1a3def717ec')
+cksums=('3161437623')
+sha256sums=('a689df1bce76d3b7f742cc37e13ba06d2c5cf69cda1bddbe1d15e434b6b223b5')
+b2sums=('eb70646c595d8fb70f0ffc1c63b84de0e5bd6e161a23669bfca043de470afc3a66d1a44fe00ca652e98c9243a26f0d0dc78abe5f527ec7262d10d1d41452b2b2')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
