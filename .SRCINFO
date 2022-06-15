@@ -1,6 +1,6 @@
 pkgbase = qt6-qtmqtt
 	pkgdesc = Qt Module to implement MQTT protocol.
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/qt/qtmqtt
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qt6-qtmqtt
 	makedepends = git
 	makedepends = cmake
 	depends = qt6-base
-	source = git+https://github.com/qt/qtmqtt.git#tag=v6.3.0
+	source = git+https://github.com/qt/qtmqtt.git#tag=v6.3.1
 	sha256sums = SKIP
 
 pkgname = qt6-qtmqtt

@@ -2,7 +2,7 @@
 # Created: 01/04/2022
 
 pkgname=qt6-qtmqtt
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="Qt Module to implement MQTT protocol."
 arch=("x86_64")
