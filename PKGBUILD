@@ -2,7 +2,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-ublock-origin
-pkgver=1.42.4
+pkgver=1.43.0
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
