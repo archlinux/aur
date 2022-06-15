@@ -1,6 +1,6 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
-	pkgver = 5.3.2
+	pkgver = 5.3.3
 	pkgrel = 1
 	url = https://github.com/gavinhoward/bc
 	arch = i686
@@ -13,12 +13,12 @@ pkgbase = bc-gh
 	depends = libedit
 	provides = bc
 	conflicts = bc
-	source = bc-gh-5.3.2.tar.xz::https://github.com/gavinhoward/bc/releases/download/5.3.2/bc-5.3.2.tar.xz
-	source = bc-gh-5.3.2.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/5.3.2/bc-5.3.2.tar.xz.sig
+	source = bc-gh-5.3.3.tar.xz::https://github.com/gavinhoward/bc/releases/download/5.3.3/bc-5.3.3.tar.xz
+	source = bc-gh-5.3.3.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/5.3.3/bc-5.3.3.tar.xz.sig
 	validpgpkeys = E2A30324A4465A4D5882692EC08038BDF280D33E
-	sha256sums = 90ec6f466faec918dcf74a778fce7f4386a5b4504411573d0f4bfdf8a1c79010
-	sha256sums = 9ba55ac2db82fb6ca8e3d70dedaa0aeed7ac4014d9d13215d9fe57c562df1985
-	sha512sums = 94f9879bd4ef806d487b121ad153ab768b7bf4d0efd44a97e990df58641d3cd1dd4e2ebec94089744e404591e3a4ab58349862fb1581dcb7f62025471cd2357c
-	sha512sums = 2494a23448890d0b2bd724b79b847d4e05b611ee36e954efe3111f138a1c28dad3e31cf822a701d8cd9f481100630635af0ec2541be6082baee386f18931c471
+	sha256sums = 616350bd0ea3ee1ebfc8580f0bf8bcec94c7f7cdeed397394e318e5f2a2cdb23
+	sha256sums = 130272040e22d0c28d9d88f08c6a04591d11a17ad3ce07b5c882077d031d1a0b
+	sha512sums = 94f7c35761211b4909f4bc5a2c19e7cd6589f7b6c2fa6eaf0a889d682ffd3f3ba79b3580d9e2aa4bef32b4c7874d047d0fba4e7dace05d63c87f884afbe8020f
+	sha512sums = 1fa5b61dd76e55cf5122fb019051f5cb8ac1433776f52a13cd1c017d8d66b418fc52dd95ad1de3f06cb0995cfb9b905841a83e1fffc90210d097f92eb4777923
 
 pkgname = bc-gh
