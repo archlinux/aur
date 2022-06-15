@@ -8,7 +8,7 @@ build:
 	makepkg -f
 
 prepare:
-	sed -i "s|sha256sums.*|`makepkg -g 2>&1|grep sha256sums`|g" PKGBUILD
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
