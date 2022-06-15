@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=swagger2openapi
-pkgver=7.0.3
+pkgver=7.0.8
 pkgrel=1
 pkgdesc="Convert Swagger 2.0 definitions to OpenApi 3.0 and validate"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs>=8.4.0')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('e760b71abc574aa405fc2dab444dcb1f')
+md5sums=('701b1f7331233098626f34f8e1a52227')
 
 package() {
 	cd $srcdir
