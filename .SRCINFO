@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-serialbus-static
 	pkgdesc = Qt module for general purpose serial bus access (mingw-w64)
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt6-serialbus-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtserialbus-everywhere-src-6.3.0.tar.xz
-	sha256sums = d2f6c988cb36e76956b8828cdc17513c0677b5523f635fc30a920701bb3627d6
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.1/submodules/qtserialbus-everywhere-src-6.3.1.tar.xz
+	sha256sums = 00953f7704ba5b085abd241afc911fbfa981a8e1693bf0566f2d3a63f2d878d2
 
 pkgname = mingw-w64-qt6-serialbus-static
