@@ -27,11 +27,11 @@ _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
-depends=('qtutilities-qt6' 'qtforkawesome-qt6' 'boost-libs' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('qtutilities-qt6' 'qtforkawesome-qt6' 'libboost_filesystem.so' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')

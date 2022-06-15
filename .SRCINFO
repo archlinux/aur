@@ -1,7 +1,7 @@
 pkgbase = syncthingtray-qt6
 	pkgdesc = Tray application for Syncthing (using Qt 6)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = syncthingtray-qt6
 	makedepends = boost
 	depends = qtutilities-qt6
 	depends = qtforkawesome-qt6
-	depends = boost-libs
+	depends = libboost_filesystem.so
 	depends = qt6-svg
 	depends = openssl
 	depends = desktop-file-utils
