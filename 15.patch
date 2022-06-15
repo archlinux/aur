@@ -1,0 +1,24 @@
+From 5cc7fb56cad45c0e2432d38a8eec00bdec515bc8 Mon Sep 17 00:00:00 2001
+From: Kuoi <starsareintherose@outlook.com>
+Date: Tue, 14 Jun 2022 23:22:25 +0000
+Subject: [PATCH] update the ui to avoid duplication
+
+---
+ src/ui/notebook_sidebar/note_create_popup.blp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/ui/notebook_sidebar/note_create_popup.blp b/src/ui/notebook_sidebar/note_create_popup.blp
+index 97455c0..6d64b33 100644
+--- a/src/ui/notebook_sidebar/note_create_popup.blp
++++ b/src/ui/notebook_sidebar/note_create_popup.blp
+@@ -40,7 +40,6 @@ template PaperNoteCreatePopup : Adw.Window {
+         margin-end: 18;
+       }
+ 
+-      margin-bottom: 16;
+       Button button_create {
+ 
+         label: _("Create Note");
+-- 
+GitLab
+
