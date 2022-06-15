@@ -1,6 +1,6 @@
 # Maintainer: zlfn <elusive1102@naver.com>
 
-pkgname=krita-plus
+pkgname=krita-next
 _pkgver=5.2.0
 pkgver=${_pkgver/-/}
 pkgrel=2
