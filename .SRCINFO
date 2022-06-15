@@ -1,0 +1,15 @@
+pkgbase = python-pypartpicker
+	pkgdesc = Fetch information from PCPartPicker on products and parts lists
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/thefakequake/pypartpicker
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bs4
+	depends = python-requests
+	source = https://github.com/thefakequake/pypartpicker/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 3df5bef6bafc39ca9a455305cc44282143ed27b701d3ecde0dd204a84245a657
+
+pkgname = python-pypartpicker
