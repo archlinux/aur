@@ -13,16 +13,17 @@ license=('GPL')
 groups=('kde-applications' 'kde-utilities')
 depends=(
   'hicolor-icon-theme'
-  'kitemmodels-git'
-  'kparts-git'
-  'kpty-git'
-  'libarchive-git'
+  'kitemmodels'
+  'kparts'
+  'kpty'
+  'libarchive'
   'libzip'
 )
 makedepends=(
-  'extra-cmake-modules-git'
+  'cmake'
+  'extra-cmake-modules'
   'git'
-  'kdoctools-git'
+  'kdoctools'
   'python'
 )
 optdepends=(
