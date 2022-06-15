@@ -1,7 +1,7 @@
 # Maintainer: zlfn <elusive1102@naver.com>
 
 pkgname=krita-plus-bin
-_pkgver=5.1.0.0ae8b00
+_pkgver=5.1.0.g0ae8b00
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='The pre-built package of Krita Plus. If you do not trust me, install krita-plus instead.'
