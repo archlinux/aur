@@ -3,8 +3,8 @@
 # Contributor: David Herrmann <dh.herrmann@googlemail.com>
 pkgname=kmscon-patched-git
 _gitname=kmscon
-pkgver=8.r39.gc73ccd2
-pkgrel=2
+pkgver=9.0.0.r0.g3292791
+pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
 arch=('x86_64' 'armv7h')
 url='https://github.com/Aetf/kmscon'
@@ -19,25 +19,26 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_gitname
-  git describe --long | sed -r "s/^$_gitname-//;s/([^-]*-g)/r\\1/;s/-/./g"
+  git describe --long | sed -r "s/^$_gitname-//;s/^v//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
 prepare() {
   cd $srcdir/$_gitname
 
-  ./autogen.sh --prefix=/usr \
-               --libexecdir=/usr/lib
+  meson builddir/ -Dprefix=/usr -Dlibexecdir=lib
 }
 
 build() {
   cd $srcdir/$_gitname
-  make
+
+  meson compile -C builddir/
 }
 
 package() {
   cd $srcdir/$_gitname
-  make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/lib/systemd/system"
+
+  meson install -C builddir/ --destdir "$pkgdir/"
+
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   cp COPYING "$pkgdir/usr/share/licenses/$pkgname/"
-  cp docs/kmscon{,vt@}.service "$pkgdir/usr/lib/systemd/system/"
 }

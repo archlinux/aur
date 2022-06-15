@@ -1,7 +1,7 @@
 pkgbase = kmscon-patched-git
 	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)
-	pkgver = 8.r39.gc73ccd2
-	pkgrel = 2
+	pkgver = 9.0.0.r0.g3292791
+	pkgrel = 1
 	url = https://github.com/Aetf/kmscon
 	arch = x86_64
 	arch = armv7h
@@ -25,4 +25,3 @@ pkgbase = kmscon-patched-git
 	md5sums = SKIP
 
 pkgname = kmscon-patched-git
-
