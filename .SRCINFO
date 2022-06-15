@@ -1,7 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
 	pkgver = 2022.6.14
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,6 @@ pkgbase = bottles
 	depends = pefile
 	depends = lib32-gnutls
 	depends = gtk4
-	depends = libadwaita-git
 	depends = gtksourceview5
 	depends = hicolor-icon-theme
 	depends = dconf
