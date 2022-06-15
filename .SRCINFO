@@ -1,6 +1,6 @@
 pkgbase = python-fipy
 	pkgdesc = Partial differential equation solver for Python, based on finite volume approach.
-	pkgver = 3.4.2.1
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = http://www.ctcms.nist.gov/fipy
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = python-fipy
 	depends = python-scipy
 	depends = python-matplotlib
 	optdepends = gmsh: creation of irregular meshes
-	source = fipy-3.4.2.1.tar.gz::https://github.com/usnistgov/fipy/archive/3.4.2.1.tar.gz
-	sha256sums = be8caaafe3ef2dc2c5ca02d8e91472bbdde0b19df1104170915fbb0b867c17a0
+	source = fipy-3.4.3.tar.gz::https://github.com/usnistgov/fipy/archive/3.4.3.tar.gz
+	sha256sums = a22733102b4b519b44c5cd2089e535b7a2d596fea598878299bbf4eb05c33644
 
 pkgname = python-fipy
-

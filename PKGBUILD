@@ -1,5 +1,5 @@
 pkgname=python-fipy
-pkgver=3.4.2.1
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Partial differential equation solver for Python, based on finite volume approach."
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('python-setuptools' 'python' 'python-future')
 depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
 optdepends=('gmsh: creation of irregular meshes')
 source=("fipy-$pkgver.tar.gz::https://github.com/usnistgov/fipy/archive/${pkgver}.tar.gz")
-sha256sums=('be8caaafe3ef2dc2c5ca02d8e91472bbdde0b19df1104170915fbb0b867c17a0')
+sha256sums=('a22733102b4b519b44c5cd2089e535b7a2d596fea598878299bbf4eb05c33644')
 
 prepare(){
    cp -R fipy-${pkgver} fipy-${pkgver}-py3
