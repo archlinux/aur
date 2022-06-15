@@ -2,11 +2,11 @@
 
 pkgname=macli-git
 _pkgname=macli
-pkgver=0.1.0.r0.g5eb7a3c
+pkgver=1.0.0.r2.g7d1c4ad
 pkgrel=1
 license=('GPLv3')
 pkgdesc='Unofficial CLI-Based MyAnimeList Client'
-makedepends=("git" "go>=1.6")
+makedepends=("git" "go>=1.6" "gnome-keyring")
 arch=("i686" "x86_64")
 _gourl='github.com/MikunoNaka/macli'
 url="https://${_gourl}"
@@ -27,6 +27,8 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	go mod vendor
 	go build .
+
+  go clean -modcache
 }
 
 package() {

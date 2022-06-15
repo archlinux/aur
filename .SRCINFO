@@ -1,6 +1,6 @@
 pkgbase = macli-git
 	pkgdesc = Unofficial CLI-Based MyAnimeList Client
-	pkgver = 0.2.0
+	pkgver = 0.1.0.r0.g5eb7a3c
 	pkgrel = 1
 	url = https://github.com/MikunoNaka/macli
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = macli-git
 	license = GPLv3
 	makedepends = git
 	makedepends = go>=1.6
+	makedepends = gnome-keyring
 	provides = macli
 	conflicts = macli
 	source = macli::git+https://github.com/MikunoNaka/macli.git
