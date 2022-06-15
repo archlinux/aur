@@ -53,5 +53,4 @@ pkgbase = gnome-control-center-vrr
 pkgname = gnome-control-center-vrr
 	groups = gnome
 	provides = gnome-control-center
-	provides = gnome-control-center-vrr
 	conflicts = gnome-control-center

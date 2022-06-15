@@ -57,7 +57,7 @@ check() {
 
 package_gnome-control-center-vrr() {
   conflicts=(gnome-control-center)
-  provides=(gnome-control-center gnome-control-center-vrr)
+  provides=(gnome-control-center)
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
