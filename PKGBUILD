@@ -2,13 +2,13 @@
 
 pkgname='nsxiv-git'
 _pkgname=nsxiv
-pkgver=29.r0.g231b317
-pkgrel=2
+pkgver=30.r0.g33a5d54
+pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)'
 arch=('x86_64')
 license=('GPL2')
 conflicts=('nsxiv')
-url='https://github.com/nsxiv/nsxiv.git'
+url='https://codeberg.org/nsxiv/nsxiv.git'
 depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib' 'libwebp')
 makedepends=(git)
 source=("${_pkgname}::git+$url")

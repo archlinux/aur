@@ -1,8 +1,8 @@
 pkgbase = nsxiv-git
 	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)
-	pkgver = 29.r0.g231b317
-	pkgrel = 2
-	url = https://github.com/nsxiv/nsxiv.git
+	pkgver = 30.r0.g33a5d54
+	pkgrel = 1
+	url = https://codeberg.org/nsxiv/nsxiv.git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = nsxiv-git
 	depends = giflib
 	depends = libwebp
 	conflicts = nsxiv
-	source = nsxiv::git+https://github.com/nsxiv/nsxiv.git
+	source = nsxiv::git+https://codeberg.org/nsxiv/nsxiv.git
 	sha256sums = SKIP
 
 pkgname = nsxiv-git
