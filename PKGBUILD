@@ -1,6 +1,6 @@
 # Maintainer: Gustavo Coutinho de Souza <aur at onemoresuza dot mailer dot me>
 pkgname='pass-xmenu-git'
-pkgver=0.1.0.r0.g8549344
+pkgver=0.1.1.r0.gab03d33
 pkgrel=1
 pkgdesc="A pass extension that provides an xmenu and autofill capabilities"
 arch=('any')
