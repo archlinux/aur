@@ -5,6 +5,8 @@ pkgbase = python-pylspci
 	url = https://pypi.python.org/pypi/pylspci
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python-cached-property
 	source = git+https://gitlab.com/Lucidiot/pylspci.git#tag=0.4.2
 	md5sums = SKIP

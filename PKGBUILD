@@ -9,6 +9,7 @@ arch=('any')
 url="https://pypi.python.org/pypi/$_pkgname"
 license=('GPL3')
 depends=('python-cached-property')
+makedepends=('git' 'python-setuptools')
 source=("git+https://gitlab.com/Lucidiot/pylspci.git#tag=$pkgver")
 md5sums=('SKIP')
 
