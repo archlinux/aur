@@ -1,12 +1,12 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
-_gemname=dry-system
-pkgname=ruby-$_gemname
-pkgver=0.23.0
+pkgname=ruby-dry-system
+_gemname="${pkgname#ruby-}"
+pkgver=0.24.0
 pkgrel=1
-pkgdesc="Organize your code into reusable components"
+pkgdesc='Organize your code into reusable components'
 arch=('any')
-url="https://github.com/dry-rb/dry-system"
+url='https://github.com/dry-rb/dry-system'
 license=('MIT')
 depends=(
   'ruby'
@@ -22,8 +22,8 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('47e057dab8af7bad8a40c0ca73d0e122ba1e90e63b79407cd442403f071d72bb7853347c03f30d0116965a52eaf3841917a1c36469f4428fe8a2458f45d2b4a4')
-b2sums=('4500e723f44048d7408691eb08305c979d27fe91171fc3685185647fadbb6e7371879390004ad35d2f6b013c30c5b21a3ea31e604ada9f17e64f1a86a20e2622')
+sha512sums=('26334049a5591f424a21780e18aaf4237a43371f60a1a75396a82abd987a295fcd95e1f198d00c860e0a62f11c49d656a68ad79c97db54fe24aaa079a0b975c2')
+b2sums=('0c9a63e237988e1beffd724156ec32073c301b852efab82d98c73f0d6b1a05895ba322c46a9464676142fe99fcc35ef8018b950fb04fe9cfec5499ad213e8511')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
