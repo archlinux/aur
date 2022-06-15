@@ -2,9 +2,9 @@
 
 pkgname=eclipse-cpp
 epoch=2
-pkgver=4.23
+pkgver=4.24
 pkgrel=1
-_release=2022-03/R
+_release=2022-06/R
 pkgdesc="Highly extensible IDE (C/C++ version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('20aa071811fca50d6691d333d757b13b5bb94f78423e4ebada73d8a05ba70b2ad01ce540e8a0c0547cc4a35771354489546bd6f581c36c6959a615e78930491f'
+sha512sums=('9aaa1e3fa070993586cbaaa9ffe0527e34da31f0042ad972a87c27d46ae28510974320cd79559190135aec94c252cfb2bdedaba24822b193554b0a6002aa8761'
             '96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
 
 backup=('usr/lib/eclipse/eclipse.ini')
