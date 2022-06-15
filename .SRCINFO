@@ -1,6 +1,6 @@
 pkgbase = onedrive-abraunegg
 	pkgdesc = Free OneDrive client written in D - abraunegg's fork. Follows the releases on https://github.com/abraunegg/onedrive/releases
-	pkgver = 2.4.18
+	pkgver = 2.4.19
 	pkgrel = 1
 	url = https://github.com/abraunegg/onedrive
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = onedrive-abraunegg
 	depends = libnotify
 	depends = sqlite
 	depends = d-runtime
-	provides = onedrive=2.4.18
+	provides = onedrive=2.4.19
 	conflicts = onedrive
 	conflicts = onedrive-abraunegg-git
 	conflicts = onedrive-bin
 	conflicts = onedrive-git
 	conflicts = onedrive-fork-git
-	source = https://github.com/abraunegg/onedrive/archive/v2.4.18.tar.gz
-	md5sums = 64516b82e56575e084dd6b51f9f9d983
+	source = https://github.com/abraunegg/onedrive/archive/v2.4.19.tar.gz
+	md5sums = bc799a322cfa7f79a5b57fcafae0b419
 
 pkgname = onedrive-abraunegg
