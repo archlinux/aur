@@ -3,7 +3,7 @@
 pkgname='meshmixer-wine'
 pkgver=3.5
 _pkgver=$(echo $pkgver | sed 's/\./p/g')
-pkgrel=2
+pkgrel=3
 pkgdesc="Meshmixer is state-of-the-art software for working with triangle meshes"
 arch=('x86_64')
 url="http://www.meshmixer.com"
@@ -43,7 +43,7 @@ package() {
     local cnt=0
     for i in $(identify icons.ico); do 
      dim=$(echo $i | gawk 'match($0, /([0-9]+)x[0-9]+/ , a) {print a[1]}')
-     ico_dir=${pkgdir}/usr/share/icons/hicolor/${dim}x${dim}
+     ico_dir=${pkgdir}/usr/share/icons/hicolor/${dim}x${dim}/apps
      mkdir -p "${ico_dir}"
      convert icons.ico[$cnt] -thumbnail ${dix}x${dim} -flatten ${ico_dir}/meshmixer.png
      cnt=$((cnt+1))

@@ -1,7 +1,7 @@
 pkgbase = meshmixer-wine
 	pkgdesc = Meshmixer is state-of-the-art software for working with triangle meshes
 	pkgver = 3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.meshmixer.com
 	arch = x86_64
 	license = proprietary
@@ -21,4 +21,3 @@ pkgbase = meshmixer-wine
 	sha256sums = 5d08cb6254e4d4280137d6d37ec689fc3f0c61dad08bbc978a451ac16b7f271c
 
 pkgname = meshmixer-wine
-
