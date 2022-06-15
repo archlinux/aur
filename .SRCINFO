@@ -1,8 +1,8 @@
 pkgbase = nsxiv
 	pkgdesc = Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer
-	pkgver = 29
-	pkgrel = 3
-	url = https://github.com/nsxiv/nsxiv
+	pkgver = 30
+	pkgrel = 1
+	url = https://codeberg.org/nsxiv/nsxiv
 	arch = x86_64
 	license = GPL2
 	depends = imlib2
@@ -14,7 +14,7 @@ pkgbase = nsxiv
 	depends = giflib
 	depends = libwebp
 	conflicts = nsxiv-git
-	source = nsxiv-29.tar.gz::https://github.com/nsxiv/nsxiv/archive/v29.tar.gz
-	sha256sums = 564a17d921172336f7cd463bf313e39f84e4bcf4fdc789326f4112f848aad039
+	source = nsxiv-30.tar.gz::https://codeberg.org/nsxiv/nsxiv/archive/v30.tar.gz
+	sha256sums = a916d1385872ccf0b55fbf6b8546d05fcbbbb8b0a92579494e64c6bd22fc7941
 
 pkgname = nsxiv

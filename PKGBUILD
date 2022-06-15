@@ -2,16 +2,16 @@
 
 pkgname=nsxiv
 _pkgname=nsxiv
-pkgver=29
-pkgrel=3
+pkgver=30
+pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
 conflicts=('nsxiv-git')
-url='https://github.com/nsxiv/nsxiv'
+url='https://codeberg.org/nsxiv/nsxiv'
 depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib' 'libwebp')
-source=("$pkgname-$pkgver.tar.gz"::"https://github.com/nsxiv/nsxiv/archive/v$pkgver.tar.gz")
-sha256sums=('564a17d921172336f7cd463bf313e39f84e4bcf4fdc789326f4112f848aad039')
+source=("$pkgname-$pkgver.tar.gz"::"https://codeberg.org/nsxiv/nsxiv/archive/v$pkgver.tar.gz")
+sha256sums=('a916d1385872ccf0b55fbf6b8546d05fcbbbb8b0a92579494e64c6bd22fc7941')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
