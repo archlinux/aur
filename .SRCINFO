@@ -8,6 +8,7 @@ pkgbase = swhkd-git
 	makedepends = rustup
 	makedepends = make
 	makedepends = git
+	makedepends = scdoc
 	depends = polkit
 	conflicts = swhkd-musl-git
 	source = swhkd::git+https://github.com/waycrate/swhkd
