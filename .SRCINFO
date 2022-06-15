@@ -1,7 +1,7 @@
 pkgbase = libfftranscode
 	pkgdesc = Proprietary library for ASN.1 APER <-> BER transcoding of RUA/RANAP/HNBAP/S1AP
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ftp.osmocom.org/binaries/libfftranscode/
 	arch = x86_64
 	groups = devel
