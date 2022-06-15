@@ -1,7 +1,7 @@
 # Maintainer: zlfn <elusive1102@naver.com>
 
 pkgname=krita-next-git
-pkgver=v5.2.0.prealpha.r23.gd51784a501
+pkgver=v5.2.0.prealpha.r29.gc570211778
 pkgrel=1
 pkgdesc='Edit and paint images. Krita Next is a daily build of what will become Krita 5.1. Install at your own risk! It is alpha!'
 arch=(x86_64)
