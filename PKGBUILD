@@ -7,8 +7,8 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live-bin
 pkgdesc='Ledger Live - Desktop (AppImage version)'
 license=('MIT')
-url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=2.42.0
+url='https://www.ledger.com/'
+pkgver=2.43.1
 pkgrel=1
 arch=('x86_64')
 depends=('ledger-udev')
@@ -17,12 +17,11 @@ provides=('ledger-live')
 conflicts=('ledger-live' 'ledger-live-git')
 _pkgsrc="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
 source=(
-  "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
-  "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v${pkgver}/LICENSE"
+  "${_pkgsrc}::https://download.live.ledger.com/${_pkgsrc}"
+  "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/main/apps/ledger-live-desktop/LICENSE"
 )
-sha512sums=('51d61df7e9c0c716eaa57700dc871e745d2206727c3400b06ef6c30a0e535679ee99bb2f04dbafdbcdcc5e28dc24f97e6fb5c811360a5df83ace517651c192dc'
+sha512sums=('738254ea939772bcbe0bd9dcaf2e7698477a88e830cba6e362a937038510263b221b06f7fd1211bdbe186e855e355bc2dd8b60ed404a10d89ee6258733a64726'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
-
 
 build() {
   # Extract files
@@ -32,7 +31,6 @@ build() {
   # Correct .desktop
   sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
 }
-
 
 package() {
   install -d "$pkgdir/opt/$_pkgbin"

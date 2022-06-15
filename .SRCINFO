@@ -1,8 +1,8 @@
 pkgbase = ledger-live-bin
 	pkgdesc = Ledger Live - Desktop (AppImage version)
-	pkgver = 2.42.0
+	pkgver = 2.43.1
 	pkgrel = 1
-	url = https://github.com/LedgerHQ/ledger-live-desktop
+	url = https://www.ledger.com/
 	arch = x86_64
 	license = MIT
 	depends = ledger-udev
@@ -10,9 +10,9 @@ pkgbase = ledger-live-bin
 	conflicts = ledger-live
 	conflicts = ledger-live-git
 	options = !strip
-	source = ledger-live-desktop-2.42.0-linux-x86_64.AppImage::https://github.com/LedgerHQ/ledger-live-desktop/releases/download/v2.42.0/ledger-live-desktop-2.42.0-linux-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live-desktop/v2.42.0/LICENSE
-	sha512sums = 51d61df7e9c0c716eaa57700dc871e745d2206727c3400b06ef6c30a0e535679ee99bb2f04dbafdbcdcc5e28dc24f97e6fb5c811360a5df83ace517651c192dc
+	source = ledger-live-desktop-2.43.1-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-2.43.1-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/main/apps/ledger-live-desktop/LICENSE
+	sha512sums = 738254ea939772bcbe0bd9dcaf2e7698477a88e830cba6e362a937038510263b221b06f7fd1211bdbe186e855e355bc2dd8b60ed404a10d89ee6258733a64726
 	sha512sums = 915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318
 
 pkgname = ledger-live-bin
