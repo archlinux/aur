@@ -1,12 +1,13 @@
 pkgbase = python-pefile-git
 	pkgdesc = A Python module to read and work with PE (Portable Executable) files
 	pkgver = v2022.5.30.r3.g0d5ce5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erocarrera/pefile
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	depends = python
 	provides = python-pefile
 	conflicts = python-pefile
 	source = python-pefile-git::git+https://github.com/erocarrera/pefile.git
