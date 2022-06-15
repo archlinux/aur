@@ -1,7 +1,7 @@
 pkgbase = ynote-desktop-bin
 	pkgdesc = Netease Youdao Ynote for Linux
-	pkgver = 7.0.12
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://note.youdao.com/
 	arch = x86_64
 	license = custom
@@ -18,9 +18,9 @@ pkgbase = ynote-desktop-bin
 	depends = libsecret
 	provides = ynote-desktop
 	conflicts = ynote-desktop
-	source = ynote-desktop-7.0.12.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2022%2F05%2F16%2Fab870320.deb
+	source = ynote-desktop-7.1.0.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2022%2F06%2F06%2F4dc86e32.deb
 	source = LICENSE.html::https://note.youdao.com/license.html
-	sha256sums = 514f75239a50089cb82b63bdb2ea681a1957acab63eae601e2fa6e36a1ad3b34
+	sha256sums = 950a386684a42414c1a3869b72f18fd9772fb7e24cb00e063f62d72e453c73d5
 	sha256sums = a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460
 
 pkgname = ynote-desktop-bin
