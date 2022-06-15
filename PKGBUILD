@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL3')
 depends=("electron$_electron_version" 'nodejs')
-makedepends=('npm' 'make' 'gcc')
+makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/tags/v$pkgver.tar.gz"
 	"copy-trilium.sh.patch"
 	"config-sample.ini.patch"
