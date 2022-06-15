@@ -13,7 +13,7 @@ source=("https://openacs.org/projects/openacs/download/download/${pkgname}-full-
 )
 md5sums=("9f87a173ee633ece699fe45bfa9ad457"
 "3aed4279d9ed730c8c591f00a6dbca45"
-"b7d70f60b1b92b5d6714d4d8ccb39e3d"
+"4c4d7fa8782187c6852e17aff2b2dd3b"
 )
   
 package() {
