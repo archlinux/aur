@@ -1,23 +1,23 @@
 pkgbase = fluxengine-git
 	pkgdesc = PSOC5 floppy disk imaging interface
-	pkgver = r1718.d7ce100
+	pkgver = r1774.ff5d22a
 	pkgrel = 1
 	url = http://cowlark.com/fluxengine/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = ninja
 	makedepends = xxd
 	depends = wxgtk2
 	depends = libudev.so
 	depends = zlib
 	depends = sqlite3
 	depends = protobuf
+	depends = fmt
+	depends = libfmt.so
+	depends = libprotobuf.so
 	provides = fluxengine
 	conflicts = fluxengine
 	source = git+https://github.com/davidgiven/fluxengine.git
-	source = 01-flags.patch
 	sha256sums = SKIP
-	sha256sums = f5f2ab1d50c975eded17c49ae72ea6183d4637a9bdfae22b2e8d995d7526639f
 
 pkgname = fluxengine-git
