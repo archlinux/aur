@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-websockets
 	pkgdesc = Provides WebSocket communication compliant with RFC 6455 (mingw-w64)
-	pkgver = 6.3.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-websockets
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtwebsockets-everywhere-src-6.3.0.tar.xz
-	sha256sums = e018a09fe960b7d9560d6bbc9d3ca022fed6566e6ba6fc6d869a97482d4e6361
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.1/submodules/qtwebsockets-everywhere-src-6.3.1.tar.xz
+	sha256sums = 9f980d90c97fcbde1b50c773f6dc580cfdf8c36ce14a1be3aa2ccadfe605121a
 
 pkgname = mingw-w64-qt6-websockets
