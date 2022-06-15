@@ -18,5 +18,5 @@ optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
             'python-pyqt5: for the Python plugins' 'libheif: HEIF filter'
             'kseexpr: SeExpr generator layer' 'kimageformats: PSD support' 'libmypaint: support for MyPaint brushes'
             'krita-plugin-gmic: GMic plugin')
-source=(https://github.com/zlfn/krita-aur/releases/download/v5.2.0-prealpha/krita-next-5.2.0-1-x86_64.pkg.tar.zst)
+source=(https://github.com/zlfn/krita-aur/releases/download/v5.2.0-prealpha/krita-next-bin-5.2.0-1-x86_64.pkg.tar.zst)
 sha256sums=('SKIP')
