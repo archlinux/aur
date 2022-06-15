@@ -1,15 +1,15 @@
 pkgbase = ruby-tomlrb
 	pkgdesc = A racc based toml parser
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/fbernier/tomlrb
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = tomlrb-2.0.1.gem
+	noextract = tomlrb-2.0.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/tomlrb-2.0.1.gem
-	b2sums = f48dd8ad891c962aaddced0badc795d64f558b18e6c933e731b589688665eb8c209d647f0f5c51cfb03983ec10d91e7517fb58a69ed0bd871ee2ef3f7ead31cd
+	source = https://rubygems.org/downloads/tomlrb-2.0.3.gem
+	b2sums = 675d45713e6c18e0783a980b46bd75b42690de4dfcb1273d362f7625c809816b80cc30753067b691498763ea3bb6190ac0118b32db8ece61652df50e47a6a8cc
 
 pkgname = ruby-tomlrb
