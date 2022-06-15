@@ -4,8 +4,8 @@
 pkgbase=flatbuffers-git
 _gitbase=flatbuffers
 pkgname=(flatbuffers-git python-flatbuffers-git)
-pkgver=2.0.6.r107.g967df08b
-pkgrel=2
+pkgver=2.0.6.r118.g987aa5b5
+pkgrel=1
 pkgdesc='An efficient cross platform serialization library for C++, with support for Java, C# and Go'
 arch=(x86_64)
 url='https://google.github.io/flatbuffers/'
@@ -15,7 +15,7 @@ makedepends=(cmake git python-setuptools)
 source=(git+https://github.com/google/flatbuffers remove-nested-verifier-test.patch)
 sha256sums=(
     'SKIP'
-    '1c9b01f82312e3974acf6551e90cca9d4bd3e06b0877f1ad223a95163e9a3a26'
+    '62993fce5b8fe683fc5ea61c60376b385764afc28e95cfb2094494df184d61ba'
 )
 
 pkgver() {
