@@ -1,0 +1,12 @@
+post_install() {
+  echo ""
+  echo "You must have the XDG_DATA_HOME variable set"
+  echo "otherwise this program will not run!"
+  echo ""
+  echo "See https://wiki.archlinux.org/title/XDG_Base_Directory"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
