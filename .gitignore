@@ -1,2 +1,4 @@
+PKGBUILD-namcap.log
 freetds-*.tar.bz2
+freetds-patched-enum-*.log
 *.pkg.tar.zst

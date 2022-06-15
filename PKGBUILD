@@ -3,7 +3,7 @@
 
 _realname=freetds
 pkgname=${_realname}-patched-enum
-pkgver=1.1.42
+pkgver=1.3.12
 pkgrel=1
 pkgdesc='Library for accessing Sybase and MS SQL Server databases, patched to replace removed enum needed by some applications'
 url='http://www.freetds.org'
@@ -17,7 +17,7 @@ backup=('etc/freetds/freetds.conf'
         'etc/freetds/pool.conf')
 source=("ftp://ftp.freetds.org/pub/freetds/stable/$_realname-$pkgver.tar.bz2"
         'enum.patch')
-sha256sums=('aff70ecdef357b278d117273aab59d63c08a38418794d4fd428eec8fd0b4f00a'
+sha256sums=('1c5a86ec40f3475a46a6ecf472aa4126f1add9f7bad1acf268820f1baec6c16b'
             'fdbe80579cc50e90dee4851ddf4f7707e08f56d23f3381615b21f0e87baaf219')
 
 build() {
