@@ -2,7 +2,7 @@
 
 pkgbase=amdguid-wayland-bin
 pkgname=amdguid-wayland-bin
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
