@@ -1,6 +1,6 @@
 pkgbase = godot4-bin
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = alpha9
+	pkgver = alpha10
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = godot4-bin
 	sha512sums = a32864067fcd034cc95b0a39ba575dafe62ca8f67b93f1cc0ede5a471d12d73ba525032e1ba1b411f1ca550a106498b5e71a9d491663a39c67175740f07cad87
 	sha512sums = 3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e
 	sha512sums = d38569e26e77b238cd9bf60d0ba7dc76367b5f25f68e5d45185d10fdf4de20c696431ab4eed815b7ad611e997d5ddadd96d70f1f6d4388c18b1553b81d4b6738
-	source_i686 = godot4-alpha9-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/alpha9/Godot_v4.0-alpha9_linux.32.zip
-	sha512sums_i686 = 9a9190f285a89c01751cc6241638012987bf2215e36d80f8d3e98b365964df21065b2281b1147ee6a1b93e879b334084ead7e77965eccc906f03e1141cf3b01e
-	source_x86_64 = godot4-alpha9-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/alpha9/Godot_v4.0-alpha9_linux.64.zip
-	sha512sums_x86_64 = 36dcd045ed1bf93f5f333704689716c4cdde185c68fe23ebcd90e3da07768637c1fc0372e3f523cfcf9673d54a2e090dcc2c22e397a39d15c6067772fd6bfa12
+	source_i686 = godot4-alpha10-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/alpha10/Godot_v4.0-alpha10_linux.32.zip
+	sha512sums_i686 = 44d7dc69b9f6f592fefd10ab3e0e239fceec88ce2169437bc7ed362fe79b870d49188e6dee8c732e88187bd6a08bcf80adb7f837d920ccb8b41dcd6d4001742a
+	source_x86_64 = godot4-alpha10-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/alpha10/Godot_v4.0-alpha10_linux.64.zip
+	sha512sums_x86_64 = 9d68b892086b66f991db0dbe9e229e9b6743ec4d8f891ec034241acddea742ac147ed3f55de47fb63aef6964be224f509812aee9b184d44a7f8208ca9d25aa81
 
 pkgname = godot4-bin
