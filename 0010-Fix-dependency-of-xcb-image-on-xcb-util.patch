@@ -1,0 +1,48 @@
+From 5f81bd5ed0e8609415aa1bd7ff1857063d38a66d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 24 Apr 2022 23:49:36 +0200
+Subject: [PATCH 10/12] Fix dependency of xcb-image on xcb-util
+
+Considering this linker error, xcb-image apparently depends on xcb-util:
+```
+/usr/bin/ld: /usr/static-compat/lib/libxcb-image.a(xcb_image.o): in function `xcb_create_pixmap_from_bitmap_data':
+(.text+0x14b7): undefined reference to `xcb_aux_create_gc'
+```
+
+Change-Id: Ic87a94ec664c126a5af1012d31b068d3dc7ec947
+---
+ cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
+index d530d2d7f4..f5298642ca 100644
+--- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
++++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
+@@ -108,6 +108,7 @@ set(XCB_known_components
+     EWMH
+     GLX
+     ICCCM
++    UTIL
+     IMAGE
+     KEYSYMS
+     PRESENT
+@@ -117,7 +118,6 @@ set(XCB_known_components
+     RES
+     SCREENSAVER
+     SYNC
+-    UTIL
+     XEVIE
+     XF86DRI
+     XINERAMA
+@@ -146,7 +146,7 @@ endforeach()
+ set(XCB_XCB_component_deps)
+ set(XCB_COMPOSITE_component_deps XCB XFIXES)
+ set(XCB_DAMAGE_component_deps XCB XFIXES)
+-set(XCB_IMAGE_component_deps XCB SHM)
++set(XCB_IMAGE_component_deps XCB SHM UTIL)
+ set(XCB_RENDERUTIL_component_deps XCB RENDER)
+ set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
+ set(XCB_XVMC_component_deps XCB XV)
+-- 
+2.36.1
+

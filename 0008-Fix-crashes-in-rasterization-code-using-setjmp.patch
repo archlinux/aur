@@ -1,7 +1,7 @@
-From 3a7e6c01e86ff8b4ffaec5a7690d680198d59f57 Mon Sep 17 00:00:00 2001
+From 3e7c0f23c35895d11f1ebfc76c43f90dc85521a2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
-Subject: [PATCH 8/8] Fix crashes in rasterization code using setjmp
+Subject: [PATCH 08/12] Fix crashes in rasterization code using setjmp
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -28,7 +28,7 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 43a2366063..4c5c42abb6 100644
+index 8eb4e5b605..b9f4e96671 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -165,7 +165,7 @@ qt_internal_add_module(Gui
@@ -248,5 +248,5 @@ index e2326a56c1..7b30969ec8 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.35.1
+2.36.1
 
