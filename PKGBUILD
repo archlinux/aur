@@ -18,5 +18,6 @@ package() {
   local _profiles_dir="${pkgdir}/usr/share/archiso/configs"
 
   install -dm755 "${_profiles_dir}"
-  cp -r "${srcdir}/${pkgname}/encrypted" "${_profiles_dir}"
+  cp -r "${srcdir}/${pkgname}/ebaseline" "${_profiles_dir}"
+  cp -r "${srcdir}/${pkgname}/ereleng" "${_profiles_dir}"
 }
