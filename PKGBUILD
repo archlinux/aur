@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=cambalache
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='A new RAD tool for Gtk 4 and 3'
 arch=(x86_64)
 url=https://gitlab.gnome.org/jpu/cambalache
@@ -11,7 +11,7 @@ depends=(gtk3 webkit2gtk glib2 python-lxml python-gobject)
 makedepends=(meson)
 optdepends=('gtk4: gtk4 workspace')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('ff3fdb3b527bd073eb52e84effd621b226464128dc9c8f3dfd791a019e8420cbda1798db828530d30cbe88949ae0b3ea19c48bff729c493a0b2a00830b90bfcb')
+sha512sums=('a70f132d5cb9fba525670ee380173fd78128245dc443afb25019a10613644e4eb272a63cbb7d2111d63e516fc67591c99b613ff3ae07cebdf976fa5c354041c5')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
