@@ -1,6 +1,6 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='utf-8-steg-git'
-pkgver=0.1.2.r0.gd747c6f
+pkgver=0.1.3.r0.g04ed9a1
 pkgrel=1
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
