@@ -21,7 +21,7 @@ depends=('qt5-x11extras'    'libxrandr'  'libxinerama' 'qt5-webengine'
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
 sha512sums=('974bc6c4a3ab80333c957f4b4c3e11a7a6b67f24501a1090b537aba47341302123b236c98433f796c9fb077bb306fa66bb19048092351b10f1ea254f68d4c39a'
-            '96c0d6bf0620ffd935750f1b39cd6565cbdfda244b33587b04a692c15aa34fdd37082b2baa3228be3405cff2e684b892b985423a7c3c88e8dae1ac66ef60f119')
+            'f1f1e719a89fe2b7d3b3a0b149880b275e5c2f4e879f6355cf82e395f2b77c15cffc95c2c5e3dc9fd022b23cda6ca528e16464b5222cc6209b1d62ca0cbaac92')
 
 prepare(){
     tar xpf data.tar.xz -C ${srcdir}
