@@ -1,6 +1,6 @@
 pkgbase = tenacity-git
 	pkgdesc = An easy-to-use multi-track audio editor and recorder, forked from Audacity
-	pkgver = r13926.g0665614b8
+	pkgver = r13941.g9b4b96d98
 	pkgrel = 1
 	epoch = 1
 	url = https://tenacityaudio.org
@@ -21,7 +21,7 @@ pkgbase = tenacity-git
 	makedepends = nasm
 	makedepends = chrpath
 	depends = gtk3
-	depends = wxgtk3-dev-light
+	depends = wxgtk3-3.1.5
 	depends = libid3tag
 	depends = lilv
 	depends = lv2
@@ -39,7 +39,7 @@ pkgbase = tenacity-git
 	optdepends = ffmpeg4.4: additional import/export capabilities
 	provides = tenacity
 	conflicts = tenacity
-	source = git+https://git.sr.ht/~tenacity/tenacity
+	source = git+https://github.com/tenacityteam/tenacity.git
 	sha256sums = SKIP
 
 pkgname = tenacity-git
