@@ -1,6 +1,6 @@
 pkgbase = libreoffice-dev-i18n
 	pkgver = 7.4.0.0beta1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.documentfoundation.org
 	arch = any
 	license = LGPL
