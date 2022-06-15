@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-git
-pkgver=1.0b9.r27.9af31a8
-pkgrel=1
+pkgver=1.0b9.r74.043fcaa
+pkgrel=2
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
 url='https://nickfa.ro/index.php?title=HUGETracker'
@@ -20,7 +20,7 @@ source=('hugetracker::git+https://github.com/SuperDisk/hUGETracker'
         'git+https://github.com/SuperDisk/hUGEDriver'
         'git+https://github.com/olivluca/rackctls'
         'non-portable.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'c8d511ee66b27016140e4fe1acde7543634039039f9314add6b345ad48493ef4')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' '85b9d753bb88bd1999f8cdccf98130315b530a44f96e0bbb55c657f73ffa3ee6')
 
 
 ## CONFIGURATION

@@ -1,9 +1,8 @@
-diff -rU5 hugetracker.orig/codegen.pas hugetracker/codegen.pas
---- hugetracker.orig/codegen.pas	2021-10-11 11:50:37.297998405 +0200
-+++ hugetracker/codegen.pas	2021-10-11 11:56:54.786812153 +0200
-@@ -477,11 +477,11 @@
-     Define: string;
-   begin
+diff --git a/codegen.pas b/codegen.pas
+index a2849f5..7c31027 100644
+--- a/codegen.pas
++++ b/codegen.pas
+@@ -520,7 +520,7 @@ var
      Proc.Executable := 'rgbasm';
      Proc.Parameters.Clear;
      Proc.Parameters.Add('-i' + 'render');
@@ -12,11 +11,7 @@ diff -rU5 hugetracker.orig/codegen.pas hugetracker/codegen.pas
      Proc.Parameters.Add('-o' + OutFile);
      for Define in Defines do
        // HACK: This just removes all instances of double quotes to avoid a bug
-       // where arguments don't get passed in right with double quotes.
-       Proc.Parameters.Add('-D' + ReplaceStr(Define, '"', ''));
-@@ -556,37 +556,37 @@
- 
-   try
+@@ -614,24 +614,24 @@ begin
      // Assemble
      if Mode = emPreview then
      begin
@@ -45,39 +40,30 @@ diff -rU5 hugetracker.orig/codegen.pas hugetracker/codegen.pas
              ['SONG_DESCRIPTOR=song',
               'GBS_TITLE="'+PadRight(LeftStr(Song.Name, 32), 32)+'"',
               'GBS_AUTHOR="'+PadRight(LeftStr(Song.Artist, 32), 32)+'"',
-              'GBS_COPYRIGHT="'+PadRight(IntToStr(CurrentYear), 32)+'"']
-          ) <> 0 then Die;
-     end
+@@ -641,7 +641,7 @@ begin
      else
      begin
--      if Assemble(Filename + '_player.obj', 'hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
-+      if Assemble(Filename + '_player.obj', '/usr/share/hugetracker/hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
-         Die;
-     end;
+       if Assemble(Filename + '_player.obj',
+-                 'hUGEDriver/player.asm',
++                 '/usr/share/hugetracker/hUGEDriver/player.asm',
+                  ['SONG_DESCRIPTOR=song',
+                   IfThen(Song.TimerEnabled, 'USE_TIMER=1', ''),
+                   'TIMER_MODULO='+IntToStr(Song.TimerDivider)]) <> 0 then
+diff --git a/hUGETracker.lpr b/hUGETracker.lpr
+index d2f94d0..7cdca86 100644
+--- a/hUGETracker.lpr
++++ b/hUGETracker.lpr
+@@ -39,11 +39,20 @@ function PangoCairoFontMapGetDefault: Pointer; cdecl; External 'libpangocairo-1.
+ procedure PangoFcFontMapConfigChanged(FcFontMap: Pointer); cdecl; External 'libpangoft2-1.0.so' Name 'pango_fc_font_map_config_changed';
+ {$endif}
  
-     // Link
-     if Mode = emGBS then
-diff -rU5 hugetracker.orig/Global/vars.pas hugetracker/Global/vars.pas
---- hugetracker.orig/Global/vars.pas	2021-10-11 11:50:37.267998796 +0200
-+++ hugetracker/Global/vars.pas	2021-10-11 15:02:55.781037214 +0200
-@@ -304,14 +304,30 @@
-                                   | Writing a value into 2100-21FF area will
-                                   | select an appropriate ROM bank at
-                                   | 4000-7FFF. RAM switching is not provided.
- *)
- 
-+procedure ChWorkingDir();
- procedure load(Name: string);
- function ReadGameState(filename: string): byte;
- function SaveGameState(filename: string): boolean;
- 
- implementation
- 
-+uses sysutils;
++  var dir: UnicodeString;
+ begin
 +
-+procedure ChWorkingDir();
-+var dir: UnicodeString;
-+begin
+   ReturnNilIfGrowHeapFails := False;
+ 
+   // Change working directory to the tracker directory
+-  ChDir(ExtractFileDir(ParamStr(0)));
 +  dir := GetEnvironmentVariable('XDG_CACHE_HOME');
 +  if dir = '' then
 +    dir := GetEnvironmentVariable('HOME') + '/.cache';
@@ -86,33 +72,23 @@ diff -rU5 hugetracker.orig/Global/vars.pas hugetracker/Global/vars.pas
 +  if not DirectoryExists(dir) then
 +    MkDir(dir);
 +  ChDir(dir);
-+end;
-+
- procedure load(Name: string);
- var
-   cf: file;
-diff -rU5 hugetracker.orig/hUGETracker.lpr hugetracker/hUGETracker.lpr
---- hugetracker.orig/hUGETracker.lpr	2021-10-11 11:50:37.304664984 +0200
-+++ hugetracker/hUGETracker.lpr	2021-10-11 11:56:54.790145449 +0200
-@@ -41,11 +41,11 @@
  
- begin
-   ReturnNilIfGrowHeapFails := False;
+   InitializeTrackerSettings;
  
-   // Change working directory to the tracker directory
--  ChDir(ExtractFileDir(ParamStr(0)));
-+  ChWorkingDir();
+@@ -67,7 +76,7 @@ begin
  
-   {$if declared(useHeapTrace)}
-     // Set up -gh output for the Leakview package:
-     if FileExists('heap.trc') then
-       DeleteFile('heap.trc');
-diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
---- hugetracker.orig/tracker.pas	2021-10-11 11:50:37.344664463 +0200
-+++ hugetracker/tracker.pas	2021-10-11 11:56:54.790145449 +0200
-@@ -1060,12 +1060,12 @@
- end;
+   {$if defined(LINUX) or defined(FREEBSD) or defined(OPENBSD)}
+     // https://gitlab.gnome.org/GNOME/gtk/-/issues/3886
+-    if FcConfigAppFontAddFile(nil, PChar('PixeliteTTF.ttf')) = 0 then
++    if FcConfigAppFontAddFile(nil, PChar('/usr/share/hugetracker/PixeliteTTF.ttf')) = 0 then
+       Writeln(StdErr, '[ERROR] Couldn''t load Pixelite!!!');
  
+     PangoFcFontMapConfigChanged(PangoCairoFontMapGetDefault);
+diff --git a/tracker.pas b/tracker.pas
+index 6daeec3..6016aae 100644
+--- a/tracker.pas
++++ b/tracker.pas
+@@ -1131,8 +1131,8 @@ end;
  procedure TfrmTracker.HaltPlayback;
  begin
    LockPlayback;
@@ -123,11 +99,7 @@ diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
    UnlockPlayback;
  
    Playing := False;
- 
-   TrackerGrid.HighlightedRow := -1;
-@@ -1085,11 +1085,11 @@
-   InFDCallback := False; // HACK!!!!!!!!
- end;
+@@ -1156,7 +1156,7 @@ end;
  
  procedure TfrmTracker.OnSampleSongMenuItemClicked(Sender: TObject);
  begin
@@ -136,11 +108,7 @@ diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
  end;
  
  procedure TfrmTracker.CreateKeymap;
- var
-   StringGrid: TStringGrid;
-@@ -1361,14 +1361,14 @@
-   SampleSongs: TStringList;
-   S: String;
+@@ -1441,10 +1441,10 @@ var
    MenuItem: TMenuItem;
    I: Integer;
  begin
@@ -155,11 +123,7 @@ diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
      MessageDlg('Error',
        'hUGETracker can''t load a required file which comes with '+
        'the tracker. This likely means that you haven''t extracted the program ' +
-       'before running it. Please do so, and relaunch. Thanks!',
-       mtError, [mbOk], 0);
-@@ -1445,11 +1445,11 @@
-   DebugPlayNoteButton.Visible := False;
-   MenuItem41.Visible := False;
+@@ -1523,7 +1523,7 @@ begin
    {$endif}
  
    // Load sample songs list
@@ -168,5 +132,3 @@ diff -rU5 hugetracker.orig/tracker.pas hugetracker/tracker.pas
    if SampleSongs.Count > 0 then
      for S in SampleSongs do begin
        MenuItem := TMenuItem.Create(MainMenu1);
-       MenuItem.Caption := ExtractFileName(S);
-       MenuItem.OnClick := @OnSampleSongMenuItemClicked;
