@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=ssrt
-pkgver=2022.05.24.2
+pkgver=2022.06.14.1
 pkgrel=1
 pkgdesc='simplescreenreocrder - now even simpler'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash>=4.0.0' 'simplescreenrecorder' 'xorg-xrandr')
 makedepends=(gawk)
 optdepends=('slop: set recording geometry')
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('afe344724b2277c01db2ddaa07f28126441e0abff7c2da42c7f59a30d2ada4c8')
+sha256sums=('d1059060995824b9ef63117865b7474b1b808319f866d8644a5e97efb7a7a8d9')
 
 # sha256sums=('SKIP')
 # url='file:///home/bud/git/lab/ssrt'

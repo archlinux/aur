@@ -1,6 +1,6 @@
 pkgbase = ssrt
 	pkgdesc = simplescreenreocrder - now even simpler
-	pkgver = 2022.05.24.2
+	pkgver = 2022.06.14.1
 	pkgrel = 1
 	url = https://github.com/budlabs/ssrt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ssrt
 	depends = simplescreenrecorder
 	depends = xorg-xrandr
 	optdepends = slop: set recording geometry
-	source = https://github.com/budlabs/ssrt/archive/2022.05.24.2/ssrt-2022.05.24.2.tar.gz
-	sha256sums = afe344724b2277c01db2ddaa07f28126441e0abff7c2da42c7f59a30d2ada4c8
+	source = https://github.com/budlabs/ssrt/archive/2022.06.14.1/ssrt-2022.06.14.1.tar.gz
+	sha256sums = d1059060995824b9ef63117865b7474b1b808319f866d8644a5e97efb7a7a8d9
 
 pkgname = ssrt
