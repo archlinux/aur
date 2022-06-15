@@ -1,0 +1,12 @@
+pkgbase = pcapplusplus
+	pkgdesc = A multi-platform C++ library for capturing, parsing and crafting of network packets
+	pkgver = 22.05
+	pkgrel = 1
+	url = https://pcapplusplus.github.io/
+	arch = x86_64
+	license = Unlicense
+	depends = libpcap
+	source = pcapplusplus-22.05.tar.gz::https://github.com/seladb/PcapPlusPlus/archive/v22.05.tar.gz
+	sha256sums = 5f299c4503bf5d3c29f82b8d876a19be7dea29c2aadcb52f2f3b394846c21da9
+
+pkgname = pcapplusplus
