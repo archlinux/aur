@@ -1,6 +1,6 @@
 pkgbase = kdrive-bin
 	pkgdesc = Infomaniak Drive desktop synchronization client (pre-compiled version)
-	pkgver = 3.3.4.20220504
+	pkgver = 3.3.5.20220608
 	pkgrel = 1
 	url = https://drive.infomaniak.com
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = kdrive-bin
 	provides = kdrive
 	conflicts = kdrive
 	options = !strip
-	source = https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.3.4.20220504.AppImage
+	source = https://download.storage.infomaniak.com/drive/desktopclient/kDrive-3.3.5.20220608.AppImage
 	source = kDrive.desktop
 	source = kDrive.png
-	sha256sums = 3ea81def8ac0bbc85a62d160c7dd05e19329172892ceb398b183f2679c52187d
+	sha256sums = 8a7ebebd82935491347b926176cfd20a1d959cfaa6767aa73208313f953846e3
 	sha256sums = c4616b0ddbb137aef453f7031f5285b727addfa26f035a9ecbe62e1c6f195c5d
 	sha256sums = b142e3a06de916f47e8666bddc74dfe37249616fd578ab9ae63b17a945d46813
 
