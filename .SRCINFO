@@ -1,6 +1,6 @@
 pkgbase = manubot
 	pkgdesc = a set of tools for the next generation of scholarly publishing.
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://manubot.org/
 	arch = any
@@ -19,7 +19,8 @@ pkgbase = manubot
 	depends = python-requests
 	depends = python-requests-cache
 	depends = python-toml
-	source = manubot::git+https://github.com/manubot/manubot#tag=v0.5.1
+	depends = pandoc
+	source = manubot::git+https://github.com/manubot/manubot#tag=v0.5.3
 	validpgpkeys = 4AEE18F83AFDEB23
 	md5sums = SKIP
 

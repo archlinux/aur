@@ -1,6 +1,6 @@
 # Maintainer: Joshua Haase <hahj87@gmail.com>
 pkgname=manubot
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="a set of tools for the next generation of scholarly publishing."
 arch=('any')
@@ -19,7 +19,7 @@ _pydeps=(
   'requests-cache'
   'toml'
 )
-depends=("${_pydeps[@]/#/python-}")
+depends=("${_pydeps[@]/#/python-}" pandoc)
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("${pkgname}::git+https://github.com/manubot/manubot#tag=v${pkgver}")
