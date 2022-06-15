@@ -1,6 +1,6 @@
 pkgbase = music-lounge
 	pkgdesc = Yet another music player
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/aercloud-systems/music-lounge
 	arch = i686
@@ -11,9 +11,20 @@ pkgbase = music-lounge
 	depends = ncurses
 	depends = gcc-libs
 	depends = glibc
-	depends = sqlite
-	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.1.2/music-lounge-0.1.2.zip
+	depends = glib2
+	depends = gst-plugins-bad-libs
+	depends = gst-plugins-base-libs
+	depends = gstreamer
+	depends = libffi
+	depends = orc
+	depends = libunwind
+	depends = libelf
+	depends = pcre
+	depends = xz
+	depends = zlib
+	depends = zstd
+	depends = bzip2
+	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.2.0/music-lounge-0.2.0.zip
 	md5sums = SKIP
 
 pkgname = music-lounge
-
