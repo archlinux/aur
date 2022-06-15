@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=6
 pkgrel=1
-pkgver=8.0.0.r30815.3ee2fba50b72
+pkgver=8.0.0.r31096.b6aeea949531
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -62,7 +62,7 @@ package() {
   make DESTDIR="$pkgdir" install-pdf
   
   # add octave library path to ld.so.conf.d
-  _appver=$(awk -F", " '/bugs/ {print $2}' ../configure.ac|tr -d []|tr - _)
+  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
   install -d "$pkgdir"/etc/ld.so.conf.d
   echo "/usr/lib/${_hgrepo}/${_appver}" > "$pkgdir"/etc/ld.so.conf.d/${_hgrepo}.conf
 }
