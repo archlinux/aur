@@ -1,0 +1,44 @@
+pkgbase = wxgtk-3.1.5
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://wxwidgets.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = gst-plugins-base
+	makedepends = glu
+	makedepends = webkit2gtk
+	makedepends = libnotify
+	makedepends = gtk2
+	options = !emptydirs
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2
+	source = wxgtk-3.15.conf
+	sha1sums = 725455d6324baa808259b56a42199237327e0638
+	sha1sums = 14c776df227acabcb0c40eeca131041bace05b67
+	sha256sums = d7b3666de33aa5c10ea41bb9405c40326e1aeb74ee725bb88f90f1d50270a224
+	sha256sums = 23305c5ee0cf209401b872d3e28d2b1ea3a3a6447bda732047cae01a32dc4175
+
+pkgname = wxgtk2-3.1.5
+	pkgdesc = GTK+2 implementation of wxWidgets API for GUI, v3.1.5 installed in /opt/wxgtk-3.1.5/
+	depends = gtk2
+	depends = libgl
+	depends = gst-plugins-base-libs
+	depends = libsm
+	depends = libxxf86vm
+	depends = wxgtk-common-3.1.5
+	depends = libnotify
+
+pkgname = wxgtk3-3.1.5
+	pkgdesc = GTK+3 implementation of wxWidgets API for GUI, v3.1.5 installed in /opt/wxgtk-3.1.5/
+	depends = gtk3
+	depends = gst-plugins-base-libs
+	depends = libsm
+	depends = libxxf86vm
+	depends = wxgtk-common-3.1.5
+	depends = libnotify
+	optdepends = webkit2gtk: for webview support
+
+pkgname = wxgtk-common-3.1.5
+	pkgdesc = Common libraries and headers for wxgtk2 and wxgtk3, v3.1.5 installed in /opt/wxgtk-3.1.5/
+	depends = zlib
+	depends = gcc-libs
+	depends = expat
