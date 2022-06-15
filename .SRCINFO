@@ -1,6 +1,6 @@
 pkgbase = krita-plus-bin
 	pkgdesc = The pre-built package of Krita Plus. If you do not trust me, install krita-plus instead.
-	pkgver = 5.1.0
+	pkgver = 5.1.0.0ae8b00
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
