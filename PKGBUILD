@@ -2,7 +2,7 @@
 
 pkgname=securefs
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
 url=https://github.com/netheril96/securefs
@@ -23,7 +23,7 @@ build() {
     CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibdir=/usr/lib ..
 
     # fix regression in 0.13.0
-    sed -i 's/"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"//' external/cryptopp/CMakeFiles/{cryptest.dir/*.make,cryptopp-static.dir/*.make,cryptopp-object.dir/*.make}
+    sed -i 's/"-march=x86-64 -mtune=generic -O2 -pipe -fno-plt.*"//' external/cryptopp/CMakeFiles/{cryptest.dir/*.make,cryptopp-static.dir/*.make,cryptopp-object.dir/*.make}
 
     make
     # ctest

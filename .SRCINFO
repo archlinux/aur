@@ -1,7 +1,7 @@
 pkgbase = securefs
 	pkgdesc = A better transparent encryption filesystem
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netheril96/securefs
 	arch = i686
 	arch = x86_64
