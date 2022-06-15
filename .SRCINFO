@@ -1,7 +1,7 @@
 pkgbase = turbovnc
 	pkgdesc = An optimized version of TightVNC
-	pkgver = 2.2.7
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://www.turbovnc.org/
 	arch = i686
 	arch = x86_64
@@ -15,14 +15,15 @@ pkgbase = turbovnc
 	depends = libjpeg-turbo
 	depends = java-environment>11
 	depends = openssl-1.0
+	depends = python
 	conflicts = turbovnc-bin
 	conflicts = tigervnc
 	conflicts = tigervnc-svn
 	conflicts = tightvnc
 	replaces = turbovnc-bin
-	source = turbovnc-2.2.7.tar.gz::https://sourceforge.net/projects/turbovnc/files/2.2.7/turbovnc-2.2.7.tar.gz/download
+	source = turbovnc-3.0.tar.gz::https://sourceforge.net/projects/turbovnc/files/3.0/turbovnc-3.0.tar.gz/download
 	source = vncserver.service
-	sha256sums = 8a9a86c5028b70f8d6bc8a5317bba1e3010a72242b1b5b18d958272b5249b8cd
+	sha256sums = f2f7eca00bc46b4bccee975d5589e342d604c4899a9d2d772bd28ee3cd4a3638
 	sha256sums = ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b
 
 pkgname = turbovnc
