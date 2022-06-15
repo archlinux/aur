@@ -1,7 +1,9 @@
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc at cryptolab dot net>
+
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
-pkgver=1.1.13.1
+pkgver=2.0.0.0
+_pkgver=2.0.0
 pkgrel=1
 pkgdesc="Open-source, non-custodial, privacy-focused Bitcoin wallet for desktop"
 arch=('x86_64')
@@ -12,11 +14,11 @@ depends=('curl' 'fontconfig' 'hicolor-icon-theme')
 provides=('wasabi-wallet')
 conflicts=('wasabi-wallet')
 source=(
-    "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${pkgver}/Wasabi-${pkgver}.deb"
-    "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${pkgver}/Wasabi-${pkgver}.deb.asc"
+    "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${pkgver}/Wasabi-${_pkgver}.deb"
+    "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${pkgver}/Wasabi-${_pkgver}.deb.asc"
     "https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v${pkgver}/LICENSE.md"
 )
-sha256sums=('d0fbc32cba637b5bb9f4f4ec9f97a521913fe21c3c172ad35cd1f410fe3f93ec'
+sha256sums=('fe9aac95eca9c9bb77f09c30000714a8fe418793e94e102202708f0db91ce066'
             'SKIP'
             '004c3b81aba48d2db36776e5aaec51ffd852cc806c18d327e76fdeddeee2683c')
 # Run curl https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/master/PGP.txt | gpg --import
