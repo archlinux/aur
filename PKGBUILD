@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=greetd-wlgreet-git
-pkgver=0.2+1.g6b4a719345
+pkgver=0.4
 pkgrel=1
 pkgdesc="Wayland greeter for greetd"
 arch=(x86_64)
