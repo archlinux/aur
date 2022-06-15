@@ -1,0 +1,24 @@
+pkgbase = trilium
+	pkgdesc = A hierarchical note taking application with focus on building large personal knowledge bases.
+	pkgver = 0.52.3
+	pkgrel = 1
+	url = https://github.com/zadam/trilium
+	arch = x86_64
+	license = AGPL3
+	makedepends = npm
+	makedepends = make
+	makedepends = gcc
+	depends = electron16
+	depends = nodejs
+	source = trilium-0.52.3.tar.gz::https://github.com/zadam/trilium/archive/refs/tags/v0.52.3.tar.gz
+	source = copy-trilium.sh.patch
+	source = config-sample.ini.patch
+	source = trilium.sh
+	source = trilium.desktop
+	sha512sums = b19559bc8ae8c3b97c0fac18be66495996537d15bb8e058ab6d8688fe05b996efb40246fed1653a49c5eb296b5f7ee6f46e86ca306226088fb2e5718de18cb7f
+	sha512sums = 97dc8034f01cecceb4a85e61a0d561ddf01af7cf24e0dad24faefaee8c1f265c5e8441fd38ff473bd869606b821476d4efc8fc5ae1b99149875d826db4366fa7
+	sha512sums = b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd
+	sha512sums = f02253c2d7b21eb1e1f72c9d6b347180e03fe9f44a4843e16d532e9b9ff6cab3e754a559838dbcd0055d551bc2847414d655ef135467bb7b9fc67d05a0386da1
+	sha512sums = 2f26a7decafc57626835a8ec3842c1fc57572a66753e8cdbedafe59f59dd492edaa6971edd193512e20d7bbbec6618e602cf7e05c01e4911f8a2e038267c5703
+
+pkgname = trilium

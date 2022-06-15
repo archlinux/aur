@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Trilium Notes
+GenericName=Note-taking
+Comment=A hierarchical note taking application with focus on building large personal knowledge bases.
+Exec=trilium
+Terminal=false
+Type=Application
+Icon=trilium
+Categories=Office;Utility
+StartupWMClass=Trilium
+Actions=safe-mode
+
+[Desktop Action safe-mode]
+Name=Run in safe mode
+Exec=TRILIUM_SAFE_MODE=1 trilium

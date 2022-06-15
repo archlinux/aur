@@ -1,0 +1,16 @@
+8c8
+< n exec 16.15.0 npm run webpack
+---
+> npm run webpack
+13c13
+< mkdir $DIR
+---
+> mkdir -p $DIR
+33c33
+< (cd $DIR && n exec 16.15.0 npm install --only=prod)
+---
+> (cd $DIR && npm install --only=prod --build-from-source)
+37c37
+< rm -r $DIR/node_modules/better-sqlite3/Release
+---
+> rm -r $DIR/node_modules/better-sqlite3/build/Release
