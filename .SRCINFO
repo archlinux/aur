@@ -1,6 +1,6 @@
 pkgbase = krita-next-bin
-	pkgdesc = The pre-built package of Krita Next. If you do not true me, install krita-next instead.
-	pkgver = 5.2.0.g77cb84b
+	pkgdesc = The pre-built package of Krita Next. If you do not trust me, install krita-next-git instead.
+	pkgver = v5.2.0.prealpha.r23.gd51784a501
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -45,7 +45,8 @@ pkgbase = krita-next-bin
 	optdepends = krita-plugin-gmic: GMic plugin
 	provides = krita
 	conflicts = krita
-	source = https://github.com/zlfn/krita-aur/releases/download/v5.2.0-prealpha/krita-next-bin-5.2.0-1-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	noextract = krita-next-bin-v5.2.0.prealpha.r23.gd51784a501-1-x86_64.pkg.tar.zst
+	source = https://github.com/zlfn/krita-aur/releases/download/d51784a501/krita-next-bin-v5.2.0.prealpha.r23.gd51784a501-1-x86_64.pkg.tar.zst
+	sha512sums = SKIP
 
 pkgname = krita-next-bin
