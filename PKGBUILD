@@ -3,7 +3,7 @@
 
 pkgname='python-nestedtext'
 _pkgname=${pkgname#python-}
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
@@ -41,13 +41,13 @@ package() {
 }
 
 sha256sums=(
-  'f2591fdddc6ddc83e861812e1727417f06e2e13468f35cd510f5de994e1da8ce'
+  '18b6e23cb732ad920e162b4e0a4c53b422e31b99010cb3f8c015d0e0e1e4d956'
 )
 sha512sums=(
-  '2b478793e83b66a420261aad1b1e7e5c18c36d1957882cac1de4951c007c9760766f1df6605f6a30f935a42766f7dac7d7a41db9516ed8d7ee4187fab842f503'
+  'be09071fdbf7124d269284d05beceac4f6d1e08c14941f777c1ac7f33f2a513fb01275d20f6dfb3a3f85df22a6a2ac14443033526b56cc9124de4edb2e9d10fc'
 )
 b2sums=(
-  '6fa88f8dede653abb42db420e563ba6efe019aa5bdffc2c777999e6215f337410686522c8b7185a955541532de0a10da0a4647aebceb816ccae1435b5bcc5085'
+  '4a8e4596130f0e7e6dbd32117ae41b8c0489c75ef48c17df91b389584b4d5327a08a9a2b576aefb79f3b3578057acb3b13d5a3f7986dddd22abff77989b0f2f4'
 )
 
 # eof
