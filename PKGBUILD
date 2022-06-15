@@ -1,6 +1,6 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 pkgname=prettierd
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="prettier, as a daemon, for ludicrous formatting speed."
 url="https://github.com/fsouza/prettierd"
@@ -10,7 +10,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/@fsouza/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('faf4903cad6147c8992da15b74d6e388b8806fe1df6b4264d192a23a8f54f492')
+sha256sums=('67bbffeb7a916a64ac7a93a69fc889c540f4924c458641429371114c0c407022')
 
 prepare() {
   tar xf "${pkgname}-${pkgver}.tgz" package/LICENSE
