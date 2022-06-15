@@ -1,15 +1,17 @@
 # Maintainer: Maxim Polishchuck <mpolishchuck[at]gmail[dot]com>
 
-pkgname=eusw
+pkgbase=eusw
+pkgname=(
+    "${pkgbase}"
+    "${pkgbase}-npapi-plugin"
+    "${pkgbase}-nmh-manifest"
+    "${pkgbase}-pcsc-driver"
+)
 pkgver=1.3.1.55
-pkgrel=1
+pkgrel=2
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="https://iit.com.ua"
 arch=('i686' 'x86_64')
-backup=(
-    'opt/iit/eu/sw/osplm.ini'
-    'etc/udev/rules.d/60-iit-e-keys.rules'
-)
 
 if [[ $CARCH = i686 ]]; then
     _src_md5sum='e095a4a91dffe370e933d4482dc2f711'
@@ -33,12 +35,36 @@ md5sums=(
     '9d9c48e1078d3c58a3d82b216ff98cbc'
 )
 
-package() {
-    msg2 "Extracting the data.tar.xz..."
+package_eusw() {
+    pkgdesc="IIT End User CA-1. Sign (web). Base program."
+    depends=('glibc' 'gcc-libs')
+    backup=(
+        'opt/iit/eu/sw/osplm.ini'
+        'etc/udev/rules.d/60-iit-e-keys.rules'
+    )
+
+    msg2 "Extracting the ${_src_filename}..."
     bsdtar -xf "${_src_filename}" -C "$pkgdir/"
+
+    # Fixing permissions of udev rules file
+    chmod a-x ${pkgdir}/etc/udev/rules.d/60-iit-e-keys.rules
+
+    # Removing install/uninstall scripts
+    rm ${pkgdir}/opt/iit/eu/sw/install.sh
+    rm ${pkgdir}/opt/iit/eu/sw/uninstall.sh
+}
+
+package_eusw-npapi-plugin() {
+    pkgdesc="IIT End User CA-1. Sign (web). NPAPI plugin."
+    depends=("${pkgbase}")
 
     mkdir -p ${pkgdir}/usr/lib/mozilla/plugins
     ln -s /opt/iit/eu/sw/npeuscp.so ${pkgdir}/usr/lib/mozilla/plugins/npeuscp.so
+}
+
+package_eusw-nmh-manifest() {
+    pkgdesc="IIT End User CA-1. Sign (web). Native Messaging Host manifest."
+    depends=("${pkgbase}")
 
     # Installing native messaging host manifest (Chrome)
     install -Dm644 ${srcdir}/chrome.ua.com.iit.eusign.nmh.json ${pkgdir}/etc/opt/chrome/native-messaging-hosts/ua.com.iit.eusign.nmh.json
@@ -46,10 +72,12 @@ package() {
     install -Dm644 ${srcdir}/chrome.ua.com.iit.eusign.nmh.json ${pkgdir}/etc/chromium/native-messaging-hosts/ua.com.iit.eusign.nmh.json
     # Installing native messaging host manifest (Mozilla)
     install -Dm644 ${srcdir}/mozilla.ua.com.iit.eusign.nmh.json ${pkgdir}/usr/lib/mozilla/native-messaging-hosts/ua.com.iit.eusign.nmh.json
+}
 
-    # Fixing permissions of udev rules file
-    chmod a-x ${pkgdir}/etc/udev/rules.d/60-iit-e-keys.rules
+package_eusw-pcsc-driver() {
+    pkgdesc="IIT End User CA-1. Sign (web). PC/SC driver(s)."
+    depends=("${pkgbase}" 'pcsclite')
 
-    rm ${pkgdir}/opt/iit/eu/sw/install.sh
-    rm ${pkgdir}/opt/iit/eu/sw/uninstall.sh
+    mkdir -p ${pkgdir}/usr/lib
+    ln -s /opt/iit/eu/sw/libav337p11d.so ${pkgdir}/usr/lib/libav337p11d.so
 }
