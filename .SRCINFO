@@ -1,7 +1,7 @@
 pkgbase = floatybox
 	pkgdesc = Float your way through perilous terrain in this endless side-scoller game
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://octobanana.com/software/floatybox
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,10 @@ pkgbase = floatybox
 	makedepends = cmake
 	depends = boost-libs
 	source = floatybox-0.1.0.tar.gz::https://github.com/octobanana/floatybox/archive/0.1.0.tar.gz
+	source = patch1.diff
+	source = patch2.diff
 	sha256sums = 1949018c82ab3a5ee66c474c850614133f52c134ed04aa133d4841d46ccc4718
+	sha256sums = 19ae5f96af26537f87db7fb21f62a98979a2a1356ae9434f599ade0ae7aaec14
+	sha256sums = cb8034c84ddbdbe80ff49395fda10d540227ae7d5c31469393ab63d11828fdeb
 
 pkgname = floatybox
-

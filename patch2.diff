@@ -1,0 +1,10 @@
+--- window.hh_org	2022-06-15 11:26:06.696263156 +0200
++++ window.hh	2022-06-15 11:26:18.923296588 +0200
+@@ -72,6 +72,7 @@
+ #include <sstream>
+ #include <algorithm>
+ #include <functional>
++#include <optional>
+ #include <unordered_map>
+ 
+ namespace aec = OB::Term::ANSI_Escape_Codes;

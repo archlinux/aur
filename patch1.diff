@@ -1,0 +1,10 @@
+--- window.cc_org	2022-06-15 11:18:57.176710590 +0200
++++ window.cc	2022-06-15 11:20:06.598793545 +0200
+@@ -72,6 +72,7 @@
+ #include <sstream>
+ #include <algorithm>
+ #include <functional>
++#include <optional>
+ #include <unordered_map>
+ 
+ Buffer::Buffer(Size const size, Cell const& cell) {
