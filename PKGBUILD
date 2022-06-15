@@ -3,12 +3,14 @@
 
 pkgname=bottles
 pkgver=2022.6.14
-pkgrel=6
+pkgrel=7
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=(
+  'gtksourceview4'
+  'libhandy'
   'imagemagick'
   'pefile'
   'lib32-gnutls'
@@ -38,8 +40,8 @@ optdepends=(
   'vulkan-icd-loader'
   'gamemode')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}-brescia-1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-brescia-1.tar.gz")
-sha256sums=('8365647fb20fbf031af1742eb248360ee90ff1594f8ebe78406dc7681ae02944')
+source=("${pkgname}-2022.5.28-trento-3.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2022.5.28-trento-3.tar.gz")
+sha256sums=('07d8a054abfe8393ae8115761ce4a709735ebb4455a2a923785c9d2ae042949f')
 
 build() {
   if [[ -d Bottles ]]; then 
