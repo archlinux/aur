@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 7.0.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
@@ -111,6 +111,8 @@ pkgbase = proton
 	makedepends = lib32-libxkbcommon
 	makedepends = faudio
 	makedepends = lib32-faudio
+	makedepends = libvpx
+	makedepends = lib32-libvpx
 	makedepends = sdl2>=2.0.16
 	makedepends = lib32-sdl2>=2.0.16
 	makedepends = desktop-file-utils
@@ -150,6 +152,8 @@ pkgbase = proton
 	depends = lib32-libxkbcommon
 	depends = faudio
 	depends = lib32-faudio
+	depends = libvpx
+	depends = lib32-libvpx
 	depends = sdl2>=2.0.16
 	depends = lib32-sdl2>=2.0.16
 	depends = desktop-file-utils
