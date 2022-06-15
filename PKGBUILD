@@ -1,9 +1,6 @@
-# Maintainer: metiis <aur at metiis dot com>
-# Maintainer: Julio Gutierrez <bubuntux at gmail dot com>
-# Maintainer: Martoko <mbastholm at gmail dot com>
 # Maintainer: Anders Blenstrup-Pedersen <silwerspawn+aur.archlinux.org at gmail dot com>
 
-pkgname=nordvpn-bin
+pkgname=nordvpn-cli-bin
 pkgver=3.14.1
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"

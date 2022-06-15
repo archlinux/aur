@@ -1,4 +1,4 @@
-pkgbase = nordvpn-bin
+pkgbase = nordvpn-cli-bin
 	pkgdesc = NordVPN CLI tool for Linux
 	pkgver = 3.14.1
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = nordvpn-bin
 	source_aarch64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.14.1_arm64.deb
 	sha256sums_aarch64 = 7edce12b1ccf6f9a4aaa8f5028c63f36658d96db6abb6b8fbf9e82087e2e2160
 
-pkgname = nordvpn-bin
+pkgname = nordvpn-cli-bin
