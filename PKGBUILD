@@ -3,8 +3,8 @@
 
 pkgname='xdg-desktop-portal-git'
 _pkgname="${pkgname%-git}"
-pkgver=1.14.1.r15.gdfd9539
-pkgrel=2
+pkgver=1.14.1.r33.gfe9c5a1
+pkgrel=1
 epoch=1
 pkgdesc='Desktop integration portals for sandboxed apps'
 url="https://github.com/flatpak/${_pkgname}"
@@ -12,20 +12,25 @@ arch=('x86_64')
 license=('LGPL2.1')
 depends=(
   'fuse3'
+  'gcc-libs'
   'gdk-pixbuf2'
-  'geoclue'
   'glib2'
   'json-glib'
   'pipewire'
-  'systemd'
+  'systemd-libs'
 )
 makedepends=(
   'docbook-xsl'
+  'geoclue'
   'git'
   'flatpak'
   'libportal'
   'python'
+  'systemd'
   'xmlto'
+)
+optdepends=(
+  'geoclue: for location portal'
 )
 # checkdepends=(
 #   'epiphany'
@@ -53,6 +58,8 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   NOCONFIGURE=1 ./autogen.sh
+
+  export CFLAGS+=" ${LDFLAGS}"    # otherwise the build ignores LDFLAGS
   ./configure --prefix='/usr' --libexecdir='/usr/lib'
 }
 
