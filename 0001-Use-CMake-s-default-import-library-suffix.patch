@@ -1,7 +1,7 @@
-From 9636662a15e67ba2a1e9f1374537d3b390e9d04d Mon Sep 17 00:00:00 2001
+From c5188956b46429172946dcfebbe4878048579c6f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
-Subject: [PATCH 1/8] Use CMake's default import library suffix
+Subject: [PATCH 01/12] Use CMake's default import library suffix
 
 Change-Id: I3dbedaec74683e5bfd008f7f2fd1e046dfb921b2
 ---
@@ -47,10 +47,10 @@ index 61080da7ef..173c6743ba 100644
          ${CMAKE_STATIC_LIBRARY_SUFFIX})
      if(MSVC)
 diff --git a/cmake/QtPrlHelpers.cmake b/cmake/QtPrlHelpers.cmake
-index 18b230deb1..1bb4908898 100644
+index c467e9a634..dda5c41266 100644
 --- a/cmake/QtPrlHelpers.cmake
 +++ b/cmake/QtPrlHelpers.cmake
-@@ -120,11 +120,17 @@ ${prl_step1_content_libs}
+@@ -121,11 +121,17 @@ ${prl_step1_content_libs}
           CONTENT
           "FINAL_PRL_FILE_PATH = ${final_prl_file_path}")
  
@@ -98,10 +98,10 @@ index 24ed125f12..73ebe453d3 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index b0a5fad15f..a81297e03f 100644
+index d9219ee529..b47190f5e6 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
-@@ -495,7 +495,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
+@@ -497,7 +497,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
  
          # This should cover both MINGW with GCC and CLANG.
          if(NOT MSVC)
@@ -110,5 +110,5 @@ index b0a5fad15f..a81297e03f 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.35.1
+2.36.1
 
