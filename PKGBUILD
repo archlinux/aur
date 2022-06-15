@@ -4,7 +4,7 @@
 #
 pkgname="mcmojave-circle-icon-theme"
 _pkgname="McMojave-circle"
-pkgver="2020.10.11"
+pkgver="2022.02.18"
 pkgrel="1"
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('mojave-gtk-theme: Recommended GTK theme.')
 options=('!strip')
 
 source=("${_pkgname}-${pkgver//./-}.tar.gz::${url}/archive/${pkgver//./-}.tar.gz")
-sha256sums=('4a7e2b18de2b860873fa66533c17f487ab451e650a668dad6919b5cc6f8cdf72')
+sha256sums=('a6c5aa75ddf6a91f18aaad646a74a3f1b56bbccda6331b6f048f0258a97c49cf')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver//./-}"
