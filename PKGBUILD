@@ -4,12 +4,12 @@
 
 pkgname=keepass2-plugin-tray-icon
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Functional tray icon for KeePass2"
 license=('GPL2')
 depends=('keepass' 'dbus-sharp-glib' 'gtk-sharp-2')
-makedepends=('git')
+makedepends=('git' 'mono-msbuild')
 url="https://github.com/dlech/Keebuntu"
 source=("repo::git+https://github.com/dlech/Keebuntu.git#tag=debian/${pkgver}")
 md5sums=('SKIP')
@@ -19,8 +19,8 @@ build() {
   cd "$srcdir/repo" || exit
   sed -i 's|/usr/lib/keepass2|/usr/share/keepass|' KeePassExe.proj
   sed -i 's|libMagickWand-6.Q16.so|libMagickWand-6.Q16HDRI.so|' ImageMagick/ImageMagick.dll.config
-  xbuild /property:Configuration=Release DBus/DBus.csproj
-  xbuild /property:Configuration=Release GtkStatusIcon/GtkStatusIconPlugin.csproj
+  msbuild /property:Configuration=Release DBus/DBus.csproj
+  msbuild /property:Configuration=Release GtkStatusIcon/GtkStatusIconPlugin.csproj
 }
 
 package() {

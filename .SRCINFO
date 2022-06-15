@@ -1,12 +1,13 @@
 pkgbase = keepass2-plugin-tray-icon
 	pkgdesc = Functional tray icon for KeePass2
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dlech/Keebuntu
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = mono-msbuild
 	depends = keepass
 	depends = dbus-sharp-glib
 	depends = gtk-sharp-2
