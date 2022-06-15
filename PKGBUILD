@@ -15,15 +15,13 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#branch=ng'
   'git+https://github.com/MCMrARM/axml-parser.git'
   'git+https://github.com/minecraft-linux/file-util.git'
-  'google-play-api::git+https://github.com/MCMrARM/Google-Play-API.git'
+  'google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-extract.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
-  'git+https://github.com/minecraft-linux/mcpelauncher-proprietary.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
 md5sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -49,10 +47,6 @@ prepare() {
   git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
   git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
   git submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
-  cd mcpelauncher-ui-qt
-  git submodule init
-  git config submodule.Resources/proprietary.url $srcdir/mcpelauncher-proprietary
-  git submodule update Resources/proprietary
 }
 build() {
   cd mcpelauncher-ui-manifest
