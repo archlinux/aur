@@ -3,19 +3,26 @@
 pkgname=serial-studio
 _pkgname=Serial-Studio
 pkgver=1.1.7
-pkgrel=0
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://github.com/Serial-Studio/Serial-Studio"
 license=('MIT')
 groups=()
 depends=(
+    "qt6-5compat"
+    "qt5-connectivity"
+    "qt5-base"
     "qt5-charts"
     "qt5-serialport"
     "qt5-quickcontrols2"
+    "qt5-svg"
+    "libxkbcommon-x11"
+    "libxcb"
+    "zstd"
     )
 makedepends=("git")
-provides=("${pkgname}-git")
+provides=("${_pkgname}")
 conflicts=("${pkgname}-git")
 replaces=()
 backup=()
@@ -34,7 +41,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    qmake ./${_pkgname}.pro CONFIG+=[release]
+    qmake-qt5 ./${_pkgname}.pro CONFIG+=[release]
     make -j$(nproc)
 }
 
