@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
-pkgver=1.78.0
+pkgver=1.79.0
 _boostver=${pkgver//./_}
-pkgrel=3
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "context-cross.patch" "stacktrace-cross.patch")
-sha256sums=('8681f175d4bdb26c52222665793eef08490d7758529330f98d3b29dd0735bccc'
+sha256sums=('475d589d51a7f8b3ba2ba4eda022b170e562ca3b760ee922c146b6c65856ef39'
             '844e163845ea6e7ae1f8d26cb52f72c6e4645cdade1be081bc1d2cff5db0a918'
             '333791abd17ea192e0aa90185bfb8938e8e3dc102b284db316b061b2067e2fc2')
 
