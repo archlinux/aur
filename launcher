@@ -1,0 +1,35 @@
+#!/bin/sh
+
+lang=""
+
+_lang() {
+  local uage="${LANG%%.*}"
+  lang="${uage%%_*}"
+}
+
+_launch() {
+  lang="${1}"
+  [ -z "${lang}" ] && _lang
+  local _game="/usr/games/%app_id%"
+  local _path=$(cat "${_game}/${lang}" 2>/dev/null) 
+  if [ ! -f "${_game}/${lang}" ]; then
+    echo "No support for language '${lang}'"
+    echo "Install %pkgbase%-${lang}"
+    echo "Running default language"
+    _path=$(cat "${_game}/any")
+  fi
+
+  duckstation-nogui -fullscreen "${_path}"
+}
+
+_main() {
+  if [[ "${1}" == "--help" ]]; then
+    echo "HELP: %pkgbase% <language>"
+  else
+    game_lang="${1}"
+    _launch "${game_lang}"
+  fi
+}
+
+
+_main "$@"

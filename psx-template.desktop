@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=%title%
+Comment=%pkgdesc%
+Type=Application
+Exec=%pkgbase%
+Icon=%icon%
+Terminal=false
+Categories=Games;
+Keywords=PSX
+Actions=preferences;
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=duckstation-qt
+
+X-Desktop-File-Install-Version=0.26

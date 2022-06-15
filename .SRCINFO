@@ -1,0 +1,139 @@
+pkgbase = biohazard-2
+	pkgdesc = 1998 survival horror video game developed and published by Capcom for the PlayStation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Resident_Evil_2
+	arch = any
+	license = custom
+	depends = binmerge
+	depends = duckstation
+	source = SLES-00972.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Europe%29%20%28Disc%201%29.zip
+	source = SLPS-01222.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Biohazard%202%20%28Japan%29%20%28Disc%201%29.7z
+	source = SLES-00975.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Italy%29%20%28Disc%201%29.zip
+	source = SLES-00973.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28France%29%20%28Disc%201%29.zip
+	source = SLES-00974.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Germany%29%20%28Disc%201%29.zip
+	source = SLES-00976.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Spain%29%20%28Disc%201%29.zip
+	source = SLUS-00421.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28USA%29%20%28Disc%201%29.zip
+	source = SLES-10972.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Europe%29%20%28Disc%202%29.zip
+	source = SLPS-01223.7z::https://archive.org/download/sonyplaystationasiantscj20151103/Biohazard%202%20%28Japan%29%20%28Disc%202%29.7z
+	source = SLES-10975.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Italy%29%20%28Disc%202%29.zip
+	source = SLES-10973.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28France%29%20%28Disc%201%29.zip
+	source = SLES-10974.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Germany%29%20%28Disc%202%29.zip
+	source = SLES-00976.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28Spain%29%20%28Disc%202%29.zip
+	source = SLUS-00592.zip::https://archive.org/download/redump.psx.p3/Resident%20Evil%202%20%28USA%29%20%28Disc%202%29.zip
+	source = psx-template.desktop
+	source = launcher
+	source = com.capcom.ResidentEvil2Leon.png::https://psxdatacenter.com/images/covers/P/R/SLES-00972.jpg
+	source = com.capcom.ResidentEvil2Claire.png::https://psxdatacenter.com/images/covers/P/R/SLES-00972.jpg
+	source = com.capcom.Biohazard2Leon.png::https://static.wikia.nocookie.net/residentevil/images/d/db/Bio2_PS.jpg
+	source = com.capcom.Biohazard2Claire.png::https://static.wikia.nocookie.net/residentevil/images/d/db/Bio2_PS.jpg
+	sha256sums = daf3be1faa68b77fc032c0b49d0c4ea4e1f0cf90b80a838e36830fe4b7233a85
+	sha256sums = 0c2e77bb28fcb116c06ca0194380131c3c4b2463204364e8eba9f0df9b919b02
+	sha256sums = 438667bb49f4ca9eb8a4db4e1661b8d0052c8b742c9bd0e38a09327899c41d0b
+	sha256sums = 2630f5529ab20a344b5475208b90ae4ebddeea56bf6f5c99c70ed1bca6f93b42
+	sha256sums = b3eea852a6a67867bb5c6f804a1c99e2ed62c4e29410811cb804f81299df8867
+	sha256sums = c5fdbf615af04046439bc19620b4785c0d78bdd0e12fab863ea185ee5d2d7a63
+	sha256sums = 9c5811af028ad115010175055b919940e3d8b8a92df18dc2239ceb1eb4210092
+	sha256sums = c636dbdbbf245256734415b0127855928ed81de4d513b9056c939f131618e577
+	sha256sums = 4f57406bc8e0fd292922cdc9fd9c09d0e7233a57273fa14b403501e0777ba175
+	sha256sums = d5d9eea997e1ca67ecf1db21e2eb3bfff09c1575cfb274ef18b6643d67c213b9
+	sha256sums = 2630f5529ab20a344b5475208b90ae4ebddeea56bf6f5c99c70ed1bca6f93b42
+	sha256sums = 39320d93f27d28bf4e0cfa48ff0356660970267301877de9a6f8c42f7f13904d
+	sha256sums = c5fdbf615af04046439bc19620b4785c0d78bdd0e12fab863ea185ee5d2d7a63
+	sha256sums = f42b26d5dcf26e506ab7b74e0c4702b9acbc481b90b866c6492cabfaf1f66cf6
+	sha256sums = 9c3d7e7559a4e648ae6487a2a6a6327ce0f96eedd3cea90ce512cf923edddb0e
+	sha256sums = fe0e3c2200f053556a3ea2c6876557486d0516de4a779661dc2e5ff551e0bf3f
+	sha256sums = 128708b486714cef34ec9d600f382d5200ca27ff84a2cf3f48a1c84fd3370cef
+	sha256sums = 128708b486714cef34ec9d600f382d5200ca27ff84a2cf3f48a1c84fd3370cef
+	sha256sums = 0ba0656513456cd6c05106e9608fce278f3c43a9ef76daa8c735e33c29fcfefb
+	sha256sums = 0ba0656513456cd6c05106e9608fce278f3c43a9ef76daa8c735e33c29fcfefb
+
+pkgname = biohazard-2
+	depends = binmerge
+	depends = duckstation
+	depends = biohazard-2-leon
+	depends = biohazard-2-claire
+
+pkgname = biohazard-2-leon
+
+pkgname = biohazard-2-leon-jp
+	depends = binmerge
+	depends = duckstation
+	depends = biohazard-2-leon
+
+pkgname = biohazard-2-claire
+
+pkgname = biohazard-2-claire-jp
+	depends = binmerge
+	depends = duckstation
+	depends = biohazard-2-claire
+
+pkgname = resident-evil-2
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-de
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-en
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-es
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-fr
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-uk
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-leon-it
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-leon
+
+pkgname = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-de
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-en
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-es
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-fr
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-uk
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
+
+pkgname = resident-evil-2-claire-it
+	depends = binmerge
+	depends = duckstation
+	depends = resident-evil-2-claire
