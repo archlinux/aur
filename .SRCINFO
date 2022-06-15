@@ -1,16 +1,15 @@
 pkgbase = python-pefile-git
-	pkgdesc = A simplified object-oriented Python wrapper for libpcap
-	pkgver = r93.5958343
+	pkgdesc = A Python module to read and work with PE (Portable Executable) files
+	pkgver = v2022.5.30.r3.g0d5ce5e
 	pkgrel = 1
-	url = https://github.com/stangelandcl/pefile
+	url = https://github.com/erocarrera/pefile
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	provides = pefile
-	conflicts = python2-pefile-git
-	source = git://github.com/stangelandcl/pefile
+	provides = python-pefile
+	conflicts = python-pefile
+	source = python-pefile-git::git+https://github.com/erocarrera/pefile.git
 	sha512sums = SKIP
 
 pkgname = python-pefile-git
-

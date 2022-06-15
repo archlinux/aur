@@ -1,32 +1,35 @@
-# Maintainer: Philipp Joram <phijor AT t-online DOT de>
+# Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
+# Contributor: Philipp Joram <phijor AT t-online DOT de>
 
 _gitname='pefile'
 pkgname="python-${_gitname}-git"
-_gitauthor='stangelandcl'
-pkgver=r93.5958343
+_gitauthor='erocarrera'
+pkgver=v2022.5.30.r3.g0d5ce5e
 pkgrel=1
-pkgdesc="A simplified object-oriented Python wrapper for libpcap"
+pkgdesc="A Python module to read and work with PE (Portable Executable) files"
 url="https://github.com/${_gitauthor}/${_gitname}"
-license=('MIT')
-source=("git://github.com/${_gitauthor}/${_gitname}")
-sha512sums=('SKIP')
 arch=('any')
+license=('MIT')
 makedepends=('git' 'python-setuptools')
-conflicts=("python2-${_gitname}-git")
-provides=("${_gitname}")
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
+source=($pkgname::git+https://github.com/${_gitauthor}/${_gitname}.git)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  (
-    set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${srcdir}/${pkgname}"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${pkgname}"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
