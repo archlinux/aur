@@ -1,7 +1,7 @@
 pkgbase = imgur-screenshot
 	pkgdesc = Take screenshot selection, upload to imgur + more cool things
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jomo/imgur-screenshot
 	arch = any
 	license = MIT
@@ -14,9 +14,10 @@ pkgbase = imgur-screenshot
 	source = https://github.com/jomo/imgur-screenshot/archive/v2.0.0.tar.gz
 	source = imgur-screenshot.desktop
 	source = imgur-screenshot.png
+	source = imgur-screenshot_144.patch::https://github.com/jomo/imgur-screenshot/pull/144.patch
 	sha256sums = 1581b3d71e9d6c022362c461aa78ea123b60b519996ed068e25a4ccf5a3409f5
 	sha256sums = ba1c175b17cece30d6f2bcd4b15d924ae64855bd350a42efa9ea146880135fa2
 	sha256sums = b7f0eb70c642bb5cea60bf8a3b87125c53e64b0636fcfe9b9f591c6731a2b0c0
+	sha256sums = 2c2578c3ed358ec4dc7199924ab9e4d8f9cdebc7cbd97b52831f519fb781ffd4
 
 pkgname = imgur-screenshot
-
