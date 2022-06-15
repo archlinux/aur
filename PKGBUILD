@@ -8,9 +8,9 @@
 
 # Maintainer: Demir Yerli <mrquantumoff@protonmail.com>
 pkgname=quartz-server
-pkgver=0.1.1
+pkgver=0.2.0
 _pkgver=v${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="libquartz server"
 arch=(x86_64)
 url="https://github.com/Bultek/quartz-server"
