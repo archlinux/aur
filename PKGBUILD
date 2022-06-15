@@ -8,7 +8,7 @@ url="https://github.com/zeromq/cppzmq"
 license=('MIT')
 makedepends=('cmake')
 optdepends=('cmake')
-source=("https://github.com/zeromq/cppzmq/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeromq/cppzmq/archive/v${pkgver}.tar.gz")
 sha256sums=('7a23639a45f3a0049e11a188e29aaedd10b2f4845f0000cf3e22d6774ebde0af')
 
 prepare() {
