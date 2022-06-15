@@ -3,7 +3,7 @@
 _pkgname=sxhkhm
 pkgname=${_pkgname}-git
 longpkgname=sxhkd-helper-menu
-pkgver=r85.f3be1c7
+pkgver=r100.94b04de
 pkgrel=1
 pkgdesc='Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github'
 arch=('any')
