@@ -1,4 +1,4 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 
 pkgname='xdg-desktop-portal-git'
