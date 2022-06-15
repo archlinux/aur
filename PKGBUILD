@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=copula
-_pkgver=1.0-1
+_pkgver=1.1-0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Multivariate Dependence with Copulas'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -55,7 +55,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d09b2ccffc7379e48b00952aa6b282baf502feebaf55cc44e93f881d7b909742')
+sha256sums=('9ab76e6256534db2a18d3880143b8c67e385767010de861bbde25212aa75d924')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
