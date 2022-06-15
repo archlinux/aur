@@ -1,7 +1,7 @@
 # Maintainer: zlfn <elusive1102@naver.com>
 
 pkgname=krita-next-bin
-_pkgver=5.2.0
+_pkgver=5.2.0.g77cb84b
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc='The pre-built package of Krita Next. If you do not true me, install krita-next instead.'
