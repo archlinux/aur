@@ -1,6 +1,6 @@
 pkgbase = quartz-messenger
 	pkgdesc = libquartz based messenger
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mrquantumoff/quartz-messenger
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = quartz-messenger
 	makedepends = cargo
 	makedepends = rust
 	depends = openssl
-	source = https://github.com/mrquantumoff/quartz/archive/refs/tags/v0.1.1.tar.gz
+	source = https://github.com/mrquantumoff/quartz/archive/refs/tags/v0.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = quartz-messenger
