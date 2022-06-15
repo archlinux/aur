@@ -1,0 +1,14 @@
+pkgbase = qt5-qtcsv
+	pkgdesc = Library for reading and writing csv-files in Qt.
+	pkgver = 1.6
+	pkgrel = 0
+	url = https://github.com/iamantony/qtcsv
+	arch = any
+	license = MIT
+	depends = qt5-tools
+	provides = qtcsv
+	conflicts = qt6-qtcsv
+	source = qt5-qtcsv-1.6.tar.gz::https://github.com/iamantony/qtcsv/archive/refs/tags/v1.6.tar.gz
+	sha256sums = 9e5edb1a4adc193931706e7555dca7aa9912d97281bc8084c59f13b810aab0e7
+
+pkgname = qt5-qtcsv
