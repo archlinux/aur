@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services."
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
@@ -16,7 +16,7 @@ sha256sums=('044290a9c07e5f6b5fbcb665ded2528e07a56e024f369857967f950a814ca775')
 build() {
 	cd "${pkgname}-${pkgver}"
 	rm -rf build/
-	export CFLAGS='-Wno-stringop-truncation -Wno-unused-parameter -Wno-free-nonheap-object -Wno-format-truncation'
+	export CFLAGS='-Wno-stringop-truncation -Wno-unused-parameter -Wno-free-nonheap-object -Wno-format-truncation -Wno-address'
 	meson -Dbuildtype=release -Db_pie=true -Db_ndebug=if-release -Dversion="${pkgver}-${pkgrel}" --prefix=/usr --unity on build/
 	ninja -C build/
 }
