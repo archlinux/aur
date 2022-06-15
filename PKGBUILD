@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "$srcdir/$longpkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    env PATH=$(getconf PATH) python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -D -m 644 sxhkhm.ini "${pkgdir}/usr/share/doc/${_pkgname}/sxhkhm.ini"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
