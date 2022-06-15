@@ -25,7 +25,7 @@ package() {
 	exz "${srcdir}/${pkgname}0_${pkgver}_amd64.deb"
 
 	mkdir -p "${pkgdir}/usr/local/lib"
-	mv "${srcdir}/usr/lib/x86_64-linux-gnu/libfftranscode.so.0.0.0" "${pkgdir}/usr/local/lib/"
+	cp "${srcdir}/usr/lib/x86_64-linux-gnu/libfftranscode.so.0.0.0" "${pkgdir}/usr/local/lib/"
 	ln -s "${pkgdir}/usr/local/lib/libfftranscode.so.0.0.0" "${pkgdir}/usr/local/lib/libfftranscode.so.0"
 	ln -s "${pkgdir}/usr/local/lib/libfftranscode.so.0.0.0" "${pkgdir}/usr/local/lib/libfftranscode.so"
 
@@ -33,5 +33,5 @@ package() {
 	install -D "${srcdir}/libfftranscode.pc" "${pkgdir}/usr/local/lib/pkgconfig/"
 
 	mkdir -p "${pkgdir}/usr/local/include"
-	mv "${srcdir}/usr/include/fftranscode/" "${pkgdir}/usr/local/include/"
+	cp -r "${srcdir}/usr/include/fftranscode/" "${pkgdir}/usr/local/include/"
 }
