@@ -2,7 +2,7 @@
 
 pkgname=mimir
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A scalable long-term storage for Prometheus'
 arch=('x86_64')
 url='https://grafana.com/oss/mimir/'
@@ -73,7 +73,7 @@ package() {
   install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -vDm644 config.yaml "$pkgdir/etc/$pkgname.yaml"
+  install -vDm640 config.yaml "$pkgdir/etc/$pkgname.yaml"
 
   cd "$pkgname"
 
