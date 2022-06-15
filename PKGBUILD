@@ -29,7 +29,7 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
-    --user-agent "safari" \
+    --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" \
     --inject "${pkgname}-inject.js" \
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
