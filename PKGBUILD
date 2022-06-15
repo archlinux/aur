@@ -1,12 +1,13 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Louis Tim Larsen <louis(a)louis.dk>
 # Contributor: Michael Healy <horsemanoffaith@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: SoftwareRat <chenxiaolong@cxl.epac.to>
 
 pkgname='ubuntu-wallpapers'
-pkgver=21.04.1
-pkgrel=2
+pkgver=22.04.4
+pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
 url='https://launchpad.net/ubuntu-wallpapers'
@@ -18,8 +19,8 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 # http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/
 source=("${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
         "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz")
-sha256sums=('3c7e8405f81cc0bc8620246c88b69ea861b6a02a4ac3ff308335b9c3a11e935a'
-            '4d27aed1ae07c3f5c4d6e54d5bb0367f66be5ec51684b6a7901a5fb23697339f')
+sha256sums=('83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e'
+            '430a61aa87de2fc12ba3a7ba583df16643839c3b14c7d9138d67e43d43767a6b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
