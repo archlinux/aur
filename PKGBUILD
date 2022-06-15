@@ -2,11 +2,12 @@
 
 pkgname=macli-git
 _pkgname=macli
-pkgver=1.0.0.r2.g7d1c4ad
+pkgver=1.1.0.r0.g1d72b87
 pkgrel=1
 license=('GPLv3')
 pkgdesc='Unofficial CLI-Based MyAnimeList Client'
-makedepends=("git" "go>=1.6" "gnome-keyring")
+makedepends=("git" "go>=1.6")
+depends=("gnome-keyring")
 arch=("i686" "x86_64")
 _gourl='github.com/MikunoNaka/macli'
 url="https://${_gourl}"
