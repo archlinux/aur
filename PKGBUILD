@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=blackbox-git
-pkgver=0.77.r1.g7d9bb9d
+pkgver=0.77.r3.gadb18c6
 pkgrel=1
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
