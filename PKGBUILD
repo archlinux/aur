@@ -35,7 +35,7 @@ prepare() {
 build () {
   cd "$srcdir/$pkgname-$pkgver/"
   #CFLAGS+=' -Wno-deprecated-declarations'
-  ./configure --prefix=/usr --disable-update-xdg-database --without-libfam
+  PYTHON=/usr/bin/python ./configure --prefix=/usr --disable-update-xdg-database --without-libfam
   make
 }
 
