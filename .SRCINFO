@@ -1,6 +1,6 @@
 pkgbase = python-aigpy
 	pkgdesc = Python Common Lib
-	pkgver = 2022.1.20.1
+	pkgver = 2022.6.15.1
 	pkgrel = 1
 	url = https://github.com/yaronzz/AIGPY
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-aigpy
 	depends = python-requests
 	depends = python-colorama
 	depends = python-mutagen
-	source = https://files.pythonhosted.org/packages/source/a/aigpy/aigpy-2022.1.20.1.tar.gz
-	sha256sums = 9add0659bf84e76fe79ff377d76cfe10b7982441ceb179b4e73a5f56671e2be3
+	source = https://files.pythonhosted.org/packages/source/a/aigpy/aigpy-2022.6.15.1.tar.gz
+	sha256sums = 6151b5656f563ec891df8825e8e53b4a4ffb466c3f14c84f886eff8176bbe047
 
 pkgname = python-aigpy
