@@ -1,0 +1,22 @@
+pkgbase = lfp
+	pkgdesc = LF-Preview, a wrapper for the lf file manager with image previews, and other features
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://gitlab.com/a4to/lfp
+	install = lfp.install
+	arch = x86_64
+	license = MIT
+	depends = lf
+	depends = zsh
+	depends = ffmpeg
+	depends = ueberzug
+	depends = graphicsmagick
+	depends = ghostscript
+	depends = bat
+	optdepends = dialog: Required by many lfp functions outside the scope of image and video previews
+	optdepends = dunst: To receive notifications upon task completion and so forth
+	optdepends = git: cloning repos from within lfp
+	source = git+https://gitlab.com/a4to/lfp.git
+	md5sums = SKIP
+
+pkgname = lfp
