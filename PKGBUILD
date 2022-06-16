@@ -7,12 +7,12 @@ pkgver=${_ver//-/}
 pkgrel=1
 pkgdesc="print the geometry of a rectangular screen region"
 arch=(i686 x86_64)
-url="https://github.com/lolilolicon/xrectsel"
+url="https://github.com/dreethyweirdo/xrectsel"
 license=(GPL3)
 conflicts=('ffcast<1:2.2.0')  # ffcast used to ship /usr/bin/xrectsel
 depends=(libx11)
 makedepends=(autoconf automake)
-source=("https://github.com/lolilolicon/$_name/archive/$_ver.tar.gz")
+source=("https://github.com/dreethyweirdo/$_name/archive/$_ver.tar.gz")
 sha256sums=('1b4b928bb7270e0531467c1e7f93322c784c7c0dedc13d1d5e53034417fde785')
 
 prepare() {
