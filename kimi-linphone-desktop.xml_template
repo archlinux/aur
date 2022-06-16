@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for all users place in /usr/share/mime/packages/ -->
+<!-- or -->
+<!-- for just one user place in ~/.local/share/mime/packages/ -->
+<!-- for all users update the system mime database with `sudo update-mime-database /usr/share/mime/` -->
+<!-- for just one user update the mime database with `update-mime-database $HOME/.local/share/mime/` -->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="x-scheme-handler/tel">
+    <comment>tel telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/callto">
+    <comment>callto telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/sip">
+    <comment>sip telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/sips">
+    <comment>sips telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/sip-linphone">
+    <comment>sip-linphone telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/sips-linphone">
+    <comment>sips-linphone telephony URI mime type</comment>
+  </mime-type>
+  <mime-type type="x-scheme-handler/linphone-config">
+    <comment>linphone-config URI mime type</comment>
+  </mime-type>
+</mime-info>

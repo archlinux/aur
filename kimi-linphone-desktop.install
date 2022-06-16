@@ -1,0 +1,11 @@
+post_install() {
+    true
+}
+
+post_upgrade() {
+    true
+}
+
+post_remove() {
+    true
+}
