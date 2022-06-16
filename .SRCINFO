@@ -1,7 +1,7 @@
 pkgbase = sge
 	pkgdesc = The Son of Grid Engine is a community project to continue Sun's old gridengine.
 	pkgver = 8.1.9
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 1
 	url = https://arc.liv.ac.uk/trac/SGE
 	install = sge.install
@@ -16,12 +16,11 @@ pkgbase = sge
 	depends = openssl-1.0
 	depends = python2
 	depends = tcsh
-	source = https://arc.liv.ac.uk/downloads/SGE/releases/8.1.9/sge_8.1.9.tar.xz
+	source = https://github.com/petronny/sge/archive/refs/tags/v8.1.9.tar.gz
 	source = sgemaster@.service
 	source = sgeexecd@.service
-	md5sums = a2f03ca8b803ca4da7d2dedadeca74bb
+	md5sums = fc2993cf04d847c744eb23896547d2df
 	md5sums = 9f9084c196f22394654263eb651a7a2c
 	md5sums = 9fb0825053a203802836735741b15007
 
 pkgname = sge
-
