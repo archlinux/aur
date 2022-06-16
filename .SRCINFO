@@ -1,0 +1,14 @@
+pkgbase = mcbash
+	pkgdesc = scan for valid MAC addresses on Stalker Portal servers
+	pkgver = 0.1.r83.5e53d01
+	pkgrel = 1
+	url = https://github.com/dougy147/mcbash.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	provides = mcbash
+	source = git+https://github.com/dougy147/mcbash.git
+	md5sums = SKIP
+
+pkgname = mcbash
