@@ -1,0 +1,17 @@
+pkgbase = omnispeak
+	pkgdesc = An open-source re-implementation of "Commander Keen in Goodbye Galaxy"
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://davidgow.net/keen/omnispeak.html
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	optdepends = omnispeak-data: full game data from GOG
+	source = https://github.com/sulix//archive/refs/tags/v1.1.tar.gz
+	source = omnispeak-keen4
+	source = omnispeak-keen5
+	sha256sums = 1db9e3d740ee816e0ba784cd5147c29ad3b1ebf1a694cdf6324df7cb439ba028
+	sha256sums = 00f73611a8989002dd7c5a4e8aa2f93799735fec3e7e22b1c3c465fb3eae73ae
+	sha256sums = 6692edb336c32a5528a32e1ab528588476b42433754c12213676cb3b3ba7ea14
+
+pkgname = omnispeak
