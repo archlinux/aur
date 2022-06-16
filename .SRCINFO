@@ -1,6 +1,6 @@
 pkgbase = mlt-git
 	pkgdesc = Multimedia Framework
-	pkgver = r5828.1651704493.928be576
+	pkgver = r5850.1653687636.3513e741
 	pkgrel = 1
 	url = https://github.com/mltframework/mlt
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = mlt-git
 	depends = qt5-svg
 	depends = gdk-pixbuf2
 	depends = sdl12-compat
+	depends = libarchive
 	provides = mlt
 	conflicts = mlt
 	source = mlt::git+https://github.com/mltframework/mlt.git

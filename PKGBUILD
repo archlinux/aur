@@ -4,7 +4,7 @@
 pkgname=('mlt-git')
 _srcname='mlt'
 pkgdesc='Multimedia Framework'
-pkgver=r5828.1651704493.928be576 
+pkgver=r5850.1653687636.3513e741 
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/mltframework/${_srcname}" license=('GPL2')
@@ -20,6 +20,7 @@ depends=( 	'libsamplerate'
 		'qt5-svg'
 		'gdk-pixbuf2'
 		'sdl12-compat'
+		'libarchive'
 		)
 
 makedepends=( 	'ladspa'
@@ -35,8 +36,10 @@ makedepends=( 	'ladspa'
 		)
 
 provides=("${pkgname[0]%-git}") conflicts=("${pkgname[0]%-git}")
-source=("${_srcname}::git+${url}.git")
-sha512sums=('SKIP')
+source=(	"${_srcname}::git+${url}.git"
+		)
+sha512sums=(	'SKIP'
+		)
 pkgver(){ 	cd "${srcdir}/${_srcname}"
 		printf 'r%s.%s.%s\n' \
 		"$( git rev-list --count 'HEAD' )" \
@@ -45,6 +48,9 @@ pkgver(){ 	cd "${srcdir}/${_srcname}"
 		}
 
 prepare(){ 	echo "Prepare"
+		cd ${srcdir}/${_srcname}/src/modules/glaxnimate
+		git submodule init
+		git submodule update
 		}
 
 build(){ 	rm -rf build
@@ -54,6 +60,7 @@ build(){ 	rm -rf build
 		  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		  -DCMAKE_INSTALL_PREFIX=/usr \
 		  -DMOD_OPENCV=ON \
+		  -DMOD_GLAXNIMATE=ON \
 		  -DMOD_MOVIT=ON
 		make
 		}
