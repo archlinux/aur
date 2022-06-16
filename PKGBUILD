@@ -10,7 +10,7 @@ license=(GPL3)
 conflicts=()
 provides=('scitopdf')
 source=("https://github.com/dougy147/scitopdf/archive/refs/heads/master.zip")
-sha256sums=('cacf2504c2c3c5bed779d4518825aeaf056ee9f787e89ca24f47c79e2172bed')
+sha256sums=('93589b9f29938f7c7cb84c679f627d695dfaa08a7935717c6a0e3cf87b680cb7')
 
 package() {
 	make install
