@@ -4,7 +4,7 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
