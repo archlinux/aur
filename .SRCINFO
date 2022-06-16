@@ -1,8 +1,8 @@
 pkgbase = quartz-messenger
 	pkgdesc = libquartz based messenger
 	pkgver = 0.2.0
-	pkgrel = 1
-	url = https://github.com/mrquantumoff/quartz-messenger
+	pkgrel = 2
+	url = https://github.com/mrquantumoff/quartz
 	arch = x86_64
 	groups = mrquantumoff
 	license = MIT

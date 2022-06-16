@@ -10,10 +10,10 @@
 pkgname=quartz-messenger
 pkgver=0.2.0
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="libquartz based messenger"
 arch=(x86_64)
-url="https://github.com/mrquantumoff/quartz-messenger"
+url="https://github.com/mrquantumoff/quartz"
 license=('MIT')
 groups=("mrquantumoff")
 depends=("openssl")
