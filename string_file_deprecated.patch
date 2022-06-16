@@ -1,0 +1,12 @@
+diff --git a/src/scalar_blocks/write_zzb/write_spins/write_spins.cxx b/src/scalar_blocks/write_zzb/write_spins/write_spins.cxx
+index b5aa201..f457a69 100644
+--- a/src/scalar_blocks/write_zzb/write_spins/write_spins.cxx
++++ b/src/scalar_blocks/write_zzb/write_spins/write_spins.cxx
+@@ -4,6 +4,7 @@
+ #include "../../../Nu.hxx"
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/string_file.hpp>
+ #include <boost/math/tools/polynomial.hpp>
+ 
+ #include <vector>
