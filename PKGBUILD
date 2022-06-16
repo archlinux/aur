@@ -68,7 +68,7 @@ prepare() {
         #cat ../../PKGBUILD
         cd ../../
         # Restart makepkg
-        makepkg -sif
+        makepkg -f
         # Exit this thread since $pkgver is not the latest.
         exit
     fi
@@ -131,7 +131,7 @@ prepare() {
         #cat ../../PKGBUILD
         cd ../../
         # Restart makepkg
-        makepkg -sif
+        makepkg -f
         # Exit this thread since pkver is not the latest.
         exit
     fi
@@ -1452,10 +1452,14 @@ package() {
     echo "    echo \"    sudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"or:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"    sudo pacman -U \\\"$PACKAGETARFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
-    echo "    zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nIt should be located in:\n\n${srcdir}\n\nInstall with\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
+    echo "    if hash zenity 2>/dev/null; then" >> $INSTALLSCRIPTPATH
+    echo "        zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nInstall with\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
+    echo "    fi" >> $INSTALLSCRIPTPATH
     echo "fi" >> $INSTALLSCRIPTPATH
     chmod +x $INSTALLSCRIPTPATH
-    zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nIt should be located in:\n\n${srcdir}\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
+    if hash zenity 2>/dev/null; then
+        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
+    fi
     
     cd ${BUILDDIR}
     # Change back to default package name in PKGBUILD:
