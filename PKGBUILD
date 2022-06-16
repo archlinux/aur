@@ -22,7 +22,7 @@ sha256sums=('ae337238379541d8f99f09bf24e82d291b8141e5a7758d46c0002a9becb828b8'
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
 prepare() {
-	patch -p1 < ../libusb.patch
+	patch -p1 < libusb.patch
 	cd "$pkgname-source-$pkgver-$pkgrel"
 }
 
