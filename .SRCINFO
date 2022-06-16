@@ -1,6 +1,6 @@
 pkgbase = gurk-bin
 	pkgdesc = CLI client for Signal
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/boxdot/gurk-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gurk-bin
 	license = AGPL3
 	provides = gurk
 	conflicts = gurk
-	source_x86_64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.3/gurk-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.4/gurk-x86_64-unknown-linux-gnu.tar.gz
 	sha1sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.3/gurk-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.4/gurk-aarch64-unknown-linux-gnu.tar.gz
 	sha1sums_aarch64 = SKIP
 
 pkgname = gurk-bin
