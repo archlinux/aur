@@ -11,7 +11,8 @@ pkgbase = notekit-git
 	license = GPL-3.0
 	makedepends = git
 	makedepends = meson
-	depends = fontconfig
+	makedepends = appstream-glib
+	depends = desktop-file-utils
 	depends = clatexmath
 	depends = gtkmm3
 	depends = gtksourceviewmm>=3.18

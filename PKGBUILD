@@ -7,8 +7,8 @@ pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support
 arch=("x86_64" "aarch64" "i686" "armv7h" "s390x")
 url="https://github.com/blackhole89/notekit"
 license=("GPL-3.0")
-depends=("fontconfig" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
-makedepends=("git" "meson")
+depends=("desktop-file-utils" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
+makedepends=("git" "meson" "appstream-glib")
 provides=("${_basename}")
 conflicts=("${_basename}" "${_basename}-git")
 source=("${_basename}::git+https://github.com/blackhole89/notekit.git")
