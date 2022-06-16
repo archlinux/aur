@@ -1,6 +1,6 @@
 pkgbase = bird-git
 	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon (development version)
-	pkgver = 2.0.9.r12.gba2a0760
+	pkgver = 2.0.9.r21.gb867c798
 	pkgrel = 1
 	url = https://bird.network.cz/
 	arch = x86_64

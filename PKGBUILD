@@ -1,6 +1,6 @@
 _pkgname=bird
 pkgname=$_pkgname-git
-pkgver=2.0.9.r12.gba2a0760
+pkgver=2.0.9.r21.gb867c798
 pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon (development version)'
 arch=('x86_64')
@@ -32,8 +32,8 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --runstatedir=/run/$pkgname \
-    --docdir=/usr/share/doc/$pkgname
+    --runstatedir=/run/$_pkgname \
+    --docdir=/usr/share/doc/$_pkgname
   make
 }
 
