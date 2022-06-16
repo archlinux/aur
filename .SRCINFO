@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package, installer and updater
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
 	license = MIT
@@ -28,6 +28,7 @@ pkgbase = nwg-shell
 	depends = sway
 	depends = swayidle
 	depends = swaylock
+	depends = swaybg
 	depends = wl-clipboard
 	depends = xorg-xwayland
 	depends = autotiling
