@@ -1,6 +1,6 @@
 pkgbase = amdvold-bin
 	pkgdesc = AMDGPU voltage management tool
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = amdvold-bin
 	optdepends = amdguid-glow-bin
 	optdepends = amdguid-wayland-bin
 	optdepends = amdfand-bin
-	source = https://github.com/Eraden/amdgpud/releases/download/v0.1.0.10/amdvold.tar.gz
-	md5sums = 457d702c5688ff4f228a74cdbb1b6f17
+	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.11/amdvold.tar.gz
+	md5sums = dc85e3f533845474d434e208eab2679d
 
 pkgname = amdvold-bin
