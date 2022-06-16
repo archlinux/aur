@@ -1,6 +1,6 @@
 pkgbase = selinux-python2
 	pkgdesc = SELinux python 2.X tools and libraries
-	pkgver = 3.0
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
@@ -12,11 +12,10 @@ pkgbase = selinux-python2
 	depends = python2-ipy
 	depends = libsemanage>=2.8
 	depends = setools>=4.0.0
-	provides = sepolgen=3.0-1
+	provides = sepolgen=3.4-1
 	conflicts = sepolgen<2.7
 	conflicts = policycoreutils<2.7
-	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/selinux-python-3.0.tar.gz
-	sha256sums = 43c08fa881ccc64251d396b1ac6c56b354bf98421b4ec937d54a8db190135494
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/selinux-python-3.4.tar.gz
+	sha256sums = 1731065a58293b8a598c0f8b182fdd1a278959b1288747fcb17af392496bac32
 
 pkgname = selinux-python2
-
