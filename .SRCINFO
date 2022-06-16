@@ -1,0 +1,18 @@
+pkgbase = pixfetch
+	pkgdesc = A fetch program with variable sized pixel images
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RubixDev/pixfetch
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL2
+	makedepends = cargo
+	source = pixfetch-0.1.0.tar.gz::https://static.crates.io/crates/pixfetch/pixfetch-0.1.0.crate
+	b2sums = 421aaee7c016631344a95b2c997039d9e30e2e4b018e8d5016822196bb2a580014c8ef7667ec1b404d72db362baeedb04798314d4008adbd9eabe8ee9c647823
+
+pkgname = pixfetch
