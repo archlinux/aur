@@ -4,7 +4,7 @@ pkgname=('pronounce-git')
 
 _gitname=pronounce
 #The actual value is calculated by pkgver() function
-pkgver=v1.1.0.1.gd18cb7f
+pkgver=v1.2.0
 pkgrel=1
 
 pkgdesc="A command line interface for English words pronunciation"
