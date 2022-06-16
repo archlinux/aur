@@ -8,6 +8,7 @@ pkgbase = clash-verge-bin
 	depends = libappindicator-gtk3
 	depends = webkit2gtk
 	depends = gtk3
+	depends = libayatana-appindicator
 	provides = clash
 	conflicts = clash
 	source = clash-verge-1.0.0-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v1.0.0/clash-verge_1.0.0_amd64.deb
