@@ -1,15 +1,15 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="communist"
-pkgver="1.2"
+pkgver="1.3"
 pkgrel="1"
 pkgdesc="Communist is a simple GTK4 based p2p messenger"
 license=('GPL3')
 arch=('x86_64')
 provides=("${pkgname}")
-source=("https://github.com/ProfessorNavigator/communist/archive/refs/tags/v1.2.tar.gz")
+source=("https://github.com/ProfessorNavigator/communist/archive/refs/tags/v1.3.tar.gz")
 makedepends=('meson' 'ninja' 'pkgconf' 'gcc' 'gtkmm-4.0' 'hunspell' 'libtorrent-rasterbar' 'libgcrypt' 'libzip' 'icu' 'boost')
-depends=('gtkmm-4.0' 'hunspell' 'libtorrent-rasterbar' 'libgcrypt' 'libzip' 'icu')
-md5sums=('2daa134156ae8eaefc4f81c8eeb9f55a')
+depends=('gtkmm-4.0' 'hunspell' 'libtorrent-rasterbar' 'libgcrypt' 'libzip' 'icu' 'gst-plugins-good')
+md5sums=('923676a7a5eb72194190d7daaf19fe2c')
 options=(strip)
 
 build() {   
