@@ -1,6 +1,6 @@
 pkgbase = python-crds
 	pkgdesc = Calibration Reference Data System for HST and JWST
-	pkgver = 11.16.2
+	pkgver = 11.16.3
 	pkgrel = 1
 	url = https://hst-crds.stsci.edu/static/users_guide/index.html
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = python-crds
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/c/crds/crds-11.16.2.tar.gz
-	md5sums = 889caee538152435a657b9b9ffbea3d0
+	source = https://files.pythonhosted.org/packages/source/c/crds/crds-11.16.3.tar.gz
+	md5sums = 5542ca17766075d844f775a2bd8f819d
 
 pkgname = python-crds
 	depends = python-filelock
