@@ -2,7 +2,7 @@
 
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
-pkgver=2.18.2
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -22,10 +22,10 @@ source_aarch64=("$_source_base/$_pkgname-linux-arm64/jf")
 
 noextract=("$_artifact_name")
 
-sha256sums_x86_64=('ab7de4609c7c489bb28bee291e3a94c4bbc4922eacd6e569b5bd9f376da91cd4')
-sha256sums_i686=('37725e5118921600e6c3c4956567955208e024829ae44609582ad8a164601c49')
-sha256sums_armv7h=('7a71eae4848999fa1ee6110b772f8b0a8115b2a159413453f30ec1ee2ccc99ca')
-sha256sums_aarch64=('09d4ffecad5207f8291e366a99c3558398dc3a4f35d35999bae896904799a9c8')
+sha256sums_x86_64=('ee58a507409a5390ddb679bfe43a182d47892d085c514e959a035e50254cf728')
+sha256sums_i686=('1cdb8b83884264a68d011013f4e89c935ee9243f065b2c2e8456ceef4c9bc64f')
+sha256sums_armv7h=('1e2390cbd4c666f300b86ad3f44f342d1e359eeeb24d64acdc94d3ceaa184b83')
+sha256sums_aarch64=('59e5b96bcd26ed4df2eb30816413bee8912f74ebc612a0a720243922e1ced257')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
