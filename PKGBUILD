@@ -7,9 +7,9 @@
 
 pkgbase=python-dlib
 pkgname=('python-dlib')
-#pkgname+=('python-dlib-cuda')
+##pkgname+=('python-dlib-cuda')
 _pkgname=dlib
-pkgver=19.22
+pkgver=19.24
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -17,10 +17,10 @@ url="http://www.dlib.net/"
 license=('Boost')
 depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'libx11')
 optdepends=('sqlite')
-#optdepends+=('cuda' 'cudnn' 'ccache-ext')
+##optdepends+=('cuda' 'cudnn' 'ccache-ext')
 makedepends=(${optdepends[@]} 'cmake' 'boost' 'python-setuptools')
 source=("$url/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('20b8aad5d65594a34e22f59abbf0bf89450cb4a2a6a8c3b9eb49c8308f51d572')
+sha256sums=('28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4')
 
 prepare() {
 	cd "$srcdir/"
@@ -31,10 +31,10 @@ build(){
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py build --no DLIB_USE_CUDA
 
-#	cuda_flags='--set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache --set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc'
+##	cuda_flags='--set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache --set CUDA_HOST_COMPILER=/opt/cuda/bin/gcc'
 
-#	cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
-#	python setup.py build $cuda_flags
+##	cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+##	python setup.py build $cuda_flags
 }
 
 
