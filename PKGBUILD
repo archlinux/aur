@@ -1,34 +1,38 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r1402.aa3f3b7e
+pkgver=2.8.2100
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
-license=('GPL')
-makedepends=('git' 'go')
-_gourl=github.com/lmorg/murex
+license=('GPL2')
+makedepends=('go')
+optdepends=('aspell: inline spell checking')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ba3fd505aaa8e8289f1baf0375d319b4f7fa9cda2ba4e6299d63705154f70406')
 
-pkgver() {
-	GOPATH="$srcdir" go get -d ${_gourl}
-	cd "$srcdir/src/${_gourl}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare(){
+  cd "$pkgname-$pkgver"
+  mkdir -p build/
 }
 
 build() {
-	GOPATH="$srcdir" go get -fix -v ${_gourl}
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 check() {
-	GOPATH="$srcdir" go test -v -x ${_gourl}
+  cd "$pkgname-$pkgver"
+  go test ./...
+  build/murex -c 'g: behavioural/* -> foreach: f { source $f }; try {test: run *}'
 }
 
 package() {
-	cd "$srcdir"
-	install -D -m755 bin/murex "$pkgdir/usr/bin/murex"
-	install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	install -D -m644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-	cd "src/${_gourl}"
-	cp -r docs $pkgdir/usr/share/doc/${pkgname%-*}
+  cd "$pkgname-$pkgver"
+  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 }
-
