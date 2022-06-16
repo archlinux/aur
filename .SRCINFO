@@ -1,7 +1,7 @@
 pkgbase = mynotex
 	pkgdesc = A free note-taking, document file and activity manager for GNU/Linux
 	pkgver = 1.4.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sites.google.com/site/mynotex
 	arch = i686
 	arch = x86_64

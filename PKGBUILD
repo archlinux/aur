@@ -5,7 +5,7 @@
 
 pkgname=mynotex
 pkgver=1.4.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A free note-taking, document file and activity manager for GNU/Linux"
 url="https://sites.google.com/site/mynotex"
 license=('GPL')
@@ -16,8 +16,7 @@ optdepends=('gnupg: for notes encryption')
 gdrive_download() {
   gUrl=https://drive.google.com/uc?export=download
   curl -sc gc "${gUrl}&id=${1}" >/dev/null
-  gc="$(awk '/_warning_/ {print $NF}' gc)"
-  curl -k -C - -Lb gc "${gUrl}&confirm=${gc}&id=${1}" -o $2
+  curl -k -C - -Lb gc "${gUrl}&confirm=t&id=${1}" -o $2
 }
 
 prepare() {
@@ -40,3 +39,4 @@ package() {
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s "/opt/mynotex/mynotex" "${pkgdir}/usr/bin/mynotex"
 }
+
