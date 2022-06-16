@@ -1,6 +1,6 @@
 pkgbase = onnxruntime-git
 	pkgdesc = cross-platform inference and training machine-learning accelerator.
-	pkgver = orttraining_rc2.r2552.g5f30be3e92
+	pkgver = orttraining_rc2.r3930.g3d99f16e98
 	pkgrel = 1
 	url = https://onnxruntime.ai/
 	arch = x86_64

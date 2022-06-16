@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r2552.g5f30be3e92
+pkgver=orttraining_rc2.r3930.g3d99f16e98
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
@@ -24,6 +24,7 @@ md5sums=('SKIP')
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
+	sed -i s'/-Werror //g' "$srcdir"/onnxruntime/cmake/external/flatbuffers/CMakeLists.txt
 }
 
 pkgver() {
