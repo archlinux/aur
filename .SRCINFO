@@ -1,7 +1,7 @@
 pkgbase = python2-scandir
 	pkgdesc = Better directory iterator and faster os.walk() alternative
 	pkgver = 1.10.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/benhoyt/scandir
 	arch = x86_64
 	license = BSD
