@@ -1,4 +1,4 @@
-# Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+# Maintainer: Harrison Oates <harrison at harrisonoates dot com>
 # Upstream: Immersed Inc. <info at immersedvr dot com>
 pkgname=immersed
 pkgver=1.9.0
@@ -8,9 +8,9 @@ arch=("x86_64")
 url="https://immersedvr.com/"
 license=('unknown')
 depends=("libpng" "curl" "libva")
-source=("https://immersedvr.com/dl/Immersed_amd64.deb")
-noextract=("Immersed_amd64.deb")
-md5sums=('44406c6e48297d4881fbb02aa56a68ba')
+source=("https://immersed.com/dl/Immersed-x86_64.AppImage")
+noextract=("Immersed-x86_64.AppImage")
+md5sums=('297a9bd4a7f04b3a51bffcbe6e667d98')
 
 pkgver() {
     ar p Immersed_amd64.deb control.tar.gz | tar zx ./control -O | grep "Version" | sed 's/^Version: \([0-9.]*\)$/\1/g'
