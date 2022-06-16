@@ -68,7 +68,7 @@ package() {
   # Our executable is located in:
   # .../src/hello-world
   # We want to move the executable to the real install prefix: /usr/local/bin
-  install -Dm755 $srcdir/$pkgname-$pkgver/src/hello-world $pkgdir/usr/local/bin/hello-world-alpha/usr/local/bin
+  install -Dm755 $srcdir/$pkgname-$pkgver/src/hello-world $pkgdir/usr/local/bin/hello-world-alpha
   find $CURRENTDIR
   echo "--- Exiting section package() ---"  
 }
