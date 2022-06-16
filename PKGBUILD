@@ -2,8 +2,8 @@
 # template start; name=git; version=1;
 # template start; name=git-source; version=1;
 pkgname=skylobby-git
-pkgver=0.8.38.r5.gf5533d4
-pkgdesc="A Spring RTS lobby and replay viewer written in Clojure"
+pkgver=0.9.4.r0.ga13598b
+pkgdesc="Spring RTS games client lobby"
 pkgrel=1
 arch=('any')
 makedepends+=('git' 'clojure' 'java-environment=17' 'java17-openjfx')
@@ -44,7 +44,7 @@ package() {
   install -Dm0755 dist/arch/skylobby "$pkgdir/usr/bin/skylobby"
   install -Dm0644 target/skylobby.jar "$pkgdir/usr/share/java/$_gitname/skylobby.jar"
   install -Dm0644 resources/icon256.png "$pkgdir/usr/share/pixmaps/skylobby.png"
-  install -Dm0644 resources/skylobby.desktop "$pkgdir/usr/share/applications/skylobby.desktop"
+  install -Dm0644 dist/arch/skylobby.desktop "$pkgdir/usr/share/applications/skylobby.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim: filetype=sh
