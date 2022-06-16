@@ -34,7 +34,7 @@ _app_name=linphone-desktop
 _executable=linphone
 _executableHumanFormat=Linphone
 _packager_lowercase=kimi
-packagerHumanFormat=Kimi
+_packagerHumanFormat=Kimi
 
 prepare() {
     echo "--- Entering section prepare() ---"
@@ -568,7 +568,7 @@ package() {
     echo menuFullFilePathTwo=$menuFullFilePathTwo
     echo package_name=$package_name
     echo _packager_lowercase=$_packager_lowercase
-    echo packagerHumanFormat=$packagerHumanFormat
+    echo _packagerHumanFormat=$_packagerHumanFormat
     echo remove_auto_start_script_filename=$remove_auto_start_script_filename
     echo scalable_hicolor_icons_reldir=$scalable_hicolor_icons_reldir
     echo scriptFileNameFour=$scriptFileNameFour
@@ -1220,7 +1220,7 @@ package() {
     # Make manpage
     echo "--- Create markup manpage for: $_executable$linphone_desktop_tag ---"
     echo "% $executable_tag_uppercase(1) $executable_tag_lowercase $linphone_desktop_version | kimi documentation" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
-    echo "% $packagerHumanFormat" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
+    echo "% $_packagerHumanFormat" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
     echo "% $manpage_date" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
     echo "" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
     echo "# NAME" >> $pkgdir$linphone_desktop_install_man_prefix/$_executable$linphone_desktop_tag.1.md
