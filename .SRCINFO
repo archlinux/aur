@@ -1,8 +1,8 @@
 pkgbase = archiso-encryption
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
-	pkgver = 63
+	pkgver = 64
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/archlinux/archiso
+	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/156
 	arch = any
 	license = GPL3
 	checkdepends = shellcheck
@@ -23,7 +23,7 @@ pkgbase = archiso-encryption
 	optdepends = qemu: for run_archiso
 	conflicts = archiso
 	replaces = archiso
-	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=crypto
+	source = git+https://gitlab.archlinux.org/tallero/archiso#commit=85e42d076ab14c2b2f947ea847565a3f787ab336
 	sha256sums = SKIP
 
 pkgname = archiso-encryption
