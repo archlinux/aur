@@ -1,6 +1,6 @@
 pkgbase = expressvpn-gui
 	pkgdesc = Unofficial linux GUI for expressvpn CLI (Qt)
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://gitlab.com/vojko.pribudic/expressvpn-gui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = expressvpn-gui
 	depends = pyside6
 	depends = expressvpn
 	depends = python-pexpect
-	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.6.7/expressvpn-gui-v0.6.7.tar.gz
+	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.6.8/expressvpn-gui-v0.6.8.tar.gz
 	md5sums = SKIP
 
 pkgname = expressvpn-gui
