@@ -1,0 +1,9 @@
+/.vscode/
+/src
+/pkg
+*.gem
+*.log
+*.pkg.*
+*.tar.*
+!.vscode.untar-me.tar.*
+*.zip
