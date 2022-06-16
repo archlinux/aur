@@ -4,7 +4,7 @@
 
 pkgname=python-pybindgen
 _pkgname='PyBindGen'
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="A tool to generate Python bindings for C/C++ code"
 url='https://github.com/gjcarneiro/pybindgen'
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 # Note: pygccxml does not support Python 3 yet
 #optdepends=('gccxml' 'pygccxml')
 source=("https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-${pkgver}.tar.gz")
-md5sums=('df1c69d32cfd2763befa525aa974fbb9')
+md5sums=('a082555346450f008d68c337c2e175d0')
 
 build() {
   cd ${srcdir}/${_pkgname}-$pkgver
