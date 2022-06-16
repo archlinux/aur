@@ -1,7 +1,7 @@
 pkgbase = wine-x64
 	pkgdesc = A compatibility layer for running Windows programs. This only configured with x64 support.
 	pkgver = 7.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	arch = x86_64
 	license = LGPL
@@ -35,8 +35,8 @@ pkgbase = wine-x64
 	provides = wine_x64=7.10
 	conflicts = wine
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/7.10/wine-7.10.tar.xz
-	source = https://dl.winehq.org/wine/source/7.10/wine-7.10.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/7.x/wine-7.10.tar.xz
+	source = https://dl.winehq.org/wine/source/7.x/wine-7.10.tar.xz.sign
 	source = 30-win32-aliases.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
 	sha512sums = be460be6c3f6f54c20220287a7c4c9d41d27bd14fabb97b1f9824a4be361e38b2e2e51a621e0332d6c48934b1af425efaec92132f73e6d1270337ffbfcac2576
