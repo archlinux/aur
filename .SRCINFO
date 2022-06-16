@@ -8,8 +8,7 @@ pkgbase = sombok
 	license = PerlArtistic
 	license = GPL2
 	depends = libthai
-	source = http://downloads.sourceforge.net/project/linefold/sombok/sombok-2.3.1.tar.gz
+	source = https://downloads.sourceforge.net/project/linefold/sombok/sombok-2.3.1.tar.gz
 	md5sums = c22465f4e08ed2b5dd3e144a6a607a5c
 
 pkgname = sombok
-

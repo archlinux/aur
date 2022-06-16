@@ -6,7 +6,7 @@ pkgdesc='Line breaking (line folding) library respecting Unicode'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/linefold/'
 license=('PerlArtistic' 'GPL2')
-source=(http://downloads.sourceforge.net/project/linefold/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/project/linefold/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('c22465f4e08ed2b5dd3e144a6a607a5c')
 depends=('libthai')
 
