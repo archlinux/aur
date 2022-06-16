@@ -1,7 +1,7 @@
 pkgbase = amdmond-bin
 	pkgdesc = AMDGPU temperature and fan speed monitoring tool
 	pkgver = 1.0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = amdmond-bin
 	optdepends = amdguid-glow-bin
 	optdepends = amdguid-wayland-bin
 	optdepends = amdvold-bin
-	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.11/amdmond.tar.gz
+	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.11/amdmond-1.0.11.tar.gz
 	md5sums = 1a880f537a999fde1e9cad0565af3c11
 
 pkgname = amdmond-bin
