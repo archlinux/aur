@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whatsie-git
-pkgver=4.3.r207.3dae93a
+pkgver=4.3.1.r213.122828f
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
