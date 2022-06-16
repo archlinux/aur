@@ -1,0 +1,12 @@
+pkgbase = omnispeak-data
+	pkgdesc = Full game data from GOG for omnispeak
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/en/game/commander_keen_complete_pack
+	arch = any
+	license = custom
+	makedepends = innoextract
+	source = local://setup_commander_keen_1.4_(42493).exe
+	sha256sums = 1c5322e3bc9e5c6be1295e981a310e47b1113d987e6be2720fe975c149b4cf41
+
+pkgname = omnispeak-data
