@@ -1,6 +1,6 @@
 pkgbase = meta-package-manager
 	pkgdesc = A wrapper around all package managers
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://kdeldycke.github.io/meta-package-manager/
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = meta-package-manager
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	makedepends = python-poetry
+	depends = python>=3.7
 	depends = python-boltons
 	depends = python-click
 	depends = python-click-extra
@@ -20,7 +21,7 @@ pkgbase = meta-package-manager
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-xmltodict
-	source = https://github.com/kdeldycke/meta-package-manager/archive/refs/tags/v5.1.0.tar.gz
-	sha512sums = 3af56837b077260ca45311c1314a8ec09acc7535579f37236a7d39554f726f78ff238d6262a7fb3790bd320c1883484f210854a184b362c030b8bac121b6938b
+	source = https://github.com/kdeldycke/meta-package-manager/archive/refs/tags/v5.2.0.tar.gz
+	sha512sums = 9a02bae4d33911c84b49ac73d606587478ea68d2cdc6058601a33248fcb2cc109a7910b8fc492abbfe1a13dfb307627a75986a870813451e219a64864774aa0b
 
 pkgname = meta-package-manager

@@ -1,17 +1,17 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
 makedepends=(python-build python-installer python-wheel python-poetry)
-depends=(python python-boltons python-click python-click-extra python-tabulate python-tomli python-tomli-w python-xmltodict)
+depends=('python>=3.7' python-boltons python-click python-click-extra python-tabulate python-tomli python-tomli-w python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
 license=('GPL2')
 arch=('any')
 source=("https://github.com/kdeldycke/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3af56837b077260ca45311c1314a8ec09acc7535579f37236a7d39554f726f78ff238d6262a7fb3790bd320c1883484f210854a184b362c030b8bac121b6938b')
+sha512sums=('9a02bae4d33911c84b49ac73d606587478ea68d2cdc6058601a33248fcb2cc109a7910b8fc492abbfe1a13dfb307627a75986a870813451e219a64864774aa0b')
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
