@@ -13,5 +13,6 @@ source=("https://github.com/dougy147/scitopdf/archive/refs/heads/master.zip")
 sha256sums=('93589b9f29938f7c7cb84c679f627d695dfaa08a7935717c6a0e3cf87b680cb7')
 
 package() {
+	cd scitopdf-master || exit
 	make install
 }
