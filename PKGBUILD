@@ -3,7 +3,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
 pkgname="${_pkgname}-git"
-pkgver=r2665.5a95ee51
+pkgver=r2676.51175bd8
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 provides=('vita3k')
 conflicts=('vita3k')
 source=(
-	"${pkgname}::git+https://github.com/vita3k/vita3k.git"
+	"${pkgname}::git+https://github.com/Vita3K/Vita3K.git"
 	"vita3k.desktop"
 )
 b2sums=(
@@ -41,6 +41,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
+
 	git submodule update --init --recursive
 }
 
@@ -50,7 +51,7 @@ build() {
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
 
-	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=OFF -DUSE_DISCORD_RICH_PRESENCE=OFF
+	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
 	cmake --build build-linux
 }
 
