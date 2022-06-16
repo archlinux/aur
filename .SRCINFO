@@ -1,20 +1,19 @@
 pkgbase = spek-wxgtk3
-	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and latest ffmpeg)
+	pkgdesc = An acoustic spectrum analyser (compiled against wxGtk3 and ffmpeg4.4)
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spek.cc/
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	depends = desktop-file-utils
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = wxgtk3
 	provides = spek
 	conflicts = spek
 	source = https://github.com/alexkay/spek/archive/v0.8.3.tar.gz
 	source = ffmpeg.patch
-	md5sums = f0d79a50f76e8f793d994425986a1993
-	md5sums = 6068a51d9e8727c908e3de1af26adaba
+	sha256sums = f5c09d0062aaafe882e2e617f6d5db2ab540e2a657c1bee38260f7f0567bf175
+	sha256sums = 79b1bdc7536e39ca6c9c52fddb998b987949f3cc1893b452fd93b4dd371c29ad
 
 pkgname = spek-wxgtk3
-
