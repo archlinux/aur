@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.29
+pkgver=0.7.39
 pkgrel=1
 pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='69dcbe9b3081ee51d1468b1b7777b8b930bfba6c'
+_commit='3a6907b0eab6b5856dbe9f3f8c46fb77c7d6945c'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
   'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'

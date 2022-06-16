@@ -1,6 +1,6 @@
 pkgbase = xemu
 	pkgdesc = Original Xbox Emulator
-	pkgver = 0.7.29
+	pkgver = 0.7.39
 	pkgrel = 1
 	url = https://xemu.app
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = xemu
 	depends = gtk3
 	depends = libslirp
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
-	source = xemu::git+https://github.com/mborgerson/xemu.git#commit=69dcbe9b3081ee51d1468b1b7777b8b930bfba6c
+	source = xemu::git+https://github.com/mborgerson/xemu.git#commit=3a6907b0eab6b5856dbe9f3f8c46fb77c7d6945c
 	source = gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git
 	source = gitlab.com-qemu-project-berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
 	source = github.com-ocornut-imgui::git+https://github.com/ocornut/imgui.git
