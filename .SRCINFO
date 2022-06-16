@@ -17,6 +17,7 @@ pkgbase = krita-plus-git
 	makedepends = sip
 	makedepends = kseexpr
 	makedepends = libmypaint
+	makedepends = git
 	depends = kitemviews
 	depends = kitemmodels
 	depends = ki18n
