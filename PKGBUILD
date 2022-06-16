@@ -2,10 +2,10 @@
 
 makedepends=(python-build python-installer python-poetry python-pytest)
 depends=(python python-yaml python-gobject python-pyotp gtk3 sops)
-source=('https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.1.0.tar.gz')
-sha256sums=('bdc0bdd5bae7e16a7e83db359ed1b2f4eea299ff8e5ef30c52034587b8b67a19')
+source=('https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.1.2.tar.gz')
+sha256sums=('40d393d9f11851bb8c8dab7396d3a2f2dd720318629252ea5451a902ba75765c')
 pkgname=otpgui
-pkgver=0.1.0
+pkgver=0.1.2
 arch=('any')
 license=('GPL')
 pkgrel=1
