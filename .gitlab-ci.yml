@@ -1,0 +1,13 @@
+default:
+  image: harmathy/docker-makepkg
+
+build:
+  script:
+    - sudo pacman --noconfirm -Syu
+    - /bin/bash /run.sh
+  after_script:
+    - cp /work/*.pkg.tar.zst ./
+  artifacts:
+    paths:
+      - "*.pkg.tar.zst"
+
