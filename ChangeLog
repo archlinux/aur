@@ -403,3 +403,18 @@ Fixes:
 - Fixed some formatting issues in the scheduling link reminders.
 - Morgen no longer sends out outdated reminders for booked meetings that have been cancelled or rescheduled by the organizer.
 
+=== Morgen 2.5.6
+New Features:
+- Markdown support: We’re excited to introduce markdown support for task names, letting you highlight what’s most important. You can now style task names, applying bold, italic, or hyperlinks. Since markdown to-dos are common in Todoist, imported tasks will now maintain their style when displayed in Morgen, both in the sidebar and calendar.
+
+ 
+Improvements:
+- New: Danish date-time locale
+- New: Right-click contextual menu in the Agenda view
+- Improved: More robust parsing of malformed CalDAV events
+- Improved: Calendar refresh icon is consistent with the sidebar
+ 
+Fixes:
+- An issue that occurred when copying an event where the new timezone differs from the original one has been fixed
+- Morgen custom notifications on Linux are back on track
+- We fixed an issue that caused possible double bookings from scheduling links when clicking twice on the Confirmation button
