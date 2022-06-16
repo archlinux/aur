@@ -1,3 +1,6 @@
+# Maintainer : bwrsandman
+# Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+
 pkgname=openmw-git
 pkgver=0.47.0.r2799.g28c97c22b9
 pkgrel=1
@@ -5,7 +8,6 @@ pkgdesc="An open-source engine reimplementation for the role-playing game Morrow
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
-# Workaround ffmpeg4.4 https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
 depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost')
@@ -29,7 +31,6 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DDESIRED_QT_VERSION=5 \
         -DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
   make
 }
