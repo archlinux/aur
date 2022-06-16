@@ -1,12 +1,12 @@
 # Maintainer: Ethan Cheng <ethanrc0528 at gmail dot com>
 pkgname='utf-8-steg-git'
-pkgver=0.1.3.r0.g04ed9a1
+pkgver=0.2.0.r0.g4ef777a
 pkgrel=1
 pkgdesc="Encodes/decodes data into zero-width utf-8 characters"
 arch=(any)
 url="https://github.com/yadayadajaychan/utf-8-steg"
 license=('GPL3')
-depends=()
+depends=('glibc' 'openssl')
 makedepends=('git' 'gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	gcc main.c -o utf-8-steg
+	gcc main.c -o utf-8-steg -l crypto
 }
 
 package() {
