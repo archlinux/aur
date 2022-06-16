@@ -9,7 +9,6 @@ pkgbase = shd
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	makedepends = rust>=1.54.0
 	depends = smartmontools
 	source = shd-0.1.4-1.tar.gz::https://github.com/alttch/shd/archive/v0.1.4.tar.gz
 	source = shd-0.1.4-1-fix-cargo-lock.diff::https://github.com/alttch/shd/commit/f446dfed282c94c0f38cd01a81ce62e8fb3bfa38.diff

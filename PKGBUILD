@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 url="https://github.com/alttch/$pkgname"
 license=('MIT')
 depends=('smartmontools')
-makedepends=('cargo' 'rust>=1.54.0')
+makedepends=('cargo')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff::$url/commit/f446dfed282c94c0f38cd01a81ce62e8fb3bfa38.diff"
