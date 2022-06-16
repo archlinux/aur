@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 url="https://github.com/alttch/$_pkgname"
 license=('MIT')
 depends=('smartmontools')
-makedepends=('cargo' 'git' 'rust>=1.54.0')
+makedepends=('cargo' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")

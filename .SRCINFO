@@ -10,7 +10,6 @@ pkgbase = shd-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = rust>=1.54.0
 	depends = smartmontools
 	provides = shd
 	conflicts = shd
