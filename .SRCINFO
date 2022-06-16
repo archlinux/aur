@@ -1,0 +1,20 @@
+pkgbase = kimi-linphone-desktop-beta
+	pkgdesc = The Hello World program.
+	pkgver = 0.0.0.0
+	pkgrel = 0
+	url = http://ftp.gnu.org/gnu
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = libtool
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = gettext
+	makedepends = curl
+	depends = glibc
+	provides = kimi-linphone-desktop-beta
+	conflicts = kimi-linphone-desktop-beta
+	source = kimi-linphone-desktop-beta_0.0.0.0.orig.tar.gz
+	sha256sums = ab344f8dcc5a8e816f6a33dc604f193b9c551ff54ee6e90693ad57483618a7e8
+
+pkgname = kimi-linphone-desktop-beta
