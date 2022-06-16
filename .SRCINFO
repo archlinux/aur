@@ -1,7 +1,7 @@
 pkgbase = cuttlefish-common-git
 	pkgdesc = Cuttlefish host support package.
-	pkgver = 0.9.20
-	pkgrel = 2
+	pkgver = 0.9.24
+	pkgrel = 1
 	url = https://github.com/google/android-cuttlefish
 	install = install.sh
 	arch = any
