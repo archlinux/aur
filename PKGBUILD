@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 changelog=
 source=(http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_$pkgver/E.tgz)
-sha256sums=('8a53dfb7276c10794c3ce98527cfcf977939769e7a5e6dc2eda9b38be3fc404a')
+sha256sums=('aa1f3deaa229151e60d607560301a46cd24b06a51009e0a9ba86071e40d73edd')
 
 build() {
   cd "$srcdir/E"
