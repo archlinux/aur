@@ -1,0 +1,24 @@
+pkgbase = fluffychat-localflutter
+	pkgdesc = Chat with your friends
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://fluffychat.im/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = clang
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	makedepends = unzip
+	makedepends = webkit2gtk
+	depends = gtk3
+	depends = jsoncpp
+	depends = libsecret
+	optdepends = libolm: E2E Encryption support
+	provides = fluffychat-localflutter
+	conflicts = fluffychat
+	source = fluffychat-v1.5.0.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v1.5.0/fluffychat-v1.5.0.tar.gz
+	sha256sums = f71cacae90ca6f1e5748619208dd277eaba81cf401cd4542dfce5f364b505b3a
+
+pkgname = fluffychat-localflutter
