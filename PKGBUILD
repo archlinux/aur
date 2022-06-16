@@ -3,9 +3,9 @@
 pkgname='decay-factory'
 pkgdesc="A simple cli to convert any image to a Decay themed wallpaper"
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/Infinitybeond1/nfetch-src"
+url="https://github.com/decaycs/decay-factory"
 license=('GPL3')
 source=("conv.py::https://raw.githubusercontent.com/decaycs/decay-factory/main/conv.py"
         "decay.sh::https://raw.githubusercontent.com/decaycs/decay-factory/main/decay.sh"
