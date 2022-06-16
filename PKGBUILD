@@ -2,7 +2,7 @@
 _pkgname=gophernicus
 pkgname=${_pkgname}-git
 pkgver=r281.da33900
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, full-featured gopher daemon"
 arch=('any')
 url="https://github.com/gophernicus/gophernicus.git"
@@ -22,7 +22,7 @@ pkgver() {
 
 build(){
     cd "${pkgname}"
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --gopherroot=/srv/gopher --listener=systemd
     make
 }
 
