@@ -7,7 +7,7 @@
 # https://lists.archlinux.org/pipermail/aur-general/2021-May/036230.html
 
 pkgname=noisetorch
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -31,8 +31,8 @@ prepare() {
     cd "$pkgname"
 
     git submodule init
-    git config submodule.c-ringbuf.url "${srcdir}/c-ringbuf"
-    git config submodule.rnnoise.url "${srcdir}/rnnoise"
+    git config submodule."c/c-ringbuf".url "${srcdir}/c-ringbuf"
+    git config submodule."c/rnnoise".url "${srcdir}/rnnoise"
     git submodule update
 }
 
