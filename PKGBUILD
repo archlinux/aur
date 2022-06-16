@@ -1,4 +1,4 @@
-# Maintainer: @RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Anatol Pomozov
 # Contributor: kpcyrd <git@rxv.cc>
@@ -12,7 +12,7 @@ DEBUG=0
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.13.0rc1.r18.ga72753bad
+pkgver=0.13.0.r36.ga433064d7
 pkgrel=2
 epoch=1
 
@@ -143,6 +143,7 @@ package() {
   install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/system/ipfs-gateway.socket"
   # use the hardened service file
   install -Dm 644 misc/systemd/ipfs-hardened.service "$pkgdir/usr/lib/systemd/system/ipfs.service"
+  install -Dm 644 misc/systemd/ipfs-sysusers.conf "${pkgdir}/usr/lib/sysusers.d/ipfs.conf"
 
   install -Dm 644 "$srcdir"/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
