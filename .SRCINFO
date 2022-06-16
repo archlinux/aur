@@ -1,0 +1,18 @@
+pkgbase = dfuzzer
+	pkgdesc = D-Bus fuzzer
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/dbus-fuzzer/dfuzzer
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = gcc
+	makedepends = meson
+	makedepends = pkg-config
+	makedepends = libxslt
+	depends = glib2
+	backup = etc/dfuzzer.conf
+	source = dfuzzer-2.0.tar.gz::https://github.com/dbus-fuzzer/dfuzzer/archive/refs/tags/v2.0.tar.gz
+	sha256sums = a1f556f84f03720aa4015d6d5ab87a684f999f472a86ae14e1b48bcdade45040
+
+pkgname = dfuzzer
