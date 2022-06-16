@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+#
+#   Enable relocations at the linker for give llvm-bolt the possibility to reorder functions
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_RELOCS_SH" ]] && return
+LIBMAKEPKG_BUILDENV_RELOCS_SH=1
+
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('relocs' 'relocs-gcc')
+buildenv_functions+=('buildenv_relocs')
+
+buildenv_relocs() {
+  if check_buildoption "relocs" "y" || check_buildoption "relocs-gcc" "y"; then
+	CFLAGS+=" -fno-reorder-blocks-and-partition"
+	CXXFLAGS+=" -fno-reorder-blocks-and-partition"
+	LDFLAGS+=" -Wl,--emit-relocs"
+	check_buildoption "relocs" "y" && \
+	LDFLAGS+=" -Wl,--emit-relocs"
+  fi
+}

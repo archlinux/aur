@@ -16,19 +16,6 @@ buildenv_functions+=('buildenv_bolt')
 buildenv_bolt() {
   if
   check_buildoption "bolt" "y"; then
-  export CC=~/Documents/llvm/bin/clang
-  export CXX=~/Documents/llvm/bin/clang++
-  export CC_LD=~/Documents/llvm/bin/lld
-  export CXX_LD=~/Documents/llvm/bin/lld
-  export AR=~/Documents/llvm/bin/llvm-ar
-  export NM=~/Documents/llvm/bin/llvm-nm
-  export STRIP=~/Documents/llvm/bin/llvm-strip
-  export OBJCOPY=~/Documents/llvm/bin/llvm-objcopy
-  export OBJDUMP=~/Documents/llvm/bin/llvm-objdump
-  export READELF=~/Documents/llvm/bin/llvm-readelf
-  export RANLIB=~/Documents/llvm/bin/llvm-ranlib
-  export HOSTCC=~/Documents/llvm/bin/clang
-  export HOSTCXX=~/Documents/llvm/bin/clang++
-  export HOSTAR=~/Documents/llvm/bin/llvm-ar
+  export PATH="/home/ptr1337/Documents/llvm/bin:$PATH"
   fi
 }
