@@ -3,7 +3,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-legacy
-pkgver=4.8.6
+pkgver=4.8.7
 pkgrel=1
 pkgdesc="Audio Effects for Pulseaudio Applications, without pipewire"
 arch=($CARCH)
@@ -21,7 +21,7 @@ conflicts=(${pkgname%-*})
 provides=(${pkgname%-*})
 source=("$url/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/wwmm/pulseeffects/7c570c6e1354adedf01f7ba1e8fbe063cfc15ff2/data/pulseeffects.svg")
-sha256sums=('3eb69c43a5a3e7a7551e06afd6efb537e7551cc35f138a6cb6c4fc68edd1e843'
+sha256sums=('d841f27df87b99747349be6b8de62d131422369908fcb57a81f39590437a8099'
             'f9167f96246879eecd907a504b0a70050dc4d90fa520c556c813336974754350')
 
 prepare() {
