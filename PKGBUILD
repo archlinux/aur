@@ -1458,39 +1458,17 @@ package() {
     echo "    fi" >> $INSTALLSCRIPTPATH
     echo "fi" >> $INSTALLSCRIPTPATH
     chmod +x $INSTALLSCRIPTPATH
-    if hash zenity 2>/dev/null; then
-     	zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\n$INSTALLSCRIPTPATH\n\n" &
-    fi
+    #if hash zenity 2>/dev/null; then
+    #    zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\n$INSTALLSCRIPTPATH\n\n" &
+    #fi
 
     if [ -f \"$PACKAGEZSTFULLPATH\" ]; then
-	sudo pamac install \"$PACKAGEZSTFULLPATH\"
+        sudo pamac install \"$PACKAGEZSTFULLPATH\"
     elif [ -f \"$PACKAGETARFULLPATH\" ]; then
-	zstd \"$PACKAGETARFULLPATH\"
-	sudo pamac install \"$PACKAGETARFULLPATH\"
+        zstd \"$PACKAGETARFULLPATH\"
+        sudo pamac install \"$PACKAGETARFULLPATH\"
     fi
     
-    cd ${BUILDDIR}
-    # Change back to default package name in PKGBUILD:
-    linphone_desktop_alphabeta=beta
-    zst_name=$_packager_lowercase-$_app_name-$linphone_desktop_alphabeta
-    echo "Please update pkgname '$pkgname' to '$zst_name'"
-    echo "I will attempt to do it for you..."
-    REPLACELINE="pkgname=${pkgname}"
-    echo "I will change:"
-    echo "    $REPLACELINE"
-    echo "to:"
-    echo "pkgname=$zst_name"
-    sed -i "s|$REPLACELINE|pkgname=$zst_name|g" PKGBUILD
-    setpkgversion=0.0.0.0
-    REPLACELINE="pkgver=$pkgver/./\.}"
-    echo "I will change:"
-    echo "    $REPLACELINE"
-    echo "to:"
-    echo "pkgver=${setpkgversion}"
-    sed -i "s|$REPLACELINE|pkgver=${setpkgversion}|g" PKGBUILD
-    # To see the changes, uncomment the following line:
-    #cat ../../PKGBUILD
-
     echo "There should now exist installable ZST (or TAR) packages in:"
     echo \${BUILDDIR}=${BUILDDIR}
 
