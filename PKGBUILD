@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
 # Workaround ffmpeg4.4 https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
-depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg4.4' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
+depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost')
 conflicts=("${pkgname%-git}")
@@ -26,9 +26,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-
-  # Workardoung ffmpeg4.4 https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
-  export PKG_CONFIG_LIBDIR='/usr/lib/ffmpeg4.4/pkgconfig/'
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
