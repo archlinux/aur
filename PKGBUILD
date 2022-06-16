@@ -3,10 +3,10 @@
 pkgname=eccodes
 pkgver=2.26.0
 _attnum=45757960
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
 arch=("i686" "x86_64")
-url="https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home"
+url="https://confluence.ecmwf.int/display/ECC/ecCodes+Home"
 license=("Apache")
 depends=("openjpeg2" "netcdf")
 makedepends=("gcc-fortran" "cmake")
