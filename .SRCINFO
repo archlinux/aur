@@ -1,14 +1,13 @@
 pkgbase = python2-rtkit
 	pkgdesc = Best Practical RT (Request Tracker) data access python module for REST interface.
-	pkgver = 0.2.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/python-rtkit/
 	arch = any
 	license = Apache
 	makedepends = python2-distribute
 	depends = python2
-	source = http://pypi.python.org/packages/source/p/python-rtkit/python-rtkit-0.2.1.tar.gz
-	md5sums = ff84c4d586eaa8111bae1807025e60b3
+	source = https://files.pythonhosted.org/packages/fe/ef/1150337dc095b6ac35e18be546f0cb763e0c369419cf77c237b803b2cb61/python-rtkit-0.7.2.tar.gz
+	sha256sums = c9ae285cbeaa0a896527fccb6ef0b46970beee954abd2a329cf686b1fcfabbdb
 
 pkgname = python2-rtkit
-
