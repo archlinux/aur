@@ -20,7 +20,12 @@ pkgbase = swaysettings-git
 	depends = xkeyboard-config
 	depends = accountsservice
 	depends = gtk-layer-shell>=0.1
+	depends = libpulse
+	depends = bluez
 	optdepends = swaync-git
+	provides = swaysettings
+	provides = sway-wallpaper
+	provides = sway-autostart
 	source = git+https://github.com/ErikReider/SwaySettings
 	sha256sums = SKIP
 
