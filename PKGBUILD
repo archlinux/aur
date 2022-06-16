@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.18.3
+pkgver=5.18.4
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -91,17 +91,19 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-HID-apple-Properly-handle-function-keys-on-Keychron-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('c70cb405076c3cfd73e4de729430b0342ea21b92a04d8284a03fac664ef1cfea'
+sha256sums=('4b7193476f79c56b0d9988f68777dd0f885a1965e6fd55ec015922aa789492dd'
             'SKIP'
-            '9f4fda38f1c59f7a20a76eff48a0cb302cb0e8e55bda53ec0f1807e10dcdad3a'
+            '4dfb25ec17a6ba9f78fa9c0c4e4202f016d6aa92adb83f9e16a3835a0d067bfa'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
-            '93d720a496ac649851ac8e78bcbea93a54e422eb11ef770e84c4d8693e681925')
+            '7294286511384aa7f7685b7f9cbe1d9729cc2ab8306541c9bdc6a521e2c92cb8'
+            '15a2140a4bbf6b8ef32ddd6f7f65633c4af6aad9ca788c863d2d3fcfc0656fb2')
 
 prepare() {
   cd linux-${pkgver}
