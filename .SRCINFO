@@ -1,6 +1,6 @@
 pkgbase = kimi-linphone-desktop-beta
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included).
-	pkgver = 0.0.0.1
+	pkgver = 0.0.0.0
 	pkgrel = 0
 	url = https://linphone.org
 	install = kimi-linphone-desktop-beta.install

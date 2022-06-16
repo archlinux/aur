@@ -1,7 +1,7 @@
 # Maintainer: Kimi <noreply@nodomain.org>
 
 pkgname=kimi-linphone-desktop-beta
-pkgver=0.0.0.1
+pkgver=0.0.0.0
 pkgrel=0
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included)."
 arch=('x86_64')
@@ -68,7 +68,7 @@ prepare() {
         #cat ../../PKGBUILD
         cd ../../
         # Restart makepkg
-        makepkg -f
+        makepkg -sif
         # Exit this thread since $pkgver is not the latest.
         exit
     fi
@@ -131,7 +131,7 @@ prepare() {
         #cat ../../PKGBUILD
         cd ../../
         # Restart makepkg
-        makepkg -f
+        makepkg -sif
         # Exit this thread since pkver is not the latest.
         exit
     fi
@@ -1429,6 +1429,58 @@ package() {
     echo "--- End listing directories of $pkgdir ---"
 
     echo "------------------------------"
+    PACKAGEARCH=$(uname -m)
+    PACKAGETARFILENAME="${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}.pkg.tar"
+    PACKAGEZSTFILENAME="${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}.pkg.tar.zst"
+    PACKAGETARFULLPATH="${BUILDDIR}/${PACKAGETARFILENAME}"
+    PACKAGEZSTFULLPATH="${BUILDDIR}/${PACKAGEZSTFILENAME}"
+    
+    # Create install script
+    INSTALLSCRIPTPATH=${BUILDDIR}/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
+    echo "#!/bin/bash" > $INSTALLSCRIPTPATH
+    echo "if [ -f \"$PACKAGEZSTFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
+    echo "    sudo pamac install \"$PACKAGEZSTFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "elif [ -f \"$PACKAGETARFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
+    echo "    sudo pamac install \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "else" >> $INSTALLSCRIPTPATH
+    echo "    echo \"Install ZST:\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"Dont forget to check if $pkgname was installed.\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"It should be located in:\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"    ${srcdir}\"" >> $INSTALLSCRIPTPATH
+    echo "    echo" >> $INSTALLSCRIPTPATH
+    echo "    echo \"Install with:\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"    sudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"or:\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"    sudo pacman -U \\\"$PACKAGETARFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
+    echo "    zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nIt should be located in:\n\n${srcdir}\n\nInstall with\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
+    echo "fi" >> $INSTALLSCRIPTPATH
+    chmod +x $INSTALLSCRIPTPATH
+    zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nIt should be located in:\n\n${srcdir}\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
+    
+    cd ${BUILDDIR}
+    # Change back to default package name in PKGBUILD:
+    linphone_desktop_alphabeta=beta
+    zst_name=$_packager_lowercase-$_app_name-$linphone_desktop_alphabeta
+    echo "Please update pkgname '$pkgname' to '$zst_name'"
+    echo "I will attempt to do it for you..."
+    REPLACELINE="pkgname=${pkgname}"
+    echo "I will change:"
+    echo "    $REPLACELINE"
+    echo "to:"
+    echo "pkgname=$zst_name"
+    sed -i "s|$REPLACELINE|pkgname=$zst_name|g" PKGBUILD
+    setpkgversion=0.0.0.0
+    REPLACELINE="pkgver=$pkgver/./\.}"
+    echo "I will change:"
+    echo "    $REPLACELINE"
+    echo "to:"
+    echo "pkgver=${setpkgversion}"
+    sed -i "s|$REPLACELINE|pkgver=${setpkgversion}|g" PKGBUILD
+    # To see the changes, uncomment the following line:
+    #cat ../../PKGBUILD
+
+    echo "There should now exist installable ZST (or TAR) packages in:"
+    echo \${BUILDDIR}=${BUILDDIR}
 
     echo "--- Exiting section package() ---"
 }
