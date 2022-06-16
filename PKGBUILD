@@ -1441,6 +1441,7 @@ package() {
     echo "if [ -f \"$PACKAGEZSTFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
     echo "    sudo pamac install \"$PACKAGEZSTFULLPATH\"" >> $INSTALLSCRIPTPATH
     echo "elif [ -f \"$PACKAGETARFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
+    echo "    zstd \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
     echo "    sudo pamac install \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
     echo "else" >> $INSTALLSCRIPTPATH
     echo "    echo \"Install ZST:\"" >> $INSTALLSCRIPTPATH
@@ -1458,7 +1459,14 @@ package() {
     echo "fi" >> $INSTALLSCRIPTPATH
     chmod +x $INSTALLSCRIPTPATH
     if hash zenity 2>/dev/null; then
-        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
+     	zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\n$INSTALLSCRIPTPATH\n\n" &
+    fi
+
+    if [ -f \"$PACKAGEZSTFULLPATH\" ]; then
+	sudo pamac install \"$PACKAGEZSTFULLPATH\"
+    elif [ -f \"$PACKAGETARFULLPATH\" ]; then
+	zstd \"$PACKAGETARFULLPATH\"
+	sudo pamac install \"$PACKAGETARFULLPATH\"
     fi
     
     cd ${BUILDDIR}
