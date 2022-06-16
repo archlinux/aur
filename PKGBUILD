@@ -2,7 +2,7 @@
 # Contributor: Nils Grunwald <nils@grunwald.fr>
 
 pkgname=jet-bin
-pkgver=0.1.1
+pkgver=0.2.18
 pkgrel=1
 pkgdesc='CLI to transform between JSON, EDN and Transit, powered with a minimal query language.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.zip")
 
-sha256sums_x86_64=('1b4d11cc80d7a1225508b065b1a2650c238e121b3fd7fc34755c26d619d0a059')
+sha256sums_x86_64=('327e06d517ec501842b20a85c7a1d771265f1c2034d17f2ccd6a11cb1a026761')
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"

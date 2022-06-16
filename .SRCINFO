@@ -1,6 +1,6 @@
 pkgbase = jet-bin
 	pkgdesc = CLI to transform between JSON, EDN and Transit, powered with a minimal query language.
-	pkgver = 0.1.1
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/borkdude/jet
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = jet-bin
 	depends = zlib
 	provides = jet
 	conflicts = jet
-	source_x86_64 = https://github.com/borkdude/jet/releases/download/v0.1.1/jet-0.1.1-linux-amd64.zip
-	sha256sums_x86_64 = 1b4d11cc80d7a1225508b065b1a2650c238e121b3fd7fc34755c26d619d0a059
+	source_x86_64 = https://github.com/borkdude/jet/releases/download/v0.2.18/jet-0.2.18-linux-amd64.zip
+	sha256sums_x86_64 = 327e06d517ec501842b20a85c7a1d771265f1c2034d17f2ccd6a11cb1a026761
 
 pkgname = jet-bin
