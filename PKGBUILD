@@ -1,14 +1,14 @@
 # Maintainer:  Charlotte Ausel <ettolrach@disroot.org>
 
 pkgname=otf-edwin
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc="A text font for musical scores"
 arch=('any')
 url="https://github.com/MuseScoreFonts/Edwin"
 license=('OFL')
 source=("https://github.com/MuseScoreFonts/Edwin/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aee59e748fc616867ad40d57d672f7c9ada49e213c1d19fbea33e60ce57b64d7')
+sha256sums=('17a073c27aec6842de81da3a05d8eed4e1be448f732a79f8b48012477abacd89')
 
 package() {
 	cd "$srcdir/Edwin-$pkgver"

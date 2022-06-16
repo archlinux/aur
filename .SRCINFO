@@ -1,11 +1,11 @@
 pkgbase = otf-edwin
 	pkgdesc = A text font for musical scores
-	pkgver = 0.53
+	pkgver = 0.54
 	pkgrel = 1
 	url = https://github.com/MuseScoreFonts/Edwin
 	arch = any
 	license = OFL
-	source = https://github.com/MuseScoreFonts/Edwin/archive/refs/tags/v0.53.tar.gz
-	sha256sums = aee59e748fc616867ad40d57d672f7c9ada49e213c1d19fbea33e60ce57b64d7
+	source = https://github.com/MuseScoreFonts/Edwin/archive/refs/tags/v0.54.tar.gz
+	sha256sums = 17a073c27aec6842de81da3a05d8eed4e1be448f732a79f8b48012477abacd89
 
 pkgname = otf-edwin
