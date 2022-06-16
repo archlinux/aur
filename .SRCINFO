@@ -1,0 +1,17 @@
+pkgbase = gophernicus-git
+	pkgdesc = Modern, full-featured gopher daemon
+	pkgver = r281.da33900
+	pkgrel = 1
+	url = https://github.com/gophernicus/gophernicus.git
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = gophernicus
+	conflicts = gophernicus
+	source = gophernicus-git::git+https://github.com/gophernicus/gophernicus.git
+	md5sums = SKIP
+
+pkgname = gophernicus-git
