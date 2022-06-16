@@ -1,6 +1,6 @@
 pkgbase = mpd-discord-rpc
 	pkgdesc = Displays your currently playing song / album / artist from MPD in Discord using Rich Presence.
-	pkgver = v1.4.1.r0.gdf3b30d
+	pkgver = v1.5.0.r0.12d6259
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
