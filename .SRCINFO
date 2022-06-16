@@ -1,7 +1,7 @@
 pkgbase = r-restfulr
 	pkgdesc = R Interface to RESTful Web Services
-	pkgver = 0.0.13
-	pkgrel = 5
+	pkgver = 0.0.15
+	pkgrel = 1
 	url = https://cran.r-project.org/package=restfulr
 	arch = x86_64
 	license = Artistic2.0
@@ -14,7 +14,7 @@ pkgbase = r-restfulr
 	optdepends = r-getpass
 	optdepends = r-rsolr
 	optdepends = r-runit
-	source = https://cran.r-project.org/src/contrib/restfulr_0.0.13.tar.gz
-	sha256sums = 7b59f5887aaf02f46a80617f4d1e0ffd4e11e4840e9e2fbd486a9a9c7f2d64b6
+	source = https://cran.r-project.org/src/contrib/restfulr_0.0.15.tar.gz
+	sha256sums = 40ff8f1fb2987af2223e1a855bb1680c5ce2143fbce7ebc42f1edb291f80e692
 
 pkgname = r-restfulr
