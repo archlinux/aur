@@ -1,6 +1,6 @@
 pkgbase = wine64-git
 	pkgdesc = A compatibility layer for running Windows programs which is only for 64 bit system.
-	pkgver = 7.2.584.g7ea710c69ba
+	pkgver = 7.10.251.g712c547e086
 	pkgrel = 1
 	url = https://winehq.org
 	arch = x86_64

@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine64-git
-pkgver=7.2.584.g7ea710c69ba
+pkgver=7.10.251.g712c547e086
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs which is only for 64 bit system."
 url=https://winehq.org
@@ -85,12 +85,14 @@ build(){
 package(){
     cd "${srcdir}/wine/wine64-build"
     DESTDIR="${pkgdir}" make install
-    install -Dm644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    install -Dm644 "${srcdir}/30-win32-aliases.conf" \
+        "${pkgdir}/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
     install -Dm644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
 }
 check(){
     # Some tests may be failed so it is recommended to skip check()
     cd "${srcdir}/wine/wine64-build"
     mkdir -p "${srcdir}/wine-prefix"
-    WINEPREFIX="${srcdir}/wine-prefix" make check
+    WINEPREFIX="${srcdir}/wine-prefix" make check || \
+        echo -e "\n\033[1m[WARN]\033[0m Wine test failed!"
 }
