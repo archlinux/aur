@@ -1,20 +1,19 @@
 # Maintainer: b1f6c1c4 <b1f6c1c4@gmail.com>
 pkgname=ajnin
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A Beautiful Ninja generator'
 arch=('any')
 url='https://github.com/b1f6c1c4/ajnin'
 license=('AGPL3')
 depends=('boost>=1.75.0' 'ninja')
-makedepends=('antlr4>=4.9.3' 'cmake>=3.17' 'git' 'pandoc')
+makedepends=('antlr4=4.10.1' 'cmake>=3.17' 'git' 'pandoc')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b4a4507cadc20bb89c538871b7dc6e2ce245b183343b982a441133e068972d9d')
+sha256sums=('0403710c98f4fb42264e48b433486ff8b246f659736dc681d7e6a0baa68e8605')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B "$pkgname-$pkgver/build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
     make -C "$pkgname-$pkgver/build"
-    echo /runtime/Cpp/runtime/thirdparty/utfcpp/ >>"$pkgname-$pkgver/build/antlr4_runtime/src/antlr4_runtime/.git/info/exclude"
     make -C "$pkgname-$pkgver/build" manual
 }
 

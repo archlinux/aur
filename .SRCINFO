@@ -1,17 +1,17 @@
 pkgbase = ajnin
 	pkgdesc = A Beautiful Ninja generator
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/b1f6c1c4/ajnin
 	arch = any
 	license = AGPL3
-	makedepends = antlr4>=4.9.3
+	makedepends = antlr4=4.10.1
 	makedepends = cmake>=3.17
 	makedepends = git
 	makedepends = pandoc
 	depends = boost>=1.75.0
 	depends = ninja
-	source = https://github.com/b1f6c1c4/ajnin/archive/v0.3/ajnin-0.3.tar.gz
-	sha256sums = b4a4507cadc20bb89c538871b7dc6e2ce245b183343b982a441133e068972d9d
+	source = https://github.com/b1f6c1c4/ajnin/archive/v0.4/ajnin-0.4.tar.gz
+	sha256sums = 0403710c98f4fb42264e48b433486ff8b246f659736dc681d7e6a0baa68e8605
 
 pkgname = ajnin
