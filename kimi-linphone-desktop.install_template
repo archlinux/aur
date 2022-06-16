@@ -1,0 +1,540 @@
+post_install() {
+    # --- Variables ---
+    ISRELEASE=false #true/false
+    USELOGFILE=false #true/false
+    app_name=linphone-desktop
+    packagerlowercase=kimi
+    packagerhumanformat=Kimi
+    LOGFILE=/tmp/$packagerlowercase-$app_name-post-install$(date +%s | sha256sum | base64 | head -c 5).log
+    executable=linphone
+    linphone_desktop_major_version=ABCDEFG
+    linphone_desktop_minor_version=HIJKLMN
+    linphone_desktop_micro_version=OPQRSTU
+    linphone_desktop_alphabeta=DEFGHIJ
+    linphone_desktop_alphabeta_number=KLMNOPQ
+    if $ISRELEASE; then
+	# kimi-linphone-desktop
+	package_name=$packagerlowercase-$app_name
+    else
+	# kimi-linphone-desktop-beta
+	package_name=$packagerlowercase-$app_name-$linphone_desktop_alphabeta
+    fi
+    if $ISRELEASE; then
+	# 430
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version
+    else
+	# 430-beta64
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version-$linphone_desktop_alphabeta$linphone_desktop_alphabeta_number
+    fi
+    # linphone430-beta64
+    executable_tag=$executable$linphone_desktop_tag
+    # LINPHONE430-BETA64
+    executable_tag_uppercase=$(echo $executable$linphone_desktop_tag | tr '[:lower:]' '[:upper:]')
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0-beta.64
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version-$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number
+    fi
+
+    # 4.3.0
+    linphone_desktop_release_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0.beta.64
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version.$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number 
+    fi
+    
+    linphone_desktop_parent_dir_prefix=/usr/local/$app_name
+    linphone_desktop_install_parent_reldir=usr/local/$app_name
+    linphone_desktop_install_dir=$linphone_desktop_parent_dir_prefix/$linphone_version
+    linphone_desktop_install_prefix=$linphone_desktop_install_dir
+    menuFileNameTwo=$executable_tag-minimized.desktop
+    menuFullFilePathTwo=/usr/src/packages/BUILD/$package_name/pkg/$package_name$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo
+    # --- End variables ---
+    
+    if $USELOGFILE; then
+	echo "--- post_install() run $(date) ---" > $LOGFILE
+    fi
+
+    # Global variables are not available here
+    if $USELOGFILE; then
+	echo "Global variables are not accessible in this script." >> $LOGFILE
+	echo "All variables must be defined here." >> $LOGFILE
+    fi
+
+    # For all users on the system, enable auto-start if they do not have auto-start enabled already:
+    # Users on the system
+    USERS=$(awk -F':' '{ print $1 }' /etc/passwd)
+    if $USELOGFILE; then
+	echo USERS=$USERS
+    fi
+    for user in $USERS; do
+	if [ -d "/home/$user/.config/autostart" ]; then
+	    if $USELOGFILE; then
+		echo "$user has .config/autostart folder" >> $LOGFILE
+	    fi
+	    OWNER=$(stat -c '%U' "/home/$user/.config/autostart")
+	    GROUPOWNER=$(stat -c '%G' "/home/$user/.config/autostart")
+	    if [ "$OWNER" != "$user" ]; then
+		chown -R $user "/home/$user/.config/autostart"
+	    fi
+	    if [ "$GROUPOWNER" != "$user" ]; then
+		chown -R :$user "/home/$user/.config/autostart"
+	    fi
+	    sleep 1
+	    if [ -n "$(find "/home/$user/.config/autostart" -name linphone*.desktop -print | xargs )" ]; then
+		# echo not empty, 1 equals true
+		FLAG=1
+	    else
+		# echo empty, 0 equals false
+		FLAG=0
+	    fi
+	    if [ $FLAG -eq 1 ] ; then
+		# check if it is this version
+		if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+		    if $USELOGFILE; then
+			echo "auto-start is already enabled for this version... updating the file /home/$user/.config/autostart/$executable_tag-minimized.desktop" >> $LOGFILE
+			rm -f /home/$user/.config/autostart/$executable_tag-minimized.desktop
+			if [ -f /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop ]; then
+			    if $USELOGFILE; then
+				echo "I re-enable auto-start for $user" >> $LOGFILE
+				echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+				cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+				if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+				    echo "auto-start successfully enabled for user $user" >> $LOGFILE
+				    echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+				    chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+				    ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+				fi
+			    else
+				cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+				if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+				    chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop
+				fi
+			    fi
+			fi
+		    fi
+		else
+		    if $USELOGFILE; then
+			echo "auto-start is already enabled for another version of $app_name" >> $LOGFILE
+			echo "keeping what is available:" >> $LOGFILE
+			ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+		    fi
+		fi
+	    else
+		if [ -f /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop ]; then
+		    if $USELOGFILE; then
+			echo "I enable auto-start for $user" >> $LOGFILE
+			echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+			cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+			if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			    echo "auto-start successfully enabled for user $user" >> $LOGFILE
+			    echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+			    chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+			    ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+			fi
+		    else
+			cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+			if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			    chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop 2>/dev/null
+			fi
+		    fi
+		fi
+	    fi
+	else
+	    if $USELOGFILE; then
+		echo "$user has no autostart folder" >> $LOGFILE
+	    fi
+	    if [ -d "/home/$user/.local/share" ]; then
+		if $USELOGFILE; then
+		    echo "$user has .local/share folder" >> $LOGFILE
+		    mkdir -p "/home/$user/.config/autostart" >> $LOGFILE
+		    # echo "change owner of /home/$user/.config/autostart"
+		    chown -R $user:$user "/home/$user/.config/autostart"
+		    echo "I enable auto-start for $user" >> $LOGFILE
+		    echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+		    cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+		    if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			echo "auto-start successfully enabled for user $user" >> $LOGFILE
+			echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+			chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+			ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+		    fi
+		else
+		    mkdir -p "/home/$user/.config/autostart"
+		    # echo "change owner of /home/$user/.config/autostart"
+		    chown -R $user:$user "/home/$user/.config/autostart"
+		    cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+		    if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop 2>/dev/null
+		    fi
+		fi
+	    else
+		if $USELOGFILE; then
+		    echo "$user probably not real user" >> $LOGFILE
+		fi
+	    fi
+	fi
+    done
+    if $USELOGFILE; then
+	chown devel:devel $LOGFILE 2>/dev/null
+    fi
+    # Filter out x-scheme-handler/sip from /usr/share/applications/mimeapps.list
+    # CURRENT_SIP_MIME_HANDLING=$(cat /usr/share/applications/mimeapps.list | grep 'x-scheme-handler/sip' | cut -d'=' -f2)
+    # Remove existing URI sip handler
+    # sed -i '/x-scheme-handler\/sip/d' /usr/share/applications/mimeapps.list
+    # Add URI sip handler
+    # echo "x-scheme-handler/sip=$executable_tag.desktop,$CURRENT_SIP_MIME_HANDLING" >> /usr/share/applications/mimeapps.list
+    update-desktop-database /usr/share/applications
+    update-mime-database /usr/share/mime
+    xdg-mime default $executable_tag.desktop x-scheme-handler/sip
+    # Update mime database
+    update-desktop-database /usr/share/applications
+    update-mime-database /usr/share/mime
+    # Update icon cache
+    touch /usr/share/icons/hicolor
+    gtk-update-icon-cache /usr/share/icons/hicolor
+}
+
+post_upgrade() {
+    # --- Variables ---
+    ISRELEASE=false #true/false
+    USELOGFILE=false #true/false
+    app_name=linphone-desktop
+    packagerlowercase=kimi
+    LOGFILE=/tmp/$packagerlowercase-$app_name-post-upgrade$(date +%s | sha256sum | base64 | head -c 5).log
+    executable=linphone
+    linphone_desktop_major_version=ABCDEFG
+    linphone_desktop_minor_version=HIJKLMN
+    linphone_desktop_micro_version=OPQRSTU
+    linphone_desktop_alphabeta=DEFGHIJ
+    linphone_desktop_alphabeta_number=KLMNOPQ
+    if $ISRELEASE; then
+	# kimi-linphone-desktop
+	package_name=$packagerlowercase-$app_name
+    else
+	# kimi-linphone-desktop-beta
+	package_name=$packagerlowercase-$app_name-$linphone_desktop_alphabeta
+    fi
+    if $ISRELEASE; then
+	# 430
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version
+    else
+	# 430-beta64
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version-$linphone_desktop_alphabeta$linphone_desktop_alphabeta_number
+    fi
+    # linphone430-beta64
+    executable_tag=$executable$linphone_desktop_tag
+    # LINPHONE430-BETA64
+    executable_tag_uppercase=$(echo $executable$linphone_desktop_tag | tr '[:lower:]' '[:upper:]')
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0-beta.64
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version-$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number
+    fi
+
+    # 4.3.0
+    linphone_desktop_release_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0.beta.64
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version.$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number 
+    fi
+    
+    linphone_desktop_parent_dir_prefix=/usr/local/$app_name
+    linphone_desktop_install_parent_reldir=usr/local/$app_name
+    linphone_desktop_install_dir=$linphone_desktop_parent_dir_prefix/$linphone_version
+    linphone_desktop_install_prefix=$linphone_desktop_install_dir
+    menuFileNameTwo=$executable_tag-minimized.desktop
+    menuFullFilePathTwo=/usr/src/packages/BUILD/$package_name/pkg/$package_name$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo
+    # --- End variables ---
+
+    if $USELOGFILE; then
+	today=$(date)
+	echo "--- post_upgrade() run $today ---" > $LOGFILE
+    fi
+
+    # Global variables are not available here
+    if $USELOGFILE; then
+	echo "Global variables are not accessible in this script." >> $LOGFILE
+	echo "All variables must be defined here." >> $LOGFILE
+    fi
+
+    # For all users on the system, enable auto-start if they do not have auto-start enabled already:
+    # Users on the system
+    USERS=$(awk -F':' '{ print $1 }' /etc/passwd)
+    if $USELOGFILE; then
+	echo USERS=$USERS
+    fi
+    for user in $USERS; do
+	if [ -d "/home/$user/.config/autostart" ]; then
+	    if $USELOGFILE; then
+		echo "$user has .config/autostart folder"
+	    fi
+	    OWNER=$(stat -c '%U' "/home/$user/.config/autostart")
+	    GROUPOWNER=$(stat -c '%G' "/home/$user/.config/autostart")
+	    if [ "$OWNER" != "$user" ]; then
+		chown -R $user "/home/$user/.config/autostart"
+	    fi
+	    if [ "$GROUPOWNER" != "$user" ]; then
+		chown -R :$user "/home/$user/.config/autostart"
+	    fi
+	    sleep 1
+	    if [ -n "$(find "/home/$user/.config/autostart" -name linphone*.desktop -print | xargs )" ]; then
+		# echo not empty, 1 equals true
+		FLAG=1
+	    else
+		# echo empty, 0 equals false
+		FLAG=0
+	    fi
+	    if [ $FLAG -eq 1 ] ; then
+		# check if it is this version
+		if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+		    if $USELOGFILE; then
+			echo "auto-start is already enabled for this version... updating the file /home/$user/.config/autostart/$executable_tag-minimized.desktop" >> $LOGFILE
+			rm -f /home/$user/.config/autostart/$executable_tag-minimized.desktop
+			if [ -f /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop ]; then
+			    if $USELOGFILE; then
+				echo "I re-enable auto-start for $user" >> $LOGFILE
+				echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+				cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+				if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+				    echo "auto-start successfully enabled for user $user" >> $LOGFILE
+				    echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+				    chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+				    ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+				fi
+			    else
+				cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+				if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+				    chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop
+				fi
+			    fi
+			fi
+		    fi
+		else
+		    if $USELOGFILE; then
+			echo "auto-start is already enabled for another version of $app_name" >> $LOGFILE
+			echo "keeping what is available:" >> $LOGFILE
+			ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+		    fi
+		fi
+	    else
+		if [ -f /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop ]; then
+		    if $USELOGFILE; then
+			echo "I enable auto-start for $user" >> $LOGFILE
+			echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+			cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+			if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			    echo "auto-start successfully enabled for user $user" >> $LOGFILE
+			    echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+			    chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+			    ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+			fi
+		    else
+			cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+			if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			    chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop
+			fi
+		    fi
+		fi
+	    fi
+	else
+	    if $USELOGFILE; then
+		echo "$user has no autostart folder" >> $LOGFILE
+	    fi
+	    if [ -d "/home/$user/.local/share" ]; then
+		if $USELOGFILE; then
+		    echo "$user has .local/share folder" >> $LOGFILE
+		    mkdir -p /home/$user/.config/autostart >> $LOGFILE
+		    # echo "change owner of /home/$user/.config/autostart"
+		    chown -R $user:$user "/home/$user/.config/autostart"
+		    echo "I enable auto-start for $user" >> $LOGFILE
+		    echo "cp \"$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo\"" "/home/\$user/.config/autostart" >> $LOGFILE
+		    cp -v /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart >> $LOGFILE
+		    if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			echo "auto-start successfully enabled for user $user" >> $LOGFILE
+			echo "changing ownership of /home/$user/.config/autostart/$executable_tag-minimized.desktop to $user:$user" >> $LOGFILE
+			chown -v $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+			ls -lrt -d /home/$user/.config/autostart/{*,.*} >> $LOGFILE
+		    fi
+		else
+		    mkdir -p "/home/$user/.config/autostart" 
+		    # echo "change owner of /home/$user/.config/autostart"
+		    chown -R $user:$user "/home/$user/.config/autostart"
+		    cp /usr/local/$app_name/$linphone_version/share/applications/$executable_tag-minimized.desktop /home/$user/.config/autostart
+		    if [ -f /home/$user/.config/autostart/$executable_tag-minimized.desktop ]; then
+			chown $user:$user /home/$user/.config/autostart/$executable_tag-minimized.desktop
+		    fi
+		fi
+	    else
+		if $USELOGFILE; then
+		    echo "$user probably not real user" >> $LOGFILE
+		fi
+	    fi
+	fi
+    done
+    if $USELOGFILE; then
+	chown devel:devel $LOGFILE 2>/dev/null
+    fi
+    # Filter out x-scheme-handler/sip from /usr/share/applications/mimeapps.list
+    # CURRENT_SIP_MIME_HANDLING=$(cat /usr/share/applications/mimeapps.list | grep 'x-scheme-handler/sip' | cut -d'=' -f2)
+    # Remove existing URI sip handler
+    # sed -i '/x-scheme-handler\/sip/d' /usr/share/applications/mimeapps.list
+    # Add URI sip handler
+    # echo "x-scheme-handler/sip=$executable_tag.desktop,$CURRENT_SIP_MIME_HANDLING" >> /usr/share/applications/mimeapps.list
+    update-desktop-database /usr/share/applications
+    update-mime-database /usr/share/mime
+    xdg-mime default $executable_tag.desktop x-scheme-handler/sip
+    # Update mime database
+    update-desktop-database /usr/share/applications
+    update-mime-database /usr/share/mime
+    # Update icon cache
+    touch /usr/share/icons/hicolor
+    gtk-update-icon-cache /usr/share/icons/hicolor
+}
+
+post_remove() {
+    # --- Variables ---
+    ISRELEASE=false #true/false
+    USELOGFILE=false #true/false
+    app_name=linphone-desktop
+    packagerlowercase=kimi
+    LOGFILE=/tmp/$packagerlowercase-$app_name-post-upgrade$(date +%s | sha256sum | base64 | head -c 5).log
+    executable=linphone
+    linphone_desktop_major_version=ABCDEFG
+    linphone_desktop_minor_version=HIJKLMN
+    linphone_desktop_micro_version=OPQRSTU
+    linphone_desktop_alphabeta=DEFGHIJ
+    linphone_desktop_alphabeta_number=KLMNOPQ
+    if $ISRELEASE; then
+	# kimi-linphone-desktop
+	package_name=$packagerlowercase-$app_name
+    else
+	# kimi-linphone-desktop-beta
+	package_name=$packagerlowercase-$app_name-$linphone_desktop_alphabeta
+    fi
+    if $ISRELEASE; then
+	# 430
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version
+    else
+	# 430-beta64
+	linphone_desktop_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version-$linphone_desktop_alphabeta$linphone_desktop_alphabeta_number
+    fi
+    # linphone430-beta64
+    executable_tag=$executable$linphone_desktop_tag
+    # LINPHONE430-BETA64
+    executable_tag_uppercase=$(echo $executable$linphone_desktop_tag | tr '[:lower:]' '[:upper:]')
+    if $ISRELEASE; then
+	# 440
+	linphone_desktop_condensed_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version
+    else
+	# 440alpha1
+	linphone_desktop_condensed_tag=$linphone_desktop_major_version$linphone_desktop_minor_version$linphone_desktop_micro_version$linphone_desktop_alphabeta$linphone_desktop_alphabeta_number
+    fi
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0-beta.64
+	linphone_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version-$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number
+    fi
+
+    # 4.3.0
+    linphone_desktop_release_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    if $ISRELEASE; then
+	# 4.3.0
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version
+    else
+	# 4.3.0.beta.64
+	linphone_desktop_version=$linphone_desktop_major_version.$linphone_desktop_minor_version.$linphone_desktop_micro_version.$linphone_desktop_alphabeta.$linphone_desktop_alphabeta_number 
+    fi
+    
+    linphone_desktop_parent_dir_prefix=/usr/local/$app_name
+    linphone_desktop_install_parent_reldir=usr/local/$app_name
+    linphone_desktop_install_dir=$linphone_desktop_parent_dir_prefix/$linphone_version
+    linphone_desktop_install_prefix=$linphone_desktop_install_dir
+    linphone_desktop_icon_filename=$executable$linphone_desktop_condensed_tag.svg
+    menuFileNameTwo=$executable_tag-minimized.desktop
+    menuFullFilePathTwo=/usr/src/packages/BUILD/$package_name/pkg/$package_name$linphone_desktop_install_prefix/share/applications/$menuFileNameTwo
+    # --- End variables ---
+
+
+    if $USELOGFILE; then
+	today=$(date)
+	echo "--- post_remove() run $today ---" > $LOGFILE
+    fi
+    
+    # Global variables are not available here
+    if $USELOGFILE; then
+	echo "Global variables are not accessible in this script." >> $LOGFILE
+	echo "All variables must be defined here." >> $LOGFILE
+    fi
+    
+    # For all users on the system, enable auto-start if they do not have auto-start enabled already:
+    # Users on the system
+    USERS=$(awk -F':' '{ print $1 }' /etc/passwd)
+    if $USELOGFILE; then
+	echo USERS=$USERS
+    fi
+    for user in $USERS; do
+	if [ -d "/home/$user/.local/share/icons/hicolor" ]; then
+	    if $USELOGFILE; then
+		echo "User $user\ has directory /home/$user/.local/share/icons/hicolor" >> $LOGFILE
+		echo "rm -f home/$user/.local/share/icons/hicolor/scalable/apps/linphone$linphone_desktop_tag.svg" >> $LOGFILE
+		rm -v -f "/home/$user/.local/share/icons/hicolor/scalable/apps/$linphone_desktop_icon_filename" >> $LOGFILE
+		echo "Deleted /home/$user/.local/share/icons/hicolor/scalable/apps/$linphone_desktop_icon_filename" >> $LOGFILE
+		echo "touch /home/$user/.local/share/icons/hicolor" >> $LOGFILE
+	    else
+		rm -f "/home/$user/.local/share/icons/hicolor/scalable/apps/$linphone_desktop_icon_filename"
+	    fi
+	    touch "/home/$user/.local/share/icons/hicolor"
+	    if $USELOGFILE; then
+		echo "gtk-update-icon-cache /home/$user/.local/share/icons/hicolor > /dev/null" >> $LOGFILE
+		echo "touch /home/$user/.local/share/icons/hicolor" >> $LOGFILE
+		gtk-update-icon-cache "/home/$user/.local/share/icons/hicolor" >> $LOGFILE
+	    else
+		gtk-update-icon-cache "/home/$user/.local/share/icons/hicolor" > /dev/null       
+	    fi
+	fi
+	if [ -d "/home/$user/.local/share/applications" ]; then
+	    if $USELOGFILE; then
+		echo "User $user\ has directory /home/$user/.local/share/applications" >> $LOGFILE
+		echo "rm -f home/$user/.local/share/applications/linphone$linphone_desktop_tag.desktop" >> $LOGFILE
+		rm -v -f "/home/$user/.local/share/applications/linphone$linphone_desktop_tag.desktop" >> $LOGFILE
+		echo "Deleted /home/$user/.local/share/applications/linphone$linphone_desktop_tag.desktop" >> $LOGFILE
+	    fi
+	fi
+	if [ -d "/home/$user/.config/autostart" ]; then
+	    echo "User $user has directory /home/$user/.config/autostart" >> $LOGFILE
+	    echo "rm -f /home/$user/.config/autostart/$executable_tag-minimized.desktop" >> $LOGFILE
+	    rm -f /home/$user/.config/autostart/$executable_tag-minimized.desktop >> $LOGFILE
+	    echo "Deleted /home/$user/.config/autostart/linphone$linphone_desktop_tag-minimized.desktop" >> $LOGFILE
+	fi
+	if $USELOGFILE; then
+	    echo  >> $LOGFILE
+	    echo "[OK] Completely removed $app_name $linphone_version" >> $LOGFILE
+	fi
+	if $USELOGFILE; then
+	    chown devel:devel $LOGFILE 2>/dev/null
+	fi
+    done
+    # Remove $executable_tag.desktop from existing URI sip handler
+    if [ -f /usr/share/applications/mimeapps.list ]; then
+	sed -i 's/$executable_tag.desktop//g' /usr/share/applications/mimeapps.list
+    fi
+    # Update mime database
+    update-desktop-database /usr/share/applications
+    update-mime-database /usr/share/mime
+    # Update icon cache
+    touch /usr/share/icons/hicolor
+    gtk-update-icon-cache /usr/share/icons/hicolor
+}
