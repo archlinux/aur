@@ -1,14 +1,14 @@
 pkgbase = r-inaparc
 	pkgdesc = Initialization Algorithms for Partitioning Cluster Analysis
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=inaparc
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-kpeaks
 	depends = r-lhs
-	source = https://cran.r-project.org/src/contrib/inaparc_1.1.0.tar.gz
-	sha256sums = 039699f58f527c14380f3c6d12f939ddbee3969b10238922bb3eec43e722235a
+	source = https://cran.r-project.org/src/contrib/inaparc_1.2.0.tar.gz
+	sha256sums = 6e60d43ec71c289805102f95a675dc2a8445ed891e471e9c22928be0cb137578
 
 pkgname = r-inaparc
