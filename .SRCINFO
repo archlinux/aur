@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.18.4
+	pkgver = 5.18.5
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = linux-ck
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.18.4.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.18.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.18.5.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.18.5.tar.sign
 	source = config
 	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
 	source = ck-hrtimer-5d3a0424bdbfdf2fc4cca389bf0f1ee4876e782d.tar.gz::https://github.com/graysky2/linux-patches/archive/5d3a0424bdbfdf2fc4cca389bf0f1ee4876e782d.tar.gz
