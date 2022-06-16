@@ -26,8 +26,8 @@ source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#ta
 # + kimi-linphone-desktop-beta
 #
 # ... depending on what $(git describe) output is.
-provides=('kimi-linphone-desktop-beta')
-conflicts=('kimi-linphone-desktop-beta')
+provides=($pkgname)
+conflicts=($pkgname)
 md5sums=('SKIP')
 ISRELEASE=false
 _app_name=linphone-desktop
