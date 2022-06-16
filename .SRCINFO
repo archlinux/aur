@@ -1,7 +1,7 @@
 pkgbase = r-tcgabiolinks
 	pkgdesc = TCGAbiolinks: An R/Bioconductor package for integrative analysis with GDC data
-	pkgver = 2.24.1
-	pkgrel = 3
+	pkgver = 2.24.2
+	pkgrel = 1
 	url = https://bioconductor.org/packages/TCGAbiolinks
 	arch = any
 	license = GPL
@@ -63,7 +63,7 @@ pkgbase = r-tcgabiolinks
 	optdepends = r-survminer
 	optdepends = r-sva
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAbiolinks_2.24.1.tar.gz
-	sha256sums = 24dc728f1ba157047a01f6061af3b4b32275a4e339c0e38ebc11d48e5ea6844f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TCGAbiolinks_2.24.2.tar.gz
+	sha256sums = 8dcbd2a54cd7d1743cd4d8f643723f4d7ebd497630bd5693f294751746be36e6
 
 pkgname = r-tcgabiolinks
