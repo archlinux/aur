@@ -1,0 +1,16 @@
+pkgbase = talhelper-bin
+	pkgdesc = A tool to help creating Talos cluster in GitOps way.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/budimanjojo/talhelper
+	license = BSD-3-Clause
+	conflicts = talhelper
+	provides = talhelper
+	arch = aarch64
+	source_aarch64 = https://github.com/budimanjojo/talhelper/releases/download/v1.2.1/talhelper_linux_arm64.tar.gz
+	sha256sums_aarch64 = e3cf0ec9cdcee9db25e4a5a8732d87a27beea33548fbf54f5009a837b240442f
+	arch = x86_64
+	source_x86_64 = https://github.com/budimanjojo/talhelper/releases/download/v1.2.1/talhelper_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8c141b5648e960b96134314ab458c6717b536f57587c70eebe1a1c4b57a9d59b
+	
+pkgname = talhelper-bin
