@@ -1,0 +1,13 @@
+pkgbase = python2-colorama
+	pkgdesc = Simple cross-platform colored terminal text in Python
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/tartley/colorama
+	arch = any
+	license = BSD
+	checkdepends = python2-mock
+	depends = python2
+	source = python2-colorama-0.4.5.tar.gz::https://github.com/tartley/colorama/archive/refs/tags/0.4.5.tar.gz
+	sha256sums = b6fcb66accc1ef6106b564ca39f616f065f35c9d07bc1c04d2c219b381f5a557
+
+pkgname = python2-colorama
