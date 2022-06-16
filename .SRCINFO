@@ -1,18 +1,18 @@
 pkgbase = zfs-dkms
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 2.1.4+65.r05147319b0
-	pkgrel = 2
+	pkgver = 2.1.4+88.rfc18fa92c8
+	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = any
 	license = CDDL
 	makedepends = git
-	provides = ZFS-MODULE=2.1.4+65.r05147319b0
-	provides = SPL-MODULE=2.1.4+65.r05147319b0
+	provides = ZFS-MODULE=2.1.4+88.rfc18fa92c8
+	provides = SPL-MODULE=2.1.4+88.rfc18fa92c8
 	provides = spl-dkms
 	provides = zfs
 	conflicts = spl-dkms
 	replaces = spl-dkms
-	source = git+https://github.com/openzfs/zfs.git#commit=05147319b0821f61fcff743e20605e191d523906
+	source = git+https://github.com/openzfs/zfs.git#commit=fc18fa92c8cf3bd8febed784a15804e86aa08cb5
 	source = 0001-only-build-the-module-in-dkms.conf.patch
 	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
 	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
@@ -22,5 +22,5 @@ pkgbase = zfs-dkms
 	b2sums = 58dc2494e71b50833d44c126b72acad52e9817626542afbc245b7ba82009e8c8252ebde6023592aac42d9942207e7655c0a421da9067fbdd619746ebc372d791
 
 pkgname = zfs-dkms
-	depends = zfs-utils=2.1.4+65.r05147319b0
+	depends = zfs-utils=2.1.4+88.rfc18fa92c8
 	depends = dkms

@@ -4,8 +4,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-dkms
-pkgver=2.1.4+65.r05147319b0
-pkgrel=2
+pkgver=2.1.4+88.rfc18fa92c8
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -17,7 +17,7 @@ provides+=('zfs')
 replaces=('spl-dkms')
 makedepends=('git')
 #source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
-source=("git+https://github.com/openzfs/zfs.git#commit=05147319b0821f61fcff743e20605e191d523906"
+source=("git+https://github.com/openzfs/zfs.git#commit=fc18fa92c8cf3bd8febed784a15804e86aa08cb5"
         "0001-only-build-the-module-in-dkms.conf.patch")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5')
