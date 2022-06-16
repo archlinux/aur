@@ -1446,19 +1446,19 @@ package() {
     echo "    echo \"Install ZST:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"Dont forget to check if $pkgname was installed.\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"It should be located in:\"" >> $INSTALLSCRIPTPATH
-    echo "    echo \"    ${srcdir}\"" >> $INSTALLSCRIPTPATH
+    echo "    echo \"    ${BUILDDIR}\"" >> $INSTALLSCRIPTPATH
     echo "    echo" >> $INSTALLSCRIPTPATH
     echo "    echo \"Install with:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"    sudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"or:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"    sudo pacman -U \\\"$PACKAGETARFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
     echo "    if hash zenity 2>/dev/null; then" >> $INSTALLSCRIPTPATH
-    echo "        zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nInstall with\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
+    echo "        zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nInstall with terminal command:\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
     echo "    fi" >> $INSTALLSCRIPTPATH
     echo "fi" >> $INSTALLSCRIPTPATH
     chmod +x $INSTALLSCRIPTPATH
     if hash zenity 2>/dev/null; then
-        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
+        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\nsudo pacman -U \"$PACKAGEZSTFULLPATH\"\n\n"
     fi
     
     cd ${BUILDDIR}
