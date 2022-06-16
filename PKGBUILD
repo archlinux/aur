@@ -1,8 +1,8 @@
 # Maintainer: 261519 <jonathan.j.rayner@gmail.com>
 # Contributor: asermax <asermax@gmail.com>
 pkgname=kaggle-api
-_name=kaggle
-pkgver=1.5.10
+_name=${pkgname%-api}
+pkgver=1.5.12
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 arch=('any')
@@ -18,18 +18,17 @@ depends=(
   'python-tqdm'
   'python-slugify'
 )
-makedepends=(
-  'python-setuptools'
-)
-source=("git+$url")
-sha512sums=('SKIP')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+replaces=('kaggle-api')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('b4d87d107bff743aaa805c2b382c3661c4c175cdb159656d4972be2a9cef42cb')
 
 build() {
-  cd "$srcdir"/$pkgname
-  python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/$pkgname
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
