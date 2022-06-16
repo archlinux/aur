@@ -3,14 +3,14 @@
 # Contributor: Ariadna Vigo
 
 pkgname=minitimer
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${pkgname}"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~arivigo/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7fba7ee09ccbbd2c749d4382a5e2399591acbcee700723fe32895b91ba95a01b')
+sha256sums=('3c19c1a55d74f400fcc6663de6118e54420f0dde475ba1e5233a749281320164')
 conflicts=("${pkgname}-git")
 
 build() {
