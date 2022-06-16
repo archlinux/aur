@@ -1,0 +1,11 @@
+pkgbase = umeet
+	pkgdesc = Umeet - https://www.umeet.com.cn/
+	pkgver = 5.5.105.0315
+	pkgrel = 0
+	url = https://www.umeet.com.cn/
+	arch = x86_64
+	license = custom
+	source = umeet_5.5.105.0315_amd64.deb::https://didivc.systeccloud.com/client/latest/umeet_amd64.deb
+	sha256sums = 6195ffe2bf7c182c59e1a95b3f9d7bb1242dc25c3a8ad02c4b7d5d79ad0a84ee
+
+pkgname = umeet
