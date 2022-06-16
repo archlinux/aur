@@ -22,7 +22,7 @@ pkgver() {
 
 build(){
     cd "${pkgname}"
-    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --gopherroot=/srv/gopher --listener=systemd
+    ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --gopherroot=/srv/gopher --listener=systemd --systemd=/usr/lib/systemd/system
     make
 }
 
