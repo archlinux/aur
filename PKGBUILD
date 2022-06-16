@@ -3,7 +3,7 @@
 
 _pkgname="droidcam-obs-plugin"
 pkgname="${_pkgname}-bin"
-pkgver="1.3"
+pkgver="1.5.1"
 pkgrel="1"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
