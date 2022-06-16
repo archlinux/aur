@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/archlinux/archiso"
 depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
-'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup')
+'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
 replaces=('archiso')
