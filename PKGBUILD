@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Marc Schulte <bomba@nerdstube.de>
 
 pkgbase=tlp-git
@@ -6,7 +7,7 @@ pkgname=(
   tlp-git
   tlp-rdw-git
 )
-pkgver=1.3.1.r184.dc41e02
+pkgver=1.5.0.r10.135756d
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -14,6 +15,7 @@ license=(GPL2)
 makedepends=(git)
 source=(git+https://github.com/linrunner/TLP.git)
 sha256sums=(SKIP)
+install=tlp.install
 
 pkgver() {
   cd TLP
@@ -27,6 +29,7 @@ package_tlp-git() {
     hdparm
     iw
     pciutils
+    perl
     rfkill
     usbutils
     util-linux
@@ -37,15 +40,15 @@ package_tlp-git() {
     'ethtool: Disable Wake On Lan'
     'smartmontools: Display S.M.A.R.T. data in tlp-stat'
     'tp_smapi: ThinkPad battery functions'
-    'x86_energy_perf_policy: Set energy versus performance policy on x86 processors'
   )
   provides=(tlp)
   conflicts=(
     laptop-mode-tools
     pm-utils
+    power-profiles-daemon
     tlp
   )
-  backup=(etc/default/tlp)
+  backup=(etc/tlp.conf)
 
   export TLP_NO_INIT=1
   export TLP_SBIN=/usr/bin

@@ -1,0 +1,9 @@
+post_upgrade() {
+  if [ $(vercmp $2 1.3.0) -lt 0 ]; then
+    cat << EOF
+The default TLP configuration has moved from /etc/default/tlp to /etc/tlp.conf.
+The syntax is the same, you can move your old configuration or start fresh.
+EOF
+  fi
+}
+
