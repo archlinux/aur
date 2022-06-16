@@ -11,7 +11,7 @@ url='https://github.com/gjcarneiro/pybindgen'
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 # Note: pygccxml does not support Python 3 yet
 #optdepends=('gccxml' 'pygccxml')
 source=("https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-${pkgver}.tar.gz")

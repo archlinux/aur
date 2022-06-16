@@ -7,6 +7,7 @@ pkgbase = python-pybindgen
 	arch = x86_64
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	source = https://pypi.python.org/packages/source/P/PyBindGen/PyBindGen-0.22.1.tar.gz
 	md5sums = a082555346450f008d68c337c2e175d0
