@@ -13,6 +13,6 @@ source=("https://github.com/dougy147/scitopdf/archive/refs/heads/master.zip")
 sha256sums=('93589b9f29938f7c7cb84c679f627d695dfaa08a7935717c6a0e3cf87b680cb7')
 
 package() {
-	cp "$srcdir/scitopdf-master/bin/scitopdf" "$pkgdir/usr/bin/scitopdf"
-	cp "$srcdir/scitopdf-master/scitopdf.1" "$pkgdir/usr/share/man/man1/scitopdf.1"
+	install -D -m755 "$srcdir/scitopdf-master/bin/scitopdf" "$pkgdir/usr/bin/scitopdf"
+	install -D -m644 "$srcdir/scitopdf-master/scitopdf.1" "$pkgdir/usr/share/man/man1/scitopdf.1"
 }
