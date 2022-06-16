@@ -3,8 +3,8 @@
 
 _name="material-shell"
 pkgname="gnome-shell-extension-${_name}"
-pkgver="40.a"
-pkgrel="2"
+pkgver="42"
+pkgrel="1"
 pkgdesc='Tiling window extension for GNOME, following Material Design guidelines'
 arch=('x86_64')
 url="https://github.com/${_name}/${_name}"
