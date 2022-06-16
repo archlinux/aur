@@ -5,7 +5,7 @@ pkgname=fluffychat-localflutter
 _pkgname=fluffychat
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="Chat with your friends"
+pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
@@ -23,7 +23,7 @@ conflicts=("$_pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
 sha256sums=('f71cacae90ca6f1e5748619208dd277eaba81cf401cd4542dfce5f364b505b3a')
 
-# Check the fluffer environment your self
+# Check the fluffer environment yourself
 
 build() {
 
