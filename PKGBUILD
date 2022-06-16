@@ -1,8 +1,8 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=kdisplay-kwinft
-pkgver=5.24.0
-_pkgver=5.24.0
+pkgver=5.25.0
+_pkgver=5.25.0
 pkgrel=1
 pkgdesc='App and daemon for display managing'
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=(kdisplay)
 conflicts=(kdisplay)
 makedepends=(extra-cmake-modules)
 source=("https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@$_pkgver/kdisplay-kdisplay@$_pkgver.tar.gz")
-md5sums=('39995f009020a9ce0079043e62ce3c96')
+md5sums=('35618782d8d31a4feb26dcc1d1a951ba')
 
 prepare() {
   tar -xvf kdisplay-kdisplay@$_pkgver.tar.gz
