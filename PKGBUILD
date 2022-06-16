@@ -2,12 +2,12 @@
 
 pkgname=citations-git
 pkgver=r194.54a77ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your bibliographies using the BibTeX format"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/citations"
 license=('GPL3')
-depends=('libadwaita-git' 'poppler')
+depends=('libadwaita-git' 'poppler' 'gtksourceview5')
 makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
