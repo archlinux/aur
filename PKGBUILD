@@ -3,7 +3,7 @@
 pkgname=aom-av1-psy-git
 pkgver=r32575.76388f643
 pkgrel=1
-pkgdesc="aomenc-av1 psy fork "
+pkgdesc="aomenc-av1 psy fork"
 url="https://github.com/BlueSwordM/aom-av1-psy"
 arch=(x86_64)
 provides=(aom)
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cmake -S ${pkgname%-git} -B build -G Ninja \
+    -DCONFIG_TUNE_VMAF=1 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=1 \
     -DENABLE_TESTS=0
