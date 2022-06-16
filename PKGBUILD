@@ -9,6 +9,8 @@ arch=('x86_64')
 url="http://bochs.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs' 'libxrandr' 'libxpm' 'gtk2')
+replaces=("bochs-gdb")
+conflicts=("bochs-gdb")
 source=("http://downloads.sourceforge.net/sourceforge/bochs/bochs-$pkgver.tar.gz")
 sha256sums=('a010ab1bfdc72ac5a08d2e2412cd471c0febd66af1d9349bc0d796879de5b17a')
 
@@ -48,13 +50,10 @@ package() {
 
     cd "$pkgdir/usr/bin/"
     mv bochs bochs-gdb
-    rm -rf bochs
     rm bximage
     cd "$pkgdir/usr/"
     rm -rfv share
     cd "$pkgdir"
     rm -rfv etc
-    cd "$pkgdir/usr/bin/"
-    sudo cp bochs-gdb /usr/bin/
 }
 

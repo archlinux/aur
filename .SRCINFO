@@ -9,6 +9,8 @@ pkgbase = bochs-gdb-stub
 	depends = libxrandr
 	depends = libxpm
 	depends = gtk2
+	conflicts = bochs-gdb
+	replaces = bochs-gdb
 	source = http://downloads.sourceforge.net/sourceforge/bochs/bochs-2.7.tar.gz
 	sha256sums = a010ab1bfdc72ac5a08d2e2412cd471c0febd66af1d9349bc0d796879de5b17a
 
