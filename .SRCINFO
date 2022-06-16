@@ -1,14 +1,15 @@
 pkgbase = python-west
 	pkgdesc = Zephyr RTOS Project meta-tool
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/west/
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python>=3.6
+	depends = python-wheel
 	depends = python-colorama
-	depends = python-pyaml>=5.1
+	depends = python-yaml>=5.1
 	depends = python-pykwalify
 	depends = python-packaging
 	source = https://files.pythonhosted.org/packages/source/w/west/west-0.13.1.tar.gz

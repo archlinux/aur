@@ -1,16 +1,19 @@
 # Maintainer: Caspar Friedrich <c.s.w.friedrich@gmail.com>
 
+# Note: `makepkg --printsrcinfo > .SRCINFO`
+
 pkgname="python-west"
 _name=${pkgname##"python-"}
 pkgdesc="Zephyr RTOS Project meta-tool"
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://pypi.org/project/west/"
 license=("Apache")
 depends=("python>=3.6"
+         "python-wheel"
          "python-colorama"
-         "python-pyaml>=5.1"
+         "python-yaml>=5.1"
          "python-pykwalify"
          "python-packaging")
 makedepends=("python-setuptools")
