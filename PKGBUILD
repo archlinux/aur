@@ -1,10 +1,9 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 _name=fnvhash
 pkgname=python-$_name
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure Python FNV hash implementation'
 url='https://github.com/znerol/py-fnvhash'
 arch=('any')

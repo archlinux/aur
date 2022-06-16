@@ -1,7 +1,7 @@
 pkgbase = python-fnvhash
 	pkgdesc = Pure Python FNV hash implementation
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/znerol/py-fnvhash
 	arch = any
 	license = MIT
