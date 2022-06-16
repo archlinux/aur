@@ -1,14 +1,14 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certspotter'
-pkgver='0.12'
+pkgver='0.14.0'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$pkgname"
 license=('MPL2')
-makedepends=('go>=1.5')
+makedepends=('go>=1.17')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c4453c98e6680f5c62c1dc693c9dd14cf73bbc80b397b1dd958218e1a4c44b5523c04c8deadde1002bc1cd82f88ad7a41bd47adb1d15a975a3988e05bb78167f')
+sha512sums=('f8732ba04b7c12d633796de4c1942d4f34e3fba4117f19183ede8e33ca7279d1ebd1ec140794d3a060dbaba69087b24a8d7f84670e9547d97977c5e7600664b8')
 
 _sourcedirectory="$pkgname-$pkgver"
 _bindir="$pkgname-$pkgver-$pkgrel-bin"
