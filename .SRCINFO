@@ -1,7 +1,7 @@
 pkgbase = amdguid-glow-bin
 	pkgdesc = AMDGPU temperature and fan speed monitoring tool
-	pkgver = 1.0.9
-	pkgrel = 1
+	pkgver = 1.0.11
+	pkgrel = 2
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = amdguid-glow-bin
 	depends = amdfand-bin
 	optdepends = amdmond-bin
 	optdepends = amdvold-bin
-	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.9/amdguid-glow.tar.gz
-	md5sums = 8d6ac71806be9b3aa6dd66f9f8647939
+	source = https://github.com/Eraden/amdgpud/releases/download/v1.0.11/amdguid-glow.tar.gz
+	md5sums = f9918f75f1cb96febe531a027ff2df27
 
 pkgname = amdguid-glow-bin
