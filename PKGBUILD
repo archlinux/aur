@@ -4,13 +4,13 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=vcpkg
-pkgver=2022.05.10
+pkgver=2022.06.15
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
 makedepends=('cmake>=3.3.0' 'ninja')
 optdepends=()
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/microsoft/vcpkg'
 license=('MIT')
 provides=('vcpkg')
@@ -22,7 +22,7 @@ source=(
     'vcpkg.conf'
 )
 sha256sums=(
-    '60290996c2615020e044ee14506e36196064a3d77c9dcc876d860a0569bc4ab1'
+    '1178ddc63629e2634f71ff42d8ed19f3dcc4256b840d6907f97920883e0092ba'
     '6afa87afff491f6090c4ade5a9249942f9d503708f81c4cfea5ca22f6b96adba'
     '851f32d41ce7ec0140b8fe4cf1acbb1e8bab18b0d899d12a202558a270d5a4bb'
     '02a6d2bca471adedfc7acc9ba57860d976ec5115b282cb1a96341850e1c7b221'
