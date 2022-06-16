@@ -1,7 +1,7 @@
 pkgbase = gophernicus-git
 	pkgdesc = Modern, full-featured gopher daemon
 	pkgver = r281.da33900
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gophernicus/gophernicus.git
 	arch = any
 	license = BSD
