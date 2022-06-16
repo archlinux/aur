@@ -1,13 +1,13 @@
 # Maintainer: Matthew Geskey <vitrvvivs.architectus@gmail.com>
 
 pkgname=oasis-node
-pkgver=22.1.3
+pkgver=22.1.7
 pkgrel=1
 pkgdesc="Node for Oasis Network blockchain"
 arch=('any')
 url=https://github.com/oasisprotocol/oasis-core
 source=("https://github.com/oasisprotocol/oasis-core/releases/download/v${pkgver}/oasis_core_${pkgver}_linux_amd64.tar.gz")
-md5sums=('443868da9aec74452f76b29c665a881d')
+md5sums=('bdb1f6b9a03fa1a364d2f529de7dd05c')
 depends=()
 makedepends=()
 provides=('oasis-node')
