@@ -1,7 +1,7 @@
 pkgbase = scalar_blocks-git
 	pkgdesc = Algorithm for computing numerical derivatives of scalar conformal blocks
 	pkgver = 240.6698eeb
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/bootstrapcollaboration/scalar_blocks
 	arch = x86_64
 	license = MIT

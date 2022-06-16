@@ -1,7 +1,7 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 pkgname=scalar_blocks-git
 pkgver=240.6698eeb
-pkgrel=1
+pkgrel=3
 pkgdesc="Algorithm for computing numerical derivatives of scalar conformal blocks"
 arch=(x86_64)
 license=('MIT')
