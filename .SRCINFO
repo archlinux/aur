@@ -1,7 +1,7 @@
 pkgbase = quiltflower
-	pkgdesc = Java decompiler focused on improving code quality, speed, and usabiltiy.
+	pkgdesc = Java decompiler focused on improving code quality, speed, and usability.
 	pkgver = 1.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/QuiltMC/quiltflower/
 	arch = any
 	license = Apache

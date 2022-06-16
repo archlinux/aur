@@ -16,9 +16,9 @@
 # and/or bugs related to the AUR package specifically should be commented on the AUR package page.
 
 pkgname=quiltflower
-pkgdesc='Java decompiler focused on improving code quality, speed, and usabiltiy.'
+pkgdesc='Java decompiler focused on improving code quality, speed, and usability.'
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/QuiltMC/${pkgname}/"
 license=('Apache')
