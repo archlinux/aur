@@ -1,0 +1,72 @@
+diff --git a/src/pvm2functions/write_functions.cxx b/src/pvm2functions/write_functions.cxx
+index 46da35b..f8b9c07 100644
+--- a/src/pvm2functions/write_functions.cxx
++++ b/src/pvm2functions/write_functions.cxx
+@@ -1,6 +1,7 @@
+ #include "../Boost_Float.hxx"
+ #include "../sdp_convert.hxx"
+ #include "../sdp_convert/write_vector.hxx"
++#include <boost/filesystem/string_file.hpp>
+ 
+ void write_functions(
+   const boost::filesystem::path &output_path,
+diff --git a/src/sdp_read.hxx b/src/sdp_read.hxx
+index eb191a5..b5d6625 100644
+--- a/src/sdp_read.hxx
++++ b/src/sdp_read.hxx
+@@ -2,6 +2,7 @@
+ 
+ #include "sdp_read/read_input.hxx"
+ #include "sdp_read/read_pvm_input.hxx"
++#include <boost/filesystem/string_file.hpp>
+ 
+ std::vector<boost::filesystem::path>
+ read_file_list(const boost::filesystem::path &input_file);
+diff --git a/src/sdp_solve/SDP/SDP/read_blocks/read_blocks.cxx b/src/sdp_solve/SDP/SDP/read_blocks/read_blocks.cxx
+index 87afec1..204cd1b 100644
+--- a/src/sdp_solve/SDP/SDP/read_blocks/read_blocks.cxx
++++ b/src/sdp_solve/SDP/SDP/read_blocks/read_blocks.cxx
+@@ -3,6 +3,7 @@
+ #include "../../../Archive_Reader.hxx"
+ 
+ #include <algorithm>
++#include <boost/filesystem/string_file.hpp>
+ 
+ namespace
+ {
+diff --git a/src/sdp_solve/SDP_Solver/load_checkpoint/load_text_checkpoint.cxx b/src/sdp_solve/SDP_Solver/load_checkpoint/load_text_checkpoint.cxx
+index 834eb59..51317e9 100644
+--- a/src/sdp_solve/SDP_Solver/load_checkpoint/load_text_checkpoint.cxx
++++ b/src/sdp_solve/SDP_Solver/load_checkpoint/load_text_checkpoint.cxx
+@@ -2,6 +2,7 @@
+ #include "../../read_text_block.hxx"
+ 
+ #include <boost/filesystem/fstream.hpp>
++#include <boost/filesystem/string_file.hpp>
+ 
+ bool load_text_checkpoint(const boost::filesystem::path &checkpoint_directory,
+                           const std::vector<size_t> &block_indices,
+diff --git a/src/sdp_solve/read_text_block.hxx b/src/sdp_solve/read_text_block.hxx
+index d06b725..42e4e35 100644
+--- a/src/sdp_solve/read_text_block.hxx
++++ b/src/sdp_solve/read_text_block.hxx
+@@ -3,6 +3,7 @@
+ #include <El.hpp>
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/string_file.hpp>
+ 
+ inline void
+ set_element(El::DistMatrix<El::BigFloat> &block, const int64_t &row,
+diff --git a/src/spectrum/write_spectrum/write_file.cxx b/src/spectrum/write_spectrum/write_file.cxx
+index d4a749c..23dd11c 100644
+--- a/src/spectrum/write_spectrum/write_file.cxx
++++ b/src/spectrum/write_spectrum/write_file.cxx
+@@ -2,6 +2,7 @@
+ #include "../../set_stream_precision.hxx"
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/string_file.hpp>
+ 
+ void write_file(const boost::filesystem::path &output_path,
+                 const std::vector<Zeros> &zeros_blocks)

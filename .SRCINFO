@@ -1,6 +1,6 @@
 pkgbase = sdpb-git
 	pkgdesc = Semidefinite program solver designed for the conformal bootstrap
-	pkgver = 1513.4668f72
+	pkgver = 1515.ec2e4cb
 	pkgrel = 1
 	url = https://arxiv.org/abs/1909.09745
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = sdpb-git
 	depends = elemental-gmp-git
 	optdepends = openmpi
 	source = git+https://github.com/davidsd/sdpb.git
+	source = string_file_deprecated.patch
 	sha256sums = SKIP
+	sha256sums = 9273625b2f3a0fbd4f8fa048defd77abd48f3f0c9d39aa9a3d92e88a7057fca0
 
 pkgname = sdpb-git
