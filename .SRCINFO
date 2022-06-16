@@ -1,13 +1,13 @@
 pkgbase = masterpdfeditor
 	pkgdesc = A complete solution for viewing, creating and editing PDF files
-	pkgver = 5.8.52
+	pkgver = 5.8.63
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
-	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.8.52-qt5.x86_64.tar.gz
-	sha1sums_x86_64 = ec32be4604bdaffcf5e5fa171feb6b161fdf3120
+	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.8.63-qt5.x86_64.tar.gz
+	sha1sums_x86_64 = bbf573a3b98c6a545773d6e9e65d46ad26f86d0b
 
 pkgname = masterpdfeditor
 	depends = libgl
