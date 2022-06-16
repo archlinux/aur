@@ -1,7 +1,7 @@
 pkgbase = feishu-bin
 	pkgdesc = Linux client of Feishu (Lark) from Bytedance.
 	pkgver = 5.9.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.feishu.cn/
 	install = feishu-bin.install
 	arch = x86_64
