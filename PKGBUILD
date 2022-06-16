@@ -3,7 +3,7 @@
 
 _pkgname=gyroflow
 pkgname=${_pkgname}-git
-pkgver=1.0.1.r22.g304b71f
+pkgver=1.1.0.r0.g66fad8f
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data (Git version)"
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-appimage")
 license=("GPL3")
 depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "ocl-icd" "ffmpeg")
-makedepends=("cargo" "opencl-headers")
+makedepends=("cargo" "opencl-headers" "git" "clang" "p7zip")
 optdepends=("opencl-driver: OpenCL driver for GPU accelerated stabilization"
             "libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU"
             "intel-media-driver: VAAPI video acceleration for Intel GPU")

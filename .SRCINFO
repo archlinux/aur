@@ -1,12 +1,15 @@
 pkgbase = gyroflow-git
 	pkgdesc = Video stabilization using gyroscope data (Git version)
-	pkgver = 1.0.1.r22.g304b71f
+	pkgver = 1.1.0.r0.g66fad8f
 	pkgrel = 1
 	url = https://gyroflow.xyz/
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	makedepends = opencl-headers
+	makedepends = git
+	makedepends = clang
+	makedepends = p7zip
 	depends = libc++
 	depends = qt6-base
 	depends = qt6-quick3d
