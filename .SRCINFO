@@ -55,6 +55,7 @@ pkgbase = jellyfin-ffmpeg5
 	optdepends = libva-intel-driver: for Intel legacy VAAPI support (10th Gen and older)
 	optdepends = libva-mesa-driver: for AMD VAAPI support
 	optdepends = nvidia-utils: for Nvidia NVDEC/NVENC support
+	optdepends = opencl-amd: for AMD OpenCL runtime based Tonemapping
 	optdepends = vulkan-radeon: for AMD RADV Vulkan support
 	optdepends = vulkan-intel: for Intel ANV Vulkan support
 	conflicts = jellyfin-ffmpeg

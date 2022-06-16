@@ -53,6 +53,7 @@ optdepends=('intel-media-driver: for Intel VAAPI support (Broadwell and newer)'
             'libva-intel-driver: for Intel legacy VAAPI support (10th Gen and older)'
             'libva-mesa-driver: for AMD VAAPI support'
             'nvidia-utils: for Nvidia NVDEC/NVENC support'
+            'opencl-amd: for AMD OpenCL runtime based Tonemapping'
             'vulkan-radeon: for AMD RADV Vulkan support'
             'vulkan-intel: for Intel ANV Vulkan support')
 conflicts=('jellyfin-ffmpeg')
