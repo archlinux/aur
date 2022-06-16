@@ -1,5 +1,5 @@
 pkgname=openmw-git
-pkgver=0.47.0.r2262.gc23ca2e88
+pkgver=0.47.0.r2799.g28c97c22b9
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -13,6 +13,8 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/OpenMW/openmw.git')
 sha1sums=('SKIP')
+# build breaks with clean chroot build using devtools without disabling lto explicitly, see https://bbs.archlinux.org/viewtopic.php?id=277304
+options=(!lto)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
