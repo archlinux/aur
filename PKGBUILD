@@ -1,6 +1,6 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
-pkgname=lfp
+pkgname=lfp-git
 pkgver=2.2
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'

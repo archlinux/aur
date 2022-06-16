@@ -1,4 +1,4 @@
-pkgbase = lfp
+pkgbase = lfp-git
 	pkgdesc = LF-Preview, a wrapper for the lf file manager with image previews, and other features
 	pkgver = 2.2
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = lfp
 	source = git+https://gitlab.com/a4to/lfp.git
 	md5sums = SKIP
 
-pkgname = lfp
+pkgname = lfp-git
