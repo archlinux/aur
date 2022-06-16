@@ -7,8 +7,8 @@
 
 pkgname='gmic-no-opencv'
 _basename="${pkgname%%-*}"
-pkgver=3.1.2
-pkgrel=3.0
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="GREYC's Magic Image Converter (without OpenCV camera input processing)"
 arch=('x86_64')
 url='https://gmic.eu/'
@@ -42,7 +42,7 @@ source=("${url}files/source/${_tarname}.tar.gz"
         'FindGMicStdlib.cmake'
         'FindGraphicsMagick.cmake'
 )
-sha256sums=('d5070c559c75161a225d74a99c19faf2485a3983139290f998cc6359bb318ba4'
+sha256sums=('02bbce405ddc8531cdee45a7256812d3adda8aa0d5952bcff168e221795ff65a'
             '089c4ad204a1ed43c9425e3f39e5a3a8bab3d6e8c4fb5a6dfc69e0fca15abd15'
             '5ad1b499cb0a9e3d9fff6a851346d6f356dfc592442183d6330726a29ee25384'
             '83e4635a6fd101511381bc865255f4de88834da51911ce3eb45ddac2558cabcc'
