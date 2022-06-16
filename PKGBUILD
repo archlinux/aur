@@ -1,26 +1,25 @@
-# Maintaoner: Yamada Hayao <development@fascode.net>
-# Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
+# Maintainer: Yamada Hayao <development@fascode.net>
+# Contributor: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
 
-pkgname=aptpac
-pkgver=3.0.1
-pkgrel=1
+_gitname='aptpac'
+pkgname="aptpac"
 pkgdesc="a pacman wrapper with syntax from debian's apt"
+pkgver="3.3.0"
+pkgrel="1"
+
 arch=('any')
 url="https://github.com/FascodeNet/aptpac"
 license=('WTFPL')
-depends=('sudo')
-makedepends=('git')
-source=("${url}/archive/v${pkgver}.zip")
-md5sums=('SKIP')
-_gitname='aptpac'
 conflicts=('apt' 'apt-git' 'aptpac-git')
 
+source=("${url}/archive/v${pkgver}.zip")
+md5sums=('SKIP')
 
 package() {
-        cd "${_gitname}-${pkgver}" &&
-        install -m 755 -D aptpac "${pkgdir}/usr/bin/aptpac"
-        install -m 755 -D LICENSE "${pkgdir}/usr/share/licenses/aptpac/LICENSE"
-        cd "${pkgdir}/usr/bin/"
-        ln -s "aptpac" "apt"
-        ln -s "aptpac" "apt-get"
+    cd "${_gitname}-${pkgver}"
+    install -m 755 -D aptpac "${pkgdir}/usr/bin/aptpac"
+    install -m 755 -D LICENSE "${pkgdir}/usr/share/licenses/aptpac/LICENSE"
+    cd "${pkgdir}/usr/bin/"
+    ln -s "aptpac" "apt"
+    ln -s "aptpac" "apt-get"
 }

@@ -1,17 +1,14 @@
 pkgbase = aptpac
 	pkgdesc = a pacman wrapper with syntax from debian's apt
-	pkgver = 3.0.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/FascodeNet/aptpac
 	arch = any
 	license = WTFPL
-	makedepends = git
-	depends = sudo
 	conflicts = apt
 	conflicts = apt-git
 	conflicts = aptpac-git
-	source = https://github.com/FascodeNet/aptpac/archive/v3.0.1.zip
+	source = https://github.com/FascodeNet/aptpac/archive/v3.3.0.zip
 	md5sums = SKIP
 
 pkgname = aptpac
-
