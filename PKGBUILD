@@ -1,8 +1,9 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pipdate
-pkgver=0.5.5
-pkgrel=2
+_pkg="${pkgname#python-}"
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Updates all pip-installed packages"
 arch=('any')
 url="https://github.com/nschloe/pipdate"
@@ -12,21 +13,20 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-matplotlib')
 optdepends=('python-importlib-metadata: REQUIRED for python<3.8')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('507f15f656b45a46f7ad32f1ceb4e5cc8fcd9c3e6293ee7004921d1e3d1bd291')
+sha256sums=('c38ea9ad6d026bced2eaa491eca148a45f6c227a0b04b4f3e4aa16fe2e70f77f')
 
 build() {
-	cd "pipdate-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "pipdate-$pkgver"
+	cd "$_pkg-$pkgver"
 	PYTHONPATH=./src pytest -x
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "pipdate-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
