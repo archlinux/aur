@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-utils
-pkgver=2.1.4+65.r05147319b0
+pkgver=2.1.4+88.rfc18fa92c8
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64" "aarch64")
@@ -13,7 +13,7 @@ license=('CDDL')
 makedepends=('git')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 #source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
-source=("git+https://github.com/openzfs/zfs.git#commit=05147319b0821f61fcff743e20605e191d523906"
+source=("git+https://github.com/openzfs/zfs.git#commit=fc18fa92c8cf3bd8febed784a15804e86aa08cb5"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
 sha256sums=('SKIP'
