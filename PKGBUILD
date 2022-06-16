@@ -9,7 +9,7 @@ pkgdesc="A hierarchical note taking application with focus on building large per
 arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL3')
-depends=("electron$_electron_version" 'nodejs')
+depends=("electron$_electron_version")
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/tags/v$pkgver.tar.gz"
 	"copy-trilium.sh.patch"
@@ -58,9 +58,6 @@ package() {
 	install -vDm755 bin/tpl/trilium-safe-mode.sh -t  "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm755 bin/tpl/trilium-no-cert-check.sh -t  "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm644 bin/tpl/anonymize-database.sql -t "${pkgdir}/usr/lib/${pkgname}"
-	install -vd "${pkgdir}/usr/lib/${pkgname}/dump-db"
-	cp -vr dump-db/* -t "${pkgdir}/usr/lib/${pkgname}/dump-db"
-	
 
 	for i in 16 32 64 128 256 512; do
 		install -vDm644 images/app-icons/png/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
