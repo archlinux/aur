@@ -1,7 +1,7 @@
 pkgbase = python-rcon
 	pkgdesc = Python 3 RCON client library and scripts
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/coNQP/rcon
 	arch = any
 	license = GPLv3
@@ -13,7 +13,7 @@ pkgbase = python-rcon
 	depends = python
 	depends = python-setuptools
 	optdepends = python-gobject: for GUI support
-	source = rcon::git+https://github.com/coNQP/rcon.git#tag=2.2.0
+	source = rcon::git+https://github.com/coNQP/rcon.git#tag=2.2.1
 	md5sums = SKIP
 
 pkgname = python-rcon
