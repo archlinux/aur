@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='certspotter'
 pkgname="$_pkgname-git"
-pkgver='0.12.r0.g270cdab'
+pkgver='0.14.0.r0.g3d1bdb2'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
-makedepends=('git' 'go>=1.5')
+makedepends=('git' 'go>=1.17')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
