@@ -1,7 +1,7 @@
 # Maintainer: Jacob McSwain <jacob@mcswain.dev>
 pkgname=cuttlefish-common-git
-pkgver=0.9.20
-pkgrel=2
+pkgver=0.9.24
+pkgrel=1
 pkgdesc="Cuttlefish host support package."
 arch=(any)
 license=(Apache)
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 install="install.sh"
 
 prepare() {
-    patch "$srcdir/${pkgname%-git}"/debian/cuttlefish-common.init < ../0001-Fixup-init.d-service-to-be-used-in-usr-bin-for-syste.patch
+    patch "$srcdir/${pkgname%-git}"/debian/cuttlefish-base.cuttlefish-host-resources.init < ../0001-Fixup-init.d-service-to-be-used-in-usr-bin-for-syste.patch
 }
 
 package() {
@@ -26,10 +26,10 @@ package() {
 
     cd "$srcdir/${pkgname%-git}"
 
-    install -Dm0644 debian/cuttlefish-common.default "$pkgdir/etc/default/cuttlefish-common"
-    install -Dm0755 debian/cuttlefish-common.init "$pkgdir/usr/bin/cuttlefish-common"
-    install -Dm0644 host/packages/cuttlefish-common/etc/modules-load.d/cuttlefish-common.conf "$pkgdir/etc/modules-load.d/cuttlefish-common.conf"
-    install -Dm0644 debian/cuttlefish-common.udev "$pkgdir/usr/lib/udev/rules.d/60-cuttlefish-common.rules"
+    install -Dm0644 debian/cuttlefish-base.cuttlefish-host-resources.default "$pkgdir/etc/default/cuttlefish-common"
+    install -Dm0755 debian/cuttlefish-base.cuttlefish-host-resources.init "$pkgdir/usr/bin/cuttlefish-common"
+    install -Dm0644 host/packages/cuttlefish-base/etc/modules-load.d/cuttlefish-common.conf "$pkgdir/etc/modules-load.d/cuttlefish-common.conf"
+    install -Dm0644 debian/cuttlefish-base.udev "$pkgdir/usr/lib/udev/rules.d/60-cuttlefish-common.rules"
     install -Dm0755 host/deploy/install_zip.sh "$pkgdir/usr/bin/install_zip.sh"
     install -Dm0755 host/deploy/capability_query.py "$pkgdir/usr/lib/cuttlefish-common/bin/capability_query.py"
     install -Dm0755 host/deploy/unpack_boot_image.py "$pkgdir/usr/lib/cuttlefish-common/bin/unpack_boot_image.py"

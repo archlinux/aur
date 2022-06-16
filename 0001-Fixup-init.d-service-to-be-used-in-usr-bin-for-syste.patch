@@ -15,7 +15,7 @@ index ff18481..593e3dc 100755
  #!/bin/sh
  #
 -### BEGIN INIT INFO
--# Provides: cuttlefish-common
+-# Provides: cuttlefish-host-resources
 -# Required-Start: $network $remote_fs
 -# Required-Stop: $network $remote_fs
 -# Default-Start: 2 3 4 5
@@ -34,8 +34,8 @@ index ff18481..593e3dc 100755
  
 -. /lib/lsb/init-functions
 -
- if [ -f /etc/default/cuttlefish-common ]; then
-     . /etc/default/cuttlefish-common
+ if [ -f /etc/default/cuttlefish-host-resources ]; then
+     . /etc/default/cuttlefish-host-resources
  fi
 -- 
 2.34.1
