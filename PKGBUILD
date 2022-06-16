@@ -2,7 +2,7 @@
 
 pkgname=isp55e0-git
 _pkgname=isp55e0
-pkgver=r28.36fbc37
+pkgver=r34.6a7f58c
 pkgrel=1
 pkgdesc='An ISP flashing tool for the WCH CH55x, CH579, CH32F103 under linux.'
 arch=(x86_64)
