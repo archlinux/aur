@@ -1,6 +1,6 @@
+# Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 # Contributor: Bruce Zhang <zttt183525594@gmail.com>
-# Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname='python-pycrypto'
 _pkgname='pycrypto'
@@ -12,7 +12,7 @@ url='https://pypi.python.org/pypi/pycrypto'
 license=('Public domain')
 depends=('python-flask')
 makedepends=('python-setuptools')
-provides=('python-pycryptodome' 'python-crypto')
+provides=('python-crypto')
 source=(
   "https://files.pythonhosted.org/packages/60/db/645aa9af249f059cc3a368b118de33889219e0362141e75d4eaf6f80f163/pycrypto-${pkgver}.tar.gz"
   0001-replaced-time.clock-with-time.process_time-time-cloc.patch
@@ -34,4 +34,3 @@ package() {
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
