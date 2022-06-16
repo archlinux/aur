@@ -3,14 +3,14 @@
 
 pkgname=qbittorrent-enhanced-ua
 pkgver=4.4.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _name="qBittorrent-Enhanced-Edition"
 url="https://github.com/c0re100/${_name}"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'boost' 'qt6-tools')
+depends=('libtorrent-rasterbar' 'hicolor-icon-theme')
+makedepends=('cmake' 'ninja' 'boost')
 optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent')
 conflicts=('qbittorrent')
@@ -28,6 +28,16 @@ sha256sums=(
     '45b197be81dcc4e5f9cc3df6868ed2aba920514af8c47323ed2d67bcbd8c4d6f'
 )
 
+USE_QT6="${USE_QT6:-ON}"
+
+if [[ "${USE_QT6}" = "ON" ]]; then
+    depends+=('qt6-base' 'qt6-svg')
+    makedepends+=('qt6-tools')
+else
+    depends+=('qt5-base' 'qt5-svg')
+    makedepends+=('qt5-tools')
+fi
+
 prepare() {
     cd "${srcdir}/${_snapshot}"
     patch -p0 -i "${srcdir}/${source[1]}"
@@ -39,7 +49,7 @@ build() {
     cmake -B "build" -GNinja "${_snapshot}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT6="${USE_QT6:-ON}"
+        -DQT6="${USE_QT6}"
 
     ninja -C "build"
 }
