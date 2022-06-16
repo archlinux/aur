@@ -1,7 +1,7 @@
 pkgbase = python-cleo-git
 	pkgdesc = Cleo allows you to create beautiful and testable command-line interfaces.
 	pkgver = 1.0.0a5.r7.g9e8ecbe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdispater/cleo
 	arch = any
 	license = MIT

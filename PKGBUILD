@@ -4,7 +4,7 @@
 _pkgname=cleo
 pkgname=python-cleo-git
 pkgver=1.0.0a5.r7.g9e8ecbe
-pkgrel=1
+pkgrel=2
 pkgdesc="Cleo allows you to create beautiful and testable command-line interfaces."
 arch=('any')
 provides=("python-cleo")
@@ -34,7 +34,7 @@ check() {
 
 package() {
     cd "${srcdir}"/${_pkgname}
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m pyproject2setuppy install --root="${pkgdir}" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
