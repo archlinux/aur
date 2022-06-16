@@ -1,13 +1,13 @@
 pkgbase = zorin-icon-themes
 	pkgdesc = The Zorin icon theme provided in a variety of color combinations
-	pkgver = 2.9
+	pkgver = 2.9.7
 	pkgrel = 1
 	url = https://zorinos.com/
 	arch = any
 	license = GPL
 	conflicts = zorin-icon-themes
 	conflicts = zorin-icon-themes-git
-	source = https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/zorin-icon-themes_2.9_all.deb
-	md5sums = 96311ca33d2837054c2415b5e0e70453
+	source = https://launchpad.net/~zorinos/+archive/ubuntu/stable/+files/zorin-icon-themes_2.9.7_all.deb
+	md5sums = 73a1b7191511decd66053a7aaebe8809
 
 pkgname = zorin-icon-themes
