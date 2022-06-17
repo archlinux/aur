@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=22.05.1.1
+pkgver=22.05.2.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -36,7 +36,7 @@ source=("slurm-llnl.sysusers"
 	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
 sha512sums=('8373ef791d68a7e0b2114f5ce670da1936bd8d96fd51fa7319d4feb85f16a673f89abcb823a114455d32d8fd9eee3e121c313a0aa986542540f120e6d35686e6'
             '4f7d1e36abc2ca5aa38b40403292b68f769238766ecdd44ea5d29f8106bd9b7c3e0d2236208f92e00818e37dd24c9520b6e9fe06e01b6e552ac485a1df682edd'
-            'c37c25438df660f8fa087240a0dbb40dc609b8248168239ecac9fd43b8085efce52ee25e2d6a0d8feed23ce50e7a34e0209fb98ce810b915407878662da74a12')
+            '0810ae0ee81d001fe29f0e11dd356970f1df8aef8000fb64dbcf542f5942a5db69c09b5bb48995d45c83e24f398dc5c89d8035384ad426aaa9d37ace58443ccb')
 
 
 build() {
@@ -80,6 +80,7 @@ package() {
 	# Install slurm's configs and license
 	install -D -m644 etc/slurm.conf.example    "${pkgdir}/etc/slurm-llnl/slurm.conf.example"
 	install -D -m644 etc/slurmdbd.conf.example "${pkgdir}/etc/slurm-llnl/slurmdbd.conf.example"
+	install -D -m644 etc/cgroup.conf.example   "${pkgdir}/etc/slurm-llnl/cgroup.conf.example"
 	install -D -m644 LICENSE.OpenSSL           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.OpenSSL"
 	install -D -m644 COPYING                   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
