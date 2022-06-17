@@ -1,6 +1,6 @@
 pkgbase = krita-plus-bin
 	pkgdesc = The pre-built package of Krita Plus. If you do not trust me, intall krita-plus-git instead.
-	pkgver = v5.1.0.prealpha.r2166.g846124a477
+	pkgver = v5.1.0.prealpha.r2174.g82766ef025
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -45,8 +45,7 @@ pkgbase = krita-plus-bin
 	optdepends = krita-plugin-gmic: GMic plugin
 	provides = krita
 	conflicts = krita
-	noextract = krita-plus-bin-v5.1.0.prealpha.r2166.g846124a477-1-x86_64.pkg.tar.zst
-	source = https://github.com/zlfn/krita-aur/releases/download/v5.1.0.prealpha.r2166.g846124a477/krita-plus-bin-v5.1.0.prealpha.r2166.g846124a477-1-x86_64.pkg.tar.zst
+	source = krita::git+https://github.com/KDE/krita.git#branch=krita/5.1
 	sha512sums = SKIP
 
 pkgname = krita-plus-bin
