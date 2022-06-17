@@ -1,20 +1,16 @@
 pkgbase = adlmapps
 	pkgdesc = Autodesk Licensing Software
 	pkgver = 25.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.autodesk.com/
 	install = adlmapps.install
 	arch = x86_64
 	license = custom
-	depends = fontconfig
-	depends = libglvnd
-	depends = libxi
-	depends = libxrender
-	depends = mtdev
+	depends = qt5-svg
 	options = !strip
 	source = manual://adlmapps25-25.0.3-0.x86_64.rpm
 	source = adlmapps.install
 	sha256sums = f65760440786867d8bb09056d5fa3dcf1abfb9206a92ea3d030c0e7a272b5769
-	sha256sums = 7bc66c8c907f68fadc7d1ef51032dc77234f70996c310381b14f10acc7b9b5b9
+	sha256sums = f59bfd2e62f3db4c92368d23d02e9b54f5b2a8d70c402bec347769119453b6ac
 
 pkgname = adlmapps
