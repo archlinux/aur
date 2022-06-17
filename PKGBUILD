@@ -2,7 +2,7 @@
 
 pkgname=maui-settings-git
 _pkgname=${pkgname%-git}
-pkgver=r16.0512635
+pkgver=r17.1ab55a3
 pkgrel=1
 pkgdesc='Maui Settings Manager is a settings manager for the Maui DE'
 url='https://github.com/Nitrux/maui-settings'
@@ -10,6 +10,7 @@ arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
 depends=(kcoreaddons
          ki18n
+         kiconthemes
          mauikit-git
          maui-manager-git
          qt5-base
