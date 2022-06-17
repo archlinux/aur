@@ -1,25 +1,25 @@
 diff --git a/gulpfile.js b/gulpfile.js
-index a9183e96..431a3a8b 100644
+index 95032523..8ddd3223 100644
 --- a/gulpfile.js
 +++ b/gulpfile.js
-@@ -25,7 +25,7 @@ const yarn = require("gulp-yarn");
+@@ -22,7 +22,7 @@ const yarn = require("gulp-yarn");
  const rename = require('gulp-rename');
  const replace = require('gulp-replace');
  const jeditor = require("gulp-json-editor");
 -const xmlTransformer = require("gulp-xml-transformer");
 +const xmlTransformer = null
  const os = require('os');
- const git = require('gulp-git');
+ const git = require('simple-git')();
  const source = require('vinyl-source-stream');
 diff --git a/package.json b/package.json
-index 2cb5b9e5..15700e8f 100644
+index 3df805e4..4d403c1e 100644
 --- a/package.json
 +++ b/package.json
-@@ -76,7 +76,6 @@
-     "gulp-json-editor": "^2.5.4",
+@@ -107,7 +107,6 @@
      "gulp-rename": "^2.0.0",
      "gulp-replace": "^1.0.0",
--    "gulp-xml-transformer": "^3.0.0",
-     "gulp-yarn": "^2.0.0",
+     "gulp-util": "^3.0.8",
+-    "gulp-xml-transformer": "^5.1.1",
+     "gulp-yarn": "^3.0.0",
      "gulp-zip": "^5.0.0",
-     "karma": "^4.0.1",
+     "husky": "^4.3.0",
