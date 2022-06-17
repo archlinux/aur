@@ -1480,6 +1480,7 @@ package() {
     echo "Creating shortcuts in $(xdg-user-dir DOWNLOAD)"
     echo "to make it easier to find $zst_name package."
     ln -v -s -f "$PACKAGEZSTFULLPATH" "$(xdg-user-dir DOWNLOADS)/$PACKAGEZSTFILENAME"
+    ln -v -s -f "$PACKAGETARFULLPATH" "$(xdg-user-dir DOWNLOADS)/$PACKAGETARFILENAME"
     ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
     ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory"
     
