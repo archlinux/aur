@@ -1,8 +1,9 @@
 pkgbase = python-atari-py
-	pkgdesc = A python interface for the Arcade Learning Environment (Modified by OpenAI)
+	pkgdesc = [DEPRECATED: use python-ale-py instead] Interface for the Arcade Learning Environment (mod by OpenAI)
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openai/atari-py
+	install = python-atari-py.install
 	arch = any
 	license = GPL
 	makedepends = python-setuptools

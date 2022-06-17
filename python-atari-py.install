@@ -1,0 +1,18 @@
+#!/bin/bash
+
+post_install() {
+  cat << "EOM"
+==> WARNING:
+==>
+==> This Python package is deprecated, and soon it will be removed from AUR.
+==> Use the new Ale-Py instead; that is backwards-compatible with Atari-Py:
+==>
+==> python-ale-py
+==> https://aur.archlinux.org/packages/python-ale-py
+==>
+EOM
+}
+
+post_upgrade() {
+  post_install
+}
