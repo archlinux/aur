@@ -2,7 +2,7 @@
 
 pkgname=terrascan
 pkgver=1.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
 url="https://github.com/accurics/terrascan"
@@ -14,6 +14,6 @@ package() {
   cd "${srcdir}"
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
-  install -Dm644 LICENSE ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
 }
