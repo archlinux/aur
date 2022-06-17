@@ -1,150 +1,145 @@
-# Maintainer: Ange Kevin Amlaman (charveey) <amlamanangekevin at gmail dot com>
-# Contributor: 
+# Maintainer: Ange Kevin Amlman <amlamanangekevin at gmail dot com>
 
-### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
 
-# Tweak kernel options prior to a build via nconfig
-_makenconfig=
+# Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 27.
+# https://gitlab.manjaro.org/packages/core/linux515
 #
-# Note - the march=native option is unavailable by this method, use the nconfig
-# and manually select it.
-#
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  4. AMD Barcelona (MBARCELONA)
-#  5. AMD Bobcat (MBOBCAT)
-#  6. AMD Jaguar (MJAGUAR)
-#  7. AMD Bulldozer (MBULLDOZER)
-#  8. AMD Piledriver (MPILEDRIVER)
-#  9. AMD Steamroller (MSTEAMROLLER)
-#  10. AMD Excavator (MEXCAVATOR)
-#  11. AMD Zen (MZEN)
-#  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
-#  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Intel Cooper Lake (MCOOPERLAKE)
-#  31. Intel Tiger Lake (MTIGERLAKE)
-#  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE)
+# Maintainer: Philip Müller
+# Maintainer: Bernhard Landauer
+# Maintainer: Helmut Stult
 
-_subarch=
-
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
+# http://aur.archlinux.org/packages/linux-xanmod
 #
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Maintainer: Joan Figueras
+# Contributor: Torge Matthies
+# Contributor: Jan Alexander Steffens (heftig)
+
+##
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n makepkg -sc
+##
+## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
+## Valid numbers between: 0 to 99
+## Default is: 0 => generic
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
+
+## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+## Set variable "use_numa" to: n to disable (possibly increase performance)
+##                             y to enable  (stock default)
+if [ -z ${use_numa+x} ]; then
+  use_numa=y
+fi
+
+## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
+## Stock Archlinux and Xanmod have this enabled.
+## Set variable "use_tracers" to: n to disable (possibly increase performance)
+##                                y to enable  (stock default)
+if [ -z ${use_tracers+x} ]; then
+  use_tracers=y
+fi
+
+## NOTICE: clang config is not ready yet in 5.17.x
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
+  _compiler=gcc
+fi
+
+# Choose between the 3 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64 (default) / config_x86-64-v2 / config_x86-64-v3
+# This will be overwritten by selecting any option in microarchitecture script
+# Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
+if [ -z ${_config+x} ]; then
+  _config=config_x86-64
+fi
+
+# Compress modules with ZSTD (to save disk space)
+if [ -z ${_compress_modules+x} ]; then
+  _compress_modules=n
+fi
+
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
+
+# Tweak kernel options prior to a build via nconfig
+if [ -z ${_makenconfig} ]; then
+  _makenconfig=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-bootsplash
-pkgdesc='Linux kernel with kernel bootsplash support'
-pkgver=5.7.10
-pkgrel=1
-arch=(x86_64)
-url="https://www.kernel.org/"
-license=(GPL2)
-makedepends=(kmod bc libelf)
-options=('!strip')
-_gcc_more_v='20200615'
-source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  config         # the main kernel config file
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
-  0000-sphinx-workaround.patch
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch
-  0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0005-bootsplash.patch
-  0006-bootsplash.patch
-  0007-bootsplash.patch
-  0008-bootsplash.patch
-  0009-bootsplash.patch
-  0010-bootsplash.patch
-  0011-bootsplash.patch
-  0012-bootsplash.patch
-  0013-bootsplash.patch
-  0014-bootsplash.patch
-  0015-bootsplash.patch
-  0016-bootsplash.patch
-  0017-bootsplash.patch
-  'ajax-loader.gif'
-)
-validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
-sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
-            SKIP
-            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'f8f16c971882312c91618e4305b63f7aa2265af12208a902f87b6d3c1b1cf6ee'
-            'a0bd98f1056d06126532350a55f633c92a43e3adb94d96c94f4d22f54e4d9807'
-            '4c5b15c39e7d8f7b8c0fbee16bcc3992cecf38bb790df494b411a57366e3b677'
-            '18f22c5c095049cf3eebe4ec2c63e659dd35af6e49d2092865643d6ae2f7c411'
-            'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
-            'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
-            '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
-            '1144d51e5eb980fceeec16004f3645ed04a60fac9e0c7cf88a15c5c1e7a4b89e'
-            'dd4b69def2efacf4a6c442202ad5cb93d492c03886d7c61de87696e5a83e2846'
-            '028b07f0c954f70ca37237b62e04103e81f7c658bb8bd65d7d3c2ace301297dc'
-            'c8b0cb231659d33c3cfaed4b1f8d7c8305ab170bdd4c77fce85270d7b6a68000'
-            '8dbb5ab3cb99e48d97d4e2f2e3df5d0de66f3721b4f7fd94a708089f53245c77'
-            'a7aefeacf22c600fafd9e040a985a913643095db7272c296b77a0a651c6a140a'
-            'e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89'
-            '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
-            '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
-            '92a06fecdc3b5d7ea47d0b922cbedd2c227084f7aaf9d70858a3250eb73f740c'
-            'aebc793d0064383ee6b1625bf3bb32532ec30a5c12bf9117066107d412119123')
 
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+pkgbase=linux-bootsplash
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+_major=5.17
+pkgver=${_major}.7
+_branch=5.x
+pkgrel=1
+pkgdesc='The Linux kernel and modules with bootsplash support'
+url="http://kernel.org/"
+arch=(x86_64)
+
+__commit="a7ee13522a80f6f7eaa897dff215dbd676478331" # 5.17.7
+
+license=(GPL2)
+makedepends=(
+  xmlto kmod inetutils bc libelf cpio
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
+)
+if [ "${_compiler}" = "clang" ]; then
+  makedepends+=(clang llvm lld python)
+fi
+options=('!strip')
+
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+        choose-gcc-optimization.sh
+        "https://gitlab.manjaro.org/packages/core/linux${_major//.}/-/archive/${__commit}/linux${_major//.}-${__commit}.tar.gz")
+
+# Archlinux patches
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
+for _patch in ${_patches[@]}; do
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
+done
+        
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'  # kernel tar.xz
+            'SKIP'                                                              #        tar.sign
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
+            'b32d9211d63eccb40e56e3ca880b52de4b9b2d0ba54a0b119809adee292985bb') # manjaro
+
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
+
+export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
+export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd linux-${pkgver}
-
+  cd linux-${_major}  
+  
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  #echo "-$pkgrel" > localversion.10-pkgrel
+  echo "-MANJARO" > localversion.20-pkgname
 
+  # Archlinux patches
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -153,141 +148,148 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+  
+  # Manjaro patches 
+  
+  # remove conflicting ones
+  rm ../linux${_major//.}-$__commit/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
+  
+  local _patch
+  for _patch in ../linux${_major//.}-$__commit/*; do
+      [[ $_patch = *.patch ]] || continue
+      msg2 "Applying patch: $_patch..."
+      patch -Np1 < "../linux${_major//.}-$__commit/$_patch"
+  done 
+  git apply -p1 < "../linux${_major//.}-$__commit/0413-bootsplash.gitpatch"
+  
+  # enable LTO_CLANG_THIN
+  if [ "${_compiler}" = "clang" ]; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+    _LLVM=1
+  fi
+  
+  scripts/config --enable CONFIG_BOOTSPLASH
+  
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
 
-# manually add ajax-loader.gif as 'patch' doesn't support git binary diff
-  cp ../ajax-loader.gif tools/bootsplash/
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
 
-  msg2 "Setting config..."
-  cp ../config .config
+  # User set. See at the top of this file
+  if [ "$use_tracers" = "n" ]; then
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+    if [ "${_compiler}" = "gcc" ]; then
+      scripts/config --disable CONFIG_FUNCTION_TRACER \
+                     --disable CONFIG_STACK_TRACER
+    fi
+  fi
 
-  # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-  sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
+  if [ "$use_numa" = "n" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+  fi
+    
+  scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "archlinux"
 
-   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
-      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+  # Compress modules by default (following Arch's kernel)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  fi
 
-  # FS#66613
-  # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
-  sed -i -e 's/CONFIG_KVM_WERROR=y/# CONFIG_KVM_WERROR is not set/' ./.config
+  # Let's user choose microarchitecture optimization in GCC
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
-      msg "If you have modprobed-db installed, running it in recall mode now"
-      if [ -e /usr/bin/modprobed-db ]; then
-        [[ -x /usr/bin/sudo ]] || {
-        echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-        exit 1; }
-        sudo /usr/bin/modprobed-db recall
-        make localmodconfig
-      fi
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit 1
     fi
+  fi
 
-  # do not run `make olddefconfig` as it sets default options
-  yes "" | make config >/dev/null
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  if [ "$_makenconfig" = "y" ]; then
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  fi
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
-  cd linux-${pkgver}
-  make -j2 bzImage modules
+  cd linux-${_major}
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with framebuffer bootsplash support !"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
+  pkgdesc="The Linux kernel and modules with bootsplash support"
+  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country'
-              'bootsplash-systemd: to enable bootsplash')
-  provides=("linux=${pkgver}")
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
+              'linux-firmware: firmware images needed for some devices'
+              'bootsplash-systemd: for bootsplash functionality')
+  provides=(VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE
+            KSMBD-MODULE
+            NTFS3-MODULE)
+  replaces=()
+  conflicts=()
 
+  cd linux-${_major}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-  cd linux-${pkgver}
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  # Used by mkinitcpio to name the kernel
+  echo "manjaro-xanmod" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+ 
+  # add kernel version
+  echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
-
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  #_Hpkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  #pkgdesc="${_Hpkgdesc}"
-  depends=('linux') # added to keep kernel and headers packages matched
-  provides=("linux-headers=${pkgver}" "linux-headers=${pkgver}")
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
+  provides=()
+  replaces=()
+  conflicts=()
 
+  cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd linux-${pkgver}
-
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -297,13 +299,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -340,20 +345,17 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
