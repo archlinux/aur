@@ -1,20 +1,15 @@
 pkgbase = ocaml-camomile
 	pkgdesc = Comprehensive Unicode library for OCaml
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yoriyuki/Camomile
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = dune
-	makedepends = ocaml
 	makedepends = ocaml-findlib
-	makedepends = opam
-	options = !strip
-	options = !makeflags
-	options = staticlibs
+	depends = ocaml
 	source = https://github.com/yoriyuki/Camomile/archive/1.0.2.tar.gz
-	md5sums = 2ec60575e485b0b92f821949a81acb4d
+	sha256sums = 2149ed1731141b29e0265e99493060eb552ac98938b031c4f496190ba97e85f6
 
 pkgname = ocaml-camomile
-
