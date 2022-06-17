@@ -1,4 +1,4 @@
-# Maintainer: Jguer <joaogg3 at gmail dot com>
+# Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname=yay-bin
 pkgver=11.2.0
 pkgrel=1
