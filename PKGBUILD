@@ -6,7 +6,7 @@
 # Maintainer: David Strawn <isomarcte a__t gmail d__o__t c__o__m>
 pkgname='metals'
 pkgver='0.11.6'
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc='Language Server For Scala'
 url='https://scalameta.org/metals/'
