@@ -1,6 +1,6 @@
 pkgbase = colmap
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = colmap
 	depends = boost-libs
 	depends = qt5-base
 	optdepends = libcudart.so: for cuda sfm/mvs acceleration
-	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.6
+	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.7
 	source = nvm-export.patch
 	source = gcc9.patch
 	source = cuda11_gcc11.patch
