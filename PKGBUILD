@@ -1,7 +1,7 @@
 # Maintainer: zlfn <dev@zlfn.space>
 
 pkgname=krita-plus-git
-pkgver=v5.1.0.prealpha.r2166.g846124a477
+pkgver=v5.1.0.prealpha.r2169.g5540d07b45
 pkgrel=1
 pkgdesc='Edit and paint images. Krita Plus is a daily build containing bug fixes on top of the latest 5.0 release.'
 arch=(x86_64)
