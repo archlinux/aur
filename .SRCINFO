@@ -1,6 +1,6 @@
 pkgbase = cambalache
 	pkgdesc = A new RAD tool for Gtk 4 and 3
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cambalache
 	depends = python-lxml
 	depends = python-gobject
 	optdepends = gtk4: gtk4 workspace
-	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.10.1/cambalache-0.10.1.tar.gz
-	sha512sums = a70f132d5cb9fba525670ee380173fd78128245dc443afb25019a10613644e4eb272a63cbb7d2111d63e516fc67591c99b613ff3ae07cebdf976fa5c354041c5
+	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.10.2/cambalache-0.10.2.tar.gz
+	sha512sums = c9e1e25c2270a7b651a9e4b1edb048467d6c18feba68876cca915986a011a31e911e89b41a760998850f6eaef4a62a96bfb1982f2b396d1d7e1346e9a4f0e028
 
 pkgname = cambalache
