@@ -1,13 +1,13 @@
 pkgbase = limine
 	pkgdesc = An advanced x86/x86_64 BIOS/UEFI bootloader
-	pkgver = 3.5.4
+	pkgver = 3.5.5
 	pkgrel = 1
 	url = https://limine-bootloader.org/
 	arch = x86_64
 	license = BSD
 	makedepends = nasm
 	makedepends = mtools
-	source = https://limine-bootloader.org/files/limine/limine-3.5.4.tar.xz
-	sha256sums = 993423dd3d8cc90bff71d7c9dc8ced67fcd52cb1953bd1f4cbcdb86126b1a3a4
+	source = https://limine-bootloader.org/files/limine/limine-3.5.5.tar.xz
+	sha256sums = 424559b84e51972b3cf7d6b0e3dfa126a0b30607ab8221be1f2dcf2ac96bffd7
 
 pkgname = limine
