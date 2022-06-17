@@ -1466,8 +1466,8 @@ package() {
     echo "rm -f \"$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
     echo "rm -f \"$(xdg-user-dir DOWNLOAD)/create-zst-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
     echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory/*\"" >> $CLEANUPSCRIPTPATH
-    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory/\"" >> $CLEANUPSCRIPTPATH
-    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/cleanup-after-building-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -f \"$(xdg-user-dir DOWNLOAD)/cleanup-after-building-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
     echo "rm -rf \"${BUILDDIR}\"" >> $CLEANUPSCRIPTPATH
     echo "echo \"Removed everything that was built.\"" >> $CLEANUPSCRIPTPATH
     echo "echo \"    ${PACKAGEZSTFULLPATH}\"" >> $CLEANUPSCRIPTPATH
