@@ -47,6 +47,10 @@ build() {
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
+  # determine whether we need to define cuda host compiler
+      if _cuda_gcc=$(readlink /opt/cuda/bin/gcc) ; then
+        [ -f "$_cuda_gcc" ] && export CUDAHOSTCXX="$_cuda_gcc"
+      fi
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
                       -DCUDA_ARCHS="$_CUDA_ARCH"
