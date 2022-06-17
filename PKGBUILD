@@ -1,6 +1,6 @@
 # Maintainer: Atakku <atakkudev@gmail.com>
 pkgname=blockbench-git
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="A boxy 3D model editor, uses system electron and is built from git"
 arch=('any')
