@@ -1,7 +1,7 @@
 pkgbase = qubes-vm-xen
 	pkgdesc = QubesOS component
 	pkgver = 4.8.5
-	pkgrel = 40
+	pkgrel = 41
 	url = https://github.com/QubesOS/qubes-vmm-xen
 	arch = x86_64
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = qubes-vm-xen
 	depends = libsystemd
 	depends = yajl
 	provides = xen-qubes-vm-essentials
-	source = qubes-vm-xen::git+https://github.com/QubesOS/qubes-vmm-xen.git?signed#tag=v4.8.5-40
+	source = qubes-vm-xen::git+https://github.com/QubesOS/qubes-vmm-xen.git?signed#tag=v4.8.5-41
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
 	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494

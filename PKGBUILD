@@ -8,7 +8,7 @@ _gitname=${pkgname%-git*}
 
 # Qubes v4.0
 pkgver='4.8.5'
-pkgrel=40
+pkgrel=41
 
 # Qubes v4.1
 #pkgver='4.14.3'
