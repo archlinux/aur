@@ -1,16 +1,20 @@
 pkgbase = peer2profit
 	pkgdesc = An app to sell your unused bandwidth
-	pkgver = 0.22
+	pkgver = 0.47
 	pkgrel = 1
 	url = https://peer2profit.io/
 	arch = x86_64
-	license = custom:peer2profit
-	depends = libxkbcommon
+	license = custom:EULA
 	depends = libglvnd
 	depends = hicolor-icon-theme
-	source = https://updates.peer2profit.app/peer2profit_0.22_amd64.deb
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = xcb-util-renderutil
+	depends = libxkbcommon-x11
+	depends = xcb-util-image
+	source = https://updates.peer2profit.app/peer2profit_0.47_amd64.deb
 	source = https://peer2profit.io/user-agreement
-	sha256sums = 180055f83ca4b793ee82044d50fd4079a4a495c01be5c2fa9efe1292d4fc70e0
-	sha256sums = dcbf1cbf7237e6e4957a141729707d3991ad8c104e00bc3051f5aae30b9100ff
+	sha256sums = 129a6135b0df4e3c42682214429520cdc050607ff42f56758788053cdb45eb55
+	sha256sums = 85b4708859c5736274802c52610900ae2d441a7f7772982d2a7ef653df32b3ce
 
 pkgname = peer2profit
