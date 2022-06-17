@@ -10,8 +10,8 @@
 pkgbase=fontconfig-ubuntu
 pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
 pkgver=2.13.1
-_ubuver=4.2ubuntu3
-pkgrel=3
+_ubuver=4.4ubuntu1
+pkgrel=4
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
@@ -25,7 +25,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgve
         '40-fontconfig-config.hook'
         '40-fontconfig-config.script')
 sha256sums=('f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741'
-            'e8b52131c91b086d4af3adac4b7ba63ed5539592e694f15f809a13c492dc1c00'
+            '8ce55d192e0b6f5dff1bbf244b2afd7cae332e9d6260963b4a218f217ef40a33'
             'fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34'
             '44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02'
             '7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33')
@@ -35,6 +35,7 @@ prepare() {
     local _patch
     while read -r _patch
     do
+        [ "$_patch" = '0001-Make-the-cache-filenames-determinstic.patch' ] && continue
         printf '%s\n' "  -> Applying Ubuntu patch: ${_patch}"
         patch -d "fontconfig-${pkgver}" -Np1 -i "${srcdir}/debian/patches/${_patch}"
     done < <(sed '/^[[:space:]]*#/d' debian/patches/series)
