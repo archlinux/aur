@@ -1,0 +1,20 @@
+pkgbase = aur-cli-git
+	pkgdesc = Client for simple AUR queries
+	pkgver = 1.0.1.r0.gdd2242f
+	pkgrel = 1
+	url = https://github.com/Jguer/votar
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	provides = aur-cli
+	conflicts = aur-cli
+	source = aur-cli::git+https://github.com/Jguer/aur.git#branch=master
+	sha256sums = SKIP
+
+pkgname = aur-cli-git
