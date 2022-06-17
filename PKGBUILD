@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.1.r83.5e53d01
+pkgver=0.1.r91.91e3160
 pkgrel=1
 epoch=
 pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
