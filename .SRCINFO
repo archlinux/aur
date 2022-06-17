@@ -1,7 +1,7 @@
 pkgbase = pa-notify
-	pkgdesc = PulseAudio volume notification
+	pkgdesc = PulseAudio or PipeWire volume notification
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ikrivosheev/pa-notify
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = pa-notify
 	depends = libnotify
 	depends = libpulse
 	source = pa-notify-1.4.1.tar.gz::https://github.com/ikrivosheev/pa-notify/archive/v1.4.1.tar.gz
-	md5sums = f5ef5f16f5802f01901a889df0ffa916
+	md5sums = 50a99597b47fdffc50040f81e599d0b9
 
 pkgname = pa-notify

@@ -2,8 +2,8 @@
 
 pkgname=pa-notify
 pkgver=1.4.1
-pkgrel=1
-pkgdesc="PulseAudio volume notification"
+pkgrel=2
+pkgdesc="PulseAudio or PipeWire volume notification"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/pa-notify"
 license=(MIT)
