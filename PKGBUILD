@@ -19,6 +19,7 @@ depends=(
     'lib32-libffmpeg'
 )
 makedepends=(
+    'cmake'
     'git'
     'meson'
     'python'
