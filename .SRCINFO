@@ -1,6 +1,6 @@
 pkgbase = ncurses-git
 	pkgdesc = Screen handling and optimization package
-	pkgver = 6.3.20220101.r0.g4ec2068c
+	pkgver = 6.3.20220612.r0.g3f2a6304
 	pkgrel = 1
 	url = https://invisible-island.net/ncurses/ncurses.html
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = ncurses-git
 	license = MIT
 	makedepends = git
 	depends = gcc-libs
-	provides = ncurses
+	provides = ncurses=6.3.20220612.r0.g3f2a6304
 	provides = libncurses++w.so
 	provides = libformw.so
 	provides = libmenuw.so
