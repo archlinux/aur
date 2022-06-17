@@ -4,10 +4,9 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de>
 
 _use_zeroc_ice="1"
-_use_grpc="1"
 
 pkgname=murmur-git
-pkgver=1.4.0.r472.gdb3a28058
+pkgver=1.4.0.r712.g414ab61b6
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,10 +18,6 @@ if [[ ${_use_zeroc_ice} == "1" ]]; then
     depends+=('zeroc-ice')
 fi
 
-if [[ ${_use_grpc} == "1" ]]; then
-    depends+=('grpc')
-fi
-
 makedepends=('git' 'boost' 'python' 'cmake')
 conflicts=('murmur' 'murmur-static' 'murmur-ice')
 provides=('murmur')
@@ -31,11 +26,13 @@ install="murmur.install"
 source=("git+https://github.com/mumble-voip/mumble.git"
     "git+https://github.com/Krzmbrzl/FindPythonInterpreter.git"
     "git+https://github.com/wolfpld/tracy.git"
+    "git+https://github.com/microsoft/GSL.git"
     "murmur.dbus.conf"
     "murmur.service"
     "murmur.sysusers"
     "murmur.tmpfiles")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             '97c7effdddec324e40195c36ef4927950a5de26d2ee2d268d89df6fb547207bbbe30292773316cae6f57ec9923244f205fb0edc377b798771ba7385e3c11d86a'
@@ -57,6 +54,8 @@ prepare() {
     git submodule update 3rdparty/FindPythonInterpreter
     git config submodule.3rdparty/tracy.url $srcdir/tracy
     git submodule update 3rdparty/tracy
+    git config submodule.3rdparty/gsl.url $srcdir/GSL
+    git submodule update 3rdparty/gsl
 }
 
 build() {
@@ -64,10 +63,6 @@ build() {
 
     if [[ ${_use_zeroc_ice} == "0" ]]; then
         CMAKE_OPTS+=" -Dice:BOOL='OFF'"
-    fi
-
-    if [[ ${_use_grpc} == "1" ]]; then
-        CMAKE_OPTS+=" -Dgrpc:BOOL='ON'"
     fi
 
     cmake -B build -S "${_gitname}" \
@@ -100,9 +95,5 @@ package() {
 
     if [[ ${_use_zeroc_ice} == "1" ]]; then
         install -Dm644 src/murmur/Murmur.ice "${pkgdir}"/usr/share/murmur/Murmur.ice
-    fi
-
-    if [[ ${_use_grpc} == "1" ]]; then
-        install -Dm644 src/murmur/MurmurRPC.proto "${pkgdir}"/usr/share/murmur/MurmurRPC.proto
     fi
 }
