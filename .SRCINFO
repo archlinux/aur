@@ -1,0 +1,20 @@
+  pkgbase = nvhpc-22.5
+	pkgdesc = NVIDIA HPC SDK
+	pkgver = 22.5
+	pkgrel = 1
+	url = https://developer.nvidia.com/hpc-sdk
+	arch = x86_64
+	license = custom
+	makedepends = bash
+	depends = numactl
+	depends = java-runtime
+	optdepends = env-modules
+	conflicts = pgi-compilers
+	replaces = pgi-compilers
+	options = !strip
+	source = https://developer.download.nvidia.com/hpc-sdk/22.5/nvhpc_2022_225_Linux_x86_64_cuda_11.7.tar.gz
+	source = nvhpc.sh
+	sha256sums = 02f19609b99140692b85a0edc176f29c9c717dbf78346ac24cd1470be248fa55
+	sha256sums = 28a1fd95457a1fa9047f5e29595f54bb1e93bfc25312300699db3017dbd9c89b
+
+pkgname = nvhpc-22.5
