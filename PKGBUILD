@@ -1,9 +1,9 @@
-# Maintainer: chenss <ufbycd@163.com>
+# Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=nueclipse
 _pkgname=NuEclipse
-pkgver=1.01.018
-pkgrel=2
+pkgver=1.02.019
+pkgrel=1
 pkgdesc="Ecipse base C/C++ IDE for Nuvoton Microcontroller"
 arch=('x86_64')
 url="www.nuvoton.com"
@@ -18,7 +18,7 @@ replaces=()
 backup=()
 options=(!strip)
 source=("https://www.nuvoton.com.cn/export/resource-files/${_pkgname}_V${pkgver}_Linux_Setup.tar.gz")
-md5sums=('8ec3fbc4f3225ed858fe17630ebc2b3f')
+md5sums=('c1d3500fec22998f22f3f6f201736a25')
 
 package() {
     cd "$srcdir/${_pkgname}_V${pkgver}_Linux_Setup"
