@@ -2,15 +2,15 @@ diff --git a/build.sbt b/build.sbt
 index e931fede84..e98a2e9d89 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -36,10 +36,7 @@ ThisBuild / scalafixScalaBinaryVersion := scalaBinaryVersion.value
- 
+@@ -36,0 +36,0 @@ ThisBuild / scalafixScalaBinaryVersion := scalaBinaryVersion.value
+
  inThisBuild(
    List(
 -    version ~= { dynVer =>
 -      if (isCI) dynVer
 -      else localSnapshotVersion // only for local publishing
 -    },
-+    version := "0.11.5",
++    version := "0.11.6",
      scalaVersion := V.scala213,
      crossScalaVersions := List(V.scala213),
      scalacOptions ++= List(
