@@ -4,7 +4,7 @@
 pkgbase='requests-aws'
 pkgname='python-requests-aws'
 pkgver='0.1.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='AWS authentication for Amazon S3 for the python requests module'
 arch=('any')
 url="https://github.com/tax/python-${pkgbase}"
