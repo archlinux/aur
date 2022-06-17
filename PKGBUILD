@@ -3,7 +3,7 @@
 
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Bilibili desktop client'
 license=('custom')
@@ -25,15 +25,15 @@ source=("${_pkgname}-${pkgver}.exe::https://dl.hdslb.com/mobile/fixed/bili_win/b
         "bridge-decode.js"
         "js-decode.js")
 noextract=("${_pkgname}-${pkgver}.exe")
-sha256sums=('7e1b68244e55b6b4dc497d8508fc1028e45e1d4f8bc3ebe7479b1cce18b486a8'
+sha256sums=('eede1e54736f54365ea1a958db3489d9934a7ad67688c543f53113674872e9cf'
             '7da797cd35bc5060e3bfa4ba37681cbbd2201a499477772c008f9f1e691b6ea0'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             'ce35cd6352cdeb248407093eec542dffe4a9a8bb9cab658cee9620752bb34895'
-            '08795393cc42073d0e16778a8cc73673081ece006e4d3f89037d75f7fa4b0164'
+            '5acd6acd3a5f14a28679c4ff9cb60713178dc63f295308c63f84e74b62307c1c'
             '76fd49617a113799140f1d386f692e6632d84cb7729bf0a482c2ba6b0a379460'
             '7f80ebcb11d2e82db19cfaa88e4f4649cfa520c191248bbc60d6465e94ecce5b'
             '51ef08b39e0232376aa59ef47e5d29b0e59de15520170c7a4d3853491b2b38c0'
-            '9a51e8447356f9386ef66c841c9ff33fea75c6e4bd58cb01d4556acfd712f3c3'
+            '6e5b9ffefc39b651c116fc5bb3460998a78d0e01af5da7b4a4274343f3852c43'
             '2fb2e1184a26da951d1e424bb32c2513b68c7625879e045e34f660e17989b975'
             '9399099c831d97d1f0f85e90adf78eab85b2a00d532b1d428392bb7f77f3b56c'
             '04283a0427fe556ce6045d233328c5f864f7a72c42ba0c64adc71abd99b407ee')
