@@ -3,7 +3,7 @@
 pkgname=gnucash-xbt
 _pkgname=gnucash
 pkgver=4.10
-pkgrel=2
+pkgrel=3
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=(x86_64)
