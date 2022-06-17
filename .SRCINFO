@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 18_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenVPN/openvpn3-linux
 	arch = any
 	license = AGPL3
