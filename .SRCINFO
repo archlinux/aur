@@ -1,6 +1,6 @@
 pkgbase = noisetorch
 	pkgdesc = Real-time microphone noise suppression on Linux.
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/noisetorch/NoiseTorch
 	install = noisetorch.install
@@ -13,7 +13,7 @@ pkgbase = noisetorch
 	depends = polkit
 	depends = hicolor-icon-theme
 	provides = noisetorch
-	source = noisetorch::git+https://github.com/noisetorch/NoiseTorch.git#tag=v0.12.1
+	source = noisetorch::git+https://github.com/noisetorch/NoiseTorch.git#tag=v0.12.2
 	source = git+https://github.com/noisetorch/c-ringbuf.git
 	source = git+https://github.com/noisetorch/rnnoise.git
 	sha512sums = SKIP
