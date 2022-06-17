@@ -1,7 +1,7 @@
 pkgbase = libeb
 	pkgdesc = C library for accessing CD-ROM books. Supports EB, EBG, EBXA, EBXA-C, S-EBXA and EPWING formats.
 	pkgver = 4.4.3
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.mistys-internet.website/eb/index-en.html
 	arch = i686
 	arch = x86_64
