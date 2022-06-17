@@ -36,7 +36,9 @@ build () {
   msg2 "Note: this package, by default, creates a debug, non-stripped build to aid reporting bugs and development."
   msg2 "If you would like a smaller release build, please consider editing the PKGBUILD or using the non-git package."
 	rm -rf build
-	sed -i 's/assert(ctx->gbm == NULL);/if (ctx->gbm != NULL) return;/g' "${pkgname}/src/screencast/wlr_screencast.c"
+
+	sed -i 's/assert(ctx->gbm == NULL);/if (ctx->gbm != NULL) return;/g' "${pkgname}/src/screencast/wlr_screencast.c" # prevent failed assert
+
 	arch-meson "${pkgname}" build -Dsd-bus-provider=libsystemd
 	ninja -C build
 }
