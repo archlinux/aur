@@ -1460,12 +1460,12 @@ package() {
     echo "    echo \"or:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"    sudo pacman -U \\\"$PACKAGETARFULLPATH\\\"\"" >> $INSTALLSCRIPTPATH
     echo "    if hash zenity 2>/dev/null; then" >> $INSTALLSCRIPTPATH
-    echo "        zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nInstall with terminal command:\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\" &\"" >> $INSTALLSCRIPTPATH
+    echo "        zenity --height 400 --width 400 --warning --title \"Install ZST\" --text \"Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${srcdir}\n\nInstall with terminal command:\n\nsudo pacman -U \\\"$PACKAGEZSTFULLPATH\\\"\n\nor\n\nsudo pacman -U \\\"$PACKAGETARFULLPATH\\\"\n\nor use the shortcuts in your folder\n\n$(xdg-user-dir DOWNLOAD)\n\n\" &" >> $INSTALLSCRIPTPATH
     echo "    fi" >> $INSTALLSCRIPTPATH
     echo "fi" >> $INSTALLSCRIPTPATH
     chmod +x $INSTALLSCRIPTPATH
     if hash zenity 2>/dev/null; then
-        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\n$INSTALLSCRIPTPATH\n\n" &
+        zenity --height 400 --width 400 --warning --title "Install ZST" --text "Dont forget to check if $pkgname was installed.\n\nPackage should be located in:\n\n${BUILDDIR}\n\nInstall with terminal command:\n\n$INSTALLSCRIPTPATH\n\nor use the shortcuts in your folder\n\n$(xdg-user-dir DOWNLOAD)\n\n" &
     fi
 
     if [ -f \"$PACKAGEZSTFULLPATH\" ]; then
@@ -1475,11 +1475,13 @@ package() {
         sudo pamac install \"$PACKAGETARFULLPATH\"
     fi
 
-    # Create shortcut to package in $(xdg-user-dir DOWNLOADS)
+    # Create shortcut to package in $(xdg-user-dir DOWNLOAD)
     # to make it easier to find
+    echo "Creating shortcuts in $(xdg-user-dir DOWNLOAD)"
+    echo "to make it easier to find $zst_name package."
     ln -v -s -f "$PACKAGEZSTFULLPATH" "$(xdg-user-dir DOWNLOADS)/$PACKAGEZSTFILENAME"
-    ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOADS)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
-    ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOADS)/${zst_name}-${pkgver}_build_directory"
+    ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
+    ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory"
     
     cd ${BUILDDIR}
     # Change back to default package name in PKGBUILD:
