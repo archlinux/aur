@@ -3,7 +3,7 @@
 _orgname=ovrclk
 _pkgname=akash
 pkgname=${_pkgname}-bin
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="A secure, transparent, and peer-to-peer cloud computing network"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=(${_pkgname})
 source=("https://raw.githubusercontent.com/${_orgname}/${_pkgname}/v${pkgver}/LICENSE")
 source_x86_64=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 sha256sums=('f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd')
-sha256sums_x86_64=('4f918929cf3f958068ec1ad608613241964267207bf906bb7dee0bbe2970d2cd')
+sha256sums_x86_64=('8f45cf3770c3aa09a3e02c073f99061d2dd49558113d4ea0a92c01d0c305f84a')
 
 package() {
     install -Dt "${pkgdir}/usr/bin" "${srcdir}/${_pkgname}_${pkgver}_linux_amd64/${_pkgname}"
