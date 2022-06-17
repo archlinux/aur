@@ -1,19 +1,18 @@
 # Maintainer: hekel <hekel(at)vivaldi(dot)net>
 
 pkgname=kwin-effects-burn-my-windows-git
-_pkgname=Burn-My-Windows-kde
-pkgver=r635.caec83a
+_pkgname=Burn-My-Windows-git
+pkgver=r640.bb44d4b
 pkgrel=1
 pkgdesc="Disintegrate your windows with style."
 arch=('any')
-_url="https://github.com/Schneegans/Burn-My-Windows"
-url="$_url/tree/feature/kde"
+url="https://github.com/Schneegans/Burn-My-Windows"
 license=('GPL3')
 depends=('kwin')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$_pkgname::git+$_url.git#branch=feature/kde")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
