@@ -1,7 +1,7 @@
 pkgbase = votar-git
 	pkgdesc = Tool to vote for AUR packages
 	pkgver = 1.0.0.r0.g5aaae4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jguer/votar
 	arch = i686
 	arch = pentium4
