@@ -37,7 +37,7 @@ package() {
   install -Dm644 "${_output}/zsh" "${pkgdir}/usr/share/zsh/site-functions/_yay"
   install -Dm644 "${_output}/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/yay.fish"
 
-  LANGS="pt pt_BR en es eu fr_FR ja pl_PL ru_RU zh_CN ko"
+  LANGS="de en es eu fr_FR id it_IT ja ko pl_PL pt pt_BR ru_RU sv tr zh_CN"
   for lang in ${LANGS}; do
     install -Dm644 "${_output}/${lang}.mo" "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/yay.mo"
   done
