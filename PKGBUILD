@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r1794.a9e8267
+pkgver=r1800.359f558
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
@@ -22,16 +22,12 @@ pkgver() {
 }
 
 build() {
-	# Workaround bug https://github.com/davidgiven/fluxengine/issues/531
-	CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 	cd "$srcdir/${pkgname%-git}"
 	# Make all depends on tests, but we want to run them in check() instead.
 	make "${_targets[@]}"
 }
 
 check() {
-	# Workaround bug https://github.com/davidgiven/fluxengine/issues/531
-	CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 	cd "$srcdir/${pkgname%-git}"
 	make tests
 }
