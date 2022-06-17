@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-git
-pkgver=15.5.r0.f2c598b
+pkgver=15.6.r0.505cdb6
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=('shim-efi-git')
 options=('!buildflags')
-source=("git+$url.git#branch=main"
+source=("git+$url.git"
         'rhboot-gnu-efi::git+https://github.com/rhboot/gnu-efi.git')
 sha512sums=('SKIP'
             'SKIP')
