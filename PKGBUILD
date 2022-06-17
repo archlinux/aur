@@ -1,5 +1,5 @@
 # Maintainer: Jonathon Fernyhough <jonathon + m2x + dev>
-# Contributor:  Konstantin Gizdov <arch at kge dot pw>
+# Contributor: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
@@ -14,14 +14,14 @@ pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(binutils libmpc doxygen python git)
+makedepends=(binutils doxygen git libmpc python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
+options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 # _commit=6957d3e4eef1f4243eb23ff62aea06139ef4415a
 # source=(git://gcc.gnu.org/git/gcc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.xz
+        https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
         c89 c99
         fs64270.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
@@ -30,7 +30,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 sha512sums=('cdd144ce4f747e051480410afc8506c90a57cb45da89071ddae377b1453bca3014422455ade9fe4563ebe51f4b6348cbc0c61905a9b8801cd597d51ad0ec62b3'
             'SKIP'
-            'ff6bdcff839e1cd473f2a0c1e4dd4a3612ec6fee4544ccbc62b530a7248db2cf93b4b99bf493a86ddf2aba00e768927265d5d411f92061ea85fd7929073428e8'
+            'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
             '25f0e186388075e25c80c2322865e948f22678f6769886d30c09204eb0e7efd6653170b62e749ece674d0814843609be75a096fd54bb65a87fa4037cf2889d03'
             'a0589368eb84611e2fd7397c619b7f13700bfac8018a45c35bd1c0c3d59a2782609cb9d8d090696586ea721c6d93dca6f7f6c689ac729341ee62e035b1d5af14'
             '38a0fedeac3eebe4a6a957792ba520225cf42663c96a171cd168fdb6c91ffa9a56b80351f8238c5d03b78d3ae2a6539a54481fe4848b4a395e2c87f2ff7adc08')
@@ -122,7 +122,7 @@ check() {
 package_gcc9-libs() {
   pkgdesc='Runtime libraries shipped by GCC (9.x.x)'
   depends=('glibc>=2.27')
-  options+=(!strip)
+  options=(!emptydirs !strip)
   provides=(libgfortran.so libubsan.so libasan.so libtsan.so liblsan.so)
 
   cd gcc-build
@@ -155,7 +155,7 @@ package_gcc9-libs() {
 package_gcc9() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (9.x.x)"
   depends=("${pkgbase}-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
-  options+=(staticlibs)
+  options=(!emptydirs staticlibs)
 
   cd gcc-build
 
