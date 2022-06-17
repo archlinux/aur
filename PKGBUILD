@@ -25,7 +25,6 @@ if [ "$_BUILD_CUDA" == "ON" ] ; then
   optdepends+=('libcudart.so: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
-        "nvm-export.patch"
         "gcc9.patch"
         "cuda11_gcc11.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
@@ -33,7 +32,6 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
 sha256sums=('SKIP'
-            'd8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36'
             '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
             '4b76da280b2c81ddb760e813d2c27c6b932790cc9aabaadbd0a917a6b57cfdfd'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'

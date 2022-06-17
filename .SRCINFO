@@ -26,14 +26,12 @@ pkgbase = colmap
 	depends = qt5-base
 	optdepends = libcudart.so: for cuda sfm/mvs acceleration
 	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.7
-	source = nvm-export.patch
 	source = gcc9.patch
 	source = cuda11_gcc11.patch
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin
 	sha256sums = SKIP
-	sha256sums = d8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36
 	sha256sums = 531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686
 	sha256sums = 4b76da280b2c81ddb760e813d2c27c6b932790cc9aabaadbd0a917a6b57cfdfd
 	sha256sums = d37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2
