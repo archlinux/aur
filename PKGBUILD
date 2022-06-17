@@ -1,16 +1,16 @@
 # Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname="aur-cli-git"
 _pkgname="aur-cli"
-pkgver=1.0.1.r0.gdd2242f
+pkgver=1.0.1.r2.g297a716
 pkgrel=1
 pkgdesc="Client for simple AUR queries"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Jguer/votar"
 license=('GPL3')
-makedepends=('go')
+makedepends=('go' 'git')
 conflicts=('aur-cli')
 provides=('aur-cli')
-source=("aur-cli::git+https://github.com/Jguer/aur.git#branch=master")
+source=("aur-cli::git+https://github.com/Jguer/aur.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -23,11 +23,6 @@ prepare(){
     mkdir -p build
 }
 
-check() {
-    cd "$srcdir/$_pkgname"
-    go test ./...
-}
-
 build() {
     cd "$srcdir/$_pkgname"
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -36,14 +31,12 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    # or alternatively you can define some of these flags from the CLI options
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-        -o build ./cmd/aur-cli
+    go build -o build ./cmd/aur-cli
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+    go test ./...
 }
 
 package() {
