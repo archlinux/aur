@@ -4,10 +4,12 @@
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCH="${CUDA_ARCH:-Auto}"
+_fragment=#${FRAGMENT:-branch=dev}
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-_fragment="#branch=dev"
 pkgname=${_name}-git
 pkgver=3.6.r93.gda8311b0
 pkgrel=1
@@ -46,6 +48,10 @@ build() {
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
+  # determine whether we need to define cuda host compiler
+      if _cuda_gcc=$(readlink /opt/cuda/bin/gcc) ; then
+        [ -f "$_cuda_gcc" ] && export CUDAHOSTCXX="$_cuda_gcc"
+      fi
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
                       -DCUDA_ARCHS="$_CUDA_ARCH"
