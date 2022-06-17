@@ -1,0 +1,18 @@
+pkgbase = python-stringbrewer
+	pkgdesc = Generate random strings matching a pattern
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/simoncozens/stringbrewer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rstr
+	depends = python-sre-yield
+	source = https://files.pythonhosted.org/packages/source/s/stringbrewer/stringbrewer-0.0.1.tar.gz
+	sha256sums = c2d113822f9393500b273cc833a21ce739036c02c62f47042e0f17ef9b9ea649
+
+pkgname = python-stringbrewer
