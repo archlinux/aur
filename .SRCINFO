@@ -1,0 +1,12 @@
+pkgbase = opentimer
+	pkgdesc = A fast and minimal speedcubing timer written in Qt5
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/sewe2000/opentimer/archive/refs/tags/0.0.1.tar.gz
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	source = https://github.com/sewe2000/opentimer/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = ffd05773bd9a0ce0d3d9beaf13c1a6ba77154118e47b818300999161b5eb68bf
+
+pkgname = opentimer
