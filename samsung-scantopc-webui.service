@@ -1,0 +1,16 @@
+[Unit]
+Description=Tool to interact with the "scan to PC" option in Samsung MFP (web UI).
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+Type=exec
+ExecStart=/usr/bin/node bin/www
+User=scantopc
+Group=scantopc
+WorkingDirectory=/usr/share/samsung-scantopc/webui/backend/
+EnvironmentFile=/etc/samsung-scantopc/webui.env
+
+[Install]
+WantedBy=multi-user.target

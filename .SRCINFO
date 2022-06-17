@@ -1,0 +1,19 @@
+pkgbase = samsung-scantopc-webui
+	pkgdesc = Tool to interact with the "scan to PC" option in Samsung MFP. Web user interface.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kleest/samsung-scantopc
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = samsung-scantopc
+	depends = nodejs
+	backup = etc/samsung-scantopc/webui.env
+	source = samsung-scantopc-webui.service
+	source = webui.env
+	source = samsung-scantopc-0.5.0.tar.gz::https://github.com/kleest/samsung-scantopc/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 02caabc53af0ce3ce333aac7d194f0abe3b46cc8aae32d18c874cfd5bc5b71d829bccaa04c972f9d8dfe805bf8ed97232c97db4f64d14c7829f1ff20a5b569c9
+	sha512sums = f0c0c702377f8e87c80e552a0a835dcece70e51b3ffdb6d640e666cf0dd110ec2153025108b9502b953097358d86899ccd149a3f57d7db4642d55909531de295
+	sha512sums = 491a56f79316f133810a5710f47d95a5a64885c81d9b7e7ed4ee1a1ff83713026c475675db79b62a13a0e4abcc2cd58429d0c6418e11eab07473173d71abad2b
+
+pkgname = samsung-scantopc-webui
