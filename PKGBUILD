@@ -1,4 +1,5 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 # Contributor: Tod Jackson <tod.jackson@gmail.com>
 # Contributor: orumin <dev@orum.in>
 # Contributor: Adam <adam900710 at gmail dot com>

@@ -1,7 +1,10 @@
-ffmpeg/
-gas-preprocessor/
-gst-common/
-gst-libav/
-*.pkg.tar
-pkg/
-src/
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.cmake
+!*.diff
+!*.hook
+!*.install
+!*.patch
+!*.txt
