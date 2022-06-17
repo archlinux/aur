@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=22.05.1.1.r170.gb613d531e4
+pkgver=22.05.2.1.r180.g0fb4598d86
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -88,6 +88,7 @@ package() {
 	# Install slurm's configs and license
 	install -D -m644 etc/slurm.conf.example    "${pkgdir}/etc/slurm-llnl/slurm.conf.example"
 	install -D -m644 etc/slurmdbd.conf.example "${pkgdir}/etc/slurm-llnl/slurmdbd.conf.example"
+	install -D -m644 etc/cgroup.conf.example   "${pkgdir}/etc/slurm-llnl/cgroup.conf.example"
 	install -D -m644 LICENSE.OpenSSL           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.OpenSSL"
 	install -D -m644 COPYING                   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
