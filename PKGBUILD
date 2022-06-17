@@ -2,8 +2,8 @@
 
 pkgname=xbacklight-notify
 pkgver=1.1.1
-pkgrel=1
-pkgdesc="XBacklight volume notification"
+pkgrel=2
+pkgdesc="Xorg backlight notification daemon"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/xbacklight-notify"
 license=(MIT)

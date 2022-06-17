@@ -1,7 +1,7 @@
 pkgbase = xbacklight-notify
-	pkgdesc = XBacklight volume notification
+	pkgdesc = Xorg backlight notification daemon
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ikrivosheev/xbacklight-notify
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = xbacklight-notify
 	depends = libnotify
 	depends = libxcb
 	source = xbacklight-notify-1.1.1.tar.gz::https://github.com/ikrivosheev/xbacklight-notify/archive/v1.1.1.tar.gz
-	md5sums = 3d147ca1d93375c5e29318ffd7aab73c
+	md5sums = f19b2422bfda0332ebc837fbe5ecd5f1
 
 pkgname = xbacklight-notify
