@@ -3,7 +3,6 @@ pkgbase = keyd
 	pkgver = 2.4.0
 	pkgrel = 2
 	url = https://github.com/rvaiya/keyd
-	install = keyd.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

@@ -10,7 +10,6 @@ license=('MIT')
 # https://github.com/rvaiya/keyd/tags
 _commit=90c3687fd507761ae45ef3b0180848187c181ef8
 source=("git+$url.git#tag=$_commit")
-install=keyd.install
 sha256sums=('SKIP')
 
 build() {
