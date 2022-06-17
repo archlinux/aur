@@ -2,11 +2,11 @@
 
 pkgname=quarto-cli
 pkgver=0.9.592
-pkgrel=1
+pkgrel=2
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
 arch=('x86_64' 'i686')
-depends=('nodejs' 'deno>=1.20.1' 'dart-sass' 'esbuild' 'pandoc>=2.17')
+depends=('nodejs' 'deno<1.23.0' 'dart-sass' 'esbuild' 'pandoc>=2.17')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
