@@ -1457,6 +1457,21 @@ package() {
     echo "    echo \"No ZST was created. No TAR file found to compress.\"" >> $CREATEZSTSCRIPTPATH
     echo "fi" >> $CREATEZSTSCRIPTPATH
     chmod +x $CREATEZSTSCRIPTPATH
+
+    # Create script to clean up after ZST package creation
+    CLEANUPSCRIPTPATH=${BUILDDIR}/cleanup-after-building-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
+    echo "#!/bin/bash" > $CLEANUPSCRIPTPATH
+    echo "rm -f \"$(xdg-user-dir DOWNLOAD)/$PACKAGEZSTFILENAME\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -f \"$(xdg-user-dir DOWNLOAD)/$PACKAGETARFILENAME\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -f \"$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -f \"$(xdg-user-dir DOWNLOAD)/create-zst-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory/*\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory/\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -rf \"$(xdg-user-dir DOWNLOAD)/cleanup-after-building-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}\"" >> $CLEANUPSCRIPTPATH
+    echo "rm -rf \"${BUILDDIR}\"" >> $CLEANUPSCRIPTPATH
+    echo "echo \"Removed everything that was built.\"" >> $CLEANUPSCRIPTPATH
+    echo "echo \"    ${PACKAGEZSTFULLPATH}\"" >> $CLEANUPSCRIPTPATH
+    chmod +x $CLEANUPSCRIPTPATH
     
     # Create install script
     INSTALLSCRIPTPATH=${BUILDDIR}/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
@@ -1506,6 +1521,7 @@ package() {
     ln -v -s -f "$PACKAGETARFULLPATH" "$(xdg-user-dir DOWNLOAD)/$PACKAGETARFILENAME"
     ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
     ln -v -s -f "$CREATEZSTSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/create-zst-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
+    ln -v -s -f "$CLEANUPSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/cleanup-after-building-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
     ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory"
     
     cd ${BUILDDIR}
