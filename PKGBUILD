@@ -20,7 +20,7 @@ checkdepends=(dejagnu inetutils)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
-        https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.xz
+        https://sourceware.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
         c89 c99
 )
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
@@ -29,7 +29,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 b2sums=('ac7898f5eb8a7c5f151a526d1bb38913a68b50a65e4d010ac09fa20b6c801c671c790d780f23ccb8e4ecdfc686f4aa588082ccc9eb5c80c7b0e30788f824c1eb'
         'SKIP'
-        '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
+        '88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e'
         'a76d19c7830b0a141302890522086fc1548c177611501caac7e66d576e541b64ca3f6e977de715268a9872dfdd6368a011b92e01f7944ec0088f899ac0d2a2a5'
         '02b655b5668f7dea51c3b3e4ff46d5a4aee5a04ed5e26b98a6470f39c2e98ddc0519bffeeedd982c31ef3c171457e4d1beaff32767d1aedd9346837aac4ec3ee')
 
