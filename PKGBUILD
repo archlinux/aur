@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=mpv-prescalers-git
-pkgver=r77.46b8193
-pkgrel=2
+pkgver=r103.cc02ed9
+pkgrel=1
 pkgdesc="User shaders for prescaling in mpv"
 arch=('any')
 url="https://github.com/bjin/mpv-prescalers/tree/master"
