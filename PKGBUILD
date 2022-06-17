@@ -3,7 +3,7 @@
 _pkgname=fasm
 pkgname="python-$_pkgname-git"
 pkgver=0.0.2.r98.g9a73d70
-pkgrel=3
+pkgrel=4
 pkgdesc="FPGA Assembly (FASM) Parser and Generation library"
 arch=(x86_64)
 url="https://github.com/SymbiFlow/fasm"
@@ -13,9 +13,7 @@ makedepends=('git' 'python-setuptools' 'cython' 'cmake' 'antlr4')
 checkdepends=('gtest' 'python-pytest')
 provides=("${pkgname%%-git}=$pkgver")
 conflicts=(fasm "${pkgname%%-git}")
-source=(
-	"git+$url.git"
-	"FindANTLR.cmake"
+_patches=(
 	"0001-cmake-install-parse_fasm.so.patch"
 	"0002-cmake-install-tags.py-properly.patch"
 	"0003-fix-setup.py-compute-install-directory-before-outsid.patch"
@@ -25,6 +23,11 @@ source=(
 	"0007-ANTLR4-4.10-compatibility.patch"
 	"0008-cmake-use-native-gtest.patch"
 	"0009-Use-cmake-directly-instead-of-letting-setup.py-try-t.patch"
+)
+source=(
+	"git+$url.git"
+	"FindANTLR.cmake"
+	"${_patches[@]}"
 )
 sha256sums=('SKIP'
             'ff8bb6b28f8e4724aeac01526ea7fa193f4bfa979de24ac99dbae92ee7116488'
@@ -47,8 +50,8 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 
-	for patch in "$srcdir"/*.patch; do
-		patch -p1 < "$patch"
+	for patch in "${_patches[@]}"; do
+		patch -p1 < "$srcdir/$patch"
 	done
 }
 

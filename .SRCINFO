@@ -1,7 +1,7 @@
 pkgbase = python-fasm-git
 	pkgdesc = FPGA Assembly (FASM) Parser and Generation library
 	pkgver = 0.0.2.r98.g9a73d70
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SymbiFlow/fasm
 	arch = x86_64
 	license = ISC
