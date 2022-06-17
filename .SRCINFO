@@ -1,7 +1,7 @@
-pkgbase = samson
+pkgbase = python-samson-crypto-git
 	pkgdesc = a cryptanalysis and attack library
 	pkgver = r259.fffbb7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wildcardcorp/samson
 	arch = any
 	license = custom
@@ -28,4 +28,4 @@ pkgbase = samson
 	source = git+https://github.com/wildcardcorp/samson.git
 	md5sums = SKIP
 
-pkgname = samson
+pkgname = python-samson-crypto-git

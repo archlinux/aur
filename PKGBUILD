@@ -1,7 +1,7 @@
 # Maintainer: Amber <amber@mail.cyborgtrees.com>
-pkgname=samson
+pkgname=python-samson-crypto-git
 pkgver=r259.fffbb7c
-pkgrel=1
+pkgrel=2
 pkgdesc="a cryptanalysis and attack library"
 arch=(any)
 url="https://github.com/wildcardcorp/samson"
