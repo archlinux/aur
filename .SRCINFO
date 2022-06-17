@@ -1,6 +1,6 @@
 pkgbase = ocaml-ppx_yojson_conv_lib
 	pkgdesc = Runtime lib for ppx_yojson_conv
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/janestreet/ppx_yojson_conv_lib
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ocaml-ppx_yojson_conv_lib
 	provides = ocaml-ppx_yojson_conv_lib
 	conflicts = ocaml-ppx_yojson_conv_lib
 	options = !strip
-	source = https://github.com/janestreet/ppx_yojson_conv_lib/archive/v0.14.0.tar.gz
+	source = https://github.com/janestreet/ppx_yojson_conv_lib/archive/v0.15.0.tar.gz
 	sha256sums = e739d5b167a4d85a942c929d0324d7a73b3e174f9e63757a1f104bf7ef54c193
 
 pkgname = ocaml-ppx_yojson_conv_lib
