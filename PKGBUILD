@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtiff-maya-git
-pkgver=4.3.0.r209.gb92d4ad0
+pkgver=4.4.0.r65.g8e9ce052
 pkgrel=1
 pkgdesc="TIFF library and utilities (built with --enable-ld-version-script flag for maya support)"
 arch=('i686' 'x86_64')
@@ -46,5 +46,5 @@ package() {
   cd "libtiff"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYRIGHT" -t "$pkgdir/usr/share/licenses/libtiff"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/libtiff"
 }

@@ -1,6 +1,6 @@
 pkgbase = libtiff-maya-git
 	pkgdesc = TIFF library and utilities (built with --enable-ld-version-script flag for maya support)
-	pkgver = 4.3.0.r209.gb92d4ad0
+	pkgver = 4.4.0.r65.g8e9ce052
 	pkgrel = 1
 	url = https://libtiff.gitlab.io/libtiff/
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = libtiff-maya-git
 	provides = libtiff.so
 	provides = libtiffxx.so
 	conflicts = libtiff
+	replaces = libtiff
 	options = staticlibs
 	source = git+https://gitlab.com/libtiff/libtiff.git
 	sha256sums = SKIP
