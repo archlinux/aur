@@ -9,8 +9,13 @@ post_install() {
 pre_remove() {
 	systemctl stop adsklicensing.service
 	systemctl disable adsklicensing.service
-	rm -rf /var/opt/Autodesk/AdskLicensingService \
-		/var/opt/Autodesk/Adlm/.config/ProductInformation.pit
+
+	if [ -d /opt/Autodesk/AdskLicensing/12.1.0.7121 ]
+	then
+		rm -rf /opt/Autodesk/AdskLicensing/12.1.0.7121
+		rmdir --ignore-fail-on-non-empty /opt/Autodesk/AdskLicensing
+		rmdir --ignore-fail-on-non-empty /opt/Autodesk
+	fi
 }
 
 post_remove() {
