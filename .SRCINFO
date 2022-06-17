@@ -1,13 +1,13 @@
 pkgbase = hunspell-uk
 	pkgdesc = Ukrainian spelling dictionary
-	pkgver = 5.6.0
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://github.com/brown-uk/dict_uk
 	arch = any
 	license = CCPL
 	makedepends = qt5-webengine
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://github.com/brown-uk/dict_uk/releases/download/v5.6.0/hunspell-uk_UA_5.6.0.zip
-	sha256sums = 20900d2cffe658a400ab34a865cbb36930dc045de3a6a73752a8f6b376ae6220
+	source = https://github.com/brown-uk/dict_uk/releases/download/v5.8.0/hunspell-uk_UA_5.8.0.zip
+	sha256sums = 5e0715699750779fd9d87f14ae3a9952ae6c07c1a8a0019464ee49c6f955b668
 
 pkgname = hunspell-uk
