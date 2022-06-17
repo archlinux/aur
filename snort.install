@@ -1,26 +1,16 @@
 post_install() {
-	getent group snort >/dev/null || groupadd -g 29 snort
-	getent passwd snort >/dev/null || useradd -c 'Snort user' -u 29 -g snort -d /var/log/snort -s /bin/false snort
-	passwd -l snort &>/dev/null
+    /usr/bin/nohup /usr/bin/pulledpork_update.sh /etc/snort/rules/snort.rules > /dev/null 2>&1 &
+    cat << EOF
+>>> EDIT /etc/snort/homenet.conf file to match your local network.
+>>> Add local rules to /etc/snort/rules/local.rules
 
-	[ -f var/log/snort/alert ] || : >var/log/snort/alert
-	chown snort.snort var/log/snort/ -R
-
-	cat << _EOF
-
->>> You have to edit the HOME_NET variable in the /etc/snort/snort.conf file to reflect your local network.
->>> If you do not change it, snort may not work.
-
-_EOF
+>>> Note: ALERTs are automatically deleted after 60 days
+>>>   use barnyard2 to store them in database
+EOF
 }
 
 post_upgrade() {
-	post_install $1
-}
-
-pre_remove() {
-	userdel snort &>/dev/null
-	groupdel snort &>/dev/null
+    post_install $1
 }
 
 # vim:set ts=2 sw=2 et:
