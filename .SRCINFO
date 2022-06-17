@@ -1,6 +1,6 @@
 pkgbase = pokete-git
 	pkgdesc = A terminal based Pokemon like game
-	pkgver = 0.6.0.r325.g104d21d
+	pkgver = 0.7.2.r82.gb56c30f
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/pokete
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = pokete-git
 	depends = python
 	depends = python-scrap_engine-git
 	depends = python-pip
+	depends = python-playsound
+	depends = python-gobject
 	provides = pokete
 	source = pokete-git::git+https://github.com/lxgr-linux/pokete
 	md5sums = SKIP
