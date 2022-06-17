@@ -1,0 +1,22 @@
+pkgbase = dns53-bin
+	pkgdesc = Dynamic DNS within Amazon Route53. Expose your EC2 quickly, easily and privately
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/purpleclay/dns53
+	license = MIT
+	conflicts = dns53
+	provides = dns53
+	arch = aarch64
+	source_aarch64 = https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-arm64.tar.gz
+	sha256sums_aarch64 = 593fcdfd7701aef1be43d2f8e7d07e959552e5280b5a0fb7c3110ae376620ee5
+	arch = armv7h
+	source_armv7h = https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-arm.tar.gz
+	sha256sums_armv7h = 9ed72cd6a93c072269d9dd69e1067fec385eeb03e9041c4893f20708cae81804
+	arch = i686
+	source_i686 = https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-i386.tar.gz
+	sha256sums_i686 = cfe8437051a38e0d7115cd92b02ec06cdeaf7ffe5ead0ea43e701654c4873af3
+	arch = x86_64
+	source_x86_64 = https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-x86_64.tar.gz
+	sha256sums_x86_64 = acb52caf28ab450afdb352752b6c5b372e63cffc8fbc751d9c52cba95eb8f668
+	
+pkgname = dns53-bin
