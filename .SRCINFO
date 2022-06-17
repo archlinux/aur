@@ -1,0 +1,23 @@
+pkgbase = samsung-scantopc
+	pkgdesc = Tool to interact with the "scan to PC" option in Samsung MFP.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/kleest/samsung-scantopc
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-sane
+	depends = python-pillow
+	depends = python-pypdf3
+	depends = python-six
+	backup = etc/samsungScannerServer.conf
+	source = samsung-scantopc.service
+	source = samsung-scantopc.sysusers
+	source = samsung-scantopc.tmpfiles
+	source = samsung-scantopc-0.5.0.tar.gz::https://github.com/kleest/samsung-scantopc/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = b9cda23223ecf55af66d053e369f5463c69e4e240bd5419aec128e3c54993f8103ede31744c0e0607365a8918ddf0cdba1c1a5cbf32cea4c81337e89c3ee6c66
+	sha512sums = 24a1a607b4bef0c132063b6564dd2a67cd51f1bec6527a96b495f14f85f3a44b1164d404c0a7314683d1ceb4578d6ab32bb65a60769788cd3465e89f15f1604d
+	sha512sums = 20b5e5f39eaaf9051a2c54adc7744d8c8540cf429cdf9dbd98c7a46bc24ec7cffbd5380847e32e7f5cf56df888cab88b6fec8a452c3bb31b2127b865520ee482
+	sha512sums = 491a56f79316f133810a5710f47d95a5a64885c81d9b7e7ed4ee1a1ff83713026c475675db79b62a13a0e4abcc2cd58429d0c6418e11eab07473173d71abad2b
+
+pkgname = samsung-scantopc

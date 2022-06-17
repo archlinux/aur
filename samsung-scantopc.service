@@ -1,0 +1,14 @@
+[Unit]
+Description=Tool to interact with the "scan to PC" option in Samsung MFP.
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+Type=exec
+ExecStart=/usr/bin/python3 /usr/bin/samsungScannerServer.py
+User=scantopc
+Group=scantopc
+
+[Install]
+WantedBy=multi-user.target
