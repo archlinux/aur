@@ -1436,7 +1436,7 @@ package() {
     PACKAGEZSTFULLPATH="${BUILDDIR}/${PACKAGEZSTFILENAME}"
 
     # Create script to create ZST file if not present
-    CREATEZSTSCRIPTPATH=${BUILDDIR}/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
+    CREATEZSTSCRIPTPATH=${BUILDDIR}/create-zst-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
     echo "#!/bin/bash" > $CREATEZSTSCRIPTPATH
     echo "if [ -f \"$PACKAGEZSTFULLPATH\" ]; then" >> $CREATEZSTSCRIPTPATH
     echo "    if [ -f \"$PACKAGETARFULLPATH\" ]; then" >> $CREATEZSTSCRIPTPATH
@@ -1505,7 +1505,7 @@ package() {
     ln -v -s -f "$PACKAGEZSTFULLPATH" "$(xdg-user-dir DOWNLOAD)/$PACKAGEZSTFILENAME"
     ln -v -s -f "$PACKAGETARFULLPATH" "$(xdg-user-dir DOWNLOAD)/$PACKAGETARFILENAME"
     ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
-    ln -v -s -f "$CREATEZSTSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/create-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}.pkg.tar.zst"
+    ln -v -s -f "$CREATEZSTSCRIPTPATH" "$(xdg-user-dir DOWNLOAD)/create-zst-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
     ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOAD)/${zst_name}-${pkgver}_build_directory"
     
     cd ${BUILDDIR}
