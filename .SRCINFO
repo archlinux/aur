@@ -1,0 +1,11 @@
+pkgbase = rover-bin
+	pkgdesc = Interactive Terraform visualization. State and configuration explorer.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/im2nguyen/rover
+	arch = x86_64
+	license = MIT
+	source = rover_0.3.2_linux_amd64.zip::https://github.com/im2nguyen/rover/releases/download/v0.3.2/rover_0.3.2_linux_amd64.zip
+	sha256sums = f296a3c87558291fc28205172c5856239d28f4112c2c3d42595af3bb62acce83
+
+pkgname = rover-bin
