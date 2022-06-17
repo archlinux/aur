@@ -10,6 +10,6 @@ pkgbase = fast-translate
 	depends = python
 	depends = python-pip
 	source = https://github.com/kalew515/fast-translate/archive/refs/tags/1.0.0.tar.gz
-	md5sums = b1f7635b4a3e3ff3fe023040a0505f1b
+	md5sums = 6e0378ad9b4c614d09f98b9c978d14b2
 
 pkgname = fast-translate

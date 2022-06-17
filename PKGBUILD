@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/kalew515/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('b1f7635b4a3e3ff3fe023040a0505f1b')
+md5sums=('6e0378ad9b4c614d09f98b9c978d14b2')
 validpgpkeys=()
 
 prepare() {
@@ -40,9 +40,9 @@ build() {
 	install -vd build/${pkgname}/usr/share/applications
 	install -vd build/${pkgname}/usr/share/icons
 	install -vd build/${pkgname}/opt/fast-translate
-	cp -r pkg/ftranslate build/${pkgname}/usr/bin/
+	cp -r pkg/aur/ftranslate build/${pkgname}/usr/bin/
 	cp -r src/config/icon/logo.svg.png build/${pkgname}/usr/share/icons/fast-translate.png
-	cp -r pkg/fast-translate.desktop build/${pkgname}/usr/share/applications/
+	cp -r pkg/aur/fast-translate.desktop build/${pkgname}/usr/share/applications/
 	cp -r src/* build/${pkgname}/opt/${pkgname}/
 }
 
