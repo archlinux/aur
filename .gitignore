@@ -1,6 +1,9 @@
-*~
-
-pkg/
-src/
-
-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.diff
+!*.hook
+!*.install
+!*.patch
+!*.txt

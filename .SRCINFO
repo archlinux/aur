@@ -1,13 +1,19 @@
 pkgbase = python2-pyxdg
-	pkgdesc = PyXDG contains implementations of freedesktop.org standards in python.
-	pkgver = 0.25
+	pkgdesc = Official freedesktop.org XDG specifications support library
+	pkgver = 0.27
 	pkgrel = 1
-	url = http://freedesktop.org/wiki/Software/pyxdg
+	url = https://pypi.org/project/pyxdg/0.27/
 	arch = any
-	license = LGPL2
+	license = LGPL
+	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/p/pyxdg/pyxdg-0.25.tar.gz
-	md5sums = bedcdb3a0ed85986d40044c87f23477c
+	provides = pyxdg=0.27
+	provides = python2-xdg=0.27
+	conflicts = pyxdg
+	conflicts = python2-xdg
+	conflicts = python2-pyxdg-git
+	source = https://pypi.python.org/packages/source/p/pyxdg/pyxdg-0.27.tar.gz
+	validpgpkeys = 6391296E3F25C0A721C1F1AFAF88B3AC5DECB224
+	sha256sums = 80bd93aae5ed82435f20462ea0208fb198d8eec262e831ee06ce9ddb6b91c5a5
 
 pkgname = python2-pyxdg
-
