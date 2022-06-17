@@ -2,12 +2,12 @@
 pkgname=gpupad-git
 _pkgname=gpupad
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc='A flexible GLSL shader editor and IDE.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/houmain/gpupad"
 license=('GPL3')
-depends=('qt5-declarative' 'qt5-multimedia' 'gst-libav')
+depends=('qt5-quickcontrols2' 'qt5-multimedia' 'gst-libav')
 makedepends=('cmake' 'git')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -22,11 +22,11 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   echo "\"${pkgver}\"" > "src/_version.h"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B _build -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build _build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/_build"
   make DESTDIR="$pkgdir" install
 }
