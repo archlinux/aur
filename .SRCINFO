@@ -1,6 +1,6 @@
 pkgbase = go-translation-git
 	pkgdesc = Translating TUI written in go using simplytranslate's API
-	pkgver = r59.53e5cfd
+	pkgver = r60.0a877bb
 	pkgrel = 1
 	url = https://github.com/fedeztk/got
 	arch = any
