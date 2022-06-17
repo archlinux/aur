@@ -1,17 +1,24 @@
 pkgbase = colloid-icon-theme-git
-	pkgdesc = Modern and clean icon theme for linux
-	pkgver = 2022.02.08.r2.gaec97d9
+	pkgver = 2022.04.22.r5.gb69977e
 	pkgrel = 1
-	url = https://www.pling.com/p/1661983
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gtk-update-icon-cache
-	depends = hicolor-icon-theme
-	provides = colloid-icon-theme
-	conflicts = colloid-icon-theme
+	makedepends = gtk-update-icon-cache
 	options = !strip
 	source = git+https://github.com/vinceliuice/Colloid-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = colloid-icon-theme-git
+	pkgdesc = Modern and clean icon theme for Linux
+	url = https://www.pling.com/p/1661983
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = colloid-icon-theme
+	conflicts = colloid-icon-theme
+
+pkgname = colloid-cursors-git
+	pkgdesc = An x-cursor theme inspired by Colloid theme and based on capitaine-cursors
+	url = https://www.pling.com/p/1831077
+	provides = colloid-cursors
+	conflicts = colloid-cursors
