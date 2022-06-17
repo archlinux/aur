@@ -2,10 +2,10 @@ post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
 	# Link to the binary
-	ln -sf '/opt/Notebook/notebook' '/usr/bin/notebook'
+	ln -sf '/opt/notebook/notebook' '/usr/bin/notebook'
 
 	# SUID chrome-sandbox for Electron 5+
-	chmod 4755 '/opt/Notebook/chrome-sandbox' || true
+	chmod 4755 '/opt/notebook/chrome-sandbox' || true
 
 	update-mime-database /usr/share/mime || true
 	update-desktop-database /usr/share/applications || true
