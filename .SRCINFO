@@ -1,15 +1,15 @@
 pkgbase = ledger-live-git
 	pkgdesc = Ledger Live - Desktop (Git version)
 	pkgver = 2.43.1.r6.ga4555a221
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = pnpm
 	makedepends = ruby-bundler
-	makedepends = python
-	makedepends = nodejs>=12
+	makedepends = python>=3.5
+	makedepends = nodejs>=16
 	depends = ledger-udev
 	provides = ledger-live
 	conflicts = ledger-live-bin

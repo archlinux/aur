@@ -6,18 +6,19 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
 pkgver=2.43.1.r6.ga4555a221
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'pnpm' 'ruby-bundler' 'python' 'nodejs>=12')
+makedepends=('git' 'pnpm' 'ruby-bundler' 'python>=3.5' 'nodejs>=16')
 provides=('ledger-live')
 conflicts=('ledger-live-bin' 'ledger-live')
-source=("$pkgname::git+$url#branch=main"
-  "$_pkgbin.desktop")
-sha512sums=('SKIP'
-  '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
+source=("$pkgname::git+$url#branch=main" "$_pkgbin.desktop")
+sha512sums=(
+  'SKIP'
+  '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda'
+)
 
 build() {
   cd $pkgname
@@ -55,7 +56,7 @@ pkgver() {
     awk -F: '{ print $2 }' |
     sed 's/[",]//g' |
     tr -d '[[:space:]]')
-  add_commits=$(git rev-list --count `git describe --abbrev=0 --tags`..HEAD)
+  add_commits=$(git rev-list --count $(git describe --abbrev=0 --tags)..HEAD)
   git_hash=$(git rev-parse --short HEAD)
   printf ${ver}.r${add_commits}.g${git_hash}
 }
