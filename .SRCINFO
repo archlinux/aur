@@ -1,6 +1,6 @@
 pkgbase = cpp-argparse-dev
-	pkgdesc = Python-like argument parser for C++11+ projects
-	pkgver = 1.6.2
+	pkgdesc = Python-like argument parser for C++ projects
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/rue-ryuzaki/argparse
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = cpp-argparse-dev
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
-	source = https://github.com/rue-ryuzaki/argparse/archive/refs/tags/v1.6.2.tar.gz
-	md5sums = 7b977eba5af0645acb8811eb98024202
+	source = https://github.com/rue-ryuzaki/argparse/archive/refs/tags/v1.6.3.tar.gz
+	md5sums = 21696bed1d0687431cfe56827551e57b
 
 pkgname = cpp-argparse-dev
