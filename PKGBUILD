@@ -6,7 +6,7 @@
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
 pkgver=12.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
@@ -84,7 +84,7 @@ build() {
 
 package() {
   make -C gcc-build DESTDIR="$pkgdir" \
-    install-gcc install-target-libgcc install-target-libstdc++-v3
+    install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic}
 
   # Strip target binaries
   find "$pkgdir/usr/lib/gcc/$_target/" "$pkgdir/usr/$_target/lib" -type f \
