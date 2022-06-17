@@ -1,0 +1,22 @@
+pkgbase = python-sphinx-examples
+	pkgdesc = A lightweight example directive to make it easy to demonstrate code / results
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://ebp-sphinx-examples.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	checkdepends = python-sphinx
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-examples/sphinx-examples-0.0.5.tar.gz
+	md5sums = 9448f3367f514d1cdf73cb89791fc320
+
+pkgname = python-sphinx-examples
+	depends = python-sphinx>4
+	depends = python-sphinx_design
+	optdepends = python-sphinx-book-theme: sphinx
+	optdepends = python-sphinx-copybutton: sphinx
+	optdepends = python-myst-parser: sphinx
+	optdepends = python-sphinx_rtd_theme: sphinx
