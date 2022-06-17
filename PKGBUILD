@@ -1,14 +1,15 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=objcryst-fox
 pkgver=2022.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A program for the ab initio structure determination from powder diffraction'
 arch=('i686' 'x86_64')
 url='http://fox.vincefn.net/FoxWiki'
 depends=('glu' 'freeglut' 'wxgtk2' 'fftw')
-makedepends=('mariadb-libs' 'newmat' 'rsync')
+makedepends=('newmat' 'rsync')
 license=('GPL2')
 _objcryst_ver=v${pkgver}
+_objcryst_dir=objcryst-${_objcryst_ver#v}
 _boost_ver=1.68.0
 source=(
 "Fox.desktop"
@@ -23,9 +24,6 @@ sha256sums=('d55bafe20672f01a800b8406ad2892f9f34aa545f6b3faa554399198c3dd9492'
 
 
 prepare() {
-	cd "${srcdir}/"
-	_objcryst_dir=`tar tf objcryst-${pkgver}.tar.gz | head -1`
-
 	cd "${srcdir}/${_objcryst_dir}"
 	[ -e cctbx.tar.bz2 ] || ln -s ../cctbx.tar.bz2
 	[ -e boost_${_boost_ver//./_}.tar.bz2 ] || ln -s ../boost_${_boost_ver//./_}.tar.bz2
@@ -45,8 +43,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"
-	_objcryst_dir=`tar tf objcryst-${pkgver}.tar.gz | head -1`
 	cd "${srcdir}/${_objcryst_dir}"
 	make install -C Fox "DESTDIR=${pkgdir}/usr/bin/Fox"
 	install -Dm644 ${srcdir}/Fox.desktop "${pkgdir}/usr/share/applications/Fox.desktop"

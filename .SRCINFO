@@ -1,12 +1,11 @@
 pkgbase = objcryst-fox
 	pkgdesc = A program for the ab initio structure determination from powder diffraction
 	pkgver = 2022.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fox.vincefn.net/FoxWiki
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = mariadb-libs
 	makedepends = newmat
 	makedepends = rsync
 	depends = glu
