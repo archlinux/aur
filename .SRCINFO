@@ -1,6 +1,6 @@
 pkgbase = perl-alien-hunspell
 	pkgdesc = Alien::Hunspell - Install hunspell
-	pkgver = 0.16
+	pkgver = 0.17
 	pkgrel = 1
 	url = https://metacpan.org/release/Alien-Hunspell/
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = perl-alien-hunspell
 	depends = perl-alien-build
 	depends = perl-ffi-checklib
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Alien-Hunspell-0.16.tar.gz
-	sha256sums = 61619ce3e2667391ec3e2b46013d0f73375acef7cb5b43dbfa7120ddcc02fcb3
+	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Alien-Hunspell-0.17.tar.gz
+	sha256sums = 7394845e146de346378d0252f09a8b8f2a694a7f313a1ef280f423cbb2e5cda9
 
 pkgname = perl-alien-hunspell
-
