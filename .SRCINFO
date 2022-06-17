@@ -1,7 +1,7 @@
 pkgbase = perl-module-refresh
 	pkgdesc = Perl module to refresh %INC files when updated on disk
-	pkgver = 0.17
-	pkgrel = 2
+	pkgver = 0.18
+	pkgrel = 1
 	url = https://metacpan.org/release/Module-Refresh
 	arch = any
 	license = GPL
@@ -9,8 +9,7 @@ pkgbase = perl-module-refresh
 	checkdepends = perl-path-class
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Module-Refresh-0.17.tar.gz
-	md5sums = b077d06cab125aaff940d859945727f4
+	source = http://search.cpan.org/CPAN/authors/id/B/BP/BPS/Module-Refresh-0.18.tar.gz
+	md5sums = 81ba8a9c17831b2326c4f76e8a7ba517
 
 pkgname = perl-module-refresh
-
