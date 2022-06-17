@@ -1,14 +1,13 @@
 pkgbase = perl-io-socket-socks
 	pkgdesc = Provides a way to create socks client or server both 4 and 5 version
-	pkgver = 0.64
+	pkgver = 0.74
 	pkgrel = 1
 	url = http://search.cpan.org/~oleg/IO-Socket-Socks
 	arch = any
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/IO-Socket-Socks-0.64.tar.gz
-	md5sums = f43e4b06392f3c09ad5823124eed1cc0
+	source = http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/IO-Socket-Socks-0.74.tar.gz
+	md5sums = 9b19fba551ae14aa2382bfe318245de2
 
 pkgname = perl-io-socket-socks
-
