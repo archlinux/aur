@@ -1439,10 +1439,16 @@ package() {
     INSTALLSCRIPTPATH=${BUILDDIR}/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}
     echo "#!/bin/bash" > $INSTALLSCRIPTPATH
     echo "if [ -f \"$PACKAGEZSTFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
-    echo "    sudo pamac install \"$PACKAGEZSTFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    if [ -f \"$PACKAGETARFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
+    echo "        zstd \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    fi" >> $INSTALLSCRIPTPATH
+    echo "    #sudo pamac install \"$PACKAGEZSTFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    sudo pacman -U \"$PACKAGEZSTFULLPATH\"" >> $INSTALLSCRIPTPATH
     echo "elif [ -f \"$PACKAGETARFULLPATH\" ]; then" >> $INSTALLSCRIPTPATH
     echo "    zstd \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
-    echo "    sudo pamac install \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    #sudo pamac install \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    sudo pacman -U \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
+    echo "    rm -f \"$PACKAGETARFULLPATH\"" >> $INSTALLSCRIPTPATH
     echo "else" >> $INSTALLSCRIPTPATH
     echo "    echo \"Install ZST:\"" >> $INSTALLSCRIPTPATH
     echo "    echo \"Dont forget to check if $pkgname was installed.\"" >> $INSTALLSCRIPTPATH
