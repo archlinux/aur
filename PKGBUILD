@@ -31,37 +31,31 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	pip3 install -r requirements.txt
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	mkdir -p build/fast-translate/usr/bin
-	mkdir -p build/fast-translate/usr/share/applications
-	mkdir -p build/fast-translate/usr/share/icons
-	mkdir -p build/fast-translate/opt/fast-translate
-
-	cp pkg/ftranslate build/fast-translate/usr/bin/
-
-	cp src/config/icon/logo.svg.png build/fast-translate/usr/share/icons/fast-translate.png
-	cp pkg/fast-translate.desktop build/fast-translate/usr/share/applications/
-
-	cp -r src/* build/fast-translate/opt/fast-translate/
+	install -vd build/${pkgname}/usr/bin
+	install -vd build/${pkgname}/usr/share/applications
+	install -vd build/${pkgname}/usr/share/icons
+	install -vd build/${pkgname}/opt/fast-translate
+	cp -r pkg/ftranslate build/${pkgname}/usr/bin/
+	cp -r src/config/icon/logo.svg.png build/${pkgname}/usr/share/icons/fast-translate.png
+	cp -r pkg/fast-translate.desktop build/${pkgname}/usr/share/applications/
+	cp -r src/* build/${pkgname}/opt/${pkgname}/
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	pip3 install -r requirements.txt
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	rm -rf /opt/fast-translate
-	rm -rf /usr/bin/ftranslate /usr/share/icons/fast-translate.png /usr/share/applications/fast-translate.desktop
-	mkdir -p /usr/bin/
-	mkdir -p /usr/share/icons/
-	cp -r ./build/fast-translate/opt/fast-translate /opt/
-	cp build/fast-translate/usr/bin/* /usr/bin/
-	cp build/fast-translate/usr/share/icons/* /usr/share/icons/
-	cp build/fast-translate/usr/share/applications/* /usr/share/applications/
+	mkdir ${pkgdir}/opt/
+	mkdir ${pkgdir}/usr/
+	cp -r build/${pkgname}/opt/${pkgname}/ ${pkgdir}/opt/
+	cp -r build/${pkgname}/usr/* ${pkgdir}/usr/
 }
+
  
