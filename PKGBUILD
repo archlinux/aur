@@ -1474,6 +1474,12 @@ package() {
         zstd \"$PACKAGETARFULLPATH\"
         sudo pamac install \"$PACKAGETARFULLPATH\"
     fi
+
+    # Create shortcut to package in $(xdg-user-dir DOWNLOADS)
+    # to make it easier to find
+    ln -v -s -f "$PACKAGEZSTFULLPATH" "$(xdg-user-dir DOWNLOADS)/$PACKAGEZSTFILENAME"
+    ln -v -s -f "$INSTALLSCRIPTPATH" "$(xdg-user-dir DOWNLOADS)/install-${zst_name}-${pkgver}-${pkgrel}-${PACKAGEARCH}"
+    ln -v -s -f "${BUILDDIR}" "$(xdg-user-dir DOWNLOADS)/${zst_name}-${pkgver}_build_directory"
     
     cd ${BUILDDIR}
     # Change back to default package name in PKGBUILD:
