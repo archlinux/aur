@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
@@ -39,4 +39,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('74a74198af55b18330e6f8a6fb59eb37')
+md5sums=('9a9b668d2ac35e9b598049418f4ab15d')
