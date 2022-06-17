@@ -1,12 +1,13 @@
 pkgbase = supermicro-update-manager
-	pkgdesc = manage the firmware and configuration for Supermicro motherboards
-	pkgver = 2.7.0
+	pkgdesc = Update the BMC and UEFI/BIOS firmware for Supermicro motherboards
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager
 	arch = x86_64
 	license = custom: EULA
+	depends = zlib
 	backup = etc/sumrc
-	source = sum_2.7.0_Linux_x86_64_20210903.tar.gz::https://www.supermicro.com/SwDownload/SwSelect_Free.aspx
-	sha256sums = a4218f07efc4f3ca6be1b008962f33317f5c639cf5f20188f7b88c7dcbe19e11
+	source = https://www.supermicro.com/Bios/sw_download/440/sum_2.8.1_Linux_x86_64_20220506.tar.gz
+	sha256sums = f458076e94f9fd822b1a82a44bf7087a57e58c2ad47c6fe7e11091fe3e1cbff3
 
 pkgname = supermicro-update-manager
