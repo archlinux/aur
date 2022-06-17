@@ -1,13 +1,14 @@
 pkgbase = r-phangorn
 	pkgdesc = Phylogenetic Reconstruction and Analysis
-	pkgver = 2.8.1
-	pkgrel = 4
+	pkgver = 2.9.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=phangorn
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-ape
 	depends = r-fastmatch
+	depends = r-generics
 	depends = r-igraph
 	depends = r-quadprog
 	depends = r-rcpp
@@ -21,7 +22,7 @@ pkgbase = r-phangorn
 	optdepends = r-seqlogo
 	optdepends = r-tinytest
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/phangorn_2.8.1.tar.gz
-	sha256sums = 6d471410ae29775104a94746936e8c1c54c7273dd289333973ec06dad489dc75
+	source = https://cran.r-project.org/src/contrib/phangorn_2.9.0.tar.gz
+	sha256sums = 3262dbe002bedc636467d4ac77044965f4976da09fa710c606075c5ddf26da23
 
 pkgname = r-phangorn

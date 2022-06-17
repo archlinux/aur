@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phangorn
-_pkgver=2.8.1
+_pkgver=2.9.0
 pkgname=r-${_pkgname,,}
-pkgver=2.8.1
-pkgrel=4
+pkgver=2.9.0
+pkgrel=2
 pkgdesc='Phylogenetic Reconstruction and Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-ape
   r-fastmatch
+  r-generics
   r-igraph
   r-quadprog
   r-rcpp
@@ -30,7 +31,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d471410ae29775104a94746936e8c1c54c7273dd289333973ec06dad489dc75')
+sha256sums=('3262dbe002bedc636467d4ac77044965f4976da09fa710c606075c5ddf26da23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
