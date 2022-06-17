@@ -2,7 +2,7 @@
 # Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 
 pkgname=openmw-git
-pkgver=0.47.0.r2799.g28c97c22b9
+pkgver=0.47.0.r2801.gcee6988093
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -10,13 +10,11 @@ url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
 depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'ninja')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/OpenMW/openmw.git')
 sha1sums=('SKIP')
-# build breaks with clean chroot build using devtools without disabling lto explicitly, see https://bbs.archlinux.org/viewtopic.php?id=277304
-options=(!lto)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -28,8 +26,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
   make
