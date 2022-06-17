@@ -35,6 +35,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/libinput"
 
 	make DESTDIR="${pkgdir}" PREFIX='/usr' install
-	echo 'g keyd' | install -Dm644 /dev/stdin ""${pkgdir}"/usr/lib/sysusers.d/${pkgname%-git}.conf"
+	echo 'g keyd' | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
 }
