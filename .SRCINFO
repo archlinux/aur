@@ -1,7 +1,7 @@
 pkgbase = wasabi-wallet-bin
 	pkgdesc = Open-source, non-custodial, privacy-focused Bitcoin wallet for desktop
 	pkgver = 2.0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wasabiwallet.io/
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = wasabi-wallet-bin
 	validpgpkeys = 6FB3872B5D42292F59920797856348328949861E
 	sha256sums = fe9aac95eca9c9bb77f09c30000714a8fe418793e94e102202708f0db91ce066
 	sha256sums = SKIP
-	sha256sums = 004c3b81aba48d2db36776e5aaec51ffd852cc806c18d327e76fdeddeee2683c
+	sha256sums = cc774dc7850f7d097c1a5a987e2d7c89f8fa979e1f20dd8ac7905e6d1c5ec392
 
 pkgname = wasabi-wallet-bin
