@@ -16,7 +16,7 @@ pkgbase = libtiff-maya-git
 	depends = xz
 	depends = zlib
 	optdepends = freeglut: for using tiffgt
-	provides = libtiff
+	provides = libtiff=4.4.0
 	provides = libtiff.so
 	provides = libtiffxx.so
 	conflicts = libtiff
