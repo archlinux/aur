@@ -10,7 +10,6 @@ pkgbase = lib32-gst-libav
 	makedepends = meson
 	makedepends = python
 	depends = bzip2
-	depends = gst-libav
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-libffmpeg
 	provides = lib32-gst-ffmpeg=1.18.5-1
@@ -18,3 +17,7 @@ pkgbase = lib32-gst-libav
 	sha256sums = SKIP
 
 pkgname = lib32-gst-libav
+	depends = bzip2
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-libffmpeg
+	depends = gst-libav

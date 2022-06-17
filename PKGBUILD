@@ -14,7 +14,6 @@ url='https://gstreamer.freedesktop.org/'
 license=('GPL')
 depends=(
     'bzip2'
-    'gst-libav'
     'lib32-gst-plugins-base-libs'
     'lib32-libffmpeg'
 )
@@ -51,5 +50,6 @@ check() {
 }
 
 package() {
+    depends+=('gst-libav')
     meson install -C 'build' --destdir "${pkgdir}"
 }
