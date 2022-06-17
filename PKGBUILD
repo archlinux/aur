@@ -3,15 +3,14 @@
 _pyname=axisregistry
 pkgname=python-$_pyname
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='easy access to the GF Axis Registry'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
 license=(Apache)
 depends=(python
          python-protobuf)
-makedepends=(cython
-             python-{build,installer,wheel}
+makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
