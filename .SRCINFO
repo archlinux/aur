@@ -5,13 +5,13 @@ pkgbase = lib32-gst-libav
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = GPL
-	makedepends = python
 	makedepends = git
 	makedepends = meson
+	makedepends = python
 	depends = bzip2
+	depends = gst-libav
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-libffmpeg
-	depends = gst-libav
 	provides = lib32-gst-ffmpeg=1.18.5-1
 	source = git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=9db917cab4c20e72e53ed962406a0d94636a2a39
 	sha256sums = SKIP

@@ -4,46 +4,51 @@
 # Contributor: orumin <dev@orum.in>
 # Contributor: Adam <adam900710 at gmail dot com>
 
-_basename=gst-libav
-pkgname=lib32-gst-libav
+_basename='gst-libav'
+pkgname='lib32-gst-libav'
 pkgver=1.18.5
 pkgrel=1
-pkgdesc="Multimedia graph framework - libav plugin (32-bit)"
-url="https://gstreamer.freedesktop.org/"
-arch=(x86_64)
-license=(GPL)
-depends=(bzip2 lib32-gst-plugins-base-libs lib32-libffmpeg gst-libav)
-makedepends=(python git meson)
-provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
-_commit=9db917cab4c20e72e53ed962406a0d94636a2a39 # tags/1.18.5^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=$_commit")
+pkgdesc='Multimedia graph framework - libav plugin (32-bit)'
+arch=('x86_64')
+url='https://gstreamer.freedesktop.org/'
+license=('GPL')
+depends=(
+    'bzip2'
+    'gst-libav'
+    'lib32-gst-plugins-base-libs'
+    'lib32-libffmpeg'
+)
+makedepends=(
+    'git'
+    'meson'
+    'python'
+)
+provides=("lib32-gst-ffmpeg=${pkgver}-${pkgrel}")
+_commit='9db917cab4c20e72e53ed962406a0d94636a2a39' # tags/1.18.5^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/${_basename}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd $_basename
-
-    git describe --tags | sed 's/-/+/g'
-}
-
-build() {
+prepare() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG='/usr/bin/i686-pc-linux-gnu-pkg-config'
 
-    arch-meson $_basename build \
-        --libdir=lib32 \
-        --libexecdir=lib32 \
-        -D doc=disabled \
-        -D package-name="GStreamer FFmpeg Plugin (Arch Linux)" \
-        -D package-origin="https://www.archlinux.org/"
+    arch-meson $_basename 'build' \
+        --libdir='lib32' \
+        --libexecdir='lib32' \
+        -Ddoc='disabled' \
+        -Dpackage-name='GStreamer FFmpeg Plugin (Arch Linux)' \
+        -Dpackage-origin='https://www.archlinux.org/'
+}
 
-    meson compile -C build
+build() {
+    meson compile -C 'build'
 }
 
 check() {
-    meson test -C build --print-errorlogs
+    meson test -C 'build' --print-errorlogs
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+    meson install -C 'build' --destdir "${pkgdir}"
 }
