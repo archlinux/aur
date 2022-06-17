@@ -3,29 +3,38 @@
 # Contributor: Victor Engmark <victor.engmark@gmail.com>
 
 pkgname=python-vcard
+_pkg="${pkgname#python-}"
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="vCard validator"
 arch=('any')
 url='https://gitlab.com/victor-engmark/vcard'
 license=('AGPL3')
-depends=('python-dateutil')
-makedepends=('python-setuptools')
+depends=('python-dateutil' 'python-typing_extensions')
+makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
+checkdepends=('python-pytest' 'python-mock')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/vcard-v$pkgver.tar.bz2")
-sha512sums=('8e07db501e7974301d680286c900bab687439d0ce542c94c4d399c6c0e855107ef2a6e9252667870e22debcdc30d5bda92587b43d06837d8789922ded8eda178')
+sha256sums=('345fd6ee49b5cd0d5ea8246475d80088f55fd4f0aa24ee7a41eb76b96cf5d492')
 
 prepare() {
-	cd "vcard-v$pkgver"
+	cd "$_pkg-v$pkgver"
 	sed -i '/data_files/d' setup.py
 }
 
 build() {
-	cd "vcard-v$pkgver"
-	python setup.py build
+	cd "$_pkg-v$pkgver"
+	## python-packaging too new
+	python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+	cd "$_pkg-v$pkgver"
+	pytest -x
+	# python setup.py test
 }
 
 package() {
-	cd "vcard-v$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 bash-completion/vcard -t "$pkgdir/usr/share/bash-completion/completions/"
+	cd "$_pkg-v$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 bash-completion/vcard -t "$pkgdir/usr/share/bash-completion/completions/"
 }
