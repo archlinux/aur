@@ -1,0 +1,50 @@
+--- a/src/vboxhost/vboxdrv/linux/SUPDrv-linux.c
++++ b/src/vboxhost/vboxdrv/linux/SUPDrv-linux.c
+@@ -1454,6 +1454,31 @@
+ }
+ 
+ 
++SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
++{
++    RT_NOREF(fCtxHook);
++#if RTLNX_VER_MIN(5,18,0)
++    kernel_fpu_begin();
++    /* if (fCtxHook) */
++        preempt_enable();  /* HACK ALERT! undo the implicit preempt_disable() in kernel_fpu_begin(). */
++    return true;
++#else
++    return false;
++#endif
++}
++
++
++SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
++{
++    RT_NOREF(fCtxHook);
++#if RTLNX_VER_MIN(5,18,0)
++    /* if (fCtxHook) */
++        preempt_disable();  /* HACK ALERT! undo the implicit preempt_enable() in SUPR0FpuBegin(). */
++    kernel_fpu_end();
++#endif
++}
++
++
+ int VBOXCALL    supdrvOSGetCurrentGdtRw(RTHCUINTPTR *pGdtRw)
+ {
+ #if RTLNX_VER_MIN(4,12,0)
+--- a/src/vboxhost/vboxnetflt/linux/VBoxNetFlt-linux.c
++++ b/src/vboxhost/vboxnetflt/linux/VBoxNetFlt-linux.c
+@@ -2311,7 +2311,13 @@
+                 vboxNetFltDumpPacket(pSG, true, "host", (fDst & INTNETTRUNKDIR_WIRE) ? 0 : 1);
+                 Log6(("vboxNetFltPortOsXmit: pBuf->cb dump:\n%.*Rhxd\n", sizeof(pBuf->cb), pBuf->cb));
+                 Log6(("vboxNetFltPortOsXmit: netif_rx_ni(%p)\n", pBuf));
++#if RTLNX_VER_MIN(5,18,0)
++                local_bh_disable();
++                err = netif_rx(pBuf);
++                local_bh_enable();
++#else
+                 err = netif_rx_ni(pBuf);
++#endif
+                 if (err)
+                     rc = RTErrConvertFromErrno(err);
+             }
