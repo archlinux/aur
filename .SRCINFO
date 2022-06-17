@@ -1,10 +1,10 @@
 pkgbase = lib32-gst-plugins-ugly
 	pkgdesc = Multimedia graph framework - ugly plugins (32-bit)
 	pkgver = 1.20.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
-	license = LGPL2.1
+	license = GPL
 	makedepends = cmake
 	makedepends = meson
 	depends = lib32-gst-plugins-base-libs>=1.20.3
