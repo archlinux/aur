@@ -1,8 +1,8 @@
 pkgbase = aur-cli-git
 	pkgdesc = Client for simple AUR queries
 	pkgver = 1.0.1.r2.g297a716
-	pkgrel = 1
-	url = https://github.com/Jguer/votar
+	pkgrel = 2
+	url = https://github.com/Jguer/aur
 	arch = i686
 	arch = pentium4
 	arch = x86_64

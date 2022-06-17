@@ -2,10 +2,10 @@
 pkgname="aur-cli-git"
 _pkgname="aur-cli"
 pkgver=1.0.1.r2.g297a716
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for simple AUR queries"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/Jguer/votar"
+url="https://github.com/Jguer/aur"
 license=('GPL3')
 makedepends=('go' 'git')
 conflicts=('aur-cli')
