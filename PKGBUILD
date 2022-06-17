@@ -1,5 +1,5 @@
 # Maintainer: Tucker Boniface <tucker@boniface.tech>
-# Maintainer: Jguer <joaogg3@gmail.com>
+# Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname="yay-git"
 _pkgname="yay"
 pkgver=11.2.0.r0.g70a9765
