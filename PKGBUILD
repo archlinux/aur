@@ -3,18 +3,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-alien-gsl
-pkgver=1.02
+pkgver=1.07
 pkgrel=1
 pkgdesc='Building, finding and using GSL library'
 arch=('any')
 url='https://metacpan.org/release/Alien-GSL'
 license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-build>=0.38' 'perl-alien-base-modulebuild' 'perl-net-ssleay'
+makedepends=('perl-alien-build' 'perl-net-ssleay'
 	'perl-io-socket-ssl')
 depends=('perl-alien-build' 'gsl')
-source=(http://search.cpan.org/CPAN/authors/id/J/JB/JBERGER/Alien-GSL-1.02.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Alien-GSL-1.07.tar.gz)
 options=(!emptydirs)
-md5sums=('91ad561f5420e59a70a09ae7bb0a806d')
+md5sums=('a5dee649d2af80624c99cf3554230d6b')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -22,21 +22,21 @@ sanitize() {
 }
 
 build() {
-	cd Alien-GSL-1.02
+	cd Alien-GSL-1.07
 	sanitize
-	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	/usr/bin/perl Build
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-	cd Alien-GSL-1.02
+	cd Alien-GSL-1.07
 	sanitize
-	/usr/bin/perl Build test
+	make test
 }
 
 package() {
-	cd Alien-GSL-1.02
+	cd Alien-GSL-1.07
 	sanitize
-	/usr/bin/perl Build install
+	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

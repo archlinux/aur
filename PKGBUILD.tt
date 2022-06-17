@@ -9,7 +9,7 @@ pkgdesc='Building, finding and using GSL library'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-build>=0.38' 'perl-alien-base-modulebuild' 'perl-net-ssleay'
+makedepends=('perl-alien-build' 'perl-net-ssleay'
 	'perl-io-socket-ssl')
 depends=('perl-alien-build' 'gsl')
 source=([% source %])
@@ -24,19 +24,19 @@ sanitize() {
 build() {
 	cd [% distdir %]
 	sanitize
-	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	/usr/bin/perl Build
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
 	cd [% distdir %]
 	sanitize
-	/usr/bin/perl Build test
+	make test
 }
 
 package() {
 	cd [% distdir %]
 	sanitize
-	/usr/bin/perl Build install
+	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
