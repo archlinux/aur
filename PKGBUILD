@@ -49,54 +49,69 @@ sha256sums=('25d1583932801321fe559ee87c3c19c60d45f9119447d86049f073ad295b3da3'
             '9240da9240a0c9c76ac4b503d53f4aec54af544cef3d9cc1f7ad7994d1cda0f9')
 
 prepare() {
-  mv 'CMakeLists.txt' "${_tardirname}"
-  mkdir -p "${_tardirname}/cmake"
-  mv 'FindCImg.cmake' 'FindGMicStdlib.cmake' 'FindGraphicsMagick.cmake' "${_tardirname}/cmake"
+  echo "Adding back CMake build system files (removed from upstream)"
 
-  printf 'Checking if ccache is enabled for makepkg... '
+  mv --verbose 'CMakeLists.txt' "${_tardirname}"
+  mkdir --verbose --parents "${_tardirname}/cmake"
+  mv --verbose 'FindCImg.cmake' 'FindGMicStdlib.cmake' 'FindGraphicsMagick.cmake' "${_tardirname}/cmake"
 
-  if check_buildoption "ccache" "y"; then
-    printf 'yes\n'
-    printf 'Enabling C ccache for CMake...\n'
-    export CMAKE_C_COMPILER_LAUNCHER='ccache'
-    printf 'Enabling C++ ccache for CMake...\n'
-    export CMAKE_CXX_COMPILER_LAUNCHER='ccache'
+  printf 'Checking if ccache is enabled... '
+
+  if check_buildoption "ccache" "n"; then
+    echo 'no'
   else
-    printf 'no\n'
+    echo 'yes'
+
+    echo '-- Enabling ccache for the C compiler in CMake'
+    export CMAKE_C_COMPILER_LAUNCHER='ccache'
+    echo '-- Enabling ccache for the C++ compiler in CMake'
+    export CMAKE_CXX_COMPILER_LAUNCHER='ccache'
   fi
 
-  printf 'Configuring to use CPPFLAGS in CMake...\n\n'
-  export CFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
-  export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
+  echo 'Configuring external build flags for CMake...'
+  echo '-- Adding CPPFLAGS to CFLAGS and CXXFLAGS; otherwise it might be ignored by CMake'
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
 
-  printf 'Configuring gmic build with CMake...\n\n'
-  # CMake also ignores system LDFLAGS if not passed to special LINKER_FLAGS_INIT
-  cmake -B 'build' -S "${_tardirname}" \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DBUILD_LIB_STATIC='OFF' \
-    -DENABLE_DYNAMIC_LINKING='ON' \
-    -DENABLE_OPENCV='OFF'
+  echo
+  echo "Configuring ${_basename} CMake build..."
 
-  printf 'Configuring gmic-qt build with CMake...\n\n'
-  # CMake also ignores system LDFLAGS if not passed to special LINKER_FLAGS_INIT
-  LDFLAGS="${LDFLAGS} -L../build"
-  cmake -B 'build-qt' -S "${_tardirname}/gmic-qt" \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
-    -DENABLE_DYNAMIC_LINKING='ON' \
-    -DGMIC_PATH="${srcdir}/${_tardirname}/src" \
-    -DGMIC_QT_HOST='none'
+  echo '-- Adding LDFLAGS to LINKER_FLAGS_INIT vars, otherwise it might be ignored by CMake'
+
+  cmake -B 'build' \
+        -S "${_tardirname}" \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DBUILD_LIB_STATIC='OFF' \
+        -DENABLE_DYNAMIC_LINKING='ON' \
+        -DENABLE_OPENCV='OFF'
+
+  echo
+  echo "Configuring ${_basename}-qt CMake build..."
+
+  echo "-- Adding ${_basename} build dir to LDFLAGS: ${srcdir}/${_tardirname}/build"
+  LDFLAGS="${LDFLAGS} -L'${srcdir}/${_tardirname}/build'"
+
+  echo '-- Adding LDFLAGS to LINKER_FLAGS_INIT vars, otherwise it might be ignored by CMake'
+
+  cmake -B 'build-qt' \
+        -S "${_tardirname}/gmic-qt" \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+        -DENABLE_DYNAMIC_LINKING='ON' \
+        -DGMIC_PATH="${srcdir}/${_tardirname}/src" \
+        -DGMIC_QT_HOST='none'
 }
 
 build() {
-  printf 'Building gmic with CMake...\n\n'
+  echo "Building ${_basename} with CMake..."
   cmake --build 'build'
-  printf 'Building gmic-qt with CMake...\n\n'
+  echo
+  echo "Building ${_basename}-qt with CMake..."
   cmake --build 'build-qt'
 }
 
