@@ -1,0 +1,8 @@
+post_install() {
+	echo Updating icon cache...
+	gtk-update-icon-cache -qt /usr/share/icons/hicolor || true
+	echo Updating desktop database
+	update-desktop-database -q /usr/share/applications || true
+	echo Compiling GSettings schemas...
+	glib-compile-schemas /usr/share/glib-2.0/schemas || true
+}
