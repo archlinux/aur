@@ -1,19 +1,19 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1049
+pkgver=mainline.0.1057
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
 url="https://yuzu-emu.org/"
 license=('GPL3')
 depends=(
-	'discord-rpc>=3.4.0.r10'
+	'discord-rpc>=3.4'
 	'qt5-webengine>=5.15'
 )
 makedepends=(
-	'boost>=1.73'
+	'boost>=1.79'
 	'cmake>=3.15'
-	'cpp-httplib-compiled>=0.9.0.r5'
+	'cpp-httplib-compiled>=0.10.8'
 	'cubeb>=r1398'
 	'dynarmic>=5.r204'
 	'ffmpeg>=4.3.1'
@@ -30,7 +30,7 @@ makedepends=(
 	'sdl2>=2.0.18'
 	'spirv-headers>=1.2.198'
 	'vulkan-headers>=1.3.213'
-	'xbyak>=5.995.r3'
+	'xbyak>=5.996'
 	'zstd>=1.5'
 )
 checkdepends=('catch2>=2.13.7')
@@ -74,15 +74,9 @@ prepare() {
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
-	sed -i '/Flow::Block dummy_flow_block/s/static constexpr/const/' \
-		src/shader_recompiler/frontend/maxwell/structured_control_flow.cpp
 }
 
 build() {
-	if [[ $CXX != clang* ]]; then
-		# https://github.com/yuzu-emu/yuzu/pull/8282#issue-1219047830
-		CXXFLAGS+=" -Wno-array-bounds -Wno-maybe-uninitialized -Wno-stringop-overread"
-	fi
 	cmake -S yuzu-mainline -B build \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/.0./-} \
