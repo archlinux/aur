@@ -1,0 +1,16 @@
+pkgbase = python-sre-yield
+	pkgdesc = Generate regular all expression matches
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/sre-yield/sre-yield
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/sre_yield/sre_yield-1.2.tar.gz
+	sha256sums = e94f1a2a3cbafffe1dcd15c1d54e401a1517e052aa64c7d3164f88dc761d7b8a
+
+pkgname = python-sre-yield
