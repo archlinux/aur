@@ -34,7 +34,6 @@ pkgbase = kimi-linphone-desktop
 	depends = qt5-svg
 	depends = qt5-speech
 	provides = kimi-linphone-desktop
-	conflicts = kimi-linphone-desktop
 	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#tag=4.4.5
 	md5sums = SKIP
 
