@@ -1,4 +1,5 @@
-# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: AtticFinder65536 <atticventilation-aur@protonmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgbase=dav1d-git
