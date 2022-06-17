@@ -1,4 +1,4 @@
-# Maintainer: Jguer <joaogg3@gmail.com>
+# Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname=yay
 pkgver=11.2.0
 pkgrel=1
