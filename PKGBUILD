@@ -1,7 +1,7 @@
 # Maintainer: wilke
 pkgname=harsh-bin
 pkgver=0.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
 url="https://github.com/wakatara/harsh"

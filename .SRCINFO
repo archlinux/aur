@@ -1,7 +1,7 @@
 pkgbase = harsh-bin
 	pkgdesc = CLI habit tracking for geeks
 	pkgver = 0.8.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wakatara/harsh
 	arch = any
 	license = MIT
