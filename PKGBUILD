@@ -2,12 +2,14 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 ## Configuration env vars:
-_BUILD_CUDA="${_BUILD_CUDA:-ON}"
-_CUDA_ARCH="${_CUDA_ARCH:-Auto}"
+_BUILD_CUDA="${BUILD_CUDA:-ON}"
+_CUDA_ARCH="${CUDA_ARCH:-Auto}"
+_fragment=#${FRAGMENT:-tag=3.6}
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 
 _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
-_fragment="#tag=3.6"
 pkgname=${_name}
 pkgver=3.6
 pkgrel=1
@@ -17,10 +19,10 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
+makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda-sdk')
-  optdepends+=('cuda-toolkit: for cuda sfm/mvs acceleration')
+  optdepends+=('libcudart.so: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "nvm-export.patch"
