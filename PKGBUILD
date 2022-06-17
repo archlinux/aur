@@ -16,7 +16,7 @@ replaces=('pgi-compilers')
 conflicts=('pgi-compilers')
 _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
-        "nvhpc.sh")
+        "nvhpc-22.5.sh")
 sha256sums=('02f19609b99140692b85a0edc176f29c9c717dbf78346ac24cd1470be248fa55'
             '28a1fd95457a1fa9047f5e29595f54bb1e93bfc25312300699db3017dbd9c89b')
 options=(!strip)
