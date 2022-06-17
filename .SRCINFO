@@ -1,28 +1,28 @@
 pkgbase = lib32-gst-plugins-ugly
 	pkgdesc = Multimedia graph framework - ugly plugins (32-bit)
-	pkgver = 1.20.2
-	pkgrel = 4
+	pkgver = 1.20.3
+	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = meson
-	depends = lib32-gst-plugins-base-libs>=1.20.2
+	depends = lib32-gst-plugins-base-libs>=1.20.3
 	depends = lib32-a52dec
 	depends = lib32-libcdio
 	depends = lib32-libdvdread
 	depends = lib32-libmpeg2
 	depends = lib32-opencore-amr
 	depends = lib32-x264
-	source = https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.2.tar.xz
-	sha256sums = b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf
+	source = https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.3.tar.xz
+	sha256sums = 8caa20789a09c304b49cf563d33cca9421b1875b84fcc187e4a385fa01d6aefd
 
 pkgname = lib32-gst-plugins-ugly
-	depends = lib32-gst-plugins-base-libs>=1.20.2
+	depends = lib32-gst-plugins-base-libs>=1.20.3
 	depends = lib32-a52dec
 	depends = lib32-libcdio
 	depends = lib32-libdvdread
 	depends = lib32-libmpeg2
 	depends = lib32-opencore-amr
 	depends = lib32-x264
-	depends = gst-plugins-ugly>=1.20.2
+	depends = gst-plugins-ugly>=1.20.3

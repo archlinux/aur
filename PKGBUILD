@@ -5,8 +5,8 @@
 
 _basename='gst-plugins-ugly'
 pkgname="lib32-${_basename}"
-pkgver=1.20.2
-pkgrel=4
+pkgver=1.20.3
+pkgrel=1
 pkgdesc='Multimedia graph framework - ugly plugins (32-bit)'
 url='https://gstreamer.freedesktop.org/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
     'meson'
 )
 source=("${url}src/${_basename}/${_basename}-${pkgver}.tar.xz")
-sha256sums=('b43fb4df94459afbf67ec22003ca58ffadcd19e763f276dca25b64c848adb7bf')
+sha256sums=('8caa20789a09c304b49cf563d33cca9421b1875b84fcc187e4a385fa01d6aefd')
 
 prepare() {
     # disable doc dir inclusion and Python module import (latter is not needed for release version)
