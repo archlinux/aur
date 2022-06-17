@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.1.r91.91e3160
+pkgver=0.2.r93.460206f
 pkgrel=1
 epoch=
 pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
