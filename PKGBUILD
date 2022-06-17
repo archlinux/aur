@@ -1,14 +1,13 @@
 # Maintainer: workonfire <kolucki62@gmail.com>
 
 pkgname=gadu-gadu
-pkgver=12.4.105.12185
-pkgrel=3
+pkgver=12.4.106.12187
+pkgrel=1
 pkgdesc="A Polish instant messaging client using a proprietary protocol."
 arch=('i686' 'x86_64')
 url="https://gg.pl"
 license=('custom')
 depends=('gtk2' 'alsa-lib' 'dbus-glib' 'libxt')
-optdepends=('flashplugin: needed for avatar editor')
 source=("${pkgname}".desktop::https://raw.githubusercontent.com/workonfire/PKGBUILDs/master/"${pkgname}"/"${pkgname}".desktop
         "${pkgname}"::https://raw.githubusercontent.com/workonfire/PKGBUILDs/master/"${pkgname}"/"${pkgname}")
 source_x86_64=(gg_64bit_"${pkgver}".tar.bz2::http://im-updates.gg.pl/phoenix/app/release/"${pkgver}"/standard/Linux_x86_64-gcc3/pl/gg_64bit.tar.bz2)
