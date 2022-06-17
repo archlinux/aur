@@ -1,6 +1,6 @@
 pkgbase = cider-git
 	pkgdesc = Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch.
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 3
 	url = https://github.com/CiderApp/Cider.git
 	arch = armv7h
