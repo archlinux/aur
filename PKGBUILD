@@ -2,15 +2,15 @@
 # Contributor: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 pkgname=system76-io-dkms
 _modname=system76-io
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="DKMS module for controlling System76 Io board"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
 license=('GPL3')
 depends=('dkms')
 makedepends=('git')
-_commit=ea5f61a2e0b2749f3f9f7add7b1d8a37085b1ff9
+_commit=0217576dd5a14d68c8c9e7253f198ffbf735e283
 source=("git+https://github.com/pop-os/system76-io-dkms.git#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com>
@@ -37,5 +37,5 @@ package() {
 
   # Load the module at boot
   install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
-    "$pkgdir/etc/modules-load.d/system76-io.conf"
+    "$pkgdir/usr/lib/modules-load.d/system76-io.conf"
 }
