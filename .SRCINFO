@@ -1,0 +1,23 @@
+pkgbase = openfoam-com-git
+	pkgdesc = The open source CFD toolbox (www.openfoam.com)
+	pkgver = r25230.6e1fca0e46
+	pkgrel = 1
+	url = http://www.openfoam.com
+	install = openfoam-com.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = cgal
+	depends = fftw
+	depends = boost
+	depends = openmpi
+	depends = paraview
+	depends = utf8cpp
+	depends = scotch
+	depends = parmetis
+	depends = kahip
+	source = git+https://develop.openfoam.com/Development/openfoam.git
+	sha256sums = SKIP
+
+pkgname = openfoam-com-git
