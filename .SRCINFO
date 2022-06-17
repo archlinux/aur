@@ -1,6 +1,6 @@
 pkgbase = cargo-xwin-git
 	pkgdesc = Cross compile Cargo project to Windows msvc target with ease
-	pkgver = v0.8.7.r0.e64257a
+	pkgver = v0.8.7.r5.1c31b8c
 	pkgrel = 1
 	url = https://github.com/messense/cargo-xwin
 	arch = x86_64
