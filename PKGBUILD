@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dns53')
 conflicts=('dns53')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-arm64.tar.gz")
-sha256sums_aarch64=('593fcdfd7701aef1be43d2f8e7d07e959552e5280b5a0fb7c3110ae376620ee5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.2/dns53_0.1.0-alpha.2_linux-arm64.tar.gz")
+sha256sums_aarch64=('3a6787ac9f91991b4a5c7ab2f79d99b0a301330f3eda6af6adb7a0a5dd040be9')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-arm.tar.gz")
-sha256sums_armv7h=('9ed72cd6a93c072269d9dd69e1067fec385eeb03e9041c4893f20708cae81804')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.2/dns53_0.1.0-alpha.2_linux-arm.tar.gz")
+sha256sums_armv7h=('7f35195f1951ddc6d01c1a7959c0101cfc9953c054fe08575ec0e0ec539fd975')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-i386.tar.gz")
-sha256sums_i686=('cfe8437051a38e0d7115cd92b02ec06cdeaf7ffe5ead0ea43e701654c4873af3')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.2/dns53_0.1.0-alpha.2_linux-i386.tar.gz")
+sha256sums_i686=('3c42fe0b5a2473e6f265d983c8d61317d78aae3b4884909288f8771638dea5c3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.1/dns53_0.1.0-alpha.1_linux-x86_64.tar.gz")
-sha256sums_x86_64=('acb52caf28ab450afdb352752b6c5b372e63cffc8fbc751d9c52cba95eb8f668')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-alpha.2/dns53_0.1.0-alpha.2_linux-x86_64.tar.gz")
+sha256sums_x86_64=('d4397ab93d8f0fb7450a3cd31eb240403f8f6b1950ab027c94e39a3d226db36e')
 
 package() {
   # bin
