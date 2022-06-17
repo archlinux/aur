@@ -1,6 +1,6 @@
 pkgbase = blockbench-bin
     pkgdesc = A free, modern block model editor.
-    pkgver = 4.2.4
+    pkgver = 4.2.5
     pkgrel = 1
     url = https://blockbench.net/
     arch = x86_64
