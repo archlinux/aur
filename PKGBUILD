@@ -13,7 +13,7 @@ url="https://numixproject.github.io/"
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('gdk-pixbuf2' 'glib2' 'ruby-sass')
-source=("https://github.com/Antergos/Numix-Frost/archive/${pkgver}.tar.gz")
+source=("https://github.com/Antergos/Numix-Frost/archive/$pkgver.tar.gz")
 sha256sums=('8b29ebb6aeb2bb56c0992d90937e9fb30ea955dc7ac2ca57b89aa3c325eeeed1')
 
 build() {
