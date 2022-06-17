@@ -1,7 +1,7 @@
 # Maintainer: Amber <amber@mail.cyborgtrees.com>
 pkgname=python-samson-crypto-git
 pkgver=r259.fffbb7c
-pkgrel=2
+pkgrel=3
 pkgdesc="a cryptanalysis and attack library"
 arch=(any)
 url="https://github.com/wildcardcorp/samson"
@@ -19,20 +19,20 @@ md5sums=('SKIP')
 
 
 pkgver() {
-  cd "${pkgname}"
+  cd "samson"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/samson"
 	bash scripts/make_man.sh
 	python -m build --no-isolation --wheel
 #	bash ./make_doc.sh #i'll probably make this into a seperate package
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/samson"
 	#TODO: licence
 	python -m installer --destdir="$pkgdir" --no-compile-bytecode dist/*.whl 
 }
