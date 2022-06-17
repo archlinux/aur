@@ -1,0 +1,14 @@
+pkgbase = libobjcryst
+	pkgdesc = ObjCryst++ repackaged for installation as a system shared library.
+	pkgver = 2021.1.2
+	pkgrel = 1
+	url = http://fox.vincefn.net/FoxWiki
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = boost
+	source = libobjcryst-2021.1.2.tar.gz::https://github.com/diffpy/libobjcryst/archive/v2021.1.2.tar.gz
+	sha256sums = 7f4d2c7e42154bbc780032ce7efe303b57a14d566b9b52fad8c6754a53b1365d
+
+pkgname = libobjcryst
