@@ -12,8 +12,8 @@ pkgbase = hipsycl-cuda-git
 	depends = boost
 	depends = hipcpu
 	depends = openmp
-	depends = hip-nvcc
-	depends = cuda-10.0
+	depends = hip-runtime-nvidia
+	depends = cuda
 	provides = hipsycl-cuda
 	provides = hipsycl
 	provides = sycl
@@ -21,4 +21,3 @@ pkgbase = hipsycl-cuda-git
 	sha256sums = SKIP
 
 pkgname = hipsycl-cuda-git
-
