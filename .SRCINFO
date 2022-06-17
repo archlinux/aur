@@ -1,6 +1,6 @@
 pkgbase = sourcegraph-cli
 	pkgdesc = Command line interface to Sourcegraph
-	pkgver = 3.40.9
+	pkgver = 3.40.11
 	pkgrel = 1
 	url = https://github.com/sourcegraph/src-cli
 	changelog = CHANGELOG.md
@@ -12,7 +12,7 @@ pkgbase = sourcegraph-cli
 	depends = glibc
 	provides = src-cli
 	conflicts = src-cli
-	source = sourcegraph-cli::git+https://github.com/sourcegraph/src-cli#tag=3.40.9
+	source = sourcegraph-cli::git+https://github.com/sourcegraph/src-cli#tag=3.40.11
 	sha256sums = SKIP
 
 pkgname = sourcegraph-cli
