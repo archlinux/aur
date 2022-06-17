@@ -1,0 +1,9 @@
+[Unit]
+Description=Himitsu Daemon
+
+[Service]
+ExecStart=/usr/bin/himitsud
+Restart=always
+
+[Install]
+WantedBy=default.target

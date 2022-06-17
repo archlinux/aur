@@ -1,0 +1,14 @@
+pkgbase = himitsu
+	pkgdesc = Secret storage manager
+	pkgver = r113.003c147
+	pkgrel = 1
+	url = https://himitsustore.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = hare
+	makedepends = scdoc
+	optdepends = hiprompt-gtk-py: prompter support (GTK+)
+	source = himitsu-r113.003c147.tar.gz::https://git.sr.ht/~sircmpwn/himitsu/archive/003c147.tar.gz
+	sha256sums = SKIP
+
+pkgname = himitsu
