@@ -1,6 +1,6 @@
 pkgbase = colloid-gtk-theme-git
 	pkgdesc = Modern and clean Gtk theme for linux
-	pkgver = 2022.04.22.r4.gf618c8e8
+	pkgver = 2022.05.15.r2.g65f141f2
 	pkgrel = 1
 	url = https://www.pling.com/p/1661959
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = colloid-gtk-theme-git
 	makedepends = sassc
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = colloid-icon-theme: Matching icon theme
+	optdepends = colloid-cursors: Matching cursor theme
 	provides = colloid-gtk-theme
 	conflicts = colloid-gtk-theme
 	options = !strip
