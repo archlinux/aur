@@ -4,7 +4,7 @@
 _pkgname=yojson
 pkgname=ocaml-${_pkgname}
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Low level JSON binary for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
@@ -25,7 +25,7 @@ build() {
 package() {
     cd ${_pkgname}-${pkgver}
 
-    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="lib/ocaml"
+    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="/usr/lib/ocaml"
 
     # remove rogue dune-package file
     rm -r "${pkgdir}"/usr/doc
