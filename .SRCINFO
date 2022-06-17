@@ -1,7 +1,7 @@
 pkgbase = betaflight-configurator
 	pkgdesc = Crossplatform configuration tool for the Betaflight flight control system
-	pkgver = 10.7.2
-	pkgrel = 2
+	pkgver = 10.8.0
+	pkgrel = 1
 	url = https://github.com/betaflight/betaflight-configurator
 	install = betaflight-configurator.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = betaflight-configurator
 	makedepends = git
 	depends = nwjs-bin
 	options = !strip
-	source = git+https://github.com/betaflight/betaflight-configurator.git#tag=10.7.2
+	source = git+https://github.com/betaflight/betaflight-configurator.git#tag=10.8.0
 	source = betaflight-configurator.sh
 	source = betaflight-configurator.desktop
 	source = remove_android_build_deps.patch
