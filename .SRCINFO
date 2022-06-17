@@ -1,13 +1,14 @@
 pkgbase = ink-scripts-git
 	pkgdesc = Utility and fun scripts
-	pkgver = r4.7518570
-	pkgrel = 1
+	pkgver = r15.9d59087
+	pkgrel = 2
 	url = https://git.sr.ht/~mustachedsquid/ink-scripts
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = bash
 	depends = curl
+	depends = dmenu
 	optdepends = git: git support
 	provides = ink-scripts
 	conflicts = ink-scripts
