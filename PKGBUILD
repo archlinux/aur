@@ -8,14 +8,15 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=7.0.2.r809.gf54097fefb
+pkgver=8.0.0.beta1.r49.g016321f0c8
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
 url='https://www.qt.io'
 license=(LGPL)
 depends=(qt6-tools qt6-svg qt6-quick3d qt6-webengine qt6-serialport qt6-shadertools qt6-5compat
-         clang clazy yaml-cpp) # syntax-highlighting
+         'clang>=14' # ClangCodeModel based on clangd
+         clazy yaml-cpp) # syntax-highlighting
 makedepends=(cmake llvm python)
 options=(docs)
 optdepends=('bzr: bazaar support'
