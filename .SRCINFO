@@ -1,0 +1,24 @@
+pkgbase = rose-browser-git
+	pkgdesc = Minimalist browser based on webkit2 and GTK4.
+	pkgver = r107.95a1eae
+	pkgrel = 1
+	url = https://github.com/mini-rose/rose
+	arch = x86_64
+	arch = x86_64_v3
+	license = CUSTOM
+	makedepends = git
+	depends = webkit2gtk-5.0
+	depends = gtk4
+	depends = dmenu
+	depends = xdotool
+	depends = xorg-xprop
+	depends = aria2c
+	depends = gst-libav
+	depends = gst-plugins-good
+	provides = rose-browser
+	conflicts = rose-browser
+	options = !strip
+	source = rose-browser-git::git+https://github.com/mini-rose/rose.git
+	sha512sums = SKIP
+
+pkgname = rose-browser-git
