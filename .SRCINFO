@@ -1,0 +1,15 @@
+pkgbase = fast-translate
+	pkgdesc = 一款适用于Linux系统的翻译软件，支持选中即翻译，方便文献阅读等
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KaleW515/fast-translate
+	arch = x86_64
+	groups = fast-translate
+	license = MIT
+	depends = make
+	depends = python
+	depends = python-pip
+	source = https://github.com/kalew515/fast-translate/archive/refs/tags/1.0.0.tar.gz
+	md5sums = b1f7635b4a3e3ff3fe023040a0505f1b
+
+pkgname = fast-translate
