@@ -1,4 +1,4 @@
-# Maintainer: zlfn <elusive1102@naver.com>
+# Maintainer: zlfn <dev@zlfn.space>
 
 pkgname=krita-plus-bin
 pkgver=v5.1.0.prealpha.r2174.g82766ef025
@@ -17,26 +17,6 @@ optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
             'krita-plugin-gmic: GMic plugin')
 provides=(krita)
 conflicts=(krita)
-source=('krita::git+https://github.com/KDE/krita.git#branch=krita/5.1')
+source=(https://github.com/zlfn/krita-aur/releases/download/v5.1.0.prealpha.r2174.g82766ef025/krita-plus-bin-v5.1.0.prealpha.r2174.g82766ef025-1-x86_64.pkg.tar.zst)
+noextract=(krita-plus-bin-v5.1.0.prealpha.r2174.g82766ef025-1-x86_64.pkg.tar.zst)
 sha512sums=('SKIP')
-
-pkgver() {
-  cd krita 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  cd ..
-  cd ..
-  echo $pkgver > pkgver
-  echo $pkgrel > pkgrel
-
-}
-
-build() {
-  cmake -B build -S krita \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON
-  cmake --build build -j 4
-}
-
-package() {
-  DESTDIR="$pkgdir" cmake --install build
-}

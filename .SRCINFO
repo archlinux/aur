@@ -45,7 +45,8 @@ pkgbase = krita-plus-bin
 	optdepends = krita-plugin-gmic: GMic plugin
 	provides = krita
 	conflicts = krita
-	source = krita::git+https://github.com/KDE/krita.git#branch=krita/5.1
+	noextract = krita-plus-bin-v5.1.0.prealpha.r2174.g82766ef025-1-x86_64.pkg.tar.zst
+	source = https://github.com/zlfn/krita-aur/releases/download/v5.1.0.prealpha.r2174.g82766ef025/krita-plus-bin-v5.1.0.prealpha.r2174.g82766ef025-1-x86_64.pkg.tar.zst
 	sha512sums = SKIP
 
 pkgname = krita-plus-bin
