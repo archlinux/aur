@@ -3,7 +3,7 @@
 _pkgname=ocp-indent
 pkgname=ocaml-${_pkgname}
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Indentation tool for OCaml, to be used from editors like Emacs and Vim."
 arch=('x86_64')
 depends=('ocaml' 'ocaml-findlib' 'ocaml-cmdliner>=1.0.0')
@@ -25,7 +25,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
 
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  DESTDIR="${pkgdir}" dune install --prefix="/usr" --libdir="/usr/lib/ocaml"
 
   # Dune installs documentation in /usr/doc, fix that.
   install -dm755 "${pkgdir}/usr/share/"
