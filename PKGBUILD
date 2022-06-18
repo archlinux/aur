@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya
-pkgver=1.5.8
+pkgver=1.5.8.1
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
