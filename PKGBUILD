@@ -1,7 +1,7 @@
 # Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli'
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cli to browse and watch anime."
 arch=('any')
 url="https://github.com/pystardust/ani-cli"
