@@ -7,6 +7,7 @@ pkgbase = rhubarb-lip-sync
 	license = MIT
 	makedepends = cmake
 	makedepends = boost-libs
+	makedepends = boost
 	provides = DanielSWolf
 	options = !strip
 	source = v1.12.0.zip::https://github.com/DanielSWolf/rhubarb-lip-sync/archive/refs/tags/v1.12.0.zip
