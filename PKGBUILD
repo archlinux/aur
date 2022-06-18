@@ -1,7 +1,8 @@
 # Maintainer: Geyslan G. Bem <geyslan@gmail.com>
+# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 
 pkgname=pje-office
-pkgver=1.0.26
+pkgver=1.0.27
 pkgrel=1
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
@@ -10,7 +11,7 @@ license=('custom')
 depends=('java-runtime' 'bash')
 source=(${pkgname}-${pkgver}.deb::https://cnj-pje-programs.s3-sa-east-1.amazonaws.com/${pkgname}/${pkgname}_amd64.deb)
 install=${pkgname}.install
-md5sums=('e954a523ccaaeb4a7a5b51bbd09e5444')
+md5sums=('fb702617d52db5d59ddb4827c109e9d8')
 
 _fix() {
 	local _launcher
