@@ -1,5 +1,5 @@
 pkgbase = odin2-synthesizer-bin
-	pkgdesc = 24 voice polyphonic synthesizer, with FX rack (Standalone, VST3, LV2). Binary package.
+	pkgdesc = 24 voice polyphonic synthesizer, with FX rack (Standalone, VST3, LV2, CLAP). Binary package.
 	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://www.thewavewarden.com/odin2
