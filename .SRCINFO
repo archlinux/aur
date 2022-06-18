@@ -9,7 +9,7 @@ pkgbase = python-httpie-oauth
 	makedepends = git
 	depends = python-oauthlib
 	depends = python-requests-oauthlib
-	source = python-httpie-oauth::git+https://github.com/jkbrzt/httpie-oauth
+	source = python-httpie-oauth::git+https://github.com/jkbrzt/httpie-oauth.git
 	md5sums = SKIP
 
 pkgname = python-httpie-oauth

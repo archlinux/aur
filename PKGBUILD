@@ -8,7 +8,7 @@ url="https://github.com/jkbrzt/httpie-oauth"
 pkgver=5.6cf6ed4
 pkgrel=2
 
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 depends=('python-oauthlib' 'python-requests-oauthlib')
 makedepends=('python-distribute' 'git')
