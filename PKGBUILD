@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=qbe-git
 pkgdesc='Small embeddable C compiler backend'
-pkgver=r1138.acc3af4
-pkgrel=2
+pkgver=r1265.cd778b4
+pkgrel=1
 url='http://c9x.me/compile/'
 license=(custom:MIT)
 arch=(x86_64)
@@ -34,7 +34,7 @@ check () {
 
 package (){
 	cd "${pkgname}"
-	install -Dm755 obj/qbe "${pkgdir}/usr/bin/qbe"
+	install -Dm755 qbe "${pkgdir}/usr/bin/qbe"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
 	install -m755 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/*.txt

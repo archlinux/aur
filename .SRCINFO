@@ -1,7 +1,7 @@
 pkgbase = qbe-git
 	pkgdesc = Small embeddable C compiler backend
-	pkgver = r1138.acc3af4
-	pkgrel = 2
+	pkgver = r1265.cd778b4
+	pkgrel = 1
 	url = http://c9x.me/compile/
 	arch = x86_64
 	license = custom:MIT
@@ -13,4 +13,3 @@ pkgbase = qbe-git
 	sha512sums = SKIP
 
 pkgname = qbe-git
-
