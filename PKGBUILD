@@ -5,17 +5,17 @@
 # Contributor: serp <serp 256 at gmail dot com>
 _projectname='react'
 pkgname="ocaml-$_projectname"
-pkgver='1.2.1'
-pkgrel='4'
+pkgver='1.2.2'
+pkgrel='1'
 pkgdesc='An OCaml module for functional reactive programming'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.01.0')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=0.9.0' 'opam')
+depends=('ocaml>=4.08.0')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-sha512sums=('e760c4504519744b66655be113676cb6e3f016fc8a5c59dca063365223d5d5efc66be3ff2b7a2ad3a745975d1b0aaf37634af699d1a706d3bf3b37c1671e81e3')
+sha512sums=('ed3a384ea5ae9b4184a985acf38f3aac009e706537209abf8dd86c2d8d749fff6fe40a6a03e9313dd90723e3ff121c4cb55e344212d54f89c81425ea5e07c594')
 
 _sourcedirectory="$_projectname-$pkgver"
 
