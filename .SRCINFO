@@ -1,6 +1,6 @@
 pkgbase = r-ensembldb
 	pkgdesc = Utilities to create and use Ensembl-based annotation databases
-	pkgver = 2.20.1
+	pkgver = 2.20.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ensembldb
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-ensembldb
 	optdepends = r-rmarkdown
 	optdepends = r-shiny
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ensembldb_2.20.1.tar.gz
-	sha256sums = 9fc77f065b629d3a4e9d11420f12d44ae15b12814c33337e4f76bb67c9d179a0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ensembldb_2.20.2.tar.gz
+	sha256sums = ac1f2d701e9bf99265c8db18c7be7f30a60af6eaa68e31bff40fb61a590bc28a
 
 pkgname = r-ensembldb
