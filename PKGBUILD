@@ -1,8 +1,8 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 
 pkgname='tabs-app'
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
 url='https://eternae.ink/ashpie/tabs'

@@ -1,7 +1,7 @@
 pkgbase = tabs-app
 	pkgdesc = Persistent and separate browser tabs in one window
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.3.2
+	pkgrel = 1
 	url = https://eternae.ink/ashpie/tabs
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = tabs-app
 	depends = nss
 	provides = tabs-app
 	conflicts = tabs-app
-	source = tabs-src::git+https://eternae.ink/ashpie/tabs.git#tag=v1.3.1
+	source = tabs-src::git+https://eternae.ink/ashpie/tabs.git#tag=v1.3.2
 	source = tabs-app
 	source = tabs-app.desktop
 	sha512sums = SKIP
