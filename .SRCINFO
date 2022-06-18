@@ -1,6 +1,6 @@
 pkgbase = cargo-make
 	pkgdesc = Rust task runner and build tool
-	pkgver = 0.35.12
+	pkgver = 0.35.13
 	pkgrel = 1
 	url = https://github.com/sagiegurari/cargo-make
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = cargo-make
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = cargo-make::git+https://github.com/sagiegurari/cargo-make.git#commit=084eae90502e3ae42dab65a3276112ef3fcc674e
+	source = cargo-make::git+https://github.com/sagiegurari/cargo-make.git#commit=2268c577204cf7e2954eba9b52e0ec5782f323c2
 	b2sums = SKIP
 
 pkgname = cargo-make
