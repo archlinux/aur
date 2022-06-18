@@ -1,35 +1,30 @@
-# Maintainer: Miika Hänninen <miika.hanninen@gmail.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Miika Hänninen <miika.hanninen@gmail.com>
+
 pkgname=vimv-git
-pkgver=r28.4152496
+pkgver=r47.3bb51a4
 pkgrel=1
 pkgdesc="Batch-rename files using Vim"
-arch=('any')
+arch=(any)
 url="https://github.com/thameera/vimv"
-license=('MIT')
-groups=()
-depends=('bash' 'git')
-makedepends=('git')
-optdepends=()
-provides=('vimv')
-conflicts=('vimv')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=($pkgname::git://github.com/thameera/vimv.git)
-noextract=()
-md5sums=('SKIP') #autofill using updpkgsums
+license=("MIT")
+depends=("bash" "git")
+makedepends=("git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/thameera/vimv.git")
+sha512sums=("SKIP")
+
 
 pkgver() {
   cd "$pkgname"
+
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$pkgname"
 
-  cp "$srcdir/$pkgname/vimv" "$pkgdir/usr/bin/vimv"
-  cp "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "vimv" "$pkgdir/usr/bin/vimv"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
