@@ -1,6 +1,6 @@
 pkgbase = r-organismdbi
 	pkgdesc = Software to enable the smooth interfacing of different database packages
-	pkgver = 1.38.0
+	pkgver = 1.38.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OrganismDbi
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-organismdbi
 	optdepends = r-rmariadb
 	optdepends = r-rtracklayer
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OrganismDbi_1.38.0.tar.gz
-	sha256sums = d9b3e40d252a8d15c50c9444e147b10d3a6474c0d4852092d36957d27c5474f6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OrganismDbi_1.38.1.tar.gz
+	sha256sums = 2998649c56b5f7309dc3853ee9b1b1da05b8393eaea6f1f50d8241d291ecb657
 
 pkgname = r-organismdbi
