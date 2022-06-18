@@ -1,6 +1,6 @@
 pkgbase = spotify-control
 	pkgdesc = Control Spotify from the command line
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/J00LZ/spotify-control
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = spotify-control
 	makedepends = cargo
 	depends = spotify
 	optdepends = libnotify: Allows the `now-playing` notification to be shown
-	source = spotify-control-1.0.0.tar.gz::https://github.com/J00LZ/spotify-control/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = c9f10ecdea98d843861c8fb77cdb04dbbc979107b2e249f9d4fa0d02b4980785
+	source = spotify-control-1.1.0.tar.gz::https://github.com/J00LZ/spotify-control/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 05821d58d3e2ea2851373cc3d1bbb6521d05cc934589e0e8b6d075f2e5d8153c
 
 pkgname = spotify-control
