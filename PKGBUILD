@@ -14,11 +14,6 @@ license=('ISC')
 # ISC-licensed files by different authors to extract the licenses from
 # if done that way. Licenses are complicated.
 depends=(lib32-alsa-lib lib32-libbsd)
-# as noted by @MarsSeed: Reason: sndio is not actually needed during
-# the build, but it is needed if it is installed. (Because only the
-# x86_64 packages carry the include headers needed if someone wants
-# to run a lib32 build using lib32-sndio.)
-depends+=('sndio')
 
 source=("http://www.sndio.org/sndio-$pkgver.tar.gz")
 sha256sums=('f81d37189e072cb4804ac98a059d74f963f69e9945eaff3d0d6a2f98d71a6321')
@@ -45,6 +40,12 @@ build() {
 }
 
 package() {
+  # as noted by @MarsSeed: Reason: sndio is not actually needed during
+  # the build, but it is needed if it is installed. (Because only the
+  # x86_64 packages carry the include headers needed if someone wants
+  # to run a lib32 build using lib32-sndio.)
+  depends+=('sndio')
+
   cd "sndio-${pkgver}"
   make DESTDIR="$pkgdir/" install
 
