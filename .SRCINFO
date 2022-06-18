@@ -1,6 +1,6 @@
 pkgbase = garage
 	pkgdesc = Garage, an S3-compatible distributed object store for self-hosted deployments
-	pkgver = 0.7.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://garagehq.deuxfleurs.fr
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = garage
 	license = AGPL
 	makedepends = cargo
 	depends = gcc-libs
-	source = garage-0.7.0.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v0.7.0.tar.gz
-	sha256sums = 2eb78ad794782fb541cfed62b9560f8804b642757458ca349f0c03c226c1231d
-	b2sums = d77c9d346b56216c270676252c5b1691bd13049131fcfffb9dcec99c095dd3885a5edb558122bd782eb8e1ddea6ff67f875bcbeb12e3747dabac59db24d87788
+	source = garage-0.7.2.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v0.7.2.tar.gz
+	sha256sums = d25ebd2ec2e43e257e776515b5c8eb1a325f6ebcf3c7035aea3052361d7060b4
+	b2sums = 7a23b5803fca4e45e98732c77474ee09f1b0f89733f25ebf38382d51123296e1386317182985c81468313973f0cb23d74cfde795316b4982a145998081627961
 
 pkgname = garage
