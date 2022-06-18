@@ -7,8 +7,8 @@ arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
 license=(GPL3)
 _dunever=2.8.0
-depends=("opm-material>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}")
-makedepends=(cppcheck superlu suitesparse git)
+depends=("opm-material>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}" suitesparse)
+makedepends=(cppcheck superlu git)
 optdepends=('dune-fem: for dofmanager support'
   'opm-grid: for corner grid support')
 source=("git+${url}.git?signed#tag=release/${pkgver}/final1")
