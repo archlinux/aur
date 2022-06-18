@@ -12,7 +12,7 @@ url='https://www.thewavewarden.com/odin2'
 provides=('odin2')
 conflicts=('odin2-synthesizer')
 
-depends=('ttf-font')
+depends=('man-pages' 'ttf-font')
 optdepends=('ttf-dejavu: One of these may be needed for fonts to render correctly'
             'ttf-liberation: One of these may be needed for fonts to render correctly')
 

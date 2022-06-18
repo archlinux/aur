@@ -6,6 +6,7 @@ pkgbase = odin2-synthesizer-bin
 	install = .install
 	arch = x86_64
 	license = GPL3
+	depends = man-pages
 	depends = ttf-font
 	optdepends = ttf-dejavu: One of these may be needed for fonts to render correctly
 	optdepends = ttf-liberation: One of these may be needed for fonts to render correctly
