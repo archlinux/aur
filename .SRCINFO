@@ -13,6 +13,7 @@ pkgbase = zihap-git
 	depends = libxft
 	depends = tomlc99-git
 	optdepends = dmenu: search page and select an already existing tab
+	optdepends = gstreamer: play video in zihap
 	provides = zihap
 	conflicts = zihap
 	source = zihap::git+https://gitlab.com/exkc/zihap

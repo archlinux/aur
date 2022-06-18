@@ -11,7 +11,9 @@ url="https://gitlab.com/exkc/zihap/"
 license=('custom:M/IT/X')
 depends=('webkit2gtk' 'gcr' 'xorg-xprop' 'libxft' 'tomlc99-git')
 makedepends=('git')
-optdepends=("dmenu: search page and select an already existing tab" )
+optdepends=("dmenu: search page and select an already existing tab"
+          "gstreamer: play video in zihap")
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://gitlab.com/exkc/zihap")
