@@ -1,42 +1,38 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2023.0
+	pkgver = 2023.1
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
+	install = maya.install
 	arch = x86_64
 	license = custom
-	depends = glu
-	depends = gst-plugins-base-libs
-	depends = gtk2
-	depends = gts
-	depends = lib32-glibc
-	depends = libjpeg6-turbo
-	depends = libpng15
-	depends = libpulse
-	depends = libtool
-	depends = libxaw
-	depends = libxkbcommon-x11
-	depends = libxtst
-	depends = ncurses5-compat-libs
-	depends = xcb-util-image
-	depends = xcb-util-keysyms
-	depends = xcb-util-renderutil
-	depends = xcb-util-wm
 	depends = audiofile
 	depends = xorg-fonts-75dpi
 	depends = xorg-fonts-100dpi
-	depends = adsklicensing=12.0.0.6537
-	depends = libcrypt.so=1-64
+	depends = adsklicensing=12.1.0.7121
+	depends = libxp
+	depends = gtk2
+	depends = libxcrypt-compat
+	depends = libjpeg6-turbo
 	depends = libffi6
-	optdepends = adlmflexnetclient>=23.0.0: Autodesk Network Licensing Client (Deprecated on August 7, 2021)
-	optdepends = adlmflexnetserver-ipv6>=23.0.0: Autodesk Network Licensing Server (Deprcated on August 7, 2021)
+	depends = nss
+	depends = libxaw
+	depends = libpng15
+	depends = libtool
+	depends = ncurses5-compat-libs
+	depends = libpulse
+	depends = glu
+	depends = gst-plugins-base-libs
+	depends = libxtst
 	optdepends = maya-arnold: Maya Arnold Renderer Plugin
 	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
 	optdepends = maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
 	options = !strip
-	source = manual://Maya2023_64-2023.0-1319.x86_64.rpm
-	sha256sums = fd4930b5554ed9cf685670c13af9c5b853e99ba001e39cd54d516af3ab62506e
+	source = manual://Maya2023_64-2023.1-1532.x86_64.rpm
+	source = maya.install
+	sha256sums = ae1bd5b421959cbd65792e1a263aaf610100c8636756e24f997b010cc8776c23
+	sha256sums = 6cb3e2c698e16680ee0d8be168e98f815bc15c7e8c7bf48af1e641e45f51faa5
 
 pkgname = maya
