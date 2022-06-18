@@ -1,10 +1,10 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Caleb Fontenot <foley2431 at gmail dot com>
-# Contributor: Lgmrszd <m dot v dot bobrov2000 at gmail dot com>
+# Contributor: Lgmrszd <lgmrszd at gmail dot com>
 
 pkgname=packwiz-git
-pkgver=r211.e71b63e
-pkgrel=2
+pkgver=r221.b8d9727
+pkgrel=1
 pkgdesc="A command line tool for creating minecraft modpacks."
 arch=("x86_64")
 url="https://packwiz.infra.link/"
