@@ -1,12 +1,12 @@
 pkgbase = tspreed
 	pkgdesc = Terminal RSVP speed reader with Spritz-like functionality
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/n-ivkovic/tspreed
 	arch = any
 	license = GPL3
 	backup = etc/tspreed/tspreed.rc
-	source = tspreed-2.2.0-1.tgz::https://github.com/n-ivkovic/tspreed/archive/v2.2.0.tar.gz
-	sha256sums = 1f62bc7d803a5395036cfe7108aeb58879fdff00097a675b909e3f7dbb7ee725
+	source = tspreed-2.2.1-1.tgz::https://github.com/n-ivkovic/tspreed/archive/v2.2.1.tar.gz
+	sha256sums = 60843a4e8375d938b7473c33491be27f0ac13302ab222559cac83a2188644503
 
 pkgname = tspreed
