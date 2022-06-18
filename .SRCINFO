@@ -1,11 +1,11 @@
 pkgbase = ttf-material-design-icons-webfont
 	pkgdesc = Material Design webfont icons from materialdesignicons.com
-	pkgver = 5.8.55
+	pkgver = 6.7.96
 	pkgrel = 1
-	url = https://materialdesignicons.com/
+	url = https://materialdesignicons.com
 	arch = any
 	license = Apache
-	source = ttf-material-design-icons-webfont-5.8.55-1.tar.gz::https://github.com/Templarian/MaterialDesign-Webfont/archive/v5.8.55.tar.gz
-	sha256sums = a4a099410c039aa7e4b8bfa62470ea8746b31d4244e4abd49398b323c909279d
+	source = ttf-material-design-icons-webfont-6.7.96-1.tar.gz::https://github.com/Templarian/MaterialDesign-Webfont/archive/v6.7.96.tar.gz
+	sha512sums = 605143744bfce705896008ca1fac1add2eaeedd4456166aeaeaf3cb290da58fade416a8a43bf68731effa861b5e3331a804a2932aa175d4b2e3992a775ff7232
 
 pkgname = ttf-material-design-icons-webfont
