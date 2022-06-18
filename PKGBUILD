@@ -2,21 +2,26 @@
 _pkgname=multitasking
 pkgname=python-multitasking
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-blocking Python methods using decorators"
 arch=('x86_64')
 url="https://github.com/ranaroussi/multitasking"
 license=('Apache')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('810640fa6670be41f4a712b287d9307a14ad849d966f06a17d2cf1593b66c3cd')
+b2sums=('405b60b914b7b95319c85d519be4124b589689c8bf95c37b9f03430540f309be351086abd5f2c302fc3d6f5171543fc49c1f9009cb2d37e3c5d7e250fba47e88')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,12 +1,15 @@
 pkgbase = python-multitasking
 	pkgdesc = Non-blocking Python methods using decorators
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ranaroussi/multitasking
 	arch = x86_64
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	source = multitasking-0.0.10.tar.gz::https://files.pythonhosted.org/packages/source/m/multitasking/multitasking-0.0.10.tar.gz
-	sha256sums = 810640fa6670be41f4a712b287d9307a14ad849d966f06a17d2cf1593b66c3cd
+	b2sums = 405b60b914b7b95319c85d519be4124b589689c8bf95c37b9f03430540f309be351086abd5f2c302fc3d6f5171543fc49c1f9009cb2d37e3c5d7e250fba47e88
 
 pkgname = python-multitasking
