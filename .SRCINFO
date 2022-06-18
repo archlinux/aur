@@ -1,6 +1,6 @@
 pkgbase = java-16-openjdk
 	pkgver = 16.0.2.u7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -58,7 +58,7 @@ pkgname = jre16-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=16
 	provides = java-runtime-headless-openjdk=16
-	provides = jre16-openjdk-headless=16.0.2.u7-1
+	provides = jre16-openjdk-headless=16.0.2.u7-2
 	backup = etc/java-16-openjdk/logging.properties
 	backup = etc/java-16-openjdk/management/jmxremote.access
 	backup = etc/java-16-openjdk/management/jmxremote.password.template
@@ -77,7 +77,7 @@ pkgname = jre16-openjdk-headless
 pkgname = jre16-openjdk
 	pkgdesc = OpenJDK Java 16 full runtime environment
 	install = install_jre-openjdk.sh
-	depends = jre16-openjdk-headless=16.0.2.u7-1
+	depends = jre16-openjdk-headless=16.0.2.u7-2
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -88,12 +88,12 @@ pkgname = jre16-openjdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=16
 	provides = java-runtime-openjdk=16
-	provides = jre16-openjdk=16.0.2.u7-1
+	provides = jre16-openjdk=16.0.2.u7-2
 
 pkgname = jdk16-openjdk
 	pkgdesc = OpenJDK Java 16 development kit
 	install = install_jdk-openjdk.sh
-	depends = jre16-openjdk=16.0.2.u7-1
+	depends = jre16-openjdk=16.0.2.u7-2
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -102,14 +102,14 @@ pkgname = jdk16-openjdk
 	provides = java-environment=16
 	provides = java-environment-jdk=16
 	provides = java-environment-openjdk=16
-	provides = jdk16-openjdk=16.0.2.u7-1
+	provides = jdk16-openjdk=16.0.2.u7-2
 
 pkgname = openjdk16-src
 	pkgdesc = OpenJDK Java 16 sources
-	depends = jdk16-openjdk=16.0.2.u7-1
-	provides = openjdk16-src=16.0.2.u7-1
+	depends = jdk16-openjdk=16.0.2.u7-2
+	provides = openjdk16-src=16.0.2.u7-2
 
 pkgname = openjdk16-doc
 	pkgdesc = OpenJDK Java 16 documentation
-	depends = jdk16-openjdk=16.0.2.u7-1
-	provides = openjdk16-doc=16.0.2.u7-1
+	depends = jdk16-openjdk=16.0.2.u7-2
+	provides = openjdk16-doc=16.0.2.u7-2
