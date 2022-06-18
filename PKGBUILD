@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=zinc
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A lightweight alternative to Elasticsearch that requires minimal resources'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
   'npm'
 )
 options=('!lto')
-_commit='aec52394537971c5fbe099859aab9b57da6b09dc'
+_commit='ec7c55052aa19943e82fbec62dfe43bda1d0689c'
 source=("$pkgname::git+https://github.com/zinclabs/zinc.git#commit=$_commit")
 md5sums=('SKIP')
 
