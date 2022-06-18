@@ -4,7 +4,7 @@ pkgdesc="ROS - The control toolbox contains modules that are useful across all c
 url='https://wiki.ros.org/control_toolbox'
 
 pkgname='ros-noetic-control-toolbox'
-pkgver='1.18.2'
+pkgver='1.19.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="control_toolbox-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_toolbox/archive/${pkgver}.tar.gz")
-sha256sums=('064bcde85b251fdb8dff91c121652526e813a9cba3859786cc16e7b8a55e2e79')
+sha256sums=('437ee9cd49b836646000674435140d222d45c5f916a83b4d2c935e21f3d1a1e7')
 
 build() {
   # Use ROS environment variables
