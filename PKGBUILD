@@ -1,13 +1,13 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=220104.r0.g0625e415
+pkgver=220609.r19.g7d6ba894
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
 license=('LGPL3')
-depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python' 'nlohmann-json' 'libxml2' 'hdf5' 'libaec' 'sz' 'cgal-headers>=5.3' 'gmp' 'mpfr')
+depends=('boost-libs>=1.58.0' 'opencascade' 'icu' 'opencollada' 'python' 'nlohmann-json' 'libxml2' 'hdf5' 'libaec' 'sz' 'cgal' 'gmp' 'mpfr')
 optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-occ-core: blender bim addon cut ifc support'
 			'python-pystache: blender bim addon'

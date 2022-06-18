@@ -1,6 +1,6 @@
 pkgbase = ifcopenshell-git
 	pkgdesc = Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version.
-	pkgver = 220104.r0.g0625e415
+	pkgver = 220609.r19.g7d6ba894
 	pkgrel = 1
 	url = http://ifcopenshell.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = ifcopenshell-git
 	depends = hdf5
 	depends = libaec
 	depends = sz
-	depends = cgal-headers>=5.3
+	depends = cgal
 	depends = gmp
 	depends = mpfr
 	optdepends = python-svgwrite: blender bim addon svg support
