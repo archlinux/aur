@@ -2,21 +2,26 @@
 _pkgname=dlx
 pkgname=python-dlx
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Implementation of Donald Knuth's Dancing Links algorithm"
 arch=('x86_64')
 url="https://pypi.org/project/dlx/"
 license=('Apache')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('ef75bc9d590216ebde7d4811f9ae6b2d6c6dc2a54772d94ae13384dc517a5aae')
+b2sums=('819c8bea96187dff42c6377200ec8be337a1201367cb33a9c2b3a9b152f1fcb90eb69bd255e3dc164611ac787904c5c5512325b1d0c4e309b0911f9777fd18b1')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
