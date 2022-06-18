@@ -2,17 +2,17 @@
 
 pkgname=starlark-rust
 _pkgname=starlark
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Rust implementation of the Starlark language"
+pkgdesc='Rust implementation of the Starlark language'
 arch=('x86_64')
-url="https://github.com/facebookexperimental/starlark-rust"
+url='https://github.com/facebookexperimental/starlark-rust'
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'rustup')
 provides=('starlark')
 options=('!lto')
-_commit='87e3a6742ad0fad8e26a25e0fad9fa5b5c9c9162'
+_commit='18031c2c209af7127e6769aa2b583c0c5f140d14'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
