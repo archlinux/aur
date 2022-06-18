@@ -1,0 +1,17 @@
+pkgbase = renrot
+	pkgdesc = Rename and losslessly rotate files according to their EXIF tags values
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://puszcza.gnu.org.ua/projects/renrot
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-image-exiftool
+	depends = libjpeg-turbo
+	optdepends = imagemagick: contact sheet generation
+	options = !emptydirs
+	options = purge
+	source = https://git.gnu.org.ua/renrot.git/snapshot/renrot-5fc8c005c2010d081fb50a96395cf1afc65a6cdb.tar.gz
+	sha512sums = f317e641ead6ab12af53ac0cd73aa5d80e3c8b51d7b7bb2f5fa2df3602091e0fdb8a50fec63b2e5eaf11a865477f6263ef6a9e0e1fc70071bed752aef6f9c1e4
+
+pkgname = renrot
