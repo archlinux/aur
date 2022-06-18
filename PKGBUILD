@@ -11,7 +11,7 @@
 
 pkgname=wesnoth-1.0
 pkgver=1.0.2+dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-based strategy game on a fantasy world (historical version)"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
@@ -39,7 +39,7 @@ md5sums=('SKIP'
          '29dcc619dad3ba9e7806b97badee3023'
          '1d061d2df18d707b212c314440c30cd2'
          'bd36602fa96cacfebd9d64bd589509fa'
-         '81953f9a24639fb66e435b34ba530b94'
+         'a648d60211379cb37020034ccc32cef8'
          '3c271ac7485d871400dd1f7af2ecfd8d'
          '0327cec01cd5b98acee056ec79702bab')
 
@@ -49,6 +49,9 @@ prepare() {
   # used before. (|| true avoids failure if the makefile is not yet generated.)
   cd "$srcdir/wesnoth-1.0-git"
   make distclean || true
+
+  # Patch
+  sed '/#include <vector>/a #include <cstddef>' -i src/serialization/string_utils.hpp
 }
 
 

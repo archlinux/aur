@@ -1,7 +1,7 @@
 pkgbase = wesnoth-1.0
 	pkgdesc = Turn-based strategy game on a fantasy world (historical version)
 	pkgver = 1.0.2+dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wesnoth.org
 	install = wesnoth-1.0.install
 	arch = i486
@@ -30,9 +30,8 @@ pkgbase = wesnoth-1.0
 	md5sums = 29dcc619dad3ba9e7806b97badee3023
 	md5sums = 1d061d2df18d707b212c314440c30cd2
 	md5sums = bd36602fa96cacfebd9d64bd589509fa
-	md5sums = 81953f9a24639fb66e435b34ba530b94
+	md5sums = a648d60211379cb37020034ccc32cef8
 	md5sums = 3c271ac7485d871400dd1f7af2ecfd8d
 	md5sums = 0327cec01cd5b98acee056ec79702bab
 
 pkgname = wesnoth-1.0
-
