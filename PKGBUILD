@@ -1,9 +1,10 @@
 # Maintainer: kormpu mcgpapu@gmail.com
 
+#https://wiki.archlinux.org/title/Rust_package_guidelines
 pkgname="tronclock"
 pkgdesc="A Rust rewrite of ncurses based tronClock"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/papuSpartan/tronclock"
 source=("git+https://github.com/papuSpartan/tronclock.git")
@@ -14,6 +15,7 @@ b2sums=('SKIP')
 
 prepare() {
 	cd "$pkgname"
+	cargo update
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
