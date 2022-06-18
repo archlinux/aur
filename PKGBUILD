@@ -10,12 +10,13 @@ _majorver=12
 _minorver=0
 _securityver=2
 _updatever=10
-pkgrel=1
+pkgrel=2
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
+options=('!lto')
 makedepends=('java-environment<=12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
@@ -54,8 +55,8 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
               lib/libsplashscreen.{so,debuginfo})
 
 prepare() {
-  # Avoid the use of any Java 8-10, actually incompatible with the build
-  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '8-|9-|10-' -m 1)"
+  # Use only Java versions 11-12
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '11-|12-' -m 1)"
 
   cd "${_jdkdir}"
   # Support compilers with multi-digit major version numbers
