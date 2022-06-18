@@ -1,7 +1,7 @@
 pkgbase = genius
 	pkgdesc = Advanced calculator including a mathematical programming language
 	pkgver = 1.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jirka.org/genius.html
 	arch = x86_64
 	license = GPL
@@ -14,6 +14,7 @@ pkgbase = genius
 	depends = gtk3
 	depends = vte3
 	depends = gtksourceview4
+	depends = termcap
 	source = https://download.gnome.org/sources/genius/1.0/genius-1.0.27.tar.xz
 	sha256sums = 0243b7c36b5f9e930c62778acd52deb188deeca704a5e195337018435d9e7bb5
 
