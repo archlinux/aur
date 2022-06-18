@@ -9,7 +9,7 @@ pkgbase = mkinitcpio-colors-git
 	makedepends = git
 	depends = mkinitcpio
 	depends = setcolors-git
-	source = mkinitcpio-colors-git::git+https://github.com/evanpurkhiser/mkinitcpio-colors
+	source = mkinitcpio-colors-git::git+https://github.com/evanpurkhiser/mkinitcpio-colors.git
 	md5sums = SKIP
 
 pkgname = mkinitcpio-colors-git
