@@ -2,16 +2,16 @@
 
 pkgname=python-pglast
 _pkgname="${pkgname#python-}"
-pkgver=3.9
+pkgver=3.11
 pkgrel=1
-pkgdesc="PostgreSQL language AST and statement prettifier"
+pkgdesc='PostgreSQL language AST and statement prettifier'
 arch=('x86_64')
-url="https://github.com/lelit/pglast"
+url='https://github.com/lelit/pglast'
 license=('GPL3')
 depends=('python')
 makedepends=('git' 'cython' 'python-setuptools' 'protobuf-c')
 #checkdepends=('python-pytest' 'python-pytest-cov')
-_commit='9d0071214a23eca5fc06180a260ad06937b445f2'
+_commit='f351e0f3d3b9b92422b012d49e486f8c286662e5'
 source=("git+$url#commit=$_commit")
 md5sums=('SKIP')
 
