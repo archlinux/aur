@@ -1,6 +1,6 @@
 pkgbase = pypy-cython
 	pkgdesc = C-Extensions for PyPy
-	pkgver = 0.29.28
+	pkgver = 0.29.30
 	pkgrel = 1
 	url = http://www.cython.org
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = pypy-cython
 	license = APACHE
 	makedepends = pypy3
 	makedepends = pypy
-	source = https://github.com/cython/cython/archive/0.29.28/cpython-0.29.28.tar.gz
-	md5sums = SKIP
+	source = https://github.com/cython/cython/archive/0.29.30/cpython-0.29.30.tar.gz
+	md5sums = 21609cfd0e5fe9c92da6849e27d3cf80
 
 pkgname = pypy3-cython
 	depends = pypy3

@@ -3,7 +3,7 @@
 
 pkgname=('pypy3-cython' 'pypy-cython')
 pkgbase=pypy-cython
-pkgver=0.29.28
+pkgver=0.29.30
 pkgrel=1
 pkgdesc="C-Extensions for PyPy"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('APACHE')
 makedepends=('pypy3' 'pypy')
 source=(https://github.com/cython/cython/archive/$pkgver/cpython-$pkgver.tar.gz)
 
-md5sums=('SKIP')
+md5sums=('21609cfd0e5fe9c92da6849e27d3cf80')
 
 build() {
   cd "$srcdir"
