@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-vulkan
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
@@ -102,6 +102,9 @@ provides=(
   libswscale.so
 )
 _tag=390d6853d0ef408007feb39c0040682c81c02751
+options=(
+  debug
+)
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   ffmpeg-vmaf2.x.patch
