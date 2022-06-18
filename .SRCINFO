@@ -1,0 +1,13 @@
+pkgbase = swww
+	pkgdesc = Efficient animated wallpaper daemon for wayland, controlled at runtime.
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/Horus645/swww
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = gcc-libs
+	source = swww-0.2.0.tar.gz::https://github.com/Horus645/swww/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 659bd8833220bf0b7bf61e9223b1ef8e5acd2222738653be26f7c7915068f53f
+
+pkgname = swww
