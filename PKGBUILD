@@ -3,8 +3,8 @@
 
 pkgbase=pyqt5-chart
 pkgname=(python-pyqt5-chart)
-pkgver=5.15.5
-pkgrel=3
+pkgver=5.15.6
+pkgrel=1
 pkgdesc='Python bindings for QtCharts'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtchart/intro'
@@ -16,7 +16,7 @@ conflicts=(python-pyqtchart)
 provides=(python-pyqtchart)
 replaces=(python-pyqtchart)
 source=(https://pypi.python.org/packages/source/P/PyQtChart/PyQtChart-$pkgver.tar.gz)
-sha256sums=('e2cd55a8a72cef99bc0126f3b1daa914eb5f21e20a70127b6985299f1dc50107')
+sha256sums=('2691796fe92a294a617592a5c5c35e785dc91f7759def9eb22da79df63762339')
 
 build() {
   cd PyQtChart-$pkgver
