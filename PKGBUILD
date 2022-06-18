@@ -14,7 +14,7 @@ makedepends=('git')
 #optdepends=('dmenu : search page and select an already existing tab' )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://gitlab.com/exkc/zihap")
+source=("$_pkgname::git+https://gitlab.com/exkc/zihap")
 md5sums=('SKIP')
 
 pkgver() {
