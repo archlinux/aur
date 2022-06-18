@@ -1,7 +1,0 @@
---- Makefile	2020-10-25 15:14:21.710302240 -0700
-+++ MakePatched	2020-10-25 15:19:09.001404572 -0700
-@@ -798,3 +798,4 @@
- -include $(OBJECTS_VST3:%.o=%.d)
- -include $(OBJECTS_STANDALONE_PLUGIN:%.o=%.d)
- -include $(OBJECTS_SHARED_CODE:%.o=%.d)
-+include ../../LV2.mak

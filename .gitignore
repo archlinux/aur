@@ -12,5 +12,5 @@ pkg/
 *.deb
 
 # Odin2 specific ignores
-JUCE/
 odin2/
+*.log

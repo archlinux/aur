@@ -1,0 +1,48 @@
+---
+default:
+  image: archlinux:base-devel
+  tags:
+    - docker
+  interruptible: true
+  before_script:
+    - if [[ ! -d $CI_PROJECT_DIR/.paccache ]] ; then mkdir "$CI_PROJECT_DIR/.paccache" ; fi
+    - sed -i "s|/var/cache/pacman/pkg/|$CI_PROJECT_DIR/.paccache/|" /etc/pacman.conf
+    - sed -i "s|^#CacheDir|CacheDir|" /etc/pacman.conf
+    - sed -i "s|^#MAKEFLAGS|MAKEFLAGS|" /etc/makepkg.conf
+    - pacman -Syyu --noconfirm
+cache:
+  paths:
+    - .paccache/
+
+stages:
+  - code-analysis
+  - build
+  - release
+
+shellcheck:
+  stage: code-analysis
+  script:
+    - pacman -Syu --noconfirm shellcheck
+    - shellcheck -s bash PKGBUILD -e 2034,2154,2164
+
+build:
+  stage: build
+  script:
+    - useradd -M pkgbuild
+    - 'echo "pkgbuild ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/pkgbuild'
+    - sudo -u pkgbuild makepkg -s --noconfirm
+  artifacts:
+    name: package
+    paths:
+      - "*.pkg.tar.zst"
+    expire_in: 1h
+
+release:
+  stage: release
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - apk add bash findutils github-cli
+    - mv build/proton-shunt.exe "build/proton-shunt-$CI_COMMIT_TAG.exe"
+    - chmod u+x pipeline/github-release.sh
+    - ./pipeline/github-release.sh

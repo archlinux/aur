@@ -1,0 +1,25 @@
+From 5ea95fb74bba1d2200dcc098d058f512afda26fc Mon Sep 17 00:00:00 2001
+From: Ryan Algar <59636191+ralgar@users.noreply.github.com>
+Date: Sat, 18 Jun 2022 12:26:23 -0700
+Subject: [PATCH] Add missing <utility> include
+
+---
+ modules/juce_gui_basics/juce_gui_basics.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/juce_gui_basics/juce_gui_basics.h b/modules/juce_gui_basics/juce_gui_basics.h
+index f497d0385..7aa655afa 100644
+--- a/modules/juce_gui_basics/juce_gui_basics.h
++++ b/modules/juce_gui_basics/juce_gui_basics.h
+@@ -54,6 +54,8 @@
+ #pragma once
+ #define JUCE_GUI_BASICS_H_INCLUDED
+ 
++#include <utility>
++
+ #include <juce_graphics/juce_graphics.h>
+ #include <juce_data_structures/juce_data_structures.h>
+ 
+-- 
+2.36.1
+
