@@ -1,6 +1,6 @@
 pkgbase = splitter
 	pkgdesc = Utility for splitting OpenStreetMap maps into tiles.
-	pkgver = 651
+	pkgver = 652
 	pkgrel = 1
 	url = http://www.mkgmap.org.uk/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = splitter
 	depends = java-runtime=8
 	depends = sh
 	depends = libcups
-	source = http://www.mkgmap.org.uk/download/splitter-r651.zip
-	sha256sums = 0890c2ae3e7f9c59ddf30a79fb415df868ed94e50e3a47fb310ea7a5b8ba5d0c
+	source = http://www.mkgmap.org.uk/download/splitter-r652.zip
+	sha256sums = 782cac7257f92bdef1f4f59675d812206fb8ed105440b2b510337755193a15aa
 
 pkgname = splitter
