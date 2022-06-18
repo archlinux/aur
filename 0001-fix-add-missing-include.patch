@@ -1,0 +1,24 @@
+From 1bd6881f1409e9e88ed0bf4de411f7d34bbaf43e Mon Sep 17 00:00:00 2001
+From: Sefa Eyeoglu <contact@scrumplex.net>
+Date: Sat, 18 Jun 2022 22:45:08 +0200
+Subject: [PATCH] fix: add missing include to juce_linux_Windowing
+
+---
+ .../juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp b/deps/juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp
+index 64897716..38258c68 100644
+--- a/deps/juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp
++++ b/deps/juce/modules/juce_gui_basics/native/juce_linux_Windowing.cpp
+@@ -22,6 +22,7 @@
+ 
+   ==============================================================================
+ */
++#include <utility>
+ 
+ namespace juce
+ {
+-- 
+2.36.1
+

@@ -1,7 +1,7 @@
 pkgbase = sonobus
 	pkgdesc = An easy to use application for streaming high-quality, low-latency peer-to-peer audio
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sonobus.net
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = sonobus
 	depends = libxcursor
 	depends = libasound.so=2-64
 	depends = libjack.so=0-64
-	source = sonobus-1.5.1::https://github.com/sonosaurus/sonobus/archive/refs/tags/1.5.1.tar.gz
+	source = sonobus-1.5.1.tar.gz::https://github.com/sonosaurus/sonobus/archive/refs/tags/1.5.1.tar.gz
+	source = 0001-fix-add-missing-include.patch
 	sha512sums = 329ef7c4b3bfe391673c5af871a2fdf688514f443550303ee7d83c3e25864fd4782ce1fe36f9fdf67d82a9964f566cb095b94d1165b66a7b705c558d2661a47a
+	sha512sums = 735821f1be3e602a222f8c45d6561f02dd127be526875e6783e243d1a2ad8269103ec7199810fd1d1d08eefd8c5c769f035ef339e8aca4b2ac9b4feff6c6f416
 
 pkgname = sonobus
