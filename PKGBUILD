@@ -3,7 +3,7 @@
 pkgname="tronclock"
 pkgdesc="A Rust rewrite of ncurses based tronClock"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/papuSpartan/tronclock"
 source=("git+https://github.com/papuSpartan/tronclock.git")
@@ -12,11 +12,17 @@ depends=()
 makedepends=('cargo')
 b2sums=('SKIP')
 
+prepare() {
+	cd "$pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+
 build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release --all-features
+	cargo build --frozen --release --all-features
 }
 
 check() {
