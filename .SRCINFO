@@ -1,6 +1,6 @@
 pkgbase = terraform-provider-lxd
 	pkgdesc = Terraform provider to provision infrastructure with LXD
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/terraform-lxd/terraform-provider-lxd
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = terraform-provider-lxd
 	depends = terraform
 	optdepends = lxd: for a local instance of LXD
 	options = !lto
-	source = terraform-provider-lxd::git+https://github.com/terraform-lxd/terraform-provider-lxd.git#commit=1f3105d5bd54981b5f3a611a4da96965aad9de98
+	source = terraform-provider-lxd::git+https://github.com/terraform-lxd/terraform-provider-lxd.git#commit=aeb3f7fe6de28f260a3b84567c56b9916b0ef8ed
 	b2sums = SKIP
 
 pkgname = terraform-provider-lxd

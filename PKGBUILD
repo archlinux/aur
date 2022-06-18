@@ -1,17 +1,17 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=terraform-provider-lxd
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
-pkgdesc="Terraform provider to provision infrastructure with LXD"
+pkgdesc='Terraform provider to provision infrastructure with LXD'
 arch=('x86_64')
-url="https://github.com/terraform-lxd/terraform-provider-lxd"
+url='https://github.com/terraform-lxd/terraform-provider-lxd'
 license=('MPL2')
 depends=('terraform')
 makedepends=('git' 'go')
 optdepends=('lxd: for a local instance of LXD')
 options=('!lto')
-_commit='1f3105d5bd54981b5f3a611a4da96965aad9de98'
+_commit='aeb3f7fe6de28f260a3b84567c56b9916b0ef8ed'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
