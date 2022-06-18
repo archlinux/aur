@@ -1,0 +1,4 @@
+*.zst
+src/
+pkg/
+ghidra_STM8/
