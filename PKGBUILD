@@ -14,7 +14,6 @@ makedepends=('git'
              'python' 'python-setuptools'
              'python2' 'python2-setuptools'
             )
-changelog="ChangeLog"
 source=("${_pkgname}::git+http://github.com/fchollet/${_pkgname}.git")
 sha256sums=('SKIP')
 
