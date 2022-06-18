@@ -10,17 +10,18 @@ _majorver=13
 _minorver=0
 _securityver=5.1
 _updatever=1
-pkgrel=1
+pkgrel=2
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
+options=('!lto')
 makedepends=('java-environment-jdk<=13' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash')
-source=("http://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_tag}.tar.gz"
+source=("https://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_tag}.tar.gz"
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
         "freedesktop-jshell.desktop"
@@ -50,8 +51,8 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
               lib/libsplashscreen.{so,debuginfo})
 
 prepare() {
-  # Avoid the use of any Java 8-11, actually incompatible with the build
-  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '8-|9-|10-|11-' -m 1)"
+  # Use only Java versions 12-13
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '12-|13-' -m 1)"
 
   cd "${_jdkdir}"
   # Fixes for GCC 10
@@ -84,6 +85,14 @@ build() {
     _CFLAGS="${CFLAGS/-fno-plt/}"
     _CXXFLAGS="${CXXFLAGS/-fno-plt/}"
   fi
+
+  # TODO: Should be rechecked for the next releases
+  # compiling with -fexceptions leads to:
+  # /usr/bin/ld: /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/build/linux-x86_64-server-release/hotspot/variant-server/libjvm/objs/zPhysicalMemory.o: in function `ZList<ZMemory>::~ZList()':
+  # /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/src/hotspot/share/gc/z/zList.hpp:54: undefined reference to `ZListNode<ZMemory>::~ZListNode()'
+  # collect2: error: ld returned 1 exit status
+  _CFLAGS=${CFLAGS/-fexceptions/}
+  _CXXFLAGS=${CXXFLAGS/-fexceptions/}
 
   # CFLAGS, CXXFLAGS and LDFLAGS are ignored as shown by a warning
   # in the output of ./configure unless used like such:

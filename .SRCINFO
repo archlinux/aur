@@ -1,6 +1,6 @@
 pkgbase = java-13-openjdk
 	pkgver = 13.0.5.1.u1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -26,7 +26,8 @@ pkgbase = java-13-openjdk
 	makedepends = lcms2
 	makedepends = libnet
 	makedepends = bash
-	source = http://hg.openjdk.java.net/jdk-updates/jdk13u/archive/jdk-13.0.5.1+1.tar.gz
+	options = !lto
+	source = https://hg.openjdk.java.net/jdk-updates/jdk13u/archive/jdk-13.0.5.1+1.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
@@ -54,7 +55,7 @@ pkgname = jre13-openjdk-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=13
 	provides = java-runtime-headless-openjdk=13
-	provides = jre13-openjdk-headless=13.0.5.1.u1-1
+	provides = jre13-openjdk-headless=13.0.5.1.u1-2
 	backup = etc/java-13-openjdk/logging.properties
 	backup = etc/java-13-openjdk/management/jmxremote.access
 	backup = etc/java-13-openjdk/management/jmxremote.password.template
@@ -73,33 +74,33 @@ pkgname = jre13-openjdk-headless
 pkgname = jre13-openjdk
 	pkgdesc = OpenJDK Java 13 full runtime environment
 	install = install_jre-openjdk.sh
-	depends = jre13-openjdk-headless=13.0.5.1.u1-1
+	depends = jre13-openjdk-headless=13.0.5.1.u1-2
 	depends = giflib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=13
 	provides = java-runtime-openjdk=13
-	provides = jre13-openjdk=13.0.5.1.u1-1
+	provides = jre13-openjdk=13.0.5.1.u1-2
 
 pkgname = jdk13-openjdk
 	pkgdesc = OpenJDK Java 13 development kit
 	install = install_jdk-openjdk.sh
-	depends = jre13-openjdk=13.0.5.1.u1-1
+	depends = jre13-openjdk=13.0.5.1.u1-2
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	provides = java-environment=13
 	provides = java-environment-jdk=13
 	provides = java-environment-openjdk=13
-	provides = jdk13-openjdk=13.0.5.1.u1-1
+	provides = jdk13-openjdk=13.0.5.1.u1-2
 
 pkgname = openjdk13-src
 	pkgdesc = OpenJDK Java 13 sources
-	depends = jdk13-openjdk=13.0.5.1.u1-1
-	provides = openjdk13-src=13.0.5.1.u1-1
+	depends = jdk13-openjdk=13.0.5.1.u1-2
+	provides = openjdk13-src=13.0.5.1.u1-2
 
 pkgname = openjdk13-doc
 	pkgdesc = OpenJDK Java 13 documentation
-	depends = jdk13-openjdk=13.0.5.1.u1-1
-	provides = openjdk13-doc=13.0.5.1.u1-1
+	depends = jdk13-openjdk=13.0.5.1.u1-2
+	provides = openjdk13-doc=13.0.5.1.u1-2
