@@ -8,7 +8,7 @@ pkgbase = setcolors-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = setcolors-git::git+https://github.com/evanpurkhiser/linux-vt-setcolors
+	source = setcolors-git::git+https://github.com/evanpurkhiser/linux-vt-setcolors.git
 	md5sums = SKIP
 
 pkgname = setcolors-git
