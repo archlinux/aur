@@ -2,12 +2,12 @@
 pkgname=rttt-git
 _pkgname='rttt'
 pkgrel=1
-pkgver=v0.8.0.r0.d69f1b8
+pkgver=v0.8.8.r37.df62981
 pkgdesc="Read-the-things-tui (rttt) lets you read RSS/Atom, hackernews and Reddit from the terminal."
 arch=("x86_64")
 url="https://gitlab.com/BlackEdder/rttt"
 license=('GPL3')
-depends=('pugixml' 'curl' 'cpr' 'nlohmann-json')
+depends=('pugixml' 'curl' 'cpr' 'nlohmann-json' 'fmt')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
