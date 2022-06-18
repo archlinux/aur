@@ -7,15 +7,9 @@ pkgbase = python-logilab-sphinx-themes
 	arch = x86_64
 	license = BSD
 	checkdepends = python-sphinx
-	checkdepends = python2-sphinx
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/l/logilab-sphinx-themes/logilab-sphinx-themes-0.2.0.tar.gz
 	md5sums = d2af41df48e92b672b42877bd481aabe
 
 pkgname = python-logilab-sphinx-themes
 	depends = python-sphinx
-
-pkgname = python2-logilab-sphinx-themes
-	depends = python2-sphinx
-
