@@ -6,12 +6,13 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg2.8
-pkgver=2.8.16
-pkgrel=2
+pkgver=2.8.20
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('GPL3')
+options=('!lto')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
          'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxv'
@@ -28,7 +29,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "${pkgname}.conf")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('6b895902f1ec0d738af40f514dfeac6caba143aa2d0a17af22397c2fc4ebc092'
+sha256sums=('8566e326c3f4e47c67a176c9d14c1efe0852d025be378183ad7f5ceb2a7676c7'
             'SKIP'
             'f0d34b08843e3cba6276e234f1fc4e520e3a7c45d2b4450393a1a5dd9da49247')
 
