@@ -1,17 +1,18 @@
 pkgbase = rtklib-qt-git
-	pkgdesc = An Open Source Program Package for GNSS Positioning
-	pkgver = r128.27e5448
-	pkgrel = 2
+	pkgdesc = An Open Source Program Package for GNSS Positioning. QT port.
+	pkgver = r203.1be8be2
+	pkgrel = 1
 	url = http://www.rtklib.com/
 	arch = x86_64
 	groups = GNSS
-	license = GPL
+	license = BSD
 	makedepends = git
 	makedepends = gcc-fortran
 	makedepends = qt5-base
+	makedepends = imagemagick
 	depends = glibc
 	provides = rtklib-qt
-	source = RTKLIB::git+https://github.com/JensReimann/RTKLIB-qt.git#branch=rtklib_2.4.3_qt
+	source = RTKLIB::git+https://github.com/JensReimann/RTKLIB.git#branch=rtklib_2.4.3
 	sha256sums = SKIP
 
 pkgname = rtklib-qt-git
