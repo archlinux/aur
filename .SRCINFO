@@ -1,6 +1,6 @@
 pkgbase = python-ftx
 	pkgdesc = Unofficial Python wrapper for FTX API
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/wanth1997/python-ftx
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-ftx
 	depends = python-aiohttp
 	depends = python-websockets
 	depends = python-loguru
-	source = https://files.pythonhosted.org/packages/source/p/python-ftx/python-ftx-0.1.0.tar.gz
-	sha256sums = f482d062c4c7a749dfdd593648f4d82f61f5b3f67f19c0c42bacaf3f0a8b934d
+	source = https://files.pythonhosted.org/packages/source/p/python-ftx/python-ftx-0.1.2.tar.gz
+	sha256sums = 3f48d70136b3337ea020e5e385ec4c4e6eb3330642fcdfd77a4bd0fd987567e9
 
 pkgname = python-ftx
