@@ -2,7 +2,7 @@
 
 pkgbase=esphomeyaml
 pkgname=esphome
-pkgver=2022.6.0
+pkgver=2022.6.1
 pkgrel=1
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
@@ -26,7 +26,7 @@ license=('MIT')
 arch=('any')
 replaces=('esphomeyaml')
 source=("https://github.com/esphome/ESPHome/archive/${pkgver}.tar.gz")
-sha256sums=('407551855c05c00c8d214c2d2bf90eeee7de15ee5ac012535739f814a8b1a3ef')
+sha256sums=('f1149eaae80e7eadc880052c18a715c28240093413d93b61a8e913ceac49f30f')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
