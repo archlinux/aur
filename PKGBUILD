@@ -3,14 +3,14 @@
 
 pkgname=golang-glide-bin
 _pkgname=glide
-pkgdesc='Legacy dependency management and vendoring for Go projects'
+pkgdesc='Deprecated dependency management and vendoring for Go projects'
 pkgver=0.13.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/Masterminds/${_pkgname}"
 license=('MIT')
 depends=('go')
-provides=("${pkgname%-bin}=${pkgver}" "glide=${pkgver}" 'glide-bin')
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=('glide' 'glide-bin' "${pkgname%-bin}")
 replaces=('glide-bin')
 options=('!strip')

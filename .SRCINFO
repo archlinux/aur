@@ -1,14 +1,12 @@
 pkgbase = golang-glide-bin
-	pkgdesc = Legacy dependency management and vendoring for Go projects
+	pkgdesc = Deprecated dependency management and vendoring for Go projects
 	pkgver = 0.13.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Masterminds/glide
 	arch = x86_64
 	license = MIT
 	depends = go
 	provides = golang-glide=0.13.3
-	provides = glide=0.13.3
-	provides = glide-bin
 	conflicts = glide
 	conflicts = glide-bin
 	conflicts = golang-glide
