@@ -2,7 +2,7 @@
 _pkgname=qiskit-optimization
 pkgname=python-${_pkgname}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantum Optimization package for IBM qiskit framework"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-optimization"
@@ -21,8 +21,9 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=(
+    'python-qiskit-aer'
+    'python-ddt'
     'python-pytest'
-    'python-hypothesis'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
 b2sums=('aa840a1413f6205f9edca4c63a34ea3ad88bc9a3b7e86297b8801f4ebc9fcceec259ec905ef13e118b2c489f5eb2e6d17178642234184b060c1082ad4e56228f')
@@ -34,9 +35,7 @@ build() {
 
 #check() {
 #    cd "${srcdir}/${_pkgname}-${pkgver}"
-#    python -m installer --destdir="$srcdir/test" dist/*.whl
-#    export PYTHONPATH="$srcdir"/test/usr/lib/python3.10/site-packages
-#    python -m pytest test/python
+#    python -m pytest test/
 #}
 
 package() {
