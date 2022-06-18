@@ -3,7 +3,7 @@
 
 _pkgname=nextpnr-xilinx
 pkgname=$_pkgname-git
-pkgver=r2849.a81a3612
+pkgver=r2851.19fa4e64
 pkgrel=2
 epoch=2
 pkgdesc="nextpnr portable FPGA place and route tool - for Xilinx"
