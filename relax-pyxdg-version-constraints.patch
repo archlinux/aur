@@ -1,0 +1,53 @@
+From c407886d139f0f31f294e58c39e6f3662d6eea3c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?L=C3=A1szl=C3=B3=20V=C3=A1rady?= <laszlo.varady93@gmail.com>
+Date: Sat, 18 Jun 2022 18:01:02 +0200
+Subject: [PATCH] Relax pyxdg version constraints
+
+---
+ PKG-INFO       | 2 +-
+ pyproject.toml | 2 +-
+ setup.py       | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/PKG-INFO b/PKG-INFO
+index 57d1852..62493da 100644
+--- a/PKG-INFO
++++ b/PKG-INFO
+@@ -28,7 +28,7 @@ Requires-Dist: importlib-metadata (>=3.10.0,<4.0.0); python_version < "3.8"
+ Requires-Dist: keyring (>=21.1,<24.0.0)
+ Requires-Dist: lxml (>=4.3,<5.0)
+ Requires-Dist: prompt-toolkit (>=3.0.3,<4.0.0)
+-Requires-Dist: pyxdg (>=0.26,<0.28)
++Requires-Dist: pyxdg (>=0.26,<0.29)
+ Requires-Dist: requests (>=2.22,<3.0)
+ Requires-Dist: setuptools (>40.0)
+ Requires-Dist: structlog (>=20.1)
+diff --git a/pyproject.toml b/pyproject.toml
+index 040605f..2d0f19f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -27,7 +27,7 @@ importlib-metadata = { version = "^3.10.0", python = "<3.8" }
+ lxml = "^4.3"
+ keyring = ">=21.1, <24.0.0"
+ prompt-toolkit = "^3.0.3"
+-pyxdg = ">=0.26, <0.28"
++pyxdg = ">=0.26, <0.29"
+ requests = "^2.22"
+ structlog = ">=20.1"
+ toml = "^0.10"
+diff --git a/setup.py b/setup.py
+index 4c08404..42493a7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -14,7 +14,7 @@ install_requires = \
+  'keyring>=21.1,<24.0.0',
+  'lxml>=4.3,<5.0',
+  'prompt-toolkit>=3.0.3,<4.0.0',
+- 'pyxdg>=0.26,<0.28',
++ 'pyxdg>=0.26,<0.29',
+  'requests>=2.22,<3.0',
+  'setuptools>40.0',
+  'structlog>=20.1',
+-- 
+2.36.1
+
