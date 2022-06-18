@@ -1,0 +1,17 @@
+pkgbase = revanced-cli
+	pkgdesc = Command line application as an alternative to the ReVanced Manager
+	pkgver = 1.4.2
+	pkgrel = 2
+	url = https://github.com/revanced/revanced-cli
+	install = revanced-cli.install
+	arch = x86_64
+	license = GPL3
+	depends = java-environment
+	source = revanced-cli.sh
+	source = https://github.com/revanced/revanced-cli/releases/download/v1.4.2/revanced-cli-1.4.2-all.jar
+	source = https://github.com/revanced/revanced-cli/raw/v1.4.2/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = revanced-cli
