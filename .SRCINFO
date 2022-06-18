@@ -32,6 +32,6 @@ pkgbase = freecad-linkstage3-bin
 	depends = shiboken2
 	conflicts = freecad
 	source = freecad-linkstage3-bin-2022.06.17.edge.r0.g2264345893.tar.gz::https://github.com/Bonnee/freecad-build-arch/releases/download/2022.06.17.edge.r0.g2264345893/freecad-archive.tar.gz
-	sha1sums = 
+	sha1sums = SKIP
 
 pkgname = freecad-linkstage3-bin
