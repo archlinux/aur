@@ -1,25 +1,33 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic2013-git
-pkgver=r581.7f52eb9
+pkgver=r773.c8f442c
 pkgrel=1
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
 license=('custom:RSDKv3/4 Decompilation Source Code License v1')
 makedepends=('git')
-depends=('sdl2' 'libogg' 'libvorbis' 'asio' 'tinyxml2')
+depends=(
+	'sdl2'
+	'libogg'
+	'libvorbis'
+	'asio'
+	'tinyxml2'
+)
 provides=(sonic2013)
 source=(
 	"git+${url}.git"
-	'git+https://github.com/nothings/stb.git'
+	'git+https://github.com/leethomason/tinyxml2.git'
 	'template-launcher'
-	'template.desktop')
+	'template.desktop'
+)
 sha256sums=(
 	'SKIP'
 	'SKIP'
 	'53ea1912492a15bf54f6dba1859aaf0f9ca0c01615f021faa8a3c67449b1fd55'
-	'55df140227c69094fac5ee7dd1b8a8e8beef9abe4072dee00e1688a0b9966353')
+	'55df140227c69094fac5ee7dd1b8a8e8beef9abe4072dee00e1688a0b9966353'
+)
 install=sonic2013.install
 
 pkgver() {
@@ -28,12 +36,15 @@ pkgver() {
 }
 
 prepare() {
-	ln -sfn "$srcdir/stb" "$srcdir/Sonic-1-2-2013-Decompilation/dependencies/all/stb-image"
+	cd "$srcdir/Sonic-1-2-2013-Decompilation"
+	git submodule init
+	git config submodule.dependencies/all/tinyxml2.url "$srcdir/tinyxml2"
+	git submodule update
 }
 
 build() {
 	cd "$srcdir/Sonic-1-2-2013-Decompilation"
-	make ${MAKEFLAGS:--j$(nproc)}
+	make ${MAKEFLAGS:-CXXFLAGS=-O2 -j$(nproc)}
 
 	cd "$srcdir"
 	for i in 1 2; do

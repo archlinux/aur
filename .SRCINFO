@@ -1,6 +1,6 @@
 pkgbase = sonic2013-git
 	pkgdesc = A full decompilation of Sonic 1 & 2 (2013).
-	pkgver = r581.7f52eb9
+	pkgver = r773.c8f442c
 	pkgrel = 1
 	url = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation
 	install = sonic2013.install
@@ -14,7 +14,7 @@ pkgbase = sonic2013-git
 	depends = tinyxml2
 	provides = sonic2013
 	source = git+https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation.git
-	source = git+https://github.com/nothings/stb.git
+	source = git+https://github.com/leethomason/tinyxml2.git
 	source = template-launcher
 	source = template.desktop
 	sha256sums = SKIP
