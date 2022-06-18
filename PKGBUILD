@@ -1,16 +1,16 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=prometheus-ipmi-exporter
-pkgver=1.5.2
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="Prometheus exporter for IPMI metrics"
+pkgdesc='Prometheus exporter for IPMI metrics'
 arch=(x86_64)
-url="https://github.com/prometheus-community/ipmi_exporter"
+url='https://github.com/prometheus-community/ipmi_exporter'
 license=('MIT')
 depends=('glibc' 'freeipmi')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='8ba1509883cd549fc0e56ef6710f3c36e0a601db'
+_commit='344b8b4a565a9ced936aad4d4ac9a29892515cba'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'
