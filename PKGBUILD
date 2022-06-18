@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=3.6.0
+pkgver=3.7.3
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('e5d4278229dc6033e1d40509d54fe52844dd8bad036bfec1fb9683505c9a626e821c15a487db5f1be5951dd5ed0db3ff5a4cbcbba73627f5e527e88cb06925f3')
+sha512sums=('f35052e514d520796296fa88e3affa1734973164e4b72f0120b78fc586de98a15e64a4e25f436ee4c2c2c0e100c64b3dbd2d96401dff19c382a6ad1fde88e859')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -48,7 +48,6 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    # Hack to compile for ffmpeg4.4
     sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
     sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
     sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
