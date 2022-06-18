@@ -1,24 +1,21 @@
 # Maintainer: weearc <qby19981121@gmail.com>
 
 pkgname=purple-oicq
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=0
 pkgdesc='A libpurple plugin'
 url='https://github.com/axon-oicq/purple-oicq'
 license=(Unlicense)
-arch=(x86_64)
+arch=(any)
 depends=('libpurple'
-          'json-c'
-	  'glibc'
-        )
-makedepends=('make' 'gcc' 'libtool')
-optdepends=('pidgin: For GUI usage of oicq'
-            'finch: For cli usage of oicq'
-            'libaxon-bin: qicq backend, binary with systemd service'
-	    'libaxon: oicq backend'
-            )
-source=("https://github.com/axon-oicq/purple-oicq/archive/refs/tags/v1.0.1.zip")
-sha256sums=('da5621774eb4a34695d272508a872aa750d9a236519c52969a4016ef62c6e556')
+         'json-glib')
+makedepends=('make' 'gcc' 'libtool' 'pkg-config')
+optdepends=('pidgin: GUI frontend for libpurple and purple-oicq'
+            'finch: TUI frontend for libpurple and purple-oicq'
+            'libaxon-bin: Nodejs backend for purple-oicq, with service support'
+	    'libaxon: Nodejs backend for purple-oicq')
+source=("https://github.com/axon-oicq/purple-oicq/archive/v1.0.2.tar.gz")
+sha256sums=('acb397df6e2e5efaa1c625beb33422853d91566deb71285e8defef98cc7c710a')
 conflicts=('purple-oicq-git')
 
 build() {
