@@ -2,7 +2,7 @@
 # Contributor: philomath <philomath868 AT gmail DOT com>
 # Contributor: Roberto Alsina <ralsina@kde.org>
 pkgname=skalibs
-pkgver=2.11.2.0
+pkgver=2.12.0.0
 pkgrel=1
 pkgdesc="A general-purpose utility library for secure, small C development"
 url="http://www.skarnet.org/software/skalibs/"
@@ -10,7 +10,7 @@ license=('ISC')
 arch=('i686' 'x86_64')
 depends=('glibc')
 source=(http://www.skarnet.org/software/skalibs/$pkgname-$pkgver.tar.gz)
-sha256sums=('649cf3236fe3103f45366b6196b1bcd0457c9c17ca86f2b80007696a2baa7b77')
+sha256sums=('e6d724b4c628f093df75c98f1274d8bd6c0ecdb09cc6816d3268bacb58647f30')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
