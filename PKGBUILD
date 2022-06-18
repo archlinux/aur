@@ -1,76 +1,69 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 
-pkgbase='python-keras-git'
-pkgname=('python-keras-git' 'python2-keras-git')
-_pkgname='keras'
-pkgver=1.2.0.r106.ge54d7951
+pkgname='python-keras-git'
+_pkgbase="${pkgname%-git}"       # pkgname without -git suffix
+_distname="${_pkgbase#python-}"  # distribution name without python- prefix and -git suffix
+pkgver=2.9.0rc0.r372.g83852348f
 pkgrel=1
-pkgdesc='Theano-based Deep Learning library (convnets, recurrent neural networks, and more)'
-arch=('i686' 'x86_64')
-url="https://github.com/fchollet/${_pkgname}"
-license=('MIT')
-makedepends=(
-  'git'
+pkgdesc='A Python deep learning API, running on TensorFlow (git version)'
+arch=('any')
+url='https://keras.io/'
+license=('Apache')
+depends=(
+  'absl-py'
   'python'
-  'python-setuptools'
-  'python2'
-  'python2-setuptools'
+  'python-h5py'
+  'python-keras-preprocessing'
+  'python-numpy'
+  'python-pandas'
+  'python-pillow'
+  'python-pydot'
+  'python-scipy'
+  'python-six'
+  'python-yaml'
+  'tensorboard'
 )
-source=("${_pkgname}::git+http://github.com/fchollet/${_pkgname}.git")
+provides=("${_pkgbase}=${pkgver}")
+conflicts=("${_pkgbase}")
+makedepends=(
+  'bazel'
+  'git'
+  'python-pip'
+  'python-tensorflow-git'   # needs to build agains '-git' or 'nightly version
+  'tensorflow-git'          # needs to build agains '-git' or 'nightly version
+)
+source=("${_distname}::git+https://github.com/${_distname}-team/${_distname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+    cd "${_distname}"
 
-prepare() {
-  cd "${srcdir}"
-  cp -a "${_pkgname}" "${_pkgname}-py2"
-  cd "${_pkgname}"
-  sed -e 's|#![ ]*/usr/bin/python$|#!/usr/bin/python2|' \
-      -e 's|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|' \
-      -e 's|#![ ]*/bin/env python$|#!/usr/bin/env python2|' \
-      -i $(find . -name '*.py')
+    # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+    local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+    # Format git-based version for pkgver
+    # Expected format: e.g. 2.11.0b4.r1444.g3fa377387e0
+    echo "${_gitversion}" | sed \
+        -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+        -e 's|\([0-9]\+-g\)|r\1|' \
+        -e 's|-|.|g'
 }
 
 build() {
-  msg 'Building Python 2'
-  cd "${srcdir}/${_pkgname}-py2"
-  python2 setup.py build
+  cd "${_distname}"
 
-  msg 'Building Python 3'
-  cd "${srcdir}/${_pkgname}"
-  python setup.py build
+  bazel build //keras/tools/pip_package:build_pip_package
+
+  bazel-bin/keras/tools/pip_package/build_pip_package .
 }
 
-package_python2-keras-git() {
-  depends=(
-    'python2'
-    'python2-numpy'
-    'python2-scipy'
-    'python2-theano'
-    'python2-h5py'
+package () {
+  depends+=(
+    'python-tensorflow'   # needs '-git' or 'nightly version, but don't want to constrain runtime dep
+    'tensorflow'          # needs '-git' or 'nightly version, but don't want to constrain runtime dep
   )
-  provides=('python2-keras')
-  conflicts=('python2-keras')
 
-  cd "${srcdir}/${_pkgname}-py2"
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1
-}
-
-package_python-keras-git() {
-  depends=(
-    'python'
-    'python-numpy'
-    'python-scipy'
-    'python-theano'
-    'python-h5py'
-  )
-  provides=('python-keras')
-  conflicts=('python-keras')
-
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1
+  cd "${_distname}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
