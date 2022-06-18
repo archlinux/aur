@@ -1,12 +1,12 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=0.9.592
-pkgrel=2
+pkgver=0.9.594
+pkgrel=1
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
 arch=('x86_64' 'i686')
-depends=('nodejs' 'deno<1.23.0' 'dart-sass' 'esbuild' 'pandoc>=2.17')
+depends=('nodejs' 'deno>=1.23.0' 'dart-sass' 'esbuild' 'pandoc>=2.17')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/a
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('7ecc73e7b55e350f13e923c79da5a62eebf985c59e11bb02c2a3314e00407aea'
+sha256sums=('96eb8555c994d3628b80c45912a4c228dde0be5313327d57aff14793f62ddb0b'
             '5d5f7f6f87966e8adc4106fb2e37d189b70a5f0935abfd3e8f48fce4131d3632')
 
 build() {
@@ -26,35 +26,27 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   source configuration
   export QUARTO_VERSION=${pkgver}
-
-  mkdir -p "package/dist/bin/tools"
+  mkdir -p package/dist/bin/tools/{dart-sass,deno_dom}
   cp /usr/bin/deno package/dist/bin/tools
-
-  cd package/src
-  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts configure --log-level info
-  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts prepare-dist --log-level info
+  mv ./src/vendor ./src/vendor-`date +%Y-%m-%d`
+  cd src
+  ../package/dist/bin/tools/deno vendor quarto.ts ../tests/test-deps.ts --importmap=./import_map.json
+  cd ..
+  ./package/dist/bin/tools/deno run --unstable --allow-all --importmap=./src/import_map.json package/src/common/create-dev-import-map.ts
 
   msg "Building Deno Stdlib..."
   cd "${srcdir}/deno-dom-${_denodomver}"
   cargo build --release
-  cp target/release/libplugin.so "${srcdir}/${pkgname}-${pkgver}/package/dist/bin/tools/deno_dom"
+  cp target/release/libplugin.so "${srcdir}/${pkgname}-${pkgver}/package/dist/bin/tools/deno_dom/libplugin.so"
 
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  msg "Tidying up..."
-  ## 1. We have got pandoc already installed in /usr/bin
-  rm package/dist/bin/tools/pandoc
   ln -sfT /usr/bin/pandoc package/dist/bin/tools/pandoc
-  ## And deno
   ln -sfT /usr/bin/deno package/dist/bin/tools/deno
-  ## And dart-sass
-  rm -rf package/dist/bin/tools/dart-sass/*
   ln -sfT /usr/bin/sass package/dist/bin/tools/dart-sass/sass
-  ## as well as esbuild
-  rm package/dist/bin/tools/esbuild
   ln -sfT /usr/bin/esbuild package/dist/bin/tools/esbuild
 
   ## 2. Remove symlinks created by build script in ~/bin and ~/.local/bin directories
