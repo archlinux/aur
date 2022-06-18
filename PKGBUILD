@@ -1,4 +1,5 @@
-# Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgbase="python-keras-git"
 pkgname=("python-keras-git" "python2-keras-git")
