@@ -1,0 +1,12 @@
+pkgbase = tronclock
+	pkgdesc = A Rust rewrite of ncurses based tronClock
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/papuSpartan/tronclock
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	source = git+https://github.com/papuSpartan/tronclock.git
+	b2sums = SKIP
+
+pkgname = tronclock
