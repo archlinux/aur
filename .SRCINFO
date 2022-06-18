@@ -1,0 +1,16 @@
+pkgbase = python-freenom
+	pkgdesc = Unofficial Python implementation of Freenom API for managing DNS records
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Shm013/freenom-dns
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-lxml
+	depends = python-retrying
+	source = https://files.pythonhosted.org/packages/source/f/freenom/freenom-0.0.2.tar.gz
+	sha256sums = 676dbacc5aa2a45c34db359f2497d1dd329ceb30e3bf9d57d795290328cbcd14
+
+pkgname = python-freenom
