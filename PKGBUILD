@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-terra
 pkgname=python-${_pkgname}
-pkgver=0.20.0
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms"
 arch=('x86_64')
@@ -42,13 +42,24 @@ makedepends=(
     'python-setuptools-rust'
     'python-wheel'
 )
+checkdepends=(
+    'python-pytest'
+    'python-hypothesis'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('67ac498b951dcfa1a1a6343b6386ed555b075d91c28bc76b761d30357a8ba0a9')
+b2sums=('715b6fb93e5b6e4d5716c7573e478e8afef476315874d2a6807a935ce7e816f108de6b8ba8e51831700566ae3986bc60f57eb76fdf15764857de22155a3b6abb')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
+
+#check() {
+#    cd "${srcdir}/${_pkgname}-${pkgver}"
+#    python -m installer --destdir="$srcdir/test" dist/*.whl
+#    export PYTHONPATH="$srcdir"/test/usr/lib/python3.10/site-packages
+#    python -m pytest test/python
+#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

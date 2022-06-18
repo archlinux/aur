@@ -1,10 +1,12 @@
 pkgbase = python-qiskit-terra
 	pkgdesc = An open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms
-	pkgver = 0.20.0
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-terra
 	arch = x86_64
 	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -32,7 +34,7 @@ pkgbase = python-qiskit-terra
 	optdepends = python-pygments: syntax highlighter
 	optdepends = python-pylatexenc: LaTeX support
 	optdepends = python-seaborn: statistical data visualization
-	source = qiskit-terra-0.20.0.tar.gz::https://github.com/Qiskit/qiskit-terra/archive/0.20.0.tar.gz
-	sha256sums = 67ac498b951dcfa1a1a6343b6386ed555b075d91c28bc76b761d30357a8ba0a9
+	source = qiskit-terra-0.20.2.tar.gz::https://github.com/Qiskit/qiskit-terra/archive/0.20.2.tar.gz
+	b2sums = 715b6fb93e5b6e4d5716c7573e478e8afef476315874d2a6807a935ce7e816f108de6b8ba8e51831700566ae3986bc60f57eb76fdf15764857de22155a3b6abb
 
 pkgname = python-qiskit-terra
