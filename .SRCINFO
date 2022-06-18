@@ -1,6 +1,6 @@
 pkgbase = r-microbiomemarker
 	pkgdesc = microbiome biomarker analysis toolkit
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/microbiomeMarker
 	arch = any
@@ -46,7 +46,7 @@ pkgbase = r-microbiomemarker
 	optdepends = r-ranger
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeMarker_1.2.1.tar.gz
-	sha256sums = cdf22c92d60a19281ce7f4193a524d6307ae16240c0a2b53a3a9a2696fed71c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/microbiomeMarker_1.2.2.tar.gz
+	sha256sums = b3761c4c20ac4c8f2ed54bdb329fb8615e222c6c175e5c2f141326654552a52d
 
 pkgname = r-microbiomemarker
