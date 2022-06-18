@@ -1,11 +1,11 @@
 pkgname=kms-cmake-utils
-pkgver=6.13.0
+pkgver=6.17.0
 pkgrel=1
 pkgdesc="Helpers for cmake build of Kurento media server"
 arch=(any)
 url="https://github.com/Kurento/kms-cmake-utils"
 license=(apache)
-source=("git://github.com/Kurento/$pkgname.git#tag=$pkgver")
+source=("git+https://github.com/Kurento/$pkgname.git#tag=$pkgver")
 sha256sums=(SKIP)
 
 build() {
@@ -13,7 +13,7 @@ build() {
     rm -rf "$builddir"
     mkdir "$builddir"
     cd "$builddir"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_MODULES_INSTALL_DIR=share/cmake/Modules ..
     make
 }
 
