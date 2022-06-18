@@ -3,26 +3,27 @@
 
 pkgname=('pypy3-cython' 'pypy-cython')
 pkgbase=pypy-cython
-pkgver=0.27.1
+pkgver=0.29.28
 pkgrel=1
 pkgdesc="C-Extensions for PyPy"
 arch=('i686' 'x86_64')
 url="http://www.cython.org"
 license=('APACHE')
 makedepends=('pypy3' 'pypy')
-source=("https://pypi.python.org/packages/10/32/21873ff231e069f860098b1602bb9e3ae2806d2f73ba661b5d806f200243/Cython-$pkgver.tar.gz")
-md5sums=('b93750b34382b025d678bea819b7491b')
+source=(https://github.com/cython/cython/archive/$pkgver/cpython-$pkgver.tar.gz)
+
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir"
-  cp -a "Cython-$pkgver" "Cython-pypy3"
-  mv "Cython-$pkgver" "Cython-pypy"
+  cp -a "cython-$pkgver" "cython-pypy3"
+  mv "cython-$pkgver" "cython-pypy"
 }
 
 package_pypy3-cython() {
   depends=('pypy3')
 
-  cd "$srcdir/Cython-pypy3"
+  cd "$srcdir/cython-pypy3"
   pypy3 setup.py install --root="$pkgdir"
 
   mkdir -p "$pkgdir/usr"
@@ -38,7 +39,7 @@ package_pypy3-cython() {
 package_pypy-cython() {
   depends=('pypy')
 
-  cd "$srcdir/Cython-pypy"
+  cd "$srcdir/cython-pypy"
   pypy setup.py install --root="$pkgdir"
 
   mkdir -p "$pkgdir/usr"
