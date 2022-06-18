@@ -6,7 +6,7 @@
 
 pkgname=bind-development
 _pkgname=bind
-pkgver=9.19.0
+pkgver=9.19.2
 pkgrel=1
 pkgdesc='A complete, highly portable implementation of the DNS protocol (development version)'
 url='https://www.isc.org/bind/'
@@ -53,7 +53,7 @@ backup=(
   'var/named/localhost.zone'
   'var/named/localhost.ip6.zone'
 )
-_commit='cab15392afd841fe3b0bacd894003376d857459a'
+_commit='f7c233e8e90b88856803ae28590818babf888d24'
 source=(
   "git+https://gitlab.isc.org/isc-projects/bind9.git#commit=$_commit"
   'tmpfiles.conf'
@@ -83,6 +83,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd bind9
+
   git describe --tags | sed "s/^[Vv]//;s/_/./g"
 }
 
