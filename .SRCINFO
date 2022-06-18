@@ -10,9 +10,8 @@ pkgbase = ratarmount-git
 	depends = python-rapidjson
 	depends = python-ujson
 	depends = python-simplejson
-	optdepends = python-indexed_gzip: Support for gzip-compressed tar files
+	optdepends = python-indexed-gzip: Support for gzip-compressed tar files
 	source = git+https://github.com/mxmlnkn/ratarmount
 	md5sums = SKIP
 
 pkgname = ratarmount-git
-

@@ -1,4 +1,5 @@
-# Maintainer: Jose Riha <jose1711 [at] gmail (dot) com>
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
+# Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=ratarmount-git
 pkgver=20191206
@@ -8,7 +9,7 @@ arch=('any')
 url="https://github.com/mxmlnkn/ratarmount"
 license=("MIT")
 depends=('python-fusepy' 'python-msgpack' 'python-rapidjson' 'python-ujson' 'python-simplejson')
-optdepends=('python-indexed_gzip: Support for gzip-compressed tar files')
+optdepends=('python-indexed-gzip: Support for gzip-compressed tar files')
 source=(git+https://github.com/mxmlnkn/ratarmount)
 md5sums=('SKIP')
 
