@@ -4,8 +4,8 @@
 pkgbase=pyqt5-webengine
 pkgname=(python-pyqt5-webengine)
 pkgdesc="Python bindings for QtWebEngine"
-pkgver=5.15.5
-pkgrel=4
+pkgver=5.15.6
+pkgrel=1
 arch=(x86_64)
 url="https://www.riverbankcomputing.com/software/pyqtwebengine/intro"
 license=(GPL)
@@ -16,7 +16,7 @@ conflicts=(pyqtwebengine-common python-pyqtwebwengine)
 provides=(python-pyqtwebengine)
 replaces=(python-pyqtwebengine)
 source=("https://pypi.python.org/packages/source/P/PyQtWebEngine/PyQtWebEngine-$pkgver.tar.gz")
-sha256sums=('ab47608dccf2b5e4b950d5a3cc704b17711af035024d07a9b71ad29fc103b941')
+sha256sums=('ae241ef2a61c782939c58b52c2aea53ad99b30f3934c8358d5e0a6ebb3fd0721')
 options=(debug)
 
 build() {
