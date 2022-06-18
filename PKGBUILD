@@ -4,20 +4,20 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-_basever=5.15.4
+_basever=5.15.5
 pkgver=$_basever
 pkgrel=1
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite'
+makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite' 'libxkbfile'
              'gperf' 'nss' 'clang' 'nodejs')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
          qt5-webengine-python3.patch
          no-qmake.patch)
-sha256sums=('615ff68d7af8eef3167de1fd15eac1b150e1fd69d1e2f4239e54447e7797253b'
+sha256sums=('5a97827bdf9fd515f43bc7651defaf64fecb7a55e051c79b8f80510d0e990f06'
             '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
             '7893df4981d6611c5aaeb4cc69bc77d14b4251842b205591a563f9a7184dfb0a')
 
