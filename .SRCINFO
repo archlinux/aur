@@ -1,6 +1,6 @@
 pkgbase = aya-neo-fixes-git
 	pkgdesc = Various fixes for Aya Neo Handheld consoles.
-	pkgver = 22.06.r55.ef23c59
+	pkgver = 22.06.r57.0b3b6f3
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/aya-neo-fixes
 	arch = any
