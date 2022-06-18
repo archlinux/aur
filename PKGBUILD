@@ -1,7 +1,7 @@
 # Maintainer: Sup3Legacy <constantin {dot} gierczak {dot} galle (at) protonmail [dot] com>
 
 pkgname=gurk-git
-pkgver=0.2.5.r166.g0e076c9
+pkgver=0.2.5.dev.r166.g0e076c9
 pkgrel=1
 pkgdesc='CLI client for Signal'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d- -f1).r$(git rev-list --count HEAD).g$(git describe --always)
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|sed 's/-/./g').r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
