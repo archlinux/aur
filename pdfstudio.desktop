@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=PDF Studio 2021
+Name=PDF Studio 2022
 Comment=Views and Edits Adobe PDF (acrobat) files
 Exec=pdfstudio %f
 Terminal=false

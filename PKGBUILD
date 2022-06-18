@@ -5,8 +5,8 @@
 
 _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
-_pkgver=2021
-pkgver=$_pkgver.1.4
+_pkgver=2022
+pkgver=$_pkgver.0.0
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=(x86_64)
@@ -18,15 +18,13 @@ conflicts=("${pkgname%-bin}")
 replaces=("${pkgname%-bin}")
 source=("${pkgname%-bin}.desktop"
         "${pkgname%-bin}.png"
-        "https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux64.deb")
-sha256sums=('7af4b3af56c1c36f10c04bca81fabdcdedadac7dabd3e782b82cfe1bbf34cf43'
+        "https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux64_adoptium17.deb")
+sha256sums=('b31863787364055ab0807ecf28a5bc5ac2af6299f6563018871d4c3ed5f5f00f'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447'
-            'de737cfef58905e2f80dbef0a61c5147b813ea7e1187d22f221afa7547b4553a')
+            'b37581c408d7ed57c5b71da6516e586dc3ecb7d690523cb068738771ee2bb0e7')
 
 prepare() {
   bsdtar xf data.tar.gz
-  # Comment out this in `.vmoptions` to be compatible with *JRE 15*
-  sed -i 's/\(^-XX:+UseConcMarkSweepGC$\)/# \1/' "$srcdir/opt/${pkgname%-bin}$_pkgver/${pkgname%-bin}$_pkgver.vmoptions"
   bsdtar xf "opt/${pkgname%-bin}$_pkgver/lib/pdfstudio.jar" resources/license.html
   rm -rf "opt/${pkgname%-bin}$_pkgver/jre"
 }
