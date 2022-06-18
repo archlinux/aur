@@ -1,15 +1,15 @@
 pkgbase = pdfstudioviewer
 	pkgdesc = Review, annotate, and edit PDF Documents
-	pkgver = 2021.1.4
+	pkgver = 2022.0.0
 	pkgrel = 1
 	url = https://www.qoppa.com/pdfstudioviewer
 	arch = x86_64
 	license = custom
 	depends = java-runtime>=8
 	depends = sane
-	source = pdfstudioviewer-2021.1.4_linux64.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux64.deb
+	source = pdfstudioviewer-2022.0.0_linux64.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux64.deb
 	source = pdfstudioviewer.desktop
-	sha256sums = 61603564748a0ce2117a59296cf71d966831e913266c198b2de7f23b7499e138
+	sha256sums = 2a80315c6943e6c3302490d5710e6864ce6fa71a83b3268141a0c2fdd7fd7083
 	sha256sums = 6220630a14643d9052da65fb67bf8e841790e7c6e25e79dd4c297556d2c478b3
 
 pkgname = pdfstudioviewer
