@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=pingu
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='ping command but with pingu'
 url='https://github.com/sheepla/pingu'
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sheepla/pingu/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76f4ca49ac8f9be66a454e042e753813a23589a218703f12ef214400cc8def9b')
-b2sums=('ec31807f4f6badcb3a7371d6f6d7493fe083a859c9d44c4ed1688a97ebcae55dec88f3513703c4ed2ff220ecaf0c94c439f25ca7e2315b14fe96ccb5cbcc3790')
+sha256sums=('9803c812f8d9433758f2d5e5b21686b6d87f37f9418065ce5b272ab9cfc0948b')
+b2sums=('42d91b22233fe92c589f05216b3aa9d1da1a8d26ec17402f1959d07a1e0d97bcb5f36fad47184043cebfc999a2faabcd2fbe572ef4ff10c195d247cb825e1141')
 
 build() {
   cd "pingu-$pkgver"
