@@ -9,6 +9,7 @@ pkgdesc='Nodejs backend for purple-oicq'
 url='https://github.com/axon-oicq/axon'
 license=(Unlicense)
 depends=('glibc')
+options=('!strip')
 install=${_pkgname}.install
 arch=(x86_64)
 provides=('axon' 'libaxon')
