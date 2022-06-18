@@ -1,0 +1,21 @@
+pkgbase = hikvision-mvs
+	pkgdesc = Machine Vision Software by Hikvision, for their industrial cameras.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://www.hikrobotics.com/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	license = LGPL3
+	license = custom
+	noextract = MVS_STD_GML_V2.1.1_220511.zip
+	source = https://www.hikrobotics.com/cn2/source/support/software/MVS_STD_GML_V2.1.1_220511.zip
+	source = logo.svg
+	source = hikvision-mvs.desktop
+	sha256sums = 06ea46595c9b96c8cd5977949c2949735bc0f690b7d20fdb7efd069ef55273b4
+	sha256sums = 6be7b478c87b26e562ee385c91039b8b5d4927eb3d34a27089201edb2b2182fb
+	sha256sums = SKIP
+
+pkgname = hikvision-mvs

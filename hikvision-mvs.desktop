@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Machine Vision Software
+Comment=Client for Hikvision industrial cameras.
+Exec=/opt/MVS/bin/MVS.sh
+Terminal=false
+Icon=hikvision-mvs
+Type=Application
+Version=1.0
+Keywords=vision;camera
+StartupWMClass=hikvision-mvs
+Categories=Science;Robotics
