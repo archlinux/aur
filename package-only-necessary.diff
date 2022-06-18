@@ -11,7 +11,7 @@
  const config = {
    appId: `io.freetubeapp.${name}`,
    copyright: 'Copyleft © 2020-2021 freetubeapp@protonmail.com',
-+  electronDist: '/usr/lib/electron',
++  electronDist: '/usr/lib/electron16',
    // asar: false,
    // compression: 'store',
    productName,
