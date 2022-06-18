@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r40.068c5a8
+pkgver=r46.ae9a020
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
