@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=glewlwyd
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
@@ -33,7 +33,7 @@ makedepends=(
   systemd
 )
 backup=(etc/glewlwyd/glewlwyd.conf)
-_tag=c948baf67c6f066b41c2c3beaa83028b4f96972e
+_tag=415e5c3574e4bc0074c110b54ba394903a986416
 source=(
   git+https://github.com/babelouest/glewlwyd.git#tag=${_tag}
   glewlwyd.service
