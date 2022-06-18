@@ -1,0 +1,7 @@
+pkg/
+src/
+
+mkp224o-[0-9].[0-9].0-src.tar.zst
+mkp224o-[0-9].[0-9].0-src.tar.zst.sig
+mkp224o-[0-9].[0-9].0-1-x86_64.pkg.tar.zst
+mkp224o-[0-9].[0-9].0-1-x86_64-*.log
