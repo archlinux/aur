@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-forward-command-controller
 	pkgdesc = ROS - forward_command_controller.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ros-noetic-forward-command-controller
 	depends = ros-noetic-realtime-tools
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-hardware-interface
-	source = ros-noetic-forward-command-controller-0.19.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.19.0.tar.gz
-	sha256sums = ce96e156344d628b655eb9d2394c19dd50b77324da12df674d220fa4afea6e68
+	source = ros-noetic-forward-command-controller-0.20.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.20.0.tar.gz
+	sha256sums = c9a42db66d8a90604f255592fb0f2c20d315a235a0a20aaa07a1e045dcda6d27
 
 pkgname = ros-noetic-forward-command-controller
