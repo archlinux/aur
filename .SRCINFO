@@ -7,7 +7,8 @@ pkgbase = python2-stsci.distutils
 	license = BSD
 	checkdepends = python2-pytest
 	checkdepends = python2-nose
-	makedepends = python2-setuptoolspython2-d2to1
+	makedepends = python2-setuptools
+	makedepends = python2-d2to1
 	source = https://files.pythonhosted.org/packages/source/s/stsci.distutils/stsci.distutils-0.3.7.tar.gz
 	md5sums = 65c866c0444f6a8effe2d41688606a0c
 
