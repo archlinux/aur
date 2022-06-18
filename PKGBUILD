@@ -2,15 +2,15 @@
 
 #https://wiki.archlinux.org/title/Rust_package_guidelines
 pkgname="tronclock"
-pkgdesc="A Rust rewrite of ncurses based tronClock"
+pkgdesc="An ncurses based clock resembling the screensaver shown in TRON: Legacy"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/papuSpartan/tronclock"
 source=("git+https://github.com/papuSpartan/tronclock.git")
 license=('GPL3')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 b2sums=('SKIP')
 
 prepare() {
