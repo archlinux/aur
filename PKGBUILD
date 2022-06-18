@@ -4,7 +4,7 @@
 pkgname=python2-scandir
 _name=${pkgname#python2-}
 pkgver=1.10.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Better directory iterator and faster os.walk() alternative'
 arch=('x86_64')
 url='https://github.com/benhoyt/scandir'
@@ -23,7 +23,8 @@ check() {
   cd "$srcdir/$_name-$pkgver"
   touch test/__init__.py
   rm -rf test/testdir
-  LC_ALL=C.UTF-8 python2 -m unittest discover -v
+  LC_ALL=C.UTF-8 PYTHONPATH="$PWD/build/lib.linux-$CARCH-2.7" \
+    python2 -m unittest discover -v
 }
 
 package() {
