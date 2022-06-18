@@ -2,7 +2,7 @@
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aer"
@@ -16,7 +16,6 @@ depends=(
     'python-scipy'
 )
 optdepends=(
-    'openblas: optimized BLAS library'
     'openmp: parallelization with OpenMP'
     'python-dask: parallel computing with task scheduling'
     'python-distributed: distributed task scheduler for Dask'
@@ -24,6 +23,7 @@ optdepends=(
 makedepends=(
     'cmake'
     'ninja'
+    'openblas'
     'pybind11'
     'python-build'
     'python-installer'
@@ -42,9 +42,9 @@ source=(
     "fix.patch"
 )
 
-sha256sums=(
-    '7fe0f95863ee9190fadbf846ee5a7aa220b22c8a1ba5ec156cf2075af1bb3e80'
-    'c847b08cf47e384bfec3c75aa38cc9b03f9c9976b40956f2b332a946f1a2c124'
+b2sums=(
+    '42800d9142c53104a6ad034d98658fb19aef18e6acaac385568e5448b7747d9a2702ede950b0d9edb76d51a4898c2b35acac2893c33b42dd32cfdae131ac4f01'
+    '4b7763d6b5802f3e1275d760e84b323b4e786c6376615a0cfb440a3fdb1f53ee9f03eea6ed6e23ba245d1f159ecf1b10287b8aac65db76804d4aefb56f55c58e'
 )
 
 prepare() {
