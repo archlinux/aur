@@ -1,7 +1,7 @@
 pkgbase = eclint
 	pkgdesc = EditorConfig linter
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://gitlab.com/greut/eclint
 	arch = x86_64
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = eclint
 	makedepends = gzip
 	depends = glibc
 	optdepends = git: Git repository support
-	source = https://gitlab.com/greut/eclint/-/releases/v0.3.3/downloads/eclint-0.3.3.tar.gz
-	source = https://gitlab.com/greut/eclint/-/releases/v0.3.3/downloads/eclint-0.3.3.tar.gz.sig
+	source = https://gitlab.com/greut/eclint/-/releases/v0.3.4/downloads/eclint-0.3.4.tar.gz
+	source = https://gitlab.com/greut/eclint/-/releases/v0.3.4/downloads/eclint-0.3.4.tar.gz.sig
 	validpgpkeys = 9E2D407EAFEE50863F42B9D16058CF4574298812
-	sha256sums = c9d5f5b856a8be3d47d898d289d74885c1b466f7201b9bd6f03c803317bc2fb8
+	sha256sums = 25d6800221adcccfd18e8baccf6873bcf406775ef611c22f766f32b515ca4d1e
 	sha256sums = SKIP
 
 pkgname = eclint
