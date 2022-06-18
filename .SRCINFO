@@ -1,0 +1,24 @@
+pkgbase = python-qiskit-experiments
+	pkgdesc = Qiskit Experiments package for IBM qiskit framework
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit-experiments
+	arch = x86_64
+	license = Apache
+	checkdepends = python-qiskit-aer
+	checkdepends = python-ddt
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-uncertainties
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-qiskit-ibmq-provider
+	depends = python-qiskit-terra
+	depends = python-scipy
+	source = qiskit-experiments-0.3.1.tar.gz::https://github.com/Qiskit/qiskit-experiments/archive/refs/tags/0.3.1.tar.gz
+	b2sums = e73472462ae549fca665fc318c435eb9d63060ddf3c1a3c5169b31015578a1c3caaea34bd0726f69e857ab820c9b33a78368738aa3d6852cd758639a29e077e3
+
+pkgname = python-qiskit-experiments
