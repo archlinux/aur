@@ -1,6 +1,6 @@
 pkgbase = ferium-bin
 	pkgdesc = Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases
-	pkgver = 4.1.4
+	pkgver = 4.1.5
 	pkgrel = 1
 	url = https://github.com/gorilla-devs/ferium
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ferium-bin
 	conflicts = ferium-gui-bin
 	conflicts = ferium-git
 	conflicts = ferium-gui-git
-	source = ferium-4.1.4-1.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.1.4/ferium-linux-gnu-nogui.zip
-	sha256sums = c1091efa2b351f630fb1ba25c1a8f133fa6849ee4bf46d100cf172946d7e2522
+	source = ferium-4.1.5-1.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.1.5/ferium-linux-gnu-nogui.zip
+	sha256sums = 7ae7278a9b814f0cde84775ea2e79a56a6ee85e5bea98b8d051142db9996ea89
 
 pkgname = ferium-bin
