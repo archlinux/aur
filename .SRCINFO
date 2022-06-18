@@ -1,6 +1,6 @@
 pkgbase = r-bgeedb
 	pkgdesc = Annotation and gene expression data retrieval from Bgee database. TopAnat, an anatomical entities Enrichment Analysis tool for UBERON ontology
-	pkgver = 2.22.0
+	pkgver = 2.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BgeeDB
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-bgeedb
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BgeeDB_2.22.0.tar.gz
-	sha256sums = 4cffacf66fe3ccb1b68abfa03732a53fb641959fcdc2a6b1922a45d407997f24
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BgeeDB_2.22.1.tar.gz
+	sha256sums = c8bf1ba1fe335586e6521d13c8a9fbe3a9351fcd0a47ca7ab118e5a54b309c2d
 
 pkgname = r-bgeedb
