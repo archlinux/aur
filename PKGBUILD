@@ -2,8 +2,8 @@
 _pkgname=qiskit-machine-learning
 pkgname=python-${_pkgname}
 pkgver=0.4.0
-pkgrel=1
-pkgdesc="Quantum Finance package for IBM qiskit framework"
+pkgrel=2
+pkgdesc="Quantum Machine Learning for IBM qiskit framework"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-finance"
 license=('Apache')
