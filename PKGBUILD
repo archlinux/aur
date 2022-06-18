@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli
 pkgver=0.9.594
-pkgrel=1
+pkgrel=2
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
 arch=('x86_64' 'i686')
@@ -26,13 +26,12 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   source configuration
   export QUARTO_VERSION=${pkgver}
-  mkdir -p package/dist/bin/tools/{dart-sass,deno_dom}
+  mkdir -p package/dist/bin/tools/{deno_dom,dart-sass}
   cp /usr/bin/deno package/dist/bin/tools
-  mv ./src/vendor ./src/vendor-`date +%Y-%m-%d`
-  cd src
-  ../package/dist/bin/tools/deno vendor quarto.ts ../tests/test-deps.ts --importmap=./import_map.json
-  cd ..
-  ./package/dist/bin/tools/deno run --unstable --allow-all --importmap=./src/import_map.json package/src/common/create-dev-import-map.ts
+ 
+  cd package/src
+  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/dev_import_map.json bld.ts configure --log-level info
+  #  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=../../src/import_map.json bld.ts prepare-dist --log-level info
 
   msg "Building Deno Stdlib..."
   cd "${srcdir}/deno-dom-${_denodomver}"
