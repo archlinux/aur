@@ -1,6 +1,6 @@
 pkgbase = lib32-srt
 	pkgdesc = Secure Reliable Transport library (32-bit)
-	pkgver = 1.4.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.srtalliance.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lib32-srt
 	depends = lib32-gcc-libs
 	depends = lib32-openssl
 	depends = srt
-	source = git+https://github.com/Haivision/srt#commit=8b32f3734ff6af7cc7b0fef272591cb80a2d1aae
+	source = git+https://github.com/Haivision/srt#commit=060c0d1a2af8082c053018fa6a6fe2dba67d71a8
 	b2sums = SKIP
 
 pkgname = lib32-srt
