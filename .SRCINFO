@@ -1,7 +1,8 @@
 pkgbase = python-onnx
 	pkgdesc = Open Neural Network Exchange
-	pkgver = 12.0.0
-	pkgrel = 1
+	pkgver = 1.12.0
+	pkgrel = 2
+	epoch = 1
 	url = https://onnx.ai
 	arch = x86_64
 	license = MIT
@@ -14,7 +15,7 @@ pkgbase = python-onnx
 	depends = python-numpy
 	depends = python-six
 	depends = python-typing_extensions
-	source = python-onnx::git+https://github.com/onnx/onnx.git#tag=v12.0.0
+	source = python-onnx::git+https://github.com/onnx/onnx.git#tag=v1.12.0
 	sha512sums = SKIP
 
 pkgname = python-onnx
