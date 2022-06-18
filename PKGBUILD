@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/cathugger/mkp224o"
 license=('custom:CC0')
 provides=('mkp224o')
-makedepends=('libsodium')
+depends=('libsodium')
 
 source=("https://github.com/cathugger/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst")
 # The following .sig and checksum have been verified locally against the author
