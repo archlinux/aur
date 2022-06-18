@@ -1,0 +1,25 @@
+pkgbase = python-qiskit-machine-learning
+	pkgdesc = Quantum Finance package for IBM qiskit framework
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit-finance
+	arch = x86_64
+	license = Apache
+	checkdepends = python-qiskit-aer
+	checkdepends = python-ddt
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dill
+	depends = python-fastdtw
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-qiskit-terra
+	depends = python-scikit-learn
+	depends = python-scipy
+	source = qiskit-machine-learning-0.4.0.tar.gz::https://github.com/Qiskit/qiskit-machine-learning/archive/refs/tags/0.4.0.tar.gz
+	b2sums = 0e2d56fe1375aba6ebc326818afe76fcf62fff44bfd0f413a2f8d0897fa104e77c70b73490e1fe2d539d9eae94b4da1363c848135e64a9a2b43859b7b31b6715
+
+pkgname = python-qiskit-machine-learning
