@@ -1,6 +1,6 @@
 pkgbase = virtiofsd
 	pkgdesc = A virtio-fs vhost-user device daemon written in Rust
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://gitlab.com/virtio-fs/virtiofsd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = virtiofsd
 	depends = libcap-ng
 	depends = libseccomp
 	options = !lto
-	source = virtiofsd::git+https://gitlab.com/virtio-fs/virtiofsd.git#commit=deea41891759b3f96539ff805435248717e7c666
+	source = virtiofsd::git+https://gitlab.com/virtio-fs/virtiofsd.git#commit=cb594fba39b3265fbb9b5d584d276460e0b13633
 	b2sums = SKIP
 
 pkgname = virtiofsd
