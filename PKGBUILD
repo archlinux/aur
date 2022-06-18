@@ -2,7 +2,7 @@
 
 _pkgbase=luau
 pkgname=luau
-pkgver=0.530
+pkgver=0.532
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
@@ -17,21 +17,15 @@ provides=("$_pkgbase")
 source=(
     "luau-$pkgver.zip::https://github.com/Roblox/luau/archive/refs/tags/$pkgver.zip"
     'Luau.pc'
-    '0001-Include-utility.patch'
 )
 
 sha512sums=(
-    'ce9fd1141471b5a44fd449b40dd88946c60899622ba14db2b83826b371b66184ddbc22fed8825dbbc568b8c0e8f5af77243de664aaf9fb82b40e6f4c1a9d2751'
+    '00b66aef1551f1f40d43d5587587d56349ace061c6a4a75062ee237a9d131e76e7aae8a86df2a7bbe188d8c660c713eaa394e56f06144fcce96b217ed255d26b'
     'b17989fc739e2c101e0d515ded8815b4de3f54b2a67e1893cd1e9aa88cc541b3f667514cdf8a04db60aa9db050971cdbd8b386cd1458f567e784de983f63e88a'
-    '430480ea8d40db9f8f60419bc6e317f72b5718ff830877f676313e1d64906ef5168d51bd9a45c816cfb74c6f4838034b84661b4737a84daf1ad6d4988024c372'
 )
 
 prepare() {
     unzip -o "luau-$pkgver.zip"
-
-    pushd "$srcdir/luau-$pkgver"
-    patch -p1 < "$srcdir/0001-Include-utility.patch"
-    popd
 }
 
 build() {
