@@ -1,8 +1,5 @@
 post_upgrade() {
-  echo ">>    revanced-cli -a some.apk -c -d device-name -o revanced.apk -b revanced-patches.jar --install"
-  echo ">>    "
-  echo ">>    See revanced wiki"
-  echo ">>    https://github.com/revanced/revanced-documentation/wiki/Using-the-ReVanced-CLI-and-installing-ReVanced"
+  echo ">>    See revanced wiki: https://github.com/revanced/revanced-documentation/wiki/Using-the-ReVanced-CLI-and-installing-ReVanced"
 }
 
 post_install() {

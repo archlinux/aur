@@ -1,22 +1,22 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-cli'
-pkgver="1.4.2"
-pkgrel=2
+pkgver="1.4.3"
+pkgrel=1
 pkgdesc='Command line application as an alternative to the ReVanced Manager'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/revanced/revanced-cli"
 license=('GPL3')
-depends=('java-environment')
+depends=('java-environment' 'revanced-patches')
 install='revanced-cli.install'
 source=("${pkgname}.sh"
         "${url}/releases/download/v${pkgver}/revanced-cli-${pkgver}-all.jar"
         "${url}/raw/v${pkgver}/LICENSE")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('d163e7791b1010ec330383f68f8fee05b1f69d5aaba86c02de88b88453b4be53'
+            'f1bf75f7f4314193467a77617025aca113cef796efe8f5448e8819c0eb7e49ac'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
   install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 755 revanced-cli-${pkgver}-all.jar "${pkgdir}/usr/share/java/${pkgname}.jar"
+  install -Dm 644 revanced-cli-${pkgver}-all.jar "${pkgdir}/usr/share/java/${pkgname}.jar"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
