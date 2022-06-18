@@ -2,8 +2,8 @@
 
 _pkgbase=luau
 pkgname=luau-git
-pkgver=0.530.55a0268
-pkgrel=2
+pkgver=0.532.f1b46f4
+pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=('any')
@@ -16,12 +16,10 @@ provides=("$_pkgbase")
 
 source=(
   'git+https://github.com/Roblox/luau.git'
-  '0001-Include-utility.patch'  
 )
 
 sha512sums=(
   'SKIP'
-  '430480ea8d40db9f8f60419bc6e317f72b5718ff830877f676313e1d64906ef5168d51bd9a45c816cfb74c6f4838034b84661b4737a84daf1ad6d4988024c372'
 )
 
 pkgver() {
@@ -33,12 +31,6 @@ pkgver() {
   popd > /dev/null
   
   echo "$_latest_tag.$_git_hash"
-}
-
-prepare() {
-  pushd "$srcdir/$_pkgbase"
-  patch -p1 < "$srcdir/0001-Include-utility.patch"
-  popd
 }
 
 build() {

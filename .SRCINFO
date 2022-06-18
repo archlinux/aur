@@ -1,7 +1,7 @@
 pkgbase = luau-git
 	pkgdesc = A fast, small, safe, gradually typed embeddable scripting language derived from Lua
-	pkgver = 0.530.55a0268
-	pkgrel = 2
+	pkgver = 0.532.f1b46f4
+	pkgrel = 1
 	url = https://github.com/Roblox/luau
 	arch = any
 	license = MIT
@@ -11,8 +11,6 @@ pkgbase = luau-git
 	conflicts = luau
 	conflicts = luau-bin
 	source = git+https://github.com/Roblox/luau.git
-	source = 0001-Include-utility.patch
 	sha512sums = SKIP
-	sha512sums = 430480ea8d40db9f8f60419bc6e317f72b5718ff830877f676313e1d64906ef5168d51bd9a45c816cfb74c6f4838034b84661b4737a84daf1ad6d4988024c372
 
 pkgname = luau-git
