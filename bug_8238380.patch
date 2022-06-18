@@ -1,0 +1,23 @@
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/java.base/unix/native/libjava/childproc.c jdk12u-jdk-12.0.2+10/src/java.base/unix/native/libjava/childproc.c
+--- jdk12u-jdk-12.0.2+10.orig/src/java.base/unix/native/libjava/childproc.c	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/java.base/unix/native/libjava/childproc.c	2021-11-28 17:07:34.716995346 +0100
+@@ -33,6 +33,7 @@
+ 
+ #include "childproc.h"
+ 
++const char * const *parentPathv;
+ 
+ ssize_t
+ restartableWrite(int fd, const void *buf, size_t count)
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/java.base/unix/native/libjava/childproc.h jdk12u-jdk-12.0.2+10/src/java.base/unix/native/libjava/childproc.h
+--- jdk12u-jdk-12.0.2+10.orig/src/java.base/unix/native/libjava/childproc.h	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/java.base/unix/native/libjava/childproc.h	2021-11-28 17:07:49.040530118 +0100
+@@ -118,7 +118,7 @@
+  * The cached and split version of the JDK's effective PATH.
+  * (We don't support putenv("PATH=...") in native code)
+  */
+-const char * const *parentPathv;
++extern const char * const *parentPathv;
+ 
+ ssize_t restartableWrite(int fd, const void *buf, size_t count);
+ int restartableDup2(int fd_from, int fd_to);

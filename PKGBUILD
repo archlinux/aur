@@ -10,12 +10,13 @@ _majorver=14
 _minorver=0
 _securityver=2
 _updatever=12
-pkgrel=1
+pkgrel=2
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
+options=('!lto')
 makedepends=('java-environment-jdk<=14' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
@@ -23,11 +24,17 @@ makedepends=('java-environment-jdk<=14' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 
 source=("https://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_tag}.tar.gz"
         "freedesktop-java.desktop"
         "freedesktop-jconsole.desktop"
-        "freedesktop-jshell.desktop")
+        "freedesktop-jshell.desktop"
+        "bug_8238380.patch"
+        "bug_8238386.patch"
+        "bug_8238388.patch")
 sha256sums=('dfb3607f1b675458f29a185a40f1dbbf896439cf33b3aa0f3d89df297e604935'
             '165273caba29f70496e697c9ed5bf61a4322ab324888f78559820f0032df48c9'
             '1e3decf29075b6f62238a5b2ac537679f00c185ce36d83db254004237cfe7084'
-            '676c74c8aed53d6cd4c4755ece2b2e3ab1a72b1bd2ef53983dcad0229d91af3c')
+            '676c74c8aed53d6cd4c4755ece2b2e3ab1a72b1bd2ef53983dcad0229d91af3c'
+            'ae89106474b59a8e9b76e7645bcb05f0c45e6609f359b97f58147f9d55edc512'
+            '98cd6af562097fcb70ad0e533e9276f1a7b5c4a6b76755c811e8902c5d812620'
+            'e25600513da65ea42b40785fef27d7a33ced1157269e733e9a92897a141b9e0a')
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
@@ -44,8 +51,16 @@ _nonheadless=(lib/libawt_xawt.{so,debuginfo}
               lib/libsplashscreen.{so,debuginfo})
 
 prepare() {
-  # Avoid the use of any Java 8-12, actually incompatible with the build
-  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -vE '8-|9-|10-|11-|12-' -m 1)"
+  # Use only Java versions 13-14
+  export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '13-|14-' -m 1)"
+  cd "${_jdkdir}"
+  # Fixes for GCC 10
+  # https://bugs.openjdk.java.net/browse/JDK-8238380
+  patch -p1 -i "${srcdir}/bug_8238380.patch"
+  # https://bugs.openjdk.java.net/browse/JDK-8238386
+  patch -p1 -i "${srcdir}/bug_8238386.patch"
+  # https://bugs.openjdk.java.net/browse/JDK-8238388
+  patch -p1 -i "${srcdir}/bug_8238388.patch"
 }
 
 build() {
@@ -69,6 +84,14 @@ build() {
     _CFLAGS="${CFLAGS/-fno-plt/}"
     _CXXFLAGS="${CXXFLAGS/-fno-plt/}"
   fi
+
+  # TODO: Should be rechecked for the next releases
+  # compiling with -fexceptions leads to:
+  # /usr/bin/ld: /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/build/linux-x86_64-server-release/hotspot/variant-server/libjvm/objs/zPhysicalMemory.o: in function `ZList<ZMemory>::~ZList()':
+  # /build/java-openjdk/src/jdk17u-jdk-17.0.3-2/src/hotspot/share/gc/z/zList.hpp:54: undefined reference to `ZListNode<ZMemory>::~ZListNode()'
+  # collect2: error: ld returned 1 exit status
+  _CFLAGS=${CFLAGS/-fexceptions/}
+  _CXXFLAGS=${CXXFLAGS/-fexceptions/}
 
   # CFLAGS, CXXFLAGS and LDFLAGS are ignored as shown by a warning
   # in the output of ./configure unless used like such:

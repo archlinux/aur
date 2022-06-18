@@ -1,0 +1,24 @@
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/java.security.jgss/share/native/libj2gss/NativeFunc.c jdk12u-jdk-12.0.2+10/src/java.security.jgss/share/native/libj2gss/NativeFunc.c
+--- jdk12u-jdk-12.0.2+10.orig/src/java.security.jgss/share/native/libj2gss/NativeFunc.c	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/java.security.jgss/share/native/libj2gss/NativeFunc.c	2021-11-28 17:26:14.142894977 +0100
+@@ -27,6 +27,9 @@
+ #include <stdlib.h>
+ #include "NativeFunc.h"
+ 
++/* global GSS function table */
++GSS_FUNCTION_TABLE_PTR ftab;
++
+ /* standard GSS method names (ordering is from mapfile) */
+ static const char RELEASE_NAME[]                = "gss_release_name";
+ static const char IMPORT_NAME[]                 = "gss_import_name";
+diff -Naur jdk12u-jdk-12.0.2+10.orig/src/java.security.jgss/share/native/libj2gss/NativeFunc.h jdk12u-jdk-12.0.2+10/src/java.security.jgss/share/native/libj2gss/NativeFunc.h
+--- jdk12u-jdk-12.0.2+10.orig/src/java.security.jgss/share/native/libj2gss/NativeFunc.h	2019-07-16 18:38:28.000000000 +0200
++++ jdk12u-jdk-12.0.2+10/src/java.security.jgss/share/native/libj2gss/NativeFunc.h	2021-11-28 17:26:32.046873805 +0100
+@@ -277,6 +277,6 @@
+ typedef GSS_FUNCTION_TABLE *GSS_FUNCTION_TABLE_PTR;
+ 
+ /* global GSS function table */
+-GSS_FUNCTION_TABLE_PTR ftab;
++extern GSS_FUNCTION_TABLE_PTR ftab;
+ 
+ #endif
