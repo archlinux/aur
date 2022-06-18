@@ -3,7 +3,7 @@
 
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
-_qtver=5.15.4
+_qtver=5.15.5
 _clangver=13.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
@@ -31,7 +31,7 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz)
-sha256sums=('3c68ed0def4111ef5d0641370306338d277ae8983a77eaf22f223ddd3a14450b')
+sha256sums=('3920a4fb353300260c9bc46ff70f1fb975c5e7efa22e9d51222588928ce19b33')
 
 build() {
   cmake -B build -S $_pkgfqn \
