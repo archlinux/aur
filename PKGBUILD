@@ -1,7 +1,7 @@
 # Maintainer: Simon <contact at swz dot works>
 pkgname=rlbotgui-rust-git
 git_pkgname=rlbot_gui_rust
-cargo_pkgname=rlbot_gui
+cargo_pkgname=rl-bot-gui
 pkgver=0.1.0.51b5a4b
 pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
