@@ -1,7 +1,7 @@
 pkgbase = quarto-cli
 	pkgdesc = Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org).
 	pkgver = 0.9.594
-	pkgrel = 2
+	pkgrel = 3
 	url = https://quarto.org/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = quarto-cli
 	makedepends = npm
 	makedepends = rust
 	depends = nodejs
-	depends = deno>=1.23.0
+	depends = deno<1.23.0
 	depends = dart-sass
 	depends = esbuild
 	depends = pandoc>=2.17
