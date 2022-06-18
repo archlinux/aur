@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud-htwk.leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud-htwk.leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
 # Have a look what is done in the build() and package() functions below.
@@ -11,7 +11,7 @@
 
 pkgname=wesnoth-1.12
 pkgver=1.12.6+dev
-pkgrel=12
+pkgrel=13
 pkgdesc="Turn-based strategy game on a fantasy world (oldstable)"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
             'f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877'
             '4d11e481ad8610bb2ad65290d2b3d1bf2d058485deaa9016325499b113e0f89f'
             'f8e20adabc0ecdbce23aed375ad9b28b616cebb0d261b3c6b8e576ccb61dcdae'
-            'e5b0bd418e97d5f8cfc9392045dc749941c71e9cf805ef6f343c318022088384')
+            '15a5aa798923defd3debad04379f654c60bcbd59cc238c09b15c546eff954a0a')
 
 
 build() {
@@ -60,8 +60,9 @@ build() {
       docdir=share/doc/wesnoth-1.12 \
       fifodir=/run/wesnothd-1.12 \
       prefsdir=.local/share/wesnoth/1.12 \
-      openmp=True \
+      openmp=False \
       desktop_entry=False \
+      cxx0x=True \
       wesnoth wesnothd
 }
 
