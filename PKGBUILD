@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='reco'
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='An audio recording app designed for elementary OS'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('granite' 'gstreamer')
 makedepends=('meson' 'vala' 'libhandy')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('53882c227ff21017ec066b84c7221e6347ee1101d79ea2d52047d63f6e922ea2')
+sha256sums=('545e898b4cfb849392d17e8ee95cbb5daf806f1ea60f532edfab36b33bcb4c63')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
