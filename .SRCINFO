@@ -1,13 +1,13 @@
 pkgbase = qbe
 	pkgdesc = Small embeddable C compiler backend
-	pkgver = r1258.ee6c272
+	pkgver = r1265.cd778b4
 	pkgrel = 1
 	url = https://c9x.me/compile/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = git://c9x.me/qbe.git#commit=ee6c272416c2f9c76318f3a396c83aa69689c773
+	source = git://c9x.me/qbe.git#commit=cd778b44ba11925d65ee10ff29fe22d4a45809dd
 	b2sums = SKIP
 
 pkgname = qbe

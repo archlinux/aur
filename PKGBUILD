@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=qbe
-pkgver=r1258.ee6c272
+pkgver=r1265.cd778b4
 pkgrel=1
-pkgdesc="Small embeddable C compiler backend"
+pkgdesc='Small embeddable C compiler backend'
 arch=('x86_64')
-url="https://c9x.me/compile/"
+url='https://c9x.me/compile/'
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-_commit='ee6c272416c2f9c76318f3a396c83aa69689c773'
+_commit='cd778b44ba11925d65ee10ff29fe22d4a45809dd'
 source=("git://c9x.me/qbe.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd qbe
+
   make
 }
 
