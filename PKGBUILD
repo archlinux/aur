@@ -13,6 +13,6 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-  install -Dm 755 revanced-patches-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}.jar"
+  install -Dm 644 revanced-patches-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}.jar"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
