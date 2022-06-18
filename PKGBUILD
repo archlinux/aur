@@ -1,8 +1,8 @@
-# Maintainer: mzz2017 <m@mzz.pub>
+# Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -15,7 +15,7 @@ provides=('v2raya')
 conflicts=('v2raya')
 
 sha_service=7b201c058782a7382c3ec183e80af528c5310a6d
-sha_service_lite=de6a4d5a4e1a418d2a3b27af9c513f69e5abc3b6
+sha_service_lite=2f3305f5ebd91dbe0ff3d70370f22a0131077794
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
 
@@ -27,19 +27,19 @@ source=(
 )
 
 source_i686=(
-    "v2raya_${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_x86_${pkgver}"
+    "v2raya_${pkgver}::https://apt.v2raya.org/pool/main/v/v2raya/v2raya_linux_x86_${pkgver}"
 )
 source_x86_64=(
-    "v2raya_${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_x64_${pkgver}"
+    "v2raya_${pkgver}::https://apt.v2raya.org/pool/main/v/v2raya/v2raya_linux_x64_${pkgver}"
 )
 source_aarch64=(
-    "v2raya_${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_${pkgver}"
+    "v2raya_${pkgver}::https://apt.v2raya.org/pool/main/v/v2raya/v2raya_linux_arm64_${pkgver}"
 )
 source_armv6h=(
-    "v2raya_${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_${pkgver}"
+    "v2raya_${pkgver}::https://apt.v2raya.org/pool/main/v/v2raya/v2raya_linux_arm_${pkgver}"
 )
 source_armv7h=(
-    "v2raya_${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_${pkgver}"
+    "v2raya_${pkgver}::https://apt.v2raya.org/pool/main/v/v2raya/v2raya_linux_arm_${pkgver}"
 )
 
 sha1sums=(
@@ -50,19 +50,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '473e98e5637732115b14ce8d1097c84b17ec579e'
+    '412871e29e70a43ab706b28fb1092e88fd7ec571'
 )
 sha1sums_x86_64=(
-    '3cb010480c1383b9443b025211174cf1ff98e105'
+    '01b132c13827207844f5249e2eed349ef26f9256'
 )
 sha1sums_aarch64=(
-    '49c1b7bb12009c61cc32ebd833c76c386842a386'
+    '8dab2aabb2080e0c51417ce0ebd69b8e8275b56b'
 )
 sha1sums_armv6h=(
-    '14073932c7b756c1d9518502c282d5a807b48873'
+    '6ef76a4c44096cc25bf15020bcab4259234808a6'
 )
 sha1sums_armv7h=(
-    '14073932c7b756c1d9518502c282d5a807b48873'
+    '6ef76a4c44096cc25bf15020bcab4259234808a6'
 )
 
 package() {
