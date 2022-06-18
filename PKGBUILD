@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms-git
-pkgver=20220523.r0.gc683fd4
+pkgver=20220523.r2.g25b1e6a
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
@@ -22,5 +22,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     install -d "$pkgdir/usr/share/86Box/roms"
     cp -R [a-z]* "$pkgdir/usr/share/86Box/roms"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
