@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=reportROC
-_pkgver=3.5
+_pkgver=3.6
 pkgname=r-${_pkgname,,}
-pkgver=3.5
-pkgrel=4
+pkgver=3.6
+pkgrel=1
 pkgdesc='An Easy Way to Report ROC Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,9 +12,10 @@ license=('GPL')
 depends=(
   r
   r-proc
+  r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('16d9d1032cfc4de25b23f686ec3e1379a38760bd81ac516fd013ae427e6f7bb8')
+sha256sums=('c28d06316fb03bc2097b8a39ab836c7eeb63d6924b5926b2f324d0d366f4cfc1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
