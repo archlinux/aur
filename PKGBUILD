@@ -1,32 +1,38 @@
+# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+
+pkgname=gnome-calculator-git
 _pkgname=gnome-calculator
-pkgname=${_pkgname}-git
-pkgver=41.0.r74.g375e3220
+pkgver=42.0+r38+gba8e98d6
 pkgrel=1
-pkgdesc="GNOME Scientific calculator"
+pkgdesc="GNOME Scientific calculator - git"
 url="https://wiki.gnome.org/Apps/Calculator"
-arch=(aarch64 armv7h i686 x86_64)
+arch=(x86_64 i686 aarch64 armv7h)
 license=(GPL)
-depends=(gtk4 gtksourceview5 libadwaita libgee libmpc) 
-makedepends=(appstream-glib git meson vala yelp-tools)
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
-b2sums=('SKIP')
+depends=(libadwaita dconf gtksourceview5 mpfr libsoup libmpc libgee libhandy)
+makedepends=(yelp-tools vala git meson gobject-introspection)
+groups=(gnome)
+provides=(gnome-calculator)
+conflicts=(gnome-calculator)
+# options=(debug)
+source=("git+https://gitlab.gnome.org/GNOME/gnome-calculator.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
-  arch-meson ${_pkgname} build
-  ninja -C build
+  arch-meson $_pkgname build
+  meson compile -C build
 }
 
 check() {
-  ninja -C build test
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
