@@ -7,6 +7,7 @@ pkgbase = lib32-sndio
 	license = ISC
 	depends = lib32-alsa-lib
 	depends = lib32-libbsd
+	depends = sndio
 	backup = etc/default/sndiod
 	source = http://www.sndio.org/sndio-1.8.1.tar.gz
 	sha256sums = f81d37189e072cb4804ac98a059d74f963f69e9945eaff3d0d6a2f98d71a6321

@@ -14,6 +14,7 @@ license=('ISC')
 # ISC-licensed files by different authors to extract the licenses from
 # if done that way. Licenses are complicated.
 depends=(lib32-alsa-lib lib32-libbsd)
+depends+=('sndio')
 
 source=("http://www.sndio.org/sndio-$pkgver.tar.gz")
 sha256sums=('f81d37189e072cb4804ac98a059d74f963f69e9945eaff3d0d6a2f98d71a6321')
