@@ -11,7 +11,7 @@ pkgbase = libkeyfinder-git
 	depends = fftw
 	provides = libkeyfinder
 	conflicts = libkeyfinder
-	source = libkeyfinder-git::git+https://github.com/mixxxdj/libkeyfinder
+	source = libkeyfinder-git::git+https://github.com/mixxxdj/libkeyfinder.git
 	sha256sums = SKIP
 
 pkgname = libkeyfinder-git

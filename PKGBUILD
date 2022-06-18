@@ -11,7 +11,7 @@ pkgrel=1
 provides=(libkeyfinder)
 conflicts=(libkeyfinder)
 
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 depends=('fftw')
 makedepends=('git' 'cmake')
