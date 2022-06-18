@@ -4,7 +4,7 @@
 
 pkgname=lib32-sndio
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A small audio and MIDI framework part of the OpenBSD project (32 bit)'
 arch=('x86_64')
 url='http://www.sndio.org'
@@ -14,6 +14,10 @@ license=('ISC')
 # ISC-licensed files by different authors to extract the licenses from
 # if done that way. Licenses are complicated.
 depends=(lib32-alsa-lib lib32-libbsd)
+# as noted by @MarsSeed: Reason: sndio is not actually needed during
+# the build, but it is needed if it is installed. (Because only the
+# x86_64 packages carry the include headers needed if someone wants
+# to run a lib32 build using lib32-sndio.)
 depends+=('sndio')
 
 source=("http://www.sndio.org/sndio-$pkgver.tar.gz")
