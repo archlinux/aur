@@ -22,9 +22,13 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-_commit="85e42d076ab14c2b2f947ea847565a3f787ab336"
-source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=85e42d076ab14c2b2f947ea847565a3f787ab336")
+source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 check() {
   cd "${_pkgname}"
