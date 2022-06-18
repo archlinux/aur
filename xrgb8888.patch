@@ -1,0 +1,25 @@
+diff --unified --recursive --text --color wlroots-git.orig/types/output/render.c wlroots-git.new/types/output/render.c
+--- wlroots-git.orig/types/output/render.c	2022-06-18 17:18:42.259951901 -0500
++++ wlroots-git.new/types/output/render.c	2022-06-18 17:19:33.441946419 -0500
+@@ -311,20 +311,5 @@
+ }
+ 
+ uint32_t wlr_output_preferred_read_format(struct wlr_output *output) {
+-	struct wlr_renderer *renderer = output->renderer;
+-	assert(renderer != NULL);
+-
+-	if (!renderer->impl->preferred_read_format || !renderer->impl->read_pixels) {
+-		return DRM_FORMAT_INVALID;
+-	}
+-
+-	if (!output_attach_back_buffer(output, &output->pending, NULL)) {
+-		return false;
+-	}
+-
+-	uint32_t fmt = renderer->impl->preferred_read_format(renderer);
+-
+-	output_clear_back_buffer(output);
+-
+-	return fmt;
++	return DRM_FORMAT_XRGB8888;
+ }
