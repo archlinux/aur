@@ -1,2 +1,5 @@
 *.html
 *.deb
+*.log
+*.tar.gz
+*.tar.zst
