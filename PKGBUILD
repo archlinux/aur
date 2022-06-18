@@ -2,7 +2,7 @@
 _pkgname=qiskit-ibmq-provider
 pkgname=python-${_pkgname}
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Module for accessing the quantum devices and simulators at IBMQ"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-ibmq-provider"

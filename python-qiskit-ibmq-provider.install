@@ -1,13 +1,13 @@
 post_install() {
-    echo ""
-    echo "To use this package you need an API token from your
-    echo "IBM Quantum account page."
-    echo ""
-    echo "https://quantum-computing.ibm.com/account"
-    echo ""
-    echo "Once you have it, run the following:"
-    echo ""
-    echo "from qiskit import IBMQ"
-    echo "IBMQ.save_account('MY_API_TOKEN')"
-    echo ""
+    echo """
+    To use this package you need an API token from your
+    IBM Quantum account page.
+
+    https://quantum-computing.ibm.com/account
+
+    Once you have it, run the following:
+
+    from qiskit import IBMQ
+    IBMQ.save_account('MY_API_TOKEN')
+    """
 }

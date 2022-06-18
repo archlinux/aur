@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-ibmq-provider
 	pkgdesc = Module for accessing the quantum devices and simulators at IBMQ
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-ibmq-provider
 	install = python-qiskit-ibmq-provider.install
 	arch = x86_64
