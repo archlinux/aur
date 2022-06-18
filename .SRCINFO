@@ -1,6 +1,6 @@
 pkgbase = ttf-font-awesome-pro
 	pkgdesc = The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://fontawesome.com
 	arch = any
