@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCGAbiolinks
-_pkgver=2.24.2
+_pkgver=2.24.3
 pkgname=r-${_pkgname,,}
-pkgver=2.24.2
+pkgver=2.24.3
 pkgrel=1
 pkgdesc='TCGAbiolinks: An R/Bioconductor package for integrative analysis with GDC data'
 arch=('any')
@@ -72,7 +72,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8dcbd2a54cd7d1743cd4d8f643723f4d7ebd497630bd5693f294751746be36e6')
+sha256sums=('bace5a2745f55ada135d36518bf4bcddfd9058e075ca5d560e1738f5a1db3a6e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
