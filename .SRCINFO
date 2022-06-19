@@ -1,7 +1,7 @@
 pkgbase = wordle-tui-git
 	pkgdesc = TUI Wordle
 	pkgver = 0.4.0.r37.g8108327
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conradludgate/wordle
 	arch = x86_64
 	license = N.A.

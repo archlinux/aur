@@ -2,7 +2,7 @@
 
 pkgname=wordle-tui-git
 pkgver=0.4.0.r37.g8108327
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI Wordle'
 arch=('x86_64')
 url='https://github.com/conradludgate/wordle'
