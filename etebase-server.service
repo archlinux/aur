@@ -6,6 +6,8 @@ User=etebase
 Group=etebase
 ExecStart=/usr/bin/uvicorn etebase_server.asgi:application --uds /run/etebase-server/etebase-server.sock
 
+ReadWritePaths=/var/lib/etebase-server
+
 RemoveIPC=true
 CapabilityBoundingSet=
 NoNewPrivileges=true

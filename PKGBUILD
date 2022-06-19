@@ -5,7 +5,7 @@
 _pkgname=server
 pkgname=etebase-server
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
@@ -42,7 +42,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 sha256sums=('217b6072d87368f605f46212b495851eb81c213447a5d8b4bf3119e14e3e298e'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
-            'b577710887782c11da4392a850a5407d71a51e3070c28acb51497e393b4de913'
+            '8ecd76be056ea582b01f6230de9a74b9c4ce4a637f2b0a27edc5b6f7848b5fba'
             '120fd364e4dc64f5ed93f3a147a45da4ae55d4b7d5f2bd525c3f838171c8d640'
             'd4b4dc44deab70c0d4c9e485763721fedff3eb938c201d96e6dacc75592b24c2'
             '3f040318ab3fac72c8033b0b567f635e7da5afb9e6e8f8b391d4978226136983')
