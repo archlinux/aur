@@ -7,7 +7,7 @@ pkgdesc='Builds an Archlinux desktop'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/tallero/archiso-profiles"
-depends=('archiso-profiles')
+depends=('polkit' 'archiso-profiles')
 makedepends=('git')
 checkdepends=('shellcheck')
 source=("git+https://gitlab.archlinux.org/tallero/archiso-profiles")
@@ -19,7 +19,8 @@ pkgver() {
 }
 
 package() {
-  cd "archiso-profiles/${_profile}"
+  local _profile="archiso-profiles/${_profile}"
+  cd "${_profile}" || exit
   bash build_repo.sh
-  # Qemu is to be run
+  pkexec mkarchiso -v "${_profile}"
 }
