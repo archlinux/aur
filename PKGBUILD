@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Pieter Lenaerts <pieter dot aj dot lenaerts at gmail>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>

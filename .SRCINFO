@@ -48,4 +48,3 @@ pkgname = linux-x205ta-headers
 
 pkgname = linux-x205ta-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-x205ta kernel with harryharryharry's patches for the ASUS x205ta.
-
