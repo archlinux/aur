@@ -1,12 +1,13 @@
 pkgbase = python2-requests
 	pkgdesc = HTTP for Humans (legacy Python 2 version)
 	pkgver = 2.27.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/requests/2.27.1/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	depends = python2
+	depends = python2-certifi
 	depends = python2-chardet
 	depends = python2-idna
 	depends = python2-urllib3
