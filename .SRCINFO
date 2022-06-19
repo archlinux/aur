@@ -1,9 +1,10 @@
 pkgbase = perl-file-libmagic
 	pkgdesc = Determine MIME types of data or files using libmagic
 	pkgver = 1.23
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/File-LibMagic
-	arch = any
+	arch = x86_64
+	arch = armv7h
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-config-autoconf
