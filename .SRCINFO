@@ -1,7 +1,7 @@
 pkgbase = wonderwall
 	pkgdesc = WonderWall is a Powerful Desktop Wallpaper manager for Linux and Windows Desktop
 	pkgver = 7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://snapcraft.io/wonderwall
 	arch = x86_64
 	license = PROPRIETARY
@@ -14,7 +14,7 @@ pkgbase = wonderwall
 	source = snap-dlagent.sh
 	source = wonderwall.desktop
 	source = wonderwall.sh
-	sha256sums = a6c0061deecb245d8009b48720ee737645515ac8ba52495993494c5c217f4306
+	sha256sums = SKIP
 	sha256sums = ca267d51f998533fad921b8f69e81a79f2383862dcb007cac6d3358db00d1a91
 	sha256sums = fb53d00bf9d57f00c644c81bae0f97fd921a6d387720461cff144918356965ab
 	sha256sums = 073d9958368a1abe4385a8c63ce2f346e823a6772f4c8064b96561a7c1d8e04f
