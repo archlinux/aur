@@ -1,6 +1,6 @@
 pkgbase = lprint-git
 	pkgdesc = A Label Printer Application
-	pkgver = 240_1.1.0_r0_gdccfbc4
+	pkgver = 253_1.1.0_r13_ged195b5
 	pkgrel = 1
 	url = https://github.com/michaelrsweet/lprint
 	arch = i686
