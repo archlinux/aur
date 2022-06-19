@@ -8,12 +8,12 @@ pkgver=${_ver//-/}
 pkgrel=1
 pkgdesc="run command on rectangular screen regions, e.g. screenshot, screencast"
 arch=(any)
-url="https://github.com/dreethyweirdo/FFcast"
+url="https://github.com/ropery/FFcast"
 license=(GPL3)
 depends=('bash>=4.3' xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
 optdepends=('ffmpeg: for png rec' 'imagemagick: for trim')
 makedepends=(autoconf automake perl)
-source=("https://github.com/dreethyweirdo/$_name/archive/$_ver.tar.gz")
+source=("https://github.com/ropery/$_name/archive/$_ver.tar.gz")
 sha256sums=('09ebf44f76a1813eb8db78df0256f7a1cd259562cf87908b6d683f7fd1ec6b30')
 
 prepare() {
