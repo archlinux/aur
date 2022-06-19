@@ -47,7 +47,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.34.0_40_gb66120a75d
+pkgver=0.34.0_345_g44ecf83a1b
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -96,7 +96,7 @@ for feature in "${_opt_features[@]}"; do
       _opt_extra_flags+=('-Djavascript=enabled')
       ;;
     x11)
-      depends+=('libxinerama' 'libxrandr' 'libxss')
+      depends+=('libxinerama' 'libxpresent' 'libxss')
       _opt_extra_flags+=('-Dx11=enabled')
       ;;
     wayland)
