@@ -1,6 +1,6 @@
 pkgbase = med-memory-editor
 	pkgdesc = Linux alternative game memory editor
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://github.com/allencch/med
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = med-memory-editor
 	depends = jsoncpp
 	depends = qt5-base
 	depends = polkit
-	source = https://github.com/allencch/med/archive/3.7.1.tar.gz
+	source = https://github.com/allencch/med/archive/3.7.2.tar.gz
 	source = org.archlinux.pkexec.med.policy
 	source = med.desktop
-	sha256sums = 224c9e42e3aab005aac4a133a32e3eebe939551748b27ecd2434a60a1f5af7c5
+	sha256sums = 94ce10703bccf57dc165a853e345e39d5aa7d38af8c1680c9043c3d5eab502cf
 	sha256sums = f09800e12134df7e65c7336cf9851be4013cb8795778941dbf97d5868894e76e
 	sha256sums = dbaa52dd26fff0c1665773de587e62ef755391e1183cc001b6fe1a2658939448
 
