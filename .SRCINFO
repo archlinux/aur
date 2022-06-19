@@ -1,0 +1,11 @@
+pkgbase = dcalc
+	pkgdesc = RPN Calculator in curses, predecessor to gdcalc
+	pkgver = 2.12
+	pkgrel = 1
+	url = http://bhepple.freeshell.org/dcalc/unix/dcalcCurses.html
+	arch = any
+	license = GPL2
+	source = http://bhepple.freeshell.org/dcalc/unix/dcalc-2.12.tgz
+	md5sums = 8ee281095f4491ced050ec0394943b9e
+
+pkgname = dcalc
