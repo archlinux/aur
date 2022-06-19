@@ -2,7 +2,7 @@
 
 pkgname=python-msldap
 _pkgname=msldap
-pkgver=0.3.30
+pkgver=0.3.38
 pkgrel=1
 pkgdesc="Python library to play with MS LDAP"
 url="https://pypi.org/project/msldap/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-asn1crypto' 'python-winsspi' 'python-minikerberos' 'python-asysocks' 'python-tqdm' 'python-winacl' 'python-prompt_toolkit')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7d7f96d41ab8174ffa0f2c56780eb3be8b3015009d0e94a4dbd83b9ead5c6181')
+sha256sums=('cc9129f3f8cf4c06f7469cf25f249db55976b922e94a2ac690987b181ff74307')
 
 package() {
   cd ${_pkgname}-${pkgver}
