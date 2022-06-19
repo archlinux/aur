@@ -1,0 +1,19 @@
+pkgbase = clawsker
+	pkgdesc = An applet to edit Claws Mail's hidden preferences.
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://www.claws-mail.org/clawsker.php
+	arch = any
+	license = GPL3
+	makedepends = gettext
+	depends = perl-gtk3
+	depends = perl-locale-gettext
+	depends = perl-file-which
+	depends = claws-mail
+	source = https://www.claws-mail.org/tools/clawsker-1.3.5.tar.xz
+	source = https://www.claws-mail.org/tools/clawsker-1.3.5.tar.xz.asc
+	validpgpkeys = 43BC364B16DF0C205EBD75921F0F0A88DE5BCCA6
+	md5sums = 39254b5a380711c7dea4a573fff0d4e2
+	md5sums = SKIP
+
+pkgname = clawsker
