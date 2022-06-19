@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=g4music
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Play your music"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plug
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
-b2sums=('5f77c4647e1ce59b0461f07b9a6d110e94a2ad5f3ce1a370f6ec77a5ac9b86d260551844bddd0ec592d17ad06361790e5b2cc7034616cc4a585447dfca9f6044')
+b2sums=('4deef7a752d4541c872510b32246612bad3164277952bd5c002decbe98b65cdc6c817af485d71c79531b2dd44a5d3d1320df24fd2225e835743a316293c1665d')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
