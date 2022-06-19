@@ -1,7 +1,7 @@
 # Maintainer: zlfn <dev@zlfn.space>
 
 pkgname=krita-plus-bin
-pkgver=v5.1.0.prealpha.r2177.ge60f6c9415
+pkgver=v5.1.0.prealpha.r2179.gc725d3bd1c
 pkgrel=1
 pkgdesc='The pre-built package of Krita Plus. If you do not trust me, intall krita-plus-git instead.'
 arch=(x86_64)
@@ -17,6 +17,6 @@ optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
             'krita-plugin-gmic: GMic plugin')
 provides=(krita)
 conflicts=(krita)
-source=(https://github.com/zlfn/krita-aur/releases/download/v5.1.0.prealpha.r2177.ge60f6c9415/krita-plus-bin-v5.1.0.prealpha.r2177.ge60f6c9415-1-x86_64.pkg.tar.zst)
-noextract=(krita-plus-bin-v5.1.0.prealpha.r2177.ge60f6c9415-1-x86_64.pkg.tar.zst)
+source=(https://github.com/zlfn/krita-aur/releases/download/v5.1.0.prealpha.r2179.gc725d3bd1c/krita-plus-bin-v5.1.0.prealpha.r2179.gc725d3bd1c-1-x86_64.pkg.tar.zst)
+noextract=(krita-plus-bin-v5.1.0.prealpha.r2179.gc725d3bd1c-1-x86_64.pkg.tar.zst)
 sha512sums=('SKIP')
