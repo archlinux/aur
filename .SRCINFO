@@ -7,13 +7,11 @@ pkgbase = muviz
 	license = MIT
 	license = GPL3
 	makedepends = cxx
-	makedepends = git
 	depends = ffts
 	depends = glfw
 	depends = libpulse
 	depends = rapidjson
-	source = git+https://github.com/xyproto/muviz#commit=f128ff2f2fcc871928c5fed153187617a38f0afa
-	b2sums = SKIP
+	source = https://github.com/xyproto/muviz/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = f7e142da90fc773735bf7a16885d4e1a68225d8a80ffedd03ab389e774467360
 
 pkgname = muviz
-
