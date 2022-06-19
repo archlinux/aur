@@ -6,12 +6,13 @@ pkgbase = nautilus-share-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = intltool
 	depends = nautilus
 	depends = samba
 	conflicts = nautilus-share
 	source = git+https://git.gnome.org/browse/nautilus-share.git
 	source = shares.patch
 	sha256sums = SKIP
-	sha256sums = 4b578961ac0378af0abb5eeccfe60815b5fcbcfa1dfeb6193fe5d4f166384e36
+	sha256sums = eae42871a7a1d0a493dadb72f498db9fa530f347e5b801b5d85188be6f3f6794
 
 pkgname = nautilus-share-git

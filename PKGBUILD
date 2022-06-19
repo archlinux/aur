@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://git.gnome.org/browse/nautilus-share'
 license=('GPL')
 depends=('nautilus' 'samba')
-makedepends=('git')
+makedepends=('git' 'intltool')
 conflicts=('nautilus-share')
 source=(
     "git+${url}.git"
