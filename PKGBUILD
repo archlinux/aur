@@ -7,9 +7,9 @@
 # Contributor: mrfaber <lenelsner@uos.de>
 
 pkgname="isso-git"
-pkgver=0.12.6.r398.g10e5a90
+pkgver=0.13.0.r15.gc558eef
 pkgrel=1
-pkgdesc="Lightweight commenting server written in Python and JavaScript"
+pkgdesc="Lightweight commenting server written in Python and JavaScript that aims to be a drop-in replacement for Disqus"
 url="http://posativ.org/isso/"
 license=("MIT")
 arch=("any")
@@ -17,11 +17,11 @@ provides=("isso")
 conflicts=("isso")
 depends=("python-bleach"
          "python-cffi"
-         "python-flask-caching"
          "python-html5lib"
          "python-itsdangerous"
          "python-jinja"
          "python-misaka"
+         "python-sphinx"
          "python-werkzeug"
          "sqlite")
 makedepends=("python-setuptools" "git")
