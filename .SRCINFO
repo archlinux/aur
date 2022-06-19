@@ -1,12 +1,11 @@
 pkgbase = kms-cmake-utils
 	pkgdesc = Helpers for cmake build of Kurento media server
-	pkgver = 6.13.0
+	pkgver = 6.17.0
 	pkgrel = 1
 	url = https://github.com/Kurento/kms-cmake-utils
 	arch = any
 	license = apache
-	source = git://github.com/Kurento/kms-cmake-utils.git#tag=6.13.0
+	source = git+https://github.com/Kurento/kms-cmake-utils.git#tag=6.17.0
 	sha256sums = SKIP
 
 pkgname = kms-cmake-utils
-
