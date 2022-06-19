@@ -1,6 +1,6 @@
 pkgbase = archiso-encryption-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
-	pkgver = v58+204+g024033f
+	pkgver = v58+214+gee08b3c
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/156
 	arch = any

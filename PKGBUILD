@@ -2,9 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
+
 _pkgname=archiso
 pkgname=$_pkgname-encryption-git
-pkgver=v58+204+g024033f
+pkgver=v58+214+gee08b3c
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
