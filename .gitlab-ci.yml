@@ -1,80 +1,37 @@
 include:
-  - project: 'common/gitlab-helper'
+  - project: "common/gitlab-helper"
     ref: master
-    file: 'container-helper.yml'
-  - project: 'common/gitlab-helper'
-    ref: master
-    file: 'deploy-helper.yml'
+    file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
 
 variables:
-  BUILD_AND_TEST_IMAGE: build_and_test
-
-workflow:
-  rules:
-    # don't create pipeline if the commit message starts with WIP
-    - if: $CI_COMMIT_MESSAGE =~ /^WIP/
-      when: never
-    # don't create pipeline if we're merging from master or version branches
-    - if: $CI_MERGE_REQUEST_IID && $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-      when: never
-    - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-    - if: $CI_COMMIT_TAG
-    - if: $CI_PIPELINE_SOURCE =~ /^(trigger|pipeline|web|api|merge_request_event)$/
-
-.rules_templates:
-  rules:
-    - if: &on_master $CI_COMMIT_REF_NAME =~ /^master$/
+  PKG_NAME: "gnudatalanguage"
 
 stages:
-  - prepareBuild
+  - containerize
   - build
   - test
   - deploy
 
-docker-build-and-test:
-  stage: prepareBuild
-  extends: .container-build-and-push
-  variables:
-    WORKING_DIR: ${CI_PROJECT_DIR}
-    DOCKERFILE_NAME: "Dockerfile.build_and_test"
-    IMAGE_NAME: ${CI_REGISTRY_IMAGE}/${BUILD_AND_TEST_IMAGE}:${CI_COMMIT_REF_NAME}
-    BUILD_ARGS: REGISTRY=${CI_REGISTRY}
+container-build-and-test:
+  extends: .arch-containerize
   needs: []
 
 build-gnudatalanguage:
-  stage: build
-  image: ${CI_REGISTRY_IMAGE}/${BUILD_AND_TEST_IMAGE}:${CI_COMMIT_REF_NAME}
-  needs:
-    - job: "docker-build-and-test"
-      artifacts: no
   artifacts:
-    name: "${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
-    expire_in: 1 day
     paths:
-      - gnudatalanguage*.pkg.tar.zst
-  script:
-    - makepkg -s --noconfirm
-
+      - $PKG_NAME*.pkg.tar.zst
+      - src/gdl-*/build/Testing/Temporary/LastTest.log
+    when: always
+  extends: .arch-build
+  needs:
+    - job: "container-build-and-test"
+      artifacts: no
+  
 test-gnudatalanguage:
-  stage: test
-  image: ${CI_REGISTRY_IMAGE}/${BUILD_AND_TEST_IMAGE}:${CI_COMMIT_REF_NAME}
+  extends: .arch-test
   needs: ["build-gnudatalanguage"]
-  script:
-    # Try to install package
-    - sudo pacman -U --noconfirm gnudatalanguage*.pkg.tar.zst
-    # Recommended checks
-    - namcap -m PKGBUILD
-    - namcap -m gnudatalanguage*.pkg.tar.zst
 
 deploy-gnudatalanguage:
-  stage: deploy
-  extends: .git-ssh-push-remote
-  variables:
-    REMOTE_HOST: "aur.archlinux.org"
-    REMOTE_USER: "aur"
-    REMOTE_REPOSITORY: "gnudatalanguage.git"
-  before_script:
-    - echo "Uploading to AUR..."
-  rules:
-    - if: *on_master
+  extends: .arch-deploy

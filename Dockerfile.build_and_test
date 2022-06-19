@@ -3,7 +3,7 @@ ARG REGISTRY
 FROM "$REGISTRY/common/gitlab-helper/archlinux-yay:master"
 
 RUN (\
-    yay -Syuq --noconfirm --needed python-numpy eigen plplot gsl hdf4 wxgtk2 fftw pslib eccodes udunits graphicsmagick libgeotiff glpk shapelib \
+    yay -Syuq --noconfirm --needed python-numpy eigen plplot gsl hdf4 wxgtk2 fftw pslib eccodes udunits graphicsmagick libgeotiff glpk shapelib openssh \
     && yes | yay -Scc --noconfirm \
     && rm -rf ~/.cache/yay \
     && sudo rm -rf /var/cache/pacman/pkg/* \
