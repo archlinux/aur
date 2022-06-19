@@ -4,7 +4,7 @@
  
  setuptools.setup(
      name="Apycula",
-+    version="0.3.1",
++    version="0.4",
      author="Pepijn de Vos",
      author_email="pepijndevos@gmail.com",
      description="Open Source tools for Gowin FPGAs",
