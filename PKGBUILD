@@ -4,7 +4,7 @@
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 _pkgname=archiso
 pkgname=$_pkgname-encryption
-pkgver=64
+pkgver=65
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
 arch=('any')
@@ -22,8 +22,8 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-_commit="85e42d076ab14c2b2f947ea847565a3f787ab336"
-source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=85e42d076ab14c2b2f947ea847565a3f787ab336")
+_commit="ee08b3c97344ef7a3ea293456a64cd97b9b85262"
+source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#commit=${_commit}")
 sha256sums=('SKIP')
 
 check() {
