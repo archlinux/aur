@@ -31,7 +31,7 @@
 
 ## arg 1:  the old package version
 post_remove() {
-  local INSTALL_DIR=/usr/lib/bsp-layout;
+  local INSTALL_DIR=/usr/local/lib/bsp-layout;
   local BINARY=/usr/local/bin/bsp-layout;
   local MAN_PAGE=/usr/local/man/man1/bsp-layout.1;
 
