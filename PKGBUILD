@@ -1,10 +1,7 @@
-# Maintainer: cdude
-# Contributor: sekret
-
 _pkgname=zihap
 pkgname=zihap-git
-pkgver=f17e2f2800123a7c9c655ce37d5f5ddd42445a60
-pkgrel=1
+pkgver=052526dac2ca214baaf7344df85c3a073dab9ce6
+pkgrel=0
 pkgdesc="A meta chat app that base on suckless sofware (surf , tabbled)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/exkc/zihap/"
