@@ -36,15 +36,13 @@ prepare() {
 package() {
   cd "${srcdir}"
 
-  mkdir -p "${pkgdir}/opt/"
-  cp -r squashfs-root "${pkgdir}/opt/${pkgname}"
   install -Dm755 wonderwall.sh \
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 squashfs-root/meta/gui/icon.png \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  #remove /opt
-  rm -rf "${pkgdir}/opt"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/wonderwall" \
+    "${pkgdir}/usr/bin/${pkgname}"
+  rm -rf "${pkgdir}/opt/"
 }
