@@ -2,7 +2,7 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-devel
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=('ffmpegthumbnailer: for video thumbnails'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('aa02a4b240ca50c1a58eaebfa8e29ef496e42ce503e85c2eb80890b921d5cf97')
+sha256sums=('ebcd4c258459721c7a2a3d226cf4afd5e3387b6e1081a056f8425463015e9515')
 
 build() {
   cd "${_pkgname}-${pkgver}"
