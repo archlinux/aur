@@ -9,7 +9,7 @@ pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2 wayland-protocols-git)
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2 wayland-protocols-git)
 makedepends=(git extra-cmake-modules-git qt6-tools kdoctools-git krunner-git xorg-xwayland python)
 optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland'
             'maliit-keyboard: virtual keyboard support for kwin-wayland')
