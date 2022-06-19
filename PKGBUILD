@@ -39,6 +39,9 @@ build() {
         --libdir=/usr/lib/i686-elf/ \
         --with-sysroot=${_sysroot} \
         --disable-nls \
+	--disable-gdb \
+	--disable-gdbserver \
+	--disable-gdbsupport \
         --disable-werror
 
     make -j$(nproc)
