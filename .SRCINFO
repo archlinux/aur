@@ -1,6 +1,6 @@
 pkgbase = fortran-fpm
 	pkgdesc = A Fortran package manager and build system
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/fortran-lang/fpm
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fortran-fpm
 	makedepends = gcc-fortran
 	depends = git
 	conflicts = fpm
-	source = https://github.com/fortran-lang/fpm/releases/download/v0.5.0/fpm-0.5.0.zip
-	source = https://github.com/fortran-lang/fpm/releases/download/v0.5.0/fpm-0.5.0.F90
-	sha256sums = e4a06956d2300f9aa1d06bd3323670480e946549617582e32684ded6921a921e
-	sha256sums = 53bba4d3d09d875d513ed4309a3defe414fa727dbcdeb38e4fdcf094e19c0257
+	source = https://github.com/fortran-lang/fpm/releases/download/v0.6.0/fpm-0.6.0.zip
+	source = https://github.com/fortran-lang/fpm/releases/download/v0.6.0/fpm-0.6.0.F90
+	sha256sums = 365516f66b116a112746af043e8eccb3d854d6feb1fad0507c570433dacbf7be
+	sha256sums = 17a809d512618ddb083b1d8c546a2d98e704b10484f607df7b0b231ddc8ff277
 
 pkgname = fortran-fpm

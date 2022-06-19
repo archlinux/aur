@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=fortran-fpm
 _pkgname=fpm
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 epoch=
 pkgdesc="A Fortran package manager and build system"
@@ -22,8 +22,6 @@ install=
 changelog=
 source=("https://github.com/fortran-lang/fpm/releases/download/v$pkgver/$_pkgname-$pkgver.zip"
         "https://github.com/fortran-lang/fpm/releases/download/v$pkgver/"$_pkgname-$pkgver.F90)
-sha256sums=('e4a06956d2300f9aa1d06bd3323670480e946549617582e32684ded6921a921e'
-            '53bba4d3d09d875d513ed4309a3defe414fa727dbcdeb38e4fdcf094e19c0257')
 noextract=()
 
 prepare() {
@@ -53,3 +51,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('365516f66b116a112746af043e8eccb3d854d6feb1fad0507c570433dacbf7be'
+            '17a809d512618ddb083b1d8c546a2d98e704b10484f607df7b0b231ddc8ff277')
