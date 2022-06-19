@@ -8,7 +8,7 @@ pkgbase = archiso-profiles
 	checkdepends = shellcheck
 	makedepends = git
 	depends = archiso-encryption
-	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles#commit=a53522b593b5675c24fc1e7132bb631f21a90291
 	sha256sums = SKIP
 
 pkgname = archiso-profiles
