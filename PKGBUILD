@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=mupen64plus-video-parallel-git
-pkgver=r17.3a85ca6
+pkgver=r25.813a98a
 pkgrel=1
 pkgdesc="Parallel RDP is a Vulkan-based RDP LLE plugin for mupen64plus"
 arch=("x86_64" "i686")
@@ -13,7 +13,7 @@ optdepends=("mupen64plus-rsp-parallel: preferred LLE RSP to be paired with this 
             "mupen64plus-rsp-cxd4: alternative LLE RSP to be paired with this plugin")
 provides=(mupen64plus-video-parallel)
 conflicts=(mupen64plus-video-parallel)
-source=("git+https://github.com/loganmc10/parallel-rdp-standalone.git"
+source=("git+https://github.com/loganmc10/parallel-rdp-standalone.git#branch=m64p"
         "fix-build.patch")
 sha256sums=("SKIP"
             "98ecfc3377f8985606ea6a3c6d82823b4b122aabccc9dbe7ddf1dbcae7aeb673")
