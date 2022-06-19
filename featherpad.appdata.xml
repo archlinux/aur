@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.FeatherPad</id>
+  <launchable type="desktop-id">featherpad.desktop</launchable>
+  <name>FeatherPad</name>
+  <summary>Lightweight Qt plain text editor</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>FeatherPad is a lightweight Qt5 plain-text editor for Linux. It is independent of any desktop environment and has:</p>
+    <ul>
+      <li>Drag-and-drop support, including tab detachment and attachment</li>
+      <li>X11 virtual desktop awareness (using tabs on current desktop but opening a new window on another)</li>
+      <li>An optionally permanent search-bar with a different search entry for each tab</li>
+      <li>Instant highlighting of found matches when searching</li>
+      <li>A docked window for text replacement</li>
+      <li>Support for showing line numbers and jumping to a specific line</li>
+      <li>Optional selection highlighting</li>
+      <li>Automatic detection of text encoding as far as possible and optional saving with encoding</li>
+      <li>Syntax highlighting for common programming languages</li>
+      <li>Ability to open URLs with appropriate applications</li>
+      <li>Session management</li>
+      <li>Side-pane mode</li>
+      <li>Auto-saving</li>
+      <li>Spell checking with Hunspell</li>
+      <li>Printing</li>
+      <li>Text zooming</li>
+      <li>Appropriate but non-interrupting prompts</li>
+      <li>Other features that can be found in its settings, on its menus or when it is actually used.</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/tsujan/FeatherPad/master/screenshots/Tabs.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/tsujan/FeatherPad/master/screenshots/Side-Pane.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="bugtracker">https://github.com/tsujan/FeatherPad/issues</url>
+  <url type="homepage">https://github.com/tsujan/FeatherPad</url>
+  <developer_name>Pedram Pourang, a.k.a. Tsu Jan</developer_name>
+  <update_contact>tsujan2000@gmail.com</update_contact>
+  <translation type="qt">featherpad</translation>
+</component>

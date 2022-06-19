@@ -1,0 +1,24 @@
+pkgbase = featherpad-qt5
+	pkgdesc = Lightweight Qt5 plain text editor
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/tsujan/FeatherPad
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = hunspell
+	depends = qt5-svg
+	depends = qt5-translations
+	depends = qt5-x11extras
+	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.0/FeatherPad-1.3.0.tar.xz
+	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.0/FeatherPad-1.3.0.tar.xz.asc
+	source = featherpad.appdata.xml
+	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
+	sha256sums = 6fd327b5800bc48d0d88ca5666d173dfeecdc76d0a2654b87df8cd96df412617
+	sha256sums = SKIP
+	sha256sums = d67bc310f4c31257b795beabbce2d0887640088b0fe3040307906da0d9f760d9
+
+pkgname = featherpad-qt5
