@@ -15,8 +15,8 @@ arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd')
-makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi')
-# makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi' 'libc++')
+# makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi')
+makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi' 'libc++' 'lld')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
@@ -140,12 +140,9 @@ prepare() {
 }
 
 build() {
-    #export CC=clang
-    #export CXX=clang++
-
     cd "${srcdir}/skia"
-    #bin/gn gen out/Clang --args='cc="clang" cxx="clang++" extra_ldflags=["-stdlib=libc++"] is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
-    bin/gn gen out/Clang --args='is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
+    bin/gn gen out/Clang --args='cc="clang" cxx="clang++" extra_ldflags=["-stdlib=libc++, -fuse-ld=lld"] extra_cflags=["-stdlib=libc++"] is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'    
+    # bin/gn gen out/Clang --args='is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
     ninja -C out/Clang skia modules
 
     cd "${srcdir}/${_pkgname}/build"
@@ -162,24 +159,12 @@ build() {
     # -DUSE_SHARED_FREETYPE=ON \
     # -DUSE_SHARED_HARFBUZZ=ON \
 
-    # cmake \
-    #     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    #     -DCMAKE_C_COMPILER="clang" \
-    #     -DCMAKE_CXX_COMPILER="clang++" \
-    #     -DCMAKE_CXX_FLAGS:STRING=-stdlib=libc++ \
-    #     -DCMAKE_EXE_LINKER_FLAGS:STRING="-stdlib=libc++ -lc++abi" \
-    #     -DCMAKE_INSTALL_PREFIX=/usr \
-    #     -DLAF_BACKEND=skia \
-    #     -DSKIA_DIR="$srcdir/skia" \
-    #     -DSKIA_LIBRARY_DIR="$srcdir/skia/out/Clang" \
-    #     -DSKIA_LIBRARY="$srcdir/skia/out/Clang/libskia.a" \
-    #     -DLAF_WITH_TESTS=OFF \
-    #     -DLAF_WITH_EXAMPLES=OFF \
-    #     -G Ninja \
-    #     ..
-
     cmake \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_C_COMPILER="clang" \
+        -DCMAKE_CXX_COMPILER="clang++" \
+        -DCMAKE_CXX_FLAGS:STRING=-stdlib=libc++ \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="-stdlib=libc++ -fuse-ld=lld" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLAF_BACKEND=skia \
         -DSKIA_DIR="$srcdir/skia" \
