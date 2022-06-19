@@ -1,0 +1,15 @@
+pkgbase = i686-elf-binutils-git
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the x86_64-elf target
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = libelf
+	options = !emptydirs
+	options = !docs
+	source = git://sourceware.org/git/binutils-gdb.git
+	sha256sums = SKIP
+
+pkgname = i686-elf-binutils-git
