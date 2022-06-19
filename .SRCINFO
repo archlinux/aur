@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.18.3.arch1
+	pkgver = 5.18.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18.3-arch1
+	url = https://github.com/archlinux/linux/commits/v5.18.5-arch1
 	arch = x86_64
 	license = GPL2
-	noextract = linux-5.18.3.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-5.18.3.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-5.18.3.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-5.18.5.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-5.18.5.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-5.18.5.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.18.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.18.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.18.3.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 5456e3dfcce706ef7eeac829718f818822359dd327cee25a86fb63b315382df6
-	sha256sums = 05e94842354753c9ec76156a4c0f840e1a58a8b753fd12f6a6f85a78ee776335
-	sha256sums = b33d4d52804a633a91554d4f27583366f3240dd2a96b6ad3111405fbd76d11e7
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.18.5.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.18.5.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.18.5.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 981180ab6e72f172f1d7fef25832dbd1cf995e6f0c6c437e7ea8404dfac68fff
+	sha256sums = 8b1f6c30b90ae310f09212789228cece39dbdd61d46991d0954efd0b2cb0fd99
+	sha256sums = 06fb442e59b43f58603849d794c088e48bdb42b8bf827e7a53b7b75800528761
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux5.18.3.arch1-1-bin
-	depends = linux5.18.3.arch1-1-bin
+	pkgdesc = Metapackage depending on linux5.18.5.arch1-1-bin
+	depends = linux5.18.5.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux5.18.3.arch1-1-headers-bin
-	depends = linux5.18.3.arch1-1-headers-bin
+	pkgdesc = Metapackage depending on linux5.18.5.arch1-1-headers-bin
+	depends = linux5.18.5.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux5.18.3.arch1-1-docs-bin
-	depends = linux5.18.3.arch1-1-docs-bin
+	pkgdesc = Metapackage depending on linux5.18.5.arch1-1-docs-bin
+	depends = linux5.18.5.arch1-1-docs-bin
 
-pkgname = linux5.18.3.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.18.3-arch1-1
+pkgname = linux5.18.5.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.18.5-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -42,11 +42,11 @@ pkgname = linux5.18.3.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.18.3.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.18.3-arch1-1
+pkgname = linux5.18.5.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.18.5-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux5.18.3.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.18.3-arch1-1
+pkgname = linux5.18.5.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.18.5-arch1-1
 	conflicts = linux-docs
