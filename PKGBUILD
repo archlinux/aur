@@ -1,4 +1,4 @@
-# Maintainer: robertfoster
+# Maintainer: robertfoster; keshavnrj
 
 pkgname=orion-desktop
 pkgver=0.0.10
