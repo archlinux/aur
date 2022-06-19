@@ -1,0 +1,18 @@
+pkgbase = python-readmdict
+	pkgdesc = readmdict (simple repacking of readmdict in mdict-analysis)
+	pkgver = 0.1.1
+	pkgrel = 00
+	url = https://github.com/ffreemt/readmdict
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	noextract = readmdict-0.1.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/e2/ff/6396b5a0aa754a5eafeaae1d50d4e718dfffffa4d285a1a9580f482b3d5f/readmdict-0.1.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 9797a45b1c4efa8f926a4c91cc7c6fcb
+	md5sums = 3ddc9ea27f7286b3d3de7cbf734ffd09
+
+pkgname = python-readmdict
