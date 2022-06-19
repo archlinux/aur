@@ -1,6 +1,6 @@
 pkgbase = anki-official-binary-bundle
 	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
-	pkgver = 2.1.49
+	pkgver = 2.1.53
 	pkgrel = 1
 	url = https://apps.ankiweb.net
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = anki-official-binary-bundle
 	provides = anki
 	conflicts = anki
 	conflicts = anki-git
-	source = https://github.com/ankitects/anki/releases/download/2.1.49/anki-2.1.49-linux.tar.bz2
+	source = https://github.com/ankitects/anki/releases/download/2.1.53/anki-2.1.53-linux-qt6.tar.zst
 	source = install_sh.patch
-	md5sums = d0c13ae7cf988358fb231645f6490088
-	md5sums = 82d6fb7eb10ec0ae592093d89d8d5957
+	sha256sums = c9739271c6f2bfbe248c98fd83d5ce8952301f21ac39f2c0504219294557ddfc
+	sha256sums = b6dc61727ad2c2e10fb49cb58d1cd9900aa15eaba525117299a2143ad2745868
 
 pkgname = anki-official-binary-bundle

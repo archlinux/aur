@@ -1,21 +1,27 @@
---- install.sh.orig 2020-12-10 06:36:44.000000000 +0100
-+++ install.sh  2020-12-30 14:54:50.834734784 +0100
-@@ -15,7 +15,7 @@
+--- install.sh.orig	2022-06-06 18:29:11.117752422 -0500
++++ install.sh	2022-06-06 18:40:38.153466913 -0500
+@@ -13,9 +13,10 @@
+ 
+ rm -rf "$PREFIX"/share/anki "$PREFIX"/bin/anki
  mkdir -p "$PREFIX"/share/anki
- cp -av * "$PREFIX"/share/anki/
+-cp -av --no-preserve=owner,context * "$PREFIX"/share/anki/
++shopt -s extglob
++cp -av --no-preserve=owner,context !(*install.sh) "$PREFIX"/share/anki/
  mkdir -p "$PREFIX"/bin
--ln -sf "$PREFIX"/share/anki/bin/Anki "$PREFIX"/bin/anki
-+ln -sf /usr/share/anki/bin/Anki "$PREFIX"/bin/anki
+-ln -sf "$PREFIX"/share/anki/anki "$PREFIX"/bin/anki
++ln -sf ../share/anki/anki "$PREFIX"/bin/anki
  # fix a previous packaging issue where we created this as a file
  (test -f "$PREFIX"/share/applications && rm "$PREFIX"/share/applications)||true
  mkdir -p "$PREFIX"/share/pixmaps
-@@ -26,9 +26,4 @@
- mv anki.desktop "$PREFIX"/share/applications/;\
- mv anki.1 "$PREFIX"/share/man/man1/)
-
+@@ -26,11 +26,4 @@
+ mv -Z anki.desktop "$PREFIX"/share/applications/;\
+ mv -Z anki.1 "$PREFIX"/share/man/man1/)
+ 
 -xdg-mime install anki.xml --novendor
 -xdg-mime default anki.desktop application/x-colpkg
 -xdg-mime default anki.desktop application/x-apkg
 -xdg-mime default anki.desktop application/x-ankiaddon
+-
+-rm install.sh
 -
  echo "Install complete. Type 'anki' to run."
