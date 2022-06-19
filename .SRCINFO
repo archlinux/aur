@@ -7,7 +7,6 @@ pkgbase = ghidra-extension-ghidra2dwarf
 	license = MIT
 	depends = python
 	depends = ghidra
-	replaces = ghidra2dwarf
 	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/libdwarf.jar
 	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/elf.py
 	backup = opt/ghidra/Ghidra/Extensions/ghidra2dwarf/ghidra2dwarf.py

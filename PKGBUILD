@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/cesena/$EXTENSION_NAME"
 license=('MIT')
 depends=('python' 'ghidra')
-replaces=("$EXTENSION_NAME")
 source=("$EXTENSION_NAME.zip::$url/releases/download/latest/ghidra2dwarf.zip")
 sha512sums=('23e43ce0bbc0ba6667f6647a896b75c951f9031fd050a0512f6b0c498f4ade7295d41377a7559b63d5a9d47a30d4e123b794717b093f42bfb5e6982c3a41895f')
 
