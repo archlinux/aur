@@ -1,11 +1,11 @@
 pkgbase = pdfstudio-bin
 	pkgdesc = Review, annotate, and edit PDF Documents
 	pkgver = 2022.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qoppa.com/pdfstudio/
 	arch = x86_64
 	license = custom
-	depends = java-runtime>=6
+	depends = java-runtime>=17
 	provides = pdfstudio=2022.0.0
 	conflicts = pdfstudio
 	replaces = pdfstudio

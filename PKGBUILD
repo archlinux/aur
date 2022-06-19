@@ -7,12 +7,12 @@ _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2022
 pkgver=$_pkgver.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=(x86_64)
 url='https://www.qoppa.com/pdfstudio/'
 license=(custom)
-depends=('java-runtime>=6')
+depends=('java-runtime>=17')
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
 replaces=("${pkgname%-bin}")
