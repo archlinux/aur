@@ -1,6 +1,6 @@
 pkgbase = r-ps
 	pkgdesc = List, Query, Manipulate System Processes
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ps
 	arch = i686
@@ -10,15 +10,15 @@ pkgbase = r-ps
 	optdepends = r-callr
 	optdepends = r-covr
 	optdepends = r-curl
+	optdepends = r-pillar
 	optdepends = r-pingr
 	optdepends = r-processx
 	optdepends = r-r6
 	optdepends = r-rlang
 	optdepends = r-testthat
-	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/ps_1.7.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/ps_1.7.1.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 8220cf32c6a12c908b6b7669f96b57445d3147a1aa484b9b5209e0f3fd4b52e1
+	sha256sums = 9c458a377d47cc972d3cd0b2a17d0b7ad3cf3b62226410803072089a57a55ef1
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-ps
