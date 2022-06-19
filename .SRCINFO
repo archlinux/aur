@@ -1,19 +1,19 @@
 pkgbase = python2-pyxdg
 	pkgdesc = Official freedesktop.org XDG specifications support library
-	pkgver = 0.27
-	pkgrel = 2
-	url = https://pypi.org/project/pyxdg/0.27/
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://pypi.org/project/pyxdg/0.28/
 	arch = any
 	license = LGPL
-	checkdepends = python2-nose
+	checkdepends = python2-pytest
 	makedepends = python2-setuptools
 	depends = python2
-	provides = pyxdg=0.27
-	provides = python2-xdg=0.27
+	provides = pyxdg=0.28
+	provides = python2-xdg=0.28
 	conflicts = pyxdg
 	conflicts = python2-xdg
 	conflicts = python2-pyxdg-git
-	source = https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-0.27/pyxdg-rel-0.27.tar.bz2
-	sha256sums = dcb774bc2af39118aba56ee9ffbb6c1546bd447456e4555b8c4e1e5f24aa4579
+	source = https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-0.28/pyxdg-rel-0.28.tar.bz2
+	sha256sums = 2de0dc8bd40e5b2ea3fdb2197e5cf9e929a7c7260f4a5fbdbdb5c73fd3db45b5
 
 pkgname = python2-pyxdg
