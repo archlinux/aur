@@ -3,11 +3,12 @@
 
 _pkgname=mkinitcpio-archiso
 pkgname=$_pkgname-encryption
-pkgver=63
+pkgver=65
 pkgrel=1
-pkgdesc="Initcpio scripts used by archiso"
+pkgdesc="Initcpio scripts used by archiso (encrypt hook support)"
 arch=(any)
-url="https://gitlab.archlinux.org/tallero/mkinitcpio-archiso"
+_gitlab="https://gitlab.archlinux.org"
+url="${_gitlab}/mkinitcpio/mkinitcpio-archiso/-/merge_requests/25"
 license=(GPL3)
 depends=(bash device-mapper mkinitcpio cryptsetup)
 conflicts=('mkinitcpio-archiso')
@@ -20,7 +21,8 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${pkgname}::git+https://gitlab.archlinux.org/tallero/${_pkgname}.git#branch=crypto")
+_commit="49e0273313d325c8f7ca3bbf24678ab196fead66"
+source=("${pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 check() {
