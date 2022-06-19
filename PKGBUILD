@@ -10,8 +10,8 @@ depends=('xscreensaver' 'python' 'dbus')
 source=(xscreensaver-dbus-screenlock-{freedesktop,gnome}.py
         org.{freedesktop,gnome}.ScreenSaver.service
         xscreensaver-dbus-screenlock-{freedesktop,gnome}.desktop)
-md5sums=('9b052558e59944a66d4174a723c99011'
-         '77fe4529da9a081f617c8be07b8c8ee7'
+md5sums=('b1416eb05646ad70a89d86ff5bc18584'
+         'ea8a4cc94bebee450f5270b140c3b423'
          '9181f92d592549c5506a9722b47b7e94'
          '8802e2b10232e39fe98b8c6e7228c83a'
          '65a7fb8a4d3e8183009e9caffc3e587a'
