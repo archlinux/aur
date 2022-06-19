@@ -1,6 +1,6 @@
 pkgbase = curl-git
 	pkgdesc = An URL retrieval utility and library
-	pkgver = 7.83.0.r29.g6db4ef124
+	pkgver = 7.83.1.r187.g06fc95830
 	pkgrel = 1
 	url = https://github.com/curl/curl
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = curl-git
 	depends = zstd
 	depends = libzstd.so
 	provides = libcurl.so
-	provides = curl
+	provides = curl=7.83.1
 	conflicts = curl
 	source = curl-git::git+https://github.com/curl/curl?signed
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2

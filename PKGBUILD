@@ -9,7 +9,7 @@
 ## GPG key: https://daniel.haxx.se/mykey.asc
 
 pkgname=curl-git
-pkgver=7.83.0.r29.g6db4ef124
+pkgver=7.83.1.r187.g06fc95830
 pkgrel=1
 pkgdesc="An URL retrieval utility and library"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 	'krb5' 'libidn2' 'libidn2.so' 'libnghttp2' 'libpsl' 'libpsl.so'
 	'libssh2' 'libssh2.so' 'openssl' 'zlib' 'zstd' 'libzstd.so')
 makedepends=('git')
-provides=('libcurl.so' 'curl')
+provides=('libcurl.so' "curl=${pkgver%.r*}")
 conflicts=('curl')
 source=("$pkgname::git+$url?signed")
 sha256sums=('SKIP')
