@@ -1,0 +1,19 @@
+pkgbase = python-ipyvuetify
+	pkgdesc = Jupyter widgets based on vuetify UI components
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/widgetti/ipyvuetify
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = jupyterlab
+	depends = python-jupyter_core
+	depends = python-pandas
+	source = ipyvuetify-1.8.2::https://github.com/widgetti/ipyvuetify/archive/refs/tags/v1.8.2.tar.gz
+	b2sums = e3e6d17ef7983f956435d8e71081c8eacafe4b4eaa5cf954cda7288514e92fd02232a037e8ab009d725be73932aa3d34940438db69562a66163916ca4f2c67bb
+
+pkgname = python-ipyvuetify
