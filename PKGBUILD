@@ -1,25 +1,29 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
+
 pkgname=python-rust2rpm
-pkgver=20
+pkgver=21
 pkgrel=1
-pkgdesc="RPM macro/tools/junk for Rust"
+pkgdesc="Tool for automatically generating RPM spec files for Rust crates"
 arch=('any')
 url="https://pagure.io/fedora-rust/rust2rpm"
 license=('MIT')
 depends=('python' 'python-jinja' 'python-requests' 'python-tqdm')
 makedepends=('python-setuptools')
-optdepends=('python-pynacl: Voice support'
-            'libffi: Voice support')
-source=("https://pagure.io/fedora-rust/rust2rpm/archive/v20/rust2rpm-v${pkgver}.tar.gz")
-sha256sums=('fa8b7d8fab5ed5a84a38c6f9f4a468671536e8a8e4e74affaf8f4ba1988b9327')
+checkdepends=('python-pytest')
+source=("https://pagure.io/fedora-rust/rust2rpm/archive/v${pkgver}/rust2rpm-v${pkgver}.tar.gz")
+sha256sums=('5ecea8fb85ba222dc06e21b65ddbd0a195d79ffa8dfd19224c232c947dcd188c')
 
 build() {
-	cd "$srcdir"/rust2rpm-v${pkgver}
+	cd rust2rpm-v$pkgver
 	python setup.py build
 }
 
+check() {
+	cd rust2rpm-v$pkgver
+	pytest test.py
+}
+
 package() {
-	cd "$srcdir"/rust2rpm-v${pkgver}
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd rust2rpm-v$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

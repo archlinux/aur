@@ -1,18 +1,17 @@
 pkgbase = python-rust2rpm
-	pkgdesc = RPM macro/tools/junk for Rust
-	pkgver = 20
+	pkgdesc = Tool for automatically generating RPM spec files for Rust crates
+	pkgver = 21
 	pkgrel = 1
 	url = https://pagure.io/fedora-rust/rust2rpm
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
 	depends = python-jinja
 	depends = python-requests
 	depends = python-tqdm
-	optdepends = python-pynacl: Voice support
-	optdepends = libffi: Voice support
-	source = https://pagure.io/fedora-rust/rust2rpm/archive/v20/rust2rpm-v20.tar.gz
-	sha256sums = fa8b7d8fab5ed5a84a38c6f9f4a468671536e8a8e4e74affaf8f4ba1988b9327
+	source = https://pagure.io/fedora-rust/rust2rpm/archive/v21/rust2rpm-v21.tar.gz
+	sha256sums = 5ecea8fb85ba222dc06e21b65ddbd0a195d79ffa8dfd19224c232c947dcd188c
 
 pkgname = python-rust2rpm
