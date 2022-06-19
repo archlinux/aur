@@ -9,7 +9,7 @@ pkgdesc='24 voice polyphonic synthesizer, with FX rack (Standalone, VST3, LV2, C
 license=('GPL3')
 arch=('x86_64')
 url='https://www.thewavewarden.com/odin2'
-provides=('odin2')
+provides=('odin2-synthesizer')
 conflicts=('odin2-synthesizer')
 
 depends=('man-pages' 'ttf-font')
