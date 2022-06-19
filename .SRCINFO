@@ -3,7 +3,7 @@ pkgbase = python-galois-git
 	pkgver = r947.501a323
 	pkgrel = 1
 	url = https://github.com/mhostetter/galois
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = git
@@ -17,6 +17,6 @@ pkgbase = python-galois-git
 	provides = python-galois
 	conflicts = python-galois
 	source = git+https://github.com/mhostetter/galois.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-galois-git

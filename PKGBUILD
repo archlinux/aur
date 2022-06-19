@@ -4,7 +4,7 @@ _name=galois
 pkgver=r947.501a323
 pkgrel=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mhostetter/galois"
 license=('MIT')
 depends=(
@@ -23,7 +23,7 @@ checkdepends=('python-pytest')
 provides=('python-galois')
 conflicts=('python-galois')
 source=("git+https://github.com/mhostetter/galois.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -37,10 +37,15 @@ build() {
 
 check() {
     cd "${srcdir}/${_name}"
+    python -m installer --destdir="$srcdir/test" dist/*.whl
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    export PYTHONPATH="$srcdir"/test/usr/lib/python${python_version}/site-packages
+    rm -r galois
     python -m pytest tests/
 }
 
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
