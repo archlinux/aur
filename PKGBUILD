@@ -3,8 +3,8 @@
 # Contributor: David Herrmann <dh.herrmann@googlemail.com>
 pkgname=kmscon-patched-git
 _gitname=kmscon
-pkgver=9.0.0.r0.g3292791
-pkgrel=1
+pkgver=9.0.0.r3.g1bf602f
+pkgrel=2
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
 arch=('x86_64' 'armv7h')
 url='https://github.com/Aetf/kmscon'
@@ -22,23 +22,14 @@ pkgver() {
   git describe --long | sed -r "s/^$_gitname-//;s/^v//;s/([^-]*-g)/r\\1/;s/-/./g"
 }
 
-prepare() {
-  cd $srcdir/$_gitname
-
-  meson builddir/ -Dprefix=/usr -Dlibexecdir=lib
-}
-
 build() {
-  cd $srcdir/$_gitname
-
+  arch-meson "$srcdir/$_gitname" builddir/ -Dtests=false
   meson compile -C builddir/
 }
 
 package() {
+  meson install -C builddir/ --destdir "$pkgdir"
+
   cd $srcdir/$_gitname
-
-  meson install -C builddir/ --destdir "$pkgdir/"
-
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp COPYING "$pkgdir/usr/share/licenses/$pkgname/"
+  install -m 644 -D -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
