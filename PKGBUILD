@@ -4,8 +4,8 @@
 # Contributor: Mikkel Kroman <mk at maero dot dk>
 
 pkgname=ricochet-refresh
-pkgver=3.0.12
-pkgrel=1
+pkgver=3.0.11
+pkgrel=2
 pkgdesc="Anonymous metadata-resistant instant messaging with Tor Onion Services v3 support."
 arch=('i686' 'x86_64')
 url="https://www.ricochetrefresh.net/"
@@ -32,6 +32,6 @@ build() {
 package() {
   cd ${pkgname}
   cmake --build ./build --target install
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" src/LICENSE
   install -Dm644 doc/manpage "${pkgdir}/usr/share/man/man1/ricochet-refresh.1"
 }
