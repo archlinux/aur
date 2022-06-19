@@ -7,7 +7,7 @@ pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/en/"
 license=('GPL2')
-depends=('python' 'python-pillow' 'python-wxpython' 'python-sphinx' 'gst-python')
+depends=('python' 'python-pillow' 'python-wxpython' 'python-sphinx' 'gst-python' 'gst-editing-services')
 optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-good: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
