@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=genmonify
-pkgver=2022.06.16.1
+pkgver=2022.06.19.1
 pkgrel=1
 pkgdesc='precision control for xfce4-panels genmon plugin'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(gawk)
 optdepends=()
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('b332460880d47acbc992def1f20ea100e4b3efbe90e0f3cf88cfeeb83ac23953')
+sha256sums=('b68f0da2a8fbe31340b974fa32089a0258c252950b1d253d562f66499a7841b7')
 
 # sha256sums=('SKIP')
 # url="file:///home/bud/git/lab/$pkgname"
