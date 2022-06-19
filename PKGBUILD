@@ -1,15 +1,15 @@
 pkgname=7-zip-full
-pkgver=21.07
-pkgrel=4
+pkgver=22.00
+pkgrel=1
 pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64)
 makedepends=('uasm')
-provides=('7-zip' 'p7zip')
+provides=("${pkgname%-full}" 'p7zip')
 conflicts=("${provides[@]}")
 
-_archive='7z2107-src.tar.xz'
+_archive="7z${pkgver//./}-src.tar.xz"
 
 source=(
     "${_archive}::${url}/a/${_archive}"
@@ -17,8 +17,8 @@ source=(
 )
 
 sha256sums=(
-    '213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39'
-    '002a663deebc09ada0d7c7372b441c2ed1f017e4866c1602a4409f06c8aab071'
+    '40969f601e86aff49aaa0ba0df5ce6fd397cf7e2683a84b591b0081e461ef675'
+    '07abcf21a0aa67a6c9e78f553805a7a1f4b772b184b51c8e5c12c013cc692e2a'
 )
 
 prepare() {

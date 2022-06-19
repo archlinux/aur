@@ -3,6 +3,9 @@
 @@ -10 +10 @@
 -MY_ASM = asmc
 +MY_ASM = uasm
+@@ -29 +29 @@
+- -fPIC
++ -fPIC -Wno-maybe-uninitialized
 @@ -170 +170 @@
 -LFLAGS_ALL = -s $(MY_ARCH_2) $(LDFLAGS) $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)
 +LFLAGS_ALL = -s $(MY_ARCH_2) $(LDFLAGS) -Wl,-z,noexecstack $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)
