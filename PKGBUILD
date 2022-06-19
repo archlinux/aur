@@ -3,12 +3,11 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=love-0102-bin
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LOVE is a free 2D game engine which enables easy game creation in Lua. v0.10.2."
 arch=('x86_64')
 url="http://love2d.org"
 license=('custom')
-groups=('')
 depends=('luajit' 'physfs' 'freetype2' 'mpg123' 'openal' 'libvorbis' 'libmodplug' 'sdl2')
 conflicts=('love')
 options=('!strip' '!emptydirs')

@@ -1,11 +1,10 @@
 pkgbase = love-0102-bin
 	pkgdesc = LOVE is a free 2D game engine which enables easy game creation in Lua. v0.10.2.
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://love2d.org
 	install = love-0102-bin.install
 	arch = x86_64
-	groups = 
 	license = custom
 	depends = luajit
 	depends = physfs
