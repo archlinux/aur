@@ -1,16 +1,17 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=geda-gaf
 pkgver=1.10.2
 pkgrel=3
 pkgdesc="gEDA/gaf suite - Contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://geda-project.org/"
 license=('GPL')
 depends=('gtk2' 'guile' 'libstroke' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('pkg-config' 'perl-xml-parser' 'flex' 'awk')
+makedepends=('pkg-config' 'perl-xml-parser' 'flex' 'awk' 'python2')
 optdepends=('python2: for several of the commands (garchive, tragesym, xorn)'
             'gawk: for sw2asc'
             'imagemagick: png/pdf output'
@@ -35,7 +36,7 @@ prepare() {
 build () {
   cd "$srcdir/$pkgname-$pkgver/"
   #CFLAGS+=' -Wno-deprecated-declarations'
-  PYTHON=/usr/bin/python ./configure --prefix=/usr --disable-update-xdg-database --without-libfam
+  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --disable-update-xdg-database --without-libfam
   make
 }
 
