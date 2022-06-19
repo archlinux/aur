@@ -1,7 +1,9 @@
 post_install() {
+	systemctl start adsklicensing.service
 	/opt/Autodesk/AdskLicensing/12.1.0.7121/helper/AdskLicensingInstHelper register --prod_key 657O1 --prod_ver 2023.0.0.F --config_file /var/opt/Autodesk/Adlm/Maya2023/MayaConfig.pit --eula_locale US
 }
 
 pre_remove() {
+	systemctl start adsklicensing.service
 	/opt/Autodesk/AdskLicensing/12.1.0.7121/helper/AdskLicensingInstHelper deregister --prod_key 657O1 --prod_ver 2023.0.0.F
 }
