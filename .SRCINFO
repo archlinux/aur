@@ -11,6 +11,7 @@ pkgbase = photofilmstrip
 	depends = python-wxpython
 	depends = python-sphinx
 	depends = gst-python
+	depends = gst-editing-services
 	optdepends = gst-plugins-bad: additional rendering formats
 	optdepends = gst-plugins-good: additional rendering formats
 	optdepends = gst-plugins-ugly: additional rendering formats
