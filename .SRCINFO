@@ -1,0 +1,22 @@
+pkgbase = gotosocial
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/superseriousbusiness/gotosocial
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = sqlite
+	depends = glibc
+	optdepends = gotosocial-admin
+	provides = gotosocial
+	conflicts = gotosocial-bin
+	conflicts = gotosocial-git
+	backup = etc/gotosocial/config.yaml
+	source = gotosocial-0.3.3.tar.gz::https://github.com/superseriousbusiness/gotosocial/archive/refs/tags/v0.3.3.tar.gz
+	source = gotosocial.sysusers
+	source = gotosocial.tmpfiles
+	md5sums = bc8d8f7eff186773032e68524b47669b
+	md5sums = 925c1480260867df815c70d143ec0f61
+	md5sums = 01d73463258c4f85aa50c2ed0577632c
+
+pkgname = gotosocial
