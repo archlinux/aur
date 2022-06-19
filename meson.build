@@ -95,6 +95,7 @@ cpp_files = [
   'CPP/7zip/Archive/7z/7zRegister.cpp',
   'CPP/7zip/Archive/7z/7zSpecStream.cpp',
   'CPP/7zip/Archive/7z/7zUpdate.cpp',
+  'CPP/7zip/Archive/ApfsHandler.cpp',
   'CPP/7zip/Archive/ApmHandler.cpp',
   'CPP/7zip/Archive/ArHandler.cpp',
   'CPP/7zip/Archive/ArjHandler.cpp',
@@ -135,6 +136,7 @@ cpp_files = [
   'CPP/7zip/Archive/Iso/IsoHeader.cpp',
   'CPP/7zip/Archive/Iso/IsoIn.cpp',
   'CPP/7zip/Archive/Iso/IsoRegister.cpp',
+  'CPP/7zip/Archive/LpHandler.cpp',
   'CPP/7zip/Archive/LzhHandler.cpp',
   'CPP/7zip/Archive/LzmaHandler.cpp',
   'CPP/7zip/Archive/MachoHandler.cpp',
@@ -152,6 +154,7 @@ cpp_files = [
   'CPP/7zip/Archive/Rar/Rar5Handler.cpp',
   'CPP/7zip/Archive/Rar/RarHandler.cpp',
   'CPP/7zip/Archive/RpmHandler.cpp',
+  'CPP/7zip/Archive/SparseHandler.cpp',
   'CPP/7zip/Archive/SplitHandler.cpp',
   'CPP/7zip/Archive/SquashfsHandler.cpp',
   'CPP/7zip/Archive/SwfHandler.cpp',
@@ -392,10 +395,6 @@ add_project_arguments(
   ],
 )
 
-extra_args = [
-  '-Wp,-U_FORTIFY_SOURCE',
-]
-
 project_target = executable('7zz',
   [
     uasm_files,
@@ -405,8 +404,6 @@ project_target = executable('7zz',
   dependencies: project_dependencies,
   install: true,
   link_args: '-Wl,-z,noexecstack',
-  c_args: extra_args,
-  cpp_args: extra_args,
 )
 
 install_data(
