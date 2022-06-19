@@ -5,8 +5,8 @@
 
 pkgname='python2-certifi'
 _name="${pkgname#python2-}"
-pkgver=2019.6.16
-pkgrel=3
+pkgver=2020.4.5.1
+pkgrel=1
 pkgdesc="Package providing Mozilla's CA Bundle (for Python 2)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -15,7 +15,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 _tarname="${_name}-${pkgver}"
 source=("https://pypi.io/packages/source/${_name:0:1}/${_name}/${_tarname}.tar.gz")
-sha512sums=('4641626bc5073cd0b3a520855ddef1007dcb42933baa7a3469856f936e725581042bcbd5b67e984ba9748e7faa62b9125cba7dc160dcc5db2eafe46461a29f5e')
+sha256sums=('51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519')
 
 prepare() {
   cd "${_tarname}"
