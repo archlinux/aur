@@ -1,11 +1,11 @@
 pkgbase = lfortran
 	pkgdesc = Modern interactive LLVM-based Fortran compiler
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lfortran.org
 	arch = x86_64
 	license = BSD
-	makedepends = llvm
+	makedepends = llvm11
 	makedepends = cmake
 	depends = zlib
 	depends = ncurses

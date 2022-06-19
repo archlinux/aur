@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://lfortran.org"
