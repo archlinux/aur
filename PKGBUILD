@@ -7,7 +7,7 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -15,9 +15,10 @@ license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
              'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'clamav' 'rsync'
-             'libchardet' 'python-sphinx' 'python-gitpython'
+             'libchardet' 'python-six' 'python-sphinx' 'python-gitpython'
              'perl-pod-pom-view-restructured')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
+        "perl5.36.patch::https://github.com/cyrusimap/cyrus-imapd/pull/4140.patch"
         "sphinx4.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
@@ -26,6 +27,7 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
 sha512sums=('5c4db2a0c26d2323332c1ba67f7b207acfad15f0442f20c6c8a205b5423498465524398315946213c8168bc7eba1fd9f7dc573a91efac6708bfbaf2cb57e9276'
             'SKIP'
+            'fb8b23612d44f3701f46b7bb8b1858dd48c4fdb1d56e8da7f9b8f1af69791dd2c45da7fc471c6dcd937c4578f7789d6289c66b6ccaf86887514a69f4567e8f1b'
             '61ea7c6079ffd32bc99b07911088e772cb0ddb0757b4673f9335b0f00e79934b77af67f6d3bbed68e9446ea4b50c7a07abcca363b2b767331136ccbe34852b6b'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
@@ -35,6 +37,7 @@ sha512sums=('5c4db2a0c26d2323332c1ba67f7b207acfad15f0442f20c6c8a205b542349846552
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
+  patch -Np1 < "${srcdir}/perl5.36.patch"
   patch -Np1 < "${srcdir}/sphinx4.patch"
 }
 
