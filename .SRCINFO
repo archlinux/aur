@@ -1,0 +1,20 @@
+pkgbase = i686-elf-gdb-git
+	pkgdesc = GNU debugger crosscompiled for i686 development (development version)
+	pkgver = dev
+	pkgrel = 1
+	url = https://www.gnu.org/software/gdb
+	arch = x86_64
+	groups = i686-elf-toolchain-git
+	license = GPL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = xz
+	depends = libmpc
+	depends = i686-elf-gcc
+	depends = gdb
+	conflicts = i686-elf-gdb
+	replaces = i686-elf-gdb
+	source = git+https://sourceware.org/git/binutils-gdb.git
+	sha256sums = SKIP
+
+pkgname = i686-elf-gdb-git
