@@ -1,7 +1,7 @@
 # Maintainer: Alfred Jophy <alfredjophy[at]protonmail[dot]com>
 # Contributor: Mark Wagie <mark[dot]wagie[at]tutanota[dot]com>
 pkgname=xkcd-gtk
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A simple xkcd comic viewer written in Go using GTK+3."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go')
 depends=('gtk3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("32d70ba40441db45779d882363d9ed2dbc663cd5d4c9061c230e600d06bb8103")
+sha256sums=('39069ca64cef551d8199209c428b157d73668a00140d2c8eb0947970528a8821')
 prepare() {
     export GOPATH="$srcdir/gopath"
     go clean -modcache
