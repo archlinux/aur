@@ -1,6 +1,6 @@
 pkgbase = jicofo-nightly
 	pkgdesc = JItsi Meet COnference FOcus nightly build
-	pkgver = 1.0+877
+	pkgver = 1.0+900
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -18,7 +18,7 @@ pkgbase = jicofo-nightly
 	backup = etc/jicofo-nightly/logging.properties
 	backup = etc/jicofo-nightly/sip-communicator.properties
 	backup = etc/jicofo-nightly/jicofo.conf
-	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=877
+	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=900
 	source = config
 	source = sip-communicator.properties
 	source = service
