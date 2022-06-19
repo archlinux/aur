@@ -15,7 +15,7 @@ depends=(zlib libelf)
 options=(!emptydirs !docs)
 replaces=("i686-elf-binutils")
 conflicts=("i686-elf-binutils")
-source=("git://sourceware.org/git/binutils-gdb.git")
+source=("git+https://sourceware.org/git/binutils-gdb.git")
 
 sha256sums=('SKIP')
 

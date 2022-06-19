@@ -11,7 +11,7 @@ pkgbase = i686-elf-binutils-git
 	replaces = i686-elf-binutils
 	options = !emptydirs
 	options = !docs
-	source = git://sourceware.org/git/binutils-gdb.git
+	source = git+https://sourceware.org/git/binutils-gdb.git
 	sha256sums = SKIP
 
 pkgname = i686-elf-binutils-git
