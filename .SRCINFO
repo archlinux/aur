@@ -1,12 +1,12 @@
 pkgbase = mattermost-plugin-matterpoll
 	pkgdesc = Create polls and surveys directly within Mattermost
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/matterpoll/matterpoll
 	arch = x86_64
 	depends = mattermost
 	options = !strip
-	source = https://github.com/matterpoll/matterpoll/releases/download/v1.4.0/com.github.matterpoll.matterpoll-1.4.0.tar.gz
-	sha256sums = 4400eb77a859b290a00c611955eb4709d6e2e50cd6b8b451d223d8015aa9902f
+	source = https://github.com/matterpoll/matterpoll/releases/download/v1.5.0/com.github.matterpoll.matterpoll-1.5.0.tar.gz
+	sha256sums = 00f46a77d009ba0dd7d50316d0621cc9bba6e0a8839a9cdf4bcc5da1beeb6fdb
 
 pkgname = mattermost-plugin-matterpoll

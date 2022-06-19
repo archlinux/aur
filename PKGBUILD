@@ -2,7 +2,7 @@
 
 _plugin=matterpoll
 pkgname=mattermost-plugin-$_plugin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Create polls and surveys directly within Mattermost'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(mattermost)
 options=(!strip)
 _archive="com.github.matterpoll.$_plugin"
 source=("$url/releases/download/v$pkgver/$_archive-$pkgver.tar.gz")
-sha256sums=('4400eb77a859b290a00c611955eb4709d6e2e50cd6b8b451d223d8015aa9902f')
+sha256sums=('00f46a77d009ba0dd7d50316d0621cc9bba6e0a8839a9cdf4bcc5da1beeb6fdb')
 
 # Note the intention of this package is to bulid from source, but I haven't
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
