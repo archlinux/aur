@@ -4,7 +4,7 @@
 pkgname=('peercoin-cli' 'peercoin-daemon' 'peercoin-qt' 'peercoin-tx')
 pkgbase='peercoin'
 pkgver=0.11.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A peer-to-peer network-based digital currency"
 arch=('x86_64')
 url="https://www.peercoin.net/"
