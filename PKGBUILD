@@ -1,5 +1,4 @@
 # Maintainer: Huayu ZHANG <zhanghuayu1233@gmail.com>
-# Contributor: Huayu ZHANG <zhanghuayu1233@gmail.com>
 
 pkgname=bochs-gdb-stub
 pkgver=2.7
