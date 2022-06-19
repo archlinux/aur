@@ -1,4 +1,4 @@
-# Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
+# Maintainer: alphRomeo323 <alpharomeo323dev@protonmail.com>
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=ftba
 pkgver=202206081143_2e021f8e74_release
