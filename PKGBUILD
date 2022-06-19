@@ -13,7 +13,7 @@ install=${pkgname}.install
 # A 'release' is usually selected by adding the tag
 # '#tag=x.y.z'
 # at the end of the following line (uncomment it)
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#tag=4.4.5")
+source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git#tag=${pkgver}")
 # The latest version on master branch usually works if there has not been recent updates.
 # The 'master' branch is most of the time 'alpha', but can also be 'beta'.
 # Comment out the following line if you use a tag version above.
