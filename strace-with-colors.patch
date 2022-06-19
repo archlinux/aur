@@ -52,7 +52,7 @@ index 0cfb24de1..53d3ba613 100644
  		tprints("|");
  		PRINT_VAL_X(val3 & 0xfff);
 diff --git a/src/ioctl.c b/src/ioctl.c
-index c24cdb8bc..3719dad52 100644
+index 60dffa7aa..683f49973 100644
 --- a/src/ioctl.c
 +++ b/src/ioctl.c
 @@ -12,6 +12,7 @@
@@ -63,7 +63,7 @@ index c24cdb8bc..3719dad52 100644
  
  #if defined(SPARC) || defined(SPARC64)
  /*
-@@ -446,10 +447,10 @@ SYS_FUNC(ioctl)
+@@ -448,10 +449,10 @@ SYS_FUNC(ioctl)
  				if (iop) {
  					if (ret)
  						tprint_alternative_value();
@@ -699,10 +699,10 @@ index a6e698d4b..910b887f1 100644
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
 diff --git a/src/strace.c b/src/strace.c
-index 94d6169db..55989569c 100644
+index ec338fe97..efdcb5c57 100644
 --- a/src/strace.c
 +++ b/src/strace.c
-@@ -41,6 +41,7 @@
+@@ -42,6 +42,7 @@
  #include "delay.h"
  #include "wait.h"
  #include "secontext.h"
@@ -710,15 +710,15 @@ index 94d6169db..55989569c 100644
  
  /* In some libc, these aren't declared. Do it ourself: */
  extern char **environ;
-@@ -91,6 +92,7 @@ static bool rflag;
+@@ -92,6 +93,7 @@ static bool rflag;
  static int rflag_scale = 1000;
  static int rflag_width = 6;
  static bool print_pid_pfx;
 +int no_color_flag = 0;
  
- /* -I n */
- enum {
-@@ -272,7 +274,7 @@ usage(void)
+ static unsigned int version_verbosity;
+ 
+@@ -278,7 +280,7 @@ usage(void)
  #endif
  
  	printf("\
@@ -727,7 +727,7 @@ index 94d6169db..55989569c 100644
                [-a COLUMN] [-o FILE] [-s STRSIZE] [-X FORMAT] [-O OVERHEAD]\n\
                [-S SORTBY] [-P PATH]... [-p PID]... [-U COLUMNS] [--seccomp-bpf]\n"\
                SECONTEXT_OPT "\
-@@ -337,6 +339,8 @@ Filtering:\n\
+@@ -343,6 +345,8 @@ Filtering:\n\
                   print only syscalls that returned with an error code\n\
  \n\
  Output format:\n\
@@ -736,7 +736,7 @@ index 94d6169db..55989569c 100644
    -a COLUMN, --columns=COLUMN\n\
                   alignment COLUMN for printing syscall results (default %d)\n\
    -e abbrev=SET, --abbrev=SET\n\
-@@ -692,7 +696,23 @@ static void
+@@ -702,7 +706,23 @@ static void
  tvprintf(const char *const fmt, va_list args)
  {
  	if (current_tcp) {
@@ -761,7 +761,7 @@ index 94d6169db..55989569c 100644
  		if (n < 0) {
  			/* very unlikely due to vfprintf buffering */
  			outf_perror(current_tcp);
-@@ -718,7 +738,22 @@ void
+@@ -728,7 +748,22 @@ void
  tprints(const char *str)
  {
  	if (current_tcp) {
@@ -785,7 +785,7 @@ index 94d6169db..55989569c 100644
  		if (n >= 0) {
  			current_tcp->curcol += strlen(str);
  			return;
-@@ -732,7 +767,7 @@ void
+@@ -742,7 +777,7 @@ void
  tprints_comment(const char *const str)
  {
  	if (str && *str)
@@ -794,7 +794,7 @@ index 94d6169db..55989569c 100644
  }
  
  void
-@@ -853,7 +888,7 @@ printleader(struct tcb *tcp)
+@@ -863,7 +898,7 @@ printleader(struct tcb *tcp)
  		else
  			xsprintf(str, "%lld", (long long) local);
  		if (tflag_width)
@@ -803,7 +803,7 @@ index 94d6169db..55989569c 100644
  				(long) ts.tv_nsec / tflag_scale);
  		else
  			tprintf("%s ", str);
-@@ -871,9 +906,9 @@ printleader(struct tcb *tcp)
+@@ -881,9 +916,9 @@ printleader(struct tcb *tcp)
  		ts_sub(&dts, &ts, &ots);
  		ots = ts;
  
@@ -815,7 +815,7 @@ index 94d6169db..55989569c 100644
  				rflag_width, (long) dts.tv_nsec / rflag_scale);
  		}
  		tprints(tflag_format ? ") " : " ");
-@@ -2138,7 +2173,7 @@ init(int argc, char *argv[])
+@@ -2218,7 +2253,7 @@ init(int argc, char *argv[])
  #endif
  
  	static const char optstring[] =
@@ -824,15 +824,15 @@ index 94d6169db..55989569c 100644
  
  	enum {
  		GETOPT_SECCOMP = 0x100,
-@@ -2168,6 +2203,7 @@ init(int argc, char *argv[])
- #endif
+@@ -2247,6 +2282,7 @@ init(int argc, char *argv[])
+ 		GETOPT_QUAL_SECONTEXT,
  	};
  	static const struct option longopts[] = {
 +		{"no-color",        no_argument, 0, 'N'},
  		{ "columns",		required_argument, 0, 'a' },
  		{ "output-append-mode",	no_argument,	   0, 'A' },
  		{ "detach-on",		required_argument, 0, 'b' },
-@@ -2240,6 +2276,9 @@ init(int argc, char *argv[])
+@@ -2318,6 +2354,9 @@ init(int argc, char *argv[])
  		lopt_idx = -1;
  
  		switch (c) {
@@ -842,7 +842,7 @@ index 94d6169db..55989569c 100644
  		case 'a':
  			acolumn = string_to_uint(optarg);
  			if (acolumn < 0)
-@@ -2791,6 +2830,12 @@ init(int argc, char *argv[])
+@@ -2875,6 +2914,12 @@ init(int argc, char *argv[])
  			      qflag_short == 2 ? qqflag_qual : qqqflag_qual);
  	}
  

@@ -1,7 +1,7 @@
 pkgbase = strace-with-colors
 	pkgdesc = A diagnostic, debugging and instructional userspace tracer (with colors)
-	pkgver = 5.17
-	pkgrel = 3
+	pkgver = 5.18
+	pkgrel = 1
 	url = https://strace.io/
 	arch = x86_64
 	license = BSD
@@ -9,9 +9,9 @@ pkgbase = strace-with-colors
 	depends = libunwind
 	provides = strace
 	conflicts = strace
-	source = https://github.com/strace/strace/releases/download/v5.17/strace-5.17.tar.xz
+	source = https://github.com/strace/strace/releases/download/v5.18/strace-5.18.tar.xz
 	source = strace-with-colors.patch
-	sha1sums = 4e0622ec2f1551f96ba6abb0145737b91fda4509
+	sha1sums = e038ea9fc29366ce6119cde27d8cf16ac554a353
 	sha1sums = SKIP
 
 pkgname = strace-with-colors
