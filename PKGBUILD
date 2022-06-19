@@ -4,6 +4,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=featherpad-qt5
+_pkgname=featherpad
 pkgver=1.3.0
 pkgrel=1
 pkgdesc='Lightweight Qt5 plain text editor'
@@ -12,6 +13,8 @@ url='https://github.com/tsujan/FeatherPad'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'hunspell' 'qt5-svg' 'qt5-translations' 'qt5-x11extras')
 makedepends=('cmake' 'ninja' 'qt5-tools')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("https://github.com/tsujan/FeatherPad/releases/download/V$pkgver/FeatherPad-$pkgver.tar.xz"{,.asc}
         'featherpad.appdata.xml')
 sha256sums=('6fd327b5800bc48d0d88ca5666d173dfeecdc76d0a2654b87df8cd96df412617'
@@ -26,5 +29,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 $pkgname.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
+  install -Dm644 $_pkgname.appdata.xml "$pkgdir/usr/share/metainfo/$_pkgname.appdata.xml"
 }
