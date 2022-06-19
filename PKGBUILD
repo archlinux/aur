@@ -8,8 +8,8 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=470.62.29
-pkgrel=2
+pkgver=515.49.05
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -20,15 +20,11 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
         'nvidia-drm-outputclass.conf'
         'nvidia-vulkan-utils.sysusers'
-        'nvidia.rules'
-        'kernel-5.17.patch'
-        'kernel-5.16-std.diff')
-sha512sums=('bdd8dd25b2fa07c15a4e14bab9d7154f2be5c3d08960caf7d419247ff5d12c8366962346c2f38efee6daa935b020d8de09d9c145c08cdd0835a6fef0c2c3c76d'
+        'nvidia.rules')
+sha512sums=('a9f184699b40bad8bc3a98a8abdf609fcfeea9f477e4731dfd792dee84a0122eae247479c2b97b3bcf9628fed51802774ff81ba594fe8614c92b339c44bbac21'
             'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            '68c9ac6444cdb3c637eee4135cf1a5a137a233ab12e682e3dbe5b3db6e704907b2759567e99f13026f1e33d8ccc78f3dad12d471cc2ddf9c3d4370697dc169e9'
-            '97d78a0202325d8515a31cb8e18f1ad013f00d59c3f68a03fbe5d041e30d817ae8a18f806a261a765d5efc2858fa249a09b317f9a6ebe08bdf0e25e6203f7047'
-            '2c86a2a1f8c9fd48b0fbcdfdf0d53efd28d31a411dfb5d9ac5aba84014cdd77df898ab1b9669edafa248f85c88d478a5454165567e3c8a5c40b803a2c8861e84')
+            '68c9ac6444cdb3c637eee4135cf1a5a137a233ab12e682e3dbe5b3db6e704907b2759567e99f13026f1e33d8ccc78f3dad12d471cc2ddf9c3d4370697dc169e9')
 
 create_links() {
     # create soname links
@@ -46,8 +42,8 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     # Thanks frogs - https://github.com/Frogging-Family/nvidia-all/blob/master/patches
-    patch -Np1 -i ../kernel-5.16-std.diff
-    patch -Np1 -i ../kernel-5.17.patch
+    #patch -Np1 -i ../kernel-5.16-std.diff
+    #patch -Np1 -i ../kernel-5.17.patch
 
     # Fixing regex pattern for Module.symvers
     sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
@@ -169,7 +165,6 @@ package_nvidia-vulkan-utils() {
     install -D -m755 "libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glsi.so.${pkgver}"
 
     # misc
-    install -D -m755 "libnvidia-ifr.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ifr.so.${pkgver}"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fbc.so.${pkgver}"
     install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
     install -D -m755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
@@ -313,7 +308,7 @@ package_lib32-nvidia-vulkan-utils() {
     install -D -m755 "libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-glsi.so.${pkgver}"
 
     # misc
-    install -D -m755 "libnvidia-ifr.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ifr.so.${pkgver}"
+    # install -D -m755 "libnvidia-ifr.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ifr.so.${pkgver}"
     install -D -m755 "libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-fbc.so.${pkgver}"
     install -D -m755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-encode.so.${pkgver}"
     install -D -m755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ml.so.${pkgver}"
