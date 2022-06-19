@@ -1,0 +1,12 @@
+pkgbase = objstor
+	pkgdesc = One stop for storing all your data.
+	pkgver = 0.4.20
+	pkgrel = 1
+	url = https://github.com/prabirshrestha/objstor
+	arch = x86_64
+	license = MIT
+	provides = objstor
+	source = https://github.com/prabirshrestha/objstor/releases/download/v0.4.20/objstor-v0.4.20-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 3ad390264cbf298fc8c2ded03d69e8a7c7eeea8d61f50af6651d31f08216f276
+
+pkgname = objstor
