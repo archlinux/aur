@@ -1,0 +1,15 @@
+pkgbase = hardinfo
+	pkgdesc = A system information and benchmark tool.
+	pkgver = 0.5.1.816.g877ea2b
+	pkgrel = 2
+	url = https://github.com/lpereira/hardinfo
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = gtk2
+	source = hardinfo::git+https://github.com/lpereira/hardinfo#commit=877ea2bc7777626c6fe77b6934a09261f1f1409e
+	sha1sums = SKIP
+
+pkgname = hardinfo
