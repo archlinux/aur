@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=6155
-_version=1.0.6155
+_tag=6260
+_version=1.0.6260
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -32,7 +32,7 @@ install=install
 
 build() {
         cd "$pkgname"
-        npm install --no-package-lock
+        npm install # --no-package-lock
         make
         make source-package
 }
