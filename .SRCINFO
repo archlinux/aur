@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libjpeg
 	pkgdesc = JPEG image compression (mingw-w64)
-	pkgver = 9e
+	pkgver = 9c
 	pkgrel = 1
 	url = http://ijg.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-libjpeg
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = http://www.ijg.org/files/jpegsrc.v9e.tar.gz
-	sha256sums = 1e9793e1c6ba66e7e0b6e5fe7fd0f9e935cc697854d5737adec54d93e5b3f730
+	source = http://www.ijg.org/files/jpegsrc.v9c.tar.gz
+	sha256sums = 682aee469c3ca857c4c38c37a6edadbfca4b04d42e56613b11590ec6aa4a278d
 
 pkgname = mingw-w64-libjpeg
