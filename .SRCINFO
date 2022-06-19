@@ -1,6 +1,6 @@
 pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
-	pkgver = 5.6.1
+	pkgver = 5.6.2
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
