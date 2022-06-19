@@ -1,0 +1,14 @@
+pkgbase = archlinux-desktop
+	pkgdesc = Builds an Archlinux desktop
+	pkgver = v1
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/tallero/archiso-profiles
+	arch = any
+	license = GPL3
+	checkdepends = shellcheck
+	makedepends = git
+	depends = archiso-profiles
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
+	sha256sums = SKIP
+
+pkgname = archlinux-desktop
