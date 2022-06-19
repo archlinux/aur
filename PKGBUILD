@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=vocabsieve
 epoch=
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=00
 pkgdesc='A simple, effective sentence mining tool.'
 arch=(any)
 url=https://github.com/FreeLanguageTools/vocabsieve
 license=(GPL3)
-depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-lxml python-mobi python-playsound python-pycountry python-pymorphy2 python-pymorphy2_dicts python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-requests python-sentence-splitter python-simplemma python-slpp)
+depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-lxml python-markdown python-markdownify python-mobi python-pycountry python-pymorphy2 python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-python-lzo python-readmdict python-requests python-sentence-splitter python-simplemma python-slpp)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/1b/c3/41ad48572bad9e8aa1110620978954b8adeec2d727c1d69228e0559a1e99/vocabsieve-0.7.2-py3-none-any.whl)
-md5sums+=(7c2e7db9249597ef68b02846a56781ab)
-noextract+=(vocabsieve-0.7.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/26/8f/0d43d3142863d00d5d76d901af1e941d4f895d8e8c72e89e478ee7c560d0/vocabsieve-0.8.1-py3-none-any.whl)
+md5sums+=(583826614a5e3b4cbcdd456160d9645f)
+noextract+=(vocabsieve-0.8.1-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(1ebbd3e34237af26da5dc08a4e440464)
 
