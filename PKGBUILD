@@ -3,14 +3,14 @@
 
 pkgname=ls_extended
 pkgver=1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='ls with coloring and icons'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
 license=('custom:BSD')
-optdepends=('nerd-fonts-complete: for icon support')
-depends=('glibc' 'nerd-fonts')
+optdepends=('nerd-fonts-symbols: for icon support')
+depends=('glibc')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Electrux/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('c751e8198356cbbbbfe6191a6dd379d0525fea469299355ac8331090f2db63fe')
