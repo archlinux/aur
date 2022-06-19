@@ -11,7 +11,8 @@ depends=('archiso-encryption')
 makedepends=('git')
 checkdepends=('shellcheck')
 optdepends=()
-source=("git+${url}")
+_commit="a53522b593b5675c24fc1e7132bb631f21a90291"
+source=("git+${url}#commit=${_commit}")
 sha256sums=('SKIP')
 
 package() {
