@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Altirra
+GenericName=Atari Emulator
+Comment=Altirra, an 8-bit Atari computer emulator
+Categories=Development;Game;Utility;
+Path=/opt/altirra
+Exec=altirra
+Icon=altirra
+Terminal=false
+StartupNotify=true
+StartupWMClass=Altirra64.exe
