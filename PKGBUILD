@@ -1,8 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python-winsspi
-_pypiname=winsspi
-pkgver=0.0.9
+_pkgname=winsspi
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Windows SSPI wrapper in pure python"
 url="https://pypi.org/project/winsspi"
@@ -10,10 +10,10 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-minikerberos')
 makedepends=('python-setuptools')
-source=(${_pypiname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/bc/dc/ec5d16880452aca0c86b92aa7828255f7808d3aaf92b69b34d8182659d2a/winsspi-${pkgver}.tar.gz")
-sha256sums=('a2ad9c0f6d70f6e0e0d1f54b8582054c62d8a09f346b5ccaf55da68628ca10e1')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('2f5a8d2c4b9f459144426909e26a74e550512e23b6cf9af52c2a00003c7c3fdb')
 
 package() {
-  cd ${_pypiname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }
