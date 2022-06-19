@@ -15,7 +15,9 @@ conflicts=('arduino-language-server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arduino/arduino-language-server/releases/download/${pkgver}/arduino-language-server_${pkgver}_Linux_64bit.tar.gz")
 
 package() {
-	cd "$SOURCE_DIR"
+	cd "$SOURCE_DIR" || exit 1
 	msg2 'Installing executables...'
 	install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
+	msg2 'Installing license'
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses"
 }
