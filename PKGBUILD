@@ -46,7 +46,7 @@ build() {
 	cd "${srcdir}/nextpnr"
 	cd build-all
 		cmake -G Ninja        \
-			-DARCH=generic,ice40,ecp5,nexus \
+			-DARCH=all \
 			-DBUILD_PYTHON=ON \
 			-DBUILD_GUI=ON    \
 			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
