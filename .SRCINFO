@@ -7,7 +7,6 @@ pkgbase = i686-elf-binutils-git
 	license = GPL
 	depends = zlib
 	depends = libelf
-	conflicts = i686-elf-binutils
 	replaces = i686-elf-binutils
 	options = !emptydirs
 	options = !docs
