@@ -2,32 +2,38 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=onefetch-git
-pkgver=2.10.2.r0.g0064edc
+pkgver=2.12.0.r104.g40bdaef
 pkgrel=1
 pkgdesc="Git repository summary on your terminal (git)"
 arch=('x86_64')
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
-depends=('libgit2')
-makedepends=('rust' 'git')
+depends=('libgit2' 'libgit2.so')
+makedepends=('cargo' 'git' 'cmake')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
