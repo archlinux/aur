@@ -1,7 +1,7 @@
 # Maintainer: zlfn <dev@zlfn.space>
 
 pkgname=krita-next-bin
-pkgver=v5.2.0.prealpha.r72.g6449db65a4
+pkgver=v5.2.0.prealpha.r74.gbad0e46c2f
 pkgrel=1
 pkgdesc='The pre-built package of Krita Next. If you do not trust me, install krita-next-git instead.'
 arch=(x86_64)
@@ -17,6 +17,6 @@ optdepends=('poppler-qt5: PDF filter' 'ffmpeg: to save animations'
             'krita-plugin-gmic: GMic plugin')
 provides=(krita)
 conflicts=(krita)
-source=(https://github.com/zlfn/krita-aur/releases/download/v5.2.0.prealpha.r72.g6449db65a4/krita-next-bin-v5.2.0.prealpha.r72.g6449db65a4-1-x86_64.pkg.tar.zst)
-noextract=(krita-next-bin-v5.2.0.prealpha.r72.g6449db65a4-1-x86_64.pkg.tar.zst)
+source=(https://github.com/zlfn/krita-aur/releases/download/v5.2.0.prealpha.r74.gbad0e46c2f/krita-next-bin-v5.2.0.prealpha.r74.gbad0e46c2f-1-x86_64.pkg.tar.zst)
+noextract=(krita-next-bin-v5.2.0.prealpha.r74.gbad0e46c2f-1-x86_64.pkg.tar.zst)
 sha512sums=('SKIP')
