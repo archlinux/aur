@@ -10,10 +10,11 @@ pkgbase = i686-elf-gdb-git
 	makedepends = mpfr
 	depends = xz
 	depends = libmpc
-	depends = i686-elf-gcc
 	depends = gdb
 	conflicts = i686-elf-gdb
+	conflicts = i686-elf-binutils-git
 	replaces = i686-elf-gdb
+	replaces = i686-elf-binutils-git
 	source = git+https://sourceware.org/git/binutils-gdb.git
 	sha256sums = SKIP
 
