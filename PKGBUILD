@@ -3,7 +3,7 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=love-0102-bin
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="LOVE is a free 2D game engine which enables easy game creation in Lua. v0.10.2."
 arch=('x86_64')
 url="http://love2d.org"
@@ -14,10 +14,10 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/love2d/love/releases/download/0.10.2/love_0.10.2ppa1_amd64.deb"
 "https://github.com/love2d/love/releases/download/0.10.2/liblove0_0.10.2ppa1_amd64.deb"
-"https://github.com/love2d/love/raw/master/license.txt")
+"https://github.com/love2d/love/raw/main/license.txt")
 sha512sums=('6ac58e785df0f90b6dab8ba3be4c6c925639ff378f69a94e25cb8393b3512c991349ec9f6e6e9f81e708688a9a205b1d10ad6a0359f27ebda3b3c3a730cfb644'
 'f3ae68b459a5a5b25da41ca4b2f2181430bae66cd0cd93812da1712211264fb52fb0d81d0fb969b397709cfaf2c0dd3899d18321feb6511deb184da1e34f7e79'
-'4801a9280ca6d26104833cebcc6b4dd4c317de856568baf4aca680460d0bfac16942bb1cc8fb884763b21a561897caace58f158abf1c232fcdcebf4a9d68eeab')
+'SKIP')
 noextract=('love_0.10.2ppa1_amd64.deb' 'liblove0_0.10.2ppa1_amd64.deb')
 
 package(){
