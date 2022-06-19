@@ -1,7 +1,7 @@
 pkgbase = qubes-gui-agent-linux
 	pkgdesc = The Qubes GUI Agent for AppVMs
 	pkgver = 4.0.38
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/QubesOS/qubes-gui-agent-linux
 	arch = x86_64
 	license = GPL
@@ -48,4 +48,4 @@ pkgname = qubes-vm-pulseaudio
 	depends = alsa-lib
 	depends = alsa-utils
 	depends = pulseaudio-alsa
-	depends = pulseaudio<=15.0
+	depends = pulseaudio<=16.0

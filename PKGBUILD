@@ -7,7 +7,7 @@ pkgbase=qubes-gui-agent-linux
 pkgname=(qubes-vm-gui qubes-vm-pulseaudio)
 _gitname=${pkgname%-git*}
 pkgver=4.0.38
-pkgrel=3
+pkgrel=4
 pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
@@ -81,7 +81,7 @@ package_qubes-vm-pulseaudio() {
   depends=('alsa-lib'
            'alsa-utils'
            'pulseaudio-alsa'
-           'pulseaudio<=15.0'
+           'pulseaudio<=16.0'
   )
   install=PKGBUILD-pulseaudio.install
 
