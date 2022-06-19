@@ -1,6 +1,6 @@
 pkgbase = jicofo
 	pkgdesc = JItsi Meet COnference FOcus
-	pkgver = 1.0.877
+	pkgver = 1.0.900
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -18,7 +18,7 @@ pkgbase = jicofo
 	backup = etc/jicofo/logging.properties
 	backup = etc/jicofo/sip-communicator.properties
 	backup = etc/jicofo/jicofo.conf
-	source = jicofo::git+https://github.com/jitsi/jicofo#tag=877
+	source = jicofo::git+https://github.com/jitsi/jicofo#tag=900
 	source = config
 	source = sip-communicator.properties
 	source = service
