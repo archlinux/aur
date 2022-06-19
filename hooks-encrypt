@@ -28,20 +28,17 @@ EOF
                     mount --mkdir -r -t "$ckfs1" "$resolved" /ckey
                     ckey="/ckey/${ckpath1}"
                     is_fs=$(blkid -o value -s TYPE "${ckey}")
-                    if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
-                        while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
-                            sleep 2;
-                        done
-
-                        mount --mkdir -r -t "$ckfs2" "/dev/mapper/ckey" /ckey2
-                        ckey="/ckey2/${ckpath2}"
-                    elif [ "${is_fs}" != "" ]; then
+                    if [ "${is_fs}" != "" ]; then
                         echo "${ckey} has type ${is_fs}"
+                        if cryptsetup isLuks "${ckey}" >/dev/null 2>&1; then
+                            while ! eval cryptsetup open --type luks2 "${ckey}" ckey; do
+                                sleep 2;
+                            done
+                            ckey="/dev/mapper/ckey"
+                        fi
+                        mount --mkdir -r -t "$ckfs2" "${ckey}" /ckey2
+                        ckey="/ckey2/${ckpath2}"
                     fi
-                    echo "ckey path:"
-                    ls /ckey
-                    echo "ckey2 path"
-                    ls /ckey2
                     dd if="${ckey}" of="$ckeyfile" >/dev/null 2>&1
                     if mountpoint -q /ckey2; then
                         umount /ckey2
