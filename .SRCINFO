@@ -1,6 +1,6 @@
 pkgbase = superdux-git
 	pkgdesc = A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)
-	pkgver = 0.1.0.r357.b5fa7ef+r1798.8073e3d3
+	pkgver = 0.1.0.r359.d1cadf5+r1866.8f8b7f6b
 	pkgrel = 1
 	url = https://github.com/SnowyMouse/superdux
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = superdux-git
 	makedepends = rgbds
 	depends = qt6-base
 	provides = superdux
-	conflicts = kamonegi
 	conflicts = superdux
 	source = git+https://github.com/SnowyMouse/superdux.git
 	source = git+https://github.com/LIJI32/SameBoy.git

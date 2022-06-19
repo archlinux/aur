@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=superdux-git
-pkgver=0.1.0.r357.b5fa7ef+r1798.8073e3d3
+pkgver=0.1.0.r359.d1cadf5+r1866.8f8b7f6b
 pkgrel=1
 pkgdesc="A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)"
 depends=('qt6-base')
@@ -14,7 +14,7 @@ source=("git+https://github.com/SnowyMouse/${pkgname%-git}.git"
 sha256sums=('SKIP'
             'SKIP')
 provides=('superdux')
-conflicts=('kamonegi' 'superdux')
+conflicts=('superdux')
 
 pkgver() {
     cd "$srcdir"/${pkgname%-git}
