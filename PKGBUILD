@@ -7,7 +7,7 @@ _pkgname=binutils
 pkgname=$_target-${_pkgname}-git
 pkgver=dev
 pkgrel=1
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target (development build)'
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target (including GDB) (development build)'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
@@ -39,9 +39,9 @@ build() {
         --libdir=/usr/lib/i686-elf/ \
         --with-sysroot=${_sysroot} \
         --disable-nls \
-	--disable-gdb \
-	--disable-gdbserver \
-	--disable-gdbsupport \
+	#--disable-gdb \
+	#--disable-gdbserver \
+	#--disable-gdbsupport \
         --disable-werror
 
     make -j$(nproc)
