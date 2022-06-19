@@ -1,0 +1,15 @@
+pkgbase = nspire-merge
+	pkgdesc = Merging Lua source files and resources for TI-Nspire projects
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/nspire-merge
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-glob2
+	depends = python-pillow
+	depends = python-argparse
+	source = https://github.com/alexcoder04/nspire-merge/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = e013ab3f7075a6bc33152e55a1d843e2
+
+pkgname = nspire-merge
