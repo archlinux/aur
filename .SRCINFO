@@ -1,14 +1,14 @@
 pkgbase = yopass
 	pkgdesc = Secure sharing for secrets, passwords and files
-	pkgver = 11.4.2
+	pkgver = 11.14.4
 	pkgrel = 1
 	url = https://yopass.se
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = yopass-11.4.2.tar.gz::https://github.com/jhaals/yopass/archive/11.4.2.tar.gz
-	sha512sums = 1d4a2247aa706c6e9bebe2c3509ad1f79ee2c8c58d92e8daddce01a387de0335f60c1a51720753d64f4d745608c2255338abfde13aea43a3d5b33c45a1dcd769
+	source = yopass-11.14.4.tar.gz::https://github.com/jhaals/yopass/archive/11.14.4.tar.gz
+	sha512sums = ce5487c4450855768c8ee7ead434587e35f5fee7c13221a4159aba0d7179928fbe65a677dfcf8bf752b43e69efb16d29a36e79fe84e562e08abca989e7cfd8cd
 
 pkgname = yopass
 

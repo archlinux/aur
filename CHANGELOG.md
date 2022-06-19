@@ -1,3 +1,19 @@
+## 11.14.4 (2022-06-19)
+
+## What's Changed
+* build(deps): bump github.com/spf13/viper from 1.11.0 to 1.12.0 by @dependabot in https://github.com/jhaals/yopass/pull/1365
+* build(deps): bump i18next from 21.8.2 to 21.8.9 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1379
+* build(deps-dev): bump @types/node from 17.0.33 to 17.0.42 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1378
+* build(deps): bump async from 2.6.3 to 2.6.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1370
+* build(deps): bump react-scripts from 5.0.0 to 5.0.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1362
+* build(deps): bump react-i18next from 11.16.2 to 11.17.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1377
+* build(deps): bump @mui/material from 5.6.0 to 5.8.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1385
+* build(deps): bump react-i18next from 11.17.1 to 11.17.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1384
+* build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.2 by @dependabot in https://github.com/jhaals/yopass/pull/1375
+
+
+**Full Changelog**: https://github.com/jhaals/yopass/compare/11.4.3...11.14.4
+
 ## 11.4.2 (2022-03-07)
 
 ## What's Changed
