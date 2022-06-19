@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=DBI
-_cranver=1.1.2
+_cranver=1.1.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Database Interface"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -33,7 +33,7 @@ optdepends=(
     r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('56ec377d471c76ac234ddfd313bd01a050c99fb6fa5f704f5333b34a5d714f58')
+sha256sums=('38bb33753da5bddb78893a5228a5d269dae3bf16f21dc5d9853ac9c24d31428d')
 
 build() {
   mkdir -p build
