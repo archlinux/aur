@@ -11,7 +11,7 @@ pkgbase = mupen64plus-rsp-parallel-git
 	depends = mupen64plus-git
 	provides = mupen64plus-rsp-parallel
 	conflicts = mupen64plus-rsp-parallel
-	source = git+https://github.com/loganmc10/parallel-rsp.git
+	source = git+https://github.com/loganmc10/parallel-rsp.git#branch=m64p
 	source = fix-build.patch
 	sha256sums = SKIP
 	sha256sums = badfbb0a51ddca3b514e238a547ffe86523bbcd00d09b81a6efaca5c19ce4d7d
