@@ -2,11 +2,10 @@ pkgbase = kms-jsoncpp
 	pkgdesc = fork of jsoncpp for kms-jsonrpc
 	pkgver = 1.6.4
 	pkgrel = 1
-	url = https://github.com/Kurento/kms-jsonrpc
+	url = https://github.com/Kurento/jsoncpp
 	arch = any
 	license = MIT
-	source = git://github.com/Kurento/jsoncpp.git#tag=1.6.4
+	source = git+https://github.com/Kurento/jsoncpp.git#tag=1.6.4
 	sha256sums = SKIP
 
 pkgname = kms-jsoncpp
-

@@ -3,9 +3,9 @@ pkgver=1.6.4
 pkgrel=1
 pkgdesc="fork of jsoncpp for kms-jsonrpc"
 arch=(any)
-url="https://github.com/Kurento/kms-jsonrpc"
+url="https://github.com/Kurento/jsoncpp"
 license=(MIT)
-source=("git://github.com/Kurento/jsoncpp.git#tag=$pkgver")
+source=("git+https://github.com/Kurento/jsoncpp.git#tag=$pkgver")
 sha256sums=(SKIP)
 
 build() {
