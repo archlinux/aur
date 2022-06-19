@@ -2,7 +2,7 @@ pkgbase = xrectsel
 	pkgdesc = print the geometry of a rectangular screen region
 	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/lolilolicon/xrectsel
+	url = https://github.com/ropery/xrectsel
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,7 @@ pkgbase = xrectsel
 	makedepends = automake
 	depends = libx11
 	conflicts = ffcast<1:2.2.0
-	source = https://github.com/lolilolicon/xrectsel/archive/0.3.2.tar.gz
+	source = https://github.com/ropery/xrectsel/archive/0.3.2.tar.gz
 	sha256sums = 1b4b928bb7270e0531467c1e7f93322c784c7c0dedc13d1d5e53034417fde785
 
 pkgname = xrectsel
-
