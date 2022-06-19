@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-prosody
 	pkgdesc = Jitsi Meet Prosody Plugins
-	pkgver = 1.0.6155
+	pkgver = 1.0.6260
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -13,7 +13,7 @@ pkgbase = jitsi-meet-prosody
 	optdepends = lua52-zip
 	optdepends = lua52-event
 	options = !strip
-	source = jitsi-meet-prosody::git+https://github.com/jitsi/jitsi-meet#tag=6155
+	source = jitsi-meet-prosody::git+https://github.com/jitsi/jitsi-meet#tag=6260
 	sha256sums = SKIP
 
 pkgname = jitsi-meet-prosody
