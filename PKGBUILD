@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libjpeg
-pkgver=9c
+pkgver=9e
 pkgrel=1
 pkgdesc="JPEG image compression (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=(!libtool !strip !buildflags)
 conflicts=(mingw-w64-libjpeg-turbo)
 provides=(mingw-w64-libjpeg-turbo)
 source=("http://www.ijg.org/files/jpegsrc.v$pkgver.tar.gz")
-sha256sums=('1e9793e1c6ba66e7e0b6e5fe7fd0f9e935cc697854d5737adec54d93e5b3f730')
+sha256sums=('4077d6a6a75aeb01884f708919d25934c93305e49f7e3f36db9129320e6f4f3d')
 
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
