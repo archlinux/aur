@@ -46,10 +46,10 @@ pkgbase = aseprite-git
 	source = git+https://github.com/aseprite/lua
 	source = git+https://github.com/aseprite/tga.git
 	source = git+https://github.com/aseprite/curl.git
-	source = git+https://github.com/machinezone/IXWebSocket
+	source = git+https://github.com/aseprite/IXWebSocket
 	source = git+https://github.com/aseprite/stringencoders
 	source = git+https://github.com/aseprite/googletest
-	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m96
+	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m102
 	sha256sums = SKIP
 	sha256sums = 8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9
 	sha256sums = SKIP
