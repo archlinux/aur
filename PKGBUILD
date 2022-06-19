@@ -5,7 +5,7 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}-git
-pkgver=1
+pkgver=dev
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
@@ -17,20 +17,20 @@ source=("git://sourceware.org/git/binutils-gdb.git")
 
 sha256sums=('SKIP')
 
-_basedir=binutils
+_basedir=binutils-gdb
 
-prepare() {
-    cd ${srcdir}/${_pkgname}
+#prepare() {
+    #cd ${srcdir}/${_pkgname}-gdb
 
-    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+    # sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-    mkdir $srcdir/binutils-build
-}
+    #mkdir $srcdir/binutils-build
+#}
 
 build() {
-    cd binutils-build
+    cd binutils-gdb
 
-    $srcdir/$_basedir/configure \
+    ./configure \
         --target=$_target \
         --prefix=${_sysroot} \
         --bindir=/usr/bin \
@@ -39,18 +39,18 @@ build() {
         --disable-nls \
         --disable-werror
 
-    make
+    make -j$(nproc)
 }
 
-check() {
-    cd binutils-build
+#check() {
+    #cd binutils-gdb
 
     # do not abort on errors - manually check log files
-    make -k check
-}
+    # make -k check
+#}
 
 package() {
-    cd binutils-build
+    cd binutils-gdb
 
     make DESTDIR="$pkgdir" install
 
