@@ -10221,7 +10221,7 @@ CONFIG_INTEGRITY_AUDIT=y
 # CONFIG_DEFAULT_SECURITY_TOMOYO is not set
 # CONFIG_DEFAULT_SECURITY_APPARMOR is not set
 CONFIG_DEFAULT_SECURITY_DAC=y
-CONFIG_LSM="landlock,lockdown,yama,bpf"
+CONFIG_LSM="landlock,lockdown,yama,integrity,bpf"
 
 #
 # Kernel hardening options
