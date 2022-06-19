@@ -1,7 +1,7 @@
 pkgbase = tre-command
 	pkgdesc = Tree command, improved.
-	pkgver = 0.3.6
-	pkgrel = 6
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/dduan/tre
 	arch = i686
 	arch = x86_64
