@@ -1,6 +1,6 @@
 pkgbase = utf-8-steg-git
 	pkgdesc = Encodes/decodes data into zero-width utf-8 characters
-	pkgver = 0.2.0.r0.g4ef777a
+	pkgver = 0.2.1.r0.g45accc7
 	pkgrel = 1
 	url = https://github.com/yadayadajaychan/utf-8-steg
 	arch = any
