@@ -1,0 +1,21 @@
+pkgbase = qsnapstore-git
+	pkgdesc = Qt based Graphical frontend for browsing and searching Ubuntu Snap Store
+	pkgver = 1.0.r46.31f7293
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/qsnapstore
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = qsnapstore
+	conflicts = qsnapstore
+	source = qsnapstore::git+https://github.com/keshavbhatt/qsnapstore
+	sha256sums = SKIP
+
+pkgname = qsnapstore-git
