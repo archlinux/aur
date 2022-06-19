@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Developer toolkit
+Exec=/usr/bin/wails-dev-tool-kit
+Terminal=false
+Icon=wails-dev-tool-kit

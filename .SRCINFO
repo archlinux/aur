@@ -1,0 +1,16 @@
+pkgbase = wails-dev-tool-kit-bin
+	pkgdesc = An example app using wails with useful developer tools
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/qaware/dev-tool-kit
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	source = wails-dev-tool-kit-3.4.2::https://github.com/qaware/dev-tool-kit/releases/download/v3.4.2/dev-tool-kit-linux-amd64
+	source = wails-dev-tool-kit-3.4.2-src.tar.gz::https://github.com/qaware/dev-tool-kit/archive/refs/tags/v3.4.2.tar.gz
+	source = wails-dev-tool-kit.desktop
+	sha256sums = 4a72c4181bca65c715ab7fc84690a5141b6055b77c8c698ec583752d02c6ed65
+	sha256sums = d474d136dceaa9cf19be9bf17cc3f5e3852ecee4308bf530cb29f632d6bed6b6
+	sha256sums = 081ba0a52ee7ccee4755894e2def1fe8117532e945ebf4d9a25d5128f2d90967
+
+pkgname = wails-dev-tool-kit-bin
