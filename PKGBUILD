@@ -2,7 +2,7 @@
 
 pkgname=outfox_bin
 #      main  date     sub    codename
-pkgver=5.3.0_20220614_4.15.0_alpha
+pkgver=5.3.0_20220619_4.15.1_alpha
 read main date sub codename <<< $(echo "${pkgver}" | sed 's/_/ /g')
 pkgrel=1
 pkgdesc="fork of open source rhythm game engine StepMania"
@@ -31,6 +31,6 @@ package() {
   install -Dm755 $srcdir/outfox.desktop $pkgdir/usr/share/applications/outfox.desktop
   install -Dm755 $srcdir/outfox.png $pkgdir/usr/share/pixmaps/outfox.png
 }
-md5sums=('075579de4a05efad504b577be1b7de9b'
+md5sums=('eb9885e231070fa01b20a641743668e7'
          '3948603b54b512544490928f7acd07c9'
          '2b26841e2f3580e5bf2f63218834ec41')
