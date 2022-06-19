@@ -1,0 +1,21 @@
+pkgbase = bingwall-git
+	pkgdesc = Bing wallpaper of the day application for Gnome desktop
+	pkgver = 2.4.r63.0618044
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/BingWall
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = bingwall
+	conflicts = bingwall
+	source = bingwall::git+https://github.com/keshavbhatt/BingWall
+	sha256sums = SKIP
+
+pkgname = bingwall-git
