@@ -8,6 +8,7 @@ pkgbase = revanced-cli
 	license = GPL3
 	depends = java-environment
 	depends = revanced-patches
+	optdepends = revanced-integrations: Add support for some integrations
 	source = revanced-cli.sh
 	source = https://github.com/revanced/revanced-cli/releases/download/v1.4.4/revanced-cli-1.4.4-all.jar
 	source = https://github.com/revanced/revanced-cli/raw/v1.4.4/LICENSE

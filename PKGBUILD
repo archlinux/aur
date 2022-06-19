@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/revanced/revanced-cli"
 license=('GPL3')
 depends=('java-environment' 'revanced-patches')
+optdepends=('revanced-integrations: Add support for some integrations')
 install='revanced-cli.install'
 source=("${pkgname}.sh"
         "${url}/releases/download/v${pkgver}/revanced-cli-${pkgver}-all.jar"
