@@ -2,17 +2,17 @@
 
 pkgname=selinux-alpm-hook
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="SELinux ALPM hook"
 arch=('any')
 url="https://github.com/archlinuxhardened/selinux"
 license=('GPL')
 groups=('selinux')
-depends=('policycoreutils')
+depends=('policycoreutils>=3.4')
 source=('relabel-selinux.hook'
         'selinux-alpm-hook')
 sha256sums=('4df844a89a50fe1caebe0cb92fc925b3dedf7a1a8258eef53f0dd328c1cc089e'
-            'c85dbba69b776fbbc5f6886eb3e89406de9237f935a295f7c49d6696ea275187')
+            '6786b7ba2dd6887daef304dbbab425b425ddec611d6df943fce27f13ef95def1')
 
 package() {
   cd "${srcdir}"

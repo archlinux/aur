@@ -28,7 +28,7 @@ while read -r FILE; do
         # Only show a warning when a file does not exist as this is not fatal
         echo >&2 "Ugh, an installed file does not exist: $FILE"
     fi
-done | xargs -0 /usr/bin/restorecon -F || die "Error while relabeling files"
+done | xargs -0 /usr/bin/restorecon -F -T0 || die "Error while relabeling files"
 
 # The install hooks of packages create files which got labelled with the wrong SELinux user
 # (e.g. sysadm_u instead of system_u). Relabel all these files too.
@@ -83,6 +83,6 @@ GEN_DIRS=(
 for DIR in ${GEN_DIRS[@]}; do
     # Only relabel directories which exist
     if [ -e "$DIR" ]; then
-        /usr/bin/restorecon -RF "$DIR" || die "Error while relabeling generated directories"
+        /usr/bin/restorecon -RF -T0 "$DIR" || die "Error while relabeling generated directories"
     fi
 done
