@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-nightly-bin
 	pkgdesc = Jitsi Meet Web nightly binary
-	pkgver = 1.0.6171
+	pkgver = 1.0.6264
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = jitsi-meet-nightly-bin
 	optdepends = nginx
 	provides = jitsi-meet-nightly
 	conflicts = jitsi-meet-nightly
-	noextract = config_1.0.6171.deb
+	noextract = config_1.0.6264.deb
 	options = !strip
 	backup = etc/webapps/jitsi-meet-nightly/logging_config.js
 	backup = etc/webapps/jitsi-meet-nightly/config.js
 	backup = etc/webapps/jitsi-meet-nightly/interface_config.js
-	source = https://download.jitsi.org/unstable/jitsi-meet-web_1.0.6171-1_all.deb
-	source = config_1.0.6171.deb::https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.6171-1_all.deb
-	sha256sums = c5c94b0326658df5b527e7f425f80596e96cc5b8c8cf0bf2f170400f8ea0cdbb
-	sha256sums = 441c94a31bfb83145b0e58cb246342b2aafc64f0b1d73e1911a82cffd8f49935
+	source = https://download.jitsi.org/unstable/jitsi-meet-web_1.0.6264-1_all.deb
+	source = config_1.0.6264.deb::https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.6264-1_all.deb
+	sha256sums = 78f1b9a61c71a563c969ec0afa84a6f9238f6cb822c6085cd5a2baec185bfb9b
+	sha256sums = 624cd2cba805a81c28b2a425935fa755a662d3fb8c3a7dbbb74c9e22f7e1c5ed
 
 pkgname = jitsi-meet-nightly-bin
