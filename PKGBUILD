@@ -6,7 +6,7 @@ pkgdesc='Intel Core and Core 2 frequency and voltage modification utility'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/c2ctl/'
 license=('GPL3')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname.tar.bz2
+source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname.tar.bz2
 	c2ctl.service c2ctl.script c2ctl.conf)
 install=c2ctl.install
 backup=('etc/conf.d/c2ctl')
