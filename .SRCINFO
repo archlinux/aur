@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge-nightly
 	pkgdesc = Jitsi Meet Videobridge nightly build
-	pkgver = 2.1+681+g3544ed05
+	pkgver = 2.2+9+g8cded16e
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = jitsi-videobridge-nightly
 	backup = etc/jitsi-videobridge-nightly/callstats-java-sdk.properties
 	backup = etc/jitsi-videobridge-nightly/sip-communicator.properties
 	backup = etc/jitsi-videobridge-nightly/jvb.conf
-	source = jitsi-videobridge-nightly::git+https://github.com/jitsi/jitsi-videobridge#tag=2.1-681-g3544ed05
+	source = jitsi-videobridge-nightly::git+https://github.com/jitsi/jitsi-videobridge#tag=2.2-9-g8cded16e
 	source = config
 	source = sip-communicator.properties
 	source = service
