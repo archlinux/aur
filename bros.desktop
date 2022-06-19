@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=BROS
+GenericName=Atari Platformer
+Comment=BROS ATARI XL/XE 1990 KE-SOFT
+Categories=Game;
+Path=/opt/bros
+Exec=altirra /opt/bros/Bros.atr
+Icon=bros
+Terminal=false
+StartupNotify=true
+StartupWMClass=BROS

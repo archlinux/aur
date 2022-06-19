@@ -1,0 +1,16 @@
+pkgbase = bros
+	pkgdesc = An 8-bit Atari computer emulator, on Wine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html
+	arch = any
+	license = Unlicense
+	depends = altirra
+	source = https://archive.org/download/a8b_Bros_1989_KE_Soft_DE_en_a3/Bros_1989_KE_Soft_DE_en_a3.atr
+	source = bros.desktop
+	source = bros.png
+	md5sums = 6f9164dc8e7710a08b11e747e80962c0
+	md5sums = 8441690a823e2f016657ef3284490609
+	md5sums = b4a23bffe9181a496fdf5ad1dd6eebbb
+
+pkgname = bros
