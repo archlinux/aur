@@ -1,7 +1,7 @@
 pkgbase = python32
 	pkgdesc = Next generation of the python high-level scripting language
 	pkgver = 3.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.python.org/
 	changelog = ChangeLog
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = python32
 	makedepends = tk
 	makedepends = sqlite
 	makedepends = valgrind
+	makedepends = gcc11
 	depends = expat
 	depends = bzip2
 	depends = gdbm
@@ -18,6 +19,7 @@ pkgbase = python32
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
+	provides = python=3.2.6
 	source = http://www.python.org/ftp/python/3.2.6/Python-3.2.6.tar.xz
 	source = readline-6.3.patch
 	source = openssl-1.0.2g.patch

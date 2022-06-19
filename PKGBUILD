@@ -5,14 +5,15 @@
 # Contributor: Simon Sapin <simon.sapin at kozea.fr>
 pkgname=python32
 pkgver=3.2.6
-pkgrel=3
+pkgrel=4
 _pybasever=3.2
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
+provides=("python=$pkgver")
 depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
-makedepends=('tk' 'sqlite' 'valgrind')
+makedepends=('tk' 'sqlite' 'valgrind' 'gcc11')
 optdepends=('tk: for tkinter' 'sqlite')
 changelog=ChangeLog
 source=("http://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"
@@ -35,6 +36,10 @@ build() {
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
 
+  # Fix shebangs
+  find -name '*.py*' \
+       -exec sed -ri '1s/^(#!.*python)3?\s*$/\1'$_pybasever'/' '{}' \;
+
   # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
@@ -43,6 +48,7 @@ build() {
 
   export CPPFLAGS="-I/usr/include/openssl-1.0"
   export LDFLAGS="-L/usr/lib/openssl-1.0"
+  export CC=gcc-11
   ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
