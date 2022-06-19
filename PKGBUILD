@@ -3,15 +3,16 @@
 
 pkgname=ls_extended-git
 pkgver=2.0.0.r159
-pkgrel=2
-pkgdesc='ls with coloring and icons from git'
+pkgrel=3
+pkgdesc='ls with coloring and icons - from git'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
 license=('custom:BSD')
 makedepends=('git')
-depends=('glibc' 'nerd-fonts')
+depends=('glibc')
 conflicts=('ls_extended')
 provides=('ls_extended')
+optdepends=('nerd-fonts-symbols: for icon support')
 source=("git+$url")
 md5sums=('SKIP')
 

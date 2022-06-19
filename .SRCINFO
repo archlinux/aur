@@ -1,13 +1,13 @@
 pkgbase = ls_extended-git
-	pkgdesc = ls with coloring and icons from git
+	pkgdesc = ls with coloring and icons - from git
 	pkgver = 2.0.0.r159
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Electrux/ls_extended
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
 	depends = glibc
-	depends = nerd-fonts
+	optdepends = nerd-fonts-symbols: for icon support
 	provides = ls_extended
 	conflicts = ls_extended
 	source = git+https://github.com/Electrux/ls_extended
