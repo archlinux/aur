@@ -6,7 +6,7 @@ pkgdesc='Official patches maintained by ReVanced'
 arch=('any')
 url="https://github.com/revanced/revanced-patches"
 license=('GPL3')
-depends=('java-environment')
+depends=('java-environment' 'revanced-cli')
 source=("${url}/releases/download/v${pkgver}/revanced-patches-${pkgver}.jar"
         "${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('SKIP'

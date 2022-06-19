@@ -6,6 +6,7 @@ pkgbase = revanced-patches
 	arch = any
 	license = GPL3
 	depends = java-environment
+	depends = revanced-cli
 	source = https://github.com/revanced/revanced-patches/releases/download/v1.6.3/revanced-patches-1.6.3.jar
 	source = https://github.com/revanced/revanced-patches/raw/v1.6.3/LICENSE
 	sha256sums = SKIP
