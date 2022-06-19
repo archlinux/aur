@@ -1,6 +1,6 @@
 pkgbase = i686-elf-gcc-git
 	pkgdesc = GNU gcc for the i686- toolchain development build
-	pkgver = 12.1.0
+	pkgver = 13.0.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/gcc
 	arch = x86_64

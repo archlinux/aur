@@ -1,6 +1,6 @@
 # Maintainer: Huayu ZHANG <zhanghuayu1233@gmail.com>
 pkgname=i686-elf-gcc-git
-pkgver=12.1.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="GNU gcc for the i686- toolchain development build"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=(gmp mpfr gcc)
 depends=(xz libmpc i686-elf-binutils-git)
 source=("git+https://gcc.gnu.org/git/gcc.git" "gcc12-Wno-format-security.patch") 
-# https://bugs.archlinux.org/task/70701 (patch modified for gcc 12)
+# https://bugs.archlinux.org/task/70701 (patch modified for gcc 12 and 13)
 sha256sums=("SKIP" "07c72cccb31b5fb035042eca910c9bf0d3008aaeb04350534bb7f5aede209982")
 
 
