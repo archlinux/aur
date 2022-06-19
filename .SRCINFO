@@ -1,0 +1,22 @@
+pkgbase = worddle-git
+	pkgdesc = Wordle is a web-based word game developed by Josh Wardle. This wrapper written in Qt removes all bloat by NYT from the game.
+	pkgver = 1.0.r38.3826592
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/worddle
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	depends = qt5-webengine
+	provides = worddle
+	conflicts = worddle
+	source = worddle::git+https://github.com/keshavbhatt/worddle
+	sha256sums = SKIP
+
+pkgname = worddle-git
