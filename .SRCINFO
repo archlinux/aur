@@ -1,10 +1,9 @@
 pkgbase = i686-elf-gcc-git
 	pkgdesc = GNU gcc for the i686- toolchain development build
-	pkgver = dev
+	pkgver = 12.1.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/gcc
 	arch = x86_64
-	groups = i686-elf-toolchain-git
 	license = GPL
 	makedepends = gmp
 	makedepends = mpfr
@@ -13,6 +12,8 @@ pkgbase = i686-elf-gcc-git
 	depends = libmpc
 	depends = i686-elf-binutils-git
 	source = git+https://gcc.gnu.org/git/gcc.git
+	source = gcc12-Wno-format-security.patch
 	sha256sums = SKIP
+	sha256sums = 07c72cccb31b5fb035042eca910c9bf0d3008aaeb04350534bb7f5aede209982
 
 pkgname = i686-elf-gcc-git

@@ -1,0 +1,154 @@
+From 107db5008b826d46f4eeb569b7199f0874839112 Mon Sep 17 00:00:00 2001
+From: Joey Dumont <joey.dumont@gmail.com>
+Date: Thu, 17 Jun 2021 22:17:13 -0400
+Subject: [PATCH] Workaround for Werror=format-security errors in the libcpp
+ and gcc components.
+
+Both libcpp and the gcc subfolders have fail to compile when the Werror=format-security
+flag is present. This patch attempts to to selectively disable this flag by adding
+Wno-error=format-security in some build system variables.
+
+In the gcc component, we simply augment the existing --disable-build-format-warnings
+option to set -Wno-error=format-security. We also must add this flag to the strict_warn
+set of CFLAGS, so that the gcc/c component can pick it up.
+
+In the libcpp component, we add the --disable-build-format-warnings option
+to the configure script, and give it the same options as gcc's option.
+---
+ gcc/configure       |  4 ++--
+ gcc/configure.ac    |  6 +++---
+ libcpp/configure    | 20 +++++++++++++++++---
+ libcpp/configure.ac |  8 +++++++-
+ 4 files changed, 29 insertions(+), 9 deletions(-)
+
+diff --git a/gcc/configure b/gcc/configure
+index 7184dd6c0..90d3a97e3 100755
+--- a/gcc/configure
++++ b/gcc/configure
+@@ -6833,7 +6833,7 @@ else
+ fi
+ 
+ if test $enable_build_format_warnings = no; then :
+-  wf_opt=-Wno-format
++  wf_opt="-Wno-format -Wno-format-security"
+ else
+   wf_opt=
+ fi
+@@ -6960,7 +6960,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+ 
+ strict_warn=
+ save_CXXFLAGS="$CXXFLAGS"
+-for real_option in -Wmissing-format-attribute -Woverloaded-virtual; do
++for real_option in -Wmissing-format-attribute -Woverloaded-virtual $wf_opt; do
+   # Do the check with the no- prefix removed since gcc silently
+   # accepts any -Wno-* option on purpose
+   case $real_option in
+diff --git a/gcc/configure.ac b/gcc/configure.ac
+index 96a6f62b0..379acef47 100644
+--- a/gcc/configure.ac
++++ b/gcc/configure.ac
+@@ -523,17 +523,17 @@ AC_ARG_ENABLE(build-format-warnings,
+   AS_HELP_STRING([--disable-build-format-warnings],[don't use -Wformat while building GCC]),
+   [],[enable_build_format_warnings=yes])
+ AS_IF([test $enable_build_format_warnings = no],
+-      [wf_opt=-Wno-format],[wf_opt=])
++      [wf_opt=-Wno-format -Wno-format-security],[wf_opt=])
+ ACX_PROG_CXX_WARNING_OPTS(
+ 	m4_quote(m4_do([-W -Wall -Wno-narrowing -Wwrite-strings ],
+ 		       [-Wcast-qual $wf_opt])),
+ 		       [loose_warn])
+ ACX_PROG_CC_WARNING_OPTS(
+ 	m4_quote(m4_do([-Wstrict-prototypes -Wmissing-prototypes ],
+-		       [])), [c_loose_warn])
++	 	       	[-Wno-error=format-diag ])), [c_loose_warn])
+ ACX_PROG_CXX_WARNING_OPTS(
+ 	m4_quote(m4_do([-Wmissing-format-attribute ],
+-		       [-Woverloaded-virtual])), [strict_warn])
++		        [-Woverloaded-virtual $wf_opt])), [strict_warn])
+ ACX_PROG_CC_WARNING_OPTS(
+ 	m4_quote(m4_do([-Wold-style-definition -Wc++-compat])), [c_strict_warn])
+ ACX_PROG_CXX_WARNING_ALMOST_PEDANTIC(
+
+
+diff --git a/libcpp/configure b/libcpp/configure
+index 7e28606f6..f91a07b34 100755
+--- a/libcpp/configure
++++ b/libcpp/configure
+@@ -728,6 +728,7 @@ ac_subst_files=''
+ ac_user_opts='
+ enable_option_checking
+ enable_largefile
++enable_build_format_warnings
+ enable_werror_always
+ with_gnu_ld
+ enable_rpath
+@@ -1367,6 +1368,8 @@ Optional Features:
+   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+   --disable-largefile     omit support for large files
++  --disable-build-format-warnings
++                          don't use -Wformat while building GCC
+   --enable-werror-always  enable -Werror despite compiler version
+   --disable-rpath         do not hardcode runtime library paths
+   --enable-maintainer-mode enable rules only needed by maintainers
+@@ -4898,6 +4901,18 @@ test -n "$AUTOHEADER" || AUTOHEADER="$MISSING autoheader"
+ 
+ # Figure out what compiler warnings we can enable.
+ # See config/warnings.m4 for details.
++# Check whether --enable-build-format-warnings was given.
++if test "${enable_build_format_warnings+set}" = set; then :
++  enableval=$enable_build_format_warnings;
++else
++  enable_build_format_warnings=yes
++fi
++
++if test $enable_build_format_warnings = no; then :
++  wf_opt="-Wno-format -Wno-format-security"
++else
++  wf_opt=
++fi
+ 
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+@@ -4907,8 +4922,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ warn=
+ save_CFLAGS="$CFLAGS"
+-for real_option in -W -Wall -Wno-narrowing -Wwrite-strings \
+-			  -Wmissing-format-attribute; do
++for real_option in -W -Wall -Wno-narrowing -Wwrite-strings -Wmissing-format-attribute $wf_opt; do
+   # Do the check with the no- prefix removed since gcc silently
+   # accepts any -Wno-* option on purpose
+   case $real_option in
+@@ -4983,7 +4997,7 @@ else
+   CFLAGS="$option"
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++  
+ int
+ main ()
+ {
+diff --git a/libcpp/configure.ac b/libcpp/configure.ac
+index 1efa96f7c..fe1e90a61 100644
+--- a/libcpp/configure.ac
++++ b/libcpp/configure.ac
+@@ -25,8 +25,14 @@ AC_CHECK_PROGS([AUTOHEADER], [autoheader], [$MISSING autoheader])
+ # Figure out what compiler warnings we can enable.
+ # See config/warnings.m4 for details.
+ 
++AC_ARG_ENABLE(build-format-warnings,
++  AS_HELP_STRING([--disable-build-format-warnings],[don't use -Wformat while building GCC]),
++  [],[enable_build_format_warnings=yes])
++AS_IF([test $enable_build_format_warnings = no],
++      [wf_opt="-Wno-format -Wno-format-security"],[wf_opt=])
++
+ ACX_PROG_CC_WARNING_OPTS([-W -Wall -Wno-narrowing -Wwrite-strings \
+-			  -Wmissing-format-attribute], [warn])
++			  -Wmissing-format-attribute $wf_opt] , [warn])
+ ACX_PROG_CC_WARNING_OPTS([-Wstrict-prototypes -Wmissing-prototypes \
+ 			  -Wold-style-definition -Wc++-compat], [c_warn])
+ ACX_PROG_CC_WARNING_ALMOST_PEDANTIC([-Wno-long-long])
+-- 
+2.32.0
+
