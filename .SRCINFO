@@ -1,0 +1,22 @@
+pkgbase = mkpxelinux
+	pkgdesc = Advanced, modular network pxe boot image creation utility
+	pkgver = 2013.10
+	pkgrel = 3
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = tftp-hpa
+	depends = syslinux
+	optdepends = dhcp: for dhcp server usage
+	backup = etc/mkpxelinux.conf
+	source = boot.msg
+	source = mkpxelinux
+	source = mkpxelinux.conf
+	source = options.msg
+	md5sums = f4a30ab94fdc1974f4fbdfd7235ca512
+	md5sums = 90dd31f0501df4defdbe975368446f27
+	md5sums = 1b6aa3d4e77d6d7a61590d242d34a138
+	md5sums = b211c5f7e30d2ee36cde20f71aa3f2b8
+
+pkgname = mkpxelinux
