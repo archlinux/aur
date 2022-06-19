@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.4.7]
+### Added
+
+- Added support for querying v3 Findings for Hosts, Cloud Resources, Web Applications and Host Audits modules. #592 #595
+- Added support for querying v3 Assets data for Hosts, Cloud Resources, and Web Applications modules. #592 #594
+
+### Fixed
+
+- Fixed Tenable.io - Tags example #590
+- Fixed Nessus import issue #589
+
+[1.4.7]: https://github.com/tenable/pyTenable/compare/1.4.6...1.4.7
+
 ## [1.4.6]
 ### Added
 
