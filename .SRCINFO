@@ -1,6 +1,6 @@
 pkgbase = protonup-qt
 	pkgdesc = Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
-	pkgver = 2.6.4
+	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://davidotek.github.io/protonup-qt
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = protonup-qt
 	depends = python-vdf
 	depends = python-pyxdg
 	depends = qt6-tools
-	source = protonup-qt-2.6.4.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v2.6.4.tar.gz
+	source = protonup-qt-2.6.5.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v2.6.5.tar.gz
 	source = net.davidotek.pupgui2.sh
-	sha256sums = bd5982f7c5d85d0de5f7b82aecd29f7016ccab4274a39504bd9029e696e164ea
+	sha256sums = 598b03a2577e1572a251b798bcf9f0b8dae9b2db41e7435e6ca5a9f40209442b
 	sha256sums = 732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f
 
 pkgname = protonup-qt
