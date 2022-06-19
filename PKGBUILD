@@ -3,7 +3,7 @@
 
 pkgname="lidarr-develop"
 pkgver=1.0.2.2592
-pkgrel=1
+pkgrel=2
 pkgdesc="Music download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/lidarr/Lidarr"
@@ -25,9 +25,9 @@ optdepends=('sabnzbd: usenet downloader'
 provides=('lidarr')
 conflicts=('lidarr' 'lidarr-nightly')
 
-source_x86_64=("lidarr-${pkgver}-linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64")
-source_aarch64=("lidarr-${pkgver}-linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64")
-source_armv7h=("lidarr-${pkgver}-linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm")
+source_x86_64=("lidarr-${pkgver}-linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64")
+source_aarch64=("lidarr-${pkgver}-linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64")
+source_armv7h=("lidarr-${pkgver}-linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/develop/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm")
 
 source=('lidarr.service'
         'lidarr.tmpfiles'
@@ -38,9 +38,9 @@ sha512sums=('156c1437b4d71858e01c60b5af65c0a52aab4554e3b26c3b5685291e230d93596a7
             '3800547b7c3d2b6e0a590ebd2db5ed48a6c31249098a4c36876faca36dd81e84ac45f3679d16bfe101be594dc6d5d0cfc91bfc66ed8cba35ec05f22027ab2441'
             'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622'
             'c9bd8707cceed880ecebd974f0c5db0801cfafd714bf939e9c688212e4b092cc9e6452c899ae30d8d5c5acc9a4e41c9fa0f1e5c1daef7cdb0bd5d66c6be0eb4a')
-sha512sums_x86_64=('4e3076c8e39758e10445747202ab28a72eb6f6c3485b6de2dd0a174a0e15031edd3010c27d3d67280a814193c514f2c80ef3ee54fcc66665485aea23e3741650')
-sha512sums_aarch64=('4e3076c8e39758e10445747202ab28a72eb6f6c3485b6de2dd0a174a0e15031edd3010c27d3d67280a814193c514f2c80ef3ee54fcc66665485aea23e3741650')
-sha512sums_armv7h=('4e3076c8e39758e10445747202ab28a72eb6f6c3485b6de2dd0a174a0e15031edd3010c27d3d67280a814193c514f2c80ef3ee54fcc66665485aea23e3741650')
+sha512sums_x86_64=('8cc186d7e71d7b4999ff95ccaadb6b909e625787228cc16555c8a3bf7f9f82efda2f7e5c93dd2297f7a4acf030edd7242fcefb5398859ad853207736ce421efb')
+sha512sums_aarch64=('99f008a87840c464dde907cafcc7a3f0336099eb2c46d60fbd94514c945103816f846f8d7ddcdb4018d29f79528e74249aa4b169ed6986b10ff43ac887ee90bf')
+sha512sums_armv7h=('25b7676bcd2e2aee898afb5eb312f1e0b2a3344822b92ed9975102e63da7a5ce6c96e92a4d0faa741c6a4db66eee0fd90ff3d3c248a9e8689f88c4db63e4acfd')
 
 
 
