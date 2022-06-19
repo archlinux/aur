@@ -1,6 +1,6 @@
 pkgbase = cwonf
 	pkgdesc = Harmonize your configurations
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/Eternahl/cwonf
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = cwonf
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = cwonf-0.1.2.tar.gz::https://codeberg.org/Eternahl/cwonf/archive/0.1.2.tar.gz
-	md5sums = 0d459467b3311b95359af79a62dca744
+	source = cwonf-0.2.0.tar.gz::https://codeberg.org/Eternahl/cwonf/archive/0.2.0.tar.gz
+	md5sums = 899e20f55514d766c84e8104139e0f97
 
 pkgname = cwonf
