@@ -13,6 +13,8 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
 options=(!emptydirs !docs)
+replaces=("i686-elf-binutils")
+conflicts=("i686-elf-binutils")
 source=("git://sourceware.org/git/binutils-gdb.git")
 
 sha256sums=('SKIP')
