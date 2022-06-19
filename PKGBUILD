@@ -15,7 +15,7 @@ arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
 depends=('libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libxi')
+makedepends=('git' 'ninja' 'python' 'clang' 'cmake' 'libxi')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
@@ -135,14 +135,10 @@ prepare() {
     mkdir -p build
 
     cd "${srcdir}/skia"
-    python2 tools/git-sync-deps
-
-    mkdir -p "${srcdir}/.pkgbuild-bin"
-    ln -sf "$(which python2)" "${srcdir}/.pkgbuild-bin/python"
+    python tools/git-sync-deps
 }
 
 build() {
-    export PATH="${srcdir}/.pkgbuild-bin":$PATH
     cd "${srcdir}/skia"
     bin/gn gen out/Clang --args='cc="clang" cxx="clang++" is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
     # bin/gn gen out/Clang --args='is_debug=false is_official_build=true skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_sfntly=false skia_use_freetype=true skia_use_harfbuzz=true skia_pdf_subset_harfbuzz=true skia_use_system_freetype2=false skia_use_system_harfbuzz=false'
