@@ -45,14 +45,14 @@ source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
         "git+https://github.com/${_pkgname}/lua"
         "git+https://github.com/${_pkgname}/tga.git"
         "git+https://github.com/${_pkgname}/curl.git"
-        "git+https://github.com/machinezone/IXWebSocket"
+        "git+https://github.com/${_pkgname}/IXWebSocket"
 
         # LAF submodules
         "git+https://github.com/${_pkgname}/stringencoders"
         "git+https://github.com/${_pkgname}/googletest"
 
         # Skia
-        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m96")
+        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m102")
 sha256sums=('SKIP'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'SKIP'
