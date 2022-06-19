@@ -1,29 +1,34 @@
-# Maintainer: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
-pkgname=('python-requests-pkcs12')
-_pyname=requests_pkcs12
-depends=('python-requests' 'python-pyopenssl')
-makedepends=('python-setuptools')
-pkgver=1.8
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
+
+pkgname=python-requests-pkcs12
+_pkg=requests_pkcs12
+pkgver=1.14
 pkgrel=1
-pkgdesc='This library adds PKCS#12 support to the Python requests library.'
+pkgdesc='Adds PKCS#12 support to python-requests'
 arch=('any')
-url="https://github.com/m-click/requests_pkcs12/"
 license=('ISC')
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/m-click/requests_pkcs12/archive/${pkgver}.tar.gz")
-sha512sums=('47cfd3ace07ae5ba122b77b6354ddb78fb997fa5b32d8e888c508eb94779d120955cfb2bbedb252acaf4fcbbcddb3dad538f211ef0a8c258ea410e504888eaa9')
+url="https://github.com/m-click/requests_pkcs12"
+depends=('python-requests' 'python-pyopenssl' 'python-cryptography')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('3b3926cf91769d00c7d68ccfc120f03e5ddf5ef48bd9c4b1985dfb40853f8ac5')
 
 build() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py test
-}
+# check() {
+# 	cd "$_pkg-$pkgver"
+# 	python setup.py test
+# }
 
 package() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}" --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }

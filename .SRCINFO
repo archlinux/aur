@@ -1,15 +1,18 @@
 pkgbase = python-requests-pkcs12
-	pkgdesc = This library adds PKCS#12 support to the Python requests library.
-	pkgver = 1.8
+	pkgdesc = Adds PKCS#12 support to python-requests
+	pkgver = 1.14
 	pkgrel = 1
-	url = https://github.com/m-click/requests_pkcs12/
+	url = https://github.com/m-click/requests_pkcs12
 	arch = any
 	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-requests
 	depends = python-pyopenssl
-	source = requests_pkcs12-1.8.tar.gz::https://github.com/m-click/requests_pkcs12/archive/1.8.tar.gz
-	sha512sums = 47cfd3ace07ae5ba122b77b6354ddb78fb997fa5b32d8e888c508eb94779d120955cfb2bbedb252acaf4fcbbcddb3dad538f211ef0a8c258ea410e504888eaa9
+	depends = python-cryptography
+	source = python-requests-pkcs12-1.14.tar.gz::https://files.pythonhosted.org/packages/source/r/requests_pkcs12/requests_pkcs12-1.14.tar.gz
+	sha256sums = 3b3926cf91769d00c7d68ccfc120f03e5ddf5ef48bd9c4b1985dfb40853f8ac5
 
 pkgname = python-requests-pkcs12
-
