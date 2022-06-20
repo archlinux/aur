@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=edfbrowser
-pkgver=1.93
+pkgver=1.94
 pkgrel=1
 pkgdesc="A free, opensource, multiplatform, universal viewer and toolbox intended for, but
 not limited to, timeseries storage files like EEG, EMG, ECG, BioImpedance, etc."
@@ -21,7 +21,7 @@ changelog=
 source=(https://www.teuniz.net/edfbrowser/edfbrowser_${pkgver//.}_source.tar.gz
         edfbrowser.desktop)
 noextract=()
-sha1sums=('3d7bf1774d88185c7a3d79fb8ed700c293b0fdc0'
+sha1sums=('a76f6f653faff411f9d3167cee52702ed2f7e5a0'
           '3076f5b8ab0313edb7b20ca13214382914725f52')
 
 build() {
