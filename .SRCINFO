@@ -1,0 +1,15 @@
+pkgbase = opener
+	pkgdesc = Simple xdg-open replacement written in Scheme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~dawidjkubis/opener
+	arch = any
+	license = UNLICENSE
+	depends = guile
+	depends = file
+	provides = xdg-utils
+	conflicts = xdg-utils
+	source = https://git.sr.ht/~dawidjkubis/opener/archive/1.0.tar.gz
+	sha256sums = d5d6a43030d3bed7982c41301a549c11cc9995f55267e10fe81666091a9b153f
+
+pkgname = opener
