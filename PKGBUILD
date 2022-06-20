@@ -56,7 +56,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-stable
-pkgver=1.0.11
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
@@ -66,7 +66,6 @@ depends=(git "${fonts[@]}" "${needed_pkgs[@]}" "${xfce4_pkgs[@]}")
 optdepends=(
 	"bluez: Daemons for the bluetooth protocol stack. Needed for the bluetooth integration in polybar"
 	"blueman: GTK+ Bluetooth Manager. Optional."
-	"pulseaudio-module-bt: PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support. Needed for the bluetooth integration in polybar"
 	"dunst: Customizable and lightweight notification-daemon. Will be used by default for notifications if installed"
 	"thunar: Modern file manager for Xfce"
 	"thunar-archive-plugin: Create and extract archives in Thunar"
