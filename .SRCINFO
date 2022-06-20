@@ -1,6 +1,6 @@
 pkgbase = cuttlefish-tool
 	pkgdesc = Texture converter tool and library
-	pkgver = 2.5.5
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://github.com/akb825/Cuttlefish
 	arch = i686
