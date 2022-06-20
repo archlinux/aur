@@ -1,36 +1,37 @@
 # Maintainer: Rouven Himmelstein <rouvenhimmelstein@gmail.com>
 
-_gitname=chwp
-_cmdname=chwp
-pkgname=${_gitname}-git
-pkgver=0.0.27
+_pkgname=chwp
+pkgname=${_pkgname}-git
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
-url="https://gitlab.com/rouvenhimmelstein/chwp"
-license=('GPL3')
-depends=('xorg-xrandr' 'qt5-base')
-makedepends=('git' 'cmake' 'qt5-base')
+url="https://github.com/RouHim/chwp"
+license=('GPL-3.0-or-later')
+depends=('xorg-xrandr')
+makedepends=('cargo')
 provides=('chwp')
 conflicts=('chwp')
-source=("https://gitlab.com/rouvenhimmelstein/chwp/-/archive/${pkgver}/${_gitname}-${pkgver}.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$pkgver.crate")
 sha1sums=('SKIP')
 
 prepare() {
-    mkdir -p $srcdir/$_gitname-${pkgver}/cmake-build-release
+    cd "$srcdir/$_pkgname-$pkgver"
+
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-
 build() {
-    cd $srcdir/$_gitname-${pkgver}/cmake-build-release
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
+    cd "$srcdir/$_pkgname-$pkgver"
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-    cd $srcdir/$_gitname-${pkgver}/cmake-build-release
-    make DESTDIR="$pkgdir" install
+    cd "$srcdir/$_pkgname-$pkgver"
 
-    cd ${srcdir}/${_gitname}-${pkgver}
-    install -D -m755 ${_cmdname}.1 ${pkgdir}/usr/share/man/man1/${_cmdname}.1
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    install -D -m755 ${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
 }
