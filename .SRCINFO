@@ -1,0 +1,12 @@
+pkgbase = clap
+	pkgdesc = Clever Audio Plugin API
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cleveraudio.org
+	arch = any
+	groups = pro-audio
+	license = MIT
+	source = clap-1.0.2.tar.gz::https://github.com/free-audio/clap/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = e99d297b9bca8dd71c4528f836840173e2415e2d5c800f0d475eed151924279d
+
+pkgname = clap
