@@ -1,7 +1,7 @@
 pkgbase = msitools
 	pkgdesc = Set of programs to inspect and build Windows Installer (.MSI) files
 	pkgver = 0.101
-	pkgrel = 3
+	pkgrel = 5
 	url = https://wiki.gnome.org/msitools
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = msitools
 	makedepends = gobject-introspection
 	depends = libgsf
 	depends = gcab
-	source = http://ftp.gnome.org/pub/GNOME/sources/msitools/0.101/msitools-0.101.tar.xz
+	source = https://download.gnome.org/sources/msitools/0.101/msitools-0.101.tar.xz
+	source = msitools-glib-2.71.patch::https://gitlab.gnome.org/GNOME/msitools/-/commit/18bc0b2ee79438b8e35c0769165a9a105e3792a0.patch
 	sha256sums = 0cc4d2e0d108fa6f2b4085b9a97dd5bc6d9fcadecdd933f2094f86bafdbe85fe
+	sha256sums = 8b33b48e8b5a2cb78ea7e2948b8b6b9d264cd1b12c11d3c7870813d6c6a2569e
 
 pkgname = msitools
-
