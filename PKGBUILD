@@ -16,8 +16,8 @@ source=("${pkgname/-bin/}.service")
 source_x86_64=("${pkgname/-bin/}-$CARCH::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_amd64")
 source_aarch64=("${pkgname/-bin/}-$CARCH::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_arm64")
 sha256sums=('62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e')
-sha256sums_x86_64=('28a3d0a334559e1d4b0bc36e0ac90e44a20654b64512a898af0ad42472bb1156')
-sha256sums_aarch64=('28a3d0a334559e1d4b0bc36e0ac90e44a20654b64512a898af0ad42472bb1156')
+sha256sums_x86_64=('1ceb797aea7797732e33247a803d0a875fa74c151f0e9a9d0fb3041a1129261f')
+sha256sums_aarch64=('e67dfe79579e9c91d3bc59642dc714b9d819af1fb286e6c7036efa3028a29898')
 
 package(){
  install -d 640 "$pkgdir/etc/pterodactyl"
