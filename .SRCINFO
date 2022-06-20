@@ -1,0 +1,28 @@
+pkgbase = grig-git
+	pkgdesc = Ham Radio - Rig control (cat) program
+	pkgver = r3.g77ab785
+	pkgrel = 1
+	url = http://groundstation.sourceforge.net/grig/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = hamlib
+	depends = gtk2
+	depends = hamradio-menus
+	provides = grig
+	conflicts = grig
+	source = grig::git+https://github.com/fillods/grig.git#branch=master
+	source = grig.desktop
+	md5sums = SKIP
+	md5sums = e652ce82c1fbf8ead412e978921d8025
+	sha256sums = SKIP
+	sha256sums = 85941679f966eab51a5f90450447cc4b321040978287b7066f8edb1cd0bf537a
+
+pkgname = grig-git
