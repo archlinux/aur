@@ -1,6 +1,6 @@
 pkgbase = mprocs
 	pkgdesc = Run multiple commands in parallel
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mprocs
 	makedepends = rust
 	provides = mprocs
 	conflicts = mprocs-bin
-	source = https://github.com/pvolok/mprocs/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 25995ab61823e6af91811d2acdefdfcea18cd09cc5436d46de3ee4ca37aafb05
+	source = https://github.com/pvolok/mprocs/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 6c6f2b00848b3589c33f65b5d4f01af36fc9a8bcdd9ba65855c5e2a740d46d1e
 
 pkgname = mprocs
