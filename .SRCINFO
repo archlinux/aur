@@ -1,24 +1,29 @@
 pkgbase = qtscrcpy
 	pkgdesc = Android real-time screencast control tool
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	makedepends = cmake
+	makedepends = git
 	makedepends = qt5-tools
 	depends = android-tools
+	depends = qt5-multimedia
 	depends = qt5-x11extras
+	optdepends = sndcpy: audio mirroring for Android >=10
 	conflicts = qt-scrcpy
 	replaces = qt-scrcpy
 	backup = etc/qtscrcpy/config.ini
-	source = QtScrcpy-1.9.0.tar.gz::https://github.com/barry-ran/QtScrcpy/archive/v1.9.0.tar.gz
+	source = git+https://github.com/barry-ran/QtScrcpy.git#commit=5d62f85ff659a80a23c932f2db0ae907e66025ab
+	source = git+https://github.com/barry-ran/QtScrcpyCore.git
 	source = path-fix.patch
 	source = qtscrcpy.desktop
 	source = qtscrcpy.sh
-	sha256sums = b978a3b87d2aa57318d6f8991bc27d61686a74d66a412bc026434d86b7a19109
-	sha256sums = e3ed3f795ec088f766f9c41cbd422224b1f3bfa31f76115028017719f55dcc97
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a80a69c96361e671db319be612dc08f26142886875a35c9cd5df57c100ddae3a
 	sha256sums = 0dc5b08698162c8a0172a9c2e92b18fa7cd9df4b295bd350329b1e4dbd892a6e
 	sha256sums = 26335d1e208c47ddfc4abaabce3f32734788a80a6663577b3ff462346d8dec6f
 

@@ -1,17 +1,17 @@
---- main-a.cpp	2022-01-09 02:11:41.000000000 -0700
-+++ main-b.cpp	2022-01-09 09:59:04.997212291 -0700
-@@ -34,10 +34,10 @@
+--- main-a.cpp	2022-06-20 09:04:26.860669409 -0600
++++ main-b.cpp	2022-06-20 09:27:38.592967912 -0600
+@@ -36,10 +36,10 @@
  #endif
  
  #ifdef Q_OS_LINUX
--    qputenv("QTSCRCPY_ADB_PATH", "../../third_party/adb/linux/adb");
--    qputenv("QTSCRCPY_SERVER_PATH", "../../third_party/scrcpy-server");
--    qputenv("QTSCRCPY_CONFIG_PATH", "../../config");
--    qputenv("QTSCRCPY_KEYMAP_PATH", "../../keymap");
+-    qputenv("QTSCRCPY_ADB_PATH", "../../../QtScrcpy/QtScrcpyCore/src/third_party/adb/linux/adb");
+-    qputenv("QTSCRCPY_SERVER_PATH", "../../../QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server");
+-    qputenv("QTSCRCPY_KEYMAP_PATH", "../../../keymap");
+-    qputenv("QTSCRCPY_CONFIG_PATH", "../../../config");
 +    qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");
 +    qputenv("QTSCRCPY_SERVER_PATH", "/opt/qtscrcpy/scrcpy-server");
-+    qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy");
 +    qputenv("QTSCRCPY_KEYMAP_PATH", "/opt/qtscrcpy/keymap");
++    qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy");
  #endif
  
      g_msgType = covertLogLevel(Config::getInstance().getLogLevel());
