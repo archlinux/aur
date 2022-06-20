@@ -1,0 +1,16 @@
+pkgbase = cursetag-git
+	pkgdesc = an ncurses based audio metadata (tag) editor
+	pkgver = r41.d016c13
+	pkgrel = 1
+	url = https://github.com/lotuskip/cursetag
+	arch = i686
+	arch = x86_64
+	license = None
+	depends = taglib
+	depends = ncurses
+	provides = cursetag
+	conflicts = cursetag
+	source = git+https://github.com/lotuskip/cursetag
+	md5sums = SKIP
+
+pkgname = cursetag-git
