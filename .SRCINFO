@@ -1,0 +1,21 @@
+pkgbase = clap-plugins
+	pkgdesc = CLAP example plugins
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/free-audio/clap-plugins
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-declarative
+	source = git+https://github.com/free-audio/clap-plugins#tag=895a34f72c659b75487562f2f67e8b2ecf41c4d1
+	source = git+https://github.com/free-audio/clap#tag=55ee06f776669b94d63247a9c1dcb7dfa6056587
+	source = git+https://github.com/free-audio/clap-helpers#tag=716cdf49cc6eb7999bad44c084b363bbde907937
+	source = git+https://github.com/niXman/yas#tag=b1d0519a2d2d52beb4f6b253f0b30f742116cbcb
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clap-plugins
