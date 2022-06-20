@@ -1,10 +1,11 @@
 pkgbase = python-pyprecice
 	pkgdesc = Python language bindings for the preCICE coupling library
 	pkgver = 2.4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/python-bindings
 	arch = x86_64
 	license = LGPL3
+	checkdepends = openssh
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = precice
