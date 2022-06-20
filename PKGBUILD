@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur [at] kokakiwi [dot] net>
 
 pkgname=pokete
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='A terminal based Pokemon like game'
 url='https://lxgr-linux.github.io/pokete'
@@ -9,8 +9,8 @@ license=('GPL3')
 arch=('any')
 depends=('python' 'python-scrap_engine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lxgr-linux/pokete/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7410b2043a53e636bfb8c9ede4c24f933f2bd3f5685ff0b2b3031206d7cbd5f4')
-b2sums=('c8db7082cdad7b27291a145073c450bbb5904cb59b2641762cc82a243f656f9657d86245775261ba971923ba10906d2a65f14dcaa6d38014d9012b5b1b632742')
+sha256sums=('5f3bad8b8ca29832c5359ba79474e6c1b34ee36379a74c0229f53d0ca459fc0c')
+b2sums=('530e5224ebc37998b62fb9be071b245f5e8b69453900ed20ad8189df2d07ae5e4c771cb85fc1a6667b8f6540fd9886373267d7ba41aedcdc0bf155840ee4602d')
 
 build() {
   cd "$pkgname-$pkgver"
