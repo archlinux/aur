@@ -17,8 +17,8 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=5.0
-pkgrel=6
+pkgver=5.0.1
+pkgrel=3
 epoch=2
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -100,18 +100,20 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=390d6853d0ef408007feb39c0040682c81c02751
 options=(
   debug
 )
+_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   ffmpeg-vmaf2.x.patch
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=('SKIP'
-        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
-        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13')
+b2sums=(
+  SKIP
+  65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a
+  3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13
+)
 
 prepare() {
   cd ffmpeg
