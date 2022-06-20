@@ -20,7 +20,7 @@ pkgbase = mkinitcpio-archiso-encryption-git
 	provides = mkinitcpio-archiso-encryption
 	conflicts = mkinitcpio-archiso
 	conflicts = mkinitcpio-archiso-encryption
-	source = mkinitcpio-archiso-encryption-git::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#commit=49e0273313d325c8f7ca3bbf24678ab196fead66
+	source = mkinitcpio-archiso-encryption-git::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#branch=crypto
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-archiso-encryption-git
