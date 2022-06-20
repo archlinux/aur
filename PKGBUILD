@@ -1,4 +1,4 @@
-# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: aksr <aksr at t-com dot me>
 # Contributor: Lucky <archlinux@builds.lucky.li>
 ## Based on libtorrent [community]
