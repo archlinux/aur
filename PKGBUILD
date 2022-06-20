@@ -1,8 +1,8 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
-pkgname=svp
+pkgname=svp-bin
 pkgver=4.5.210
 _pkgver=${pkgver}-1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
