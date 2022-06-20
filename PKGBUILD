@@ -65,6 +65,12 @@ prepare() {
     export _extra_configure_options=('--enable-debug' '--enable-extra-debug')
   fi
 
+  echo "Configuring the env vars for the build"
+  echo '-- Adding CPPFLAGS to CXXFLAGS, otherwise the build scripts ignore it'
+  echo '-- Adding LDFLAGS to CXXFLAGS, otherwise the build scripts ignore it'
+  export CXXFLAGS+=" ${CPPFLAGS} ${LDFLAGS}"
+  echo
+
   echo "Running 'configure' script..."
   ./configure "${_extra_configure_options[@]}" \
     --prefix='/usr' \
