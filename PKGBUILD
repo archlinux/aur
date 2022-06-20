@@ -1,7 +1,7 @@
 # Maintainer: 咸粽子 <xianzongzi aliyun.com>
 pkgname=harmonyos-sans-git
 _pkgname=harmonyos-sans
-pkgver=r2.58f1bfa
+pkgver=r75.0d79cad
 pkgrel=1
 pkgdesc="鸿蒙黑体, HarmonyOS fonts"
 arch=('any')
@@ -24,5 +24,5 @@ package() {
 
   install -d "$pkgdir/usr/share/fonts/$_pkgname"
   install -m644 fonts/*.ttf "$pkgdir/usr/share/fonts/$_pkgname"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 LICENSE_Fonts "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

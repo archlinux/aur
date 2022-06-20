@@ -1,6 +1,6 @@
 pkgbase = harmonyos-sans-git
 	pkgdesc = 鸿蒙黑体, HarmonyOS fonts
-	pkgver = r2.58f1bfa
+	pkgver = r75.0d79cad
 	pkgrel = 1
 	url = https://gitee.com/openharmony/resources
 	arch = any
