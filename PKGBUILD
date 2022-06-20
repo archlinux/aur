@@ -2,8 +2,8 @@
 # Maintainer: Peter Kerschl <git@pmke.de>
 pkgname=local-by-flywheel-bin
 _pkgname=local-by-flywheel
-pkgver=6.4.0
-pkgrel=5927
+pkgver=6.4.1
+pkgrel=5978
 pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
 url="https://localbyflywheel.com/"
@@ -21,7 +21,7 @@ depends=(
 )
 options=('emptydirs')
 source=("https://cdn.localwp.com/releases-stable/$pkgver+$pkgrel/local-$pkgver-linux.rpm")
-sha1sums=('19dbf3ef6cca273adcd46ea88dcf1b09cc0be7d0')
+sha1sums=('cfde29dc0f483dbcfe11c19f1d8e61a4ff04b087')
 
 package() {
   rpmextract.sh ../local-$pkgver-linux.rpm
