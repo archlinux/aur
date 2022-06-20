@@ -1,0 +1,16 @@
+pkgbase = qt5-qtspell
+	pkgdesc = Spell checking for Qt text widgets
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/manisandro/qtspell
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = enchant
+	depends = iso-codes
+	depends = qt5-base
+	source = https://github.com/manisandro/qtspell/archive/1.0.1/qtspell-1.0.1.tar.gz
+	sha256sums = 03bb9ef504dff352e162b91e9da89fb34d236e01da54799db69388dc9ceea4c2
+
+pkgname = qt5-qtspell
