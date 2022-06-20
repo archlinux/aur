@@ -4,7 +4,7 @@
 ## Do not use git source; tree contains massive objects
 
 pkgname=python-abjad
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc='Python API for building LilyPond files'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 	'timidity++: playback generated MIDI files')
 # checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('24ceee8f0049c65512d92efb86386deb70bfe5622e563269baa6777f5e3233cf')
+sha256sums=('fac112fdf87142c58cdf5598b2d8eafa935f436d0290a142a02e3e48eeac7cbe')
 # validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36') ## Trevor Baca
 
 build() {
