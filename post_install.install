@@ -5,4 +5,5 @@ post_install() {
 			chmod 777 /home/${SUDO_USER}/.mcbash/mcbash.conf
 		fi
 	fi
+	chown -R ${$SUDO_USER}:${$SUDO_USER} /home/${$SUDO_USER}/.mcbash
 }
