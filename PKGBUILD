@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname='git-machete'
-pkgver=3.10.0
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('git' 'python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ada0ee7cd0ba1f6a0f1f8c28ebdc6791589ad6cb483e8f2bb84419973e2ed493')
+sha256sums=('443876a6c7b1164baa2eae56011156ec9490485fd7636c83a10c5921dc11f3ce')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
