@@ -1,39 +1,59 @@
 # Maintainer: github.com/lmorg
-pkgname=murex
-replaces=('murex-git')
-pkgver=2.8.2100
+pkgname=murex-git
+pkgver=r2255.59e27bb1
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
+provides=('murex')
 license=('GPL2')
-makedepends=('go')
-optdepends=('aspell: inline spell checking')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba3fd505aaa8e8289f1baf0375d319b4f7fa9cda2ba4e6299d63705154f70406')
+makedepends=('git' 'go')
+source=("git+https://github.com/lmorg/murex.git")
+sha1sums=('SKIP')
 
 prepare(){
-  cd "$pkgname-$pkgver"
-  mkdir -p build/
-}
-
-build() {
-  cd "$pkgname-$pkgver"
+  mkdir -p "$srcdir/build"
+	cd "$srcdir/murex"
+  export GOPATH="$srcdir/build"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build .
+	go mod vendor
+}
+
+pkgver() {
+	cd "$srcdir/murex"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/murex"
+  export GOPATH="$srcdir/build"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -v
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/murex"
+  export GOPATH="$srcdir/build"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  mkdir -p "$GOPATH/src/github.com/lmorg/"
+  ln -s "$srcdir/murex" "$GOPATH/src/github.com/lmorg/" || true
   go test ./...
-  build/murex -c 'g: behavioural/* -> foreach: f { source $f }; try {test: run *}'
+  ./murex -c 'g: behavioural/* -> foreach: f { source $f }; try {test: run *}'
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+	cd "$srcdir/murex"
+	install -D -m755 murex "$pkgdir/usr/bin/murex"
 }
