@@ -7,6 +7,7 @@ pkgbase = teamviewer-beta
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = custom
 	depends = qt5-base
 	depends = qt5-declarative
@@ -24,5 +25,7 @@ pkgbase = teamviewer-beta
 	sha512sums_x86_64 = 5a98b9e73aec31ce573f34b0e98fef1168e5eb3bbb0432ec6d0dccdf5bf4c5b158bf1edd1310989ad270bc4392a5e314d3889ccba6bfc8688c442d802ce1d2cb
 	source_armv7h = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.31.4_armhf.deb
 	sha512sums_armv7h = fa80d252afa332b4e40d67f8de85e4d08397a8523b9f5be82e31dcb3266f37da93831e899773433bc4b1f7ae025b6105915251677de35b0f1131956dc19a393a
+	source_aarch64 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.31.4_arm64.deb
+	sha512sums_aarch64 = 4ebed1bcc81a94b6ecb41cd26639887988471207b7a863002d23e3f05f1a9306f098aa16c8c5714a120b2941d69f5deae723436fbb0eed53a76ab54d1bf7f07e
 
 pkgname = teamviewer-beta
