@@ -9,6 +9,7 @@ url='https://git.sr.ht/~sircmpwn/himitsu-ssh'
 license=(GPL3)
 depends=(himitsu)
 makedepends=(hare hare-ssh scdoc)
+install=himitsu-ssh.install
 _extracted="$pkgname-$pkgver"
 source=("$_extracted.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('dfc8a1a1797a6d040a5f2cacf29c3c7a1608be1d9e3c5c0265a7d852087cf437')

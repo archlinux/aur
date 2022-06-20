@@ -1,0 +1,18 @@
+post_install() {
+	cat >&2 <<EOF
+* 
+* The himitsu-ssh package includes a Himitsu SSH agent, which can be run
+* by using the included 'hissh-agent' systemd user unit.
+* 
+*     systemctl --user enable hissh-agent
+*     systemctl --user start hissh-agent
+* 
+* For ssh to consult hissh-agent, the SSH_AUTH_SOCK environment variable
+* must be set appropriately, ideally in your ~/.profile.
+* 
+*     export SSH_AUTH_SOCK="\$XDG_RUNTIME_DIR/hissh-agent"
+* 
+* Consult hissh-agent(1).
+* 
+EOF
+}

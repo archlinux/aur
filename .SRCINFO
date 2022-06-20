@@ -3,6 +3,7 @@ pkgbase = himitsu-ssh
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/himitsu-ssh
+	install = himitsu-ssh.install
 	arch = x86_64
 	license = GPL3
 	makedepends = hare
