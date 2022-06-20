@@ -28,8 +28,8 @@ md5sums=('fd513ed987711433cdfd4d836fd2241e'
 		'efff2f4298b001212a68f993ad0de510')
 
 prepare() {
-	unzip -u pcxf380.zip ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
-	unzip -u 5200.zip
+	bsdtar -xvf pcxf380.zip ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
+	bsdtar -xvf 5200.zip
 	mv 5200.rom 5200.ROM
 }
 

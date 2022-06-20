@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -ut aur/ .SRCINFO .gitignore PKGBUILD altirra altirra.desktop altirra.png firmware-setup.reg
+git ls-tree --name-only master | xargs cp -ut aur/
