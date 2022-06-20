@@ -5,7 +5,7 @@
 
 pkgname=upmpdcli
 pkgver=1.5.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
 url="https://www.lesbonscomptes.com/upmpdcli/"
@@ -16,7 +16,8 @@ optdepends=(aspell-en id3lib sqlite
             'python-requests: enable search'
             'python-bottle: enable uprcl media server'
             'python-mutagen: enable uprcl media server'
-            'python-waitress: enable uprcl media server')
+            'python-waitress: enable uprcl media server'
+            'recoll: enable uprcl media server')
 install=upmpdcli.install
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz"
         'upmpdcli.service')
