@@ -12,7 +12,7 @@ pkgbase = libtorrent-git
 	depends = glibc
 	depends = openssl
 	depends = zlib
-	provides = libtorrent=0.13.8.r20.g53596afc
+	provides = libtorrent=0.13.8
 	conflicts = libtorrent
 	options = debug
 	source = libtorrent-git::git+https://github.com/rakshasa/libtorrent.git
