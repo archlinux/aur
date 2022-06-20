@@ -1,6 +1,6 @@
 pkgbase = dots-git
 	pkgdesc = Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs
-	pkgver = 1.0.11.r30.g08be246
+	pkgver = 1.0.11.r31.gb444e44
 	pkgrel = 1
 	url = https://github.com/ulises-jeremias/dotfiles
 	arch = any
@@ -49,7 +49,6 @@ pkgbase = dots-git
 	depends = xfce4-notifyd
 	optdepends = bluez: Daemons for the bluetooth protocol stack. Needed for the bluetooth integration in polybar
 	optdepends = blueman: GTK+ Bluetooth Manager. Optional.
-	optdepends = pulseaudio-module-bt: PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support. Needed for the bluetooth integration in polybar
 	optdepends = dunst: Customizable and lightweight notification-daemon. Will be used by default for notifications if installed
 	optdepends = thunar: Modern file manager for Xfce
 	optdepends = thunar-archive-plugin: Create and extract archives in Thunar
