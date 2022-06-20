@@ -8,7 +8,7 @@ pkgname='python2-html5lib'
 _basename="${pkgname#python2-}"
 _distname="${_basename}-python"
 pkgver=1.1
-pkgrel=7
+pkgrel=8
 pkgdesc='HTML parser based on the WHATWG HTML specification (for Python 2)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -20,6 +20,7 @@ depends=(
 makedepends=('python2-setuptools')
 optdepends=('python2-genshi: Genshi treewalker')
 checkdepends=(
+    'python2-chardet'
     'python2-lxml'
     'python2-mock'
     'python2-pytest'
