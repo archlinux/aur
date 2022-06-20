@@ -13,7 +13,7 @@ optdepends=()
 provides=(scitopdf)
 conflicts=()
 replaces=()
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 noextract=()
 md5sums=('SKIP')
 
