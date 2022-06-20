@@ -1,6 +1,6 @@
 pkgbase = meowsql
 	pkgdesc = An attempt to port a very useful GUI database client HeidiSQL to C++/Qt (currently alpha)
-	pkgver = 0.4.15
+	pkgver = 0.4.16
 	pkgrel = 1
 	url = https://github.com/ragnar-lodbrok/meow-sql
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = meowsql
 	depends = qt5-base
 	depends = mariadb-libs
 	depends = postgresql-libs
-  depends = hicolor-icon-theme
+	depends = hicolor-icon-theme
 	optdepends = mariadb
 	optdepends = postgresql
 	conflicts = meowsql-git
-	source = meowsql-0.4.15-1::git+https://github.com/ragnar-lodbrok/meow-sql.git#tag=v0.4.15-alpha
+	source = meowsql-0.4.16-1::git+https://github.com/ragnar-lodbrok/meow-sql.git#tag=v0.4.16-alpha
 	sha256sums = SKIP
 
 pkgname = meowsql
