@@ -1,13 +1,14 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.01
-pkgrel=1
+pkgrel=2
 pkgdesc="An 8-bit Atari computer emulator, on Wine"
-arch=('x86_64')
+arch=('any')
 url="https://www.virtualdub.org/altirra.html"
 license=('GPL2')
 depends=('wine'
 		'wine-mono')
+optdepends=('wine-gecko: HTML help pages support')
 provides=('altirra')
 source=("https://www.virtualdub.org/downloads/Altirra-$pkgver.zip"
 		"http://www.emulators.com/freefile/pcxf380.zip"
@@ -16,17 +17,19 @@ source=("https://www.virtualdub.org/downloads/Altirra-$pkgver.zip"
 		"altirra.desktop"
 		"altirra.png"
 		"firmware-setup.reg")
-noextract=("pcxf380.zip")
-md5sums=("fd513ed987711433cdfd4d836fd2241e"
-		"0225dc8bcf2e69fd30c12a226822222a"
-		"481cc24c9500c887eca14bef9e203f24"
-		"40f2d40268ddfe70fcb4fcfa7f61ee1a"
-		"b0bc516cde6b4311493e475f606bc792"
-		"3b6db414cd1df3f383270fb02b45ec72"
-		"efff2f4298b001212a68f993ad0de510")
+noextract=('pcxf380.zip'
+		'5200.zip')
+md5sums=('fd513ed987711433cdfd4d836fd2241e'
+		'0225dc8bcf2e69fd30c12a226822222a'
+		'481cc24c9500c887eca14bef9e203f24'
+		'40f2d40268ddfe70fcb4fcfa7f61ee1a'
+		'b0bc516cde6b4311493e475f606bc792'
+		'3b6db414cd1df3f383270fb02b45ec72'
+		'efff2f4298b001212a68f993ad0de510')
 
 prepare() {
-	unzip -uq pcxf380.zip ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
+	unzip -u pcxf380.zip ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
+	unzip -u 5200.zip
 	mv 5200.rom 5200.ROM
 }
 
