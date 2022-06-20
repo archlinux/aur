@@ -1,0 +1,16 @@
+pkgbase = python2-webencodings
+	pkgdesc = Python 2 implementation of the WHATWG Encoding standard
+	pkgver = 0.5.1
+	pkgrel = 6
+	url = https://pypi.org/project/webencodings/0.5.1/
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-0.5.1.tar.gz
+	source = LICENSE
+	sha256sums = b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923
+	sha256sums = f23bae6ada76095610a77137fb92aec7342723900211c5826d54b4c57907ca56
+
+pkgname = python2-webencodings

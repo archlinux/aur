@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!*.diff
+!*.hook
+!*.install
+!*.patch
+!*.txt
