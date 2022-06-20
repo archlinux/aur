@@ -17,3 +17,8 @@ Changes from v1.2.1 to v1.2.2
 =============================
 
 - Fixed some DeprecationWarnings.
+
+Changes from v1.2.2 to v1.2.3
+=============================
+
+- Fixed build problems on Windows.

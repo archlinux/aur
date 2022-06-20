@@ -1,20 +1,23 @@
 pkgbase = python-coord
 	pkgdesc = Python module for handling angle and celestial coordinates
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://github.com/LSSTDESC/Coord
 	changelog = CHANGELOG.rst
 	arch = x86_64
 	license = BSD
 	checkdepends = python-nose
 	checkdepends = python-astropy
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = libffi
 	depends = python-cffi
 	depends = python-future
 	depends = python-numpy
-	source = python-coord-1.2.2.tar.gz::https://github.com/LSSTDESC/Coord/archive/v1.2.2.tar.gz
-	sha256sums = 62578e1bbbce1319435ab70013e45f5e83e323220cdb9e5e01aca19d9c0559bd
+	source = python-coord-1.2.3.tar.gz::https://github.com/LSSTDESC/Coord/archive/v1.2.3.tar.gz
+	sha256sums = 4fa4cab15dff39a1ca71cfe4af7afc72ef6ab9a74b3071a7d899d3061cb0c585
 
 pkgname = python-coord
