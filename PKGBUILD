@@ -1,6 +1,6 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=sway-video-idle-inhibit
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Sway Idle Inhibitor using open video devices as a signal'
 url="https://github.com/sameer/$pkgname"
