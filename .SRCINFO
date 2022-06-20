@@ -1,19 +1,19 @@
 pkgbase = tauri-devel-meta
 	pkgdesc = Meta package to setup development environment for Tauri.
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://tauri.studio/docs/getting-started/setup-linux/
+	pkgrel = 2
+	url = https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
 	arch = any
 	license = none
 	depends = webkit2gtk
+	depends = base-devel
 	depends = curl
 	depends = wget
 	depends = openssl
 	depends = appmenu-gtk-module
 	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
 	depends = libvips
-	optdepends = libappindicator-gtk3: needed to use the system tray feature
-	optdepends = patchelf: needed to bundle AppImage
-	optdepends = librsvg: needed to bundle AppImage
 
 pkgname = tauri-devel-meta
