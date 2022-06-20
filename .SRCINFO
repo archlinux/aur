@@ -1,7 +1,7 @@
 pkgbase = python2-webencodings
 	pkgdesc = Python 2 implementation of the WHATWG Encoding standard
 	pkgver = 0.5.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pypi.org/project/webencodings/0.5.1/
 	arch = any
 	license = BSD

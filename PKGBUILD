@@ -5,7 +5,7 @@
 pkgname='python2-webencodings'
 _name="${pkgname#python2-}"
 pkgver=0.5.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Python 2 implementation of the WHATWG Encoding standard'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
