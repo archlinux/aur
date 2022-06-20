@@ -23,25 +23,25 @@ backup=('etc/plymouth/plymouthd.conf')
 
 options=('!libtool' '!emptydirs')
 _gitlab="https://gitlab.freedesktop.org"
-source=("${_gitlab}/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-      'arch-logo.png'
-       'plymouth.encrypt_hook'
-       'plymouth.encrypt_install'
-       'lxdm-plymouth.service'
-       'lightdm-plymouth.service'
-       'sddm-plymouth.service'
-       'plymouth-deactivate.service' # needed for sddm
-       'plymouth.initcpio_hook'
-       'plymouth.initcpio_install'
-       'sd-plymouth.initcpio_install'
-       'plymouth-quit.service.in.patch'
-       'plymouth-update-initrd.patch'
-       'plymouthd.conf.patch'
+source=("${_gitlab}/${_pkgname}/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        'arch-logo.png'
+        'plymouth.encrypt_hook'
+        'plymouth.encrypt_install'
+        'lxdm-plymouth.service'
+        'lightdm-plymouth.service'
+        'sddm-plymouth.service'
+        'plymouth-deactivate.service' # needed for sddm
+        'plymouth.initcpio_hook'
+        'plymouth.initcpio_install'
+        'sd-plymouth.initcpio_install'
+        'plymouth-quit.service.in.patch'
+        'plymouth-update-initrd.patch'
+        'plymouthd.conf.patch'
 )
 
 sha256sums=('8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6'
+            'de4369ad5a5511b684305e3a882c2c56204696514ea8ccdb556dd656eca062e7'
             'SKIP'
-            '748e0cfa0e10ab781bc202fceeed46e765ed788784f1b85945187b0f29eafad7'
             '373ec20fe4c47e693a0c45cc06dd906e35dd1d70a85546bd1d571391de11763a'
             '06b31999cf60f49e536c7a12bc1c4f75f2671feb848bf5ccb91a963147e2680d'
             '86d0230d9393c9d83eb7bb430e6b0fb5e3f32e78fcd30f3ecd4e6f3c30b18f71'
@@ -55,14 +55,14 @@ sha256sums=('8921cd61a9f32f5f8903ceffb9ab0defaef8326253e1549ef85587c19b7f2ab6'
             '71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}" || exit 1
+	cd "${srcdir}/${_pkgname}-${pkgver}" || exit 1
 	patch -p1 -i "${srcdir}/plymouth-update-initrd.patch"
 	patch -p1 -i "${srcdir}/plymouth-quit.service.in.patch"
 	patch -p1 -i "${srcdir}/plymouthd.conf.patch"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}" || exit 1
+	cd "${srcdir}/${_pkgname}-${pkgver}" || exit 1
 
 	LDFLAGS="$LDFLAGS -ludev" ./autogen.sh \
 		--prefix=/usr \
@@ -90,7 +90,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/${pkgname}-${pkgver}
+	cd "$srcdir"/${_pkgname}-${pkgver}
 
 	make DESTDIR="$pkgdir" install
 
