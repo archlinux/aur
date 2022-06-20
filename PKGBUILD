@@ -2,9 +2,7 @@
 # Project: https://sr.ht/~sircmpwn/himitsu
 
 pkgname=himitsu
-_revision=113 # git rev-list --count master
-_commit=003c147
-pkgver="r$_revision.$_commit"
+pkgver='0.1'
 pkgrel=1
 pkgdesc='Secret storage manager'
 arch=(x86_64)
@@ -13,22 +11,22 @@ license=(GPL3)
 depends=()
 makedepends=(hare scdoc)
 optdepends=('hiprompt-gtk-py: prompter support (GTK+)')
-source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$_commit.tar.gz")
-_extractedpath="$pkgname-$_commit"
-sha256sums=('SKIP')
+_extracted="$pkgname-$pkgver"
+source=("$_extracted.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('6566de19d58289dfcdafc476054287fa55a9c4e74d64ba49a5ccbea3473b5a64')
 
 build() {
-	cd "$srcdir/$_extractedpath"
+	cd "$srcdir/$_extracted"
 	make PREFIX=/usr
 }
 
 check() {
-	cd "$srcdir/$_extractedpath"
+	cd "$srcdir/$_extracted"
 	make PREFIX=/usr check
 }
 
 package() {
-	cd "$srcdir/$_extractedpath"
+	cd "$srcdir/$_extracted"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 	cd "$srcdir"
 	install -Dm644 ../himitsud.service \
