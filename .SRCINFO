@@ -1,6 +1,6 @@
 pkgbase = spongebob-cli-git
 	pkgdesc = Watch classic spongebob from the terminal!
-	pkgver = r62.6fe6515
+	pkgver = r106.497a885
 	pkgrel = 1
 	url = https://github.com/trakBan/spongebob-cli
 	arch = any
@@ -18,8 +18,6 @@ pkgbase = spongebob-cli-git
 	provides = spongebob-cli
 	conflicts = spongebob-cli
 	source = spongebob-cli::git+https://github.com/trakBan/spongebob-cli#branch=main
-	source = fix-imports.patch
 	sha256sums = SKIP
-	sha256sums = 0f57d260809e13f0cff08ea4158b38179395b28d5ec8791f58d2c1f8338f533d
 
 pkgname = spongebob-cli-git
