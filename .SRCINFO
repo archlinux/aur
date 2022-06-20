@@ -1,6 +1,6 @@
 pkgbase = python-exhale
 	pkgdesc = A sphinx extension which integrates breathe to enable parsing of doxygen documentation
-	pkgver = 0.3.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/svenevs/exhale
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-exhale
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-six
-	source = python-exhale-0.3.1.tar.gz::https://github.com/svenevs/exhale/archive/v0.3.1.tar.gz
-	sha256sums = 4881289396e883c1534a7c27f6f1e4df04d3cc817ac5785babfd1d75e71c258b
+	source = python-exhale-0.3.4.tar.gz::https://github.com/svenevs/exhale/archive/v0.3.4.tar.gz
+	sha256sums = 5ea67064baad61453fdbdb60ac4ed826911c53281c5c3af3dc0ef993a9b400a8
 
 pkgname = python-exhale
