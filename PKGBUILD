@@ -2,7 +2,7 @@
 # Created: 2013-03-17
 
 pkgname=zulucrypt
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
@@ -14,8 +14,8 @@ optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.xz")
-md5sums=('2ac473b6b902e6bf2166065e7cb1a997')
-sha256sums=('9c832308c7b84007efda363a6755c9c42fdc98f283cd15b9d6d82eb5cd78fe88')
+md5sums=('ca53ef782f84ac62d0e95ec0fc03ad1c')
+sha256sums=('090f3d561add1c5a5fc5158bf346155d43e2b42e7c47939a403ae2f8dcf8eaa3')
 
 build() {
   cd "${srcdir}/${_altpkgname}-${pkgver}"
