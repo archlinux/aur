@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=bros
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atari 800XL platformer"
 arch=('any')
 url="http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html"
