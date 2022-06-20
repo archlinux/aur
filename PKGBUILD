@@ -9,6 +9,7 @@ url='https://git.sr.ht/~sircmpwn/himitsu-firefox'
 license=(GPL3)
 depends=(himitsu)
 makedepends=(hare himitsu)
+install=himitsu-firefox.install
 _extracted="$pkgname-$pkgver"
 source=("$_extracted.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('9710ebfb6dc78bd2d3d1ff173b6829e40acdc90670f1b5b71c2ffede5bb9f37f')
