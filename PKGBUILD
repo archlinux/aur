@@ -3,7 +3,7 @@
 _pkgname=vmware-unlocker
 pkgname=vmware-unlocker-bin
 pkgver=4.2.1
-pkgrel=10
+pkgrel=11
 pkgdesc="VMware macOS utilities"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker"
@@ -26,8 +26,8 @@ package() {
   mkdir -p "$pkgdir/usr/backup/"
   mkdir -p "$pkgdir/etc/pacman.d/hooks/"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm755 "$srcdir/$pkgname/dist/linux/"* "$pkgdir/usr/bin/"
-  install -Dm644 "$srcdir/$pkgname/dist/iso/"* "$pkgdir/usr/bin/iso/"
+  install -Dm755 "$srcdir/dist/linux/"* "$pkgdir/usr/bin/"
+  install -Dm644 "$srcdir/dist/iso/"* "$pkgdir/usr/bin/iso/"
   install -Dm644 "$srcdir/"*.hook "$pkgdir/etc/pacman.d/hooks/"
-  install -Dm644 "$srcdir/$pkgname/dist/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/dist/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
