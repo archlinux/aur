@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
-pkgname='lib32-egl-wayland'
-pkgver=1.1.9+r3+g582b2d3
+pkgname=lib32-egl-wayland
+pkgver=1.1.10
 pkgrel=1
 pkgdesc='EGLStream-based Wayland external platform (32-bit)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('meson'
              )
 provides=('libnvidia-egl-wayland.so')
 options=('!emptydirs')
-source=("git+https://github.com/NVIDIA/egl-wayland#commit=582b2d345abaa0e313cf16c902e602084ea59551")
+source=("git+https://github.com/NVIDIA/egl-wayland#commit=247335d5d451bc56af08781c70f8bc96926cbf23")
 sha256sums=('SKIP')
 
 pkgver() {
