@@ -1,6 +1,6 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=sway-mpris-idle-inhibit
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Sway Idle Inhibitor using MPRIS2 as a signal'
 url="https://github.com/sameer/$pkgname"
