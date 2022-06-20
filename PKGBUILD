@@ -1,7 +1,7 @@
 #Maintainer: Mearaj Bhagad <mearajbhagad at gmail dot com>
 
 pkgname=nordlayer
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=2
 pkgdesc="Proprietary VPN client for linux"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('bash')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.nordlayer.com/linux/latest/debian/pool/main/${pkgname}_${pkgver}_amd64.deb")
-sha512sums_x86_64=('fd6b11a89a31aea20c6cd798b6d249eddf7d5c4ab636d66a501c0f713183f753c95f4f62b5d8edc5e903fd49454b66ca7f68f12164b82d40aac8e94d9293d354')
+sha512sums_x86_64=('040de517421a61b94b8024197ac64ca8e0b6deb94a7ad4a7a47f25cd1a26ba4c4f9a36896490c5eafcfcca1f619142fc8377e17c5161cddabb5b3710cca0134c')
 
 package(){
 	# Extract package data
