@@ -1,6 +1,6 @@
 pkgbase = seiscomp-git
 	pkgdesc = A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version).
-	pkgver = 4.9.3.r0.gb975d57
+	pkgver = 5.0.0.r0.gcb34651
 	pkgrel = 1
 	url = https://github.com/SeisComP
 	install = seiscomp.install

@@ -1,7 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=seiscomp-git
-pkgver=4.9.3.r0.gb975d57
+pkgver=5.0.0.r0.gcb34651
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version)."
 arch=('x86_64')
