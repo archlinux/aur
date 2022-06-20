@@ -4,7 +4,7 @@
 ## GPG key: https://github.com/trevorbaca.gpg
 
 pkgname=python-abjad-ext-nauert
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="Abjad quantization extension, based on Paul Nauert's Q-Grids"
 arch=('any')

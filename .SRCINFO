@@ -1,6 +1,6 @@
 pkgbase = python-abjad-ext-nauert
 	pkgdesc = Abjad quantization extension, based on Paul Nauert's Q-Grids
-	pkgver = 3.9
+	pkgver = 3.10
 	pkgrel = 1
 	url = https://github.com/abjad/abjad-ext-nauert
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-abjad-ext-nauert
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-abjad>=3.9
-	source = python-abjad-ext-nauert::git+https://github.com/abjad/abjad-ext-nauert#tag=v3.9?signed
+	depends = python-abjad>=3.10
+	source = python-abjad-ext-nauert::git+https://github.com/abjad/abjad-ext-nauert#tag=v3.10?signed
 	validpgpkeys = B76E156E7824B5040027E7C6205943F230B622B9
 	sha256sums = SKIP
 
