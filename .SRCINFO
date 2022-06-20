@@ -1,7 +1,7 @@
 pkgbase = twty-bin
 	pkgdesc = Command-line twitter client
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattn/twty
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = twty-bin
 	source = https://github.com/mattn/twty/releases/download/v0.0.13/twty_v0.0.13_linux_amd64.tar.gz
 	source = LICENSE::http://mattn.mit-license.org/2017
 	md5sums = c28d7e1a55950f6d1360eb362e13efed
-	md5sums = 7e3ba3cc1238b0a73f1295ef11255b4f
+	md5sums = 4d7f59aafb9ad448845b693ba105b26d
 
 pkgname = twty-bin
