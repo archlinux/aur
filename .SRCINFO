@@ -27,6 +27,7 @@ pkgbase = snapd
 	conflicts = snap-confine
 	options = !strip
 	options = emptydirs
+	options = !lto
 	source = snapd-2.56.1.tar.xz::https://github.com/snapcore/snapd/releases/download/2.56.1/snapd_2.56.1.vendor.tar.xz
 	sha256sums = e48794e5432655dbfc8ef00f69c3c4e1b321a3f42471402ccb254c740eadfc64
 
