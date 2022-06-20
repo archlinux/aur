@@ -1,7 +1,7 @@
 pkgbase = python-minecraft-launcher-lib
 	pkgdesc = A Python library for creating a custom minecraft launcher
 	pkgver = 4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/JakobDev/minecraft-launcher-lib
 	arch = any
 	license = BSD
