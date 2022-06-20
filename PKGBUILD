@@ -13,7 +13,6 @@ url='https://github.com/rakshasa/libtorrent'
 license=('GPL2')
 depends=(
   'gcc-libs'
-  'glibc'
   'openssl'
   'zlib'
 )

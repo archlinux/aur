@@ -9,7 +9,6 @@ pkgbase = libtorrent-git
 	makedepends = cppunit
 	makedepends = git
 	depends = gcc-libs
-	depends = glibc
 	depends = openssl
 	depends = zlib
 	provides = libtorrent=0.13.8
