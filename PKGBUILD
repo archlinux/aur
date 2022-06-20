@@ -1,0 +1,40 @@
+# Maintainer: Norman Dubert <sfiveo13 at gmail dot com>
+pkgname=tachidesk-qtui
+pkgver=2022.6.18
+pkgrel=1
+pkgdesc="A free and open source manga read that runs extensions built for Tachiyomi"
+arch=(any)
+url="https://github.com/Suwayomi/Tachidesk-QtUI"
+license=('MIT')
+depends=('qt6-websockets' 'qt6-base' 'qt6-5compat')
+makedepends=('cmake' 'git')
+provides=("tachidesk-qtui")
+source=("git+https://github.com/Suwayomi/Tachidesk-QtUI"
+        "git+https://github.com/CasparKielwein/SortFilterProxyModel"
+        "git+https://github.com/mgn-norm/QmlBridgeForMaterialDesignIcons")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  cd $srcdir/$pkgname
+  git submodule init
+  git config libs.SortFilterProxyModel.url "$srcdir/SortFilterProxyModel"
+  git config libs.QmlBridgeForMaterialDesignIcons.url "$srcdir/QmlBridgeForMaterialDesignIcons"
+  git submodule update
+  mkdir -p build
+}
+
+build() {
+	cd $srcdir/$pkgname/build
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
+	make
+}
+
+package() {
+	cd $srcdir/$pkgname/build
+	make DESTDIR="$pkgdir" install
+}

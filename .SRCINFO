@@ -1,0 +1,21 @@
+pkgbase = tachidesk-qtui
+	pkgdesc = A free and open source manga read that runs extensions built for Tachiyomi
+	pkgver = 2022.6.18
+	pkgrel = 1
+	url = https://github.com/Suwayomi/Tachidesk-QtUI
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-websockets
+	depends = qt6-base
+	depends = qt6-5compat
+	provides = tachidesk-qtui
+	source = git+https://github.com/Suwayomi/Tachidesk-QtUI
+	source = git+https://github.com/CasparKielwein/SortFilterProxyModel
+	source = git+https://github.com/mgn-norm/QmlBridgeForMaterialDesignIcons
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tachidesk-qtui
