@@ -1,0 +1,14 @@
+pkgbase = aliyundrive-fuse
+	pkgdesc = 阿里云盘 FUSE 磁盘挂载
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/messense/aliyundrive-fuse
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = fuse3
+	provides = aliyundrive-fuse
+	source = aliyundrive-fuse-0.1.12.tar.gz::https://github.com/messense/aliyundrive-fuse/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 57fb8ffc7d54700ae3b34d05c54b22622d8f867e458b82459dcbf4063235dd13
+
+pkgname = aliyundrive-fuse
