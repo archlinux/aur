@@ -3,7 +3,7 @@
 pkgname=anbox-modules-dkms-git
 _pkgname=anbox-modules
 pkgver=r38.8148a16
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel modules for Anbox or Waydroid (DKMS)"
 arch=(x86_64)
 url="https://github.com/choff/$_pkgname"
@@ -23,6 +23,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname/"
 	sed -i "s/^PACKAGE_VERSION=\".*\"$/PACKAGE_VERSION=\"$pkgver\"/g" ./**/dkms.conf
+	# needed for linux 5.18
+	# https://github.com/choff/anbox-modules/pull/2
+	sed -i '1s/^/#include <linux\/task_work.h>\n/' binder/deps.c
 	# this should work with all Arch Linux kernels (including linux-lts)
 	# https://github.com/choff/anbox-modules/pull/1#issuecomment-974865917
 	#sed -i 's/^#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,15,2))$/#if 1/g' binder/binder.c
