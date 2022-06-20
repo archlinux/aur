@@ -35,25 +35,27 @@ prepare() {
 }
 
 build() {
-	cd ${srcdir}/${_base}-${pkgver}
-	[ -d build ] && rm -rf build
-	mkdir build
-	cd build
+    _build_dir="${srcdir}"/build
 
 	local py_interp=`python -c "import os,sys; print(os.path.realpath(sys.executable))"`
 
 	[ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 	[ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
-	cmake ..\
-		-DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-		-DPYTHON_EXECUTABLE="${py_interp}" \
-		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
-		-DCMAKE_SKIP_RPATH=TRUE \
-		-DCMAKE_BUILD_TYPE="Release"
+	cmake -S "${srcdir}"/"${_base}"-"${pkgver}" \
+          -B "${_build_dir}" \
+		  -DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
+          -DCMAKE_INSTALL_LIBDIR=lib \
+		  -DPYTHON_EXECUTABLE="${py_interp}" \
+		  -DCMAKE_SKIP_BUILD_RPATH=TRUE \
+		  -DCMAKE_SKIP_RPATH=TRUE \
+		  -DCMAKE_BUILD_TYPE="Release"
 
+    cd "${_build_dir}"
 	make
+
+    # Build documentation
+    # See Doxyfile
 }
 
 package() {
