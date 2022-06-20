@@ -3,7 +3,7 @@
 pkgname=7-zip-bin
 pkgver=22.00
 pkgrel=1
-pkgdesc="Command-line file archiver with high compression ratio (official build)."
+pkgdesc="File archiver with high compression ratio (official build)."
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://www.7-zip.org"
 license=('LGPL')
