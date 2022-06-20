@@ -1,0 +1,15 @@
+pkgbase = demilis
+	pkgdesc = TCP listener capable of accepting multiple connections
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dement6d/demilis
+	arch = arm64
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	provides = demilis
+	options = !strip
+	source = git+https://github.com/dement6d/demilis
+	md5sums = SKIP
+
+pkgname = demilis
