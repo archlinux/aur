@@ -2,7 +2,7 @@
 
 pkgname=vmware-unlocker
 pkgver=4.2.1
-pkgrel=15
+pkgrel=16
 pkgdesc="VMware macOS utilities"
 arch=('x86_64')
 url="https://github.com/DrDonk/unlocker"
@@ -19,7 +19,7 @@ build() {
   mkdir "$srcdir/go-winres/"
   env GOBIN="$srcdir/go-winres/" go install github.com/tc-hib/go-winres@latest
   cd "$srcdir/$pkgname/"
-  env PATH="$PATH:$srcdir/go-winres/" zsh build.sh "$pkgver"
+  env PATH="$PATH:$srcdir/go-winres/bin/" zsh build.sh "$pkgver"
 }
 package() {
   mkdir -p "$pkgdir/usr/bin/iso/"
