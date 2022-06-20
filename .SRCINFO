@@ -1,7 +1,7 @@
 pkgbase = lfc-bin
 	pkgdesc = The Lingua Franca compiler
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lf-lang.org
 	arch = any
 	license = BSD

@@ -2,7 +2,7 @@
 
 pkgname=lfc-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Lingua Franca compiler"
 arch=('any')
 url="https://lf-lang.org"
