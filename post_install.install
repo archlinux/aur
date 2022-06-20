@@ -1,5 +1,4 @@
 post_install() {
-	echo "post_installing.....!!!!!!!!!!!"
 	if mkdir -p /home/${SUDO_USER}/.mcbash; then
 		if ! [ -f /home/${SUDO_USER}/.mcbash/mcbash.conf ] ; then
 			cp -f /etc/mcbash.conf /home/${SUDO_USER}/.mcbash/mcbash.conf
