@@ -1,7 +1,7 @@
 pkgbase = huaweicalc-git
 	pkgdesc = Huawei modem unlock code calculator.
 	pkgver = r19.20190705.91911fe
-	pkgrel = 0.5
+	pkgrel = 1
 	url = https://github.com/forth32/huaweicalc
 	arch = i686
 	arch = x86_64

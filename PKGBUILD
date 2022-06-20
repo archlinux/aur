@@ -1,9 +1,10 @@
-# Maintainer: petRUShka <petrushkin[dot]yandex[at]ru>
+# Maintainer: dreieck
+# Contributor: petRUShka
 
 _pkgname='huaweicalc'
 pkgname="${_pkgname}-git"
 pkgver=r19.20190705.91911fe
-pkgrel=0.5
+pkgrel=1
 pkgdesc='Huawei modem unlock code calculator.'
 arch=('i686' 'x86_64')
 url="https://github.com/forth32/huaweicalc"
