@@ -3,7 +3,7 @@
 pkgname=edrawmind-bin
 _softname=mindmaster
 _pkgname=EdrawMind-9
-pkgver=9.0.4
+pkgver=9.0.10
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -13,7 +13,7 @@ pkgdesc="Multi-functional, good-looking, easy-to-use professional mind mapping s
 license=('Commercial')
 url="https://www.edrawsoft.com/download-mindmaster.html"
 source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}_${pkgver}_en_${arch}.deb")
-sha256sums_x86_64=('17a55fb876b6e9d95593cfbe58ae11ab563eede7c31830db911ec846b94705bb')
+sha256sums_x86_64=('3a5f7fa1d5402606a727a5a1fa06f0161b480b38e13f49b4856a41b8fc9c59d0')
             
 prepare() {
     ar -x *.deb
