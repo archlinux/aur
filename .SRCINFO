@@ -15,7 +15,7 @@ pkgbase = linode-cli
 	replaces = linode-cli-dev
 	source = linode-cli-5.20.0.tar.gz::https://github.com/linode/linode-cli/archive/5.20.0.tar.gz
 	source = no-python2.patch
-	sha512sums = 1448156a354aed11b8256ea1feae3c3202f6976310df4be60c3018fcccd9df68f41267683fbf978886e1a6ff5e2e008d71c8784a9a8af915c23d39d5f935662e
+	sha512sums = e149d7625dbc7ecf49468754a1a4f2a8f14090b7a3675566d8acf8ca1e88b5da624fb6bb07e84c7a4be2949b8a5d8fe9d37ba8983e9adc5834eec6bb841e4592
 	sha512sums = ab743f3909aab35012dfe0524ec508da65ee64b54731d55eeb3655c41f6eedac10bd2791507e9754e50962376243708727e069a8b791474ee38f018e40c8b962
 
 pkgname = linode-cli
