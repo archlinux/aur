@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii.engineering>
 pkgname=netclient-bin
-pkgver=0.12.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A component of netmaker"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=("custom:SSPL")
 depends=('wireguard-tools')
 
 source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('1d0b50584ecdc03511251fbbbbb74179de06448ade5a392ffa0e8d15ecb82ef5')
+sha256sums=('9ddbb80bb15f8791aa0c9b8ae3fa71fb0b4b59ee11d28e302d4f8ba547d6571e')
 
 package() {
 	install -Dm755 "${srcdir}/usr/bin/netclient" "$pkgdir/usr/bin/netclient"
