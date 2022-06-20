@@ -1,7 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname=7-zip-bin
-pkgver=21.07
-pkgrel=2
+pkgver=22.00
+pkgrel=1
 pkgdesc="Command-line file archiver with high compression ratio (official build)."
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://www.7-zip.org"
@@ -13,10 +14,10 @@ source_x86_64=("${url}/a/7z${pkgver//./}-linux-x64.tar.xz")
 source_i686=("${url}/a/7z${pkgver//./}-linux-x86.tar.xz")
 source_aarch64=("${url}/a/7z${pkgver//./}-linux-arm64.tar.xz")
 source_armv7h=("${url}/a/7z${pkgver//./}-linux-arm.tar.xz")
-sha256sums_x86_64=('4e2499064413ea66c6b83beb994f0ea4ee87b1ec80188188db62a6ec7e74d300')
-sha256sums_i686=('793fa3173680db56e3abbdddaf3920b8f6c4550e537690d53a42c5fa9d8b8722')
-sha256sums_aarch64=('2f9e9dd7e79d154782ac45d26e4fdc94a491e495a2d12c986c7e23f03ea26d13')
-sha256sums_armv7h=('9016721700eb6d90c45ff59fd4c1ed9539ef9021241aa3ec2dd48a941b688675')
+sha256sums_x86_64=('5290409e7bbe2f133d0bd7e7482548678157ea2be276b0f9cb440600f4be9a2d')
+sha256sums_i686=('3f3df18960079df961cfd34b20c32c673bbafb1228785c91d8446257ba3438ae')
+sha256sums_aarch64=('be953c5fe67843d3ae5b30109da82d0ca8becd7087723f7529dbcb0b7170e1a8')
+sha256sums_armv7h=('7c2a78cc44ffc8066133cba16579b2a564109fedeb2ffdafa67c6414f48b9ffa')
 
 package() {
 	install -D -t "${pkgdir}/usr/bin" -m 755 7zz
