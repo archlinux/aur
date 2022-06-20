@@ -17,27 +17,13 @@ depends=(
 
 ## BEGIN generated variables
 pkgver=2022.06.18.edge.r0.gbd42d5caa2
-sha1sums=('')
+sha1sums=('SKIP')
 
 ## END generated variables
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Bonnee/freecad-build-arch/releases/download/${pkgver}/freecad-archive.tar.gz")
+source=("$pkgname-$pkgver.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/${pkgver}/${pkgname%-bin}-git-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
 
 package() {
-	# Symlink to /usr/bin
-	cd "$pkgdir"
-	mv "$srcdir/usr" "usr"
-	
-	install -dm755 "usr/bin"
-	ln -sf "/usr/lib/freecad/bin/FreeCAD"       "usr/bin/freecad"
-	ln -sf "/usr/lib/freecad/bin/FreeCAD"       "usr/bin/FreeCAD"
-	ln -sf "/usr/lib/freecad/bin/FreeCADCmd"    "usr/bin/freecadcmd"
-	ln -sf "/usr/lib/freecad/bin/FreeCADCmd"    "usr/bin/FreeCADCmd"
-	
-	# Move data from /usr/lib/freecad/share to /usr/share
-	mv "usr/lib/freecad/share/"{icons,pixmaps,mime,metainfo,applications,thumbnailers} \
-	    "usr/share"
-	
-	rmdir "usr/lib/freecad/share"
+	cp -r $srcdir/usr $pkgdir/
 }
 
