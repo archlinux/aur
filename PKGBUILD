@@ -29,7 +29,7 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
-    --user-agent "safari" \
+    --user-agent "firefox" \
     --inject "${pkgname}-inject.js" \
     --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
