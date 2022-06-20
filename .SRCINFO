@@ -1,6 +1,6 @@
 pkgbase = python-polars-bin
 	pkgdesc = Blazingly fast DataFrames library using Apache Arrow Columnar Format as memory model
-	pkgver = 0.13.47
+	pkgver = 0.13.49
 	pkgrel = 1
 	url = https://www.pola.rs/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = python-polars-bin
 	optdepends = python-fsspec: to transparently open files locally or remotely
 	provides = python-polars
 	conflicts = python-polars
-	noextract = polars-0.13.47-cp37-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
-	source = https://files.pythonhosted.org/packages/1a/60/be57c0d462a757d2e7aa85f5fa7ecdf41ed660ee6e788d825f5dd939a3b6/polars-0.13.47-cp37-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+	noextract = polars-0.13.49-cp37-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+	source = https://files.pythonhosted.org/packages/7d/53/6af455e14341d1302b5a530259a97b512b40203b67d03dbfd0a9b69b25bb/polars-0.13.49-cp37-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
 	source = https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE
-	sha512sums = 679fbab92bd962e796d064ca89ac7017d0051de6ebe7695959ac8c90eaa0af712aa3f769e819f4664d28f6f6a2127f048c038dfeac4bbbfe7b9e9b6d311ac587
+	sha512sums = 03ebd684a89ff0c5bac714e5e683b04badc5c94e2f38167600116f2841b34f9ee860c5e1e0c1228c9864247f327c0bf52ac1d5132821f338ca1c43bb4fdf0152
 	sha512sums = da04b728c26b24f96f8f0216dc85697af954630514113784577902154cd008744163e6691f278de3fecb423ca313cbc8db633f42dc29c94c37ca0960524a6f76
 
 pkgname = python-polars-bin
