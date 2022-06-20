@@ -9,7 +9,7 @@ url="https://github.com/DrDonk/unlocker/"
 license=('MIT')
 #depends=("vmware-workstation>=16.0.0")
 makedepends=("git" "zsh" "go")
-provides=("vmware-unlocker" "vmware-unlocker-bin")
+provides=("vmware-unlocker")
 conflicts=("vmware-unlocker" "vmware-unlocker-bin")
 source=("$pkgname::git+$url#branch=main" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
 sha512sums=("SKIP"

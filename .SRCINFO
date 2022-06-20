@@ -9,7 +9,6 @@ pkgbase = vmware-unlocker-git
 	makedepends = zsh
 	makedepends = go
 	provides = vmware-unlocker
-	provides = vmware-unlocker-bin
 	conflicts = vmware-unlocker
 	conflicts = vmware-unlocker-bin
 	source = vmware-unlocker-git::git+https://github.com/DrDonk/unlocker/#branch=main
