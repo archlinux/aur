@@ -1,5 +1,5 @@
 pkgbase = otpgui
-	pkgver = 0.1.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -7,13 +7,13 @@ pkgbase = otpgui
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-pytest
-	depends = python
 	depends = python-yaml
 	depends = python-gobject
 	depends = python-pyotp
 	depends = gtk3
-	depends = sops
-	source = https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.1.2.tar.gz
-	sha256sums = 40d393d9f11851bb8c8dab7396d3a2f2dd720318629252ea5451a902ba75765c
+	depends = hicolor-icon-theme
+	optdepends = sops: Enable otp encryption
+	source = otpgui-0.2.1.tar.gz::https://github.com/gianluca-mascolo/otpgui/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = 7fc74102f81fdff8c02f65e8fab7f1f72e340ce902edad93f97bf3076b3a05e0
 
 pkgname = otpgui
