@@ -1,6 +1,6 @@
 pkgbase = fvim-bin
 	pkgdesc = Cross platform Neovim front-end UI, built with F# + Avalonia
-	pkgver = 0.3.530_gc43c0c6
+	pkgver = 0.3.531_g119a455
 	pkgrel = 1
 	url = https://github.com/yatli/fvim
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fvim-bin
 	provides = fvim
 	conflicts = fvim
 	options = staticlibs
-	source = https://github.com/yatli/fvim/releases/download/v0.3.530%2Bgc43c0c6/fvim-linux-x86_64-v0.3.530+gc43c0c6.rpm
-	md5sums = SKIP
+	source = https://github.com/yatli/fvim/releases/download/v0.3.531%2Bg119a455/fvim-linux-x86_64-v0.3.531+g119a455.rpm
+	sha256sums = 0b0fbbfa1c047eed1091791108d5206f71a36da95ca5ab55f7b5c55d0cf13fdc
 
 pkgname = fvim-bin
