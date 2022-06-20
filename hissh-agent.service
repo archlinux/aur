@@ -1,0 +1,9 @@
+[Unit]
+Description=Himitsu SSH Agent
+
+[Service]
+ExecStart=/usr/bin/hissh-agent
+Restart=always
+
+[Install]
+WantedBy=default.target

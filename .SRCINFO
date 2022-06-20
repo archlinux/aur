@@ -1,0 +1,15 @@
+pkgbase = himitsu-ssh
+	pkgdesc = Himitsu integration for SSH
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/himitsu-ssh
+	arch = x86_64
+	license = GPL3
+	makedepends = hare
+	makedepends = hare-ssh
+	makedepends = scdoc
+	depends = himitsu
+	source = himitsu-ssh-0.1.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-ssh/archive/0.1.tar.gz
+	sha256sums = dfc8a1a1797a6d040a5f2cacf29c3c7a1608be1d9e3c5c0265a7d852087cf437
+
+pkgname = himitsu-ssh
