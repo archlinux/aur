@@ -1,4 +1,4 @@
-# Maintainer:  Philip Sequeira <phsequei@gmail.com>
+# Maintainer:  Philip Sequeira <qmega@mailbox.org>
 # Contributor: Rudolf Polzer <divVerent@xonotic.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Eivind Uggedal <eivind@uggedal.com>
@@ -47,7 +47,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.34.0_345_g44ecf83a1b
+pkgver=0.34.0_351_g45ff20986d
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
