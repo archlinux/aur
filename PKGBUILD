@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=8.5.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('3993ee108a908857027d2adbee224dd80f593923e1c1ebec24bc3284e0c3317c')
+sha256sums=('16ec98ca4f057a4b3b8545032a2ddfb6b46cfd107ebd14682514a69c7b8651bf')
 changelog=changelog.txt
 
 prepare() {
