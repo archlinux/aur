@@ -4,14 +4,14 @@ _perlmod='Mail-Milter-Authentication'
 _modnamespace=Mail
 pkgname=perl-mail-milter-authentication
 pkgver=3.20220131
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl Mail Authentication Milter"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-date-manip' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-lock-file' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-bimi' 'perl-mail-datafeed-abusix' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-super' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
 makedepends=('perl-crypt-openssl-rsa' 'perl-file-sharedir-install' 'perl-test-exception')
-checkdepends=('perl-eval-closure' 'perl-namespace-autoclean' 'perl-params-validationcompiler' 'perl-specio')
+checkdepends=('perl-eval-closure' 'perl-namespace-autoclean' 'perl-net-dns-resolver-mock' 'perl-params-validationcompiler' 'perl-specio')
 replaces=('perl-mail-milter-authentication-handler-arc')
 conflicts=('perl-mail-milter-authentication-handler-arc')
 backup=('etc/authentication_milter.json')

@@ -1,13 +1,14 @@
 pkgbase = perl-mail-milter-authentication
 	pkgdesc = A Perl Mail Authentication Milter
 	pkgver = 3.20220131
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Mail-Milter-Authentication
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	checkdepends = perl-eval-closure
 	checkdepends = perl-namespace-autoclean
+	checkdepends = perl-net-dns-resolver-mock
 	checkdepends = perl-params-validationcompiler
 	checkdepends = perl-specio
 	makedepends = perl-crypt-openssl-rsa
