@@ -2,13 +2,13 @@
 
 pkgname=vmware-unlocker
 pkgver=4.2.1
-pkgrel=10
+pkgrel=11
 pkgdesc="VMware macOS utilities"
 arch=('x86_64')
 url="https://github.com/DrDonk/unlocker"
 license=('MIT')
 #depends=('vmware-workstation>=16.0.0')
-makedepends=("git" "zsh")
+makedepends=("git" "zsh" "go")
 conflicts=('vmware-unlocker-bin' 'vmware-unlocker-git')
 source=("$pkgname::git+https://github.com/DrDonk/unlocker#tag=v$pkgver" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
 sha512sums=('SKIP'
