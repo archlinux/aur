@@ -4,7 +4,7 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
@@ -17,6 +17,10 @@ sha256sums=('45bc101d1ddcc1c6320c063eb25a9345e5820a4233acfa5b29f2dfd99f7452e1')
 
 build() {
   cd $pkgbase-$pkgver
+  # some basic assertions seem to crash olad
+  # https://github.com/osam-cologne/archlinux-proaudio/issues/73
+  # https://github.com/OpenLightingProject/ola/issues/1726
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   autoreconf -i
   ./configure --prefix=/usr \
     --enable-silent-rules \
