@@ -1,27 +1,25 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server
-_pkgver=0.48.4
+_pkgver=0.48.5
 pkgver=${_pkgver/-/+}
-pkgrel=2
+pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
-url="https://github.com/prince781/vala-language-server"
+url="https://github.com/vala-lang/vala-language-server"
 license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
 makedepends=('scdoc')
-source=("https://github.com/prince781/vala-language-server/archive/$_pkgver.tar.gz")
-sha256sums=('9de5d476a3d3b5d4f22f50af6c2417abd44066ab4231cbc00628e9fdab735100')
+source=("https://github.com/vala-lang/vala-language-server/releases/download/$_pkgver/vala-language-server-$_pkgver.tar.xz")
+sha256sums=('698a0f26b61a882517f31039e7dc8efdda1384de0687b1ab78f2a768c305b17e')
  
-#prepare() {
-#	cd "$pkgname"
-#}
+prepare() {
+    cd "$pkgname-$_pkgver"
+}
  
 build() {
     cd "$pkgname-$_pkgver"
     arch-meson build
-    # disable gnome-builder plugin
-    meson configure -Dbuilder_abi=42.1 build
     ninja -C build
 }
  
