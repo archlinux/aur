@@ -1,15 +1,14 @@
 pkgbase = scitopdf
 	pkgdesc = bash script to quickly fetch, download and open scientific papers from Sci-Hub's database.
-	pkgver = 0.3
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/dougy147/scitopdf.git
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = GPL3
 	makedepends = git
-	depends = zathura
 	provides = scitopdf
-	source = git+https://github.com/dougy147/scitopdf.git
+	source = scitopdf::git+https://github.com/dougy147/scitopdf.git
 	md5sums = SKIP
 
 pkgname = scitopdf
