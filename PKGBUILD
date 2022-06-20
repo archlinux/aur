@@ -6,8 +6,8 @@
 _reponame=tagparser
 pkgname=tagparser-git
 _name=${pkgname%-git}
-pkgver=560.fb4633a
-pkgrel=1
+pkgver=719.9599560
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags'
 license=('GPL')
