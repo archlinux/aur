@@ -1,7 +1,7 @@
 pkgbase = grig
 	pkgdesc = Ham Radio - Rig control (cat) program
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://groundstation.sourceforge.net/grig/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = grig
 	depends = hamlib=3.3
 	depends = gtk2
 	depends = hamradio-menus
+	provides = grig
+	conflicts = grig-git
 	source = http://downloads.sourceforge.net/groundstation/grig-0.8.1.tar.gz
 	source = grig.desktop
 	md5sums = a9c0bbd58ba48d01a2fc4bcdc7bc44fc

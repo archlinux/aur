@@ -6,13 +6,15 @@
 
 pkgname=grig
 pkgver=0.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Ham Radio - Rig control (cat) program"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://groundstation.sourceforge.net/grig/"
 license=('GPL')
 depends=('hamlib=3.3' 'gtk2' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
+provides=('grig')
+conflicts=('grig-git')
 source=("http://downloads.sourceforge.net/groundstation/$pkgname-$pkgver.tar.gz"
 	"$pkgname.desktop")
 
