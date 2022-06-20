@@ -16,10 +16,11 @@ sha512sums=('SKIP'
   'c95c021915665fbda50c4ce739b76d92c0616d102e05033aa5b4e0ebd933e61b775ffb6ef0cf65eaf392958b8bb4125932c3cf49dd705ebb6f43cc121eccb0b3'
 )
 build() {
-  mkdir "$srcdir/go-winres/"
-  env GOBIN="$srcdir/go-winres/" go install github.com/tc-hib/go-winres@latest
   cd "$srcdir/$pkgname/"
-  env PATH="$PATH:$srcdir/go-winres/bin/" zsh build.sh "$pkgver"
+  sed -e '/winres/ s/^#*/#/' -i build.sh
+  sed -e '/exe/ s/^#*/#/' -i build.sh
+  sed -e '/syso/ s/^#*/#/' -i build.sh
+  zsh build.sh "$pkgver"
 }
 package() {
   mkdir -p "$pkgdir/usr/bin/iso/"
