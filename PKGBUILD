@@ -4,7 +4,7 @@
 pkgname='python2-pytest-expect'
 _name="${pkgname#python2-}"
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A Python 2 pytest plugin to store test expectations and mark tests based on them'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
