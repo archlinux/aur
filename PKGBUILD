@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.18
 _minor=5
 pkgver=${_major}.${_minor}
-pkgrel=4
+pkgrel=5
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -302,7 +302,7 @@ sha512sums=('1872e2cf8cdd6e0033ce69f26f25526a30c237d220c02b20829fca31d6068fb816d
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
             'edfeb7045168791e49737295e30cdec1a819d214e56b7ef7861efac941f309ef2c5552cdbaf538a7c0257d40b0a7f30e7a865e716e0aa0393addc10603bc3534'
             'b3665c03ec1b150b00f777c2cd3051171cf9bceb8861f461d827af15d0f40fb4fbc6c9baf13e89d77acbeb87449e3e74a8013ce0959a765b74c2cec786926b96'
-            '15333db5d1eb41f4660332999cda42cf039a592d69f564378e4fd4094b172c5b66f1ed45b17687a86fbf9eefa074ce47d86ec1c243fc6794d582fce5ebe7ecc0')
+            '2959cbcdfdb139383f16da9fe0e99e550fa53950153530d8c497544f900e0592abc1e50099d8e049a76f1ddfa52ab7a168f0afd2e93eb9c6ad0d71ac7a1af8ab')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
