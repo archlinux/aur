@@ -121,3 +121,22 @@ Changes from version 4.2.5 to 4.2.6
 - Fixed a numerical bug that could suppress the signal in GG correlations in
   spherical coordinates if there are multiple objects at the same position.
   Thanks to Sandra Unruh for the bug report. (#134)
+
+Changes from version 4.2.6 to 4.2.7
+===================================
+
+- Fixed a memory problem when computing patch-based covariance matrix when npatches
+  is moderately large (e.g. 500). Thanks to Joe Zuntz and Judit Prat for finding and
+  reporting the bug. (#137)
+
+Changes from version 4.2.7 to 4.2.8
+===================================
+
+- Fixed a bug in the calculation of jackknife and sample variance when only the second
+  catalog in a cross-correlation uses patches.
+
+Changes from version 4.2.8 to 4.2.9
+===================================
+
+- Fixed a error in the low_mem calculation when ra_units and/or dec_units are not
+  radians. Thanks to Chun-Hao To for the bug report. (#144)

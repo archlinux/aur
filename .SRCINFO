@@ -1,21 +1,24 @@
 pkgbase = python-treecorr
 	pkgdesc = Library that efficiently computes 2-point and 3-point correlation functions
-	pkgver = 4.2.6
+	pkgver = 4.2.9
 	pkgrel = 1
 	url = https://github.com/rmjarvis/treecorr
 	changelog = CHANGELOG.rst
 	arch = x86_64
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
-	depends = python-numpy>=1.14
-	depends = python-yaml>=3.13
-	depends = python-cffi>=1.12
-	depends = python-coord>=1.1
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-yaml
+	depends = python-cffi
+	depends = python-coord
 	optdepends = python-fitsio: reads FITS catalogs or writes to FITS output files
 	optdepends = python-pandas: speeds up reading from ASCII catalogs
 	optdepends = python-h5py: reads HDF5 catalogs
-	source = python-treecorr-4.2.6.tar.gz::https://github.com/rmjarvis/treecorr/archive/v4.2.6.tar.gz
-	sha256sums = 78cb3a1bf43aef2c73dd89e1d0b03df955fd130943fcb3de0f447446b2142f5a
+	source = python-treecorr-4.2.9.tar.gz::https://github.com/rmjarvis/treecorr/archive/v4.2.9.tar.gz
+	sha256sums = 59c8ac5e0b4644967917aaa3089e847d7759cd399cee9bc21e733b4558d76c0c
 
 pkgname = python-treecorr
