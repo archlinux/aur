@@ -14,7 +14,6 @@ pkgbase = libtorrent-git
 	depends = zlib
 	provides = libtorrent=0.13.8
 	conflicts = libtorrent
-	options = debug
 	source = libtorrent-git::git+https://github.com/rakshasa/libtorrent.git
 	b2sums = SKIP
 

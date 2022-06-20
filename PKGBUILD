@@ -23,7 +23,6 @@ makedepends=(
 )
 provides=("${_pkgbase}=${pkgver%.r*}")
 conflicts=("${_pkgbase}")
-options=('debug')
 source=("${pkgname}::git+${url}.git")
 b2sums=('SKIP')
 
@@ -56,11 +55,19 @@ prepare() {
   autoreconf --verbose --force --install --symlink
   echo
 
+  printf 'Checking if debug is enabled in makepkg config... '
+  if ! check_option "debug" "y"; then
+    echo 'no'
+  else
+    echo 'yes'
+
+    echo '-- Enabling debug options for build'
+    export _extra_configure_options=('--enable-debug' '--enable-extra-debug')
+  fi
+
   echo "Running 'configure' script..."
-  ./configure \
+  ./configure "${_extra_configure_options[@]}" \
     --prefix='/usr' \
-    --enable-debug \
-    --enable-extra-debug \
     --disable-silent-rules
 }
 
