@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers"
 license=('custom')
 depends=('cups')
-makedepends=('unzip')
+makedepends=('unzip' 'wget')
 
 #_rpmfile="S2825cdn-H825cdw/Dell-Color-MFP-S2825cdn-H825cdw-${pkgver//_/-}.$CARCH.rpm"
 _rpmfile="Dell-Color-MFP-S2825cdn-H825cdw-${pkgver//_/-}.$CARCH.rpm"
