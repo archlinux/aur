@@ -3,7 +3,7 @@
 # Contributor: Stephan Conrad <stephan@conrad.pics>
 
 pkgname=modsecurity
-pkgver=3.0.4
+pkgver=3.0.7
 pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
 arch=('i686' 'x86_64')
