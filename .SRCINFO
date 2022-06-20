@@ -1,0 +1,17 @@
+pkgbase = cproj-git
+	pkgdesc = A simple cli tool for creating and managing C projects
+	pkgver = r20.7b2514b
+	pkgrel = 1
+	url = https://gitlab.com/jcheatum/cproj
+	arch = any
+	license = MPL
+	makedepends = python-pip
+	depends = python
+	depends = git
+	provides = cproj
+	conflicts = cproj
+	noextract = cproj-git::git+https://gitlab.com/jcheatum/cproj.git
+	source = cproj-git::git+https://gitlab.com/jcheatum/cproj.git
+	md5sums = SKIP
+
+pkgname = cproj-git
