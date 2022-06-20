@@ -8,6 +8,7 @@
 # - the xwidgets is enabled (you can surf the Internet via 
 #   a modern browser(webkit) in Emacs!).
 # - link-time optimization is disabled by default.
+# - use the fastest linker "mold".
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
 #   native compiled by default.
@@ -103,7 +104,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.50.156996
+pkgver=29.0.50.157450
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -368,9 +369,9 @@ else
 fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
-  #cd "$srcdir/emacs-git/lisp"
-  #make autoloads
-  #cd ../
+cd "$srcdir/emacs-git/lisp"
+make autoloads
+cd ../
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
