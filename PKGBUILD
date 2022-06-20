@@ -5,11 +5,11 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - binary releases'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 _filename="${_pkgname}_ubuntu2004_v${pkgver}"
 source=("https://sourceforge.net/projects/deniseemu/files/v%20${pkgver}/${_filename}.tar.gz")
-sha256sums=('f91d683884cfb65369985d5613488d8f4c6cedb96ac78c5f55d078b6d049e36c')
+sha256sums=('840f1a560e441b07efdcd100f23e7b76547fee64c4436ca548bf008a2be6b4bd')
 provides=('denise')
 conflicts=('denise-git' 'denise')
 depends=('sdl2' 'gtk3')
@@ -29,7 +29,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/$_pkgname/img/
   mkdir -p $pkgdir/usr/lib/$_pkgname/shader/
 
-  install -Dm755 Denise $pkgdir/usr/bin/$_pkgname
+  install -Dm755 denise $pkgdir/usr/bin/$_pkgname
   install -Dm644 $_pkgname.png $pkgdir/usr/share/icons/
   install -Dm644 $_pkgname.desktop $pkgdir/usr/share/applications/
   install -Dm644 translation/* $pkgdir/usr/lib/$_pkgname/translation/
