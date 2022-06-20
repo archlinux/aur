@@ -1,3 +1,10 @@
+* Mon Jun 20 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.6.0-1
+  PeaZip 8.6.0 release comes with new themes and improved, easier to customize UI layout.
+  It is now possible to use custom compression presets (either built-in or user defined)
+  from command line and scripts, and to set immediate execution for custom compression
+  presets.
+  Updated backends: Pea 1.07, and (Linux) Zstd 1.5.2.
+
 * Sat Feb 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.5.0-1
   PeaZip 8.5.0 release improves the packages for macOS platform, with macOS-style keyboard
   shortcuts, integration with macOS context menu, full support to "move to trash" deletion
