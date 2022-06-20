@@ -1,0 +1,20 @@
+pkgbase = clap-host
+	pkgdesc = CLAP host
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/free-audio/clap-host
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = rtmidi
+	depends = rtaudio
+	source = git+https://github.com/free-audio/clap-host#tag=b5db1c246c173692371a17d92c2bd5fda1826d98
+	source = git+https://github.com/free-audio/clap#55ee06f776669b94d63247a9c1dcb7dfa6056587
+	source = git+https://github.com/free-audio/clap-helpers#716cdf49cc6eb7999bad44c084b363bbde907937
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = clap-host
