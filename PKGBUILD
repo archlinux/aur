@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=101.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -108,17 +108,15 @@ export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # Branding
-ac_add_options --enable-update-channel=release
-ac_add_options --with-app-name=${pkgname}
-
-# ac_add_options --with-app-basename=${_pkgname}
-
-ac_add_options --with-branding=browser/branding/${pkgname}
-# ac_add_options --with-distribution-id=org.garudalinux
-ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=
-# export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+ac_add_options --enable-update-channel=release
+ac_add_options --with-app-basename=${_pkgname}
+ac_add_options --with-app-name=${pkgname}
+ac_add_options --with-branding=browser/branding/${pkgname}
+ac_add_options --with-distribution-id=org.garudalinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_REQUIRE_SIGNING=1
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -256,6 +254,9 @@ fi
 
   # Allows hiding the password manager (from the lw pref pane) / via a pref
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
+
+  # Faster multilocate
+  patch -Np1 -i "${_librewolf_patches_dir}"/faster-package-multi-locale.patch
 
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
@@ -419,6 +420,9 @@ END
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
+
+  # Make native messaging work
+  ln -s "$pkgdir/usr/lib/mozilla/native-messaging-hosts" "$pkgdir/usr/lib/firedragon/native-messaging-hosts"
 
   # Delete unneeded things from settings repo
   rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
