@@ -1,14 +1,14 @@
 # Maintainer: Zhangyuan Nie <yuan@znie.org>
 
 pkgname=butter-git
-pkgver=r71.44fec7f
+pkgver=0.1.0.r89.e7ece73
 pkgrel=1
 pkgdesc="GTK application for Btrfs snapshot management"
 arch=('x86_64')
 url="https://github.com/zhangyuannie/butter"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'polkit' 'btrfs-progs' 'python')
-makedepends=('meson' 'rust' 'git')
+depends=('gtk4' 'libadwaita' 'polkit' 'btrfs-progs')
+makedepends=('meson' 'rust' 'git' 'clang')
 conflicts=('butter')
 provides=('butter')
 source=("${pkgname}::git+https://github.com/zhangyuannie/butter.git")
