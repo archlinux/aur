@@ -3,7 +3,7 @@
 pkgname=anbox-modules-dkms-git
 _pkgname=anbox-modules
 pkgver=r38.8148a16
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for Anbox or Waydroid (DKMS)"
 arch=(x86_64)
 url="https://github.com/choff/$_pkgname"
@@ -30,8 +30,8 @@ prepare() {
 
 package() {
 	cd "$srcdir/$_pkgname/"
-	install -Dm644 anbox.conf -t "$pkgdir/usr/lib/modules-load.d/"
-	install -Dm644 99-anbox.rules -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 anbox.conf "$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
+	install -Dm644 99-anbox.rules -t "$pkgdir/usr/lib/udev/rules.d/99-$_pkgname.rules"
 	install -dm755 "$pkgdir/usr/src/"
 	cp -rT ashmem "$pkgdir/usr/src/anbox-ashmem-$pkgver"
 	cp -rT binder "$pkgdir/usr/src/anbox-binder-$pkgver"
