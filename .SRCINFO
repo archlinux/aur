@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-j435w
 	pkgdesc = LPR and CUPS driver for the Brother MFC-J435W
 	pkgver = 3.0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj435w_us
 	arch = i686
 	arch = x86_64
