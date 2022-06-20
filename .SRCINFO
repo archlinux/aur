@@ -1,15 +1,16 @@
 pkgbase = huaweicalc-git
 	pkgdesc = Huawei modem unlock code calculator.
-	pkgver = r16.98a2451
-	pkgrel = 1
+	pkgver = r19.20190705.91911fe
+	pkgrel = 0.5
 	url = https://github.com/forth32/huaweicalc
 	arch = i686
 	arch = x86_64
-	license = GPLv3
-	makedepends = make git gcc qtchooser
+	license = GPL3
+	makedepends = git
 	depends = qt5-base
-	source = huaweicalc-git::git+https://github.com/forth32/huaweicalc.git
-	md5sums = SKIP
+	provides = huaweicalc
+	conflicts = huaweicalc
+	source = huaweicalc::git+https://github.com/forth32/huaweicalc.git
+	sha256sums = SKIP
 
 pkgname = huaweicalc-git
-
