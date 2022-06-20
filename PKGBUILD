@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.4.r95.85a11f7
+pkgver=0.4.r97.d2202df
 pkgrel=1
 epoch=
 pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
@@ -31,7 +31,7 @@ pkgver() {
 
 package() {
 	install -D -m755 "$srcdir/$pkgname/bin/mcbash" "$pkgdir/usr/bin/mcbash"
-	install "$srcdir/$pkgname/post_install.install" "$pkgdir/tmp/post_install.install"
+	install "$srcdir/$pkgname/post_install.install" "$pkgdir/post_install.install"
 	install -D -m644 "$srcdir/$pkgname/mcbash.1" "$pkgdir/usr/share/man/man1/mcbash.1"
 	install -D -m644 "$srcdir/$pkgname/mcbash.conf" "$pkgdir/etc/mcbash.conf"
 }
