@@ -1,7 +1,7 @@
 pkgbase = r-waveslim
 	pkgdesc = Basic Wavelet Routines for One-, Two-, and Three-Dimensional Signal Processing
-	pkgver = 1.8.2
-	pkgrel = 4
+	pkgver = 1.8.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=waveslim
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = r-waveslim
 	depends = r
 	optdepends = r-covr
 	optdepends = r-fftw
-	source = https://cran.r-project.org/src/contrib/waveslim_1.8.2.tar.gz
-	sha256sums = 133c4f7a027282742fe99b583ca65f178fc7a3df2ce75cb4d60650f0a1dd7145
+	source = https://cran.r-project.org/src/contrib/waveslim_1.8.3.tar.gz
+	sha256sums = 988bdce52ce1c31cb0abb4fb7a9f1e9192283f597c2a418f0010f780dbe3b37b
 
 pkgname = r-waveslim
