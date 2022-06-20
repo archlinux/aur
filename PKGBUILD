@@ -3,7 +3,7 @@
 # Original package from: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.18.3.arch1
+pkgver=5.18.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '9f4fda38f1c59f7a20a76eff48a0cb302cb0e8e55bda53ec0f1807e10dcdad3a'
+            '533d32e1f6c33f7f390796af18dc3dca0a6aa294f8e9340600cd86c8df65e25b'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d')
 

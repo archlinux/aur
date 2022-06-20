@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.18.3.arch1
+	pkgver = 5.18.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.18.3-arch1
+	url = https://github.com/archlinux/linux/commits/v5.18.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.18.3-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.18.5-arch1
 	source = config
 	source = bfq-default.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -28,7 +28,7 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 9f4fda38f1c59f7a20a76eff48a0cb302cb0e8e55bda53ec0f1807e10dcdad3a
+	sha256sums = 533d32e1f6c33f7f390796af18dc3dca0a6aa294f8e9340600cd86c8df65e25b
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
 
 pkgname = linux-covolunablu-gaming
