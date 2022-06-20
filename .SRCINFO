@@ -1,12 +1,12 @@
 pkgbase = r-randtests
 	pkgdesc = Testing randomness in R
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=randtests
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/randtests_1.0.tar.gz
-	sha256sums = 024d3c1fe3fb3614220a9312171a15e8a3c2de4c8d16b3750b89824e689fe30f
+	source = https://cran.r-project.org/src/contrib/randtests_1.0.1.tar.gz
+	sha256sums = 479558010cc7aa44d83bfa51d35f8f1d814958e405408f71395a539c9e392be4
 
 pkgname = r-randtests

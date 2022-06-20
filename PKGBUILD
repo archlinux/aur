@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=randtests
-_pkgver=1.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Testing randomness in R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('024d3c1fe3fb3614220a9312171a15e8a3c2de4c8d16b3750b89824e689fe30f')
+sha256sums=('479558010cc7aa44d83bfa51d35f8f1d814958e405408f71395a539c9e392be4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
