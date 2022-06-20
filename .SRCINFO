@@ -9,6 +9,7 @@ pkgbase = heroku-cli
 	makedepends = yarn
 	makedepends = perl
 	makedepends = git
+	makedepends = npm
 	depends = nodejs
 	optdepends = git: Deploying to Heroku
 	provides = heroku
