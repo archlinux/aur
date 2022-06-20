@@ -12,7 +12,7 @@ groups=()
 options=("!strip")
 depends=("boost-libs" "python")
 optdepends=()
-makedepends=("git" "gcc" "cmake" "ninja" "pkgconf")
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "boost")
 conflicts=(
 	"prjtrellis-db-git"
 	"prjtrellis-git"
