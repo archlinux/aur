@@ -43,7 +43,7 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
         http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/c/cahuella/cahuella_1.0.3-1_amd64.deb
         "${url2}"/i3-snapshot_1.0.1-2hirsute_amd64.deb
 	git+https://github.com/regolith-linux/i3xrocks.git
-        git+https://github.com/regolith-linux/regolith-i3xrocks-config
+        git+https://github.com/regolith-linux/regolith-i3xrocks-config#branch=v1_6
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/m/moka-icon-theme/moka-icon-theme_5.4.523-201905300105~daily~ubuntu19.04.1_all.deb
         "${url2}"/nordic_1.6.5-1ubuntu1ppa1_all.deb
 	"${url2}"/paper-icon-theme_1.5.723-201905252133~daily~ubuntu19.04.1_all.deb
