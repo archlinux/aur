@@ -20,17 +20,15 @@ depends=(python opencv usbutils)
 
 install=linux-enable-ir-emitter.install
 
-source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('c37cc4012452f58b0a6b328b41045f4cc4012c50553a12491dbec9d67bb7637b')
 
-name=${pkgname}-${pkgver}
-
 build() {
-    make -C "${srcdir}/${name}/sources/driver/"
+    make -C "${srcdir}/${pkgname}-${pkgver}/sources/driver/"
 }
 
 package() {
-    cd "${srcdir}/${name}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
