@@ -6,6 +6,7 @@ pkgbase = dell-h825cdw-s2825cdn
 	arch = x86_64
 	license = custom
 	makedepends = unzip
+	makedepends = wget
 	depends = cups
 
 pkgname = dell-h825cdw-s2825cdn
