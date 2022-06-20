@@ -2,63 +2,79 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Contributor: Lucky <archlinux@builds.lucky.li>
 ## Based on libtorrent [community]
-pkgname=libtorrent-git
+
+pkgname='libtorrent-git'
+_pkgbase="${pkgname%-git}"
 pkgver=0.13.8.r20.g53596afc
 pkgrel=2
 pkgdesc='BitTorrent library with a focus on high performance and good code'
-url='https://github.com/rakshasa/libtorrent'
 arch=('x86_64' 'i686')
+url='https://github.com/rakshasa/libtorrent'
 license=('GPL2')
-depends=('gcc-libs' 'glibc' 'openssl' 'zlib')
-makedepends=('git' 'cppunit')
-conflicts=('libtorrent')
-provides=("libtorrent=${pkgver%.r*}")
+depends=(
+  'gcc-libs'
+  'glibc'
+  'openssl'
+  'zlib'
+)
+makedepends=(
+  'cppunit'
+  'git'
+)
+provides=("${_pkgbase}=${pkgver%.r*}")
+conflicts=("${_pkgbase}")
 options=('debug')
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${pkgname}"
 
-  # Generate git tag based version. Count only proper v#.# [#=number] tags, skip those starting with letters
-  git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed 's/^v//;s/^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)/\1\2/;s/\([0-9]\+-g\)/r\1/;s/-/./g'
+  # Generate git tag based version. Count only proper v#.#* [#=number] tags.
+  local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+  # Format git-based version for pkgver
+  echo "${_gitversion}" | sed \
+    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+    -e 's|\([0-9]\+-g\)|r\1|' \
+    -e 's|-|.|g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname/test"
+  cd "${pkgname}"
 
-  # Don't hardcode cppunit, main configure script finds it via pkg-config
-  sed '/AM_PATH_CPPUNIT/d' -i configure.ac
+  echo "Editing 'test/configure.ac': removing hardcoded 'cppunit' path (main configure script finds it via pkg-config)"
+  sed '/AM_PATH_CPPUNIT/d' -i 'test/configure.ac'
 
-  cd "$srcdir/$pkgname"
-
-  # Don't force-link 'make test' cppunit dependency to runtime libraries
+  echo "Editing 'configure.ac': don't force-link 'cppunit' dependency to runtime libraries, needed only in 'make test'"
   sed -E 's/[    ]*\$CPPUNIT_CFLAGS[    ]*/ /g
           s/[    ]*\$CPPUNIT_LIBS[    ]*/ /g' \
-          -i configure.ac
+          -i 'configure.ac'
+  echo
 
-  # Generate configure scripts and Makefiles
+  echo "Regenerating autoconf scripts and make files..."
   autoreconf --verbose --force --install --symlink
-}
+  echo
 
-build() {
-  cd "$srcdir/$pkgname"
-
+  echo "Running 'configure' script..."
   ./configure \
-    --prefix=/usr \
+    --prefix='/usr' \
     --enable-debug \
     --enable-extra-debug \
     --disable-silent-rules
+}
 
+build() {
+  cd "${pkgname}"
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "${pkgname}"
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }

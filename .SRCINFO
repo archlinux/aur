@@ -6,8 +6,8 @@ pkgbase = libtorrent-git
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	makedepends = git
 	makedepends = cppunit
+	makedepends = git
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
@@ -16,6 +16,6 @@ pkgbase = libtorrent-git
 	conflicts = libtorrent
 	options = debug
 	source = libtorrent-git::git+https://github.com/rakshasa/libtorrent.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = libtorrent-git
