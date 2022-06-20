@@ -13,7 +13,7 @@ provides=('mprocs')
 
 source=("https://github.com/pvolok/mprocs/releases/download/v${pkgver}/mprocs-${pkgver}-linux64.tar.gz")
 
-sha256sums=('0c37b4fb5b282b85456479f64c495fa1c92484920755ba839656b36c3e31255f')
+sha256sums=('3ff574abe0876d59b76dea43355f81c1efcdec855769e9b5be9e79a32110ca2e')
 
 package() {
 	install -D -m755 $srcdir/mprocs $pkgdir/usr/bin/mprocs
