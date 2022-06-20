@@ -1,7 +1,7 @@
 pkgbase = flightradar24
 	pkgdesc = Feeder software for Flightradar24.com (fr24feed)
 	pkgver = 1.0.29
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.flightradar24.com/share-your-data
 	install = flightradar24.install
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = flightradar24
 	sha256sums_x86_64 = cf9ffe50754b1de482d7d9154b5b9d1c251ef2c15564427d176428b4afaef399
 	source_i686 = https://repo-feed.flightradar24.com/linux_x86_binaries/fr24feed_1.0.25-3_i386.deb
 	sha256sums_i686 = a74f109ca8d8c9180b07830a366dba909335d5fa4db1c3bb6c8d259cd6e56d2f
-	source_armv6h = https://repo-feed.flightradar24.com/rpi_binaries/fr24feed_1.0.29-8_armhf.deb
-	sha256sums_armv6h = fb95a1ff123c5e4b63a8fb02709f5a84626d640baa1dfadcc2b98c7916c20f94
-	source_armv7h = https://repo-feed.flightradar24.com/rpi_binaries/fr24feed_1.0.29-8_armhf.deb
-	sha256sums_armv7h = fb95a1ff123c5e4b63a8fb02709f5a84626d640baa1dfadcc2b98c7916c20f94
+	source_armv6h = https://repo-feed.flightradar24.com/rpi_binaries/fr24feed_1.0.29-10_armhf.deb
+	sha256sums_armv6h = 529e9d099c95c4a09b55819f491b49a8390d41f20607ff40b40f78fb02e67104
+	source_armv7h = https://repo-feed.flightradar24.com/rpi_binaries/fr24feed_1.0.29-10_armhf.deb
+	sha256sums_armv7h = 529e9d099c95c4a09b55819f491b49a8390d41f20607ff40b40f78fb02e67104
 
 pkgname = flightradar24
