@@ -1,15 +1,15 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname='python-django-dynamic-preferences'
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Dynamic global and instance settings for your django project"
 arch=(any)
-url="https://github.com/EliotBerriot/django-dynamic-preferences"
+url="https://github.com/agateblue/django-dynamic-preferences"
 license=('BSD')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d1691cc70fe668db4a6c1cfdb90db126011ba0448f2cd85c4d2a993310236c37')
+sha256sums=('bd4967ea91d8485ee353d3ac3ca6f4c9cbf4c818275ec6278635ae90b9a00a65')
 makedepends=('python-setuptools')
 depends=('python-wheel' 'python-django' 'python-persisting-theory')
 

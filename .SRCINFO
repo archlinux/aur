@@ -1,8 +1,8 @@
 pkgbase = python-django-dynamic-preferences
 	pkgdesc = Dynamic global and instance settings for your django project
-	pkgver = 1.11.0
+	pkgver = 1.13.0
 	pkgrel = 1
-	url = https://github.com/EliotBerriot/django-dynamic-preferences
+	url = https://github.com/agateblue/django-dynamic-preferences
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -10,7 +10,7 @@ pkgbase = python-django-dynamic-preferences
 	depends = python-django
 	depends = python-persisting-theory
 	options = !emptydirs
-	source = python-django-dynamic-preferences-1.11.0.tar.gz::https://github.com/EliotBerriot/django-dynamic-preferences/archive/1.11.0.tar.gz
-	sha256sums = d1691cc70fe668db4a6c1cfdb90db126011ba0448f2cd85c4d2a993310236c37
+	source = python-django-dynamic-preferences-1.13.0.tar.gz::https://github.com/agateblue/django-dynamic-preferences/archive/1.13.0.tar.gz
+	sha256sums = bd4967ea91d8485ee353d3ac3ca6f4c9cbf4c818275ec6278635ae90b9a00a65
 
 pkgname = python-django-dynamic-preferences
