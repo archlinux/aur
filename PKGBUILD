@@ -4,7 +4,7 @@
 _perlmod='Test-Time'
 _modnamespace=Test
 pkgname=perl-test-time
-pkgver=0.08
+pkgver=0.092
 pkgrel=1
 pkgdesc="Overrides the time() and sleep() core functions for testing"
 arch=("any")
@@ -13,7 +13,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-test-name-fromline')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('b8bc3b074bb2247e8588399c1e55d071f049cf6ce1c8b4192c38cf3c24559548')
+sha256sums=('30d90f54ce840893c7ba2cac2a4d1eecd4c9cdf805910c595e3ae89dfd644738')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
