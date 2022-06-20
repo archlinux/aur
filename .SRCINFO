@@ -1,12 +1,12 @@
 pkgbase = keyd
 	pkgdesc = A key remapping daemon for linux.
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 2
 	url = https://github.com/rvaiya/keyd
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source = git+https://github.com/rvaiya/keyd.git#tag=90c3687fd507761ae45ef3b0180848187c181ef8
+	source = git+https://github.com/rvaiya/keyd.git#tag=4084a9d5009a0e4667465f06f010c161de7c785d
 	sha256sums = SKIP
 
 pkgname = keyd
