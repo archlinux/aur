@@ -1,11 +1,12 @@
 pkgbase = ckb-next
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, release version
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ckb-next/ckb-next
 	install = ckb-next.install
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
@@ -26,8 +27,10 @@ pkgbase = ckb-next
 	conflicts = ckb-next-git
 	source = https://github.com/ckb-next/ckb-next/archive/v0.5.0.tar.gz
 	source = AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git
+	source = 0001-Fix-autostart-checkbox-detection-with-renamed-binary.patch
 	sha256sums = 12705aa86cb544a77df6d7a73744f21513bcc6cce805ed8caf5d3b72a950157e
 	sha256sums = SKIP
+	sha256sums = 6cddbf71179ad385d89b9a2ed318b0fa3dd5817b5bcfd4432d22b088d183bfcd
 
 pkgname = ckb-next
 

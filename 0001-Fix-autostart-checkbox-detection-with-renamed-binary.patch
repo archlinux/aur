@@ -1,0 +1,35 @@
+From 1de099678ea522e7a66bed19c1cc86de0e24b759 Mon Sep 17 00:00:00 2001
+From: Tasos Sahanidis <tasos@tasossah.com>
+Date: Mon, 20 Jun 2022 22:58:28 +0300
+Subject: [PATCH] Fix autostart checkbox detection with renamed binary
+
+---
+ src/gui/autorun.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/autorun.cpp b/src/gui/autorun.cpp
+index 0f11ff0f..cac6bb11 100644
+--- a/src/gui/autorun.cpp
++++ b/src/gui/autorun.cpp
+@@ -4,6 +4,7 @@
+ #include "autorun.h"
+ #include "ckbsettings.h"
+ #include <QDebug>
++#include <QFileInfo>
+ 
+ // >=0.3.0 (new) paths
+ #ifdef Q_OS_LINUX
+@@ -30,7 +31,9 @@ static const QString oldSettingPath = "Program/DidLoginItem";
+ bool AutoRun::available() {
+     // Allow autostart if the program is located in a system path
+ #ifdef Q_OS_LINUX
+-    return QDir::root().absoluteFilePath(QStandardPaths::findExecutable("ckb-next")) == qApp->applicationFilePath();
++    const QString& fpath = qApp->applicationFilePath();
++    QFileInfo finfo(fpath);
++    return QDir::root().absoluteFilePath(QStandardPaths::findExecutable(finfo.fileName())) == fpath;
+ #elif defined(Q_OS_MACOS)
+     return qApp->applicationFilePath().startsWith("/Applications/ckb-next.app", Qt::CaseInsensitive);
+ #endif
+-- 
+2.25.1
+
