@@ -11,6 +11,7 @@ pkgbase = precice-git
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = git
+	makedepends = texlive-core
 	depends = libxml2
 	depends = petsc
 	depends = eigen

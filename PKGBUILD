@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://${_base}.org"
 license=(LGPL3)
 depends=(libxml2 petsc eigen jsoncpp)
-makedepends=(cmake gcc-fortran doxygen graphviz git)
+makedepends=(cmake gcc-fortran doxygen graphviz git texlive-core)
 checkdepends=(openssh)
 optdepends=('man-db: manual pages for precice-tools and testprecice'
   'git: for Git Revision Info support')
@@ -54,7 +54,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --build build --target install
+  DESTDIR="${pkgdir}" cmake --build build --target install doxygen
   install -Dm 644 ${_base}/LICENSE -t ${pkgdir}/usr/share/licenses/${_base}
   install -Dm 644 ${_base}/docs/man/man1/test${_base}.1 -t ${pkgdir}/usr/share/man/man1/
   mv ${pkgdir}/usr/share/doc/lib${_base}2 ${pkgdir}/usr/share/doc/${_base}
