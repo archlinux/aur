@@ -4,12 +4,12 @@ pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
-_commit=fd3e120b8637
+_commit=4e33f38b17c5
 _srcdir="piciji-denise-$_commit"
 source=("https://bitbucket.org/piciji/denise/get/v$pkgver.tar.gz")
-md5sums=('33c471b7f3231a6b3c8ad47fe7bd38aa')
+sha256sums=('4e3854cea6b813617780083816e42d002149c89f1ce22b37bb59dcf1a47d3176')
 provides=('denise')
 conflicts=('denise-bin' 'denise-git')
 depends=('sdl2' 'gtk3' 'openal' 'libpulse')
@@ -35,7 +35,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/$pkgname/img/
   mkdir -p $pkgdir/usr/lib/$pkgname/shader/
 
-  install -Dm755 out/Denise $pkgdir/usr/bin/$pkgname
+  install -Dm755 out/denise $pkgdir/usr/bin/$pkgname
   install -Dm644 data/img/$pkgname.png $pkgdir/usr/share/icons/$pkgname.png
   install -Dm644 data/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm644 data/translation/* $pkgdir/usr/lib/$pkgname/translation
@@ -44,3 +44,4 @@ package() {
   install -Dm644 data/img/bundle/* $pkgdir/usr/lib/$pkgname/img
   cp -r data/shader $pkgdir/usr/lib/$pkgname/
 }
+
