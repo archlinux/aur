@@ -1,12 +1,11 @@
 pkgbase = tauri-devel-meta
 	pkgdesc = Meta package to setup development environment for Tauri.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
 	arch = any
 	license = none
 	depends = webkit2gtk
-	depends = base-devel
 	depends = curl
 	depends = wget
 	depends = openssl
