@@ -1,7 +1,7 @@
 pkgbase = anbox-modules-dkms-git
 	pkgdesc = Kernel modules for Anbox or Waydroid (DKMS)
 	pkgver = r38.8148a16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/choff/anbox-modules
 	arch = x86_64
 	license = GPL
