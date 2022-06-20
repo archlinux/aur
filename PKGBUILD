@@ -4,7 +4,7 @@
 _base=precice
 pkgname=${_base}-git
 pkgver=2.4.0.r35.g68d8821d
-pkgrel=1
+pkgrel=2
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
 url="https://${_base}.org"
@@ -58,6 +58,7 @@ package() {
   install -Dm 644 ${_base}/LICENSE -t ${pkgdir}/usr/share/licenses/${_base}
   install -Dm 644 ${_base}/docs/man/man1/test${_base}.1 -t ${pkgdir}/usr/share/man/man1/
   mv ${pkgdir}/usr/share/doc/lib${_base}2 ${pkgdir}/usr/share/doc/${_base}
+  install -d ${pkgdir}/usr/share/doc/${_base}
   mv ${_base}/docs/source-code-documentation/html/* ${pkgdir}/usr/share/doc/${_base}
   cd "${pkgdir}"
   rm -r usr/share/lintian
