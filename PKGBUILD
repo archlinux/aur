@@ -1,7 +1,7 @@
 # Maintainer: Yakumo Saki <yakumo at ziomatrix dot org>
 pkgname=twty-bin
 pkgver=0.0.13
-pkgrel=3
+pkgrel=5
 epoch=
 pkgdesc="Command-line twitter client"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/mattn/twty"
 license=('MIT')
 groups=()
 depends=()
-makedepends=()
+makedepends=(wget)
 checkdepends=()
 optdepends=()
 provides=()
