@@ -6,7 +6,7 @@
 pkgname='libtorrent-git'
 _pkgbase="${pkgname%-git}"
 pkgver=0.13.8.r20.g53596afc
-pkgrel=2
+pkgrel=3
 pkgdesc='BitTorrent library with a focus on high performance and good code'
 arch=('x86_64' 'i686')
 url='https://github.com/rakshasa/libtorrent'

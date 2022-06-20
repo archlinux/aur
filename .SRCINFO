@@ -1,7 +1,7 @@
 pkgbase = libtorrent-git
 	pkgdesc = BitTorrent library with a focus on high performance and good code
 	pkgver = 0.13.8.r20.g53596afc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rakshasa/libtorrent
 	arch = x86_64
 	arch = i686
