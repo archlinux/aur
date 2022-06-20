@@ -3,7 +3,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname="vita3k"
 pkgname="${_pkgname}-git"
-pkgver=r2676.51175bd8
+pkgver=r2686.27e0c030
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -50,9 +50,14 @@ build() {
 
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
+	export CMAKE_MAKE_PROGRAM=ninja
 
-	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
-	cmake --build build-linux
+	export BUILDPRESET=linux-ninja-clang
+
+	# Configure
+	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF 
+	# Build
+	cmake --build build/${BUILDPRESET} --config Release
 }
 
 package() {
@@ -60,7 +65,7 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/opt/vita3k/"
 
-	cp -r "build-linux/bin/"* "${pkgdir}/opt/vita3k/"
+	cp -r "build/${BUILDPRESET}/bin/Release/"* "${pkgdir}/opt/vita3k/"
 	ln -s "/opt/vita3k/Vita3K" "${pkgdir}/usr/bin/vita3k"
 
 	# These folders needs 777 permissions because vita3k creates files in them
