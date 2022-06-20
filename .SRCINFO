@@ -1,6 +1,6 @@
 pkgbase = ffsend
 	pkgdesc = Easily and securely share files from the command line. A Send client.
-	pkgver = 0.2.75
+	pkgver = 0.2.76
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/ffsend
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ffsend
 	makedepends = openssl>=1.0
 	depends = ca-certificates
 	optdepends = xclip: clipboard support
-	source = https://gitlab.com/timvisee/ffsend/-/archive/v0.2.75/ffsend-v0.2.75.tar.gz
-	sha256sums = 7bf11793ed8dbca61ed40c80333fb4ac167c8854d4b8e2e155d0b1ab70ce7b19
+	source = https://gitlab.com/timvisee/ffsend/-/archive/v0.2.76/ffsend-v0.2.76.tar.gz
+	sha256sums = 82a55bbc1afce99093cd84b2c623bfeadd509dfd592fbdd961f1156c8a80b0bd
 
 pkgname = ffsend
