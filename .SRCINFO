@@ -1,7 +1,7 @@
 pkgbase = mlibc
 	pkgdesc = A portable C standard library
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/managarm/mlibc
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = mlibc
 	makedepends = meson
 	makedepends = ninja
 	depends = bash
-	source = mlibc-2.2.0.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/2.2.0.tar.gz
-	md5sums = 28a0f504a620da6344eb1d44f8760aa4
+	source = mlibc-2.3.0.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/2.3.0.tar.gz
+	md5sums = f056060e76bb343c9c8adef23da69446
 
 pkgname = mlibc

@@ -1,7 +1,7 @@
 # Maintainer: Matt Taylor <64.delta@proton.me>
 pkgname=mlibc
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A portable C standard library"
 arch=(x86_64)
 url="https://github.com/managarm/mlibc"
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/managarm/mlibc/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('28a0f504a620da6344eb1d44f8760aa4')
+md5sums=('f056060e76bb343c9c8adef23da69446')
 validpgpkeys=()
 
 
