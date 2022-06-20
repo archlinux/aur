@@ -7,6 +7,7 @@ pkgbase = dolfin
 	arch = x86_64
 	groups = fenics
 	license = LGPL3
+	makedepends = cmake
 	depends = boost
 	depends = cppunit
 	depends = eigen

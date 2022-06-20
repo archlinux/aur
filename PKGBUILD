@@ -18,6 +18,7 @@ depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc'
 optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
             'slepc: eigenvalue problem solvers'
             'hdf5<=1.12.0-1: for reading/writing hdf5 files')
+makedepends=('cmake')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz min_element.patch hdf5.patch endian.patch)
 sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f'
