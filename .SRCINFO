@@ -9,6 +9,7 @@ pkgbase = lbry-gtk-git
 	depends = python
 	depends = python-appdirs
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-requests
 	depends = python-pillow
 	depends = python-markdown
