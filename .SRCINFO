@@ -1,12 +1,13 @@
 pkgbase = python-degiro-connector
 	pkgdesc = Yet another library to access Degiro's API
 	pkgver = 2.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chavithra/degiro-connector
 	arch = any
 	license = BSD-3
-	makedepends = python-dephell
+	makedepends = python-pyproject2setuppy
 	makedepends = python-setuptools
+	depends = python
 	depends = python-grpcio
 	depends = python-onetimepass
 	depends = python-pandas
