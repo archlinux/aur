@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=jellyseerr
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -21,11 +21,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Fallenbagel/jellyseerr/
         'jellyseerr.tmpfiles'
         'jellyseerr.service'
         'jellyseerr.conf.d')
-sha256sums=('e0b09f2ce82f05ab5cc1070b28856c2c1569e584b129c6ab2bb2a3a2e939567f'
+sha256sums=('46314fb90459f2a84979bed1735c9dcb8820b8cf554b5006cef57b787dfdc22d'
             '372ee94f76040ea76af49fd2f9db851375559458ba1b55ea41f1b2768fe10cb8'
             'cb0b856fc93969c901e69eb31dc201f4e37c8a2d30041beabf1a82077cca4c24'
             '84159db69b33ef3c4e6a424b32331f78e92efe316355c05e3f86920e1ad24c05'
-            '3558182f98561c04e1d6f07acc01468b5d928bc58ede2f14a10c93901e0804c7')
+            '5a446cc8fa0a47a49dbbd6920d49eb4569f988e808cbb0bdbb609ab179a94426')
 
 build()
 {
