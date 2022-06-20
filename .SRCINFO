@@ -1,0 +1,15 @@
+pkgbase = most-git
+	pkgdesc = pager
+	pkgver = 5.2.0.pre9
+	pkgrel = 1
+	url = https://github.com/jedsoft/most
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = slang
+	provides = most
+	conflicts = most
+	source = git+https://github.com/jedsoft/most
+	md5sums = SKIP
+
+pkgname = most-git
