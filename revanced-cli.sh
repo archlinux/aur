@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /usr/share/java/revanced-cli.jar ${@}
+java -jar /usr/share/revanced/revanced-cli.jar ${@}
