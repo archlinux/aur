@@ -7,7 +7,6 @@ pkgdesc="CUPS wrapper for Brother HL-3142CW printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=hl3142cw_eu"
 license=("EULA")
-groups=("base-devel")
 source=("https://download.brother.com/welcome/dlf101629/hl3142cwcupswrapper-1.1.4-0.i386.deb")
 md5sums=("e7d3903ab56ba3d65d87336e2fce60e3")
 
