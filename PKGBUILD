@@ -50,6 +50,8 @@ build() {
 		  -DPYTHON_EXECUTABLE="${py_interp}" \
 		  -DCMAKE_SKIP_BUILD_RPATH=TRUE \
 		  -DCMAKE_SKIP_RPATH=TRUE \
+          -DDOLFIN_ENABLE_TRILINOS=FALSE \
+          -DDOLFIN_ENABLE_SUNDIALS=FALSE \
 		  -DCMAKE_BUILD_TYPE="Release"
 
     cd "${_build_dir}"
