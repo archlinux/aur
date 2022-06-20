@@ -1,7 +1,7 @@
 _pkgname=osmscout-server
 _flavor=kirigami
 pkgname=$_pkgname-$_flavor
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://github.com/rinigus/osmscout-server"

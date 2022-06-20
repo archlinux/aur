@@ -1,5 +1,5 @@
 pkgbase = osmscout-server-kirigami
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/rinigus/osmscout-server
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = osmscout-server-kirigami
 	depends = libmicrohttpd
 	provides = osmscout-server
 	conflicts = osmscout-server
-	source = osmscout-server-2.1.2::git+https://github.com/rinigus/osmscout-server#tag=2.1.2
+	source = osmscout-server-2.2.0::git+https://github.com/rinigus/osmscout-server#tag=2.2.0
 	sha256sums = SKIP
 
 pkgname = osmscout-server-kirigami
