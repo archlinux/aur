@@ -1,24 +1,30 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=pcm
-pkgver=202101
+pkgver=202205
 pkgrel=1
 pkgdesc="Processor Counter Monitor"
 url="https://github.com/opcm/pcm"
 arch=('x86_64')
 license=('custom:BSD-3-Clause')
-depends=('gcc-libs')
+depends=('gcc-libs' 'simdjson')
+makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a1b2b9f6e7ae797c8a3e1551ce8933017d59b3cc9e7de5bcb37ea14439441c21')
+sha256sums=('6929dbab8eab5470e7cc6bb8f7401e1e958c3da2381ab3057e09dd8dd569d2b5')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make
+    cd "$srcdir"
+
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=2}"
+    cmake -B build -G Ninja "$pkgname-$pkgver"
+    cmake --build build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir"
 
-    install -Dm755 ./*.x -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    cmake --install build --prefix "$pkgdir/usr"
+    mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin"
+    rm -r "$pkgdir/usr/sbin"
 }
