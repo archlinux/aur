@@ -1,7 +1,7 @@
 pkgbase = bros
 	pkgdesc = Atari 800XL platformer
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html
 	arch = any
 	license = Unlicense
@@ -10,7 +10,7 @@ pkgbase = bros
 	source = bros.desktop
 	source = bros.png
 	md5sums = 6f9164dc8e7710a08b11e747e80962c0
-	md5sums = 9870b3090f3d6cb87e9d0a9e8d5af446
-	md5sums = b4a23bffe9181a496fdf5ad1dd6eebbb
+	md5sums = 23b04e32efa794095fe00b9ca75eea35
+	md5sums = 0b7f361cb8652f6e7259c1dad5035b57
 
 pkgname = bros

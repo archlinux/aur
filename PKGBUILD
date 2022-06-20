@@ -11,8 +11,8 @@ source=('https://archive.org/download/a8b_Bros_1989_KE_Soft_DE_en_a3/Bros_1989_K
 		"${pkgname}.desktop"
 		"${pkgname}.png")
 md5sums=('6f9164dc8e7710a08b11e747e80962c0'
-		'9870b3090f3d6cb87e9d0a9e8d5af446'
-		'b4a23bffe9181a496fdf5ad1dd6eebbb')
+		'23b04e32efa794095fe00b9ca75eea35'
+		'0b7f361cb8652f6e7259c1dad5035b57')
 
 package() {
 	# game rom atr
