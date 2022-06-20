@@ -2,7 +2,7 @@
 
 pkgname="jailer"
 pkgver=12.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Database Subsetting and Relational Data Browsing Tool"
 url="https://github.com/Wisser/Jailer"
 license=("Apache")
@@ -12,6 +12,7 @@ source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/jailer-database-t
 sha256sums=('e26b3f51a7e5cf5b1318adf0d4436e216af4d66989ae6880d2a9d46b5042b116')
 
 prepare(){
+ tar -xf "data.tar.xz"
  sed -i "opt/jailer-database-tools/lib/jailer-database-tools-Jailer_Database_Tools.desktop" \
      -e "s|Icon=.*|Icon=jailer|"
 }

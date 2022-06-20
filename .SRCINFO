@@ -1,7 +1,7 @@
 pkgbase = jailer
 	pkgdesc = Database Subsetting and Relational Data Browsing Tool
 	pkgver = 12.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wisser/Jailer
 	arch = x86_64
 	license = Apache
