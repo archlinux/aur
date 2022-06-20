@@ -6,14 +6,14 @@ _base=mshr
 pkgname=${_base}
 pkgdesc="Mesh generation component of FEniCS (stable)."
 pkgver=2019.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics')
 conflicts=('python-mshr-git')
 depends=('dolfin=2019.1.0.post0' 'mpfr')
-makedepends=('git')
+makedepends=('git' 'cmake')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
 sha256sums=('0be8f261e7370404863067badadd230dbd55d54f6ffeba15728f4a9bfc856173')
