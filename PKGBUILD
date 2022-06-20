@@ -4,7 +4,7 @@
 pkgname='python2-u-msgpack'
 _name="${pkgname#python2-}-python"
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A MessagePack serializer and deserializer for Python2'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -23,7 +23,7 @@ build() {
 
 check() {
     cd "${_tarname}"
-    pytest2
+    LC_ALL='C.UTF-8' pytest2 --verbose
 }
 
 package() {

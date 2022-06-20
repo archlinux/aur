@@ -1,7 +1,7 @@
 pkgbase = python2-u-msgpack
 	pkgdesc = A MessagePack serializer and deserializer for Python2
 	pkgver = 2.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/u-msgpack-python/2.7.1/
 	arch = any
 	license = MIT
