@@ -17,8 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-_tag=b5db1c246c173692371a17d92c2bd5fda1826d98 # git rev-parse "$pkgver"
-source=(git+https://github.com/free-audio/clap-host#tag=$_tag
+source=(git+https://github.com/free-audio/clap-host#tag=b5db1c246c173692371a17d92c2bd5fda1826d98
   git+https://github.com/free-audio/clap#tag=55ee06f776669b94d63247a9c1dcb7dfa6056587
   git+https://github.com/free-audio/clap-helpers#tag=716cdf49cc6eb7999bad44c084b363bbde907937)
 noextract=()
