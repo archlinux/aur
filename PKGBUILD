@@ -16,11 +16,11 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
 
 _build=11.56.19
 source_armv6h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv6h=('b0a0cafcbed42284c18a970d6005b2593cb59bde99fe31f054ad5459e125df59')
+sha256sums_armv6h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
 source_armv7h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv7h=('b0a0cafcbed42284c18a970d6005b2593cb59bde99fe31f054ad5459e125df59')
+sha256sums_armv7h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
 source_armv8h=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch32hf.tar.gz")
-sha256sums_armv8h=('b0a0cafcbed42284c18a970d6005b2593cb59bde99fe31f054ad5459e125df59')
+sha256sums_armv8h=('1c637012c5fce079a820ab3cc8b74695722c10e07342336055042aebb8bd8420')
 source_aarch64=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_aarch64.tar.gz")
 sha256sums_aarch64=('fc7c41a0005180d4ca471c90d01e049469e0614cf774566d4cf383caa29d1a97')
 source_i686=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
