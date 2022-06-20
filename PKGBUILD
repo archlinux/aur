@@ -3,29 +3,21 @@
 
 _name=PaulXStretch
 pkgname=${_name,,}
-pkgver=1.5.3
-pkgrel=2
-pkgdesc='Extreme time stretching application and plugin'
+pkgver=1.6.0
+pkgrel=1
+pkgdesc='Extreme time stretching tool (standalone, VST3 and CLAP plugin)'
 arch=(x86_64 aarch64)
 url='https://sonosaurus.com/paulxstretch/'
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(alsa-lib cmake fftw freetype2 jack libx11 libxcursor libxinerama libxrandr)
 optdepends=('alsa-lib: for standalone ALSA support'
+            'clap-host: for CLAP plugin'
             'jack: for standalone JACK support'
             'vst3-host: for VST3 plugin')
-groups=(pro-audio vst3-plugins)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/essej/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        'fix-gcc12.patch')
-sha256sums=('89b95f0006256b049dc90518b966050dbbd770ad1a70fad6124f840fa870b7ca'
-            '25ccf8d99d5a115ba487167220b53635023054215306de1c65ba4a24bef16c66')
-
-prepare() {
-  cd $pkgname-$pkgver
-  # fix JUCE build error in gcc12
-  # https://github.com/essej/paulxstretch/issues/16
-  patch -p1 -i ../fix-gcc12.patch
-}
+groups=(clap-plugins pro-audio vst3-plugins)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/essej/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('460b569c64dc5be57a963b863adc1b2606dc14a264701d8c983df3d3b6f7944d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
@@ -46,4 +38,5 @@ package() {
   install -vDm755 Standalone/* -t "$pkgdir"/usr/bin
   install -vDm755 VST3/${_name}.vst3/Contents/$CARCH-linux/*.so \
     -t "$pkgdir"/usr/lib/vst3/${_name}.vst3/Contents/$CARCH-linux
+  install -vDm755 CLAP/${_name}.clap -t "$pkgdir"/usr/lib/clap
 }
