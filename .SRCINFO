@@ -1,7 +1,7 @@
 pkgbase = rakarrack-plus
 	pkgdesc = Guitar Effects Processor
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/Stazed/rakarrack-plus
 	arch = x86_64
 	arch = aarch64
@@ -23,8 +23,8 @@ pkgbase = rakarrack-plus
 	depends = libxpm
 	optdepends = lv2-host: for running LV2 plugins
 	optdepends = new-session-manager: for NSM support
-	source = rakarrack-plus-1.2.1.tar.gz::https://github.com/Stazed/rakarrack-plus/archive/refs/tags/1.2.1.tar.gz
-	sha256sums = bb583a4474409b4dcde40b1bbf06366067ccbd5f2a1e66ef6bbf8ff57a19c4c1
+	source = rakarrack-plus-1.2.2.tar.gz::https://github.com/Stazed/rakarrack-plus/archive/refs/tags/1.2.2.tar.gz
+	sha256sums = 6a42574cf8c81788703d40ecc9692c29ed02393d1376d39260de6b51595a2769
 
 pkgname = rakarrack-plus
 	depends = alsa-utils
