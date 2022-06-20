@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.2.r93.460206f
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
@@ -19,17 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("${pkgname}::git+${url}")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname" || exit
+	printf "0.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd mcbash
-	make PREFIX=/usr/local DESTDIR="${pkgdir}" install
+	install -D -m755 "$srcdir/$pkgname/bin/mcbash" "$pkgdir/usr/bin/mcbash"
+	install -D -m644 "$srcdir/$pkgname/mcbash.1" "$pkgdir/usr/share/man/man1/mcbash.1"
 }
