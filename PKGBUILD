@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.4.r97.d2202df
+pkgver=0.4.2
 pkgrel=1
 epoch=
 pkgdesc="scan for valid MAC addresses on Stalker Portal servers"
@@ -26,12 +26,12 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/$pkgname" || exit
-	printf "0.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.4.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	install -D -m755 "$srcdir/$pkgname/bin/mcbash" "$pkgdir/usr/bin/mcbash"
-	install "$srcdir/$pkgname/post_install.install" "$pkgdir/post_install.install"
+	install -D -m755 "$srcdir/$pkgname/post_install.install" "$pkgdir/post_install.install"
 	install -D -m644 "$srcdir/$pkgname/mcbash.1" "$pkgdir/usr/share/man/man1/mcbash.1"
 	install -D -m644 "$srcdir/$pkgname/mcbash.conf" "$pkgdir/etc/mcbash.conf"
 }
