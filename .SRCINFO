@@ -6,7 +6,6 @@ pkgbase = vmware-unlocker-bin
 	arch = x86_64
 	license = MIT
 	provides = vmware-unlocker
-	provides = vmware-unlocker-git
 	conflicts = vmware-unlocker
 	conflicts = vmware-unlocker-git
 	source = https://github.com/DrDonk/unlocker/releases/download/v4.2.1/unlocker421.zip
