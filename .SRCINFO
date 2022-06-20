@@ -1,7 +1,7 @@
 pkgbase = jdminecraftlauncher
 	pkgdesc = A oldstyle Minecraft launcher written in Python
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 3.2
+	pkgrel = 1
 	url = https://gitlab.com/JakobDev/jdMinecraftLauncher
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = jdminecraftlauncher
 	depends = python-minecraft-launcher-lib
 	depends = python-jdtranslationhelper
 	optdepends = gamemode: Run Minecraft in gamemode
-	source = jdminecraftlauncher-3.0.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/3.0/jdMinecraftLauncher-3.0.tar.gz
-	sha256sums = b7e15059147d3480fa408789c850f252c38e7624fb8bb30f86b0784c4c1b76ae
+	source = jdminecraftlauncher-3.2.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/3.2/jdMinecraftLauncher-3.2.tar.gz
+	sha256sums = 2eea914e24ed8672cb80a9a724d56e6271d3922fd5ef79f195ad84e39880ad07
 
 pkgname = jdminecraftlauncher
