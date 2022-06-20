@@ -1,11 +1,35 @@
-pre_remove() {
-  # disable service and remove targets
-  linux-enable-ir-emitter boot disable
+post_intall() {
+  # support update v3 to v4 
+  if [ -f /etc/linux-enable-ir-emitter.yaml ]; then 
+    python /usr/lib/linux-enable-ir-emitter/migrate-v3.py
+    rm -f /etc/linux-enable-ir-emitter.yaml
+  fi
+
+  # if SELinux is installed, fix denied access to /dev/video
+  which semanage &> /dev/null
+  if [ "$?" -eq 0 ]; then
+      semanage fcontext -a -t bin_t /usr/lib/linux-enable-ir-emitter/driver/execute-driver
+      semanage fcontext -a -t bin_t /usr/lib/linux-enable-ir-emitter/driver/driver-generator
+      restorecon -v /usr/lib/linux-enable-ir-emitter/driver/* 1> /dev/null
+  fi
 }
 
 post_remove() {
-  # delete files added after user configure
-  rm -f /etc/linux-enable-ir-emitter.yaml
+  # remove SeLinux permission
+  which semanage &> /dev/null
+  if [ "$?" -eq 0 ]; then
+      semanage fcontext -d /usr/lib/linux-enable-ir-emitter/driver/execute-driver
+      semanage fcontext -d /usr/lib/linux-enable-ir-emitter/driver/driver-generator
+  fi
+
+  # delete python cache
+  rm -rf /usr/lib/linux-enable-ir-emitter/
+
+  # delete drivers
+  rm -rf /etc/linux-enable-ir-emitter
+  
+  # delete systemd service
+  systemctl disable linux-enable-ir-emitter &> /dev/null
   rm -f /usr/lib/systemd/system/linux-enable-ir-emitter.service
   rm -f /etc/udev/rules.d/99-linux-enable-ir-emitter.rules
 }
