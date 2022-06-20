@@ -1,14 +1,13 @@
 pkgbase = base16-builder-go
 	pkgdesc = A simple builder for base16 templates and schemes
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/belak/base16-builder-go
 	arch = x86_64
 	makedepends = git
 	makedepends = go
 	provides = base16-builder
-	source = https://github.com/belak/base16-builder-go/archive/v0.1.0.zip
-	sha256sums = 3aae9b01dc48ee5b68665b90e3832489141ea44eb36bf17dc0840c1a2d533746
+	source = https://github.com/belak/base16-builder-go/archive/v0.2.0.zip
+	sha256sums = 94965f9e3efb2073fccccb4bf0bfeedd4e4bd5afe780c3c4ee794b652784c5a3
 
 pkgname = base16-builder-go
-
