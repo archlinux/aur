@@ -1,4 +1,5 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
+_pkgname=svp
 pkgname=svp-bin
 pkgver=4.5.210
 _pkgver=${pkgver}-1
@@ -16,7 +17,7 @@ optdepends=(
 	'mpv-git: needed for mpv vapoursynth support'
 	'ocl-icd: for GPU acceleration'
 )
-provides=()
+provides=('svp')
 conflicts=()
 replaces=()
 backup=()
@@ -56,10 +57,10 @@ prepare() {
 package() {
 	mkdir -p "$pkgdir"/{opt/svp,usr/bin,usr/share/licenses/svp}
 	if [[ -d "$srcdir/extracted/licenses" ]]; then
-		mv "$srcdir/extracted/licenses" "$pkgdir/usr/share/licenses/$pkgname"
+		mv "$srcdir/extracted/licenses" "$pkgdir/usr/share/licenses/${_pkgname}"
 	fi
-	mv "$srcdir/extracted/"* "$pkgdir/opt/$pkgname"
+	mv "$srcdir/extracted/"* "$pkgdir/opt/${_pkgname}"
 	# rm "$pkgdir/opt/$pkgname/extensions/libsvpcode.so" # previously this extension caused the whole thing to segfault. lmk if that's still the case
-	ln -s "/opt/$pkgname/SVPManager" "$pkgdir/usr/bin/SVPManager"
+	ln -s "/opt/${_pkgname}/SVPManager" "$pkgdir/usr/bin/SVPManager"
 	chmod -R +rX "$pkgdir/opt/svp" "$pkgdir/usr/share"
 }

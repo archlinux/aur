@@ -17,6 +17,7 @@ pkgbase = svp-bin
 	depends = lsof
 	optdepends = mpv-git: needed for mpv vapoursynth support
 	optdepends = ocl-icd: for GPU acceleration
+	provides = svp
 	options = !strip
 	source = https://www.svp-team.com/files/svp4-linux.4.5.210-1.tar.bz2
 	sha256sums = 940d539ba50e4455fdaebbec07db03870f98f101fbb4ceadda013d1e00c90883
