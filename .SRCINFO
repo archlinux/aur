@@ -1,11 +1,11 @@
 pkgbase = yogo
 	pkgdesc = Interact with yopmail from command-line
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/antham/yogo
 	arch = x86_64
 	license = GPL
-	source = https://github.com/antham/yogo/releases/download/v3.6.0/yogo_.tar.gz
-	md5sums = 84053eae6dc2700792e64f48ad4b0a1e
+	source = https://github.com/antham/yogo/releases/download/v3.7.0/yogo_3.7.0_linux_amd64.tar.gz
+	md5sums = 41e5bc32c3d0d6028e03d1b9371b8869
 
 pkgname = yogo
