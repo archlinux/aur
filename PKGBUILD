@@ -1,30 +1,34 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
+# Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="pbk"
-pkgver=0.2
+pkgver="1.0"
 pkgrel=1
-epoch=
-pkgdesc="Backup and retrieve your files efficiently"
+pkgdesc="A tool for backing up and retrieving files locally"
 arch=("any")
-url="https://gitlab.com/oktopod11/pbk"
-license=("GPL")
-groups=()
-depends=("python")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=("pbk")
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
-noextract=()
-sha256sums=("1f5087306b3b3f7892864fa7c431f8e1317011f2f3c354a6e7fc1a502e5138ca")
+url="https://gitlab.com/NH000/pbk"
+license=("MIT")
+depends=("python3")
+makedepends=("sed" "coreutils")
+source=("$pkgname-$pkgver::git+$url#tag=e74e1691b72557f4e7fbb981ae979a2b7ae3c148")
+sha256sums=("SKIP")
 
 package() {
-	mkdir -vp "$pkgdir/usr/bin/"
-	mkdir -vp "$pkgdir/usr/share/man/man1/"
-	cp -v "$srcdir/$pkgname/pbk.py" "$pkgdir/usr/bin/pbk"
-	cp -v "$srcdir/$pkgname/pbk.man" "$pkgdir/usr/share/man/man1/pbk.1"
-	gzip -v "$pkgdir/usr/share/man/man1/pbk.1"
+	cd "$pkgname-$pkgver"
+
+    install -D "pbk.py" "$pkgdir/usr/bin/pbk"
+    sed -i '34s/\bNone\b/"\/usr\/share\/locale"/' "$pkgdir/usr/bin/pbk"
+    sed -i '35s/\bNone\b/"pbk"/' "$pkgdir/usr/bin/pbk"
+
+    install -m 644 -D "man/man1/pbk.1.in" "$pkgdir/usr/share/man/man1/pbk.1"
+    sed -i 's/\bPBK_EXEC_NAME\b/pbk/' "$pkgdir/usr/share/man/man1/pbk.1"
+    install -m 644 -D "man/sr/man1/pbk.1.in" "$pkgdir/usr/share/man/sr/man1/pbk.1"
+    sed -i 's/\bPBK_EXEC_NAME\b/pbk/' "$pkgdir/usr/share/man/sr/man1/pbk.1"
+    install -m 644 -D "man/sr_RS@latin/man1/pbk.1.in" "$pkgdir/usr/share/man/sr_RS@latin/man1/pbk.1"
+    sed -i 's/\bPBK_EXEC_NAME\b/pbk/' "$pkgdir/usr/share/man/sr_RS@latin/man1/pbk.1"
+
+    mkdir -p "$pkgdir/usr/share/locale/sr/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr/LC_MESSAGES/pbk.mo" "po/sr.po"
+    mkdir -p "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES/pbk.mo" "po/sr_RS@latin.po"
+
+    install -m 644 -D -t "$pkgdir/usr/share/licenses/pbk" "LICENSE"
 }
