@@ -7,7 +7,7 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=powerdevil-light
-pkgver=5.25.0
+pkgver=5.25.1
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
 arch=(x86_64)
@@ -19,19 +19,13 @@ makedepends=(extra-cmake-modules kdoctools)
 groups=(plasma)
 conflicts=("${pkgname%-light}")
 provides=("${pkgname%-light}")
-source=(https://download.kde.org/stable/plasma/"${pkgver}"/"${pkgname%-light}"-"${pkgver}".tar.xz{,.sig}
-        https://invent.kde.org/plasma/powerdevil/-/commit/2ebe655d.patch)
-sha256sums=('71b63a3135d60e2ad172cf72c2d095014b2ed97b8406124118ae6f410bb30fbb'
-            'SKIP'
-            '3f03b8807acd3035ab5e6f1a1a3236d3b0146485e96b877f8d66a7a752e2a2e6')
+source=(https://download.kde.org/stable/plasma/"${pkgver}"/"${pkgname%-light}"-"${pkgver}".tar.xz{,.sig})
+sha256sums=('c41ecd197a8def2a7b4231e5d8a642c8b858c940d529d22a1b3bd273caada754'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-prepare() {
-  patch -d ${pkgname%-light}-${pkgver} -p1 < 2ebe655d.patch # Fix changing screen brightness
-}
 
 build() {
   cmake -B build -S ${pkgname%-light}-${pkgver} \
