@@ -1,7 +1,7 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plaincontrolcenter
-pkgver=0.1.4
+pkgver=0.2
 pkgrel=1
 pkgdesc="plainDE control center"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -21,6 +21,5 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/plainDE
-  cp $srcdir/plainControlCenter/plainControlCenter $pkgdir/usr/bin/
+  install -m 0755 $srcdir/plainControlCenter/plainControlCenter $pkgdir/usr/bin/plainControlCenter
 }
-
