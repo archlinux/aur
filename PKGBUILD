@@ -1,7 +1,7 @@
 # Maintainer: Marek Setnik <setnikmarek99@gmail.com>
 _pkgbase=t150_driver
 pkgname="${_pkgbase}-dkms-git"
-pkgver=0.7c.r137.a47b1bc
+pkgver=0.7c.r143.72cd2b5
 pkgrel=1
 pkgdesc="Thrustmaster T150 Force Feedback Wheel Linux drivers"
 arch=('x86_64')
