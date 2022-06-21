@@ -1,9 +1,9 @@
 # Maintainer: ParaSait <parasait at proton dot me>
 pkgname=json-ld-cli-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple command line utility allowing to process JSON-LD 1.1 documents.'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/filip26/json-ld-cli'
 license=('Apache')
 source=("${url}/releases/download/v${pkgver}/json-ld-cli-${pkgver}-ubuntu-latest.zip")

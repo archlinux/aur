@@ -1,9 +1,9 @@
 pkgbase = json-ld-cli-bin
 	pkgdesc = A simple command line utility allowing to process JSON-LD 1.1 documents.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filip26/json-ld-cli
-	arch = any
+	arch = x86_64
 	license = Apache
 	source = https://github.com/filip26/json-ld-cli/releases/download/v0.7.0/json-ld-cli-0.7.0-ubuntu-latest.zip
 	sha256sums = 57fc2d98cec3e2a8c0d6270aa078e93b5bf36f53093af10365906922c4c138a0
