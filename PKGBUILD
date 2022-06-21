@@ -4,7 +4,7 @@ _pkgname=kotatsu-dl
 pkgver=0.2
 pkgrel=3
 pkgdesc='Manga downloader with a Java gui'
-url='https://github.com/nv95/kotatsu-dl'
+url='https://github.com/KotatsuApp/kotatsu-dl'
 arch=('any')
 license=('GPL3')
 depends=('java-environment>=11')
