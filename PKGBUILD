@@ -3,7 +3,7 @@
 _pkgname=okular
 pkgname=okular-no-purpose
 pkgver=22.04.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -14,7 +14,8 @@ makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools kh
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
-            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
+            'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)'
+            'kde-cli-tools: to configure web shortcuts' 'plasma-workspace: to configure web shortcuts')
 conflicts=(kdegraphics-okular)
 conflicts=(okular)
 replaces=(kdegraphics-okular)
