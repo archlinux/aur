@@ -1,8 +1,7 @@
 # Maintainer: Rain Clark <rain AT melonbread DOT dev>
-# Contributor: Tom Hudson <mail at tomnomnom dot com>
 
 pkgname=httprobe-bin
-pkgver=0.1.2
+pkgver=0.2
 pkgrel=2
 pkgdesc="Take a list of domains and probe for working HTTP and HTTPS servers"
 arch=('i686' 'x86_64')
@@ -12,8 +11,8 @@ license=('MIT')
 source_i686=(https://github.com/tomnomnom/httprobe/releases/download/v${pkgver}/httprobe-linux-386-${pkgver}.tgz)
 source_x86_64=(https://github.com/tomnomnom/httprobe/releases/download/v${pkgver}/httprobe-linux-amd64-${pkgver}.tgz)
 
-sha256sums_i686=('3a19bc71cbcbf352636f70a2585a2aaedbe9f53290dcccd4bfbb3ab56ece7a49')
-sha256sums_x86_64=('a8e5dbaa09e4c35a6a1ac441667d1bd39f079d007ff77c6ffc4431687d875a94')
+sha256sums_i686=('8502e5942c132a8fa63cfe236720a92022851b2a3629c65ccc95d38eaf9c55e1')
+sha256sums_x86_64=('4a43ae3cb355c698b811f4ddf1da117ad215984a1187997deb41f89a5c5fff40')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
