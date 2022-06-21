@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1057
+pkgver=mainline.0.1061
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -61,7 +61,6 @@ b2sums=(
 
 prepare() {
 	cd yuzu-mainline
-	git submodule init externals/{mbedtls,sirit}
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.sirit.url ../sirit
 	git submodule update
