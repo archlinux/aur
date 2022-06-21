@@ -1,0 +1,51 @@
+diff --git a/setup.py b/setup.py
+index 5f44f2f..c43766a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -25,12 +25,12 @@ if mo:
+ else:
+     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
+ 
+-# Use README.md as the package long description  
++# Use README.md as the package long description
+ with open('README.md') as f:
+     long_description = f.read()
+ 
+ class CustomBuildExtCommand(build_ext):
+-    """ This extension command lets us not require numpy be installed before running pip install ripser 
++    """ This extension command lets us not require numpy be installed before running pip install ripser
+         build_ext command for use when numpy headers are needed.
+     """
+ 
+@@ -52,11 +52,11 @@ if platform.system() == "Windows":
+     ])
+ elif platform.system() == "Darwin":
+     extra_compile_args.extend([
+-        '-std=c++11', 
++        '-std=c++11',
+         "-mmacosx-version-min=10.9"
+     ])
+     extra_link_args.extend([
+-        "-stdlib=libc++", 
++        "-stdlib=libc++",
+         "-mmacosx-version-min=10.9"
+     ])
+ else:
+@@ -104,7 +104,7 @@ setup(
+     url="https://ripser.scikit-tda.org",
+     license='MIT',
+     packages=['ripser'],
+-    ext_modules=cythonize(ext_modules),
++    ext_modules=cythonize(ext_modules, language_level = '3'),
+     install_requires=[
+         'Cython',
+         'numpy',
+@@ -114,7 +114,7 @@ setup(
+     ],
+     extras_require={
+         'testing': [ # `pip install -e ".[testing]"``
+-            'pytest'  
++            'pytest'
+         ],
+         'docs': [ # `pip install -e ".[docs]"`
+             'sktda_docs_config'

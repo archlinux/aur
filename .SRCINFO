@@ -1,21 +1,24 @@
 pkgbase = python-ripser
-	pkgdesc = A Lean Persistent Homology Library for Python
-	pkgver = 0.4.1
-	pkgrel = 3
+	pkgdesc = Homology Library for Python
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/scikit-tda/ripser.py
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = cython
-	depends = python
-	depends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-scikit-learn
 	depends = python-persim
-	options = !emptydirs
-	source = https://github.com/scikit-tda/ripser.py/archive/v0.4.1.tar.gz
-	sha256sums = ec7f34935f5e6d3430c7f5a27007ccf4f50a21936d4045c0d3aa1e77209ef8fa
+	source = python-ripser-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/r/ripser/ripser-0.6.1.tar.gz
+	source = setup.py.patch
+	source = header.patch
+	sha256sums = 335112a0f94532ccbe686db7826ee8d0714b32f65891abf92c0a02f3cb0fc5fd
+	sha256sums = 5d6538cf07d897cfead808048682266bcf2a9199f2ddda9becd4919221612195
+	sha256sums = cd5b619ce29859d26890e9256f3e883c463c1196c3e9a172b7de264584990a4a
 
 pkgname = python-ripser
-

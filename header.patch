@@ -1,0 +1,12 @@
+diff --git a/ripser/ripser.cpp b/ripser/ripser.cpp
+index f2b7531..2c225c5 100644
+--- a/ripser/ripser.cpp
++++ b/ripser/ripser.cpp
+@@ -46,6 +46,7 @@ derivative works thereof, in binary and source code form.
+ #include <iomanip>
+ #include <iostream>
+ #include <iterator>
++#include <limits>
+ #include <numeric>
+ #include <queue>
+ #include <sstream>
