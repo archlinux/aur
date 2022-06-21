@@ -1,14 +1,14 @@
 # Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=vmware-unlocker-git
-pkgver=4.2.1.r152.4737369
+pkgver=4.2.1.r153.93727fd
 pkgrel=1
 pkgdesc="VMware macOS utilities, from the dev branch of the upstream repo"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker/"
 license=('MIT')
 #depends=("vmware-workstation>=16.0.0")
-makedepends=("git" "zsh" "go")
+makedepends=("git" "go")
 provides=("vmware-unlocker")
 conflicts=("vmware-unlocker" "vmware-unlocker-bin")
 source=("$pkgname::git+$url#branch=main" "vmware-unlocker-post.hook" "vmware-unlocker-pre.hook")
