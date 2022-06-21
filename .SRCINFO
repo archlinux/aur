@@ -12,6 +12,7 @@ pkgbase = audio-to-midi
 	depends = python-pycparser
 	depends = python-soundfile
 	depends = python-midi
+	depends = python-progressbar
 	source = git+https://github.com/NFJones/audio-to-midi#tag=v2020.7
 	md5sums = SKIP
 
