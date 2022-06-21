@@ -3,7 +3,7 @@
 
 pkgname="python-cachelib"
 _name=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A collection of cache libraries in the same API interface. Extracted from werkzeug"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('df254f3b900dc8684d8ebdd146c731ddb45edc6233a6cf7e3e834c949f360726')
+sha256sums=('e358f6f82cf633891f0dbd3996e300b4657716ac44b301df33b9cb2cfd6eea6d')
 
 build() {
     cd ${_name}-${pkgver}

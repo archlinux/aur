@@ -1,13 +1,13 @@
 pkgbase = python-cachelib
 	pkgdesc = A collection of cache libraries in the same API interface. Extracted from werkzeug
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/pallets/cachelib
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/cachelib/cachelib-0.7.0.tar.gz
-	sha256sums = df254f3b900dc8684d8ebdd146c731ddb45edc6233a6cf7e3e834c949f360726
+	source = https://files.pythonhosted.org/packages/source/c/cachelib/cachelib-0.8.0.tar.gz
+	sha256sums = e358f6f82cf633891f0dbd3996e300b4657716ac44b301df33b9cb2cfd6eea6d
 
 pkgname = python-cachelib
