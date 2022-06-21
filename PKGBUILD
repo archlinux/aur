@@ -8,7 +8,7 @@
 
 pkgname="rtorrent-vi-color"
 _pkgname="rtorrent"
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Ncurses BitTorrent client based on libTorrent with vi like keybindings and color patch.'
 url="http://libtorrent.rakshasa.no"
@@ -22,9 +22,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rakshasa/${_pkgname}/ar
         "${_pkgname}-${pkgver}_vi_keybinding_tjwoosta.patch"
         "${_pkgname}-${pkgver}_color.patch"
         "${_pkgname}-${pkgver}_compact_display.patch")
-sha1sums=('6c4f13288b36a868ca777f3ae5a39928ddbf6426'
-          '491be68e005124bd61efcaab5dcfc0ddb3a2059a'
-          'f32cc1c0622155f4c47d99fbb52f0e918476188f'
+sha1sums=('897ab36a4e6769df2984930cae0991da83818237'
+          '732f4b6b9d0a699018fe5e5a974c430c0d09d061'
+          'a086d12ed3f57d766ee0752b23cb025f1127dde4'
           '58e625a458033d85ac642c39213455c41ab63b9f')
 
 build() {

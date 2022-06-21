@@ -1,0 +1,479 @@
+diff --git a/src/command_network.cc b/src/command_network.cc
+index 092287a..4f71e83 100644
+--- a/src/command_network.cc
++++ b/src/command_network.cc
+@@ -235,6 +235,26 @@ initialize_command_network() {
+   torrent::FileManager* fileManager = torrent::file_manager();
+   core::CurlStack* httpStack = control->core()->http_stack();
+ 
++  CMD2_ANY         ("colors.color_inactive_fg",       std::bind(&ui::Root::get_color_inactive_fg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_inactive_fg.set",   std::bind(&ui::Root::set_color_inactive_fg,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_inactive_bg",       std::bind(&ui::Root::get_color_inactive_bg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_inactive_bg.set",   std::bind(&ui::Root::set_color_inactive_bg,   control->ui(), std::placeholders::_2));
++
++  CMD2_ANY         ("colors.color_dead_fg",       std::bind(&ui::Root::get_color_dead_fg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_dead_fg.set",   std::bind(&ui::Root::set_color_dead_fg,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_dead_bg",       std::bind(&ui::Root::get_color_dead_bg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_dead_bg.set",   std::bind(&ui::Root::set_color_dead_bg,   control->ui(), std::placeholders::_2));
++
++  CMD2_ANY         ("colors.color_active_fg",       std::bind(&ui::Root::get_color_active_fg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_active_fg.set",   std::bind(&ui::Root::set_color_active_fg,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_active_bg",       std::bind(&ui::Root::get_color_active_bg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_active_bg.set",   std::bind(&ui::Root::set_color_active_bg,   control->ui(), std::placeholders::_2));
++
++  CMD2_ANY         ("colors.color_finished_fg",       std::bind(&ui::Root::get_color_finished_fg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_finished_fg.set",   std::bind(&ui::Root::set_color_finished_fg,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_finished_bg",       std::bind(&ui::Root::get_color_finished_bg,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_finished_bg.set",   std::bind(&ui::Root::set_color_finished_bg,   control->ui(), std::placeholders::_2));
++
+   CMD2_ANY_STRING  ("encoding.add", std::bind(&apply_encoding_list, std::placeholders::_2));
+ 
+   // Isn't port_open used?
+diff --git a/src/display/canvas.cc b/src/display/canvas.cc
+index fc24bbc..6021e8c 100644
+--- a/src/display/canvas.cc
++++ b/src/display/canvas.cc
+@@ -111,6 +111,12 @@ Canvas::initialize() {
+ 
+   if (!m_isDaemon) {
+     initscr();
++    start_color();
++    use_default_colors();
++    init_pair(4, -1, -1);
++    init_pair(3, -1, -1);
++    init_pair(2, -1, -1);
++    init_pair(1, -1, -1);
+     raw();
+     noecho();
+     nodelay(stdscr, TRUE);
+diff --git a/src/display/window_download_list.cc b/src/display/window_download_list.cc
+index 6b4936d..16cfd85 100644
+--- a/src/display/window_download_list.cc
++++ b/src/display/window_download_list.cc
+@@ -37,6 +37,7 @@
+ #include "config.h"
+ 
+ #include <rak/algorithm.h>
++#include <torrent/rate.h>
+ 
+ #include "core/download.h"
+ #include "core/view.h"
+@@ -124,6 +125,14 @@ WindowDownloadList::redraw() {
+   char buffer[m_canvas->width() + 1];
+   char* last = buffer + m_canvas->width() - 2 + 1;
+ 
++  /*
++  There are four states where colors are applied:
++  1 inactive  # If inactive, e.g. user stopped down/upload
++  2 dead      # If active but no down/upload
++  3 active    # If active and download
++  4 finished  # If finished
++  */
++
+   // Add a proper 'column info' method.
+   if (layout_name == "compact") {
+     print_download_column_compact(buffer, last);
+@@ -135,7 +144,32 @@ WindowDownloadList::redraw() {
+   if (layout_name == "full") {
+     while (range.first != range.second) {
+       print_download_title(buffer, last, *range.first);
+-      m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++      m_canvas->print(0, pos, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++      if( (*range.first)->is_done() ) {
++        if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++          m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 4);       // Finished and uploading
++        } else {
++          m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 4);     // Finished
++        }
++      } else if( (*range.first)->is_active() ) {
++        if( (*range.first)->download()->info()->down_rate()->rate() != 0 ) {
++          if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 3);     // Active and uploading
++          } else {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 3);   // Active
++          }
++        } else {
++          if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 2);     // Dead but still uploading
++          } else {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 2);   // Dead
++          }
++        }
++      } else {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 1);     // Inactive
++      }
++      pos++;
++
+       print_download_info_full(buffer, last, *range.first);
+       m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+       print_download_status(buffer, last, *range.first);
+@@ -148,11 +182,111 @@ WindowDownloadList::redraw() {
+     while (range.first != range.second) {
+       print_download_info_compact(buffer, last, *range.first);
+       m_canvas->set_default_attributes(range.first == m_view->focus() ? A_REVERSE : A_NORMAL);
+-      m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++      m_canvas->print(0, pos, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++      if( (*range.first)->is_done() ) {
++        if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++          m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 4);       // Finished and uploading
++        } else {
++          m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 4);     // Finished
++        }
++      } else if( (*range.first)->is_active() ) {
++        if( (*range.first)->download()->info()->down_rate()->rate() != 0 ) {
++          if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 3);     // Active and uploading
++          } else {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 3);   // Active
++          }
++        } else {
++          if( (*range.first)->download()->info()->up_rate()->rate() != 0 ) {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 2);     // Dead but still uploading
++          } else {
++            m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 2);   // Dead
++          }
++        }
++      } else {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 1);     // Inactive
++      }
++      pos++;
+ 
+       range.first++;
+     }
+   }
+ }
+ 
++// Inactive
++void
++WindowDownloadList::set_color_inactive_fg(int64_t color) {
++  short fg, bg;
++  pair_content(1, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(1, (short)color, bg);
++}
++
++void
++WindowDownloadList::set_color_inactive_bg(int64_t color) {
++  short fg, bg;
++  pair_content(1, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(1, fg, (short)color);
++}
++
++// Dead
++void
++WindowDownloadList::set_color_dead_fg(int64_t color) {
++  short fg, bg;
++  pair_content(2, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(2, (short)color, bg);
++}
++
++void
++WindowDownloadList::set_color_dead_bg(int64_t color) {
++  short fg, bg;
++  pair_content(2, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(2, fg, (short)color);
++}
++
++// Active
++void
++WindowDownloadList::set_color_active_fg(int64_t color) {
++  short fg, bg;
++  pair_content(3, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(3, (short)color, bg);
++}
++
++void
++WindowDownloadList::set_color_active_bg(int64_t color) {
++  short fg, bg;
++  pair_content(3, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(3, fg, (short)color);
++}
++
++// Finished
++void
++WindowDownloadList::set_color_finished_fg(int64_t color) {
++  short fg, bg;
++  pair_content(4, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(4, (short)color, bg);
++}
++
++void
++WindowDownloadList::set_color_finished_bg(int64_t color) {
++  short fg, bg;
++  pair_content(4, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(4, fg, (short)color);
++}
++
+ }
+diff --git a/src/display/window_download_list.h b/src/display/window_download_list.h
+index 8e15cac..4551a47 100644
+--- a/src/display/window_download_list.h
++++ b/src/display/window_download_list.h
+@@ -55,6 +55,15 @@ public:
+ 
+   void                set_view(core::View* l);
+ 
++  void                set_color_inactive_fg(int64_t color);
++  void                set_color_inactive_bg(int64_t color);
++  void                set_color_dead_fg(int64_t color);
++  void                set_color_dead_bg(int64_t color);
++  void                set_color_active_fg(int64_t color);
++  void                set_color_active_bg(int64_t color);
++  void                set_color_finished_fg(int64_t color);
++  void                set_color_finished_bg(int64_t color);
++
+ private:
+   core::View*         m_view;
+ 
+diff --git a/src/main.cc b/src/main.cc
+index 6be6a4d..70f7d07 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -399,6 +399,15 @@ main(int argc, char** argv) {
+     CMD2_REDIRECT        ("ip",         "network.local_address.set");
+     CMD2_REDIRECT        ("port_range", "network.port_range.set");
+ 
++    CMD2_REDIRECT        ("color_inactive_fg", "colors.color_inactive_fg.set");
++    CMD2_REDIRECT        ("color_inactive_bg", "colors.color_inactive_bg.set");
++    CMD2_REDIRECT        ("color_dead_fg",     "colors.color_dead_fg.set");
++    CMD2_REDIRECT        ("color_dead_bg",     "colors.color_dead_bg.set");
++    CMD2_REDIRECT        ("color_active_fg",   "colors.color_active_fg.set");
++    CMD2_REDIRECT        ("color_active_bg",   "colors.color_active_bg.set");
++    CMD2_REDIRECT        ("color_finished_fg", "colors.color_finished_fg.set");
++    CMD2_REDIRECT        ("color_finished_bg", "colors.color_finished_bg.set");
++
+     CMD2_REDIRECT_GENERIC("dht",      "dht.mode.set");
+     CMD2_REDIRECT_GENERIC("dht_port", "dht.port.set");
+ 
+diff --git a/src/ui/download_list.cc b/src/ui/download_list.cc
+index d98f2c9..ebd7038 100644
+--- a/src/ui/download_list.cc
++++ b/src/ui/download_list.cc
+@@ -135,6 +135,11 @@ DownloadList::unfocus_download(core::Download* d) {
+       current_view()->next_focus();
+ }
+ 
++display::WindowDownloadList*
++DownloadList::current_window_list() {
++  return dynamic_cast<ElementDownloadList*>(m_uiArray[DISPLAY_DOWNLOAD_LIST])->window();
++}
++
+ void
+ DownloadList::activate_display(Display displayType) {
+   if (!is_active())
+diff --git a/src/ui/download_list.h b/src/ui/download_list.h
+index 791ee61..7e1e548 100644
+--- a/src/ui/download_list.h
++++ b/src/ui/download_list.h
+@@ -100,6 +100,7 @@ public:
+   void                activate_display(Display d);
+ 
+   core::View*         current_view();
++  display::WindowDownloadList* current_window_list();
+   void                set_current_view(const std::string& name);
+ 
+   void                slot_open_uri(slot_string s) { m_slot_open_uri = s; }
+diff --git a/src/ui/element_download_list.h b/src/ui/element_download_list.h
+index 5bf4f08..34e2352 100644
+--- a/src/ui/element_download_list.h
++++ b/src/ui/element_download_list.h
+@@ -60,6 +60,7 @@ public:
+   void                disable();
+ 
+   core::View*         view() { return m_view; }
++  WDownloadList*      window() { return m_window; }
+   void                set_view(core::View* l);
+ 
+   void                receive_command(const char* cmd);
+diff --git a/src/ui/root.cc b/src/ui/root.cc
+index 074e972..c8130e9 100644
+--- a/src/ui/root.cc
++++ b/src/ui/root.cc
+@@ -47,6 +47,7 @@
+ 
+ #include "core/manager.h"
+ #include "display/frame.h"
++#include "display/window_download_list.h"
+ #include "display/window_http_queue.h"
+ #include "display/window_title.h"
+ #include "display/window_input.h"
+@@ -72,7 +73,15 @@ Root::Root() :
+   m_windowStatusbar(NULL),
+   m_input_history_length(99),
+   m_input_history_last_input(""),
+-  m_input_history_pointer_get(0) {
++  m_input_history_pointer_get(0),
++  color_inactive_fg(-1),
++  color_inactive_bg(-1),
++  color_dead_fg(-1),
++  color_dead_bg(-1),
++  color_active_fg(-1),
++  color_active_bg(-1),
++  color_finished_fg(-1),
++  color_finished_bg(-1) {
+ 
+   // Initialise prefilled m_input_history and m_input_history_pointers objects.
+   for (int type = ui::DownloadList::INPUT_LOAD_DEFAULT; type != ui::DownloadList::INPUT_EOI; type++) {
+@@ -111,6 +120,14 @@ Root::init(Control* c) {
+   setup_keys();
+ 
+   m_downloadList->activate(rootFrame->frame(1));
++  m_downloadList->current_window_list()->set_color_inactive_fg(color_inactive_fg);
++  m_downloadList->current_window_list()->set_color_inactive_bg(color_inactive_bg);
++  m_downloadList->current_window_list()->set_color_dead_fg(color_dead_fg);
++  m_downloadList->current_window_list()->set_color_dead_bg(color_dead_bg);
++  m_downloadList->current_window_list()->set_color_active_fg(color_active_fg);
++  m_downloadList->current_window_list()->set_color_active_bg(color_active_bg);
++  m_downloadList->current_window_list()->set_color_finished_fg(color_finished_fg);
++  m_downloadList->current_window_list()->set_color_finished_bg(color_finished_bg);
+ }
+ 
+ void
+@@ -504,4 +521,88 @@ Root::clear_input_history() {
+   }
+ }
+ 
++// Inactive
++int
++Root::get_color_inactive_fg() {
++  return color_inactive_fg;
++}
++
++void
++Root::set_color_inactive_fg(int64_t color) {
++  color_inactive_fg = color;
++}
++
++int
++Root::get_color_inactive_bg() {
++  return color_inactive_bg;
++}
++
++void
++Root::set_color_inactive_bg(int64_t color) {
++  color_inactive_bg = color;
++}
++
++// Dead
++int
++Root::get_color_dead_fg() {
++  return color_dead_fg;
++}
++
++void
++Root::set_color_dead_fg(int64_t color) {
++  color_dead_fg = color;
++}
++
++int
++Root::get_color_dead_bg() {
++  return color_dead_bg;
++}
++
++void
++Root::set_color_dead_bg(int64_t color) {
++  color_dead_bg = color;
++}
++
++// Active
++int
++Root::get_color_active_fg() {
++  return color_active_fg;
++}
++
++void
++Root::set_color_active_fg(int64_t color) {
++  color_active_fg = color;
++}
++
++int
++Root::get_color_active_bg() {
++  return color_active_bg;
++}
++
++void
++Root::set_color_active_bg(int64_t color) {
++  color_active_bg = color;
++}
++
++// Finished
++int
++Root::get_color_finished_fg() {
++  return color_finished_fg;
++}
++
++void
++Root::set_color_finished_fg(int64_t color) {
++  color_finished_fg = color;
++}
++
++int
++Root::get_color_finished_bg() {
++  return color_finished_bg;
++}
++
++void
++Root::set_color_finished_bg(int64_t color) {
++  color_finished_bg = color;
++}
++
+ }
+diff --git a/src/ui/root.h b/src/ui/root.h
+index 262de37..e6f2f6f 100644
+--- a/src/ui/root.h
++++ b/src/ui/root.h
+@@ -88,6 +88,23 @@ public:
+   void                set_down_throttle_i64(int64_t throttle) { set_down_throttle(throttle >> 10); }
+   void                set_up_throttle_i64(int64_t throttle)   { set_up_throttle(throttle >> 10); }
+ 
++  int                 get_color_inactive_fg();
++  void                set_color_inactive_fg(int64_t color);
++  int                 get_color_inactive_bg();
++  void                set_color_inactive_bg(int64_t color);
++  int                 get_color_dead_fg();
++  void                set_color_dead_fg(int64_t color);
++  int                 get_color_dead_bg();
++  void                set_color_dead_bg(int64_t color);
++  int                 get_color_active_fg();
++  void                set_color_active_fg(int64_t color);
++  int                 get_color_active_bg();
++  void                set_color_active_bg(int64_t color);
++  int                 get_color_finished_fg();
++  void                set_color_finished_fg(int64_t color);
++  int                 get_color_finished_bg();
++  void                set_color_finished_bg(int64_t color);
++
+   void                adjust_down_throttle(int throttle);
+   void                adjust_up_throttle(int throttle);
+ 
+@@ -129,6 +146,15 @@ private:
+   void                next_in_input_history(ui::DownloadList::Input type);
+ 
+   void                reset_input_history_attributes(ui::DownloadList::Input type);
++
++  int64_t             color_inactive_fg;
++  int64_t             color_inactive_bg;
++  int64_t             color_dead_fg;
++  int64_t             color_dead_bg;
++  int64_t             color_active_fg;
++  int64_t             color_active_bg;
++  int64_t             color_finished_fg;
++  int64_t             color_finished_bg;
+ };
+ 
+ }
