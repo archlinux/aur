@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220509
-pkgver=20220509.b19cbdc
+_tag=20220610
+pkgver=20220610.7b71b75
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -18,7 +18,7 @@ options=(!strip)
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed"
          0001-Add-support-for-compressing-firmware-in-copy-firmware.patch)
 sha256sums=('SKIP'
-            '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7')
+            'aa11b2eed9c0be42571b45eb7153908a43290f02a5fc715aefcaa81030a1832f')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 _backports=(
