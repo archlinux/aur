@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = google-chrome-dev
+Target = google-chrome
+
+[Action]
+Description=Force chrome dark mode
+When=PostTransaction
+Exec=/bin/sudo /usr/bin/chrome_linux_dark.py

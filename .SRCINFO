@@ -1,0 +1,13 @@
+pkgbase = pacman-chrome-dark-ui-hook
+	pkgdesc = hook to modify chrome .desktop files to force dark ui
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	makedepends = git
+	depends = python
+	source = chrome-dark-ui.hook
+	source = git+https://github.com/isXander/ChromeLinuxDark
+	sha256sums = 32b8bd288c2348f8d006ad11de0b5d639d567de2451903930ebb95e855a48789
+	sha256sums = SKIP
+
+pkgname = pacman-chrome-dark-ui-hook
