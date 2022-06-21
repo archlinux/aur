@@ -1,0 +1,10 @@
+[Units]
+Description=SpoofDPI Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/spoof-dpi -dns 9.9.9.9 -port 8888
+
+[Install]
+WantedBy=default.target
