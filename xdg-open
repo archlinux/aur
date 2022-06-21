@@ -2,6 +2,10 @@
 
 echo "Running KTS3wrap..."
 
-# Creates a new clean environment, but passing the dbus bus address
-env -i DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
-    qdbus org.kde.klauncher5 /KLauncher org.kde.KLauncher.kdeinit_exec "xdg-open" "$@" "" ""
+# The teamspeak3 package exports environemnt variables, which
+# prevent the successful execution of xdg-open on KDE.
+unset QT_PLUGIN_PATH
+unset LD_LIBRARY_PATH
+
+# Strip /opt/kts3wrap-bin from PATH so we don't re-exec this script.
+PATH="${PATH#/opt/kts3wrap-bin:}" xdg-open "$@"
