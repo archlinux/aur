@@ -1,43 +1,57 @@
-# Maintainer: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
 
-pkgbase='python-streamlit'
-pkgname=('python-streamlit')
-_module='streamlit'
-pkgver='0.72.0'
+_pkgname=streamlit
+pkgname=python-streamlit
+pkgver=1.10.0
 pkgrel=1
-pkgdesc="Streamlit: Frontend library for machine learning engineers"
-url="https://streamlit.io"
-depends=(
-	'python'
-	'python-altair>=3.2.0'
-	'python-astor'
-	'python-base58'
-	'python-blinker'
-	'python-cachetools>=4.0'
-	'python-click>=7.0'
-	'python-numpy'
-	'python-packaging'
-	'python-pandas>=0.21.0'
-	'python-pillow>=6.2.0'
-	'python-protobuf>=3.11.2'
-	'python-pyarrow'
-	'python-pydeck>=0.1.dev5'
-	'python-dateutil'
-	'python-requests'
-	'python-toml'
-	'python-tornado5'
-	'python-tzlocal'
-	'python-validators'
-	'python-watchdog'
-	'python-gitpython'
-)
-makedepends=('python-pip')
-license=('unknown')
+pkgdesc='The fastest way to build data apps in Python'
 arch=('any')
-source=("https://files.pythonhosted.org/packages/a3/3b/8b70128553de980a5120b512c8eedc3667deced9554fc399703414b1d8cf/streamlit-0.72.0-py2.py3-none-any.whl")
-sha256sums=('e47376266f8b544d716a72788f7e4ca514c6a3c3b434f0b07f1ff300812ab551')
+url='https://streamlit.io'
+license=('Apache')
+depends=(
+  python-altair
+  python-astor
+  python-attrs
+  python-base58
+  python-blinker
+  python-cachetools
+  python-click
+  python-dateutil
+  python-gitpython
+  python-numpy
+  python-packaging
+  python-pandas
+  python-pillow
+  python-protobuf
+  python-pyarrow
+  python-pydeck
+  python-pympler
+  python-requests
+  python-toml
+  python-tornado
+  python-tzlocal
+  python-validators
+  python-watchdog
+  semver
+)
+makedepends=(
+  python-pipenv
+  python-setuptools
+)
+
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+)
+sha512sums=('2c8b908ed632aa2c84752e74ffcec6efb536e855a69385393b9c3d583341bd4ef85a9fc9eead04ee981003be96db9144d65a2aabf7995095d0fe8d54c72f9098')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-    cd "${srcdir}"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps streamlit-${pkgver}-py2.py3-none-any.whl
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=0 --skip-build
+  rm -vf "${pkgdir}/usr/bin/streamlit.cmd"
 }
+# vim:set ts=2 sw=2 et:
