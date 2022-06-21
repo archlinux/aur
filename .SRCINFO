@@ -1,0 +1,18 @@
+pkgbase = audio-to-midi
+	pkgdesc = Convert audio to multichannel MIDI.
+	pkgver = 2020.7
+	pkgrel = 1
+	url = https://github.com/NFJones/audio-to-midi
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cffi
+	depends = cython
+	depends = python-numpy
+	depends = python-pycparser
+	depends = python-soundfile
+	depends = python-midi
+	source = git+https://github.com/NFJones/audio-to-midi#tag=v2020.7
+	md5sums = SKIP
+
+pkgname = audio-to-midi
