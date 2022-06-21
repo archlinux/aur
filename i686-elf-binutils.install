@@ -1,4 +1,9 @@
-pre_upgrade()
+post_upgrade()
 {
 	rm -rf binutils-gdb
+}
+
+post_install()
+{
+	post_upgrade
 }
