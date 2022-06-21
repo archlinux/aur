@@ -1,20 +1,19 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
+# Maintainer: Aaron Bishop <erroneous@gmail.com>
 
 pkgname='perl-rest-client'
-pkgver='273'
+pkgver='281'
 pkgrel='1'
 pkgdesc="A simple client for interacting with RESTful http/https resources"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-lwp-protocol-https' 'perl-uri' 'perl-libwww' 'perl>=5.8.0')
-makedepends=('perl-cgi')
 url='https://metacpan.org/release/REST-Client'
-source=('http://search.cpan.org/CPAN/authors/id/K/KK/KKANE/REST-Client-273.tar.gz')
-md5sums=('776f74d063253b9e5d74b01adf97f060')
-sha512sums=('3e41b0281929f45f3c0c1bc95e772233ab31f54f0cb2f23fe5b884636575ba131fd26eca150bab6f33fae7eddcd4de7043781e27a071306bf46b16469033a57c')
-_distdir="REST-Client-273"
+_distdir="REST-Client-${pkgver}"
+source=("https://cpan.metacpan.org/authors/id/A/AK/AKHUETTEL/${_distdir}.tar.gz")
+sha512sums=('de40602e3a4428ee2fd8705c4544214a8c062f813e6050c315877e497ed68a458561b9b234f633529de01ab24080cd5ee4719b8ab275b4e4595274d2ba1194b7')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
