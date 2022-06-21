@@ -1,13 +1,10 @@
-# Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
-# This PKGBUILD file is slightly inspired from the package lbry-app-bin
-# Notes 2020-06 :
-#   - Uncompressed package size is 240 MB
-#   - Need to have 2 GB available disk space in local build area
-#   - Need to have 1 GB available in ~/.cache/yarn/v6
-#   - It *might* be useful to first install package lbry-app-bin to have LBRY the headers
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
+# Contributor: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
+# Contributor: Kenneth Cremeans <iam@kcseb.digital>
+# Contributor: Tom Zander <tom@flowee.org>
 
 pkgname=lbry-desktop-git
-pkgver=0.49.4.r9002.gd03cfa0b2
+pkgver=0.53.4.r10893.g68718f32b
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A browser and wallet for LBRY, the decentralized, user-controlled content marketplace'
@@ -15,7 +12,7 @@ url='https://lbry.com/'
 license=('MIT')
 
 makedepends=('git' 'yarn')
-depends=('nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
+depends=('nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret' 'libxcrypt-compat')
 provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
 conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin')
 
@@ -23,10 +20,8 @@ source=(
 	'git+https://github.com/lbryio/lbry-desktop.git'
 	'lbry.desktop'
 )
-sha256sums=(
-	'SKIP'
-	'a8d7f259580aa53b357a8e81172f44de3de0eb5465927b73406807a6e06d75ff'
-)
+b2sums=('SKIP'
+        '42a3eacb0d64e21c9c775e21f75585779f3ecb2f916137a63f70e46f68c07158b91c5785c73b2283dd9a10d0de74cf87f07a699cbc072ca233d2db1488d0b63c')
 
 pkgver() {
 	cd "${srcdir}/lbry-desktop"
