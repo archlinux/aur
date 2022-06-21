@@ -3,7 +3,7 @@
 
 pkgname=heroku-cli-bin
 pkgver=7.60.1
-pkgrel=1
+pkgrel=2
 _commit_id="becf050a46cc46904703c4042b8d982caa611d2e"
 _builddir="cli-$pkgver-$pkgrel"
 pkgdesc="CLI to Manage Heroku apps with forced auto-update removed. Packaged before release to save time and bandwidth."
@@ -24,25 +24,12 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
-  herokulibdir="$pkgdir/usr/lib"
-  for foundherokudir in $(find "$srcdir/heroku" -mindepth 1 -type d) ; do
-    herokuinstalldir="${foundherokudir/$srcdir/$herokulibdir}"
-    install -dm755 "$herokuinstalldir"
-  done
+  cp -a "$srcdir/heroku" "$pkgdir/usr/lib"
 
-  for foundherokufile in $(find "$srcdir/heroku" -mindepth 1 -type f) ; do
-    herokuinstallperm=$(stat -c "%a" "$foundherokufile")
-    herokuinstallfile="${foundherokufile/$srcdir/$herokulibdir}"
-    install -Dm$herokuinstallperm "$foundherokufile" "$herokuinstallfile"
-    case $foundherokufile in
-         (*/plugin-autocomplete/autocomplete/bash/*.bash)
-              _complete_target="${foundherokufile##*/}"
-              install -Dm644 "$foundherokufile" "$pkgdir/usr/share/bash-completion/completions/${_complete_target%.*}"
-              unset _complete_target;;
-         (*/plugin-autocomplete/autocomplete/zsh/_*)
-              install -Dm644 "$foundherokufile" "$pkgdir/usr/share/zsh/site-functions/${foundherokufile##*/}";;
-     esac
-  done
+  # completions
+  local autocompletedir="$srcdir/heroku/node_modules/@heroku-cli/plugin-autocomplete/autocomplete"
+  install -Dm644 "$autocompletedir/bash/heroku.bash" "$pkgdir/usr/share/bash-completion/completions/heroku"
+  install -Dm644 "$autocompletedir/zsh/_heroku" "$pkgdir/usr/share/zsh/site-functions/_heroku"
 
   ln -sf "../../../lib/heroku/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
   ln -sf "../../lib/heroku/bin/run" "$pkgdir/usr/bin/heroku"
