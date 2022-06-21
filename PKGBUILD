@@ -2,8 +2,8 @@
 pkgname=rlbotgui-rust-git
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rl-bot-gui
-pkgver=0.1.0.51b5a4b
-pkgrel=2
+pkgver=1.0.0.04f915d
+pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
 arch=("x86_64")
 url="https://github.com/VirxEC/rlbot_gui_rust"
