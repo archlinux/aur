@@ -52,7 +52,7 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DLIB_SUFFIX=32 \
-    -DWITH_{DOTNET,DUKTAPE,GNOME3,KDE,MOZJS,NM,PERL,VALA,WEBKIT,WEBKIT3}=OFF
+    -DWITH_{DUKTAPE,PERL,WEBKIT}=OFF
   cmake --build build
 }
 
@@ -62,7 +62,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm -r "$pkgdir"/usr/{bin,include,share}
+  rm -r "$pkgdir"/usr/{bin,include,lib,share}
 }
 
 # vim:set sw=2 sts=-1 et:
