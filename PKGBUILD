@@ -1,4 +1,4 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Tobias Göbel <kubax1983.at.gmail.dot.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
