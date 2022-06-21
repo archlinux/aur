@@ -1,14 +1,16 @@
-# Maintainer: Jiezhe Wang <wangjiezhe@gmail.com>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Jiezhe Wang <wangjiezhe@gmail.com>
 
 pkgname=battery-stats-git
 _pkgname=battery-stats
-pkgver=0.5.6.8.gb231366
+pkgver=0.5.6.11.g8a42539
 pkgrel=1
 pkgdesc="Log battery charge, show gnuplot graphs."
 arch=('any')
 url="https://github.com/petterreinholdtsen/battery-stats.git"
 license=('GPLv2')
-makedepends=('git')
+makedepends=('git' 'cmake')
+depends=('bc' 'python-matplotlib')
 provides=('battery-stats')
 conflicts=('battery-stats')
 source=("${_pkgname}::git+https://github.com/petterreinholdtsen/battery-stats.git"
@@ -44,5 +46,3 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
