@@ -1,0 +1,12 @@
+pkgbase = kubectl-view-secret-bin
+	pkgdesc = kubectl view-secret plugin
+	pkgver = 0.9.1
+	pkgrel = 0
+	url = https://github.com/elsesiy/kubectl-view-secret
+	arch = x86_64
+	license = MIT
+	depends = kubectl
+	source = kubectl-view_secret::https://github.com/elsesiy/kubectl-view-secret/releases/download/v0.9.1/kubectl-view-secret_v0.9.1_linux_amd64.tar.gz
+	sha256sums = c4101893fdb0c420622fe1dff7d8322606d01896fc9a57fee54ac512c5bd7d1e
+
+pkgname = kubectl-view-secret-bin
