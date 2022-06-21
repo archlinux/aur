@@ -46,7 +46,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init vendor/{ChaiScript_Extras,libretro-common,libretro-deps,physfs,random,sdl-libretro,SDL_tty,Snippets,stb,TinySHA1}
 	git config submodule.vendor/ChaiScript_Extras.url ../ChaiScript_Extras
 	git config submodule.vendor/libretro-common.url ../libretro-common
 	git config submodule.vendor/libretro-deps.url ../libretro-deps
