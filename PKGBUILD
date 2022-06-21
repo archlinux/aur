@@ -1,7 +1,7 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-plugins
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CLAP example plugins"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-plugins"
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(git+https://github.com/free-audio/clap-plugins#tag=895a34f72c659b75487562f2f67e8b2ecf41c4d1
+source=(git+https://github.com/free-audio/clap-plugins#tag=$pkgver
   git+https://github.com/free-audio/clap#branch=main
   git+https://github.com/free-audio/clap-helpers#branch=main
   git+https://github.com/niXman/yas#branch=master)

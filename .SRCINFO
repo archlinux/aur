@@ -1,7 +1,7 @@
 pkgbase = clap-plugins
 	pkgdesc = CLAP example plugins
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/free-audio/clap-plugins
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = clap-plugins
 	makedepends = ninja
 	depends = qt6-base
 	depends = qt6-declarative
-	source = git+https://github.com/free-audio/clap-plugins#tag=895a34f72c659b75487562f2f67e8b2ecf41c4d1
+	source = git+https://github.com/free-audio/clap-plugins#tag=1.0
 	source = git+https://github.com/free-audio/clap#branch=main
 	source = git+https://github.com/free-audio/clap-helpers#branch=main
 	source = git+https://github.com/niXman/yas#branch=master
