@@ -1,13 +1,13 @@
 pkgbase = typos
 	pkgdesc = Source code spell checker.
-	pkgver = 1.8.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/crate-ci/typos
 	arch = any
 	license = MIT
 	license = Apache
 	makedepends = cargo
-	source = typos-1.8.1.tar.gz::https://github.com/crate-ci/typos/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 7a2421f3705558c5f5aa7cb07bad35fcd0d2daf12d73f379014e6ee9a4ebd53d
+	source = typos-1.10.1.tar.gz::https://github.com/crate-ci/typos/archive/refs/tags/v1.10.1.tar.gz
+	sha256sums = 10c696976b96f6cc7551372e848ed588bbb131356f8ca33d99e46357741af5b1
 
 pkgname = typos
