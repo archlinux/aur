@@ -2,7 +2,7 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=espeak-ng
-pkgver=1.51
+pkgver=1.51.1
 pkgrel=1
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
@@ -15,7 +15,7 @@ provides=('espeak-ng-espeak')
 conflicts=('espeak-ng-espeak' 'espeak')
 options=(debug)
 source=("$url/archive/$pkgver/espeak-ng-$pkgver.tar.gz")
-b2sums=('230e8860247bdd44a26ba7281fadb7486e7fff90de229c71fb883693badfc141d5ad883769d6cead150f43560a5c47152cada4fcb5a28c0b0384dacaad2c9d09')
+b2sums=('7b5a9d0613636942374b2b414fa5cffcbefe18083dc9aa79a6ac08cc3737cbef06808bf90f0c846ec33acf481797329fb6d2f013b6f67abd6a2dfcda0d3f9343')
 
 prepare() {
   cd espeak-ng-$pkgver
