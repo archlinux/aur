@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota.com>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
@@ -10,22 +10,10 @@ license=('GPL')
 depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pillow'
          'python-setproctitle' 'python-tldextract' 'dconf' 'xapp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a4e2f687e48f90823b3d012486a2fb925f9954fbc3974c90462a5097c1549edf')
+sha256sums=('5a5e39d5bd585af1b116f9892efdb07d432457dda55cce79e07845d7a8c91a35')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # Fix browser names
-  sed -i 's/brave-browser/brave/g' \
-    "usr/lib/$pkgname/common.py"
-  sed -i 's/epiphany-browser/epiphany/g' \
-    "usr/lib/$pkgname/common.py"
-  sed -i 's/"google-chrome"/"google-chrome-stable"/g' \
-    "usr/lib/$pkgname/common.py"
-  sed -i 's/microsoft-edge/microsoft-edge-beta/g' \
-    "usr/lib/$pkgname/common.py"
-  sed -i 's/"vivaldi"/"vivaldi-stable"/g' \
-    "usr/lib/$pkgname/common.py"
 
   # Fix license path
   sed -i 's|common-licenses/GPL/licenses|common/GPL/license.txt|g' \
