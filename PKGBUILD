@@ -1,33 +1,30 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
-pkgname=marg
-pkgver=0.2
-pkgrel=3
+# Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
+pkgname="marg"
+pkgver="0.3"
+pkgrel=1
 epoch=
-pkgdesc="Simple argument handling library for C programs"
+pkgdesc="Bad CLI argument parsing library"
 arch=("x86_64")
-url="https://gitlab.com/oktopod11/marg"
+url="https://gitlab.com/NH000/marg"
 license=("LGPL3")
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=("marg")
-conflicts=()
-replaces=()
-backup=()
+makedepends=("make" "gcc" "coreutils" "binutils")
 options=("staticlibs")
-source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
-noextract=()
-sha256sums=("49fb4efb2af50de68931a0183fbcb1296848b020b48c45279a76bfdbd46e9955") 
+source=("$pkgname-$pkgver::git+$url#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf")
+sha256sums=("SKIP") 
 
 build () {
-	cd "$srcdir/$pkgname/"
-	make build
+	cd "$pkgname-$pkgver"
+	make lib OPTIMIZE=1
+	make lib LIBRARY=static OPTIMIZE=1
 }
 
 package() {
-	cd "$srcdir/$pkgname/"
-	make install HEADERDIR="$pkgdir/usr/include/marg/" INSTALLDIR="$pkgdir/usr/lib/"
-	make man MANDIR="$pkgdir/usr/share/man/man3/"
+	cd "$pkgname-$pkgver"
+
+    make install-lib LIBDEST="$pkgdir/usr/lib"
+    make install-lib LIBRARY=static LIBDEST="$pkgdir/usr/lib"
+
+    make install-headers HEADDEST="$pkgdir/usr/include/marg"
+
+    make install-man MANDEST="$pkgdir/usr/share/man"
 }

@@ -1,13 +1,16 @@
 pkgbase = marg
-	pkgdesc = Simple argument handling library for C programs
-	pkgver = 0.2
-	pkgrel = 3
-	url = https://gitlab.com/oktopod11/marg
+	pkgdesc = Bad CLI argument parsing library
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://gitlab.com/NH000/marg
 	arch = x86_64
 	license = LGPL3
-	provides = marg
-	source = https://gitlab.com/oktopod11/marg/raw/master/archive/marg-0.2.tar.gz
-	sha256sums = 00a6f7dde5f64a57cb4ee8c27656898cffcb0da9a77991c14ae6f93d71d01dfa
+	makedepends = make
+	makedepends = gcc
+	makedepends = coreutils
+	makedepends = binutils
+	options = staticlibs
+	source = marg-0.3::git+https://gitlab.com/NH000/marg#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf
+	sha256sums = SKIP
 
 pkgname = marg
-
