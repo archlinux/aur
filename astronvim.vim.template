@@ -1,0 +1,2 @@
+set runtimepath+=/usr/share/astronvim
+luafile /usr/share/astronvim/init.lua
