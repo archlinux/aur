@@ -1,7 +1,7 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-host
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLAP host"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-host"
@@ -17,20 +17,24 @@ backup=()
 options=()
 install=
 changelog=
-source=(git+https://github.com/free-audio/clap-host#tag=b5db1c246c173692371a17d92c2bd5fda1826d98
-  git+https://github.com/free-audio/clap#tag=55ee06f776669b94d63247a9c1dcb7dfa6056587
-  git+https://github.com/free-audio/clap-helpers#tag=716cdf49cc6eb7999bad44c084b363bbde907937)
+source=(git+https://github.com/free-audio/clap-host#tag=$pkgver
+  git+https://github.com/free-audio/clap#branch=main
+  git+https://github.com/free-audio/clap-helpers#branch=main
+  git+https://github.com/microsoft/vcpkg#branch=master)
 noextract=()
-sha256sums=('SKIP'
-  'SKIP'
-  'SKIP') #autofill using updpkgsums
+sha256sums=(SKIP
+  SKIP
+  SKIP
+  SKIP) #autofill using updpkgsums
 
 build() {
   cd "$pkgname"
 
-  rm -rf clap clap-helpers
-  ln -s "$srcdir/clap"
-  ln -s "$srcdir/clap-helpers"
+  git submodule init
+  git config submodule.clap.url "$srcdir/clap"
+  git config submodule.clap-helpers.url "$srcdir/clap-helpers"
+  git config submodule.vcpkg.url "$srcdir/vcpkg"
+  git submodule update
 
   rm -rf build
   mkdir build
