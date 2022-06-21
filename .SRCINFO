@@ -1,22 +1,23 @@
 pkgbase = lbry-desktop
 	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative
 	pkgver = 0.53.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lbryio/lbry-desktop.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	depends = nodejs
-	depends = npm
-	depends = gnome-keyring
-	depends = gconf
-	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libxtst
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = gnome-keyring
+	makedepends = gconf
+	makedepends = libnotify
+	makedepends = libappindicator-gtk2
+	makedepends = libsecret
+	makedepends = libxcrypt-compat
 	depends = nss
-	depends = libsecret
-	depends = libxcrypt-compat
+	depends = alsa-lib
+	depends = gtk3
 	provides = lbry=0.53.4
 	provides = lbry-desktop=0.53.4
 	provides = lbry-app=0.53.4

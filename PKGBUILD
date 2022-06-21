@@ -5,14 +5,15 @@
 
 pkgname=lbry-desktop
 pkgver=0.53.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 url="https://github.com/lbryio/${pkgname}.git"
 license=('MIT')
 
-makedepends=('git' 'yarn')
-depends=('nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret' 'libxcrypt-compat')
+makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
+
+depends=('nss' 'alsa-lib' 'gtk3')
 provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
 conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' 'lbry-desktop-git')
 
