@@ -1,14 +1,14 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="image2ascii"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple image–to–ASCII art conversion tool"
 arch=("any")
 url="https://gitlab.com/NH000/image2ascii"
 license=("MIT")
 depends=("python3" "python-pillow")
 makedepends=("sed" "coreutils")
-source=("$pkgname-$pkgver::git+$url#tag=33b27a21177274fa4a4093924a96815bbe36207a")
+source=("$pkgname-$pkgver::git+$url#tag=d7dffe0065a949a40acc652e8695c439bfb66605")
 sha256sums=("SKIP")
 
 package() {
