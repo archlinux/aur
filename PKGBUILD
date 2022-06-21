@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="80"
 _suffix=""
-pkgver="8.0.18"
-pkgrel="1"
+pkgver="8.0.20"
+pkgrel="2"
 pkgbase="php80"
-pkgdesc="PHP 8.0.18 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.0.20 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -129,7 +129,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "debian-php-8.0.18.patch"
+    "debian-php-8.0.20.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.0.patch"
@@ -198,7 +198,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "debian-php-8.0.18.patch"
+    "debian-php-8.0.20.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.0.patch"
@@ -210,20 +210,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "openssl"
 )
 _ext_depends_intl=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "icu"
 )
 _ext_depends_imap=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +231,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "gd"
 )
 _ext_depends_mysql=(
-    "php80=8.0.18"
-    "php80-pdo=8.0.18"
-    "php80-openssl=8.0.18"
+    "php80=8.0.20"
+    "php80-pdo=8.0.20"
+    "php80-openssl=8.0.20"
 )
 _ext_depends_dba=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "unixodbc"
-    "php80-pdo=8.0.18"
+    "php80-pdo=8.0.20"
 )
 _ext_depends_pgsql=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "postgresql-libs"
-    "php80-pdo=8.0.18"
+    "php80-pdo=8.0.20"
 )
 _ext_depends_firebird=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "libfbclient"
-    "php80-pdo=8.0.18"
+    "php80-pdo=8.0.20"
 )
 _ext_depends_sqlite=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "sqlite"
-    "php80-pdo=8.0.18"
+    "php80-pdo=8.0.20"
 )
 _ext_depends_mbstring=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php80=8.0.18"
+    "php80=8.0.20"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1521,7 +1521,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            'db161652cacae4b31c347fbf2e17b80656473cb365f2bb3460c4552f5647e2e7'
+            '973fec765336ee01f47536a5db1c2eee98df9d34a41522b7b6c760159bf0a77b'
             '9281736f0cbc60699992f92359a62d861c9c53391fd53e3826e77710ab981718'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
