@@ -1,7 +1,7 @@
 pkgbase = i686-elf-binutils-git
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the i686-elf target (including GDB) (development build)
-	pkgver = dev
-	pkgrel = 1
+	pkgver = 2.38.50
+	pkgrel = 0
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL

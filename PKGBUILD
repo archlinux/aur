@@ -5,8 +5,8 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}-git
-pkgver=dev
-pkgrel=1
+pkgver=2.38.50
+pkgrel=0
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target (including GDB) (development build)'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
