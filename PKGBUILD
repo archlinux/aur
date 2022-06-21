@@ -7,7 +7,7 @@ pkgname=lbry-desktop-git
 pkgver=0.53.4.r10893.g68718f32b
 pkgrel=1
 arch=('x86_64')
-pkgdesc='A browser and wallet for LBRY, the decentralized, user-controlled content marketplace'
+pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version'
 url='https://lbry.com/'
 license=('MIT')
 
