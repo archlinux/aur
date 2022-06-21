@@ -1,7 +1,8 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
-_cranver=1.7-9
+_cranver=1.7-11
 pkgname=r-e1071
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +13,7 @@ license=('GPL')
 depends=('r' 'r-proxy')
 replaces=('r-cran-e1071')
 source=("https://cran.r-project.org/src/contrib/e1071_"$_cranver".tar.gz")
-sha512sums=('3f2d20bc7728f754e1698a4443f5f0bf9fd2d2ac1d68d5b175ed4c8e9b257062204e5ebc3ecf1579acfcd744c4c03dad82fb1fb604c529e6091052090d313216')
+sha512sums=('918c84812b9cdf5b2b9179810366672d21c6cfbac8b5644af326af4f3e30754bc1308de29f6c16d021c651ee46ce0ce80cae093b589b8cf7df5c2aa53bf669ea')
 
 build(){
     R CMD INSTALL e1071_"$_cranver".tar.gz -l "$srcdir"
