@@ -8,7 +8,7 @@ pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extens
 arch=('any')
 url="https://github.com/AstroNvim/AstroNvim"
 license=('GPL3')
-depends=("neovim>=0.7.0")
+depends=("neovim>=0.7.0" "xclip")
 source=("${pkgname}::git+${url}.git" "astronvim.vim.template")
 sha256sums=('SKIP' '0bb6cb6c0dce255d9b12f31db6c39c991b3b12ba2f0416466d4a7d4222ecde9f')
 conflicts=("${_pkgname}")
