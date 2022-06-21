@@ -2,36 +2,36 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-lite
-pkgver=20220502
-_commit=c5481f3a1b57d54190a4e7881103033fbbbcec0c
+pkgver=20220607
+_commit=c971829a87e7920f960e7277c3dafd9bedd3c601
 pkgrel=1
 pkgdesc='Google Noto TTF fonts (lite version)'
 arch=(any)
-url='https://www.google.com/get/noto/'
+url='https://fonts.google.com/noto'
 license=(custom:SIL)
 optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters'
             'noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
 provides=(ttf-font noto-fonts)
 conflicts=(noto-fonts)
-_url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
+_url="https://github.com/notofonts/noto-fonts/raw/${_commit}"
 source=("${_url}/hinted/ttf/NotoSans/NotoSans-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
         "${_url}/hinted/ttf/NotoSansMono/NotoSansMono-"{Black,Bold,Light,Medium,Regular,Thin}.ttf
         "${_url}/hinted/ttf/NotoSerif/NotoSerif-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
         "noto-fonts-license::${_url}/LICENSE"
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('a03bf1c41a16a0989a5bcd6bb76b15720653622787b81bd11e460bb848cbab7e'
-            'dc8c17d8a749542a496c1c23733583a802a8959f71feb48305e9fb58e6fbd7a2'
-            '0f3f608baf8d88480f399747871b374144eaf9e6f8880d2cb19cfca3ac256697'
-            'eb9a9bad5cf7a88cc306573ba9e2239b95443e285cc84f5f02c38848c1b06f91'
-            '7bd35300bb8a6f6aa2f4314a0202c7fe2cb9d5078a903339b8b8340a78f3c312'
-            'f4ed61228d5c49981ef9b2ef88d2eb69046529e1a5a381a9fa7c705b1fb33433'
-            'c1f52c7492de60333d9867ed70bf5f75e9b752412644e391f7224bdfc62276dc'
-            'eb7abaf945b97ce8c187287d5d9672d70a427614f86bb0e48e1801e24f5a5f22'
-            '74313efaf679694d4fb1f05a076f859e67134fded187b1faa525913fd8458af7'
-            '3c8397ec9650d0ef85bd07fc2099da91fa964ebb29dbe39a38b946177ef79d9b'
-            '2694960bdf7d2c0a44f9fbce3e9d535c0779c9e1970cf181008a25252dc39fe7'
-            '296534ad4ac47e4ed000c586a40c9b1cda8ec52062f873058c76eb555e86de65'
+sha256sums=('2ea74ab862678045678cd0843e12fa17e100e7ad10b20f220fea6bb7b0ae88a5'
+            '91758ca2da43c9d883d3baddda3c2629aede21dc51fc95f97e51b85ae7d4f6da'
+            'c976e4b1b99edc88775377fcc21692ca4bfa46b6d6ca6522bfda505b28ff9d6a'
+            '6edf4227ef0fa846aca70e86a307804ca4401741830f5b3af0f2554abe2b8466'
+            '36cff144df01309dab648bea71baff9bb074026914afe63aeacc8bc90b67a28b'
+            '74ffdd438f2ae232371ceb00444dae93e2590d263a4ff4c5e2c8385aa8012fdb'
+            '701297fd68809f0834632aa93a5ec3e16e072aa6cbe153fdb0a827422ecc94da'
+            '7bbe267354704c6ad18bde24b1dbc756c8e4380ca1c3f3c25c45ec5c4471510b'
+            '7e6fae52e3df56ef6544c74f39a3948f7391eee44a48640e2652602455de46bf'
+            'b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5'
+            '4dff742907c3816bf9c0e7ead025afc1ae8474a3315382fbf54f3217eaba3c68'
+            'd36b58eaebf41ecb30f3b8d7fbfc2e556522d46ef19ed7e7b8fc3e01f1aeb5d7'
             'e599306da8f33a6877d0a9813c4a75350f43bcd97363eb6bb75484f1be14168c'
             'beb857bd799a114de7d5d90cc75cc69f4b6ee8d401f4ab20697e6f9719a66dfc'
             '39f8b3344468adc1d7b9b18645a5a3931d1e061a699b8086932bb565c253c191'
