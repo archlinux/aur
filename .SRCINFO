@@ -1,7 +1,7 @@
 pkgbase = plainpanel
 	pkgdesc = plainDE panel
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plainde.org
 	arch = x86_64
 	arch = i686
@@ -23,7 +23,6 @@ pkgbase = plainpanel
 	depends = plainbase
 	depends = plainartwork
 	depends = plainabout
-	depends = plaincontrolcenter
 	conflicts = plainpanel-git
 	source = git+https://github.com/plainDE/plainPanel.git#tag=0.2
 	sha256sums = SKIP
