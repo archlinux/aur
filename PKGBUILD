@@ -26,12 +26,12 @@ build () {
   autoconf
   mkdir -p build
   cd build
-  ../configure --prefix="${pkgdir}/usr/local/"
+  ../configure --prefix="${pkgdir}/usr"
   make chrome-build
 }
 
 package () {
-  mkdir -p "${pkgdir}/usr/local/"
+  mkdir -p "${pkgdir}/usr"
   cd curl-impersonate-${pkgver/v/}/build
   make chrome-install
 }
