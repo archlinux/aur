@@ -44,7 +44,6 @@ pkgver() {
 
 prepare() {
 	cd $_reponame
-	git submodule init ext/armips
 	git config submodule.ext/armips.url ../armips
 	git submodule update
 	# unbundle glslang
