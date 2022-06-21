@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=sake
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='CLI tool that enables you to run commands on servers via ssh'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='9c91062b3c69cc07450bbfb9f321ab56349283d9'
+_commit='a53f99c934807872baf10d3388fdb5d12d35878e'
 source=("$pkgname::git+https://github.com/alajmo/sake#commit=$_commit")
 b2sums=('SKIP')
 
@@ -54,12 +54,6 @@ build() {
   for shell in bash fish zsh; do
     ./build/sake completion "$shell" > "build/$shell-completions"
   done
-}
-
-check() {
-  cd "$pkgname"
-
-  go test -v ./...
 }
 
 package() {
