@@ -2,7 +2,7 @@
 # Contributor: c0gnitivefl0w
 
 pkgname=seadrive-gui
-pkgver=2.0.21
+pkgver=2.0.22
 pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -12,18 +12,13 @@ depends=('qt5-webengine' 'qt5-tools' 'seadrive-daemon')
 makedepends=("cmake")
 source=(
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    'cmake.patch'
 )
-sha256sums=('4134f3b42288b5d6e3d9538ca33cb36db6a32272ab1e47ad062292b68b1d8a0c'
-            'f6ccd5cb436c241d34cd9467307ac33a07def0303660d3df5fd29811f41137e8')
+sha256sums=('d525301df509b9a07b7da304bb2e1195d0a9a735eacf5542880b79359a14594d')
 
 prepare() {
     # Create build dir
     rm -rf build
     mkdir -p build
-    # Apply patches
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -Np0 -i ${srcdir}/cmake.patch
 }
 
 build () {
