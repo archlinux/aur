@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=python-inventree
 _name=${pkgname#python-}
-pkgver=0.4.4
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Python interface for InvenTree inventory management system"
 url="https://github.com/inventree/inventree-python/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('721a1bb626dd8941728c923ae768d0dcfc7a2712a570d3adeac9b635826c07b2')
+sha256sums=('218dd112c325764d4027de509d8cf466fc2a6a16a1bba297ee71687c6a8378dd')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
