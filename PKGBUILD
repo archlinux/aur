@@ -1,6 +1,6 @@
 # Maintainer: Adam Harvey <adam@adamharvey.name>
 pkgname=tuc
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 epoch=
 pkgdesc="A more powerful alternative to cut"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/riquito/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('9da11ac1c601e163f6f7bc6570529d6cdbd142444f71f19d7dc0555c8d6968a9')
+sha256sums=('e8208e0cb92bd17b36e1d43f0ea9d45f4573222fa40ca576775b4ebbb6442adf')
 validpgpkeys=()
 
 prepare() {
