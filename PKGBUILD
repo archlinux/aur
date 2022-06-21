@@ -5,39 +5,43 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}-git
-pkgver=a610d
+pkgver=2.38
 pkgrel=1
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target (including GDB) (development build)'
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target(newest build)'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
 options=(!emptydirs !docs)
-install="i686-elf-binutils.install"
+#install="i686-elf-binutils.install"
 replaces=("i686-elf-binutils")
 conflicts=("i686-elf-binutils")
-source=("git+https://sourceware.org/git/binutils-gdb.git")
-sha256sums=('SKIP')
+#source=("git+https://sourceware.org/git/binutils-gdb.git")
+#sha256sums=('SKIP')
+source=("https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.xz")
+sha256sums=("e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024")
 
 _basedir=binutils-gdb
 
-#prepare() {
-    #cd ${srcdir}/${_pkgname}-gdb
+prepare() {
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+    sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-    #mkdir $srcdir/binutils-build
-#}
-
-pkgver() {
-  cd "binutils-gdb"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tail -c 6
+    mkdir $srcdir/binutils-build
 }
 
-build() {
-    cd binutils-gdb
+#pkgver() {
+  #cd "binutils-gdb"
+  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tail -c 6
+#}
 
-    ./configure \
+build() {
+    # cd binutils-gdb
+    cd binutils-build
+
+    #./configure \
+    ../${_pkgname}-${pkgver}/configure \
         --target=$_target \
         --prefix=${_sysroot} \
         --bindir=/usr/bin \
@@ -60,8 +64,8 @@ build() {
 #}
 
 package() {
-    cd binutils-gdb
-
+    #cd binutils-gdb
+    cd binutils-build 
     make DESTDIR="$pkgdir" install
 
     # Remove info and make since it expected already present by host compiler
