@@ -1,8 +1,8 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-host
 pkgver=1.0
-pkgrel=3
-pkgdesc="CLAP host"
+pkgrel=4
+pkgdesc="CLAP example host"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-host"
 license=('MIT')
@@ -25,7 +25,7 @@ noextract=()
 sha256sums=(SKIP
   SKIP
   SKIP
-  SKIP) #autofill using updpkgsums
+  SKIP)
 
 build() {
   cd "$pkgname"

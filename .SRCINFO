@@ -1,7 +1,7 @@
 pkgbase = clap-host
-	pkgdesc = CLAP host
+	pkgdesc = CLAP example host
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/free-audio/clap-host
 	arch = x86_64
 	license = MIT
