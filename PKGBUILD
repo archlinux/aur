@@ -1,8 +1,8 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=jre-bcl
-pkgver=8u201
-pkgrel=2
+pkgver=8u202
+pkgrel=1
 pkgdesc="Oracle Java Runtime Environment (BCL)"
 arch=("x86_64")
 url="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html"
@@ -46,7 +46,7 @@ source=(
   "policytool-${pkgname}.desktop"
 )
 sha256sums=(
-  "12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352"
+  "9efb1493fcf636e39c94f47bacf4f4324821df2d3aeea2dc3ea1bdc86428cb82"
   "9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6"
   "3c7e6dbda62b0d21460394d13c31ab03d5d0df61e5e1f539792021e4cb69255c"
 )
