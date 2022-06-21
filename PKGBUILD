@@ -5,18 +5,18 @@ _sysroot=/usr/lib/${_target}
 _pkgname=binutils
 
 pkgname=$_target-${_pkgname}-git
-pkgver=2.38.50
-pkgrel=0
+pkgver=a610d
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the i686-elf target (including GDB) (development build)'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
 options=(!emptydirs !docs)
+install="i686-elf-binutils.install"
 replaces=("i686-elf-binutils")
 conflicts=("i686-elf-binutils")
 source=("git+https://sourceware.org/git/binutils-gdb.git")
-
 sha256sums=('SKIP')
 
 _basedir=binutils-gdb
@@ -28,6 +28,11 @@ _basedir=binutils-gdb
 
     #mkdir $srcdir/binutils-build
 #}
+
+pkgver() {
+  cd "binutils-gdb"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tail -c 6
+}
 
 build() {
     cd binutils-gdb

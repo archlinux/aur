@@ -1,0 +1,4 @@
+pre_upgrade()
+{
+	rm -rf binutils-gdb
+}
