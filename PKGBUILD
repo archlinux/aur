@@ -11,8 +11,8 @@ depends=(xz libmpc i686-elf-binutils-git)
 # https://bugs.archlinux.org/task/70701 (patch modified for gcc 12 and 13)
 #source=("git+https://gcc.gnu.org/git/gcc.git" "gcc12-Wno-format-security.patch") 
 #sha256sums=("SKIP" "07c72cccb31b5fb035042eca910c9bf0d3008aaeb04350534bb7f5aede209982")
-source=("https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz")
-sha256sums=("62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b")
+source=("https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz" "gcc12-Wno-format-security.patch")
+sha256sums=("62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b" "07c72cccb31b5fb035042eca910c9bf0d3008aaeb04350534bb7f5aede209982")
 
 build() {
     # patching

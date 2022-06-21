@@ -12,6 +12,8 @@ pkgbase = i686-elf-gcc-git
 	depends = libmpc
 	depends = i686-elf-binutils-git
 	source = https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz
+	source = gcc12-Wno-format-security.patch
 	sha256sums = 62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b
+	sha256sums = 07c72cccb31b5fb035042eca910c9bf0d3008aaeb04350534bb7f5aede209982
 
 pkgname = i686-elf-gcc-git
