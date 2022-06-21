@@ -4,15 +4,16 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libproxy
-pkgver=0.4.17
-pkgrel=2
-pkgdesc='A library that provides automatic proxy configuration management'
+pkgver=0.4.18
+pkgrel=1
+pkgdesc="Automatic proxy configuration management library (32-bit)"
+url="https://libproxy.github.io/libproxy/"
 arch=(x86_64)
-url=https://libproxy.github.io/libproxy/
 license=(LGPL)
 depends=(
   lib32-dbus
   lib32-gcc-libs
+  lib32-glib2
   lib32-zlib
   libproxy
 )
@@ -21,34 +22,47 @@ makedepends=(
   git
   ninja
 )
-_tag=e78a5ccfe0a2340f2c73e419767f8492ffc2787a
-source=(git+https://github.com/libproxy/libproxy.git#tag=${_tag})
-b2sums=(SKIP)
+_commit=caccaf28e3df6ea612d2d4b39f781c4324019fdb  # tags/0.4.18
+source=("git+https://github.com/libproxy/libproxy#commit=$_commit")
+b2sums=('SKIP')
 
 pkgver() {
   cd libproxy
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
-  git describe --tags
+prepare() {
+  cd libproxy
+
+  # Fix building without duktape
+  git cherry-pick -n c9b1f19c486b6ec590441b9c46965ab961d2677d
 }
 
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   cmake -S libproxy -B build -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_FLAGS="${CFLAGS}" \
+    -DBIPR=1 \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
+    -DLIBEXEC_INSTALL_DIR=/usr/lib \
     -DLIB_SUFFIX=32 \
-    -DWITH_{DOTNET,GNOME3,KDE,MOZJS,NM,PERL,VALA,WEBKIT,WEBKIT3}=OFF
-  ninja -C build
+    -DWITH_{DOTNET,DUKTAPE,GNOME3,KDE,MOZJS,NM,PERL,VALA,WEBKIT,WEBKIT3}=OFF
+  cmake --build build
+}
+
+check() {
+  cmake --build build --target test
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  DESTDIR="$pkgdir" cmake --install build
+  rm -r "$pkgdir"/usr/{bin,include,share}
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
