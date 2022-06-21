@@ -1,13 +1,18 @@
 pkgbase = tttt
-	pkgdesc = Tic-Tac-Toe in terminal
-	pkgver = 0.1
+	pkgdesc = Play tic-tac-toe in your terminal
+	pkgver = 1.0
 	pkgrel = 1
-	url = https://gitlab.com/oktopod11/tttt
+	url = https://gitlab.com/NH000/tttt
 	arch = x86_64
 	license = GPL3
-	depends = marg
-	source = https://gitlab.com/oktopod11/tttt/raw/master/archive/tttt-0.1.tar.gz
-	sha256sums = 539b224db7935a116e1628fe8bc3dd29efd726bd613364fafffdfd78963394c1
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = coreutils
+	makedepends = sed
+	depends = libutf8proc
+	depends = gettext
+	source = tttt-1.0::git+https://gitlab.com/NH000/tttt#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8
+	sha256sums = SKIP
 
 pkgname = tttt
-

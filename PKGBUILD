@@ -1,38 +1,35 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
+# Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="tttt"
-pkgver=0.1
+pkgver="1.0"
 pkgrel=1
-epoch=
-pkgdesc="Tic-Tac-Toe in terminal"
+pkgdesc="Play tic-tac-toe in your terminal"
 arch=("x86_64")
-url="https://gitlab.com/oktopod11/tttt"
+url="https://gitlab.com/NH000/tttt"
 license=("GPL3")
-groups=()
-depends=("marg")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
-noextract=()
-sha256sums=("539b224db7935a116e1628fe8bc3dd29efd726bd613364fafffdfd78963394c1")
+depends=("libutf8proc" "gettext")
+makedepends=("make" "gcc" "pkgconf" "coreutils" "sed")
+source=("$pkgname-$pkgver::git+$url#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8")
+sha256sums=("SKIP")
 
 build() {
-	cd "$srcdir/$pkgname"
-	make build RELEASE=release
-	make link RELEASE=release
+	cd "$pkgname-$pkgver"
+	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	mkdir -vp "$pkgdir/usr/bin/"
-	mkdir -vp "$pkgdir/usr/share/man/man6/"
+	cd "$pkgname-$pkgver"
 
-	make install INSTALLDIR="$pkgdir/usr/bin/"
-	make man MANDIR="$pkgdir/usr/share/man/man6/"
+    install -D -t "$pkgdir/usr/bin" "tttt"
+
+    mkdir -p "$pkgdir/usr/share/locale/sr/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr/LC_MESSAGES/tttt.mo" "po/sr.po"
+    mkdir -p "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES/tttt.mo" "po/sr_RS@latin.po"
+
+    install -m 644 -D "man/man6/tttt.6.in" "$pkgdir/usr/share/man/man6/tttt.6"
+    sed -i 's/\bTTTT_EXEC_NAME\b/tttt/' "$pkgdir/usr/share/man/man6/tttt.6"
+    install -m 644 -D "man/sr/man6/tttt.6.in" "$pkgdir/usr/share/man/sr/man6/tttt.6"
+    sed -i 's/\bTTTT_EXEC_NAME\b/tttt/' "$pkgdir/usr/share/man/sr/man6/tttt.6"
+    install -m 644 -D "man/sr_RS@latin/man6/tttt.6.in" "$pkgdir/usr/share/man/sr_RS@latin/man6/tttt.6"
+    sed -i 's/\bTTTT_EXEC_NAME\b/tttt/' "$pkgdir/usr/share/man/sr_RS@latin/man6/tttt.6"
 }
-
