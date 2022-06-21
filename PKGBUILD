@@ -1,39 +1,52 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-_pkgbasename=speex
-pkgname=lib32-$_pkgbasename
-pkgver=1.2.0
-pkgrel=3
+pkgname=lib32-speex
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A free codec for free speech (32-bit)"
+url="https://www.speex.org/"
 arch=(x86_64)
-url="https://speex.org/"
 license=(BSD)
-depends=(lib32-libogg lib32-speexdsp $_pkgbasename)
-makedepends=(gcc-multilib)
-source=(https://downloads.us.xiph.org/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.gz)
-sha256sums=('eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094')
+depends=(lib32-gcc-libs speex)
+makedepends=(git)
+options=(debug)
+_commit=5dceaaf3e23ee7fd17c80cb5f02a838fd6c18e01  # tags/Speex-1.2.1^0
+source=("git+https://gitlab.xiph.org/xiph/speex.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd speex
+  git describe --tags | sed 's/^Speex-//;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd speex
+  ./autogen.sh
+}
 
 build() {
-  cd $_pkgbasename-$pkgver
-
   export CC="gcc -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
+  cd speex
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --disable-binaries \
     --libdir=/usr/lib32 \
-    --enable-binaries # Must be given or configure won't use pkg-config correctly
+    --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 check() {
-  cd $_pkgbasename-$pkgver
+  cd speex
   make -k check
 }
 
 package() {
-  cd $_pkgbasename-$pkgver
+  provides+=(libspeex.so)
+
+  cd speex
   make DESTDIR="$pkgdir" install
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  rm -r "$pkgdir"/usr/{include,share}
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
