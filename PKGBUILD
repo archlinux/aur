@@ -3,13 +3,13 @@
 _pkgname=gtkmdview
 pkgname=${_pkgname}-git
 pkgver=r9.e80a9b6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple library that renders markdown as a GtkWidget for viewing.'
 arch=('x86_64')
 url='https://github.com/johan-bjareholt/gtkmdview/'
 license=('GPL3')
 depends=('md4c' 'gtk4')
-makedepends=('meson')
+makedepends=('meson' 'git')
 source=("https://github.com/johan-bjareholt/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 source=("git+https://github.com/johan-bjareholt/${_pkgname}")
 sha256sums=('SKIP')

@@ -1,11 +1,12 @@
 pkgbase = gtkmdview-git
 	pkgdesc = A simple library that renders markdown as a GtkWidget for viewing.
 	pkgver = r9.e80a9b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johan-bjareholt/gtkmdview/
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
+	makedepends = git
 	depends = md4c
 	depends = gtk4
 	conflicts = gtkmdview
