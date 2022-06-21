@@ -1,4 +1,4 @@
-From 7ae6fb34229d45882ec9d14d83c87b4272247af1 Mon Sep 17 00:00:00 2001
+From 78ac824afcab57b570a5aad549262c7a406b17a7 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/12] Add support for BUS_VIRTUAL

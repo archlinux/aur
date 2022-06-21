@@ -1,4 +1,4 @@
-From 2528e430f9947cce87aad63cca72783b090cd9da Mon Sep 17 00:00:00 2001
+From ad0811c09ab7c1e4160a9ff5a8de5cf0f46fa374 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
