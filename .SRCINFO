@@ -1,6 +1,6 @@
 pkgbase = brave-dev-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (dev binary release).
-	pkgver = 1.41.69
+	pkgver = 1.41.75
 	pkgrel = 1
 	url = https://brave.com/download-dev
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = brave-dev-bin
 	provides = brave-dev-bin
 	provides = brave-dev-browser
 	options = !strip
-	source = https://github.com/brave/brave-browser/releases/download/v1.41.69/brave-browser-dev_1.41.69_amd64.deb
+	source = https://github.com/brave/brave-browser/releases/download/v1.41.75/brave-browser-dev_1.41.75_amd64.deb
 	source = MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt
 	source = brave-dev-bin.sh
-	sha512sums = 20a791598751444824d06a811fe3685e3dcc7acc9b7e87474d261d891f60a22737c6ce23c598c71fcf4dc9d68e1b321935c0296f1a837516d842b318645e0872
+	sha512sums = 9467427c28ca9f130189f354c2e4c1ef98a194daff77b8fe84f577633916359194bcb424fc114d07256c35ab3d5bddf703d37f3e08314012d508755729b7e736
 	sha512sums = b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f
 	sha512sums = a133f9ea4bd1f50f375a6039187fa886c380d77f1e47528f8350e1f9fbc6e1e7a1c8baaa40f6126c32ad3b9df57c456374564d1e7d7cd4c027b5ff2e96aa358e
 
