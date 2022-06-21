@@ -1,0 +1,14 @@
+--- src/Net-HTTPS-Any-0.12/t/post-netssleay.t
++++ src/Net-HTTPS-Any-0.12/t/post-netssleay.t
+@@ -11,9 +11,9 @@
+ 
+ #200
+ my($content, $response, %headers) = https_post(
+-  { 'host' => 'accounts.google.com',
++  { 'host' => 'httpbin.org',
+     'port' => 443,
+-    'path' => '/ServiceLogin',
++    'path' => '/anything',
+     'args' => { 'posted' => 'data' },
+   },
+   'net_https_any_test' => 1,
