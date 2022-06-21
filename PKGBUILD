@@ -2,7 +2,7 @@
 
 pkgname=asekey
 pkgver=3.7
-pkgrel=3
+pkgrel=5
 pkgdesc="ASEKey USB and SIM Reader driver for PCSC Lite"
 arch=(
       'armv6h'
