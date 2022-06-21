@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.2.1.r217.g32f88ae41
+pkgver=4.2.1.r273.g034bd42d9
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -102,6 +102,6 @@ package() {
   echo 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 
-  install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 AUTHORS README.md RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
