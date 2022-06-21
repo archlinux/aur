@@ -1,7 +1,7 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-plugins
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="CLAP example plugins"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-plugins"
@@ -18,22 +18,24 @@ options=()
 install=
 changelog=
 source=(git+https://github.com/free-audio/clap-plugins#tag=895a34f72c659b75487562f2f67e8b2ecf41c4d1
-  git+https://github.com/free-audio/clap#tag=55ee06f776669b94d63247a9c1dcb7dfa6056587
-  git+https://github.com/free-audio/clap-helpers#tag=716cdf49cc6eb7999bad44c084b363bbde907937
-  git+https://github.com/niXman/yas#tag=b1d0519a2d2d52beb4f6b253f0b30f742116cbcb)
+  git+https://github.com/free-audio/clap#branch=main
+  git+https://github.com/free-audio/clap-helpers#branch=main
+  git+https://github.com/niXman/yas#branch=master)
 noextract=()
-sha256sums=('SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP') #autofill using updpkgsums
+sha256sums=(SKIP
+  SKIP
+  SKIP
+  SKIP)
 
 build() {
   cd "$pkgname"
 
-  rm -rf clap clap-helpers yas
-  ln -s "$srcdir/clap"
-  ln -s "$srcdir/clap-helpers"
-  ln -s "$srcdir/yas"
+  git submodule init
+  git config submodule.clap.url "$srcdir/clap"
+  git config submodule.clap-helpers.url "$srcdir/clap-helpers"
+  git config submodule.yas.url "$srcdir/yas"
+  git submodule deinit vcpkg
+  git submodule update
 
   rm -rf build
   mkdir build
