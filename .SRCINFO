@@ -1,6 +1,6 @@
 pkgbase = duckdb
 	pkgdesc = A high-performance analytical database system
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://duckdb.org
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = duckdb
 	makedepends = python-setuptools-scm
 	depends = gcc-libs
 	depends = openssl
-	source = duckdb::git+https://github.com/duckdb/duckdb.git#commit=662041e2b43283bfcfeed984af7c3eaa85fb4996
+	source = duckdb::git+https://github.com/duckdb/duckdb.git#commit=da9ee490df829a96bfbcfcd737f95f8dbc707d0a
 	b2sums = SKIP
 
 pkgname = duckdb
