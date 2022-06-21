@@ -1,0 +1,12 @@
+pkgbase = rollo-printer
+	pkgdesc = Rollo (Beeprt BY-242) USB Printer Driver for Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.rollo.com/driver-linux/
+	arch = x86_64
+	license = custom
+	depends = cups
+	source = https://www.rollo.com/driver-dl/beta/rollo-driver-ubuntu_x86_64_v1.0.2.tar.gz
+	sha512sums = e3d382bf0dd6d08ebb023b7270e50f09a09021c78bf387e9a1e172e5f965e3b53dc6e9144cd18b8d91024faa62390a609dbcfe506d11cb4a9308688342d53fb3
+
+pkgname = rollo-printer
