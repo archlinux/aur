@@ -6,7 +6,7 @@
 pkgname=lbry-desktop-git
 _pkgname_base=lbry-desktop
 pkgver=0.53.4.r10894.g2e565fd95
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version'
 url="https://github.com/lbryio/${_pkgname_base}.git"
@@ -15,8 +15,8 @@ license=('MIT')
 makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
 
 depends=('nss' 'alsa-lib' 'gtk3')
-provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
-conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' 'lbry-desktop')
+provides=("lbry=$pkgver" "$_pkgname_base=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
+conflicts=('lbry' "$_pkgname_base-bin" 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' "$_pkgname_base")
 
 source=(
 	"git+$url"
@@ -26,7 +26,7 @@ b2sums=('SKIP'
         '7afceb849ab2ee1c7ddbe7ee642298cbf9d8fdf48ab9194a324fd97438fec11e60607ae469a692d079ba15bc2c5e099053ff3efcc4a62e7c94904e053ece858a')
 
 pkgver() {
-	cd "${srcdir}/lbry-desktop"
+	cd "${srcdir}/$_pkgname_base"
 
 	# LBRY version (extracted from package.json)
 	local _distver=`cat package.json | sed -nr 's/^[[:space:]]*"version" *: *"(.*)".*/\1/p' | head -n 1 | tr -d '-'`
@@ -43,7 +43,7 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/lbry-desktop"
+	cd "${srcdir}/$_pkgname_base"
 
 	# Note : see available yarn targets in file package.json
 
@@ -60,11 +60,11 @@ build() {
 package() {
 	# Note : Intentionally not decompressing the generated .deb package ; this should not have been generated anyway
 
-	cd "$srcdir/lbry-desktop/dist/electron/linux-unpacked"
+	cd "$srcdir/$_pkgname_base/dist/electron/linux-unpacked"
 	mkdir -p "$pkgdir/opt/LBRY"
 	cp -r ./* "$pkgdir/opt/LBRY/"
 
-	cd "$srcdir/lbry-desktop"
+	cd "$srcdir/$_pkgname_base"
 	mkdir -p "$pkgdir/usr/share/doc/lbry"
 	gzip -c CHANGELOG.md > "$pkgdir/usr/share/doc/lbry/changelog.gz"
 
@@ -72,7 +72,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp lbry.desktop "$pkgdir/usr/share/applications/"
 
-	cd "$srcdir/lbry-desktop/build/icons"
+	cd "$srcdir/$_pkgname_base/build/icons"
 	for s in 32x32 48x48 96x96 128x128 256x256 ; do
 		mkdir -p "$pkgdir/usr/share/icons/hicolor/$s/apps"
 		cp "$s.png" "$pkgdir/usr/share/icons/hicolor/$s/apps/lbry.png"
@@ -83,5 +83,7 @@ package() {
 	ln -s "/opt/LBRY/lbry" "$pkgdir/usr/bin/lbry"
 	ln -s "/opt/LBRY/resources/static/daemon/lbrynet" "$pkgdir/usr/bin/lbrynet"
 
+	cd "${srcdir}/$_pkgname_base"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
