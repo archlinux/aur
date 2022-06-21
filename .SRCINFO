@@ -1,6 +1,6 @@
 pkgbase = vlc-plugin-fluidsynth-bin
 	pkgdesc = FluidSynth plugin for VLC
-	pkgver = 3.0.17.4.2
+	pkgver = 3.0.17.4.3
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = notes.install
@@ -19,13 +19,13 @@ pkgbase = vlc-plugin-fluidsynth-bin
 	replaces = vlc-plugin-fluidsynth-bin-git
 	replaces = vlc-plugin-fluidsynth
 	replaces = vlc-plugin-fluidsynth-git
-	source_x86_64 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-2_amd64.deb
+	source_x86_64 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-3_amd64.deb
 	sha512sums_x86_64 = SKIP
-	source_i386 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-2_i386.deb
+	source_i386 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-3_i386.deb
 	sha512sums_i386 = SKIP
-	source_aarch64 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-2_arm64.deb
+	source_aarch64 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-3_arm64.deb
 	sha512sums_aarch64 = SKIP
-	source_i686 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-2_i386.deb
+	source_i686 = https://ftp.debian.org/debian/pool/main/v/vlc/vlc-plugin-fluidsynth_3.0.17.4-3_i386.deb
 	sha512sums_i686 = SKIP
 
 pkgname = vlc-plugin-fluidsynth-bin
