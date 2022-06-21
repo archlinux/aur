@@ -1,6 +1,6 @@
 pkgbase = python-fontparts
 	pkgdesc = The replacement for RoboFab
-	pkgver = 0.10.5
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://github.com/robotools/fontParts
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-fontparts
 	depends = python-fs
 	depends = python-lxml
 	depends = python-unicodedata2
-	source = https://files.pythonhosted.org/packages/source/f/fontParts/fontParts-0.10.5.zip
-	sha256sums = 56b88661ca5ddae543317785dc35c628231143da538c392b50eb766125207793
+	source = https://files.pythonhosted.org/packages/source/f/fontParts/fontParts-0.10.6.zip
+	sha256sums = 9849d05a6cf36794bcad6ce65ee2438dcba82028ba43e6a7797f211978f5d468
 
 pkgname = python-fontparts
