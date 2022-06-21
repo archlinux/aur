@@ -1,7 +1,7 @@
 #Contributor:Andrea Tarocchi <valdar@email.it> 
 pkgname=cwiid-git
 #pkgver=`date +%Y%m%d`
-pkgver=20160107
+pkgver=20220621
 pkgrel=1
 pkgdesc="Cwiid-git is the bleeding edge version of a wiimote's driver and utility tools"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ install=cwiid.install
 source=(fix_libbluethoot.patch)
 md5sums=('d92745847f5ba534c2914be1d2b36092')
 
-_gitroot=git://github.com/abstrakraft/cwiid.git
+_gitroot=https://github.com/abstrakraft/cwiid.git
 _gitname=cwiid
 _builddir=$_gitname-build
 
@@ -39,7 +39,7 @@ build() {
 
   cd $_builddir
   
-  git am --signoff < ../../fix_libbluethoot.patch
+  git -c user.email="valdar@email.it" -c user.name="valdar" am --signoff < ../../fix_libbluethoot.patch
 
   aclocal
   autoreconf
