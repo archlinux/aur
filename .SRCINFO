@@ -1,7 +1,7 @@
 pkgbase = konica-minolta-bizhub-c368-series
 	pkgdesc = CUPS PostScript printer driver for bizhub (423 4750 4752 5020I 554E 652 750I 754 C35 C360 C360I C368 C3850 C3851 C650I C652D C658 C754 C759 WPH)
 	pkgver = 1.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.konicaminolta.eu/en/business-solutions/support/download-center.html
 	arch = any
 	license = custom:konica minolta commercial license
@@ -13,4 +13,3 @@ pkgbase = konica-minolta-bizhub-c368-series
 	sha256sums = a3dcdd6459b4a376c61ad8c69ced0f356581229b39b209debe1679749824c408
 
 pkgname = konica-minolta-bizhub-c368-series
-

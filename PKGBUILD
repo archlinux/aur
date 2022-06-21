@@ -9,7 +9,7 @@ _lang='EN'
 set -u
 pkgname=$(echo "konica-minolta-bizhub-${_driver}" | tr '[:upper:]' '[:lower:]')
 pkgver='1.23';
-pkgrel=2
+pkgrel=3
 pkgdesc='CUPS PostScript printer driver for bizhub (423 4750 4752 5020I 554E 652 750I 754 C35 C360 C360I C368 C3850 C3851 C650I C652D C658 C754 C759 WPH)'
 arch=('any')
 url='https://www.konicaminolta.eu/en/business-solutions/support/download-center.html'
@@ -28,7 +28,7 @@ sha256sums=('6f635abe6c5b2fc2896d3575d535043881f1369cea71a3a94a009dbf3b8f5e7b'
 package() {
   find ${_srcdir} -name "*.ppd" -exec install -Dpm644 {} -t "${pkgdir}/usr/share/cups/model/KonicaMinolta/" \;
   gzip "${pkgdir}/usr/share/cups/model/KonicaMinolta"/*.ppd
-  install -Dpm644  ${_srcdir}/KMbeuEmpPS.pl -t "${pkgdir}/usr/lib/cups/filter/"
+  install -Dpm755  ${_srcdir}/KMbeuEmpPS.pl -t "${pkgdir}/usr/lib/cups/filter/"
   install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 set +u
