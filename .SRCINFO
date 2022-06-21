@@ -1,7 +1,7 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
 	pkgver = 6.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6

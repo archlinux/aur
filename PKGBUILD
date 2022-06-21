@@ -6,7 +6,7 @@
 pkgname=qt6-base-headless
 _qtver=6.3.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -57,7 +57,7 @@ build() {
     -DQT_FEATURE_widgets=OFF \
     -DQT_FEATURE_freetype=OFF \
     -DQT_FEATURE_harfbuzz=OFF \
-    -DQT_FEATURE_zstd=OFF
+    -DQT_FEATURE_zstd=ON
 
   cmake --build build
 }
