@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-simplemma
 epoch=
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=00
 pkgdesc='A simple multilingual lemmatizer for Python.'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/dd/27/1d3fd05dff5c24883b686a02ea1ce6a2e6513826883301338d1c806ab1d3/simplemma-0.5.0-py3-none-any.whl)
-md5sums+=(71232ff4f9916840faef0c101012ad91)
-noextract+=(simplemma-0.5.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/bf/a0/c828e8c1eb9b44d90980afeebdb972a16359b970c5c3c2d62bccd635300f/simplemma-0.7.0-py3-none-any.whl)
+md5sums+=(22ce56785e2aa9f01980d9ab31a2915e)
+noextract+=(simplemma-0.7.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(0babf21d1f564c16c74f8530361bae35)
 

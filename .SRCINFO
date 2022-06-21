@@ -1,18 +1,18 @@
 pkgbase = python-simplemma
 	pkgdesc = A simple multilingual lemmatizer for Python.
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 00
 	url = https://github.com/adbar/simplemma
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	noextract = simplemma-0.5.0-py3-none-any.whl
+	noextract = simplemma-0.7.0-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/dd/27/1d3fd05dff5c24883b686a02ea1ce6a2e6513826883301338d1c806ab1d3/simplemma-0.5.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/bf/a0/c828e8c1eb9b44d90980afeebdb972a16359b970c5c3c2d62bccd635300f/simplemma-0.7.0-py3-none-any.whl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 71232ff4f9916840faef0c101012ad91
+	md5sums = 22ce56785e2aa9f01980d9ab31a2915e
 	md5sums = 0babf21d1f564c16c74f8530361bae35
 
 pkgname = python-simplemma
