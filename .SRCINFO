@@ -1,7 +1,7 @@
 pkgbase = dyalog-bin
 	pkgdesc = Dyalog APL interpreter
 	pkgver = 18.2.45405
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dyalog.com/download-zone.htm
 	arch = x86_64
 	license = custom

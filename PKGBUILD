@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=dyalog-bin
 pkgver=18.2.45405
-pkgrel=1
+pkgrel=2
 pkgdesc='Dyalog APL interpreter'
 arch=('x86_64')
 url="https://www.dyalog.com/download-zone.htm"
@@ -41,19 +41,22 @@ pkgver() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/dyalog
-  mkdir -p $pkgdir/usr/share/doc
-  mkdir -p $pkgdir/usr/bin
+  version="${pkgver%.*}"
+  dyalog="opt/mdyalog/$version/64/unicode"
 
-  # Binary
-  cp -a $srcdir/opt/mdyalog/${pkgver%.*}/64/unicode/* $pkgdir/usr/share/dyalog/
+  # Distribution
+  install -d "$pkgdir/$dyalog"
+  cp -a "$srcdir/$dyalog"/* "$pkgdir/$dyalog/"
+
+  # Binaries
+  install -d "$pkgdir/usr/bin"
+  ln -s "/$dyalog/mapl" "$pkgdir/usr/bin/dyalog"
+  install -Dm755 "$srcdir/$dyalog/scriptbin/dyalogscript" "$pkgdir/usr/bin/dyalogscript"
 
   # Docs
-  cp -a $srcdir/usr/share/doc/* $pkgdir/usr/share/doc/
-
-  # Launcher
-  ln -s /usr/share/dyalog/dyalog $pkgdir/usr/bin/dyalog
+  install -d "$pkgdir/usr/share/doc"
+  cp -a "$srcdir/usr/share/doc"/* "$pkgdir/usr/share/doc/"
 
   # Licence
-  install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
+  install -Dm644 "LICENSE.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
 }
