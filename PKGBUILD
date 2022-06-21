@@ -1,10 +1,9 @@
 # Maintainer: Arthur Aslanyan <arthur.e.aslanyan@gmail.com>
 _name=starc
-_filename='starc.AppImage'
 
 pkgname="${_name}-appimage"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Story Architect is a text editor for film, theatre, radio scripts or comic books."
 arch=('x86_64')
 url='https://starc.app/'
@@ -13,7 +12,7 @@ depends=('zlib' 'bash')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
 options=(!strip)
-source=("${_filename}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
+source=("${pkgname}-${pkgver}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
 		"${_name}.desktop.patch"
 		"${_name}.sh")
 sha256sums=('d1bfe5d5b2622e55237185280279da834931a1459397d162820f7b63e276b133'
@@ -22,14 +21,14 @@ sha256sums=('d1bfe5d5b2622e55237185280279da834931a1459397d162820f7b63e276b133'
 
 prepare() {
 	cd "${srcdir}"
-	chmod +x $_filename
-	./$_filename --appimage-extract
+	chmod +x "${pkgname}-${pkgver}"
+	"./${pkgname}-${pkgver}" --appimage-extract
 	patch -Np0 < "./${_name}.desktop.patch"
 }
 
 package() {
 	# Install AppImage and bin
-	install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_filename}"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/appimages/starc.AppImage"
 	install -Dm755 "${srcdir}/${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
 	# Install icon and desktop

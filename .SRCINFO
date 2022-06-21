@@ -1,7 +1,7 @@
 pkgbase = starc-appimage
 	pkgdesc = Story Architect is a text editor for film, theatre, radio scripts or comic books.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://starc.app/
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = starc-appimage
 	provides = starc=0.2.0
 	conflicts = starc
 	options = !strip
-	source = starc.AppImage::https://github.com/story-apps/starc/releases/download/v0.2.0/starc-setup.AppImage
+	source = starc-appimage-0.2.0::https://github.com/story-apps/starc/releases/download/v0.2.0/starc-setup.AppImage
 	source = starc.desktop.patch
 	source = starc.sh
 	sha256sums = d1bfe5d5b2622e55237185280279da834931a1459397d162820f7b63e276b133

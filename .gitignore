@@ -2,3 +2,4 @@ src/
 pkg/
 *.pkg.tar.zst
 *.AppImage
+starc-appimage-*
