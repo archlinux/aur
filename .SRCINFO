@@ -1,7 +1,7 @@
 pkgbase = clap-host
 	pkgdesc = CLAP example host
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/free-audio/clap-host
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,6 @@ pkgbase = clap-host
 	source = git+https://github.com/free-audio/clap-host#tag=1.0
 	source = git+https://github.com/free-audio/clap#branch=main
 	source = git+https://github.com/free-audio/clap-helpers#branch=main
-	source = git+https://github.com/microsoft/vcpkg#branch=master
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
