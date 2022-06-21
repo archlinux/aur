@@ -1,0 +1,13 @@
+pkgbase = midi2grub
+	pkgdesc = Creates files or argument strings for the “play” function of GRUB.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/lukasfink1/midi2grub
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-mido
+	source = midi2grub::git+https://gitlab.com/lukasfink1/midi2grub#commit=d9ff80689a2dc5141a6c75464b7c534298be12e0
+	md5sums = SKIP
+
+pkgname = midi2grub
