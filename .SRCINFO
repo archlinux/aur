@@ -1,0 +1,23 @@
+pkgbase = bricscad-cn
+	pkgdesc = CAD Software for People Who Build the Future (Simplified Chinese)
+	pkgver = 22.1.06
+	pkgrel = 1
+	url = https://www.bricsys.com/
+	install = bricscad.install
+	arch = x86_64
+	license = custom
+	depends = qt5-gamepad
+	depends = qt5-3d
+	depends = qt5-wayland
+	depends = qt5-serialport
+	depends = qt5-location
+	depends = openmotif
+	depends = webkit2gtk
+	depends = libxcrypt-compat
+	depends = glu
+	depends = libffi6
+	options = !strip
+	source = manual://BricsCAD-V22.1.06-1-zh_CN.x86_64.rpm
+	sha256sums = 74bdffb3ed421eb5e547f1641bafb0de9d5ac8add78c56e214f7f0973e16833a
+
+pkgname = bricscad-cn
