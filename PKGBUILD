@@ -12,7 +12,7 @@ DEBUG=0
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.13.0.r36.ga433064d7
+pkgver=0.13.0.r38.g88d88158c
 pkgrel=2
 epoch=1
 
@@ -128,12 +128,12 @@ build() {
 
   # set IPFS_PATH if not set by upstream already
   sed -i  '/StateDirectory=ipfs/,/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/c StateDirectory=ipfs\nEnvironment=IPFS_PATH=\~\nExecStart=\/usr\/bin\/ipfs daemon --init --migrate' "misc/systemd/ipfs-hardened.service"
-  # remove --init (handled by install file)
-  sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon --migrate/g' "misc/systemd/ipfs-hardened.service"
+  # remove --init and --migrate (handled by install file)
+  sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon /ExecStart=\/usr\/bin\/ipfs daemon /g' "misc/systemd/ipfs-hardened.service"
   # enable gc and pubsub by default (sane defaults)
   sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon/ExecStart=\/usr\/bin\/ipfs daemon --enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "misc/systemd/ipfs-hardened.service"
   # increase timeouts (see #7283)
-  sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' "misc/systemd/ipfs-hardened.service"
+  sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' "misc/systemd/ipfs-hardened.service"
 }
 
 package() {

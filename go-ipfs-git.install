@@ -22,6 +22,14 @@ post_upgrade() {
     su ipfs -s /bin/bash -c "export IPFS_PATH='/var/lib/ipfs/'; ipfs init"
 
   fi
+
+  # do the repo migration now
+  echo "stopping ipfs to check if repo migration is necessary..."
+  systemctl stop ipfs >/dev/null 2>&1 || true
+  echo "checking/running repo migration..."
+  su ipfs -s /bin/bash -c "export IPFS_PATH='/var/lib/ipfs/'; ipfs repo migrate"
+  echo "checking/migration completed"
+  echo "Please restart your ipfs service manually if necessary"
 }
 
 post_install() {
