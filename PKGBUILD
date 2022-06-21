@@ -3,7 +3,7 @@
 _pkgname=astronvim
 pkgname=${_pkgname}-git
 pkgver=1.4.4.r11.ge4afdd7
-pkgrel=2
+pkgrel=3
 pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins"
 arch=('any')
 url="https://github.com/AstroNvim/AstroNvim"
