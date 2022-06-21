@@ -1,12 +1,12 @@
 pkgbase = ico2xpm
 	pkgdesc = A utility which converts Windows icons into X pixmaps
 	pkgver = 1.3
-	pkgrel = 2
-	url = http://ico2xpm.sourceforge.net/
+	pkgrel = 4
+	url = https://ico2xpm.sourceforge.net/
 	arch = x86_64
+	arch = aarch64
 	license = GPL
-	source = http://downloads.sourceforge.net/ico2xpm/1.3/ico2xpm-1_3-src.tar.gz
-	md5sums = fbae5631281cb6b48ca31f78bbbcba85
+	source = https://downloads.sourceforge.net/ico2xpm/1.3/ico2xpm-1_3-src.tar.gz
+	sha256sums = 598bea8344735dc174a1632a119315411a6d848a88250f1a20b46bbe251baa29
 
 pkgname = ico2xpm
-
