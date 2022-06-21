@@ -1,0 +1,39 @@
+diff --git a/air-config.xml b/air-config.xml
+index e640387..6755e53 100644
+--- a/air-config.xml
++++ b/air-config.xml
+@@ -21,7 +21,7 @@
+ 
+ <flex-config>
+     <!-- Specifies the minimum player version that will run the compiled SWF. -->
+-    <target-player>27.0</target-player>
++    <target-player>32.0</target-player>
+ 
+     <!-- Specifies the version of the compiled SWF -->
+     <swf-version>38</swf-version>
+diff --git a/airmobile-config.xml b/airmobile-config.xml
+index a529a3e..8f22bf6 100644
+--- a/airmobile-config.xml
++++ b/airmobile-config.xml
+@@ -21,7 +21,7 @@
+ 
+ <flex-config>
+     <!-- Specifies the minimum player version that will run the compiled SWF. -->
+-    <target-player>27.0</target-player>
++    <target-player>32.0</target-player>
+ 
+     <!-- Specifies the version of the compiled SWF -->
+     <swf-version>38</swf-version>
+diff --git a/flex-config.xml b/flex-config.xml
+index 259370b..d9f4ef9 100644
+--- a/flex-config.xml
++++ b/flex-config.xml
+@@ -22,7 +22,7 @@
+ 
+ <flex-config>
+     <!-- Specifies the minimum player version that will run the compiled SWF. -->
+-   <target-player>27.0</target-player>
++   <target-player>32.0</target-player>
+ 
+     <!-- Specifies the version of the compiled SWF -->
+    <swf-version>38</swf-version>

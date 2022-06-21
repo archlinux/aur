@@ -1,0 +1,32 @@
+diff --git a/build.properties b/build.properties
+index 61a38ac..dd19035 100644
+--- a/build.properties
++++ b/build.properties
+@@ -25,12 +25,12 @@ release.version = 4.16.1
+ build.number = 0
+ 
+ # Flash player version for which player global swc to use
+-playerglobal.version = 27.0
++playerglobal.version = 32.0
+ 
+ playerglobal.swfversion = 38
+ 
+ # AIR version number
+-air.version = 27.0
++air.version = 32.0
+ 
+ # Default locale for the SDK
+ locale = en_US
+diff --git a/flex-sdk-description.xml b/flex-sdk-description.xml
+index 52c5221..7bb8e35 100644
+--- a/flex-sdk-description.xml
++++ b/flex-sdk-description.xml
+@@ -18,7 +18,7 @@
+ 
+ -->
+ <flex-sdk-description>
+-<name>Apache Flex 4.16.1 FP27.0 AIR27.0 en_US</name>
++<name>Apache Flex 4.16.1 FP32.0 AIR27.0 en_US</name>
+ <version>4.16.1</version>
+ <build>20171115</build>
+ </flex-sdk-description>
