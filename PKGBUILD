@@ -28,7 +28,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init src/libretro/libretro-common
 	git config submodule.src/libretro/libretro-common.url ../libretro-common
 	git submodule update
 }
