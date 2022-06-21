@@ -531,7 +531,7 @@ post_install() {
     cpconfig -ini '\config\policy\OIDs' -add string '{AF74EE92-A059-492F-9B4B-EAD239B22A1B}' 'libpkivalidator.so TimestampSigningImpl'
     cpconfig -ini '\config\policy\OIDs' -add string '{B52FF66F-13A5-402C-B958-A3A6B5300FB6}' 'libpkivalidator.so SignatureImpl'
     cpconfig -ini '\config\policy\OIDs' -add string '5' 'libpkivalidator.so BasicConstraintsImpl'
-    cpconfig -ini '\config\OID\EncodingType 1\CertDllVerifyRevocation\DEFAULT' -add string 'DLL' 'librevprov.so'
+    cpconfig -ini '\cryptography\OID\EncodingType 1\CertDllVerifyRevocation\DEFAULT' -add string 'DLL' 'librevprov.so'
 
     # cprocsp-pki-plugin-64
     cpconfig -ini '\config\apppath' -add string libnpcades.so /opt/cprocsp/lib/amd64/libnpcades.so.2
