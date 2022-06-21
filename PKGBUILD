@@ -1,21 +1,21 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=xpacman
 pkgver=0.11
-pkgrel=7
+pkgrel=8
 pkgdesc="X pacman game (use z x / ' q keys)"
-arch=(x86_64)
-url="http://www.ibiblio.org/pub/X11/contrib/games/"
+arch=('x86_64' 'aarch64')
+url="https://www.ibiblio.org/pub/X11/contrib/games/"
 license=('custom')
 depends=(libx11)
-source=(http://www.ibiblio.org/pub/X11/contrib/games/xpacman.tar.gz
-	http://www.ibiblio.org/pub/X11/contrib/games/xpacman.README)
-md5sums=('b0ad824c4c0ea5c4d1f8f3e7b31f32f9'
-         '620c226d6d91461ac0d91e88655c9cbf')
+source=(https://www.ibiblio.org/pub/X11/contrib/games/xpacman.tar.gz
+				https://www.ibiblio.org/pub/X11/contrib/games/xpacman.README)
+sha256sums=('4374b015f391d078a9ab0302dbca5c6ff555df62846f6a16beed51804a58a28c'
+            'dd61ea6751083f6da49cad8a1397389d9aabcc590d21c7b546eefaf74ae02103')
 
 build() {
-  cd "$srcdir"/$pkgname
+  cd ${pkgname}
 
   patch -Np1 <<EOF
 diff -wbBur xpacman-0.11.orig/xpacman.c xpacman-0.11.orig.my/xpacman.c
@@ -36,7 +36,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir"/$pkgname
-  install -D -m 0755 xpacman "$pkgdir"/usr/bin/xpacman
-  install -D -m 0755 "$srcdir"/xpacman.README "$pkgdir"/usr/share/licenses/xpacman/README
+  cd ${pkgname}
+  install -D -m 0755 xpacman "${pkgdir}"/usr/bin/xpacman
+  install -D -m 0544 xpacman.README "${pkgdir}"/usr/share/licenses/xpacman/README
 }
