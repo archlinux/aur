@@ -1,27 +1,18 @@
 pkgbase = python2-corner
 	pkgdesc = Make some beautiful corner plots of samples
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = http://corner.readthedocs.io/en/latest/
+	url = https://corner.readthedocs.io
 	arch = any
 	license = BSD
-	checkdepends = python2-pytest
-	checkdepends = python2-pandas
 	checkdepends = python2-nose
+	checkdepends = python2-matplotlib
+	checkdepends = python2-gobject
 	makedepends = python2-setuptools
-	makedepends = python2-matplotlib
-	makedepends = python2-sphinx
-	makedepends = python2-sphinx_rtd_theme
-	source = https://github.com/dfm/corner.py/archive/v2.0.0.tar.gz
-	source = corner-doc.patch
-	md5sums = 249abecbc22e73549b46946b0219791f
-	md5sums = 46fb1c445af9d46fa1481054f5178c03
+	source = https://files.pythonhosted.org/packages/source/c/corner/corner-2.0.1.tar.gz
+	md5sums = 148a401ebb1dff47897fe4a1389e8c77
 
 pkgname = python2-corner
 	depends = python2
 	depends = python2-matplotlib
 	optdepends = python2-corner-doc: Documentation for corner.py
-
-pkgname = python2-corner-doc
-	pkgdesc = Documentation for corner.py
-
