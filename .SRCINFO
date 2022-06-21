@@ -1,6 +1,6 @@
 pkgbase = goneovim-bin
 	pkgdesc = Neovim GUI written in Golang, using a Golang qt backend
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/akiyosi/goneovim
 	arch = x86_64
@@ -29,12 +29,12 @@ pkgbase = goneovim-bin
 	depends = qt5-webengine
 	depends = qt5-websockets
 	depends = zlib
-	provides = goneovim=0.6.1
+	provides = goneovim=0.6.2
 	conflicts = goneovim
-	source = https://github.com/akiyosi/goneovim/releases/download/v0.6.1/goneovim-v0.6.1-archlinux.tar.bz2
+	source = https://github.com/akiyosi/goneovim/releases/download/v0.6.2/goneovim-v0.6.2-archlinux.tar.bz2
 	source = goneovim.desktop
 	source = goneovim.ico
-	sha256sums = 14617786e5215303f02304bedb46d12ee17bafcb75251b135b6b69712eeac340
+	sha256sums = a302843bed338aef4226e374c3fa0a1d066cef2be431b46224b8f63cc10b7860
 	sha256sums = bb7dd036f10fe1e9132d2bbbf346e99234425b012fadf177bb212c472ac5fca0
 	sha256sums = 0a36211b6ada93d811575b5ca9b33511e405f61cca791858ea2fe1eb5d29279e
 
