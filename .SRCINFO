@@ -1,34 +1,36 @@
 pkgbase = lbry-desktop-git
 	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version
-	pkgver = 0.53.4.r10893.g68718f32b
-	pkgrel = 1
-	url = https://lbry.com/
+	pkgver = 0.53.4.r10894.g2e565fd95
+	pkgrel = 3
+	url = https://github.com/lbryio/lbry-desktop.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	depends = nodejs
-	depends = npm
-	depends = gnome-keyring
-	depends = gconf
-	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libxtst
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = gnome-keyring
+	makedepends = gconf
+	makedepends = libnotify
+	makedepends = libappindicator-gtk2
+	makedepends = libsecret
+	makedepends = libxcrypt-compat
 	depends = nss
-	depends = libsecret
-	depends = libxcrypt-compat
-	provides = lbry=0.53.4.r10893.g68718f32b
-	provides = lbry-desktop=0.53.4.r10893.g68718f32b
-	provides = lbry-app=0.53.4.r10893.g68718f32b
-	provides = lbrynet=0.53.4.r10893.g68718f32b
+	depends = alsa-lib
+	depends = gtk3
+	provides = lbry=0.53.4.r10894.g2e565fd95
+	provides = lbry-desktop=0.53.4.r10894.g2e565fd95
+	provides = lbry-app=0.53.4.r10894.g2e565fd95
+	provides = lbrynet=0.53.4.r10894.g2e565fd95
 	conflicts = lbry
 	conflicts = lbry-desktop-bin
 	conflicts = lbry-app-bin
 	conflicts = lbrynet
 	conflicts = lbrynet-bin
+	conflicts = lbry-desktop
 	source = git+https://github.com/lbryio/lbry-desktop.git
 	source = lbry.desktop
 	b2sums = SKIP
-	b2sums = 42a3eacb0d64e21c9c775e21f75585779f3ecb2f916137a63f70e46f68c07158b91c5785c73b2283dd9a10d0de74cf87f07a699cbc072ca233d2db1488d0b63c
+	b2sums = 7afceb849ab2ee1c7ddbe7ee642298cbf9d8fdf48ab9194a324fd97438fec11e60607ae469a692d079ba15bc2c5e099053ff3efcc4a62e7c94904e053ece858a
 
 pkgname = lbry-desktop-git

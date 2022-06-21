@@ -4,24 +4,26 @@
 # Contributor: Tom Zander <tom@flowee.org>
 
 pkgname=lbry-desktop-git
-pkgver=0.53.4.r10893.g68718f32b
-pkgrel=1
+_pkgname_base=lbry-desktop
+pkgver=0.53.4.r10894.g2e565fd95
+pkgrel=3
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version'
-url='https://lbry.com/'
+url="https://github.com/lbryio/${_pkgname_base}.git"
 license=('MIT')
 
-makedepends=('git' 'yarn')
-depends=('nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret' 'libxcrypt-compat')
+makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
+
+depends=('nss' 'alsa-lib' 'gtk3')
 provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
-conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin')
+conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' 'lbry-desktop')
 
 source=(
-	'git+https://github.com/lbryio/lbry-desktop.git'
+	"git+$url"
 	'lbry.desktop'
 )
 b2sums=('SKIP'
-        '42a3eacb0d64e21c9c775e21f75585779f3ecb2f916137a63f70e46f68c07158b91c5785c73b2283dd9a10d0de74cf87f07a699cbc072ca233d2db1488d0b63c')
+        '7afceb849ab2ee1c7ddbe7ee642298cbf9d8fdf48ab9194a324fd97438fec11e60607ae469a692d079ba15bc2c5e099053ff3efcc4a62e7c94904e053ece858a')
 
 pkgver() {
 	cd "${srcdir}/lbry-desktop"
