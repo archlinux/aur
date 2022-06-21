@@ -1,0 +1,16 @@
+pkgbase = figma-agent-linux
+	pkgdesc = Figma Agent for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neetly/figma-agent-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = freetype2
+	depends = fontconfig
+	source = figma-agent-linux::git+https://github.com/neetly/figma-agent-linux.git#tag=v0.1.0
+	cksums = SKIP
+
+pkgname = figma-agent-linux
