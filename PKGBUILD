@@ -1,38 +1,33 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
+# Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="airpad"
-pkgver=0.2
+pkgver="1.0"
 pkgrel=1
-epoch=
-pkgdesc="Basic text editor"
+pkgdesc="Basic GUI text editor"
 arch=("x86_64")
-url="https://gitlab.com/oktopod11/airpad"
+url="https://gitlab.com/NH000/airpad"
 license=("GPL3")
-groups=()
-depends=("gtk3" "xdg-utils") 
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("https://gitlab.com/oktopod11/airpad/raw/master/archive/airpad-${pkgver}.tar.gz")
-noextract=()
-sha512sums=('8ef206c10c46ce6835fa31eb0ae291f1b3856948c956a0a9ef86cf6b09509a13b298a043fc874021f9d9e3c6ad13529956f2458931ec1d0a4379ff8a311afcf3')
+depends=("gtk3" "gettext")
+makedepends=("make" "gcc" "pkgconf" "coreutils")
+source=("$pkgname-$pkgver::git+$url#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0")
+sha256sums=("SKIP")
 
 build() {
-	cd "$srcdir/$pkgname"
-	make build RELEASE=release
-	make link
+	cd "$pkgname-$pkgver"
+	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/32x32/apps/"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-	mkdir -p "$pkgdir/usr/share/applications/"
-	make install INSTALLDIR="$pkgdir/usr/bin/" ICONSDIR="$pkgdir/usr/share/icons/hicolor/" APPDIR="$pkgdir/usr/share/applications/"
-}
+	cd "$pkgname-$pkgver"
 
+    install -D -t "$pkgdir/usr/bin" "airpad"
+
+    mkdir -p "$pkgdir/usr/share/locale/sr/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr/LC_MESSAGES/airpad.mo" "po/sr.po"
+    mkdir -p "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES/airpad.mo" "po/sr_RS@latin.po"
+
+    install -m 644 -D "icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/airpad.svg"
+
+    mkdir -p "$pkgdir/usr/share/applications"
+    echo -e '[Desktop Entry]\nType=Application\nVersion=1.5\nName=Airpad\nGenericName=Text editor\nGenericName[sr]=Уређивач текста\nGenericName[sr_RS@latin]=Uređivač teksta\nComment=Edit text\nComment[sr]=Уредите текст\nComment[sr_RS@latin]=Uredite tekst\nIcon=airpad\nDBusActivatable=true\nTryExec=/usr/bin/airpad\nExec=/usr/bin/airpad %F\nTerminal=false\nMimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;\nCategories=Utility;TextEditor;\nStartupNotify=true' > "$pkgdir/usr/share/applications/com.gitlab.NH000.Airpad.desktop"
+}
