@@ -16,7 +16,7 @@ sha256sums=('9710ebfb6dc78bd2d3d1ff173b6829e40acdc90670f1b5b71c2ffede5bb9f37f')
 
 build() {
 	cd "$srcdir/$_extracted"
-	make PREFIX=/usr
+	make PREFIX=/usr native/himitsu-firefox-native native/manifest.json
 }
 
 package() {
