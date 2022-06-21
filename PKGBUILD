@@ -1,8 +1,8 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=jdk-bcl
-pkgver=8u201
-pkgrel=2
+pkgver=8u202
+pkgrel=1
 pkgdesc="Oracle Java Development Kit (BCL)"
 arch=("x86_64")
 url="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html"
@@ -52,7 +52,7 @@ source=(
   "policytool-${pkgname}.desktop"
 )
 sha256sums=(
-  "cb700cc0ac3ddc728a567c350881ce7e25118eaf7ca97ca9705d4580c506e370"
+  "9a5c32411a6a06e22b69c495b7975034409fa1652d03aeb8eb5b6f59fd4594e0"
   "9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6"
   "50d8f76c1205e437c290a3d3fe1274e2cddbcac4dde0a95300cc473200176154"
   "dfa19d10ea5614fda73cee31c592601e3a24c567150a6a7243dd7bcd1e3540cc"
