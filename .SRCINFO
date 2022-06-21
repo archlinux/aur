@@ -1,0 +1,15 @@
+pkgbase = shnote
+	pkgdesc = A simple TUI note-taking application written in Bash
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/NH000/shnote
+	arch = any
+	license = GPL3
+	makedepends = sed
+	depends = bash
+	depends = coreutils
+	depends = gettext
+	source = shnote-1.0::git+https://gitlab.com/NH000/shnote#tag=6913c40c9122c0ce2e7ee45cdd33696afea1c519
+	sha256sums = SKIP
+
+pkgname = shnote
