@@ -5,6 +5,7 @@ pkgbase = python2-shaape-git
 	url = https://github.com/christiangoltz/shaape
 	arch = any
 	license = BSD
+	makedepends = git
 	depends = python2
 	depends = pygtk
 	depends = python2-networkx
@@ -16,4 +17,3 @@ pkgbase = python2-shaape-git
 	md5sums = SKIP
 
 pkgname = python2-shaape-git
-

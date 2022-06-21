@@ -9,7 +9,7 @@ url="https://github.com/christiangoltz/shaape"
 license=('BSD')
 groups=()
 depends=('python2' 'pygtk' 'python2-networkx' 'python2-yaml')
-makedepends=()
+makedepends=(git)
 provides=(${_bpn})
 conflicts=(${_bpn})
 replaces=()
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(git+https://github.com/christiangoltz/shaape)
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/shaape"
