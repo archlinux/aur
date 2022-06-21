@@ -3,7 +3,7 @@
 _pkgname=astronvim
 pkgname=${_pkgname}-git
 pkgver=1.4.4.r11.ge4afdd7
-pkgrel=1
+pkgrel=2
 pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins"
 arch=('any')
 url="https://github.com/AstroNvim/AstroNvim"
@@ -11,6 +11,8 @@ license=('GPL3')
 depends=("neovim>=0.7.0")
 source=("${pkgname}::git+${url}.git" "astronvim.vim.template")
 sha256sums=('SKIP' '0bb6cb6c0dce255d9b12f31db6c39c991b3b12ba2f0416466d4a7d4222ecde9f')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 
 pkgver() {
 	cd ${pkgname}
