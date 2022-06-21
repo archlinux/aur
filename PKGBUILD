@@ -1,8 +1,8 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r139.c66ca5c
-pkgrel=2
+pkgver=r142.7e5a4ad
+pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -27,7 +27,7 @@ optdepends=(
     'perl-image-exiftool: for media files'
     'libreoffice-fresh: for documents'
     'poppler: for PDF files'
-    'transmission: for torrent files'
+    'transmission-cli: for torrent files'
 )
 source=("git+$url?signed")
 sha512sums=('SKIP')

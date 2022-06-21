@@ -1,7 +1,7 @@
 pkgbase = ctpv-git
 	pkgdesc = Terminal previewer
-	pkgver = r139.c66ca5c
-	pkgrel = 2
+	pkgver = r142.7e5a4ad
+	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = ctpv-git
 	optdepends = perl-image-exiftool: for media files
 	optdepends = libreoffice-fresh: for documents
 	optdepends = poppler: for PDF files
-	optdepends = transmission: for torrent files
+	optdepends = transmission-cli: for torrent files
 	source = git+https://github.com/NikitaIvanovV/ctpv?signed
 	sha512sums = SKIP
 
