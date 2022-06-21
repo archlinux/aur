@@ -1,5 +1,5 @@
 pkgbase = chromium-framerate-fix
-	pkgdesc = Chromium with a patch to set custom framerate. Workaround for bug 1200167
+	pkgdesc = Chromium with a patch to set custom framerate. Fixes Chromium choppiness with EGL and Desktop backends
 	pkgver = 102.0.5005.115
 	pkgrel = 1
 	url = https://www.chromium.org/Home
