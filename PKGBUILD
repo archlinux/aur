@@ -9,7 +9,8 @@ url="https://github.com/NFJones/audio-to-midi"
 license=('MIT')
 depends=('python-cffi' 'cython'
          'python-numpy' 'python-pycparser'
-         'python-soundfile' 'python-midi')
+         'python-soundfile' 'python-midi'
+         'python-progressbar')
 makedepends=('python-setuptools')
 source=("git+${url}#tag=v${pkgver}")
 md5sums=(SKIP)
