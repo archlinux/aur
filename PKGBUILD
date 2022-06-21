@@ -12,7 +12,7 @@ pkgver=102.0.5005.115
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=5
-pkgdesc="Chromium with a patch to set custom framerate. Workaround for bug 1200167"
+pkgdesc="Chromium with a patch to set custom framerate. Fixes Chromium choppiness with EGL and Desktop backends"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
@@ -89,19 +89,27 @@ prepare() {
   #75 Hz
   #sed -i 's/1\.\ \/\ 60/1\.\ \/\ 75/' ui/base/x/x11_display_util.cc
   #sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 75/' ui/base/x/x11_display_util.cc
+  #sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 75/' ui/gl/sync_control_vsync_provider.cc
+  #sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 75/' ui/gl/sync_control_vsync_provider.cc  
 
   #120 Hz
   #sed -i 's/1\.\ \/\ 60/1\.\ \/\ 120/' ui/base/x/x11_display_util.cc
   #sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 120/' ui/base/x/x11_display_util.cc
+  #sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 120/' ui/gl/sync_control_vsync_provider.cc
+  #sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 120/' ui/gl/sync_control_vsync_provider.cc
 
   #144 Hz
   #sed -i 's/1\.\ \/\ 60/1\.\ \/\ 144/' ui/base/x/x11_display_util.cc
   #sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 144/' ui/base/x/x11_display_util.cc
+  #sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 144/' ui/gl/sync_control_vsync_provider.cc
+  #sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 144/' ui/gl/sync_control_vsync_provider.cc
   
   #165 Hz
   sed -i 's/1\.\ \/\ 60/1\.\ \/\ 165/' ui/base/x/x11_display_util.cc
   sed -i 's/1\.\ \/\ refresh_rate/1\.\ \/\ 165/' ui/base/x/x11_display_util.cc
-
+  sed -i 's/base::Seconds(1)\ \/\ 60/base::Seconds(1)\ \/\ 165/' ui/gl/sync_control_vsync_provider.cc
+  sed -i 's/last_good_interval_\ =\ new_interval/last_good_interval_\ =\ base::Seconds(1)\ \/\ 165/' ui/gl/sync_control_vsync_provider.cc
+  
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
     tools/generate_shim_headers/generate_shim_headers.py
