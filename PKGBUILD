@@ -13,21 +13,18 @@ sha512sums=('bb6905059dc68fec35810726e2721edd8b1c5db67ffe951c08b0332b70ab153bdf1
 
 build() {
 	cd ${pkgcompletename^}-${pkgver}
-	cargo build
+	cargo build --release
 }
 
 package() {
-	install -Dm755 ${pkgcompletename^}-${pkgver}/target/debug/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 ${pkgcompletename^}-${pkgver}/icons/icon.ico "${pkgdir}/usr/share/icons/eslauncher2.ico"
-	echo "[Desktop Entry]
-Name=ESLauncher2
-Comment=A program for organizing Endless Sky installations.
-Exec=eslauncher2
-Icon=/usr/share/icons/eslauncher2.ico
-Terminal=false
-Type=Application
-Categories=Game;" > "${pkgname}.desktop"
-	install -Dm755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm755 ${pkgcompletename^}-${pkgver}/target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+	for i in ${pkgcompletename^}-${pkgver}/packaging/icons/*.png; do
+		export STR="${pkgcompletename^}-${pkgver}\/packaging\/icons\/${pkgname}_"
+		export reswithpng="$(echo $i | sed -e s/${STR}//)";
+		export res="$(echo ${reswithpng} | sed -e s/.png//)";
+		install -Dm755 $i "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png";
+	done
+	install -Dm755 ${pkgcompletename^}-${pkgver}/packaging/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
 
