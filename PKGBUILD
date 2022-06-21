@@ -54,7 +54,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init genconfig tests/fp/berkeley-{soft,test}float-3 ui/{keycodemapdb,thirdparty/{imgui,implot}}
 	git config submodule.genconfig.url ../genconfig
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
