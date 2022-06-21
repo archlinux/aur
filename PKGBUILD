@@ -7,17 +7,15 @@
 
 pkgname=masterpdfeditor-arm
 pkgver=5.8.46
-pkgrel=1
-pkgdesc='A complete solution for viewing, creating and editing PDF files (for arm64 and x86_64)'
+pkgrel=2
+pkgdesc='A complete solution for viewing, creating and editing PDF files (for arm64)'
 url='https://code-industry.net/free-pdf-editor/'
-arch=(aarch64 x86_64)
+arch=(aarch64)
 conflicts=(masterpdfeditor-free masterpdfeditor)
 license=('custom')
 makedepends=(patchelf)
 source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.arm64.tar.gz")
-source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.x86_64.tar.gz")
 sha1sums_aarch64=('ceaa2f83cc54cc32b86b0b2aefe92227c439768d')
-sha1sums_x86_64=('6d9b66dfa35effa0ccb659f7f9d94a8e1ade460f')
 
 package() {
   depends=('libgl' 'nspr' 'nss' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
