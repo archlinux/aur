@@ -2,7 +2,7 @@
 
 _pkgname=openweather
 pkgname=gnome-shell-extension-openweather
-pkgver=115
+pkgver=116
 pkgrel=1
 pkgdesc="Display weather information for any location on Earth in the GNOME Shell"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('gnome-shell-extension-openweather-git'
            'gnome-shell-extension-weather-git')
 
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('df631f19b57d78ca6c9866975acfd909613abdeaf8a84f411a48b676396425f5')
+sha256sums=('8c7735b2961a5c4ce0dc326ea7cacb2544282686ca2f8b7e26ee71ba90771c67')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
