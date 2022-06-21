@@ -44,3 +44,10 @@ for(var number = 0; number < NUMBER_OF_INVOCATIONS; number++) {
         }
     }, number * TIME_BETWEEN_INVOCATIONS);
 }
+
+const electron = require("electron");
+const request = {
+  property: "spellCheckerEnabled",
+  propertyValue: true, //Set this property to false to deactivate spell checking
+};
+electron.ipcRenderer.send('session-interaction', request);

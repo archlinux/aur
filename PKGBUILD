@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
-pkgver=2.2206.16
+pkgver=2.2222.11
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -18,7 +18,7 @@ source=(
 sha256sums=(
   "3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27"
   "bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423"
-  "25d0587e3c3c9d5262778ece1e24696e51ae7617d3a458bda3d638e1683c9164"
+  "22ba360d698d9bb8257e91e7360aa0cf669e7e58a512e9b7aa0ee4b0504563d8"
 )
 
 build() {
@@ -29,11 +29,9 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
-    --user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15" \
+    --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Chrome/102.0.0.0 Safari/605.1.15" \
     --inject "${pkgname}-inject.js" \
-    --browserwindow-options '{ "webPreferences": { "spellcheck": true } }' \
     --verbose \
-    --electron-version 19.0.4 \
     --single-instance \
     --tray \
     "${url}"
