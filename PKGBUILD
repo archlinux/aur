@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ReorderCluster
-_pkgver=1.0
+_pkgver=2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 pkgdesc='Reordering the dendrogram according to the class labels'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a87898faa20380aac3e06a52eedcb2f0eb2b35ab74fdc3435d40ee9f1d28476b')
+sha256sums=('38862ba2ef2a88ea70b12d50352a96f3b2ea032861256702387989bdfb20017f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
