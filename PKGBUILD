@@ -1,5 +1,8 @@
 # Maintainer: JP Roemer <jp+aur@roemer.im>
+# Contributor: Emanuele 'Lele' Calo
 # Contributor: c0gnitivefl0w
+# Contributor: Redpill13
+# Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=seadrive-gui
 pkgver=2.0.22
