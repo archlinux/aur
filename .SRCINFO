@@ -1,7 +1,7 @@
 pkgbase = rulex-rs-bin
-	pkgdesc = A new, portable, regular expression language written in Rust
+	pkgdesc = A new, portable, regular expression language written in Rust (pre-compiled)
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rulex-rs.github.io/
 	arch = x86_64
 	license = Apache
