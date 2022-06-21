@@ -1,11 +1,12 @@
---- utils/idna.c	2019-07-17 17:37:00.000000000 +0200
-+++ utils/idna.c	2019-09-15 21:46:42.228737360 +0200
-@@ -27,7 +27,7 @@
- #include <stdlib.h>
- #include <string.h>
- #include <sys/types.h>
+diff --text --unified --recursive netsurf-3.10/utils/idna.c netsurf-3.10.new/utils/idna.c
+--- netsurf-3.10/utils/idna.c	2020-05-24 13:55:29.000000000 -0700
++++ netsurf-3.10.new/utils/idna.c	2022-06-21 11:40:58.674410466 -0700
+@@ -167,7 +167,7 @@
+ 
+ #ifdef WITH_UTF8PROC
+ 
 -#include <libutf8proc/utf8proc.h>
 +#include <utf8proc.h>
  
- #include "netsurf/inttypes.h"
- 
+ int32_t idna_contexto[] = {
+ 	/* CONTEXTO codepoints which have a rule defined */
