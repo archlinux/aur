@@ -1,0 +1,19 @@
+pkgbase = serioussam
+	pkgdesc = A game engine developed by Croteam for the classic Serious Sam games.
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://github.com/tx00100xt/SeriousSamClassic"
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = sed
+	depends = sdl2
+	depends = python
+	depends = bash
+	source = https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgver.tar.gz
+	sha512sums = SKIP
+
+pkgname = serioussam
+
