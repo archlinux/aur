@@ -1,13 +1,13 @@
 pkgbase = esbuild-bin
 	pkgdesc = An extremely fast JavaScript and CSS bundler and minifier.
-	pkgver = 0.14.46
+	pkgver = 0.14.47
 	pkgrel = 1
 	url = https://esbuild.github.io
 	arch = x86_64
 	license = MIT
 	provides = esbuild
 	conflicts = esbuild
-	source = esbuild-linux-64-0.14.46.tgz::https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.14.46.tgz
-	sha256sums = e0b9ba8241de56018a42e7d1c7c2423e03c944886a2611f3c7eb66a926ae84e0
+	source = esbuild-linux-64-0.14.47.tgz::https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.14.47.tgz
+	sha256sums = a46b99d6104e83a77b3cffadda331e4f58d3d2a025ca4d76622762cf34d387de
 
 pkgname = esbuild-bin
