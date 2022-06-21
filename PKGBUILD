@@ -1,18 +1,17 @@
-# Maintainer: @RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Dustin Childers <dchilders@gmail.com>
 
 pkgname=berty-bin
-pkgver=2.388.2
+pkgver=2.402.0
 pkgrel=1
 pkgdesc="A secure peer-to-peer messenger which works with or without internet access, cellular data or trust in the network and uses IPFS."
 arch=('x86_64')
 url="https://github.com/berty/berty"
 license=('Apache' 'MIT')
-depends=('libglvnd')
 provides=('berty')
 conflicts=('berty')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berty/berty/releases/download/v${pkgver}/berty_linux_amd64.tar.gz")
-b2sums=('488531994c63c78b720543a814b4ff3c2af9746bd46bf2f9c7e36288e1b42f95ee37951d6d63abc859d69b8643d9112bb7c69471255330fbc4e84a5264394df2')
+b2sums=('0d679251a63d5490950af29a2a66bdfce8fb31a603a2ade9e2528c99a0bfa31a7729ab37f62bba571be4caca8abbdfc2487e1e138c53935e27d5255e3e82463d')
 
 package() {
 	install -Dm0644 "${srcdir}/berty_linux_amd64/LICENSE-APACHE" "${pkgdir}/usr/share/licenses/berty-bin/LICENSE-APACHE"
