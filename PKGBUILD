@@ -1,6 +1,6 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
-pkgname=superslicer
+pkgname=superslicer-stable
 pkgver=2.3.57.12
 _pkgtag=$pkgver
 pkgrel=2
@@ -14,6 +14,8 @@ depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb'
 makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 replaces=('slic3r++')
+provides=("superslicer=$epoch:$pkgver")
+conflicts=('superslicer' 'superslicer-bin' 'superslicer-git' 'superslicer-prerelease' 'superslicer-prerelease-bin' )
 source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "0002-fix-cereal.patch"

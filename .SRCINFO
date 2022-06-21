@@ -1,4 +1,4 @@
-pkgbase = superslicer
+pkgbase = superslicer-stable
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 	pkgver = 2.3.57.12
 	pkgrel = 2
@@ -24,6 +24,12 @@ pkgbase = superslicer
 	depends = qhull>=2020.2-4
 	depends = wxgtk3-dev-314-opt
 	optdepends = superslicer-profiles: Predefined printer profiles
+	provides = superslicer=1:2.3.57.12
+	conflicts = superslicer
+	conflicts = superslicer-bin
+	conflicts = superslicer-git
+	conflicts = superslicer-prerelease
+	conflicts = superslicer-prerelease-bin
 	replaces = slic3r++
 	options = !emptydirs
 	source = https://github.com/supermerill/SuperSlicer/archive/2.3.57.12.tar.gz
@@ -35,4 +41,4 @@ pkgbase = superslicer
 	sha512sums = 5e42f43f7b4d72c6d8d118728a8df22cc6127b3fdc0081871a43763fcaed76143bcad59a6abb56f918b94b227bb58bdd9bc06eb51f2abbc66b5725d7cc3c98d6
 	sha512sums = c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98
 
-pkgname = superslicer
+pkgname = superslicer-stable
