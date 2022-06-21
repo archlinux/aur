@@ -1,7 +1,7 @@
 pkgbase = python-pygalmesh
 	pkgdesc = A Python interface to CGAL's meshing tools
 	pkgver = 0.10.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/meshpro/pygalmesh
 	arch = x86_64
 	license = GPL3
@@ -19,6 +19,6 @@ pkgbase = python-pygalmesh
 	depends = python-numpy
 	depends = python-meshio
 	source = pygalmesh-0.10.6::https://github.com/meshpro/pygalmesh/archive/refs/tags/v0.10.6.tar.gz
-	sha256sums = 3e936cfa8007f97f7a87c6a54c588ee7cac7fd0fd2a9d02aecfe8867949e0698
+	sha256sums = 298ae2434bac0881d630c9f7ed37a92a9e00baec04cf86e8acec54d1f7e6e722
 
 pkgname = python-pygalmesh
