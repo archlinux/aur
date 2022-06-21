@@ -2,7 +2,7 @@
 _name=ctpv
 pkgname="${_name}-git"
 pkgver=r139.c66ca5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
