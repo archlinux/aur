@@ -3,7 +3,7 @@
 pkgbase = asekey
 	pkgdesc = ASEKey USB and SIM Reader driver for PCSC Lite
 	pkgver = 3.7
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.athena-scs.com/support/software-driver-downloads
 	arch = armv6h
 	arch = armv7h
