@@ -6,16 +6,14 @@
 
 pkgname=seadrive-gui
 pkgver=2.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
 depends=('qt5-webengine' 'qt5-tools' 'seadrive-daemon')
 makedepends=("cmake")
-source=(
-    "${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-)
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('d525301df509b9a07b7da304bb2e1195d0a9a735eacf5542880b79359a14594d')
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = seadrive-gui
 	pkgdesc = GUI part of seadrive
 	pkgver = 2.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seadrive-gui
 	arch = i686
 	arch = x86_64
