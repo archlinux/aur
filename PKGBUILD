@@ -1,30 +1,32 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
-pkgname=wallo
-pkgver=0.6
+# Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
+pkgname="wallo"
+pkgver="1.0"
 pkgrel=1
-epoch=
-pkgdesc="Wallpaper organizer"
+pkgdesc="Wallpaper Organizer"
 arch=("any")
-url="https://gitlab.com/oktopod11/wallo"
-license=("GPL")
-groups=()
-depends=("bash" "file" "coreutils" "gawk" "sed" "imagemagick")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=("wallo")
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("https://gitlab.com/oktopod11/$pkgname/raw/master/archive/$pkgname-$pkgver.tar.gz")
-noextract=()
-sha256sums=("f4a9c6afda0291d3a0758e3cd75f41c66c44ebf198223ea9c78d58afc1dd8e9b")
+url="https://gitlab.com/NH000/wallo"
+license=("GPL3")
+depends=("bash" "coreutils" "gettext" "util-linux" "gawk" "xdg-utils" "imagemagick")
+makedepends=("sed")
+source=("$pkgname-$pkgver::git+$url#tag=f53c2df9f7aba2169d2798c0ce3e74e96d578639")
+sha256sums=("SKIP")
 
 package() {
-	mkdir -vp "$pkgdir/usr/bin/"
-	mkdir -vp "$pkgdir/usr/share/man/man1/"
-	cp -v "$srcdir/$pkgname/wallo.sh" "$pkgdir/usr/bin/wallo"
-	cp -v "$srcdir/$pkgname/wallo.man" "$pkgdir/usr/share/man/man1/wallo.1"
-	gzip -v "$pkgdir/usr/share/man/man1/wallo.1"
+	cd "$pkgname-$pkgver"
+
+    install -D "wallo.sh" "$pkgdir/usr/bin/wallo"
+    sed -i '20s/$/"\/usr\/share\/locale"/' "$pkgdir/usr/bin/wallo"
+    sed -i '21s/$/"wallo"/' "$pkgdir/usr/bin/wallo"
+
+    install -m 644 -D "man/man1/wallo.1.in" "$pkgdir/usr/share/man/man1/wallo.1"
+    sed -i 's/\bWALLO_EXEC_NAME\b/wallo/' "$pkgdir/usr/share/man/man1/wallo.1"
+    install -m 644 -D "man/sr/man1/wallo.1.in" "$pkgdir/usr/share/man/sr/man1/wallo.1"
+    sed -i 's/\bWALLO_EXEC_NAME\b/wallo/' "$pkgdir/usr/share/man/sr/man1/wallo.1"
+    install -m 644 -D "man/sr_RS@latin/man1/wallo.1.in" "$pkgdir/usr/share/man/sr_RS@latin/man1/wallo.1"
+    sed -i 's/\bWALLO_EXEC_NAME\b/wallo/' "$pkgdir/usr/share/man/sr_RS@latin/man1/wallo.1"
+
+    mkdir -p "$pkgdir/usr/share/locale/sr/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr/LC_MESSAGES/wallo.mo" "po/sr.po"
+    mkdir -p "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/sr_RS@latin/LC_MESSAGES/wallo.mo" "po/sr_RS@latin.po"
 }
