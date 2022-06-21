@@ -2,7 +2,7 @@
 pkgbase="eslauncher2"
 pkgname="eslauncher2"
 pkgcompletename="ESLauncher2"
-pkgrel=1
+pkgrel=2
 pkgver=0.8.5
 pkgdesc="The next generation Endless Sky Launcher"
 arch=('any')

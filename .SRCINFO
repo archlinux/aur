@@ -1,7 +1,7 @@
 pkgbase = eslauncher2
 	pkgdesc = The next generation Endless Sky Launcher
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EndlessSkyCommunity/ESLauncher2
 	arch = any
 	license = GPL-3.0
