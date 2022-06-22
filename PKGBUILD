@@ -1,5 +1,5 @@
 # Maintainer: Sharpened Blade sharpenedblade@proton.me
-pkgname=mcpppp
+pkgname=mcpppp-gui
 pkgver=0.7.2
 pkgrel=1
 pkgdesc="Converter for minecraft resourcepacks"

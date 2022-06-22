@@ -1,4 +1,4 @@
-pkgbase = mcpppp
+pkgbase = mcpppp-gui
 	pkgdesc = Converter for minecraft resourcepacks
 	pkgver = 0.7.2
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = mcpppp
 	source = https://github.com/supsm/MCPPPP/archive/refs/tags/0.7.2.tar.gz
 	sha256sums = d09a165ade10508ac9926a74d84ddc7e5e7ef347c5044eb3bfa8bcf854046000
 
-pkgname = mcpppp
+pkgname = mcpppp-gui
