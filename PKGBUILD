@@ -1,25 +1,39 @@
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby
 pkgver=1.0.181
-pkgrel=1
-pkgdesc="A terminal for a modern age"
-arch=("x86_64")
-url="https://github.com/Eugeny/tabby#readme"
-license=("MIT")
-provides=("tabby")
-depends=(
-    "gnome-keyring"
-    "libsecret"
-)
-source=(
-    "tabby-${pkgver}-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v${pkgver}/tabby-${pkgver}-linux-x64.pacman"
-)
-sha256sums=(
-    "7e4feec0ee596957c0e4fc5621cd6e0978440b581e856d8e1f3ffcae806cd59d"
-)
+pkgrel=2
+pkgdesc="A terminal for a more modern age"
+arch=('x86_64')
+url="https://eugeny.github.io/terminus/"
+license=('MIT')
+conflicts=('terminus-terminal')
+replaces=('terminus-terminal')
+depends=('glib2' 'gtk3' 'nss' 'libxcrypt-compat')
+makedepends=('git' 'npm' 'yarn' 'python' 'nodejs-lts-gallium' 'cmake' 'node-gyp')
+source=("git+https://github.com/Eugeny/tabby.git#tag=v$pkgver")
+sha256sums=('SKIP')
+
+build(){
+  cd "$srcdir/$pkgname/"
+  export ARCH=x86_64
+  yarn install
+  ./scripts/install-deps.js
+  yarn run build
+  ./scripts/build-native.js
+  ./node_modules/.bin/electron-builder --linux deb
+}
 
 package() {
-    cd ${srcdir}
-    tar -xvf tabby-${pkgver}-linux.pacman -C ${pkgdir}
-    # Remove exsiting files
-    rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
+  cd "$srcdir/$pkgname/dist/"
+  ar x *.deb
+  tar -xf data.tar.xz
+  cp -r usr/ "$pkgdir"
+  cp -r opt/ "$pkgdir"
+
+ install -Dm755 /dev/stdin "$pkgdir"/usr/bin/"$pkgname" <<END
+  #!/usr/bin/bash
+  /opt/Tabby/tabby
+
+END
+
 }

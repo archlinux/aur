@@ -1,14 +1,24 @@
 pkgbase = tabby
-	pkgdesc = A terminal for a modern age
+	pkgdesc = A terminal for a more modern age
 	pkgver = 1.0.181
-	pkgrel = 1
-	url = https://github.com/Eugeny/tabby#readme
+	pkgrel = 2
+	url = https://eugeny.github.io/terminus/
 	arch = x86_64
 	license = MIT
-	depends = gnome-keyring
-	depends = libsecret
-	provides = tabby
-	source = tabby-1.0.181-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v1.0.181/tabby-1.0.181-linux-x64.pacman
-	sha256sums = 7e4feec0ee596957c0e4fc5621cd6e0978440b581e856d8e1f3ffcae806cd59d
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = python
+	makedepends = nodejs-lts-gallium
+	makedepends = cmake
+	makedepends = node-gyp
+	depends = glib2
+	depends = gtk3
+	depends = nss
+	depends = libxcrypt-compat
+	conflicts = terminus-terminal
+	replaces = terminus-terminal
+	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.181
+	sha256sums = SKIP
 
 pkgname = tabby
