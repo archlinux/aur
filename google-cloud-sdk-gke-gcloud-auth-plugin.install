@@ -19,6 +19,10 @@ post_install() {
     echo ""
 }
 
+post_upgrade() {
+    post_install
+}
+
 # Pacman-like colors
 reset="$(tput sgr0)"
 bold="${reset}$(tput bold)"
