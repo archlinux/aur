@@ -14,15 +14,7 @@ license=('AGPL3')
 source=("$pkgname::git+https://git.rustybever.be/vieter-v/vieter#tag=${pkgver//_/-}")
 md5sums=('SKIP')
 
-prepare() {
-    export VMODULES="$srcdir/.vmodules"
-
-    cd "$pkgname/src" && v install
-}
-
 build() {
-    export VMODULES="$srcdir/.vmodules"
-
     cd "$pkgname"
 
     make prod
