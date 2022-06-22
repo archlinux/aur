@@ -1,5 +1,5 @@
 pkgbase = ghost-git
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/z3oxs/ghost.git
 	arch = x86_64
