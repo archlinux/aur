@@ -1,0 +1,12 @@
+pkgbase = netctl2qr
+	pkgdesc = Outputs QR codes from netctl Wi-Fi profiles
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Denton-L/netctl2qr
+	arch = any
+	license = GPL2
+	depends = python-qrcode
+	source = https://github.com/Denton-L/netctl2qr/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 51b261d90e67ebcea06aca0bbf9c99010cd0be39d0535bf883f49d425a08d24f
+
+pkgname = netctl2qr
