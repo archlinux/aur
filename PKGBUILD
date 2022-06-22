@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2241.924b92f6
+pkgver=r2259.ed990b29
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -21,20 +21,23 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname}/"
+    # Fetch submodules (such as Crunch and Daemonmap, they are compiled when present)
+    git submodule update --init --recursive
+}
+
 build() {
     cd "${srcdir}/${pkgname}/"
     
     # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/156
     export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
-    # Fetch submodules by default (such as Crunch and Daemonmap, they are compiled if present)
-    git submodule update --init --recursive
-    
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
     # For example, to only fetch Xonotic and Unvanquished gamepacks,
     # use -DGAMEPACKS_LICENSE_LIST=none with -DGAMEPACKS_NAME_LIST="Xonotic Unvanquished".
-    # Please refer to the NetRadiant README for more instructions.
+    # Please refer to the NetRadiant documentation for more instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE="GLVND" \
