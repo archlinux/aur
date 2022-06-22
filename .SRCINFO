@@ -16,6 +16,7 @@ pkgbase = bricscad-cn
 	depends = libxcrypt-compat
 	depends = glu
 	depends = libffi6
+	provides = bricscad
 	options = !strip
 	source = manual://BricsCAD-V22.1.06-1-zh_CN.x86_64.rpm
 	sha256sums = 74bdffb3ed421eb5e547f1641bafb0de9d5ac8add78c56e214f7f0973e16833a

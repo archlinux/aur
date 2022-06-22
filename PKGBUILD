@@ -1,3 +1,5 @@
+# Maintainer: William Tang <galaxyking0419@gmail.com>
+
 pkgname=bricscad-cn
 pkgver=22.1.06
 pkgrel=1
@@ -6,6 +8,7 @@ arch=('x86_64')
 url='https://www.bricsys.com/'
 license=('custom')
 depends=('qt5-gamepad' 'qt5-3d' 'qt5-wayland' 'qt5-serialport' 'qt5-location' 'openmotif' 'webkit2gtk' 'libxcrypt-compat' 'glu' 'libffi6')
+provides=('bricscad')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://BricsCAD-V${pkgver}-1-zh_CN.x86_64.rpm")
