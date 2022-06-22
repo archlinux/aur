@@ -1,7 +1,7 @@
 pkgbase = serioussam-vk
-	pkgdesc = A game engine developed by Croteam for the classic Serious Sam games.
+	pkgdesc = Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification.
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamClassic-VK
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = serioussam-vk
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
 	source = https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v1.10.2.tar.gz
-	sha512sums = SKIP
+	sha512sums = 09415fd717847c57da9d375262f05e541585e674593f9c62fb6bc406e3e3910a
 
 pkgname = serioussam-vk
 

@@ -2,3 +2,9 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!serioussam.install
+!serioussam.xpm
+!serioussam-tfe.sh
+!serioussam-tse.sh
+!serioussam-tse.desktop
+!serioussam-tse.desktop
