@@ -1,6 +1,6 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
-	pkgver = 1.46.1
+	pkgver = 1.47.1
 	pkgrel = 1
 	url = http://plex.tv
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = plex-desktop
 	depends = ffmpeg4.4
 	optdepends = qt5-wayland: Wayland support
 	optdepends = libva: GPU accelerated decoding
-	source = https://api.snapcraft.io/api/v1/snaps/download/qc6MFRM433ZhI1XjVzErdHivhSOhlpf0_9.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/qc6MFRM433ZhI1XjVzErdHivhSOhlpf0_10.snap
 	source = qt.conf
-	sha256sums = 5069a4df02181c2c5b2071aa1759dfffd51b0e7252116bd2b944e23992aaca4a
+	sha256sums = 01b816bc4ec14e2735abfe37964df4ee6643e5368059ed0b378f5af62ad4004e
 	sha256sums = 40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083
 
 pkgname = plex-desktop
