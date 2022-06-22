@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r1800.359f558
+pkgver=r1810.da11fad
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
@@ -13,9 +13,6 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/davidgiven/fluxengine.git')
 sha256sums=('SKIP')
 
-# Because the build system is a bit idiosyncratic, and there is no install target.
-_targets=(fluxengine fluxengine-gui brother120tool brother240tool upgrade-flux-file)
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -24,7 +21,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	# Make all depends on tests, but we want to run them in check() instead.
-	make "${_targets[@]}"
+	make binaries
 }
 
 check() {
@@ -34,14 +31,7 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir/usr/bin/"
-
-	local target
-	for target in "${_targets[@]}"; do
-		install "${target}" "$pkgdir/usr/bin/${target}"
-	done
-
+	make install PREFIX=/usr DESTDIR="$pkgdir/"
 	install -Dm 644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING.md"
-
 	# Installing docs is not yet supported in a reasonable way by upstream.
 }
