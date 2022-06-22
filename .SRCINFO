@@ -1,7 +1,7 @@
 pkgbase = brim
 	pkgdesc = Desktop application to efficiently search and analyze super-structured data. Powered by Zed.
-	pkgver = 0.29.0
-	pkgrel = 2
+	pkgver = 0.30.0
+	pkgrel = 4
 	url = https://www.brimsecurity.com/download/
 	arch = x86_64
 	license = custom
@@ -16,10 +16,10 @@ pkgbase = brim
 	optdepends = lsb-release
 	optdepends = libgnome-keyring
 	optdepends = pulseaudio
-	noextract = brim-0.29.0.deb
-	source = https://github.com/brimdata/brim/releases/download/v0.29.0/brim-0.29.0.deb
-	source = https://raw.githubusercontent.com/brimdata/brim/v0.29.0/LICENSE.txt
-	sha256sums = 70f8cd660cf3f52c95af634edd957435f88ed22fe3c47af9bf87c09139f3e423
+	noextract = brim-0.30.0.deb
+	source = https://github.com/brimdata/brim/releases/download/v0.30.0/brim-0.30.0.deb
+	source = https://raw.githubusercontent.com/brimdata/brim/v0.30.0/LICENSE.txt
+	sha256sums = b0ddf0dccf43b553d08be1deed95d926bd8aeaf287a5dcfd3c9acaa0d8eb189a
 	sha256sums = a8b360eb5a0cf91c98f39fd4259d09263d883222a8be42b0ee77ad80937e86ac
 
 pkgname = brim
