@@ -17,8 +17,10 @@ pkgbase = bricscad
 	depends = glu
 	depends = libffi6
 	depends = alsa-lib
+	optdepends = bricscad-communicator>=22: Addtional import/export file format support
+	conflicts = bricscad-cn
 	options = !strip
-	source = manual://BricsCAD-V22.2.05-1-en_US.x86_64.rpm
-	sha256sums = 26bc444be260f00719757ad82861cc8da2c6d71fdc43605c7a07faa840c205fc
+	source = manual://BricsCAD-V22.2.05-1-en_US-amd64.deb
+	sha256sums = 018dd04a132fcc5db33a37519680e6bb7b577f0e66949a9666034b804951ae32
 
 pkgname = bricscad
