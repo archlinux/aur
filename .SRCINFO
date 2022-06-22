@@ -1,7 +1,7 @@
 pkgbase = python2-jinja
 	pkgdesc = A simple pythonic template language written in Python
 	pkgver = 2.11.3
-	pkgrel = 1
+	pkgrel = 5
 	url = https://palletsprojects.com/p/jinja/
 	arch = any
 	license = BSD
