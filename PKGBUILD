@@ -8,7 +8,7 @@ arch=('any')
 url='https://git.minetest.land/MineClone2/MineClone2'
 license=('GPL3')
 depends=('minetest-common')
-source=("mineclone2-$pkgver.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/${pkgver}.tar.gz")
+source=("mineclone2-$pkgver.tar.gz::https://git.minetest.land/MineClone2/MineClone2/archive/${pkgver}.tar.gz")
 sha256sums=('10b90dc8e62aa29cc76897f778463c2e26bee3ce9c00b1b0c0f61f974db81dc4')
 
 package() {
