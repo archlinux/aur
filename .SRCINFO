@@ -1,0 +1,15 @@
+pkgbase = bricscad-communicator
+	pkgdesc = High-fidelity 3D CAD import and export plugin for BricsCAD
+	pkgver = 22.2.02
+	pkgrel = 1
+	url = https://www.bricsys.com/communicator
+	arch = x86_64
+	license = custom
+	depends = bricscad>=22
+	depends = libjpeg6-turbo
+	depends = libtool
+	options = !strip
+	source = manual://BricsCAD-Communicator-V22.2.02-1-amd64.deb
+	sha256sums = a21fcaeb99af2e7deda07274c2e496af6e1a1f2c4615619f2e9fb9b1328a244e
+
+pkgname = bricscad-communicator
