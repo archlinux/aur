@@ -11,7 +11,7 @@ source=("${pkgname}"'::git+https://gitlab.com/sjohannes/gdmap.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/pnputils"
+  cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's#.*/##; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
