@@ -1,6 +1,6 @@
 pkgbase = wayfire-git
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.7.2.r191.g9458f589
+	pkgver = 0.7.3.r207.g5dbf0d0f
 	pkgrel = 1
 	url = https://github.com/WayfireWM/wayfire
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = wayfire-git
 	depends = doctest
 	depends = freetype2
 	depends = glm
+	depends = nlohmann-json
 	depends = libdrm
 	depends = libevdev
 	depends = libglvnd
