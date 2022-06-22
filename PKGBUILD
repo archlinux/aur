@@ -8,11 +8,11 @@ url="https://gitlab.com/NH000/wallo"
 license=("GPL3")
 depends=("bash" "coreutils" "gettext" "util-linux" "gawk" "xdg-utils" "imagemagick")
 makedepends=("git")
-source=("$pkgname::git+$url#tag=f53c2df9f7aba2169d2798c0ce3e74e96d578639")
+source=("git+$url#tag=f53c2df9f7aba2169d2798c0ce3e74e96d578639")
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D "wallo.sh" "$pkgdir/usr/bin/wallo"
     sed -i '20s/$/"\/usr\/share\/locale"/' "$pkgdir/usr/bin/wallo"
