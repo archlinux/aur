@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.18.5
+	pkgver = 5.18.6
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.18.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.18.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.18.5.xz
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.18.2-1157
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.18.6.xz
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.18.5-1158
 	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
 	source = 0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-5.18.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch
 	source = 0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c34b1963769d0e119a41de1ddf0fa5901019bcfc/linux-5.18.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch
@@ -23,7 +23,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee
 	sha256sums = SKIP
-	sha256sums = fb0c52d5628f332ffe10ebaa1419c7518198f4ffe757e39c9a80229b480a36ca
+	sha256sums = e82bb2d4fc7da3cfdaec1ba3e1c03591b0a29a51f01477f977ba9bb71bad49fa
 	sha256sums = SKIP
 	sha256sums = 5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c
 	sha256sums = c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197
