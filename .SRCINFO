@@ -1,6 +1,6 @@
 pkgbase = python-statusof
 	pkgdesc = Small python script to check the status of a list of urls.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Arthurdw/statusof
 	arch = x86_64

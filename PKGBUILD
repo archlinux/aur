@@ -1,6 +1,6 @@
 # Maintainer: Arthurdw <contact@arthurdw.com>
 pkgname=python-statusof
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Small python script to check the status of a list of urls."
 arch=(x86_64 i686)
