@@ -7,7 +7,7 @@ language designed to build optimal, maintainable, reliable and efficient softwar
 url='https://github.com/hascal/hascal'
 arch=('i686' 'x86_64')
 pkgrel=1
-pkgver=v1.3.9.rc.2.r14.g27efa8a
+pkgver=v1.3.9.rc.2.r27.g3270b2b
 license=('MIT')
 depends=('gcc' 'python' 'python-wheel' 'python-colorama' 'python-requests' )
 makedepends=('git' 'pyinstaller')
@@ -21,12 +21,20 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build(){
+	cd "$srcdir/$_gitname"
+	make build
+}
+
 package() {
 
-    cd "$srcdir/$_gitname"
-
     install -d "${pkgdir}/usr/share/licenses/${_gitname}"
-    install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+    install -d "${pkgdir}/opt/${_gitname}"
+    install -d "${pkgdir}/usr/bin"
 
-    pyinstaller --add-data src/hlib:hlib "src/hascal.py" --name "hascal" --noconfirm --onefile --console
+    install -m644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+
+    cp -r "${srcdir}/${_gitname}/dist/"* "${pkgdir}/opt/${_gitname}" -R
+    echo "#!/usr/bin/bash\n/opt/hascal/hascal" > "${pkgdir}/usr/bin/${_gitname}"  
+    chmod 644 "${pkgdir}/usr/bin/${_gitname}"
 }
