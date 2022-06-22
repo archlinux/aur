@@ -1,6 +1,6 @@
 pkgbase = dynarmic-git
 	pkgdesc = An ARM dynamic recompiler
-	pkgver = 5.r220.g11d12d0b
+	pkgver = 6.0.0.r4.g7f848707
 	pkgrel = 1
 	url = https://github.com/merryhime/dynarmic
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dynarmic-git
 	makedepends = xbyak>=6.60.1
 	makedepends = zydis>=3.1
 	makedepends = zydis<4
-	provides = dynarmic=5.r220.g11d12d0b
+	provides = dynarmic=6.0.0.r4.g7f848707
 	provides = libdynarmic.so
 	conflicts = dynarmic
 	source = dynarmic::git+https://github.com/merryhime/dynarmic.git
