@@ -22,8 +22,8 @@ build() {
     --exec-prefix=/usr \
     --target=$_target \
     --build=$_target \
-    CFLAGS=-m32 \
-    --enable-wrapper=all
+    --enable-wrapper=all \
+    CFLAGS="-m32 -ffat-lto-objects"
   make
 }
 
