@@ -9,7 +9,7 @@ pkgbase = tttt
 	makedepends = coreutils
 	depends = libutf8proc
 	depends = gettext
-	source = tttt::git+https://gitlab.com/NH000/tttt#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8
+	source = git+https://gitlab.com/NH000/tttt#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8
 	sha256sums = SKIP
 
 pkgname = tttt

@@ -8,16 +8,16 @@ url="https://gitlab.com/NH000/tttt"
 license=("GPL3")
 depends=("libutf8proc" "gettext")
 makedepends=("git" "coreutils")
-source=("$pkgname::git+$url#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8")
+source=("git+$url#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8")
 sha256sums=("SKIP")
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D -t "$pkgdir/usr/bin" "tttt"
 
