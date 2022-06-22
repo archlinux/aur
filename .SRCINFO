@@ -7,6 +7,8 @@ pkgbase = sharik-bin
 	license = MIT
 	depends = gtk3
 	source = https://github.com/marchellodev/sharik/releases/download/v3.1/sharik_v3.1_linux.deb
+	source = https://raw.githubusercontent.com/marchellodev/sharik/master/assets/logo.svg
 	sha256sums = 0eacc28d2dc98e0ae9d400aa80d0df412c3b66225b8e624da047c548bb279713
+	sha256sums = f03612a7314738d9dd84523da4e7198e4bf9f83100df1879e0c3cb0425201275
 
 pkgname = sharik-bin
