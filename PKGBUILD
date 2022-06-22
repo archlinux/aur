@@ -1,17 +1,17 @@
-# Maintainer: Anthony Wang <ta180m@gmail.com>
+# Maintainer: Anthony Wang <ta180m@proton.me>
 pkgname=2048-py
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="2048 written in Python by the Ladue High School Computer Science Club"
 arch=('any')
-url="https://github.com/Ta180m/2048"
+url="https://codeberg.org/LadueCS/2048"
 license=('GPL')
 depends=('python' 'python-termcolor')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Ta180m/2048/archive/v$pkgver.tar.gz")
-sha256sums=('953f062b62871e3ce4e2b6de8dab02739bcea6596922c68d8bb48d416354bc35')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('de3b6ff0635e157f820d2a566867e166a2b3726e3a53476ef25980187e723870')
 
 
 package() {
-   cd "${srcdir}/2048-$pkgver"
+   cd "${srcdir}/2048"
    make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
