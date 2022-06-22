@@ -1,0 +1,22 @@
+pkgbase = meshtastic-python
+	pkgdesc = Python CLI and API for talking to Meshtastic devices
+	pkgver = 1.2.95
+	pkgrel = 1
+	url = https://github.com/meshtastic/Meshtastic-python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pyserial
+	depends = python-protobuf
+	depends = python-pypubsub
+	depends = python-dotmap
+	depends = python-pexpect
+	depends = python-pyqrcode
+	depends = python-tabulate
+	depends = python-timeago
+	depends = python-pyyaml
+	depends = python-pygatt
+	source = https://github.com/meshtastic/Meshtastic-python/archive/refs/tags/1.2.95.tar.gz
+	sha256sums = 33f9db851b18ced44244393e2eca98f877edc351bdc80db198de0c5caf1ffe85
+
+pkgname = meshtastic-python
