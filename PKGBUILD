@@ -2,20 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-github'
-pkgver='0.47'
+pkgver='0.48'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-load>=0' 'perl-dist-zilla>=0' 'perl-git-wrapper>=0' 'perl-io-socket-ssl>=1.56' 'perl-json-maybexs>=0' 'perl-moose>=0' 'perl-net-ssleay>=1.49' 'perl-path-tiny>=0' 'perl-try-tiny>=0' 'perl>=5.006')
-makedepends=()
-checkdepends=('perl-test-deep>=0' 'perl-test-deep-json>=0' 'perl-test-fatal>=0')
+depends=('perl-class-load' 'perl-dist-zilla' 'perl-git-wrapper' 'perl-io-socket-ssl' 'perl-json-maybexs' 'perl-moose' 'perl-net-ssleay' 'perl-path-tiny' 'perl-try-tiny' 'perl')
+checkdepends=('perl-test-deep' 'perl-test-deep-json' 'perl-test-fatal')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-GitHub'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-GitHub-0.47.tar.gz')
-md5sums=('a77e2dd6d70bdf00bf90bc622c7a92d1')
-sha512sums=('afa08e608245b6b3989566c7bca555fa57d63bc3c3e0b1c7a576da6ec9905f8f0ea79d2f1bb1552980adea4ab4e784e7283990079f94acff63df724834b36fb8')
-_distdir="Dist-Zilla-Plugin-GitHub-0.47"
+source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-GitHub-0.48.tar.gz')
+md5sums=('0c9d8dc40a5c991231ce3b74616cfdf2')
+sha512sums=('78f488ae6c8e7f0fcb7905c5838dea245a9aec1b926a356e3bed82ec1239a9ccb5ad1624fc9ec8b56f80c462c26057f53198d7ef40b637b770b48337b5f7e433')
+_distdir="Dist-Zilla-Plugin-GitHub-0.48"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
