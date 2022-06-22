@@ -37,6 +37,7 @@ build() {
     # Please refer to the NetRadiant README for more instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
+    -DOpenGL_GL_PREFERENCE="GLVND" \
     -DFHS_INSTALL=ON \
     -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
     -DDOWNLOAD_GAMEPACKS=ON \
