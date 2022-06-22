@@ -2,7 +2,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-text-balanced'
-pkgver='2.05'
+pkgver='2.06'
 pkgrel='1'
 pkgdesc="Extract delimited text sequences from strings"
 arch=('any')
@@ -10,9 +10,9 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 url='http://search.cpan.org/dist/Text-Balanced'
-source=('https://cpan.metacpan.org/authors/id/S/SH/SHAY/Text-Balanced-2.05.tar.gz')
-sha256sums=('3a6f3fbcc6cb5406964b2e332688bae3c2595436d03ddb25ee6703a47a98977d')
-_distdir="Text-Balanced-2.05"
+source=(https://cpan.metacpan.org/authors/id/S/SH/SHAY/Text-Balanced-$pkgver.tar.gz)
+sha256sums=('773e0f0f21c0cb2cf664cee6ba28ff70259babcc892f9b650f9cbda00be092ad')
+_distdir="Text-Balanced-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

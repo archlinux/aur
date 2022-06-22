@@ -1,6 +1,6 @@
 pkgbase = perl-text-balanced
 	pkgdesc = Extract delimited text sequences from strings
-	pkgver = 2.05
+	pkgver = 2.06
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Text-Balanced
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-text-balanced
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SH/SHAY/Text-Balanced-2.05.tar.gz
-	sha256sums = 3a6f3fbcc6cb5406964b2e332688bae3c2595436d03ddb25ee6703a47a98977d
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHAY/Text-Balanced-2.06.tar.gz
+	sha256sums = 773e0f0f21c0cb2cf664cee6ba28ff70259babcc892f9b650f9cbda00be092ad
 
 pkgname = perl-text-balanced
