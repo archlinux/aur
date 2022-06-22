@@ -1,0 +1,4 @@
+*.pkg.*
+pkg/
+src/
+vim-papercolor-git/

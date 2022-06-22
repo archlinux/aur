@@ -1,0 +1,14 @@
+pkgbase = vim-papercolor-git
+	pkgdesc = PaperColor color scheme for vim
+	pkgver = 1.0.r38.g9051480
+	pkgrel = 1
+	url = https://github.com/NLKNguyen/papercolor-theme
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = vim-papercolor-git::git+https://github.com/NLKNguyen/papercolor-theme.git
+	sha256sums = SKIP
+
+pkgname = vim-papercolor-git
