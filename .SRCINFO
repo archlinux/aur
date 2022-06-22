@@ -19,6 +19,7 @@ pkgbase = netradiant-git
 	depends = gtkglext
 	depends = minizip
 	depends = libjpeg-turbo
+	depends = libglvnd
 	depends = libwebp
 	provides = netradiant
 	provides = q3map2
