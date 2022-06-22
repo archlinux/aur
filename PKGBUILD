@@ -31,8 +31,14 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o "${pkgname%-*}" .
+    go build \
+        -o "${pkgname%-*}" \
+        -trimpath \
+        -buildmode='pie' \
+        -mod='readonly' \
+        -modcacherw \
+        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+        .
 }
 
 package() {
