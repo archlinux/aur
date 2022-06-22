@@ -1,0 +1,15 @@
+pkgbase = wrash
+	pkgdesc = A minimalistic command wrapper shell
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/joshmeranda/wrash
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = wrash
+	conflicts = wrash
+	source = wrash-0.1.5::https://github.com/joshmeranda/wrash/archive/refs/tags/0.1.5.tar.gz
+	md5sums = SKIP
+
+pkgname = wrash
