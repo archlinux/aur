@@ -1,13 +1,13 @@
 pkgbase = python2-twisted
 	pkgdesc = Asynchronous networking framework written in Python (20.3.0 is the last version supporting Python 2)
 	pkgver = 20.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://twistedmatrix.com/
 	arch = x86_64
 	license = MIT
+	makedepends = python2-setuptools
 	depends = python-twisted
 	depends = python2-zope-interface
-	depends = python2-setuptools
 	depends = python2-service-identity
 	depends = python2-incremental
 	depends = python2-constantly
@@ -29,4 +29,3 @@ pkgbase = python2-twisted
 	sha512sums = 72307a0b9165d5f6b31f5563f4f76f9c759349d55f6dcaf43358eab3e8f1b2065e0b12c8ac43f14061ee17cb2d9b27f463bcb9e642750fb8e6e510e403bd2b06
 
 pkgname = python2-twisted
-

@@ -2,14 +2,15 @@
 pkgname=python2-twisted
 # Do not update. This is the last twisted version supporting Python2.
 pkgver=20.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Asynchronous networking framework written in Python (20.3.0 is the last version supporting Python 2)"
 arch=('x86_64')
 url="https://twistedmatrix.com/"
 license=('MIT')
-depends=('python-twisted' 'python2-zope-interface' 'python2-setuptools' 'python2-service-identity'
+depends=('python-twisted' 'python2-zope-interface' 'python2-service-identity'
          'python2-incremental' 'python2-constantly' 'python2-automat' 'python2-hyperlink'
          'python2-attrs' 'python2-pyhamcrest')
+makedepends=('python2-setuptools')
 optdepends=('python2-pyopenssl: for TLS client hostname verification'
             'python2-idna: for TLS client hostname verification'
             'python2-cryptography: for using conch'
