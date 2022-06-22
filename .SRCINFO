@@ -1,17 +1,15 @@
 pkgbase = airpad
 	pkgdesc = Basic GUI text editor
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/airpad
 	arch = x86_64
 	license = GPL3
-	makedepends = make
-	makedepends = gcc
-	makedepends = pkgconf
+	makedepends = git
 	makedepends = coreutils
 	depends = gtk3
 	depends = gettext
-	source = airpad-1.0::git+https://gitlab.com/NH000/airpad#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0
+	source = airpad::git+https://gitlab.com/NH000/airpad#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0
 	sha256sums = SKIP
 
 pkgname = airpad
