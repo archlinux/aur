@@ -4,7 +4,7 @@ project(
     'c',
     'cpp',
   ],
-  version: '21.07',
+  version: '22.00',
   default_options: [
     'warning_level=2',
     'werror=true',

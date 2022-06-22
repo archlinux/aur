@@ -2,7 +2,7 @@
 
 pkgname=7-zip
 pkgver=22.00
-pkgrel=1
+pkgrel=2
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=('LGPL' 'BSD' 'custom:unRAR')
@@ -13,7 +13,7 @@ source=(https://7-zip.org/a/7z2200-src.tar.xz
 		meson.build)
 sha256sums=('40969f601e86aff49aaa0ba0df5ce6fd397cf7e2683a84b591b0081e461ef675'
             'e4d34366e091b8404dd04f02bcad46518d2930ec0b4a420e1316db020234b085'
-            'c88075d8eefec60166e1602e7356df477e946682c911ef4555b942505c245e5c')
+            'd1171dd766792cb9d927aed289a7c5bddbd328bf1bcbbf3ed74311abf1e24be5')
 
 prepare() {
 	patch -Np1 -i 01-gcc-12.patch
