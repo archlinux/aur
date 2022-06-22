@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=emmeans
-_pkgver=1.7.4-1
+_pkgver=1.7.5
 pkgname=r-${_pkgname,,}
-pkgver=1.7.4.1
-pkgrel=3
+pkgver=1.7.5
+pkgrel=1
 pkgdesc='Estimated Marginal Means, aka Least-Squares Means'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -57,7 +57,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7a33a2b54ad13d6e39ee6c58004f83a9edb06e8dc8282180440610eb18be721')
+sha256sums=('ba7e03bfa3127378ee347380c14d785fb85f0f4590bd454efc858e5d9623fe13')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

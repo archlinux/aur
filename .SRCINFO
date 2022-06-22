@@ -1,7 +1,7 @@
 pkgbase = r-emmeans
 	pkgdesc = Estimated Marginal Means, aka Least-Squares Means
-	pkgver = 1.7.4.1
-	pkgrel = 3
+	pkgver = 1.7.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=emmeans
 	arch = any
 	license = GPL
@@ -48,7 +48,7 @@ pkgbase = r-emmeans
 	optdepends = r-splines
 	optdepends = r-survival
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/emmeans_1.7.4-1.tar.gz
-	sha256sums = f7a33a2b54ad13d6e39ee6c58004f83a9edb06e8dc8282180440610eb18be721
+	source = https://cran.r-project.org/src/contrib/emmeans_1.7.5.tar.gz
+	sha256sums = ba7e03bfa3127378ee347380c14d785fb85f0f4590bd454efc858e5d9623fe13
 
 pkgname = r-emmeans
