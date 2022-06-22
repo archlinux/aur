@@ -1,6 +1,6 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=mabel
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fancy BitTorrent client for the terminal"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=()
 source=("https://github.com/smmr-software/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('df09ffd7867cc1af020ad5bb9a34240c48ec938a60b837c44c536a5217ed0ec7')
+sha256sums=('06bac22e3ce1b00dce2f7d88d38b28bd794b57b11413291c4d9b1b861b915ab5')
 build() {
 	cd "${pkgname}-${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
