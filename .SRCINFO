@@ -1,6 +1,6 @@
 pkgbase = mcpppp
 	pkgdesc = Converter for minecraft resourcepacks
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/supsm/MCPPPP
 	arch = x86_64
