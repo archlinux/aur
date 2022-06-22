@@ -8,33 +8,32 @@
 # Contributor: Wael Nasreddine <wael.nasreddine@gmail.com>
 
 pkgname=git-crypt-git
-pkgver=0.6.0_0_g546664f
-pkgrel=2
+pkgver=0.7.0_1_g08dbdcf
+pkgrel=1
 _branch=master
-pkgdesc="Transparent file encryption in Git"
-arch=('x86_64')
+pkgdesc='Transparent file encryption in Git'
+arch=(x86_64)
 url="https://www.agwa.name/projects/${pkgname%-git}/"
-license=('GPL3')
-makedepends=('git' 'libxslt')
-depends=('git' 'openssl')
+license=(GPL3)
+depends=(git
+         openssl)
+makedepends=(libxslt)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/AGWA/${pkgname%-git}.git#branch=$_branch")
+source=("git+https://github.com/AGWA/${pkgname%-git}.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/-/_/g'
+	cd "${pkgname%-git}"
+	git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
 build() {
-    cd "${pkgname%-git}"
-
-    make ENABLE_MAN=yes PREFIX=/usr
+	cd "${pkgname%-git}"
+	make ENABLE_MAN=yes PREFIX=/usr
 }
 
 package() {
-    cd "${pkgname%-git}"
-
-    make ENABLE_MAN=yes PREFIX=/usr DESTDIR="$pkgdir" install
+	cd "${pkgname%-git}"
+	make ENABLE_MAN=yes PREFIX=/usr DESTDIR="$pkgdir" install
 }
