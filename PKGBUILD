@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-class-c3-adopt-next'
-pkgver='0.13'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="make NEXT suck less"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-list-moreutils' 'perl-mro-compat')
-makedepends=('perl-test-exception>=0.27')
+depends=('perl-mro-compat')
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-exception')
 url='http://search.cpan.org/dist/Class-C3-Adopt-NEXT'
-source=('http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Class-C3-Adopt-NEXT-0.13.tar.gz')
-md5sums=('4b4a59b5004ab7e715315e3131773e04')
-sha512sums=('9a31e489a5451d12a63e88b370c88ec4cccda66d5554841fcc2e4dfa3cb476bc2a6a943772d34f1781342e961029bd0187e9ce5a356711e81d1522560d049c6a')
-_distdir="Class-C3-Adopt-NEXT-0.13"
+source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-C3-Adopt-NEXT-0.14.tar.gz')
+sha256sums=('85676225aadb76e8666a6abe2e0659d40eb4581ad6385b170eea4e1d6bf34bf7')
+_distdir="Class-C3-Adopt-NEXT-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +42,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
