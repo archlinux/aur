@@ -1,3 +1,4 @@
+
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: aksr <aksr at t-com dot me>
 
@@ -8,6 +9,7 @@ pkgdesc='An APL-like calculator.'
 arch=('i686' 'x86_64')
 url='https://github.com/robpike/ivy'
 license=('BSD')
+depends=('glibc')
 makedepends=('git' 'go>=1.5')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
