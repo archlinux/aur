@@ -2,7 +2,7 @@
 
 pkgname=archuseriso
 pkgver=0.6.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Build desktop iso images, create bootable usb drives, install on usb drives."
 arch=('any')
 url="https://github.com/laurent85v/archuseriso"
