@@ -8,7 +8,7 @@ pkgbase = osa
 	makedepends = git
 	makedepends = coreutils
 	depends = gettext
-	source = osa::git+https://gitlab.com/NH000/osa#tag=2633c890e535c793460452279e48fc00365f68b7
+	source = git+https://gitlab.com/NH000/osa#tag=2633c890e535c793460452279e48fc00365f68b7
 	sha256sums = SKIP
 
 pkgname = osa

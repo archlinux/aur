@@ -8,16 +8,16 @@ url="https://gitlab.com/NH000/osa"
 license=("GPL3")
 depends=("gettext")
 makedepends=("git" "coreutils")
-source=("$pkgname::git+$url#tag=2633c890e535c793460452279e48fc00365f68b7")
+source=("git+$url#tag=2633c890e535c793460452279e48fc00365f68b7")
 sha256sums=("SKIP")
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D -t "$pkgdir/usr/bin" "osa"
 
