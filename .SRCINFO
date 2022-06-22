@@ -1,11 +1,11 @@
 pkgbase = wallo
 	pkgdesc = Wallpaper Organizer
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/wallo
 	arch = any
 	license = GPL3
-	makedepends = sed
+	makedepends = git
 	depends = bash
 	depends = coreutils
 	depends = gettext
@@ -13,7 +13,7 @@ pkgbase = wallo
 	depends = gawk
 	depends = xdg-utils
 	depends = imagemagick
-	source = wallo-1.0::git+https://gitlab.com/NH000/wallo#tag=f53c2df9f7aba2169d2798c0ce3e74e96d578639
+	source = wallo::git+https://gitlab.com/NH000/wallo#tag=f53c2df9f7aba2169d2798c0ce3e74e96d578639
 	sha256sums = SKIP
 
 pkgname = wallo
