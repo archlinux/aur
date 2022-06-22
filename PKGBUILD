@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@collabora.com>
 
 pkgname=i386-musl
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Lightweight implementation of C standard library (i386)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 options=('staticlibs' '!buildflags')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
 source=(https://www.musl-libc.org/releases/musl-$pkgver.tar.gz{,.asc})
-sha256sums=('9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
+sha256sums=('7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4'
             'SKIP')
 
 _target=i386

@@ -1,16 +1,16 @@
 pkgbase = i386-musl
 	pkgdesc = Lightweight implementation of C standard library (i386)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://www.musl-libc.org/
 	arch = x86_64
 	license = MIT
 	options = staticlibs
 	options = !buildflags
-	source = https://www.musl-libc.org/releases/musl-1.2.2.tar.gz
-	source = https://www.musl-libc.org/releases/musl-1.2.2.tar.gz.asc
+	source = https://www.musl-libc.org/releases/musl-1.2.3.tar.gz
+	source = https://www.musl-libc.org/releases/musl-1.2.3.tar.gz.asc
 	validpgpkeys = 836489290BB6B70F99FFDA0556BCDB593020450F
-	sha256sums = 9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd
+	sha256sums = 7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4
 	sha256sums = SKIP
 
 pkgname = i386-musl
