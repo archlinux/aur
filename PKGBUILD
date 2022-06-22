@@ -5,13 +5,13 @@ _pkg_arch=aarch64
 _android_arch=arm64-v8a
 _android_platform_arch=arch-arm64
 _pkgname=openssl
-_ver=1.1.1i
+_ver=1.1.1p
 _patchname=15-android_conf
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, $_pkg_arch)"
 arch=('any')
 url='https://www.openssl.org'
@@ -21,11 +21,9 @@ depends=('android-sdk' 'android-ndk')
 makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
-source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
-       "${_patchname}.patch")
-sha256sums=('e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242'
-            'SKIP'
-            '8ed3b78e8d6e5766595ae5ad6503cf0d21de4300d90aae556c7786f07ed9fdfb')
+source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc})
+sha256sums=('bf61b62aaa66c7c7639942a94de4c9ae8280c08f17d4eac2e44644d9fc8ace6f'
+            'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
@@ -34,17 +32,10 @@ build() {
   source android-env ${_pkg_arch}
   export PATH="${ANDROID_TOOLCHAIN}/bin:${PATH}"
 
-  # Configure configuration script for android that shipped with openssl
-  # 1.1.1i does not account for the removal of the $ndk/platforms directory in
-  # android-ndk r22.
-  patch -Np1 < "${srcdir}/${_patchname}.patch"
-
-  # don't use -mandroid flag (Clang as provided by the NDK does not like it)
-  sed -i -e 's/-mandroid//' Configurations/15-android.conf
-
   ./Configure \
     --prefix="${ANDROID_PREFIX}" \
     --openssldir="${ANDROID_PREFIX}" \
+    -U__ANDROID_API__ \
     -D__ANDROID_API__="${ANDROID_MINIMUM_PLATFORM}" \
     -Wl,--no-allow-shlib-undefined \
     -Wl,--no-undefined \
