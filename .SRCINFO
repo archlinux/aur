@@ -5,6 +5,7 @@ pkgbase = notekit
 	url = https://github.com/blackhole89/notekit
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = fontconfig
 	makedepends = appstream-glib
@@ -14,7 +15,7 @@ pkgbase = notekit
 	depends = gtksourceviewmm>=3.18
 	depends = jsoncpp
 	depends = zlib
-	source = https://github.com/blackhole89/notekit/archive/refs/tags/latest.zip
+	source = git+https://github.com/blackhole89/notekit.git#commit=5fa3ba90f14106c3c0f4f6db00abc2d555c57099
 	sha256sums = SKIP
 
 pkgname = notekit
