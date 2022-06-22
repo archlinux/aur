@@ -2,7 +2,7 @@
 # Contributor: lukpod <lukpod9@ya.ru>
 
 pkgname=electrum-ltc-git
-pkgver=4.3.0a0.git20220529.1742a2d
+pkgver=4.3.0a0.git20220622.a49eff6
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -82,6 +82,6 @@ check() {
 package() {
   cd ${pkgname%-git}
   ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 AUTHORS README.md RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

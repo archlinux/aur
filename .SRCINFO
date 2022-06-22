@@ -1,6 +1,6 @@
 pkgbase = electrum-ltc-git
 	pkgdesc = Litecoin thin client
-	pkgver = 4.3.0a0.git20220529.1742a2d
+	pkgver = 4.3.0a0.git20220622.a49eff6
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
