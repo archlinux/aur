@@ -1,6 +1,6 @@
-# Maintainer: hellosway hellosway@protonmail.com
+# Maintainer: Sharpened Blade sharpenedblade@proton.me
 pkgname=mcpppp
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Converter for minecraft resourcepacks"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MPL-2.0')
 conflicts=(mcpppp-git)
 makedepends=("cmake")
 source=(https://github.com/supsm/MCPPPP/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('0ae41326374e86ae4b0badf472ad2f741316d4600b43e6e7f6ade812efde77bf')
+sha256sums=('d09a165ade10508ac9926a74d84ddc7e5e7ef347c5044eb3bfa8bcf854046000')
 
 prepare() {
     cd "${pkgname^^}-$pkgver"

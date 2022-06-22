@@ -8,7 +8,7 @@ pkgbase = mcpppp
 	license = MPL-2.0
 	makedepends = cmake
 	conflicts = mcpppp-git
-	source = https://github.com/supsm/MCPPPP/archive/refs/tags/0.7.1.tar.gz
-	sha256sums = 0ae41326374e86ae4b0badf472ad2f741316d4600b43e6e7f6ade812efde77bf
+	source = https://github.com/supsm/MCPPPP/archive/refs/tags/0.7.2.tar.gz
+	sha256sums = d09a165ade10508ac9926a74d84ddc7e5e7ef347c5044eb3bfa8bcf854046000
 
 pkgname = mcpppp
