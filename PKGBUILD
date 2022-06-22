@@ -1,39 +1,54 @@
-# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Alexander Fasching <fasching.a91@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
-
 pkgname=python-projectq
-pkgver=0.5.1
+_name="ProjectQ"
+pkgver=0.7.3
 pkgrel=1
-pkgdesc='Open-source framework for quantum computing'
-arch=('i686' 'x86_64')
-url=https://projectq.ch
-license=(Apache)
-depends=(python
-         python-numpy
-         python-future
-         python-pytest
-         pybind11
-         python-requests
-         python-scipy
-         python-networkx)
-makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme python-matplotlib)
-source=(https://github.com/ProjectQ-Framework/ProjectQ/archive/v$pkgver.tar.gz)
-sha512sums=('832fd710e5097cf940f6125bc1e5b4f64a668a3ae53f522df2e970c4773f6b96b6c7711619aa3b9b2f190bea55d2687025889db97ee96a7af22fee777bcd4ade')
+pkgdesc="Open-source framework for quantum computing"
+arch=('x86_64')
+url="https://github.com/ProjectQ-Framework/ProjectQ"
+license=("Apache")
+depends=(
+    'python-matplotlib'
+    'python-networkx'
+    'python-numpy'
+    'python-requests'
+    'python-scipy'
+)
+makedepends=(
+    'git'
+    'pybind11'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-setuptools-scm'
+    'python-wheel'
+)
+checkdepends=('python-pytest')
+optdepends=('python-boto3: support for AWS Braket service')
+source=("${pkgname}::git+https://github.com/ProjectQ-Framework/${_name}.git#tag=v${pkgver}")
+b2sums=('SKIP')
 
 build() {
-  cd "$srcdir"/ProjectQ-$pkgver/docs
-  make html
+    cd "${srcdir}/${pkgname}"
+    python -m build --wheel --no-isolation
+}
 
-  cd "$srcdir"/ProjectQ-$pkgver
-  python setup.py build
+check() {
+    cd "${srcdir}/${pkgname}/projectq"
+    python -m installer --destdir="${srcdir}/test" ../dist/*.whl
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    export PYTHONPATH="${srcdir}"/test/usr/lib/python${python_version}/site-packages
+    python -m pytest tests/
 }
 
 package() {
-  cd "$srcdir"/ProjectQ-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -d "$pkgdir"/usr/share/doc/$pkgname
-  cp -r {docs/_build/html,examples} "$pkgdir"/usr/share/doc/$pkgname
-  find "$pkgdir"/usr/share/doc/$pkgname/examples -type f -exec chmod 644 {} +
-  install -Dm 644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
-  install -Dm 644 NOTICE "$pkgdir"/usr/share/doc/$pkgname/NOTICE
+    cd "${srcdir}/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -D -m644 NOTICE "${pkgdir}/usr/share/doc/${pkgname}/NOTICE"
+    cp -r examples "${pkgdir}/usr/share/doc/${pkgname}/"
+    chmod 644 "${pkgdir}/usr/share/doc/${pkgname}/examples/"*
 }

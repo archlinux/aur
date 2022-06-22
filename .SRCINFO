@@ -1,25 +1,25 @@
 pkgbase = python-projectq
 	pkgdesc = Open-source framework for quantum computing
-	pkgver = 0.5.1
+	pkgver = 0.7.3
 	pkgrel = 1
-	url = https://projectq.ch
-	arch = i686
+	url = https://github.com/ProjectQ-Framework/ProjectQ
 	arch = x86_64
 	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-matplotlib
-	depends = python
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-networkx
 	depends = python-numpy
-	depends = python-future
-	depends = python-pytest
-	depends = pybind11
 	depends = python-requests
 	depends = python-scipy
-	depends = python-networkx
-	source = https://github.com/ProjectQ-Framework/ProjectQ/archive/v0.5.1.tar.gz
-	sha512sums = 832fd710e5097cf940f6125bc1e5b4f64a668a3ae53f522df2e970c4773f6b96b6c7711619aa3b9b2f190bea55d2687025889db97ee96a7af22fee777bcd4ade
+	optdepends = python-boto3: support for AWS Braket service
+	source = python-projectq::git+https://github.com/ProjectQ-Framework/ProjectQ.git#tag=v0.7.3
+	b2sums = SKIP
 
 pkgname = python-projectq
-
