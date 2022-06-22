@@ -1,0 +1,68 @@
+Binary files pdisk-9-orig/cvt_pt and pdisk-9/cvt_pt differ
+Binary files pdisk-9-orig/cvt_pt.o and pdisk-9/cvt_pt.o differ
+diff -urNbB pdisk-9-orig/errors.c pdisk-9/errors.c
+--- pdisk-9-orig/errors.c	2010-03-06 08:09:50.000000000 +0900
++++ pdisk-9/errors.c	2022-06-22 21:39:55.959385243 +0900
+@@ -30,9 +30,7 @@
+ #include <errno.h>
+ 
+ // for exit()
+-#ifndef __linux__
+ #include <stdlib.h>
+-#endif
+ // for strrchr
+ #include <string.h>
+ 
+@@ -142,16 +140,17 @@
+     vfprintf(stderr, fmt, ap);
+     va_end(ap);
+ 
+-#if defined(__linux__) || defined(NeXT) || defined(__unix__)
++#if defined(__linux__)
++    if (value > 0) {
++	fprintf(stderr, "  (%s)", strerror(value));
++    }
++#elif defined(NeXT) || defined(__unix__)
+     if (value > 0 && value < sys_nerr) {
+-	fprintf(stderr, "  (%s)\n", sys_errlist[value]);
+-    } else {
+-	fprintf(stderr, "\n");
++	fprintf(stderr, "  (%s)", sys_errlist[value]);
+     }
+-#else
++#endif
+     fprintf(stderr, "\n");
+     printf("Processing stopped: Choose 'Quit' from the file menu to quit.\n\n");
+-#endif
+     exit(value);
+ }
+ 
+@@ -171,13 +170,14 @@
+     vfprintf(stderr, fmt, ap);
+     va_end(ap);
+ 
+-#if defined(__linux__) || defined(NeXT) || defined(__unix__)
++#if defined(__linux__)
++    if (value > 0) {
++	fprintf(stderr, "  (%s)", strerror(value));
++    }
++#elif defined(NeXT) || defined(__unix__)
+     if (value > 0 && value < sys_nerr) {
+-	fprintf(stderr, "  (%s)\n", sys_errlist[value]);
+-    } else {
+-	fprintf(stderr, "\n");
++	fprintf(stderr, "  (%s)", sys_errlist[value]);
+     }
+-#else
+-    fprintf(stderr, "\n");
+ #endif
++    fprintf(stderr, "\n");
+ }
+Binary files pdisk-9-orig/errors.o and pdisk-9/errors.o differ
+Binary files pdisk-9-orig/hfs_misc.o and pdisk-9/hfs_misc.o differ
+Binary files pdisk-9-orig/io.o and pdisk-9/io.o differ
+Binary files pdisk-9-orig/media.o and pdisk-9/media.o differ
+Binary files pdisk-9-orig/pathname.o and pdisk-9/pathname.o differ
+Binary files pdisk-9-orig/pdisk and pdisk-9/pdisk differ
+Binary files pdisk-9-orig/util.o and pdisk-9/util.o differ
+Binary files pdisk-9-orig/validate.o and pdisk-9/validate.o differ
