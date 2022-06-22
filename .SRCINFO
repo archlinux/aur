@@ -1,8 +1,9 @@
 pkgbase = brim
 	pkgdesc = Desktop application to efficiently search and analyze super-structured data. Powered by Zed.
 	pkgver = 0.30.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.brimsecurity.com/download/
+	install = brim.install
 	arch = x86_64
 	license = custom
 	depends = gtk3

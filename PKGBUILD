@@ -1,7 +1,7 @@
 # Maintainer: Drew S. Ortega <orvyx@protonmail.com>
 pkgname=brim
 pkgver=0.30.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop application to efficiently search and analyze super-structured data. Powered by Zed."
 arch=('x86_64')
 url="https://www.brimsecurity.com/download/"
@@ -14,7 +14,7 @@ source=("https://github.com/brimdata/brim/releases/download/v${pkgver}/${pkgname
 noextract=("${pkgname}-${pkgver}.deb")
 sha256sums=('b0ddf0dccf43b553d08be1deed95d926bd8aeaf287a5dcfd3c9acaa0d8eb189a'
             'a8b360eb5a0cf91c98f39fd4259d09263d883222a8be42b0ee77ad80937e86ac')
-
+install="brim.install"
 package() {
         # extract to pkgdir
         bsdtar -O -xf "${pkgname}-${pkgver}.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
@@ -25,8 +25,4 @@ package() {
         # install LICENSE.txt
         install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
         install "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
-
-	# add binary to path
-	mkdir "${pkgdir}/usr/bin"
-	ln -s "${pkgdir}/opt/Brim/brim" "${pkgdir}/usr/bin/brim"
 }

@@ -1,0 +1,15 @@
+post_install() {
+	# add brim to path
+	mkdir -p /usr/bin
+	ln -sf /opt/Brim/brim /usr/bin/brim
+}
+post_upgrade() {
+	# add brim to path, and re-write if it
+	# existed in a previous version.
+	mkdir -p /usr/bin
+	ln -sf /opt/Brim/brim /usr/bin/brim
+}
+post_remove() {
+	# cleanup symlink on uninstall
+	rm /usr/bin/brim
+}
