@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=jsonnet-bundler
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='jsonnet package manager'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bedb42ccacf7922fec47cffc95a1e1999400fd1e6f89d817d9d75b21a60f68e7')
+sha256sums=('059ff88a4b8617bd8a6802a337ec6aaffd4aece10f74e53f1f3ce0b4588ac4c4')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -18,7 +18,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=vendor'
   go build -ldflags "-linkmode=external -X=main.Version=v$pkgver" ./cmd/jb
 }
 
