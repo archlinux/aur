@@ -1,7 +1,7 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-cli'
 epoch=1
-pkgver="1.7.0"
+pkgver="1.7.1"
 pkgrel=1
 pkgdesc='Command line application as an alternative to the ReVanced Manager'
 arch=('any')
@@ -13,7 +13,7 @@ install='revanced-cli.install'
 source=("${url}/releases/download/v${pkgver}/revanced-cli-${pkgver}-all.jar"
         "${url}/raw/v${pkgver}/LICENSE"
         "${pkgname}.sh")
-sha256sums=('99f838a627652785529a6e00458ea20834389d68b084a708cde2eb04bffd7f24'
+sha256sums=('2a22d22cc05127c07631e70acceef407ef3950d6219c0b78427bae43e961c7d7'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '966cb49d9de2c2081b1bc5af00babe3a8c7735320f248ff1a8c1c8c7cc775502')
 
