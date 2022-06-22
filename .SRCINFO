@@ -1,0 +1,20 @@
+pkgbase = lightnovel.sh-git
+	pkgdesc = A terminal-based lightnovel reader written in Bash.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/lr-tech/lightnovel.sh
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awk
+	depends = coreutils
+	depends = curl
+	depends = grep
+	depends = less
+	depends = ncurses
+	depends = sed
+	depends = w3m
+	source = git+https://github.com/lr-tech/lightnovel.sh.git
+	md5sums = SKIP
+
+pkgname = lightnovel.sh-git
