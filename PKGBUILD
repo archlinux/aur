@@ -3,8 +3,8 @@
 
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
-pkgver=0.2.4
-pkgrel=3
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')
@@ -16,21 +16,6 @@ makedepends=(
   'python-setuptools'
   'python-sphinx'
   'python-sphinx-markdown-tables'
-)
-md5sums=(
-  '9ee6bc875a5c0e7e3fe7936f1b65745e'
-)
-sha1sums=(
-  '1447316075323cc2093ab3baf7b7bf35752c4b33'
-)
-sha256sums=(
-  '4d9b1d5c29aa1f372fe96cae03cfb85fe30f51bda8dd1658b0581e539ee08a7f'
-)
-sha512sums=(
-  '6a0da395b316c0a30d36f12a31a6a6f62e1e58a34cc04a4fa2515bd57c21a339eecd1bcd188f0ddf5013a2c3636f7e433765f501b9772235e426f29acf9482b1'
-)
-b2sums=(
-  'e0038ec9d002271ec7e018d78c9a7f0a265bd733d144dcdb0838e75ec7d015d28f1f8bc452c5b9f2e6406a6778564d4da94db8d945da0be73bb188a4ebd9b3e5'
 )
 
 build() {
@@ -53,5 +38,15 @@ package() {
 
   install -Dm0644 docs/_build/man/runtype.7 "$pkgdir/usr/share/man/man7/${pkgname}.7"
 }
+
+sha256sums=(
+  '2a7410138c7656e413473ebf9abe2d3834127ef021d2b86ffb78ca82aa4ea225'
+)
+sha512sums=(
+  '33a67417dbe4d85e4ba017a897b38ff7c830c243092bfe354f69aa6018acaf5d8bc4504b2e04a6eac662675db4012f71bab43bbf557c596581205f8e8ef1ed36'
+)
+b2sums=(
+  'dc3b1b51f92919317b4ed3b6eb265642395b36309f33c95999168ab8dbef9eebaab8588a19befafec71b538f1d67955f74bb2076a862a32a44503f33bac70281'
+)
 
 # eof
