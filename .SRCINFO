@@ -1,6 +1,6 @@
 pkgbase = python-ompython
 	pkgdesc = OpenModelica-Python API Interface
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = http://openmodelica.org/
 	arch = any
@@ -8,9 +8,11 @@ pkgbase = python-ompython
 	makedepends = python-setuptools
 	depends = python
 	depends = python-future
+	depends = openmodelica-omc
 	optdepends = python-pyzmq
-	source = https://files.pythonhosted.org/packages/source/O/OMPython/OMPython-3.3.0.tar.gz
-	md5sums = e9d8ae1a8dc20b64cf52933cb39cc856
+	source = https://files.pythonhosted.org/packages/source/O/OMPython/OMPython-3.4.0.tar.gz
+	source = https://openmodelica.org/osmc-pl/osmc-pl-1.2.txt
+	md5sums = b02ad9fba4de58bf880f0ffe23e7fa50
+	md5sums = f4bdef7120b0c3fcffe34734988e58e0
 
 pkgname = python-ompython
-
