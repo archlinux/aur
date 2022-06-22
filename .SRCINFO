@@ -1,6 +1,6 @@
 pkgbase = robot-ricochet
 	pkgdesc = You are a sneaky smuggler, who has had an unlucky encounter with the galactic police bots. Now you must evade capture by destroying the robots that have come aboard.
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/Samsai/mirrored-lasers
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = robot-ricochet
 	depends = sdl2_ttf
 	provides = robot-ricochet
 	provides = robot-ricochet-level-editor
-	source = robot-ricochet-1.0.tar.gz::https://codeberg.org/Samsai/mirrored-lasers/archive/1.0.tar.gz
+	source = robot-ricochet-1.0.1.tar.gz::https://codeberg.org/Samsai/robot-ricochet/archive/1.0.1.tar.gz
 	source = robot-ricochet.desktop
-	sha512sums = 47467423bfe56607604a03038d0731a5499b83dff2644f459f25f4284616d754acc6823ee05c9f93b4ffb9ff96078172d21c126caa9cfc5f2f704a549dc8e911
+	sha512sums = 7daf91032a5a89dddd8703ddde09940ecf42f1e6054b89595328ac3d754037455564b80c6a4dcbb6abbe9b7a4ea2a44d51191d2edac75ddd1dc916b9d35ce135
 	sha512sums = ebed3480deb63c54dbe38375efaf4b1c7e5a770b5cad914c9fb5e7583424d283c7734ce70b15301c1f91efd2ae73d2ad72440c5004d1d0e51b446440b2ca7bdc
 
 pkgname = robot-ricochet
