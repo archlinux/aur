@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-gtk-rs
 	pkgdesc = A desktop GUI frontend for shadowsocks-rust client implemented with gtk-rs.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spyophobia/shadowsocks-gtk-rs
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = shadowsocks-gtk-rs
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libappindicator-gtk3
+	optdepends = shadowsocks-rust: the default shadowsocks backend implementation
 	conflicts = shadowsocks-gtk-rs-bin
 	conflicts = shadowsocks-gtk-rs-git
 	source = shadowsocks-gtk-rs-0.3.0.tar.gz::https://static.crates.io/crates/shadowsocks-gtk-rs/shadowsocks-gtk-rs-0.3.0.crate
