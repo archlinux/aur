@@ -1,7 +1,7 @@
 pkgbase = movit-git
 	pkgdesc = The modern video toolkit
-	pkgver = r765.dd74f9c
-	pkgrel = 2
+	pkgver = r915.0b17055
+	pkgrel = 1
 	url = http://movit.sesse.net/
 	arch = x86_64
 	license = GPL
@@ -19,4 +19,3 @@ pkgbase = movit-git
 	sha1sums = SKIP
 
 pkgname = movit-git
-

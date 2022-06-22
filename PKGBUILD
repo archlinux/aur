@@ -1,8 +1,8 @@
 # Maintainer: Evert Vorster (evorster@gmail.com)
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=movit-git
-pkgver=r765.dd74f9c
-pkgrel=2
+pkgver=r915.0b17055
+pkgrel=1
 pkgdesc="The modern video toolkit"
 arch=(x86_64)
 url="http://movit.sesse.net/"
@@ -26,7 +26,7 @@ build() {
 	./autogen.sh
     sed -ie 's/libpng12/libpng/g' configure
 	./configure --prefix=/usr
-	make
+	make GTEST_DIR=/usr/src/googletest
 }
 
 package() {
