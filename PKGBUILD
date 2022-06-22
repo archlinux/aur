@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=agregore-browser-bin
-pkgver=1.3.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='A minimal web browser for the distributed web'
 # no longer offer anything other than x86_64
@@ -21,4 +21,4 @@ package() {
 	mv "${pkgdir}/usr/share/icons/hicolor/0x0/apps/" "${pkgdir}/usr/share/pixmaps"
 	rm -r "${pkgdir}/usr/share/icons"
 }
-b2sums_x86_64=('c339e853c7dc825510c6602ffae5c0473c2c4c3e926f8b2c6efaa5aa6fea4f37bed6e706cbb2d7a0569d09aaa4044fee08da94d57e1a773e705885fba7b2ff39')
+b2sums_x86_64=('75d91bd806e184e80ca63341c5979b6ac5bfad8987d4237e3e6938eb612543d6251d34d3bbcbe4dc4df7ecc8636a17ebcbcdb97f11f0e6f518a7e3eaf6a83b37')
