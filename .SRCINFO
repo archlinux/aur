@@ -1,18 +1,15 @@
 pkgbase = tttt
 	pkgdesc = Play tic-tac-toe in your terminal
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/tttt
 	arch = x86_64
 	license = GPL3
-	makedepends = make
-	makedepends = gcc
-	makedepends = pkgconf
+	makedepends = git
 	makedepends = coreutils
-	makedepends = sed
 	depends = libutf8proc
 	depends = gettext
-	source = tttt-1.0::git+https://gitlab.com/NH000/tttt#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8
+	source = tttt::git+https://gitlab.com/NH000/tttt#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8
 	sha256sums = SKIP
 
 pkgname = tttt

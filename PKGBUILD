@@ -1,23 +1,23 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="tttt"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Play tic-tac-toe in your terminal"
 arch=("x86_64")
 url="https://gitlab.com/NH000/tttt"
 license=("GPL3")
 depends=("libutf8proc" "gettext")
-makedepends=("make" "gcc" "pkgconf" "coreutils" "sed")
-source=("$pkgname-$pkgver::git+$url#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8")
+makedepends=("git" "coreutils")
+source=("$pkgname::git+$url#tag=cf765e77253b1f170d92f980ba8df01638c8d7c8")
 sha256sums=("SKIP")
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
     install -D -t "$pkgdir/usr/bin" "tttt"
 
