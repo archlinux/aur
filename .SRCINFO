@@ -1,0 +1,17 @@
+pkgbase = jls
+	pkgdesc = A modern ls with java.
+	pkgver = 0.3.4
+	pkgrel = 0
+	epoch = 0
+	url = https://github.com/Anas-Elgarhy/jls
+	arch = any
+	groups = java-utils
+	license = GPL3
+	depends = jdk-openjdk
+	depends = nerd-fonts-fira-code
+	provides = jls
+	replaces = jls
+	source = https://github.com/Anas-Elgarhy/jls/releases/download/0.3.4/jls-0.3.4.tar.gz
+	sha256sums = 7eecaaa33723c710598490f8cc9b81fe8a033456b52f8794614bb453a85ce564
+
+pkgname = jls
