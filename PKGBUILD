@@ -6,7 +6,7 @@
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -32,6 +32,8 @@ makedepends=('xdotool'
 provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
+# get New _pkg_main_url_index
+# curl https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html |& grep dlLink
 _pkg_main_url_index="2b/58/90/97/ad/a1/46/10"
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
         "${pkgname}.xdotool")
@@ -59,7 +61,7 @@ build() {
   mkdir -p build
 
   # use xvfb-run and xdotool to cheat the Installer
-  xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 0 ./${pkgname}.xvfb
+  xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 5 ./${pkgname}.xvfb
 
   # convert ico to icon
   mkdir -p icon
