@@ -2,7 +2,7 @@
 
 pkgname=coolero
 _app_id="org.$pkgname.Coolero"
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coolero/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7e90e62a30fe5bd4e629fb9b29b0d66e069208d280f4055cafd6eb5395561f8b')
+sha256sums=('d9a1e4237433025500d10e2a2dcefdb71cf4166cf73ef69dd3d100d6fe9308c5')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -34,10 +34,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Remove duplicate license files
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm "${pkgdir}${site_packages}/$pkgname-$pkgver.dist-info"/{COPYING,LICENSE}
 
   # systemd service files
   install -Dm644 "packaging/systemd/${pkgname}d.service" -t "$pkgdir/usr/lib/systemd/system/"
