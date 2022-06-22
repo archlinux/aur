@@ -8,11 +8,11 @@ url="https://gitlab.com/NH000/shnote"
 license=("GPL3")
 depends=("bash" "coreutils" "gettext")
 makedepends=("git")
-source=("$pkgname::git+$url#tag=6913c40c9122c0ce2e7ee45cdd33696afea1c519")
+source=("git+$url#tag=6913c40c9122c0ce2e7ee45cdd33696afea1c519")
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D "shnote.sh" "$pkgdir/usr/bin/shnote"
     sed -i '20s/$/"\/usr\/share\/locale"/' "$pkgdir/usr/bin/shnote"
