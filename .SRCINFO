@@ -1,16 +1,14 @@
 pkgbase = osa
 	pkgdesc = Just another keylogger for Linux
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/osa
 	arch = x86_64
 	license = GPL3
-	makedepends = make
-	makedepends = gcc
-	makedepends = sed
+	makedepends = git
 	makedepends = coreutils
 	depends = gettext
-	source = osa-1.0::git+https://gitlab.com/NH000/osa#tag=2633c890e535c793460452279e48fc00365f68b7
+	source = osa::git+https://gitlab.com/NH000/osa#tag=2633c890e535c793460452279e48fc00365f68b7
 	sha256sums = SKIP
 
 pkgname = osa
