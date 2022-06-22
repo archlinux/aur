@@ -1,13 +1,17 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-git
-pkgver=0.7.2.r191.g9458f589
+pkgver=0.7.3.r207.g5dbf0d0f
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
 license=('MIT')
-depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'libdrm' 'libevdev' 'libglvnd' 'libinput' 'libjpeg' 'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit' 'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil' 'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols')
+depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
+         'libdrm' 'libevdev' 'libglvnd' 'libinput' 'libjpeg' 
+         'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit' 
+         'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil' 
+         'xcb-util-wm' 'xorg-xwayland' 'wayland' 'wayland-protocols')
 makedepends=('git' 'glslang' 'meson' 'ninja' 'cmake' 'vulkan-headers')
 optdepends=('xorg-xeyes')
 provides=("${pkgname%-git}" 'wlroots-git' 'wf-config-git')
