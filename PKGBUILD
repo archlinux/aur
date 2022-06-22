@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=dynamic-wallpaper
-pkgver=0.0.2
-_commit=cfbda706fb9fdd92022c7015baad4d8af0236ba2
+pkgver=0.0.3
+_commit=b5edf84517063aa5c6d132f01abf6ffa9a9e19b0
 pkgrel=1
 pkgdesc='Dynamic wallpaper creator for Gnome 42'
 arch=(any)
