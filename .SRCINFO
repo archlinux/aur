@@ -1,6 +1,6 @@
 pkgbase = identia-bin
 	pkgdesc = Decentralized social media on IPFS
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/iohzrd/identia
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = identia-bin
 	provides = identia
 	conflicts = go-ipfs
 	conflicts = identia
-	source = https://github.com/iohzrd/identia/releases/download/v0.4.5/identia_0.4.5_amd64.deb
+	source = https://github.com/iohzrd/identia/releases/download/v0.4.6/identia_0.4.6_amd64.deb
 	sha256sums = 6c95e4acb1792734f00be9806783dd1cb2da243c67844a07ac79a58100261ff9
 
 pkgname = identia-bin

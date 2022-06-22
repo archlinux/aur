@@ -1,7 +1,7 @@
 # Maintainer: iohzrd <iohzrd at gmail dot com>
 
 pkgname=identia-bin
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Decentralized social media on IPFS"
 arch=("x86_64")
