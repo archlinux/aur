@@ -8,7 +8,7 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-indicator-keyboard"
 license=("GPL3")
 makedepends=("intltool" "cmake-extras" "systemd" "glib2" "libx11")
-depends=("libayatana-common>=0.9.5" "libxklavier" "hicolor-icon-theme")
+depends=("libayatana-common>=0.9.5" "libxklavier" "hicolor-icon-theme" "accountsservice" "libxkbcommon")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("2b2b29f1d412869ce27604572bcba4c2")
 
