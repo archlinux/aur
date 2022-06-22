@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
-pkgver=1.7.0.r0.ec1fb64
+pkgver=1.8.1.r0.5a40280
 pkgrel=1
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
@@ -42,10 +42,11 @@ package() {
         # Binary
         install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/tubefeeder"
         # Desktop-file
-        sed -i 's_/app/bin/tubefeeder_/usr/bin/tubefeeder_' packaging/tubefeeder.desktop
-        install -D packaging/tubefeeder.desktop $pkgdir/usr/share/applications/de.schmidhuberj.tubefeeder.desktop
+        sed -i 's_/app/bin/tubefeeder_/usr/bin/tubefeeder_' packaging/de.schmidhuberj.tubefeeder.desktop
+        install -D packaging/de.schmidhuberj.tubefeeder.desktop $pkgdir/usr/share/applications/de.schmidhuberj.tubefeeder.desktop
         # Icon
-        install -D packaging/tubefeeder.png $pkgdir/usr/share/icons/hicolor/512x512/apps/de.schmidhuberj.tubefeeder.png
+        install -D packaging/de.schmidhuberj.tubefeeder.512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/de.schmidhuberj.tubefeeder.png
+        install -D packaging/de.schmidhuberj.tubefeeder.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/de.schmidhuberj.tubefeeder.png
 
         # Localization
         ls -ld po/locale/*/ | sed 's|.*po/locale/||' | xargs -I % install -D "po/locale/%LC_MESSAGES/de.schmidhuberj.tubefeeder.mo" "$pkgdir/usr/share/locale/%LC_MESSAGES/de.schmidhuberj.tubefeeder.mo"
