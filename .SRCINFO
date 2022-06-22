@@ -1,0 +1,14 @@
+pkgbase = meshwatch-git
+	pkgdesc = Communicate with Meshtastic devices using python.
+	pkgver = r96.35f4723
+	pkgrel = 1
+	url = https://github.com/datagod/meshwatch
+	arch = any
+	license = BSD
+	depends = meshtastic-python
+	provides = meshwatch
+	conflicts = meshwatch
+	source = git+https://github.com/datagod/meshwatch.git
+	sha256sums = SKIP
+
+pkgname = meshwatch-git
