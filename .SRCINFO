@@ -1,0 +1,20 @@
+pkgbase = countdown-git
+	pkgdesc = Track events until they happen or since they happened
+	pkgver = r35.001f526
+	pkgrel = 1
+	url = https://github.com/lainsce/countdown
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = json-glib
+	depends = libadwaita
+	depends = libgee
+	provides = countdown
+	conflicts = countdown
+	source = git+https://github.com/lainsce/countdown.git
+	b2sums = SKIP
+
+pkgname = countdown-git
