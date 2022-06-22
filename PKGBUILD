@@ -9,7 +9,7 @@ depends=('gtk3')
 makedepends=('gettext' 'intltool')
 conflicts=('gdmap')
 source=("https://gitlab.com/sjohannes/gdmap/-/archive/v${pkgver}/gdmap-v${pkgver}.tar.gz")
-md5sums=('679d5664845563a0a1450c393ca4cfe5')
+sha256sums=('9d40d14439b6b99956f3eca6f34f0368cc7b2e24f8125934b414b6d1d4f358c8')
 
 build() {
   meson --prefix=/usr --buildtype=plain "./gdmap-v${pkgver}" build
