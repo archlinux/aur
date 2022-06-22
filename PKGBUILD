@@ -1,13 +1,11 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
 # Contributor: Rhys Kenwell <redrield+aur@gmail.com>
-# Github Contributor: Michael Herold <https://github.com/michaelherold>
-# Github Contributor: ahmubashir <https://github.com/amubashir>
-# Github Contributor: Joey Dumont <https://github.com/joeydumont>
+# Github Contributors: https://github.com/SampsonCrowley/arch_packages/contributors.md
 
 pkgname=heroku-cli
-pkgver=7.60.1
-pkgrel=2
-_commit_id="4e998800e9bde9b30d97e465f1e2c066c5734ff5"
+pkgver=7.60.2
+pkgrel=1
+_commit_id="b8292f347101f13c2bb833b1dcf088886c8aa984"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
