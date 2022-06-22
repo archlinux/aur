@@ -1,7 +1,7 @@
 pkgbase = serioussam
-	pkgdesc = A game engine developed by Croteam for the classic Serious Sam games.
+	pkgdesc = Serious Sam Classic native Linux version with XPLUS Modification.
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamClassic
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = serioussam
 	depends = python
 	depends = bash
 	source = https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v1.10.2.tar.gz
-	sha512sums = SKIP
+	sha512sums = e59880dfe320c5a97c5adc59980c66ef8bd1bbac4ddb1d02fa03221d31f8654d
 
 pkgname = serioussam
 
