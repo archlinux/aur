@@ -1,20 +1,18 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-plack-middleware-removeredundantbody'
-pkgver='0.03'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="Plack::Middleware which sets removes body for HTTP response if it's not required"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-carp-always>=0' 'perl-http-message>=0' 'perl-plack>=0')
-makedepends=()
+depends=('perl-plack')
+#depends=('perl-carp-always' 'perl-http-message')
 url='http://search.cpan.org/dist/Plack-Middleware-RemoveRedundantBody'
-source=('http://search.cpan.org/CPAN/authors/id/S/SW/SWEETKID/Plack-Middleware-RemoveRedundantBody-0.03.tar.gz')
-md5sums=('7c2abc8da66222bbcf82360310bd1665')
-sha512sums=('8f2b0218094c8596f2ecea665023b98b65cc1a488a62056f1e22c36ead4367ba438228a32ee30eb37409bb3b375be92082b1a20410e27a8fed18ef898fc6322a')
-_distdir="Plack-Middleware-RemoveRedundantBody-0.03"
+source=('https://cpan.metacpan.org/authors/id/S/SW/SWEETKID/Plack-Middleware-RemoveRedundantBody-0.09.tar.gz')
+sha256sums=('80d45f93d6b7290b0bd8b3cedd84a37fc501456cc3dec02ec7aad81c0018087e')
+_distdir="Plack-Middleware-RemoveRedundantBody-0.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

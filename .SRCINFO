@@ -1,18 +1,14 @@
 pkgbase = perl-plack-middleware-removeredundantbody
 	pkgdesc = Plack::Middleware which sets removes body for HTTP response if it's not required
-	pkgver = 0.03
+	pkgver = 0.09
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Plack-Middleware-RemoveRedundantBody
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-carp-always>=0
-	depends = perl-http-message>=0
-	depends = perl-plack>=0
+	depends = perl-plack
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SW/SWEETKID/Plack-Middleware-RemoveRedundantBody-0.03.tar.gz
-	md5sums = 7c2abc8da66222bbcf82360310bd1665
-	sha512sums = 8f2b0218094c8596f2ecea665023b98b65cc1a488a62056f1e22c36ead4367ba438228a32ee30eb37409bb3b375be92082b1a20410e27a8fed18ef898fc6322a
+	source = https://cpan.metacpan.org/authors/id/S/SW/SWEETKID/Plack-Middleware-RemoveRedundantBody-0.09.tar.gz
+	sha256sums = 80d45f93d6b7290b0bd8b3cedd84a37fc501456cc3dec02ec7aad81c0018087e
 
 pkgname = perl-plack-middleware-removeredundantbody
-
