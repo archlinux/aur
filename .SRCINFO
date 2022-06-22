@@ -1,0 +1,23 @@
+pkgbase = python-pyxcp
+	pkgdesc = Utilities for managing the clipboard using OSC52
+	pkgver = 0.18.51
+	pkgrel = 1
+	url = https://github.com/rumpelsepp/oscclip
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = pybind11
+	makedepends = python-setuptools
+	makedepends = python-pep517
+	depends = python
+	depends = python-mako
+	depends = python-construct
+	depends = python-pyserial
+	depends = python-pyusb
+	depends = python-toml
+	depends = python-can
+	source = git+https://github.com/Christoph2/pyxcp#commit=83f958371c9650ed838dfa6857c51fe65111e75c
+	sha256sums = SKIP
+
+pkgname = python-pyxcp
