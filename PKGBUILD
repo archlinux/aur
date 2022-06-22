@@ -1,8 +1,4 @@
-# Maintainer: graysky <graysky@archlinux.us>
-# Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer: Oleg Rakhmanov <oleg@archlinuxarm.org>
-# Maintainer: Dave Higham <pepedog@archlinuxarm.org>
-# Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: rern <rernrern@gmail.us>
 
 buildarch=20
 
