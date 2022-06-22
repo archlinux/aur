@@ -55,8 +55,6 @@ package() {
 	_trilium_final_build_dir=dist/trilium-linux-x64-src/dist/linux-unpacked
 	install -vDm644 $_trilium_final_build_dir/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm644 package.json -t "${pkgdir}/usr/lib/${pkgname}"
-	install -vDm755 bin/tpl/trilium-safe-mode.sh -t  "${pkgdir}/usr/lib/${pkgname}"
-	install -vDm755 bin/tpl/trilium-no-cert-check.sh -t  "${pkgdir}/usr/lib/${pkgname}"
 	install -vDm644 bin/tpl/anonymize-database.sql -t "${pkgdir}/usr/lib/${pkgname}"
 
 	for i in 16 32 64 128 256 512; do
