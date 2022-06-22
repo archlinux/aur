@@ -2,19 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-catalyst-plugin-configloader'
-pkgver='0.34'
+pkgver='0.35'
 pkgrel='1'
 pkgdesc="Load config files of various types"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-catalyst-runtime>=5.7008' 'perl-config-any>=0.20' 'perl-data-visitor>=0.24' 'perl-mro-compat>=0.09' 'perl>=5.8.0')
-makedepends=('perl-path-class')
+depends=('perl-catalyst-runtime' 'perl-config-any' 'perl-data-visitor')
+checkdepends=('perl-perlio-utf8-strict')
 url='http://search.mcpan.org/dist/Catalyst-Plugin-ConfigLoader'
-source=('http://search.mcpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-ConfigLoader-0.34.tar.gz')
-md5sums=('783b51f2f8113041cf2ab6c1a351bfce')
-sha512sums=('294826900f11b9c00a5106f71b3b778e3a9c41bd7ff5bd7e3a6c376242f330c9a4c9473a15854e7bba730b90a01711edfc4221d54d8609ab0f8480c95d59c115')
-_distdir="Catalyst-Plugin-ConfigLoader-0.34"
+source=('https://cpan.metacpan.org/authors/id/H/HA/HAARG/Catalyst-Plugin-ConfigLoader-0.35.tar.gz')
+sha256sums=('9e2a698a6f2d046e0dc5e57512929cd423c807d4a36ba3f29e9e5adcd71a1971')
+_distdir="Catalyst-Plugin-ConfigLoader-0.35"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
