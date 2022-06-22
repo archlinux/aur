@@ -1,6 +1,6 @@
 pkgbase = texlive-vub
 	pkgdesc = Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.
-	pkgver = 2.5.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://gitlab.com/rubdos/texlive-vub/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = texlive-vub
 	optdepends = texlive-fontsextra: The beamer theme uses the Roboto fonts, with pdflatex.
 	optdepends = ttf-roboto: The beamer theme uses the Roboto fonts, with xelatex and lualatex.
 	options = !emptydirs
-	source = https://gitlab.com/rubdos/texlive-vub/-/archive/v2.5.1/texlive-vub-v2.5.1.tar.gz
-	sha512sums = c552d3485e360f80b8ad1785f794ed6a4220313d71d073a2ed91a3263b46fc69161d6d6b892c3bb972d681c199a5c89df7899876ee5ba8eb52eb79ca4b1b72c0
+	source = https://gitlab.com/rubdos/texlive-vub/-/archive/v3.0.0/texlive-vub-v3.0.0.tar.gz
+	sha512sums = c05737fcb80b89dd6b57cc8b8fc69152b8510dd13b3b580fb820510dd702fc25370d1a3678731345e1bd1ba606ea2e99809a82640c166ed3bd53bd954a8081fd
 
 pkgname = texlive-vub
