@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.56
+pkgver=20.04.57
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
-_commit=7229e1e09b64df3ed2c8552ba88ec967e06f99dd
+_commit=fbedcc59e2ba8c387dff2b345dccfb8e4bcb8839
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=$_commit?signed"
   'cli.patch'
@@ -70,28 +70,32 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install daemons and executables
-  install -Dm755 system76-daemon -t "$pkgdir/usr/lib/$pkgname"
-  install -m755 system76-user-daemon -t "$pkgdir/usr/lib/$pkgname"
-  install -Dm755 system76-driver-pkexec -t "$pkgdir/usr/bin"
+  install -Dm755 system76-daemon system76-user-daemon -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm755 "$pkgname-pkexec" -t "$pkgdir/usr/bin/"
 
   # Install systemd unit files
   # Note: system76-driver* service files shortened to system76*
-  install -Dm644 debian/system76-driver.service \
+  install -Dm644 "debian/$pkgname.service" \
     "$pkgdir/usr/lib/systemd/system/system76.service"
 
+  # May only be needed with kernel 5.17.15
+  # https://github.com/pop-os/linux/pull/156
+  # https://github.com/pop-os/system76-driver/pull/242
+#  install -Dm644 "lib/systemd/system-sleep/${pkgname}_bluetooth-suspend" -t \
+#   "$pkgdir/usr/lib/systemd/system-sleep/"
+
   # Install scripts and configuration
-  install -m755 system76-nm-restart "$pkgdir/usr/lib/$pkgname"
-  install -m755 system76-thunderbolt-reload -t "$pkgdir/usr/lib/$pkgname"
-  install -Dm644 com.system76.pkexec.system76-driver.policy -t \
-    "$pkgdir/usr/share/polkit-1/actions"
+  install -m755 system76-nm-restart system76-thunderbolt-reload "$pkgdir/usr/lib/$pkgname/"
+  install -Dm644 "com.system76.pkexec.$pkgname.policy" -t \
+    "$pkgdir/usr/share/polkit-1/actions/"
 
   # Install application launchers
-  install -Dm644 system76-user-daemon.desktop -t "$pkgdir/etc/xdg/autostart"
+  install -Dm644 system76-user-daemon.desktop -t "$pkgdir/etc/xdg/autostart/"
 
   # Create /var/lib/system76-driver directory for brightness settings saving
   install -d "$pkgdir/var/lib/$pkgname"
 
   # Remove tests
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir$site_packages/system76driver/tests"
+  rm -rf "$pkgdir$site_packages/system76driver/tests/"
 }
