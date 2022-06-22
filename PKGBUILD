@@ -9,17 +9,17 @@ url="https://gitlab.com/NH000/marg"
 license=("LGPL3")
 makedepends=("git" "coreutils")
 options=("staticlibs")
-source=("$pkgname::git+$url#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf")
+source=("git+$url#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf")
 sha256sums=("SKIP") 
 
 build () {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	make lib OPTIMIZE=1
 	make lib LIBRARY=static OPTIMIZE=1
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     make install-lib LIBDEST="$pkgdir/usr/lib"
     make install-lib LIBRARY=static LIBDEST="$pkgdir/usr/lib"

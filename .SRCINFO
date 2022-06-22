@@ -8,7 +8,7 @@ pkgbase = marg
 	makedepends = git
 	makedepends = coreutils
 	options = staticlibs
-	source = marg::git+https://gitlab.com/NH000/marg#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf
+	source = git+https://gitlab.com/NH000/marg#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf
 	sha256sums = SKIP
 
 pkgname = marg
