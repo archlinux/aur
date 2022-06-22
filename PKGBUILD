@@ -5,7 +5,7 @@
 
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=ghost-git
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 epoch=
 pkgdesc=""
