@@ -1,7 +1,7 @@
 pkgbase = linux-uksmd
 	pkgdesc = Linux UKSMD
 	pkgver = 5.18.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/post-factum/uksmd
 	arch = x86_64
 	license = GPL2
@@ -28,7 +28,7 @@ pkgbase = linux-uksmd
 	sha512sums = 2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8
 	sha512sums = edfeb7045168791e49737295e30cdec1a819d214e56b7ef7861efac941f309ef2c5552cdbaf538a7c0257d40b0a7f30e7a865e716e0aa0393addc10603bc3534
 	sha512sums = b3665c03ec1b150b00f777c2cd3051171cf9bceb8861f461d827af15d0f40fb4fbc6c9baf13e89d77acbeb87449e3e74a8013ce0959a765b74c2cec786926b96
-	sha512sums = 2959cbcdfdb139383f16da9fe0e99e550fa53950153530d8c497544f900e0592abc1e50099d8e049a76f1ddfa52ab7a168f0afd2e93eb9c6ad0d71ac7a1af8ab
+	sha512sums = 324d939b49e80689ab4113770aa23f1ecb7a54dc319e709c5e918315a4df02b51ce6bf82978dbe489c6705f0efd33bd73c5c163e34c22e531edda33194883cf6
 
 pkgname = linux-uksmd
 	pkgdesc = The Linux UKSMD kernel and modules

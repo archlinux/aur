@@ -51,7 +51,7 @@ _major=5.18
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSMD'
 arch=('x86_64')
 url="https://gitlab.com/post-factum/uksmd"
@@ -297,7 +297,7 @@ sha512sums=('98069269ebb1f870c9df21c973f1f846d29ac4297a366775ff59fd2d3bc86e2d023
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
             'edfeb7045168791e49737295e30cdec1a819d214e56b7ef7861efac941f309ef2c5552cdbaf538a7c0257d40b0a7f30e7a865e716e0aa0393addc10603bc3534'
             'b3665c03ec1b150b00f777c2cd3051171cf9bceb8861f461d827af15d0f40fb4fbc6c9baf13e89d77acbeb87449e3e74a8013ce0959a765b74c2cec786926b96'
-            '2959cbcdfdb139383f16da9fe0e99e550fa53950153530d8c497544f900e0592abc1e50099d8e049a76f1ddfa52ab7a168f0afd2e93eb9c6ad0d71ac7a1af8ab')
+            '324d939b49e80689ab4113770aa23f1ecb7a54dc319e709c5e918315a4df02b51ce6bf82978dbe489c6705f0efd33bd73c5c163e34c22e531edda33194883cf6')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
