@@ -1,6 +1,6 @@
 pkgbase = skeuos-gtk
 	pkgdesc = Light and Dark window themes based on a Skeuomorphic design.
-	pkgver = 20220527
+	pkgver = 20220622
 	pkgrel = 1
 	url = https://github.com/daniruiz/skeuos-gtk
 	arch = any
