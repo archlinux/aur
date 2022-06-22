@@ -63,7 +63,7 @@ prepare(){
   chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
   chmod -R o=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
   chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
-  chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
+  chmod -R g=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
 
   # Making building scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
