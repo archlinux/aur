@@ -1,12 +1,12 @@
 pkgbase = python2-pymongo
 	pkgdesc = Python module for using MongoDB
 	pkgver = 3.12.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/pymongo/
 	arch = x86_64
 	license = Apache
 	makedepends = python2-setuptools
-	depends = python
+	depends = python2
 	optdepends = python2-pymongocrypt: for [encryption]
 	optdepends = python2-pyopenssl: for [ocsp]
 	optdepends = python2-requests: for [ocsp]
