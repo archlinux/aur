@@ -1,14 +1,14 @@
 # Maintainer: Alexandre BIQUE <bique.alexandre@gmail.com>
 pkgname=clap-plugins
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="CLAP example plugins"
 arch=(x86_64)
 url="https://github.com/free-audio/clap-plugins"
 license=('MIT')
 groups=()
 depends=(qt6-base qt6-declarative)
-makedepends=(cmake ninja)
+makedepends=(cmake ninja git catch2)
 optdepends=()
 provides=()
 conflicts=()
