@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.2
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -17,7 +17,7 @@ makedepends=('cmake' 'make' 'sed' 'vulkan-headers')
 replaces=('serioussam-vk')
 install=serioussam.install
 source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$pkgver.tar.gz"
-	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partaa"
+    "https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partab"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partac"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partaa"
@@ -26,8 +26,14 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm"
-    "serioussam-tfe.sh")
+    "serioussam-tfe.sh"
     "serioussam-tse.sh")
+noextract=("SamTFE-XPLUS.tar.xz.partaa"
+	"SamTFE-XPLUS.tar.xz.partab"
+	"SamTFE-XPLUS.tar.xz.partac"
+	"SamTSE-XPLUS.tar.xz.partaa"
+	"SamTSE-XPLUS.tar.xz.partab"
+	"SamTSE-XPLUS.tar.xz.partac")
 sha256sums=('09415fd717847c57da9d375262f05e541585e674593f9c62fb6bc406e3e3910a'
             '01b2e2d4dbdb65b2f1e174fbd6606d70806e97b6a45047ed6c58e7b801f6a879'
             'f8f35bcc54ed888b72b8660319ad089b7243b9e8d83aefabdb8f0111fcb0b728'
@@ -35,9 +41,9 @@ sha256sums=('09415fd717847c57da9d375262f05e541585e674593f9c62fb6bc406e3e3910a'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
             '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
-            '3faf5cbdb9683badd45230246d525e313d5447414c9da4c18fa553440bf29748'
-            'c07e00be5f264a853dc96845b875b2762c1b1fbcdacd274853b2d7b841149f1b'
-            'daf88b168e941d0bdd6c6637934a98d703f962afec7c64a1502c5b82ff66c6c8'
+            '8e9f0d7138ab5da6b4b899f39234f6e3c48d0d47970c6b12372e33e86e39d606'
+            '134bbc9088b8c323c9a17a7ea8a39942e4cf4b83e149cb4f89e161adf7290122'
+            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
             'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3')
 if [[ $CARCH = "i686" ]]; then
@@ -47,6 +53,14 @@ else
 fi
 
 prepare(){
+  # Prepare XPLUS archive
+  cat "$xplus_tfe".part* > "$xplus_tfe"
+  cat "$xplus_tse".part* > "$xplus_tse"
+
+  # Install the XPLUS Modification data.
+  tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTFE/"
+  tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTSE/"
+
   # Making building scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
@@ -84,7 +98,7 @@ build(){
   rm -fr "Tools.Win32"
 
   rm -f  "$srcdir/$_srcname"/{*.sh,*.old}
-  rm -fr "$srcdir/$_srcname/images"
+  rm -fr "$srcdir/$_srcname/Images"
 }
 
 package(){
@@ -92,12 +106,9 @@ package(){
   install -d $pkgdir/usr/share/{applications,pixmaps,licenses}
   install -d $pkgdir/usr/bin/
 
-  # Install the XPLUS Modification data.
-  cat "$srcdir/"$xplus_tfe".part* > "$srcdir/$xplus_tfe"
-  cat "$srcdir/"$xplus_tse".part* > "$srcdir/$xplus_tse"
-  extract "$srcdir/$xplus_tse" -d "$srcdir/$_srcname/SamTFE/"
-  extract "$srcdir/$xplus_tse" -d "$srcdir/$_srcname/SamTSE/"
-  rm -f  "$srcdir"/{*.xz} 
+  # Install license.
+  install -D -m 644 $srcdir/$_srcname/LICENSE \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   # Install data.
   mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
@@ -107,10 +118,6 @@ package(){
        $pkgdir/usr/share/$pkginstdir/SamTFE
   install -D -m 755 $srcdir/serioussam-tse.sh \
        $pkgdir/usr/share/$pkginstdir/SamTSE
-
-  # Install license.
-  install -D -m 644 $srcdir$_srcname/LICENSE \
-       $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   # Install desktop file.
   install -D -m 644 $srcdir/serioussam-tfe.desktop \

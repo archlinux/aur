@@ -1,9 +1,8 @@
 [Desktop Entry]
 Name=Serious Sam The Second Encounter
 Type=Application
-Comment=Linux port of Serious Sam Classic The Second Encounter with Vulkan support
+Comment=Linux port of Serious Sam Classic The Second Encounter
 Exec=serioussam-tse
 TryExec=serioussam-tse
 Icon=serioussam
-Categories=Game;ActionGame;
-Comment[ru_RU.UTF-8]=Linux port of Serious Sam Classic The Second Encounter
+Categories=Application;Game;
