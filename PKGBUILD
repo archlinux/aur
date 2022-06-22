@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/blackhole89/notekit"
 license=("GPL3")
 depends=("desktop-file-utils" "clatexmath" "gtkmm3" "gtksourceviewmm>=3.18" "jsoncpp" "zlib")
-makedepends=("git" "meson" "fontconfig" "appstream-glib")
+makedepends=("meson" "fontconfig" "appstream-glib")
 source=("https://github.com/blackhole89/notekit/archive/refs/tags/latest.zip")
 sha256sums=('SKIP')
 

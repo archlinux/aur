@@ -5,7 +5,6 @@ pkgbase = notekit
 	url = https://github.com/blackhole89/notekit
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = fontconfig
 	makedepends = appstream-glib
