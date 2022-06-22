@@ -1,15 +1,16 @@
 pkgbase = mkb-git
 	pkgdesc = progress bar maker
-	pkgver = latest
-	pkgrel = 2
+	pkgver = r5.55b2989
+	pkgrel = 1
 	url = http://git.2f30.org/mkb/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	makedepends = git
 	provides = mkb
+	conflicts = mkb
 	source = git://git.2f30.org/mkb.git
 	sha1sums = SKIP
 
 pkgname = mkb-git
-

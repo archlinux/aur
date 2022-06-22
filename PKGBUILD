@@ -1,32 +1,30 @@
-# vim:ts=4:sw=4:expandtab
-pkgname=mkb-git
-pkgver=latest
-pkgrel=2
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+pkgname="mkb-git"
+_pkgname="mkb"
+pkgver=r5.55b2989
+pkgrel=1
 pkgdesc='progress bar maker'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://git.2f30.org/mkb/'
 license=('unknown')
 provides=('mkb')
-conflicts=()
-#groups=
-depends=()
+conflicts=('mkb')
 makedepends=('git')
 source=('git://git.2f30.org/mkb.git')
 sha1sums=('SKIP')
 
-_gitname='mkb'
+pkgver() {
+	cd "${_pkgname}"
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    cd "$_gitname"
-
-    rm Makefile
-    cp ../../Makefile.new Makefile
-
+    cd "${_pkgname}"
     make clean
     make all
 }
 
 package() {
-    cd "$_gitname"
-    make DESTDIR="$pkgdir" MANPREFIX="/usr/share/man" install
+    cd "${_pkgname}"
+    make DESTDIR="${pkgdir}" MANPREFIX="/usr/share/man" install
 }
