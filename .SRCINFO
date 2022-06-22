@@ -1,12 +1,13 @@
 pkgbase = gallia
 	pkgdesc = Extendable Pentesting Framework
-	pkgver = 1.0.0alpha6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Fraunhofer-AISEC/gallia
 	arch = any
 	license = apache
 	makedepends = python-poetry
 	makedepends = python-installer
+	makedepends = git
 	depends = python
 	depends = python-aiofiles
 	depends = python-aiosqlite
@@ -14,8 +15,8 @@ pkgbase = gallia
 	depends = python-zstandard
 	depends = python-can
 	depends = python-tabulate
-	optdepends = penlog: Reading logfiles with the hr tool
-	source = https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v1.0.0-alpha6.tar.gz
-	sha256sums = 387ce9d71c346ae0048e7008bc2d986f1d059c5f0f60fce124b9a3d5edcae8a1
+	depends = python-pyxcp
+	source = https://github.com/Fraunhofer-AISEC/gallia/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = bd4a0d8b7de2766a777f40c7f25ba73b0012308e10d494cb2fff93dd3397666e
 
 pkgname = gallia
