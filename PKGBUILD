@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ecp5-nightly
-pkgver=20220621_nextpnr_0.3_37_g8d063d38
+pkgver=20220622_nextpnr_0.3_38_gb950f5cb
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
@@ -25,7 +25,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=8d063d38"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=b950f5cb"
 )
 sha256sums=(
 	"SKIP"
