@@ -1,8 +1,9 @@
 # Contributor: FabioLolix
 # Contributor: netroy
+# Contributor: SuperNinja_4965
 
 pkgname=arduino-ide-beta-bin
-_pkgver=2.0.0-rc6
+_pkgver=2.0.0-rc7
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
@@ -16,12 +17,12 @@ conflicts=(arduino-ide)
 install=arduino-ide.install
 options=(!strip)
 source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${_pkgver}_Linux_64bit.zip"
-        "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png")
-sha256sums=('6c4a60d18d30895fe0de6872ca89b5404bf1a2874e32bf3d958a9e6a934e824f'
-            'd0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c')
+        "https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg")
+sha256sums=('4000ad919536959038939b2d9f4af6c8c3efc83ceb5f816fb1b69b033c5c9b11'
+            '4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac')
 
 prepare() {
-	gendesk -f --pkgname arduino-ide --name 'Arduino IDE' --pkgdesc ${pkgdesc}
+	gendesk -f --pkgname arduino-ide --name 'Arduino IDE' --pkgdesc ${pkgdesc} --genericname 'Arduino IDE' --mimetypes 'text/x-arduino' --categories 'Development;IDE;Electronics' --custom 'StartupWMClass=Arduino IDE' --comment 'Open-source electronics prototyping platform v2'
 }
 
 package() {
@@ -32,5 +33,5 @@ package() {
 	install -dm755 "$pkgdir/usr/bin"
 	ln -s "/opt/arduino-ide/arduino-ide" "$pkgdir/usr/bin/arduino-ide"
 	install -Dm644 "arduino-ide.desktop" "$pkgdir/usr/share/applications/arduino-ide.desktop"
-	install -Dm644 "ArduinoCommunityLogo.png" "$pkgdir/usr/share/pixmaps/arduino-ide.png"
+	install -Dm644 "arduino.svg" "$pkgdir/usr/share/pixmaps/arduino-ide.svg"
 }
