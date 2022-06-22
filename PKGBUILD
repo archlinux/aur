@@ -2,19 +2,17 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-config-mvp-reader-ini'
-pkgver='2.101463'
+pkgver='2.101464'
 pkgrel='1'
 pkgdesc="an MVP config reader for .ini files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-config-ini' 'perl-config-mvp>=2' 'perl-moose')
-makedepends=()
+depends=('perl-config-ini' 'perl-config-mvp' 'perl-moose')
 url='https://metacpan.org/release/Config-MVP-Reader-INI'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Config-MVP-Reader-INI-2.101463.tar.gz')
-md5sums=('4ea590bd37b92917551f2f6265000cca')
-sha512sums=('79e65082058fa7c5ae24e8deb69c0f17dafe9727c57c7fdb4fc2cbc4f634b424c8d1a17e16f879b879769b3030f9f7cf555d9f582db6df83a33ea86141449e54')
-_distdir="Config-MVP-Reader-INI-2.101463"
+source=(https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Config-MVP-Reader-INI-$pkgver.tar.gz)
+sha256sums=('3994b05e414416ac06982a3faf4296c53fb96f30c851a182f42dd4e3cf7481c0')
+_distdir="Config-MVP-Reader-INI-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
