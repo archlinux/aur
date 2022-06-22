@@ -1,3 +1,5 @@
+# Maintainer: William Tang <galaxyking0419@gmail.com>
+
 pkgname=bricscad
 pkgver=22.2.05
 pkgrel=1
