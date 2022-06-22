@@ -19,7 +19,7 @@ conflicts=('spirv-tools')
 provides=('spirv-tools')
 
 pkgver() {
-  git -C SPIRV-Tools describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
+  git -C SPIRV-Tools describe --match 'v*.*' --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
