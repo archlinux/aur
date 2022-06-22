@@ -1,6 +1,6 @@
 pkgbase = r-jaspanova
 	pkgdesc = ANOVA Module for JASP
-	pkgver = 0.15
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspAnova
 	arch = x86_64
