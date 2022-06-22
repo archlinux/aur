@@ -1,21 +1,18 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-filesys-notify-simple'
-pkgver='0.12'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="Simple and dumb file system watcher"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
-makedepends=()
-checkdepends=('perl-test-sharedfork>=0')
+depends=('perl')
+checkdepends=('perl-test-sharedfork')
 url='http://search.cpan.org/dist/Filesys-Notify-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Filesys-Notify-Simple-0.12.tar.gz')
-md5sums=('d1886453241db0a034e5aacd02ee1f72')
-sha512sums=('3edb9a5087b82c87bea1b4092a3c7c264ec6f8da391052593e504b16392ea1a84771bbcbad21d623f727682cc6ab4474fe6a7e346c8bebe13f60d39e83594e2b')
-_distdir="Filesys-Notify-Simple-0.12"
+source=('https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Filesys-Notify-Simple-0.14.tar.gz')
+sha256sums=('1fda712d4ba5e1868159ed35f6f8efbfae9d435d6376f5606d533bcb080555a4')
+_distdir="Filesys-Notify-Simple-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
