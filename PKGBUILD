@@ -3,7 +3,7 @@
 _pkgname=gitlab-gitaly
 pkgname="${_pkgname}-git"
 pkgver=15.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Speed up Git access using caching"
 arch=('x86_64')
 conflicts=("$_pkgname")
@@ -22,7 +22,7 @@ source=("git+https://gitlab.com/gitlab-org/gitaly#branch=15-1-stable"
 sha512sums=('SKIP'
             'ee8e6c43f9da4107b49886ef3bbeacaaf8a85fbdc82c464625bbccd75f53253834ce81ac9462643f4097f7d5d049160763fcd9d8450af93580167b00f7e5c150'
             '7f5cd528c873a5e43e18aa6a88bd7298422c047e0e61cf3208be7d9fcfdfdc8a844b5c439ab6afc2098c5c4c60ed9c3d167c2f87517f1e93b34f39be3d3dad09'
-            '1b07ee10f47f152ebf2fa2ce684c4694ebe4475bc67fe2b61bcf7f34b9b87bdb0fe99aa07d21a60aeaa62d21a193ad24b2ea4bd2a4ef78852da538777b902521')
+            '63cbe9bd53a20bf2c83e1bbe478273431ab11175fd943994a89b844166640b30500c95718ea9e102a9d94476e17282e0e609045f2e313816be181e75b637b74b')
 
 pkgver() {
   cd gitaly
