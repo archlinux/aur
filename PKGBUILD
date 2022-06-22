@@ -4,7 +4,7 @@
 
 pkgname=edb-debugger
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
@@ -13,12 +13,15 @@ depends=('qt5-xmlpatterns>=5.2' 'qt5-svg>=5.2' 'capstone>=3.0')
 makedepends=('boost>=1.35.0' 'cmake')
 optdepends=('graphviz>=2.38.0')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
+        'gcc12.patch'
         'edb.desktop')
 sha256sums=('86df4a0940a39c1480a6fc789f167f94e87a7a330f2d8163fe871f42c754afe8'
+            '1ad7da68a1faf5a375a0afddf6da859b0006ede95fff2fee72794c5924d749e4'
             'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6')
 
 prepare() {
   cd "edb-debugger"
+  patch -p1 <../gcc12.patch
 }
 
 build() {
