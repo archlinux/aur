@@ -1,14 +1,14 @@
 pkgbase = pbk
 	pkgdesc = A tool for backing up and retrieving files locally
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/NH000/pbk
 	arch = any
 	license = MIT
-	makedepends = sed
+	makedepends = git
 	makedepends = coreutils
 	depends = python3
-	source = pbk-1.0::git+https://gitlab.com/NH000/pbk#tag=e74e1691b72557f4e7fbb981ae979a2b7ae3c148
+	source = pbk::git+https://gitlab.com/NH000/pbk#tag=e74e1691b72557f4e7fbb981ae979a2b7ae3c148
 	sha256sums = SKIP
 
 pkgname = pbk

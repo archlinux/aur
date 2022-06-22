@@ -1,18 +1,18 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="pbk"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for backing up and retrieving files locally"
 arch=("any")
 url="https://gitlab.com/NH000/pbk"
 license=("MIT")
 depends=("python3")
-makedepends=("sed" "coreutils")
-source=("$pkgname-$pkgver::git+$url#tag=e74e1691b72557f4e7fbb981ae979a2b7ae3c148")
+makedepends=("git" "coreutils")
+source=("$pkgname::git+$url#tag=e74e1691b72557f4e7fbb981ae979a2b7ae3c148")
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
     install -D "pbk.py" "$pkgdir/usr/bin/pbk"
     sed -i '34s/\bNone\b/"\/usr\/share\/locale"/' "$pkgdir/usr/bin/pbk"
