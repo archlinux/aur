@@ -1,18 +1,18 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="image2ascii"
 pkgver="1.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple image–to–ASCII art conversion tool"
 arch=("any")
 url="https://gitlab.com/NH000/image2ascii"
 license=("MIT")
 depends=("python3" "python-pillow")
-makedepends=("sed" "coreutils")
-source=("$pkgname-$pkgver::git+$url#tag=d7dffe0065a949a40acc652e8695c439bfb66605")
+makedepends=("git" "coreutils")
+source=("$pkgname::git+$url#tag=d7dffe0065a949a40acc652e8695c439bfb66605")
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
     install -D "image2ascii.py" "$pkgdir/usr/bin/image2ascii"
     sed -i '33s/\bNone\b/"image2ascii"/' "$pkgdir/usr/bin/image2ascii"

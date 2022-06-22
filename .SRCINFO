@@ -1,15 +1,15 @@
 pkgbase = image2ascii
 	pkgdesc = Simple image–to–ASCII art conversion tool
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/NH000/image2ascii
 	arch = any
 	license = MIT
-	makedepends = sed
+	makedepends = git
 	makedepends = coreutils
 	depends = python3
 	depends = python-pillow
-	source = image2ascii-1.0::git+https://gitlab.com/NH000/image2ascii#tag=d7dffe0065a949a40acc652e8695c439bfb66605
+	source = image2ascii::git+https://gitlab.com/NH000/image2ascii#tag=d7dffe0065a949a40acc652e8695c439bfb66605
 	sha256sums = SKIP
 
 pkgname = image2ascii
