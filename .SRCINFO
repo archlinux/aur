@@ -1,15 +1,14 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.
-	pkgver = 3.5.4
-	pkgrel = 4
+	pkgver = 4.0b8
+	pkgrel = 1
 	url = https://processing.org/
 	install = processing-bin.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	options = !strip
-	source = https://download.processing.org/processing-3.5.4-linux64.tgz
-	md5sums = 2746cbe158425396dcf8a4103b93400f
+	source = https://github.com/processing/processing4/releases/download/processing-1283-4.0b8/processing-4.0b8-linux-x64.tgz
+	sha256sums = 1a82a6761c5683488983fa74f35d9be1be604f48b1608670198a5378af1991fe
 
 pkgname = processing-bin
-
