@@ -9,7 +9,7 @@ pkgbase = image2ascii
 	makedepends = coreutils
 	depends = python3
 	depends = python-pillow
-	source = image2ascii::git+https://gitlab.com/NH000/image2ascii#tag=d7dffe0065a949a40acc652e8695c439bfb66605
+	source = git+https://gitlab.com/NH000/image2ascii#tag=d7dffe0065a949a40acc652e8695c439bfb66605
 	sha256sums = SKIP
 
 pkgname = image2ascii

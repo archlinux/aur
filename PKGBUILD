@@ -8,11 +8,11 @@ url="https://gitlab.com/NH000/image2ascii"
 license=("MIT")
 depends=("python3" "python-pillow")
 makedepends=("git" "coreutils")
-source=("$pkgname::git+$url#tag=d7dffe0065a949a40acc652e8695c439bfb66605")
+source=("git+$url#tag=d7dffe0065a949a40acc652e8695c439bfb66605")
 sha256sums=("SKIP")
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D "image2ascii.py" "$pkgdir/usr/bin/image2ascii"
     sed -i '33s/\bNone\b/"image2ascii"/' "$pkgdir/usr/bin/image2ascii"
