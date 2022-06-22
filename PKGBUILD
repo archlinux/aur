@@ -2,7 +2,7 @@
 
 _pkgname=gitlab-gitaly
 pkgname="${_pkgname}-git"
-pkgver=15.0.1
+pkgver=15.1.0
 pkgrel=1
 pkgdesc="Speed up Git access using caching"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!buildflags)
 makedepends=(go cmake git)
 backup=("etc/gitlab-gitaly/config.toml")
 _tag=v${pkgver}
-source=("git+https://gitlab.com/gitlab-org/gitaly#branch=15-0-stable"
+source=("git+https://gitlab.com/gitlab-org/gitaly#branch=15-1-stable"
         "configs.patch"
         "gitlab-gitaly.service"
 	      "ruby27.patch")

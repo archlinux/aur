@@ -1,6 +1,6 @@
 diff '--color=auto' -Naur a/cmd/gitaly-backup/restore_test.go b/cmd/gitaly-backup/restore_test.go
---- a/cmd/gitaly-backup/restore_test.go	2022-06-04 09:15:30.119502802 +1000
-+++ b/cmd/gitaly-backup/restore_test.go	2022-06-04 09:16:46.423649855 +1000
+--- a/cmd/gitaly-backup/restore_test.go	2022-06-23 06:19:25.280429169 +1000
++++ b/cmd/gitaly-backup/restore_test.go	2022-06-23 06:19:52.068493851 +1000
 @@ -34,7 +34,7 @@
  
  	path := testhelper.TempDir(t)
@@ -20,9 +20,9 @@ diff '--color=auto' -Naur a/cmd/gitaly-backup/restore_test.go b/cmd/gitaly-backu
  	}
  }
 diff '--color=auto' -Naur a/.gitlab-ci.yml b/.gitlab-ci.yml
---- a/.gitlab-ci.yml	2022-06-04 09:15:30.111502783 +1000
-+++ b/.gitlab-ci.yml	2022-06-04 09:16:46.423649855 +1000
-@@ -240,7 +240,7 @@
+--- a/.gitlab-ci.yml	2022-06-23 06:19:25.276429156 +1000
++++ b/.gitlab-ci.yml	2022-06-23 06:19:52.068493851 +1000
+@@ -261,7 +261,7 @@
    <<: *test_definition
    script:
      - make -j$(nproc)
@@ -32,8 +32,8 @@ diff '--color=auto' -Naur a/.gitlab-ci.yml b/.gitlab-ci.yml
      - ./_build/bin/praefect -config config.praefect.toml sql-migrate
  
 diff '--color=auto' -Naur a/internal/backup/backup_test.go b/internal/backup/backup_test.go
---- a/internal/backup/backup_test.go	2022-06-04 09:15:30.119502802 +1000
-+++ b/internal/backup/backup_test.go	2022-06-04 09:16:46.423649855 +1000
+--- a/internal/backup/backup_test.go	2022-06-23 06:19:25.288429188 +1000
++++ b/internal/backup/backup_test.go	2022-06-23 06:19:52.068493851 +1000
 @@ -125,7 +125,7 @@
  				require.NoError(t, err)
  				require.Equal(t, os.FileMode(0o600), bundleInfo.Mode().Perm(), "expecting restricted file permissions")
@@ -80,8 +80,8 @@ diff '--color=auto' -Naur a/internal/backup/backup_test.go b/internal/backup/bac
  					"^"+master1.String(),
  					"^"+other.String(),
 diff '--color=auto' -Naur a/internal/git/gittest/repo.go b/internal/git/gittest/repo.go
---- a/internal/git/gittest/repo.go	2022-06-04 09:15:30.123502809 +1000
-+++ b/internal/git/gittest/repo.go	2022-06-04 09:16:46.423649855 +1000
+--- a/internal/git/gittest/repo.go	2022-06-23 06:19:25.288429188 +1000
++++ b/internal/git/gittest/repo.go	2022-06-23 06:19:52.068493851 +1000
 @@ -338,7 +338,7 @@
  	if len(patterns) == 0 {
  		patterns = []string{"--all"}
@@ -92,18 +92,18 @@ diff '--color=auto' -Naur a/internal/git/gittest/repo.go b/internal/git/gittest/
  
  // ChecksumRepo calculates the checksum of a repository.
 diff '--color=auto' -Naur a/internal/gitaly/linguist/linguist.go b/internal/gitaly/linguist/linguist.go
---- a/internal/gitaly/linguist/linguist.go	2022-06-04 09:15:30.131502824 +1000
-+++ b/internal/gitaly/linguist/linguist.go	2022-06-04 13:51:09.940415664 +1000
-@@ -88,7 +88,7 @@
+--- a/internal/gitaly/linguist/linguist.go	2022-06-23 06:19:25.292429197 +1000
++++ b/internal/gitaly/linguist/linguist.go	2022-06-23 06:22:31.868898445 +1000
+@@ -87,7 +87,7 @@
  }
  
- func (inst *Instance) startGitLinguist(ctx context.Context, repoPath string, commitID string, linguistCommand string) (*command.Command, error) {
+ func (inst *Instance) startGitLinguist(ctx context.Context, repoPath string, commitID string) (*command.Command, error) {
 -	bundle, err := exec.LookPath("bundle")
 +	bundle, err := exec.LookPath("bundle-2.7")
  	if err != nil {
  		return nil, fmt.Errorf("finding bundle executable: %w", err)
  	}
-@@ -155,7 +155,7 @@
+@@ -127,7 +127,7 @@
  	// We use a symlink because we cannot trust Bundler to not print garbage
  	// on its stdout.
  	rubyScript := `FileUtils.ln_sf(Bundler.rubygems.find_name('github-linguist').first.full_gem_path, ARGV.first)`
@@ -112,10 +112,25 @@ diff '--color=auto' -Naur a/internal/gitaly/linguist/linguist.go b/internal/gita
  	cmd.Dir = cfg.Ruby.Dir
  
  	// We have learned that in practice the command we are about to run is a
+diff '--color=auto' -Naur a/internal/gitaly/linguist/linguist.go.rej b/internal/gitaly/linguist/linguist.go.rej
+--- a/internal/gitaly/linguist/linguist.go.rej	1970-01-01 10:00:00.000000000 +1000
++++ b/internal/gitaly/linguist/linguist.go.rej	2022-06-23 06:19:52.072493863 +1000
+@@ -0,0 +1,11 @@
++--- internal/gitaly/linguist/linguist.go	2022-06-04 09:15:30.131502824 +1000
+++++ internal/gitaly/linguist/linguist.go	2022-06-04 13:51:09.940415664 +1000
++@@ -88,7 +88,7 @@
++ }
++ 
++ func (inst *Instance) startGitLinguist(ctx context.Context, repoPath string, commitID string, linguistCommand string) (*command.Command, error) {
++-	bundle, err := exec.LookPath("bundle")
+++	bundle, err := exec.LookPath("bundle-2.7")
++ 	if err != nil {
++ 		return nil, fmt.Errorf("finding bundle executable: %w", err)
++ 	}
 diff '--color=auto' -Naur a/internal/gitaly/rubyserver/rubyserver.go b/internal/gitaly/rubyserver/rubyserver.go
---- a/internal/gitaly/rubyserver/rubyserver.go	2022-06-04 09:15:30.131502824 +1000
-+++ b/internal/gitaly/rubyserver/rubyserver.go	2022-06-04 09:16:46.427649862 +1000
-@@ -200,7 +200,7 @@
+--- a/internal/gitaly/rubyserver/rubyserver.go	2022-06-23 06:19:25.296429207 +1000
++++ b/internal/gitaly/rubyserver/rubyserver.go	2022-06-23 06:19:52.072493863 +1000
+@@ -190,7 +190,7 @@
  		// Use 'ruby-cd' to make sure gitaly-ruby has the same working directory
  		// as the current process. This is a hack to sort-of support relative
  		// Unix socket paths.
@@ -125,8 +140,8 @@ diff '--color=auto' -Naur a/internal/gitaly/rubyserver/rubyserver.go b/internal/
  		events := make(chan supervisor.Event)
  		check := func() error { return ping(socketPath) }
 diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go b/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go
---- a/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go	2022-06-04 09:15:30.147502854 +1000
-+++ b/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go	2022-06-04 09:16:46.427649862 +1000
+--- a/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go	2022-06-23 06:19:25.304429227 +1000
++++ b/internal/gitaly/service/repository/create_bundle_from_ref_list_test.go	2022-06-23 06:19:52.072493863 +1000
 @@ -62,7 +62,7 @@
  
  	require.NoError(t, bundle.Close())
@@ -146,8 +161,8 @@ diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_bundle_fro
  	require.Contains(t, string(output), fmt.Sprintf("The bundle contains this ref:\n%s refs/heads/master", masterOID))
  }
 diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_bundle_test.go b/internal/gitaly/service/repository/create_bundle_test.go
---- a/internal/gitaly/service/repository/create_bundle_test.go	2022-06-04 09:15:30.147502854 +1000
-+++ b/internal/gitaly/service/repository/create_bundle_test.go	2022-06-04 09:16:46.427649862 +1000
+--- a/internal/gitaly/service/repository/create_bundle_test.go	2022-06-23 06:19:25.304429227 +1000
++++ b/internal/gitaly/service/repository/create_bundle_test.go	2022-06-23 06:19:52.072493863 +1000
 @@ -55,7 +55,7 @@
  	_, err = io.Copy(dstFile, reader)
  	require.NoError(t, err)
@@ -158,8 +173,8 @@ diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_bundle_tes
  	require.Contains(t, string(output), "The bundle records a complete history")
  }
 diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_repository_from_bundle_test.go b/internal/gitaly/service/repository/create_repository_from_bundle_test.go
---- a/internal/gitaly/service/repository/create_repository_from_bundle_test.go	2022-06-04 09:15:30.147502854 +1000
-+++ b/internal/gitaly/service/repository/create_repository_from_bundle_test.go	2022-06-04 09:16:46.427649862 +1000
+--- a/internal/gitaly/service/repository/create_repository_from_bundle_test.go	2022-06-23 06:19:25.304429227 +1000
++++ b/internal/gitaly/service/repository/create_repository_from_bundle_test.go	2022-06-23 06:19:52.072493863 +1000
 @@ -44,7 +44,7 @@
  	const wantDefaultBranch = "refs/heads/markdown"
  	gittest.Exec(t, cfg, "-C", repoPath, "symbolic-ref", "HEAD", wantDefaultBranch)
@@ -179,8 +194,8 @@ diff '--color=auto' -Naur a/internal/gitaly/service/repository/create_repository
  	require.Greater(t, len(bundle), 100*1024)
  
 diff '--color=auto' -Naur a/internal/gitaly/service/repository/fetch_bundle_test.go b/internal/gitaly/service/repository/fetch_bundle_test.go
---- a/internal/gitaly/service/repository/fetch_bundle_test.go	2022-06-04 09:15:30.147502854 +1000
-+++ b/internal/gitaly/service/repository/fetch_bundle_test.go	2022-06-04 09:16:46.427649862 +1000
+--- a/internal/gitaly/service/repository/fetch_bundle_test.go	2022-06-23 06:19:25.304429227 +1000
++++ b/internal/gitaly/service/repository/fetch_bundle_test.go	2022-06-23 06:19:52.072493863 +1000
 @@ -34,7 +34,7 @@
  	bundlePath := filepath.Join(tmp, "test.bundle")
  
@@ -191,9 +206,9 @@ diff '--color=auto' -Naur a/internal/gitaly/service/repository/fetch_bundle_test
  
  	targetRepo, targetRepoPath := gittest.CreateRepository(ctx, t, cfg)
 diff '--color=auto' -Naur a/Makefile b/Makefile
---- a/Makefile	2022-06-04 09:15:30.119502802 +1000
-+++ b/Makefile	2022-06-04 09:16:46.427649862 +1000
-@@ -370,7 +370,7 @@
+--- a/Makefile	2022-06-23 06:19:25.276429156 +1000
++++ b/Makefile	2022-06-23 06:19:52.072493863 +1000
+@@ -374,7 +374,7 @@
  .PHONY: rspec
  ## Run Ruby tests.
  rspec: prepare-tests
@@ -202,7 +217,7 @@ diff '--color=auto' -Naur a/Makefile b/Makefile
  
  # This is a workaround for our unprivileged CI builds. We manually execute the
  # build target as privileged user, but then run the rspec target unprivileged.
-@@ -421,7 +421,7 @@
+@@ -425,7 +425,7 @@
  .PHONY: rubocop
  ## Run Rubocop.
  rubocop: ${SOURCE_DIR}/.ruby-bundle
@@ -211,7 +226,7 @@ diff '--color=auto' -Naur a/Makefile b/Makefile
  
  .PHONY: cover
  ## Generate coverage report via Go tests.
-@@ -493,7 +493,7 @@
+@@ -497,7 +497,7 @@
  # step. Both Omnibus and CNG assume it is in the Gitaly root, not in
  # _build. Hence the '../' in front.
  ${SOURCE_DIR}/.ruby-bundle: ${GITALY_RUBY_DIR}/Gemfile.lock ${GITALY_RUBY_DIR}/Gemfile
@@ -221,8 +236,8 @@ diff '--color=auto' -Naur a/Makefile b/Makefile
  
  ${SOURCE_DIR}/NOTICE: ${BUILD_DIR}/NOTICE
 diff '--color=auto' -Naur a/ruby/bin/gitaly-ruby b/ruby/bin/gitaly-ruby
---- a/ruby/bin/gitaly-ruby	2022-06-04 09:15:30.171502899 +1000
-+++ b/ruby/bin/gitaly-ruby	2022-06-04 09:16:46.427649862 +1000
+--- a/ruby/bin/gitaly-ruby	2022-06-23 06:19:25.316429255 +1000
++++ b/ruby/bin/gitaly-ruby	2022-06-23 06:19:52.072493863 +1000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/env ruby-2.7
@@ -230,8 +245,8 @@ diff '--color=auto' -Naur a/ruby/bin/gitaly-ruby b/ruby/bin/gitaly-ruby
  # Gitaly always spawns this executable with LANG=en_US.UTF-8. In case the
  # system doesn't have this local, Ruby will fall back to the C locale and as a
 diff '--color=auto' -Naur a/ruby/bin/ruby-cd b/ruby/bin/ruby-cd
---- a/ruby/bin/ruby-cd	2022-06-04 09:15:00.563445840 +1000
-+++ b/ruby/bin/ruby-cd	2022-06-04 09:16:46.427649862 +1000
+--- a/ruby/bin/ruby-cd	2022-06-23 06:19:25.316429255 +1000
++++ b/ruby/bin/ruby-cd	2022-06-23 06:19:52.072493863 +1000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/env ruby-2.7
@@ -239,8 +254,8 @@ diff '--color=auto' -Naur a/ruby/bin/ruby-cd b/ruby/bin/ruby-cd
  # This script lets you run `bundle exec` in one directory, and then changes into another.
  
 diff '--color=auto' -Naur a/ruby/spec/lib/gitlab/git/popen_spec.rb b/ruby/spec/lib/gitlab/git/popen_spec.rb
---- a/ruby/spec/lib/gitlab/git/popen_spec.rb	2022-06-04 09:15:00.563445840 +1000
-+++ b/ruby/spec/lib/gitlab/git/popen_spec.rb	2022-06-04 09:16:46.427649862 +1000
+--- a/ruby/spec/lib/gitlab/git/popen_spec.rb	2022-06-23 06:19:25.320429265 +1000
++++ b/ruby/spec/lib/gitlab/git/popen_spec.rb	2022-06-23 06:19:52.072493863 +1000
 @@ -40,7 +40,7 @@
      end
  
@@ -251,8 +266,8 @@ diff '--color=auto' -Naur a/ruby/spec/lib/gitlab/git/popen_spec.rb b/ruby/spec/l
        let(:status) { result.last }
  
 diff '--color=auto' -Naur a/_support/generate-proto-ruby b/_support/generate-proto-ruby
---- a/_support/generate-proto-ruby	2022-06-04 09:15:00.495445708 +1000
-+++ b/_support/generate-proto-ruby	2022-06-04 09:16:46.427649862 +1000
+--- a/_support/generate-proto-ruby	2022-06-23 06:19:25.280429169 +1000
++++ b/_support/generate-proto-ruby	2022-06-23 06:19:52.072493863 +1000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/env ruby-2.7
