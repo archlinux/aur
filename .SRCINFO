@@ -1,0 +1,11 @@
+pkgbase = sharik-bin
+	pkgdesc = Sharik is an open-source, cross-platform solution for sharing files via Wi-Fi or Mobile Hotspot
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/marchellodev/sharik
+	arch = x86_64
+	license = MIT
+	source = https://github.com/marchellodev/sharik/releases/download/v3.1/sharik_v3.1_linux.deb
+	sha256sums = 0eacc28d2dc98e0ae9d400aa80d0df412c3b66225b8e624da047c548bb279713
+
+pkgname = sharik-bin
