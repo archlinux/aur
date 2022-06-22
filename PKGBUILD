@@ -2,19 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-podweaver'
-pkgver='4.008'
+pkgver='4.009'
 pkgrel='1'
 pkgdesc="weave your Pod together from configuration and Dist::Zilla"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-dist-zilla>=5' 'perl-file-find-rule>=0' 'perl-moose>=0' 'perl-ppi>=0' 'perl-pod-elemental-perlmunger>=0.1' 'perl-pod-weaver>=4' 'perl-namespace-autoclean>=0')
-makedepends=()
 url='https://metacpan.org/release/Dist-Zilla-Plugin-PodWeaver'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-Plugin-PodWeaver-4.008.tar.gz')
-md5sums=('b3fb0f665cace2ad3d134f626c2546aa')
-sha512sums=('e780dc2269b9691d0c334866c278fd2dea2eb68a3d84a5c8dad80b2b9277a7396e523a2b8c45b32d7c8b7b1379b7e3f7d68871b40901d3fa3a2bb0d039e824e5')
-_distdir="Dist-Zilla-Plugin-PodWeaver-4.008"
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-Plugin-PodWeaver-4.009.tar.gz')
+md5sums=('bd9125b86745fe76f869fa0bedd2f505')
+sha512sums=('7ed77a66f491cd557c9149b0657a419a553140cf2dcd8037463757b62a0e5523748d6320e491d3ac416e37f5b8fbc829de4bf4c1d6b0f3f40f631ad34c2d1329')
+_distdir="Dist-Zilla-Plugin-PodWeaver-4.009"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
