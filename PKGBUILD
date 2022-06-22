@@ -3,7 +3,7 @@
 pkgname=zx
 pkgver=7.0.1
 _commit=cc9be7f09486d2dde8c8796ef6c03865b0224a7b
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for writing better scripts'
 arch=(any)
 url=https://github.com/google/zx
@@ -15,7 +15,10 @@ md5sums=(SKIP)
 
 build() {
 	cd "$pkgname"
-	npm install --production
+	npm install --ignore-scripts
+	npm run build
+	rm -r node_modules
+	npm install --ignore-scripts --production
 }
 
 package() {
@@ -25,9 +28,9 @@ package() {
 	install -d "$_npmdir/$pkgname"
 	cp -r * "$_npmdir/$pkgname"
 
-	local _bindir="$pkgdir/usr/bin"
-	mkdir -p "$_bindir"
-	ln -s "/usr/lib/node_modules/$pkgname/zx.mjs" "$_bindir/zx"
+	mkdir -p "$pkgdir/usr/bin"
+	ln -s "$(realpath -m --relative-to=/usr/bin /usr/lib/node_modules/$pkgname/build/cli.js)" "$pkgdir/usr/bin/zx"
+	chmod 0755 "$pkgdir/usr/bin/zx"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
