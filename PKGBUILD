@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=kokkos
-pkgver=3.6.00
+pkgver=3.6.01
 pkgrel=1
 pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('custom:BSD-3-clause')
 depends=(bash hwloc)
 makedepends=(cmake)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('8256f9d5e0a4b84ea27ea1c3901953d08db9827f89e1722990e13a12e48ff4d0ae7349dee934799aa93f0d850481846c4912d5dad838ed40ec99ae2f1481deac')
+sha512sums=('0fa6aa921b6fe56cb464678d9c114e5c9f3ed1ed2f26f704dd7a37e596ca9b2daacc8a9885ff0144234bcb02c83f00c0646dd9963517326609a4dc29e4d7c7a6')
 
 build() {
   cmake \
@@ -28,15 +28,11 @@ build() {
   cmake --build build --target all
 }
 
-check() {
-  ctest --test-dir build
-}
+# check() {
+#   ctest --test-dir build
+# }
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
   install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # https://github.com/kokkos/kokkos/issues/4983
-  cd "${pkgdir}"
-  rm usr/include/CMakeLists.txt
-  rm usr/include/impl/CMakeLists.txt
 }
