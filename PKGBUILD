@@ -2,8 +2,8 @@
 
 _name=jarowinkler
 pkgname=python-$_name
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A library for fast approximate string matching using Jaro and Jaro-Winkler similarity"
 arch=(x86_64)
 url="https://github.com/maxbachmann/JaroWinkler"
@@ -14,18 +14,12 @@ makedepends=(
     python-rapidfuzz-capi
     python-scikit-build
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "system_lib.patch")
-sha256sums=('788ac33e6ffdbd78fd913b481e37cfa149288575f087a1aae1a4ce219cb1c654'
-            '86c8215609e33539406eff8a1d778ae63dcbcd21a753f69a17f89e401f0d2e6c')
-
-prepare() {
-  cd "$_name-$pkgver"
-
-  # build using system jarowinkler-cpp
-  patch -Np1 -i "$srcdir/system_lib.patch"
-  rm -r extern/jarowinkler-cpp
-}
+checkdepends=(
+    python-hypothesis
+    python-pytest
+)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('01e7a6b24666472af6e36a54a525530740fe909c9085f5a9cd0be5d67e07c851')
 
 build() {
   cd "$_name-$pkgver"
@@ -33,6 +27,13 @@ build() {
       -G "Unix Makefiles" \
       --build-type None \
       -DCMAKE_CXX_FLAGS_INIT=-fmacro-prefix-map="${srcdir@Q}"=. # remove references to srcdir
+}
+
+check() {
+  cd "$_name-$pkgver"
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  PYTHONPATH="$PWD/_skbuild/linux-$CARCH-$python_version/cmake-install" pytest
 }
 
 package() {
