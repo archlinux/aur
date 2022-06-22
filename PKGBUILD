@@ -2,7 +2,7 @@
 
 pkgname=shadowsocks-gtk-rs
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop GUI frontend for shadowsocks-rust client implemented with gtk-rs."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/spyophobia/shadowsocks-gtk-rs"
@@ -12,6 +12,7 @@ depends=("gtk3" "hicolor-icon-theme" "libappindicator-gtk3")
 makedepends=("cargo")
 optdepends=(
     'shadowsocks-rust: the default shadowsocks backend implementation'
+    'gnome-shell-extension-appindicator: tray icon support on Gnome Desktop'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
 sha512sums=('edd34c98391b528b281158d52d965f9239a015f5efe57e509574a2cf67c52216da53a5ecbe484a9d2904ffb07ad0f10ec59c84ff4546e24808b66d3ef14f9bb8')
