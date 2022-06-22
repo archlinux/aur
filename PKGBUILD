@@ -1,20 +1,17 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-plack-middleware-methodoverride'
-pkgver='0.15'
+pkgver='0.20'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-plack' 'perl-uri' 'perl>=5.8.1')
-makedepends=()
+depends=('perl-plack')
 url='https://metacpan.org/release/Plack-Middleware-MethodOverride'
-source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/Plack-Middleware-MethodOverride-0.15.tar.gz')
-md5sums=('6422375e0f1ab232839becb04d3d4098')
-sha512sums=('5da480668764cb5e45889cce0ccd2090f5429288b95d470201bf6b76ca69a27488e58c8964e048efbb3f168760ca843f058ad5a1359f9c9ad671eb099e8316d3')
-_distdir="Plack-Middleware-MethodOverride-0.15"
+source=('https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Plack-Middleware-MethodOverride-0.20.tar.gz')
+sha256sums=('dbfb5a2efb48bfeb01cb3ae1e1c677e155dc7bfe210c7e7f221bae3cb6aab5f1')
+_distdir="Plack-Middleware-MethodOverride-0.20"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
