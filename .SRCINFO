@@ -1,25 +1,24 @@
 pkgbase = perl-dist-zilla-plugin-ourpkgversion
 	pkgdesc = no line insertion and does Package version with our
-	pkgver = 0.06
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-OurPkgVersion
 	arch = any
 	license = PerlArtistic
-	checkdepends = perl-pathtools>=0
-	checkdepends = perl-test-version>=0.04
-	checkdepends = perl-io>=0
-	checkdepends = perl-dist-zilla>=0
-	checkdepends = perl-test-simple>=0.88
-	depends = perl>=5.8
-	depends = perl-ppi>=0
-	depends = perl-moose>=0
-	depends = perl-dist-zilla>=0
-	depends = perl-moosex-types-perl>=0
-	depends = perl-namespace-autoclean>=0
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-version
+	checkdepends = perl-io
+	checkdepends = perl-dist-zilla
+	checkdepends = perl-test-simple
+	depends = perl
+	depends = perl-ppi
+	depends = perl-moose
+	depends = perl-dist-zilla
+	depends = perl-moosex-types-perl
+	depends = perl-namespace-autoclean
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Dist-Zilla-Plugin-OurPkgVersion-0.06.tar.gz
-	sha256sums = 5bc7e14aa2898f81240923baef849104e696c3b45ae0a69b95d091bf562c8e15
+	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Dist-Zilla-Plugin-OurPkgVersion-0.21.tar.gz
+	sha256sums = 76e3861f03f0ad87432089530349478f33dd07b56df650f8b971153c2e42d021
 
 pkgname = perl-dist-zilla-plugin-ourpkgversion
-

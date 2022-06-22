@@ -1,20 +1,18 @@
-# Maintainer: Kars Wang <jaklsy AT gmail.com>
+# Contributor: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-dist-zilla-plugin-ourpkgversion'
-pkgver=0.06
+pkgver=0.21
 pkgrel=1
 pkgdesc='no line insertion and does Package version with our'
 _dist='Dist-Zilla-Plugin-OurPkgVersion'
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
-depends=('perl>=5.8' 'perl-ppi>=0' 'perl-moose>=0' 'perl-dist-zilla>=0' 'perl-moosex-types-perl>=0' 'perl-namespace-autoclean>=0')
-checkdepends=('perl-pathtools>=0' 'perl-test-version>=0.04' 'perl-io>=0' 'perl-dist-zilla>=0' 'perl-test-simple>=0.88')
-makedepends=()
-provides=()
+depends=('perl' 'perl-ppi' 'perl-moose' 'perl-dist-zilla' 'perl-moosex-types-perl' 'perl-namespace-autoclean')
+checkdepends=('perl-pathtools' 'perl-test-version' 'perl-io' 'perl-dist-zilla' 'perl-test-simple')
 options=('!emptydirs' 'purge')
-source=("http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/$_dist-$pkgver.tar.gz")
-sha256sums=('5bc7e14aa2898f81240923baef849104e696c3b45ae0a69b95d091bf562c8e15')
+source=("https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/$_dist-$pkgver.tar.gz")
+sha256sums=('76e3861f03f0ad87432089530349478f33dd07b56df650f8b971153c2e42d021')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
