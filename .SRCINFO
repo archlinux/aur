@@ -3,7 +3,7 @@ pkgbase = bricscad-cn
 	pkgver = 22.1.06
 	pkgrel = 1
 	url = https://www.bricsys.com/
-	install = bricscad.install
+	install = bricscad-cn.install
 	arch = x86_64
 	license = custom
 	depends = qt5-gamepad
@@ -16,9 +16,11 @@ pkgbase = bricscad-cn
 	depends = libxcrypt-compat
 	depends = glu
 	depends = libffi6
+	optdepends = bricscad-communicator>=22: Addtional import/export file format support
 	provides = bricscad
+	conflicts = bricscad
 	options = !strip
-	source = manual://BricsCAD-V22.1.06-1-zh_CN.x86_64.rpm
-	sha256sums = 74bdffb3ed421eb5e547f1641bafb0de9d5ac8add78c56e214f7f0973e16833a
+	source = manual://BricsCAD-V22.1.06-1-zh_CN-amd64.deb
+	sha256sums = 06a803e221840c94d7b22420fcc26926a27023280556b29f5f219272da1c836d
 
 pkgname = bricscad-cn
