@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=1.0.34
+pkgver=1.0.37
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
@@ -17,15 +17,18 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "block-sponsored_messages.patch")
-sha512sums=('8d11ff44d9b8a384180dab7cc4b03b58fba84819b092eb5044d32c27078c885d59b2e0c052336c33cd6c7c8bf40fec547e6724b8bb888efccbc46b481b44b27f'
-            'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae')
+        "block-sponsored_messages.patch"
+        "fix-tgcalls-cstdint.patch")
+sha512sums=('e43592831dbf1576882024584356ad3cd195b8e8987e5a800daf28df34d6c5d8cabf943eb41959dd0956a1da4ec2a688b308d3ac93d7aaa5d8e3a5e3ad20ef4c'
+            'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae'
+            '7b66b1dc928c9107a5f47ba8782eec0f811fe5988449afcb24e1e15cbc7c4c3e284d0480e272a4ba7a15d4acc374cae72ba3caa382cc9e67dd23c7ed6bad0e8c')
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 prepare() {
     cd $_pkgname-$pkgver-full
     sed -i '/option(DESKTOP_APP_DISABLE_AUTOUPDATE/s/^# //' cmake/variables.cmake
-    patch -Np1 --binary -i  ../block-sponsored_messages.patch
+    patch -Np1 --binary -i ../block-sponsored_messages.patch
+    patch -Np1 --binary -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
 }
 
 build() {
