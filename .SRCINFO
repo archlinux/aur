@@ -1,0 +1,18 @@
+pkgbase = vieter
+	pkgdesc = Archlinux repository server & package build system, written in V.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://git.rustybever.be/vieter-v/vieter
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = vlang-git
+	depends = glibc
+	depends = openssl
+	depends = libarchive
+	depends = sqlite
+	source = vieter::git+https://git.rustybever.be/vieter-v/vieter#tag=0.3.0
+	md5sums = SKIP
+
+pkgname = vieter
