@@ -4,26 +4,31 @@ pkgname=ivy-calc
 _srcname=ivy
 _binname=ivyc
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='An APL-like calculator.'
 arch=('i686' 'x86_64')
 url='https://github.com/robpike/ivy'
 license=('BSD')
+depents=('glibc')
 makedepends=('go')
-provides=("${_binname}")
-conflicts=("${_binname}")
-replaces=('ivy-git')
+provides=("${_binname}=${pkgver}")
+conflicts=("${_binname}" 'ivy-git<1')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('36344aa566bcf59ee0733cb79f55261d1cb7c84c5534815a2e9177fcf06fa3d3')
+b2sums=('6834a413b7bd30aff6c081598b3a66bd69430d76812ebd3a20b8c35c589a16f16be46818bb1daf732966317b3aa100ef457967aa6c336f7e86a51e7f866208b7')
 
 build() {
 	cd "$srcdir/${_srcname}-${pkgver}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o "${_binname}" .
+	go build \
+        -o "${_binname}" \
+        -trimpath \
+        -buildmode='pie' \
+        -mod='readonly' \
+        -modcacherw \
+        -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+        .
 }
 
 package() {

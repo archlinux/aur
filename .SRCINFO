@@ -1,16 +1,16 @@
 pkgbase = ivy-calc
 	pkgdesc = An APL-like calculator.
 	pkgver = 0.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robpike/ivy
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = go
-	provides = ivyc
+	provides = ivyc=0.2.8
 	conflicts = ivyc
-	replaces = ivy-git
+	conflicts = ivy-git<1
 	source = ivy-0.2.8.tar.gz::https://github.com/robpike/ivy/archive/v0.2.8.tar.gz
-	sha256sums = 36344aa566bcf59ee0733cb79f55261d1cb7c84c5534815a2e9177fcf06fa3d3
+	b2sums = 6834a413b7bd30aff6c081598b3a66bd69430d76812ebd3a20b8c35c589a16f16be46818bb1daf732966317b3aa100ef457967aa6c336f7e86a51e7f866208b7
 
 pkgname = ivy-calc
