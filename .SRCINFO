@@ -1,0 +1,12 @@
+pkgbase = brother_hl-l2325dw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-L2325DW printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll2325dw_us
+	arch = i686
+	arch = x86_64
+	license = EULA
+	source = https://download.brother.com/welcome/dlf105333/hll2325dwpdrv-4.0.0-1.i386.deb
+	md5sums = e7d14c646d498e0350318a321d485275
+
+pkgname = brother_hl-l2325dw-lpr-bin
