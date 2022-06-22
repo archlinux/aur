@@ -5,14 +5,14 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='1.0.0'
-pkgrel=5
-_rc='-rc5'
+pkgrel=6
+_rc='-rc6'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
-makedepends=()
+makedepends=('git')	#git is used for fetching the latest version automatically
 depends=()
 provides=( 'skywire' )
 conflicts=( 'skywire' )
@@ -20,14 +20,14 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 sha256sums=('214f2335a95880d1a82513b3db2df665391bea3dd34933c78e60be6f9e2576ea')
-sha256sums_x86_64=('1eae647fd57ba7859c9cb61d9ab82e6a803cf76b24def008f26cb1d3a7660ba3')
-sha256sums_aarch64=('d8bfdadb86bbcdbd1fbf39b41a3d56d039974b6cc0f2e139525373b2f13ea5ce')
-sha256sums_armv8=('d8bfdadb86bbcdbd1fbf39b41a3d56d039974b6cc0f2e139525373b2f13ea5ce')
-sha256sums_armv7=('56e4e02278cc35cc4779c902b2625e8e51e0964a8160cd48652f74a5cdd76223')
-sha256sums_armv7l=('56e4e02278cc35cc4779c902b2625e8e51e0964a8160cd48652f74a5cdd76223')
-sha256sums_armv7h=('56e4e02278cc35cc4779c902b2625e8e51e0964a8160cd48652f74a5cdd76223')
-sha256sums_arm=('56e4e02278cc35cc4779c902b2625e8e51e0964a8160cd48652f74a5cdd76223')
-#https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
+sha256sums_x86_64=('cd9bd3794b19a8af4ba93ba57f35c3e291689f924d39cf40067e652f8e5d0d03')
+sha256sums_aarch64=('035294fa4df15c846ec374145a04997928d837d37bdee23cf771dca04258b4e7')
+sha256sums_armv8=('035294fa4df15c846ec374145a04997928d837d37bdee23cf771dca04258b4e7')
+sha256sums_armv7=('b43bf38c31c20f70031de6b4f2f764343d5535972a766b857f3e9a3a9fc19661')
+sha256sums_armv7l=('b43bf38c31c20f70031de6b4f2f764343d5535972a766b857f3e9a3a9fc19661')
+sha256sums_armv7h=('b43bf38c31c20f70031de6b4f2f764343d5535972a766b857f3e9a3a9fc19661')
+sha256sums_arm=('b43bf38c31c20f70031de6b4f2f764343d5535972a766b857f3e9a3a9fc19661')
+#https://github.com/skycoin/skywire/releases/download/v1.0.0-rc6/skywire-v1.0.0-rc6-linux-amd64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
@@ -38,7 +38,7 @@ source_armv7=( ${source_arm[@]} )
 source_armv7l=( ${source_arm[@]} )
 source_armv7h=( ${source_arm[@]} )
 
-## compress scripts archive & update checksums - now in updates.sh
+## compress scripts archive, update checksums - now in updates.sh
 #  tar -czvf skywire-scripts.tar.gz skywire-scripts && updpkgsums
 
 package() {
