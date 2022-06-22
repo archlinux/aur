@@ -1,6 +1,6 @@
 pkgbase = zihap-git
 	pkgdesc = A meta chat app that base on suckless sofware (surf , tabbled)
-	pkgver = 79cb6d781a7f15f6e41b70fc00e26e34d2f9d033
+	pkgver = 4dcba287ff10d814742e1647b7a708062ecc09a2
 	pkgrel = 1
 	url = https://gitlab.com/exkc/zihap/
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = zihap-git
 	depends = xorg-xprop
 	depends = libxft
 	depends = tomlc99-git
-	optdepends = dmenu: search page and select an already existing tab
 	optdepends = gstreamer: play video in zihap
 	provides = zihap
 	conflicts = zihap

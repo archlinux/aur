@@ -1,6 +1,6 @@
 _pkgname=zihap
 pkgname=zihap-git
-pkgver=79cb6d781a7f15f6e41b70fc00e26e34d2f9d033
+pkgver=4dcba287ff10d814742e1647b7a708062ecc09a2
 pkgrel=1
 pkgdesc="A meta chat app that base on suckless sofware (surf , tabbled)"
 arch=('i686' 'x86_64')
@@ -8,8 +8,7 @@ url="https://gitlab.com/exkc/zihap/"
 license=('custom:M/IT/X')
 depends=('webkit2gtk' 'gcr' 'xorg-xprop' 'libxft' 'tomlc99-git')
 makedepends=('git')
-optdepends=("dmenu: search page and select an already existing tab"
-          "gstreamer: play video in zihap")
+optdepends=("gstreamer: play video in zihap")
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
