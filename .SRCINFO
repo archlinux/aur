@@ -9,9 +9,12 @@ pkgbase = serioussam-vk
 	makedepends = cmake
 	makedepends = make
 	makedepends = sed
+	makedepends = vulkan-headers
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = vulkan-icd-loader
+	depends = vulkan-validation-layers
 	source = https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v1.10.2.tar.gz
 	sha512sums = SKIP
 
