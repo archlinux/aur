@@ -1,0 +1,12 @@
+pkgbase = brother_hl-l2325dw-cups-bin
+	pkgdesc = CUPS Wrapper for Brother HL-L2325DW printer
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll2325dw_us
+	arch = i686
+	arch = x86_64
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006893/linux-brprinter-installer-2.2.3-1.gz
+	md5sums = 5bf6bd33b13232614f0991b84e9582a3
+
+pkgname = brother_hl-l2325dw-cups-bin
