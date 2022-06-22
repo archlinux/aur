@@ -2,7 +2,7 @@
 
 pkgname=gallia
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extendable Pentesting Framework '
 arch=(any)
 url="https://github.com/Fraunhofer-AISEC/gallia"
@@ -20,4 +20,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	register-python-argcomplete --shell bash gallia | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/bash-completion/completions/gallia
+	register-python-argcomplete --shell fish gallia | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/fish/vendor_completions.d/gallia.fish
 }

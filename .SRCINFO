@@ -1,7 +1,7 @@
 pkgbase = gallia
 	pkgdesc = Extendable Pentesting Framework
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fraunhofer-AISEC/gallia
 	arch = any
 	license = apache
