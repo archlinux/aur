@@ -15,7 +15,7 @@ makedepends=(
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.10.8'
 	'cubeb>=r1398'
-	'dynarmic>=5.r204'
+	'dynarmic>=6'
 	'ffmpeg>=4.3.1'
 	'fmt>=8.0.1'
 	'git'
@@ -73,6 +73,8 @@ prepare() {
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
+	# fix for dynarmic>=6
+	sed -i 's/MemoryReadCode/*&/g' src/core/arm/dynarmic/arm_dynarmic_{32,64}.cpp
 }
 
 build() {

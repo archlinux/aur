@@ -10,7 +10,7 @@ pkgbase = yuzu
 	makedepends = cmake>=3.15
 	makedepends = cpp-httplib-compiled>=0.10.8
 	makedepends = cubeb>=r1398
-	makedepends = dynarmic>=5.r204
+	makedepends = dynarmic>=6
 	makedepends = ffmpeg>=4.3.1
 	makedepends = fmt>=8.0.1
 	makedepends = git
