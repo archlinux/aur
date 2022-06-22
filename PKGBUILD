@@ -2,12 +2,12 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r112.g632bb110
+pkgver=2.7.2.r178.g1e0d63f5
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
-makedepends=('git' 'curl' 'lsb-release' 'tar' 'unzip')
+makedepends=('git' 'curl')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
 conflicts=('steam++' 'watt-toolkit')
@@ -20,7 +20,7 @@ source=(
     )
 sha256sums=('SKIP'
             'SKIP'
-            '760596d2e182e0edf05f4a10bd0fa266086d700fdd96438d2663f28e538912e3'
+            '58dba3b5071cc8d0ed97fd7b3867e2b4e2dbaf6b402f9943314ce77d999e9b47'
             'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e')
 pkgver(){
     cd "${srcdir}/SteamTools"
