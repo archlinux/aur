@@ -1,6 +1,6 @@
 pkgbase = lightnovel.sh-git
 	pkgdesc = A terminal-based lightnovel reader written in Bash.
-	pkgver = 0
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/lr-tech/lightnovel.sh
 	arch = any

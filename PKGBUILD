@@ -1,7 +1,7 @@
 # Maintainer: Newman Sanchez <lrtech8 at gmail dot com>
 pkgname=lightnovel.sh-git
 _pkgname=lightnovel.sh
-pkgver=0
+pkgver=0.1
 pkgrel=1
 pkgdesc="A terminal-based lightnovel reader written in Bash."
 arch=('any')
