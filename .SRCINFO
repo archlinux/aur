@@ -1,0 +1,11 @@
+pkgbase = kuro-appimage
+pkgdesc = An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)
+pkgver = 8.1.3
+pkgrel = 2
+url = https://github.com/davidsmorais/kuro
+arch = x86_64
+license = MIT
+source = https://github.com/davidsmorais/kuro/releases/v8.1.3/Kuro-8.1.3.AppImage
+md5sums = 25bb66a4ebdafb7d82cd9eadf986f64581421882036c1e459b7f2333678d09beed98ce6ee002b8136205656b21b8eef3ee44d73b0d162ccc8e0721e5685d4d06
+
+pkgname = kuro-appimage
