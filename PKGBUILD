@@ -49,7 +49,7 @@ prepare() {
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
-	sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.js
+	sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.?s
 }
 
 pkgver() {
