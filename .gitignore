@@ -1,4 +1,5 @@
-powershell*.pkg.*
-powershell*.deb
-pkg
-src
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!powershell.install
