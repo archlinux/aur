@@ -8,16 +8,16 @@ url="https://gitlab.com/NH000/airpad"
 license=("GPL3")
 depends=("gtk3" "gettext")
 makedepends=("git" "coreutils")
-source=("$pkgname::git+$url#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0")
+source=("git+$url#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0")
 sha256sums=("SKIP")
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	make all OPTIMIZE=1
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 
     install -D -t "$pkgdir/usr/bin" "airpad"
 

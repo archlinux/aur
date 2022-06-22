@@ -9,7 +9,7 @@ pkgbase = airpad
 	makedepends = coreutils
 	depends = gtk3
 	depends = gettext
-	source = airpad::git+https://gitlab.com/NH000/airpad#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0
+	source = git+https://gitlab.com/NH000/airpad#tag=7602564b3f944fc331e4785c4fb45ca21a90c3f0
 	sha256sums = SKIP
 
 pkgname = airpad
