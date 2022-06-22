@@ -1,6 +1,6 @@
 pkgbase = asusctl
-	pkgdesc = Asus hardware control utilities
-	pkgver = 4.1.0
+	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = asusctl
 	depends = power-profiles-daemon
 	optdepends = acpi_call: fan control
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=5403c5fb4f491c34d75a3fb3197b8396ff22700a
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=967295fba7faf66f5b76c25056fbb2b42f605665
 	sha256sums = SKIP
 
 pkgname = asusctl
