@@ -1,0 +1,31 @@
+pkgbase = linux-rpi-legacy
+	pkgdesc = Linux
+	pkgver = 5.15.48
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = inetutils
+	options = !strip
+	options = !distcc
+	source = linux-5.15.48-b34bf3273c.tar.gz::https://github.com/raspberrypi/linux/archive/b34bf3273cfe492daa04fc57eb88782df1714a66.tar.gz
+	source = cmdline.txt
+	source = config.txt
+	source = config
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	md5sums = 42d49846a4a9b2612d0b958cee04dc4c
+	md5sums = 31c02f4518d46deb5f0c2ad1f8b083cd
+	md5sums = 7c2cace68dd229483b28ba7147347811
+	md5sums = 8c9f4df9503130411595ddd7b482d885
+	md5sums = 86d4a35722b5410e3b29fc92dae15d4b
+	md5sums = 0a5f16bfec6ad982a2f6782724cca8ba
+	md5sums = 69e1db90d78f691dc446fe2ab94727eb
+
+pkgname = linux-rpi-legacy
+
+pkgname = linux-rpi-legacy-headers
