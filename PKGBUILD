@@ -1,11 +1,11 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@proton.me>
 _pkgname=porkbun-dynamic-dns-python
 pkgname=${_pkgname}-git
 pkgver=r16.aca7407
 pkgrel=1
 pkgdesc="Our minimalist dynamic DNS client written in Python"
 arch=(any)
-url="https://github.com/Ta180m/porkbun-dynamic-dns-python"
+url="https://git.exozy.me/Ta180m/porkbun-dynamic-dns-python"
 license=('MIT')
 depends=('python' 'python-requests')
 backup=('etc/porkbun-ddns.json')

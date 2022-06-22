@@ -2,13 +2,13 @@ pkgbase = porkbun-dynamic-dns-python-git
 	pkgdesc = Our minimalist dynamic DNS client written in Python
 	pkgver = r16.aca7407
 	pkgrel = 1
-	url = https://github.com/Ta180m/porkbun-dynamic-dns-python
+	url = https://git.exozy.me/Ta180m/porkbun-dynamic-dns-python
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
 	backup = etc/porkbun-ddns.json
-	source = porkbun-dynamic-dns-python::git+https://github.com/Ta180m/porkbun-dynamic-dns-python.git
+	source = porkbun-dynamic-dns-python::git+https://git.exozy.me/Ta180m/porkbun-dynamic-dns-python.git
 	sha256sums = SKIP
 
 pkgname = porkbun-dynamic-dns-python-git
