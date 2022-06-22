@@ -1,0 +1,24 @@
+pkgbase = kvantum-git
+	pkgdesc = SVG-based theme engine for Qt5/6 (including config tool and extra themes)
+	pkgver = 1.0.2.r10.g01d397d5
+	pkgrel = 1
+	url = https://github.com/tsujan/Kvantum
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = qt6-tools
+	makedepends = qt6-svg
+	depends = qt5-svg
+	depends = kwindowsystem
+	depends = hicolor-icon-theme
+	optdepends = qt6-svg: Qt6 style
+	provides = kvantum-qt5
+	provides = kvantum
+	conflicts = kvantum-qt5
+	conflicts = kvantum
+	replaces = kvantum-qt5
+	source = git+https://github.com/tsujan/Kvantum.git
+	sha256sums = SKIP
+
+pkgname = kvantum-git
