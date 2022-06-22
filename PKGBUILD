@@ -4,9 +4,9 @@
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.5
-_clangver=13.0.1
+_clangver=14.0.5
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
