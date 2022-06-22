@@ -1,0 +1,18 @@
+pkgbase = countdown
+	pkgdesc = Track events until they happen or since they happened
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/lainsce/countdown
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = json-glib
+	depends = libadwaita
+	depends = libgee
+	source = https://github.com/lainsce/countdown/archive/1.0.4.tar.gz
+	b2sums = 50888640305b6185caa6d5d1e5732747ded96055dedf1e52d61ecd0f0c8118f2d315e1044f576f001afce08535badbfc3e6761cad6078c8cdd1ad43cdf2d7259
+
+pkgname = countdown
