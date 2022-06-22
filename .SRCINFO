@@ -1,6 +1,6 @@
 pkgbase = vex-git
 	pkgdesc = a simple ncurses-based hex editor
-	pkgver = v1.0.1
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/Baseng0815/vex.git
 	arch = x86_64
