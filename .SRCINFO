@@ -15,7 +15,6 @@ pkgbase = skywire-bin
 	arch = armhf
 	arch = armel
 	arch = arm
-	makedepends = git
 	provides = skywire
 	conflicts = skywire
 	source = skywire-scripts.tar.gz
