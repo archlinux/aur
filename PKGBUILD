@@ -2,7 +2,7 @@
 
 pkgname=vma-git
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Machine Archive format (VMA)'
 provides=('vma')
 
@@ -47,6 +47,7 @@ depends=(
     'glusterfs'
     'libaio'
     'libiscsi'
+    'libproxmox-backup-qemu0'
     'liburing'
 )
 
