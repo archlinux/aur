@@ -11,7 +11,7 @@ depends=("libappindicator-gtk3" "webkit2gtk")
 provides=("go-ipfs" "identia")
 conflicts=("go-ipfs" "identia")
 source=("https://github.com/iohzrd/identia/releases/download/v${pkgver}/identia_${pkgver}_amd64.deb")
-sha256sums=("6c95e4acb1792734f00be9806783dd1cb2da243c67844a07ac79a58100261ff9")
+sha256sums=("8c387a00e832bccb3afc1e37e708ac4501f3fbf6d322586eba09e16b26a47b93")
 
 package() {
 	cd "$srcdir"
