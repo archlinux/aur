@@ -15,28 +15,28 @@ source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    cd "$srcdir/$pkgname"
+    (
+        set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o "${pkgname%-*}" .
+    cd "$srcdir/$pkgname"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o "${pkgname%-*}" .
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	install -D -m755 ${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-	sed '11,313!d' doc.go > README
-	install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
+    cd "$srcdir/$pkgname"
+    install -D -m755 ${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
+    install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+    sed '11,313!d' doc.go > README
+    install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
