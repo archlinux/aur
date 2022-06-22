@@ -60,8 +60,10 @@ prepare(){
   # Install the XPLUS Modification data.
   tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTFE/"
   tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTSE/"
-  #chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
-  #chmod -R o=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
+  chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
+  chmod -R o=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
+  chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
+  chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
 
   # Making building scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
@@ -113,7 +115,7 @@ package(){
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   # Install data.
-  install -D -m 755 "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
 
   # Install helper scripts.
   install -D -m 755 $srcdir/serioussam-tfe.sh \
