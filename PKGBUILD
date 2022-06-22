@@ -119,7 +119,7 @@ prepare() {
   #patch -Np1 -i ../patches/
 
   # Enable vaapi on wayland
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
+  #patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
