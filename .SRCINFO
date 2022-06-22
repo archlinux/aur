@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 1.5.12
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.5.12.tar.gz
-	sha256sums = 259535ba66933eacf85ab46524188c84dcb4c39f40348455ce15e2c0aca68863
+	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.6.0.tar.gz
+	sha256sums = b82ad57306d5546713f15d5d70daea0408cf7f998c7566db16e0e6257e51e561
 
 pkgname = python-sentry_sdk
