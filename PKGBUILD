@@ -2,20 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-git'
-pkgver='2.046'
+pkgver='2.048'
 pkgrel='1'
 pkgdesc="Update your git repository after release"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpan-meta-check>=0.011' 'perl-datetime>=0' 'perl-dist-zilla>=4' 'perl-dist-zilla-plugin-config-git>=0' 'perl-file-copy-recursive>=0' 'perl-file-which>=0' 'perl-file-chdir>=0' 'perl-file-pushd>=0' 'perl-git-wrapper>=0.021' 'perl-ipc-system-simple>=0' 'perl-log-dispatchouli>=0' 'perl-module-runtime>=0' 'perl-moose>=0' 'perl-moosex-has-sugar>=0' 'perl-path-tiny>=0.048' 'perl-string-formatter>=0' 'perl-try-tiny>=0' 'perl-type-tiny>=0' 'perl-types-path-tiny>=0' 'perl-version-next>=0' 'perl-namespace-autoclean>=0.09' 'perl>=5.010')
-makedepends=()
-checkdepends=('perl-dist-zilla>=0' 'perl-test-fatal>=0')
+depends=('perl-cpan-meta-check' 'perl-datetime' 'perl-dist-zilla' 'perl-dist-zilla-plugin-config-git' 'perl-file-copy-recursive' 'perl-file-which' 'perl-file-chdir' 'perl-file-pushd' 'perl-git-wrapper' 'perl-ipc-system-simple' 'perl-log-dispatchouli' 'perl-module-runtime' 'perl-moose' 'perl-moosex-has-sugar' 'perl-path-tiny' 'perl-string-formatter' 'perl-try-tiny' 'perl-type-tiny' 'perl-types-path-tiny' 'perl-version-next' 'perl-namespace-autoclean' 'perl')
+checkdepends=('perl-dist-zilla' 'perl-test-fatal')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-Git'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-2.046.tar.gz')
-md5sums=('3dfe55ff3f7f7ba6c1f061697d90b1a7')
-sha512sums=('ac94d73c19f4f4ef9736a58cca439cc5fa64ee0c91869b2fc8be205134258c49e8164e8b67eb1d2e9e34fe6ad1f377ecacd5721d79f6d22f258ab1b275cbe92e')
-_distdir="Dist-Zilla-Plugin-Git-2.046"
+source=(https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-$pkgver.tar.gz)
+sha256sums=('2e218df3db6ef154a86bbc2d735b6435e2252fdf0a289b5a8a87614104a890b4')
+_distdir="Dist-Zilla-Plugin-Git-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

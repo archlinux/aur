@@ -1,39 +1,37 @@
 pkgbase = perl-dist-zilla-plugin-git
 	pkgdesc = Update your git repository after release
-	pkgver = 2.046
+	pkgver = 2.048
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-Git
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-dist-zilla>=0
-	checkdepends = perl-test-fatal>=0
-	depends = perl-cpan-meta-check>=0.011
-	depends = perl-datetime>=0
-	depends = perl-dist-zilla>=4
-	depends = perl-dist-zilla-plugin-config-git>=0
-	depends = perl-file-copy-recursive>=0
-	depends = perl-file-which>=0
-	depends = perl-file-chdir>=0
-	depends = perl-file-pushd>=0
-	depends = perl-git-wrapper>=0.021
-	depends = perl-ipc-system-simple>=0
-	depends = perl-log-dispatchouli>=0
-	depends = perl-module-runtime>=0
-	depends = perl-moose>=0
-	depends = perl-moosex-has-sugar>=0
-	depends = perl-path-tiny>=0.048
-	depends = perl-string-formatter>=0
-	depends = perl-try-tiny>=0
-	depends = perl-type-tiny>=0
-	depends = perl-types-path-tiny>=0
-	depends = perl-version-next>=0
-	depends = perl-namespace-autoclean>=0.09
-	depends = perl>=5.010
+	checkdepends = perl-dist-zilla
+	checkdepends = perl-test-fatal
+	depends = perl-cpan-meta-check
+	depends = perl-datetime
+	depends = perl-dist-zilla
+	depends = perl-dist-zilla-plugin-config-git
+	depends = perl-file-copy-recursive
+	depends = perl-file-which
+	depends = perl-file-chdir
+	depends = perl-file-pushd
+	depends = perl-git-wrapper
+	depends = perl-ipc-system-simple
+	depends = perl-log-dispatchouli
+	depends = perl-module-runtime
+	depends = perl-moose
+	depends = perl-moosex-has-sugar
+	depends = perl-path-tiny
+	depends = perl-string-formatter
+	depends = perl-try-tiny
+	depends = perl-type-tiny
+	depends = perl-types-path-tiny
+	depends = perl-version-next
+	depends = perl-namespace-autoclean
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-2.046.tar.gz
-	md5sums = 3dfe55ff3f7f7ba6c1f061697d90b1a7
-	sha512sums = ac94d73c19f4f4ef9736a58cca439cc5fa64ee0c91869b2fc8be205134258c49e8164e8b67eb1d2e9e34fe6ad1f377ecacd5721d79f6d22f258ab1b275cbe92e
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-2.048.tar.gz
+	sha256sums = 2e218df3db6ef154a86bbc2d735b6435e2252fdf0a289b5a8a87614104a890b4
 
 pkgname = perl-dist-zilla-plugin-git
-
