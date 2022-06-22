@@ -1,8 +1,8 @@
 # Maintainer: Jason Nader <jason.nader@protonmail.com>
 
 pkgname=i3status-rust-git
-pkgver=0.20.0.r1950.g1efa069
-pkgrel=2
+pkgver=0.30.0.r2591.g32945e96
+pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
@@ -11,16 +11,13 @@ depends=('libpulse')
 makedepends=('git' 'rust')
 optdepends=('alsa-utils: for the volume block'
             'bluez: for the bluetooth block'
-            'curl: for the weather block'
             'fakeroot: for the pacman block to show pending updates'
-            'ibus: for the ibus block'
             'kdeconnect: for the kdeconnect block'
             'lm_sensors: for the temperature block'
-            'networkmanager: for the networkmanager block'
             'powerline-fonts: for all themes using the powerline arrow char'
             'pulseaudio: for the volume block'
             'speedtest-cli: for the speedtest block'
-            'ttf-font-awesome-4: for the awesome icons'
+            'ttf-font-awesome: for the awesome icons'
             'upower: for the battery block')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
