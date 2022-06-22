@@ -1,13 +1,13 @@
 # Maintainer: fearlessdots <filipebertelli@tutanota.com>
 
 pkgname=sharik-bin
-pkgver="3.1"
-pkgrel="1"
+pkgver=3.1
+pkgrel=1
 pkgdesc="Sharik is an open-source, cross-platform solution for sharing files via Wi-Fi or Mobile Hotspot"
 arch=('x86_64')
 url="https://github.com/marchellodev/sharik"
 license=('MIT')
-depends=()
+depends=('gtk3')
 source=(
 	"https://github.com/marchellodev/sharik/releases/download/v${pkgver}/sharik_v${pkgver}_linux.deb"
 )
