@@ -174,7 +174,7 @@ else
 	echo -e "${BGREEN}DEBUG: Coolio: music is already cached!${NOCOLOR}"
 fi
 
-echo -e "${BORANGE}MUSIC: Still Alive from at the end of Portal during the credits, by Jonathan Coulton: http://www.jonathancoulton.com .${NOCOLOR}"
+echo -e "${BORANGE}MUSIC: Still Alive from at the end of Portal during the credits, by Jonathan Coulton: http://www.jonathancoulton.com, Owned by Valve Corporation.${NOCOLOR}"
 
 mplayer /var/cache/stillalive/Portal_-_Still_Alive.mp3 >/dev/null 2>/dev/null &
 
