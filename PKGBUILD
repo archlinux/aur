@@ -4,7 +4,7 @@
 pkgname=python-projectq
 _name="ProjectQ"
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source framework for quantum computing"
 arch=('x86_64')
 url="https://github.com/ProjectQ-Framework/ProjectQ"
@@ -17,7 +17,6 @@ depends=(
     'python-scipy'
 )
 makedepends=(
-    'git'
     'pybind11'
     'python-build'
     'python-installer'
@@ -27,16 +26,16 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 optdepends=('python-boto3: support for AWS Braket service')
-source=("${pkgname}::git+https://github.com/ProjectQ-Framework/${_name}.git#tag=v${pkgver}")
-b2sums=('SKIP')
+source=("https://github.com/${_name}-Framework/${_name}/releases/download/v${pkgver}/${pkgname/python-}-${pkgver}.tar.gz")
+b2sums=('8fa8346e59eaaa2226dd26e351bc3e752f0dc0d092550a4a4060096be727f0fce2bb5303461ce18ee9041a585a1c2298661757314bddecbbfadac2936a31be30')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_name,,}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${pkgname}/projectq"
+    cd "${srcdir}/${_name,,}-${pkgver}/projectq"
     python -m installer --destdir="${srcdir}/test" ../dist/*.whl
     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
     export PYTHONPATH="${srcdir}"/test/usr/lib/python${python_version}/site-packages
@@ -44,7 +43,7 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_name,,}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
