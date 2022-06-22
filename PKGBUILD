@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp-git
-pkgver=5.0.0.r0.gcb34651
+pkgver=5.0.1.r0.g9235548
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version)."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${pkgname%-git}::git+${url}/seiscomp.git"
 		"${pkgname%-git}/src/base/extras::git+${url}/extras.git"
 		"${pkgname%-git}/src/base/contrib-gns::git+${url}/contrib-gns.git"
 		"${pkgname%-git}/src/base/contrib-ipgp::git+${url}/contrib-ipgp.git"
-		"${pkgname%-git}/src/base/contrib-sed::git+${url}/contrib-sed.git"
+		"${pkgname%-git}/src/base/contrib-sed::git+https://github.com/swiss-seismological-service/sed-SeisComP-contributions.git"
         "${pkgname%-git}.sh"
         "${pkgname%-git}-sysusers.conf"
         "${pkgname%-git}-tmpfiles.conf")
