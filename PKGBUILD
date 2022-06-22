@@ -1,4 +1,6 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=ivy-git
 pkgver=r374.8ed7a2a
 pkgrel=1

@@ -1,1 +1,9 @@
-/home/aksr/arch/pkg/.gitignore
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.diff
+!*.hook
+!*.install
+!*.patch
+!*.txt
