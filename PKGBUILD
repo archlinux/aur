@@ -27,14 +27,15 @@ build(){
 }
 
 package() {
-
     install -d "${pkgdir}/usr/share/licenses/${_gitname}"
-    install -d "${pkgdir}/opt/${_gitname}"
+    install -d "${pkgdir}/usr/lib/hlib"
     install -d "${pkgdir}/usr/bin"
+
 
     install -m644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 
-    cp -r "${srcdir}/${_gitname}/dist/"* "${pkgdir}/opt/${_gitname}" -R
-    echo "#!/usr/bin/bash\n/opt/hascal/hascal" > "${pkgdir}/usr/bin/${_gitname}"  
-    chmod 644 "${pkgdir}/usr/bin/${_gitname}"
+    cp -r "${srcdir}/${_gitname}/dist/hlib"* "${pkgdir}/usr/lib/hlib" -R
+
+    install -m755 "${srcdir}/${_gitname}/dist/${_gitname}" "${pkgdir}/usr/bin/hascal"
+
 }
