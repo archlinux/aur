@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.199 Kernel Configuration
+# Linux/x86 5.4.200 Kernel Configuration
 #
 
 #
@@ -3923,10 +3923,9 @@ CONFIG_TCG_CRB=m
 CONFIG_TELCLOCK=m
 CONFIG_DEVPORT=y
 # CONFIG_XILLYBUS is not set
-# end of Character devices
-
 CONFIG_RANDOM_TRUST_CPU=y
 # CONFIG_RANDOM_TRUST_BOOTLOADER is not set
+# end of Character devices
 
 #
 # I2C support
