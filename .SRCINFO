@@ -1,11 +1,11 @@
 pkgbase = remotelight-bin
 	pkgdesc = Multifunctional LED Control Software
 	pkgver = 0.2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Drumber/RemoteLight
 	arch = any
 	license = GPL3
-	depends = java-runtime
+	depends = jre8-openjdk
 	provides = remotelight
 	conflicts = remotelight
 	source = https://github.com/Drumber/RemoteLight/releases/download/v0.2.5.2/RemoteLight-0.2.5.2.jar
