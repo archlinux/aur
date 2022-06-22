@@ -1,9 +1,7 @@
 post_install() {
-		setfacl -d -m g::rwX opt/seiscomp
-		chmod g+s opt/seiscomp
+		find opt/seiscomp -type d -exec setfacl -d -m g::rwX '{}' \;
 }
 
 post_upgrade() {
-		setfacl -d -m g::rwX opt/seiscomp
-		chmod g+s opt/seiscomp
+		find opt/seiscomp -type d -exec setfacl -d -m g::rwX '{}' \;
 }

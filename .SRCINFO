@@ -1,15 +1,15 @@
 pkgbase = seiscomp-docs
-	pkgdesc = SeisComp documentations.
-	pkgver = 4.8.2
+	pkgdesc = SeisComP documentations.
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.seiscomp.de
 	install = seiscomp-docs.install
 	arch = any
 	license = AGPL3
 	depends = seiscomp
-	source = https://www.seiscomp.de/downloader/seiscomp-4.8.2-doc.tar.gz
+	source = https://www.seiscomp.de/downloader/seiscomp-5.0.0-doc.tar.gz
 	source = seiscomp-docs-tmpfiles.conf
-	sha256sums = 00875712e7ae512f8610e98f393afe0539cffa0adcde51a49d22bc199eacd829
+	sha256sums = bbbb71a8b37d5537e1c32c81437428be2e4d1db6564301c35c70f5d8795c72be
 	sha256sums = f97f1a840f144d1dfce190c39e1ef8c3a4b14bd2d959e0a7259b3fa7cf21d840
 
 pkgname = seiscomp-docs
