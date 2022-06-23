@@ -1,7 +1,7 @@
 pkgbase = reflective-rapidjson
 	pkgdesc = Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON
 	pkgver = 0.0.15
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/Martchus/reflective-rapidjson
 	arch = i686
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = reflective-rapidjson
 	makedepends = llvm
 	depends = c++utilities
 	depends = rapidjson
-	depends = llvm-libs>=13.0.0
-	depends = llvm-libs<14.0.0
+	depends = llvm-libs>=14.0.0
+	depends = llvm-libs<15.0.0
 	depends = clang
 	optdepends = boost: use Boost.Hana instead of code generator
 	optdepends = reflective-rapidjson-doc: API documentation
