@@ -1,7 +1,7 @@
 pkgbase = qtutilities-qt6
 	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (using Qt 6)
 	pkgver = 6.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/qtutilities
 	arch = i686
 	arch = x86_64
