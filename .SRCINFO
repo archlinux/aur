@@ -1,8 +1,8 @@
 pkgbase = alephs
-	pkgdesc = List of Pakistan's emergency services.
+	pkgdesc = A List of Pakistan's Emergency Help Services.
 	pkgver = 0.5
 	pkgrel = 1
-	url = https://www.techtum.dev/work-spcs-220121.html
+	url = https://techtum.dev/work-alephs-220621.html#work-alephs-220621
 	arch = any
 	license = MIT
 	depends = python

@@ -3,12 +3,12 @@
 pkgname=alephs
 pkgver=0.5
 pkgrel=1
-pkgdesc="List of Pakistan's emergency services."
+pkgdesc="A List of Pakistan's Emergency Help Services."
 depends=(python)
 arch=(any)
 
 source=("https://github.com/siphr/alephs/archive/refs/tags/$pkgver.tar.gz")
-url=https://www.techtum.dev/work-spcs-220121.html
+url=https://techtum.dev/work-alephs-220621.html#work-alephs-220621
 license=('MIT')
 
 build() {
