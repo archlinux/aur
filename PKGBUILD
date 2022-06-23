@@ -6,7 +6,7 @@ pkgdesc='Crontab module for read and writing crontab files and accessing the sys
 arch=('any')
 url='https://pypi.python.org/pypi/python-crontab'
 license=('LGPLv3')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('4bbe7e720753a132ca4ca9d4094915f40e9d9dc8a807a4564007651018ce8c31')
 
