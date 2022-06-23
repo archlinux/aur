@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Nozzle.R1
-_pkgver=1.1-1
+_pkgver=1.1-1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.1.1
+pkgrel=1
 pkgdesc='Nozzle Reports'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f584bf8a184a3704f80590a4a5aae6d0e740519732f2647e35584afc98d5217')
+sha256sums=('777e0fdada4a4d4c590885897a52beb91a5d5a1b8073c471448b3644d9715639')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
