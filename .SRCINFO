@@ -4,13 +4,13 @@ pkgbase = fluxcomp
 	pkgrel = 1
 	url = https://github.com/kevleyski/fluxcomp
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = gcc-libs
 	provides = fluxcomp
 	conflicts = flux-git
 	source = fluxcomp::git+https://github.com/kevleyski/fluxcomp.git#branch=distrotech-flux
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fluxcomp
-
