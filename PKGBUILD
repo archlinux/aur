@@ -3,7 +3,7 @@
 
 _gemname=sonic-pi-cli
 pkgname=$_gemname
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple command line interface for Sonic Pi'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('afa98168f84e965a253ebf1c42949fd5711729e775c872fb39b584533937ffd3')
+sha256sums=('7e67b04d9a46f892236053e26d57a17bccc90a2c21143adc412a496243f419be')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
