@@ -1,17 +1,16 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp-git
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc='LF-Preview, a wrapper for the lf file manager with image previews, and other features'
 license=('MIT')
 arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
-depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat)
+depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat dunst lolcat)
 optdepends=(
   'dialog: Required by many lfp functions outside the scope of image and video previews'
-  'dunst: To receive notifications upon task completion and so forth'
   'git: cloning repos from within lfp'
   )
 source=("git+$url.git")
