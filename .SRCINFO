@@ -1,8 +1,8 @@
 pkgbase = easystroke
-	pkgdesc = Use mouse gestures to initiate commands and hotkeys.
+	pkgdesc = Use mouse gestures to initiate commands and hotkeys
 	pkgver = 0.6.0
-	pkgrel = 22
-	url = http://easystroke.sourceforge.net/
+	pkgrel = 23
+	url = https://github.com/mrsteve0924/easystroke
 	arch = x86_64
 	license = custom:ISC
 	makedepends = boost
@@ -16,12 +16,7 @@ pkgbase = easystroke
 	depends = libxtst
 	depends = dbus-glib
 	depends = xorg-server
-	source = https://downloads.sourceforge.net/easystroke/easystroke-0.6.0.tar.gz
-	source = easystroke-0.6.0-gcc7-build-fix.patch
-	source = replace-sigc-group-with-lambda.patch
-	sha512sums = a74cbdfd2b56e6b20d895297e80fb63f3d8ac938235ecf7067f984d087004af22a5ea0116ae20b948e238b02a06b14044a7025d65840f0c8d00542332387c921
-	sha512sums = ab243cd570a4878767bfc64f39dbf6cc938bf050b50e4ac3bfe5036f5fbdd21eeeedc5cf89784a4f73f78233132b981d00087482835430d240f0b55e16d1acb4
-	sha512sums = 30b3a50b3434b22d3aed75f8c023eafb78f6980a23c506e9ed70e8787fd2786a1a882468b5c8334e3161c241c1878f8b4f9ba0178e07aad0388d44522e70c245
+	source = easystroke-0.6.0.tar.gz::https://github.com/mrsteve0924/easystroke/archive/v0.6.0.tar.gz
+	sha256sums = c5851abd8b1b77d494eff108b2c0e2cc8cf689800bcfb2eead9f5e68274b37f9
 
 pkgname = easystroke
-
