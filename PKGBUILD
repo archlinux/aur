@@ -8,7 +8,7 @@ pkgver=1.9.6
 pkgrel=4
 pkgdesc='A CSS4 selector implementation for Beautiful Soup (legacy Python 2 version)'
 arch=('any')
-url="https://github.com/facelessuser/${_distname}"
+url="https://pypi.org/project/${_distname}/${pkgver}/"
 license=('MIT')
 depends=(
     'python2'
