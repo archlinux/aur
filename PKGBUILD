@@ -1,6 +1,6 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=19.0.5
+pkgver=19.0.6
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Matrix
@@ -18,7 +18,7 @@ source=("https://github.com/peak3d/${_gitname}/archive/${pkgver}-${_koditarget}.
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
 
-sha256sums=('43064b79462052ae68b342d82af733361ce38c5461acd3e1fa1c87ef8c24201a'
+sha256sums=('aa4a58bf763ae6b502160d4fb8377c8df5bbec25620128887bac3b6f95917d7c'
             'cc026f59fd6e37ae90f3449df50810f1cefa37da9444e1188302d910518710da')
 
 prepare() {

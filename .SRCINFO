@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-any
 	pkgdesc = Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture
-	pkgver = 19.0.5
+	pkgver = 19.0.6
 	pkgrel = 1
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = kodi-addon-inputstream-adaptive-any
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-19
-	source = https://github.com/peak3d/inputstream.adaptive/archive/19.0.5-Matrix.tar.gz
+	source = https://github.com/peak3d/inputstream.adaptive/archive/19.0.6-Matrix.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/19.4-Matrix.tar.gz
-	sha256sums = 43064b79462052ae68b342d82af733361ce38c5461acd3e1fa1c87ef8c24201a
+	sha256sums = aa4a58bf763ae6b502160d4fb8377c8df5bbec25620128887bac3b6f95917d7c
 	sha256sums = cc026f59fd6e37ae90f3449df50810f1cefa37da9444e1188302d910518710da
 
 pkgname = kodi-addon-inputstream-adaptive-any
