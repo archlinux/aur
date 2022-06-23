@@ -1,6 +1,6 @@
 pkgbase = pack-cli-git
 	pkgdesc = CLI for building apps using Cloud Native Buildpacks
-	pkgver = 0.27.0+r13.g1e535cc2
+	pkgver = 0.27.0+r15.g21a3f40d
 	pkgrel = 1
 	url = https://buildpacks.io/
 	arch = x86_64
