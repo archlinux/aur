@@ -1,11 +1,10 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 
 pkgname=ddrescueview
-_pkgver=0.4
-_pkgver_alpha=4
-pkgver=${_pkgver}_alpha_${_pkgver_alpha}
-pkgrel=4
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="Graphical viewer for GNU ddrescue log files"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/ddrescueview"
@@ -14,19 +13,19 @@ provides=(ddrescueview)
 conflicts=(ddrescueview)
 depends=('gtk2')
 makedepends=('xz' 'lazarus')
-source=("https://phoenixnap.dl.sourceforge.net/project/ddrescueview/Test%20builds/v${_pkgver}%20alpha%20${_pkgver_alpha}/${pkgname}-source-${_pkgver}~alpha${_pkgver_alpha}.tar.xz")
-sha256sums=('8cf914da04f2004499f9af9429b38045c7148c6aff44be96fd3853c0a84d256c')
-b2sums=('81d8101b81d9fc8a3636a749356655e84ef868bf1c519392cf59851c3d6ea243905bd08f3cdc76f1db7195222f46efbd56702af0d162f8cafceb143c139d0515')
+source=("https://downloads.sourceforge.net/project/${pkgname}/Test%20builds/v${pkgver}/ddrescueview-source-${pkgver}.tar.xz")
+sha256sums=('57383c394e62612ce2a799438b00c6e3c465c31f9ba940e077f624e2e7028465')
+b2sums=('bc4ef003b0df7a7059a9f3d738e294a527a039e04e84732b285497df60a575dfedcec3deea87166dd8136cb7745b8d821e18bd499cc2b059fa463e178bdeb892')
 
 build() {
-  cd ${pkgname}-source-${_pkgver}~alpha${_pkgver_alpha}/source
+  cd ${pkgname}-source-${pkgver}/source
 #lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=gtk2 --build-all project_pea.lpi && [ -f pea ]
 #  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=gtk2 --build-all ddrescueview.lpi
   lazbuild --lazarusdir=/usr/lib/lazarus ddrescueview.lpi
 }
 
 package() {
-  cd ${pkgname}-source-${_pkgver}~alpha${_pkgver_alpha}
+  cd ${pkgname}-source-${pkgver}
 
   install -D -m 755 source/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 
