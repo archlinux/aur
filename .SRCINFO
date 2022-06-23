@@ -1,7 +1,7 @@
 pkgbase = keepass-plugin-kpuinput
 	pkgdesc = Keepass plugin to use /dev/uinput for auto-typing
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keepass.info/help/kb/autotype_wayland.html
 	arch = x86_64
 	license = GPL
@@ -13,8 +13,10 @@ pkgbase = keepass-plugin-kpuinput
 	source = https://keepass.info/extensions/v2/kpuinput/KPUInput-1.3-Source.zip
 	source = https://keepass.info/extensions/v2/kpuinput/KPUInput-1.3.zip
 	source = path_fix.patch
+	source = 89-kpuinput.rules
 	sha256sums = f4619df4c27f0ca07cc4705124aeffb4072dbd164c5920d95e1fc4a946c79e40
 	sha256sums = 20fb468085a6c0b0f87f95efe7b94406acbacbc132d2f52b17d3d3087ee4a294
 	sha256sums = 44f988874f4bf7fe7b154b075293bf7cdd048be59ea99252fa9d48bcc0995cab
+	sha256sums = e03ed96e0be14976f618be4f386aebf9ecb38982786295025a1f439ca47ea663
 
 pkgname = keepass-plugin-kpuinput

@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !path_fix.patch
+!89-kpuinput.rules

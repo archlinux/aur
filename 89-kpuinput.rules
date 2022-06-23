@@ -1,0 +1,2 @@
+# Enable write access to uinput to enable KeePass Auto-Type on Wayland
+KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess", OPTIONS+="static_node=uinput"
