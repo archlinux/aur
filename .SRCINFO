@@ -1,7 +1,7 @@
 pkgbase = crocoddyl
 	pkgdesc = optimal control library for robot control under contact sequence
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loco-3d/crocoddyl
 	arch = i686
 	arch = x86_64
