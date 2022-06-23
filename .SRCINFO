@@ -2,6 +2,7 @@ pkgbase = communist
 	pkgdesc = Communist is a simple GTK4 based p2p messenger
 	pkgver = 1.4
 	pkgrel = 1
+	url = https://github.com/ProfessorNavigator/communist
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
