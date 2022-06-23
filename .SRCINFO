@@ -1,13 +1,13 @@
 pkgbase = roam-research
 	pkgdesc = A note-taking tool for networked thought
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://roamresearch.com/
 	arch = any
 	license = custom
-	source = roam-research-0.0.14.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/roam-research_0.0.14_amd64.deb
+	source = roam-research-0.0.15.tgz::https://roam-electron-deploy.s3.us-east-2.amazonaws.com/roam-research_0.0.15_amd64.deb
 	source = LICENSE
-	md5sums = b4e455d6ad81f7ef82cb540b323afcbe
+	md5sums = 61428ab6ff6523cc1c53e7dfb26cebbb
 	md5sums = 34234c4e196ceeaf00e4ee7f29b9fb63
 
 pkgname = roam-research
