@@ -4,7 +4,7 @@
 
 pkgname=graphite-cli-git
 pkgver=0.19.2.r0.9df94d9d
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
 license=('AGPL3')
@@ -43,6 +43,9 @@ build() {
     # when generating completions
     SHELL=bash node ./dist/src/index.js completion > "$srcdir/pre-bash-graphite-completions"
     SHELL=zsh node ./dist/src/index.js completion > "$srcdir/pre-zsh-graphite-completions"
+    
+    # make the completion script suitable to be a loadable function
+    sed 's/compdef _index.js_yargs_completions index.js/_index.js_yargs_completions/' -i "$srcdir/pre-zsh-graphite-completions"
 
     # make it so autocompletion works for both graphite and gt on both zsh and bash
     
@@ -57,9 +60,9 @@ build() {
 package() {
     # npm is a lot better than yarn at installing global packages in a way that is friendly to packages.
     npm install -g --no-audit --prefix "$pkgdir/usr" "$srcdir/graphite-cli.tgz"
-    install -D "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
-    install -D "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
-    install -D "$srcdir/bash-graphite-completions" "$pkgdir/usr/share/bash-completion/completions/graphite"
-    install -D "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
+    install -D --mode=u=rw,go=r "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
+    install -D --mode=u=rw,go=r "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
+    install -D --mode=u=rw,go=r "$srcdir/bash-graphite-completions" "$pkgdir/usr/share/bash-completion/completions/graphite"
+    install -D --mode=u=rw,go=r "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
     chown -R root:root "$pkgdir"
 }
