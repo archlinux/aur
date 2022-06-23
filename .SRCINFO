@@ -12,6 +12,7 @@ pkgbase = swayimg-git
 	depends = wayland
 	depends = libxkbcommon
 	depends = json-c
+	depends = pango
 	depends = hicolor-icon-theme
 	depends = libavif
 	depends = libjxl

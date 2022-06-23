@@ -4,7 +4,7 @@
 
 _pkgname=swayimg
 pkgname=${_pkgname}-git
-pkgver=1.0
+pkgver=1.7
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
@@ -19,6 +19,7 @@ depends=(
   'wayland'
   'libxkbcommon'
   'json-c'
+  'pango'
   'hicolor-icon-theme'
   'libavif'
   'libjxl'
