@@ -1,6 +1,6 @@
 pkgbase = remote-desktop-manager-free
 	pkgdesc = Devolutions Remote Desktop Manager Free centralizes all remote connections on a single platform that is securely shared between users and across the entire team.
-	pkgver = 2022.2.0.5
+	pkgver = 2022.2.0.6
 	pkgrel = 1
 	url = https://remotedesktopmanager.com/
 	install = remote-desktop-manager-free.install
@@ -9,7 +9,7 @@ pkgbase = remote-desktop-manager-free
 	depends = webkit2gtk
 	depends = p11-kit
 	options = !strip
-	source = RemoteDesktopManager.Free_2022.2.0.5_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2022.2.0.5/RemoteDesktopManager.Free_2022.2.0.5_amd64.deb
-	sha256sums = dbeba9c5d166d9ff8e6cc8000d8e16ea6f47f86b62db919f6385e02f18ad51cc
+	source = RemoteDesktopManager.Free_2022.2.0.6_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2022.2.0.6/RemoteDesktopManager.Free_2022.2.0.6_amd64.deb
+	sha256sums = 12421990f6286233c0479eb87c677bd40cd2640ec959c987d9b7d6ee0ba63347
 
 pkgname = remote-desktop-manager-free
