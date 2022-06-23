@@ -4,7 +4,7 @@
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=kuro
 pkgver=8.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/davidsmorais/kuro"
@@ -19,6 +19,9 @@ package() {
     # Install the application files in /opt
     install -d "${pkgdir}/opt"
     cp -R "${srcdir}/opt/Kuro" "${pkgdir}/opt/"
+    # Link the binary
+    install -d ${pkgdir}/usr/bin/
+    ln -s /opt/Kuro/kuro ${pkgdir}/usr/bin/kuro
     # Install the .desktop file
     install -D -m644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     # Install the icons
