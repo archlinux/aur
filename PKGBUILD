@@ -2,12 +2,12 @@
 pkgname=pixterm-rust
 cratename=pixterm
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to show images in a terminal'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/RubixDev/pixterm'
 license=('GPL3')
-depends=()
+depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('pixterm')
 source=("$cratename-$pkgver.tar.gz::https://static.crates.io/crates/$cratename/$cratename-$pkgver.crate")

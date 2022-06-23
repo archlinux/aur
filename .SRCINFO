@@ -1,7 +1,7 @@
 pkgbase = pixterm-rust
 	pkgdesc = CLI to show images in a terminal
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RubixDev/pixterm
 	arch = i686
 	arch = pentium4
@@ -12,6 +12,7 @@ pkgbase = pixterm-rust
 	arch = aarch64
 	license = GPL3
 	makedepends = cargo
+	depends = gcc-libs
 	conflicts = pixterm
 	source = pixterm-0.4.0.tar.gz::https://static.crates.io/crates/pixterm/pixterm-0.4.0.crate
 	b2sums = f995ee23a445b8b6bb18d84d03dc90f7d47542d3d28c7e91a823027cb6e171f0888a900458dda1f910f6e192cf7b54a2e43b305bc2905215e366a79883a17c8d
