@@ -1,7 +1,7 @@
 pkgbase = fluxcomp
 	pkgdesc = flux is an interface description language used by DirectFB
 	pkgver = 1.4.4.r0.d873d29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevleyski/fluxcomp
 	arch = x86_64
 	arch = aarch64

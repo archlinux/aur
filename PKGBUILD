@@ -3,7 +3,7 @@
 
 pkgname=fluxcomp
 pkgver=1.4.4.r0.d873d29
-pkgrel=1
+pkgrel=2
 pkgdesc="flux is an interface description language used by DirectFB"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kevleyski/fluxcomp"
