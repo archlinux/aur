@@ -3,7 +3,7 @@
 
 _pkgname=pamac
 pkgname=$_pkgname-nosnap
-pkgver=10.4.0
+pkgver=10.4.1
 pkgrel=1
 
 pkgdesc="A Gtk3 frontend from Manjaro Linux for libalpm with AUR, flatpak, and appindicator support."
@@ -19,7 +19,7 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 source=("$_pkgname-$pkgver.tar.bz2::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.bz2")
-sha512sums=('0fccf34ab3eee721ab26a572dc80edd04b71a7d39e8e3896592e4cbff671d496eecc96692eb907271e96294b4097f250d1346b45d372e3f3b2e49c412756a0ad')
+sha512sums=('c19cfa855151cf36e85b65d9cedcc8ea823a4e3097b6c5fc8459358fb7d93b2d682dffeeb21b30950ccd0686c081285b379bfbdd5dd04342594e2351acefcb4f')
 
 prepare() {
   # adjust version string
