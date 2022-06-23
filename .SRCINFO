@@ -1,19 +1,19 @@
 pkgbase = rx-git
 	pkgdesc = Extensible Rust-based pixel editor (git)
-	pkgver = 0.2.0+r112+gdef829f
+	pkgver = r760.18625a6
 	pkgrel = 1
 	url = http://cloudhead.io/rx/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = git
-	makedepends = rust
+	makedepends = clang
+	makedepends = cargo
 	makedepends = cmake
-	makedepends = glfw-x11
-	depends = libx11
-	depends = desktop-file-utils
+	makedepends = libxcursor
+	makedepends = xorg-xinput
+	makedepends = git
 	source = git+https://github.com/cloudhead/rx
 	sha512sums = SKIP
 
 pkgname = rx-git
-
