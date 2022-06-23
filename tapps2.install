@@ -1,0 +1,9 @@
+post_install() {
+  echo Updating the MIME database cache...
+  update-mime-database /usr/share/mime/
+}
+
+post_remove() {
+  echo Updating the MIME database cache...
+  update-mime-database /usr/share/mime/
+}
