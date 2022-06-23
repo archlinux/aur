@@ -1,24 +1,27 @@
-# Maintainer:
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=python-gputil
-_name=GPUtil
+_pkg="${pkgname#python-}"
 pkgver=1.4.0
-pkgrel=3
-pkgdesc="A Python module for getting the GPU status from NVIDA GPUs using nvidia-smi"
+pkgrel=4
+pkgdesc="Fetches GPU status from NVIDIA GPUs using nvidia-smi"
 arch=('any')
 url="https://github.com/anderskm/gputil"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('099e52c65e512cdfa8c8763fca67f5a5c2afb63469602d5dcb4d296b3661efb9')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('6da9cef276a98d4fd152312aecc7fd977754b480407f67b64b615a12c7ebd3cb')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
