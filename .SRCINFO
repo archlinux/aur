@@ -1,6 +1,6 @@
 pkgbase = kafkactl
 	pkgdesc = Command Line Tool for managing Apache Kafka
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/deviceinsight/kafkactl/
 	arch = i686
@@ -10,6 +10,6 @@ pkgbase = kafkactl
 	makedepends = go
 	depends = glibc
 	optdepends = kubectl
-	source = kafkactl-2.3.0.tar.gz::https://github.com/deviceinsight/kafkactl/archive/v{PKGVER}.tar.gz
+	source = kafkactl-2.4.0.tar.gz::https://github.com/deviceinsight/kafkactl/archive/v{PKGVER}.tar.gz
 
 pkgname = kafkactl
