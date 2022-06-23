@@ -2,4 +2,3 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!patch-prefs-background-refresh.diff
