@@ -3,16 +3,16 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=flmsg
-pkgver=4.0.19
-pkgrel=2
+pkgver=4.0.20
+pkgrel=1
 pkgdesc="Forms management editor for Amateur Radio standard message formats"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.w1hkj.com/"
 groups=('w1hkj')
 license=('GPL')
 depends=('fldigi')
 source=(http://www.w1hkj.com/files/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('3e6e6a01435b7a7917f55dce490596d3d888451fd60758c1e22a324426668eab')
+sha256sums=('4ec630776b94189b307a22a28135813d703b3ed22d65e20ec4a937955deccb6e')
 
 build() {
   cd $pkgname-$pkgver
