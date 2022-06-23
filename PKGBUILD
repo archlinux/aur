@@ -8,7 +8,7 @@ pkgdesc="A new mobile app SDK to help developers and designers build modern mobi
 arch=("x86_64")
 url="https://${pkgname}.dev"
 license=("custom" "BSD" "CCPL")
-depends=("git" "glu" "java-environment" "libglvnd" "unzip" "curl")
+depends=("git" "glu" "java-environment" "libglvnd" "unzip")
 optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
 makedepends=("python")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
@@ -33,8 +33,8 @@ package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   cp -ra "${srcdir}/${pkgname}" "${pkgdir}/opt/"
-  ${pkgdir}/opt/${pkgname}/bin/internal/update_dart_sdk.sh
-  ${pkgdir}/opt/${pkgname}/bin/flutter precache
+  "${pkgdir}/opt/${pkgname}/bin/internal/update_dart_sdk.sh"
+  "${pkgdir}/opt/${pkgname}/bin/flutter" precache
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod a+r {} +
   chmod a+rw "${pkgdir}/opt/${pkgname}/version"

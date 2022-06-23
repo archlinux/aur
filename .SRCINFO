@@ -14,7 +14,6 @@ pkgbase = flutter
 	depends = java-environment
 	depends = libglvnd
 	depends = unzip
-	depends = curl
 	optdepends = android-sdk
 	optdepends = android-studio
 	optdepends = intellij-idea-community-edition
