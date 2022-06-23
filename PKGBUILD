@@ -1,11 +1,9 @@
-# Maintainer: zhullyb <zhullyb [at] outlook dot com>
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
-# Contributor: Bruce Zhang <zttt183525594@gmail.com>
+# Maintainer: sukanka <su975853527 [AT] gmail.com>
 
 pkgname=dida-bin
 _pkgname=dida
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.20
+pkgrel=1
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
@@ -15,7 +13,7 @@ provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}-${arch}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
 "${_pkgname}".sh
 )
-sha512sums=('38fddbbe150d5361727396f774f03c366db6239b0384347836d95ba935e7c49ffe24e88df0b1cc6cacb8fe3a9d915b3efd869b0c3fa21869dc36c697fdd123f2'
+sha512sums=('9816e8c86e2a31c7486afcff07cb16f21e38559b2800688b7b4cad1b072c85823ca94ce42b1762ba554a88724b1c0ee929858001fa2c01efd020d6e4d108a269'
             '6044bb26cc7bb096072bfae02ff9ffb989513c22b802d5bc04bed36043e1195e01747541a97f9b3df57372cb0560a4ce9bb13f51d16d0838b0d246aeb9883eee')
 
 prepare(){
