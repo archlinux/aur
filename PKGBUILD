@@ -7,7 +7,7 @@ arch=('any')
 url="https://codeberg.org/theooo/mantra.py"
 source=("https://codeberg.org/theooo/mantra.py/raw/branch/main/mantra")
 # source=("${pkgname}::git+${git-repo-url}")
-depends=("python" "python-beautifulsoup4")
+depends=("python" "python-beautifulsoup4" "fzf")
 license=("custom")
 sha512sums=("SKIP")
 
