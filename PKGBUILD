@@ -1,4 +1,4 @@
-# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 _pkgname=ocropy
