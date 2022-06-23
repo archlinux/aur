@@ -1,0 +1,21 @@
+pkgbase = python-labml-app
+	pkgdesc = Mobile first web app to monitor PyTorch & TensorFlow model training
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/labmlai/labml
+	arch = any
+	makedepends = python-setuptools
+	depends = python-labml
+	depends = gunicorn
+	depends = python-numpy
+	depends = python-labml-db
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-aiofiles
+	provides = python-labml-app
+	source = https://files.pythonhosted.org/packages/source/l/labml_app/labml_app-0.0.10.tar.gz
+	source = https://raw.githubusercontent.com/labmlai/labml/9b51c8494b4e9ef008cf30f85d626fee3a3028bf/app/readme.md
+	sha256sums = 88306bfcaaa18de9f37777f5056ac46478d2ab160de100d2dabf99cce9f641ce
+	sha256sums = 9f951aa55b4f0a70b1416e2f89eef3548cdef9f3de212c51c378bafe1fcbe7e4
+
+pkgname = python-labml-app
