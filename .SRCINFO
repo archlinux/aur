@@ -1,7 +1,7 @@
 pkgbase = virt-v2v
 pkgdesc = Convert a guest image to use with KVM
-pkgver = 1.44.2
-pkgrel = 2
+pkgver = 2.0.6
+pkgrel = 1
 url = https://libguestfs.org/virt-v2v.1.html
 install = virt-v2v.install
 arch = x86_64
@@ -10,11 +10,12 @@ makedepends = ocaml
 makedepends = ocaml-findlib
 depends = libguestfs
 depends = libosinfo
+depends = libnbd
 optdepends = mingw-w64-rhsrvany: for Windows based VM
 optdepends = virtio-win: for windows based VM
-source = https://download.libguestfs.org/virt-v2v/1.44-stable/virt-v2v-1.44.2.tar.gz
+source = https://download.libguestfs.org/virt-v2v/2.0-stable/virt-v2v-2.0.6.tar.gz
 source = virt-v2v.install
-sha256sums = c99ecabb93d1e6c81f0070b951e7bf42cee2a65a3ece387e01217f06080447fc
+sha256sums = e5eba9f7960340334100c06e1380bf84d0d730c53cdf587fefbfab7c889aca15
 sha256sums = 6235d47396e8e193a80de17825fe337f18ab0bb6ffb4a61f204bea57e5a90f7d
 
 pkgname = virt-v2v
