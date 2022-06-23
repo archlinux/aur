@@ -1,4 +1,4 @@
-# Maintainer: Vianney le Clément <vleclement AT gmail · com>
+# Maintainer: Yohann Rebattu <yohann AT rebattu · fr>
 _pkgname=hamster-shell-extension
 pkgname=$_pkgname-git
 pkgver=20220623.g495a37a
