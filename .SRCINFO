@@ -6,6 +6,7 @@ pkgbase = bazecor-git
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
+	makedepends = git
 	depends = fuse
 	provides = bazecor
 	conflicts = bazecor
