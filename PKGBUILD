@@ -30,7 +30,8 @@ depends=(
   portaudio
   libsamplerate
   sdl2
-  wxgtk3
+  qt6-base
+  qt6-tools
   fmt
   soundtouch
   wayland
@@ -46,7 +47,7 @@ makedepends=(
   python
   vulkan-headers
 )
-provides=(pcsx2)
+provides=(pcsx2-qt)
 conflicts=(pcsx2)
 source=(
 git+https://github.com/PCSX2/pcsx2.git
@@ -88,6 +89,7 @@ build()
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
+    -DQT_BUILD=ON \
     -DXDG_STD=TRUE \
     -USE_VULKAN=ON \
     -DUSE_SYSTEM_LIBS=ON \
@@ -100,6 +102,14 @@ build()
 package()
 {
     DESTDIR="${pkgdir}" cmake --install build
+    mv "${pkgdir}"/usr/bin/pcsx2-qt "${pkgdir}"/usr/share/PCSX2
+    ln -s "${pkgdir}"/usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
+
+}
+
+post_install()
+{
+  rm /usr/bin/pcsx2
 }
 
 # vim: ts=2 sw=2 et:
