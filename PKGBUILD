@@ -3,7 +3,7 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=3.7.5
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
@@ -20,8 +20,16 @@ optdepends=('gtk3: GTK environment integration'
 provides=("telegram-desktop")
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
-source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz")
-sha512sums=('f8faa2816ae01c341f7153c1a1bfeb1300b4832d34f16758ad77642541a00f47ad0cbada3b26949f5cd2b55ef5057e062b7958fe33359518519d9d3e455a7696')
+source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
+		"fix-tgcalls-cstdint.patch")
+sha512sums=('54f864171d46ba93cb0cd9137e91fe072a3795e82315825684d0e8a577ff1006378d716500d28b546fe52128ebaaf94a6966e528848b37ac03c058615f9be397'
+            'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888')
+
+prepare() {
+    cd $_pkgname-v$pkgver-full
+
+    patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
+}
 
 build() {
     cd $_pkgname-v$pkgver-full
