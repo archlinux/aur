@@ -1,0 +1,10 @@
+--- nanobind-config.cmake.orig	2022-06-23 14:05:21.129867857 -0400
++++ nanobind-config.cmake	2022-06-23 14:05:27.423257892 -0400
+@@ -20,7 +20,6 @@
+ set(NB_SUFFIX ${NB_SUFFIX} CACHE INTERNAL "")
+ 
+ get_filename_component(NB_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+-get_filename_component(NB_DIR "${NB_DIR}" PATH)
+ set(NB_DIR ${NB_DIR} CACHE INTERNAL "")
+ 
+ # ---------------------------------------------------------------------------

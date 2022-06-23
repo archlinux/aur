@@ -1,0 +1,18 @@
+pkgbase = nanobind-git
+	pkgdesc = Seamless operability between C++17 and Python
+	pkgver = 8555cf8
+	pkgrel = 1
+	url = https://github.com/wjakob/nanobind
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = cmake
+	depends = pugixml
+	source = git+https://github.com/wjakob/nanobind.git
+	source = git+https://github.com/Tessil/robin-map
+	source = global_cmake_config.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 9f801d2a4c27b91ea1c3cb290838d0c3
+
+pkgname = nanobind-git
