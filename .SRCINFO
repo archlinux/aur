@@ -1,7 +1,7 @@
 pkgbase = nanobind-git
 	pkgdesc = Seamless operability between C++17 and Python
 	pkgver = 8555cf8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wjakob/nanobind
 	arch = x86_64
 	license = BSD
