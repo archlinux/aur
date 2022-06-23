@@ -9,7 +9,7 @@ pkgdesc="Python-based OCR package using recurrent neural networks (formerly ocro
 arch=('any')
 url="https://github.com/ocropus/${_pkgname}"
 license=('APACHE')
-depends=('python2-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
+depends=('python2-pillow' 'python2-scipy' 'python2-matplotlib'
          'imagemagick' 'opencv' 'python2-lxml')
 makedepends=('git')
 provides=("${_pkgname}")
@@ -27,12 +27,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgname}"
   cp "$srcdir/en-default.pyrnn.gz" models
-  
-  #sed -i 's|numpy.fromstring|numpy.frombytes|' ocrolib/common.py
-  #sed -i 's|tostring|tobytes|' ocrolib/common.py
-  #sed -i 's|im.tobytes()|im.tostring()|' 'ocrolib/common.py'
-  #sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' 'ocrolib/common.py'
-  sed -i 's|tobytes|tostring|' ocrolib/common.py
 }
 
 build() {
