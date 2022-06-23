@@ -1,7 +1,7 @@
 pkgbase = python2-html5lib
 	pkgdesc = HTML parser based on the WHATWG HTML specification (for Python 2)
 	pkgver = 1.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://pypi.org/project/html5lib-python/1.1/
 	arch = any
 	license = MIT
@@ -13,14 +13,12 @@ pkgbase = python2-html5lib
 	makedepends = python2-setuptools
 	depends = python2-six
 	depends = python2-webencodings
-	optdepends = python2-genshi: Genshi treewalker
+	optdepends = python2-chardet: recommended to deal with unrecognized encodings
+	optdepends = python2-genshi: to support Genshi streams
+	optdepends = python2-lxml: recommended for fast parsing (using native code library)
 	source = html5lib-python-1.1.tar.gz::https://github.com/html5lib/html5lib-python/archive/1.1.tar.gz
 	source = https://github.com/html5lib/html5lib-tests/archive/71eebd59772d1d39aced0c0582ae9c09acf3ce6e.tar.gz
 	sha256sums = 66e9e24a53c10c27abb6be8a3cf2cf55824c6ea1cef8570a633cb223ec46e894
 	sha256sums = c866f5e4ae9ef34313e2b61fcb74849b6f8aef970bf8249956b6a5d142197087
 
 pkgname = python2-html5lib
-	depends = python2-six
-	depends = python2-webencodings
-	depends = python2-chardet
-	depends = python2-lxml

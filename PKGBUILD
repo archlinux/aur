@@ -8,7 +8,7 @@ pkgname='python2-html5lib'
 _basename="${pkgname#python2-}"
 _distname="${_basename}-python"
 pkgver=1.1
-pkgrel=8
+pkgrel=9
 pkgdesc='HTML parser based on the WHATWG HTML specification (for Python 2)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -18,7 +18,11 @@ depends=(
     'python2-webencodings'
 )
 makedepends=('python2-setuptools')
-optdepends=('python2-genshi: Genshi treewalker')
+optdepends=(
+    'python2-chardet: recommended to deal with unrecognized encodings'
+    'python2-genshi: to support Genshi streams'
+    'python2-lxml: recommended for fast parsing (using native code library)'
+)
 checkdepends=(
     'python2-chardet'
     'python2-lxml'
@@ -52,11 +56,6 @@ check() {
 }
 
 package() {
-    depends+=(
-        'python2-chardet'
-        'python2-lxml'
-    )
-
     cd "${_tarname}"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
