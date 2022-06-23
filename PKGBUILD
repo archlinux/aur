@@ -1,27 +1,32 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=rpc2
-pkgver=2.10
-pkgrel=4
+pkgver=2.37
+pkgrel=1
 pkgdesc="Remote procedure call package for IP/UDP"
-arch=(x86_64)
-url="http://www.coda.cs.cmu.edu"
-license=("LGPL")
+arch=('x86_64')
+url='https://github.com/cmusatyalab/coda'
+license=('GPL')
 depends=('lwp' 'readline')
-validpgpkeys=('477F78AA863A90A623664AA1CE0D7E10997007A2')
-source=(http://www.coda.cs.cmu.edu/pub/rpc2/src/rpc2-$pkgver.tar.gz{,.asc})
-sha256sums=('b381f0a51aab470f4698f0143cf04b22c64e9176d6e4f11c0a50d28b3169fa07'
-            'SKIP')
+makedepends=('git' 'perl')
+provides=('librpc2.so' 'libse.so')
+changelog=NEWS
+source=("coda-common::git+$url#tag=$pkgname-$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('4EEDEE4D29DAE8A18CAFDA18BEC621B96C853813') ## Jan Harkes
 
 build() {
-  cd "$srcdir"/rpc2-$pkgver
-  ./configure --prefix=/usr
-  make
+	cd "coda-common/lib-src/$pkgname/"
+	./bootstrap.sh
+	./configure --prefix=/usr
+	make CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
-  cd "$srcdir"/rpc2-$pkgver
-  make DESTDIR="$pkgdir" install
+	cd "coda-common/lib-src/$pkgname/"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.ipv6 "$pkgdir/usr/share/doc/$pkgname/README"
 }

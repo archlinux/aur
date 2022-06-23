@@ -1,17 +1,19 @@
 pkgbase = rpc2
 	pkgdesc = Remote procedure call package for IP/UDP
-	pkgver = 2.10
-	pkgrel = 4
-	url = http://www.coda.cs.cmu.edu
+	pkgver = 2.37
+	pkgrel = 1
+	url = https://github.com/cmusatyalab/coda
+	changelog = NEWS
 	arch = x86_64
-	license = LGPL
+	license = GPL
+	makedepends = git
+	makedepends = perl
 	depends = lwp
 	depends = readline
-	source = http://www.coda.cs.cmu.edu/pub/rpc2/src/rpc2-2.10.tar.gz
-	source = http://www.coda.cs.cmu.edu/pub/rpc2/src/rpc2-2.10.tar.gz.asc
-	validpgpkeys = 477F78AA863A90A623664AA1CE0D7E10997007A2
-	sha256sums = b381f0a51aab470f4698f0143cf04b22c64e9176d6e4f11c0a50d28b3169fa07
+	provides = librpc2.so
+	provides = libse.so
+	source = coda-common::git+https://github.com/cmusatyalab/coda#tag=rpc2-2.37?signed
+	validpgpkeys = 4EEDEE4D29DAE8A18CAFDA18BEC621B96C853813
 	sha256sums = SKIP
 
 pkgname = rpc2
-

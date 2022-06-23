@@ -1,0 +1,519 @@
+New in 2.37
+
+* Fix typos and update link to rijndael/AES test values.
+
+New in 2.36
+
+* Fix deadlocks between setuptls and free_dest/reload_certificates.
+  Setuptls runs gnutls_handshake which might be waiting for the main thread to
+  get more data off of the tcp socket, so the main thread should avoid waiting
+  for the completion of the handshake.
+
+New in 2.35
+
+* Don't log errors for received retransmitted packets after an SFTP transfer
+  has completed.
+* Some code cleanups, whitespace fixes.
+* Simplify eat_uvbytes in codatunneld, as it does not have to be blocking and
+  doesn't have to process all received buffers at once.
+* Don't leave a codatunnel connection hanging when additional data (or EOF)
+  arrives before the tls handshake has completed.
+
+New in 2.34
+
+* Add a way to pass the hostname we are trying to connect to from venus to
+  codatunneld so that we can properly check if the x509 certificate matches
+  the host we're trying to connect to.
+* Fix uv_udp_send regression in libuv-1.27.0 when we're passing a message back
+  to venus/codasrv over the unix domain socket.
+
+New in 2.33
+
+* Fix occasional deadlock on while tearing down a tunnel.
+
+New in 2.32
+
+* Avoid tearing down libuv tunnels from worker threads, now signalling the
+  mainloop to do it for us.
+* Fix memory leak when firing off the gnutls_record_recv worker thread.
+* Update Coda CA certificate.
+* Re-introduce SIGHUP handler in codatunneld to reload certificates because
+  that is the easiest way to force a reload on Coda clients.
+
+New in 2.31
+
+* Validate received header magic after gnutls_record_receive so we drop
+  random SSL connection attempts early.
+* Make sure msglen in the header matches the received packet size.
+
+New in 2.30
+
+* Automatically reload certificate store whenever /etc/coda/server.crt
+  file is modified.
+* Fix queuing of packets for gnutls_record_send workers to prevent one
+  destination from using up all available worker threads.
+* Pass socket EOF to the receiver thread so that we will process all
+  received packets up to the point the socket is closed instead of
+  throwing received but unencrypted packets away.
+* Make sure we retransmit packet when gnutls_record_send got interrupted.
+* Be more proactive about cleaning up dead TLS connections.
+
+New in 2.29
+
+* Fixed bad assert in codatunneld.
+* Improve error paths when TLS handshake fails.
+* Make sure we deallocate queued buffers and wake up blocked readers
+  when a remote peer has gone away.
+* Change Coda root CA to a 2048-bit certificate, which turned out to be
+  a better fit for the secure hardware key.
+* Fix compatibility with the older gnutls on Debian-jessie and Ubuntu-trusty
+
+New in 2.28
+
+* Added GnuTLS support to secure traffic through a codatunnel.
+* Changed codatunnel_fork prototype to include location of a ssl
+  certificate directory.
+
+New in 2.27
+
+* Changed how we handle PKG_CONFIG_PATH to find the lwp library.
+* Make sure rp2gen is built when we are running 'make dist' in a clean
+  source tree so that rpc2 stubs can be built in later stages.
+
+New in 2.26
+
+* Fixed up function prototypes to catch any instances where we are passing
+  insufficient or incorrect arguments.
+
+New in 2.25
+
+* Cleaned up code formatting, any code changes are likely accidental.
+
+New in 2.24
+
+* Just some compiler warning fixes, no actual code changes.
+
+New in 2.23
+
+* Do not suppress retransmissions over the TCP tunnel. Although we have
+  reliable delivery, we still need to see RPC2_BUSY responses as a keepalive
+  during long running operations.
+
+New in 2.22
+
+* In SFTP (the bulk/file transport layer for RPC2), packets that didn't
+  arrive when they were expected were assumed to be lost and retransmitted.
+  These retransmissions were too aggressive for a non-lossy link, such as the
+  reliable, ordered delivery we get from a TCP tunnel. A few retransmissions
+  early in a transfer added up to sending data packets multiple times during
+  a fetch operation, and could even lead to an exponential increase when
+  pushing to the server. Now we strategically ignore specific (duplicate)
+  acknowledgements to avoid falling into these degenerate cases.
+* Improve error checking and handling of allocation failures in codatunneld.
+* Queue received SFTP packets between the socket listener and the server LWP
+  that drives the transfer to avoid unnecessary dropping of received packets.
+
+New in 2.21
+
+* Fix for passing wrong peer address length when accepting new TCP tunnel
+  connection.
+
+New in 2.20
+
+* Fix incompatibility between 32-bit and 64-bit systems when forwarding
+  packets through tcp tunnels.
+
+New in 2.18/2.19:
+
+* Recycling unused remote destination entries.
+* UDP-only clients don't use up a remote destination slots on the server.
+
+New in 2.17:
+
+* Extend codatunneld to support TCP tunneled connections between client
+  and server.
+
+New in 2.16:
+
+* Introduce libuv-based codatunneld helper process to handle the actual
+  sending and receiving of RPC2 and SFTP packets.
+
+New in 2.15:
+
+* Use stdlib defined exit codes.
+
+New in 2.14:
+
+* Remove unnecessary cast when packing RPC2_EncryptionKey.
+* Fix for packing of struct CallCountEntry.
+
+New in 2.13:
+
+* Fixed incorrect packing of an array in an RPC response.
+* Check the unpack buffer is large enough for a trailing \0 after strings.
+* Limit max boundedbs allocation on the server to RPC2_MAXPACKETSIZE.
+
+New in 2.12:
+
+* Vastly improved readability of the stub generated code with faster
+  compilation and smaller object sizes.
+  - Add pack/unpack functions for basic types.    (Si Lao)
+  - Generating pack/unpack functions for structs. (Si Lao)
+  - Generating pack/unpack functions for request and response packets.
+* Fixed unbounded memory allocation when sending array of structs.
+* Removed dead code, fixed compile warnings.
+
+New in 2.11:
+
+* Call abort() when AES or RNG tests fail.
+* Fixes for build and test programs.
+* Removed some unused and unreachable code.
+* Use constant time comparison for received packet integrity check.
+* Clang build fix. (Martin Petrov)
+* Lua-5.2 fix. (Tom Callaway)
+
+New in 2.10:
+
+* AES-CCM-16 was incorrectly named AES-CCM-12.
+* AES-CCM checksum validation always failed when the final block was partial.
+
+New in 2.9:
+
+* Send busy responses on new but not yet enabled connections.
+* Make sure we wake up threads waiting for binding to complete.
+* Clean up mrpc2_SendReliably, it sometimes exited too early and ignored the
+  overall timebomb timer.
+* Precompute retransmission intervals.
+
+New in 2.8:
+
+* Simplified retransmission interval calculation.
+* Do not wait for the full RPC2 timeout when receiving a busy response.
+* Unify rpc2 & sftp retransmission counters.
+* Fixed client-to-server sftp transfer failures.
+* PBKDF check would trigger unnecessary warnings depending on clock
+  granularity.
+
+New in 2.7:
+
+* Build improvements, use pkgconfig.
+* Don't add rpc2's 100ms delayed ack delay in SFTP roundtrip estimate.
+* Reduce the number of packets SFTP drops when we receive duplicates.
+* Retransmit more worried packets (which 'should' have been acked).
+* Only retransmit on timeouts, have the active side of the connection be
+  mostly timeout driven to avoid duplicate transfers.
+
+New in 2.6.1:
+
+* Error values were not correctly translated.
+
+New in 2.6:
+
+* Fail when configure cannot find a usable LEX or YACC binary.
+* Fix RetryInterval calculation, we were waiting twice as long as specified.
+* Make sure RPC2/Coda defined error values do not collide with system errnos.
+
+New in 2.5:
+
+* Avoid rp2gen segfault on 64-bit systems. (Vasil Dimov)
+* Forgotten includes broke the FreeBSD build. (Sean Caron)
+* Fix RPM build dependencies. (Adam Goode/Jerry Amundson)
+* Add dependency on pkg-config 0.18 or higher (Davor Ocelic)
+* Use non-blocking /dev/urandom device to initialize random number generator.
+* We were not correctly handling returned data values in our Lua bindings.
+* Fix compiler warnings in stub-generated code.
+* Correctly handle negative seek offset in SFTP so that it disables seeking by
+  the rpc2 layers.
+* Fix data alignment for incoming RPC2 connections on 64-bit.
+* Set default binding policy to only allow secure rpc2 connections.
+
+New in 2.4:
+
+* Instead of queueing incoming INIT1 requests when nobody is ready to accept
+  the new connection, respond with a busy to make the peer wait and try again.
+
+  This is useful when RPC2 is already initialized, but the server is starting
+  up and when a lot of new clients arrive simultaneously, for instance after a
+  network outage. By the time we're ready to accept the connection the client
+  may have already given up and it is pointless to try and send the INIT2
+  response.
+
+New in 2.3:
+
+* Endian fixes in the encryption code (Adam Goode)
+* Fix failing SFTP transfer when a duplicate packet arrives.
+* Account for server processing delay in roundtrip time estimate.
+* Rewrote bandwidth/latency estimator to improve stability.
+* Added 'configure --with-lua' to link in an embedded Lua interpreter.
+* Support for Lua scripts to customize bandwidth and roundtrip time estimation.
+  Assumes the script can be found as /etc/rpc2.lua or the value of the
+  RPC2_LUA_SCRIPT environment variable. We check once every 5 seconds if
+  that file has been updated (or removed) and automatically reload it.
+  The script is disabled whenever a parse or runtime error is encountered.
+* Example scripts installed in ${prefix}/share/rpc2,
+  rpc2-rtt-adaptive.lua	- current RPC2 estimator, implemented in Lua.
+  rpc2-rtt-fixed.lua	- simple estimator using fixed network parameters.
+  rpc2-rtt-vj.lua	- simple latency only estimator.
+  rpc2-fail.lua		- Introduce packet loss and/or delay
+
+New in 2.2:
+
+* Avoid valgrind warnings in the pbkdf test function.
+* Fix codasrv regression, it failed to unpack the CML.
+
+New in 2.1 (unreleased):
+
+* Fix RPC2 binding on amd64.
+* Fix layout of struct SFTP_Parms for 64-bit.
+* Fix MultiRPC packing and unpacking on 64-bit.
+* Convert a couple other longs to int32_t in sftp.
+* Remove the autom4te.cache when bootstraping. (Phil Nelson)
+* Cygwin does not have IPV6 yet. (Phil Nelson)
+
+New in 2.0:
+
+* Removed unused multicast code.
+* Filter requests based on the subsystem we authenticated with.
+* New security framework that provides strong encryption.
+* Various standard encryption/authentication modes,
+    PKCS#5 v2.0 key derivation			(RFC 2898)
+    AES-XCBC-MAC-96 authentication		(RFC 3566)
+    AES-CBC encryption			 	(RFC 3602)
+    AES-CCM combined encryption/authentication	(RFC 4309)
+    AES-XCBC-PRF-128 pseudo random function	(RFC 4434)
+* Allow user to set minimum key length with RPC2SEC_KEYSIZE envvar.
+* Allow user to avoid reverting back to the old compatible handshake/xor
+  binding by setting the RPC2SEC_ONLY envvar.
+* Log packets larger than the IPv6 minimum MTU.
+* Automake cleanups, compile with -Wall, various other cleanups.
+* Attempt to fix conflicts with the Debian rpc2-4 package.
+* Replace incorrect %{_buildroot} with %{_builddir} in the RPM spec file.
+* rpc2 doesn't build on netbsd/sparc64 2.0ish (Greg Troxel)
+
+New in 1.28:
+
+* Do not truncate random numbers to 15 bits.
+* Check clientident length (Ivan Popov).
+* Fix gcc4 warnings.
+
+New in 1.27:
+
+* Fixes for LWP-2.0
+* Reduced size of the medium packets to 1500.
+* Explicitly clear the EchoTimestamp when we receive an out-of-order
+  SFTP data packet to avoid sending a stale timestamp value.
+* Make sure we retransmit at least one packet once we hit EOF so that we
+  can continue to make progress.
+
+New in 1.26:
+
+* SFTP was aggressively dropping incoming packets that didn't come back
+  from the correct IP address. However, if there is 6-to-4 translation,
+  a request to <ipv4> comes back from [::ffff:<ipv4>]. This could also
+  help somewhat on multihomed hosts.
+
+New in 1.25:
+
+* Avoid allocating an unusable local connection identifier.
+* Don't bump last referenced times while searching for a usable
+  connection identifier.
+
+New in 1.24:
+
+* Set the UDP sockets to non-blocking. A bad UDP checksum could cause
+  recvfrom/recvmsg to block.
+* Try to bind listen sockets to the same portnumber.
+* The MSG_CONFIRM flag (see 1.20) code was commented out because of a
+  compatibility problem with older Linux kernels (2.2.x).
+  Now it is reenabled, however as soon as sendto fails with EINVAL we
+  revert back to the old behaviour.
+
+New in 1.23:
+
+* Don't assume RPC2_EAI_ errorcodes are identical to the EAI_ errors.
+* Fix crash in the mrpc_sendpacketsreliably tracing code when the first
+  connection entry does not have an active request buffer allocated.
+* Removed RPC2_EAI_NODATA and RPC2_EAI_ADDRFAMILY (RFC3493)
+
+New in 1.22:
+
+* Fixed some small memory leaks in error conditions.
+* Keep the size of the host lookup table smaller.
+
+New in 1.21:
+
+* IPv6 support.
+* Extra boundary checking when unpacking MultiRPC reply packets.
+* Updated for automake 1.7, autoconf 2.52, libtool 1.5.2.
+
+New in 1.20:
+
+* Add /usr/include/rpc2/rpc2_addrinfo.h to the devel packages.
+* Set 'ackme' flag on first packet sent during an SFTP retransmission.
+  This packet has a higher chance on survival and can confirm already
+  received packets and advance the window.
+* When responding to a received packet, set the MSG_CONFIRM flag (if it
+  is available). On Linux systems this reconfirm that the arp cache
+  entry for the destination is valid and as a result avoids the latency
+  of the extra(neous) arp request/response before sending the packet.
+* Fix bad byte-swap introduced in 1.14 that caused bandwidth/rtt problems.
+
+New in 1.19:
+
+* Cygwin compile fixes (Phil Nelson)
+* Replaced some paranoid assertions that triggered when a corrupt multirpc
+  packet was received with simply dropping the bogus packets. (Andrew
+  Griffiths)
+
+New in 1.18:
+
+* Removed pool allocator for MultiRPC contexts. It had a hardcoded size of
+  only 8 contexts and would die on an assertion whenever it got exhausted.
+* Merged IPv6 support from Rod Van Meter. This only really deals with IPv6
+  compatible addressing and does not handle the fact that IPv6 doesn't do
+  ip-level packet fragmentation for us.
+* We still accept and return the old HostIdent structures for applications
+  that haven't been 'ported' to the new IPv6 interface. The IPv6 ready
+  application has to call RPC2_Init with the RPC2_Options.Flags set to
+  RPC2_OPTION_IPV6 before we even bind a listening socket to an IPv6 address.
+  This means that we are drop-in compatible for existing applications.
+* Removed sftp socket and socket listener/timeout threads. Essentially we are
+  now always running 'masqueraded'. I believe it will work fine even for
+  existing clients that are not configured to use masquerading as long as
+  their rpc2-library is capable of receiving sftp packets on the rpc2 port
+  (i.e. >= rpc2-1.9).
+
+New in 1.17:
+
+* Small files sent with MultiRPC only arrived at the first server
+  in the mgrp. Resolution fixes things for normal store operations
+  but it broke repair in some cases.
+* Random number generator was initialized incorrectly (Ivan Popov).
+
+New in 1.16:
+
+* Fix for missing lseek that caused truncated backup files.
+* Correctly use off_t for lseek and friends. Defining _LARGEFILE_SOURCE
+  and _FILE_OFFSET_BITS=64 to enable large file support. Now if only the
+  rpc2/sftp API was compliant we would be done. However anything that
+  is using FILEBYNAME or FILEBYINODE or specifies a non-zero SeekOffset
+  still won't work right on >2GB files. However FILEBYFD with zero
+  SeekOffset should work just fine.
+
+New in 1.15:
+
+* Remove noisy debugging printf.
+* Generate correct packing/unpacking code for RPC2_BoundedBS structures with
+  rp2gen.
+* Fixed memory corruption when packing an RPC2_String with the MultiRPC
+  packing routines.
+* Solved slow writes and disconnections caused by excessive packet drops when
+  a masquerading client is sending SFTP packets on a fast network to a
+  (slower) server.
+
+New in 1.14:
+
+* Fixed readline includes.
+* Fixed gcc-3.2 compilation problems.
+* Don't recursively generate code for included files in .rpc2 files.
+* Fixed bison/yacc grammar problems.
+* Experimental code to get correct timeouts on asynchronous links (ADSL).
+* Always 'byteswap' packets.
+
+New in 1.13:
+
+* Fixed crash when an expired connection receives a NAK.
+* Increased lower bound on retransmission time to 300ms.
+* Removed Linux specific optimization in processing time calculation which
+  made RPC2 clients assume a server can respond faster than it actually does.
+* Fixed the very infrequent SFTP_SendResponse crash again, hopefully for real
+  this time.
+* A non-masqueraded rpc2 client wouldn't send out it's SFTP packets through
+  the rpc2 socket when talkin to a masqueraded rpc2-server. This broke
+  backfetches through a firewall.
+* Added delayed acks, when an RPC2 operation on the server is taking more than
+  200ms, an unsolicited RPC2_BUSY is sent back to the client to avoid
+  unnecessary retransmissions of the request.
+* Applied rp2gen patch from Jeff Bachtel.
+
+New in 1.12:
+
+* Fixed gcc-3.0 compiler warnings.
+* Added support for libreadline v4.2.
+* Stricter prototyping for callback functions.
+* Fixed the very infrequent SFTP_SendResponse crash.
+
+New in 1.11:
+
+* Applied MacOS X (Darwin) patches from Timothy Wood.
+* Keeping track of current fd offset in sftp to allow non-multirpc transfers
+  from/to a non-seekable fd (eg. stdout).
+
+New in 1.10:
+
+* Fixed NULL pointer dereference when rpc2 packet tracing is enabled.
+
+New in 1.9:
+
+* Corrected errors in libfail's delay filter code.
+* Added latency delay to libfail.
+* Merged debian packaging stuff.
+* Using same version number for all libraries to allow multiple versions
+  of the libraries to coexist.
+* Allow for sending and receiving SFTP packets through the RPC2 socket when
+  the user has not specified a specific SFTP port.
+* Fixed connection and packet leaks when unmarshalling a request fails.
+* Changed RPC2_setip to accept struct in_addr instead of hostname.
+
+New in 1.8:
+
+* Socketlistener got stuck on clocktick wakeups.
+
+New in 1.7:
+
+* Don't let socketlistener select on errors when it is unwilling to handle
+  the case when there is an error on the filedescriptors.
+
+New in 1.6:
+
+* Fixed the binding to specific addresses by using RPC2_setip before
+  calling RPC2_Init.
+* Cross compilation stuff for the Itsy (SA-1100). (Jason Flinn)
+* Corrected byteswapping of incoming/outgoing packets on Itsy's. (Jason Flinn)
+* Linking against the updated liblwp in lwp-1.5.
+* Limit the size of piggybacked sftp data to the requested sftp_maxpacketsize
+  to avoid ip-layer fragmentation.
+* Fixed the RPC2_NOBINDING bug which showed up in clog.
+
+New in 1.5:
+
+* Fixed a bug where we always decoded packets when receiving, even when
+  the sessionkey was not yet negotiated.
+
+New in 1.4:
+
+* Limited support to do sftp transfers from the stdin/stdout.
+* Added flag enable the connection reaper on a per program basis, too many
+  rpc2 applications broke.
+
+New in 1.3:
+
+* Only reaping dead server connections.
+
+New in 1.2:
+
+* Avoid iopen dependency on systems that don't have that syscall.
+* Reaping dead connections.
+
+New in 1.1:
+
+* Fixed problems with sftp transfers when the fd is shared.
+* Avoiding a double free of a packet buffer on diskerrors.
+* Added RPC2_SetTimeout so that applications can control the per-RPC timeout
+  on a connection. (Dushayanth Narayanan)
+
+New in 1.0:
+
+* Extracted RPC2 out of the main Coda source tree.
+* Using an automake/autoconf/libtool build environment.
+* Creating shared libraries.
