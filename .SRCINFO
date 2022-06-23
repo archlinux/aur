@@ -1,18 +1,17 @@
 pkgbase = python2-beautifulsoup4
-	pkgdesc = A Python HTML/XML parser designed for quick turnaround projects like screen-scraping - python2 version
+	pkgdesc = Web HTML/XML parser addons for screen-scraping (legacy Python 2 version)
 	pkgver = 4.9.3
 	pkgrel = 5
-	url = https://www.crummy.com/software/BeautifulSoup/index.html
+	url = https://pypi.org/project/beautifulsoup4/4.9.3/
 	arch = any
-	license = PSF
+	license = MIT
 	checkdepends = python2-pytest
 	makedepends = python2-setuptools
-	makedepends = python2-soupsieve
 	depends = python2-soupsieve
 	optdepends = python2-chardet: to autodetect character encodings
-	optdepends = python2-lxml: alternative HTML parser
 	optdepends = python2-html5lib: alternative HTML parser
-	source = python2-beautifulsoup4-4.9.3-5.tar.gz::https://pypi.io/packages/source/b/beautifulsoup4/beautifulsoup4-4.9.3.tar.gz
+	optdepends = python2-lxml: alternative HTML parser
+	source = https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-4.9.3.tar.gz
 	sha256sums = 84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25
 
 pkgname = python2-beautifulsoup4
