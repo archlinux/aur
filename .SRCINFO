@@ -1,6 +1,6 @@
 pkgbase = jls
 	pkgdesc = A modern ls with java.
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 0
 	epoch = 0
 	url = https://github.com/Anas-Elgarhy/jls
@@ -11,7 +11,7 @@ pkgbase = jls
 	depends = nerd-fonts-hack
 	provides = jls
 	replaces = jls
-	source = https://github.com/Anas-Elgarhy/jls/releases/download/0.3.4/jls-0.3.4.tar.gz
+	source = https://github.com/Anas-Elgarhy/jls/releases/download/0.3.5/jls-0.3.5.tar.gz
 	sha256sums = 94c0dcfd42499833a66a879054ac983a7348f41ef9b55f9f978ee1fca5510257
 
 pkgname = jls
