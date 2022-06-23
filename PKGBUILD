@@ -14,6 +14,7 @@ provides=('ao')
 conflicts=('ao-git')
 source=("${url}/releases/download/v${pkgver}/kuro_${pkgver}_amd64.deb")
 sha256sums=('5377c93bcfe67ea3b76013dc3184d541bba3f0baf3e88e174176d7d90869b144')
+install=warn.install
 
 package() {
   tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
