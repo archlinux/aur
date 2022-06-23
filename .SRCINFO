@@ -1,7 +1,7 @@
 pkgbase = graphite-cli-git
 	pkgdesc = CLI that makes creating stacked git changes fast & intuitive
-	pkgver = 0.17.3.r0.cb07ae93
-	pkgrel = 1
+	pkgver = 0.19.2.r0.9df94d9d
+	pkgrel = 2
 	url = https://graphite.dev/
 	arch = any
 	license = AGPL3
@@ -13,6 +13,8 @@ pkgbase = graphite-cli-git
 	provides = graphite-cli
 	conflicts = graphite-cli
 	source = git+https://github.com/withgraphite/graphite-cli
+	source = graphite-cli.patch
 	md5sums = SKIP
+	md5sums = 2ac3a50dfce2a35dba19f355b4a308f8
 
 pkgname = graphite-cli-git
