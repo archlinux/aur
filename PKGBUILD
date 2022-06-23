@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rsubread
-_pkgver=2.10.2
+_pkgver=2.10.3
 pkgname=r-${_pkgname,,}
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc='Mapping, quantification and variant analysis of sequencing data'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60836921adb5bf8eff956a60f99ac434a70b81e136f7074d401a84dd2dea7edf')
+sha256sums=('026cf91d1a1d18ad5f0ba99799c710994fe4431c48cc9c9d9c3fbf0680810969')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
