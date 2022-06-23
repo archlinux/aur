@@ -1,0 +1,13 @@
+pkgbase = python-qt-material
+	pkgdesc = Material inspired stylesheet for PySide2, PySide6, PyQt5 and PyQt6.
+	pkgver = 2.12
+	pkgrel = 1
+	url = https://github.com/UN-GCPDS/qt-material
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/q/qt-material/qt-material-2.12.tar.gz
+	sha256sums = 4ead6710b4fa64f94963bf359422e077a032a84ec8c350804ff743d1be7f4657
+
+pkgname = python-qt-material
