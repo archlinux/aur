@@ -1,8 +1,8 @@
 # Maintainer: spyophobia <76800505+spyophobia@users.noreply.github.com>
 
 pkgname=shadowsocks-gtk-rs
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A desktop GUI frontend for shadowsocks-rust client implemented with gtk-rs."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/spyophobia/shadowsocks-gtk-rs"
@@ -15,7 +15,7 @@ optdepends=(
     'gnome-shell-extension-appindicator: tray icon support on Gnome Desktop'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('edd34c98391b528b281158d52d965f9239a015f5efe57e509574a2cf67c52216da53a5ecbe484a9d2904ffb07ad0f10ec59c84ff4546e24808b66d3ef14f9bb8')
+sha512sums=('6600e388092bf441259f3015fbe15719b985243b914fb4f3a8c938a59c449b6af690d893ca8543a6214385f829bc90e2bec3bb5a2534d108e5fe39b37e915b9c')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -31,5 +31,5 @@ package() {
   cd ${pkgname}-${pkgver}
   install -Dm 755 -t "${pkgdir}/usr/bin" target/release/ssgtk target/release/ssgtkctl
   install -Dm 644 -t "${pkgdir}/usr/share/applications" res/shadowsocks-gtk-rs.desktop
-  install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" res/logo/shadowsocks-gtk-rs.svg
+  install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps" res/logo/shadowsocks-gtk-rs.png
 }
