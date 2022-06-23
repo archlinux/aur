@@ -35,7 +35,7 @@ else
 fi
 
 prepare(){
-  # Prepare XPLUS archive
+  # Prepare Alpha Reamake archive
   cat "$ssa".part* > "$ssa"
 
   # Install the SSA Modification data.
@@ -48,7 +48,6 @@ prepare(){
 
   # Making building scripts.
   cd "$srcdir/$_srcname/Sources/"
-  ls -l > ls.txt
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
 
