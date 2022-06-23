@@ -1,7 +1,7 @@
 pkgbase = tapps2
 	pkgdesc = A vector-based drawing program which was developed for planning and programming of the UVR1611 and UVR16x2 controllers, the RSM610 control module, CAN-I/O45 and CAN-EZ2.
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ta.co.at
 	install = tapps2.install
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = tapps2
 	makedepends = rpm-tools
 	makedepends = cpio
 	options = !strip
-	source = tapps2-1.19.1-x86_64-rpm.zip::https://www.ta.co.at/fileadmin/Downloads/Software/TAPPS2/Linux/64bit/tapps2-1.19.1-x86_64-rpm.zip
-	sha256sums = SKIP
+	source_x86_64 = tapps2-1.19.1-x86_64-rpm.zip::https://www.ta.co.at/fileadmin/Downloads/Software/TAPPS2/Linux/64bit/tapps2-1.19.1-x86_64-rpm.zip
+	sha256sums_x86_64 = SKIP
+	source_i386 = tapps2-1.19.1-x86_64-rpm.zip::https://www.ta.co.at/fileadmin/Downloads/Software/TAPPS2/Linux/32bit/tapps2-1.19.1-x86_64-rpm.zip
+	sha256sums_i386 = SKIP
 
 pkgname = tapps2
