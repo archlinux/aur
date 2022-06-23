@@ -10,7 +10,6 @@ pkgbase = archlinux-tweak-tool-git
 	depends = lsb-release
 	depends = neofetch
 	depends = python-distro
-	depends = w3m
 	depends = python-numpy
 	depends = python-psutil
 	optdepends = reflector
