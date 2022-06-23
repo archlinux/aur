@@ -3,13 +3,13 @@
 
 pkgname=lbry-desktop-bin
 pkgver=0.53.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 arch=('x86_64')
 url='https://lbry.com/'
 license=('MIT')
 provides=('lbry' 'lbrynet')
-depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
+depends=('libxtst' 'nss' 'alsa-lib' 'gtk3')
 source=("https://github.com/lbryio/lbry-desktop/releases/download/v$pkgver/LBRY_$pkgver.deb"
         'https://raw.githubusercontent.com/lbryio/lbry-desktop/master/LICENSE')
 b2sums=('8e512ed7f796fbca95190a11cffd0d9f0a08bb0743e106e612f418782061a2fe3a4fa6bb6e6628d8ed99f3ef897c3bca5cb4b5df2e4445d527c8f4604c6f9061'
