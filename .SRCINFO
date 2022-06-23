@@ -1,6 +1,6 @@
 pkgbase = bubbleupnpserver
 	pkgdesc = Stream content to Android devices over the Internet, requires UPNP/DNLA backend e.g. miniDLNA, Gerbera, Mediatomb
-	pkgver = 0.9.42
+	pkgver = 0.9.43
 	pkgrel = 1
 	url = https://www.bubblesoftapps.com/bubbleupnpserver2/
 	install = bubbleupnpserver.install
@@ -15,14 +15,14 @@ pkgbase = bubbleupnpserver
 	source = bubbleupnpserver.config
 	source = bubbleupnpserver-sysuser.conf
 	source = bubbleupnpserver
-	source = BubbleUPnPServer-distrib-2022-02-27-21.zip::https://bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip
+	source = BubbleUPnPServer-distrib-2022-06-23-23.zip::https://bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip
 	source = bubbleupnpserver-LICENCE.txt::https://bubblesoftapps.com/bubbleupnpserver/core/LICENCE.txt
 	sha256sums = 7df801995e65a79eb5140814ca80c4caeee7e1282b69acff9e74201cbaafdaf3
 	sha256sums = b99d60122343959f2118f6f74968e105d63e8ca2c8ff71efc120415378b1175a
 	sha256sums = 61bf63a84b839b85c0fdf0210310c94242bbb6e1aa69bf0d6c46efa013b52ae5
 	sha256sums = fd764bb4c785ab0e2481d26f4f30656ba756949afa8ed949234e722ded87bf04
 	sha256sums = 105bfe44a43d141457bf87ef89c76a5be57f54cdb3493ae3af99c8ad6a938c36
-	sha256sums = 74bc3bb1376efe55700dedd95efca97055c92ecb4562ad966d83410049fcfb01
+	sha256sums = 44dfe889bd86a148365641cc098bc4f7696242620b3c03c0c2dc3e9502227ba0
 	sha256sums = ceb8ba5042568cd04e7c47f4e4416278bbbd1e63fe30124b0646fc90614843ba
 
 pkgname = bubbleupnpserver
