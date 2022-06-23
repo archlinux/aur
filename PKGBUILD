@@ -5,7 +5,7 @@
 
 pkgname=lbry-desktop
 pkgver=0.53.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 url="https://github.com/lbryio/${pkgname}.git"
@@ -14,8 +14,8 @@ license=('MIT')
 makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
 
 depends=('nss' 'alsa-lib' 'gtk3')
-provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
-conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' 'lbry-desktop-git')
+provides=("lbry=$pkgver" "$pkgname=$pkgver" "lbrynet=$pkgver")
+conflicts=('lbry' "$pkgname-bin" 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' "$pkgname-git")
 
 source=(
         "git+${url}#tag=v${pkgver}"
@@ -26,7 +26,7 @@ b2sums=('SKIP'
         '7afceb849ab2ee1c7ddbe7ee642298cbf9d8fdf48ab9194a324fd97438fec11e60607ae469a692d079ba15bc2c5e099053ff3efcc4a62e7c94904e053ece858a')
 
 build() {
-	cd "${srcdir}/lbry-desktop"
+	cd "${srcdir}/$pkgname"
 
 	# Note : see available yarn targets in file package.json
 
@@ -41,13 +41,15 @@ build() {
 }
 
 package() {
-	# Note : Intentionally not decompressing the generated .deb package ; this should not have been generated anyway
+	cd "$srcdir/$pkgname"
+	# FIXME: Avoid building the AppImage and the .deb in the first place
+	rm dist/electron/LBRY_${pkgver}.AppImage || true
+	rm dist/electron/LBRY_${pkgver}.deb || true
 
-	cd "$srcdir/lbry-desktop/dist/electron/linux-unpacked"
 	mkdir -p "$pkgdir/opt/LBRY"
-	cp -r ./* "$pkgdir/opt/LBRY/"
+	cp -r dist/electron/linux-unpacked/* "$pkgdir/opt/LBRY/"
 
-	cd "$srcdir/lbry-desktop"
+	cd "$srcdir/$pkgname"
 	mkdir -p "$pkgdir/usr/share/doc/lbry"
 	gzip -c CHANGELOG.md > "$pkgdir/usr/share/doc/lbry/changelog.gz"
 
@@ -55,7 +57,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp lbry.desktop "$pkgdir/usr/share/applications/"
 
-	cd "$srcdir/lbry-desktop/build/icons"
+	cd "$srcdir/$pkgname/build/icons"
 	for s in 32x32 48x48 96x96 128x128 256x256 ; do
 		mkdir -p "$pkgdir/usr/share/icons/hicolor/$s/apps"
 		cp "$s.png" "$pkgdir/usr/share/icons/hicolor/$s/apps/lbry.png"
@@ -66,5 +68,7 @@ package() {
 	ln -s "/opt/LBRY/lbry" "$pkgdir/usr/bin/lbry"
 	ln -s "/opt/LBRY/resources/static/daemon/lbrynet" "$pkgdir/usr/bin/lbrynet"
 
+        cd "${srcdir}/$pkgname"
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

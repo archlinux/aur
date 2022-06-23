@@ -1,7 +1,7 @@
 pkgbase = lbry-desktop
 	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative
 	pkgver = 0.53.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lbryio/lbry-desktop.git
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,6 @@ pkgbase = lbry-desktop
 	depends = gtk3
 	provides = lbry=0.53.4
 	provides = lbry-desktop=0.53.4
-	provides = lbry-app=0.53.4
 	provides = lbrynet=0.53.4
 	conflicts = lbry
 	conflicts = lbry-desktop-bin
