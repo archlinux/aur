@@ -1,16 +1,17 @@
-# Maintainer: Lucas Silva <lcdss@live.com>
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
+# Contributor: Lucas Silva <lcdss@live.com>
 
 pkgname=lbry-desktop-bin
-pkgver=0.51.1
+pkgver=0.53.4
 pkgrel=1
-pkgdesc='A browser for the LBRY network, a digital marketplace controlled by its users'
+pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 arch=('x86_64')
 url='https://lbry.com/'
 license=('MIT')
 provides=('lbry' 'lbrynet')
 depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
 source=("https://github.com/lbryio/lbry-desktop/releases/download/v$pkgver/LBRY_$pkgver.deb")
-sha512sums=('6e34cb092378c8b70d3b4856191e2b3963699c8ccb92d32112745af00a8683bcc59c87bb37147cf02544e1eb2a7f81d456729d2c16e0c5b6a3083ddbeba378b9')
+b2sums=('8e512ed7f796fbca95190a11cffd0d9f0a08bb0743e106e612f418782061a2fe3a4fa6bb6e6628d8ed99f3ef897c3bca5cb4b5df2e4445d527c8f4604c6f9061')
 
 package() {
   install -dm 755 "$pkgdir/usr/bin/"
