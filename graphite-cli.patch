@@ -1,0 +1,42 @@
+diff --color --unified --recursive --text graphite-cli.old/src/index.ts graphite-cli.new/src/index.ts
+--- graphite-cli.old/src/index.ts	2022-06-22 21:22:58.126237522 -0500
++++ graphite-cli.new/src/index.ts	2022-06-22 21:23:50.796370464 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ import chalk from 'chalk';
+ import semver from 'semver';
+diff --color --unified --recursive --text graphite-cli.old/src/lib/utils/git_repo.ts graphite-cli.new/src/lib/utils/git_repo.ts
+--- graphite-cli.old/src/lib/utils/git_repo.ts	2022-06-22 21:22:58.139570888 -0500
++++ graphite-cli.new/src/lib/utils/git_repo.ts	2022-06-22 21:25:48.953360769 -0500
+@@ -35,7 +35,7 @@
+         command: [
+           `${USER_CONFIG_OVERRIDE_ENV}=${this.userConfigPath}`,
+           `NODE_ENV=development`,
+-          `node ${__dirname}/../../../../dist/src/index.js ${command}`,
++          `/usr/bin/node ${__dirname}/../../../../dist/src/index.js ${command}`,
+         ].join(' '),
+         options: {
+           stdio: process.env.DEBUG ? 'inherit' : 'ignore',
+@@ -63,7 +63,7 @@
+       command: [
+         `${USER_CONFIG_OVERRIDE_ENV}=${this.userConfigPath}`,
+         `NODE_ENV=development`,
+-        `node ${__dirname}/../../../../dist/src/index.js ${command}`,
++        `/usr/bin/node ${__dirname}/../../../../dist/src/index.js ${command}`,
+       ].join(' '),
+       options: {
+         cwd: this.dir,
+diff --color --unified --recursive --text graphite-cli.old/src/lib/utils/spawn.ts graphite-cli.new/src/lib/utils/spawn.ts
+--- graphite-cli.old/src/lib/utils/spawn.ts	2022-06-22 21:22:58.139570888 -0500
++++ graphite-cli.new/src/lib/utils/spawn.ts	2022-06-22 21:24:28.859804443 -0500
+@@ -2,7 +2,7 @@
+ 
+ // Spawns an async process that executes the specified file
+ export function spawnDetached(filename: string, args: string[] = []): void {
+-  cp.spawn('node', [filename, ...args], {
++  cp.spawn('/usr/bin/node', [filename, ...args], {
+     detached: true,
+     stdio: 'ignore',
+   }).unref();
