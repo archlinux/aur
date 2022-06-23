@@ -8,7 +8,7 @@ pkgname='python2-html5lib'
 _basename="${pkgname#python2-}"
 _distname="${_basename}-python"
 pkgver=1.1
-pkgrel=11
+pkgrel=12
 pkgdesc='HTML parser based on the WHATWG HTML specification (for Python 2)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -25,7 +25,7 @@ optdepends=(
 )
 checkdepends=(
     'python2-chardet'
-    'python2-lxml'
+#     'python2-lxml'    # heavy build from AUR, for a few optional tests (skipped if not found)
     'python2-mock'
     'python2-pytest'
     'python2-pytest-expect'

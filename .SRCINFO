@@ -1,12 +1,11 @@
 pkgbase = python2-html5lib
 	pkgdesc = HTML parser based on the WHATWG HTML specification (for Python 2)
 	pkgver = 1.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://pypi.org/project/html5lib-python/1.1/
 	arch = any
 	license = MIT
 	checkdepends = python2-chardet
-	checkdepends = python2-lxml
 	checkdepends = python2-mock
 	checkdepends = python2-pytest
 	checkdepends = python2-pytest-expect
