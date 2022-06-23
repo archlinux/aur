@@ -2,33 +2,34 @@
 # Contributor: Artem Trokhycmhuk <yuc44w68t at relay dot firefox dot com>
 
 pkgname=noverify
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
-pkgdesc="PHP7/8 code linter"
+pkgdesc="PHP code linter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VKCOM/noverify"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 checkdepends=('git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('060272a4709fa88cd1a4d2aa213bfd2b2e4479ab806ec1831a5fff7797f18612')
+sha256sums=('abb8ed781dcb24fdd4053ee83984a1a6cc01688ccc8b57990344e54e11d8580e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build/
+	go mod download
 }
 
 build() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
 	local _PKG="${url#https://}/src/cmd"
-
 	cd "$pkgname-$pkgver"
-	go build -o build -ldflags "-linkmode=external -X $_PKG.BuildVersion=$pkgver"
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-o build \
+		-ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" -X $_PKG.BuildVersion=$pkgver"
 }
 
 check() {
@@ -39,5 +40,5 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

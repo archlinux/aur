@@ -1,6 +1,6 @@
 pkgbase = noverify
-	pkgdesc = PHP7/8 code linter
-	pkgver = 0.5.2
+	pkgdesc = PHP code linter
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/VKCOM/noverify
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = noverify
 	license = MIT
 	checkdepends = git
 	makedepends = go
-	source = noverify-0.5.2.tar.gz::https://github.com/VKCOM/noverify/archive/v0.5.2.tar.gz
-	sha256sums = 060272a4709fa88cd1a4d2aa213bfd2b2e4479ab806ec1831a5fff7797f18612
+	depends = glibc
+	source = noverify-0.5.3.tar.gz::https://github.com/VKCOM/noverify/archive/v0.5.3.tar.gz
+	sha256sums = abb8ed781dcb24fdd4053ee83984a1a6cc01688ccc8b57990344e54e11d8580e
 
 pkgname = noverify
