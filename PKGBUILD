@@ -1,6 +1,6 @@
 # Maintainer: Rodolfo Panerai <rodolfo.panerai at gmail dot com>
 pkgname=megasync-bin
-pkgver=4.6.6
+pkgver=4.6.7
 pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('x86_64')
@@ -26,11 +26,11 @@ depends=('glibc'
          'freeimage')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
 source=("${url}/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('c216e3fba401a36fa22f0456ae9262c1ff6adcf6d29921218329553939f0921c')
+sha256sums=('05a4df6eba3401549dd53cea78fa02a835fd88ae980bc9a1ca9f89b683c11d2a')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
-    cp -R "${srcdir}/opt" "${pkgdir}/"
+    # cp -R "${srcdir}/opt" "${pkgdir}/"
     rm -rf "${pkgdir}/usr/share/icons/ubuntu-mono-dark"
     rm -rf "${pkgdir}/usr/share/doc"
 }
