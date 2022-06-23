@@ -1,0 +1,14 @@
+pkgbase = corplink-rs
+	pkgdesc = Corplink client written in Rust
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/PinkD/corplink-rs
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	backup = etc/corplink/config.json
+	source = corplink-rs.tar.gz::https://github.com/PinkD/corplink-rs/archive/1.2.tar.gz
+	sha256sums = 7ccd5223988f6ff4075d9ed71dc31402f2b833438c7c8e1a66b375fe38a5a41c
+
+pkgname = corplink-rs
