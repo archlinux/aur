@@ -1,7 +1,7 @@
 pkgbase = anoise
 	pkgdesc = Ambient Noise Player. Relax or concentrate with a noise
 	pkgver = 0.0.36
-	pkgrel = 2
+	pkgrel = 3
 	url = https://costales.github.io/projects/anoise
 	arch = any
 	license = GPL3

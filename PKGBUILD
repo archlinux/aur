@@ -6,7 +6,7 @@
 
 pkgname=anoise
 pkgver=0.0.36
-pkgrel=2
+pkgrel=3
 pkgdesc="Ambient Noise Player. Relax or concentrate with a noise"
 arch=('any')
 url="https://costales.github.io/projects/anoise"
@@ -26,17 +26,21 @@ sha256sums=('cd6e2e1e8691b950c503b4319f7f9ecf6e66c745e5194724be0c3e026e9dd3ac'
             'e561b2513e791c29d097e7eea7c83f9bbe3d993ead398e7dd0352bbb55ce451a')
 
 prepare() {
-  cd "$srcdir/$pkgname "
+
+  # remove space from SRCDEST folder
+  mv -f "$pkgname " "$pkgname"
+
+  cd "$srcdir/$pkgname"
   patch --forward --strip=1 --input="$srcdir/setup.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname "
+  cd "$srcdir/$pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname "
+  cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   # This file is included in anoise-gui
