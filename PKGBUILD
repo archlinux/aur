@@ -2,7 +2,7 @@
 
 _pkgname=nanodlna
 pkgname=python-$_pkgname
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Command line tool to play local video files in your TV (or any other UPnP/DLNA compatible device)"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/gabrielmagno/nano-dlna"
 license=('MIT')
 depends=('python'
          'python-twisted')
-source=("https://files.pythonhosted.org/packages/40/20/19950384c6de1ebf07b68c33e52fd8ac4f0b249d6d607717d3f0c9a2021c/$_pkgname-$pkgver.tar.gz")
-md5sums=('1ca3d0b477034e1530a05e609ea9b0c3')
+source=("https://files.pythonhosted.org/packages/f9/81/3929890cf08c2e8614e612494bc90f12bc5e6c95a704f526253fdcc8a85d/$_pkgname-$pkgver.tar.gz")
+sha256sums=('f8dbaf21d6ccfe205a11a411f2778006de0da36ab90dd48bb478ba6ec1eb0b56')
 
 build() {
   cd "$_pkgname-$pkgver"
