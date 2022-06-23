@@ -3,11 +3,11 @@
 
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
-pkgver=6.3.0.23157
+pkgver=7.0.0.24651
 pkgrel=1
 arch=(x86_64)
 license=(custom)
-url=http://www.baslerweb.com/en/products/software
+url=https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware
 
 depends=(qt5-base)
 makedepends=(patchelf)
@@ -16,12 +16,12 @@ makedepends=(patchelf)
 # options=( "!strip" )
 
 source=(
-	"https://www.baslerweb.com/fp-1636374975/media/downloads/software/pylon_software/${pkgname}_${pkgver}_${CARCH}_setup.tar.gz"
+	"https://www.baslerweb.com/fp-1654581454/media/downloads/software/pylon_software/${pkgname}_${pkgver}_${CARCH}_setup.tar.gz"
 	"LICENSE"
 )
 
 
-sha512sums=('e320a71d6f8bbdcfaefaf51aa61627c90c639e9ad09b8f7deb7811d1782a33ec5704d9b237594208cd3b9845ba9d4b934619c331ac2a237084f93dd3b9e8163a'
+sha512sums=('c410752970c7ac720a5aa31d39b428fd8442b4b1570d5b6e4dfacf445fe3b454a7a7c01f14b2f5cd8db4cc6a92de7d3a1e347827a67892ff671f87e3cbccf169'
 'a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1')
 
 _dir="$pkgname_$pkgver_$CARCH"
@@ -45,11 +45,11 @@ _shrink_rpaths() {
 package() {
 	cd "$srcdir/$_dir"
 
-	mkdir -p "$pkgdir/opt/pylon6"
-	cp -a --no-preserve=ownership "$srcdir/$_dir/"{bin,include,lib,share,INSTALL}  "$pkgdir/opt/pylon6"
+	mkdir -p "$pkgdir/opt/pylon7"
+	cp -a --no-preserve=ownership "$srcdir/$_dir/"{bin,include,lib,share,INSTALL}  "$pkgdir/opt/pylon7"
 	install -m 644  -Dt "$pkgdir/usr/lib/udev/rules.d"         "$srcdir/$_dir/share/pylon/69-basler-cameras.rules"
 	install -m 644  -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/LICENSE"
 
-	_shrink_rpaths "$pkgdir/opt/pylon6/lib64/"*
-	_shrink_rpaths "$pkgdir/opt/pylon6/bin/"*
+	_shrink_rpaths "$pkgdir/opt/pylon7/lib64/"*
+	_shrink_rpaths "$pkgdir/opt/pylon7/bin/"*
 }
