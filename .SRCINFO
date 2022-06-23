@@ -1,7 +1,7 @@
 pkgbase = ivpn-ui
-	pkgdesc = IVPN Graphical User Interface
+	pkgdesc = IVPN - Secure VPN for Privacy
 	pkgver = 3.8.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivpn.net
 	install = ivpn-ui.install
 	arch = x86_64

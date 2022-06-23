@@ -2,10 +2,10 @@
 
 pkgname="ivpn-ui"
 pkgver=3.8.20
-pkgrel=1
-pkgdesc="IVPN Graphical User Interface"
+pkgrel=2
+pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
-url="https://ivpn.net"
+url="https://www.ivpn.net"
 license=('GPL3')
 depends=('ivpn')
 makedepends=('npm' 'nvm')
