@@ -6,7 +6,7 @@
 _pkgname=zenpower3
 pkgname=zenpower3-dkms
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
 url='https://git.exozy.me/Ta180m/zenpower3'
