@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('OSMC-PL')
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
 depends=('lapack' 'expat' 'lpsolve' 'java-environment')
-makedepends=('gcc-fortran' 'cmake' 'git')
+makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
@@ -21,8 +21,6 @@ prepare() {
 build() {
   cd "$srcdir/OpenModelica/OMCompiler"
   autoreconf -vfi
-  # https://github.com/OpenModelica/OpenModelica/issues/7619
-  export CXXFLAGS="${CXXFLAGS} -std=c++14"
   ./configure --prefix=/usr/
   make
 }
