@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORIClust
-_pkgver=1.0-1
+_pkgver=1.0-2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='Order-restricted Information Criterion-based Clustering Algorithm'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78705097c580adcd4d69f526293040cb4d0668b736121eced35f68ea5b6b2dae')
+sha256sums=('8a78e945fde4333348b279e4bd79af157b0699e448b2bdfcbdf4d349b05bd20c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,12 +1,12 @@
 pkgbase = r-oriclust
 	pkgdesc = Order-restricted Information Criterion-based Clustering Algorithm
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ORIClust
 	arch = any
 	license = GPL
 	depends = r
-	source = https://cran.r-project.org/src/contrib/ORIClust_1.0-1.tar.gz
-	sha256sums = 78705097c580adcd4d69f526293040cb4d0668b736121eced35f68ea5b6b2dae
+	source = https://cran.r-project.org/src/contrib/ORIClust_1.0-2.tar.gz
+	sha256sums = 8a78e945fde4333348b279e4bd79af157b0699e448b2bdfcbdf4d349b05bd20c
 
 pkgname = r-oriclust
