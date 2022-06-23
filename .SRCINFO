@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-i3-plugins
 	pkgdesc = Xfce4-panel plugins modified to work better with i3wm
-	pkgver = 2022.06.16.3
+	pkgver = 2022.06.23.1
 	pkgrel = 1
 	url = https://github.com/budRich/xfce4-panel-i3-plugins
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = xfce4-panel-i3-plugins
 	depends = i3-wm
 	depends = i3ass
 	depends = xfce4-panel
-	source = https://github.com/budRich/xfce4-panel-i3-plugins/archive/2022.06.16.3/xfce4-panel-i3-plugins-2022.06.16.3.tar.gz
-	sha256sums = c1d4224adcc81393b94a169cbbdea7739211814c99a5bc036eb6459912ca4898
+	source = https://github.com/budRich/xfce4-panel-i3-plugins/archive/2022.06.23.1/xfce4-panel-i3-plugins-2022.06.23.1.tar.gz
+	sha256sums = 6d2f050f554c1cae38ab53c64aa519d14977a775df3369a44caa9cbcff848fa0
 
 pkgname = xfce4-panel-i3-plugins
