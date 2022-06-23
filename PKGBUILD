@@ -12,9 +12,6 @@ url=https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;
 depends=(qt5-base)
 makedepends=(patchelf)
 
-# Strip fails on some embedded libraries for 5.1.0
-# options=( "!strip" )
-
 source=(
 	"https://www.baslerweb.com/fp-1654581454/media/downloads/software/pylon_software/${pkgname}_${pkgver}_${CARCH}_setup.tar.gz"
 	"LICENSE"
@@ -45,11 +42,11 @@ _shrink_rpaths() {
 package() {
 	cd "$srcdir/$_dir"
 
-	mkdir -p "$pkgdir/opt/pylon7"
-	cp -a --no-preserve=ownership "$srcdir/$_dir/"{bin,include,lib,share,INSTALL}  "$pkgdir/opt/pylon7"
+	mkdir -p "$pkgdir/opt/pylon"
+	cp -a --no-preserve=ownership "$srcdir/$_dir/"{bin,include,lib,share,INSTALL}  "$pkgdir/opt/pylon"
 	install -m 644  -Dt "$pkgdir/usr/lib/udev/rules.d"         "$srcdir/$_dir/share/pylon/69-basler-cameras.rules"
 	install -m 644  -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/LICENSE"
 
-	_shrink_rpaths "$pkgdir/opt/pylon7/lib64/"*
-	_shrink_rpaths "$pkgdir/opt/pylon7/bin/"*
+	_shrink_rpaths "$pkgdir/opt/pylon/lib64/"*
+	_shrink_rpaths "$pkgdir/opt/pylon/bin/"*
 }
