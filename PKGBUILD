@@ -3,7 +3,7 @@
 
 _gemname=osc-ruby
 pkgname=ruby-$_gemname
-pkgver=1.1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='a ruby client for the OSC protocol'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('19fb4e449b922f070082c78647d3591a4fa139de')
+sha256sums=('23205ef03327f1d34a386d066fe1db45305ab9c0880c20fa1cf616167b7ccad3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
