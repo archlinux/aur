@@ -1,0 +1,14 @@
+pkgbase = pong-planting
+	pkgdesc = A ECS driven breakout game, writen in Rust, Bevy engine.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Yakkhini/PongPlanting
+	arch = x86_64
+	license = custom:Mulan PSL v2
+	noextract = pong_planting
+	source = https://github.com/Yakkhini/PongPlanting/releases/download/v0.1.0/pong_planting
+	source = https://github.com/Yakkhini/PongPlanting/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 23dabf68639be22cef670193797deba5672ac24d225940634f352413ba6ff071
+	sha256sums = 491da2d4b7b132676067715448ba99dc33b184eef3578e2e197e5efa437a1c6b
+
+pkgname = pong-planting
