@@ -8,7 +8,7 @@ pkgname='python2-html5lib'
 _basename="${pkgname#python2-}"
 _distname="${_basename}-python"
 pkgver=1.1
-pkgrel=10
+pkgrel=11
 pkgdesc='HTML parser based on the WHATWG HTML specification (for Python 2)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -19,9 +19,9 @@ depends=(
 )
 makedepends=('python2-setuptools')
 optdepends=(
-    'python2-lxml: recommended – fast native code parser'
+    'python2-lxml: recommended – fast parser, uses native code'
     'python2-chardet: recommended – fallback for unrecognized encodings'
-    'python2-genshi: support for reading Genshi streams'
+    'python2-genshi: support reading Genshi streams'
 )
 checkdepends=(
     'python2-chardet'
