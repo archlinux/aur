@@ -3,6 +3,9 @@
 # geodata-mode: true
 # external-controller: 127.0.0.1:9090
 # external-ui: dashboard
+# secret: ''
+log-level: info
+
 
 dns:
   enable: true
