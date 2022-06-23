@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-smart-auto-move
+	pkgdesc = Learns the size and position of your application windows and restores them to the correct place on subsequent launches
+	pkgver = 15
+	pkgrel = 1
+	url = https://github.com/khimaros/smart-auto-move
+	arch = any
+	license = GPL3
+	makedepends = zip
+	depends = gnome-shell
+	source = https://github.com/khimaros/smart-auto-move/archive/v15.tar.gz
+	b2sums = 463b2e36a48e97d52c60412fe368a7ee6b3a01cd167b78b33073af0d7ef97982900adf068742233fecc514cdea10c4d89890b0fcfed3d3f4f29f08d29bad250d
+
+pkgname = gnome-shell-extension-smart-auto-move
