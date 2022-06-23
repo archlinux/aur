@@ -17,8 +17,8 @@ sha256sums=('359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a'
             '02e47f80f36904071d7377d7b06083e3ce5f70c9b1ce2d190ac4a1bb90efcac8')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -Np1 -i "../0001-configure.ac-Do-not-manually-set-localedir.patch"
+    cd "$pkgname-$pkgver"
+    patch -Np1 -i "../0001-configure.ac-Do-not-manually-set-localedir.patch"
 }
 
 build() {
