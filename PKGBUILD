@@ -8,12 +8,9 @@ license=('MIT')
 arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
-depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat)
+depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat dialog dunst lolcat)
 optdepends=(
-  'dialog: Required by many lfp functions outside the scope of image and video previews'
-  'dunst: To receive notifications upon task completion and so forth'
   'git: cloning repos from within lfp'
-  'lolcat: for use in lfps fzfp function'
   )
 source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
