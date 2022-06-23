@@ -1,0 +1,199 @@
+New in 2.17:
+ * Fix lwp-pt headers to match changes in lwp.
+ * Fix process termination in rw.c test.
+ * Fix typos and whitespace in source files.
+
+New in 2.16:
+ * Added asserts to catch linked list issues in the timer queue early.
+
+New in 2.15:
+ * Just some whitespace cleanups, keeping same library version.
+
+New in 2.14:
+
+ * Bumped library version, which wasn't done for 2.13.
+
+New in 2.13:
+
+ * Fixed memory leak when exiting. (Pedro Cuadra)
+
+New in 2.12:
+
+ * Cleaned up code formatting, any code changes are likely accidental.
+
+New in 2.11:
+
+ * Add functions to safely lock two locks, ObtainDualLock/ReleaseDualLock.
+
+New in 2.10:
+
+ * Change autoconf test for mmap to only test for existence, not if it
+   actually works because we sometimes build on a filesystem that
+   doesn't support mmap.
+ * Fix memory leak when we fail to create a new LWP process (thread).
+
+New in 2.9:
+
+ * Use stdlib defined exit codes.
+
+New in 2.8:
+
+ * Cosmetic cleanups, fixed some compile warnings, removed dead code.
+
+New in 2.7:
+
+ * Correctly fix fortify failure.
+
+New in 2.6:
+
+ * Fix fortify failure whenever a new thread is started.
+ * ARM thumb2 assembly fix.
+
+New in 2.5:
+
+ * Fix ARM/ARMEL build failure (Riku Voipio)
+ * Packaging/build fixes.
+ * Add valgrind markers for LWP stacks.
+ * Avoid using the libc ucontext.h macros.
+ * Improve context switch times and reduce unnecessary gettimeofday syscalls.
+ * Don't call setjmp in a function to avoid stack corruption when we return.
+
+New in 2.4:
+
+* Improve cygwin packaging. (Phil Nelson)
+* Avoid infinite loop when a configure test fails. (Christer Bernerus)
+* Increase minimal LWP stack size to 32KB. (Christer Bernerus)
+* Add pkgconfig file.
+* Do not require an executable stack.
+* Cancel pending IOMGR requests when a thread dies.
+
+New in 2.3:
+
+* LWP builds and passes simple tests on amd64/em64t.
+* Avoid crash when running lwp_basher.
+* Work around broken makecontext on amd64
+* Fix warning in rw.c
+* Fix some autoconf/automake warnings during bootstrap.
+* On bootstrap, get rid of the autom4te.cache. (Phil Nelson)
+* struct ucontext changed to struct lwp_ucontext. (Phil Nelson)
+
+New in 2.2:
+
+* Removed cross-compilation spec files.
+* Avoid stack overflow in the tdb test program on sparc64.
+* FC5 build fixes.
+* Don't package the link created by ldconfig.
+
+New in 2.1:
+
+* Sometimes we can only switch to a context created by makecontext once.
+  Refreshing the context information with getcontext to make the jump into the
+  thread reaper repeatable.
+* Move declarations before code, gcc-2.95 likes that better. (Greg Troxel)
+* The uc_stack in a ucontext may be clobbered by the context switching
+  functions. Use a separate copy in the lwp process info for stack overflow
+  checks and deallocation purposes.
+* Use setjmp/longjmp to jump out of the signal context when using sigaltstack
+  to spawn a new thread instead of simply returning. This avoids corruption of
+  the newly created context. (Phil Nelson)
+
+New in 2.0:
+
+* Use ucontext.h provided functions for thread creation and switching.
+  In case those are not available use sigaltstack for thread creation
+  and sigsetjmp/siglongjump for thread switching, and if sigaltstack
+  doesn't exist fall back on the old process.S assembly code.
+* Simplified pthread support a bit, now it builds and runs on cygwin.
+* RPM .spec file fix to allow non-root users to build (Matthew Rich).
+* Included AIX process.S assembly, since I don't know the right ifdefs,
+  it isn't actually part of process.S yet.
+* This library is binary compatible with previous releases. But some of
+  the prototypes of callback functions got cleaned up a bit so that
+  building against this version of LWP will give some trivially fixable
+  compile warnings or errors.
+
+New in 1.13:
+
+* Stack switching code for AMD64 processors (Brett Lymn).
+
+New in 1.12:
+
+* Updated build dependencies.
+
+New in 1.11:
+
+* Updated to automake 1.7, autoconf 2.52, libtool 1.5.2
+* Some pthreaded lwp issues.
+* Corrected substitution when register_t is not defined.
+
+New in 1.10:
+
+* autoconf changes, 2.50 is now required to build.
+* Some uninitialized memory references found by valgrind.
+
+New in 1.9:
+
+* autoconf 2.5x.
+* OpenBSD patches from Jeff Bachtel.
+
+New in 1.8:
+
+* gcc-3.0 compilation (trailing garbage after #endif).
+
+New in 1.7:
+
+* Fixed <sys/time.h> vs. <time.h> mixup.
+* Applied MacOS X (Darwin) patches from Timothy Wood.
+
+New in 1.6:
+
+* Merged debian packaging files.
+* Using same version number for all libraries.
+* Applied RedHat build patch from Bruce Guenter.
+
+New in 1.5:
+
+* Removed signal based preemption code.
+* Removed all access to global variables from assembly code.
+* Moved process.ss to process.S, to use correct compilation flags.
+* Ported to NetBSD-mips.
+* Fixed shared library problems for mips and sparc (and arm?).
+* Using fd_set for IOMGR_Select.
+* Fixed broken handling of the select timeout.
+
+New in 1.4:
+
+* Ported to Linux-arm (Jason Flinn).
+* Ported to FreeBSD-alpha.
+* Fixed unaligned access problems on 64-bit machines..
+* Increased the IOMGR stacksize to 32KB to avoid stackoverflows.
+* Avoid lock.h nameclashes with Coda on the list_head definition
+  (_pt version only).
+
+New in 1.3:
+
+* Disabled building shared libraries by default, enabling it only for
+  platforms that seem to work correctly (currently only i386).
+* Updates for Solaris-i386 (from Phil Nelson).
+
+New in 1.2:
+
+* Phil Nelson fixed the compilation problems on Solaris.
+
+New in 1.1:
+
+* Fixed a bad stackbase on NetBSD/FreeBSD platforms.
+* Fixed a locking bug in lock_pt.c.
+* Using pthread_attr_setdetachstate in lwp_pt.c instead of modifying the attr
+  struct directly.
+* Improved cross-compiling with cygwin32 and djgpp.
+* Added a script that might produce a useable ports/packages descriptions.
+* Wrote a bit in the INSTALL document.
+
+New in 1.0:
+
+* Extracted LWP out of the main Coda source tree.
+* Using an automake/autoconf/libtool build environment.
+* Creating shared libraries.
+* Added pthreaded version of the lwp library.
+* Fixed some bugs in the included test programs.

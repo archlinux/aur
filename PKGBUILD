@@ -1,27 +1,33 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
+## GPG key: https://github.com/jaharkes.gpg
+
 pkgname=lwp
-pkgver=2.6
-pkgrel=3
-pkgdesc="Light weight process library"
-arch=(x86_64)
-url="http://www.coda.cs.cmu.edu"
-license=("LGPL")
-depends=()
-validpgpkeys=('477F78AA863A90A623664AA1CE0D7E10997007A2')
-source=(http://www.coda.cs.cmu.edu/pub/lwp/src/lwp-$pkgver.tar.gz{,.asc})
-sha256sums=('4887fd7f74564552f53dfe42440f4777808a82b1249b2733ecfd062849a4d32d'
-            'SKIP')
+pkgver=2.17
+pkgrel=1
+pkgdesc="Lightweight process library"
+arch=('x86_64')
+url='https://github.com/cmusatyalab/coda'
+license=('GPL')
+depends=('glibc')
+makedepends=('git')
+provides=('liblwp.so')
+changelog=NEWS
+source=("$pkgname::git+$url#tag=$pkgname-$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('4EEDEE4D29DAE8A18CAFDA18BEC621B96C853813') ## Jan Harkes
 
 build() {
-  cd "$srcdir"/lwp-$pkgver
-  ./configure --prefix=/usr
-  make
+	cd "$pkgname/lib-src/$pkgname"
+	./bootstrap.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir"/lwp-$pkgver
-  make DESTDIR="$pkgdir" install
+	cd "$pkgname/lib-src/$pkgname"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 AUTHORS README -t "$pkgdir/usr/share/doc/$pkgname/"
 }
