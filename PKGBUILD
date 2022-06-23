@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-asyncssh
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Asynchronous SSHv2 client and server library"
 arch=(any)
