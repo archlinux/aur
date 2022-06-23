@@ -1,0 +1,18 @@
+pkgbase = sfbrename-gtk
+	pkgdesc = Simple bulk rename utility (GTK+ GUI and CLI tool)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/karwler/sfbrename
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = gtk3
+	provides = sfbrename
+	conflicts = sfbrename-cli
+	source = sfbrename::git+https://github.com/karwler/sfbrename.git#tag=8f1436a859bc162ec5f713c89a30085fb0fd8d7c
+	sha256sums = SKIP
+
+pkgname = sfbrename-gtk
