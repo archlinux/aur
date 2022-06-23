@@ -8,6 +8,7 @@ pkgbase = nanobind-git
 	checkdepends = python-pytest
 	makedepends = cmake
 	makedepends = python
+	depends = gcc-libs
 	optdepends = python: for python bindings
 	source = git+https://github.com/wjakob/nanobind.git
 	source = git+https://github.com/Tessil/robin-map
