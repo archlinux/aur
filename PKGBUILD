@@ -1,8 +1,8 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=quictls-openssl
-pkgver=1.1.1o+quic
-pkgrel=3
+pkgver=1.1.1p+quic
+pkgrel=1
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
@@ -14,7 +14,7 @@ conflicts=('openssl' 'openssl-perl' 'openssl-doc')
 provides=('openssl')
 # Do not add replaces=('openssl') per guidelines
 backup=('etc/ssl/openssl.cnf')
-source=("git+https://github.com/quictls/openssl#branch=OpenSSL_1_1_1o+quic")
+source=("git+https://github.com/quictls/openssl#branch=OpenSSL_1_1_1p+quic")
 md5sums=('SKIP')
 
 # PKGBUILD based on
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 # Update this PKGBUILD as needed to match it as closely as possible
 
 pkgver() {
-	printf "1.1.1o+quic"
+	printf "1.1.1p+quic"
 }
 
 prepare() {
@@ -50,20 +50,18 @@ build() {
 }
 
 check() {
-	true
-	# Re-enable tests once expired certificates are fixed
-
-	# cd "$srcdir/openssl"
+	cd "$srcdir/openssl"
 
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	# patch -p0 -R -i "$srcdir/../ca-dir.patch"
+	patch -p0 -R -i "$srcdir/../ca-dir.patch"
 
-	# make test
+	make test
 
-	# patch -p0 -i "$srcdir/../ca-dir.patch"
+	patch -p0 -i "$srcdir/../ca-dir.patch"
+
 	# re-run make to re-generate CA.pl from th patched .in file.
-	# make apps/CA.pl
+	make apps/CA.pl
 }
 
 package() {
