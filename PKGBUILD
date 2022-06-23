@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=drone-runner-exec
-pkgver=1.0.0.beta.9
-pkgrel=4
+pkgver=1.0.0.beta.10
+pkgrel=1
 pkgdesc='Drone pipeline runner that executes builds directly on the host machine'
 arch=('x86_64')
 url='https://github.com/drone-runners/drone-runner-exec'
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('drone: for a local Drone instance')
 options=('!lto')
-_commit='b6719f2403246f8c87c321ee8b0291854424276f'
+_commit='9decf2941d423d0ee4faff892b5e8d8ab657fe36'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'systemd.service'
