@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libidn
-pkgver=1.38
+pkgver=1.40
 pkgrel=1
 pkgdesc="Implementation of the Stringprep, Punycode and IDNA specifications (mingw-w64)"
 arch=(any)
@@ -13,7 +13,7 @@ options=(staticlibs !strip !buildflags)
 source=("https://ftp.gnu.org/gnu/libidn/libidn-${pkgver}.tar.gz"
         "0003-nfkc.c-Fix-Win64-crash.patch"
         "0004-nfkc.c-Fixed-invalid-var-types.patch")
-sha256sums=('de00b840f757cd3bb14dd9a20d5936473235ddcba06d4bc2da804654b8bbf0f6'
+sha256sums=('527f673b8043d7189c056dd478b07af82492ecf118aa3e0ef0dc98c11af79991'
             '6293c730a98af32a337149a95d848f3c4619df8dc367e0bf0251a509b09f5963'
             '8ae6ad9513fc11bd79cb1ab73f187cb8297bdabd21a2aef3b6526ca17810eda9')
 
