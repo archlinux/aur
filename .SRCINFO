@@ -19,6 +19,7 @@ pkgbase = lfp
 	depends = xsel
 	depends = lolcat
 	optdepends = git: cloning repos from within lfp
+	conflicts = lfp-git
 	source = https://concise.cc/pkg/lfp-2.3-1-x86_64.pkg.tar.zst
 	source = https://concise.cc/pkg/lfp-2.3-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
