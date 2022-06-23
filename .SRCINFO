@@ -1,6 +1,6 @@
 pkgbase = dsq
 	pkgdesc = CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more
-	pkgver = 0.20.1
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/multiprocessio/dsq
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dsq
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = dsq::git+https://github.com/multiprocessio/dsq.git#commit=10fb2d7ba62c66f9815015e28b2f22a8b8ddadef
+	source = dsq::git+https://github.com/multiprocessio/dsq.git#commit=8b1221e827a7ce7fb90b773825871b5a0da46936
 	md5sums = SKIP
 
 pkgname = dsq

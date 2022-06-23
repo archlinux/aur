@@ -1,17 +1,17 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
-pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
+pkgdesc='CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more'
 arch=('x86_64')
-url="https://github.com/multiprocessio/dsq"
+url='https://github.com/multiprocessio/dsq'
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('python' 'jq' 'p7zip')
 options=('!lto')
-_commit='10fb2d7ba62c66f9815015e28b2f22a8b8ddadef'
+_commit='8b1221e827a7ce7fb90b773825871b5a0da46936'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
