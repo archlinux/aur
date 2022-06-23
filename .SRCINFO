@@ -1,5 +1,5 @@
-pkgbase = lfp-git
-	pkgdesc = LF-Preview, a wrapper for the lf file manager with image previews, and other features
+pkgbase = lfp
+	pkgdesc = LF-Preview, a wrapper for the lf file manager with image previews, fuzzy-finding and more
 	pkgver = 2.3
 	pkgrel = 1
 	url = https://gitlab.com/a4to/lfp
@@ -13,11 +13,13 @@ pkgbase = lfp-git
 	depends = graphicsmagick
 	depends = ghostscript
 	depends = bat
-	depends = dialog
+	depends = fzf
 	depends = dunst
+	depends = dialog
+	depends = xsel
 	depends = lolcat
 	optdepends = git: cloning repos from within lfp
 	source = git+https://gitlab.com/a4to/lfp.git
 	md5sums = SKIP
 
-pkgname = lfp-git
+pkgname = lfp
