@@ -2,7 +2,7 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.6.14.brescia.r4.ge69bcc39
+pkgver=2022.6.14.brescia.1.r115.gc23bb5fa
 pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
@@ -12,13 +12,14 @@ license=(GPL3)
 depends=(
   cabextract
   dconf
-  gtk3
+  gtk4
   gtksourceview5
   hicolor-icon-theme
   icoextract
   lib32-gnutls
   libadwaita-git
   libhandy
+  libportal-gtk4
   p7zip
   patool
   python
