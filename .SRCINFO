@@ -1,15 +1,17 @@
 pkgbase = quickwit
 	pkgdesc = A fast and cost-efficient distributed search engine for large-scale, immutable data
-	pkgver = 0.2.1
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://quickwit.io
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	makedepends = rust
+	makedepends = cmake
+	makedepends = clang
 	depends = gcc-libs
 	options = !lto
-	source = quickwit::git+https://github.com/quickwit-oss/quickwit.git#commit=a857636e5c336a9ee379c88f8d69cdd4ed54c9df
+	source = quickwit::git+https://github.com/quickwit-oss/quickwit.git#commit=69eb7db7c74a4caa3e6f2b6963796748758bfca7
 	md5sums = SKIP
 
 pkgname = quickwit
