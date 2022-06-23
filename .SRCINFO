@@ -1,7 +1,7 @@
 pkgbase = cinny-desktop-bin
 	pkgdesc = Cinny is a matrix client focusing primarily on a simple, elegant and secure interface.
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cinny.in/
 	install = cinny-desktop-bin.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = cinny-desktop-bin
 	depends = librsvg
 	depends = libvips
 	depends = sqlite
+	depends = gst-plugins-good
 	conflicts = cinny-desktop
 	source_x86_64 = https://github.com/cinnyapp/cinny-desktop/releases/download/v2.0.4/cinny_2.0.4_amd64.deb
 	sha256sums_x86_64 = b9d8cb958653a8e05317d1fb37ac099c8a26140790bc0733984a778a61362066

@@ -5,7 +5,7 @@
 pkgbase='cinny-desktop-bin'
 pkgname='cinny-desktop-bin'
 pkgver='2.0.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Cinny is a matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
 
@@ -22,6 +22,7 @@ depends=(
     'librsvg'
     'libvips'
     'sqlite'
+    'gst-plugins-good'
 )
 conflicts=('cinny-desktop')
 
