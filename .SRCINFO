@@ -1,0 +1,25 @@
+pkgbase = mailctl-bin
+	pkgdesc = Provide OAuth2 renewal and authorization capabilities
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/pdobsan/mailctl
+	arch = x86_64
+	license = BSD
+	depends = gnupg
+	depends = pass
+	depends = fdm
+	depends = msmtp
+	optdepends = gnome-keyring: Stores passwords and encryption keys
+	provides = mailctl
+	conflicts = mailctl
+	conflicts = mailctl-git
+	noextract = mailctl-0.3.1-Linux
+	noextract = mailctl-0.3.1-Linux.sha256
+	source = https://github.com/pdobsan/mailctl/releases/download/0.3.1/mailctl-0.3.1-Linux
+	source = https://github.com/pdobsan/mailctl/releases/download/0.3.1/mailctl-0.3.1-Linux.sha256
+	source = https://github.com/pdobsan/mailctl/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = dc9cdf1eaf500abc1d306bbb0383efc159b2b01f7bb453fc664e2c0f7e69dbc1
+	sha256sums = ac7aa267cacb2c0ee03b5eb56800e356c2d495fab19ce04e03d5f4d95a798dac
+	sha256sums = fa4ce2649b83daa0c3312314ebc71a7b96be3b6d187ac842b87fc214e53199f8
+
+pkgname = mailctl-bin
