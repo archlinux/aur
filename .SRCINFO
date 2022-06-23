@@ -1,6 +1,6 @@
 pkgbase = cloudron-cli
 	pkgdesc = Cloudron Commandline Tool
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://git.cloudron.io/cloudron/cloudron-cli
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = cloudron-cli
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = cloudron-5.0.0.tgz
-	source = http://registry.npmjs.org/cloudron/-/cloudron-5.0.0.tgz
-	sha256sums = 537db531fa9b22c4ca269160a3cfdcaf7f0199343fd4bb60842b87b8fd61795f
+	noextract = cloudron-5.0.1.tgz
+	source = http://registry.npmjs.org/cloudron/-/cloudron-5.0.1.tgz
+	sha256sums = 0b0cfd700b547640fa817c91091a0aeeab8c8c3b5286c394726d600a14520c45
 
 pkgname = cloudron-cli
