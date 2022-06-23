@@ -52,9 +52,10 @@ check() {
 }
 
 package() {
-	# python bindings
+	# python bindings and license
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
 	# built library
 	cd "$srcdir/build"
