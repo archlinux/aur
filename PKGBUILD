@@ -2,8 +2,8 @@
 
 pkgname=electron-fiddle-git
 _pkgname=fiddle
-pkgver=v0.26.0.r47.gc7fb8949
-pkgrel=2
+pkgver=0.29.0.r171.ga8862e14
+pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
 url="https://electronjs.org/fiddle"
@@ -16,7 +16,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #we cheat because tag somehow are not updated asthey should
+  git describe --long --tags | sed 's/^v0.26.0/0.29.0/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
