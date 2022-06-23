@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2991
+pkgver=1.7.2992
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -49,8 +49,11 @@ makedepends=(
   python
   vulkan-headers
 )
-provides=(pcsx2-qt)
+
+provides=(pcsx2)
+
 conflicts=(pcsx2)
+
 source=(
 git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/ocornut/imgui.git
@@ -60,17 +63,21 @@ git+https://github.com/mozilla/cubeb.git
 git+https://github.com/KhronosGroup/glslang.git
 git+https://github.com/KhronosGroup/Vulkan-Headers.git
 )
-sha256sums=(SKIP)
 
-pkgver()
-{
-  cd pcsx2
-  git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
-}
+sha256sums=(
+SKIP
+SKIP
+SKIP
+SKIP
+SKIP
+SKIP
+SKIP
+)
 
 prepare()
 {
   cd $srcdir/pcsx2
+  git checkout tags/v"${pkgver}"
   git submodule init
   git config submodule.3rdparty/libchdr/libchdr.url $srcdir/libchdr
   git config submodule.3rdparty/gtest.url $srcdir/googletest
@@ -79,6 +86,12 @@ prepare()
   git config submodule.3rdparty/glslang/glslang.url $srcdir/glslang
   git config submodule.3rdparty/vulkan-headers.url $srcdir/Vulkan-Headers
   git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/imgui 3rdparty/glslang/glslang 3rdparty/vulkan-headers
+}
+
+pkgver()
+{
+  cd $srcdir/pcsx2
+  git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
 build()
@@ -105,19 +118,9 @@ package()
 {
     DESTDIR="${pkgdir}" cmake --install build
     mv "${pkgdir}"/usr/bin/pcsx2-qt "${pkgdir}"/usr/share/PCSX2
-    ln -s "${pkgdir}"/usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
-}
-
-post_install()
-{
-  rm /usr/bin/pcsx2
+    ln -s /usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
+    sed -i 's/Exec=env GDK_BACKEND=x11 MESA_NO_ERROR=1 pcsx2/Exec=pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
 }
 
 # vim: ts=2 sw=2 et:
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+
