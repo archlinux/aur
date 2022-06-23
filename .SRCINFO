@@ -9,7 +9,7 @@ pkgbase = lwp
 	makedepends = git
 	depends = glibc
 	provides = liblwp.so
-	source = lwp::git+https://github.com/cmusatyalab/coda#tag=lwp-2.17?signed
+	source = coda-common::git+https://github.com/cmusatyalab/coda#tag=lwp-2.17?signed
 	validpgpkeys = 4EEDEE4D29DAE8A18CAFDA18BEC621B96C853813
 	sha256sums = SKIP
 
