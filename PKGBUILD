@@ -3,10 +3,10 @@
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.8.20
-pkgrel=1
-pkgdesc="IVPN Command Line Interface"
+pkgrel=2
+pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
-url="https://ivpn.net"
+url="https://www.ivpn.net"
 license=('GPL3')
 depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.16' 'git')
