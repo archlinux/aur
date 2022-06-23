@@ -1,7 +1,7 @@
 pkgbase = rustdesk
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk
 	install = rustdesk.install
 	arch = any
@@ -19,7 +19,6 @@ pkgbase = rustdesk
 	makedepends = curl
 	makedepends = wget
 	makedepends = rust
-	makedepends = vcpkg
 	depends = gtk3
 	depends = xdotool
 	depends = libxcb
@@ -32,12 +31,14 @@ pkgbase = rustdesk
 	conflicts = rustdesk-bin
 	options = !strip
 	source = rustdesk-1.1.9.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/1.1.9.tar.gz
+	source = vcpkg::git+https://github.com/microsoft/vcpkg#commit=ec6fe06e8da05a8157dc8581fa96b36b571c1bd5
 	source = libsciter-gtk.so::https://github.com/c-smile/sciter-sdk/raw/0298f1b34e9a0ff1dffb889d82c506a5da8bfb1e/bin.lnx/x64/libsciter-gtk.so
 	source = rustdesk.install
 	source = rustdesk.service
 	source = rustdesk.desktop
 	source = rustdesk.png::https://avatars.githubusercontent.com/u/71636191?v=4
 	sha256sums = e26ee7de1b788962e12940a1b46708b9576ee5ade9e935ef5fa1a3108601b055
+	sha256sums = SKIP
 	sha256sums = a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86
 	sha256sums = 830d3985e6292851cb33f703f58c1513a9162cca3ccd5ebf669ffe7b14637f3e
 	sha256sums = 642d5ee9d8286d1b95e3580fdea135832f609a643b98a13874e9bfe8eb8e71a4
