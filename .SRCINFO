@@ -1,6 +1,6 @@
 pkgbase = trdsql-bin
 	pkgdesc = Tool that can execute SQL queries on CSV, LTSV and JSON
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/noborus/trdsql
 	arch = x86_64
@@ -8,9 +8,13 @@ pkgbase = trdsql-bin
 	license = MIT
 	depends = glibc
 	conflicts = trdsql
-	source = trdsql-bin-0.9.1.zip::https://github.com/noborus/trdsql/releases/download/v0.9.1/trdsql_v0.9.1_linux_amd64.zip
-	source = trdsql-completion.zsh
-	sha256sums = f8883e94905a2e32e8df589ae09e00f7cbdfb1937683852852626467e2b9582c
-	sha256sums = c7ebfa2d1eb4f56b8ae404c66a2796e7e76e61e35b189ccee8e6363686aed6a6
+	source_x86_64 = trdsql-bin-0.10.0.zip::https://github.com/noborus/trdsql/releases/download/v0.10.0/trdsql_v0.10.0_linux_amd64.zip
+	source_x86_64 = trdsql-completion.zsh
+	sha256sums_x86_64 = b1a4a1d2700870f2ba201cdad1e23d92b16c3c2fea8977a783dd1662500cf37a
+	sha256sums_x86_64 = c7ebfa2d1eb4f56b8ae404c66a2796e7e76e61e35b189ccee8e6363686aed6a6
+	source_i686 = trdsql-bin-0.10.0.zip::https://github.com/noborus/trdsql/releases/download/v0.10.0/trdsql_v0.10.0_linux_386.zip
+	source_i686 = trdsql-completion.zsh
+	sha256sums_i686 = d55df476d3a957662ce0bd897ec984ec1535f87228d4bd7e3e87555d32cf7b87
+	sha256sums_i686 = c7ebfa2d1eb4f56b8ae404c66a2796e7e76e61e35b189ccee8e6363686aed6a6
 
 pkgname = trdsql-bin
