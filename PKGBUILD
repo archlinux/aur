@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=libpanel-git
-pkgver=r378.3da2f54
+pkgver=r424.80823f0
 pkgrel=1
 epoch=0
 pkgdesc='A dock/panel library for GTK 4'
@@ -12,7 +12,7 @@ provides=(libpanel)
 depends=(
 'gtk4>=4.3.0'
 gobject-introspection
-libadwaita-git
+libadwaita
 )
 makedepends=(
 meson
