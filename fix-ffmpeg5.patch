@@ -1,0 +1,72 @@
+From e89d9ca78abf7dc4fe7c832c07917696eb993868 Mon Sep 17 00:00:00 2001
+From: Nicholas Guriev <nicholas@guriev.su>
+Date: Mon, 7 Mar 2022 11:52:01 +0300
+Subject: [PATCH] Fix build against FFmpeg v5.0
+
+It has been released on January 17th. This patch keeps source compatibility
+with older versions.
+---
+ tgcalls/group/AudioStreamingPartInternal.cpp          | 5 ++++-
+ tgcalls/group/AudioStreamingPartPersistentDecoder.cpp | 2 +-
+ tgcalls/group/VideoStreamingPart.cpp                  | 5 ++++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/tgcalls/group/AudioStreamingPartInternal.cpp b/tgcalls/group/AudioStreamingPartInternal.cpp
+index 27a71cb..5639036 100644
+--- a/tgcalls/group/AudioStreamingPartInternal.cpp
++++ b/tgcalls/group/AudioStreamingPartInternal.cpp
+@@ -104,6 +104,9 @@ _avIoContext(std::move(fileData)) {
+ 
+     _frame = av_frame_alloc();
+ 
++#if LIBAVFORMAT_VERSION_MAJOR >= 59
++    const
++#endif
+     AVInputFormat *inputFormat = av_find_input_format(container.c_str());
+     if (!inputFormat) {
+         _didReadToEnd = true;
+@@ -144,7 +147,7 @@ _avIoContext(std::move(fileData)) {
+         
+         _streamId = i;
+ 
+-        _durationInMilliseconds = (int)((inStream->duration + inStream->first_dts) * 1000 / 48000);
++        _durationInMilliseconds = (int)((inStream->duration + av_stream_get_first_dts(inStream)) * 1000 / 48000);
+ 
+         if (inStream->metadata) {
+             AVDictionaryEntry *entry = av_dict_get(inStream->metadata, "TG_META", nullptr, 0);
+diff --git a/tgcalls/group/AudioStreamingPartPersistentDecoder.cpp b/tgcalls/group/AudioStreamingPartPersistentDecoder.cpp
+index e79d430..63ef475 100644
+--- a/tgcalls/group/AudioStreamingPartPersistentDecoder.cpp
++++ b/tgcalls/group/AudioStreamingPartPersistentDecoder.cpp
+@@ -32,7 +32,7 @@ class AudioStreamingPartPersistentDecoderState {
+     AudioStreamingPartPersistentDecoderState(AVCodecParameters const *codecParameters, AVRational timeBase) :
+     _codecParameters(codecParameters),
+     _timeBase(timeBase) {
+-        AVCodec *codec = avcodec_find_decoder(codecParameters->codec_id);
++        const AVCodec *codec = avcodec_find_decoder(codecParameters->codec_id);
+         if (codec) {
+             _codecContext = avcodec_alloc_context3(codec);
+             int ret = avcodec_parameters_to_context(_codecContext, codecParameters);
+diff --git a/tgcalls/group/VideoStreamingPart.cpp b/tgcalls/group/VideoStreamingPart.cpp
+index 981ad83..bcab11b 100644
+--- a/tgcalls/group/VideoStreamingPart.cpp
++++ b/tgcalls/group/VideoStreamingPart.cpp
+@@ -276,6 +276,9 @@ class VideoStreamingPartInternal {
+ 
+         int ret = 0;
+ 
++#if LIBAVFORMAT_VERSION_MAJOR >= 59
++        const
++#endif
+         AVInputFormat *inputFormat = av_find_input_format(container.c_str());
+         if (!inputFormat) {
+             _didReadToEnd = true;
+@@ -319,7 +322,7 @@ class VideoStreamingPartInternal {
+         }
+ 
+         if (videoCodecParameters && videoStream) {
+-            AVCodec *codec = avcodec_find_decoder(videoCodecParameters->codec_id);
++            const AVCodec *codec = avcodec_find_decoder(videoCodecParameters->codec_id);
+             if (codec) {
+                 _codecContext = avcodec_alloc_context3(codec);
+                 ret = avcodec_parameters_to_context(_codecContext, videoCodecParameters);

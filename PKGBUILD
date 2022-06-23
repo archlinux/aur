@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=3.7.3
+pkgver=4.0.0
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -18,16 +18,22 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('f35052e514d520796296fa88e3affa1734973164e4b72f0120b78fc586de98a15e64a4e25f436ee4c2c2c0e100c64b3dbd2d96401dff19c382a6ad1fde88e859')
+source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+        fix-tgcalls-cstdint.patch
+       )
+sha512sums=('11004d7a889e64da0f9a9d976fc9665974e000b9aefd909723606639d97df07c62e86fce6b496e40ebdb954acc410609959cd94ca5d7b18c1d89373a09e970f1'
+            'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888')
 
 prepare() {
     cd tdesktop-$pkgver-full
+
     for ttf in Telegram/lib_ui/fonts/*.ttf; do
         rm $ttf
         touch $ttf
     done
     sed -i 's/DemiBold/Bold/g' Telegram/lib_ui/ui/style/style_core_font.cpp
+
+    patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
 }
 
 build() {
