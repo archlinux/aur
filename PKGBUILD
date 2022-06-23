@@ -25,7 +25,7 @@ build() {
     python2 setup.py build
 }
 
-# circular dependency on python2-lxml
+# circular dependency on python2-beautifulsoup4
 # check() {
 #     cd "${_tarname}/build/"
 #     py.test2
