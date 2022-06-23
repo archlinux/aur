@@ -9,7 +9,8 @@ url="https://github.com/wjakob/nanobind"
 license=('BSD')
 groups=()
 depends=()
-makedepends=('cmake')
+makedepends=('cmake' 'python')
+optdepends=('python: for python bindings')
 checkdepends=('python-pytest')
 install=
 source=(
@@ -40,6 +41,10 @@ build() {
 		-B "$srcdir/build" \
 		-DCMAKE_BUILD_TYPE="Release"
 	make -C "$srcdir/build"
+
+	# python bindings
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py build
 }
 
 check() {
@@ -47,6 +52,10 @@ check() {
 }
 
 package() {
+	# python bindings
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+
 	# built library
 	cd "$srcdir/build"
 	install -Dm644 tests/libnanobind.so -t "$pkgdir/usr/lib"
