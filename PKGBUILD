@@ -12,13 +12,13 @@ _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Live video editor"
 url="https://brunoherbelin.github.io/vimix/"
 license=('GPL3')
 depends=('glfw' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gtk3')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'git' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive/refs/tags/$pkgver.tar.gz"
 	"dirent-${_dirent_commit}.tar.gz::https://github.com/tronkko/dirent/archive/${_dirent_commit}.tar.gz"
         "ImGuiColorTextEdit-${_ImGuiColorTextEdit_commit}.tar.gz::https://github.com/BalazsJako/ImGuiColorTextEdit/archive/${_ImGuiColorTextEdit_commit}.tar.gz"
@@ -26,7 +26,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "imgui-${_imgui_commit}.tar.gz::https://github.com/ocornut/imgui/archive/${_imgui_commit}.tar.gz"
         "link-${_link_commit}.tar.gz::https://github.com/Ableton/link/archive/${_link_commit}.tar.gz"
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
-        "tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip::https://sourceforge.net/code-snapshots/git/t/ti/tinyfiledialogs/code.git/tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip"
+        "tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=${_tinyfiledialogs_commit}"
 	"tinyxml2-${_tinyxml2_commit}.tar.gz::https://github.com/leethomason/tinyxml2/archive/${_tinyxml2_commit}.tar.gz"
 	"asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
 sha512sums=('a3fd5240e47f1342237a28d062a6aba34c355ba116959cb51e25c14e9a787ad8429626bcebbd665371ba70b16efb942f0a5ed80ef996e0c2dace40fe8b07f8a2'
@@ -53,12 +53,13 @@ prepare() {
       -C   "$pkgname-$pkgver/ext/link/"
   tar -xzf "stb-${_stb_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/stb/"
-  bsdtar -xf "tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip" --strip-components=1 \
-      -C     "$pkgname-$pkgver/ext/tfd/"
   tar -xzf "tinyxml2-${_tinyxml2_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/tinyxml2/"
   tar -xzf "asio-${_asio_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/link/modules/asio-standalone/"
+
+  git clone "$srcdir/tinyfiledialogs" \
+            "$pkgname-$pkgver/ext/tfd/"
 
   sed -i 's|${SNAP}/meta/gui/||' \
          "$pkgname-$pkgver/snap/gui/$pkgname.desktop"

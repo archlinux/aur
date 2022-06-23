@@ -1,11 +1,12 @@
 pkgbase = vimix
 	pkgdesc = Live video editor
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brunoherbelin.github.io/vimix/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
 	depends = glfw
 	depends = gst-plugins-bad
@@ -20,7 +21,7 @@ pkgbase = vimix
 	source = imgui-0850b46c88daa92443dedf8609a80dbc1da52558.tar.gz::https://github.com/ocornut/imgui/archive/0850b46c88daa92443dedf8609a80dbc1da52558.tar.gz
 	source = link-14f6cc99ac41466d52ce780aa37e432fe92c289b.tar.gz::https://github.com/Ableton/link/archive/14f6cc99ac41466d52ce780aa37e432fe92c289b.tar.gz
 	source = stb-f54acd4e13430c5122cab4ca657705c84aa61b08.tar.gz::https://github.com/nothings/stb/archive/f54acd4e13430c5122cab4ca657705c84aa61b08.tar.gz
-	source = tinyfiledialogs-code-2681e426ddaebc8e2764a7823b4b9d69564d1684.zip::https://sourceforge.net/code-snapshots/git/t/ti/tinyfiledialogs/code.git/tinyfiledialogs-code-2681e426ddaebc8e2764a7823b4b9d69564d1684.zip
+	source = tinyfiledialogs::git+https://git.code.sf.net/p/tinyfiledialogs/code#commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 	source = tinyxml2-bf15233ad88390461f6ab0dbcf046cce643c5fcb.tar.gz::https://github.com/leethomason/tinyxml2/archive/bf15233ad88390461f6ab0dbcf046cce643c5fcb.tar.gz
 	source = asio-01b4e87c04abd4daec58e40463bcdc150085b269.tar.gz::https://github.com/chriskohlhoff/asio/archive/01b4e87c04abd4daec58e40463bcdc150085b269.tar.gz
 	sha512sums = a3fd5240e47f1342237a28d062a6aba34c355ba116959cb51e25c14e9a787ad8429626bcebbd665371ba70b16efb942f0a5ed80ef996e0c2dace40fe8b07f8a2
