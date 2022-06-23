@@ -1,0 +1,24 @@
+pkgbase = weye
+	pkgdesc = A lightweight screenshot tool for sway, writen in Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Yakkhini/Weye
+	arch = x86_64
+	license = custom:Mulan PSL v2
+	depends = gtk3
+	depends = grimshot
+	depends = libnotify
+	noextract = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/weye
+	noextract = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/default.toml
+	noextract = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/icon.svg
+	noextract = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/LICENSE
+	source = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/weye
+	source = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/default.toml
+	source = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/icon.svg
+	source = https://github.com/Yakkhini/Weye/releases/download/v0.1.0/LICENSE
+	sha256sums = e6ae16e10597f7b12badd3ca8e0eec4f3753754ef22f1f4d8bc54959e55bda67
+	sha256sums = 6e8876de9fda676909cac1af8c7669b56150b5ad76ef8f2521f02e246783f180
+	sha256sums = 8a5efa5e039bc83b5ca879e154a258e13c2ec8ba46ed32c01fb83cdb5180063b
+	sha256sums = 03a5954817ed705c1a1876d093aa23395d04aff570a7cba753f7d1bbfa1f6b11
+
+pkgname = weye
