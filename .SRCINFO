@@ -1,11 +1,14 @@
 pkgbase = python-pydeck
 	pkgdesc = Widget for deck.gl maps
 	pkgver = 0.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/pydeck
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ipython
 	depends = python-ipykernel
 	depends = python-ipywidgets
