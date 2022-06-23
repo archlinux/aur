@@ -1,0 +1,14 @@
+pkgbase = python-labml-db
+	pkgdesc = Minimalistic Object-Relational Mapper for JSON/YAML/Pickle file based db
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/labmlai/db
+	arch = any
+	makedepends = python-setuptools
+	depends = python-redis
+	depends = python-yaml
+	provides = python-labml-db
+	source = https://files.pythonhosted.org/packages/source/l/labml_db/labml_db-0.0.15.tar.gz
+	sha256sums = 89d3a1e26a7171cc21a05b0c97830b91644b63215692312099aa849e89e3a1b9
+
+pkgname = python-labml-db
