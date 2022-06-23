@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Dvulkan-icd-dir=bin --includedir=include/mesa
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Degl=enabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
