@@ -1,4 +1,5 @@
 # Maintainer: monsoon
+
 pkgname=mantra
 pkgver=1.0
 pkgrel=1
