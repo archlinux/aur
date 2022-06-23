@@ -5,7 +5,7 @@
 pkgname='python2-soupsieve'
 _distname="${pkgname#python2-}"
 pkgver=1.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A CSS4 selector implementation for Beautiful Soup (legacy Python 2 version)'
 arch=('any')
 url="https://github.com/facelessuser/${_distname}"
