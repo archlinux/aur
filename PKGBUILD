@@ -3,7 +3,7 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-nosnap
-pkgver=11.3.0
+pkgver=11.3.1
 pkgrel=1
 epoch=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak support enabled"
@@ -14,8 +14,8 @@ depends=('pacman' 'flatpak' 'archlinux-appstream-data-pamac')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'gobject-introspection' 'xorgproto' 'asciidoc')
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev' 'libpamac-full')
-source=($_pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha512sums=('1f1e2b7925b704481bfa1d2a1dbd5677a4cd58eabd6147b8b8b3f78ef564a802082f3097fc36a955cbec2b179f3b4acee1600a9359916a93886a335d5db1ac5c')
+source=($_pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
+sha512sums=('2270cacb9d8effca68bf985da96b7160f635f2c8d7d1c584d5d1059a966134fd8499c90e21ac01f07e9f7152bf8c090841545a3b693068a2b84bd53f348ab4ef')
 
 build() {
   arch-meson -Denable-flatpak=true -Denable-snap=false --buildtype=release $_pkgname-$pkgver build
