@@ -3,7 +3,7 @@
 
 pkgname=maestral-qt
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt interface for Maestral'
 arch=('any')
 url="https://github.com/SamSchott/maestral-qt"
@@ -13,7 +13,8 @@ depends=(
 	'python-click'
 	'python-markdown2'
 	'python-packaging'
-	'python-pyqt6')
+	'python-pyqt6'
+	'qt6-svg')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG.md

@@ -1,7 +1,7 @@
 pkgbase = maestral-qt
 	pkgdesc = Qt interface for Maestral
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral-qt
 	changelog = CHANGELOG.md
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = maestral-qt
 	depends = python-markdown2
 	depends = python-packaging
 	depends = python-pyqt6
+	depends = qt6-svg
 	optdepends = gnome-shell-extension-appindicator: Gnome integration
 	source = maestral-qt-1.6.3.tar.gz::https://github.com/SamSchott/maestral-qt/archive/v1.6.3.tar.gz
 	sha256sums = f0bb25e0ea6b996ffc2602cd91f98f65f56f147a8fee2fd5c8f49eacb9dff8ee
