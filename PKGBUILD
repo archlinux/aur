@@ -1,20 +1,14 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='tracking'
 pkgdesc='Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).'
-pkgver='2.6.12.20200718'
-pkgrel='2'
+pkgver='2.6.13.20220620'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('GPL2')
 depends=(wxparaver clusteringsuite python-pillow python-wxpython python-matplotlib)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=(7942b03025ed5506e320a22cbb80f6fee21395deae0317f12a3e8cb3400fb8324a2b39bfc29febb3b8544cd0378f414cc80bdaa826e5bb95d6480023d5c36dc1)
-
-prepare() {
-	cd "$srcdir/$pkgname-${pkgver%.*}"
-	# Buildfix: wxparaver 4.10.0-20220119 renames Window to Timeline but tracking hasn't been updated yet
-	sed -i '1s/^/struct Timeline; typedef Timeline Window;\n/' src/CallersHistogram.cpp
-}
+sha512sums=(4399454f2b6ff50fac274a08e68e829f32c017fe3896d046bfdb715e706a65d053c586fecb9088accb91e2c0f40ba2713716b2a602db7802e289259a55a2dbf6)
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
