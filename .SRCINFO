@@ -1,6 +1,6 @@
 pkgbase = ngtcp2-git
 	pkgdesc = An effort to implement IETF QUIC protocol
-	pkgver = r3266.6d618dd1
+	pkgver = r3286.fc6dd8aa
 	pkgrel = 1
 	url = https://github.com/ngtcp2/ngtcp2
 	arch = x86_64

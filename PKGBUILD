@@ -1,7 +1,7 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=ngtcp2-git
-pkgver=r3266.6d618dd1
+pkgver=r3286.fc6dd8aa
 pkgrel=1
 pkgdesc="An effort to implement IETF QUIC protocol"
 arch=('x86_64')
