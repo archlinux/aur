@@ -107,9 +107,6 @@ _nf_cone=y
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 _use_llvm_lto=
 
-## Change the thin lto cachedir for fixing building several dkms modules including zfs
-_thin_lto_cachedir=
-
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
 # scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
@@ -135,7 +132,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
-_minor=5
+_minor=6
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -146,7 +143,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux TT scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -165,11 +162,11 @@ fi
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${_major}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
-	"config"
+    "config"
     "${_patchsource}/0001-cachy.patch"
 )
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/ptr1337/zfs.git#commit=543b84c329dfc73d73293447b7dbc4d0755cb901")
+    source+=("git+https://github.com/openzfs/zfs.git#commit=6c3c5fcfbe27d9193cd131753cc7e47ee2784621")
 fi
 if [ "$_cpusched" = "bmq" ]; then
     source+=("${_patchsource}/sched/0001-prjc.patch")
@@ -193,20 +190,20 @@ if [ "$_cpusched" = "hardened" ]; then
     source+=(
         "${_patchsource}/sched/0001-bore-sched.patch"
         "${_patchsource}/0001-hardening.patch"
-        "${_patchsource}/0001-hardened.patch")
+    "${_patchsource}/0001-hardened.patch")
 fi
 source+=(
     "${_patchsource}/0001-amd-perf.patch"
     "${_patchsource}/0001-bbr2.patch"
-    "${_patchsource}/0001-clearlinux.patch"
     "${_patchsource}/0001-Extend-DAMOS-for-Proactive-LRU-lists-Sorting.patch"
     "${_patchsource}/0001-fixes.patch"
     "${_patchsource}/0001-fs-patches.patch"
     "${_patchsource}/0001-futex-winesync.patch"
     "${_patchsource}/0001-hwmon.patch"
-    "${_patchsource}/0001-kbuild.patch"
     "${_patchsource}/0001-lrng.patch"
     "${_patchsource}/0001-lru-le9-spf.patch"
+    "${_patchsource}/0001-kbuild.patch"
+    "${_patchsource}/0001-rcu.patch"
     "auto-cpu-optimization.sh"
 )
 if [ -n "$_use_kcfi" ]; then
@@ -220,8 +217,9 @@ if [ -n "$_use_kcfi" ]; then
 fi
 
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/0001-bcachefs.patch")
+    source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
 fi
+
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -809,19 +807,19 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('9c3731d405994f9cd3a1bb72e83140735831b19c7cec18e0d7a8f3046fa034e7'
+sha256sums=('4e1c2a9e79847850029571a1dd04761e5f657b52c558070a085365641f133478'
             '49ddff0aac1493c3049450f8dacb9de5217c5d9254bc736cd012b3e7bda6baf2'
-            '59279d00aae10848b167aab32baead615dc147996bd7c9542c8a65ec0bb33c21'
+            'cdeb94550047982e9a69e4f1068e06884bc8e25bba8d6653b0addbe6d43ee137'
             'dfd20ada4ad708fa293476575189c560bed79a74c7682c01e74aa04dbfe8dbff'
             '326d129f9435145add756dc967accd56ffe1d8ff1b6650f84d2578c41bd6dfd6'
             'dc2898751118804bc3f36b5a6928a2927d04919ce41c0ce013009f5564d6d232'
-            'e2266d499cebdd5d195a044048ae4a13755f1d3edb3ece2c3f8837228b4cd521'
             '71c33bf75dbf84673ad26a35c20b0f9ae0fa9944d91cd93a0b128752ca2eab0e'
-            '74797806c5f0fd05138e184dc7d871fae448648d57200f0a2df9c78ea04b8b99'
-            'c60891c18687da053ed826a9195b070e19657d72e87424a48011ebbb42af37d5'
+            '39551bf08e6b965db7b125c81a17f60f695a686b13ddc6499463222fd6cec9b4'
+            'efa0cd8f02f1289d8775ce64dc4a2a061b225612e8f1513591c147a3925dc7bd'
             '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
             '16085e0bba8e1843180f82df00d6040b97531cebb2c0c4c7fe23860322d06beb'
-            '180baf6baf2474b3ce2b1841b41659e909f9367271f03be443937fbd5d518004'
             'f5b02a27a6324fc5aaabbca03e76d483da9ff51c389e4fabda51fd85f77217fc'
             '292240ee42f4e34b97528c9b2b2afcef7bc892501a3750b8825ac6ef9c87072e'
+            'f534b60c0d90ef59312ac874f0fbbcd60434ceac673148e76c503752e837126b'
+            'e3bb6ca80b9156c409fdd0ca55916f028213f7b4fc7dcf7cea7702e08822ea5f'
             'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f')
