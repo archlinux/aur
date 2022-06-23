@@ -7,7 +7,7 @@
 
 pkgname=tenacity-git
 pkgver=r13941.g9b4b96d98
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
@@ -62,6 +62,9 @@ package() {
   cd tenacity/build
   make DESTDIR="${pkgdir}" install
   test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
+
+  mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
+     "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
 
   chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-strings.so"
   chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-string-utils.so"
