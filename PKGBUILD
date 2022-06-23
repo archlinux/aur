@@ -2,7 +2,7 @@
 
 pkgname=python-scmrepo
 _pyname=${pkgname#python-}
-pkgver=0.0.7
+pkgver=0.0.25
 pkgrel=1
 pkgdesc='SCM wrapper and fsspec filesystem for Git for use in DVC'
 arch=(any)
@@ -18,29 +18,27 @@ _pydeps=(asyncssh
          pygtrie)
 depends=(python
         "${_pydeps[@]/#/python-}")
-makedepends=(python-dephell
-             python-setuptools)
-checkdepends=(python-pytest)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
+checkdepends=(python-cryptography
+              python-typing_extensions
+              python-pytest)
 _archive=("$_pyname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('0dd8ac0e0ca8223d5b2efacb77b2cb49ec3cc383241cc69d1ef7595736a4b0a9')
+sha256sums=('4b5bcc8a5ed05c0b0fafdbc3b80412c830dc1f40c31175ba8aa5817b0a1568b3')
 
-prepare(){
-	cd "$_archive"
-	dephell deps convert --from pyproject.toml --to setup.py
-}
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
 	cd "$_archive"
-	# PyPi release missing tests
+	# tests require pytest_test_utils, disabled until packaged
 	# pytest
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
