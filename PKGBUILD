@@ -1,12 +1,12 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=devtools-qemu
-pkgver=12.3c44e3c
+pkgver=20220126.21.27a741d
 pkgrel=1
 pkgdesc='QEMU based cross-build tools for Arch Linux ARM package maintainers'
 arch=('x86_64')
 url='https://aur.archlinux.org/packages/devtools-qemu'
 license=('GPL')
-depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools' 'qemu-user-static')
+makedepends=('devtools')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/arch4edu/devtools-arch4edu-extra.git"
 	"archbuild-qemu.patch"
@@ -32,6 +32,7 @@ build() {
 }
 
 package() {
+	depends+=('archlinuxarm-keyring' 'devtools' 'qemu-user-static')
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/devtools
 	mkdir -p $pkgdir/etc/pacman.d

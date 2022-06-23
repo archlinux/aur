@@ -1,18 +1,17 @@
 pkgbase = devtools-qemu
 	pkgdesc = QEMU based cross-build tools for Arch Linux ARM package maintainers
-	pkgver = 12.3c44e3c
+	pkgver = 20220126.21.27a741d
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/devtools-qemu
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = archlinuxarm-keyring
-	depends = binfmt-qemu-static
-	depends = devtools
-	depends = qemu-user-static
 	source = devtools-qemu::git+https://github.com/arch4edu/devtools-arch4edu-extra.git
 	source = archbuild-qemu.patch
 	sha256sums = SKIP
 	sha256sums = 0d8549497ff97e2d11ca73c3d6463e134ce590cb7767b76b3c54eceab19c831e
 
 pkgname = devtools-qemu
+	depends = archlinuxarm-keyring
+	depends = devtools
+	depends = qemu-user-static
