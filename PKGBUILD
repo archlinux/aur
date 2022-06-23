@@ -6,8 +6,8 @@
 
 pkgbase=phpstorm
 pkgname=(phpstorm phpstorm-jre)
-pkgver=2022.1.3b221.5787.33
-pkgrel=1
+pkgver=2022.1.3b221.5921.28
+pkgrel=2
 pkgdesc='Lightweight and Smart PHP IDE'
 arch=('x86_64' 'i686')
 license=('custom:jetbrains')
