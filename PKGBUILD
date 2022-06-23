@@ -1,11 +1,12 @@
 # Maintainer: Mik Mueller <imse335@gmail.com>
 pkgname=smarthome-cli
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal client for the smarthome-go/smarthome server."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/smarthome-go/cli"
 license=('GPL2')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/smarthome-go/cli/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('8051445a86f27fba8991aa187e7680eb3d347f9486ec59e7533f1421f727495a421f4e1eba9064a842b51d26cdf648478041331da4a9395bd99d737252c37dc4')
@@ -26,11 +27,6 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-w -s -linkmode external -extldflags \"-static -Wl,-z,now,-z,relro ${LDFLAGS}\"" \
         -v \
         -o build/smarthome-cli \
         .
