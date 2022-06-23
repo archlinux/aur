@@ -6,8 +6,7 @@ pkgdesc='QEMU based cross-build tools for Arch Linux ARM package maintainers'
 arch=('x86_64')
 url='https://aur.archlinux.org/packages/devtools-qemu'
 license=('GPL')
-makedepends=('devtools')
-makedepends=('git')
+makedepends=('devtools' 'git')
 source=("$pkgname::git+https://github.com/arch4edu/devtools-arch4edu-extra.git"
 	"archbuild-qemu.patch"
 )

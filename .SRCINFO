@@ -5,6 +5,7 @@ pkgbase = devtools-qemu
 	url = https://aur.archlinux.org/packages/devtools-qemu
 	arch = x86_64
 	license = GPL
+	makedepends = devtools
 	makedepends = git
 	source = devtools-qemu::git+https://github.com/arch4edu/devtools-arch4edu-extra.git
 	source = archbuild-qemu.patch
