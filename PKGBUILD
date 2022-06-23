@@ -1,7 +1,7 @@
 # Maintainer: John Patrick <john.patrick@gmail.com>
 pkgname=archlinux-tweak-tool-git
 _pkgname=archlinux-tweak-tool
-pkgver=r742.399c435
+pkgver=r787.9a508c5
 pkgrel=1
 pkgdesc="Arch Linux Tweak Tool or ATT"
 arch=('x86_64')
