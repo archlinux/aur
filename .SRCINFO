@@ -19,6 +19,7 @@ pkgbase = lfp-git
 	depends = xsel
 	depends = lolcat
 	optdepends = git: cloning repos from within lfp
+	conflicts = lfp
 	source = git+https://gitlab.com/a4to/lfp.git
 	md5sums = SKIP
 

@@ -9,6 +9,7 @@ arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
 depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat fzf dunst dialog xsel lolcat)
+conflicts=(lfp)
 optdepends=(
   'git: cloning repos from within lfp'
   )
