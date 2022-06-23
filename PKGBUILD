@@ -104,7 +104,6 @@ package()
     DESTDIR="${pkgdir}" cmake --install build
     mv "${pkgdir}"/usr/bin/pcsx2-qt "${pkgdir}"/usr/share/PCSX2
     ln -s "${pkgdir}"/usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
-
 }
 
 post_install()
