@@ -4,7 +4,7 @@
 pkgname='gvisor-git'
 _pkgbin='runsc'
 _pkgshim='containerd-shim-runsc-v1'
-pkgver=20220606.0.r33.g2610918ed
+pkgver=20220621.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64' 'aarch64')
