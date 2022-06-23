@@ -1,6 +1,6 @@
 pkgbase = tidal-dl-git
 	pkgdesc = Download videos and tracks from Tidal.
-	pkgver = 2022.01.21.1.r2.g30917d1
+	pkgver = 2022.06.23.1.r3.ge1ee47b
 	pkgrel = 1
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = tidal-dl-git
 	depends = python-prettytable
 	depends = python-setuptools
 	depends = python-psutil
+	depends = python-pyqt5
+	depends = python-qt-material
 	provides = tidal-dl
 	conflicts = tidal-dl
 	source = git+https://github.com/yaronzz/Tidal-Media-Downloader.git
