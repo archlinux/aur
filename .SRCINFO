@@ -1,7 +1,7 @@
 pkgbase = pixfetch
 	pkgdesc = Another fetch program with pixelized images written in Rust
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RubixDev/pixfetch
 	arch = i686
 	arch = pentium4
@@ -13,6 +13,7 @@ pkgbase = pixfetch
 	license = GPL2
 	makedepends = cargo
 	makedepends = jq
+	depends = gcc-libs
 	source = pixfetch-1.0.0.tar.gz::https://static.crates.io/crates/pixfetch/pixfetch-1.0.0.crate
 	b2sums = 2180f1be5ecb1568fab2a5df9b9d6b4b50976a23e0c21716ac2cb04af991fc9feb98981cc9878a4288050bbe5c3ea09a916742f199f3b17fab7447f673dbd6c9
 

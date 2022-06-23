@@ -1,12 +1,12 @@
 # Maintainer: RubixDev <silas dot groh at t-online dot de>
 pkgname=pixfetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Another fetch program with pixelized images written in Rust"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/RubixDev/pixfetch"
 license=('GPL2')
-depends=()
+depends=('gcc-libs')
 makedepends=('cargo' 'jq')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('2180f1be5ecb1568fab2a5df9b9d6b4b50976a23e0c21716ac2cb04af991fc9feb98981cc9878a4288050bbe5c3ea09a916742f199f3b17fab7447f673dbd6c9')
