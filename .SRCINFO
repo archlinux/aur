@@ -1,6 +1,6 @@
 pkgbase = arduino-ide-beta-bin
 	pkgdesc = Arduino prototyping platform IDE, rewrite based on the Theia IDE framework
-	pkgver = 2.0.0.rc7
+	pkgver = 2.0.0.rc8
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-ide
 	install = arduino-ide.install
@@ -13,9 +13,9 @@ pkgbase = arduino-ide-beta-bin
 	provides = arduino-ide
 	conflicts = arduino-ide
 	options = !strip
-	source = https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0-rc7_Linux_64bit.zip
+	source = https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0-rc8_Linux_64bit.zip
 	source = https://www.arduino.cc/wiki/370832ed4114dd35d498f2f449b4781e/arduino.svg
-	sha256sums = 4000ad919536959038939b2d9f4af6c8c3efc83ceb5f816fb1b69b033c5c9b11
+	sha256sums = 830519afaa3c6144484567807258b375e193026fcac1f5137e6ff3749855786c
 	sha256sums = 4137981bcb4057c2e0092f22faea287767f102e0b48497d22cd55e8d6988e4ac
 
 pkgname = arduino-ide-beta-bin
