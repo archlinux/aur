@@ -1,0 +1,14 @@
+pkgbase = nginx-mainline-mod-headers-more-git
+	pkgdesc = Set and clear input and output headers (module for mainline nginx)
+	pkgver = 0.33.r15.ge536bc5
+	pkgrel = 1
+	url = https://github.com/openresty/headers-more-nginx-module
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	source = headers-more-nginx-module::git+https://github.com/openresty/headers-more-nginx-module.git
+	sha256sums = SKIP
+
+pkgname = nginx-mainline-mod-headers-more-git
