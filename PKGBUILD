@@ -5,26 +5,27 @@
 # Contributor: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-_pkgver=0.16.1-2
+_pkgver=0.16.3-2
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://tkashkin.github.io/projects/gamehub/"
 license=(GPL3)
 depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxtst)
-makedepends=(meson ninja vala0.54)
+makedepends=(git meson ninja vala)
 options=(!strip debug)
-source=("GameHub-$pkgver.tar.gz::https://github.com/tkashkin/GameHub/archive/${_pkgver}-master.tar.gz")
-sha256sums=('bbbf2f5216ce6f0d6a57179f388a714aec52188f4e67a9deb6478061441a30b5')
+#source=("git+https://github.com/tkashkin/GameHub/archive/${_pkgver}-master.tar.gz")
+source=("git+https://github.com/tkashkin/GameHub.git#tag=${_pkgver}-master")
+sha256sums=('SKIP')
 
 build() {
-  cd "GameHub-$_pkgver-master"
+  cd "GameHub"
   CFLAGS="$CFLAGS -O0" meson . build --prefix=/usr -Ddistro=arch --buildtype=debug
   ninja -C build
 }
 
 package() {
-  cd "GameHub-$_pkgver-master"
+  cd "GameHub"
   DESTDIR="${pkgdir}" ninja -C build install
 }
