@@ -1,6 +1,6 @@
 pkgbase = bazecor-git
 	pkgdesc = Graphical configurator for Dygma Raise. Development branch
-	pkgver = 1.0.0beta13.2009
+	pkgver = 1.0.0beta15.2516
 	pkgrel = 1
 	url = https://github.com/Dygmalab/Bazecor
 	arch = x86_64

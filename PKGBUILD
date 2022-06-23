@@ -3,7 +3,7 @@
 _pkgname="bazecor"
 _branch="development"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0beta13.2009
+pkgver=1.0.0beta15.2516
 pkgrel=1
 pkgdesc="Graphical configurator for Dygma Raise. Development branch"
 url="https://github.com/Dygmalab/Bazecor"
