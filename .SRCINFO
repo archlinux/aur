@@ -1,0 +1,19 @@
+pkgbase = serioussam-oddworld
+	pkgdesc = Serious Sam Classic Odd World native Linux.
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://github.com/tx00100xt/SE1-TFE-OddWorld
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = sed
+	depends = sdl2
+	depends = python
+	depends = bash
+	source = https://github.com/tx00100xt/SE1-TFE-OddWorld/archive/refs/tags/v0.20.tar.gz
+	sha512sums = bb5e71ac5fd7734175b6488f90b202b2726cf7200f9aa81cce90bdd10cef3a736a285c4a70203bec0afc068a06cc82e76a8d582a6a2773e1367be2acee9ad0cf
+
+pkgname = serioussam-oddworld
+
