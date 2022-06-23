@@ -5,7 +5,7 @@
 pkgname=arduino-ide-beta-bin
 _pkgver=2.0.0-rc8
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"

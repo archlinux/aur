@@ -1,7 +1,7 @@
 pkgbase = arduino-ide-beta-bin
 	pkgdesc = Arduino prototyping platform IDE, rewrite based on the Theia IDE framework
 	pkgver = 2.0.0.rc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arduino/arduino-ide
 	install = arduino-ide.install
 	arch = x86_64
