@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail · com>
 _pkgname=hamster-shell-extension
 pkgname=$_pkgname-git
-pkgver=20171010.g495a37a
+pkgver=20220623.g495a37a
 pkgrel=1
 pkgdesc="Shell extension for project hamster - the GNOME time tracker"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('hamster-time-tracker' 'gnome-shell')
 makedepends=('git' 'wget')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/projecthamster/${_pkgname}.git")
+source=("git+https://github.com/projecthamster/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
