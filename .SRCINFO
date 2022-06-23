@@ -1,7 +1,7 @@
 pkgbase = lwp
 	pkgdesc = Lightweight process library
 	pkgver = 2.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmusatyalab/coda
 	changelog = NEWS
 	arch = x86_64
