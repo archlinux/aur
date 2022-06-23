@@ -23,9 +23,8 @@ source=("https://github.com/Anas-Elgarhy/jls/releases/download/$pkgver/$pkgname-
 noextract=()
 md5sums=()
 validpgpkeys=()
-sha256sums=('94c0dcfd42499833a66a879054ac983a7348f41ef9b55f9f978ee1fca5510257')
-
 package() {
     sudo install -Dm644 ./jls.jar "/usr/share/java/jls/jls.jar"
     sudo install -Dm777 ./jls.sh "/bin/jls"
 }
+sha256sums=('b36ae9cff855ed000d2949226c1d961882e8b1b8be11f44147a0fd64ff4b5939')
