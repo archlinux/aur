@@ -2,7 +2,7 @@
 # Maintainer: Paul T <paul dot t at gembaadvantage dot com>
 
 pkgname='uplift-bin'
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Semantic versioning the easy way. Powered by Conventional Commits. Built for use with CI'
 url='https://upliftci.dev'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('uplift')
 conflicts=('uplift')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.15.0/uplift_2.15.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('15bff9ebb1031e913809493b39b8fd4c78c2ffb52236103d5455bd0ed17a5fbc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.16.0/uplift_2.16.0_linux-arm64.tar.gz")
+sha256sums_aarch64=('15c758c354072eba009314a8ee4cfecb1d34d099ea8353ef42c58a9efdd13ffa')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.15.0/uplift_2.15.0_linux-arm.tar.gz")
-sha256sums_armv7h=('f5b321d67d62f844de50f6e438b4fc30c95e45609dc3b791d5ac13a8ed96fa0b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.16.0/uplift_2.16.0_linux-arm.tar.gz")
+sha256sums_armv7h=('c8e4c7e263c097a10e6126300136f42726a5f579acdd0aeabc9615c51982594a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.15.0/uplift_2.15.0_linux-i386.tar.gz")
-sha256sums_i686=('5e068427892fbca14277f9e2cb6a1878e93f40f7582dd9e31367a235d92453ba')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.16.0/uplift_2.16.0_linux-i386.tar.gz")
+sha256sums_i686=('8b5d48acdbaab1fef40b5d701444c3fd5160065a74ff548c82ea33da53c78f0e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.15.0/uplift_2.15.0_linux-x86_64.tar.gz")
-sha256sums_x86_64=('5d6dd23bb98b82ef24f7eb1942a475eea2c6d572124cad38601443e3f879cfab')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gembaadvantage/uplift/releases/download/v2.16.0/uplift_2.16.0_linux-x86_64.tar.gz")
+sha256sums_x86_64=('e4a5ef2f591bac851583c0f0040f3de077500cac6f961d82e7208ab9c37f4ad1')
 
 package() {
   # bin
