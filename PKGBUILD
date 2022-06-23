@@ -7,7 +7,7 @@ pkgver=7.0.0.24651
 pkgrel=1
 arch=(x86_64)
 license=(custom)
-url=https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware
+url="https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware"
 
 depends=(qt5-base)
 makedepends=(patchelf)

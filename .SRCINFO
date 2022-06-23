@@ -2,7 +2,7 @@ pkgbase = pylon
 	pkgdesc = Basler camera Software suite
 	pkgver = 7.0.0.24651
 	pkgrel = 1
-	url = https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit
+	url = https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
