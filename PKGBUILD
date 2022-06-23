@@ -2,7 +2,7 @@
 pkgname=remotelight-bin
 _pkgname=remotelight
 pkgver=0.2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Multifunctional LED Control Software"
 url="https://github.com/Drumber/RemoteLight"
 license=('GPL3')

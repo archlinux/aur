@@ -1,7 +1,7 @@
 pkgbase = remotelight-bin
 	pkgdesc = Multifunctional LED Control Software
 	pkgver = 0.2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Drumber/RemoteLight
 	arch = any
 	license = GPL3
