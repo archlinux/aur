@@ -58,7 +58,7 @@ prepare(){
   cat "$xplus_tse".part* > "$xplus_tse"
 
   # Install the XPLUS Modification data.
-  tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTFE/"
+  tar -xJvf "$srcdir/$xplus_tfe" -C "$srcdir/$_srcname/SamTFE/"
   tar -xJvf "$srcdir/$xplus_tse" -C "$srcdir/$_srcname/SamTSE/"
   chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
   chmod -R o=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
