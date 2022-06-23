@@ -8,9 +8,8 @@ license=('MIT')
 arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
-depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat dunst lolcat)
+depends=(lf zsh ffmpeg ueberzug graphicsmagick ghostscript bat dialog dunst lolcat)
 optdepends=(
-  'dialog: Required by many lfp functions outside the scope of image and video previews'
   'git: cloning repos from within lfp'
   )
 source=("git+$url.git")
