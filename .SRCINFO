@@ -1,5 +1,5 @@
 pkgbase = serioussam
-	pkgdesc = Serious Sam Classic native Linux version with XPLUS Modificatio.
+	pkgdesc = Serious Sam Classic native Linux version with XPLUS Modificatio
 	pkgver = 1.10.2
 	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamClassic
