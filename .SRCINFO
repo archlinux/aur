@@ -1,13 +1,17 @@
 pkgbase = python-statusof
-	pkgdesc = Small python script to check the status of a list of urls.
+	pkgdesc = Small Python script to check the status of a list of URLs.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arthurdw/statusof
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = python-pip
-	depends = python
-	provides = statusof
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-colorama
+	optdepends = python-aiodns: for fast DNS resolving
+	source = git+https://github.com/Arthurdw/statusof.git#commit=904e3a53c04a26e2a7d3420cffccfcad3a756af1
+	sha256sums = SKIP
 
 pkgname = python-statusof
