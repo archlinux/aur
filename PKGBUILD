@@ -17,7 +17,7 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 package() {
-  cd ${pkgname}
+  cd lfp
   install -Dm755 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 usr/share/${pkgname}/{lfp,lfpcd,cleaner,scope} -t "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 usr/share/${pkgname}/{lfp-icons,lfprc} -t "${pkgdir}/usr/share/${pkgname}"
