@@ -2,8 +2,8 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.5.1.beta.118
+pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
@@ -22,8 +22,17 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
-    echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    LATEST_SHA=$(curl -s https://api.github.com/repos/ciderapp/Cider/branches/stable | grep sha | cut -d '"' -f 4 | sed 's/v//' | xargs)
+    COMMITSINCESTABLE=$(git rev-list $LATEST_SHA..HEAD --count)
+    CURRENT_VERSION=$(node -p -e "require('./package.json').version")
+    if [[ $COMMITSINCESTABLE -gt 0 ]]; then
+        echo "${CURRENT_VERSION}.beta.${COMMITSINCESTABLE}"
+        NEW_VERSION="${CURRENT_VERSION}-beta.${COMMITSINCESTABLE}"
+        sed -i "0,/$CURRENT_VERSION/s//$NEW_VERSION/" package.json
+    else
+        echo ${CURRENT_VERSION/0/$COMMITSINCESTABLE}
+    fi
+
 }
 
 build() {
