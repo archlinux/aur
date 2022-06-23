@@ -1,11 +1,10 @@
 pkgbase = python2-beautifulsoup4
 	pkgdesc = Web HTML/XML parser addons for screen-scraping (legacy Python 2 version)
 	pkgver = 4.9.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://pypi.org/project/beautifulsoup4/4.9.3/
 	arch = any
 	license = MIT
-	checkdepends = python2-pytest
 	makedepends = python2-setuptools
 	depends = python2-soupsieve
 	optdepends = python2-chardet: to autodetect character encodings

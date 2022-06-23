@@ -7,7 +7,7 @@
 pkgname='python2-beautifulsoup4'
 _distname="${pkgname#python2-}"
 pkgver=4.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Web HTML/XML parser addons for screen-scraping (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_distname}/${pkgver}/"
@@ -21,7 +21,6 @@ optdepends=(
 makedepends=(
     'python2-setuptools'
 )
-checkdepends=('python2-pytest')
 _tarname="${_distname}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/${_distname::1}/${_distname}/${_tarname}.tar.gz")
 sha256sums=('84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25')
@@ -34,8 +33,8 @@ build() {
 }
 
 check() {
-    cd "${_tarname}/build"
-    py.test2
+    cd "${_tarname}"
+    python2 -m unittest discover -s bs4 -v
 }
 
 package() {
