@@ -31,7 +31,9 @@ depends=(
   libsamplerate
   sdl2
   qt6-base
+  qt6-wayland
   qt6-tools
+  qt6-svg
   fmt
   soundtouch
   wayland
