@@ -7,13 +7,10 @@ pkgbase = python-mkl-fft
 	license = custom
 	makedepends = cython
 	makedepends = git
-	makedepends = intel-compiler-base
-	makedepends = python-numpy
 	makedepends = python-setuptools
 	depends = intel-mkl
+	depends = python-numpy
 	source = git+https://github.com/IntelPython/mkl_fft#tag=v1.3.1
 	md5sums = SKIP
 
 pkgname = python-mkl-fft
-	depends = intel-mkl
-	depends = python-numpy
