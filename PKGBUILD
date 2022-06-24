@@ -1,6 +1,6 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=nanogui-git
-pkgver=r525.ef1f258
+pkgver=r526.c650530
 pkgrel=1
 pkgdesc="A minimalistic cross-platform widget library for OpenGL 3+, GLES 2/3, and Metal"
 arch=("x86_64")

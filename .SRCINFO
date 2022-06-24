@@ -1,6 +1,6 @@
 pkgbase = nanogui-git
 	pkgdesc = A minimalistic cross-platform widget library for OpenGL 3+, GLES 2/3, and Metal
-	pkgver = r344.f9c3b7a
+	pkgver = r526.c650530
 	pkgrel = 1
 	url = https://github.com/mitsuba-renderer/nanogui
 	arch = x86_64
