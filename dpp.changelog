@@ -1,3 +1,11 @@
+# 10.0.11-1 / 2000-06-24
+
+* bump to new library version
+	* automod is now supported
+	* see library changelog for full list
+* nothing chaged for the package itself
+	* all previously mentioned issues are still present
+
 # 10.0.10-1 / 2022-06-14
 
 * first build on the AUR
