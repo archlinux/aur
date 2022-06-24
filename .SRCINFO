@@ -1,6 +1,6 @@
 pkgbase = ssh-rdp-host-git
 	pkgdesc = Udev rules and dependencies for an ssh-rdp host
-	pkgver = r110.5047f55
+	pkgver = r113.cb74075
 	pkgrel = 1
 	url = https://github.com/kokoko3k/ssh-rdp
 	install = ssh-rdp-host-git.install

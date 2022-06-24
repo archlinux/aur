@@ -2,7 +2,7 @@
 
 _pkgname=ssh-rdp
 pkgname=${_pkgname}-host-git
-pkgver=r110.5047f55
+pkgver=r113.cb74075
 pkgrel=1
 pkgdesc='Udev rules and dependencies for an ssh-rdp host'
 arch=('any')
