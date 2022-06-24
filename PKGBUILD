@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64)
@@ -17,15 +17,15 @@ optdepends=('pass: stores, retrieves, generates, and synchronizes passwords secu
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 source=(https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux
-        https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pkgname}-0.3.1-Linux.sha256
+        https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-Linux.sha256
         https://github.com/pdobsan/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz
        )
-noextract=(${_pkgname}-${pkgver}-Linux ${_pkgname}-0.3.1-Linux.sha256)
+noextract=(${_pkgname}-${pkgver}-Linux ${_pkgname}-${pkgver}-Linux.sha256)
 
 sha256sums=(SKIP SKIP SKIP)
 
 prepare() {
-  sha256sum -c ${_pkgname}-0.3.1-Linux.sha256
+  sha256sum -c ${_pkgname}-${pkgver}-Linux.sha256
 }
 
 package() {
