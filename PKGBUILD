@@ -10,13 +10,13 @@ pkgname=openfoam-com-git
 pkgver=r25230.6e1fca0e46
 _distname=OpenFOAM
 _dist=openfoam
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (www.openfoam.com)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com"
 license=('GPL3')
 install="openfoam-com.install"
-depends=('cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis' 'kahip')
+depends=('cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'metis' 'parmetis' 'kahip')
 makedepends=('git')
 source=("git+https://develop.openfoam.com/Development/openfoam.git")
 sha256sums=('SKIP')
@@ -37,22 +37,15 @@ prepare() {
 
   projectDir="${srcdir}/${_dist}"
 
-  # Generate and install the system preferences file
-  echo "# Preferences for arch-linux
-export WM_COMPILER_TYPE=system
-export WM_MPLIB=SYSTEMOPENMPI
-# End" \
-  > "${projectDir}"/etc/prefs.sh
-
-
   # Configure components.
-  # Use system values for boost/cgal, fftw, scotch, paraview
+  # Use system values for boost/cgal, fftw, kahip, metis, scotch, paraview
 
   "${projectDir}"/bin/tools/foamConfigurePaths \
     -boost boost-system \
     -cgal  cgal-system \
     -fftw  fftw-system \
     -kahip kahip-system \
+    -metis metis-system \
     -scotch scotch-system \
     -paraview paraview-system \
     ;
@@ -76,7 +69,7 @@ build() {
   # changes to avoid linking problems related to gcc 11
   # check this for the next upgrade!
   pwd
-  sed -i 's/g++$(COMPILER_VERSION) -std=c++11/g++$(COMPILER_VERSION) -std=c++14 -D_GLIBCXX_USE_CXX14_ABI=0/g' $projectDir/wmake/rules/General/Gcc/c++
+  sed -i 's/g++$(COMPILER_VERSION) -std=c++11/g++$(COMPILER_VERSION) -std=c++14/g' $projectDir/wmake/rules/General/Gcc/c++
 
   # Avoid external influence on the environment
   export FOAM_CONFIG_MODE="o"
@@ -96,7 +89,7 @@ build() {
   # Dummy application for testing
   #./applications/test/00-dummy/Allwmake
 
-  ./Allwmake -j -log=log.build
+  ./Allwmake -j -q -s -log=log.build
 
   # Check log for this type of content:
   #
@@ -121,9 +114,6 @@ build() {
       echo
       exit 1
   fi
-
-  # Remove intermediate build artifacts
-  rm -rf "${projectDir}/build"
 }
 
 

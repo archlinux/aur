@@ -1,7 +1,7 @@
 pkgbase = openfoam-com-git
 	pkgdesc = The open source CFD toolbox (www.openfoam.com)
 	pkgver = r25230.6e1fca0e46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openfoam.com
 	install = openfoam-com.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = openfoam-com-git
 	depends = paraview
 	depends = utf8cpp
 	depends = scotch
+	depends = metis
 	depends = parmetis
 	depends = kahip
 	source = git+https://develop.openfoam.com/Development/openfoam.git
