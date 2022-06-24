@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=101.0.4951.64
+pkgver=103.0.5060.53
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -22,7 +22,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless')
+             'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -31,23 +31,21 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        fix-no-member-named-tie-in-namespace-std.patch
-        iwyu-add-utility-for-std-exchange.patch
         enable-GlobalMediaControlsCastStartStop.patch
-        chromium-libxml-unbundle.patch
+        roll-src-third_party-ffmpeg.patch
         sql-make-VirtualCursor-standard-layout-type.patch
+        remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('9c5896e4135563453ac10d15698c18ef61eb5535dc611325b230ece4c5a8d8f7'
+sha256sums=('0ecbae14670506da90c8bf744f83f52a64a5fff0765c2e2e066b0e68b805b101'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '8ed519d21ccd8b382ddd384e9c15306a60d2e3495f48a62dea07c9be9bbffebd'
-            '7ad0106161bbf25e2e603ae1a723ae4217155ebb26eb4778363ad396e8c14156'
-            '6f666ef0acb08704ca58cc0d5e97e7ce64d8fea51042e593adae1ce15a61231c'
+            'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
-            'fd3bf124aacc45f2d0a4f1dd86303fa7f2a3d4f4eeaf33854631d6cb39e12485'
+            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
+            '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
@@ -59,13 +57,11 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
-        ozone-add-va-api-support-to-wayland.patch
-        wayland-egl.patch)
+        ozone-add-va-api-support-to-wayland.patch)
 sha256sums=(${sha256sums[@]}
-            'eb70d0260f121faa6e2efd8e80a5e258f23474a214ff9f4f112bdcffdaaadd83'
+            '96c7adbe1d9ec6fe77bb3d299a4bbcc63bcdbec04f736a73f218949a0ea5a83e'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            '07bdc1b3fc8f0d0a4804d111c46ce3343cd7824de562f2848d429b917ce4bcfd'
-            '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
+            '07bdc1b3fc8f0d0a4804d111c46ce3343cd7824de562f2848d429b917ce4bcfd')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -112,15 +108,16 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Upstream fixes
-  patch -Np1 -i ../fix-no-member-named-tie-in-namespace-std.patch
-  patch -Np1 -i ../iwyu-add-utility-for-std-exchange.patch
+  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
+  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
+
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
   patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/3488058
-  patch -Np1 -i ../chromium-libxml-unbundle.patch
+  # Revert ffmpeg roll requiring new channel layout API support
+  # https://crbug.com/1325301
+  patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -136,11 +133,8 @@ prepare() {
   # Fixes for building with libstdc++ instead of libc++
   #patch -Np1 -i ../patches/
 
-  # Wayland/EGL regression (crbug #1071528 #1071550)
-  patch -Np1 -i ../wayland-egl.patch
-
   # Enable vaapi on wayland
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
+  # patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
@@ -296,7 +290,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
