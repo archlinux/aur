@@ -2,7 +2,7 @@
 
 pkgname=apk-editor-studio-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
 provides=("${pkgname%-bin}")
@@ -10,7 +10,9 @@ url='https://github.com/kefir500/apk-editor-studio'
 license=('GPL3')
 depends=('qt5-base'
          'java-runtime>=8'
-         'hicolor-icon-theme')
+         'hicolor-icon-theme'
+         'android-sdk-build-tools'
+         'android-sdk-platform-tools')
 optdepends=('libsecret: Enable password manager backend')
 source=("https://github.com/kefir500/apk-editor-studio/releases/download/v${pkgver}/apk-editor-studio_linux_${pkgver}.AppImage")
 sha256sums=('181e3b75d3b31a3d8653700b90101d7897db7544e61c57fb606d2c6083eaf49f')

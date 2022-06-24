@@ -2,12 +2,14 @@ pkgbase = apk-editor-studio-bin
 	pkgdesc = Powerful yet easy to use APK editor
 	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://qwertycube.com/apk-editor-studio
+	url = https://github.com/kefir500/apk-editor-studio
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = java-runtime>=8
 	depends = hicolor-icon-theme
+	depends = android-sdk-build-tools
+	depends = android-sdk-platform-tools
 	optdepends = libsecret: Enable password manager backend
 	provides = apk-editor-studio
 	source = https://github.com/kefir500/apk-editor-studio/releases/download/v1.6.0/apk-editor-studio_linux_1.6.0.AppImage
