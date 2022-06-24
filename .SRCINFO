@@ -1,14 +1,16 @@
 pkgbase = umess-git
 	pkgdesc = A simple X pop-up
-	pkgver = 0.1.r37.862cd64
+	pkgver = 0.1.r1.gc096279
 	pkgrel = 1
 	url = https://github.com/kompoth/micromess
 	arch = x86_64
 	license = MIT
-	makedepends = make
+	makedepends = git
 	depends = libx11
 	depends = libxrandr
 	depends = libxft
+	provides = umess
+	conflicts = umess
 	source = umess-git::git+https://github.com/kompoth/micromess.git
 	sha256sums = SKIP
 
