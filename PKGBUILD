@@ -11,7 +11,7 @@ depends=('glib2')
 makedepends=('cmake' 'gcc' 'git' 'make')
 provides=("$_pkgname")
 conflicts=("$_pkgname-gtk")
-source=("$_pkgname::git+https://github.com/karwler/sfbrename.git#tag=8f1436a859bc162ec5f713c89a30085fb0fd8d7c")
+source=("$_pkgname::git+https://github.com/karwler/sfbrename.git#tag=70d9967d46b209ac1247cb863bfbb42f0549213f")
 sha256sums=('SKIP')
 
 prepare() {
