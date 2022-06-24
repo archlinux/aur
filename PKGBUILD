@@ -1,11 +1,12 @@
 # Maintainer: tyusha <htovver@gmail.com>
 pkgname=rofi-power-menu-git
-pkgver=r37.368ba43
-_name=rofi-power-menu
+pkgver=3.0.2.r0.g368ba43
+_pkgname=rofi-power-menu
+_source=https://github.com/jluttine/rofi-power-menu.git
 pkgrel=1
 pkgdesc="Configurable power menu mode for Rofi and dmenu"
 arch=('any')
-url="https://github.com/jluttine/${_name}"
+url="https://github.com/jluttine/${_pkgname}"
 license=('MIT')
 # If you want to use dmenu instead, and don't want to install rofi,
 # change this to dmenu and also install rofi-script-to-dmenu.
@@ -13,21 +14,19 @@ license=('MIT')
 depends=('rofi')
 optdepends=('rofi-script-to-dmenu: Run rofi scripts with dmenu (or with dmenu mode of rofi)'
 			'dmenu: Use with dmenu instead of rofi')
-provides=('dmenu-power-menu')
-source=("git+https://github.com/jluttine/${_name}")
+provides=('rofi-power-menu')
+conflicts=('rofi-power-menu')
+source=("${_pkgname}"::"git+${_source}")
 
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/$_name"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${srcdir}/$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${srcdir}/$_name" || exit 1
+	cd "${srcdir}/$_pkgname" || exit 1
 	local doc_path="$pkgdir/usr/share/doc/${pkgname}"
 
 	install -Dm755 "rofi-power-menu" "$pkgdir/usr/bin/rofi-power-menu"
