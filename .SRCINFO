@@ -1,0 +1,32 @@
+pkgbase = archiso-persistent-git
+	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
+	pkgver = v58+214+gee08b3c
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/184
+	arch = any
+	license = GPL3
+	checkdepends = shellcheck
+	makedepends = git
+	depends = arch-install-scripts
+	depends = bash
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = erofs-utils
+	depends = libarchive
+	depends = libisoburn
+	depends = mtools
+	depends = squashfs-tools
+	depends = cryptsetup-nested-cryptkey
+	optdepends = archiso-profiles: extra profiles for archiso
+	optdepends = edk2-ovmf: for emulating UEFI with run_archiso
+	optdepends = openssl: for codesigning support when building netboot artifacts
+	optdepends = qemu: for run_archiso
+	conflicts = archiso
+	conflicts = archiso-encryption
+	replaces = archiso
+	replaces = archiso-encryption
+	replaces = archiso-persistent
+	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=persistent
+	sha256sums = SKIP
+
+pkgname = archiso-persistent-git
