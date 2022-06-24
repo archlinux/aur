@@ -1,6 +1,6 @@
 pkgbase = concordium-mainnet-node-bin
 	pkgdesc = Concordium Mainnet Node
-	pkgver = 3.0.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://developer.concordium.software/en/mainnet/net/index.html
 	install = concordium-mainnet-node.install
@@ -12,10 +12,10 @@ pkgbase = concordium-mainnet-node-bin
 	options = !strip
 	backup = etc/default/concordium-mainnet-node
 	backup = etc/default/concordium-mainnet-node-collector
-	source = https://distribution.mainnet.concordium.software/deb/concordium-mainnet-node_3.0.1_amd64.deb
+	source = https://distribution.mainnet.concordium.software/deb/concordium-mainnet-node_4.1.1_amd64.deb
 	source = concordium-mainnet-node.default
 	source = concordium-mainnet-node-collector.default
-	sha512sums = b030f556e7401ea50e0a80561d9c34f0644da1c7389f86a35bf336868a4203cb9f4f0e301b5f3c60a820a9ebf0be82a24424fbb8e9ac8a13b5478189e31da01a
+	sha512sums = 2932594fc2e8ea7361e00bba541485240e42d1656b1b8ac7593ca02b1b191268b58180a86f9a9af2ce93616320685afa916419a8c616cae99eb33ad098cd14fb
 	sha512sums = b1d37f98eb7647de17b068ae58b217850d9382680534adad9921de111f6d8078b9121924fc539791d50eb4198280e3b3b71318ba7aa4fee7b79d556326ac7661
 	sha512sums = 1d89a0c782f0f5e2ce8543e20bc32cd0382cdc7e5fb2be7bddf47393810073c7fc00553c1abcc9103f0851065c355920bba8c59ea7a5080dde68ca4c79fce0b3
 
