@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Ivkovic <https://nivkovic.net>
 
 pkgname='tspreed'
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Terminal RSVP speed reader with Spritz-like functionality'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/n-ivkovic/tspreed'
 license=('GPL3')
 backup=("etc/${pkgname}/${pkgname}.rc")
 source=("${pkgname}-${pkgver}-${pkgrel}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('60843a4e8375d938b7473c33491be27f0ac13302ab222559cac83a2188644503')
+sha256sums=('18db8818e51dc74ba7011c4afd99e6eff0c1edf7716c73aa720718efaa8ee889')
 
 package() {
 	make DESTDIR="${pkgdir}" PREFIX='/usr' -C "${pkgname}-${pkgver}" install
