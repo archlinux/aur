@@ -2,6 +2,7 @@
 # Co-maintainer: Steve Finkel <mrsteve0924@verizon.net>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Kevin Sullivan <ksullivan@archlinux.us>
+# Contributor Krystian Duzynski <https://github.com/KrystianD>
 
 pkgname=easystroke
 pkgver=0.6.0
