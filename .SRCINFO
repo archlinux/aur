@@ -1,14 +1,13 @@
 pkgbase = geomyidae
 	pkgdesc = Small C-based gopherd
-	pkgver = 0.34
+	pkgver = 0.50.1
 	pkgrel = 1
 	url = https://gopher.floodgap.com/gopher/gw?gopher://bitreich.org:70/1/scm/geomyidae/file/README.gph
 	arch = x86_64
 	license = MIT
 	backup = var/gopher/CGI
 	backup = var/gopher/index.gph
-	source = ftp://bitreich.org/releases/geomyidae/geomyidae-v0.34.tgz
-	sha256sums = 2580ad0f229cd3f5c33495975a708679aeaf5276c06ec8d55871d7f69b216eb0
+	source = ftp://bitreich.org/releases/geomyidae/geomyidae-v0.50.1.tar.lz
+	sha512sums = ecfed96cd456ff0bafb09527abdf4d50183331f9b4462cdfc37cdcb1274dd72aa9304da2d962670a37503500b27713fd24a179691aa5d6a613776cf452319f24
 
 pkgname = geomyidae
-
