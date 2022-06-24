@@ -1,3 +1,4 @@
+1.5.8 - Updated to 1.5.8 Upstream
 Fix typo on install from 'sudo' to 'export'
 Remove quotes around paths
 1.5.7 - Updated to 1.5.7 Upstream
