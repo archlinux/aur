@@ -1,7 +1,7 @@
 pkgbase = nerdfetch
 	pkgdesc = A POSIX fetch using NerdFonts
 	pkgver = 5.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/thatonecalculator/NerdFetch
 	arch = any
 	license = GPL
