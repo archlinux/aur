@@ -1,6 +1,6 @@
 pkgbase = mkdocs-redirects
 	pkgdesc = Open source plugin for Mkdocs page redirects
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/datarobot/mkdocs-redirects
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mkdocs-redirects
 	depends = mkdocs
 	conflicts = python-mkdocs-redirects-git
 	replaces = python-mkdocs-redirects-git
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs-redirects/mkdocs-redirects-1.0.3.tar.gz
-	sha256sums = db413e1d1ef5e88d8427c0a259d72ae85e74a2b51f6cd7605c2a8db358fe340f
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-redirects/mkdocs-redirects-1.0.4.tar.gz
+	sha256sums = 27aae239feab63ba3198af95b3614275c0699707009e81bbe452f6c6cf34f5d9
 
 pkgname = mkdocs-redirects
