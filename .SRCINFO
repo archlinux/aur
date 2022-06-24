@@ -9,6 +9,7 @@ pkgbase = himitsu
 	makedepends = scdoc
 	optdepends = hiprompt-gtk-py: prompter support (GTK+)
 	source = himitsu-0.1.tar.gz::https://git.sr.ht/~sircmpwn/himitsu/archive/0.1.tar.gz
+	source = himitsud.service
 	sha256sums = 6566de19d58289dfcdafc476054287fa55a9c4e74d64ba49a5ccbea3473b5a64
 
 pkgname = himitsu
