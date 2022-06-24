@@ -1,23 +1,21 @@
 pkgname=identity
-pkgver=0.1.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
 url=https://gitlab.gnome.org/YaLTeR/identity
 license=(GPL3)
 depends=(
-	gtk3
-	gst-plugin-gtk
-	gst-plugins-base
-	gst-plugins-good
-	'libhandy>=1.0.0'
+	gtk4
+	gstreamer
+	libadwaita
 )
 makedepends=(
 	meson
 	rust
 )
 source=(https://gitlab.gnome.org/YaLTeR/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-sha256sums=('48718c939864da8c793072eb2eb481f6e66eabb454efb7d9331f5381ff1785b8')
+sha256sums=('f6769bcbda3cc099764a9960a0c7e4a40de0e6d8931b0b788b45021e7b42e5c7')
 
 prepare() {
 	cd ${pkgname}-v${pkgver}
