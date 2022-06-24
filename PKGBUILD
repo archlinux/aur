@@ -12,13 +12,13 @@ makedepends=('qt5-base')
 source=("${url}/archive/${pkgver}.tar.gz")
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   qmake src
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   make INSTALL_ROOT="${pkgdir}" install
 }
 
