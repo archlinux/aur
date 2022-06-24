@@ -2,27 +2,26 @@
 
 pkgname=python-dcm2bids
 _name=${pkgname/python-/}
-pkgver=2.1.5
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Reorganising NIfTI files from dcm2niix into the Brain Imaging Data Structure"
 arch=('any')
 url="https://github.com/cbedetti/Dcm2Bids"
 license=('GPL3')
 depends=('dcm2niix')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-setuptools-scm')
 options=(!emptydirs)
-source=("${_name}-${pkgver}.tar.gz::https://github.com/cbedetti/Dcm2Bids/archive/${pkgver}.tar.gz")
-sha256sums=('1e7aa83c91faf0da6277938f2388a5a24795345b010e8b6e7cab24005ab51a15')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/9e/27/b447d04e9aba35160eaa2a4077be14e597e338253b16a491a6592ae0539d/${_name}-${pkgver}.tar.gz"
+)
+sha256sums=('d962bd0a7f1ed200ecb699e8ddb29ff58f09ab2f850a7f37511b79c62189f715')
 
 build() {
-  cd "$srcdir"/Dcm2Bids-$pkgver
-
+  cd "$srcdir"/${_name}-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "$srcdir"/Dcm2Bids-$pkgver
-
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  cd "$srcdir"/${_name}-$pkgver
+  python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
 }
 
