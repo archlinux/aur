@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=6.0.0.nightly.75.r5614.198a33cb
+pkgver=6.0.0.nightly.75.r5615.034f05a3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
