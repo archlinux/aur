@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2022.1
+pkgver=2022.2
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,7 +18,7 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('aa55b91611e8d3ab7ec2f265ebd87e81f53aa8b462cb9f38ef8f1e1e5b9540f6')
+sha256sums=('f8faf0a483b6e94d566b3a49bae01711ba22f15539c53d6e4032818ac011d12d')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -76,13 +76,14 @@ package() {
   make DESTDIR=${pkgdir} install
 
   # installing completions in correct location and environment setup script
-  msg2 "Installing completion and environment setup script"
+#  msg2 "Installing completion and environment setup script"
+  msg2 "Installing environment setup script"
   mkdir -p ${pkgdir}/etc/profile.d/
-  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
-  install -D -m755 ${srcdir}/gromacs-v${pkgver}/src/programs/completion/gmx-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gromacs"
+#  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
+#  install -D -m755 ${srcdir}/gromacs-v${pkgver}/src/programs/completion/gmx-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gromacs"
   mv ${pkgdir}/usr/bin/GMXRC.* ${pkgdir}/etc/profile.d/
   sed "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC > ${pkgdir}/etc/profile.d/GMXRC
   chmod 755 ${pkgdir}/etc/profile.d/GMXRC
-  rm -f ${pkgdir}/usr/bin/completion.*
+#  rm -f ${pkgdir}/usr/bin/completion.*
   rm -f ${pkgdir}/usr/bin/GMXRC
 }
