@@ -1,25 +1,26 @@
-#Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-#Contributor: Aleksandr Grehov <alewmosse@gmail.com>
+# Maintainer: Joe Baldino <pedanticdm@gmx.us>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Aleksandr Grehov <alewmosse@gmail.com>
 
 _pkgname='2048term'
 pkgname="${_pkgname}-git"
-pkgver=20190609.8453a88
-pkgrel=2
+pkgver=20220613.bf22f86
+pkgrel=1
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
 arch=('i686' 'x86_64' 'armv7h')
-license=('custom:MIT')
+license=('MIT')
 depends=('ncurses')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/alewmoose/2048-in-terminal.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
 }
 
 build() {
