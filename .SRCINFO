@@ -1,0 +1,15 @@
+pkgbase = ytbgmplayer-git
+	pkgdesc = A lightweight youtube background music player
+	pkgver = 1.2.10.r63.03ac5e8
+	pkgrel = 1
+	url = https://github.com/WeebNetsu/yt-playlist-bgm-player.git
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = nim
+	depends = mpv
+	depends = yt-dlp
+	source = git+https://github.com/WeebNetsu/yt-playlist-bgm-player.git
+	md5sums = SKIP
+
+pkgname = ytbgmplayer-git
