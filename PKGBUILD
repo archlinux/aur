@@ -1,13 +1,13 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r142.7e5a4ad
+pkgver=r146.2d36fa4
 pkgrel=1
 pkgdesc="Terminal previewer"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT')
-depends=('file' 'openssl' 'coreutils')
+depends=('file' 'openssl' 'imagemagick' 'coreutils')
 makedepends=('git')
 optdepends=(
     'colordiff: for diffs'
@@ -22,6 +22,7 @@ optdepends=(
     'atool: for archives'
     'jq: for JSON files'
     'ueberzug: for images'
+    'chafa: for images'
     'ffmpegthumbnailer: for videos'
     'mdcat: for Markdown files'
     'perl-image-exiftool: for media files'
