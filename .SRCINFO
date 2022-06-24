@@ -1,13 +1,14 @@
 pkgbase = mkdocs-static-i18n-plugin
 	pkgdesc = MkDocs i18n plugin using static translation markdown files
-	pkgver = 0.22
+	pkgver = 0.46
 	pkgrel = 1
-	url = https://timvink.github.io/mkdocs-git-authors-plugin/
+	url = https://github.com/ultrabug/mkdocs-static-i18n
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = mkdocs
-	source = https://github.com/ultrabug/mkdocs-static-i18n/archive/refs/tags/0.22.zip
-	md5sums = 1c8819239eddb1d2840ed9f8e923f49e
+	replaces = python-mkdocs-rss-plugin-plugin
+	source = mkdocs-static-i18n-plugin-0.46.tar.gz::https://github.com/ultrabug/mkdocs-static-i18n/archive/refs/tags/0.46.tar.gz
+	sha256sums = 977c7f2335f9c5f26730b7c7b35f55d929ccaab112a11968bf31a57882d12498
 
 pkgname = mkdocs-static-i18n-plugin
