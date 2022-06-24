@@ -2,13 +2,13 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
 pkgver=3.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
 url="https://github.com/magmax/python-readchar"
 license=("MIT")
 depends=("python")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magmax/python-readchar/archive/v$pkgver.tar.gz"
         "LICENSE")
 md5sums=('827709aca051803b086f2b5d966fe61d'
