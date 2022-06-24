@@ -1,7 +1,7 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.14.3_beta
+pkgver=0.15.0_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
 pkgrel=1
@@ -16,8 +16,8 @@ source=(
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    '1091860d9713f49f81ad88c07586c8441e5b4119a9e0ca183374f5a265faa2d26520687a0c98e1ad98cb8462cd54e76b8bbe537d9635953b5b33fb47a8da0dd0'
-    '9837c5d097a2838cf6dc992cc25b9e94946e401131e13e66a699077c3e2de1b89fb1de71027d46d7230464ebbad3ae8df118d459961b28995677d56fded451ca'
+    '93a24ec7fba01c0ec8889b94277f55cef89e41ae5009b3db005c5625ed7cbeb2e7462229c5ff60ba1f133fe99938807885559bdfb63a26e9a65f5348a3984c58'
+    '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
 )
 
 # List of maintainer pubkeys, see https://github.com/lightningnetwork/lnd/tree/master/scripts/keys
