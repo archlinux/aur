@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers git version
-	pkgver = lxc.4.0.0.2198
+	pkgver = lxc.5.0.0.6
 	pkgrel = 1
 	url = https://linuxcontainers.org
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = lxc-git
 	arch = aarch64
 	license = LGPL
 	makedepends = docbook2x
+	makedepends = systemd
+	makedepends = meson
 	makedepends = lua
 	makedepends = python-setuptools
 	makedepends = apparmor

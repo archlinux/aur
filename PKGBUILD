@@ -7,13 +7,13 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=lxc.4.0.0.2198
+pkgver=lxc.5.0.0.6
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://linuxcontainers.org"
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget')
-makedepends=('docbook2x' 'lua' 'python-setuptools' 'apparmor' 'git')
+makedepends=('docbook2x' 'systemd' 'meson' 'lua' 'python-setuptools' 'apparmor' 'git')
 optdepends=('dnsmasq: lxc-net.service'
   'lua'
   'lua-filesystem: lxc-top'
@@ -43,36 +43,20 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  sed -i \
-    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"https://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
-    configure.ac
+  sed -i "s|if sanitize == 'none'|if false|g" src/lxc/cmd/meson.build
 }
 
 build() {
   cd "$_pkgname"
-  ./autogen.sh
-  bashcompdir=/usr/share/bash-completion/completions ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib \
-    --libdir=/usr/lib \
-    --sysconfdir=/etc \
-    --enable-apparmor \
-    --enable-seccomp \
-    --enable-capabilities \
-    --with-init-script=systemd \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --enable-pam \
-    --disable-werror \
-    --with-pamdir=/usr/lib/security
-  make
+  arch-meson build
+  meson compile -C build -v
 }
 
 package() {
   cd "$_pkgname"
 
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
+
   install -d -m755 "$pkgdir/var/lib/lxc"
   install -d -m755 "$pkgdir/usr/lib/lxc/rootfs/dev"
   install -D -m644 "$srcdir"/lxc.service "$pkgdir"/usr/lib/systemd/system/lxc@.service
