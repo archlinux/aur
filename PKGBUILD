@@ -1,6 +1,7 @@
+# Maintainer: robertfoster
 pkgname=whatsie
-pkgver=2.1.0
-pkgrel=6
+pkgver=4.4
+pkgrel=1
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
 url="https://github.com/oberon-manjaro/$pkgname"
