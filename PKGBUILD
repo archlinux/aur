@@ -14,7 +14,7 @@ url="https://github.com/tx00100xt/SeriousSamClassic-VK"
 license=('GPL2')
 depends=('sdl2' 'python' 'bash' 'vulkan-icd-loader' 'vulkan-validation-layers')
 makedepends=('cmake' 'make' 'sed' 'vulkan-headers')
-replaces=('serioussam-vk')
+conflicts=('serioussam')
 install=serioussam.install
 source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$pkgver.tar.gz"
     "https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partaa"
