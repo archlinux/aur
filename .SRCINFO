@@ -1,10 +1,11 @@
 pkgbase = walc
 	pkgdesc = An unofficial WhatsApp Desktop client for linux systems.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WAClient/WALC
 	arch = any
 	license = GPL-3
+	makedepends = gendesk
 	depends = nodejs-lts-gallium
 	depends = npm
 	provides = walc
