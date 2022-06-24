@@ -1,19 +1,20 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 pkgname=mold-git
-pkgver=v1.3.0_9_g9a3188bc
+pkgver=v1.3.0_14_gd9a28221
 pkgrel=1
 pkgdesc="A Modern Linker"
 arch=(x86_64)
 url="https://github.com/rui314/mold"
 license=("AGPL3")
-# xxhash and tbb is bundled
-depends=('gcc-libs' 'mimalloc' 'openssl' 'zlib')
+# xxhash is bundled
+depends=('gcc-libs' 'mimalloc' 'openssl' 'zlib' 'tbb')
 makedepends=('git' 'python')
 source=("mold::git+https://github.com/rui314/mold")
 sha256sums=('SKIP')
 provides=("mold=$pkgver")
 conflicts=("mold")
+options=('!debug')
 reponame="mold"
 
 pkgver() {
@@ -33,16 +34,18 @@ build() {
         -C "$reponame" \
         PREFIX=/usr \
         LTO=1 \
-        SYSTEM_MIMALLOC=1
+        SYSTEM_MIMALLOC=1 \
+        SYSTEM_TBB=1
 }
 
 check() {
-    cd "$repname"
+    cd "$reponame"
 
     make \
         PREFIX=/usr \
         LTO=1 \
         SYSTEM_MIMALLOC=1 \
+        SYSTEM_TBB=1 \
         check
 }
 
@@ -52,6 +55,7 @@ package() {
         PREFIX=/usr \
         LTO=1 \
         SYSTEM_MIMALLOC=1 \
+        SYSTEM_TBB=1 \
         DESTDIR="$pkgdir" \
         install
 }
