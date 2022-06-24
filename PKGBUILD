@@ -1,6 +1,10 @@
 # Maintainer: Directum.ru
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
+# IMPORTANT: You must download the WebAccessAgent.deb from our App Server DirectumRX
+# and place it in the directory with this PKGBUILD.
+# Don't forget fix checksum for .deb file
+
 pkgname=webaccessagent
 pkgver=5.8.7
 pkgrel=1
