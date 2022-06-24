@@ -1,6 +1,6 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=camv-rnd
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="free/open source, small, flexible viewer for PCB-related CAM file formats"
 url="http://www.repo.hu/projects/camv-rnd/"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('librnd3>=3.1.1'
          'freetype2')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('c4cfcb57cd678180f6d05c241c4f1ef915c95fbf092fc28342a2997ef7d3b9ef')
+sha256sums=('2d88e4acc82beaadc70ab987cf6422bb1e1b354604c051d31597da78ddce13c8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
