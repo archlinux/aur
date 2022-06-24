@@ -2,7 +2,7 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 _base=proteus
 pkgname=python-${_base}
-pkgver=6.2.2
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Library to access Tryton server as a client"
 arch=(any)
@@ -12,11 +12,10 @@ depends=(python-defusedxml python-dateutil)
 makedepends=(python-setuptools)
 optdepends=('python-trytond: Trytond server')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('063045d652be807b00c28599a4d6015a594bb125b044b6187cb86e5d331b3a5b731ef2eab2ced3c0b896a484bc20b9b54b6a86cefd09186373897f1c6114af74')
+sha512sums=('7254ddc35a8336d91677f5dd376398a7733b66d3a74718111a63a980e367d25e5573f87a4a03cc856237ee26665190fc0368b28c2719205474da830bfc020111')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
