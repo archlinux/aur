@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator-git
-pkgver=0.10.0.r3.g6bac862
+pkgver=0.11.2.r1.g3029722
 pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
@@ -9,8 +9,9 @@ url="https://nlnetlabs.nl/rpki"
 license=('BSD')
 depends=('gcc-libs' 'rsync')
 makedepends=('git' 'rust')
-provides=('routinator')
+provides=("routinator=$pkgver")
 conflicts=('routinator')
+backup=('etc/routinator/routinator.conf')
 source=("git+https://github.com/NLnetLabs/routinator.git")
 sha256sums=('SKIP')
 
@@ -28,7 +29,8 @@ check() {
   cd "routinator"
 
   cargo test \
-    --release
+    --release \
+    --locked
 }
 
 package() {
@@ -36,9 +38,16 @@ package() {
 
   cargo install \
     --no-track \
+    --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/routinator"
 
+  install -Dm755 "pkg/common/routinator-init" -t "$pkgdir/usr/bin"
+  install -Dm644 "etc/routinator.conf.example" -t "$pkgdir/etc/routinator"
+  install -Dm644 "etc/routinator.conf.system-service" "$pkgdir/etc/routinator/routinator.conf"
+  install -Dm644 "pkg/common"/routinator{,-minimal}.routinator.service -t "$pkgdir/usr/lib/systemd/system"
+
+  install -Dm644 "doc/routinator.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/routinator"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/routinator"
 }
