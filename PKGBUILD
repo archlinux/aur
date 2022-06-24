@@ -9,7 +9,7 @@ url="https://otsaloma.io/catapult "
 license=('GPL 3.0')
 depends=('python' 'glib2' 'gtk3' 'python-gobject' 'libkeybinder3' 'gettext' 'libqalculate' 'pango')
 source=("https://github.com/otsaloma/catapult/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('52f537d5112b2805e08a53286276344921f8159073b9aa03d7b1c62e5fa18e2c')
+sha256sums=('1e81ea7a712ee12c27dceaf267f920db9f231f16c3495f4bb47c95f48e887938')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
