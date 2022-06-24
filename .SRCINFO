@@ -1,7 +1,7 @@
 pkgbase = cachy-browser
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 101.0.1
-	pkgrel = 2
+	pkgrel = 4.1
 	url = https://cachyos.org
 	install = cachy-browser.install
 	arch = x86_64
@@ -37,6 +37,8 @@ pkgbase = cachy-browser
 	makedepends = wasi-libc
 	makedepends = wasi-libc++
 	makedepends = wasi-libc++abi
+	makedepends = mold
+	makedepends = python-pipenv
 	depends = gtk3
 	depends = libxt
 	depends = mime-types

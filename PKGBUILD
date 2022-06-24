@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=101.0.1
-pkgrel=2
+pkgrel=4.1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -21,7 +21,7 @@ makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
              python-setuptools python-zstandard git binutils lld dump_syms
-             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
+             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi mold python-pipenv)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -58,15 +58,18 @@ prepare() {
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-export CC='clang'
-export CXX='clang++'
+export CC=clang
+export CXX=clang++
 
 # Branding
 ac_add_options --enable-update-channel=release
@@ -81,8 +84,8 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
-#ac_add_options --with-system-av1
-#ac_add_options --with-system-graphite2
+ac_add_options --with-system-av1
+# ac_add_options --with-system-graphite2
 ac_add_options --with-system-harfbuzz
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
@@ -123,11 +126,6 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
-  cat >>../mozconfig <<END
-# probably not needed, enabled by default?
-ac_add_options --enable-optimize
-END
-
   # Gentoo patches
   msg2 "---- Gentoo patches"
 
@@ -139,7 +137,7 @@ END
         patch -Np1 -i "${gentoo_patch}"
       fi
   done
-  
+
   # address build failure when building with most recent (>=0.24.0) cbindgen
   # also catch systems (Manjaro, at the time of writing this) where cbindgen
   # is not yet at 24. probably not elegant, but it works.
@@ -254,6 +252,7 @@ END
   msg2 "Hide passwordmgr"
   patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
   patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
+  patch -Np1 -i ${_patches_dir}/add-mold-linker.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
   cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
@@ -266,7 +265,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   #export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
   export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
   # LTO needs more open files
@@ -309,7 +308,7 @@ ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-ac_add_options --enable-linker=lld
+ac_add_options --enable-linker=mold
 ac_add_options --disable-bootstrap
 END
 
