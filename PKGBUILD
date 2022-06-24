@@ -1,9 +1,10 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 pkgname=python2-contextlib2
 _name=${pkgname#python2-}
 pkgver=0.6.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc='Backports of the contextlib module'
 arch=('any')
 _pypi='https://pypi.python.org'
@@ -22,7 +23,7 @@ build() {
 
 check() {
   cd "$srcdir/$_name-$pkgver"
-  python test_contextlib2.py
+  python2 test_contextlib2.py
 }
 
 package() {

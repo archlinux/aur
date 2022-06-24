@@ -1,7 +1,7 @@
 pkgbase = python2-contextlib2
 	pkgdesc = Backports of the contextlib module
 	pkgver = 0.6.0.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/contextlib2
 	arch = any
 	license = Python
