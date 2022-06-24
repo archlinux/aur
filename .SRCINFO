@@ -1,0 +1,14 @@
+pkgbase = webaccessagent
+	pkgdesc = DIRECTUM Web Access Agent
+	pkgver = 5.8.7
+	pkgrel = 1
+	url = http://www.directum.ru
+	arch = x86_64
+	groups = 
+	license = DIRECTUM License
+	options = !strip
+	options = !emptydirs
+	source = file:///home/geomaster/src/abs/local/webaccessagent/WebAccessAgent.deb
+	sha512sums = e67c534dfc826639486d977b7147477d28e00529cf24f455c472ef10ef9cf994a00759cad4162fa6ee9746510a01fede547b849a73093eac970f338422955d7c
+
+pkgname = webaccessagent
