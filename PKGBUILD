@@ -1,6 +1,6 @@
 pkgname=nextcloud-app-forms
 _name=forms
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
@@ -9,8 +9,9 @@ license=('AGPL3')
 depends=('nextcloud')
 makedepends=('nextcloud' 'php7' 'ripgrep' 'yq')
 groups=('nextcloud-apps')
-source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v$pkgver/forms-v$pkgver.tar.gz")
-sha512sums=('02795455e903b8b27550456a41df40cc02902cb3bc350ac958ed7b30c20d07325b56df19d129c8667b2bc7cbb413da4bca607d2a6172dcb3cd7dd65392f2e804')
+#source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v$pkgver/forms-v$pkgver.tar.gz")
+source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud/forms/releases/download/v$pkgver/forms.tar.gz")
+sha512sums=('6f9513c8e7fe2db386ece40964e56f11230a426ec188896b6d23e0ac7887e44cdf9a7bac211544bb35b7e5a0b282701c449f84d7a7931bd412beef889ec4b694')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
