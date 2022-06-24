@@ -3,7 +3,7 @@
 # get source: https://sourceforge.net/p/raspberry-gpio-python/code/ci/default/tree/ > Download Snapshot
 # mkdir $pkgname-$pkgver
 # bsdtar --strip 1 -C $pkgname-$pkgver -xf raspberry-gpio-python*.zip
-# bsdtar -cjf $pkgnamever.tar.xz $pkgname-$pkgver
+# bsdtar -cjf $pkgname-$pkgver.tar.xz $pkgname-$pkgver
 
 
 pkgname=python-rpi-gpio
@@ -15,11 +15,11 @@ license=(MIT)
 arch=(any)
 depends=(python)
 makedepends=(python python-distribute)
-source=(https://github.com/rern/rern.github.io/releases/download/20210307/$pkgname-$pkgver.tar.xz)
-sha256sums=(c4acb800fea3e256e95b6aa7de152ab7d20f5567954df3016dcef141b33d86bd)
+source=(https://github.com/rern/rern.github.io/raw/main/python-rpi-gpio/$pkgname-$pkgver.tar.xz)
+sha256sums=('2db2b11bd150b9f4779de02fd807681a9acd8a31c1063287eb3bbdfba96227d5')
 
 package() {
-	mv -f $srcdir/$pkgname "$srcdir/RPi.GPIO-$pkgver"
+	mv -f $srcdir/$pkgname-$pkgver "$srcdir/RPi.GPIO-$pkgver"
 	cd "$srcdir/RPi.GPIO-$pkgver"
 	env CFLAGS="-fcommon" python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }

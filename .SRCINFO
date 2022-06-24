@@ -8,7 +8,7 @@ pkgbase = python-rpi-gpio
 	makedepends = python
 	makedepends = python-distribute
 	depends = python
-	source = https://github.com/rern/rern.github.io/releases/download/20210307/python-rpi-gpio-0.7.1.tar.xz
-	sha256sums = c4acb800fea3e256e95b6aa7de152ab7d20f5567954df3016dcef141b33d86bd
+	source = https://github.com/rern/rern.github.io/raw/main/python-rpi-gpio/python-rpi-gpio-0.7.1.tar.xz
+	sha256sums = 2db2b11bd150b9f4779de02fd807681a9acd8a31c1063287eb3bbdfba96227d5
 
 pkgname = python-rpi-gpio
