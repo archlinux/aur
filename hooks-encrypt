@@ -104,8 +104,8 @@ EOF
             no-write-workqueue|perf-no_write_workqueue)
                 cryptargs="${cryptargs} --perf-no_write_workqueue"
                 ;;
-            read-only)
-                cryptargs="${cryptargs} --read-only"
+            readonly|read-only)
+                cryptargs="${cryptargs} --readonly"
                 ;;
             *)
                 echo "Encryption option '${cryptopt}' not known, ignoring." >&2
