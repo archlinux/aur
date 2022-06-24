@@ -1,5 +1,5 @@
 pkgbase = serioussam-pese2q
-	pkgdesc = Serious Sam Classic PESE2Q native Linux.
+	pkgdesc = Serious Sam Classic PESE2Q native Linux
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/tx00100xt/SE1-ParseError

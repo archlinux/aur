@@ -11,7 +11,17 @@ pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
 license=('GPL2')
-depends=('sdl2' 'python' 'bash')
+
+if pacman -Qq serioussam >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam')
+elif pacman -Qq serioussam-vk >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam-vk')
+else
+  echo "This package requires either "serioussam" or "serioussam-vk", but neither is installed."
+  echo "Compilation aborted."
+  return 1
+fi
+
 makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-ParseError/SamTSE-ParseError.tar.xz")
