@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r292.g3458651010
+pkgver=0.34.0.r360.g8da6b355f8
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -72,6 +72,7 @@ depends=(
          'libxinerama'
          'libxkbcommon'
          'libxml2'
+         'libxpresent'
          'libxrandr'
          'libxss'
          'libxv'
@@ -382,6 +383,7 @@ prepare() {
     '--enable-jack'
     '--enable-javascript'
     '--enable-jpeg'
+    # '--enable-jpegxl'
     '--enable-lcms2'
     '--enable-libarchive'
     '--enable-libavdevice'
