@@ -1,6 +1,6 @@
 pkgbase = ssh-rdp-git
 	pkgdesc = Real display ssh based remote desktop. No relation to Microsoft's remote desktop protocol.
-	pkgver = r108.8bf2a45
+	pkgver = r113.cb74075
 	pkgrel = 1
 	url = https://github.com/kokoko3k/ssh-rdp
 	arch = any

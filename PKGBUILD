@@ -2,7 +2,7 @@
 
 _pkgname=ssh-rdp
 pkgname=${_pkgname}-git
-pkgver=r108.8bf2a45
+pkgver=r113.cb74075
 pkgrel=1
 pkgdesc="Real display ssh based remote desktop. No relation to Microsoft's remote desktop protocol."
 arch=('any')
