@@ -1,7 +1,7 @@
 pkgbase = sim-sip
 	pkgdesc = A tool for preparing and managing Sim problem packages
-	pkgver = r166.9935af3
-	pkgrel = 2
+	pkgver = r168.ab2b033
+	pkgrel = 1
 	url = https://github.com/varqox/sip
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = sim-sip
 	optdepends = fpc: compiling Pascal solutions support
 	provides = libsimlib.so
 	conflicts = libsimlib.so
-	source = git+https://github.com/varqox/sip.git#commit=9935af3
+	source = git+https://github.com/varqox/sip.git#commit=ab2b033
 	source = git+https://github.com/varqox/simlib.git
 	b2sums = SKIP
 	b2sums = SKIP
