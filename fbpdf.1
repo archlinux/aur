@@ -1,28 +1,47 @@
-.TH FBPDF 1 "JUNE 2012"
+.TH FBPDF 1 "JUNE 2022"
 .SH NAME
 fbpdf \- framebuffer PDF viewer
 .SH SYNOPSIS
 .B fbpdf
-.RI [ options ] " filename"
+.RB [ -r
+.IR rotation ]
+.RB [ -z
+.IR zoom_x10 ]
+.RB [ -p
+.IR page_number ]
+.IR filename
 .SH DESCRIPTION
+.P
 .B fbpdf
 is a small framebuffer PDF viewer which uses the MuPDF
 backend. \fBfbpdf\fP brings high-quality PDF viewing to the
 console with vim keyboard shortcuts.
+.P
+.B fbpdf2
+is similar to fbpdf, but uses poppler as backend.
+.P
+.B fbdjvu
+is a djvu viewer.
+.P
+The options documented here are available in all three programs.
 .SH OPTIONS
-.IP "\fB\-r\fP [\fI0-9\fP]"
+.TP
+.BI "\-r " rotation
 Rotate specified number of degrees
-.IP "\fB\-z\fP [\fI0-9\fP]"
+.TP
+.BI "\-z " zoom_x10
 Zoom by a multiple of ten
-.IP "\fB\-p\fP [\fI0-9\fP]"
+.TP
+.BI "\-p " page_number
 Go to specified page
 .SH KEY BINDINGS
-.TP 
-.B h
-Scroll to the left
+Most of the key bindings accept a numerical prefix.
+For instance, '^F' tells fbpdf to show the next page
+while '5^F' tells it to show the fifth next page.
+
 .TP
-.B l
-Scroll to the right
+.B h
+Scroll left
 .TP
 .B j
 Scroll down
@@ -30,44 +49,89 @@ Scroll down
 .B k
 Scroll up
 .TP
-.B ^d
-Scroll half a page down
-.IP \fB^u\fP\ |\ \fBBackspace\fP
-Scroll half a page up
+.B l
+Scroll right
 .TP
-.B ^f
+.B ^d | <Space>
+Page down
+.TP
+.B ^u | ^h | <Backspace>
+Page up
+.TP
+.B ^f | J
 Go to next page
 .TP
-.B ^b
+.B ^b | K
 Go to previous page
 .TP
 .B H
-Go to the top/current column of page
+Show page top
 .TP
 .B M
-Go to the middle/current column of page
+Center the page vertically
 .TP
 .B L
-Go to the bottom/current column of page
-.IP [\fI0-9\fP]+\fBJ\fP
-Go forward by specified number of pages, default one
-.IP [\fI0-9\fP]+\fBK\fP
-Go backward by specified number of pages, default one
-.IP [\fI0-9\fP]+\fBG\fP
-Go to specified page, default to the end
-.IP \fBm\fP+[\fIa-z\fP]
-Mark page for snap back.
-.IP \fB'\fP+[\fIa-z\fP]
-Pop back to marked page.
-.IP \fB`\fP+[\fIa-z\fP]
-Pop back to marked page and position.
-.IP [\fI0-9\fP]+\fBr\fP
-Rotate specified number of degrees
-.IP [\fI0-9\fP]+\fBz\fP
-Zoom by a multiple of ten
+Show page bottom
 .TP
-.B ^[
+.B C
+Center the page horizontally
+.TP
+.B f
+Fit page height
+.TP
+.B w
+Fit page width
+.TP
+.B W
+Fit page contents horizontally
+.TP
+.B [
+Align with the left edge of the page
+.TP
+.B ]
+Align with the right edge of the page
+.TP
+.B {
+Align with the leftmost character on the page
+.TP
+.B }
+Align with the rightmost character on the page
+.TP
+.B <prefix>G
+Go to specified page, default to the last page if no prefix
+.TP
+.B <prefix>o
+Set page number (for 'G' command only)
+.TP
+.B <prefix>O
+Set page number and go to current page
+.TP
+.B <prefix>r
+Rotate specified number of degrees
+.TP
+.B <prefix>z
+Zoom by a multiple of ten in percentage (i.e. '15z' = 150%)
+.TP
+.B <prefix>Z
+Set the default zoom level for 'z' command
+.TP
+.B m<mark>
+Mark page as <mark>, could be any letter
+.TP
+.B '<mark>
+Jump to the page marked as <mark>
+.TP
+.B `<mark>
+Jump to the page and position marked as <mark>
+.TP
+.B ^[ / <Esc>
 Clear numerical prefix
+.TP
+.B <prefix>d
+Sleep specified seconds before the next command
+.TP
+.B I
+Invert colors
 .TP
 .B i
 Display file information
