@@ -2,14 +2,13 @@
 pkgname=anydesk-bin
 pkgver=6.2.0
 _pkgver_i686="6.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fast Remote Desktop Application"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
 depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'libxkbfile' 'gcc-libs' 'lsb-release' 'polkit')
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
-makedepends=('patchelf')
 conflicts=('anydesk')
 provides=('anydesk')
 replaces=('anydesk-debian')
@@ -31,8 +30,6 @@ package() {
 
     # install binary
     install -Dm 755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
-    # patch the binary to replace obsolete dependency
-    patchelf --replace-needed 'libpangox-1.0.so.0' 'libpangoxft-1.0.so' "${pkgdir}/usr/bin/anydesk"
 
     # install desktop entry
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/anydesk.desktop" "${pkgdir}/usr/share/applications/anydesk.desktop"
