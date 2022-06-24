@@ -1,4 +1,5 @@
 # Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=apk-editor-studio-bin
 pkgver=1.6.0

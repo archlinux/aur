@@ -1,7 +1,7 @@
 pkgbase = apk-editor-studio-bin
 	pkgdesc = Powerful yet easy to use APK editor
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kefir500/apk-editor-studio
 	arch = x86_64
 	license = GPL3
