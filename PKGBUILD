@@ -8,18 +8,20 @@ pkgname=cro-chain-desktop-bin
 pkgdesc='Crypto.org Chain desktop wallet (AppImage version)'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=0.8.1
+pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop')
-_pkgsrc="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
+_pkgsrc="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=(
   "${_pkgsrc}::${url}/releases/download/v${pkgver}/${_pkgsrc}"
   "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
 )
-sha512sums=('14bb7211e14ca646b84b22cb78530c9ab87b4295ed7ca98a58827f081356ef15195aaec6536e3850dac40175933982dc38b1858c1c75768649775d3e8d92a78b'
-            '1a75d1990776c2c5cbc25b0d6381a67082c48ec3e7f18a4ad66caf55987548e5a622c1c8e330a1efaaf74e9c71aaad6d5a260062b50c5df9b26352c8efc6dd47')
+sha512sums=(
+  '9ac294daca7b1b5eeed84cc8a38a5a08a639c97d2cdde4eda89fd620fd2c3ef00103c4c2e3177652d7859cdeb04cc90fe23c2e140ed8648457a84113e3a450de'
+  'b3bbf467b6a12a5d3cdb8af3b0459d6017dc9e2f56d0b024b522d3bb0689fc9cb48cca4f44d93c934ab90b8b8b18e6bcb0b93a81c86c0e54e114db0ad0e34207'
+)
 
 build() {
   # Extract files
@@ -30,7 +32,6 @@ build() {
   mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/0x0" "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512"
   sed -e "s/AppRun/${_pkgbin}/g" -i "$srcdir/squashfs-root/$_pkgbin.desktop"
 }
-
 
 package() {
   install -d "$pkgdir/opt/$_pkgname"
