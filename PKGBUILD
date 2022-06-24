@@ -9,11 +9,10 @@ pkgdesc="CLI PulseAudio Volume Control"
 arch=('i686' 'x86_64')
 url="http://github.com/falconindy/ponymix"
 license=('MIT')
-depends=('pulseaudio')
-optdepends=('libnotify: desktop volume notifications')
+depends=('pulseaudio' 'libnotify')
 makedepends=('git')
 conflicts=('ponymix')
-provides=("${_pkgname}")
+provides=('ponymix')
 source=("${_pkgname}::git+https://github.com/falconindy/ponymix.git")
 sha256sums=('SKIP')
 
@@ -29,6 +28,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   make DESTDIR="${pkgdir}" install
 }
 
