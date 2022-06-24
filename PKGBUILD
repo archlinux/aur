@@ -1,4 +1,4 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
