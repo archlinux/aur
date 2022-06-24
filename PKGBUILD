@@ -1,44 +1,36 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: portaloffreedom
 
-pkgbase=python-pyjokes
-pkgname=(python-pyjokes python2-pyjokes)
+pkgname=python-pyjokes
+_pkg="${pkgname#python-}"
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="One line jokes for programmers (jokes as a service)"
 url="https://github.com/pyjokes/pyjokes"
-license=("BSD")
-arch=("any")
-makedepends=('python-setuptools' 'python2-setuptools')
+license=('BSD')
+arch=('any')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+# checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('a6d06a5428dd8f316a3f8784cac0180067b6530121d9cf3976d5f903db264c86')
 
-prepare() {
-	cp -a "pyjokes-$pkgver" "pyjokes-$pkgver-py2"
-}
-
 build() {
-	pushd "pyjokes-$pkgver"
-	python setup.py build
-	popd
-
-	pushd "pyjokes-$pkgver-py2"
-	python2 setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-package_python-pyjokes() {
-	depends=('python')
+# check() {
+# 	cd "$_pkg-$pkgver"
+# 	PYTHONPATH="$PWD" pytest -x
+# }
 
-	cd "pyjokes-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENCE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
-package_python2-pyjokes() {
-	depends=('python2')
-	conflicts=('python-pyjokes')
-
-	cd "pyjokes-$pkgver-py2"
-	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENCE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+package() {
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENCE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

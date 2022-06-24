@@ -1,18 +1,16 @@
 pkgbase = python-pyjokes
 	pkgdesc = One line jokes for programmers (jokes as a service)
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyjokes/pyjokes
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	makedepends = python-wheel
+	depends = python
 	source = python-pyjokes-0.6.0.tar.gz::https://github.com/pyjokes/pyjokes/archive/v0.6.0.tar.gz
 	sha256sums = a6d06a5428dd8f316a3f8784cac0180067b6530121d9cf3976d5f903db264c86
 
 pkgname = python-pyjokes
-	depends = python
-
-pkgname = python2-pyjokes
-	depends = python2
-	conflicts = python-pyjokes
