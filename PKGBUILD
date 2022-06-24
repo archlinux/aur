@@ -1,25 +1,19 @@
 # maintainer: libele <libele@disroot.org>
 
 pkgname=vilearn
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="An interactive vi tutorial."
 arch=('any')
-url="https://web.archive.org/web/20020806204039/http://vilearn.org/"
+url="https://tildegit.org/libele/vilearn"
 license=('custom:Copyright (c) 1992 Jill Kliger and Wesley Craig')
 optdepends=('vi: the original ex/vi text editor')
-
-source=('https://archive.org/download/vilearn/vilearn-1.0.tar.gz'
-	"https://tildegit.org/libele/vilearn/archive/vilearn-$pkgver.tar.gz")
-
-md5sums=('8fd3b72e5eb1e4dce1870e7b3becbeab'
-	 'fdfba9fde37af73cbde0f83724cd3713')
+source=("https://tildegit.org/libele/vilearn/archive/vilearn-$pkgver.tar.gz")
+b2sums=('ec1e631967f1734f2e8f58bc68e0f64099b73df1e0b9d043582e2b21026079f3b7e1b248036fbf4e37249e2d2ba8eb703a2457fe2081b48b7a366c8d675000dd')
 
 package() {
-  cd "${srcdir}"
-  patch -d vilearn-1.0 < vilearn/vilearn-1.0.1.patch
+  cd "${pkgname}"
 
-  cd vilearn-1.0
   make DESTDIR=${pkgdir} install
   install -Dm644 README "${pkgdir}"/usr/share/vilearn
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/vilearn/LICENSE
