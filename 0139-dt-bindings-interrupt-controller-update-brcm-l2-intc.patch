@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+Date: Mon, 6 Jun 2022 16:25:24 +0100
+Subject: [PATCH] dt-bindings: interrupt-controller: update brcm,l2-intc.yaml
+ reference
+
+commit 7e40381d8a33e41e347cea5bdd000091653000c6 upstream.
+
+Changeset 539d25b21fe8 ("dt-bindings: interrupt-controller: Convert Broadcom STB L2 to YAML")
+renamed: Documentation/devicetree/bindings/interrupt-controller/brcm,l2-intc.txt
+to: Documentation/devicetree/bindings/interrupt-controller/brcm,l2-intc.yaml.
+
+Update its cross-reference accordingly.
+
+Fixes: 539d25b21fe8 ("dt-bindings: interrupt-controller: Convert Broadcom STB L2 to YAML")
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+Signed-off-by: Rob Herring <robh@kernel.org>
+Link: https://lore.kernel.org/r/a40c02a7aaea91ea7b6ce24b6bc574ae5bcf4cf6.1654529011.git.mchehab@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ .../devicetree/bindings/cpufreq/brcm,stb-avs-cpu-freq.txt       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/cpufreq/brcm,stb-avs-cpu-freq.txt b/Documentation/devicetree/bindings/cpufreq/brcm,stb-avs-cpu-freq.txt
+index 73470ecd1f12f282755101bd0460359a815c2904..ce91a919769761c9e6f27dfc6f7019eada48d6df 100644
+--- a/Documentation/devicetree/bindings/cpufreq/brcm,stb-avs-cpu-freq.txt
++++ b/Documentation/devicetree/bindings/cpufreq/brcm,stb-avs-cpu-freq.txt
+@@ -16,7 +16,7 @@ has been processed. See [2] for more information on the brcm,l2-intc node.
+ firmware. On some SoCs, this firmware supports DFS and DVFS in addition to
+ Adaptive Voltage Scaling.
+ 
+-[2] Documentation/devicetree/bindings/interrupt-controller/brcm,l2-intc.txt
++[2] Documentation/devicetree/bindings/interrupt-controller/brcm,l2-intc.yaml
+ 
+ 
+ Node brcm,avs-cpu-data-mem

@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <linux@weissschuh.net>
+Date: Tue, 7 Jun 2022 17:55:55 +0200
+Subject: [PATCH] nvme: add device name to warning in uuid_show()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit 1fc766b5c08417248e0008bca14c3572ac0f1c26 ]
+
+This provides more context to users.
+
+Old message:
+
+[   00.000000] No UUID available providing old NGUID
+
+New message:
+
+[   00.000000] block nvme0n1: No UUID available providing old NGUID
+
+Fixes: d934f9848a77 ("nvme: provide UUID value to userspace")
+Signed-off-by: Thomas Weißschuh <linux@weissschuh.net>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/nvme/host/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 2d6a01853109ba4b0f0edbf1ef01c7e77757bb19..1ea85c88d7951748d42f75a8cba0e6da790a9996 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3226,8 +3226,8 @@ static ssize_t uuid_show(struct device *dev, struct device_attribute *attr,
+ 	 * we have no UUID set
+ 	 */
+ 	if (uuid_is_null(&ids->uuid)) {
+-		printk_ratelimited(KERN_WARNING
+-				   "No UUID available providing old NGUID\n");
++		dev_warn_ratelimited(dev,
++			"No UUID available providing old NGUID\n");
+ 		return sysfs_emit(buf, "%pU\n", ids->nguid);
+ 	}
+ 	return sysfs_emit(buf, "%pU\n", &ids->uuid);

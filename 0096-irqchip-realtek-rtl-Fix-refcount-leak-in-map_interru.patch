@@ -1,0 +1,37 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Miaoqian Lin <linmq006@gmail.com>
+Date: Wed, 1 Jun 2022 12:09:30 +0400
+Subject: [PATCH] irqchip/realtek-rtl: Fix refcount leak in map_interrupts
+
+[ Upstream commit eff4780f83d0ae3e5b6c02ff5d999dc4c1c5c8ce ]
+
+of_find_node_by_phandle() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+This function doesn't call of_node_put() in error path.
+Call of_node_put() directly after of_property_read_u32() to cover
+both normal path and error path.
+
+Fixes: 9f3a0f34b84a ("irqchip: Add support for Realtek RTL838x/RTL839x interrupt controller")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Link: https://lore.kernel.org/r/20220601080930.31005-7-linmq006@gmail.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/irqchip/irq-realtek-rtl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/irqchip/irq-realtek-rtl.c b/drivers/irqchip/irq-realtek-rtl.c
+index 50a56820c99bcf70b2bac17ad32ea37651dc11a5..56bf502d9c6739d60af8c5ae7b0c667bf10de4ba 100644
+--- a/drivers/irqchip/irq-realtek-rtl.c
++++ b/drivers/irqchip/irq-realtek-rtl.c
+@@ -134,9 +134,9 @@ static int __init map_interrupts(struct device_node *node, struct irq_domain *do
+ 		if (!cpu_ictl)
+ 			return -EINVAL;
+ 		ret = of_property_read_u32(cpu_ictl, "#interrupt-cells", &tmp);
++		of_node_put(cpu_ictl);
+ 		if (ret || tmp != 1)
+ 			return -EINVAL;
+-		of_node_put(cpu_ictl);
+ 
+ 		cpu_int = be32_to_cpup(imap + 2);
+ 		if (cpu_int > 7 || cpu_int < 2)

@@ -1,0 +1,69 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Smart <jsmart2021@gmail.com>
+Date: Fri, 3 Jun 2022 10:43:28 -0700
+Subject: [PATCH] scsi: lpfc: Allow reduced polling rate for
+ nvme_admin_async_event cmd completion
+
+[ Upstream commit 2e7e9c0c1ec05f18d320ecc8a31eec59d2af1af9 ]
+
+NVMe Asynchronous Event Request commands have no command timeout value per
+specifications.
+
+Set WQE option to allow a reduced FLUSH polling rate for I/O error
+detection specifically for nvme_admin_async_event commands.
+
+Link: https://lore.kernel.org/r/20220603174329.63777-9-jsmart2021@gmail.com
+Co-developed-by: Justin Tee <justin.tee@broadcom.com>
+Signed-off-by: Justin Tee <justin.tee@broadcom.com>
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/scsi/lpfc/lpfc_hw4.h  |  3 +++
+ drivers/scsi/lpfc/lpfc_nvme.c | 11 +++++++++--
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/scsi/lpfc/lpfc_hw4.h b/drivers/scsi/lpfc/lpfc_hw4.h
+index 02e230ed62802474efa61ff9223b693448822186..e7daef5500952165be70e5646b3943476d35e2dc 100644
+--- a/drivers/scsi/lpfc/lpfc_hw4.h
++++ b/drivers/scsi/lpfc/lpfc_hw4.h
+@@ -4488,6 +4488,9 @@ struct wqe_common {
+ #define wqe_sup_SHIFT         6
+ #define wqe_sup_MASK          0x00000001
+ #define wqe_sup_WORD          word11
++#define wqe_ffrq_SHIFT         6
++#define wqe_ffrq_MASK          0x00000001
++#define wqe_ffrq_WORD          word11
+ #define wqe_wqec_SHIFT        7
+ #define wqe_wqec_MASK         0x00000001
+ #define wqe_wqec_WORD         word11
+diff --git a/drivers/scsi/lpfc/lpfc_nvme.c b/drivers/scsi/lpfc/lpfc_nvme.c
+index d3a542466e9817a9c226860a6cfa075ef0588a7c..49f44d9d04ea73c01abe54cf7a952c436614d76f 100644
+--- a/drivers/scsi/lpfc/lpfc_nvme.c
++++ b/drivers/scsi/lpfc/lpfc_nvme.c
+@@ -1194,7 +1194,8 @@ lpfc_nvme_prep_io_cmd(struct lpfc_vport *vport,
+ {
+ 	struct lpfc_hba *phba = vport->phba;
+ 	struct nvmefc_fcp_req *nCmd = lpfc_ncmd->nvmeCmd;
+-	struct lpfc_iocbq *pwqeq = &(lpfc_ncmd->cur_iocbq);
++	struct nvme_common_command *sqe;
++	struct lpfc_iocbq *pwqeq = &lpfc_ncmd->cur_iocbq;
+ 	union lpfc_wqe128 *wqe = &pwqeq->wqe;
+ 	uint32_t req_len;
+ 
+@@ -1251,8 +1252,14 @@ lpfc_nvme_prep_io_cmd(struct lpfc_vport *vport,
+ 		cstat->control_requests++;
+ 	}
+ 
+-	if (pnode->nlp_nvme_info & NLP_NVME_NSLER)
++	if (pnode->nlp_nvme_info & NLP_NVME_NSLER) {
+ 		bf_set(wqe_erp, &wqe->generic.wqe_com, 1);
++		sqe = &((struct nvme_fc_cmd_iu *)
++			nCmd->cmdaddr)->sqe.common;
++		if (sqe->opcode == nvme_admin_async_event)
++			bf_set(wqe_ffrq, &wqe->generic.wqe_com, 1);
++	}
++
+ 	/*
+ 	 * Finish initializing those WQE fields that are independent
+ 	 * of the nvme_cmnd request_buffer

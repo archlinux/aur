@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Benjamin Marzinski <bmarzins@redhat.com>
+Date: Tue, 14 Jun 2022 11:10:28 -0500
+Subject: [PATCH] dm: fix race in dm_start_io_acct
+
+commit 10eb3a0d517fcc83eeea4242c149461205675eb4 upstream.
+
+After commit 82f6cdcc3676c ("dm: switch dm_io booleans over to proper
+flags") dm_start_io_acct stopped atomically checking and setting
+was_accounted, which turned into the DM_IO_ACCOUNTED flag. This opened
+the possibility for a race where IO accounting is started twice for
+duplicate bios. To remove the race, check the flag while holding the
+io->lock.
+
+Fixes: 82f6cdcc3676c ("dm: switch dm_io booleans over to proper flags")
+Cc: stable@vger.kernel.org
+Signed-off-by: Benjamin Marzinski <bmarzins@redhat.com>
+Signed-off-by: Mike Snitzer <snitzer@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/md/dm.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/md/dm.c b/drivers/md/dm.c
+index 82957bd460e894556fed5eed0b991c14f3c0713b..a68316f96350d0af64c1db865c48d1e97fbf95ca 100644
+--- a/drivers/md/dm.c
++++ b/drivers/md/dm.c
+@@ -551,6 +551,10 @@ static void dm_start_io_acct(struct dm_io *io, struct bio *clone)
+ 			return;
+ 		/* Can afford locking given DM_TIO_IS_DUPLICATE_BIO */
+ 		spin_lock_irqsave(&io->lock, flags);
++		if (dm_io_flagged(io, DM_IO_ACCOUNTED)) {
++			spin_unlock_irqrestore(&io->lock, flags);
++			return;
++		}
+ 		dm_io_set_flag(io, DM_IO_ACCOUNTED);
+ 		spin_unlock_irqrestore(&io->lock, flags);
+ 	}

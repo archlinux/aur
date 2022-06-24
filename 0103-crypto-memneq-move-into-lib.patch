@@ -1,0 +1,105 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Sat, 28 May 2022 12:24:29 +0200
+Subject: [PATCH] crypto: memneq - move into lib/
+
+commit abfed87e2a12bd246047d78c01d81eb9529f1d06 upstream.
+
+This is used by code that doesn't need CONFIG_CRYPTO, so move this into
+lib/ with a Kconfig option so that it can be selected by whatever needs
+it.
+
+This fixes a linker error Zheng pointed out when
+CRYPTO_MANAGER_DISABLE_TESTS!=y and CRYPTO=m:
+
+  lib/crypto/curve25519-selftest.o: In function `curve25519_selftest':
+  curve25519-selftest.c:(.init.text+0x60): undefined reference to `__crypto_memneq'
+  curve25519-selftest.c:(.init.text+0xec): undefined reference to `__crypto_memneq'
+  curve25519-selftest.c:(.init.text+0x114): undefined reference to `__crypto_memneq'
+  curve25519-selftest.c:(.init.text+0x154): undefined reference to `__crypto_memneq'
+
+Reported-by: Zheng Bin <zhengbin13@huawei.com>
+Cc: Eric Biggers <ebiggers@kernel.org>
+Cc: stable@vger.kernel.org
+Fixes: aa127963f1ca ("crypto: lib/curve25519 - re-add selftests")
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+Reviewed-by: Eric Biggers <ebiggers@google.com>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ crypto/Kconfig           | 1 +
+ crypto/Makefile          | 2 +-
+ lib/Kconfig              | 3 +++
+ lib/Makefile             | 1 +
+ lib/crypto/Kconfig       | 1 +
+ {crypto => lib}/memneq.c | 0
+ 6 files changed, 7 insertions(+), 1 deletion(-)
+ rename {crypto => lib}/memneq.c (100%)
+
+diff --git a/crypto/Kconfig b/crypto/Kconfig
+index 41068811fd0e1d8facff621a9116b7d1e1b59ef7..b4e00a7a046b95158d8490f9c0fa2fd28416e0f3 100644
+--- a/crypto/Kconfig
++++ b/crypto/Kconfig
+@@ -15,6 +15,7 @@ source "crypto/async_tx/Kconfig"
+ #
+ menuconfig CRYPTO
+ 	tristate "Cryptographic API"
++	select LIB_MEMNEQ
+ 	help
+ 	  This option provides the core Cryptographic API.
+ 
+diff --git a/crypto/Makefile b/crypto/Makefile
+index f754c4d17d6bdb5df40e2b9e697623a9d95d0745..a40e6d5fb2c83346439d843d72f11297a600143a 100644
+--- a/crypto/Makefile
++++ b/crypto/Makefile
+@@ -4,7 +4,7 @@
+ #
+ 
+ obj-$(CONFIG_CRYPTO) += crypto.o
+-crypto-y := api.o cipher.o compress.o memneq.o
++crypto-y := api.o cipher.o compress.o
+ 
+ obj-$(CONFIG_CRYPTO_ENGINE) += crypto_engine.o
+ obj-$(CONFIG_CRYPTO_FIPS) += fips.o
+diff --git a/lib/Kconfig b/lib/Kconfig
+index 087e06b4cdfdeb08dbe832a6b98a1f22e8d57483..55f0bba8f8c00928dc222164436f32d42ebb4275 100644
+--- a/lib/Kconfig
++++ b/lib/Kconfig
+@@ -120,6 +120,9 @@ config INDIRECT_IOMEM_FALLBACK
+ 
+ source "lib/crypto/Kconfig"
+ 
++config LIB_MEMNEQ
++	bool
++
+ config CRC_CCITT
+ 	tristate "CRC-CCITT functions"
+ 	help
+diff --git a/lib/Makefile b/lib/Makefile
+index 08053df16c7c878d0b3c8f011ff22c1960466cfd..60843ab661ba67b89f48da500bef2ba8b8736d81 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -251,6 +251,7 @@ obj-$(CONFIG_DIMLIB) += dim/
+ obj-$(CONFIG_SIGNATURE) += digsig.o
+ 
+ lib-$(CONFIG_CLZ_TAB) += clz_tab.o
++lib-$(CONFIG_LIB_MEMNEQ) += memneq.o
+ 
+ obj-$(CONFIG_GENERIC_STRNCPY_FROM_USER) += strncpy_from_user.o
+ obj-$(CONFIG_GENERIC_STRNLEN_USER) += strnlen_user.o
+diff --git a/lib/crypto/Kconfig b/lib/crypto/Kconfig
+index 379a66d7f504cf2bc6e8a0c6478d5420a1703a7f..017cba12538659ee6c1dc01e41216ce6a49df883 100644
+--- a/lib/crypto/Kconfig
++++ b/lib/crypto/Kconfig
+@@ -71,6 +71,7 @@ config CRYPTO_LIB_CURVE25519
+ 	tristate "Curve25519 scalar multiplication library"
+ 	depends on CRYPTO_ARCH_HAVE_LIB_CURVE25519 || !CRYPTO_ARCH_HAVE_LIB_CURVE25519
+ 	select CRYPTO_LIB_CURVE25519_GENERIC if CRYPTO_ARCH_HAVE_LIB_CURVE25519=n
++	select LIB_MEMNEQ
+ 	help
+ 	  Enable the Curve25519 library interface. This interface may be
+ 	  fulfilled by either the generic implementation or an arch-specific
+diff --git a/crypto/memneq.c b/lib/memneq.c
+similarity index 100%
+rename from crypto/memneq.c
+rename to lib/memneq.c

@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Philip Yang <Philip.Yang@amd.com>
+Date: Thu, 26 May 2022 16:15:38 -0400
+Subject: [PATCH] drm/amdkfd: Use mmget_not_zero in MMU notifier
+
+[ Upstream commit fa582c6f3684ac0098a9d02ddf0ed52a02b37127 ]
+
+MMU notifier callback may pass in mm with mm->mm_users==0 when process
+is exiting, use mmget_no_zero to avoid accessing invalid mm in deferred
+list work after mm is gone.
+
+Signed-off-by: Philip Yang <Philip.Yang@amd.com>
+Reviewed-by: Felix Kuehling <Felix.Kuehling@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdkfd/kfd_svm.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdkfd/kfd_svm.c b/drivers/gpu/drm/amd/amdkfd/kfd_svm.c
+index 3b8856b4cece8e2d0229d9843892bbe6010b23cf..5979335d7afdca82aaa9c59b137a272e41e1d95a 100644
+--- a/drivers/gpu/drm/amd/amdkfd/kfd_svm.c
++++ b/drivers/gpu/drm/amd/amdkfd/kfd_svm.c
+@@ -2286,6 +2286,8 @@ svm_range_cpu_invalidate_pagetables(struct mmu_interval_notifier *mni,
+ 
+ 	if (range->event == MMU_NOTIFY_RELEASE)
+ 		return true;
++	if (!mmget_not_zero(mni->mm))
++		return true;
+ 
+ 	start = mni->interval_tree.start;
+ 	last = mni->interval_tree.last;
+@@ -2312,6 +2314,7 @@ svm_range_cpu_invalidate_pagetables(struct mmu_interval_notifier *mni,
+ 	}
+ 
+ 	svm_range_unlock(prange);
++	mmput(mni->mm);
+ 
+ 	return true;
+ }

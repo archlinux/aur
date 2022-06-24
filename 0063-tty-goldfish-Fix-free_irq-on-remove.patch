@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Vincent Whitchurch <vincent.whitchurch@axis.com>
+Date: Thu, 9 Jun 2022 16:17:04 +0200
+Subject: [PATCH] tty: goldfish: Fix free_irq() on remove
+
+[ Upstream commit 499e13aac6c762e1e828172b0f0f5275651d6512 ]
+
+Pass the correct dev_id to free_irq() to fix this splat when the driver
+is unbound:
+
+ WARNING: CPU: 0 PID: 30 at kernel/irq/manage.c:1895 free_irq
+ Trying to free already-free IRQ 65
+ Call Trace:
+  warn_slowpath_fmt
+  free_irq
+  goldfish_tty_remove
+  platform_remove
+  device_remove
+  device_release_driver_internal
+  device_driver_detach
+  unbind_store
+  drv_attr_store
+  ...
+
+Fixes: 465893e18878e119 ("tty: goldfish: support platform_device with id -1")
+Signed-off-by: Vincent Whitchurch <vincent.whitchurch@axis.com>
+Link: https://lore.kernel.org/r/20220609141704.1080024-1-vincent.whitchurch@axis.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/tty/goldfish.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/tty/goldfish.c b/drivers/tty/goldfish.c
+index c7968aecd8702ef34c208d8bdbe528fd039a6d03..d02de3f0326fbbc2fa588cdc890e3f5a2b4cf4e6 100644
+--- a/drivers/tty/goldfish.c
++++ b/drivers/tty/goldfish.c
+@@ -426,7 +426,7 @@ static int goldfish_tty_remove(struct platform_device *pdev)
+ 	tty_unregister_device(goldfish_tty_driver, qtty->console.index);
+ 	iounmap(qtty->base);
+ 	qtty->base = NULL;
+-	free_irq(qtty->irq, pdev);
++	free_irq(qtty->irq, qtty);
+ 	tty_port_destroy(&qtty->port);
+ 	goldfish_tty_current_line_count--;
+ 	if (goldfish_tty_current_line_count == 0)

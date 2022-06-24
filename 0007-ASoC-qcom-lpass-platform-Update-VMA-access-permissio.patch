@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Srinivasa Rao Mandadapu <quic_srivasam@quicinc.com>
+Date: Fri, 27 May 2022 19:40:08 +0530
+Subject: [PATCH] ASoC: qcom: lpass-platform: Update VMA access permissions in
+ mmap callback
+
+[ Upstream commit ef8d89b83bf453ea9cc3c4873a84b50ff334f797 ]
+
+Replace page protection permissions from noncashed to writecombine,
+in lpass codec DMA path mmp callabck, to support 64 bit chromeOS.
+Avoid SIGBUS error in userspace caused by noncached permissions in
+64 bit chromeOS.
+
+Signed-off-by: Srinivasa Rao Mandadapu <quic_srivasam@quicinc.com>
+Link: https://lore.kernel.org/r/1653660608-27245-1-git-send-email-quic_srivasam@quicinc.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/qcom/lpass-platform.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/qcom/lpass-platform.c b/sound/soc/qcom/lpass-platform.c
+index 74d62f377dfddcba14610e876055dfbe43c29558..ae2a7837e5ccf198dbd302edf38f4dfc6e51602f 100644
+--- a/sound/soc/qcom/lpass-platform.c
++++ b/sound/soc/qcom/lpass-platform.c
+@@ -898,7 +898,7 @@ static int lpass_platform_cdc_dma_mmap(struct snd_pcm_substream *substream,
+ 	struct snd_pcm_runtime *runtime = substream->runtime;
+ 	unsigned long size, offset;
+ 
+-	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
++	vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
+ 	size = vma->vm_end - vma->vm_start;
+ 	offset = vma->vm_pgoff << PAGE_SHIFT;
+ 	return io_remap_pfn_range(vma, vma->vm_start,

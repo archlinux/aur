@@ -1,0 +1,67 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Mon, 30 May 2022 12:01:50 +0800
+Subject: [PATCH] ASoC: nau8822: Add operation for internal PLL off and on
+
+[ Upstream commit aeca8a3295022bcec46697f16e098140423d8463 ]
+
+We tried to enable the audio on an imx6sx EVB with the codec nau8822,
+after setting the internal PLL fractional parameters, the audio still
+couldn't work and the there was no sdma irq at all.
+
+After checking with the section "8.1.1 Phase Locked Loop (PLL) Design
+Example" of "NAU88C22 Datasheet Rev 0.6", we found we need to
+turn off the PLL before programming fractional parameters and turn on
+the PLL after programming.
+
+After this change, the audio driver could record and play sound and
+the sdma's irq is triggered when playing or recording.
+
+Cc: David Lin <ctlin0@nuvoton.com>
+Cc: John Hsu <kchsu0@nuvoton.com>
+Cc: Seven Li <wtli@nuvoton.com>
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Link: https://lore.kernel.org/r/20220530040151.95221-2-hui.wang@canonical.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/codecs/nau8822.c | 4 ++++
+ sound/soc/codecs/nau8822.h | 3 +++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/sound/soc/codecs/nau8822.c b/sound/soc/codecs/nau8822.c
+index 58123390c7a3189e908853a6b53faef2eb66da69..b436e532993d11933c012da2c0c6b97aa3b016ef 100644
+--- a/sound/soc/codecs/nau8822.c
++++ b/sound/soc/codecs/nau8822.c
+@@ -740,6 +740,8 @@ static int nau8822_set_pll(struct snd_soc_dai *dai, int pll_id, int source,
+ 		pll_param->pll_int, pll_param->pll_frac,
+ 		pll_param->mclk_scaler, pll_param->pre_factor);
+ 
++	snd_soc_component_update_bits(component,
++		NAU8822_REG_POWER_MANAGEMENT_1, NAU8822_PLL_EN_MASK, NAU8822_PLL_OFF);
+ 	snd_soc_component_update_bits(component,
+ 		NAU8822_REG_PLL_N, NAU8822_PLLMCLK_DIV2 | NAU8822_PLLN_MASK,
+ 		(pll_param->pre_factor ? NAU8822_PLLMCLK_DIV2 : 0) |
+@@ -757,6 +759,8 @@ static int nau8822_set_pll(struct snd_soc_dai *dai, int pll_id, int source,
+ 		pll_param->mclk_scaler << NAU8822_MCLKSEL_SFT);
+ 	snd_soc_component_update_bits(component,
+ 		NAU8822_REG_CLOCKING, NAU8822_CLKM_MASK, NAU8822_CLKM_PLL);
++	snd_soc_component_update_bits(component,
++		NAU8822_REG_POWER_MANAGEMENT_1, NAU8822_PLL_EN_MASK, NAU8822_PLL_ON);
+ 
+ 	return 0;
+ }
+diff --git a/sound/soc/codecs/nau8822.h b/sound/soc/codecs/nau8822.h
+index 489191ff187ec79e249fd0fe1669edff425da603..b45d42c15de6b679926b3184650854c6dd395b93 100644
+--- a/sound/soc/codecs/nau8822.h
++++ b/sound/soc/codecs/nau8822.h
+@@ -90,6 +90,9 @@
+ #define NAU8822_REFIMP_3K			0x3
+ #define NAU8822_IOBUF_EN			(0x1 << 2)
+ #define NAU8822_ABIAS_EN			(0x1 << 3)
++#define NAU8822_PLL_EN_MASK			(0x1 << 5)
++#define NAU8822_PLL_ON				(0x1 << 5)
++#define NAU8822_PLL_OFF				(0x0 << 5)
+ 
+ /* NAU8822_REG_AUDIO_INTERFACE (0x4) */
+ #define NAU8822_AIFMT_MASK			(0x3 << 3)

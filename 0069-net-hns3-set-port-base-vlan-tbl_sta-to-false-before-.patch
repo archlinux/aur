@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Guangbin Huang <huangguangbin2@huawei.com>
+Date: Sat, 11 Jun 2022 20:25:24 +0800
+Subject: [PATCH] net: hns3: set port base vlan tbl_sta to false before
+ removing old vlan
+
+[ Upstream commit 9eda7d8bcbdb6909f202edeedff51948f1cad1e5 ]
+
+When modify port base vlan, the port base vlan tbl_sta needs to set to
+false before removing old vlan, to indicate this operation is not finish.
+
+Fixes: c0f46de30c96 ("net: hns3: fix port base vlan add fail when concurrent with reset")
+Signed-off-by: Guangbin Huang <huangguangbin2@huawei.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+index 8cebb180c812f2a795101ad0c293b9e0b4a7a165..5d1615e27a1cf71aa3e4ca411343a45c870d90d6 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+@@ -10136,6 +10136,7 @@ static int hclge_modify_port_base_vlan_tag(struct hclge_vport *vport,
+ 	if (ret)
+ 		return ret;
+ 
++	vport->port_base_vlan_cfg.tbl_sta = false;
+ 	/* remove old VLAN tag */
+ 	if (old_info->vlan_tag == 0)
+ 		ret = hclge_set_vf_vlan_common(hdev, vport->vport_id,

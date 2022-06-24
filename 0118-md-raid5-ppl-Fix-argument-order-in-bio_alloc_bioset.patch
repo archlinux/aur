@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Logan Gunthorpe <logang@deltatee.com>
+Date: Wed, 8 Jun 2022 10:27:46 -0600
+Subject: [PATCH] md/raid5-ppl: Fix argument order in bio_alloc_bioset()
+
+commit f34fdcd4a0e7a0b92340ad7e48e7bcff9393fab5 upstream.
+
+bio_alloc_bioset() takes a block device, number of vectors, the
+OP flags, the GFP mask and the bio set. However when the prototype
+was changed, the callisite in ppl_do_flush() had the OP flags and
+the GFP flags reversed. This introduced some sparse error:
+
+  drivers/md/raid5-ppl.c:632:57: warning: incorrect type in argument 3
+				    (different base types)
+  drivers/md/raid5-ppl.c:632:57:    expected unsigned int opf
+  drivers/md/raid5-ppl.c:632:57:    got restricted gfp_t [usertype]
+  drivers/md/raid5-ppl.c:633:61: warning: incorrect type in argument 4
+  				    (different base types)
+  drivers/md/raid5-ppl.c:633:61:    expected restricted gfp_t [usertype]
+				    gfp_mask
+  drivers/md/raid5-ppl.c:633:61:    got unsigned long long
+
+The sparse error introduction may not have been reported correctly by
+0day due to other work that was cleaning up other sparse errors in this
+area.
+
+Fixes: 609be1066731 ("block: pass a block_device and opf to bio_alloc_bioset")
+Cc: stable@vger.kernel.org # 5.18+
+Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Song Liu <song@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/md/raid5-ppl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/md/raid5-ppl.c b/drivers/md/raid5-ppl.c
+index d3962d92df18a02b2531340901227a7d9a14ef04..18acbbed8f0c4c4c96df168a0dff93fb6f308d21 100644
+--- a/drivers/md/raid5-ppl.c
++++ b/drivers/md/raid5-ppl.c
+@@ -629,9 +629,9 @@ static void ppl_do_flush(struct ppl_io_unit *io)
+ 		if (bdev) {
+ 			struct bio *bio;
+ 
+-			bio = bio_alloc_bioset(bdev, 0, GFP_NOIO,
++			bio = bio_alloc_bioset(bdev, 0,
+ 					       REQ_OP_WRITE | REQ_PREFLUSH,
+-					       &ppl_conf->flush_bs);
++					       GFP_NOIO, &ppl_conf->flush_bs);
+ 			bio->bi_private = io;
+ 			bio->bi_end_io = ppl_flush_endio;
+ 

@@ -1,0 +1,45 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Alexander Usyskin <alexander.usyskin@intel.com>
+Date: Mon, 6 Jun 2022 17:42:25 +0300
+Subject: [PATCH] mei: me: add raptor lake point S DID
+
+commit 3ed8c7d39cfef831fe508fc1308f146912fa72e6 upstream.
+
+Add Raptor (Point) Lake S device id.
+
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Alexander Usyskin <alexander.usyskin@intel.com>
+Signed-off-by: Tomas Winkler <tomas.winkler@intel.com>
+Link: https://lore.kernel.org/r/20220606144225.282375-3-tomas.winkler@intel.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/misc/mei/hw-me-regs.h | 2 ++
+ drivers/misc/mei/pci-me.c     | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/misc/mei/hw-me-regs.h b/drivers/misc/mei/hw-me-regs.h
+index 64ce3f830262b8618c2ee139dee4956619be964f..15e8e2b322b1a398678555f0a07091c7a1fe84b3 100644
+--- a/drivers/misc/mei/hw-me-regs.h
++++ b/drivers/misc/mei/hw-me-regs.h
+@@ -109,6 +109,8 @@
+ #define MEI_DEV_ID_ADP_P      0x51E0  /* Alder Lake Point P */
+ #define MEI_DEV_ID_ADP_N      0x54E0  /* Alder Lake Point N */
+ 
++#define MEI_DEV_ID_RPL_S      0x7A68  /* Raptor Lake Point S */
++
+ /*
+  * MEI HW Section
+  */
+diff --git a/drivers/misc/mei/pci-me.c b/drivers/misc/mei/pci-me.c
+index 33e58821e478558c8b39b23a6b9bf43be1a4290e..5435604327a71e9077d242c30386af505905f9e3 100644
+--- a/drivers/misc/mei/pci-me.c
++++ b/drivers/misc/mei/pci-me.c
+@@ -116,6 +116,8 @@ static const struct pci_device_id mei_me_pci_tbl[] = {
+ 	{MEI_PCI_DEVICE(MEI_DEV_ID_ADP_P, MEI_ME_PCH15_CFG)},
+ 	{MEI_PCI_DEVICE(MEI_DEV_ID_ADP_N, MEI_ME_PCH15_CFG)},
+ 
++	{MEI_PCI_DEVICE(MEI_DEV_ID_RPL_S, MEI_ME_PCH15_CFG)},
++
+ 	/* required last entry */
+ 	{0, }
+ };

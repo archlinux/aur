@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+Date: Fri, 10 Jun 2022 13:45:00 +0300
+Subject: [PATCH] gpio: dwapb: Don't print error on -EPROBE_DEFER
+
+[ Upstream commit 77006f6edc0e0f58617eb25e53731f78641e820d ]
+
+Currently if the APB or Debounce clocks aren't yet ready to be requested
+the DW GPIO driver will correctly handle that by deferring the probe
+procedure, but the error is still printed to the system log. It needlessly
+pollutes the log since there was no real error but a request to postpone
+the clock request procedure since the clocks subsystem hasn't been fully
+initialized yet. Let's fix that by using the dev_err_probe method to print
+the APB/clock request error status. It will correctly handle the deferred
+probe situation and print the error if it actually happens.
+
+Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+Signed-off-by: Bartosz Golaszewski <brgl@bgdev.pl>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpio/gpio-dwapb.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpio/gpio-dwapb.c b/drivers/gpio/gpio-dwapb.c
+index b0f3aca61974c1d16708ebd64c43d052faaddf44..9467d695a33e220f585434011fad963896caa44a 100644
+--- a/drivers/gpio/gpio-dwapb.c
++++ b/drivers/gpio/gpio-dwapb.c
+@@ -652,10 +652,9 @@ static int dwapb_get_clks(struct dwapb_gpio *gpio)
+ 	gpio->clks[1].id = "db";
+ 	err = devm_clk_bulk_get_optional(gpio->dev, DWAPB_NR_CLOCKS,
+ 					 gpio->clks);
+-	if (err) {
+-		dev_err(gpio->dev, "Cannot get APB/Debounce clocks\n");
+-		return err;
+-	}
++	if (err)
++		return dev_err_probe(gpio->dev, err,
++				     "Cannot get APB/Debounce clocks\n");
+ 
+ 	err = clk_bulk_prepare_enable(DWAPB_NR_CLOCKS, gpio->clks);
+ 	if (err) {

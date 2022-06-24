@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Miaoqian Lin <linmq006@gmail.com>
+Date: Wed, 1 Jun 2022 12:09:25 +0400
+Subject: [PATCH] irqchip/gic/realview: Fix refcount leak in
+ realview_gic_of_init
+
+[ Upstream commit f4b98e314888cc51486421bcf6d52852452ea48b ]
+
+of_find_matching_node_and_match() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+Add missing of_node_put() to avoid refcount leak.
+
+Fixes: 82b0a434b436 ("irqchip/gic/realview: Support more RealView DCC variants")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Link: https://lore.kernel.org/r/20220601080930.31005-2-linmq006@gmail.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/irqchip/irq-gic-realview.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/irqchip/irq-gic-realview.c b/drivers/irqchip/irq-gic-realview.c
+index b4c1924f0255453937d11204f879a71d48068abc..38fab02ffe9d05e2a89cb6ca7159ce9b685efad9 100644
+--- a/drivers/irqchip/irq-gic-realview.c
++++ b/drivers/irqchip/irq-gic-realview.c
+@@ -57,6 +57,7 @@ realview_gic_of_init(struct device_node *node, struct device_node *parent)
+ 
+ 	/* The PB11MPCore GIC needs to be configured in the syscon */
+ 	map = syscon_node_to_regmap(np);
++	of_node_put(np);
+ 	if (!IS_ERR(map)) {
+ 		/* new irq mode with no DCC */
+ 		regmap_write(map, REALVIEW_SYS_LOCK_OFFSET,

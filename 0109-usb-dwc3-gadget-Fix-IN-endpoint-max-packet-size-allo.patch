@@ -1,0 +1,79 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wesley Cheng <quic_wcheng@quicinc.com>
+Date: Mon, 23 May 2022 14:39:48 -0700
+Subject: [PATCH] usb: dwc3: gadget: Fix IN endpoint max packet size allocation
+
+commit 9c1e916960c1192e746bf615e4dae25423473a64 upstream.
+
+The current logic to assign the max packet limit for IN endpoints attempts
+to take the default HW value and apply the optimal endpoint settings based
+on it.  However, if the default value reports a TxFIFO size large enough
+for only one max packet, it will divide the value and assign a smaller ep
+max packet limit.
+
+For example, if the default TxFIFO size fits 1024B, current logic will
+assign 1024/3 = 341B to ep max packet size.  If function drivers attempt to
+request for an endpoint with a wMaxPacketSize of 1024B (SS BULK max packet
+size) then it will fail, as the gadget is unable to find an endpoint which
+can fit the requested size.
+
+Functionally, if the TxFIFO has enough space to fit one max packet, it will
+be sufficient, at least when initializing the endpoints.
+
+Fixes: d94ea5319813 ("usb: dwc3: gadget: Properly set maxpacket limit")
+Cc: stable <stable@kernel.org>
+Signed-off-by: Wesley Cheng <quic_wcheng@quicinc.com>
+Link: https://lore.kernel.org/r/20220523213948.22142-1-quic_wcheng@quicinc.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/dwc3/gadget.c | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/usb/dwc3/gadget.c b/drivers/usb/dwc3/gadget.c
+index bf2eaa09d73c828e593cb178d136546565956aed..0a6633e7edce22a221f83f1782ae7f5f6ef83dd7 100644
+--- a/drivers/usb/dwc3/gadget.c
++++ b/drivers/usb/dwc3/gadget.c
+@@ -2984,6 +2984,7 @@ static int dwc3_gadget_init_in_endpoint(struct dwc3_ep *dep)
+ 	struct dwc3 *dwc = dep->dwc;
+ 	u32 mdwidth;
+ 	int size;
++	int maxpacket;
+ 
+ 	mdwidth = dwc3_mdwidth(dwc);
+ 
+@@ -2996,21 +2997,24 @@ static int dwc3_gadget_init_in_endpoint(struct dwc3_ep *dep)
+ 	else
+ 		size = DWC31_GTXFIFOSIZ_TXFDEP(size);
+ 
+-	/* FIFO Depth is in MDWDITH bytes. Multiply */
+-	size *= mdwidth;
+-
+ 	/*
+-	 * To meet performance requirement, a minimum TxFIFO size of 3x
+-	 * MaxPacketSize is recommended for endpoints that support burst and a
+-	 * minimum TxFIFO size of 2x MaxPacketSize for endpoints that don't
+-	 * support burst. Use those numbers and we can calculate the max packet
+-	 * limit as below.
++	 * maxpacket size is determined as part of the following, after assuming
++	 * a mult value of one maxpacket:
++	 * DWC3 revision 280A and prior:
++	 * fifo_size = mult * (max_packet / mdwidth) + 1;
++	 * maxpacket = mdwidth * (fifo_size - 1);
++	 *
++	 * DWC3 revision 290A and onwards:
++	 * fifo_size = mult * ((max_packet + mdwidth)/mdwidth + 1) + 1
++	 * maxpacket = mdwidth * ((fifo_size - 1) - 1) - mdwidth;
+ 	 */
+-	if (dwc->maximum_speed >= USB_SPEED_SUPER)
+-		size /= 3;
++	if (DWC3_VER_IS_PRIOR(DWC3, 290A))
++		maxpacket = mdwidth * (size - 1);
+ 	else
+-		size /= 2;
++		maxpacket = mdwidth * ((size - 1) - 1) - mdwidth;
+ 
++	/* Functionally, space for one max packet is sufficient */
++	size = min_t(int, maxpacket, 1024);
+ 	usb_ep_set_maxpacket_limit(&dep->endpoint, size);
+ 
+ 	dep->endpoint.max_streams = 16;

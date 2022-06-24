@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Date: Fri, 29 Apr 2022 14:27:08 +0200
+Subject: [PATCH] i40e: Fix adding ADQ filter to TC0
+
+[ Upstream commit c3238d36c3a2be0a29a9d848d6c51e1b14be6692 ]
+
+Procedure of configure tc flower filters erroneously allows to create
+filters on TC0 where unfiltered packets are also directed by default.
+Issue was caused by insufficient checks of hw_tc parameter specifying
+the hardware traffic class to pass matching packets to.
+
+Fix checking hw_tc parameter which blocks creation of filters on TC0.
+
+Fixes: 2f4b411a3d67 ("i40e: Enable cloud filters via tc-flower")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Tested-by: Bharathi Sreenivas <bharathi.sreenivas@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 98871f01499469332b03b38a278e89d1532ccff0..46bb1169a004d9a404706d797befa25d5640c221 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -8537,6 +8537,11 @@ static int i40e_configure_clsflower(struct i40e_vsi *vsi,
+ 		return -EOPNOTSUPP;
+ 	}
+ 
++	if (!tc) {
++		dev_err(&pf->pdev->dev, "Unable to add filter because of invalid destination");
++		return -EINVAL;
++	}
++
+ 	if (test_bit(__I40E_RESET_RECOVERY_PENDING, pf->state) ||
+ 	    test_bit(__I40E_RESET_INTR_RECEIVED, pf->state))
+ 		return -EBUSY;

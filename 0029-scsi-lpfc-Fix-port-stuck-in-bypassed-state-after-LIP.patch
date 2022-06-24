@@ -1,0 +1,45 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Smart <jsmart2021@gmail.com>
+Date: Fri, 3 Jun 2022 10:43:26 -0700
+Subject: [PATCH] scsi: lpfc: Fix port stuck in bypassed state after LIP in
+ PT2PT topology
+
+[ Upstream commit 336d63615466b4c06b9401c987813fd19bdde39b ]
+
+After issuing a LIP, a specific target vendor does not ACC the FLOGI that
+lpfc sends.  However, it does send its own FLOGI that lpfc ACCs.  The
+target then establishes the port IDs by sending a PLOGI.  lpfc PLOGI_ACCs
+and starts the RPI registration for DID 0x000001.  The target then sends a
+LOGO to the fabric DID.  lpfc is currently treating the LOGO from the
+fabric DID as a link down and cleans up all the ndlps.  The ndlp for DID
+0x000001 is put back into NPR and discovery stops, leaving the port in
+stuck in bypassed mode.
+
+Change lpfc behavior such that if a LOGO is received for the fabric DID in
+PT2PT topology skip the lpfc_linkdown_port() routine and just move the
+fabric DID back to NPR.
+
+Link: https://lore.kernel.org/r/20220603174329.63777-7-jsmart2021@gmail.com
+Co-developed-by: Justin Tee <justin.tee@broadcom.com>
+Signed-off-by: Justin Tee <justin.tee@broadcom.com>
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/scsi/lpfc/lpfc_nportdisc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/scsi/lpfc/lpfc_nportdisc.c b/drivers/scsi/lpfc/lpfc_nportdisc.c
+index 4b065c51ee1b0ccdd59d87f7783e9b18baadde2d..f5de88877ffe745ceb00c86649e0ea366fa41467 100644
+--- a/drivers/scsi/lpfc/lpfc_nportdisc.c
++++ b/drivers/scsi/lpfc/lpfc_nportdisc.c
+@@ -835,7 +835,8 @@ lpfc_rcv_logo(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
+ 		lpfc_nvmet_invalidate_host(phba, ndlp);
+ 
+ 	if (ndlp->nlp_DID == Fabric_DID) {
+-		if (vport->port_state <= LPFC_FDISC)
++		if (vport->port_state <= LPFC_FDISC ||
++		    vport->fc_flag & FC_PT2PT)
+ 			goto out;
+ 		lpfc_linkdown_port(vport);
+ 		spin_lock_irq(shost->host_lock);

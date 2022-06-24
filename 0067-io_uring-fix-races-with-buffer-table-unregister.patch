@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Pavel Begunkov <asml.silence@gmail.com>
+Date: Mon, 13 Jun 2022 06:30:06 +0100
+Subject: [PATCH] io_uring: fix races with buffer table unregister
+
+[ Upstream commit d11d31fc5d8a96f707facee0babdcffaafa38de2 ]
+
+Fixed buffer table quiesce might unlock ->uring_lock, potentially
+letting new requests to be submitted, don't allow those requests to
+use the table as they will race with unregistration.
+
+Reported-and-tested-by: van fantasy <g1042620637@gmail.com>
+Fixes: bd54b6fe3316ec ("io_uring: implement fixed buffers registration similar to fixed files")
+Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/io_uring.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/fs/io_uring.c b/fs/io_uring.c
+index 0a9f9000fc802cdf44c465e1f9064b1f3916e6a2..3d123ca028c974dfe4e52a1c9c3c904c472f31ea 100644
+--- a/fs/io_uring.c
++++ b/fs/io_uring.c
+@@ -9495,12 +9495,19 @@ static void __io_sqe_buffers_unregister(struct io_ring_ctx *ctx)
+ 
+ static int io_sqe_buffers_unregister(struct io_ring_ctx *ctx)
+ {
++	unsigned nr = ctx->nr_user_bufs;
+ 	int ret;
+ 
+ 	if (!ctx->buf_data)
+ 		return -ENXIO;
+ 
++	/*
++	 * Quiesce may unlock ->uring_lock, and while it's not held
++	 * prevent new requests using the table.
++	 */
++	ctx->nr_user_bufs = 0;
+ 	ret = io_rsrc_ref_quiesce(ctx->buf_data, ctx);
++	ctx->nr_user_bufs = nr;
+ 	if (!ret)
+ 		__io_sqe_buffers_unregister(ctx);
+ 	return ret;

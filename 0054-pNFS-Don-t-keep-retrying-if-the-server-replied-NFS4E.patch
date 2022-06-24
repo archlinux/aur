@@ -1,0 +1,37 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Trond Myklebust <trond.myklebust@hammerspace.com>
+Date: Tue, 31 May 2022 11:03:06 -0400
+Subject: [PATCH] pNFS: Don't keep retrying if the server replied
+ NFS4ERR_LAYOUTUNAVAILABLE
+
+[ Upstream commit fe44fb23d6ccde4c914c44ef74ab8d9d9ba02bea ]
+
+If the server tells us that a pNFS layout is not available for a
+specific file, then we should not keep pounding it with further
+layoutget requests.
+
+Fixes: 183d9e7b112a ("pnfs: rework LAYOUTGET retry handling")
+Signed-off-by: Trond Myklebust <trond.myklebust@hammerspace.com>
+Signed-off-by: Anna Schumaker <Anna.Schumaker@Netapp.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/nfs/pnfs.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/fs/nfs/pnfs.c b/fs/nfs/pnfs.c
+index 68a87be3e6f96fb4e8ab7a038d1f2bc789c05a7e..4609e641710e4da02f05a162e8bbe49bc51e3b89 100644
+--- a/fs/nfs/pnfs.c
++++ b/fs/nfs/pnfs.c
+@@ -2152,6 +2152,12 @@ pnfs_update_layout(struct inode *ino,
+ 		case -ERECALLCONFLICT:
+ 		case -EAGAIN:
+ 			break;
++		case -ENODATA:
++			/* The server returned NFS4ERR_LAYOUTUNAVAILABLE */
++			pnfs_layout_set_fail_bit(
++				lo, pnfs_iomode_to_fail_bit(iomode));
++			lseg = NULL;
++			goto out_put_layout_hdr;
+ 		default:
+ 			if (!nfs_error_is_fatal(PTR_ERR(lseg))) {
+ 				pnfs_layout_clear_fail_bit(lo, pnfs_iomode_to_fail_bit(iomode));

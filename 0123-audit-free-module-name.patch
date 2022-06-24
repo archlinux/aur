@@ -1,0 +1,50 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christian=20G=C3=B6ttsche?= <cgzones@googlemail.com>
+Date: Wed, 15 Jun 2022 17:44:31 +0200
+Subject: [PATCH] audit: free module name
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit ef79c396c664be99d0c5660dc75fe863c1e20315 upstream.
+
+Reset the type of the record last as the helper `audit_free_module()`
+depends on it.
+
+    unreferenced object 0xffff888153b707f0 (size 16):
+      comm "modprobe", pid 1319, jiffies 4295110033 (age 1083.016s)
+      hex dump (first 16 bytes):
+        62 69 6e 66 6d 74 5f 6d 69 73 63 00 6b 6b 6b a5  binfmt_misc.kkk.
+      backtrace:
+        [<ffffffffa07dbf9b>] kstrdup+0x2b/0x50
+        [<ffffffffa04b0a9d>] __audit_log_kern_module+0x4d/0xf0
+        [<ffffffffa03b6664>] load_module+0x9d4/0x2e10
+        [<ffffffffa03b8f44>] __do_sys_finit_module+0x114/0x1b0
+        [<ffffffffa1f47124>] do_syscall_64+0x34/0x80
+        [<ffffffffa200007e>] entry_SYSCALL_64_after_hwframe+0x46/0xb0
+
+Cc: stable@vger.kernel.org
+Fixes: 12c5e81d3fd0 ("audit: prepare audit_context for use in calling contexts beyond syscalls")
+Signed-off-by: Christian Göttsche <cgzones@googlemail.com>
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ kernel/auditsc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/auditsc.c b/kernel/auditsc.c
+index f3a2abd6d1a1922c8e19e44e3b26a49064e0f521..3a8c9d744800a8d84cc88a52fc0bb6dd4e5e28cb 100644
+--- a/kernel/auditsc.c
++++ b/kernel/auditsc.c
+@@ -1014,10 +1014,10 @@ static void audit_reset_context(struct audit_context *ctx)
+ 	ctx->target_comm[0] = '\0';
+ 	unroll_tree_refs(ctx, NULL, 0);
+ 	WARN_ON(!list_empty(&ctx->killed_trees));
+-	ctx->type = 0;
+ 	audit_free_module(ctx);
+ 	ctx->fds[0] = -1;
+ 	audit_proctitle_free(ctx);
++	ctx->type = 0; /* reset last for audit_free_*() */
+ }
+ 
+ static inline struct audit_context *audit_alloc_context(enum audit_state state)

@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Saurabh Sengar <ssengar@linux.microsoft.com>
+Date: Thu, 9 Jun 2022 10:16:36 -0700
+Subject: [PATCH] Drivers: hv: vmbus: Release cpu lock in error case
+
+[ Upstream commit 656c5ba50b7172a0ea25dc1b37606bd51d01fe8d ]
+
+In case of invalid sub channel, release cpu lock before returning.
+
+Fixes: a949e86c0d780 ("Drivers: hv: vmbus: Resolve race between init_vp_index() and CPU hotplug")
+Signed-off-by: Saurabh Sengar <ssengar@linux.microsoft.com>
+Reviewed-by: Michael Kelley <mikelley@microsoft.com>
+Link: https://lore.kernel.org/r/1654794996-13244-1-git-send-email-ssengar@linux.microsoft.com
+Signed-off-by: Wei Liu <wei.liu@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/hv/channel_mgmt.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/hv/channel_mgmt.c b/drivers/hv/channel_mgmt.c
+index 85a2142c9384007d2bc43a1f072ceb7b96b0c53b..073ff9b6f5352dfc2540a0a53bd180d1b459a9e2 100644
+--- a/drivers/hv/channel_mgmt.c
++++ b/drivers/hv/channel_mgmt.c
+@@ -637,6 +637,7 @@ static void vmbus_process_offer(struct vmbus_channel *newchannel)
+ 		 */
+ 		if (newchannel->offermsg.offer.sub_channel_index == 0) {
+ 			mutex_unlock(&vmbus_connection.channel_mutex);
++			cpus_read_unlock();
+ 			/*
+ 			 * Don't call free_channel(), because newchannel->kobj
+ 			 * is not initialized yet.

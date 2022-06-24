@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jian Shen <shenjian15@huawei.com>
+Date: Sat, 11 Jun 2022 20:25:25 +0800
+Subject: [PATCH] net: hns3: don't push link state to VF if unalive
+
+[ Upstream commit 283847e3ef6dbf79bf67083b5ce7b8033e8b6f34 ]
+
+It's unnecessary to push link state to unalive VF, and the VF will
+query link state from PF when it being start works.
+
+Fixes: 18b6e31f8bf4 ("net: hns3: PF add support for pushing link status to VFs")
+Signed-off-by: Jian Shen <shenjian15@huawei.com>
+Signed-off-by: Guangbin Huang <huangguangbin2@huawei.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+index 5d1615e27a1cf71aa3e4ca411343a45c870d90d6..c8c99ab60ec12f8efd9cd06b41528ace69cf4600 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+@@ -3384,6 +3384,12 @@ static int hclge_set_vf_link_state(struct hnae3_handle *handle, int vf,
+ 	link_state_old = vport->vf_info.link_state;
+ 	vport->vf_info.link_state = link_state;
+ 
++	/* return success directly if the VF is unalive, VF will
++	 * query link state itself when it starts work.
++	 */
++	if (!test_bit(HCLGE_VPORT_STATE_ALIVE, &vport->state))
++		return 0;
++
+ 	ret = hclge_push_vf_link_status(vport);
+ 	if (ret) {
+ 		vport->vf_info.link_state = link_state_old;

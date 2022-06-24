@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jani Nikula <jani.nikula@intel.com>
+Date: Wed, 11 May 2022 12:46:19 +0300
+Subject: [PATCH] drm/i915/uc: remove accidental static from a local variable
+
+commit 2636e008112465ca54559ac4898da5a2515e118a upstream.
+
+The arrays are static const, but the pointer shouldn't be static.
+
+Fixes: 3d832f370d16 ("drm/i915/uc: Allow platforms to have GuC but not HuC")
+Cc: John Harrison <John.C.Harrison@Intel.com>
+Cc: Lucas De Marchi <lucas.demarchi@intel.com>
+Cc: Daniele Ceraolo Spurio <daniele.ceraolospurio@intel.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Reviewed-by: Tvrtko Ursulin <tvrtko.ursulin@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20220511094619.27889-1-jani.nikula@intel.com
+(cherry picked from commit 5821a0bbb4c39960975d29d6b58ae290088db0ed)
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/i915/gt/uc/intel_uc_fw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/gt/uc/intel_uc_fw.c b/drivers/gpu/drm/i915/gt/uc/intel_uc_fw.c
+index c881130444948ec37bfca7101c34a5efd756de56..9b6fbad4764652d9670d82daabee8a1274a1da16 100644
+--- a/drivers/gpu/drm/i915/gt/uc/intel_uc_fw.c
++++ b/drivers/gpu/drm/i915/gt/uc/intel_uc_fw.c
+@@ -154,7 +154,7 @@ __uc_fw_auto_select(struct drm_i915_private *i915, struct intel_uc_fw *uc_fw)
+ 		[INTEL_UC_FW_TYPE_GUC] = { blobs_guc, ARRAY_SIZE(blobs_guc) },
+ 		[INTEL_UC_FW_TYPE_HUC] = { blobs_huc, ARRAY_SIZE(blobs_huc) },
+ 	};
+-	static const struct uc_fw_platform_requirement *fw_blobs;
++	const struct uc_fw_platform_requirement *fw_blobs;
+ 	enum intel_platform p = INTEL_INFO(i915)->platform;
+ 	u32 fw_count;
+ 	u8 rev = INTEL_REVID(i915);

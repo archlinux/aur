@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+Date: Thu, 2 Jun 2022 17:21:19 +0100
+Subject: [PATCH] ASoC: cs42l51: Correct minimum value for SX volume control
+
+[ Upstream commit fcb3b5a58926d16d9a338841b74af06d4c29be15 ]
+
+The minimum value for the PGA Volume is given as 0x1A, however the
+values from there to 0x19 are all the same volume and this is not
+represented in the TLV structure. The number of volumes given is correct
+so this leads to all the volumes being shifted. Move the minimum value
+up to 0x19 to fix this.
+
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+Link: https://lore.kernel.org/r/20220602162119.3393857-7-ckeepax@opensource.cirrus.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/codecs/cs42l51.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/cs42l51.c b/sound/soc/codecs/cs42l51.c
+index e9c3cb4e2bfcb8cbe663118d272c84b35dcb733e..b9c262a15edf4556dce8bab0631cfa24b027ec92 100644
+--- a/sound/soc/codecs/cs42l51.c
++++ b/sound/soc/codecs/cs42l51.c
+@@ -146,7 +146,7 @@ static const struct snd_kcontrol_new cs42l51_snd_controls[] = {
+ 			0, 0xA0, 96, adc_att_tlv),
+ 	SOC_DOUBLE_R_SX_TLV("PGA Volume",
+ 			CS42L51_ALC_PGA_CTL, CS42L51_ALC_PGB_CTL,
+-			0, 0x1A, 30, pga_tlv),
++			0, 0x19, 30, pga_tlv),
+ 	SOC_SINGLE("Playback Deemphasis Switch", CS42L51_DAC_CTL, 3, 1, 0),
+ 	SOC_SINGLE("Auto-Mute Switch", CS42L51_DAC_CTL, 2, 1, 0),
+ 	SOC_SINGLE("Soft Ramp Switch", CS42L51_DAC_CTL, 1, 1, 0),

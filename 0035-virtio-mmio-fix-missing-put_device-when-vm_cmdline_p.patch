@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: chengkaitao <pilgrimtao@gmail.com>
+Date: Thu, 2 Jun 2022 08:55:42 +0800
+Subject: [PATCH] virtio-mmio: fix missing put_device() when vm_cmdline_parent
+ registration failed
+
+[ Upstream commit a58a7f97ba11391d2d0d408e0b24f38d86ae748e ]
+
+The reference must be released when device_register(&vm_cmdline_parent)
+failed. Add the corresponding 'put_device()' in the error handling path.
+
+Signed-off-by: chengkaitao <pilgrimtao@gmail.com>
+Message-Id: <20220602005542.16489-1-chengkaitao@didiglobal.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Acked-by: Jason Wang <jasowang@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/virtio/virtio_mmio.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/virtio/virtio_mmio.c b/drivers/virtio/virtio_mmio.c
+index 56128b9c46ebaabe1c1dcd872d11d664cd75d1dd..1dd396d4bebb26f05836bd9de9b1a9762d822734 100644
+--- a/drivers/virtio/virtio_mmio.c
++++ b/drivers/virtio/virtio_mmio.c
+@@ -688,6 +688,7 @@ static int vm_cmdline_set(const char *device,
+ 	if (!vm_cmdline_parent_registered) {
+ 		err = device_register(&vm_cmdline_parent);
+ 		if (err) {
++			put_device(&vm_cmdline_parent);
+ 			pr_err("Failed to register parent device!\n");
+ 			return err;
+ 		}

@@ -1,0 +1,66 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Larry Finger <Larry.Finger@lwfinger.net>
+Date: Mon, 30 May 2022 20:31:03 -0500
+Subject: [PATCH] staging: r8188eu: Fix warning of array overflow in
+ ioctl_linux.c
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit 96f0a54e8e65a765b3a4ad4b53751581f23279f3 ]
+
+Building with -Warray-bounds results in the following warning plus others
+related to the same problem:
+
+CC [M]  drivers/staging/r8188eu/os_dep/ioctl_linux.o
+In function ‘wpa_set_encryption’,
+    inlined from ‘rtw_wx_set_enc_ext’ at drivers/staging/r8188eu/os_dep/ioctl_linux.c:1868:9:
+drivers/staging/r8188eu/os_dep/ioctl_linux.c:412:41: warning: array subscript ‘struct ndis_802_11_wep[0]’ is partly outside array bounds of ‘void[25]’ [-Warray-bounds]
+  412 |                         pwep->KeyLength = wep_key_len;
+      |                         ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+In file included from drivers/staging/r8188eu/os_dep/../include/osdep_service.h:19,
+                 from drivers/staging/r8188eu/os_dep/ioctl_linux.c:4:
+In function ‘kmalloc’,
+    inlined from ‘kzalloc’ at ./include/linux/slab.h:733:9,
+    inlined from ‘wpa_set_encryption’ at drivers/staging/r8188eu/os_dep/ioctl_linux.c:408:11,
+    inlined from ‘rtw_wx_set_enc_ext’ at drivers/staging/r8188eu/os_dep/ioctl_linux.c:1868:9:
+./include/linux/slab.h:605:16: note: object of size [17, 25] allocated by ‘__kmalloc’
+  605 |         return __kmalloc(size, flags);
+      |                ^~~~~~~~~~~~~~~~~~~~~~
+./include/linux/slab.h:600:24: note: object of size [17, 25] allocated by ‘kmem_cache_alloc_trace’
+  600 |                 return kmem_cache_alloc_trace(
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~
+  601 |                                 kmalloc_caches[kmalloc_type(flags)][index],
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  602 |                                 flags, size);
+      |                                 ~~~~~~~~~~~~
+
+Although it is unlikely that anyone is still using WEP encryption, the
+size of the allocation needs to be increased just in case.
+
+Fixes commit 2b42bd58b321 ("staging: r8188eu: introduce new os_dep dir for RTL8188eu driver")
+
+Fixes: 2b42bd58b321 ("staging: r8188eu: introduce new os_dep dir for RTL8188eu driver")
+Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
+Cc: Phillip Potter <phil@philpotter.co.uk>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>
+Link: https://lore.kernel.org/r/20220531013103.2175-3-Larry.Finger@lwfinger.net
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/r8188eu/os_dep/ioctl_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/r8188eu/os_dep/ioctl_linux.c b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+index 60bd1cc2b3afda1afe1e5cea106d3e6313e22a8b..607c5e1eb32050c7aa77942f631caa16be09570d 100644
+--- a/drivers/staging/r8188eu/os_dep/ioctl_linux.c
++++ b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+@@ -404,7 +404,7 @@ static int wpa_set_encryption(struct net_device *dev, struct ieee_param *param,
+ 
+ 		if (wep_key_len > 0) {
+ 			wep_key_len = wep_key_len <= 5 ? 5 : 13;
+-			wep_total_len = wep_key_len + FIELD_OFFSET(struct ndis_802_11_wep, KeyMaterial);
++			wep_total_len = wep_key_len + sizeof(*pwep);
+ 			pwep = kzalloc(wep_total_len, GFP_KERNEL);
+ 			if (!pwep)
+ 				goto exit;

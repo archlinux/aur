@@ -1,0 +1,81 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Mark Rutland <mark.rutland@arm.com>
+Date: Tue, 14 Jun 2022 09:09:42 +0100
+Subject: [PATCH] arm64: ftrace: fix branch range checks
+
+[ Upstream commit 3eefdf9d1e406f3da47470b2854347009ffcb6fa ]
+
+The branch range checks in ftrace_make_call() and ftrace_make_nop() are
+incorrect, erroneously permitting a forwards branch of 128M and
+erroneously rejecting a backwards branch of 128M.
+
+This is because both functions calculate the offset backwards,
+calculating the offset *from* the target *to* the branch, rather than
+the other way around as the later comparisons expect.
+
+If an out-of-range branch were erroeously permitted, this would later be
+rejected by aarch64_insn_gen_branch_imm() as branch_imm_common() checks
+the bounds correctly, resulting in warnings and the placement of a BRK
+instruction. Note that this can only happen for a forwards branch of
+exactly 128M, and so the caller would need to be exactly 128M bytes
+below the relevant ftrace trampoline.
+
+If an in-range branch were erroeously rejected, then:
+
+* For modules when CONFIG_ARM64_MODULE_PLTS=y, this would result in the
+  use of a PLT entry, which is benign.
+
+  Note that this is the common case, as this is selected by
+  CONFIG_RANDOMIZE_BASE (and therefore RANDOMIZE_MODULE_REGION_FULL),
+  which distributions typically seelct. This is also selected by
+  CONFIG_ARM64_ERRATUM_843419.
+
+* For modules when CONFIG_ARM64_MODULE_PLTS=n, this would result in
+  internal ftrace failures.
+
+* For core kernel text, this would result in internal ftrace failues.
+
+  Note that for this to happen, the kernel text would need to be at
+  least 128M bytes in size, and typical configurations are smaller tha
+  this.
+
+Fix this by calculating the offset *from* the branch *to* the target in
+both functions.
+
+Fixes: f8af0b364e24 ("arm64: ftrace: don't validate branch via PLT in ftrace_make_nop()")
+Fixes: e71a4e1bebaf ("arm64: ftrace: add support for far branches to dynamic ftrace")
+Signed-off-by: Mark Rutland <mark.rutland@arm.com>
+Cc: Ard Biesheuvel <ardb@kernel.org>
+Cc: Will Deacon <will@kernel.org>
+Tested-by: "Ivan T. Ivanov" <iivanov@suse.de>
+Reviewed-by: Chengming Zhou <zhouchengming@bytedance.com>
+Reviewed-by: Ard Biesheuvel <ardb@kernel.org>
+Link: https://lore.kernel.org/r/20220614080944.1349146-2-mark.rutland@arm.com
+Signed-off-by: Catalin Marinas <catalin.marinas@arm.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/arm64/kernel/ftrace.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/kernel/ftrace.c b/arch/arm64/kernel/ftrace.c
+index 4506c4a90ac10fbe7910da0d95e9bdaf50ac3945..d9e3eda419ec5ee726c77dbc438972179c8a0142 100644
+--- a/arch/arm64/kernel/ftrace.c
++++ b/arch/arm64/kernel/ftrace.c
+@@ -84,7 +84,7 @@ int ftrace_make_call(struct dyn_ftrace *rec, unsigned long addr)
+ {
+ 	unsigned long pc = rec->ip;
+ 	u32 old, new;
+-	long offset = (long)pc - (long)addr;
++	long offset = (long)addr - (long)pc;
+ 
+ 	if (offset < -SZ_128M || offset >= SZ_128M) {
+ 		struct module *mod;
+@@ -183,7 +183,7 @@ int ftrace_make_nop(struct module *mod, struct dyn_ftrace *rec,
+ 	unsigned long pc = rec->ip;
+ 	bool validate = true;
+ 	u32 old = 0, new;
+-	long offset = (long)pc - (long)addr;
++	long offset = (long)addr - (long)pc;
+ 
+ 	if (offset < -SZ_128M || offset >= SZ_128M) {
+ 		u32 replaced;

@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+Date: Thu, 2 Jun 2022 17:21:15 +0100
+Subject: [PATCH] ASoC: cs35l36: Update digital volume TLV
+
+[ Upstream commit 5005a2345825eb8346546d99bfe669f73111b5c5 ]
+
+The digital volume TLV specifies the step as 0.25dB but the actual step
+of the control is 0.125dB. Update the TLV to correct this.
+
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+Link: https://lore.kernel.org/r/20220602162119.3393857-3-ckeepax@opensource.cirrus.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/codecs/cs35l36.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/cs35l36.c b/sound/soc/codecs/cs35l36.c
+index d83c1b318c1c46f76f82e4bc723d05e4a5fb063e..0accdb45ed7276df78dacdfc3ff38cfbff7681bb 100644
+--- a/sound/soc/codecs/cs35l36.c
++++ b/sound/soc/codecs/cs35l36.c
+@@ -444,7 +444,8 @@ static bool cs35l36_volatile_reg(struct device *dev, unsigned int reg)
+ 	}
+ }
+ 
+-static DECLARE_TLV_DB_SCALE(dig_vol_tlv, -10200, 25, 0);
++static const DECLARE_TLV_DB_RANGE(dig_vol_tlv, 0, 912,
++				  TLV_DB_MINMAX_ITEM(-10200, 1200));
+ static DECLARE_TLV_DB_SCALE(amp_gain_tlv, 0, 1, 1);
+ 
+ static const char * const cs35l36_pcm_sftramp_text[] =  {

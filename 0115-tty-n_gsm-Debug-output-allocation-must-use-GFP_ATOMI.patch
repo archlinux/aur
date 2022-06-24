@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tony Lindgren <tony@atomide.com>
+Date: Mon, 23 May 2022 18:50:52 +0300
+Subject: [PATCH] tty: n_gsm: Debug output allocation must use GFP_ATOMIC
+
+commit e74024b2eccbb784824a0f9feaeaaa3b47514b79 upstream.
+
+Dan Carpenter <dan.carpenter@oracle.com> reported the following Smatch
+warning:
+
+drivers/tty/n_gsm.c:720 gsm_data_kick()
+warn: sleeping in atomic context
+
+This is because gsm_control_message() is holding a spin lock so
+gsm_hex_dump_bytes() needs to use GFP_ATOMIC instead of GFP_KERNEL.
+
+Fixes: 925ea0fa5277 ("tty: n_gsm: Fix packet data hex dump output")
+Cc: stable <stable@kernel.org>
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Reviewed-by: Gregory CLEMENT <gregory.clement@bootlin.com>
+Signed-off-by: Tony Lindgren <tony@atomide.com>
+Link: https://lore.kernel.org/r/20220523155052.57129-1-tony@atomide.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/tty/n_gsm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/tty/n_gsm.c b/drivers/tty/n_gsm.c
+index ea5381dedb07ca257cb473c78049ba7efd464389..9f2a8c0e1e3345033f6831633aef80523d50562c 100644
+--- a/drivers/tty/n_gsm.c
++++ b/drivers/tty/n_gsm.c
+@@ -455,7 +455,7 @@ static void gsm_hex_dump_bytes(const char *fname, const u8 *data,
+ 		return;
+ 	}
+ 
+-	prefix = kasprintf(GFP_KERNEL, "%s: ", fname);
++	prefix = kasprintf(GFP_ATOMIC, "%s: ", fname);
+ 	if (!prefix)
+ 		return;
+ 	print_hex_dump(KERN_INFO, prefix, DUMP_PREFIX_OFFSET, 16, 1, data, len,

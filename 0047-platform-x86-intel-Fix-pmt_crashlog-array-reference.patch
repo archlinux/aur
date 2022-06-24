@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: David Arcari <darcari@redhat.com>
+Date: Thu, 26 May 2022 16:31:40 -0400
+Subject: [PATCH] platform/x86/intel: Fix pmt_crashlog array reference
+
+[ Upstream commit 66cb3a2d7ad0d0e9af4d3430a4f2a32ffb9ac098 ]
+
+The probe function pmt_crashlog_probe() may incorrectly reference
+the 'priv->entry array' as it uses 'i' to reference the array instead
+of 'priv->num_entries' as it should.  This is similar to the problem
+that was addressed in pmt_telemetry_probe via commit 2cdfa0c20d58
+("platform/x86/intel: Fix 'rmmod pmt_telemetry' panic").
+
+Cc: "David E. Box" <david.e.box@linux.intel.com>
+Cc: Hans de Goede <hdegoede@redhat.com>
+Cc: Mark Gross <markgross@kernel.org>
+Cc: linux-kernel@vger.kernel.org
+Signed-off-by: David Arcari <darcari@redhat.com>
+Reviewed-by: David E. Box <david.e.box@linux.intel.com>
+Link: https://lore.kernel.org/r/20220526203140.339120-1-darcari@redhat.com
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/intel/pmt/crashlog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/intel/pmt/crashlog.c b/drivers/platform/x86/intel/pmt/crashlog.c
+index 34daf9df168b11c3b0aeee100ba5a749cbd56a35..ace1239bc0a0bfd5e091d91f500c4f46c82503ce 100644
+--- a/drivers/platform/x86/intel/pmt/crashlog.c
++++ b/drivers/platform/x86/intel/pmt/crashlog.c
+@@ -282,7 +282,7 @@ static int pmt_crashlog_probe(struct auxiliary_device *auxdev,
+ 	auxiliary_set_drvdata(auxdev, priv);
+ 
+ 	for (i = 0; i < intel_vsec_dev->num_resources; i++) {
+-		struct intel_pmt_entry *entry = &priv->entry[i].entry;
++		struct intel_pmt_entry *entry = &priv->entry[priv->num_entries].entry;
+ 
+ 		ret = intel_pmt_dev_create(entry, &pmt_crashlog_ns, intel_vsec_dev, i);
+ 		if (ret < 0)

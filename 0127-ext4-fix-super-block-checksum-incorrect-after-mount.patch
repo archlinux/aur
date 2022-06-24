@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ye Bin <yebin10@huawei.com>
+Date: Wed, 25 May 2022 09:29:04 +0800
+Subject: [PATCH] ext4: fix super block checksum incorrect after mount
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit 9b6641dd95a0c441b277dd72ba22fed8d61f76ad upstream.
+
+We got issue as follows:
+[home]# mount  /dev/sda  test
+EXT4-fs (sda): warning: mounting fs with errors, running e2fsck is recommended
+[home]# dmesg
+EXT4-fs (sda): warning: mounting fs with errors, running e2fsck is recommended
+EXT4-fs (sda): Errors on filesystem, clearing orphan list.
+EXT4-fs (sda): recovery complete
+EXT4-fs (sda): mounted filesystem with ordered data mode. Quota mode: none.
+[home]# debugfs /dev/sda
+debugfs 1.46.5 (30-Dec-2021)
+Checksum errors in superblock!  Retrying...
+
+Reason is ext4_orphan_cleanup will reset ‘s_last_orphan’ but not update
+super block checksum.
+
+To solve above issue, defer update super block checksum after
+ext4_orphan_cleanup.
+
+Signed-off-by: Ye Bin <yebin10@huawei.com>
+Cc: stable@kernel.org
+Reviewed-by: Jan Kara <jack@suse.cz>
+Reviewed-by: Ritesh Harjani <ritesh.list@gmail.com>
+Link: https://lore.kernel.org/r/20220525012904.1604737-1-yebin10@huawei.com
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/super.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/fs/ext4/super.c b/fs/ext4/super.c
+index a0c79304f92ff6e7ca319122d867e654439bd113..552285de2c7b0161838f7d34a7c9bfee20e51d5f 100644
+--- a/fs/ext4/super.c
++++ b/fs/ext4/super.c
+@@ -5422,14 +5422,6 @@ static int __ext4_fill_super(struct fs_context *fc, struct super_block *sb)
+ 		err = percpu_counter_init(&sbi->s_freeinodes_counter, freei,
+ 					  GFP_KERNEL);
+ 	}
+-	/*
+-	 * Update the checksum after updating free space/inode
+-	 * counters.  Otherwise the superblock can have an incorrect
+-	 * checksum in the buffer cache until it is written out and
+-	 * e2fsprogs programs trying to open a file system immediately
+-	 * after it is mounted can fail.
+-	 */
+-	ext4_superblock_csum_set(sb);
+ 	if (!err)
+ 		err = percpu_counter_init(&sbi->s_dirs_counter,
+ 					  ext4_count_dirs(sb), GFP_KERNEL);
+@@ -5487,6 +5479,14 @@ static int __ext4_fill_super(struct fs_context *fc, struct super_block *sb)
+ 	EXT4_SB(sb)->s_mount_state |= EXT4_ORPHAN_FS;
+ 	ext4_orphan_cleanup(sb, es);
+ 	EXT4_SB(sb)->s_mount_state &= ~EXT4_ORPHAN_FS;
++	/*
++	 * Update the checksum after updating free space/inode counters and
++	 * ext4_orphan_cleanup. Otherwise the superblock can have an incorrect
++	 * checksum in the buffer cache until it is written out and
++	 * e2fsprogs programs trying to open a file system immediately
++	 * after it is mounted can fail.
++	 */
++	ext4_superblock_csum_set(sb);
+ 	if (needs_recovery) {
+ 		ext4_msg(sb, KERN_INFO, "recovery complete");
+ 		err = ext4_mark_recovery_complete(sb, es);

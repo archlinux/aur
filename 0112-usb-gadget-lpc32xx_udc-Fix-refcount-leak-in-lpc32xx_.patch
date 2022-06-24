@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Miaoqian Lin <linmq006@gmail.com>
+Date: Fri, 3 Jun 2022 18:02:44 +0400
+Subject: [PATCH] usb: gadget: lpc32xx_udc: Fix refcount leak in
+ lpc32xx_udc_probe
+
+commit 4757c9ade34178b351580133771f510b5ffcf9c8 upstream.
+
+of_parse_phandle() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+Add missing of_node_put() to avoid refcount leak.
+of_node_put() will check NULL pointer.
+
+Fixes: 24a28e428351 ("USB: gadget driver for LPC32xx")
+Cc: stable <stable@kernel.org>
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Link: https://lore.kernel.org/r/20220603140246.64529-1-linmq006@gmail.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/gadget/udc/lpc32xx_udc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usb/gadget/udc/lpc32xx_udc.c b/drivers/usb/gadget/udc/lpc32xx_udc.c
+index 6117ae8e7242beac495279574a05716e3fdee294..cea10cdb83ae502ccc15ed5eabf74577e9120eee 100644
+--- a/drivers/usb/gadget/udc/lpc32xx_udc.c
++++ b/drivers/usb/gadget/udc/lpc32xx_udc.c
+@@ -3016,6 +3016,7 @@ static int lpc32xx_udc_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	udc->isp1301_i2c_client = isp1301_get_client(isp1301_node);
++	of_node_put(isp1301_node);
+ 	if (!udc->isp1301_i2c_client) {
+ 		return -EPROBE_DEFER;
+ 	}

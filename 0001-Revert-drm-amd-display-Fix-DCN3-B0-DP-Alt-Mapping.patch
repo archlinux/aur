@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Stylon Wang <stylon.wang@amd.com>
+Date: Wed, 4 May 2022 18:09:44 +0800
+Subject: [PATCH] Revert "drm/amd/display: Fix DCN3 B0 DP Alt Mapping"
+
+commit 1039188806d4cfdf9c412bb4ddb51b4d8cd15478 upstream.
+
+This reverts commit 4b7786d87fb3adf3e534c4f1e4f824d8700b786b.
+
+Commit 4b7786d87fb3 ("drm/amd/display: Fix DCN3 B0 DP Alt Mapping")
+is causing 2nd USB-C display not lighting up.
+Phy id remapping is done differently than is assumed in this
+patch.
+
+Signed-off-by: Stylon Wang <stylon.wang@amd.com>
+Reviewed-by: Nicholas Kazlauskas <Nicholas.Kazlauskas@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: "Limonciello, Mario" <Mario.Limonciello@amd.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/amd/display/dc/dcn31/dcn31_resource.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_resource.c b/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_resource.c
+index d71e625cc476e87f12689fef58ad4b460255e1f9..559cf10831bea55364fc043399a7e93766606841 100644
+--- a/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_resource.c
++++ b/drivers/gpu/drm/amd/display/dc/dcn31/dcn31_resource.c
+@@ -1392,12 +1392,6 @@ static struct stream_encoder *dcn31_stream_encoder_create(
+ 		return NULL;
+ 	}
+ 
+-	if (ctx->asic_id.chip_family == FAMILY_YELLOW_CARP &&
+-			ctx->asic_id.hw_internal_rev == YELLOW_CARP_B0) {
+-		if ((eng_id == ENGINE_ID_DIGC) || (eng_id == ENGINE_ID_DIGD))
+-			eng_id = eng_id + 3; // For B0 only. C->F, D->G.
+-	}
+-
+ 	dcn30_dio_stream_encoder_construct(enc1, ctx, ctx->dc_bios,
+ 					eng_id, vpg, afmt,
+ 					&stream_enc_regs[eng_id],

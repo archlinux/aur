@@ -1,0 +1,115 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Thu, 9 Jun 2022 10:11:12 -0700
+Subject: [PATCH] gcc-12: disable '-Warray-bounds' universally for now
+
+[ Upstream commit f0be87c42cbd341d436d06da4792e6b0c83c3aeb ]
+
+In commit 8b202ee21839 ("s390: disable -Warray-bounds") the s390 people
+disabled the '-Warray-bounds' warning for gcc-12, because the new logic
+in gcc would cause warnings for their use of the S390_lowcore macro,
+which accesses absolute pointers.
+
+It turns out gcc-12 has many other issues in this area, so this takes
+that s390 warning disable logic, and turns it into a kernel build config
+entry instead.
+
+Part of the intent is that we can make this all much more targeted, and
+use this conflig flag to disable it in only particular configurations
+that cause problems, with the s390 case as an example:
+
+        select GCC12_NO_ARRAY_BOUNDS
+
+and we could do that for other configuration cases that cause issues.
+
+Or we could possibly use the CONFIG_CC_NO_ARRAY_BOUNDS thing in a more
+targeted way, and disable the warning only for particular uses: again
+the s390 case as an example:
+
+  KBUILD_CFLAGS_DECOMPRESSOR += $(if $(CONFIG_CC_NO_ARRAY_BOUNDS),-Wno-array-bounds)
+
+but this ends up just doing it globally in the top-level Makefile, since
+the current issues are spread fairly widely all over:
+
+  KBUILD_CFLAGS-$(CONFIG_CC_NO_ARRAY_BOUNDS) += -Wno-array-bounds
+
+We'll try to limit this later, since the gcc-12 problems are rare enough
+that *much* of the kernel can be built with it without disabling this
+warning.
+
+Cc: Kees Cook <keescook@chromium.org>
+Cc: Nathan Chancellor <nathan@kernel.org>
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ Makefile           |  1 +
+ arch/s390/Kconfig  |  1 +
+ arch/s390/Makefile | 10 +---------
+ init/Kconfig       |  9 +++++++++
+ 4 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 476cbe751b175df24795eb7ae23bc0cac2e80a46..d19e3b425bd68656015fcafb0ff008e3e3491578 100644
+--- a/Makefile
++++ b/Makefile
+@@ -787,6 +787,7 @@ stackp-flags-$(CONFIG_STACKPROTECTOR_STRONG)      := -fstack-protector-strong
+ KBUILD_CFLAGS += $(stackp-flags-y)
+ 
+ KBUILD_CFLAGS-$(CONFIG_WERROR) += -Werror
++KBUILD_CFLAGS-$(CONFIG_CC_NO_ARRAY_BOUNDS) += -Wno-array-bounds
+ KBUILD_CFLAGS += $(KBUILD_CFLAGS-y) $(CONFIG_CC_IMPLICIT_FALLTHROUGH)
+ 
+ ifdef CONFIG_CC_IS_CLANG
+diff --git a/arch/s390/Kconfig b/arch/s390/Kconfig
+index e084c72104f86f55dad91577800b8952366494c2..359b0cc0dc35d935a79b68ff520dbebf882b7734 100644
+--- a/arch/s390/Kconfig
++++ b/arch/s390/Kconfig
+@@ -125,6 +125,7 @@ config S390
+ 	select CLONE_BACKWARDS2
+ 	select DMA_OPS if PCI
+ 	select DYNAMIC_FTRACE if FUNCTION_TRACER
++	select GCC12_NO_ARRAY_BOUNDS
+ 	select GENERIC_ALLOCATOR
+ 	select GENERIC_CPU_AUTOPROBE
+ 	select GENERIC_CPU_VULNERABILITIES
+diff --git a/arch/s390/Makefile b/arch/s390/Makefile
+index df325eacf62d261b8b0f97711120cf4ae7acc73f..eba70d585cb2c09381ffbd9ff28b0884dc00c92c 100644
+--- a/arch/s390/Makefile
++++ b/arch/s390/Makefile
+@@ -30,15 +30,7 @@ KBUILD_CFLAGS_DECOMPRESSOR += -fno-stack-protector
+ KBUILD_CFLAGS_DECOMPRESSOR += $(call cc-disable-warning, address-of-packed-member)
+ KBUILD_CFLAGS_DECOMPRESSOR += $(if $(CONFIG_DEBUG_INFO),-g)
+ KBUILD_CFLAGS_DECOMPRESSOR += $(if $(CONFIG_DEBUG_INFO_DWARF4), $(call cc-option, -gdwarf-4,))
+-
+-ifdef CONFIG_CC_IS_GCC
+-	ifeq ($(call cc-ifversion, -ge, 1200, y), y)
+-		ifeq ($(call cc-ifversion, -lt, 1300, y), y)
+-			KBUILD_CFLAGS += $(call cc-disable-warning, array-bounds)
+-			KBUILD_CFLAGS_DECOMPRESSOR += $(call cc-disable-warning, array-bounds)
+-		endif
+-	endif
+-endif
++KBUILD_CFLAGS_DECOMPRESSOR += $(if $(CONFIG_CC_NO_ARRAY_BOUNDS),-Wno-array-bounds)
+ 
+ UTS_MACHINE	:= s390x
+ STACK_SIZE	:= $(if $(CONFIG_KASAN),65536,16384)
+diff --git a/init/Kconfig b/init/Kconfig
+index b19e2eeaae80370702bbf24f789ab664d8886bcb..fa63cc019ebfce73729fa5f970dd1b01fe6b1f3a 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -899,6 +899,15 @@ config CC_IMPLICIT_FALLTHROUGH
+ 	default "-Wimplicit-fallthrough=5" if CC_IS_GCC && $(cc-option,-Wimplicit-fallthrough=5)
+ 	default "-Wimplicit-fallthrough" if CC_IS_CLANG && $(cc-option,-Wunreachable-code-fallthrough)
+ 
++# Currently, disable gcc-12 array-bounds globally.
++# We may want to target only particular configurations some day.
++config GCC12_NO_ARRAY_BOUNDS
++	def_bool y
++
++config CC_NO_ARRAY_BOUNDS
++	bool
++	default y if CC_IS_GCC && GCC_VERSION >= 120000 && GCC_VERSION < 130000 && GCC12_NO_ARRAY_BOUNDS
++
+ #
+ # For architectures that know their GCC __int128 support is sound
+ #

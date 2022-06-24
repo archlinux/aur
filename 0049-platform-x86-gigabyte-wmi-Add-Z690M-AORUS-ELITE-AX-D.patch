@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Piotr Chmura <chmooreck@gmail.com>
+Date: Mon, 6 Jun 2022 19:15:13 +0200
+Subject: [PATCH] platform/x86: gigabyte-wmi: Add Z690M AORUS ELITE AX DDR4
+ support
+
+[ Upstream commit 8a041afe3e774bedd3e0a9b96f65e48a1299a595 ]
+
+Add dmi_system_id of Gigabyte Z690M AORUS ELITE AX DDR4 board.
+Tested on my PC.
+
+Signed-off-by: Piotr Chmura <chmooreck@gmail.com>
+Link: https://lore.kernel.org/r/bd83567e-ebf5-0b31-074b-5f6dc7f7c147@gmail.com
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/gigabyte-wmi.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/platform/x86/gigabyte-wmi.c b/drivers/platform/x86/gigabyte-wmi.c
+index e87a931eab1e72c1c864fd0edf038eb03077e8bd..05588a47ac3845c7dd39f97c236957f205a42670 100644
+--- a/drivers/platform/x86/gigabyte-wmi.c
++++ b/drivers/platform/x86/gigabyte-wmi.c
+@@ -154,6 +154,7 @@ static const struct dmi_system_id gigabyte_wmi_known_working_platforms[] = {
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("X570 GAMING X"),
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("X570 I AORUS PRO WIFI"),
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("X570 UD"),
++	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("Z690M AORUS ELITE AX DDR4"),
+ 	{ }
+ };
+ 

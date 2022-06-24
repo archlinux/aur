@@ -1,0 +1,74 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Zhang Yi <yi.zhang@huawei.com>
+Date: Wed, 1 Jun 2022 17:27:17 +0800
+Subject: [PATCH] ext4: add reserved GDT blocks check
+
+commit b55c3cd102a6f48b90e61c44f7f3dda8c290c694 upstream.
+
+We capture a NULL pointer issue when resizing a corrupt ext4 image which
+is freshly clear resize_inode feature (not run e2fsck). It could be
+simply reproduced by following steps. The problem is because of the
+resize_inode feature was cleared, and it will convert the filesystem to
+meta_bg mode in ext4_resize_fs(), but the es->s_reserved_gdt_blocks was
+not reduced to zero, so could we mistakenly call reserve_backup_gdb()
+and passing an uninitialized resize_inode to it when adding new group
+descriptors.
+
+ mkfs.ext4 /dev/sda 3G
+ tune2fs -O ^resize_inode /dev/sda #forget to run requested e2fsck
+ mount /dev/sda /mnt
+ resize2fs /dev/sda 8G
+
+ ========
+ BUG: kernel NULL pointer dereference, address: 0000000000000028
+ CPU: 19 PID: 3243 Comm: resize2fs Not tainted 5.18.0-rc7-00001-gfde086c5ebfd #748
+ ...
+ RIP: 0010:ext4_flex_group_add+0xe08/0x2570
+ ...
+ Call Trace:
+  <TASK>
+  ext4_resize_fs+0xbec/0x1660
+  __ext4_ioctl+0x1749/0x24e0
+  ext4_ioctl+0x12/0x20
+  __x64_sys_ioctl+0xa6/0x110
+  do_syscall_64+0x3b/0x90
+  entry_SYSCALL_64_after_hwframe+0x44/0xae
+ RIP: 0033:0x7f2dd739617b
+ ========
+
+The fix is simple, add a check in ext4_resize_begin() to make sure that
+the es->s_reserved_gdt_blocks is zero when the resize_inode feature is
+disabled.
+
+Cc: stable@kernel.org
+Signed-off-by: Zhang Yi <yi.zhang@huawei.com>
+Reviewed-by: Ritesh Harjani <ritesh.list@gmail.com>
+Reviewed-by: Jan Kara <jack@suse.cz>
+Link: https://lore.kernel.org/r/20220601092717.763694-1-yi.zhang@huawei.com
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/resize.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/fs/ext4/resize.c b/fs/ext4/resize.c
+index 90a941d20dfff0d2634027c945eaa8859201266f..8b70a470129314f2c5af9b5768c0ec56379b2f1e 100644
+--- a/fs/ext4/resize.c
++++ b/fs/ext4/resize.c
+@@ -53,6 +53,16 @@ int ext4_resize_begin(struct super_block *sb)
+ 	if (!capable(CAP_SYS_RESOURCE))
+ 		return -EPERM;
+ 
++	/*
++	 * If the reserved GDT blocks is non-zero, the resize_inode feature
++	 * should always be set.
++	 */
++	if (EXT4_SB(sb)->s_es->s_reserved_gdt_blocks &&
++	    !ext4_has_feature_resize_inode(sb)) {
++		ext4_error(sb, "resize_inode disabled but reserved GDT blocks non-zero");
++		return -EFSCORRUPTED;
++	}
++
+ 	/*
+ 	 * If we are not using the primary superblock/GDT copy don't resize,
+          * because the user tools have no way of handling this.  Probably a

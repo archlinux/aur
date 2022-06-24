@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Miaoqian Lin <linmq006@gmail.com>
+Date: Wed, 1 Jun 2022 12:09:26 +0400
+Subject: [PATCH] irqchip/apple-aic: Fix refcount leak in build_fiq_affinity
+
+[ Upstream commit b1ac803f47cb1615468f35cf1ccb553c52087301 ]
+
+of_find_node_by_phandle() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+Add missing of_node_put() to avoid refcount leak.
+
+Fixes: a5e8801202b3 ("irqchip/apple-aic: Parse FIQ affinities from device-tree")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Link: https://lore.kernel.org/r/20220601080930.31005-3-linmq006@gmail.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/irqchip/irq-apple-aic.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/irqchip/irq-apple-aic.c b/drivers/irqchip/irq-apple-aic.c
+index 12dd48727a15f6ea87a2d04a8656b438e5575eff..478d0af16d9fa95f7e5d58260c0f1e369b82d0ed 100644
+--- a/drivers/irqchip/irq-apple-aic.c
++++ b/drivers/irqchip/irq-apple-aic.c
+@@ -1035,6 +1035,7 @@ static void build_fiq_affinity(struct aic_irq_chip *ic, struct device_node *aff)
+ 			continue;
+ 
+ 		cpu = of_cpu_node_to_id(cpu_node);
++		of_node_put(cpu_node);
+ 		if (WARN_ON(cpu < 0))
+ 			continue;
+ 

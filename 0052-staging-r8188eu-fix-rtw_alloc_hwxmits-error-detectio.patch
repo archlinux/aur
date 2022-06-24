@@ -1,0 +1,67 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Phillip Potter <phil@philpotter.co.uk>
+Date: Sat, 21 May 2022 21:47:41 +0100
+Subject: [PATCH] staging: r8188eu: fix rtw_alloc_hwxmits error detection for
+ now
+
+[ Upstream commit 5b7419ae1d208cab1e2826d473d8dab045aa75c7 ]
+
+In _rtw_init_xmit_priv, we use the res variable to store the error
+return from the newly converted rtw_alloc_hwxmits function. Sadly, the
+calling function interprets res using _SUCCESS and _FAIL still, meaning
+we change the semantics of the variable, even in the success case.
+
+This leads to the following on boot:
+r8188eu 1-2:1.0: _rtw_init_xmit_priv failed
+
+In the long term, we should reverse these semantics, but for now, this
+fixes the driver. Also, inside rtw_alloc_hwxmits remove the if blocks,
+as HWXMIT_ENTRY is always 4.
+
+Fixes: f94b47c6bde6 ("staging: r8188eu: add check for kzalloc")
+Signed-off-by: Phillip Potter <phil@philpotter.co.uk>
+Link: https://lore.kernel.org/r/20220521204741.921-1-phil@philpotter.co.uk
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/r8188eu/core/rtw_xmit.c | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/staging/r8188eu/core/rtw_xmit.c b/drivers/staging/r8188eu/core/rtw_xmit.c
+index 2ee92bbe66a08d99e23c7a2c28dd6031dde46455..ea5c88904961d2d887c3ee2d83cd786cad08c6f5 100644
+--- a/drivers/staging/r8188eu/core/rtw_xmit.c
++++ b/drivers/staging/r8188eu/core/rtw_xmit.c
+@@ -178,8 +178,7 @@ s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 
+ 	pxmitpriv->free_xmit_extbuf_cnt = num_xmit_extbuf;
+ 
+-	res = rtw_alloc_hwxmits(padapter);
+-	if (res) {
++	if (rtw_alloc_hwxmits(padapter)) {
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
+@@ -1492,19 +1491,10 @@ int rtw_alloc_hwxmits(struct adapter *padapter)
+ 
+ 	hwxmits = pxmitpriv->hwxmits;
+ 
+-	if (pxmitpriv->hwxmit_entry == 5) {
+-		hwxmits[0] .sta_queue = &pxmitpriv->bm_pending;
+-		hwxmits[1] .sta_queue = &pxmitpriv->vo_pending;
+-		hwxmits[2] .sta_queue = &pxmitpriv->vi_pending;
+-		hwxmits[3] .sta_queue = &pxmitpriv->bk_pending;
+-		hwxmits[4] .sta_queue = &pxmitpriv->be_pending;
+-	} else if (pxmitpriv->hwxmit_entry == 4) {
+-		hwxmits[0] .sta_queue = &pxmitpriv->vo_pending;
+-		hwxmits[1] .sta_queue = &pxmitpriv->vi_pending;
+-		hwxmits[2] .sta_queue = &pxmitpriv->be_pending;
+-		hwxmits[3] .sta_queue = &pxmitpriv->bk_pending;
+-	} else {
+-	}
++	hwxmits[0].sta_queue = &pxmitpriv->vo_pending;
++	hwxmits[1].sta_queue = &pxmitpriv->vi_pending;
++	hwxmits[2].sta_queue = &pxmitpriv->be_pending;
++	hwxmits[3].sta_queue = &pxmitpriv->bk_pending;
+ 
+ 	return 0;
+ }

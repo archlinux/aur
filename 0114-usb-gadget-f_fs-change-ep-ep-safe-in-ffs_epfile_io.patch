@@ -1,0 +1,50 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Linyu Yuan <quic_linyyuan@quicinc.com>
+Date: Fri, 10 Jun 2022 20:17:58 +0800
+Subject: [PATCH] usb: gadget: f_fs: change ep->ep safe in ffs_epfile_io()
+
+commit 0698f0209d8032e8869525aeb68f65ee7fde12ad upstream.
+
+In ffs_epfile_io(), when read/write data in blocking mode, it will wait
+the completion in interruptible mode, if task receive a signal, it will
+terminate the wait, at same time, if function unbind occurs,
+ffs_func_unbind() will kfree all eps, ffs_epfile_io() still try to
+dequeue request by dereferencing ep which may become invalid.
+
+Fix it by add ep spinlock and will not dereference ep if it is not valid.
+
+Cc: <stable@vger.kernel.org> # 5.15
+Reported-by: Michael Wu <michael@allwinnertech.com>
+Tested-by: Michael Wu <michael@allwinnertech.com>
+Reviewed-by: John Keeping <john@metanate.com>
+Signed-off-by: Linyu Yuan <quic_linyyuan@quicinc.com>
+Link: https://lore.kernel.org/r/1654863478-26228-3-git-send-email-quic_linyyuan@quicinc.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/gadget/function/f_fs.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+index e1fcd8bc80a14c01361f34d4ce9c641c7a5a1106..e0fa4b186ec6d21e037eeb76737b49c09c3ee88a 100644
+--- a/drivers/usb/gadget/function/f_fs.c
++++ b/drivers/usb/gadget/function/f_fs.c
+@@ -1080,6 +1080,11 @@ static ssize_t ffs_epfile_io(struct file *file, struct ffs_io_data *io_data)
+ 		spin_unlock_irq(&epfile->ffs->eps_lock);
+ 
+ 		if (wait_for_completion_interruptible(&io_data->done)) {
++			spin_lock_irq(&epfile->ffs->eps_lock);
++			if (epfile->ep != ep) {
++				ret = -ESHUTDOWN;
++				goto error_lock;
++			}
+ 			/*
+ 			 * To avoid race condition with ffs_epfile_io_complete,
+ 			 * dequeue the request first then check
+@@ -1087,6 +1092,7 @@ static ssize_t ffs_epfile_io(struct file *file, struct ffs_io_data *io_data)
+ 			 * condition with req->complete callback.
+ 			 */
+ 			usb_ep_dequeue(ep->ep, req);
++			spin_unlock_irq(&epfile->ffs->eps_lock);
+ 			wait_for_completion(&io_data->done);
+ 			interrupted = io_data->status < 0;
+ 		}

@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Stephan Gerhold <stephan@gerhold.net>
+Date: Sat, 28 May 2022 19:09:13 +0200
+Subject: [PATCH] usb: dwc3: pci: Restore line lost in merge conflict
+ resolution
+
+commit 7ddda2614d62ef7fdef7fd85f5151cdf665b22d8 upstream.
+
+Commit 582ab24e096f ("usb: dwc3: pci: Set "linux,phy_charger_detect"
+property on some Bay Trail boards") added a new swnode similar to the
+existing ones for boards where the PHY handles charger detection.
+
+Unfortunately, the "linux,sysdev_is_parent" property got lost in the
+merge conflict resolution of commit ca9400ef7f67 ("Merge 5.17-rc6 into
+usb-next"). Now dwc3_pci_intel_phy_charger_detect_properties is the
+only swnode in dwc3-pci that is missing "linux,sysdev_is_parent".
+
+It does not seem to cause any obvious functional issues, but it's
+certainly unintended so restore the line to make the properties
+consistent again.
+
+Fixes: ca9400ef7f67 ("Merge 5.17-rc6 into usb-next")
+Cc: stable@vger.kernel.org
+Signed-off-by: Stephan Gerhold <stephan@gerhold.net>
+Link: https://lore.kernel.org/r/20220528170913.9240-1-stephan@gerhold.net
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/dwc3/dwc3-pci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usb/dwc3/dwc3-pci.c b/drivers/usb/dwc3/dwc3-pci.c
+index ba51de7dd7605cf725119ec0ff6abfa434510cc3..6b018048fe2e15b9a11aa907db76773771c32b28 100644
+--- a/drivers/usb/dwc3/dwc3-pci.c
++++ b/drivers/usb/dwc3/dwc3-pci.c
+@@ -127,6 +127,7 @@ static const struct property_entry dwc3_pci_intel_phy_charger_detect_properties[
+ 	PROPERTY_ENTRY_STRING("dr_mode", "peripheral"),
+ 	PROPERTY_ENTRY_BOOL("snps,dis_u2_susphy_quirk"),
+ 	PROPERTY_ENTRY_BOOL("linux,phy_charger_detect"),
++	PROPERTY_ENTRY_BOOL("linux,sysdev_is_parent"),
+ 	{}
+ };
+ 

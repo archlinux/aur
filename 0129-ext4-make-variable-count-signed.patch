@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ding Xiang <dingxiang@cmss.chinamobile.com>
+Date: Mon, 30 May 2022 18:00:47 +0800
+Subject: [PATCH] ext4: make variable "count" signed
+
+commit bc75a6eb856cb1507fa907bf6c1eda91b3fef52f upstream.
+
+Since dx_make_map() may return -EFSCORRUPTED now, so change "count" to
+be a signed integer so we can correctly check for an error code returned
+by dx_make_map().
+
+Fixes: 46c116b920eb ("ext4: verify dir block before splitting it")
+Cc: stable@kernel.org
+Signed-off-by: Ding Xiang <dingxiang@cmss.chinamobile.com>
+Link: https://lore.kernel.org/r/20220530100047.537598-1-dingxiang@cmss.chinamobile.com
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ fs/ext4/namei.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/fs/ext4/namei.c b/fs/ext4/namei.c
+index e9cba12e5e1282e48044ca03ef3d8726a801e8d6..4f0420b1ff3ecc6889dbf7ecbfd2debc4d4b4cb6 100644
+--- a/fs/ext4/namei.c
++++ b/fs/ext4/namei.c
+@@ -1929,7 +1929,8 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
+ 			struct dx_hash_info *hinfo)
+ {
+ 	unsigned blocksize = dir->i_sb->s_blocksize;
+-	unsigned count, continued;
++	unsigned continued;
++	int count;
+ 	struct buffer_head *bh2;
+ 	ext4_lblk_t newblock;
+ 	u32 hash2;

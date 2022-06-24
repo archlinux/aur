@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Date: Fri, 29 Apr 2022 14:40:23 +0200
+Subject: [PATCH] i40e: Fix calculating the number of queue pairs
+
+[ Upstream commit 0bb050670ac90a167ecfa3f9590f92966c9a3677 ]
+
+If ADQ is enabled for a VF, then actual number of queue pair
+is a number of currently available traffic classes for this VF.
+
+Without this change the configuration of the Rx/Tx queues
+fails with error.
+
+Fixes: d29e0d233e0d ("i40e: missing input validation on VF message handling by the PF")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Tested-by: Bharathi Sreenivas <bharathi.sreenivas@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 2606e8f0f19be4764d48ec0cbe28850e3735d5d3..033ea71763e3de4437800fc83a5e9366107ef7da 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2282,7 +2282,7 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	if (vf->adq_enabled) {
+-		for (i = 0; i < I40E_MAX_VF_VSI; i++)
++		for (i = 0; i < vf->num_tc; i++)
+ 			num_qps_all += vf->ch[i].num_qps;
+ 		if (num_qps_all != qci->num_queue_pairs) {
+ 			aq_ret = I40E_ERR_PARAM;

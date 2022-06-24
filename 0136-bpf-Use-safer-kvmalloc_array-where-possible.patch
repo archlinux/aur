@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Thu, 26 May 2022 13:24:05 +0300
+Subject: [PATCH] bpf: Use safer kvmalloc_array() where possible
+
+commit fd58f7df2415ef747782e01f94880fefad1247cf upstream.
+
+The kvmalloc_array() function is safer because it has a check for
+integer overflows.  These sizes come from the user and I was not
+able to see any bounds checking so an integer overflow seems like a
+realistic concern.
+
+Fixes: 0dcac2725406 ("bpf: Add multi kprobe link")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Link: https://lore.kernel.org/bpf/Yo9VRVMeHbALyjUH@kili
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ kernel/trace/bpf_trace.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/trace/bpf_trace.c b/kernel/trace/bpf_trace.c
+index 6b58fc6813dfc3347d3462dab4c074a38b9a2688..41d0d9657fa196e3a038dc6dfe0a744f5ff9909e 100644
+--- a/kernel/trace/bpf_trace.c
++++ b/kernel/trace/bpf_trace.c
+@@ -2433,7 +2433,7 @@ int bpf_kprobe_multi_link_attach(const union bpf_attr *attr, struct bpf_prog *pr
+ 		return -EINVAL;
+ 
+ 	size = cnt * sizeof(*addrs);
+-	addrs = kvmalloc(size, GFP_KERNEL);
++	addrs = kvmalloc_array(cnt, sizeof(*addrs), GFP_KERNEL);
+ 	if (!addrs)
+ 		return -ENOMEM;
+ 
+@@ -2450,7 +2450,7 @@ int bpf_kprobe_multi_link_attach(const union bpf_attr *attr, struct bpf_prog *pr
+ 
+ 	ucookies = u64_to_user_ptr(attr->link_create.kprobe_multi.cookies);
+ 	if (ucookies) {
+-		cookies = kvmalloc(size, GFP_KERNEL);
++		cookies = kvmalloc_array(cnt, sizeof(*addrs), GFP_KERNEL);
+ 		if (!cookies) {
+ 			err = -ENOMEM;
+ 			goto error;

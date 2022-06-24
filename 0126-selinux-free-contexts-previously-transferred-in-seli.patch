@@ -1,0 +1,86 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christian=20G=C3=B6ttsche?= <cgzones@googlemail.com>
+Date: Wed, 15 Jun 2022 17:38:39 +0200
+Subject: [PATCH] selinux: free contexts previously transferred in
+ selinux_add_opt()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit cad140d00899e7a9cb6fe93b282051df589e671c upstream.
+
+`selinux_add_opt()` stopped taking ownership of the passed context since
+commit 70f4169ab421 ("selinux: parse contexts for mount options early").
+
+    unreferenced object 0xffff888114dfd140 (size 64):
+      comm "mount", pid 15182, jiffies 4295687028 (age 796.340s)
+      hex dump (first 32 bytes):
+        73 79 73 74 65 6d 5f 75 3a 6f 62 6a 65 63 74 5f  system_u:object_
+        72 3a 74 65 73 74 5f 66 69 6c 65 73 79 73 74 65  r:test_filesyste
+      backtrace:
+        [<ffffffffa07dbef4>] kmemdup_nul+0x24/0x80
+        [<ffffffffa0d34253>] selinux_sb_eat_lsm_opts+0x293/0x560
+        [<ffffffffa0d13f08>] security_sb_eat_lsm_opts+0x58/0x80
+        [<ffffffffa0af1eb2>] generic_parse_monolithic+0x82/0x180
+        [<ffffffffa0a9c1a5>] do_new_mount+0x1f5/0x550
+        [<ffffffffa0a9eccb>] path_mount+0x2ab/0x1570
+        [<ffffffffa0aa019e>] __x64_sys_mount+0x20e/0x280
+        [<ffffffffa1f47124>] do_syscall_64+0x34/0x80
+        [<ffffffffa200007e>] entry_SYSCALL_64_after_hwframe+0x46/0xb0
+
+    unreferenced object 0xffff888108e71640 (size 64):
+      comm "fsmount", pid 7607, jiffies 4295044974 (age 1601.016s)
+      hex dump (first 32 bytes):
+        73 79 73 74 65 6d 5f 75 3a 6f 62 6a 65 63 74 5f  system_u:object_
+        72 3a 74 65 73 74 5f 66 69 6c 65 73 79 73 74 65  r:test_filesyste
+      backtrace:
+        [<ffffffff861dc2b1>] memdup_user+0x21/0x90
+        [<ffffffff861dc367>] strndup_user+0x47/0xa0
+        [<ffffffff864f6965>] __do_sys_fsconfig+0x485/0x9f0
+        [<ffffffff87940124>] do_syscall_64+0x34/0x80
+        [<ffffffff87a0007e>] entry_SYSCALL_64_after_hwframe+0x46/0xb0
+
+Cc: stable@vger.kernel.org
+Fixes: 70f4169ab421 ("selinux: parse contexts for mount options early")
+Signed-off-by: Christian Göttsche <cgzones@googlemail.com>
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ security/selinux/hooks.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/security/selinux/hooks.c b/security/selinux/hooks.c
+index e9e959343de98db83a35d8b0592fe4129dc5a0c1..cac9368be4ce54d0bb4bcb43060a7144aab5af37 100644
+--- a/security/selinux/hooks.c
++++ b/security/selinux/hooks.c
+@@ -2600,8 +2600,9 @@ static int selinux_sb_eat_lsm_opts(char *options, void **mnt_opts)
+ 				}
+ 			}
+ 			rc = selinux_add_opt(token, arg, mnt_opts);
++			kfree(arg);
++			arg = NULL;
+ 			if (unlikely(rc)) {
+-				kfree(arg);
+ 				goto free_opt;
+ 			}
+ 		} else {
+@@ -2792,17 +2793,13 @@ static int selinux_fs_context_parse_param(struct fs_context *fc,
+ 					  struct fs_parameter *param)
+ {
+ 	struct fs_parse_result result;
+-	int opt, rc;
++	int opt;
+ 
+ 	opt = fs_parse(fc, selinux_fs_parameters, param, &result);
+ 	if (opt < 0)
+ 		return opt;
+ 
+-	rc = selinux_add_opt(opt, param->string, &fc->security);
+-	if (!rc)
+-		param->string = NULL;
+-
+-	return rc;
++	return selinux_add_opt(opt, param->string, &fc->security);
+ }
+ 
+ /* inode security operations */

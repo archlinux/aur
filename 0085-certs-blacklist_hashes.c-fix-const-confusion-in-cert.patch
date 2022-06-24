@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Masahiro Yamada <masahiroy@kernel.org>
+Date: Sun, 12 Jun 2022 02:22:30 +0900
+Subject: [PATCH] certs/blacklist_hashes.c: fix const confusion in certs
+ blacklist
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit 6a1c3767d82ed8233de1263aa7da81595e176087 ]
+
+This file fails to compile as follows:
+
+  CC      certs/blacklist_hashes.o
+certs/blacklist_hashes.c:4:1: error: ignoring attribute ‘section (".init.data")’ because it conflicts with previous ‘section (".init.rodata")’ [-Werror=attributes]
+    4 | const char __initdata *const blacklist_hashes[] = {
+      | ^~~~~
+In file included from certs/blacklist_hashes.c:2:
+certs/blacklist.h:5:38: note: previous declaration here
+    5 | extern const char __initconst *const blacklist_hashes[];
+      |                                      ^~~~~~~~~~~~~~~~
+
+Apply the same fix as commit 2be04df5668d ("certs/blacklist_nohashes.c:
+fix const confusion in certs blacklist").
+
+Fixes: 734114f8782f ("KEYS: Add a system blacklist keyring")
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
+Reviewed-by: Mickaël Salaün <mic@linux.microsoft.com>
+Signed-off-by: Jarkko Sakkinen <jarkko@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ certs/blacklist_hashes.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/certs/blacklist_hashes.c b/certs/blacklist_hashes.c
+index 344892337be0797cc713877ad64014b8cacaec20..d5961aa3d3380c5fdfadd6bff49dddd97c41060d 100644
+--- a/certs/blacklist_hashes.c
++++ b/certs/blacklist_hashes.c
+@@ -1,7 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0
+ #include "blacklist.h"
+ 
+-const char __initdata *const blacklist_hashes[] = {
++const char __initconst *const blacklist_hashes[] = {
+ #include CONFIG_SYSTEM_BLACKLIST_HASH_LIST
+ 	, NULL
+ };

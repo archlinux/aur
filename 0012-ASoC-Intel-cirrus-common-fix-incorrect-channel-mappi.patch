@@ -1,0 +1,99 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: xliu <xiang.liu@cirrus.com>
+Date: Thu, 2 Jun 2022 13:19:22 +0800
+Subject: [PATCH] ASoC: Intel: cirrus-common: fix incorrect channel mapping
+
+[ Upstream commit d69a155555c9d57463b788c400f6b452d976bacd ]
+
+The default mapping of ASPRX1 (DAC source) is slot 0. Change the slot
+mapping of right amplifiers (WR and TR) to slot 1 to receive right
+channel data. Also update the ACPI instance ID mapping according to HW
+configuration.
+
+Signed-off-by: xliu <xiang.liu@cirrus.com>
+Signed-off-by: Brent Lu <brent.lu@intel.com>
+Acked-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Link: https://lore.kernel.org/r/20220602051922.1232457-1-brent.lu@intel.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ sound/soc/intel/boards/sof_cirrus_common.c | 40 +++++++++++++++++++---
+ 1 file changed, 36 insertions(+), 4 deletions(-)
+
+diff --git a/sound/soc/intel/boards/sof_cirrus_common.c b/sound/soc/intel/boards/sof_cirrus_common.c
+index e71d74ec1b0b85cf19c79f5c2dc0e5cf9398127d..f4192df962d60faf89ca1029ee055d028d434875 100644
+--- a/sound/soc/intel/boards/sof_cirrus_common.c
++++ b/sound/soc/intel/boards/sof_cirrus_common.c
+@@ -54,22 +54,29 @@ static struct snd_soc_dai_link_component cs35l41_components[] = {
+ 	},
+ };
+ 
++/*
++ * Mapping between ACPI instance id and speaker position.
++ *
++ * Four speakers:
++ *         0: Tweeter left, 1: Woofer left
++ *         2: Tweeter right, 3: Woofer right
++ */
+ static struct snd_soc_codec_conf cs35l41_codec_conf[] = {
+ 	{
+ 		.dlc = COMP_CODEC_CONF(CS35L41_DEV0_NAME),
+-		.name_prefix = "WL",
++		.name_prefix = "TL",
+ 	},
+ 	{
+ 		.dlc = COMP_CODEC_CONF(CS35L41_DEV1_NAME),
+-		.name_prefix = "WR",
++		.name_prefix = "WL",
+ 	},
+ 	{
+ 		.dlc = COMP_CODEC_CONF(CS35L41_DEV2_NAME),
+-		.name_prefix = "TL",
++		.name_prefix = "TR",
+ 	},
+ 	{
+ 		.dlc = COMP_CODEC_CONF(CS35L41_DEV3_NAME),
+-		.name_prefix = "TR",
++		.name_prefix = "WR",
+ 	},
+ };
+ 
+@@ -101,6 +108,21 @@ static int cs35l41_init(struct snd_soc_pcm_runtime *rtd)
+ 	return ret;
+ }
+ 
++/*
++ * Channel map:
++ *
++ * TL/WL: ASPRX1 on slot 0, ASPRX2 on slot 1 (default)
++ * TR/WR: ASPRX1 on slot 1, ASPRX2 on slot 0
++ */
++static const struct {
++	unsigned int rx[2];
++} cs35l41_channel_map[] = {
++	{.rx = {0, 1}}, /* TL */
++	{.rx = {0, 1}}, /* WL */
++	{.rx = {1, 0}}, /* TR */
++	{.rx = {1, 0}}, /* WR */
++};
++
+ static int cs35l41_hw_params(struct snd_pcm_substream *substream,
+ 			     struct snd_pcm_hw_params *params)
+ {
+@@ -134,6 +156,16 @@ static int cs35l41_hw_params(struct snd_pcm_substream *substream,
+ 				ret);
+ 			return ret;
+ 		}
++
++		/* setup channel map */
++		ret = snd_soc_dai_set_channel_map(codec_dai, 0, NULL,
++						  ARRAY_SIZE(cs35l41_channel_map[i].rx),
++						  (unsigned int *)cs35l41_channel_map[i].rx);
++		if (ret < 0) {
++			dev_err(codec_dai->dev, "fail to set channel map, ret %d\n",
++				ret);
++			return ret;
++		}
+ 	}
+ 
+ 	return 0;

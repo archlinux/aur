@@ -1,0 +1,57 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Will Deacon <will@kernel.org>
+Date: Fri, 10 Jun 2022 16:12:27 +0100
+Subject: [PATCH] arm64: mm: Don't invalidate FROM_DEVICE buffers at start of
+ DMA transfer
+
+commit c50f11c6196f45c92ca48b16a5071615d4ae0572 upstream.
+
+Invalidating the buffer memory in arch_sync_dma_for_device() for
+FROM_DEVICE transfers
+
+When using the streaming DMA API to map a buffer prior to inbound
+non-coherent DMA (i.e. DMA_FROM_DEVICE), we invalidate any dirty CPU
+cachelines so that they will not be written back during the transfer and
+corrupt the buffer contents written by the DMA. This, however, poses two
+potential problems:
+
+  (1) If the DMA transfer does not write to every byte in the buffer,
+      then the unwritten bytes will contain stale data once the transfer
+      has completed.
+
+  (2) If the buffer has a virtual alias in userspace, then stale data
+      may be visible via this alias during the period between performing
+      the cache invalidation and the DMA writes landing in memory.
+
+Address both of these issues by cleaning (aka writing-back) the dirty
+lines in arch_sync_dma_for_device(DMA_FROM_DEVICE) instead of discarding
+them using invalidation.
+
+Cc: Ard Biesheuvel <ardb@kernel.org>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: <stable@vger.kernel.org>
+Link: https://lore.kernel.org/r/20220606152150.GA31568@willie-the-truck
+Signed-off-by: Will Deacon <will@kernel.org>
+Reviewed-by: Ard Biesheuvel <ardb@kernel.org>
+Link: https://lore.kernel.org/r/20220610151228.4562-2-will@kernel.org
+Signed-off-by: Catalin Marinas <catalin.marinas@arm.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ arch/arm64/mm/cache.S | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/mm/cache.S b/arch/arm64/mm/cache.S
+index 0ea6cc25dc66356de86d262cc3d48bb993ec3cd0..21c907987080f60d4b25ef70f438332a6c1c24cc 100644
+--- a/arch/arm64/mm/cache.S
++++ b/arch/arm64/mm/cache.S
+@@ -218,8 +218,6 @@ SYM_FUNC_ALIAS(__dma_flush_area, __pi___dma_flush_area)
+  */
+ SYM_FUNC_START(__pi___dma_map_area)
+ 	add	x1, x0, x1
+-	cmp	w2, #DMA_FROM_DEVICE
+-	b.eq	__pi_dcache_inval_poc
+ 	b	__pi_dcache_clean_poc
+ SYM_FUNC_END(__pi___dma_map_area)
+ SYM_FUNC_ALIAS(__dma_map_area, __pi___dma_map_area)

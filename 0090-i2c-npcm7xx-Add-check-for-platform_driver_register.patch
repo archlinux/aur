@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Date: Thu, 26 May 2022 17:41:00 +0800
+Subject: [PATCH] i2c: npcm7xx: Add check for platform_driver_register
+
+[ Upstream commit 6ba12b56b9b844b83ed54fb7ed59fb0eb41e4045 ]
+
+As platform_driver_register() could fail, it should be better
+to deal with the return value in order to maintain the code
+consisitency.
+
+Fixes: 56a1485b102e ("i2c: npcm7xx: Add Nuvoton NPCM I2C controller driver")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Acked-by: Tali Perry <tali.perry1@gmail.com>
+Signed-off-by: Wolfram Sang <wsa@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/i2c/busses/i2c-npcm7xx.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-npcm7xx.c b/drivers/i2c/busses/i2c-npcm7xx.c
+index c638f2efb97c7b1aeaa8646b934ecec20fefd0ba..743ac20a405c26f121778804ecc86f3f193d70bb 100644
+--- a/drivers/i2c/busses/i2c-npcm7xx.c
++++ b/drivers/i2c/busses/i2c-npcm7xx.c
+@@ -2369,8 +2369,7 @@ static struct platform_driver npcm_i2c_bus_driver = {
+ static int __init npcm_i2c_init(void)
+ {
+ 	npcm_i2c_debugfs_dir = debugfs_create_dir("npcm_i2c", NULL);
+-	platform_driver_register(&npcm_i2c_bus_driver);
+-	return 0;
++	return platform_driver_register(&npcm_i2c_bus_driver);
+ }
+ module_init(npcm_i2c_init);
+ 

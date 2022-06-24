@@ -1,0 +1,136 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Josh Poimboeuf <jpoimboe@kernel.org>
+Date: Fri, 3 Jun 2022 08:04:44 -0700
+Subject: [PATCH] x86/ftrace: Remove OBJECT_FILES_NON_STANDARD usage
+
+[ Upstream commit 7b6c7a877cc616bc7dc9cd39646fe454acbed48b ]
+
+The file-wide OBJECT_FILES_NON_STANDARD annotation is used with
+CONFIG_FRAME_POINTER to tell objtool to skip the entire file when frame
+pointers are enabled.  However that annotation is now deprecated because
+it doesn't work with IBT, where objtool runs on vmlinux.o instead of
+individual translation units.
+
+Instead, use more fine-grained function-specific annotations:
+
+- The 'save_mcount_regs' macro does funny things with the frame pointer.
+  Use STACK_FRAME_NON_STANDARD_FP to tell objtool to ignore the
+  functions using it.
+
+- The return_to_handler() "function" isn't actually a callable function.
+  Instead of being called, it's returned to.  The real return address
+  isn't on the stack, so unwinding is already doomed no matter which
+  unwinder is used.  So just remove the STT_FUNC annotation, telling
+  objtool to ignore it.  That also removes the implicit
+  ANNOTATE_NOENDBR, which now needs to be made explicit.
+
+Fixes the following warning:
+
+  vmlinux.o: warning: objtool: __fentry__+0x16: return with modified stack frame
+
+Fixes: ed53a0d97192 ("x86/alternative: Use .ibt_endbr_seal to seal indirect calls")
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Josh Poimboeuf <jpoimboe@kernel.org>
+Link: https://lore.kernel.org/r/b7a7a42fe306aca37826043dac89e113a1acdbac.1654268610.git.jpoimboe@kernel.org
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/x86/kernel/Makefile      |  4 ----
+ arch/x86/kernel/ftrace_64.S   | 11 ++++++++---
+ include/linux/objtool.h       |  6 ++++++
+ tools/include/linux/objtool.h |  6 ++++++
+ 4 files changed, 20 insertions(+), 7 deletions(-)
+
+diff --git a/arch/x86/kernel/Makefile b/arch/x86/kernel/Makefile
+index c41ef42adbe8a3b13d10442b3d3b590b1ac40836..25828e4c62375007b3efd2fa392604b8c85636a4 100644
+--- a/arch/x86/kernel/Makefile
++++ b/arch/x86/kernel/Makefile
+@@ -36,10 +36,6 @@ KCSAN_SANITIZE := n
+ 
+ OBJECT_FILES_NON_STANDARD_test_nx.o			:= y
+ 
+-ifdef CONFIG_FRAME_POINTER
+-OBJECT_FILES_NON_STANDARD_ftrace_$(BITS).o		:= y
+-endif
+-
+ # If instrumentation of this dir is enabled, boot hangs during first second.
+ # Probably could be more selective here, but note that files related to irqs,
+ # boot, dumpstack/stacktrace, etc are either non-interesting or can lead to
+diff --git a/arch/x86/kernel/ftrace_64.S b/arch/x86/kernel/ftrace_64.S
+index 4ec13608d3c62bd8acae0d897b264cde3eb41e14..dfeb227de5617c6d55ad6ace1f321b7ac87b6a70 100644
+--- a/arch/x86/kernel/ftrace_64.S
++++ b/arch/x86/kernel/ftrace_64.S
+@@ -175,6 +175,7 @@ SYM_INNER_LABEL(ftrace_caller_end, SYM_L_GLOBAL)
+ 
+ 	jmp ftrace_epilogue
+ SYM_FUNC_END(ftrace_caller);
++STACK_FRAME_NON_STANDARD_FP(ftrace_caller)
+ 
+ SYM_FUNC_START(ftrace_epilogue)
+ /*
+@@ -282,6 +283,7 @@ SYM_INNER_LABEL(ftrace_regs_caller_end, SYM_L_GLOBAL)
+ 	jmp	ftrace_epilogue
+ 
+ SYM_FUNC_END(ftrace_regs_caller)
++STACK_FRAME_NON_STANDARD_FP(ftrace_regs_caller)
+ 
+ 
+ #else /* ! CONFIG_DYNAMIC_FTRACE */
+@@ -311,10 +313,14 @@ trace:
+ 	jmp ftrace_stub
+ SYM_FUNC_END(__fentry__)
+ EXPORT_SYMBOL(__fentry__)
++STACK_FRAME_NON_STANDARD_FP(__fentry__)
++
+ #endif /* CONFIG_DYNAMIC_FTRACE */
+ 
+ #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+-SYM_FUNC_START(return_to_handler)
++SYM_CODE_START(return_to_handler)
++	UNWIND_HINT_EMPTY
++	ANNOTATE_NOENDBR
+ 	subq  $16, %rsp
+ 
+ 	/* Save the return values */
+@@ -339,7 +345,6 @@ SYM_FUNC_START(return_to_handler)
+ 	int3
+ .Ldo_rop:
+ 	mov %rdi, (%rsp)
+-	UNWIND_HINT_FUNC
+ 	RET
+-SYM_FUNC_END(return_to_handler)
++SYM_CODE_END(return_to_handler)
+ #endif
+diff --git a/include/linux/objtool.h b/include/linux/objtool.h
+index 586d35720f135f62b9d7434beccacb2e22a5bd2d..c81ea2264ad8a74b765f5649f81ee1198d7704dd 100644
+--- a/include/linux/objtool.h
++++ b/include/linux/objtool.h
+@@ -141,6 +141,12 @@ struct unwind_hint {
+ 	.popsection
+ .endm
+ 
++.macro STACK_FRAME_NON_STANDARD_FP func:req
++#ifdef CONFIG_FRAME_POINTER
++	STACK_FRAME_NON_STANDARD \func
++#endif
++.endm
++
+ .macro ANNOTATE_NOENDBR
+ .Lhere_\@:
+ 	.pushsection .discard.noendbr
+diff --git a/tools/include/linux/objtool.h b/tools/include/linux/objtool.h
+index 586d35720f135f62b9d7434beccacb2e22a5bd2d..c81ea2264ad8a74b765f5649f81ee1198d7704dd 100644
+--- a/tools/include/linux/objtool.h
++++ b/tools/include/linux/objtool.h
+@@ -141,6 +141,12 @@ struct unwind_hint {
+ 	.popsection
+ .endm
+ 
++.macro STACK_FRAME_NON_STANDARD_FP func:req
++#ifdef CONFIG_FRAME_POINTER
++	STACK_FRAME_NON_STANDARD \func
++#endif
++.endm
++
+ .macro ANNOTATE_NOENDBR
+ .Lhere_\@:
+ 	.pushsection .discard.noendbr

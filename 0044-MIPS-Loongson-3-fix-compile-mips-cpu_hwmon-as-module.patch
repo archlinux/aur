@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Yupeng Li <liyupeng@zbhlos.com>
+Date: Wed, 8 Jun 2022 09:12:29 +0800
+Subject: [PATCH] MIPS: Loongson-3: fix compile mips cpu_hwmon as module build
+ error.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit 41e456400212803704e82691716e1d7b0865114a ]
+
+  set cpu_hwmon as a module build with loongson_sysconf, loongson_chiptemp
+  undefined error,fix cpu_hwmon compile options to be bool.Some kernel
+  compilation error information is as follows:
+
+  Checking missing-syscalls for N32
+  CALL    scripts/checksyscalls.sh
+  Checking missing-syscalls for O32
+  CALL    scripts/checksyscalls.sh
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CC [M]  drivers/platform/mips/cpu_hwmon.o
+  Building modules, stage 2.
+  MODPOST 200 modules
+ERROR: "loongson_sysconf" [drivers/platform/mips/cpu_hwmon.ko] undefined!
+ERROR: "loongson_chiptemp" [drivers/platform/mips/cpu_hwmon.ko] undefined!
+make[1]: *** [scripts/Makefile.modpost:92：__modpost] 错误 1
+make: *** [Makefile:1261：modules] 错误 2
+
+Signed-off-by: Yupeng Li <liyupeng@zbhlos.com>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Huacai Chen <chenhuacai@kernel.org>
+Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/mips/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/mips/Kconfig b/drivers/platform/mips/Kconfig
+index d421e148239579182230c03ac1447588e47b8fd9..6b51ad01f79151dc2b15e8f287283e93b361f9da 100644
+--- a/drivers/platform/mips/Kconfig
++++ b/drivers/platform/mips/Kconfig
+@@ -17,7 +17,7 @@ menuconfig MIPS_PLATFORM_DEVICES
+ if MIPS_PLATFORM_DEVICES
+ 
+ config CPU_HWMON
+-	tristate "Loongson-3 CPU HWMon Driver"
++	bool "Loongson-3 CPU HWMon Driver"
+ 	depends on MACH_LOONGSON64
+ 	select HWMON
+ 	default y

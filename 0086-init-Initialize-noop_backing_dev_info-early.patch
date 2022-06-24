@@ -1,0 +1,97 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Wed, 15 Jun 2022 15:22:29 +0200
+Subject: [PATCH] init: Initialize noop_backing_dev_info early
+
+[ Upstream commit 4bca7e80b6455772b4bf3f536dcbc19aac424d6a ]
+
+noop_backing_dev_info is used by superblocks of various
+pseudofilesystems such as kdevtmpfs. After commit 10e14073107d
+("writeback: Fix inode->i_io_list not be protected by inode->i_lock
+error") this broke because __mark_inode_dirty() started to access more
+fields from noop_backing_dev_info and this led to crashes inside
+locked_inode_to_wb_and_lock_list() called from __mark_inode_dirty().
+Fix the problem by initializing noop_backing_dev_info before the
+filesystems get mounted.
+
+Fixes: 10e14073107d ("writeback: Fix inode->i_io_list not be protected by inode->i_lock error")
+Reported-and-tested-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+Reported-and-tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
+Reported-and-tested-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Jan Kara <jack@suse.cz>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/base/init.c         |  2 ++
+ include/linux/backing-dev.h |  2 ++
+ mm/backing-dev.c            | 11 ++---------
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/base/init.c b/drivers/base/init.c
+index d8d0fe687111a0e0cec44c388a470df8708bdf44..397eb9880cecb8ed39914880bf64e879a8c94b32 100644
+--- a/drivers/base/init.c
++++ b/drivers/base/init.c
+@@ -8,6 +8,7 @@
+ #include <linux/init.h>
+ #include <linux/memory.h>
+ #include <linux/of.h>
++#include <linux/backing-dev.h>
+ 
+ #include "base.h"
+ 
+@@ -20,6 +21,7 @@
+ void __init driver_init(void)
+ {
+ 	/* These are the core pieces */
++	bdi_init(&noop_backing_dev_info);
+ 	devtmpfs_init();
+ 	devices_init();
+ 	buses_init();
+diff --git a/include/linux/backing-dev.h b/include/linux/backing-dev.h
+index 87ce24d238f3459e3174805282b7cf37e38624df..8c2eed1b69c177b245d04fd43ff801df14da1b9f 100644
+--- a/include/linux/backing-dev.h
++++ b/include/linux/backing-dev.h
+@@ -121,6 +121,8 @@ int bdi_set_max_ratio(struct backing_dev_info *bdi, unsigned int max_ratio);
+ 
+ extern struct backing_dev_info noop_backing_dev_info;
+ 
++int bdi_init(struct backing_dev_info *bdi);
++
+ /**
+  * writeback_in_progress - determine whether there is writeback in progress
+  * @wb: bdi_writeback of interest
+diff --git a/mm/backing-dev.c b/mm/backing-dev.c
+index 7176af65b103a4500fda68dc62028fb37794d3a0..e262739a0a2388d0d9de18dbcee0e5672665dad4 100644
+--- a/mm/backing-dev.c
++++ b/mm/backing-dev.c
+@@ -230,20 +230,13 @@ static __init int bdi_class_init(void)
+ }
+ postcore_initcall(bdi_class_init);
+ 
+-static int bdi_init(struct backing_dev_info *bdi);
+-
+ static int __init default_bdi_init(void)
+ {
+-	int err;
+-
+ 	bdi_wq = alloc_workqueue("writeback", WQ_MEM_RECLAIM | WQ_UNBOUND |
+ 				 WQ_SYSFS, 0);
+ 	if (!bdi_wq)
+ 		return -ENOMEM;
+-
+-	err = bdi_init(&noop_backing_dev_info);
+-
+-	return err;
++	return 0;
+ }
+ subsys_initcall(default_bdi_init);
+ 
+@@ -782,7 +775,7 @@ static void cgwb_remove_from_bdi_list(struct bdi_writeback *wb)
+ 
+ #endif	/* CONFIG_CGROUP_WRITEBACK */
+ 
+-static int bdi_init(struct backing_dev_info *bdi)
++int bdi_init(struct backing_dev_info *bdi)
+ {
+ 	int ret;
+ 

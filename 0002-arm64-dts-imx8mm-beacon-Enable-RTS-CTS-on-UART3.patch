@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Adam Ford <aford173@gmail.com>
+Date: Tue, 26 Apr 2022 15:51:43 -0500
+Subject: [PATCH] arm64: dts: imx8mm-beacon: Enable RTS-CTS on UART3
+
+commit 4ce01ce36d77137cf60776b320babed89de6bd4c upstream.
+
+There is a header for a DB9 serial port, but any attempts to use
+hardware handshaking fail.  Enable RTS and CTS pin muxing and enable
+handshaking in the uart node.
+
+Signed-off-by: Adam Ford <aford173@gmail.com>
+Signed-off-by: Shawn Guo <shawnguo@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ arch/arm64/boot/dts/freescale/imx8mm-beacon-baseboard.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/freescale/imx8mm-beacon-baseboard.dtsi b/arch/arm64/boot/dts/freescale/imx8mm-beacon-baseboard.dtsi
+index ec3f2c17703579bddfb75d8381a0a40395ea6254..f338a886d8117d58886636621d21ad35d14c9c0c 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mm-beacon-baseboard.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mm-beacon-baseboard.dtsi
+@@ -278,6 +278,7 @@ &uart3 {
+ 	pinctrl-0 = <&pinctrl_uart3>;
+ 	assigned-clocks = <&clk IMX8MM_CLK_UART3>;
+ 	assigned-clock-parents = <&clk IMX8MM_SYS_PLL1_80M>;
++	uart-has-rtscts;
+ 	status = "okay";
+ };
+ 
+@@ -386,6 +387,8 @@ pinctrl_uart3: uart3grp {
+ 		fsl,pins = <
+ 			MX8MM_IOMUXC_ECSPI1_SCLK_UART3_DCE_RX	0x40
+ 			MX8MM_IOMUXC_ECSPI1_MOSI_UART3_DCE_TX	0x40
++			MX8MM_IOMUXC_ECSPI1_MISO_UART3_DCE_CTS_B	0x40
++			MX8MM_IOMUXC_ECSPI1_SS0_UART3_DCE_RTS_B	0x40
+ 		>;
+ 	};
+ 

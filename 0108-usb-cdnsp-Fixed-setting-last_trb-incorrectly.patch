@@ -1,0 +1,58 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jing Leng <jleng@ambarella.com>
+Date: Thu, 9 Jun 2022 10:11:34 +0800
+Subject: [PATCH] usb: cdnsp: Fixed setting last_trb incorrectly
+
+commit 5c7578c39c3fffe85b7d15ca1cf8cf7ac38ec0c1 upstream.
+
+When ZLP occurs in bulk transmission, currently cdnsp will set last_trb
+for the last two TRBs, it will trigger an error "ERROR Transfer event TRB
+DMA ptr not part of current TD ...".
+
+Fixes: e913aada0683 ("usb: cdnsp: Fixed issue with ZLP")
+Cc: stable <stable@kernel.org>
+Acked-by: Pawel Laszczak <pawell@cadence.com>
+Signed-off-by: Jing Leng <jleng@ambarella.com>
+Link: https://lore.kernel.org/r/20220609021134.1606-1-3090101217@zju.edu.cn
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/usb/cdns3/cdnsp-ring.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/usb/cdns3/cdnsp-ring.c b/drivers/usb/cdns3/cdnsp-ring.c
+index e45c3d6e1536cf6dba325fef8ce925c35f0eb9e8..794e413800ae8239ac8ce2d92de8ddb8c6620345 100644
+--- a/drivers/usb/cdns3/cdnsp-ring.c
++++ b/drivers/usb/cdns3/cdnsp-ring.c
+@@ -1941,13 +1941,16 @@ int cdnsp_queue_bulk_tx(struct cdnsp_device *pdev, struct cdnsp_request *preq)
+ 		}
+ 
+ 		if (enqd_len + trb_buff_len >= full_len) {
+-			if (need_zero_pkt)
+-				zero_len_trb = !zero_len_trb;
+-
+-			field &= ~TRB_CHAIN;
+-			field |= TRB_IOC;
+-			more_trbs_coming = false;
+-			preq->td.last_trb = ring->enqueue;
++			if (need_zero_pkt && !zero_len_trb) {
++				zero_len_trb = true;
++			} else {
++				zero_len_trb = false;
++				field &= ~TRB_CHAIN;
++				field |= TRB_IOC;
++				more_trbs_coming = false;
++				need_zero_pkt = false;
++				preq->td.last_trb = ring->enqueue;
++			}
+ 		}
+ 
+ 		/* Only set interrupt on short packet for OUT endpoints. */
+@@ -1962,7 +1965,7 @@ int cdnsp_queue_bulk_tx(struct cdnsp_device *pdev, struct cdnsp_request *preq)
+ 		length_field = TRB_LEN(trb_buff_len) | TRB_TD_SIZE(remainder) |
+ 			TRB_INTR_TARGET(0);
+ 
+-		cdnsp_queue_trb(pdev, ring, more_trbs_coming | zero_len_trb,
++		cdnsp_queue_trb(pdev, ring, more_trbs_coming,
+ 				lower_32_bits(send_addr),
+ 				upper_32_bits(send_addr),
+ 				length_field,

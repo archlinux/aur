@@ -1,0 +1,89 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Guangbin Huang <huangguangbin2@huawei.com>
+Date: Sat, 11 Jun 2022 20:25:29 +0800
+Subject: [PATCH] net: hns3: fix tm port shapping of fibre port is incorrect
+ after driver initialization
+
+[ Upstream commit 12a3670887725df364cc3e030cf3bede6f13b364 ]
+
+Currently in driver initialization process, driver will set shapping
+parameters of tm port to default speed read from firmware. However, the
+speed of SFP module may not be default speed, so shapping parameters of
+tm port may be incorrect.
+
+To fix this problem, driver sets new shapping parameters for tm port
+after getting exact speed of SFP module in this case.
+
+Fixes: 88d10bd6f730 ("net: hns3: add support for multiple media type")
+Signed-off-by: Guangbin Huang <huangguangbin2@huawei.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ .../net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c   | 11 ++++++++---
+ drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.c |  2 +-
+ drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.h |  1 +
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+index c8c99ab60ec12f8efd9cd06b41528ace69cf4600..c0b4ff73128fc1b3ca9ded27f9c9ce22f9bec776 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+@@ -3276,7 +3276,7 @@ static int hclge_tp_port_init(struct hclge_dev *hdev)
+ static int hclge_update_port_info(struct hclge_dev *hdev)
+ {
+ 	struct hclge_mac *mac = &hdev->hw.mac;
+-	int speed = HCLGE_MAC_SPEED_UNKNOWN;
++	int speed;
+ 	int ret;
+ 
+ 	/* get the port info from SFP cmd if not copper port */
+@@ -3287,10 +3287,13 @@ static int hclge_update_port_info(struct hclge_dev *hdev)
+ 	if (!hdev->support_sfp_query)
+ 		return 0;
+ 
+-	if (hdev->ae_dev->dev_version >= HNAE3_DEVICE_VERSION_V2)
++	if (hdev->ae_dev->dev_version >= HNAE3_DEVICE_VERSION_V2) {
++		speed = mac->speed;
+ 		ret = hclge_get_sfp_info(hdev, mac);
+-	else
++	} else {
++		speed = HCLGE_MAC_SPEED_UNKNOWN;
+ 		ret = hclge_get_sfp_speed(hdev, &speed);
++	}
+ 
+ 	if (ret == -EOPNOTSUPP) {
+ 		hdev->support_sfp_query = false;
+@@ -3302,6 +3305,8 @@ static int hclge_update_port_info(struct hclge_dev *hdev)
+ 	if (hdev->ae_dev->dev_version >= HNAE3_DEVICE_VERSION_V2) {
+ 		if (mac->speed_type == QUERY_ACTIVE_SPEED) {
+ 			hclge_update_port_capability(hdev, mac);
++			if (mac->speed != speed)
++				(void)hclge_tm_port_shaper_cfg(hdev);
+ 			return 0;
+ 		}
+ 		return hclge_cfg_mac_speed_dup(hdev, mac->speed,
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.c
+index f5296ff60694480167502345785a37e13e1067c2..2f33b036a47a7ece9a99a86a988d50129f7ab2b4 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.c
+@@ -420,7 +420,7 @@ static int hclge_tm_pg_shapping_cfg(struct hclge_dev *hdev,
+ 	return hclge_cmd_send(&hdev->hw, &desc, 1);
+ }
+ 
+-static int hclge_tm_port_shaper_cfg(struct hclge_dev *hdev)
++int hclge_tm_port_shaper_cfg(struct hclge_dev *hdev)
+ {
+ 	struct hclge_port_shapping_cmd *shap_cfg_cmd;
+ 	struct hclge_shaper_ir_para ir_para;
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.h b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.h
+index 619cc30a2dfcc2804312b6d110818c10599287bd..d943943912f76522ec340f99b32180a07a224c12 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.h
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_tm.h
+@@ -237,6 +237,7 @@ int hclge_pause_addr_cfg(struct hclge_dev *hdev, const u8 *mac_addr);
+ void hclge_pfc_rx_stats_get(struct hclge_dev *hdev, u64 *stats);
+ void hclge_pfc_tx_stats_get(struct hclge_dev *hdev, u64 *stats);
+ int hclge_tm_qs_shaper_cfg(struct hclge_vport *vport, int max_tx_rate);
++int hclge_tm_port_shaper_cfg(struct hclge_dev *hdev);
+ int hclge_tm_get_qset_num(struct hclge_dev *hdev, u16 *qset_num);
+ int hclge_tm_get_pri_num(struct hclge_dev *hdev, u8 *pri_num);
+ int hclge_tm_get_qset_map_pri(struct hclge_dev *hdev, u16 qset_id, u8 *priority,

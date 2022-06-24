@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rob Clark <robdclark@chromium.org>
+Date: Wed, 1 Jun 2022 07:51:16 -0700
+Subject: [PATCH] dma-debug: make things less spammy under memory pressure
+
+[ Upstream commit e19f8fa6ce1ca9b8b934ba7d2e8f34c95abc6e60 ]
+
+Limit the error msg to avoid flooding the console.  If you have a lot of
+threads hitting this at once, they could have already gotten passed the
+dma_debug_disabled() check before they get to the point of allocation
+failure, resulting in quite a lot of this error message spamming the
+log.  Use pr_err_once() to limit that.
+
+Signed-off-by: Rob Clark <robdclark@chromium.org>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ kernel/dma/debug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/dma/debug.c b/kernel/dma/debug.c
+index ac740630c79c2bdb4000115a6663186aca184eed..2caafd13f8aac27f92e0675d94050175c45d585d 100644
+--- a/kernel/dma/debug.c
++++ b/kernel/dma/debug.c
+@@ -564,7 +564,7 @@ static void add_dma_entry(struct dma_debug_entry *entry, unsigned long attrs)
+ 
+ 	rc = active_cacheline_insert(entry);
+ 	if (rc == -ENOMEM) {
+-		pr_err("cacheline tracking ENOMEM, dma-debug disabled\n");
++		pr_err_once("cacheline tracking ENOMEM, dma-debug disabled\n");
+ 		global_disable = true;
+ 	} else if (rc == -EEXIST && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
+ 		err_printk(entry->dev, entry,

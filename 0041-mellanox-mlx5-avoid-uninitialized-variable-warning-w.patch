@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Thu, 9 Jun 2022 10:03:28 -0700
+Subject: [PATCH] mellanox: mlx5: avoid uninitialized variable warning with
+ gcc-12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[ Upstream commit 842c3b3ddc5f4d17275edbaa09e23d712bf8b915 ]
+
+gcc-12 started warning about 'tracker' being used uninitialized:
+
+  drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c: In function ‘mlx5_do_bond’:
+  drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c:786:28: warning: ‘tracker’ is used uninitialized [-Wuninitialized]
+    786 |         struct lag_tracker tracker;
+        |                            ^~~~~~~
+
+which seems to be because it doesn't track how the use (and
+initialization) is bound by the 'do_bond' flag.
+
+But admittedly that 'do_bond' usage is fairly complicated, and involves
+passing it around as an argument to helper functions, so it's somewhat
+understandable that gcc doesn't see how that all works.
+
+This function could be rewritten to make the use of that tracker
+variable more obviously safe, but for now I'm just adding the forced
+initialization of it.
+
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c b/drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c
+index a8b98242edb16b55980c04ad88a34bd87af559a9..a1e9d305153329c7a7e71c50e3a9e4b339f3bd6b 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/lag/lag.c
+@@ -561,7 +561,7 @@ static void mlx5_do_bond(struct mlx5_lag *ldev)
+ {
+ 	struct mlx5_core_dev *dev0 = ldev->pf[MLX5_LAG_P1].dev;
+ 	struct mlx5_core_dev *dev1 = ldev->pf[MLX5_LAG_P2].dev;
+-	struct lag_tracker tracker;
++	struct lag_tracker tracker = { };
+ 	bool do_bond, roce_lag;
+ 	int err;
+ 

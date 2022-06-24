@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <mdaenzer@redhat.com>
+Date: Fri, 10 Jun 2022 15:54:26 +0200
+Subject: [PATCH] drm/amdgpu: Fix GTT size reporting in amdgpu_ioctl
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit c904e3acbab3fd97649cd4ab1ff7f1521ad3a255 upstream.
+
+The commit below changed the TTM manager size unit from pages to
+bytes, but failed to adjust the corresponding calculations in
+amdgpu_ioctl.
+
+Fixes: dfa714b88eb0 ("drm/amdgpu: remove GTT accounting v2")
+Bug: https://gitlab.freedesktop.org/drm/amd/-/issues/1930
+Bug: https://gitlab.freedesktop.org/mesa/mesa/-/issues/6642
+Tested-by: Martin Roukala <martin.roukala@mupuf.org>
+Tested-by: Mike Lothian <mike@fireburn.co.uk>
+Reviewed-by: Christian König <christian.koenig@amd.com>
+Signed-off-by: Michel Dänzer <mdaenzer@redhat.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: stable@vger.kernel.org # 5.18.x
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+index 6b626c293e724319780c20b20e63f88feb8ca609..49c55d82cba80ec889c5915fefb861d657c8e67f 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+@@ -634,7 +634,6 @@ int amdgpu_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
+ 			    atomic64_read(&adev->visible_pin_size),
+ 			    vram_gtt.vram_size);
+ 		vram_gtt.gtt_size = ttm_manager_type(&adev->mman.bdev, TTM_PL_TT)->size;
+-		vram_gtt.gtt_size *= PAGE_SIZE;
+ 		vram_gtt.gtt_size -= atomic64_read(&adev->gart_pin_size);
+ 		return copy_to_user(out, &vram_gtt,
+ 				    min((size_t)size, sizeof(vram_gtt))) ? -EFAULT : 0;
+@@ -667,7 +666,6 @@ int amdgpu_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
+ 			mem.cpu_accessible_vram.usable_heap_size * 3 / 4;
+ 
+ 		mem.gtt.total_heap_size = gtt_man->size;
+-		mem.gtt.total_heap_size *= PAGE_SIZE;
+ 		mem.gtt.usable_heap_size = mem.gtt.total_heap_size -
+ 			atomic64_read(&adev->gart_pin_size);
+ 		mem.gtt.heap_usage = ttm_resource_manager_usage(gtt_man);

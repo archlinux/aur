@@ -1,0 +1,111 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marc Zyngier <maz@kernel.org>
+Date: Tue, 7 Jun 2022 14:14:25 +0100
+Subject: [PATCH] KVM: arm64: Don't read a HW interrupt pending state in user
+ context
+
+commit 2cdea19a34c2340b3aa69508804efe4e3750fcec upstream.
+
+Since 5bfa685e62e9 ("KVM: arm64: vgic: Read HW interrupt pending state
+from the HW"), we're able to source the pending bit for an interrupt
+that is stored either on the physical distributor or on a device.
+
+However, this state is only available when the vcpu is loaded,
+and is not intended to be accessed from userspace. Unfortunately,
+the GICv2 emulation doesn't provide specific userspace accessors,
+and we fallback with the ones that are intended for the guest,
+with fatal consequences.
+
+Add a new vgic_uaccess_read_pending() accessor for userspace
+to use, build on top of the existing vgic_mmio_read_pending().
+
+Reported-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Fixes: 5bfa685e62e9 ("KVM: arm64: vgic: Read HW interrupt pending state from the HW")
+Link: https://lore.kernel.org/r/20220607131427.1164881-2-maz@kernel.org
+Cc: stable@vger.kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ arch/arm64/kvm/vgic/vgic-mmio-v2.c |  4 ++--
+ arch/arm64/kvm/vgic/vgic-mmio.c    | 19 ++++++++++++++++---
+ arch/arm64/kvm/vgic/vgic-mmio.h    |  3 +++
+ 3 files changed, 21 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm64/kvm/vgic/vgic-mmio-v2.c b/arch/arm64/kvm/vgic/vgic-mmio-v2.c
+index 12e4c223e6b8cdfa86d395d19b4b64a4f7ea36b6..54167fcfb60531d7c06d29e86b27e3122e29fc3a 100644
+--- a/arch/arm64/kvm/vgic/vgic-mmio-v2.c
++++ b/arch/arm64/kvm/vgic/vgic-mmio-v2.c
+@@ -417,11 +417,11 @@ static const struct vgic_register_region vgic_v2_dist_registers[] = {
+ 		VGIC_ACCESS_32bit),
+ 	REGISTER_DESC_WITH_BITS_PER_IRQ(GIC_DIST_PENDING_SET,
+ 		vgic_mmio_read_pending, vgic_mmio_write_spending,
+-		NULL, vgic_uaccess_write_spending, 1,
++		vgic_uaccess_read_pending, vgic_uaccess_write_spending, 1,
+ 		VGIC_ACCESS_32bit),
+ 	REGISTER_DESC_WITH_BITS_PER_IRQ(GIC_DIST_PENDING_CLEAR,
+ 		vgic_mmio_read_pending, vgic_mmio_write_cpending,
+-		NULL, vgic_uaccess_write_cpending, 1,
++		vgic_uaccess_read_pending, vgic_uaccess_write_cpending, 1,
+ 		VGIC_ACCESS_32bit),
+ 	REGISTER_DESC_WITH_BITS_PER_IRQ(GIC_DIST_ACTIVE_SET,
+ 		vgic_mmio_read_active, vgic_mmio_write_sactive,
+diff --git a/arch/arm64/kvm/vgic/vgic-mmio.c b/arch/arm64/kvm/vgic/vgic-mmio.c
+index 49837d3a3ef5625ba0c5e4d2fed57e362b55ffc0..dc8c52487e470ef130a8e6b1084599b325d55f65 100644
+--- a/arch/arm64/kvm/vgic/vgic-mmio.c
++++ b/arch/arm64/kvm/vgic/vgic-mmio.c
+@@ -226,8 +226,9 @@ int vgic_uaccess_write_cenable(struct kvm_vcpu *vcpu,
+ 	return 0;
+ }
+ 
+-unsigned long vgic_mmio_read_pending(struct kvm_vcpu *vcpu,
+-				     gpa_t addr, unsigned int len)
++static unsigned long __read_pending(struct kvm_vcpu *vcpu,
++				    gpa_t addr, unsigned int len,
++				    bool is_user)
+ {
+ 	u32 intid = VGIC_ADDR_TO_INTID(addr, 1);
+ 	u32 value = 0;
+@@ -248,7 +249,7 @@ unsigned long vgic_mmio_read_pending(struct kvm_vcpu *vcpu,
+ 						    IRQCHIP_STATE_PENDING,
+ 						    &val);
+ 			WARN_RATELIMIT(err, "IRQ %d", irq->host_irq);
+-		} else if (vgic_irq_is_mapped_level(irq)) {
++		} else if (!is_user && vgic_irq_is_mapped_level(irq)) {
+ 			val = vgic_get_phys_line_level(irq);
+ 		} else {
+ 			val = irq_is_pending(irq);
+@@ -263,6 +264,18 @@ unsigned long vgic_mmio_read_pending(struct kvm_vcpu *vcpu,
+ 	return value;
+ }
+ 
++unsigned long vgic_mmio_read_pending(struct kvm_vcpu *vcpu,
++				     gpa_t addr, unsigned int len)
++{
++	return __read_pending(vcpu, addr, len, false);
++}
++
++unsigned long vgic_uaccess_read_pending(struct kvm_vcpu *vcpu,
++					gpa_t addr, unsigned int len)
++{
++	return __read_pending(vcpu, addr, len, true);
++}
++
+ static bool is_vgic_v2_sgi(struct kvm_vcpu *vcpu, struct vgic_irq *irq)
+ {
+ 	return (vgic_irq_is_sgi(irq->intid) &&
+diff --git a/arch/arm64/kvm/vgic/vgic-mmio.h b/arch/arm64/kvm/vgic/vgic-mmio.h
+index 3fa696f198a37ab9aad81832db4b76d61bcf1ece..6082d4b66d3983495967dc02f63db8d72106b77c 100644
+--- a/arch/arm64/kvm/vgic/vgic-mmio.h
++++ b/arch/arm64/kvm/vgic/vgic-mmio.h
+@@ -149,6 +149,9 @@ int vgic_uaccess_write_cenable(struct kvm_vcpu *vcpu,
+ unsigned long vgic_mmio_read_pending(struct kvm_vcpu *vcpu,
+ 				     gpa_t addr, unsigned int len);
+ 
++unsigned long vgic_uaccess_read_pending(struct kvm_vcpu *vcpu,
++					gpa_t addr, unsigned int len);
++
+ void vgic_mmio_write_spending(struct kvm_vcpu *vcpu,
+ 			      gpa_t addr, unsigned int len,
+ 			      unsigned long val);

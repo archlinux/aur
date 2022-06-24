@@ -1,0 +1,101 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Trond Myklebust <trond.myklebust@hammerspace.com>
+Date: Tue, 31 May 2022 11:03:07 -0400
+Subject: [PATCH] pNFS: Avoid a live lock condition in pnfs_update_layout()
+
+[ Upstream commit 880265c77ac415090090d1fe72a188fee71cb458 ]
+
+If we're about to send the first layoutget for an empty layout, we want
+to make sure that we drain out the existing pending layoutget calls
+first. The reason is that these layouts may have been already implicitly
+returned to the server by a recall to which the client gave a
+NFS4ERR_NOMATCHING_LAYOUT response.
+
+The problem is that wait_var_event_killable() could in principle see the
+plh_outstanding count go back to '1' when the first process to wake up
+starts sending a new layoutget. If it fails to get a layout, then this
+loop can continue ad infinitum...
+
+Fixes: 0b77f97a7e42 ("NFSv4/pnfs: Fix layoutget behaviour after invalidation")
+Signed-off-by: Trond Myklebust <trond.myklebust@hammerspace.com>
+Signed-off-by: Anna Schumaker <Anna.Schumaker@Netapp.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ fs/nfs/callback_proc.c |  1 +
+ fs/nfs/pnfs.c          | 15 +++++++++------
+ fs/nfs/pnfs.h          |  1 +
+ 3 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/fs/nfs/callback_proc.c b/fs/nfs/callback_proc.c
+index c8520284dda788562eb0888db508c63b841307ea..c1eda73254e16f938a551a42e1594cd05a90af96 100644
+--- a/fs/nfs/callback_proc.c
++++ b/fs/nfs/callback_proc.c
+@@ -288,6 +288,7 @@ static u32 initiate_file_draining(struct nfs_client *clp,
+ 		rv = NFS4_OK;
+ 		break;
+ 	case -ENOENT:
++		set_bit(NFS_LAYOUT_DRAIN, &lo->plh_flags);
+ 		/* Embrace your forgetfulness! */
+ 		rv = NFS4ERR_NOMATCHING_LAYOUT;
+ 
+diff --git a/fs/nfs/pnfs.c b/fs/nfs/pnfs.c
+index 4609e641710e4da02f05a162e8bbe49bc51e3b89..41a9b6b58fb9fa15c9f162fa8dfa267a1c16e049 100644
+--- a/fs/nfs/pnfs.c
++++ b/fs/nfs/pnfs.c
+@@ -469,6 +469,7 @@ pnfs_mark_layout_stateid_invalid(struct pnfs_layout_hdr *lo,
+ 		pnfs_clear_lseg_state(lseg, lseg_list);
+ 	pnfs_clear_layoutreturn_info(lo);
+ 	pnfs_free_returned_lsegs(lo, lseg_list, &range, 0);
++	set_bit(NFS_LAYOUT_DRAIN, &lo->plh_flags);
+ 	if (test_bit(NFS_LAYOUT_RETURN, &lo->plh_flags) &&
+ 	    !test_and_set_bit(NFS_LAYOUT_RETURN_LOCK, &lo->plh_flags))
+ 		pnfs_clear_layoutreturn_waitbit(lo);
+@@ -1917,8 +1918,9 @@ static void nfs_layoutget_begin(struct pnfs_layout_hdr *lo)
+ 
+ static void nfs_layoutget_end(struct pnfs_layout_hdr *lo)
+ {
+-	if (atomic_dec_and_test(&lo->plh_outstanding))
+-		wake_up_var(&lo->plh_outstanding);
++	if (atomic_dec_and_test(&lo->plh_outstanding) &&
++	    test_and_clear_bit(NFS_LAYOUT_DRAIN, &lo->plh_flags))
++		wake_up_bit(&lo->plh_flags, NFS_LAYOUT_DRAIN);
+ }
+ 
+ static bool pnfs_is_first_layoutget(struct pnfs_layout_hdr *lo)
+@@ -2025,11 +2027,11 @@ pnfs_update_layout(struct inode *ino,
+ 	 * If the layout segment list is empty, but there are outstanding
+ 	 * layoutget calls, then they might be subject to a layoutrecall.
+ 	 */
+-	if ((list_empty(&lo->plh_segs) || !pnfs_layout_is_valid(lo)) &&
++	if (test_bit(NFS_LAYOUT_DRAIN, &lo->plh_flags) &&
+ 	    atomic_read(&lo->plh_outstanding) != 0) {
+ 		spin_unlock(&ino->i_lock);
+-		lseg = ERR_PTR(wait_var_event_killable(&lo->plh_outstanding,
+-					!atomic_read(&lo->plh_outstanding)));
++		lseg = ERR_PTR(wait_on_bit(&lo->plh_flags, NFS_LAYOUT_DRAIN,
++					   TASK_KILLABLE));
+ 		if (IS_ERR(lseg))
+ 			goto out_put_layout_hdr;
+ 		pnfs_put_layout_hdr(lo);
+@@ -2413,7 +2415,8 @@ pnfs_layout_process(struct nfs4_layoutget *lgp)
+ 		goto out_forget;
+ 	}
+ 
+-	if (!pnfs_layout_is_valid(lo) && !pnfs_is_first_layoutget(lo))
++	if (test_bit(NFS_LAYOUT_DRAIN, &lo->plh_flags) &&
++	    !pnfs_is_first_layoutget(lo))
+ 		goto out_forget;
+ 
+ 	if (nfs4_stateid_match_other(&lo->plh_stateid, &res->stateid)) {
+diff --git a/fs/nfs/pnfs.h b/fs/nfs/pnfs.h
+index 07f11489e4e9f0cb447dbc3378357cc8bc835aad..f331f067691b0854c7806d2099fabf8932c920a9 100644
+--- a/fs/nfs/pnfs.h
++++ b/fs/nfs/pnfs.h
+@@ -105,6 +105,7 @@ enum {
+ 	NFS_LAYOUT_FIRST_LAYOUTGET,	/* Serialize first layoutget */
+ 	NFS_LAYOUT_INODE_FREEING,	/* The inode is being freed */
+ 	NFS_LAYOUT_HASHED,		/* The layout visible */
++	NFS_LAYOUT_DRAIN,
+ };
+ 
+ enum layoutdriver_policy_flags {

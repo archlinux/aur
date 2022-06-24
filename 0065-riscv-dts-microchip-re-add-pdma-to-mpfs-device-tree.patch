@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Conor Dooley <conor.dooley@microchip.com>
+Date: Fri, 3 Jun 2022 09:38:26 +0100
+Subject: [PATCH] riscv: dts: microchip: re-add pdma to mpfs device tree
+
+[ Upstream commit 5e757deddd918edb8cb2fdb56eb79656ffc6dade ]
+
+PolarFire SoC /does/ have a SiFive pdma, despite what I suggested as a
+conflict resolution to Zong. Somehow the entry fell through the cracks
+between versions of my dt patches, so re-add it with Zong's updated
+compatible & dma-channels property.
+
+Fixes: c5094f371008 ("riscv: dts: microchip: refactor icicle kit device tree")
+Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/riscv/boot/dts/microchip/microchip-mpfs.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/microchip/microchip-mpfs.dtsi b/arch/riscv/boot/dts/microchip/microchip-mpfs.dtsi
+index cf2f55e1dcb679776bf0e1aa84e67fab4064577d..f44fce1fe080c460f9b109b688b7594a6914c7cd 100644
+--- a/arch/riscv/boot/dts/microchip/microchip-mpfs.dtsi
++++ b/arch/riscv/boot/dts/microchip/microchip-mpfs.dtsi
+@@ -188,6 +188,15 @@ plic: interrupt-controller@c000000 {
+ 			riscv,ndev = <186>;
+ 		};
+ 
++		pdma: dma-controller@3000000 {
++			compatible = "sifive,fu540-c000-pdma", "sifive,pdma0";
++			reg = <0x0 0x3000000 0x0 0x8000>;
++			interrupt-parent = <&plic>;
++			interrupts = <5 6>, <7 8>, <9 10>, <11 12>;
++			dma-channels = <4>;
++			#dma-cells = <1>;
++		};
++
+ 		clkcfg: clkcfg@20002000 {
+ 			compatible = "microchip,mpfs-clkcfg";
+ 			reg = <0x0 0x20002000 0x0 0x1000>, <0x0 0x3E001000 0x0 0x1000>;

@@ -1,0 +1,57 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Wed, 15 Jun 2022 14:00:04 -0700
+Subject: [PATCH] block: Fix handling of offline queues in
+ blk_mq_alloc_request_hctx()
+
+[ Upstream commit 14dc7a18abbe4176f5626c13c333670da8e06aa1 ]
+
+This patch prevents that test nvme/004 triggers the following:
+
+UBSAN: array-index-out-of-bounds in block/blk-mq.h:135:9
+index 512 is out of range for type 'long unsigned int [512]'
+Call Trace:
+ show_stack+0x52/0x58
+ dump_stack_lvl+0x49/0x5e
+ dump_stack+0x10/0x12
+ ubsan_epilogue+0x9/0x3b
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ blk_mq_alloc_request_hctx+0x304/0x310
+ __nvme_submit_sync_cmd+0x70/0x200 [nvme_core]
+ nvmf_connect_io_queue+0x23e/0x2a0 [nvme_fabrics]
+ nvme_loop_connect_io_queues+0x8d/0xb0 [nvme_loop]
+ nvme_loop_create_ctrl+0x58e/0x7d0 [nvme_loop]
+ nvmf_create_ctrl+0x1d7/0x4d0 [nvme_fabrics]
+ nvmf_dev_write+0xae/0x111 [nvme_fabrics]
+ vfs_write+0x144/0x560
+ ksys_write+0xb7/0x140
+ __x64_sys_write+0x42/0x50
+ do_syscall_64+0x35/0x80
+ entry_SYSCALL_64_after_hwframe+0x44/0xae
+
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Ming Lei <ming.lei@redhat.com>
+Fixes: 20e4d8139319 ("blk-mq: simplify queue mapping & schedule with each possisble CPU")
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Ming Lei <ming.lei@redhat.com>
+Link: https://lore.kernel.org/r/20220615210004.1031820-1-bvanassche@acm.org
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ block/blk-mq.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/block/blk-mq.c b/block/blk-mq.c
+index de7fc69572718a6b8cab6134442d971be3b44920..631fb87b4976f7638eb97af143a7351c5878eae1 100644
+--- a/block/blk-mq.c
++++ b/block/blk-mq.c
+@@ -579,6 +579,8 @@ struct request *blk_mq_alloc_request_hctx(struct request_queue *q,
+ 	if (!blk_mq_hw_queue_mapped(data.hctx))
+ 		goto out_queue_exit;
+ 	cpu = cpumask_first_and(data.hctx->cpumask, cpu_online_mask);
++	if (cpu >= nr_cpu_ids)
++		goto out_queue_exit;
+ 	data.ctx = __blk_mq_get_ctx(q, cpu);
+ 
+ 	if (!q->elevator)

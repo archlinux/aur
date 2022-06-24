@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: George D Sworo <george.d.sworo@intel.com>
+Date: Wed, 1 Jun 2022 18:26:17 -0700
+Subject: [PATCH] platform/x86/intel: pmc: Support Intel Raptorlake P
+
+[ Upstream commit 552f3b801de6eb062b225a76e140995483a0609c ]
+
+Add Raptorlake P to the list of the platforms that intel_pmc_core driver
+supports for pmc_core device. Raptorlake P PCH is based on Alderlake P
+PCH.
+
+Signed-off-by: George D Sworo <george.d.sworo@intel.com>
+Reviewed-by: David E. Box <david.e.box@linux.intel.com>
+Link: https://lore.kernel.org/r/20220602012617.20100-1-george.d.sworo@intel.com
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/intel/pmc/core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/platform/x86/intel/pmc/core.c b/drivers/platform/x86/intel/pmc/core.c
+index ac19fcc9abbf5721844122ed1b5fb3607ac0aeed..8ee15a7252c717bd6b0dbc9eb2daaa918ff81b0a 100644
+--- a/drivers/platform/x86/intel/pmc/core.c
++++ b/drivers/platform/x86/intel/pmc/core.c
+@@ -1912,6 +1912,7 @@ static const struct x86_cpu_id intel_pmc_core_ids[] = {
+ 	X86_MATCH_INTEL_FAM6_MODEL(ROCKETLAKE,		&tgl_reg_map),
+ 	X86_MATCH_INTEL_FAM6_MODEL(ALDERLAKE_L,		&tgl_reg_map),
+ 	X86_MATCH_INTEL_FAM6_MODEL(ALDERLAKE,		&adl_reg_map),
++	X86_MATCH_INTEL_FAM6_MODEL(RAPTORLAKE_P,        &tgl_reg_map),
+ 	{}
+ };
+ 

@@ -1,0 +1,117 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Candice Li <candice.li@amd.com>
+Date: Wed, 1 Jun 2022 17:10:44 +0800
+Subject: [PATCH] drm/amdgpu: Resolve RAS GFX error count issue after cold boot
+ on Arcturus
+
+[ Upstream commit 2a460963350ec6b1534d28d7f943b5f84815aff2 ]
+
+Adjust the sequence for ras late init and separate ras reset error status
+from query status.
+
+v2: squash in fix from Candice
+
+Signed-off-by: Candice Li <candice.li@amd.com>
+Reviewed-by: Hawking Zhang <Hawking.Zhang@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c |  9 ++++++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c | 27 ++++++++++++++++++++-----
+ 2 files changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+index 28a736c507bb3f84e956203d2c115b8afdc160de..bd3b32e5ba9e99023a34427ba22c7018192d95a0 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gfx.c
+@@ -625,17 +625,20 @@ int amdgpu_get_gfx_off_status(struct amdgpu_device *adev, uint32_t *value)
+ int amdgpu_gfx_ras_late_init(struct amdgpu_device *adev, struct ras_common_if *ras_block)
+ {
+ 	int r;
+-	r = amdgpu_ras_block_late_init(adev, ras_block);
+-	if (r)
+-		return r;
+ 
+ 	if (amdgpu_ras_is_supported(adev, ras_block->block)) {
+ 		if (!amdgpu_persistent_edc_harvesting_supported(adev))
+ 			amdgpu_ras_reset_error_status(adev, AMDGPU_RAS_BLOCK__GFX);
+ 
++		r = amdgpu_ras_block_late_init(adev, ras_block);
++		if (r)
++			return r;
++
+ 		r = amdgpu_irq_get(adev, &adev->gfx.cp_ecc_error_irq, 0);
+ 		if (r)
+ 			goto late_fini;
++	} else {
++		amdgpu_ras_feature_enable_on_boot(adev, ras_block, 0);
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c
+index 424c22a841f401ae0a5177cb3183855254b65689..3f96dadf2698b2617b22eb751cfc333e6a34141f 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c
+@@ -195,6 +195,13 @@ static ssize_t amdgpu_ras_debugfs_read(struct file *f, char __user *buf,
+ 	if (amdgpu_ras_query_error_status(obj->adev, &info))
+ 		return -EINVAL;
+ 
++	/* Hardware counter will be reset automatically after the query on Vega20 and Arcturus */
++	if (obj->adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 2) &&
++	    obj->adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 4)) {
++		if (amdgpu_ras_reset_error_status(obj->adev, info.head.block))
++			dev_warn(obj->adev->dev, "Failed to reset error counter and error status");
++	}
++
+ 	s = snprintf(val, sizeof(val), "%s: %lu\n%s: %lu\n",
+ 			"ue", info.ue_count,
+ 			"ce", info.ce_count);
+@@ -548,9 +555,10 @@ static ssize_t amdgpu_ras_sysfs_read(struct device *dev,
+ 	if (amdgpu_ras_query_error_status(obj->adev, &info))
+ 		return -EINVAL;
+ 
+-	if (obj->adev->asic_type == CHIP_ALDEBARAN) {
++	if (obj->adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 2) &&
++	    obj->adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 4)) {
+ 		if (amdgpu_ras_reset_error_status(obj->adev, info.head.block))
+-			DRM_WARN("Failed to reset error counter and error status");
++			dev_warn(obj->adev->dev, "Failed to reset error counter and error status");
+ 	}
+ 
+ 	return sysfs_emit(buf, "%s: %lu\n%s: %lu\n", "ue", info.ue_count,
+@@ -1023,9 +1031,6 @@ int amdgpu_ras_query_error_status(struct amdgpu_device *adev,
+ 		}
+ 	}
+ 
+-	if (!amdgpu_persistent_edc_harvesting_supported(adev))
+-		amdgpu_ras_reset_error_status(adev, info->head.block);
+-
+ 	return 0;
+ }
+ 
+@@ -1145,6 +1150,12 @@ int amdgpu_ras_query_error_count(struct amdgpu_device *adev,
+ 		if (res)
+ 			return res;
+ 
++		if (adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 2) &&
++		    adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 4)) {
++			if (amdgpu_ras_reset_error_status(adev, info.head.block))
++				dev_warn(adev->dev, "Failed to reset error counter and error status");
++		}
++
+ 		ce += info.ce_count;
+ 		ue += info.ue_count;
+ 	}
+@@ -1705,6 +1716,12 @@ static void amdgpu_ras_log_on_err_counter(struct amdgpu_device *adev)
+ 			continue;
+ 
+ 		amdgpu_ras_query_error_status(adev, &info);
++
++		if (adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 2) &&
++		    adev->ip_versions[MP0_HWIP][0] != IP_VERSION(11, 0, 4)) {
++			if (amdgpu_ras_reset_error_status(adev, info.head.block))
++				dev_warn(adev->dev, "Failed to reset error counter and error status");
++		}
+ 	}
+ }
+ 

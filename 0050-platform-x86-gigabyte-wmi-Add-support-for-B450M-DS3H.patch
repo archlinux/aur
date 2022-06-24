@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: August Wikerfors <git@augustwikerfors.se>
+Date: Wed, 8 Jun 2022 23:20:28 +0200
+Subject: [PATCH] platform/x86: gigabyte-wmi: Add support for B450M DS3H-CF
+
+[ Upstream commit c6bc7e8ee90845556a90faf8b043cbefd77b8903 ]
+
+Tested and works on my system.
+
+Signed-off-by: August Wikerfors <git@augustwikerfors.se>
+Link: https://lore.kernel.org/r/20220608212028.28307-1-git@augustwikerfors.se
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/gigabyte-wmi.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/platform/x86/gigabyte-wmi.c b/drivers/platform/x86/gigabyte-wmi.c
+index 05588a47ac3845c7dd39f97c236957f205a42670..78446b1953f7ca993f33aaa542832e1f66da0d9c 100644
+--- a/drivers/platform/x86/gigabyte-wmi.c
++++ b/drivers/platform/x86/gigabyte-wmi.c
+@@ -140,6 +140,7 @@ static u8 gigabyte_wmi_detect_sensor_usability(struct wmi_device *wdev)
+ 	}}
+ 
+ static const struct dmi_system_id gigabyte_wmi_known_working_platforms[] = {
++	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("B450M DS3H-CF"),
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("B450M S2H V2"),
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("B550 AORUS ELITE AX V2"),
+ 	DMI_EXACT_MATCH_GIGABYTE_BOARD_NAME("B550 AORUS ELITE"),

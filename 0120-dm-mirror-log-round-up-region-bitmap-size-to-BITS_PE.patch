@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Mikulas Patocka <mpatocka@redhat.com>
+Date: Thu, 16 Jun 2022 13:28:57 -0400
+Subject: [PATCH] dm mirror log: round up region bitmap size to BITS_PER_LONG
+
+commit 85e123c27d5cbc22cfdc01de1e2ca1d9003a02d0 upstream.
+
+The code in dm-log rounds up bitset_size to 32 bits. It then uses
+find_next_zero_bit_le on the allocated region. find_next_zero_bit_le
+accesses the bitmap using unsigned long pointers. So, on 64-bit
+architectures, it may access 4 bytes beyond the allocated size.
+
+Fix this bug by rounding up bitset_size to BITS_PER_LONG.
+
+This bug was found by running the lvm2 testsuite with kasan.
+
+Fixes: 29121bd0b00e ("[PATCH] dm mirror log: bitset_size fix")
+Cc: stable@vger.kernel.org
+Signed-off-by: Mikulas Patocka <mpatocka@redhat.com>
+Signed-off-by: Mike Snitzer <snitzer@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/md/dm-log.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/md/dm-log.c b/drivers/md/dm-log.c
+index 06f328928a7f52948eb3ac0c895cd2014faa503b..2dda05aada2312509f3aba6658e7d9d9f7fad22e 100644
+--- a/drivers/md/dm-log.c
++++ b/drivers/md/dm-log.c
+@@ -415,8 +415,7 @@ static int create_log_context(struct dm_dirty_log *log, struct dm_target *ti,
+ 	/*
+ 	 * Work out how many "unsigned long"s we need to hold the bitset.
+ 	 */
+-	bitset_size = dm_round_up(region_count,
+-				  sizeof(*lc->clean_bits) << BYTE_SHIFT);
++	bitset_size = dm_round_up(region_count, BITS_PER_LONG);
+ 	bitset_size >>= BYTE_SHIFT;
+ 
+ 	lc->bitset_uint32_count = bitset_size / sizeof(*lc->clean_bits);

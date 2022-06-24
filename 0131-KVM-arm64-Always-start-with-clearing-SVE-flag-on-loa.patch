@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marc Zyngier <maz@kernel.org>
+Date: Sat, 28 May 2022 12:38:11 +0100
+Subject: [PATCH] KVM: arm64: Always start with clearing SVE flag on load
+
+commit d52d165d67c5aa26c8c89909003c94a66492d23d upstream.
+
+On each vcpu load, we set the KVM_ARM64_HOST_SVE_ENABLED
+flag if SVE is enabled for EL0 on the host. This is used to restore
+the correct state on vpcu put.
+
+However, it appears that nothing ever clears this flag. Once
+set, it will stick until the vcpu is destroyed, which has the
+potential to spuriously enable SVE for userspace.
+
+We probably never saw the issue because no VMM uses SVE, but
+that's still pretty bad. Unconditionally clearing the flag
+on vcpu load addresses the issue.
+
+Fixes: 8383741ab2e7 ("KVM: arm64: Get rid of host SVE tracking/saving")
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Cc: stable@vger.kernel.org
+Reviewed-by: Mark Brown <broonie@kernel.org>
+Link: https://lore.kernel.org/r/20220528113829.1043361-2-maz@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ arch/arm64/kvm/fpsimd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/kvm/fpsimd.c b/arch/arm64/kvm/fpsimd.c
+index 397fdac75cb1231e27fe696a084a960b282c0c72..7fe29bf6d193821001e69bd62995cdf58fb24ce3 100644
+--- a/arch/arm64/kvm/fpsimd.c
++++ b/arch/arm64/kvm/fpsimd.c
+@@ -80,6 +80,7 @@ void kvm_arch_vcpu_load_fp(struct kvm_vcpu *vcpu)
+ 	vcpu->arch.flags &= ~KVM_ARM64_FP_ENABLED;
+ 	vcpu->arch.flags |= KVM_ARM64_FP_HOST;
+ 
++	vcpu->arch.flags &= ~KVM_ARM64_HOST_SVE_ENABLED;
+ 	if (read_sysreg(cpacr_el1) & CPACR_EL1_ZEN_EL0EN)
+ 		vcpu->arch.flags |= KVM_ARM64_HOST_SVE_ENABLED;
+ }

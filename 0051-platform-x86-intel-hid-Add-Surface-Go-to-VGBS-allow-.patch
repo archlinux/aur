@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Duke Lee <krnhotwings@gmail.com>
+Date: Tue, 7 Jun 2022 14:36:54 -0700
+Subject: [PATCH] platform/x86/intel: hid: Add Surface Go to VGBS allow list
+
+[ Upstream commit d4fe9cc4ff8656704b58cfd9363d7c3c9d65e519 ]
+
+The Surface Go reports Chassis Type 9 (Laptop,) so the device needs to be
+added to dmi_vgbs_allow_list to enable tablet mode when an attached Type
+Cover is folded back.
+
+BugLink: https://github.com/linux-surface/linux-surface/issues/837
+Signed-off-by: Duke Lee <krnhotwings@gmail.com>
+Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+Link: https://lore.kernel.org/r/20220607213654.5567-1-krnhotwings@gmail.com
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/platform/x86/intel/hid.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/platform/x86/intel/hid.c b/drivers/platform/x86/intel/hid.c
+index 216d31e3403dde4fb8ed842e4be09df6c1a8c8cc..79cff1fc675c2006ffedd35dfcf08b5cac5d1cdc 100644
+--- a/drivers/platform/x86/intel/hid.c
++++ b/drivers/platform/x86/intel/hid.c
+@@ -122,6 +122,12 @@ static const struct dmi_system_id dmi_vgbs_allow_list[] = {
+ 			DMI_MATCH(DMI_PRODUCT_NAME, "HP Spectre x360 Convertible 15-df0xxx"),
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Microsoft Corporation"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "Surface Go"),
++		},
++	},
+ 	{ }
+ };
+ 

@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Alexander Usyskin <alexander.usyskin@intel.com>
+Date: Mon, 6 Jun 2022 17:42:24 +0300
+Subject: [PATCH] mei: hbm: drop capability response on early shutdown
+
+commit 68553650bc9c57c7e530c84e5b2945e9dfe1a560 upstream.
+
+Drop HBM responses also in the early shutdown phase where
+the usual traffic is allowed.
+Extend the rule that drop HBM responses received during the shutdown
+phase by also in MEI_DEV_POWERING_DOWN state.
+This resolves the stall if the driver is stopping in the middle
+of the link initialization or link reset.
+
+Drop the capabilities response on early shutdown.
+
+Fixes: 6d7163f2c49f ("mei: hbm: drop hbm responses on early shutdown")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Alexander Usyskin <alexander.usyskin@intel.com>
+Signed-off-by: Tomas Winkler <tomas.winkler@intel.com>
+Link: https://lore.kernel.org/r/20220606144225.282375-2-tomas.winkler@intel.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ drivers/misc/mei/hbm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/misc/mei/hbm.c b/drivers/misc/mei/hbm.c
+index cebcca6d6d3ef8f61932699caacc61d63ecab88f..cf2b8261da1444470a310f80c4cdc9e9cd4afeb5 100644
+--- a/drivers/misc/mei/hbm.c
++++ b/drivers/misc/mei/hbm.c
+@@ -1351,7 +1351,8 @@ int mei_hbm_dispatch(struct mei_device *dev, struct mei_msg_hdr *hdr)
+ 
+ 		if (dev->dev_state != MEI_DEV_INIT_CLIENTS ||
+ 		    dev->hbm_state != MEI_HBM_CAP_SETUP) {
+-			if (dev->dev_state == MEI_DEV_POWER_DOWN) {
++			if (dev->dev_state == MEI_DEV_POWER_DOWN ||
++			    dev->dev_state == MEI_DEV_POWERING_DOWN) {
+ 				dev_dbg(dev->dev, "hbm: capabilities response: on shutdown, ignoring\n");
+ 				return 0;
+ 			}
