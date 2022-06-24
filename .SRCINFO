@@ -1,0 +1,15 @@
+pkgbase = genxrdb-git
+	pkgdesc = a tool that generates xresources from toml
+	pkgver = r14.9deed3d
+	pkgrel = 1
+	url = https://github.com/RaafatTurki/genxrdb
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	provides = genxrdb
+	conflicts = genxrdb
+	source = git+https://github.com/RaafatTurki/genxrdb
+	sha256sums = SKIP
+
+pkgname = genxrdb-git
