@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=kriging
-_pkgver=1.1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc='Ordinary Kriging'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-maps
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc20a08af3e6175836985cb0763cca20faf32f4190e6b779a656b8fcc8c87d11')
+sha256sums=('c8238db37ba0efba2ec874a25b5738a0fa554800606b08486e94838710db0ce9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
