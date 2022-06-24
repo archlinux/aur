@@ -2,19 +2,19 @@
 
 pkgname=vilearn
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive vi tutorial."
 arch=('any')
 url="https://tildegit.org/libele/vilearn"
-license=('custom:Copyright (c) 1992 Jill Kliger and Wesley Craig')
+license=('custom:Copyright')
 optdepends=('vi: the original ex/vi text editor')
 source=("https://tildegit.org/libele/vilearn/archive/vilearn-$pkgver.tar.gz")
-b2sums=('ec1e631967f1734f2e8f58bc68e0f64099b73df1e0b9d043582e2b21026079f3b7e1b248036fbf4e37249e2d2ba8eb703a2457fe2081b48b7a366c8d675000dd')
+b2sums=('f4ef596543b8d777990205129061c8417e457de41283cb58d51aba491f0382f8fec740c34919a9712472692f104a36805d6efdae7ee6e5bb9b649bb5170894fa')
 
 package() {
   cd "${pkgname}"
 
   make DESTDIR=${pkgdir} install
-  install -Dm644 README "${pkgdir}"/usr/share/vilearn
+  install -Dm644 README.md "${pkgdir}"/usr/share/vilearn/README
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/vilearn/LICENSE
 }
