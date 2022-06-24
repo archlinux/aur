@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('zsh>=4.3.17')
 makedepends=('git' 'coreutils' 'sed')
-source=('git://github.com/sorin-ionescu/prezto.git' 'install')
+source=('git+https://github.com/sorin-ionescu/prezto.git' 'install')
 options=('!strip')
 install='install'
 md5sums=('SKIP'
@@ -42,7 +42,7 @@ build() {
 		if [ -f $srcdir/$_gitname/runcoms/$rcfile ]; then
 			echo "source /usr/lib/prezto/runcoms/$rcfile" >> "$srcdir/etc/zsh/$rcfile"
 		fi
-	done	
+	done
 }
 
 package() {
