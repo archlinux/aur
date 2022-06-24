@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.34.0.158.g8087e3371f
+	pkgver = v0.34.0.360.g8da6b355f8
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -47,6 +47,7 @@ pkgbase = mpv-build-git
 	depends = luajit
 	depends = mujs
 	depends = libopenal.so
+	depends = libxpresent
 	depends = rubberband
 	depends = sdl2
 	depends = sndio

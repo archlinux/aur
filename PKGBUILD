@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.34.0.158.g8087e3371f
+pkgver=v0.34.0.360.g8da6b355f8
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -35,6 +35,7 @@ depends=(
          'luajit'
          'mujs'
          'libopenal.so'
+         'libxpresent'
          'rubberband'
          'sdl2'
          'sndio'
