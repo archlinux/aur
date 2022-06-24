@@ -2,7 +2,7 @@
 pkgname=bgpalerter-bin
 _pkgname=bgpalerter
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to monitor streams of BGP data"
 arch=('x86_64')
 url="https://github.com/nttgin/BGPalerter"
@@ -29,6 +29,7 @@ sha512sums=('9156521d1018518a7158331d1009c46d65d16eb6dead8544f9adfc116100cbce280
 package(){
 	cd "${srcdir}"
 	install -Dm644  LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+        install -Dm755  ${pkgname}-${pkgver} "${pkgdir}/opt/${_pkgname}/bgpalerter"
         install -Dm 644 "${_pkgname}.service" -t "$pkgdir/usr/lib/systemd/system/"
         install -Dm 644 "${_pkgname}.sysusers"   "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
         install -Dm 644 "${_pkgname}.tmpfiles"   "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"

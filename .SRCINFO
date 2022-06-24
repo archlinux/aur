@@ -1,7 +1,7 @@
 pkgbase = bgpalerter-bin
 	pkgdesc = Software to monitor streams of BGP data
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nttgin/BGPalerter
 	arch = x86_64
 	license = BSD
