@@ -1,13 +1,12 @@
 pkgbase = pgn-extract
 	pkgdesc = A Portable Game Notation (PGN) Manipulator for Chess Games
-	pkgver = 21.02
+	pkgver = 22.07
 	pkgrel = 1
 	url = https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	source = https://www.cs.kent.ac.uk/~djb/pgn-extract/pgn-extract-21-02.tgz
-	sha256sums = 311942009042a2b21dfb015caa777bf85f425a3ffe7f43ced50acd6aab99543b
+	source = https://www.cs.kent.ac.uk/~djb/pgn-extract/pgn-extract-22-07.tgz
+	sha256sums = 51dda2d8cca7a6390c82d7f928263e3885b4ab62eb7e16a4431877af903ea7a6
 
 pkgname = pgn-extract
-
