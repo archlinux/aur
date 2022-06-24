@@ -425,4 +425,3 @@ void goodix_save_bak_ref(struct goodix_ts_data *ts)
 		ts->bak_ref[ts->bak_ref_len - 1] = 1;
 	}
 }
-
