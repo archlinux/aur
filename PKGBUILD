@@ -3,8 +3,8 @@
 _subproject_name='chcase'
 _subproject_commit='f56e20de2fc775d58fcf534d321490ab8bd2facb' # <-- NB: update on new version
 
-pkgname='konbucase'
-pkgver=3.0.0
+pkgname=konbucase
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Convert case of your text'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('granite' 'gtksourceview4')
 makedepends=('git' 'meson' 'vala')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "git+${url%/*}/${_subproject_name}#commit=${_subproject_commit}")
-sha256sums=('30fa24cd910b03df0ea9e68f0b384fb8fdd57e689b30a98bdc63046417ff4b19'
+sha256sums=('bd56da1f6473ad49c4f21771b9c3133c473791e96ce1ba8d0eaee2a0eed39c05'
             'SKIP')
 
 prepare() {

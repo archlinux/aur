@@ -1,6 +1,6 @@
 pkgbase = konbucase
 	pkgdesc = Convert case of your text
-	pkgver = 3.0.0
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://github.com/ryonakano/konbucase
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = konbucase
 	makedepends = vala
 	depends = granite
 	depends = gtksourceview4
-	source = konbucase-3.0.0.tar.gz::https://github.com/ryonakano/konbucase/archive/3.0.0.tar.gz
+	source = konbucase-3.4.2.tar.gz::https://github.com/ryonakano/konbucase/archive/3.4.2.tar.gz
 	source = git+https://github.com/ryonakano/chcase#commit=f56e20de2fc775d58fcf534d321490ab8bd2facb
-	sha256sums = 30fa24cd910b03df0ea9e68f0b384fb8fdd57e689b30a98bdc63046417ff4b19
+	sha256sums = bd56da1f6473ad49c4f21771b9c3133c473791e96ce1ba8d0eaee2a0eed39c05
 	sha256sums = SKIP
 
 pkgname = konbucase
-
