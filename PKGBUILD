@@ -5,17 +5,17 @@
 
 pkgname=python-openai
 _pkgname=openai
-pkgver=0.18.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='convenient access to the OpenAI API from applications written in the Python language.'
 arch=('any')
 url='https://openai.com/'
 license=('MIT')
-depends=('python' 'python-requests' 'python-tqdm')
+depends=('python' 'python-requests' 'python-tqdm' 'python-pandas' 'python-openpyxl' 'python-pandas-stubs')
 makedepends=('python-setuptools')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/openai/${_pkgname}-python/archive/v${pkgver}.tar.gz")
-sha512sums=('ffc924fe00f936c262575576ccb36bd9496696ef5557159905c3c4827d4e519bd5cc21f0fa2d7404c76cc3b20dd59e0571a122b57ee375261699bc7e8624c7f2')
+sha512sums=('12793d83575971bfb1bf3ce563c650b8c9bfbc1ba47fcf7a3cbcec462abbb9af3ff19ee1f5ba9cd9c8cec11c14bb8a53e12df4a6d783f0b904ab2c1209243cfc')
 
 build()
 {
