@@ -11,6 +11,8 @@ pkgbase = himitsu-ssh
 	makedepends = scdoc
 	depends = himitsu
 	source = himitsu-ssh-0.1.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-ssh/archive/0.1.tar.gz
+	source = hissh-agent.service
 	sha256sums = dfc8a1a1797a6d040a5f2cacf29c3c7a1608be1d9e3c5c0265a7d852087cf437
+	sha256sums = cff7c70946d9d06f06588e3a3b8c833eb67204a7c936f3f77ee3c8b18974a2ff
 
 pkgname = himitsu-ssh
