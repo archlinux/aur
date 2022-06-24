@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.20
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ checkdepends=('python-pytest-remotedata'
 #             'jupyter-nbformat'
 #             'python-sphinx'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1b5f3bb0a5c001bcf401dd5816ab625e')
+md5sums=('a061826514fc5915660296b351f386a2')
 
 get_pyver() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
