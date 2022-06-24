@@ -3,7 +3,7 @@
 _pkgbase=goodix-gpdwin3
 pkgname=${_pkgbase}-dkms
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Goodix touchscreen driver hack for GPD WIN3"
 arch=('any')
 license=('GPL2')
@@ -20,7 +20,7 @@ md5sums=('6ef1b9c306d7996e7bfdb9cc50677f81'
 	 '7543431323fd4a1efb2d381b69886ef9'
 	 '616b595d278b52a265156c2fa68a740c'
          'f514c2a1d6de0f50ea5ebc112447ff7d'
-         '53d0b9c5ba6ba5457fd65ed901323360'
+         'aa21936d9b3341c25761f7c4a827f39d'
          '1505740dffca34d8119f3798a0624ebc')
 
 package() {

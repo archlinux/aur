@@ -1,5 +1,4 @@
 BASE_NAME := goodix
-KERNEL_SOURCE_DIR = /lib/modules/`uname -r`/build
 
 obj-m := goodix-gpdwin3.o
 goodix-gpdwin3-objs := $(BASE_NAME).o $(BASE_NAME)_fwupload.o
