@@ -19,7 +19,7 @@ source=(https://github.com/rern/rern.github.io/raw/main/python-rpi-gpio/$pkgname
 sha256sums=('2db2b11bd150b9f4779de02fd807681a9acd8a31c1063287eb3bbdfba96227d5')
 
 package() {
-	mv -f $srcdir/$pkgname-$pkgver "$srcdir/RPi.GPIO-$pkgver"
-	cd "$srcdir/RPi.GPIO-$pkgver"
-	env CFLAGS="-fcommon" python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	mv -f $srcdir/{$pkgname,RPi.GPIO}-$pkgver
+	cd $srcdir/RPi.GPIO-$pkgver
+	env CFLAGS="-fcommon" python setup.py install --prefix=/usr --root=$pkgdir --optimize=1
 }
