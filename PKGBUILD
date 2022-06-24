@@ -14,7 +14,7 @@ url="https://github.com/tx00100xt/SeriousSamClassic"
 license=('GPL2')
 depends=('sdl2' 'python' 'bash')
 makedepends=('cmake' 'make' 'sed')
-replaces=('serioussam-vk')
+conflicts=('serioussam-vk')
 install=serioussam.install
 source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgver.tar.gz"
     "https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partaa"
