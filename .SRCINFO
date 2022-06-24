@@ -6,7 +6,7 @@ pkgbase = nerdfetch
 	arch = any
 	license = GPL
 	makedepends = git
-	source = https://codeberg.org/thatonecalculator/NerdFetch/archive/v5.0.2.tar.gz
+	source = nerdfetch.tar.gz::https://codeberg.org/thatonecalculator/NerdFetch/archive/v5.0.2.tar.gz
 	md5sums = SKIP
 
 pkgname = nerdfetch
