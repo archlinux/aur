@@ -1,7 +1,7 @@
 _pkgname=zihap
 pkgname=zihap-git
 pkgver=a15526e5154612ae145f5441e34a5429501b64f8
-pkgrel=1
+pkgrel=0
 pkgdesc="A meta chat app that base on suckless sofware (surf , tabbled , dmenu)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/exkc/zihap/"
