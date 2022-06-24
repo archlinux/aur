@@ -1,11 +1,11 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
-pkgver=19.1.0
+pkgver=19.1.1
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Matrix
 _gitname=pvr.iptvsimple
-_kodiver=19.3
+_kodiver=19.4
 arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
@@ -16,8 +16,8 @@ depends=('kodi')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('c92736b3f3c96fe36d7b20b329c82b47180260e3ed40fc456ef709572fad5fb0'
-            '440f47e475dd8a48e0a6d41349e83b74890f3fbe8275d3e401d3c50f5b9ea09b'
+sha256sums=('9950efc08be9ca6e6db65397d06bc9d3bb64782b4d6081e9a34a90d0a9635aea'
+            'cc026f59fd6e37ae90f3449df50810f1cefa37da9444e1188302d910518710da'
             )
 
 prepare() {
