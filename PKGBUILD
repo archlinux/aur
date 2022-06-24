@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=hw-probe-git
-pkgver=1.6
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org"
 arch=('any')

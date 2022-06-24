@@ -1,6 +1,6 @@
 pkgbase = hw-probe-git
 	pkgdesc = Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org
-	pkgver = 1.6
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/linuxhw/hw-probe
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = hw-probe-git
 	optdepends = smartmontools
 	optdepends = inxi
 	optdepends = pnputils
-	provides = hw-probe=1.6
+	provides = hw-probe=1.6.4
 	conflicts = hw-probe
-	source = https://github.com/linuxhw/hw-probe
+	source = git+https://github.com/linuxhw/hw-probe
 	md5sums = SKIP
 
 pkgname = hw-probe-git
