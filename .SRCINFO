@@ -1,7 +1,7 @@
 pkgbase = htmail-view
 	pkgdesc = Web page renderer based on WebKit
 	pkgver = 20190721
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liske/htmail-view
 	arch = any
 	license = GPL2
