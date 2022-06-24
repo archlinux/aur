@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer-git
 _pkgver=5.1.0
-pkgver=5.1.0.r27814.f6eb38811b
+pkgver=5.1.0.r27906.0f29c7c9a7
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
@@ -61,6 +61,8 @@ prepare() {
   sed -i 's/find_package(${proj} REQUIRED)/find_package(SQLite3 REQUIRED)/' "${srcdir}/${_pkgname}/SuperBuild/External_sqlite.cmake"
   # fix building with system teem
   sed -i '/ExternalProject_Add_Empty/d' "${srcdir}/${_pkgname}/SuperBuild/External_teem.cmake"
+  # fix issue https://github.com/Slicer/Slicer/issues/6437
+  sed -i "s,list(APPEND Slicer_REQUIRED_QT_MODULES Script),list(APPEND Slicer_REQUIRED_QT_MODULES Script Test)," "${srcdir}/${_pkgname}/CMakeLists.txt"
 }
 
 build() {
