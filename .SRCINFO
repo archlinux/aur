@@ -1,14 +1,22 @@
 pkgbase = nextcloud-app-gpxpod
 	pkgdesc = view gpx tracks
-	pkgver = 4.2.8
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://gitlab.com/eneiluj/gpxpod-oc
 	arch = any
 	license = GPL
+	makedepends = nextcloud
+	makedepends = php
+	makedepends = ripgrep
+	makedepends = yq
 	depends = nextcloud
 	options = !strip
-	source = https://gitlab.com/eneiluj/gpxpod-oc/-/wikis/uploads/630aee117900664644669890e6693383/gpxpod-4.2.8.tar.gz
-	sha256sums = 84165aafbb61436a34741b6bbffe5b9328ad42bc17134d0167ee75fe470987ec
+	source = https://gitlab.com/eneiluj/gpxpod-oc/-/wikis/uploads/89555a30934ebbe34c3a515aabd1781a/gpxpod-4.3.0.tar.gz
+	sha256sums = 248c467cae7a82aef466f4e0de335ac6ee05cd06fab9178717f4afd30a8e810a
 
 pkgname = nextcloud-app-gpxpod
-
+	depends = nextcloud>=
+	depends = nextcloud<
+	depends = php-interpreter>=
+	depends = php-interpreter<
+	depends = php-interpreter
