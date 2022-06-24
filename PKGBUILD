@@ -64,7 +64,7 @@ check() {
     cd "${_pyname}-${pkgver}"
 
     _pyver=$(get_pyver)
-    for _pyso in build/lib.linux-${CARCH}-$(get_pyver)/skimage/*/*cpython-${_pyver/./}-${CARCH}-linux-gnu.so; do
+    for _pyso in build/lib.linux*/skimage/*/*cpython-${_pyver/./}-${CARCH}-linux-gnu.so; do
         ln -rs ${_pyso} ${_pyso#build/lib*/}
     done
     # ImportError: cannot import name 'generic_cy'
