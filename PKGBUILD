@@ -1,41 +1,25 @@
 # Maintainer: robertfoster
+
 pkgname=whatsie
 pkgver=4.4
 pkgrel=1
-pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
-arch=('x86_64')
-url="https://github.com/oberon-manjaro/$pkgname"
+pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
+arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
+url="https://github.com/keshavbhatt/whatsie"
 license=('MIT')
-depends=('desktop-file-utils'
-         'gconf'
-         'gtk2'
-         'gvfs'
-         'hicolor-icon-theme'
-         'libcap'
-         'libgcrypt'
-         'libgudev'
-         'libnotify'
-         'libxss'
-         'libxtst'
-         'nss'
-         'python'
-         'xdg-utils')
-optdepends=('hunspell: spell check' )
-options=('!docs' '!emptydirs')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.deb")
-md5sums=('d2e5cb515503cb9e4ae2f574992772c0')
-package() {
-  msg2 "Extracting the data.tar.gz..."
-  bsdtar -xf data.tar.gz -C "$pkgdir/"
+depends=('qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-webchannel' 'qt5-webengine')
+makedepends=('qt5-base')
+source=("${url}/archive/${pkgver}.tar.gz")
 
-  # Link to the binary
-  msg2 "Creating symlink..."
-  mkdir -p "$pkgdir/usr/bin/"
-  ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
-
-  # Archify folder permissions
-  cd $pkgdir
-  for d in $(find . -type d); do
-    chmod 755 $d
-  done
+build() {
+  cd "${pkgname}"
+  qmake src
+  make
 }
+
+package() {
+  cd "${pkgname}"
+  make INSTALL_ROOT="${pkgdir}" install
+}
+
+sha256sums=('e1a09257b64015f69f897b4cb1247df13060d76334b95e3b535185d4bddee1ab')
