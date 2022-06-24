@@ -1,5 +1,5 @@
 pkgbase = cro-chain-desktop-bin
-	pkgdesc = Crypto.org Chain desktop wallet (AppImage version)
+	pkgdesc = Crypto.com DeFi Desktop Wallet (AppImage version)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/crypto-com/chain-desktop-wallet
