@@ -1,19 +1,22 @@
 pkgbase = python-azkaban
 	pkgdesc = Lightweight Azkaban client
 	pkgver = 0.9.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtth/azkaban
 	changelog = CHANGES
 	arch = any
 	license = MIT
 	checkdepends = python-nose
-	makedepends = python-setuptools
 	makedepends = git
-	depends = python-six>=1.6.1
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-six
 	depends = python-docopt
-	depends = python-requests>=2.4.0
+	depends = python-requests
 	depends = python-urllib3
-	source = python-azkaban-0.9.14::git+https://github.com/mtth/azkaban#tag=0.9.14?signed
+	source = python-azkaban::git+https://github.com/mtth/azkaban#tag=0.9.14?signed
 	validpgpkeys = 5E58F75A5DA44C4BCD6713A07800266DA107476A
 	sha256sums = SKIP
 
