@@ -1,0 +1,19 @@
+pkgbase = serioussam-pese2q
+	pkgdesc = Serious Sam Classic PESE2Q native Linux.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tx00100xt/SE1-ParseError
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = sed
+	depends = sdl2
+	depends = python
+	depends = bash
+	source = https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v1.0.tar.gz
+	sha512sums = 80fbbba6d510e3353dd630770589fe0047928a4940be0b561a6159435f3dcdf109cefc5cc651bdd47bafaab59e02efa8e126c585ab6a63400d9a0b9fff269b0f
+
+pkgname = serioussam-pese2q
+
