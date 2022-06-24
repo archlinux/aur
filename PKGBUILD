@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Clabaut <mathieu[at]clabaut.net>
 
 pkgname=prometheus-blackbox-exporter-bin
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP (binary, not built from source)."
 arch=('x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -53,23 +53,23 @@ package() {
     install -D -m0644 "${srcdir}/config.yml" \
         "${pkgdir}/etc/prometheus/blackbox.yml"
 }
-md5sums_x86_64=('e92e48a4199046fdd92ad21eba658b8f'
-                '81d90a7cdaadf99c5aa1399864dcf3da'
-                '45cf951d67cf59d74be82d0ddcce704d'
-                '15acae9345cc6032933e54c0cf1cbc35'
-                'bb6cc4816b1a50346799bf2200c73e3f')
-md5sums_armv5h=('e92e48a4199046fdd92ad21eba658b8f'
-                '81d90a7cdaadf99c5aa1399864dcf3da'
-                '45cf951d67cf59d74be82d0ddcce704d'
-                '15acae9345cc6032933e54c0cf1cbc35'
-                '77d16f6c715260ef064b5211d81117b5')
-md5sums_armv6h=('e92e48a4199046fdd92ad21eba658b8f'
-                '81d90a7cdaadf99c5aa1399864dcf3da'
-                '45cf951d67cf59d74be82d0ddcce704d'
-                '15acae9345cc6032933e54c0cf1cbc35'
-                '3b92629163d19d6d0b260f07ddbc3802')
-md5sums_armv7h=('e92e48a4199046fdd92ad21eba658b8f'
-                '81d90a7cdaadf99c5aa1399864dcf3da'
-                '45cf951d67cf59d74be82d0ddcce704d'
-                '15acae9345cc6032933e54c0cf1cbc35'
-                '8a9e46cceda255a3a73db8934ad2eef4')
+sha256sums_x86_64=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
+                   '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
+                   '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
+                   '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
+                   '0c4a2c3321234cca1b39cd063fbeec6283c030af875281ff68be3c04633a8386')
+sha256sums_armv5h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
+                   '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
+                   '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
+                   '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
+                   'd577373457d59e2068f699b690db98e3137efede16dc00fdaaf165a0df397d37')
+sha256sums_armv6h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
+                   '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
+                   '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
+                   '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
+                   'eda8b420697ba80b36db12d80a75a1645ee78c2f0af34f4d9d0399520402a3af')
+sha256sums_armv7h=('a849ded3bee31f676b13fd0bcc9264ff577a31ab4b3fb23c34e64767588ef857'
+                   '38d9cf33beabc7bcf2a2504c2657ecee66a96da94a4f829619e92980800da3ce'
+                   '17e5b3850058fd95e07b2d5d96d4869436ff475f190c731b11d6cf6914c7c9f3'
+                   '1ccc0cb5bcd94c5b6cafe795f7bdcc411c4bcc2ef8bd84a7683a604136c609e4'
+                   'daea29cf506a9a2e8593a576743f3cdf3f438753ca82a9cd9b8d2141a31d0b41')
