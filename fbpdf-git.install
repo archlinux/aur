@@ -1,6 +1,0 @@
-post_install(){
-  echo "==> It seems there is a problem with openjpeg."
-  echo "    Problem is resolved by replacing -lopenjpeg with -lopenjp2 in Makefile."
-  echo ""
-}
-

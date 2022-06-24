@@ -1,55 +1,40 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Lu Xu <oliver_lew at outlook dot com>
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=fbpdf-git
-pkgver=r94.dfe9f00
+pkgver=r101.ba231d2
 pkgrel=1
-epoch=
 pkgdesc="A small framebuffer pdf viewer, based on MuPDF."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
 license=('ISC')
-groups=()
-depends=('mupdf' 'libmupdf' 'mujs' 'poppler' 'djvulibre' 'openjpeg2')
+depends=('libmupdf' 'mujs' 'freetype2' 'gumbo-parser' 'harfbuzz' 'jbig2dec' 'libjpeg' 'djvulibre' 'openjpeg2')
 makedepends=('git')
-optdepends=('poppler' 'djvulibre')
-checkdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
-install=fbpdf-git.install
+provides=('fbpdf')
+conflicts=('fbpdf')
 source=("$pkgname::git+git://repo.or.cz/fbpdf.git"
         'fbpdf.1')
-noextract=()
-md5sums=('SKIP'
-         'ae7299de0fcd8e945940b014ba335c1b')
-sha1sums=('SKIP'
-          'f9a0cc6beb0e118b1116e08c5a0b91a028f8177e')
 sha256sums=('SKIP'
-            '157e29d7bacf906762a003271b189ca93f51c5f5cfad25e469ec4936c4d8cf5e')
+            '4dd8ea547f8880d2f35452ea1a1b144a2235aec09cddfd65e0b3117ba698c203')
+
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  sed -i 's/-lmupdf-pkcs7 -lmupdf-threads/-lfreetype -lharfbuzz -lz -ljbig2dec -ljpeg -lopenjp2/' Makefile
+    cd "$srcdir/$pkgname"
+    sed -i 's/-lmupdf-pkcs7 -lmupdf-threads/-lfreetype -lharfbuzz -lz -ljbig2dec -ljpeg -lopenjp2 -lgumbo/' Makefile
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make LDFLAGS="-lharfbuzz" all
-  make fbpdf2
+    cd "$srcdir/$pkgname"
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 fbpdf $pkgdir/usr/bin/neatfbpdf
-  install -Dm755 fbpdf2 $pkgdir/usr/bin/fbpdf2
-  install -Dm755 fbdjvu $pkgdir/usr/bin/fbdjvu
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
-  install -Dm644 $srcdir/fbpdf.1 $pkgdir/usr/share/man/man1/fbpdf.1
+    cd "$srcdir/$pkgname"
+    # avoid conflict with fbida package
+    install -Dm755 fbpdf $pkgdir/usr/bin/fbpdf-mupdf
+    install -Dm755 fbdjvu $pkgdir/usr/bin/fbdjvu
+    install -Dm644 $srcdir/fbpdf.1 $pkgdir/usr/share/man/man1/fbpdf.1
 }
-
