@@ -1,7 +1,7 @@
 _pkgname=zihap
 pkgname=zihap-git
-pkgver=a15526e5154612ae145f5441e34a5429501b64f8
-pkgrel=0
+pkgver=79de75267c5f12c85ea1202bdeb73c0c86115d10
+pkgrel=1
 pkgdesc="zihap is a Unified Messaging and Social Media Apps which combines all your messaging services and social media into one single windows."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/exkc/zihap/"
