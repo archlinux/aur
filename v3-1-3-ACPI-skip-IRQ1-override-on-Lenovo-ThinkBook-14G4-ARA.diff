@@ -1,0 +1,43 @@
+---
+Change since v1:
+ Match DMI_PRODUCT_NAME for ThinkBook because the board name
+ is used for other completely different Lenovo laptops.
+
+Change since v2:
+ fix alphabetical order in skip_override_table
+
+ drivers/acpi/resource.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
+index c2d494784425..f888c62b8b96 100644
+--- a/drivers/acpi/resource.c
++++ b/drivers/acpi/resource.c
+@@ -399,6 +399,17 @@ static const struct dmi_system_id medion_laptop[] = {
+ 	{ }
+ };
+ 
++static const struct dmi_system_id irq1_edge_low_shared[] = {
++	{
++		.ident = "Lenovo ThinkBook 14 G4+ ARA",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "21D0"),
++		},
++	},
++	{ }
++};
++
+ struct irq_override_cmp {
+ 	const struct dmi_system_id *system;
+ 	unsigned char irq;
+@@ -408,6 +419,7 @@ struct irq_override_cmp {
+ };
+ 
+ static const struct irq_override_cmp skip_override_table[] = {
++	{ irq1_edge_low_shared, 1, ACPI_EDGE_SENSITIVE, ACPI_ACTIVE_LOW, 1 },
+ 	{ medion_laptop, 1, ACPI_LEVEL_SENSITIVE, ACPI_ACTIVE_LOW, 0 },
+ };
+ 
+-- 
+2.36.1

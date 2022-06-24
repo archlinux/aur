@@ -1,0 +1,27 @@
+---
+Change since v1: new patch
+Change since v2: none
+
+ drivers/acpi/resource.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
+index f888c62b8b96..30c0d85b2bf2 100644
+--- a/drivers/acpi/resource.c
++++ b/drivers/acpi/resource.c
+@@ -407,6 +407,13 @@ static const struct dmi_system_id irq1_edge_low_shared[] = {
+ 			DMI_MATCH(DMI_PRODUCT_NAME, "21D0"),
+ 		},
+ 	},
++	{
++		.ident = "Redmi Book Pro 15 2022",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "TIMI"),
++			DMI_MATCH(DMI_BOARD_NAME, "TM2113"),
++		},
++	},
+ 	{ }
+ };
+ 
+-- 
+2.36.1

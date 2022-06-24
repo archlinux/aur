@@ -1,0 +1,8 @@
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/config
+!/v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.diff
+!/v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.diff
+!/v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.diff

@@ -1,0 +1,56 @@
+pkgbase = linux-zen-irq1-edge-low-shared
+	pkgdesc = Linux ZEN
+	pkgver = 5.18.6.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.18.6-zen1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.18.6-zen1
+	source = config
+	source = v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.diff
+	source = v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.diff
+	source = v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.diff
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
+	sha256sums = SKIP
+	sha256sums = 01fc2a937a19dad37a6e1c0262de3fc45aeca23e53166342eb9148e4900e04c4
+	sha256sums = 1d29bf631ec569c8a7b4e82f45d4cb9a6333d4ad31c1973db950a919b42721ec
+	sha256sums = 8132fb88b80e086811e717143dc23ca708bcb33aab78c598c48c28124068d84d
+	sha256sums = 35677589d0149a563c51f723805b1517bf6f5e4df8261b189b68578f09ad670d
+
+pkgname = linux-zen-irq1-edge-low-shared
+	pkgdesc = The Linux ZEN kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = VHBA-MODULE
+	provides = UKSMD-BUILTIN
+	replaces = 
+
+pkgname = linux-zen-irq1-edge-low-shared-headers
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel
+	depends = pahole
+
+pkgname = linux-zen-irq1-edge-low-shared-docs
+	pkgdesc = Documentation for the Linux ZEN kernel
