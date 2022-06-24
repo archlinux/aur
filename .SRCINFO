@@ -1,5 +1,5 @@
 pkgbase = java-openjdk-xdg
-	pkgver = 18.0.1.u10
+	pkgver = 18.0.1.1.u2
 	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
@@ -40,13 +40,13 @@ pkgbase = java-openjdk-xdg
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
 	options = !lto
-	source = https://github.com/openjdk/jdk18u/archive/jdk-18.0.1+10.tar.gz
+	source = https://github.com/openjdk/jdk18u/archive/jdk-18.0.1.1+2.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = xdg-basedir-compliant-fontconfig.patch
 	source = xdg-basedir-compliant-userPrefs.patch
-	sha256sums = 831df6eafa1698bf2dd524241a740669c9c737f1bf5872100746e745ba6dd6ea
+	sha256sums = 57ed6b990b24b1e8b50099a265841add596d2c82e73c7c82bb530a8f53a47732
 	sha256sums = 58bf779332d21151ba47719926ddcc8811ac7bbf414222141dcf40ac54cfaa2d
 	sha256sums = 3a50ded3918024de4e441a46744c8e342faf46441b53c8bac7d589055a28a13c
 	sha256sums = 2cace78ec911f73578991370914753c5b6abe9f7304bcbcb7a3077b8dbc7c867
@@ -73,7 +73,7 @@ pkgname = jre-openjdk-headless-xdg
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	provides = jre18-openjdk-headless=18.0.1.u10-1
+	provides = jre18-openjdk-headless=18.0.1.1.u2-1
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -92,7 +92,7 @@ pkgname = jre-openjdk-headless-xdg
 pkgname = jre-openjdk-xdg
 	pkgdesc = OpenJDK Java 18 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre18-openjdk-headless=18.0.1.u10-1
+	depends = jre18-openjdk-headless=18.0.1.1.u2-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -103,12 +103,12 @@ pkgname = jre-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=18
 	provides = java-runtime-openjdk=18
-	provides = jre18-openjdk=18.0.1.u10-1
+	provides = jre18-openjdk=18.0.1.1.u2-1
 
 pkgname = jdk-openjdk-xdg
 	pkgdesc = OpenJDK Java 18 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre18-openjdk=18.0.1.u10-1
+	depends = jre18-openjdk=18.0.1.1.u2-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -116,14 +116,14 @@ pkgname = jdk-openjdk-xdg
 	depends = gcc-libs
 	provides = java-environment=18
 	provides = java-environment-openjdk=18
-	provides = jdk18-openjdk=18.0.1.u10-1
+	provides = jdk18-openjdk=18.0.1.1.u2-1
 
 pkgname = openjdk-src-xdg
 	pkgdesc = OpenJDK Java 18 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.1.u10-1
-	provides = openjdk18-src=18.0.1.u10-1
+	depends = jdk18-openjdk=18.0.1.1.u2-1
+	provides = openjdk18-src=18.0.1.1.u2-1
 
 pkgname = openjdk-doc-xdg
 	pkgdesc = OpenJDK Java 18 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk18-openjdk=18.0.1.u10-1
-	provides = openjdk18-doc=18.0.1.u10-1
+	depends = jdk18-openjdk=18.0.1.1.u2-1
+	provides = openjdk18-doc=18.0.1.1.u2-1
