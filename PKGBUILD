@@ -1,13 +1,13 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch"
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
-url="https://github.com/ThatOneCalculator/NerdFetch"
+url="https://codeberg.org/thatonecalculator/NerdFetch"
 license=('GPL')
 makedepends=('git')
-source=("https://github.com/ThatOneCalculator/NerdFetch/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://codeberg.org/thatonecalculator/NerdFetch/archive/v${pkgver}.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
