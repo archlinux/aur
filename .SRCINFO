@@ -31,8 +31,8 @@ pkgbase = macaulay2
 	depends = glpk
 	depends = gfan
 	depends = gtest
+	depends = givaro
 	source = git+https://github.com/Macaulay2/M2
 	md5sums = SKIP
 
 pkgname = macaulay2
-
