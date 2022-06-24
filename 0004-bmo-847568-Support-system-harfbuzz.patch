@@ -106,14 +106,14 @@ diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
 index 3f483d180e..4bb25233e7 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -287,6 +287,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+@@ -286,6 +286,9 @@
  
  DEFINES["GRAPHITE2_STATIC"] = True
  
 +if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
 +    CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 +
- if CONFIG["CC_TYPE"] == "clang":
+ if CONFIG["CC_TYPE"] in ("clang", "clang-cl"):
      # Suppress warnings from Skia header files.
      SOURCES["gfxPlatform.cpp"].flags += ["-Wno-implicit-fallthrough"]
 diff --git a/intl/unicharutil/util/moz.build b/intl/unicharutil/util/moz.build

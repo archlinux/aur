@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=100.0.2
+pkgver=101.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=081e705dab36a3b67d60f8e4ba9ee426095d0227
+_patchrev=258c46cb700250b2f131d441e6470e5a23ee8a4b
 options=('!emptydirs' !lto)
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -111,6 +111,9 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix_csd_window_buttons.patch
         # Workaround #14
         fix-wayland-build.patch
+        # Fix building with cbdingen > 0.23.0 #22 MOZILLA#1773259
+        fix_ftbfs_cbindgen_gt_0.23.patch
+
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -170,6 +173,9 @@ prepare() {
 
   # Workaround #14
   patch -Np1 -i "$srcdir"/fix-wayland-build.patch
+
+  # Fix building with cbdingen > 0.23.0 #22 MOZILLA#1773259
+  patch -p1 -i "$srcdir"/fix_ftbfs_cbindgen_gt_0.23.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -306,12 +312,12 @@ md5sums=('SKIP'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
          '1d5e9215530ef6778299b67dc6dba65e'
-         '52681df0a4fde83d8060724283ee681c'
+         'd8990ad2a2478aa9b3d8d997337c1b11'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         'be5c90ee2edeed5509d840d87e1e429b'
+         '3ff786d079642fcb0065b7e5c609d8c6'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
-         '350c258cdaeef99b4638c5181fda3ad2'
+         'dc47b8b0582ca8e97d68e5636b72853c'
          '9e518b30cf2ff9afd0423c79d12ae7b2'
          '0c292d03c77bc377c2cdc5aa2df248d9'
          '548de130fc0f470bff0b6d994a0a91cd'
@@ -321,4 +327,5 @@ md5sums=('SKIP'
          '943b9fe2ba474f7809a41622744f97f9'
          '31f950a94966287bfa6ccf03030781cc'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a')
+         '2cf74781f6b742d6b7e6f7251f49311a'
+         'dc17d808361a7e61e294e40a0bb8371e')
