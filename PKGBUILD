@@ -10,7 +10,7 @@ license=('EPL')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-$pkgver.tar.gz")
-sha256sums=('499b836cf58a9f1927ad2b5a40c3cbd0dd38dbe08d2df8fa8acd538c28fc8fa9')
+sha256sums=('59c36ce77ba9dda8dd57ad875776e7105ddb1fa851bc039bb3aeadeac4f67b56')
 
 build() {
     cd "$srcdir"/asyncssh-$pkgver
