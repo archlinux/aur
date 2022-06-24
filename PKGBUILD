@@ -1,13 +1,13 @@
 # Maintainer: Newman Sanchez <lrtech8 at gmail dot com>
 pkgname=lightnovel.sh-git
 _pkgname=lightnovel.sh
-pkgver=r4.0e8ccaf
+pkgver=r6.3ebcdfb
 pkgrel=1
 pkgdesc="A terminal-based lightnovel reader written in Bash."
 arch=('any')
 url="https://github.com/lr-tech/lightnovel.sh"
 license=('MIT')
-depends=('awk' 'coreutils' 'curl' 'grep' 'less' 'ncurses' 'sed' 'w3m')
+depends=('coreutils' 'curl' 'grep' 'less' 'ncurses' 'sed' 'w3m')
 makedepends=('git')
 source=("git+https://github.com/lr-tech/lightnovel.sh.git")
 md5sums=('SKIP')
