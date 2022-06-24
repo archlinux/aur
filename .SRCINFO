@@ -1,13 +1,13 @@
 pkgbase = r-c3net
 	pkgdesc = Infering large-scale gene networks with C3NET
-	pkgver = 1.1.1
-	pkgrel = 4
+	pkgver = 1.1.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=c3net
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-igraph
-	source = https://cran.r-project.org/src/contrib/c3net_1.1.1.tar.gz
-	sha256sums = 8260569962f2d91ec6627f226d3949f271cc2cfd03886ad854b4ce4074de9654
+	source = https://cran.r-project.org/src/contrib/c3net_1.1.1.1.tar.gz
+	sha256sums = ee2232545e0f1a051a259d69db0fee479c60bfb98b1bc41af67ca218af361476
 
 pkgname = r-c3net

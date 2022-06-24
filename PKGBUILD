@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=c3net
-_pkgver=1.1.1
+_pkgver=1.1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.1.1
+pkgrel=1
 pkgdesc='Infering large-scale gene networks with C3NET'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-igraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8260569962f2d91ec6627f226d3949f271cc2cfd03886ad854b4ce4074de9654')
+sha256sums=('ee2232545e0f1a051a259d69db0fee479c60bfb98b1bc41af67ca218af361476')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
