@@ -11,7 +11,17 @@ pkgdesc="Serious Sam Classic Dances World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-DancesWorld"
 license=('GPL2')
-depends=('sdl2' 'python' 'bash')
+
+if pacman -Qq serioussam >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam')
+elif pacman -Qq serioussam-vk >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam-vk')
+else
+  echo "This package requires either "serioussam" or "serioussam-vk", but neither is installed."
+  echo "Compilation aborted."
+  return 1
+fi
+
 makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TSE-DancesWorld/archive/refs/tags/v$pkgver.tar.gz"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-DancesWorld/SamTSE-DancesWorld.tar.xz")
@@ -25,6 +35,12 @@ else
 fi
 
 prepare(){
+  # Install the Tower Modification data.
+  rm -f "$srcdir/Mods/DancesWorld/Bin/libGameMP.so" || return 0
+  rm -f "$srcdir/Mods/DancesWorld/Bin/libEntitiesMP.so" || return 0
+  chmod -R o=rx "$srcdir/Mods/DancesWorld"
+  chmod -R g=rx "$srcdir/Mods/DancesWorld"
+
   # Making building scripts.
   cd "$srcdir/$_srcname/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
