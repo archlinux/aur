@@ -1,7 +1,7 @@
 diff --unified --recursive --text a/data/meson.build b/data/meson.build
---- a/data/meson.build	2022-04-07 14:22:31.000000000 -0600
-+++ b/data/meson.build	2022-04-07 16:25:46.259954821 -0600
-@@ -114,16 +114,3 @@
+--- a/data/meson.build	2022-06-24 11:55:06.000000000 -0600
++++ b/data/meson.build	2022-06-24 13:24:43.494517910 -0600
+@@ -115,16 +115,3 @@
  else
    resources_path = resources.full_path()
  endif
@@ -14,7 +14,7 @@ diff --unified --recursive --text a/data/meson.build b/data/meson.build
 -)
 -
 -meson.add_install_script(
--    find_program('gtk-update-icon-cache').path(),
+-    find_program('gtk4-update-icon-cache').path(),
 -    '-qtf',
 -    usrdir / 'icons' / 'hicolor'
 -)
