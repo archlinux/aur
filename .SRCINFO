@@ -1,0 +1,21 @@
+pkgbase = cmake-init-git
+	pkgdesc = An opinionated CMake project initializer that generates CMake projects.
+	pkgver = 0.31.1.r0.g8264e70
+	pkgrel = 1
+	url = https://github.com/friendlyanon/cmake-init
+	arch = any
+	license = GPL3
+	depends = python
+	depends = cmake
+	depends = git
+	optdepends = clang: clang-tidy and clang-format
+	optdepends = cppcheck
+	optdepends = doxygen
+	optdepends = lcov
+	optdepends = codespell
+	optdepends = conan
+	optdepends = vcpkg
+	source = git+https://github.com/friendlyanon/cmake-init.git
+	sha256sums = SKIP
+
+pkgname = cmake-init-git
