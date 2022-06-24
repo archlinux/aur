@@ -31,12 +31,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DNANOGUI_BUILD_EXAMPLES=OFF -DNANOGUI_BUILD_GLFW=OFF
-	make
+	cmake -DCMAKE_INSTALL_INCLUDEDIR=/usr/include -DCMAKE_INSTALL_PREFIX=/usr -DNANOGUI_BUILD_EXAMPLES=OFF -DNANOGUI_BUILD_GLFW=OFF -B build -S .
+	make -C build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 	install -D LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE.txt
 }
