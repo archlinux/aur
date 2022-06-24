@@ -6,7 +6,7 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=2.1.53
+pkgver=2.1.54
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -55,11 +55,13 @@ source=(
 	"anki-$pkgver.png::https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('54f1b28b0c7f83bab0a009255741e9ec02ccfaf19c6a99e5ed50c5a91eb3caf4'
-            'd12c1b29a6c6c024a99472e8501718c8ab3046eddc98e4e02b8b0eb0afea5c53'
-            '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
-            '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
-            '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a')
+sha256sums=(
+	'bb81310f4524a6395f97aeec629d5c287404b8820c5747406e85251bba06dbac'
+	'ee05a39b19be0fc36c9eb2e394589d2efadd182033351600cec5daa442462f65'
+	'9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
+	'53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
+	'97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
+)
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
