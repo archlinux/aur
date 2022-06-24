@@ -2,11 +2,12 @@
 
 pkgname=geomyidae
 pkgver=0.50.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small C-based gopherd'
 arch=('x86_64')
 url='https://gopher.floodgap.com/gopher/gw?gopher://bitreich.org:70/1/scm/geomyidae/file/README.gph'
 license=('MIT')
+depends=( 'libretls>=3.5.2' )
 backup=('var/gopher/CGI'
         'var/gopher/index.gph')
 source=("ftp://bitreich.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.lz")
