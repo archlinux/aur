@@ -1,14 +1,14 @@
 pkgbase = lean-language-server
 	pkgdesc = Language Server Protocol implementation for the Lean theorem prover, version 3
-	pkgver = 3.2.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/leanprover/lean-client-js
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = lean-language-server-3.2.0.tgz
-	source = https://registry.npmjs.org/lean-language-server/-/lean-language-server-3.2.0.tgz
-	sha256sums = dd5686fe0d750a5b71118b6605b8d8b62f00cd5e57ea582f536b15653df85ed1
+	noextract = lean-language-server-3.3.1.tgz
+	source = https://registry.npmjs.org/lean-language-server/-/lean-language-server-3.3.1.tgz
+	sha256sums = b8b210bf70c8284b3569f2b31b73edb44633f9988bc1b468f2dcbe1f2166853c
 
 pkgname = lean-language-server
