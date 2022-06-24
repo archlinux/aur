@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-arc-menu
 _pkgbase=ArcMenu
-pkgver=33
+pkgver=34
 pkgrel=1
 pkgdesc="Application Menu Extension for GNOME"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('dconf' 'gnome-shell' 'gnome-menus')
 conflicts=('gnome-shell-extension-arc-menu-git')
 
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('731c0f15e4fd8c99148e0bade931dbc1120c04078677e1ab6e212ec5be8011e9')
+sha256sums=('bee070ce1c040c58de03bd5bc9fc8b98117cb505a7ae58470f1fb96ab09d6b21')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
@@ -28,6 +28,7 @@ package() {
   install -Dm644 -t "${_destdir}" metadata.json *.js *.css
   cp -r --no-preserve=ownership,mode media "${_destdir}"
   cp -r --no-preserve=ownership,mode menulayouts "${_destdir}"
+  cp -r --no-preserve=ownership,mode settings "${_destdir}"
   cp -r --no-preserve=ownership,mode searchProviders "${_destdir}"
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
 
