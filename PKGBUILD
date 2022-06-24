@@ -3,7 +3,7 @@
 
 pkgname=pywws
 pkgver=22.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
@@ -20,7 +20,7 @@ optdepends=(
   # 'python-twitter3: twitter updates' # ????
   # 'python-oauth2' ## not in AUR yet
   'python-paho-mqtt: sends weather data to an MQTT broker')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
@@ -34,16 +34,16 @@ sha256sums=('29b924a6cc471c99ab3f950ff216c20fc1f2ea055ab5b65f1db22084bcabc413'
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  install -Dm 644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm 644 "$pkgname.sysusers"   "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm 644 "$pkgname.tmpfiles"   "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm 644 "$pkgname.udev"       "$pkgdir/usr/lib/udev/rules.d/$pkgname.conf"
+  install -Dm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$pkgname.sysusers"   "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 "$pkgname.tmpfiles"   "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm644 "$pkgname.udev"       "$pkgdir/usr/lib/udev/rules.d/$pkgname.conf"
   cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
