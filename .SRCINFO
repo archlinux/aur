@@ -1,7 +1,7 @@
 pkgbase = ncdc
 	pkgdesc = Modern and lightweight direct connect client with a friendly ncurses interface
-	pkgver = 1.22.1
-	pkgrel = 4
+	pkgver = 1.23
+	pkgrel = 1
 	url = http://dev.yorhel.nl/ncdc
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = ncdc
 	depends = sqlite
 	depends = glib2
 	depends = libmaxminddb
-	source = http://dev.yorhel.nl/download/ncdc-1.22.1.tar.gz
-	source = http://dev.yorhel.nl/download/ncdc-1.22.1.tar.gz.asc
+	source = http://dev.yorhel.nl/download/ncdc-1.23.tar.gz
+	source = http://dev.yorhel.nl/download/ncdc-1.23.tar.gz.asc
 	source = uit_dl.c.patch
 	validpgpkeys = 74460D32B80810EBA9AFA2E962394C698C2739FA
-	sha512sums = b084ee28a799705009600c450016719ebb992cb0bf7e026513f4cd7e93b2566e7bf8e352eec92f3d69612ce06c930587759d7f7d20d14ee9fe1d5c4b8c4393af
+	sha512sums = c1b2098df517631a64b24efaeb328a796ed716dca08b61248bb39bba866055ce1e017f33cc594197824476ec65ada53b13bfb56878b5b8aa330288017ad15df2
 	sha512sums = SKIP
 	sha512sums = 8a4f10ecb9da5793fa4c705360b8a8e92206ac3b327507387bc4f22290bc2c77b4291f258d196d6bc63358324979b642e0ec579dff92405a5b209b2921b33f35
 
