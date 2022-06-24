@@ -1,7 +1,7 @@
 pkgbase = pdf-xchange
 	pkgdesc = Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more.
 	pkgver = 9.3.361.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tracker-software.com/product/pdf-xchange-editor
 	arch = x86_64
 	license = Custom

@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="9.3.361.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -42,7 +42,6 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
- install -Dm644 "$srcdir/FID_HelpStub" "$pkgdir${_installdir}/$pkgname/${_programname}/Help/PDFXVE8Sm.pdf"
  install -Dm644 "$srcdir/FID_EOCRALicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_EOCR_PluginV9.pdf"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
@@ -716,15 +715,21 @@ else
    unset document
 fi
 
-if [ ! -f "$prefix/system.reg" ]; then
+if [ ! -f "$prefix/system.reg" ] || [ ! -f "$prefix/user.reg" ]; then
    WINEPREFIX="$prefix" /usr/bin/wineboot
-   while [ ! -f "$prefix/system.reg" ]; do
+   while [ ! -f "$prefix/system.reg" ] && [ ! -f "$prefix/user.reg" ]; do
       echo Waiting...
    done
 fi
 
 sed -i s/'\"CommonFilesDir\"\=\"C\:\\\\Program Files (x86)\\\\Common Files\"'/'\"CommonFilesDir\"\=\"Z\:\\\\usr\\\\lib\\\\pdf-xchange\\\\Common Files\"'/g "$prefix/system.reg"
 sed -i s/'\"CommonFilesDir\"\=\"C\:\\\\Program Files\\\\Common Files\"'/'\"CommonFilesDir\"\=\"Z\:\\\\usr\\\\lib\\\\pdf-xchange\\\\Common Files\"'/g "$prefix/system.reg"
+
+if ! grep -q '"Decorated"="N"' "$prefix/user.reg"; then
+   echo -e "\n[Software\\\\\Wine\\\\\X11 Driver]" >> "$prefix/user.reg"
+   echo '"Decorated"="N"' >> "$prefix/user.reg"
+fi
+
 EOF
 
  echo 'WINEPREFIX="$prefix" /usr/bin/wine "'"$_installdir"'/$program/PDFXEdit.exe" "$document"' >> "$pkgdir/usr/bin/$pkgname"
