@@ -1,17 +1,16 @@
 pkgbase = ddev-edge-bin
-	pkgdesc = DDEV-Local: a local PHP development environment system (edge channel)
-	pkgver = v1.19.3
+	pkgdesc = DDEV-Local: a local web development environment
+	pkgver = 1.19.4
 	pkgrel = 1
-	url = https://github.com/drud/ddev
-	arch = x86_64
-	license = Apache
-	depends = docker
-	depends = docker-compose
-	optdepends = bash-completion: subcommand completion support
-	provides = ddev
+	url = https://ddev.com/
+	license = Apache 2
 	conflicts = ddev
-	source = https://github.com/drud/ddev/releases/download/v1.19.3/ddev_linux-amd64.v1.19.3.tar.gz
-	sha256sums = a22671013ab814ff73954bed4ead258dcda98182e1c4d313784305b81cf34eff
-
+	provides = ddev
+	arch = aarch64
+	source_aarch64 = https://github.com/rfay/ddev/releases/download/v1.19.4-ac2/ddev_linux-arm64.v1.19.4-ac2.tar.gz
+	sha256sums_aarch64 = 88a7f68f1fa44b25b332149a040300cf54f1adf78fe27832d68118e71fe80ba9
+	arch = x86_64
+	source_x86_64 = https://github.com/rfay/ddev/releases/download/v1.19.4-ac2/ddev_linux-amd64.v1.19.4-ac2.tar.gz
+	sha256sums_x86_64 = d2ed1b0873e4225f6dc00d2d37bd2c4ed1512981751b72bbaaba1bd46769f291
+	
 pkgname = ddev-edge-bin
-
