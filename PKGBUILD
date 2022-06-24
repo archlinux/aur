@@ -11,10 +11,10 @@ license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ac9/ddev_linux-arm64.v1.19.4-ac9.tar.gz")
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ad1/ddev_linux-arm64.v1.19.4-ad1.tar.gz")
 sha256sums_aarch64=('88a7f68f1fa44b25b332149a040300cf54f1adf78fe27832d68118e71fe80ba9')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ac9/ddev_linux-amd64.v1.19.4-ac9.tar.gz")
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ad1/ddev_linux-amd64.v1.19.4-ad1.tar.gz")
 sha256sums_x86_64=('d2ed1b0873e4225f6dc00d2d37bd2c4ed1512981751b72bbaaba1bd46769f291')
 
 package() {
@@ -26,7 +26,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "./src/ddev_bash_completion.sh" "${pkgdir}/usr/share/bash-completion/completions/ddev"
-  install -Dm644 "./src/ddev_zsh_completion.sh" "${pkgdir}/usr/share/zsh/site-functions/_ddev"
-  install -Dm644 "./src/ddev_fish_completion.sh" "${pkgdir}/usr/share/fish/vendor_completions.d/ddev.fish"
+  install -Dm644 "./ddev_bash_completion.sh" "${pkgdir}/usr/share/bash-completion/completions/ddev"
+  install -Dm644 "./ddev_zsh_completion.sh" "${pkgdir}/usr/share/zsh/site-functions/_ddev"
+  install -Dm644 "./ddev_fish_completion.sh" "${pkgdir}/usr/share/fish/vendor_completions.d/ddev.fish"
 }
