@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=251.r58161.311f57a402
+pkgver=251.r58405.4e5c39597a
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -112,7 +112,7 @@ build() {
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
-    -Ddefault-locale=C
+    -Ddefault-locale='C.UTF-8'
     -Dfallback-hostname='archlinux'
     -Dnologin-path=/usr/bin/nologin
     -Dntp-servers="${_timeservers[*]}"
