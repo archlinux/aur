@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=2.10.3
+pkgver=2.10.5
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'ad8366491f3bfaaa0462648fa747afe87f7b5bd78261e1ed57043dedf61a81c0'
+	'6b5a10afbbb9d5500536ee499126b6c21d1ea4ad85a4d55937dd662923c6b152'
 	SKIP
 	SKIP
 )
