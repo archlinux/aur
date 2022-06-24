@@ -1,13 +1,13 @@
 pkgbase = dovi_tool-bin
 	pkgdesc = CLI tool combining multiple utilities for working with Dolby Vision
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/quietvoid/dovi_tool
 	arch = x86_64
 	license = MIT
 	provides = dovi_tool
 	conflicts = dovi_tool
-	source = https://github.com/quietvoid/dovi_tool/releases/download/1.5.4/dovi_tool-1.5.4-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = b79bb2f0213f827cc7ca31d2b55dc05d787d44dd425bc8b2ea9ab29ebe3f32ca
+	source = https://github.com/quietvoid/dovi_tool/releases/download/1.5.5/dovi_tool-1.5.5-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = b503a1756d13e34bcc277012f4647b4302c62c0685f66583236e39846b148128
 
 pkgname = dovi_tool-bin
