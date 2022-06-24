@@ -1,5 +1,5 @@
 # Maintainer: dhn <neilson+aur@sent.com>
-# Contributor: ragreener1
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=gtools
 pkgname=r-$_pkgname
