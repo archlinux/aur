@@ -3,7 +3,7 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
@@ -22,7 +22,7 @@ conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
 		"fix-tgcalls-cstdint.patch")
-sha512sums=('54f864171d46ba93cb0cd9137e91fe072a3795e82315825684d0e8a577ff1006378d716500d28b546fe52128ebaaf94a6966e528848b37ac03c058615f9be397'
+sha512sums=('08eaa04866bbd03fc20483806609fba12557789f6dbf1ba3d693962f274e821dfa0638b69cf4472204594acf69c14935e3c4b68722c9b7ddf9a97201f18ef53d'
             'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888')
 
 prepare() {
