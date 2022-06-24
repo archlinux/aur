@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+Copy the default configuration file in '/usr/share/doc/salut/config.ini'
+to '\$XDG_CONFIG_HOME/salut/config.ini'
+EOF
+}
