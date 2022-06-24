@@ -1,6 +1,6 @@
 pkgbase = htmail-view
 	pkgdesc = Web page renderer based on WebKit
-	pkgver = v0.6.r3.59e04aa
+	pkgver = 20190721
 	pkgrel = 1
 	url = https://github.com/liske/htmail-view
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = htmail-view
 	depends = perl-gtk3
 	depends = perl-gtk3-webkit
 	optdepends = wmctrl
-	source = git://github.com/liske/htmail-view
-	sha256sums = SKIP
+	source = https://github.com/liske/htmail-view/archive/59e04aadcd568d3b6f2d80fd6afd839ecaf4c005.tar.gz
+	sha256sums = 3d6d3e5bbb29e6f2f3ad22e05cb2f6d4750a7a338b4e2fa559a7d597e079786f
 
 pkgname = htmail-view
-
