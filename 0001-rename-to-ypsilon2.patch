@@ -1,0 +1,113 @@
+From 23d98496f7166c4b6b7b403a10e1056a1cd91049 Mon Sep 17 00:00:00 2001
+From: Masanori Ogino <masanori.ogino@gmail.com>
+Date: Fri, 24 Jun 2022 09:13:58 +0900
+Subject: [PATCH 1/2] rename to ypsilon2
+
+Signed-off-by: Masanori Ogino <masanori.ogino@gmail.com>
+---
+ CMakeLists.txt | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4aa2a75..ad93a87 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,8 +37,8 @@ set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fsanitize=address")
+ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address")
+ set(CMAKE_LINKER_FLAGS_RELWITHDEBINFO "${CMAKE_LINKER_FLAGS_RELWITHDEBINFO} -fsanitize=address")
+ 
+-set(YPSILON_SHARE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/ypsilon)
+-set(YPSILON_EXTENSION_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/ypsilon)
++set(YPSILON_SHARE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/ypsilon2)
++set(YPSILON_EXTENSION_DIRECTORY ${CMAKE_INSTALL_PREFIX}/lib/ypsilon2)
+ add_compile_definitions(SYSTEM_SHARE_PATH="${YPSILON_SHARE_DIRECTORY}")
+ add_compile_definitions(SYSTEM_EXTENSION_PATH="${YPSILON_EXTENSION_DIRECTORY}")
+ 
+@@ -49,7 +49,7 @@ else()
+ endif()
+ 
+ add_executable(
+-  ypsilon
++  ypsilon2
+   src/arith.cpp
+   src/bit.cpp
+   src/digamma.cpp
+@@ -101,14 +101,14 @@ execute_process(
+   COMMAND llvm-config --libs all
+   OUTPUT_VARIABLE llvm_libs
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+-target_link_libraries(ypsilon ${llvm_libs} -pthread -ldl)
++target_link_libraries(ypsilon2 ${llvm_libs} -pthread -ldl)
+ 
+ if(APPLE)
+   execute_process(
+     COMMAND llvm-config --ldflags
+     OUTPUT_VARIABLE llvm_ldflags
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  target_link_libraries(ypsilon ${llvm_ldflags})
++  target_link_libraries(ypsilon2 ${llvm_ldflags})
+ endif(APPLE)
+ 
+ file(MAKE_DIRECTORY $ENV{HOME}/.ypsilon)
+@@ -116,47 +116,47 @@ file(MAKE_DIRECTORY $ENV{HOME}/.ypsilon)
+ set(YPSILON_SITELIB_DIRECTORY ${YPSILON_SHARE_DIRECTORY}/sitelib)
+ install(CODE "execute_process(COMMAND rm -rf ${YPSILON_SITELIB_DIRECTORY})")
+ install(DIRECTORY sitelib/ DESTINATION ${YPSILON_SITELIB_DIRECTORY})
+-install(TARGETS ypsilon DESTINATION bin)
++install(TARGETS ypsilon2 DESTINATION bin)
+ 
+ enable_testing()
+ set(YPSILON_COMMON_TEST_OPTIONS --sitelib=./test:./sitelib)
+ add_test(
+   NAME r4rstest
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} ./test/r4rstest.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} ./test/r4rstest.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME tspl
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} ./test/tspl.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} ./test/tspl.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME arith
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} ./test/arith.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} ./test/arith.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME r5rs-pitfall
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r5rs-pitfall.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r5rs-pitfall.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME r6rs
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME r6rs-lib
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs-lib.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs-lib.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME r6rs-more
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs-more.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} --r6rs ./test/r6rs-more.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME r7rs-test
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} --r7rs ./test/r7rs-test.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} --r7rs ./test/r7rs-test.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME c-ffi-test
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} ./test/c-ffi-test.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} ./test/c-ffi-test.scm
+   WORKING_DIRECTORY ..)
+ add_test(
+   NAME syntax-rule-stress-test
+-  COMMAND $<TARGET_FILE:ypsilon> ${YPSILON_COMMON_TEST_OPTIONS} ./test/syntax-rule-stress-test.scm
++  COMMAND $<TARGET_FILE:ypsilon2> ${YPSILON_COMMON_TEST_OPTIONS} ./test/syntax-rule-stress-test.scm
+   WORKING_DIRECTORY ..)
+-- 
+2.36.1
+

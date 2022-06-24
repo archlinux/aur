@@ -1,0 +1,1713 @@
+From 387f77ccadf1f3048b0df8896793178c266e104a Mon Sep 17 00:00:00 2001
+From: Masanori Ogino <masanori.ogino@gmail.com>
+Date: Fri, 24 Jun 2022 09:55:51 +0900
+Subject: [PATCH 2/2] use __FILE_NAME__ Clang extension
+
+Signed-off-by: Masanori Ogino <masanori.ogino@gmail.com>
+---
+ src/arith.cpp       | 122 ++++++++++++++++++++++----------------------
+ src/digamma.cpp     |  16 +++---
+ src/fasl.cpp        |   6 +--
+ src/fasl.h          |   2 +-
+ src/hash.cpp        |  22 ++++----
+ src/ioerror.cpp     |   4 +-
+ src/list.cpp        |   2 +-
+ src/mutex.h         |   4 +-
+ src/object_heap.cpp |  10 ++--
+ src/object_set.cpp  |   4 +-
+ src/object_slab.cpp |   2 +-
+ src/port.cpp        |  78 ++++++++++++++--------------
+ src/printer.cpp     |  10 ++--
+ src/queue.h         |  24 ++++-----
+ src/reader.cpp      |   2 +-
+ src/serialize.cpp   |  10 ++--
+ src/subr_c_ffi.cpp  |  14 ++---
+ src/subr_port.cpp   |   4 +-
+ src/sysdep.h        |   2 +-
+ src/vm0.cpp         |   4 +-
+ src/vm1.cpp         |   2 +-
+ src/vm3.cpp         |  20 ++++----
+ 22 files changed, 182 insertions(+), 182 deletions(-)
+
+diff --git a/src/arith.cpp b/src/arith.cpp
+index 95fd2e8..5f38d12 100644
+--- a/src/arith.cpp
++++ b/src/arith.cpp
+@@ -821,7 +821,7 @@ intptr_t coerce_exact_integer_to_intptr(scm_obj_t obj) {
+     intptr_t n = bn->elts[0];
+     return (-n);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ int64_t coerce_exact_integer_to_int64(scm_obj_t obj) {
+@@ -838,7 +838,7 @@ int64_t coerce_exact_integer_to_int64(scm_obj_t obj) {
+     int64_t n = bn->elts[0] + ((int64_t)bn->elts[1] << 32);
+     return (-n);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ #else
+   return coerce_exact_integer_to_intptr(obj);
+ #endif
+@@ -986,7 +986,7 @@ double real_to_double(scm_obj_t obj) {
+     scm_complex_t cn = (scm_complex_t)obj;
+     if (n_zero_pred(cn->imag)) return real_to_double(cn->real);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ static int64_t decode_double(double n, int* exp, int* sign) {
+@@ -1065,7 +1065,7 @@ static scm_obj_t oprtr_inexact_negate(object_heap_t* heap, scm_obj_t obj) {
+     scm_complex_t cn = (scm_complex_t)obj;
+     return make_complex(heap, cnvt_to_inexact(heap, arith_negate(heap, cn->real)), cnvt_to_inexact(heap, arith_negate(heap, cn->imag)));
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ static scm_obj_t oprtr_norm_integer(object_heap_t* heap, scm_obj_t obj) {
+@@ -1840,7 +1840,7 @@ bool n_exact_pred(scm_obj_t obj) {
+     scm_complex_t cn = (scm_complex_t)obj;
+     return n_exact_pred(cn->real) && n_exact_pred(cn->imag);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_zero_pred(scm_obj_t obj) {
+@@ -1858,7 +1858,7 @@ bool n_zero_pred(scm_obj_t obj) {
+     scm_complex_t cn = (scm_complex_t)obj;
+     return n_zero_pred(cn->real) && n_zero_pred(cn->imag);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_negative_pred(scm_obj_t obj) {
+@@ -1868,7 +1868,7 @@ bool n_negative_pred(scm_obj_t obj) {
+   if (FLONUMP(obj)) return ((scm_flonum_t)obj)->value < 0.0;
+   if (RATIONALP(obj)) return n_negative_pred(((scm_rational_t)obj)->nume);
+   if (COMPLEXP(obj)) return n_negative_pred(((scm_complex_t)obj)->real);
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_positive_pred(scm_obj_t obj) {
+@@ -1878,7 +1878,7 @@ bool n_positive_pred(scm_obj_t obj) {
+   if (FLONUMP(obj)) return ((scm_flonum_t)obj)->value > 0.0;
+   if (RATIONALP(obj)) return n_positive_pred(((scm_rational_t)obj)->nume);
+   if (COMPLEXP(obj)) return n_positive_pred(((scm_complex_t)obj)->real);
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_even_pred(scm_obj_t obj) {
+@@ -1890,7 +1890,7 @@ bool n_even_pred(scm_obj_t obj) {
+     return (value * 0.5 == floor(value * 0.5));
+   }
+   if (COMPLEXP(obj)) return n_even_pred(((scm_complex_t)obj)->real);
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_equal_pred(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2020,7 +2020,7 @@ start_again:
+       return false;
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_exact_equal_pred(scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2111,7 +2111,7 @@ bool n_exact_equal_pred(scm_obj_t lhs, scm_obj_t rhs) {
+   if (FLONUMP(lhs)) {
+     assert(false);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool n_inexact_equal_pred(scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2185,7 +2185,7 @@ bool n_inexact_equal_pred(scm_obj_t lhs, scm_obj_t rhs) {
+   if (RATIONALP(lhs)) {
+     assert(false);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ int n_compare(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2350,7 +2350,7 @@ scm_obj_t arith_inverse(object_heap_t* heap, scm_obj_t obj) {
+     return make_rational(heap, arith_negate(heap, rn->deno), arith_negate(heap, rn->nume));
+   }
+   if (COMPLEXP(obj)) return arith_div(heap, MAKEFIXNUM(1), obj);
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_negate(object_heap_t* heap, scm_obj_t obj) {
+@@ -2374,7 +2374,7 @@ scm_obj_t arith_negate(object_heap_t* heap, scm_obj_t obj) {
+     scm_complex_t cn = (scm_complex_t)obj;
+     return make_complex(heap, arith_negate(heap, cn->real), arith_negate(heap, cn->imag));
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_bit_count(object_heap_t* heap, scm_obj_t obj) {
+@@ -2398,7 +2398,7 @@ scm_obj_t arith_bit_count(object_heap_t* heap, scm_obj_t obj) {
+       return MAKEFIXNUM(~FIXNUM(arith_bit_count(heap, oprtr_lognot(heap, bn))));
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_bit_length(object_heap_t* heap, scm_obj_t obj) {
+@@ -2413,7 +2413,7 @@ scm_obj_t arith_bit_length(object_heap_t* heap, scm_obj_t obj) {
+     if (bn_get_sign(bn) > 0) return MAKEFIXNUM(bn_bitsize(bn));
+     return arith_bit_length(heap, oprtr_lognot(heap, bn));
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_first_bit_set(object_heap_t* heap, scm_obj_t obj) {
+@@ -2452,7 +2452,7 @@ scm_obj_t arith_first_bit_set(object_heap_t* heap, scm_obj_t obj) {
+       }
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_lognot(object_heap_t* heap, scm_obj_t obj) {
+@@ -2464,7 +2464,7 @@ scm_obj_t arith_lognot(object_heap_t* heap, scm_obj_t obj) {
+   if (BIGNUMP(obj)) {
+     return oprtr_lognot(heap, (scm_bignum_t)obj);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_logand(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2490,7 +2490,7 @@ scm_obj_t arith_logand(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_logand(heap, (scm_bignum_t)lhs, (scm_bignum_t)rhs);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_logior(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2516,7 +2516,7 @@ scm_obj_t arith_logior(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_logior(heap, (scm_bignum_t)lhs, (scm_bignum_t)rhs);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_logxor(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2542,7 +2542,7 @@ scm_obj_t arith_logxor(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_logxor(heap, (scm_bignum_t)lhs, (scm_bignum_t)rhs);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_logash(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2563,7 +2563,7 @@ scm_obj_t arith_logash(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+     scm_bignum_t bn = (scm_bignum_t)lhs;
+     return oprtr_logash(heap, bn, shift);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_add(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2678,7 +2678,7 @@ scm_obj_t arith_add(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_norm_complex(heap, real, imag);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_sub(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2792,7 +2792,7 @@ scm_obj_t arith_sub(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_norm_complex(heap, real, imag);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_mul(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -2920,7 +2920,7 @@ scm_obj_t arith_mul(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_norm_complex(heap, real2, imag2);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_div(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3045,7 +3045,7 @@ scm_obj_t arith_div(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+       return oprtr_norm_complex(heap, real3, imag3);
+     }
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_quotient(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3058,7 +3058,7 @@ start_again:
+   fixnum_again:
+     if (FIXNUMP(rhs)) {  // fixnum / fixnum
+       if (FIXNUM(rhs) == 0) {
+-        fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++        fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+       }
+       return MAKEFIXNUM(FIXNUM(lhs) / FIXNUM(rhs));
+     }
+@@ -3066,7 +3066,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, trunc(FIXNUM(lhs) / value));
+       }
+@@ -3105,7 +3105,7 @@ start_again:
+       double value2 = ((scm_flonum_t)rhs)->value;
+       if (value2 == round(value2)) {
+         if (value2 == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, trunc(value / value2));
+       }
+@@ -3138,7 +3138,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, trunc(bignum_to_double((scm_bignum_t)lhs) / value));
+       }
+@@ -3172,7 +3172,7 @@ start_again:
+     }
+     assert(false);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_remainder(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3185,7 +3185,7 @@ start_again:
+   fixnum_again:
+     if (FIXNUMP(rhs)) {  // fixnum / fixnum
+       if (FIXNUM(rhs) == 0) {
+-        fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++        fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+       }
+       return MAKEFIXNUM(FIXNUM(lhs) % FIXNUM(rhs));
+     }
+@@ -3193,7 +3193,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, fmod((double)FIXNUM(lhs), value));
+       }
+@@ -3232,7 +3232,7 @@ start_again:
+       double value2 = ((scm_flonum_t)rhs)->value;
+       if (value2 == round(value2)) {
+         if (value2 == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, fmod(value, value2));
+       }
+@@ -3265,7 +3265,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         return make_flonum(heap, fmod(bignum_to_double((scm_bignum_t)lhs), value));
+       }
+@@ -3299,7 +3299,7 @@ start_again:
+     }
+     assert(false);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_modulo(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3322,7 +3322,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+           return scm_unspecified;
+         }
+         double rem = fmod((double)FIXNUM(lhs), value);
+@@ -3368,7 +3368,7 @@ start_again:
+       double value2 = ((scm_flonum_t)rhs)->value;
+       if (value2 == round(value2)) {
+         if (value2 == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         double rem = fmod(value, value2);
+         if (rem == 0.0) return make_flonum(heap, 0.0);
+@@ -3408,7 +3408,7 @@ start_again:
+       double value = ((scm_flonum_t)rhs)->value;
+       if (value == round(value)) {
+         if (value == 0.0) {
+-          fatal("%s:%u undefined for 0", __FILE__, __LINE__);
++          fatal("%s:%u undefined for 0", __FILE_NAME__, __LINE__);
+         }
+         double value2 = bignum_to_double((scm_bignum_t)rhs);
+         double rem = fmod(value2, value);
+@@ -3446,7 +3446,7 @@ start_again:
+     }
+     assert(false);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_expt(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3479,7 +3479,7 @@ scm_obj_t arith_expt(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+     if (COMPLEXP(rhs)) {
+       return arith_exp(heap, arith_mul(heap, rhs, arith_log(heap, lhs)));
+     }
+-    fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++    fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+   } else {
+     if (FLONUMP(rhs)) {
+       if (real_valued_pred(lhs) && !n_negative_pred(lhs)) {
+@@ -3504,7 +3504,7 @@ scm_obj_t arith_exp(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, a * cos(imag), a * sin(imag));
+   }
+   if (real_valued_pred(obj)) return make_flonum(heap, exp(real_to_double(obj)));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_log(object_heap_t* heap, scm_obj_t obj) {
+@@ -3533,7 +3533,7 @@ scm_obj_t arith_log(object_heap_t* heap, scm_obj_t obj) {
+     if (imag == 0.0) return make_flonum(heap, 0.5 * log(real * real));
+     return make_complex(heap, 0.5 * log(real * real), imag);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_sin(object_heap_t* heap, scm_obj_t obj) {
+@@ -3549,7 +3549,7 @@ scm_obj_t arith_sin(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, 0.5 * sin(real) * (e + f), 0.5 * cos(real) * (e - f));
+   }
+   if (real_valued_pred(obj)) return make_flonum(heap, sin(real_to_double(obj)));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_cos(object_heap_t* heap, scm_obj_t obj) {
+@@ -3565,7 +3565,7 @@ scm_obj_t arith_cos(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, 0.5 * cos(real) * (f + e), 0.5 * sin(real) * (f - e));
+   }
+   if (real_valued_pred(obj)) return make_flonum(heap, cos(real_to_double(obj)));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_tan(object_heap_t* heap, scm_obj_t obj) {
+@@ -3582,7 +3582,7 @@ scm_obj_t arith_tan(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, sin(2.0 * real) / d, 0.5 * (e - f) / d);
+   }
+   if (real_valued_pred(obj)) return make_flonum(heap, tan(real_to_double(obj)));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_sqrt(object_heap_t* heap, scm_obj_t obj) {
+@@ -3667,7 +3667,7 @@ scm_obj_t arith_sqrt(object_heap_t* heap, scm_obj_t obj) {
+     double s = sqrt(m / (x * x + y * y));
+     return make_complex(heap, make_flonum(heap, x * s), make_flonum(heap, y * s));
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ exact_integer_sqrt_ans_t arith_exact_integer_sqrt(object_heap_t* heap, scm_obj_t obj) {
+@@ -3714,7 +3714,7 @@ exact_integer_sqrt_ans_t arith_exact_integer_sqrt(object_heap_t* heap, scm_obj_t
+     ans.r = arith_sub(heap, obj, arith_mul(heap, ans.s, ans.s));
+     return ans;
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_asin(object_heap_t* heap, scm_obj_t obj) {
+@@ -3734,7 +3734,7 @@ scm_obj_t arith_asin(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, real_to_double(((scm_complex_t)ans)->imag), -real_to_double(((scm_complex_t)ans)->real));
+   }
+   return make_complex(heap, 0.0, -real_to_double(ans));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_acos(object_heap_t* heap, scm_obj_t obj) {
+@@ -3743,7 +3743,7 @@ scm_obj_t arith_acos(object_heap_t* heap, scm_obj_t obj) {
+     if (x >= -1.0 && x <= 1.0) return make_flonum(heap, acos(real_to_double(obj)));
+   }
+   return arith_sub(heap, make_flonum(heap, 3.141592653589793 / 2.0), arith_asin(heap, obj));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_atan(object_heap_t* heap, scm_obj_t obj) {
+@@ -3760,7 +3760,7 @@ scm_obj_t arith_atan(object_heap_t* heap, scm_obj_t obj) {
+     return make_complex(heap, 0.0, -0.5 * real_to_double(ans));
+   }
+   if (real_valued_pred(obj)) return make_flonum(heap, atan(real_to_double(obj)));
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_atan2(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3791,7 +3791,7 @@ scm_obj_t arith_magnitude(object_heap_t* heap, scm_obj_t obj) {
+     if (n_negative_pred(obj)) return arith_negate(heap, obj);
+     return obj;
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_angle(object_heap_t* heap, scm_obj_t obj) {
+@@ -3805,7 +3805,7 @@ scm_obj_t arith_angle(object_heap_t* heap, scm_obj_t obj) {
+     if (FLONUMP(obj)) return make_flonum(heap, 0.0);
+     return MAKEFIXNUM(0);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_rectangular(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) { return oprtr_norm_complex(heap, lhs, rhs); }
+@@ -3829,7 +3829,7 @@ scm_obj_t arith_floor(object_heap_t* heap, scm_obj_t obj) {
+     if (n_negative_pred(rn->nume)) return arith_sub(heap, arith_quotient(heap, rn->nume, rn->deno), MAKEFIXNUM(1));
+     return arith_quotient(heap, rn->nume, rn->deno);
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t arith_integer_div(object_heap_t* heap, scm_obj_t lhs, scm_obj_t rhs) {
+@@ -3877,7 +3877,7 @@ scm_obj_t cnvt_to_inexact(object_heap_t* heap, scm_obj_t obj) {
+     if (FLONUMP(cn->real) & FLONUMP(cn->imag)) return obj;
+     return make_complex(heap, cnvt_to_inexact(heap, cn->real), cnvt_to_inexact(heap, cn->imag));
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t cnvt_to_exact(object_heap_t* heap, scm_obj_t obj) {
+@@ -3932,7 +3932,7 @@ scm_obj_t cnvt_to_exact(object_heap_t* heap, scm_obj_t obj) {
+     return obj;
+   }
+   if (FIXNUMP(obj) || BIGNUMP(obj) || RATIONALP(obj)) return obj;
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ }
+ 
+ static bool small_bignum_to_string(object_heap_t* heap, scm_bignum_t bn, int radix, char* buf, int buf_size) {
+@@ -4103,7 +4103,7 @@ static scm_obj_t integer_mul10_may_inplace(object_heap_t* heap, scm_obj_t n) {
+     bn_set_sign(ans, 1);
+     return ans;
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ #undef OVERFLOW_TEST_BITS
+ }
+ 
+@@ -4296,7 +4296,7 @@ loop:
+     if (!tc2) {
+       digits[digit_count++] = dig;
+       if (digit_count >= array_sizeof(digits)) {
+-        fatal("%s:%u something wrong", __FILE__, __LINE__);
++        fatal("%s:%u something wrong", __FILE_NAME__, __LINE__);
+       }
+       goto loop;
+     } else {
+@@ -4397,7 +4397,7 @@ scm_obj_t cnvt_number_to_string(object_heap_t* heap, scm_obj_t obj, int radix) {
+     assert(*dst == 0);
+     return ans;
+   }
+-  fatal("%s:%u wrong datum type", __FILE__, __LINE__);
++  fatal("%s:%u wrong datum type", __FILE_NAME__, __LINE__);
+ #endif
+ }
+ 
+@@ -4656,7 +4656,7 @@ parse_exponent:
+         digit = c - '0';
+         exponent *= 10;
+         exponent += digit;
+-        if (exponent < 0) fatal("%s:%u flonum exponent overflow.", __FILE__, __LINE__);
++        if (exponent < 0) fatal("%s:%u flonum exponent overflow.", __FILE_NAME__, __LINE__);
+         continue;
+       }
+       p--;
+@@ -4904,7 +4904,7 @@ static scm_obj_t parse_negate(object_heap_t* heap, scm_obj_t obj) {
+     cn->imag = parse_negate(heap, cn->imag);
+     return cn;
+   } else {
+-    fatal("%s:%u not number.", __FILE__, __LINE__);
++    fatal("%s:%u not number.", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+diff --git a/src/digamma.cpp b/src/digamma.cpp
+index 0914fe0..b6b5d95 100644
+--- a/src/digamma.cpp
++++ b/src/digamma.cpp
+@@ -567,7 +567,7 @@ void digamma_t::codegen(scm_closure_t closure) {
+     context.m_depth = 1;
+     transform(context, closure->pc, true);
+   }
+-  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE__, __LINE__);
++  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE_NAME__, __LINE__);
+ #if USE_LLVM_OPTIMIZE
+   // puts(";*** IR before optimize ***");
+   // M->print(outs(), nullptr);
+@@ -679,7 +679,7 @@ Value* digamma_t::get_function_address(context_t& ctx, scm_closure_t closure) {
+   DECLEAR_CONTEXT_VARS;
+   DECLEAR_COMMON_TYPES;
+ 
+-  if (closure->code == NULL) fatal("%s:%u closure is not codegend", __FILE__, __LINE__);
++  if (closure->code == NULL) fatal("%s:%u closure is not codegend", __FILE_NAME__, __LINE__);
+   intptr_t (*adrs)(intptr_t) = (intptr_t(*)(intptr_t))(closure->code);
+   auto subrType = FunctionType::get(IntptrTy, {IntptrPtrTy}, false);
+   return ConstantExpr::getIntToPtr(VALUE_INTPTR(adrs), subrType->getPointerTo());
+@@ -1051,7 +1051,7 @@ void digamma_t::transform(context_t& ctx, scm_obj_t inst, bool insert_stack_chec
+       case VMOP_TOUCH_GLOC:
+         break;
+       default:
+-        fatal("%s:%u encounter unsupported instruction %s", __FILE__, __LINE__, ((scm_symbol_t)CAAR(inst))->name);
++        fatal("%s:%u encounter unsupported instruction %s", __FILE_NAME__, __LINE__, ((scm_symbol_t)CAAR(inst))->name);
+         break;
+     }
+     inst = CDR(inst);
+@@ -1150,7 +1150,7 @@ void digamma_t::emit_stack_overflow_check(context_t& ctx, int nbytes) {
+   auto vm = F->arg_begin();
+ 
+   if (nbytes == 0) return;
+-  if (nbytes >= VM_STACK_BYTESIZE) fatal("%s:%u vm stack size too small", __FILE__, __LINE__);
++  if (nbytes >= VM_STACK_BYTESIZE) fatal("%s:%u vm stack size too small", __FILE_NAME__, __LINE__);
+ 
+   auto stack_limit = CREATE_LOAD_VM_REG(vm, m_stack_limit);
+   BasicBlock* stack_ok = BasicBlock::Create(C, "stack_ok", F);
+@@ -1561,7 +1561,7 @@ void digamma_t::emit_apply_gloc(context_t& ctx, scm_obj_t inst) {
+           puts("emit_apply_gloc: found in m_lifted_functions, reuse Function*");
+ #endif
+           Function* F2 = found->second;
+-          if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE__, __LINE__);
++          if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE_NAME__, __LINE__);
+           m_usage.inners++;
+           emit_prepair_apply(ctx, closure);
+           ctx.reg_cache_copy_except_value(vm);
+@@ -1576,7 +1576,7 @@ void digamma_t::emit_apply_gloc(context_t& ctx, scm_obj_t inst) {
+           puts("emit_apply_gloc: closure already codegend, reuse native code");
+   #endif
+           Value* F2 = get_function_address(ctx, closure);
+-          if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE__, __LINE__);
++          if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE_NAME__, __LINE__);
+           m_usage.inners++;
+           emit_prepair_apply(ctx, closure);
+           ctx.reg_cache_copy_except_value(vm);
+@@ -1598,7 +1598,7 @@ void digamma_t::emit_apply_gloc(context_t& ctx, scm_obj_t inst) {
+         puts("emit_apply_gloc: generate new native code for inner function");
+ #endif
+         Function* F2 = emit_inner_function(ctx, closure);
+-        if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE__, __LINE__);
++        if (F2 == NULL) fatal("%s:%u inconsistent state", __FILE_NAME__, __LINE__);
+         m_usage.inners++;
+         emit_prepair_apply(ctx, closure);
+         ctx.reg_cache_copy_except_value(vm);
+@@ -2447,7 +2447,7 @@ void digamma_t::emit_apply_iloc_local(context_t& ctx, scm_obj_t inst) {
+     ctx.reg_cache_copy_except_value(vm);
+     Function* L = ctx.m_local_functions[function_index];
+     if (L == NULL) {
+-      fatal("%s:%u emit_apply_iloc_local L = %p, level = %d index = %d ctx.m_depth = %d function_index = %x \n", __FILE__, __LINE__, L, level,
++      fatal("%s:%u emit_apply_iloc_local L = %p, level = %d index = %d ctx.m_depth = %d function_index = %x \n", __FILE_NAME__, __LINE__, L, level,
+             index, ctx.m_depth, function_index);
+     }
+     auto call = IRB.CreateCall(L, {vm});
+diff --git a/src/fasl.cpp b/src/fasl.cpp
+index a221c60..85471e2 100644
+--- a/src/fasl.cpp
++++ b/src/fasl.cpp
+@@ -198,7 +198,7 @@ void fasl_printer_t::put_datum(scm_obj_t obj) {
+     put_datum(comp->imag);
+     return;
+   }
+-  fatal("%s:%u datum not supported in fasl", __FILE__, __LINE__);
++  fatal("%s:%u datum not supported in fasl", __FILE_NAME__, __LINE__);
+ }
+ 
+ void fasl_printer_t::put_lites() {
+@@ -374,7 +374,7 @@ scm_obj_t fasl_reader_t::get_datum() {
+     case FASL_TAG_UNINTERNED_SYMBOL:
+       break;
+   }
+-  fatal("%s:%u invalid fasl format", __FILE__, __LINE__);
++  fatal("%s:%u invalid fasl format", __FILE_NAME__, __LINE__);
+ }
+ 
+ bool fasl_reader_t::get_lites() {
+@@ -405,7 +405,7 @@ bool fasl_reader_t::get_lites() {
+           m_lites[uid] = make_string_literal(m_vm->m_heap, buf, len);
+           break;
+         default:
+-          fatal("%s:%u invalid fasl format", __FILE__, __LINE__);
++          fatal("%s:%u invalid fasl format", __FILE_NAME__, __LINE__);
+       }
+     }
+     free(buf);
+diff --git a/src/fasl.h b/src/fasl.h
+index 0efc0f3..807d674 100644
+--- a/src/fasl.h
++++ b/src/fasl.h
+@@ -79,7 +79,7 @@ class fasl_printer_t {
+       int n = m_sp - m_stack;
+       int depth = (m_stack_limit - m_stack) * 2;
+       m_stack = (scm_obj_t*)realloc(m_stack, sizeof(scm_obj_t) * depth);
+-      if (m_stack == NULL) fatal("%s:%u memory overflow on realloc fasl stack", __FILE__, __LINE__);
++      if (m_stack == NULL) fatal("%s:%u memory overflow on realloc fasl stack", __FILE_NAME__, __LINE__);
+       m_stack_limit = m_stack + depth;
+       m_sp = m_stack + n;
+     }
+diff --git a/src/hash.cpp b/src/hash.cpp
+index ce9bc8e..be92191 100644
+--- a/src/hash.cpp
++++ b/src/hash.cpp
+@@ -161,7 +161,7 @@ int lookup_mutable_hashtable_size(int n) {
+   for (int i = 0; i < array_sizeof(primes); i++) {
+     if (primes[i] > n) return primes[i];
+   }
+-  fatal("%s:%u internal error: hashtable too big", __FILE__, __LINE__);
++  fatal("%s:%u internal error: hashtable too big", __FILE_NAME__, __LINE__);
+ }
+ 
+ int lookup_immutable_hashtable_size(int n) {
+@@ -178,7 +178,7 @@ int lookup_immutable_hashtable_size(int n) {
+   for (int i = 0; i < array_sizeof(primes); i++) {
+     if (primes[i] > n) return primes[i];
+   }
+-  fatal("%s:%u internal error: hashtable too big", __FILE__, __LINE__);
++  fatal("%s:%u internal error: hashtable too big", __FILE_NAME__, __LINE__);
+ }
+ 
+ static int put_eq_hashtable(scm_hashtable_t ht, scm_obj_t key, scm_obj_t value) {
+@@ -203,7 +203,7 @@ static int put_eq_hashtable(scm_hashtable_t ht, scm_obj_t key, scm_obj_t value)
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ 
+ found:
+   ht_datum->elts[index] = key;
+@@ -227,7 +227,7 @@ static scm_obj_t get_eq_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+ 
+ static int remove_eq_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+@@ -249,7 +249,7 @@ static int remove_eq_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t lookup_weakhashtable(scm_weakhashtable_t ht, scm_obj_t key) {
+@@ -276,7 +276,7 @@ scm_obj_t lookup_weakhashtable(scm_weakhashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+ 
+ int remove_weakhashtable(scm_weakhashtable_t ht, scm_obj_t key) {
+@@ -305,7 +305,7 @@ int remove_weakhashtable(scm_weakhashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+ 
+ int put_weakhashtable(scm_weakhashtable_t ht, scm_weakmapping_t wmap) {
+@@ -333,7 +333,7 @@ int put_weakhashtable(scm_weakhashtable_t ht, scm_weakmapping_t wmap) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ 
+ found:
+   ht_datum->elts[index] = wmap;
+@@ -375,7 +375,7 @@ int put_hashtable(scm_hashtable_t ht, scm_obj_t key, scm_obj_t value) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ 
+ found:
+   ht_datum->elts[index] = key;
+@@ -401,7 +401,7 @@ scm_obj_t get_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+ 
+ int remove_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+@@ -425,5 +425,5 @@ int remove_hashtable(scm_hashtable_t ht, scm_obj_t key) {
+     index += hash2;
+     if (index >= nsize) index -= nsize;
+   } while (index != hash1);
+-  fatal("%s:%u hash table full.", __FILE__, __LINE__);
++  fatal("%s:%u hash table full.", __FILE_NAME__, __LINE__);
+ }
+diff --git a/src/ioerror.cpp b/src/ioerror.cpp
+index 7611f59..437636b 100644
+--- a/src/ioerror.cpp
++++ b/src/ioerror.cpp
+@@ -21,7 +21,7 @@ void raise_io_codec_error(VM* vm, const char* who, int operation, const char* me
+       vm->apply_scheme(vm->lookup_system_closure(".@raise-i/o-decoding-error"), 3, arg1, arg2, io);
+     } break;
+     default:
+-      fatal("%s:%u wrong port operation code", __FILE__, __LINE__);
++      fatal("%s:%u wrong port operation code", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -83,7 +83,7 @@ void raise_io_error(VM* vm, const char* who, int operation, const char* message,
+       break;
+     }
+     default:
+-      fatal("%s:%u wrong port operation code", __FILE__, __LINE__);
++      fatal("%s:%u wrong port operation code", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+diff --git a/src/list.cpp b/src/list.cpp
+index 0a6f501..ec0968e 100644
+--- a/src/list.cpp
++++ b/src/list.cpp
+@@ -144,7 +144,7 @@ struct ancestor_t {
+         memcpy(stack, buf, sizeof(buf));
+       } else {
+         stack = (scm_obj_t*)realloc(stack, sizeof(scm_obj_t) * capacity);
+-        if (stack == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++        if (stack == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+       }
+     }
+     return stack[depth];
+diff --git a/src/mutex.h b/src/mutex.h
+index cecfdb9..082613f 100644
+--- a/src/mutex.h
++++ b/src/mutex.h
+@@ -45,7 +45,7 @@ class mutex_t {
+   void destroy() {
+ #if MTDEBUG
+     if (lock_count) {
+-      fatal("internal error:%s:%u destroy() lock held(%d)", __FILE__, __LINE__, lock_count);
++      fatal("internal error:%s:%u destroy() lock held(%d)", __FILE_NAME__, __LINE__, lock_count);
+     }
+ #endif
+     MTVERIFY(pthread_mutex_destroy(&mutex));
+@@ -69,7 +69,7 @@ class mutex_t {
+   void verify_locked() {
+ #if MTDEBUG
+     if (lock_count == 0) {
+-      fatal("internal error:%s:%u verify_locked() failed.", __FILE__, __LINE__);
++      fatal("internal error:%s:%u verify_locked() failed.", __FILE_NAME__, __LINE__);
+     }
+ #endif
+   }
+diff --git a/src/object_heap.cpp b/src/object_heap.cpp
+index 0a4e014..9f89c42 100644
+--- a/src/object_heap.cpp
++++ b/src/object_heap.cpp
+@@ -130,7 +130,7 @@ scm_obj_t object_heap_t::allocate_collectible(size_t size) {
+     } while (extend_pool(OBJECT_SLAB_SIZE));
+     fatal("fatal: heap memory overflow (%dMB)\n[exit]\n", m_pool_size / (1024 * 1024));
+   } else {
+-    fatal("%s:%u collectible object over %d bytes not supported but %d bytes requested", __FILE__, __LINE__,
++    fatal("%s:%u collectible object over %d bytes not supported but %d bytes requested", __FILE_NAME__, __LINE__,
+           1 << (array_sizeof(m_collectibles) + 2), size);
+   }
+   return NULL;
+@@ -217,7 +217,7 @@ void object_heap_t::init_pool(size_t pool_size, size_t init_size) {
+   m_map = (uint8_t*)heap_map(PREFERRED_MMAP_ADDRESS, m_map_size);
+   if (m_map == HEAP_MAP_FAILED) {
+     m_map = NULL;
+-    fatal("%s:%u mmap() failed: %s", __FILE__, __LINE__, strerror(errno));
++    fatal("%s:%u mmap() failed: %s", __FILE_NAME__, __LINE__, strerror(errno));
+   }
+ #ifndef NDEBUG
+   printf("mmap address:0x%lx\n", (uintptr_t)m_map);
+@@ -231,7 +231,7 @@ void object_heap_t::init_pool(size_t pool_size, size_t init_size) {
+   for (int i = 0; i < n_slab; i++) m_pool[i] = PTAG_USED;
+   m_pool_watermark = (init_size >> OBJECT_SLAB_SIZE_SHIFT);
+   if (m_pool_watermark <= n_slab || m_pool_watermark >= (m_pool_size >> OBJECT_SLAB_SIZE_SHIFT)) {
+-    fatal("%s:%u object_heap_t::init() bad parameter, pool_size:%d init_datum_size:%d", __FILE__, __LINE__, pool_size, init_size);
++    fatal("%s:%u object_heap_t::init() bad parameter, pool_size:%d init_datum_size:%d", __FILE_NAME__, __LINE__, pool_size, init_size);
+   }
+   m_pool_memo = 0;
+   m_pool_usage = 0;
+@@ -469,7 +469,7 @@ void object_heap_t::shade(scm_obj_t obj) {
+       int newsize = m_mark_stack_size + MARK_STACK_SIZE_GROW;
+       m_mark_stack = (scm_obj_t*)realloc(m_mark_stack, sizeof(scm_obj_t) * newsize);
+       if (m_mark_stack == NULL) {
+-        fatal("%s:%u memory overflow on realloc mark stack", __FILE__, __LINE__);
++        fatal("%s:%u memory overflow on realloc mark stack", __FILE_NAME__, __LINE__);
+       }
+       m_mark_sp = m_mark_stack + m_mark_stack_size;
+       m_mark_stack_size = newsize;
+@@ -816,7 +816,7 @@ fallback:
+   #if USE_CONST_LITERAL
+         hit |= (&heap.m_immutable_cons == ca);
+   #endif
+-        if (!hit) fatal("%s:%u concurrent_collect(): bad cache reference 0x%x in slab 0x%x", __FILE__, __LINE__, ca, slab);
++        if (!hit) fatal("%s:%u concurrent_collect(): bad cache reference 0x%x in slab 0x%x", __FILE_NAME__, __LINE__, ca, slab);
+       }
+ #endif
+       OBJECT_SLAB_TRAITS_OF(slab)->cache->sweep(slab);
+diff --git a/src/object_set.cpp b/src/object_set.cpp
+index dc1079b..2cd0816 100644
+--- a/src/object_set.cpp
++++ b/src/object_set.cpp
+@@ -94,7 +94,7 @@ void object_set_t::put(scm_obj_t obj) {
+     index += hash2;
+     if (index >= m_count) index -= m_count;
+   } while (index != hash1);
+-  fatal("%s:%u HashSet overflow", __FILE__, __LINE__);
++  fatal("%s:%u HashSet overflow", __FILE_NAME__, __LINE__);
+ }
+ 
+ void object_set_t::remove(scm_obj_t obj) {
+@@ -116,7 +116,7 @@ void object_set_t::remove(scm_obj_t obj) {
+     index += hash2;
+     if (index >= m_count) index -= m_count;
+   } while (index != hash1);
+-  fatal("%s:%u HashSet unintern failed.", __FILE__, __LINE__);
++  fatal("%s:%u HashSet unintern failed.", __FILE_NAME__, __LINE__);
+ }
+ 
+ void object_set_t::rehash(int ncount) {
+diff --git a/src/object_slab.cpp b/src/object_slab.cpp
+index ca7f640..45dd42f 100644
+--- a/src/object_slab.cpp
++++ b/src/object_slab.cpp
+@@ -26,7 +26,7 @@ bool object_slab_cache_t::init(object_heap_t* object_heap, int object_size, bool
+   assert(object_heap);
+   assert(object_size >= (int)sizeof(object_freelist_t));
+   if (object_size & (object_size - 1)) {
+-    fatal("%s:%u object_size must be power of 2 but got %d", __FILE__, __LINE__, object_size);
++    fatal("%s:%u object_size must be power of 2 but got %d", __FILE_NAME__, __LINE__, object_size);
+     return false;
+   }
+   destroy();
+diff --git a/src/port.cpp b/src/port.cpp
+index 40e8342..928a8f5 100644
+--- a/src/port.cpp
++++ b/src/port.cpp
+@@ -105,7 +105,7 @@ static ssize_t device_read(scm_port_t port, uint8_t* p, int size, off64_t mark)
+           n = io_read(port->fd, p, size);
+           break;
+         default:
+-          fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++          fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+       }
+       if (n < 0) {
+         if (errno == EINTR) continue;
+@@ -134,7 +134,7 @@ static ssize_t device_read(scm_port_t port, uint8_t* p, int size, off64_t mark)
+     throw_io_error(SCM_PORT_OPERATION_READ, "custom port read! procedure return invalid value");
+   }
+ 
+-  fatal("%s:%u wrong port type", __FILE__, __LINE__);
++  fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+ }
+ 
+ static void device_write(scm_port_t port, uint8_t* p, int size, off64_t mark) {
+@@ -152,7 +152,7 @@ static void device_write(scm_port_t port, uint8_t* p, int size, off64_t mark) {
+           written = io_write(port->fd, p, rest);
+           break;
+         default:
+-          fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++          fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+       }
+       if (written < 0) {
+         if (errno == EINTR) continue;
+@@ -194,7 +194,7 @@ static void device_write(scm_port_t port, uint8_t* p, int size, off64_t mark) {
+     }
+     return;
+   }
+-  fatal("%s:%u wrong port type", __FILE__, __LINE__);
++  fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+ }
+ 
+ static void device_set_mark(scm_port_t port, off64_t offset) {
+@@ -210,7 +210,7 @@ static void device_set_mark(scm_port_t port, off64_t offset) {
+         assert(false);
+       } break;
+       default:
+-        fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++        fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+     }
+   } else if (port->type == SCM_PORT_TYPE_CUSTOM) {
+     VM* vm = current_vm();
+@@ -220,7 +220,7 @@ static void device_set_mark(scm_port_t port, off64_t offset) {
+     assert(CLOSUREP(vect->elts[SCM_PORT_HANDLER_SET_POS]));
+     vm->call_scheme(vect->elts[SCM_PORT_HANDLER_SET_POS], 1, off);
+   } else {
+-    fatal("%s:%u wrong port type", __FILE__, __LINE__);
++    fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+   }
+   port->mark = offset;
+   port->buf_head = port->buf_tail = port->buf;
+@@ -254,7 +254,7 @@ static void init_port_buffer(scm_port_t port) {
+   switch (port->buffer_mode) {
+     case SCM_PORT_BUFFER_MODE_LINE: {
+       port->buf = (uint8_t*)malloc(SCM_PORT_LINE_BUFFER_SIZE);
+-      if (port->buf == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++      if (port->buf == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+       port->buf_head = port->buf;
+       port->buf_tail = port->buf_head;
+       port->buf_size = SCM_PORT_LINE_BUFFER_SIZE;
+@@ -262,7 +262,7 @@ static void init_port_buffer(scm_port_t port) {
+ 
+     case SCM_PORT_BUFFER_MODE_BLOCK: {
+       port->buf = (uint8_t*)malloc(SCM_PORT_BLOCK_BUFFER_SIZE);
+-      if (port->buf == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++      if (port->buf == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+       port->buf_head = port->buf;
+       port->buf_tail = port->buf_head;
+       port->buf_size = SCM_PORT_BLOCK_BUFFER_SIZE;
+@@ -277,7 +277,7 @@ static void init_port_buffer(scm_port_t port) {
+     } break;
+ 
+     default:
+-      fatal("%s:%u wrong buffer mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong buffer mode", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -400,7 +400,7 @@ void port_open_file(scm_port_t port, scm_obj_t name, int direction, int file_opt
+     } break;
+ 
+     default:
+-      fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++      fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+   }
+   port->fd = io_open(path, options, (S_IRUSR | S_IWUSR));
+   if (port->fd == INVALID_FD) throw_io_error(SCM_PORT_OPERATION_OPEN, errno);
+@@ -635,14 +635,14 @@ bool port_nonblock_byte_ready(scm_port_t port) {
+           case SCM_PORT_SUBTYPE_NONE:
+             break;
+           default:
+-            fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++            fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+         }
+       } break;
+       case SCM_PORT_TYPE_CUSTOM:
+       case SCM_PORT_TYPE_BYTEVECTOR:
+         break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return true;
+@@ -665,7 +665,7 @@ int port_buffered_byte_count(scm_port_t port) {
+         return (bvector->count - port->mark);
+       }
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return 0;
+@@ -691,7 +691,7 @@ bool port_eof(scm_port_t port) {
+           case SCM_PORT_SUBTYPE_CHAR_SPECIAL:
+             break;
+           default:
+-            fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++            fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+         }
+       } break;
+       case SCM_PORT_TYPE_BYTEVECTOR: {
+@@ -703,7 +703,7 @@ bool port_eof(scm_port_t port) {
+       case SCM_PORT_TYPE_SOCKET:
+         break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+     return false;
+   }
+@@ -750,7 +750,7 @@ int port_lookahead_byte(scm_port_t port) {
+         }
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return EOF;
+@@ -821,7 +821,7 @@ int port_get_byte(scm_port_t port) {
+         }
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return EOF;
+@@ -897,7 +897,7 @@ int port_get_bytes(scm_port_t port, uint8_t* p, int bsize) {
+         }
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return 0;
+@@ -952,7 +952,7 @@ scm_obj_t port_lookahead_utf8(scm_port_t port) {
+             }
+           } break;
+           default:
+-            fatal("%s:%u wrong port type", __FILE__, __LINE__);
++            fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+         }
+       }
+ 
+@@ -972,7 +972,7 @@ scm_obj_t port_lookahead_utf8(scm_port_t port) {
+           case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+             throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-8 sequence", scm_false);
+           default:
+-            fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++            fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+         }
+       }
+       if (port->mark == 0 && ucs4 == SCM_PORT_UCS4_BOM) {
+@@ -1000,7 +1000,7 @@ hit_eof:
+     case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+       throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-8 sequence", scm_false);
+     default:
+-      fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -1027,7 +1027,7 @@ scm_obj_t port_get_utf8(scm_port_t port) {
+             case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+               throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-8 sequence", scm_false);
+             default:
+-              fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++              fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+           }
+         }
+         utf8[i] = b;
+@@ -1043,7 +1043,7 @@ scm_obj_t port_get_utf8(scm_port_t port) {
+           case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+             throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-8 sequence", scm_false);
+           default:
+-            fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++            fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+         }
+       }
+       if (port->mark == 3 && ucs4 == SCM_PORT_UCS4_BOM) goto top;
+@@ -1189,7 +1189,7 @@ scm_obj_t port_lookahead_utf16(scm_port_t port) {
+         }
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+   return scm_eof;
+@@ -1210,7 +1210,7 @@ bad_code:
+     case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+       throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-16 sequence", scm_false);
+     default:
+-      fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+   }
+ 
+ hit_eof:
+@@ -1222,7 +1222,7 @@ hit_eof:
+     case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+       throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-16 sequence", scm_false);
+     default:
+-      fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+   }
+ 
+ return_replacement:
+@@ -1272,7 +1272,7 @@ bad_code:
+     case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+       throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-16 sequence", scm_false);
+     default:
+-      fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+   }
+ 
+ hit_eof:
+@@ -1284,7 +1284,7 @@ hit_eof:
+     case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+       throw_codec_error(SCM_PORT_OPERATION_DECODE, "encountered invalid utf-16 sequence", scm_false);
+     default:
+-      fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++      fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -1304,7 +1304,7 @@ void port_set_mark(scm_port_t port, off64_t offset) {
+         device_set_mark(port, offset);
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+     port->track_line_column = false;
+     port->column = 0;
+@@ -1374,7 +1374,7 @@ void port_put_byte(scm_port_t port, int byte) {
+         return;
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+ }
+@@ -1456,7 +1456,7 @@ void port_put_bytes(scm_port_t port, uint8_t* p, int bsize) {
+         }
+       } break;
+       default:
+-        fatal("%s:%u wrong port type", __FILE__, __LINE__);
++        fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+     }
+   }
+ }
+@@ -1600,7 +1600,7 @@ static scm_obj_t port_lookahead_ch(scm_port_t port) {
+       if (c == EOF) return scm_eof;
+       return MAKECHAR(c);
+   }
+-  fatal("%s:%u wrong codec", __FILE__, __LINE__);
++  fatal("%s:%u wrong codec", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t port_lookahead_char(scm_port_t port) {
+@@ -1628,7 +1628,7 @@ static scm_obj_t port_get_ch(scm_port_t port) {
+       if (c == EOF) return scm_eof;
+       return MAKECHAR(c);
+   }
+-  fatal("%s:%u wrong codec", __FILE__, __LINE__);
++  fatal("%s:%u wrong codec", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t port_get_char(scm_port_t port) {
+@@ -1685,10 +1685,10 @@ bool port_has_port_position_pred(scm_port_t port) {
+         case SCM_PORT_SUBTYPE_CHAR_SPECIAL:
+           return false;
+         default:
+-          fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++          fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+       }
+     default:
+-      fatal("%s:%u wrong port type", __FILE__, __LINE__);
++      fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -1712,10 +1712,10 @@ bool port_has_set_port_position_pred(scm_port_t port) {
+         case SCM_PORT_SUBTYPE_CHAR_SPECIAL:
+           return false;
+         default:
+-          fatal("%s:%u wrong port subtype", __FILE__, __LINE__);
++          fatal("%s:%u wrong port subtype", __FILE_NAME__, __LINE__);
+       }
+     default:
+-      fatal("%s:%u wrong port type", __FILE__, __LINE__);
++      fatal("%s:%u wrong port type", __FILE_NAME__, __LINE__);
+   }
+ }
+ 
+@@ -1825,7 +1825,7 @@ static void port_putc(scm_port_t port, int32_t ucs4) {
+         case SCM_PORT_ERROR_HANDLING_MODE_RAISE:
+           throw_codec_error(SCM_PORT_OPERATION_ENCODE, "encountered a character it cannot encode", MAKECHAR(ucs4));
+         default:
+-          fatal("%s:%u wrong error handling mode", __FILE__, __LINE__);
++          fatal("%s:%u wrong error handling mode", __FILE_NAME__, __LINE__);
+       }
+     }
+     default:
+@@ -1914,7 +1914,7 @@ scm_obj_t port_socket(scm_port_t port) {
+   if (port->type == SCM_PORT_TYPE_SOCKET) {
+     if (SOCKETP(port->name)) return (scm_socket_t)port->name;
+     if (PAIRP(port->name) && (SOCKETP(CADR(port->name)))) return (scm_socket_t)CADR(port->name);
+-    fatal("%s:%u wrong port name", __FILE__, __LINE__);
++    fatal("%s:%u wrong port name", __FILE_NAME__, __LINE__);
+   }
+   return scm_false;
+ }
+diff --git a/src/printer.cpp b/src/printer.cpp
+index 49b3411..23d4d43 100644
+--- a/src/printer.cpp
++++ b/src/printer.cpp
+@@ -104,7 +104,7 @@ void printer_t::write_string(const uint8_t* utf8, int n) {
+       continue;
+     } else {
+       int bytes = cnvt_utf8_to_ucs4(utf8 + i, &ucs4);
+-      if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in string", __FILE__, __LINE__);
++      if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in string", __FILE_NAME__, __LINE__);
+       if (ucs4_subsequent(ucs4)) {
+         write_ucs4(ucs4);
+       } else {
+@@ -138,7 +138,7 @@ void printer_t::write_pretty_symbol(const uint8_t* utf8, int n) {
+       i = i + 1;
+     } else {
+       int bytes = cnvt_utf8_to_ucs4(utf8 + i, &ucs4);
+-      if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in symbol", __FILE__, __LINE__);
++      if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in symbol", __FILE_NAME__, __LINE__);
+       if (ucs4_subsequent(ucs4)) {
+         write_ucs4(ucs4);
+       } else {
+@@ -157,7 +157,7 @@ void printer_t::write_r6rs_symbol(const uint8_t* utf8, int n) {
+   int i = 0;
+   while (i < n) {
+     int bytes = cnvt_utf8_to_ucs4(utf8 + i, &cp);
+-    if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in symbol", __FILE__, __LINE__);
++    if (bytes < 0) fatal("%s:%u invalid utf8 encodeing in symbol", __FILE_NAME__, __LINE__);
+     if ((i == 0 && ucs4_constituent(cp)) || (i > 0 && ucs4_subsequent(cp))) {
+       write_ucs4(cp);
+     } else {
+@@ -425,7 +425,7 @@ void printer_t::format_va_list(const char* fmt, va_list ap) {
+             port_put_byte(m_port, ' ');
+             break;
+           default:
+-            fatal("%s:%u unrecognized format.", __FILE__, __LINE__);
++            fatal("%s:%u unrecognized format.", __FILE_NAME__, __LINE__);
+             return;
+         }
+         break;
+@@ -523,7 +523,7 @@ void printer_t::format_va_list(const char* fmt, va_list ap) {
+             port_put_byte(m_port, '%');
+             break;
+           default:
+-            fatal("%s:%u unrecognized format.", __FILE__, __LINE__);
++            fatal("%s:%u unrecognized format.", __FILE_NAME__, __LINE__);
+             return;
+         }
+         break;
+diff --git a/src/queue.h b/src/queue.h
+index f3e491b..c882fa8 100644
+--- a/src/queue.h
++++ b/src/queue.h
+@@ -58,7 +58,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool put(element_t datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::put after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::put after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (terminate) {
+@@ -84,7 +84,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool put(element_t datum, int msec) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::put after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::put after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (terminate) {
+@@ -119,7 +119,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool get(element_t* datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::get after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::get after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (n == 0 && terminate) {
+@@ -145,7 +145,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool get(element_t* datum, int msec) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::get after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::get after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (n == 0 && terminate) {
+@@ -180,7 +180,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool try_put(element_t datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::try_put after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::try_put after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     if (n == capacity || pthread_mutex_trylock(&lock)) return false;
+     if (n == capacity || terminate) {
+@@ -197,7 +197,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool wait_lock_try_put(element_t datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::wait_lock_try_put after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::wait_lock_try_put after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (n == capacity || terminate) {
+@@ -214,7 +214,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool try_get(element_t* datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::try_get after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::try_get after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     if (n == 0 || pthread_mutex_trylock(&lock)) return false;
+     if (n == 0 || terminate) {
+@@ -231,7 +231,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   bool wait_lock_try_get(element_t* datum) {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::wait_lock_try_get after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::wait_lock_try_get after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     MTVERIFY(pthread_mutex_lock(&lock));
+     if (n == 0 || terminate) {
+@@ -248,7 +248,7 @@ template <typename T> class concurrent_queue_t {
+ 
+   void clear() {
+ #ifndef NDEBUG
+-    if (terminate) warning("warning:%s:%u concurrent_queue_t::clear after shutdown\n", __FILE__, __LINE__);
++    if (terminate) warning("warning:%s:%u concurrent_queue_t::clear after shutdown\n", __FILE_NAME__, __LINE__);
+ #endif
+     if (n == 0) return;
+     MTVERIFY(pthread_mutex_lock(&lock));
+@@ -316,7 +316,7 @@ class fifo_buffer_t {
+     int prev = count;
+     count = prev + prev / 2 + 1;
+     tags = (tag_t*)realloc(tags, sizeof(tag_t) * count);
+-    if (tags == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++    if (tags == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+     for (int i = prev; i < count; i++) tags[i].buf = NULL;
+     return add_tag(buf, bytes);
+   }
+@@ -342,7 +342,7 @@ class fifo_buffer_t {
+     int psize = bottom - top;
+     int nsize = psize + psize / 2 + req;
+     uint8_t* p = (uint8_t*)realloc(top, nsize);
+-    if (p == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++    if (p == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+     int offset = p - top;
+     top = p;
+     bottom = p + nsize;
+@@ -392,7 +392,7 @@ class fifo_buffer_t {
+   void init(int n) {
+     count = n;
+     tags = (tag_t*)malloc(sizeof(tag_t) * count);
+-    if (tags == NULL) fatal("%s:%u memory overflow", __FILE__, __LINE__);
++    if (tags == NULL) fatal("%s:%u memory overflow", __FILE_NAME__, __LINE__);
+     memset(tags, 0, sizeof(tag_t) * count);
+     int bufsize = 128 * n;
+     if (bufsize > 4096) bufsize = 4096;
+diff --git a/src/reader.cpp b/src/reader.cpp
+index 78042b4..83bb76c 100644
+--- a/src/reader.cpp
++++ b/src/reader.cpp
+@@ -483,7 +483,7 @@ scm_obj_t reader_t::read_string() {
+         } else {
+           buf = (char*)realloc(buf, bufsize);
+         }
+-        if (buf == NULL) fatal("%s:%u memory exhausted while reading string", __FILE__, __LINE__);
++        if (buf == NULL) fatal("%s:%u memory exhausted while reading string", __FILE_NAME__, __LINE__);
+       }
+       int c = get_ucs4();
+       if (c == EOF) lexical_error("unexpected end-of-file while reading string");
+diff --git a/src/serialize.cpp b/src/serialize.cpp
+index 02593b6..cd409c8 100644
+--- a/src/serialize.cpp
++++ b/src/serialize.cpp
+@@ -362,7 +362,7 @@ void serializer_t::put_tagged() {
+         emit_u32(0);
+         continue;
+       }
+-      fatal("%s:%u internal error: something wrong", __FILE__, __LINE__);
++      fatal("%s:%u internal error: something wrong", __FILE_NAME__, __LINE__);
+     }
+   } catch (...) {
+     m_heap->deallocate_private(shared);
+@@ -499,7 +499,7 @@ void serializer_t::put_datum(scm_obj_t obj) {
+             return;
+           }
+         }
+-        fatal("%s:%u internal error: something wrong", __FILE__, __LINE__);
++        fatal("%s:%u internal error: something wrong", __FILE_NAME__, __LINE__);
+       }
+       emit_u8(BVO_TAG_GLOC);
+       put_datum(gloc->variable);
+@@ -545,7 +545,7 @@ void serializer_t::put_datum(scm_obj_t obj) {
+       assert(sizeof(int) == 4);
+       scm_hashtable_t ht = (scm_hashtable_t)obj;
+       scoped_lock lock(ht->lock);
+-      if (ht->type == SCM_HASHTABLE_TYPE_GENERIC) fatal("%s:%u internal error: something wrong", __FILE__, __LINE__);
++      if (ht->type == SCM_HASHTABLE_TYPE_GENERIC) fatal("%s:%u internal error: something wrong", __FILE_NAME__, __LINE__);
+       hashtable_rec_t* ht_datum = ht->datum;
+       assert(ht_datum);
+       emit_u8(BVO_TAG_HASHTABLE);
+@@ -562,7 +562,7 @@ void serializer_t::put_datum(scm_obj_t obj) {
+     }
+   }
+ 
+-  fatal("%s:%u internal error: datum not supported in serialized object", __FILE__, __LINE__);
++  fatal("%s:%u internal error: datum not supported in serialized object", __FILE_NAME__, __LINE__);
+ }
+ 
+ scm_obj_t serializer_t::translate(scm_obj_t obj) {
+@@ -778,7 +778,7 @@ scm_obj_t deserializer_t::get_datum() {
+       assert(sizeof(int) == 4);
+       int type = fetch_u32();
+       int live = fetch_u32();
+-      if (type == SCM_HASHTABLE_TYPE_GENERIC) fatal("%s:%u internal error: something wrong", __FILE__, __LINE__);
++      if (type == SCM_HASHTABLE_TYPE_GENERIC) fatal("%s:%u internal error: something wrong", __FILE_NAME__, __LINE__);
+       scm_hashtable_t ht = make_hashtable(m_heap, type, lookup_mutable_hashtable_size(live));
+       scoped_lock lock(ht->lock);
+       for (int i = 0; i < live; i++) {
+diff --git a/src/subr_c_ffi.cpp b/src/subr_c_ffi.cpp
+index 9e17dd5..3bd76f9 100644
+--- a/src/subr_c_ffi.cpp
++++ b/src/subr_c_ffi.cpp
+@@ -191,7 +191,7 @@ static Type* builtin_type(LLVMContext& C, char code) {
+     case 'x':
+       return Type::getDoubleTy(C);
+     default:
+-      fatal("%s:%u wrong type code: %c", __FILE__, __LINE__, code);
++      fatal("%s:%u wrong type code: %c", __FILE_NAME__, __LINE__, code);
+   }
+ }
+ 
+@@ -288,7 +288,7 @@ static void* compile_callout_thunk(uintptr_t adrs, const char* caller_signature,
+   int n = strlen(caller_signature) - 1;
+   for (int i = 0; i < n; i++) {
+     char code = caller_signature[i + 1];
+-    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE__, __LINE__, code);
++    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE_NAME__, __LINE__, code);
+     Value* value = IRB.CreateCall(thunk_to[code], {vm, VALUE_INTPTR(i), argv});
+     args.push_back(value);
+   }
+@@ -300,11 +300,11 @@ static void* compile_callout_thunk(uintptr_t adrs, const char* caller_signature,
+     IRB.CreateRet(VALUE_INTPTR(scm_unspecified));
+   } else {
+     char code = callee_signature[0];
+-    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE__, __LINE__, code);
++    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE_NAME__, __LINE__, code);
+     IRB.CreateRet(IRB.CreateCall(thunk_from[code], {vm, retval}));
+   }
+ 
+-  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE__, __LINE__);
++  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE_NAME__, __LINE__);
+   ExitOnErr(s_c_ffi->addIRModule(std::move(ThreadSafeModule(std::move(M), std::move(Context)))));
+   auto symbol = ExitOnErr(s_c_ffi->lookup(function_id));
+   void* ptr = (void*)symbol.getAddress();
+@@ -338,7 +338,7 @@ static void* compile_callback_thunk(VM* vm, uintptr_t trampoline_uid, const char
+   int n = strlen(signature) - 1;
+   for (int i = 0; i < n; i++) {
+     char code = signature[i + 1];
+-    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE__, __LINE__, code);
++    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE_NAME__, __LINE__, code);
+     Value* value = IRB.CreateCall(thunk_from[code], {VALUE_INTPTR(vm), F->arg_begin() + i});
+     args.push_back(value);
+   }
+@@ -351,11 +351,11 @@ static void* compile_callback_thunk(VM* vm, uintptr_t trampoline_uid, const char
+     IRB.CreateRetVoid();
+   } else {
+     char code = signature[0];
+-    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE__, __LINE__, code);
++    if (!strchr("budqosx", code)) fatal("%s:%u wrong type code: %c", __FILE_NAME__, __LINE__, code);
+     IRB.CreateRet(IRB.CreateCall(thunk_ret[code], {VALUE_INTPTR(vm), retval}));
+   }
+ 
+-  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE__, __LINE__);
++  if (verifyModule(*M, &outs())) fatal("%s:%u verify module failed", __FILE_NAME__, __LINE__);
+ 
+   // M->print(outs(), nullptr);
+ 
+diff --git a/src/subr_port.cpp b/src/subr_port.cpp
+index e36a19f..452174a 100644
+--- a/src/subr_port.cpp
++++ b/src/subr_port.cpp
+@@ -141,7 +141,7 @@ scm_obj_t subr_output_port_buffer_mode(VM* vm, int argc, scm_obj_t argv[]) {
+           case SCM_PORT_BUFFER_MODE_BLOCK:
+             return make_symbol(vm->m_heap, "block");
+           default:
+-            fatal("%s:%u wrong port buffer mode", __FILE__, __LINE__);
++            fatal("%s:%u wrong port buffer mode", __FILE_NAME__, __LINE__);
+         }
+       } catch (io_exception_t& e) {
+         raise_io_error(vm, "output-port-buffer-mode", e.m_operation, e.m_message, e.m_err, port, scm_false);
+@@ -340,7 +340,7 @@ scm_obj_t subr_port_device_subtype(VM* vm, int argc, scm_obj_t argv[]) {
+         case SCM_PORT_SUBTYPE_FIFO:
+           return make_symbol(vm->m_heap, "fifo");
+         default:
+-          fatal("%s:%u unknown port subtype", __FILE__, __LINE__);
++          fatal("%s:%u unknown port subtype", __FILE_NAME__, __LINE__);
+       }
+     }
+     wrong_type_argument_violation(vm, "port-device-subtype", 0, "port", argv[0], argc, argv);
+diff --git a/src/sysdep.h b/src/sysdep.h
+index bb6bf74..88cb150 100644
+--- a/src/sysdep.h
++++ b/src/sysdep.h
+@@ -165,7 +165,7 @@ inline double msec() {
+   #define MTVERIFY(expr)                                                                                          \
+     do {                                                                                                          \
+       int __RETVAL__ = (expr);                                                                                    \
+-      if (__RETVAL__) fatal("error:%s:%u " #expr " %d %s", __FILE__, __LINE__, __RETVAL__, strerror(__RETVAL__)); \
++      if (__RETVAL__) fatal("error:%s:%u " #expr " %d %s", __FILE_NAME__, __LINE__, __RETVAL__, strerror(__RETVAL__)); \
+     } while (0)
+ #else
+   #define MTVERIFY(expr)                \
+diff --git a/src/vm0.cpp b/src/vm0.cpp
+index b2cabf8..cabac55 100644
+--- a/src/vm0.cpp
++++ b/src/vm0.cpp
+@@ -194,7 +194,7 @@ scm_obj_t VM::backtrace_seek_body(scm_obj_t code) {
+     int opcode = instruction_to_opcode(CAAR(lst));
+     switch (opcode) {
+       case VMOP_SUBR_GLOC_OF:
+-        fatal("%s:%u intern error backtrace_seek()", __FILE__, __LINE__);
++        fatal("%s:%u intern error backtrace_seek()", __FILE_NAME__, __LINE__);
+       case VMOP_SUBR:
+         if (PAIRP(CDDR(operands))) return CDDR(operands);
+         return scm_unspecified;
+@@ -253,7 +253,7 @@ scm_obj_t VM::backtrace_seek_tail(scm_obj_t code) {
+     switch (opcode) {
+       case VMOP_RET_SUBR_GLOC_OF:
+       case VMOP_APPLY_GLOC_OF:
+-        fatal("%s:%u internal error: backtrace_seek()", __FILE__, __LINE__);
++        fatal("%s:%u internal error: backtrace_seek()", __FILE_NAME__, __LINE__);
+       case VMOP_RET_SUBR:
+         if (PAIRP(CDR(operands))) return CDR(operands);
+         return scm_unspecified;
+diff --git a/src/vm1.cpp b/src/vm1.cpp
+index 794bf5d..68b92f1 100644
+--- a/src/vm1.cpp
++++ b/src/vm1.cpp
+@@ -155,7 +155,7 @@ void VM::collect_stack(intptr_t acquire) {
+ #ifndef NDEBUG
+   if ((uintptr_t)m_sp + acquire > (uintptr_t)m_stack_limit) {
+     backtrace(m_current_error);
+-    fatal("%s:%u stack overflow", __FILE__, __LINE__);
++    fatal("%s:%u stack overflow", __FILE_NAME__, __LINE__);
+   }
+ #endif
+ #if STDEBUG
+diff --git a/src/vm3.cpp b/src/vm3.cpp
+index a6ddfac..00a6820 100644
+--- a/src/vm3.cpp
++++ b/src/vm3.cpp
+@@ -221,32 +221,32 @@ scm_obj_t VM::call_scheme(scm_obj_t proc, int argc, ...) {
+ void VM::check_vm_env(void* lnk) {
+   if (lnk == NULL) return;
+   if (((uintptr_t)lnk) & 0x03) {
+-    fatal("%s:%u check_state_env(): link is not valid pointer(maybe forwarded) 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env,
++    fatal("%s:%u check_state_env(): link is not valid pointer(maybe forwarded) 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env,
+           m_cont);
+   }
+   if (!m_heap->in_heap(lnk)) {
+-    fatal("%s:%u check_state_env(): invalid link, out of range 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++    fatal("%s:%u check_state_env(): invalid link, out of range 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+   }
+   if (m_heap->in_heap(lnk)) {
+     if (!STACKP(lnk)) {
+       if (!m_heap->is_collectible(lnk)) {
+-        fatal("%s:%u check_state_env(): env in bad container, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++        fatal("%s:%u check_state_env(): env in bad container, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+       }
+       scm_obj_t obj = OBJECT_SLAB_TRAITS_OF(lnk)->cache->lookup(lnk);
+       if (!HEAPENVP(obj)) {
+-        fatal("%s:%u check_state_env(): env in improper object, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++        fatal("%s:%u check_state_env(): env in improper object, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+       }
+     }
+   }
+   vm_env_t env = (vm_env_t)((intptr_t)lnk - offsetof(vm_env_rec_t, up));
+   if (env->count < 0 || env->count > 256) {
+-    fatal("%s:%u check_state_env(): bad env->count, 0x%x count:%d, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, env, env->count, m_env, m_cont);
++    fatal("%s:%u check_state_env(): bad env->count, 0x%x count:%d, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, env, env->count, m_env, m_cont);
+   }
+   scm_obj_t* top = (scm_obj_t*)((scm_obj_t*)env - env->count);
+   for (int i = 0; i < env->count; i++) {
+     if (CELLP(top[i])) {
+       if (!m_heap->is_collectible(top[i])) {
+-        fatal("%s:%u check_state_env(): env contain bad object, 0x%x object:0x0x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, env, top[i],
++        fatal("%s:%u check_state_env(): env contain bad object, 0x%x object:0x0x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, env, top[i],
+               m_env, m_cont);
+       }
+     }
+@@ -256,20 +256,20 @@ void VM::check_vm_env(void* lnk) {
+ void VM::check_vm_cont(void* lnk) {
+   if (lnk == NULL) return;
+   if (((uintptr_t)lnk) & 0x03) {
+-    fatal("%s:%u check_state_cont(): link is not valid pointer(maybe forwarded) 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env,
++    fatal("%s:%u check_state_cont(): link is not valid pointer(maybe forwarded) 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env,
+           m_cont);
+   }
+   if (!(STACKP(lnk) || m_heap->in_heap(lnk))) {
+-    fatal("%s:%u check_state_cont(): invalid link, out of range 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++    fatal("%s:%u check_state_cont(): invalid link, out of range 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+   }
+   if (m_heap->in_heap(lnk)) {
+     if (!STACKP(lnk)) {
+       if (!m_heap->is_collectible(lnk)) {
+-        fatal("%s:%u check_state_cont(): cont in bad container, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++        fatal("%s:%u check_state_cont(): cont in bad container, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+       }
+       scm_obj_t obj = OBJECT_SLAB_TRAITS_OF(lnk)->cache->lookup(lnk);
+       if (!HEAPCONTP(obj)) {
+-        fatal("%s:%u check_state_cont(): cont in improper object, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE__, __LINE__, lnk, m_env, m_cont);
++        fatal("%s:%u check_state_cont(): cont in improper object, 0x%x, m_env 0x%x, m_cont 0x%x", __FILE_NAME__, __LINE__, lnk, m_env, m_cont);
+       }
+     }
+   }
+-- 
+2.36.1
+
