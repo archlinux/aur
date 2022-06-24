@@ -1,6 +1,6 @@
 pkgbase = coin-or-ipopt
 	pkgdesc = Interior Point OPTimizer
-	pkgver = 3.14.6
+	pkgver = 3.14.7
 	pkgrel = 1
 	url = https://github.com/coin-or/Ipopt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = coin-or-ipopt
 	depends = lapack
 	depends = coin-or-asl
 	depends = coin-or-coinmumps
-	source = https://github.com/coin-or/Ipopt/archive/releases/3.14.6.tar.gz
-	sha256sums = e4f2ac6968107003ab6a7b226cc12b94cfc59443159d6bdbf74d9a07047e1d84
+	source = https://github.com/coin-or/Ipopt/archive/releases/3.14.7.tar.gz
+	sha256sums = cb5615d6d78e7a183288e4f0011a487c23caaf884ac8a2e0075dd134c3b0219e
 
 pkgname = coin-or-ipopt
