@@ -11,7 +11,17 @@ pkgdesc="Serious Sam Classic Nightmare Tower native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-Tower"
 license=('GPL2')
-depends=('sdl2' 'python' 'bash')
+
+if pacman -Qq serioussam >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam')
+elif pacman -Qq serioussam-vk >/dev/null 2>&1; then
+  depends=('sdl2' 'python' 'bash' 'serioussam-vk')
+else
+  echo "This package requires either "serioussam" or "serioussam-vk", but neither is installed."
+  echo "Compilation aborted."
+  return 1
+fi
+
 makedepends=('cmake' 'make' 'sed')
 source=("https://github.com/tx00100xt/SE1-TFE-Tower/archive/refs/tags/v$pkgver.tar.gz"
     "https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-Tower/SamTFE-Tower.tar.xz")
@@ -26,11 +36,10 @@ fi
 
 prepare(){
   # Install the Tower Modification data.
-  mkdir "$srcdir/$_srcname"/{SamTFE,SamTFE/Mods,SamTFE/Mods/Tower} || return 0
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/Tower/Bin/libGame.so" || return 1
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/Tower/Bin/libEntities.so" || return 1
-  chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/Tower"
-  chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/Tower"
+  rm -f "$srcdir/Mods/Tower/Bin/libGame.so" || return 1
+  rm -f "$srcdir/Mods/Tower/Bin/libEntities.so" || return 1
+  chmod -R o=rx "$srcdir/Mods/Tower"
+  chmod -R g=rx "$srcdir/Mods/Tower"
 
   # Making building scripts.
   cd "$srcdir/$_srcname/Sources/"

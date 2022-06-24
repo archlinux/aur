@@ -1,5 +1,5 @@
 pkgbase = serioussam-tower
-	pkgdesc = Serious Sam Classic Nightmare Tower native Linux.
+	pkgdesc = Serious Sam Classic Nightmare Tower native Linux
 	pkgver = 1.00
 	pkgrel = 1
 	url = https://github.com/tx00100xt/SE1-TFE-Tower
