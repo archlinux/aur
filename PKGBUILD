@@ -6,7 +6,7 @@
 
 pkgbase=dbus-xdg
 pkgname=(dbus-xdg-elogind dbus-xdg-docs)
-pkgver=1.12.20
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system - but do not create a ~/.dbus directory (for non-systemd systems)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -14,19 +14,21 @@ arch=(x86_64)
 license=(GPL custom)
 depends=(libx11 libelogind expat audit)
 makedepends=(elogind xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive)
-source=("https://gitlab.freedesktop.org/dbus/dbus/-/archive/dbus-$pkgver/dbus-dbus-$pkgver.tar.gz"
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-$pkgver"
         dbus-enable-elogind.patch
         no-fatal-warnings.diff
         dbus-launch-Move-dbus-autolaunch-stuff-to-runuser.patch)
 sha256sums=('SKIP'
             'faffcaa5b295f49fcedeed2c9ece5298949096be3062fd99a4bf1a6ac3ad1ea0'
-            '6958eeec07557b92a28419eb1702331ee2f0a6fd17285e37dfb6130b9fa4cf6e'
+            'c10395be67e1127a58d7173b587fbbf16f8a8b271c41293558fcf9e27c185478'
             '691a84ca6543ac8d1cd19e915fee7dc967dae106e72200d58b682748265501fc')
+validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
+
 provides=('dbus' 'dbus-docs')
 conflicts=('dbus' 'dbus-docs')
 
 prepare() {
-  cd "dbus-dbus-$pkgver"
+  cd dbus
   patch -Np 1 -i ../dbus-enable-elogind.patch
   # Allow us to enable checks without them being fatal
   patch -Np1 -i ../no-fatal-warnings.diff
@@ -36,12 +38,13 @@ prepare() {
 }
 
 build() {
-  cd "dbus-dbus-$pkgver"
+  cd dbus
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib/dbus-1.0 \
+    --runstatedir=/run \
     --with-console-auth-dir=/run/console/ \
     --with-dbus-user=dbus \
     --with-system-pid-file=/run/dbus/pid \
@@ -60,9 +63,9 @@ build() {
   make
 }
 
-check() {
-  make -C "dbus-dbus-$pkgver" check
-}
+# check() {
+#   make -C dbus -j1 check
+# }
 
 package_dbus-xdg-elogind() {
   depends+=(libelogind.so libaudit.so)
@@ -70,7 +73,7 @@ package_dbus-xdg-elogind() {
   conflicts=(libdbus)
   replaces=(libdbus)
 
-  DESTDIR="$pkgdir" make -C "dbus-dbus-$pkgver" install
+  DESTDIR="$pkgdir" make -C dbus install
 
   rm -r "$pkgdir"/{etc,var}
 
@@ -78,18 +81,20 @@ package_dbus-xdg-elogind() {
   echo 'u dbus 81 "System Message Bus"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "dbus-dbus-$pkgver"/COPYING
-
   # Split docs
-  mv "$pkgdir/usr/share/doc" "$srcdir"
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 }
 
 package_dbus-xdg-docs() {
   pkgdesc+=" (documentation)"
   depends=()
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "dbus-dbus-$pkgver"/COPYING
-  mv doc "$pkgdir/usr/share"
+  mv doc/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 }
 
 # vim:set sw=2 et:
