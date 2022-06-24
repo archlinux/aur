@@ -1,30 +1,27 @@
 pkgname=svd2rust-git
-_pkgname=svd2rust
-pkgdesc="Generate Rust register maps (structs) from SVD files"
+pkgdesc='Generate Rust register maps (structs) from SVD files'
 pkgrel=1
-pkgver=0.11.3.204
-arch=('i686' 'x86_64')
-conflicts=("svd2rust")
-provides=("svd2rust")
-url="https://github.com/japaric/svd2rust"
-license=('Apache' 'MIT')
-depends=()
-makedepends=('rust' 'cargo')
-optdepends=()
-source=("$_pkgname::git+https://github.com/japaric/svd2rust")
-sha256sums=('SKIP')
+pkgver=0.24.0.r2.g298f1f9
+arch=(i686 x86_64)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+url=https://github.com/rust-embedded/svd2rust
+license=(Apache MIT)
+makedepends=(rust)
+source=(git+$url)
+sha256sums=(SKIP)
 
 pkgver() {
-	cd $_pkgname
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)"
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $_pkgname
-	env CARGO_INCREMENTAL=0 cargo build --release
+  cd ${pkgname%-git}
+  cargo build --release
 }
 
 package() {
-	cd $_pkgname
-	install -D -m755 "$srcdir/$_pkgname/target/release/svd2rust" "$pkgdir/usr/bin/svd2rust"
+  cd ${pkgname%-git}
+  install -D -m755 target/release/${pkgname%-git} "$pkgdir/usr/bin/${pkgname%-git}"
 }
