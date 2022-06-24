@@ -1,15 +1,15 @@
 pkgbase = quikman
 	pkgdesc = A FreeBSD/Linux/Unix GUI manual viewer/reader written in Qt4
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.google.com/p/quikman/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = BSD
 	depends = qt4
 	depends = man2html
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/quikman/quikman-1.0.0.tar.gz
+	source = https://github.com/bl00dy1837/quikman/raw/main/quikman-1.0.0.tar.gz
 	sha1sums = 6b68e97120dbe8f33480e6151c71bc289cd3f269
 
 pkgname = quikman
-

@@ -1,18 +1,19 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=quikman
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A FreeBSD/Linux/Unix GUI manual viewer/reader written in Qt4"
 url="https://code.google.com/p/quikman/"
-arch=('x86_64' 'i686')
-license=( 'BSD' )
-depends=( 'qt4' 'man2html' )
-source=( "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/quikman/quikman-1.0.0.tar.gz" )
+arch=('x86_64' 'i686' 'aarch64')
+license=('BSD')
+depends=('qt4' 'man2html')
+source=("https://github.com/bl00dy1837/quikman/raw/main/quikman-1.0.0.tar.gz")
 sha1sums=('6b68e97120dbe8f33480e6151c71bc289cd3f269')
 
 build() {
-  cd "$srcdir"
+#  cd "${srcdir}"
   qmake-qt4 -project
   echo "target.path = \$\$INSTALL_ROOT/bin" >> src.pro
   echo "INSTALLS += target" >> src.pro
@@ -22,9 +23,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
-  make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  cd $pkgdir
+#  cd "$srcdir"
+  make INSTALL_ROOT="${pkgdir}" install
+  install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  cd ${pkgdir}
   mv bin usr/bin
 }
