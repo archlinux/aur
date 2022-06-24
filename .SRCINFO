@@ -1,15 +1,14 @@
 pkgbase = regextester
 	pkgdesc = A simple regex tester
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/artemanufrij/regextester
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = regextester-1.1.0.tar.gz::https://github.com/artemanufrij/regextester/archive/1.1.0.tar.gz
-	sha256sums = a9785c86357288632079bad7d897af7d2216e8ed2fcf6467f9991fd7adb26d3b
+	source = regextester-1.1.1.tar.gz::https://github.com/artemanufrij/regextester/archive/1.1.1.tar.gz
+	sha256sums = 619e9cb465f98119c17864078d3f308ab5eed4ff1af59f4b45254033cd10a05e
 
 pkgname = regextester
-
