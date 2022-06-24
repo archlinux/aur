@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=python-mkl-service
 _pkgname=mkl-service
-pkgver=2.3.0
+pkgver=2.4.0.post1
 pkgrel=1
 pkgdesc="Python hooks for Intel(R) Math Kernel Library runtime control settings."
 arch=('x86_64')
