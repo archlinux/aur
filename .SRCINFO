@@ -14,6 +14,6 @@ pkgbase = catapult
 	depends = libqalculate
 	depends = pango
 	source = https://github.com/otsaloma/catapult/archive/refs/tags/0.4.1.tar.gz
-	sha256sums = 52f537d5112b2805e08a53286276344921f8159073b9aa03d7b1c62e5fa18e2c
+	sha256sums = 1e81ea7a712ee12c27dceaf267f920db9f231f16c3495f4bb47c95f48e887938
 
 pkgname = catapult
