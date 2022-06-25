@@ -9,7 +9,7 @@
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
 _pkgver=4.3
-pkgver=${_pkgver}beta7
+pkgver=${_pkgver}beta8
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
 source=("$_pkgname-$pkgver.deb::https://downloads.bitwig.com/${_pkgver}%20Beta%20${pkgver#*beta}/bitwig-studio-${pkgver}.deb")
-b2sums=('f7932f59c3f9d866837c559ab7f285a2b73dbb258228fee0e5e2b87638a7c4bab84a52a0ad8320e77546182feba9b1c9cbe691d2493ff72f7cf6e0bd27492e5e')
+b2sums=('5fa82beeabbe5d8a9708001566f88c221ed7af022fcb682663f2f90cc8ff659cf0d4501e9f53a6d8f003a35848fb888a448d2467c35c8d46350d6664c8e1caed')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
