@@ -1,0 +1,17 @@
+pkgbase = qwbfsmanager-git
+	pkgdesc = QWBFS Manager provides a cross platform Qt 4 GUI for working with hard disk drives that have been formatted to the WBFS file system.
+	pkgver = 1.2.6.r4.g68bfd4887a
+	pkgrel = 1
+	url = https://github.com/pasnox/qwbfsmanager
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = fresh
+	depends = qt4
+	provides = qwbfsmanager=1.2.6.r4.g68bfd4887a
+	conflicts = qwbfsmanager
+	source = qwbfsmanager-git::git+https://github.com/pasnox/qwbfsmanager.git
+	md5sums = SKIP
+
+pkgname = qwbfsmanager-git
