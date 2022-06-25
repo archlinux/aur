@@ -9,7 +9,7 @@ pkgbase = g15daemon-systemd
 	depends = systemd
 	source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon.service
         source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/udev/99-g15daemon.rules  
-	sha256sums = 2723465ba726a4675d442fdb3068353def37bc70ce84cdab6c65f1c450c1dc4a
+	sha256sums = 7d91cf893fbad9d3bc7ccf318aa27d2c89b94036e8433a6f8f7732f2be4669bb
         sha246sums = 1a12cb587d175d4a06bfc0b6be8d19c0824fe7b58eef887dcaa19b92727c6ae7
 
 pkgname = g15daemon-systemd
