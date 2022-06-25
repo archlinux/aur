@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  8d1110b6918acc4e7d3f655d1e55f4b4ff630abe
+# Parent  edd7284c391b503b76bb5bb6321f24ab2f5f8bdf
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,12 +13,12 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -84,16 +84,17 @@
- #include "plbase64.h"
+@@ -88,16 +88,17 @@
  #include "PLDHashTable.h"
  #include "plstr.h"
  #include "prlink.h"
  #include "xpcpublic.h"
+ #include "js/RootingAPI.h"
  #ifdef MOZ_BACKGROUNDTASKS
  #  include "mozilla/BackgroundTasks.h"
  #endif
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4634,16 +4635,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4767,16 +4768,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4708,17 +4720,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4841,17 +4853,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -81,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -118,16 +118,20 @@ EXPORTS.mozilla += [
+@@ -120,16 +120,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1252,36 +1252,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1254,36 +1254,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -255,15 +255,15 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
-@@ -13,16 +13,17 @@
- #include "nsPrintfCString.h"
- #include "nsNetCID.h"
+@@ -10,16 +10,17 @@
+ #include "prnetdb.h"
+ #include "prenv.h"
+ #include "nsInterfaceHashtable.h"
+ #include "nsHashtablesFwd.h"
+ #include "nsHashKeys.h"
  #include "nsNetUtil.h"
  #include "nsISupportsPrimitives.h"
  #include "nsIGSettingsService.h"
- #include "nsInterfaceHashtable.h"
- #include "mozilla/Attributes.h"
- #include "nsIURI.h"
 +#include "nsKDEUtils.h"
  
  using namespace mozilla;
@@ -273,7 +273,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
    NS_DECL_ISUPPORTS
    NS_DECL_NSISYSTEMPROXYSETTINGS
  
-@@ -36,16 +37,18 @@ class nsUnixSystemProxySettings final : 
+@@ -33,16 +34,18 @@ class nsUnixSystemProxySettings final : 
    nsCOMPtr<nsIGSettingsCollection> mProxySettings;
    nsInterfaceHashtable<nsCStringHashKey, nsIGSettingsCollection>
        mSchemeProxySettings;
@@ -292,7 +292,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -381,21 +384,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -378,21 +381,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -786,25 +786,6 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  
  /*
   * Check if a handler exists for the provided protocol. Check the datastore
-@@ -328,17 +328,17 @@ mozilla::ipc::IPCResult HandlerServicePa
-   nsCOMPtr<nsIExternalProtocolService> protoSvc =
-       do_GetService(NS_EXTERNALPROTOCOLSERVICE_CONTRACTID, &rv);
-   if (NS_WARN_IF(NS_FAILED(rv))) {
-     *aHandlerExists = false;
-     return IPC_OK();
-   }
-   rv = protoSvc->ExternalProtocolHandlerExists(aProtocolScheme.get(),
-                                                aHandlerExists);
--
-+##
-   if (NS_WARN_IF(NS_FAILED(rv))) {
-     *aHandlerExists = false;
-   }
- #else
-   MOZ_RELEASE_ASSERT(false, "No implementation on this platform.");
-   *aHandlerExists = false;
- #endif
-   return IPC_OK();
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
@@ -828,7 +809,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -126,16 +128,17 @@ include("/ipc/chromium/chromium-config.m
+@@ -130,16 +132,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -1263,7 +1244,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -136,16 +136,17 @@ FINAL_LIBRARY = "xul"
+@@ -154,16 +154,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1277,7 +1258,7 @@ diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
      "/widget/headless",
  ]
  
- if CONFIG["MOZ_X11"]:
+ if CONFIG["MOZ_X11"] or CONFIG["MOZ_WAYLAND"]:
      LOCAL_INCLUDES += [
          "/widget/x11",
      ]
@@ -1825,7 +1806,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2071,62 +2072,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2097,20 +2098,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1834,47 +1815,10 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
    }
  
  #ifdef MOZ_WIDGET_GTK
--  nsCOMPtr<nsIGIOService> giovfs = do_GetService(NS_GIOSERVICE_CONTRACTID);
--  if (!giovfs) {
--    return NS_ERROR_FAILURE;
--  }
 +  nsAutoCString url;
- 
-   bool isDirectory;
-   if (NS_FAILED(IsDirectory(&isDirectory))) {
-     return NS_ERROR_FAILURE;
-   }
- 
-+  nsCOMPtr<nsIGIOService> giovfs = do_GetService(NS_GIOSERVICE_CONTRACTID);
-   if (isDirectory) {
--    return giovfs->ShowURIForInput(mPath);
-+    url = mPath;
-   }
-   if (NS_SUCCEEDED(giovfs->OrgFreedesktopFileManager1ShowItems(mPath))) {
-     return NS_OK;
-   }
-   nsCOMPtr<nsIFile> parentDir;
-   nsAutoCString dirPath;
-   if (NS_FAILED(GetParent(getter_AddRefs(parentDir)))) {
-     return NS_ERROR_FAILURE;
-   }
-   if (NS_FAILED(parentDir->GetNativePath(dirPath))) {
-     return NS_ERROR_FAILURE;
-   }
- 
--  return giovfs->ShowURIForInput(dirPath);
-+  url = dirPath;
- #elif defined(MOZ_WIDGET_COCOA)
-   CFURLRef url;
-   if (NS_SUCCEEDED(GetCFURL(&url))) {
-     nsresult rv = CocoaFileUtils::RevealFileInFinder(url);
-     ::CFRelease(url);
-     return rv;
-   }
-   return NS_ERROR_FAILURE;
- #else
-   return NS_ERROR_FAILURE;
- #endif
+   nsCOMPtr<nsIGIOService> giovfs = do_GetService(NS_GIOSERVICE_CONTRACTID);
+-  if (!giovfs) {
++  url = mPath;
 +  if(nsKDEUtils::kdeSupport()) {
 +    nsTArray<nsCString> command;
 +    command.AppendElement( "REVEAL"_ns );
@@ -1883,10 +1827,18 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 +  }
 +
 +  if (!giovfs)
-+    return NS_ERROR_FAILURE;
+     return NS_ERROR_FAILURE;
+-  }
 +
-+  return giovfs->ShowURIForInput(url);
- }
+   return giovfs->RevealFile(this);
+ #elif defined(MOZ_WIDGET_COCOA)
+   CFURLRef url;
+   if (NS_SUCCEEDED(GetCFURL(&url))) {
+     nsresult rv = CocoaFileUtils::RevealFileInFinder(url);
+     ::CFRelease(url);
+     return rv;
+   }
+@@ -2122,16 +2132,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {
@@ -1901,11 +1853,12 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 +    command.AppendElement( mPath );
 +    return nsKDEUtils::command( command ) ? NS_OK : NS_ERROR_FAILURE;
 +  }
++
    nsCOMPtr<nsIGIOService> giovfs = do_GetService(NS_GIOSERVICE_CONTRACTID);
    if (!giovfs) {
      return NS_ERROR_FAILURE;
    }
  
-   return giovfs->ShowURIForInput(mPath);
+   return giovfs->LaunchFile(mPath);
  #elif defined(MOZ_WIDGET_ANDROID)
    // Not supported on GeckoView

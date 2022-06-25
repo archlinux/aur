@@ -3,7 +3,7 @@
 # Date 1559300151 -7200
 #      Fri May 31 12:55:51 2019 +0200
 # Node ID 54d41b0033b8d649d842a1f862c6fed8b9874dec
-# Parent  23d64c5753fda6f201477fe1f2f6cf1fb1657ccc
+# Parent  c9baf1c9eb9359b7968a52157e8892cdd20f2c6d
 How to apply this patch:
 1. Import and apply it
 2. cp browser/base/content/browser.xul browser/base/content/browser-kde.xul
@@ -14,7 +14,7 @@ How to apply this patch:
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -353,16 +353,23 @@ var gMainPane = {
+@@ -303,16 +303,23 @@ var gMainPane = {
          }, backoffTimes[this._backoffIndex + 1 < backoffTimes.length ? this._backoffIndex++ : backoffTimes.length - 1]);
        };
  
@@ -38,7 +38,7 @@ diff --git a/browser/components/preferences/main.js b/browser/components/prefere
      );
      let performanceSettingsUrl =
        Services.urlFormatter.formatURLPref("app.support.baseURL") +
-@@ -1365,16 +1372,27 @@ var gMainPane = {
+@@ -1334,16 +1341,27 @@ var gMainPane = {
        this._backoffIndex = 0;
  
        let shellSvc = getShellService();
@@ -260,11 +260,11 @@ new file mode 100644
 +NS_GENERIC_FACTORY_CONSTRUCTOR_INIT(nsKDEShellService, Init)
 +
 +NS_IMETHODIMP
-+nsUnixShellServiceConstructor(nsISupports *aOuter, REFNSIID aIID, void **aResult)
++nsUnixShellServiceConstructor(REFNSIID aIID, void **aResult)
 +{
 +    if( nsKDEUtils::kdeSupport())
-+        return nsKDEShellServiceConstructor( aOuter, aIID, aResult );
-+    return nsGNOMEShellServiceConstructor( aOuter, aIID, aResult );
++        return nsKDEShellServiceConstructor( aIID, aResult );
++    return nsGNOMEShellServiceConstructor( aIID, aResult );
 +}
 diff --git a/browser/components/shell/nsUnixShellService.h b/browser/components/shell/nsUnixShellService.h
 new file mode 100644
