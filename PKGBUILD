@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
-pkgver=1.8.1.r0.5a40280
+pkgver=1.8.2.r0.549291f
 pkgrel=1
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
@@ -47,6 +47,7 @@ package() {
         # Icon
         install -D packaging/de.schmidhuberj.tubefeeder.512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/de.schmidhuberj.tubefeeder.png
         install -D packaging/de.schmidhuberj.tubefeeder.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/de.schmidhuberj.tubefeeder.png
+        install -D packaging/de.schmidhuberj.tubefeeder.symbolic.svg $pkgdir/usr/share/icons/hicolor/symbolic/apps/de.schmidhuberj.tubefeeder-symbolic.png
 
         # Localization
         ls -ld po/locale/*/ | sed 's|.*po/locale/||' | xargs -I % install -D "po/locale/%LC_MESSAGES/de.schmidhuberj.tubefeeder.mo" "$pkgdir/usr/share/locale/%LC_MESSAGES/de.schmidhuberj.tubefeeder.mo"
