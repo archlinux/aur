@@ -1,7 +1,7 @@
 # Maintainer: Aline Abler <alinea@riseup.net>
 pkgname=vim-lolcode-git
 pkgver=6.444af9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim syntax support for LOLCODE"
 arch=('any')
 url="https://github.com/Xe/lolcode.vim"
@@ -10,7 +10,7 @@ makedepends=('git')
 provides=('vim-lolcode')
 conflicts=('vim-lolcode')
 
-source=("git://github.com/Xe/lolcode.vim.git")
+source=("git+https://github.com/Xe/lolcode.vim.git")
 md5sums=('SKIP')
 _gitname="lolcode.vim"
 

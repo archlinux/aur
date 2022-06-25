@@ -1,15 +1,14 @@
 pkgbase = vim-lolcode-git
 	pkgdesc = Vim syntax support for LOLCODE
 	pkgver = 6.444af9b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xe/lolcode.vim
 	arch = any
 	makedepends = git
 	depends = vim
 	provides = vim-lolcode
 	conflicts = vim-lolcode
-	source = git://github.com/Xe/lolcode.vim.git
+	source = git+https://github.com/Xe/lolcode.vim.git
 	md5sums = SKIP
 
 pkgname = vim-lolcode-git
-
