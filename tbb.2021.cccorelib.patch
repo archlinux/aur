@@ -1,0 +1,25 @@
+From ee76a1fcd305705e37d7d46b7670b0f58067c363 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Sat, 25 Jun 2022 16:25:49 +0200
+Subject: [PATCH] tbb:2021 use targets instead of the library list
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5dcc04c..965c3a5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -169,7 +169,7 @@ if ( CCCORELIB_USE_TBB )
+ 	if ( TBB_FOUND )
+ 		target_link_libraries( CCCoreLib
+ 			PUBLIC
+-				${TBB_IMPORTED_TARGETS}
++				TBB::tbb
+ 		)
+ 
+ 		target_compile_definitions( CCCoreLib
+-- 
+2.36.1
+
