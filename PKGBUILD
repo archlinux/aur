@@ -22,6 +22,7 @@ _fmod_version=$(tr -d '.' <<<"$_fmod_full_version")
 _fna3d_version=22.03
 
 source=("file://celeste-linux.zip"
+source=("getceleste://celeste-linux.zip"
         "celeste"
         "celeste.desktop"
         "Celeste.exe.config"
@@ -41,6 +42,9 @@ b2sums=('2b253db8b2b3e9a8977d2a5a8c235856be89a2e894c6e790b05ae1210a2edde38cdda89
         '782d8fb6a41500c3876055a77a9ea84cbfcb4ccaa15dbfc8c43f344ef895fd12089ba7c197f75e97e028c16da6b34d1bd11ae7ed49b6a5bc797d41a9436c6068'
         '445760981f6ec507bdb198621a6e00aba901062defc7601711dca8103d16eb5ca05b60c10065eeecb31c96ec2891c60ddde1d0ad79abd421ac0a5b46050af521'
         '0ea718c38f75526cd1f18230b9413ed9077e6305e1ef76cba896443738ccd4d54d2352c4d1786b378a6de1231bd8c8bfb5bb45492d42b1046c6914ec5b4b9acf')
+
+# Explain how to get Celeste
+DLAGENTS+=("getceleste::/usr/bin/echo To build this package you need a copy of Celeste.  The PKGBUILD has been tested with the version (celeste-linux.zip) available from https://mattmakesgames.itch.io/celeste but versions from other sources may work too.")
 
 # Explain how to get FMOD
 DLAGENTS+=("getfmod::/usr/bin/echo Please download FMOD Engine v${_fmod_full_version} for Linux from https://fmod.com/ and place the .tar.gz file in \"$(pwd)\".")
