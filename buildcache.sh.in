@@ -11,10 +11,10 @@ source "$LIBRARY/util/option.sh"
 executable_functions+=('executable_buildcache')
 
 executable_buildcache() {
-	if check_buildoption "buildcache" "y"; then
-		if ! type -p buildcache >/dev/null; then
-			error "$(gettext "Cannot find the %s binary required for compiler cache usage.")" "buildcache"
-			return 1
-		fi
-	fi
+    if check_buildoption "buildcache" "y"; then
+        if ! type -p buildcache >/dev/null; then
+            error "$(gettext "Cannot find the %s binary required for compiler cache usage.")" "buildcache"
+            return 1
+        fi
+    fi
 }

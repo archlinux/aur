@@ -13,10 +13,10 @@ source "$LIBRARY/util/option.sh"
 executable_functions+=('executable_optipng')
 
 executable_optipng() {
-  if check_option "optipng" "y"; then
-    if ! type -p optipng >/dev/null; then
-      error "$(gettext "Cannot find the %s binary required for optimizing PNG image files.")" "optipng"
-      ret=1
+    if check_option "optipng" "y"; then
+        if ! type -p optipng >/dev/null; then
+            error "$(gettext "Cannot find the %s binary required for optimizing PNG image files.")" "optipng"
+            ret=1
+        fi
     fi
-  fi
 }

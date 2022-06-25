@@ -14,21 +14,21 @@ build_options+=('lto' 'lto-thin' 'lto-clang' 'lto-thin-clang')
 buildenv_functions+=('buildenv_lto')
 
 buildenv_lto() {
-  if check_buildoption "lto" "y" || check_buildoption "lto-thin" "y" || \
-    check_buildoption "lto-clang" "y" || check_buildoption "lto-thin-clang" "y"; then
-    ltoflags=" -flto"
-    check_buildoption "lto-thin-clang" "y" && ltoflags+="=thin"
-    check_buildoption "lto-thin" "y" || check_buildoption "lto" "y" && \
-      [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]] && \
-      ltoflags+="=auto -fno-fat-lto-objects"
-    check_buildoption "lto" "y" && ltoflags+=" -flto-partition=none"
+    if check_buildoption "lto" "y" || check_buildoption "lto-thin" "y" || \
+        check_buildoption "lto-clang" "y" || check_buildoption "lto-thin-clang" "y"; then
+        ltoflags=" -flto"
+        check_buildoption "lto-thin-clang" "y" && ltoflags+="=thin"
+        check_buildoption "lto-thin" "y" || check_buildoption "lto" "y" && \
+            [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]] && \
+            ltoflags+="=auto -fno-fat-lto-objects"
+        check_buildoption "lto" "y" && ltoflags+=" -flto-partition=none"
 
-    CFLAGS+="$ltoflags"
-    CXXFLAGS+="$ltoflags"
-    LDFLAGS+=" -fuse-linker-plugin $CFLAGS $CXXFLAGS"
-    ltoplugin="$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')"
-    ARFLAGS+=" --plugin $ltoplugin"
-    RANLIBFLAGS+=" --plugin $ltoplugin"
-    NMFLAGS+=" --plugin $ltoplugin"
-  fi
+        CFLAGS+="$ltoflags"
+        CXXFLAGS+="$ltoflags"
+        LDFLAGS+=" -fuse-linker-plugin $CFLAGS $CXXFLAGS"
+        ltoplugin="$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')"
+        ARFLAGS+=" --plugin $ltoplugin"
+        RANLIBFLAGS+=" --plugin $ltoplugin"
+        NMFLAGS+=" --plugin $ltoplugin"
+    fi
 }

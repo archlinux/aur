@@ -33,34 +33,34 @@ buildenv_functions+=('buildenv_ccache' 'buildenv_distcc' 'buildenv_buildcache')
 using_ccache=0
 
 buildenv_ccache() {
-	if check_buildoption "ccache" "y"; then
-		if [ -d /usr/lib/ccache/bin ]; then
-			export PATH="/usr/lib/ccache/bin:$PATH"
-			using_ccache=1
-		fi
-	fi
+    if check_buildoption "ccache" "y"; then
+        if [ -d /usr/lib/ccache/bin ]; then
+            export PATH="/usr/lib/ccache/bin:$PATH"
+            using_ccache=1
+        fi
+    fi
 }
 
 buildenv_distcc() {
-	if check_buildoption "distcc" "y"; then
-		if (( using_ccache )); then
-			if [[ " $CCACHE_PREFIX " != *" distcc "* ]]; then
-				export CCACHE_PREFIX="${CCACHE_PREFIX:+$CCACHE_PREFIX }distcc"
-			fi
-			export CCACHE_BASEDIR="$srcdir"
-		elif [[ -d /usr/lib/distcc/bin ]]; then
-			export PATH="/usr/lib/distcc/bin:$PATH"
-		fi
+    if check_buildoption "distcc" "y"; then
+        if (( using_ccache )); then
+            if [[ " $CCACHE_PREFIX " != *" distcc "* ]]; then
+                export CCACHE_PREFIX="${CCACHE_PREFIX:+$CCACHE_PREFIX }distcc"
+            fi
+            export CCACHE_BASEDIR="$srcdir"
+        elif [[ -d /usr/lib/distcc/bin ]]; then
+            export PATH="/usr/lib/distcc/bin:$PATH"
+        fi
 
-		export DISTCC_HOSTS
-	fi
+        export DISTCC_HOSTS
+    fi
 }
 
 buildenv_buildcache() {
-	if check_buildoption "buildcache" "y"; then
-		if [ -d /usr/lib/buildcache/bin ]; then
-			export PATH="/usr/lib/buildcache/bin:$PATH"
-			using_buildcache=1
-		fi
-	fi
+    if check_buildoption "buildcache" "y"; then
+        if [ -d /usr/lib/buildcache/bin ]; then
+            export PATH="/usr/lib/buildcache/bin:$PATH"
+            using_buildcache=1
+        fi
+    fi
 }

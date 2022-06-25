@@ -15,34 +15,34 @@ build_options+=('pgo')
 buildenv_functions+=('buildenv_pgo')
 
 buildenv_pgo() {
-  if check_buildoption "pgo" "y"; then
-    [[ -n ${PROFDEST} ]] && _PROFDEST=$(canonicalize_path ${PROFDEST})
-    PROFDEST=${_PROFDEST:-$PROFDEST}
-    PROFDEST=${PROFDEST:-$startdir} #default to $startdir if undefined
+    if check_buildoption "pgo" "y"; then
+        [[ -n ${PROFDEST} ]] && _PROFDEST=$(canonicalize_path ${PROFDEST})
+        PROFDEST=${_PROFDEST:-$PROFDEST}
+        PROFDEST=${PROFDEST:-$startdir} #default to $startdir if undefined
 
-    if [[ ! -w $PROFDEST ]] ; then
-      error "$(gettext "You do not have write permission to store profiles in %s.")" "$PROFDEST"
-      plain "$(gettext "Aborting...")"
-      exit 1
-    fi
+        if [[ ! -w $PROFDEST ]] ; then
+            error "$(gettext "You do not have write permission to store profiles in %s.")" "$PROFDEST"
+                plain "$(gettext "Aborting...")"
+                exit 1
+            fi
 
-    [[ "$INFAKEROOT" == 1 ]] && return
+            [[ "$INFAKEROOT" == 1 ]] && return
 
-    if [[ ! -d $PROFDEST/$pkgbase.gen ]]; then
-      pgoflags=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
-      pgoldflags=" -lgcov --coverage"
-      msg2 "Profile data will be generated."
-    else
-      [[ -d $PROFDEST/$pkgbase.used ]] && rm -rf $PROFDEST/$pkgbase.used
-      mv $PROFDEST/$pkgbase.{gen,used}
-      pgoflags=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
-      pgoldflags=" -lgcov"
-      msg2 "Profile data will be applied."
-    fi
+            if [[ ! -d $PROFDEST/$pkgbase.gen ]]; then
+                pgoflags=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
+                pgoldflags=" -lgcov --coverage"
+                msg2 "Profile data will be generated."
+            else
+                [[ -d $PROFDEST/$pkgbase.used ]] && rm -rf $PROFDEST/$pkgbase.used
+                mv $PROFDEST/$pkgbase.{gen,used}
+                pgoflags=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
+                pgoldflags=" -lgcov"
+                msg2 "Profile data will be applied."
+            fi
 
-  CFLAGS+="$pgoflags"
-  CXXFLAGS+="$pgoflags"
-  LDFLAGS+="$pgoldflags"
+            CFLAGS+="$pgoflags"
+            CXXFLAGS+="$pgoflags"
+            LDFLAGS+="$pgoldflags"
 
-  fi
-}
+        fi
+    }

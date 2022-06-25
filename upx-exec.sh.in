@@ -13,10 +13,10 @@ source "$LIBRARY/util/option.sh"
 executable_functions+=('executable_upx')
 
 executable_upx() {
-  if check_option "upx" "y"; then
-    if ! type -p upx >/dev/null; then
-      error "$(gettext "Cannot find the %s binary required for compressing binaries.")" "upx"
-      ret=1
+    if check_option "upx" "y"; then
+        if ! type -p upx >/dev/null; then
+            error "$(gettext "Cannot find the %s binary required for compressing binaries.")" "upx"
+            ret=1
+        fi
     fi
-  fi
 }

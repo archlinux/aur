@@ -14,8 +14,8 @@ build_options+=('mold')
 buildenv_functions+=('buildenv_mold')
 
 buildenv_mold() {
-  if
-  check_buildoption "mold" "y"; then
-	LDFLAGS="${LDFLAGS} -fuse-ld=mold"
-  fi
+    if
+    check_buildoption "mold" "y"; then
+        LDFLAGS+="${LDFLAGS} -fuse-ld=mold"
+    fi
 }

@@ -15,24 +15,24 @@ packaging_options+=('upx')
 tidy_modify+=('tidy_upx')
 
 tidy_upx() {
-  if check_option "upx" "y"; then
-    msg2 "$(gettext "Compressing binaries with %s...")" "UPX"
-    local binary
-    find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
-      [ $(jobs -p|wc -l) -gt $(getconf _NPROCESSORS_ONLN) ] && wait -n
-      case "$(file -S --brief --mime-type "$binary")" in
-          application/x-executable | application/x-dosexec | \
-          application/x-pie-executable | application/x-sharedlib )
-          { upx "${UPXFLAGS[@]}" "$binary" &>/dev/null &&
-            info "$(gettext "Compressed binary : %s")" "${binary/$pkgdir\//}" ||
-          warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"; } &
-          ;;
-          #application* )
-          #  warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
-            #    "${binary/$pkgdir\//}"
-          # ;;
-      esac
-    done
-    wait
-  fi
+    if check_option "upx" "y"; then
+        msg2 "$(gettext "Compressing binaries with %s...")" "UPX"
+        local binary
+        find . -type f -perm -u+w 2>/dev/null | while read -r binary ; do
+            [ $(jobs -p|wc -l) -gt $(getconf _NPROCESSORS_ONLN) ] && wait -n
+            case "$(file -S --brief --mime-type "$binary")" in
+                    application/x-executable | application/x-dosexec | \
+                    application/x-pie-executable | application/x-sharedlib )
+                    { upx "${UPXFLAGS[@]}" "$binary" &>/dev/null &&
+                        info "$(gettext "Compressed binary : %s")" "${binary/$pkgdir\//}" ||
+                    warning "$(gettext "Could not compress binary : %s")" "${binary/$pkgdir\//}"; } &
+                    ;;
+                    #application* )
+                    #  warning "$(gettext "Not compressing %s, $(file --brief --mime-type "$binary")")" \
+                        #    "${binary/$pkgdir\//}"
+                    # ;;
+            esac
+        done
+        wait
+    fi
 }

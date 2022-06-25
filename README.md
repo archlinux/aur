@@ -50,3 +50,25 @@ Tip: Use fstab to bind these folders at boot.
 
 You can use buildcache if you replace in /usr/share/makepkg/buildenv/compiler.sh with the compiler.sh.in in the repo.
 Then you need to exec the buildcache.sh for setting the symlinks.
+
+## Using custom llvm toolchain
+
+Just place your toolchain into ~/Documents/llvm , that it looks then like this:
+```
+ls ~/Documents/llvm
+drwxr-xr-x - ptr1337 23 Jun 13:25  bin
+drwxr-xr-x - ptr1337 23 Jun 13:25  include
+drwxr-xr-x - ptr1337 23 Jun 13:25  lib
+drwxr-xr-x - ptr1337 23 Jun 13:25  share
+```
+After that enable as buildoption options=(bolt) and it will use the toolchain
+
+## Building packages with relocations for the ability to bolt them
+
+If compiling with clang, simply add as buildoption 'relocs' and it will add 'LDFLAGS+="--emit-relocs"'
+If compiling with gcc your target package, add as options 'relocsgcc' these will add -fno-reorder-functions since gcc enables these as default which results into a not bolt able binary
+
+## Using a different linker (lld/mold)
+
+Simply add as option 'lld' or 'mold' and it will add the regarding -fuse-ld='linker'. OM
+

@@ -14,8 +14,8 @@ build_options+=('lld')
 buildenv_functions+=('buildenv_lld')
 
 buildenv_lld() {
-  if
-  check_buildoption "lld" "y"; then
-	export LDFLAGS="${LDFLAGS} -fuse-ld=lld"
-  fi
+    if
+    check_buildoption "lld" "y"; then
+        LDFLAGS+="${LDFLAGS} -fuse-ld=lld"
+    fi
 }

@@ -14,14 +14,14 @@ build_options+=('rice' 'rice-clang')
 buildenv_functions+=('buildenv_rice')
 
 buildenv_rice() {
-  if check_buildoption "rice" "y" || check_buildoption "rice-clang" "y"; then
-    riceflags=" -Ofast -fdata-sections -ffloat-store -fgcse-las -fgcse-sm -fmodulo-sched -fmodulo-sched-allow-regmoves -funsafe-math-optimizations -fno-threadsafe-statics -fomit-frame-pointer -fopenmp -fPIC -fshort-wchar -fvariable-expansion-in-unroller -Wno-sizeof-pointer-memaccess -pthread" #
-    check_buildoption "rice" "y" && \
-      riceflags+=" -fbranch-target-load-optimize2 -fcx-fortran-rules -fipa-pta -fno-enforce-eh-specs -fnothrow-opt -fno-var-tracking-assignments -freg-struct-return -freschedule-modulo-scheduled-loops -fsched-pressure -fsched-spec-load -fsched-spec-load-dangerous -fsched-stalled-insns=0 -fsched2-use-superblocks -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -ftree-lrs -maccumulate-outgoing-args" # -fmerge-all-constants
+    if check_buildoption "rice" "y" || check_buildoption "rice-clang" "y"; then
+        riceflags=" -Ofast -fdata-sections -ffloat-store -fgcse-las -fgcse-sm -fmodulo-sched -fmodulo-sched-allow-regmoves -funsafe-math-optimizations -fno-threadsafe-statics -fomit-frame-pointer -fopenmp -fPIC -fshort-wchar -fvariable-expansion-in-unroller -Wno-sizeof-pointer-memaccess -pthread" #
+        check_buildoption "rice" "y" && \
+            riceflags+=" -fbranch-target-load-optimize2 -fcx-fortran-rules -fipa-pta -fno-enforce-eh-specs -fnothrow-opt -fno-var-tracking-assignments -freg-struct-return -freschedule-modulo-scheduled-loops -fsched-pressure -fsched-spec-load -fsched-spec-load-dangerous -fsched-stalled-insns=0 -fsched2-use-superblocks -fselective-scheduling -fselective-scheduling2 -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -ftree-lrs -maccumulate-outgoing-args" # -fmerge-all-constants
 
-    riceldflags=" -lpthread -lgomp" # -shared
-    CFLAGS+="$riceflags"
-    CXXFLAGS+="$riceflags"
-    LDFLAGS+="$riceldflags"
-  fi
+        riceldflags=" -lpthread -lgomp" # -shared
+        CFLAGS+="$riceflags"
+        CXXFLAGS+="$riceflags"
+        LDFLAGS+="$riceldflags"
+    fi
 }

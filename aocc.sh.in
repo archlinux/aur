@@ -14,11 +14,11 @@ build_options+=('aocc')
 buildenv_functions+=('buildenv_aocc')
 
 buildenv_aocc() {
-  if
-  check_buildoption "aocc" "y"; then
-	source /opt/aocc/setenv_AOCC.sh
-	export CC=clang
-	export CXX=clang++
-	export LD=lld
-  fi
+    if
+    check_buildoption "aocc" "y"; then
+        source /opt/aocc/setenv_AOCC.sh
+        export CC=clang
+        export CXX=clang++
+        export LD=lld
+    fi
 }

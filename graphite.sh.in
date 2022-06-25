@@ -14,14 +14,14 @@ build_options+=('graphite' 'polly')
 buildenv_functions+=('buildenv_graphite')
 
 buildenv_graphite() {
-  if check_buildoption "graphite" "y" || check_buildoption "polly" "y"; then
-    graphiteflags=" -lgomp -mllvm -polly -mllvm -polly-num-threads=$(getconf _NPROCESSORS_ONLN) -mllvm -polly-parallel"
-    check_buildoption "polly" "y" && \
-     graphiteflags+=" -Xclang -load -Xclang LLVMPolly.so"
-    check_buildoption "graphite" "y" && \
-      graphiteflags=" -fgraphite-identity -floop-interchange -floop-nest-optimize -floop-parallelize-all -ftree-loop-distribution -ftree-parallelize-loops=$(getconf _NPROCESSORS_ONLN) -ftree-vectorize"
+    if check_buildoption "graphite" "y" || check_buildoption "polly" "y"; then
+        graphiteflags=" -lgomp -mllvm -polly -mllvm -polly-num-threads=$(getconf _NPROCESSORS_ONLN) -mllvm -polly-parallel"
+        check_buildoption "polly" "y" && \
+            graphiteflags+=" -Xclang -load -Xclang LLVMPolly.so"
+        check_buildoption "graphite" "y" && \
+            graphiteflags=" -fgraphite-identity -floop-interchange -floop-nest-optimize -floop-parallelize-all -ftree-loop-distribution -ftree-parallelize-loops=$(getconf _NPROCESSORS_ONLN) -ftree-vectorize"
 
-    CFLAGS+="$graphiteflags"
-    CXXFLAGS+="$graphiteflags"
-  fi
+        CFLAGS+="$graphiteflags"
+        CXXFLAGS+="$graphiteflags"
+    fi
 }
