@@ -3,7 +3,8 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=RcppArmadillo
-_cranver=0.11.1.1.0
+_cranver=0.11.2.0.0
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,8 +14,8 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.3.0' 'r-rcpp>=0.11.0')
 checkdepends=(r-tinytest r-pkgkitten r-reticulate r-slam)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=("fb51aee72541a5c932772f626ed67d0437d070c8beef5cb53bb9804cc5d30b7ef53bcb3e2132f42d5b98d650af5a69ed1da117ada1a6d9c9f34bb5c3e9465e58")
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha512sums=('f42912475f768d045cf67156d0b61523ee035c2f6720ca2966f0d1f02bd2cb7b57c3dafdb8fd2dbe40261639684e3735392b16933b4cf8029503ec90bdd46568')
 
 build() {
 	mkdir -p build
