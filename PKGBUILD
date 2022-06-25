@@ -1,7 +1,7 @@
 # Maintainer: Amirul Fitri <tounghacker@gmail.com>
 
 # maintainer's variables
-_commit=2d1c69c0ce4a0ac21565593d30fdf489dea4046e
+_commit=18e692e513437c792c4b56977b72db33342a22c4
 
 pkgname=playit
 pkgver=0.8.3+beta

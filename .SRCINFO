@@ -8,7 +8,7 @@ pkgbase = playit
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	source = playit::git+https://github.com/playit-cloud/playit-agent.git#commit=2d1c69c0ce4a0ac21565593d30fdf489dea4046e
+	source = playit::git+https://github.com/playit-cloud/playit-agent.git#commit=18e692e513437c792c4b56977b72db33342a22c4
 	sha256sums = SKIP
 
 pkgname = playit
