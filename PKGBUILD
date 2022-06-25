@@ -8,7 +8,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-qt5
-pkgver=2.1.53
+pkgver=2.1.54
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
@@ -59,7 +59,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
 "inc_qt_timeout.patch"
 "force_qt5.patch"
 )
-sha256sums=('0e69e57dc4190dd1a8373ca45c6255b95e98383b885736c27b8c063df6210567'
+sha256sums=('c8db4aee849f6cc50e451b99633feac34d54bed5ef564ffaaf56acf4e1f6ada4'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 '281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
 'fc477627179cbc0f88190e05abe1256bf1e62367620331ddf574303356d21169'
