@@ -2,15 +2,15 @@
 
 pkgname=corplink-rs
 _pkgbase=corplink-rs
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Corplink client written in Rust'
 arch=('i686' 'x86_64')
 url='https://github.com/PinkD/corplink-rs'
 license=('GPL2')
 makedepends=('cargo')
-source=("$pkgname.tar.gz"::"https://github.com/PinkD/corplink-rs/archive/$pkgver.tar.gz")
-sha256sums=('7ccd5223988f6ff4075d9ed71dc31402f2b833438c7c8e1a66b375fe38a5a41c')
+source=("$pkgname.$pkgver.tar.gz"::"https://github.com/PinkD/corplink-rs/archive/$pkgver.tar.gz")
+sha256sums=('eb6532d10786e1d42723a6efce0cea0126cc6ff68c43d0d6731ca84dd640adc7')
 backup=(etc/corplink/config.json)
 
 build() {
