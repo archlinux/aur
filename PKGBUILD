@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 # Find the latest version number at https://api.technicpack.net/launcher/version/stable4
-pkgver=4.753
+pkgver=4.756
 pkgrel=1
 pkgdesc='Choose from thousands of community-made Minecraft modpacks'
 arch=('any')
@@ -13,11 +13,11 @@ depends=('java-runtime=8' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
 # bsdtar would fail with "can't replace existing directory with non-directory"
 noextract=('TechnicLauncher.jar')
-# HTTPS endpoint does not work as of 2019-08-25
-source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
+# as 25-06-2022 HTTPS endpoint started working again
+source=("$pkgname-$pkgver.jar::https://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
-sha256sums=('50435a65a2739ef5d5dc6c64d3bcbe7b8e1205693776b72511b473f6185936d4'
+sha256sums=('6e257c052ae95cc05f673a9e49f47598ee7b562dbc5b9a4a83b99e0365082fe8'
             '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             '221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513')
 
