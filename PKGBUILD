@@ -1,14 +1,26 @@
 pkgname=rvgl-community-with-original-soundtrack
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="RVGL for GNU/Linux. Metapackage including all additional content for playing online with original soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('x86_64')
 license=('custom')
-depends=('rvgl-bin' 'rvgl-dcpack' 'rvgl-io-cars' 'rvgl-io-cars-bonus'
-         'rvgl-io-clockworks' 'rvgl-io-clockworks-modern' 'rvgl-io-lmstag'
-         'rvgl-io-loadlevel' 'rvgl-io-music' 'rvgl-io-skins' 'rvgl-io-skins-bonus'
-         'rvgl-io-tracks' 'rvgl-io-tracks-bonus' 'rvgl-io-tracks-circuit'
+depends=('rvgl-bin'
+         'rvgl-dcpack'
+         'rvgl-io-cars'
+         'rvgl-io-cars-bonus'
+         'rvgl-io-clockworks'
+         'rvgl-io-clockworks-modern'
+         'rvgl-io-lms'
+         'rvgl-io-loadlevel'
+         'rvgl-io-music'
+         'rvgl-io-skins'
+         'rvgl-io-skins-bonus'
+         'rvgl-io-stunts'
+         'rvgl-io-tag'
+         'rvgl-io-tracks'
+         'rvgl-io-tracks-bonus'
+         'rvgl-io-tracks-circuit'
          'rvgl-soundtrack')
 provides=('rvgl')
 conflicts=('rvgl')
