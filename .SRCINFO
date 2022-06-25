@@ -7,6 +7,7 @@ pkgbase = mold-git
 	license = AGPL3
 	makedepends = git
 	makedepends = python
+	makedepends = clang
 	depends = gcc-libs
 	depends = mimalloc
 	depends = openssl
@@ -14,7 +15,7 @@ pkgbase = mold-git
 	depends = tbb
 	provides = mold=v1.3.0_14_gd9a28221
 	conflicts = mold
-	options = !debug
+	options = debug
 	source = mold::git+https://github.com/rui314/mold
 	sha256sums = SKIP
 

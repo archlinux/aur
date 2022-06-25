@@ -9,12 +9,12 @@ url="https://github.com/rui314/mold"
 license=("AGPL3")
 # xxhash is bundled
 depends=('gcc-libs' 'mimalloc' 'openssl' 'zlib' 'tbb')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'clang')
 source=("mold::git+https://github.com/rui314/mold")
 sha256sums=('SKIP')
 provides=("mold=$pkgver")
 conflicts=("mold")
-options=('!debug')
+options=('debug')
 reponame="mold"
 
 pkgver() {
@@ -23,6 +23,7 @@ pkgver() {
 }
 
 prepare() {
+
     cd "$reponame"
 
     # use /usr/lib instead of /usr/libexec
@@ -30,8 +31,10 @@ prepare() {
 }
 
 build() {
+
     make \
         -C "$reponame" \
+        CXX=clang++ \
         PREFIX=/usr \
         LTO=1 \
         SYSTEM_MIMALLOC=1 \
@@ -39,9 +42,11 @@ build() {
 }
 
 check() {
+
     cd "$reponame"
 
     make \
+        CXX=clang++ \
         PREFIX=/usr \
         LTO=1 \
         SYSTEM_MIMALLOC=1 \
@@ -52,6 +57,7 @@ check() {
 package() {
     make \
         -C "$reponame" \
+        CXX=clang++ \
         PREFIX=/usr \
         LTO=1 \
         SYSTEM_MIMALLOC=1 \
