@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-shell-configurator-git
+	pkgdesc = Configure and customize GNOME Shell with advanced settings.
+	pkgver = r195.37713b7
+	pkgrel = 1
+	url = https://gitlab.com/adeswantaTechs/shell-configurator
+	arch = any
+	license = GPL3
+	makedepends = zip
+	depends = gnome-shell-extensions
+	provides = gnome-shell-extension-shell-configurator
+	conflicts = gnome-shell-extension-shell-configurator
+	source = git+https://gitlab.com/adeswantaTechs/shell-configurator.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-shell-configurator-git
