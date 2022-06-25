@@ -7,7 +7,7 @@
 
 pkgname=celeste-arm
 pkgver=1.4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Help Madeline survive her journey to the top of Celeste Mountain in this super-tight, hand-crafted platformer from the creators of TowerFall (patched to work on ARM)"
 arch=("i686" "x86_64" "aarch64" "armv7h")
 url="http://www.celestegame.com/"
@@ -19,9 +19,8 @@ options=(!strip)
 _fmod_sdl_version=21.10
 _fmod_full_version="2.02.07"
 _fmod_version=$(tr -d '.' <<<"$_fmod_full_version")
-_fna3d_version=22.03
+_fna3d_version=22.06
 
-source=("file://celeste-linux.zip"
 source=("getceleste://celeste-linux.zip"
         "celeste"
         "celeste.desktop"
