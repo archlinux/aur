@@ -1,8 +1,10 @@
+# Maintainer: Robert Greener <me@r0bert.dev>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=R.oo
-_cranver=1.24.0
+_cranver=1.25.0
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,8 +13,8 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LGPL3)
 depends=('r>=2.13.0' 'r-r.methodss3>=1.8.0')
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('37a1dab8dd668ceba69a1ba36c0c60e9809e29b74bd56d1e8ed519e19c8e3bb6')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('b8b19061774918ee7d9d4330c16c0ea505f7cd02d01343df1e8b2e4fb847beef')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
