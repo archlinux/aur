@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=14.0.5
+pkgver=14.0.6
 pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
@@ -12,9 +12,9 @@ makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/polly-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig})
-sha256sums=('f97adf9281eb670d419b5f8dd6959aad9c65f728369269cee17494152a92f6d0'
+sha256sums=('d4e6f58e54c0418d7b8debef0c09b77bdff6f435012be94c3edf270b89314fdd'
             'SKIP'
-            '234c8ed02ed1338aa4f0ffa955e45eb13abe7ba0032569d6bc17ae9334257b02'
+            '050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a'
             'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
