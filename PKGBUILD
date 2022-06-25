@@ -4,7 +4,7 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.8
-pkgrel=5
+pkgrel=6
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
@@ -12,15 +12,23 @@ license=(LGPL2.1 GPL2)
 depends=()
 makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf
   python-numpy python-protobuf util-linux-libs)
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('45bc101d1ddcc1c6320c063eb25a9345e5820a4233acfa5b29f2dfd99f7452e1')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
+        "fix-crash.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1753.patch"
+        "fix-tests.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1757.patch")
+sha256sums=('45bc101d1ddcc1c6320c063eb25a9345e5820a4233acfa5b29f2dfd99f7452e1'
+            'abbb4ca92bedab87d0310dc4e42162ef31a2c46863cedff791d927647ddd6c40'
+            'cfe0647ed23d064bfe5fae108b1c5d3461a0475cfd5a902012b43813c07aae46')
+
+prepare() {
+  cd $pkgbase-$pkgver
+  # https://github.com/OpenLightingProject/ola/pull/1753
+  patch -p1 -i ../fix-crash.patch
+  # https://github.com/OpenLightingProject/ola/pull/1757
+  patch -p1 -i ../fix-tests.patch
+}
 
 build() {
   cd $pkgbase-$pkgver
-  # some basic assertions seem to crash olad
-  # https://github.com/osam-cologne/archlinux-proaudio/issues/73
-  # https://github.com/OpenLightingProject/ola/issues/1726
-  export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   autoreconf -i
   ./configure --prefix=/usr \
     --enable-silent-rules \
@@ -35,8 +43,7 @@ build() {
 
 check() {
   cd $pkgbase-$pkgver
-  make check ||
-    echo "Ignoring failing tests"
+  make check || (cat ./test-suite.log && false)
 }
 
 package_ola() {
