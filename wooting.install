@@ -1,0 +1,13 @@
+post() {
+    echo "You must add yourself to the 'input' group for wootility to work correctly, 'sudo usermod -aG input <username>'"
+    echo "You must restart your login session to apply group changes (logout or reboot)"
+    echo "You can optionally install 'xboxdrv' for gamepad support"
+}
+
+post_install() {
+    post
+}
+
+post_upgrade() {
+    post
+}
