@@ -1,11 +1,12 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor : Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 # To avoid conflict with uconv from https://www.archlinux.org/packages/core/x86_64/icu/
 # uconv will be installed with the name of uconv-c
 _pkgname=uconv
 pkgname=${_pkgname}-c
 
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='General unit converter for the command line'
 arch=('x86_64')
@@ -14,7 +15,7 @@ license=('GPL3')
 provides=("${pkgname}")
 install='readme.install'
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7a3e421a156aebae8bfb0b21e256059fbcff4a2085ed2dd4e75eb38455c9f2b7')
+sha256sums=('93bcfe602c4ab6222708823088d8784b54ad6c0f646d31748b66696e6fa28a7a')
 
 build() {
   make -C "${_pkgname}-${pkgver}"
