@@ -4,7 +4,7 @@
 
 pkgname=makepkg-optimize-mold
 pkgver=28
-pkgrel=2
+pkgrel=3
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -32,7 +32,7 @@ ${_conf[@]})
 sha1sums=('1acc26a5a5737804f5aa6cca9d4bbce733e0f429'
           '7556b8a8faff5b943efa5058ce9d8e325c4d35a6'
           'd4e8f5ec1c30ebd69cce5121ea7823e1b42c3d27'
-          'eff21a001ae20ea6c06aba4c82e6a8e79711acb2'
+          'dfc83810e93571186831c1afcd98bdef398953c0'
           'f8387e71a8807296fc24824eb16a3e53c7bc9f8a'
           '2374539e56aeed165cc15e790e17fe841fa0970d'
           'ab510f1789a9bcd1352706f13f6a0bb662d25831'
