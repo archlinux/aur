@@ -1,12 +1,15 @@
 pkgbase = python-atoml
 	pkgdesc = Yet another style-preserving TOML library for Python.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frostming/atoml.git
 	arch = any
 	license = MIT
-	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/py3/a/atoml/atoml-1.1.1-py3-none-any.whl
-	sha512sums = 639083df303af0c38ff9f8a384da3e2b1a3a82cd17fb1ca9b2eed68f97e4e222b020df441c52472cac98e46d069fc3e5db197ad8cc55f41a554b8f5af70a222b
+	makedepends = python-installer
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-pdm-pep517
+	source = https://files.pythonhosted.org/packages/source/a/atoml/atoml-1.1.1.tar.gz
+	sha512sums = 2739ae8facfc0ae7512d287e8597967caf815ae48be692c5c1814bee288e51acc7570dcb119f732fa15f6d240590b64b73b85a1b0144048eedfab8d62c840291
 
 pkgname = python-atoml
