@@ -14,7 +14,7 @@ The headers are installed to:
 ````
 and the libraries: `ftxui-screen.a`, `ftxui-dom.a`, `ftxui-component.a` into:
 ```
-/usr/lib/ftxui/
+/usr/lib/
 ```
 
 It is recommanded to use CMake, in order to use the correct flags.
