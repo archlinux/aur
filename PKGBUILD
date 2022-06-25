@@ -1,17 +1,19 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=alhp-mirrorlist
-pkgver=20220112
+pkgver=20220625
 pkgrel=1
 pkgdesc="ALHP mirror list for use by pacman"
 arch=('any')
 url="https://git.harting.dev/ALHP/alhp-mirrorlist"
 license=('GPL')
-backup=(etc/pacman.d/alhp-mirrorlist)
+backup=('etc/pacman.d/alhp-mirrorlist'
+	'etc/pacman.d/alhp-mirrorlist.ipfs')
 source=("https://git.harting.dev/ALHP/alhp-mirrorlist/archive/$pkgver.tar.gz")
-b2sums=('59e0de015d39638ceb0f170144407adcdcb12cd94af17a87c9adfd812b3fd592c483e0bea0e6fd1771c37a368783078fae2fadb8735f8c90ad315f4a0d6d8ad7')
+b2sums=('e2cef57b3377ad0dc98a33f4120d08944c5640ac9dfe72e21e89276046a8720e2b4c990c47c9baa029ce8749bacb6c513ba239dedb97801d472fde01b7ab59dd')
 
 package() {
   mkdir -p "$pkgdir/etc/pacman.d"
   install -m644 "$srcdir/alhp-mirrorlist/mirrorlist" "$pkgdir/etc/pacman.d/alhp-mirrorlist"
+  install -m644 "$srcdir/alhp-mirrorlist/mirrorlist.ipfs" "$pkgdir/etc/pacman.d/alhp-mirrorlist.ipfs"
 }
