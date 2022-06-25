@@ -3,7 +3,7 @@
 
 pkgbase=linux-zen-irq1-edge-low-shared
 pkgver=5.18.6.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -19,9 +19,9 @@ _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
-  v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.diff
-  v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.diff
-  v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.diff
+  v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.patch
+  v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.patch
+  v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
