@@ -1,7 +1,8 @@
 # Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=chromium-extension-adnauseam
-pkgver=3.13.1
+pkgver=3.14.1b_rc1
+_pkgver=3.14.0.1
 pkgrel=1
 pkgdesc='An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers'
 arch=('any')
@@ -10,11 +11,11 @@ license=('GPL3')
 optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install=$pkgname.install
-source=("https://github.com/dhowe/AdNauseam/releases/download/v$pkgver/adnauseam-$pkgver.chromium.zip")
+source=("https://github.com/dhowe/AdNauseam/releases/download/v${pkgver%%_*}/adnauseam-$_pkgver.chromium.zip")
 
 package() {
    mkdir -p "$pkgdir/usr/share/$pkgname"
    cp -dr --no-preserve=ownership "$srcdir/adnauseam.chromium"/* "$pkgdir/usr/share/$pkgname/"
 }
-sha256sums=('8f3f751f2fa27ba13a90d8a04b6206757b77eb68656e7c642bb025855d30c6bf')
-b2sums=('14d826b67d10ef3c3c9cd83d24e0b2ef9e88d28a5c95adca8713f7269df593fb29557318461f7dde0f732eb75405b21a3623518b9a22ec34ec56d5055ff3c76c')
+sha256sums=('86416ffba7cba3bdfca8aa367bd09923a419f848c8ea832f0d6dd692b50c5aa5')
+b2sums=('31c91ae4cc3d44aaaf468f33afad0583ef05140ad2fe9a3ee7d851ba413fa62adc32b73414c226a7da4f12e01458433afc4eefe1f5595145070598500a7bb520')
