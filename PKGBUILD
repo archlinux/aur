@@ -8,7 +8,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.53
+pkgver=2.1.54
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
@@ -57,7 +57,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
 "no-update.patch"
 "inc_qt_timeout.patch"
 )
-sha256sums=('0e69e57dc4190dd1a8373ca45c6255b95e98383b885736c27b8c063df6210567'
+sha256sums=('c8db4aee849f6cc50e451b99633feac34d54bed5ef564ffaaf56acf4e1f6ada4'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 '281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
 )
