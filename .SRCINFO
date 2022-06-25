@@ -1,6 +1,6 @@
 pkgbase = spongebob-cli-git
 	pkgdesc = Watch classic spongebob from the terminal!
-	pkgver = r106.497a885
+	pkgver = r109.4cc8c51
 	pkgrel = 1
 	url = https://github.com/trakBan/spongebob-cli
 	arch = any

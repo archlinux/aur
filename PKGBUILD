@@ -1,7 +1,7 @@
 # Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=spongebob-cli-git
-pkgver=r106.497a885
+pkgver=r109.4cc8c51
 pkgrel=1
 pkgdesc="Watch classic spongebob from the terminal!"
 arch=(any)
@@ -20,6 +20,11 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  python setup.py build
 }
 
 package() {
