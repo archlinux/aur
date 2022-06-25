@@ -1,6 +1,6 @@
 pkgbase = r-plot3drgl
 	pkgdesc = Plotting Multi-Dimensional Data - Using 'rgl'
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 2
 	url = https://cran.r-project.org/package=plot3Drgl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-plot3drgl
 	depends = r>=3.2.3
 	depends = r-rgl
 	depends = r-plot3d
-	source = https://cran.microsoft.com/snapshot/2022-06-08/src/contrib/plot3Drgl_1.0.2.tar.gz
-	sha256sums = 805513029895cf5a81f18ede4123ef2525a236cd555437609229fe720c346e14
+	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/plot3Drgl_1.0.3.tar.gz
+	sha256sums = 85421213e01e1b5f8b929ee1644232f37bacd723305e549c32850f6b6d6924a4
 
 pkgname = r-plot3drgl
