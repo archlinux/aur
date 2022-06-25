@@ -4,12 +4,13 @@
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=glasscoder
-pkgver=1.0.4
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Minimalist audio encoder for IceCast, Shoutcast and HLS'
 arch=(x86_64 aarch64)
 url='https://github.com/ElvishArtisan/GlassCoder'
 license=(GPL2)
+groups=(pro-audio)
 depends=(curl hicolor-icon-theme hpklinux openssl qt5-tools taglib)
 makedepends=(alsa-lib flac jack docbook-xsl docbook5-xml lame libfdk-aac
              libogg libsamplerate libsndfile libvorbis libxslt opus python
@@ -24,7 +25,7 @@ optdepends=('lame: for MP3 output support'
             #'rivendell: for rivendell integration'
             'twolame: for MP2 output support')
 source=(https://github.com/ElvishArtisan/GlassCoder/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('350714c1cf23caf1e2f12431385a946ef8ca4a585329a399cebcf5ad598ee7c8')
+sha256sums=('dd02cb416985f299ac88635042bb473e298c7d85913052f30999e3e98bf6d7ce')
 
 build() {
   cd $pkgname-$pkgver
