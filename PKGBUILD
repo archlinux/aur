@@ -3,7 +3,7 @@
 pkgname=mssql-scripter
 pkgver=1.0.0a23
 pkgrel=1
-pkgdesc='Command line experience for scripting SQL Server databases.'
+pkgdesc='Command line equivalent of the widely used Generate Scripts Wizard experience in SSMS'
 url='https://github.com/microsoft/mssql-scripter'
 license=('MIT')
 
