@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=3.7.3
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -19,20 +19,19 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+        fix-tgcalls-cstdint.patch
         "0001-kde-theme-injection-fix.patch"
-        "0002-qt5-revert-widget-screen.patch"
-        "0003-qt5-libui-widget-screen.patch")
-sha512sums=('f35052e514d520796296fa88e3affa1734973164e4b72f0120b78fc586de98a15e64a4e25f436ee4c2c2c0e100c64b3dbd2d96401dff19c382a6ad1fde88e859'
-            '15b2ad63315dcade14c084013bb6089f5a6b20de15522da91b1f9a5f3ee50f37109e56b7630e90e29ea4e66fa66189a66a6d5af53cc8d62f027ce870bdcbc995'
-            'bf27218f33295989c0fd3c30e644a82c54fecf3e46afa2ca8bfa74e02ea1e9f62ad01c31d53c0c09caffa75f5ca52c60b4ca937b1b026058973fa1a49320e7ab'
-            'd212ad258145cb2887d28d3fb0b4ab1a13333ce6923e88dd962af49b6fd059e10f30b749335ebd69d52112a2bc205e1ee85bb06512f960abfac3c893bf8b5ae6')
+        "0002-qt5-wayland-generator.patch")
+sha512sums=('0078b627d06dd8e655bd2bcc222ecbb3b15b7d88f858810bccdca84793ad02a60f4a4bf3808838752d65d4f6cffa3ddb5f70c5afc8e94cb6edae52101362feeb'
+            'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888'
+            'ceb8135301abbb39dd1e88bb283f83e83c52ec6236f13b527ed25a138f1d870d35ecd9f1c4e080164320f0b34c30d882b1167e0ef4ded7f886f9ba0966570e4d'
+            '12a646b0c31c67019c061aae7924031057583a4ff0df98e4ddb5132395321ecd5fce2ba90d3463d0c4da9fe6ab6f4c091287cf8ca8d9d90c279bc9d6c48ab28b')
 
 prepare() {
     cd tdesktop-$pkgver-full
-    patch -p1 < $startdir/0001-kde-theme-injection-fix.patch
-    patch -p1 < $startdir/0002-qt5-revert-widget-screen.patch
-    cd Telegram/lib_ui
-    patch -p1 < $startdir/0003-qt5-libui-widget-screen.patch
+    patch -Np1 -i "$srcdir"/fix-tgcalls-cstdint.patch -d Telegram/ThirdParty/tgcalls
+    patch -Np1 -i "$srcdir"/0001-kde-theme-injection-fix.patch
+    patch -Np1 -i "$srcdir"/0002-qt5-wayland-generator.patch -d Telegram/lib_base
 }
 
 build() {
@@ -49,7 +48,6 @@ build() {
         -B build \
         -G Ninja \
         -DDESKTOP_APP_QT6=off \
-        -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=on \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
