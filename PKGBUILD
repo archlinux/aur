@@ -2,7 +2,8 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _cranname=bookdown
-_cranver=0.26
+_cranver=0.27
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -43,8 +44,8 @@ optdepends=(
     "r-testthat>=3.1.0"
     "r-withr>=2.3.0"
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha512sums=('0619c64055d45598cafa2d5a4d4811faa8f32a43bf44987797649492374e3cdbcb607d558c910f49b32358f5aabd38fca6ff3b3067ef63aca7bada640074019c')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha512sums=('1f65c8cd113cf9d5c1f53173e15576024457be890efcb809d3e84406a653c55b12f2c7364ca732f722a83b2948acec10755898ed5d38c8f2d7b371d594ece3ea')
 
 build() {
   mkdir -p build
