@@ -1,7 +1,7 @@
 pkgbase = rtl8821cu-morrownr-dkms-git
 	pkgdesc = rtl8821cu chipset driver (morrownr fork)
 	pkgver = 5.8.1.7.22.88bf0e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/morrownr/8821cu-20210118
 	arch = i686
 	arch = x86_64
