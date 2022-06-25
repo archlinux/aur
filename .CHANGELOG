@@ -1,6 +1,31 @@
 Version history
 ===============
 
+0.9.46
+------
+
+2022-06-25
+
+Added geoo's new multiplayer maps, including the two asymmetric maps
+Uphill Battle and Ivory Tower. Updated some of geoo's maps:
+Fixed the drop straight into exit pit in Rescue Ranger Trolls.
+Added block to default version of Ghetto Party. Minor other changes.
+
+Added Kingshadow's new multiplayer levels. Updated Kingshadow's levels, e.g.,
+added a missing trap to Straight & Curved 4p.
+
+Prevent infinite fallers at the sides of Flopsy's Rescue Plan 5p by
+narrowing the map horizontally to the existing terrain.
+
+Renamed my old 2p map Rescue Rangers to Fry-Day to avoid a name collision with
+the popular maps Rescue Ranger Trolls and Rescue Rangers Double Team.
+
+Fix #434: Always topology-wrap newly inserted pieces in the editor to avoid
+running into some strict assertions in a debug build. There should have been
+no bug here in release builds. Improved some assertion texts.
+
+
+
 0.9.45
 ------
 
