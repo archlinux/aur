@@ -11,8 +11,9 @@ arch=(any)
 license=(Apache)
 makedepends=(python-setuptools)
 depends=(python python-requests)
-optdepends=('python-websocket-client: vkstreaming'
-			'python-beautifulsoup4: vkaudio')
+optdepends=(
+	'python-websocket-client: vkstreaming'
+	'python-beautifulsoup4: vkaudio')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('c7741e40bc05980c91ed94c84542e1e7e7370e101b5eaa74222958d4130fe3c2')
 
