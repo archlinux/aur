@@ -1,12 +1,14 @@
 # Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
 pkgname=fresh-git
 pkgver=r359.a277a0f
-pkgrel=1
+pkgrel=2
 pkgdesc='Fresh is a library extending the Qt library by adding new classes/widgets.'
 arch=('i686' 'x86_64')
 url='https://github.com/pasnox/fresh'
 license=('LGPL3')
 makedepends=('git' 'qt4')
+provides=("fresh=$pkgver")
+conflicts=('fresh')
 source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
