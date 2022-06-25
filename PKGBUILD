@@ -4,7 +4,7 @@
 
 pkgname=makepkg-optimize-mold
 pkgver=28
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -17,10 +17,9 @@ optdepends=("upx: Compress executables"
     "polly: Polyhedral model optimization for clang"
     "mold: a modern fast linker"
     "lld: the clang linker"
-    "llvm-bolt: use yourself bolted toolchain for compiling"
     "aocc: use amd's llvm compiler for compiling"
-    "aocl: use amd's compiler libary for compiling"
-"buildcache: a alternative to ccache")
+    "aocl-aocc: use amd's compiler libary for compiling"
+	"buildcache: a alternative to ccache")
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,graphite,rice,mold,bolt,buildcache,lld,aocc,relocs,relocsgcc}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
@@ -33,10 +32,10 @@ ${_conf[@]})
 sha1sums=('1acc26a5a5737804f5aa6cca9d4bbce733e0f429'
           '7556b8a8faff5b943efa5058ce9d8e325c4d35a6'
           'd4e8f5ec1c30ebd69cce5121ea7823e1b42c3d27'
-          '64ec144a5e6d87c231601c386bf615db8ec36f52'
+          'eff21a001ae20ea6c06aba4c82e6a8e79711acb2'
           'f8387e71a8807296fc24824eb16a3e53c7bc9f8a'
           '2374539e56aeed165cc15e790e17fe841fa0970d'
-          '06dd363ba4b32811971db823ff4b1cc26f8791bc'
+          'ab510f1789a9bcd1352706f13f6a0bb662d25831'
           '28b5ce40ba54198e715d79d97adaa54b67c2c7e5'
           'e9bcb9d89b5a28bab77d0f20c9a19b5487acd89a'
           '0f2302c79ac2a05ea5628de0d8b36afbf43684b3'
