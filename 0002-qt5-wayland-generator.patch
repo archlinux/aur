@@ -1,0 +1,1797 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8674c38..363c504 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -287,7 +287,15 @@ elseif (LINUX)
+                 ${third_party_loc}/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml
+             )
+         else()
+-            message(FATAL_ERROR "This piece of cmake code is not ported to Qt 5")
++            list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/extra-cmake-modules/find-modules")
++            find_package(WaylandScanner)
++            include(cmake/QtWaylandClientMacros.cmake)
++            qt5_generate_wayland_protocol_client_sources(lib_base
++            FILES
++                ${third_party_loc}/wayland-protocols/unstable/xdg-foreign/xdg-foreign-unstable-v2.xml
++                ${third_party_loc}/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml
++            )
++            message(WARNING "This piece of cmake code is not officially ported to Qt 5")
+         endif()
+ 
+         target_link_libraries(lib_base
+diff --git a/cmake/QtWaylandClientMacros.cmake b/cmake/QtWaylandClientMacros.cmake
+new file mode 100644
+index 0000000..2c99ec7
+--- /dev/null
++++ b/cmake/QtWaylandClientMacros.cmake
+@@ -0,0 +1,81 @@
++include(cmake/QtWaylandScannerToolsTargets.cmake)
++function(qt5_generate_wayland_protocol_client_sources target)
++    cmake_parse_arguments(arg "" "__QT_INTERNAL_WAYLAND_INCLUDE_DIR" "FILES" ${ARGN})
++    if(DEFINED arg_UNPARSED_ARGUMENTS)
++        message(FATAL_ERROR "Unknown arguments were passed to qt6_generate_wayland_protocol_client_sources: (${arg_UNPARSED_ARGUMENTS}).")
++    endif()
++
++    get_target_property(target_binary_dir ${target} BINARY_DIR)
++
++    if(NOT TARGET Wayland::Scanner)
++        message(FATAL_ERROR "Wayland::Scanner target not found. You might be missing the WaylandScanner CMake package.")
++    endif()
++
++    if(NOT TARGET Qt::qtwaylandscanner)
++        message(FATAL_ERROR "qtwaylandscanner executable not found. Most likely there is an issue with your Qt installation.")
++    endif()
++
++    foreach(protocol_file IN LISTS arg_FILES)
++        get_filename_component(protocol_name "${protocol_file}" NAME_WLE)
++
++        set(waylandscanner_header_output "${target_binary_dir}/wayland-${protocol_name}-client-protocol.h")
++        set(waylandscanner_code_output "${target_binary_dir}/wayland-${protocol_name}-protocol.c")
++        set(qtwaylandscanner_header_output "${target_binary_dir}/qwayland-${protocol_name}.h")
++        set(qtwaylandscanner_code_output "${target_binary_dir}/qwayland-${protocol_name}.cpp")
++
++        add_custom_command(
++            OUTPUT "${waylandscanner_header_output}"
++            #TODO: Maybe put the files in ${CMAKE_CURRENT_BINARY_DIR/wayland_generated instead?
++            COMMAND Wayland::Scanner --strict --include-core-only client-header < "${protocol_file}" > "${waylandscanner_header_output}"
++        )
++
++        add_custom_command(
++            OUTPUT "${waylandscanner_code_output}"
++            COMMAND Wayland::Scanner --strict --include-core-only public-code < "${protocol_file}" > "${waylandscanner_code_output}"
++        )
++
++        set(wayland_include_dir "")
++        if(arg___QT_INTERNAL_WAYLAND_INCLUDE_DIR)
++            set(wayland_include_dir "${arg___QT_INTERNAL_WAYLAND_INCLUDE_DIR}")
++        else()
++            get_target_property(qt_module ${target} _qt_module_interface_name)
++            get_target_property(is_for_module "${target}" _qt_module_has_headers)
++            if (qt_module)
++                set(wayland_include_dir "Qt${qt_module}/private")
++            elseif (is_for_module)
++                set(wayland_include_dir "QtWaylandClient/private")
++            endif()
++        endif()
++
++        add_custom_command(
++            OUTPUT "${qtwaylandscanner_header_output}"
++            COMMAND Qt::qtwaylandscanner client-header "${protocol_file}" "${wayland_include_dir}" > "${qtwaylandscanner_header_output}"
++            DEPENDS ${protocol_file} Qt::qtwaylandscanner
++        )
++
++        set(qtwaylandscanner_code_include "")
++        if (is_for_module)
++            set(qtwaylandscanner_code_include "<QtWaylandClient/private/wayland-wayland-client-protocol.h>")
++        endif()
++
++        add_custom_command(
++            OUTPUT "${qtwaylandscanner_code_output}"
++            COMMAND Qt::qtwaylandscanner client-code "${protocol_file}" --header-path='${wayland_include_dir}' --add-include='${qtwaylandscanner_code_include}' > "${qtwaylandscanner_code_output}"
++            DEPENDS ${protocol_file} Qt::qtwaylandscanner
++        )
++
++        target_sources(${target} PRIVATE
++            "${waylandscanner_header_output}"
++            "${waylandscanner_code_output}"
++            "${qtwaylandscanner_header_output}"
++            "${qtwaylandscanner_code_output}"
++        )
++    endforeach()
++    target_include_directories(${target} PRIVATE ${target_binary_dir})
++endfunction()
++
++if(NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
++    function(qt_generate_wayland_protocol_client_sources)
++        qt5_generate_wayland_protocol_client_sources(${ARGV})
++    endfunction()
++endif()
+diff --git a/cmake/QtWaylandScannerToolsTargets-relwithdebinfo.cmake b/cmake/QtWaylandScannerToolsTargets-relwithdebinfo.cmake
+new file mode 100644
+index 0000000..91aae89
+--- /dev/null
++++ b/cmake/QtWaylandScannerToolsTargets-relwithdebinfo.cmake
+@@ -0,0 +1,18 @@
++#----------------------------------------------------------------
++# Generated CMake target import file for configuration "RelWithDebInfo".
++#----------------------------------------------------------------
++
++# Commands may need to know the format version.
++set(CMAKE_IMPORT_FILE_VERSION 1)
++
++# Import target "Qt6::qtwaylandscanner" for configuration "RelWithDebInfo"
++set_property(TARGET Qt::qtwaylandscanner APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
++set_target_properties(Qt::qtwaylandscanner PROPERTIES
++  IMPORTED_LOCATION_RELWITHDEBINFO "${_IMPORT_PREFIX}/bin/qtwaylandscanner"
++  )
++
++list(APPEND _IMPORT_CHECK_TARGETS Qt::qtwaylandscanner )
++list(APPEND _IMPORT_CHECK_FILES_FOR_Qt::qtwaylandscanner "${_IMPORT_PREFIX}/bin/qtwaylandscanner" )
++
++# Commands beyond this point should not need to know the version.
++set(CMAKE_IMPORT_FILE_VERSION)
+diff --git a/cmake/QtWaylandScannerToolsTargets.cmake b/cmake/QtWaylandScannerToolsTargets.cmake
+new file mode 100644
+index 0000000..105b526
+--- /dev/null
++++ b/cmake/QtWaylandScannerToolsTargets.cmake
+@@ -0,0 +1,106 @@
++# Generated by CMake
++
++if("${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.6)
++   message(FATAL_ERROR "CMake >= 2.6.0 required")
++endif()
++cmake_policy(PUSH)
++cmake_policy(VERSION 2.6...3.21)
++#----------------------------------------------------------------
++# Generated CMake target import file.
++#----------------------------------------------------------------
++
++# Commands may need to know the format version.
++set(CMAKE_IMPORT_FILE_VERSION 1)
++
++# Protect against multiple inclusion, which would fail when already imported targets are added once more.
++set(_targetsDefined)
++set(_targetsNotDefined)
++set(_expectedTargets)
++foreach(_expectedTarget Qt::qtwaylandscanner)
++  list(APPEND _expectedTargets ${_expectedTarget})
++  if(NOT TARGET ${_expectedTarget})
++    list(APPEND _targetsNotDefined ${_expectedTarget})
++  endif()
++  if(TARGET ${_expectedTarget})
++    list(APPEND _targetsDefined ${_expectedTarget})
++  endif()
++endforeach()
++if("${_targetsDefined}" STREQUAL "${_expectedTargets}")
++  unset(_targetsDefined)
++  unset(_targetsNotDefined)
++  unset(_expectedTargets)
++  set(CMAKE_IMPORT_FILE_VERSION)
++  cmake_policy(POP)
++  return()
++endif()
++if(NOT "${_targetsDefined}" STREQUAL "")
++  message(FATAL_ERROR "Some (but not all) targets in this export set were already defined.\nTargets Defined: ${_targetsDefined}\nTargets not yet defined: ${_targetsNotDefined}\n")
++endif()
++unset(_targetsDefined)
++unset(_targetsNotDefined)
++unset(_expectedTargets)
++
++
++# Compute the installation prefix relative to this file.
++get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
++# Use original install prefix when loaded through a
++# cross-prefix symbolic link such as /lib -> /usr/lib.
++get_filename_component(_realCurr "${_IMPORT_PREFIX}" REALPATH)
++get_filename_component(_realOrig "/usr/lib/cmake/Qt6WaylandScannerTools" REALPATH)
++# TODO fix hack
++#if(_realCurr STREQUAL _realOrig)
++  set(_IMPORT_PREFIX "/usr/lib/cmake/Qt6WaylandScannerTools")
++#endif()
++unset(_realOrig)
++unset(_realCurr)
++get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
++get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
++get_filename_component(_IMPORT_PREFIX "${_IMPORT_PREFIX}" PATH)
++if(_IMPORT_PREFIX STREQUAL "/")
++  set(_IMPORT_PREFIX "")
++endif()
++
++# Create imported target Qt::qtwaylandscanner
++add_executable(Qt::qtwaylandscanner IMPORTED)
++
++set_target_properties(Qt::qtwaylandscanner PROPERTIES
++  COMPATIBLE_INTERFACE_STRING "QT_MAJOR_VERSION"
++  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/qt"
++  INTERFACE_QT_MAJOR_VERSION "5"
++)
++
++# Load information for each installed configuration.
++get_filename_component(_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
++file(GLOB CONFIG_FILES "${_DIR}/QtWaylandScannerToolsTargets-*.cmake")
++foreach(f ${CONFIG_FILES})
++  include(${f})
++endforeach()
++
++# Cleanup temporary variables.
++set(_IMPORT_PREFIX)
++
++# Loop over all imported files and verify that they actually exist
++foreach(target ${_IMPORT_CHECK_TARGETS} )
++  foreach(file ${_IMPORT_CHECK_FILES_FOR_${target}} )
++    if(NOT EXISTS "${file}" )
++      message(FATAL_ERROR "The imported target \"${target}\" references the file
++   \"${file}\"
++but this file does not exist.  Possible reasons include:
++* The file was deleted, renamed, or moved to another location.
++* An install or uninstall procedure did not complete successfully.
++* The installation package was faulty and contained
++   \"${CMAKE_CURRENT_LIST_FILE}\"
++but not all the files it references.
++")
++    endif()
++  endforeach()
++  unset(_IMPORT_CHECK_FILES_FOR_${target})
++endforeach()
++unset(_IMPORT_CHECK_TARGETS)
++
++# This file does not depend on other imported targets which have
++# been exported from the same project but in a separate export set.
++
++# Commands beyond this point should not need to know the version.
++set(CMAKE_IMPORT_FILE_VERSION)
++cmake_policy(POP)
+diff --git a/cmake/extra-cmake-modules/COPYING-CMAKE-SCRIPTS b/cmake/extra-cmake-modules/COPYING-CMAKE-SCRIPTS
+new file mode 100644
+index 0000000..4b41776
+--- /dev/null
++++ b/cmake/extra-cmake-modules/COPYING-CMAKE-SCRIPTS
+@@ -0,0 +1,22 @@
++Redistribution and use in source and binary forms, with or without
++modification, are permitted provided that the following conditions
++are met:
++
++1. Redistributions of source code must retain the copyright
++   notice, this list of conditions and the following disclaimer.
++2. Redistributions in binary form must reproduce the copyright
++   notice, this list of conditions and the following disclaimer in the
++   documentation and/or other materials provided with the distribution.
++3. The name of the author may not be used to endorse or promote products 
++   derived from this software without specific prior written permission.
++
++THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+diff --git a/cmake/extra-cmake-modules/find-modules/ECMFindModuleHelpersStub.cmake b/cmake/extra-cmake-modules/find-modules/ECMFindModuleHelpersStub.cmake
+new file mode 100644
+index 0000000..bb8c9a6
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/ECMFindModuleHelpersStub.cmake
+@@ -0,0 +1 @@
++include(${CMAKE_CURRENT_LIST_DIR}/../modules/ECMFindModuleHelpers.cmake)
+diff --git a/cmake/extra-cmake-modules/find-modules/FindEGL.cmake b/cmake/extra-cmake-modules/find-modules/FindEGL.cmake
+new file mode 100644
+index 0000000..a3573ba
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindEGL.cmake
+@@ -0,0 +1,173 @@
++#.rst:
++# FindEGL
++# -------
++#
++# Try to find EGL.
++#
++# This will define the following variables:
++#
++# ``EGL_FOUND``
++#     True if (the requested version of) EGL is available
++# ``EGL_VERSION``
++#     The version of EGL; note that this is the API version defined in the
++#     headers, rather than the version of the implementation (eg: Mesa)
++# ``EGL_LIBRARIES``
++#     This can be passed to target_link_libraries() instead of the ``EGL::EGL``
++#     target
++# ``EGL_INCLUDE_DIRS``
++#     This should be passed to target_include_directories() if the target is not
++#     used for linking
++# ``EGL_DEFINITIONS``
++#     This should be passed to target_compile_options() if the target is not
++#     used for linking
++#
++# If ``EGL_FOUND`` is TRUE, it will also define the following imported target:
++#
++# ``EGL::EGL``
++#     The EGL library
++#
++# In general we recommend using the imported target, as it is easier to use.
++# Bear in mind, however, that if the target is in the link interface of an
++# exported library, it must be made available by the package config file.
++#
++# Since pre-1.0.0.
++
++#=============================================================================
++# Copyright 2014 Alex Merry <alex.merry@kde.org>
++# Copyright 2014 Martin Gräßlin <mgraesslin@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++include(CheckCXXSourceCompiles)
++include(CMakePushCheckState)
++
++ecm_find_package_version_check(EGL)
++
++# Use pkg-config to get the directories and then use these values
++# in the FIND_PATH() and FIND_LIBRARY() calls
++find_package(PkgConfig QUIET)
++pkg_check_modules(PKG_EGL QUIET egl)
++
++set(EGL_DEFINITIONS ${PKG_EGL_CFLAGS_OTHER})
++
++find_path(EGL_INCLUDE_DIR
++    NAMES
++        EGL/egl.h
++    HINTS
++        ${PKG_EGL_INCLUDE_DIRS}
++)
++find_library(EGL_LIBRARY
++    NAMES
++        EGL
++    HINTS
++        ${PKG_EGL_LIBRARY_DIRS}
++)
++
++# NB: We do *not* use the version information from pkg-config, as that
++#     is the implementation version (eg: the Mesa version)
++if(EGL_INCLUDE_DIR)
++    # egl.h has defines of the form EGL_VERSION_x_y for each supported
++    # version; so the header for EGL 1.1 will define EGL_VERSION_1_0 and
++    # EGL_VERSION_1_1.  Finding the highest supported version involves
++    # finding all these defines and selecting the highest numbered.
++    file(READ "${EGL_INCLUDE_DIR}/EGL/egl.h" _EGL_header_contents)
++    string(REGEX MATCHALL
++        "[ \t]EGL_VERSION_[0-9_]+"
++        _EGL_version_lines
++        "${_EGL_header_contents}"
++    )
++    unset(_EGL_header_contents)
++    foreach(_EGL_version_line ${_EGL_version_lines})
++        string(REGEX REPLACE
++            "[ \t]EGL_VERSION_([0-9_]+)"
++            "\\1"
++            _version_candidate
++            "${_EGL_version_line}"
++        )
++        string(REPLACE "_" "." _version_candidate "${_version_candidate}")
++        if(NOT DEFINED EGL_VERSION OR EGL_VERSION VERSION_LESS _version_candidate)
++            set(EGL_VERSION "${_version_candidate}")
++        endif()
++    endforeach()
++    unset(_EGL_version_lines)
++endif()
++
++cmake_push_check_state(RESET)
++list(APPEND CMAKE_REQUIRED_LIBRARIES "${EGL_LIBRARY}")
++list(APPEND CMAKE_REQUIRED_INCLUDES "${EGL_INCLUDE_DIR}")
++list(APPEND CMAKE_REQUIRED_DEFINITIONS "${EGL_DEFINITIONS}")
++
++check_cxx_source_compiles("
++#include <EGL/egl.h>
++
++int main(int, char **) {
++    EGLint x = 0; EGLDisplay dpy = 0; EGLContext ctx = 0;
++    eglDestroyContext(dpy, ctx);
++}" HAVE_EGL)
++
++cmake_pop_check_state()
++
++set(required_vars EGL_INCLUDE_DIR HAVE_EGL)
++if(NOT EMSCRIPTEN)
++    list(APPEND required_vars EGL_LIBRARY)
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(EGL
++    FOUND_VAR
++        EGL_FOUND
++    REQUIRED_VARS
++        ${required_vars}
++    VERSION_VAR
++        EGL_VERSION
++)
++
++if(EGL_FOUND AND NOT TARGET EGL::EGL)
++    if (EMSCRIPTEN)
++        add_library(EGL::EGL INTERFACE IMPORTED)
++        # Nothing further to be done, system include paths have headers and linkage is implicit.
++    else()
++        add_library(EGL::EGL UNKNOWN IMPORTED)
++        set_target_properties(EGL::EGL PROPERTIES
++            IMPORTED_LOCATION "${EGL_LIBRARY}"
++            INTERFACE_COMPILE_OPTIONS "${EGL_DEFINITIONS}"
++            INTERFACE_INCLUDE_DIRECTORIES "${EGL_INCLUDE_DIR}"
++        )
++    endif()
++endif()
++
++mark_as_advanced(EGL_LIBRARY EGL_INCLUDE_DIR HAVE_EGL)
++
++# compatibility variables
++set(EGL_LIBRARIES ${EGL_LIBRARY})
++set(EGL_INCLUDE_DIRS ${EGL_INCLUDE_DIR})
++set(EGL_VERSION_STRING ${EGL_VERSION})
++
++include(FeatureSummary)
++set_package_properties(EGL PROPERTIES
++    URL "https://www.khronos.org/egl/"
++    DESCRIPTION "A platform-agnostic mechanism for creating rendering surfaces for use with other graphics libraries, such as OpenGL|ES and OpenVG."
++)
+diff --git a/cmake/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/extra-cmake-modules/find-modules/FindGLIB2.cmake
+new file mode 100644
+index 0000000..24a194c
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindGLIB2.cmake
+@@ -0,0 +1,167 @@
++#.rst:
++# FindGLIB2
++# ---------
++#
++# Try to locate the GLib2 library.
++# If found, this will define the following variables:
++#
++# ``GLIB2_FOUND``
++#     True if the GLib2 library is available
++# ``GLIB2_INCLUDE_DIRS``
++#     The GLib2 include directories
++# ``GLIB2_LIBRARIES``
++#     The GLib2 libraries for linking
++# ``GLIB2_INCLUDE_DIR``
++#     Deprecated, use ``GLIB2_INCLUDE_DIRS``
++# ``GLIB2_LIBRARY``
++#     Deprecated, use ``GLIB2_LIBRARIES``
++#
++# If ``GLIB2_FOUND`` is TRUE, it will also define the following
++# imported target:
++#
++# ``GLIB2::GLIB2``
++#     The GLIB2 library
++#
++# Since 5.41.0.
++
++#=============================================================================
++# Copyright (c) 2008 Laurent Montel, <montel@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++find_package(PkgConfig QUIET)
++pkg_check_modules(PC_GLIB2 QUIET glib-2.0)
++
++find_path(GLIB2_INCLUDE_DIRS
++          NAMES glib.h
++          HINTS ${PC_GLIB2_INCLUDEDIR}
++          PATH_SUFFIXES glib-2.0)
++
++find_library(GLIB2_LIBRARIES
++             NAMES glib-2.0
++             HINTS ${PC_GLIB2_LIBDIR}
++)
++
++pkg_check_modules(PC_GTHREAD2 QUIET gthread-2.0)
++
++find_library(GTHREAD2_LIBRARIES
++             NAMES gthread-2.0
++             HINTS ${PC_GTHREAD2_LIBDIR}
++)
++
++pkg_check_modules(PC_GOBJECT QUIET gobject-2.0)
++
++find_path(GLIB2_GOBJECT_INCLUDE_DIRS
++          NAMES glib-object.h
++          HINTS ${PC_GOBJECT_INCLUDEDIR}
++          PATH_SUFFIXES glib-2.0)
++
++find_library(GLIB2_GOBJECT_LIBRARIES
++             NAMES gobject-2.0
++             HINTS ${PC_GOBJECT_LIBDIR}
++)
++
++pkg_check_modules(PC_GIO QUIET gio-2.0)
++
++find_path(GLIB2_GIO_INCLUDE_DIRS
++          NAMES gio/gio.h
++          HINTS ${PC_GIO_INCLUDEDIR}
++          PATH_SUFFIXES glib-2.0)
++
++find_library(GLIB2_GIO_LIBRARIES
++             NAMES gio-2.0
++             HINTS ${PC_GIO_LIBDIR}
++)
++
++# search the glibconfig.h include dir under the same root where the library is found
++get_filename_component(glib2LibDir "${GLIB2_LIBRARIES}" PATH)
++
++find_path(GLIB2_INTERNAL_INCLUDE_DIR glibconfig.h
++          PATH_SUFFIXES glib-2.0/include
++          HINTS ${PC_GLIB2_INCLUDEDIR} "${glib2LibDir}" ${CMAKE_SYSTEM_LIBRARY_PATH})
++
++# not sure if this include dir is optional or required
++# for now it is optional
++if(GLIB2_INTERNAL_INCLUDE_DIR)
++  list(APPEND GLIB2_INCLUDE_DIRS "${GLIB2_INTERNAL_INCLUDE_DIR}")
++  list(APPEND GLIB2_GOBJECT_INCLUDE_DIRS "${GLIB2_INTERNAL_INCLUDE_DIR}")
++  list(APPEND GLIB2_GIO_INCLUDE_DIRS "${GLIB2_INTERNAL_INCLUDE_DIR}")
++endif()
++
++# Deprecated synonyms
++set(GLIB2_INCLUDE_DIR "${GLIB2_INCLUDE_DIRS}")
++set(GLIB2_LIBRARY "${GLIB2_LIBRARIES}")
++set(GLIB2_GOBJECT_INCLUDE_DIR "${GLIB2_GOBJECT_INCLUDE_DIRS}")
++set(GLIB2_GOBJECT_LIBRARY "${GLIB2_GOBJECT_LIBRARIES}")
++set(GLIB2_GIO_INCLUDE_DIR "${GLIB2_GIO_INCLUDE_DIRS}")
++set(GLIB2_GIO_LIBRARY "${GLIB2_GIO_LIBRARIES}")
++
++if(GLIB2_GOBJECT_LIBRARIES AND GLIB2_GOBJECT_INCLUDE_DIRS)
++  set(GLIB2_GOBJECT_FOUND TRUE)
++endif()
++
++if(GLIB2_GIO_LIBRARIES AND GLIB2_GIO_INCLUDE_DIRS)
++  set(GLIB2_GIO_FOUND TRUE)
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(GLIB2
++                                  REQUIRED_VARS GLIB2_LIBRARIES GTHREAD2_LIBRARIES GLIB2_INCLUDE_DIRS
++                                  HANDLE_COMPONENTS)
++
++if(GLIB2_FOUND AND NOT TARGET GLIB2::GLIB2)
++  add_library(GLIB2::GLIB2 UNKNOWN IMPORTED)
++  set_target_properties(GLIB2::GLIB2 PROPERTIES
++                        IMPORTED_LOCATION "${GLIB2_LIBRARIES}"
++                        INTERFACE_LINK_LIBRARIES "${GTHREAD2_LIBRARIES}"
++                        INTERFACE_INCLUDE_DIRECTORIES "${GLIB2_INCLUDE_DIRS}")
++endif()
++
++if(GLIB2_GOBJECT_FOUND AND NOT TARGET GLIB2::GOBJECT)
++  add_library(GLIB2::GOBJECT UNKNOWN IMPORTED)
++  set_target_properties(GLIB2::GOBJECT PROPERTIES
++                        IMPORTED_LOCATION "${GLIB2_GOBJECT_LIBRARIES}"
++                        INTERFACE_INCLUDE_DIRECTORIES "${GLIB2_GOBJECT_INCLUDE_DIRS}")
++endif()
++
++if(GLIB2_GIO_FOUND AND NOT TARGET GLIB2::GIO)
++  add_library(GLIB2::GIO UNKNOWN IMPORTED)
++  set_target_properties(GLIB2::GIO PROPERTIES
++                        IMPORTED_LOCATION "${GLIB2_GIO_LIBRARIES}"
++                        INTERFACE_INCLUDE_DIRECTORIES "${GLIB2_GIO_INCLUDE_DIRS}")
++endif()
++
++mark_as_advanced(GLIB2_INCLUDE_DIRS GLIB2_INCLUDE_DIR
++                 GLIB2_LIBRARIES GLIB2_LIBRARY
++                 GLIB2_GOBJECT_INCLUDE_DIRS GLIB2_GOBJECT_INCLUDE_DIR
++                 GLIB2_GOBJECT_LIBRARIES GLIB2_GOBJECT_LIBRARY
++                 GLIB2_GIO_INCLUDE_DIRS GLIB2_GIO_INCLUDE_DIR
++                 GLIB2_GIO_LIBRARIES GLIB2_GIO_LIBRARY)
++
++include(FeatureSummary)
++set_package_properties(GLIB2 PROPERTIES
++  URL "https://wiki.gnome.org/Projects/GLib"
++  DESCRIPTION "Event loop and utility library")
++
+diff --git a/cmake/extra-cmake-modules/find-modules/FindWayland.cmake b/cmake/extra-cmake-modules/find-modules/FindWayland.cmake
+new file mode 100644
+index 0000000..233cc88
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindWayland.cmake
+@@ -0,0 +1,143 @@
++#.rst:
++# FindWayland
++# -----------
++#
++# Try to find Wayland.
++#
++# This is a component-based find module, which makes use of the COMPONENTS
++# and OPTIONAL_COMPONENTS arguments to find_module.  The following components
++# are available::
++#
++#   Client  Server  Cursor  Egl
++#
++# If no components are specified, this module will act as though all components
++# were passed to OPTIONAL_COMPONENTS.
++#
++# This module will define the following variables, independently of the
++# components searched for or found:
++#
++# ``Wayland_FOUND``
++#     TRUE if (the requested version of) Wayland is available
++# ``Wayland_VERSION``
++#     Found Wayland version
++# ``Wayland_TARGETS``
++#     A list of all targets imported by this module (note that there may be more
++#     than the components that were requested)
++# ``Wayland_LIBRARIES``
++#     This can be passed to target_link_libraries() instead of the imported
++#     targets
++# ``Wayland_INCLUDE_DIRS``
++#     This should be passed to target_include_directories() if the targets are
++#     not used for linking
++# ``Wayland_DEFINITIONS``
++#     This should be passed to target_compile_options() if the targets are not
++#     used for linking
++#
++# For each searched-for components, ``Wayland_<component>_FOUND`` will be set to
++# TRUE if the corresponding Wayland library was found, and FALSE otherwise.  If
++# ``Wayland_<component>_FOUND`` is TRUE, the imported target
++# ``Wayland::<component>`` will be defined.  This module will also attempt to
++# determine ``Wayland_*_VERSION`` variables for each imported target, although
++# ``Wayland_VERSION`` should normally be sufficient.
++#
++# In general we recommend using the imported targets, as they are easier to use
++# and provide more control.  Bear in mind, however, that if any target is in the
++# link interface of an exported library, it must be made available by the
++# package config file.
++#
++# Since pre-1.0.0.
++
++#=============================================================================
++# Copyright 2014 Alex Merry <alex.merry@kde.org>
++# Copyright 2014 Martin Gräßlin <mgraesslin@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++
++ecm_find_package_version_check(Wayland)
++
++set(Wayland_known_components
++    Client
++    Server
++    Cursor
++    Egl
++)
++foreach(_comp ${Wayland_known_components})
++    string(TOLOWER "${_comp}" _lc_comp)
++    set(Wayland_${_comp}_component_deps)
++    set(Wayland_${_comp}_pkg_config "wayland-${_lc_comp}")
++    set(Wayland_${_comp}_lib "wayland-${_lc_comp}")
++    set(Wayland_${_comp}_header "wayland-${_lc_comp}.h")
++endforeach()
++set(Wayland_Egl_component_deps Client)
++
++ecm_find_package_parse_components(Wayland
++    RESULT_VAR Wayland_components
++    KNOWN_COMPONENTS ${Wayland_known_components}
++)
++ecm_find_package_handle_library_components(Wayland
++    COMPONENTS ${Wayland_components}
++)
++
++# If pkg-config didn't provide us with version information,
++# try to extract it from wayland-version.h
++# (Note that the version from wayland-egl.pc will probably be
++# the Mesa version, rather than the Wayland version, but that
++# version will be ignored as we always find wayland-client.pc
++# first).
++if(NOT Wayland_VERSION)
++    find_file(Wayland_VERSION_HEADER
++        NAMES wayland-version.h
++        HINTS ${Wayland_INCLUDE_DIRS}
++    )
++    mark_as_advanced(Wayland_VERSION_HEADER)
++    if(Wayland_VERSION_HEADER)
++        file(READ ${Wayland_VERSION_HEADER} _wayland_version_header_contents)
++        string(REGEX REPLACE
++            "^.*[ \t]+WAYLAND_VERSION[ \t]+\"([0-9.]*)\".*$"
++            "\\1"
++            Wayland_VERSION
++            "${_wayland_version_header_contents}"
++        )
++        unset(_wayland_version_header_contents)
++    endif()
++endif()
++
++find_package_handle_standard_args(Wayland
++    FOUND_VAR
++        Wayland_FOUND
++    REQUIRED_VARS
++        Wayland_LIBRARIES
++    VERSION_VAR
++        Wayland_VERSION
++    HANDLE_COMPONENTS
++)
++
++include(FeatureSummary)
++set_package_properties(Wayland PROPERTIES
++    URL "http://wayland.freedesktop.org"
++    DESCRIPTION "C library implementation of the Wayland protocol: a protocol for a compositor to talk to its clients"
++)
+diff --git a/cmake/extra-cmake-modules/find-modules/FindWaylandScanner.cmake b/cmake/extra-cmake-modules/find-modules/FindWaylandScanner.cmake
+new file mode 100644
+index 0000000..13291af
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindWaylandScanner.cmake
+@@ -0,0 +1,173 @@
++#.rst:
++# FindWaylandScanner
++# ------------------
++#
++# Try to find wayland-scanner.
++#
++# If the wayland-scanner executable is not in your PATH, you can provide
++# an alternative name or full path location with the ``WaylandScanner_EXECUTABLE``
++# variable.
++#
++# This will define the following variables:
++#
++# ``WaylandScanner_FOUND``
++#     True if wayland-scanner is available.
++#
++# ``WaylandScanner_EXECUTABLE``
++#     The wayland-scanner executable.
++#
++# If ``WaylandScanner_FOUND`` is TRUE, it will also define the following imported
++# target:
++#
++# ``Wayland::Scanner``
++#     The wayland-scanner executable.
++#
++# This module provides the following functions to generate C protocol
++# implementations:
++#
++#   - ``ecm_add_wayland_client_protocol``
++#   - ``ecm_add_wayland_server_protocol``
++#
++# ::
++#
++#   ecm_add_wayland_client_protocol(<source_files_var>
++#                                   PROTOCOL <xmlfile>
++#                                   BASENAME <basename>)
++#
++# Generate Wayland client protocol files from ``<xmlfile>`` XML
++# definition for the ``<basename>`` interface and append those files
++# to ``<source_files_var>``.
++#
++# ::
++#
++#   ecm_add_wayland_server_protocol(<source_files_var>
++#                                   PROTOCOL <xmlfile>
++#                                   BASENAME <basename>)
++#
++# Generate Wayland server protocol files from ``<xmlfile>`` XML
++# definition for the ``<basename>`` interface and append those files
++# to ``<source_files_var>``.
++#
++# Since 1.4.0.
++
++#=============================================================================
++# Copyright 2012-2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++
++ecm_find_package_version_check(WaylandScanner)
++
++# Find wayland-scanner
++find_program(WaylandScanner_EXECUTABLE NAMES wayland-scanner)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(WaylandScanner
++    FOUND_VAR
++        WaylandScanner_FOUND
++    REQUIRED_VARS
++        WaylandScanner_EXECUTABLE
++)
++
++mark_as_advanced(WaylandScanner_EXECUTABLE)
++
++if(NOT TARGET Wayland::Scanner AND WaylandScanner_FOUND)
++    add_executable(Wayland::Scanner IMPORTED)
++    set_target_properties(Wayland::Scanner PROPERTIES
++        IMPORTED_LOCATION "${WaylandScanner_EXECUTABLE}"
++    )
++endif()
++
++include(FeatureSummary)
++set_package_properties(WaylandScanner PROPERTIES
++    URL "https://wayland.freedesktop.org/"
++    DESCRIPTION "Executable that converts XML protocol files to C code"
++)
++
++
++include(CMakeParseArguments)
++
++function(ecm_add_wayland_client_protocol out_var)
++    # Parse arguments
++    set(oneValueArgs PROTOCOL BASENAME)
++    cmake_parse_arguments(ARGS "" "${oneValueArgs}" "" ${ARGN})
++
++    if(ARGS_UNPARSED_ARGUMENTS)
++        message(FATAL_ERROR "Unknown keywords given to ecm_add_wayland_client_protocol(): \"${ARGS_UNPARSED_ARGUMENTS}\"")
++    endif()
++
++    get_filename_component(_infile ${ARGS_PROTOCOL} ABSOLUTE)
++    set(_client_header "${CMAKE_CURRENT_BINARY_DIR}/wayland-${ARGS_BASENAME}-client-protocol.h")
++    set(_code "${CMAKE_CURRENT_BINARY_DIR}/wayland-${ARGS_BASENAME}-protocol.c")
++
++    set_source_files_properties(${_client_header} GENERATED)
++    set_source_files_properties(${_code} GENERATED)
++    set_property(SOURCE ${_client_header} PROPERTY SKIP_AUTOMOC ON)
++
++    add_custom_command(OUTPUT "${_client_header}"
++        COMMAND ${WaylandScanner_EXECUTABLE} client-header ${_infile} ${_client_header}
++        DEPENDS ${WaylandScanner_EXECUTABLE} ${_infile}
++        VERBATIM
++    )
++
++    add_custom_command(OUTPUT "${_code}"
++        COMMAND ${WaylandScanner_EXECUTABLE} code ${_infile} ${_code}
++        DEPENDS ${WaylandScanner_EXECUTABLE} ${_infile} ${_client_header}
++        VERBATIM
++    )
++
++    list(APPEND ${out_var} "${_client_header}" "${_code}")
++    set(${out_var} ${${out_var}} PARENT_SCOPE)
++endfunction()
++
++
++function(ecm_add_wayland_server_protocol out_var)
++    # Parse arguments
++    set(oneValueArgs PROTOCOL BASENAME)
++    cmake_parse_arguments(ARGS "" "${oneValueArgs}" "" ${ARGN})
++
++    if(ARGS_UNPARSED_ARGUMENTS)
++        message(FATAL_ERROR "Unknown keywords given to ecm_add_wayland_server_protocol(): \"${ARGS_UNPARSED_ARGUMENTS}\"")
++    endif()
++
++    ecm_add_wayland_client_protocol(${out_var}
++                                    PROTOCOL ${ARGS_PROTOCOL}
++                                    BASENAME ${ARGS_BASENAME})
++
++    get_filename_component(_infile ${ARGS_PROTOCOL} ABSOLUTE)
++    set(_server_header "${CMAKE_CURRENT_BINARY_DIR}/wayland-${ARGS_BASENAME}-server-protocol.h")
++    set_property(SOURCE ${_server_header} PROPERTY SKIP_AUTOMOC ON)
++    set_source_files_properties(${_server_header} GENERATED)
++
++    add_custom_command(OUTPUT "${_server_header}"
++        COMMAND ${WaylandScanner_EXECUTABLE} server-header ${_infile} ${_server_header}
++        DEPENDS ${WaylandScanner_EXECUTABLE} ${_infile}
++        VERBATIM
++   )
++
++    list(APPEND ${out_var} "${_server_header}")
++    set(${out_var} ${${out_var}} PARENT_SCOPE)
++endfunction()
+diff --git a/cmake/extra-cmake-modules/find-modules/FindX11_XCB.cmake b/cmake/extra-cmake-modules/find-modules/FindX11_XCB.cmake
+new file mode 100644
+index 0000000..8547175
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindX11_XCB.cmake
+@@ -0,0 +1,118 @@
++#.rst:
++# FindX11_XCB
++# -----------
++#
++# Try to find the X11 XCB compatibility library.
++#
++# This will define the following variables:
++#
++# ``X11_XCB_FOUND``
++#     True if (the requested version of) libX11-xcb is available
++# ``X11_XCB_VERSION``
++#     The version of libX11-xcb (this is not guaranteed to be set even when
++#     X11_XCB_FOUND is true)
++# ``X11_XCB_LIBRARIES``
++#     This can be passed to target_link_libraries() instead of the ``EGL::EGL``
++#     target
++# ``X11_XCB_INCLUDE_DIR``
++#     This should be passed to target_include_directories() if the target is not
++#     used for linking
++# ``X11_XCB_DEFINITIONS``
++#     This should be passed to target_compile_options() if the target is not
++#     used for linking
++#
++# If ``X11_XCB_FOUND`` is TRUE, it will also define the following imported
++# target:
++#
++# ``X11::XCB``
++#     The X11 XCB compatibility library
++#
++# In general we recommend using the imported target, as it is easier to use.
++# Bear in mind, however, that if the target is in the link interface of an
++# exported library, it must be made available by the package config file.
++#
++# Since pre-1.0.0.
++
++#=============================================================================
++# Copyright 2014 Alex Merry <alex.merry@kde.org>
++# Copyright 2011 Fredrik Höglund <fredrik@kde.org>
++# Copyright 2008 Helio Chissini de Castro <helio@kde.org>
++# Copyright 2007 Matthias Kretz <kretz@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++
++ecm_find_package_version_check(X11_XCB)
++
++# use pkg-config to get the directories and then use these values
++# in the FIND_PATH() and FIND_LIBRARY() calls
++find_package(PkgConfig QUIET)
++pkg_check_modules(PKG_X11_XCB QUIET x11-xcb)
++
++set(X11_XCB_DEFINITIONS ${PKG_X11_XCB_CFLAGS_OTHER})
++set(X11_XCB_VERSION ${PKG_X11_XCB_VERSION})
++
++find_path(X11_XCB_INCLUDE_DIR
++    NAMES X11/Xlib-xcb.h
++    HINTS ${PKG_X11_XCB_INCLUDE_DIRS}
++)
++find_library(X11_XCB_LIBRARY
++    NAMES X11-xcb
++    HINTS ${PKG_X11_XCB_LIBRARY_DIRS}
++)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(X11_XCB
++    FOUND_VAR
++        X11_XCB_FOUND
++    REQUIRED_VARS
++        X11_XCB_LIBRARY
++        X11_XCB_INCLUDE_DIR
++    VERSION_VAR
++        X11_XCB_VERSION
++)
++
++if(X11_XCB_FOUND AND NOT TARGET X11::XCB)
++    add_library(X11::XCB UNKNOWN IMPORTED)
++    set_target_properties(X11::XCB PROPERTIES
++        IMPORTED_LOCATION "${X11_XCB_LIBRARY}"
++        INTERFACE_COMPILE_OPTIONS "${X11_XCB_DEFINITIONS}"
++        INTERFACE_INCLUDE_DIRECTORIES "${X11_XCB_INCLUDE_DIR}"
++    )
++endif()
++
++mark_as_advanced(X11_XCB_INCLUDE_DIR X11_XCB_LIBRARY)
++
++# compatibility variables
++set(X11_XCB_LIBRARIES ${X11_XCB_LIBRARY})
++set(X11_XCB_INCLUDE_DIRS ${X11_XCB_INCLUDE_DIR})
++set(X11_XCB_VERSION_STRING ${X11_XCB_VERSION})
++
++include(FeatureSummary)
++set_package_properties(X11_XCB PROPERTIES
++    URL "http://xorg.freedesktop.org/"
++    DESCRIPTION "A compatibility library for code that translates Xlib API calls into XCB calls"
++)
+diff --git a/cmake/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/extra-cmake-modules/find-modules/FindXCB.cmake
+new file mode 100644
+index 0000000..d530d2d
+--- /dev/null
++++ b/cmake/extra-cmake-modules/find-modules/FindXCB.cmake
+@@ -0,0 +1,201 @@
++#.rst:
++# FindXCB
++# -------
++#
++# Try to find XCB.
++#
++# This is a component-based find module, which makes use of the COMPONENTS and
++# OPTIONAL_COMPONENTS arguments to find_module.  The following components are
++# available::
++#
++#   XCB
++#   ATOM         AUX          COMPOSITE    CURSOR       DAMAGE
++#   DPMS         DRI2         DRI3         EVENT        EWMH
++#   GLX          ICCCM        IMAGE        KEYSYMS      PRESENT
++#   RANDR        RECORD       RENDER       RENDERUTIL   RES
++#   SCREENSAVER  SHAPE        SHM          SYNC         UTIL
++#   XEVIE        XF86DRI      XFIXES       XINERAMA     XINPUT
++#   XKB          XPRINT       XTEST        XV           XVMC
++#
++# If no components are specified, this module will act as though all components
++# except XINPUT (which is considered unstable) were passed to
++# OPTIONAL_COMPONENTS.
++#
++# This module will define the following variables, independently of the
++# components searched for or found:
++#
++# ``XCB_FOUND``
++#     True if (the requestion version of) xcb is available
++# ``XCB_VERSION``
++#     Found xcb version
++# ``XCB_TARGETS``
++#     A list of all targets imported by this module (note that there may be more
++#     than the components that were requested)
++# ``XCB_LIBRARIES``
++#     This can be passed to target_link_libraries() instead of the imported
++#     targets
++# ``XCB_INCLUDE_DIRS``
++#     This should be passed to target_include_directories() if the targets are
++#     not used for linking
++# ``XCB_DEFINITIONS``
++#     This should be passed to target_compile_options() if the targets are not
++#     used for linking
++#
++# For each searched-for components, ``XCB_<component>_FOUND`` will be set to
++# true if the corresponding xcb library was found, and false otherwise.  If
++# ``XCB_<component>_FOUND`` is true, the imported target ``XCB::<component>``
++# will be defined.  This module will also attempt to determine
++# ``XCB_*_VERSION`` variables for each imported target, although
++# ``XCB_VERSION`` should normally be sufficient.
++#
++# In general we recommend using the imported targets, as they are easier to use
++# and provide more control.  Bear in mind, however, that if any target is in the
++# link interface of an exported library, it must be made available by the
++# package config file.
++#
++# Since pre-1.0.0.
++
++#=============================================================================
++# Copyright 2011 Fredrik Höglund <fredrik@kde.org>
++# Copyright 2013 Martin Gräßlin <mgraesslin@kde.org>
++# Copyright 2014-2015 Alex Merry <alex.merry@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++#=============================================================================
++
++include(${CMAKE_CURRENT_LIST_DIR}/ECMFindModuleHelpersStub.cmake)
++
++ecm_find_package_version_check(XCB)
++
++# Note that this list needs to be ordered such that any component
++# appears after its dependencies
++set(XCB_known_components
++    XCB
++    RENDER
++    SHAPE
++    XFIXES
++    SHM
++    ATOM
++    AUX
++    COMPOSITE
++    CURSOR
++    DAMAGE
++    DPMS
++    DRI2
++    DRI3
++    EVENT
++    EWMH
++    GLX
++    ICCCM
++    IMAGE
++    KEYSYMS
++    PRESENT
++    RANDR
++    RECORD
++    RENDERUTIL
++    RES
++    SCREENSAVER
++    SYNC
++    UTIL
++    XEVIE
++    XF86DRI
++    XINERAMA
++    XINPUT
++    XKB
++    XPRINT
++    XTEST
++    XV
++    XVMC
++)
++
++# XINPUT is unstable; do not include it by default
++set(XCB_default_components ${XCB_known_components})
++list(REMOVE_ITEM XCB_default_components "XINPUT")
++
++# default component info: xcb components have fairly predictable
++# header files, library names and pkg-config names
++foreach(_comp ${XCB_known_components})
++    string(TOLOWER "${_comp}" _lc_comp)
++    set(XCB_${_comp}_component_deps XCB)
++    set(XCB_${_comp}_pkg_config "xcb-${_lc_comp}")
++    set(XCB_${_comp}_lib "xcb-${_lc_comp}")
++    set(XCB_${_comp}_header "xcb/${_lc_comp}.h")
++endforeach()
++# exceptions
++set(XCB_XCB_component_deps)
++set(XCB_COMPOSITE_component_deps XCB XFIXES)
++set(XCB_DAMAGE_component_deps XCB XFIXES)
++set(XCB_IMAGE_component_deps XCB SHM)
++set(XCB_RENDERUTIL_component_deps XCB RENDER)
++set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
++set(XCB_XVMC_component_deps XCB XV)
++set(XCB_XV_component_deps XCB SHM)
++set(XCB_XCB_pkg_config "xcb")
++set(XCB_XCB_lib "xcb")
++set(XCB_ATOM_header "xcb/xcb_atom.h")
++set(XCB_ATOM_lib "xcb-util")
++set(XCB_AUX_header "xcb/xcb_aux.h")
++set(XCB_AUX_lib "xcb-util")
++set(XCB_CURSOR_header "xcb/xcb_cursor.h")
++set(XCB_EVENT_header "xcb/xcb_event.h")
++set(XCB_EVENT_lib "xcb-util")
++set(XCB_EWMH_header "xcb/xcb_ewmh.h")
++set(XCB_ICCCM_header "xcb/xcb_icccm.h")
++set(XCB_IMAGE_header "xcb/xcb_image.h")
++set(XCB_KEYSYMS_header "xcb/xcb_keysyms.h")
++set(XCB_PIXEL_header "xcb/xcb_pixel.h")
++set(XCB_RENDERUTIL_header "xcb/xcb_renderutil.h")
++set(XCB_RENDERUTIL_lib "xcb-render-util")
++set(XCB_UTIL_header "xcb/xcb_util.h")
++
++ecm_find_package_parse_components(XCB
++    RESULT_VAR XCB_components
++    KNOWN_COMPONENTS ${XCB_known_components}
++    DEFAULT_COMPONENTS ${XCB_default_components}
++)
++
++list(FIND XCB_components "XINPUT" _XCB_XINPUT_index)
++if (NOT _XCB_XINPUT_index EQUAL -1)
++    message(AUTHOR_WARNING "XINPUT from XCB was requested: this is EXPERIMENTAL and is likely to unavailable on many systems!")
++endif()
++
++ecm_find_package_handle_library_components(XCB
++    COMPONENTS ${XCB_components}
++)
++
++find_package_handle_standard_args(XCB
++    FOUND_VAR
++        XCB_FOUND
++    REQUIRED_VARS
++        XCB_LIBRARIES
++    VERSION_VAR
++        XCB_VERSION
++    HANDLE_COMPONENTS
++)
++
++include(FeatureSummary)
++set_package_properties(XCB PROPERTIES
++    URL "http://xcb.freedesktop.org"
++    DESCRIPTION "X protocol C-language Binding"
++)
+diff --git a/cmake/extra-cmake-modules/modules/ECMEnableSanitizers.cmake b/cmake/extra-cmake-modules/modules/ECMEnableSanitizers.cmake
+new file mode 100644
+index 0000000..dcdb862
+--- /dev/null
++++ b/cmake/extra-cmake-modules/modules/ECMEnableSanitizers.cmake
+@@ -0,0 +1,172 @@
++# SPDX-FileCopyrightText: 2014 Mathieu Tarral <mathieu.tarral@gmail.com>
++#
++# SPDX-License-Identifier: BSD-3-Clause
++
++#[=======================================================================[.rst:
++ECMEnableSanitizers
++-------------------
++
++Enable compiler sanitizer flags.
++
++The following sanitizers are supported:
++
++- Address Sanitizer
++- Memory Sanitizer
++- Thread Sanitizer
++- Leak Sanitizer
++- Undefined Behaviour Sanitizer
++
++All of them are implemented in Clang, depending on your version, and
++there is an work in progress in GCC, where some of them are currently
++implemented.
++
++This module will check your current compiler version to see if it
++supports the sanitizers that you want to enable
++
++Usage
++=====
++
++Simply add::
++
++   include(ECMEnableSanitizers)
++
++to your ``CMakeLists.txt``. Note that this module is included in
++KDECompilerSettings, so projects using that module do not need to also
++include this one.
++
++The sanitizers are not enabled by default. Instead, you must set
++``ECM_ENABLE_SANITIZERS`` (either in your ``CMakeLists.txt`` or on the
++command line) to a semicolon-separated list of sanitizers you wish to enable.
++The options are:
++
++- address
++- memory
++- thread
++- leak
++- undefined
++- fuzzer-no-link
++- fuzzer
++
++The sanitizers "address", "memory" and "thread" are mutually exclusive.  You
++cannot enable two of them in the same build.
++
++"leak" requires the  "address" sanitizer.
++
++.. note::
++
++  To reduce the overhead induced by the instrumentation of the sanitizers, it
++  is advised to enable compiler optimizations (``-O1`` or higher).
++
++Example
++=======
++
++This is an example of usage::
++
++  mkdir build
++  cd build
++  cmake -DECM_ENABLE_SANITIZERS='address;leak;undefined' ..
++
++.. note::
++
++  Most of the sanitizers will require Clang. To enable it, use::
++
++    -DCMAKE_CXX_COMPILER=clang++
++
++Since 1.3.0.
++#]=======================================================================]
++
++# MACRO check_compiler_version
++#-----------------------------
++macro (check_compiler_version gcc_required_version clang_required_version msvc_required_version)
++    if (
++        (
++            CMAKE_CXX_COMPILER_ID MATCHES "GNU"
++            AND
++            CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${gcc_required_version}
++        )
++        OR
++        (
++            CMAKE_CXX_COMPILER_ID MATCHES "Clang"
++            AND
++            CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${clang_required_version}
++        )
++        OR
++        (
++            CMAKE_CXX_COMPILER_ID MATCHES "MSVC"
++            AND
++            CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${msvc_required_version}
++        )
++    )
++        # error !
++        message(FATAL_ERROR "You ask to enable the sanitizer ${CUR_SANITIZER},
++        but your compiler ${CMAKE_CXX_COMPILER_ID} version ${CMAKE_CXX_COMPILER_VERSION}
++        does not support it !
++        You should use at least GCC ${gcc_required_version}, Clang ${clang_required_version}
++        or MSVC ${msvc_required_version}
++        (99.99 means not implemented yet)")
++    endif ()
++endmacro ()
++
++# MACRO check_compiler_support
++#------------------------------
++macro (enable_sanitizer_flags sanitize_option)
++    if (${sanitize_option} MATCHES "address")
++        check_compiler_version("4.8" "3.1" "19.28")
++        if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
++            set(XSAN_COMPILE_FLAGS "-fsanitize=address")
++        else()
++            set(XSAN_COMPILE_FLAGS "-fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls")
++            set(XSAN_LINKER_FLAGS "asan")
++        endif()
++    elseif (${sanitize_option} MATCHES "thread")
++        check_compiler_version("4.8" "3.1" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=thread")
++        set(XSAN_LINKER_FLAGS "tsan")
++    elseif (${sanitize_option} MATCHES "memory")
++        check_compiler_version("99.99" "3.1" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=memory")
++    elseif (${sanitize_option} MATCHES "leak")
++        check_compiler_version("4.9" "3.4" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=leak")
++        set(XSAN_LINKER_FLAGS "lsan")
++    elseif (${sanitize_option} MATCHES "undefined")
++        check_compiler_version("4.9" "3.1" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=undefined -fsanitize=float-divide-by-zero -fno-omit-frame-pointer -fno-optimize-sibling-calls")
++    elseif (${sanitize_option} MATCHES "fuzzer-no-link")
++        check_compiler_version("99.99" "6.0" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=fuzzer-no-link")
++        set(XSAN_LINKER_FLAGS "-fsanitize=fuzzer-no-link")
++    elseif (${sanitize_option} MATCHES "fuzzer")
++        check_compiler_version("99.99" "6.0" "99.99")
++        set(XSAN_COMPILE_FLAGS "-fsanitize=fuzzer")
++    else ()
++        message(FATAL_ERROR "Compiler sanitizer option \"${sanitize_option}\" not supported.")
++    endif ()
++endmacro ()
++
++if (ECM_ENABLE_SANITIZERS)
++    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
++        # for each element of the ECM_ENABLE_SANITIZERS list
++        foreach ( CUR_SANITIZER ${ECM_ENABLE_SANITIZERS} )
++            # lowercase filter
++            string(TOLOWER ${CUR_SANITIZER} CUR_SANITIZER)
++            # check option and enable appropriate flags
++            enable_sanitizer_flags ( ${CUR_SANITIZER} )
++            # TODO: GCC will not link pthread library if enabled ASan
++            if(CMAKE_C_COMPILER_ID MATCHES "Clang")
++              set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${XSAN_COMPILE_FLAGS}" )
++            endif()
++            set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${XSAN_COMPILE_FLAGS}" )
++            if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
++              link_libraries(${XSAN_LINKER_FLAGS})
++            endif()
++            if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++                string(REPLACE "-Wl,--no-undefined" "" CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
++                string(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS}")
++            endif ()
++        endforeach()
++    else()
++        message(STATUS "Tried to enable sanitizers (-DECM_ENABLE_SANITIZERS=${ECM_ENABLE_SANITIZERS}), \
++but compiler (${CMAKE_CXX_COMPILER_ID}) does not have sanitizer support")
++    endif()
++endif()
+diff --git a/cmake/extra-cmake-modules/modules/ECMFindModuleHelpers.cmake b/cmake/extra-cmake-modules/modules/ECMFindModuleHelpers.cmake
+new file mode 100644
+index 0000000..c1df19d
+--- /dev/null
++++ b/cmake/extra-cmake-modules/modules/ECMFindModuleHelpers.cmake
+@@ -0,0 +1,302 @@
++#.rst:
++# ECMFindModuleHelpers
++# --------------------
++#
++# Helper macros for find modules: ecm_find_package_version_check(),
++# ecm_find_package_parse_components() and
++# ecm_find_package_handle_library_components().
++#
++# ::
++#
++#   ecm_find_package_version_check(<name>)
++#
++# Prints warnings if the CMake version or the project's required CMake version
++# is older than that required by extra-cmake-modules.
++#
++# ::
++#
++#   ecm_find_package_parse_components(<name>
++#       RESULT_VAR <variable>
++#       KNOWN_COMPONENTS <component1> [<component2> [...]]
++#       [SKIP_DEPENDENCY_HANDLING])
++#
++# This macro will populate <variable> with a list of components found in
++# <name>_FIND_COMPONENTS, after checking that all those components are in the
++# list of KNOWN_COMPONENTS; if there are any unknown components, it will print
++# an error or warning (depending on the value of <name>_FIND_REQUIRED) and call
++# return().
++#
++# The order of components in <variable> is guaranteed to match the order they
++# are listed in the KNOWN_COMPONENTS argument.
++#
++# If SKIP_DEPENDENCY_HANDLING is not set, for each component the variable
++# <name>_<component>_component_deps will be checked for dependent components.
++# If <component> is listed in <name>_FIND_COMPONENTS, then all its (transitive)
++# dependencies will also be added to <variable>.
++#
++# ::
++#
++#   ecm_find_package_handle_library_components(<name>
++#       COMPONENTS <component> [<component> [...]]
++#       [SKIP_DEPENDENCY_HANDLING])
++#       [SKIP_PKG_CONFIG])
++#
++# Creates an imported library target for each component.  The operation of this
++# macro depends on the presence of a number of CMake variables.
++#
++# The <name>_<component>_lib variable should contain the name of this library,
++# and <name>_<component>_header variable should contain the name of a header
++# file associated with it (whatever relative path is normally passed to
++# '#include'). <name>_<component>_header_subdir variable can be used to specify
++# which subdirectory of the include path the headers will be found in.
++# ecm_find_package_components() will then search for the library
++# and include directory (creating appropriate cache variables) and create an
++# imported library target named <name>::<component>.
++#
++# Additional variables can be used to provide additional information:
++#
++# If SKIP_PKG_CONFIG, the <name>_<component>_pkg_config variable is set, and
++# pkg-config is found, the pkg-config module given by
++# <name>_<component>_pkg_config will be searched for and used to help locate the
++# library and header file.  It will also be used to set
++# <name>_<component>_VERSION.
++#
++# Note that if version information is found via pkg-config,
++# <name>_<component>_FIND_VERSION can be set to require a particular version
++# for each component.
++#
++# If SKIP_DEPENDENCY_HANDLING is not set, the INTERFACE_LINK_LIBRARIES property
++# of the imported target for <component> will be set to contain the imported
++# targets for the components listed in <name>_<component>_component_deps.
++# <component>_FOUND will also be set to false if any of the compoments in
++# <name>_<component>_component_deps are not found.  This requires the components
++# in <name>_<component>_component_deps to be listed before <component> in the
++# COMPONENTS argument.
++#
++# The following variables will be set:
++#
++# ``<name>_TARGETS``
++#   the imported targets
++# ``<name>_LIBRARIES``
++#   the found libraries
++# ``<name>_INCLUDE_DIRS``
++#   the combined required include directories for the components
++# ``<name>_DEFINITIONS``
++#   the "other" CFLAGS provided by pkg-config, if any
++# ``<name>_VERSION``
++#   the value of ``<name>_<component>_VERSION`` for the first component that
++#   has this variable set (note that components are searched for in the order
++#   they are passed to the macro), although if it is already set, it will not
++#   be altered
++#
++# Note that these variables are never cleared, so if
++# ecm_find_package_handle_library_components() is called multiple times with
++# different components (typically because of multiple find_package() calls) then
++# ``<name>_TARGETS``, for example, will contain all the targets found in any
++# call (although no duplicates).
++#
++# Since pre-1.0.0.
++
++#=============================================================================
++# Copyright 2014 Alex Merry <alex.merry@kde.org>
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. The name of the author may not be used to endorse or promote products
++#    derived from this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++# IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++# IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++# NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++include(CMakeParseArguments)
++
++macro(ecm_find_package_version_check module_name)
++    if(CMAKE_VERSION VERSION_LESS 2.8.12)
++        message(FATAL_ERROR "CMake 2.8.12 is required by Find${module_name}.cmake")
++    endif()
++    if(CMAKE_MINIMUM_REQUIRED_VERSION VERSION_LESS 2.8.12)
++        message(AUTHOR_WARNING "Your project should require at least CMake 2.8.12 to use Find${module_name}.cmake")
++    endif()
++endmacro()
++
++macro(ecm_find_package_parse_components module_name)
++    set(ecm_fppc_options SKIP_DEPENDENCY_HANDLING)
++    set(ecm_fppc_oneValueArgs RESULT_VAR)
++    set(ecm_fppc_multiValueArgs KNOWN_COMPONENTS DEFAULT_COMPONENTS)
++    cmake_parse_arguments(ECM_FPPC "${ecm_fppc_options}" "${ecm_fppc_oneValueArgs}" "${ecm_fppc_multiValueArgs}" ${ARGN})
++
++    if(ECM_FPPC_UNPARSED_ARGUMENTS)
++        message(FATAL_ERROR "Unexpected arguments to ecm_find_package_parse_components: ${ECM_FPPC_UNPARSED_ARGUMENTS}")
++    endif()
++    if(NOT ECM_FPPC_RESULT_VAR)
++        message(FATAL_ERROR "Missing RESULT_VAR argument to ecm_find_package_parse_components")
++    endif()
++    if(NOT ECM_FPPC_KNOWN_COMPONENTS)
++        message(FATAL_ERROR "Missing KNOWN_COMPONENTS argument to ecm_find_package_parse_components")
++    endif()
++    if(NOT ECM_FPPC_DEFAULT_COMPONENTS)
++        set(ECM_FPPC_DEFAULT_COMPONENTS ${ECM_FPPC_KNOWN_COMPONENTS})
++    endif()
++
++    if(${module_name}_FIND_COMPONENTS)
++        set(ecm_fppc_requestedComps ${${module_name}_FIND_COMPONENTS})
++
++        if(NOT ECM_FPPC_SKIP_DEPENDENCY_HANDLING)
++            # Make sure deps are included
++            foreach(ecm_fppc_comp ${ecm_fppc_requestedComps})
++                foreach(ecm_fppc_dep_comp ${${module_name}_${ecm_fppc_comp}_component_deps})
++                    list(FIND ecm_fppc_requestedComps "${ecm_fppc_dep_comp}" ecm_fppc_index)
++                    if("${ecm_fppc_index}" STREQUAL "-1")
++                        if(NOT ${module_name}_FIND_QUIETLY)
++                            message(STATUS "${module_name}: ${ecm_fppc_comp} requires ${${module_name}_${ecm_fppc_comp}_component_deps}")
++                        endif()
++                        list(APPEND ecm_fppc_requestedComps "${ecm_fppc_dep_comp}")
++                    endif()
++                endforeach()
++            endforeach()
++        else()
++            message(STATUS "Skipping dependency handling for ${module_name}")
++        endif()
++        list(REMOVE_DUPLICATES ecm_fppc_requestedComps)
++
++        # This makes sure components are listed in the same order as
++        # KNOWN_COMPONENTS (potentially important for inter-dependencies)
++        set(${ECM_FPPC_RESULT_VAR})
++        foreach(ecm_fppc_comp ${ECM_FPPC_KNOWN_COMPONENTS})
++            list(FIND ecm_fppc_requestedComps "${ecm_fppc_comp}" ecm_fppc_index)
++            if(NOT "${ecm_fppc_index}" STREQUAL "-1")
++                list(APPEND ${ECM_FPPC_RESULT_VAR} "${ecm_fppc_comp}")
++                list(REMOVE_AT ecm_fppc_requestedComps ${ecm_fppc_index})
++            endif()
++        endforeach()
++        # if there are any left, they are unknown components
++        if(ecm_fppc_requestedComps)
++            set(ecm_fppc_msgType STATUS)
++            if(${module_name}_FIND_REQUIRED)
++                set(ecm_fppc_msgType FATAL_ERROR)
++            endif()
++            if(NOT ${module_name}_FIND_QUIETLY)
++                message(${ecm_fppc_msgType} "${module_name}: requested unknown components ${ecm_fppc_requestedComps}")
++            endif()
++            return()
++        endif()
++    else()
++        set(${ECM_FPPC_RESULT_VAR} ${ECM_FPPC_DEFAULT_COMPONENTS})
++    endif()
++endmacro()
++
++macro(ecm_find_package_handle_library_components module_name)
++    set(ecm_fpwc_options SKIP_PKG_CONFIG SKIP_DEPENDENCY_HANDLING)
++    set(ecm_fpwc_oneValueArgs)
++    set(ecm_fpwc_multiValueArgs COMPONENTS)
++    cmake_parse_arguments(ECM_FPWC "${ecm_fpwc_options}" "${ecm_fpwc_oneValueArgs}" "${ecm_fpwc_multiValueArgs}" ${ARGN})
++
++    if(ECM_FPWC_UNPARSED_ARGUMENTS)
++        message(FATAL_ERROR "Unexpected arguments to ecm_find_package_handle_components: ${ECM_FPWC_UNPARSED_ARGUMENTS}")
++    endif()
++    if(NOT ECM_FPWC_COMPONENTS)
++        message(FATAL_ERROR "Missing COMPONENTS argument to ecm_find_package_handle_components")
++    endif()
++
++    include(FindPackageHandleStandardArgs)
++    find_package(PkgConfig QUIET)
++    foreach(ecm_fpwc_comp ${ECM_FPWC_COMPONENTS})
++        set(ecm_fpwc_dep_vars)
++        set(ecm_fpwc_dep_targets)
++        if(NOT SKIP_DEPENDENCY_HANDLING)
++            foreach(ecm_fpwc_dep ${${module_name}_${ecm_fpwc_comp}_component_deps})
++                list(APPEND ecm_fpwc_dep_vars "${module_name}_${ecm_fpwc_dep}_FOUND")
++                list(APPEND ecm_fpwc_dep_targets "${module_name}::${ecm_fpwc_dep}")
++            endforeach()
++        endif()
++
++        if(NOT ECM_FPWC_SKIP_PKG_CONFIG AND ${module_name}_${ecm_fpwc_comp}_pkg_config)
++            pkg_check_modules(PKG_${module_name}_${ecm_fpwc_comp} QUIET
++                              ${${module_name}_${ecm_fpwc_comp}_pkg_config})
++        endif()
++
++        find_path(${module_name}_${ecm_fpwc_comp}_INCLUDE_DIR
++            NAMES ${${module_name}_${ecm_fpwc_comp}_header}
++            HINTS ${PKG_${module_name}_${ecm_fpwc_comp}_INCLUDE_DIRS}
++            PATH_SUFFIXES ${${module_name}_${ecm_fpwc_comp}_header_subdir}
++        )
++        find_library(${module_name}_${ecm_fpwc_comp}_LIBRARY
++            NAMES ${${module_name}_${ecm_fpwc_comp}_lib}
++            HINTS ${PKG_${module_name}_${ecm_fpwc_comp}_LIBRARY_DIRS}
++        )
++
++        set(${module_name}_${ecm_fpwc_comp}_VERSION "${PKG_${module_name}_${ecm_fpwc_comp}_VERSION}")
++        if(NOT ${module_name}_VERSION)
++            set(${module_name}_VERSION ${${module_name}_${ecm_fpwc_comp}_VERSION})
++        endif()
++
++        set(_name_mismatched_arg)
++        if(NOT CMAKE_VERSION VERSION_LESS 3.17)
++            set(_name_mismatched_arg NAME_MISMATCHED)
++        endif()
++        find_package_handle_standard_args(${module_name}_${ecm_fpwc_comp}
++            FOUND_VAR
++                ${module_name}_${ecm_fpwc_comp}_FOUND
++            REQUIRED_VARS
++                ${module_name}_${ecm_fpwc_comp}_LIBRARY
++                ${module_name}_${ecm_fpwc_comp}_INCLUDE_DIR
++                ${ecm_fpwc_dep_vars}
++            VERSION_VAR
++                ${module_name}_${ecm_fpwc_comp}_VERSION
++            ${_name_mismatched_arg}
++            )
++
++        mark_as_advanced(
++            ${module_name}_${ecm_fpwc_comp}_LIBRARY
++            ${module_name}_${ecm_fpwc_comp}_INCLUDE_DIR
++        )
++
++        if(${module_name}_${ecm_fpwc_comp}_FOUND)
++            list(APPEND ${module_name}_LIBRARIES
++                        "${${module_name}_${ecm_fpwc_comp}_LIBRARY}")
++            list(APPEND ${module_name}_INCLUDE_DIRS
++                        "${${module_name}_${ecm_fpwc_comp}_INCLUDE_DIR}")
++            set(${module_name}_DEFINITIONS
++                    ${${module_name}_DEFINITIONS}
++                    ${PKG_${module_name}_${ecm_fpwc_comp}_DEFINITIONS})
++            if(NOT TARGET ${module_name}::${ecm_fpwc_comp})
++                add_library(${module_name}::${ecm_fpwc_comp} UNKNOWN IMPORTED)
++                set_target_properties(${module_name}::${ecm_fpwc_comp} PROPERTIES
++                    IMPORTED_LOCATION "${${module_name}_${ecm_fpwc_comp}_LIBRARY}"
++                    INTERFACE_COMPILE_OPTIONS "${PKG_${module_name}_${ecm_fpwc_comp}_DEFINITIONS}"
++                    INTERFACE_INCLUDE_DIRECTORIES "${${module_name}_${ecm_fpwc_comp}_INCLUDE_DIR}"
++                    INTERFACE_LINK_LIBRARIES "${ecm_fpwc_dep_targets}"
++                )
++            endif()
++            list(APPEND ${module_name}_TARGETS
++                        "${module_name}::${ecm_fpwc_comp}")
++        endif()
++    endforeach()
++    if(${module_name}_LIBRARIES)
++        list(REMOVE_DUPLICATES ${module_name}_LIBRARIES)
++    endif()
++    if(${module_name}_INCLUDE_DIRS)
++        list(REMOVE_DUPLICATES ${module_name}_INCLUDE_DIRS)
++    endif()
++    if(${module_name}_DEFINITIONS)
++        list(REMOVE_DUPLICATES ${module_name}_DEFINITIONS)
++    endif()
++    if(${module_name}_TARGETS)
++        list(REMOVE_DUPLICATES ${module_name}_TARGETS)
++    endif()
++endmacro()
+diff --git a/cmake/extra-cmake-modules/qt_attribution.json b/cmake/extra-cmake-modules/qt_attribution.json
+new file mode 100644
+index 0000000..941fb9e
+--- /dev/null
++++ b/cmake/extra-cmake-modules/qt_attribution.json
+@@ -0,0 +1,15 @@
++{
++    "Id": "extra-cmake-modules",
++    "Name": "extra-cmake-modules",
++    "QDocModule": "qtcore",
++    "QtUsage": "Used as part of the build system.",
++
++    "Description": "Additional CMake modules.",
++    "Homepage": "https://api.kde.org/ecm/",
++    "Version": "5.84.0",
++
++    "License": "BSD-3-Clause",
++    "LicenseId": "BSD 3-Clause License",
++    "LicenseFile": "COPYING-CMAKE-SCRIPTS",
++    "Copyright": "Copyright © 2011-2018 The KDE community"
++}

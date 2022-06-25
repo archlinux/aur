@@ -1,0 +1,13 @@
+diff --git a/Telegram/SourceFiles/platform/linux/tray_linux.cpp b/Telegram/SourceFiles/platform/linux/tray_linux.cpp
+index 80108b11f..415b6f811 100644
+--- a/Telegram/SourceFiles/platform/linux/tray_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/tray_linux.cpp
+@@ -146,7 +146,7 @@ QIcon IconGraphic::trayIcon(int counter, bool muted) {
+ 
+ 	const auto iconName = trayIconName(counter, muted);
+ 
+-	if (iconName == panelIconName(counter, muted)) {
++	if (0 && iconName == panelIconName(counter, muted)) {
+ 		const auto result = QIcon::fromTheme(iconName);
+ 		updateIconRegenerationNeeded(result, counter, muted, iconThemeName);
+ 		return result;
