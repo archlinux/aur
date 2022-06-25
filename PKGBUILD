@@ -1,19 +1,19 @@
-# Maintainer: RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=ratarmount
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=3
 pkgdesc="Mount tar file using fuse with fast read-only random access"
 arch=(any)
 url="https://github.com/mxmlnkn/ratarmount"
 conflict=(ratarmount-git)
 license=(MIT)
-depends=(python-fusepy python-msgpack python-rapidjson python-ujson python-simplejson python-fuse)
+depends=(python-msgpack python-rapidjson python-ujson python-simplejson python-fuse)
 optdepends=('python-indexed-gzip: Support for gzip-compressed tar files')
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
-b2sums=('697dce804f4b01407da4f17c59972927fa1366753dc3548e767a45b51d7fbba539f8dafc6514d08ddff4259830e2e23ad6f92d96fb029b9f1c6629a1d17e3d73')
+b2sums=('24ce1e522c95d7c77641a505809db66dbbf04b8554b8c1fd9680b8ec600d10316389cd0a87dfa5e6a5c0de24b7747bda4baf1cf82d4f7e6a2fb29ff2110fcde7')
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
