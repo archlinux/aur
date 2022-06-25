@@ -3,7 +3,7 @@
 
 pkgbase=imagemagick-fftw
 pkgname=(imagemagick-fftw)
-pkgver=7.1.0.37
+pkgver=7.1.0.39
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
@@ -13,11 +13,11 @@ makedepends=(ghostscript openexr libwmf librsvg libxml2 openjpeg2 libraw opencl-
              chrpath ocl-icd glu ghostpcl ghostxps libheif jbigkit lcms2 libxext liblqr libraqm libpng djvulibre 'fftw')
 checkdepends=(gsfonts ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
-_tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
-source=(https://imagemagick.org/download/$_tarname.tar.xz{,.asc}
+_tarname=${pkgver%.*}-${pkgver##*.}
+_dirname=ImageMagick-$_tarname
+source=(https://github.com/ImageMagick/ImageMagick/archive/refs/tags/$_tarname.tar.gz
         arch-fonts.diff)
-sha256sums=('9a0cb5218ea687fad28eedf143dff9f0724eb62c73264231d690fe844ecce5ec'
-            '074df5b65868cde3ce51be39daa0cac1f44e5fe0add9345df65bb0d15453e43a'
+sha256sums=('eb8150517933caad6288a0fbf01e7616bfe95d0f650fac227541668ee10aff05'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
@@ -26,14 +26,14 @@ shopt -s extglob
 prepare() {
   mkdir -p docpkg/usr/share
 
-  cd $_tarname
+  cd $_dirname
 
   # Fix up typemaps to match our packages, where possible
   patch -p1 -i ../arch-fonts.diff
 }
 
 build() {
-  cd $_tarname
+  cd $_dirname
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -68,7 +68,7 @@ build() {
 }
 
 check() (
-  cd $_tarname
+  cd $_dirname
   ulimit -n 4096
   make check
 )
@@ -94,7 +94,7 @@ package_imagemagick-fftw() {
   provides=(libmagick libmagick-fftw imagemagick=$pkgver)
   replaces=(libmagick-fftw)
 
-  cd $_tarname
+  cd $_dirname
   make DESTDIR="$pkgdir" install
 
   find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
