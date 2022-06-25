@@ -7,7 +7,7 @@ pkgbase = imagewriter
 	license = GPL2
 	depends = qt5-base
 	depends = udisks2
-	source = http://download.opensuse.org/tumbleweed/repo/src-oss/src/imagewriter-1.10.1432200249.1d253d9-2.13.src.rpm
+	source = https://download.opensuse.org/tumbleweed/repo/src-oss/src/imagewriter-1.10.1432200249.1d253d9-2.13.src.rpm
 	sha256sums = 76760bff239a3cb1be25ce05ef45f42956e6a180f0f71dfa3b448020d4091efa
 
 pkgname = imagewriter

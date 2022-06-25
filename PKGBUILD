@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/openSUSE/imagewriter"
 license=('GPL2')
 depends=('qt5-base' 'udisks2')
-source=("http://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-$_pkgver.src.rpm")
+source=("https://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-$_pkgver.src.rpm")
 sha256sums=('76760bff239a3cb1be25ce05ef45f42956e6a180f0f71dfa3b448020d4091efa')
 
 prepare() {
