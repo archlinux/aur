@@ -1,0 +1,12 @@
+pkgbase = runner
+	pkgdesc = A script to execut files
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Johnson170/runner
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = /runner-0.0.2::git+https://github.com/Johnson170/runner.git
+	md5sums = SKIP
+
+pkgname = runner
