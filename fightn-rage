@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd $(dirname $(realpath $0))
+
+export USERPROFILE=${XDG_CONFIG_HOME:-$HOME/.config}/fightn-rage
+export LD_LIBRARY_PATH=lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+
+mono FIGHT_N_RAGE.exe

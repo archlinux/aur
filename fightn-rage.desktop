@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Fight'N Rage
+Type=Application
+Comment=Fight’N Rage is a brand new old-school side-scroller beat’em up
+Terminal=false
+Categories=Game
+Exec=/usr/bin/fightn-rage
+Icon=fightn-rage
