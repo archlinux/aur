@@ -6,6 +6,7 @@ pkgbase = stacktile-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = wayland
 	provides = stacktile
 	conflicts = stacktile
 	options = !buildflags
