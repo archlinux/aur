@@ -2,11 +2,11 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-screenshare-git"
-pkgver=r734.354e265
+pkgver=r815.72c86b9
 pkgrel=1
 pkgdesc="Hyprland dynamic Wayland compositor with with workarounds applied for screen sharing on NVIDIA"
 arch=(any)
-url="https://github.com/vaxerski/Hyprland"
+url="https://github.com/hyperwm/Hyprland"
 license=('BSD')
 depends=(
 	libxcb
@@ -47,7 +47,7 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${_pkgname}::git+https://github.com/vaxerski/Hyprland.git"
+source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "0001-nvidia-format-workaround.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
@@ -62,13 +62,18 @@ pkgver() {
   )
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}/subprojects/wlroots"
+	git checkout .
+}
+
 build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
 
-    cd wlroots
+    cd "subprojects/wlroots"
     patch -p1 < "${srcdir}/0001-nvidia-format-workaround.patch"
-    cd ..
+    cd "../.."
 
 	make all
 }
