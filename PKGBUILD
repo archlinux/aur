@@ -1,35 +1,35 @@
-# Maintainer: Tucker Boniface <tucker@boniface.tech>
-# Maintainer: lilydjwg <lilydjwg@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Tucker Boniface <tucker@boniface.tech>
+# Contributor: lilydjwg <lilydjwg@gmail.com>
 # Contributor: Jakub Wilk <jwilk@jwilk.net>
-VCS="git"
-pkgname="fbcat-git"
-pkgver=r198.5ed41b4
+
+pkgname=fbcat-git
+pkgver=0.5.2.r3.gb5d3fe6
 pkgrel=1
-pkgdesc="A framebuffer screenshot grabber (development version)"
-arch=(i686 x86_64)
+pkgdesc='Framebuffer screenshot tool'
+arch=('x86_64')
 url="https://github.com/jwilk/fbcat"
-license=("GPLv2")
-makedepends=("${VCS}" "docbook-xsl")
-provides=("fbcat" "fbgrab")
-conflicts=("fbcat" "fbgrab")
-source=("git+https://github.com/jwilk/fbcat")
-md5sums=("SKIP")
+license=('GPL2')
+makedepends=('docbook-xsl' 'git')
+provides=("${pkgname%-git}=${pkgver%.r*}" 'fbgrab')
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-${VCS}}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	sed -i -e '/PREFIX/s/=/?=/' -e '/DESTDIR/s/=/?=/' Makefile
 }
 
 build() {
-    patch fbcat/doc/Makefile ../doc.patch
-    cd "$srcdir/${pkgname%-${VCS}}"
-    make
-    make -C doc
+	make -C "$pkgname"
+	make -C "$pkgname/doc/"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-${VCS}}"
-    mkdir -p "$pkgdir/usr/share/man/man1"
-    make DESTDIR="$pkgdir/" install
-    make DESTDIR="$pkgdir/" -C doc install
+	make -C "$pkgname" install PREFIX=/usr DESTDIR="$pkgdir/"
 }

@@ -1,19 +1,16 @@
 pkgbase = fbcat-git
-	pkgdesc = A framebuffer screenshot grabber (development version)
-	pkgver = r198.5ed41b4
+	pkgdesc = Framebuffer screenshot tool
+	pkgver = 0.5.2.r3.gb5d3fe6
 	pkgrel = 1
 	url = https://github.com/jwilk/fbcat
-	arch = i686
 	arch = x86_64
-	license = GPLv2
-	makedepends = git
+	license = GPL2
 	makedepends = docbook-xsl
-	provides = fbcat
+	makedepends = git
+	provides = fbcat=0.5.2
 	provides = fbgrab
 	conflicts = fbcat
-	conflicts = fbgrab
-	source = git+https://github.com/jwilk/fbcat
-	md5sums = SKIP
+	source = fbcat-git::git+https://github.com/jwilk/fbcat
+	sha256sums = SKIP
 
 pkgname = fbcat-git
-
