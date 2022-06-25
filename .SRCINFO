@@ -1,6 +1,6 @@
 pkgbase = netbird-ui
 	pkgdesc = Official GUI for the Netbird client
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://netbird.io
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = netbird-ui
 	depends = libayatana-appindicator
 	provides = netbird-ui
 	conflicts = netbird-ui
-	source = netbird-ui-0.7.0.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = e35f418d49d7c3b1b9705b2241eb7bebcdf132258b37da125e05365e330e8c9d
+	source = netbird-ui-0.8.0.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 298c7f39b18b0dbc2874c93c0eeaac5dd0923c0d114187b422cc4019581e39ff
 
 pkgname = netbird-ui
