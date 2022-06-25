@@ -4,15 +4,14 @@
 
 pkgname=mu
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Maildir indexer/searcher and Emacs client (mu4e)"
 arch=("x86_64" "armv7h")
 url="http://www.djcbsoftware.nl/code/mu"
 license=("GPL")
-depends=("gmime3" "xapian-core")
-makedepends=("emacs" "guile" "meson")
-optdepends=("guile3: guile support"
-	"emacs: mu4e support")
+depends=("gmime3" "xapian-core" "guile3")
+makedepends=("emacs" "meson")
+optdepends=("emacs: mu4e support")
 source=("https://github.com/djcb/mu/releases/download/v${pkgver}/mu-${pkgver}.tar.xz")
 md5sums=('c451114eded74a75e6b7a52498b36d7e')
 
