@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=batchelor
-_pkgver=1.12.1
+_pkgver=1.12.3
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
+pkgver=1.12.3
 pkgrel=1
 pkgdesc='Single-Cell Batch Correction Methods'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d1c9228addfd8c63afbd302ce559bc0540e8c1c8954f327163003a6e5396dbff')
+sha256sums=('ac4bd7758ddf758ec599873c6ac698721ca11417db7a8b87799daa07371c3d02')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
