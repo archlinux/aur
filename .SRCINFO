@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
 	pkgver = 19.4
-	pkgrel = 3
+	pkgrel = 5
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -56,9 +56,12 @@ pkgbase = kodi-eggz
 	depends = libcec
 	depends = tinyxml
 	depends = shairplay
+	noextract = kodi-eggz-ffmpeg-4.3-kodi-dav1d-1.0.tar.gz
+	source = kodi-eggz-ffmpeg-4.3-kodi-dav1d-1.0.tar.gz::https://github.com/BlackIkeEagle/kodi-FFmpeg/archive/refs/heads/fix/4.3-kodi-dav1d-1.0.tar.gz
 	source = git+https://github.com/xbmc/xbmc.git#tag=19.4-Matrix
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=4.0.0-Matrix
 	source = removestupidremarks.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5

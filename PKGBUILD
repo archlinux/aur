@@ -3,7 +3,7 @@ pkgname=kodi-eggz
 pkgver=19.4
 gittag=19.4-Matrix
 gittagvfs=4.0.0-Matrix
-pkgrel=3
+pkgrel=5
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -20,12 +20,22 @@ makedepends=(
   'fstrcmp' 'spdlog'
 )
 
+_ffmpeg_version="4.3-kodi-dav1d-1.0"
+
 source=(
+  "$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/BlackIkeEagle/kodi-FFmpeg/archive/refs/heads/fix/4.3-kodi-dav1d-1.0.tar.gz"
   "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
   "git+https://github.com/xbmc/vfs.rar.git#tag=$gittagvfs"
   "removestupidremarks.patch"
 )
-sha256sums=('SKIP'
+
+noextract=(
+  "$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz"
+)
+
+sha256sums=(
+'SKIP'
+'SKIP'
 'SKIP'
 'e89cc7c880b0b10361b882339b542ad49be91ae78de9d4b38ddc08b594734cf5'
 )
@@ -77,7 +87,7 @@ build() {
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
  export APP_RENDER_SYSTEM=gl
- cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON
+ cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON -DENABLE_INTERNAL_FFMPEG=ON -DFFMPEG_URL="$srcdir/$pkgbase-ffmpeg-$_ffmpeg_version.tar.gz"
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1
 
