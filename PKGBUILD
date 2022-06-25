@@ -3,12 +3,12 @@
 # Developer: jnats <jnats[at]salyut[dot]one>
 
 pkgname=ame
-pkgver=3.0.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Fast, efficient and lightweight AUR helper/pacman wrapper"
 arch=('x86_64')
 url="https://git.tar.black/crystal/ame"
-license=('Nolicense')
+license=('GPL3')
 source=("git+https://git.tar.black/crystal/programs/amethyst.git")
 sha256sums=('SKIP')
 depends=('git' 'binutils' 'fakeroot' 'openssl' 'sqlite')
@@ -31,5 +31,4 @@ build() {
 package() {
     cd ${srcdir}/amethyst
     install -Dm755 target/release/${pkgname} -t "${pkgdir}"/usr/bin
-    install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
