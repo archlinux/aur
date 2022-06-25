@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.46.r0.g9d2d8691b5
+pkgver=0.7.49.r0.gb3abb982e8
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -66,7 +66,7 @@ prepare() {
 	git submodule update
 	python scripts/gen-license.py > XEMU_LICENSE
 	# unbundle tomlplusplus
-	sed -i 's/<toml\.hpp>/<toml++\/toml.h>/' genconfig/cnode.h toml.cpp ui/xemu-settings.cc
+	mkdir tomlplusplus/include
 	# unbundle xxhash
 	sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
 }
