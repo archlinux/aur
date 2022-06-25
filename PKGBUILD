@@ -1,7 +1,7 @@
-# Maintainer: orange <cadam@ctemplar.com>
+# Maintainer: orange <?>
 _pkgname='msigd'
-pkgname='msigd-git'
-pkgver='r163.4b5c4f0'
+pkgname=msigd-git
+pkgver=r163.4b5c4f0
 pkgrel=1
 pkgdesc='MSI Gaming Device control application'
 arch=('x86_64')
