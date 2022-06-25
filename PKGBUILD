@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -21,7 +21,7 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         fix-tgcalls-cstdint.patch
        )
-sha512sums=('11004d7a889e64da0f9a9d976fc9665974e000b9aefd909723606639d97df07c62e86fce6b496e40ebdb954acc410609959cd94ca5d7b18c1d89373a09e970f1'
+sha512sums=('292483b137436efe8c0b701e6a61d24793a362bf0e96d929011f2a9f53096702c8010a7acf9f1c13d0906751d8e06c2c69fa2d334135a22d9e2d61120a7f8cf2'
             'ba24a2f1524010b4891764aacee2e27a5ebae44cf7626ab2aaf9e6c48b0f8088bf920886ceeb497b3c463fa0c3b885dd63db273d4c29cab6c96c8193c0c5c888')
 
 prepare() {
