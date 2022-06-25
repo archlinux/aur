@@ -1,14 +1,13 @@
 # Maintainer: Nikola Hadžić <nikola.hadzic.000@protonmail.com>
 pkgname="marg"
 pkgver="0.3"
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Bad CLI argument parsing library"
 arch=("x86_64")
 url="https://gitlab.com/NH000/marg"
 license=("LGPL3")
 makedepends=("git" "coreutils")
-options=("staticlibs")
 source=("git+$url#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf")
 sha256sums=("SKIP") 
 

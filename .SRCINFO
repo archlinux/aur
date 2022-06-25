@@ -1,13 +1,12 @@
 pkgbase = marg
 	pkgdesc = Bad CLI argument parsing library
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/NH000/marg
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	makedepends = coreutils
-	options = staticlibs
 	source = git+https://gitlab.com/NH000/marg#tag=a287a10de1b07ccfd93628e62cb7dae124267fdf
 	sha256sums = SKIP
 
