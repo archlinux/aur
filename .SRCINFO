@@ -1,6 +1,6 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://www.r-project.org/
 	install = r-mkl.install
@@ -31,7 +31,7 @@ pkgbase = r-mkl
 	optdepends = texlive-bin: LaTeX sty files
 	optdepends = gcc-fortran: needed to compile some CRAN packages
 	optdepends = tk: tcl-tk interface
-	provides = r=4.2.0
+	provides = r=4.2.1
 	conflicts = r
 	conflicts = microsoft-r-open
 	options = !emptydirs
@@ -40,12 +40,12 @@ pkgbase = r-mkl
 	backup = etc/R/ldpaths
 	backup = etc/R/repositories
 	backup = etc/R/javaconf
-	source = http://cran.r-project.org/src/base/R-4/R-4.2.0.tar.gz
+	source = http://cran.r-project.org/src/base/R-4/R-4.2.1.tar.gz
 	source = r.desktop
 	source = r.png
 	source = R.conf
 	source = mklvars.sh
-	sha1sums = 8c8711619ee6eafedf27de90b52528c9891ec6c1
+	sha1sums = 476347a910a01f0cc311faf5e7261aa2251b7d21
 	sha1sums = dd214eee232b7aced7366722ad416b6b39be8e1b
 	sha1sums = af80774f5a8d0e669e8ff90662638a0f4e1105d7
 	sha1sums = 43668da6cfd1b4455a99f23e79e2059294dddac9
