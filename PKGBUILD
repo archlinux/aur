@@ -49,9 +49,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  CXXFLAGS+=" $(pkg-config --cflags vapoursynth) -I$(pwd)/graphengine/include -I$(pwd)/znedi3 -I$(pwd)/vsxx -fPIC"
-  CPPFLAGS+=" -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\""
-  LC_ALL=C make V=1 X86=1 X86_AVX512=1
+  CXXFLAGS+=" -std=c++14 -O2 -fPIC -fvisibility=hidden -DX86=1 -DX86_AVX512=1"
+  CPPFLAGS+=" -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\" $(pkg-config --cflags vapoursynth) -Igraphengine/include -Iznedi3 -Ivsxx"
+  LC_ALL=C make V=1
 }
 
 package(){
