@@ -2,19 +2,19 @@
 
 pkgname=badabib-git
 _pkgname=BadaBib
-pkgver=0.1.1.r1.gc5086bd
+pkgver=0.2.1.r146.geb7c2cb
 pkgrel=1
 pkgdesc="Bada Bib! is a simple BibTeX Viewer and Editor written in Python and GTK"
 arch=('x86_64')
 url="https://github.com/RogerCrocker/BadaBib"
 license=('GPL3')
-depends=('gtk3' 'glib2' 'python' 'python-bibtexparser' 'python-watchgod')
-makedepends=('meson')
+depends=('libadwaita' 'python-bibtexparser' 'python-watchgod')
+makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,10 +29,10 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  meson test -C build || :
+}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

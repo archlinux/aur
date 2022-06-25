@@ -1,20 +1,19 @@
 pkgbase = badabib-git
 	pkgdesc = Bada Bib! is a simple BibTeX Viewer and Editor written in Python and GTK
-	pkgver = 0.1.1.r1.gc5086bd
+	pkgver = 0.2.1.r146.geb7c2cb
 	pkgrel = 1
 	url = https://github.com/RogerCrocker/BadaBib
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = git
 	makedepends = meson
-	depends = gtk3
-	depends = glib2
-	depends = python
+	depends = libadwaita
 	depends = python-bibtexparser
 	depends = python-watchgod
 	provides = badabib
 	conflicts = badabib
 	source = git+https://github.com/RogerCrocker/BadaBib.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = badabib-git
