@@ -1,0 +1,15 @@
+pkgbase = kodi-openbox-git
+	pkgdesc = An xsession that runs Kodi media center on top of an Openbox session
+	pkgver = r49.f52d176
+	pkgrel = 1
+	url = https://github.com/lufinkey/kodi-openbox
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = bash
+	depends = openbox
+	depends = kodi
+	source = kodi-openbox-git::git+https://github.com/lufinkey/kodi-openbox.git
+	md5sums = SKIP
+
+pkgname = kodi-openbox-git
