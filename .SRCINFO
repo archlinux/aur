@@ -1,0 +1,19 @@
+pkgbase = medots-bin
+	pkgdesc = Cross-platform dot config files manager using a yaml file.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/aminehmida/medots
+	license = GPL-3.0
+	conflicts = medots
+	provides = medots
+	arch = aarch64
+	source_aarch64 = https://github.com/aminehmida/medots/releases/download/v0.1.7/medots_0.1.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7725d7abe6a82eec818b75a6913afaa847208512751720a9229771dd8f13219f
+	arch = i686
+	source_i686 = https://github.com/aminehmida/medots/releases/download/v0.1.7/medots_0.1.7_Linux_i386.tar.gz
+	sha256sums_i686 = 52f4a1f4e7618ec7b1e071011d7e4c5158345fd025ef536b7f52c8c701600ba5
+	arch = x86_64
+	source_x86_64 = https://github.com/aminehmida/medots/releases/download/v0.1.7/medots_0.1.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6fd0b65decd824dbb7f3855b7cc2267d3d3dfe8c7b1d15bea11d951c499d16da
+	
+pkgname = medots-bin
