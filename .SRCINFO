@@ -1,7 +1,7 @@
 pkgbase = python-numexpr-mkl-bin
 	pkgdesc = Fast numerical array expression evaluator for Python - with Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 2.7.3.anaconda1
-	pkgrel = 3
+	pkgver = 2.8.1.anaconda2
+	pkgrel = 1
 	url = https://github.com/pydata/numexpr
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-numexpr-mkl-bin
 	depends = python-numpy
 	provides = python-numexpr
 	conflicts = python-numexpr
-	source = https://repo.anaconda.com/pkgs/main/linux-64/numexpr-2.7.3-py310hd732450_1.tar.bz2
-	sha256sums = 9b1a3e57ea29f06538e8d284a398ef9b81b416ab84166e066256e77fbedd0c4e
+	source = https://repo.anaconda.com/pkgs/main/linux-64/numexpr-2.8.1-py310hcea2de6_2.tar.bz2
+	sha256sums = a18258d47abcf8ce367ade41b1a8959e31759089cda536614988571abeb0578e
 
 pkgname = python-numexpr-mkl-bin
