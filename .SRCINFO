@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-nocuda
 	pkgdesc = Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)
 	pkgver = 5.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ffmpeg.org/
 	arch = x86_64
 	license = GPL3
