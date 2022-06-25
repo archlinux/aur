@@ -1,0 +1,14 @@
+pkgbase = fresh-git
+	pkgdesc = Fresh is a library extending the Qt library by adding new classes/widgets.
+	pkgver = r359.a277a0f
+	pkgrel = 1
+	url = https://github.com/pasnox/fresh
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = qt4
+	source = fresh-git::git+https://github.com/pasnox/fresh.git
+	md5sums = SKIP
+
+pkgname = fresh-git
