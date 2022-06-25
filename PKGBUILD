@@ -11,8 +11,8 @@ pkgname=(
 	nordic-darker-standard-buttons-theme
 	nordic-bluish-accent-theme
 	nordic-bluish-accent-standard-buttons-theme)
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Nord-derived themes for GTK and other platforms"
 arch=('any')
 url="https://github.com/EliverLara/Nordic"
@@ -35,13 +35,13 @@ source=(
 	"nordic-bluish-accent-standard-buttons-theme-$pkgver.tar.xz::$url/releases/download/v$pkgver/nordic-bluish-accent-standard-buttons.tar.xz"
 	# "nordic-bluish-accent-standard-buttons-theme-$pkgver.tar.xz::$url/releases/download/v$pkgver/nordic-bluish-accent-standard-buttons-v40.tar.xz")
 )
-sha256sums=('cce429254c31473571963b5125e8fb652ce517bbec5245b1e17fe975b9bfd10b'
-            '6f641957eca90598ac8cb7992ea4392cb6ba599d4078d22cc41b04cfd134caea'
-            '618643127d063f03ac3d890f74779f4bf070fa4c17ab0f42f97e49c3dc8744fa'
-            '2916b6657840022f4bfd3b49b549115da6c79f6a176b38cb3c581bddea44854d'
-            '50a508bc8c505ee774bc5e1292f03f237e5d57c9fd3e4be2f0edd7f7bf6c6016'
-            '2e11de30494a42458b11a95fe8251982db46e6d6e84362034bdd0b778461a84e'
-            '2c87d6c377a74720297c96248ac6a935e9fc11f2199c9cf7785628138ffe0e1b')
+sha256sums=('d162d694e13bec518636b193fbe84ccea44da9a81a89015c6713f6b258ee36d5'
+            'b49a731043d7a27ad1f447cf955a681be0e5a8bb41448fd9a470049b004bbf4e'
+            'bcc7feec4627963d92b4ee61d4c7b600a5d2b1252db42f0e50d18c9be385951f'
+            '49115292bfa15aaa9aea661c7468b48918708a6940e4b8058ac46f3dbb81c626'
+            '44a196d5ff98ae1c434805a01ec4222fc926e3d0e39c593762250dd098c85231'
+            '61d86268e6d20f349357262484fa3f4637764d2839d5ba096f2c5a1442c4f926'
+            '6f5e504e4f11e222547bc1f6b355d169436822588ce440d263dad319016e80cb')
 
 PURGE_TARGETS=('LICENSE' 'README.md')
 
