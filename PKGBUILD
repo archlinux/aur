@@ -1,10 +1,10 @@
 # Maintainer: Amirul Fitri <tounghacker@gmail.com>
 
 # maintainer's variables
-_commit=a51e2b583f6d0249e4be0c97c96608d02e134798
+_commit=2d1c69c0ce4a0ac21565593d30fdf489dea4046e
 
 pkgname=playit
-pkgver=0.8.1+beta
+pkgver=0.8.3+beta
 pkgrel=1
 pkgdesc="A tunneling tool to host a game server without port forwarding or sharing public IP"
 arch=('x86_64')

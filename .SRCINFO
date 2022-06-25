@@ -1,6 +1,6 @@
 pkgbase = playit
 	pkgdesc = A tunneling tool to host a game server without port forwarding or sharing public IP
-	pkgver = 0.8.1+beta
+	pkgver = 0.8.3+beta
 	pkgrel = 1
 	url = https://playit.gg
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = playit
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	source = playit::git+https://github.com/playit-cloud/playit-agent.git#commit=a51e2b583f6d0249e4be0c97c96608d02e134798
+	source = playit::git+https://github.com/playit-cloud/playit-agent.git#commit=2d1c69c0ce4a0ac21565593d30fdf489dea4046e
 	sha256sums = SKIP
 
 pkgname = playit
