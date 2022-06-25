@@ -1,5 +1,6 @@
 pkgbase = r-cnorm
-	pkgver = 3.0.1
+	pkgdesc = Continuous Norming
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cNORM
 	arch = x86_64
@@ -15,7 +16,7 @@ pkgbase = r-cnorm
 	optdepends = r-readxl
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/cNORM_3.0.1.tar.gz
-	sha256sums = c20822eb8239226abfce05202821488cbbb97c76dd5226eb3a6f0dc5594e76bb
+	source = https://cran.microsoft.com/snapshot/2022-06-25/src/contrib/cNORM_3.0.2.tar.gz
+	sha256sums = 31231a0612915ee5171676b28273f82acdc8914bd6385fc9e7b17f930e66c91a
 
 pkgname = r-cnorm

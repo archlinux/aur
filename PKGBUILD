@@ -1,10 +1,11 @@
 # Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=cNORM
-_cranver=3.0.1
+_cranver=3.0.2
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc=""
+pkgdesc="Continuous Norming"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(AGPL3)
@@ -24,8 +25,8 @@ optdepends=(
 	r-rmarkdown
 	r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('c20822eb8239226abfce05202821488cbbb97c76dd5226eb3a6f0dc5594e76bb')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('31231a0612915ee5171676b28273f82acdc8914bd6385fc9e7b17f930e66c91a')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
