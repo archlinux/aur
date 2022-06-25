@@ -36,7 +36,6 @@ sha256sums=('SKIP'
 
 prepare() {
   prepare_submodule
-  git -C "${srcdir}/${name}" submodule update --init --recursive
 }
 
 build() {
