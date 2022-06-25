@@ -34,7 +34,7 @@ md5sums=("SKIP")
 
 pkgver(){
 	cd "${_pkgname}"
-	printf "1.2.10.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.2.11.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
