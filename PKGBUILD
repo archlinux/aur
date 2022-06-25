@@ -4,14 +4,14 @@
 # detect java version
 # javac -version 2>&1 |awk '{split($2,v,"."); print v[1]}'
 
-_fred=build01492
+_fred=build01494
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1492
-pkgrel=3
+pkgver=0.7.5.1494
+pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
 license=('GPL2')
@@ -25,7 +25,7 @@ backup=('opt/freenet/wrapper.config')
 validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 
 source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
-        "git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=$_wot"
+        "git+https://github.com/freenet/plugin-WebOfTrust.git#branch=$_wot"
         "git+https://github.com/freenet/seedrefs.git"
         'run.sh' 'wrapper.config' freenet.{ini.dist,service,tmpfiles})
 
@@ -33,7 +33,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '043589015aced4a9828518db5a7207382c782ff7f0f5bc2c5ad19ff559fc7f695bcd503e717bfb19bee8338abdf0b30f418a155e9c86f5016162ccad4870d82a'
-        '5ea353c01f61dbae518e2114efe5d9ccf7d741853f6fee34b9eef9e1a3b4e6ce8c16b94abaf7164392242424a27d38a2bb7b63a20c6d8ec77e43252ff6125182'
+        '134a273c654c87b7c34d40416944e3e5f80254d68cf30d9a096ca8821cbb42dac0b66bf9ce316515ba6e47876f1221eb3eae4ebf90e2bd2ed8cf77c317d2d4bc'
         '83a374354b4ade822e6ecdc0b08013ac6c1c7dd3071478d4017e998ec031a1f3d0731f76eb8470e36bf8e77f7bbe1310d8d0cf5726929fcc6db81a90cc802d04'
         '540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b'
         '54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d')
@@ -48,7 +48,7 @@ prepare() {
     cd fred
 
     # java 17 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-7.3-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-7.4-aur -q
 
     # create seednodes file for bootstrapping
     rm -f seednodes.fref
