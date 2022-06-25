@@ -1,6 +1,6 @@
 pkgbase = r-fda
 	pkgdesc = Functional Data Analysis
-	pkgver = 6.0.3
+	pkgver = 6.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fda
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-fda
 	depends = r-desolve
 	depends = r-fds
 	optdepends = r-lattice
-	source = https://cran.r-project.org/src/contrib/fda_6.0.3.tar.gz
-	sha256sums = 205814b9812664e8201221f99e0e8391aa49dba2ae287dc404c57c0c492477d3
+	source = https://cran.r-project.org/src/contrib/fda_6.0.4.tar.gz
+	sha256sums = 425ba59bb093becb754bd4d6cedcbcfa1e75a2ccb270c6b7f98f80f4740e4a64
 
 pkgname = r-fda
