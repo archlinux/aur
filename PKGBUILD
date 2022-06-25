@@ -8,7 +8,7 @@
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
 pkgname=pyside2-git
-pkgver=r6554.6eb583d7
+pkgver=r7237.d526f801c
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -17,7 +17,8 @@ pkgdesc='Enables the use of Qt5 APIs in Python applications (git version)'
 depends=(python-shiboken2 qt5-declarative)
 makedepends=(shiboken2 cmake git
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
-             qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras qt5-remoteobjects)
+             qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
+             qt5-quickcontrols2 qt5-serialport qt5-remoteobjects qt5-xmlpatterns)
 optdepends=('qt5-svg: QtSvg bindings'
             'qt5-script: QtScript bindings'
             'qt5-speech: QtTextToSpeech bindings'
@@ -30,10 +31,12 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-x11extras: QtX11Extras bindings'
             'qt5-charts: QtCharts bindings'
             'qt5-tools: QtHelp bindings'
-            'qt5-remoteobjects: QtRemoteObjects bindings')
+            'qt5-remoteobjects: QtRemoteObjects bindings'
+            'qt5-serialport: QtSerialPort bindings'
+            'qt5-quickcontrols2: QtQuickControls2 bindings')
 conflicts=(python-pyside2 pyside2)
 provides=(python-pyside2 pyside2)
-source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git")
+source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.15")
 sha256sums=('SKIP')
 
 pkgver() {

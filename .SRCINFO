@@ -1,6 +1,6 @@
 pkgbase = pyside2-git
 	pkgdesc = Enables the use of Qt5 APIs in Python applications (git version)
-	pkgver = r6554.6eb583d7
+	pkgver = r7237.d526f801c
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -21,7 +21,10 @@ pkgbase = pyside2-git
 	makedepends = qt5-script
 	makedepends = qt5-scxml
 	makedepends = qt5-x11extras
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-serialport
 	makedepends = qt5-remoteobjects
+	makedepends = qt5-xmlpatterns
 	depends = python-shiboken2
 	depends = qt5-declarative
 	optdepends = qt5-svg: QtSvg bindings
@@ -37,12 +40,13 @@ pkgbase = pyside2-git
 	optdepends = qt5-charts: QtCharts bindings
 	optdepends = qt5-tools: QtHelp bindings
 	optdepends = qt5-remoteobjects: QtRemoteObjects bindings
+	optdepends = qt5-serialport: QtSerialPort bindings
+	optdepends = qt5-quickcontrols2: QtQuickControls2 bindings
 	provides = python-pyside2
 	provides = pyside2
 	conflicts = python-pyside2
 	conflicts = pyside2
-	source = pyside2-git::git+https://code.qt.io/pyside/pyside-setup.git
+	source = pyside2-git::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = pyside2-git
-
