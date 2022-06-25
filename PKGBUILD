@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wasi-compiler-rt
-pkgver=14.0.5
+pkgver=14.0.6
 pkgrel=1
 pkgdesc='WASI LLVM compiler runtime'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'ninja' 'llvm' 'clang' 'lld')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz"{,.sig}
         WASI.cmake
         wasi-toolchain.cmake)
-b2sums=('c2ecda23184cd4e9d38ee94afb318287b2631948e05b5287d81872cd69dce2db30d2c0a5ad820260d9926503082cb8343c4ecce0db1f5c592d63307077af01a4'
+b2sums=('59ec01a216f507848c7a1f9c14dca7db7da9c80218f6a16f010d7f994ef8e66fca201aa790ea03e56e349fa44eb72960342fcff3a874672f6ea5262205fa0d75'
         'SKIP'
         'c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4'
         '74c63bb838bc2e6d7980370fb3d47f8fd2f1dd8b6dc82302c7cc0b80e0fb1e8e21c1c62d6de0b78e478fc22611a5867e52b1ef7a566796fe831fffd98b17c940')
