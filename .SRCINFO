@@ -1,9 +1,9 @@
 pkgbase = apmpkg
 	pkgdesc = Un administrador de paquetes universal para linux como modelo: PKGBUILD
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kedap/apmpkg
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = cargo
 	depends = git

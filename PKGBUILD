@@ -2,9 +2,9 @@
 
 pkgname=apmpkg
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Kedap/apmpkg"
 license=('Apache')
 optdepends=('flatpak: for install dependencies'
