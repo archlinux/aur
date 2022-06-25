@@ -1,0 +1,14 @@
+pkgbase = gazo-git
+	pkgdesc = A screenshot tool for Wayland compositors implmementing the wlr_screencopy protocol.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/redArch/wayland-screencopy-utilities
+	arch = x86_64
+	license = GPL
+	makedepends = rustup
+	makedepends = git
+	optdepends = slurp: for geometry selection
+	source = git+https://gitlab.com/redArch/wayland-screencopy-utilities
+	sha256sums = SKIP
+
+pkgname = gazo-git
