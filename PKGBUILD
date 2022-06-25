@@ -2,6 +2,7 @@
 # Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
+# Maintainer: Matrix <thysupremematrix at tuta dot io>
 
 pkgname=make-3.81
 pkgver=3.81
