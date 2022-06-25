@@ -7,7 +7,7 @@
 
 pkgname=celeste-arm
 pkgver=1.4.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Help Madeline survive her journey to the top of Celeste Mountain in this super-tight, hand-crafted platformer from the creators of TowerFall (patched to work on ARM)"
 arch=("i686" "x86_64" "aarch64" "armv7h")
 url="http://www.celestegame.com/"
@@ -32,7 +32,7 @@ source=("getceleste://celeste-linux.zip"
 noextract=("celeste-linux.zip")
 
 b2sums=('2b253db8b2b3e9a8977d2a5a8c235856be89a2e894c6e790b05ae1210a2edde38cdda89c94d8e8c6be0682ec4ba413353d296b4e6386d73b4cca37d0a16512f7'
-        '86f6c88652a58bdcee16e530f25bf1879f8f363cc96123cabeb922a08a0a35eb18411c2c498b6cfa2567b0a66a6dc39d490ba254d0793a06e16797723a0de4d5'
+        '21a7bdfbcd98430df0edd77468b72137a210d45dc74a62e43fc0016c0135af75161740d318447264fb1397b4271d8d2b0b615198898a2265bf84e76e3c430447'
         'edaf338bc43db31a797b70f431853a85394f5c39b8b28327e98ac217d4fb5599a524359664312dc572fb30cd1870e789db8138074221405bf3779e11d68f55dc'
         '3bd866363258785f402e5bc40fdca80f41a56a466964fb25e3e1d240d9759fb3517f5a20df4bbd73e6b3059f343ca5bc735d3f8f59f81244f938e56b8b44d1ad'
         'SKIP'
