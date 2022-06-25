@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CheckMate
+Comment=CheckMate - Okapi Localization Toolbox
+Exec=checkmate
+Icon=/usr/share/java/okapi-apps/resources/CheckMate.png
+Terminal=false

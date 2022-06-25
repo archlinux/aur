@@ -1,0 +1,23 @@
+pkgbase = okapi-apps
+	pkgdesc = Cross-platform and free open-source set of applications that offer extensive support for localizing and translating documentation and software.
+	pkgver = 1.43.0
+	pkgrel = 1
+	url = https://okapiframework.org/
+	arch = x86_64
+	license = Apache
+	depends = java-runtime
+	depends = gtk2
+	source = https://okapiframework.org/binaries/main/1.43.0/okapi-apps_gtk2-linux-x86_64_1.43.0.zip
+	source = checkmate.desktop
+	source = rainbow.desktop
+	source = ratel.desktop
+	source = https://okapiframework.org/wiki/images/0/0c/CheckMateIcon.png
+	source = https://okapiframework.org/wiki/images/8/8f/RatelIcon.png
+	sha256sums = 6d1b1c73293de4e05e12769d524451f2da3c04298690b4d35b17aef7f247bb25
+	sha256sums = 6578cdfdc0e745a231f89fb45e5fb2e2950598cb0795288d0a66855c0cc8a3b7
+	sha256sums = e2fb58c6a2430ad5356ba356cfcbe965cabc2b8bb22b9c53ebdfca9eccc34f86
+	sha256sums = 2bbbd39c56e42f51c17a5a47d83eac3bcc829d9198fae629df7e3ff8cacf30e1
+	sha256sums = 858e8bb7d680ce480ee0a6a7c5a6c3e951f14dcd6e78009a700406e484c6ce08
+	sha256sums = c57ef037dcd78be1983b3c03360e0d09b3c6f5ae4116d7f0968a0aa3fcd8bc85
+
+pkgname = okapi-apps

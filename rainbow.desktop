@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Rainbow
+Comment=Rainbow - Okapi Localization Toolbox
+Exec=rainbow
+Icon=/usr/share/java/okapi-apps/resources/Rainbow.png
+Terminal=false

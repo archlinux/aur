@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Ratel
+Comment=Ratel - Okapi Localization Toolbox
+Exec=ratel
+Icon=/usr/share/java/okapi-apps/resources/Ratel.png
+Terminal=false
