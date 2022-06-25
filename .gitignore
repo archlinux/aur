@@ -1,0 +1,5 @@
+.idea
+*.tar.gz
+*.tar.zst
+chwp
+pkg
