@@ -1,7 +1,9 @@
+# Maintainer: Robert Greener <me@r0bert.dev>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=R.methodsS3
-_cranver=1.8.1
+_cranver=1.8.2
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,8 +12,8 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LGPL3)
 depends=('r>=2.13.0')
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('8a98fb81bcfa78193450f855f614f6f64e6c65daf115f301d97d1f474f5e619b')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('822d5e61dad4c91e8883be2b38d7b89f87492046d0fe345704eb5d2658927c2e')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
