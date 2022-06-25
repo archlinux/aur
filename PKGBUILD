@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20220624_nextpnr_0.3_40_gf1122536
+pkgver=20220625_nextpnr_0.3_40_gf1122536
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
@@ -58,6 +58,6 @@ build() {
 
 package() {
 	cd "${srcdir}/nextpnr"
-	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-all install
 	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr/COPYING"
 }

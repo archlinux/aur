@@ -58,6 +58,6 @@ build() {
 
 package() {
 	cd "${srcdir}/nextpnr"
-	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-all install
 	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr/COPYING"
 }
