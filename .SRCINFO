@@ -1,6 +1,6 @@
 pkgbase = poi-nightly-bin
 	pkgdesc = Scalable KanColle browser and tool
-	pkgver = 10.8.0.7912
+	pkgver = 10.8.0.7916
 	pkgrel = 1
 	url = https://github.com/poooi/poi/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = poi-nightly-bin
 	conflicts = poi
 	noextract = poi-10.8.0.7z
 	options = !strip
-	source = https://nightly.poi.moe/7912/poi-10.8.0.7z
+	source = https://nightly.poi.moe/7916/poi-10.8.0.7z
 	source = poi.sh
-	sha256sums = SKIP
+	sha256sums = 12b7920f6c446df78eebf8c96ec1902927debe4835e8359922c8581076556c27
 	sha256sums = b08d1eb63de3af0c67860fd8bfd709d492ac600eef9c0cd52e2ee65e5ab69194
 
 pkgname = poi-nightly-bin
