@@ -1,13 +1,13 @@
 pkgbase = rebind-devices
 	pkgdesc = Linux service to automatically reset devices when resuming from sleep
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/bulletmark/rebind-devices
 	arch = any
 	license = GPL3
 	depends = python>=3.6
 	backup = etc/rebind-devices.conf
-	source = rebind-devices-1.3.tar.gz::https://github.com/bulletmark/rebind-devices/archive/1.3.tar.gz
-	md5sums = 7fb43e51006a30ca8aececc4103e1920
+	source = rebind-devices-1.4.tar.gz::https://github.com/bulletmark/rebind-devices/archive/1.4.tar.gz
+	md5sums = 1cbc95eaa1f6bfa36a754faf78cace03
 
 pkgname = rebind-devices
