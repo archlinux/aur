@@ -9,7 +9,7 @@ name=cloudcompare
 _fragment="#tag=v2.12.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -51,7 +51,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release
         -DCCCORELIB_USE_CGAL:BOOL=ON
         -DCCCORELIB_USE_TBB:BOOL=OFF
-        -DWITH_FFMPEG_SUPPORT:BOOL=ON
+        -DQANIMATION_WITH_FFMPEG_SUPPORT:BOOL=ON
         -DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg4.4
         -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib/ffmpeg4.4
         -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
