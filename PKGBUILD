@@ -1,7 +1,7 @@
 # Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=TraMineRextras
-_cranver=0.6.3
-_updatedate=2022-06-08
+_cranver=0.6.4
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -21,7 +21,7 @@ optdepends=(
 	r-foreach
 )
 source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('ac938bb48dcf0bec54ba5a7ac7150e7bfa781da8ceec7e81cb582548044c88d3')
+sha256sums=('47e5b75ac9aa16a3b330f6ae5927031a52afe0dbce10cd91a5bbea7335a0d429')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
