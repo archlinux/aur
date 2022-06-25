@@ -2,7 +2,7 @@
 
 _pkgname=swgp-go
 pkgname=$_pkgname-git
-pkgver=1.1.1.r0.gbbc6046
+pkgver=1.2.0.r4.gc017bb5
 pkgrel=1
 pkgdesc="Simple WireGuard proxy with minimal overhead for WireGuard traffic"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ b2sums=(
     'SKIP'
     '13a0ddcad6138016956c8918873a6722b539367991bcb16530001237a18c0abe4f7a20c7043fb617f9e4cb00d753a5eda3ece16892d5eb478ad5f78b47a46650'
     '9d15491b51e925332f873ad733574392de9a556bb84d459ef9482dd546a6989609fdb4120a11cdc5a4604e1232efe79603d99f49d5555ae2974665bb0539b238'
-    '6b8c7436b99dcdcfe706230cd1d30cbdeb3b70cf4d6815400a35c8a0c728edfb2ce5908057d7a4e0652daf2e161f8382b6035336bc43c27c23fbc0a369f769f1'
+    'fa5f5a58a8d79f9e1cc9cc5b2accad363b72dd989af6c14e66c31e0a167a692ff8444654d14e9350e948a4d582bc0909ad83fcf48a1966b11a0550396ce0a94d'
 )
 
 pkgver() {
