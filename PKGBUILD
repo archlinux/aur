@@ -34,11 +34,10 @@ depends=(
   qt6-wayland
   qt6-tools
   qt6-svg
-  fmt
   soundtouch
   wayland
   rapidyaml
-  zstd-cmake # AUR Package
+  zstd
 )
 makedepends=(
   cmake
@@ -50,7 +49,7 @@ makedepends=(
   vulkan-headers
 )
 
-provides=(pcsx2)
+provides=(pcsx2-qt)
 
 conflicts=(pcsx2)
 
@@ -62,9 +61,11 @@ git+https://github.com/google/googletest.git
 git+https://github.com/mozilla/cubeb.git
 git+https://github.com/KhronosGroup/glslang.git
 git+https://github.com/KhronosGroup/Vulkan-Headers.git
+git+https://github.com/fmtlib/fmt.git
 )
 
 sha256sums=(
+SKIP
 SKIP
 SKIP
 SKIP
@@ -85,7 +86,8 @@ prepare()
   git config submodule.3rdparty/imgui/imgui.url $srcdir/imgui
   git config submodule.3rdparty/glslang/glslang.url $srcdir/glslang
   git config submodule.3rdparty/vulkan-headers.url $srcdir/Vulkan-Headers
-  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/imgui 3rdparty/glslang/glslang 3rdparty/vulkan-headers
+  git config submodule.3rdparty/fmt/fmt.url $srcdir/fmt
+  git submodule update 3rdparty/libchdr/libchdr 3rdparty/gtest 3rdparty/cubeb/cubeb 3rdparty/imgui 3rdparty/glslang/glslang 3rdparty/vulkan-headers 3rdparty/fmt/fmt
 }
 
 pkgver()
@@ -106,8 +108,7 @@ build()
     -DWAYLAND_API=ON \
     -DQT_BUILD=ON \
     -DXDG_STD=TRUE \
-    -USE_VULKAN=ON \
-    -DUSE_SYSTEM_LIBS=ON \
+    -DUSE_VULKAN=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
     -DDISABLE_SETCAP=ON
@@ -119,7 +120,7 @@ package()
     DESTDIR="${pkgdir}" cmake --install build
     mv "${pkgdir}"/usr/bin/pcsx2-qt "${pkgdir}"/usr/share/PCSX2
     ln -s /usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
-    sed -i 's/Exec=env GDK_BACKEND=x11 MESA_NO_ERROR=1 pcsx2/Exec=pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
+    sed -i 's/Exec=env GDK_BACKEND=x11 MESA_NO_ERROR=1 pcsx2/Exec=env QT_QPA_PLATFORM=xcb MESA_NO_ERROR=1 pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
 }
 
 # vim: ts=2 sw=2 et:
