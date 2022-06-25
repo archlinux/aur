@@ -24,9 +24,18 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragmen
 sha256sums=('SKIP'
             'SKIP'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
-            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc')
+            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
+  prepare_submodule
   git -C "${srcdir}/${name}" submodule update --init --recursive
 }
 
@@ -107,4 +116,29 @@ package() {
   install -D -m 644 ${name}/qCC/images/icon/cc_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
   install -D -m 644 ${name}/qCC/images/icon/cc_viewer_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
 }
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/IO/qE57IO/extern/libE57Format.url "$srcdir/libE57Format"
+  git -C "$srcdir/cloudcompare" config submodule.extern/CCCoreLib.url "$srcdir/CCCoreLib"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qPoissonRecon/extern/PoissonRecon.url "$srcdir/PoissonRecon"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qMPlane.url "$srcdir/mplane-plugin"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qColorimetricSegmenter.url "$srcdir/ptrans"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qMasonry.url "$srcdir/masonry-cc"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qJSonRPCPlugin.url "$srcdir/JSonRPCPlugin"
+  git -C "$srcdir/cloudcompare" config submodule.plugins/core/Standard/qCanupo/contrib/dlib.url "$srcdir/dlib"
+  git -C "$srcdir/cloudcompare" submodule update --init
+}
+source+=(
+  "libE57Format::git+https://github.com/asmaloney/libE57Format"
+  "CCCoreLib::git+https://github.com/CloudCompare/CCCoreLib"
+  "PoissonRecon::git+https://github.com/cloudcompare/PoissonRecon"
+  "mplane-plugin::git+https://github.com/hvs-ait/mplane-plugin"
+  "ptrans::git+https://gitlab.univ-nantes.fr/E164955Z/ptrans"
+  "masonry-cc::git+https://github.com/CyberbuildLab/masonry-cc"
+  "JSonRPCPlugin::git+https://gitlab.com/theadib/JSonRPCPlugin"
+  "dlib::git+https://github.com/davisking/dlib"
+)
 # vim:set sw=2 ts=2 et:
