@@ -32,7 +32,7 @@ package() {
 	cp ${srcdir}/8821cu-20210118/8821cu.conf ${pkgdir}/etc/modprobe.d/8821cu.conf 
         cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         # Set name and version
-        sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
+        sed -e "s/@PKGBASE@/${_pkgbase}-dkms/" \
                         -e "s/@PKGVER@/${pkgver}/" \
                         -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
