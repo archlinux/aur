@@ -20,11 +20,4 @@ pre_remove() {
 
 post_remove() {
     udevadm control --reload-rules
-    
-    echo "IMPORTANT: in order to stop the background service ##########"
-    echo 'please run "systemctl --user stop keyboard-center.service"'
-    echo "and"
-    echo 'systemctl --user disable keyboard-center.service" as NON ROOT'
-    echo "##############################################################"
-    sleep 3
 }
