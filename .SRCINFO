@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.7.28.r0.g176b574403
+	pkgver = 0.7.46.r0.g9d2d8691b5
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -31,6 +31,8 @@ pkgbase = xemu-git
 	source = imgui::git+https://github.com/ocornut/imgui.git
 	source = implot::git+https://github.com/epezent/implot.git
 	source = keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git
+	source = nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
