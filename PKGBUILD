@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksmd
 # pkgname=('linux-uksmd' 'linux-uksmd-headers')
 _major=5.18
-_minor=6
+_minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSMD'
 arch=('x86_64')
 url="https://gitlab.com/post-factum/uksmd"
@@ -291,7 +291,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('98069269ebb1f870c9df21c973f1f846d29ac4297a366775ff59fd2d3bc86e2d023b51312f024a8394e7b46210a4e6cab4e57394351477e535a16957033d33fc'
+sha512sums=('3115ea2c637901dfb71ac4259e1b6ca8c32c9c59059f55c7dd728f4b4e5f1e9f2713a3963137d0e7ccdf4c277e0ff5c5baecd993d6f8ae8fe1e2520ddcc94cc7'
             'SKIP'
             '49ab997abb17d06b332a892cc6c281f9f757bf5455502dacef647343f3c78ed5a0ab590f12e3c85695b3bac31ee52d8640c493c502080184b802324a23a1dbaa'
             '2fa1250d93049fcfcfe04d201236eb7a662703b71a73b77c8e5df72900ad40cbb0b818c9c82cbf0204f67bf496bce7310d713ff9106825816525be1ba2da68e8'
