@@ -1,6 +1,6 @@
 pkgbase = dotter-rs-git
 	pkgdesc = A dotfile manager and templater written in Rust (git)
-	pkgver = 0.12.11.r0.g69c2054
+	pkgver = 0.12.12.r0.g8c8d3d4
 	pkgrel = 1
 	url = https://github.com/SuperCuber/dotter
 	arch = x86_64
