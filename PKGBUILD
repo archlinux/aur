@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dns53')
 conflicts=('dns53')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.2/dns53_0.1.0-beta.2_linux-arm64.tar.gz")
-sha256sums_aarch64=('93274d6c473726272b734ad8e79b42ce95549544e2c9aef84a8cab577866ef77')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.3/dns53_0.1.0-beta.3_linux-arm64.tar.gz")
+sha256sums_aarch64=('4ca18d32d905ef57d1619fd5bb423f4fa8ca95a57307137a7a2578528a107be4')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.2/dns53_0.1.0-beta.2_linux-arm.tar.gz")
-sha256sums_armv7h=('ad0fb0e25843438d177f73eb4d450a63bd42dc2f26b4fc2886bc7990dc83701a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.3/dns53_0.1.0-beta.3_linux-arm.tar.gz")
+sha256sums_armv7h=('edd5aad5d32a84e572f79d6ae0d8dae14c9c8cf3f28eb43e4dacee7a745dfd8a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.2/dns53_0.1.0-beta.2_linux-i386.tar.gz")
-sha256sums_i686=('7d81413e19cfa02ee9431b734c62ebedad8710e1b93f0499fc334159dd389057')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.3/dns53_0.1.0-beta.3_linux-i386.tar.gz")
+sha256sums_i686=('8b1819a3df2955c6ed0b6846bb85cd8cf8c6a323606f20ff421aee6fb0e92175')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.2/dns53_0.1.0-beta.2_linux-x86_64.tar.gz")
-sha256sums_x86_64=('e7628d84b843d59883e29ddd94eb9797dde138d69e05cbeebc429742f7e4e5ae')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0-beta.3/dns53_0.1.0-beta.3_linux-x86_64.tar.gz")
+sha256sums_x86_64=('59c3d601b3f4e85a522dab7d121de227ca26d0482943d388de7f76d34af57a71')
 
 package() {
   # bin
