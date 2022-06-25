@@ -1,6 +1,6 @@
 pkgbase = antares-sql
 	pkgdesc = Open source and cross platform SQL client made to be simple and complete
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://antares-sql.app/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = antares-sql
 	makedepends = yarn
 	makedepends = python
 	depends = electron17
-	source = https://github.com/Fabio286/antares/archive/refs/tags/v0.5.6.tar.gz
+	source = https://github.com/Fabio286/antares/archive/refs/tags/v0.5.7.tar.gz
 	source = antares-sql.desktop
 	source = antares-sql.sh
-	sha512sums = 303157467bb4438301a0956cbe0dd8f9066669dd9b4cec2825e428c3e50f63f7755167143fb4c176e3662a5373fedddc17729751deea407f2c63a90b0077068d
+	sha512sums = 137d989a8b425c45a70603c90f0d21ce8704a15d96cf1ed28672e0639b69e4e6a8e19ca49f6b50f85f73fd201d86c6ffcca8d847708b636ccb2ba982a1b03b7c
 	sha512sums = 4dc1837ee4a8e9e4c610a9fc8b8724a903ebaea1aeed32f30c4ee469d2e12198549bfc760327c413534053f54ffe8248905a925fc5d63d2c6e31d75a413da4dc
 	sha512sums = b3b1e1c9dfb59fc3e89f3c53194550634a2cd9e45ee9ae1b725c315e1ee3fdf657487409cb044a0c28875031608b6d128475095597de7031a8aa3b601a34baf4
 
