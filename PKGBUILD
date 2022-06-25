@@ -1,6 +1,7 @@
 # Maintainer: Robert Greener <me@r0bert.dev>
 _cranname=TraMineR
-_cranver=2.2-3
+_cranver=2.2-4
+_updatedate=2022-06-25
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -21,8 +22,8 @@ optdepends=(
 	r-xtable
 	r-traminerextras
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('3c698e4f79555fbe70358b679c75f9c72c23256568da46c775bbebe8668b72cb')
+source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('b69ef547443453f1d814d09141f7b9be1dd09ef374cc50771d1a8d3f0815e1a7')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
