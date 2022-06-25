@@ -1,7 +1,7 @@
 pkgbase = hugetracker-git
 	pkgdesc = The music composition suite for the Nintendo Game Boy
-	pkgver = 1.0b9.r37.2cb2c1f
-	pkgrel = 1
+	pkgver = 1.0b9.r74.043fcaa
+	pkgrel = 2
 	url = https://nickfa.ro/index.php?title=HUGETracker
 	arch = x86_64
 	license = custom:public domain
@@ -27,6 +27,6 @@ pkgbase = hugetracker-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 75bcfd713eb8e2934c5df9fa6f8e12e9be3611d9b8a2373d5590303dd91690ec
+	sha256sums = 85b9d753bb88bd1999f8cdccf98130315b530a44f96e0bbb55c657f73ffa3ee6
 
 pkgname = hugetracker-git

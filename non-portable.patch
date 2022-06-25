@@ -1,8 +1,8 @@
 diff --git a/codegen.pas b/codegen.pas
-index aaa0f47..f157f6f 100644
+index a2849f5..7c31027 100644
 --- a/codegen.pas
 +++ b/codegen.pas
-@@ -479,7 +479,7 @@ var
+@@ -520,7 +520,7 @@ var
      Proc.Executable := 'rgbasm';
      Proc.Parameters.Clear;
      Proc.Parameters.Add('-i' + 'render');
@@ -11,7 +11,7 @@ index aaa0f47..f157f6f 100644
      Proc.Parameters.Add('-o' + OutFile);
      for Define in Defines do
        // HACK: This just removes all instances of double quotes to avoid a bug
-@@ -558,24 +558,24 @@ begin
+@@ -614,24 +614,24 @@ begin
      // Assemble
      if Mode = emPreview then
      begin
@@ -40,15 +40,15 @@ index aaa0f47..f157f6f 100644
              ['SONG_DESCRIPTOR=song',
               'GBS_TITLE="'+PadRight(LeftStr(Song.Name, 32), 32)+'"',
               'GBS_AUTHOR="'+PadRight(LeftStr(Song.Artist, 32), 32)+'"',
-@@ -584,7 +584,7 @@ begin
-     end
+@@ -641,7 +641,7 @@ begin
      else
      begin
--      if Assemble(Filename + '_player.obj', 'hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
-+      if Assemble(Filename + '_player.obj', '/usr/share/hugetracker/hUGEDriver/player.asm', ['SONG_DESCRIPTOR=song']) <> 0 then
-         Die;
-     end;
- 
+       if Assemble(Filename + '_player.obj',
+-                 'hUGEDriver/player.asm',
++                 '/usr/share/hugetracker/hUGEDriver/player.asm',
+                  ['SONG_DESCRIPTOR=song',
+                   IfThen(Song.TimerEnabled, 'USE_TIMER=1', ''),
+                   'TIMER_MODULO='+IntToStr(Song.TimerDivider)]) <> 0 then
 diff --git a/hUGETracker.lpr b/hUGETracker.lpr
 index d2f94d0..7cdca86 100644
 --- a/hUGETracker.lpr
@@ -85,10 +85,10 @@ index d2f94d0..7cdca86 100644
  
      PangoFcFontMapConfigChanged(PangoCairoFontMapGetDefault);
 diff --git a/tracker.pas b/tracker.pas
-index 80a800a..a4afbff 100644
+index 6daeec3..6016aae 100644
 --- a/tracker.pas
 +++ b/tracker.pas
-@@ -1100,8 +1100,8 @@ end;
+@@ -1131,8 +1131,8 @@ end;
  procedure TfrmTracker.HaltPlayback;
  begin
    LockPlayback;
@@ -99,7 +99,7 @@ index 80a800a..a4afbff 100644
    UnlockPlayback;
  
    Playing := False;
-@@ -1125,7 +1125,7 @@ end;
+@@ -1156,7 +1156,7 @@ end;
  
  procedure TfrmTracker.OnSampleSongMenuItemClicked(Sender: TObject);
  begin
@@ -108,7 +108,7 @@ index 80a800a..a4afbff 100644
  end;
  
  procedure TfrmTracker.CreateKeymap;
-@@ -1401,10 +1401,10 @@ var
+@@ -1441,10 +1441,10 @@ var
    MenuItem: TMenuItem;
    I: Integer;
  begin
@@ -123,7 +123,7 @@ index 80a800a..a4afbff 100644
      MessageDlg('Error',
        'hUGETracker can''t load a required file which comes with '+
        'the tracker. This likely means that you haven''t extracted the program ' +
-@@ -1486,7 +1486,7 @@ begin
+@@ -1523,7 +1523,7 @@ begin
    {$endif}
  
    // Load sample songs list
