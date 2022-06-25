@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = An emulator for classic IBM PC clones
-	pkgver = 3.5.r68.g07598faa6
+	pkgver = 3.5.r71.gf834caca9
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
