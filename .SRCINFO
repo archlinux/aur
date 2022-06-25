@@ -1,0 +1,14 @@
+pkgbase = mssql-scripter
+	pkgdesc = Command line experience for scripting SQL Server databases.
+	pkgver = 1.0.0a23
+	pkgrel = 1
+	url = https://github.com/microsoft/mssql-scripter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = openssl-1.0
+	source = https://github.com/microsoft/mssql-scripter/archive/refs/tags/v1.0.0a23.zip
+	sha256sums = 7e673e01442b39a06b3ccb9f72eb7659549f0a822b0927451ce610102382c83a
+
+pkgname = mssql-scripter
