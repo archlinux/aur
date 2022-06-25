@@ -1,6 +1,6 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 4.0.0
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://sunpy.org
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-sunpy
 	makedepends = python-installer
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-4.0.0.tar.gz
-	md5sums = 8f7920bb2334acd07ebdfaa2d005f52a
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-4.0.2.tar.gz
+	md5sums = 94bfeffd8ea967da6bb7fd57a78c03c0
 
 pkgname = python-sunpy
 	depends = python>=3.8
@@ -28,9 +28,10 @@ pkgname = python-sunpy
 	optdepends = python-scikit-image>=0.16.0: image
 	optdepends = python-scipy>=1.3.0: image, map
 	optdepends = python-reproject: map
-	optdepends = python-matplotlib>=3.2.0: map, timeseries, visualization
+	optdepends = python-matplotlib>=3.3.0: map, timeseries, visualization
 	optdepends = python-mpl-animators>=1.0.0: map, visualization
 	optdepends = python-glymur>0.9.5: jpeg2000
+	optdepends = python-lxml>=4.8.0: jpeg2000
 	optdepends = python-beautifulsoup4>=4.8.0: net
 	optdepends = python-drms>=0.6.1: net
 	optdepends = python-dateutil>=2.8.0: net

@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('8f7920bb2334acd07ebdfaa2d005f52a')
+md5sums=('94bfeffd8ea967da6bb7fd57a78c03c0')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -144,9 +144,10 @@ package_python-sunpy() {
                 'python-scikit-image>=0.16.0: image'
                 'python-scipy>=1.3.0: image, map'
                 'python-reproject: map'
-                'python-matplotlib>=3.2.0: map, timeseries, visualization'
+                'python-matplotlib>=3.3.0: map, timeseries, visualization'
                 'python-mpl-animators>=1.0.0: map, visualization'
                 'python-glymur>0.9.5: jpeg2000'
+                'python-lxml>=4.8.0: jpeg2000'
                 'python-beautifulsoup4>=4.8.0: net'
                 'python-drms>=0.6.1: net'
                 'python-dateutil>=2.8.0: net'
