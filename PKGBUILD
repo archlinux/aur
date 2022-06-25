@@ -1,7 +1,7 @@
 # Maintainer: Chen Jicheng <hi@chenjicheng.com>
 pkgname=obs-plugin-input-overlay-git
 _pkgname=input-overlay
-pkgver=5.0.0.rc1.r68.gf3e8665
+pkgver=5.0.0.rc1.r73.gb4d12f4
 pkgrel=1
 pkgdesc="Show keyboard, gamepad and mouse input on stream"
 arch=('x86_64')
