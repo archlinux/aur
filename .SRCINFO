@@ -1,6 +1,6 @@
 pkgbase = ddgr-git
 	pkgdesc = DuckDuckGo from the terminal
-	pkgver = 1.9
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/jarun/ddgr
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = ddgr-git
 	makedepends = git
 	depends = python>=3.5
 	conflicts = ddgr
-	source = git+https://github.com/jarun/ddgr/
+	source = git+https://github.com/jarun/ddgr
 	sha256sums = SKIP
 
 pkgname = ddgr-git
-

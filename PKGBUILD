@@ -1,10 +1,11 @@
-# Maintainer: Matteo Salonia <saloniamatteo@protonmail.com> 
-# Maintainer: Pablo Arias <pabloariasal@gmail.com>
+# Maintainer: Robin Candau <robincandau@protonmail.com>
+# Contributor: Matteo Salonia <saloniamatteo@protonmail.com> 
+# Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ddgr-git
 _pkgname=ddgr
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
@@ -13,7 +14,7 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('git')
 conflicts=("ddgr")
-source=("git+https://github.com/jarun/ddgr/")
+source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
