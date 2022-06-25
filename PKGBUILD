@@ -1,6 +1,6 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=hdr10plus_tool
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="CLI utility to work with HDR10+ in HEVC files."
 arch=('x86_64')
