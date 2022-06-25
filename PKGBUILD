@@ -2,7 +2,7 @@
 
 pkgname=jellyfin-ffmpeg5
 pkgver=5.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc='FFmpeg5 for Jellyfin'
 arch=('x86_64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'

@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg5
 	pkgdesc = FFmpeg5 for Jellyfin
 	pkgver = 5.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	license = GPL3
@@ -59,7 +59,7 @@ pkgbase = jellyfin-ffmpeg5
 	optdepends = vulkan-radeon: for AMD RADV Vulkan support
 	optdepends = vulkan-intel: for Intel ANV Vulkan support
 	conflicts = jellyfin-ffmpeg
-	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v5.0.1-6
+	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v5.0.1-7
 	sha256sums = SKIP
 
 pkgname = jellyfin-ffmpeg5
