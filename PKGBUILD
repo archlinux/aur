@@ -2,8 +2,8 @@
 # Maintainer: Leonardo Gates <leogatesx9r@protonmail.com>
 
 pkgname=i915-firmware
-pkgver=20210208
-pkgrel=2
+pkgver=20220209
+pkgrel=1
 pkgdesc="Intel's integrated GPU firmware"
 arch=('any')
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -12,8 +12,8 @@ options=(!strip)
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 source=("https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${pkgver}.tar.gz"
         "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${pkgver}.tar.asc")
-b2sums=('2f45371b8118c3ee98073a580f45f4c739c84ff4280ae5add6f633c5c61d4782f27eb320150368ac9901aa71595d4546dbb54141309ab1eaa2ee4f9f31c4dbc8'
-        '627bbdb2a62d01da989f9784b8523b1ed4a2c83ca7ad09644cd76b98a7e135c4dacfc939c00bfd8f2393eb134ef2ca9cbda15f9a6b5bbd8f27b63842108a50c7')
+b2sums=('16be12197c83843b27f7e1126d5576101bee9e126806176a65e0ed95b41ebd69bfec0ebf89ede4f9298fb82cfb1ce33187894f0480c8c3a44e61f62185cbabf8'
+        '6f322bb9fb54384567845ebc9a988d84e89d41f19385eaf62670883fce0d6b5d5b96115e8fe3e872d3706399e90ff3c332a27111968a1168cc18cc058687e4b9')
 
 package() {
     #conflicts=('linux-firmware'
