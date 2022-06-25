@@ -1,6 +1,6 @@
 pkgbase = revanced-cli
 	pkgdesc = Command line application as an alternative to the ReVanced Manager
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/revanced/revanced-cli
@@ -10,10 +10,10 @@ pkgbase = revanced-cli
 	depends = java-environment>=17
 	depends = revanced-patches
 	optdepends = revanced-integrations: Add support for some integrations
-	source = https://github.com/revanced/revanced-cli/releases/download/v1.11.0/revanced-cli-1.11.0-all.jar
-	source = https://github.com/revanced/revanced-cli/raw/v1.11.0/LICENSE
+	source = https://github.com/revanced/revanced-cli/releases/download/v1.11.1/revanced-cli-1.11.1-all.jar
+	source = https://github.com/revanced/revanced-cli/raw/v1.11.1/LICENSE
 	source = revanced-cli.sh
-	sha256sums = 830c62c8443216d83840c0ace3f507a9ce25618c5663c8495b9efeea803a4b80
+	sha256sums = fa41b74cdee0c577a38fee2e31e6a2f7043570680220f7746a60ed568824eb2b
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 966cb49d9de2c2081b1bc5af00babe3a8c7735320f248ff1a8c1c8c7cc775502
 
