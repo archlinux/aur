@@ -8,14 +8,15 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
 pkgver=8.050.03
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/r8168"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')
 makedepends=('git')
-conflicts=("${pkgname}")
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git"
         "dkms.conf"
         "linux518.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/r8168/trunk/linux518.patch")
