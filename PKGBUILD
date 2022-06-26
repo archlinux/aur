@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.39
+pkgver=0.7.55
 pkgrel=1
 pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='3a6907b0eab6b5856dbe9f3f8c46fb77c7d6945c'
+_commit='db389b15086753cb7b72e05b24af205baa742bc3'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
   'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
@@ -41,8 +41,10 @@ source=(
   'github.com-epezent-implot::git+https://github.com/epezent/implot.git'
   'gitlab.com-qemu-project-keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
   'github.com-mborgerson-genconfig::git+https://github.com/mborgerson/genconfig.git'
+  'github.com-abaire-nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
 )
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -74,6 +76,7 @@ prepare() {
   git config submodule.ui/thirdparty/implot.url "$srcdir/github.com-epezent-implot"
   git config submodule.ui/keycodemapdb.url "$srcdir/gitlab.com-qemu-project-keycodemapdb"
   git config submodule.genconfig.url "$srcdir/github.com-mborgerson-genconfig"
+  git config submodule.hw/xbox/nv2a/thirdparty/nv2a_vsh_cpu.url "$srcdir/github.com-abaire-nv2a_vsh_cpu"
 
   git submodule update
 
@@ -84,7 +87,7 @@ prepare() {
   sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
 
   # use system tomlplusplus
-  sed -i 's/<toml\.hpp>/<toml++\/toml.h>/' genconfig/cnode.h toml.cpp ui/xemu-settings.cc
+  mkdir tomlplusplus/include
 
   # patch build info
   sed \
