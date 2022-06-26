@@ -4,7 +4,7 @@
 
 _npmname=alacritty-themes
 pkgname=$_npmname
-pkgver=4.3.0
+pkgver=4.4.1
 pkgrel=1
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
@@ -21,7 +21,7 @@ options=(strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/rajasegar/alacritty-themes/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('76bcd42b69b52ef00842261747c41cd467656e58f4db3730b3ab25599df8950af1dd2f3aff0938c52bbdaf0d9b4da41cf8a2d096e5a44a4a95b9f0cda6e39001'
+b2sums=('46f3f0cde0ebf7f3d792d907e2619c2c4a946ee567d3003cc98fad298ad92738c69d9e33185f95deefb6d1d8b102abba6c53a99b1b138fe3a8ee2aa09b3ce13f'
 	'7a11e2eeed89bc67e6cef84badf8cccd1bf2de44423c22bd023fe579795b45bc8906c7a2dc3df4c005d0524b99994d2f534410df8e9a52e2d95f97591dd8949c')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
