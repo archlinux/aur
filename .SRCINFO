@@ -1,9 +1,11 @@
 pkgbase = minivideo-git
+	pkgdesc = MiniVideo is a video framework developed from scratch in C/C++
 	pkgver = 0.14_787.62894a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emericg/MiniVideo
 	arch = x86_64
 	arch = i686
+	license = LGPL3
 	makedepends = cmake
 	conflicts = minivideo
 	source = minivideo-git::git+https://github.com/emericg/MiniVideo.git
