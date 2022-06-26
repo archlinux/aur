@@ -1,0 +1,28 @@
+pkgbase = esphomeyaml-dev
+	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant - development branch
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/esphome/ESPHome
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	depends = python-voluptuous
+	depends = python-yaml
+	depends = python-paho-mqtt
+	depends = python-colorlog
+	depends = python-tornado
+	depends = python-protobuf
+	depends = python-tzlocal
+	depends = python-pyserial
+	depends = python-ifaddr
+	depends = python-pyaes
+	depends = python-ecdsa
+	depends = platformio
+	depends = esptool
+	depends = python-aioesphomeapi
+	optdepends = python-esphome-dashboard: esphome dashboard addition
+	replaces = esphomeyaml
+	source = esphome-dev::git+https://github.com/esphome/ESPHome#branch=dev
+	sha256sums = SKIP
+
+pkgname = esphome-dev
