@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -64,12 +64,16 @@ options=(debug)
 source=(
   "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=$pkgver"
   "https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-$pkgver.tar.xz"{,.asc}
+  0001-meson-Allow-building-with-system-orc.patch
+  0002-HACK-meson-Disable-broken-tests.patch
+  0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 )
-sha256sums=(
-  'SKIP'
-  'ca70d921cbbba9fe17679b47d2e0db886e0422d37652837a170d76c3f2b4bc53'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            '73fc428a40d6a34c2ceb80e3e572b20f19f8ebe216d566f010de11573063f1bf'
+            'SKIP'
+            '292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683'
+            '11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70'
+            '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
 validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
 
 pkgver() {
@@ -81,15 +85,14 @@ prepare() {
   cd gstreamer
 
   # Fix linking with system orc
-  sed -i "s/get_option('orc')/false/" meson.build
+  git apply -3 ../0001-meson-Allow-building-with-system-orc.patch
 
   # Disable broken tests
-  sed -i "/subdir('tests')/d" subprojects/{gst-editing-services,gstreamer-vaapi}/meson.build
-  sed -i "/'gst\/rtspserver'/d" subprojects/gst-rtsp-server/tests/check/meson.build
+  git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
   
   # Workaround broken detection of underscore prefixes
   # https://github.com/mesonbuild/meson/issues/5482
-  sed -i 's/-DPREFIX/-UPREFIX/' subprojects/gst-plugins-good/gst/deinterlace/meson.build
+  git apply -3 ../0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 }
 
 build() {
