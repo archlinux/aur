@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = qt5-base
+
+[Action]
+Description = Qt5 Upgrade Warning
+When = PostTransaction
+Exec = /usr/bin/echo "[WARNING] qt5-base was updated, qt5 applications will break until qt5-styleplugins is rebuilt."
