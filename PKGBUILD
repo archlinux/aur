@@ -1,6 +1,6 @@
 # Maintainer: PersianGolf <Freefighter81@protonmail.com>
 pkgname=voicegen
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Convert text to speech using multiple engines"
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = voicegen
 	pkgdesc = Convert text to speech using multiple engines
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/PersianGolf/voicegen/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = voicegen
 	optdepends = ffmpeg
 	provides = voicegen
 	conflicts = voicegen
-	source = https://gitlab.com/PersianGolf/voicegen/-/archive/1.0.0/voicegen-1.0.0.tar.gz
+	source = https://gitlab.com/PersianGolf/voicegen/-/archive/1.2.0/voicegen-1.2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = voicegen
