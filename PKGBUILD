@@ -2,7 +2,7 @@
 
 pkgname=eqmk
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="command line tool to manage encryption enabled qmk devices"
 arch=('x86_64')
 url="https://gitea.olznet.de/eqmk/$pkgname"
