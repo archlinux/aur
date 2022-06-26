@@ -1,3 +1,29 @@
+## GE-Proton-7-21 Released
+- Wine:
+
+- Paladins crash fixed. I found the fix and reported it upstream and they were able to get it fixed. As long as they allow EAC to keep working the game should now be playable (again)
+- Black Ops II: Zombies is now fixed! (pulled from proton)
+- Black Ops II: Multiplayer is now fixed! (pulled from proton)
+- Elden Ring missing fullscreen resolutions fixed
+- Apex Legends crashing on fullscreen 1080p mode for some systems fixed
+- Wine updated to bleeding edge from 6/23 (6/24 has broken mfplat commits)
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+
+- Protonfixes:
+
+- Fall Guys: disabled esync and fsync to prevent random crashes
+- Warhammer 40,000: Space Marine crash fixed on systems with high core counts
+- Lara Croft and the Guardian of Light fixed on systems with high core counts
+- Ys Origin demo protonfix added (thanks Neodamode!)
+- SQUAD protonfix added -- should work OOTB now (thanks rokam!)
+- Total War Rome II protonfix added (thanks patmann03!)
+- Gwent protonfix added (thanks games647!)
+- Bionic Commander Rearmed protonfix added (thanks ruineka!)
+- Sonic Adventure 2 protonfix added (thanks ruineka!)'
+- klite codec protonfix updated for persona 4 golden (thanks tgurr!)
+- FarCry 4 crash fixed on systems with high core counts (it still has a crashing problem with dxvk + amd. works with dxvk+nvidia and wined3d+amd):
+
 ## GE-Proton-7-20 Released
 - Fix FSR missing
 - Fix some WMV videos broken after previous release (UMVC3, Atelier, RE5)
