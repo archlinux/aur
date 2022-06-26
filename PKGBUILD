@@ -2,7 +2,7 @@
 
 pkgname=container-logs
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Print logs of docker containers on stdout'
 arch=('x86_64' 'armv7h')
 url=https://git.cryptic.systems/volker.raschek/container-logs
@@ -12,9 +12,7 @@ makedepends=('git' 'go')
 source=(
   "https://git.cryptic.systems/volker.raschek/container-logs/archive/v${pkgver}.tar.gz"
 )
-sha512sums=(
-  "a58945d67f58da882e4a00b122e217997f08e5fcbb0f2c555a1ccd16eb77df25fafcd65e23f001930acf45306d474791d0f4ced79d26f2cc0e4f2fdd87007cc6"
-)
+sha512sums=('a58945d67f58da882e4a00b122e217997f08e5fcbb0f2c555a1ccd16eb77df25fafcd65e23f001930acf45306d474791d0f4ced79d26f2cc0e4f2fdd87007cc6')
 
 build() {
   GOBIN=${HOME}/go/bin
