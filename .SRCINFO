@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-rust-analyzer-git
 	pkgdesc = rust-analyzer extension for coc.nvim
-	pkgver = r865.8eba9cf
+	pkgver = r1222.dc17ad2
 	pkgrel = 1
 	url = https://github.com/fannheyward/coc-rust-analyzer
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = neovim-coc-rust-analyzer-git
 	source = coc-rust-analyzer::git+https://github.com/fannheyward/coc-rust-analyzer.git
 	source = package.json.patch
 	sha256sums = SKIP
-	sha256sums = 3f5fdb4c82e98bff76a2241ae21d9a9da4b146f5bcd6a5cf110a8953260dc098
+	sha256sums = 157e798a11ae75f4ee6e797ea800249a3ea452ff0ae19c9b9e0529d7f6f19e30
 
 pkgname = neovim-coc-rust-analyzer-git
-
