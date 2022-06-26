@@ -1,13 +1,14 @@
 pkgbase = python-tinyaes
 	pkgdesc = A utility to find python versions on your system.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/naufraghi/tinyaes-py.git
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = cython
 	source = https://files.pythonhosted.org/packages/source/t/tinyaes/tinyaes-1.0.3.tar.gz
 	sha512sums = 71efd4bfcd0b68a883f174b06801dcdcc133f8075530c41d0315e5b60bd9730815a89a1b60acaffdfed403d0f50080afbd20ce1539607d05cb340c743558372f
