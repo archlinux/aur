@@ -1,13 +1,16 @@
 pkgbase = python-fastecdsa
 	pkgdesc = Python library for fast elliptic curve crypto
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antonkueltz/fastecdsa
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = python
 	depends = gmp
 	source = python-fastecdsa-2.2.3.tar.gz::https://files.pythonhosted.org/packages/source/f/fastecdsa/fastecdsa-2.2.3.tar.gz
