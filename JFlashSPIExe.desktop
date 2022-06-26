@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Segger JFlashSPIExe
+Comment=Segger flashing utility for Linux
+Exec=/usr/bin/JFlashSPIExe
+Icon=JLink.svg
+Terminal=false
+StartupNotify=false
+Categories=Development

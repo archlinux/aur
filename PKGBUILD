@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.66d
-pkgrel=0
+pkgrel=1
 epoch=46
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -34,6 +34,7 @@ desktops=(
         "JMemExe.desktop"
         "JRunExe.desktop"
         "JTAGLoadExe.desktop"
+        "JFlashSPIExe.desktop"
 )
 source+=(${desktops[@]})
 md5sums_x86_64=('6b4261e5d459fce8d6bb2426111e4837')
@@ -63,6 +64,7 @@ md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "74cb2486441a6e571dcc3327204cd8da"
          "8fa15c29a78bf1c98af5941607ff5a2a"
          "dd0923b84488e5f1cca5192324904201"
+         "f27a5853d30d127953aa6ecb9b482b42"
         )
 
 install=$pkgname.install
