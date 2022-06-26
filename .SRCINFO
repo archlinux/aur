@@ -1,6 +1,6 @@
-pkgbase = lapce
+pkgbase = lapce-git
 	pkgdesc = Lightning-fast and Powerful Code Editor (Git version)
-	pkgver = v0.1.2.r86.g49f4721
+	pkgver = v0.1.2.r90.g1596009
 	pkgrel = 1
 	url = https://lapce.dev
 	arch = x86_64
