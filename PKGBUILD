@@ -4,7 +4,7 @@
 
 pkgname=dsview
 pkgver=1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
 url="http://www.dreamsourcelab.com/"
