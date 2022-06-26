@@ -1,0 +1,24 @@
+pkgbase = wallpaper-engine-kde-plugin-git
+	pkgdesc = A kde wallpaper plugin integrating wallpaper engine.
+	pkgver = 0.5.3.r1.geca8c2b
+	pkgrel = 1
+	url = https://github.com/catsout/wallpaper-engine-kde-plugin
+	arch = x86_64
+	license = GPL2
+	makedepends = vulkan-headers
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = plasma-framework
+	depends = gst-libav
+	depends = mpv
+	depends = python-websockets
+	depends = qt5-declarative
+	depends = qt5-websockets
+	depends = qt5-webchannel
+	depends = vulkan-driver
+	provides = wallpaper-engine-kde-plugin
+	conflicts = wallpaper-engine-kde-plugin
+	source = git+https://github.com/catsout/wallpaper-engine-kde-plugin
+	sha256sums = SKIP
+
+pkgname = wallpaper-engine-kde-plugin-git
