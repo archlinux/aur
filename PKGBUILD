@@ -2,7 +2,7 @@
 # Contributor: Kunkgg <goukun07@gmail.com>
 pkgname=shell-color-scripts
 _pkgname=shell-color-scripts
-pkgver=1.1.r39.143937f
+pkgver=1.1.r96.da2e3c5
 pkgrel=1
 pkgdesc="A CLI for the collection of terminal color scripts. Included 52 beautiful terminal color scripts."
 arch=('i686' 'x86_64')
@@ -34,9 +34,8 @@ package() {
   mkdir -p "${pkgdir}/opt/${pkgname}/colorscripts"
   install -Dm644 colorscript.1 "${pkgdir}/usr/local/man/man1/colorscript.1"
   install -Dm755 colorscripts/* -t "${pkgdir}/opt/${pkgname}/colorscripts"
-  install -Dm755 zsh_completion/* -t "${pkgdir}/opt/${pkgname}/zsh_completion"
+  install -Dm755 completions/* -t "${pkgdir}/opt/${pkgname}/completions"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm755 colorscript.sh "${pkgdir}"/usr/bin/colorscript
-  install -Dm644 zsh_completion/_colorscript -t "${pkgdir}"/usr/share/zsh/site-functions
 }
