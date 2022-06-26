@@ -4,7 +4,7 @@
 pkgname=qt6-location-dev
 pkgver=6.3.1
 pkgrel=1
-pkgdesc="Qt Module to implement MQTT protocol."
+pkgdesc="QtLocation, built from dev branch, until it is officialy released."
 arch=("x86_64")
 url="https://github.com/qt/qtlocation"
 license=("MIT")

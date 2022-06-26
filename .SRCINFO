@@ -1,5 +1,5 @@
 pkgbase = qt6-location-dev
-	pkgdesc = Qt Module to implement MQTT protocol.
+	pkgdesc = QtLocation, built from dev branch, until it is officialy released.
 	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/qt/qtlocation
