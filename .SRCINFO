@@ -1,0 +1,14 @@
+pkgbase = elxocmcorekit-legacy
+	pkgdesc = CLI manager of Emulex HBAs in physical and virtual server deployments, for legacy cards, but still receiving updates.
+	pkgver = 12.8.614.12
+	pkgrel = 1
+	url = https://www.broadcom.com/products/storage/fibre-channel-host-bus-adapters/emulex-hba-manager
+	arch = x86_64
+	license = custom
+	provides = elxocmcorekit
+	conflicts = elxocmcorekit
+	options = !strip
+	source = file://elxocmcore-ubuntu16-20-12.8.614.12-1.tgz
+	sha256sums = 6262640193e7cfaa9db22d40bcb4628debd57e872a63719d224be0fca03a9073
+
+pkgname = elxocmcorekit-legacy
