@@ -5,7 +5,7 @@
 pkgname='deluge1'
 _basename="${pkgname%1}"
 pkgver=1.3.15
-pkgrel=9
+pkgrel=10
 pkgdesc='BitTorrent client with multiple interfaces, using a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -15,12 +15,11 @@ depends=(
 )
 makedepends=(
     'intltool'
-    'libtorrent-rasterbar<=1:1.2.10-4'
     'python2-setuptools'
 )
 optdepends=(
-    'python2-geoip: for peer IP geolocation'
     'libtorrent-rasterbar<=1:1.2.10-4: for the daemon'
+    'python2-geoip: for peer IP geolocation'
     'python2-notify: notifications for GTK client'
     'python2-pygame: audible notifications for GTK client'
     'python2-libappindicator: appindicator notifications for GTK client'
@@ -63,6 +62,10 @@ prepare() {
         -e '1s|#![ ]*/usr/bin/env python[^2]\?|#!/usr/bin/env python2|' \
         -e '1s|#![ ]*/bin/env python[^2]\?|#!/usr/bin/env python2|' \
         -i $(find . -name '*.py')
+
+    echo "Disabling 'get_libtorrent.sh': don't try to download libtorrent from SVN"
+    sed -e '5s|^$|exit 127|' \
+        -i 'get_libtorrent.sh'
 }
 
 build() {
