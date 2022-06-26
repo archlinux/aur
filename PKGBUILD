@@ -11,10 +11,6 @@ makedepends=('go')
 source=("https://gitea.olznet.de/eqmk/eqmk/archive/v$pkgver.tar.gz")
 sha256sums=('7d14d7e51ce73849ce844b026a7038bbb100f663be28cf60c5f38d9895c90534')
 
-prepare() {
-    GOPATH="$srcdir/go" go get github.com/pelletier/go-toml
-}
-
 build() {
     cd $pkgname
     GOPATH="$srcdir/go" go build \
