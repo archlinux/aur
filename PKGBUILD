@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    LATEST_SHA=$(curl -s https://api.github.com/repos/ciderapp/Cider/branches/stable | grep sha | cut -d '"' -f 4 | sed 's/v//' | xargs)
+    LATEST_SHA=$(curl -s https://api.github.com/repos/ciderapp/Cider/branches/stable | grep sha | cut -d '"' -f 4 | sed 's/v//' | xargs | cut -d' ' -f1)
     COMMITSINCESTABLE=$(git rev-list $LATEST_SHA..HEAD --count)
     CURRENT_VERSION=$(node -p -e "require('./package.json').version")
     if [[ $COMMITSINCESTABLE -gt 0 ]]; then
