@@ -2,32 +2,35 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-tinyrecord
+_pkg="${pkgname#python-}"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Atomic transactions for TinyDB"
 arch=('any')
 url="https://github.com/eugene-eeo/tinyrecord"
 license=('MIT')
-depends=('python-tinydb>=4.0.0')
-makedepends=('python-setuptools' 'git')
+depends=('python-tinydb')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver::git+$url#commit=6affc1814314e067f266a65d9d7d21b2e978b23f?signed")
+source=("$pkgname::git+$url#commit=6affc18?signed")
 sha256sums=('SKIP')
 validpgpkeys=('BB354D48E3A3B416AC1242CB517D153BDE152D17')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	pytest tests.py
+	cd "$pkgname"
+	pytest -x tests.py
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
