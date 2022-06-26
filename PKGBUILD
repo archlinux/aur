@@ -5,7 +5,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc='PipeWire audio capturing for OBS Studio'
 arch=('x86_64')
-url='https://github.com/Qufyy/obs-pipewire-audio-capture'
+url='https://github.com/dimtpap/obs-pipewire-audio-capture'
 license=('GPL2')
 depends=('pipewire' 'obs-studio>=27')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/linux-pipewire-audio-$pkgver.tar.gz)
