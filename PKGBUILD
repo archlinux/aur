@@ -2,13 +2,13 @@
 
 pkgname=mergestat
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Query git repositories with SQL'
 arch=('x86_64')
 url='https://app.mergestat.com/w/public'
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go' 'cmake')
+makedepends=('git' 'go' 'cmake' 'help2man')
 options=('!lto')
 _commit='5b6c920656fd8bcad1d41b361756d6f3606aaa12'
 source=(
@@ -66,6 +66,9 @@ build() {
   for shell in bash fish zsh; do
     ./.build/mergestat completion "$shell" > ".build/$shell.completion"
   done
+
+  # generate man page
+  help2man --version-string="$pkgver" ./.build/mergestat > .build/mergestat.1
 }
 
 check() {
@@ -90,6 +93,9 @@ package() {
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  # man page
+  install -vDm644 -t "$pkgdir/usr/share/man/man1" .build/mergestat.1
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
