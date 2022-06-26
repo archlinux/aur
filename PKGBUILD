@@ -3,6 +3,7 @@
 # Contributor: optiseth (AUR)
 # Contributor: SanskritFritz (gmail)
 # Maintainer: pfm <vorticity at mail dot ru>
+# Maintainer: OrchidRock <1058712592 at qq dot com>
  
 pkgname=rarcrack
 pkgver=0.2
