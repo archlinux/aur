@@ -1,0 +1,4 @@
+post_install() {
+   echo "==> cgit looks at /etc/cgitrc for configuration. There is"
+   echo "==> an example configuration file in the cgitrc(5) man page."
+}
