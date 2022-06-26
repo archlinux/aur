@@ -2,7 +2,7 @@
 # Contributor: igor-dyatlov <dyatlov.igor@gmail.com>
 
 pkgname=blackbox-terminal-git
-pkgver=42.alpha3.r27.ge0f2fbf
+pkgver=0.8.0.r1.g91ecf5d
 pkgrel=1
 pkgdesc="A beautiful GTK 4 terminal."
 arch=('x86_64')
