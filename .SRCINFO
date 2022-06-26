@@ -1,5 +1,5 @@
 pkgbase = cwonf
-	pkgdesc = Harmonize your configurations
+	pkgdesc = Harmonize your system by synchronizing your configurations
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/Eternahl/cwonf
