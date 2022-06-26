@@ -14,10 +14,10 @@ makedepends=('yarn' 'git')
 license=('MIT')
 source=("${_extname}::git+${url}.git"
         'package.json.patch')
-pkgver=r865.8eba9cf
+pkgver=r1222.dc17ad2
 pkgrel=1
 sha256sums=('SKIP'
-            '3f5fdb4c82e98bff76a2241ae21d9a9da4b146f5bcd6a5cf110a8953260dc098')
+            '157e798a11ae75f4ee6e797ea800249a3ea452ff0ae19c9b9e0529d7f6f19e30')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
