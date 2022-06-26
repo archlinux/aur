@@ -2,7 +2,8 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=3.0.1
+_pkg=python-bigquery
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -36,22 +37,22 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3b95fc6c66b21286585d2ef585839b456f83ed38abbf470b75dc0aaf1108828d')
+sha256sums=('1f7986eec231e817704f922d61d8ec88b3411c8c04fc44e87fb77600c6c26d7f')
 
 build() {
-	cd "python-bigquery-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
-	cd docs
-	PYTHONPATH=../ sphinx-build -b man ./ _build
+	## FIXME: man pages not building
+	# cd docs
+	# PYTHONPATH=../ sphinx-build -b man ./ _build
 }
 
 package() {
 	export PYTHONHASHSEED=0
-	cd "python-bigquery-$pkgver"
+	cd "$_pkg-$pkgver"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
-
+	# install -Dm644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -s \
