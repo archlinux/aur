@@ -1,12 +1,16 @@
 pkgbase = python-pypinfo
 	pkgdesc = View PyPI download statistics with ease
-	pkgver = 20.0.0
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = https://github.com/ofek/pypinfo
+	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python>=3.6
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
 	depends = python-binary
 	depends = python-click
 	depends = python-google-cloud-bigquery
@@ -14,7 +18,7 @@ pkgbase = python-pypinfo
 	depends = python-platformdirs
 	depends = python-tinydb
 	depends = python-tinyrecord
-	source = python-pypinfo-20.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-20.0.0.tar.gz
-	sha256sums = 770bbafda03eb231929ef6e245bf75c09b260bbd5fcdf54a8cc446aa2b2d2d0e
+	source = python-pypinfo-21.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinfo/pypinfo-21.0.0.tar.gz
+	sha256sums = 4a500a989977de2f2ea2b05e4d84a5a0caef7d43dffbe40ab581cbf60cc78293
 
 pkgname = python-pypinfo
