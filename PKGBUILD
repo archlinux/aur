@@ -1,20 +1,22 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=palette-git
-pkgver=2.0.1.r3.gca8e63d
+pkgver=2.0.2.r3.g3a145d1
 pkgrel=1
 pkgdesc="Tool for viewing the GNOME color palette as defined by the design guidelines"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/design/palette"
 license=('GPL3')
-depends=('gtk4')
+depends=('libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git"
+source=(
+  "git+$url.git"
   "git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
-sha256sums=('SKIP'
+b2sums=(
+  'SKIP'
   'SKIP')
 
 pkgver() {
@@ -35,9 +37,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build || :
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
