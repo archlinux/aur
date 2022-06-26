@@ -1,10 +1,11 @@
+# Mantainer: amirva < amirv at github >
 # Mantainer: sgar < swhaat at github >
-
-pkgbase=esphomeyaml-dev
-pkgname=esphome-dev
-pkgver=dev
+pkgbase="esphomeyaml-dev"
+pkgname="esphome-dev"
+_pkgname="esphome"
+pkgver=2022.6.1.r29.g28d2949eb
 pkgrel=1
-pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant - development branch"
+pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant (development branch)"
 url="https://github.com/esphome/ESPHome"
 depends=('python-setuptools'
 	'python-voluptuous'
@@ -21,34 +22,31 @@ depends=('python-setuptools'
 	'platformio'
 	'esptool'
 	'python-aioesphomeapi')
+conflicts=('esphome')
+provides=('esphome')
 optdepends=('python-esphome-dashboard: esphome dashboard addition')
 license=('MIT')
 arch=('any')
 replaces=('esphomeyaml')
-source=("${pkgname}::git+https://github.com/esphome/ESPHome#branch=dev")
+source=("esphome::git+https://github.com/esphome/ESPHome#branch=dev")
 sha256sums=('SKIP')
 
+pkgver() {
+	  cd "$srcdir/$_pkgname"
+		  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/$_pkgname"
 	sed -i 's/==.*//' requirements.txt
 }
 
 build() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/$_pkgname"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/$_pkgname"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
-
-check() {
-    cd "$srcdir/${pkgname}"
-
-##	 Run tests, takes a while
-    cp esphome/__main__.py ${pkgname}.py
-#    python esphome.py tests/test1.yaml compile
-#    python esphome.py tests/test2.yaml compile
-}
-
