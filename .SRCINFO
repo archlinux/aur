@@ -1,12 +1,12 @@
 pkgbase = jarowinkler-cpp
 	pkgdesc = Fast Jaro and Jaro Winkler distance
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/maxbachmann/jarowinkler-cpp
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = jarowinkler-cpp-1.0.1-2.tar.gz::https://github.com/maxbachmann/jarowinkler-cpp/archive/v1.0.1.tar.gz
-	sha256sums = c3a309f8446a9afec4f248a823f610bab047d3ada45ebf37009284fd2d80e0e9
+	source = jarowinkler-cpp-1.0.2.tar.gz::https://github.com/maxbachmann/jarowinkler-cpp/archive/v1.0.2.tar.gz
+	sha256sums = 27970eade7a351d0e61a5750b6d5fbb4aa09cd12f1bc6b1a8425559d430dff1c
 
 pkgname = jarowinkler-cpp
