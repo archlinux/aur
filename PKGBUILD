@@ -1,6 +1,6 @@
 # Maintainer: Thomas 'Eternahl' ROLLIN
 pkgname=cwonf
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 url="https://codeberg.org/Eternahl/cwonf"
 makedepends=('rust' 'cargo')
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Harmonize your system by synchronizing your configurations"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz"::$url/archive/$pkgver.tar.gz)
-md5sums=("899e20f55514d766c84e8104139e0f97")
+md5sums=("19551b5dd1eb50d6c8c6e1393a3f3593")
 
 build() {
     return 0
