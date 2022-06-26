@@ -1,4 +1,5 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
+# Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -46,7 +47,7 @@ _1k_HZ_ticks=
 
 ### Do not edit below this line unless you know what you're doing
 
-pkgbase=linux-next-git
+pkgbase=linux-next-um5302ta-git
 pkgver=20220622.r0.gac0ba5454ca8
 _srcname=linux-next
 pkgrel=1
@@ -62,6 +63,10 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        'v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.patch'
+        'v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.patch'
+        'v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.patch'
+        'v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch'
          # the main kernel config files
         'config')
 
@@ -287,4 +292,8 @@ done
 
 sha512sums=('SKIP'
             '654552b89b93cb78f1fd7cc7687db1e6d0a86789e0c31f812e61fbc1440e8135f3e5c46ff0abfd74d53d7bd81a60406bf262745697a9034f10bb5c464342febf'
+            'eaf031c0ac465c493f11b743883e0da63e6f5c58e06c9e667a85866e3e30532b112c4d46ec643c91087713e5cecd7068c1b9b70191dac6d4977721c4fe240cd9'
+            '402c11256d7e67f2942120e9c743dfc2165d7bab662883dc1ba00f49ff162d32a561000f144b97192ae07057f7830cd74dcae72cf4ae43f83f5a79f2791b1336'
+            'a355bb276797b4d426501ed5bebb631473f52f8689ecb64574ab8252bf1c214c6149f7b5a90a2113d66a82c8c4de0776a5701d8085b35523291bd617e6fe56ee'
+            'd8211fdf30c82ab9905fb2f1da67288235b01d5b4575f0f6d677ca18e4b8fe76dc087482c582cfdcf6be7806ca7f239b6c8b7f364ea257d33440b988782b96cc'
             'df3f00765aa2687c7e2f92e5c6a41faaa285e9286a25d503a6fe533214bdc752dc3315d50fe0095bf5cbb1378ed38e792520f0127feee955608e98b1065f16e8')
