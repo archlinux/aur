@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.49.r0.gb3abb982e8
+pkgver=0.7.55.r0.gdb389b1508
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -21,7 +21,6 @@ makedepends=(
 	'openssl'
 	'pixman'
 	'python-yaml'
-	'samurai'
 	'tomlplusplus>=3.1'
 	'xxhash>=0.8'
 )
@@ -67,8 +66,6 @@ prepare() {
 	python scripts/gen-license.py > XEMU_LICENSE
 	# unbundle tomlplusplus
 	mkdir tomlplusplus/include
-	# unbundle xxhash
-	sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
 }
 
 build() {
@@ -78,7 +75,7 @@ build() {
 		--disable-debug-info \
 		--enable-slirp=system \
 		--extra-cflags="-DXBOX=1" \
-		--ninja=samu \
+		--ninja="$NINJA" \
 		--target-list=i386-softmmu \
 		--with-git-submodules=ignore
 	make qemu-system-i386
