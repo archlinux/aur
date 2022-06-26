@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=lceda-pro-bin
-pkgver=1.6.31
+pkgver=1.7.24
 pkgrel=1
 pkgdesc="立创EDA专业版，专业、强大的国产PCB设计工具，永久免费全新的交互式布线引擎，流畅，不卡顿，完全的独立自主知识产权，让您放心专注于设计，下一代工程师的首选EDA工具"
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=("${pkgname%-bin}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip"
         "LICENSE"
         "${pkgname}.install")
-sha256sums=('af709c397edc4302071ec3c20bcde94025ba6c43c8712b9fe8f2fc57a8169c10'
+sha256sums=('3dda1cd05d141a29649069b728f750e6660aea56d81e8dafb47dc83d737f1cbe'
             '686f681d913d7f943bb5aac66cc902f2eb251e7a20fda43412c048d6134b3592'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
 # noextract=(${pkgname%-bin}-${pkgver}.zip)
@@ -27,7 +27,8 @@ package() {
     export LC_CTYPE="zh_CN.UTF-8"
     install -dm0755 "${pkgdir}/opt/${pkgname%-bin}/"
 
-    bsdtar xf "${srcdir}/${pkgname%-bin}-linux-x64.zip" --strip-components=1 -C  "${pkgdir}/opt/${pkgname%-bin}"
+#    bsdtar xf "${srcdir}/${pkgname%-bin}-linux-x64.zip" --strip-components=1 -C  "${pkgdir}/opt/${pkgname%-bin}"
+    bsdtar xf "${srcdir}/${pkgname%-bin}-linux-x64.zip" -C  "${pkgdir}/opt/${pkgname%-bin}"
 
     # icon
     local _icon
