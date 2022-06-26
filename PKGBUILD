@@ -22,6 +22,8 @@ prepare() {
   # disable pluginxs xml
   sed -i "s|_paraview_add_plugin_XML_DOCUMENTATION ON|_paraview_add_plugin_XML_DOCUMENTATION OFF|g" CMake/ParaViewPlugin.cmake
   sed -i "s|NOT _paraview_add_plugin_XML_DOCUMENTATION|FALSE|g" CMake/ParaViewPlugin.cmake
+  # https://gitlab.kitware.com/paraview/paraview/-/issues/21442
+  curl -L https://github.com/sandialabs/seacas/commit/5e1b1918.patch | patch -p5 -d VTK/ThirdParty/exodusII/vtkexodusII || true
 }
 
 build() {
