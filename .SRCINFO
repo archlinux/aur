@@ -1,0 +1,12 @@
+pkgbase = minivideo-git
+	pkgver = 0.14_787.62894a2
+	pkgrel = 1
+	url = https://github.com/emericg/MiniVideo
+	arch = x86_64
+	arch = i686
+	makedepends = cmake
+	conflicts = minivideo
+	source = minivideo-git::git+https://github.com/emericg/MiniVideo.git
+	sha256sums = SKIP
+
+pkgname = minivideo-git
