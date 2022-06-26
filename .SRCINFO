@@ -13,6 +13,6 @@ pkgbase = python-labml
 	source = https://files.pythonhosted.org/packages/source/l/labml/labml-0.4.152.tar.gz
 	source = https://raw.githubusercontent.com/labmlai/labml/9b51c8494b4e9ef008cf30f85d626fee3a3028bf/readme.md
 	sha256sums = 13a2a206194b0a5a7c4e9fe59972b8682897446b4c58cb251c26d2c52e4367a7
-	sha256sums = 52ce96a13aa600f28d49644d94a0e3d3223957c642c4878fadc1b6dfe9874b6e
+	sha256sums = 6db04c59d8b441e9583e389093e889d41b4d2f84b0370f14a07cc734741a8bdb
 
 pkgname = python-labml
