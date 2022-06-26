@@ -8,7 +8,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.10.6.dev26+g0ad99a1
+pkgver=0.10.6.dev26+gdc6d5a1
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
@@ -40,8 +40,7 @@ build() {
 
 check() {
   cd "$srcdir/${_pkgname}"
-  pytest -v \
-    || echo "Tests from hell: https://github.com/pimutils/khal/issues/860"
+  pytest -v
 }
 
 package() {
