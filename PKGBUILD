@@ -2,7 +2,7 @@
 pkgname=robot-ricochet
 _pkgname=mirrored-lasers
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="You are a sneaky smuggler, who has had an unlucky encounter with the galactic police bots. Now you must evade capture by destroying the robots that have come aboard."
 arch=('any')
 url="https://codeberg.org/Samsai/mirrored-lasers"
@@ -11,7 +11,7 @@ makedepends=('rust')
 depends=('sdl2' 'sdl2_gfx' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf')
 provides=("${pkgname}" "${pkgname}-level-editor")
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Samsai/${pkgname}/archive/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Samsai/${_pkgname}/archive/${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
 sha512sums=(
