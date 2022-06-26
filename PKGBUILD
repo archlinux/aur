@@ -4,7 +4,7 @@
 
 _pkgbase=nvfand
 pkgname=nvfand-git
-pkgver=r33.2e49c8b
+pkgver=r34.af35edd
 pkgrel=1
 pkgdesc='a daemon that sets the fan speed of your nvidia GPU(s) based on a custom curve.'
 arch=('any')
@@ -30,5 +30,5 @@ package() {
 
   install -Dm755 out/bin/nvfand "$pkgdir"/usr/bin/nvfand
   install -Dm755 out/bin/nvsetspeed "$pkgdir"/usr/bin/nvsetspeed
-  install -Dm644 nvfand.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
+  install -Dm644 nvfand.service "$pkgdir"/usr/lib/systemd/user/nvfand.service
 }
