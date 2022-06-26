@@ -2,8 +2,8 @@
 # Contributor: desbma
 
 pkgname=zoxide
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='A smarter cd command for your terminal'
 arch=('x86_64')
 url='https://github.com/ajeetdsouza/zoxide'
@@ -14,7 +14,7 @@ optdepends=(
   'fzf: for interactive selection'
 )
 options=('!lto')
-_commit='96a43e9c79da048cbab8f7114a8e08d1cd7ec867'
+_commit='3df60eb3d3c3b904730f3c0d1fb7f66c0695aa7e'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
