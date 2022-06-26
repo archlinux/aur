@@ -6,19 +6,11 @@ pkgbase = deluge1
 	arch = any
 	license = GPL3
 	makedepends = intltool
-	makedepends = librsvg
-	makedepends = pygtk
-	makedepends = python2-mako
+	makedepends = libtorrent-rasterbar<=1:1.2.10-4
 	makedepends = python2-setuptools
-	makedepends = xdg-utils
-	depends = hicolor-icon-theme
-	depends = libtorrent-rasterbar<=1:1.2.10-4
 	depends = python2
-	depends = python2-chardet
-	depends = python2-pyopenssl
-	depends = python2-pyxdg
-	depends = python2-twisted
 	optdepends = python2-geoip: for peer IP geolocation
+	optdepends = libtorrent-rasterbar<=1:1.2.10-4: for the daemon
 	optdepends = python2-notify: notifications for GTK client
 	optdepends = python2-pygame: audible notifications for GTK client
 	optdepends = python2-libappindicator: appindicator notifications for GTK client
@@ -45,3 +37,8 @@ pkgbase = deluge1
 	sha256sums = b4c397cc4ffede983554331c2b31e40feadda3a03e2ee377c3892c88b096b564
 
 pkgname = deluge1
+	depends = hicolor-icon-theme
+	depends = python2-chardet
+	depends = python2-pyopenssl
+	depends = python2-pyxdg
+	depends = python2-twisted

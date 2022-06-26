@@ -11,24 +11,16 @@ arch=('any')
 url='https://deluge-torrent.org/'
 license=('GPL3')
 depends=(
-    'hicolor-icon-theme'
-    'libtorrent-rasterbar<=1:1.2.10-4'
     'python2'
-    'python2-chardet'
-    'python2-pyopenssl'
-    'python2-pyxdg'
-    'python2-twisted'
 )
 makedepends=(
     'intltool'
-    'librsvg'
-    'pygtk'
-    'python2-mako'
+    'libtorrent-rasterbar<=1:1.2.10-4'
     'python2-setuptools'
-    'xdg-utils'
 )
 optdepends=(
     'python2-geoip: for peer IP geolocation'
+    'libtorrent-rasterbar<=1:1.2.10-4: for the daemon'
     'python2-notify: notifications for GTK client'
     'python2-pygame: audible notifications for GTK client'
     'python2-libappindicator: appindicator notifications for GTK client'
@@ -79,6 +71,14 @@ build() {
 }
 
 package() {
+    depends=(
+        'hicolor-icon-theme'
+        'python2-chardet'
+        'python2-pyopenssl'
+        'python2-pyxdg'
+        'python2-twisted'
+    )
+
     cd "${_tarname}"
     python2 setup.py install --prefix='/usr' --root="${pkgdir}" --optimize=1 --skip-build
 
