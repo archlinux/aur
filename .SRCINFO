@@ -1,0 +1,14 @@
+pkgbase = python-anchor-kr-git
+	pkgdesc = This project is created in the favor of scraping projects of KR.
+	pkgver = 6.4cedb6a
+	pkgrel = 1
+	url = https://github.com/justfoolingaround/anchor
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	provides = python-anchor-kr
+	source = git+https://github.com/justfoolingaround/anchor
+	md5sums = SKIP
+
+pkgname = python-anchor-kr-git
