@@ -3,7 +3,7 @@
 
 pkgname=firedragon-extension-plasma-integration
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma browser integration addon for FireDragon'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/'
@@ -16,7 +16,4 @@ install=$pkgname.install
 
 package() {
   install -Dm644 extension.xpi "${pkgdir}/usr/lib/firedragon/browser/extensions/plasma-browser-integration@kde.org.xpi"
-
-  # https://librewolf.net/docs/faq/#how-do-i-get-native-messaging-to-work
-  ln -s /usr/lib/mozilla/native-messaging-hosts "${pkgdir}/usr/lib/firedragon/native-messaging-hosts"
 }
