@@ -1,8 +1,9 @@
-# Maintainer: Batuhan Başerdem <lastname dot firstname at gmail dot com>
+# Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
+# Contributor: Batuhan Başerdem <lastname dot firstname at gmail dot com>
 # Based on PKGBUILD by bserckx
 pkgname=hamsket
-pkgver=0.6.2
-pkgrel=1
+pkgver=0.6.3
+pkgrel=2
 pkgdesc='Free and Open Source app that combines common web apps into one'
 arch=('x86_64')
 url="https://github.com/TheGoddessInari/hamsket"
@@ -12,14 +13,14 @@ makedepends=(
     'gendesk'
     'java-runtime=8'
     'desktop-file-utils'
-    'ruby'
+    'ruby2.7'
     'npm'
     'sencha-cmd-6'
     'git')
 provides=('hamsket')
 conflicts=('hamsket-bin' 'rambox' 'rambox-bin' 'rambox-os' 'ramboxpro-bin')
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('538320e873c7a2e44741f6072f5de02a')
+sha256sums=('cfbfbc41a6c9529e78fca2b7ae6609ec2994fb4885a37ab24875e0353fc39d20')
 # For gendesk
 _name='Hamsket'
 _exec='/usr/bin/hamsket -- %u'
@@ -40,6 +41,9 @@ prepare() {
 
     # This line does nothing
     # sed --in-place --regexp-extended 's|^(\s*)("build":\s*\{$)|\1\2\n\1\t"electronVersion": "'"${_ver}"'",|m' "${srcdir}/${pkgname}-${pkgver}/package.json"
+
+    # Use ruby-2.7 for sencha build command
+    sed -i 's:^build.ruby.path=ruby$:&-2.7:' "${srcdir}/${pkgname}-${pkgver}/.sencha/app/defaults.properties"
 }
 
 build() {
