@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.2.0_devel.153993.93f0ddd51b4.02359b69dbf79b2bb68700002ba384ab
+pkgver=22.2.0_devel.156007.99bcfb2c9e8.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -26,15 +26,18 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
            'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_nv'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip'
         'LICENSE'
-        'eglapi_hack.patch')
+#        'eglapi_hack.patch'
+        )
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '83448b54dfea2e53891476fe3d6657e3')
+#         '83448b54dfea2e53891476fe3d6657e3'
+         )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '2cf8ef08c5ac02e5a795c37a67a12547ab752620b2c2a3f34ff53195f50e1758ebc8004f0b356d99255f2c9af19815e6ac61d66aaebecebe5d1d00578d1f412d')
+#            '2cf8ef08c5ac02e5a795c37a67a12547ab752620b2c2a3f34ff53195f50e1758ebc8004f0b356d99255f2c9af19815e6ac61d66aaebecebe5d1d00578d1f412d'
+            )
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -78,12 +81,13 @@ build () {
     export CC="clang"
     export CXX="clang++"
 
+    # d3d12 in gallium-drivers is disabled because of build error
     meson setup mesa _build \
         -D prefix=/usr \
         -D sysconfdir=/etc \
         -D b_ndebug=true \
         -D platforms=auto \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
         -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
@@ -111,6 +115,7 @@ build () {
         -D gallium-rusticl=true \
         -D opencl-spirv=true \
         -D shader-cache=enabled \
+        -D rust_std=2021 \
         -D c_args="-Wno-error=incompatible-pointer-types-discards-qualifiers"
        
     meson configure _build
