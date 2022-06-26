@@ -1,6 +1,6 @@
 pkgbase = g15daemon-systemd
 	pkgdesc = g15daemon init script for systemd
-	pkgver = 20220622
+	pkgver = 20220626
 	pkgrel = 1
 	url = https://gitlab.com/menelkir/g15daemon
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = g15daemon-systemd
 	depends = g15daemon
 	depends = systemd
 	source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon.service
-        source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/udev/99-g15daemon.rules  
+	source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/udev/99-g15daemon.rules
+	source = https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon-hotplug
 	sha256sums = 7d91cf893fbad9d3bc7ccf318aa27d2c89b94036e8433a6f8f7732f2be4669bb
-        sha246sums = 1a12cb587d175d4a06bfc0b6be8d19c0824fe7b58eef887dcaa19b92727c6ae7
+	sha256sums = 1a12cb587d175d4a06bfc0b6be8d19c0824fe7b58eef887dcaa19b92727c6ae7
+	sha256sums = 2a0a52864c40805bf6fe7a91a0b6ce660d7744ba43456143e64988f8038da47d
 
 pkgname = g15daemon-systemd
