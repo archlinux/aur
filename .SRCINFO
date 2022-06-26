@@ -1,17 +1,19 @@
 pkgbase = palette
 	pkgdesc = Tool for viewing the GNOME color palette as defined by the design guidelines
-	pkgver = 2.0.1.r0.g3af4acb
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/palette
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = gtk3
-	source = git+https://gitlab.gnome.org/World/design/palette.git#tag=2.0.1.r0.g3af4acb
+	depends = libadwaita
+	source = git+https://gitlab.gnome.org/World/design/palette.git#commit=01ce37b3e262574ad7594b5e5b906b7aacd2ab81
 	source = git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = palette

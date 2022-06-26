@@ -1,41 +1,41 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
-_metaname='org.gnome.design.Palette'
-pkgname='palette'
-pkgver=2.0.1.r0.g3af4acb
+pkgname=palette
+pkgver=2.0.2
+_commit=01ce37b3e262574ad7594b5e5b906b7aacd2ab81
 pkgrel=1
 pkgdesc='Tool for viewing the GNOME color palette as defined by the design guidelines'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://gitlab.gnome.org/World/design/palette'
 license=('GPL3')
-depends=('gtk3')
+depends=('libadwaita')
 makedepends=('git' 'meson' 'vala')
-source=("git+${url}.git#tag=${pkgver}"
-        "git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
-sha256sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+checkdepends=('appstream-glib')
+source=(
+  "git+$url.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
+b2sums=(
+  'SKIP'
+  'SKIP')
 
 prepare() {
   cd "${pkgname}"
-  # Submodule list: https://gitlab.gnome.org/World/design/palette/-/blob/master/.gitmodules
   git submodule init
-  git config 'submodule.hig.url' "${srcdir}/HIG-app-icons"
+  git config submodule.hig.url $srcdir/HIG-app-icons
   git submodule update
 }
 
 build() {
-  arch-meson "${pkgname}" 'build'
-  meson compile -C 'build'
+  arch-meson "${pkgname}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build || :
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C 'build'
-  install -Dvm644 "${pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  meson install -C build --destdir "$pkgdir"
 }
-
-# vim: ts=2 sw=2 et:
