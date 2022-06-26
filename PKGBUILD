@@ -5,7 +5,7 @@
 
 # Maintainer: Stephen <stephenvdw.social@gmail.com>
 pkgname=ytbgmplayer-git
-pkgver=1.2.10.r2.5a1a743
+pkgver=1.2.11.r3.a836508
 pkgrel=1
 # epoch=
 pkgdesc="A lightweight youtube background music player"
@@ -34,14 +34,14 @@ md5sums=("SKIP")
 
 pkgver(){
 	cd "${_pkgname}"
-	printf "1.2.10.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.2.11.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	pwd
 	cd yt-playlist-bgm-player
 	export NIMBLE_DIR=nimble-data
-	nimble build -d:release
+	nimble build -d:release -y
 	chmod +x ytbgmplayer
 }
 
