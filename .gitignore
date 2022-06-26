@@ -1,0 +1,6 @@
+*
+!.gitignore
+!kokua_icon.png
+!kokua-secondlife.desktop
+!kokua-secondlife.launcher
+!PKGBUILD

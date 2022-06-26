@@ -1,11 +1,12 @@
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: mikers <mikeonthecomputer@gmail.com>
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=6.4.22.51074
-_pkgver=6_4_22_51074
-_pkgprever=6.4.22
+pkgver=6.5.5.51893
+_pkgver=$(echo $pkgver | tr '.' '_')
+_pkgprever=${pkgver%\.*}
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 #url="http://www.kokuaviewer.org"
@@ -23,10 +24,10 @@ optdepends=('libpulse: for PulseAudio support'
 	'pangox-compat: for media_plugin_webkit to work')
 conflicts=('kokua-opensim')
 
-source=("https://phoenixnap.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
+source=("https://bitbucket.org/kokua/downloads/downloads/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
 	"file://kokua-secondlife.desktop"
 	"file://kokua-secondlife.launcher")
-md5sums=('e3ff01c926ce40a6e67999774b3c85d2'
+md5sums=('8a429dbfedbc5a291c16e7a5f38b70e1'
          '3893a2c8ae9cb8e2adb4d7c47750029b'
          'e12fd7bd333f4f810dec66f1be17c71c')
 
