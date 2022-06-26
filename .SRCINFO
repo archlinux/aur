@@ -1,0 +1,23 @@
+pkgbase = minivideoinfos-git
+	pkgdesc = Get detailed informations about your audio, video and picture files!
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/emericg/MiniVideoInfos
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = qt6-charts
+	depends = qt6-svg
+	depends = qt6-location-dev
+	depends = minivideo-git
+	depends = libexif
+	depends = taglib
+	source = minivideoinfos-git::git+https://github.com/emericg/MiniVideoInfos.git
+	sha256sums = SKIP
+
+pkgname = minivideoinfos-git
