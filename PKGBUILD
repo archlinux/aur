@@ -2,17 +2,17 @@
 
 pkgname=prometheus-nut-exporter
 _pkgname=nut_exporter
-pkgver=2.3.5
+pkgver=2.4.1
 pkgrel=1
-pkgdesc="Prometheus exporter for Network UPS Tools metrics"
+pkgdesc='Prometheus exporter for Network UPS Tools metrics'
 arch=('x86_64')
-url="https://github.com/DRuggeri/nut_exporter"
+url='https://github.com/DRuggeri/nut_exporter'
 license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('nut: for monitoring a local NUT server')
 options=('!lto')
-_commit='d229eb22ee4fc39dbb8f23c31d11be09289fe80f'
+_commit='c550e4f7dfaa5b8e766bedd980d00f2e800ca578'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'

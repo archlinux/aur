@@ -1,6 +1,6 @@
 pkgbase = prometheus-nut-exporter
 	pkgdesc = Prometheus exporter for Network UPS Tools metrics
-	pkgver = 2.3.5
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/DRuggeri/nut_exporter
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = prometheus-nut-exporter
 	depends = glibc
 	optdepends = nut: for monitoring a local NUT server
 	options = !lto
-	source = prometheus-nut-exporter::git+https://github.com/DRuggeri/nut_exporter.git#commit=d229eb22ee4fc39dbb8f23c31d11be09289fe80f
+	source = prometheus-nut-exporter::git+https://github.com/DRuggeri/nut_exporter.git#commit=c550e4f7dfaa5b8e766bedd980d00f2e800ca578
 	source = systemd.service
 	source = sysusers.conf
 	b2sums = SKIP
