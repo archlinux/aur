@@ -8,7 +8,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.10.5.dev13+g38e0a8e
+pkgver=0.10.6.dev25+g3bd2f45
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python-atomicwrites' 'python-click' 'python-click-log'
 'python-setuptools' 'python-tzlocal' 'python-urwid' 'python-xdg')
 optdepends=('python-setproctitle: Set process name'
             'vdirsyncer: Synchronize CalDAV calendars')
-checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
+checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer' 'python-hypothesis')
 source=("${_pkgname}::git+https://github.com/pimutils/khal.git")
 sha256sums=('SKIP')
 provides=('khal')
