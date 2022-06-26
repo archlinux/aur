@@ -8,7 +8,7 @@
 
 pkgname=khal-git
 _pkgname=khal
-pkgver=0.10.6.dev25+g3bd2f45
+pkgver=0.10.6.dev26+g0ad99a1
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV (Git)'
 arch=('any')
@@ -58,9 +58,6 @@ package() {
   # man page
   install -vDm 644 doc/build/man/${_pkgname}.1 \
     -t "${pkgdir}/usr/share/man/man1/"
-  # zsh completion
-  install -vDm 644 "misc/__${_pkgname}" \
-   "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   # license
   install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   # docs

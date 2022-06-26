@@ -1,6 +1,6 @@
 pkgbase = khal-git
 	pkgdesc = CLI calendar application build around CalDAV (Git)
-	pkgver = 0.10.6.dev25+g3bd2f45
+	pkgver = 0.10.6.dev26+g0ad99a1
 	pkgrel = 1
 	url = https://lostpackets.de/khal/
 	arch = any
