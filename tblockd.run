@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Check every 10 seconds if a network interface is up
+while ! grep -xq 'up' /sys/class/net/[ewu]*/operstate; do sleep 10; done
+
+# When an interface is up, launch the daemon
+exec tblockd -d -c /etc/tblock.conf
+

@@ -1,0 +1,25 @@
+pkgbase = tblock-runit
+	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://tblock.codeberg.page
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = pandoc
+	makedepends = gzip
+	makedepends = python>=3
+	makedepends = python-setuptools
+	depends = python-urllib3
+	depends = python-requests
+	depends = python-colorama
+	depends = runit
+	provides = tblock
+	conflicts = tblock
+	backup = etc/tblock.conf
+	source = tblock-runit-2.1.0.tar.gz::https://codeberg.org/tblock/tblock/archive/2.1.0.tar.gz
+	source = tblockd.run
+	sha512sums = b47352f822e671e18405c4c0834c905be7d48d81dc9326d0f3b37e164c2c749bb3742bebea1ba979bf2fd07830cf20cee4291675fcbf15db4def0c14cc0a77f5
+	sha512sums = 90e3f2164894176088ae2e7bf55a05e6bdbd2def96dd8cada08f31ae56cdcadf9e781ba0e954129c06aea54baf936719c7d06f6c322f5c86af3eb6700a745501
+
+pkgname = tblock-runit
