@@ -1,22 +1,25 @@
-# maintainer: J. C. Hammons <jch at bitma dot st>
-# contributer: Amr Okasha <amradel55 at gmail dot com>
-# contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: J. C. Hammons <jch at bitma dot st>
+# Contributor: Amr Okasha <amradel55 at gmail dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
-pkgver=5.6.0
+pkgver=5.8.9
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
 license=('MIT')
 provides=('netron')
+depends=('gtk3')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('b65a4eec553689518963269eeb27c5a27ec62547d638540d2ab002c6ef169e15'
+sha256sums=('6867881f37cc95b833ba592c48b3bf05affb7de34f8b13f4cc4f5b3da85e2a16'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
+
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
   ./${pkgname}-${pkgver}.AppImage --appimage-extract
