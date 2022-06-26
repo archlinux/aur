@@ -1,7 +1,7 @@
 pkgbase = r-clustree
 	pkgdesc = Visualise Clusterings at Different Resolutions
-	pkgver = 0.4.4
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=clustree
 	arch = any
 	license = GPL
@@ -24,7 +24,7 @@ pkgbase = r-clustree
 	optdepends = r-spelling
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/clustree_0.4.4.tar.gz
-	sha256sums = 7a6100f88c9a6e8d10b253ee227ecf1dc4e84e418eb8da64cd801d2a158b956f
+	source = https://cran.r-project.org/src/contrib/clustree_0.5.0.tar.gz
+	sha256sums = a87f65dc0489af77807ed27de67e905699f21f50bcfba6a84353b9a846a84ac1
 
 pkgname = r-clustree
