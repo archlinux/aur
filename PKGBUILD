@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=binr
-_pkgver=1.1
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Cut Numeric Values into Evenly Distributed Groups'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('191cf56bf7d8fe8a318a0894f5b9e412266f8088abb004e785b9ade37f48f34d')
+sha256sums=('9e9f2279f056bd3d3081553fc0fa1d9012a7bd169160b3556c43dc0fb99a3fc0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
