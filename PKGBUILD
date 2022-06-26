@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biosigner
-_pkgver=1.24.0
+_pkgver=1.24.2
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.24.2
 pkgrel=1
 pkgdesc='Signature discovery from omics data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ec4a97a1f1fe8f35e59ea071a0031a1f09090ee691665578b0638f0a9458287')
+sha256sums=('352136103a5ad9f18eb61f6647a1034a3fceaf3aef6194ff46fe6c3cfc12bb6d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
