@@ -14,7 +14,7 @@ license=('Proprietary')
 depends=()
 makedepends=('tar')
 source=("https://community-store-packages.deepin.com/appstore/pool/appstore/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-md5sums=('91da7cdf7f646174eb4f2ce194ba170d')
+md5sums=('c9d52bab4e44487abd0778c7a552b7a1')
 
 package() {
     tar -xf data.tar.xz -C ${pkgdir} --exclude="etc"
