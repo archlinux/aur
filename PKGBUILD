@@ -13,9 +13,9 @@ pkgname=gnome-settings-daemon-ubuntu
 _use_ppa=false
 #_ppa_rel=2ubuntu1~ubuntu16.04.1
 #_ppa_ver=3.20.1
-_ubuntu_rel=0ubuntu2
+_ubuntu_rel=1ubuntu1
 #_ubuntu_ver=3.22.1
-pkgver=3.22.1
+pkgver=42.2
 pkgrel=1
 pkgdesc="GNOME Settings Daemon"
 url="https://git.gnome.org/browse/gnome-settings-daemon"
@@ -28,7 +28,7 @@ makedepends=(docbook-xsl git gnome-common intltool libxslt python xf86-input-wac
 groups=(gnome unity)
 provides=("gnome-settings-daemon=${pkgver}")
 conflicts=(gnome-settings-daemon)
-_commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d  # tags/GNOME_SETTINGS_DAEMON_3_22_1^0
+_commit=4bdf8b5ae38a382be4126bbc0ce8d87bac46177e  # tags/GNOME_SETTINGS_DAEMON_42_2^0
 source=("git://git.gnome.org/gnome-settings-daemon#commit=${_commit}"
         "git://git.gnome.org/libgnome-volume-control")
 
@@ -40,7 +40,7 @@ fi
 
 sha512sums=('SKIP'
             'SKIP'
-            'c1e270e5a1eb89d929d7a5d6b5e538bee3798c64e66ad31b722dd857e80ea288095f6d74867c64708366e151a64ed1607c2584d75c578491cafcc1bf6c170e28')
+            '4d540731401788b44f17a2d9d8e0e3a5dfce2b0bf28c83ed4b1a3515d9aaa49366c6549e88792045dfe70851ac946d2d7431ed34188a42f4ae4b97b32cd67ecd')
 
 pkgver() {
     cd "${pkgname%-*}"
@@ -55,31 +55,22 @@ prepare() {
     git submodule update
 
     # Apply Ubuntu's patches
-    patch -p1 -i ../debian/patches/64_restore_terminal_keyboard_shortcut_schema.patch
-    patch -p1 -i ../debian/patches/ubuntu-lid-close-suspend.patch
-    patch -p1 -i ../debian/patches/revert_background_dropping.patch
-    patch -p1 -i ../debian/patches/revert-gsettings-removals.patch
+    patch -Np1 -i ../debian//ubuntu/print-notifications-suppress-printer-may-not-be-connected.patch
+    patch -Np1 -i ../debian/ubuntu/keyboard-sync-input-sources-to-accountsservice.patch
+    patch -Np1 -i ../debianu/buntu/media-keys-restore-terminal-keyboard-shortcut-schema.patch
+    patch -Np1 -i ../debian/ubuntu/media-keys-correct-logout-action.patch
+    patch -Np1 -i ../debian/ubuntu/lid-close-suspend-support.patch
+    patch -Np1 -i ../debian/ubuntu/keyboard-Use-ibus-sources-from-locale.patch
+    patch -Np1 -i ../debian/ubuntu/Revert-media-keys-fix-gnome-settings-desktop-file.patch
+    patch -Np1 -i ../debian/ubuntu/teach-gsd-about-the-gnome-calculator-snap-.desktop-name.patch
 
-    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd "${pkgname%-*}"
-
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --localstatedir=/var \
-        --libexecdir=/usr/lib/gnome-settings-daemon \
-        --disable-static
-      
-    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+    arch-meson -C gnome-settings-daemon build
+    ninja -C build
 }
 
 package() {
-    cd "${pkgname%-*}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}"  ninja -C build install
 }

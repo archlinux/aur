@@ -1,6 +1,6 @@
 pkgbase = gnome-settings-daemon-ubuntu
 	pkgdesc = GNOME Settings Daemon
-	pkgver = 3.22.1
+	pkgver = 42.2
 	pkgrel = 1
 	url = https://git.gnome.org/browse/gnome-settings-daemon
 	arch = i686
@@ -32,14 +32,13 @@ pkgbase = gnome-settings-daemon-ubuntu
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = upower
-	provides = gnome-settings-daemon=3.22.1
+	provides = gnome-settings-daemon=42.2
 	conflicts = gnome-settings-daemon
-	source = git://git.gnome.org/gnome-settings-daemon#commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d
+	source = git://git.gnome.org/gnome-settings-daemon#commit=4bdf8b5ae38a382be4126bbc0ce8d87bac46177e
 	source = git://git.gnome.org/libgnome-volume-control
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_3.22.1-0ubuntu2.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_42.2-1ubuntu1.debian.tar.xz
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = c1e270e5a1eb89d929d7a5d6b5e538bee3798c64e66ad31b722dd857e80ea288095f6d74867c64708366e151a64ed1607c2584d75c578491cafcc1bf6c170e28
+	sha512sums = 4d540731401788b44f17a2d9d8e0e3a5dfce2b0bf28c83ed4b1a3515d9aaa49366c6549e88792045dfe70851ac946d2d7431ed34188a42f4ae4b97b32cd67ecd
 
 pkgname = gnome-settings-daemon-ubuntu
-
