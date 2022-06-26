@@ -23,12 +23,12 @@ build() {
 
 check() {
   cd "$srcdir/${_name}-$pkgver" || exit 1
-  pytest -vvv tests
+  PYTHONPATH="$srcdir/${_name}-$pkgver/src" pytest -vvv tests
 }
 
 package() {
   cd "$srcdir/${_name}-$pkgver" || exit 1
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 "$srcdir/${_name//-/_}-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -vDm 644 "$srcdir/${_name}-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
