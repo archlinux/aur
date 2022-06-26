@@ -3,10 +3,10 @@
 
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
-pkgname=("${pkgbase}" "${pkgbase}-cuda")
+pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=1.11.0
 _pkgver=1.11.0
-pkgrel=10
+pkgrel=11
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -188,7 +188,9 @@ prepare() {
 
   cd "${srcdir}"
 
+  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt"
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
+  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-cuda"
 
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
@@ -229,21 +231,36 @@ prepare() {
 }
 
 build() {
-  echo "Building without cuda and with non-x86-64 optimizations"
+  echo "Building without cuda and without non-x86-64 optimizations"
   export USE_CUDA=0
   export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # this horrible hack is necessary because the current release
   # ships inconsistent CMake which tries to build objects before
   # thier dependencies, build twice when dependencies are available
   python setup.py build || python setup.py build
 
+  echo "Building without cuda and with non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  cd "${srcdir}/${_pkgname}-${pkgver}-opt"
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
+  echo "Building with cuda and without non-x86-64 optimizations"
+  export USE_CUDA=1
+  export USE_CUDNN=1
+  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  # same horrible hack as above
+  python setup.py build || python setup.py build
 
   echo "Building with cuda and with non-x86-64 optimizations"
   export USE_CUDA=1
   export USE_CUDNN=1
-  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
@@ -281,20 +298,38 @@ _package() {
 }
 
 package_python-pytorch() {
-  pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
-  replaces=(python-pytorch-opt)
+  pkgdesc="${_pkgdesc}"
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
   _package
 }
 
+package_python-pytorch-opt() {
+  pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
+  conflicts=(python-pytorch)
+  provides=(python-pytorch)
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-opt"
+  _package
+}
+
 package_python-pytorch-cuda() {
-  pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
+  pkgdesc="${_pkgdesc} (with CUDA)"
   depends+=(cuda cudnn magma)
-  replaces=(python-pytorch-opt-cuda)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  _package
+}
+
+package_python-pytorch-opt-cuda() {
+  pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
+  depends+=(cuda cudnn magma)
+  conflicts=(python-pytorch)
+  provides=(python-pytorch python-pytorch-cuda)
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
   _package
 }
 
