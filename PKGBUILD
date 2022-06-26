@@ -5,12 +5,16 @@
 pkgname=arduino-ide-beta-bin
 _pkgver=2.0.0-rc8
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
 arch=(x86_64)
 url="https://github.com/arduino/arduino-ide"
 license=(AGPL3)
-depends=(libxkbfile libxss nss libsecret libusb usbutils python-pyserial git)
+depends=(libxkbfile libxss nss libsecret git)
+optdepends=('libusb: Needed for some libraries or boards'
+            'usbutils: Needed for stm32 boards using st-link'
+            'libusb-compat: Needed for the `micronucleus` cli utility'
+            'python-pyserial: Needed for esptool')
 makedepends=(gendesk)
 provides=(arduino-ide)
 conflicts=(arduino-ide)
