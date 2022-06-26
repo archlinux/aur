@@ -1,4 +1,5 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-types-python-dateutil
 _pkgname=${pkgname:7}
 pkgver=2.8.18
