@@ -3,7 +3,7 @@ pkgbase=python-jupyter_sphinx
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Sphinx extension for rendering of Jupyter interactive widgets"
 arch=('any')
@@ -11,9 +11,10 @@ url="https://jupyter-sphinx.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools')
 #'python-wheel' 'python-build' 'python-installer')
-checkdepends=('python-sphinx' 'jupyter-nbconvert' 'jupyterlab-widgets' 'jupyter-widgetsnbextension')
+#checkdepends=('python-sphinx' 'jupyter-nbconvert' 'jupyterlab-widgets' 'jupyter-widgetsnbextension')
+checkdepends=('python-nose' 'python-sphinx' 'python-ipywidgets' 'jupyter-nbconvert')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e7ab370d9793be5b20bce5447ccbd45b')
+md5sums=('130daa6be810976c9f8e30aa04011e50')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,12 +28,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test || warning "Tests failed"
+#   python setup.py test || warning "Tests failed"
 #   pytest #|| warning "Tests failed"
+    nosetests
 }
 
 package_python-jupyter_sphinx() {
-    depends=('python-sphinx>2' 'python-ipywidgets' 'jupyter-nbconvert>=5.5')
+    depends=('python-sphinx>=2' 'python-ipywidgets>=7.0.0' 'jupyter-nbconvert>=5.5')    #nbformat depend by nbconvert
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
