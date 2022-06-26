@@ -1,7 +1,7 @@
 # Maintainer: LanjieYou <ylj18926385312@163.com>
 pkgname='cgame2'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="五子棋游戏(Chinese Only)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/youlanjie/cgame2"
 license=('MIT')
 groups=()
 depends=('glibc')
-makedepends=()
+makedepends=('git' 'gcc' 'make')
 checkdepends=()
 optdepends=()
 provides=()
