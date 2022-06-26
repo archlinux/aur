@@ -1,11 +1,11 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: ValHue <vhuelamo at gmail dot com>
 # Contributor: marlock <marlock87 at hotmail dot com>
-#
+
 _name="mapcatcher"
 _python="python2"
 pkgname="gmapcatcher"
-pkgver="0.8.0.9"
+pkgver="0.8.2.1"
 pkgrel="1"
 pkgdesc="Offline maps viewer"
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname}.png"
         "${_name}_${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=('d3421d3a2ad41f0d9de1e1aa76366a8c6a1811da80f29d1dba2b853662ee29d1'
-            'aaedf4701ae686c301316ee947c6066c260938deb94891e0f83e758e62767e46')
+            'd8e71e627930bd5fce02e0ab9e3de3e96be6342de214227e42804dfd4e913c58')
 
 _gmapcatcher_desktop="[Desktop Entry]
 Name=GMapCatcher

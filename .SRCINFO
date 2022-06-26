@@ -1,6 +1,6 @@
 pkgbase = gmapcatcher
 	pkgdesc = Offline maps viewer
-	pkgver = 0.8.0.9
+	pkgver = 0.8.2.1
 	pkgrel = 1
 	url = https://github.com/heldersepu/GMapCatcher
 	arch = any
@@ -12,9 +12,8 @@ pkgbase = gmapcatcher
 	depends = python2-gobject2
 	conflicts = gmapcatcher-svn
 	source = gmapcatcher.png
-	source = mapcatcher_0.8.0.9.tar.gz::https://github.com/heldersepu/GMapCatcher/archive/0.8.0.9.tar.gz
+	source = mapcatcher_0.8.2.1.tar.gz::https://github.com/heldersepu/GMapCatcher/archive/0.8.2.1.tar.gz
 	sha256sums = d3421d3a2ad41f0d9de1e1aa76366a8c6a1811da80f29d1dba2b853662ee29d1
-	sha256sums = aaedf4701ae686c301316ee947c6066c260938deb94891e0f83e758e62767e46
+	sha256sums = d8e71e627930bd5fce02e0ab9e3de3e96be6342de214227e42804dfd4e913c58
 
 pkgname = gmapcatcher
-
