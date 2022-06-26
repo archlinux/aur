@@ -1,14 +1,19 @@
 # Maintainer: Jef Roosens
 
-pkgbase=yip-git
 pkgname=yip-git
-pkgver=0.1.2.r0.gdbcdd0d
+pkgver=0.1.3.r4.g164de8a
 pkgrel=1
-pkgdesc="Performant, lightweight HTTP server that echoes the client's IP address, written in plain C. (Development version)"
+pkgdesc="Performant, lightweight HTTP server that echoes the client's IP address, written in plain C. (development version)"
 arch=('x86_64')
 
 url='https://github.com/jenspots/yip'
 license=('AGPL-3.0')
+
+depends=('glibc')
+makedepends=('git' 'cmake')
+
+provides=('yip')
+conflicts=('yip')
 
 source=("${pkgname}::git+https://github.com/jenspots/yip#branch=main")
 md5sums=('SKIP')
@@ -18,12 +23,13 @@ pkgver() {
 }
 
 build() {
-    cd "${pkgname}"
-
-    gcc -o yip -O3 -lpthread yip.c
+    cmake -B build -S "${pkgname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    install -Dm755 "${pkgname}/yip" "${pkgdir}/usr/bin/yip"
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
+    DESTDIR="${pkgdir}" cmake --install build
 }
