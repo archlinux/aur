@@ -1,6 +1,6 @@
 pkgbase = clash-dev-git
 	pkgdesc = A rule-based tunnel in Go
-	pkgver = 1.3.5.r15.g9eb98e3
+	pkgver = 1.11.0.r0.gc231fd1
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = clash-dev-git
 	provides = clash-dev
 	conflicts = clash
 	conflicts = clash-dev
+	options = !lto
 	backup = etc/clash/config.yaml
 	source = git+https://github.com/Dreamacro/clash.git#branch=dev
 	source = clash-1.3.5.patch
@@ -30,4 +31,3 @@ pkgbase = clash-dev-git
 	sha256sums = fecf24242175c509db90d7ea130a3619aa2cc8fa79e0df0a09e01b03267ecee7
 
 pkgname = clash-dev-git
-

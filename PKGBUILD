@@ -4,7 +4,7 @@
 
 pkgname=clash-dev-git
 _pkgname=clash
-pkgver=1.3.5.r15.g9eb98e3
+pkgver=1.11.0.r0.gc231fd1
 pkgrel=1
 pkgdesc="A rule-based tunnel in Go"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git' 'go')
 provides=('clash' 'clash-dev')
 conflicts=('clash' 'clash-dev')
 backup=("etc/clash/config.yaml")
+options=('!lto')
 source=("git+${url}.git#branch=dev"
         "clash-1.3.5.patch"
         "config.yaml"
