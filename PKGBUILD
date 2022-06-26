@@ -3,7 +3,7 @@
 
 pkgbase=linux-zen-irq1-edge-low-shared
 pkgver=5.18.6.zen1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -31,9 +31,9 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '01fc2a937a19dad37a6e1c0262de3fc45aeca23e53166342eb9148e4900e04c4'
-            '1d29bf631ec569c8a7b4e82f45d4cb9a6333d4ad31c1973db950a919b42721ec'
-            '8132fb88b80e086811e717143dc23ca708bcb33aab78c598c48c28124068d84d'
-            '35677589d0149a563c51f723805b1517bf6f5e4df8261b189b68578f09ad670d')
+            '2f8cf3f6914d4c122c5247f0caadb2c3832b2bd9662005d05e4179337dd84adc'
+            'f68853f51f7e0d58e1a9c34fea8516d45a18e5b0a59477e87fea0eacf5be5c77'
+            '336c842b0054d496f05394b52d3361a005d81621e39f54878a41928988466735')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

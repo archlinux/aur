@@ -1,3 +1,11 @@
+From: Kent Hou Man <knthmn0@gmail.com>
+
+This laptop also defines its active-low keyboard IRQ in legacy format.
+Add IRQ override skipping for it.
+
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Kent Hou Man <knthmn0@gmail.com>
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 ---
 Change since v2: none
 

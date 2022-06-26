@@ -1,3 +1,10 @@
+The IRQ is described as (Edge, ActiveLow, Shared, ) in ACPI DSDT and
+it's correct. The override makes the keyboard interrupt polarity
+inverted, resulting in non-functional keyboard.
+Add an entry for skipping the override.
+
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 ---
 Change since v1:
  Match DMI_PRODUCT_NAME for ThinkBook because the board name
