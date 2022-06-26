@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=lapce-git
+Name=Lapce
 GenericName=Lightning-fast and Powerful Code Editor written in Rust
 Exec=/usr/bin/lapce %u
 Icon=Lapce
