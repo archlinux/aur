@@ -2,7 +2,7 @@
 pkgname=rlbotgui-rust-git
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rl-bot-gui
-pkgver=1.0.0.04f915d
+pkgver=.09f79c3
 pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
 arch=("x86_64")
@@ -18,17 +18,17 @@ source=("git+https://github.com/VirxEC/rlbot_gui_rust")
 sha512sums=(SKIP)
 
 build() {
-  cd "$srcdir/$git_pkgname/tauri-src"
+  cd "$srcdir/$git_pkgname/src-tauri"
   cargo build --release --target-dir target
 }
 
 package() {
-  cd "$srcdir/$git_pkgname/tauri-src"
+  cd "$srcdir/$git_pkgname/src-tauri"
 
   install -Dm755 target/release/$cargo_pkgname "${pkgdir}/usr/bin/$cargo_pkgname"
 }
 
 pkgver() {
-  cd "$srcdir/$git_pkgname/tauri-src"
+  cd "$srcdir/$git_pkgname/src-tauri"
   echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-parse --short HEAD)"
 }
