@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64')
@@ -25,14 +25,14 @@ optdepends=(
   'zlib: Faster image output when using kitty graphics protocol'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('81ec4e8d70931353426a07e7f58d05037e82e709305b6db50adda98dc1f52a47')
+sha256sums=('bb631801e21e30d2181fc95dd20d4cb752c2a1334b8a90b40219c4e7cafdc3d9')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_SQLITE3=OFF \
-    -DENABLE_RPM=OFF \
+    -DENABLE_SQLITE3='OFF' \
+    -DENABLE_RPM='OFF' \
     -DENABLE_IMAGEMAGICK6='OFF' \
     -Wno-dev
   cmake --build build
