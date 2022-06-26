@@ -1,0 +1,12 @@
+pkgbase = elxocmcorekit
+	pkgdesc = CLI manager of Emulex HBAs in physical and virtual server deployments
+	pkgver = 14.0.505.14
+	pkgrel = 1
+	url = https://www.broadcom.com/products/storage/fibre-channel-host-bus-adapters/emulex-hba-manager
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = file://elxocmcore-ubuntu18-22-14.0.505.14-1.tgz
+	sha256sums = 9630d6c77736db7430e43aca52db73709c70301008a01e23b4e6fdfd6b04ec3f
+
+pkgname = elxocmcorekit
