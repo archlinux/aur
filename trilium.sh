@@ -17,4 +17,4 @@ done
 
 export ELECTRON_IS_DEV=0 # Without this env variable Arch's Electron would open devtools by default
 
-exec electron16 /usr/lib/trilium/app.asar $@
+exec electron@electronversion@ /usr/lib/trilium/app.asar $@
