@@ -3,6 +3,7 @@
 # Contributor: Kim Scarborough <kim@scarborough.kim>
 
 pkgname='deluge1'
+_basename="${pkgname%1}"
 pkgver=1.3.15
 pkgrel=9
 pkgdesc='BitTorrent client with multiple interfaces, using a client/server model (legacy 1.3.x version)'
@@ -10,46 +11,50 @@ arch=('any')
 url='https://deluge-torrent.org/'
 license=('GPL3')
 depends=(
-    'python2'
-    'python2-attrs'
-    'python2-constantly'
-    'python2-gobject2'
-    'python2-pyxdg-git'
-    'python2-twisted-git'
-    'python2-incremental-git'
-    'python2-zope-interface-git'
-    'pygtk'
-    'desktop-file-utils'
     'hicolor-icon-theme'
+    'libtorrent-rasterbar<=1:1.2.10-4'
+    'python2'
+    'python2-chardet'
+    'python2-pyopenssl'
+    'python2-pyxdg'
+    'python2-twisted'
 )
 makedepends=(
     'intltool'
-    'libtorrent-rasterbar'
+    'librsvg'
+    'pygtk'
+    'python2-mako'
+    'python2-setuptools'
+    'xdg-utils'
 )
 optdepends=(
-    'python2-service-identity'
-    'libtorrent-rasterbar: required for daemon'
+    'python2-geoip: for peer IP geolocation'
+    'python2-notify: notifications for GTK client'
+    'python2-pygame: audible notifications for GTK client'
+    'python2-libappindicator: appindicator notifications for GTK client'
     'pygtk: required for GTK client'
+    'librsvg: required for GTK client'
     'xdg-utils: required for GTK client'
-    'python2-xdg: required for GTK client'
-    'python2-notify: optional for GTK client'
-    'python2-pygame: optional for GTK client'
-    'python2-libappindicator: optional for GTK client'
     'python2-mako: required for web client'
+    'python2-pillow: allow resizing of tracker icons'
+    'python2-setproctitle: properly name processes during runtime'
 )
-provides=('deluge')
+provides=(
+    "${_basename}=${pkgver}"
+    "${_basename}-gtk=${pkgver}"
+)
 conflicts=(
-    'deluge'
-    'deluge-git'
-    'deluge-stable-git'
+    "${_basename}"
+    "${_basename}-gtk"
 )
-backup=('etc/conf.d/deluged')
+backup=("etc/conf.d/${_basename}d")
 # ftp.osuosl.org is supposedly the source, but the mirrors have this in a different place than the master.
 # Using the master's URL until they figure it out.
-source=('https://ftp-osl.osuosl.org/pub/deluge/source/1.3/deluge-1.3.15.tar.xz'
-        'deluged.service'
-        'deluged.environment'
-        'deluge-web.service'
+_tarname="${_basename}-${pkgver}"
+source=("https://ftp-osl.osuosl.org/pub/deluge/source/1.3/${_tarname}.tar.xz"
+        "${_basename}d.service"
+        "${_basename}d.environment"
+        "${_basename}-web.service"
         'prefdialog.patch')
 sha256sums=('a96405140e3cbc569e6e056165e289a5e9ec66e036c327f3912c73d049ccf92c'
             '74f05cf43eae69f8ee8d257443ecdc0b0bbcc82cfb1bdb926ffe0a191164d699'
@@ -58,27 +63,32 @@ sha256sums=('a96405140e3cbc569e6e056165e289a5e9ec66e036c327f3912c73d049ccf92c'
             'b4c397cc4ffede983554331c2b31e40feadda3a03e2ee377c3892c88b096b564')
 
 prepare() {
-    cd "${srcdir}/deluge-${pkgver}"
-    patch -p1 -i "${srcdir}"/prefdialog.patch
+    cd "${_tarname}"
+    patch --verbose -p1 -i '../prefdialog.patch'
+
+    echo 'Changing hashbangs in *.py files to refer to python2'
+    sed -e '1s|#![ ]*/usr/bin/python[^2]\?|#!/usr/bin/python2|' \
+        -e '1s|#![ ]*/usr/bin/env python[^2]\?|#!/usr/bin/env python2|' \
+        -e '1s|#![ ]*/bin/env python[^2]\?|#!/usr/bin/env python2|' \
+        -i $(find . -name '*.py')
 }
 
 build() {
-    cd "${srcdir}/deluge-${pkgver}"
+    cd "${_tarname}"
     python2 setup.py build
 }
 
 package() {
-    cd "${srcdir}/deluge-${pkgver}"
-    python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-    # Quick fix to keep namcap from thinking we need Python 3
-    sed -i -e '1s@python@python2@' "${pkgdir}/usr/lib/python2.7/site-packages/deluge/ui/Win32IconImagePlugin.py"
+    cd "${_tarname}"
+    python2 setup.py install --prefix='/usr' --root="${pkgdir}" --optimize=1 --skip-build
+
     cd "${srcdir}"
-    install -Dm0644 deluged.service "${pkgdir}/usr/lib/systemd/system/deluged.service"
-    install -m0644 deluge-web.service "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm0644 deluged.environment "${pkgdir}/etc/conf.d/deluged"
+    install -Dm 644 "${_basename}d.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm 644 "${_basename}-web.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm 644 "${_basename}d.environment" "${pkgdir}/etc/conf.d/${_basename}d"
 
     echo 'u deluge - "Deluge BitTorrent daemon" /srv/deluge' |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/deluge.conf"
+        install -Dm 644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${_basename}.conf"
     echo 'd /srv/deluge 0770 deluge deluge' |
-          install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
+          install -Dm 644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${_basename}.conf"
 }
