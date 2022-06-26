@@ -7,14 +7,14 @@
 pkgname='python2-pyxdg'
 _name="${pkgname#python2-}"
 pkgver=0.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Official freedesktop.org XDG specifications support library'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('LGPL')
 depends=('python2')
 makedepends=('python2-setuptools')
-checkdepends=('python2-pytest')
+# checkdepends=('python2-pytest')        # Test are not self-contained and not deterministic; results depend on system setup
 provides=("pyxdg=${pkgver}" "python2-xdg=${pkgver}")
 conflicts=('pyxdg' 'python2-xdg' 'python2-pyxdg-git')
 
@@ -42,17 +42,18 @@ build() {
     python2 setup.py build
 }
 
-check() {
-    cd "${_tarname}"
-
-    LC_ALL='C.UTF-8' PYTHONPATH="$PWD/build/lib" \
-        pytest2 \
-            --verbose \
-            --cache-clear \
-            --import-mode=append \
-            -r A \
-            -k 'not test_find_icon_exists and not test_parse_menu'
-}
+# # Test are not self-contained and not deterministic; results depend on system setup and installed packages
+# check() {
+#     cd "${_tarname}"
+# 
+#     LC_ALL='C.UTF-8' PYTHONPATH="$PWD/build/lib" \
+#         pytest2 \
+#             --verbose \
+#             --cache-clear \
+#             --import-mode=append \
+#             -r A \
+#             -k 'not test_find_icon_exists and not test_parse_menu'
+# }
 
 package() {
     cd "${_tarname}"
