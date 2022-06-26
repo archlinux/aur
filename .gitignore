@@ -1,0 +1,6 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/audiobookconverter-bin.install
+!/audiobookconverter-AudioBookConverter.desktop
+!/.SRCINFO

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AudioBookConverter
+Comment=AudioBookConverter
+Exec=/opt/audiobookconverter/bin/AudioBookConverter
+Icon=/opt/audiobookconverter/lib/AudioBookConverter.png
+Terminal=false
+Type=Application
+Categories=AudioBookConverter
+MimeType=
