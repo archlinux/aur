@@ -2,15 +2,18 @@
 
 pkgname=vym-git
 _pkgname=vym
-pkgver=2.8.8.r119.g0b30833
-pkgrel=2
+pkgver=2.8.8.r152.gc9cd339
+pkgrel=1
 pkgdesc='A tool to generate and manipulate maps which show your thoughts'
 arch=('x86_64')
 url='https://sourceforge.net/projects/vym/'
 depends=('qt5-svg' 'qt5-script' 'desktop-file-utils' 'hicolor-icon-theme' 'bash' 'ruby')
 makedepends=('git' 'qt5-tools')
 license=('GPL')
-source=("${_pkgname}::git://github.com/insilmaril/vym.git" 'vym.desktop' )
+source=(
+  "${_pkgname}::git+https://github.com/insilmaril/vym.git#branch=develop"
+  'vym.desktop'
+)
 noextract=()
 sha256sums=(
   'SKIP'
@@ -41,12 +44,12 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  
+
 # install documentation
   install -Dm644 "${srcdir}"/$_pkgname/doc/$_pkgname.1.gz \
     "${pkgdir}"/usr/share/man/man1/$pkgname.1.gz
   install -Dm644 "${srcdir}"/$_pkgname/doc/$_pkgname.pdf \
-    "${pkgdir}"/usr/share/doc/$_pkgname/$_pkgname.pdf  
+    "${pkgdir}"/usr/share/doc/$_pkgname/$_pkgname.pdf
   rm -rf "${pkgdir}"/usr/share/doc/packages
 
 # .desktop and icon file
