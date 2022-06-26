@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=1.4.0.r3.ge2ccf6b9
+pkgver=1.5.0.fdroid.2.r16.ged2d2083
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
