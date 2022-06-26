@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-bin
-pkgver=0.12.5
+pkgver=0.12.6
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots. (binary .deb)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 groups=('utility')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
-sha512sums=('df0bac721c09624a146166ffe07e420fee8824dc9c5e6e837e7802f735dc392bb60a76138b0da18a4beec960b4bd26044bf5e65cc511c3538aaa6d2b99d0fc63')
+sha512sums=('f3e3ec5dc73cf48958df0e040141345b44576a83c6615a710b1a78c4aa51dae2bf3d7fd73a5a7b9b98d357763ed54da7e6a31d9d14cc6b14691b7abb98d83584')
 
 prepare() {
 	tar -xf data.tar.xz
