@@ -4,7 +4,7 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=4.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
@@ -38,9 +38,6 @@ prepare() {
 
 build() {
     cd $_pkgname-v$pkgver-full
-
-    # Fix https://bugs.archlinux.org/task/73220
-    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
 
     export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     #Turns out we're allowed to use the official API key that telegram uses for their snap builds:
