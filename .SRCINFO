@@ -1,6 +1,6 @@
 pkgbase = python-lifelines
 	pkgdesc = Survival analysis in Python
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/CamDavidsonPilon/lifelines
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-lifelines
 	depends = python-pandas
 	depends = python-formulaic
 	options = !emptydirs
-	source = lifelines-0.27.0.tar.gz::https://github.com/CamDavidsonPilon/lifelines/archive/refs/tags/v0.27.0.tar.gz
-	sha256sums = 1d88e7b532f8be820244f23f97b4f9ab404bc7c25d354486c48b9fd3244beb03
+	source = lifelines-0.27.1.tar.gz::https://github.com/CamDavidsonPilon/lifelines/archive/refs/tags/v0.27.1.tar.gz
+	sha256sums = 799614c584aaf1acc08948dd64356f9ffd66dd1dc18d0296b5c4bde06b67cd3c
 
 pkgname = python-lifelines
