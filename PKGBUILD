@@ -2,13 +2,13 @@
 
 pkgname=mitsuba2-git
 pkgver=2.2.1.r39.g83d1b180
-pkgrel=1
+pkgrel=2
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
 license=('custom')
 groups=()
-depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml')
+depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'cuda')
 makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'python-sphinx' 'python-guzzle-sphinx-theme' 'python-sphinxcontrib-bibtex' 'jq')
 checkdepends=('python-pytest' 'python-pytest-xdist' 'python-numpy')
 install=
