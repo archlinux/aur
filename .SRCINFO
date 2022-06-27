@@ -1,7 +1,7 @@
 pkgbase = prjtrellis-git
 	pkgdesc = Tools for working with the Lattice ECP5 bit-stream format
-	pkgver = 1.2.1.r0.g3ae21cf
-	pkgrel = 1
+	pkgver = 1.2.1.r4.g64b38df
+	pkgrel = 2
 	url = https://github.com/YosysHQ/prjtrellis
 	arch = x86_64
 	license = custom:ISC
@@ -16,7 +16,7 @@ pkgbase = prjtrellis-git
 	makedepends = python-recommonmark
 	depends = boost-libs
 	optdepends = python: python support
-	provides = prjtrellis=1.2.1.r0.g3ae21cf
+	provides = prjtrellis=1.2.1.r4.g64b38df
 	provides = libtrellis.so
 	provides = pytrellis.so
 	conflicts = prjtrellis

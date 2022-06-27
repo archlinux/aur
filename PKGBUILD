@@ -2,8 +2,8 @@
 
 _pkgname=prjtrellis
 pkgname=$_pkgname-git
-pkgver=1.2.1.r0.g3ae21cf
-pkgrel=1
+pkgver=1.2.1.r4.g64b38df
+pkgrel=2
 pkgdesc='Tools for working with the Lattice ECP5 bit-stream format'
 arch=('x86_64')
 url="https://github.com/YosysHQ/$_pkgname"
