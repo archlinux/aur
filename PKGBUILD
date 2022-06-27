@@ -4,7 +4,7 @@ _pkgname=MPINet
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.0
-pkgrel=4
+pkgrel=6
 pkgdesc='The package can implement the network-based metabolite pathway identification of pathways.'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
   r-biasedurn
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('1acd288a03f4d21c77d05a2992389a8d37d73b545d30a870794f5d0871bc83ff')
 
 build() {
