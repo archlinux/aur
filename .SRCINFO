@@ -1,7 +1,7 @@
 pkgbase = zihap-git
 	pkgdesc = zihap is a Unified Messaging and Social Media Apps which combines all your messaging services and social media into one single windows.
-	pkgver = a3ec8377e75f4e478ea95a465ded96c278710d75
-	pkgrel = 0
+	pkgver = 1.0.r1.ga3e619a
+	pkgrel = 1
 	url = https://gitlab.com/exkc/zihap/
 	arch = i686
 	arch = x86_64
