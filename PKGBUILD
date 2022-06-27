@@ -6,7 +6,7 @@
 _pkgname="lightning"
 
 pkgname="core-lightning"
-pkgver="0.11.1"
+pkgver="0.11.2"
 pkgrel="1"
 pkgdesc="A specification compliant Lightning Network implementation in C."
 arch=("any")
