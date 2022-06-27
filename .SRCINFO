@@ -1,7 +1,7 @@
 pkgbase = mummer
 	pkgdesc = MUMmer is a program for rapidly aligning large genomes
 	pkgver = 4.0.0rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mummer.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mummer
 	makedepends = yaggo
 	depends = perl
 	depends = gnuplot
+	replaces = mummer64
 	source = mummer-4.0.0rc1.tar.gz::https://github.com/mummer4/mummer/archive/refs/tags/v4.0.0rc1.tar.gz
 	sha512sums = c22c7efbb0374b9b41b3f8788a0360e0bc11cd0a7eda4c88907ebcc75e8a51240fc338d33dd7d6800f2d550b359d13bfa79b187379be774e28c73864c6904c26
 

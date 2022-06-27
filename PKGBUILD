@@ -5,13 +5,14 @@
 
 pkgname=mummer
 pkgver=4.0.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="MUMmer is a program for rapidly aligning large genomes"
 arch=('i686' 'x86_64')
 url="http://mummer.sourceforge.net"
 license=('PerlArtistic')
 depends=('perl' 'gnuplot')
 makedepends=('autoconf' 'yaggo') #'python' 'ruby' 'swig'
+replaces=(mummer64)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mummer4/mummer/archive/refs/tags/v4.0.0rc1.tar.gz")
 
 build() {
