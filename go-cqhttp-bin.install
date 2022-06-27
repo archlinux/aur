@@ -1,3 +1,6 @@
 post_upgrade(){
-    echo -e "\033[32m leveldb 使用了新格式，新数据将保存在 data/leveldb-v3，你可以使用 https://github.com/RomiChan/gocq-leveldb-migrate 迁移数据 \033[0m"
+    if [ $(vercmp $2 1.0.0_rc2) -lt 0 ]; then
+        echo -e "\033[32mleveldb 使用了新格式，新数据将保存在 data/leveldb-v3，你可以使用 https://github.com/RomiChan/gocq-leveldb-migrate 迁移数据\033[0m"
+        echo -e "\033[32mHTTP和正向WS使用了新配置文件格式(保留了对老版本的兼容)\033[0m"
+    fi
 }
