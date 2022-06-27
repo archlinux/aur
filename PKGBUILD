@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=30
+_LLL_SUBVER=50
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -36,7 +36,7 @@ _NUMA_disable=y
 #   intel partial Clear Linux patchset
 #   lib_zstd
 #   lrng framework
-_Xan_COMMIT=aa7fde3b9886d0858ffc91cb0f436b52281c01f4
+_Xan_COMMIT=e66971a97b812487354914a47cdcc4d06403a717
 _Xan_PATCH_SRC="xanmod-$_Xan_COMMIT.tar.gz::https://github.com/xanmod/linux-patches/archive/$_Xan_COMMIT.tar.gz"
 _Xan_PATCH_PATCH=()
 
@@ -95,8 +95,8 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '18059d8e3f01ab38b22ddf4c2e0a0a9db50926f6535649f51ee7a86a8542aff1'
-            'ddc05a3deacd9174a8654d2a3ded6fec0e4a853b6702e326d56545a473c3bd02'
+            '16bfe772c0ac272bc4b5be68b3e1aead51eebdab2d61b360a0d18126f52c50a8'
+            '34c9791cc0cacab354bdb0b283e1d429367bb78a060f89b1ef5a9add5880e339'
             '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
             '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')
@@ -111,6 +111,16 @@ if [ "$_Bisect_debug" != "off" ]; then
   makedepends+=('wget' 'modprobed-db')
   PKGEXT='.pkg.tar'
 fi
+
+patch_xanmod_dir() {
+  if [ -d "$1" ]; then
+    for i in "$1"/0*.patch; do
+      patch -Np1 -i $i
+    done
+  else
+    msg2 "----- $1 -----: not found!"
+  fi
+}
 
 prepare() {
   cd ${_srcname}
@@ -142,25 +152,15 @@ prepare() {
     patch -Ni ../$p -d $_Xan_patch_dir/
   done
   msg2 "Patching with xanmod: CK's high-resolution kernel timers (hrtimer) patchsets ..."
-  for i in $_Xan_patch_dir/ck-hrtimer/0*.patch; do
-    patch -Np1 -i $i
-  done
+  patch_xanmod_dir $_Xan_patch_dir/ck-hrtimer
   msg2 "Patching with xanmod: Graysky's additional CPU optimizations patchsets ..."
-  for i in $_Xan_patch_dir/graysky/0*.patch; do
-    patch -Np1 -i $i
-  done
+  patch_xanmod_dir $_Xan_patch_dir/graysky
   msg2 "Patching with xanmod: intel partial Clear Linux patchsets ..."
-  for i in $_Xan_patch_dir/intel/0*.patch; do
-    patch -Np1 -i $i
-  done
+  patch_xanmod_dir $_Xan_patch_dir/intel
   msg2 "Patching with xanmod: ZSTD library for bug fixes and r/w performance patchsets..."
-  for i in $_Xan_patch_dir/lib_zstd/0*.patch; do
-    patch -Np1 -i $i
-  done
+  patch_xanmod_dir $_Xan_patch_dir/lib_zstd
   msg2 "Patching with xanmod: Linux Random Number Generator (LRNG) framework patchsets..."
-  for i in $_Xan_patch_dir/lrng/0*.patch; do
-    patch -Np1 -i $i
-  done
+  patch_xanmod_dir $_Xan_patch_dir/lrng
 
   msg2 "Patching source with uksm ${_UKSM_VER} patches"
   cp "../uksm-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
