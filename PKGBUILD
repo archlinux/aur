@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.52.0
+pkgver=2.53.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
@@ -48,15 +48,16 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('0f58313339d230c95658f7ef311f83cc54ceb878c085bcf32ba68476e904b327')
-b2sums=('a6a14bec7e9259d23ee7c33bf8294b4285d79d22242653dc0ee3a6634340be0da7c184fe1793fb080479fd053582d015212fcf1607473a052e81972f283689fe')
+sha256sums=('eec15249c7a5d703bbbf861a80f62686e04c76331601ec2446f03be5c9902449')
+b2sums=('d8100bd5117235d628b0273355ebd9a65d37aff3b7acf54488625139b0980d10ff14887dbcec79d5221eca270f8ceb9b5e265f6970a245c4aa80eb0d44815229')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
   install -Dm755 o "$pkgdir/usr/bin/o"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/edit"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
