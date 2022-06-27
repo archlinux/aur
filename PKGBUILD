@@ -4,7 +4,7 @@ _pkgname=dmt
 _pkgver=0.8.20
 pkgname=r-${_pkgname,,}
 pkgver=0.8.20
-pkgrel=4
+pkgrel=6
 pkgdesc='Dependency Modeling Toolkit'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
   r-mvtnorm
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('fc8474b0f8b330d0a33c7bd07037a3aa4b2f5e50c88fa5a98686783113458c67')
 
 build() {
