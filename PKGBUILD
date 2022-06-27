@@ -21,6 +21,7 @@ source=("${pkgname}-${pkgver}.tar.xz::https://github.com/epoupon/lms/archive/v${
 sha256sums=('de3530e5ef7320e4355df095002721c5f83abe4abc8cc3b8b9f4f60579160099')
 
 build() {
+  mkdir "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make 
