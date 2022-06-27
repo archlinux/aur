@@ -2,9 +2,10 @@
 # Co-Maintainers: robertfoster, stafwag, Solskogen
 
 pkgname=edk2-avmf
-pkgver=20220221gitb24306f15daa
-pkgrel=3
+pkgver=20220526git16779ede2d36
+pkgrel=1
 fedora_ver=37
+fedora_rel=3
 pkgdesc="QEMU ARM/AARCH64 Virtual Machine Firmware (Tianocore UEFI firmware)."
 arch=('any')
 url="https://fedoraproject.org/wiki/Using_UEFI_with_QEMU"
@@ -17,11 +18,11 @@ optdepends=(
 )
 
 source=(
-  "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-aarch64-${pkgver}-${pkgrel}.fc${fedora_ver}.noarch.rpm"
-  "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-arm-${pkgver}-${pkgrel}.fc${fedora_ver}.noarch.rpm")
+  "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-aarch64-${pkgver}-${fedora_rel}.fc${fedora_ver}.noarch.rpm"
+  "https://download-ib01.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/e/edk2-arm-${pkgver}-${fedora_rel}.fc${fedora_ver}.noarch.rpm")
 
-sha256sums=('71f283f363e6e9c9da6fc84b713f587fc5aafba51e912e6829cad6d73ccd38ab'
-            '1f4c0ee9342e444e14a648c96b4c1e06f19c8a922e3ac06de63d9ad3b06df776')
+sha256sums=('a2932f0e2bb22d401fba53315d46148d970d55a62a0ff4931870ae35420f01b7'
+            '17d8c812d3ededb7adc5c1c688359516b2ebdf7746df2de802f06adb8f0f12fc')
 
 install=${pkgname}.install
 
