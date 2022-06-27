@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.18.5
+pkgver=5.18.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -89,20 +89,20 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/9baf57b4c2d9348bd5adecbb893870d1d79fade1.patch"
-  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/e410435c977a01e386fda83b5215540365a0086f.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/8b4c7ea3b44aa9d918b6bf0cfd0cf931355681a5.patch"
+  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/04ec00b2149847aea7ed584bf0e8642fdaeab3e5.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('d2670e53d72fc5f0cf637394452a701c7ab41473be526d29deba7b60789dc56e1c369f3ae05a76f67890822588a36d0b497f267b4b75c33d0a98ad5131c697c9'
+b2sums=('e5ae6756eac544d1813cfb386c212cfe9b0d3f6ce9df3e72c4f4e8755d99393ea7fa4c95d6a7b747b0ca8dfbfceb2b48ec958587789e83ddd5af06762d542e67'
         'SKIP'
         'eab78c88e45d9c8c365b12369f0e787fd70554c4e7efb8ce5d3360eaf5ef6036bed484b673ecc1ad58c7d120c261b0bcc71f443dcbd96665d06ae545f119d608'
         '81000dd93c038389ab1bbe04e1e9706062244e70571da03388c2ab0d382bd817d86d8b12adfe607b49adf7bbab3624640a70ba6df2e97bd7f55f9d2def73e88f'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '610fb62adbaf1ca851071840f400b31e3c53efd09adcb700d4775736127b59f12c477edcff7a3a81f760f4e866c61c08fb62bbb445af8e357c46ac4093d7b430'
-        '71651890d29033ee2fe8d180681802d07806b8f0b245d8132ecc6633ec0964e04253f8c1ab02417cafce8d4b084fa4b1a3ad0cd5a3dc1f20104e2e6c16aec5ea')
+        '7836b83928db2f3ffb9267d3a0e3fd86768b120406e30dbe7487ed611dddf36d193814e144e077326a50bd2bb8c680a3932bb49ed03454507630773551130553'
+        'ed92c1e4cfee9d75d2a57a10921f8629fce0099e6417899e9dc9d411a4746cef989adb9498e8f6e55ca22662ba236e5c1bc038aea0a527364314fc70a77c4707')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
