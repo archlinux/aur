@@ -6,6 +6,7 @@ pkgdesc="Software to analyze Holomorphic Maps and their dynamics"
 arch=("x86_64")
 url="https://github.com/ManelCG/sempiternum"
 depends=("libclc" "opencl-headers" "ocl-icd" "gtk3" "lib32-gtk3" "cairo" "lib32-cairo" "pango" "pixman")
+optdepends=("opencl-amd" "opencl-nvidia")
 _gitroot="https://github.com/ManelCG/Sempiternum.git"
 _gitname="sempiternum"
 source=()
