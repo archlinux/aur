@@ -18,6 +18,7 @@ pkgbase = fluent-bit
 	makedepends = systemd-libs
 	depends = gcc-libs
 	depends = openssl
+	depends = libyaml
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
 	source = https://fluentbit.io/releases/1.8/fluent-bit-1.8.12.tar.gz
