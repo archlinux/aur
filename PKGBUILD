@@ -74,6 +74,7 @@ prepare() {
 
 	# generate the mitsuba.conf file with only one renderer (RGB)
 	# NOTE: change this if you want to build something else
+	# NOTE: scalar_rgb must be in the "enabled" list at all times
 	grep -v '#' < "$srcdir/${pkgname%-git}"/resources/mitsuba.conf.template \
 		| jq '.["enabled"] = [
 			"scalar_mono",                  "scalar_rgb",                  "scalar_spectral",
