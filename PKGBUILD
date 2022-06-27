@@ -2,7 +2,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=clib
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="C package manager-ish"
 arch=(i686 x86_64)
@@ -10,8 +10,8 @@ url=https://www.clibs.org
 license=(custom:MIT)
 depends=(curl)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clibs/clib/archive/$pkgver.tar.gz")
-sha512sums=('965bbc2d66a8279009d6647be0c4aec8c2d61d11371a256eb8fc52152ed6d198243026f90c7651bdabcad6604b776b7a7a2f2d90843138d103ddc4c3b11c4961')
-b2sums=('987d96dc2d49f49f533d68e4998a767a3b794a046cbf91a4956425a88c5010d0759f40506b9f1f493d84cfbfe9b3b2406c7e110c83fa34a6b5636192c24670bb')
+sha512sums=('62476cadb1c70463bdabf13125778a5f246f2037012a207b6593f2b28cd8149ebaa463cc4a162dc69f77409e27a5896c182865defd4ed28edf313172fa411611')
+b2sums=('9c457bba8b679cad161efb46344dd324835ef083e8db1d8a4b24d13d57b0c399239f6135f5a7b41914815d855332a4c18bb3b570753ff9e6221104a82078caca')
 
 prepare () {
   cat >> "$srcdir/$pkgname-$pkgver/Makefile" <<-EOF
