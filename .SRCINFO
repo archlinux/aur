@@ -1,12 +1,12 @@
 pkgbase = bud-bin
 	pkgdesc = The Full-Stack Web Framework for Go
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/livebud/bud
 	arch = x86_64
 	license = MIT
 	provides = bud
-	source = https://github.com/livebud/bud/releases/download/v0.1.8/bud_v0.1.8_linux_amd64.tar.gz
-	sha256sums = bbc0e4c25114e142d4a7bebfe981d08e33f288f5aaf6d70513e4a9b28e951397
+	source = https://github.com/livebud/bud/releases/download/v0.1.9/bud_v0.1.9_linux_amd64.tar.gz
+	sha256sums = 1287d383f274f0f181f2a0751cf4d82be4e3b907a7c49cb85ab9a9fede6e6cd4
 
 pkgname = bud-bin
