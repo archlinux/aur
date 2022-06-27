@@ -1,0 +1,15 @@
+pkgbase = tinycmmc-git
+	pkgdesc = Tiny CMake Module Collections
+	pkgver = r50.32eaa5b
+	pkgrel = 1
+	url = https://github.com/grumbel/tinycmmc
+	arch = any
+	license = zlib
+	makedepends = git
+	makedepends = cmake
+	provides = tinycmmc=r50.32eaa5b
+	conflicts = tinycmmc
+	source = git+https://github.com/grumbel/tinycmmc
+	sha256sums = SKIP
+
+pkgname = tinycmmc-git
