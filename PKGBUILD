@@ -80,7 +80,6 @@ SKIP
 prepare()
 {
   cd $srcdir/pcsx2
-  git checkout tags/v"${pkgver}"
   git submodule init
   git config submodule.3rdparty/libchdr/libchdr.url $srcdir/libchdr
   git config submodule.3rdparty/gtest.url $srcdir/googletest
@@ -95,7 +94,7 @@ prepare()
 pkgver()
 {
   cd $srcdir/pcsx2
-  git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
