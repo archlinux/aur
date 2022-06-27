@@ -1,15 +1,16 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='zeit'
 pkgname="${_pkgname}-git"
-pkgver=0.5.0.r16.gdfcc5f9
+pkgver=0.6.0.r0.gc80c6d2
 pkgrel=1
 pkgdesc='Qt frontend to crontab'
 arch=('x86_64')
 url='https://github.com/loimu/zeit'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'kauth')
-makedepends=('cron' 'extra-cmake-modules' 'imagemagick' 'git' 'qt5-tools')
+depends=('cron' 'hicolor-icon-theme' 'kauth')
+makedepends=('extra-cmake-modules' 'imagemagick' 'git' 'qt5-tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git")
