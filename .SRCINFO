@@ -1,8 +1,9 @@
 pkgbase = mailctl-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pdobsan/mailctl
+	install = .INSTALL
 	arch = x86_64
 	license = BSD
 	depends = gnupg

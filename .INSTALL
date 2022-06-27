@@ -1,0 +1,13 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo
+  echo "*** Breaking changes! ***"
+  echo
+  echo "Config files format changed to YAML."
+  echo
+  echo "Edit your config files and adjust their file extensions."
+  echo "See the supplied config templates in /usr/share/mailctl/configs"
+  echo
+}
+

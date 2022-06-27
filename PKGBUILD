@@ -3,7 +3,7 @@
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64)
 url="https://github.com/pdobsan/${_pkgname}"
@@ -24,6 +24,8 @@ noextract=(${_pkgname}-${pkgver}-Linux ${_pkgname}-${pkgver}-Linux.sha256)
 
 sha256sums=(SKIP SKIP SKIP)
 
+install=.INSTALL
+
 prepare() {
   sha256sum -c ${_pkgname}-${pkgver}-Linux.sha256
 }
@@ -34,10 +36,4 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
   cp -r configs ${pkgdir}/usr/share/${_pkgname}
-  echo
-  echo "*** Breaking changes! ***"
-  echo "Config files format changed to YAML."
-  echo "Edit your config files and adjust their file extensions."
-  echo "See the supplied config templates for details."
-  echo
 }
