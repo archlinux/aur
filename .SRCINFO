@@ -1,7 +1,7 @@
 pkgbase = osbuild-composer
 	pkgdesc = An HTTP service for building bootable OS images
 	pkgver = 55
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.osbuild.org
 	arch = x86_64
 	license = Apache
