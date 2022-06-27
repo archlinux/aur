@@ -1,4 +1,5 @@
-# Maintainer: Christoph Brill <egore911@gmail.com>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Christoph Brill <egore911@gmail.com>
 _pkgname=evtest-qt
 pkgname=${_pkgname}-git
 pkgver=r112.46297da
