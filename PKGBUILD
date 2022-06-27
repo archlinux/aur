@@ -4,7 +4,7 @@ _pkgname=DiscriMiner
 _pkgver=0.1-29
 pkgname=r-${_pkgname,,}
 pkgver=0.1.29
-pkgrel=4
+pkgrel=6
 pkgdesc='Tools of the Trade for Discriminant Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-factominer
   r-mass
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('5aab7671086ef9940e030324651976456f0e84dab35edb7048693ade885228c6')
 
 build() {
