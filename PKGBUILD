@@ -1,7 +1,7 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=moondust-project-git
 pkgver=r1151.g1a881ab9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Build from source)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project"
@@ -18,7 +18,7 @@ source=(
 "moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/images/cat_builder/cat_builder_256.png"
 "moondust-calibrator.png::https://github.com/WohlSoft/Moondust-Project/raw/master/PlayableCalibrator/_resources/icon/calibrator_256.png"
 "moondust-musplay.png::https://github.com/WohlSoft/Moondust-Project/raw/master/MusicPlayer/_resources/cat_musplay/cat_musplay_256x256.png"
-"moondust-maintainer.png::https://github.com/WohlSoft/Moondust-Project/blob/master/Maintainer/_resources/icon/maintainer256.png"
+"moondust-maintainer.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Maintainer/_resources/icon/maintainer256.png"
 "moondust-editor.desktop"
 "moondust-engine.desktop"
 "moondust-musplay.desktop"
