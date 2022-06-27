@@ -17,7 +17,10 @@ license=(
 
 install=dev9.install
 
-OPTIONS+=(debug !strip)
+OPTIONS+=(
+  debug !strip
+  epoch = 1
+)
 
 depends=(
   libaio
