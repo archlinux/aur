@@ -1,6 +1,6 @@
 _name=subnode
 pkgname=$_name-git
-pkgver=1.1.15
+pkgver=1.1.15.5.gf0f649d
 pkgrel=1
 pkgdesc="Node app to download subtitles for you TV Shows"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('nodejs')
 makedepends=('git')
 install=subnode.install
-source=("$pkgname::git://github.com/ocombe/subNode.git"
+source=("$pkgname::git+https://github.com/ocombe/subNode.git"
 	'subnode-system.service'
 	'subnode-server.sh')
 md5sums=('SKIP'
