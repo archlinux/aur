@@ -1,6 +1,6 @@
 pkgbase = subnode-git
 	pkgdesc = Node app to download subtitles for you TV Shows
-	pkgver = 1.1.15
+	pkgver = 1.1.15.5.gf0f649d
 	pkgrel = 1
 	url = http://ocombe.github.io/subNode/
 	install = subnode.install
@@ -9,7 +9,7 @@ pkgbase = subnode-git
 	license = custom
 	makedepends = git
 	depends = nodejs
-	source = subnode-git::git://github.com/ocombe/subNode.git
+	source = subnode-git::git+https://github.com/ocombe/subNode.git
 	source = subnode-system.service
 	source = subnode-server.sh
 	md5sums = SKIP
@@ -17,4 +17,3 @@ pkgbase = subnode-git
 	md5sums = 0cc18de20a0231827b02c62aaee2c64b
 
 pkgname = subnode-git
-
