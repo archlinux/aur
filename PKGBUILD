@@ -1,6 +1,6 @@
 # Maintainer: Frantisek Sumsal <frantisek@sumsal.cz>
 pkgname=dfuzzer
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="D-Bus fuzzer"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dbus-fuzzer/dfuzzer/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-    'a1f556f84f03720aa4015d6d5ab87a684f999f472a86ae14e1b48bcdade45040'
+    '107bec83ba1c786773385b25b3507cb3e9bdaf920ddde8f3a9d2f490fab81e10'
 )
 
 build() {
