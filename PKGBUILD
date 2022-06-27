@@ -4,7 +4,7 @@ _pkgname=mppa
 _pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.0
-pkgrel=4
+pkgrel=6
 pkgdesc='Statistics for analysing multiple simultaneous point processes on the real line'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   r
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('a4337a3b92d49878d554a87854c7b42cb7c5cb65db3fd10f208b406705de661b')
 
 build() {
