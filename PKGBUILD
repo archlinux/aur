@@ -4,7 +4,7 @@
 pkgname=python-rarfile
 _name=${pkgname#python-}
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module for RAR archive reading"
 arch=('any')
 url="https://github.com/markokr/rarfile"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('unarchiver: alternative decompression backend'
             'libarchive: alternative decompression backend'
-            'python-crypto: process archives with password-protected headers')
+            'python-pycryptodome: process archives with password-protected headers')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1')
 
