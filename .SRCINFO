@@ -1,0 +1,16 @@
+pkgbase = cmctl-bin
+	pkgdesc = cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://cert-manager.io/docs/usage/cmctl/
+	arch = aarch64
+	arch = x86_64
+	license = Apache
+	provides = cmctl
+	provides = cmctl-bin
+	conflicts = cmctl
+	source_aarch64 = cmctl-1.8.2.tar.gz::https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cmctl-linux-arm64.tar.gz
+	sha256sums_aarch64 = 646c9e214a590b7ef344680840b636428c76af1750b374b004c1674f5becb77b
+	source_x86_64 = cmctl-1.8.2.tar.gz::https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cmctl-linux-amd64.tar.gz
+
+pkgname = cmctl-bin
