@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=SummarizedExperiment
-_bcver=1.26.0
+_bcver=1.26.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -40,7 +40,7 @@ optdepends=(
 	r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("fe0fa302356ce22204f0320f1ffb181525354aac87c7c8c6604fb61f44550e10")
+sha256sums=("697c5faf7620dbb336591463bcb027d45a297197ed012a13d0327aaaebc7740b")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
