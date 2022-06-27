@@ -1,8 +1,8 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba2-git
-pkgver=2.2.1.r38.g4e7628c6
-pkgrel=3
+pkgver=2.2.1.r39.g83d1b180
+pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -21,6 +21,7 @@ source=('swap_pybind.patch'
         'git+https://github.com/wjakob/tbb.git'
         'git+https://github.com/mitsuba-renderer/asmjit.git'
         'git+https://github.com/mitsuba-renderer/enoki.git'
+        'git+https://github.com/mitsuba-renderer/nanogui.git'
         'git+https://github.com/mitsuba-renderer/tinyformat.git'
         'git+https://github.com/mitsuba-renderer/mitsuba-data.git'
         'git+https://github.com/mitsuba-renderer/openexr.git')
@@ -29,6 +30,7 @@ md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          'eee8327568bbe7e0fa0a8d873eb2dea0'
          'fcd771afe770b24492938482d6facfed'
          '1e1daddd0a6431bb524402eedc8d51c7'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -48,11 +50,12 @@ prepare() {
 	# mitsuba itself so that ABIs line up
 	git config submodule.ext/asmjit.url     $srcdir/asmjit
 	git config submodule.ext/enoki.url      $srcdir/enoki
+	git config submodule.ext/nanogui.url    $srcdir/nanogui # provides bin2c
 	git config submodule.ext/tbb.url        $srcdir/tbb
 	git config submodule.ext/tinyformat.url $srcdir/tinyformat
 	git config submodule.ext/openexr.url    $srcdir/openexr
 	git config submodule.resources/data.url $srcdir/mitsuba-data
-	git submodule update --init ext/asmjit ext/enoki ext/tbb ext/tinyformat ext/openexr resources/data
+	git submodule update --init ext/asmjit ext/enoki ext/nanogui ext/tbb ext/tinyformat ext/openexr resources/data
 
 	# system versions of these modules are used
 	rmdir ext/zlib ext/libpng ext/libjpeg
@@ -67,7 +70,7 @@ prepare() {
 	git apply -v $srcdir/python_collections.patch
 
 	# not used with the current build options
-	rmdir ext/embree ext/nanogui
+	rmdir ext/embree
 
 	# generate the mitsuba.conf file with only one renderer (RGB)
 	# NOTE: change this if you want to build something else
