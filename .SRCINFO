@@ -1,18 +1,19 @@
 pkgbase = freeciv21
 	pkgdesc = Freeciv for the 21st Century
 	pkgver = 3.0_beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/longturn/freeciv21
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = python
 	depends = lua
 	depends = qt5-base
 	depends = qt5-svg
 	depends = sdl2_mixer
-	options = !strip
-	source = https://github.com/longturn/freeciv21/releases/download/v3.0-beta.2/v3.0-beta.2.tar.gz
-	sha256sums = SKIP
+	depends = karchive
+	source = freeciv21-3.0_beta.2.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0-beta.2/v3.0-beta.2.tar.gz
+	sha256sums = ece0ab2e0b461dd5da99750b7584713e7f4f5f605ad6fb7a9aec8c119790db5a
 
 pkgname = freeciv21
