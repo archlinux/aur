@@ -3,7 +3,7 @@
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern reverse proxy'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/containous/traefik'
@@ -42,5 +42,5 @@ package() {
   install -D -m644 "${srcdir}/traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
 
   install -D -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 "${srcdir}/${_pkgname}_${CARCH}_${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -D -m755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
