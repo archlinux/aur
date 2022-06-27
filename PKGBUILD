@@ -5,10 +5,10 @@ pkgname=$_pkgname-git
 pkgver=r535.5501c4f
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/aap/librw"
 license=('MIT')
-depends=('glfw')
+depends=('glfw>=3.3.7')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver" 'librw.so')
 conflicts=("$_pkgname")

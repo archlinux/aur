@@ -3,12 +3,16 @@ pkgbase = librw-git
 	pkgver = r535.5501c4f
 	pkgrel = 1
 	url = https://github.com/aap/librw
+	arch = aarch64
+	arch = armv7h
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = glfw
+	depends = glfw>=3.3.7
 	provides = librw=r535.5501c4f
 	provides = librw.so
 	conflicts = librw
