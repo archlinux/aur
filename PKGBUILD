@@ -3,7 +3,7 @@
 # Contributor: Link Dupont <link@fastmail.com>
 pkgname=system76-wallpapers
 pkgver=18.04.2~1611351210~22.04~52abc1e~dev
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of System76 Wallpapers"
 arch=('any')
 url="https://github.com/pop-os/system76-wallpapers"
@@ -14,8 +14,6 @@ sha256sums=('11087fc9f1728f5a269eabecd3321a2761d95488fbed7a2aeabc64f0350483ed'
 validpgpkeys=('63C46DF0140D738961429F4E204DD8AEC33A7AFF') # Pop OS (ISO Signing Key) <info@system76.com>
 
 package() {
-  _commit='52abc1e8996891210beb66ae75796f5986bfea82_hirsute'
-
-  install -Dm644 "$_commit/backgrounds/"* -t "$pkgdir/usr/share/backgrounds"
-  install -Dm644 "$_commit/$pkgname.xml" -t "$pkgdir/usr/share/gnome-background-properties"
+  install -Dm644 archive/backgrounds/* -t "$pkgdir/usr/share/backgrounds"
+  install -Dm644 "archive/$pkgname.xml" -t "$pkgdir/usr/share/gnome-background-properties"
 }

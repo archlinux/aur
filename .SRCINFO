@@ -1,7 +1,7 @@
 pkgbase = system76-wallpapers
 	pkgdesc = A collection of System76 Wallpapers
 	pkgver = 18.04.2~1611351210~22.04~52abc1e~dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/system76-wallpapers
 	arch = any
 	license = GPL
