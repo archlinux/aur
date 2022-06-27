@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.52.0
-pkgrel=2
+pkgver=2.53.0
+pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=a005ab9ea89436510ff60b89994aca4b814252ea") # tag: v2.52.0
+source=("git+$url#commit=16c90371be5e3c747c79f9029e5ceb7fb94cd40e") # tag: v2.53.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -62,9 +62,10 @@ build() {
 package() {
   cd $pkgname
   install -Dm755 o "$pkgdir/usr/bin/o"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/edit"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   DESTDIR="$pkgdir" make gui-install
