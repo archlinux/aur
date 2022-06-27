@@ -1,6 +1,6 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 pkgname=trilinos-sacado
-pkgver=13.2.0
+pkgver=13.4.0
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="automatic differentiation library within the trilinos framework"
@@ -10,17 +10,15 @@ license=('LGPL3')
 depends=('boost')
 makedepends=('gcc-fortran' 'cmake')
 conflicts=('trilinos')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
-        'python-mpi-version.patch')
-sha256sums=('0ddb47784ba7b8a6b9a07a4822b33be508feb4ccd54301b2a5d10c9e54524b90'
-            '9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb')
+source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
+sha256sums=('39550006e059043b7e2177f10467ae2f77fe639901aee91cbc1e359516ff8d3e')
+
 
 prepare() {
-  patch -d  Trilinos-trilinos-release-"$_pkgver" -p1 -i ../python-mpi-version.patch
+  cd Trilinos-trilinos-release-"$_pkgver"
 }
 
 build() {
-    cd Trilinos-trilinos-release-"$_pkgver"
     mkdir -p build
     cd build
 
