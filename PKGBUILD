@@ -1,14 +1,17 @@
 _pkgname=zihap
 pkgname=zihap-git
-pkgver=1.0.r1.ga3e619a
-pkgrel=1
+pkgver=1.0.r4.g0ef6797
+pkgrel=0
 pkgdesc="zihap is a Unified Messaging and Social Media Apps which combines all your messaging services and social media into one single windows."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/exkc/zihap/"
 license=('custom:M/IT/X')
-depends=('webkit2gtk' 'gcr' 'xorg-xprop' 'libxft' 'tomlc99-git')
+depends=('gtk3' 'glib2' 'webkit2gtk' 'gcr' 'xorg-xprop' 'libxft' 'tomlc99-git')
 makedepends=('git')
-optdepends=("gstreamer: play video in zihap")
+optdepends=("gstreamer: play video in zihap"
+"sed: search n select an already existing tab"
+"xorg-xwininfo: search n select an already existing tab"
+"xorg-xprop: search n select an already existing tab")
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
