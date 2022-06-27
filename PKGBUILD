@@ -4,7 +4,7 @@
 
 pkgname=python-unidiff
 # https://github.com/matiasb/python-unidiff/blob/master/HISTORY
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Simple Python library to parse and interact with unified diff data'
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/u/unidiff/unidiff-$pkgver.tar.gz")
-sha256sums=('d5f2e53a9a00db3224a8c36349b5380e0e22d1aec6c694b14fb9483ee93c6205')
+sha256sums=('2bbcbc986e1fb97f04b1d7b864aa6002ab02f4d8a996bf03aa6e5a81447d1fc5')
 
 build() {
   cd unidiff-$pkgver
