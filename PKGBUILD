@@ -2,17 +2,17 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
 license=('MIT')
 depends=('python-pygments')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b0089fe46001bf022674dd281ead641aa68bcffdb972aa784703e2717a60331e')
+sha256sums=('a00623385143e15d17b78bac6008982a0c686eae8595977a54a7822dc0749f66')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -31,12 +31,13 @@ check() {
 }
 
 package() {
-  export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.md ADVANCED_USAGE.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s "$_site/$pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
