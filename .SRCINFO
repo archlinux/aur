@@ -1,7 +1,7 @@
 pkgbase = veyon
 	pkgdesc = Open Source computer monitoring and classroom management
 	pkgver = 4.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veyon
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = veyon
 	depends = libsasl
 	depends = x11vnc
 	optdepends = kldap: KDE support
-	source = git+https://github.com/veyon/veyon.git#commit=465279c01040483fce066c5cb7a41cdca0ac6a6d
+	source = git+https://github.com/veyon/veyon.git#commit=36c58eb981cc6edc9ecd14e40974b863eaac1c8b
 	sha256sums = SKIP
 
 pkgname = veyon

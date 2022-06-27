@@ -2,7 +2,7 @@
 
 pkgname=veyon
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source computer monitoring and classroom management"
 arch=('i686' 'x86_64')
 url="https://github.com/veyon"
@@ -26,7 +26,7 @@ depends=('qt5-base'
 	'x11vnc')
 optdepends=('kldap: KDE support')
 makedepends=('git' 'gcc' 'cmake' 'qt5-tools' 'procps-ng' 'kldap')
-_commit="465279c01040483fce066c5cb7a41cdca0ac6a6d"
+_commit="36c58eb981cc6edc9ecd14e40974b863eaac1c8b"
 source=("git+${url}/veyon.git#commit=${_commit}")
 
 sha256sums=('SKIP')
@@ -39,7 +39,6 @@ prepare() {
 
     cd "${srcdir}/${pkgname}/3rdparty/qthttpserver/"
     git submodule update --init
-
 }
 
 build() {
