@@ -1,6 +1,6 @@
 pkgbase = openav-luppp-git
 	pkgdesc = Luppp is a live performance tool, created by OpenAV productions (unstable development package)
-	pkgver = continuous.master.r0.g0d3ce19
+	pkgver = continuous.master.r5.g23da149
 	pkgrel = 1
 	url = http://openavproductions.com/luppp/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = openav-luppp-git
 	provides = luppp
 	conflicts = openav-luppp-git
 	conflicts = luppp
-	source = git://github.com/harryhaaren/openAV-Luppp.git
+	source = git+https://github.com/harryhaaren/openAV-Luppp.git
 	sha256sums = SKIP
 
 pkgname = openav-luppp-git
