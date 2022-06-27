@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.32.0
+_bcver=1.32.2
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -34,7 +34,7 @@ optdepends=(
 	r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('622756af303fab201a0a091b2c77856d58c5a7dd79deb7896c9471aa5ce45bdb')
+sha256sums=("b0a7bed8527c89b04f96bcc169366c6b238b45d32fa760177ead6227165f67d8")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
