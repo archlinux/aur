@@ -13,7 +13,7 @@ provides=('moondust-project')
 conflicts=('moondust-project-master-bin' 'moondust-project-stable-bin')
 install="moondust-project.install"
 source=(
-"git+$url#branch=master"
+"git+$url.git#branch=master"
 "moondust-engine.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Engine/_resources/icon/cat_256.png"
 "moondust-editor.png::https://github.com/WohlSoft/Moondust-Project/raw/master/Editor/_resources/images/cat_builder/cat_builder_256.png"
 "moondust-calibrator.png::https://github.com/WohlSoft/Moondust-Project/raw/master/PlayableCalibrator/_resources/icon/calibrator_256.png"
