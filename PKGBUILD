@@ -8,7 +8,8 @@ pkgdesc="Simple comparison framework for graphics APIs"
 arch=('i686' 'x86_64')
 url="https://github.com/nvMcJohn/apitest"
 license=('Unlicense')
-makedepends=('cmake' 'git' 'sdl2')
+makedepends=('cmake' 'git')
+depends=('sdl2')
 source=('git+https://github.com/nvMcJohn/apitest.git'
 sdl2.patch)
 sha256sums=('SKIP'
