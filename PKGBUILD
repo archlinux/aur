@@ -2,7 +2,7 @@
 
 pkgname=python-nox-poetry
 _pkgname="${pkgname#python-}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Use Poetry inside Nox sessions'
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
   'python-poetry-core'
 )
 #checkdepends=('python-pytest' 'python-pytest-datadir' 'python-pygments' 'python-typing_extensions')
-_commit='b1076ef88f66ad5ec97b65dff4762e0dc4c4af0a'
+_commit='c79617548e67b57508543a92d22f7b80c5bf2d23'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
