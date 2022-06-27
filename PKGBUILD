@@ -63,14 +63,13 @@ prepare() {
 	git config submodule.ui/thirdparty/imgui.url ../imgui
 	git config submodule.ui/thirdparty/implot.url ../implot
 	git submodule update
+	mkdir ../build tomlplusplus/include
 	python scripts/gen-license.py > XEMU_LICENSE
-	# unbundle tomlplusplus
-	mkdir tomlplusplus/include
 }
 
 build() {
-	cd $_pkgname
-	./configure \
+	cd build
+	../$_pkgname/configure \
 		--audio-drv-list="sdl" \
 		--disable-debug-info \
 		--enable-slirp=system \
@@ -95,10 +94,10 @@ package() {
 	)
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm755 build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
+	install -Dm755 ../build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
 	install -Dm644 ui/xemu.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-	for size in 24 32 48 256 512; do
-		install -Dm644 ui/icons/xemu_${size}x${size}.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png
+	for _size in 16 24 32 48 64 128 256 512; do
+		install -Dm644 ui/icons/xemu_${_size}x${_size}.png "$pkgdir"/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png
 	done
 	install -Dm644 ui/icons/xemu.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
 	install -Dm644 XEMU_LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
