@@ -16,7 +16,6 @@ pkgbase = goldendict-webengine-git
 	depends = zlib
 	depends = xz
 	depends = libeb
-	depends = libiconv
 	depends = opencc
 	depends = qt5-svg
 	depends = qt5-tools
