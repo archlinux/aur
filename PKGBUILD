@@ -75,7 +75,16 @@ prepare() {
 	# generate the mitsuba.conf file with only one renderer (RGB)
 	# NOTE: change this if you want to build something else
 	grep -v '#' < "$srcdir/${pkgname%-git}"/resources/mitsuba.conf.template \
-		| jq '.["enabled"] = ["scalar_rgb"]' \
+		| jq '.["enabled"] = [
+			"scalar_mono",                  "scalar_rgb",                  "scalar_spectral",
+			"scalar_mono_polarized",        "scalar_rgb_polarized",        "scalar_spectral_polarized",
+			"scalar_mono_double",           "scalar_rgb_double",           "scalar_spectral_double",
+			"scalar_mono_polarized_double", "scalar_rgb_polarized_double", "scalar_spectral_polarized_double",
+			"packet_mono",                  "packet_rgb",                  "packet_spectral",
+			"packet_mono_double",           "packet_rgb_double",           "packet_spectral_double",
+			"gpu_mono",                     "gpu_rgb",                     "gpu_spectral",
+			"gpu_autodiff_mono",            "gpu_autodiff_rgb",            "gpu_autodiff_spectral"
+		]' \
 		| jq '.["default"] = "scalar_rgb"' \
 		> "$srcdir/${pkgname%-git}"/mitsuba.conf
 }
