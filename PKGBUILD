@@ -3,7 +3,7 @@
 # Maintainer: Bart Libert <bart dot libert at gmail dot com>
 pkgname=onhub_desktop_client-git
 pkgver=5fd6fdc
-pkgrel=1
+pkgrel=2
 pkgdesc='A desktop client for Google Onhub routers'
 arch=('x86_64')
 url='https://github.com/AngeloD2022/OnHubDesktop'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-webengine' 'qt5-charts')
 makedepends=('git')
 provides=("OnHubDesktopClient")
-source=("$pkgname::git+https://github.com/AngeloD2022/OnHubDesktop.git")
+source=("$pkgname::git+https://github.com/AngeloD2022/OnHubDesktop.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
