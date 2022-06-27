@@ -1,0 +1,7 @@
+function post_install () {
+    echo "Use MEKHQ_CONF_NAME to change the directory read in ~/.config at startup. The default is 'mekhq'"
+}
+
+function post_upgrade () {
+    post_install
+}

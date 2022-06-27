@@ -2,8 +2,9 @@
 pkgname=mekhq
 pkgver=0.48.0
 _pkgver=
-pkgrel=3
+pkgrel=4
 epoch=
+install=mekhq.install
 pkgdesc="MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek."
 
 arch=('x86_64')
@@ -18,22 +19,20 @@ conflicts=('megamek')
 source=("mekhq.tar.gz::https://github.com/MegaMek/mekhq/archive/refs/tags/v${pkgver}.tar.gz"
         "megamek.tar.gz::https://github.com/MegaMek/megamek/archive/refs/tags/v${pkgver}.tar.gz"
         "megameklab.tar.gz::https://github.com/MegaMek/megameklab/archive/refs/tags/v${pkgver}.tar.gz"
+        "mekhq.install"
         "mekhq.desktop"
         "megamek.desktop"
         "megameklab.desktop"
-        "mekhq.sh"
-        "megamek.sh"
-        "megameklab.sh")
+        "mekhq.sh")
 
 sha256sums=('69bee526358f576453b51fae8ef2c3aa83f09c044d032f6c587c4fe267b9d2ba'
             '4942182c885b87caa9e851d1851add095f2e2103c0933b61e961f6e74d3e1b29'
             'e7b0e37d98cd8273d7e23ce655773c37482980f4d2a95d739e1f8af025e0989f'
+            '2432d81323849cf60d801782e60a842ceef70ed5a2ed7b56a012f3a8391c49ce'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             '6e6bb03f14a0ce6e06fd9009fd9f159d22a34a7020ba85b13ad6dbf649ca9e38'
-            'fda6e9d542062041e9d9b7f6331069d8a78b9455a290286aa8d214ed66b13fd7'
-            '9ad4d0251ecfe02140c46dfeb67a4ce2b0fe9f123b04a3911139b8e255ff2beb'
-            'b0011b6437b2209de29875f5d805bd74b006174b8cf1f4a5d700bb4191986214')
+            '19358e7d4a2c1c9c066148d4f23498d67aa4f8eab1faec8dd6de3451cadc104e')
 
 build() {
     rm -rf megamek megameklab
@@ -86,7 +85,7 @@ package() {
     install -D megameklab.desktop "${pkgdir}/usr/share/applications/megameklab.desktop"
     
     install -Dm755 mekhq.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 megamek.sh "${pkgdir}/usr/bin/megamek"
-    install -Dm755 megameklab.sh "${pkgdir}/usr/bin/megameklab"
+    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/megamek"
+    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/megameklab"
 
 }
