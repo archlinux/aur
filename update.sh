@@ -20,9 +20,9 @@ DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
     .[$last][] | select(.packagetype == "sdist").url
 ')
 
-SHA512=$(curl -sL $DOWNLOAD_URL | sha512sum - | cut -d' ' -f1)
+HSUM=$(curl -sL $DOWNLOAD_URL | b2sum - | cut -d' ' -f1)
 
-sed -i 's/sha512sums=.*$/sha512sums=("'$SHA512'")/' PKGBUILD
+sed -i 's/b2sums=.*$/b2sums=("'$HSUM'")/' PKGBUILD
 sed -i 's/pkgver=.*/pkgver='$LAST'/' PKGBUILD
 sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
