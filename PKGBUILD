@@ -17,6 +17,8 @@ license=(
 
 install=dev9.install
 
+OPTIONS+=(debug !strip)
+
 depends=(
   libaio
   libjpeg-turbo
@@ -102,7 +104,7 @@ build()
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
