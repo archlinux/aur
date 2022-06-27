@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MegaMek Lab
+GenericName=Java version of BattleTech (Mek Editor)
+Exec=megameklab
+Terminal=false
+Type=Application
+Icon=megameklab
+Categories=Games;Java;
+StartupWMClass=SWT
