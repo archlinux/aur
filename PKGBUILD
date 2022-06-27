@@ -2,8 +2,8 @@
 # Former Maintainer: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=wonderpen-bin
-pkgver=2.1.7
-_pkgver=6382
+pkgver=2.1.8
+_pkgver=6386
 pkgrel=1
 pkgdesc='A professional writing app with a focused mode and markdown support'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'nss' 'xdg-utils')
 provides=('wonderpen')
 source=("https://file.tominlab.com/WonderPen/${pkgver%.*}/WonderPen_linux_amd64_${pkgver}(${_pkgver}).deb")
-sha256sums=('b4a45061a036bbfbc570651e5aaac7f4484ab20d32dac81e40857756dc62f92e')
+sha256sums=('bce21bf69d7097761fa2bd9388ead234d7df2ca2b15d255dae92744dd3832e8c')
 
 package() {
     # Install
