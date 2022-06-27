@@ -2,14 +2,16 @@
 # Contributor: Timo Schwichtenberg <therealbassx at yahoo dot de>
 # Contributor: Link Dupont <link@fastmail.com>
 pkgname=system76-wallpapers
-pkgver=18.04.2~1611351210~21.04~52abc1e~dev
+pkgver=18.04.2~1611351210~22.04~52abc1e~dev
 pkgrel=1
 pkgdesc="A collection of System76 Wallpapers"
 arch=('any')
 url="https://github.com/pop-os/system76-wallpapers"
 license=('GPL')
-source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('845c5937adfd4dbe32589a154c7ee33f4b59b4fa3297f2f16d19b4c59f8fb4c4')
+source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}"{.tar.xz,.dsc})
+sha256sums=('11087fc9f1728f5a269eabecd3321a2761d95488fbed7a2aeabc64f0350483ed'
+            'f16709261e150413468532228b44ccb3b4435adb4733fe74e88577bf2cae16d7')
+validpgpkeys=('63C46DF0140D738961429F4E204DD8AEC33A7AFF') # Pop OS (ISO Signing Key) <info@system76.com>
 
 package() {
   _commit='52abc1e8996891210beb66ae75796f5986bfea82_hirsute'
