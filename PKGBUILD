@@ -1,11 +1,13 @@
-# Maintainer: Daniel Playfair Cal <daniel.playfair.cal at gmail dot com>
+# Maintainer: mars <gzhqyz at gmail dot com>
+# Contributor: Daniel Playfair Cal <daniel.playfair.cal at gmail dot com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=97.0.4692.99
+_pkgname=chromium
+pkgver=103.0.5060.53
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -13,36 +15,36 @@ pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland 
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
-provides=( 'chromium' )
-conflicts=( 'chromium' )
+provides=('chromium')
+conflicts=('chromium')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'java-runtime-headless')
+             'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
-options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        0001-ozone-wayland-add-VA-API-support.patch
+        enable-GlobalMediaControlsCastStartStop.patch
+        roll-src-third_party-ffmpeg.patch
         sql-make-VirtualCursor-standard-layout-type.patch
-        chromium-93-ffmpeg-4.4.patch
-        unbundle-ffmpeg-av_stream_get_first_dts.patch
-        unexpire-accelerated-video-decode-flag.patch
-        use-oauth2-client-switches-as-default.patch
-        0001-ozone-wayland-add-VA-API-support.patch)
-sha256sums=('c91bae205705b367f2cfc1f72ce1ee99b2ceb5edfc584e15c60a6ab5ff01ecba'
+        remove-no-opaque-pointers-flag.patch
+        use-oauth2-client-switches-as-default.patch)
+sha256sums=('0ecbae14670506da90c8bf744f83f52a64a5fff0765c2e2e066b0e68b805b101'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '7af5c0a55a20c0fb496b2f4448d89203a83bb1914754d864460e55e68731ef0b'
-            'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
-            '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
-            '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-            '9fde4bb81ef045a0606d951516780288a48defe8ce50c7790c5a5d444bf58941')
+            'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
+            'af20fc58aef22dd0b1fb560a1fab68d0d27187ff18fad7eb1670feab9bc4a8d8'
+            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
+            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
+            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
+            '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -79,7 +81,7 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -92,24 +94,21 @@ prepare() {
     third_party/libxml/chromium/*.cc \
     third_party/maldoca/src/maldoca/ole/oss_utils.h
 
-
   # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Fix build with older ffmpeg
-  patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
+  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
 
-  # Substitute the custom function av_stream_get_first_dts; will need to
-  # switch to bundled ffmpeg when we're no longer using ffmpeg 4.4 in Arch
-  # Upstream commit that made first_dts internal causing Chromium to add a
-  # custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
-  # https://crbug.com/1251779
-  patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
+  # Revert kGlobalMediaControlsCastStartStop enabled by default
+  # https://crbug.com/1314342
+  patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
 
-  # https://crbug.com/1207478
-  patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
+  # Revert ffmpeg roll requiring new channel layout API support
+  # https://crbug.com/1325301
+  patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -145,7 +144,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   export CC=clang
   export CXX=clang++
@@ -157,6 +156,8 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
+    'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
@@ -177,10 +178,6 @@ build() {
     _flags+=('icu_use_data_file=false')
   fi
 
-  if check_option strip y; then
-    _flags+=('symbol_level=0')
-  fi
-
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
@@ -190,13 +187,18 @@ build() {
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
-   # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
+  # Let Chromium set its own symbol level
+  CFLAGS=${CFLAGS/-g }
+  CXXFLAGS=${CXXFLAGS/-g }
+
+  # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
   CFLAGS=${CFLAGS/-fexceptions}
   CFLAGS=${CFLAGS/-fcf-protection}
   CXXFLAGS=${CXXFLAGS/-fexceptions}
   CXXFLAGS=${CXXFLAGS/-fcf-protection}
 
-  # This appears to cause random segfaults
+  # This appears to cause random segfaults when combined with ThinLTO
+  # https://bugs.archlinux.org/task/73518
   CFLAGS=${CFLAGS/-fstack-clash-protection}
   CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
 
@@ -204,7 +206,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   gn gen out/Release --args="${_flags[*]}"
-  ninja -C out/Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver.unstripped
 }
 
 package() {
@@ -213,11 +215,11 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
@@ -243,7 +245,6 @@ package() {
     chrome_100_percent.pak
     chrome_200_percent.pak
     chrome_crashpad_handler
-    chromedriver
     resources.pak
     v8_context_snapshot.bin
 
@@ -262,7 +263,6 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
-  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
