@@ -1,12 +1,11 @@
 pkgbase = stow-cm
-	pkgdesc = config manager (simple impl of gun-stow)
+	pkgdesc = config manager (gun-stow like)
 	pkgver = nightly
 	pkgrel = 1
-	url = https://github.com/someoneonsmile/stow
+	url = https://github.com/someoneonsmile/stow-cm
 	arch = x86_64
 	license = GPL2
-	conflicts = stow
-	source = stow-cm.tar.gz::https://github.com/someoneonsmile/stow/releases/download/nightly/stow-x86_64-unknown-linux-musl.tar.gz
+	source = stow-cm.tar.gz::https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP
 
 pkgname = stow-cm
