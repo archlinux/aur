@@ -1,0 +1,15 @@
+ [Desktop Entry]
+Name=Moondust Music Player
+Name[zh_CN]=Moondust 音乐播放器
+GenericName=Moondust Music Player
+GenericName[zh_CN]=Moondust 音乐播放器
+Comment=A lightweight music player based on SDL Mixer X library
+Comment[zh_CN]=基于 SDL Mixer X 的轻量级音乐播放器
+Encoding=UTF-8
+Version=1
+Type=Application
+Terminal=false
+Icon=moondust-musplay
+Exec=pge_musplay %F
+Categories=Game;
+StartupWMClass=pge_musplay
