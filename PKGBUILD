@@ -1,7 +1,7 @@
 # Maintainer: Leonardo Brondani Schenkel <leonardo at schenkel dot net>
 # Contributor: Feufochmar <feufochmar.gd@gmail.com>
 pkgname=libdsk
-pkgver=1.5.15
+pkgver=1.5.19
 pkgrel=1
 pkgdesc="A library for accessing floppy drive and disc images files"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,7 +9,7 @@ url="http://www.seasip.info/Unix/LibDsk/index.html"
 license=('LGPL')
 depends=('zlib' 'bzip2')
 source=(http://www.seasip.info/Unix/LibDsk/$pkgname-$pkgver.tar.gz)
-sha256sums=('ed58d5806472dfe484fbd99d3e904a88dcefd6d8366a45e99077efd9d568383b')
+sha256sums=('5bcc39a3dacaff20a2a509df9f880c3b00d9fbd59e5771b9deae61d9795ebe41')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
