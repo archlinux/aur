@@ -15,6 +15,7 @@ build() {
   mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
   cd "$srcdir/${pkgname}-${pkgver}/build"
   cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DBUILD_SHARED_LIBS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF \
         ..
