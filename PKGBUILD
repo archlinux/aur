@@ -1,13 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_tag='sdk-1.3.211.0'
-_glslang_commit='df609a01b386001e367709086c58529c48028d1e'
-_spirv_tools_commit='75e53b9f685830ac42242cf0c46cc9af523bd0df'
-_spirv_headers_commit='b8047fbe45f426f5918fadc67e8408f5b108c3c9'
-
 pkgname=spirv-cross
-pkgver=2022.03.24
+pkgver=2022.05.27
 pkgrel=1
+_tag=sdk-1.3.216.0
+_glslang_commit=7dda6a6347b0bd550e202942adee475956ef462a
+_spirv_tools_commit=82d91083cb56c89d2cb8e9d56d4d69f07ac34fed
+_spirv_headers_commit=5a121866927a16ab9d49bed4788b532c7fcea766
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Cross/'
