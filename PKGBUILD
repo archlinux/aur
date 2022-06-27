@@ -15,8 +15,8 @@ source=(${_pkgname}::git+${url}.git)
 depends=(python lapack boost netcdf-openmpi libmatio libx11 hdf5-openmpi)
 makedepends=(gcc-fortran perl blas cmake git python-numpy swig doxygen graphviz) # gcc-fortran-multilib
 md5sums=('SKIP')
-provides=("${pkgname,,}")
-conflicts=("${pkgname,,}")
+provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 
 pkgver() {
   cd ${_pkgname}

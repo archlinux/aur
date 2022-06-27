@@ -21,8 +21,8 @@ pkgbase = trilinos-git
 	depends = libmatio
 	depends = libx11
 	depends = hdf5-openmpi
-	provides = trilinos-git
-	conflicts = trilinos-git
+	provides = trilinos
+	conflicts = trilinos
 	source = Trilinos::git+https://github.com/trilinos/Trilinos.git
 	md5sums = SKIP
 
