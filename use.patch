@@ -1,0 +1,30 @@
+diff --git a/use.h b/use.h
+index 28ce0a5..de696e4 100644
+--- a/use.h
++++ b/use.h
+@@ -15,9 +15,9 @@
+ #include "flags.h"
+ #include "use_tmp.h"
+ 
+-FILE *_stdout_;
+-FILE *_usefp_;
+-char TEMPDIR[PATH_MAX];
++extern FILE *_stdout_;
++extern FILE *_usefp_;
++extern char TEMPDIR[PATH_MAX];
+ 
+ #define VERSION "1.12.2"
+ 
+diff --git a/validate.c b/validate.c
+index 186528b..f52aae2 100644
+--- a/validate.c
++++ b/validate.c
+@@ -1,5 +1,7 @@
+ #include "use.h"
+-
++FILE *_stdout_;
++FILE *_usefp_;
++char TEMPDIR[PATH_MAX];
+ static int detached_exists(const struct flags_struct *flags,
+ 			   const char *value)
+ {
