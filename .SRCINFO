@@ -1,0 +1,15 @@
+pkgbase = simpl
+	pkgdesc = Synchronous Interprocess Messaging Project for LINUX (SIMPL)
+	pkgver = 3.3.8
+	pkgrel = 1
+	url = https://sourceforge.net/projects/simpl
+	arch = x86_64
+	license = LGPL2
+	provides = simpl
+	conflicts = simpl
+	source = https://master.dl.sourceforge.net/project/simpl/simpl/simpl%20v3.3.8/simpl-3.3.8.tar.gz
+	source = 0001-compilation-fix.patch
+	sha256sums = fd89141eea08821ea68f21fc6b66328547b73f332ac0239bda61b9b9c922dac1
+	sha256sums = c375a47114b92297208c689887d7cf5914f1bea8014f745f43ad100997b53ea6
+
+pkgname = simpl

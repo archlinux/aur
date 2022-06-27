@@ -1,0 +1,29 @@
+diff --git a/include/simplLibProto.h b/include/simplLibProto.h
+index 4b8e271..dae49be 100644
+--- a/include/simplLibProto.h
++++ b/include/simplLibProto.h
+@@ -108,9 +108,9 @@ int _simpl_readFifoMsg(int, char *);
+ int saveSenderId(char *);
+ int removeSenderId(char *);
+ int ReplyError(char *);
+-inline void _simpl_setErrorCode(int);
++void _simpl_setErrorCode(int);
+ void _simpl_log(char *, ...);
+-inline int _simpl_check(void);
++int _simpl_check(void);
+ void _simpl_initSignalHandling(void);
+ void _simpl_hndlSignals(int);
+ void _simpl_exitFunc(void);
+diff --git a/simplipc/src/simplUtils.c b/simplipc/src/simplUtils.c
+index eb7c9d8..089ee41 100644
+--- a/simplipc/src/simplUtils.c
++++ b/simplipc/src/simplUtils.c
+@@ -1411,7 +1411,7 @@ PURPOSE:	set the _simpl_error global variable
+ RETURNS:	nothing	
+ **********************************************************************/	
+ 
+-inline void _simpl_setErrorCode(int errorNumber)
++void _simpl_setErrorCode(int errorNumber)
+ {
+ // int _simpl_errno is global
+ 
