@@ -4,7 +4,7 @@
 pkgname=remmina-appindicator
 _pkgname=remmina
 epoch=1
-pkgver=1.4.23
+pkgver=1.4.27
 pkgrel=1
 pkgdesc='remote desktop client written in GTK+ (compiled with appindicator and with some basic plugins added)'
 arch=(x86_64)
@@ -19,16 +19,11 @@ depends=(
     libsodium
     libssh
     libvncserver
+    spice-gtk
     vte3
     webkit2gtk
 )
 optdepends=(
-    #'freerdp: RDP plugin'
-    #'libsecret: Secret plugin'
-    #'libvncserver: VNC plugin'
-    'spice-gtk: Spice plugin'
-    #'pyhoca-cli: X2Go plugin'
-    #'webkit2gtk: WWW plugin'
     'gtk-vnc: GVNC plugin'
     'kwallet: kwallet plugin'
     'gnome-terminal: external tools')
@@ -62,7 +57,7 @@ replaces=(
     remmina
 )
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/Remmina/Remmina/-/archive/v${pkgver/rc/-rc}/Remmina-v${pkgver/rc/-rc}.tar.bz2")
-sha512sums=('73ce0482d33ba8e7a0960e8f3de3982818de2f96578f00c0cc3d7043a97fa6dee0c71acc8be155df7fbd063cd498be190bb78d2ff668a16de0946b965951cf71')
+sha512sums=('44bc067eaf2c4c10e42182aa7c3ec2aa18ec5c0ce51a2fc765884cbfc11261d3c0db537b1674424aa092caf171e647714dcc8af6d813273f7b96876a251e0575')
 
 build() {
   cmake -S Remmina-v${pkgver/rc/-rc} -B build \
@@ -77,6 +72,5 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/Remmina-v${pkgver/rc/-rc}/
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
