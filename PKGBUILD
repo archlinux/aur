@@ -1,6 +1,6 @@
 # Maintainer: Ian Huang <imyxhuang@gmail.com>
 pkgname=cardano-node-bin
-pkgver=1.34.1
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="The core component that is used to participate in a Cardano \
 decentralised blockchain (binary package)."
