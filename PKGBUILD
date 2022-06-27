@@ -2,8 +2,9 @@
 # PKGBUILD/install/wrapper all shamelessly ripped off from [community]/dwarffortress
 
 pkgname=arcanefortune
-pkgver=0.3.0
-_commit=edebac03caa11da84c35f5a57b52654926bb074a
+pkgver=0.4.0
+# Commit ID can be found @ https://github.com/cody2007/arcane_fortune/releases
+_commit=205b2141ea08ebd436434949cf4adbb485049b87
 pkgrel=1
 pkgdesc="A game of empire building, diplomacy, conquest, construction, and deconstruction"
 arch=('x86_64')
@@ -17,12 +18,12 @@ source=(${pkgname}::git+"https://github.com/cody2007/arcane_fortune.git#commit=$
         arcane_fortune)
 
 sha512sums=('SKIP'
-            '3245fc4869ab296106f3d5df119d3304dd3ded8fca229ddd1b52e993730e5a554710272143961175a46ff861ecbba4496620fc8d89cf56e0c0431e81a1ebe289'
+            '018ca80ae7c4fb1638fc838695843596b03d1871c8a6d25d68dd723f2eabc346b65ce798ca101ee47ff312a5c8920c8e62991cf24ac5d5b1956afbf8deb294a8'
             'd02f70b65490c70c1cbe0f240289f2942186df3ca0058066507f1b9930e56a74f87c9e78f0bad78d81eba013dae39bf5fc636a6c5abec3fa6d357876eec14602')
 
 prepare() {
   # Fix clean-chroot build (use makepkg branch ref)
-  sed -i 's:include_str!("../../../.git/refs/heads/v0.3.0"):include_str!("../../../.git/refs/heads/makepkg"):' arcanefortune/arcane_fortune/src/disp/version_status.rs
+  sed -i "s:include_str!(\"../../../.git/refs/heads/v${pkgver}\"):include_str!(\"../../../.git/refs/heads/makepkg\"):" arcanefortune/arcane_fortune/src/disp/version_status.rs
 }
 
 build() {
