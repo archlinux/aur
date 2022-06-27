@@ -19,8 +19,21 @@ _pkgname="flac"
 
 build() {
     for _arch in ${_architectures}; do
+        ${_arch}-cmake -S flac-${pkgver} -B ${_arch}-static -G Ninja \
+            -DCMAKE_BUILD_TYPE=None \
+            -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+            -DBUILD_SHARED_LIBS=OFF \
+            -DBUILD_DOCS=OFF \
+            -DBUILD_EXAMPLES=OFF \
+            -DBUILD_PROGRAMS=OFF \
+            -DBUILD_TESTING=OFF \
+            -DWITH_STACK_PROTECTOR=OFF \
+            -DWITH_ASM=OFF \
+            -DINSTALL_MANPAGES=OFF \
+            -DNDEBUG=ON
+
         ${_arch}-cmake -S flac-${pkgver} -B ${_arch} -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_BUILD_TYPE=None \
             -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
             -DBUILD_SHARED_LIBS=ON \
             -DBUILD_DOCS=OFF \
@@ -29,33 +42,20 @@ build() {
             -DBUILD_TESTING=OFF \
             -DWITH_STACK_PROTECTOR=OFF \
             -DWITH_ASM=OFF \
-            -DINSTALL_MANPAGES=OFF
+            -DINSTALL_MANPAGES=OFF \
+            -DNDEBUG=ON
 
-        ${_arch}-cmake -S flac-${pkgver} -B ${_arch}-static -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr/${_arch}/static \
-            -DBUILD_SHARED_LIBS=OFF \
-            -DBUILD_DOCS=OFF \
-            -DBUILD_EXAMPLES=OFF \
-            -DBUILD_PROGRAMS=OFF \
-            -DBUILD_TESTING=OFF \
-            -DWITH_STACK_PROTECTOR=OFF \
-            -DWITH_ASM=OFF \
-            -DINSTALL_MANPAGES=OFF
-
-        cmake --build ${_arch}
         cmake --build ${_arch}-static
+        cmake --build ${_arch}
     done
 }
 
 package() {
     for _arch in ${_architectures}; do
+        # Rather than do a separate static install, we install the shared libs over top of the static libs in the same prefix.
+        # This is bad, but most AUR mingw packages do this and this is how 'mingw-w64-flac' was previously packaged.
+        DESTDIR="${pkgdir}" cmake --install ${_arch}-static
         DESTDIR="${pkgdir}" cmake --install ${_arch}
-        # DESTDIR="${pkgdir}" cmake --install ${_arch}-static
-        # Rather than do a proper static install, we copy the static libs into the same prefix as the shared libs.
-        # This is bad, but so are most AUR mingw packages and this is how 'mingw-w64-flac' was previously packaged.
-        install -Dm644 ${srcdir}/${_arch}-static/src/libFLAC/libFLAC.a "${pkgdir}"/usr/${_arch}/lib/
-        install -Dm644 ${srcdir}/${_arch}-static/src/libFLAC++/libFLAC++.a "${pkgdir}"/usr/${_arch}/lib/
         install -Dm644 flac-${pkgver}/src/*/*.m4 -t "${pkgdir}/usr/${_arch}/share/aclocal"
         ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
         ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
