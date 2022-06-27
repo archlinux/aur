@@ -4,10 +4,11 @@
 # Contributor: qlonik <volodin.n at gmail dot com>
 # Contributor: Mario A. Vazquez <mario_vazq@hotmail.com>
 
-pkgname='python2-pyxdg'
+pkgbase='python2-pyxdg'
+pkgname=('python2-pyxdg' 'pyxdg' 'python2-xdg')
 _name="${pkgname#python2-}"
 pkgver=0.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Official freedesktop.org XDG specifications support library'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -15,8 +16,6 @@ license=('LGPL')
 depends=('python2')
 makedepends=('python2-setuptools')
 # checkdepends=('python2-pytest')        # Test are not self-contained and not deterministic; results depend on system setup
-provides=("pyxdg=${pkgver}" "python2-xdg=${pkgver}")
-conflicts=('pyxdg' 'python2-xdg' 'python2-pyxdg-git')
 
 __tarname_pypi="${_name}-${pkgver}"      # PyPI tarball name
 __tarname_git="${_name}-rel-${pkgver}"   # Gitlab/GitHub tarball name
@@ -55,7 +54,17 @@ build() {
 #             -k 'not test_find_icon_exists and not test_parse_menu'
 # }
 
-package() {
+package_python2-pyxdg() {
     cd "${_tarname}"
     python2 setup.py install --prefix='/usr' --root="${pkgdir}" --skip-build --optimize=1
+}
+
+package_pyxdg() {
+    depends=('python2-pyxdg')
+    pkgdesc='[meta-pkg] Old, deprecated package name. Whatever depends on this should depend on python2-pyxdg instead.'
+}
+
+package_python2-xdg() {
+    depends=('python2-pyxdg')
+    pkgdesc='[meta-pkg] Old, deprecated package name. Whatever depends on this should depend on python2-pyxdg instead.'
 }
