@@ -1,7 +1,7 @@
 pkgbase = minivideoinfos-git
 	pkgdesc = Get detailed informations about your audio, video and picture files!
 	pkgver = 0.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emericg/MiniVideoInfos
 	arch = x86_64
 	arch = i686
