@@ -4,7 +4,7 @@ _pkgname=iCluster
 _pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=2.1.0
-pkgrel=4
+pkgrel=6
 pkgdesc='Integrative clustering of multiple genomic data types'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-gplots
   r-gtools
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d97cdcba3b53cf10160c333976d2244c2ad5abb8154e194b1568b48376374326')
 
 build() {
