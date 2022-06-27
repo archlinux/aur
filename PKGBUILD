@@ -1,9 +1,9 @@
 # Maintainer: robertfoster
 
 _brotli_ver=1.0.9
-_openssl_ver=1.1.1l
+_openssl_ver=1.1.1p
 pkgname=edk2-arm
-pkgver=202111
+pkgver=202205
 pkgrel=1
 pkgdesc="Modern, feature-rich firmware development environment for the UEFI specifications (ARM v7)"
 arch=(any)
@@ -16,9 +16,8 @@ source=(
   "https://www.openssl.org/source/openssl-${_openssl_ver}.tar.gz"
   "brotli-${_brotli_ver}.tar.gz::https://github.com/google/brotli/archive/v${_brotli_ver}.tar.gz"
   "http://www.jhauser.us/arithmetic/SoftFloat-3e.zip"
-  "edk2-202102-brotli-1.0.9.patch"
+  "edk2-202202-brotli.patch"
   "60-edk2-armvirt-arm.json"
-  "${pkgname}-202111-gpu_passthrough.patch::https://github.com/tianocore/edk2/commit/ee1f8262b83dd88b30091e6e81221ff299796099.patch"
 )
 
 _arch_list=(ARM)
@@ -28,12 +27,9 @@ _build_plugin=GCC5
 prepare() {
   mv -v "edk2-edk2-stable$pkgver" "edk2-$pkgver"
   cd "edk2-$pkgver"
-  # patch to fix issues with GPU passthrough
-  # https://bugs.archlinux.org/task/72991
-  patch -Np1 -i ../"${pkgname}-202111-gpu_passthrough.patch"
+
   # patch to be able to use brotli 1.0.9
-  patch -Np1 -i "../edk2-202102-brotli-1.0.9.patch"
-  # NOTE: patching brotli itself is not necessary (extra/brotli cherry-picks a patch for the pkgconfig integration)
+  patch -Np1 -i "../edk2-202202-brotli.patch"
 
   # symlinking openssl into place
   rm -rfv CryptoPkg/Library/OpensslLib/openssl
@@ -44,8 +40,8 @@ prepare() {
   ln -sfv "${srcdir}/brotli-${_brotli_ver}" BaseTools/Source/C/BrotliCompress/brotli
   ln -sfv "${srcdir}/brotli-${_brotli_ver}" MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
 
-  cp -r "${srcdir}"/SoftFloat-3e/* \
-    ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/
+#  cp -r "${srcdir}"/SoftFloat-3e/* \
+#    ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/
 
   # -Werror, not even once
   sed -e 's/ -Werror//g' \
@@ -115,10 +111,9 @@ package() {
   # license
   install -vDm 644 License.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-sha256sums=('7523bde01af809d5b1e81d5059b1eb6f9cecd99422c3317ae3614ef20e956917'
-  '0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1'
-  'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
-  '21130ce885d35c1fe73fc1e1bf2244178167e05c6747cad5f450cc991714c746'
-  '3c3fb33891d434177922b9466e9ba2dbaedf47abc4f5f07841ea2eb748cac5d1'
-  '40560e812e9fc56b1cf255abe938812c97aa8475e85e2388da0d4217e30af4b9'
-  'bc18658552dadf82fad104d6ad65157d15fca764db45fdfbc54d02c54226827b')
+sha256sums=('e6cf93bae78b30a10732b8afb5cc438735dc9ec976ae65d12dab041c18bb7987'
+            'bf61b62aaa66c7c7639942a94de4c9ae8280c08f17d4eac2e44644d9fc8ace6f'
+            'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
+            '21130ce885d35c1fe73fc1e1bf2244178167e05c6747cad5f450cc991714c746'
+            '0a30739348fe448c9289625fcf80d6e5705a6ada0f3dd43cf42e52a31bbfa0ec'
+            '40560e812e9fc56b1cf255abe938812c97aa8475e85e2388da0d4217e30af4b9')
