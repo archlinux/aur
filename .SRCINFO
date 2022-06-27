@@ -5,6 +5,8 @@ pkgbase = python-pycrypto
 	url = https://github.com/pycrypto/pycrypto/blob/master/README.md
 	arch = any
 	license = Public domain
-	provides = python-crypto
 
 pkgname = python-pycrypto
+	depends = python-crypto=2.6.1
+
+pkgname = python-crypto
