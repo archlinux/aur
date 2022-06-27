@@ -11,3 +11,5 @@ pkgbase = ps7b_libps6000
 	md5sums = 39a22534acacbefbced5227c0a547ca6
 
 pkgname = ps7b_libps6000
+
+#test
