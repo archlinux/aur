@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=9.0.10
+pkgver=10.0.3
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -39,7 +39,7 @@ backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
         "https://ftp.o-fork.de/ofork-${pkgver}.tar.gz"
-	"https://ftp.o-fork.de/ITSM/Bundle9/ITSM-${pkgver}.opm"
+	"https://ftp.o-fork.de/ITSM/Bundle10/ITSM-${pkgver}.opm"
 	"https://ftp.o-fork.de/ITSM/GeneralCatalog-${pkgver}.opm"
 	"https://ftp.o-fork.de/ITSM/ITSMCore-${pkgver}.opm"
         "https://ftp.o-fork.de/ITSM/ITSMChangeManagement-${pkgver}.opm"
@@ -50,17 +50,17 @@ source=("${pkgname}.install"
 	"https://ftp.o-fork.de/AddOns/MasterSlave-${pkgver}.opm"
 	"https://ftp.o-fork.de/AddOns/Survey-${pkgver}.opm")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            '3c2b819bedaaac80015aeee657b9ae1bbdd5019081461688eeb4226c72453ce0'
-            'd1dd33e754a41d7f83b61d4db5324572cf560df0bdfab619cce88cd58fcc257d'
-            'd5c36681efcc621be766577da0c53d12c17e6fec540afba67555bcb0caa68d1d'
-            'aaffe0f6a611287fb0d140c53dcc34320d0613eed3ce19a82bb5fb48428310bd'
-            '13db38049236c30670477cd7bea4af9c8f1373a2def7eddd5e05ac4e0844d19b'
-            '4752f7854c90f3e07112db562b6da14a147a17546ae4edd878a02e0ad9392483'
-            '7af8a23a9e7bc4dfaea4298b812bc9d2309ef406d9338404eab06b66e900761b'
-            'b71cdb63f92227d3a50ccbfbc5828f8171b42fe6bd29124e51c525519e85cbee'
-            '724ad367a96931bf0c27680fef3848d47d846edc2362e2302ba6639674cd7cc1'
-            '134cb56c82380978baf7035e5400fe15cefef01a1f35cc43cb9bb3735c0dfcba'
-            'a10d01bd7117075047a874ec04546284e2abf0937acc90dc474cbd1c4075b1a0')
+            'd141ed94ef654b9ae528890823c2584b0dfee69a3645a80a1618c323e135be26'
+            '1241b926625e7221ce0e8080cf4d4f9fe4c4adc2bea80d8baa90cd784c0740eb'
+            'e82c9406ee379879469543fd7c4fda6877d0637f54e1a2dc760bbf3fb497fd16'
+            '710ecc57ba9d2567c20a13250a3be4800402d158f59bf24aba0292d72130820e'
+            '6ee62fa4442dde5fc48967c389f46ee99ca31f4e5e700809c830e417bfef6887'
+            '4059d4e9b1cd006da98c6b44c5df3dfe7da28f55f5217aee72426e2df5052d70'
+            'c88671d505778b883eddbc3b9d207651d47fa155a210c42207d50c7434006ac1'
+            '23dcdcef208c07a7ae01750d780d36173c29618eb4012d8fc0f1158eac4fb5df'
+            '80d1007dd9aa097d021eb0504ab20b258bb873e477bd6aea78ed464f4325125c'
+            '233b537c3a0e6cc6612a4eeb6709aef0dbbf305675a3aa13021e935a7e3bb53c'
+            'b5e2d7cb597dd7bebf4c8848de2eac94f02c34affd2cf56b0794b2ae1e2f5945')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
