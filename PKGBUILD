@@ -1,11 +1,11 @@
 # Maintainer: pappy <pa314159@users.noreply.github.com>
 
-_version=3.39.0
+_version=3.40.1
 _patch=01
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=2
+pkgrel=1
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -28,7 +28,7 @@ source=(
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=('2a1b770d8ed17aa5e4bc30a1d7e2c095d3175f60e2146c1502a890576ee72edc'
+sha256sums=('97f4e847e5c2ba714b09456f9fb5f449c7e89b2f0a2b8c175f36cc31f345774e'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
             '4134913c858fffa86d8873d16ff5d92b337289ff14f2f3776a36614361b8472d'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
