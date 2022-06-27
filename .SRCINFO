@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon
-	pkgver = 1.37.1.r29870.g1a5b85ad
+	pkgver = 1.39.7.r30600.g2dd76e6b98
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = i686
@@ -49,7 +49,7 @@ pkgbase = networkmanager-git
 	optdepends = modemmanager: cellular network support
 	options = !libtool
 	options = !emptydirs
-	source = git://github.com/NetworkManager/NetworkManager
+	source = git+https://github.com/NetworkManager/NetworkManager
 	source = NetworkManager.conf
 	source = 20-connectivity.conf
 	sha256sums = SKIP

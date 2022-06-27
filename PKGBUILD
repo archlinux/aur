@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.37.1.r29870.g1a5b85ad
+pkgver=1.39.7.r30600.g2dd76e6b98
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -32,7 +32,7 @@ optdepends=( 'iwd: alternative way to connect to wifi'
     'rp-pppoe: ADSL support'
     'modemmanager: cellular network support')
 options=(!libtool !emptydirs)
-source=(git://github.com/$_gitname/$_gitname
+source=(git+https://github.com/$_gitname/$_gitname
     NetworkManager.conf
     20-connectivity.conf)
 sha256sums=('SKIP'
@@ -76,7 +76,6 @@ build() {
         -D dhclient=/usr/bin/dhclient \
         -D dhcpcd=/usr/bin/dhcpcd \
         -D dnsmasq=/usr/bin/dnsmasq \
-        -D dnssec_trigger=/usr/lib/dnssec-trigger/dnssec-trigger-script \
         -D hostname_persist=default \
         -D iptables=/usr/bin/iptables \
         -D kernel_firmware_dir=/usr/lib/firmware \
