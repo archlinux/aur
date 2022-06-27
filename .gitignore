@@ -2,3 +2,4 @@ openAV-Luppp
 pkg
 src
 *.tar.xz
+*.pkg.tar*

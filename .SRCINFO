@@ -12,6 +12,7 @@ pkgbase = openav-luppp-git
 	depends = jack
 	depends = liblo
 	depends = ntk-git
+	depends = libsndfile
 	provides = openav-luppp-git
 	provides = luppp
 	conflicts = openav-luppp-git

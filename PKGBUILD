@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
 license=('GPL3')
 groups=('openav')
-depends=('jack' 'liblo' 'ntk-git')
+depends=('jack' 'liblo' 'ntk-git' 'libsndfile')
 makedepends=('meson' 'git')
 provides=('openav-luppp-git' 'luppp')
 conflicts=('openav-luppp-git' 'luppp')
@@ -21,15 +21,11 @@ pkgver() {
   git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build(){
-  cd ${_gitname}
-  meson build
-  cd build
-  ninja
+build() {
+  arch-meson ${_gitname} build
+  meson compile -C build
 }
 
 package() {
-  cd ${_gitname}
-  cd build
-  DESTDIR="$pkgdir/" ninja install
+  meson install -C build --destdir "$pkgdir"
 }
