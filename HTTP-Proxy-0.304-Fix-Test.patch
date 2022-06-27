@@ -1,0 +1,20 @@
+--- a/t/90httpstatus.t   2015-06-16 00:47:39.000000000 +0000
++++ b/t/90httpstatus.t    2018-05-12 04:36:26.681033369 +0000
+@@ -19,7 +19,7 @@
+ use HTTP::Request::Common;
+ use t::Utils;
+ 
+-my $base = 'http://httpstat.us';
++my $base = 'https://httpstat.us';
+ 
+ plan tests => $tests;
+ 
+@@ -36,7 +36,7 @@
+     $proxy->init;
+ 
+     my $ua = LWP::UserAgent->new( keep_alive => 1 );
+-    $ua->proxy( http => $proxy->url );
++    $ua->proxy( https => $proxy->url );
+ 
+     # fork the proxy
+     my $pid = fork_proxy($proxy);

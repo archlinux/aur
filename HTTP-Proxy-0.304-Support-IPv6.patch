@@ -1,0 +1,157 @@
+From 63bc39b1f29fba4fea22e51fa4b2b64792748740 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 16 Feb 2017 14:37:26 +0100
+Subject: [PATCH] Support IPv6
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When HTTP::Daemon will support IPv6
+<https://rt.cpan.org/Public/Bug/Display.html?id=91699>, tests will
+fail because LWP::UserAgent still refuses proxy URL with IPv6
+numerical host name <https://rt.cpan.org/Public/Bug/Display.html?id=94654>.
+
+Once the LWP::UserAgent is fixed, HTTP-Proxy tests will still fail
+because they do not expect a client or server could use IPv6.
+
+This patch fixes the tests and replaces all IO::Socket::INET
+occurences with IO::Socket::IP.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/HTTP/Proxy.pm |  3 ++-
+ t/23connect.t     |  4 ++--
+ t/50hopbyhop.t    |  2 +-
+ t/50standard.t    | 18 +++++++++++-------
+ t/Utils.pm        | 10 +++++-----
+ 5 files changed, 21 insertions(+), 16 deletions(-)
+
+diff --git a/lib/HTTP/Proxy.pm b/lib/HTTP/Proxy.pm
+index a234874..87dccf2 100644
+--- a/lib/HTTP/Proxy.pm
++++ b/lib/HTTP/Proxy.pm
+@@ -6,6 +6,7 @@ use LWP::UserAgent;
+ use LWP::ConnCache;
+ use Fcntl ':flock';         # import LOCK_* constants
+ use IO::Select;
++use IO::Socket::IP ();
+ use Sys::Hostname;          # hostname()
+ use Socket qw( SOL_SOCKET SO_SNDBUF SO_RCVBUF );
+ use Carp;
+@@ -591,7 +592,7 @@ sub _handle_CONNECT {
+         $upstream = $response->{client_socket};
+     }
+     else {                                  # direct connection
+-        $upstream = IO::Socket::INET->new( PeerAddr => $req->uri->host_port );
++        $upstream = IO::Socket::IP->new( PeerAddr => $req->uri->host_port );
+     }
+
+     # no upstream socket obtained
+diff --git a/t/23connect.t b/t/23connect.t
+index d1b5ff2..e123203 100644
+--- a/t/23connect.t
++++ b/t/23connect.t
+@@ -3,7 +3,7 @@ use strict;
+ use t::Utils;
+ use HTTP::Proxy;
+ use LWP::UserAgent;
+-use IO::Socket::INET;
++use IO::Socket::IP;
+
+ plan skip_all => "This test fails on MSWin32. HTTP::Proxy is usable on Win32 with maxchild => 0"
+   if $^O eq 'MSWin32';
+@@ -23,7 +23,7 @@ my $host;
+ my $banner = "President_of_Earth Barbarella Professor_Ping Stomoxys Dildano\n";
+ {
+
+-    my $server = IO::Socket::INET->new( Listen => 1 );
++    my $server = IO::Socket::IP->new( Listen => 1 );
+     plan 'skip_all', "Couldn't create local server" if !defined $server;
+
+     $host = 'localhost:' . $server->sockport;
+diff --git a/t/50hopbyhop.t b/t/50hopbyhop.t
+index 62943af..8adca04 100644
+--- a/t/50hopbyhop.t
++++ b/t/50hopbyhop.t
+@@ -13,7 +13,7 @@ $filter->proxy($proxy);
+ {
+     package MockSocket;
+     use vars qw( @ISA );
+-    @ISA = qw( IO::Socket::INET );
++    @ISA = qw( IO::Socket::IP );
+     # needed by HTTP::Proxy::HeaderFilter::standard
+     sub peerhost { "1.2.3.4"; }
+ }
+diff --git a/t/50standard.t b/t/50standard.t
+index 0592cdb..3a391f1 100644
+--- a/t/50standard.t
++++ b/t/50standard.t
+@@ -47,7 +47,11 @@ if ( $pid == 0 ) {
+             SKIP: {
+                 skip 'FreeBSD jail does not treat localhost as 127.0.0.1', 1
+                     if ($^O eq 'freebsd' && `sysctl -n security.jail.jailed` == 1);
+-                is( $req->header("X-Forwarded-For"), '127.0.0.1',
++                # This assumes a client comes from localhost. Ideal test
++                # would check against a value smuggled from the client
++                # in the HTTP request.
++                like( $req->header("X-Forwarded-For"),
++                    qr/^(?:127\.0\.0\.1|::1)$/,
+                     "The daemon got X-Forwarded-For" );
+             }
+             return $res;
+@@ -105,19 +109,19 @@ like( $server[0], qr!HTTP::Proxy/\d+\.\d+!, "Correct server name for direct prox
+
+ # we cannot use a LWP user-agent to check
+ # that the LWP Client-* headers are removed
+-use IO::Socket::INET;
++use IO::Socket::IP ();
++use URI ();
+
+ # connect directly to the proxy
+-$proxy->url() =~ /:(\d+)/;
+-my $sock = IO::Socket::INET->new(
+-    PeerAddr => 'localhost',
+-    PeerPort => $1,
++my $sock = IO::Socket::IP->new(
++    PeerAddr => URI->new($proxy->url)->host,
++    PeerPort => URI->new($proxy->url)->port,
+     Proto    => 'tcp'
+   ) or diag "Can't connect to the proxy";
+
+ # send the request
+ my $url = $server->url;
+-$url =~ m!http://([^:]*)!;
++$url =~ m!http://([^/]*)!;
+ print $sock "GET $url HTTP/1.0\015\012Host: $1\015\012\015\012";  
+
+ # fetch and count the Client-* response headers
+diff --git a/t/Utils.pm b/t/Utils.pm
+index 9fb44b5..c4005a1 100644
+--- a/t/Utils.pm
++++ b/t/Utils.pm
+@@ -2,7 +2,8 @@ package t::Utils;
+
+ use strict;
+ use Exporter ();
+-use IO::Socket::INET;
++use IO::Socket::IP;
++use URI ();
+ use vars qw( @ISA @EXPORT @EXPORT_OK );
+
+ @ISA       = qw( Exporter );
+@@ -93,10 +94,9 @@ sub bare_request {
+     my ($url, $headers, $proxy) = @_;
+
+     # connect directly to the proxy
+-    $proxy->url() =~ /:(\d+)/;
+-    my $sock = IO::Socket::INET->new(
+-        PeerAddr => 'localhost',
+-        PeerPort => $1,
++    my $sock = IO::Socket::IP->new(
++        PeerAddr => URI->new($proxy->url)->host,
++        PeerPort => URI->new($proxy->url)->port,
+         Proto    => 'tcp'
+       ) or do { warn "Can't connect to the proxy"; return ""; };
+
+-- 
+2.7.4

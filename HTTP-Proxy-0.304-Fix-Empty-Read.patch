@@ -1,0 +1,15 @@
+--- a/t/23connect.t 2020-07-21 15:36:38.746426350 +0300
++++ b/t/23connect.t 2020-07-21 15:37:45.506002189 +0300
+@@ -72,7 +72,11 @@
+     eval {
+         local $SIG{ALRM} = sub { die 'timeout' };
+         alarm 30;
+-        $read = <$sock>;
++        if ($sock->can('my_read')) {
++            $sock->my_read($read, 1024);
++        } else {
++            $read = <$sock>;
++        }
+     };
+
+     ok( $read, "Read some data from the socket" );
