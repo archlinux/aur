@@ -1,6 +1,6 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 pkgname=pyp2rpm
-pkgver=3.3.6
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="Convert Python packages to RPM SPECFILES"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('python-setuptools' 'python-wheel')
 depends=('python-jinja')
 url="https://pypi.python.org/pypi/pyp2rpm"
 source=("https://files.pythonhosted.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('45ed9304d2add00e6e2f94986d8c6ded31efd6461dda65778cb03e2097f1c90c')
+sha256sums=('a2f7de5ab1ec2c26e0806ff074f7bb4205c0b4a64df2316115be95cc606efe1b')
 
 build() {
   cd "${pkgname}-${pkgver}"
