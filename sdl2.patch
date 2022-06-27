@@ -1,0 +1,45 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c091de..be2d9a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,5 +3,4 @@ cmake_minimum_required( VERSION 2.8 )
+ project( apitest )
+ set( SDL_DEPLOY_INTO ${CMAKE_SOURCE_DIR}/bin )
+ 
+-add_subdirectory( thirdparty/SDL2-2.0.1 )
+ add_subdirectory( src )
+diff --git a/build/CMakeCommon.txt b/build/CMakeCommon.txt
+index 5b851e0..ebce259 100644
+--- a/build/CMakeCommon.txt
++++ b/build/CMakeCommon.txt
+@@ -3,7 +3,7 @@ set( apitest_BIN_DIR ${apitest_SOURCE_DIR}/bin )
+ set( apitest_MEDIA_DIR ${apitest_BIN_DIR}/Media )
+ set( apitest_SHADER_DIR ${apitest_BIN_DIR}/Shader )
+ 
+-set( SDL_INCLUDE_DIR "${apitest_SOURCE_DIR}/thirdparty/SDL2-2.0.1/include" )
++set( SDL_INCLUDE_DIR /usr/include/SDL2/ )
+ 
+ set( apitest_WITH_D3D11 0 )
+ 
+@@ -36,7 +36,7 @@ elseif( APPLE )
+     set( CMAKE_SHARED_LINKER_FLAGS "-g" )
+     set( CMAKE_MODULE_LINKER_FLAGS "-g" )
+ else()
+-    set( SDL_LIBRARY_DIR "${CMAKE_BINARY_DIR}/thirdparty/SDL2-2.0.1/" )
++    set( SDL_LIBRARY_DIR "/usr/lib/" )
+ 
+     if( NOT CMAKE_BUILD_TYPE )
+       set( CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build, options are: None Debug Release" FORCE )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a19e47b..f329c88 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -432,7 +432,7 @@ if( MSVC )
+         target_link_libraries( apitest ${SDL_LIBRARY_DIR}/SDL2.lib )
+         target_link_libraries( apitest ${SDL_LIBRARY_DIR}/SDL2main.lib )
+ else()
+-        target_link_libraries( apitest ${SDL_LIBRARY_DIR}/libSDL2.a )
++        target_link_libraries( apitest ${SDL_LIBRARY_DIR}/libSDL2.so )
+         target_link_libraries( apitest ${SDL_LIBRARY_DIR}/libSDL2main.a )
+ endif( MSVC )
+ 
