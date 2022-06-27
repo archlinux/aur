@@ -1,4 +1,5 @@
-# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Stefan Auditor <stefan.auditor@erdfisch.de>
 
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
