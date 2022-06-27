@@ -1,12 +1,15 @@
 pkgbase = python2-pyxdg-git
-	pkgdesc = PyXDG is a python library to access freedesktop.org standards.
+	pkgdesc = Official freedesktop.org XDG specifications support library
 	pkgver = 0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freedesktop.org/wiki/Software/pyxdg/
 	arch = any
 	license = GPL2
 	makedepends = python2-setuptools
 	depends = python2
+	conflicts = pyxdg
+	conflicts = python2-xdg
+	conflicts = python2-pyxdg
 	source = https://github.com/takluyver/pyxdg/archive/refs/tags/rel-0.27.tar.gz
 	sha256sums = a05786e758e3dc81d56c85d2132830fd23c156cadc160d664e486db0ca6e6932
 
