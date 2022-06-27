@@ -1,7 +1,7 @@
 # Maintainer: Ayush Agarwal <ayushnix at fastmail dot com>
 
 pkgname=pass-coffin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A password store extension that hides data inside a signed and encrypted coffin"
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=('pass-coffin-git'
            'pass-tomb'
            'pass-tomb-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f0418edf9ceb34139d9591fbf791a320e6f749f72076b99c9d799d263f894855')
+sha256sums=('bca41b9c9dc3525ddfccef31baef2c61366a968c43ee841c3b6c6934e3263fbe')
 
 package() {
     cd "$pkgname-$pkgver"
