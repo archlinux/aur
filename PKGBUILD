@@ -1,4 +1,5 @@
-# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: twa022 <twa022 at gmail dot com>
 
 pkgbase=gnome-python-desktop
 pkgname=('gnome-python-desktop' 'python2-gnomekeyring' 'python2-wnck')
@@ -6,7 +7,7 @@ pkgver=2.32.0
 pkgrel=20
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-makedepends=('intltool' 'pkg-config' 'gnome-python' 'libwnck' 'libgnome-keyring')
+makedepends=('intltool' 'pkg-config' 'gnome-python' 'libwnck' 'libgnome-keyring' 'python2')
 url="https://www.gnome.org"
 source=(https://download.gnome.org/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.bz2
         01_wnck_enums.patch)

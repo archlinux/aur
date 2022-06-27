@@ -11,6 +11,7 @@ pkgbase = gnome-python-desktop
 	makedepends = gnome-python
 	makedepends = libwnck
 	makedepends = libgnome-keyring
+	makedepends = python2
 	source = https://download.gnome.org/sources/gnome-python-desktop/2.32/gnome-python-desktop-2.32.0.tar.bz2
 	source = 01_wnck_enums.patch
 	sha256sums = 09dbd580bf3b0ef60f91b090eafe6d08ddcc50a609e2b425a7f8eca46d4e0ee9
@@ -35,4 +36,3 @@ pkgname = python2-wnck
 	depends = libwnck
 	conflicts = python-wnck<=2.32.0-10
 	replaces = python-wnck<=2.32.0-10
-
