@@ -16,7 +16,7 @@ source=(
   ${pkgname}-${pkgver}.tar.gz::https://github.com/andrewtweber/${pkgname}/archive/v${pkgver}.tar.gz
 )
 install=${pkgname}.install
-sha512sums=('a88a8924011a8ee6532052092badc06fc50ca8cb94e3eff5a4f94ca51d72e5360bec4090dbd612ca636360b46d9563b787ed835bf6fcf49acdf2125ee96c927f'
+sha512sums=('35b1ebbb6c2b55795b9f86470a30bf3ff30d6d5926bcf34fef9f009cd08d9d2139a9c3479cfacf80a6a77c25843c592c85d11bebbb9628ca89d448baab0b4d39'
             'f7259a6a405418a716c05720abf69d6afc50922f6089751a12500c49d347ff1238a349618d5f3169e81122ef3b78dfa2c5bafda48aba06a2bed32fc824a4d2f3')
 
 prepare() {
