@@ -1,0 +1,12 @@
+pkgbase = dismember
+	pkgdesc = Scan memory for secrets and more. Maybe eventually a full /proc toolkit.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/liamg/dismember
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/liamg/dismember/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 7f78d5f986b97ee81f7b74f678e7bd6e4c48e83057778ee6d6e09d154ce5a45d
+
+pkgname = dismember
