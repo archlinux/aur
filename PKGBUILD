@@ -4,7 +4,7 @@
 
 pkgname=tigervnc-server
 _pkgname=tigervnc
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 _xorgver=1.20.9
 pkgdesc="TigerVNC (Server only), forked from Archlinux TigerVNC."
@@ -25,20 +25,23 @@ backup=(etc/pam.d/tigervnc
 	etc/tigervnc/vncserver-config-mandatory
 	etc/tigervnc/vncserver.users)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v${pkgver}.tar.gz
-	ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${_xorgver}.tar.bz2
+	https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${_xorgver}.tar.bz2
 	Xsession
+	https://github.com/TigerVNC/tigervnc/commit/2daf4126882f82b6e392dfbae87205dbdc559c3d.patch
 	more-xsessions.patch
 	remove-selinux.patch)
-sha256sums=('3648eca472a92a4e8fe55b27cd397b1bf16bad0b24a3a1988661f44553f5e2c3'
+sha256sums=('9ff3f3948f2a4e8cc06ee598ee4b1096beb62094c13e0b1462bff78587bed789'
             'e219f2e0dfe455467939149d7cd2ee53b79b512cc1d2094ae4f5c9ed9ccd3571'
             'c9276f6ea277cf9654fb2cc3bc9dadbb2e596b5cf8ca867ee906c0080cf7f810'
+            '24683d93569d2cbbb1b64a8b0622c9e3d459194f19c29934780b12d92552f417'
             'cb57dece026b29d7019a3e1e42fd2fb201d37fc60a70c885d2a50acffb808c06'
-            '71efc3bedd5be49089f4ca93517fb7fb6fadf002319cd9c8b3ac032ff3cadab0')
+            'fb8bb5bd3ec990720580a664326a70fd178ce94b97c2130462df9b1e3a3925c3')
 
 prepare() {
   cd "$srcdir"/${_pkgname}-${pkgver}
   patch -p1 -i "$srcdir"/more-xsessions.patch
   patch -p1 -i "$srcdir"/remove-selinux.patch
+  patch -p1 -i "$srcdir"/2daf4126882f82b6e392dfbae87205dbdc559c3d.patch
 
   cd unix/xserver
   cp -r "$srcdir"/xorg-server-${_xorgver}/* .
