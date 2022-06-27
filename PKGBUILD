@@ -19,6 +19,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -p1 -i "${srcdir}/mime-icon-path.patch"
+  sed -i '/  appdata,/d' data/meson.build
 }
 
 build() {
