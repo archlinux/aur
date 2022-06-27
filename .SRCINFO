@@ -1,5 +1,5 @@
 pkgbase = starwm-git
-	pkgdesc = starwm - A tiling window manager for the adventurer
+	pkgdesc = StarWM is an extensible, floating and tiling, X window manager for Linux-based operating systems written in Rust.
 	pkgver = r64.da02779
 	pkgrel = 1
 	epoch = 2
