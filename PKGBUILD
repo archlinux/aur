@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=lms
-pkgver=3.27.0
+pkgver=3.29.1
 pkgrel=1
 pkgdesc='Lightweight Music Server. Access your self-hosted music using a web interface'
 arch=('x86_64')
@@ -15,18 +15,10 @@ depends=('ffmpeg'
 makedepends=('cmake' 
              'wt'
              'boost'
+             'gtest'
              'graphicsmagick')
-source=("${pkgname}-${pkgver}.tar.xz::https://github.com/epoupon/lms/archive/v${pkgver}.tar.gz"
-        "0001-fix-missing-includes.patch")
-sha256sums=('98be611c05cb2a034c38623d1b739ea3e34760da04be8b0b3ba7e0fbb3baedc1'
-            '5a8a64753158fdf0f38f177e14f7df76f2260fa61ca633542c8effb4d398a91a')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  rm -rf build
-  mkdir build
-  patch -s -p1 < "${srcdir}"/0001-fix-missing-includes.patch
-}
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/epoupon/lms/archive/v${pkgver}.tar.gz")
+sha256sums=('de3530e5ef7320e4355df095002721c5f83abe4abc8cc3b8b9f4f60579160099')
 
 build() {
   cd "${pkgname}-${pkgver}/build"
