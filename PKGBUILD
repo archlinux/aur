@@ -1,4 +1,4 @@
-# Maintainer: BlitDev <blitgaming1007@mail.ru>
+# Maintainer: BlitDev <blitdevan@proton.me>
 pkgname=reactgame
 pkgver=1.3.1
 pkgrel=1
