@@ -1,4 +1,5 @@
-pkgname=grpc-client-cli-bin
+pkgbase="grpc-client-cli"
+pkgname="${pkgbase}-bin"
 pkgver=1.12.0
 pkgrel=1
 pkgdesc="generic gRPC command line client"
