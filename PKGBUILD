@@ -14,11 +14,8 @@ source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.
 sha256sums=('39550006e059043b7e2177f10467ae2f77fe639901aee91cbc1e359516ff8d3e')
 
 
-prepare() {
-  cd Trilinos-trilinos-release-"$_pkgver"
-}
-
 build() {
+    cd Trilinos-trilinos-release-"$_pkgver"
     mkdir -p build
     cd build
 
