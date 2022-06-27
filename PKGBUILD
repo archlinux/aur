@@ -3,7 +3,7 @@
 # Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=umoria-color
 pkgver=5.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rogue-like dungeon crawler color variant"
 arch=('i686' 'x86_64')
 url="https://andrew.cool/moria"
