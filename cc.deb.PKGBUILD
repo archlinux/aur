@@ -17,7 +17,7 @@ arch=('any')
 url="https://${_pkggopath}"
 makedepends=('dpkg') # 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
 depends=()
-_debdeps=""
+_debdeps="net-tools"
 #_debdeps=""
 _scripts="skywire-scripts"
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
@@ -49,7 +49,7 @@ build() {
     echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
     echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
-    #echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
+    echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
