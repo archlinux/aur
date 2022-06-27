@@ -1,0 +1,54 @@
+diff --git a/src/actions.c b/src/actions.c
+index e5a6b64..0254440 100644
+--- a/src/actions.c
++++ b/src/actions.c
+@@ -29,6 +29,11 @@ extern PWList * pwlist_new(char*);
+ extern PWSearchResult * uilist_get_highlighted_searchresult();
+ extern char *pwgen_ask();
+ 
++Options *options;
++PWList *pwlist;
++PWList *current_pw_sublist;
++PWSearchResult *search_results;
++
+ int disp_h = 15, disp_w = 60;
+ extern int curitem;
+ extern WINDOW *bottom;
+diff --git a/src/gnupg.c b/src/gnupg.c
+index d42c7ce..d320bbf 100644
+--- a/src/gnupg.c
++++ b/src/gnupg.c
+@@ -52,7 +52,9 @@
+ 
+ int passphrase_good = 0;
+ extern int errno;
+-extern int write_options;
++
++int write_options;
++time_t time_base;
+ 
+ int gnupg_hit_sigpipe = 0;
+ static void gnupg_sigpipe_handler()
+diff --git a/src/pwman.h b/src/pwman.h
+index 0827254..f952cd7 100644
+--- a/src/pwman.h
++++ b/src/pwman.h
+@@ -112,12 +112,12 @@ typedef struct {
+ 	int sign_db;
+ } Options;
+ 
+-Options *options;
+-int write_options;
+-PWList *pwlist;
+-PWList *current_pw_sublist;
+-PWSearchResult *search_results;
+-time_t time_base;
++extern Options *options;
++extern int write_options;
++extern PWList *pwlist;
++extern PWList *current_pw_sublist;
++extern PWSearchResult *search_results;
++extern time_t time_base;
+ 
+ char *trim_ws(char*);
+ void debug(char*, ...);
