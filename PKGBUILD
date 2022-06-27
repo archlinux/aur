@@ -5,8 +5,8 @@
 
 pkgname=fluent-bit
 
-pkgver=1.8.12
-pkgrel=2
+pkgver=1.9.5
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -30,12 +30,12 @@ backup=('etc/fluent-bit/fluent-bit.conf'
 options=()
 install=
 changelog=
-source=("https://fluentbit.io/releases/${pkgver:0:3}/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver:0:3}/source-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
 
 build() {
-    cd $pkgname-$pkgver/build
+    cd "$srcdir/build"
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -51,12 +51,12 @@ build() {
 }
 
 check() {
-    cd $pkgname-$pkgver/build
+    cd "$srcdir/build"
     make test || true
 }
 
 package() {
-    cd $pkgname-$pkgver/build
+    cd "$srcdir/build"
 
     # install binaries and libraries
     make DESTDIR="$pkgdir/" install
@@ -67,11 +67,11 @@ package() {
     rm -rf "$pkgdir/lib"
 
     # install license file and documentation
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$srcdir"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-md5sums=('5fb0f375c8a89bf1d876e74a822cdf9a')
-sha512sums=('df8f2881c54c79dd746b0b8f2f0c4b04f2901896f1a3411becf8fbf4960480e8e2ff46eda02bfc183b46be2700c129831de5b6b0f6fd569c9f2ce518710a16d2')
-b2sums=('9dadca25223e72f9d7c30c9fc907be1f457783d69f6df2e593b32701f208033697afabc1648babad5ea714b2950e9bf8d413bb215c2ba891c3ef76815cd9f65f')
+# curl https://releases.fluentbit.io/1.x/source-1.x.y.tar.gz.{md5,sha256}
+md5sums=('62801c9d034e5b6ecf9d6c6b279ab7d3')
+sha256sums=('1ce2cd411b25297f0d6c175a8131fbd949abaa7d1d7f15c9d8913771e71bf5ae')
