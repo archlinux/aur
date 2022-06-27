@@ -3,7 +3,7 @@
 
 _pkgname=xone
 pkgname=xone-dkms-git
-pkgver=0.2.r5.g56f492c
+pkgver=0.3.r0.g8311a25
 pkgrel=1
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 arch=('x86_64')
@@ -11,13 +11,11 @@ url='https://github.com/medusalix/xone'
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-conflicts=('xone-dkms')
+conflicts=('xone-dkms'
+		   'xow')
 provides=('xone-dkms')
-provides=('xone-dkms')
-source=("git+https://github.com/medusalix/xone.git"
-                "http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab")
-sha256sums=('SKIP'
-                    '65736a84ff4036645b8f8ec602bed91ab6353019c9cb3233decab9feec0f6f04')
+source=("git+https://github.com/medusalix/xone.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -36,10 +34,5 @@ package() {
 
   echo "* Blacklisting xpad module..."
   install -D -m 644 install/modprobe.conf "${pkgdir}/etc/modprobe.d/xone-blacklist.conf"
-
-  echo "* Extracting dongle firmware..."
-  echo "* The firmware for the wireless dongle is subject to Microsoft's Terms of Use:"
-  echo "* https://www.microsoft.com/en-us/legal/terms-of-use"
-  install -D -m 644 "${srcdir}/FW_ACC_00U.bin" "${pkgdir}/usr/lib/firmware/xow_dongle.bin"
 }
 
