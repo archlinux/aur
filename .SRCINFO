@@ -1,7 +1,7 @@
 pkgbase = python-pypylon
 	pkgdesc = The official python wrapper for the Basler pylon Camera Software Suite.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/basler/pypylon
 	arch = any
 	license = Basler AG
