@@ -1,18 +1,19 @@
 post_install() {
   update-desktop-database -q /usr/share/applications
   echo ''
-  echo '======================================================================'
-  echo 'To create config directory, run mkdir -p "$HOME/.PGE_Project/configs",'
-  echo 'then you can place config packs there'
-  echo '======================================================================'
+  echo '====================================================='
+  echo 'You can install configuration packs from AUR directly'
+  echo 'or create the directory "$HOME/.PGE_Project/configs"'
+  echo 'to place other configuration packs there.'
+  echo '====================================================='
   echo ''
 }
 
 post_upgrade() {
-  post_install $1
+  update-desktop-database -q /usr/share/applications
 }
 
 post_remove() {
-  post_install $1
+  update-desktop-database -q /usr/share/applications
 }
 
