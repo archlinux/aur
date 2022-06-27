@@ -4,7 +4,7 @@ _pkgname=muStat
 _pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=1.7.0
-pkgrel=4
+pkgrel=6
 pkgdesc='Prentice Rank Sum Test and McNemar Test'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   r
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('9f9f425b562ceb2754bbd82f725ea0fc5c661a4f2b50ebdab50ca698643fe2a0')
 
 build() {
