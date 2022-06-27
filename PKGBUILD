@@ -4,13 +4,13 @@
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
-pkgver=3.4.14
-pkgrel=3
+pkgver=3.4.16
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
 url="http://opencv.org/"
-depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper ffmpeg)
+depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper ffmpeg4.4)
 makedepends=(cmake python-numpy python-setuptools mesa eigen hdf5 lapacke gtk3 vtk glew double-conversion)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
@@ -23,15 +23,18 @@ source=(
 "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
 "opencv-lapack.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/ea851b9f93224a4c19cc3ddeafa7b733f3f138b6/opencv/repos/extra-x86_64/opencv-lapack-3.10.patch"
 "opencv-tbb.patch::https://raw.githubusercontent.com/DrAtomic/opencv-tbb-patch/main/opencv-tbb.patch"
+"opencv-cmake.patch"
 )
-sha256sums=('302d3fe23b09d608d14b10212ed25649d9b6c7a2f817ccb1c8005172a479dedb'
-            'f8394bc68b70c57e54fc7706a4d2b7ef33e514c385f338c4cb470fe37d0dc243'
+sha256sums=('b4eddd83f13a4657e6175b2ffbb411cea6d8d6052242d823e64155d868e6a8ed'
+            '92b4f6ab8107e9de387bafc3c7658263e5c6be68554d6086b37a2cb168e332c5'
             'f83c64f2731a39910d0d4a48898dd04e4aca5c22f746b7b0ead003992ae11199'
-            'e604f6effe0b2aacd19ad5e11544589f76ffed816036964963984ab8912266f0')
+            'e604f6effe0b2aacd19ad5e11544589f76ffed816036964963984ab8912266f0'
+            '5710070ca513d37c0ee9ff496bfccf9c053e870bbaf5c46c0d18e2abc17c6269')
 
 prepare() {
   patch -d opencv-$pkgver -p1 < opencv-lapack.patch # Fix build with LAPACK
   patch -d opencv-$pkgver -p1 < opencv-tbb.patch    # Fix build tbb
+  patch opencv-$pkgver/cmake/OpenCVCompilerOptions.cmake opencv-cmake.patch # Disable -Werror=address
   mkdir -p build
 }
 
@@ -54,6 +57,9 @@ build() {
     -DCPU_BASELINE_DISABLE=SSE3 \
     -DCPU_BASELINE_REQUIRE=SSE2 \
     -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
+    -DFFMPEG_INCLUDE_DIRS="/usr/include/ffmpeg4.4" \
+    -DFFMPEG_LIBRARIES="/usr/lib/ffmpeg4.4/libavcodec.so;/usr/lib/ffmpeg4.4/libavformat.so;/usr/lib/ffmpeg4.4/libavutil.so;/usr/lib/ffmpeg4.4/libswscale.so" \
+    -DFFMPEG_LIBRARY_DIRS="/usr/lib/ffmpeg4.4" \
     -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
     -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
     -DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
