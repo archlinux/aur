@@ -1,0 +1,15 @@
+pkgbase = moondust-configpack-smbx38a
+	pkgdesc = Moondust Project's game configuration pack - Super Mario Brothers X By 38A
+	pkgver = 2022may22
+	pkgrel = 1
+	url = http://wohlsoft.ru/forum/viewtopic.php?f=58&t=714
+	arch = any
+	license = custom
+	makedepends = gawk
+	makedepends = sed
+	makedepends = curl
+	provides = moondust-configpack
+	source = http://wohlsoft.ru/projects/Moondust/_laboratory/config_packs/SMBXby38a_full.zip
+	sha512sums = SKIP
+
+pkgname = moondust-configpack-smbx38a
