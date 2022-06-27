@@ -1,14 +1,14 @@
 pkgbase = cardano-node-bin
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain (binary package).
-	pkgver = 1.34.1
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-node
 	install = cardano-node-bin.install
 	arch = x86_64
 	license = Apache
-	provides = cardano-node=1.34.1
+	provides = cardano-node=1.35.0
 	conflicts = cardano-node
-	source = https://hydra.iohk.io/build/13065769/download/1/cardano-node-1.34.1-linux.tar.gz
+	source = https://hydra.iohk.io/build/13065769/download/1/cardano-node-1.35.0-linux.tar.gz
 	source = cardano-node.sysusers
 	source = cardano-node.tmpfiles
 	source = cardano-node.service
