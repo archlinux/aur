@@ -1,7 +1,7 @@
 pkgname=libxft-bgra-git
 _dir=libxft
-pkgver=2.3.4.r126.06a3c0a
-pkgrel=2
+pkgver=2.3.4.r147.42c6616
+pkgrel=1
 pkgdesc="libXft with BGRA glyph (color emoji) rendering & scaling patches by Maxime Coste"
 arch=('x86_64')
 license=('custom')
