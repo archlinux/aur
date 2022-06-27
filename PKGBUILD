@@ -1,14 +1,14 @@
 # Maintainer: Christoph Brill <egore911@gmail.com>
 _pkgname=evtest-qt
 pkgname=${_pkgname}-git
-pkgver=r99.a6049a4
+pkgver=r112.46297da
 pkgrel=1
 pkgdesc="Linux Joystick Tester for Qt"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/evtest-qt/${_pkgname}"
-license=('GPL-3')
+license=('GPL3')
 depends=('qt5-base')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'tinycmmc')
 source=("git+${url}.git")
 md5sums=('SKIP')
 provides=("$_pkgname")
