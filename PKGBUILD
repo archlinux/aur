@@ -50,7 +50,7 @@ _1k_HZ_ticks=
 pkgbase=linux-next-um5302ta-git
 pkgver=20220622.r0.gac0ba5454ca8
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -202,7 +202,7 @@ _package() {
 
 _package-headers() {
    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-   depends=('linux-next-git' 'pahole')
+   depends=('linux-next-um5302ta-git' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
