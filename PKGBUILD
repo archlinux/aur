@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=stdm-git
-pkgver=1.r15.4f02c43
+pkgver=1.r16.1b442f6.BETA
 pkgrel=1
 epoch=
 pkgdesc="A linux man page search engine"
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.r%s.%s.BETA" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
