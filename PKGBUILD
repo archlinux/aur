@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sigclust
-_pkgver=1.1.0
+_pkgver=1.1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.0.1
+pkgrel=1
 pkgdesc='Statistical Significance of Clustering'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('efc4d8b8a19208efee9e86bbfd1aec09cac4fe3340033992f59e5892e9d9a104')
+sha256sums=('eacdb4b5598e64722e515e749a3ff3dc14e8a296836afdd0a17ab153a96a72e0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
