@@ -1,0 +1,15 @@
+ [Desktop Entry]
+Name=Moondust Engine
+Name[zh_CN]=Moondust 引擎
+GenericName=Moondust Engine
+GenericName[zh_CN]=Moondust 引擎
+Comment=The the main part of the Moondust Project to play levels and episodes
+Comment[zh_CN]=Moondust 项目的主要部分，用于游玩关卡和地图
+Encoding=UTF-8
+Version=1
+Type=Application
+Terminal=false
+Icon=moondust-engine
+Exec=pge_engine %F
+Categories=Game;
+StartupWMClass=pge_engine
