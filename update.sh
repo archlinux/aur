@@ -5,7 +5,10 @@ PKGNAME=$_name
 RELEASES=$(curl -sL https://pypi.org/pypi/$PKGNAME/json | jq .releases)
 LICENSE_URL="https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE"
 
-LICENSE_SHA512=$(curl -sL $LICENSE_URL | sha512sum - | cut -d' ' -f1)
+HASH=b2sum
+HASH_NAME=b2sums
+
+LICENSE_SUM=$(curl -sL $LICENSE_URL | $HASH - | cut -d' ' -f1)
 
 LAST=$(jq -r <<<$RELEASES '
 [ keys[]
@@ -28,12 +31,12 @@ DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
         .url
 ')
 
-SHA512=$(curl -sL $DOWNLOAD_URL | sha512sum - | cut -d' ' -f1)
+SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
 FILENAME=$(basename $DOWNLOAD_URL)
 
 sed -i 's,source=.*$,source=("'${DOWNLOAD_URL}'" "'$LICENSE_URL'"),' PKGBUILD
 sed -i 's/noextract=.*$/noextract=("'$FILENAME'")/' PKGBUILD
-sed -i 's/sha512sums=.*$/sha512sums=("'$SHA512'" "'$LICENSE_SHA512'")/' PKGBUILD
+sed -i 's/'$HASH_NAME'=.*$/'$HASH_NAME'("'$SUM'" "'$LICENSE_SUM'")/' PKGBUILD
 sed -i 's/pkgver=.*/pkgver='$LAST'/' PKGBUILD
 sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
