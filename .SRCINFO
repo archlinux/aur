@@ -1,0 +1,15 @@
+pkgbase = moondust-configpack-a2xt
+	pkgdesc = Moondust Project's game configuration pack - A Second X Thing
+	pkgver = 2022may22
+	pkgrel = 1
+	url = http://talkhaus.raocow.com/
+	arch = any
+	license = custom
+	makedepends = gawk
+	makedepends = sed
+	makedepends = curl
+	provides = moondust-configpack
+	source = http://wohlsoft.ru/projects/Moondust/_laboratory/config_packs/A2XT.zip
+	sha512sums = SKIP
+
+pkgname = moondust-configpack-a2xt
