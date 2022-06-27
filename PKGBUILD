@@ -1,19 +1,20 @@
-# Maintainer: Robin Candau <robincandau at protonmail dot com>
+# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+
 pkgname=malias
-pkgver=1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An alias manager that allows you to easily add, delete or list your bash aliases."
 arch=('any')
 url="https://github.com/Antiz96/malias"
 license=('GPL3')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=(3009004ced8a616da8100981c6d507a0827ba0a97bc11f8ed63f2e1f22b037d1)
+source=($url/archive/v$pkgver.tar.gz)
+sha256sums=(72d1ecd32f0136a83c03495b14be924f470a7da2ab04fd646540e17824c2ad86)
 
 package() {
-  
-  cd "$srcdir"
 
-  install -Dm 755 "bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm 644 "man/$pkgname.1.gz" "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
+  install -Dm 755 "src/bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm 644 "src/man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
