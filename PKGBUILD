@@ -4,7 +4,7 @@ _pkgname=RobustRankAggreg
 _pkgver=1.1
 pkgname=r-${_pkgname,,}
 pkgver=1.1
-pkgrel=4
+pkgrel=6
 pkgdesc='Methods for robust rank aggregation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   r
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('23ab88f6f1e56ae85a45bf5107ad0c37202dde275d799ed9fe214a1ab2c754df')
 
 build() {
