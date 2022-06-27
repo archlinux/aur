@@ -3,7 +3,7 @@
 
 pkgname=jd-tool-bin
 _pkgname=jd
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-arm
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-amd64-linux")
 
 sha256sums=('7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516')
-sha256sums_x86_64=('437352346f52b0c19dff460c4976b38198122a5a1a22f564f527034cab73bb80')
-sha256sums_aarch64=('52fa83f1fe4aa351801f5fd64f9f539943d2e9db90dc057c5201e58d1205d301')
+sha256sums_x86_64=('c347eb26f833d7ed3e20c45c8104282634fa87d2c34cd972677b649bd82c8c52')
+sha256sums_aarch64=('87e022d3e51dda4e5fd54364e70fdbadbbd8ed02bc327b5a6606f2e66769492c')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/jd"
