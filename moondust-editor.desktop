@@ -1,0 +1,15 @@
+ [Desktop Entry]
+Name=Moondust Editor
+Name[zh_CN]=Moondust 编辑器
+GenericName=Moondust Editor
+GenericName[zh_CN]=Moondust 编辑器
+Comment=The main development tool of Moondust Project
+Comment[zh_CN]=Moondust 项目的主要开发工具
+Encoding=UTF-8
+Version=1
+Type=Application
+Terminal=false
+Icon=moondust-editor
+Exec=pge_editor %F
+Categories=Game;
+StartupWMClass=pge_editor

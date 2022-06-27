@@ -1,0 +1,15 @@
+ [Desktop Entry]
+Name=Moondust Maintainer Wizard
+Name[zh_CN]=Moondust 维护工具
+GenericName=Moondust Maintainer Wizard
+GenericName[zh_CN]=Moondust 维护工具
+Comment=Process and convert various stuff like level and episode data, resources, etc.
+Comment[zh_CN]=处理和转换各种资源文件，比如关卡和音乐
+Encoding=UTF-8
+Version=1
+Type=Application
+Terminal=false
+Icon=moondust-maintainer
+Exec=pge_maintainer %F
+Categories=Game;
+StartupWMClass=pge_maintainer

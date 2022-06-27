@@ -1,0 +1,15 @@
+ [Desktop Entry]
+Name=Moondust Calibrator
+Name[zh_CN]=Moondust 调校工具
+GenericName=Moondust Calibrator
+GenericName[zh_CN]=Moondust 调校工具
+Comment=Calibrating incorrect frame positions and hitboxes
+Comment[zh_CN]=用于调校素材图的判定范围
+Encoding=UTF-8
+Version=1
+Type=Application
+Terminal=false
+Icon=moondust-calibrator
+Exec=pge_calibrator %F
+Categories=Game;
+StartupWMClass=pge_calibrator
