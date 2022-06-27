@@ -4,7 +4,7 @@ _pkgname=gptk
 _pkgver=1.08
 pkgname=r-${_pkgname,,}
 pkgver=1.08
-pkgrel=3
+pkgrel=5
 pkgdesc='Gaussian Processes Tool-Kit'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
 optdepends=(
   r-spam
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f4a84b4e275be4aea5e245748a16ede47cef28f7dc2d26acf0245a871c62663a')
 
 build() {
