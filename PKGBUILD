@@ -2,10 +2,10 @@
 # Contributor: Muhammad Yahya Harlan <muhammad.harlan@binus.ac.id>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
-_downloadid='5bba45caefdf4e2abb86bde980a1921d'
+_downloadid='e820e0d2575a45c49225d4b77bc40550'
 _referid='1c3559fed0894ef7b0b5054d1a0e0642'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36"
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36"
 
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -39,7 +39,7 @@ DLAGENTS=("https::/usr/bin/curl \
 
 pkgname=decklink-sdk
 pkgver=12.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Blackmagic DeckLink SDK'
 arch=('any')
