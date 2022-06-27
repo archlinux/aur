@@ -3,16 +3,16 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.3.3
-pkgrel=2
+pkgver=9.4.0
+pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
 license=('LGPL')
 depends=('boost')
 optdepends=(
-      # deal.II is compatible with adol-c 2.6.4 and newer (which is not yet in the AUR)
-      # 'adol-c: automatic differentiation library'
+      # adol-c is not compatible with Trilinos - if both are installed then deal.II will use Trilinos
+      'adol-c: automatic differentiation library'
       'arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems'
       'assimp: Library to import various well-known 3D model formats in an uniform manner'
       # ginkgo is not yet in the AUR
@@ -32,7 +32,7 @@ optdepends=(
       'scalapack: subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers'
       'slepc: Scalable library for Eigenvalue problem computations'
       # deal.II is not compatible with sundials 6.0 or newer yet
-      # 'sundials: Suite of nonlinear differential/algebraic equation solvers'
+      'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
       'tbb: High level abstract threading library'
       'trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems'
@@ -42,7 +42,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('297cb9aad508396528c8f65be379e0a1f05d2e79')
+sha1sums=('fd8ff7b934026b144cde2a904f21a8ad7d8244df')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
@@ -111,13 +111,6 @@ build() {
 
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
-
-  # Fix a test to work with TBB's oneAPI:
-  sed -i '/include .tbb.task_scheduler.init.h./d' \
-      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/tbb.cc
-
-  sed -i 's/tbb::task_scheduler_init::default_num_threads/MultithreadInfo::n_threads/' \
-      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/tbb.cc
 
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
