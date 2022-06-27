@@ -1,3 +1,9 @@
+## GE-Proton-7-22 Released
+- Hotfix:
+
+- Fixes crashes with 3440x1440 screen resolution
+- FSR resolutions removed from in-game resolution list. Please use WINE_FULLSCREEN_FAKE_CURRENT_RES to set scale-from resolution
+
 ## GE-Proton-7-21 Released
 - Wine:
 
