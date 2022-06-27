@@ -1,30 +1,45 @@
-# Maintainer: Epix <epixtm@protonmail.com>
+# Maintainer: catsout <outline941 at live.com>
+# Contributor: Epix <epixtm@protonmail.com>
+# Contributor: Manuel Hüsers <aur@huesers.de>
+
 pkgname=plasma5-wallpapers-wallpaper-engine-git
-pkgver=r379.5bf407a
+pkgver=0.5.3.r1.geca8c2b
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
 license=('GPL2')
-depends=('mpv' 'qt5-declarative' 'python-websockets' 'plasma-framework' 'qt5-websockets' 'qt5-webchannel')
-makedepends=('git' 'cmake' 'extra-cmake-modules')
-source=("plasma5-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git")
-md5sums=('SKIP')
-build() {
-	cd "$pkgname"
-	mkdir -p build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) ..
-	make
+depends=(
+    "plasma-framework" "gst-libav" "python-websockets" "qt5-declarative" 
+    "qt5-websockets" "qt5-webchannel" "vulkan-driver"
+)
+makedepends=(
+    "vulkan-headers" "extra-cmake-modules" "git" "cmake" "mpv"
+)
+optdepends=(
+	"mpv: alternative video backend"
+)
+provides=("plasma5-wallpapers-wallpaper-engine")
+conflicts=("plasma5-wallpapers-wallpaper-engine")
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+prepare(){
+    cd "${srcdir}/${pkgname}"
+    git submodule update --init
 }
-package() {
-	cd "$pkgname"
-	cd build
-	make DESTDIR="$pkgdir/" install
+pkgver(){
+    cd "${srcdir}/${pkgname}"
+    git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+build(){
+    cd "${srcdir}/${pkgname}"
+    cmake -B build . \
+        -DCMAKE_BUILD_TYPE=Release \
+        --install-prefix=$(kf5-config --prefix)
+    cmake --build build
+}
+package(){
+    cd "${srcdir}/${pkgname}"
+    DESTDIR="${pkgdir}" cmake --install build
 }
