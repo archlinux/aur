@@ -1,0 +1,4 @@
+#Type    Path                                     Mode    User       Group   Age   Argument
+d        /opt/vrising-server                      0755    vrising    vrising
+d        /opt/vrising-server/ServerData/Saves     0755    vrising    vrising
+d        /opt/vrising-server/ServerData/Settings  0755    vrising    vrising

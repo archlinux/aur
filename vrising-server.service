@@ -1,0 +1,32 @@
+[Unit]
+Description=V Rising Dedicated Server
+After=network.target vrising-framebuffer.service
+Requires=vrising-framebuffer.service
+JoinsNamespaceOf=vrising-framebuffer.service
+
+[Service]
+Type=simple
+User=vrising
+Group=vrising
+Environment="DISPLAY=:73691542"
+ExecStart=/usr/bin/wine VRisingServer.exe -persistentDataPath Z:/opt/vrising-server/ServerData/
+ExecStop=/opt/vrising-server/gracefulshutdown.sh
+WorkingDirectory=/opt/vrising-server
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictSUIDSGID=true
+RemoveIPC=true
+
+[Install]
+WantedBy=multi-user.target

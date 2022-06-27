@@ -1,0 +1,17 @@
+[Unit]
+Description=X Virtual Frame Buffer Service
+Before=vrising-server.service
+PartOf=vrising-server.service
+
+[Service]
+Type=simple
+User=vrising
+Group=vrising
+ExecStartPre=/usr/bin/mkdir /tmp/.X11-unix
+ExecStart=Xvfb :73691542 -screen 0 1024x768x16
+NoNewPrivileges=true
+PrivateTmp=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
