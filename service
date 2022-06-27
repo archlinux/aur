@@ -1,11 +1,11 @@
 [Unit]
 Description=mosdns Service
-Documentation=https://github.com/IrineSistiana/mosdns/wiki
+Documentation=https://irine-sistiana.gitbook.io/mosdns-wiki/
 After=network.target
 
 [Service]
 NoNewPrivileges=true
-ExecStart=/usr/bin/mosdns -c /etc/mosdns/config.yaml -dir /etc/mosdns/
+ExecStart=/usr/bin/mosdns start -c /etc/mosdns/config.yaml -d /etc/mosdns/
 Restart=on-failure
 
 [Install]
