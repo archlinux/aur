@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=BiocParallel
-_bcver=1.30.0
+_bcver=1.30.3
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -39,7 +39,7 @@ optdepends=(
 	r-data.table
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("6bd54210c6ce1eb2f7d7d104317c3f808f9aabc99806fa491d9de5db69ce314f")
+sha256sums=("22318a3b47b56492445c1f2125a4dcef6dbb40dd94c594863bbd26aa55e543e7")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
