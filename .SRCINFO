@@ -1,0 +1,20 @@
+pkgbase = starwm-git
+	pkgdesc = starwm - A tiling window manager for the adventurer
+	pkgver = r64.da02779
+	pkgrel = 1
+	epoch = 2
+	url = https://github.com/starwm/starwm
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libx11
+	depends = libxcb
+	depends = alacritty
+	provides = starwm-git
+	conflicts = starwm
+	conflicts = starwm-git
+	source = starwm-git::git+https://github.com/starwm/starwm
+	md5sums = SKIP
+
+pkgname = starwm-git
