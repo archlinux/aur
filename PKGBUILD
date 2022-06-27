@@ -1,12 +1,12 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=moondust-project-master-bin
 pkgver=20220627
-pkgrel=1
+pkgrel=2
 pkgdesc="Moondust Project (formerly known as PGE Project) is a free and open-source game engine and development kit for it, giving developers the ability to create platform games. (Binary package - master branch, built by CI)"
 arch=('x86_64')
 url="https://github.com/WohlSoft/Moondust-Project/"
 license=('GPLv3')
-depends=('ffmpeg' 'sox' 'libtiff')
+depends=('ffmpeg' 'sox' 'libtiff' 'desktop-file-utils')
 #makedepends=('git')
 optdepends=()
 provides=('moondust-project')
