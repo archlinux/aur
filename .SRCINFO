@@ -1,13 +1,15 @@
 pkgbase = dockly
 	pkgdesc = Immersive terminal interface for managing docker containers and services
 	pkgver = 3.21.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lirantal.github.io/dockly
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
+	depends = libx11
+	conflicts = nodejs-live-server
 	noextract = dockly-3.21.4.tar.gz
 	source = dockly-3.21.4.tar.gz::https://github.com/lirantal/dockly/archive/v3.21.4.tar.gz
 	sha256sums = 9f2377ef48d67f65645d673ad91a7d5611a8bc95d5357508c59712c08ded3817
