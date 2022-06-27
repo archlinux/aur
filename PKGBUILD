@@ -12,17 +12,15 @@ arch=('x86_64')
 depends=('qt5-svg' 'libpqxx')
 
 source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
-        'pgmodeler_logo.png'
-        'pgmodeler_dbm.png'
         'mimetype.xml'
         'pgmodeler.install'
-        'patch_no_check_update.diff')
+        'patch_no_check_update.diff'
+        'pgmodeler.appdata.xml')
 sha1sums=('729220d7b0ccd34ef072ef1f1df03a99883f8604'
-          'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
-          '4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a'
           'f2ccb85a5c3500212c710ec538c9fae96356af21'
           '459ed6800154eed466829a7943f80d22563ea613'
-          '7fab1556d9a1f5ca82a826ab32ac110f34c0f688')
+          '7fab1556d9a1f5ca82a826ab32ac110f34c0f688'
+          '4ec54f460f83e67eb98febc905762180907c022a')
 options=('emptydirs')
 
 install=pgmodeler.install
@@ -50,10 +48,10 @@ package() {
     make INSTALL_ROOT="${pkgdir}" install
 
 # put this back when https://github.com/pgmodeler/pgmodeler/pull/1575 gets merged
-    install -Dm644 "$pkgname.appdata.xml" "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
-#    install -Dm644 "$srcdir/$pkgname.appdata.xml" "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
-    install -Dm644 "$srcdir/pgmodeler_logo.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/pgmodeler.png"
-    install -Dm644 "$srcdir/pgmodeler_dbm.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler-dbm.png"
+    install -Dm644 "assets/conf/pgmodeler_logo.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/pgmodeler.png"
+    install -Dm644 "assets/conf/pgmodeler_dbm.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler-dbm.png"
+    install -Dm644 "assets/conf/pgmodeler_sch.png" "$pkgdir/usr/share/icons/hicolor/64x64/mimetypes/pgmodeler_sch.png"
+    install -Dm644 "$srcdir/pgmodeler.appdata.xml" "$pkgdir/usr/share/metainfo/pgmodeler.appdata.xml"
     install -Dm644 "$srcdir/mimetype.xml" "$pkgdir/usr/share/mime/packages/pgmodeler.xml"
 
     # Needs to be there, but belongs rather to doc
