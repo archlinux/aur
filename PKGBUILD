@@ -2,14 +2,14 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=4.10
-pkgrel=3
+pkgver=4.11
+pkgrel=1
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=(x86_64)
 url="http://www.gnucash.org"
 license=(GPL)
-depends=(aqbanking boost-libs libdbi libdbi-drivers webkit2gtk libsecret)
+depends=(aqbanking boost-libs libdbi libdbi-drivers webkit2gtk libsecret libofx)
 makedepends=(boost cmake gmock mariadb-libs postgresql-libs swig)
 optdepends=(
 	'gnucash-docs: for documentation'
@@ -23,7 +23,7 @@ provides=(gnucash)
 source=("https://github.com/Gnucash/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}${_sourcerel}.tar.bz2"
         "xbt.patch")
 
-sha256sums=('7fd4bb919f6e39388ab47bfa11af6fa3f59e9b9bd695c7d4e9208af85cb9c93b'
+sha256sums=('f814ede30d7be0dec0afb2ae8d03628b9ae34c848b68312e4c5aded94c102b19'
             '8cf12425a9f66c69473d83582742244889dc0ffb854d3a502aca58bc649878d4')
 
 prepare() {
