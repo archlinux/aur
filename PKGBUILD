@@ -2,15 +2,15 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=apache-opennlp
-pkgver=1.9.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A machine learning-based toolkit for the processing of natural language text"
 arch=('any')
 url="http://opennlp.apache.org/"
 license=('Apache')
 depends=('java-environment' 'bash')
-source=("https://downloads.apache.org/opennlp/opennlp-1.9.4/apache-opennlp-1.9.4-bin.tar.gz")
-sha512sums=('cba717ef6327adfd37b729fc8e811af9a6b18d8b71ef8b6b1854c1ebc90dec59f93ee34cd7571edf9b29035b7bcf66c358b817e35b2b4cb17aafea788f08cf88')
+source=("https://downloads.apache.org/opennlp/opennlp-2.0.0/apache-opennlp-2.0.0-bin.tar.gz")
+sha512sums=('abf3207a7ed4e3b2b4bc947951112dd4464d84d4abbe639bfcba8ab6d6350c8f0719705824fc93b343abbf9d3ba643467a70569d6ba4fbc778fd395d216da3f1')
 
 package() {
   mkdir -p $pkgdir/usr/bin
