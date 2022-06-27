@@ -1,0 +1,43 @@
+--- umoria/src/config.cpp	2021-02-11 14:59:45.144360084 -0500
++++ umoria/src/config.cpp	2021-02-11 16:18:20.813930047 -0500
+@@ -13,18 +13,18 @@
+     // Data files used by Umoria
+     // NOTE: use relative paths to the executable binary.
+     namespace files {
+-        const std::string splash_screen = "data/splash.txt";
+-        const std::string welcome_screen = "data/welcome.txt";
+-        const std::string license = "LICENSE";
+-        const std::string versions_history = "data/versions.txt";
+-        const std::string help = "data/help.txt";
+-        const std::string help_wizard = "data/help_wizard.txt";
+-        const std::string help_roguelike = "data/rl_help.txt";
+-        const std::string help_roguelike_wizard = "data/rl_help_wizard.txt";
+-        const std::string death_tomb = "data/death_tomb.txt";
+-        const std::string death_royal = "data/death_royal.txt";
+-        const std::string scores = "scores.dat";
+-        std::string save_game = "game.sav";
++        const std::string splash_screen = "/usr/share/umoria/data/splash.txt";
++        const std::string welcome_screen = "/usr/share/umoria/data/welcome.txt";
++        const std::string license = "/usr/share/licenses/umoria/LICENSE";
++        const std::string versions_history = "/usr/share/umoria/data/versions.txt";
++        const std::string help = "/usr/share/umoria/data/help.txt";
++        const std::string help_wizard = "/usr/share/umoria/data/help_wizard.txt";
++        const std::string help_roguelike = "/usr/share/umoria/data/rl_help.txt";
++        const std::string help_roguelike_wizard = "/usr/share/umoria/data/rl_help_wizard.txt";
++        const std::string death_tomb = "/usr/share/umoria/data/death_tomb.txt";
++        const std::string death_royal = "/usr/share/umoria/data/death_royal.txt";
++        const std::string scores = "/usr/share/umoria/data/scores.dat";
++        std::string save_game = "moria-save";
+     } // namespace files
+ 
+     // Game options as set on startup and with `=` set options command -CJS-
+--- umoria/CMakeLists.txt	2021-06-02 10:04:31.000000000 -0400
++++ umoria/CMakeLists.txt	2021-06-21 15:46:20.751269954 -0400
+@@ -33,7 +33,6 @@
+ set(cxx_warnings "${cxx_warnings} -Wextra")
+ set(cxx_warnings "${cxx_warnings} -Wpedantic")
+ set(cxx_warnings "${cxx_warnings} -Wshadow")
+-set(cxx_warnings "${cxx_warnings} -Werror")
+ set(cxx_warnings "${cxx_warnings} -pedantic-errors")
+ set(cxx_warnings "${cxx_warnings} -Weffc++ ")
+ 

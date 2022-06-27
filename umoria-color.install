@@ -1,0 +1,4 @@
+post_upgrade() {
+	echo '>>> NOTE: You can change settings with ='
+	echo '>>> Save is still in $PWD/moria-save'
+}

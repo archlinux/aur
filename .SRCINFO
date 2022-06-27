@@ -1,0 +1,19 @@
+pkgbase = umoria-color
+	pkgdesc = Rogue-like dungeon crawler color variant
+	pkgver = 5.8.2
+	pkgrel = 1
+	url = https://andrew.cool/moria
+	install = umoria-color.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gzip
+	makedepends = cmake
+	depends = ncurses
+	backup = usr/share/umoria-color/files/scores
+	source = umoria-color-5.8.2-aur.patch
+	source = umoria-color-5.8.2.tar.gz::https://github.com/andrewtweber/umoria-color/archive/v5.8.2.tar.gz
+	sha512sums = a88a8924011a8ee6532052092badc06fc50ca8cb94e3eff5a4f94ca51d72e5360bec4090dbd612ca636360b46d9563b787ed835bf6fcf49acdf2125ee96c927f
+	sha512sums = f7259a6a405418a716c05720abf69d6afc50922f6089751a12500c49d347ff1238a349618d5f3169e81122ef3b78dfa2c5bafda48aba06a2bed32fc824a4d2f3
+
+pkgname = umoria-color
