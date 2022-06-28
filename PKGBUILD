@@ -1,8 +1,8 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=5.2.6
-_pkgver=una
+pkgver=5.4.2
+_pkgver=vanessa
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
     cinnamon
     devhelp
 )
-source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
+source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_amd64.deb")
 sha256sums=('a1351a7de033c12b02ea2dd2bfe2ef5aa4de0c780f179115bbc61623c40b78a0')
 
 package() {
