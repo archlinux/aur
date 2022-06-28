@@ -1,0 +1,17 @@
+pkgbase = ros2-humble
+	pkgdesc = A set of software libraries and tools for building robot applications
+	pkgver = 2022.05.23
+	pkgrel = 1
+	url = https://docs.ros.org/en/humble/
+	install = ros2-humble.install
+	arch = any
+	license = Apache
+	depends = ros2-arch-deps
+	depends = ros2-pyqt5-sip-compat
+	depends = assimp
+	depends = gmock
+	depends = sip4
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-humble-20220523
+	sha256sums = SKIP
+
+pkgname = ros2-humble
