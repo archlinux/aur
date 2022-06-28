@@ -1,0 +1,15 @@
+[Scheme]
+Name=Dracula
+ColorForeground=#e5e5e5
+ColorBackground=#1e1f28
+ColorCursor=#bbbbbb
+ColorBold=#e6e6e6
+ColorPalette=#000000;#ff5555;#4ff97b;#f0f98c;#bd92f8;#ff78c6;#8ae8fd;#bbbbbb;#545454;#ff5454;#4ff97b;#f0f98c;#bd92f8;#ff78c6;#8ae8fd;#ffffff
+ColorCursorUseDefault=FALSE
+ColorSelectionUseDefault=FALSE
+ColorBoldUseDefault=FALSE
+ColorCursorForeground=#ffffff
+ColorSelection=#ffffff
+ColorSelectionBackground=#44475a
+TabActivityColor=#4ff97b
+
