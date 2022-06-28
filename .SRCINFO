@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-gdal
 	pkgdesc = A translator library for raster geospatial data formats (mingw-w64)
-	pkgver = 3.4.3
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = http://www.gdal.org/
 	arch = any
 	license = custom
 	makedepends = perl
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
 	makedepends = protobuf
 	depends = mingw-w64-curl
@@ -28,7 +28,7 @@ pkgbase = mingw-w64-gdal
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://download.osgeo.org/gdal/3.4.3/gdal-3.4.3.tar.gz
-	sha256sums = 7244962628c82921b4a4903dbb721c7222b7d82ed5928fef55a52f87f68ad1fe
+	source = http://download.osgeo.org/gdal/3.5.0/gdal-3.5.0.tar.gz
+	sha256sums = 3affc513b8aa5a76b996eca55f45cb3e32acacf4a262ce4f686d4c8bba7ced40
 
 pkgname = mingw-w64-gdal
