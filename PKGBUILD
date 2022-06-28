@@ -3,8 +3,8 @@
 _base=mahotas
 pkgname=python-${_base}
 pkgdesc="Computer Vision in Python"
-pkgver=1.4.12
-pkgrel=2
+pkgver=1.4.13
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/luispedro/${_base}"
 license=('custom')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
 
 build() {
-  cd "${_base}"
+  cd ${_base}
   python setup.py build
 }
 
@@ -31,8 +31,7 @@ build() {
 # }
 
 package() {
-  cd "${_base}"
-  export PYTHONHASHSEED=0
+  cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
