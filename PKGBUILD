@@ -1,7 +1,8 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 pkgname=solana  
-pkgver=1.10.27
+pkgver=1.10.28
 _splver=0.1.8
+_rustver=1.59.0
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
@@ -13,11 +14,11 @@ conflicts=("solana-bin")
 provides=("solana")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$pkgname/archive/v$pkgver.tar.gz"
         "spl-token-$_splver.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/@solana/spl-token@v$_splver.tar.gz")
-sha256sums=('02a17db220dca66015666775e9cbdead00400ca4387265b7d2d44df5d1bdc9d5'
+sha256sums=('3c2c8e1a4cc8cdb4ef626c3d1cd6775588ab3a4fe9c5f25b7ed21fb29176fe5f'
             '09d57f880688e3dfafae22801500b3de09f7da8fc43281c11fed8cf0b0c31e7e')
 
 prepare() {
-  rustup toolchain install 1.57.0
+  rustup toolchain install $_rustver
 }
 
 build() {
@@ -49,9 +50,9 @@ build() {
   for bin in "${BINS[@]}"; do
     binargs+=(--bin "$bin")
   done
-  cargo +1.57.0 build --release --locked "${binargs[@]}"
+  cargo +$_rustver build --release --locked "${binargs[@]}"
   cd "$srcdir/solana-program-library--solana-spl-token-v$_splver"
-  cargo +1.57.0 build --release --locked --bin spl-token
+  cargo +$_rustver build --release --locked --bin spl-token
 }
 
 package() {
