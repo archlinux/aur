@@ -13,3 +13,6 @@ insert_final_newline = true
 
 [Makefile]
 indent_style = tab
+
+[*.patch]
+end_of_line = crlf
