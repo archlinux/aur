@@ -1,7 +1,7 @@
 # Maintainer: Wallun <wallun AT disroot DOT org>
 pkgname=karma-dashboard
 _pkgname=karma
-pkgver=0.103
+pkgver=0.104
 pkgrel=1
 pkgdesc="Alert dashboard for Prometheus Alertmanager"
 arch=(x86_64)
@@ -19,7 +19,7 @@ noextract=()
 sha512sums=('b71a5c1f5ecc5a82dc612bc4a9a84810e8a185b33036c00bb8af822a557d86297c1c600bd2dcf6e2c3deb137fa66c58136f221f7d5d0369f286ff3dbc150a4af'
             '0416eb6d18bf3c44deb0946d8b6b73edcd49ea5b1999d69d8ae32986691d5851ae8935a97e5fd3d31f84386c4d665879e56f24234347d4b6589a1bcd79659e76'
             '008b496aad7b92fe1f884cd89a55b15eb320dfff5ce277eea0c05777f3e5c3044310c16bb6f40153f8e9ed2d1af633fbd0cfff46bb04a96e2df35dba17815d95'
-            '0a55b5e192a70805af34a0c5dfe0a1ec3c4aaf5b06bcb8b4c4de1dd632aae051428259df7a32f4b5c6009bb33243274e35a01660f85a6477e8044ddf0d50a26e')
+            '35ef2b5773a85750bcffae37caccfc6370f2a69938073b8e96956c31d39977e1ae1c5a1b0a64fe378fecbbd708514683467aee979db1d8638f2eb91c575fc45b')
 
 prepare() {
   cd "$srcdir/${_pkgname}-$pkgver" || exit 1
