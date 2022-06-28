@@ -18,16 +18,12 @@ sha512sums=('83febb27a5915841df993f5eef890a1cb8120cef3ca9bd81614c3dd837d611f9c36
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  # poetry build --format wheel
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  #export PYTHONHASHSEED=0
-  #PIP_CONFIG_FILE=/dev/null pip install --no-cache-dir --no-index --find-links --isolated --root="$pkgdir" --ignore-installed --no-deps "dist/${_pkgname}-${pkgver}-"*".whl"
-  #rm "$pkgdir/usr/lib/python3.10/site-packages/${_pkgname}-${pkgver}.dist-info/direct_url.json"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
