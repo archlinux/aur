@@ -1,23 +1,23 @@
 pkgbase = teddit-git
 	pkgdesc = Alternative Reddit front-end focused on privacy
-	pkgver = r581.a9f1374
+	pkgver = r747.799bc83
 	pkgrel = 1
 	url = https://codeberg.org/teddit/teddit
 	arch = any
 	license = AGPL
 	makedepends = git
 	makedepends = npm
-	makedepends = jq
 	depends = nodejs
 	optdepends = redis: works as a cache for Reddit API calls
 	optdepends = ffmpeg: video support
 	provides = teddit
 	conflicts = teddit
-	source = teddit-git::git+https://codeberg.org/teddit/teddit.git#branch=main
+	backup = opt/teddit/config.js
+	source = git+https://codeberg.org/teddit/teddit
 	source = teddit.service
-	source = teddit.sh
-	sha256sums = SKIP
-	sha256sums = c66000c97266726382008e6e7a1b99719931ae87dfd0d239d15bb7c99beec7d1
-	sha256sums = 4ba3bd09a3967176f24e6f6fd44af1251d5531d344c81a23ddfeb6e355a37ae6
+	source = teddit.sysusers
+	sha512sums = SKIP
+	sha512sums = deb1a75aeb56a0d838ccb335da3588148405c285095ea14cf2fbbe35614103379971c5129602170534f0d17c7174a683b4a7352640a336abe5623d3c67fc6a8e
+	sha512sums = 2e4bb29adb1dff9bcb659ac6226ea77dd5c0d819a9ef7e014f3527ca06d7ee1637b9e6f7b6fb745eeb9e31c45dc93c456b2763e66e918bb198e184ae2fcf289c
 
 pkgname = teddit-git

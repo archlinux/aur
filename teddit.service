@@ -1,9 +1,35 @@
 [Unit]
 Description=Teddit Daemon
-After=network.service
+After=network.target
+After=redis.service
 
 [Service]
-ExecStart=/usr/bin/teddit
+User=teddit
+Group=teddit
+Type=simple
+WorkingDirectory=/opt/teddit
+Restart=always
+RestartSec=2s
+ReadWritePaths=/opt/teddit
+ExecStart=/usr/bin/node app.js
+PrivateTmp=true
+CapabilityBoundingSet=
+NoNewPrivileges=true
+LockPersonality=true
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=noaccess
+ProtectSystem=strict
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target
