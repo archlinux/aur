@@ -3,7 +3,7 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.26.1
+pkgver=4.27.154
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("slack-desktop")
 conflicts=("slack-desktop")
 source=("$pkgname-$pkgver.deb::https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
         'slack.sh')
-sha256sums=('c13fa42fa7f63afbcffb315dd4c2bb626f98d680be86483543f7db78bd63835b'
+sha256sums=('65c47c7312de88e6ecf3fcffcf494ca4c1ff2c41c472933a61b05d0713168b98'
             'eddf0c5c6d50c01023a5095b591d4bfd99dc37d610bf494ed004b9212326a09d')
 
 prepare() {
@@ -30,10 +30,8 @@ prepare() {
 
 package() {
 	install -D "slack.sh" "$pkgdir/usr/bin/slack"
-
 	install -d "$pkgdir/usr/lib/slack/"
 	cp -a --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
-
 	install -Dm644 "usr/share/applications/slack.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 "usr/share/pixmaps/slack.png" -t "$pkgdir/usr/share/pixmaps"
 	install -Dm644 "usr/lib/slack/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
