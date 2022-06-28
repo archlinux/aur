@@ -1,0 +1,13 @@
+pkgbase = supertag-appimage
+	pkgdesc = A tag-based filesystem written in Rust.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/amoffat/supertag
+	arch = x86_64
+	license = AGPL 3.0
+	conflicts = supertag
+	options = !strip
+	source = https://github.com/amoffat/supertag/releases/download/v0.1.4/supertag-x86_64.AppImage
+	sha256sums = c67d9f3d04df5ddf80426297026047bdaccb73483e476548564862224d753328
+
+pkgname = supertag-appimage
