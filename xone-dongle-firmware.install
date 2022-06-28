@@ -1,6 +1,0 @@
-# xone packages before v0.3 included firmware, remove it if present to avoid conflicts during update
-# TODO: Remove this after the majority of users have upgraded. It is a bit of a hack.
-
-pre_install() {
-		rm -f /usr/lib/firmware/xow_dongle.bin
-}
