@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function get_version(){
+function get_last_version(){
     local link=https://monkeysaudio.com/versionhistory.html
     local version=$(curl -s $link | awk '/Version [0-9]+\.[0-9]+/{print $3; exit}')
     echo $version
@@ -21,7 +21,7 @@ function sync_git(){
 }
 
 function main(){
-    version=$(get_version)
+    version=$(get_last_version)
     if grep -q "pkgver=$version" PKGBUILD; then
         printf "Already up-to-date: version %s\n" $version
     else
