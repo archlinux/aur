@@ -2,13 +2,11 @@
 
 pkgname=pypy-bin
 pkgver=7.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python implementation written in Python, JIT enabled"
 url="https://pypy.org"
 arch=('x86_64' 'aarch64')
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'ncurses')
-optdepends=('sqlite: sqlite module'
-            'tk: tk module')
+depends=('bzip2' 'gdbm' 'openssl' 'zlib')
 provides=('pypy')
 conflicts=('pypy')
 options=(!buildflags)
@@ -25,6 +23,7 @@ package() {
   # Install pypy
   mkdir -p "${pkgdir}"/opt/pypy/
   cp -r * "${pkgdir}"/opt/pypy/
+  echo "/opt/pypy/lib" > "${pkgdir}"/etc/ld.so.conf.d/pypy.conf
 
   # Install symlink
   mkdir -p "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib
