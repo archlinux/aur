@@ -6,7 +6,7 @@
 # Contributor: Robert Orzanna <orschiro at gmail dot com>
 pkgname=timeshift
 pkgver=22.06.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A system restore utility for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/linuxmint/timeshift"
@@ -21,12 +21,10 @@ install="$pkgname.install"
 _commit=2383721c0d68ef8b061682df6fdc1358ef0af5db
 source=("git+https://github.com/linuxmint/timeshift.git#commit=$_commit"
         "read-only-btrfs-snapshot.patch"
-        "grub-btrfs.path"
         "snapshot-detect.desktop"
         "snapshot-detect")
 sha256sums=('SKIP'
             '17b4f01d131c4c0b0fe5c5b55142c45deca7d1448e85736a23b65226e6dd6eb1'
-            'b48a3e22d238fbfd22324d0444312559e7b740fd591fa7eb4e9c3d2717c79dfa'
             '97b38f4dbd6819542eab0a9217e399f55ec7339af4529432cfab1eb3cff8e0eb'
             'f3c71c6cb42b968c33a24361ff3be1e4cf59000605e74af8e061f0c5679fe315')
 
@@ -61,7 +59,6 @@ package() {
   cd "$srcdir/$pkgname/src"
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 $srcdir/grub-btrfs.path -t "$pkgdir/etc/systemd/system/"
   install -Dm644 $srcdir/snapshot-detect.desktop -t "$pkgdir/etc/xdg/autostart/"
   install -Dm755 $srcdir/snapshot-detect -t "$pkgdir/usr/bin/"
 }
