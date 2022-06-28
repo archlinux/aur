@@ -1,15 +1,15 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-gpytorch
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A highly efficient and modular implementation of GPs, with GPU
 acceleration. Implemented in PyTorch.'
 arch=('x86_64')
 url='https://gpytorch.ai'
 license=('MIT')
-depends=('python' 'python-pytorch' 'python-scikit-learn' 'python-scipy')
-makedepends=('python' 'python-setuptools')
+depends=('python' 'python-pytorch' 'python-numpy' 'python-scikit-learn' 'python-scipy')
+makedepends=('python' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=(
             'python-black: for [dev] module'
             'twine: for [dev] module'
@@ -33,16 +33,16 @@ optdepends=(
             'python-nbval: for [test] module'
            )
 source=("$pkgname-$pkgver::https://github.com/cornellius-gp/gpytorch/archive/v$pkgver.tar.gz")
-sha256sums=('732be00f7b490a2b4e15728d7f1357209979ef500c3d7e6c3b09a603c0d42020')
+sha256sums=('69eaedb0dd0881b6804bd4ad3200c36c6db0a7859dd82c70d5ef27e501dc8bd5')
 
 _pkgname=gpytorch
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
