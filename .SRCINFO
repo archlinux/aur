@@ -1,7 +1,7 @@
 pkgbase = python2-pygtkhelpers
 	pkgdesc = A library to assist the building of PyGTK applications
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.python.org/pygtkhelpers
 	arch = any
 	license = LGPL3
@@ -11,4 +11,3 @@ pkgbase = python2-pygtkhelpers
 	md5sums = 1e2493dbbfed4042d35552b383f7a7cc
 
 pkgname = python2-pygtkhelpers
-

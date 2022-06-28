@@ -2,7 +2,7 @@
 
 pkgname=python2-pygtkhelpers
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to assist the building of PyGTK applications"
 arch=('any')
 url="http://packages.python.org/pygtkhelpers"
@@ -13,6 +13,7 @@ source=("https://pypi.python.org/packages/source/p/pygtkhelpers/pygtkhelpers-$pk
 
 package() {
   cd "$srcdir/pygtkhelpers-$pkgver"
+  chmod 644 pygtkhelpers.egg-info/*
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
