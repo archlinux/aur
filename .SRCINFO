@@ -1,0 +1,17 @@
+pkgbase = ocelotgui
+	pkgdesc = GUI client for MySQL or MariaDB or Tarantool DBMS
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://ocelot.ca
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libmariadbclient
+	optdepends = tarantool: for connecting to Tarantool server
+	source = git+https://github.com/ocelot-inc/ocelotgui.git
+	md5sums = SKIP
+
+pkgname = ocelotgui
