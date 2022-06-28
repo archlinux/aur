@@ -1,10 +1,10 @@
 pkgbase = dvuploader
 	pkgdesc = DVUploader, a Command-line Bulk Uploader for Dataverse and SEAD/Clowder
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GlobalDataverseCommunityConsortium/dataverse-uploader
 	arch = x86_64
-	license = unknown
+	license = APACHE
 	makedepends = maven
 	depends = jdk-openjdk
 	source = https://github.com/GlobalDataverseCommunityConsortium/dataverse-uploader/archive/refs/tags/v1.1.0.tar.gz
