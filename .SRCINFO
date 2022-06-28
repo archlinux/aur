@@ -1,7 +1,7 @@
 pkgbase = hamlib-git
-	pkgdesc = Ham radio equipment control libraries - GIT VERSION 4.x
+	pkgdesc = Ham radio equipment control libraries - GIT VER 4.x - NO INDI SUPPORT
 	pkgver = r9033.afabcfff
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hamlib.org
 	arch = i686
 	arch = x86_64

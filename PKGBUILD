@@ -7,8 +7,8 @@
 pkgname=hamlib-git
 pkgver=r9033.afabcfff
 #r8655.d04f4b6b
-pkgrel=1
-pkgdesc="Ham radio equipment control libraries - GIT VERSION 4.x"
+pkgrel=2
+pkgdesc="Ham radio equipment control libraries - GIT VER 4.x - NO INDI SUPPORT"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
