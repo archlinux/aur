@@ -2,10 +2,10 @@
 
 pkgname='cattqt'
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
 arch=('any')
-url=https://github.com/soreau/"${pkgname}"
+url=https://github.com/soreau/catt-qt
 license=('GPLv3')
 
 depends=(

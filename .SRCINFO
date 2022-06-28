@@ -1,8 +1,8 @@
 pkgbase = cattqt
 	pkgdesc = A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.
 	pkgver = 3.0
-	pkgrel = 1
-	url = https://github.com/soreau/cattqt
+	pkgrel = 2
+	url = https://github.com/soreau/catt-qt
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
