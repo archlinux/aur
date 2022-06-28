@@ -1,4 +1,4 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname='python-inotify'
