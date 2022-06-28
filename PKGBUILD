@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=3.7.5
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 't
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt-git')
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
@@ -39,14 +39,12 @@ source=(
     "codegen::git+https://github.com/desktop-app/codegen.git"
     "dispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
     "expected::git+https://github.com/TartanLlama/expected"
-    "extra-cmake-modules::git+https://github.com/KDE/extra-cmake-modules.git"
     "fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
     "fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "hime::git+https://github.com/hime-ime/hime.git"
     "hunspell::git+https://github.com/hunspell/hunspell"
     "jemalloc::git+https://github.com/jemalloc/jemalloc"
-    "kwayland::git+https://github.com/KDE/kwayland.git"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
@@ -103,8 +101,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
@@ -129,14 +125,12 @@ prepare() {
     git config submodule.Telegram/lib_webview.url "$srcdir/lib_webview"
     git config submodule.Telegram/ThirdParty/dispatch.url "$srcdir/dispatch"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
-    git config submodule.Telegram/ThirdParty/extra-cmake-modules.url "$srcdir/extra-cmake-modules"
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
     git config submodule.Telegram/ThirdParty/fcitx-qt5.url "$srcdir/fcitx-qt5"
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/jemalloc"
-    git config submodule.Telegram/ThirdParty/kwayland.url "$srcdir/kwayland"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
@@ -157,6 +151,7 @@ prepare() {
     #    ln -s $fixed ${fixed/_fixed/}
     #done
     # Patch here, if needed!
+    # patch -Np1 -i "$srcdir/my_beautiful.patch"
     cd "$srcdir/tdesktop/Telegram/ThirdParty/tgcalls"
     patch -Np1 -i "$srcdir/tgcalls_type_fix.diff"
 
@@ -166,8 +161,6 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
 
-    # Fix https://bugs.archlinux.org/task/73220
-    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
     # Be sure to use FFmpeg 4.4
     export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
@@ -180,14 +173,6 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    # Hack to compile for ffmpeg4.4
-    sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
-    sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
-    sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
-    sed -i "s|-lavformat|/usr/lib/ffmpeg4.4/libavformat.so|g" build/build.ninja
-    sed -i "s|-lavutil|/usr/lib/ffmpeg4.4/libavutil.so|g" build/build.ninja
-    sed -i "s|-lswscale|/usr/lib/ffmpeg4.4/libswscale.so|g" build/build.ninja
-    sed -i "s|-lswresample|/usr/lib/ffmpeg4.4/libswresample.so|g" build/build.ninja
     ninja -C build
 }
 
