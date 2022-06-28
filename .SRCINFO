@@ -1,0 +1,12 @@
+pkgbase = gitsign
+	pkgdesc = Keyless Git signing using Sigstore
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sigstore/gitsign
+	arch = any
+	license = APACHE
+	makedepends = go
+	source = gitsign-0.1.1.tar.gz::https://github.com/sigstore/gitsign/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = bec13804e87f30a4a5450d4e65631baf8b733eab95d26e27b55fb38c92075bb2f04825fcc1129f2cfcdf82624337e99db7acd2f5abd3df841ee01d1bc9b2cc1f
+
+pkgname = gitsign
