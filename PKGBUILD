@@ -3,7 +3,7 @@ pkgname=mekhq-development-snapshot-bin
 _pkgname=mekhq
 pkgver=0.49.8
 _pkgver=
-pkgrel=1
+pkgrel=2
 epoch=
 install=mekhq.install
 pkgdesc="Development snapshot release of the MekHQ/MegaMek suite."
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/MegaMek/mekhq"
 license=('GPL')
 groups=()
-depends=('jdk-openjdk')
+depends=('jdk-openjdk' 'rsync')
 provides=('mekhq' 'megamek')
 conflicts=('mekhq' 'megamek')
 
