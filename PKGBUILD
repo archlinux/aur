@@ -1,4 +1,4 @@
-# Maintainer: Kaan Genc <kaan@dendron.so>
+# Maintainer: Kaan Genc <aur@bgenc.net>
 
 pkgname=dendron
 _npmname="dendron-cli"
