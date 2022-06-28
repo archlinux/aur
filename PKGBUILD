@@ -77,5 +77,5 @@ package() {
     python3 setup.py install --root="$pkgdir" --optimize=1
     cd $srcdir/newm
     python3 setup.py install --root="$pkgdir" --optimize=1
-    install -Dm644 "$srcdir/newm/resources/newm.desktop" "$pkgdir/usr/share/wayland-sessions/newm.desktop"
+    install -Dm644 "$srcdir/newm/newm/resources/newm.desktop" "$pkgdir/usr/share/wayland-sessions/newm.desktop"
 }
