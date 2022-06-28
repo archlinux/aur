@@ -8,7 +8,7 @@ pkgdesc='Optional Vulkan Layers for Monado.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/monado/utilities/vulkan-layers'
 depends=('gcc-libs')
-makedepends=('vulkan-headers')
+makedepends=('vulkan-headers' 'cmake')
 optdepends=()
 provides=("monado-vulkan-layers")
 
