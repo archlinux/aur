@@ -1,0 +1,11 @@
+--- maya2023	2022-06-28 12:00:52.545009305 +0800
++++ maya2023-patched	2022-06-28 12:03:15.715015863 +0800
+@@ -33,7 +33,7 @@
+ #       Parse the argument list
+ #
+ 
+-mayaArgs=""
++mayaArgs="--single-process"
+ mayaApp=""
+ debuggerArgs=""
+ 

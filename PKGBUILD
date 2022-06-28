@@ -7,7 +7,7 @@
 pkgname=maya
 pkgver=2023.1
 _majorver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
@@ -22,13 +22,18 @@ optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-usd: Maya Universal Scene Description Plugin')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Maya2023_64-$pkgver-1532.x86_64.rpm")
-sha256sums=('ae1bd5b421959cbd65792e1a263aaf610100c8636756e24f997b010cc8776c23')
+source=("manual://Maya2023_64-$pkgver-1532.x86_64.rpm"
+        'application-home-workaround.patch')
+sha256sums=('ae1bd5b421959cbd65792e1a263aaf610100c8636756e24f997b010cc8776c23'
+            '0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a')
 
 options=(!strip)
 install="${pkgname}.install"
 
 prepare() {
+    # Patch launch script
+    patch usr/autodesk/maya2023/bin/maya2023 application-home-workaround.patch
+
     # Fix tmp directory
     ln -sf /tmp usr/tmp
 
