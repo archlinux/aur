@@ -16,7 +16,7 @@ pkgbase = python-gtkspellcheck
 	depends = python-pyenchant
 	depends = python-gobject
 	provides = python-gtkspell
-	source = pygtkspellcheck-5.0.0.tar.gz::https://github.com/koehlma/pygtkspellcheck/archive/v5.0.0.tar.gz
-	sha512sums = 83febb27a5915841df993f5eef890a1cb8120cef3ca9bd81614c3dd837d611f9c368df2be866a61c6f9b135a583f64315527a586c98396d50c92dfd61d05a017
+	source = git+https://github.com/koehlma/pygtkspellcheck#tag=v5.0.0
+	sha512sums = SKIP
 
 pkgname = python-gtkspellcheck
