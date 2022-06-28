@@ -5,9 +5,7 @@ post_upgrade() {
   if [[ $(vercmp $breaking $2) -gt 0 ]]
   then
     echo
-    echo "*** Breaking changes! ***"
-    echo
-    echo "Config files format changed to YAML."
+    echo "Config files format changed to YAML!!!"
     echo
     echo "Edit your config files and adjust their file extensions."
     echo "See the supplied config templates in /usr/share/mailctl/configs"

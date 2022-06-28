@@ -22,6 +22,7 @@ source=(https://github.com/pdobsan/${_pkgname}/releases/download/${pkgver}/${_pk
        )
 noextract=(${_pkgname}-${pkgver}-Linux ${_pkgname}-${pkgver}-Linux.sha256)
 sha256sums=(SKIP SKIP SKIP)
+
 install=.INSTALL
 
 prepare() {
