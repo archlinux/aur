@@ -2,13 +2,14 @@
 
 pkgname=maya-arnold
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Autodesk Maya Arnold Renderer Plugin'
 arch=('x86_64')
 url='https://www.arnoldrenderer.com/arnold/arnold-for-maya/'
 license=('custom')
-depends=('maya>=2023' 'maya<2024' 'smbclient')
-optdepends=('maya-usd: Universal Scene Discription Support')
+depends=('maya>=2023' 'maya<2024')
+optdepends=('maya-usd: Universal scene description support'
+            'maya-bifrost: Bifrost effects support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=('manual://package.zip')
