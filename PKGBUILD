@@ -1,15 +1,13 @@
 # Maintainer: Max Bruckner
 pkgname=easyhg
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple user interface for the Mercurial distributed version contol system."
 arch=('i686' 'x86_64')
 url="http://easyhg.org"
 license=('GPL2')
 depends=('qt5-base' 'mercurial')
-optdepends=('pyqt: authentication extension'
-'python-crypto: password store'
-'kdiff3: external diff/merge tool')
+optdepends=('pyqt: authentication extension' 'kdiff3: external diff/merge tool')
 source=("https://code.soundsoftware.ac.uk/attachments/download/2433/EasyMercurial-$pkgver-src.tar.gz"
     easyhg.desktop
 )
