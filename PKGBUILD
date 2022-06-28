@@ -4,14 +4,14 @@
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
 pkgver=2.3.9
-pkgrel=1
+pkgrel=2
 _electronversion=18
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://heroicgameslauncher.com/"
 license=('GPL3')
 depends=("electron$_electronversion" 'gawk' 'curl' 'zstd' 'legendary' 'heroic-gogdl')
-makedepends=('nodejs' 'asar' 'jq' 'yarn')
+makedepends=('nodejs' 'node-gyp' 'asar' 'jq' 'yarn')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
