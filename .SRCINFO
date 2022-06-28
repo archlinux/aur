@@ -1,7 +1,7 @@
 pkgbase = python-jupyterlite
 	pkgdesc = tools for building JupyterLite sites
-	pkgver = 0.1.0a24
-	pkgrel = 5
+	pkgver = 0.1.0b10
+	pkgrel = 1
 	url = https://github.com/jupyterlite/jupyterlite
 	arch = any
 	license = BSD
@@ -21,8 +21,8 @@ pkgbase = python-jupyterlite
 	optdepends = jupyter-server-mathjax: reuse the MathJax assets from jupyter-server-mathjax
 	optdepends = python-jsonschema: validate more data with jsonschema
 	optdepends = jupyterlab: a known-compatible jupyterlab (entails `contents`, `serve`, `check`
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlite/jupyterlite-0.1.0a24.tar.gz
-	sha256sums = 270f1cfa883daa7f03b0e10bd619009c6436858f8ce8e3aaa537bf34e9fbe573
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlite/jupyterlite-0.1.0b10.tar.gz
+	sha256sums = 2d872f4257546ee4925d2c640ba72d35927941115572572bf170552c88212d1a
 
 pkgname = python-jupyterlite
 	depends = python
