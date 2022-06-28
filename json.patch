@@ -1,0 +1,105 @@
+diff -rudp pida-0.6.2.orig/pida/core/actions.py pida-0.6.2/pida/core/actions.py
+--- pida-0.6.2.orig/pida/core/actions.py	2022-06-28 23:20:25.000000000 +0100
++++ pida-0.6.2/pida/core/actions.py	2022-06-28 23:21:53.000000000 +0100
+@@ -10,7 +10,7 @@
+ import gtk
+ from .base import BaseConfig
+ from .environment import settings_dir
+-from pida.utils import json
++import json
+ 
+ 
+ accelerator_group = gtk.AccelGroup()
+@@ -176,7 +176,7 @@ class ActionsConfig(BaseConfig):
+         enabled.
+         """
+         data = self._defaults.copy()
+-        data.update(json.load(settings_dir(self.name), fallback={}))
++        data.update(json.load(settings_dir(self.name)))
+         self.current = data
+         for name, accel in data.items():
+             if name in self._defaults:
+@@ -188,7 +188,10 @@ class ActionsConfig(BaseConfig):
+         self.store_shortcuts()
+ 
+     def store_shortcuts(self):
+-        data = json.load(settings_dir(self.name), fallback={})
++        try:
++            data = json.load(settings_dir(self.name))
++        except:
++            data = {}
+         data.update(self.current)
+         json.dump(data, settings_dir(self.name))
+ 
+diff -rudp pida-0.6.2.orig/pida/core/options.py pida-0.6.2/pida/core/options.py
+--- pida-0.6.2.orig/pida/core/options.py	2022-06-28 23:20:25.000000000 +0100
++++ pida-0.6.2/pida/core/options.py	2022-06-28 23:21:02.000000000 +0100
+@@ -15,7 +15,7 @@
+ """
+ import itertools
+ 
+-from pida.utils import json
++import json
+ 
+ import py
+ 
+@@ -38,7 +38,10 @@ def list_workspaces():
+ 
+ 
+ def must_open_workspace_manager():
+-    data = json.load(settings_dir('appcontroller.json'), fallback={})
++    try:
++        data = json.load(settings_dir('appcontroller.json'))
++    except:
++        data = {}
+     return bool(data.get('open_workspace_manager', False))
+ 
+ 
+diff -rudp pida-0.6.2.orig/pida/services/language/language.py pida-0.6.2/pida/services/language/language.py
+--- pida-0.6.2.orig/pida/services/language/language.py	2022-06-28 23:20:25.000000000 +0100
++++ pida-0.6.2/pida/services/language/language.py	2022-06-28 23:22:48.000000000 +0100
+@@ -18,7 +18,7 @@ from pida.core.doctype import DocType
+ from pida.core.languages import LanguageInfo
+ from pida.core import environment
+ 
+-from pida.utils import json
++import json
+ 
+ from pygtkhelpers.gthreads import gcall
+ #from pida.utils.languages import LANG_OUTLINER_TYPES
+@@ -72,7 +72,10 @@ def prio_path():
+ 
+ 
+ def load_prio():
+-    return json.load(prio_path(), fallback={})
++    try:
++        return json.load(prio_path())
++    except:
++        return {}
+ 
+ 
+ class SimpleLanguageMapping(dict):
+diff -rudp pida-0.6.2.orig/pida/services/window/window.py pida-0.6.2/pida/services/window/window.py
+--- pida-0.6.2.orig/pida/services/window/window.py	2022-06-28 23:20:25.000000000 +0100
++++ pida-0.6.2/pida/services/window/window.py	2022-06-28 23:22:23.000000000 +0100
+@@ -16,7 +16,7 @@ from pida.core.options import OptionsCon
+ from pida.core.actions import ActionsConfig, global_accelerator_group
+ from pida.core.document import Document
+ from pida.core.environment import workspace_name, settings_dir
+-from pida.utils import json
++import json
+ 
+ from pida.ui.actions import PidaMenuToolAction, PidaRememberToggle
+ 
+@@ -30,7 +30,10 @@ def window_config():
+     return settings_dir()/'window_extra_window-config.json'
+ 
+ def load_window_config():
+-    return json.load(window_config(), fallback={})
++    try:
++        return json.load(window_config())
++    except:
++        return {}
+ 
+ 
+ 
