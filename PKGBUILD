@@ -5,7 +5,7 @@
 pkgname='deluge1'
 _basename="${pkgname%1}"
 pkgver=1.3.15
-pkgrel=10
+pkgrel=11
 pkgdesc='BitTorrent client with multiple interfaces, using a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
@@ -20,7 +20,6 @@ makedepends=(
 optdepends=(
     'libtorrent-rasterbar<=1:1.2.10-4: for the daemon'
     'python2-geoip: for peer IP geolocation'
-    'python2-notify: notifications for GTK client'
     'python2-pygame: audible notifications for GTK client'
     'python2-libappindicator: appindicator notifications for GTK client'
     'pygtk: required for GTK client'
