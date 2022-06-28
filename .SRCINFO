@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-l5700-dn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L5700DN
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l5700-dn.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf102599/mfcl5700dnlpr-3.5.1-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102600/mfcl5700dncupswrapper-3.5.1-1.i386.rpm
+	sha256sums = 0a71cc1d4f8e96e03044ebfb34106912af36740f32e159ada82d9de4807252fa
+	sha256sums = 3c5a02d44e99e2b93009bc6b692f8f3f060d097f7b69a330a1c6ef81fc07425c
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l5700-dn
