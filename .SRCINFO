@@ -1,6 +1,6 @@
 pkgbase = openutau-installer
 	pkgdesc = An open source UTAU successor - installer script for local updating
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
