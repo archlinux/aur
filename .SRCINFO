@@ -1,10 +1,10 @@
 pkgbase = xterm-alacritty-symlink
 	pkgdesc = symlink to alacritty from xterm, required by gtk-launch for terminal applications
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	arch = any
 	license = GPL
-	depends = neovim
+	depends = alacritty
 	provides = xterm
 	conflicts = xterm
 

@@ -1,12 +1,12 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 
 pkgname=xterm-alacritty-symlink
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="symlink to alacritty from xterm, required by gtk-launch for terminal applications"
 arch=("any")
 license=('GPL')
-depends=("neovim")
+depends=("alacritty")
 provides=("xterm")
 conflicts=("xterm")
 
