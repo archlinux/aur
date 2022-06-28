@@ -1,13 +1,13 @@
 pkgbase = flarectl-bin
 	pkgdesc = CLI application for interacting with a Cloudflare account
-	pkgver = 0.42.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://github.com/cloudflare/cloudflare-go/releases
 	arch = x86_64
 	license = BSD
 	provides = flarectl
 	conflicts = flarectl
-	source = https://github.com/cloudflare/cloudflare-go/releases/download/v0.42.0/flarectl_0.42.0_linux_amd64.tar.xz
+	source = https://github.com/cloudflare/cloudflare-go/releases/download/v0.43.0/flarectl_0.43.0_linux_amd64.tar.xz
 	b2sums = bc63b7203dfcab096cc78f691700f8369f46858af2d66e4c9bf1cb7939532522c7228213a62b3f4e43efa82fae2095a40e691f7c1d015adc7a9f4c9eae0dd7b6
 
 pkgname = flarectl-bin
