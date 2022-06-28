@@ -30,4 +30,4 @@ function main(){
     fi
 }
 
-main $@
+cd $0:A:h && main $@
