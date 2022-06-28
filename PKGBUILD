@@ -3,7 +3,7 @@
 
 pkgname=newm-git
 pkgver=0.3alpha
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Wayland compositor"
 depends=(
@@ -77,4 +77,5 @@ package() {
     python3 setup.py install --root="$pkgdir" --optimize=1
     cd $srcdir/newm
     python3 setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 "$srcdir/newm/resources/newm.desktop" "$pkgdir/usr/share/wayland-sessions/newm.desktop"
 }
