@@ -1,7 +1,7 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=lemmy-help
-pkgver=v0.0.3
+pkgver=v0.0.4
 pkgrel=1
 pkgdesc="Emmylua parser and transformer"
 arch=('x86_64' 'aarch64' 'armv7')
