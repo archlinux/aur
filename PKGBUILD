@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=velero
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Backup and migrate Kubernetes applications and their persistent volumes"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -38,6 +38,11 @@ build() {
 
 package() {
     cd $pkgname
+
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
+
     cp -r share/ "$pkgdir/usr"
+
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    find examples/ -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/doc/$pkgname/{}" \;
 }
