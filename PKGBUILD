@@ -1,7 +1,7 @@
 # Maintainer: Adralioh <aur at adralioh dot dev>
 pkgname=ytcl
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="CLI frontend for ytdl-server"
 arch=('any')
 url="https://gitlab.com/adralioh/ytcl"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.7')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('5af1f8dd5c3bcd2001c08dd778da279a4f68f1ec02ceb530f87e0a1da7061c9a')
+sha256sums=('cf10085c39855c7257f7c7e5d0e44fafc6edbd44eceeb0576e66f2aa7700653e')
 
 build() {
   cd "$pkgname-$pkgver"
