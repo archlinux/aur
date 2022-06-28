@@ -1,14 +1,20 @@
 pkgbase = python2-logbook
-	pkgdesc = logging sytem for Python that replaces the standard library’s logging module
-	pkgver = 0.9.0
+	pkgdesc = Logging sytem for Python that replaces the standard library’s logging module
+	pkgver = 1.5.3
 	pkgrel = 1
-	url = http://packages.python.org/Logbook/index.html
-	arch = any
+	url = https://logbook.readthedocs.io/en/stable/
+	arch = i686
+	arch = x86_64
 	license = BSD
 	makedepends = python2-setuptools
-	depends = python2>=2.6
-	source = http://pypi.python.org/packages/source/L/Logbook/Logbook-0.9.0.tar.gz
-	md5sums = 5bd467a7173dd8aac4d33bb49d709464
+	makedepends = cython2
+	makedepends = python2-six
+	depends = python-six
+	source = python2-logbook-1.5.3.tar.gz::https://github.com/mitsuhiko/logbook/archive/1.5.3.tar.gz
+	source = python2-logbook-sqlalchemy-1.4.patch::https://github.com/getlogbook/logbook/pull/316.patch
+	source = python-logbook-1.5.3-reproducibility.patch::https://github.com/getlogbook/logbook/commit/7b51f1adbdfd71180b8da9b1462552db32350b1d.patch
+	sha512sums = c9068324f12a189ced98e2c02753489847fa533ce3a3af07b62c73e9959c2e014d47515d47e756d031639cb220a2c4a9a380cba4cb3ea1b190c50106decba686
+	sha512sums = ea19ceb3b207947d63c9c5e48ac7b2ba20e3762c4ffc4cfa909e90ef3fc58fc348090c312b79bcaa4f19bae0c1da63a8128b5593412b88c2b654c3afc361a4ea
+	sha512sums = d1bd363531266cece00f56d660ed1310756d9df64a6b1af36a1c4f1e945e54e3ef22a6854b304de7d65e79008f0dee182ea4d904d8ecfff087b1855f9d4a5cc4
 
 pkgname = python2-logbook
-
