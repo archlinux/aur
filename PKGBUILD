@@ -52,6 +52,23 @@ EOT
         exit 1
     fi
 
+    _rstudio_node_version=$(perl -ne 'print "$1" if(m/RSTUDIO_NODE_VERSION\s*"([^"]+)/)' "$srcdir"/rstudio/src/node/CMakeNodeTools.txt)
+    if test "$_nodever" != "$_rstudio_node_version";then
+        cat<<EOT
+    node version in PKGBUILD ($_nodever) does not match what RStudio server expects ($_rstudio_node_version).
+
+    Fix it by updating the \$_nodever variable in the PKGBUILD:
+
+    ...
+    \$_nodever="$_rstudio_node_version"
+    ...
+
+    Then clean the PKGBUILD repo (git clean -ffdx), update the pkgsums (updpkgsums) and rebuild (makepkg -sf)
+
+EOT
+        exit 1
+    fi
+
 	cd ${srcdir}/$_gitname
 	# Patching SOCI
 	# patch -p1 < ${srcdir}/soci.patch
