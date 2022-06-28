@@ -1,6 +1,6 @@
 pkgbase = authpass-bin
 	pkgdesc = Keepass compatible password manager based on Flutter
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://authpass.app
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = authpass-bin
 	depends = libkeybinder3
 	provides = authpass
 	conflicts = authpass
-	source = authpass-bin-1.9.5.tar.gz::https://github.com/authpass/authpass/releases/download/v1.9.5/authpass-linux-1.9.5_1896.tar.gz
-	source = authpass-1.9.5.svg::https://raw.githubusercontent.com/authpass/authpass/v1.9.5/_docs/authpass-logo.svg
+	source = authpass-bin-1.9.6.tar.gz::https://github.com/authpass/authpass/releases/download/v1.9.6/authpass-linux-1.9.6_1904.tar.gz
+	source = authpass-1.9.6.svg::https://raw.githubusercontent.com/authpass/authpass/v1.9.6/_docs/authpass-logo.svg
 	source = authpass.desktop
-	sha256sums = bfac271a2b9dcac9abc62a5a511028ae2bdfd712c47dc7a3793439a1ecdd38a8
+	sha256sums = 368bdb0b974c4df8e12e4f8f5aa0fce73be01c025784fc2980f8acc661a0a719
 	sha256sums = 1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b
 	sha256sums = 8260ede1bb38264aa92227dee1b3edd0d66b1f963872d4254549c08c7ca409dd
 
