@@ -3,7 +3,7 @@
 pkgname=archiso-profiles
 pkgver=0.1
 pkgrel=1
-pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
+pkgdesc='Extra profiles for Archiso'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/tallero/${pkgname}"

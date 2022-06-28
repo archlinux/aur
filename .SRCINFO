@@ -1,5 +1,5 @@
 pkgbase = archiso-profiles
-	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
+	pkgdesc = Extra profiles for Archiso
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso-profiles
