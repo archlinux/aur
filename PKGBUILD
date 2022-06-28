@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=cocor
-_pkgver=1.1-3
+_pkgver=1.1-4
 pkgname=r-${_pkgname,,}
-pkgver=1.1.3
-pkgrel=7
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='Comparing Correlations'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('22503ef02f450e2c60056d286603faa3ac0789fc45ed0b9e9788c6eb73f6df80')
+sha256sums=('28f8bf5ffd647675ed9b28d2e3a28cc97cb9dc996095caccd0aac6dfa9451416')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
