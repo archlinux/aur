@@ -1,5 +1,5 @@
 pkgbase = jv
-	pkgdesc = Package jsonschema provides json-schema compilation and validation.
+	pkgdesc = Package jv provides json-schema compilation and validation.
 	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/santhosh-tekuri

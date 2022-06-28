@@ -3,7 +3,7 @@
 pkgname=jv
 pkgver=5.0.0
 pkgrel=1
-pkgdesc='Package jsonschema provides json-schema compilation and validation.'
+pkgdesc='Package jv provides json-schema compilation and validation.'
 arch=('x86_64')
 url="https://github.com/santhosh-tekuri"
 license=('Apache 2.0')
