@@ -1,0 +1,11 @@
+[Unit]
+Description=udpspeeder
+Wants=network.target
+After=network-online.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/python /usr/lib/systemd/scripts/udpspeeder.py /etc/udpspeeder/config.json
+
+[Install]
+WantedBy=multi-user.target
