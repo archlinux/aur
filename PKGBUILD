@@ -37,7 +37,7 @@ sha256sums=('ebd29c6b19ccc370e4b024247ab9aa925766a7782ddda8076076964c89ffb06f')
 
 build() {
   arch-meson $_pkgname build
-  meson compile -C meson.build
+  ninja -C build
 }
 
 package() {
