@@ -1,57 +1,24 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bruce Zhang
 
 pkgname=electron-fiddle
-_pkgname=fiddle
-pkgver=0.16.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
-arch=('x86_64')
-url="https://electronjs.org/fiddle"
+arch=('x86_64' 'aarch64' 'armhf')
+provides=("${pkgname%-bin}")
+url='https://github.com/electron/fiddle/'
 license=('MIT')
-depends=('electron')
-makedepends=('npm')
-provides=("$pkgname" "$pkgname")
-source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('6fc58f8917015747e778901dad3d78f6a87cdf6ea64a1fe7576aa283331bcd57')
-
-prepare() {
-	local cache="$srcdir/npm-cache"
-	local dist="/usr/lib/electron"
-
-	cd "$srcdir/$_pkgname-$pkgver"
-	npm install --cache "$cache"
-}
-
-build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	npm run package
-}
+depends=('gtk3' 'alsa-lib' 'nss' 'electron')
+source_x86_64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_amd64.deb")
+sha256sums_x86_64=('5a506a6b7a6702f5760499e8fa097103483b651337f09a2bbeb2008b987c3a01')
+sha256sums_aarch64=('c5823f1a595471dd32eb0c87399a48e3edf361d60151712b0423016279d996a9')
+sha256sums_armhf=('6ebc2be45af94a663563ef41dab6b385b7b325e4a506d1a8c2a573a9f7377dd3')
+source_aarch64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_arm64.deb")
+source_armhf=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_armhf.deb")
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver/out/Electron Fiddle-linux-x64/resources"
-	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
-
-	cd "$srcdir/$_pkgname-$pkgver/assets/icons"
-	install -Dm644 fiddle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/electron-fiddle.svg"
-
-	cd "$srcdir"
-	echo "#!/bin/env sh
-exec electron /usr/lib/electron-fiddle/app.asar \$@
-" > electron-fiddle.sh
-	install -Dm755 electron-fiddle.sh "$pkgdir/usr/bin/electron-fiddle"
-
-	echo "[Desktop Entry]
-Name=Electron Fiddle
-Comment=The easiest way to get started with Electron
-GenericName=Electron Fiddle
-Exec=electron-fiddle %U
-Icon=electron-fiddle
-Type=Application
-StartupNotify=true
-Categories=GNOME;GTK;Utility;
-" > electron-fiddle.desktop
-	install -Dm755 electron-fiddle.desktop "$pkgdir/usr/share/applications/electron-fiddle.desktop"
-	install -Dm644 $srcdir/$_pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+	# Extract downloaded file
+	tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
 }
