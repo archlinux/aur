@@ -1,16 +1,17 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bugdom
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Save Bugdom from Thorax's evil Fire Ants"
 arch=('x86_64')
-url="https://github.com/jorio/Bugdom"
+url='https://github.com/jorio/Bugdom'
 license=('custom:CC-BY-NC-SA-4.0')
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
+_commit='fec530c33a08af968f97dad0c4eba09a8eb50701'
 source=(
-  "$pkgname::git+$url.git#tag=$pkgver"
+  "$pkgname::git+$url.git#commit=$_commit"
   'git+https://github.com/jorio/Pomme.git'
   "$pkgname.desktop"
   "$pkgname.sh"
@@ -19,6 +20,12 @@ b2sums=('SKIP'
         'SKIP'
         'f8c230b4047950d3f5f733e795b6ea0082a59348bdf44716ed027f0b7ccd1472c5663f8c8dc19e4548a0cc628c17ffa1f52a5011eb6ee70a33afbeae4a2e9e8c'
         '62176cb077576d5274818dfe1d297856ed2d284a7e137dda812682758655275a476c7449ec9d51929c6fbf804f1fea789e91d241ee7ffd14e9b02c418bc097ff')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd "$pkgname"
