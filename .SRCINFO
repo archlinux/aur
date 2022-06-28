@@ -1,6 +1,6 @@
 pkgbase = spring-ba
 	pkgdesc = A fan mod of Total Annihilation with remastered graphics and balance
-	pkgver = 14.0.1
+	pkgver = 15.1.4
 	pkgrel = 1
 	url = https://balancedannihilation.com/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = spring-ba
 	license = CCPL
 	license = custom:non-free
 	depends = spring
-	noextract = balanced_annihilation-v14.0.1.sdz
-	source = https://www.springfightclub.com/data/balanced_annihilation-v14.0.1.sdz
+	noextract = balanced_annihilation-v15.1.4.sdz
+	source = https://github.com/Balanced-Annihilation/Balanced-Annihilation/releases/download/VERSION%7Bv15.1.4%7D/balanced_annihilation-v15.1.4.sdz
 	source = license-non-free
-	md5sums = 196811a65aee80f1c88b4fd76baa3898
+	md5sums = 32c019d63c0104be760e76b6aa9f4ca3
 	md5sums = 28872feaac21fc4b2b4ae00b3f86e52a
 
 pkgname = spring-ba
