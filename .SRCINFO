@@ -1,19 +1,18 @@
 pkgbase = python-browser-cookie3
 	pkgdesc = Loads cookies used by your web browser into a cookiejar object
-	pkgver = 0.13.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/borisbabic/browser_cookie3
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-keyring
-	depends = python-pbkdf2
 	depends = python-pyaes
-	depends = python-crypto
+	depends = python-pbkdf2
+	depends = python-keyring
 	depends = python-lz4
-	depends = python-pycryptodomex
+	depends = python-pycryptodome
 	depends = python-secretstorage
-	source = browser_cookie3-0.13.0.tar.gz::https://github.com/borisbabic/browser_cookie3/archive/0.13.0.tar.gz
-	sha256sums = b0266bf0c0cc145480d2ed470fe53be5bf9272f0f184dc355869005cb27d6aa5
+	source = https://files.pythonhosted.org/packages/source/b/browser-cookie3/browser-cookie3-0.15.0.tar.gz
+	sha256sums = 01f44bdaed703175c209f2b2ac3d05f7a8576a9f3c4d0c7b0f57e315618a0f2e
 
 pkgname = python-browser-cookie3
