@@ -1,11 +1,14 @@
 pkgbase = ytcl
 	pkgdesc = CLI frontend for ytdl-server
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/adralioh/ytcl
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.7
 	source = https://files.pythonhosted.org/packages/source/y/ytcl/ytcl-1.0.1.tar.gz
 	sha256sums = 5af1f8dd5c3bcd2001c08dd778da279a4f68f1ec02ceb530f87e0a1da7061c9a
