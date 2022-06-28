@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qap
-_pkgver=0.1-1
+_pkgver=0.1-2
 pkgname=r-${_pkgname,,}
-pkgver=0.1.1
-pkgrel=4
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Heuristics for the Quadratic Assignment Problem (QAP)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60bd564bb0e6325de44351af33870177d84b1c00ded142a2efb12a16a20d4d34')
+sha256sums=('47a4ada3ae7a3a5c9304174bd5291daad60d329d527c0c6bb5ec1ac257584da5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
