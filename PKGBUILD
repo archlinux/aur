@@ -1,7 +1,7 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
     'python-uinput>=0.11.2'
     'python-ruamel-yaml>=0.15'
     'python-pyusb>=1.0.2'
+    'python-setuptools'
     'hidapi>=0.10'
     'libnotify>=0.7.9'
 )
