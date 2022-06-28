@@ -1,3 +1,9 @@
+## GE-Proton-7-23 Released
+- Hotfix: fix Path of Exile not launching
+- FSR:
+
+I've attempted to make the FSR issue a bit easier for people by implementing a new option
+
 ## GE-Proton-7-22 Released
 - Hotfix:
 
