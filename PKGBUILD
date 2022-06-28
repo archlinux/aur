@@ -1,7 +1,7 @@
 # Maintainer: yskszk63 <yskszk63 at gmail dot com>
 pkgname=renvim-bin
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Open the file in the outer Neovim instance.'
 arch=('x86_64')
 url='https://github.com/yskszk63/renvim'
