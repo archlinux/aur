@@ -8,10 +8,10 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=2021.09.0+351.r1191.gbcb324f6f5
+pkgver=v2022.02.3+492.r1692.g7faaa81408
 _gwtver=2.8.2
 _ginver=2.1.2
-_nodever=14.17.5
+_nodever=16.14.0
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
          'c295406d68c5ef364e445068599aa6d4'
-         '3cd3b18e1412067aabd2e1b23b93106e')
+         'a46e501a201be6c3c05c0f770c375372')
          
 
 pkgver() {
