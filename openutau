@@ -1,11 +1,12 @@
 #! /bin/bash
 
-# Check if OpenUtau is installed, and run it if so
-if [ -d "$HOME/.openutau" ] && [ -f "$HOME/.openutau/OpenUtau" ]; then
-    exec ~/.openutau/OpenUtau
-else
+# Check if OpenUtau is installed, install it if not
+if [ ! -d "$HOME/.openutau" ] && [ ! -f "$HOME/.openutau/OpenUtau" ]; then
     # copy openutau from libs to user directory
     cp -r /usr/lib/openutau-installer/openutau ~/.openutau
 
     # this allows the application to update itself per local user installation.
 fi
+
+# run openutau
+exec ~/.openutau/OpenUtau

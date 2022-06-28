@@ -14,7 +14,7 @@ source=("https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/O
         "OpenUtau.desktop"
         "openutau.svg")
 sha256sums=('SKIP'
-            '69b397c5d7ce8be3da393071503b1b894b32225a9b1b377a9a09045a8f811d5a'
+            'daa0115af49f653400b7ef5bd6795d7cb703834bb9503584b4551f9a416682e7'
             '6c2939d1126db03e744deceed9464a4d4d25c03a17c1f2d7585697f1fc2a5f17'
             '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
 
