@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-headless
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=(i686 x86_64 armv7h aarch64)
@@ -18,7 +18,7 @@ optdepends=(
     'libva-intel-driver: backend for Intel GPUs (<= Haswell)'
 )
 backup=(etc/libva.conf)
-_tag=eec9f7132d4677575f929fc1dd3babc349cc56da
+_tag=b095d10bf355110352e75c22e581018a7ea7de5a
 source=(git+https://github.com/intel/libva.git#tag=${_tag})
 sha256sums=(SKIP)
 
