@@ -1,7 +1,7 @@
 pkgbase = netradiant-git
 	pkgdesc = The open source, cross platform level editor for idtech games (GtkRadiant fork)
-	pkgver = r2259.ed990b29
-	pkgrel = 2
+	pkgver = r2263.d9338309
+	pkgrel = 1
 	epoch = 1
 	url = https://netradiant.gitlab.io/
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = netradiant-git
 	provides = qdata3
 	provides = h2data
 	provides = daemonmap
+	conflicts = netradiant-custom
 	source = netradiant-git::git+https://gitlab.com/xonotic/netradiant.git
 	sha256sums = SKIP
 

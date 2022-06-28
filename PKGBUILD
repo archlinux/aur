@@ -3,8 +3,8 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2259.ed990b29
-pkgrel=2
+pkgver=r2263.d9338309
+pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 depends=('gtk2' 'gtkglext' 'minizip' 'libjpeg-turbo' 'libwebp')
 makedepends=('git' 'svn' 'wget' 'unzip' 'cmake' 'make')
 provides=('netradiant' 'q3map2' 'q3data' 'q2map' 'qdata3' 'h2data' 'daemonmap')
+conflicts=('netradiant-custom')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git")
 sha256sums=('SKIP')
 
