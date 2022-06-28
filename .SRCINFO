@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-module-xrdp-git
 	pkgdesc = PulseAudio modules for xrdp
-	pkgver = 0.5.r2.g8b3c7f3
+	pkgver = 0.6.r10.g308b6f2
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/pulseaudio-module-xrdp
 	install = pulseaudio-module-xrdp.install
@@ -17,8 +17,8 @@ pkgbase = pulseaudio-module-xrdp-git
 	provides = pulseaudio-module-xrdp
 	conflicts = pulseaudio-module-xrdp
 	source = git+https://github.com/neutrinolabs/pulseaudio-module-xrdp.git#branch=devel
-	source = https://freedesktop.org/software/pulseaudio/releases/pulseaudio-15.0.tar.xz
+	source = https://freedesktop.org/software/pulseaudio/releases/pulseaudio-16.1.tar.xz
 	sha256sums = SKIP
-	sha256sums = a40b887a3ba98cc26976eb11bdb6613988f145b19024d1b6555c6a03c9cba1a0
+	sha256sums = 8eef32ce91d47979f95fd9a935e738cd7eb7463430dabc72863251751e504ae4
 
 pkgname = pulseaudio-module-xrdp-git

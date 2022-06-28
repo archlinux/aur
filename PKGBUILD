@@ -2,7 +2,7 @@
 
 _pkgname=pulseaudio-module-xrdp
 pkgname="${_pkgname}-git"
-pkgver=0.5.r2.g8b3c7f3
+pkgver=0.6.r10.g308b6f2
 pkgrel=1
 pkgdesc="PulseAudio modules for xrdp"
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ conflicts=('pulseaudio-module-xrdp')
 provides=('pulseaudio-module-xrdp')
 
 _pulseaudio_ver=$(pulseaudio --version | awk '{print $NF}')
+: "${_pulseaudio_ver:=16.1}"
+
 source=("git+https://github.com/neutrinolabs/${_pkgname}.git#branch=devel"
         "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
 sha256sums=('SKIP'
@@ -26,11 +28,11 @@ pkgver() {
     git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([0-9]*-g),r\1,;s,-,.,g'
 }
 
+
 prepare() {
     cd "$srcdir/pulseaudio-${_pulseaudio_ver}"
 
     meson build
-    meson compile -C build
 }
 
 build() {
