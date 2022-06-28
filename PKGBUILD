@@ -2,7 +2,7 @@
 
 pkgname=rofi-screenshot-git
 _gitname=rofi-screenshot
-pkgver=r8.050c3eb
+pkgver=r10.d3d6737
 pkgrel=1
 pkgdesc="Use rofi and ffcast to perform various types of screenshots and screen captures"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   'git+https://github.com/ceuk/rofi-screenshot.git'
   'output_dir.patch')
 md5sums=('SKIP'
-         '8e020b4afb615d6a3169a8f980c144a1')
+         '50cc7d83d17b4266cbf1a301896b35b7')
 
 pkgver() {
   cd "$_gitname/"
