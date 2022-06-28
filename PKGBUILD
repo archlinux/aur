@@ -3,7 +3,7 @@
 
 pkgname=bombsquad
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An explosive arcade-style party game'
 arch=('x86_64' 'aarch64')
 url='http://www.froemling.net/apps/bombsquad'
@@ -21,8 +21,8 @@ sha256sums=(
 )
 source_x86_64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_x86_64_${pkgver}.tar.gz")
 source_aarch64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Linux_Arm64_${pkgver}.tar.gz")
-sha256sums_x86_64=("cc6808abd1f92a92e62930ea72f0fc3205310f3f6238fa75d851e5d8862053cd")
-sha256sums_aarch64=("c482da5d5aab9b2374c817d22ecb16a99507d02189ca9ad37271de23158fb654")
+sha256sums_x86_64=("90e4cc273f7108a48dbf07397b6c4a38e45712cb77c9d9175b2ddec66881c539")
+sha256sums_aarch64=("04269b772a7f556dbfac67f3f40d6d78dd9804997deb044c240e0f81e3591e60")
 
 package() {
   cd "$srcdir"/BombSquad_Linux_*_"$pkgver"
