@@ -1,10 +1,11 @@
-# Maintainer: yannicklm <yannicklm1337@gmail.com>
+# Maintainer: Amber <amber@mail.cyborgtrees.com>
+# Contributor: yannicklm <yannicklm1337@gmail.com>
 # Contributor: dale <dale@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=xpenguins
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ever wanted cute little penguins walking along the tops of your windows?"
 depends=('libxpm' 'gtk3')
 source=(http://downloads.sf.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
