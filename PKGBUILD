@@ -36,3 +36,4 @@ package() {
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
   cp -r configs ${pkgdir}/usr/share/${_pkgname}
 }
+
