@@ -1,13 +1,14 @@
 pkgbase = identity
 	pkgdesc = Compare multiple versions of an image or video
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/YaLTeR/identity
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = rust
-	depends = gtk4
+	makedepends = blueprint-compiler
+	makedepends = gobject-introspection
 	depends = gstreamer
 	depends = libadwaita
 	source = https://gitlab.gnome.org/YaLTeR/identity/-/archive/v0.3.0/identity-v0.3.0.tar.gz
