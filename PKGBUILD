@@ -3,14 +3,14 @@
 
 pkgname=wsjtx-git
 pkgver=r9383.6744bc546
-pkgrel=1
+pkgrel=2
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 # change _wsjtx_tag to other versions such as wsjtx-2.5.0-rc1
 _wsjtx_tag=master
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
 license=('GPL3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'hamlib-git')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'hamlib')
 makedepends=('cmake' 'git' 'asciidoctor' 'asciidoc' 'qt5-tools' 'gcc-fortran' 'boost' 'portaudio')
 provides=('wsjtx')
 conflicts=('wsjtx')
