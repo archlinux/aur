@@ -2,11 +2,11 @@
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=standardnotes-bin
-pkgver=3.20.2
+pkgver=3.22.17
 pkgrel=1
 pkgdesc='Free, open-source encrypted notes app'
 arch=('x86_64' 'i686' 'aarch64')
-url='https://standardnotes.org'
+url='https://github.com/standardnotes/app'
 license=('AGPL3')
 depends=('hicolor-icon-theme')
 makedepends=('asar')
@@ -15,13 +15,13 @@ provides=('standardnotes-desktop')
 conflicts=('standardnotes-desktop')
 install=standardnotes.install
 source=("standard-notes.sh")
-source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-x86_64.AppImage")
-source_i686=("$pkgname-$pkgver-i686.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-i386.AppImage")
-source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::https://github.com/standardnotes/desktop/releases/download/v$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
+source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-x86_64.AppImage")
+source_i686=("$pkgname-$pkgver-i686.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-i386.AppImage")
+source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/%40standardnotes%2Fdesktop%40$pkgver/standard-notes-$pkgver-linux-arm64.AppImage")
 sha256sums=('71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16')
-sha256sums_x86_64=('0a1119165357e6fd1a832507094cb67821c0410f1da0e5561a6616ddadfa3377')
-sha256sums_i686=('feefc2b77cf6a3062e2786e6d4ea86223cc36ba75701875b36c354a2f82546f2')
-sha256sums_aarch64=('8605394cbab6c590db45cc0b17cc1c2dea7b4c3cc3ebd79a66394d50fc716914')
+sha256sums_x86_64=('4c2b60296156e37d44dfff854fbc694c597ee9f48869d87a52814b0b7480cda4')
+sha256sums_i686=('b1f414d55ec9751bbca2831a249cd6fe6adc855244c7dfb3338200ff859b48f6')
+sha256sums_aarch64=('f7ab27b7a5bb4c633a7c47246b624a437854037b337ba08673053c720ec5296f')
 
 prepare() {
 	chmod +x "$pkgname-$pkgver-$CARCH.AppImage"
