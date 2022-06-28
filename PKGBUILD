@@ -3,13 +3,13 @@
 
 pkgname=xone-dongle-firmware
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Xbox Wireless Controller Adapter firmware'
 arch=('x86_64')
 url='https://github.com/medusalix/xone'
 license=('custom')
-conflicts=('xone-dkms<=0.2'
-           'xone-dkms-git<=0.3.r0.g8311a25-2')
+conflicts=('xone-dkms<0.3-3'
+           'xone-dkms-git<0.3.r0.g8311a25-2')
 source=("http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab")
 sha256sums=('65736a84ff4036645b8f8ec602bed91ab6353019c9cb3233decab9feec0f6f04')
 
