@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A Python implementation written in Python, JIT enabled"
 url="https://pypy.org"
 arch=('x86_64' 'aarch64')
-depends=('bzip2' 'gdbm' 'openssl' 'zlib')
+depends=('bzip2' 'openssl' 'zlib')
 provides=('pypy')
 conflicts=('pypy')
 options=(!buildflags)
@@ -20,10 +20,13 @@ package() {
   [ "$CARCH" = "x86_64" ] && cd pypy2.7-v${pkgver}-linux64
   [ "$CARCH" = "aarch64" ] && cd pypy2.7-v${pkgver}-aarch64
 
+  # Fix permissions
+  find . -type d -exec chmod +rx {} \;
+  find . -name '*.so*' -exec chmod +rx {} \;
+
   # Install pypy
   mkdir -p "${pkgdir}"/opt/pypy/
   cp -r * "${pkgdir}"/opt/pypy/
-  echo "/opt/pypy/lib" > "${pkgdir}"/etc/ld.so.conf.d/pypy.conf
 
   # Install symlink
   mkdir -p "${pkgdir}"/usr/bin "${pkgdir}"/usr/lib

@@ -7,7 +7,6 @@ pkgbase = pypy-bin
 	arch = aarch64
 	license = MIT
 	depends = bzip2
-	depends = gdbm
 	depends = openssl
 	depends = zlib
 	provides = pypy
