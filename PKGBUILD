@@ -1,19 +1,24 @@
-# Maintainer: Ondřej Hošek <ondra.hosek@gmail.com>
-# Contributor: Allan McRae <allan@archlinux.org>
+# Maintainer: Ondřej Hošek <ondra dot hosek at gmail dot com>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Andrew Sun  <adsun701 at gmail dot com>
+# Contributor: Kritias     <theodoridisgr at gmail dot com>
+# Contributor: sudokode    <sudokode at gmail dot com>
+# Contributor: Allan McRae <allan at archlinux dot org>
 
-pkgname=isl-git
-pkgver=0.20.52.g44534fc7
+pkgname=libisl-git
+pkgbase=isl-git
+pkgver=0.24.332.geb702ee7
 pkgrel=1
 pkgdesc="Library for manipulating sets and relations of integer points bounded by linear constraints (development version)"
 arch=('i686' 'x86_64')
-url="http://isl.gforge.inria.fr/"
+url="https://libisl.sourceforge.io/"
 depends=('gmp')
 makedepends=('clang' 'llvm')
 license=('MIT')
 options=('!libtool')
-provides=('isl')
-conflicts=('isl')
-source=("${pkgname%-git}::git+http://repo.or.cz/isl.git")
+provides=('isl' 'libisl')
+conflicts=('isl' 'libisl')
+source=("${pkgname%-git}::git+https://repo.or.cz/isl.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,7 +43,7 @@ package() {
   make -j1 DESTDIR="$pkgdir/" install
 
   install -dm755 "$pkgdir/usr/share/gdb/auto-load/usr/lib/"
-  mv "$pkgdir"/{,/usr/share/gdb/auto-load/}usr/lib/libisl.so.19.1.0-gdb.py
+  mv "${pkgdir}"/usr/lib/libisl.so.*-gdb.py "${pkgdir}"/usr/share/gdb/auto-load/usr/lib/
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/isl/LICENSE"
 }
