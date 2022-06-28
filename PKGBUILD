@@ -5,19 +5,20 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=hamlib-git
-pkgver=r8655.d04f4b6b
-pkgrel=2
+pkgver=r9033.afabcfff
+#r8655.d04f4b6b
+pkgrel=1
 pkgdesc="Ham radio equipment control libraries - GIT VERSION 4.x"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://hamlib.org"
 license=('GPL' 'LGPL')
-depends=('perl' 'python' 'tcl' 'lua' 'libxml2' 'libindi' \
+depends=('perl' 'python' 'tcl' 'lua' 'libxml2' \
 	'libusb-compat' 'boost')
 makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'swig')
-provides=('hamlib4')
+provides=('hamlib' 'hamlib4')
 conflicts=('hamlib' 'hamlib4')
-source=('hamlib-git::git+git://git.code.sf.net/p/hamlib/code')
 options=('!emptydirs')
+source=('hamlib-git::git+git://git.code.sf.net/p/hamlib/code')
 
 
 pkgver() {
@@ -44,7 +45,7 @@ build() {
 		--with-tcl-binding \
 		--with-lua-binding \
 		--with-xml-support \
-		--with-indi-support
+		--without-indi
 	make
 }
 
