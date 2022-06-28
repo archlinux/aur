@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNetStat
-_pkgver=1.16.0
+_pkgver=1.16.1
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='Biological Network Analysis'
 arch=('any')
@@ -31,7 +31,7 @@ depends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbb5a118c595272cfd5b6bffb46ba5822a04d8435f22c2a3cf62485a863c6838')
+sha256sums=('625db7f20538f023ff2396d029e4d6f048c8c757dfda0ca2d425adbeabbf467f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
