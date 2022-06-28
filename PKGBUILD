@@ -1,28 +1,20 @@
-# Maintainer: Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer: Homalozoa <nx.tardis@gmail.com>
+pkgname=python-colcon-hardware-acceleration
+pkgver=0.7.0
+pkgrel=1
+pkgdesc="An extension for colcon-core to process packages in parallel."
+arch=(any)
+url="https://pypi.org/project/colcon-hardware-acceleration/"
+license=('Apache')
+depends=('python-colcon-core')
+makedepends=('python-setuptools')
+source=(https://files.pythonhosted.org/packages/af/ee/277b336150a66e56a52555dee939d92a05ff24a0867b26599cfc4d053e65/colcon-hardware-acceleration-0.7.0.tar.gz)
+sha256sums=('83ec8e00c9e54b8678f429bba71d20700f519f203397ba1de9fa8d9ed5e65059')
 
-pkgname="loli"
-pkgver="0.8"
-pkgrel="1"
-pkgdesc="Loli is a embedded programming language"
-arch=("x86_64")
-license=("MIT")
-url="http://loli-lang.ml/"
-makedepends=("git" "cmake" "make" "gcc")
-provides=("loli")
-
-source=("loli-$pkgver::git+https://github.com/loli-foundation/loli.git#tag=$pkgver")
-sha256sums=("SKIP")
-
-build() {
-    cd "${pkgname}-${pkgver}"
-    mkdir -p ./build
-    cmake -S ./ -B ./build
-    cd ./build && make
-}
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    mkdir -p $pkgdir/usr/{bin,lib}
-    install -m 755 loli $pkgdir/usr/bin/
-    install -m 755 libloli.so $pkgdir/usr/lib/
+    cd ${srcdir}/colcon-hardware-acceleration-${pkgver}
+
+    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
