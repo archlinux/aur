@@ -4,7 +4,7 @@
 
 _pkgname=pithos
 pkgname=$_pkgname-git
-pkgver=1.4.0.r4.g33c0a1c
+pkgver=1.5.1.r23.g0a228ab
 pkgrel=1
 pkgdesc='Native Pandora Radio client'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo'
          'gst-plugins-good' 'gst-libav' 'gst-plugins-base')
 optdepends=('libkeybinder3: for media keys plugin'
             'libappindicator-gtk3: Unity indicator applet support'
-            'python-pacparser: PAC proxy support'
+            'pacparser: PAC proxy support'
             'python-pylast: Last.fm scrobbling support'
             'python-systemd: Logging to the system journal')
 makedepends=('git' 'meson' 'appstream-glib')
