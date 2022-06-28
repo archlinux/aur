@@ -1,7 +1,7 @@
 pkgbase = pywws
 	pkgdesc = Python software for USB Wireless WeatherStations
 	pkgver = 22.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jim-easterbrook/pywws
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = pywws
 	optdepends = gnuplot>=4.2: draws weather data graphs
 	optdepends = python-requests: weather service uploading
 	optdepends = python-paramiko: secure website uploading over SFTP
-	optdepends = python-pycrypto: secure website uploading over SFTP
+	optdepends = python-pycryptodome: secure website uploading over SFTP
 	optdepends = python-paho-mqtt: sends weather data to an MQTT broker
 	source = https://files.pythonhosted.org/packages/source/p/pywws/pywws-22.3.0.tar.gz
 	source = pywws.service

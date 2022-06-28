@@ -3,7 +3,7 @@
 
 pkgname=pywws
 pkgver=22.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
@@ -16,7 +16,7 @@ optdepends=(
   'python-requests: weather service uploading'
   ## paramiko and pycrypto are co-dependents
   'python-paramiko: secure website uploading over SFTP'
-  'python-pycrypto: secure website uploading over SFTP'
+  'python-pycryptodome: secure website uploading over SFTP'
   # 'python-twitter3: twitter updates' # ????
   # 'python-oauth2' ## not in AUR yet
   'python-paho-mqtt: sends weather data to an MQTT broker')
