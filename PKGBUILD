@@ -13,6 +13,7 @@ depends=(
     python-gobject
     python-setproctitle
     python-xapp
+    python-xlib
     xapp
 )
 makedepends=(

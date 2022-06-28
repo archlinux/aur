@@ -13,6 +13,7 @@ pkgbase = clicky
 	depends = python-gobject
 	depends = python-setproctitle
 	depends = python-xapp
+	depends = python-xlib
 	depends = xapp
 	conflicts = clicky-git
 	source = clicky::git+https://github.com/linuxmint/clicky#commit=4ba6382183bf10d983427b8ef2df4e9d67322380
