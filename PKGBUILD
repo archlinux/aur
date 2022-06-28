@@ -36,12 +36,12 @@ package() {
     cd "${srcdir}/repo"
     (
         export GIT_WORK_TREE="${icons}"
-        git sparse-checkout set "/Papirus" "/Papirus-Dark"
+        git sparse-checkout set --no-cone "/Papirus" "/Papirus-Dark"
         git checkout -f
     )
     (
         export GIT_WORK_TREE="${licenses}"
-        git sparse-checkout set "/LICENSE"
+        git sparse-checkout set --no-cone "/LICENSE"
         git checkout -f
     )
 }
