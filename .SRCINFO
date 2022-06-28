@@ -1,0 +1,56 @@
+pkgbase = linux-mainline-um5302ta
+	pkgdesc = Linux
+	pkgver = 5.19.rc4
+	pkgrel = 1
+	url = https://git.kernel.org/torvalds/h/v5.19-rc4
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.19-rc4
+	source = config
+	source = v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.patch
+	source = v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.patch
+	source = v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.patch
+	source = v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = SKIP
+	sha256sums = 382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35
+	sha256sums = 2f8cf3f6914d4c122c5247f0caadb2c3832b2bd9662005d05e4179337dd84adc
+	sha256sums = f68853f51f7e0d58e1a9c34fea8516d45a18e5b0a59477e87fea0eacf5be5c77
+	sha256sums = 336c842b0054d496f05394b52d3361a005d81621e39f54878a41928988466735
+	sha256sums = 5212ffc69ba29c5b29365849e8bdb621c8cadac4025de5a503f55af923f123f0
+
+pkgname = linux-mainline-um5302ta
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-mainline-um5302ta-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-mainline-um5302ta-docs
+	pkgdesc = Documentation for the Linux kernel
