@@ -1,12 +1,13 @@
 pkgbase = plasma5-shader-wallpaper-git
 	pkgdesc = Plasma animated shader wallpaper plugin
 	pkgver = r67.d108ed7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/y4my4my4m/kde-shader-wallpaper
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = plasma-desktop
+	conflicts = plasma5-shader-wallpaper
 	source = git+https://github.com/y4my4my4m/kde-shader-wallpaper.git
 	sha256sums = SKIP
 
