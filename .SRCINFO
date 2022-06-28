@@ -1,7 +1,7 @@
 pkgbase = r-ancombc
 	pkgdesc = Analysis of compositions of microbiomes with bias correction
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ANCOMBC
 	arch = any
 	license = Artistic2.0
@@ -30,7 +30,7 @@ pkgbase = r-ancombc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ANCOMBC_1.6.1.tar.gz
-	sha256sums = 18f281abf4c72c8d6e0e9d14ce5cd4f7abd19c6bb752b7e0a867e282b6cf3edd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ANCOMBC_1.6.2.tar.gz
+	sha256sums = 5bb1cfb8b6828cd18c85d51cd2ef9d63d1a7e74eb0917aff73a6ebf94f2311b5
 
 pkgname = r-ancombc
