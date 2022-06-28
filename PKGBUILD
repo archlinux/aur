@@ -3,7 +3,7 @@
 pkgname=himitsu-mutt
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A helper for using himitsu with neomutt."
+pkgdesc="Helper for using himitsu with neomutt."
 arch=('any')
 url="https://sr.ht/~whynothugo/himitsu-mutt"
 license=('ISC')
