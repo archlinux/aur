@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SideQuestLite
+Comment=Install SideQuest right into your headset and make it easier to access all the great SideQuest content!
+Exec=sidequestlite %u
+Terminal=false
+Type=Application
+Icon=sidequestlite
+Categories=Development;Game;HardwareSettings
+StartupWMClass=SideQuestLite
+MimeType=x-scheme-handler/sidequestlite;
