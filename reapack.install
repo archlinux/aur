@@ -1,0 +1,6 @@
+post_install(){
+    REAPACK_SO="$(ls /opt/REAPER/UserPlugins/reaper_reapack-*.so)"
+    echo -e "Please run this command:\n"
+    echo -e "\t$ ln -s ${REAPACK_SO} ~/.config/REAPER/UserPlugins/"
+    echo -e "\nto create a symlink of reapack for your user. Otherwise REAPER won't detect the plugin.\n"
+}
