@@ -1,7 +1,7 @@
 pkgbase = apio
 	pkgdesc = Experimental micro-ecosystem for open FPGAs
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://pypi.org/project/apio/
 	arch = any
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = apio
 	depends = sudo
 	depends = python-wheel
 	depends = scons
-	source = https://files.pythonhosted.org/packages/source/a/apio/apio-0.8.0.tar.gz
-	sha256sums = 6a5b841c7a9259a1aa4e5533f8288c58b388714c362f15399b17f18b394fea99
+	source = https://files.pythonhosted.org/packages/source/a/apio/apio-0.8.1.tar.gz
+	sha256sums = 73c24f6fe8174dac50c0a29084c20f7fe958c5af6f37d0dc49f9f495f5746766
 
 pkgname = apio
