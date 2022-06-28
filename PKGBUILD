@@ -1,8 +1,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=clickrouter-git
-pkgver=2.0.1.r951.g593d10826
-pkgrel=3
+pkgver=2.0.1.r952.g260e4f0a6
+pkgrel=1
 pkgdesc='Fast modular packet processing and analysis'
 depends=('glibc' 'libpcap')
 optdepends=()
@@ -13,8 +13,10 @@ license=('custom')
 provides=('clickrouter')
 conflicts=('clickrouter' 'click' 'click-git')
 replaces=('clickrouter')
-source=("$pkgname"::'git+https://github.com/kohler/click')
-sha256sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/kohler/click'
+        'fix-linux_true.patch')
+sha256sums=('SKIP'
+            '0293dd4c4233684574c175ba831dbe7a039b5bf059a06b2bec86b76a4e3cc083')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -31,7 +33,8 @@ prepare() {
     sed -i -e 's/\<gzcat\>/zcat/g' ${FILES}
 
     # https://github.com/kohler/click/issues/493
-    sed -i -e '/linux_true/d' include/click/cxxprotect.h
+    # https://github.com/kohler/click/pull/504
+    patch -Np1 -i "$srcdir/fix-linux_true.patch"
 }
 
 build() {

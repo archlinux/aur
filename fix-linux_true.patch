@@ -1,0 +1,28 @@
+diff --git a/include/click/cxxprotect.h b/include/click/cxxprotect.h
+index 65662aff7..ba6ab2860 100644
+--- a/include/click/cxxprotect.h
++++ b/include/click/cxxprotect.h
+@@ -9,7 +9,9 @@
+ # define public		linux_public
+ # define namespace	linux_namespace
+ # define false		linux_false
++# ifdef linux_true
+ # define true		linux_true
++# endif
+ #endif
+ 
+ #ifndef CLICK_CXX_PROTECT
+diff --git a/include/clicknet/ip.h b/include/clicknet/ip.h
+index c2be5113b..e7ebd736c 100644
+--- a/include/clicknet/ip.h
++++ b/include/clicknet/ip.h
+@@ -9,9 +9,7 @@ CLICK_CXX_PROTECT
+ # include <linux/in.h>
+ #else
+ # include <sys/types.h>
+-#undef true
+ # include <netinet/in.h>
+-#define true linux_true
+ #endif
+ 
+ /*
