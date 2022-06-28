@@ -13,6 +13,7 @@ pkgbase = python-gtkspellcheck
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python-pyenchant
 	depends = python-gobject
 	provides = python-gtkspell
