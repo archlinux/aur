@@ -1,7 +1,7 @@
 pkgbase = esperantilo-bin
 	pkgdesc = A text editor with particular Esperanto functions, spell and grammar checking and machine translation
 	pkgver = 0.993
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.esperantilo.org
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = esperantilo-bin
 	md5sums = d028ff0026fa52ae41f0b8af73a9a36d
 
 pkgname = esperantilo-bin
-
