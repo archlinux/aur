@@ -37,6 +37,7 @@ package() {
   "${pkgdir}/opt/${pkgname}/bin/flutter" precache
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname}/version"
+  # those files *must* be read-write for end-users
+  chmod a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache/lockfile" "${pkgdir}/opt/${pkgname}/bin/cache/usbmuxd.stamp" "${pkgdir}/opt/${pkgname}/bin/cache/libmobiledevice.stamp"
   ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
