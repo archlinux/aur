@@ -6,7 +6,7 @@
 # zhullyb <zhullyb at outlook dot com>
 
 pkgname=sunloginremote
-pkgver=5.1.0.36963
+pkgver=5.5.0.45114
 pkgrel=1
 pkgdesc='Proprietary software that remotely controls mobile devices, Windows, Mac, Linux and other systems. Enterprise edition.'
 arch=(x86_64)
@@ -22,7 +22,7 @@ source=("https://down.oray.com/sunlogin/linux/${pkgname}-${pkgver}-amd64.deb"
         shim.sh
         tmpfiles.conf
         license.html)
-b2sums=('26d65d8ca66ab6bb78c5c9d5715dda668293e469c9feb9ddacc74f1d73d3025b60c3e137a45dc45f098b6bcefe3b87538b3397825de5553f41d4201e12b7befe'
+b2sums=('ce5e29dcf218048d78033ed8f18bb75da82a5684f8773167a82f6b118572b15a0344913c2de0b1693c61f136c066e39e68541ebfbb65769e7105552336a9fc39'
         'SKIP'
         'SKIP'
         'SKIP')
@@ -38,7 +38,7 @@ prepare() {
 }
 
 _install() {
-  find "usr/local/$pkgname/$1" -type f -exec \
+  find "opt/$pkgname/$1" -type f -exec \
       install -Dm$2 {} -t "${pkgdir}/opt/$pkgname/$1" \;
 }
 
@@ -50,18 +50,8 @@ build() {
   test -r "$desktop_file"
   # fix path
   sed -i -e "
-    s#Exec=/usr/local/$pkgname/bin/#Exec=/usr/bin/#
-    s#Icon=/usr/local/$pkgname/res/icon/sunlogin_remote.png#Icon=$pkgname#
+    s#Exec=/opt/$pkgname/bin/#Exec=/usr/bin/#
   " "$desktop_file"
-
-  binfile="usr/local/$pkgname/bin/$pkgname"
-  test -x "$binfile"
-  # ugly hack
-  sed -i -e "
-    s#/usr/local/sunloginremote/res\x0#/opt/sunloginremote/res\x0\x0\x0\x0\x0\x0\x0#g
-    s#/usr/local/sunloginremote/res/icon/%s.ico\x0#/opt/sunloginremote/res/icon/%s.ico\x0\x0\x0\x0\x0\x0\x0#g
-    s#/usr/local/sunloginremote\x0#/opt/sunloginremote\x0\x0\x0\x0\x0\x0\x0#g
-  " "$binfile"
 
   popd
 }
@@ -78,15 +68,17 @@ package() {
   mkdir -m=755 "$pkgdir/opt/$pkgname/res/font"
   ln -s ../../../../usr/share/fonts/wenquanyi/wqy-zenhei/wqy-zenhei.ttc \
     "$pkgdir/opt/$pkgname/res/font/"
-  install -Dm644 "usr/local/$pkgname/res/DRBELL.WAV" \
+
+  install -Dm644 "opt/$pkgname/res/DRBELL.WAV" \
     -t "$pkgdir/opt/$pkgname/res"
+
 
   # desktop entry
   install -Dm644 usr/share/applications/$pkgname.desktop \
     -t "$pkgdir/usr/share/applications"
 
-  # icon
-  install -Dm644 usr/local/$pkgname/res/icon/sunlogin_remote.png \
+  # icon ## TODO: use symlink instead
+  install -Dm644 opt/$pkgname/res/icon/sunlogin_remote.png \
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
   # # license
