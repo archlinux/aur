@@ -4,8 +4,8 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=dbplyr
-_cranver=2.2.0
-_updatedate=2022-06-08
+_cranver=2.2.1
+_updatedate=2022-06-28
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,7 @@ license=(MIT)
 depends=('r>=3.1' 'r-assertthat>=0.2.0' 'r-cli>=3.3.0' 'r-blob>=1.2.0' 'r-dbi>=1.0.0' 'r-dplyr>=1.0.9' 'r-glue>=1.2.0' 'r-lifecycle>=1.0.0' r-magrittr 'r-pillar>=1.5.0' 'r-purrr>=0.2.5' 'r-r6>=2.2.2' 'r-rlang>=1.0.0' 'r-tibble>=1.4.2' 'r-tidyselect>=0.2.4' 'r-vctrs>=0.4.1' r-withr)
 optdepends=(r-bit64 r-covr r-knitr r-lahman r-nycflights13 r-odbc r-rmariadb r-rmarkdown r-rpostgres r-rpostgresql r-rsqlite r-testthat r-tidyr)
 source=("https://cran.microsoft.com/snapshot/${_updatedate}/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('4a6e092c9349f8b3030c752f8c6cc551637d6fbca3c84be0da89968f1e9adce1')
+sha256sums=('a6f3f644c068fe1a3b3e99a3a10de55a150d43ef20b5130e6724d142afcb0df7')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
