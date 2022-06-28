@@ -1,30 +1,24 @@
 # Maintainer: TwoLeaves < ohneherren at gmail dot com >
 
 pkgname=nzbget-ppscript-nzbtomedia-git
-pkgver=1712.3e4861e
-
+pkgver=2637.d956cd2b
+_gitname=nzbToMedia
 pkgrel=1
 arch=(any)
 pkgdesc="Post-processing scripts to communicate with media managers."
 url="https://github.com/clinton-hall/nzbToMedia"
 license=('GPL3')
-depends=('nzbget' 'python2')
+depends=('nzbget' 'python')
 makedepends=('git')
-optdepends=('couchpotato' 'headphones' 'mylar-git' 'sickbeard'
+optdepends=('couchpotato' 'headphones' 'mylar-git' 'sonarr'
 	    'ffmpeg: to use the transcoding option')
 install=install
-_gitname=nzbToMedia
-source=("git://github.com/clinton-hall/${_gitname}")
+source=("git+https://github.com/clinton-hall/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd "${_gitname}"
-  sed -i -e 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' $(find ${srcdir} -name '*.py')
 }
 
 package() {
