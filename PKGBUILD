@@ -1,7 +1,7 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="sejda-console"
 pkgver=3.2.85
-pkgrel=3
+pkgrel=4
 pkgdesc="Shell interface for performing pdf manipulations"
 arch=('x86_64')
 url="www.sejda.org"
@@ -13,6 +13,7 @@ b2sums=('fea4d2b75c2b4804d0e1b96b88608c60e2d83b34ef0a58361fd732c42f85939b8f45956
 package() {
 	mkdir $pkgdir/opt
 	cp -r $pkgname-$pkgver $pkgdir/opt/sejda-console/
+	rm $pkgdir/opt/sejda-console/bin/sejda-console.bat
 	mkdir -p $pkgdir/usr/bin
-	ln -s $pkgdir/opt/sejda-console/bin/sejda-console  $pkgdir/usr/bin/
+	ln -s /opt/sejda-console/bin/sejda-console  $pkgdir/usr/bin/
 }
