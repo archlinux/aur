@@ -2,7 +2,7 @@
 _name=mediapipe
 _py=cp310
 pkgname=python-mediapipe
-pkgver=0.8.10
+pkgver=0.8.10.1
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('absl-py' 'python' 'python-cycler' 'python-dateutil' 'python-fonttools'
   'python-matplotlib' 'python-opencv' 'python-pillow' 'python-protobuf' 'python-wheel')
 makedepends=('python-pip')
 
-source=("https://files.pythonhosted.org/packages/a6/73/4358e25244dc2a3290584cf9370ae5d840c35de6faa698a288fb28e5e6c6/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/a2/ee/5f6071731226eed3902e8773121cb483c66f44c4114d76f2a09042dca34b/${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
 
 package() {
   cd "${srcdir}"
@@ -24,4 +24,4 @@ package() {
     ${_name//-/_}-$pkgver-$_py-${_py}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 }
 
-sha256sums=('a3236c7b34f98d31cf254555f42de7346c94585a0e47435e2fa2f12d13bc6ca1')
+sha256sums=('696bcdcfdcb16b9f4c36227fc5187ddf4128f193bc3acd8e449ff89e954086ec')
