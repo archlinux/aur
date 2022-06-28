@@ -1,0 +1,18 @@
+pkgbase = darkbar-git
+	pkgdesc = Darken application titlebars based on your preference
+	pkgver = 1.0.1.r4.g304b282
+	pkgrel = 1
+	url = https://github.com/bluesabre/darkbar
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libhandy
+	depends = libwnck3
+	depends = libgee
+	source = git+https://github.com/bluesabre/darkbar.git
+	b2sums = SKIP
+
+pkgname = darkbar-git
