@@ -13,10 +13,10 @@ diff -up rabbitvcs/setup.py.orig rabbitvcs-0.18/setup.py
 -# Make sure the icon cache is deleted and recreated
 -if sys.argv[1] == "install":
 -
--    if os.uname()[0] != 'Darwin':
+-    if os.uname()[0] != "Darwin":
 -        print("Running gtk-update-icon-cache")
 -
 -        subprocess.Popen(
 -            ["gtk-update-icon-cache", os.path.join(PREFIX, icon_theme_directory)],
--            stdout=subprocess.PIPE
+-            stdout=subprocess.PIPE,
 -        ).communicate()[0]

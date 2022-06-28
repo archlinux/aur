@@ -1,4 +1,11 @@
-*.tar.gz
-*.pkg.tar.zst
-*/*
+*
+!PKGBUILD
+!rabbitvcs.install
+!rabbitvcs-caja.install
+!rabbitvcs-ignore-post-install.patch
+!rabbitvcs-nautilus.install
+!rabbitvcs-nemo.install
+!rabbitvcs-thunar.install
+!.gitignore
+!.SRCINFO
 
