@@ -3,7 +3,7 @@
 pkgname=sidequestlite-bin
 _pkgname=sidequestlite
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs Sidequest directly onto your Meta Quest or Go to easily sideload apps."
 arch=('x86_64')
 url="https://github.com/SideQuestVR/EasyInstallerReleases"
