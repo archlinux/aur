@@ -1,0 +1,13 @@
+pkgbase = himitsu-mutt
+	pkgdesc = A helper for using himitsu with neomutt.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/hut
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = himitsu
+	source = git+https://git.sr.ht/~whynothugo/himitsu-mutt#commit=d2841478440adaef643814fa5e7268f2b0829bea
+	sha256sums = SKIP
+
+pkgname = himitsu-mutt
