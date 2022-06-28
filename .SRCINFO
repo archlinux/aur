@@ -1,16 +1,15 @@
 pkgbase = yokadi
 	pkgdesc = Command line oriented, sqlite powered, todo list
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yokadi.github.io
 	arch = any
 	license = GPL3
 	depends = python-sqlalchemy
 	depends = python-dateutil
 	depends = hicolor-icon-theme
-	optdepends = python-crypto: encrypt tasks title and description
+	optdepends = python-pycryptodome: encrypt tasks title and description
 	source = https://yokadi.github.io/download/yokadi-1.2.0.tar.gz
 	md5sums = dc986bd76dd7f10fa8d4bd3faa38aac1
 
 pkgname = yokadi
-
