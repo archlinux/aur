@@ -13,7 +13,6 @@ pkgbase = python-mahotas
 	optdepends = freeimage: for functions imread/imsave support
 	provides = mahotas
 	source = git+https://github.com/luispedro/mahotas.git?signed#tag=v1.4.13
-	validpgpkeys = 6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2
 	sha512sums = SKIP
 
 pkgname = python-mahotas

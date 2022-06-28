@@ -17,7 +17,7 @@ optdepends=('python-imread: for function imread support'
 provides=('mahotas')
 source=("git+${url}.git?signed#tag=v${pkgver}")
 sha512sums=('SKIP')
-validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
+# validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
 
 build() {
   cd ${_base}
