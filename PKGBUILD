@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=2.0.23
+pkgver=2.0.24
 pkgrel=1
 pkgdesc="The next generation PKM system, your digital garden"
 arch=("x86_64")
@@ -13,7 +13,7 @@ options=("!strip")
 provides=("siyuan")
 optdepends=('pandoc: docx export')
 source=("https://release.b3log.org/siyuan/${_pkgname}")
-sha512sums=("8379c582a4559ceea015ef91fa6cdc0f6c9c5acb027df082e15ab828bf50268dfcaa88f019c5ad5f0e84e4371d80f261d1e73e93528a30f77f77ac85d25889ac")
+sha512sums=("c6c59b788fbb3c41f4f81b4735d306174e6751215312780c4c5d34127e061ab5bbdd565f2ca83ff34e82e80f6242124ce1c515cca65f83d325c31b012a18e481")
 
 _installdir=/opt/appimages
 
