@@ -1,0 +1,12 @@
+diff --git a/src/ob/lispp.hh b/src/ob/lispp.hh
+index e00560638ba6..432539bac132 100644
+--- a/src/ob/lispp.hh
++++ b/src/ob/lispp.hh
+@@ -72,6 +72,7 @@ SOFTWARE.
+ #include <iterator>
+ #include <algorithm>
+ #include <filesystem>
++#include <optional>
+ #include <functional>
+ #include <string_view>
+ #include <type_traits>
