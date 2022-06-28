@@ -46,7 +46,7 @@ prepare() {
 
     cd "repo"
     git fetch -f
-    git sparse-checkout set "/fs/ntfs3"
+    git sparse-checkout set --no-cone "/fs/ntfs3"
     git reset --hard FETCH_HEAD
 
     cd "fs/ntfs3"
