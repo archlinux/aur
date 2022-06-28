@@ -1,5 +1,5 @@
 pkgbase = sidequestlite-bin
-	pkgdesc = Installs Sidequest directly onto your Meta Quest 2 to easily sideload apps.
+	pkgdesc = Installs Sidequest directly onto your Meta Quest or Go to easily sideload apps.
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/SideQuestVR/EasyInstallerReleases
