@@ -9,6 +9,7 @@ url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=(GPL)
 depends=(
     coreutils
+    dbus-python
     desktop-file-utils
     dosfstools
     e2fsprogs
@@ -20,13 +21,12 @@ depends=(
     polkit
     procps-ng
     python
-    python-dbus
     python-gobject
     python-pyparted
     python-xapp
     udisks2
     util-linux
-    xapps
+    xapp
 )
 makedepends=(
     gettext
