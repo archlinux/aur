@@ -3,10 +3,11 @@
 pkgname=gnome-calendar-linuxmint
 _pkgname=gnome-calendar
 pkgver=41.2
+_pkgver=mint1+vanessa
 pkgrel=1
-pkgdesc='Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches'
+pkgdesc='Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. (Package from Linux Mint repos)'
 arch=(x86_64)
-url=https://wiki.gnome.org/Apps/Calendar
+url="http://packages.linuxmint.com/pool/upstream/g/${_pkgname}"
 license=(GPL)
 depends=(
     evolution-data-server
@@ -29,39 +30,14 @@ makedepends=(
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=(gnome)
-_commit=deb9ff18302457b91fb8013f98880c8e3a548c19  # tags/41.2^0
-source=(
-    "git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=$_commit"
-    "linuxmint_gcal_window.patch"
-    "linuxmint_gcal_new_calendar_page.patch"
-)
-sha256sums=('SKIP'
-            '8ee8805a0d185b9458016c7855f789f849982c68f9c42407504d3144696d825c'
-            'c935e126d9201c37f4b33460ae834c6c4a18c71fd06c2d768480b559a8a92e5f')
+source=("${pkgname}_${pkgver}.tar.xz::${url}/${_pkgname}_${pkgver}+${_pkgver}.tar.xz")
+sha256sums=('ebd29c6b19ccc370e4b024247ab9aa925766a7782ddda8076076964c89ffb06f')
+      
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-
-  # Replace GNOME Control Center internal call with Cinnamon Settings (cinnamon-settings online-accounts)
-  # Set window icon name
-  patch -Np0 -i ../linuxmint_gcal_window.patch
-
-  # Replace GNOME Web Description link label with cinnamon-settings online-accounts
-  patch -Np0 -i ../linuxmint_gcal_new_calendar_page.patch
-}
 
 build() {
   arch-meson $_pkgname build
-  meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
+  meson compile -C meson.build
 }
 
 package() {

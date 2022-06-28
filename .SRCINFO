@@ -1,8 +1,8 @@
 pkgbase = gnome-calendar-linuxmint
-	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. With Linux Mint patches
+	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop. (Package from Linux Mint repos)
 	pkgver = 41.2
 	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Calendar
+	url = http://packages.linuxmint.com/pool/upstream/g/gnome-calendar
 	arch = x86_64
 	groups = gnome
 	license = GPL
@@ -20,11 +20,7 @@ pkgbase = gnome-calendar-linuxmint
 	optdepends = evolution: ICS file import
 	provides = gnome-calendar
 	conflicts = gnome-calendar
-	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git#commit=deb9ff18302457b91fb8013f98880c8e3a548c19
-	source = linuxmint_gcal_window.patch
-	source = linuxmint_gcal_new_calendar_page.patch
-	sha256sums = SKIP
-	sha256sums = 8ee8805a0d185b9458016c7855f789f849982c68f9c42407504d3144696d825c
-	sha256sums = c935e126d9201c37f4b33460ae834c6c4a18c71fd06c2d768480b559a8a92e5f
+	source = gnome-calendar-linuxmint_41.2.tar.xz::http://packages.linuxmint.com/pool/upstream/g/gnome-calendar/gnome-calendar_41.2+mint1+vanessa.tar.xz
+	sha256sums = ebd29c6b19ccc370e4b024247ab9aa925766a7782ddda8076076964c89ffb06f
 
 pkgname = gnome-calendar-linuxmint
