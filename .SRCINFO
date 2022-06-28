@@ -1,0 +1,13 @@
+pkgbase = jv
+	pkgdesc = Package jsonschema provides json-schema compilation and validation.
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/santhosh-tekuri
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = git
+	makedepends = go
+	source = https://github.com/santhosh-tekuri/jsonschema/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = f25779f25a75967d7fde5b99d265f1ed12acb1f63f24f62fa47c45404de1aa5f
+
+pkgname = jv
