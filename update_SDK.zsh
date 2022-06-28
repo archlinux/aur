@@ -14,12 +14,19 @@ function update_to(){
     makepkg --printsrcinfo > .SRCINFO
 }
 
+function sync_git(){
+    local version=$1
+    git commit PKGBUILD -m "Update SDK to $version"
+    git push
+}
+
 function main(){
     version=$(get_version)
     if grep -q "pkgver=$version" PKGBUILD; then
-        printf "Up-to-date: version %s\n" $version
+        printf "Already up-to-date: version %s\n" $version
     else
         update_to $version
+        sync_git $version
     fi
 }
 
