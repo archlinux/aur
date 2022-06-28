@@ -1,24 +1,38 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Mantainer: marmis <tiagodepalves@gmail.com>
+# Contributor: vitor_hideyoshi <vitor.h.n.batista@gmail.com>
+# Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Yangtse Su <i@yangtse.me>
 
 pkgname=xpadneo-dkms
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
 arch=(any)
 url=https://github.com/atar-axis/xpadneo
 license=(GPL)
 depends=(dkms bluez bluez-utils)
-makedepends=(git)
-source=(git+"${url}".git#tag=v"${pkgver}")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atar-axis/xpadneo/archive/v$pkgver.tar.gz")
+b2sums=('82c5bd4e9d68e0b9465047d446a1ffe0c95b9590d76f1c6cec2d6e1c770a6c3f7c6c47cffef5ce27c449f1ada854dd9b6e6413791360c0d8eee8a697718bb320')
 
 package() {
-	cd "${pkgname%-*}"
-	cp hid-xpadneo/dkms.conf.in hid-xpadneo/dkms.conf
-	sed -i 's/PACKAGE_VERSION="@DO_NOT_CHANGE@"/PACKAGE_VERSION="'"${pkgver}"'"/g' hid-xpadneo/dkms.conf
-	sed -i 's@/etc/udev/rules.d@/usr/lib/udev/rules.d@g' hid-xpadneo/dkms.post_{install,remove}
+    cd "xpadneo-${pkgver}/hid-xpadneo"
 
-	install -dm755 "${pkgdir}"/usr/src/hid-xpadneo-"${pkgver}"
-	cp -rv hid-xpadneo/* "${pkgdir}"/usr/src/hid-xpadneo-"${pkgver}"
+    # DKMS source files
+    install -D -m0644 Makefile -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"
+    install -D -m0644 src/* -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}/src"
+
+    # DKMS config file
+    sed 's/"@DO_NOT_CHANGE@"/"'"${pkgver}"'"/g' dkms.conf.in |\
+        install -D -m0644 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.conf
+
+    # DKMS post scripts
+    # the last 10 lines are responsible for copying modprobe and udev files, which is done below
+    head -n -10 dkms.post_install |\
+        install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_install
+    head -n -10 dkms.post_remove |\
+        install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_remove
+
+    # modprobe and udev rules (pacman already has a hook to reload udev rules)
+    install -D -m0644 etc-modprobe.d/*.conf -t "${pkgdir}"/usr/lib/modprobe.d
+    install -D -m0644 etc-udev-rules.d/*.rules -t "${pkgdir}"/usr/lib/udev/rules.d
 }
