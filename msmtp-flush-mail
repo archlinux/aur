@@ -1,0 +1,11 @@
+#!/bin/bash -e
+shopt -s extglob
+
+MSMTP_OPT="--read-envelope-from \
+		--logfile -"
+
+for i in $(ls -tr $1)
+do
+	/usr/bin/msmtp ${MSMTP_OPT} ${EXTRA_OPT} $(< "$1/$i/opt") < "$1/$i/mail"
+	rm -r $1/$i
+done

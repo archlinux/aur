@@ -1,0 +1,5 @@
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/msmtp-flush-mail %h/.local/share/msmtp-queue
+Restart=on-failure
+RestartSec=1min

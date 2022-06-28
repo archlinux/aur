@@ -1,0 +1,7 @@
+[Path]
+DirectoryNotEmpty=%h/.local/share/msmtp-queue
+MakeDirectory=yes
+DirectoryMode=0700
+
+[Install]
+WantedBy=paths.target

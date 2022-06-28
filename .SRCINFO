@@ -1,0 +1,17 @@
+pkgbase = msmtpq-systemd
+	pkgdesc = Systemd unit for queuing and sending mail
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = msmtp
+	source = msmtp-flush-mail
+	source = msmtp.path
+	source = msmtpq-systemd
+	source = msmtp.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = msmtpq-systemd

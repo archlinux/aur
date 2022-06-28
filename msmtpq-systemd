@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+tmp_dir=`mktemp -d`
+echo "$@" > $tmp_dir/opt &
+cp /dev/stdin $tmp_dir/mail
+wait -f
+mv $tmp_dir ${MAIL_QUEUE:-$HOME/.local/share/msmtp-queue}/$(uuidgen)
