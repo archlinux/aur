@@ -11,17 +11,25 @@ pkgdesc="Various Programming Utilities"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LGPL3)
-depends=('r>=2.14.0' 'r-r.oo>=1.24.0' 'r-r.methodss3>=1.8.1')
+depends=(
+    "r>=2.14.0"
+    "r-r.oo>=1.24.0"
+    "r-r.methodss3>=1.8.1"
+)
 optdepends=(r-digest)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('74de455220ea1e658ac503f5763a6be687d982eb61187779f4019a16db856503')
+sha256sums=("74de455220ea1e658ac503f5763a6be687d982eb61187779f4019a16db856503")
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+    install -dm0755 "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+    if [[ -f "${_cranname}/LICENSE" ]]; then
+        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
+
 }
