@@ -1,12 +1,12 @@
 pkgbase = mafft
-	pkgdesc = Multiple alignment program for amino acid or nucleotide sequences
-	pkgver = 7.490
+	pkgdesc = Multiple alignment program for amino acid or nucleotide sequences. https://doi.org/10.1093/molbev/mst010
+	pkgver = 7.505
 	pkgrel = 1
 	url = https://mafft.cbrc.jp/alignment/software
 	arch = x86_64
 	license = BSD
 	depends = perl
-	source = mafft-7.490.tgz::https://mafft.cbrc.jp/alignment/software/mafft-7.490-with-extensions-src.tgz
-	sha1sums = 7bf2c5c87ec2fa5c410646927299898e0a345dfe
+	source = mafft-7.505.tgz::https://mafft.cbrc.jp/alignment/software/mafft-7.505-with-extensions-src.tgz
+	sha1sums = 30074dd1631c94f5a379afee0e1fec26d4d1a310
 
 pkgname = mafft
