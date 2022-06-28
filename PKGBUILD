@@ -10,7 +10,7 @@
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
 pkgver=91.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -28,6 +28,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
+        0002-fix-ftbfs-newer-cbindgen.patch
         $pkgname.desktop identity-icons-brand.svg)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -349,6 +350,7 @@ done
 sha512sums=('bff3a399c03bd1cdaaec0b6963b1558aa35b6338b6c02042ffd65fec0aedd344d01718692e881332f5f352c32da15ba09a20a09ee072200b47ae840bc0585a96'
             'SKIP'
             '88509577b686c995144163538efdba3cfe1a3b01564d3823b9fb7972e64823d1d0a444372636f8d0b355c485f095df8f273a6eb5560fce4c41d4f1c0a0467f75'
+            'e41c1ee61ae18d77cdb98f87d90e48fc4fe6fb2acf938bbcd41bdd75d0255bda9e25b10a7a984cfa86f5d3b956e691abd51417e3b755a79f2dba52ad43bf0b19'
             '4b53ee133a4ecaf068e240f6a05a1ebf4b788d67fe9141cc5b3561e1128907c8c3edb49bf2b24ba89daf1552f94ac48adf682dbe7dd070cffe7f78d98f2b3338'
             'b579b73176c72a5ecf36e3f63bba08fdb8041ae99d54e5cab906660fed6a9cf2311f7ca1ec1649e451cc6d5a4b1e6060b974b1d7befe9c8df3c5a89c50383c17'
             '515e8424da6d1505480f15451c56363bf72471fa4d0e47b3e43b4cac261b088b82a85ad2f3234edfb8499beabf392e0636b227d0d7cc7285e544b1e2bdcdf395'
