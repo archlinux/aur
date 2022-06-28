@@ -1,0 +1,15 @@
+pkgbase = monado-vulkan-layers-git
+	pkgdesc = Optional Vulkan Layers for Monado.
+	pkgver = 0.9.0.9.git.cb3f7fe
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/monado/utilities/vulkan-layers
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = vulkan-headers
+	depends = gcc-libs
+	provides = monado-vulkan-layers
+	source = vulkan-layers::git+https://gitlab.freedesktop.org/monado/utilities/vulkan-layers.git#branch=main
+	md5sums = SKIP
+
+pkgname = monado-vulkan-layers-git
