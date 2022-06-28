@@ -12,14 +12,14 @@ license=('Apache-2.0')
 provides=('inf')
 conflicts=('inf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r6/inf_3.0.0-r6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5a080c6a521ab494c1a3525d977e95137281b91c3e895b9bbdb116bc6d57b8ba')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r8/inf_3.0.0-r8_Linux_arm64.tar.gz")
+sha256sums_aarch64=('ad7257e14b4884bb04866368991bd715ccb3b93a0237971be46452eabaa85059')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r6/inf_3.0.0-r6_Linux_arm.tar.gz")
-sha256sums_armv6h=('1f2d4296a9e1bfdf799505ff1f63cec420b3b53001eba100fe8f9cbd61199fba')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r8/inf_3.0.0-r8_Linux_arm.tar.gz")
+sha256sums_armv6h=('4a3af913bb58597e33a670c13c09797040e7dcf3d3a8243f565a03362b754c42')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r6/inf_3.0.0-r6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3f356db4a30cd59ced4bd6b2808e2082419cc90b42ac74f99155181a4df0e1c4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/infinimesh/inf/releases/download/v3.0.0-r8/inf_3.0.0-r8_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('780eb01dd6dc11ffb4140001ae65f3358aaa1bf8c7c65ac055f302417f5b05d9')
 
 package() {
   install -Dm755 "./inf" "${pkgdir}/usr/bin/inf"
