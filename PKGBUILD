@@ -1,19 +1,44 @@
 pkgname=steamlink
 _name=steamlink
-pkgver=1.1.89.225
+pkgver=1.1.92.230
 pkgrel=1
 pkgdesc="Steam Link client"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
 license=('custom')
-depends=('freetype2' 'harfbuzz' 'icu67' 'libdrm' 'libglvnd' 'libjpeg6-turbo' 'libpng' 'libva' 'libvdpau' 'libx11' 'opus' 'icu69-bin')
+#depends=('freetype2' 'harfbuzz' 'icu67' 'libdrm' 'libglvnd' 'libjpeg6-turbo' 'libpng' 'libva' 'libvdpau' 'libx11' 'opus' 'icu69-bin')
+depends=(
+	'cairo'
+	'freetype2'
+	'gtk3'
+	'harfbuzz'
+	'icu69'
+	'libdrm'
+	'libglvnd'
+	'libice'
+	'libjpeg6-turbo'
+	'libpng'
+	'libsm'
+	'libva'
+	'libvdpau'
+	'libx11'
+	'libxcomposite'
+	'libxkbcommon'
+	'libxkbcommon-x11'
+	'opus'
+	'pango'
+	'xcb-util-image'
+	'xcb-util-keysyms'
+	'xcb-util-renderutil'
+	'xcb-util-wm'
+)
 makedepends=('ostree' 'fakeroot')
 source=(
     "flathub.gpg"
     "steamlink.sh"
 )
 # Ensuring we're serving the correct image
-_ostree_commit=5ffdc85c370052adf4e0ac28bd71779ec9436506c98c79e8b9fd1d6b2a41cc1a
+_ostree_commit=82d065bac78309c4d97ca46ca9842f2f44803ab9ba6785b7aeeb56ab7ae9d728
 sha256sums=('8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa'
             '4d5bd2835b7ccf71e53e0f6f2c4bc9a3fe2477345cb51517f05b019dd63b8fe8')
 
