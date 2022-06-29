@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64)
@@ -35,5 +35,14 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
   cp -r configs ${pkgdir}/usr/share/${_pkgname}
+
+  mkdir -p ${pkgdir}/usr/share/zsh/site-functions
+  ${pkgdir}/usr/bin/${_pkgname} --zsh-completion-script /usr/bin/mailctl >${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}
+
+  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
+  ${pkgdir}/usr/bin/${_pkgname} --bash-completion-script /usr/bin/mailctl >${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash
+
+  mkdir -p ${pkgdir}/usr/share/fish/vendor_completions.d
+  ${pkgdir}/usr/bin/${_pkgname} --fish-completion-script /usr/bin/mailctl >${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish
 }
 
