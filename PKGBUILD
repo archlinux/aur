@@ -5,7 +5,7 @@ _npmname=icongenie
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='CLI tool for building web application icons'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('npm>=5.0.0')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
 # Get SHASUM:  curl -s "https://registry.npmjs.org/@quasar/icongenie" | jq '.versions."2.5.2".dist.shasum'
-sha1sums=('3b1bface6b9cdfebb35657e054c9211c98861023')
+sha1sums=('7b0b45ac2b1df7f2ae7ec6a1f311c89bb8222500')
 options=(!strip)
 
 package() {
