@@ -10,6 +10,7 @@ license=(GPL3)
 depends=(glibc)
 makedepends=(go git)
 provides=(ss-server)
+conflicts=(sing-ss-server-dev-git)
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
 install=".install"
