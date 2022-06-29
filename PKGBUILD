@@ -3,7 +3,7 @@
 
 pkgname="python2-wrapt"
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module for decorators, wrappers and monkey patching."
 arch=("any")
 url="https://pypi.python.org/pypi/wrapt"
@@ -20,5 +20,5 @@ build() {
 package_python2-wrapt() {
   cd "${srcdir}/wrapt-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
