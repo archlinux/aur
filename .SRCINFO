@@ -8,13 +8,13 @@ pkgbase = swayfloatingswitcher-git
 	makedepends = vala
 	makedepends = meson
 	makedepends = git
-	depends = gtk3>=3.22
-	depends = gtk-layer-shell>=0.1
-	depends = glib2>=2.50
-	depends = gobject-introspection>=1.68
-	depends = libgee>=0.20
-	depends = json-glib>=1.0
-	depends = granite>=6.1.0
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = glib2
+	depends = gobject-introspection
+	depends = libgee
+	depends = json-glib
+	depends = granite
 	optdepends = swaync-git
 	optdepends = swaysettings-git
 	source = git+https://github.com/ErikReider/SwayFloatingSwitcher

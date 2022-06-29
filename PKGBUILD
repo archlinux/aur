@@ -7,7 +7,7 @@ _pkgfoldername=SwayFloatingSwitcher
 url="https://github.com/ErikReider/$_pkgfoldername"
 arch=(x86_64)
 license=(GPL)
-depends=("gtk3>=3.22" "gtk-layer-shell>=0.1" "glib2>=2.50" "gobject-introspection>=1.68" "libgee>=0.20" "json-glib>=1.0" "granite>=6.1.0")
+depends=("gtk3" "gtk-layer-shell" "glib2" "gobject-introspection" "libgee" "json-glib" "granite")
 makedepends=(vala meson git)
 optdepends=("swaync-git" "swaysettings-git")
 source=("git+$url")
