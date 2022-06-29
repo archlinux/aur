@@ -1,14 +1,14 @@
 # Maintainer: Kazuki Yamaguchi <k@rhe.jp>
 
 pkgname=cproto
-pkgver=4.7s
+pkgver=4.7t
 pkgrel=1
 pkgdesc="A program that generates function prototypes and variable declarations from C source code."
 arch=('i686' 'x86_64')
 url="http://invisible-island.net/cproto/cproto.html"
 license=('custom:public domain')
-source=("ftp://ftp.invisible-island.net/pub/cproto/cproto-${pkgver}.tgz")
-sha256sums=('842f28a811f58aa196b77763e08811c2af00472c0ea363d397a545046d623545')
+source=("https://invisible-island.net/archives/cproto/cproto-${pkgver}.tgz")
+sha256sums=('3cce82a71687b69e0a3e23489fe825ba72e693e559ccf193395208ac0eb96fe5')
 
 build() {
   cd "$pkgname-$pkgver"
