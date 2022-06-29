@@ -1,14 +1,23 @@
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-  breaking=0.4.0
-  if [[ $(vercmp $breaking $2) -gt 0 ]]
+  if [[ $(vercmp 0.4.0 $2) -gt 0 ]]
   then
     echo
     echo "Config files format changed to YAML!"
     echo
     echo "Edit your config files and adjust their file extensions."
     echo "See the supplied config templates in /usr/share/mailctl/configs"
+    echo
+  fi
+
+  if [[ $(vercmp 0.5.0 $2) -gt 0 ]]
+  then
+    echo
+    echo "All not OAUth2 related functionalities made optional."
+    echo "See /usr/share/mailctl/configs/config-template.yaml"
+    echo 
+    echo "You might want to revision your config files."
     echo
   fi
 }
