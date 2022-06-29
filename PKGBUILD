@@ -4,10 +4,10 @@
 pkgname='python2-singledispatch'
 _name="${pkgname#python2-}"
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Backport of functools.singledispatch from Python 3.4'
 arch=('any')
-url="https://github.com/jaraco/singledispatch"
+url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('MIT')
 depends=(
   'python2'
@@ -17,6 +17,9 @@ makedepends=('python2-setuptools')
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}.tar.gz::https://github.com/jaraco/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('b488ebea8aeb1055fd91422d0ce7a91f321e3a0b9b99387f936fd1fd95a1016492baeabecfc0fd7ad8988a93c1054ff7681b8c4d0affa2d6114b90b6c8c58bdd')
+
+# setuptools-scm won't find version from git tag when source is a tarball
+export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
 
 prepare() {
   cd "${_tarname}"

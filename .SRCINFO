@@ -1,8 +1,8 @@
 pkgbase = python2-singledispatch
 	pkgdesc = Backport of functools.singledispatch from Python 3.4
 	pkgver = 3.7.0
-	pkgrel = 2
-	url = https://github.com/jaraco/singledispatch
+	pkgrel = 3
+	url = https://pypi.org/project/singledispatch/3.7.0/
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
