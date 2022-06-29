@@ -16,12 +16,14 @@ source=("Ext-v${pkgver}${_pkgrev}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('33d3b3e03f363024686ddc94a1c503a855495cbf77475b44a30b0dea0eb0ac21')
 
 build() {
-  cd "${_pkgname}"
+  # cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
+  cd "${_pkgname}-${_commit}"
   make all
 }
 
 package() {
-  cd "${_pkgname}"
+  # cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
+  cd "${_pkgname}-${_commit}"
   local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 
