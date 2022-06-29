@@ -1,0 +1,5 @@
+/.idea/
+/pkg/
+/src/
+/sing-ss-server-dev-git
+/*.pkg.tar.zst

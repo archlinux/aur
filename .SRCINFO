@@ -1,0 +1,17 @@
+pkgbase = sing-ss-server-dev-git
+	pkgdesc = A simple shadowsocks server.
+	pkgver = r25.7311f6d
+	pkgrel = 1
+	url = https://github.com/sagernet/sing-tools
+	install = .install
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = ss-server
+	conflicts = sing-ss-server-git
+	source = sing-ss-server-dev-git::git+https://github.com/sagernet/sing-tools.git#branch=dev
+	sha512sums = SKIP
+
+pkgname = sing-ss-server-dev-git

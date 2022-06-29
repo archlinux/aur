@@ -1,0 +1,3 @@
+pre_install() {
+  printf "run ss-server-gencfg > sudo tee /etc/ss-server/config.json to create random config."
+}
