@@ -6,7 +6,7 @@
 _pkgname=distrobuilder
 _url=github.com/lxc/$_pkgname
 pkgname=$_pkgname-git
-pkgver=1.2.r0.gb4090bb
+pkgver=2.1.r34.g2ff2379
 pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
 arch=(x86_64)
@@ -15,7 +15,7 @@ license=(Apache)
 depends=(rsync squashfs-tools gnupg debootstrap)
 conflicts=(distrobuilder)
 makedepends=(go git)
-source=($_pkgname::git://$_url.git)
+source=($_pkgname::git+https://$_url)
 sha256sums=('SKIP')
 
 pkgver() {

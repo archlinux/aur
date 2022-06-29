@@ -1,6 +1,6 @@
 pkgbase = distrobuilder-git
 	pkgdesc = System container image builder for LXC and LXD
-	pkgver = 1.2.r0.gb4090bb
+	pkgver = 2.1.r34.g2ff2379
 	pkgrel = 1
 	url = https://github.com/lxc/distrobuilder
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = distrobuilder-git
 	depends = gnupg
 	depends = debootstrap
 	conflicts = distrobuilder
-	source = distrobuilder::git://github.com/lxc/distrobuilder.git
+	source = distrobuilder::git+https://github.com/lxc/distrobuilder
 	sha256sums = SKIP
 
 pkgname = distrobuilder-git
-
