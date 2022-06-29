@@ -5,13 +5,13 @@
 
 pkgname=abe
 pkgver=1.1
-pkgrel=12
+pkgrel=13
 pkgdesc='Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game'
 arch=('i686' 'x86_64' 'aarch64')
-url='http://abe.sourceforge.net'
+url='https://abe.sourceforge.net'
 license=('GPL')
 depends=('sdl_mixer' 'sdl' 'glibc')
-source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
+source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}.patch
         ${pkgname}_sprintf.patch
         ${pkgname}.desktop)
