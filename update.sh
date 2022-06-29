@@ -36,7 +36,7 @@ FILENAME=$(basename $DOWNLOAD_URL)
 
 sed -i 's,source=.*$,source=("'${DOWNLOAD_URL}'" "'$LICENSE_URL'"),' PKGBUILD
 sed -i 's/noextract=.*$/noextract=("'$FILENAME'")/' PKGBUILD
-sed -i 's/'$HASH_NAME'=.*$/'$HASH_NAME'("'$SUM'" "'$LICENSE_SUM'")/' PKGBUILD
+sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'" "'$LICENSE_SUM'")/' PKGBUILD
 sed -i 's/pkgver=.*/pkgver='$LAST'/' PKGBUILD
 sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
