@@ -1,5 +1,5 @@
 pkgname=noverify-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Pretty fast linter (code static analysis utility) for PHP"
 arch=(x86_64)
