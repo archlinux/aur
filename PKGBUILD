@@ -31,18 +31,18 @@ build() {
 	python -m venv lbry-venv
 	source lbry-venv/bin/activate
 
-	patch --strip=0 --input=lbry-rocksdb.patch
+	patch --strip=0 --input=lbry-rocksdb.patch || true
 	cd lbry-rocksdb
 	make
 	pip install -e .
 
 	cd ../
-	patch --strip=0 --input="lbry-sdk-${pkgver}.patch"
+	patch --strip=0 --input="lbry-sdk-${pkgver}.patch" || true
 	cd "lbry-sdk-${pkgver}"
 	make install
 
 	cd ..
-	patch --strip=0 --input=lbry-venv.patch
+	patch --strip=0 --input=lbry-venv.patch || true
 
 	mkdir build
 	cd build
