@@ -3,7 +3,7 @@
 
 _pkgname=electrum-ravencoin
 pkgname="${_pkgname}"-appimage
-pkgver=0.5.0
+pkgver=0.5.1
 _pkgver=v"${pkgver}"
 pkgrel=1
 pkgdesc="Electrum Ravencoin Wallet Client. Forked from the Electrum Bitcoin base client"
@@ -19,7 +19,7 @@ source=("https://github.com/Electrum-RVN-SIG/electrum-ravencoin/releases/downloa
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/Electrum-RVN-SIG/${_pkgname}/${_pkgver}/LICENCE"
         )
 
-b2sums=('9c3dea7ed65a35fcfe51cc732ca6502175e5034f04689a136ed6d9e0b5d289a5305e6a7b3fbffaf994cb119a976da5d7804d072727e5672d032fdfd2420c287c'
+b2sums=('306c3b9eccd8184f55ad1a4e92e9532145ad8f16e7b941a5c0ac7af1dfc84dd86da479bcb739162cff635e09c8f5a7e27364e51906d26eaf5bbc4c894b584ee1'
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
 noextract=("${_appimage}")
