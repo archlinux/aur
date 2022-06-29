@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=r1345.38c036a1
+pkgver=r1376.eb2a1196
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -41,7 +41,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  scons cxxstd="c++14" disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
+  scons cxxstd="c++17" disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
 }
 
 check() {
@@ -52,7 +52,7 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  scons install cxxstd="c++14" prefix="$pkgdir/opt/${pkgname%-git}"
+  scons install cxxstd="c++17" prefix="$pkgdir/opt/${pkgname%-git}"
   install -m644 lib/libcbang.a -t "$pkgdir/opt/${pkgname%-git}/lib" 
   install -m644 lib/libcbang-boost.a -t "$pkgdir/opt/${pkgname%-git}/lib" 
   cp -a config/ "$pkgdir/opt/${pkgname%-git}/config/"
