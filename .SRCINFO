@@ -1,0 +1,14 @@
+pkgbase = bitfield-git
+	pkgdesc = Simple tool to decode individual fields of a register
+	pkgver = r48.20aefff
+	pkgrel = 1
+	url = http://jk.ozlabs.org/projects/bitfield/
+	arch = any
+	license = GPL
+	depends = python-pyparsing
+	provides = bitfield
+	conflicts = bitfield
+	source = git://git.ozlabs.org/home/jk/git/bitfield/
+	md5sums = SKIP
+
+pkgname = bitfield-git
