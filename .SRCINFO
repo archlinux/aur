@@ -1,6 +1,6 @@
 pkgbase = ztui
 	pkgdesc = A terminal UI for ZeroTier
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/erikh/ztui
 	arch = x86_64

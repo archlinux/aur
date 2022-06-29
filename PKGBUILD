@@ -3,7 +3,7 @@
 # Contributor: Konstantin Stepanov <me@kstep.me>
 
 pkgname=ztui
-pkgver=0.1.2
+pkgver=0.1.3
 _sha=239070e0e95e86c95170010fc9ccce5c29b71e9e
 pkgrel=1
 pkgdesc='A terminal UI for ZeroTier'
