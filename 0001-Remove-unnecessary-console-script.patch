@@ -1,0 +1,26 @@
+From 5949227996ba403eecaf6fb961c2f2a6aca4d3e2 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 7 Jun 2018 12:39:59 -0400
+Subject: [PATCH] Remove unnecessary console script
+
+The purpose of this  module is to cache things, not to test if they
+*can* be cached. This clutters up the $PATH.
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 34f5f44..95e1741 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,6 @@ setup_params = dict(
+     long_description=long_description,
+     install_requires=["requests", "msgpack"],
+     extras_require={"filecache": ["lockfile>=0.9"], "redis": ["redis>=2.10.5"]},
+-    entry_points={"console_scripts": ["doesitcache = cachecontrol._cmd:main"]},
+     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+     classifiers=[
+         "Development Status :: 4 - Beta",
+-- 
+2.17.1
+
