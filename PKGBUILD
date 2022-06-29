@@ -1,26 +1,27 @@
-# Maintainer: sQVe <oskargrunning@gmail.com>
+# Maintainer: Farzat <a@farzat.xyz>
+# Contributor: sQVe <oskargrunning@gmail.com>
 
+_pkgname='weechat-edit'
 pkgname=weechat-edit-git
-pkgver=r8.6aface4
-pkgrel=2
+pkgver=r24.ba2f678
+pkgrel=1
 pkgdesc='Compose weechat messages in your $EDITOR'
-url='https://github.com/keith/edit-weechat'
+url='https://gitlab.farzat.xyz/plugins/weechat/weechat-edit.git'
 arch=('any')
 license=('MIT')
 depends=('weechat')
 makedepends=('git')
-source=('git+https://github.com/keith/edit-weechat.git')
+provides=('weechat-edit')
+source=('git+https://gitlab.farzat.xyz/plugins/weechat/weechat-edit.git')
 sha512sums=('SKIP')
 
-_gitname='edit-weechat'
-
 pkgver() {
-  cd "${_gitname}"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${_gitname}"
+  cd "${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 edit.py "${pkgdir}/usr/share/weechat/python/edit.py"
 }
