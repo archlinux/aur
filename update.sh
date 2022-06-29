@@ -1,4 +1,9 @@
 #!/bin/bash
+set -e
+set -o pipefail
+
+HASH=b2sum
+HASH_NAME=b2sums
 
 source PKGBUILD
 PKGNAME=$_name
@@ -20,9 +25,9 @@ DOWNLOAD_URL=$(jq -r <<<$RELEASES --arg last $LAST '
     .[$last][] | select(.packagetype == "sdist").url
 ')
 
-HSUM=$(curl -sL $DOWNLOAD_URL | b2sum - | cut -d' ' -f1)
+SUM=$(curl -sL $DOWNLOAD_URL | $HASH - | cut -d' ' -f1)
 
-sed -i 's/b2sums=.*$/b2sums=("'$HSUM'")/' PKGBUILD
+sed -i 's/.*sums=.*$/'$HASH_NAME'=("'$SUM'")/' PKGBUILD
 sed -i 's/pkgver=.*/pkgver='$LAST'/' PKGBUILD
 sed -i 's/pkgrel=.*/pkgrel=1/' PKGBUILD
 
