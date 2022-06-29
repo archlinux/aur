@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Bukharev <bvp-yar@ya.ru>
 
 pkgname=consul-bin
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='A tool for service discovery, monitoring and configuration.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -25,13 +25,13 @@ sha256sums=('b2eea8fe453b322bb636afbde3253cb035b2f9d902da7a9abab5dedc7399a639'
             '31782ac6f397dfce957f6f3b2d5c6c4353aa0bc1f46edc403d7ae387b5ecee3a'
             '857d0a0eae217a941045d10877b59d9bc8fbcbba8e7cbe396d160ffd5317fa2c'
             '1838c60658eca84dfef148d179503b9df6c6e6b86ec6706d14d889829c51e532')
-sha256sums_i686=('07eae82bf31630a195e5873202442ba391b39ef6a7b6c34e6e0f81a6efdce11a')
-sha256sums_pentium4=('07eae82bf31630a195e5873202442ba391b39ef6a7b6c34e6e0f81a6efdce11a')
-sha256sums_x86_64=('109e2077236cae4560b2fa3dce7974ef58d6a7093d72494614d875e5c86e3b2c')
-sha256sums_arm=('d3f8a8055df50320ad3396818f83d7d2742c18f2e225f6866c8eb50ca5cea119')
-sha256sums_armv6h=('d3f8a8055df50320ad3396818f83d7d2742c18f2e225f6866c8eb50ca5cea119')
-sha256sums_armv7h=('d3f8a8055df50320ad3396818f83d7d2742c18f2e225f6866c8eb50ca5cea119')
-sha256sums_aarch64=('2d22f648af307b63800d291554d3c312beff01d2b4fc8437aeb004935c6bd0cb')
+sha256sums_i686=('f70d2bc261b5779ce58ed8ffae3be4f599c98323a4c2a4ad6a795418c578eef2')
+sha256sums_pentium4=('f70d2bc261b5779ce58ed8ffae3be4f599c98323a4c2a4ad6a795418c578eef2')
+sha256sums_x86_64=('35f85098f5956ef3aca66ec2d2d2a803d1f3359b4dec13382c6ac895344a1f4c')
+sha256sums_arm=('ad9475faa1a16ef68244b2fadbbe4d8cdaa875890dbdcb97745b89949a854f5b')
+sha256sums_armv6h=('ad9475faa1a16ef68244b2fadbbe4d8cdaa875890dbdcb97745b89949a854f5b')
+sha256sums_armv7h=('ad9475faa1a16ef68244b2fadbbe4d8cdaa875890dbdcb97745b89949a854f5b')
+sha256sums_aarch64=('9163c0a97f5ac7b2d99f9eb403c9bd16404f2e904fff97bd99d8dffd2cb8dde4')
 options=('!strip')
 
 package() {
