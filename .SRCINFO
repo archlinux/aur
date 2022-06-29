@@ -1,6 +1,6 @@
 pkgbase = findex-bin
 	pkgdesc = Highly customizable application finder with high performance. Written in Rust and uses GTK
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/mdgaziur/findex
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = findex-bin
 	provides = findex
 	conflicts = findex
 	conflicts = findex-git
-	source = https://github.com/mdgaziur/findex/releases/download/v0.5.0/findex-0.5.0-x86_64.tar.gz
-	sha256sums = 089d569e6ba67bd5fc3b70cf1f81abaa804d90a9e1db1911d3cc8aecd45bb2d7
+	source = https://github.com/mdgaziur/findex/releases/download/v0.5.1/findex-0.5.1-x86_64.tar.gz
+	sha256sums = 96a9b293c5212c4c3a0709da865c4ec64be92c8e9d2f8de8671195a2be3284f7
 
 pkgname = findex-bin
