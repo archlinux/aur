@@ -1,30 +1,23 @@
-# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
-# Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-
-_pkgname="openutau"
-
-pkgname="${_pkgname}"
-pkgver=0.0.517
-pkgrel=7
+# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
+pkgname="openutau"
+pkgver=0.0.786
+pkgrel=1
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
 license=('MIT')
 depends=('fuse2' 'fuse3' 'fuse-common')
-_appimage="OpenUtau-prerelease-x86_64.AppImage"
+_appimage="OpenUtau-linux-x64.tar.gz"
 source_x86_64=("${_appimage}::https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('571824f765a566105cebac63de4242633c9041045e2e2943a3a9b49c2af9b0c5')
+sha256sums_x86_64=('71d06e1623d3d50dc08607cfd34761921512a7b008d08c940fb264a340b6c3df')
 options+=('!strip')
-
-prepare() {
-    chmod +x "${_appimage}"
-}
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    mkdir -p "${pkgdir}/opt/"
+    cp -rv "${srcdir}" "${pkgdir}/opt/${pkgname}"
     # Desktop file
-    install -Dm644 "${srcdir}/../${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/../${pkgname}.desktop"\
+            "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
