@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=huekeys
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Control the keyboard backlight on System76 laptops"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/BitPonyLLC/huekeys"
 license=('MIT')
 depends=('gtk3' 'libayatana-appindicator' 'system76-dkms')
 makedepends=('git' 'go')
-_commit=bea49ea0ede4351a888b4ae22e4c0d14a09b6e22
+_commit=e5b0d976bd0717aaa5621ec01dcde110de6c35dd
 source=("git+https://github.com/BitPonyLLC/huekeys.git#commit=${_commit}")
 sha256sums=('SKIP')
 
