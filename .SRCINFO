@@ -1,6 +1,6 @@
 pkgbase = cargo-binstall-bin
 	pkgdesc = Binary installation for Rust projects
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/ryankurte/cargo-binstall
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cargo-binstall-bin
 	depends = xz
 	provides = cargo-binstall
 	conflicts = cargo-binstall
-	source_x86_64 = cargo-binstall-bin-0.9.1.tgz::https://github.com/ryankurte/cargo-binstall/releases/download/v0.9.1/cargo-binstall-x86_64-unknown-linux-gnu.tgz
-	source_x86_64 = cargo-binstall-bin-0.9.1-README.md::https://github.com/ryankurte/cargo-binstall/raw/v0.9.1/README.md
-	sha512sums_x86_64 = f164c3b673507c5933608d4f8292ec4e9a7d4693e19ab7c25df598efa189735d235647f1f173a4108aefe58e5b1aabe250e5902dec4e3b6d8ea409eeb1da194d
-	sha512sums_x86_64 = db24ad93b8c1d02c53e913c1cb35e96a22467d8c4d883285eb74b275502932b2e77d7a4b7c0aa9aeb522ca47ff4316d5f4e332785d106ff67aabf77a5dec7115
+	source_x86_64 = cargo-binstall-bin-0.9.2.tgz::https://github.com/ryankurte/cargo-binstall/releases/download/v0.9.2/cargo-binstall-x86_64-unknown-linux-gnu.tgz
+	source_x86_64 = cargo-binstall-bin-0.9.2-README.md::https://github.com/ryankurte/cargo-binstall/raw/v0.9.2/README.md
+	sha512sums_x86_64 = 93d09d2986cf8bf306e6b7a01885a02bbb3a879b9522076897f56902417a7e3d562f10ec06073b901f88a3fb86fb786e4c16a46a13a01be0ca8550fd460ba44d
+	sha512sums_x86_64 = 6fe1bfbf46b40ffd0b07ccdbd2460f9823f08d21ee9f9fdcab8274a2d5724fd590f194292a7829fa3abd8b159b3283c8557922952e78473e177abd75df5386f1
 
 pkgname = cargo-binstall-bin
