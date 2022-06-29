@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 package() {
   cd rhythmbox-plugin-alternative-toolbar
-  ./configure --prefix=${pkgdir}/usr
+  ./autogen.sh --prefix=${pkgdir}/usr
   make
   make install
   rm ${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled
