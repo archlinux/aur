@@ -5,7 +5,7 @@
 pkgname='python2-selectors2'
 _name="${pkgname#python2-}"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Backported, durable, and portable selectors (for Python 2)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
