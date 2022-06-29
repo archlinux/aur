@@ -2,8 +2,8 @@
 
 pkgname=python-waifu2x-vulkan
 _gitname=${pkgname#python-}
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="waifu2x-ncnn-vulkan-python, use nihui/waifu2x-ncnn-vulkan"
 arch=('x86_64')
 url="https://github.com/tonquer/waifu2x-vulkan"
@@ -20,7 +20,7 @@ depends=('vulkan-icd-loader'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
 provides=('python-waifu2x-ncnn-vulkan')
 conflicts=('python-waifu2x-ncnn-vulkan')
-sha256sums=('a21d8a6c26b0c43b2a62e7354a1cd8dae6be81aa9e1e7ffae38f086ffcf3d8a2')
+sha256sums=('c9fb1f6744fa8f8ab0c361ebcd765fa59e10be4f4f6049bbca4bd691f6cd4de7')
 
 build() {
   cd ${_gitname}-${pkgver}
