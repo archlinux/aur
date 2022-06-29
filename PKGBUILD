@@ -1,7 +1,7 @@
 # Maintainer: Vilsol <me at vil dot so>
 
 pkgname=oshabi-bin
-pkgver=0.0.18
+pkgver=0.0.20
 pkgrel=1
 pkgdesc='A scanner for Path of Exile harvest horticrafting stations and sacred grove.'
 arch=(x86_64)
@@ -17,10 +17,10 @@ depends=(tesseract
 provides=("${pkgname/-bin/}=${pkgver}")
 conflicts=("${pkgname/-bin/}")
 
-source=("https://github.com/Vilsol/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz"
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Vilsol/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz"
         "oshabi.desktop")
 
-sha256sums=('d3bd4e5b38268a072ceef9450ace1b9d7e16a7818d5c2484c6ecf3d4410572a3'
+sha256sums=('e69b6cea44e3cdb5a8199516dcabbf88036afe75259a3c1f50e40029eac32654'
             '27038c830b270cc01df8fc989766e2eb444944a19230f4f25dae63c451456a9c')
 
 package() {
