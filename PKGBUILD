@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="caja-rename"
-pkgver="21.11.24"
+pkgver="22.6.29"
 pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" 
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("ffa8fbe1735ba950556152c08881049c")
+md5sums=("f5195d19c7c1014a6c9ceb1b0d9f8f4d")
 options=("!emptydirs")
 
 build()
