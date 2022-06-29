@@ -9,6 +9,8 @@
 *.tgz
 *.log
 *.log.*
-*.sig
 
 */
+*.orig
+*.bak
+*.backup

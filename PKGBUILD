@@ -1,21 +1,29 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Kevin Houdebert <kevin@qwazerty.eu>
 # Contributor: Erhan SAHIN <erhan@ssahin.net>
-_projectname='monotonic'
-pkgname="python2-$_projectname"
-pkgver='1.6'
-pkgrel='1'
-pkgdesc='An implementation of time.monotonic() for Python - python2 version'
+
+pkgname='python2-monotonic'
+_name="${pkgname#python2-}"
+pkgver=1.6
+pkgrel=2
+pkgdesc='An implementation of time.monotonic() (legacy Python 2 version)'
 arch=('any')
-url="https://pypi.python.org/pypi/$_projectname"
+url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/atdt/$_projectname/archive/$pkgver.tar.gz")
+_tarname="${_name}-${pkgver}"
+source=("${_tarname}.tar.gz::https://github.com/atdt/${_name}/archive/${pkgver}.tar.gz")
 sha256sums=('9609c249aed584fd714811014870650d08d6f6414402b5a190663c49bf83b221')
 
+build() {
+    cd "${_tarname}"
+	python2 setup.py build
+}
+
 package() {
-	cd "$srcdir/$_projectname-$pkgver/"
-	python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "${_tarname}"
+    python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
