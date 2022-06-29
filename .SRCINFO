@@ -1,7 +1,7 @@
 pkgbase = python2-lockfile
 	pkgdesc = Platform-independent file locking module (Python 2 package)
 	pkgver = 0.12.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://pypi.org/project/lockfile/0.12.2/
 	arch = any
 	license = MIT

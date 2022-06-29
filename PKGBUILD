@@ -4,7 +4,7 @@
 pkgname='python2-lockfile'
 _name=${pkgname#python2-}
 pkgver=0.12.2
-pkgrel=8
+pkgrel=9
 pkgdesc='Platform-independent file locking module (Python 2 package)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
