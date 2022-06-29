@@ -1,6 +1,6 @@
 pkgbase = music-lounge
 	pkgdesc = Yet another music player
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/aercloud-systems/music-lounge
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = music-lounge
 	depends = zlib
 	depends = zstd
 	depends = bzip2
-	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.2.0/music-lounge-0.2.0.zip
+	source = https://gitlab.com/aercloud-systems/music-lounge/-/archive/0.3.0/music-lounge-0.3.0.zip
 	md5sums = SKIP
 
 pkgname = music-lounge
