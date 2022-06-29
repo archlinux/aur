@@ -1,13 +1,14 @@
  # Maintainer: wszqkzqk <wszqkzqk@qq.com>
  
  pkgname=easy-zsh-config
- pkgver=0.0.1
+ pkgver=0.1.0
  pkgrel=1
  pkgdesc="My fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins"
  arch=(any)
  url=https://github.com/wszqkzqk/easy-zsh-config
  license=("MIT")
- conflicts=("grml-zsh-config")
+ conflicts=("grml-zsh-config"
+            "manjaro-zsh-config")
  depends=(  "zsh"
             "nerd-fonts-noto"
             "oh-my-posh"

@@ -1,6 +1,6 @@
 pkgbase = easy-zsh-config
 	pkgdesc = My fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/easy-zsh-config
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = easy-zsh-config
 	depends = zsh-autosuggestions
 	depends = zsh-history-substring-search
 	conflicts = grml-zsh-config
+	conflicts = manjaro-zsh-config
 	backup = root/.zshrc
 	backup = etc/skel/.zshrc
 	source = zshrc
