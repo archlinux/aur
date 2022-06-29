@@ -3,24 +3,29 @@
 
 pkgname=python2-importlib_resources
 _name="${pkgname#python2-}"
-pkgver=1.0.2
-pkgrel=3
+pkgver=3.3.1
+pkgrel=1
 pkgdesc='Read resources from Python packages (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
 depends=(
   'python2'
+  'python2-contextlib2'
   'python2-pathlib2'
+  'python2-singledispatch'
   'python2-typing'
+  'python2-zipp'
 )
 makedepends=(
   'python2-setuptools'
-  'python2-wheel'
+  'python2-setuptools-scm'
 )
 _tarname="${_name}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
-sha256sums=('d3279fd0f6f847cced9f7acc19bd3e5df54d34f93a2e7bb5f238f81545787078')
+sha256sums=('0ed250dbd291947d1a298e89f39afcc477d5a6624770503034b72588601bcc05')
+
+export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
 
 prepare() {
   cd "${_tarname}"

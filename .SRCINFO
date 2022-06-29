@@ -1,16 +1,19 @@
 pkgbase = python2-importlib_resources
 	pkgdesc = Read resources from Python packages (legacy Python 2 version)
-	pkgver = 1.0.2
-	pkgrel = 3
-	url = https://pypi.org/project/importlib_resources/1.0.2/
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/importlib_resources/3.3.1/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	makedepends = python2-wheel
+	makedepends = python2-setuptools-scm
 	depends = python2
+	depends = python2-contextlib2
 	depends = python2-pathlib2
+	depends = python2-singledispatch
 	depends = python2-typing
-	source = https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-1.0.2.tar.gz
-	sha256sums = d3279fd0f6f847cced9f7acc19bd3e5df54d34f93a2e7bb5f238f81545787078
+	depends = python2-zipp
+	source = https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-3.3.1.tar.gz
+	sha256sums = 0ed250dbd291947d1a298e89f39afcc477d5a6624770503034b72588601bcc05
 
 pkgname = python2-importlib_resources
