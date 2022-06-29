@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2-git
-pkgver=0.5.1.r1.g53058c1
+pkgver=0.6.0.r2.g3f16dde
 pkgrel=1
 pkgdesc="A secret manager backed by age (git)"
 arch=('x86_64')
