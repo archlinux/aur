@@ -1,0 +1,15 @@
+pkgbase = nse-btop-git
+	pkgdesc = test package for btop
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/aristocratos/btop/blob/main/LICENSE
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	provides = nse-btop
+	conflicts = nse-btop
+	source = git+https://github.com/aristocratos/btop/blob/main/LICENSE
+	md5sums = SKIP
+
+pkgname = nse-btop-git
