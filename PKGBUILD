@@ -1,4 +1,4 @@
-# Maintainer: Adam Thiede <adamj@mailbox.org>
+# Maintainer: Adam Thiede <me@adamthiede.com>
 pkgname=buffyboard
 pkgver=0.2.0
 pkgrel=1
@@ -11,17 +11,16 @@ url="https://gitlab.com/cherrypicker/buffyboard"
 license=('GPL3')
 depends=(libinput)
 makedepends=(meson libinput libxkbcommon linux-headers udev)
-builddir=${srcdir}/${pkgname}-${pkgver}
 source=(https://gitlab.com/cherrypicker/buffyboard/-/archive/${pkgver}/buffyboard-${pkgver}.tar.gz
       https://github.com/lvgl/lv_drivers/archive/${_lv_drivers_commit}.tar.gz
       https://github.com/lvgl/lvgl/archive/${_lvgl_commit}.tar.gz
       https://gitlab.com/cherrypicker/squeek2lvgl/-/archive/${_squeek2lvgl_commit}/buffyboard-${_squeek2lvgl_commit}.tar.gz)
 
 build() {
-  mkdir -p ${srcdir}/${pkgname}-${pkgver}/lvgl ${srcdir}/${pkgname}-${pkgver}/lv_drivers ${srcdir}/${pkgname}-${pkgver}/squeek2lvgl
-  mv ${srcdir}/lvgl-${_lvgl_commit}/* ${srcdir}/${pkgname}-${pkgver}/lvgl
-  mv ${srcdir}/lv_drivers-${_lv_drivers_commit}/* ${srcdir}/${pkgname}-${pkgver}/lv_drivers
-  mv ${srcdir}/squeek2lvgl-${_squeek2lvgl_commit}/* ${srcdir}/${pkgname}-${pkgver}/squeek2lvgl
+  mkdir -p "${srcdir}/${pkgname}-${pkgver}/lvgl" "${srcdir}/${pkgname}-${pkgver}/lv_drivers" "${srcdir}/${pkgname}-${pkgver}/squeek2lvgl"
+  mv "${srcdir}/lvgl-${_lvgl_commit}/"* "${srcdir}/${pkgname}-${pkgver}/lvgl"
+  mv "${srcdir}/lv_drivers-${_lv_drivers_commit}/"* "${srcdir}/${pkgname}-${pkgver}/lv_drivers"
+  mv "${srcdir}/squeek2lvgl-${_squeek2lvgl_commit}/"* "${srcdir}/${pkgname}-${pkgver}/squeek2lvgl"
   arch-meson ${pkgname}-${pkgver} _build
   meson compile -C _build
 }
