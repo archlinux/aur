@@ -8,18 +8,18 @@ pkgbase = swaysettings-git
 	makedepends = vala
 	makedepends = meson
 	makedepends = git
-	depends = gtk3>=3.22
-	depends = gtk-layer-shell>=0.1
-	depends = libhandy>=1.0.0
-	depends = glib2>=2.50
-	depends = gobject-introspection>=1.68
-	depends = libgee>=0.20
-	depends = json-glib>=1.0
-	depends = granite>=6.1.0
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = libhandy
+	depends = glib2
+	depends = gobject-introspection
+	depends = libgee
+	depends = json-glib
+	depends = granite
 	depends = libxml2
 	depends = xkeyboard-config
 	depends = accountsservice
-	depends = gtk-layer-shell>=0.1
+	depends = gtk-layer-shell
 	depends = libpulse
 	depends = bluez
 	optdepends = swaync-git
