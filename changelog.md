@@ -1,3 +1,7 @@
+## GE-Proton-7-24 Released
+- Hotfix: Death Stranding crash fixed
+- FSR Updates
+
 ## GE-Proton-7-23 Released
 - Hotfix: fix Path of Exile not launching
 - FSR:
