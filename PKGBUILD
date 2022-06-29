@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://github.com/${_name}/${_name}"
@@ -31,13 +31,13 @@ makedepends=(
 checkdepends=(
   'python2-dateutil'
   'python2-flaky'
-  'python2-gcp-devrel-py-tools'
   'python2-nose'
   'python2-psutil'
   'python2-pytest-runner'
   'python2-tornado'
   'python2-trustme'
 )
+optdepends=('python2-gcp-devrel-py-tools: Google AppEngine support')
 _tarname="${_name}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_tarname}.tar.gz"
 #       "${_name}-use-brotli-or-brotli-cffi.patch::${url}/pull/2099.patch"
@@ -61,5 +61,5 @@ check() {
 package() {
   cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

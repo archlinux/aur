@@ -1,13 +1,12 @@
 pkgbase = python2-urllib3
 	pkgdesc = HTTP library with thread-safe connection pooling and file post support
 	pkgver = 1.26.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urllib3/urllib3
 	arch = any
 	license = MIT
 	checkdepends = python2-dateutil
 	checkdepends = python2-flaky
-	checkdepends = python2-gcp-devrel-py-tools
 	checkdepends = python2-nose
 	checkdepends = python2-psutil
 	checkdepends = python2-pytest-runner
@@ -19,10 +18,7 @@ pkgbase = python2-urllib3
 	makedepends = python2-pysocks
 	makedepends = python2-setuptools
 	depends = python2
-	optdepends = python2-idna: support for internationalized domain names (IDNA)
-	optdepends = python2-pyopenssl: security support
-	optdepends = python2-pysocks: SOCKS support
-	optdepends = python-urllib3-doc: urllib3 documentation
+	optdepends = python2-gcp-devrel-py-tools: Google AppEngine support
 	source = https://github.com/urllib3/urllib3/archive/1.26.9/urllib3-1.26.9.tar.gz
 	b2sums = 0e4c7ebe3f309004463a546c0395c0e22cf57432d587d7cb4b6190afd37fb6f8669ea5c8f9a8a5f88a53c62a3944ebd09f20f5ec93e352959fa9cbea682ccc76
 
