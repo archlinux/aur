@@ -5,7 +5,7 @@
 
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
-pkgver=3.4.1
+pkgver=3.4.5
 pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
@@ -13,7 +13,7 @@ arch=(x86_64)
 url="https://github.com/facontidavide/PlotJuggler"
 license=('LGPL3')
 groups=()
-depends=(binutils qt5-base qt5-multimedia qt5-svg qt5-websockets)
+depends=(binutils qt5-base qt5-multimedia qt5-svg qt5-websockets arrow)
 makedepends=(cmake clang)
 checkdepends=()
 optdepends=()
