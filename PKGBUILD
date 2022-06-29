@@ -4,7 +4,7 @@
 # Contributor: Fabian Brosda <fabi3141@gmx.de>
 
 pkgname=ferm
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Tool to maintain complex firewalls'
 arch=('any')
@@ -17,7 +17,7 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@
 source=(
   "http://ferm.foo-projects.org/download/${pkgver:0:3}/$pkgname-$pkgver.tar.xz"{,.sig}
   "$pkgname.service")
-sha256sums=('689541465e7c073cbd604c9cd18f113c31c0b41bb12614726a59b17e44058885'
+sha256sums=('c00d910d5394e69675608eb5ee0f504d5cfda41e990a2d9a91baac6df93e3f92'
             'SKIP'
             'b091bdef4b42c74d162de43b017c71bc00d7969b1a4f2d9188df01354c36a78e')
 
