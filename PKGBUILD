@@ -2,14 +2,14 @@
 pkgname=python-flax
 _name=${pkgname#python-}
 pkgver=0.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A neural network library and ecosystem for JAX designed for flexibility"
 arch=(any)
 url="https://github.com/google/flax"
 license=('Apache')
 groups=()
-depends=('python-jax')
-makedepends=('python-setuptools')
+depends=(python-jax)
+makedepends=(python-build python-installer)
 provides=()
 conflicts=()
 replaces=()
