@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.12.5.r44.gbca0f36
+pkgver=0.13.2.r13.g827c367
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -27,7 +27,6 @@ _luadeps=(bit32
           penlight
           sec
           socket
-          stdlib
           vstruct
           zlib)
 depends=(glibc
