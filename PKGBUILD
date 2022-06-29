@@ -1,30 +1,41 @@
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
-_base=singledispatch
-pkgname=python2-${_base}
+
+pkgname='python2-singledispatch'
+_name="${pkgname#python2-}"
 pkgver=3.7.0
-pkgrel=1
-pkgdesc="Implementation of functools.singledispatch from Python 3.4"
-arch=(any)
+pkgrel=2
+pkgdesc='Backport of functools.singledispatch from Python 3.4'
+arch=('any')
 url="https://github.com/jaraco/singledispatch"
-license=(MIT)
-depends=(python2-six)
-makedepends=(python2-setuptools)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0ec8503c188dd095eaab6e07147aad8dc7863c51d746fbc19086fb434ca1a48c65fa2219110f3d530a8370242f6df72e59fbf451ec4ce7ba49b751fb5c097c34')
+license=('MIT')
+depends=(
+  'python2'
+  'python2-six'
+)
+makedepends=('python2-setuptools')
+_tarname="${_name}-${pkgver}"
+source=("${_tarname}.tar.gz::https://github.com/jaraco/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('b488ebea8aeb1055fd91422d0ce7a91f321e3a0b9b99387f936fd1fd95a1016492baeabecfc0fd7ad8988a93c1054ff7681b8c4d0affa2d6114b90b6c8c58bdd')
 
 prepare() {
-  cd ${_base}-${pkgver}
-  sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-    $(find "${srcdir}" -name '*.py')
+  cd "${_tarname}"
+
+  echo 'Changing hashbangs in *.py files to refer to python2'
+  sed -e '1s|#![ ]*/usr/bin/python[^2]\?|#!/usr/bin/python2|' \
+      -e '1s|#![ ]*/usr/bin/env python[^2]\?|#!/usr/bin/env python2|' \
+      -e '1s|#![ ]*/bin/env python[^2]\?|#!/usr/bin/env python2|' \
+      -i $(find . -name '*.py')
 }
 
 build() {
-  cd ${_base}-${pkgver}
+  cd "${_tarname}"
   python2 setup.py build
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${_tarname}"
+  python2 setup.py install --prefix='/usr' --root="${pkgdir}" --optimize=1 --skip-build
+
+  install -Dm 644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
