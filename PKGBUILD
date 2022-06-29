@@ -4,7 +4,7 @@
 pkgname=python2-importlib_resources
 _name="${pkgname#python2-}"
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Read resources from Python packages (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
