@@ -82,9 +82,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.18
-_minor=7
+_minor=8
 _srcname=linux-${_major}
-_clr=${_major}.5-1158
+_clr=${_major}.6-1159
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -418,7 +418,7 @@ done
 
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             'SKIP'
-            '783de8b66193fd9bd2acabad8fdc7a14ac74aca35b7e606b10ac94ced77b430e'
+            '9004c47c344c6dd0da6289d3024592708677682842d61800a2d6c3d26c642bdb'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
