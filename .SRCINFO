@@ -1,7 +1,7 @@
 pkgbase = obs-service-tar_scm-git
 	pkgdesc = Source Service for the OpenSUSE Build Service (OBS)
 	pkgver = 0.10.31.r772
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/obs-service-tar_scm
 	arch = any
 	groups = obs
@@ -14,7 +14,7 @@ pkgbase = obs-service-tar_scm-git
 	checkdepends = mercurial
 	checkdepends = subversion
 	depends = python
-	depends = build
+	depends = obs-build
 	depends = git
 	depends = python-yaml
 	depends = python-dateutil
