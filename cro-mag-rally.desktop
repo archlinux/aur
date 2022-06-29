@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Cro-Mag Rally
+Comment=The wildest racing game since man invented the wheel!
+Icon=cro-mag-rally
+Exec=/usr/lib/cro-mag-rally/CroMagRally
+Path=/usr/lib/cro-mag-rally
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
