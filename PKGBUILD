@@ -7,10 +7,10 @@
 
 pkgbase=gcc10
 pkgname=($pkgbase gcc10-libs gcc10-fortran)
-pkgver=10.3.0
+pkgver=10.4.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (10.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -27,7 +27,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-b2sums=('ac7898f5eb8a7c5f151a526d1bb38913a68b50a65e4d010ac09fa20b6c801c671c790d780f23ccb8e4ecdfc686f4aa588082ccc9eb5c80c7b0e30788f824c1eb'
+b2sums=('ec1169025d3896b70ab80a4b8ce5040763a95529fc7e120c6bc3a3eb1db5cf938ebde347c1e595a8ff7d4081e79ded6252702d7a1a09648449b7a0783188e434'
         'SKIP'
         '88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e'
         'a76d19c7830b0a141302890522086fc1548c177611501caac7e66d576e541b64ca3f6e977de715268a9872dfdd6368a011b92e01f7944ec0088f899ac0d2a2a5'
