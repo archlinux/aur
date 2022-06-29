@@ -1,0 +1,14 @@
+pkgbase = python2-zc.lockfile
+	pkgdesc = Zope testing frameworks (Python 2 package)
+	pkgver = 2.0
+	pkgrel = 8
+	url = https://pypi.org/project/zc.lockfile/2.0/
+	arch = any
+	license = custom:ZPL
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-zope-testing: for check() function during build
+	source = zc.lockfile-2.0.tar.gz::https://github.com/zopefoundation/zc.lockfile/archive/refs/tags/2.0.tar.gz
+	sha512sums = bdb429c506064a83cb6fe0964aef6793cc20b5c954c208497a2c3d596213687b40be6d778490d3317de87ff997dfcfc9357f6e5225f48636148f1acdc9325350
+
+pkgname = python2-zc.lockfile
