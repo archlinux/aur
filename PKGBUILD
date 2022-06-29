@@ -3,27 +3,27 @@
 pkgname=gnome-shell-extension-custom-hot-corners-extended
 _pkgname=custom-hot-corners-extended
 pkgver=17
-pkgrel=1
+pkgrel=2
 # _pkgrev=
-_commit=551fe663ba88d33cd10f1b4ea630eb7c8e55c89a
+# _commit=
 pkgdesc="A GNOME Shell Extension that allows you to use corners and edges as triggers for various actions."
 arch=('any')
 url="https://github.com/G-dH/custom-hot-corners-extended"
 license=('GPL3')
 depends=('gnome-shell')
-# source=("${url}/archive/Ext-v${pkgver}${_pkgrev}.tar.gz")
-source=("Ext-v${pkgver}${_pkgrev}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('33d3b3e03f363024686ddc94a1c503a855495cbf77475b44a30b0dea0eb0ac21')
+source=("${url}/archive/Ext-v${pkgver}${_pkgrev}.tar.gz")
+# source=("Ext-v${pkgver}${_pkgrev}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('3371d9ac3442c9c16df82709d934d076d65c72b0b2ac4f0ab63ae51a3d1f8aae')
 
 build() {
-  # cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
-  cd "${_pkgname}-${_commit}"
+  cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
+  # cd "${_pkgname}-${_commit}"
   make all
 }
 
 package() {
-  # cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
-  cd "${_pkgname}-${_commit}"
+  cd "${_pkgname}-Ext-v${pkgver}${_pkgrev}"
+  # cd "${_pkgname}-${_commit}"
   local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 
