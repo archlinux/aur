@@ -1,6 +1,6 @@
 pkgbase = nerdctl-full-bin
 	pkgdesc = nerdctl full pkg, bundle with containerd/CNI plugin/RootlessKit
-	pkgver = v0.21.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/containerd/nerdctl
 	arch = x86_64
