@@ -5,10 +5,10 @@
 
 pkgname=abe
 pkgver=1.1
-pkgrel=13
+pkgrel=14
 pkgdesc='Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game'
 arch=('i686' 'x86_64' 'aarch64')
-url='https://abe.sourceforge.net'
+url='https://sourceforge.net/projects/abe/'
 license=('GPL')
 depends=('sdl_mixer' 'sdl' 'glibc')
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
