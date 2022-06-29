@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-libde265
+	pkgdesc = Open h.265 video codec implementation (mingw-w64)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/strukturag/libde265
+	arch = any
+	license = LGPL3
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/strukturag/libde265/releases/download/v1.0.8/libde265-1.0.8.tar.gz
+	sha256sums = 24c791dd334fa521762320ff54f0febfd3c09fc978880a8c5fbc40a88f21d905
+
+pkgname = mingw-w64-libde265
