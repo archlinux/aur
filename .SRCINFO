@@ -1,6 +1,6 @@
 pkgbase = rlbotgui-rust-git
 	pkgdesc = A Rust GUI for the RLBot framework
-	pkgver = .09f79c3
+	pkgver = 1.0.8.2f61792
 	pkgrel = 1
 	url = https://github.com/VirxEC/rlbot_gui_rust
 	arch = x86_64
