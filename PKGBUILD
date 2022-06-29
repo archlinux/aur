@@ -3,7 +3,7 @@
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
 pkgver=2022.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -32,7 +32,6 @@ prepare() {
 package() {
     find           ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
     find           ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
-    find           ${srcdir}/squashfs-root/swiftshader -type d -exec chmod 755 {} +
 
     install -d     ${pkgdir}/opt/${_pkgname}
     cp -r          ${srcdir}/squashfs-root/*                       ${pkgdir}/opt/${_pkgname}
