@@ -1,7 +1,7 @@
 pkgbase = python2-cheroot
 	pkgdesc = Highly-optimized, pure-python HTTP server (Python 2 package)
 	pkgver = 8.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/cheroot/8.5.2/
 	arch = any
 	license = BSD
