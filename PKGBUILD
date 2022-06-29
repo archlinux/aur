@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=mint
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/mint-lang/mint'
 license=('BSD')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "baked_file_system.patch")
-sha256sums=('008f77f069eff7f65e954cda4a2ce6fb19f01b842cf6dd0c376088f1b2b0b76e'
+sha256sums=('eed441ff3b0224d55984664a26d250a0c3c08cf5b0f1252b9af010a1a5fe5973'
             '2d5b204294fc56b91dfe6407d161309f866259e680e09dadb3737d46cb03687a')
 makedepends=('shards')
 conflicts=('mint-bin')
