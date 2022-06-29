@@ -1,4 +1,5 @@
-# Maintainer: SergT <jobts[at]ya[dot]ru>
+# Maintainer: Rosy <rosy[at]rosywings[dot]com>
+# Contributor: SergT <jobts[at]ya[dot]ru>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sébastien Luttringer
 # Contributor: Angel Velasquez <angvp@archlinux.org>
