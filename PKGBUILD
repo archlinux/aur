@@ -16,8 +16,9 @@ depends=('accountsservice'
     'gtk3'
     'iso-flag-png'
     'python'
+    'python-cairo'
     'python-gobject'
-    'xapps')
+    'xapp')
 #source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 #        "im_apt_check.patch"
 #        "install_remove_apt_check.patch"
