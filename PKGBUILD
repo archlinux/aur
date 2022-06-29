@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=homebridge-config-ui-x
-pkgver=4.47.0
+pkgver=4.48.1
 pkgrel=1
 pkgdesc='Web-based management tool for Homebridge'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('homebridge' 'npm')
 makedepends=('git')
 options=('!emptydirs' '!strip')
-_commit='d8f60afcb1df161f5efb8a884ac7a001b3574d02'
+_commit='167ed491c5c90773b2422a563a57108ae49900f3'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'
@@ -31,6 +31,13 @@ pkgver() {
   cd "$pkgname"
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "$pkgname"
+
+  # upstream failed to bump package version
+  git cherry-pick -n 55600ad2c9d51700bb9724b01c18e3a106bcde21
 }
 
 build() {
