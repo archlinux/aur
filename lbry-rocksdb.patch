@@ -9,6 +9,17 @@
  		-e EXTRA_CXXFLAGS="-fPIC" \
  		-e EXTRA_CFLAGS="-fPIC" \
  		-C src/rocksdb \
+--- lbry-rocksdb/src/rocksdb/Makefile.old	2022-06-29 15:54:00.844381430 +0100
++++ lbry-rocksdb/src/rocksdb/Makefile	2022-06-29 15:43:45.427864765 +0100
+@@ -2119,7 +2119,7 @@
+ 	-rm -rf snappy-$(SNAPPY_VER)
+ 	tar xvzf snappy-$(SNAPPY_VER).tar.gz
+ 	mkdir snappy-$(SNAPPY_VER)/build
+-	cd snappy-$(SNAPPY_VER)/build && CFLAGS='${JAVA_STATIC_DEPS_CCFLAGS} ${EXTRA_CFLAGS}' CXXFLAGS='${JAVA_STATIC_DEPS_CXXFLAGS} ${EXTRA_CXXFLAGS}' LDFLAGS='${JAVA_STATIC_DEPS_LDFLAGS} ${EXTRA_LDFLAGS}' cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ${PLATFORM_CMAKE_FLAGS} .. && $(MAKE) ${SNAPPY_MAKE_TARGET}
++	cd snappy-$(SNAPPY_VER)/build && CFLAGS='${JAVA_STATIC_DEPS_CCFLAGS} ${EXTRA_CFLAGS}' CXXFLAGS='${JAVA_STATIC_DEPS_CXXFLAGS} ${EXTRA_CXXFLAGS}' LDFLAGS='${JAVA_STATIC_DEPS_LDFLAGS} ${EXTRA_LDFLAGS}' cmake -DSNAPPY_BUILD_TESTS=0 -DCMAKE_POSITION_INDEPENDENT_CODE=ON ${PLATFORM_CMAKE_FLAGS} .. && $(MAKE) ${SNAPPY_MAKE_TARGET}
+ 	cp snappy-$(SNAPPY_VER)/build/libsnappy.a .
+ 
+ lz4-$(LZ4_VER).tar.gz:
 --- lbry-rocksdb/src/rocksdb/trace_replay/trace_replay.cc.old   2022-05-22 1
 +++ lbry-rocksdb/src/rocksdb/trace_replay/trace_replay.cc       2022-05-22 1
 @@ -317,7 +317,7 @@

@@ -1,6 +1,6 @@
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/blob/blob_file.py lbry-sdk-0.108.0/lbry/blob/blob_file.py
---- lbry-sdk-0.108.0_orig/lbry/blob/blob_file.py	2022-05-06 21:35:23.283333242 +0200
-+++ lbry-sdk-0.108.0/lbry/blob/blob_file.py	2022-05-06 20:11:21.756666643 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/blob/blob_file.py lbry-sdk-0.109.0/lbry/blob/blob_file.py
+--- lbry-sdk-0.109.0_orig/lbry/blob/blob_file.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/blob/blob_file.py	2022-06-20 11:30:03.129999973 +0100
 @@ -87,8 +87,8 @@
          self.blob_completed_callback = blob_completed_callback
          self.blob_directory = blob_directory
@@ -12,10 +12,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self.readers: typing.List[typing.BinaryIO] = []
          self.added_on = added_on or time.time()
          self.is_mine = is_mine
-Only in lbry-sdk-0.108.0/lbry/blob: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/blob_exchange/client.py lbry-sdk-0.108.0/lbry/blob_exchange/client.py
---- lbry-sdk-0.108.0_orig/lbry/blob_exchange/client.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/blob_exchange/client.py	2022-05-06 23:35:47.749999588 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/blob_exchange/client.py lbry-sdk-0.109.0/lbry/blob_exchange/client.py
+--- lbry-sdk-0.109.0_orig/lbry/blob_exchange/client.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/blob_exchange/client.py	2022-06-20 11:30:03.129999973 +0100
 @@ -32,7 +32,7 @@
          self.buf = b''
  
@@ -52,9 +51,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
              connected_protocol = protocol
          if blob is None or blob.get_is_verified() or not blob.is_writeable():
              # blob is None happens when we are just opening a connection
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/blob_exchange/downloader.py lbry-sdk-0.108.0/lbry/blob_exchange/downloader.py
---- lbry-sdk-0.108.0_orig/lbry/blob_exchange/downloader.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/blob_exchange/downloader.py	2022-05-06 23:34:40.909999593 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/blob_exchange/downloader.py lbry-sdk-0.109.0/lbry/blob_exchange/downloader.py
+--- lbry-sdk-0.109.0_orig/lbry/blob_exchange/downloader.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/blob_exchange/downloader.py	2022-06-20 11:30:03.129999973 +0100
 @@ -30,7 +30,7 @@
          self.failures: typing.Dict['KademliaPeer', int] = {}
          self.connection_failures: typing.Set['KademliaPeer'] = set()
@@ -82,10 +81,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
      search_queue.put_nowait(blob_hash)
      peer_queue, accumulate_task = dht_node.accumulate_peers(search_queue)
      fixed_peers = None if not config.fixed_peers else await get_kademlia_peers_from_hosts(config.fixed_peers)
-Only in lbry-sdk-0.108.0/lbry/blob_exchange: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/blob_exchange/server.py lbry-sdk-0.108.0/lbry/blob_exchange/server.py
---- lbry-sdk-0.108.0_orig/lbry/blob_exchange/server.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/blob_exchange/server.py	2022-05-06 23:33:44.683332936 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/blob_exchange/server.py lbry-sdk-0.109.0/lbry/blob_exchange/server.py
+--- lbry-sdk-0.109.0_orig/lbry/blob_exchange/server.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/blob_exchange/server.py	2022-06-20 11:30:03.133333306 +0100
 @@ -25,19 +25,19 @@
          self.idle_timeout = idle_timeout
          self.transfer_timeout = transfer_timeout
@@ -128,9 +126,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self.lbrycrd_address = lbrycrd_address
          self.idle_timeout = idle_timeout
          self.transfer_timeout = transfer_timeout
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/connection_manager.py lbry-sdk-0.108.0/lbry/connection_manager.py
---- lbry-sdk-0.108.0_orig/lbry/connection_manager.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/connection_manager.py	2022-05-06 20:24:34.796666665 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/connection_manager.py lbry-sdk-0.109.0/lbry/connection_manager.py
+--- lbry-sdk-0.109.0_orig/lbry/connection_manager.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/connection_manager.py	2022-06-20 11:30:03.133333306 +0100
 @@ -67,7 +67,7 @@
  
          while True:
@@ -140,10 +138,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
              self._status['incoming_bps'].clear()
              self._status['outgoing_bps'].clear()
              now = time.perf_counter()
-Only in lbry-sdk-0.108.0/lbry/crypto: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/dht/blob_announcer.py lbry-sdk-0.108.0/lbry/dht/blob_announcer.py
---- lbry-sdk-0.108.0_orig/lbry/dht/blob_announcer.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/dht/blob_announcer.py	2022-05-06 23:36:07.353332914 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/dht/blob_announcer.py lbry-sdk-0.109.0/lbry/dht/blob_announcer.py
+--- lbry-sdk-0.109.0_orig/lbry/dht/blob_announcer.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/dht/blob_announcer.py	2022-06-20 11:30:03.133333306 +0100
 @@ -50,7 +50,7 @@
          while batch_size:
              if not self.node.joined.is_set():
@@ -162,9 +159,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
                  announced = list(filter(None, self.announced))
                  if announced:
                      await self.storage.update_last_announced_blobs(announced)
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/dht/node.py lbry-sdk-0.108.0/lbry/dht/node.py
---- lbry-sdk-0.108.0_orig/lbry/dht/node.py	2022-05-06 21:35:23.286666576 +0200
-+++ lbry-sdk-0.108.0/lbry/dht/node.py	2022-05-06 23:37:18.716666238 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/dht/node.py lbry-sdk-0.109.0/lbry/dht/node.py
+--- lbry-sdk-0.109.0_orig/lbry/dht/node.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/dht/node.py	2022-06-20 11:30:03.133333306 +0100
 @@ -37,7 +37,7 @@
          self.protocol = KademliaProtocol(loop, peer_manager, node_id, external_ip, udp_port, peer_port, rpc_timeout,
                                           split_buckets_under_index)
@@ -200,7 +197,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      def start(self, interface: str, known_node_urls: typing.Optional[typing.List[typing.Tuple[str, int]]] = None):
          self._join_task = self.loop.create_task(self.join_network(interface, known_node_urls))
-@@ -279,7 +279,7 @@
+@@ -280,7 +280,7 @@
      def accumulate_peers(self, search_queue: asyncio.Queue,
                           peer_queue: typing.Optional[asyncio.Queue] = None
                           ) -> typing.Tuple[asyncio.Queue, asyncio.Task]:
@@ -209,10 +206,11 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          return queue, self.loop.create_task(self._accumulate_peers_for_value(search_queue, queue))
  
  
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/dht/protocol/iterative_find.py lbry-sdk-0.108.0/lbry/dht/protocol/iterative_find.py
---- lbry-sdk-0.108.0_orig/lbry/dht/protocol/iterative_find.py	2022-05-06 21:35:23.289999909 +0200
-+++ lbry-sdk-0.108.0/lbry/dht/protocol/iterative_find.py	2022-05-06 23:37:21.083332906 +0200
-@@ -92,7 +92,7 @@
+Only in lbry-sdk-0.109.0/lbry/dht: node.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/dht/protocol/iterative_find.py lbry-sdk-0.109.0/lbry/dht/protocol/iterative_find.py
+--- lbry-sdk-0.109.0_orig/lbry/dht/protocol/iterative_find.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/dht/protocol/iterative_find.py	2022-06-20 11:30:03.133333306 +0100
+@@ -93,7 +93,7 @@
          self.contacted: typing.Set['KademliaPeer'] = set()
          self.distance = Distance(key)
  
@@ -221,9 +219,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
          self.running_probes: typing.Dict['KademliaPeer', asyncio.Task] = {}
          self.iteration_count = 0
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/dht/protocol/protocol.py lbry-sdk-0.108.0/lbry/dht/protocol/protocol.py
---- lbry-sdk-0.108.0_orig/lbry/dht/protocol/protocol.py	2022-05-06 21:35:23.289999909 +0200
-+++ lbry-sdk-0.108.0/lbry/dht/protocol/protocol.py	2022-05-06 20:55:11.973333451 +0200
+Only in lbry-sdk-0.109.0/lbry/dht/protocol: iterative_find.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/dht/protocol/protocol.py lbry-sdk-0.109.0/lbry/dht/protocol/protocol.py
+--- lbry-sdk-0.109.0_orig/lbry/dht/protocol/protocol.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/dht/protocol/protocol.py	2022-06-20 11:30:03.133333306 +0100
 @@ -249,7 +249,7 @@
                      del self._pending_contacts[peer]
                      self.maybe_ping(peer)
@@ -255,13 +254,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
              self._wakeup_routing_task.clear()
  
      def _handle_rpc(self, sender_contact: 'KademliaPeer', message: RequestDatagram):
-Only in lbry-sdk-0.108.0/lbry/dht/protocol: __pycache__
-Only in lbry-sdk-0.108.0/lbry/dht: __pycache__
-Only in lbry-sdk-0.108.0/lbry/dht/serialization: __pycache__
-Only in lbry-sdk-0.108.0/lbry/error: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/extras/daemon/componentmanager.py lbry-sdk-0.108.0/lbry/extras/daemon/componentmanager.py
---- lbry-sdk-0.108.0_orig/lbry/extras/daemon/componentmanager.py	2022-05-06 21:35:23.289999909 +0200
-+++ lbry-sdk-0.108.0/lbry/extras/daemon/componentmanager.py	2022-05-06 19:52:24.049999905 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/extras/daemon/componentmanager.py lbry-sdk-0.109.0/lbry/extras/daemon/componentmanager.py
+--- lbry-sdk-0.109.0_orig/lbry/extras/daemon/componentmanager.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/extras/daemon/componentmanager.py	2022-06-20 11:30:03.133333306 +0100
 @@ -42,7 +42,7 @@
          self.analytics_manager = analytics_manager
          self.component_classes = {}
@@ -271,10 +266,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self.peer_manager = peer_manager or PeerManager(asyncio.get_event_loop_policy().get_event_loop())
  
          for component_name, component_class in self.default_component_classes.items():
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/extras/daemon/components.py lbry-sdk-0.108.0/lbry/extras/daemon/components.py
---- lbry-sdk-0.108.0_orig/lbry/extras/daemon/components.py	2022-05-06 21:35:23.293333242 +0200
-+++ lbry-sdk-0.108.0/lbry/extras/daemon/components.py	2022-05-06 23:39:01.399999564 +0200
-@@ -555,13 +555,13 @@
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/extras/daemon/components.py lbry-sdk-0.109.0/lbry/extras/daemon/components.py
+--- lbry-sdk-0.109.0_orig/lbry/extras/daemon/components.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/extras/daemon/components.py	2022-06-20 11:30:03.133333306 +0100
+@@ -558,13 +558,13 @@
          while True:
              if now:
                  await self._maintain_redirects()
@@ -290,7 +285,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
                  log.info("found upnp gateway: %s", self.upnp.gateway.manufacturer_string)
              except Exception as err:
                  if isinstance(err, asyncio.CancelledError):  # TODO: remove when updated to 3.8
-@@ -677,7 +677,7 @@
+@@ -680,7 +680,7 @@
              log.info("Removing upnp redirects: %s", self.upnp_redirects)
              await asyncio.wait([
                  self.upnp.delete_port_mapping(port, protocol) for protocol, port in self.upnp_redirects.items()
@@ -299,23 +294,24 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          if self._maintain_redirects_task and not self._maintain_redirects_task.done():
              self._maintain_redirects_task.cancel()
  
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/extras/daemon/daemon.py lbry-sdk-0.108.0/lbry/extras/daemon/daemon.py
---- lbry-sdk-0.108.0_orig/lbry/extras/daemon/daemon.py	2022-05-06 21:35:23.296666576 +0200
-+++ lbry-sdk-0.108.0/lbry/extras/daemon/daemon.py	2022-05-06 23:38:30.453332902 +0200
-@@ -4972,7 +4972,7 @@
+Only in lbry-sdk-0.109.0/lbry/extras/daemon: components.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/extras/daemon/daemon.py lbry-sdk-0.109.0/lbry/extras/daemon/daemon.py
+--- lbry-sdk-0.109.0_orig/lbry/extras/daemon/daemon.py	2022-06-20 11:36:42.986666608 +0100
++++ lbry-sdk-0.109.0/lbry/extras/daemon/daemon.py	2022-06-20 11:36:01.209999929 +0100
+@@ -4978,7 +4978,7 @@
+         if not is_valid_blobhash(blob_hash):
              # TODO: use error from lbry.error
              raise Exception("invalid blob hash")
-         peers = []
 -        peer_q = asyncio.Queue(loop=self.component_manager.loop)
 +        peer_q = asyncio.Queue()
-         await self.dht_node._peers_for_value_producer(blob_hash, peer_q)
-         while not peer_q.empty():
-             peers.extend(peer_q.get_nowait())
-Only in lbry-sdk-0.108.0/lbry/extras/daemon: __pycache__
-Only in lbry-sdk-0.108.0/lbry/extras: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/file/file_manager.py lbry-sdk-0.108.0/lbry/file/file_manager.py
---- lbry-sdk-0.108.0_orig/lbry/file/file_manager.py	2022-05-06 21:35:23.299999909 +0200
-+++ lbry-sdk-0.108.0/lbry/file/file_manager.py	2022-05-06 23:41:18.193332887 +0200
+         if self.component_manager.has_component(TRACKER_ANNOUNCER_COMPONENT):
+             tracker = self.component_manager.get_component(TRACKER_ANNOUNCER_COMPONENT)
+             tracker_peers = await tracker.get_kademlia_peer_list(bytes.fromhex(blob_hash))
+Only in lbry-sdk-0.109.0/lbry/extras/daemon: daemon.py.orig
+Only in lbry-sdk-0.109.0/lbry/extras/daemon: daemon.py.rej
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/file/file_manager.py lbry-sdk-0.109.0/lbry/file/file_manager.py
+--- lbry-sdk-0.109.0_orig/lbry/file/file_manager.py	2022-06-20 11:36:42.989999942 +0100
++++ lbry-sdk-0.109.0/lbry/file/file_manager.py	2022-06-20 11:30:03.136666640 +0100
 @@ -240,8 +240,7 @@
                  claim_info = await self.storage.get_content_claim_for_torrent(stream.identifier)
                  stream.set_claim(claim_info, claim)
@@ -326,10 +322,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
              return stream
          except asyncio.TimeoutError:
              error = DownloadDataTimeoutError(stream.sd_hash)
-Only in lbry-sdk-0.108.0/lbry/file: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/file/source_manager.py lbry-sdk-0.108.0/lbry/file/source_manager.py
---- lbry-sdk-0.108.0_orig/lbry/file/source_manager.py	2022-05-06 21:35:23.299999909 +0200
-+++ lbry-sdk-0.108.0/lbry/file/source_manager.py	2022-05-06 20:12:52.789999975 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/file/source_manager.py lbry-sdk-0.109.0/lbry/file/source_manager.py
+--- lbry-sdk-0.109.0_orig/lbry/file/source_manager.py	2022-06-20 11:36:42.989999942 +0100
++++ lbry-sdk-0.109.0/lbry/file/source_manager.py	2022-06-20 11:30:03.136666640 +0100
 @@ -54,7 +54,7 @@
          self.storage = storage
          self.analytics_manager = analytics_manager
@@ -339,12 +334,12 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      def add(self, source: ManagedDownloadSource):
          self._sources[source.identifier] = source
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/file/source.py lbry-sdk-0.108.0/lbry/file/source.py
---- lbry-sdk-0.108.0_orig/lbry/file/source.py	2022-05-06 21:35:23.299999909 +0200
-+++ lbry-sdk-0.108.0/lbry/file/source.py	2022-05-06 20:12:22.839999974 +0200
-@@ -46,10 +46,10 @@
-         self._added_on = added_on
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/file/source.py lbry-sdk-0.109.0/lbry/file/source.py
+--- lbry-sdk-0.109.0_orig/lbry/file/source.py	2022-06-20 11:36:42.989999942 +0100
++++ lbry-sdk-0.109.0/lbry/file/source.py	2022-06-20 11:30:03.136666640 +0100
+@@ -47,10 +47,10 @@
          self.analytics_manager = analytics_manager
+         self.downloader = None
  
 -        self.saving = asyncio.Event(loop=self.loop)
 -        self.finished_writing = asyncio.Event(loop=self.loop)
@@ -357,15 +352,11 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      # @classmethod
      # async def create(cls, loop: asyncio.AbstractEventLoop, config: 'Config', file_path: str,
-Only in lbry-sdk-0.108.0/lbry: __pycache__
-Only in lbry-sdk-0.108.0/lbry/schema: __pycache__
-Only in lbry-sdk-0.108.0/lbry/schema/types: __pycache__
-Only in lbry-sdk-0.108.0/lbry/schema/types/v1: __pycache__
-Only in lbry-sdk-0.108.0/lbry/schema/types/v2: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/stream/downloader.py lbry-sdk-0.108.0/lbry/stream/downloader.py
---- lbry-sdk-0.108.0_orig/lbry/stream/downloader.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/stream/downloader.py	2022-05-06 23:32:15.459999609 +0200
-@@ -25,8 +25,8 @@
+Only in lbry-sdk-0.109.0/lbry/file: source.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/stream/downloader.py lbry-sdk-0.109.0/lbry/stream/downloader.py
+--- lbry-sdk-0.109.0_orig/lbry/stream/downloader.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/stream/downloader.py	2022-06-20 11:30:03.136666640 +0100
+@@ -27,8 +27,8 @@
          self.config = config
          self.blob_manager = blob_manager
          self.sd_hash = sd_hash
@@ -376,7 +367,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self.blob_downloader = BlobDownloader(self.loop, self.config, self.blob_manager, self.peer_queue)
          self.descriptor: typing.Optional[StreamDescriptor] = descriptor
          self.node: typing.Optional['Node'] = None
-@@ -70,7 +70,7 @@
+@@ -72,7 +72,7 @@
                  now = self.loop.time()
                  sd_blob = await asyncio.wait_for(
                      self.blob_downloader.download_blob(self.sd_hash, connection_id),
@@ -385,7 +376,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
                  )
                  log.info("downloaded sd blob %s", self.sd_hash)
                  self.time_to_descriptor = self.loop.time() - now
-@@ -108,7 +108,7 @@
+@@ -111,7 +111,7 @@
              raise ValueError(f"blob {blob_info.blob_hash} is not part of stream with sd hash {self.sd_hash}")
          blob = await asyncio.wait_for(
              self.blob_downloader.download_blob(blob_info.blob_hash, blob_info.length, connection_id),
@@ -394,10 +385,11 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          )
          return blob
  
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/stream/managed_stream.py lbry-sdk-0.108.0/lbry/stream/managed_stream.py
---- lbry-sdk-0.108.0_orig/lbry/stream/managed_stream.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/stream/managed_stream.py	2022-05-06 23:31:42.899999609 +0200
-@@ -62,9 +62,9 @@
+Only in lbry-sdk-0.109.0/lbry/stream: downloader.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/stream/managed_stream.py lbry-sdk-0.109.0/lbry/stream/managed_stream.py
+--- lbry-sdk-0.109.0_orig/lbry/stream/managed_stream.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/stream/managed_stream.py	2022-06-20 11:30:03.136666640 +0100
+@@ -60,9 +60,9 @@
          self.file_output_task: typing.Optional[asyncio.Task] = None
          self.delayed_stop_task: typing.Optional[asyncio.Task] = None
          self.streaming_responses: typing.List[typing.Tuple[Request, StreamResponse]] = []
@@ -410,7 +402,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      @property
      def sd_hash(self) -> str:
-@@ -151,7 +151,7 @@
+@@ -149,7 +149,7 @@
          log.info("start downloader for stream (sd hash: %s)", self.sd_hash)
          self._running.set()
          try:
@@ -419,7 +411,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          except asyncio.TimeoutError:
              self._running.clear()
              raise DownloadSDTimeoutError(self.sd_hash)
-@@ -311,7 +311,7 @@
+@@ -309,7 +309,7 @@
          await self.update_status(ManagedStream.STATUS_RUNNING)
          self.file_output_task = self.loop.create_task(self._save_file(self.full_path))
          try:
@@ -428,7 +420,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          except asyncio.TimeoutError:
              log.warning("timeout starting to write data for lbry://%s#%s", self.claim_name, self.claim_id)
              self.stop_tasks()
-@@ -391,7 +391,7 @@
+@@ -389,7 +389,7 @@
                           self.sd_hash[:6])
                  await self.stop()
                  return
@@ -437,11 +429,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      def _prepare_range_response_headers(self, get_range: str) -> typing.Tuple[typing.Dict[str, str], int, int, int]:
          if '=' in get_range:
-Only in lbry-sdk-0.108.0/lbry/stream: __pycache__
-Only in lbry-sdk-0.108.0/lbry/stream/reflector: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/stream/reflector/server.py lbry-sdk-0.108.0/lbry/stream/reflector/server.py
---- lbry-sdk-0.108.0_orig/lbry/stream/reflector/server.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/stream/reflector/server.py	2022-05-06 23:32:40.216666274 +0200
+Only in lbry-sdk-0.109.0/lbry/stream: managed_stream.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/stream/reflector/server.py lbry-sdk-0.109.0/lbry/stream/reflector/server.py
+--- lbry-sdk-0.109.0_orig/lbry/stream/reflector/server.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/stream/reflector/server.py	2022-06-20 11:30:03.136666640 +0100
 @@ -21,7 +21,7 @@
          self.loop = asyncio.get_event_loop()
          self.blob_manager = blob_manager
@@ -497,9 +488,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self.response_chunk_size = response_chunk_size
          self.stop_event = stop_event
          self.partial_needs = partial_needs  # for testing cases where it doesn't know what it wants
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/stream/stream_manager.py lbry-sdk-0.108.0/lbry/stream/stream_manager.py
---- lbry-sdk-0.108.0_orig/lbry/stream/stream_manager.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/stream/stream_manager.py	2022-05-06 23:33:22.773332939 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/stream/stream_manager.py lbry-sdk-0.109.0/lbry/stream/stream_manager.py
+--- lbry-sdk-0.109.0_orig/lbry/stream/stream_manager.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/stream/stream_manager.py	2022-06-20 11:30:03.136666640 +0100
 @@ -54,7 +54,7 @@
          self.re_reflect_task: Optional[asyncio.Task] = None
          self.update_stream_finished_futs: typing.List[asyncio.Future] = []
@@ -546,10 +537,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      async def start(self):
          await super().start()
-Only in lbry-sdk-0.108.0/lbry/torrent: __pycache__
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/torrent/session.py lbry-sdk-0.108.0/lbry/torrent/session.py
---- lbry-sdk-0.108.0_orig/lbry/torrent/session.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/torrent/session.py	2022-05-06 20:24:52.156666666 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/torrent/session.py lbry-sdk-0.109.0/lbry/torrent/session.py
+--- lbry-sdk-0.109.0_orig/lbry/torrent/session.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/torrent/session.py	2022-06-20 11:30:03.136666640 +0100
 @@ -56,9 +56,9 @@
          self._loop = loop
          self._executor = executor
@@ -581,9 +571,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      async def pause(self):
          await self._loop.run_in_executor(
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/torrent/torrent.py lbry-sdk-0.108.0/lbry/torrent/torrent.py
---- lbry-sdk-0.108.0_orig/lbry/torrent/torrent.py	2022-05-06 21:35:23.306666576 +0200
-+++ lbry-sdk-0.108.0/lbry/torrent/torrent.py	2022-05-06 20:25:13.123333331 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/torrent/torrent.py lbry-sdk-0.109.0/lbry/torrent/torrent.py
+--- lbry-sdk-0.109.0_orig/lbry/torrent/torrent.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/torrent/torrent.py	2022-06-20 11:30:03.136666640 +0100
 @@ -36,7 +36,7 @@
      def __init__(self, loop, handle):
          self._loop = loop
@@ -602,10 +592,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
  
      async def pause(self):
          log.info("pause torrent")
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/lbry/utils.py lbry-sdk-0.108.0/lbry/utils.py
---- lbry-sdk-0.108.0_orig/lbry/utils.py	2022-05-06 21:35:23.309999909 +0200
-+++ lbry-sdk-0.108.0/lbry/utils.py	2022-05-06 19:55:12.329999921 +0200
-@@ -456,7 +456,7 @@
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/lbry/utils.py lbry-sdk-0.109.0/lbry/utils.py
+--- lbry-sdk-0.109.0_orig/lbry/utils.py	2022-06-20 11:36:42.996666609 +0100
++++ lbry-sdk-0.109.0/lbry/utils.py	2022-06-20 11:30:03.136666640 +0100
+@@ -451,7 +451,7 @@
  
  class LockWithMetrics(asyncio.Lock):
      def __init__(self, acquire_metric, held_time_metric, loop=None):
@@ -614,13 +604,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/l
          self._acquire_metric = acquire_metric
          self._lock_held_time_metric = held_time_metric
          self._lock_acquired_time = None
-Only in lbry-sdk-0.108.0/lbry/wallet: __pycache__
-Only in lbry-sdk-0.108.0/lbry/wallet/rpc: __pycache__
-Only in lbry-sdk-0.108.0/lbry/wallet/words: __pycache__
-Only in lbry-sdk: lbry.egg-info
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/setup.py lbry-sdk-0.108.0/setup.py
---- lbry-sdk-0.108.0_orig/setup.py	2022-05-06 21:35:23.316666576 +0200
-+++ lbry-sdk-0.108.0/setup.py	2022-05-06 19:05:24.523333260 +0200
+Only in lbry-sdk-0.109.0/lbry: utils.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/setup.py lbry-sdk-0.109.0/setup.py
+--- lbry-sdk-0.109.0_orig/setup.py	2022-06-20 11:36:43.003333275 +0100
++++ lbry-sdk-0.109.0/setup.py	2022-06-20 11:30:03.136666640 +0100
 @@ -10,7 +10,7 @@
  
  ROCKSDB = []
@@ -667,7 +654,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/s
 +        'base58',
 +        'cffi',
 +        'cryptography',
-+        'protobuf',
++        'protobuf==3.20',
 +        'msgpack',
 +        'prometheus_client',
 +        'ecdsa',
@@ -694,12 +681,13 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/s
 -            'jsonschema==4.4.0',
 +            'jsonschema',
          ],
-         'scribe': [
-             'scribe @ git+https://github.com/lbryio/scribe.git#311db529a03de7fce43ed8579f51ac23a1a884ea'
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/integration/datanetwork/test_file_commands.py lbry-sdk-0.108.0/tests/integration/datanetwork/test_file_commands.py
---- lbry-sdk-0.108.0_orig/tests/integration/datanetwork/test_file_commands.py	2022-05-06 21:35:23.319999910 +0200
-+++ lbry-sdk-0.108.0/tests/integration/datanetwork/test_file_commands.py	2022-05-06 20:20:50.919999997 +0200
-@@ -334,7 +334,7 @@
+         'hub': [
+             'hub@git+https://github.com/lbryio/hub.git@76dd9c392b776a2823015762814f375794120076'
+Only in lbry-sdk-0.109.0: setup.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/integration/datanetwork/test_file_commands.py lbry-sdk-0.109.0/tests/integration/datanetwork/test_file_commands.py
+--- lbry-sdk-0.109.0_orig/tests/integration/datanetwork/test_file_commands.py	2022-06-20 11:36:43.006666609 +0100
++++ lbry-sdk-0.109.0/tests/integration/datanetwork/test_file_commands.py	2022-06-20 11:30:03.136666640 +0100
+@@ -361,7 +361,7 @@
          self.assertNotIn('error', resp)
          self.assertTrue(os.path.isfile(path))
          self.daemon.file_manager.stop()
@@ -708,9 +696,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
          self.assertFalse(os.path.isfile(path))
  
      async def test_incomplete_downloads_retry(self):
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/integration/datanetwork/test_streaming.py lbry-sdk-0.108.0/tests/integration/datanetwork/test_streaming.py
---- lbry-sdk-0.108.0_orig/tests/integration/datanetwork/test_streaming.py	2022-05-06 21:35:23.319999910 +0200
-+++ lbry-sdk-0.108.0/tests/integration/datanetwork/test_streaming.py	2022-05-06 20:21:03.329999997 +0200
+Only in lbry-sdk-0.109.0/tests/integration/datanetwork: test_file_commands.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/integration/datanetwork/test_streaming.py lbry-sdk-0.109.0/tests/integration/datanetwork/test_streaming.py
+--- lbry-sdk-0.109.0_orig/tests/integration/datanetwork/test_streaming.py	2022-06-20 11:36:43.006666609 +0100
++++ lbry-sdk-0.109.0/tests/integration/datanetwork/test_streaming.py	2022-06-20 11:30:03.136666640 +0100
 @@ -414,6 +414,6 @@
  
          # running with cache size 0 gets through without errors without
@@ -719,9 +708,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
 +        await asyncio.sleep(1)
  
          await self._request_stream()
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/blob/test_blob_file.py lbry-sdk-0.108.0/tests/unit/blob/test_blob_file.py
---- lbry-sdk-0.108.0_orig/tests/unit/blob/test_blob_file.py	2022-05-06 21:35:23.323333243 +0200
-+++ lbry-sdk-0.108.0/tests/unit/blob/test_blob_file.py	2022-05-06 20:20:29.226666663 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/blob/test_blob_file.py lbry-sdk-0.109.0/tests/unit/blob/test_blob_file.py
+--- lbry-sdk-0.109.0_orig/tests/unit/blob/test_blob_file.py	2022-06-20 11:36:43.009999942 +0100
++++ lbry-sdk-0.109.0/tests/unit/blob/test_blob_file.py	2022-06-20 11:30:03.139999973 +0100
 @@ -36,7 +36,7 @@
          writer.write(self.blob_bytes)
          await blob.verified.wait()
@@ -749,10 +738,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
                  self.assertEqual(0, len(blob.readers))
                  return read_handle.read()
  
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/blob_exchange/test_transfer_blob.py lbry-sdk-0.108.0/tests/unit/blob_exchange/test_transfer_blob.py
---- lbry-sdk-0.108.0_orig/tests/unit/blob_exchange/test_transfer_blob.py	2022-05-06 21:35:23.323333243 +0200
-+++ lbry-sdk-0.108.0/tests/unit/blob_exchange/test_transfer_blob.py	2022-05-06 23:30:31.823332947 +0200
-@@ -182,7 +182,7 @@
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/blob_exchange/test_transfer_blob.py lbry-sdk-0.109.0/tests/unit/blob_exchange/test_transfer_blob.py
+--- lbry-sdk-0.109.0_orig/tests/unit/blob_exchange/test_transfer_blob.py	2022-06-20 11:36:43.009999942 +0100
++++ lbry-sdk-0.109.0/tests/unit/blob_exchange/test_transfer_blob.py	2022-06-20 11:30:03.139999973 +0100
+@@ -183,7 +183,7 @@
                  writer.write(mock_blob_bytes)
              return self.loop.create_task(_inner())
  
@@ -761,7 +750,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
  
          self.assertDictEqual({1: mock_blob_bytes, 2: mock_blob_bytes}, results)
          self.assertEqual(1, write_called_count)
-@@ -268,7 +268,7 @@
+@@ -269,7 +269,7 @@
          client_blob.delete()
  
          # wait for less than the idle timeout
@@ -770,7 +759,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
  
          # download the blob again
          downloaded, protocol2 = await request_blob(self.loop, client_blob, self.server_from_client.address,
-@@ -282,10 +282,10 @@
+@@ -283,10 +283,10 @@
          client_blob.delete()
  
          # check that the connection times out from the server side
@@ -783,7 +772,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
          self.assertIsNone(protocol.transport)
  
      def test_max_request_size(self):
-@@ -321,7 +321,7 @@
+@@ -322,7 +322,7 @@
          server_blob = self.server_blob_manager.get_blob(blob_hash)
  
          async def sendfile(writer):
@@ -792,7 +781,7 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
              return 0
  
          server_blob.sendfile = sendfile
-@@ -345,7 +345,7 @@
+@@ -346,7 +346,7 @@
          def _mock_accumulate_peers(q1, q2=None):
              async def _task():
                  pass
@@ -801,9 +790,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
              return q2, self.loop.create_task(_task())
  
          mock_node.accumulate_peers = _mock_accumulate_peers
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/core/test_utils.py lbry-sdk-0.108.0/tests/unit/core/test_utils.py
---- lbry-sdk-0.108.0_orig/tests/unit/core/test_utils.py	2022-05-06 21:35:23.323333243 +0200
-+++ lbry-sdk-0.108.0/tests/unit/core/test_utils.py	2022-05-06 23:30:02.809999615 +0200
+Only in lbry-sdk-0.109.0/tests/unit/blob_exchange: test_transfer_blob.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/core/test_utils.py lbry-sdk-0.109.0/tests/unit/core/test_utils.py
+--- lbry-sdk-0.109.0_orig/tests/unit/core/test_utils.py	2022-06-20 11:36:43.013333276 +0100
++++ lbry-sdk-0.109.0/tests/unit/core/test_utils.py	2022-06-20 11:30:03.139999973 +0100
 @@ -72,14 +72,14 @@
      @utils.cache_concurrent
      async def foo(self, arg1, arg2=None, delay=1):
@@ -830,9 +820,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
              )
          self.assertEqual(1, len(self.called))
          self.assertEqual(0, len(self.finished))
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/dht/test_blob_announcer.py lbry-sdk-0.108.0/tests/unit/dht/test_blob_announcer.py
---- lbry-sdk-0.108.0_orig/tests/unit/dht/test_blob_announcer.py	2022-05-06 21:35:23.323333243 +0200
-+++ lbry-sdk-0.108.0/tests/unit/dht/test_blob_announcer.py	2022-05-06 23:31:06.076666282 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/dht/test_blob_announcer.py lbry-sdk-0.109.0/tests/unit/dht/test_blob_announcer.py
+--- lbry-sdk-0.109.0_orig/tests/unit/dht/test_blob_announcer.py	2022-06-20 11:36:43.013333276 +0100
++++ lbry-sdk-0.109.0/tests/unit/dht/test_blob_announcer.py	2022-06-20 11:30:03.139999973 +0100
 @@ -128,7 +128,7 @@
              await self.chain_peer(constants.generate_id(current + 4), '1.2.3.13')
              last = await self.chain_peer(constants.generate_id(current + 5), '1.2.3.14')
@@ -842,10 +832,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
              search_q.put_nowait(blob1)
  
              _, task = last.accumulate_peers(search_q, peer_q)
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/stream/test_managed_stream.py lbry-sdk-0.108.0/tests/unit/stream/test_managed_stream.py
---- lbry-sdk-0.108.0_orig/tests/unit/stream/test_managed_stream.py	2022-05-06 21:35:23.326666576 +0200
-+++ lbry-sdk-0.108.0/tests/unit/stream/test_managed_stream.py	2022-05-06 20:19:20.383333322 +0200
-@@ -96,9 +96,9 @@
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/stream/test_managed_stream.py lbry-sdk-0.109.0/tests/unit/stream/test_managed_stream.py
+--- lbry-sdk-0.109.0_orig/tests/unit/stream/test_managed_stream.py	2022-06-20 11:36:43.013333276 +0100
++++ lbry-sdk-0.109.0/tests/unit/stream/test_managed_stream.py	2022-06-20 11:30:03.139999973 +0100
+@@ -89,9 +89,9 @@
          await self._test_transfer_stream(10, stop_when_done=False)
          self.assertEqual(self.stream.status, "finished")
          self.assertTrue(self.stream._running.is_set())
@@ -857,9 +847,10 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
          self.assertEqual(self.stream.status, "finished")
          self.assertFalse(self.stream._running.is_set())
  
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/stream/test_reflector.py lbry-sdk-0.108.0/tests/unit/stream/test_reflector.py
---- lbry-sdk-0.108.0_orig/tests/unit/stream/test_reflector.py	2022-05-06 21:35:23.326666576 +0200
-+++ lbry-sdk-0.108.0/tests/unit/stream/test_reflector.py	2022-05-06 23:29:24.469999627 +0200
+Only in lbry-sdk-0.109.0/tests/unit/stream: test_managed_stream.py.orig
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/stream/test_reflector.py lbry-sdk-0.109.0/tests/unit/stream/test_reflector.py
+--- lbry-sdk-0.109.0_orig/tests/unit/stream/test_reflector.py	2022-06-20 11:36:43.013333276 +0100
++++ lbry-sdk-0.109.0/tests/unit/stream/test_reflector.py	2022-06-20 11:30:03.139999973 +0100
 @@ -86,13 +86,13 @@
          self.assertListEqual(sent, [])
  
@@ -877,9 +868,9 @@ diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/t
  
      async def test_announces(self):
          to_announce = await self.storage.get_blobs_to_announce()
-diff --exclude .git --unified --recursive --text --color lbry-sdk-0.108.0_orig/tests/unit/stream/test_stream_manager.py lbry-sdk-0.108.0/tests/unit/stream/test_stream_manager.py
---- lbry-sdk-0.108.0_orig/tests/unit/stream/test_stream_manager.py	2022-05-06 21:35:23.326666576 +0200
-+++ lbry-sdk-0.108.0/tests/unit/stream/test_stream_manager.py	2022-05-06 20:18:33.609999987 +0200
+diff --unified --recursive --text --color lbry-sdk-0.109.0_orig/tests/unit/stream/test_stream_manager.py lbry-sdk-0.109.0/tests/unit/stream/test_stream_manager.py
+--- lbry-sdk-0.109.0_orig/tests/unit/stream/test_stream_manager.py	2022-06-20 11:36:43.013333276 +0100
++++ lbry-sdk-0.109.0/tests/unit/stream/test_stream_manager.py	2022-06-20 11:30:03.139999973 +0100
 @@ -174,7 +174,7 @@
                  await self.file_manager.download_from_uri(self.uri, self.exchange_rate_manager)
          else:

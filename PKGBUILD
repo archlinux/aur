@@ -1,12 +1,12 @@
 # Maintainer: missing <liri_bucketful at slmail dot me>
 pkgname=lbry-sdk
-pkgver=0.108.0
-pkgrel=2
+pkgver=0.109.0
+pkgrel=1
 pkgdesc="The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps."
 arch=('x86_64')
 url="https://github.com/lbryio/lbry-sdk"
 license=('MIT')
-makedepends=('git' 'cmake' 'openssl' 'python-pip' 'python-protobuf')
+makedepends=('git' 'cmake' 'python')
 provides=('lbrynet')
 conflicts=('lbrynet')
 options=('!buildflags')
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbry-sdk/archive
         'lbry-rocksdb.patch'
         "lbry-sdk-${pkgver}.patch"
         'lbry-venv.patch')
-sha256sums=('410f92741d87f2ca13df3748d2e593e8dc70f7b5a1420fe6f4f1013b4b03f35d'
+sha256sums=('e82fcfeb9bf1cc8f64a99f2d9aab8e3bd468ac68b152d7c89b38c1c98281666f'
             'SKIP'
-            'a80ae363aedb3809d1fcd27cc7c3b5ed44f1b6a6a436302aad2136d05ba3aae6'
-            'ac49f097561e8f2cb666bbf10393ee9ee878a308752ba83e602edb1e265ad33a'
+            'ba653adbdd6001080e5963929a733af0ac287b5022e16444c2848fac898c420a'
+            '3e692fa93c60eddb1ec7f3d8de4a90ae77995d76bd8e8329ccc3b8617616f246'
             '7061749daacd7ab1db2b10383aaedfc12b47de2cc72c57e0c533b63e9302c881')
 
 prepare() {
