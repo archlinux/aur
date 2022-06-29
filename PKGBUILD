@@ -6,9 +6,9 @@
 
 pkgbase='python2-pyxdg'
 pkgname=('python2-pyxdg' 'pyxdg' 'python2-xdg')
-_name="${pkgname#python2-}"
+_name="${pkgbase#python2-}"
 pkgver=0.28
-pkgrel=3
+pkgrel=4
 pkgdesc='Official freedesktop.org XDG specifications support library'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"

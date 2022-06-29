@@ -1,7 +1,7 @@
 pkgbase = python2-pyxdg
 	pkgdesc = Official freedesktop.org XDG specifications support library
 	pkgver = 0.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/pyxdg/0.28/
 	arch = any
 	license = LGPL
