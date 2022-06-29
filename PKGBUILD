@@ -1,7 +1,7 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=camotics-git
-pkgver=r956.57c1268
+pkgver=r960.6942bd0
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
@@ -36,12 +36,12 @@ pkgver() {
 build() {
   cd "${pkgname%-*}"
   mkdir -p build
-  CBANG_HOME=/opt/cbang scons cxxstd="c++14" linkflags=$LDFLAGS
+  CBANG_HOME=/opt/cbang scons cxxstd="c++17" linkflags=$LDFLAGS
 }
 
 package() {
   cd "${pkgname%-*}"
-  CBANG_HOME=/opt/cbang scons install cxxstd="c++14" install_prefix="$pkgdir/usr" 
+  CBANG_HOME=/opt/cbang scons install cxxstd="c++17" install_prefix="$pkgdir/usr" 
 }
 
 # vim:set ts=2 sw=2 et:
