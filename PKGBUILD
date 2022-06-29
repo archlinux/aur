@@ -5,7 +5,7 @@ pkgname=firefox-nightly-de
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
 pkgver=104.0a1.20220627
-pkgrel=1
+pkgrel=2
 _version=104.0a1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -14,7 +14,7 @@ source=('firefox-nightly.desktop' 'policies.json')
 source_i686=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-i686.tar.bz2"{,.asc})
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-x86_64.tar.bz2"{,.asc})
 
-sha512sums=('6ce4f12edb0782b7946a6e7803fdc48e86483e4f889321d736a1e89f8c511686fc9d60427f8ec5a34f5fadf5ccd0874bce9bdbf12da3c417a89ad5a60dc5f0e9'
+sha512sums=('3abc6a8e2402318e2d571507ed597f5c04f8f97ba1e9801cb6d55fdf386f231cc631adcabaf131ef2ea8d8e075c23688615e0cf622f0022ead0903ae8c3971c6'
   '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
 sha512sums_i686=('SKIP' 'SKIP')
 sha512sums_x86_64=('SKIP' 'SKIP')
