@@ -53,6 +53,9 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1773259
+  patch -Np1 -i ../0002-fix-ftbfs-newer-cbindgen.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
