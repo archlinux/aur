@@ -2,13 +2,24 @@
 
 _name=pdm-pep517
 pkgname=python-pdm-pep517
-pkgver=1.0.0
+# WARNING: python-pdm may not be compatible with whatever pdm-pep517 can be upgraded to:
+# https://github.com/pdm-project/pdm/issues/1165
+pkgver=0.12.7
 pkgrel=1
+epoch=1
 pkgdesc="A PEP 517 backend for PDM that supports PEP 621 metadata"
 arch=(any)
 url="https://github.com/pdm-project/pdm-pep517"
 license=(MIT)
-depends=(python-boolean.py python-cerberus python-license-expression python-packaging python-pyparsing python-tomli python-tomli-w)
+depends=(python)
+# NOTE devendored from sources
+depends+=(
+  python-cerberus
+  python-license-expression
+  python-packaging
+  python-tomli
+  python-tomli-w
+)
 makedepends=(python-build python-installer)
 checkdepends=(git python-pytest python-setuptools)
 optdepends=(
@@ -16,19 +27,16 @@ optdepends=(
 )
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-  $pkgname-1.0.0-devendor.patch
+  $pkgname-0.12.7-devendor.patch
 )
-sha512sums=('7dc0d2954d1804f6e013537ef33ef0f90498f4036dcd87d75a33fa443cbe9cfe3432c8d087b84498acbd23391d4aeab0e43c53055d4745ad105e9e6767531aeb'
-            '3a37894a930896cd99f526b79645a46e79f8a5d83e3f20493acdbc7be8185ee3e4780ba60fc5b2c97d3d4e1ae4378b49a5d099deabc9b998720f37387ae537af')
-b2sums=('8f1165adbc25e9fe2a41d9cd62cf4f5d6f687b0ee8a72e22b3c3664eabcd115176e63556335f4888d61f05b5922bff5a4ba1caf3fe2a61e3c928eb79c3acb9ae'
-        'fdf9743958ba8b748dddb432ccad8a2a2c09266a1130bdd259c27e342a4830d215e99bf6e756aa0d3279f26706cce7063d781c489fe1ddb7ea637195a509f454')
+sha512sums=('4b3e40084c3bb4e3206fc00a98e24e28d46ec5efd4b76efebd4d03c7864a3cdefcc7cd429c4d5688a84f298738b8268f79e2ce7082421f539aff03cbe7d0c393'
+            '7605bb15e16bde3807d97b6c3ff6359a40a5fd84adecfc53303938245c5c9704329fe59b0d32dbecf328895c44f5a04340e25560c8ec8d7511125fbc32a2590c')
+b2sums=('4e405e897a27eb83b837d0b4b7bc73ba5e79d9d2c66ceabd03cf712a4b5bfdb31be58c5a78aee64f32b819cb63908ac360b91758715f014c4a7d45954bdff96e'
+        '7c7b462b325b080e3cd4141beff1870b310919b5f3d7e11878c2242f822ffca66e8b01007762afc158a6013a737798f4946646b44b36cdc7a236e8b2c10adbe7')
 
 prepare() {
   cd $_name-$pkgver
-  # remove vendoring of python-boolean.py, python-cerberus,
-  # python-license-expression, python-packaging, python-pyparsing,
-  # python-tomli, python-tomli-w
-  patch -Np1 -i ../$pkgname-1.0.0-devendor.patch
+  patch -Np1 -i ../$pkgname-0.12.7-devendor.patch
   rm -frv pdm/pep517/_vendor
 }
 
