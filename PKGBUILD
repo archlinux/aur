@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.8.1.r0.gb5207b7
+pkgver=0.8.2.r0.g4ed1f05
 pkgrel=1
-pkgdesc="A handy way to handle sh/bash cli parameters (git)"
+pkgdesc="Make beautiful bash cli with ease"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')

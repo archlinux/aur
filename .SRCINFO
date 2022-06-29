@@ -1,6 +1,6 @@
 pkgbase = argc-git
-	pkgdesc = A handy way to handle sh/bash cli parameters (git)
-	pkgver = 0.8.1.r0.gb5207b7
+	pkgdesc = Make beautiful bash cli with ease
+	pkgver = 0.8.2.r0.g4ed1f05
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
