@@ -1,13 +1,14 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
+set -o pipefail
+
+HASH=b2sum
+HASH_NAME=b2sums
 
 source PKGBUILD
 PKGNAME=$_name
 RELEASES=$(curl -sL https://pypi.org/pypi/$PKGNAME/json | jq .releases)
 LICENSE_URL="https://raw.githubusercontent.com/pola-rs/polars/master/LICENSE"
-
-HASH=b2sum
-HASH_NAME=b2sums
-
 LICENSE_SUM=$(curl -sL $LICENSE_URL | $HASH - | cut -d' ' -f1)
 
 LAST=$(jq -r <<<$RELEASES '
