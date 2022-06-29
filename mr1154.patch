@@ -1,7 +1,55 @@
-From 798fd5475bed4e8c0398e8fa57e7685ee4194b7c Mon Sep 17 00:00:00 2001
+From cadfb726e90256f972b398dcbfea6758ef0ca34c Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 26 Jun 2022 11:19:18 +0300
+Subject: [PATCH 01/24] clutter/frame-clock: Ignore missing presentation
+ timestamps
+
+In some hardware configurations, presentation timestamps could be
+missing from some page flip events, leading to a temporary loss of
+vblank synchronization.
+
+This occurs at least with AMD GPUs for atomic commits that only update
+the cursor plane. [0]
+
+In those cases, it's better to calculate the next update time
+according to the last valid presentation timestamp instead of relying
+on the dispatch lateness.
+
+[0] https://gitlab.freedesktop.org/drm/amd/-/issues/2030
+---
+ clutter/clutter/clutter-frame-clock.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
+index 23141f1c93..cd80439fe5 100644
+--- a/clutter/clutter/clutter-frame-clock.c
++++ b/clutter/clutter/clutter-frame-clock.c
+@@ -270,7 +270,8 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+     }
+ #endif
+ 
+-  frame_clock->last_presentation_time_us = frame_info->presentation_time;
++  if (frame_info->presentation_time > 0)
++    frame_clock->last_presentation_time_us = frame_info->presentation_time;
+ 
+   frame_clock->got_measurements_last_frame = FALSE;
+ 
+@@ -881,6 +882,7 @@ static void
+ clutter_frame_clock_init (ClutterFrameClock *frame_clock)
+ {
+   frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
++  frame_clock->last_presentation_time_us = 0;
+ }
+ 
+ static void
+-- 
+GitLab
+
+
+From 2f0a14713918b4da94006c2d800e8c6d6615d3ce Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 4 Jul 2020 01:03:19 +0300
-Subject: [PATCH 01/23] renderer-view: Keep track of the associated MetaOutput
+Subject: [PATCH 02/24] renderer-view: Keep track of the associated MetaOutput
 
 ---
  src/backends/meta-renderer-view.c             | 24 +++++++++++++++++++
@@ -125,10 +173,10 @@ index 7c1a4facfd..2f9eca5ba3 100644
 GitLab
 
 
-From b5c9bd1301c6b26517c83a710c6c3a8201916c0d Mon Sep 17 00:00:00 2001
+From f8864317bea249136e1ab75eae28a999f1ac67ff Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 17:14:03 +0300
-Subject: [PATCH 02/23] surface-actor: Add "frozen" signal
+Subject: [PATCH 03/24] surface-actor: Add "frozen" signal
 
 This signal is emitted when the surface actor is frozen and will not
 update until it is thawed.
@@ -176,10 +224,10 @@ index c2bf6696a2..978ccf9e61 100644
 GitLab
 
 
-From 0c7c4e4cd97bb22ffdb9831cd47ae69f2c7a4133 Mon Sep 17 00:00:00 2001
+From b320e9e3936083e94d977d97847713d3666c4e1c Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 19:50:45 +0300
-Subject: [PATCH 03/23] clutter/stage: Allow scheduling stage updates in the
+Subject: [PATCH 04/24] clutter/stage: Allow scheduling stage updates in the
  context of an actor
 
 This is required synchronizing the frame clock to the update rate of
@@ -317,10 +365,10 @@ index 5412c4d729..a579820a44 100644
 GitLab
 
 
-From 74f3405a954483d1c1ceaa24025139dbb483f320 Mon Sep 17 00:00:00 2001
+From bbc2498b3839d28b2d4e6efc995e81acd7345a8e Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 13 Mar 2021 12:55:09 +0200
-Subject: [PATCH 04/23] clutter/frame-clock: Simplify logic around early
+Subject: [PATCH 05/24] clutter/frame-clock: Simplify logic around early
  presented event
 
 A few calculations and assignments are done unnecessarily when the
@@ -331,10 +379,10 @@ complexity of the function for no reason.
  1 file changed, 23 insertions(+), 23 deletions(-)
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index 23141f1c93..f822720896 100644
+index cd80439fe5..e89a0454dc 100644
 --- a/clutter/clutter/clutter-frame-clock.c
 +++ b/clutter/clutter/clutter-frame-clock.c
-@@ -406,8 +406,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -407,8 +407,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
    int64_t refresh_interval_us;
    int64_t min_render_time_allowed_us;
    int64_t max_render_time_allowed_us;
@@ -343,7 +391,7 @@ index 23141f1c93..f822720896 100644
    int64_t next_presentation_time_us;
    int64_t next_update_time_us;
  
-@@ -509,28 +507,30 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -510,28 +508,30 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
          refresh_interval_us;
      }
  
@@ -399,10 +447,10 @@ index 23141f1c93..f822720896 100644
 GitLab
 
 
-From c6c6dd437ba9ef388129a31115e405a918a60912 Mon Sep 17 00:00:00 2001
+From 502ec4fb9a99236a6d8465b802e0185acff64d83 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 4 Aug 2020 00:28:12 +0300
-Subject: [PATCH 05/23] clutter/frame-clock: Add a mode for variable scheduling
+Subject: [PATCH 06/24] clutter/frame-clock: Add a mode for variable scheduling
 
 A new variable mode is introduced which allows:
   * Immediate update scheduling, even when an update is already
@@ -412,12 +460,12 @@ A new variable mode is introduced which allows:
 This mode will be used by following commits to implement
 synchronization of page flips to actor frames.
 ---
- clutter/clutter/clutter-frame-clock.c | 143 ++++++++++++++++++++------
+ clutter/clutter/clutter-frame-clock.c | 135 ++++++++++++++++++++------
  clutter/clutter/clutter-frame-clock.h |  10 ++
- 2 files changed, 120 insertions(+), 33 deletions(-)
+ 2 files changed, 118 insertions(+), 27 deletions(-)
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index f822720896..9419acf0de 100644
+index e89a0454dc..54198c1508 100644
 --- a/clutter/clutter/clutter-frame-clock.c
 +++ b/clutter/clutter/clutter-frame-clock.c
 @@ -47,6 +47,9 @@ typedef struct _EstimateQueue
@@ -464,19 +512,7 @@ index f822720896..9419acf0de 100644
    int64_t next_presentation_time_us;
  
    /* Buffer must be submitted to KMS and GPU rendering must be finished
-@@ -270,7 +276,10 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
-     }
- #endif
- 
--  frame_clock->last_presentation_time_us = frame_info->presentation_time;
-+  if (frame_info->presentation_time > 0)
-+    frame_clock->last_presentation_time_us = frame_info->presentation_time;
-+  else
-+    frame_clock->last_presentation_time_us = PRESENTATION_TIME_INVALID;
- 
-   frame_clock->got_measurements_last_frame = FALSE;
- 
-@@ -312,8 +321,8 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+@@ -313,8 +319,8 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
  
    switch (frame_clock->state)
      {
@@ -486,7 +522,7 @@ index f822720896..9419acf0de 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -332,8 +341,8 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
+@@ -333,8 +339,8 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
  
    switch (frame_clock->state)
      {
@@ -496,7 +532,7 @@ index f822720896..9419acf0de 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -398,12 +407,12 @@ clutter_frame_clock_compute_max_render_time_us (ClutterFrameClock *frame_clock)
+@@ -399,12 +405,12 @@ clutter_frame_clock_compute_max_render_time_us (ClutterFrameClock *frame_clock)
  
  static void
  calculate_next_update_time_us (ClutterFrameClock *frame_clock,
@@ -510,7 +546,7 @@ index f822720896..9419acf0de 100644
    int64_t min_render_time_allowed_us;
    int64_t max_render_time_allowed_us;
    int64_t next_presentation_time_us;
-@@ -411,9 +420,9 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -412,9 +418,9 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
  
    now_us = g_get_monotonic_time ();
  
@@ -522,7 +558,7 @@ index f822720896..9419acf0de 100644
      {
        *out_next_update_time_us =
          frame_clock->last_dispatch_time_us ?
-@@ -421,7 +430,7 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -422,7 +428,7 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
            frame_clock->last_dispatch_lateness_us) + refresh_interval_us) :
          now_us;
  
@@ -531,7 +567,7 @@ index f822720896..9419acf0de 100644
        return;
      }
  
-@@ -449,7 +458,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -450,7 +456,6 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
     * 0
     *
     */
@@ -539,7 +575,7 @@ index f822720896..9419acf0de 100644
    next_presentation_time_us = last_presentation_time_us + refresh_interval_us;
  
    /*
-@@ -507,7 +515,7 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -508,7 +513,7 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
          refresh_interval_us;
      }
  
@@ -548,45 +584,49 @@ index f822720896..9419acf0de 100644
      {
        int64_t time_since_last_next_presentation_time_us =
          next_presentation_time_us - frame_clock->next_presentation_time_us;
-@@ -542,6 +550,37 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -543,6 +548,41 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
    *out_next_presentation_time_us = next_presentation_time_us;
  }
  
 +static void
-+calculate_timeout_update_time_us (ClutterFrameClock *frame_clock,
-+                                  int64_t            timeout_us,
-+                                  int64_t           *out_next_update_time_us)
++calculate_next_idle_timeout_us (ClutterFrameClock *frame_clock,
++                                int64_t           *out_next_update_time_us,
++                                int64_t           *out_next_presentation_time_us)
 +{
 +  int64_t now_us;
 +  int64_t last_presentation_time_us;
-+  int64_t next_update_time_us;
++  int64_t next_presentation_time_us;
++  int64_t timeout_interval_us;
 +
 +  now_us = g_get_monotonic_time ();
 +
 +  last_presentation_time_us = frame_clock->last_presentation_time_us;
++
++  timeout_interval_us = frame_clock->minimum_refresh_interval_us;
 +
 +  if (last_presentation_time_us == PRESENTATION_TIME_INVALID)
 +    {
 +      *out_next_update_time_us =
 +        frame_clock->last_dispatch_time_us ?
 +        ((frame_clock->last_dispatch_time_us -
-+          frame_clock->last_dispatch_lateness_us) + timeout_us) :
++          frame_clock->last_dispatch_lateness_us) + timeout_interval_us) :
 +        now_us;
 +      return;
 +    }
 +
-+  next_update_time_us = last_presentation_time_us + timeout_us;
++  next_presentation_time_us = last_presentation_time_us + timeout_interval_us;
 +
-+  while (next_update_time_us < now_us)
-+    next_update_time_us += timeout_us;
++  while (next_presentation_time_us < now_us)
++    next_presentation_time_us += timeout_interval_us;
 +
-+  *out_next_update_time_us = next_update_time_us;
++  *out_next_update_time_us = next_presentation_time_us;
++  *out_next_presentation_time_us = next_presentation_time_us;
 +}
 +
  void
  clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
  {
-@@ -551,9 +590,9 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+@@ -552,9 +592,9 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
      {
        switch (frame_clock->state)
          {
@@ -597,41 +637,27 @@ index f822720896..9419acf0de 100644
          case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
            frame_clock->pending_reschedule = TRUE;
            frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
-@@ -581,8 +620,6 @@ clutter_frame_clock_uninhibit (ClutterFrameClock *frame_clock)
- void
- clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
- {
--  int64_t next_update_time_us = -1;
--
-   if (frame_clock->inhibit_count > 0)
-     {
-       frame_clock->pending_reschedule = TRUE;
-@@ -592,9 +629,8 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+@@ -593,8 +633,8 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
  
    switch (frame_clock->state)
      {
 -    case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
--      next_update_time_us = g_get_monotonic_time ();
 +    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+       next_update_time_us = g_get_monotonic_time ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
-       return;
-@@ -605,11 +641,9 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
-       return;
-     }
+@@ -609,8 +649,8 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+   g_warn_if_fail (next_update_time_us != -1);
  
--  g_warn_if_fail (next_update_time_us != -1);
--
--  g_source_set_ready_time (frame_clock->source, next_update_time_us);
-+  g_source_set_ready_time (frame_clock->source, 0);
+   g_source_set_ready_time (frame_clock->source, next_update_time_us);
 +  frame_clock->next_presentation_time_us = PRESENTATION_TIME_INVALID;
    frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
 -  frame_clock->is_next_presentation_time_valid = FALSE;
  }
  
  void
-@@ -625,16 +659,9 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -626,16 +666,9 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
  
    switch (frame_clock->state)
      {
@@ -649,7 +675,7 @@ index f822720896..9419acf0de 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        return;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -643,10 +670,53 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -644,10 +677,52 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
        return;
      }
  
@@ -663,10 +689,9 @@ index f822720896..9419acf0de 100644
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
 +      break;
 +    case CLUTTER_FRAME_CLOCK_MODE_VARIABLE:
-+      calculate_timeout_update_time_us (frame_clock,
-+                                        frame_clock->minimum_refresh_interval_us,
-+                                        &next_update_time_us);
-+      frame_clock->next_presentation_time_us = PRESENTATION_TIME_INVALID;
++      calculate_next_idle_timeout_us (frame_clock,
++                                      &next_update_time_us,
++                                      &frame_clock->next_presentation_time_us);
 +      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT;
 +      break;
 +    }
@@ -704,7 +729,7 @@ index f822720896..9419acf0de 100644
  }
  
  static void
-@@ -692,7 +762,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -693,7 +768,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
    COGL_TRACE_END (ClutterFrameClockEvents);
  
    COGL_TRACE_BEGIN (ClutterFrameClockTimelines, "Frame Clock (timelines)");
@@ -713,7 +738,7 @@ index f822720896..9419acf0de 100644
      time_us = frame_clock->next_presentation_time_us;
    advance_timelines (frame_clock, time_us);
    COGL_TRACE_END (ClutterFrameClockTimelines);
-@@ -705,11 +775,11 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -706,11 +781,11 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
  
    switch (frame_clock->state)
      {
@@ -726,7 +751,7 @@ index f822720896..9419acf0de 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        break;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -850,6 +920,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+@@ -851,6 +926,10 @@ clutter_frame_clock_new (float                            refresh_rate,
    init_frame_clock_source (frame_clock);
  
    clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
@@ -737,11 +762,12 @@ index f822720896..9419acf0de 100644
    frame_clock->vblank_duration_us = vblank_duration_us;
  
    return frame_clock;
-@@ -880,7 +954,10 @@ clutter_frame_clock_dispose (GObject *object)
+@@ -881,8 +960,10 @@ clutter_frame_clock_dispose (GObject *object)
  static void
  clutter_frame_clock_init (ClutterFrameClock *frame_clock)
  {
 -  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
+-  frame_clock->last_presentation_time_us = 0;
 +  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
 +  frame_clock->mode = CLUTTER_FRAME_CLOCK_MODE_FIXED;
 +  frame_clock->last_presentation_time_us = PRESENTATION_TIME_INVALID;
@@ -750,7 +776,7 @@ index f822720896..9419acf0de 100644
  
  static void
 diff --git a/clutter/clutter/clutter-frame-clock.h b/clutter/clutter/clutter-frame-clock.h
-index 91e6b3a130..0b2325a56d 100644
+index 91e6b3a130..380f56c6b6 100644
 --- a/clutter/clutter/clutter-frame-clock.h
 +++ b/clutter/clutter/clutter-frame-clock.h
 @@ -53,6 +53,12 @@ typedef struct _ClutterFrameListenerIface
@@ -760,7 +786,7 @@ index 91e6b3a130..0b2325a56d 100644
 +typedef enum _ClutterFrameClockMode
 +{
 +  CLUTTER_FRAME_CLOCK_MODE_FIXED,
-+  CLUTTER_FRAME_CLOCK_MODE_VARIABLE
++  CLUTTER_FRAME_CLOCK_MODE_VARIABLE,
 +} ClutterFrameClockMode;
 +
  CLUTTER_EXPORT
@@ -781,10 +807,10 @@ index 91e6b3a130..0b2325a56d 100644
 GitLab
 
 
-From ac5f155c2b7802dd8929fd314ad77f578de20ee1 Mon Sep 17 00:00:00 2001
+From a22fcb7b75da4ec069eddbf5c505d15a063117e7 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jul 2020 18:40:07 +0300
-Subject: [PATCH 06/23] backends/native: Introduce MetaRendererViewNative
+Subject: [PATCH 07/24] backends/native: Introduce MetaRendererViewNative
 
 MetaRendererViewNative is a MetaRendererView which contains logic
 specific to views of the native backend. It will be used by following
@@ -1150,10 +1176,10 @@ index f752f03d96..d3d1ae0f49 100644
 GitLab
 
 
-From ff121f0833b6a20b35efe5a18b15f8dfa9b72094 Mon Sep 17 00:00:00 2001
+From 755293af660cc986522c7ce83673284bc799e781 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 4 Jul 2020 22:13:55 +0300
-Subject: [PATCH 07/23] renderer-view/native: Allow syncing frame clock updates
+Subject: [PATCH 08/24] renderer-view/native: Allow syncing frame clock updates
  with actor updates
 
 Allow per-view tracking of actors for the purpose of synchronizing
@@ -1197,7 +1223,7 @@ index fdfe4a35f1..8fc365ea02 100644
  
  void
 diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
-index 38fd0453d9..14f3c543b2 100644
+index 38fd0453d9..c1916bd1bc 100644
 --- a/src/backends/native/meta-renderer-view-native.c
 +++ b/src/backends/native/meta-renderer-view-native.c
 @@ -24,20 +24,178 @@
@@ -1210,7 +1236,7 @@ index 38fd0453d9..14f3c543b2 100644
 +{
 +  META_FRAME_SYNC_MODE_INIT,
 +  META_FRAME_SYNC_MODE_ENABLED,
-+  META_FRAME_SYNC_MODE_DISABLED
++  META_FRAME_SYNC_MODE_DISABLED,
 +} MetaFrameSyncMode;
 +
  struct _MetaRendererViewNative
@@ -1397,10 +1423,10 @@ index e420640069..07f90ffb76 100644
 GitLab
 
 
-From ddfce785b699d1bd405ff689143680683f780f01 Mon Sep 17 00:00:00 2001
+From 8cc03dac54a952b62b362324830fb45b42220d27 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 20:11:48 +0300
-Subject: [PATCH 08/23] wayland/actor-surface: Schedule actor updates for frame
+Subject: [PATCH 09/24] wayland/actor-surface: Schedule actor updates for frame
  callbacks
 
 ---
@@ -1425,10 +1451,10 @@ index b6d26fdc11..096b46aa2a 100644
 GitLab
 
 
-From 157452e0c41355dac5695ef45e4d4a4e9430f229 Mon Sep 17 00:00:00 2001
+From db0e3d4c9b70881fc560e0ef19832268b75c6656 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sun, 16 Aug 2020 10:07:54 +0300
-Subject: [PATCH 09/23] clutter/stage: Always schedule actor updates on redraw
+Subject: [PATCH 10/24] clutter/stage: Always schedule actor updates on redraw
 
 When updates are scheduled in the context of specific actors,
 already-scheduled updates may need to be rescheduled based on the
@@ -1490,10 +1516,10 @@ index 3e81655e01..f40df1017d 100644
 GitLab
 
 
-From c57463c2df8709ce10586ab82e0f79c2ae287218 Mon Sep 17 00:00:00 2001
+From c9e224d7589ae302cdb9d18276a09ccad0fb934f Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:39:49 +0200
-Subject: [PATCH 10/23] window: Allow indicating that variable refresh rate is
+Subject: [PATCH 11/24] window: Allow indicating that variable refresh rate is
  supported
 
 ---
@@ -1565,10 +1591,10 @@ index 95a8e33e04..175a01d342 100644
 GitLab
 
 
-From 39832e071ca01eceab176a9799ae80bf9d6c7f96 Mon Sep 17 00:00:00 2001
+From fe800f3a3cf65d5b99284f356068542fb050e186 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 11 Jun 2022 12:50:02 +0300
-Subject: [PATCH 11/23] window: Allow checking if a window covers a rect
+Subject: [PATCH 12/24] window: Allow checking if a window covers a rect
 
 This is just a small function to improve the readability of the code.
 ---
@@ -1613,10 +1639,10 @@ index 175a01d342..fed841ed49 100644
 GitLab
 
 
-From 8eb6a859916a685d2a8317abd63962e69bae10f9 Mon Sep 17 00:00:00 2001
+From 0e2553d80211c132a4379e80de222b563158053e Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Sat, 11 Jun 2022 13:03:24 +0300
-Subject: [PATCH 12/23] workspace: Allow searching for the topmost window
+Subject: [PATCH 13/24] workspace: Allow searching for the topmost window
  overlapping a rect
 
 This is useful for determining if a window is the topmost window in
@@ -1677,10 +1703,10 @@ index 3bd517fca6..dd2feb5fe4 100644
 GitLab
 
 
-From 98fbf055e7d4fe081c46250a2c8a455595b769e6 Mon Sep 17 00:00:00 2001
+From 55084a93c10c8ca281aa90637fdb76b3887e0680 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 14 Jun 2022 01:04:03 +0300
-Subject: [PATCH 13/23] surface-actor: Allow checking if a surface actor covers
+Subject: [PATCH 14/24] surface-actor: Allow checking if a surface actor covers
  a rect
 
 ---
@@ -1689,7 +1715,7 @@ Subject: [PATCH 13/23] surface-actor: Allow checking if a surface actor covers
  2 files changed, 23 insertions(+)
 
 diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
-index 978ccf9e61..883eb7c398 100644
+index 978ccf9e61..9c5ea5eeaa 100644
 --- a/src/compositor/meta-surface-actor.c
 +++ b/src/compositor/meta-surface-actor.c
 @@ -521,6 +521,26 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
@@ -1702,10 +1728,10 @@ index 978ccf9e61..883eb7c398 100644
 +{
 +  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
 +  MetaRectangle surface_rect;
-+  float x, y, width, height;
++  gfloat x, y, width, height;
 +
-+  clutter_actor_get_position (actor, &x, &y);
-+  clutter_actor_get_size (actor, &width, &height);
++  clutter_actor_get_transformed_position (actor, &x, &y);
++  clutter_actor_get_transformed_size (actor, &width, &height);
 +
 +  surface_rect = META_RECTANGLE_INIT (ceilf (x),
 +                                      ceilf (y),
@@ -1737,10 +1763,10 @@ index f69cb15275..3128f513cd 100644
 GitLab
 
 
-From a49f32b2ba0480cd08d8d2b8715e5c3ca3271636 Mon Sep 17 00:00:00 2001
+From 829b523689f9821d865d978d7e4a886e1224e99d Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 01:44:25 +0200
-Subject: [PATCH 14/23] compositor/native: Request frame sync for compatible
+Subject: [PATCH 15/24] compositor/native: Request frame sync for compatible
  windows
 
 ---
@@ -1943,10 +1969,10 @@ index ae1fa4d903..ccbf42325a 100644
 GitLab
 
 
-From 09f04a1717a1a5fb4834dff142343f443df3c30f Mon Sep 17 00:00:00 2001
+From c393fa1f417fc1ec5710bd3648f2eceda33b74f7 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 4 Aug 2020 22:07:13 +0300
-Subject: [PATCH 15/23] temp: Assume every window supports VRR
+Subject: [PATCH 16/24] temp: Assume every window supports VRR
 
 ---
  src/compositor/meta-window-actor.c | 4 ++--
@@ -1971,10 +1997,10 @@ index ccbf42325a..69219d19f8 100644
 GitLab
 
 
-From 3b53c38d5fba7e6790c3576a9758e715b543365c Mon Sep 17 00:00:00 2001
+From 3704871be02b8c876c632b78957cb6d79d860b62 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:42:37 +0200
-Subject: [PATCH 16/23] connector/kms: Detect variable refresh rate capability
+Subject: [PATCH 17/24] connector/kms: Detect variable refresh rate capability
 
 The "vrr_capable" property indicates whether variable refresh rate is
 supported for a connector.
@@ -2032,10 +2058,10 @@ index c2b763548e..381edca973 100644
 GitLab
 
 
-From 7226cff4fe556ae9cbdf11bbbf0efbf02a8c7017 Mon Sep 17 00:00:00 2001
+From f269e378891ee749fcc032e04efcd0b912235fa5 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 22:17:59 +0200
-Subject: [PATCH 17/23] update/kms: Allow setting CRTC properties
+Subject: [PATCH 18/24] update/kms: Allow setting CRTC properties
 
 ---
  .../native/meta-kms-impl-device-atomic.c      | 25 ++++++++
@@ -2267,10 +2293,10 @@ index 53fc92eb86..d2e912347b 100644
 GitLab
 
 
-From b28488356a0018feab092ffb9a03d2cce12476d8 Mon Sep 17 00:00:00 2001
+From 3f4ad2c1529d165124df1aa800c44e20cb4c4a10 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Thu, 9 Jun 2022 23:49:23 +0300
-Subject: [PATCH 18/23] kms/update: Explicitly track whether ALLOW_MODESET is
+Subject: [PATCH 19/24] kms/update: Explicitly track whether ALLOW_MODESET is
  required
 
 This will be used by a following commit to set the
@@ -2356,10 +2382,10 @@ index d2e912347b..3feb9b05a9 100644
 GitLab
 
 
-From 00ac85b8238e4a435fc0da00911879ecf74beac6 Mon Sep 17 00:00:00 2001
+From d91239551b36814081fd4fa33c8a7ffa4cc227f8 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 21:44:15 +0200
-Subject: [PATCH 19/23] crtc/kms: Allow setting the "VRR_ENABLED" property on a
+Subject: [PATCH 20/24] crtc/kms: Allow setting the "VRR_ENABLED" property on a
  CRTC
 
 Add the "VRR_ENABLED" CRTC propetry ID and a funtion to update its
@@ -2368,20 +2394,20 @@ value on a CRTC.
 As required by the i915 DRM driver, it sets the
 DRM_MODE_ATOMIC_ALLOW_MODESET flag when modified.
 ---
- src/backends/native/meta-kms-crtc-private.h   |  1 +
- src/backends/native/meta-kms-crtc.c           |  5 ++++
- .../native/meta-kms-impl-device-atomic.c      | 30 +++++++++++++++++++
- .../native/meta-kms-impl-device-simple.c      | 30 +++++++++++++++++++
- src/backends/native/meta-kms-update-private.h |  4 +++
- src/backends/native/meta-kms-update.c         | 17 +++++++++++
- src/backends/native/meta-kms-update.h         |  4 +++
- 7 files changed, 91 insertions(+)
+ src/backends/native/meta-kms-crtc-private.h    |  8 ++++++++
+ src/backends/native/meta-kms-crtc.c            |  5 +++++
+ .../native/meta-kms-impl-device-atomic.c       | 18 ++++++++++++++++++
+ .../native/meta-kms-impl-device-simple.c       | 18 ++++++++++++++++++
+ src/backends/native/meta-kms-update-private.h  |  4 ++++
+ src/backends/native/meta-kms-update.c          | 17 +++++++++++++++++
+ src/backends/native/meta-kms-update.h          |  4 ++++
+ 7 files changed, 74 insertions(+)
 
 diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
-index 65bda3f10b..0742c1e89c 100644
+index 65bda3f10b..9575b61e12 100644
 --- a/src/backends/native/meta-kms-crtc-private.h
 +++ b/src/backends/native/meta-kms-crtc-private.h
-@@ -30,6 +30,7 @@ typedef enum _MetaKmsCrtcProp
+@@ -30,9 +30,17 @@ typedef enum _MetaKmsCrtcProp
    META_KMS_CRTC_PROP_MODE_ID = 0,
    META_KMS_CRTC_PROP_ACTIVE,
    META_KMS_CRTC_PROP_GAMMA_LUT,
@@ -2389,6 +2415,16 @@ index 65bda3f10b..0742c1e89c 100644
    META_KMS_CRTC_N_PROPS
  } MetaKmsCrtcProp;
  
++typedef enum _MetaKmsCrtcVRRMode
++{
++  META_KMS_CRTC_VRR_MODE_DISABLED = 0,
++  META_KMS_CRTC_VRR_MODE_ENABLED,
++  META_KMS_CRTC_VRR_MODE_N_PROPS,
++} MetaKmsCrtcVRRMode;
++
+ MetaKmsCrtc * meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+                                  drmModeCrtc        *drm_crtc,
+                                  int                 idx,
 diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
 index e9bd9308b2..b00ccca719 100644
 --- a/src/backends/native/meta-kms-crtc.c
@@ -2406,39 +2442,27 @@ index e9bd9308b2..b00ccca719 100644
    };
  
 diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
-index df4d9c44a6..c1ff8b2e57 100644
+index df4d9c44a6..0a26d2780f 100644
 --- a/src/backends/native/meta-kms-impl-device-atomic.c
 +++ b/src/backends/native/meta-kms-impl-device-atomic.c
-@@ -273,6 +273,36 @@ process_crtc_update (MetaKmsImplDevice  *impl_device,
+@@ -273,6 +273,24 @@ process_crtc_update (MetaKmsImplDevice  *impl_device,
    MetaKmsCrtcUpdate *crtc_update = update_entry;
    MetaKmsCrtc *crtc = crtc_update->crtc;
  
-+  if (crtc_update->vrr_mode.has_update &&
-+      crtc_update->vrr_mode.is_active)
++  if (crtc_update->vrr_mode.has_update)
 +    {
 +      meta_topic (META_DEBUG_KMS,
-+                  "[atomic] Setting VRR mode on CRTC %u (%s)",
++                  "[atomic] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
 +                  meta_kms_crtc_get_id (crtc),
 +                  meta_kms_impl_device_get_path (impl_device));
 +
 +      if (!add_crtc_property (impl_device,
 +                              crtc, req,
 +                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              1,
-+                              error))
-+        return FALSE;
-+    }
-+  else if (crtc_update->vrr_mode.has_update)
-+    {
-+      meta_topic (META_DEBUG_KMS,
-+                  "[atomic] Unsetting VRR mode on CRTC %u (%s)",
-+                  meta_kms_crtc_get_id (crtc),
-+                  meta_kms_impl_device_get_path (impl_device));
-+
-+      if (!add_crtc_property (impl_device,
-+                              crtc, req,
-+                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              0,
++                              crtc_update->vrr_mode.is_enabled,
 +                              error))
 +        return FALSE;
 +    }
@@ -2447,39 +2471,27 @@ index df4d9c44a6..c1ff8b2e57 100644
  }
  
 diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index 4c257755a2..ece02d56ec 100644
+index 4c257755a2..89310ce0f3 100644
 --- a/src/backends/native/meta-kms-impl-device-simple.c
 +++ b/src/backends/native/meta-kms-impl-device-simple.c
-@@ -303,6 +303,36 @@ process_crtc_update (MetaKmsImplDevice  *impl_device,
+@@ -303,6 +303,24 @@ process_crtc_update (MetaKmsImplDevice  *impl_device,
    MetaKmsCrtcUpdate *crtc_update = update_entry;
    MetaKmsCrtc *crtc = crtc_update->crtc;
  
-+  if (crtc_update->vrr_mode.has_update &&
-+      crtc_update->vrr_mode.is_active)
++  if (crtc_update->vrr_mode.has_update)
 +    {
 +      meta_topic (META_DEBUG_KMS,
-+                  "[simple] Setting VRR mode on CRTC %u (%s)",
++                  "[simple] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
 +                  meta_kms_crtc_get_id (crtc),
 +                  meta_kms_impl_device_get_path (impl_device));
 +
 +      if (!set_crtc_property (impl_device,
 +                              crtc,
 +                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              1,
-+                              error))
-+        return FALSE;
-+    }
-+  else if (crtc_update->vrr_mode.has_update)
-+    {
-+      meta_topic (META_DEBUG_KMS,
-+                  "[simple] Unsetting VRR mode on CRTC %u (%s)",
-+                  meta_kms_crtc_get_id (crtc),
-+                  meta_kms_impl_device_get_path (impl_device));
-+
-+      if (!set_crtc_property (impl_device,
-+                              crtc,
-+                              META_KMS_CRTC_PROP_VRR_ENABLED,
-+                              0,
++                              crtc_update->vrr_mode.is_enabled,
 +                              error))
 +        return FALSE;
 +    }
@@ -2488,7 +2500,7 @@ index 4c257755a2..ece02d56ec 100644
  }
  
 diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
-index be419e0acd..d9915afc06 100644
+index be419e0acd..442da6b4ca 100644
 --- a/src/backends/native/meta-kms-update-private.h
 +++ b/src/backends/native/meta-kms-update-private.h
 @@ -88,6 +88,10 @@ typedef struct _MetaKmsCrtcUpdate
@@ -2497,13 +2509,13 @@ index be419e0acd..d9915afc06 100644
  
 +  struct {
 +    gboolean has_update;
-+    gboolean is_active;
++    gboolean is_enabled;
 +  } vrr_mode;
  } MetaKmsCrtcUpdate;
  
  typedef struct _MetaKmsPageFlipListener
 diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
-index 3feb9b05a9..85c77e80b8 100644
+index 3feb9b05a9..9af5bd9e5c 100644
 --- a/src/backends/native/meta-kms-update.c
 +++ b/src/backends/native/meta-kms-update.c
 @@ -433,6 +433,23 @@ ensure_crtc_update (MetaKmsUpdate *update,
@@ -2513,7 +2525,7 @@ index 3feb9b05a9..85c77e80b8 100644
 +void
 +meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
 +                              MetaKmsCrtc   *crtc,
-+                              gboolean       is_active)
++                              gboolean       enabled)
 +{
 +  MetaKmsCrtcUpdate *crtc_update;
 +
@@ -2522,7 +2534,7 @@ index 3feb9b05a9..85c77e80b8 100644
 +
 +  crtc_update = ensure_crtc_update (update, crtc);
 +  crtc_update->vrr_mode.has_update = TRUE;
-+  crtc_update->vrr_mode.is_active = is_active;
++  crtc_update->vrr_mode.is_enabled = enabled;
 +
 +  update->needs_allow_modeset = TRUE;
 +}
@@ -2531,7 +2543,7 @@ index 3feb9b05a9..85c77e80b8 100644
  meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
                                          MetaKmsCrtc                         *crtc,
 diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
-index f31e36aad3..2f69c754be 100644
+index f31e36aad3..4e963833ff 100644
 --- a/src/backends/native/meta-kms-update.h
 +++ b/src/backends/native/meta-kms-update.h
 @@ -123,6 +123,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
@@ -2540,7 +2552,7 @@ index f31e36aad3..2f69c754be 100644
  
 +void meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
 +                                   MetaKmsCrtc   *crtc,
-+                                   gboolean       is_active);
++                                   gboolean       enabled);
 +
  void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
                                                const int              *rectangles,
@@ -2549,10 +2561,10 @@ index f31e36aad3..2f69c754be 100644
 GitLab
 
 
-From 342fee2fbdbc2a9d1cd244d5e8f722d9d0b4a020 Mon Sep 17 00:00:00 2001
+From 0d806035414825a07bee392b5add763c09da33aa Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jun 2022 19:45:47 +0300
-Subject: [PATCH 20/23] output/kms: Allow setting the variable refresh rate
+Subject: [PATCH 21/24] output/kms: Allow setting the variable refresh rate
  mode of an output
 
 Add a function that enables variable refresh rate on a CRTC.
@@ -2714,10 +2726,10 @@ index 52acc6032a..54b1721a42 100644
 GitLab
 
 
-From 81e178c4b418145a05b7ad766b3c7d0861638735 Mon Sep 17 00:00:00 2001
+From 0fe26836cf8b846b5f660dd3ef7b824ab95ebcf1 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 20:57:41 +0200
-Subject: [PATCH 21/23] monitor: Allow checking the state of variable refresh
+Subject: [PATCH 22/24] monitor: Allow checking the state of variable refresh
  rate
 
 A monitor is considered to have variable refresh rate support if its
@@ -2776,10 +2788,10 @@ index 066caa7f46..a63300cd0e 100644
 GitLab
 
 
-From c3ba2a68ca4a61fbf851117ddf16b65bf371e664 Mon Sep 17 00:00:00 2001
+From 87e86eeafef1d0019dcea2e199aec28bfa52a48f Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Tue, 17 Mar 2020 20:52:16 +0200
-Subject: [PATCH 22/23] monitor-manager: Add variable refresh rate
+Subject: [PATCH 23/24] monitor-manager: Add variable refresh rate
  configuration
 
 This allows enabling variable refresh rate on monitors that support it.
@@ -2821,7 +2833,7 @@ index af78ec0517..89d878748f 100644
  	@properties may effect the global monitor configuration state. Possible
  	properties are:
 diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
-index da3f1dd544..0fb36ef93d 100644
+index da3f1dd544..c449b07a03 100644
 --- a/src/backends/meta-monitor-config-manager.c
 +++ b/src/backends/meta-monitor-config-manager.c
 @@ -286,7 +286,8 @@ assign_monitor_crtc (MetaMonitor         *monitor,
@@ -2830,7 +2842,7 @@ index da3f1dd544..0fb36ef93d 100644
      .is_presentation = assign_output_as_presentation,
 -    .is_underscanning = data->monitor_config->enable_underscanning
 +    .is_underscanning = data->monitor_config->enable_underscanning,
-+    .is_vrr_enabled = data->monitor_config->enable_vrr
++    .is_vrr_enabled = data->monitor_config->enable_vrr,
    };
  
    g_ptr_array_add (data->crtc_assignments, crtc_assignment);
@@ -2840,7 +2852,7 @@ index da3f1dd544..0fb36ef93d 100644
      .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
 -    .enable_underscanning = meta_monitor_is_underscanning (monitor)
 +    .enable_underscanning = meta_monitor_is_underscanning (monitor),
-+    .enable_vrr = meta_monitor_is_vrr_enabled (monitor)
++    .enable_vrr = meta_monitor_is_vrr_enabled (monitor),
    };
  
    return monitor_config;
@@ -2850,7 +2862,7 @@ index da3f1dd544..0fb36ef93d 100644
                                  sizeof (MetaMonitorModeSpec)),
 -        .enable_underscanning = monitor_config_in->enable_underscanning
 +        .enable_underscanning = monitor_config_in->enable_underscanning,
-+        .enable_vrr = monitor_config_in->enable_vrr
++        .enable_vrr = monitor_config_in->enable_vrr,
        };
        monitor_configs_out =
          g_list_append (monitor_configs_out, monitor_config_out);
@@ -2867,7 +2879,7 @@ index a789e2f088..adbc3e5757 100644
  
  typedef struct _MetaLogicalMonitorConfig
 diff --git a/src/backends/meta-monitor-config-migration.c b/src/backends/meta-monitor-config-migration.c
-index 69c426cd73..10c26c4f01 100644
+index 69c426cd73..9bb0abc789 100644
 --- a/src/backends/meta-monitor-config-migration.c
 +++ b/src/backends/meta-monitor-config-migration.c
 @@ -74,6 +74,7 @@ typedef struct
@@ -2893,7 +2905,7 @@ index 69c426cd73..10c26c4f01 100644
      .mode_spec = mode_spec,
 -    .enable_underscanning = output_config->is_underscanning
 +    .enable_underscanning = output_config->is_underscanning,
-+    .enable_vrr = output_config->is_vrr_enabled
++    .enable_vrr = output_config->is_vrr_enabled,
    };
  
    if (!meta_verify_monitor_config (monitor_config, error))
@@ -3036,10 +3048,10 @@ index 6d9b7f416b..93094a21cb 100644
 GitLab
 
 
-From a98390cd0adde7b86d114edc0e97ced33b261444 Mon Sep 17 00:00:00 2001
+From ac226521ed05c91c1e4d6536ba57fa1b6cd70124 Mon Sep 17 00:00:00 2001
 From: Dor Askayo <dor.askayo@gmail.com>
 Date: Fri, 10 Jun 2022 21:12:49 +0300
-Subject: [PATCH 23/23] renderer-view/native: Enable VRR and actor sync when
+Subject: [PATCH 24/24] renderer-view/native: Enable VRR and actor sync when
  applicable
 
 If an actor is tracked for synchronization and VRR is configured to
@@ -3063,7 +3075,7 @@ effectively achieving the VRR effect.
  1 file changed, 26 insertions(+), 1 deletion(-)
 
 diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
-index 14f3c543b2..677b975bc8 100644
+index c1916bd1bc..6029946a36 100644
 --- a/src/backends/native/meta-renderer-view-native.c
 +++ b/src/backends/native/meta-renderer-view-native.c
 @@ -25,6 +25,11 @@
