@@ -12,7 +12,7 @@ reponame=bluez-alsa
 url=https://github.com/Arkq/$reponame
 license=( MIT )
 depends=( alsa-lib bluez-libs glib2 libfdk-aac sbc systemd )
-makedepends=( git python-docutils )
+makedepends=( python-docutils )
 optdepends=( 'lame: build with mp3 support'
              'libbsd: build with hcitop tool'
              'libopenaptx-git: build with libopenaptx for apt-X'
