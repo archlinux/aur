@@ -1,4 +1,4 @@
-# Maintainer: Elagost <mail@elagost.com>
+# Maintainer: Adam Thiede <me@adamthiede.com>
 pkgname=ttyescape
 pkgver=1.0.2
 pkgrel=1
