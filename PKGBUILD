@@ -1,54 +1,31 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-pkgbase=python-serializable
-pkgname=('python-serializable' 'python2-serializable')
+pkgname=python-serializable
+_pkg="${pkgname#python-}"
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Base class with serialization helpers for user-defined Python objects"
 arch=('any')
-url="https://pypi.python.org/pypi/serializable"
+url="https://pypi.org/project/serializable"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=(
-	'python-nose'
-	'python-simplejson'
-	'python-typechecks'
-
-	'python2-nose'
-	'python2-simplejson'
-	'python2-typechecks')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/serializable/serializable-$pkgver.tar.gz")
+depends=('python-simplejson' 'python-six' 'python-typechecks')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-nose')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('ec604e5df0c1236c06d190043a407495c4412dd6b6fd3b45a8514518173ed961')
 
-prepare() {
-	cp -a "serializable-$pkgver"{,-py2}
-}
-
 build(){
-	( cd "serializable-$pkgver"
-	  python setup.py build )
-	( cd "serializable-$pkgver-py2"
-	  python2 setup.py build )
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	( cd "serializable-$pkgver"
-	  python setup.py nosetests )
-	( cd "serializable-$pkgver-py2"
-	  python2 setup.py nosetests )
+	cd "$_pkg-$pkgver"
+	nosetests
 }
 
-package_python2-serializable() {
-	depends=('python2-simplejson' 'python2-six' 'python2-typechecks')
-
-	cd "serializable-$pkgver-py2"
-	PYTHONHASHSEED=0 python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-}
-
-package_python-serializable() {
-	depends=('python-simplejson' 'python-six' 'python-typechecks')
-
-	cd "serializable-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+package() {
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
