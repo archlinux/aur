@@ -1,8 +1,8 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>, Sander van Kasteel <info@sandervankasteel.nl>
+# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r797.g64f6818
+pkgver=r884.g2659afe
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
@@ -64,7 +64,11 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
-	make all
+	make fixwlr
+	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+	make protocols
+    make release
+	cd ./hyprctl && make all && cd ..
 }
 
 package() {
@@ -77,4 +81,5 @@ package() {
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm755 ../tmpwlr/lib/libwlroots.so.11032 -t "${pkgdir}/usr/lib"
 }
