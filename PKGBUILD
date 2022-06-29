@@ -14,8 +14,8 @@ replaces=('chia-bin-cli')
 options=('!strip')
 source_x86_64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_amd64.deb")
 source_aarch64=("https://repo.chia.net/debian/pool/main/c/chia-blockchain-cli/chia-blockchain-cli_${pkgver}-${_pkgrel}_arm64.deb")
-sha256sums_x86_64=('8996a937fbcc00467c38ed0180954c7a56ef3e8b9a3975706927b502f1219b341cdb21c5171011e81bb812c0714d1dbe8bb0396e10d0dc0808699cac46428211')
-sha256sums_aarch64=('60bf39d184126ddcf01ece2020718b5894baf3ff0126ba29509e01d2a66e57db0a0cfbb655c0ff7ed6ea1a1a8b4241ea59a60fe18e53fa1faaab76433cfbb1da')
+sha256sums_x86_64=('b9c8dac243e6fafd2728016b622a2928666fa518cd972170f7daccae0fc1dab1')
+sha256sums_aarch64=('3208016be0f29f2fdcd3f58824af1e7779bd7994d93a50d130f84139afbfd032')
 
 package() {
 	tar -xf data.tar.xz -C "$pkgdir"
