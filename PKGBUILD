@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <hritwiksinghal@pm.me>
 pkgname=bing-wall
-pkgver=2.3
-pkgrel=0.4
+pkgver=2.4
+pkgrel=0.0
 # epoch=
 pkgdesc="Bing wallpaper of the day application for Gnome desktop"
 arch=('x86_64' 'i686')
@@ -61,6 +61,4 @@ package() {
 	cd ..
 	mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
     install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/"
-
-
 }
