@@ -1,11 +1,12 @@
 pkgbase = python-flax
 	pkgdesc = A neural network library and ecosystem for JAX designed for flexibility
 	pkgver = 0.5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/google/flax
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-jax
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/f/flax/flax-0.5.0.tar.gz
