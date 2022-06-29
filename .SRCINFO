@@ -1,7 +1,7 @@
 pkgbase = newm-git
 	pkgdesc = Wayland compositor
 	pkgver = 0.3alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jbuchermn/newm
 	arch = any
 	license = MIT
@@ -31,7 +31,7 @@ pkgbase = newm-git
 	depends = python-psutil
 	depends = python-pam
 	depends = python-pyfiglet
-	depends = python-fuzzywuzzy
+	depends = python-thefuzz
 	depends = python-dasbus
 	provides = newm
 	conflicts = newm

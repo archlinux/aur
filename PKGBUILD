@@ -3,7 +3,7 @@
 
 pkgname=newm-git
 pkgver=0.3alpha
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc="Wayland compositor"
 depends=(
@@ -29,7 +29,7 @@ depends=(
     python-psutil
     python-pam
     python-pyfiglet
-    python-fuzzywuzzy
+    python-thefuzz
     python-dasbus
 )
 makedepends=(
