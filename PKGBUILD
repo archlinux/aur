@@ -5,19 +5,16 @@ pkgname='python2-gcp-devrel-py-tools'
 _name=${pkgname#python2-}
 pkgver=0.0.16
 _commit='dbc02f5ec965a6672d47a0e8963365970d96db17'
-pkgrel=5
+pkgrel=6
 pkgdesc='Tools for Cloud Platform Python libraries and samples (Python 2 package)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
 depends=(
   'python2'
-  'python2-packaging'
-  'python2-pylint'
-  'python2-requests'
-  'python2-retrying'
 )
 makedepends=('python2-setuptools')
+# checkdepends=('python2-google-cloud-core')
 _reponame='python-repo-tools'
 _tarname="${_reponame}-${_commit}"
 source=("${_tarname}.tar.gz::https://github.com/GoogleCloudPlatform/${_reponame}/archive/${_commit}.tar.gz")
@@ -29,6 +26,13 @@ build() {
 }
 
 package() {
+  depends+=(
+    'python2-packaging'
+    'python2-pylint'
+    'python2-requests'
+    'python2-retrying'
+  )
+
   cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
   mv "${pkgdir}/usr/bin/${_name}"{,2}
