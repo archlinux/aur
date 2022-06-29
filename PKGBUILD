@@ -1,7 +1,7 @@
 # Maintainer : Mikhail Velichko  <efklid@gmail.com>
 
 pkgname=r7-office
-pkgver=7.0.2
+pkgver=7.1.1
 pkgrel=1
 pkgdesc='An enterprise office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('r7-office')
 options=('!strip' '!emptydirs')
 source=("r7-office.deb"::"https://download.r7-office.ru/ubuntu/r7-office.deb")
 noextract=("r7-office.deb")
-sha256sums=('b4b6262d78b5a548b78c0636117038c491dc21945bc909da830ff351185c3269')
+sha256sums=('5ac6991a8fa666648c264d56051c1ec0ac86e85f7c5031a88a1d44c13f069dbf')
 
 prepare() {
     mkdir -p "r7-office-${pkgver}"
