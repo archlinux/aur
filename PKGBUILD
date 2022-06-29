@@ -1,15 +1,15 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=arb
-pkgver=2.22.1
-pkgrel=2
+pkgver=2.23.0
+pkgrel=1
 pkgdesc='C library for arbitrary-precision floating-point ball arithmetic'
 arch=(x86_64)
 url='http://arblib.org/'
 license=(LGPL)
 depends=(flint)
 source=(https://github.com/fredrik-johansson/arb/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('1ef85518eee04885e8a90196498bc75e4e2410621d4184f2bc01d46b7080a243')
+sha256sums=('977d41bde46f5442511d5165c705cec32c03e852c84d7d1836135d412ce702bb')
 
 build() {
   cd $pkgname-$pkgver
