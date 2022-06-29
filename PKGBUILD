@@ -12,23 +12,23 @@ provides=('dns53')
 conflicts=('dns53')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0/dns53_0.1.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('0cca2e161a6e2942976833772276b731d456361146520cbc23940d72cdb25f08')
+sha256sums_aarch64=('571e02e4b1d933235c34e44bbb83aee56fe79dcb10ef775658998a0c6e37cf61')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0/dns53_0.1.0_linux-arm.tar.gz")
-sha256sums_armv7h=('17ed80c0ce8bb21e83b514004140cd827cd590b3d3c2ec59a3bd52a673cb82c4')
+sha256sums_armv7h=('087674bd20ceae9c4ec18d0324fce50493232509b12a87b85580d30184e45537')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0/dns53_0.1.0_linux-i386.tar.gz")
-sha256sums_i686=('d053b527589cdb698b29ff611d6bac9556fca4cd8f7661e0f6403871ada5890b')
+sha256sums_i686=('d306bde81ecc3973b677dac63c6198f17bc1f629a915514d3f3825bd20cd985d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/purpleclay/dns53/releases/download/v0.1.0/dns53_0.1.0_linux-x86_64.tar.gz")
-sha256sums_x86_64=('32d55962bac2c537f96ea57eb9aaf86cc9a61fc758bb9d2e059a2c3695c009f0')
+sha256sums_x86_64=('50c5ff37969daf51b8b82b79552304b7c8a343b347bd166e69f510956a597e5c')
 
 package() {
   # bin
   install -Dm755 "./dns53" "${pkgdir}/usr/bin/dns53"
 
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/dns53/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/dns53/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
