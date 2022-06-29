@@ -2,7 +2,7 @@
 
 _pkgname=cwtch
 pkgname=$_pkgname-git
-pkgver=1.7.0.r0.g59e3220b
+pkgver=1.8.0.r10.geabee616
 pkgrel=1
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
