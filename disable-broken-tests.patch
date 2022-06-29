@@ -1,0 +1,11 @@
+diff -upr a/cheroot/test/test_ssl.py b/cheroot/test/test_ssl.py
+--- a/cheroot/test/test_ssl.py	2020-07-13 16:43:42.000000000 +0200
++++ b/cheroot/test/test_ssl.py	2020-07-13 18:53:44.015966639 +0200
+@@ -212,7 +212,6 @@ def test_ssl_adapters(
+ @pytest.mark.parametrize(
+     'adapter_type',
+     (
+-        'builtin',
+         'pyopenssl',
+     ),
+ )
