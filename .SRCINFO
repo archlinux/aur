@@ -1,7 +1,7 @@
 pkgbase = devolo-dlan-cockpit
 	pkgdesc = Display and configure settings of your devolo device
-	pkgver = 5.1.6.2
-	pkgrel = 2
+	pkgver = 5.2.0.185
+	pkgrel = 2.1
 	url = https://www.devolo.com/support/downloads/download/devolo-cockpit.html
 	install = devolo-dlan-cockpit.install
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = devolo-dlan-cockpit
 	depends = lib32-libxt
 	depends = lib32-libxslt
 	depends = lib32-nss
-	source = https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v5-1-6-2-linux.run
+	source = https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v5-2-0-185-linux.run
 	source = devolonetsvc.service
-	sha256sums = 026f79c688ef68a75ced4b76269f5dd6c99d0929a78465937a9be9ad7f529049
+	sha256sums = 976099b5aa4785edc9ceabb6246abe724b78d2e717d1906eb91bf137f585a1e6
 	sha256sums = 6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c
 
 pkgname = devolo-dlan-cockpit
