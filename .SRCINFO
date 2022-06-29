@@ -1,7 +1,7 @@
 pkgbase = python2-urllib3
 	pkgdesc = HTTP library with thread-safe connection pooling and file post support
-	pkgver = 1.26.7
-	pkgrel = 2
+	pkgver = 1.26.9
+	pkgrel = 1
 	url = https://github.com/urllib3/urllib3
 	arch = any
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = python2-urllib3
 	optdepends = python2-pyopenssl: security support
 	optdepends = python2-pysocks: SOCKS support
 	optdepends = python-urllib3-doc: urllib3 documentation
-	source = https://github.com/urllib3/urllib3/archive/1.26.7/urllib3-1.26.7.tar.gz
-	b2sums = f5f2a6797836ef3f9fdfcce4fc6b927c74bc0c7e91d8f9321a3375db9a143214c8253b3c45cd860c747053bf621dfe6586bb6f6c6ce7d91ec8333586b6c75e70
+	source = https://github.com/urllib3/urllib3/archive/1.26.9/urllib3-1.26.9.tar.gz
+	b2sums = 0e4c7ebe3f309004463a546c0395c0e22cf57432d587d7cb4b6190afd37fb6f8669ea5c8f9a8a5f88a53c62a3944ebd09f20f5ec93e352959fa9cbea682ccc76
 
 pkgname = python2-urllib3

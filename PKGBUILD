@@ -6,8 +6,8 @@
 
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
-pkgver=1.26.7
-pkgrel=2
+pkgver=1.26.9
+pkgrel=1
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://github.com/${_name}/${_name}"
@@ -42,7 +42,7 @@ _tarname="${_name}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_tarname}.tar.gz"
 #       "${_name}-use-brotli-or-brotli-cffi.patch::${url}/pull/2099.patch"
 )
-b2sums=('f5f2a6797836ef3f9fdfcce4fc6b927c74bc0c7e91d8f9321a3375db9a143214c8253b3c45cd860c747053bf621dfe6586bb6f6c6ce7d91ec8333586b6c75e70')
+b2sums=('0e4c7ebe3f309004463a546c0395c0e22cf57432d587d7cb4b6190afd37fb6f8669ea5c8f9a8a5f88a53c62a3944ebd09f20f5ec93e352959fa9cbea682ccc76')
 
 # prepare() {
 #   patch -d "${_tarname}" -p1 -i "../${_name}-use-brotli-or-brotli-cffi.patch" || :
