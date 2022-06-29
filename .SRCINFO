@@ -1,14 +1,17 @@
 pkgbase = python-meteor-ejson
-	pkgdesc = Encoder and Decoder for Extended JSON (EJSON) as used in Meteor and DDP.
-	pkgver = 1.0.0
+	pkgdesc = Encoder and Decoder for Extended JSON (EJSON)
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/lyschoening/meteor-ejson-python
 	arch = any
 	license = MIT
-	depends = python
+	checkdepends = python-nose
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-six
-	source = https://pypi.python.org/packages/source/m/meteor-ejson/meteor-ejson-1.0.0.tar.gz
-	md5sums = 90952e08f858e936ea6703e503c6f01c
+	source = python-meteor-ejson-1.1.0.tar.gz::https://github.com/lyschoening/meteor-ejson-python/archive/1.1.0.tar.gz
+	sha256sums = c160a043a44f42ac8c0fdff46b3369c1b087484b53d973ed8d5e5a5d47e9edf2
 
 pkgname = python-meteor-ejson
-
