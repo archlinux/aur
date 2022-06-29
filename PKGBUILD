@@ -1,4 +1,5 @@
 # Maintainer: Roman Kupriyanov <mr.eshua@gmail.com>
+# Co-Maintainer: Martin Rys <rys.pw/contact>
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
 pkgver=2022.6.1
