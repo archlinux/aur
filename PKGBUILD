@@ -1,7 +1,7 @@
 # Maintainer: missing <liri_bucketful at slmail dot me>
 pkgname=lbry-sdk
 pkgver=0.109.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps."
 arch=('x86_64')
 url="https://github.com/lbryio/lbry-sdk"
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbry-sdk/archive
 sha256sums=('e82fcfeb9bf1cc8f64a99f2d9aab8e3bd468ac68b152d7c89b38c1c98281666f'
             'SKIP'
             'ba653adbdd6001080e5963929a733af0ac287b5022e16444c2848fac898c420a'
-            '3e692fa93c60eddb1ec7f3d8de4a90ae77995d76bd8e8329ccc3b8617616f246'
+            'e370a5e9875e9f10cf5b4481545e0c35982539310226de70c0c34b7dfb6baf27'
             '7061749daacd7ab1db2b10383aaedfc12b47de2cc72c57e0c533b63e9302c881')
 
 prepare() {
