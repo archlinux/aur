@@ -1,0 +1,22 @@
+pkgbase = geocode-glib-git
+	pkgdesc = Helper library for geocoding services
+	pkgver = 3.26.2+13+ge5905e1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/geocode-glib
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = meson
+	depends = glib2
+	depends = json-glib
+	depends = libsoup3
+	provides = libgeocode-glib.so
+	provides = geocode-glib
+	conflicts = geocode-glib
+	options = debug
+	source = git+https://gitlab.gnome.org/GNOME/geocode-glib.git
+	sha256sums = SKIP
+
+pkgname = geocode-glib-git
