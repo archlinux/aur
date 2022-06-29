@@ -23,7 +23,7 @@ function sync_git(){
 function main(){
     local version=$(get_last_version)
     if grep -q "pkgver=$version" PKGBUILD; then
-        printf "Already up-to-date: version %s\n" $version
+        echo "Already up-to-date: v$version"
     else
         update_to $version
         sync_git $version
