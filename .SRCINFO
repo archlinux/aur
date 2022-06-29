@@ -1,16 +1,14 @@
 pkgbase = trufflehog
-	pkgdesc = Searches through git repositories for high entropy strings and secrets, digging deep into commit history
-	pkgver = 2.0.97
-	pkgrel = 2
-	url = https://github.com/dxa4481/truffleHog.git
-	arch = any
-	license = GPL-2.0
-	depends = python
-	depends = trufflehogregexes=0.0.7
-	depends = python-gitpython=2.1.1
-	depends = python-pytest-cov
-	provides = python-trufflehog
-	source = https://files.pythonhosted.org/packages/21/99/89f662eeb021c28d75fb42ce1ee28a9fcea653ae5b1539e2487c60eb2eaa/truffleHog-2.0.97.tar.gz
-	sha512sums = abaa39149627d7a4fb58055c595f32057eacce5549380e737245f8aaf665d074fb739c76bda8527740c4034e610001bf61af9fd3359b447a62cf2878c07cb99c
+	pkgdesc = Tool for finding secrets like private keys and credentials.
+	pkgver = 3.6.7
+	pkgrel = 1
+	url = https://github.com/trufflesecurity/trufflehog
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	depends = glibc
+	provides = trufflehog
+	source = trufflehog-3.6.7.tar.gz::https://github.com/trufflesecurity/trufflehog/archive/refs/tags/v3.6.7.tar.gz
+	sha512sums = 4462d672505e4ec5cd97358cc261363f47282285ec9b00dd3f531123506dd50bcf9cb2e1fa3a3817c087cd87612d00d86001f593500aade54c1a049df40a8986
 
 pkgname = trufflehog
