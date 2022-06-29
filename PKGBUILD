@@ -8,7 +8,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=5.0.4
+pkgver=5.0.6
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=()
 conflicts=('nodejs-vue-cli' 'vue')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
-sha256sums=('07aba062833f861b86b83e04a70633e8f2f05e56b1db0105477fdc9363a15d4b')
+sha256sums=('931b352f6aa7fae2158a01240312fe391a3053f7dfaa9c686b2fb370aeee4c50')
 
 package() {
   mkdir -p "${pkgdir}"/usr/lib
