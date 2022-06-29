@@ -1,0 +1,20 @@
+pkgbase = easy-zsh-config
+	pkgdesc = My fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/wszqkzqk/easy-zsh-config
+	arch = any
+	license = MIT
+	depends = zsh
+	depends = nerd-fonts-noto
+	depends = oh-my-posh
+	depends = zsh-syntax-highlighting
+	depends = zsh-autosuggestions
+	depends = zsh-history-substring-search
+	conflicts = grml-zsh-config
+	backup = root/.zshrc
+	backup = etc/skel/.zshrc
+	source = zshrc
+	sha256sums = a3217dce497408b8bfa86a3a9e9cd359e547ad360d3d5533396605867dc5a395
+
+pkgname = easy-zsh-config
