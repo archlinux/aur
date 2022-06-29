@@ -2,7 +2,7 @@
 
 pkgname=python-torchtext
 _pkgname=text
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Data loaders and abstractions for text and NLP'
 arch=('x86_64')
@@ -23,6 +23,7 @@ optdepends=(
 makedepends=(
   cmake
   git
+  ninja
   python-setuptools
 )
 source=("${_pkgname}::git+https://github.com/pytorch/text.git#tag=v${pkgver}")
