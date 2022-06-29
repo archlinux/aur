@@ -11,7 +11,7 @@ provides=('godns')
 makedepends=('go')
 backup=(etc/conf.d/godns.json)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TimothyYe/godns/archive/v${pkgver}.tar.gz")
-sha256sums=('fb6cad70a921e35b1fd9fcd1ce45d4161c50f2cb17ca9c6fe1ea5ab70c58e313')
+sha256sums=('509374eb350996aa9d60acd97f315df90fba416a80088a73b0da8e13b777a63f')
 
 build() {
 	export GOPATH="$srcdir"/gopath
