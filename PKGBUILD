@@ -2,16 +2,16 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="A handy way to handle sh/bash cli parameters"
+pkgdesc="Make beautiful bash cli with ease"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('30c8da2d0d3342a7051928519031ec8aaae4c172e81b9c8411b104047fed786e3af39a00fff8965f0018b01372a8f1020cca9c25a7c9015d511037afb598329a')
+sha512sums=('1130993862c916bf703e0fb5a7060fe40974e0901bae958d196b17bebdcdac378f61a44954c70832917e136f6b26db3c11f88de7dfbb5286699cfc38b71e661a')
 
 prepare() {
   cd "$pkgname-$pkgver"
