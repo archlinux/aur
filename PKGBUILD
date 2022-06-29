@@ -3,8 +3,8 @@
 # Contributor: Konstantin Stepanov <me@kstep.me>
 
 pkgname=ztui
-pkgver=0.1.3
-_sha=239070e0e95e86c95170010fc9ccce5c29b71e9e
+pkgver=0.1.4
+_sha=43ad95d1d3c5a0302bd8c8b284ea3a535d434049
 pkgrel=1
 pkgdesc='A terminal UI for ZeroTier'
 arch=(x86_64 i686 armv6h armv7h)
@@ -13,7 +13,7 @@ license=()
 makedepends=(cargo)
 _archive="$pkgname-$_sha"
 source=("$_archive.tar.gz::$url/archive/$_sha.tar.gz")
-sha256sums=('256b6d743285c44bdc153b418bd101f6bb2720d96d317dafe4d8135a3fb117cd')
+sha256sums=('3cabf5f4dce7b435b7806c340b9508c81869ba0bb1d0c14503ff393c359fdd5b')
 
 pkgver() {
 	cd "$_archive"
