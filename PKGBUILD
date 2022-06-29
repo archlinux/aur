@@ -3,7 +3,7 @@
 _pkgname=libcwtch-go
 pkgname=$_pkgname-git
 
-pkgver=1.7.1.r0.g02c7b0b
+pkgver=1.8.0.r0.g7069fab
 pkgrel=1
 
 pkgdesc="C bindings for the Go Cwtch library"
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
     ( set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags 2>/dev/null | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
