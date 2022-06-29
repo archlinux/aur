@@ -1,6 +1,6 @@
 pkgbase = rxvt-unicode-truecolor
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color patch (24bit colors support). That enables vim 24-bit true color colorshemes
-	pkgver = 9.26
+	pkgver = 9.30
 	pkgrel = 1
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rxvt-unicode-truecolor
 	optdepends = gtk2-perl: to use the urxvt-tabbed
 	provides = rxvt-unicode
 	conflicts = rxvt-unicode
-	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.26.tar.bz2
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.30.tar.bz2
 	source = urxvt.desktop
 	source = urxvtc.desktop
 	source = urxvt-tabbed.desktop
