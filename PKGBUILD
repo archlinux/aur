@@ -4,7 +4,7 @@
 _name=cachecontrol
 pkgname='python2-cachecontrol'
 pkgver=0.12.6
-pkgrel=5
+pkgrel=6
 pkgdesc="httplib2 caching for requests (legacy Python 2 version)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
