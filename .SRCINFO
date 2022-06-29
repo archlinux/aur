@@ -8,6 +8,6 @@ pkgbase = harmony
 	depends = mpv
 	depends = python
 	source = harmony::https://github.com/ZingyTomato/Harmony-Music/releases/download/v0.4.5.2/harmony
-	sha256sums = 95afbb985ad6024340a50b222fcce1d85ce25a693874d5a22136366d8d866fb6
+	sha256sums = d24b412337acd76fafd15df3bf43b80eeab74b397ac45689dccffeb95231c112
 
 pkgname = harmony
