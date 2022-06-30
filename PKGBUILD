@@ -6,13 +6,11 @@ pkgdesc='A strong, neutral typeface for interfaces, text, and headings.'
 arch=('any')
 url='https://public-sans.digital.gov/'
 license=('OFL')
-source=("${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.github.com/uswds/public-sans/master/LICENSE.md"
-        "https://github.com/uswds/public-sans/releases/download/v${pkgver}/public-sans-v${pkgver}.zip")
-sha256sums=('82f0d3cad45f264192db156360b4a710fe7060885f6aa261e6539f13cb9eb0d9'
-            '88cacdf7cd03b31af8f1f83e1f51e0eb5a6052565a6c014c90c385f1ff2d13a5')
+source=( "https://github.com/uswds/public-sans/releases/download/v${pkgver}/public-sans-v${pkgver}.zip")
+sha256sums=('88cacdf7cd03b31af8f1f83e1f51e0eb5a6052565a6c014c90c385f1ff2d13a5')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/OTF/
     install -m644 fonts/otf/*.otf ${pkgdir}/usr/share/fonts/OTF/
-    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
+    install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 }
