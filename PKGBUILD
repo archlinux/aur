@@ -17,12 +17,12 @@
 
 pkgname='google-compute-engine'
 pkgver=20220211.00
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Guest Environment for Google Compute Engine'
 arch=('any')
 url='https://github.com/GoogleCloudPlatform/guest-configs'
 license=('Apache')
-depends=('google-compute-engine-oslogin' 'google-guest-agent')
+depends=('nvme-cli' 'google-compute-engine-oslogin' 'google-guest-agent')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-configs/archive/$pkgver.tar.gz"
         'google-compute-engine.install'
         'google_set_hostname.patch')
@@ -40,6 +40,7 @@ package() {
 	cd "$srcdir/guest-configs-$pkgver"
 	install -m644 -Dt "$pkgdir/etc/modprobe.d" src/etc/modprobe.d/*
 	install -m644 -Dt "$pkgdir/etc/sysctl.d" src/etc/sysctl.d/*
+	install -m644 -Dt "$pkgdir/usr/lib/udev" src/lib/udev/google_nvme_id
 	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" src/lib/udev/rules.d/*
 	install -m755 -Dt "$pkgdir/usr/bin" src/usr/bin/*
 	ln -s /usr/bin/google_set_hostname "$pkgdir/etc/dhclient-exit-hooks"

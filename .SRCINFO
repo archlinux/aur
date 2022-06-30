@@ -1,11 +1,12 @@
 pkgbase = google-compute-engine
 	pkgdesc = Linux Guest Environment for Google Compute Engine
 	pkgver = 20220211.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoogleCloudPlatform/guest-configs
 	install = google-compute-engine.install
 	arch = any
 	license = Apache
+	depends = nvme-cli
 	depends = google-compute-engine-oslogin
 	depends = google-guest-agent
 	source = google-compute-engine-20220211.00.tar.gz::https://github.com/GoogleCloudPlatform/guest-configs/archive/20220211.00.tar.gz
