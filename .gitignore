@@ -1,5 +1,2 @@
-pkg/
-src/
-*.pkg.tar.xz
-*.pkg.tar.zst
-*.tgz
+*.log
+pnpm-*

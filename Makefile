@@ -2,17 +2,14 @@ all:
 	make prepare
 	make build
 	make clean
-	make check
 
 build:
-	makepkg -f
+	extra-x86_64-build
 
 prepare:
-	sed -i "s|sha256sums.*|`makepkg -g 2>&1|grep sha256sums`|g" PKGBUILD
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg/ src/
+	rm -rf pnpm-* *.log
 
-check:
-	namcap *.tar.zst
