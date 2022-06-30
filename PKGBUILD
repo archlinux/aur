@@ -3,13 +3,13 @@
 
 pkgname=python-numpy-stl
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to make working with STL files (and 3D objects in general) fast and easy"
 url="https://github.com/WoLpH/numpy-stl/"
 license=('BSD')
 depends=('python' 'python-numpy' 'python-utils')
 makedepends=('cython' 'python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8' 'xorg-server-xvfb')
 source=("numpy-stl-v${pkgver}.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz")
 sha256sums=('6228bd07cdb67bb3e4a67721146c425a6f2b0546dba8dfa082d7cf58642c0f1a')
 arch=('x86_64')
