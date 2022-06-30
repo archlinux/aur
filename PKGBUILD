@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=typiskt
-pkgver=2022.05.24.1
+pkgver=2022.06.30.1
 pkgrel=1
 pkgdesc='touchtype training in the terminal'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'bc' 'gawk' 'ncurses')
 makedepends=('gawk')
 optdepends=('curl')
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('f539cc3dd2a541386f5d58774d489ef35744331b4f3c55be66e9c5c390755d5e')
+sha256sums=('bf79f6d6af0254c1cfde288e33fc7da0ab526dd3c5c58b29cd89a9f67c6744a5')
 
 # sha256sums=('SKIP')
 # url='file:///home/bud/git/lab/typiskt'
