@@ -28,7 +28,6 @@ package() {
   cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   cp -rfv ./* "${pkgdir}/usr/lib/${pkgname}/"
-  chmod -R 644 "${pkgdir}/usr/lib/${pkgname}"
   cd "${srcdir}"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
   convert -resize 128x128 "Creater_pack_Floorp/Floorp_imgs/Floorp_Legacy/png/icons.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
