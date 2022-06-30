@@ -7,6 +7,7 @@ pkgbase = vomit
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
+	depends = openssl
 	source = vomit-0.3.1.tar.gz::https://git.sr.ht/~bitfehler/vomit/archive/v0.3.1.tar.gz
 	sha512sums = edca1a436941df2aa9eef3f9724ea96b911dce7a54c0256423b54950579ea30b00722c0a5c3f78f8ee3502779210a8e36ef628d0abd9f8ec743ed29707bc36ef
 
