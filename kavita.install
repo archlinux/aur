@@ -1,6 +1,6 @@
 post_install() {
     echo "Creating kavita user"
-    useradd -m kavita
+    useradd kavita
     chown -R kavita /opt/kavita
     echo "Done"
     echo "To run, systemctl start kavita"
