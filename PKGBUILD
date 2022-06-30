@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=svls
-pkgver=0.1.28
+pkgver=0.2.3
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog language server"
@@ -16,7 +16,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44cb324d8a38542941e67e8bf279cad9d1c594ed2a88525d860e6605e0b7caba')
+sha256sums=('21fe5a736e7ac98a2822a0138875bbe8193a1e9f4378922356e38d450fb66267')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
