@@ -7,19 +7,12 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=3
+pkgrel=4
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://github.com/${_name}/${_name}"
 license=('MIT')
 depends=('python2')
-optdepends=(
-# 'python2-brotli: Brotli support'
-  'python2-idna: support for internationalized domain names (IDNA)'
-  'python2-pyopenssl: security support'
-  'python2-pysocks: SOCKS support'
-  'python-urllib3-doc: urllib3 documentation'
-)
 makedepends=(
 # 'python2-brotli'
   'python2-ndg-httpsclient'
@@ -37,7 +30,14 @@ checkdepends=(
   'python2-tornado'
   'python2-trustme'
 )
-optdepends=('python2-gcp-devrel-py-tools: Google AppEngine support')
+optdepends=(
+# 'python2-brotli: Brotli support'
+  'python2-idna: support for internationalized domain names (IDNA)'
+  'python2-pyopenssl: security support'
+  'python2-pysocks: SOCKS support'
+  'python2-gcp-devrel-py-tools: Google AppEngine support'
+  'python-urllib3-doc: urllib3 documentation'
+)
 _tarname="${_name}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_tarname}.tar.gz"
 #       "${_name}-use-brotli-or-brotli-cffi.patch::${url}/pull/2099.patch"
