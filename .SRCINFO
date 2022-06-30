@@ -1,6 +1,6 @@
 pkgbase = python-pgmpy
 	pkgdesc = Probabilistic Graphical Model library
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://github.com/pgmpy/pgmpy
 	changelog = CHANGELOG.md
@@ -27,7 +27,7 @@ pkgbase = python-pgmpy
 	depends = python-statsmodels
 	depends = python-pytorch
 	depends = python-tqdm
-	source = python-pgmpy-0.1.18.tar.gz::https://github.com/pgmpy/pgmpy/archive/v0.1.18.tar.gz
-	sha256sums = 89b5d95e3f5f8e862a2a09c9ef0b7fbd62467803c550f1b8c19759d7ffc679d5
+	source = python-pgmpy-0.1.19.tar.gz::https://github.com/pgmpy/pgmpy/archive/v0.1.19.tar.gz
+	sha256sums = 8f642f15c478d08fae07ac499531862acea5b2c11ace0dd7a629d2682826a71b
 
 pkgname = python-pgmpy
