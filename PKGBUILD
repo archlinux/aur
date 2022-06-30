@@ -22,5 +22,4 @@ package() {
 	cd "$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-sha256sums=('e4a17eb8dc3446d6de423903bc0cef687b758ab259278bbff7fb15d96ae89c3f')
 sha256sums=('f4ecd574c7b8d3ccd74e29f449290f77f69bc5b60c5af9423491b9278a295a33')
