@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=101.0.1
-pkgrel=4
+pkgver=102.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -14,7 +14,7 @@ license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm python-pyqt5 python-cmd2
              python-setuptools python-zstandard git binutils lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
         "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
         "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('b4c76e8bdf81f473f3e56b2f69dbe5119bba5cab38e36ab0f3f38cf0cdc4a9c2'
+sha256sums=('01797f04bd8d65f4c7f628d7ce832bf52a0874433886e4d0d78ef33c1ca66abf'
             'SKIP'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
@@ -84,8 +84,8 @@ ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 # This supposedly speeds up compilation (We test through dogfooding anyway)
-ac_add_options --disable-tests
 ac_add_options --disable-debug
+ac_add_options --disable-tests
 
 # TODO: use source/assets/moczonfig in the future
 # NOTE: let us use it for one last build, otherwise, there might be some conflicts
@@ -94,16 +94,17 @@ mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
 
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
-ac_add_options --enable-hardening
-ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=lld
 ac_add_options --disable-bootstrap
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --enable-hardening
+ac_add_options --enable-linker=lld
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --prefix=/usr
 
+export AR=llvm-ar
 export CC='clang'
 export CXX='clang++'
-export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
@@ -127,10 +128,6 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
-
-# options for ci / weaker build systems
-# mk_add_options MOZ_MAKE_FLAGS="-j4"
-# ac_add_options --enable-linker=gold
 
 # wasi
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -203,7 +200,7 @@ fi
 
   # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
   # should not break things, buuuuuuuuuut we'll see.
-  patch -Np1 -i "${_librewolf_patches_dir}"/dbus_name.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/dbus_name.patch
 
   # Allow uBlockOrigin to run in private mode by default, without user intervention.
   patch -Np1 -i "${_librewolf_patches_dir}"/allow-ubo-private-mode.patch
@@ -264,6 +261,7 @@ fi
 
   # Needed build fix
   patch -Np1 -i "${_patches_dir}"/gentoo/0032-bmo-1773259-cbindgen-root_clip_chain-fix.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/zstandard-0.18.0.patch
 
   rm -f "${srcdir}"/common/source_files/mozconfig
   cp -r "${srcdir}"/common/source_files/* ./
