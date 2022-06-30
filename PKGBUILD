@@ -1,7 +1,7 @@
 # Maintainer: Melanie Scheirer <mel@nie.rs>
 
 pkgname=aom-av1-psy-git
-pkgver=r32575.76388f643
+pkgver=r32589.bff73e445
 pkgrel=1
 pkgdesc="aomenc-av1 psy fork"
 url="https://github.com/BlueSwordM/aom-av1-psy"
