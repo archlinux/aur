@@ -1,7 +1,7 @@
 pkgbase = sockpp
 	pkgdesc = Simple, modern, C++ socket library.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fpagliughi/sockpp
 	arch = arm
 	arch = armv6h
@@ -20,6 +20,6 @@ pkgbase = sockpp
 	source = docs-install-path.patch
 	sha256sums = 2e023528bebbd2ac083fc91fbe6d5c4158c3336bedbcff48f594f3b28f53b940
 	sha256sums = 65827b4280a318527d830e0655c2ee7a6172cb7d7349a7a58dd3ac8251ef6f29
-	sha256sums = a71e5270ca16c1173b148654a94022ecf684bfc8d248c0376b23a834eeb364e2
+	sha256sums = 1f534e51b88e512b84414fb8510d9c9ce25d6011c63d2d9a9d950661b3c74f64
 
 pkgname = sockpp

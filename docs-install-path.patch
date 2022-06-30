@@ -6,5 +6,5 @@ diff '--color=auto' --unified --recursive --text sockpp-0.7.1/doc/CMakeLists.txt
  add_custom_target(doc ALL DEPENDS ${DOXYTARGETS})
  
 -install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc DESTINATION share)
-+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc DESTINATION share/sockpp)
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc DESTINATION share/doc/sockpp)
  

@@ -1,7 +1,7 @@
 # Maintainer: Alexandru Barbur <alex@ctrlc.name>
 pkgname=sockpp
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, modern, C++ socket library."
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://github.com/fpagliughi/sockpp"
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     '2e023528bebbd2ac083fc91fbe6d5c4158c3336bedbcff48f594f3b28f53b940'
     '65827b4280a318527d830e0655c2ee7a6172cb7d7349a7a58dd3ac8251ef6f29'
-    'a71e5270ca16c1173b148654a94022ecf684bfc8d248c0376b23a834eeb364e2')
+    '1f534e51b88e512b84414fb8510d9c9ce25d6011c63d2d9a9d950661b3c74f64')
 
 
 prepare() {
