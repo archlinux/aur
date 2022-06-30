@@ -1,6 +1,4 @@
 pkg/
 src/
-.AURINFO
-jalv-select-*.tar.xz
-jalv-select-*.src.tar.gz
-V*.tar.gz
+*.tar.*
+*.zip
