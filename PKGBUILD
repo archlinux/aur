@@ -2,11 +2,12 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.7.2.r246.g2482a542
-pkgrel=1
+pkgver=2.8.4.r1.ge27ae2b2
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
+depends=('libcap')
 makedepends=('git' 'curl')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++' 'watt-toolkit')
@@ -17,11 +18,13 @@ source=(
     'git+https://github.com/BeyondDimension/Credentials-Public'
     'https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh'
     'watt-toolkit.desktop'
+    'set-cap.hook'
     )
 sha256sums=('SKIP'
             'SKIP'
             '4147ff176c9fbbc22452244c5f8da66cd8b5028decdeda36c54eae95d49e3b34'
-            'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e')
+            'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e'
+            '495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9')
 pkgver(){
     cd "${srcdir}/SteamTools"
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
@@ -88,4 +91,5 @@ package(){
     done
     ln -sf /opt/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
     install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
+    install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
 }
