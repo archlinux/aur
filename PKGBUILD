@@ -2,8 +2,8 @@
 
 pkgname=terrax
 pkgver=3.0.1
-pkgrel=1
-pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
+pkgrel=2
+pkgdesc='Terrax is a simple orchestration tool that simplify the adoption of aws-vault, chamber and tfsec while terraforming.'
 arch=('x86_64')
 url='https://gitlab.com/alvaro-fdez/terrax'
 license=('GPL3')
