@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-16
+_srctag=GE-Proton7-20
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -18,14 +18,14 @@ _winever=$_pkgbasever
 
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
         proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
-        wine-more_8x5_res.patch
+        wine-autogen_fsr_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
             'SKIP'
-            '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
+            'SKIP'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
@@ -128,12 +128,12 @@ prepare() {
     git config submodule.proton-wine.url "$srcdir"/proton-wine-ge
     git submodule update proton-wine
     pushd proton-wine
-      patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+      #patch -p1 -i "$srcdir"/wine-autogen_fsr_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
       git config user.email "makepkg@aur.not"
       git config user.name "makepkg aur"
-      git tag wine-7.0 --annotate -m "$pkgver"
+      git tag wine-ge-7.0 --annotate -m "$pkgver"
       dlls/winevulkan/make_vulkan
       tools/make_requests
       autoreconf -f
