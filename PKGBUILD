@@ -151,7 +151,7 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  ../choose-gcc-optimization.sh $_microarchitecture
   # Disable CONFIG_GENERIC_CPU2 if we have choosen another microarchitecture
   # https://github.com/xanmod/linux/issues/240
   [ "$_microarchitecture" = "0" ] || scripts/config --disable CONFIG_GENERIC_CPU2
