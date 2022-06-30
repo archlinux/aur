@@ -2,9 +2,9 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.5.0.r32.12b1adf
+pkgver=1.6.0rc1.r11.f558ce7
 pkgrel=1
-_kver=5.17
+_kver=5.18
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -17,7 +17,8 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/evilsocket/opensnitch.git'
         "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
 sha256sums=('SKIP'
-            'f58338c5b06314559a269afe70b33b9b0b75cc2fe5e8a537ac29f70caa6e489b')
+            '4037b6912e2b6c5102ce89840e32a16839dadd846ee3afdfb6704f44273b0c95')
+options=('!strip') # we're stripping with llvm-strip
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
@@ -29,6 +30,7 @@ prepare() {
 
   patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}/ebpf_prog/file.patch
   cp ${srcdir}/${_pkgname}/ebpf_prog/opensnitch.c \
+    ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-procs.c \
     ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-dns.c \
     ${srcdir}/${_pkgname}/ebpf_prog/Makefile samples/bpf
 
@@ -48,6 +50,7 @@ build() {
 
 package() {
   install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch.o" \
+    "${srcdir}/linux-${_kver}/samples/bpf/opensnitch-procs.o" \
     "${srcdir}/linux-${_kver}/samples/bpf/opensnitch-dns.o" -t \
     "$pkgdir/etc/opensnitchd"
 }
