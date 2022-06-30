@@ -1,6 +1,6 @@
 # Maintainer: Adi Hascal <adi.hascal+aur at gmail dot com>
 pkgname=cargo-xwin-git
-pkgver=v0.8.7.r5.1c31b8c
+pkgver=v0.10.0.r0.bab826b
 pkgrel=1
 pkgdesc='Cross compile Cargo project to Windows msvc target with ease'
 arch=('x86_64')
