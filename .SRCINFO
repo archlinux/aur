@@ -1,13 +1,11 @@
 pkgbase = mingw-w64-rapidjson
 	pkgdesc = A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw-w64)
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/miloyip/rapidjson
 	arch = any
 	license = MIT
 	checkdepends = mingw-w64-wine
-	checkdepends = mingw-w64-gtest
-	checkdepends = gtest
 	checkdepends = python
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-cmake
@@ -17,6 +15,8 @@ pkgbase = mingw-w64-rapidjson
 	options = !strip
 	options = !emptydirs
 	source = rapidjson-1.1.0.tar.gz::https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz
-	md5sums = badd12c511e081fec6c89c43a7027bce
+	source = git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2
+	sha256sums = bf7ced29704a1e696fbccf2a2b4ea068e7774fa37f6d7dd4039d0787f8bed98e
+	sha256sums = SKIP
 
 pkgname = mingw-w64-rapidjson

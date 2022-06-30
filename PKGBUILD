@@ -5,15 +5,18 @@
 _reponame=rapidjson
 pkgname=mingw-w64-$_reponame
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw-w64)'
 arch=('any')
 url='https://github.com/miloyip/rapidjson'
 license=('MIT')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
-checkdepends=('mingw-w64-wine' 'mingw-w64-gtest' 'gtest' 'python')
-source=($_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz)
-md5sums=('badd12c511e081fec6c89c43a7027bce')
+checkdepends=('mingw-w64-wine' 'python')
+source=(
+	"$_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz"
+	'git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2')
+sha256sums=('bf7ced29704a1e696fbccf2a2b4ea068e7774fa37f6d7dd4039d0787f8bed98e'
+            'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -39,7 +42,10 @@ build () {
         -DRAPIDJSON_BUILD_CXX11=ON \
         -DRAPIDJSON_ENABLE_INSTRUMENTATION_OPT=OFF \
         -DCMAKE_INSTALL_PREFIX:PATH="/usr/${_arch}" \
-        -DGTEST_SOURCE_DIR=/usr/src/googletest \
+        -DGTEST_SOURCE_DIR="$srcdir/googletest/googletest" \
+        -DGTEST_INCLUDE_DIR="$srcdir/googletest/googletest/include" \
+        -DINSTALL_GTEST=OFF \
+        -DRAPIDJSON_BUILD_THIRDPARTY_GTEST=ON \
         ..
     ninja
     popd
@@ -52,8 +58,8 @@ check() {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
 
     pushd bin
-    ln -s unittest.exe unittest
-    ln -s perftest.exe perftest
+    ln -sf unittest.exe unittest
+    ln -sf perftest.exe perftest
     popd
 
     WINEPATH="/usr/${_arch}/bin" ctest -j 2 -V --tests-regex '^(perftest|unittest)$'
