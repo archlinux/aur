@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="Light and Dark window themes based on a Skeuomorphic design."
 arch=('any')
 url="https://github.com/daniruiz/skeuos-gtk"
-license=('GPL 3.0')
+license=('GPL3')
 options=('!strip')
-source=("https://github.com/daniruiz/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daniruiz/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {

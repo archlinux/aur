@@ -4,9 +4,9 @@ pkgbase = skeuos-gtk
 	pkgrel = 1
 	url = https://github.com/daniruiz/skeuos-gtk
 	arch = any
-	license = GPL 3.0
+	license = GPL3
 	options = !strip
-	source = https://github.com/daniruiz/skeuos-gtk/archive/20211110.tar.gz
+	source = skeuos-gtk-20220629.tar.gz::https://github.com/daniruiz/skeuos-gtk/archive/20220629.tar.gz
 	sha256sums = SKIP
 
 pkgname = skeuos-gtk
