@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-sensors
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Provides numerous sensor models designed to generate realistic data
 from simulation environments."
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sensors/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('c49cc6ed0bc3e98c1731acd361c8880663e5e6622721500acb623b53f0930419')
+sha256sums=('3f1ed7159f299506614fd566eb0688c4858270720008848cac5faf14e9c2c809')
 
 _dir="gz-sensors-${pkgname}6_${pkgver}"
 
