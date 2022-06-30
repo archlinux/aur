@@ -9,8 +9,8 @@ url='https://addons.mozilla.org/de/firefox/addon/flagfox/'
 license=('GPLV3')
 depends=('firefox')
 groups=('firefox-addons')
-source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3929226/flagfox-${pkgver}-fx.xpi")
-md5sums=('b17e92ae5c388552bb3528d4f04fc81f')
+source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3956569/flagfox-$pkgver.xpi")
+md5sums=('ba8724c7fba1f27959a034942fedbc3b')
 
 package() {
   install -Dm644 extension.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/{1018e4d6-728f-4b20-ad56-37578a4de76b}.xpi"
