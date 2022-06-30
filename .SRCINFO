@@ -14,6 +14,6 @@ pkgbase = rtl8852be-dkms-git
 	source = git+https://github.com/HRex39/rtl8852be.git#branch=dev
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = cc727b824008ba9570f23ecef0dc38cfb28994c345138249699e7854b459bdff
+	sha256sums = 70c218fb75c47d1be0833319ef77f464888974722b241ebce4b85add4509a357
 
 pkgname = rtl8852be-dkms-git
