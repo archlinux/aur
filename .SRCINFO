@@ -1,7 +1,7 @@
 pkgbase = heroes
 	pkgdesc = Heroes is similar to the Tron and Nibbles games of yore, but includes many graphical improvements and new game features.
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://heroes.sourceforge.net
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,6 @@ pkgbase = heroes
 	md5sums = bcde6137a4b21b7395fd3d84b42b7888
 	md5sums = f4defb80baf765fceac034a408f7ad2e
 	md5sums = dafb2ccfb08c132265262231d5655102
-	md5sums = 13b2c355269d70e3b966d184d766e195
+	md5sums = 7135a9e9a55d4db94d03185c38924d6b
 
 pkgname = heroes
-

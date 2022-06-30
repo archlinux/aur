@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@offend.me.uk>
 pkgname=heroes
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Heroes is similar to the Tron and Nibbles games of yore, but includes many graphical improvements and new game features."
 url="http://heroes.sourceforge.net"
 arch=(x86_64)
@@ -19,7 +19,7 @@ md5sums=('3238290f219bc978894ba472fac95298'
          'bcde6137a4b21b7395fd3d84b42b7888'
          'f4defb80baf765fceac034a408f7ad2e'
          'dafb2ccfb08c132265262231d5655102'
-         '13b2c355269d70e3b966d184d766e195')
+         '7135a9e9a55d4db94d03185c38924d6b')
 
 build() {
 	cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
---- ../heroes-0.21/src/argv.c	2018-08-14 13:38:06.000000000 +0100
-+++ ./src/argv.c	2018-08-14 13:56:59.340278312 +0100
+--- ../heroes-0.21/src/argv.c	2002-01-09 18:52:35.000000000 +0000
++++ ./src/argv.c	2022-06-30 10:55:29.838547018 +0100
 @@ -45,8 +45,8 @@
  char* level_name;
  bool mono = false;
@@ -108,8 +108,8 @@ diff '--color=auto' -ruN ../heroes-0.21/src/argv.c ./src/argv.c
        nosound = true;
        break;
 diff '--color=auto' -ruN ../heroes-0.21/src/hedlite.c ./src/hedlite.c
---- ../heroes-0.21/src/hedlite.c	2018-08-14 13:38:07.000000000 +0100
-+++ ./src/hedlite.c	2018-08-14 13:38:24.000000000 +0100
+--- ../heroes-0.21/src/hedlite.c	2002-02-06 21:49:44.000000000 +0000
++++ ./src/hedlite.c	2022-06-30 10:55:29.838547018 +0100
 @@ -45,7 +45,6 @@
  #include "dirname.h"
  
@@ -119,8 +119,8 @@ diff '--color=auto' -ruN ../heroes-0.21/src/hedlite.c ./src/hedlite.c
  unsigned short int xdalles = 0;
  unsigned short int ydalles = 0;
 diff '--color=auto' -ruN ../heroes-0.21/src/media/ggi/video.c ./src/media/ggi/video.c
---- ../heroes-0.21/src/media/ggi/video.c	2018-08-14 13:38:06.000000000 +0100
-+++ ./src/media/ggi/video.c	2018-08-14 13:38:24.000000000 +0100
+--- ../heroes-0.21/src/media/ggi/video.c	2002-03-27 19:44:59.000000000 +0000
++++ ./src/media/ggi/video.c	2022-06-30 10:55:29.838547018 +0100
 @@ -54,7 +54,7 @@
  
  static ggi_mode vid_mode;
@@ -140,8 +140,8 @@ diff '--color=auto' -ruN ../heroes-0.21/src/media/ggi/video.c ./src/media/ggi/vi
  
  static bool
 diff '--color=auto' -ruN ../heroes-0.21/src/media/sdl/video.c ./src/media/sdl/video.c
---- ../heroes-0.21/src/media/sdl/video.c	2018-08-14 13:38:06.000000000 +0100
-+++ ./src/media/sdl/video.c	2018-08-14 13:38:24.000000000 +0100
+--- ../heroes-0.21/src/media/sdl/video.c	2002-01-17 19:59:32.000000000 +0000
++++ ./src/media/sdl/video.c	2022-06-30 10:55:29.838547018 +0100
 @@ -40,7 +40,7 @@
     it might requires locking. */
  
@@ -161,8 +161,8 @@ diff '--color=auto' -ruN ../heroes-0.21/src/media/sdl/video.c ./src/media/sdl/vi
  
  /* Fullscreen mode is toggeled by pressing Alt+Enter.
 diff '--color=auto' -ruN ../heroes-0.21/src/media/video.c ./src/media/video.c
---- ../heroes-0.21/src/media/video.c	2018-08-14 13:38:06.000000000 +0100
-+++ ./src/media/video.c	2018-08-14 13:49:53.709026850 +0100
+--- ../heroes-0.21/src/media/video.c	2001-09-21 11:43:57.000000000 +0100
++++ ./src/media/video.c	2022-06-30 10:55:29.838547018 +0100
 @@ -27,111 +27,6 @@
  /* slow stretching routines */
  
@@ -307,3 +307,17 @@ diff '--color=auto' -ruN ../heroes-0.21/src/media/video.c ./src/media/video.c
  }
  
  void
+diff '--color=auto' -ruN ../heroes-0.21/src/persona.h ./src/persona.h
+--- ../heroes-0.21/src/persona.h	2001-09-21 11:43:54.000000000 +0100
++++ ./src/persona.h	2022-06-30 10:55:48.008744082 +0100
+@@ -28,8 +28,8 @@
+  * difference only if the program has a sgid or suid bit.
+  */
+ 
+-bool keep_sgid;			/* Whether we should keep the  */
+-bool keep_suid;			/* SGID or SUID priviledge. */
++extern bool keep_sgid;			/* Whether we should keep the  */
++extern bool keep_suid;			/* SGID or SUID priviledge. */
+ 
+ /* Get information about the current persona,
+    and switch to the user persona.  */
