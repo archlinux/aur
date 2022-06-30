@@ -1,0 +1,19 @@
+pkgbase = lsky-pro
+	pkgdesc = Your photo album on the cloud.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/lsky-org/lsky-pro
+	arch = any
+	license = GPL3
+	depends = php
+	depends = php-imagick
+	optdepends = nginx: WebUI
+	optdepends = apache: WebUI
+	optdepends = mysql: database
+	optdepends = postgresql: database
+	optdepends = sqlite: database
+	noextract = lsky-pro-2.0.4.zip
+	source = lsky-pro-2.0.4.zip::https://github.com/lsky-org/lsky-pro/releases/download/2.0.4/lsky-pro-2.0.4.zip
+	sha256sums = b3166fe8970c3b31e06d7d20d26bb5eb9d1b4cc7d7b98cc14d1ef6ef0b5409db
+
+pkgname = lsky-pro
