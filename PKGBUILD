@@ -1,7 +1,7 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
 url="https://git.sr.ht/~tsdh/swayr"
@@ -26,6 +26,6 @@ package() {
     cd $pkgname-$pkgver
     install -Dm755 "target/release/swayr" "$pkgdir/usr/bin/swayr"
     install -Dm755 "target/release/swayrd" "$pkgdir/usr/bin/swayrd"
-    install -Dm755 "etc/swayrd.service" "$pkgdir/usr/lib/systemd/user/swayrd.service"
+    install -Dm644 "etc/swayrd.service" "$pkgdir/usr/lib/systemd/user/swayrd.service"
 }
 
