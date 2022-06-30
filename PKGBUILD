@@ -1,14 +1,14 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
 license=('MIT')
 groups=()
-depends=("python-pygls" "python-pyparsing" "cmake")
+depends=("python-pygls" "python-cmakelang" "cmake")
 makedepends=("python-setuptools")
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('224a18f36c73e7f182e7066673de94ba7803aca41e0fc5aaaac6d798aee0cfbc')
+sha256sums=('2d676542ff812c393ecac4de501852a435b35c9db28970e229da868cdef17a9e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
