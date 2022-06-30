@@ -1,6 +1,6 @@
 pkgbase = dpp
 	pkgdesc = Lightweight and Scalable C++ Discord API Bot Library
-	pkgver = 10.0.11
+	pkgver = 10.0.12
 	pkgrel = 1
 	url = https://dpp.dev/
 	install = dpp.install
@@ -14,7 +14,7 @@ pkgbase = dpp
 	depends = libsodium
 	depends = fmt
 	depends = nlohmann-json
-	source = dpp-10.0.11.tar.gz::https://github.com/brainboxdotcc/DPP/archive/refs/tags/v10.0.11.tar.gz
-	sha256sums = 33463292f3030eabf70ab54ff09475945b4d87a9c6e428c712015cba93a1ed96
+	source = dpp-10.0.12.tar.gz::https://github.com/brainboxdotcc/DPP/archive/refs/tags/v10.0.12.tar.gz
+	sha256sums = a986fcd0e6d491b0df6522fe2c85bff1e16f5513bcc3abee1b774ff25e03ee1b
 
 pkgname = dpp

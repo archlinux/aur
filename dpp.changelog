@@ -1,4 +1,14 @@
-# 10.0.11-1 / 2000-06-24
+# 10.0.12-1 / 2022-06-30
+
+* bump to new library version
+	* adds dns caching
+	* see library changelog for full list
+* introduces include issue in the new feature
+	* patched on package
+	* reported upstream
+* fixed date on previous changelog :)
+
+# 10.0.11-1 / 2022-06-24
 
 * bump to new library version
 	* automod is now supported
