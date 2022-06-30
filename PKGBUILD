@@ -4,15 +4,12 @@
 pkgname='python2-pytest-expect'
 _name="${pkgname#python2-}"
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A Python 2 pytest plugin to store test expectations and mark tests based on them'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('MIT')
-depends=(
-  'python2-pytest'
-  'python2-u-msgpack'
-)
+depends=('python2>=2.6')
 makedepends=('python2-setuptools')
 _tarname="${_name}-${pkgver}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz"
@@ -26,6 +23,11 @@ build() {
 }
 
 package() {
+  depends+=(
+    'python2-pytest'
+    'python2-u-msgpack'
+  )
+
   cd "${_tarname}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 '../LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
