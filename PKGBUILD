@@ -3,9 +3,9 @@
 _pkgname=twinkle
 pkgname=${_pkgname}-git
 pkgver=1.10.3.r415.15ece11
-pkgrel=1
+pkgrel=2
 pkgdesc="A SIP-based VoIP client"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url=https://twinkle.dolezel.info
 license=('GPL')
 depends=('libzrtpcpp' 'alsa-lib' 'libsndfile' 'bcg729' 'hicolor-icon-theme' 'qt5-declarative')

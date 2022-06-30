@@ -1,10 +1,12 @@
 pkgbase = twinkle-git
 	pkgdesc = A SIP-based VoIP client
 	pkgver = 1.10.3.r415.15ece11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twinkle.dolezel.info
 	arch = x86_64
 	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = cmake
