@@ -1,6 +1,6 @@
 pkgbase = vomit
 	pkgdesc = The Very Opinionated Mail Interaction Toolkit
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://sr.ht/~bitfehler/vomit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vomit
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = vomit-0.3.1.tar.gz::https://git.sr.ht/~bitfehler/vomit/archive/v0.3.1.tar.gz
-	sha512sums = edca1a436941df2aa9eef3f9724ea96b911dce7a54c0256423b54950579ea30b00722c0a5c3f78f8ee3502779210a8e36ef628d0abd9f8ec743ed29707bc36ef
+	source = vomit-0.4.0.tar.gz::https://git.sr.ht/~bitfehler/vomit/archive/v0.4.0.tar.gz
+	sha512sums = 6ec9f40564beb70743de580ce8d8a59c0f4e73fd018c05e143a4d1590004815dea6088ece17ec5925227008113c7cedb8f5d9ac05672ce6618cfa9dc3849a7a5
 
 pkgname = vomit

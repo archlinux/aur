@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=vomit
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="The Very Opinionated Mail Interaction Toolkit"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~bitfehler/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('edca1a436941df2aa9eef3f9724ea96b911dce7a54c0256423b54950579ea30b00722c0a5c3f78f8ee3502779210a8e36ef628d0abd9f8ec743ed29707bc36ef')
+sha512sums=('6ec9f40564beb70743de580ce8d8a59c0f4e73fd018c05e143a4d1590004815dea6088ece17ec5925227008113c7cedb8f5d9ac05672ce6618cfa9dc3849a7a5')
 
 build() {
   cd "$pkgname-v$pkgver"
