@@ -1,7 +1,9 @@
 # Maintainer: Shiroko <hhx.xxm at gmail.com>
 # Maintainer: Johnpoint <me at lvcshu.com>
-pkgname=clash-for-windows-bin
-pkgver=0.19.21
+# Maintainer: nekohasekai <contact-archlinux@sekai.icu>
+
+pkgname=clash-for-windows-bin-git
+pkgver=0.19.22
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -9,6 +11,7 @@ url="https://github.com/Fndroid/clash_for_windows_pkg"
 # logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
 logo_url="https://cdn.jsdelivr.net/gh/Dreamacro/clash@master/docs/logo.png"
 install=clash-for-windows-bin.install
+conflicts=(clash-for-windows-bin)
 
 depends=('libxss' 'gtk3')
 
@@ -18,6 +21,7 @@ optdepends=(
 )
 
 source=(
+    "$pkgname::git+$url.git"
     "clash.png::${logo_url}"
     "clash-for-windows.desktop"
     "cfw"
@@ -31,15 +35,17 @@ source_aarch64=(
     "${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-arm64-linux.tar.gz"
     )
 
-sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
-            'a2997f604a486e264f6fc5344164ae9e1a9a01282006a41784dd181f7d1a2913'
-            '4c0a9de624905e3717b0dd4effa24fbf5c79ad28221b3b3b15a4a0aca4d47e03')
-sha256sums_x86_64=('13358b6072eb144bd60a168b299d8984184b5df09fc7108e2703c072d48fd6b2')
-sha256sums_aarch64=('784b698f41972e7d2733394a8509cb117cb88b831a67a6683ac65082af16d984')
+sha512sums=('SKIP'
+            'd739dbdd622e873e58155c40be9ef78f5a2247115d0fdc480be2beaac41c59b7eca963fbc2e09cfec49dd0d491ac2a92dcf5a157c95ef1448694f47e0e752c14'
+            '995efdd570fcaf1c3b2516e107722765ae2870563e31f2e1ee424071c8e30ca0e3df19eb858219ebdff51c099e66b235cf41928b6f9330dd00e8d03617b8d5ae'
+            '14f67ad3718e97350b12280dada01a2f965cc2e9e5ccd72e2295e5f2f3f3fa04f2c5ed0f435054de6155937c17049064227cd39107bad3e11a126ce5a3e0fcf7')
+sha512sums_x86_64=('SKIP')
+sha512sums_aarch64=('SKIP')
 
-
-
-
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "$(git describe --tags)"
+}
 
 build() {
     # generate .desktop file
