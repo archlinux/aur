@@ -2,7 +2,7 @@
 
 pkgname=purple-oicq
 pkgver=1.0.2
-pkgrel=0
+pkgrel=5
 pkgdesc='A libpurple plugin'
 url='https://github.com/axon-oicq/purple-oicq'
 license=(Unlicense)

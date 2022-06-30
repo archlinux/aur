@@ -1,7 +1,7 @@
 pkgbase = purple-oicq
-	pkgdesc = libpurple protocol support for oicq
+	pkgdesc = A libpurple plugin
 	pkgver = 1.0.2
-	pkgrel = 0
+	pkgrel = 5
 	url = https://github.com/axon-oicq/purple-oicq
 	arch = any
 	license = Unlicense
