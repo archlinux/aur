@@ -2,8 +2,8 @@
 
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.6
+pkgrel=1
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
 license=(Apache)
@@ -20,7 +20,7 @@ checkdepends=(mypy
               python-pylint)
 _archive=("$_pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('1cc460b05d3b26c8fbfdbf7fab642b89b53ec6461547909e3f7cf5d7e72d8364')
+sha256sums=('fe914d34118fca36b97c4ae2c129e803b74028319ca1b9d16c35cd91a5b2dd38')
 
 build() {
 	cd "$_archive"
