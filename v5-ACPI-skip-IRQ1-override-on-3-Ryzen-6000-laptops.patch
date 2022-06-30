@@ -1,0 +1,83 @@
+The IRQ1 of these laptops with Ryzen 6000 and Insyde UEFI are active
+low and defined in legacy format in ACPI DSDT. The kernel override
+makes the keyboard interrupt polarity inverted, resulting in
+non-functional keyboard.
+
+Skip legacy IRQ override for:
+Lenovo ThinkBook 14G4+ ARA
+Redmi Book Pro 15 2022 Ryzen
+Asus Zenbook S 13 OLED UM5302
+
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Tighe Donnelly <tighe.donnelly@protonmail.com>
+Signed-off-by: Kent Hou Man <knthmn0@gmail.com>
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+---
+Changes since v1:
+ Match DMI_PRODUCT_NAME for ThinkBook because the board name
+ is used for other completely different Lenovo laptops.
+ Add a patch for RedmiBook
+
+Changes since v2:
+ Fix alphabetical order in skip_override_table
+ Add a patch for Asus Zenbook
+
+Changes since v3:
+ Merge patches as requested
+ Fix another alphabetical ordering between two structs
+
+Changes since v4:
+ rename the ident in RedmiBook entry.
+  There's also an Intel version of this series, so
+  rename it to make it specific.
+ reword commit title
+
+ drivers/acpi/resource.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
+index c2d494784425..0491da180fc5 100644
+--- a/drivers/acpi/resource.c
++++ b/drivers/acpi/resource.c
+@@ -381,6 +381,31 @@ unsigned int acpi_dev_get_irq_type(int triggering, int polarity)
+ }
+ EXPORT_SYMBOL_GPL(acpi_dev_get_irq_type);
+ 
++static const struct dmi_system_id irq1_edge_low_shared[] = {
++	{
++		.ident = "Asus Zenbook S 13 OLED UM5302",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_BOARD_NAME, "UM5302TA"),
++		},
++	},
++	{
++		.ident = "Lenovo ThinkBook 14 G4+ ARA",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "21D0"),
++		},
++	},
++	{
++		.ident = "Redmi Book Pro 15 2022 Ryzen",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "TIMI"),
++			DMI_MATCH(DMI_BOARD_NAME, "TM2113"),
++		},
++	},
++	{ }
++};
++
+ static const struct dmi_system_id medion_laptop[] = {
+ 	{
+ 		.ident = "MEDION P15651",
+@@ -408,6 +433,7 @@ struct irq_override_cmp {
+ };
+ 
+ static const struct irq_override_cmp skip_override_table[] = {
++	{ irq1_edge_low_shared, 1, ACPI_EDGE_SENSITIVE, ACPI_ACTIVE_LOW, 1 },
+ 	{ medion_laptop, 1, ACPI_LEVEL_SENSITIVE, ACPI_ACTIVE_LOW, 0 },
+ };
+ 
+-- 
+2.36.1

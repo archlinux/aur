@@ -3,7 +3,5 @@
 !/PKGBUILD
 !/.SRCINFO
 !/config
-!/v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.patch
-!/v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.patch
-!/v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.patch
+!/v5-ACPI-skip-IRQ1-override-on-3-Ryzen-6000-laptops.patch
 !/v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch

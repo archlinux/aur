@@ -19,9 +19,7 @@ _srcname=linux-mainline
 source=(
   "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=$_srctag"
   config         # the main kernel config file
-  v3-1-3-ACPI-skip-IRQ1-override-on-Lenovo-ThinkBook-14G4-ARA.patch
-  v3-2-3-ACPI-skip-IRQ1-override-on-Redmi-Book-Pro-15-2022.patch
-  v3-3-3-ACPI-skip-IRQ1-override-on-Asus-Zenbook-S-13-OLED-UM5302.patch
+  v5-ACPI-skip-IRQ1-override-on-3-Ryzen-6000-laptops.patch
   v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
 )
 validpgpkeys=(
@@ -31,9 +29,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35'
-            '2f8cf3f6914d4c122c5247f0caadb2c3832b2bd9662005d05e4179337dd84adc'
-            'f68853f51f7e0d58e1a9c34fea8516d45a18e5b0a59477e87fea0eacf5be5c77'
-            '336c842b0054d496f05394b52d3361a005d81621e39f54878a41928988466735'
+            'a78e1868cfcaa34d5e5c8e16f2072e54966798664e5148a804579819ef965814'
             '5212ffc69ba29c5b29365849e8bdb621c8cadac4025de5a503f55af923f123f0')
 
 export KBUILD_BUILD_HOST=archlinux
