@@ -1,8 +1,8 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _pkgbase=openhab3
 pkgname=${_pkgbase}-snapshot
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
