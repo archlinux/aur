@@ -1,7 +1,7 @@
 pkgbase = plover_plugins_manager
 	pkgdesc = Plugins manager for Plover.
-	pkgver = 0.7.0
-	pkgrel = 4
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/benoit-pierre/plover_plugins_manager
 	arch = any
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = plover_plugins_manager
 	depends = python-setuptools
 	depends = python-wheel
 	depends = qt5-svg
-	source = plover_plugins_manager-0.7.0.tar.gz::https://github.com/benoit-pierre/plover_plugins_manager/archive/refs/tags/0.7.0.tar.gz
-	sha256sums = fe762c2d3ab2e9e026ee6f0cffe4987ce1d794196a27df81487113bef62754b5
+	source = plover_plugins_manager-0.7.1.tar.gz::https://github.com/benoit-pierre/plover_plugins_manager/archive/refs/tags/0.7.1.tar.gz
+	sha256sums = 5d385b92d5df94fd71ae5a16d9dbae6ef3fe9636935d0bcd4a09d01993891189
 
 pkgname = plover_plugins_manager
