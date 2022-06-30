@@ -11,6 +11,8 @@ depends=(python-numpy python-setuptools)
 makedepends=(python-wheel)
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
 sha512sums=('261c5634fefcdcddd956359e59d5474cf67fe9b3b63cd7740b41b022bee74a564ea637ea288360d46017271b391741d42a74479bd8978cb235627d7a3a7aee00')
+provides=("python-${_base}")
+conflicts=("python-${_base}" "python-${_base}-git")
 
 build() {
   cd ${_base}-${pkgver}
