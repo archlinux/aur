@@ -3,10 +3,10 @@
 
 # fork from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=stm32cubeide
 
-pkgname="stm32cubeprog"
+pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.10.0
-pkgrel=3
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -34,10 +34,10 @@ options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
 # get New _pkg_main_url_index
 # curl https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html |& grep dlLink
-_pkg_main_url_index="2b/58/90/97/ad/a1/46/10"
+_pkg_main_url_index="10/04/c7/eb/76/2e/40/9c"
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
         "${pkgname}.xdotool")
-sha256sums=('6d736e049f0e1a1d606bc2d2789c7527d164c08f6ee92525dd590a05f971c322'
+sha256sums=('a4f37790f8cd2aa2e9c1aca2e5a562b1fb68be8395b7be92d021efbff00113ce'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
 
 prepare() {
