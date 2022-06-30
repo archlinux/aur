@@ -1,0 +1,11 @@
+pkgbase = kanagawa-gtk-theme-git
+	pkgdesc = GTK theme with the Kanagawa colour palette
+	pkgver = r6.5ec6821f
+	pkgrel = 1
+	url = https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme
+	arch = any
+	license = GPL3
+	source = kanagawa-gtk-theme-git::git+https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme.git
+	sha256sums = SKIP
+
+pkgname = kanagawa-gtk-theme-git
