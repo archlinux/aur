@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gosimac-bin
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Fetch the wallpaper from Bings, Unsplash..."
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=('gosimac')
 
 source=("https://github.com/1995parham/gosimac/releases/download/v${pkgver}/gosimac_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('ee39be11fe160b321ee064a46896fd5fdbd073b3fe6c715a7352dfc0f168bb16')
+sha256sums=('79c6a15b7a113dcc8ce2d4ac65c701817cd4bca30ddc254570f4dd77142ced99')
 
 package() {
 	# package
