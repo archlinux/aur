@@ -1,6 +1,6 @@
 --- findpeaks/stats.py
 +++ findpeaks/stats.py
-@@ -35,7 +35,7 @@  Do not suggest how to install, let the user decide.
+@@ -36,7 +36,7 @@  Do not suggest how to install, let the user decide.
          import cv2
          return cv2
      except:
