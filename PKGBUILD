@@ -11,7 +11,8 @@ url="https://reaper.fm"
 license=('custom')
 depends=('gtk3' 'desktop-file-utils' 'xdg-utils' 'aribb24')
 optdepends=('jack'
-            'pulseaudio')
+            'pulseaudio'
+            'alsa-lib')
 provides=("reaper=${pkgver}" 'lv2-host' 'vst-host' 'vst3-host')
 source_x86_64=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
 source_i686=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_i686.tar.xz")
@@ -32,8 +33,8 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     ln -s /opt/REAPER/reaper "${pkgdir}/usr/bin/reaper"
 
-    mkdir -p "${pkgdir}/usr/share/licenses/reaper"
-    ln -s /opt/REAPER/EULA.txt "${pkgdir}/usr/share/licenses/reaper/LICENSE"
+    mkdir -p "${pkgdir}/usr/share/licenses/reaper-bin"
+    ln -s /opt/REAPER/EULA.txt "${pkgdir}/usr/share/licenses/reaper-bin/LICENSE"
 
     sed -i 's|^Exec.*|Exec="/opt/REAPER/reaper" %F|g' "${srcdir}/desktop/applications/cockos-reaper.desktop"
 
