@@ -6,7 +6,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.0
+pkgver=5.0.2
 pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
@@ -81,7 +81,7 @@ prepare() {
   if [[ ! -d ${pkgname} ]]
   then
     #git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine {$pkgname}
-    git clone --depth=1 --branch=release git@github.com:EpicGames/UnrealEngine ${pkgname}
+    git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine ${pkgname}
     cd ${pkgname}
   else
     cd ${pkgname}
@@ -105,11 +105,6 @@ prepare() {
   fi
 
   ./Setup.sh
-}
-
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
