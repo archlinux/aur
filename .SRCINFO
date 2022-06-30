@@ -1,0 +1,15 @@
+pkgbase = terrax
+	pkgdesc = allows you to quickly clone all of an orgs, or users repos into a single directory.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://gitlab.com/alvaro-fdez/terrax
+	arch = x86_64
+	license = GPL3
+	depends = aws-vault
+	depends = chamber
+	depends = terraform
+	depends = tfsec
+	source = terrax-3.0.1.tar.gz::https://gitlab.com/alvaro-fdez/terrax/-/archive/v3.0.1/terrax-v3.0.1.tar.gz
+	sha256sums = ec22faba57b2c12d6427bdb46bb6de546c1621e9003a4a30069a314e2fff5196
+
+pkgname = terrax
