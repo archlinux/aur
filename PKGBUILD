@@ -3,7 +3,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
@@ -28,7 +28,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '4d08c198ecaa50a6a6b109d0f14c070e813defc046a83ac5d7ab494f85599e35'
+    '0d60fa2e2fbd77c4d1f6b1f9d3b588966147f07c1b179d2d34570ac1e1b49006'
 )
 
 build() {
