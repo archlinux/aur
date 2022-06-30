@@ -1,0 +1,18 @@
+pkgbase = cargo-modules
+	pkgdesc = A cargo plugin for showing an overview of a crate's modules.
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/regexident/cargo-modules
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	depends = cargo
+	conflicts = cargo-modules-git
+	conflicts = cargo-modules-bin
+	source = cargo-modules-0.5.8.tar.gz::https://static.crates.io/crates/cargo-modules/cargo-modules-0.5.8.crate
+	sha512sums = b082813c3b528f046e76b18988613ab2e8b821269f65c03f6e11a8d2695e45833941ec1b03dacf4429b462c96ebae2f47de2270697190cde30e186d4cbe0472a
+
+pkgname = cargo-modules
