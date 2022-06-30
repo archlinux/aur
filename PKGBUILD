@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libsecp256k1
-_gitcommit=e0508ee9db2725c5efbc1cad434e14c2ebf55427
-pkgver=20220317+1581+ge0508ee
+_gitcommit=43756da819a235d813e7ecd53eae6df073b53247
+pkgver=20220630+1625+g43756da
 pkgrel=1
 pkgdesc="Optimized C library for EC operations on curve secp256k1"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://github.com/bitcoin-core/secp256k1"
 license=(MIT)
 depends=(glibc)
 source=(${url}/archive/${_gitcommit}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('0b950fb4d1ff56c514c343b183bfac285faaa751bc1e286e54ad0b7c9d76595f')
+sha256sums=('e189c22c3e2acda8e4765ba505c3b2f683bbc9fa551672fe004c925f930ae892')
 
 prepare() {
   cd secp256k1-${_gitcommit}
