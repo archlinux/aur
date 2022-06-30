@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=huekeys
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Control the keyboard backlight on System76 laptops"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/BitPonyLLC/huekeys"
 license=('MIT')
 depends=('gtk3' 'libayatana-appindicator' 'system76-dkms')
 makedepends=('git' 'go')
-_commit=e5b0d976bd0717aaa5621ec01dcde110de6c35dd
+_commit=f61ef90c08a3aad089cf13677e1f1d4ee8b0b6a5
 source=("git+https://github.com/BitPonyLLC/huekeys.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -35,7 +35,7 @@ build() {
 
   # Generate shell completions
   ./"$pkgname" completion bash > "$pkgname.bash"
-  ./"$pkgname" completion fish > "${pkgname}.fish"
+  ./"$pkgname" completion fish > "$pkgname.fish"
   ./"$pkgname" completion zsh > "_${pkgname}"
 
   # Clean module cache for makepkg -C
@@ -46,7 +46,7 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 "${pkgname}.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "_${pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
