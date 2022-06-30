@@ -1,0 +1,15 @@
+pkgbase = python-cmakelang
+	pkgdesc = Language tools for cmake (format, lint, etc)
+	pkgver = 0.6.13
+	pkgrel = 1
+	url = https://github.com/cheshirekow/cmake_format
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-yaml
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/c/cmakelang/cmakelang-0.6.13.tar.gz
+	sha256sums = 03982e87b00654d024d73ef972d9d9bb0e5726cdb6b8a424a15661fb6278e67f
+
+pkgname = python-cmakelang
