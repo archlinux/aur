@@ -1,0 +1,15 @@
+:100755 100755 2ee28e7 0000000 M	xapers/__main__.py
+
+diff --git a/xapers/__main__.py b/xapers/__main__.py
+index 2ee28e7..35f7687 100755
+--- a/xapers/__main__.py
++++ b/xapers/__main__.py
+@@ -359,8 +361,6 @@ resultant entry upon completion.
+         print("FAILED", file=sys.stderr)
+         raise
+ 
+-    db.close()
+-
+     if args.interactive:
+         nci.UI(initdb(), cmd=['search', doc.docstr])
+     else:

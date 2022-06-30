@@ -1,0 +1,25 @@
+pkgbase = xapers-git
+	pkgdesc = Personal journal article management system
+	pkgver = 0.9.0.r40.g7471e67
+	pkgrel = 1
+	url = https://finestructure.net/xapers/
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-xapian
+	depends = python-pybtex
+	depends = python-pycurl
+	depends = poppler
+	optdepends = python3-urwid: Python Urwid curses library
+	optdepends = xdg-utils: Desktop tools for opening files and URLs
+	optdepends = xclip: X clipboard support for copying document fields
+	provides = xapers-git
+	options = zipman
+	source = git+https://gitlab.com/jrollins/xapers.git
+	source = empty_tags.patch
+	source = no_close.patch
+	sha256sums = SKIP
+	sha256sums = 6d5337162b5abec2dab1183b7288c380d558bb6d1978a1881694fa410d4eff3e
+	sha256sums = acffee0a8b31e19d3beb3105b62822ec13c4f8eed28ba68f294cca7cdf797c8f
+
+pkgname = xapers-git
