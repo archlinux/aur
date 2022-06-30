@@ -55,7 +55,7 @@ build() {
 
 check() {
   cd "$pkgname"
-  pytest test
+  PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -p pytest-qt -p xvfb test
 }
 
 package() {
