@@ -130,7 +130,6 @@ source=(
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    wine-autogen_fsr_res.patch
     0001-AUR-pkgbuild-changes.patch
     0001-Add-PROTON_USER_COMPAT_DATA-environment-variable.patch
 )
@@ -256,8 +255,6 @@ prepare() {
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
         # Adds more 16:10 resolutions for use with FSR
-        # Do not report bugs to GE if you enable this, this is still being tested
-        #patch -p1 -i "$srcdir"/wine-autogen_fsr_res.patch
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
@@ -395,6 +392,5 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
-            'SKIP'
             'fb7d1990822a3fffb7caed3d2eee0a92d2053f5f737f8ea2ad8ed21ae7458400'
             'a23a31c2879699129c86ab9a768e7ba657496d22e27d7609709802c2821e9822')
