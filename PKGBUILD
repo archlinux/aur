@@ -5,11 +5,11 @@
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-electron
 pkgver=4.10.5
-pkgrel=1
+pkgrel=2
 #_mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron."
 arch=('x86_64')
-depends=('electron11')
+depends=('electron13')
 provides=("baidunetdisk")
 conflicts=("baidunetdisk")
 url="https://pan.baidu.com"
@@ -23,7 +23,7 @@ source=("0001-baidunetdisk-bin-desktop-file.patch"
 source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${pkgver}/baidunetdisk_${pkgver}_amd64.deb")
 
 sha256sums=('17bda6036e07916971257f25731130fb1b760b80798fa13273db39268ab9f28c'
-            '14e82c2e285ee28e1d38538f8a434d3a1301621225a3130667d875688a5e430f')
+            '37837db36ac35fc0bfe6479325573497f60774f5b53b3ae2cdcd625991077654')
 sha256sums_x86_64=('d9761b3c99a1740405e261580fc0ab990c243de7ac54b3a8a831145777dc9bb9')
 
 prepare() {
@@ -47,7 +47,7 @@ package() {
     
     # remove unnecessary libs
     cd "${pkgdir}/usr/lib/${_pkgname}"
-    rm -rf baidunetdisk swiftshader chrome_100_percent.pak libEGL.so locales v8_context_snapshot.bin chrome_200_percent.pak  libffmpeg.so         libvk_swiftshader.so  vk_swiftshader_icd.json chrome-sandbox libGLESv2.so libvulkan.so resources.pak icudtl.dat snapshot_blob.bin baiduNetdiskContext.conf baidunetdisk.svg baidunetdiskv.desktop resources/8bb88996964c4e3202fecaaa5605af03 resources/default.db resources/dir.icns resources/resource.db
+    rm -rf baidunetdisk swiftshader chrome_100_percent.pak libEGL.so locales v8_context_snapshot.bin chrome_200_percent.pak  libffmpeg.so         libvk_swiftshader.so  vk_swiftshader_icd.json chrome-sandbox libGLESv2.so libvulkan.so resources.pak icudtl.dat snapshot_blob.bin baiduNetdiskContext.conf baidunetdisk.svg baidunetdiskv.desktop baidunetdisk.desktop resources/8bb88996964c4e3202fecaaa5605af03 resources/default.db resources/dir.icns resources/resource.db
 
 
     # install license
