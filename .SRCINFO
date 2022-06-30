@@ -1,0 +1,20 @@
+pkgbase = nali-go-git
+	pkgdesc = An offline tool for querying IP geographic information and CDN provider. (development version)
+	pkgver = 0.4.5.r0.g6f57049
+	pkgrel = 1
+	url = https://github.com/zu1k/nali
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.18
+	provides = nali
+	conflicts = nali
+	source = git+https://github.com/zu1k/nali.git#branch=master
+	sha256sums = SKIP
+
+pkgname = nali-go-git
