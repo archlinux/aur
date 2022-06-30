@@ -193,7 +193,7 @@ $(jq -sr '[ .[].index ] | to_entries | sort_by(.value) | .[].key + 1' \
         <"$_json" | _wrap)
 )
 _ultrawide=(
-$(jq -sr '.[] | if .aspect > 1.7 then 1 else 0 end' \
+$(jq -sr 'sort_by(.index)[] | if .aspect > 1.7 then 1 else 0 end' \
         <"$_json" | _wrap)
 )
 
