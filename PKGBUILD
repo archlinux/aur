@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2021
-pkgrel=4
+pkgrel=5
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -239,7 +239,7 @@ package() {
     for i in "${!_index[@]}"; do
         j=${_index[i]}
         image=${source[j]%%::*}
-        uw=${_ultrawide[j]}
+        uw=${_ultrawide[i]}
         ((uw)) && uw=/ultrawide || uw=
         file=$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \
             "$pkgdir" "$pkgname$uw" "$((i + 1))" "${image#image-}")
