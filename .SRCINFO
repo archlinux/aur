@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = GE.Proton7.20
+	pkgver = GE.Proton7.24
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -21,8 +21,8 @@ pkgbase = proton-ge-custom
 	makedepends = nasm
 	makedepends = meson
 	makedepends = cmake
-	makedepends = python-virtualenv
-	makedepends = python-pip
+	makedepends = afdko
+	makedepends = python-pefile
 	makedepends = glslang
 	makedepends = vulkan-headers
 	makedepends = clang
@@ -115,6 +115,8 @@ pkgbase = proton-ge-custom
 	makedepends = lib32-libvpx
 	makedepends = sdl2>=2.0.16
 	makedepends = lib32-sdl2>=2.0.16
+	makedepends = libsoup3
+	makedepends = lib32-libsoup3
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
@@ -157,6 +159,8 @@ pkgbase = proton-ge-custom
 	depends = lib32-libvpx
 	depends = sdl2>=2.0.16
 	depends = lib32-sdl2>=2.0.16
+	depends = libsoup3
+	depends = lib32-libsoup3
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
@@ -205,11 +209,11 @@ pkgbase = proton-ge-custom
 	provides = proton
 	noextract = wine-gecko-2.47.2-x86.tar.xz
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
-	noextract = wine-mono-7.2.0-x86.tar.xz
+	noextract = wine-mono-7.3.0-x86.tar.xz
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-20
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=GE-Proton7-24
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -236,10 +240,10 @@ pkgbase = proton-ge-custom
 	source = gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.tar.xz
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.2.0/wine-mono-7.2.0-x86.tar.xz
-	source = wine-more_8x5_res.patch
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.3.0/wine-mono-7.3.0-x86.tar.xz
+	source = wine-autogen_fsr_res.patch
 	source = 0001-AUR-pkgbuild-changes.patch
-	source = proton-user_compat_data.patch
+	source = 0001-Add-PROTON_USER_COMPAT_DATA-environment-variable.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -267,9 +271,9 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = 8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94
 	sha256sums = b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014
-	sha256sums = 25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d
-	sha256sums = 9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215
-	sha256sums = 011396ea6cb09cbf2b0cc28520a4d2d43b9ac77b1c9d7190ecc7839b3670f74e
-	sha256sums = 242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2
+	sha256sums = 60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd
+	sha256sums = SKIP
+	sha256sums = fb7d1990822a3fffb7caed3d2eee0a92d2053f5f737f8ea2ad8ed21ae7458400
+	sha256sums = a23a31c2879699129c86ab9a768e7ba657496d22e27d7609709802c2821e9822
 
 pkgname = proton-ge-custom

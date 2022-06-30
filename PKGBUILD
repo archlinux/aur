@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-20
+_srctag=GE-Proton7-24
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.2.0
+_monover=7.3.0
 pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -34,6 +34,7 @@ depends=(
   faudio           lib32-faudio
   libvpx           lib32-libvpx
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
+  libsoup3         lib32-libsoup3
   desktop-file-utils
   python
   steam-native-runtime
@@ -41,7 +42,7 @@ depends=(
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
-  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson cmake afdko python-pefile
   glslang vulkan-headers
   clang
   giflib                lib32-giflib
@@ -129,9 +130,9 @@ source=(
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    wine-more_8x5_res.patch
+    wine-autogen_fsr_res.patch
     0001-AUR-pkgbuild-changes.patch
-    proton-user_compat_data.patch
+    0001-Add-PROTON_USER_COMPAT_DATA-environment-variable.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -170,15 +171,6 @@ EOF
 }
 
 prepare() {
-    # I know this is fugly and it should NOT be done
-    # but the afdko package from AUR breaks regularly.
-    # Install it from pip in a virtualenv
-    [ -d build_venv ] && rm -rf build_venv
-    virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
-    source build_venv/bin/activate
-    pip install --no-cache-dir meson==0.59.3
-    pip install --no-cache-dir afdko
-    pip install --no-cache-dir pefile
 
     # Provide wrappers to compiler tools
     rm -rf wrappers && mkdir wrappers
@@ -264,11 +256,12 @@ prepare() {
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
         # Adds more 16:10 resolutions for use with FSR
-        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        # Do not report bugs to GE if you enable this, this is still being tested
+        #patch -p1 -i "$srcdir"/wine-autogen_fsr_res.patch
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+    patch -p1 -i "$srcdir"/0001-Add-PROTON_USER_COMPAT_DATA-environment-variable.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -280,7 +273,6 @@ prepare() {
 }
 
 build() {
-    source build_venv/bin/activate
     export PATH="$(pwd)/wrappers:$PATH"
 
     cd build
@@ -402,7 +394,7 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d'
-            '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '011396ea6cb09cbf2b0cc28520a4d2d43b9ac77b1c9d7190ecc7839b3670f74e'
-            '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
+            '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
+            'SKIP'
+            'fb7d1990822a3fffb7caed3d2eee0a92d2053f5f737f8ea2ad8ed21ae7458400'
+            'a23a31c2879699129c86ab9a768e7ba657496d22e27d7609709802c2821e9822')

@@ -1,23 +1,23 @@
-From cd339694d6d0322e9dee81898b71634da185e59e Mon Sep 17 00:00:00 2001
+From 9749a3aa2dc9ad381345dc6cc75181232c608491 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
-Date: Mon, 18 Oct 2021 22:21:12 +0300
-Subject: [PATCH 1/2] AUR pkgbuild changes
+Date: Mon, 27 Jun 2022 01:26:56 +0300
+Subject: [PATCH] AUR pkgbuild changes
 
 ---
- Makefile.in             | 56 +++++++++++++++++++++++++++++++----------
+ Makefile.in             | 69 ++++++++++++++++++++++++++++++++++-------
  configure.sh            |  2 ++
  make/rules-autoconf.mk  |  4 +--
  make/rules-cargo.mk     |  4 ++-
  make/rules-cmake.mk     |  4 +--
- make/rules-common.mk    | 18 +++++++------
+ make/rules-common.mk    | 18 ++++++-----
  make/rules-configure.mk |  4 +--
  make/rules-meson.mk     |  2 +-
  make/rules-winemaker.mk |  2 +-
- proton                  |  6 ++---
- 10 files changed, 69 insertions(+), 33 deletions(-)
+ proton                  |  6 ++--
+ 10 files changed, 84 insertions(+), 31 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index b5385130..0addf39b 100644
+index 14ccc673..f3b2138e 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -63,49 +63,56 @@ index b5385130..0addf39b 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -441,11 +441,15 @@ $(eval $(call rules-meson,dav1d,64))
+@@ -442,6 +442,8 @@ $(eval $(call rules-meson,dav1d,64))
+ 
+ 
+ GST_ORC_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
+ 	-Dorc-test=disabled \
+ 	-Dexamples=disabled \
+ 	-Dtests=disabled \
+@@ -458,10 +460,16 @@ $(eval $(call rules-meson,gst_orc,64))
  ##
  
- GST_COMMON_MESON_ARGS := \
+ GSTREAMER_MESON_ARGS := \
 +	-Db_lto=true \
 +	-Db_pie=true \
 +	-Ddoc=disabled \
- 	-Dexamples=disabled \
- 	-Dtests=disabled \
- 	-Dgtk_doc=disabled \
- 	-Dintrospection=disabled \
- 	-Dgobject-cast-checks=disabled \
-+	-Dorc=enabled \
- 	-Dglib-asserts=disabled \
- 	-Dglib-checks=disabled \
- 	-Dnls=disabled \
-@@ -469,6 +473,8 @@ GSTREAMER_MESON_ARGS := \
++	-Dtools=disabled \
+ 	-Dgst_parse=false \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
 +	-Dptp-helper-permissions=capabilities \
 +	-Ddbghelp=disabled \
- 	$(GST_COMMON_MESON_ARGS)
+ 	-Dexamples=disabled \
+ 	-Dtests=disabled \
+ 	-Dgtk_doc=disabled \
+@@ -484,6 +492,11 @@ $(eval $(call rules-meson,gstreamer,64))
+ ##
  
- GSTREAMER_DEPENDS = gst_orc
-@@ -505,6 +511,7 @@ GST_BASE_MESON_ARGS := \
- 	-Dx11=disabled \
- 	-Dxshm=disabled \
- 	-Dxvideo=disabled \
+ GST_BASE_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
++	-Ddoc=disabled \
++	-Dorc=enabled \
 +	-Dtools=disabled \
- 	$(GST_COMMON_MESON_ARGS)
+ 	-Dalsa=disabled \
+ 	-Daudiomixer=disabled \
+ 	-Daudiorate=disabled \
+@@ -525,6 +538,10 @@ $(eval $(call rules-meson,gst_base,64))
+ ##
  
- GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -569,7 +576,7 @@ GST_GOOD_MESON_ARGS := \
- 	-Dwavenc=disabled \
- 	-Dximagesrc=disabled \
- 	-Dy4m=enabled \
--	-Ddoc='disabled' \
-+	-Dtools=disabled \
- 	$(GST_COMMON_MESON_ARGS)
- 
- GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -584,6 +591,8 @@ $(eval $(call rules-meson,gst_good,64))
+ GST_GOOD_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
++	-Ddoc=disabled \
++	-Dorc=enabled \
+ 	-Daalib=disabled \
+ 	-Dalpha=disabled \
+ 	-Dapetag=disabled \
+@@ -597,6 +614,8 @@ $(eval $(call rules-meson,gst_good,64))
  
  FFMPEG_CONFIGURE_ARGS := \
  	--enable-shared \
@@ -114,9 +121,9 @@ index b5385130..0addf39b 100644
  	--disable-static \
  	--disable-everything \
  	--disable-programs \
-@@ -599,6 +608,9 @@ FFMPEG_CONFIGURE_ARGS := \
- 	--enable-decoder=h264 \
- 	--enable-decoder=aac
+@@ -620,6 +639,9 @@ FFMPEG_CONFIGURE_ARGS := \
+ 	--enable-decoder=aac \
+ 	--enable-demuxer=xwma
  
 +FFMPEG_CONFIGURE_ARGS64 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS64)"
 +FFMPEG_CONFIGURE_ARGS32 = --optflags="$(COMMON_FLAGS) $(COMMON_FLAGS32)" --disable-inline-asm
@@ -124,24 +131,39 @@ index b5385130..0addf39b 100644
  $(eval $(call rules-source,ffmpeg,$(SRCDIR)/FFmpeg))
  $(eval $(call rules-configure,ffmpeg,32))
  $(eval $(call rules-configure,ffmpeg,64))
-@@ -664,6 +676,8 @@ GST_BAD_MESON_ARGS := \
+@@ -664,6 +686,10 @@ $(OBJ)/.gst_plugins_rs-post-build32:
+ ##
+ 
+ GST_BAD_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
++	-Ddoc=disabled \
++	-Dorc=enabled \
+ 	-Dfbdev=disabled \
+ 	-Ddecklink=disabled \
+ 	-Dcurl=disabled \
+@@ -683,7 +709,9 @@ GST_BAD_MESON_ARGS := \
  	-Dvoamrwbenc=disabled \
  	-Dnvcodec=disabled \
  	-Dx265=disabled \
 +	-Dopenexr=disabled \
-+	-Dtools=disabled \
- 	$(GST_COMMON_MESON_ARGS)
- 
- GST_BAD_DEPENDS = gst_orc gstreamer gst_base
-@@ -678,6 +692,7 @@ $(eval $(call rules-meson,gst_bad,64))
+ 	-Dtests=disabled \
++	-Dintrospection=disabled \
+ 	-Dgobject-cast-checks=disabled \
+ 	-Dglib-asserts=disabled \
+ 	-Dglib-checks=disabled \
+@@ -700,7 +728,10 @@ $(eval $(call rules-meson,gst_bad,64))
+ ##
  
  GST_UGLY_MESON_ARGS := \
++	-Db_lto=true \
++	-Db_pie=true \
          -Ddoc='disabled' \
-+        -Dtools='disabled' \
- 	$(GST_COMMON_MESON_ARGS)
- 
- GST_UGLY_DEPENDS = gst_orc gstreamer gst_base
-@@ -809,7 +824,13 @@ WINE_SOURCE_ARGS = \
++	-Dorc=enabled \
+ 	-Dtests=disabled \
+ 	-Dgobject-cast-checks=disabled \
+ 	-Dglib-asserts=disabled \
+@@ -836,7 +867,13 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -155,7 +177,7 @@ index b5385130..0addf39b 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -872,6 +893,9 @@ $(OBJ)/.vrclient-post-source:
+@@ -899,6 +936,9 @@ $(OBJ)/.vrclient-post-source:
  DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
  
@@ -165,7 +187,7 @@ index b5385130..0addf39b 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -894,6 +918,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -921,6 +961,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -175,11 +197,10 @@ index b5385130..0addf39b 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -957,10 +984,13 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -984,9 +1027,13 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
--VKD3D_PROTON_MESON_ARGS = -Denable_standalone_d3d12=true
 +VKD3D_PROTON_MESON_ARGS = -Denable_d3d12=true
  VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
  VKD3D_PROTON_MESON_ARGS64 = --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton
@@ -190,7 +211,7 @@ index b5385130..0addf39b 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -1198,14 +1228,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -1224,14 +1271,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -208,7 +229,7 @@ index b5385130..0addf39b 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -1215,10 +1245,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -1241,10 +1288,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
@@ -222,7 +243,7 @@ index b5385130..0addf39b 100644
  $(micross.ttf): $(noto_sans.ttf) $(noto_sans_arabic.ttf) $(noto_sans_armenian.ttf) $(noto_sans_bengali.ttf) $(noto_sans_coptic.ttf) \
  		$(noto_sans_georgian.ttf) $(noto_sans_gujarati.ttf) $(noto_sans_hebrew.ttf) $(noto_sans_khmer.ttf) $(noto_sans_tamil.ttf) \
 diff --git a/configure.sh b/configure.sh
-index fba2df9b..06460b0b 100755
+index 68168bff..09cd2b7f 100755
 --- a/configure.sh
 +++ b/configure.sh
 @@ -126,6 +126,7 @@ function configure() {
@@ -386,10 +407,10 @@ index 69688a03..1c0d1d3b 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index fd9c27eb..371fd931 100755
+index 1eef11a3..0fb1d73d 100755
 --- a/proton
 +++ b/proton
-@@ -356,7 +356,6 @@ class Proton:
+@@ -417,7 +417,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -397,7 +418,7 @@ index fd9c27eb..371fd931 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1591,8 +1590,6 @@ if __name__ == "__main__":
+@@ -1670,8 +1669,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -406,7 +427,7 @@ index fd9c27eb..371fd931 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1601,7 +1598,8 @@ if __name__ == "__main__":
+@@ -1680,7 +1677,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
@@ -414,8 +435,8 @@ index fd9c27eb..371fd931 100755
 +        log("Default prefix is missing, something is very wrong.")
 +        sys.exit(1)
  
-     import protonfixes
+     g_session.init_session(sys.argv[1] != "runinprefix")
  
 -- 
-2.36.1
+2.37.0
 
