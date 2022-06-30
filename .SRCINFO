@@ -1,16 +1,18 @@
 pkgbase = iotas
 	pkgdesc = Simple note taking
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/cheywood/iotas
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = gobject-introspection
-	depends = glib2
 	depends = libadwaita
-	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.1.1/iotas-0.1.1.tar
-	b2sums = 707ea73cf03c5976b67639fa8c0668eb33f56751e885e206d172b018c8ebed4b7b2a6e68a8a680401773d252843a0ac4e34f71cbf2f59bbfa755003d64fb5de8
+	depends = sqlite
+	depends = org.freedesktop.secrets
+	depends = gtksourceview5
+	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.1.1/iotas-0.1.1.tar.gz
+	b2sums = 39c0fccb80b6c1f3bb3ab53399d2704db9f5dcc9b55f41324de1931c7a58f9a013ecc00dbd9101369c83c2e7ee95a9ef3dbb340076ed10b5fe327ad911131659
 
 pkgname = iotas
