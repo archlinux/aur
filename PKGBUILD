@@ -4,7 +4,7 @@
 pkgname=libaxon-bin
 _pkgname=libaxon
 pkgver=1.0.2
-pkgrel=0
+pkgrel=5
 pkgdesc='Nodejs backend for purple-oicq'
 url='https://github.com/axon-oicq/axon'
 license=(Unlicense)
