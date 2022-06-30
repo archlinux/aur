@@ -1,7 +1,7 @@
-# Maintainer: Stella <jens300304@gmail.com>
+# Maintainer: Stella <stellarinfinity@riseup.net>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
-pkgver=0.6.9
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('any')
@@ -10,10 +10,11 @@ conflicts=('danser-git')
 source=(
     "https://github.com/Wieku/danser-go/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('8a4c7c61b8b91d3d50a22a1d14280af9fd792622ad957210f66c512e6d72451f')
+sha256sums=('d45d727a13ecd1c1c4bbc9fafeba8471c0de2cb94e4886e8dc6576bb35bff011')
 depends=(
     'libyuv'
     'ffmpeg'
+    'gtk3'
 )
 makedepends=(
     'gcc'
@@ -27,16 +28,24 @@ makedepends=(
 build() {
     cd "${srcdir}/danser-go-${pkgver}"
 
+    # build the library first for the gui and the hollowed out cli
     go build \
         -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
         -modcacherw \
-        -ldflags "-linkmode external 
-            -extldflags \"${LDFLAGS}\" 
-            -s -w -X 'github.com/wieku/danser-go/build.VERSION=$pkgver' 
+        -mod=readonly \
+        -ldflags "-s -w -X 'github.com/wieku/danser-go/build.VERSION=$build'
             -X 'github.com/wieku/danser-go/build.Stream=Release'" \
-        .
+        -buildmode=c-shared \
+        -o danser-core.so \
+        -v -x
+
+    mv danser-core.so libdanser-core.so
+
+    # build the CLI
+    cc -o danser -I. cmain/main_danser.c -Wl,-rpath,. -Wl,-rpath,/usr/lib/danser -L. -ldanser-core
+    # build the launcher
+    cc -D LAUNCHER -o danser-launcher -I. cmain/main_danser.c -Wl,-rpath,. -Wl,-rpath,/usr/lib/danser -L. -ldanser-core
+
 
     go run tools/assets/assets.go ./
 
@@ -46,9 +55,11 @@ package() {
     cd "${srcdir}/danser-go-${pkgver}"
     mkdir -p "${pkgdir}/usr/lib/danser" "${pkgdir}/usr/bin"
 
-    install -Dm755 libbass.so libbass_fx.so libbassmix.so assets.dpak "${pkgdir}/usr/lib/danser"
-    install -Dm755 danser-go "${pkgdir}/usr/lib/danser/${pkgname}"
+    install -Dm755 libdanser-core.so libbass.so libbass_fx.so libbassmix.so assets.dpak "${pkgdir}/usr/lib/danser"
+    install -Dm755 danser "${pkgdir}/usr/lib/danser/${pkgname}"
+    install -Dm755 danser-launcher "${pkgdir}/usr/lib/danser/${pkgname}-gui"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     ln -s "/usr/lib/danser/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/danser/${pkgname}-gui" "${pkgdir}/usr/bin/${pkgname}-gui"
 }
