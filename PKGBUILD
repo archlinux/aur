@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=feathers-cli
-pkgver=4.5.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="The command line interface for scaffolding Feathers applications"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('f6789f4adaf4afde4971e50e8464c14dec2f1406c15e050ecc4cf5ebb83b015c')
+sha256sums=('1d1d0f274de51a2cea3e4224e4f8a6bacc94e9f1719b2c18c2d2af43d353549e')
 
 package() {
 	export NODE_ENV=production
