@@ -11,6 +11,6 @@ pkgbase = pscale-cli
 	conflicts = pscale-git
 	conflicts = pscale-bin
 	source = https://github.com/planetscale/cli/releases/download/v0.106.0/pscale_0.106.0_linux_amd64.tar.gz
-	sha256sums = 370754687e1bf9f8a6a6a433bc84fc05069dc74e9d40086446a171af7a492f28
+	sha256sums = c7a32583461f16ff498a21e3885f127cb5851fd46627f4857325a1f160012b8a
 
 pkgname = pscale-cli

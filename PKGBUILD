@@ -13,7 +13,7 @@ conflicts=('pscale' 'pscale-git' 'pscale-bin')
 backup=()
 install="pscale.install"
 source=("https://github.com/planetscale/cli/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('370754687e1bf9f8a6a6a433bc84fc05069dc74e9d40086446a171af7a492f28')
+sha256sums=('c7a32583461f16ff498a21e3885f127cb5851fd46627f4857325a1f160012b8a')
 
 package() {
   install -Dm755 pscale ${pkgdir}/usr/bin/pscale
