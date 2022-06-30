@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Unreal Engine 4 Editor
+Comment=Create next-generation video games
+Path=/opt/unreal-engine/Engine/Binaries/Linux/
+Exec=/opt/unreal-engine/Engine/Binaries/Linux/UE4Editor %F
+MimeType=text/x-uproject
+Icon=ue4editor
+Terminal=false
+Categories=Development;
+

@@ -1,0 +1,586 @@
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs b/Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs
+index 0957ae99925..a20a95da3aa 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs
+@@ -61,6 +61,9 @@ namespace UnrealBuildTool
+ 		[CommandLine("-NoFASTBuild", Value = "false")]
+ 		public bool bAllowFASTBuild = true;
+ 
++		[XmlConfigFile] [CommandLine("-Noccache", Value = "false")]
++		public bool bAllowCCache = true;
++
+ 		/// <summary>
+ 		/// Whether SN-DBS may be used.
+ 		/// </summary>
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs b/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs
+new file mode 100644
+index 00000000000..4f00dc80bbf
+--- /dev/null
++++ b/Engine/Source/Programs/UnrealBuildTool/Executors/Experimental/CCache.cs
+@@ -0,0 +1,74 @@
++using System.Collections.Generic;
++using System.Diagnostics;
++using Tools.DotNETCommon;
++
++namespace UnrealBuildTool
++{
++	class CCache : LocalExecutor
++	{
++		private readonly string ClangPath;
++		private readonly string CCachePath;
++		
++		private string ClangCommand;
++		private string CompileCommand;
++		
++		public CCache()
++			:base(0)
++		{
++			ClangPath = LinuxCommon.WhichClang();
++			CCachePath = LinuxCommon.Which("ccache");
++		}
++		
++		public override string Name => "ccache";
++		public static bool IsAvailable()
++		{
++			if (BuildHostPlatform.Current.Platform == UnrealTargetPlatform.Linux)
++			{
++				if (!string.IsNullOrEmpty(LinuxCommon.Which("ccache")))
++					return true;
++			}
++
++			return false;
++		}
++		public override bool ExecuteActions(List<Action> Actions, bool bLogDetailedActionStats)
++		{
++			Log.TraceInformation("Using CCache");
++			ClangCommand = ClangPath + " -fpch-preprocess -Xclang -fno-validate-pch ";
++			
++			return base.ExecuteActions(Actions, bLogDetailedActionStats);
++		}
++
++		protected override void Run(Action Action)
++		{
++			switch (Action.ActionType)
++			{
++				case ActionType.Compile:
++					if (Action.StatusDescription.EndsWith(".ispc"))
++						CompileCommand = Action.CommandPath.ToString() + " " + Action.CommandArguments;
++					else
++						CompileCommand = ClangCommand + Action.CommandArguments;
++					ProcessStartInfo CcacheStartInfo = new ProcessStartInfo(CCachePath, CompileCommand);
++					CcacheStartInfo.UseShellExecute = false;
++					CcacheStartInfo.WorkingDirectory = Action.WorkingDirectory.FullName;
++					CcacheStartInfo.RedirectStandardError = true;
++					CcacheStartInfo.RedirectStandardOutput = true;
++					
++					// Sloppiness Settings to try
++					// pch_defines,time_macros,file_stat_matches, file_stat_matches_ctime,include_file_ctime,include_file_mtime
++					CcacheStartInfo.EnvironmentVariables.Add("CCache_SLOPPINESS",
++						"pch_defines,modules,locale,time_macros");
++					base.Run(CcacheStartInfo, Action);
++					break;
++				case ActionType.Link:
++				case ActionType.WriteMetadata:
++				case ActionType.BuildProject:
++					base.Run(Action);
++					break;
++				default:
++					Log.TraceInformation("Action types not handled: {0}",
++						Action.ActionType.ToString());
++					break;
++			}
++		}
++	}
++}
+\ No newline at end of file
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs b/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
+index 8f4f153bd75..0636a29be10 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Executors/LocalExecutor.cs
+@@ -63,6 +63,12 @@ namespace UnrealBuildTool
+ 		}
+ 
+ 
++		protected void ThreadFunc(ProcessStartInfo ActionStartInfo)
++		{
++			Action.StartTime = DateTimeOffset.Now;
++			ActionProgress(ActionStartInfo);
++			RunActionProcess(ActionStartInfo);
++		}
+ 		/// <summary>
+ 		/// The actual function to run in a thread. This is potentially long and blocking
+ 		/// </summary>
+@@ -81,9 +87,15 @@ namespace UnrealBuildTool
+ 			ActionStartInfo.RedirectStandardOutput = false;
+ 			ActionStartInfo.RedirectStandardError = false;
+ 
++			ActionProgress(ActionStartInfo);
++			RunActionProcess(ActionStartInfo);
++			// Try to launch the action's process, and produce a friendly error message if it fails.
++		}
++
++		private void ActionProgress(ProcessStartInfo ActionStartInfo)
++		{
+ 			// Log command-line used to execute task if debug info printing is enabled.
+ 			Log.TraceVerbose("Executing: {0} {1}", ActionStartInfo.FileName, ActionStartInfo.Arguments);
+-
+ 			// Log summary if wanted.
+ 			if (Action.bShouldOutputStatusDescription)
+ 			{
+@@ -97,68 +109,14 @@ namespace UnrealBuildTool
+ 					Log.TraceInformation("[{0}/{1}] {2} {3}", JobNumber, TotalJobs, CommandDescription, Action.StatusDescription);
+ 				}
+ 			}
+-
+-			// Try to launch the action's process, and produce a friendly error message if it fails.
+-			Process ActionProcess = null;
++		}
++		
++		private void RunActionProcess(ProcessStartInfo ActionStartInfo)
++		{
++			Process ActionProcess = LaunchActionProcess(ActionStartInfo);
+ 			try
+ 			{
+-				try
+-				{
+-					ActionProcess = new Process();
+-					ActionProcess.StartInfo = ActionStartInfo;
+-					ActionStartInfo.RedirectStandardOutput = true;
+-					ActionStartInfo.RedirectStandardError = true;
+-					ActionProcess.OutputDataReceived += new DataReceivedEventHandler(ActionDebugOutput);
+-					ActionProcess.ErrorDataReceived += new DataReceivedEventHandler(ActionDebugOutput);
+-					ActionProcess.Start();
+-
+-					ActionProcess.BeginOutputReadLine();
+-					ActionProcess.BeginErrorReadLine();
+-				}
+-				catch (Exception ex)
+-				{
+-					Log.TraceError("Failed to start local process for action: {0} {1}", Action.CommandPath, Action.CommandArguments);
+-					Log.WriteException(ex, null);
+-					ExitCode = 1;
+-					bComplete = true;
+-					return;
+-				}
+-
+-				// wait for process to start
+-				// NOTE: this may or may not be necessary; seems to depend on whether the system UBT is running on start the process in a timely manner.
+-				int checkIterations = 0;
+-				bool haveConfiguredProcess = false;
+-				do
+-				{
+-					if (ActionProcess.HasExited)
+-					{
+-						if (haveConfiguredProcess == false)
+-							Debug.WriteLine("Process for action exited before able to configure!");
+-						break;
+-					}
+-
+-					if (!haveConfiguredProcess)
+-					{
+-						try
+-						{
+-							ActionProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
+-							haveConfiguredProcess = true;
+-						}
+-						catch (Exception)
+-						{
+-						}
+-						break;
+-					}
+-
+-					Thread.Sleep(10);
+-
+-					checkIterations++;
+-				} while (checkIterations < 100);
+-				if (checkIterations == 100)
+-				{
+-					throw new BuildException("Failed to configure local process for action: {0} {1}", Action.CommandPath, Action.CommandArguments);
+-				}
+-
++				//CheckIterations(ActionProcess); Might be needed for Local Executor. Doesn't seem to do anything 
+ 				// block until it's complete
+ 				// @todo iosmerge: UBT had started looking at:	if (Utils.IsValidProcess(Process))
+ 				//    do we need to check that in the thread model?
+@@ -181,8 +139,79 @@ namespace UnrealBuildTool
+ 
+ 			// we are done!!
+ 			bComplete = true;
++			
+ 		}
+ 
++		private void CheckIterations(Process ActionProcess)
++		{
++			// wait for process to start
++			// NOTE: this may or may not be necessary; seems to depend on whether the system UBT is running on start the process in a timely manner.
++			int checkIterations = 0;
++			bool haveConfiguredProcess = false;
++			do
++			{
++				if (ActionProcess.HasExited)
++				{
++					if (haveConfiguredProcess == false)
++						Debug.WriteLine("Process for action exited before able to configure!");
++					break;
++				}
++
++				if (!haveConfiguredProcess)
++				{
++					try
++					{
++						ActionProcess.PriorityClass = ProcessPriorityClass.BelowNormal;
++						haveConfiguredProcess = true;
++					}
++					catch (Exception)
++					{
++					}
++					break;
++				}
++
++				Thread.Sleep(10);
++
++				checkIterations++;
++			} while (checkIterations < 100);
++			if (checkIterations == 100)
++			{
++				throw new BuildException("Failed to configure local process for action: {0} {1}", Action.CommandPath, Action.CommandArguments);
++			}
++		}
++		
++		private Process LaunchActionProcess(ProcessStartInfo ActionStartInfo)
++		{
++			Process ActionProcess = null;
++			try
++			{
++				ActionProcess = new Process();
++				ActionProcess.StartInfo = ActionStartInfo;
++				ActionStartInfo.RedirectStandardOutput = true;
++				ActionStartInfo.RedirectStandardError = true;
++				ActionProcess.OutputDataReceived += new DataReceivedEventHandler(ActionDebugOutput);
++				ActionProcess.ErrorDataReceived += new DataReceivedEventHandler(ActionDebugOutput);
++				ActionProcess.Start();
++
++				ActionProcess.BeginOutputReadLine();
++				ActionProcess.BeginErrorReadLine();
++				return ActionProcess;
++			}
++			catch (Exception ex)
++			{
++				Log.TraceError("Failed to start local process for action: {0} {1}", Action.CommandPath, Action.CommandArguments);
++				Log.WriteException(ex, null);
++				ExitCode = 1;
++				bComplete = true;
++				return ActionProcess;
++			}
++		}
++
++		public void Run(ProcessStartInfo ActionStartInfo)
++		{
++			Thread T = new Thread(() => ThreadFunc(ActionStartInfo));
++			T.Start();
++		}
+ 		/// <summary>
+ 		/// Starts a thread and runs the action in that thread
+ 		/// </summary>
+@@ -214,6 +243,10 @@ namespace UnrealBuildTool
+ 		/// </summary>
+ 		int NumParallelProcesses;
+ 
++		private int JobNumber;
++		private int TotalJobs;
++		private int ProgressValue;
++		
+ 		/// <summary>
+ 		/// Constructor
+ 		/// </summary>
+@@ -304,43 +337,16 @@ namespace UnrealBuildTool
+ 			Log.TraceInformation("Performing {0} actions ({1} in parallel)", Actions.Count, NumParallelProcesses);
+ 
+ 			Dictionary<Action, ActionThread> ActionThreadDictionary = new Dictionary<Action, ActionThread>();
+-			int JobNumber = 1;
++			JobNumber = 1;
++			TotalJobs = Actions.Count;
++			ProgressValue = 0;
+ 			using (ProgressWriter ProgressWriter = new ProgressWriter("Compiling C++ source code...", false))
+ 			{
+-				int ProgressValue = 0;
+ 				while (true)
+ 				{
+-					// Count the number of pending and still executing actions.
+-					int NumUnexecutedActions = 0;
+ 					int NumExecutingActions = 0;
+-					foreach (Action Action in Actions)
+-					{
+-						ActionThread ActionThread = null;
+-						bool bFoundActionProcess = ActionThreadDictionary.TryGetValue(Action, out ActionThread);
+-						if (bFoundActionProcess == false)
+-						{
+-							NumUnexecutedActions++;
+-						}
+-						else if (ActionThread != null)
+-						{
+-							if (ActionThread.bComplete == false)
+-							{
+-								NumUnexecutedActions++;
+-								NumExecutingActions++;
+-							}
+-						}
+-					}
+-
+-					// Update the current progress
+-					int NewProgressValue = Actions.Count + 1 - NumUnexecutedActions;
+-					if (ProgressValue != NewProgressValue)
+-					{
+-						ProgressWriter.Write(ProgressValue, Actions.Count + 1);
+-						ProgressValue = NewProgressValue;
+-					}
+-
+ 					// If there aren't any pending actions left, we're done executing.
+-					if (NumUnexecutedActions == 0)
++					if (ExecuteActionCount(Actions, ProgressWriter, ref NumExecutingActions))
+ 					{
+ 						break;
+ 					}
+@@ -350,65 +356,14 @@ namespace UnrealBuildTool
+ 					foreach (Action Action in Actions)
+ 					{
+ 						ActionThread ActionProcess = null;
+-						bool bFoundActionProcess = ActionThreadDictionary.TryGetValue(Action, out ActionProcess);
+-						if (bFoundActionProcess == false)
++						if (!FoundActionProcess(Action))
+ 						{
+ 							if (NumExecutingActions < Math.Max(1, NumParallelProcesses))
+ 							{
+-								// Determine whether there are any prerequisites of the action that are outdated.
+-								bool bHasOutdatedPrerequisites = false;
+-								bool bHasFailedPrerequisites = false;
+-								foreach (Action PrerequisiteAction in Action.PrerequisiteActions)
+-								{
+-									if (Actions.Contains(PrerequisiteAction))
+-									{
+-										ActionThread PrerequisiteProcess = null;
+-										bool bFoundPrerequisiteProcess = ActionThreadDictionary.TryGetValue(PrerequisiteAction, out PrerequisiteProcess);
+-										if (bFoundPrerequisiteProcess == true)
+-										{
+-											if (PrerequisiteProcess == null)
+-											{
+-												bHasFailedPrerequisites = true;
+-											}
+-											else if (PrerequisiteProcess.bComplete == false)
+-											{
+-												bHasOutdatedPrerequisites = true;
+-											}
+-											else if (PrerequisiteProcess.ExitCode != 0)
+-											{
+-												bHasFailedPrerequisites = true;
+-											}
+-										}
+-										else
+-										{
+-											bHasOutdatedPrerequisites = true;
+-										}
+-									}
+-								}
+-
+-								// If there are any failed prerequisites of this action, don't execute it.
+-								if (bHasFailedPrerequisites)
+-								{
+-									// Add a null entry in the dictionary for this action.
+-									ActionThreadDictionary.Add(Action, null);
+-								}
+ 								// If there aren't any outdated prerequisites of this action, execute it.
+-								else if (!bHasOutdatedPrerequisites)
++								if (!ExecutePrerequisiteActions(Actions, Action))
+ 								{
+-									ActionThread ActionThread = new ActionThread(Action, JobNumber, Actions.Count);
+-									JobNumber++;
+-
+-									try
+-									{
+-										ActionThread.Run();
+-									}
+-									catch (Exception ex)
+-									{
+-										throw new BuildException(ex, "Failed to start thread for action: {0} {1}\r\n{2}", Action.CommandPath, Action.CommandArguments, ex.ToString());
+-									}
+-
+-									ActionThreadDictionary.Add(Action, ActionThread);
+-
++									Run(Action);
+ 									NumExecutingActions++;
+ 								}
+ 							}
+@@ -512,5 +467,119 @@ namespace UnrealBuildTool
+ 
+ 			return bSuccess;
+ 		}
++
++		private ActionThread CreateActionThread(Action Action)
++		{
++			return new ActionThread(Action, JobNumber++, TotalJobs);
++		}
++		protected virtual void Run(ProcessStartInfo ProcessStartInfo, Action Action)
++		{
++			ActionThread ActionThread = CreateActionThread(Action);
++			try
++			{
++				ActionThread.Run(ProcessStartInfo);
++			}
++			catch (Exception ex)
++			{
++				throw new BuildException(ex, "Failed to start thread for action: {0} {1}\r\n{2}", Action.CommandPath, Action.CommandArguments, ex.ToString());
++			}
++			ActionThreadDictionary.Add(Action, ActionThread);
++		}
++		protected virtual void Run(Action Action)
++		{
++			ActionThread ActionThread = CreateActionThread(Action);
++			try
++			{
++				ActionThread.Run();
++			}
++			catch (Exception ex)
++			{
++				throw new BuildException(ex, "Failed to start thread for action: {0} {1}\r\n{2}", Action.CommandPath, Action.CommandArguments, ex.ToString());
++			}
++			ActionThreadDictionary.Add(Action, ActionThread);
++		}
++
++		private Dictionary<Action, ActionThread> ActionThreadDictionary = new Dictionary<Action, ActionThread>();
++		private bool FoundActionProcess(Action Action)
++		{
++			ActionThread ActionProcess = null;
++			return ActionThreadDictionary.TryGetValue(Action, out ActionProcess);
++		}
++
++		private bool ExecutePrerequisiteActions(List<Action> Actions, Action Action)
++		{
++			bool bHasOutdatedPrerequisites = false;
++			bool bHasFailedPrerequisites = false;                    
++			foreach (Action PrerequisiteAction in Action.PrerequisiteActions)
++			{
++				if (Actions.Contains(PrerequisiteAction))
++				{
++					ActionThread PrerequisiteProcess = null;
++					bool bFoundPrerequisiteProcess =
++						ActionThreadDictionary.TryGetValue(PrerequisiteAction,
++							out PrerequisiteProcess);
++					if (bFoundPrerequisiteProcess == true)
++					{
++						if (PrerequisiteProcess == null)
++						{
++							bHasFailedPrerequisites = true;
++						}
++						else if (PrerequisiteProcess.bComplete == false)
++						{
++							bHasOutdatedPrerequisites = true;
++						}
++						else if (PrerequisiteProcess.ExitCode != 0)
++						{
++							bHasFailedPrerequisites = true;
++						}
++					}
++					else
++					{
++						bHasOutdatedPrerequisites = true;
++					}
++				}
++			}
++			
++			
++			if (bHasFailedPrerequisites)
++			{
++				// Add a null entry in the dictionary for this action.
++				ActionThreadDictionary.Add(Action, null);
++			}
++
++			return bHasOutdatedPrerequisites;
++		}
++
++		private bool ExecuteActionCount(List<Action> Actions, ProgressWriter ProgressWriter, ref int NumExecutingActions)
++		{
++			int NumUnexecutedActions = 0;
++			foreach (Action Action in Actions)
++			{
++				ActionThread ActionThread = null;
++				bool bFoundActionProcess = ActionThreadDictionary.TryGetValue(Action, out ActionThread);
++				if (bFoundActionProcess == false)
++				{
++					NumUnexecutedActions++;
++				}
++				else if (ActionThread != null)
++				{
++					if (ActionThread.bComplete == false)
++					{
++						NumUnexecutedActions++;
++						NumExecutingActions++;
++					}
++				}
++			}
++			
++			int NewProgressValue = TotalJobs + 1 - NumUnexecutedActions;
++			if (ProgressValue != NewProgressValue)
++			{
++				ProgressWriter.Write(ProgressValue, TotalJobs + 1);
++				ProgressValue = NewProgressValue;
++			}
++			
++			// If there aren't any pending actions left, we're done executing.
++			return NumUnexecutedActions == 0;
++		}
+ 	};
+ }
+diff --git a/Engine/Source/Programs/UnrealBuildTool/System/ActionGraph.cs b/Engine/Source/Programs/UnrealBuildTool/System/ActionGraph.cs
+index a1cdcdad1ed..27725550c87 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/System/ActionGraph.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/System/ActionGraph.cs
+@@ -184,6 +184,10 @@ namespace UnrealBuildTool
+ 				{
+ 					Executor = new FASTBuild();
+ 				}
++				else if (BuildConfiguration.bAllowCCache && CCache.IsAvailable())
++				{
++					Executor = new CCache();
++				}
+ 				else if (BuildConfiguration.bAllowDistcc)
+ 				{
+ 					Executor = new Distcc();
+diff --git a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+index 7f1baf9a147..fc7c9ae84cc 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+@@ -420,12 +420,10 @@ namespace UnrealBuildTool
+ 					}
+ 				}
+ 
+-				// Build target triplet
+ 				Arguments.Add(String.Format("--target-os={0}", GetISPCOSTarget(CompileEnvironment.Platform)));
+ 				Arguments.Add(String.Format("--arch={0}", GetISPCArchTarget(CompileEnvironment.Platform, null)));
+ 				Arguments.Add(String.Format("--target={0}", TargetString));
+-
+-				// PIC is needed for modular builds except on Windows
++				
+ 				if ((CompileEnvironment.bIsBuildingDLL ||
+ 					CompileEnvironment.bIsBuildingLibrary) &&
+ 					!UEBuildPlatform.IsPlatformInGroup(CompileEnvironment.Platform, UnrealPlatformGroup.Windows))
+@@ -433,6 +431,8 @@ namespace UnrealBuildTool
+ 					Arguments.Add("--pic");
+ 				}
+ 
++				// PIC is needed for modular builds except on Windows
++
+ 				// Include paths. Don't use AddIncludePath() here, since it uses the full path and exceeds the max command line length.
+ 				// Because ISPC response files don't support white space in arguments, paths with white space need to be passed to the command line directly.
+ 				foreach (DirectoryReference IncludePath in CompileEnvironment.UserIncludePaths)
+diff --git a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj b/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
+index 2736ef225e2..453153cc0cc 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
++++ b/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
+@@ -142,6 +142,7 @@
+   </Choose>
+   <ItemGroup>
+     <Compile Include="Configuration\ModuleRulesContext.cs" />
++    <Compile Include="Executors\Experimental\CCache.cs" />
+     <Compile Include="Executors\HybridExecutor.cs" />
+     <Compile Include="Modes\BuildMode.cs" />
+     <Compile Include="Modes\CleanMode.cs" />
