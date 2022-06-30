@@ -1,0 +1,21 @@
+pkgbase = lvm-auto
+	pkgdesc = lvm开机自动创建备份
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/lvm-auto/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-yaml
+	backup = etc/systemd/system/${pkgname}.service,
+	backup = opt/${pkgname}/config.yaml
+	source = lvm-auto.service
+	source = config.yaml
+	source = main.py
+	source = README.md
+	sha512sums = d13928f4318df2f43e7f0c7c5fb030bdeab14ba86d9342767389896f5c861deaa05b9489c436944f85819dac777863c9fdecb7510a12b27e7f9ed49626289c55
+	sha512sums = 0b48fbd418b851aab30fc27e4f082ad010966151d0f75e55a37f6f55bd6990ff54794ad344f4da7492405e7699160909e745ecd86dc83a64c1cf73cdb27a6dc3
+	sha512sums = a832d18508bc4f57752e271e88cde15331329da4abd851e987cd9ed3fbb54efd8e43aad8203b00be42e9ded44fcf49731ce8a6987dffcf2f354a93cd71154a83
+	sha512sums = SKIP
+
+pkgname = lvm-auto

@@ -1,0 +1,8 @@
+data:
+- '1656511964'
+- '1656514758'
+keep: 2
+lvname: Arch
+snapname: Snap
+snapsize: 10G
+vgname: Super

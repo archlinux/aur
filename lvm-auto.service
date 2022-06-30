@@ -1,0 +1,14 @@
+[Unit]
+Description=Auto Create LVM
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python /opt/lvm-auto/main.py
+WorkingDirectory=/data/code/lvm-auto/
+StandardOutput=inherit
+StandardError=inherit
+#Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
