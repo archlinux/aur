@@ -51,6 +51,14 @@ _indent() {
     sed -E 's/^/    /'
 }
 
+_wrap() {
+    awk '
+    { n = l (l == "" ? "" : " ") $1
+      if (length(n) > 76) { print l; l = $1 }
+      else { l = n } }
+END { if (l != "") { print l } }' | _indent
+}
+
 while IFS= read -r page; do
     [ -n "$page" ] || continue
     if [[ ! $page =~ (^|[^0-9])(2[0-9]{3})($|[^0-9]) ]]; then
@@ -90,12 +98,13 @@ while IFS= read -r page; do
     map( { ($normalized[.value] // .value): .key } ) | add) as $titles |
   ((now | gmtime[0]) - $year) as $yearIndex |
   [ .query.pages[] | [.pageid, .title] as [$pageid, $title] | .imageinfo[0] |
-    select(.width > .height and .height >= 1440 and
-        (.width >= 2560 or (.width / .height < 1.34)) and
+    select(.width > .height and
+        .width >= 3440 and .height >= 1440 and
         .canonicaltitle == $title) |
     .year = $year |
     .index = ($titles[$title] * 100) + $yearIndex |
     .file = .canonicaltitle[5:] |
+    .aspect = .width / .height |
     .pageid = $pageid ] |
   sort_by(.index) |
   if $limit > 0 then limit($limit; .[]) else .[] end' >"$_temp"
@@ -129,17 +138,18 @@ cat <<XML >"$_xml"
 XML
 
 i=0
-while IFS=$'\t' read -r file pageid; do
+while IFS=$'\t' read -r file pageid uw; do
     ((++i))
     pkgfile=$(printf '/usr/share/backgrounds/%s/%03d-%s.jpg\n' \
-        "$_pkgname" "$i" "$pageid")
+        "$_pkgname$uw" "$i" "$pageid")
     cat <<XML >>"$_xml"
   <wallpaper deleted="false">
     <name>${file%.*}</name>
     <filename>${pkgfile}</filename>
   </wallpaper>
 XML
-done < <(jq -sr 'sort_by(.index)[] | [.file, .pageid] | @tsv' <"$_json")
+done < <(jq -sr 'sort_by(.index)[] | [.file, .pageid,
+    if .aspect > 1.7 then "/ultrawide" else "" end] | @tsv' <"$_json")
 
 cat <<XML >>"$_xml"
 </wallpapers>
@@ -180,11 +190,11 @@ $({ sha1sum "$_xml" | awk '{print "\047" $1 "\047"}' &&
 )
 _index=(
 $(jq -sr '[ .[].index ] | to_entries | sort_by(.value) | .[].key + 1' \
-        <"$_json" | awk '
-    { n = l (l ? " " : "") $1
-      if (length(n) > 76) { print l; l = $1 }
-      else { l = n } }
-END { if (l) { print l } }' | _indent)
+        <"$_json" | _wrap)
+)
+_ultrawide=(
+$(jq -sr '.[] | if .aspect > 1.7 then 1 else 0 end' \
+        <"$_json" | _wrap)
 )
 
 prepare() {
@@ -209,12 +219,14 @@ prepare() {
 
 package() {
     local i j image file
-    install -d "\$pkgdir/usr/share/backgrounds/\$pkgname"
+    install -d "\$pkgdir/usr/share/backgrounds/\$pkgname/ultrawide"
     for i in "\${!_index[@]}"; do
         j=\${_index[i]}
         image=\${source[j]%%::*}
+        uw=\${_ultrawide[j]}
+        ((uw)) && uw=/ultrawide || uw=
         file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\\n' \\
-            "\$pkgdir" "\$pkgname" "\$((i + 1))" "\${image#image-}")
+            "\$pkgdir" "\$pkgname\$uw" "\$((i + 1))" "\${image#image-}")
         image=\$srcdir/\$pkgname/\$image
         install "\$image" "\$file"
     done

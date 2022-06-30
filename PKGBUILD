@@ -1,6 +1,6 @@
 pkgname=wiki-loves-monuments-wallpapers
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
 arch=('any')
@@ -11,7 +11,6 @@ source=(
     'wiki-loves-monuments-wallpapers.xml'
     'image-20991114.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b3/Tomb_of_Safdarjung%2C_New_Delhi.jpg'
     'image-21487842.jpg::https://upload.wikimedia.org/wikipedia/commons/1/19/Acueducto_de_Segovia_01.jpg'
-    'image-21682141.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/Batad_Rice_Terraces_after_the_rain.JPG'
     'image-21559786.jpg::https://upload.wikimedia.org/wikipedia/commons/9/97/Maintenon_-_Chateau_03.jpg'
     'image-21788290.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fd/Teatro_Comunale.jpg'
     'image-21376194.jpg::https://upload.wikimedia.org/wikipedia/commons/5/50/Rear_side_of_Tajmahal.jpg'
@@ -19,13 +18,11 @@ source=(
     'image-21526260.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7b/Cementerio_Argentino_de_Puerto_Darwin.jpg'
     'image-21194681.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3e/The_windmills_of_Kinderdijk.JPG'
     'image-21647920.jpg::https://upload.wikimedia.org/wikipedia/commons/3/35/%28zetem%29_Komorniki_gmina_Polkowice_-_Zesp%C3%B3%C5%82_dworsko-folwarczny.jpg'
-    'image-21542809.jpg::https://upload.wikimedia.org/wikipedia/commons/8/8b/Kjeungkj%C3%A6r_fyr.jpg'
     'image-21733243.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c1/Battistero_all%27interno_del_Complesso_Monumentale_di_San_Pietro.jpg'
     'image-28778252.jpg::https://upload.wikimedia.org/wikipedia/commons/1/18/RhB_Ge_4-4_II_Wiesener_Viadukt.jpg'
     'image-28191648.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2c/%E9%B9%BF%E6%B8%AF%E6%96%BD%E9%80%B2%E7%9B%8A%E5%8F%A4%E5%8E%9D.jpg'
     'image-28750104.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6f/Egyetemi_K%C3%B6nyvt%C3%A1r4.JPG'
     'image-28411849.jpg::https://upload.wikimedia.org/wikipedia/commons/e/ea/Nowa_Ruda_Nadrzeczna_2_-_klatka_schodowa.jpg'
-    'image-28143026.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4d/Friedrich-von-Thiersch-Saal_B%C3%BChne.jpg'
     'image-28592803.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%E0%B8%A5%E0%B8%B5%E0%B8%A5%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B9%8C%E0%B9%81%E0%B8%94%E0%B8%87.JPG'
     'image-28396290.jpg::https://upload.wikimedia.org/wikipedia/commons/2/26/Keleti_f%C3%A9nyek_....jpg'
     'image-28363453.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f1/Zbraslav.jpg'
@@ -39,7 +36,6 @@ source=(
     'image-35991632.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/Svjatogorsk%2C_Lavra_3.jpg'
     'image-35181755.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2d/Gare_du_Nord_December_2013.jpg'
     'image-35740775.jpg::https://upload.wikimedia.org/wikipedia/commons/e/ec/Alte_Batzenalpe_2014_Interior_06.jpg'
-    'image-35853077.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4b/%D7%9E%D7%91%D7%A6%D7%A8_%D7%9E%D7%95%D7%A0%D7%A4%D7%95%D7%A8%D7%98_%D7%91%D7%96%D7%A8%D7%99%D7%97%D7%94.JPG'
     'image-35601801.jpg::https://upload.wikimedia.org/wikipedia/commons/4/47/St_Michael%27s_Mount_II5302_x_2982.jpg'
     'image-35601800.jpg::https://upload.wikimedia.org/wikipedia/commons/5/59/Tower_Bridge_at_Dawn.jpg'
     'image-35708311.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c2/Teatro_Romea_Interior.jpg'
@@ -63,10 +59,8 @@ source=(
     'image-51836263.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3d/Torrechiara_luci_al_tramonto.jpg'
     'image-51325743.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b7/The_sculptures_of_two_mythical_giant_demons%2C_Thotsakan_and_Sahatsadecha%2C_guarding_the_eastern_gate_of_the_main_chapel_of_Wat_Arun%2C_Bangkok.jpg'
     'image-51843296.jpg::https://upload.wikimedia.org/wikipedia/commons/c/cf/Blue_Hour_at_Pakistan_Monument.jpg'
-    'image-51594591.jpg::https://upload.wikimedia.org/wikipedia/commons/7/78/Pal%C3%A1cio_do_Planalto_GGFD8938.jpg'
     'image-51287766.jpg::https://upload.wikimedia.org/wikipedia/commons/c/cd/Tomb_of_Bibi_Jiwindi.jpg'
     'image-51963933.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c9/Kostol_sv._Vavrinca%2C_Zliechov.jpg'
-    'image-51280190.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ab/Darawar_Fort.jpg'
     'image-51954561.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4f/25890_Gravensteen_bij_zonsondergang_vanuit_de_Sint-Widostraat.jpg'
     'image-51963676.jpg::https://upload.wikimedia.org/wikipedia/commons/5/5e/%C4%8Cachtick%C3%BD_hrad_a_Vi%C5%A1%C5%88ov%C3%A9.jpg'
     'image-51246301.jpg::https://upload.wikimedia.org/wikipedia/commons/0/0d/Rakotzbr%C3%BCcke.jpg'
@@ -74,7 +68,6 @@ source=(
     'image-62945901.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c1/Khandoba_temple_Pune.jpg'
     'image-62891762.jpg::https://upload.wikimedia.org/wikipedia/commons/9/96/01-%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%99%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%84%E0%B8%B9%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A4%E0%B8%AB%E0%B8%B2%E0%B8%AA%E0%B8%99%E0%B9%8C.jpg'
     'image-62236998.jpg::https://upload.wikimedia.org/wikipedia/commons/e/eb/Friday_Prayer_at_Baitul_Mukarram_Mosque_03.jpg'
-    'image-62248334.jpg::https://upload.wikimedia.org/wikipedia/commons/1/17/%D8%A7%D9%84%D8%B3%D9%84%D9%85_%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%89_%D9%84%D8%A8%D8%B1%D8%AC_%D9%82%D8%B5%D8%B1_%D8%A7%D9%84%D8%A8%D8%A7%D8%B1%D9%88%D9%86.jpg'
     'image-62822730.jpg::https://upload.wikimedia.org/wikipedia/commons/3/39/La_fortezza_%C3%A8_un_faro_che_domina_la_valle.jpg'
     'image-62803201.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ac/Fortezza_Verrucole_Archeopark_interno.jpg'
     'image-62652721.jpg::https://upload.wikimedia.org/wikipedia/commons/8/8f/%E0%A6%AC%E0%A6%BE%E0%A6%AF%E0%A6%BC%E0%A6%A4%E0%A7%81%E0%A6%B2_%E0%A6%AE%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%B0%E0%A6%AE.jpg'
@@ -85,7 +78,6 @@ source=(
     'image-62875999.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b0/MK_30537_Spielbank_Wiesbaden.jpg'
     'image-62894928.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d2/Mestia%2C_evening.jpg'
     'image-62609156.jpg::https://upload.wikimedia.org/wikipedia/commons/9/99/The_Tab%C4%81tab%C4%81ei_House_-_kashan_-_IRAN_%D8%AE%D8%A7%D9%86%D9%87_%D8%B7%D8%A8%D8%A7%D8%B7%D8%A8%D8%A7%DB%8C%DB%8C_%D9%87%D8%A7%DB%8C_%DA%A9%D8%A7%D8%B4%D8%A7%D9%86-_%D8%A7%DB%8C%D8%B1%D8%A7%D9%86_02.jpg'
-    'image-62742026.jpg::https://upload.wikimedia.org/wikipedia/commons/7/75/A_spasso_nel_tempo.jpg'
     'image-73291732.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f9/Sheikhlotfolah.jpg'
     'image-73204683.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a9/Petra_Al-Kaznah_by_Night.jpg'
     'image-72728269.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d6/The_Cloisters_at_Gloucester_Cathedral.jpg'
@@ -104,14 +96,11 @@ source=(
     'image-82689221.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a3/Baha%27i_Temple_at_Dusk.jpg'
     'image-82670888.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6d/011-Temple_of_the_Emerald_Buddha.jpg'
     'image-81902804.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/Unique_Moment_with_the_Moon_and_Christ_the_Redeemer_3.jpg'
-    'image-82097182.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c0/Auschwitz_II_Birkenau.jpg'
     'image-82238332.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d8/201_Dome_Mosque%2C_Tangail.jpg'
-    'image-82702902.jpg::https://upload.wikimedia.org/wikipedia/commons/8/82/Notturna_di_Castelmezzano_innevata.jpg'
     'image-82669179.jpg::https://upload.wikimedia.org/wikipedia/commons/4/41/Treppenhaus_im_Nordturm_von_Schloss_Drachenburg.jpg'
     'image-82335835.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ad/Pra%C3%A7a_candangos.jpg'
     'image-82885766.jpg::https://upload.wikimedia.org/wikipedia/commons/0/08/Hafez_StarTrail_2.jpg'
     'image-81996109.jpg::https://upload.wikimedia.org/wikipedia/commons/7/77/Palau_de_la_M%C3%BAsica_Catalana-Palace_of_Catalan_Music_%28Image_2%29.jpg'
-    'image-94801045.jpg::https://upload.wikimedia.org/wikipedia/commons/8/84/Holy_SURP_Hovhannes_Church.jpg'
     'image-95117309.jpg::https://upload.wikimedia.org/wikipedia/commons/7/73/%CE%99%CE%B5%CF%81%CE%AC_%CE%9C%CE%BF%CE%BD%CE%AE_%CE%A1%CE%BF%CF%85%CF%83%CE%AC%CE%BD%CE%BF%CF%85.jpg'
     'image-95320312.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ac/Casbah_of_Algiers%2C_the_heart_of_the_city.jpg'
     'image-94811167.jpg::https://upload.wikimedia.org/wikipedia/commons/8/88/%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1_%D9%88%DA%A9%DB%8C%D9%84_%D9%86%D9%85%D8%A7%DB%8C%DB%8C_%D8%A7%D8%B2_%D8%B3%D9%82%D9%81_%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1.jpg'
@@ -120,7 +109,6 @@ source=(
     'image-94978514.jpg::https://upload.wikimedia.org/wikipedia/commons/6/65/%D7%92%D7%9C%D7%99%D7%A9%D7%AA_%D7%A2%D7%A0%D7%A0%D7%99%D7%9D_%D7%9C%D7%9E%D7%9B%D7%AA%D7%A9_%D7%A8%D7%9E%D7%95%D7%9F.jpg'
     'image-94973590.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e5/Santu%C3%A1rio_Dom_Bosco_2.jpg'
     'image-94603813.jpg::https://upload.wikimedia.org/wikipedia/commons/a/aa/Jameh_Mosque_of_Hamadan_2018-01-18.jpg'
-    'image-95139880.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b5/%D9%85%D8%AA%D8%AD%D9%81_%D8%AC%D8%A7%D9%8A%D8%B1_%D8%A7%D9%86%D8%AF%D8%B1%D8%B3%D9%88%D9%86_%D9%88%D8%A7%D8%AE%D8%B1_%D8%A7%D9%84%D8%B3%D9%82%D8%A7%D9%8A%D9%8A%D9%86.jpg'
     'image-94589712.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a2/Pietrapertosa_in_bianco.jpg'
     'image-95311993.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f3/%D8%A7%D9%87%D9%88%D8%A7%D8%B1_%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82_%D9%84%D9%8A%D9%84%D8%A7.jpg'
     'image-94383958.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e2/%E5%98%89%E7%BE%A9%E7%B8%A3%E6%96%B0%E6%B8%AF%E5%A5%89%E5%A4%A9%E5%AE%AE%E8%99%8E%E7%88%BA%E8%81%96%E8%AA%95%E9%A6%99%E6%9C%9F.jpg'
@@ -138,10 +126,9 @@ source=(
     'image-110986152.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%CE%9F%CE%B4%CF%8C%CF%82_%CE%99%CF%80%CF%80%CE%BF%CF%84%CF%8E%CE%BD.jpg'
 )
 sha1sums=(
-    '37d2a3cefefe129dfa1a2eed618b20683e432d1c'
+    '79e3bdc0ba6ab882eb150364fffcab493ea9655c'
     'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
     '9f46d71d43317e3a84776c23af0e4c960f06aff0'
-    '5a74a622db738dab05bac5f4be96cb9b607a31d2'
     '2d78387c4a6c49c5f335337e9f160e66ab891f46'
     '946b86c4cb0b66929b9e6d316232df46998e018a'
     'a1758176af9eb6da9a65e53ffa09d9871e8645ab'
@@ -149,13 +136,11 @@ sha1sums=(
     '73e302b7a7b47345906bb633b72909eff9f79b24'
     'f9dc793ff7cabcc00f40a94a06d21e37d5ad5cd8'
     '28961b5d2809f8ce918e652a7a32ef9fb4a05e07'
-    '4c00371674dfb3c4c239e8105ed9a34f1e3a7613'
     '4411d17d9ef5b44bcbab40f0283a683de02c9958'
     '446f35f73cab88628be827ea4d459c8d3e9451ff'
     'f1f4b6899cc447ae8d744459171c459535265b85'
     'a6ede93e8a9d99f5fc342828d55acb2141de58e1'
     '4ea6840a8d065039359ef90381eaaef53a213638'
-    '4019d53fa9180361bf8735a7670f7c3b68371eef'
     '815bb8d5af42570d73981fcab3a38a488621c803'
     'b7da270ce192a88a9acb224644e756934d4ebed9'
     '7e8262366602cc1553250a4366fdac1700d0d574'
@@ -169,7 +154,6 @@ sha1sums=(
     '13a8ad7cdd51f8111dde8e77e70c54b5e1ee87cf'
     'daf63e05ff5720fce276e86810c396053e4b4c72'
     'e983f45547315996349eacf356a434f3ce0c6aef'
-    'c5a9575091f6bd527485f9541b0e62deb6a85f06'
     '1043902baa6f45a584433a248dc1ef2f1f1c32fc'
     'ac998630dbd82bc209cd5d5a39819a76f29e78a9'
     '08543e3ad5f194be78e2e2a920710120aa50ffe2'
@@ -193,10 +177,8 @@ sha1sums=(
     '09da0197da77f7f4d20659fae9dcce742088c330'
     '5a3c0648bfdf08ce7e3e63c2fed2a1ab59f6686c'
     '601559d5653fa17b57641236d780b2c6fb29b7d5'
-    '24cbc57e70ae735756769c4c0206207c9e5047eb'
     'b4b10de098a06370988ee9d6742ef0c7505772e5'
     '77cafd75dd411bfa3667ba82b6317d5c98e9a305'
-    '207de858d9481391bbc58226805682220a58ce26'
     'c178c7613506c62ea25e7ed8d09b21ab0f74fd43'
     '4fc5ead40d2f2b3b9971cd08cb405a2e8d1d5547'
     '3a4e656adc92e8d00a038a71a455b0d91287822a'
@@ -204,7 +186,6 @@ sha1sums=(
     '150749bc4d8967ea1aeadaccd11e11e6304aed71'
     'bbfb683597557c564a58f79996d901e98db2a0fe'
     '08eb5a11206793d0d23222a330c53283a8cd82a7'
-    'dd4d6000684e046202619607181ed8637e3744ae'
     '27b805c7edcf2c1e1ca2737d6899c1eea4d3a5f6'
     'e05e4b87e22e0b635e099ace8201ddac033233b8'
     'bfcc3972eb154d1785aeb07db29cf96612f708b6'
@@ -215,7 +196,6 @@ sha1sums=(
     '3fad972a640472c27c27743f412aa6f1c9805cc7'
     'e5d005d0cde746a804446d667b31182f4b69d0aa'
     'b5d79ffc62d1e7caab0e33dbcee793c314e1acc9'
-    'f14ee80ff7f1ef5c004305130b306d2d7e6a9724'
     'd5e763e394574e29bff4f9184ef2ac40c930df9c'
     '1bf92706b288aafd3f3125a67f0d47ec1c9ff645'
     '624dc707660942464bcaa5110271294a9f2e6f50'
@@ -234,14 +214,11 @@ sha1sums=(
     '33619610538be7601fe4e2004374e1ac0e4ad061'
     '2db463164372fcf234ba2db96143e9f4604637b7'
     '89bc759ec355a8eca71448223505664cfbf3b95b'
-    'a5b5a0fc6bd952cf1113d5e174733fd49b527fc7'
     '8f4f074f8901fc04ca5d20dbccd293151446a670'
-    '212d3267de0f3dfb419a28da9110fc15e781504e'
     '71a9039e7a07db1ee134e5d7a3d36ef1a89b8ac6'
     '9c53b7fce5a626b6d949f581d135bdcb91d80046'
     'da9c855455706bf3a6f0e6c230478d12d64f4dd7'
     'a4bee35040121c4a0f5ecbf658774b5271b2a6f4'
-    '3cafe8862ca5a4f946f18db80b65d0f9c9722f3c'
     'e8d66bcf228b1cf7c0da3efc37392877f9e0bee2'
     '9e45531e7155ee5958d95b9e198de9629fdcfcd5'
     '8a3a8aa5cece65e7a8b002aa2a652c700e788e75'
@@ -250,7 +227,6 @@ sha1sums=(
     '4ec44e26f0b0a4bf884e0307a5a98e44c882c4f3'
     'e4ddde438e85107a3cec62092ddde9a15df4f692'
     'a41daad891d8f87b2d0b58f75144198426153a96'
-    '712cb80902c984ad1b93e3e66e9f6564ab932003'
     '53187a670c620735dd0f55149c3cf754f179532b'
     '61231142b75e6dd163617ab679182733fb98d930'
     '4d5367ef6b24311c6347f39b95b354bade4d57c0'
@@ -268,12 +244,17 @@ sha1sums=(
     '5488115e0ef96204066e03c83e8a8e23b7fb629b'
 )
 _index=(
-    116 103 92 78 63 49 36 28 13 1 117 104 79 64 50 37 29 14 2 118 105 93 80 65
-    51 38 15 3 119 106 94 81 66 52 39 30 16 4 120 107 95 82 67 40 31 17 5 108 96
-    83 68 53 41 32 18 6 121 97 84 69 54 42 33 19 7 122 109 85 70 55 43 20 8 110
-    98 86 71 56 44 34 21 123 87 72 57 35 22 124 111 99 73 58 45 23 9 125 112 100
-    88 74 46 24 10 126 101 89 75 59 47 25 11 113 102 90 76 60 48 26 127 114 91
-    77 61 27 12 115 62
+    104 84 70 57 45 32 25 11 1 105 93 71 58 46 33 26 12 2 106 94 85 72 59 47 34
+    13 107 95 86 73 48 35 27 14 3 108 96 87 74 60 36 4 97 75 61 49 37 28 15 5
+    109 88 76 62 50 38 29 16 6 110 98 77 63 39 17 7 99 78 64 51 40 30 18 111 79
+    65 52 31 19 112 100 89 66 41 20 8 113 90 80 67 42 21 9 114 91 81 68 53 43 22
+    101 92 82 69 54 44 23 115 102 83 55 24 10 103 56
+)
+_ultrawide=(
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 1
+    0 0 0 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0
 )
 
 prepare() {
@@ -298,12 +279,14 @@ prepare() {
 
 package() {
     local i j image file
-    install -d "$pkgdir/usr/share/backgrounds/$pkgname"
+    install -d "$pkgdir/usr/share/backgrounds/$pkgname/ultrawide"
     for i in "${!_index[@]}"; do
         j=${_index[i]}
         image=${source[j]%%::*}
+        uw=${_ultrawide[j]}
+        ((uw)) && uw=/ultrawide || uw=
         file=$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \
-            "$pkgdir" "$pkgname" "$((i + 1))" "${image#image-}")
+            "$pkgdir" "$pkgname$uw" "$((i + 1))" "${image#image-}")
         image=$srcdir/$pkgname/$image
         install "$image" "$file"
     done
