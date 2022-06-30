@@ -1,6 +1,6 @@
 pkgname=crown-ex-amp-bin
 pkgver=22.05.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault Modern High Gain Amp Simulator Next Generation"
 arch=('x86_64')
 url="https://audioassault.mx/products/sigma"
@@ -16,7 +16,6 @@ prepare () {
 	_archive="`xdg-user-dir DOWNLOAD`/TheCrownEXv1_0_Installers.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
-	unzip "TheCrownEXv1_0_Installers.zip"
 	find $srcdir -name ".DS_Store" -delete
 }
 

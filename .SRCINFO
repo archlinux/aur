@@ -1,7 +1,7 @@
 pkgbase = crown-ex-amp-bin
 	pkgdesc = Audio Assault Modern High Gain Amp Simulator Next Generation
 	pkgver = 22.05.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/products/sigma
 	arch = x86_64
 	groups = pro-audio
