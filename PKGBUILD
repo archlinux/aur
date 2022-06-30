@@ -2,8 +2,8 @@
 # Contributor: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gosimac
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Fetch the wallpaper from Bings, Unsplash..."
 arch=('any')
 url="https://github.com/1995parham/${pkgname}"
@@ -11,7 +11,7 @@ license=('GPL2')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f4c86ac829b1f6df205808e928664c60a8b5769786abec279ff48728b67f33f')
+sha256sums=('e3ce3858757e85a7a6621d2628989de66fd35f6aa36292d452687acf4a7ad74d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
