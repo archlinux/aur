@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2021
-pkgrel=3
+pkgrel=4
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -208,9 +208,9 @@ _index=(
     22 12 91 68 55 36 23 13 69 48 37 24 92 93 94
 )
 _ultrawide=(
-    0 0 1 1 1 0 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0 0
-    0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1
+    0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 1 1
+    1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 )
 
 prepare() {
