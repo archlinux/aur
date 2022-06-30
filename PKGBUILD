@@ -5,7 +5,7 @@ pkgname=dune-pdelab
 _tarver=2.8
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=1
+pkgrel=2
 pkgdesc="New generalized discretization module for a wide range of discretization methods"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgname}"
@@ -16,11 +16,7 @@ optdepends=('doxygen: Generate the class documentation from C++ sources'
   'eigen: Lightweight C++ template library for vector and matrix math'
   'dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson')
 source=(https://gitlab.dune-project.org/pdelab/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('5f9c6daf6147ce28f84a5a906aff7bf89a0f607c9087e59358ab8ebba902dda6cefa196222ce77cc03df5dd38896757b2d9cf2b0c5e73416ac7bd82348b96558')
-
-prepare() {
-  sed -i 's/^Version: 2.7-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${_tarver}/dune.module
-}
+sha512sums=('d639dd7d8289696262b13c848d2b8142e3f8ee1e5a6d440bdb629ae9d9abc57f0bfc2f31d8c17a366f7364c0e3e328c4a30d386e944e5aad4dbad820e7500edf')
 
 build() {
   cmake \
