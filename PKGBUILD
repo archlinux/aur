@@ -3,7 +3,7 @@
 
 pkgname=gbdfed
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK2 bitmap font editor"
 arch=(i686 x86_64)
 url="http://sofia.nmsu.edu/~mleisher/Software/gbdfed/"
