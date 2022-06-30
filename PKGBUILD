@@ -1,6 +1,6 @@
 # Maintainer: Kyohei Uto <kyoheiu@outlook.com>
 pkgname=felix-rs
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="a tui file manager with vim-like key mapping, written in Rust"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/felix-$pkgver/LICENSE"
 }
 
-sha256sums=('de81e516d36c748583ec2802bb35936be7c231a0fe21f7526871dd10cccb9624')
+sha256sums=('99fd6fcf50cb69ee72d3a88b4eac5ad44487969920122ea4961bad07dc85422f')
