@@ -5,7 +5,7 @@ _pkgname=poi
 _releasever=10.8.0
 _buildver=7917
 pkgver=$_releasever.$_buildver
-pkgrel=3
+pkgrel=4
 pkgdesc="Scalable KanColle browser and tool"
 arch=('x86_64')
 url="https://github.com/poooi/poi/"
@@ -33,6 +33,4 @@ package() {
     # Install pixmap and desktop files
     install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/poi_icon.png"
     install -Dm644 -t "$pkgdir/usr/share/applications" poi.desktop
-
-    rm "$_pkgname-$_releasever.7z"
 }
