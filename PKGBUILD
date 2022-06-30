@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=2
+pkgrel=3
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://github.com/${_name}/${_name}"
@@ -55,7 +55,13 @@ build() {
 
 check() {
   cd "${_tarname}"
-  LC_ALL=C.UTF-8 python2 setup.py pytest --addopts "--deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep"
+  (
+    echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
+    export LC_ALL=C.UTF-8
+    export PYTHONDONTWRITEBYTECODE=1
+    python2 setup.py pytest --addopts \
+      "--deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
+  )
 }
 
 package() {
