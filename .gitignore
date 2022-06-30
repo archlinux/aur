@@ -1,0 +1,7 @@
+# pacman
+/src/
+/pkg/
+*.pkg.tar.zst
+
+# sources
+*.tar.gz

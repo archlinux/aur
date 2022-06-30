@@ -1,0 +1,10 @@
+diff '--color=auto' --unified --recursive --text sockpp-0.7.1/doc/CMakeLists.txt sockpp-0.7.1-new/doc/CMakeLists.txt
+--- sockpp-0.7.1/doc/CMakeLists.txt	2022-01-24 12:50:47.000000000 -0500
++++ sockpp-0.7.1-new/doc/CMakeLists.txt	2022-06-30 08:33:55.498863663 -0400
+@@ -62,5 +62,5 @@
+ 
+ add_custom_target(doc ALL DEPENDS ${DOXYTARGETS})
+ 
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc DESTINATION share)
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/doc DESTINATION share/sockpp)
+ 

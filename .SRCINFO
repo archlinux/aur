@@ -1,0 +1,25 @@
+pkgbase = sockpp
+	pkgdesc = Simple, modern, C++ socket library.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/fpagliughi/sockpp
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	license = BSD-3
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = catch2
+	provides = sockpp-git
+	conflicts = sockpp-git
+	source = https://github.com/fpagliughi/sockpp/archive/refs/tags/v0.7.1.tar.gz
+	source = disable-latex-docs.patch
+	source = docs-install-path.patch
+	sha256sums = 2e023528bebbd2ac083fc91fbe6d5c4158c3336bedbcff48f594f3b28f53b940
+	sha256sums = 65827b4280a318527d830e0655c2ee7a6172cb7d7349a7a58dd3ac8251ef6f29
+	sha256sums = a71e5270ca16c1173b148654a94022ecf684bfc8d248c0376b23a834eeb364e2
+
+pkgname = sockpp

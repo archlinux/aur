@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text sockpp-0.7.1/doc/Doxyfile.cmake sockpp-0.7.1-orig/doc/Doxyfile.cmake
+--- sockpp-0.7.1/doc/Doxyfile.cmake	2022-01-24 12:50:47.000000000 -0500
++++ sockpp-0.7.1-orig/doc/Doxyfile.cmake	2022-06-30 08:20:00.953831894 -0400
+@@ -1541,7 +1541,7 @@
+ # If the GENERATE_LATEX tag is set to YES doxygen will generate LaTeX output.
+ # The default value is: YES.
+ 
+-GENERATE_LATEX         = YES
++GENERATE_LATEX         = NO
+ 
+ # The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put. If a
+ # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
