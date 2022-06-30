@@ -1,16 +1,15 @@
 pkgbase = r-gld
 	pkgdesc = Estimation and Use of the Generalised (Tukey) Lambda Distribution
-	pkgver = 2.6.4
+	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gld
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r
 	depends = r-e1071
 	depends = r-lmom
-	source = https://cran.r-project.org/src/contrib/gld_2.6.4.tar.gz
-	sha256sums = 0db6daee1b6e256d64d292c1f6795c505677331dcf2f97e04e264566ded93323
+	source = https://cran.microsoft.com/snapshot/2022-06-30/src/contrib/gld_2.6.5.tar.gz
+	sha256sums = 8294f7c033147aa9b559b152ec9d46d380234527d1ab03adbe46b80d5da68ee9
 
 pkgname = r-gld
