@@ -1,7 +1,7 @@
 # Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
 pkgname=opengothic
-pkgver=0.48
+pkgver=0.59
 pkgrel=1
 pkgdesc="Open source remake of Gothic 2: Night of the raven"
 arch=('x86_64')
@@ -10,21 +10,17 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'libx11' 'vulkan-icd-loader')
 makedepends=('cmake' 'git' 'glslang' 'libglvnd' 'vulkan-headers')
 conflicts=('bullet')
-source=("git+https://github.com/Try/OpenGothic#commit=f4cf3eed8ede6a8a7a5af1cb5dab6d8c7331abf0" #tag=v0.48
-        "git+https://github.com/Try/Tempest.git#commit=48dd692e16990a812703a209c7784ea602a3fd8f"
+source=("git+https://github.com/Try/OpenGothic#commit=2de4fd8cf49f4f4626ae715d257be7594b0b79b5" #tag=v0.59
+        "git+https://github.com/Try/Tempest.git#commit=09b49484861b63f2e7676fc2eb3413b7bf12a3b8"
         "git+https://github.com/schellingb/TinySoundFont.git#commit=d4ffcdc8a34d3f61f22e4b283b4c100f5adf4b82"
-        "git+https://github.com/Try/ZenLib.git#commit=a38ad95781565607dac8ccdd06412b60c9612521"
-        "git+https://github.com/bulletphysics/bullet3.git#commit=e7e46154bb2f4be77ad79657bcdc2675305b69a4"
-        "git+https://github.com/tito/libsquish.git#commit=f5e44a360fd8b456b1291a2eaba61871c64d6288"
-        "cstddef.diff"
+        "git+https://github.com/Try/ZenLib.git#commit=0867083b2f882373f81805ba096bcf07c63e42af"
+        "git+https://github.com/bulletphysics/bullet3.git#commit=ebe1916b90acae8b13cd8c6b637d8327cdc64e94"
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'fa0fd1a168b9368dfb5be632353f958496add647a0a62d08f593d5c0eb9df9709728aac60fa3b85dbacd54487407f51260b8fa96d984a8ff3c79c9927c486272')
+            'SKIP')
 options=('!emptydirs')
 
 prepare() {
@@ -34,13 +30,6 @@ prepare() {
   git config submodule.lib/TinySoundFont.url "${srcdir}/TinySoundFont"
   git config submodule.lib/ZenLib.url "${srcdir}/ZenLib"
   git config submodule.lib/bullet3.url "${srcdir}/bullet3"
-  git submodule update
-  
-  patch -p1 -i "$srcdir/cstddef.diff"
-
-  cd "${srcdir}/OpenGothic/lib/ZenLib"
-  git submodule init
-  git config submodule.lib/libsquish.url "${srcdir}/libsquish"
   git submodule update
 }
 
