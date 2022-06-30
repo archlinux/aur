@@ -25,6 +25,8 @@ pkgbase = unreal-engine
 	options = !strip
 	options = staticlibs
 	source = com.unrealengine.UE4Editor.desktop
+	source = use_system_clang.patch
 	sha256sums = 15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
+	sha256sums = b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98
 
 pkgname = unreal-engine

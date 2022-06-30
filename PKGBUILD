@@ -20,8 +20,10 @@ optdepends=('qt5-base: qmake build system for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects')
 license=('custom:UnrealEngine')
-source=('com.unrealengine.UE4Editor.desktop')
-sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58')
+source=('com.unrealengine.UE4Editor.desktop'
+        'use_system_clang.patch')
+sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
+            'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
 options=('!strip' 'staticlibs') # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
@@ -29,7 +31,9 @@ options=('!strip' 'staticlibs') # Package is 3 Gib smaller with "strip" but it t
 if [ -f /usr/bin/doas ] && [ -f /etc/doas.conf ]; then
   PACMAN_AUTH=(doas)
 fi
-  
+
+_use_system_clang=false # Change this to true for a potentially smaller package size
+
 ## This is for detecting your CPU architecture automatically; set to false if you want to enforce your own makepkg.conf file
 ## Disabled by default as a compromise for those bothered by having it force-enabled
 
@@ -88,6 +92,11 @@ prepare() {
     rm -f .git/index.lock
     git fetch --depth=1 origin tag @{upstream}
     git reset --hard @{upstream}
+  fi
+  
+  ## Apply custom patches if enabled
+  if [[ ${_use_system_clang} == true ]]; then
+    patch -p1 -i "${srcdir}/use_system_clang.patch"
   fi
 
   # Qt Creator source code access

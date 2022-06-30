@@ -1,0 +1,12 @@
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateClangDatabase.cs b/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateClangDatabase.cs
+--- a/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateClangDatabase.cs	2022-06-30 13:51:57.914058994 -0500
++++ b/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateClangDatabase.cs	2022-06-30 13:53:46.038059502 -0500
+@@ -64,7 +64,7 @@
+ 					UEBuildTarget Target = UEBuildTarget.Create(TargetDescriptor, BuildConfiguration.bSkipRulesCompile, BuildConfiguration.bForceRulesCompile, BuildConfiguration.bUsePrecompiled);
+ 
+ 					// Find the location of the compiler
+-					FileReference ClangPath = FindClangCompiler(Target);
++					FileReference ClangPath = new FileReference("/usr/bin/clang++");
+ 
+ 					// Convince each module to output its generated code include path
+ 					foreach (UEBuildBinary Binary in Target.Binaries)
