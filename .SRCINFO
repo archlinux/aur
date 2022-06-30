@@ -1,6 +1,6 @@
 pkgbase = octave-dicom
 	pkgdesc = Digital communications in medicine (DICOM) file io. Depends on Grassroots DICOM (GDCM). This package is not available in repos for all distros. Contributors: Judd Storrs, Kris Thielemans, John Donoghue
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://octave.sourceforge.io/dicom/
 	install = octave-dicom.install
@@ -9,8 +9,8 @@ pkgbase = octave-dicom
 	license = GPL3
 	depends = octave>=3.8.0
 	depends = gdcm>2.0.16
-	noextract = dicom-0.4.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/dicom-0.4.1.tar.gz
-	sha256sums = cd9250f4f3f83d5a1bb49ad9d0ee7e6e668e3d00f4a309e572abc44798c806fd
+	noextract = dicom-0.5.0.tar.gz
+	source = https://downloads.sourceforge.net/octave/dicom-0.5.0.tar.gz
+	sha256sums = 19d7d6ee4b3f7292164039444fbd9fdeae957321c82d34bb7118197a5a2a7de8
 
 pkgname = octave-dicom
