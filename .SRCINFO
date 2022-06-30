@@ -12,7 +12,7 @@ pkgbase = mod-ui-git
 	depends = python-pyserial
 	depends = python-pystache
 	depends = python-tornado
-	depends = python-pycrypto
+	depends = python-pycryptodome
 	depends = python-aggdraw
 	depends = jack2
 	depends = lilv
@@ -23,4 +23,3 @@ pkgbase = mod-ui-git
 	md5sums = SKIP
 
 pkgname = mod-ui-git
-
