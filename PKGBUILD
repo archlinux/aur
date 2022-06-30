@@ -2,7 +2,7 @@
 
 pkgname=firefox-extension-flagfox
 pkgver=6.1.51
-pkgrel=1
+pkgrel=2
 pkgdesc='Flagfox addon for Firefox'
 arch=('any')
 url='https://addons.mozilla.org/de/firefox/addon/flagfox/'
