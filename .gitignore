@@ -1,4 +1,5 @@
 /*.zip
-/*.tar.xz
+/COPYING.md
+/*.pkg.*
 /pkg/
 /src/
