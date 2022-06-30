@@ -1,0 +1,18 @@
+pkgbase = rtl8852be_bt-dkms-git
+	pkgdesc = Realtek Linux Bluetooth Driver for RTL8852BE for kernel 5.18
+	pkgver = r12.6848d66
+	pkgrel = 1
+	url = https://github.com/HRex39/rtl8852be_bt/tree/5.18
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	depends = bc
+	conflicts = rtl8852be_bt
+	source = git+https://github.com/HRex39/rtl8852be_bt.git#branch=5.18
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 583094d71b6daef047b3d139e03e4217c6754ddd33cf8997010b48a837ba6d49
+
+pkgname = rtl8852be_bt-dkms-git
