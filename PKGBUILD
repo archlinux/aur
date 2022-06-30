@@ -1,7 +1,7 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
 pkgver=10.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64')
@@ -28,7 +28,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   cp -rfv ./* "${pkgdir}/usr/lib/${pkgname}/"
-  chmod 644 "${pkgdir}/usr/lib/${pkgname}"
+  chmod 755 "${pkgdir}/usr/lib/${pkgname}"
   cd "${srcdir}"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
   convert -resize 128x128 "Creater_pack_Floorp/Floorp_imgs/Floorp_Legacy/png/icons.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
