@@ -1,0 +1,16 @@
+pkgbase = python-somecomfort
+	pkgdesc = A python client and utility for interacting with Honeywell thermostats
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/kk7ds/somecomfort
+	arch = any
+	license = GPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-prettytable
+	source = python-somecomfort-0.8.0.tar.gz::https://files.pythonhosted.org/packages/source/s/somecomfort/somecomfort-0.8.0.tar.gz
+	sha256sums = 56e60e4e9f76c12c0c9dd1016e9f1334be6800409e0762f5f143f9069d7292d3
+
+pkgname = python-somecomfort
