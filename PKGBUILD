@@ -2,7 +2,7 @@
 
 pkgname=netbird
 pkgver=0.8.0
-pkgrel=2
+pkgrel=6
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
 arch=(x86_64 aarch64 armv7h armv7l armv6h)
@@ -20,17 +20,25 @@ source=(
   'environment'
   'netbird@.service'
   'wiretrustee@.service'
+  'netbird.sysusers'
+  '0001-fix-run-paths.patch'
 )
 sha256sums=(
   '298c7f39b18b0dbc2874c93c0eeaac5dd0923c0d114187b422cc4019581e39ff'
   '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
-  'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
-  'ae5938e98c84a2dd4324208389b0a6cdf9a24cf3b66d1001a0b137e008da33ec'
+  '7963093eb5a2d5a7b03f2c6489cb5b33230c3007c0240ad2bb4c93d54f4332c6'
+  'SKIP'
+  '67d4207501c8adca053ffa2bd8fe0e44564b7c5f59501b70a05ebf0155d918c2'
+  '6238c54600f46af09169d320dc236c3d0f4f945ba1f3aca885f5ff7a99c261e9'
 )
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build
+
+  for patch in "$srcdir"/*.patch; do
+    patch -p1 -i "$patch"
+  done
 
   go mod download
 }
@@ -51,6 +59,9 @@ build() {
 
 package() {
   _source="$srcdir/$pkgname-$pkgver"
+
+  # users
+  install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   # binary
   install -Dm755 "$_source/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
