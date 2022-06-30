@@ -128,6 +128,7 @@ prepare() {
     git config submodule.proton-wine.url "$srcdir"/proton-wine-ge
     git submodule update proton-wine
     pushd proton-wine
+      # Do not report bugs to GE if you enable this, this is still being tested
       #patch -p1 -i "$srcdir"/wine-autogen_fsr_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
