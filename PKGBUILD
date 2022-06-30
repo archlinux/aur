@@ -41,9 +41,10 @@ _use_system_clang=false # Change this to true for a potentially smaller package 
 ## or if you manage to trick your Arch installation to accept other architecture extensions by fiddling with the $CARCH variable and /etc/pacman.conf - this method has flaws, namely due to a bug:
 ## it doesn't work with "makechrootpkg" - though, this PKGBUILD doesn't work in with this method anyway because of Github SSH Agent nonsense -- if this changes in the future, let us know
 
+# Valid values are false / disabled / default, auto, and native
 arch_auto=false
 
-if [[ ${arch_auto} == true ]]
+if [[ ${arch_auto} == auto ]]
 then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if test "$(/lib/ld-linux-x86-64.so.2 --help | grep -w '^  x86-64-v4' | cut -d ',' -f 1)" == '  x86-64-v4 (supported'; then
@@ -62,11 +63,11 @@ then
     export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-  else
+  fi
+elif [[ arch_auto == native ]]; then
     export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-  fi
 fi
 
 # Default engine installation directory. Can be useful if you do not have a lot of space on the default storage drive
