@@ -1,0 +1,15 @@
+pkgbase = octetos-schedule
+	pkgdesc = Orgonizador de Horarios Escolares
+	pkgver = 0.46.7
+	pkgrel = 1
+	url = https://github.com/azaeldevel/octetos-schedule.git
+	arch = x86_64
+	license = GPL
+	depends = octetos-core
+	depends = octetos-EC
+	depends = libzip
+	depends = gtkmm3
+	source = https://github.com/azaeldevel/octetos-schedule/archive/0.46.7-alpha.tar.gz
+	md5sums = 0274f9317a7a251ee9dd8fa59162e682
+
+pkgname = octetos-schedule
