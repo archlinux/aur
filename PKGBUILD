@@ -1,23 +1,24 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.0.4
-pkgrel=4
+pkgver=10.1.0
+_firefoxver=102.0
+pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
 arch=('x86_64')
 license=('MPL2')
-depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'ttf-font' 'libpulse' 'nss')
-optdepends=('networkmanager: Location detection via available WiFi networks'
+depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'nss' 'ttf-font')
+optdepends=('ffmpeg: H264/AAC/MP3 decoding'
+            'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
+            'hunspell-en_US: Spell checking, American English')
 makedepends=('imagemagick')
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.en-US.linux-${arch}.tar.bz2"
+source=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${_firefoxver}.en-US.linux-${arch}.tar.bz2"
             "https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop")
 md5sums=('2bec1fe487a4a3f49e5d061640412137'
