@@ -2,15 +2,16 @@
 
 pkgname=ypsilon-scheme2
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="R7RS/R6RS Scheme implementation"
 arch=(x86_64 i686)
 url="https://github.com/fujita-y/ypsilon"
 license=('custom:BSD-2-Clause')
 
-depends=('llvm')
+depends=('llvm>=10' 'llvm<15')
 makedepends=('clang' 'cmake' 'lld')
+optdepends=('rlwrap: readline support')
 
 source=($url/archive/v$pkgver.tar.gz
         0001-rename-to-ypsilon2.patch

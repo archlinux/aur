@@ -1,7 +1,7 @@
 pkgbase = ypsilon-scheme2
 	pkgdesc = R7RS/R6RS Scheme implementation
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fujita-y/ypsilon
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = ypsilon-scheme2
 	makedepends = clang
 	makedepends = cmake
 	makedepends = lld
-	depends = llvm
+	depends = llvm>=10
+	depends = llvm<15
+	optdepends = rlwrap: readline support
 	source = https://github.com/fujita-y/ypsilon/archive/v2.0.8.tar.gz
 	source = 0001-rename-to-ypsilon2.patch
 	source = 0002-use-__FILE_NAME__-Clang-extension.patch
