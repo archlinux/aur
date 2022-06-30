@@ -1,0 +1,11 @@
+pkgbase = everforest-gtk-theme-git
+	pkgdesc = Everforest colour palette for GTK
+	pkgver = r13.78f48292
+	pkgrel = 1
+	url = https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
+	arch = any
+	license = GPL3
+	source = everforest-gtk-theme-git::git+https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme
+	sha256sums = SKIP
+
+pkgname = everforest-gtk-theme-git
