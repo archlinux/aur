@@ -4,7 +4,7 @@
 pkgname=libaxon-bin
 _pkgname=libaxon
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Nodejs backend for purple-oicq'
 url='https://github.com/axon-oicq/axon'
 license=(Unlicense)
@@ -24,8 +24,8 @@ source=("http://ci.hackflow.org/job/oicq-axon/16/artifact/dist/oicq-axon-linux-x
         "libaxon_user.service")
 sha256sums=("5b434fec1f9793631914b47681c48063ae3089eae3209accf2a048b9069f84b0"
 	    "6251c002f240591219638b1ef487f532a2874cef836f0ec91c62643416de7bca"
-	    "366a164f08ed21363b75ccd946a8e889d02b1c3f421dd0d9ddb73c23d3ae7058"
-	    "7e03b55d48c162d9047c98055b0a3825c174dd36804f04af39db56d038ce9e03")
+	    "060ad920889af99dcbece1351a4373215780c5457df7da8637d4f84594db5a02"
+	    "42f97054314ceb0356d007217d5c3781afbd8dc4d1aceaa1877aeb2764ee88fe")
 
 package() {
   install -Dm755 oicq-axon-linux-x64 ${pkgdir}/usr/bin/${_pkgname}

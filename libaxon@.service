@@ -9,7 +9,7 @@ After=systemd-logind.service
 Type=exec
 User=%i
 Restart=on-abort
-ExecStart=/usr/bin/libaxon -c /home/%i/.cache/libaxon/
+ExecStart=/usr/bin/libaxon -c %C/libaxon/
 
 [Install]
 WantedBy=multi-user.target
