@@ -174,7 +174,7 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   # Use default microarchitecture only if we have not choosen another microarchitecture
   if [ "$_microarchitecture" -ne "0" ]; then
-    sh ../choose-gcc-optimization.sh $_microarchitecture
+    ../choose-gcc-optimization.sh $_microarchitecture
   fi
 
   # This is intended for the people that want to build this package with their own config
