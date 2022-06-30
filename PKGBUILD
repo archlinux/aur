@@ -1,7 +1,7 @@
 # Maintainer: Victor <victor@xirion.net>
 
 pkgname=rke-bin
-pkgver=1.3.10
+pkgver=1.3.12
 pkgrel=1
 pkgdesc="Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -11,9 +11,9 @@ provides=('rke')
 conflicts=('rke')
 
 case "${CARCH}" in
-  x86_64)  _CARCH=amd64 && sha256sums=('a2172e28e0b925aee6a45d72c46f1229c8b57651063a1d46f971a06ad65c70dd');;
-  arm*)    _CARCH=arm   && sha256sums=('b75eef1394daf546d41822280e86f5c932e24a9b38f74b02ba56b106b8ffbfbc');;
-  aarch64) _CARCH=arm64 && sha256sums=('3287278f2845a48ffd6f9cf1d21e48868f28a091d1659f8784c9c21f999e8eef');;
+  x86_64)  _CARCH=amd64 && sha256sums=('579da2206aec09cadccd8d6f4818861e78a256b6ae550a229335e500a472bd50');;
+  arm*)    _CARCH=arm   && sha256sums=('e21da6e880a5d1ebb21a624f50111ef364774e2603c343153c01810128bf6fdf');;
+  aarch64) _CARCH=arm64 && sha256sums=('e7fba501d623cb600766c9f9851b386a4f6986e3034dc44a724213fd9911b125');;
 esac
 
 source=("rke-${pkgver}-${pkgrel}"::"https://github.com/rancher/rke/releases/download/v${pkgver}/rke_linux-${_CARCH}")
