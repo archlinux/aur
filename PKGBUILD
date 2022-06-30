@@ -9,16 +9,16 @@
 _pkgbase=scons
 pkgname=scons2
 pkgver=3.1.2
-pkgrel=2
-pkgdesc="Extensible Python-based build utility. Python2 version"
+pkgrel=3
+pkgdesc="Extensible Python-based build utility (Python2 version)"
 arch=('any')
 url="https://scons.org"
 license=('MIT')
 conflicts=('python2-scons') # https://github.com/bartoszek/AUR-python2-scons
 provides=('python2-scons')
-depends=('python')
-makedepends+=('python-setuptools' 'python2-setuptools')
-makedepends+=('docbook2x' 'fop' 'texlive-bin' 'graphviz' 'ghostscript'
+depends=('python2')
+makedepends+=('python2-setuptools' 'java-runtime>=9')
+makedepends+=('fop' 'texlive-bin' 'graphviz' 'ghostscript'
 'lynx' 'python-lxml' 'texlive-latexextra')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha512sums=('7d597e681d00918342c64afc61410d961f0516f2e054669d3ef76fcddcbf13b4e24990bdd7c46f3f4369ad2f45ba3fe0173e33edc15e846096bbea10b23fb7c1')
@@ -48,16 +48,7 @@ prepare() {
        -e 's/__DEVELOPER__/none/g' \
        -e "s/__VERSION__/${pkgver}/g" \
        -i "src/setup.py" "src/engine/SCons/__init__.py"
-   # disabling postscript creation, because it's broken
-   sed -e '614,619d' \
-       -e '/api_ps =/d' \
-       -e 's/api_ps,//' \
-       -i doc/SConscript
-   # fixing refentrytitle, so man pages are rendered with correct file names
-   sed -e 's/refentrytitle>SCONS-TIME/refentrytitle>scons-time/' \
-       -e 's/refentrytitle>SCONSIGN/refentrytitle>sconsign/' \
-       -e 's/refentrytitle>SCONS/refentrytitle>scons/' \
-       -i doc/man/*.xml
+    rm -r doc
     # fix shebang for python2 version
     sed -e 's/env python/env python2/' \
         -i src/script/*
@@ -67,39 +58,26 @@ prepare() {
 
 build() {
     cd "${_pkgbase}-${pkgver}"
-    # build documentation
     (
-      python bootstrap.py SConstruct doc
+      python2 bootstrap.py SConstruct
       cd src
-      for _xml in {scons,sconsign,scons-time}; do
-        db2x_docbook2man "../build/doc/man/${_xml}_db.xml"
-      done
-    )
-    (
-      cd src
-      python setup.py build
+      python2 setup.py build
     )
 }
 
 package() {
-  depends=('python2')
   cd "${_pkgbase}-${pkgver}/src"
   python2 setup.py install --prefix=/usr \
                            --skip-build \
                            --optimize=1 \
                            --standard-lib \
-                           --install-data=/usr/share \
+                           --no-install-man \
                            --root="$pkgdir"
   install -vDm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -vDm 644 {CHANGES,README,RELEASE}.txt \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
   # removing Windows only script
   rm -vf "${pkgdir}/usr/bin/scons"*.bat
-  # moving files so scons and python2-scons don't conflict
-  for _man_page in scons{,ign,-time}; do
-    mv -v "${pkgdir}/usr/share/man/man1/${_man_page}".1 \
-      "${pkgdir}/usr/share/man/man1/${_man_page}2".1
-  done
   for _bin in scons{,ign,-configure-cache,-time}; do
     mv -v "${pkgdir}/usr/bin/${_bin}"{,2}
     mv -v "${pkgdir}/usr/bin/${_bin}-${pkgver}" "${pkgdir}/usr/bin/${_bin}2-${pkgver}"
