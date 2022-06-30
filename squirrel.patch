@@ -1,0 +1,10 @@
+--- src/proofgeneral/generic/proof-site.el	2022-06-29 16:12:39.796821281 +0200
++++ src/proofgeneral.new/generic/proof-site.el	2022-06-29 16:14:03.859344260 +0200
+@@ -48,6 +48,7 @@
+       (easycrypt "EasyCrypt" "ec" "\\.eca?\\'")
+       (phox "PhoX" "phx" nil (".phi" ".pho"))
+       (qrhl "qRHL" "qrhl")
++      (squirrel "squirrel" "sp")
+ 
+       ;; Cut-and-paste management only
+ 
