@@ -2,7 +2,7 @@
 
 _name=jarowinkler
 pkgname=python-$_name
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A library for fast approximate string matching using Jaro and Jaro-Winkler similarity"
 arch=(x86_64)
@@ -19,7 +19,7 @@ checkdepends=(
     python-pytest
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('540e3f14ac80b3851ba77cf0c57d5142cc35c93fdd03fdbb5da2445049066a5f')
+sha256sums=('d0ecdae8e122594d22e09ceebfca23342d290a9305d669958e674e0e39e2e260')
 
 build() {
   cd "$_name-$pkgver"
