@@ -26,7 +26,7 @@ package() {
     cp -rf $srcdir/BStarA412\ FREE\ IR\ PACK "$pkgdir/opt/Audio Assault/Blacksun/IRs"
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/Blacksun Linux/Blacksunvst2.so" "$pkgdir/usr/lib/vst/Blacksunvst2.so"
+    install -Dm755 "$srcdir/Blacksun Linux/Blacksunvst2.so" "$pkgdir/usr/lib/vst/Blacksun.so"
 
     ## Install Standalone Binary
     cp "$srcdir/Blacksun Linux/Blacksun Standalone" "$pkgdir/usr/bin/Blacksun Standalone"
