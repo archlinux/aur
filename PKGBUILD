@@ -1,12 +1,12 @@
 # Maintainer: Peter K. Moss <peter@moss.dk>
 pkgname=qmarkdown
-pkgver=0.3.2
+pkgver=0.4
 pkgrel=1
 pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
 url="https://github.com/Peterkmoss/qmarkdown"
 license=('GPL')
-depends=('qt5-base>=5.9.0' 'qt5-webengine>=5.9.0' 'qt5-webchannel>=5.9.0')
+depends=('qt6-base>=6.3.0' 'qt6-webengine>=6.3.0' 'qt6-webchannel>=6.3.0')
 optdepends=('ttf-roboto')
 makedepends=('git' 'cmake>=3.1.0')
 provides=('qmarkdown')
@@ -23,3 +23,4 @@ package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 sha256sums=('e4a17eb8dc3446d6de423903bc0cef687b758ab259278bbff7fb15d96ae89c3f')
+sha256sums=('f4ecd574c7b8d3ccd74e29f449290f77f69bc5b60c5af9423491b9278a295a33')
