@@ -1,0 +1,15 @@
+pkgbase = encrypt-decrypt-pyqt5
+	pkgdesc = A solution for encrypting and decrypting files built with PyQt5
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stupid-kid-af/Encrypt-Decrypt-PyQt5
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = zlib
+	depends = glibc
+	provides = encd
+	source = git+https://github.com/stupid-kid-af/Encrypt-Decrypt-PyQt5
+	md5sums = SKIP
+
+pkgname = encrypt-decrypt-pyqt5
