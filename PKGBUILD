@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL3')
 options=('zipman')
 depends=('python3' 'python-xapian' 'python-pybtex' 'python-pycurl' 'poppler')
-optdepends=('python3-urwid: Python Urwid curses library'
+optdepends=('python-urwid: Python Urwid curses library'
 'xdg-utils: Desktop tools for opening files and URLs'
 'xclip: X clipboard support for copying document fields')
 source=('git+https://gitlab.com/jrollins/xapers.git'
