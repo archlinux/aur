@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BgeeDB
-_pkgver=2.22.2
+_pkgver=2.22.3
 pkgname=r-${_pkgname,,}
-pkgver=2.22.2
+pkgver=2.22.3
 pkgrel=1
 pkgdesc='Annotation and gene expression data retrieval from Bgee database. TopAnat, an anatomical entities Enrichment Analysis tool for UBERON ontology'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('893dd40fc355b0f3429b5e3c5aeffee98e7f098e0a2e2d9732390c3beb0eef44')
+sha256sums=('7340be2271bd2661578b7e022f78cca1267d0dcea9c88d75107fada8becad4b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
