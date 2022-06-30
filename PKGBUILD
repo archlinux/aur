@@ -1,15 +1,15 @@
 # Maintainer: Dylan <dylan@psilly.com>
 
 pkgname=btbrowse
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Opens bittorrent files or magnet links as a folder.'
 url='https://github.com/acerix/btbrowse'
 license=(GPL3)
 arch=(any)
-depends=(btfs xdg-utils python-xdg python-pytoml python-bencodepy tk)
+depends=(btfs xdg-utils python-pyxdg python-pytoml python-bencodepy tk)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('2b585a87e62c82ae97580ff2cd1d688e51ce154e123067cb9da62e4cfb8441db')
+sha256sums=('c638039ae6c7f8bbf836eb78cda365bd8e19e809042c273a93cea5587625f253')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
