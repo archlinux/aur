@@ -1,11 +1,11 @@
 pkgbase = manyverse-bin
 	pkgdesc = A social network off the grid
-	pkgver = 0.2206.3
+	pkgver = 0.2206.27
 	pkgrel = 0
 	url = https://manyver.se
 	arch = x86_64
 	license = MPL2
-	source = https://github.com/staltz/manyverse/releases/download/v0.2206.3-beta/manyverse-0.2206.3-beta.tar.gz
+	source = https://github.com/staltz/manyverse/releases/download/v0.2206.27-beta/manyverse-0.2206.27-beta.tar.gz
 	source = manyverse.png::https://gitlab.com/staltz/manyverse-site/-/raw/master/src/images/logo-square.png
 	source = manyverse.desktop
 	source = manyverse.sh
