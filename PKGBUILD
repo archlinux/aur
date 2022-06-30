@@ -104,16 +104,6 @@ _nf_cone=y
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 _use_llvm_lto=
 
-# KCFI is a proposed forward-edge control-flow integrity scheme for
-# Clang, which is more suitable for kernel use than the existing CFI
-# scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
-# alter function references to point to a jump table, and won't break
-# function address equality.
-# ATTENTION!: you do need a patched llvm for the usage of kcfi,
-# you can find a patched llvm-git in the cachyos-repo's.
-# The packagename is called "llvm-kcfi"
-_use_kcfi=
-
 # Build the zfs module builtin in to the kernel
 _build_zfs=
 
@@ -129,7 +119,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
-_minor=7
+_minor=8
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -140,7 +130,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux cacULE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -160,61 +150,38 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
-    "${_patchsource}/0001-cachy.patch"
+    "auto-cpu-optimization.sh"
+    "${_patchsource}/all/0001-cachyos-base-all.patch"
 )
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/openzfs/zfs.git#commit=6c3c5fcfbe27d9193cd131753cc7e47ee2784621")
+source+=("git+https://github.com/openzfs/zfs.git#commit=6c3c5fcfbe27d9193cd131753cc7e47ee2784621")
 fi
 if [ "$_cpusched" = "bmq" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+source+=("${_patchsource}/sched/0001-prjc.patch")
 fi
 if [ "$_cpusched" = "pds" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+source+=("${_patchsource}/sched/0001-prjc.patch")
 fi
 if [ "$_cpusched" = "bore" ]; then
-    source+=("${_patchsource}/sched/0001-bore-sched.patch")
+source+=("${_patchsource}/sched/0001-bore-sched.patch")
 fi
 if [ "$_cpusched" = "cacule" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
 fi
 if [ "$_cpusched" = "cacule-rdb" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
 fi
 if [ "$_cpusched" = "tt" ]; then
-    source+=("${_patchsource}/sched/0001-tt-5.18.patch")
+source+=(
+    "${_patchsource}/sched/0001-tt-cachy-5.18.patch")
 fi
 if [ "$_cpusched" = "hardened" ]; then
-    source+=(
-        "${_patchsource}/sched/0001-bore-sched.patch"
-        "${_patchsource}/0001-hardening.patch")
-fi
-source+=(
-    "${_patchsource}/0001-amd-perf.patch"
-    "${_patchsource}/0001-bbr2.patch"
-    "${_patchsource}/0001-Extend-DAMOS-for-Proactive-LRU-lists-Sorting.patch"
-    "${_patchsource}/0001-fixes.patch"
-    "${_patchsource}/0001-fs-patches.patch"
-    "${_patchsource}/0001-futex-winesync.patch"
-    "${_patchsource}/0001-hwmon.patch"
-    "${_patchsource}/0001-lrng.patch"
-    "${_patchsource}/0001-lru-le9-spf.patch"
-    "${_patchsource}/0001-kbuild.patch"
-    "${_patchsource}/0001-misc.patch"
-    "${_patchsource}/0001-rcu.patch"
-    "auto-cpu-optimization.sh"
-)
-if [ -n "$_use_kcfi" ]; then
-    source+=("${_patchsource}/0001-kcfi.patch")
-    depends+=(clang llvm lld python)
-    BUILD_FLAGS=(
-        CC=clang
-        LD=ld.lld
-        LLVM=1
-    )
+source+=("${_patchsource}/sched/0001-bore-sched.patch"
+         "${_patchsource}/0001-hardening.patch")
 fi
 
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
+source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -230,7 +197,6 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #        [[ $src = 0001-zfs-2.1.5-staging.patch ]] && continue
     local src
     for src in "${source[@]}"; do
         src="${src%%::*}"
@@ -804,20 +770,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('a1a2d064bf5a1f02021f66931237ec3d2920994d49910d27d3fe581e2e21525b'
-            '58a21aaa4dda3d7cd3c617fd655782b35b27ef52c9e55157d5b2092dba61c5ab'
-            'c20867bdfff8d30013fc6d39b38ff62b349d19fa2b662dae6b129dd7ad444c66'
-            '28e51fdc88e67e82285390f883ff34ba7cf86a9502e55d8c46deae1cdbe40f25'
-            '326d129f9435145add756dc967accd56ffe1d8ff1b6650f84d2578c41bd6dfd6'
-            'dc2898751118804bc3f36b5a6928a2927d04919ce41c0ce013009f5564d6d232'
-            '71c33bf75dbf84673ad26a35c20b0f9ae0fa9944d91cd93a0b128752ca2eab0e'
-            '4955b9243d354ba8d0ce9206da9e73e510f28d1f2af4bcbd3e86b1ee5c50baed'
-            '0e89fc0e60c95e3fd6b43502a36df2eb6e05be9c21f30020c4fa0576ee9f7d6e'
-            '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
-            '16085e0bba8e1843180f82df00d6040b97531cebb2c0c4c7fe23860322d06beb'
-            'f5b02a27a6324fc5aaabbca03e76d483da9ff51c389e4fabda51fd85f77217fc'
-            '292240ee42f4e34b97528c9b2b2afcef7bc892501a3750b8825ac6ef9c87072e'
-            'b0796e67e91254b9aeef1fdf5167121e7e58712077a2d58aa3d98cd59ba924b7'
-            'a5744336734938379628760addd6df123b3e7b0f808dd7308f7acd2ba27e74cd'
-            '270babf4c5e1b7fda61d17e4cb0c7411f5ab67de5e5085bdd9a6c10ae98a5074'
-            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f')
+sha256sums=('0823eb05dba001cf9e2560a76dfa4d81c854e1dcfbfb25cc73ba64cd7e900a36'
+            '261174a3b6ed73d5c8923e4125afe49d2c853e0e8dd571bdc7dc060e88c2820d'
+            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
+            'e59d7f63be73a74df46954f3525969f150fab9ae5fce7f57e42a2f6c16cd3c0b'
+            '28e51fdc88e67e82285390f883ff34ba7cf86a9502e55d8c46deae1cdbe40f25')
