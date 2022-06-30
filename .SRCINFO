@@ -10,6 +10,7 @@ pkgbase = clash-for-windows-bin-git
 	depends = gtk3
 	optdepends = nftables: TUN mode required.
 	optdepends = iproute2: TUN mode required.
+	conflicts = clash-for-windows-bin
 	source = clash-for-windows-bin-git::git+https://github.com/Fndroid/clash_for_windows_pkg.git
 	source = clash.png::https://cdn.jsdelivr.net/gh/Dreamacro/clash@master/docs/logo.png
 	source = clash-for-windows.desktop
