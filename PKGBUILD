@@ -1,15 +1,14 @@
 # Maintainer: Nina <nina@l1f.de>
 pkgname=viddy
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A modern watch command"
 arch=('x86_64')
 url="https://github.com/sachaos/viddy"
 license=('MIT')
 makedepends=('go')
-updpkgsums=('9eff53d3f48311bb710ba502f7796d06')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sachaos/viddy/archive/v${pkgver}.tar.gz")
-md5sums=('b939934b2ecf239fcf6c05ca29a03723')
+md5sums=('4e7a4c4433b567f59d770630b68eca64')
 
 build() {
 	cd "$pkgname-$pkgver"
