@@ -1,0 +1,11 @@
+pkgbase = ptsh
+	pkgdesc = Visually customizable shell utils
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/jszczerbinsky/ptSh
+	arch = any
+	license = MIT
+	source = https://github.com/jszczerbinsky/ptSh/archive/refs/tags/v0.4.tar.gz
+	sha256sums = 7c37a88056d6270b25b79db07c6a3828fefd42c8b57660f9b6a1f65b0d76c5bf
+
+pkgname = ptsh
