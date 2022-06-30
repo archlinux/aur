@@ -5,12 +5,12 @@
 _reponame=rapidjson
 pkgname=mingw-w64-$_reponame
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw-w64)'
 arch=('any')
 url='https://github.com/miloyip/rapidjson'
 license=('MIT')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja' 'git')
 checkdepends=('mingw-w64-wine' 'python')
 source=(
 	"$_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz"
