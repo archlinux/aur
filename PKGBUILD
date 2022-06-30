@@ -2,7 +2,7 @@
 
 pkgname='cn.com.10jqka'
 # the versin is from deb package
-pkgver=2.6.1.1
+pkgver=2.7.1.2
 pkgrel=0
 pkgdesc="cn.com.10jqka - a tool for scanning the stock infomation"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=()
 
 source=("http://resource.thsi.cn/soft/${pkgname}_${pkgver}_amd64.deb")
 
-sha256sums=('824e536bba566af60be06e483a98fb3fbee533d7b287c7ed496988a91645fa9e')
+sha256sums=('40c9a5c551cdc48e10b51e003e70254919d89aa0a1481ab63324a37a363648fd')
 
 package() {
     tar xf data.tar.xz -C ${pkgdir}/
