@@ -1,6 +1,6 @@
 pkgbase = r-rexposome
 	pkgdesc = Exposome exploration and outcome data analysis
-	pkgver = 1.18.0
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rexposome
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-rexposome
 	optdepends = r-mclust
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rexposome_1.18.0.tar.gz
-	sha256sums = 8c4b88eb24201e73cacb7e56803042dd997c94778120245874746392fcbf51d0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rexposome_1.18.2.tar.gz
+	sha256sums = e505743fada4d342479b970b64b5b3192152531b90af815b13e4e5b26dbe751f
 
 pkgname = r-rexposome

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rexposome
-_pkgver=1.18.0
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Exposome exploration and outcome data analysis'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c4b88eb24201e73cacb7e56803042dd997c94778120245874746392fcbf51d0')
+sha256sums=('e505743fada4d342479b970b64b5b3192152531b90af815b13e4e5b26dbe751f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
