@@ -223,7 +223,7 @@ package() {
     for i in "\${!_index[@]}"; do
         j=\${_index[i]}
         image=\${source[j]%%::*}
-        uw=\${_ultrawide[j]}
+        uw=\${_ultrawide[i]}
         ((uw)) && uw=/ultrawide || uw=
         file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\\n' \\
             "\$pkgdir" "\$pkgname\$uw" "\$((i + 1))" "\${image#image-}")

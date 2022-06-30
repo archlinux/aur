@@ -1,7 +1,7 @@
 pkgbase = wiki-loves-monuments-wallpapers
 	pkgdesc = Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop
 	pkgver = 2021
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.wikilovesmonuments.org
 	arch = any
 	license = CCPL
