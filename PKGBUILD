@@ -12,16 +12,19 @@ depends=(gtk2)
 source=(http://sofia.nmsu.edu/~mleisher/Software/gbdfed/$pkgname-$pkgver.tar.bz2 \
 	http://sofia.nmsu.edu/~mleisher/Software/gbdfed/gbdfed48x48.png \
 	gbdfed.desktop \
-	num_signals.patch)
+	num_signals.patch\
+  format-security.patch)
 md5sums=('2a2e1cbfe8566db6d302f0b9ab79b8dd'
          '3681abf22f23a62c48acfca417655dd0'
          '9e4dd5cb12245e7ea51f53085a714360'
-	 '0034b837f9217ebdf5a271d2e242d635')
+         '0034b837f9217ebdf5a271d2e242d635'
+         '2188364eb5d5eb694d86d28236de9db7')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   sed -i 's/-D.*_DEPRECATED\s*\\*//' Makefile.in
   patch -p1 < ../num_signals.patch
+  patch -p1 < ../format-security.patch
   ./configure --prefix=/usr
   make
 }

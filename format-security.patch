@@ -1,0 +1,36 @@
+--- a/bdf.c
++++ b/bdf.c
+@@ -2843,14 +2843,14 @@
+         bpr = ((c->bbx.width * font->bpp) + 7) >> 3;
+         for (j = 0; bpr != 0 && j < c->bytes; j++) {
+             if (j && j % bpr == 0)
+-              fprintf(out, eol);
++              fprintf(out, "%s", eol);
+             fprintf(out, "%02X", c->bitmap[j]);
+         }
+         /*
+          * Handle empty bitmaps like this.
+          */
+         if (c->bbx.height > 0)
+-          fprintf(out, eol);
++          fprintf(out, "%s", eol);
+         fprintf(out, "ENDCHAR%s", eol);
+
+         /*
+@@ -2915,14 +2915,14 @@
+         bpr = ((c->bbx.width * font->bpp) + 7) >> 3;
+         for (j = 0; bpr != 0 && j < c->bytes; j++) {
+             if (j && j % bpr == 0)
+-              fprintf(out, eol);
++              fprintf(out, "%s", eol);
+             fprintf(out, "%02X", c->bitmap[j]);
+         }
+         /*
+          * Handle empty bitmaps like this.
+          */
+         if (c->bbx.height > 0)
+-          fprintf(out, eol);
++          fprintf(out, "%s", eol);
+         fprintf(out, "ENDCHAR%s", eol);
+
+         /*
