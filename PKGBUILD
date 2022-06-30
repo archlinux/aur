@@ -6,7 +6,7 @@
 pkgname='python2-pyopenssl'
 _name="${pkgname#python2-}"
 pkgver=21.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Wrapper module for OpenSSL, legacy Python 2 version'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -46,8 +46,15 @@ build() {
 check() {
     cd "${_tarname}"
     echo 'Running tests...'
-    echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
-    LC_ALL=C.UTF-8 python2 setup.py pytest
+
+    (
+      echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
+      export LC_ALL=C.UTF-8
+      export PYTHONDONTWRITEBYTECODE=1
+
+      python2 setup.py pytest --addopts \
+        "--deselect tests/test_ssl.py::TestContext::test_fallback_default_verify_paths"
+    )
 }
 
 package() {
