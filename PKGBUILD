@@ -5,7 +5,7 @@ _pkgname=poi
 _releasever=10.8.0
 _buildver=7917
 pkgver=$_releasever.$_buildver
-pkgrel=2
+pkgrel=3
 pkgdesc="Scalable KanColle browser and tool"
 arch=('x86_64')
 url="https://github.com/poooi/poi/"
@@ -25,7 +25,6 @@ sha256sums=('c9d67ba458b8e147dd149c1114eaa5c5d4f7315a4caf629acc2add07e1b5221d'
             'b08d1eb63de3af0c67860fd8bfd709d492ac600eef9c0cd52e2ee65e5ab69194')
 
 package() {
-    rm "$_pkgname-$_releasever.7z"
     mkdir -p "${pkgdir}/opt/${_pkgname}/"
 	bsdtar -xf "$_pkgname-$_releasever.7z" -C "${pkgdir}/opt/${_pkgname}/"
     chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
@@ -34,4 +33,6 @@ package() {
     # Install pixmap and desktop files
     install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/poi_icon.png"
     install -Dm644 -t "$pkgdir/usr/share/applications" poi.desktop
+
+    rm "$_pkgname-$_releasever.7z"
 }
