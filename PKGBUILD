@@ -1,10 +1,10 @@
 # Maintainer: Grigory Kirillov <txgk@bk.ru>
 pkgname=newsraft
-pkgver=0.2
+pkgver=0.3
 pkgrel=0
 pkgdesc='Feed reader with ncurses user interface'
-arch=('x86_64')
 url='https://codeberg.org/grisha/newsraft'
+arch=('x86_64')
 license=('MIT')
 depends=(
 	'ncurses'
@@ -14,13 +14,15 @@ depends=(
 	'yajl'
 	'gumbo-parser'
 	)
-makedepends=('meson' 'scdoc')
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/grisha/newsraft/archive/$pkgver.tar.gz")
-sha256sums=('ed605065644ec0ada0e96dd809946947ed8895febfb99a00ed8c2b69a54b3edb')
+makedepends=(
+	'meson'
+	'scdoc'
+	)
+source=("https://codeberg.org/grisha/newsraft/archive/newsraft-$pkgver.tar.gz")
+sha256sums=('6c8551fbba2a37c62fc99f19b71d3e375fe904b8b93c659a193c55d98e4f33e3')
 
 build() {
 	cd "$srcdir/newsraft"
-	sed -i '/cppcheck/d' meson.build
 	arch-meson builddir
 	meson compile ${JOBS:+-j ${JOBS}} -C builddir
 }
