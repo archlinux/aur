@@ -2,7 +2,7 @@
 
 pkgname=pscale-cli
 _pkgname=pscale
-pkgver=0.101.0
+pkgver=0.106.0
 pkgrel=0
 pkgdesc='PlanetScale CLI client package for Arch'
 arch=('x86_64')
