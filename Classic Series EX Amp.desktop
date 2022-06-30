@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault 3 Original Classic Metal High-Gain Amp Designs
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/Classic Series EX Standalone"
+Name=Classic Series EX Amp

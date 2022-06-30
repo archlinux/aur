@@ -1,0 +1,18 @@
+pkgbase = classic-series-bin
+	pkgdesc = Audio Assault 3 Original Classic Metal High-Gain Amp Designs
+	pkgver = 22.06.29
+	pkgrel = 1
+	url = https://audioassault.mx/products/classicseries
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Classic Series EX Amp.desktop
+	sha256sums = 739bbdb7f6fd3c7f852cefb8399df34656691ef13934a9704ba0890731f386c7
+
+pkgname = classic-series-bin
