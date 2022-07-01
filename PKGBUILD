@@ -1,19 +1,25 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
 pkgver=0.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Self hosted ebook and comic reader"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.kavitareader.com/"
 license=('GPL3')
 backup=("etc/Kavita/appsettings.json")
 depends=()
 makedepends=()
-source=(
+source_x86_64=(
 https://github.com/Kareadita/Kavita/releases/download/v$pkgver/kavita-linux-x64.tar.gz
 )
-md5sums=(
+source_aarch64=(
+https://github.com/Kareadita/Kavita/releases/download/v$pkgver/kavita-linux-arm64.tar.gz
+)
+md5sums_x86_64=(
 26397b12e9e7ba4f6d952b47e5bb9643
+)
+md5sums_aarch64=(
+cd572cc93c709a810afdeb1a81785b75
 )
 
 build() {
