@@ -22,6 +22,7 @@ pkgbase = freenom-dns-updater
 	depends = python-six
 	depends = python-click
 	depends = python-oscrypto
+	backup = etc/freenom.yml
 	source = https://github.com/maxisoft/Freenom-dns-updater/archive/refs/tags/v1.2.9.tar.gz
 	sha256sums = cd21098f04be70579999f287404e094a0b5118b4622f009d02e14e8182ce3bf4
 

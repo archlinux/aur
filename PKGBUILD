@@ -10,6 +10,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-yaml' 'python-six' 'python-click' 'python-oscrypto')
 makedepends=('python-setuptools')
 checkdepends=('python-httpretty' 'flake8' 'python-flake8-bugbear' 'python-flake8-isort' 'python-flake8-pep3101' 'python-flake8-fixme' 'python-flake8-mutable' 'bandit' 'mypy')
+backup=('etc/freenom.yml')
 source=("https://github.com/maxisoft/Freenom-dns-updater/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cd21098f04be70579999f287404e094a0b5118b4622f009d02e14e8182ce3bf4')
 
