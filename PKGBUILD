@@ -3,41 +3,38 @@
 _name='magicgui'
 _author='tlambert03'
 pkgname="python-${_name}"
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
 license=('BSD')
 makedepends=(
+  'python-build'
+  'python-installer'
   'python-setuptools-scm'
-  'python-dephell'
+  'python-wheel'
 )
 depends=(
   'python'
-  'python-typing_extensions'
-  'python-qtpy'
-  'python-psygnal'
   'python-docstring-parser'
+  'python-psygnal'
+  'python-qtpy'
+  'python-typing_extensions'
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('fda7b20a6380623241dc9e2fd3317870e5e7e08521c6f98c38bbd68f81b450f7')
+sha256sums=('dcd05c4c9bbd55bdeb72d41069b2d4304952dabe04c2aac7bdd43f5a4e3a8a94')
 provides=("python-${_name}")
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
