@@ -1,7 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=protontricks-git
-pkgver=1.8.2.r3.8bed483
+pkgver=1.8.2.dev3+gbe3805b
 pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
 arch=('any')
