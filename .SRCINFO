@@ -1,6 +1,6 @@
 pkgbase = ignition-gazebo
 	pkgdesc = Open source robotics simulator.
-	pkgver = 6.9.0
+	pkgver = 6.10.0
 	pkgrel = 1
 	url = https://gazebosim.org/libs/gazebo
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = ignition-gazebo
 	depends = sdformat
 	depends = ignition-fuel_tools
 	depends = ignition-sensors
-	source = ignition-gazebo-6.9.0.tar.gz::https://github.com/gazebosim/gz-sim/archive/ignition-gazebo6_6.9.0.tar.gz
-	sha256sums = ec6255d62794e6d1fe4477dc37c8ec553d8cef29f45676127facaf36bc99e1ad
+	source = ignition-gazebo-6.10.0.tar.gz::https://github.com/gazebosim/gz-sim/archive/ignition-gazebo6_6.10.0.tar.gz
+	sha256sums = f5538848cd89711912853ab99faa0c46ee6a4b47c17a8aa06c9814a879d4c8b8
 
 pkgname = ignition-gazebo
