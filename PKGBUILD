@@ -3,7 +3,7 @@
 pkgname=gdb11
 pkgver=11.1
 pkgrel=1
-pkgdesc="GNU debugger crosscompiled for i686 development (version 11) for compability with clion remote debugging"
+pkgdesc="GNU debugger (version 11) for compability with clion remote debugging"
 arch=(x86_64)
 url="https://www.gnu.org/software/gdb"
 license=('GPL')
