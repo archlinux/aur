@@ -1,11 +1,11 @@
 pkgbase = execdir
 	pkgdesc = Execute a command in a specific directory
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/xfgusta/execdir
 	arch = x86_64
 	license = MIT
-	source = https://github.com/xfgusta/execdir/archive/v0.1.0/execdir-0.1.0.tar.gz
-	sha1sums = 6f4a3603bae2c5b666d90d6db2526ad85044c376
+	source = https://github.com/xfgusta/execdir/archive/v0.2.0/execdir-0.2.0.tar.gz
+	sha1sums = 0b027673312e7ebe80667f7a55bed8f07eb344e1
 
 pkgname = execdir

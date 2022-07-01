@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Costa <xfgusta@gmail.com>
 
 pkgname=execdir
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Execute a command in a specific directory'
 arch=(x86_64)
 url="https://github.com/xfgusta/$pkgname"
 license=(MIT)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('6f4a3603bae2c5b666d90d6db2526ad85044c376')
+sha1sums=('0b027673312e7ebe80667f7a55bed8f07eb344e1')
 
 build() {
   cd "$pkgname-$pkgver"
