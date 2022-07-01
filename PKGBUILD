@@ -1,7 +1,7 @@
 # Maintainer: Sergio Conde <skgsergio@gmail.com>
 
 pkgname=tablet-mode-vswitch-git
-pkgver=r5.2beb811
+pkgver=1.0.r0.g4c1798c
 pkgrel=1
 pkgdesc="Tablet Mode virtual switch that toggles on HID device connect and disconnect."
 arch=("x86_64")
@@ -16,7 +16,7 @@ conflicts=("tablet-mode-vswitch")
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

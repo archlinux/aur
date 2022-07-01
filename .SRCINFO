@@ -1,6 +1,6 @@
 pkgbase = tablet-mode-vswitch-git
 	pkgdesc = Tablet Mode virtual switch that toggles on HID device connect and disconnect.
-	pkgver = r5.2beb811
+	pkgver = 1.0.r0.g4c1798c
 	pkgrel = 1
 	url = https://github.com/skgsergio/tablet-mode-vswitch
 	arch = x86_64
