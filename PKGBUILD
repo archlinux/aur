@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hush
-pkgver=0.1.1.alpha
+pkgver=0.1.4.alpha
 pkgrel=1
 pkgdesc='A unix shell scripting language based on the Lua programming language'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/hush-shell/hush'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-_commit='fd0f8c7e89fa088a10379e7838b606b3d35c4245'
+_commit='3d7a6710797afc7e7826abb1bf794354ccb5e024'
 source=("$pkgname::git+$url#commit=$_commit")
 md5sums=('SKIP')
 
