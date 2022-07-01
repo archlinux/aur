@@ -1,0 +1,15 @@
+pkgbase = tablet-mode-vswitch-git
+	pkgdesc = Tablet Mode virtual switch that toggles on HID device connect and disconnect.
+	pkgver = r5.2beb811
+	pkgrel = 1
+	url = https://github.com/skgsergio/tablet-mode-vswitch
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = tablet-mode-vswitch
+	conflicts = tablet-mode-vswitch
+	source = tablet-mode-vswitch-git::git+https://github.com/skgsergio/tablet-mode-vswitch.git
+	sha512sums = SKIP
+
+pkgname = tablet-mode-vswitch-git
