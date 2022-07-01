@@ -2,10 +2,10 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 
 _pkgname=86box
-_build=b3777
+_build=b3850
 
 pkgname="${_pkgname}-appimage"
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -21,10 +21,10 @@ source_pentium4=("${_pkgname}-${pkgver}-pentium4.appimage::${_source}-Linux-x86-
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_arm7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
-sha512sums_pentium4=('e63aa9d6118d9567695380794ef3d39fb71c11e0b2062875a9672498b6118fa511ac0a93f34934355fd22847270539de7f4dcb8cb58f1e13c2eb2459da21da18')
-sha512sums_x86_64=('a127b909ec0210988e1be871bff0d3c0f545f4f3aa08339b6992a7565e01b06b8bbbb4972ad930ef4eb124a01c7adcac2dc22b4087876237c51da2d90f9379f9')
-sha512sums_arm7h=('91017f050baa9911136cb370a9bcdbb699b47fb9ca6bf16b1cfd0f1b5a62d06d84769c5e3dbb4eb5b78d2e7691a107f67d49a0ec7a6fb887b55b35b66bf1fac7')
-sha512sums_aarch64=('c1665f16aaa0c9a2c0eb3729332665ff636ecba100571c3b9d1bea48b353ea6bae7113d95f53113bab049bc0e51a75cfccf026bdb9b155610039c974ae5b06fe')
+sha512sums_pentium4=('015e3e6bfe04d2f534d1ec62c69f9b75e2ff34554d0fced61278a40cc0e497444e8245e48db12c04c461852e925ead3d3352ea019518a51009682bc4fddb9132')
+sha512sums_x86_64=('453198ac99e427dd15f3626567319a0ab5e58e6b93efd9a899def5a754e8e1e081fac4e4973246fd67eb52977f24e13cb96ebcbc131811d548d2a041b8ebc294')
+sha512sums_arm7h=('219759042a7492dff8bda89c7a7168334e8ddfdd455b96413c758776fad2acb95d5a9ddce17c6ea1a8995de2f705134a50627d7adcb6185465db502ec56dbade')
+sha512sums_aarch64=('446c2dba05f0e4e992f9956e01aee3d395c6c35979c1143cfa6b6b882c7f0bbef7329efd9bc489be01d97ca2e861a058760c2d41064b8e4e68c2ceb78005f06b')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"
