@@ -5,7 +5,7 @@
 
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=dl
-pkgver=1.0.1b
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc=""

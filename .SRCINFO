@@ -1,5 +1,5 @@
 pkgbase = dl
-	pkgver = 1.0.1b
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/z3oxs/dl.git
 	arch = x86_64
