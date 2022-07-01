@@ -1,18 +1,18 @@
-pkgbase = rumtricks-git
+pkgbase = rumtricks
 	pkgdesc = Winetricks alternative
-	pkgver = r191.c78eeff
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://johncena141.eu.org:8141/johncena141/rumtricks
+	url = https://github.com/jc141x/rumtricks
 	arch = x86_64
 	license = GPL3
 	depends = curl
 	depends = zstd
 	depends = wine
 	depends = jq
-	provides = rumtricks
-	source = https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/rumtricks.sh
-	source = https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/wha.sh
-	md5sums = SKIP
-	md5sums = SKIP
+	conflicts = rumtricks-git
+	source = https://github.com/jc141x/rumtricks/releases/download/0.2.0/rumtricks.sh
+	source = https://github.com/jc141x/rumtricks/releases/download/0.2.0/wha.sh
+	md5sums = 0db84e9c83cdd83d8d492b4bec89c738
+	md5sums = 21d1c41cc011ffdcf237784820c3b3f9
 
-pkgname = rumtricks-git
+pkgname = rumtricks
