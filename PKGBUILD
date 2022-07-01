@@ -2,14 +2,14 @@
 
 pkgname=mystuff
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.net/mystuff/mystuff.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('2c5cbe87d435d7d1aad8ae444e87e0b5761baa9c7e5e5f88cfdb4f534f0349a6')
+sha256sums=('fce8e34df10426696f6ce1e8a2786ecbc4ef33590ad4e159f14daa0e66a4067f')
 options=('!emptydirs')
 
 build() {
