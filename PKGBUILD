@@ -7,7 +7,7 @@
 
 pkgname='gmic-no-opencv'
 _basename="${pkgname%%-*}"
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="GREYC's Magic Image Converter (without OpenCV camera input processing)"
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=("${url}files/source/${_tarname}.tar.gz"
         'FindGMicStdlib.cmake'
         'FindGraphicsMagick.cmake'
 )
-sha256sums=('6f4a9a5a476d0bed6099b7291450459689bfc0b102c90cf333eba4b7ab5d841a'
+sha256sums=('fa77e85b3a39638008515ac525f23f0ed7a45b63c463c0ba6292c87f5e88e30d'
             '089c4ad204a1ed43c9425e3f39e5a3a8bab3d6e8c4fb5a6dfc69e0fca15abd15'
             '5ad1b499cb0a9e3d9fff6a851346d6f356dfc592442183d6330726a29ee25384'
             '83e4635a6fd101511381bc865255f4de88834da51911ce3eb45ddac2558cabcc'
@@ -81,6 +81,7 @@ prepare() {
   cmake -B 'build' \
         -S "${_tardirname}" \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DENABLE_SYSTEM_GMIC='OFF' \
         -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
