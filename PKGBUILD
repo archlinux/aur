@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=libnbd
-pkgver=1.12.2
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="NBD client library in userspace"
 arch=('i686' 'x86_64')
@@ -14,8 +14,13 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz.sig"
+		fs74747.patch
 )
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 < "${srcdir}/fs74747.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,5 +39,6 @@ check() {
   make check
 }
 
-sha256sums=('e7bbde25aa6def62e43f4db03b87359c37479a7a1da9f4feaca3cd0de4c640f3'
-            'SKIP')
+sha256sums=('2085b09b6a9067112113a68333e4d90040c821f9dab12caab4cebdedfd6a7f50'
+            'SKIP'
+            '7e6e1c11ea571e4e7eca6d5c6417f63b6063295b761abf417726167e4e413623')
