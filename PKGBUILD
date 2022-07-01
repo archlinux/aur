@@ -2,29 +2,20 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.10.1
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
 arch=('any')
-depends=('php' 'icinga-php-library>=0.8.0' 'icinga-php-thirdparty>=0.10.0')
-makedepends=('patchutils')
+depends=('php' 'icinga-php-library>=0.9.0' 'icinga-php-thirdparty>=0.11.0')
 optdepends=('php-gd: export data to PDF'
             'php-imagick: graphs in PDF exports'
             'php-intl: support for internationalization'
             'php-pgsql: for PostgreSQL backend')
 url="https://icinga.com/"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icingaweb2/archive/v$pkgver.tar.gz"
-        'https://github.com/Icinga/icingaweb2/pull/4640.patch')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icingaweb2/archive/v$pkgver.tar.gz")
 install='icingaweb2.install'
-sha256sums=('96eea821a02b9fe5b2cfd193c25d7eef50483c56d26cbeffa028cbaf906f3d5e'
-            'bf664e5aa4d1c8e4f09eb6f0e02dac5805432118bbcf06ec078943910ee3de22')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  filterdiff -p1 -x '.github/*' < "$srcdir/4640.patch" | patch -p1
-}
+sha256sums=('c05488ec30f85a3e1cb52a72159206331f40b83be6e3b206aed2eb9c6b381513')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
