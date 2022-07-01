@@ -3,15 +3,14 @@
 
 pkgname="cli-visualizer-git"
 pkgver=496.b98068f
-pkgrel=8
-epoch=1
+pkgrel=9
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer"
 license=('MIT')
 depends=('ncurses' 'fftw')
 makedepends=('git' 'fftw' 'cmake')
-conflicts=(cli-visualizer)
+conflicts=('cli-visualizer' 'vis')
 provides=(cli-visualizer)
 options=(!buildflags)
 install=${pkgname}.install
