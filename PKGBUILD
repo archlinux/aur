@@ -15,7 +15,6 @@ _repourl="https://github.com/${_name}/${_name}"
 license=('MIT')
 depends=('python2')
 makedepends=(
-# 'python2-brotli'
   'python2-setuptools'
 )
 checkdepends=(
