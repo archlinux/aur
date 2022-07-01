@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint-bin
-pkgver=0.29.1
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('dprint')
 conflicts=('dprint')
 source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
         'LICENSE')
-sha256sums=('be43c8ab4f3c4dc82490d33662307935a0665318e4f0609452cbe9d5f9a2f6b4'
+sha256sums=('8ca8c0d834f8e7c6f7be10c32e1c54fd99067997b0a15f22f598ad492029abb9'
             '43f8cfbeca17eccd83fc98f27d211073eaee5574fc3162f345acc196d6190ce7')
 
 package() {
