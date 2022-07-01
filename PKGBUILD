@@ -110,7 +110,7 @@ build(){
   cd "$srcdir/$_srcname/SamTSE/Sources/"
   ./build-linux"$_bits"xplus.sh
 
-  # Building Serious Sam Classic tmp stuff.
+  # Removed Serious Sam Classic tmp stuff.
   cd "$srcdir/$_srcname/SamTFE/"
   rm -fr "Sources"
   rm -fr "Tools.Win32"
@@ -119,8 +119,14 @@ build(){
   rm -fr "Sources"
   rm -fr "Tools.Win32"
 
-  rm -f  "$srcdir/$_srcname"/{*.sh,*.old}
+  rm -f  "$srcdir/$_srcname"/{*.sh,*.old,*.patch}
   rm -fr "$srcdir/$_srcname/Images"
+
+  # fix scripts for AMD cards
+  sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTFE/Scripts/GLSettings/RAM.ini"
+  sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTFE/Scripts/GLSettings/ATI-RPRO.ini"
+  sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTSE/Scripts/GLSettings/RAM.ini"
+  sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTSE/Scripts/GLSettings/ATI-RPRO.ini"
 }
 
 package(){
