@@ -1,4 +1,4 @@
-# Maintainer: Sushil Khatri <esinkei @ tuta dot io>
+# Maintainer: Sushil Khatri <esinkei at protonmail dot com>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 pkgname=quantum-espresso
 pkgver=7.1
@@ -11,7 +11,7 @@ depends=('openmpi' 'gcc-fortran' 'fftw' 'elpa' 'libxc')
 makedepends=('gcc-fortran')
 checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d56dea096635808843bd5a9be2dee3d1f60407c01dbeeda03f8256a3bcfc4eb6')
 
 
 build() {
