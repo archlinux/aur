@@ -10,6 +10,6 @@ pkgbase = ruby-octokit
 	noextract = octokit-4.25.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/octokit-4.25.1.gem
-	sha256sums = 7bd6acb0f7aa2055fdee9576e92841818eec604c08687c258fed91da3496f957
+	sha256sums = c02092ee82dcdfe84db0e0ea630a70d32becc54245a4f0bacfd21c010df09b96
 
 pkgname = ruby-octokit

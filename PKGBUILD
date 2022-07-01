@@ -13,7 +13,7 @@ depends=('ruby-faraday' 'ruby-sawyer')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7bd6acb0f7aa2055fdee9576e92841818eec604c08687c258fed91da3496f957')
+sha256sums=('c02092ee82dcdfe84db0e0ea630a70d32becc54245a4f0bacfd21c010df09b96')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
