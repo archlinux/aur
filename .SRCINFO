@@ -1,0 +1,17 @@
+pkgbase = nereusx-notes-git
+	pkgdesc = Plane-text notes manager, CLI and TUI
+	pkgver = r131.a4f0a4e
+	pkgrel = 1
+	url = https://github.com/nereusx/notes
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = gzip
+	makedepends = md2roff
+	depends = ncurses
+	provides = nereusx-notes
+	conflicts = nereusx-notes
+	source = nereusx-notes-git::git+https://github.com/nereusx/notes
+	md5sums = SKIP
+
+pkgname = nereusx-notes-git
