@@ -34,7 +34,7 @@ md5sums=('SKIP')
 
 pkgver() {
  cd "$pkgname"
- git describe --tags | cut -d '-' --fields=1,2,4 | sed 's#v##;s#-#.#g'
+ printf "%s.g%s" "$(git describe --tags | sed 's#v##;s#-.*##')" "$(git rev-parse --short HEAD)"
 }
 
 build() {
