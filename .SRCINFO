@@ -1,6 +1,6 @@
 pkgbase = python-reorder-python-imports
 	pkgdesc = Automatically reorder Python imports.
-	pkgver = 2.7.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/asottile/reorder_python_imports
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-reorder-python-imports
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aspy-refactor-imports
-	source = https://files.pythonhosted.org/packages/source/r/reorder_python_imports/reorder_python_imports-2.7.1.tar.gz
-	sha256sums = 1ae34422f13f5a4b4669f340774909d721bfc0a8311973c70b3a50540b595bc5
+	source = https://files.pythonhosted.org/packages/source/r/reorder_python_imports/reorder_python_imports-3.1.0.tar.gz
+	sha256sums = 6b7a810ee77a9be0e646033d034ce02457e32597c5f48e5faec1866ca9eb4957
 
 pkgname = python-reorder-python-imports

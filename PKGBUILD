@@ -2,7 +2,7 @@
 pkgname=python-reorder-python-imports
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=2.7.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Automatically reorder Python imports."
 url="https://github.com/asottile/reorder_python_imports"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1ae34422f13f5a4b4669f340774909d721bfc0a8311973c70b3a50540b595bc5')
+sha256sums=('6b7a810ee77a9be0e646033d034ce02457e32597c5f48e5faec1866ca9eb4957')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
