@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=camb
 pkgname=python-$_pkgname-git
-pkgver=r491.0dbbbb9
-pkgrel=4
+pkgver=r1189.0b70190
+pkgrel=1
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=('any')
 url="https://github.com/cmbant/CAMB"
 license=()
 groups=()
-depends=('python-numpy' 'gcc-fortran')
-makedepends=('git' 'python-setuptools')
+depends=(python-numpy gcc-fortran)
+makedepends=(git python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
