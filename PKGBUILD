@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=znapzupport
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 )
 
 sha512sums=(
-  '62479379efe76f99faab51ebfab67cc0f3c3639d8f3dd6e6020796bb5adaf8b7f2083c06dd2757051df65debc7eff4125d4b6fa0d41255ef3309080ea5938607'
+  '184015648ba068dc02e93c57f3c3430905474742623779a81d6cb945dfc1e27285ceb8e45e09a057df2c868661aa487e82bd0363471ab34e95ee7b906080ba63'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
@@ -39,22 +39,22 @@ build() {
 }
 
 package() {
-  msg2 'Installing the license'
+  echo >&2 'Installing the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     "${srcdir}/${pkgname}-${pkgver}/LICENSE.md"
 
-  msg2 'Installing package files'
+  echo >&2 'Installing package files'
   mkdir -p "${pkgdir}/usr/lib/${pkgname}"
   cp -r --preserve=mode -t "${pkgdir}/usr/lib/${pkgname}" \
     "${srcdir}/${pkgname}-${pkgver}/"{bin,libexec}
 
-  msg2 'Installing binstubs'
+  echo >&2 'Installing binstubs'
   find "${srcdir}/${pkgname}-${pkgver}/bin" \
     -mindepth 1 \
     -exec bash -c "install -D -m 755 -T \"${srcdir}\"/binstub`
       ` \"${pkgdir}\"/usr/bin/\$(basename '{}')" ';'
 
-  msg2 'Installing documentation'
+  echo >&2 'Installing documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     "${srcdir}/${pkgname}-${pkgver}/README.md"
 }

@@ -1,6 +1,6 @@
 pkgbase = znapzupport
 	pkgdesc = Collection of CLI helpers for ZnapZend
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/claui/znapzupport
 	arch = any
@@ -11,10 +11,9 @@ pkgbase = znapzupport
 	depends = sudo
 	depends = zfs
 	optdepends = znapzend
-	noextract = znapzupport-0.1.1.tar.gz
+	noextract = znapzupport-0.1.3.tar.gz
 	options = !strip
-	source = znapzupport-0.1.1.tar.gz::https://github.com/claui/znapzupport/archive/v0.1.1.tar.gz
-	sha512sums = 62479379efe76f99faab51ebfab67cc0f3c3639d8f3dd6e6020796bb5adaf8b7f2083c06dd2757051df65debc7eff4125d4b6fa0d41255ef3309080ea5938607
+	source = znapzupport-0.1.3.tar.gz::https://github.com/claui/znapzupport/archive/v0.1.3.tar.gz
+	sha512sums = 184015648ba068dc02e93c57f3c3430905474742623779a81d6cb945dfc1e27285ceb8e45e09a057df2c868661aa487e82bd0363471ab34e95ee7b906080ba63
 
 pkgname = znapzupport
-
