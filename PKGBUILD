@@ -420,7 +420,7 @@ END
   fi
 
   # Make native messaging work
-  ln -s "$pkgdir/usr/lib/mozilla/native-messaging-hosts" "$pkgdir/usr/lib/firedragon/native-messaging-hosts"
+  ln -s "/usr/lib/mozilla/native-messaging-hosts" "$pkgdir/usr/lib/firedragon/native-messaging-hosts"
 
   # Delete unneeded things from settings repo
   rm "$pkgdir/usr/lib/firedragon/LICENSE.txt"
