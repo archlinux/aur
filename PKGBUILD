@@ -1,11 +1,12 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
 pkgver=0.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Self hosted ebook and comic reader"
 arch=('i686' 'x86_64')
 url="https://www.kavitareader.com/"
 license=('GPL3')
+backup=("etc/Kavita/appsettings.json")
 depends=()
 makedepends=()
 source=(
@@ -26,9 +27,12 @@ build() {
 package() {
 
 mkdir -p $pkgdir/opt/kavita
+install -Dm 644 $srcdir/Kavita/config/appsettings.json  $pkgdir/etc/Kavita/appsettings.json
 cp -Ra $srcdir/Kavita/* $pkgdir/opt/kavita
 install=kavita.install
 install -Dm 644 ../kavita.service -t "$pkgdir"/usr/lib/systemd/system/
+rm $pkgdir/opt/kavita/config/appsettings.json
+ln -s /etc/Kavita/appsettings.json $pkgdir/opt/kavita/config/appsettings.json
 
 }
 
