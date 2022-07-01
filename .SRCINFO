@@ -1,7 +1,7 @@
 pkgbase = backwild
 	pkgdesc = A backup program for USB devices
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.net/backwild/backwild.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = backwild
 	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/backwild-2.4.tar.gz
-	sha256sums = 927a8f91059e767a5a93599695a43c5ebee2a6e7af6ac10f5773ca5d98e4f401
+	sha256sums = 8b4a154b83693d5db419b8b8913714b22b87cd0c26ec38954a911f7fc1bc7363
 
 pkgname = backwild
