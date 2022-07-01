@@ -10,7 +10,7 @@ pkgbase = binge-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = binge-git
-	source_x86_64 = https://gitlab.com/binge-desktop/binaries/1.0.3-1/-/raw/main/Binge-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/binge-desktop/binaries/1.0.3-1/-/raw/main/Binge-linux-x64.tar.xz
 	sha256sums_x86_64 = SKIP
 
 pkgname = binge-bin

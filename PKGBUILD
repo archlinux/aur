@@ -11,7 +11,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("binge-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/binge-desktop/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Binge-linux-x64.tar.gz")
+source_x86_64=("https://gitlab.com/binge-desktop/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Binge-linux-x64.tar.xz")
 
 package() {
     for dir in Binge-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
