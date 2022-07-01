@@ -1,7 +1,7 @@
 pkgbase = python-fgivenx-git
 	pkgdesc = Functional Posterior Plotter
-	pkgver = r121.406203d
-	pkgrel = 4
+	pkgver = r274.e1dc023
+	pkgrel = 1
 	url = https://github.com/williamjameshandley/fgivenx
 	arch = any
 	license = MIT
@@ -19,4 +19,3 @@ pkgbase = python-fgivenx-git
 	md5sums = SKIP
 
 pkgname = python-fgivenx-git
-

@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=fgivenx
 pkgname=python-$_pkgname-git
-pkgver=r121.406203d
-pkgrel=4
+pkgver=r274.e1dc023
+pkgrel=1
 pkgdesc="Functional Posterior Plotter"
 arch=('any')
 url="https://github.com/williamjameshandley/fgivenx"
 license=('MIT')
 groups=()
-depends=('python-numpy' 'python-matplotlib' 'python-scipy' 'python-joblib' 'python-mpi4py' 'python-tqdm')
-makedepends=('git' 'python-setuptools')
+depends=(python-numpy python-matplotlib python-scipy python-joblib python-mpi4py python-tqdm)
+makedepends=(git python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
