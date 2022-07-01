@@ -1,21 +1,19 @@
 pkgbase = python2-requests
 	pkgdesc = HTTP for Humans (legacy Python 2 version)
 	pkgver = 2.27.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/requests/2.27.1/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	depends = python2
-	depends = python2-certifi
-	depends = python2-chardet
-	depends = python2-idna
-	depends = python2-urllib3
-	optdepends = python2-ndg-httpsclient: HTTPS requests with SNI support
 	optdepends = python2-pysocks: SOCKS proxy support
-	source = https://github.com/psf/requests/archive/v2.27.1/python2-requests-2.27.1.tar.gz
+	source = https://github.com/psf/requests/releases/download/v2.27.1/requests-2.27.1.tar.gz
 	source = certs.patch
-	b2sums = 302fa6f3be95840e7c79a036d5d6bf354f9db0857542969759690c312b31e26fc4779e886b616bd624cb17a53da0342597988bd4aee88dbeb0f6a2442b8a6ced
+	b2sums = a7fed53998fa61b3d03abd254a0cee76450c5b60d76f80aa6b91f32dca1dae5d2c51987b3d3f2138d72c50790e35c36cb03eb5974554ac4eb1a902eff79b5bdd
 	b2sums = b6a7c9796a8ffedebcdbf0d2f95c40b1bbfa0beb45a3c7d5b493a459c4516533992291c720cf02e291cdbbf554dd0bf25c1312f4be41e39acd586b41911ad5b0
 
 pkgname = python2-requests
+	depends = python2-chardet
+	depends = python2-idna
+	depends = python2-urllib3
