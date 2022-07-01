@@ -9,10 +9,8 @@ arch=(any)
 url="https://github.com/OrganicIrradiation/scholarly"
 license=('Unlicense')
 groups=()
-depends=('python-arrow' 'python-beautifulsoup4' 'python-bibtexparser'
-	'python-requests' 'python-dotenv' 'python-free_proxy'
-	'python-fake-useragent' 'python-selenium' 'python-stem')
-makedepends=('python-setuptools' 'python-numpy')
+depends=(python-arrow python-beautifulsoup4 python-bibtexparser python-requests python-dotenv python-free_proxy python-fake-useragent python-selenium python-stem)
+makedepends=(python-build python-installer)
 provides=()
 conflicts=()
 replaces=()
