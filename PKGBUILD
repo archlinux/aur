@@ -180,7 +180,7 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  ../choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig"
