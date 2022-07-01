@@ -1,4 +1,4 @@
-# Maintainer: Huayu ZHANG <zhanghuayu1233@gmail.com>
+# Maintainer: Huayu ZHANG <zhanghuayu.dev@gmail.com>
 
 pkgname=gdb11
 pkgver=11.1
