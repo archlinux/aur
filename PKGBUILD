@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pkglog
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Reports log of package updates"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
@@ -25,6 +25,7 @@ package() {
     --no-cache-dir \
     --no-compile \
     --progress-bar=off \
+    --root-user-action=ignore \
     .
 
   local pdir=$(python -c "import site; print(site.getsitepackages()[0])")
