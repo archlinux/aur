@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=anesthetic
 pkgname=python-$_modulename-git
-pkgver=r319.2351380
-pkgrel=2
+pkgver=r354.48d6bc4
+pkgrel=1
 pkgdesc="nested sampling visualisation"
 arch=(any)
 url="https://github.com/williamjameshandley/anesthetic"
-license=('MIT')
+license=(MIT)
 groups=()
-depends=('python-numpy' 'python-matplotlib' 'python-scipy' 'python-pandas')
-makedepends=('git' 'python-setuptools')
+depends=(python-numpy python-matplotlib python-scipy python-pandas)
+makedepends=(git python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
