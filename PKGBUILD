@@ -2,7 +2,7 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc1.r11.f558ce7
+pkgver=1.6.0rc1.r13.96fbc85
 pkgrel=1
 _kver=5.18
 pkgdesc="eBPF process monitor module for opensnitch"
@@ -30,6 +30,7 @@ prepare() {
 
   patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}/ebpf_prog/file.patch
   cp ${srcdir}/${_pkgname}/ebpf_prog/opensnitch.c \
+    ${srcdir}/${_pkgname}/ebpf_prog/common.h \
     ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-procs.c \
     ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-dns.c \
     ${srcdir}/${_pkgname}/ebpf_prog/Makefile samples/bpf
