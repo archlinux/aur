@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.20.0
+pkgver=0.21.beta1
 pkgrel=1
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
 arch=(x86_64 aarch64)
@@ -25,8 +25,9 @@ makedepends=(
 )
 provides=(phoc)
 conflicts=(phoc wlroots)
+_commit=0.21.0_beta1
 source=(
-	"git+${url}.git#tag=v${pkgver}"
+	"git+${url}.git#tag=v${_commit}"
 	"git+https://source.puri.sm/Librem5/wlroots.git"
 )
 b2sums=('SKIP' 'SKIP')
