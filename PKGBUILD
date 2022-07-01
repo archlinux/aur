@@ -6,7 +6,7 @@
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -83,7 +83,7 @@ backup=(
 )
 options=(debug)
 source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('601a6e9bb03a43d05659f63e4a403df253ab0975b4a973f10a5607f3bbc018dd'
+sha256sums=('401e99b5e1b83de39a86347e091a85eb4dba82a87053dfcb5aa250328f97db62'
             'SKIP')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
