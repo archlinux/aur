@@ -1,37 +1,32 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ifopt
-pkgver=2.0.7
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="An Eigen-based, light-weight C++ Interface to Nonlinear Programming
 Solvers (Ipopt, Snopt)"
 arch=('i686' 'x86_64')
-url="https://github.com/ethz-adrl/ifopt"
-license=('BSD 3-Clause')
+url="https://github.com/ethz-adrl/${pkgname}"
+license=('custom:BSD-3-clause')
 depends=('eigen' 'coin-or-ipopt')
 optdepends=()
 makedepends=('cmake')
-source=(https://github.com/ethz-adrl/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('0e8e5434c722fec40ec723f85416e08bfaed859d44f9acbf37685d88d4a7406d')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ethz-adrl/${pkgname}/archive/${pkgver}.tar.gz)
+sha512sums=('98d769be4d56aba9c37b125925d1993f02dd812ba53eb29a6ce906b8a7ce1affafc7016b9aff9dea7452714a3fea9d1af809c2a700acf6d26353f6a701afa4b8')
 
 build() {
+    cmake \
+        -S ${pkgname}-${pkgver} \
+        -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -Wno-dev
+    cmake --build build --target all
+}
 
-    msg "Starting CMake"
-
-    # Create a build directory
-    mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
-
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-
-    msg "Building the project"
-    make
+check() {
+    ctest --test-dir build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
-
-    msg "Installing files"
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="${pkgdir}" cmake --build build --target install
 }

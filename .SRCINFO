@@ -1,16 +1,15 @@
 pkgbase = ifopt
 	pkgdesc = An Eigen-based, light-weight C++ Interface to Nonlinear Programming Solvers (Ipopt, Snopt)
-	pkgver = 2.0.7
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://github.com/ethz-adrl/ifopt
 	arch = i686
 	arch = x86_64
-	license = BSD 3-Clause
+	license = custom:BSD-3-clause
 	makedepends = cmake
 	depends = eigen
 	depends = coin-or-ipopt
-	source = https://github.com/ethz-adrl/ifopt/archive/2.0.7.tar.gz
-	sha256sums = 0e8e5434c722fec40ec723f85416e08bfaed859d44f9acbf37685d88d4a7406d
+	source = ifopt-2.1.3.tar.gz::https://github.com/ethz-adrl/ifopt/archive/2.1.3.tar.gz
+	sha512sums = 98d769be4d56aba9c37b125925d1993f02dd812ba53eb29a6ce906b8a7ce1affafc7016b9aff9dea7452714a3fea9d1af809c2a700acf6d26353f6a701afa4b8
 
 pkgname = ifopt
-
