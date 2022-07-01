@@ -1,7 +1,7 @@
 pkgbase = hip-runtime-amd
 	pkgdesc = Heterogeneous Interface for Portability ROCm
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
 	license = MIT
@@ -20,10 +20,12 @@ pkgbase = hip-runtime-amd
 	source = hip-runtime-amd-rocclr-5.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-5.2.0.tar.gz
 	source = hip-runtime-amd-hipamd-5.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/hipamd/archive/rocm-5.2.0.tar.gz
 	source = git-hash.patch
+	source = config-path.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/hipamd/pull/32.patch
 	sha256sums = a6e0515d4d25865c037b546035df9c51f0882cd2700e759c266ff7e199f37c3a
 	sha256sums = 80f73387effdcd987a150978775a87049a976aa74f5770d4420847b004dd59f0
 	sha256sums = 37f5fce04348183bce2ece8bac1117f6ef7e710ca68371ff82ab08e93368bafb
 	sha256sums = 8774958bebc29a4b7eb9dc2d38808d79d9a24bf9c1f44e801ff99d2d5ba82240
 	sha256sums = 84cd40751e041edd48489eca59f1702bba08a402b25162e4cf061de45abc2bde
+	sha256sums = SKIP
 
 pkgname = hip-runtime-amd
