@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.16.0.r5.ge742da55
+pkgver=2.17.0.r15.g13708e7d
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -11,13 +11,13 @@ license=('Apache License 2.0')
 groups=()
 
 depends=(
-	'java-environment'
 	'libyaml'
 )
 makedepends=(
 	'cmake'
 	'go'
 	'git'
+	'java-environment'
 	'pkg-config'
 )
 optdepends=()
