@@ -8,6 +8,10 @@ pkgbase = quantum-espresso
 	checkdepends = python
 	makedepends = gcc-fortran
 	depends = openmpi
+	depends = gcc-fortran
+	depends = fftw
+	depends = elpa
+	depends = libxc
 	source = https://gitlab.com/QEF/q-e/-/archive/qe-7.1/q-e-qe-7.1.tar.gz
 	sha256sums = SKIP
 
