@@ -1,7 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=protontricks-git
-pkgver=1.8.2.dev3+gbe3805b
+pkgver=1.8.2.r3.8bed483
 pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
 arch=('any')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    python3 setup.py --version
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
