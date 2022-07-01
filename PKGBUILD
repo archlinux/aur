@@ -1,12 +1,13 @@
- # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=tweedledum
 pkgname=python-${_pkgname}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for synthesizing and manipulating quantum circuits"
 arch=('x86_64')
 url="https://github.com/boschmitt/tweedledum"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=(
     'cmake'
     'ninja'
@@ -16,15 +17,17 @@ makedepends=(
 )
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-    "https://github.com/boschmitt/tweedledum/pull/170.patch"
+    "fix-build.patch::https://github.com/boschmitt/tweedledum/pull/170.patch"
 )
-sha256sums=('58d6f7a988b10c31be3faa1faf3e58288ef7e8159584bfa6ded45742f390309f'
-            'c1a1d2bf8e7f5416e93c9e9da7d35992b542a0eafef08e504254499d038b3e03')
+b2sums=(
+    '99da09829a70a316fdc582929bfe8ca5d805f0a7a6f049da3951c57c5e4bec24343a1021020e8d00791683ab5c140647d78ee0dde5dac95370b648e0eee44b04'
+    '24cb2303a6d3fdac0967c6c925bb49113cc317aa03524b024e9131180bdcd7f6dd812d0e2ebfe157f0331e366b0284c972cc1b2b780960af38365c7d70fa078c'
+)
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     # Fixes https://github.com/boschmitt/tweedledum/issues/169
-    patch --forward --strip=1 --input="${srcdir}/170.patch"
+    patch --forward --strip=1 --input="${srcdir}/fix-build.patch"
 }
 
 build() {
@@ -35,4 +38,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
