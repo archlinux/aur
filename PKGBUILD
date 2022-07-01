@@ -15,11 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# Maintainer: Luong Thanh Lam <ltlam93@gmail.com>
-# Contributor: Tran Cong <nopain2110@gmail.com>
+# Author: Luong Thanh Lam <ltlam93@gmail.com>
+# Maintainer: toitenminh <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.6.5
+pkgver=0.8.1.RC4.g3380c09
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
@@ -27,24 +27,22 @@ license=(GPL3)
 url="https://github.com/BambooEngine/ibus-bamboo"
 depends=('ibus')
 makedepends=('go' 'libx11' 'libxtst')
-source=("$pkgname"::git+'https://github.com/BambooEngine/ibus-bamboo.git')
-md5sums=('SKIP')
-options=('!strip')
 conflicts=(ibus-bamboo)
+options=('!strip')
+source=("$pkgname"::git+$url)
+md5sums=('SKIP')
 
-prerare () {
-  git clone https://github.com/BambooEngine/ibus-bamboo.git
+pkgver() {
+ cd "$pkgname"
+ git describe --tags | cut -d '-' --fields=1,2,4 | sed 's#v##;s#-#.#g'
 }
 
 build() {
-  cd "$pkgname"
-
-  make
+ cd "$pkgname"
+ make build
 }
 
-
 package() {
-  cd "$pkgname"
-
-  make DESTDIR="$pkgdir/" install
+ cd "$pkgname"
+ make DESTDIR="$pkgdir/" install
 }

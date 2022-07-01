@@ -1,6 +1,6 @@
 pkgbase = ibus-bamboo-git
 	pkgdesc = A Vietnamese IME for IBus
-	pkgver = 0.6.5
+	pkgver = 0.8.1.RC4.g3380c09
 	pkgrel = 1
 	url = https://github.com/BambooEngine/ibus-bamboo
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = ibus-bamboo-git
 	depends = ibus
 	conflicts = ibus-bamboo
 	options = !strip
-	source = ibus-bamboo-git::git+https://github.com/BambooEngine/ibus-bamboo.git
+	source = ibus-bamboo-git::git+https://github.com/BambooEngine/ibus-bamboo
 	md5sums = SKIP
 
 pkgname = ibus-bamboo-git
-
