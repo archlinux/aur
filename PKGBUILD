@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=wiznote-electron
 _pkgname=wiznote
-pkgver=0.1.78
+pkgver=0.1.81
 pkgrel=1
 pkgdesc='A powerful note-taking tool.'
 arch=('any')
@@ -14,7 +14,7 @@ provides=("wiznote")
 source=("$_pkgname-$pkgver.AppImage::https://get.wiz.cn/x/wiznote-desktop-${pkgver}-linux-x86_64.AppImage"
 "${_pkgname}".sh
 )
-sha256sums=('3ec0dcb13ed6900f48c33bfe04a733867a5b0b6d0bf828b9d08fb2b3f7d1ca2e'
+sha256sums=('2297a4a3b1a6b45cb905b35b5003e94da723a530201dd8170c0edad11502bc6b'
             'ba433c18cd2c82e234d1921ed125c46d6a8ab6a20688e10181834bdbd5650bb1')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 	cp -rf   assets \
             ${_pkgname}/
 	asar p ${_pkgname} app.asar
-	rm -rf ${_pkgname} assets
+	rm -rf ${_pkgname} assets/{icons/*,icon.*,*.ts,*.plist}
 	
 }
 
@@ -35,6 +35,7 @@ package() {
     cd $srcdir
     cp -r usr/share ${pkgdir}/usr
     mv resources ${pkgdir}/usr/share/${_pkgname}
+    
     chmod -R 0755 ${pkgdir}/usr/share
     find ${pkgdir}/usr/share -type f -exec chmod a-x {} \;
     
