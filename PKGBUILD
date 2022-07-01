@@ -1,11 +1,11 @@
 pkgname='rumtricks'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Winetricks alternative'
 arch=('x86_64')
 url='https://github.com/jc141x/rumtricks'
 license=('GPL3')
-depends=(curl zstd wine jq)
+depends=(curl zstd wine xz)
 conflicts=('rumtricks-git')
 source=(
     "https://github.com/jc141x/${pkgname}/releases/download/${pkgver}/rumtricks.sh"
