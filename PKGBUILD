@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.30.4
+pkgver=1.30.6
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
@@ -25,20 +25,26 @@ optdepends=(
   'libtorrent-rasterbar'
   'libselinux'
 )
-checkdepends=('qemu-headless')
+checkdepends=('qemu')
 validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0' '71C2CC22B1C4602927D2F3AAA7A16B4A2527436A')
 _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
+		fs74747.patch
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 < "${srcdir}/fs74747.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -i
 
   # disable guestfish tests because of https://bugs.archlinux.org/task/71746
-  ./configure --prefix=/usr --sbindir=/usr/bin GUESTFISH=no --without-libguestfs
+  ./configure --prefix=/usr --sbindir=/usr/bin GUESTFISH=no --without-libguestfs --without-rust
   make
 }
 
@@ -60,5 +66,6 @@ check() {
   make check
 }
 
-sha256sums=('dff9a86d14ad783dbbe1b3b42bc3929387c7aaac2e33567e7c70bc2f6c49693d'
-            'SKIP')
+sha256sums=('01dc92a46d98d84ea440ae9e2a9a32cae8025b9f164e4c6ccfa4e064f4b4db68'
+            'SKIP'
+            '4ae58421aa6cc59868f6ca11c82d308ceb5972cbcbd3c09416837bb98377911e')
