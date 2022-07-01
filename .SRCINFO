@@ -1,0 +1,13 @@
+pkgbase = csv-to-clipboard
+	pkgdesc = Copy CSV files onto the clipboard in a pasteable format
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/mfenniak/csv-to-clipboard
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk3
+	source = csv-to-clipboard-1.0.2.tar.gz::https://github.com/mfenniak/csv-to-clipboard/archive/1.0.2.tar.gz
+	sha512sums = 58a7d005a89e4cd3e9bf071c35b400e97ce177c6e9e62e342d0e2c8fe995d582eee404d364734bea4a87a6fc73c5ed5273ed1243789d7bc0ec23052ba415c782
+
+pkgname = csv-to-clipboard
