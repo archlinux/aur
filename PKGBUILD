@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ops
-pkgver=0.1.31
+pkgver=0.1.32
 pkgrel=1
 pkgdesc="Build and run nanos unikernels"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 optdepends=('qemu')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanovms/ops/archive/${pkgver}.tar.gz")
-sha256sums=('f1e62ce69a20a227d7b893650c5cf6d8a619d1e71fa3a53cf3c3d097a5211c1b')
+sha256sums=('5489929b708659995796de3781232689fc96768d95c23608105f6d7bd62f31b4')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
