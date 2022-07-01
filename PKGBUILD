@@ -2,7 +2,7 @@
 
 pkgname=freenom-dns-updater
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool written in Python to update Freenom DNS records"
 arch=('any')
 url="https://github.com/maxisoft/Freenom-dns-updater"
@@ -26,4 +26,6 @@ check() {
 package() {
 	cd Freenom-dns-updater-$pkgver
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 systemd/system/freenom-dns-updater.service ${pkgdir}/usr/lib/systemd/system/freenom-dns-updater.service
+	install -Dm644 freenom.yml ${pkgdir}/etc/freenom.yml
 }
