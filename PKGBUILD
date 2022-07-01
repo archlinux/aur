@@ -4,7 +4,6 @@
 pkgname=kirigami-addons
 pkgver=0.3
 pkgrel=1
-epoch=1
 pkgdesc="Add-ons for the Kirigami framework"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/libraries/$pkgname"

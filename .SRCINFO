@@ -2,7 +2,6 @@ pkgbase = kirigami-addons
 	pkgdesc = Add-ons for the Kirigami framework
 	pkgver = 0.3
 	pkgrel = 1
-	epoch = 1
 	url = https://invent.kde.org/libraries/kirigami-addons
 	arch = x86_64
 	arch = i686
