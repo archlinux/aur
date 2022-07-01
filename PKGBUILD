@@ -9,7 +9,7 @@
 pkgname=gcc-11
 pkgver=11.1.0
 pkgrel=1
-pkgdesc='The GNU Compiler Collection'
+pkgdesc='The GNU Compiler Collection (version 11.1.0) for remote debugging compability of clion'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'

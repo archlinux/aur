@@ -1,5 +1,5 @@
 pkgbase = gcc-11
-	pkgdesc = The GNU Compiler Collection
+	pkgdesc = The GNU Compiler Collection (version 11.1.0) for remote debugging compability of clion
 	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://gcc.gnu.org
