@@ -1,6 +1,6 @@
 # Maintainer: GG weebcyberpunk@gmail.com
 pkgname=petit-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Keep track of your books in Python."
 arch=("x86_64")
