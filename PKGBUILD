@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-bin"
-pkgverorg='6.0.0-nightly.81'
-pkgver='6.0.0.nightly.81'
+pkgverorg='6.0.0-nightly.84'
+pkgver='6.0.0.nightly.84'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (binary release).'
 arch=('x86_64' 'armv7l' 'arm64')
@@ -14,12 +14,12 @@ depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _releaseurl="https://github.com/$_pkgname/$_pkgname-app/releases/download/v$pkgverorg"
-source_x86_64=("$pkgname-$pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_amd64.deb")
-source_armv7l=("$pkgname-$pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_armv7l.deb")
-source_arm64=("$pkgname-$pkgverorg-$pkgrel-arm64.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_arm64.deb")
-sha512sums_x86_64=('8ab735585684e80470f2d601662b779fec60b6f87c798f36dcb9f7c857c009c0bf48e2e78850ad30d7eec38d06906ac0cc5b238fe9fc3e61ca71a7662d9d2efb')
-sha512sums_armv7l=('2841eb645ec081580d05dfeec43fa16806cbf46d38fb10b8d2e3c66e96ecbaa4e6e1b3bc6a3b999e008bd5a2da753364710ef6479f58c9d459ade98b6bd3745d')
-sha512sums_arm64=('05d1e98f0831619fae682bf88849c3501028ff2552638fb6ce3bc5fdd204f9bc6c22b01115c60a93e46903f276f5e16f1afdfdae303369a58fc1d27d6cc8fb2f')
+source_x86_64=("$pkgname-$pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-amd64.deb")
+source_armv7l=("$pkgname-$pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-armv7l.deb")
+source_arm64=("$pkgname-$pkgverorg-$pkgrel-arm64.zip::${_releaseurl}/Ferdium-linux-${pkgverorg}-arm64.deb")
+sha512sums_x86_64=('ce1004bf45b4c6fe19a90e73fc1fce8e6cc445e25677a1f223f9346b96cdad56b2cb1d72a14cdd39a581f8ab7b6ff2617de543da5a11fa13cc5da33155f7ad79')
+sha512sums_armv7l=('b4681da23f151fd06c471faff2987c181e33f540df8c90b76519d0bdca416337f438c10834f10b7a286e765acf01ca0a01215a20981e2f2df993aaa05ca74567')
+sha512sums_arm64=('da01f623c1b7408ef0c8ff9cc5c2dbbed9dbc8a82b51f0c707234ae670bd791a4d8757e8da2b6d8db5c67f0feb846c2ba402af133f72205254887b6c5ddfbf61')
 
 _sourcedirectory="$pkgname-$pkgverorg-$pkgrel"
 
