@@ -2,15 +2,15 @@
 _pkgname=qiskit
 pkgname=python-${_pkgname}
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules"
 arch=('any')
 url="https://github.com/Qiskit/qiskit"
 license=('Apache')
 depends=(
-    'python-qiskit-aer=0.10.4'
-    'python-qiskit-ibmq-provider=0.19.1'
-    'python-qiskit-terra=0.21.0'
+    'python-qiskit-aer>=0.10.4'
+    'python-qiskit-ibmq-provider>=0.19.1'
+    'python-qiskit-terra>=0.21.0'
 )
 optdepends=(
     'python-qiskit-experiments: tools for building, running, and analysis of experiments on noisy quantum computers'
