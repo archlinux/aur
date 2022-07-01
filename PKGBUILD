@@ -1,36 +1,33 @@
-# Maintainer: Hannes Eichblatt <lists@hanneseichblatt.de>
-pkgname='wifijammer-git' # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r90.ac12bbe
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Hannes Eichblatt <lists@hanneseichblatt.de>
+
+pkgname='wifijammer-git'
+_basename="${pkgname%-git}"
+pkgver=r92.5f69529
 pkgrel=1
-pkgdesc="Continuously jam all wifi clients and access points within range."
-arch=("x86_64")
-url="https://github.com/DanMcInerney/wifijammer"
+pkgdesc='Continuously jam all wifi clients and access points within range.'
+arch=('x86_64')
+url="https://github.com/DanMcInerney/${_basename}"
 license=('BSD')
-groups=()
-depends=('python2-scapy' 'python2')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
-replaces=()
-backup=()
-options=()
-install=
-source=(${pkgname}'::git+https://github.com/DanMcInerney/wifijammer.git#branch=master')
-noextract=()
-md5sums=('SKIP')
+makedepends=('git')
+provides=("${_basename}")
+conflicts=("${_basename}")
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-VCS}"
+  cd "${_basename}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
-	/usr/bin/install -D -m 744 ./wifijammer ${pkgdir}/usr/bin/wifijammer
-	/usr/bin/install -D -m 644 ./README.md ${pkgdir}/usr/share/doc/${pkgname%-VCS}/README.md
-	/usr/bin/grep -A 100000 -e "^License$" README.md > ${pkgdir}/usr/share/doc/${pkgname%-VCS}/LICENSE.md
+  depends+=(
+    'python2'
+    'python2-scapy'
+  )
+  cd "${_basename}"
+  install --verbose -Dm 744 "${_basename}" -t "${pkgdir}/usr/bin"
+  install --verbose -Dm 644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  grep -A 100000 -e "^License$" 'README.md' > 'LICENSE.md'
+  install --verbose -Dm 644 'LICENSE.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
