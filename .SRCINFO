@@ -1,8 +1,8 @@
 pkgbase = btcaddress-alpha-bin
 	pkgdesc = Casascius Bitcoin Address Utility
 	pkgver = 0.0.1
-	pkgrel = 2
-	url = https://casascius.wordpress.com/2013/01/26/bitcoin-address-utility/
+	pkgrel = 3
+	url = https://web.archive.org/web/20130712011038/https://casascius.wordpress.com/2013/01/26/bitcoin-address-utility/
 	arch = i686
 	arch = x86_64
 	license = Unknown
@@ -12,10 +12,9 @@ pkgbase = btcaddress-alpha-bin
 	conflicts = btcaddress-alpha-bin
 	source = btcaddress.png
 	source = btcaddress.desktop
-	source = btcaddress-alpha.zip::https://ipfs.io/ipfs/QmcbgvdV5qaezKG5tLJ71GXKdikpoH3zHBfNc4SGdbLYN2
+	source = btcaddress-alpha.zip::https://web.archive.org/web/20140110122807/http://casascius.com/btcaddress-alpha.zip
 	sha256sums = 3e7e6fcfa81a8617414198c46dfa0fa3489c96ac216e902ec5fabfeb664a9442
 	sha256sums = ec7183ad277d2ccb01e6f8b6099b750fbf974b9acfb3e7139d21b8b54ccee535
 	sha256sums = 008b92949bbcedebc8da278e2c27156a35b3041e232a4e426efce471a6f2506e
 
 pkgname = btcaddress-alpha-bin
-
