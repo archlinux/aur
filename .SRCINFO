@@ -1,6 +1,6 @@
 pkgbase = r-dapardata
 	pkgdesc = Data accompanying the DAPAR and Prostar packages
-	pkgver = 1.26.0
+	pkgver = 1.26.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DAPARdata
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-dapardata
 	depends = r-knitr
 	depends = r-msnbase
 	optdepends = r-dapar
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/DAPARdata_1.26.0.tar.gz
-	sha256sums = b53704dd252048efe03b5d4e316c54f10deb759f0d7871f85b966edc944a5846
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/DAPARdata_1.26.4.tar.gz
+	sha256sums = 67ab33c48ff58b84eca0d8fe7a24f0ed627abb1d854429b06d137d0606ef7106
 
 pkgname = r-dapardata
