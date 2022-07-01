@@ -1,16 +1,21 @@
 pkgbase = python-superqt
 	pkgdesc = Missing widgets and components for Qt-python.
-	pkgver = 0.2.5
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/napari/superqt
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
-	makedepends = python-dephell
+	makedepends = python-wheel
 	depends = python
+	depends = python-packaging
+	depends = python-pygments
+	depends = python-qtpy
 	depends = python-typing-extensions
 	provides = python-superqt
-	source = https://files.pythonhosted.org/packages/source/s/superqt/superqt-0.2.5.tar.gz
-	sha256sums = 580278f077048d86e10960073e62345a8b479bf0f030097a1d63205c9f0d4f8d
+	source = https://files.pythonhosted.org/packages/source/s/superqt/superqt-0.3.2.tar.gz
+	sha256sums = a37df244a2d6e4387e865cdedabe925798b3352ab9cdc52f60701eb12d907960
 
 pkgname = python-superqt
