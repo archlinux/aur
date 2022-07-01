@@ -6,26 +6,27 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver=0.6.0
-pkgrel=5
-#pkgrel=5
+pkgver='1.0.0'
+pkgrel=7
+#pkgrel=7
+_rc='-rc7'
+_pkgver="${pkgver}${_rc}"
+_tag_ver="v${_pkgver}"
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
-makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check pending fixes#  'skycoin-keyring')
+makedepends=('git' 'go' 'musl' 'kernel-headers-musl')
 install=skywire.install
 _scripts=${_pkgname}-scripts
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-"${url}/raw/develop/dmsghttp-config.json"
+source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"
 )
-sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
-            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
-            '791c5157f794248a67c3aba25084f1472f0422dd2cfaaa889da293c1de4c7c3f')
+sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
+            'fa04907d07072130098fe662ec317b658acf62f110b9c185d4b77b6afa4ffe08')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
-ln -rTsf ${srcdir}/${pkgname}-${pkgver} ${srcdir}/go/src/${_pkggopath}
+ln -rTsf ${srcdir}/${pkgname}-${pkgver}${_rc} ${srcdir}/go/src/${_pkggopath}
 cd ${srcdir}/go/src/${_pkggopath}/
 }
 
@@ -38,7 +39,7 @@ export CGO_ENABLED=1  #default anyways
 #use musl-gcc for static compilation
 export CC=musl-gcc
 
-cd "${srcdir}/${pkgname}-${pkgver}"
+cd ${srcdir}/${pkgname}-${pkgver}${_rc}
 local _version="v${pkgver}"
 
 DMSG_BASE="github.com/skycoin/dmsg"
@@ -86,52 +87,47 @@ mkdir -p ${_pkgdir}/${_skydir}/bin
 mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
+mkdir -p ${_pkgdir}/${_systemddir}
 
 _msg2 'installing binaries'
-_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
-for i in ${_binaries[@]}; do
-_msg3 "${i}"
- install -Dm755 ${GOBIN}/${i} ${_pkgdir}/${_skybin}/${i}
- ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
+ install -Dm755 ${GOBIN}/* ${_pkgdir}/${_skybin}/
+for _i in ${_pkgdir}/${_skybin}/* ; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
+
 _msg2 'installing app binaries'
-_apps=${srcdir}/apps
-_appbinaries=$( ls "${_GOAPPS}" )
-for i in ${_appbinaries}; do
-  _msg3 "${i}"
-  install -Dm755 ${_GOAPPS}/${i} ${_pkgdir}/${_skyapps}/${i}
-  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
+_apps=${pkgdir}/test/apps
+install -Dm755 ${_GOAPPS}/* ${_pkgdir}/${_skyapps}/
+for _i in ${_pkgdir}/${_skyapps}/* ; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
-_msg2 'installing scripts'
-_scripts1=${srcdir}/${_scripts}/${_pkgname}
-_skywirescripts=$( ls ${_scripts1} )
-for i in ${_skywirescripts}; do
-  _install2 ${_scripts1}/${i} ${_skyscripts}
+_msg2 'Installing scripts'
+install -Dm755 ${srcdir}/${_scripts}/${_pkgname}/* ${_pkgdir}/${_skyscripts}/
+for _i in ${_pkgdir}/${_skyscripts}/* ; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
-ln -rTsf ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
+_msg2 'Correcting symlink names'
+ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+#make sure everything is executable
+chmod +x ${_pkgdir}/usr/bin/*
 
-#install the system.d services
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
+_msg2 'installing dmsghttp-config.json'
+install -Dm644 ${srcdir}/${_pkgname}*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
-#desktop integration
-install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
-mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
-}
+#install systemd services
+_msg2 'Installing systemd services'
+install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
+rm ${_pkgdir}/${_systemddir}/skywire-hypervisor.service
 
-
-_install2() {
-_binname="${1##*/}"
-_binname="${_binname%%.*}"
-install -Dm755 ${1} ${pkgdir}/${2}/${_binname}
-ln -rTsf ${pkgdir}/${2}/${_binname} ${pkgdir}/usr/bin/${_binname}
-chmod +x ${pkgdir}/usr/bin/${_binname}
+_msg2 'installing desktop files and icons'
+mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
+install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
 }
 
 _msg2() {

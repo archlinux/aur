@@ -4,9 +4,13 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver=0.6.0
-pkgrel=5
-#pkgrel=5
+pkgver='1.0.0'
+pkgrel=7
+#pkgrel=7
+_rc='-rc7'
+_pkgver="${pkgver}${_rc}"
+_tag_ver="v${_pkgver}"
+_pkgrel=${pkgrel}
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
@@ -14,81 +18,77 @@ license=()
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64')
 arch=('any')
-_pkgver=${_pkgver}
-_pkgrel=${_pkgrel}
 makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') # 'arm-linux-gnueabihf-binutils' 'aarch64-binutils') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
 _debdeps=""
 install=skywire.install
-_scripts="skywire-deb-scripts"
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-"${url}/raw/develop/dmsghttp-config.json"
+_scripts="skywire-scripts"
+source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"
 )
-sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
-            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
-            '1ff213945f7c009572f71fdf00aea28c464996fbc4bf946b03c8787ac0cd47d9')
+sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
+            'fa04907d07072130098fe662ec317b658acf62f110b9c185d4b77b6afa4ffe08')
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
 
 prepare() {
-  for i in ${_pkgarches[@]}; do
-  _msg2 "$i"
+for i in ${_pkgarches[@]}; do
+_msg2 "$i"
 done
-  # https://wiki.archlinux.org/index.php/Go_package_guidelines
-	mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarches[@]} ${srcdir}/go/apps.${_pkgarches[@]}
-  ln -rTsf ${srcdir}/${_pkgname} ${srcdir}/go/src/${_pkggopath}
-  cd ${srcdir}/go/src/${_pkggopath}/
+# https://wiki.archlinux.org/index.php/Go_package_guidelines
+mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarches[@]} ${srcdir}/go/apps.${_pkgarches[@]}
+ln -rTsf ${srcdir}/${pkgname}-${pkgver}${_rc} ${srcdir}/go/src/${_pkggopath}
+cd ${srcdir}/go/src/${_pkggopath}/
 }
 
 build() {
-  local GOPATH=${srcdir}/go
-  export GOOS=linux
-  export CGO_ENABLED=1
+local GOPATH=${srcdir}/go
+export GOOS=linux
+export CGO_ENABLED=1
 
-  for i in ${_pkgarches[@]}; do
-    msg2 "_pkgarch=$i"
-    local _pkgarch=$i
-    export GOPATH=${srcdir}/go
-    export GOBIN=${GOPATH}/bin.${_pkgarch}
-    export _GOAPPS=${GOPATH}/apps.${_pkgarch}
-    export GOOS=linux
-    #static cross-compilation
-    [[ $_pkgarch == "amd64" ]] && export GOARCH=amd64 && export CC=musl-gcc
-    [[ $_pkgarch == "arm64" ]] && export GOARCH=arm64 && export CC=aarch64-linux-musl-gcc
-    [[ $_pkgarch == "armhf" ]] && export GOARCH=arm && export GOARM=6 && export CC=arm-linux-gnueabihf-musl-gcc
-    #_ldflags=('-linkmode external -extldflags "-static" -buildid=')
-    #create the skywire binaries
-    cd ${srcdir}/go/src/${_pkggopath}
-    _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
+for i in ${_pkgarches[@]}; do
+msg2 "_pkgarch=$i"
+local _pkgarch=$i
+export GOPATH=${srcdir}/go
+export GOBIN=${GOPATH}/bin.${_pkgarch}
+export _GOAPPS=${GOPATH}/apps.${_pkgarch}
+export GOOS=linux
+#static cross-compilation
+[[ $_pkgarch == "amd64" ]] && export GOARCH=amd64 && export CC=musl-gcc
+[[ $_pkgarch == "arm64" ]] && export GOARCH=arm64 && export CC=aarch64-linux-musl-gcc
+[[ $_pkgarch == "armhf" ]] && export GOARCH=arm && export GOARM=6 && export CC=arm-linux-gnueabihf-musl-gcc
+#_ldflags=('-linkmode external -extldflags "-static" -buildid=')
+#create the skywire binaries
+cd ${srcdir}/go/src/${_pkggopath}
+_cmddir=${srcdir}/go/src/${_pkggopath}/cmd
 
-    _buildbins skychat $_GOAPPS apps/
-    _buildbins skysocks $_GOAPPS apps/
-    _buildbins skysocks-client $_GOAPPS apps/
-    _buildbins vpn-client $_GOAPPS apps/
-    _buildbins vpn-server $_GOAPPS apps/
-    _buildbins skywire-visor $GOBIN
-    _buildbins skywire-cli $GOBIN
-    _buildbins setup-node $GOBIN
+_buildbins skychat $_GOAPPS apps/
+_buildbins skysocks $_GOAPPS apps/
+_buildbins skysocks-client $_GOAPPS apps/
+_buildbins vpn-client $_GOAPPS apps/
+_buildbins vpn-server $_GOAPPS apps/
+_buildbins skywire-visor $GOBIN
+_buildbins skywire-cli $GOBIN
+_buildbins setup-node $GOBIN
 
-    #binary transparency
-    cd $GOBIN
-    _msg2 'binary sha256sums'
-    echo -e "$_pkgarch"
-    sha256sum $(ls)
-    cd $_GOAPPS
-    sha256sum $(ls)
+#binary transparency
+cd $GOBIN
+_msg2 'binary sha256sums'
+echo -e "$_pkgarch"
+sha256sum $(ls)
+cd $_GOAPPS
+sha256sum $(ls)
 
-    _msg2 'creating the DEBIAN/control files'
-    #create control file for the debian package
-    echo "Package: skywire" > ${srcdir}/${_pkgarch}.control
-    echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
-    echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
-    echo "Section: web" >> ${srcdir}/${_pkgarch}.control
-    echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
-    echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
-    echo "Maintainer: github.com/the-skycoin-project" >> ${srcdir}/${_pkgarch}.control
-    echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
-  done
+_msg2 'creating the DEBIAN/control files'
+#create control file for the debian package
+echo "Package: skywire" > ${srcdir}/${_pkgarch}.control
+echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
+echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
+echo "Section: web" >> ${srcdir}/${_pkgarch}.control
+echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
+echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
+echo "Maintainer: github.com/the-skycoin-project" >> ${srcdir}/${_pkgarch}.control
+echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
+ done
 }
 
 #had to speed up the build for testing - there's a risk of using old binaries.
@@ -97,8 +97,8 @@ _GOHERE=$2  #target bin dir
 _binpath=$3   #find the binary here- expecting 'apps/' or empty
 _binname=$1 #which binary to build
 _msg2 "building ${_binname} binary"
-	cd ${_cmddir}/${_binpath}${_binname}
-  go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o ${_GOHERE}/${_binname} .
+cd ${_cmddir}/${_binpath}${_binname}
+go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o ${_GOHERE}/${_binname} .
 }
 
 
@@ -106,9 +106,13 @@ package() {
 for i in ${_pkgarches[@]}; do
 msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
+GOPATH=${srcdir}/go
+GOBIN=${GOPATH}/bin.${_pkgarch}
+_GOAPPS=${GOPATH}/apps.${_pkgarch}
+
 _msg2 'creating dirs'
 #set up to create a .deb package
-_debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+_debpkgdir="${_pkgname}-${_pkgver}-${_pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
@@ -121,30 +125,25 @@ mkdir -p ${_pkgdir}/${_skydir}/bin
 mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
+mkdir -p ${_pkgdir}/${_systemddir}
 
 cd $_pkgdir
-
 _msg2 'installing binaries'
-#loop to install the binaries
-_skywirebins=$( ls ${srcdir}/go/bin.${_pkgarch} )
-for i in ${_skywirebins}; do
-  _msg2 "$i"
-  _install2 ${srcdir}/go/bin.${_pkgarch}/${i} ${_skybin}
+ install -Dm755 ${GOBIN}/* ${_pkgdir}/${_skybin}/
+for _i in ${_pkgdir}/${_skybin}/* ; do
+ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
-_msg2 'installing apps'
-#loop to install the apps
-_skywireapps=$( ls ${srcdir}/go/apps.${_pkgarch} )
-for i in ${_skywireapps}; do
-  _msg2 "$i"
-  _install2 ${srcdir}/go/apps.${_pkgarch}/${i} ${_skyapps}
+_msg2 'installing app binaries'
+install -Dm755 ${_GOAPPS}/* ${_pkgdir}/${_skyapps}/
+for _i in ${_pkgdir}/${_skyapps}/* ; do
+ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
-_msg2 'installing scripts'
-_scripts1=${srcdir}/${_scripts}/${_pkgname}
-_skywirescripts=$( ls "${_scripts1}" )
-for i in ${_skywirescripts}; do
-  _install2 ${_scripts1}/${i} ${_skyscripts}
+_msg2 'Installing scripts'
+install -Dm755 ${srcdir}/${_scripts}/${_pkgname}/* ${_pkgdir}/${_skyscripts}/
+for _i in ${_pkgdir}/${_skyscripts}/* ; do
+ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
 _msg2 'Correcting symlink names'
@@ -153,22 +152,18 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 #make sure everything is executable
 chmod +x ${_pkgdir}/usr/bin/*
 
-#install dmsghttp-config.json
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+_msg2 'installing dmsghttp-config.json'
+install -Dm644 ${srcdir}/${_pkgname}*/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
-#this is to overwrites any previous file not provided by this package
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}-hypervisor.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
 
-_msg2 'installing desktop files and icon'
+_msg2 'installing desktop files and icons'
+mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
-mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
 
 _msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control

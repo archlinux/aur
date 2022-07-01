@@ -10,36 +10,31 @@ _pkgarch=$(dpkg --print-architecture)
 #leave arch package as any
 arch=('any')
 #manually version for now
-pkgver='0.6.0'
-_pkgver=${pkgver}
-pkgrel=5
+pkgver='1.0.0'
+pkgrel=7
+_rc='-rc7'
+_pkgver="${pkgver}${_rc}"
+_tag_ver="v${_pkgver}"
 _pkgrel=${pkgrel}
-#pkgrel=5
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 license=()
 makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl')
 depends=()
 _debdeps=""
-#_debdeps="reprepro"
-_scripts="skywire-deb-scripts"
-#source=("git+${url}.git#branch=${BRANCH:-develop}"
-source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-"${url}/raw/develop/dmsghttp-config.json"
+_scripts="skywire-scripts"
+source=( "${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"  )
-sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
-            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
-            '1ff213945f7c009572f71fdf00aea28c464996fbc4bf946b03c8787ac0cd47d9')
-
-#tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
-#updpkgsums deb.PKGBUILD
+sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
+            'fa04907d07072130098fe662ec317b658acf62f110b9c185d4b77b6afa4ffe08')
 
 prepare() {
-  # https://wiki.archlinux.org/index.php/Go_package_guidelines
-	mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarch} ${srcdir}/go/apps.${_pkgarch}
-  ln -rTsf ${srcdir}/${_pkgname}-${_pkgver} ${srcdir}/go/src/${_pkggopath}
-  ln -rTsf ${srcdir}/${_pkgname}-${_pkgver} ${srcdir}/${_pkgname}
-  cd ${srcdir}/go/src/${_pkggopath}/
+ # https://wiki.archlinux.org/index.php/Go_package_guidelines
+mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarch} ${srcdir}/go/apps.${_pkgarch}
+[[ -d ${srcdir}/${pkgname} ]] && rm -rf ${srcdir}/${pkgname}
+ ln -rTsf ${srcdir}/${_pkgname}-${pkgver}${_rc} ${srcdir}/go/src/${_pkggopath}
+ ln -rTsf ${srcdir}/${_pkgname}-${pkgver}${_rc} ${srcdir}/${_pkgname}
+ cd ${srcdir}/go/src/${_pkggopath}/
 }
 
 build() {
@@ -88,15 +83,15 @@ _binpath=$3   #find the binary here- expecting 'apps/' or empty
 _binname=$1 #which binary to build
 _msg2 "building ${_binname} binary"
 if [[ ! -f ${_GOHERE}/${_binname} ]] ; then #don't waste time rebuilding existing bins
-	cd ${_cmddir}/${_binpath}${_binname}
-  go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
+cd ${_cmddir}/${_binpath}${_binname}
+go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
 fi
 }
 
 package() {
 _msg2 'creating dirs'
 #set up to create a .deb package
-_debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+_debpkgdir="${_pkgname}-${pkgver}${_rc}-${_pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
@@ -104,47 +99,45 @@ _skyscripts="${_skydir}/scripts"
 _systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
 mkdir -p ${_pkgdir}/usr/bin
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
+mkdir -p ${_pkgdir}/${_systemddir}
 
 cd $_pkgdir
-
 _msg2 'installing binaries'
-#loop to install the binaries
-_skywirebins=$( ls ${srcdir}/go/bin )
-for i in ${_skywirebins}; do
-  _msg2 "$i"
-  _install2 ${srcdir}/go/bin/${i} ${_skybin}
+install -Dm755 ${srcdir}/go/bin/* ${_pkgdir}/${_skybin}
+for _i in ${_pkgdir}/${_skybin}/*; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
 _msg2 'installing apps'
-#loop to install the apps
-_skywireapps=$( ls ${srcdir}/go/apps )
-for i in ${_skywireapps}; do
-  _msg2 "$i"
-  _install2 ${srcdir}/go/apps/${i} ${_skyapps}
+install -Dm755 ${srcdir}/go/apps/* ${_pkgdir}/${_skyapps}
+for _i in ${_pkgdir}/${_skyapps}/*; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
-_msg2 'installing scripts'
-_skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
-for i in ${_skywirescripts}; do
-  _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
+_msg2 'Installing scripts'
+install -Dm755 ${srcdir}/${_scripts}/${_pkgname}/* ${_pkgdir}/${_skyscripts}/
+for _i in ${_pkgdir}/${_skyscripts}/* ; do
+	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
 
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
 _msg2 'installing dmsghttp-config.json'
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${srcdir}/${_pkgname}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing skywire systemd services'
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
 
-_msg2 'installing desktop files and icon'
+_msg2 'installing desktop files and icons'
+mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
-mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
 
 _msg2 'installing skywire control file, postinst & postrm scripts'
 install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
@@ -158,14 +151,6 @@ dpkg-deb --build -z9 ${_debpkgdir}
 mv *.deb ../../
 #exit so the arch package doesn't get built
 exit
-}
-
-_install2() {
-_binname="${1##*/}"
-_binname="${_binname%%.*}"
-install -Dm755 ${1} ${_pkgdir}/${2}/${_binname}
-ln -rTsf ${_pkgdir}/${2}/${_binname} ${_pkgdir}/usr/bin/${_binname}
-chmod +x ${_pkgdir}/usr/bin/${_binname}
 }
 
 _msg2() {
