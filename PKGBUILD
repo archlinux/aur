@@ -27,7 +27,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam-tse.desktop"
     "serioussam.xpm"
     "serioussam-tfe.sh"
-    "serioussam-tse.sh")
+    "serioussam-tse.sh"
+    "gcc-11.3_Timer.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -45,7 +46,8 @@ sha256sums=('e59880dfe320c5a97c5adc59980c66ef8bd1bbac4ddb1d02fa03221d31f8654d'
             '134bbc9088b8c323c9a17a7ea8a39942e4cf4b83e149cb4f89e161adf7290122'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
-            'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3')
+            'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
+            '307fbebdf1b2b88122e1125a586fcbf2d19e33fee08924536220a6c91eefa997')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -53,6 +55,9 @@ else
 fi
 
 prepare(){
+  # Prepare patch
+  cat gcc-11.3_Timer.patch > "$srcdir/$_srcname/gcc-11.3_Timer.patch"
+
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
   cat "$xplus_tse".part* > "$xplus_tse"
@@ -65,14 +70,27 @@ prepare(){
   chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/XPLUS"
   chmod -R g=rx "$srcdir/$_srcname/SamTSE/Mods/XPLUS"
 
-  # Making building scripts.
+  # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
+  # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits"-tfe.sh
   chmod 755 build-linux"$_bits"xplus-tfe.sh
+
+  # Making building TSE scripts.
+  cd "$srcdir/$_srcname/SamTSE/Sources/"
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
+  # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
+  chmod 755 build-linux"$_bits".sh
+  chmod 755 build-linux"$_bits"xplus.sh
+
+  # gcc 11.3 patch
+  cd "$srcdir/$_srcname"
+  patch -p1 < gcc-11.3_Timer.patch || return 1
 }
 
 build(){
