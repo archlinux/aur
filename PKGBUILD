@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
-pkgname=dl-git
+pkgname=dl
 pkgver=1.0.0
 pkgrel=1
 epoch=
