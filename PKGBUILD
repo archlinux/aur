@@ -11,7 +11,7 @@ depends=('openmpi')
 makedepends=('gcc-fortran')
 checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
-sha256sums=('c67429353d49142b675ba6deefbde9594159518bf331aac187ee45a46d02734d')
+sha256sums=('SKIP')
 
 
 build() {
