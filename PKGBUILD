@@ -5,7 +5,7 @@
 
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=dl
-pkgver=1.0.1
+pkgver=1.0.1b
 pkgrel=1
 epoch=
 pkgdesc=""
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 build() {
     cd "$srcdir/dl/cli/"
-    go build .
+    go build -o "dl"
 }
 
 package() {
