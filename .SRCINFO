@@ -26,7 +26,7 @@ pkgbase = intel-oneapi-dal
 	sha256sums = 064e5b747cbf6dbd88e3ba718d336d31d7178b8595ac7d2726f030759384b6f9
 	sha256sums = 7827f21d50858987da988786223add0ff4d2f29a900ee0f2a7f12675dcab8365
 	sha256sums = 3bb0049f5245c836472bdb977106ad9fb706d2d04d2544c49c11839d01361cbf
-	sha256sums = 
+	sha256sums = 9e93f51d0857508a661c9724d0f4041fcc449aa0bd19cfd78d3bf6065c09ed62
 
 pkgname = intel-oneapi-dal
 	depends = intel-oneapi-common=2022.1.0

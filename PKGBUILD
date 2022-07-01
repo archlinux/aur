@@ -35,7 +35,7 @@ sha256sums=('e53eecf391dfebcf81e3001e2792793eb4ab31ca314c772444062b85d1a3f0a6'
             '064e5b747cbf6dbd88e3ba718d336d31d7178b8595ac7d2726f030759384b6f9'
             '7827f21d50858987da988786223add0ff4d2f29a900ee0f2a7f12675dcab8365'
             '3bb0049f5245c836472bdb977106ad9fb706d2d04d2544c49c11839d01361cbf'
-			'')
+            '9e93f51d0857508a661c9724d0f4041fcc449aa0bd19cfd78d3bf6065c09ed62')
 
 build() {
 	ar x ${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
