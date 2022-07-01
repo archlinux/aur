@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=22.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ depends=('dcraw' 'gtk3' 'libchamplain' 'perl-image-exiftool>=0.8.6' 'xdg-utils')
 optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos'
-	    'darktable: organize and develop raw images')
+	    'darktable: organize and develop raw images'
+	    'ghostscript: handle .pdf, .ps or eps-files')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
 sha256sums=('2fbba361e3ef88cc4cdf4b74751765a74ddf7891cc976bb8dae6794fdce2033f')
 
