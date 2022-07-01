@@ -11,7 +11,7 @@ pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.38
 _realver=${_pkgmajor}
 pkgver=${_realver/-/}
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -24,7 +24,6 @@ validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284'  # Karel Zak
               '12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${_basename}-${_realver}.tar."{xz,sign}
         "${_basename}-${pkgver}.diff"
-        "${pkgname}.modules"
         pam-{login,common,runuser,su}
         'util-linux-aes.sysusers'
         '60-rfkill.rules'
@@ -33,7 +32,6 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${_base
 sha256sums=('6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64'
             'SKIP'
             'b1f2bf1145354664fac932b313db9599f55de5ff25c5c6f3c003c76da78ae39c'
-            '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -127,9 +125,6 @@ package_util-linux-aes() {
     "${pkgdir}/usr/lib/systemd/system/rfkill-unblock@.service"
   install -Dm0644 "${srcdir}/rfkill-block_.service" \
     "${pkgdir}/usr/lib/systemd/system/rfkill-block@.service"
-
-  # install modules
-  install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
 package_util-linux-libs-aes() {
