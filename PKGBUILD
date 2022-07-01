@@ -2,14 +2,14 @@
 
 pkgname=galaxy2
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('90bb1774342d8b745867a03c06ec6182c0a4d28eb1cd005e876be9bf82cf6a44')
+sha256sums=('20ede7646570446fa97edfa577999c9d6caefa6bebcf715cceb7e3c903bd17e3')
 options=('!emptydirs')
 
 build() {
