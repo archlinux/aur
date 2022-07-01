@@ -1,0 +1,15 @@
+pkgbase = grain-bin
+	pkgdesc = A modern web staple. A new language that puts academic language features to work
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/grain-lang/grain
+	arch = x86_64
+	license = LGPL3
+	depends = gcc-libs
+	provides = grain
+	conflicts = grain
+	options = !strip
+	source = grain::https://github.com/grain-lang/grain/releases/download/grain-v0.5.2/grain-linux-x64
+	sha256sums = bd8884202b015496bab8f6649fe56d309cc778777cc157e799447cfa01d4532d
+
+pkgname = grain-bin
