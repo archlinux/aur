@@ -26,7 +26,7 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
            'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_next'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip_nv'
         'LICENSE'
         'eglapi_hack.patch'
         )
@@ -81,13 +81,12 @@ build () {
     export CC="clang"
     export CXX="clang++"
 
-    # d3d12 in gallium-drivers is disabled because of build error
     meson setup mesa _build \
         -D prefix=/usr \
         -D sysconfdir=/etc \
         -D b_ndebug=true \
         -D platforms=auto \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
         -D vulkan-drivers=amd,intel,swrast,virtio-experimental \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
