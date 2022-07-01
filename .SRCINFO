@@ -1,6 +1,6 @@
 pkgbase = python-librespot
 	pkgdesc = Open Source Spotify Client
-	pkgver = 0.0.3
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/kokarare1212/librespot-python
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-librespot
 	depends = python-requests
 	depends = python-websocket-client
 	depends = python-zeroconf
-	source = librespot-python-0.0.3::https://github.com/kokarare1212/librespot-python/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 8184e495f3edcea60c01346528c50379953d47f75bcc3061e8ec1b33e471359e
+	source = librespot-python-0.0.5::https://github.com/kokarare1212/librespot-python/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = dcacbefff52f25c9ade22fe2e18fd396c3e23b32155ce6f0aac9bdd7d00381cd
 
 pkgname = python-librespot
