@@ -1,0 +1,15 @@
+pkgbase = md2roff-git
+	pkgdesc = Convert markdown to groff / troff
+	pkgver = r98.45c380d
+	pkgrel = 1
+	url = https://github.com/nereusx/md2roff
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = gzip
+	provides = md2roff
+	conflicts = md2roff
+	source = md2roff-git::git+https://github.com/nereusx/md2roff
+	md5sums = SKIP
+
+pkgname = md2roff-git
