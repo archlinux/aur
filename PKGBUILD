@@ -4,7 +4,7 @@
 pkgname=python-baycomp
 pkgver=1.0.2
 pkgrel=2
-pkgdesc='library for Bayesian comparison of classifiers'
+pkgdesc='Library for Bayesian comparison of classifiers'
 url='https://github.com/janezd/baycomp'
 arch=('any')
 license=('MIT')

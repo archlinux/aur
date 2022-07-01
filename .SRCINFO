@@ -1,5 +1,5 @@
 pkgbase = python-baycomp
-	pkgdesc = library for Bayesian comparison of classifiers
+	pkgdesc = Library for Bayesian comparison of classifiers
 	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://github.com/janezd/baycomp
