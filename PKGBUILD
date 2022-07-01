@@ -4,7 +4,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter"
 arch=('x86_64' 'aarch64')
