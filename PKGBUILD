@@ -2,7 +2,7 @@
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2022
 pkgver=2022.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
 url="https://www.qoppa.com/pdfstudioviewer"
@@ -24,6 +24,9 @@ prepare() {
 
   # Remove bundled JRE
   rm -rf "opt/$_pkgname/jre"
+
+  # Bump max JRE version from 17 to 18
+  sed -i 's/17/18/g' "opt/$_pkgname/$_pkgname"
 }
 
 package() {
