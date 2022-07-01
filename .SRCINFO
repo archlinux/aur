@@ -1,0 +1,21 @@
+pkgbase = granite7-git
+	pkgdesc = Library that extends GTK with common widgets and utilities
+	pkgver = 7.0.0.r11.f476f592
+	pkgrel = 1
+	url = https://github.com/elementary/granite
+	arch = x86_64
+	groups = pantheon-unstable
+	license = LGPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk4
+	depends = libgee
+	provides = granite7
+	provides = libgranite-7.so
+	source = granite7::git+https://github.com/elementary/granite.git#branch=main
+	sha256sums = SKIP
+
+pkgname = granite7-git
