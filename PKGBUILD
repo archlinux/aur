@@ -3,15 +3,17 @@
 _name='napari'
 pkgname="${_name}"
 pkgver=0.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
 license=('BSD')
 makedepends=(
-  'python-setuptools-scm'
   'icoutils'
-  'python-dephell'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
 )
 depends=(
   'napari-console'
@@ -19,17 +21,17 @@ depends=(
   'napari-plugin-engine'
   'napari-svg'
   'python'
-  'python-importlib-metadata'
   'python-appdirs'
   'python-cachey'
+  'python-certifi'
   'python-dask'
   'python-imageio'
   'python-jsonschema'
   'python-magicgui'
   'python-numpy'
   'python-numpydoc'
+  'python-opengl'
   'python-pandas'
-  'python-pillow'
   'python-pint'
   'python-psutil'
   'python-psygnal'
@@ -41,9 +43,9 @@ depends=(
   'python-scipy'
   'python-superqt'
   'python-tifffile'
-  'python-typing_extensions'
   'python-toolz'
   'python-tqdm'
+  'python-typing_extensions'
   'python-vispy'
   'python-wrapt'
   'qt5-python-bindings'
@@ -57,14 +59,9 @@ sha256sums=(
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
 
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -72,7 +69,7 @@ package() {
   install -Dm644 ${_name}.desktop "${pkgdir}/usr/share/applications/${_name}.desktop"
 
   cd "${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
