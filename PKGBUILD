@@ -5,7 +5,7 @@
 
 _grub4dos_version=0.4.5
 pkgname='easy2boot'
-pkgver='2.10'
+pkgver='2.13'
 pkgrel='1'
 pkgdesc='Highly-configurable USB drive multiboot software with support for Secure UEFI booting'
 url='http://www.easy2boot.com/'
@@ -13,6 +13,7 @@ arch=('any')
 license=('custom:easy2boot license')
 depends=()
 makedepends=('dos2unix' 'jq')
+install=$pkgname.install
 _projectName='Easy2Boot'
 _fileName="${_projectName}_v${pkgver}_password_is_e2b.zip"
 source=(
@@ -20,7 +21,7 @@ source=(
   # "grub4dos.rar::http://dl.grub4dos.chenall.net/grub4dos-${_grub4dos_version}-2009-12-23.rar"
 )
 noextract=('fosshub.html')
-md5sums=('SKIP')
+md5sums=('5354ccec82caa19e59b183fa8e3eef65')
 
 prepare() {
 
@@ -30,11 +31,11 @@ prepare() {
 
   tempJson=$(echo ${json} | jq --arg _fileName ${_fileName} '.pool.f[] | select(.n==$_fileName) | {fileName: .n, releaseId: .r}')
 
-  echo ${tempJson}
+  # echo ${tempJson}
 
   postData=$(echo ${projectId} ${tempJson} '{"projectUri": "${_projectName}.html","source":"CF"}' | jq -s 'add')
 
-  echo $postData | jq
+  # echo $postData | jq
 
   _url=$(wget -O- --post-data="${postData}" --header='Content-Type:application/json' https://api.fosshub.com/download/ | jq '.data.url' | sed -e 's/^"//' -e 's/"$//')
 
@@ -44,6 +45,13 @@ prepare() {
   wget -O ${_fileName} $_url
 
   bsdtar -x --passphrase e2b -f ${_fileName}
+
+  cd "$srcdir/_ISO"
+
+  bsdtar -c -v -f "CONTIG.ISO.xz" -J "CONTIG.ISO"
+
+  rm "CONTIG.ISO"
+
 
   # Use newer, working bootlace
   # unrar e grub4dos.rar grub4dos-${_grub4dos_version}/bootlace.com

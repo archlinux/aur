@@ -1,14 +1,15 @@
 pkgbase = easy2boot
 	pkgdesc = Highly-configurable USB drive multiboot software with support for Secure UEFI booting
-	pkgver = 2.10
+	pkgver = 2.13
 	pkgrel = 1
 	url = http://www.easy2boot.com/
+	install = easy2boot.install
 	arch = any
 	license = custom:easy2boot license
 	makedepends = dos2unix
 	makedepends = jq
 	noextract = fosshub.html
-	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/Easy2Boot_v2.10_password_is_e2b.zip
-	md5sums = SKIP
+	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/Easy2Boot_v2.13_password_is_e2b.zip
+	md5sums = 5354ccec82caa19e59b183fa8e3eef65
 
 pkgname = easy2boot

@@ -1,0 +1,14 @@
+post_install() {
+  echo "Extracting..."
+  cd /opt/easy2boot/_ISO
+
+  bsdtar -x -v -f "CONTIG.ISO.xz"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+rm /opt/easy2boot/_ISO/CONTIG.ISO
+}
