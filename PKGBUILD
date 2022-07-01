@@ -3,7 +3,7 @@
 
 _gemname=octokit
 pkgname=ruby-$_gemname
-pkgver=4.24.0
+pkgver=4.25.1
 pkgrel=1
 pkgdesc="Simple wrapper for the GitHub API."
 arch=(any)
