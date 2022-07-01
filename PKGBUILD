@@ -17,14 +17,14 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'napari-plugin-engine'
   'python'
-  'python-importlib-metadata'
+  'python-appdirs'
   'python-magicgui'
   'python-psygnal'
   'python-pyaml'
   'python-pydantic'
   'python-pytomlpp'
+  'python-rich'
   'python-typer'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
