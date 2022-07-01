@@ -1,13 +1,16 @@
 # Maintainer: Mathieu Fenniak <mathieu@fenniak.net>
 pkgname=csv-to-clipboard
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy CSV files onto the clipboard in a pasteable format"
 arch=('x86_64')
 url="https://github.com/mfenniak/csv-to-clipboard"
 license=('MIT')
 depends=('gtk3')
-makedepends=('cargo')
+makedepends=(
+  'cargo'
+  'python' # build-time dep of rust library xcb
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mfenniak/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('58a7d005a89e4cd3e9bf071c35b400e97ce177c6e9e62e342d0e2c8fe995d582eee404d364734bea4a87a6fc73c5ed5273ed1243789d7bc0ec23052ba415c782')
 
