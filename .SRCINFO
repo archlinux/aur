@@ -1,6 +1,6 @@
 pkgbase = wlvncc-git
 	pkgdesc = Wayland native VNC client
-	pkgver = r43.1ca82ce
+	pkgver = r71.0ea00b4
 	pkgrel = 1
 	url = https://github.com/any1/wlvncc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wlvncc-git
 	makedepends = git
 	makedepends = meson
 	makedepends = wayland-protocols
-	depends = aml-git
+	depends = aml
 	depends = libvncserver-git
 	depends = libxkbcommon
 	depends = pixman
