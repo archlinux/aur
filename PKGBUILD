@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
@@ -45,5 +45,6 @@ package() {
   install -Dm644 "portainer.desktop" "${pkgdir}/usr/share/applications/portainer.desktop"
   install -Dm644 "portainer.service" "${pkgdir}/usr/lib/systemd/system/portainer.service"
 
-  ln -s "/usr/bin/docker-compose" "${pkgdir}/usr/share/portainer/docker-compose"
+  ln -s "/usr/lib/docker/cli-plugins/docker-compose" "${pkgdir}/usr/share/portainer/docker-compose.plugin"
+  ln -s "/usr/bin/docker" "${pkgdir}/usr/share/portainer/docker"
 }
