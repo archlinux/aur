@@ -2,7 +2,7 @@
 
 pkgname=gyr-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Blazing fast TUI launcher for *BSD and Linux'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~forkbomb9/gyr"
@@ -18,6 +18,6 @@ sha256sums_aarch64=('9bebe8e31994dff8f3f45551adf00f4d97801c78e06fd417c08d3f0042b
 b2sums_aarch64=('9789acd77b4e83f9e6d34e91c19f2b0b5c0228676c051b164237c113c5c9a81dda33ade22612d3daf621bcaff4bbbf80c0d78d5fc5028918e2a519698bbcf830')
 
 package() {
-    install -Dm755 "gyr-v${pkgver}-${arch}-unknown-linux-musl" \
+    install -Dm755 "gyr-v${pkgver}-${CARCH}-unknown-linux-musl" \
         "${pkgdir}/usr/bin/gyr"
 }
