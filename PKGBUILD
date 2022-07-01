@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=gpyopt
 pkgname=python-$_pkgname-git
-pkgver=r488.33d207e
-pkgrel=2
+pkgver=r514.0be0508
+pkgrel=1
 pkgdesc="Gaussian Process Optimization using GPy"
 arch=('any')
 url="https://github.com/SheffieldML/GPyOpt"
 license=()
 groups=()
-depends=('python')
-makedepends=('git' 'python-setuptools')
+depends=(python)
+makedepends=(git python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()

@@ -1,7 +1,7 @@
 pkgbase = python-gpyopt-git
 	pkgdesc = Gaussian Process Optimization using GPy
-	pkgver = r488.33d207e
-	pkgrel = 2
+	pkgver = r514.0be0508
+	pkgrel = 1
 	url = https://github.com/SheffieldML/GPyOpt
 	arch = any
 	makedepends = git
@@ -13,4 +13,3 @@ pkgbase = python-gpyopt-git
 	md5sums = SKIP
 
 pkgname = python-gpyopt-git
-
