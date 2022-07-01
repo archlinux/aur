@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=17.4.3
-_commit=322f1c3f8907f2592eef5b5e03a97045e30df9e3
+pkgver=17.4.9
+_commit=4a9890d3a43b8730bae7f7c2caedffe20bc13bef
 _chromiumver=98.0.4758.141
 _gcc_patchset=5
 # shellcheck disable=SC2034
@@ -54,6 +54,8 @@ source=('git+https://github.com/electron/electron.git'
         'jinja-python-3.10.patch'
         'std-vector-non-const.patch'
         'use-system-libraries-in-node.patch'
+        'cppgc-fix-include.patch'
+        'iwyu-add-utility-for-std-exchange.patch'
         'downgrade-duplicate-peer-error-to-dvlog.patch'
         'fix-build-break-with-system-libdrm.patch'
         'sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch'
@@ -71,6 +73,8 @@ sha256sums=('SKIP'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '4fbef42aaa7bf60d059f1a6b0a92dc997d475256110bd4df32c12de7f4f175a7'
             'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
+            '7987b106dbb35b74d6ff28dc8cf2c897647d5ce59d5d6dbe36b2f72542e713b6'
+            '6f666ef0acb08704ca58cc0d5e97e7ce64d8fea51042e593adae1ce15a61231c'
             '291c6a6ad44c06ae8d1b13433f0c4e37d280c70fb06eaa97a1cc9b0dcc122aaa'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
             'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
@@ -171,10 +175,12 @@ prepare() {
 
   echo "Applying local patches..."
   # Upstream fixes
+  patch -Np1 -d v8 < ../cppgc-fix-include.patch
+  patch -Np1 -i ../iwyu-add-utility-for-std-exchange.patch
   patch -Np1 -F3 -i ../downgrade-duplicate-peer-error-to-dvlog.patch
   patch -Np1 -i ../fix-build-break-with-system-libdrm.patch
   patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
-  patch -Np1 -d third_party//breakpad/breakpad <../breakpad-fix-for-non-constant-SIGSTKSZ.patch
+  patch -Np1 -d third_party/breakpad/breakpad <../breakpad-fix-for-non-constant-SIGSTKSZ.patch
   patch -Np1 -d third_party/pdfium <../use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
