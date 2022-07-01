@@ -25,6 +25,7 @@ package() {
     --no-cache-dir \
     --no-compile \
     --progress-bar=off \
+    --root-user-action=ignore \
     .
 
   local pdir=$(python -c "import site; print(site.getsitepackages()[0])")
