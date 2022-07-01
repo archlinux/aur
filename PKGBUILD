@@ -1,29 +1,35 @@
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rpclib-git
-pkgver=r524.3b00c4c
+pkgver=r598.08e4171
 pkgrel=1
-pkgdesc="c++ msgpack-rpc server and client library"
-arch=(any)
-license=(mit)
-makedepends=(git cmake make)
+pkgdesc="rpclib is a modern C++ msgpack-RPC server and client library"
+arch=('i686' 'x86_64')
+license=(MIT)
+makedepends=('git' 'cmake')
 depends=()
-provides=(rpclib)
-source=("git://github.com/rpclib/rpclib")
+provides=('rpclib')
+conflicts=('rpclib')
+_name=rpclib
+source=("git+https://github.com/rpclib/rpclib.git")
 url="http://rpclib.net/"
-md5sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
-  # from https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-  cd rpclib &&
+  cd "${_name}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  mkdir -p "${srcdir}/${_name}/build"
+  cd "${srcdir}/${_name}/build"
+
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX="/usr"
+
+  make
+}
+
 package() {
-  # instructions from http://rpclib.net/compiling/
-  cd rpclib &&
-  mkdir -p build &&
-  cd build &&
-  cmake .. &&
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" --build . &&
-  make install &&
-  sed s#$pkgdir##g -i "$pkgdir/usr/lib/pkgconfig/rpclib.pc"
+  cd "${srcdir}/${_name}/build"
+  make DESTDIR="${pkgdir}/" install
 }
