@@ -8,7 +8,7 @@
 pkgname='gmic-no-opencv'
 _basename="${pkgname%%-*}"
 pkgver=3.1.5
-pkgrel=1
+pkgrel=1.1
 pkgdesc="GREYC's Magic Image Converter (without OpenCV camera input processing)"
 arch=('x86_64')
 url='https://gmic.eu/'
@@ -81,7 +81,6 @@ prepare() {
   cmake -B 'build' \
         -S "${_tardirname}" \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DENABLE_SYSTEM_GMIC='OFF' \
         -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
@@ -100,6 +99,7 @@ prepare() {
   cmake -B 'build-qt' \
         -S "${_tardirname}/gmic-qt" \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DENABLE_SYSTEM_GMIC='OFF' \
         -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
         -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
