@@ -4,7 +4,7 @@ _name='pytomlpp'
 _author='bobfang1992'
 _framework='python'
 pkgname="${_framework}-${_name}"
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='A python wrapper for toml++.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   'pybind11'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6de110c8fe43f46c52b2041d5fbaa0522677a712234832ffd8cbb51cff50804e')
+sha256sums=('90021866ee72c16475692ec8b0ecc69ec530d2b8ce27a63a4cc39c1907f4b37a')
 provides=("${_framework}-${_name}")
 
 build() {
