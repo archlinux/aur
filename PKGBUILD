@@ -3,8 +3,8 @@
 _electron_version=16
 
 pkgname=trilium
-pkgver=0.52.3
-pkgrel=2
+pkgver=0.52.4
+pkgrel=1
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
 url="https://github.com/zadam/trilium"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/
 	"config-sample.ini.patch"
         "trilium.sh"
 	"trilium.desktop")
-sha512sums=('b19559bc8ae8c3b97c0fac18be66495996537d15bb8e058ab6d8688fe05b996efb40246fed1653a49c5eb296b5f7ee6f46e86ca306226088fb2e5718de18cb7f'
+sha512sums=('a88045b9e1ab761e19725642f125c26e6b0094ba22572abbb290d52309d3caf9385a03c07ed12ae66dd87888438194f06b7dfd178cbe473b2e4440d6b90524dc'
 	    '97dc8034f01cecceb4a85e61a0d561ddf01af7cf24e0dad24faefaee8c1f265c5e8441fd38ff473bd869606b821476d4efc8fc5ae1b99149875d826db4366fa7'
 	    'b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd'
 	    '1357b45f2e9ed95d7b26a7ae69c94c42bbe46c25f4aa12e39b2712cd6db8990d26eecc1f26f8341f4accb62e88b9a535eb743b3ac3d30f280699ae946e697cd9'
