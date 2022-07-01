@@ -2,7 +2,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-xrgb8888-git
-pkgver=0.16.0.r5511.e59f4d4f
+pkgver=0.16.0.r5606.694b8c668
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='wlroots-git, with XRGB8888 format patches'
