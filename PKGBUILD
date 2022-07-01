@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1069
+pkgver=mainline.0.1071
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -73,8 +73,6 @@ prepare() {
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
-	# fix for dynarmic>=6
-	sed -i 's/MemoryReadCode/*&/g' src/core/arm/dynarmic/arm_dynarmic_{32,64}.cpp
 }
 
 build() {
