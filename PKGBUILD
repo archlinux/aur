@@ -2,14 +2,14 @@
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=orocos-kdl-git
-pkgver=r1039.79adc6f
+pkgver=r1171.3213bb7
 pkgrel=1
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
 license=('GPL')
 depends=(eigen cppunit)
-makedepends=(cmake)
+makedepends=(cmake git)
 provides=(orocos-kdl)
 conflicts=(orocos-kdl)
 source=(git+https://github.com/orocos/orocos_kinematics_dynamics)
