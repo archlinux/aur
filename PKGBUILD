@@ -2,7 +2,7 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=akia
-pkgver=6.2.1
+pkgver=6.3.3
 pkgrel=1
 pkgdesc="PKCS#11 library and utility tools for Akis Smartcard"
 arch=('x86_64')
@@ -10,17 +10,23 @@ url="https://akiskart.bilgem.tubitak.gov.tr/"
 license=('custom')
 depends=('pcsclite' 'ccid' 'java-environment')
 install=akia.install
-source=(akia.patch
-        https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akis_${pkgver}_amd64.rar)  
-sha256sums=('180d9fe95b6c94d6e4377701bd1bdf116e722d5baedbd57b509b0c12339dc503'
-            '2e1fb8f8b176e3e674ec72e3f0394abc1de95a5d044e610ddf8255709c13f20a')
+source=(https://akiskart.bilgem.tubitak.gov.tr/dosyalar/akia-linux-deb-${pkgver}.zip)
+sha256sums=('ba0b455fb74353b5d151013126bddc5c8ac83a8dd66fa67851a4f154a876ebea')
 
 prepare() {
-  ar x akis_${pkgver}_amd64.deb
+  ar x Akia_linux_${pkgver//./_}.deb
   tar -zxf data.tar.gz -C "${srcdir}"
-  patch --forward --strip=1 --input="akia.patch"
+  rm -rf "${srcdir}"/opt/Akia/jre
+  rm -rf "${srcdir}"/opt/Akia/*.pdf
 }
 
 package() {
-  mv "${srcdir}"/usr "${pkgdir}"/usr
+  mkdir -p "${pkgdir}"/usr/share/applications
+  mkdir "${pkgdir}"/usr/lib
+  mkdir "${pkgdir}"/usr/bin
+
+  mv "${srcdir}"/opt/Akia/linuxRunner.txt "${pkgdir}"/usr/share/applications/akia.desktop
+  mv "${srcdir}"/opt/Akia/*.so "${pkgdir}"/usr/lib
+  mv "${srcdir}"/opt "${pkgdir}"/opt
+  ln -s "${pkgdir}"/opt/Akia/Akia "${pkgdir}"/usr/bin/akia
 }
