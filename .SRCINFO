@@ -8,6 +8,7 @@ pkgbase = yirl-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = autoconf
+	makedepends = cmake
 	depends = lua
 	depends = json-c
 	depends = sdl2

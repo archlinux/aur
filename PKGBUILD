@@ -17,7 +17,7 @@ pkgver() {
 	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-makedepends=(gcc make autoconf)
+makedepends=(gcc make autoconf cmake)
 # hopefully I should be able to remove glib2 and add sdl2-mixer soon
 depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
