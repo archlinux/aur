@@ -1,0 +1,62 @@
+--- CMakeLists.txt.orig	2022-06-15 10:27:51.323053591 +0200
++++ CMakeLists.txt	2022-06-15 10:30:14.823160012 +0200
+@@ -97,8 +97,20 @@
+ find_package(DirectXSDK)
+ find_package(D3DX11Effects)
+ find_package(Irrlicht)
+-find_package(Ogre)
+-find_package(OIS)
++find_package(OGRE CONFIG)
++if(NOT ${OGRE_FOUND})
++    unset(OGRE_FOUND CACHE)
++    unset(OGRE_DIR CACHE)
++    find_package(Ogre)
++endif()
++if(${OGRE_FOUND})
++    set(CEGUI_FOUND_OGRE_VERSION_MAJOR ${OGRE_VERSION_MAJOR})
++    set(CEGUI_FOUND_OGRE_VERSION_MINOR ${OGRE_VERSION_MINOR})
++    set(CEGUI_FOUND_OGRE_VERSION_PATCH ${OGRE_VERSION_PATCH})
++    if (${OGRE_VERSION} VERSION_LESS 1.10)
++        find_package(OIS)
++    endif()
++endif()
+ find_package(DirectFB)
+ find_package(OpenGLES)
+ find_package(Epoxy)
+--- cegui/include/CEGUI/RendererModules/Ogre/Renderer.h.orig	2022-06-15 10:50:06.562998979 +0200
++++ cegui/include/CEGUI/RendererModules/Ogre/Renderer.h	2022-06-15 10:50:45.382980722 +0200
+@@ -64,13 +64,13 @@
+ class Matrix4;
+ }
+ 
+-#if (CEGUI_OGRE_VERSION >= (2 << 16))
++#if (CEGUI_OGRE_VERSION == (2 << 16))
+ // The new Ogre Compositor2 system has to be used since ViewPorts 
+ // no longer have the required functionality
+ #define CEGUI_USE_OGRE_COMPOSITOR2
+ #endif
+ 
+-#if (CEGUI_OGRE_VERSION >= ((2 << 16) | (1 << 8) | 0))
++#if ((CEGUI_OGRE_VERSION == (2 << 16)) && (CEGUI_OGRE_VERSION >= ((2 << 16) | (1 << 8) | 0)))
+ // The HLMS has to be used since fixed pipeline is disabled
+ #define CEGUI_USE_OGRE_HLMS
+ #include <OgreRenderOperation.h>
+--- cegui/src/RendererModules/Ogre/Texture.cpp.orig	2016-04-28 21:53:04.000000000 +0200
++++ cegui/src/RendererModules/Ogre/Texture.cpp	2022-06-15 11:13:35.466841875 +0200
+@@ -24,6 +24,7 @@
+  *   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  *   OTHER DEALINGS IN THE SOFTWARE.
+  ***************************************************************************/
++#include <sstream>
+ #include "CEGUI/RendererModules/Ogre/Texture.h"
+ #include "CEGUI/Exceptions.h"
+ #include "CEGUI/System.h"
+@@ -243,7 +244,7 @@
+     // address the issue as close to the source of the problem as possible.
+     Ogre::PixelBox pb(area.getWidth(), area.getHeight(),
+                       1, Ogre::PF_A8R8G8B8, const_cast<void*>(sourceData));
+-    Ogre::Image::Box box(area.left(), area.top(), area.right(), area.bottom());
++    Ogre::Box box(area.left(), area.top(), area.right(), area.bottom());
+     d_texture->getBuffer()->blitFromMemory(pb, box);
+ }
+ 
