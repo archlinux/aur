@@ -1,7 +1,8 @@
 # Maintainer: Qontinuum <qontinuum@artixlinux.org>
+# Maintainer: Nicholas Wang <me@nicho1as.wang>
 
 pkgname=telebot-git
-pkgver=r130.470994b
+pkgver=r133.6cff657
 pkgrel=1
 pkgdesc='Telegram Bot API in C'
 arch=('any')
