@@ -1,7 +1,7 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=guile-dsv
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Delimiter-separated values (DSV) format parser for GNU Guile."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('guile' 'guile-lib')
 options=('!strip')
 source=("https://github.com/artyom-poptsov/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('87d3f3c51b0766806b57678cc417236adadc893e7a4d798e05f3a8084c9d7a78')
+sha256sums=('c58fcedf023886f39ef9921ad5f5d53f1917bc1d1c77a0535a3d80ff932c3938')
 
 build() {
 	cd "$pkgname-$pkgver"
