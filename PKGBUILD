@@ -15,6 +15,14 @@ options=('!emptydirs')
 source=("https://web.archive.org/web/20110707105717/http://www.ikp.uni-koeln.de/src/${pkgname}-${pkgver}.tar.gz")
 md5sums=('5b739a811abe604cbe4160e4402796dc')
 
+prepare(){
+  # ALC_WRITE  
+  sed -i '180 s/(alc_fp, str)/(alc_fp, "%s", str)/g' ${srcdir}/${pkgname}-${pkgver}/lib/tv/vsAlloc.c
+
+  # ALC_ERROR
+  sed -i '33 s/fprintf(alc_fp, AlcError(AlcErrNo))/fprintf(alc_fp, "%s",AlcError(AlcErrNo))/g' ${srcdir}/${pkgname}-${pkgver}/lib/tv/vsAlloc.c  
+}
+
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}/doc/tex/Manual
   make all html
