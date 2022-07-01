@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-gtk-rs
 	pkgdesc = A desktop GUI frontend for shadowsocks-rust client implemented with gtk-rs.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/spyophobia/shadowsocks-gtk-rs
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = shadowsocks-gtk-rs
 	optdepends = gnome-shell-extension-appindicator: tray icon support on Gnome Desktop
 	conflicts = shadowsocks-gtk-rs-bin
 	conflicts = shadowsocks-gtk-rs-git
-	source = shadowsocks-gtk-rs-0.4.0.tar.gz::https://static.crates.io/crates/shadowsocks-gtk-rs/shadowsocks-gtk-rs-0.4.0.crate
-	sha512sums = 7aeed51adecdd1c6771194e7a19783b171aa689bb4d7ccc67f9481e43ca08329b1337026e626791d8c3d07cd0d57d3f6969def0346fd4102d022f726968128ce
+	source = shadowsocks-gtk-rs-0.4.1.tar.gz::https://static.crates.io/crates/shadowsocks-gtk-rs/shadowsocks-gtk-rs-0.4.1.crate
+	sha512sums = 5887dd93913b54a3735223e8c3e193998295781a58e208084f4148c957c2d9490e7c7f7571a31a402107511a0ecc05c06b9472caf646ad2b52e6257268894c14
 
 pkgname = shadowsocks-gtk-rs
