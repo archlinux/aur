@@ -1,0 +1,13 @@
+pkgbase = python2-iso8601
+	pkgdesc = Simple module to parse ISO 8601 dates (legacy Python 2 version)
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://pypi.org/project/iso8601/0.1.16/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/i/iso8601/iso8601-0.1.16.tar.gz
+	sha256sums = 36532f77cc800594e8f16641edae7f1baf7932f05d8e508545b95fc53c6dc85b
+
+pkgname = python2-iso8601
