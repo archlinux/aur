@@ -1,13 +1,13 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 pkgname=chasquid
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='SMTP (email) server with a focus on simplicity, security, and ease of operation'
 arch=('x86_64')
 url="https://blitiri.com.ar/p/chasquid"
 license=('Apache')
 makedepends=('git' 'go')
-checkdepends=('msmtp')
+checkdepends=('msmtp' 'python')
 optdepends=(
     'dkim-git: DKIM signing (post-data hook)'
     'clamav: Virus scanning (post-data hook)'
@@ -49,8 +49,7 @@ check() {
     mv chasquid chasquid.bkp
 
     setsid -w ./test/run.sh
-    # https://blitiri.com.ar/git/r/chasquid/c/43573797379b6e9364e46bc01554698bdecd040d/
-    #setsid -w ./test/stress.sh
+    setsid -w ./test/stress.sh
     setsid -w ./cmd/chasquid-util/test.sh
     setsid -w ./cmd/mda-lmtp/test.sh
     setsid -w ./cmd/dovecot-auth-cli/test.sh
