@@ -1,11 +1,50 @@
 # Changelog
 
+## 2.2.0
+
+### Added
+- Added support for querying COPC LAZ files via a new class `CopcReader`.
+- Added new optional feature to support adding CRS / SRS to a LAS file from a `pyproj.CRS` as
+  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`. 
+
+### Fixed
+- Fixed support for stream / source that are not `seekable`.
+
+### Changed
+- Support for Python3.6 removed.
+
+---
+
+## 2.2.0 beta 1
+
+### Added
+- Added support for querying COPC LAZ files via a new class `CopcReader`.
+
+### Fixed
+- Fixed support for stream / source that are not `seekable`.
+
+---
+
+## 2.2.0 beta 0
+
+### Added
+- Added new optional feature to support adding CRS / SRS to a LAS file from a `pyproj.CRS` as 
+  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`. 
+
+### Changed
+- Support for Python3.6 removed.
+
+---
+  
 ## 2.1.2
+
 
 ### Fixed
 - Fixed `LasHeader.update` (thus fixing `LasData.update_header`) computation of x,y,z mins and maxs
 - Fixed regression introduced in 2.1.0 where changing the `header.scales` and/or `header.offsets`
   on a `LasData` newly created  and then setting `x` `y` or `z` would produce incorrect result.
+
+---
 
 ## 2.1.1
 
@@ -15,6 +54,8 @@
 - Fixed `LasData.change_scaling` setting the header's `offsets` and/or `scales` to `None`
   if the corresponding optionnal argument was not given to the `change_scaling` method.
   The header will now correctly keep the corresponding value unchanged.
+
+---
 
 ## 2.1.0
 
@@ -38,12 +79,16 @@
 - Fix scaled extra byte creation when the offsets/scales given to `ExtraBytesParam` where of type `list` or `tuple`
 - Fix `ScaledArrayView` to allow indexing with `list` or `numpy.array`.
 
+---
+
 ## Version 2.0.3
 
 ## Fixed
 - Fix function that parses geotiff VLRs
 - Fix handling of points with 'unregistered' extra bytes (PR #158)
 - Fix to handle empty LAS/LAZ more robustly
+
+---
 
 ## Version 2.0.2
 
@@ -53,14 +98,18 @@
   - Improve memory usage when reading/writing. (issue #152)
 
 ### Fixed
-- Fix system_identifier reading by ignoring non ascii characters instead of erroring ,(issue #148, PR #149).
+- Fix `system_identifier` reading by ignoring non ascii characters instead of erroring ,(issue #148, PR #149).
 - Fix `LasData.change_scaling` method.
+
+---
 
 ## Version 2.0.1
 
 ### Fixed
 - Fix `.min` `.max` methods of array views
 - Ship the tests as part of the source distribution (But they won't be installed with `pip install`)
+
+---
 
 ## Version 2.0.0
 

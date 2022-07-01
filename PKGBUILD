@@ -2,13 +2,14 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=python-laspy
+_pkg="${pkgname#python-}"
 pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=2.1.2
-_commit=d5d4361
+pkgver=2.2.0
+_commit=fbb2973
 pkgrel=1
 arch=('any')
-license=('custom')
+license=('BSD')
 depends=('python-numpy')
 makedepends=(
 	'git'
@@ -26,15 +27,17 @@ validpgpkeys=('44B238524D21C5064D7081BD5022EF94BE848C51')
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
-	cd docs
-	PYTHONPATH=../ make man
+	python -m build --wheel --no-isolation
+	PYTHONPATH="$PWD" make -C docs man
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 docs/_build/man/laspy.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
