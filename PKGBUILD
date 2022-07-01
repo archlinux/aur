@@ -1,32 +1,21 @@
 # Maintainer: Tobias Bauer <archlinux@tobias-bauer.de>
 pkgname=ucx
-pkgver=20.00.0.28
+pkgver=21.00.0.18
 pkgrel=1
 pkgdesc="UltraCompare is a powerful compare tool for files and folders."
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://www.ultraedit.com/products/ultracompare/"
 license=('custom')
-depends=('desktop-file-utils' 'gtk2' 'libjpeg6' 'libpng12' 'libsm')
+depends=('desktop-file-utils' 'gtk2' 'libjpeg-turbo' 'libpng12' 'libsm')
 install=ucx.install
-if [ "${CARCH}" = 'i686' ]; then
-  source=(
-    "https://downloads.ultraedit.com/main/uc/linux/tar/ucx-${pkgver}_i386.tar.gz"
-    "https://www.ultraedit.com/assets/images/icons/uc.png"
-  )
-  md5sums=(
-    '5f4741bc3f813c1956c11578ec2073fc'
-    '8d3fc8b36460656eb1636abbace1996b'
-  )
-else
-  source=(
-    "https://downloads.ultraedit.com/main/uc/linux/tar/ucx-${pkgver}_amd64.tar.gz"
-    "https://www.ultraedit.com/assets/images/icons/uc.png"
-  )
-  md5sums=(
-    'cbb213fae30717573a57de2fdac4d85d'
-    '8d3fc8b36460656eb1636abbace1996b'
-  )
-fi
+source=(
+  "https://downloads.ultraedit.com/main/uc/linux/tar/ucx-${pkgver}_amd64.tar.gz"
+  "https://www.ultraedit.com/assets/images/icons/uc.png"
+)
+md5sums=(
+  'e3277d6d1c792294ae17be4d9bc63405'
+  '8d3fc8b36460656eb1636abbace1996b'
+)
 DLAGENTS=('https::/usr/bin/curl -fLC - --user-agent Lynx --retry 3 --retry-delay 3 -o %o %u')
 
 package() {
