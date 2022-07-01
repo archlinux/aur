@@ -5,7 +5,7 @@
 
 pkgname=ocaml-cmdliner
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An OCaml module for declarative definition of command line interfaces"
 arch=('i686' 'x86_64')
 url="http://erratique.ch/software/cmdliner"
@@ -16,8 +16,7 @@ source=("${url}/releases/cmdliner-${pkgver}.tbz")
 
 build() {
   cd "${srcdir}/${pkgname#ocaml-}-${pkgver}"
-
-  dune build
+  OCAMLPARAM='_,warn-error=-50' dune build
 }
 
 package() {

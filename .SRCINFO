@@ -1,7 +1,7 @@
 pkgbase = ocaml-cmdliner
 	pkgdesc = An OCaml module for declarative definition of command line interfaces
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://erratique.ch/software/cmdliner
 	arch = i686
 	arch = x86_64
