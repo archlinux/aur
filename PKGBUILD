@@ -1,7 +1,7 @@
 # Maintainer: Matthias Fulz <mfulz at olzenet dot de>
 
 pkgname=eqmk
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="command line tool to manage encryption enabled qmk devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://gitea.olznet.de/eqmk/$pkgname"
 license=('GPL')
 makedepends=('go')
 source=("https://gitea.olznet.de/eqmk/eqmk/archive/v$pkgver.tar.gz")
-sha256sums=('2f61356bc803e44be331e4161a1aba87989e898d975488e54224aa06caf2fa64')
+sha256sums=('70afd597d400b84ee0edddd036f363b24fc2f96b1d162ea962b265b27d652d82')
 
 build() {
     cd $pkgname
