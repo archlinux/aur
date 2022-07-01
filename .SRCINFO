@@ -1,10 +1,13 @@
 pkgbase = alidistlint
 	pkgdesc = A code linter for ALICE build recipes at CERN
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TimoWilken/alidistlint
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = shellcheck
 	depends = yamllint
 	depends = python-yaml
