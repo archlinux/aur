@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.21.0.r17.gba69fb66
+pkgver=1.22.3.r5.g36ead455
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -11,7 +11,8 @@ depends=(python python-requests)
 makedepends=(python-build python-installer python-setuptools python-wheel git)
 optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos'
-            'python-pysocks: SOCKS support')
+            'python-pysocks: SOCKS support'
+            'python-brotli: for brotli decompression')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
