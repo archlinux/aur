@@ -1,15 +1,15 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=python-ads
 pkgname=$_pkgname-git
-pkgver=r312.63e1e53
+pkgver=r313.7939be2
 pkgrel=1
 pkgdesc="Python tool for ADS "
 arch=('any')
 url="https://github.com/andycasey/ads"
 license=('MIT')
 groups=()
-depends=('python-werkzeug')
-makedepends=('git' 'python-setuptools')
+depends=(python-werkzeug)
+makedepends=(git python-setuptools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()

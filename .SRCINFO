@@ -1,6 +1,6 @@
 pkgbase = python-ads-git
 	pkgdesc = Python tool for ADS
-	pkgver = r312.63e1e53
+	pkgver = r313.7939be2
 	pkgrel = 1
 	url = https://github.com/andycasey/ads
 	arch = any
