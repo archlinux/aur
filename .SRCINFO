@@ -1,7 +1,7 @@
 pkgbase = binkplayer-bin
 	pkgdesc = Bink Video Player
 	pkgver = 2022.05
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.radgametools.com/bnkmain.htm
 	arch = x86_64
 	license = custom

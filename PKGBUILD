@@ -3,7 +3,7 @@
 
 pkgname=binkplayer-bin
 pkgver=2022.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('x86_64')
