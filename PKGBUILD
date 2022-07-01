@@ -2,8 +2,8 @@
 
 pkgname=forkboard
 _pkgname_src=fork-board
-pkgver=1.0.4
-pkgrel=1.1
+pkgver=1.0.5
+pkgrel=1.0
 pkgdesc='An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.'
 arch=('x86_64')
 url='https://github.com/aaroncarpenter/fork-board'
@@ -13,7 +13,7 @@ makedepends=( 'git' 'npm' )
 source=(${_pkgname_src}-${pkgver}.tar.gz::https://github.com/aaroncarpenter/fork-board/archive/refs/tags/v${pkgver}.tar.gz 
 	forkboard.desktop
 	forkboard.sh)
-sha256sums=('84ee874b397e8f36e043685d5b07f2cf7325437996a80c9d0eca785e8737ce99'
+sha256sums=('32b8ada0c6a75eb9339d5386dc3928a77a5bbe7b0e8375eca2cea885af08ef5f'
             '20f8f8e3b757c7450be207ecc5a976e2b405cae20ea3e1290c1856d9c2f324a9'
             '81927d6ae46b4b4ab49bdfc798b1910d70b422adbd2d589501279155f6da3c90')
 build() {
@@ -33,3 +33,4 @@ package() {
 	install -vDm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -vDm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}"/usr/share/applications
 }
+
