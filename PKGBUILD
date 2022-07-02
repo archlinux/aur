@@ -2,7 +2,7 @@
 
 pkgname=drmdb-git
 _pkgname=drmdb
-pkgver=r121.963275d7eceb
+pkgver=r123.96444f0746a3
 pkgrel=1
 pkgdesc='A Direct Rendering Manager database'
 arch=('x86_64')

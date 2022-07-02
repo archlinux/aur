@@ -1,6 +1,6 @@
 pkgbase = drmdb-git
 	pkgdesc = A Direct Rendering Manager database
-	pkgver = r121.963275d7eceb
+	pkgver = r123.96444f0746a3
 	pkgrel = 1
 	url = https://git.sr.ht/~emersion/drmdb
 	arch = x86_64
