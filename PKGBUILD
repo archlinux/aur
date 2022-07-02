@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=krecorder-git
-pkgver=v21.05.r5.g8c0945b
+pkgver=22.06.r5.g3c85cd8
 pkgrel=1
 pkgdesc="A convergent audio recording application for Plasma"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
   )
 }
 
