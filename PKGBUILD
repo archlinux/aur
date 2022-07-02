@@ -2,7 +2,7 @@
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland
 pkgver=3.23
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,16 @@ depends=('vulkan-icd-loader' 'qt5-wayland')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_commit=e9ea1b8ecc9c566f8b87d7d2a06e40fc782521e2
+_commit=e9ea1b8ecc9c566f8b87d7d2a06e40fc782521e2 # tags/3.23^
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
 sha256sums=('SKIP'
             'SKIP')
+
+pkgver() {
+  cd "$srcdir/VulkanCapsViewer"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/VulkanCapsViewer"
@@ -28,8 +33,9 @@ prepare() {
 build() {
   cd "$srcdir/VulkanCapsViewer"
   qmake-qt5 \
-    PREFIX=/usr \
-    DEFINES+=WAYLAND
+    DEFINES+=WAYLAND \
+    CONFIG+=release \
+    PREFIX=/usr
   make
 }
 
@@ -38,6 +44,6 @@ package() {
   make INSTALL_ROOT="$pkgdir/" install
 
   # There's a bug preventing this from being installed automatically
-  install -Dm644 gfx/android_icon_256.png \
+  install -m644 gfx/android_icon_256.png \
     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/vulkanCapsViewer.png
 }
