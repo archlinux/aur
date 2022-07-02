@@ -3,7 +3,7 @@
 # Contributpr: felix.s <felix.von.s@posteo.de>
 
 pkgname=weborf
-pkgver=0.17
+pkgver=0.19
 pkgrel=1
 pkgdesc="Minimal HTTP server to share your files"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('findutils')
 optdepends=('qweborf: graphical user interface')
 conflicts=('weborf-git')
 source=(https://github.com/ltworf/weborf/releases/download/$pkgver/weborf_$pkgver.orig.tar.gz)
-sha256sums=('17c01d49f9fd3bd582de80c5bcf0ca20fdc09594d6ba92466e6929ca7c1259dd')
+sha256sums=('2129ac2244fe219f348507c442270ba8693ec3282fc39e61bdab892a8e0e75d4')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
