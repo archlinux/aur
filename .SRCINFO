@@ -1,8 +1,8 @@
 pkgbase = zihap-git
 	pkgdesc = zihap is a Unified Messaging and Social Media Apps which combines all your messaging services and social media into one single windows.
-	pkgver = 1.0.r23.gefcc4cb
+	pkgver = 1.0.r41.g7d9c46a
 	pkgrel = 1
-	url = https://gitlab.com/exkc/zihap/
+	url = https://codeberg.org/exxxxkc/zihap
 	arch = i686
 	arch = x86_64
 	license = custom:M/IT/X
@@ -16,7 +16,7 @@ pkgbase = zihap-git
 	optdepends = gstreamer: play video in zihap
 	provides = zihap
 	conflicts = zihap
-	source = zihap::git+https://gitlab.com/exkc/zihap
+	source = zihap::git+https://codeberg.org/exxxxkc/zihap
 	md5sums = SKIP
 
 pkgname = zihap-git
