@@ -4,7 +4,7 @@
 
 pkgname="wyrd"
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/wyrd-calendar/wyrd"
