@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-indent-blankline
-pkgver=2.19.0
+pkgver=2.19.1
 pkgrel=1
 pkgdesc="Indent guides for Neovim"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=indent-blankline.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1277839d1e87c17500b6116f96c97bf4e885518a79b4eb7eacd53036c7a61cb7')
+sha256sums=('2ca7094fb1bc430c2eefc23748e0d83e9a995b305c6e6d7c17b6b754f5bf0b9a')
 
 package() {
 	cd "indent-blankline.nvim-$pkgver"
