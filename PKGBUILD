@@ -13,7 +13,7 @@ makedepends=('cmake')
 source=('git+https://github.com/smartnode/telebot'
         'patch')
 b2sums=('SKIP'
-        '334d61c9233b80e3f861d1500420beaaf924a80a8c8dae025fc65d6ee9ddcced553add389c6c863d76262b6c5f4b108b7e102699b083384cb504bda069c0f707')
+        'b3ad5aaa931cbeaf03a829f5d5c51d139c73aa3b659bf5a01d5c2689d5f27c5d77fffb5ad2f323193b6953e5fc8e62529c726ff94c84ebbda540debcdce2ff67')
 
 pkgver() {
   cd "telebot"
