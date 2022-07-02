@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=json-search-git
-pkgver=r35.4f394e4
+pkgver=r40.a741413
 pkgrel=1
 pkgdesc='Util to seach though json files'
 
@@ -22,14 +22,15 @@ source=(git+https://github.com/cosmo-ray/json-search.git)
 sha256sums=("SKIP")
 
 build() {
-	 cd "${srcdir}/json-search"
-	 make
+    cd "${srcdir}/json-search"
+    ./configure
+    make
 }
 
 package() {
-	 cd "${srcdir}/json-search"
-	 install -D "${srcdir}/json-search/json-search" "$pkgdir/usr/bin/json-search"
-	 install -D "${srcdir}/json-search/LICENSE" "$pkgdir/usr/share/licenses/json-search/LICENSE"
+    cd "${srcdir}/json-search"
+    install -D "${srcdir}/json-search/json-search" "$pkgdir/usr/bin/json-search"
+    install -D "${srcdir}/json-search/LICENSE" "$pkgdir/usr/share/licenses/json-search/LICENSE"
 }
 
 
