@@ -1,7 +1,7 @@
 # Maintainer: David Fryer <dfryer1193@gmail.com>
 
 pkgname=sysfex-git
-pkgver=r30.c8c29f7
+pkgver=r38.905d899
 pkgrel=1
 pkgdesc="Another neofetch-like system information fetching tool for linux-based systems written in C++"
 arch=('x86_64')
