@@ -2,17 +2,17 @@
 # Contributor: Jakub Okoński <jakub@okonski.org>
 # Contributor: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=rocfft
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Next generation FFT implementation for ROCm'
 arch=('x86_64')
-url='https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocfft'
+url='https://docs.amd.com/bundle/rocFFT-release-rocm-rel-5.2/page/library.html'
 license=('MIT')
 depends=('hip')
 makedepends=('cmake')
 _git='https://github.com/ROCmSoftwarePlatform/rocFFT'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('b4fcd03c1b07d465bb307ec33cc7fb50036dff688e497c5e52b2dec37f4cb618')
+sha256sums=('ebba280b7879fb4bc529a68072b98d4e815201f90d24144d672094bc241743d4')
 options=(!lto)
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
@@ -24,7 +24,7 @@ build() {
   fi
 
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -B build \
         -S "$_dirname" \
