@@ -22,10 +22,10 @@ pkgbase = kweather-git
 	depends = kdbusaddons
 	depends = plasma-framework
 	depends = kweathercore-git
+	depends = qt5-charts
 	provides = kweather
 	conflicts = kweather
 	source = git+https://invent.kde.org/plasma-mobile/kweather.git
 	sha256sums = SKIP
 
 pkgname = kweather-git
-
