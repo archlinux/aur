@@ -1,30 +1,26 @@
-# Maintainer: Pierre Chapuis <arch@catwell.info>
+# Maintainer: entriphy <t4ils.dev@gmail.com>
+# Contributor: Pierre Chapuis <arch@catwell.info>
 
-pkgname=("python-airtable-wrapper")
-pkgver=0.15.0
+pkgname=python-airtable-wrapper
+_pkgname=pyairtable
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Python Airtable Client Wrapper"
 arch=("any")
-url="https://airtable-python-wrapper.readthedocs.io"
+url="https://github.com/gtalarico/$_pkgname"
 license=("MIT")
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/f7/02/4e3c3acafcab39f0cf713e3a2894796441280844d3d70f12afdc9ec95aa0/airtable-python-wrapper-0.15.0.tar.gz")
-sha256sums=("897d7603932fbfcd1009d59c1f183c61bba14a27b7c255a6aeb12e8c22b42c35")
+depends=("python" "python-requests")
+makedepends=("python-setuptools")
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=("9426679c08d397345179307890e5dde05cfe05b6bf6c7d2b0764806c947ab2c7")
 
 build() {
-    cd "$srcdir"
-    builddir="python3-build"
-    rm -rf "$builddir"
-    cp -r "airtable-python-wrapper-$pkgver" "$builddir"
-    pushd "$builddir"
-        "${builddir%-build}" setup.py build
-    popd
+    cd "$_pkgname-$pkgver"
+    python setup.py build
 }
 
-package_python-airtable-wrapper() {
-    depends=("python" "python-requests")
-    cd "$srcdir/python3-build"
-    python3 setup.py install --root="$pkgdir" -O1
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+    cd "$_pkgname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
-
