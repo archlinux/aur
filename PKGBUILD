@@ -1,17 +1,18 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=hipfft
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='rocFFT marshalling library.'
 arch=('x86_64')
-url='https://github.com/ROCmSoftwarePlatform/hipFFT'
+url='https://hipfft.readthedocs.io/en/latest/'
 license=('MIT')
 depends=('hip' 'rocfft')
 makedepends=('cmake' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('c26fa64499293b25d0686bed04feb61378c878a4bb4a6d559e6cb7be1f6bf2ec')
-_dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
+_git='https://github.com/ROCmSoftwarePlatform/hipFFT'
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('ec37edcd61837281c403802ccc1cb01ec3fa3ba135b5ab16617961b66d4cc3e2')
+_dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   local cmake_args=(-DCMAKE_INSTALL_PREFIX=/opt/rocm
@@ -21,7 +22,7 @@ build() {
       cmake_args+=(-DAMDGPU_TARGETS="$AMDGPU_TARGETS")
   fi
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
