@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kweathercore
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Library to facilitate retrieval of weather information including forecasts and alerts"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/libraries/kweathercore"
