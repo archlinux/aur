@@ -22,6 +22,6 @@ pkgbase = skywire
 	source = https://github.com/skycoin/skywire/archive/refs/tags/v1.0.0-rc7.tar.gz
 	source = skywire-scripts.tar.gz
 	sha256sums = 5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9
-	sha256sums = d0ea05fdf51b34a1ad2142b289bc5671b22e503b5ea83d54b029f3b9ad3cbcaa
+	sha256sums = 13388517e2d1204ed9cc56b6fc79fc5a454dea03a66228322fa261acc921642e
 
 pkgname = skywire
