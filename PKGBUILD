@@ -1,14 +1,16 @@
 pkgname=arkenfox-user.js-git
-pkgver=101.0.r1.gc21b9fa
+pkgver=102.0.r0.gceacc9d
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
-_repo='user.js'
-url="https://github.com/arkenfox/${_repo}"
+_base="${pkgname%-git}"
+_name="${_base%-*}"
+_repo="${_base#*-}"
+url="https://github.com/${_name}/${_repo}"
 license=('MIT')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${provides[@]}")
+provides=("${_base}")
+conflicts=("${_base}")
 options=('!strip')
 
 source=(
@@ -37,12 +39,15 @@ prepare() {
 package() {
     local lib="${pkgdir}/usr/lib/${pkgname}"
     local bin="${pkgdir}/usr/bin"
+    local updater="updater.sh"
+    local cleaner="prefsCleaner.sh"
+
     install -dm755 "${bin}"
-    ln -s "${lib#${pkgdir}}/updater.sh" "${bin}/arkenfox-updater"
-    ln -s "${lib#${pkgdir}}/prefsCleaner.sh" "${bin}/arkenfox-cleaner"
+    ln -s "${lib#${pkgdir}}/${updater}" "${bin}/${_name}-updater"
+    ln -s "${lib#${pkgdir}}/${cleaner}" "${bin}/${_name}-cleaner"
 
     cd "${srcdir}/${_repo}"
-    install -Dm755 -t "${lib}" "updater.sh" "prefsCleaner.sh"
+    install -Dm755 -t "${lib}" "${updater}" "${cleaner}"
     install -Dm644 -t "${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"
 }
