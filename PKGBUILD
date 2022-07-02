@@ -3,7 +3,7 @@
 
 pkgname=weborf-git
 _pkgname="weborf"
-pkgver=0.17.r13.gd1dfb90
+pkgver=0.19.r2.g447d98d
 pkgrel=1
 pkgdesc="Minimal HTTP server to share your files"
 arch=('any')
