@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=5
+pkgrel=6
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -18,11 +18,11 @@ makedepends=(
   'python2-setuptools'
 )
 checkdepends=(
-  'python2-dateutil'
   'python2-flaky'
   'python2-mock'
   'python2-pyopenssl'
   'python2-pysocks'
+  'python2-pytest-freezegun'
   'python2-pytest-runner'
   'python2-tornado'
   'python2-trustme'
@@ -57,7 +57,7 @@ check() {
     export LC_ALL=C.UTF-8
     export PYTHONDONTWRITEBYTECODE=1
     python2 setup.py pytest --addopts \
-      "--deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
+      "--verbose --cache-clear --deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
   )
 }
 
