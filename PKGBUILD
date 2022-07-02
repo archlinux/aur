@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient-git
-pkgver=v1.4.3.r31.5866f4e
+pkgver=v1.5.0.r6.6045301b
 pkgrel=1
 pkgdesc="Development branch of GitQlient"
 arch=(x86_64)
@@ -16,6 +16,11 @@ _rootdir=GitQlient
 pkgver() {
     cd "$_rootdir"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$_rootdir"
+    git submodule update --init
 }
 
 build() {
