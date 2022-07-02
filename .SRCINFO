@@ -1,6 +1,6 @@
 pkgbase = stumpwm-ql
 	pkgdesc = Stumpwm tiling window manager built with dependencies from quicklisp
-	pkgver = 20.11_2022_02_20
+	pkgver = 22.05_2022_02_20
 	pkgrel = 1
 	url = https://stumpwm.github.io
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = stumpwm-ql
 	conflicts = stumpwm-git
 	options = !strip
 	options = !makeflags
-	source = stumpwm-ql-20.11.tar.gz::https://github.com/stumpwm/stumpwm/archive/refs/tags/20.11.tar.gz
+	source = stumpwm-ql-22.05.tar.gz::https://github.com/stumpwm/stumpwm/archive/refs/tags/22.05.tar.gz
 	source = stumpwm.desktop
 	source = load-ql-systems.patch
-	sha256sums = 8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c
+	sha256sums = d843302f9ce54660bc96e4f0d8e9584f07a81d43c4c26357d5a29cb07194abae
 	sha256sums = bbcf4930a609e7073b1fec9332d1bf314b94ebd8315c227c75f8b818ecdc666d
 	sha256sums = 5105db78328aed70e8d071ff02f35d10caa745803df8e71074a444cb7c6afefc
 
