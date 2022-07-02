@@ -3,7 +3,7 @@
 
 pkgname=python-iptables-git
 pkgver=1.0.0.r3.g18d326d
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for iptables'
 depends=('python' 'iptables')
 optdepends=()
@@ -29,6 +29,11 @@ pkgver() {
     fi
 }
 
+build() {
+    cd "$srcdir/$pkgname"
+    python setup.py build
+}
+
 check() {
     cd "$srcdir/$pkgname"
     python setup.py check
@@ -36,7 +41,7 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
     install -Dm 644 "$srcdir/python-iptables.conf" -t "$pkgdir/etc/ld.so.conf.d"
 }
 

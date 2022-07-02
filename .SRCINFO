@@ -1,7 +1,7 @@
 pkgbase = python-iptables-git
 	pkgdesc = Python bindings for iptables
 	pkgver = 1.0.0.r3.g18d326d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mwhudson/python-iptables
 	arch = x86_64
 	arch = i686
