@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3034.r0.g2a980d9fc
+pkgver=v1.7.0.dev.r3879.gad6fa3be1
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -21,6 +21,8 @@ OPTIONS+=(
   debug !strip
   epoch = 1
 )
+
+depends=('rapidyaml>=0.4')
 
 depends=(
   libaio
@@ -41,7 +43,6 @@ depends=(
   qt6-svg
   soundtouch
   wayland
-  rapidyaml
   zstd
 )
 makedepends=(
@@ -59,7 +60,7 @@ provides=(pcsx2-qt)
 conflicts=(pcsx2)
 
 source=(
-git+https://github.com/PCSX2/pcsx2.git
+git+https://github.com/kenshen112/pcsx2.git#branch=packages
 git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
@@ -122,8 +123,6 @@ build()
 package()
 {
     DESTDIR="${pkgdir}" cmake --install build
-    mv "${pkgdir}"/usr/bin/pcsx2-qt "${pkgdir}"/usr/share/PCSX2
-    ln -s /usr/share/PCSX2/pcsx2-qt "${pkgdir}"/usr/bin/pcsx2-qt
     sed -i 's/Exec=env GDK_BACKEND=x11 MESA_NO_ERROR=1 pcsx2/Exec=env QT_QPA_PLATFORM=xcb MESA_NO_ERROR=1 pcsx2-qt/g' "${pkgdir}"/usr/share/applications/PCSX2.desktop
 }
 
