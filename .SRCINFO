@@ -1,6 +1,6 @@
 pkgbase = mcrl2
 	pkgdesc = A formal specification language with an associated toolset.
-	pkgver = 202106.0
+	pkgver = 202206.0
 	pkgrel = 1
 	url = http://www.mcrl2.org
 	install = mcrl2.install
@@ -14,7 +14,7 @@ pkgbase = mcrl2
 	depends = glu
 	depends = hicolor-icon-theme
 	optdepends = python: for easily running the included examples
-	source = http://mcrl2.org/download/release/mcrl2-202106.0.tar.gz
-	sha256sums = 9b386afb184ef375f7768a4c6bfef2431af5050e920816e57a87ed531a1bfdf5
+	source = http://mcrl2.org/download/release/mcrl2-202206.0.tar.gz
+	sha256sums = 3800b71804962081af1aab60af3c10562fa5ab643b57dc15997caf9bc064972a
 
 pkgname = mcrl2
