@@ -25,4 +25,3 @@ pkgbase = nx-kwin-decoration-git
 	sha256sums = SKIP
 
 pkgname = nx-kwin-decoration-git
-
