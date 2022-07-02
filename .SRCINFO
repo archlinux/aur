@@ -1,15 +1,15 @@
 pkgbase = python-airtable-wrapper
 	pkgdesc = Python Airtable Client Wrapper
-	pkgver = 0.15.0
+	pkgver = 0.15.3
 	pkgrel = 1
-	url = https://airtable-python-wrapper.readthedocs.io
+	url = https://github.com/gtalarico/pyairtable
 	arch = any
 	license = MIT
-	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/f7/02/4e3c3acafcab39f0cf713e3a2894796441280844d3d70f12afdc9ec95aa0/airtable-python-wrapper-0.15.0.tar.gz
-	sha256sums = 897d7603932fbfcd1009d59c1f183c61bba14a27b7c255a6aeb12e8c22b42c35
-
-pkgname = python-airtable-wrapper
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
+	options = !emptydirs
+	source = https://github.com/gtalarico/pyairtable/archive/refs/tags/0.15.3.tar.gz
+	sha256sums = 9426679c08d397345179307890e5dde05cfe05b6bf6c7d2b0764806c947ab2c7
 
+pkgname = python-airtable-wrapper
