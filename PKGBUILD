@@ -44,6 +44,7 @@ package() {
   make DESTDIR="${pkgdir}/usr/src/ashmem-1" install
 
   echo '** To activate binder_linux and ashmem_linux **
+# Warning! Highly recommend to reinstall kernel after it
 # $ sudo modprobe binder_linux devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder
 # $ sudo modprobe ashmem_linux'
 
