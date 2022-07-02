@@ -3,13 +3,13 @@
 _pkg=pygmt
 pkgbase=python-${_pkg}
 pkgname=("python-${_pkg}")
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python interface to the Generic Mapping Tools C library"
 arch=('x86_64')
 url="https://www.pygmt.org"
 license=('3-BSD')
-depends=('python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt>=6.2.0')
+depends=('python-numpy' 'python-pandas' 'python-xarray' 'python-netcdf4' 'python-packaging' 'gmt')
 makedepends=('python-pip' 'cython' 'python-setuptools')
             #'gmt-coast' 'gmt-dcw' 
             #'ipython' 'python-matplotlib' 'jupyter' 'python-pytest'
@@ -21,7 +21,7 @@ makedepends=('python-pip' 'cython' 'python-setuptools')
             #'python-myst-parser' 'python-sphinx-copybutton' )
 
 source=("https://github.com/GenericMappingTools/${_pkg,,}/archive/v${pkgver}.tar.gz")
-sha256sums=('e3d6c3749f5ebed2920ddd12ed455c531ee1eee35c9190aad68806db7d54b8b0')
+sha256sums=('0228497efbea0dabdd06294e3c65d7fb6e0cf7964617c0f29bd417d68e2c9425')
 
 build() {
     cd ${_pkg}-${pkgver}
