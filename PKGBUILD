@@ -5,14 +5,11 @@
 pkgname='deluge1'
 _basename="${pkgname%1}"
 pkgver=1.3.15
-pkgrel=11
+pkgrel=12
 pkgdesc='BitTorrent client with multiple interfaces, using a client/server model (legacy 1.3.x version)'
 arch=('any')
 url='https://deluge-torrent.org/'
 license=('GPL3')
-depends=(
-    'python2'
-)
 makedepends=(
     'intltool'
     'python2-setuptools'
@@ -56,11 +53,10 @@ prepare() {
     cd "${_tarname}"
     patch --verbose -p1 -i '../prefdialog.patch'
 
-    echo 'Changing hashbangs in *.py files to refer to python2'
-    sed -e '1s|#![ ]*/usr/bin/python[^2]\?|#!/usr/bin/python2|' \
-        -e '1s|#![ ]*/usr/bin/env python[^2]\?|#!/usr/bin/env python2|' \
-        -e '1s|#![ ]*/bin/env python[^2]\?|#!/usr/bin/env python2|' \
+    printf "Changing hashbangs in *.py files to refer to 'python2'... "
+    sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
         -i $(find . -name '*.py')
+    echo "done"
 
     echo "Disabling 'get_libtorrent.sh': don't try to download libtorrent from SVN"
     sed -e '5s|^$|exit 127|' \
@@ -75,6 +71,7 @@ build() {
 package() {
     depends=(
         'hicolor-icon-theme'
+        'python2'
         'python2-chardet'
         'python2-pyopenssl'
         'python2-pyxdg'
