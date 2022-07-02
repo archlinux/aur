@@ -1,3 +1,23 @@
+2022-07-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.7.7-1:
+    Fixed regression introduced recently which caused custom game played never being displayed (@JustArchi).
+2022-06-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.7.6-1:
+    ASF will now include information about configured MaxTradeHoldDuration for people announcing themselves on ASF STM listing (@JustArchi).
+    ASF will no longer attempt to match bots not accepting our trade hold in theirs MaxTradeHoldDuration (@JustArchi).
+    ASF will no longer accept trades exceeding configured MaxTradeHoldDuration where we're the cause of that (@JustArchi).
+    Added addlicence command alias for addlicense to account for non-american wording (@JustArchi #2596).
+    Added Steam Summer Sale 2022 with appID of 2021850 to SalesBlacklist (@Abrynos #2621).
+    GamesPlayedWhileIdle will now favour last allowed game instead of CustomGamePlayedWhileIdle, if you require custom title (which is not guaranteed anyway), then supply maximum of 31 entries instead (@JustArchi #2599).
+    GamesPlayedWhileIdle are now transmitted in order they were specified in the config, which might be wanted e.g. in regards to recently played games on Steam. Previously the order was undefined (@JustArchi ref).
+    Fixed possible ASF's logging mechanism corruption (and crash afterwards) caused by failure to start IPC server (@JustArchi ref).
+    Fixed ASF without --process-required incorrectly shutting down when editing the config of the only bot whether through ASF API or manually (@JustArchi).
+    ASF 2FA code should now generate correct tokens not only until year 2106 like before, but all the way to year 2554 - just in case sunglasses (@JustArchi #2594).
+    ASF will no longer restart farming on each license list Steam event, only on those actually granting us new games (@JustArchi).
+    Small improvements in regards to ASF 2FA time synchronization issue (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-06-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.6.3-1:
     This release includes new major version of NLog v5. If you're using custom NLog.config logging configuration for ASF, you may want to update your logging in accordance to new defaults in order to silence ASP.NET logs that will now use your config exclusively. Check out newly added rules for Microsoft and System on our wiki. Users that are not using custom NLog.config logging configuration do not require any action (@JustArchi).
