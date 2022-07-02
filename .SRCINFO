@@ -1,6 +1,6 @@
 pkgbase = meshboard-headless
 	pkgdesc = Synchronize the clipboard across a mesh of hosts, without display server support
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/hossbeast/meshboard
 	arch = x86_64

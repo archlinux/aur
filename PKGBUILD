@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=meshboard-headless
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Synchronize the clipboard across a mesh of hosts, without display server support"
 provides=('meshboard')
@@ -26,6 +26,8 @@ build() {
 package() {
   install -m755 -d "$pkgdir/usr/bin"
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/meshboard/meshboard"
+  install -m755 -t "$pkgdir/usr/bin" "$srcdir/meshboard/mb-copy"
+  install -m755 -t "$pkgdir/usr/bin" "$srcdir/meshboard/mb-paste"
 
   install -m755 -d "$pkgdir/usr/share/doc/$pkgname"
   install -m644 -t "$pkgdir/usr/share/doc/$pkgname" "$srcdir/meshboard/README.md"
