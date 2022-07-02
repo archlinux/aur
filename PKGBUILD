@@ -16,7 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 # Author: Luong Thanh Lam <ltlam93@gmail.com>
-# Maintainer: toitenminh <iam.minhnc@outlook.com>
+# Contributor: Trần Công <nopain2110@gmail.com>
+# Maintainer: Minh Ngo <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
 pkgver=0.8.1+RC4+1+g3380c09
