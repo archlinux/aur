@@ -5,10 +5,10 @@
 pkgname=gcstar
 _pkgname=GCstar
 pkgver=1.7.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A collection management application"
 arch=('any')
-url="https://gitlab.com/Kerenoc/GCstar"
+url="https://gitlab.com/${_pkgname}/${_pkgname}"
 license=('GPL')
 depends=('perl-libwww' 'perl-xml-simple' 'perl-net-snmp' 'perl-xml-parser'
 	 'perl-switch' 'perl-xml-libxml' 'perl-sort-naturally' 'perl-http-message'
