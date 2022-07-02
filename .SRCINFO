@@ -24,4 +24,3 @@ pkgbase = pikasso-git
 	sha256sums = SKIP
 
 pkgname = pikasso-git
-
