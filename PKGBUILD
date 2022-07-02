@@ -2,7 +2,7 @@
 
 pkgname="goldie-git"
 pkgdesc="Search content of text files recursively. Written in Nim."
-pkgver=0.0.2
+pkgver=r19.9fe74b1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/goldie"
