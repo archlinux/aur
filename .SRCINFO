@@ -1,6 +1,6 @@
 pkgbase = kasts-git
 	pkgdesc = Kirigami-based podcast player
-	pkgver = r542.eab5d08
+	pkgver = 22.06.r12.gfbe745d
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kasts
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = kasts-git
 	depends = ki18n
 	depends = syndication
 	depends = taglib
+	depends = threadweaver
 	provides = kasts
 	conflicts = kasts
 	source = git+https://invent.kde.org/plasma-mobile/kasts.git
