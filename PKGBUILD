@@ -7,27 +7,17 @@
 pkgname=ghost-git
 pkgver=1.1.2
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc="Simple tool to take screenshots using your terminal"
 arch=(x86_64 i686)
 url="https://github.com/z3oxs/ghost.git"
-license=('GPL')
-groups=()
-depends=(go)
-makedepends=(go)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+license=('MIT')
+depends=(cairo libxi libxinerama libxrandr libxcursor libglvnd)
+makedepends=(git go)
+provides=(ghost)
+conflicts=(ghost)
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/ghost"
@@ -37,4 +27,5 @@ build() {
 package() {
     cd "$srcdir/ghost"
     install -Dm755 ghost "${pkgdir}/usr/bin/ghost"
+    install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
