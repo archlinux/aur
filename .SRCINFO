@@ -23,6 +23,7 @@ pkgbase = linux-mainline-um5302ta
 	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v5.19-rc4
 	source = config
 	source = v5-ACPI-skip-IRQ1-override-on-3-Ryzen-6000-laptops.patch
+	source = v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
 	source = v0-ASoC-cs35l41-CSC3551.patch
 	source = v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -31,6 +32,7 @@ pkgbase = linux-mainline-um5302ta
 	sha256sums = SKIP
 	sha256sums = 382aa201a6a6939210dd8668ab052724547b4bd489b38e97502bbd0848061b35
 	sha256sums = a78e1868cfcaa34d5e5c8e16f2072e54966798664e5148a804579819ef965814
+	sha256sums = 6b86f4d857af3622f66da8ad9ea059ea39693fe80e5fbb507b0f8d9bc4616f88
 	sha256sums = 66ecbd41168b1fb7fe8c8bba8a374456130aeceb64df2708d62f7ac3e700df1f
 	sha256sums = 5212ffc69ba29c5b29365849e8bdb621c8cadac4025de5a503f55af923f123f0
 

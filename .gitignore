@@ -4,5 +4,6 @@
 !/.SRCINFO
 !/config
 !/v5-ACPI-skip-IRQ1-override-on-3-Ryzen-6000-laptops.patch
+!/v0-ALSA-hda-realtek-Add-quirk-for-ASUS-UM5302TA.patch
 !/v0-ASoC-cs35l41-CSC3551.patch
 !/v4-Bluetooth-btusb-Add-a-new-VID-PID-0489-e0e2-for-MT7922.patch
