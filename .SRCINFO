@@ -1,7 +1,7 @@
 pkgbase = kawaii-player
 	pkgdesc = Multimedia player, media library manager and portable media server with PC-to-PC casting feature
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kanishka-linux/kawaii-player
 	install = kawaii-player.install
 	arch = any
@@ -27,6 +27,7 @@ pkgbase = kawaii-player
 	depends = python-pycurl
 	depends = python-pyqtwebengine
 	depends = wget
+	depends = python-setuptools
 	optdepends = python-pympv: modern opengl-render API for libmpv
 	optdepends = libtorrent-rasterbar: torrent streaming
 	optdepends = youtube-dl: YouTube streaming
@@ -37,4 +38,3 @@ pkgbase = kawaii-player
 	sha256sums = b055f9224a9a88d3b92bb631e4dc886817c97bb9751c8eb7ead65d05856ecee0
 
 pkgname = kawaii-player
-
