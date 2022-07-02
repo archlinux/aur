@@ -1,13 +1,15 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 # Contributor: dpayne <darby.payne@gmail.com>
 
 pkgname=cli-visualizer
 pkgver=1.8
-pkgrel=9
+pkgrel=10
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer/"
 license=('MIT')
+options=(!buildflags)
 depends=('ncurses' 'fftw')
 makedepends=('git' 'fftw' 'cmake')
 conflicts=('vis')

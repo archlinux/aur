@@ -1,7 +1,7 @@
 pkgbase = cli-visualizer
 	pkgdesc = A cli visualizer for mpd
 	pkgver = 1.8
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/dpayne/cli-visualizer/
 	install = cli-visualizer.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = cli-visualizer
 	depends = ncurses
 	depends = fftw
 	conflicts = vis
+	options = !buildflags
 	source = https://github.com/dpayne/cli-visualizer/archive/v1.8.tar.gz
 	sha256sums = 927e4c18403c7a40397e8698ffefd1b37250be20fa0ec55fda9a82cf9cc8ba51
 
