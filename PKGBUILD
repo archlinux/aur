@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=7.0.5
-_commit=8e81938a0da46eceaf60ad792a0be018e64827b9
+pkgver=7.0.6
+_commit=68c7a0efc6df2b40a1ad3296b6cdf40bff75b9a8
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
