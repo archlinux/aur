@@ -13,5 +13,8 @@ pkgbase = sempiternum
 	depends = lib32-cairo
 	depends = pango
 	depends = pixman
+	depends = ffmpeg
+	optdepends = opencl-amd
+	optdepends = opencl-nvidia
 
 pkgname = sempiternum
