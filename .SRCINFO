@@ -1,7 +1,7 @@
 pkgbase = station-git
 	pkgdesc = Convergent terminal emulator
-	pkgver = v1.1.1.r7.gfc3a700
-	pkgrel = 2
+	pkgver = 2.1.2.r4.gfe4f056
+	pkgrel = 1
 	url = https://invent.kde.org/maui/station
 	arch = x86_64
 	groups = maui-apps
@@ -11,10 +11,10 @@ pkgbase = station-git
 	depends = kio
 	depends = mauikit-git
 	depends = ki18n
+	depends = qmltermwidget
 	provides = station
 	conflicts = station
 	source = git+https://invent.kde.org/maui/station.git
 	sha256sums = SKIP
 
 pkgname = station-git
-
