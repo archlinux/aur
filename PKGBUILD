@@ -6,8 +6,9 @@
 
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
-pkgver=1.26.9
-pkgrel=10
+_commit='37ba00248424ea3cdf556cc3e7aa81ce0bf40382'
+pkgver=1.26.9.r11.g37ba0024
+pkgrel=1
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -36,19 +37,22 @@ optdepends=(
   'python2-gcp-devrel-py-tools: Google AppEngine support'
   'python-urllib3-doc: urllib3 documentation'
 )
-_tarname="${_name}-${pkgver}"
-source=("${_repourl}/archive/${pkgver}/${_tarname}.tar.gz")
-b2sums=('0e4c7ebe3f309004463a546c0395c0e22cf57432d587d7cb4b6190afd37fb6f8669ea5c8f9a8a5f88a53c62a3944ebd09f20f5ec93e352959fa9cbea682ccc76')
+_tarname="${_name}-${_commit}"
+source=("${_repourl}/archive/${_commit}.tar.gz")
+b2sums=('2e7494cd6002576c45816e53874297706b58c7dd7edd394ace1c57d7be7de5d1aeeb37d483f2b72d57a4d43d7c8020b25a03ba59af34aad0f79e8c53fd0f3897')
 
 prepare() {
-  echo "Fixing hardcoded urllib3.connection.RECENT_DATE field - it's expired if earlier than two years"
-  sed -e '/RECENT_DATE[ ]*=[ ]*datetime.date/c\RECENT_DATE = datetime.date(2022, 1, 1)' \
-      -i ${_tarname}/src/${_name}/connection.py
+  cd "${_tarname}"
 
   printf "Changing hashbangs in *.py files to refer to 'python2'... "
   sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
       -i $(find . -name '*.py')
-  echo "done"
+  echo 'done'
+
+  printf "Changing 'setup.cfg': setting 'xfail_strict' from true to false... "
+  sed -e '/^xfail_strict/c\xfail_strict = false' \
+      -i 'setup.cfg'
+  echo 'done'
 }
 
 build() {
