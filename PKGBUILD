@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/DeaDBeeF-Player/deadbeef-mpris2-plugin"
 license=('GPL2')
 depends=('glib2' 'deadbeef')
+makedepends=('git')
 conflicts=('deadbeef-mpris2-plugin')
 options=('!libtool')
 source=('git+https://github.com/DeaDBeeF-Player/deadbeef-mpris2-plugin.git')

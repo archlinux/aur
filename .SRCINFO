@@ -6,6 +6,7 @@ pkgbase = deadbeef-mpris2-plugin-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = glib2
 	depends = deadbeef
 	conflicts = deadbeef-mpris2-plugin
