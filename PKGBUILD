@@ -19,7 +19,7 @@
 # Maintainer: toitenminh <iam.minhnc@outlook.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.8.1.RC4.g3380c09
+pkgver=0.8.1+RC4+1+g3380c09
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
@@ -34,7 +34,7 @@ md5sums=('SKIP')
 
 pkgver() {
  cd "$pkgname"
- printf "%s.g%s" "$(git describe --tags | sed 's#v##;s#-.*##')" "$(git rev-parse --short HEAD)"
+ git describe --long --tags | sed 's#v##;s#-#+#g'
 }
 
 build() {
