@@ -1,0 +1,24 @@
+pkgbase = mail-deduplicate
+	pkgdesc = Command-line tool to deduplicate mails from a set of boxes
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://mail-deduplicate.readthedocs.io/
+	arch = any
+	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-arrow
+	depends = python-boltons
+	depends = python-click-help-colors
+	depends = python-click-log
+	depends = python-tabulate
+	depends = python-tomlkit
+	provides = maildir-deduplicate
+	conflicts = maildir-deduplicate
+	replaces = maildir-deduplicate
+	source = https://files.pythonhosted.org/packages/source/m/mail-deduplicate/mail-deduplicate-6.2.0.tar.gz
+	sha256sums = 7953fee270e049b73822738ed9ac8437d0be60e9f23fe10dfd2500650dc280d4
+
+pkgname = mail-deduplicate
