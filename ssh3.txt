@@ -1,0 +1,20 @@
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/bcdev/.ssh/aur
+Your public key has been saved in /home/bcdev/.ssh/aur.pub
+The key fingerprint is:
+SHA256:ukhhslPcAjaZu2NJnMumBIm4oQCUjmUcoCy+gr8lEQM bcdev@bcdevhost
+The key's randomart image is:
++---[RSA 3072]----+
+|E+o.             |
+|+o+o             |
+|*+O              |
+|B= O .           |
+|B.B * . S        |
+|==.X o .         |
+|=o% o .          |
+|o= * . .         |
+|. o.. .          |
++----[SHA256]-----+
+
