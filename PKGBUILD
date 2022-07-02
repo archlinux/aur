@@ -18,3 +18,8 @@ build() {
 package() {
   install -D -m755 bin/goldie-release-linux "$pkgdir/usr/bin/goldie"
 }
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
