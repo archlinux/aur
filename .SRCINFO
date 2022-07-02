@@ -1,14 +1,15 @@
 pkgbase = radioboat
-	pkgdesc = Radioboat is a terminal web radio client, built with simplicity in mind
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgdesc = A terminal web radio client, built with simplicity in mind
+	pkgver = 0.1.2
+	pkgrel = 2
 	url = https://github.com/slashformotion/radioboat
 	arch = x86_64
-	license = Apache License 2.0
+	license = APACHE
 	makedepends = go
 	makedepends = git
 	depends = mpv
-	source = radioboat-0.1.0.tar.gz::https://github.com/slashformotion/radioboat/archive/v0.1.0.tar.gz
-	sha256sums = 8f378fdda91166d3c5d091e077fc7b49b9f1e8fcceb681c7c36f5c43616e4b32
+	provides = radioboat
+	source = radioboat-0.1.2.tar.gz::https://github.com/slashformotion/radioboat/archive/v0.1.2.tar.gz
+	sha256sums = 32cf503c96c11750f5e03971cff2f361cdc71aeb74968d93b3d219663d1c257e
 
 pkgname = radioboat
