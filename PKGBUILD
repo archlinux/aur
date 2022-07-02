@@ -519,12 +519,15 @@ build() {
     if [[ "$LCPU" ]] ; then
       case $LCPU in
         *generic*) LCPU=${LCPU/generic-v/generic_cpu} ;;
+        generic) : ;;
         *) LCPU=m${LCPU} ;;
       esac
-      CPU=${LCPU^^}
-      sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
-          -e '/CONFIG_GENERIC_CPU=y/d' \
-          -i "$srcdir/linux-${_basekernel}/.config"
+      if [ ! $LCPU = "generic" ] ; then
+        CPU=${LCPU^^}
+        sed -e "s|# CONFIG_$CPU is not set|CONFIG_$CPU=y|" \
+            -e '/CONFIG_GENERIC_CPU=y/d' \
+            -i "$srcdir/linux-${_basekernel}/.config"
+      fi
       export _PKGOPT=y
     fi
 
@@ -820,19 +823,15 @@ _set_variant_appendix()
         pkgname="${_pkg}-generic-v4"
         pkgdesc="${pkgdesc} Generic-x86-64-v4 optimized."
         ;;
-      *)
-        # Workaround against mksrcinfo getting the $pkdesc wrong
-        pkgname="${_pkg}"
+      *|generic)
+        pkgname="${_pkg}-generic"
         pkgdesc="${pkgdesc}"
         ;;
     esac
 
+    conflicts=("$_pkg")
+    provides+=(${_pkg}=$pkgver)
 
-    if [[ "$pkgname" != "${_pkg}" ]]; then
-      # If optimized build, conflict with generic
-      conflicts=("$_pkg")
-      provides+=(${_pkg}=$pkgver)
-    fi
   fi
 
   echo
@@ -864,6 +863,12 @@ _package() {
   cd "${srcdir}/linux-${_basekernel}"
 
   _set_variant_appendix "${pkgbase}"
+
+  case "$pkgname" in
+    *generic)
+      replaces=('<linux-pf=5.18.6.pf2-2')
+      ;;
+  esac
 
   ### package_linux-pf
 
