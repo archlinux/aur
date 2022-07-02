@@ -1,7 +1,7 @@
 # Maintainer: Szymon Januszek <szymon_j at tutanota dot com>
 
 pkgname=sio2jail
-pkgver=v1.3.0
+pkgver=v1.4.3
 pkgrel=1
 
 pkgdesc="A tool for supervising execution of programs submitted in Polish national algorithmic competitions"
@@ -11,7 +11,7 @@ arch=(x86_64)
 license=('MIT')
 
 depends=('libseccomp')
-makedepends=('git' 'libcap' 'tclap' 'gcc-libs' 'scdoc')
+makedepends=('git' 'libcap' 'tclap' 'gcc-libs' 'lib32-glibc' 'scdoc')
 
 provides=(sio2jail)
 
@@ -31,6 +31,6 @@ package() {
     cd build
     make install
 
-    mkdir "$pkgdir/usr/share/man/man1"
-    mv "$pkgdir/usr/share/man/sio2jail.1" "$pkgdir/usr/share/man/man1/sio2jail.1"
+#    mkdir "$pkgdir/usr/share/man/man1"
+#    mv "$pkgdir/usr/share/man/sio2jail.1" "$pkgdir/usr/share/man/man1/sio2jail.1"
 }
