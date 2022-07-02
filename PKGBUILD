@@ -176,8 +176,8 @@ fi
   patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
 
   # KDE menu
-  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
-  patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
+  # patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
