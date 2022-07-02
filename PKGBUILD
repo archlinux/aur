@@ -3,7 +3,7 @@
 
 pkgname=lapce-git
 _pkgbase=lapce
-pkgver=nightly.r0.gb663c5a
+pkgver=0.1.2.r137.g9e68a8c
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor (Git version)"
 arch=('x86_64')
@@ -16,14 +16,12 @@ makedepends=('rust' 'python' 'cmake')
 options=('!lto')
 source=("$_pkgbase::git+https://github.com/lapce/lapce.git")
 sha512sums=('SKIP')
+
 pkgver() {
-    cd "${srcdir}/${_pkgbase}"
-    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+    cd "$_pkgbase"
+    git describe --long --tags --abbrev=7 --match 'v[0-9]*' |
+        sed -e 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-#pkgver() {
-#  cd "$_pkgbase"
-#  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
 
 prepare() {
     cd "$_pkgbase"
