@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cbaf
-_pkgver=1.18.1
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Automated functions for comparing various omic data from cbioportal.org'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bd0c302bcded4e576d3442367490e51725286271ab91a6b7c9a0dd2d551416ae')
+sha256sums=('33de7e48c53bfa90e259f159f8ef10de2adee41ce7ec03dedd4dc3c7f1bb8beb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
