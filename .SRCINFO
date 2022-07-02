@@ -1,6 +1,6 @@
 pkgbase = calindori-git
 	pkgdesc = Calendar for Plasma Mobile
-	pkgver = r556.943d0d0
+	pkgver = 22.06.r3.gc7efaa2
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/calindori
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = calindori-git
 	sha256sums = SKIP
 
 pkgname = calindori-git
-
