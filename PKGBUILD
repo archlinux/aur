@@ -1,22 +1,23 @@
-# $Id$
-# Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
-_name=terrascan
+_pkggit=terrascan
+
 pkgname=terrascan-bin
-pkgver=1.10.0
-pkgrel=1
+pkgver=1.15.2
+pkgrel=3
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
 url="https://github.com/accurics/terrascan"
+conflicts=('terrascan')
+provides=('terrascan')
 license=('Apache-2')
-source=("https://github.com/accurics/${_name}/releases/download/v${pkgver}/${_name}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('9ad4c63e0b6fc4c78e236e25fcd5b80aae4e05fcd8fed43077cea7c6752bdf6f')
+source=("https://github.com/accurics/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums=('9aebcf198f4ee6442435c1682b9f20215063a52a5191e85d91d75d0873a0c227')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 ${_name} ${pkgdir}/usr/bin/${_name}
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/${_name}/README.md
-  install -Dm644 LICENSE ${pkgdir}/usr/share/doc/${_name}/LICENSE
-  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${_name}/CHANGELOG.md
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${_pkggit}
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
 }
-
