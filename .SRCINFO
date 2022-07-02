@@ -1,14 +1,20 @@
 pkgbase = python2-pysocks
-	pkgdesc = SOCKS4 and SOCKS5 proxy module (deprecated)
-	pkgver = 1.7.1
-	pkgrel = 3
-	url = https://pypi.org/project/PySocks/1.7.1/
+	pkgdesc = SOCKS4 and SOCKS5 proxy module (deprecated) (Python 2 package)
+	pkgver = 1.7.1.r7.gf4c3cd9
+	pkgrel = 1
+	url = https://github.com/urllib3/PySocks
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
-	depends = python2
-	provides = python2-socks
-	source = PySocks-1.7.1.tar.gz::https://github.com/Anorov/PySocks/archive/f660e75d4844e64e4b162b0c01f8df8d866ee000.tar.gz
-	b2sums = 7f529112ebb6327886461a26b863c19097f760ce40d695c722a776923fa811c3bffa82d5640927d49324dac41120c851975c78eeb5b0aae116f45b187fa755b1
+	source = PySocks-f4c3cd9897898de69e136c92fd957fd989ee08ec.tar.gz::https://github.com/urllib3/PySocks/archive/f4c3cd9897898de69e136c92fd957fd989ee08ec.tar.gz
+	source = 0001-Fix_HTTP_basic_auth.patch::https://github.com/Anorov/PySocks/pull/147.patch
+	source = 0002-Change_error_type_to_match_native_socket_error.patch::https://github.com/Anorov/PySocks/pull/154.patch
+	source = 0003-Properly_convert_unsigned_integer_fix_urllib3_PySocks_issue_4.patch::https://github.com/urllib3/PySocks/pull/5.patch
+	b2sums = 1c7869c0c49ca44db02b4b9118f703d41be0902d78d38258ed8e93db897736612a9793be4b648495e58d801afa58f14c814243c97055b8f2781d0ed286909c9d
+	b2sums = c43421895dadd00a7845aff973e14eebc12284e4dac71a8c864803beb9e6d418971c518172a194249aece031118e35de074bbf5233a9c5359b3fcb7b99da4f2e
+	b2sums = c05bc0df73783d97879319f69d0b7130380063bd284732944d5876f60a64d05c88e5cafeebd903ef358a5f8cd65818c57a03d842bb95f0c0d4d38d5bd7b099bb
+	b2sums = 76b27a8e8f99dba9e779c638f1b7ffdf5a689fd880cfb69878e9e3f832e23fa32ac0ca0d5c6435db9d9944bab5b006b9800e23dafbae4b63e5fe626f985089be
 
 pkgname = python2-pysocks
+	depends = python2
+	provides = python2-socks=1.7.1
