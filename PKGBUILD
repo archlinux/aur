@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kirigami-addons-git
-pkgver=r32.e22c277
+pkgver=0.3.r0.g917a0fa
 pkgrel=1
 pkgdesc="Add-ons for the Kirigami framework"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -16,7 +16,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+  )
 }
 
 build() {

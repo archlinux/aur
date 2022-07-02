@@ -1,6 +1,6 @@
 pkgbase = kirigami-addons-git
 	pkgdesc = Add-ons for the Kirigami framework
-	pkgver = r32.e22c277
+	pkgver = 0.3.r0.g917a0fa
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kirigami-addons
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = kirigami-addons-git
 	sha256sums = SKIP
 
 pkgname = kirigami-addons-git
-
