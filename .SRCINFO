@@ -1,7 +1,7 @@
 pkgbase = fonts-komorebi-gothic
 	pkgdesc = Komorebi Gothic Japanese outline fonts
 	pkgver = 20180501
-	pkgrel = 1
+	pkgrel = 2
 	url = http://modi.jpn.org/font_komorebi-gothic.php
 	arch = any
 	license = custom
