@@ -1,0 +1,16 @@
+pkgbase = cpuclock
+	pkgdesc = Utility program to adjust the max. CPU clock speed
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://kornelix.net/cpuclock/cpuclock.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = clutter-gtk
+	depends = powerstat
+	depends = cpupower
+	options = !emptydirs
+	source = http://www.kornelix.net/downloads/downloads/cpuclock-2.0.tar.gz
+	sha256sums = 016bf24af65f64a103d1355513af2e07a505886ff6e12490b2231cbc14e41154
+
+pkgname = cpuclock
