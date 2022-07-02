@@ -16,8 +16,7 @@ sha256sums=('d4e6f58e54c0418d7b8debef0c09b77bdff6f435012be94c3edf270b89314fdd'
             'SKIP'
             '050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a'
             'SKIP')
-validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
-validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   cd polly-$pkgver.src
