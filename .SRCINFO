@@ -1,0 +1,21 @@
+pkgbase = drmdb-git
+	pkgdesc = A Direct Rendering Manager database
+	pkgver = r120.91e508f7c5bc
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/drmdb
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = drmdb
+	conflicts = drmdb
+	source = git+https://git.sr.ht/~emersion/drmdb
+	source = drmdb.sysusers
+	source = drmdb.service
+	source = drmdb.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 7a83da6b3ad691f2b89fd104166187bb47deaf80cb20488d92f55887d6be5ce6
+	sha256sums = 709fa0be5ac627cd124950bce2e435f24bd9aabc26805ef0d412d15c521adaa8
+	sha256sums = 1fdeccbb6e8ef835c5c8529c1b9becd53c97f8d837d473570e4ff737f610a6a2
+
+pkgname = drmdb-git

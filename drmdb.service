@@ -1,0 +1,12 @@
+[Unit]
+Description=Direct Rendering Manager database
+After=network.target
+
+[Service]
+Type=simple
+User=drmdb
+Restart=always
+ExecStart=/usr/bin/drmdb
+
+[Install]
+WantedBy=multi-user.target
