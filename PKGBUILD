@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-cmocka
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Elegant unit testing framework for C with support for mock objects (mingw-w64)'
 url='https://cmocka.org/'
 arch=('any')
@@ -51,6 +51,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
     make install DESTDIR="${pkgdir}"
+
+    mv "${pkgdir}"/usr/${_arch}/lib/libcmocka-static.a "${pkgdir}"/usr/${_arch}/lib/libcmocka.a
 
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
