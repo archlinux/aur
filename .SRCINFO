@@ -1,6 +1,6 @@
 pkgbase = perl-debug-client
 	pkgdesc = debugger client side code for Padre, The Perl IDE.
-	pkgver = 0.29
+	pkgver = 0.31
 	pkgrel = 1
 	url = https://metacpan.org/release/Debug-Client
 	arch = any
@@ -15,9 +15,7 @@ pkgbase = perl-debug-client
 	depends = perl-term-readline-gnu>=1.2
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWTIE/Debug-Client-0.29.tar.gz
-	md5sums = 85aab3e367b8f4aff1b527cbaa28d88e
-	sha512sums = 32c5adcc11cf32d729fd027e6cc5c2129d2375391cee4321b29a508029da3054fbc84fae4e84674bf0eac2740f431c9d41d3059e48e4e4963be4bdaa29ebd17e
+	source = https://cpan.metacpan.org/authors/id/M/MA/MANWAR/Debug-Client-0.31.tar.gz
+	sha256sums = 7eecada7346725313c37dc3a29dcc9697f645068d9607d9109c639db03456ca0
 
 pkgname = perl-debug-client
-
