@@ -1,6 +1,6 @@
 pkgbase = mauikit-accounts-git
 	pkgdesc = MauiKit utilities to handle User Accounts
-	pkgver = r10.d9f46d9
+	pkgver = 2.1.2.r4.g9fa3cde
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-accounts
 	arch = x86_64
