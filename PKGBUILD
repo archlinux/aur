@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -20,7 +20,7 @@ depends=('libxml2' 'curl' 'cairo' 'wireless_tools' 'libxinerama'
          'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua' 'librsvg'
          'libxnvctrl' 'libpulse')
 makedepends=('cmake' 'docbook2x' 'perl-xml-libxml' 'docbook-xml'
-             'docbook-xsl' 'cmake' 'git' 'man-db')
+             'docbook-xsl' 'cmake' 'git' 'man-db' 'catch2')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
@@ -33,6 +33,8 @@ prepare() {
   # disable HSV gradients for now
   cd ${srcdir}/${_pkgname}-${pkgver}
   rm tests/test-hsv.cc
+  rm -r tests/catch2
+  ln -s /usr/include/catch2 tests
   sed -i 's/set(test_srcs ${test_srcs} test-hsv.cc)//g' tests/CMakeLists.txt
 }
 
@@ -58,7 +60,8 @@ build() {
     -D BUILD_HSV_GRADIENT=OFF \
     -D BUILD_TESTS=OFF \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    .
+    -Wno-dev \
+    -S .
 
 
   make
