@@ -3,7 +3,7 @@
 
 pkgname=telebot-git
 pkgver=r133.6cff657
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Bot API in C'
 arch=('any')
 url='https://elmurod.net/telebot/'

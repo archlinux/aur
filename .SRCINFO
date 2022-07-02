@@ -1,7 +1,7 @@
 pkgbase = telebot-git
 	pkgdesc = Telegram Bot API in C
 	pkgver = r133.6cff657
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elmurod.net/telebot/
 	arch = any
 	license = Apache
