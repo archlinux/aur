@@ -1,0 +1,20 @@
+# Maintainer: madprops <mprops at protonmail dot com>
+
+pkgname="goldie-git"
+pkgdesc="Search content of text files recursively. Written in Nim."
+pkgver=0.0.1
+pkgrel=1
+arch=("x86_64")
+url="https://github.com/madprops/goldie"
+license=("GPL3")
+makedepends=("nim")
+sha256sums=("SKIP")
+source=("$pkgname::git+https://github.com/madprops/goldie.git")
+
+build() {
+  nim compile -d:release -o=bin/goldie-release-linux "$pkgname/src/goldie.nim"
+}
+
+package() {
+  install -D -m755 bin/goldie-release-linux "$pkgdir/usr/bin/goldie"
+}
