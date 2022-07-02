@@ -3,7 +3,7 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-uefi
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut unified kernel images for systemd-boot"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
@@ -13,19 +13,16 @@ depends=('dracut')
 noextract=()
 conflicts=(dracut-hook)
 source=(
-  "dracut-install"
-  "dracut-remove"
+  "dracut-uefi"
   "90-dracut-install.hook"
-  "60-dracut-remove.hook"
+  "91-dracut-remove.hook"
 )
-sha256sums=('6052fb0aff6543f9bf7749d47c8ac8ccb6a55cb6fb158ea97c841e4aee66447b'
-            '19c8f01de54e0e29fe5e2bf53542bb3744a4b785ab615ed69f9277e67ae0cfeb'
-            '18778db39cd46c6efc7f8fb3b7d6a5007d53bd5dbb78f76b71de5074fe067c4e'
-            '6907029a32d144669cb8d312a788598a43c1a45647c33fa66f2fdf165aea71f8')
+sha256sums=('ec9ad8edbf04a4fc3c3e128d43f976e42791314123347193455497f322e3c647'
+            '0942d3ae411b953a1555c5e2226c1198658ff66556b126824b0ccd65b50ea256'
+            '1daaad5f60d89c5198419db7e8a8d7599e9a4e252907437a1dc8f65f2ccd61b8')
 
 package() {
   install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
-  install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
-  install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
-  install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
+  install -Dm644 "${srcdir}/91-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/91-dracut-remove.hook"
+  install -Dm755 "${srcdir}/dracut-uefi"         "${pkgdir}/usr/share/libalpm/scripts/dracut-uefi"
 }

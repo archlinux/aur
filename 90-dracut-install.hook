@@ -10,5 +10,5 @@ Target = usr/lib/systemd/boot/efi/*.efi.stub
 [Action]
 Description = Generating unified EFI kernel images...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/dracut-install
+Exec = /usr/share/libalpm/scripts/dracut-uefi install
 NeedsTargets

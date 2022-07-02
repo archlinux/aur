@@ -1,0 +1,78 @@
+#!/bin/bash
+
+set -euo pipefail
+
+extract_kernel_version() {
+    local heads
+    heads="${1%/pkgbase}"
+    echo "${heads##*/}"
+}
+
+install_uefi_images() {
+    local kernel_versions
+    local rebuild_all
+    local line
+    local version
+
+    kernel_versions=()
+    rebuild_all=0
+
+    while read -r line; do
+        case "$line" in
+        usr/lib/modules/*/pkgbase)
+            kernel_versions+=("$(extract_kernel_version "$line")")
+            ;;
+        *)
+            rebuild_all=1
+            break;
+            ;;
+        esac
+    done
+
+    if ((rebuild_all)); then
+        kernel_versions=()
+        for file in /lib/modules/*/pkgbase; do
+            kernel_versions+=("$(extract_kernel_version "$file")")
+        done
+    fi
+
+    for version in "${kernel_versions[@]}"; do
+        echo ":: Building unified kernel image for $version"
+        dracut -q -f --uefi --kver "${version}"
+    done
+}
+
+remove_uefi_images() {
+    local efi
+    local machine_id
+    local line
+    local version
+
+    efi="$(bootctl -p)"
+    machine_id="$(< /etc/machine-id)"
+
+    while read -r line; do
+        case "$line" in
+        usr/lib/modules/*/pkgbase)
+            version="$(extract_kernel_version "$line")"
+            echo ":: Removing unified kernel image for $version"
+            rm -f "$efi/EFI/Linux/linux-${version}-${machine_id}"-*.efi
+            ;;
+        *)
+            ;;
+        esac
+    done
+}
+
+case "$1" in
+    "install")
+        install_uefi_images
+        ;;
+    "remove")
+        remove_uefi_images
+        ;;
+    *)
+        echo "Unsupported argument: $1" 1>&2
+        exit 1
+        ;;
+esac

@@ -5,6 +5,6 @@ Target = usr/lib/modules/*/pkgbase
 
 [Action]
 Description = Removing unified EFI kernel images...
-When = PreTransaction
-Exec = /usr/share/libalpm/scripts/dracut-remove
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dracut-uefi remove
 NeedsTargets
