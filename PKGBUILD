@@ -3,7 +3,7 @@
 
 pkgname='python2-pytest-freezegun'
 _name="${pkgname#python2-}"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Wrap freezegun's freeze_time for Pytest (legacy Python 2 version)"
 arch=('any')
