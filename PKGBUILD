@@ -4,13 +4,14 @@ _pkgname=csv2md
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r53.20200214.897bb15
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool for converting CSV files into Markdown tables.'
 url='https://pypi.org/project/csv2md/'
 arch=(any)
 license=(MIT)
 depends=(
   'python>=3.6'
+  'python-importlib-metadata'
 )
 makedepends=(
   'git'
