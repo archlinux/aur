@@ -2,13 +2,13 @@
 # Co-Maintainer: dccafe
 
 pkgname=ldap-account-manager
-pkgver=7.8
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
 url="https://www.ldap-account-manager.org/"
 license=('GPL')
-depends=('php>=5.2.4' 'php-ldap' 'openldap>2.0')
+depends=('php' 'php-ldap' 'openldap')
 optdepends=('php-mcrypt: Store LDAP password encrypted in the session file'
             'perl'
             'perl-quota: Quota module limits disk storage per user'
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://sourceforge.net/projects/lam/file
 #        "fix-htmldir-and-docdir.patch"
         "apache.example.conf"
         "nginx.example.conf")
-sha256sums=('188abdcd39095398bbce734004c1758b03331d32928b678be908b05e5846e5d0'
+sha256sums=('9c56041d1ca56acb5a6f3df950ea744c18d25c46bf684785075b2d2423c387a9'
             '229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34'
             'c1a95b12bf047afa2c6d268b66e54a6572c5c3eef46f4726920e09789b672b3e')
 
