@@ -1,0 +1,13 @@
+pkgbase = dokuwiki-plugin-godiag
+	pkgdesc = create board setting diagrams for the Asian game Go
+	pkgver = 2016.02.03
+	pkgrel = 1
+	url = http://www.dokuwiki.org/plugin:godiag
+	arch = any
+	license = GPL2
+	depends = dokuwiki
+	options = !strip
+	source = dokuwiki-plugin-godiag-2016.02.03.tar.gz::https://github.com/splitbrain/dokuwiki-plugin-godiag/archive/refs/tags/2016-02-03.tar.gz
+	sha512sums = e60766b02c2e8930bc04fb22b44c7e7b14877b4833e7ed6adc58b213b837f16b5ac438eb9e8be09a9b2abab5cc121d4d539f66cebb842894aab30f0b76079fd6
+
+pkgname = dokuwiki-plugin-godiag
