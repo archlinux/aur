@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma-phonebook-git
-pkgver=v21.05.r14.g5124e5d
+pkgver=22.06.r2.g16ef452
 pkgrel=1
 pkgdesc="Phone book for Plasma Mobile"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
   )
 }
 

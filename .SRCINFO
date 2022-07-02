@@ -1,6 +1,6 @@
 pkgbase = plasma-phonebook-git
 	pkgdesc = Phone book for Plasma Mobile
-	pkgver = v21.05.r14.g5124e5d
+	pkgver = 22.06.r2.g16ef452
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-phonebook
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = plasma-phonebook-git
 	sha256sums = SKIP
 
 pkgname = plasma-phonebook-git
-
