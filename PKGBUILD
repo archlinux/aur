@@ -4,10 +4,12 @@ _pkggit=colima
 
 pkgname=colima-bin
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
 url="https://github.com/abiosoft/colima"
+conflicts=('colima')
+provides=('colima')
 license=('MIT')
 source=(
   "https://github.com/abiosoft/${_pkggit}/releases/download/v${pkgver}/${_pkggit}-Linux-x86_64"
