@@ -3,7 +3,7 @@
 # Contributor: Tobias Martin <tm-x at gmx dot net>
 
 pkgname=anbox-modules-dkms-aarch64
-_pkgname=anbox-modules
+_pkgname=anbox-modules-dkms
 pkgver=5.15
 arch="$(uname -r)"
 url='https://github.com/choff/anbox-modules'
