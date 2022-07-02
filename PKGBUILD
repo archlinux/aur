@@ -1,19 +1,20 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=python-pypcap
-pkgver=1.2.3.1
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Python libpcap module"
 arch=('x86_64')
 url="https://github.com/vpiserchia/pypcap"
 license=('custom')
 depends=('python' 'libpcap')
-makedepends=('python-setuptools')
-source=("https://github.com/vpiserchia/pypcap/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2b77b641c5bad8993d0d0b4f012cff0872ed235a036e9abf10e5eddf7c2362e8')
+makedepends=('python-setuptools' 'cython')
+source=("https://github.com/pynetwork/pypcap/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f707c8e116a5e7d70308f41fd27a1dd7b4675bb59827fe901c5a26a508d880a4')
 
 build() {
     cd "$srcdir/pypcap-$pkgver"
+    cython pcap.pyx
     python setup.py build
 }
 
