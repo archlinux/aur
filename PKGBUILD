@@ -8,14 +8,14 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
 url="http://www.mutt.org/"
 license=(GPL2)
 depends=(glibc libgpg-error openssl libsasl mime-types slang sqlite zlib)
-makedepends=(docbook-xml docbook-xsl elinks gdbm git gpgme krb5 libidn2 libxslt
+makedepends=(docbook-xml docbook-xsl elinks gdbm gpgme krb5 libidn2 libxslt
 lynx ncurses)
 provides=(mutt)
 conflicts=(mutt)
@@ -26,43 +26,45 @@ optdepends=(
 )
 backup=(etc/Muttrc)
 options=(debug)
-source=(git+https://gitlab.com/muttmua/${_pkgbase}.git#tag=${_pkgbase}-${pkgver//./-}-rel?signed)
-sha512sums=('SKIP')
-b2sums=('SKIP')
+source=(https://bitbucket.org/${_pkgbase}/${_pkgbase}/downloads/${_pkgbase}-$pkgver.tar.gz{,.asc})
+sha512sums=('07d473b6e6774f3988538e799fcc73ad35efceb5b1a3ee377754332f34db664d40ffa650711c7720ddc5c248e5379bba19fc5fd3dc7418a25305780e25f3b52b'
+            'SKIP')
+b2sums=('07d598e134d35f4a849d95afcd5428689a0aa12797fa5ce08dfa3e8f7929f993c33a813862ceaff59d0c85a4dc28c00612817cc912c27ff94af304ad62ca7fa5'
+        'SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
 
 prepare() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}-$pkgver"
   autoreconf -fiv
 }
 
 build() {
-  cd "${_pkgbase}"
-  ./configure --prefix=/usr \
-              --sysconfdir=/etc \
-              --enable-debug \
-              --enable-gpgme \
-              --enable-pop \
-              --enable-imap \
-              --enable-smtp \
-              --enable-hcache \
-              --enable-sidebar \
-              --enable-autocrypt \
-              --with-slang=/usr \
-              --with-gss=/usr \
-              --with-ssl=/usr \
-              --with-sqlite3 \
-              --with-sasl \
-              --with-idn2
+  cd "${_pkgbase}-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-debug \
+    --enable-gpgme \
+    --enable-pop \
+    --enable-imap \
+    --enable-smtp \
+    --enable-hcache \
+    --enable-sidebar \
+    --enable-autocrypt \
+    --with-slang=/usr \
+    --with-gss=/usr \
+    --with-ssl=/usr \
+    --with-sqlite3 \
+    --with-sasl \
+    --with-idn2
   make
 }
 
 package() {
   depends+=(libgdbm.so libgpgme.so libgssapi_krb5.so libidn2.so)
 
-  cd "${_pkgbase}"
-  make DESTDIR="$pkgdir" install
-  install -vDm 644 contrib/gpg.rc "$pkgdir/etc/Muttrc.gpg.dist"
+  make DESTDIR="$pkgdir" install -C ${_pkgbase}-$pkgver
+  install -vDm 644 ${_pkgbase}-$pkgver/contrib/gpg.rc "$pkgdir/etc/Muttrc.gpg.dist"
 
   # /etc/mime.types is provided by mailcap
   rm "$pkgdir/etc/mime.types"{,.dist}
