@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=communicator-git
-pkgver=r176.708c1dc
+pkgver=2.1.2.r4.g4c8bde7
 pkgrel=1
 pkgdesc="Contacts and dialer application"
 arch=('x86_64')
@@ -17,7 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+  )
 }
 
 build() {
