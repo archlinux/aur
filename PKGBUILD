@@ -2,8 +2,8 @@
 # Previous maintainer: Ben Oliver <ben@bfoliver.com>
 
 pkgname=bukuserver
-pkgver=4.6
-pkgrel=2
+pkgver=4.7
+pkgrel=1
 pkgdesc="Powerful command-line bookmark manager. CLI and server."
 arch=('any')
 depends=('python' 'python-flask-reverse-proxy-fix' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib' 'python-appdirs' 'python-arrow' 'python-cffi' 'python-click' 'python-flask-admin' 'python-flask-api' 'python-flask-bootstrap' 'python-flask-paginate' 'python-flask-wtf' 'python-idna' 'python-itsdangerous' 'python-jinja' 'python-markupsafe' 'python-packaging' 'python-pyasn1' 'python-pycparser' 'python-requests' 'python-six' 'python-werkzeug')
@@ -13,7 +13,7 @@ provides=('buku')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v$pkgver)
-sha256sums=('2e1968016d3856184db8ac49cdc92a6c70869f62846185f28c8c60ead0c42888')
+sha256sums=('11d0860e66e0eea6c2ce566962ae0f8e34c76dc2317d108a4ae4e5a47097d468')
 
 package() {
   cd "$srcdir/buku-$pkgver"
