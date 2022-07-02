@@ -2,7 +2,7 @@
 _pkgbase=openhab3
 pkgname=${_pkgbase}-snapshot
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
@@ -25,13 +25,15 @@ source=("openhab-${pkgver}-SNAPSHOT.tar.gz::https://ci.openhab.org/job/openHAB3-
         "${_pkgbase}.service"
         "${_pkgbase}.default"
         "${_pkgbase}.patch"
-        "karaf_wrapper.sh")
+        "karaf_wrapper.sh"
+        "${_pkgbase}.hook")
 
 sha256sums=('SKIP'
             '995bb5eacc583c22fe97555fd67e69911a63cfb02449a046481b5a0e64f4032c'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b'
-            '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762')
+            '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762'
+            'f767e7a6a3442bb672105a30aa1a711ea893286b2ade347db70939f00a644ebf')
 
 prepare() {
     patch -p1 < ${srcdir}/${_pkgbase}.patch
@@ -51,6 +53,9 @@ package() {
     cp -r "${srcdir}/runtime" "${pkgdir}/usr/share/${_pkgbase}"
     cp -r "${srcdir}/addons" "${pkgdir}/usr/share/${_pkgbase}"
     install -m755 "${srcdir}/karaf_wrapper.sh" "${pkgdir}/usr/share/${_pkgbase}/karaf_wrapper.sh"
+
+    mkdir -p "${pkgdir}/usr/share/libalpm/hooks"
+    install -m644 "${srcdir}/${_pkgbase}.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgbase}.hook"
 
     mkdir -p "${pkgdir}/var/log/${_pkgbase}"
 

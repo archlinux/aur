@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = openhab3-snapshot
+Target = openhab3-snapshot-addons
+
+[Action]
+Description = Stopping openHAB3 for upgrade
+When = PreTransaction
+Exec = /usr/bin/systemctl stop openhab3.service
