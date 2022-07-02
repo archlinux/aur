@@ -2,7 +2,7 @@
 
 pkgname="lq-git"
 pkgdesc="File listing tool. Written in Nim."
-pkgver=r282.e050329
+pkgver=r284.28f9a69
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/lq"
