@@ -2,7 +2,7 @@
 
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
-pkgver=1.5.52
+pkgver=1.5.81.r1.e713cf5
 pkgrel=1
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
@@ -13,6 +13,7 @@ makedepends=('git')
 optdepends=(
 	'mpv: streaming support'
 	'vlc: streaming support'
+	'fzf: fuzzy finder support'
 	'python-pypresence: Discord RPC'
 )
 provides=("${_pkgname}")
