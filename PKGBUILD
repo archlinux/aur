@@ -7,7 +7,7 @@ pkgdesc='POGGERS pixelart printer for celebrating accomplishments'
 arch=('any')
 url="https://github.com/poggeroni/gopoggers"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 source=(git+$url#tag=v$pkgver)
 sha256sums=('SKIP')
 
