@@ -1,6 +1,6 @@
 # Maintainer: Nathan Craddock <contact@nathancraddock.com>
 pkgname=zf
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A commandline fuzzy finder that prioritizes matches on filenames"
 arch=('x86_64')
@@ -9,7 +9,7 @@ makedepends=('git' 'zig')
 provides=(zf)
 url="https://github.com/natecraddock/zf"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0364076b6776b9ad80d849d84ecb9303b26d4d6a6600e847455be8fc57556b83')
+sha256sums=('3b5ff72571867f22d51dd1e349c86bf4b00b90604ff3f26de1b95bf752523e8e')
 
 build() {
     cd "$pkgname-$pkgver"
