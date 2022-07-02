@@ -8,13 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2022.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'npm' 'libxcrypt-compat')
+makedepends=('cargo' 'git' 'go' 'nodejs>=16' 'npm>=8.3' 'libxcrypt-compat')
 options=('!lto')
 install="$pkgname.install"
 _tag=a66504d6b8cc708a1da4b4e6b40fbe51e9dde4d2 # tags/2022.2^0
