@@ -73,6 +73,7 @@ prepare() {
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
+	sed -i '/enable_discord_presence/s/true/false/' src/yuzu/uisettings.h
 }
 
 build() {
