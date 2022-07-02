@@ -2,7 +2,7 @@
 
 pkgname=drmdb-git
 _pkgname=drmdb
-pkgver=r120.91e508f7c5bc
+pkgver=r121.963275d7eceb
 pkgrel=1
 pkgdesc='A Direct Rendering Manager database'
 arch=('x86_64')
@@ -32,7 +32,7 @@ pkgver() {
 build() {
 	cd "$srcdir/drmdb"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	make
+	make PREFIX=/usr
 }
 
 package() {
