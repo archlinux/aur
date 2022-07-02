@@ -2,7 +2,7 @@
 
 pkgname=dojo
 pkgver=$PKGVER
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to keep environment as code. Dojo helps to compile code and run other operations in Docker containers. Containerize your development and operations environment."
 arch=('x86_64')
 url="https://github.com/kudulab/dojo"
@@ -13,13 +13,18 @@ depends=('bash'
 conflicts=('dojo-bin')
 provides=('dojo')
 license=('Apache-2')
-makedepends=('go>=1.17')
+makedepends=('go>=1.17' 'git' 'gzip' 'tar')
 source=(
   "https://raw.githubusercontent.com/kudulab/dojo/${pkgver}/LICENSE.txt"
   "${pkgname}-${pkgver}.tar.gz::https://github.com/kudulab/${pkgname}/archive/${pkgver}.tar.gz"
 )
 sha256sums=('445d1c72f0f764bea0bdebad180d9dc2255b6078e88c09bdd3ef7a99ee90a4d4'
             '928c42721fb8542034509ad91f49c467a7d34da462a3a3cf98feced45463e8e7')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
 
 build() {
   export GOPATH="${srcdir}"/gopath
