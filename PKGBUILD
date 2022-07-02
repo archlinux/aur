@@ -1,31 +1,37 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: FadeMind <fademind@gmail.com>
 
+_altname=yakuake-breeze_perfect_dark
 pkgname=yakuake-skin-breeze-perfect-dark
-pkgver=2.0
+pkgver=2.0.r10.gbf263e2
 pkgrel=1
 pkgdesc="The perfect Breeze Dark theme for Yakuake"
 arch=("any")
-url="https://store.kde.org/p/1193435"
-license=("GPL")
-
+url="https://github.com/noahadvs/yakuake-breeze_perfect_dark"
+license=("GPL2")
 depends=("yakuake")
+source=("git+${url}#commit=bf263e2c2d2e8061d82846b9029b023884458a84")
+md5sums=('SKIP')
 
-source=("https://github.com/noahadvs/yakuake-breeze_perfect_dark/archive/v${pkgver}.tar.gz")
-sha512sums=('383f330f0ac01cf7d348c543bf5c4e951b4d444b761940e863f3ca7afd4be5960ca91b170186207f55dc9ca5419a9f3a1928a473bc5955be7e80b6ef4c8da77a')
-
+pkgver() {
+  cd "$_altname"
+  ( set -o pipefail
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+  )
+}
 
 prepare() {
-    mv "yakuake-breeze_perfect_dark-${pkgver}" "breeze-perfect-dark"
-    rm -rf "breeze-perfect-dark/customizations" # not needed for final package
+  rm -rf "$_altname/customizations" # not needed for final package
 }
 
 package() {
-    cd ${srcdir}
+  cd "$_altname"
 
-    find "breeze-perfect-dark"/* -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/{}" \;
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/{}" \;
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }
