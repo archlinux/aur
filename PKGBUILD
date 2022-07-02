@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=8
+pkgrel=9
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -21,8 +21,8 @@ checkdepends=(
   'python2-flaky'
   'python2-mock'
   'python2-pyopenssl'
-  'python2-pysocks'
-  'python2-pytest-freezegun>=0.4.2'
+# 'python2-pysocks'         # seems unrealiable; test cases are indeterministic
+  'python2-pytest-freezegun>=0.4.0'
   'python2-pytest-runner'
   'python2-pytest-timeout'
   'python2-tornado'
@@ -32,7 +32,7 @@ optdepends=(
 # 'python2-brotli: Brotli support via pure-Python2 module'
 # 'python2-brotlicffi: Brotli support via native binary library'
   'python2-pyopenssl: secure connection support'
-  'python2-pysocks: SOCKS support'
+  'python2-pysocks: SOCKS proxy support (deprecated)'
   'python2-gcp-devrel-py-tools: Google AppEngine support'
   'python-urllib3-doc: urllib3 documentation'
 )
@@ -58,7 +58,7 @@ check() {
     export LC_ALL=C.UTF-8
     export PYTHONDONTWRITEBYTECODE=1
     python2 setup.py pytest --addopts \
-      "--verbose --cache-clear --deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
+      "--verbose --cache-clear --ignore test/contrib/test_socks.py --deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
   )
 }
 

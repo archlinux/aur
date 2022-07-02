@@ -1,15 +1,14 @@
 pkgbase = python2-urllib3
 	pkgdesc = HTTP library with thread-safe connection pooling and file post support
 	pkgver = 1.26.9
-	pkgrel = 8
+	pkgrel = 9
 	url = https://pypi.org/project/urllib3/1.26.9/
 	arch = any
 	license = MIT
 	checkdepends = python2-flaky
 	checkdepends = python2-mock
 	checkdepends = python2-pyopenssl
-	checkdepends = python2-pysocks
-	checkdepends = python2-pytest-freezegun>=0.4.2
+	checkdepends = python2-pytest-freezegun>=0.4.0
 	checkdepends = python2-pytest-runner
 	checkdepends = python2-pytest-timeout
 	checkdepends = python2-tornado
@@ -17,7 +16,7 @@ pkgbase = python2-urllib3
 	makedepends = python2-setuptools
 	depends = python2
 	optdepends = python2-pyopenssl: secure connection support
-	optdepends = python2-pysocks: SOCKS support
+	optdepends = python2-pysocks: SOCKS proxy support (deprecated)
 	optdepends = python2-gcp-devrel-py-tools: Google AppEngine support
 	optdepends = python-urllib3-doc: urllib3 documentation
 	source = https://github.com/urllib3/urllib3/archive/1.26.9/urllib3-1.26.9.tar.gz
