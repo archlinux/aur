@@ -1,7 +1,7 @@
 pkgbase = rumtricks
 	pkgdesc = Winetricks alternative
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/jc141x/rumtricks
 	arch = x86_64
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = rumtricks
 	depends = wine
 	depends = xz
 	conflicts = rumtricks-git
-	source = https://github.com/jc141x/rumtricks/releases/download/0.2.0/rumtricks.sh
-	source = https://github.com/jc141x/rumtricks/releases/download/0.2.0/wha.sh
-	md5sums = 0db84e9c83cdd83d8d492b4bec89c738
+	source = rumtricks-0.2.1::https://github.com/jc141x/rumtricks/releases/download/0.2.1/rumtricks.sh
+	source = wha-0.2.1::https://github.com/jc141x/rumtricks/releases/download/0.2.1/wha.sh
+	md5sums = 03452bc6f347d717f5da7895f2e5c017
 	md5sums = 21d1c41cc011ffdcf237784820c3b3f9
 
 pkgname = rumtricks
