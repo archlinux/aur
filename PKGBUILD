@@ -4,9 +4,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
-pkgver=1.11.0
-_pkgver=1.11.0
-pkgrel=11
+pkgver=1.12.0
+_pkgver=1.12.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -19,49 +19,48 @@ makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' '
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'gcc11')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
-        # "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
+        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
-        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
-        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
-        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
-        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
         "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
-        "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
         "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
-        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
-        "${pkgname}-ideep::git+https://github.com/intel/ideep"
-        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
-        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
+        "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
+        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
         "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
-        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
-        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
-        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
-        "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
-        "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
+        "${pkgname}-ideep::git+https://github.com/intel/ideep"
+        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
+        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
+        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
+        "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
-        "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
-        "${pkgname}-breakpad::git+https://github.com/driazati/breakpad.git"
-        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
-        "${pkgname}-tbb::git+https://github.com/01org/tbb"
+        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+        "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
-        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
+        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
-        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-json::git+https://github.com/nlohmann/json.git"
+        "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
+        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
+        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
-        98f9ff90268ae62ab6d794cce0786121bf17edc9.patch
+        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/79360.patch
         ffmpeg4.4.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -105,7 +104,7 @@ sha256sums=('SKIP'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
-            'cf6ec8e4952765b190e1cae247a814dd1e6b3e9c8b3ad5600118d69d6faa6eb5'
+            'bd89e94fd077b2e2bf04ffb0794f5bcb68379a6abcd4339aa99e9bba9fe4edec'
             '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9')
 options=('!lto')
 
@@ -121,7 +120,7 @@ prepare() {
 
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
-  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen-git-mirror
+  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
@@ -155,16 +154,13 @@ prepare() {
   git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
-  git config submodule."third_party/breakpad".url "${srcdir}/${pkgname}"-breakpad
   git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
+  git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
 
   git submodule update --init --recursive
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
-
-  # Fix https://bugs.archlinux.org/task/74593
-  patch -Np1 -i "${srcdir}"/98f9ff90268ae62ab6d794cce0786121bf17edc9.patch
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
@@ -172,19 +168,11 @@ prepare() {
   # fix https://github.com/pytorch/vision/issues/3695
   patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
-  # remove local nccl
-  # rm -rf third_party/nccl/nccl
-  # also remove path from nccl module, so it's not checked
-  # sed -e '/path = third_party\/nccl\/nccl/d' -i ./.gitmodules
-
-  # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
-  sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
+  # Fix building against glog 0.6
+  patch -Np1 -i "${srcdir}/79360.patch"
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
-
-  # Backport https://github.com/driazati/breakpad/commit/605c51ed96ad44b34c457bbca320e74e194c317e for fixing build with glibc > 2.33
-  git -C third_party/breakpad cherry-pick -n 605c51ed96ad44b34c457bbca320e74e194c317e
 
   cd "${srcdir}"
 
