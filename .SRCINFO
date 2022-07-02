@@ -10,8 +10,7 @@ pkgbase = beamer-theme-torino-git
 	depends = texlive-core
 	provides = beamer-theme-torino
 	conflicts = beamer-theme-torino
-	source = git://github.com/bbatsov/beamer-torino-theme.git
+	source = git+https://github.com/bbatsov/beamer-torino-theme.git
 	md5sums = SKIP
 
 pkgname = beamer-theme-torino-git
-
