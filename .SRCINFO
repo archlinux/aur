@@ -1,7 +1,7 @@
 pkgbase = python2-urllib3
 	pkgdesc = HTTP library with thread-safe connection pooling and file post support
 	pkgver = 1.26.9.r11.g37ba0024
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/urllib3/
 	arch = any
 	license = MIT
