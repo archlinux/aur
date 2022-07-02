@@ -1,0 +1,13 @@
+pkgbase = lq-git
+	pkgdesc = File listing tool. Written in Nim.
+	pkgver = r281.1e25717
+	pkgrel = 1
+	url = https://github.com/madprops/lq
+	arch = x86_64
+	license = GPL2
+	makedepends = nim
+	makedepends = nimble
+	source = lq-git::git+https://github.com/madprops/lq.git
+	sha256sums = SKIP
+
+pkgname = lq-git
