@@ -5,7 +5,7 @@
 pkgname='python2-pytest-timeout'
 _name="${pkgname#python2-}"
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Pytest plugin to abort hanging tests (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
