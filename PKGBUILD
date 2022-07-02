@@ -2,7 +2,7 @@
 
 pkgname=plasma5-applets-simplemenu-git
 _gitname=plasma-simplemenu
-pkgver=r92.dc841e7
+pkgver=1.0.4.r51.g6b3ad3e
 pkgrel=1
 pkgdesc="Simplified menu for your Plasma Desktop"
 arch=('any')
@@ -17,7 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+  )
 }
 
 build() {
