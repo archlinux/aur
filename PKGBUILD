@@ -2,7 +2,7 @@
 
 pkgname=python-confusables
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python package providing functionality for matching words that can be confused for eachother, but contain different characters"
 arch=('any')
 url="https://pypi.org/project/confusables/"
@@ -21,4 +21,6 @@ build() {
 package() {
     cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -rf "${pkgdir}${site_packages}/tests/"
 }

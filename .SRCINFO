@@ -1,7 +1,7 @@
 pkgbase = python-confusables
 	pkgdesc = A python package providing functionality for matching words that can be confused for eachother, but contain different characters
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/confusables/
 	arch = any
 	license = MIT
