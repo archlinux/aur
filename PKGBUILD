@@ -2,7 +2,7 @@
 
 pkgname="lq-git"
 pkgdesc="File listing tool. Written in Nim."
-pkgver=0.0.2
+pkgver=r282.e050329
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/lq"
@@ -25,5 +25,4 @@ build() {
 package() {
   cd lq-git
   install -D -m755 bin/lq-release-linux "$pkgdir/usr/bin/lq"
-  cp -n lq.conf ~/.config/lq/lq.conf
 }
