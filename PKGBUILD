@@ -5,7 +5,7 @@
 
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=ghost-git
-pkgver=1.1.2
+pkgver=1.1.2.1
 pkgrel=1
 pkgdesc="Simple tool to take screenshots using your terminal"
 arch=(x86_64 i686)
