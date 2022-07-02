@@ -1,33 +1,18 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: z3oxs <z3ox1s@protonmail.com>
 pkgname=dl
-pkgver=1.0.2
+pkgver=1.0.2.1
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc="A tool and core to download videos from your terminal"
 arch=(x86_64 i686)
 url="https://github.com/z3oxs/dl.git"
-license=('GPL')
-groups=()
+license=('MIT')
 depends=(go)
-makedepends=(go)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=(git go)
+provides=(dl)
+conflicts=(dl)
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/dl/cli/"
@@ -35,6 +20,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/dl/cli/"
+    cd "$srcdir/dl"
+    install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "cli/"
     install -Dm755 dl "${pkgdir}/usr/bin/dl"
 }

@@ -1,13 +1,18 @@
 pkgbase = dl
-	pkgver = 1.0.2
+	pkgdesc = A tool and core to download videos from your terminal
+	pkgver = 1.0.2.1
 	pkgrel = 1
 	url = https://github.com/z3oxs/dl.git
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = go
+	provides = dl
+	conflicts = dl
 	source = git+https://github.com/z3oxs/dl.git
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dl
