@@ -26,7 +26,7 @@ _scripts="skywire-scripts"
 source=( "${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"  )
 sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
-            'fa04907d07072130098fe662ec317b658acf62f110b9c185d4b77b6afa4ffe08')
+            'd0ea05fdf51b34a1ad2142b289bc5671b22e503b5ea83d54b029f3b9ad3cbcaa')
 
 prepare() {
  # https://wiki.archlinux.org/index.php/Go_package_guidelines
