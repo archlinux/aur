@@ -5,12 +5,12 @@ _watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'VNC-Viewer-
 
 pkgname=realvnc-vnc-viewer
 pkgver=6.22.515
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC remote desktop client software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.realvnc.com/'
 license=('custom')
-depends=('libsm' 'libxext' 'libxcrypt-compat')
+depends=('libsm' 'libxext')
 conflicts=('tightvnc' 'tigervnc' 'turbovnc')
 source_x86_64=("https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x64.deb")
 source_i686=("https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x86.deb")

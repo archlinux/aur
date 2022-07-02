@@ -1,7 +1,7 @@
 pkgbase = realvnc-vnc-viewer
 	pkgdesc = VNC remote desktop client software by RealVNC
 	pkgver = 6.22.515
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.realvnc.com/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = realvnc-vnc-viewer
 	license = custom
 	depends = libsm
 	depends = libxext
-	depends = libxcrypt-compat
 	conflicts = tightvnc
 	conflicts = tigervnc
 	conflicts = turbovnc
