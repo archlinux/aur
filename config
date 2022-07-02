@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.14.281-1 Kernel Configuration
+# Linux/x86 4.14.286-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -3800,6 +3800,8 @@ CONFIG_TCG_CRB=m
 CONFIG_TELCLOCK=m
 CONFIG_DEVPORT=y
 # CONFIG_XILLYBUS is not set
+CONFIG_RANDOM_TRUST_CPU=y
+CONFIG_RANDOM_TRUST_BOOTLOADER=y
 
 #
 # I2C support
