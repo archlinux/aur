@@ -1,0 +1,23 @@
+pkgbase = hottub-git
+	pkgdesc = A CI bridge from GitHub to SourceHut
+	pkgver = r29.dbe5642a0d03
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/hottub
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = hottub
+	conflicts = hottub
+	source = git+https://git.sr.ht/~emersion/hottub
+	source = hottub.service
+	source = hottub.sysusers
+	source = hottub.tmpfiles
+	source = params
+	sha256sums = SKIP
+	sha256sums = 42a9048795e1df22b6425734273f683e9bdaf4318738040f855701cdbb2ddf4e
+	sha256sums = 37ad30b17c564b43331a390405a34bdd35f2139e1de220f7374b46ceac6707c1
+	sha256sums = 38313409f2f1c974473f42b2f8e00c836033afe5fffa7677bfb932480ef989c3
+	sha256sums = 854056e63276c1418ff1ba832fe4ebf14e31b957f754db778062f63b8f83f0e0
+
+pkgname = hottub-git

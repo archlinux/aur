@@ -1,0 +1,8 @@
+listen=:3333
+
+gh_app_id=
+gh_private_key=
+gh_webhook_secret=
+
+metasrht_client_id=
+metasrht_client_secret=
