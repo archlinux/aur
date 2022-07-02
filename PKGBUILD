@@ -1,16 +1,15 @@
 pkgname=switcheroo-control
-pkgver=2.5
-pkgrel=3
+# Note to self: Update _commit, not pkgver
+pkgver=2.6
+pkgrel=1
 pkgdesc="D-Bus service to check the availability of dual-GPU"
 arch=(i686 x86_64)
 url="https://gitlab.freedesktop.org/hadess/switcheroo-control"
 license=(GPL3)
 depends=(glib2 libgudev python)
 makedepends=(git libxslt meson systemd)
-# test dependencies need to be present for unittest_inspector at build time
-makedepends+=(dbus-python python-dbusmock umockdev)
 checkdepends=(dbus-python python-dbusmock umockdev)
-_commit=992977918026e4eec352d38728b2e55f73fd02d2
+_commit=0dd257edd6b27589d2a1013cda1d2d5f325eee8b
 source=("git+https://gitlab.freedesktop.org/hadess/switcheroo-control.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -21,6 +20,8 @@ pkgver() {
 
 build() {
   arch-meson $pkgname build
+  # TODO: Figure out when/how to add -Dtests=true. I think we'd need to check
+  #       either for (( CHECKFUNC )) or `! check_buildenv check n`.
   meson compile -C build
 }
 
