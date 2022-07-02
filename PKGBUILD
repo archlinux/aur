@@ -2,7 +2,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgname="mkdocs-git-revision-date-localized-plugin"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="MkDocs plugin to add a last updated date to your site pages"
 url="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin/"
@@ -14,7 +14,7 @@ depends=("mkdocs" "python-gitpython" "python-babel>=2.7.0")
 makedepends=("python-setuptools")
 #makedepends=('python-wheel' 'python-build' 'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ac8b3d87be2e24f233996e950400090efd3aab27fa9da68b9134c1eea89ccc0a')
+sha256sums=('b3111658e269763a21e089576d28a13833dca247bd0d4bf937713fbf7d6db30d')
 
 build(){
     cd ${srcdir}/${pkgname}-${pkgver}
