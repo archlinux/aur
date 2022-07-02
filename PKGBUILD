@@ -1,24 +1,35 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=modeldata
-_cranver=0.1.1
+_cranver=1.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Data Sets Used Useful for Modeling Packages"
+pkgdesc="Data Sets Useful for Modeling Examples"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=(r)
-optdepends=(r-covr)
+depends=(
+    r-dplyr
+    r-purrr
+    r-rlang
+    r-tibble
+)
+checkdepends=(r-testthat)
+optdepends=(r-covr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('a4b2f1e430f2640a39763bb5362aa7568faef9e762fbf1b81f325d3493e3f949'
+sha256sums=('9561f515b3d61e6c6faee5b7554ce25ec117b65970a15b5f8e505165d0434d99'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
   mkdir -p build
   R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
+
+check() {
+  cd "${_cranname}/tests"
+  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {

@@ -1,15 +1,20 @@
 pkgbase = r-modeldata
-	pkgdesc = Data Sets Used Useful for Modeling Packages
-	pkgver = 0.1.1
+	pkgdesc = Data Sets Useful for Modeling Examples
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=modeldata
 	arch = any
 	license = MIT
-	depends = r
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-tibble
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/modeldata_0.1.1.tar.gz
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/modeldata_1.0.0.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = a4b2f1e430f2640a39763bb5362aa7568faef9e762fbf1b81f325d3493e3f949
+	sha256sums = 9561f515b3d61e6c6faee5b7554ce25ec117b65970a15b5f8e505165d0434d99
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-modeldata
