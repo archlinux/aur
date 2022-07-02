@@ -3,7 +3,7 @@
 pkgname=python-pysmt-git
 pkgdesc="A library for SMT formulae manipulation and solving"
 url="https://github.com/pysmt/pysmt"
-pkgver=0.9.0.r151.ga32cd27
+pkgver=0.9.5.r14.gf81dd89
 pkgrel=1
 arch=('any')
 depends=('python')
