@@ -4,7 +4,7 @@
 pkgname='python2-pytest-freezegun'
 _name="${pkgname#python2-}"
 pkgver=0.3.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrap freezegun's freeze_time for Pytest (legacy Python 2 version)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -24,7 +24,7 @@ prepare() {
 
   if [[ -d 'tmp_install' ]]; then
         echo "Cleaning the previous 'tmp_install' directory"
-        rm -rfv "${srcdir}/build"
+        rm -rfv 'tmp_install'
   fi
 
   echo "Changing hashbangs in *.py files to refer to 'python2'"
