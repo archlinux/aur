@@ -1,7 +1,7 @@
 pkgbase = python2-urllib3
 	pkgdesc = HTTP library with thread-safe connection pooling and file post support
 	pkgver = 1.26.9
-	pkgrel = 7
+	pkgrel = 8
 	url = https://pypi.org/project/urllib3/1.26.9/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python2-urllib3
 	checkdepends = python2-mock
 	checkdepends = python2-pyopenssl
 	checkdepends = python2-pysocks
-	checkdepends = python2-pytest-freezegun
+	checkdepends = python2-pytest-freezegun>=0.4.2
 	checkdepends = python2-pytest-runner
 	checkdepends = python2-pytest-timeout
 	checkdepends = python2-tornado

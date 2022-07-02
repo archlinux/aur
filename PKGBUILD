@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=7
+pkgrel=8
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -22,7 +22,7 @@ checkdepends=(
   'python2-mock'
   'python2-pyopenssl'
   'python2-pysocks'
-  'python2-pytest-freezegun'
+  'python2-pytest-freezegun>=0.4.2'
   'python2-pytest-runner'
   'python2-pytest-timeout'
   'python2-tornado'
