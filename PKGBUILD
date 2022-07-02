@@ -4,7 +4,7 @@
 pkgname='python2-freezegun'
 _name="${pkgname#python2-}"
 pkgver=0.3.15
-pkgrel=6
+pkgrel=7
 pkgdesc="Let your Python tests travel through time"
 pkgdesc="Support for tests to mock datetime and set fake times values (legacy Python 2 version)"
 arch=('any')
@@ -26,11 +26,11 @@ b2sums=('d4ed621d2d25ed675758d4385e892fb3af220ecc694310e6124fe1c1bbf3cf02f0088af
 prepare() {
   cd "${_tarname}"
 
-  echo "Changing hashbangs in *.py files to refer to 'python3'"
-  sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python3|' \
+  echo "Changing hashbangs in *.py files to refer to 'python2'"
+  sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
       -i $(find . -name '*.py')
 
-  echo "Deleting async modules since they only support Python 3"
+  echo "Deleting async modules since they don't support Python 2"
   rm -rv $(find . -name '*_async*.py')
 }
 
