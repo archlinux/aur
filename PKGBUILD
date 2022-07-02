@@ -3,8 +3,8 @@
 
 pkgname='python2-pytest-freezegun'
 _name="${pkgname#python2-}"
-pkgver=0.3.0.post1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Wrap freezegun's freeze_time for Pytest (legacy Python 2 version)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -17,7 +17,7 @@ checkdepends=(
 )
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('de7f16054d964163eef8919cc361851cbefe5e78ac0b44dee4bf9a391303e7b995a8b047c3fc4b0735b95ab13bd3b9f8a9b4ef4725ad4cda3ad68901b55d395c')
+b2sums=('aaaea6a38c1e19a8158683d2e3cf34704163bcda58ba20b9fd066b89271c1fac621bdfe2200ce3c43391bc9b9a2aecb3b4e5b7a7e585df8af7676f60d16c2b14')
 
 prepare() {
   cd "${_tarname}"
