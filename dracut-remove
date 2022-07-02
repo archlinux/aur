@@ -1,9 +1,24 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -euo pipefail
 
 efi="$(bootctl -p)"
+machine_id="$(< /etc/machine-id)"
+
+extract_kernel_version() {
+    local heads
+    heads="${1%/pkgbase}"
+    echo "${heads##*/}"
+}
+
 while read -r line; do
-    if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-        kver="$(basename "$(dirname "${line}")")"
-        rm -v "$efi/EFI/Linux/linux-${kver}-$(cat /etc/machine-id)"-*.efi
-    fi
+    case "$line" in
+    usr/lib/modules/*/pkgbase)
+        version="$(extract_kernel_version "$line")"
+        echo ":: Removing unified kernel image for $version"
+        rm -f "$efi/EFI/Linux/linux-${version}-${machine_id}"-*.efi
+        ;;
+    *)
+        ;;
+    esac
 done

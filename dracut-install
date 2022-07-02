@@ -1,32 +1,36 @@
-#!/bin/bash -e
+#!/bin/bash
 
-kernels=()
-dracut_update=0
+set -euo pipefail
+
+kernel_versions=()
+rebuild_all=0
+
+extract_kernel_version() {
+    local heads
+    heads="${1%/pkgbase}"
+    echo "${heads##*/}"
+}
 
 while read -r line; do
-    if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-        dracut_update=1 # Dracut files have been updated
-        continue
-    fi
-
-    read -r pkgbase <"/${line}"
-    kernels+=("${pkgbase}")
+    case "$line" in
+    usr/lib/modules/*/pkgbase)
+        kernel_versions+=("$(extract_kernel_version "$line")")
+        ;;
+    *)
+        rebuild_all=1
+        break;
+        ;;
+    esac
 done
 
-if ((dracut_update)); then
-    kernels=()
+if ((rebuild_all)); then
+    kernel_versions=()
     for file in /lib/modules/*/pkgbase; do
-        if read -r pkgbase &>/dev/null <"$file"; then
-            kernels+=("${pkgbase}")
-        fi
+        kernel_versions+=("$(extract_kernel_version "$file")")
     done
 fi
 
-for kernel in "${kernels[@]}"; do
-    path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
-    version=$(basename "${path%/pkgbase}")
-    read -r pkgbase <"$path"
-
-    echo ":: Building unified kernel image for $kernel-$version"
+for version in "${kernel_versions[@]}"; do
+    echo ":: Building unified kernel image for $version"
     dracut -q -f --uefi --kver "${version}"
 done
