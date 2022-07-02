@@ -1,0 +1,60 @@
+diff -u ORLite-1.98/t/02_basics.t.orig ORLite-1.98/t/02_basics.t	
+--- ORLite-1.98/t/02_basics.t.orig	2012-10-01 00:48:41.000000000 +0200
++++ ORLite-1.98/t/02_basics.t	2022-07-02 20:43:19.248705932 +0200
+@@ -64,7 +64,7 @@
+ 		name       => 'col1',
+ 		notnull    => 1,
+ 		pk         => 1,
+-		type       => 'integer',
++		type       => 'INTEGER',
+ 	},
+ 	{
+ 		cid        => 1,
+diff -u ORLite-1.98/t/10_cleanup.t.orig ORLite-1.98/t/10_cleanup.t
+--- ORLite-1.98/t/10_cleanup.t.orig	2012-10-01 00:48:41.000000000 +0200
++++ ORLite-1.98/t/10_cleanup.t	2022-07-02 20:41:31.369658211 +0200
+@@ -29,7 +29,7 @@
+ use strict;
+ use ORLite {
+ 	file    => '$file',
+-	cleanup => 'VACUUM ANALYZE',
++	cleanup => 'VACUUM; ANALYZE',
+ };
+ 
+ 1;
+diff -u ORLite-1.98/t/11_cleanup.t.orig	ORLite-1.98/t/11_cleanup.t	
+--- ORLite-1.98/t/11_cleanup.t.orig	2012-10-01 00:48:41.000000000 +0200
++++ ORLite-1.98/t/11_cleanup.t	2022-07-02 20:42:47.658984575 +0200
+@@ -29,7 +29,7 @@
+ use strict;
+ use ORLite {
+ 	file    => '$file',
+-	cleanup => 'VACUUM ANALYZE',
++	cleanup => 'VACUUM; ANALYZE',
+ };
+ 
+ 1;
+diff -u ORLite-1.98/t/19_view.t.orig ORLite-1.98/t/19_view.t
+--- ORLite-1.98/t/19_view.t.orig	2012-10-01 00:48:41.000000000 +0200
++++ ORLite-1.98/t/19_view.t	2022-07-02 20:45:28.097570974 +0200
+@@ -53,7 +53,7 @@
+ 		name       => 'col1',
+ 		notnull    => 0,
+ 		pk         => 0,
+-		type       => 'integer',
++		type       => 'INTEGER',
+ 	},
+ 	{
+ 		cid        => 1,
+diff -u ORLite-1.98/t/21_normalize.t.orig ORLite-1.98/t/21_normalize.t
+--- ORLite-1.98/t/21_normalize.t.orig	2012-10-01 00:48:41.000000000 +0200
++++ ORLite-1.98/t/21_normalize.t	2022-07-02 20:45:28.097570974 +0200
+@@ -66,7 +66,7 @@
+ 		name       => 'columnID',
+ 		notnull    => 1,
+ 		pk         => 1,
+-		type       => 'integer',
++		type       => 'INTEGER',
+ 	},
+ 	{
+ 		cid        => 1,

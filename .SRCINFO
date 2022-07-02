@@ -1,18 +1,20 @@
 pkgbase = perl-orlite
 	pkgdesc = ORLite - Extremely light weight SQLite-specific ORM
 	pkgver = 1.98
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/ORLite
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-test-script
+	makedepends = perl-module-install
 	depends = perl-file-remove
 	depends = perl-dbd-sqlite
 	depends = perl-params-util
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/ORLite-1.98.tar.gz
-	md5sums = 25912f777daf95114e10f4b3e3a3c35a
+	source = fix_tests.patch
+	sha256sums = 79e9ef07dee7feb7cafdea1a9c0432e12587fc350707a6bc72fd29502b87d021
+	sha256sums = f5135d9dab28d8163e418428af346b1d9484f8513d8874c65bd3eddfe4491a97
 
 pkgname = perl-orlite
-
