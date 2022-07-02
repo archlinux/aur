@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=recipes
-_cranver=0.2.0
+_cranver=1.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,6 +12,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(
+    r-cli
     r-dplyr
     r-ellipsis
     r-generics
@@ -52,7 +53,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('3d0073e3eb98ac089a94bf8430f3c50915ff1f495d8e967c37baa6a0f6cea0a4'
+sha256sums=('11196068b559b3f54aaf3489b69c1acab4e0a5e824706a81755f495ec4b77d12'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
