@@ -1,6 +1,6 @@
 pkgbase = kquickimageeditor-git
 	pkgdesc = Image editing components
-	pkgver = v0.1.r20.gd68391b
+	pkgver = 0.2.0.r9.gbe39cdb
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kquickimageeditor
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = kquickimageeditor-git
 	sha256sums = SKIP
 
 pkgname = kquickimageeditor-git
-
