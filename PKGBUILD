@@ -2,8 +2,8 @@
 # Maintainer: toitenminh <iam.minhnc@outlook.com>
 
 pkgname="cli-visualizer-git"
-pkgver=496.b98068f
-pkgrel=9
+pkgver=1.8+36+gb98068f
+pkgrel=1
 pkgdesc="A cli visualizer for mpd"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's#v##;s#-#+#g'
 }
 
 build() {

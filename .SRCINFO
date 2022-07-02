@@ -1,7 +1,7 @@
 pkgbase = cli-visualizer-git
 	pkgdesc = A cli visualizer for mpd
-	pkgver = 496.b98068f
-	pkgrel = 9
+	pkgver = 1.8+36+gb98068f
+	pkgrel = 1
 	url = https://github.com/dpayne/cli-visualizer
 	install = cli-visualizer-git.install
 	arch = i686
