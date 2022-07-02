@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=python-embit
-pkgver=0.4.13
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A minimal bitcoin library for MicroPython and Python3 focusing on embedded systems"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python3')
 optdepends=('libsecp256k1')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('3384412e3ab3d0f3ceaf5dc4ecd7cb184f5fadc36d07cd469b7e5eaaccd2b978')
+sha256sums=('db02cc95bcfac0f43a0a18d7f385f92915d1dfb66b501c30a4fa517b1cdd6b2e')
 
 prepare() {
   cd "embit-${pkgver}"
