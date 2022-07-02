@@ -5,10 +5,10 @@
 _pkgname=firefox
 _channel=nightly
 _lang=zh-TW
-_pkgver=89.0a1
+_pkgver=104.0a1
 
 pkgname=${_pkgname}-${_channel}-${_lang/TW/tw}
-pkgver=89.0a1.20210412213434
+pkgver=104.0a1.20220702065811
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org, nightly build (zh-TW)'
 url='https://www.mozilla.org/en-US/firefox/'
