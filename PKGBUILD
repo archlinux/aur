@@ -4,8 +4,7 @@
 pkgname='python2-freezegun'
 _name="${pkgname#python2-}"
 pkgver=0.3.15
-pkgrel=7
-pkgdesc="Let your Python tests travel through time"
+pkgrel=8
 pkgdesc="Support for tests to mock datetime and set fake times values (legacy Python 2 version)"
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
