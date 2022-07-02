@@ -1,6 +1,6 @@
 pkgbase = kclock-git
 	pkgdesc = Clock app for Plasma Mobile
-	pkgver = r157.e96a786
+	pkgver = 22.06.r8.gd256998
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kclock
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = kclock-git
 	sha256sums = SKIP
 
 pkgname = kclock-git
-
