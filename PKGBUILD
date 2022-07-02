@@ -1,12 +1,12 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=blasfeo-git
-pkgver=r2061.cc90e146
+pkgver=r2869.edf92b39
 pkgdesc="Basic linear algebra subroutines for embedded optimization"
 url='https://github.com/giaf/blasfeo'
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD 2-Clause')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=()
 provides=('blasfeo')
 conflicts=('blasfeo')
