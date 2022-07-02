@@ -7,8 +7,8 @@ pkgdesc="Python hooks for Intel(R) Math Kernel Library runtime control settings.
 arch=('x86_64')
 url="https://github.com/IntelPython/mkl-service"
 license=('custom')
-depends=('intel-mkl' 'python-numpy')
-makedepends=('cython' 'git' 'intel-compiler-base' 'python-setuptools')
+depends=('intel-oneapi-mkl' 'python-numpy')
+makedepends=('cython' 'git' 'python-setuptools')
 source=("git+$url#tag=v${pkgver}")
 md5sums=('SKIP')
 

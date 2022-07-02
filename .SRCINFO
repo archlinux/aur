@@ -7,9 +7,8 @@ pkgbase = python-mkl-service
 	license = custom
 	makedepends = cython
 	makedepends = git
-	makedepends = intel-compiler-base
 	makedepends = python-setuptools
-	depends = intel-mkl
+	depends = intel-oneapi-mkl
 	depends = python-numpy
 	source = git+https://github.com/IntelPython/mkl-service#tag=v2.4.0.post1
 	md5sums = SKIP
