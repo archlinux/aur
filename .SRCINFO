@@ -37,7 +37,7 @@ pkgbase = cloudcompare-git
 	provides = cloudcompare
 	conflicts = cloudcompare
 	options = !strip
-	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git
+	source = cloudcompare::git+https://github.com/CloudCompare/CloudCompare.git#branch=master
 	source = cloudcompare-cork::git+https://github.com/CloudCompare/cork.git
 	source = CloudCompare.desktop
 	source = ccViewer.desktop

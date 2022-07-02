@@ -4,6 +4,11 @@
 # Contributor : Danilo Bargen <aur at dbrgn dot ch>
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
+## Configuration env vars:
+_fragment=#${FRAGMENT:-branch=master}
+# Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
+[[ -v CMAKE_FLAGS ]] && mapfile -t -d: CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
+
 name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
@@ -56,7 +61,7 @@ prepare() {
 build() {
   export CCACHE_BASEDIR="$srcdir"
 # shellcheck disable=SC2191
-  CMAKE_FLAGS=(
+  CMAKE_FLAGS+=(
         -Wno-dev
         -DPCL_QHULL_REQUIRED_TYPE=SHARED
         -DCMAKE_CXX_STANDARD=14
