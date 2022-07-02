@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=translation-finder
 pkgname=python-translation-finder
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="Translation file finder used by weblate"
 url="https://github.com/WeblateOrg/translation-finder"
@@ -12,7 +12,7 @@ license=('GPL3')
 arch=('any')
 source=("https://github.com/WeblateOrg/translation-finder/archive/${pkgver}.tar.gz")
 
-sha256sums=('c20713181d1c50d8eef40826efb4d789f7ca58972eaba672e942f9915c68248d')
+sha256sums=('9bd3c5d69dcbc5c33f456cc77559f6c10ecdd0917acf4f49e97c58bd50521b06')
 
 check() {
     pytest
