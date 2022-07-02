@@ -2,7 +2,7 @@
 # Contributor: William Turner <willtur.will@gmail.com>
 
 pkgname=afdko
-pkgver=3.8.3
+pkgver=3.9.1
 pkgrel=1
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=(x86_64)
@@ -32,7 +32,7 @@ makedepends=(cmake
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/$pkgver/$_archive.tar.gz")
-sha256sums=('8bc868a201dce2cb4788fe207ed0857f0acb0b5d47c7d3281e51b14f14f5f456')
+sha256sums=('02d44d699ce7f41a0d223bca852eebb1855f1f0dba24a29416a3bfe93701224c')
 
 prepare () {
 	cd "$_archive"
