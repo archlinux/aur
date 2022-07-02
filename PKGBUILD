@@ -8,7 +8,7 @@ pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 _commit='37ba00248424ea3cdf556cc3e7aa81ce0bf40382'
 pkgver=1.26.9.r11.g37ba0024
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/"
@@ -66,6 +66,7 @@ check() {
     echo '-- Using LC_ALL=C.UTF-8 locale to ensure UTF-8 filesystem encoding is used in Python 2'
     export LC_ALL=C.UTF-8
     export PYTHONDONTWRITEBYTECODE=1
+    export PYTHONPATH="${PWD}/build/lib:${PYTHONPATH}"
     python2 setup.py pytest --addopts \
       "--verbose --cache-clear --ignore test/contrib/test_socks.py --deselect test/test_retry.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/test_retry_deprecated.py::TestRetry::test_respect_retry_after_header_sleep --deselect test/with_dummyserver/test_socketlevel.py::TestHeaders::test_request_host_header_ignores_fqdn_dot"
   )
