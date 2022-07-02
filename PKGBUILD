@@ -5,7 +5,7 @@
 # If cannot pass the check due to python package error, try to force the pkgver of depends as shown in requirements-test.txt
 
 pkgname=zdict
-pkgver=4.0.4
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="CLI dictionary framework mainly focus on any kind of online dictionary"
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8' 'python
 _completion_commit=8698dc733b3174f5aac319234fec60dfa380a87e
 source=("https://pypi.io/packages/source/z/zdict/$pkgname-$pkgver.tar.gz"
         git+https://github.com/zdict/zdict.sh.git#commit=$_completion_commit)
-sha256sums=('6c9b33c607c3206c46ffb72e911b76c5512bff39bddcbf00568fdba4f3be7ce9'
+sha256sums=('ff50d42a2033383d99ce2ab96364d669925b89cab7e8dc78c5fdd31b57104aca'
             'SKIP')
 
 build() {
