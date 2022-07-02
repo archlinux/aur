@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=10.0_r752.39bacab
+pkgver=10.0.20220703.r842.ecbfec4
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -53,7 +53,7 @@ package() {
 	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
 
   install -d "$pkgdir/usr/share/${pkgname%-git}"
-  cp -r categories eval guicfgs lang misc "$pkgdir/usr/share/${pkgname%-git}"
+  cp -r collections eval guicfgs lang misc "$pkgdir/usr/share/${pkgname%-git}"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
   install -Dm644 "misc/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
