@@ -8,8 +8,8 @@ arch=(x86_64)
 url="https://github.com/a-parhom/LightlyShaders"
 license=(GPL3)
 depends=('qt5-x11extras' 'qt5-xmlpatterns' 'qt5-tools' 'kconfig' 'kconfigwidgets'
-         'ki18n' 'kcoreaddons' 'kcrash' 'kio' 'kservice' 'kinit' 'knotifications'
-         'kwidgetsaddons' 'kwindowsystem' 'kguiaddons')
+         'ki18n' 'kcoreaddons' 'kcrash' 'kio' 'kservice' 'kinit' 'knotifications' 'kwin'
+         'kwidgetsaddons' 'kwindowsystem' 'kguiaddons' 'kglobalaccel' 'kde-dev-utils')
 makedepends=('git' 'extra-cmake-modules')
 provides=('lightlyshaders')
 conflicts=('lightlyshaders')
