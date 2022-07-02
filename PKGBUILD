@@ -11,15 +11,15 @@ makedepends=("nim")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/goldie.git")
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
   nim compile -d:release -o=bin/goldie-release-linux "$pkgname/src/goldie.nim"
 }
 
 package() {
   install -D -m755 bin/goldie-release-linux "$pkgdir/usr/bin/goldie"
-}
-
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
