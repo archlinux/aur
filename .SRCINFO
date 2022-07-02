@@ -1,6 +1,6 @@
 pkgbase = lq-git
 	pkgdesc = File listing tool. Written in Nim.
-	pkgver = r281.1e25717
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/madprops/lq
 	arch = x86_64
