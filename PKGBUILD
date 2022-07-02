@@ -7,7 +7,7 @@
 pkgname='python2-urllib3'
 _name="${pkgname#python2-}"
 pkgver=1.26.9
-pkgrel=9
+pkgrel=10
 pkgdesc='HTTP library with thread-safe connection pooling and file post support'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
@@ -44,6 +44,11 @@ prepare() {
   echo "Fixing hardcoded urllib3.connection.RECENT_DATE field - it's expired if earlier than two years"
   sed -e '/RECENT_DATE[ ]*=[ ]*datetime.date/c\RECENT_DATE = datetime.date(2022, 1, 1)' \
       -i ${_tarname}/src/${_name}/connection.py
+
+  printf "Changing hashbangs in *.py files to refer to 'python2'... "
+  sed -e '1s|#![ ]*/[a-zA-Z0-9./_ ]*python.*|#!/usr/bin/env python2|' \
+      -i $(find . -name '*.py')
+  echo "done"
 }
 
 build() {
