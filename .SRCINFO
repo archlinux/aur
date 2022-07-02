@@ -1,7 +1,7 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
 	pkgver = 1.47.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
@@ -10,6 +10,7 @@ pkgbase = plex-desktop
 	depends = qt5-svg
 	depends = qt5-webengine
 	depends = qt5-quickcontrols
+	depends = qt5-x11extras
 	depends = mpv
 	depends = ffmpeg4.4
 	optdepends = qt5-wayland: Wayland support

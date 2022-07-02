@@ -1,5 +1,5 @@
 #!/bin/env bash
-set -ex pipefail
+set -eo pipefail
 
 PKGNAME=plex-desktop
 
@@ -16,7 +16,7 @@ new_download="$(echo "$stable_channel" | jq -r '.download.url')"
 
 wget "$new_download"
 
-if [[ "$(sha384sum "${snap_id}_${new_revision}.snap" | cut -d' ' -f1)" == "$new_sha384" ]]; then
+if [[ "$(sha384sum "${snap_id}_${new_revision}.snap" | cut -d' ' -f1)" != "$new_sha384" ]]; then
   echo "SHA384 did NOT match"
   exit 1
 fi

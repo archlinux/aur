@@ -2,7 +2,7 @@
 
 pkgname=plex-desktop
 pkgver=1.47.1
-pkgrel=1
+pkgrel=2
 _snapid=qc6MFRM433ZhI1XjVzErdHivhSOhlpf0
 _snaprev=10
 pkgdesc="Plex desktop client for linux"
@@ -10,7 +10,7 @@ arch=('x86_64')
 url='http://plex.tv'
 license=('unknown')
 makedepends=('squashfs-tools')
-depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'mpv' 'ffmpeg4.4')
+depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'qt5-x11extras' 'mpv' 'ffmpeg4.4')
 optdepends=('qt5-wayland: Wayland support' 'libva: GPU accelerated decoding')
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap" "qt.conf")
 sha256sums=('01b816bc4ec14e2735abfe37964df4ee6643e5368059ed0b378f5af62ad4004e'
