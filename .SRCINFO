@@ -10,8 +10,7 @@ pkgbase = beamer-theme-hsrm-git
 	depends = texlive-core
 	provides = beamer-theme-hsrm
 	conflicts = beamer-theme-hsrm
-	source = git://github.com/benjamin-weiss/hsrmbeamertheme.git
+	source = git+https://github.com/benjamin-weiss/hsrmbeamertheme.git
 	md5sums = SKIP
 
 pkgname = beamer-theme-hsrm-git
-
