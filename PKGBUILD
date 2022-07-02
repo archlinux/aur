@@ -3,7 +3,7 @@
 pkgname=hottub-git
 _pkgname=hottub
 pkgver=r29.dbe5642a0d03
-pkgrel=1
+pkgrel=2
 pkgdesc='A CI bridge from GitHub to SourceHut'
 arch=('x86_64')
 url='https://git.sr.ht/~emersion/hottub'
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'42a9048795e1df22b6425734273f683e9bdaf4318738040f855701cdbb2ddf4e'
+	'a10cde06155cd8a70f14ce6e2898d9743ea8a07f122ef59ace0ac781dce42f04'
 	'37ad30b17c564b43331a390405a34bdd35f2139e1de220f7374b46ceac6707c1'
 	'38313409f2f1c974473f42b2f8e00c836033afe5fffa7677bfb932480ef989c3'
 	'854056e63276c1418ff1ba832fe4ebf14e31b957f754db778062f63b8f83f0e0'

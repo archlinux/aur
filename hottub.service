@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=hottub
 Restart=always
-ExecStart=/usr/bin/hottub -listen=$listen -db=/var/lib/hottub/db -gh-app-id=$gh_app_id -gh-private-key=$gh_private_key -gh-webhook-secret=$gh_webhook_secret -metasrht-client-id=$metasrht_client_id -metasrht-client-secret=$metasrht_client_secret
 EnvironmentFile=/etc/hottub/params
+ExecStart=/usr/bin/hottub -listen=${listen} -db=/var/lib/hottub/db -gh-app-id=${gh_app_id} -gh-private-key=${gh_private_key} -gh-webhook-secret=${gh_webhook_secret} -metasrht-client-id=${metasrht_client_id} -metasrht-client-secret=${metasrht_client_secret}
 
 [Install]
 WantedBy=multi-user.target
