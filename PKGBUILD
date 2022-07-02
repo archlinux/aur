@@ -2,8 +2,8 @@
 
 pkgname=hottub-git
 _pkgname=hottub
-pkgver=r29.dbe5642a0d03
-pkgrel=2
+pkgver=r29.bcc2fb9027a6
+pkgrel=1
 pkgdesc='A CI bridge from GitHub to SourceHut'
 arch=('x86_64')
 url='https://git.sr.ht/~emersion/hottub'

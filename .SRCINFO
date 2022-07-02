@@ -1,7 +1,7 @@
 pkgbase = hottub-git
 	pkgdesc = A CI bridge from GitHub to SourceHut
-	pkgver = r29.dbe5642a0d03
-	pkgrel = 2
+	pkgver = r29.bcc2fb9027a6
+	pkgrel = 1
 	url = https://git.sr.ht/~emersion/hottub
 	arch = x86_64
 	license = MIT
