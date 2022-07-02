@@ -1,17 +1,20 @@
-# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Shengyu Zhang <la@archlinuxcn.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=vte4-git
-pkgver=0.61.90+r273+gf4b915ae
+pkgver=0.61.90+r304+g0372107a
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
 license=(LGPL)
-depends=(gtk3 pcre2 gnutls fribidi systemd vte-common)
-makedepends=(gobject-introspection vala git gtk-doc gperf meson)
-source=("git+https://gitlab.gnome.org/GNOME/vte.git")
+depends=(gtk4 pcre2 gnutls fribidi systemd vte-common)
+makedepends=(gobject-introspection vala git gi-docgen gperf meson)
+provides=(libvte-2.91-gtk4.so=0-64)
+source=('git+https://gitlab.gnome.org/GNOME/vte.git')
 sha256sums=('SKIP')
-provides+=(libvte-2.91.so)
 
 pkgver() {
   cd vte
@@ -39,7 +42,7 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   # Conflict with vte-common
-  rm -rf "$pkgdir"/etc/profile.d
+  rm -rf "$pkgdir"/etc/
   rm -rf "$pkgdir"/usr/lib/{systemd,vte-urlencode-cwd}
 
   # Conflict with vte3
