@@ -1,6 +1,6 @@
 pkgbase = dprint-bin
 	pkgdesc = Pluggable and configurable code formatting platform
-	pkgver = 0.30.0
+	pkgver = 0.30.2
 	pkgrel = 1
 	url = https://github.com/dprint/dprint
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dprint-bin
 	depends = gcc-libs
 	provides = dprint
 	conflicts = dprint
-	source = dprint-bin-0.30.0.zip::https://github.com/dprint/dprint/releases/download/0.30.0/dprint-x86_64-unknown-linux-gnu.zip
 	source = LICENSE
-	sha256sums = 8ca8c0d834f8e7c6f7be10c32e1c54fd99067997b0a15f22f598ad492029abb9
 	sha256sums = 43f8cfbeca17eccd83fc98f27d211073eaee5574fc3162f345acc196d6190ce7
+	source_x86_64 = dprint-bin-0.30.2.zip::https://github.com/dprint/dprint/releases/download/0.30.2/dprint-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = c2a2c8dbc7b8f2e5e3ad2d3f7640f11df4e4745a54b5ba066b3bd6288265f6f4
 
 pkgname = dprint-bin
