@@ -1,15 +1,13 @@
 pkgbase = pxplus-ibm-vga8
-	pkgdesc = Font Package
-	pkgver = 1.0
+	pkgdesc = Really pretty looking monospace system font in the styles of regular, italic and underline.
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/pocketfood/Fontpkg-PxPlus_IBM_VGA8
 	install = pxplus-ibm-vga8.install
 	arch = any
-	license = unknown
+	license = CC BY-SA 4.0
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://github.com/pocketfood/Fontpkg-PxPlus_IBM_VGA8/raw/master/PxPlus_IBM_VGA8.ttf
 	md5sums = 0bae535590ffdc6ffb2cfa45b8fb2ae3
 
 pkgname = pxplus-ibm-vga8
-
