@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kweathercore-git
-pkgver=v21.05.r4.gca67d2c
+pkgver=0.6.r3.g405594f
 pkgrel=1
 pkgdesc="Library to facilitate retrieval of weather information including forecasts and alerts"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
+      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
   )
 }
 
