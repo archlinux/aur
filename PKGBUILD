@@ -1,7 +1,8 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: budRich <of budlabs>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Kevin Hanselman <kevin.hanselman@gmail.com>
 pkgname=xfce4-genmon-plugin-git
-pkgver=r768.efe2584
+pkgver=r834.164b4a3
 pkgrel=1
 pkgdesc="plugin that monitors customizable programs stdout for the Xfce4 panel"
 arch=('x86_64')
@@ -10,7 +11,7 @@ makedepends=('git' 'xfce4-dev-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('xfce4-panel')
-source=('git+https://gitlab.xfce.org/kevinbowen/xfce4-genmon-plugin.git')
+source=('git+https://gitlab.xfce.org/panel-plugins/xfce4-genmon-plugin.git')
 noextract=()
 md5sums=('SKIP')
 
