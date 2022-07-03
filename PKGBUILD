@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl
-pkgver=2022.1.4
-pkgrel=3
+pkgver=2022.1.5
+pkgrel=1
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
@@ -12,7 +12,7 @@ optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
 makedepends=('cmake' 'libx11' 'pybind11' 'python' 'wayland-protocols')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('939f158ea7f011be14069326ee0a95be1776c364032e6ca800b01d2f2b2e9597')
+sha256sums=('e43674d6d41f4d6f9218b5cbcfa1e1a3549185d0d7fe764f9e819a1cd9620832')
 
 build() {
     local _pyver
