@@ -1,0 +1,16 @@
+post_install() {
+  openssl rand -base64 32 > /etc/remote-uci.secret
+  systemctl enable --now remote-uci.socket
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl stop remote-uci.socket remote-uci.service
+  systemctl start remote-uci.socket
+  openssl rand -base64 32 > /etc/remote-uci.secret
+}
+
+pre_remove() {
+  systemctl disable --now remote-uci.socket
+  systemctl stop remote-uci.service
+}
