@@ -3,7 +3,7 @@ info() {
     echo -e "* To apply changes to current user, run:"
     echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
     echo -e "* To configure the theme:"
-    echo -e "  Edit line 1, ~/.zshrc, and replace default theme file path with your target theme file path."
+    echo -e "  Edit line 2, ~/.zshrc, and replace default theme file path with your target theme file path."
     echo -e "====================================================================\033[0m"
 }
 post_install() {
