@@ -1,52 +1,53 @@
-# Maintainer: Shen-Ta Hsieh <ibmibmibm(at)gmail(dot)com>
-# Contributor: Shen-Ta Hsieh <ibmibmibm(at)gmail(dot)com>
+# Maintainer: Ysblokje < ysblokje at gmail com >
+# Contributor: Shen-Ta Hsieh <ibmibmibm.tw@gmail.com>
+#
+# Credits for the original version of this version of the file
+# go to the r8168 package people
 
-_pkgbase=r8125
-pkgname=(r8125 r8125-dkms)
-pkgver=9.003.05
+pkgname=r8125
+pkgver=9.009.01
 pkgrel=1
-pkgdesc="r8125 kernel driver for linux"
+pkgdesc="A kernel module for Realtek r8125 network cards"
+url="http://www.realtek.com.tw"
+license=("GPL")
 arch=('x86_64')
-url="https://www.realtek.com/"
-license=('GPL2')
-makedepends=(linux-headers)
-source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
-        'dkms.conf')
-sha256sums=('75196ec98afcefbb6706307104d32131a27abba24ac333633790264968d548d6'
-            '7a6b42b6ebbd76ae3c40e10f824c2dae88448fab3ba074916b3be5c2b4bef448')
+conflicts=('r8125-dkms')
+makedepends=('linux-headers')
+source=(https://codeberg.org/ysblokje/r8125/archive/${pkgver}.tar.gz
+        linux518.patch)
+sha256sums=('4d36509ace216c954895751145c93914101ceba7945e6c7f1131f9970d2f8c7c'
+            '8ef6947eafde2b69fd03f92c2ec4f789b1ecdbc6201a498d0a2c2fe4622fecea')
+
+prepare() {
+	cd "$pkgname"
+	patch -Np1 -i ../linux518.patch
+}
 
 build() {
-  _kernver=$(</usr/src/linux/version)
-
-  tar -xf "${pkgver}.tar.gz"
-  cd "${_pkgbase}-${pkgver}"/src
-  make -C "/lib/modules/${_kernver}/build" M="$(pwd)" modules
+	cd "$pkgname"
+	# avoid using the Makefile directly -- it doesn't understand
+	# any kernel but the current.
+	make -C /usr/src/linux M="$PWD/src" \
+		ENABLE_USE_FIRMWARE_FILE=y \
+		CONFIG_R8168_NAPI=y \
+		CONFIG_R8168_VLAN=y \
+		CONFIG_ASPM=y \
+		ENABLE_S5WOL=y \
+		ENABLE_EEE=y \
+		modules
 }
 
-package_r8125() {
-  # Install
-  _kernver=$(</usr/src/linux/version)
+package() {
+	depends=('glibc' 'linux')
 
-  msg2 "Starting make install..."
-  install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 "${_pkgbase}-${pkgver}/src/r8125.ko"
-  find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
+	local extradir=/usr/lib/modules/$(</usr/src/linux/version)/extramodules
+	cd "$pkgname"
+	install -Dt "$pkgdir$extradir" -m644 src/*.ko
+	find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+	find "$pkgdir" -name '*.ko' -exec xz {} +
+
+	echo "blacklist r8169" | \
+		install -Dm644 /dev/stdin "$pkgdir/usr/lib/modprobe.d/$pkgname.conf"
 }
 
-package_r8125-dkms() {
-  pkgdesc="r8125 kernel driver sources for linux"
-  depends=('dkms')
-  optdepends=('linux-headers: Build the module for Arch kernel'
-              'linux-lts-headers: Build the module for LTS Arch kernel')
-  provides=("8125=$pkgver")
-  conflicts+=(r8125)
-  # Copy dkms.conf
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  # Set name and version
-  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-      -e "s/@PKGVER@/${pkgver}/" \
-      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  # Copy sources (including Makefile)
-  cp -r ${_pkgbase}-${pkgver}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-}
+# vim:set sw=0 noet:
