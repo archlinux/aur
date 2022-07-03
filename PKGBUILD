@@ -3,14 +3,15 @@
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=python-aioimaplib
+_pkg="${pkgname#python-}"
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python asyncio IMAP4rev1 client library'
 arch=('any')
 url='https://github.com/bamthomas/aioimaplib'
 license=('GPL3')
-depends=('python>=3.5' 'python3')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=(
 	'python-asynctest'
 	'python-docutils'
@@ -21,20 +22,26 @@ checkdepends=(
 	'python-pytz'
 	'python-twine'
 	'python-tzlocal')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3d4700f019e7a6459a6b88ef5f1ee3441f600554938490405f172313835e2749')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "python310.patch::$url/compare/0.9.0...21da21f.diff")
+sha256sums=('3d4700f019e7a6459a6b88ef5f1ee3441f600554938490405f172313835e2749'
+            '43030b610417278c3046eac82a71f8d8e207c13ce81015dedb04ac1df878b46b')
+
+prepare() {
+	patch -p1 -d "$_pkg-$pkgver" < python310.patch
+}
 
 build() {
-	cd "aioimaplib-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "aioimaplib-$pkgver"
-	python setup.py nosetests
+	cd "$_pkg-$pkgver"
+	nosetests
 }
 
 package() {
-	cd "aioimaplib-$pkgver"
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
