@@ -5,6 +5,7 @@ pkgbase = intel-oneapi-common
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = any
 	license = custom
+	optdepends = procps-ng: For execute setvars.sh
 	noextract = intel-oneapi-common-vars-2022.1.0-161_all.deb
 	noextract = intel-oneapi-common-licensing-2022.1.0-2022.1.0-161_all.deb
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-common-vars-2022.1.0-161_all.deb
