@@ -3,7 +3,7 @@
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-py3-git
 _pkgname=klipper
-pkgver=r4374.7c0559c6
+pkgver=r4660.1636a9759
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -44,15 +44,12 @@ install='klipper.install'
 source=("${_pkgname}::git+https://github.com/Klipper3d/klipper"
         'klipper.service'
         'sysusers.conf'
-        'tmpfiles.conf'
-        # data dictionary from https://github.com/Klipper3d/klipper/issues/1438
-        'klipper-dict.tar.gz::https://github.com/Klipper3d/klipper/files/7774870/klipper-dict-20211224.tar.gz')
+        'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
          '4ccfb9669d304b99146b92a4912ae1fd'
          'cf3715af9f53cc1660e412abe3697342'
-         'd707e8986ed6cf189461f03bdaf365aa'
-         '36d6f571293886cb37eb8919baa307c0')
+         'd707e8986ed6cf189461f03bdaf365aa')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -63,11 +60,6 @@ build() {
 	cd "$srcdir/$_pkgname"
 	python -m compileall klippy
 	python klippy/chelper/__init__.py
-}
-
-check() {
-	cd "$srcdir/$_pkgname"
-	python scripts/test_klippy.py -d "${srcdir}/dict" -t test/ test/klippy/*.test
 }
 
 package() {
