@@ -1,11 +1,14 @@
 pkgbase = ncmpy
 	pkgdesc = Curses-based MPD client
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cykerway/ncmpy
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-mpd2
 	depends = python-yaml
 	backup = etc/ncmpy/ncmpy.yaml
