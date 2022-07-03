@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=7.0.6
-_commit=68c7a0efc6df2b40a1ad3296b6cdf40bff75b9a8
+pkgver=7.0.7
+_commit=c73ccb468cfd2340fb296e17a543eb2399b449ec
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
@@ -34,3 +34,4 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
