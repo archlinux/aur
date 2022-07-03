@@ -6,12 +6,12 @@ _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.9.3.r191.ga6bebc3
+pkgver=0.9.3.r194.g072ff2d
 pkgrel=1
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
-depends=(python-requests python-platformdirs python-cattrs python-url-normalize)
+depends=(python-requests python-platformdirs python-cattrs python-url-normalize python-exceptiongroup)
 makedepends=(python-build python-install python-poetry git)
 optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-botocore: Interface for Amazon Web Services'
