@@ -7,8 +7,8 @@ pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=28.1
 _pkgver=28.1.90
-pkgrel=0.90
-pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. -- Retagged because msnspk is an idiot."
+pkgrel=0.901
+pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
@@ -25,9 +25,10 @@ conflicts=('emacs')
 #source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}) # PGP keyserver are all but dead.
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz
-        nemacs)
+        nemacs readme_or_weep.txt)
 b2sums=('00aa886946de3247954ad3b113d8f5861ffe4d46757ff4d33f4a88d688e9ffa86733316ae73809dd3017d4f8c3fe755bca658a752975a4c1ca716dcc4c206528'
-        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
+        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
+        '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
 
 build() {
   cd "$srcdir"/$_pkgname-$_pkgver
