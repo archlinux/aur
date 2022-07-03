@@ -9,7 +9,7 @@ optdepends=(
   'sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)'
 )
 license=(custom)
-source=('https://installer.id.ee/media/etoken/SAC%2010.7%20Linux.zip'
+source=('https://installer.id.ee/media/etoken/older%20versions/SAC%2010.7%20Linux.zip'
         eToken.conf)
 sha256sums=('15c55b1faec11c460bd1b5a303a92b1667171d615b20967dccc753fcf8026051'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c')
