@@ -1,12 +1,11 @@
 pkgbase = python2-requests
 	pkgdesc = HTTP for Humans (legacy Python 2 version)
 	pkgver = 2.27.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/requests/2.27.1/
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	depends = python2
 	optdepends = python2-pysocks: SOCKS proxy support
 	source = https://github.com/psf/requests/releases/download/v2.27.1/requests-2.27.1.tar.gz
 	source = certs.patch
@@ -14,6 +13,8 @@ pkgbase = python2-requests
 	b2sums = b6a7c9796a8ffedebcdbf0d2f95c40b1bbfa0beb45a3c7d5b493a459c4516533992291c720cf02e291cdbbf554dd0bf25c1312f4be41e39acd586b41911ad5b0
 
 pkgname = python2-requests
+	depends = ca-certificates-utils
+	depends = python2
 	depends = python2-chardet
 	depends = python2-idna
 	depends = python2-urllib3

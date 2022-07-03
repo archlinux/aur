@@ -5,12 +5,11 @@
 pkgname='python2-requests'
 _name="${pkgname#python2-}"
 pkgver=2.27.1
-pkgrel=3
+pkgrel=4
 pkgdesc='HTTP for Humans (legacy Python 2 version)'
 arch=('any')
 url="https://pypi.org/project/${_name}/${pkgver}/"
 license=('Apache')
-depends=('python2')
 makedepends=('python2-setuptools')
 # checkdepends=(
 #   'python2-pytest'
@@ -64,6 +63,8 @@ build() {
 
 package() {
   depends=(
+    'ca-certificates-utils'
+    'python2'
     'python2-chardet'
     'python2-idna'
     'python2-urllib3'
