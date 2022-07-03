@@ -1,11 +1,11 @@
 pkgbase = infracost
 	pkgdesc = Infracost shows cloud cost estimates for Terraform. It lets DevOps, SRE and engineers see a cost breakdown and understand costs before making changes, either in the terminal or pull requests.
-	pkgver = 0.10.3
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://github.com/infracost/infracost
 	arch = x86_64
 	license = Apache
-	source = https://github.com/infracost/infracost/releases/download/v0.10.3/infracost-linux-amd64.tar.gz
-	sha256sums = 9369d22f769e310217effc23544b90d55d3bc29911fbf617b44df4162988079b
+	source = https://github.com/infracost/infracost/releases/download/v0.10.6/infracost-linux-amd64.tar.gz
+	sha256sums = 3c625db74dbde2f5b02f778b79d7808f3c4f65a0cbe9b67d8c127bc5b976e626
 
 pkgname = infracost
