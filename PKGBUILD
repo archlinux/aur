@@ -7,7 +7,7 @@ pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/clipton"
 license=("Unlicense")
-depends=("rofi" "clipnotify")
+depends=("rofi" "clipnotify" "xclip")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/clipton.git")
 
