@@ -4,7 +4,7 @@ info() {
     echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
     echo -e "* To configure the theme:"
     echo -e "  Edit line 2, ~/.zshrc, and replace default theme file path with your target theme file path."
-    echo -e "* Key bondings info:"
+    echo -e "* Key bindings info:"
     echo -e "  Up:          History substring search(backward)"
     echo -e "  Down:        History substring search(forward)"
     echo -e "  Ctrl-Up:     History beginning search(backward)"
