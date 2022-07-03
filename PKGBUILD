@@ -3,7 +3,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r7950
+pkgver=r8591
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ depends=(
     'libtheora'
     'libusb'
     'lilv'
+    'microsoft-gsl'
     'opusfile'
     'portaudio'
     'portmidi'
