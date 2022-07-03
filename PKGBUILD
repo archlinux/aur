@@ -9,7 +9,7 @@ license=('custom')
 provides=('HammerPDF')
 source=("https://github.com/HammerPDF/Smart-Scientific-Reader/releases/download/v${pkgver}/Hammer.PDF-linux-${pkgver}.deb")
 
-sha256sums=('30c3dbb190de1de6eb728539556d3ec3da685de371bc87dbc1658f9973dfcfab')
+sha256sums=('4967ffa6cd9417d5523471193f36dcf9083432686ee09f42485eb8d27cfcf910')
 
 package() {
 	tar -xf data.tar.xz -C "${pkgdir}"

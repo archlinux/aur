@@ -5,6 +5,8 @@ pkgbase = hammer-pdf
 	url = https://github.com/HammerPDF/Smart-Scientific-Reader
 	arch = x86_64
 	license = custom
+	provides = HammerPDF
+	source = https://github.com/HammerPDF/Smart-Scientific-Reader/releases/download/v1.2.2/Hammer.PDF-linux-1.2.2.deb
+	sha256sums = 4967ffa6cd9417d5523471193f36dcf9083432686ee09f42485eb8d27cfcf910
 
 pkgname = hammer-pdf
-
