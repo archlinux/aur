@@ -1,0 +1,13 @@
+pkgbase = wayland-logout
+	pkgdesc = A utility designed to kill a single instance of a Wayland compositor
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/soreau/wayland-logout
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	source = https://github.com/soreau/wayland-logout/archive/v1.4.tar.gz
+	sha512sums = 376f39283851478723e3d846055ad76b6ae8b887b487cd98ebcdf87b1d95c3b5de5cad07f2d8921740c4e4102ce988833a9b7ebe662e51654316de9f85daabcf
+
+pkgname = wayland-logout
