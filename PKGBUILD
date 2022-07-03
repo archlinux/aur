@@ -3,7 +3,7 @@
 _framework='gnunet'
 _appname='messenger-cli'
 pkgname="${_appname}-git"
-pkgver='r13.31f06ba'
+pkgver='r24.9edf21b'
 pkgrel=1
 pkgdesc='A command line interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
