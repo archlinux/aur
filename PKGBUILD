@@ -7,7 +7,7 @@ pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=28.1
 _pkgver=28.1.90
-pkgrel=0.901
+pkgrel=0.902
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -20,7 +20,7 @@ depends=(
   'libgccjit'
 )
 provides=('emacs')
-conflicts=('emacs')
+conflicts=('emacs-nox')
 # PGP keyservers are all but dead. PGP signatures are useless for all practical purpose. Kudos to the EU.
 #source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}) # PGP keyserver are all but dead.
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')

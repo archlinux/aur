@@ -1,7 +1,7 @@
 pkgbase = emacs-pretest
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version.
 	pkgver = 28.1
-	pkgrel = 0.901
+	pkgrel = 0.902
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = emacs-pretest
 	depends = giflib
 	depends = libgccjit
 	provides = emacs
-	conflicts = emacs
+	conflicts = emacs-nox
 	source = https://alpha.gnu.org/gnu/emacs/pretest/emacs-28.1.90.tar.xz
 	source = nemacs
 	source = readme_or_weep.txt
