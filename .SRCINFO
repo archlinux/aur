@@ -25,6 +25,7 @@ pkgbase = aegisub-ttools-meson-git
 	depends = hunspell
 	depends = uchardet
 	depends = glibc
+	depends = libiconv
 	provides = aegisub
 	conflicts = aegisub
 	conflicts = aegisub-git

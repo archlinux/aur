@@ -11,7 +11,7 @@ license=('GPL' 'BSD')
 depends=('boost-libs'
          'fontconfig' 'icu' 'libgl' 'wxgtk3' 'zlib' 'libass.so'
          # optional by the build system, but don't make much sense to exclude
-         'alsa-lib' 'libffms2.so' 'fftw' 'hunspell' 'uchardet' 'glibc'
+         'alsa-lib' 'libffms2.so' 'fftw' 'hunspell' 'uchardet' 'glibc' 'libiconv'
          # 'gcc-libs' 'glibc' # part of 'base'
          # 'luajit' # Arch's luajit isn't compiled in 5.2 mode
          )
