@@ -1,5 +1,5 @@
 pkgbase = rdarktable-git
-	pkgdesc = A virtual lighttable and darkroom for photographers, based on the "rationalised" R&Darktable fork from Aurélien Pierre.
+	pkgdesc = A camera raw editor and asset manager, based on the "rationalised" R&Darktable fork from Aurélien Pierre.
 	pkgver = 3.9.0.r1643.g60bbf83ac
 	pkgrel = 1
 	url = https://github.com/aurelienpierre/R-Darktable/blob/master/README.md
