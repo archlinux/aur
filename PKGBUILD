@@ -1,5 +1,5 @@
 pkgname=hammer-pdf
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Hammer PDF - Smart Scientific Reader"
 arch=("x86_64")
