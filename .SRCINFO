@@ -1,0 +1,18 @@
+pkgbase = qemu-screamer-git
+	pkgdesc = QEMU PowerPC with sound support for Macintosh emulation
+	pkgver = r96011.c108debd27
+	pkgrel = 1
+	url = https://github.com/mcayland/qemu/tree/screamer
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = ninja
+	depends = sdl2
+	depends = libpulse
+	depends = vte3
+	depends = libslirp
+	source = git+https://github.com/mcayland/qemu.git#branch=screamer
+	sha256sums = SKIP
+
+pkgname = qemu-screamer-git
