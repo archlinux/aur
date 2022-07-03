@@ -1,8 +1,8 @@
 # Maintainer: gandalf3 <zzyxpaw at gmail dot com>
 
 pkgname=('enigma-dev-git')
-pkgver=4768.d4771fde1
-pkgrel=4
+pkgver=4771.c6d773671
+pkgrel=1
 pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ conflicts=('lateralgm')
 provides=('lateralgm')
 install='enigma-dev-git.install'
 source=('enigma' 'emake' 'enigma-dev.desktop' 'git+https://github.com/enigma-dev/enigma-dev.git' 'https://github.com/enigma-dev/enigma-dev/raw/master/Resources/logo.png')
-sha256sums=('465270e7d8042b6022936509e3e59563f38c5df94827979aca3d4429919b20b3'
+sha256sums=('58ef885f3587ee9330926a975d3f1e71eb5c753ba192c91204c12f2bdb7e8548'
          '9a84e88a82569a9da5e017f52dcfad4334b0775631f7fb9b149c0bbe2ff09fdb'
          '29edd95e3ba543c85a68e073a0b07f5e59c533e174108f6ff07b832f48546b8d'
          'SKIP'
