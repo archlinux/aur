@@ -22,6 +22,7 @@ pkgbase = xviewer-git
 	depends = exempi
 	optdepends = xviewer-plugins-git: Extra plugins
 	optdepends = librsvg: for scaling svg images
+	optdepends = webp-pixbuf-loader: webp image support
 	provides = xviewer
 	conflicts = xviewer
 	source = xviewer-git::git+https://github.com/linuxmint/xviewer.git

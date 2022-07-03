@@ -2,7 +2,7 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=3.2.4.r10.g82bb9d2
+pkgver=3.2.7.r0.gbb4aa66
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,8 @@ depends=('xapp' 'gtk3' 'cinnamon-desktop' 'libpeas' 'libexif' 'libjpeg-turbo'
 makedepends=('git' 'gobject-introspection' 'librsvg' 'meson' 'itstool'
              'gtk-doc')
 optdepends=('xviewer-plugins-git: Extra plugins'
-            'librsvg: for scaling svg images')
+            'librsvg: for scaling svg images'
+            'webp-pixbuf-loader: webp image support')
 provides=(${_pkgbasename})
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xviewer'
