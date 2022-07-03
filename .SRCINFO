@@ -1,20 +1,20 @@
 pkgbase = freecad-appimage
-	pkgdesc = A general purpose 3D CAD modeler (binary AppImage version)
-	pkgver = 0.18_16146_rev1
-	pkgrel = 2
-	url = http://www.freecadweb.org/
+	pkgdesc = A general purpose 3D CAD modeler (AppImage version)
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://www.freecad.org/
 	arch = x86_64
 	license = LGPL
 	depends = fuse2
-	provides = freecad=0.18.4
+	provides = freecad
 	conflicts = freecad
+	noextract = freecad-0.20.0.AppImage
 	options = !strip
-	source = https://github.com/FreeCAD/FreeCAD/releases/download/0.18.4/FreeCAD_0.18-16146-rev1-Linux-Conda_Py3Qt5_glibc2.12-x86_64.AppImage
-	source = freecad_conda.desktop.patch
+	source = freecad-0.20.0.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.20/FreeCAD-0.20.0-Linux-x86_64.AppImage
 	source = freecad.sh
-	sha256sums = SKIP
-	sha256sums = 4ab2ff01c90be3a7d8eb90208bba27e5ee319bb39f0af13743d9fd7eee2a87fe
-	sha256sums = 97c04ffacbb6bc745fbdbdaae2e74a84370a7c07c187f516f9b2e22aaa03efac
+	source = freecad_weekly.desktop.patch
+	sha256sums = ebb6029c96736e767dcebbd90270e432f43e84db35c7d9bbb99fb3df48b3e8c8
+	sha256sums = 0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674
+	sha256sums = bec9eeb54790ebcd3c9954bf014ab24c5eaabcdb1ed6a9b4043b8acc6b3762c2
 
 pkgname = freecad-appimage
-

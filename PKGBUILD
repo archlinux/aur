@@ -1,40 +1,44 @@
-# Maintainer: Igor Moura <hi@igor.mp>
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Contributor: Evgeniy K. <genues@mail.ru>
+# Contributor: Igor Moura <hi@igor.mp>
 
 pkgname=freecad-appimage
-pkgver=0.18_16146_rev1
-_pkgver=0.18.4
-pkgrel=2
-pkgdesc="A general purpose 3D CAD modeler (binary AppImage version)"
+pkgver=0.20.0
+pkgrel=1
+pkgdesc="A general purpose 3D CAD modeler (AppImage version)"
 arch=('x86_64')
-url='http://www.freecadweb.org/'
+url="https://www.freecad.org/"
 license=('LGPL')
 depends=('fuse2')
-provides=("freecad=${_pkgver}")
+provides=('freecad')
 conflicts=('freecad')
-source=("https://github.com/FreeCAD/FreeCAD/releases/download/${_pkgver}/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
-        freecad_conda.desktop.patch
-        freecad.sh)
-sha256sums=(SKIP
-         '4ab2ff01c90be3a7d8eb90208bba27e5ee319bb39f0af13743d9fd7eee2a87fe'
-         '97c04ffacbb6bc745fbdbdaae2e74a84370a7c07c187f516f9b2e22aaa03efac')
-options=(!strip)
-_filename=./FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage
+options=('!strip')
+noextract=("freecad-${pkgver}.AppImage")
+source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/${pkgver%.*}/FreeCAD-${pkgver}-Linux-x86_64.AppImage"
+        "freecad.sh"
+        "freecad_weekly.desktop.patch")
+sha256sums=('ebb6029c96736e767dcebbd90270e432f43e84db35c7d9bbb99fb3df48b3e8c8'
+            '0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674'
+            'bec9eeb54790ebcd3c9954bf014ab24c5eaabcdb1ed6a9b4043b8acc6b3762c2')
 
 prepare() {
   cd "${srcdir}"
-  chmod +x ${_filename}
-  ${_filename} --appimage-extract
-  patch -Np0 < ./freecad_conda.desktop.patch
+  chmod +x freecad-${pkgver}.AppImage
+  ./freecad-${pkgver}.AppImage --appimage-extract freecad_weekly.desktop
+  ./freecad-${pkgver}.AppImage --appimage-extract usr/share/icons
+  ./freecad-${pkgver}.AppImage --appimage-extract usr/share/mime/packages
+  patch -Np0 <./freecad_weekly.desktop.patch
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/freecad.AppImage"
+  install -Dm755 "${srcdir}/freecad-${pkgver}.AppImage" "${pkgdir}/opt/appimages/freecad.AppImage"
   install -Dm755 "${srcdir}/freecad.sh" "${pkgdir}/usr/bin/freecad"
 
   install -dm755 "${pkgdir}/usr/share/"
+  install -dm755 "${pkgdir}/usr/share/mime/application"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  mv "${srcdir}/squashfs-root/usr/share/icons/default/freecad_weekly.png" "${srcdir}/squashfs-root/usr/share/icons/default/freecad.png"
+  cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/application/x-extension-fcstd.xml"
 
-  install -Dm644 "${srcdir}/squashfs-root/freecad_conda.desktop" "${pkgdir}/usr/share/applications/freecad_conda.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/freecad_weekly.desktop" "${pkgdir}/usr/share/applications/freecad.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
