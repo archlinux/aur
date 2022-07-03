@@ -1,7 +1,7 @@
 pkgbase = clang10
 	pkgdesc = C language family frontend for LLVM
 	pkgver = 10.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clang.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
