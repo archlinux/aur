@@ -6,7 +6,7 @@ pkgbase=python-glymur
 _pyname=Glymur
 pkgname=('python-glymur')
 #'python-glymur-doc')
-pkgver=0.9.9
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -16,7 +16,11 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 #'python-numpydoc' 'python-sphinx_rtd_theme')
 checkdepends=('python-pytest' 'openjpeg2' 'python-numpy' 'python-lxml' 'python-scikit-image' 'python-gdal')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ae34ea954294cce5d3b4ac56abfa4dd9')
+md5sums=('d1d904034b5349bbd48ef1462edd3ca8')
+
+get_pyver() {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -51,6 +55,7 @@ package_python-glymur() {
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/tests"/*
 }
 
 #package_python-glymur-doc() {
