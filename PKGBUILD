@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=amdgpud
-pkgver=1.0.9
-_commit=f757c28
+pkgver=1.0.11
+_commit=f1d7f10
 pkgrel=1
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
@@ -51,8 +51,8 @@ package() {
 		-type f \
 		-name '*.service' \
 		-exec install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" '{}' \+
-	install -Dm644 LICENSE.APACHE2.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE.txt"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT.md"
+	install -Dm644 LICENSE.APACHE2.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 examples/default_config.toml "$pkgdir/etc/$pkgname/config.toml"
 }
