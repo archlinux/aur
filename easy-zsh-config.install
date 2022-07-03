@@ -10,7 +10,7 @@ info() {
     echo -e "  Ctrl-Up:     History beginning search(backward)"
     echo -e "  Ctrl-Down:   History beginning search(forward)"
     echo -e "  Ctrl-Left:   Skip a whole word(left)"
-    echo -e "  Ctrl-Right:   Skip a whole word(right)"
+    echo -e "  Ctrl-Right:  Skip a whole word(right)"
     echo -e "====================================================================\033[0m"
 }
 post_install() {
