@@ -17,6 +17,7 @@
   - Battery persontage
   - Local time
   - Root permission prompt
+- No theme or git plugin script written in Zsh, faster start up
 
 ## Usage
 
