@@ -1,4 +1,7 @@
 post_install() {
+  addgroup --quiet --system remote-uci || true
+  adduser --quiet --system --ingroup remote-uci --no-create-home --disabled-password remote-uci || true
+
   touch /etc/remote-uci.secret
   chown remote-uci:remote-uci /etc/remote-uci.secret
   chmod 600 /etc/remote-uci.secret
