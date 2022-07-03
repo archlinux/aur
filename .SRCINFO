@@ -11,7 +11,7 @@ pkgbase = anbox-modules-dkms-aarch64
 	depends = dkms
 	provides = anbox-modules-dkms
 	conflicts = anbox-modules-dkms anbox-modules-dkms-git
-	source = git+https://github.com/BlackCatDevel0per/anbox-modules-aarch64.git
+	source = git+https://github.com/BlackCatDevel0per/anbox-modules-aarch64.git#commit=924e9435c13d9707d02e4c096e67fb8bdbf4ed53
 	source = https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
 	sha256sums = SKIP
 	sha256sums = 7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556
