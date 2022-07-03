@@ -59,7 +59,10 @@ optdepends=('python-psycopg2: postgres support'
             'python-mysqlclient: MySQL support'
             'mercurial: mercurial repo support'
             'python-ruamel-yaml: Yaml support'
-            'git-review: gerrit support')
+            'git-review: gerrit support'
+            'python-boto3: use aws machine translation service'
+            'python-google-cloud-translate: use google cloud translation service'
+            'python-zeep: use MS translation service')
 checkdepends=('python-selenium' 'python-responses')
 makedepends=('python-setuptools')
 backup=('etc/webapps/weblate/settings.py' 'etc/celery/weblate.conf')
