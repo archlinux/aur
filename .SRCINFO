@@ -1,14 +1,14 @@
 pkgbase = yspave
 	pkgdesc = Simple scrypt-based CLI password manager
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.yaki-syndicate.de
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
-	depends = python-crypto
+	depends = python-pycryptodome
 	depends = python-scrypt
 	depends = python-xdg
 	optdepends = xsel: access to X selection
@@ -21,4 +21,3 @@ pkgbase = yspave
 	sha512sums = 67161f913d274f1681b52e548e8df92430fbcc537f0600df753d42eb5d06bc8bdbf6704cd3f32f2eeafd2f0e7c415bec2173cda04fbdeccb6483e27c433824d0
 
 pkgname = yspave
-
