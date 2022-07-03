@@ -21,24 +21,10 @@ build() {
 package() {
     depends+=("rsync>=3.1.0")
     cd "${srcdir}/${pkgname}-${pkgver}"
+    # install egg-info
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    # copy source files manually
+    # install actual source
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cp -r yarsync ${pkgdir}${site_packages}
     install -D docs/yarsync.1.gz ${pkgdir}/usr/share/man/man1/yarsync.1.gz
 }
-
-# https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources
-# git rev-parse "v$pkgver"
-# does not work.
-# _tag=2d5f190ce73f7d9ee4483ffd8d8d5181cbeecc1e
-# source=(git+$url.git?signed\#tag=$_tag)
-#
-# --upgrade build is recommended on
-# https://packaging.python.org/en/latest/tutorials/packaging-projects/#generating-distribution-archives
-# we don't create a wheel, because it requires python-installer and takes time.
-# https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
-# python -m installer --destdir="$pkgdir" dist/*.whl
-# --skip-build is fine,
-# https://wiki.archlinux.org/title/Python_package_guidelines#setuptools_or_distutils
-# https://wiki.archlinux.org/title/Arch_package_guidelines

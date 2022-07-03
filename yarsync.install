@@ -1,35 +1,13 @@
-# Copied from /usr/share/pacman/proto.install
-# Uncomment only required functions and remove any functions
-# you don't need (and this header).
+# from /usr/share/pacman/proto.install
 
-## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
-
-## arg 1:  the new package version
 post_install() {
    mandb -q
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-	# do something here
-#}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
    mandb -q
 }
 
-## arg 1:  the old package version
-#pre_remove() {
-	# do something here
-#}
-
-## arg 1:  the old package version
 post_remove() {
     mandb -q
 }
