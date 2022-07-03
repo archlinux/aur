@@ -1,7 +1,7 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 pkgname=singular-factory
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Computer Algebra System for polynomial computations: factory and libfac"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.singular.uni-kl.de/"
 license=('GPL')
 depends=('gmp' 'ncurses' 'readline' 'flint')
 options=('!strip')
-source=(http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/Factory/factory-$pkgver.tar.gz)
+source=(https://www.singular.uni-kl.de/ftp/pub/Math/Singular/Factory/factory-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir"/factory-$pkgver
@@ -32,4 +32,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('5c7af321ff61bd1c7dc2fb73308bd955')
+sha256sums=('f1e25b566a8c06d0e98b9795741c6d12b5a34c5c0c61c078d9346d8bbc82f09f')
