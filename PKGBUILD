@@ -2,14 +2,14 @@
 # Contributor: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=mint-backgrounds-vanessa
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="The backgrounds included in Linux Mint 21 Vanessa"
-license=('Various')
+license=('GPL3')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 source=("${url}/${pkgname}_$pkgver.tar.gz")
-sha256sums=('8e6634e8ad672893fe39d51be0809367fd9421917ccaa36a6fced1f6301c7558')
+sha256sums=('8ea148cd78c01a54c1d1ea4d8bbfb8d58ba20ac03cb945014d223f09b8e42b92')
 
 package() {
   mkdir --parents ${pkgdir}/usr/share/backgrounds/linuxmint-vanessa
