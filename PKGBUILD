@@ -3,15 +3,16 @@
 pkgbase="korai-git"
 pkgname="korai"
 pkgrel=1
-pkgver=0.2.0
+pkgver=0.2.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
+depends=("rust")
 url='https://github.com/DisableGraphics/Korai'
 makedepends=("git" "imagemagick")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
 license=("GPL")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('cdddd9b1fa79bac063d2321458d03e1100624691612f8d8d1d99fcf7cae5fa06b34bf0ffcdc8aa2944adcfd6d9fd3d6abb0e148398665a7980ac06bdeb7ef2b3')
+sha512sums=('2f40b9bbddc3aca79fd6c4c34e78a68eea89bb9fb289f4324636829a0586bb9e8ee15db89fb5faba3ac98b2a2dbf4b474a0b7e93eb24a9da2354af1e3f688964')
 prepare() {
 	tar xf v${pkgver}.tar.gz
 	cd ${srcdir}/Korai-${pkgver}/
