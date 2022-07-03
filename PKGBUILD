@@ -2,7 +2,7 @@
 # Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=swarm-bee-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -21,10 +21,10 @@ source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/b
 sha256sums=('be2cfae74a424aa5e5c82480bc91483ddecac4b8b319fd16fa556940ffefce6e'
             '36a50889de810ee1dba3fbcb5cc04942e298b8825e4e4fc4f2eabbd844b2cf39'
             '27465c707fe2600700438cb8c2c5a3b87926ab086ce2e43f72b628650c8de034')
-sha256sums_x86_64=('1cda7fdd5beb9a57a14e25ef302dfdedbf8010c29915af655fbb693a7da5ca2c')
-sha256sums_i686=('4b56b2ac7bff6e27226e78a7d57ed179da9655a25d623ab00cf0c7ce44ada91c')
-sha256sums_armv7h=('a4c82643f21785aa4f5c2ae7ba9a8767451eda1c721b7020333b6755d936a9f0')
-sha256sums_aarch64=('aeb787c70d152bd5c2fd5ad1565b5f3aafe8b7c133b08f0d13daa8c06e8879aa')
+sha256sums_x86_64=('b2a707fceb302d8c8eed9505c01f01a681cf1cdbcc598db558411039f433eea4')
+sha256sums_i686=('b98894fd3578dc44cabe20b6878a3e5f1e82c8fe36c89e87aa4db4c2c7625b04')
+sha256sums_armv7h=('411769c6dc5715f5b7f17f65092d8b6b46294f4a935973b4aea25899dc888359')
+sha256sums_aarch64=('6c1e518df5be51278770dc96894be3d0016d207106a106e0e3f8c04672c098a7')
 install=bee.install
 
 prepare() {
