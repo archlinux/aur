@@ -1,0 +1,12 @@
+pkgbase = fcitx5-skin-seasons
+	pkgdesc = Simple style skin for fcitx5
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/thep0y/fcitx5-themes
+	arch = any
+	license = custom
+	depends = fcitx5
+	source = git+https://github.com/thep0y/fcitx5-themes.git
+	md5sums = SKIP
+
+pkgname = fcitx5-skin-seasons
