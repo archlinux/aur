@@ -2,7 +2,7 @@
 # Maintainer: Michael Saunders <michael (dot) saunders [at] tuta {dot} io>
 
 pkgname=mkp224o
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Vanity address generator for Tor onion v3 (ed25519) Onion Services"
 arch=('i686' 'x86_64')
@@ -11,15 +11,13 @@ license=('custom:CC0')
 provides=('mkp224o')
 depends=('libsodium')
 
-source=("https://github.com/cathugger/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst")
-# The following .sig and checksum have been verified locally against the author
-# key provided here: https://github.com/cathugger/mkp224o/issues/78#issuecomment-1142068306
-# It is not currently included as it is not present on any keyserver and would
-# make the package a little troublesome for some to install.
-# "https://github.com/cathugger/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst.sig"
-# 'bf0357d42bc17e605947d09e808bbf935d6d33ad8ba3157180af4fbc9371b3bb'
+source=("https://github.com/cathugger/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst"
+        "https://github.com/cathugger/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.zst.sig")
 
-sha256sums=('43a443a35f1a2d19dbd17d9b617b70bb1179e5d42f3cee6f55fcacf8829610ce')
+sha256sums=('03b91e552ad8503b853a698afc85ef0fc14ef57c75d61e014220e3d5038cdf2d'
+            '4a382202406930beb50cf8674d04cb0c794223ed315539bb7e68d8e0c60a0886')
+
+validpgpkeys=('5ADE4BE94F65E3C9BCBDD7D89BADDA2DAF6F01A8') # cathugger
 
 prepare() {
   cd "${pkgname}-${pkgver}"
