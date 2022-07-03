@@ -60,7 +60,6 @@ pkgbase = qmmp-1
 	optdepends = libsamplerate
 	optdepends = wavpack
 	provides = qmmp=1.6.1
-	conflicts = qmmp
 	source = qmmp-1.6.1.tar.bz2::https://qmmp.ylsoftware.com/files/qmmp/1.6/qmmp-1.6.1.tar.bz2
 	sha256sums = 2d8d5be8ed81dfa3b67de98b00800f7ea0fe9ac2d0f912e49265b0f4f7f5693f
 

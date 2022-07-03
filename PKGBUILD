@@ -8,7 +8,6 @@ license=('GPL')
 
 _name="${pkgname%-1}"
 provides=("${_name}=${pkgver}")
-conflicts=("${_name}")
 
 depends=(
     'alsa-lib' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'libmad' 'libvorbis'
