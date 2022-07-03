@@ -2,8 +2,8 @@
 # Maintainer: Christian Hoff <https://github.com/choff>
 # Contributor: Tobias Martin <tm-x at gmx dot net>
 
-pkgname=anbox-modules-dkms-aarch64
-_pkgname=anbox-modules-aarch64
+pkgname=anbox-modules-dkms-aarch64_fix
+_pkgname=anbox-modules-dkms-aarch64_fix
 pkgver=5.15
 arch="$(uname -r)"
 url='https://github.com/BlackCatDevel0per/anbox-modules-aarch64'
