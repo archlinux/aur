@@ -41,7 +41,7 @@ optdepends=(
 )
 
 _snapshot="${_name}-${pkgver}"
-source=("${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
+source=("${_snapshot}.tar.bz2::${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
 sha256sums=('2d8d5be8ed81dfa3b67de98b00800f7ea0fe9ac2d0f912e49265b0f4f7f5693f')
 
 build() {
