@@ -8,7 +8,14 @@ arch=('armv6h' 'armv7h' 'aarch64')
 makedepends=('cmake' 'rtl-sdr')
 url='https://github.com/JvanKatwijk/dab-cmdline'
 license=('GNU')
-source=('https://github.com/vale-max/dab-cmdline/archive/refs/heads/master.zip')
+source=(
+	https://github.com/vale-max/dab-cmdline/archive/refs/heads/master.zip
+	dablogo.jpg
+	dablogo-thumb.jpg
+	dab-skeleton.sh
+	dabstart.sh
+	rtsp-simple-server.yml
+)
 sha256sums=(SKIP)
 
 build() {

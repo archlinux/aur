@@ -10,6 +10,11 @@ pkgbase = dab-scanner
 	makedepends = cmake
 	makedepends = rtl-sdr
 	source = https://github.com/vale-max/dab-cmdline/archive/refs/heads/master.zip
+	source = dablogo.jpg
+	source = dablogo-thumb.jpg
+	source = dab-skeleton.sh
+	source = dabstart.sh
+	source = rtsp-simple-server.yml
 	sha256sums = SKIP
 
 pkgname = dab-scanner
