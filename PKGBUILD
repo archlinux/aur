@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/kalew515/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-md5sums=('debac7bae023e83a54236b2a1d95cb6d')
+md5sums=('433dcfff4abc6ed7800675a2764a10fa')
 validpgpkeys=()
 
 prepare() {
