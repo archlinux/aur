@@ -8,6 +8,7 @@ pkgbase = remote-uci
 	license = GPL3
 	makedepends = rust
 	depends = openssl
+	depends = stockfish
 	source = git+https://github.com/lichess-org/external-engine#tag=v1.0.0-alpha.0
 	sha256sums = SKIP
 

@@ -8,7 +8,7 @@ arch=(any)
 url='https://github.com/lichess-org/external-engine'
 license=(GPL3)
 makedepends=(rust)
-depends=(openssl)
+depends=(openssl stockfish)
 install=remote-uci.install
 source=("git+$url#tag=v1.0.0-alpha.0")
 sha256sums=(SKIP)
