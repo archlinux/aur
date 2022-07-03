@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=2021.6.1.r1.g11acb50
+pkgver=2022.6.1.r1.g11acb50
 pkgrel=1
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude continuous | sed 's/^v//;s/2021/2022/g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
