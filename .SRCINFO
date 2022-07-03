@@ -1,8 +1,8 @@
 pkgbase = libosmocore
 	pkgdesc = core libs for osmocom
-	pkgver = 1.6.0
-	pkgrel = 2
-	url = http://bb.osmocom.org/trac/wiki/libosmocore
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,9 @@ pkgbase = libosmocore
 	depends = lksctp-tools
 	depends = talloc
 	depends = gnutls
+	depends = systemd-libs
 	optdepends = libusb: libosmousb support
-	source = git://git.osmocom.org/libosmocore.git#tag=1.6.0
+	source = git://git.osmocom.org/libosmocore.git#tag=1.7.0
 	md5sums = SKIP
 
 pkgname = libosmocore
