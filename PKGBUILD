@@ -23,7 +23,7 @@ source=(
 	"http://nginx.org/download/nginx-$_nginxver.tar.gz.asc"
 	"$_modname::git+https://github.com/zotanmew/nginx-rtmp-module.git#branch=dev"
 )
-sha256sums=('958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 # Maxim Dounin <mdounin@mdounin.ru>
