@@ -4,7 +4,7 @@
 
 _name=python-sphinx-math-dollar
 pkgname=$_name-git
-pkgver=1.1.1.r2.ga3fe652
+pkgver=1.2.1.r3.gbe629b9
 _mainfolder=sphinx-math-dollar
 pkgrel=1
 pkgdesc='Sphinx extension to let you write LaTeX math using $$'
@@ -36,7 +36,4 @@ build() {
 package() {
   cd "$srcdir/$_mainfolder"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-  # the setup.py also installs tests, thus remove them
-  rm -R "$pkgdir"/usr/lib/python3.*/site-packages/sphinx_math_dollar/tests/
 }
