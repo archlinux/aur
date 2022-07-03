@@ -1,18 +1,19 @@
 pkgbase = perl-wx
 	pkgdesc = Interface to the wxWidgets cross-platform GUI toolkit
 	pkgver = 0.9932
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/dist/Wx
 	arch = x86_64
 	license = GPL
 	license = PerlArtistic
-	checkdepends = xorg-server-xvfb
 	makedepends = perl-module-build
 	depends = perl-alien-wxwidgets
 	depends = perl-extutils-xspp
 	depends = wxgtk3
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Wx-0.9932.tar.gz
+	source = gtk3.patch
 	sha256sums = 1cfdb6535a0f4676e6f1aab2c9d8e16d577be3eb3b7cc04c8074d685e6651b70
+	sha256sums = 61fca0928af91231988779b74b2aa735f92bea40804c3c50aaa8cac4ac5b3f1b
 
 pkgname = perl-wx
