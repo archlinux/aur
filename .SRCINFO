@@ -1,6 +1,6 @@
 pkgbase = universal-android-debloater-opengl-bin
 	pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. This version uses an OpenGL renderer for better compatibility with older hardware.
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/0x192/universal-android-debloater
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = universal-android-debloater-opengl-bin
 	depends = fontconfig
 	provides = universal-android-debloater
 	conflicts = universal-android-debloater
-	source = https://github.com/0x192/universal-android-debloater/releases/download/0.5/uad_gui-noseflupdate-linux-opengl.tar.gz
+	source = https://github.com/0x192/universal-android-debloater/releases/download/0.5.1/uad_gui-noselfupdate-linux-opengl.tar.gz
 	source = uad_gui.desktop
-	source = uad_gui-noseflupdate-linux-opengl.tar.gz.sig
+	source = uad_gui-noselfupdate-linux-opengl.tar.gz.sig
 	validpgpkeys = 09FD287B96B572E0802279D813639119486820A1
-	sha256sums = 51a9499d415bb2f9a091d38a2785c40849c548c50217b5b0b1ae79fc460d4ca0
+	sha256sums = dbac387dc02166aee79240d451368fc729ba90b0d25e541ed1400e366cd4d7e5
 	sha256sums = e55f259fab5e09d6e91412dbfa74859f609615606422b0e3c937cc774eaedbf3
 	sha256sums = SKIP
 
