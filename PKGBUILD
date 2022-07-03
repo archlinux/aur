@@ -106,7 +106,7 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver.src/build"
 
   DESTDIR="$pkgdir" ninja install-distribution
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove documentation sources
   rm -rf "$pkgdir"/opt/llvm10/share/doc/clang{,-tools}/html/{_sources,.buildinfo}
