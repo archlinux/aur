@@ -1,21 +1,32 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=colima
-pkgver=0.4.4
+pkgver=$PKGVER
 pkgrel=1
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
 url="https://github.com/abiosoft/colima"
+conflicts=('colima-bin')
+provides=('colima')
 license=('MIT')
-source=(
-  "https://github.com/abiosoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-Linux-x86_64"
-  "https://raw.githubusercontent.com/abiosoft/colima/v${pkgver}/LICENSE"
-)
-sha256sums=('65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6'
-            'e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea')
+makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc')
+source=(  "https://github.com/abiosoft/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('95543e68a1ebf61ac6f9e60987d493a0682d8c0e5af410d37da7217ebfc69df5')
+
+build() {
+	cd "${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+  go build -o build/${pkgname} -ldflags="-X 'main.buildVersion=${pkgver}' -X 'main.buildDate=${BUILD_DATE}'" ./cmd/colima/
+}
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 ${pkgname}-Linux-x86_64 ${pkgdir}/usr/bin/${pkgname}
-  install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "${srcdir}"/"${pkgname}-${pkgver}"
+  install -Dm755 build/"${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

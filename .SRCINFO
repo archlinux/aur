@@ -5,9 +5,14 @@ pkgbase = colima
 	url = https://github.com/abiosoft/colima
 	arch = x86_64
 	license = MIT
-	source = https://github.com/abiosoft/colima/releases/download/v0.4.4/colima-Linux-x86_64
-	source = https://raw.githubusercontent.com/abiosoft/colima/v0.4.4/LICENSE
-	sha256sums = 65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6
-	sha256sums = e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea
+	makedepends = go>=1.18
+	makedepends = git
+	makedepends = gzip
+	makedepends = tar
+	makedepends = gcc
+	provides = colima
+	conflicts = colima-bin
+	source = https://github.com/abiosoft/colima/archive/v0.4.4.tar.gz
+	sha256sums = 95543e68a1ebf61ac6f9e60987d493a0682d8c0e5af410d37da7217ebfc69df5
 
 pkgname = colima
