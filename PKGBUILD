@@ -8,13 +8,13 @@ pkgver=5.15
 arch="$(uname -r)"
 url='https://github.com/BlackCatDevel0per/anbox-modules-aarch64'
 pkgrel=1
-pkgdesc='Android kernel driver fork by @choff & fix for aarch64 from bcdev (binder/binderfs & ashmem) in DKMS format'
+pkgdesc='Android kernel driver fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL3')
 provides=("${pkgname}")
 depends=('dkms')
 makedepends=('git')
-source=("git+https://github.com/BlackCatDevel0per/${_pkgname}.git#commit=0d0a99d6fd123b7d3ab7fe0f392ca442e15775e0"
+source=("git+https://github.com/BlackCatDevel0per/${_pkgname}.git"
   "https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch")
 sha256sums=('SKIP'
   '7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556')
