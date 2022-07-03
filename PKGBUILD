@@ -8,7 +8,7 @@ pkgver=5.15
 arch="$(uname -r)"
 url='https://github.com/BlackCatDevel0per/anbox-modules-aarch64'
 pkgrel=1
-pkgdesc='Android kernel driver fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format'
+pkgdesc='[NOTE: Now not work!] Android kernel driver fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format'
 arch=('x86_64' 'aarch64' 'i386')
 license=('GPL3')
 provides=("${pkgname}")
