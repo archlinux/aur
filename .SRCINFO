@@ -1,16 +1,20 @@
 pkgbase = python-phue
-	pkgdesc = A Python library for the Philips Hue system
+	pkgdesc = Python library for the Philips Hue system
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/studioimaginaire/phue
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
-	makedepends = python
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	checkdepends = python-testtools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/studioimaginaire/phue/archive/1.1.tar.gz
-	md5sums = 2c3303552b4f762d780deda26aedc507
+	source = python-phue-1.1.tar.gz::https://github.com/studioimaginaire/phue/archive/1.1.tar.gz
+	sha256sums = 245bc176176a1ceb8d2065a6f07f53754fbe03f2a000dbeb01ab922e50e55d0a
 
 pkgname = python-phue
-	depends = python
-
