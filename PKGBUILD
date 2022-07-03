@@ -1,19 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
-pkgver=4.12.0
-pkgrel=2
+pkgver=2022.6.1
+pkgrel=1
+epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
 license=('GPL3')
-depends=('libxinerama' 'pyside6' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
+depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
          'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy'
          'scrcpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'setconf')
 optdepends=('usbaudio: audio mirroring for Android <8.0'
             'sndcpy: audio mirroring for Android >=10')
-_commit=06c5cf7dae06664741fe2f1d2c5d3700cff2e8e1  # tags/v4.12.0^0
-source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit?signed")
+_commit=8903d0b18ebebc0111d107d9375a3cb79db903d0  # tags/v2022.6.1^0
+source=("git+https://github.com/srevinsaju/guiscrcpy.git#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('7427D25413635E1E39657B6B1007816766D390D7') # Srevin Saju (srevinsaju) <srevinsaju@sugarlabs.org>
 
@@ -25,8 +26,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
 
-  # Force launching with PySide6
-  setconf "appimage/$pkgname.desktop" Exec 'env QT_API=pyside6 guiscrcpy'
+  # Force launching with PySide2
+  setconf "appimage/$pkgname.desktop" Exec 'env QT_API=pyside2 guiscrcpy'
 }
 
 build() {
