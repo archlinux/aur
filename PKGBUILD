@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=13.0.1
+pkgver=14.0.6
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -15,7 +15,7 @@ optdepends=()
 source=(
 	"https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/$_pkgname-$pkgver.src.tar.xz"{,.sig}
 )
-sha256sums=('6b79261371616c31fea18cd3ee1797c79ee38bcaf8417676d4fa366a24c96b4f'
+sha256sums=('4f731ff202add030d9d68d4c6daabd91d3aeed9812e6a5b4968815cfdff0eb1f'
             'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
@@ -37,7 +37,7 @@ build() {
 		cp "/usr/bin/${_arch}-cmake" .
 		sed -i 's/gcc/clang/' "toolchain-${_arch}.cmake"
 		sed -i 's/g++/clang++/' "toolchain-${_arch}.cmake"
-		sed -i "s|/usr/share/mingw/toolchain-${_arch}.cmake|$(pwd)/toolchain-${_arch}.cmake|" "${_arch}-cmake"
+		sed -i "s|/usr/share/mingw/toolchain-${_arch}.cmake|$srcdir/toolchain-${_arch}.cmake|" "${_arch}-cmake"
 		
 		./${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF -DCMAKE_ASM_MASM_FLAGS="$_winflag"
 		#sed -i -r 's/x86_64-w64-mingw32-uasm (.+) (\S+)z_Windows_NT-586_asm\.asm$/x86_64-w64-mingw32-uasm \1 Z:\2z_Windows_NT-586_asm\.asm/' "build-${_arch}/runtime/src/CMakeFiles/omp.dir/build.make"
