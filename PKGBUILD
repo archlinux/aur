@@ -27,27 +27,37 @@ prepare() {
   patch -p1 -i "${srcdir}"/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
 }
 
-package() {
+post_install {
+    cd "${srcdir}/${_pkgname}/"
+    ./INSTALL.sh
+}
 
-  install -dm755 "${pkgdir}/usr/src/binder-1"
-  install -dm755 "${pkgdir}/usr/src/ashmem-1"
+post_remove {
+    cd "${srcdir}/${_pkgname}/"
+    ./REMOVE.sh
+}
 
-  cp -r "${srcdir}/${_pkgname}/binder/"* "${pkgdir}/usr/src/binder-1/"
-  cp -r "${srcdir}/${_pkgname}/ashmem/"* "${pkgdir}/usr/src/ashmem-1/"
-
-  cd "${srcdir}/${_pkgname}/binder"
-  make
-  make DESTDIR="${pkgdir}/usr/src/binder-1" install
-
-  cd "${srcdir}/${_pkgname}/ashmem"
-  make
-  make DESTDIR="${pkgdir}/usr/src/ashmem-1" install
-
+# package() {
+#
+#   install -dm755 "${pkgdir}/usr/src/binder-1"
+#   install -dm755 "${pkgdir}/usr/src/ashmem-1"
+#
+#   cp -r "${srcdir}/${_pkgname}/binder/"* "${pkgdir}/usr/src/binder-1/"
+#   cp -r "${srcdir}/${_pkgname}/ashmem/"* "${pkgdir}/usr/src/ashmem-1/"
+#
+#   cd "${srcdir}/${_pkgname}/binder"
+#   make
+#   make DESTDIR="${pkgdir}/usr/src/binder-1" install
+#
+#   cd "${srcdir}/${_pkgname}/ashmem"
+#   make
+#   make DESTDIR="${pkgdir}/usr/src/ashmem-1" install
+#
 #   echo '** To activate binder_linux and ashmem_linux **
 # # $ sudo modprobe binder_linux devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder
 # # $ sudo modprobe ashmem_linux'
-
-}
+#
+# }
 
 # sudo modprobe binder_linux devices=binder,hwbinder,vndbinder,anbox-binder,anbox-hwbinder,anbox-vndbinder
 # sudo modprobe ashmem_linux
