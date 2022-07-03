@@ -4,23 +4,23 @@
 pkgname=python-airtable-wrapper
 _pkgname=pyairtable
 pkgver=0.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Airtable Client Wrapper"
 arch=("any")
 url="https://github.com/gtalarico/$_pkgname"
 license=("MIT")
 options=(!emptydirs)
 depends=("python" "python-requests")
-makedepends=("python-setuptools")
+makedepends=("python-build" "python-installer" "python-wheel")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("9426679c08d397345179307890e5dde05cfe05b6bf6c7d2b0764806c947ab2c7")
 
 build() {
     cd "$_pkgname-$pkgver"
-    python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
