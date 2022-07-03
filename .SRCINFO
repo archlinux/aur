@@ -10,7 +10,7 @@ pkgbase = pikaur-git
 	depends = git
 	optdepends = asp: for ABS support in -G/--getpkgbuild operation
 	optdepends = python-pysocks: for socks5 proxy support
-	optdepends = python-defusedxml: wrap aur news replies
+	optdepends = python-defusedxml: wrap Arch news replies
 	provides = pikaur
 	conflicts = pikaur
 	source = pikaur-git::git+https://github.com/actionless/pikaur.git#branch=master
