@@ -1,20 +1,24 @@
 post_install() {
   touch /etc/remote-uci.secret
+  chown remote-uci:remote-uci /etc/remote-uci.secret
   chmod 600 /etc/remote-uci.secret
   tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > /etc/remote-uci.secret
+
   systemctl enable --now remote-uci.socket
 }
 
 post_upgrade() {
+  chown remote-uci:remote-uci /etc/remote-uci.secret
   chmod 600 /etc/remote-uci.secret
+
   systemctl daemon-reload
   systemctl stop remote-uci.socket remote-uci.service
   systemctl start remote-uci.socket
-  openssl rand -base64 32 > /etc/remote-uci.secret
 }
 
 pre_remove() {
   systemctl disable --now remote-uci.socket
   systemctl stop remote-uci.service
+
   rm -f /etc/remote-uci.secret
 }
