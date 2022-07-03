@@ -11,7 +11,7 @@ url="https://osmocom.org/projects/libosmocore/"
 license=('GPL')
 groups=()
 provides=()
-depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls')
+depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls' 'systemd-libs')
 optdepends=('libusb: libosmousb support')
 makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config' 'libusb')
 
@@ -23,7 +23,8 @@ build() {
 
   autoreconf -i
   ./configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --datadir=/usr/share \
-              --libexecdir=/usr/lib --localstatedir=/var --docdir=/usr/share/doc/libosmocore --libdir=/usr/lib/
+              --libexecdir=/usr/lib --localstatedir=/var --docdir=/usr/share/doc/libosmocore --libdir=/usr/lib/ \
+              --enable-systemd-logging
   make
 }
 
