@@ -1,6 +1,6 @@
 pkgbase = camotics-git
 	pkgdesc = 3-axis NC machining simulation software
-	pkgver = r958.81e1424
+	pkgver = r960.6942bd0
 	pkgrel = 1
 	url = http://camotics.org/
 	arch = x86_64

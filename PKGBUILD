@@ -42,6 +42,8 @@ build() {
 package() {
   cd "${pkgname%-*}"
   CBANG_HOME=/opt/cbang scons install cxxstd="c++17" install_prefix="$pkgdir/usr" 
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install build/camotics.so -D "$pkgdir/$site_packages/camotics.so"
 }
 
 # vim:set ts=2 sw=2 et:
