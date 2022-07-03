@@ -1,13 +1,13 @@
 # Maintainer: Vlad Zahorodnii <contact@vladzahorodnii.com>
 
 pkgname=kwin-effects-cube-git
-pkgver=0.1.0.r0.ed80bd9
+pkgver=0.1.0.r9.0fa756b
 pkgrel=1
 pkgdesc='Desktop cube effect for KWin'
 arch=('x86_64')
 url='https://github.com/zzag/kwin-effects-cube'
 license=('GPL3')
-depends=('kwin>=5.25.0')
+depends=('kwin>=5.25.0' qt5-quick3d)
 makedepends=(extra-cmake-modules)
 source=("${pkgname}::git+https://github.com/zzag/kwin-effects-cube.git")
 sha256sums=('SKIP')
