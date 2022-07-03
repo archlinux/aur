@@ -1,7 +1,7 @@
 pkgbase = okular-vim-colemak
 	pkgdesc = Document Viewer with colemak vim-binding
 	pkgver = 22.04.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://apps.kde.org/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -35,6 +35,8 @@ pkgbase = okular-vim-colemak
 	optdepends = calligra: ODT and ODP support
 	optdepends = unrar: Comic Book Archive support
 	optdepends = unarchiver: Comic Book Archive support (alternative)
+	optdepends = kde-cli-tools: to configure web shortcuts
+	optdepends = plasma-workspace: to configure web shortcuts
 	conflicts = okular
 	options = debug
 	options = !zipman
