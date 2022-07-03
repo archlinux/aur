@@ -9,22 +9,25 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2021.2.2.r20.gdcdffa3b
+pkgver=2022.4.4.r3.ge0fb307c
 pkgrel=1
-pkgdesc='API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)'
+pkgdesc='Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)'
 arch=('x86_64')
 url='https://software.intel.com/en-us/media-sdk/'
 license=('MIT')
 makedepends=('libdrm' 'libva-git' 'wayland' 'intel-media-driver'
              'git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'python')
-source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git'
+        '010-intel-media-sdk-fix-reproducible-build.patch'::'https://github.com/Intel-Media-SDK/MediaSDK/commit/f6925886f27a39eed2e43c5b7b6c342d00f7a970.patch')
+sha256sums=('SKIP'
+            'f1d8a4edf953cfec1516f1a8383c5ee033245aba16cfae0bc79b7de1a6365fcc')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
     git -C MediaSDK lfs install --local
     git -C MediaSDK lfs pull "${source[0]/git+/}"
+    patch -d MediaSDK -Np1 -i "${srcdir}/010-intel-media-sdk-fix-reproducible-build.patch"
 }
 
 pkgver() {
@@ -54,18 +57,17 @@ package_intel-media-sdk-git() {
     depends=('libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
     provides=('intel-media-sdk' 'onevpl-runtime')
     conflicts=('intel-media-sdk')
+    options=('!emptydirs')
     
     make -C build DESTDIR="$pkgdir" install
     ln -s mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
     install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
-    # remove core component libmfx
     [ -d 'libmfx' ] && rm -rf libmfx
-    mkdir -p libmfx/{include,lib/pkgconfig}
-    mv "${pkgdir}/usr/include/mfx" libmfx/include
-    mv "${pkgdir}/usr/lib/libmfx.so"* libmfx/lib
-    mv "${pkgdir}/usr/lib/pkgconfig/"{,lib}mfx.pc libmfx/lib/pkgconfig
-    rm -d "${pkgdir}/usr/include"
+    mkdir -p libmfx/usr/{include,lib/pkgconfig}
+    mv "${pkgdir}/usr/include/mfx" libmfx/usr/include
+    mv "${pkgdir}/usr/lib"/libmfx.so* libmfx/usr/lib
+    mv "${pkgdir}/usr/lib/pkgconfig"/{,lib}mfx.pc libmfx/usr/lib/pkgconfig
 }
 
 package_libmfx-git() {
@@ -74,6 +76,6 @@ package_libmfx-git() {
     provides=('libmfx')
     conflicts=('libmfx')
     
-    mv libmfx "${pkgdir}/usr"
+    mv -T libmfx "$pkgdir"
     install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
