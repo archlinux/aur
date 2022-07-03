@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=4.12.1.r1320.geb8398f
-pkgrel=2
+pkgver=2022.6.1.r1.g11acb50
+pkgrel=1
+epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
 license=('GPL3')
-depends=('libxinerama' 'pyside6' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
-         'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy>=2.0.1'
+depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
+         'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy'
          'scrcpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'setconf')
 optdepends=('usbaudio: audio mirroring for Android <8.0'
@@ -19,15 +20,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s.r%s.g%s" "$(sed -n '/version/{s/.*"\([0-9\.]*\).*"/\1/p;q}' pyproject.toml)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --exclude continuous | sed 's/^v//;s/2021/2022/g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
-  # Force launching with PySide6
-  setconf appimage/${pkgname%-git}.desktop Exec 'env QT_API=pyside6 guiscrcpy'
+  # Force launching with PySide2
+  setconf appimage/${pkgname%-git}.desktop Exec 'env QT_API=pyside2 guiscrcpy'
 }
 
 build() {
