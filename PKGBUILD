@@ -19,7 +19,8 @@ optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-bifrost: Maya Bifrost Effects Plugin'
             'maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin'
             'maya-substance: Maya Substance Material Plugin'
-            'maya-usd: Maya Universal Scene Description Plugin')
+            'maya-usd: Maya Universal Scene Description Plugin'
+            'libtiff-maya-git: Prevents the "no version information" warning from printing')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://Maya2023_64-$pkgver-1532.x86_64.rpm"

@@ -29,6 +29,7 @@ pkgbase = maya
 	optdepends = maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
+	optdepends = libtiff-maya-git: Prevents the "no version information" warning from printing
 	options = !strip
 	source = manual://Maya2023_64-2023.1-1532.x86_64.rpm
 	source = application-home-workaround.patch
