@@ -1,6 +1,6 @@
 # Maintainer: Raziman Mahathir <raziman.mahathir@gmail.com>
 pkgname=gomu
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Terminal User Interface (TUI) Music Player"
 arch=('x86_64')
