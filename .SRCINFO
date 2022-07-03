@@ -1,6 +1,6 @@
 pkgbase = renderman
 	pkgdesc = Proprietary photorealistic 3D rendering software produced by Pixar Animation Studios
-	pkgver = 24.3.2208291
+	pkgver = 24.4.2226589
 	pkgrel = 1
 	url = https://renderman.pixar.com
 	install = renderman.install
@@ -8,7 +8,7 @@ pkgbase = renderman
 	license = custom
 	depends = libidn
 	depends = libicu50
-	source = manual://RenderMan-InstallerNCR-24.3.0_2208291-linuxRHEL7_gcc63icc190.x86_64.rpm
-	sha256sums = a99631bd887c69ad1c7eb7fdb43c5b4259c780e9f3b30da2a970877a91ab3063
+	source = manual://RenderMan-InstallerNCR-24.4.0_2226589-linuxRHEL7_gcc63icc190.x86_64.rpm
+	sha256sums = 47f20247493ddc61ea33edf86d60d1414b249ffcf024d4741dbc571bbf705500
 
 pkgname = renderman
