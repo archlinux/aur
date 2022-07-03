@@ -1,16 +1,21 @@
 pkgbase = kubergrunt
 	pkgdesc = Kubergrunt is a standalone go binary with a collection of commands to fill in the gaps between Terraform, Helm, and Kubectl
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gruntwork-io/kubergrunt
 	arch = x86_64
 	license = Apache-2
+	makedepends = go>=1.18
+	makedepends = git
+	makedepends = gzip
+	makedepends = tar
+	makedepends = gcc
 	optdepends = terraform
 	optdepends = kubectl
 	optdepends = helm
-	source = https://raw.githubusercontent.com/gruntwork-io/kubergrunt/v0.9.1/LICENSE
-	source = https://github.com/gruntwork-io/kubergrunt/releases/download/v0.9.1/kubergrunt_linux_amd64
-	sha256sums = d1dc9a105a814822337e0f8eab8668e4eb05bb04b4d6b234c5e9b79b76550a91
-	sha256sums = ca086f10f85bad60e44169136962473b475b703c22d72e928afc2b9f65fb88e0
+	provides = kubergrunt
+	conflicts = kubergrunt-bin
+	source = https://github.com/gruntwork-io/kubergrunt/archive/v0.9.1.tar.gz
+	sha256sums = 8bc05d05ffb61af96c00823ecc1eacc0fdd33de985bfc2501baf0ea829762367
 
 pkgname = kubergrunt
