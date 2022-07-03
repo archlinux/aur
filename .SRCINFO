@@ -1,0 +1,24 @@
+pkgbase = pushgarden-git
+	pkgdesc = A Web Push gateway to proprietary services
+	pkgver = r32.107b28c41256
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/pushgarden
+	arch = x86_64
+	license = AGPLv3
+	makedepends = git
+	makedepends = go
+	provides = pushgarden
+	conflicts = pushgarden
+	backup = etc/pushgarden/params
+	source = git+https://git.sr.ht/~emersion/pushgarden
+	source = pushgarden.service
+	source = pushgarden.sysusers
+	source = pushgarden.tmpfiles
+	source = params
+	sha256sums = SKIP
+	sha256sums = 719749193fb165fd254ac53c7e82ac800db8a6c2613ccc2b38144dcb720a75d7
+	sha256sums = 5cef488aa00aeaaaedea87dcffd26dd22203cdcec159e30c0cdc29ccc87ee30c
+	sha256sums = fcb114468a97a1b07e827dd1ff9d4789072a1c73db7f859a3b54b118cd622283
+	sha256sums = 474304ccb5dca9e297d606db16ab371d913d88edccebd378ee1e5059423b438f
+
+pkgname = pushgarden-git

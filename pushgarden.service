@@ -1,0 +1,13 @@
+[Unit]
+Description=Web Push gateway to proprietary services
+After=network.target
+
+[Service]
+Type=simple
+User=pushgarden
+Restart=always
+EnvironmentFile=/etc/pushgarden/params
+ExecStart=/usr/bin/pushgarden -listen=${listen} -db=/var/lib/pushgarden/db
+
+[Install]
+WantedBy=multi-user.target
