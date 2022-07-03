@@ -1,54 +1,43 @@
-# Maintainer: Jon Ribeiro <contact@jonathas.com>
+# Maintainer: Alad Wenter <alad at archlinux dot org>
+# Contributor: Jon Ribeiro <contact@jonathas.com>
 pkgname=perl-text-findindent
-_realname=Text-FindIdent
+_dist=Text-FindIndent
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="'Heuristically determine the indent style'"
 arch=(i686 x86_64)
 license=('perl')
 url="http://search.cpan.org/~smueller/Text-FindIndent"
 options=(!emptydirs)
-
 depends=('perl>=5.10.1')
 makedepends=('perl')
+provides=('perl-text-findindent=0.10')
+source=("http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Text-FindIndent-$pkgver.tar.gz")
+sha256sums=('492c37e7bb5a4fca665e03728c0affe39c1235f65d85f27136f487af29797a30')
 
-#provides=('Text-FindIndent')
-provides=('text-findindent=0.10' 'Text::FindIndent=0.10' 'perl-text-findindent=0.10')
+build() {
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
+}
 
-source=('http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Text-FindIndent-0.10.tar.gz')
-
-md5sums=('765d619fc84e07b3c1e3ac6841e6a6b8')
+check() {
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
+}
 
 package() {
-  _expected_dir="${srcdir}/${_realname}-${pkgver}"
-  if [ -d "$_expected_dir" ]; then
-    cd "$_expected_dir"
-  else
-    _expected_dir="${srcdir}/$(bsdtar -t -f $(basename $source) | head -n1)"
-    if [ -d "$_expected_dir" ]; then
-      cd "$_expected_dir"
-    else
-      _makefile=$(find $srcdir -iname Makefile.PL)
-      if [ ! -z "$_makefile" ]; then
-        _expected_dir=$(dirname $_makefile)
-        if [ -d "$_expected_dir" ]; then
-          cd "$_expected_dir"
-        else
-          echo "[1;31mERROR[0m unable to detect source directory"
-          echo "[1;34m-->[0m this is often due to CPAN's lack of standard naming conventions"
-          echo "[1;34m-->[0m it may be possible to fix this by adjusting the build function in the PKGBUILD"
-        fi
-      fi
-    fi
-  fi
-  # install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-  make  || return 1
-  make install DESTDIR=${pkgdir} || return 1
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 
   # remove perllocal.pod and .packlist
-  find ${pkgdir} -name perllocal.pod -delete
-  find ${pkgdir} -name .packlist -delete
+  find "$pkgdir" -name perllocal.pod -delete
+  find "$pkgdir" -name .packlist -delete
 }
 
 # vim:set ts=2 sw=2 et:
