@@ -8,3 +8,13 @@
  #include <sstream>
  #include <string>
  #include <utility>
+--- a/src/utilities/file.h
++++ b/src/utilities/file.h
+@@ -31,6 +31,7 @@
+ #include <boost/filesystem.hpp>
+ 
+ #include <iosfwd>
++#include <memory>
+ #include <string>
+ #include <vector>
+ 

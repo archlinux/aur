@@ -2,7 +2,7 @@
 # Contributor: Jon Bergli Heier <snakebite@jvnv.net>
 pkgname=rlvm
 pkgver=0.14
-pkgrel=4
+pkgrel=5
 pkgdesc="RealLive clone for Linux and OSX"
 arch=('x86_64')
 url="http://www.rlvm.net/"
@@ -23,7 +23,7 @@ sha256sums=('6d1717540b8db8aca1480ebafae3354b24e3122a77dd2ee81f4b964c7b10dcc0'
             'a949dc649fac6cdff44ddf7f76480de82035b979b4bf8d959ae07ab648c5589d'
             '8d2e8acf8bcb1f8fd5c78373dbea29036ccee1947a31ea99ae92af72b8ca84fd'
             '388f9113f229863e679c000dd5820d35f0e9de52de38a1aa041794493d7ebc3c'
-            'f291ccfd7481c42db5c4b5484d8345790e4e9955d3fc86bd68af6f6d0586914b')
+            '05b4c17fe4132b3877b53ba34076c4f21b0982d40ec134400697a51f7ea52226')
 
 prepare() {
   cd "$srcdir/$pkgname-release-$pkgver"
