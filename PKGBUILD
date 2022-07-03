@@ -88,8 +88,8 @@ install=weblate.install
 build() {
 	cd $_pkgname-$pkgver
         # don't pin any packages, this will just lead to runtime breakage
-        # downgrade translate-toolkit and pyparsing requirements. We can't use those yet, see above. (translate-toolkit 3.5.x depends on pyparsing 3.0.x as well.)
-	sed -i -e 's/,.*$//' -e 's/==/>=/' -e 's/translate-toolkit>=3.5.1/translate-toolkit>=3.4.0/' -e 's/pyparsing>=3.0.5/pyparsing>=2.0/' requirements.txt
+	# importlib_metdata is just required for python<3.8
+	sed -i -e 's/,.*$//' -e 's/==/>=/' -e '/importlib-metadata/d' requirements.txt
 	python setup.py build
 }
 
