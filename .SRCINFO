@@ -1,7 +1,7 @@
 pkgbase = python-requests-cache
 	pkgdesc = Transparent persistent cache for http://python-requests.org library
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
 	license = custom:BSD-2-clause
@@ -12,6 +12,7 @@ pkgbase = python-requests-cache
 	depends = python-platformdirs
 	depends = python-cattrs
 	depends = python-url-normalize
+	depends = python-exceptiongroup
 	optdepends = python-boto3: Cache backend for Amazon DynamoDB database
 	optdepends = python-botocore: Interface for Amazon Web Services
 	optdepends = python-pymongo: Cache backend for MongoDB database
