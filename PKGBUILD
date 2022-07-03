@@ -3,7 +3,7 @@
 # Maintainer: nekohasekai <contact-archlinux@sekai.icu>
 
 pkgname=clash-for-windows-bin-git
-pkgver=0.19.22
+pkgver=0.19.23
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -44,7 +44,7 @@ sha512sums_aarch64=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "$(git describe --tags)"
+  printf "$(git tag --sort=committerdate | tail -1)"
 }
 
 build() {
