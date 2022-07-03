@@ -2,8 +2,8 @@
 # Contributor: Bijaya Dangol <dangoldbj23@gmail.com>
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
@@ -13,7 +13,7 @@ depends=('python' 'python-pip' 'python-pyqt5' 'python-polib'
          'python-mutagen' 'python-send2trash' 'libxkbcommon-x11')
 makedepends=('python-distro' 'python-sphinx')
 source=( https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
-md5sums=('445a0e7a7a0549f00364eaf4e4f78229')
+md5sums=('7eca3651beab8bf4d50e56476436a280')
 provides=("dupeguru")
 conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
