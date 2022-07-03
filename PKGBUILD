@@ -1,6 +1,6 @@
 # Maintainer: J.R. Hill <hiljusti@so.dang.cool>
 pkgname="sigi"
-pkgver="3.4.0"
+pkgver="3.4.2"
 pkgrel=1
 pkgdesc="Organization CLI for people who hate organization"
 arch=('x86_64' 'aarch54')
@@ -8,7 +8,7 @@ url="https://github.com/hiljusti/sigi"
 license=('GPL-2.0-only')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/sigi/$pkgver/download")
-sha256sums=('f12fb8bcbc1b1c8e1cbe45c5330339e2711be7cd5e3decf3c73d105cf20bf339')
+sha256sums=('8bb60ca0fa0fd66aaeef0efb3b34b171dbe0a6e0f69672dafc9cc72fb30a4036')
 
 build() {
 	cd "$pkgname-$pkgver"
