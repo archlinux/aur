@@ -1,7 +1,7 @@
 From a9b12df0695e228bbfab9ade17e02614d7f0cf84 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Sat, 21 May 2022 18:20:14 +0200
-Subject: [PATCH 10/12] spdlog
+Subject: [PATCH 10/13] spdlog
 
 ---
  deps/spdlog-1.8.0/include/spdlog/common-inl.h | 2 +-
@@ -21,5 +21,5 @@ index be0d8f8ea..4e5a09cb9 100644
  }
  
 -- 
-2.36.1
+2.37.0
 
