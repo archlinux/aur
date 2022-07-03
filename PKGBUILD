@@ -6,7 +6,7 @@
 _basename=panon
 pkgname=plasma5-applets-$_basename
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
 url="http://github.com/rbn42/panon"
@@ -17,7 +17,7 @@ depends=(
 	'python-numpy'
 	'python-pillow'
 	'python-pyaudio'
-	'python-soundcard'
+	'python-soundcard>=0.4.2'  # compat with Python 3.10
 	'python-websockets'
 	'qt5-websockets'
 	'qt5-3d'
@@ -57,6 +57,7 @@ package() {
 	
 	rm -rf "$pkgdir/usr/share/plasma/plasmoids/" || true
 	kpackagetool5 -p "$pkgdir/usr/share/plasma/plasmoids/" -t Plasma/Applet -i plasmoid
+	rm -rf "$pkgdir/usr/share/plasma/plasmoids/panon/contents/scripts/soundcard"
 	
 	# If an index is generated, remove it.
 	path_index="$pkgdir/usr/share/plasma/plasmoids/kpluginindex.json"
