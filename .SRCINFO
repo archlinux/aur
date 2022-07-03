@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mesa
 	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
-	pkgver = 22.1.0
+	pkgver = 22.1.2
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = any
@@ -14,15 +14,15 @@ pkgbase = mingw-w64-mesa
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://mesa.freedesktop.org/archive/mesa-22.1.0.tar.xz
-	source = https://mesa.freedesktop.org/archive/mesa-22.1.0.tar.xz.sig
+	source = https://mesa.freedesktop.org/archive/mesa-22.1.2.tar.xz
+	source = https://mesa.freedesktop.org/archive/mesa-22.1.2.tar.xz.sig
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D
 	validpgpkeys = 946D09B5E4C9845E63075FF1D961C596A7203456
 	validpgpkeys = E3E8F480C52ADD73B278EE78E1ECBE07D7D70895
 	validpgpkeys = A5CC9FEC93F2F837CB044912336909B6B25FADFA
 	validpgpkeys = 71C4B75620BC75708B4BDB254C95FAAB3EB073EC
 	validpgpkeys = 57551DE15B968F6341C248F68D8E31AFC32428A6
-	sha256sums = df6270c1371eaa2aa6eb65b95cbbb2a98b14fa4b7ba0ed45e4ca2fd32df60477
+	sha256sums = 0971226b4a6a3d10cfc255736b33e4017e18c14c9db1e53863ac1f8ae0deb9ea
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mesa
