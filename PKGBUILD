@@ -1,10 +1,10 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Vlad Petrov <ejiek@mail.ru>
-# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname=nb
 pkgver=6.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
