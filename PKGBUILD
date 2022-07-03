@@ -2,9 +2,9 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.9.0
-_pkgver_ext=1.9.0_12015_20220302_0855
-_pkg_file_name=en.st-stm32cubeide_1.9.0_12015_20220302_0855_amd64.sh.zip
+pkgver=1.10.0
+_pkgver_ext=1.10.0_12671_20220627_1643
+_pkg_file_name=en.st-stm32cubeide_1.10.0_12671_20220627_1643_amd64.sh.zip
 pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
@@ -32,7 +32,7 @@ fi
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('fbb1c8dae35fe1bceba167db90041eab2dbd309ecbe3b6d81f22f0520ebc7fb2'
+sha256sums=('272f8968c2cba5afbcb54cae6277c38afade49657a5cef61b2e7ab01d24d38a3'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP')
 
@@ -86,7 +86,7 @@ END
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.9.0
+Comment=STM32CubeIDE 1.10.0
 GenericName=STM32CubeIDE
 Exec=env GDK_BACKEND=x11 stm32cubeide %F
 Icon=stm32cubeide
