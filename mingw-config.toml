@@ -473,13 +473,23 @@ debuginfo-level-tools = 0
 # FIXME(#61117): Some tests fail when this option is enabled.
 debuginfo-level-tests = 0
 
-# Whether to run `dsymutil` on Apple platforms to gather debug info into .dSYM
-# bundles. `dsymutil` adds time to builds for no clear benefit, and also makes
-# it more difficult for debuggers to find debug info. The compiler currently
-# defaults to running `dsymutil` to preserve its historical default, but when
-# compiling the compiler itself, we skip it by default since we know it's safe
-# to do so in that case.
-#run-dsymutil = false
+# Should rustc be build with split debuginfo? Default is platform dependent.
+# Valid values are the same as those accepted by `-C split-debuginfo`
+# (`off`/`unpacked`/`packed`).
+#
+# On Linux, split debuginfo is disabled by default.
+#
+# On Apple platforms, unpacked split debuginfo is used by default. Unpacked
+# debuginfo does not run `dsymutil`, which packages debuginfo from disparate
+# object files into a single `.dSYM` file. `dsymutil` adds time to builds for
+# no clear benefit, and also makes it more difficult for debuggers to find
+# debug info. The compiler currently defaults to running `dsymutil` to preserve
+# its historical default, but when compiling the compiler itself, we skip it by
+# default since we know it's safe to do so in that case.
+#
+# On Windows platforms, packed debuginfo is the only supported option,
+# producing a `.pdb` file.
+#split-debuginfo = if linux { off } else if windows { packed } else if apple { unpacked }
 
 # Whether or not `panic!`s generate backtraces (RUST_BACKTRACE)
 backtrace = true
@@ -676,7 +686,7 @@ linker = "cc"
 #sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
-# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 # This option will override the same option under [build] section.
 #profiler = build.profiler (bool)
 
@@ -751,7 +761,7 @@ linker = "i686-w64-mingw32-cc"
 #sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
-# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 # This option will override the same option under [build] section.
 #profiler = build.profiler (bool)
 
@@ -826,7 +836,7 @@ linker = "x86_64-w64-mingw32-cc"
 #sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
-# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 # This option will override the same option under [build] section.
 #profiler = build.profiler (bool)
 
