@@ -1,0 +1,36 @@
+From 0eb8a95d4f0585b235e9e97873ad6654994b8494 Mon Sep 17 00:00:00 2001
+From: Martin Ashby <MFAshby@users.noreply.github.com>
+Date: Sat, 2 Jul 2022 22:34:51 +0100
+Subject: [PATCH] Remove references to man.5 from build.sh
+
+man.5 page was removed in c0eacfa0f34f4040ec4fd5d3ca44a35e8cde21b4
+removed remaining references in build.sh, otherwise strict build (like arch linux makepkg) fails.
+---
+ build.sh | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/build.sh b/build.sh
+index 9ea33557..f612d647 100755
+--- a/build.sh
++++ b/build.sh
+@@ -104,9 +104,6 @@ build_man_pages() {
+ 	for f in ./docs/man/*.1.scd; do
+ 		scdoc < "$f" > "${builddir}/man/$(basename "$f" .scd)"
+ 	done
+-	for f in ./docs/man/*.5.scd; do
+-		scdoc < "$f" > "${builddir}/man/$(basename "$f" .scd)"
+-	done
+ }
+ 
+ build() {
+@@ -159,10 +156,6 @@ install() {
+ 		for f in "${builddir}"/man/*.1; do
+ 			command install -m 0644 "$f" "${destdir}/${prefix}/share/man/man1/"
+ 		done
+-		command install -m 0755 -d "${destdir}/${prefix}/share/man/man5/"
+-		for f in "${builddir}"/man/*.5; do
+-			command install -m 0644 "$f" "${destdir}/${prefix}/share/man/man5/"
+-		done
+ 	fi
+ }
+ 

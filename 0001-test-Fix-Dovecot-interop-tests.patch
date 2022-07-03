@@ -1,0 +1,44 @@
+From 90f88c89cdb0330ca9840ee518d17a153b6edb0c Mon Sep 17 00:00:00 2001
+From: "fox.cpp" <fox.cpp@disroot.org>
+Date: Sun, 3 Jul 2022 16:37:50 +0300
+Subject: [PATCH] test: Fix Dovecot interop tests
+
+Dovecot no longer prints the specific error message used
+to detect successful startup.
+---
+ tests/dovecot_sasl_test.go | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/dovecot_sasl_test.go b/tests/dovecot_sasl_test.go
+index 11fbcaf..673a117 100644
+--- a/tests/dovecot_sasl_test.go
++++ b/tests/dovecot_sasl_test.go
+@@ -36,6 +36,7 @@ import (
+ 	"strings"
+ 	"syscall"
+ 	"testing"
++	"time"
+ 
+ 	"github.com/foxcpp/maddy/tests"
+ )
+@@ -47,6 +48,7 @@ func init() {
+ }
+ 
+ const dovecotConf = `base_dir = $ROOT/run/
++state_dir = $ROOT/lib/
+ log_path = /dev/stderr
+ ssl = no
+ 
+@@ -149,7 +151,8 @@ func runDovecot(t *testing.T) (string, *exec.Cmd) {
+ 			line := scnr.Text()
+ 
+ 			// One of messages printed near completing initialization.
+-			if strings.Contains(line, "master: Error: file_dotlock_open(/var/lib/dovecot/instances) failed: Permission denied") {
++			if strings.Contains(line, "starting up for imap") {
++				time.Sleep(500*time.Millisecond)
+ 				ready <- struct{}{}
+ 			}
+ 
+-- 
+2.25.1
+
