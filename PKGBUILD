@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=28.0
-_pkgver=28.0.92
-pkgrel=0.923
+pkgver=28.1
+_pkgver=28.1.90
+pkgrel=0.90
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. -- Retagged because msnspk is an idiot."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -26,7 +26,7 @@ conflicts=('emacs')
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz
         nemacs)
-b2sums=('3a0a1e6cec79dd56c36d7f3227654f10e1d0d1a7b933a269e25bdd0da6bcec6653500ee0775b70bafdb09bb59d0976474535b82316eee592fafc8fa9e4d7c0e7'
+b2sums=('00aa886946de3247954ad3b113d8f5861ffe4d46757ff4d33f4a88d688e9ffa86733316ae73809dd3017d4f8c3fe755bca658a752975a4c1ca716dcc4c206528'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 
 build() {
@@ -50,10 +50,15 @@ build() {
 # dconf and gconf break font settings set in ~/.emacs
 # If you insist you'll need to play gymnastics with
 # set-frame-font and set-menu-font. Good luck!
-# Might be fixed in master, but you can't be be too cautious. Try emacs-git first.
+# Might be fixed in master, but you can't be be too cautious. Try 
+# emacs-git first.
     --without-gsettings
     --without-gconf
-# Welcome to the new world.
+# Welcome to the JIT new world.
+# To compile all extra site-lisp on demand (repos, AUR, ELPA, MELPA packages),
+# add
+#    (setq comp-deferred-compilation t)
+# to your .emacs file.
     --with-native-compilation
 )
   ./configure "${confopts[@]}"
