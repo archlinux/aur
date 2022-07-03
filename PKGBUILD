@@ -1,6 +1,6 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
-pkgver='0.7.30'
+pkgver='0.7.31'
 pkgrel='0'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
@@ -18,7 +18,7 @@ package() {
   install -D "nimdow.desktop" "$pkgdir/usr/share/xsessions/nimdow.desktop"
 }
 
-sha256sums=('030ae2cb2d63d0321fe0636ba841cab9dc6a5d1a0d4065b767ef5d81d34a8559'
+sha256sums=('362f60d8f8a5b3f576d58ea69329cae2205d0ad8ba39f0091acc1c9d751ade9a'
             'e53f7aa1efc9f1270271696fcb83000d5513cad38d738b20a08897bb47a7fdfd'
             '05ed7a86f30c7745602ad71831d91ccf3d13f5bd19908842b7179b865be48647'
             'ee60c4eb3150e7ec7d69f233a186f90626cc342f51ca6d58eb76e2efa00783c7')
