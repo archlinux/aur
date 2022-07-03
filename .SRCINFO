@@ -11,7 +11,9 @@ pkgbase = mingw-w64-libtre-git
 	depends = mingw-w64-crt
 	depends = mingw-w64-gettext
 	provides = mingw-w64-libtre
+	provides = mingw-w64-regex
 	conflicts = mingw-w64-libtre
+	conflicts = mingw-w64-regex
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -23,4 +25,3 @@ pkgbase = mingw-w64-libtre-git
 	md5sums = eb7c4c23c61b59bdb9a2257e13244110
 
 pkgname = mingw-w64-libtre-git
-
