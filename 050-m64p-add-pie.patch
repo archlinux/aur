@@ -1,11 +1,10 @@
 --- a/mupen64plus-gui/mupen64plus-gui.pro
 +++ b/mupen64plus-gui/mupen64plus-gui.pro
-@@ -98,8 +98,6 @@ FORMS    += mainwindow.ui
+@@ -104,7 +104,6 @@ FORMS    += mainwindow.ui
  
  QMAKE_INCDIR += api interface
  
 -QMAKE_LFLAGS += -no-pie
--
- CONFIG += optimize_full
  
- QMAKE_PROJECT_DEPTH = 0
+ QMAKE_CXXFLAGS_RELEASE -= -O2
+ QMAKE_CXXFLAGS_RELEASE += -O3 -march=x86-64-v3
