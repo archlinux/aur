@@ -1,0 +1,19 @@
+pkgbase = airstatus-git
+	pkgdesc = Check AirPods battery levels on Linux
+	pkgver = 20220109.db9de00
+	pkgrel = 1
+	url = https://github.com/delphiki/AirStatus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-bleak
+	provides = airstatus
+	conflicts = airstatus
+	source = git+https://github.com/delphiki/AirStatus.git
+	source = airstatus.service
+	sha256sums = SKIP
+	sha256sums = dc74cf84be34ba277b1e684eff8a9726600e6cc1dc9b06ffce811de01afbf8b3
+
+pkgname = airstatus-git
