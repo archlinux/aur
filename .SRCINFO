@@ -1,5 +1,5 @@
 pkgbase = anbox-modules-dkms-aarch64_fix
-	pkgdesc = Android kernel driver fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format
+	pkgdesc = Android kernel driver 1fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format
 	pkgver = 5.15
 	pkgrel = 1
 	url = https://github.com/BlackCatDevel0per/anbox-modules-aarch64
