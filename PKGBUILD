@@ -1,8 +1,8 @@
 # Maintainer: Dominik Schwaiger <domi.schwaiger04@gmail.com>
 pkgname=sonyheadphonesclient-bin
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
-epoch=2
+epoch=0
 pkgdesc="A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app"
 arch=("x86_64")
 url="https://github.com/Plutoberth/SonyHeadphonesClient"
