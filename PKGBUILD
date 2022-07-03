@@ -2,13 +2,12 @@
 
 pkgname=iredis-bin
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
 arch=('x86_64')
 url='https://iredis.io'
 license=("custom:${pkgname}")
 provides=('iredis')
-depends=('python')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/laixintao/iredis/releases/download/v${pkgver}/iredis.tar.gz"
         'LICENSE::https://raw.githubusercontent.com/laixintao/iredis/master/LICENSE')
