@@ -1,8 +1,9 @@
 pkgbase = easy-zsh-config
-	pkgdesc = My fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins
-	pkgver = 0.1.0
+	pkgdesc = A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins.
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/easy-zsh-config
+	install = easy-zsh-config.install
 	arch = any
 	license = MIT
 	depends = zsh
