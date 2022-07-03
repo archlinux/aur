@@ -1,0 +1,20 @@
+pkgbase = dust-mail-client
+	pkgver = v0.1.0.r13.gb8fef31
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Guusvanmeerveld/Dust-Mail
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs>=16.0.0
+	makedepends = yarn
+	makedepends = rustup
+	makedepends = git
+	makedepends = appstream
+	source = dust-mail-client-git::git+https://github.com/Guusvanmeerveld/Dust-Mail.git
+	md5sums = SKIP
+	sha512sums = SKIP
+
+pkgname = dust-mail-client-git
+	pkgdesc = A simple and fast mail client (Git version)
+	provides = dust-mail-client
+	conflicts = dust-mail-client
