@@ -3,7 +3,7 @@
 
 pkgname=freewb
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Jidian Wubi for Linux"
 arch=("x86_64")
 url="http://www.freewb.org/"
