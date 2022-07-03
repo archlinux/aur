@@ -1,6 +1,6 @@
 pkgbase = reggie-git
 	pkgdesc = A new regex replace CLI tool, as an alternative to sed.
-	pkgver = r8.324e7ce
+	pkgver = r21.271f836
 	pkgrel = 1
 	url = https://github.com/cainy-a/reggie
 	arch = x86_64
@@ -8,13 +8,11 @@ pkgbase = reggie-git
 	makedepends = git
 	makedepends = dotnet-sdk>=5.0.0
 	makedepends = dotnet-targeting-pack>=5.0.0
-	depends = dotnet-runtime>=5.0.0
-	depends = dotnet-host>=5.0.0
 	provides = reggie
 	conflicts = reggie
+	options = !strip
 	backup = usr/share/reggie/data
 	source = reggie-source::git+https://github.com/cainy-a/reggie#branch=master
 	md5sums = SKIP
 
 pkgname = reggie-git
-
