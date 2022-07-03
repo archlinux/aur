@@ -1,26 +1,19 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocsolver
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
-url='https://rocsolver.readthedocs.io/en/latest/userguidedocu.html'
+url='https://rocsolver.readthedocs.io/en/latest/'
 license=('BSD 2-Clause')
 depends=('hip' 'rocblas' 'fmt')
 makedepends=('cmake' 'python' 'python-pyaml' 'rocm-cmake')
 _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
-        "fmt.patch::https://github.com/acxz/rocSOLVER/commit/0f4658e04ac7b48fea213f29b209a0206b67c43f.patch")
-sha256sums=('5a8f3b95ac9a131c31538196e954ea53b863009c092cce0c0ef869a0cd5dd554'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('94d46ebe1266eaa05df50c1789dc27d3f2dbf3cb5af156e757777a82ed6ef356')
 options=(!lto)
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
-
-prepare() {
-    cd "${_dirname}"
-    patch -Np1 -i "${srcdir}/fmt.patch"
-}
 
 build() {
     local cmake_args=(-DCMAKE_INSTALL_PREFIX=/opt/rocm)
@@ -28,7 +21,7 @@ build() {
         cmake_args+=(-DAMDGPU_TARGETS="$AMDGPU_TARGETS")
     fi
     # -fcf-protection is not supported by HIP, see
-    # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
+    # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
     CXX=/opt/rocm/bin/hipcc \
     CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
     cmake   -B build \
