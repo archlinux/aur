@@ -1,14 +1,14 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=cando-git
-pkgver=1.0.0_276_g108eb3dd9_g06ea9a4f
+pkgver=1.0.0_317_gfe74d9b5b_g9e28f650
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together, including Cando"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
 options+=(!strip)
-depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang' 'zeromq'
-         'libelf' 'libffi' 'llvm' 'netcdf' 'ncurses' 'zlib')
+depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang13' 'zeromq'
+         'libelf' 'libffi' 'llvm13' 'netcdf' 'ncurses' 'zlib')
 makedepends=('git' 'sbcl' 'ninja' 'pkg-config')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
 conflicts=('clasp-cl-git')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd clasp
-  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
+  ./koga --llvm-config=/usr/lib/llvm13/bin/llvm-config --package-path=$pkgdir --extensions=cando,seqan-clasp --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ./koga --skip-sync --extensions=cando,seqan-clasp --update-version
 }
 
