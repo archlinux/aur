@@ -1,0 +1,19 @@
+pkgbase = gitklient
+	pkgdesc = Git gui client for KDE
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/HamedMasafi/GitKlient
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = ktexteditor
+	makedepends = kdoctools
+	depends = qt5-base
+	depends = ktexteditor
+	depends = kdoctools
+	source = https://github.com/HamedMasafi/GitKlient/archive/refs/tags/v0.1.tar.gz
+	sha256sums = d601b046e3868932fa3746e4ac05faf4fb984e73415fd98fc20ab4ec68649fe8
+
+pkgname = gitklient
