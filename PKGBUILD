@@ -2,7 +2,7 @@
 
 pkgname=aegisub-ttools-meson-git
 _srcname=aegisub-ttools
-pkgver=3.2.2.r666.4776ca9dd
+pkgver=3.2.2.r672.5bde34ff3
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)'
 arch=('x86_64')
@@ -25,7 +25,6 @@ source=(
   "luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
   "gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
   "gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
-  "01-include-memory.patch"
 )
 noextract=(
   "gtest-1.8.1.zip"
@@ -36,7 +35,6 @@ sha256sums=(
   'SKIP'
   '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
   'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
-  '0248415770590d70caedb04494c8eeec495ee740116defb2485798d706a4bfc7'
 )
 
 pkgver() {
@@ -49,10 +47,10 @@ pkgver() {
 prepare() {
   cd "$_srcname"
 
-    for patch in ../*.patch; do
-        echo "  applying patch: $patch"
-        patch -u -p1 < "$patch"
-    done
+  # for patch in ../*.patch; do
+  #   echo "  applying patch: $patch"
+  #   patch -u -p1 < "$patch"
+  # done
 
   # Initialize subproject wraps for luajit
   ln -s ../../luajit subprojects/luajit
