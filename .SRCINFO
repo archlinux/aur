@@ -5,7 +5,14 @@ pkgbase = lima
 	url = https://github.com/lima-vm/lima
 	arch = x86_64
 	license = MIT
-	source = https://github.com/lima-vm/lima/releases/download/v0.11.1/lima-0.11.1-Linux-x86_64.tar.gz
-	sha256sums = 6c021b4ff579d5df33eff8d03a97073e3baf36e90c03d2a772ae3f11c7d78432
+	makedepends = go>=1.17
+	makedepends = git
+	makedepends = gzip
+	makedepends = tar
+	makedepends = gcc
+	provides = rover
+	conflicts = lima-bin
+	source = lima-0.11.1.tar.gz::https://github.com/lima-vm/lima/archive/v0.11.1.tar.gz
+	sha256sums = 72f789b72c370f7ce1f16db4a34e68f6c740e8dc4584596dcc75999dc7555ca7
 
 pkgname = lima
