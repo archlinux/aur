@@ -1,0 +1,8 @@
+[Unit]
+Description=Thales eToken SACSrv daemon
+
+[Service]
+ExecStart=/usr/bin/SACSrv
+
+[Install]
+WantedBy=multi-user.target
