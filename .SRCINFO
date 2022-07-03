@@ -1,6 +1,6 @@
 pkgbase = kalk-git
 	pkgdesc = Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework
-	pkgver = v21.05.r0.gb5247dd
+	pkgver = 22.06.r7.g3aeecc7
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kalk
 	arch = x86_64
@@ -31,4 +31,3 @@ pkgbase = kalk-git
 	sha256sums = SKIP
 
 pkgname = kalk-git
-
