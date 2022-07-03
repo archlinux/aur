@@ -1,21 +1,24 @@
 pkgname=sac-core
-pkgver=10.7.77
-pkgrel=2
-pkgdesc='SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)'
+pkgver=10.8.28
+pkgrel=1
+pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
-depends=(pcsclite)
-optdepends=(
-  'sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)'
-)
+depends=(openssl pcsclite)
+optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
-source=('https://installer.id.ee/media/etoken/older%20versions/SAC%2010.7%20Linux.zip'
+source=('https://installer.id.ee/media/etoken/Linux_SAC%2010.8.28%20GA%20Build.zip'
         eToken.conf)
-sha256sums=('15c55b1faec11c460bd1b5a303a92b1667171d615b20967dccc753fcf8026051'
+sha256sums=('6e1f9307b6460cc87d1b895c3edbfb99cd1778686609f30caab96ab7218821a0'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c')
+#validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
+
+_dir="SAC 10.8.28 GA Build"
+_rn_pdf="007-013841-003-SafeNet Authentication Client_ 10.8_Linux_GA_Release Notes_Rev A.pdf"
+_ag_pdf="007-013842-002_SafeNet Authentication Client_10.8_Linux_GA_Administrator_Guide_Rev A.pdf"
 
 prepare() {
-  ar x "GA - Build 77/Installation/withoutUI/DEB/safenetauthenticationclient-core_${pkgver}_amd64.deb"
+  ar x "$_dir/Installation/withoutUI/Ubuntu-2004/safenetauthenticationclient-core_${pkgver}_amd64.deb"
   bsdtar -xf data.tar.xz
 }
 
@@ -39,10 +42,10 @@ package() {
   #ln -s ../libeToken.so "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
   # Documentation -- user guide belongs to the GUI package
-  install -Dm644 "GA - Build 77/Documentation/007-013841-002_SafeNet Authentication Client_ 10.7_Linux_GA_RN_RevD.pdf" \
-                  "$pkgdir"/usr/share/doc/$pkgname/SAC_10.7_Linux_Release_Notes.pdf
-  install -Dm644 "GA - Build 77/Documentation/007-013842-001_SafeNet Authentication Client_10.7_GA_Linux_Administrator_Guide_Rev C.pdf" \
-                  "$pkgdir"/usr/share/doc/$pkgname/SAC_10.7_Linux_Administrator_Guide.pdf
+  install -Dm644 "$_dir/Documentation/$_rn_pdf" \
+                  "$pkgdir"/usr/share/doc/$pkgname/SAC_${pkgver%.*}_Linux_Release_Notes.pdf
+  install -Dm644 "$_dir/Documentation/$_ag_pdf" \
+                  "$pkgdir"/usr/share/doc/$pkgname/SAC_${pkgver%.*}_Linux_Administrator_Guide.pdf
 
   #install -Dm644 eToken.conf "$pkgdir"/etc/eToken.conf
 }
