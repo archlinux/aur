@@ -1,6 +1,6 @@
 pkgbase = signal-estimator
-	pkgdesc = A small tool for measuring different characteristics of the signal looped back from audio output
-	pkgver = 0.0.3
+	pkgdesc = Measures characteristics of a looped back signal
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/gavv/signal-estimator
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = signal-estimator
 	makedepends = cxxopts
 	depends = libasound.so
 	depends = qwt
-	source = signal-estimator-0.0.3.tar.gz::https://github.com/gavv/signal-estimator/archive/v0.0.3.tar.gz
-	sha256sums = 62504cdcac7a9fdb48de77bf58f2658dbac2537ee85d7cee35dc47e5115a782a
+	source = signal-estimator-0.0.4.tar.gz::https://github.com/gavv/signal-estimator/archive/v0.0.4.tar.gz
+	source = qt5-fix.patch::https://github.com/gavv/signal-estimator/compare/v0.0.4...0bd6830.diff
+	sha256sums = de0acbab8947bdecbc7efaa9b9f474919bcec9bf13f7ab059cb56e5b366b04a9
+	sha256sums = 66d9b8eed13d7071497f348d868af99d054df8ad6e323492c702b53a4324cb28
 
 pkgname = signal-estimator
