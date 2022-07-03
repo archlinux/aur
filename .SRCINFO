@@ -1,7 +1,7 @@
 pkgbase = fraidycat-git
 	pkgdesc = Follow blogs, wikis, YouTube, Twitter, Reddit, Instagram and the like... from a distance.
-	pkgver = 1.1.10.r0.ga5480cf
-	pkgrel = 3
+	pkgver = 1.1.10.r1.g7f08875
+	pkgrel = 1
 	url = https://fraidyc.at
 	arch = x86_64
 	license = BlueOak-1.0.0
@@ -17,6 +17,7 @@ pkgbase = fraidycat-git
 	depends = libxtst
 	depends = libsecret
 	depends = libappindicator-gtk3
+	depends = libxcrypt-compat
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = fraidycat
 	conflicts = fraidycat

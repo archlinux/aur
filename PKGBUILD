@@ -5,13 +5,13 @@
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 _pkgname=fraidycat
 pkgname=${_pkgname}-git
-pkgver=1.1.10.r0.ga5480cf
-pkgrel=3
+pkgver=1.1.10.r1.g7f08875
+pkgrel=1
 pkgdesc="Follow blogs, wikis, YouTube, Twitter, Reddit, Instagram and the like... from a distance."
 arch=('x86_64')
 url="https://fraidyc.at"
 license=('BlueOak-1.0.0')
-depends=('libnotify' 'nss' 'libxss' 'libxtst' 'libsecret' 'libappindicator-gtk3')
+depends=('libnotify' 'nss' 'libxss' 'libxtst' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat')
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 makedepends=('npm' 'git' 'git-lfs' 'gendesk' 'nodejs>14' 'nodejs<16')
 provides=("${_pkgname}")
