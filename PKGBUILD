@@ -2,13 +2,13 @@
 
 pkgname=remote-uci
 pkgver=1.0.0.alpha0
-pkgrel=1
+pkgrel=2
 pkgdesc='Use external UCI engines for analysis on lichess.org'
 arch=(any)
 url='https://github.com/lichess-org/external-engine'
 license=(GPL3)
 makedepends=(rust)
-depends=(openssl stockfish)
+depends=(coreutils stockfish)
 install=remote-uci.install
 source=("git+$url#tag=v1.0.0-alpha.0")
 sha256sums=(SKIP)
