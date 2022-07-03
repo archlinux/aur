@@ -24,7 +24,7 @@ build-gnudatalanguage:
       - $PKG_NAME*.pkg.tar.zst
       - src/gdl-*/build/Testing/Temporary/LastTest.log
     when: always
-  extends: .arch-build
+  extends: .arch-buildx
   needs:
     - job: "container-build-and-test"
       artifacts: no
