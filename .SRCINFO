@@ -1,0 +1,19 @@
+pkgbase = anbox-modules-dkms-aarch64
+	pkgdesc = Android kernel driver fork by @choff & fix for aarch64 linux >= 5.14 from bcdev (binder/binderfs & ashmem) in DKMS format
+	pkgver = 5.15
+	pkgrel = 1
+	url = https://github.com/BlackCatDevel0per/anbox-modules-aarch64
+	arch = x86_64
+	arch = aarch64
+	arch = i386
+	license = GPL3
+	makedepends = git
+	depends = dkms
+	provides = anbox-modules-dkms
+	conflicts = anbox-modules-dkms anbox-modules-dkms-git
+	source = 'git+https://github.com/BlackCatDevel0per/anbox-modules-aarch64.git#commit=924e9435c13d9707d02e4c096e67fb8bdbf4ed53'
+	source = https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
+	sha256sums = SKIP
+	sha256sums = 7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556
+
+pkgname = anbox-modules-dkms-aarch64

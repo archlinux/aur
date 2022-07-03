@@ -1,0 +1,9 @@
+post_install {
+    cd "${srcdir}/${_pkgname}/"
+    ./INSTALL.sh
+}
+
+post_remove {
+    cd "${srcdir}/${_pkgname}/"
+    ./REMOVE.sh
+}
