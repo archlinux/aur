@@ -8,7 +8,6 @@ pkgbase = 2ping
 	makedepends = python-setuptools
 	depends = python-dnspython
 	depends = python-netifaces
-	depends = python-pycryptodome
 	depends = python-pycryptodomex
 	depends = python-distro
 	depends = python-systemd
@@ -17,4 +16,3 @@ pkgbase = 2ping
 	sha256sums = b56beb1b7da1ab23faa6d28462bcab9785021011b3df004d5d3c8a97ed7d70d8
 
 pkgname = 2ping
-

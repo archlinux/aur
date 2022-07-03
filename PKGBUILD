@@ -7,7 +7,7 @@ pkgdesc="a bi-directional ping utility"
 arch=('any')
 url="https://www.finnie.org/software/2ping/"
 license=("GPL2")
-depends=('python-dnspython' 'python-netifaces' 'python-pycryptodome'
+depends=('python-dnspython' 'python-netifaces'
          'python-pycryptodomex' 'python-distro' 'python-systemd')
 makedepends=('python-setuptools')
 optdepends=('bash-completion: for bash auto-completion')
