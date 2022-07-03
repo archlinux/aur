@@ -1,9 +1,9 @@
 post_install() {
     printf "$(tput setaf 4)Copy the following file to a directory in your Maya module path:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)/opt/pixar/RenderManForMaya-24.3/etc/RenderMan_for_Maya_24.3.module$(tput sgr0)\n\n"
-    printf "$(tput setaf 4)For example, one of these directories could be viable in the default Maya 2022 module path:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)/usr/autodesk/maya2022/modules$(tput sgr0)\n"
-    printf "$(tput setaf 2)~/maya/2022/modules$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)/opt/pixar/RenderManForMaya-24.4/etc/RenderMan_for_Maya_24.4.module$(tput sgr0)\n\n"
+    printf "$(tput setaf 4)For example, one of these directories could be viable in the default Maya 2023 module path:$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)/usr/autodesk/maya2023/modules$(tput sgr0)\n"
+    printf "$(tput setaf 2)~/maya/2023/modules$(tput sgr0)\n\n"
     printf "$(tput setaf 4)This will make the RenderMan_for_Maya.py plugin available to load in Maya.$(tput sgr0)\n"
 }
 
