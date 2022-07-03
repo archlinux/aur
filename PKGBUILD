@@ -2,7 +2,7 @@
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
 url='https://rocblas.readthedocs.io/en/latest'
@@ -11,13 +11,21 @@ depends=('hip' 'openmp')
 makedepends=('cmake' 'git' 'python' 'python-pip' 'python-virtualenv' 'python-pyaml'
              'perl-file-which' 'msgpack-c' 'rocm-cmake' 'gcc-fortran')
 _rocblas='https://github.com/ROCmSoftwarePlatform/rocBLAS'
-source=("$pkgname-$pkgver.tar.gz::$_rocblas/archive/rocm-$pkgver.tar.gz")
-sha256sums=('b178b7db5f0af55b21b5f744b8825f5e002daec69b4688e50df2bca2fac155bd')
+source=("$pkgname-$pkgver.tar.gz::$_rocblas/archive/rocm-$pkgver.tar.gz"
+        "include-path.patch::https://github.com/ROCmSoftwarePlatform/rocBLAS/commit/992429ff1d04195b10f9a3350668e180b34dbdb5.patch")
+sha256sums=('b178b7db5f0af55b21b5f744b8825f5e002daec69b4688e50df2bca2fac155bd'
+            'SKIP')
 options=(!lto)
 _dirname="$(basename "$_rocblas")-$(basename "${source[0]}" ".tar.gz")"
 
 # Number of threads for tensile build. Uses all threads by default.
 _tensile_threads="$(nproc)"
+
+prepare() {
+    # See https://github.com/ROCmSoftwarePlatform/rocBLAS/commit/992429ff1d04195b10f9a3350668e180b34dbdb5
+    cd "$_dirname"
+    patch -Np1 -i "$srcdir/include-path.patch"
+}
 
 build() {
   local cmake_args=(-DCMAKE_INSTALL_PREFIX=/opt/rocm
