@@ -1,0 +1,12 @@
+pkgbase = ezkl-git
+	pkgdesc = Remember and jump to paths in your shell
+	pkgver = r230.89c74e8
+	pkgrel = 1
+	url = https://github.com/madprops/ezkl
+	arch = x86_64
+	license = Boost
+	depends = rofi
+	source = ezkl-git::git+https://github.com/madprops/ezkl.git
+	sha256sums = SKIP
+
+pkgname = ezkl-git
