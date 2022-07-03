@@ -1,7 +1,7 @@
 pkgbase = zsh-autosuggestions-git
 	pkgdesc = Fish-like autosuggestions for zsh (from git)
-	pkgver = 0.6.4.r0.gae315de
-	pkgrel = 2
+	pkgver = 0.7.0.r0.ga411ef3
+	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-autosuggestions
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = zsh-autosuggestions-git
 	sha256sums = SKIP
 
 pkgname = zsh-autosuggestions-git
-

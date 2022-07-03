@@ -3,8 +3,8 @@
 
 pkgname=zsh-autosuggestions-git
 _pkgname=${pkgname::-4}
-pkgver=0.6.4.r0.gae315de
-pkgrel=2
+pkgver=0.7.0.r0.ga411ef3
+pkgrel=1
 pkgdesc="Fish-like autosuggestions for zsh (from git)"
 arch=('any')
 url="https://github.com/zsh-users/zsh-autosuggestions"
