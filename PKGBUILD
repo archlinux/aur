@@ -2,7 +2,7 @@
 # Maintainer: ThePanz <thepanz@gmail.com>
 
 pkgname=duckdns
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Update your DuckDNS.org entries from your computer without setting up any cronjob. You just need to create config files for your domains."
 arch=('any')
