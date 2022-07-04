@@ -1,7 +1,7 @@
 pkgbase = r-sm
 	pkgdesc = Smoothing Methods for Nonparametric Regression and Density Estimation
-	pkgver = 2.2.5.7
-	pkgrel = 4
+	pkgver = 2.2.5.7.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sm
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-sm
 	optdepends = r-rpanel
 	optdepends = r-tcltk
 	optdepends = r-tkrplot
-	source = https://cran.r-project.org/src/contrib/sm_2.2-5.7.tar.gz
-	sha256sums = 2607a2cafc68d7e99005daf99e36f4a66eaf569ebb6b7500e962642cf58be80f
+	source = https://cran.r-project.org/src/contrib/sm_2.2-5.7.1.tar.gz
+	sha256sums = ea0cc32eb14f6c18beba0bede66ed37bc5341bd3f76c1a7ae56d7254693e1457
 
 pkgname = r-sm
