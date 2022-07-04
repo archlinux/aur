@@ -3,8 +3,8 @@
 
 _pyname=glyphsLib
 pkgname=python-${_pyname,,}
-pkgver=6.0.5
-pkgrel=2
+pkgver=6.0.6
+pkgrel=1
 pkgdesc='A bridge from Glyphs source files (.glyphs) to UFOs'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -16,7 +16,8 @@ _pydeps=(fonttools
          unicodedata2) # for fonttools[unicode]
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-defcon
+makedepends=(python-{build,installer,wheel}
+             python-defcon
              python-setuptools-scm)
 _pycheckdeps=(lxml # for fonttools[lxml]
               pytest
@@ -28,12 +29,11 @@ optdepends=(python-defcon
             python-ufonormalizer)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('aacfd2073b177477dc6c5862854a71bee78836f8d2209c615ddfa3f1dcf5523a')
-_setup='from setuptools import setup; setup();'
+sha256sums=('1787affa8eafc038d5d87df3f83af0419ed52dcd5c4888c25a1818ee972c7b53')
 
 build() {
 	cd "$_archive"
-	python -c "$_setup" build
+	python -m build -wn
 }
 
 check() {
@@ -48,5 +48,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	PYTHONPATH=Lib python -c "$_setup" install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
