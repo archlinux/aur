@@ -1,0 +1,21 @@
+--- a/docs/index.rst	2021-08-11 19:44:50.000000000 +0800
++++ b/docs/index.rst	2022-07-04 20:50:22.829220144 +0800
+@@ -23,6 +23,7 @@
+    gui.rst
+    glue.rst
+    ds9.rst
++   plotting.rst
+    api.rst
+ 
+ .. _Glue: http://www.glueviz.org/en/latest/
+--- a/docs/programmatic.rst	2022-03-31 22:15:09.000000000 +0800
++++ b/docs/programmatic.rst	2022-07-04 20:51:12.189410605 +0800
+@@ -96,7 +96,7 @@
+ 
+ 
+ Retrieving the Pixel Coordinates
+---------------------------------
++^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+ With a path in hand, you can recover the pixel coordinates used in the
+ extraction::
