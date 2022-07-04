@@ -12,7 +12,9 @@ depends=(
     'boost-libs' 'curl' 'shared-mime-info' 'hicolor-icon-theme' 'utf8cpp' 'jsoncpp'
     'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'med' 'openmpi'
     'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit'
-    'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
+    'python-pivy' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
+    'pyside2'
+    # 'python-pyside2' 
 )
 makedepends=(
     'cmake' 'ninja' 'gcc-fortran'
