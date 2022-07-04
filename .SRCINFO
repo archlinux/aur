@@ -1,7 +1,7 @@
 pkgbase = scrutiny-bin
 	pkgdesc = Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds
 	pkgver = 0.4.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AnalogJ/scrutiny
 	install = scrutiny.install
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = scrutiny-bin
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = go
 	depends = smartmontools
 	optdepends = influxdb: run the datastore on the same machine
 	provides = scrutiny

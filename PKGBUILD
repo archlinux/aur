@@ -3,7 +3,7 @@
 
 pkgname="scrutiny-bin"
 pkgver=0.4.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
 license=("MIT")
@@ -12,7 +12,6 @@ provides=("scrutiny")
 conflicts=("scrutiny" "scrutiny-collector")
 depends=("smartmontools")
 optdepends=("influxdb: run the datastore on the same machine")
-makedepends=("go")
 backup=("etc/scrutiny/scrutiny.yaml"
         "etc/scrutiny/collector.yaml"
 )
