@@ -1,15 +1,15 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=legacyfox
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 pkgdesc="Legacy bootstrapped extensions for Firefox 65 and beyond"
 arch=('any')
 url="https://gir.st/blog/legacyfox.htm"
 license=('MPL')
 depends=('firefox')
-_commit=29dc0ab
+_commit=0548b59
 source=("https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
-sha256sums=('f1360edf46501d8c1d0cee565a6ee8e31b652a15ffda0014fe54d7fa033c7921')
+sha256sums=('f2d1e28ce393192391ba68c030edd580a5c1eff781b0f1281ce32d6f54ba3c6e')
 
 package() {
   cd "$srcdir/LegacyFox-v$pkgver-$_commit"
