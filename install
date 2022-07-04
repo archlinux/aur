@@ -4,8 +4,16 @@ post_install() {
 
 post_upgrade() {
 	sysctl -w kernel.sysrq=1
+	oldconf='/etc/sysctl.d/99-sysrq.conf'
+	if [ -f "$oldconf" ] ; then
+	    rm -f "$oldconf"
+	fi
 	}
 
 post_remove() {
 	sysctl -w kernel.sysrq=0
+	conf='/usr/lib/sysctl.d/99-sysrq.conf'
+	if [ -f "$conf" ] ; then
+	    rm -f "$conf"
+	fi
 	}
