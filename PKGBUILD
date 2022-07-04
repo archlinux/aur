@@ -1,27 +1,38 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
+
 pkgname=python-pyjavaproperties
-_pkgname=pyjavaproperties
-pkgver=0.6
+_pkg=pyjavaproperties
+pkgver=0.7
 pkgrel=1
-pkgdesc="Python replacement for java.util.Properties."
+pkgdesc="Python replacement for java.util.Properties"
 arch=('any')
 url="https://pypi.python.org/pypi/pyjavaproperties"
 license=('PSF')
 depends=('python')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-        pyjavaproperties-python3.patch)
-md5sums=('e459c21668937a06335e3a2ed77efa22'
-         '51aa70dfbfb86aa7ab6b05b22d124fcb')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('adb59893874ee14f12f9e9054fdd3e9383eb0071c22c596a377bf7585ef0ea85')
 
 prepare() {
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i "$srcdir"/pyjavaproperties-python3.patch
+  cd "$_pkg-$pkgver"
+  sed -i '/package/d' setup.py
+}
+
+build() {
+  cd "$_pkg-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_pkg-$pkgver"
+  pytest -x --disable-warnings
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$_pkg-$pkgver"
+  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:
