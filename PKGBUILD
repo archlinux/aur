@@ -1,8 +1,8 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=kubergrunt
-pkgver=$PKGVER
-pkgrel=2
+pkgver=0.9.1
+pkgrel=3
 pkgdesc="Kubergrunt is a standalone go binary with a collection of commands to fill in the gaps between Terraform, Helm, and Kubectl"
 arch=('x86_64')
 url="https://github.com/gruntwork-io/kubergrunt"
