@@ -1,6 +1,6 @@
 pkgbase = hstdb
 	pkgdesc = Better history management for zsh.
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/AlexanderThaller/hstdb
 	arch = i686
