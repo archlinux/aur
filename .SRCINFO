@@ -1,8 +1,8 @@
 pkgbase = python2-werkzeug
 	pkgdesc = Swiss Army knife of Python web development (legacy Python 2 version)
-	pkgver = 1.0.1
-	pkgrel = 3
-	url = https://pypi.org/project/werkzeug/1.0.1/
+	pkgver = 1.0.2u.r5.g54acdd16
+	pkgrel = 1
+	url = https://pypi.org/project/werkzeug/
 	arch = any
 	license = custom:BSD
 	makedepends = python2-setuptools
@@ -11,8 +11,8 @@ pkgbase = python2-werkzeug
 	optdepends = python2-pytest-timeout: needed for check() during build
 	optdepends = python2-requests: needed for check() during build
 	optdepends = python2-requests-unixsocket: needed for check() during build
-	source = werkzeug-1.0.1.tar.gz::https://github.com/pallets/werkzeug/archive/refs/tags/1.0.1.tar.gz
-	b2sums = d2dcdce8b1bcbb177b52b0915f2c0ac17d235dee3c77b23e81e4b35412d1f53a194d3c7c7f2a5c065ade99797effe72cc464cf6980b12c761a8a919338021660
+	source = werkzeug-54acdd16b247f7037482737e72ec52fc6d50a78d.tar.gz::https://github.com/pallets/werkzeug/archive/54acdd16b247f7037482737e72ec52fc6d50a78d.tar.gz
+	b2sums = 805001d280ae0818ea0dbecfe543a08f9fa5a9dcacb03b4cb630dce538cc251295811118d42f5a740f2180bbd429874a63570d34218b5e794a1e3220afe60e94
 
 pkgname = python2-werkzeug
 	depends = python2

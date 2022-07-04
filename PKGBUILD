@@ -8,11 +8,12 @@
 
 pkgname='python2-werkzeug'
 _name="${pkgname#python2-}"
-pkgver=1.0.1
-pkgrel=3
+_commit='54acdd16b247f7037482737e72ec52fc6d50a78d' # 1.0.2 unreleased
+pkgver=1.0.2u.r5.g54acdd16
+pkgrel=1
 pkgdesc='Swiss Army knife of Python web development (legacy Python 2 version)'
 arch=('any')
-url="https://pypi.org/project/${_name}/${pkgver}/"
+url="https://pypi.org/project/${_name}/"
 _repourl="https://github.com/pallets/${_name}"
 license=('custom:BSD')
 makedepends=('python2-setuptools')
@@ -26,9 +27,9 @@ _checkdepends_needed=(
   'python2-requests-unixsocket'
 )
 optdepends+=("${_checkdepends_needed[@]/%/: needed for check() during build}")
-_tarname="${_name}-${pkgver}"
-source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('d2dcdce8b1bcbb177b52b0915f2c0ac17d235dee3c77b23e81e4b35412d1f53a194d3c7c7f2a5c065ade99797effe72cc464cf6980b12c761a8a919338021660')
+_tarname="${_name}-${_commit}"
+source=("${_tarname}.tar.gz::${_repourl}/archive/${_commit}.tar.gz")
+b2sums=('805001d280ae0818ea0dbecfe543a08f9fa5a9dcacb03b4cb630dce538cc251295811118d42f5a740f2180bbd429874a63570d34218b5e794a1e3220afe60e94')
 
 _checkinstalled() {
   pacman --deptest $@
