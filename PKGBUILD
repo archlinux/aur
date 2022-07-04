@@ -1,7 +1,7 @@
 # Maintainer: tcg <aur-tcg@emailaddress.biz>
 
 pkgname=tcg-git
-pkgver=0.2.74
+pkgver=0.2.75
 pkgrel=1
 pkgdesc="cgroups for terminals"
 arch=('x86_64')
@@ -30,7 +30,7 @@ package() {
   if [ "x$CODE_COVERAGE" = "xON" ]; then
     mkdir -p "${pkgdir}/usr/src/tcg/"
     mkdir -p "${pkgdir}/var/lib/tcg/"
-    install -Dm644 build/*.gcno "${pkgdir}/usr/src/tcg/"
+    install -Dm644 build/CMakeFiles/tcg.dir/src/*.gcno "${pkgdir}/usr/src/tcg/"
     install -Dm644 src/{*.cpp,*.hpp} "${pkgdir}/usr/src/tcg/"
   fi
   install -Dm4755 build/tcg "${pkgdir}/usr/bin/tcg"
