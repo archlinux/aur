@@ -2,7 +2,7 @@
 
 pkgname=colima
 pkgver=$PKGVER
-pkgrel=2
+pkgrel=3
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
 url="https://github.com/abiosoft/colima"
@@ -21,7 +21,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -buildvcs=false -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
-  go build -o build/${pkgname} -ldflags="-X 'main.buildVersion=${pkgver}' -X 'main.buildDate=${BUILD_DATE}'" ./cmd/colima/
+  go build -o build/${pkgname} -ldflags="-X 'main.VERSION=${pkgver}' -X 'main.buildDate=${BUILD_DATE}'" ./cmd/colima/
 }
 
 package() {
