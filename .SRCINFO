@@ -1,0 +1,11 @@
+pkgbase = effer-bin
+	pkgdesc = Create encrypted notes in the terminal
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/Merkoba/Effer
+	arch = x86_64
+	license = Apache
+	source = effer-bin::https://github.com/Merkoba/Effer/releases/download/v2.0.3/effer
+	sha256sums = 8dcfefcc8182119e217361bb9e1c8ba4446244039aea9f4462485b253a5857c1
+
+pkgname = effer-bin
