@@ -6,32 +6,12 @@ pkgdesc="A Git client originally forked from QGit that has continued its own pat
 arch=(x86_64)
 url="https://github.com/francescmm/GitQlient"
 license=('LGPL')
-depends=(git qt5-base qt5-webengine qt5-webchannel)
-source=(
-    "https://github.com/francescmm/GitQlient/archive/v${pkgver}.tar.gz"
-	"git+https://github.com/francescmm/QPinnableTabWidget.git"
-    "git+https://github.com/francescmm/QLogger.git"
-    "git+https://github.com/francescmm/AuxiliarCustomWidgets.git"
-    "git+https://github.com/francescmm/git.git"
-)
-sha256sums=(
-    69850f3123ee2e9618c0061b7460d6ff39f0490cb9790745b1d80192069f90f8
-    SKIP
-    SKIP
-    SKIP
-    SKIP
-)
-
-prepare() {
-    cd "GitQlient-$pkgver"
-    for dep in "AuxiliarCustomWidgets" "QPinnableTabWidget" "QLogger" "git"; do
-        rmdir "src/$dep"
-        ln -sf "$srcdir/$dep" "src/$dep"
-    done
-}
+depends=(git qt5-base)
+source=("$url/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
+sha256sums=(95a46674fd4405d5ba605b707791fbf22c02bf81fd0fe893a31d270e9e0d1154)
 
 build() {
-    cd "GitQlient-$pkgver"
+    cd "${pkgname}_${pkgver}"
     # By default `qmake` use current directory name, but the `.pro` file
     # name is `GitQlient`, not `GitQlient-$pkgver`, so we need to explicitly
     # specify the `.pro` file here
@@ -40,7 +20,7 @@ build() {
 }
 
 package() {
-    cd "GitQlient-$pkgver"
+    cd "${pkgname}_${pkgver}"
     make INSTALL_ROOT="${pkgdir}" install
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/gitqlient"
 }
