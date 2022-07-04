@@ -2,20 +2,22 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://vnotex.github.io/vnote/en_us/"
 license=(LGPL3)
-depends=(qt5-webengine qt5-svg)
+depends=(qt5-webengine qt5-svg qt5-x11extras)
 makedepends=(git)
 source=("git+https://github.com/vnotex/vnote.git#tag=v${pkgver}"
         "vnotex-vtextedit::git+https://github.com/vnotex/vtextedit"
+        "vnotex-QHotkey::git+https://github.com/vnotex/QHotkey.git"
         "vnotex-syntax-highlighting::git+https://github.com/vnotex/syntax-highlighting"
         "vnotex-hunspell::git+https://github.com/vnotex/hunspell"
         "vnotex-sonnet::git+https://github.com/vnotex/sonnet")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -28,6 +30,7 @@ prepare() {
 
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
+  git config 'submodule.libs/QHotkey.url' "${srcdir}/vnotex-QHotkey"
   git submodule update
 
   cd "libs/vtextedit"
