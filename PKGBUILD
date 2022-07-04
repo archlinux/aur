@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -93,6 +93,7 @@ prepare() {
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
+    docs/manpages/libvirt-guests.rst \
     src/locking/virtlockd.service.in \
     src/logging/virtlogd.service.in
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
