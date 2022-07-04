@@ -1,0 +1,21 @@
+pkgbase = network-manager-sstp-gtk4
+	pkgdesc = SSTP support for NetworkManager
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/network-manager-sstp
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = ppp
+	makedepends = python
+	depends = gtk4
+	depends = libnma
+	depends = libsecret
+	depends = sstp-client
+	optdepends = ppp
+	provides = network-manager-sstp
+	conflicts = network-manager-sstp
+	source = https://gitlab.gnome.org/GNOME/network-manager-sstp/-/archive/release-1.3.0/network-manager-sstp-release-1.3.0.tar.bz2
+	sha256sums = 0454cb06835d0c0cca5fe78481b297f7e7a17046f31c84017fe5cb70d81b41e3
+
+pkgname = network-manager-sstp-gtk4
