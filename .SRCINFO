@@ -1,12 +1,12 @@
 pkgbase = cargo-dylint
 	pkgdesc = A tool for running Rust lints from dynamic libraries
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 0
 	url = https://github.com/trailofbits/dylint
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/trailofbits/dylint/archive/refs/tags/v2.0.6.tar.gz
-	sha256sums = dbe730fb06faa01991114676747218758f54883740dae682583d9502e84d6f98
+	source = https://github.com/trailofbits/dylint/archive/refs/tags/v2.0.7.tar.gz
+	sha256sums = 96969af4de8afcd49fd284ec55cb438604b06b00c7961a77035a527f3fc742cd
 
 pkgname = cargo-dylint
