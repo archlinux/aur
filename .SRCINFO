@@ -1,7 +1,7 @@
 pkgbase = sac-core
-	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)
+	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime
 	pkgver = 10.8.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management
 	arch = x86_64
 	license = custom
@@ -16,8 +16,9 @@ pkgbase = sac-core
 	sha256sums = eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055
 
 pkgname = sac-core
+	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core PKCS#11 modules)
 
 pkgname = sac-gui
-	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools) (GUI tools)
+	pkgdesc = Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (GUI tools)
 	depends = gtk3
 	depends = sac-core

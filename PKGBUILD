@@ -1,8 +1,8 @@
 pkgbase=sac-core
 pkgname=(sac-core sac-gui)
 pkgver=10.8.28
-pkgrel=2
-pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)'
+pkgrel=3
+pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
 depends=(openssl pcsclite)
@@ -38,6 +38,8 @@ _pick() {
 }
 
 package_sac-core() {
+  pkgdesc+=' (core PKCS#11 modules)'
+
   # Install libraries
   cp -r etc "$pkgdir"/etc
   cp -r usr "$pkgdir"/usr
@@ -89,6 +91,7 @@ package_sac-core() {
   _pick gui usr/share/applications/**
   _pick gui usr/share/doc/$pkgname/*User_Guide.pdf
   _pick gui usr/share/eToken/**
+  _pick gui usr/share/icons/**
 }
 
 package_sac-gui() {
