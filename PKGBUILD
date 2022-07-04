@@ -35,6 +35,29 @@ build() {
 }
 
 package() {
-	# Extract downloaded file
-	tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
+	cd "$srcdir/$_pkgname-$pkgver/out/Electron Fiddle-linux-x64/resources"
+	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
+
+	cd "$srcdir/$_pkgname-$pkgver/assets/icons"
+	install -Dm644 fiddle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/electron-fiddle.svg"
+
+	cd "$srcdir"
+	echo "#!/bin/env sh
+exec electron /usr/lib/electron-fiddle/app.asar \$@
+" > electron-fiddle.sh
+	install -Dm755 electron-fiddle.sh "$pkgdir/usr/bin/electron-fiddle"
+
+	echo "[Desktop Entry]
+Name=Electron Fiddle
+Comment=The easiest way to get started with Electron
+GenericName=Electron Fiddle
+Exec=electron-fiddle %U
+Icon=electron-fiddle
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+" > electron-fiddle.desktop
+	install -Dm755 electron-fiddle.desktop "$pkgdir/usr/share/applications/electron-fiddle.desktop"
+	install -Dm644 $srcdir/$_pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
