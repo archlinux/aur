@@ -1,17 +1,17 @@
 # Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
-_beta='-beta.2'
+_beta=''
 pkgname='s5cmd'
 pkgver='2.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Parallel S3 and local filesystem execution tool.'
 arch=('x86_64' 'i686')
 url="https://github.com/peak/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}${_beta}.tar.gz")
-sha256sums=('780e34c768eadb27e19a4f93b0c9c779fbf174cb953d9b63d531182b99f4088f')
+sha256sums=('016554a753830477c203d3ec11ad37eefce43ca7817856f861a173158c8f4a88')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}${_beta}"
