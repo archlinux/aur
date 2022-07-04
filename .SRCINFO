@@ -1,6 +1,6 @@
 pkgbase = python-torchdata
 	pkgdesc = A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/pytorch/data
 	arch = any
@@ -9,9 +9,11 @@ pkgbase = python-torchdata
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-portalocker
+	depends = python-pytorch
 	depends = python-requests
 	depends = python-urllib3
-	source = data-0.3.0.tar.gz::https://github.com/pytorch/data/archive/refs/tags/v0.3.0.tar.gz
-	sha512sums = 201ba2ee2b9c227b9a3a61eee317a2e84f5957b8aa8a6d00cf48d4b055f6bc2332cb5094282f56399969e74dde95afda3f652a283ce41c3261a129b82e88df49
+	source = data-0.4.0.tar.gz::https://github.com/pytorch/data/archive/refs/tags/v0.4.0.tar.gz
+	sha512sums = b33c21b04efc5c78f3d25c04f499e40b542f61c486dddad43ef605cf958089087a8612a609c4946ca43bdf408172d9a96130c008fd7b29ccf2e34562785f1bc7
 
 pkgname = python-torchdata
