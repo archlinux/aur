@@ -5,7 +5,7 @@
 
 pkgname=tuned
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
 url="https://github.com/redhat-performance/${pkgname}"
@@ -31,6 +31,9 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 	rm -r "${pkgdir}"/{run,var}
+
+	python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+	python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 
 	install -Dm644 tuned.service "${pkgdir}/usr/lib/systemd/system/"
 }
