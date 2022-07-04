@@ -8,6 +8,7 @@ Type=simple
 User=scrutiny
 Group=scrutiny
 WorkingDirectory=/var/lib/scrutiny
+LogDirectory=scrutiny
 StateDirectory=scrutiny
 ExecStart=/usr/bin/scrutiny start --config /etc/scrutiny/scrutiny.yaml
 Restart=always

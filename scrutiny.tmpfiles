@@ -2,7 +2,7 @@ d   /etc/scrutiny                     0750    root        scrutiny
 z   /etc/scrutiny/scrutiny.yaml       0640    root        scrutiny
 d   /var/lib/scrutiny                 0750    scrutiny    scrutiny
 Z   /var/lib/scrutiny                 -       scrutiny    scrutiny
-d   /var/log/scrutiny                 0770    root        scrutiny
+d   /var/log/scrutiny                 0750    scrutiny    scrutiny
 z   /var/log/scrutiny/scrutiny.log    0640    scrutiny    scrutiny
-z   /var/log/scrutiny/collector.log   0640    root        scrutiny
+z   /var/log/scrutiny/collector.log   0640    scrutiny    scrutiny
 

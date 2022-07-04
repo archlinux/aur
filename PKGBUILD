@@ -3,7 +3,7 @@
 
 pkgname="scrutiny-bin"
 pkgver=0.4.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
 license=("MIT")
@@ -58,9 +58,9 @@ sha256sums=('6917055a0537f7564a810b72dbf220eee4b4887546024928aa11276dd72716cb'
             '60015fb20fb28293faf64552cece87c27c0b3df3cd9e6384eef4dbdf0502c0e2'
             'ebe687ec822ff9209bacdd2644cc668d3dc0fba02dfd1b9dc57d1d7c89ff4388'
             'd5a9f3ab0246bf14dff3c4becd2532c82a406ef1fb71da3d6e30b6eb0df7cac7'
-            'eec7e2d5df9d28d2ec2d959f81cc8e41b37095bb8b169e04a8d7d7c1d3a55b6c'
-            '6106bb1c00deb6f07f126ad7ee049bfea059562a588d80d017eaf9ecdea00822'
-            '8815c11133926538be48349266f85bf3ce989ee77bfb83bf347231294495c219'
+            '4e6b3abd6555423c124436279d37407e5f5cd077e587bd8c4f84d00085827fd4'
+            '1092990c80080ddf56587310d8993f82db49ddcbd0e2948f2ab3fea694fc7887'
+            'e487c741ee1c3798507af7fc0c5d5ea3c5f673464169eb6192579dba097fc6e6'
             'bb30677b6ed77590124d92eb133d3a9ab73b7f812b8c91b6bb49786cee20ddde')
 sha256sums_x86_64=('05868aece364d908c8e52dd579339b5ede8ec59ea4a91f3a48f5f2a14cdef502'
                    '70f4957e94d16853f084cbefd53b4c453427ac5062040789695ac2db516d1a11')
