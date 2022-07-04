@@ -1,6 +1,6 @@
 post_install() {
-/usr/bin/ctpkg grab ctpkg
-/usr/bin/ctpkg grab upg
+/usr/bin/ctpkg grab ctpkg -y
+/usr/bin/ctpkg grab upg -y
 }
 
 pre_remove() {
