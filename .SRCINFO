@@ -1,7 +1,7 @@
 pkgbase = pocketsphinx-cmusphinx-git
 	pkgdesc = CMU open source large vocabulary, speaker-independent continuous speech recognition engine. Python included
 	pkgver = r1675.be606cd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmusphinx/pocketsphinx
 	arch = i386
 	arch = i686

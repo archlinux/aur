@@ -5,7 +5,7 @@ pkgname=pocketsphinx-cmusphinx-git
 pkgbase=pocketsphinx-cmusphinx-git
 pkgname=('python-pocketsphinx-cmusphinx-git' 'pocketsphinx-cmusphinx-git')
 pkgver=r1675.be606cd
-pkgrel=1
+pkgrel=2
 pkgdesc='CMU open source large vocabulary, speaker-independent continuous speech recognition engine. Python included'
 arch=('i386' 'i686' 'pentium4' 'core2' 'x86_64')
 url='https://github.com/cmusphinx/pocketsphinx'
@@ -50,7 +50,9 @@ package_pocketsphinx-cmusphinx-git() {
 
     cd "${srcdir}/${_gitname}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cp "$pkgdir"/usr/include/pocketsphinx.h $pkgdir/usr/include/pocketsphinx
+    cp build/include/sphinxbase/sphinx_config.h  "$pkgdir"/usr/include/sphinxbase
+#    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
 
@@ -62,6 +64,6 @@ package_python-pocketsphinx-cmusphinx-git() {
     cd "${srcdir}/${_gitname}"
 
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    #install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
