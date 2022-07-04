@@ -1,0 +1,35 @@
+[Unit]
+Description=Scrutiny Collector
+After=network-online.target scrutiny.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/var/lib/scrutiny
+StateDirectory=collector
+ExecStart=/usr/bin/scrutiny-collector run --config /etc/scrutiny/collector.yaml
+
+NoNewPrivileges=true
+SystemCallArchitectures=native
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+
+# smartctl apparently doesn't function properly with this protection in place
+#ProtectClock=yes
+
+[Install]
+WantedBy=multi-user.target

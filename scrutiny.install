@@ -1,0 +1,17 @@
+post_install(){
+cat <<INFO
+
+Before running scrutiny, be sure to have an influxdb instance up and running.  
+If you don't have any, install the influxdb package and start the influxdb.service systemd unit.
+
+Then, configure scrutiny according to the files inside /etc/scrutiny.
+
+Once everything is ready, start the following systemd units:
+
+    scrutiny.service
+    scrutiny-collector.timer
+
+Every 15 minutes the collector will update the API server.
+
+INFO
+} 
