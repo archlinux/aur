@@ -8,7 +8,7 @@ pkgbase = python-pylspci
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-cached-property
-	source = git+https://gitlab.com/Lucidiot/pylspci.git#tag=0.4.2
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/c2/9a/e963a7596af926fd5dfb54f5c9411930a4929fed42915852b3477986a46a/pylspci-0.4.2.tar.gz
+	md5sums = 39c3481b4bcd306a9afded95be0db661
 
 pkgname = python-pylspci
