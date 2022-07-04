@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
-	pkgver = 13.0.1
-	pkgrel = 2
+	pkgver = 14.0.6
+	pkgrel = 1
 	url = http://llvm.org/
 	arch = any
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = mingw-w64-cmake
-	makedepends = llvm>=13
+	makedepends = llvm>=14
 	makedepends = python
 	depends = mingw-w64-zlib
 	depends = mingw-w64-z3
@@ -15,11 +15,10 @@ pkgbase = mingw-w64-llvm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-13.0.1.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/llvm-13.0.1.src.tar.xz.sig
-	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = ec6b80d82c384acad2dc192903a6cf2cdbaffb889b84bfb98da9d71e630fc834
+	sha256sums = 050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a
 	sha256sums = SKIP
 
 pkgname = mingw-w64-llvm
