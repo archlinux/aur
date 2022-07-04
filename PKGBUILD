@@ -1,8 +1,8 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=diun
-pkgver=$PKGVER
-pkgrel=1
+pkgver=4.21.0
+pkgrel=2
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
 url="https://github.com/crazy-max/diun"
