@@ -4,8 +4,8 @@
 _pkgname=altium2kicad
 
 pkgname=${_pkgname}-git
-pkgver=r238.f9eb66d
-pkgrel=3
+pkgver=r241.43b8d7a
+pkgrel=1
 pkgdesc="Altium to KiCad converter for PCB and schematics"
 arch=( 'any' )
 url="https://github.com/thesourcerer8/altium2kicad"
