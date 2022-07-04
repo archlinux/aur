@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -77,10 +77,14 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
+
   cmake -B build -S "$pkgname" \
     -Wno-dev \
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_C_COMPILER="$CC" -D CMAKE_CXX_COMPILER="$CXX" \
+    -D CMAKE_C_FLAGS="$CFLAGS" -D CMAKE_CXX_FLAGS="$CXXFLAGS" \
     -D CMAKE_SKIP_RPATH=ON \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
