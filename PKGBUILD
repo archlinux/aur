@@ -4,7 +4,7 @@ _pkggit=rover
 
 pkgname=rover-git
 pkgver=$PKGVER
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Terraform visualization. State and configuration explorer."
 arch=('x86_64')
 url="https://github.com/im2nguyen/rover"
