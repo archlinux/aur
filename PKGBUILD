@@ -1,7 +1,7 @@
 # Maintainer: Caio Alonso <caio@caioalonso.com>
 
 pkgname=godns-bin
-pkgver=2.6
+pkgver=2.7.9
 pkgrel=1
 pkgdesc="A dynamic DNS client tool, supports AliDNS, Cloudflare, Google Domains, DNSPod, HE.net & DuckDNS, written in Go"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('Apache')
 provides=('godns')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TimothyYe/godns/releases/download/v${pkgver}/godns_${pkgver}_Linux_x86_64.tar.gz"
         "godns.conf::https://raw.githubusercontent.com/TimothyYe/godns/v${pkgver}/configs/config_sample.json")
-sha256sums=('a51e968aaec1f462882615b5281f8c0b3a3cbdbc83af21c06b80fdb952a36990'
-            '2769b4cd7d988464801f90db1905a6c7fc19b2dc4e094c3069fc50486aa24a77')
+sha256sums=('0d8aca1526e3298d1214d7b652e2ad9aaccadfed0489674af0807a8438fb1f1b'
+            '13206465a8d503837a8f56e145bc76fbdb9e9077a4dee5a6db6162d7cf065804')
 
 package() {
   install -Dm755 "${srcdir}"/godns "${pkgdir}/usr/bin/godns"
