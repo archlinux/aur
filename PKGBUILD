@@ -5,7 +5,7 @@
 pkgname=electron-fiddle
 _pkgname=fiddle
 pkgver=0.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
 provides=("${pkgname%-bin}")
