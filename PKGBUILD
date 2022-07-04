@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=snap-pac-grub
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Pacman hook to update GRUB entries for grub-btrfs after snap-pac made snapshots'
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/maximbaz/$pkgname"
 depends=('snap-pac' 'grub-btrfs')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/$pkgname.tar.gz.sig")
-sha256sums=('659f89933ea8896c2e8da8006a948339c1ed3ab31a845c6fed59f040c943ed65'
+sha256sums=('5b32f06e0e3e97dbc9b1335e79d78cafe1b5d656ba5f9029158fdde6194a5e24'
             'SKIP')
 validpgpkeys=('56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
 
