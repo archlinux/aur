@@ -2,7 +2,7 @@
 # Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 
 pkgname=siril
-pkgver='1.0.1'
+pkgver='1.0.3'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('libpng: PNG import'
             'gnuplot: photometry graphs creation')
 
 source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
-sha256sums=('88bd69dfef04a61a38a9a5a1b0d7e69e2f45321ce6d9ef61a617d8a1a52671cc')
+sha256sums=('2fefa7b7e1378f4ba277818c92ec7c4fca1fdcaa6df95bb65aed0163750be2c6')
 
 build() {
   cd "$srcdir"
