@@ -1,32 +1,52 @@
-# Maintainer: prg <prg-archlinux@xannode.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: prg <prg-archlinux@xannode.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 
-pkgname=python2-pycurl
+pkgname='python2-pycurl'
+_name="${pkgname#python2-}"
 pkgver=7.44.1
-pkgrel=6
-pkgdesc="A Python 2.x interface to libcurl"
+pkgrel=7
+pkgdesc='A Python 2 interface to libcurl'
 arch=('x86_64')
-url="http://pycurl.sourceforge.net/"
-license=('LGPL' 'MIT')
-depends=('python2' 'curl')
+url="https://pypi.org/project/${_name}/${pkgver}"
+_repourl="https://github.com/${_name}/${_name}"
+license=('LGPL2.1' 'MIT')
+depends=(
+  'curl'
+  'glibc'
+  'openssl'
+  'python2'
+)
 makedepends=('python2-setuptools')
-source=("https://github.com/pycurl/pycurl/archive/REL_${pkgver//./_}/$pkgname-$pkgver.tar.gz")
-sha512sums=('bb92a5a7417bcd88be3b638b88f97164303bdbb7271d3b8527ca8da5b546ee13bf639f36b48d5cd204c83101712256ab218004e081b79bc5415a873bf9e611a4')
+_tagname="REL_${pkgver//./_}"
+_tarname="${_name}-${_tagname}"
+source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/${_tagname}.tar.gz")
+b2sums=('0b16d6598cb873f3f071fd61640c2685b0eb99aba2ac071ee533e5db24e38278d157ead5bd7123d426bdb548a36c92b0868bd46178c5c33dbc25f0c6d680d3f2')
 
 prepare() {
-  mv pycurl-REL_${pkgver//./_} pycurl-$pkgver
+  cd "${_tarname}"
+
+  printf "Changing hashbangs in *.py files to refer to 'python2'... "
+  sed -e '1s|#![ ]*[a-z0-9._/]*/bin/[a-z0-9._/ ]*python.*|#!/usr/bin/env python2|' \
+      -i $(find . -name '*.py')
+  echo 'done'
+
+  echo "Disabling documentation inclusion in setup.py"
+  sed -e $'/setup_args\[\'data_files\'\]/d' \
+      -i 'setup.py'
 }
 
 build() {
-  cd pycurl-$pkgver
-  make
+  cd "${_tarname}"
   python2 setup.py build
 }
 
 package() {
-  cd pycurl-$pkgver
-  python2 setup.py install -O1 --root="$pkgdir"
-  install -Dm644 COPYING-MIT -t "$pkgdir"/usr/share/licenses/$pkgname/
-  rm -rf $pkgdir/usr/share/doc
+  cd "${_tarname}"
+  python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+
+  grep -A 100000 -e "^License$" 'README.rst' > 'LICENSE.rst'
+  install --verbose -Dm 644 'LICENSE.rst' 'COPYING-MIT' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln --verbose --symbolic '/usr/share/licenses/common/LGPL2.1/license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING-LGPL"
 }
