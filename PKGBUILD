@@ -2,8 +2,8 @@
 
 _pkgbase=dlib
 pkgname=("dlib-sse" "dlib-sse-cuda")
-pkgver=19.22
-pkgrel=3
+pkgver=19.24
+pkgrel=1
 _commit=600e03655274f0e7f2013d8d3cd5a3799843186b
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
@@ -19,14 +19,10 @@ optdepends=('giflib: for GIF support'
             'sqlite: for sqlite support')
 makedepends=('cmake' 'ccache-ext' 'ccache' 'cuda' 'cudnn')
 provides=("dlib")
-source=("https://github.com/davisking/dlib/archive/$_commit.tar.gz"
-	"version.patch")
-sha256sums=('ff6fbbb0032e973a32b9a3b525b507851326305a97b8892e90c519dc6b2490d7'
-            'df6167bb6c9a258eebfed651bd4c8d4e5d89324dd10579057fa58e6d1f4d110d')
+source=("https://github.com/davisking/dlib/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3cc42e84c7b1bb926c6451a21ad1595f56c5b10be3a1d7aa2f3c716a25b7ae39')
 build() {
-    mv -v "${srcdir}/${_pkgbase}-${_commit}" "${srcdir}/${_pkgbase}-${pkgver}"
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    patch -p1 -i ../version.patch
     cd ..
     mkdir -p build && cd build
     #cmake -GNinja \
