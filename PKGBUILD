@@ -18,7 +18,7 @@ depends=( 'net-tools' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('aa5a7d4a22ad9caaf26d4a107f829aa2218fe6a95584aee5b492cf389c49aa04')
+sha256sums=('d758615f05d64fcd3f3a55a75916927fc9d1bfa091d492bdbecfab4a6b84742d')
 sha256sums_x86_64=('1c9a179095fee2895e12a34efc68c4bc6e5031eb6ee364ff838c0454a07dc427')
 sha256sums_aarch64=('93e82f3a6799e68fcbbb7f613ebf1f417fcb41456e98d68649772c7890c076e0')
 sha256sums_armv8=('93e82f3a6799e68fcbbb7f613ebf1f417fcb41456e98d68649772c7890c076e0')
@@ -85,7 +85,6 @@ install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-con
 #install systemd services
 _msg2 'Installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
-rm ${_pkgdir}/${_systemddir}/skywire-hypervisor.service
 
 _msg2 'installing desktop files and icons'
 mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
