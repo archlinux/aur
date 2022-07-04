@@ -22,7 +22,7 @@ source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"
 )
 sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
-            '13388517e2d1204ed9cc56b6fc79fc5a454dea03a66228322fa261acc921642e')
+            '7fa8f41d580270eb337737d3aaf051de1d91ed0d30f230a019b5d6596011c6ff')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
@@ -120,7 +120,6 @@ install -Dm644 ${srcdir}/${_pkgname}*/dmsghttp-config.json ${_pkgdir}/${_skydir}
 #install systemd services
 _msg2 'Installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
-rm ${_pkgdir}/${_systemddir}/skywire-hypervisor.service
 
 _msg2 'installing desktop files and icons'
 mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
