@@ -1,26 +1,21 @@
 # Maintainer: ml <>
 pkgname=helm-2to3
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
 url='https://github.com/helm/helm-2to3'
 license=('Apache')
 install=helm-2to3.install
-depends=('helm')
+depends=('kubectl')
 makedepends=('go')
 groups=('helm-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d4fc4dfcccc8c4b02ebb49dcb16eb20167d405675c63495aa6aa34ed6fa05b2e')
+sha256sums=('8836fb3501fa0d34a9f1b01d4109e8b0f38d55618e0397c5296d33be47f65a26')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   sed -i '/^hooks:$/Q' plugin.yaml
-  go mod edit \
-    -dropreplace gotest.tools \
-    -dropreplace github.com/Azure/go-autorest \
-    -dropreplace github.com/docker/distribution
-  go mod tidy
 }
 
 build() {

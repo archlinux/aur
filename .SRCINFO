@@ -1,6 +1,6 @@
 pkgbase = helm-2to3
 	pkgdesc = Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/helm/helm-2to3
 	install = helm-2to3.install
@@ -9,8 +9,8 @@ pkgbase = helm-2to3
 	groups = helm-plugins
 	license = Apache
 	makedepends = go
-	depends = helm
-	source = https://github.com/helm/helm-2to3/archive/v0.10.0/helm-2to3-0.10.0.tar.gz
-	sha256sums = d4fc4dfcccc8c4b02ebb49dcb16eb20167d405675c63495aa6aa34ed6fa05b2e
+	depends = kubectl
+	source = https://github.com/helm/helm-2to3/archive/v0.10.1/helm-2to3-0.10.1.tar.gz
+	sha256sums = 8836fb3501fa0d34a9f1b01d4109e8b0f38d55618e0397c5296d33be47f65a26
 
 pkgname = helm-2to3
