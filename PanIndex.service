@@ -1,0 +1,14 @@
+[Unit]
+Description=PanIndex Service
+Documentation=https://libsgh.github.io/PanIndex/
+After=network.target
+[Service]
+User=root
+WorkingDirectory=/etc/PanIndex
+ExecStart=/usr/bin/PanIndex -c=/etc/PanIndex/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+[Install]
+WantedBy=multi-user.target

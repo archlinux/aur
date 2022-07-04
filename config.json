@@ -1,0 +1,11 @@
+{
+  "host": "0.0.0.0",
+  "port": 5238,
+  "log_level": "info",
+  "data_path": "/etc/PanIndex/data",
+  "cert_file": "",
+  "key_file": "",
+  "config_query": "",
+  "db_type": "sqlite",
+  "dsn": "/etc/PanIndex/data/data.db"
+}
