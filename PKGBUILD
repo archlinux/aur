@@ -2,16 +2,17 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote-git
-pkgver=3.6.0.r4.7cc31a5d
+pkgver=3.13.1.r3.g17af3b8d
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://vnotex.github.io/vnote/en_us/'
 license=(LGPL3)
-depends=(qt5-base qt5-webengine qt5-svg)
+depends=(qt5-base qt5-webengine qt5-svg qt5-x11extras)
 makedepends=(git)
 source=("git+https://github.com/vnotex/vnote.git"
         "vnotex-vtextedit::git+https://github.com/vnotex/vtextedit"
+        "vnotex-QHotkey::git+https://github.com/vnotex/QHotkey.git"
         "vnotex-syntax-highlighting::git+https://github.com/vnotex/syntax-highlighting"
         "vnotex-hunspell::git+https://github.com/vnotex/hunspell"
         "vnotex-sonnet::git+https://github.com/vnotex/sonnet")
@@ -19,13 +20,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  #printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  TAG=$(git tag --list | tail -n 1 | sed 's/^v//')
-  printf "${TAG}.r%s.%s" "$(git rev-list --count v${TAG}..HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --exclude continuous-build |  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,6 +35,7 @@ prepare() {
 
   git submodule init
   git config 'submodule.libs/vtextedit.url' "${srcdir}/vnotex-vtextedit"
+  git config 'submodule.libs/QHotkey.url' "${srcdir}/vnotex-QHotkey"
   git submodule update
 
   cd "libs/vtextedit"
