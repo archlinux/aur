@@ -1,10 +1,10 @@
 #!/bin/bash
 # Author: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Rye Mutt
-# Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
+# Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.5.48672.53b082b0a2
+pkgver=6.5.5.48683.68d6e8c86e
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -42,16 +42,16 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}" || exit 1
-    git fetch --prune
-    git checkout main
-    git pull --autostash
-    git checkout "${AL_GIT_REVISION:-origin/main}"
+    #git fetch --prune
+    #git checkout main
+    #git pull --autostash
+    #git checkout "${AL_GIT_REVISION:-origin/main}"
 }
 
 build() {
     cd "${pkgname}" || exit 1
-    virtualenv "/tmp/${pkgname}/.venv" -p python3
-    source "/tmp/${pkgname}/.venv/bin/activate"
+    virtualenv ".venv" -p python3
+    source ".venv/bin/activate"
     pip install --upgrade certifi
     if command -v autobuild; then
         abver="$(autobuild --version)"
@@ -59,22 +59,38 @@ build() {
         if [ "${abver}" = "autobuild 2.1.0" ]; then
             echo "Reinstalling autobuild to work around some bugs"
             pip3 uninstall --yes autobuild
+            pip3 install autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
         fi
+    else
+        pip3 install autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
     fi
-    pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
     # we have a lot of files, relax ulimit to help performance
     ulimit -n 20000
     # shellcheck disable=SC2153
     autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL="$(grep -cq '[^!]lto' <<< "${OPTIONS}" && echo 'ON' || echo 'OFF')" -DVIEWER_CHANNEL="Alchemy Test"
-    cd "build-linux-64"
-    loadavg=$(nproc)
-    if [[ ${loadavg} -gt 1 ]]; then
-        if [[ ${loadavg} -le 8 ]]; then loadavg=$((loadavg - 1))
+    cd "build-linux-64" || exit 1
+    jobcount=$(nproc)
+    if [[ ${jobcount} -gt 1 ]]; then
+        # The viewer requires an average of 4GB of memory per CPU core to sucessfully link
+        mempercorekb=$((4 * 1048576))
+        requiredmemorykb=$(($(nproc) * mempercorekb))
+        availablememorykb=$(grep MemTotal /proc/meminfo | tr -s ' ' | cut -d ' ' -f 2)
+        freememkb="$(grep MemFree /proc/meminfo | tr -s ' ' | cut -d ' ' -f 2)"
+        if [[ ${requiredmemorykb} -gt ${availablememorykb} ]]; then
+        jobs=0
+        until [[ $(((jobs + 1) * mempercorekb)) -gt ${availablememorykb} ]]; do
+           jobs=$((jobs+1))
+        done
+        #((jobs--))
+        jobcount=${jobs}
+        elif [[ ${jobcount} -le 8 ]]; then
+           jobcount=$((jobcount - 1))
         else
-            loadavg=$((loadavg - 2))
+           jobcount=$((jobcount - 2))
         fi
     fi
-    time ninja -l${loadavg}
+    echo "Building with ${jobcount} jobs (adjusted)"
+    time ninja -l"$(nproc)" -j${jobcount}
 }
 
 package() {
