@@ -6,7 +6,6 @@ pkgdesc="Legacy bootstrapped extensions for Firefox 65 and beyond"
 arch=('any')
 url="https://gir.st/blog/legacyfox.htm"
 license=('MPL')
-depends=('firefox')
 _commit=0548b59
 source=("https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
 sha256sums=('f2d1e28ce393192391ba68c030edd580a5c1eff781b0f1281ce32d6f54ba3c6e')
