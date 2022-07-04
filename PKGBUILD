@@ -2,8 +2,8 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
-pkgver=v6.89C
-pkgrel=2
+pkgver=v6.89G
+pkgrel=0
 arch=('x86_64')
 url="http://www.stcmcudata.com"
 license=('unknow')
@@ -20,8 +20,8 @@ source=("${pkgname%-wine}-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${p
         "${pkgname%-wine}-tiny-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${pkgver}-tiny.zip"
         "stc-isp-wine.install"
         "stc-isp-tiny-wine.install")
-sha256sums=('4fa56b7c14ac81af065fbf2ccb3f784d2a0ee9b3bbe73a0034cbb57860b87ede'
-            'a514b598c34cf89131d347a7f36770fdcc206cae5c84d88154769f66aa2cba0a'
+sha256sums=('bbc597e16005e02266353e4412a1dcff23ac18abee32c29381b48dfc356ee39d'
+            'e07daf403988e66c26d1105b0583572fff65f23af5fa6cbd188fa2a7b7dfaed9'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6')
 noextract=("${pkgname%-wine}-${pkgver}.zip"
