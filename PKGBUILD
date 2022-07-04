@@ -1,7 +1,7 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=croodle-git
 pkgver=r1191.fb5981e
-pkgrel=2
+pkgrel=3
 pkgdesc="a web application to schedule a date or to do a poll on a general topics"
 arch=("any")
 url="https://github.com/jelhan/croodle"
@@ -17,10 +17,14 @@ source=(
 	"croodle-cron.service"
 	"croodle-cron.timer"
 )
+backup=(
+	"etc/php/php-fpm.d/croodle.conf"
+	"etc/webapps/croodle/config.php"
+)
 sha256sums=('SKIP'
-            '083d590dbb293dad54a5d0347acf564ebcd709369d398bcfbf70e82b848daef1'
+            '20bf0f6e542274b97a1cb4efb28abd89567638f8c0059b77adb7d791375d9d88'
             '1996262b7849b79a7f2c330651613c96a40dfec3ccf51f7d5eb8564d25e22627'
-            '88a0ca17ad5a90b927e4275fb2245e569ecbde7e059033529cafdcc66b9b2a14'
+            'b3307d22c5a81b71870bc9836123cd47a49605bb1bb65fa0a25ea0050d4c9c38'
             '1b67171535fcb21d0dcc9738f6e47d32c735b49313ae3a9d967fb65befbe4e2e'
             '0e2520a6f3bfa7283a5ccb91bb6cbaade1333efdd82b9256bc61be36020fe0e3')
 
