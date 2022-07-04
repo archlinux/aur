@@ -1,6 +1,6 @@
 pkgbase = vrising-server
 	pkgdesc = Dedicated server for the V-Rising PC game
-	pkgver = 0.5.42236
+	pkgver = 0.5.42405
 	pkgrel = 1
 	url = https://playvrising.com/
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Alexander Diana (alexander.a.diana@gmail.com)
 pkgname=vrising-server
-pkgver=0.5.42236
+pkgver=0.5.42405
 pkgrel=1
 pkgdesc="Dedicated server for the V-Rising PC game"
 arch=('x86_64')
