@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.18.2
-pkgrel=2
+pkgver=1.19.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -13,7 +13,9 @@ depends=('glfw' 'mbedtls' 'libssh2'
          'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme' 'openssl'
          'fmt' 'yara')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
-optdepends=('imhex-patterns-git: ImHex base patterns')
+optdepends=(
+  'imhex-patterns-git: ImHex base patterns'
+)
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
@@ -22,8 +24,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage"
         0001-makepkg-Remove-external-stuff.patch
         0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch
-        0003-fix-Build-errors-with-GCC-12.1.0.patch
-        0004-fix-Deduplicate-resources-directories.patch
+        0003-fix-Deduplicate-resources-directories.patch
         imhex.desktop)
 cksums=('SKIP'
         'SKIP'
@@ -31,10 +32,9 @@ cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '3601631476'
-        '4179823382'
-        '3168205901'
-        '3422557331'
+        '528024829'
+        '394210937'
+        '2662919625'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
@@ -42,10 +42,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '336cd1a05bb0604719ff1f6b81a0db66f450f26c3942bab9e3d6fb9e7d0d6f21'
-            '6c7025b9223d53b4f9ac558467caa51a50ab996bc8e240a27d014f493df103f0'
-            'b48628ac32bea0fc8797100c41da1c9471d7f30045dba773243af1f2d6d62ab3'
-            '784bc7b1a6ce2292232521bfaa9efd185fc36b6f6265ae382e9e8489de109706'
+            '407712c5576e79118d9cc908189b1119cd18b119c89971f9bd9c683e8b13a748'
+            '0f658e057cf41cddefdc5a3c8b389ebad92d6a61312869ea2d3ef601ca4619e7'
+            'a3aea841bc9c96d770c64e812ef8784878df0004bf02b8d59f17efe77772b589'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
@@ -53,10 +52,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '3a2e8c935f5969269535cac4c1a4fecf321911bc122db0fa2c6e86644a5dc9a6fbfc4d2da61e6b0d917ff2e13713da3912cdb121812fda0e30e88246d11fbdc2'
-        '4958ecf7ccbb9af1daa5adc8f668832ae510c8f3d070eff19e9704252a20eae8c4b37b3d1609efd9832ee5cdc7a54ec726e543e80bdaf8774753774d9fa4641c'
-        'ed121547ba4412600e3049ece962bcfdf72e2c9febc846165dc50492a7a6f1771660cd5b1b3417c1118f8ebb67be0c760961aa09d05a89bea14c70c761dd06b2'
-        'e538cd745e6cc4bb7997230652dccb16f2372fe5ecb33c9613cdbb5a02e3e2887943b420aa71b817b7024931aac580b09c3bf5f91ab4f361ec5eda27414b7ba1'
+        '2957991dbce1483b82080a4b4a434f0bb4a6c56ca5ccc8e6ae3445680983bc199553f5471049483b39a5dc0deafb320fb0ba9e8cde67e563a811a2bffcf10bdd'
+        '219ae1a8a56a371033f1006e01b08b870b5e928b1f6b1832b72723363e6816567b017c50bfbf23017506757cfd546a374507225adec9a4953c05171bc870ebd1'
+        '5cb71a0d87ff9afd886c5fa6deed143229b00375f790924c92eb8a3da49600f532b5a7332f8377958ada102137486b0c52ab2f19e610338b6c8f6094bc5b2f70'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 options=(!lto)
 
@@ -75,8 +73,7 @@ prepare() {
   git apply \
     "$srcdir/0001-makepkg-Remove-external-stuff.patch" \
     "$srcdir/0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch" \
-    "$srcdir/0003-fix-Build-errors-with-GCC-12.1.0.patch" \
-    "$srcdir/0004-fix-Deduplicate-resources-directories.patch"
+    "$srcdir/0003-fix-Deduplicate-resources-directories.patch"
 }
 
 build() {
@@ -103,7 +100,7 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/lib" build/lib/libimhex/libimhex.so
 
   for plugin in builtin; do
-    install -Dm0755 -t "$pkgdir/usr/share/imhex/plugins" "build/plugins/$plugin/$plugin.hexplug"
+    install -Dm0755 -t "$pkgdir/usr/share/imhex/plugins" "build/plugins/$plugin.hexplug"
   done
 
   # Desktop file(s)

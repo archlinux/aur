@@ -1,7 +1,7 @@
-From a775d4d8db350a0db34270183cc9d22d6c0580b4 Mon Sep 17 00:00:00 2001
+From 491e66e92fd271b3f3f8e9e630679fac3be21593 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 20:20:40 +0100
-Subject: [PATCH 2/4] archlinux-compat: Remove unused mbedTLS code from libcurl
+Subject: [PATCH 2/3] archlinux-compat: Remove unused mbedTLS code from libcurl
  usage
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 2/4] archlinux-compat: Remove unused mbedTLS code from libcurl
  1 file changed, 1 insertion(+), 27 deletions(-)
 
 diff --git a/lib/libimhex/source/helpers/net.cpp b/lib/libimhex/source/helpers/net.cpp
-index a0693534..96f60fea 100644
+index 3c930fb0..0d73ed10 100644
 --- a/lib/libimhex/source/helpers/net.cpp
 +++ b/lib/libimhex/source/helpers/net.cpp
-@@ -7,8 +7,6 @@
+@@ -9,8 +9,6 @@
  #include <filesystem>
  #include <cstdio>
  
@@ -21,7 +21,7 @@ index a0693534..96f60fea 100644
  #include <curl/curl.h>
  #include <nlohmann/json.hpp>
  
-@@ -44,23 +42,6 @@ namespace hex {
+@@ -46,23 +44,6 @@ namespace hex {
          return fwrite(contents, size, nmemb, file);
      }
  
@@ -45,27 +45,27 @@ index a0693534..96f60fea 100644
      int progressCallback(void *contents, curl_off_t dlTotal, curl_off_t dlNow, curl_off_t ulTotal, curl_off_t ulNow) {
          auto &net = *static_cast<Net *>(contents);
  
-@@ -106,13 +87,6 @@ namespace hex {
-         curl_easy_setopt(this->m_ctx, CURLOPT_XFERINFOFUNCTION, progressCallback);
+@@ -109,13 +90,6 @@ namespace hex {
          curl_easy_setopt(this->m_ctx, CURLOPT_NOSIGNAL, 1L);
          curl_easy_setopt(this->m_ctx, CURLOPT_NOPROGRESS, 0L);
--
+ 
 -#if defined(OS_WINDOWS)
 -        curl_easy_setopt(this->m_ctx, CURLOPT_CAINFO, nullptr);
 -        curl_easy_setopt(this->m_ctx, CURLOPT_CAPATH, nullptr);
 -        curl_easy_setopt(this->m_ctx, CURLOPT_SSLCERTTYPE, "PEM");
 -        curl_easy_setopt(this->m_ctx, CURLOPT_SSL_CTX_FUNCTION, sslCtxFunction);
 -#endif
+-
+         curl_easy_setopt(this->m_ctx, CURLOPT_PROXY, Net::s_proxyUrl.c_str());
      }
  
-     std::optional<i32> Net::execute() {
-@@ -241,4 +215,4 @@ namespace hex {
-         return {};
+@@ -251,4 +225,4 @@ namespace hex {
+         Net::s_proxyUrl = url;
      }
  
 -}
 \ No newline at end of file
 +}
 -- 
-2.36.1
+2.37.0
 
