@@ -1,13 +1,16 @@
 pkgbase = staresc
 	pkgdesc = Make SSH/TNT PTs Great Again!
-	pkgver = 0
-	pkgrel = 1
-	url = https://gitlab.com/5amu/staresc
-	arch = any
+	pkgver = 1
+	pkgrel = 0
+	url = https://github.com/staresc/staresc
+	arch = x86_64
 	license = GPLv3
 	depends = python
 	depends = python-paramiko
-	source = staresc-0.1.tar.gz::https://gitlab.com/5amu/staresc/-/archive/0.1/staresc-0.1.tar.gz
-	sha256sums = 03c1242e94b566667c49fd6c7c750b8aab7afb8ad8b2454914dc56f23dec2ebb
+	depends = python-yaml
+	depends = python-xlsxwriter
+	depends = python-tabulate
+	source = staresc-1.0.tar.gz::https://github.com/staresc/staresc/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 3df2ed688ebab221cbdd5073bd94c7df9d24a4119ce9cd86d34c62bafdb32c23
 
 pkgname = staresc
