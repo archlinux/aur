@@ -3,6 +3,7 @@
 # Contributor: Bruce Zhang
 
 pkgname=electron-fiddle
+_pkgname=fiddle
 pkgver=0.29.1
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
@@ -10,13 +11,28 @@ arch=('x86_64' 'aarch64' 'armhf')
 provides=("${pkgname%-bin}")
 url='https://github.com/electron/fiddle/'
 license=('MIT')
-depends=('gtk3' 'alsa-lib' 'nss' 'electron')
-source_x86_64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_amd64.deb")
-sha256sums_x86_64=('18ed3420c16cfb4ee04affb6a0c090ff8413e36446b2496bfbb29db80d5e25c6')
-sha256sums_aarch64=('12ef2ec86ef5a31080d099cbded4e2b6f632c75aa36bf8afb40dcff4143cddf6')
-sha256sums_armhf=('0049002f075aaef18e6f68ddefbf201d5678e6190fb39f83b604333dcd1732f3')
-source_aarch64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_arm64.deb")
-source_armhf=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_armhf.deb")
+depends=('electron')
+makedepends=('npm')
+provides=("$pkgname" "$pkgname")
+source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
+sha256sums=('26e71c1cd8f20619c8069c5a1eda5826781fafe53b82fdf66dad3874cabaef5f')
+
+prepare() {
+	local cache="$srcdir/npm-cache"
+	local dist="/usr/lib/electron"
+
+	cd "$srcdir/$_pkgname-$pkgver"
+
+	# Fix dependencies
+	sed -i 's#"monaco-editor": "^0.21.3"#"monaco-editor": "^0.17.0"#' "package.json"
+	
+	npm install --cache "$cache"
+}
+
+build() {
+	cd "$srcdir/$_pkgname-$pkgver"
+	npm run package
+}
 
 package() {
 	# Extract downloaded file
