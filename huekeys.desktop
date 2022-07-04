@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.5
+Terminal=false
+Type=Application
+Name=huekeys
+Comment=Control the keyboard backlight on System76 laptops
+Categories=Utility
+Exec=huekeys menu
+Icon=huekeys

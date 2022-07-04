@@ -5,3 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!huekeys.desktop
+!huekeys.png
