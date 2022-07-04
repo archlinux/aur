@@ -1,5 +1,5 @@
 pkgbase = gyr-bin
-	pkgdesc = Blazing fast TUI launcher for *BSD and Linux
+	pkgdesc = Blazing fast TUI launcher for GNU/Linux and *BSD (prebuilt binary version)
 	pkgver = 0.1.0
 	pkgrel = 2
 	url = https://sr.ht/~forkbomb9/gyr
