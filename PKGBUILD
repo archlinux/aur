@@ -1,8 +1,8 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r8054.gaa5c706ef6
-pkgrel=2
+pkgver=2022.07.04.edge.r0.ga87320cc64
+pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -51,6 +51,9 @@ build() {
     # Those deprecation warnings make debugging a nightmare
     export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
     export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
+
+    export CC=clang
+    export CXX=clang++
 
     cmake -B build -S "$_gitname" -G Ninja -Wno-dev \
         -DBUILD_QT5=ON \
