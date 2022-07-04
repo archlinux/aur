@@ -5,7 +5,14 @@ pkgbase = terramate
 	url = https://github.com/mineiros-io/terramate
 	arch = x86_64
 	license = Apache-2
-	source = https://github.com/mineiros-io/terramate/releases/download/v0.1.10/terramate_0.1.10_linux_x86_64.tar.gz
-	sha256sums = 66e8109a6e596c7f880b3f4a0a4286004fcaafcd9e87db135714c5330cdd177a
+	makedepends = go>=1.18
+	makedepends = git
+	makedepends = gzip
+	makedepends = tar
+	makedepends = gcc
+	provides = terramate
+	conflicts = terramate-bin
+	source = https://github.com/mineiros-io/terramate/archive/v0.1.10.tar.gz
+	sha256sums = 4c8e1582c9f6847244f16bf2f248fabdf9c6dd98a88d82976157c29e672331d6
 
 pkgname = terramate
