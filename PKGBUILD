@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ParamHelpers
-_pkgver=1.14
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14
-pkgrel=4
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='Helpers for Parameters in Black-Box Optimization, Tuning and Machine Learning'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b17652d0a69de3241a69f20be4ad1bfe02c413328a17f3c1ac7b73886a6ba2eb')
+sha256sums=('0450ff8489b0d4d0842130f6a9713ede97da936d7909c43d43587bf2d5a01a21')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
