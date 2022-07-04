@@ -7,7 +7,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.12.0
 _pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -62,7 +62,8 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/79360.patch
-        ffmpeg4.4.patch)
+        ffmpeg4.4.patch
+        "rocblas.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/80849.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -106,7 +107,8 @@ sha256sums=('SKIP'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
             'bd89e94fd077b2e2bf04ffb0794f5bcb68379a6abcd4339aa99e9bba9fe4edec'
-            '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9')
+            '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9'
+            'SKIP')
 options=('!lto')
 
 get_pyver () {
@@ -174,6 +176,9 @@ prepare() {
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
+
+  # fix https://github.com/pytorch/pytorch/issues/80848
+  patch -Np1 -i "${srcdir}/rocblas.patch"
 
   cd "${srcdir}"
 
