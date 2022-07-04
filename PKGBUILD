@@ -3,11 +3,11 @@
 
 pkgname="scrutiny-bin"
 pkgver=0.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
 license=("MIT")
-arch=("x86_64")
+arch=("x86_64" "armv5h" "armv6h" "armv7h" "aarch64")
 provides=("scrutiny")
 conflicts=("scrutiny" "scrutiny-collector")
 depends=("smartmontools")
@@ -31,8 +31,28 @@ source=(
 )
 
 source_x86_64=(
-    "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-amd64"
-    "$url/releases/download/v$pkgver/scrutiny-web-linux-amd64"
+ "$url/releases/download/v$pkgver/scrutiny-web-linux-amd64"
+ "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-amd64"
+)
+
+source_armv5h=(
+ "$url/releases/download/v$pkgver/scrutiny-web-linux-arm-5"
+ "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-arm-5"
+)
+
+source_armv6h=(
+ "$url/releases/download/v$pkgver/scrutiny-web-linux-arm-6"
+ "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-arm-6"
+)
+
+source_armv7h=(
+ "$url/releases/download/v$pkgver/scrutiny-web-linux-arm-7"
+ "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-arm-7"
+)
+
+source_aarch64=(
+ "$url/releases/download/v$pkgver/scrutiny-web-linux-arm64"
+ "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-arm64"
 )
 
 sha256sums=('6917055a0537f7564a810b72dbf220eee4b4887546024928aa11276dd72716cb'
@@ -43,8 +63,16 @@ sha256sums=('6917055a0537f7564a810b72dbf220eee4b4887546024928aa11276dd72716cb'
             '6106bb1c00deb6f07f126ad7ee049bfea059562a588d80d017eaf9ecdea00822'
             '8815c11133926538be48349266f85bf3ce989ee77bfb83bf347231294495c219'
             'bb30677b6ed77590124d92eb133d3a9ab73b7f812b8c91b6bb49786cee20ddde')
-sha256sums_x86_64=('70f4957e94d16853f084cbefd53b4c453427ac5062040789695ac2db516d1a11'
-                   '05868aece364d908c8e52dd579339b5ede8ec59ea4a91f3a48f5f2a14cdef502')
+sha256sums_x86_64=('05868aece364d908c8e52dd579339b5ede8ec59ea4a91f3a48f5f2a14cdef502'
+                   '70f4957e94d16853f084cbefd53b4c453427ac5062040789695ac2db516d1a11')
+sha256sums_armv5h=('07af20e29ff9fb3ea6d358a993ad990526af5e713eaf8964d52a0dd8a7bc7909'
+                   '8db18b623776bc653b9a2b7502bb48dd197f1e7165466245d2c8f39acdfa18f7')
+sha256sums_armv6h=('ef1ef39f336ab893c8dc85551ae7234e5c2196ce34790807e72676abd6363279'
+                   'b6d5abf230582e152b2c8273800ff3ad746359b196dcf530f7015c4c84d03c5c')
+sha256sums_armv7h=('f737e603748d7fdff17b9e81cb59c0c7f89f3c7c3370e3a7ad3f03036c28758f'
+                   '967b5b88c9600364f76177def8571aaa4a6d748c1da717f885d3906eddef54e9')
+sha256sums_aarch64=('8a7d3275a469e164d0b7f337457009360cbb35fd2dda9cf088613e4732b2f7e5'
+                    'aa1c8099d9d910b9f7bcc475384f5f6e9532f37d10201e969c2added9343eef4')
 
 prepare(){
  sed -i "example.scrutiny.yaml" \
@@ -62,8 +90,29 @@ package(){
  install -D -m 644 "example.scrutiny.yaml" "$pkgdir/etc/scrutiny/scrutiny.yaml"
  install -D -m 644 "example.collector.yaml" "$pkgdir/etc/scrutiny/collector.yaml"
  # binaries
- install -D -m 755 "scrutiny-web-linux-amd64" "$pkgdir/usr/bin/scrutiny"
- install -D -m 755 "scrutiny-collector-metrics-linux-amd64" "$pkgdir/usr/bin/scrutiny-collector"
+ case "$CARCH" in
+  "x86_64")
+   install -D -m 755 "scrutiny-web-linux-amd64" "$pkgdir/usr/bin/scrutiny"
+   install -D -m 755 "scrutiny-collector-metrics-linux-amd64" "$pkgdir/usr/bin/scrutiny-collector"
+  ;;
+  "armv5h")
+   install -D -m 755 "scrutiny-web-linux-arm-5" "$pkgdir/usr/bin/scrutiny"
+   install -D -m 755 "scrutiny-collector-metrics-linux-arm-5" "$pkgdir/usr/bin/scrutiny-collector"
+  ;;
+  "armv6h")
+   install -D -m 755 "scrutiny-web-linux-arm-6" "$pkgdir/usr/bin/scrutiny"
+   install -D -m 755 "scrutiny-collector-metrics-linux-arm-6" "$pkgdir/usr/bin/scrutiny-collector"
+  ;;
+  "armv7h")
+   install -D -m 755 "scrutiny-web-linux-arm-7" "$pkgdir/usr/bin/scrutiny"
+   install -D -m 755 "scrutiny-collector-metrics-linux-arm-7" "$pkgdir/usr/bin/scrutiny-collector"
+  ;;
+  "aarch64") 
+   install -D -m 755 "scrutiny-web-linux-arm64" "$pkgdir/usr/bin/scrutiny"
+   install -D -m 755 "scrutiny-collector-metrics-linux-arm64" "$pkgdir/usr/bin/scrutiny-collector"
+   ;;
+  *) echo "[KO] Unsupported architecture provided" && return 1;;
+ esac
  # systemd units
  install -D -m 644 "scrutiny.sysusers" "$pkgdir/usr/lib/sysusers.d/scrutiny.conf"
  install -D -m 644 "scrutiny.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/scrutiny.conf"
