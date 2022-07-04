@@ -1,16 +1,15 @@
 pkgbase = gyr-git
-	pkgdesc = Blazing fast TUI launcher for *BSD and Linux
-	pkgver = 0.1.0.r0.g7901ce7
+	pkgdesc = Blazing fast TUI launcher for GNU/Linux and *BSD (git version)
+	pkgver = 0.1.0.r7.gccfe8c5
 	pkgrel = 1
 	url = https://sr.ht/~forkbomb9/gyr
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	license = BSD-2-Clause
 	makedepends = rust
 	makedepends = git
 	provides = gyr
 	conflicts = gyr
-	source = git+https://git.sr.ht/~forkbomb9/gyr
+	source = git+https://git.sr.ht/~forkbomb9/gyr#branch=dev
 	sha256sums = SKIP
 
 pkgname = gyr-git
