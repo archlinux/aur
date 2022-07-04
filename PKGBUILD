@@ -2,8 +2,8 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com
 
 pkgname=nodejs-less
-pkgver=4.1.2
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="A standalone compiler for the LESS CSS language."
 arch=('any')
 url="http://lesscss.org/"
@@ -14,7 +14,7 @@ conflicts=('lessc')
 provides=("lessc=$pkgver")
 replaces=('lessc')
 source=("https://registry.npmjs.org/less/-/less-$pkgver.tgz")
-sha256sums=('f2067b038bec06176cbe955f26bdb29cfc9bed7aa511ac9243db50b31cbf59ce')
+sha256sums=('0f195e10cf46e74c7951e11b6c54fad6d2001a79b3189861113dcb5ce9619968')
 
 package() {
     npm install -g --prefix "$pkgdir"/usr --cache "${srcdir}/npm-cache" "$srcdir"/less-$pkgver.tgz
