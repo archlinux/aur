@@ -1,8 +1,8 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=lima
-pkgver=$PKGVER
-pkgrel=2
+pkgver=0.11.1
+pkgrel=3
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
 url="https://github.com/lima-vm/lima"
