@@ -1,0 +1,28 @@
+pkgbase = vte4-copy-patch-git
+	pkgdesc = Virtual Terminal Emulator widget, patched for copy
+	pkgver = 0.61.90+r306+gc757fc5c
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal/VTE
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gi-docgen
+	makedepends = gperf
+	makedepends = meson
+	depends = gtk4
+	depends = pcre2
+	depends = gnutls
+	depends = fribidi
+	depends = systemd
+	depends = vte-common
+	provides = vte4
+	provides = vte4-git
+	provides = libvte-2.91-gtk4.so=0-64
+	conflicts = vte4
+	conflicts = vte4-git
+	source = git+https://gitlab.gnome.org/raggesilver/vte.git
+	sha256sums = SKIP
+
+pkgname = vte4-copy-patch-git
