@@ -14,6 +14,7 @@ depends=(
     'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit'
     'python-pivy' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
     'pyside2'
+    'openmp'
     # 'python-pyside2' 
 )
 makedepends=(

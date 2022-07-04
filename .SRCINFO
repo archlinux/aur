@@ -39,6 +39,7 @@ pkgbase = freecad-linkstage3-git
 	depends = pyside2-tools
 	depends = shiboken2
 	depends = pyside2
+	depends = openmp
 	optdepends = python-matplotlib
 	optdepends = graphviz
 	optdepends = openscad
