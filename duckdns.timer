@@ -1,5 +1,5 @@
 [Unit]
-Description=Run DuckDNS every 5 minutes
+Description=Run DuckDNS every 15 minutes
 
 [Timer]
 OnCalendar=*:0/15
