@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.15.51
+_pkgver=5.15.52
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('28a5846660e85893b41c95de2d9a491b050e14b5d8c79c1be9e30d4369f9a19b'
-            'a57ef859063fc6a336214a643f4b92abb30233fe5415232d92f733cee8e5f3ae'
-            '1e48b163fafb0ca7efbb3dca7b44244db26570ee1f9b7ea97a0c5f032aadefe8')
+sha256sums=('6b0e1e0b84687dc06436b4fbb34c7cb17515fc7ea3b57e91e7fd9f568740d823'
+            '36a541d7b324b0468632d761cf73afe9c4c29521d30a965dfa2e0f4b2e68eef7'
+            'c1c0ce0a01e3d25cda78553f9846bcdead152985bce7d47aef878bf5be4ac00c')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.51-1-lts-bin() {
+package_linux5.15.52-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -78,7 +78,7 @@ package_linux5.15.51-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.15.51-1-lts-headers-bin() {
+package_linux5.15.52-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -87,7 +87,7 @@ package_linux5.15.51-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.51-1-lts-docs-bin() {
+package_linux5.15.52-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
