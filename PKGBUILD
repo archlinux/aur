@@ -2,7 +2,7 @@
 
 pkgname=docfx-git
 _pkgname=docfx
-pkgver=3.0.0.beta1.1025+dc925bd1d2.r147.gd705d31
+pkgver=r3163.fe6402350b
 pkgrel=1
 pkgdesc="Tools for building and publishing API documentation for .NET projects. Build from v3 branch atm"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(git+"${url}".git#branch=v3)
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${_pkgname}
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $srcdir/$_pkgname
+  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # prepare() {
