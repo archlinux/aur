@@ -11,6 +11,7 @@ pkgbase = google-cloud-ops-agent-git
 	makedepends = java-environment
 	makedepends = pkg-config
 	makedepends = unzip
+	makedepends = zip
 	depends = libyaml
 	provides = google-cloud-ops-agent
 	conflicts = stackdriver-collectd

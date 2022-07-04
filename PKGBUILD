@@ -20,6 +20,7 @@ makedepends=(
 	'java-environment'
 	'pkg-config'
 	'unzip'
+	'zip'
 )
 optdepends=()
 
