@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix at piedallu dot me>
 
 pkgname='freecad-assembly3-git'
-pkgver=r247.f8dfcd6
+pkgver=r498.e9181b6
 pkgrel=1
 pkgdesc="Assembly3 workbench for FreeCAD v0.18"
 arch=('x86_64')
