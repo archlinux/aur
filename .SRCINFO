@@ -8,7 +8,6 @@ pkgbase = buildg
 	depends = runc
 	optdepends = rootlesskit: rootless execution
 	optdepends = slirp4netns: rootless execution
-	conflicts = cfn-guard
 	source = https://github.com/ktock/buildg/releases/download/v0.3.0/buildg-v0.3.0-linux-amd64.tar.gz
 	sha256sums = c57faadd382ae19a48fb6f3e46aa440b6fdb71bc0eaac49080216e9a23371302
 
