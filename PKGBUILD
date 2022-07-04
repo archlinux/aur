@@ -6,7 +6,8 @@ pkgdesc='QEMU based cross-build tools for Arch Linux ARM package maintainers'
 arch=('x86_64')
 url='https://aur.archlinux.org/packages/devtools-qemu'
 license=('GPL')
-makedepends=('devtools' 'git')
+depends=('devtools-arch4edu')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/arch4edu/devtools-arch4edu-extra.git"
 	"archbuild-qemu.patch"
 )
@@ -31,7 +32,7 @@ build() {
 }
 
 package() {
-	depends+=('archlinuxarm-keyring' 'devtools' 'qemu-user-static')
+	depends+=('archlinuxarm-keyring' 'qemu-user-static')
 	mkdir -p $pkgdir/usr/bin
 	mkdir -p $pkgdir/usr/share/devtools
 	mkdir -p $pkgdir/etc/pacman.d
