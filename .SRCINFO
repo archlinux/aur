@@ -1,0 +1,20 @@
+pkgbase = imhex-bin
+	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = https://github.com/iTrooz/ImHex
+	arch = x86_64
+	license = GPL 2.0
+	makedepends = git
+	depends = glfw
+	depends = mbedtls
+	depends = python
+	depends = freetype2
+	depends = libglvnd
+	depends = gtk3
+	provides = imhex
+	conflicts = imhex
+	source = https://github.com/iTrooz/ImHex/releases/download/v1.18.2/imhex-1.18.2-ArchLinux.pkg.tar.zst
+	md5sums = 48a8be9177e61603970cd3ed1a4da96e
+
+pkgname = imhex-bin
