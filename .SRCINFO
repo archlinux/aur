@@ -1,7 +1,7 @@
 pkgbase = auracle-git
 	pkgdesc = A flexible client for the AUR
 	pkgver = r366.8739929
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/falconindy/auracle.git
 	arch = x86_64
 	arch = i686
@@ -19,10 +19,12 @@ pkgbase = auracle-git
 	provides = auracle
 	conflicts = auracle
 	source = git+https://github.com/falconindy/auracle.git
-	source = 0001-Update-abseil-cpp-to-LTS-20211102.0-version.patch
-	source = 0002-Force-fmt-dependency-to-static.patch
+	source = 0001-Force-fmt-dependency-to-static.patch
+	source = 0002-Update-abseil-cpp-to-LTS-20220623.0.patch
+	source = 0003-Use-non-deprecated-meson-command.patch
 	b2sums = SKIP
-	b2sums = b3b08d114328e09dc1a045733bfea7dcc2235eb4f18fe930d572ebb28a436cdea738acca3cc5d22b71ca47a74437b57f4790a8fc3fea7574fccfb2ccc7a594ed
-	b2sums = 9972eecdded08cb18b402c9ff8fa483a401ee13d1760de3094d9f8494d829f6ed6f75b66393b22c51e3dc98290d863b49d9c52dab17699d88d6a26b02e55fac5
+	b2sums = 36c8b35b06a9f2d09669110e6ec5686bcb755ae384dbcd985691e5f635a733b9c87b31371de5fa5f743a256b2140cd6dd9c86aebb2ea4a5395377ce273fd080b
+	b2sums = df877c951a2054deca1a390cc4e3b458193a0f084e850dbf155f8cac5068753c868215f749034c2e9df914c252517d3017bff542e947477e67b426b5fd554b9c
+	b2sums = d743c7cf9a38b0088f356869800d72728672c6dea876d436405f48e4e5b83ff6c7b9f4ce4d3d4002ed25fb7630cacebb6281085cfc8e77eaa7a1730666dd8d01
 
 pkgname = auracle-git

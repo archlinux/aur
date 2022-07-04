@@ -1,0 +1,67 @@
+From efce7f4c556047f2c00bdafd869076c02825e260 Mon Sep 17 00:00:00 2001
+From: Leonidas Spyropoulos <artafinde@archlinux.org>
+Date: Mon, 4 Jul 2022 23:56:49 +0100
+Subject: [PATCH] Update abseil-cpp to LTS 20220623.0
+
+Fixes: falconindy#85 falconindy#94
+
+Signed-off-by: Leonidas Spyropoulos <artafinde@archlinux.org>
+---
+ meson.build                 |  2 ++
+ subprojects/abseil-cpp.wrap | 30 +++++++++++++++++++++---------
+ 2 files changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index cefe4d5..5c87002 100644
+--- a/meson.build
++++ b/meson.build
+@@ -43,7 +43,9 @@ gmock = dependency('gmock',
+ abseil_proj = subproject(
+   'abseil-cpp',
+   default_options : [
++    'cpp_std=c++17',
+     'default_library=static',
++    'warning_level=0',
+   ])
+ abseil = declare_dependency(
+   dependencies : [
+diff --git a/subprojects/abseil-cpp.wrap b/subprojects/abseil-cpp.wrap
+index 5d53afd..8eebf94 100644
+--- a/subprojects/abseil-cpp.wrap
++++ b/subprojects/abseil-cpp.wrap
+@@ -1,11 +1,23 @@
+ [wrap-file]
+-directory = abseil-cpp-20200225.2
++directory = abseil-cpp-20220623.0
++source_url = https://github.com/abseil/abseil-cpp/archive/20220623.0.tar.gz
++source_filename = abseil-cpp-20220623.0.tar.gz
++source_hash = 4208129b49006089ba1d6710845a45e31c59b0ab6bff9e5788a87f55c5abd602
++patch_filename = abseil-cpp_20220623.0-1_patch.zip
++patch_url = https://wrapdb.mesonbuild.com/v2/abseil-cpp_20220623.0-1/get_patch
++patch_hash = 327b853c2e42679717db4eeef23a2b302984d756ccb03847efad90fbf70d5e83
++wrapdb_version = 20220623.0-1
+ 
+-source_url = https://github.com/abseil/abseil-cpp/archive/20200225.2.zip
+-source_filename = abseil-cpp-20200225.2.zip
+-source_hash = f342aac71a62861ac784cadb8127d5a42c6c61ab1cd07f00aef05f2cc4988c42
+-
+-
+-patch_url = https://github.com/mesonbuild/abseil-cpp/releases/download/20200225.2-2/abseil-cpp.zip
+-patch_filename = abseil-cpp-20200225.2-2-wrap.zip
+-patch_hash = cc2bc7caab91de737637ec7f8438455836a02b444d306b447d59573991717088
++[provide]
++absl_base = absl_base_dep
++absl_container = absl_container_dep
++absl_debugging = absl_debugging_dep
++absl_flags = absl_flags_dep
++absl_hash = absl_hash_dep
++absl_numeric = absl_numeric_dep
++absl_random = absl_random_dep
++absl_status = absl_status_dep
++absl_strings = absl_strings_dep
++absl_synchronization = absl_synchronization_dep
++absl_time = absl_time_dep
++absl_types = absl_types_dep
+-- 
+2.37.0
+

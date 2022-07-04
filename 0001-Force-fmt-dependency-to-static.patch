@@ -23,5 +23,5 @@ index cefe4d5..c98065f 100644
  gtest = dependency('gtest',
                     version : '>=1.10.0',
 -- 
-2.35.0
+2.37.0
 
