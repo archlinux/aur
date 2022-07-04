@@ -1,5 +1,5 @@
 pkgbase = oh-my-zsh-plugin-syntax-highlighting
-	pkgdesc = Fish shell-like syntax highlighting for Zsh
+	pkgdesc = Fish shell-like syntax highlighting for oh-my-zsh
 	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
