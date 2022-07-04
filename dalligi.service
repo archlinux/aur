@@ -1,0 +1,12 @@
+[Unit]
+Description=A CI bridge from GitLab to SourceHut
+After=network.target
+
+[Service]
+Type=simple
+User=dalligi
+Restart=always
+ExecStart=/usr/bin/dalligi run /etc/dalligi/%I.json
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+pkgbase = dalligi-git
+	pkgdesc = A CI bridge from GitLab to SourceHut
+	pkgver = r41.5d31808115fd
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/dalligi
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	provides = dalligi
+	conflicts = dalligi
+	source = git+https://git.sr.ht/~emersion/dalligi
+	source = dalligi.service
+	source = dalligi.sysusers
+	source = dalligi.tmpfiles
+	sha256sums = SKIP
+	sha256sums = a3a5b0753b2c67f66729a3002435290635755ddefde0a963c0353a14ddc9e151
+	sha256sums = e1f34a7f32c50944da6bec83a1f610ba4423b9cbf8d253769deedf6c8f325d02
+	sha256sums = 00e79e26f1d4c88e1e805c49aed47b6d3367450f42be49239e5445aae51cd224
+
+pkgname = dalligi-git
