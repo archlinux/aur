@@ -13,10 +13,10 @@ pkgdesc="SciPy is open-source software for mathematics, science, and engineering
 arch=('x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
-depends=('intel-oneapi-compiler' 'intel-oneapi-mkl' 'python-numpy')
+depends=('intel-oneapi-mkl' 'python-numpy')
 provides=("python-scipy=$pkgver")
 conflicts=('python-scipy')
-makedepends=('cython' 'gcc-fortran' 'pybind11' 'python-pythran' 'python-setuptools')
+makedepends=('cython' 'gcc-fortran' 'procps-ng' 'pybind11' 'python-pythran' 'python-setuptools')
 checkdepends=('python-pytest')
 optdepends=('python-pillow: for image saving module')
 source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz")
