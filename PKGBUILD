@@ -1,20 +1,19 @@
-# Contributor: BluePeril <blueperil@blueperil.de>
+# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-cpan'
-pkgver='1.007'
+pkgver='1.008'
 pkgrel='1'
 pkgdesc="URLs that refer to things on the CPAN"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'perl-cpan-distnameinfo')
+depends=('perl-cpan-distnameinfo>=0' 'perl-uri>=0' 'perl>=5.012')
 makedepends=()
-checkdepends=('perl-uri')
-url='https://metacpan.org/release/URI::cpan'
-source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/URI-cpan-${pkgver}.tar.gz")
-md5sums=('60aa35b085d2baa5bcd7d6062029fcee')
-sha512sums=('1c7a900a0f319dc7e2c4d1a3adeb3e55459df4563251f54f8ea6cd6f00911189a2f724fd9b90b5dbdf9933d393ce148568653d5bae4362d67b643024dc371342')
+url='https://metacpan.org/release/URI-cpan'
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/URI-cpan-${pkgver}.tar.gz")
+md5sums=('c1e78398e8887c431b36825dc762daa4')
+sha512sums=('07918c561b30d8a193df265c14467cb3bb5484686e52296462a8d031b19d490a9d5e3b18e2856a8ecbe1f0841e1c56466a81b214e252cadd17740bcef50f6056')
 _distdir="URI-cpan-${pkgver}"
 
 build() {
@@ -24,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$_distdir"
+    cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$_distdir"
+  cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$_distdir"
+  cd "$srcdir/$_distdir"
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
