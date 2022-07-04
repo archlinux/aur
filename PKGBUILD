@@ -1,7 +1,7 @@
 # Maintainer: Maertis <maertis at fastmail dot im>
 
 pkgname=synclounge
-pkgver=5.1.112
+pkgver=5.1.123
 pkgrel=1
 pkgdesc="Enjoy Plex with your friends. In Sync. Together."
 url="https://github.com/synclounge/synclounge"
@@ -15,7 +15,7 @@ source=(
   "synclounge.service"
 )
 noextract=("${pkgname}-${pkgver}.tgz")
-sha512sums=('cea5ffba00d893384db905a7052e18c642ea7c9b395b3144cb250029ac496b54270cbe0e590f9a0fafd0f3e299d13ec492b5b620ad7b34991ab193045e8ae660'
+sha512sums=('322ee3223dddc380f3c61905d520c6a92e4e7f3eac034a60559224bba08e46002951f2c24665f5613d9c863d53defbb003e7a5ba8f9f3bca557d676e4dc3c627'
             '5c9db47ae688d0d905807ca081a0fac0db159def40fa53c09a2cb2dec4cbbe60382f604a49a9ed65846fcec7489c6f7c24b9839fef0306ec1ca97ed732f0f1af'
             '0b32b104dd940f06b38e10a8f486e0734063d7b0d0a31b7af13c684106e04526de3be3b2bb0a44fe95857f703e932bfac82cf536a8645e5b6fbc12e4dc26f2d5')
 
