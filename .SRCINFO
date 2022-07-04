@@ -1,0 +1,28 @@
+pkgbase = polyfile-git
+	pkgdesc = A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files.
+	pkgver = 0.4.2.r0.g1ab8d7c
+	pkgrel = 1
+	url = https://github.com/trailofbits/polyfile
+	arch = any
+	license = LGPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-graphviz
+	depends = python-intervaltree
+	depends = python-jinja
+	depends = python-kaitaistruct>=0.7
+	depends = python-networkx
+	depends = python-pdfminer
+	depends = python-pillow>=5.0.0
+	depends = python-yaml>=3.13
+	depends = python-cint-git
+	conflicts = polyfile
+	source = git+https://github.com/trailofbits/polyfile.git#tag=v0.4.2
+	source = git+https://github.com/kaitai-io/kaitai_struct_formats.git
+	source = git+https://github.com/file/file.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = polyfile-git
