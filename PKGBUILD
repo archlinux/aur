@@ -1,41 +1,43 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
-_name=newspaper3k
 pkgname=python-newspaper
+_pkg=newspaper3k
 pkgdesc='Article scraping & curation'
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 url="https://github.com/codelucas/newspaper"
 arch=('any')
 license=('BSD')
 depends=(
-	'python-beautifulsoup4>=4.4.1'
-	'python-cssselect>=0.9.2'
-	## MISSING python-feedfinder2>=0.0.4
-	'python-feedparser>=5.2.1'
-	'python-jieba>=0.35.1'
-	'python-lxml>=3.6.0'
-	'python-nltk>=3.2.1'
-	## MISSING python-pythainlp>=1.7.2
-	'python-pillow>=3.3.0'
-	'python-dateutil>=2.5.3'
-	'python-yaml>=3.11'
-	'python-requests>=2.10.0'
+	'python-beautifulsoup4'
+	'python-cssselect'
+	## MISSING python-feedfinder2'
+	'python-feedparser'
+	'python-jieba'
+	'python-lxml'
+	'python-nltk'
+	## MISSING python-pythainlp'
+	'python-pillow'
+	'python-dateutil'
+	'python-yaml'
+	'python-requests'
 	## MISSING python-tinysegmenter==0.3
-	'python-tldextract>=2.0.1')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('b45f4077edd33d9feca16c6f5935d2339f43fda6ac95bc79f9c693f801c266de600d54a8cd9754fadd7170d6fe1ee3ae9501bde30c25b68a42c581aaf28fd01c')
+	'python-tldextract')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('9f1bd3e1fb48f400c715abf875cc7b0a67b7ddcd87f50c9aeeb8fcbbbd9004fb')
 
 build() {
-	cd "${_name}-${pkgver}"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_name}-${pkgver}"
-	python setup.py install -O1 --root="${pkgdir}" --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
