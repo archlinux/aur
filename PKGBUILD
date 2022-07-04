@@ -1,18 +1,15 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 _pkgname=terminus-font
 pkgname="$_pkgname-italic"
-pkgver=4.48
+pkgver=4.49.1
 pkgrel=1
 pkgdesc="Monospace bitmap font (for X11 and console, Italic version)"
 arch=('any')
 url="http://terminus-font.sourceforge.net/"
 license=('GPL2' 'custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('xorg-bdftopcf' 'fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir' 'python3'
-             'mkbold-mkitalic')
-optdepends=('xorg-fonts-alias')
-source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-$pkgver/terminus-font-$pkgver.tar.gz")
-sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af')
+makedepends=('xorg-bdftopcf' 'python' 'mkbold-mkitalic')
+source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.1}/terminus-font-$pkgver.tar.gz")
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79')
 
 build() {
   cd "$_pkgname-$pkgver"
