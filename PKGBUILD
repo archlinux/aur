@@ -2,7 +2,7 @@
 
 pkgname="clipton-git"
 pkgdesc="Clipboard manager based on rofi"
-pkgver=r72.f1ba577
+pkgver=r79.6e14e49
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/clipton"
@@ -19,5 +19,5 @@ pkgver() {
 package() {
   cd clipton-git
   install -D -m755 clipton.py "$pkgdir/usr/bin/clipton"
-  install -D -m755 clipton.service "$pkgdir/etc/systemd/user/clipton.service"
+  install -D -m644 clipton.service "$pkgdir/usr/lib/systemd/user/clipton.service"
 }
