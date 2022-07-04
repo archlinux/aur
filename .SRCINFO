@@ -1,7 +1,7 @@
 pkgbase = wide-dhcpv6
 	pkgdesc = An open source implementation of DHCPv6 developed by KAME project (with Debian patches)
 	pkgver = 20080615
-	pkgrel = 17
+	pkgrel = 18
 	url = http://wide-dhcpv6.sourceforge.net/
 	install = dhcp6c.install
 	arch = i686

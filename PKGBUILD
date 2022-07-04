@@ -1,7 +1,7 @@
 # Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 pkgname=wide-dhcpv6
 pkgver=20080615
-pkgrel=17
+pkgrel=18
 pkgdesc="An open source implementation of DHCPv6 developed by KAME project (with Debian patches)"
 arch=('i686' 'x86_64')
 url="http://wide-dhcpv6.sourceforge.net/"
@@ -46,7 +46,9 @@ build() {
     --mandir=/usr/share/man \
     --with-localdbdir=/var/lib/dhcpv6 \
     --sysconfdir=/etc/wide-dhcpv6 \
-    --sbindir=/usr/bin
+    --sbindir=/usr/bin \
+    --with-user=root \
+    --with-group=root
   # -j > 1 breaks build dependencies
   make -j1
 }
