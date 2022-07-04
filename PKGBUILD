@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=colima
-pkgver=$PKGVER
+pkgver=0.4.4
 pkgrel=3
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
 arch=('x86_64')
