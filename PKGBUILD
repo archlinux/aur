@@ -3,7 +3,7 @@
 pkgname=dalligi-git
 _pkgname=dalligi
 pkgver=r41.5d31808115fd
-pkgrel=1
+pkgrel=2
 pkgdesc='A CI bridge from GitLab to SourceHut'
 arch=('x86_64')
 url='https://git.sr.ht/~emersion/dalligi'
@@ -13,7 +13,7 @@ provides=('dalligi')
 conflicts=('dalligi')
 source=(
 	"git+https://git.sr.ht/~emersion/dalligi"
-	"dalligi.service"
+	"dalligi@.service"
 	"dalligi.sysusers"
 	"dalligi.tmpfiles"
 )
@@ -40,6 +40,6 @@ package() {
 	install -D dalligi "$pkgdir/usr/bin/dalligi"
 	install -d "$pkgdir/etc/dalligi"
 	install -Dm644 "$srcdir/dalligi.sysusers" "$pkgdir/usr/lib/sysusers.d/dalligi.conf"
-	install -Dm644 "$srcdir/dalligi.service" "$pkgdir/usr/lib/systemd/system/dalligi.service"
+	install -Dm644 "$srcdir/dalligi@.service" "$pkgdir/usr/lib/systemd/system/dalligi@.service"
 	install -Dm644 "$srcdir/dalligi.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/dalligi.conf"
 }
