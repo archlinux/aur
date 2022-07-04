@@ -1,22 +1,20 @@
 # Maintainer: Thomas McGrew <tjmcgrew@gmail.com>
 pkgname=dwrandomizer
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 epoch=
 pkgdesc="A Randomizer for Dragon Warrior for NES"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://dwrandomizer.com"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz" "patch.diff")
-sha256sums=('6b100cc6fe7877e7c4d2961ed9743eded1a7021aea8a1d616f2ba47a04031c70'
-            '32e5b51493fee5a8e0791c5e654753743b3f35b0549dad29c824471dddabd273')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz")
+sha256sums=('138333a9beb039b9d65b80e7aceccf823fdccd8d6c8b479f9fb74c3e20a931d4')
 depends=('electron')
 makedepends=('emscripten' 'ed')
 
 prepare() {
     cd "$pkgname-$pkgver"
     mkdir build cli-build
-    patch -p1 < ../patch.diff
 }
 
 build() {
