@@ -2,7 +2,7 @@
 # Contributor: Bastien "neitsab" Traverse <firstname at lastname dot email>
 
 pkgname=vlsub-git
-pkgver=0.9.13.r33.geb81106
+pkgver=0.10.2.r26.g3d1998f
 pkgrel=1
 pkgdesc="VLC extension to download subtitles from opensubtitles.org"
 arch=('any')
