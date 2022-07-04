@@ -38,7 +38,7 @@ optdepends=(
   'python-urllib3-doc: urllib3 documentation'
 )
 _tarname="${_name}-${_commit}"
-source=("${_repourl}/archive/${_commit}.tar.gz")
+source=("${_tarname}.tar.gz::${_repourl}/archive/${_commit}.tar.gz")
 b2sums=('2e7494cd6002576c45816e53874297706b58c7dd7edd394ace1c57d7be7de5d1aeeb37d483f2b72d57a4d43d7c8020b25a03ba59af34aad0f79e8c53fd0f3897')
 
 prepare() {

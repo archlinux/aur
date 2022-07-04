@@ -19,7 +19,7 @@ pkgbase = python2-urllib3
 	optdepends = python2-pysocks: SOCKS proxy support (deprecated)
 	optdepends = python2-gcp-devrel-py-tools: Google AppEngine support
 	optdepends = python-urllib3-doc: urllib3 documentation
-	source = https://github.com/urllib3/urllib3/archive/37ba00248424ea3cdf556cc3e7aa81ce0bf40382.tar.gz
+	source = urllib3-37ba00248424ea3cdf556cc3e7aa81ce0bf40382.tar.gz::https://github.com/urllib3/urllib3/archive/37ba00248424ea3cdf556cc3e7aa81ce0bf40382.tar.gz
 	b2sums = 2e7494cd6002576c45816e53874297706b58c7dd7edd394ace1c57d7be7de5d1aeeb37d483f2b72d57a4d43d7c8020b25a03ba59af34aad0f79e8c53fd0f3897
 
 pkgname = python2-urllib3
