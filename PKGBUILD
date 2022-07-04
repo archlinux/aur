@@ -1,27 +1,36 @@
 # Maintainer: Denis Kasak <dkasak AT termina DOT org DOT uk>
 
 pkgname=polyfile
-pkgver=0.1.7
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files."
-arch=('any')
+arch=(any)
 url=https://github.com/trailofbits/polyfile
-license=('LGPLv3')
-depends=('python' 'python-graphviz' 'python-intervaltree' 'python-jinja'
-         'python-kaitaistruct>=0.7' 'python-networkx' 'python-pillow>=5.0.0'
-         'python-yaml>=3.13')
-makedepends=('python-setuptools')
-source=(https://github.com/trailofbits/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('201e329a0762165c54e95758c1c9e26a70a68d821d464b5801568c2a0c3c14d8')
+license=(LGPL3)
+depends=(python python-graphviz python-intervaltree python-jinja
+         python-kaitaistruct python-networkx python-pdfminer
+         python-pillow python-yaml python-cint-git)
+makedepends=(git python-setuptools)
+source=("git+https://github.com/trailofbits/polyfile.git#tag=v${pkgver}"
+        "git+https://github.com/kaitai-io/kaitai_struct_formats.git"
+        "git+https://github.com/file/file.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+prepare() {
+    cd "$srcdir/polyfile"
+    git submodule init
+    git config submodule.kaitai_struct_formats.url "$srcdir/kaitai_struct_formats"
+    git config submodule.file.url "$srcdir/file"
+    git submodule update
+}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver/"
+    cd "$srcdir/polyfile"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/"
+    cd "$srcdir/polyfile"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
-# vim:ts=4:sw=4:et:
