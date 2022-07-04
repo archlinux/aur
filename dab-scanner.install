@@ -1,0 +1,6 @@
+post_install() {
+	chown -R http:http srv/http/bash/dab
+	chmod -R 755 srv/http/bash/dab
+	systemctl daemon-reload
+	systemctl enable --now rtsp-simple-server
+}
