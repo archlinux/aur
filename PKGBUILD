@@ -1,13 +1,13 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@proton.me>
 
 pkgbase='python-jupyter-server-proxy'
 pkgname=('python-jupyter-server-proxy')
 _name='jupyter-server_proxy'
 pkgver='3.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter server extension to supervise and proxy web services"
 url="https://github.com/jupyterhub/jupyter-server-proxy"
-depends=('python' 'python-aiohttp' 'python-simpervisor' 'python-ipython-genutils' 'jupyter-nbclassic')
+depends=('python' 'python-aiohttp' 'python-simpervisor')
 makedepends=('unzip' 'python-setuptools')
 license=('BSD')
 arch=('any')
@@ -19,5 +19,5 @@ package() {
 	install -d "$site"
 	unzip "${_name//-/_}-$pkgver-py3-none-any.whl" -d "$site"
 	mv "$site/${_name/-/_}-$pkgver.data/data/share"* "$pkgdir/usr/share"
-        mv "$site/${_name/-/_}-$pkgver.data/data/etc"* "$pkgdir/etc/"
+	mv "$site/${_name/-/_}-$pkgver.data/data/etc"* "$pkgdir/etc/"
 }
