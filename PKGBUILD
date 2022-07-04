@@ -2,7 +2,7 @@
 # Maintainer: Nat Lasseter <aur at 4574 dot co dot uk>
 
 pkgname="k40whisperer"
-pkgver="0.58"
+pkgver="0.60"
 pkgrel="1"
 pkgdesc="Control software for the stock K40 Laser controller"
 arch=("any")
@@ -20,7 +20,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  "ae4a3cc67eeb3514355a62fac92d4b3dc77ec883d9fa18e99d298ed31cf72bd3"
+  "7504e3f1c6e27f73793d7da8a4122d3205ba559bb275418e186b54261f5ba1da"
   "19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508"
   "5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19"
 )
