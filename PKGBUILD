@@ -1,10 +1,10 @@
 # Maintainer: iTrooz_ <itrooz at protonmail dot com>
 pkgname=imhex-bin
-pkgver=1.18.2
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
-url="https://github.com/iTrooz/ImHex"
+url="https://github.com/WerWolv/ImHex"
 repo=$url
 license=('GPL 2.0')
 groups=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=($repo"/releases/download/v$pkgver/imhex-$pkgver-ArchLinux.pkg.tar.zst")
 noextract=()
-md5sums=(48a8be9177e61603970cd3ed1a4da96e)
+md5sums=(6efa78e3b8abcc623a78c3ce5a79bded)
 validpgpkeys=()
 
 package() {
