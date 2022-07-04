@@ -19,6 +19,7 @@ makedepends=(
 	'git'
 	'java-environment'
 	'pkg-config'
+	'unzip'
 )
 optdepends=()
 
