@@ -5,7 +5,7 @@
 pkgbase=linux-steamos
 _tag=5.13.0-valve10.1
 pkgver=${_tag//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Neptune kernel from SteamOS 3'
 url="https://github.com/LukeShortCloud/steamos-linux-neptune#branch=$_tag"
 arch=(x86_64)
@@ -15,6 +15,8 @@ makedepends=(
   # documentation dependencies, disabled for now
   #xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git openssh
+  # Required to build on Arch Linux (instead of SteamOS).
+  gcc11
 )
 options=('!strip' '!debug')
 source=(
@@ -66,7 +68,7 @@ prepare() {
 
 build() {
   cd steamos-linux-neptune
-  make all
+  make HOSTCC=gcc-11 HOSTCXX=g++-11 all
 #  make htmldocs
 }
 
