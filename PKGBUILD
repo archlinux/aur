@@ -1,8 +1,8 @@
 # Maintainer: Dashon Wells <me@me.me>
 
 pkgname='cattqt'
-pkgver=3.0
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
 arch=('any')
 url=https://github.com/soreau/catt-qt
@@ -22,21 +22,17 @@ makedepends=('python-setuptools')
 source=(
 https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz
 "catt-qt.desktop"
-"patch"
+"setup.py"
 )
 sha256sums=(
-'5815f759367554ca3961740f646d86b205667ce140f4c7f58210dc23314fa809'
+'b1a14f339844ab8dbccce5690a665ae0212f982313681b1a5fd3afcc6af3ea37'
 '5c9b0c9cfc688c489155b78719bb08b93122db297fdf334df1fb4d1d46b9d40d'
-'458c785d85542b7f79eb3c2fe43cac58cc5007f9f02fca732462d37adfad69d0'
+"bf371892e6960054dc26ca3ca3e88f3fe6ca2ed72b95a84d1a79c93cf900c4e8"
 )
 
-build(){
-  # this package breaks with python version 3.10. I currently have a pr open
-  # to fix the issue, but for now we will just patch it
-  mv patch "${srcdir}"/"${pkgname}"-"${pkgver}"
+build() {
+  mv  setup.py "${srcdir}"/"${pkgname}"-"${pkgver}"
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-
-   patch -p0 < patch
   python setup.py build
 }
 
