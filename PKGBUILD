@@ -4,7 +4,7 @@
 
 pkgname=qubes-db-vm
 _gitname=${pkgname%-git*}
-pkgver=4.0.17
+pkgver=4.1.13
 pkgrel=1
 pkgdesc="QubesDB libs and daemon service."
 arch=("x86_64")
