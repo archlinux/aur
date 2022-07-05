@@ -2,12 +2,12 @@
 
 pkgname="clipton-git"
 pkgdesc="Clipboard manager based on rofi"
-pkgver=r80.c514f88
+pkgver=r81.db95e7b
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/clipton"
 license=("Unlicense")
-depends=("rofi" "xclip")
+depends=("rofi" "xclip" "copyevent-git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/clipton.git")
 
