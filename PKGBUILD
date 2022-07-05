@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=uavs3d-git
-pkgver=1.1.r39.g15cee5f
+pkgver=1.1.r40.g818a0cb
 pkgrel=1
 pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile (git version)'
 arch=('x86_64')
@@ -27,29 +27,31 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S uavs3d \
+    cd uavs3d
+    cmake -B build/linux -S . \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCOMPILE_10BIT='0' \
         -Wno-dev
-    make -C build
+    make -C build/linux
     
-    cmake -B build-10bit -S uavs3d-10bit \
+    cd "${srcdir}/uavs3d-10bit"
+    cmake -B build/linux -S . \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCOMPILE_10BIT='1' \
         -Wno-dev
-    make -C build-10bit
+    make -C build/linux
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
-    make -C build-10bit DESTDIR="$pkgdir" install
-    install -D -m755 build/uavs3dec -t "${pkgdir}/usr/bin"
-    install -D -m755 build-10bit/uavs3dec "${pkgdir}/usr/bin/uavs3dec-10bit"
+    make -C uavs3d/build/linux DESTDIR="$pkgdir" install
+    make -C uavs3d-10bit/build/linux DESTDIR="$pkgdir" install
+    install -D -m755 uavs3d/build/linux/uavs3dec -t "${pkgdir}/usr/bin"
+    install -D -m755 uavs3d-10bit/build/linux/uavs3dec "${pkgdir}/usr/bin/uavs3dec-10bit"
     install -D -m644 uavs3d/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

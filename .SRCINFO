@@ -1,6 +1,6 @@
 pkgbase = uavs3d-git
 	pkgdesc = An AVS3 decoder supporting AVS3-P2 baseline profile (git version)
-	pkgver = 1.1.r39.g15cee5f
+	pkgver = 1.1.r40.g818a0cb
 	pkgrel = 1
 	url = https://github.com/uavs3/uavs3d/
 	arch = x86_64
