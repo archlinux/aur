@@ -2,7 +2,7 @@
 pkgname=rlbotgui-rust-bin
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rl-bot-gui
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
 arch=("x86_64")
@@ -19,7 +19,7 @@ sha512sums=(SKIP)
 package() {
   cd $srcdir/deb
   ls
-  cd $(ls | grep ${cargo_pkgname})
+  cd $(ls | grep ${cargo_pkgname}_${pkgver})
   ls
   cd data
   ls
