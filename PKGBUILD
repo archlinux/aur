@@ -1,12 +1,15 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="sempiternum"
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel="1"
 pkgdesc="Software to analyze Holomorphic Maps and their dynamics"
 arch=("x86_64")
 url="https://github.com/ManelCG/sempiternum"
-depends=("libclc" "opencl-headers" "ocl-icd" "gtk3" "lib32-gtk3" "cairo" "lib32-cairo" "pango" "pixman" "ffmpeg")
-optdepends=("opencl-amd" "opencl-nvidia")
+depends=("libclc" "opencl-headers" "ocl-icd" "gtk3" "cairo" "pango" "pixman" "ffmpeg")
+optdepends=(
+  "opencl-amd: For AMD GPUs"
+  "opencl-nvidia: For Nvidia GPUS"
+)
 _gitroot="https://github.com/ManelCG/Sempiternum.git"
 _gitname="sempiternum"
 source=()
