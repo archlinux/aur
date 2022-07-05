@@ -16,7 +16,7 @@ pkgbase = openiked-git
 	provides = ikectl
 	conflicts = iked
 	conflicts = ikectl
-	source = openiked::git://github.com/openiked/openiked-portable.git
+	source = openiked::git+https://github.com/openiked/openiked-portable.git
 	source = openiked.service
 	source = sysusers.conf
 	sha256sums = SKIP
@@ -24,4 +24,3 @@ pkgbase = openiked-git
 	sha256sums = 0b9806bc8e75fdc473db71d12b9096b6016cc0023835c84f83e36316e594847b
 
 pkgname = openiked-git
-

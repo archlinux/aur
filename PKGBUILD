@@ -1,6 +1,8 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
+# Maintainer: T.J. Townsend <tj@openbsd.org>
+
 pkgname=openiked-git
-pkgver=0.r15.g3c4b04b
+pkgver=0.r4.ge92cb24
 pkgrel=1
 pkgdesc="Free implementation of the IKEv2 protocol (Git)"
 arch=('x86_64')
@@ -10,7 +12,7 @@ depends=('glibc' 'libevent' 'openssl')
 makedepends=('linux-headers' 'bison' 'cmake' 'git')
 provides=('iked' 'ikectl')
 conflicts=('iked' 'ikectl')
-source=('openiked::git://github.com/openiked/openiked-portable.git'
+source=('openiked::git+https://github.com/openiked/openiked-portable.git'
         'openiked.service'
         'sysusers.conf')
 sha256sums=('SKIP'
