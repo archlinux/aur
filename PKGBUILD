@@ -21,5 +21,5 @@ build() {
 package() {
 	install -Dm755 "$srcdir/mprocs-$pkgver/target/release/mprocs" \
 		"$pkgdir/usr/bin/mprocs"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/mprocs-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
