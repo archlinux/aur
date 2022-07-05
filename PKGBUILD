@@ -7,7 +7,7 @@
 #
 
 pkgname=cppcheck-premium
-pkgver=22.4.1
+pkgver=22.5.0
 pkgrel=1
 pkgdesc='Premium (nonfree) version of cppcheck'
 conflicts=('cppcheck')
@@ -15,17 +15,10 @@ arch=('x86_64')
 url='https://www.cppchecksolutions.com/'
 license=('custom' 'GPL')
 depends=('python-pygments')
-source=("file:///cppcheckpremium-${pkgver}.tar.xz"
-	'https://raw.githubusercontent.com/danmar/cppcheck/2.8/htmlreport/cppcheck-htmlreport'
+source=("file:///cppcheckpremium-${pkgver}.tar.gz"
 	'cppcheck')
-sha1sums=('02f1dc4f959dfd5da99aa3f6d79bc5c22fb6546b'
-          'd21de261ba3dfa58ad732877b65635ec38d40dd7'
+sha1sums=('9cce0bb9afc5afed369645e8f5db6c75cb5f0fb0'
           'a1c60e8820d66096961c7666faeeefe6a04fc44b')
-
-prepare() {
-	# add shebang to register.py
-	sed -i '1s%^%#!/usr/bin/env python3\n%' "${srcdir}"/cppcheckpremium-"${pkgver}"/register.py
-}
 
 package() {
 	# cppcheck premium doesn't search /usr/{lib,share}/cppcheck for files
@@ -34,5 +27,5 @@ package() {
 	# we need to put a small script in /usr/bin/ to help it out.
 	mkdir -p "${pkgdir}"/opt/cppcheck-premium/
 	cp -r "${srcdir}"/cppcheckpremium-"${pkgver}"/* "${pkgdir}"/opt/cppcheck-premium/
-	install -Dt "${pkgdir}"/usr/bin/ "${srcdir}"/cppcheck "${srcdir}"/cppcheck-htmlreport
+	install -Dt "${pkgdir}"/usr/bin/ "${srcdir}"/cppcheck
 }
