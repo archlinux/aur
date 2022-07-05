@@ -4,23 +4,24 @@
 
 _gitname=darling
 pkgbase=$_gitname-git
-pkgname=('darling-git' 'darling-mach-dkms-git')
-pkgver=r3717.26e55e111
+pkgname='darling-git'
+pkgver=r3848.b75c25e2c
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
-url="http://www.darlinghq.org"
+url="https://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
 depends=('xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
     'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind' 'ffmpeg')
 _depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2')
-makedepends=('git' 'cmake' 'clang' 'dkms' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'linux-headers' 'ffmpeg' 'git-lfs')
+makedepends=('git' 'cmake' 'clang' 'dkms' 'bison' 'flex' 'binutils>=2.28' 'libpng' 'cairo' 'libtiff' 'glu' 'libbsd' 'python2' 'ffmpeg' 'git-lfs')
 _make_depends_x86_64=('gcc-multilib')
+conflicts=('darling')
+provides=('darling')
 
 # Darling git repo and all submodules.
-source=('dkms.conf'
-        'darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.2.9'
+source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.2.9'
         'darling-libressl-2.5.5'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.5.5'
         'darling-libressl-2.6.5'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.6.5'
         'darling-libressl-2.8.3'::'git+https://github.com/darlinghq/darling-libressl.git#branch=v2.8.3'
@@ -89,6 +90,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-libcxx.git'
         'git+https://github.com/darlinghq/darling-libdispatch.git'
         'git+https://github.com/darlinghq/darling-libffi.git'
+        'git+https://github.com/darlinghq/darling-libkqueue.git'
         'git+https://github.com/darlinghq/darling-liblzma.git'
         'git+https://github.com/darlinghq/darling-libmalloc.git'
         'git+https://github.com/darlinghq/darling-libnetwork.git'
@@ -133,6 +135,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-screen.git'
         'git+https://github.com/darlinghq/darling-security.git'
         'git+https://github.com/darlinghq/darling-SecurityTokend.git'
+        'git+https://github.com/darlinghq/darlingserver.git'
         'git+https://github.com/darlinghq/darling-shell_cmds.git'
         'git+https://github.com/darlinghq/darling-SmartCardServices.git'
         'git+https://github.com/darlinghq/darling-sqlite.git'
@@ -155,7 +158,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/xcbuild.git')
 
 # We skip md5 on all git repos
-md5sums=('d6d3b392245a45c6fb5f82037bfdbd19'
+md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
@@ -168,8 +171,7 @@ md5sums=('d6d3b392245a45c6fb5f82037bfdbd19'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -211,6 +213,7 @@ prepare() {
     git config submodule.src/external/cups.url "$srcdir/darling-cups"
     git config submodule.src/external/curl.url "$srcdir/darling-curl"
     git config submodule.src/external/darling-dmg.url "$srcdir/darling-dmg"
+    git config submodule.src/external/darlingserver.url "$srcdir/darlingserver"
     git config submodule.src/external/dbuskit.url "$srcdir/darling-dbuskit"
     git config submodule.src/external/DirectoryService.url "$srcdir/darling-DirectoryService"
     git config submodule.src/external/doc_cmds.url "$srcdir/darling-doc_cmds"
@@ -242,12 +245,13 @@ prepare() {
     git config submodule.src/external/less.url "$srcdir/darling-less"
     git config submodule.src/external/libarchive.url "$srcdir/darling-libarchive"
     git config submodule.src/external/libauto.url "$srcdir/darling-libauto"
-    git config submodule.src/external/libc.url "$srcdir/darling-Libc"
     git config submodule.src/external/libclosure.url "$srcdir/darling-libclosure"
+    git config submodule.src/external/libc.url "$srcdir/darling-Libc"
     git config submodule.src/external/libcxxabi.url "$srcdir/darling-libcxxabi"
     git config submodule.src/external/libcxx.url "$srcdir/darling-libcxx"
     git config submodule.src/external/libdispatch.url "$srcdir/darling-libdispatch"
     git config submodule.src/external/libffi.url "$srcdir/darling-libffi"
+    git config submodule.src/external/libkqueue.url "$srcdir/darling-libkqueue"
     git config submodule.src/external/liblzma.url "$srcdir/darling-liblzma"
     git config submodule.src/external/libmalloc.url "$srcdir/darling-libmalloc"
     git config submodule.src/external/libnetwork.url "$srcdir/darling-libnetwork"
@@ -319,6 +323,7 @@ prepare() {
     git submodule update
 
     echo "Updating recursive submodules"
+
     cd "$srcdir/$_gitname/src/external/openpam/"
     git submodule init
     git config submodule.pam_modules.url "$srcdir/darling-pam_modules"
@@ -342,42 +347,10 @@ build() {
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 
     echo "Running make."
-    make 
-
-    echo "Run 'make lkm_generate'..."
-    make lkm_generate
+    make
 }
 
-package_darling-git() {
-    depends=('darling-mach-dkms-git')
-    conflicts=('darling')
-    provides=('darling')
-
+package() {
     cd "$srcdir/$_gitname/build"
     make DESTDIR="$pkgdir" install
-}
-
-package_darling-mach-dkms-git() {
-    depends=('dkms')
-    conflicts=('darling-mach-dkms')
-    provides=('darling-mach-dkms')
-    optdepends=('linux-headers: build modules against the Arch kernel'
-                'linux-lts-headers: build modules against the LTS kernel'
-                'linux-zen-headers: build modules against the ZEN kernel'
-                'linux-grsec-headers: build modules against the GRSEC kernel')
-    _srcdest="$pkgdir/usr/src/darling-mach-$pkgver"
-    _srcinstalldest="/usr/src/darling-mach-$pkgver"
-
-    echo "Install module sources for DKMS."
-    install -dm755 $(dirname "$_srcdest")
-    cp -r "$srcdir/$_gitname/src/external/lkm"       "$_srcdest"
-    cp -r "$srcdir/$_gitname/build/src/external/lkm" "$_srcdest/migdir"
-  
-    # Copy missing header rtsig.h
-    cp "$srcdir/$_gitname/build/src/startup/rtsig.h" "$_srcdest/include"
-
-    echo "Set configuration for DKMS..."
-    install -Dm644 "$srcdir/dkms.conf"      "$_srcdest"
-    sed -i "s|@PKGVER@|$pkgver|g"           "$_srcdest/dkms.conf"
-    sed -i "s|@SRCDEST@|$_srcinstalldest|g"        "$_srcdest/dkms.conf"
 }
