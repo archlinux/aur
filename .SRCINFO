@@ -8,6 +8,6 @@ pkgbase = python2-ptyprocess
 	depends = python2
 	provides = python2-ptyprocess
 	source = https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-0.7.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220
 
 pkgname = python2-ptyprocess

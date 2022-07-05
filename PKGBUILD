@@ -10,7 +10,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 _name="${pkgname#python2-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
