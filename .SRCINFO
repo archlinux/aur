@@ -14,4 +14,3 @@ pkgbase = lib32-libxkbfile
 	sha512sums = SKIP
 
 pkgname = lib32-libxkbfile
-
