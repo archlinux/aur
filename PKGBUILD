@@ -2,25 +2,25 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('auth-tarball-from-git' 'git' 'go' 'pandoc')
+makedepends=('git' 'go' 'pandoc')
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion')
 conflicts=("python-$pkgname")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
 _commit=4b9940506bc5bcb6563780f9cc883b64328d0440
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'chris.pgp' # Christopher Allen Lane <chris@chris-allen-lane.com>
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git#commit=$_commit"
         "cheatsheets-$pkgver-LICENSE::https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('945ff5c019e481da42a64f2ab6b681ef5b8973f188a9675d5cdd847fc7689e0d'
+sha256sums=('727c19efb873e6ea29b922a480074da8e5b73a0d129c3277539484a736527033'
             '6318f816e4c8f2e9c34b8dc1855adeff58c1254809b8aa86c2b39ed155f3d2b6'
             '9d68e25ac2da4bc1fe03b0ad92dac1b8ba3dcfa6da4845b5de8bea66c0d8f14c'
             'SKIP'
@@ -29,9 +29,9 @@ sha256sums=('945ff5c019e481da42a64f2ab6b681ef5b8973f188a9675d5cdd847fc7689e0d'
 prepare() {
   cd "$pkgname-$pkgver"
 
-  auth-tarball-from-git --keyring ../chris.pgp \
-    --tag "$pkgver" --prefix "$pkgname-$pkgver" \
-    https://github.com/cheat/cheat.git ../$pkgname-$pkgver.tar.gz
+#  auth-tarball-from-git --keyring ../chris.pgp \
+#    --tag "$pkgver" --prefix "$pkgname-$pkgver" \
+#    https://github.com/cheat/cheat.git ../$pkgname-$pkgver.tar.gz
 
   export GOPATH="$srcdir/gopath"
   go mod vendor
