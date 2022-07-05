@@ -1,14 +1,15 @@
 pkgbase = ceb2txt-git
 	pkgdesc = A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.
-	pkgver = 0.1.0.r1.386c53c
+	pkgver = 0.1.0.r4.c7ff294
 	pkgrel = 1
 	url = https://github.com/inputmice/ceb2txt
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment
+	makedepends = java-environment=11
 	makedepends = maven
-	depends = java-runtime
+	depends = java-runtime=11
+	depends = bash
 	provides = ceb2txt
 	conflicts = ceb2txt
 	source = ceb2txt-git::git+https://github.com/iNPUTmice/ceb2txt.git
@@ -17,4 +18,3 @@ pkgbase = ceb2txt-git
 	md5sums = f992aa1c4ff4190b639c8d54babb31d5
 
 pkgname = ceb2txt-git
-
