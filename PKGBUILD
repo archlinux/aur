@@ -2,7 +2,7 @@
 
 pkgname=playdate-sdk
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
 url='https://play.date/dev/'
@@ -84,8 +84,8 @@ package() {
     "${pkgdir}/opt/${pkgname}"
 
   echo >&2 'Packaging executables'
-  mv -t "${pkgdir}/usr/bin" \
-    "${pkgdir}/opt/${pkgname}/bin/"{pdc,pdutil}
+  ln -s -t "${pkgdir}/usr/bin" \
+    "/opt/${pkgname}/bin/"{pdc,pdutil}
   install -D -m 755 -T \
     "${srcdir}/playdate-simulator.shim" \
     "${pkgdir}/usr/bin/PlaydateSimulator"
