@@ -3,13 +3,13 @@
 
 pkgname=libindi_3rdparty
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=("libindi_3rdparty")
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64)
-depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr gpsd)
+depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr)
 makedepends=(cmake boost)
 conflicts=()
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff")

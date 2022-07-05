@@ -1,7 +1,7 @@
 pkgbase = libindi_3rdparty
 	pkgdesc = 3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation
 	pkgver = 1.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,6 @@ pkgbase = libindi_3rdparty
 	depends = dcraw
 	depends = libftdi
 	depends = rtl-sdr
-	depends = gpsd
 	provides = libindi_3rdparty
 	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.6.tar.gz
 	source = celestronaux-auxproto.diff
