@@ -74,6 +74,7 @@ package() {
     "${srcdir}/${pkgname}-${pkgver}/Resources/playdate-types.xml"
 
   echo >&2 'Packaging environment additions'
+  # shellcheck disable=SC2016
   cat > "${pkgdir}/etc/profile.d/${pkgname}.sh" \
     <<< 'export PLAYDATE_SDK_PATH="${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk"'
 
