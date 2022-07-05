@@ -1,21 +1,23 @@
 # Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
 
 pkgname=tnl-git
-_pkgname=tnl-dev
-pkgver=r6357.2d97490ef
+_pkgname=tnl
+pkgver=r6377.bb8e9a55d
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
 url=https://tnl-project.org/
 license=('MIT')
 depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk')
+# Note: openssh is required for mpirun (when running examples for doc): https://github.com/open-mpi/ompi/issues/3625
 makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra'
-             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'pybind11')
+             'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'pybind11'
+             'openssh')
 optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
             'hypre: for Hypre wrappers'
             'python: for Python bindings'
             'python-numpy: for Python bindings')
-source=("git+https://mmg-gitlab.fjfi.cvut.cz/gitlab/tnl/$_pkgname.git")
+source=("git+https://gitlab.com/tnl-project/$_pkgname.git")
 md5sums=('SKIP')
 
 # LTO does not work with nvcc
