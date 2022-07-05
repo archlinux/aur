@@ -1,6 +1,6 @@
 --- a/build.sh
 +++ b/build.sh
-@@ -159,8 +159,6 @@ else
+@@ -144,8 +144,6 @@ else
    else
      my_os=linux64
    fi
@@ -11,7 +11,7 @@
  if [[ "$1" != "nozip" ]]; then
 --- a/mupen64plus-gui/mupen64plus-gui.pro
 +++ b/mupen64plus-gui/mupen64plus-gui.pro
-@@ -98,8 +98,7 @@ HEADERS  += mainwindow.h \
+@@ -90,8 +90,7 @@ HEADERS  += mainwindow.h \
      netplay/createroom.h \
      netplay/joinroom.h \
      netplay/waitroom.h \

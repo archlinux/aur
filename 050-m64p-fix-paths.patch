@@ -8,7 +8,7 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
-@@ -44,7 +45,7 @@ void MainWindow::updatePlugins()
+@@ -46,7 +47,7 @@ void MainWindow::updatePlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -17,7 +17,7 @@
  #endif
      QDir PluginDir(pluginPath);
      PluginDir.setFilter(QDir::Files);
-@@ -374,7 +375,7 @@ MainWindow::MainWindow(QWidget *parent) :
+@@ -375,7 +376,7 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
      if (!settings->contains("configDirPath"))
@@ -26,7 +26,7 @@
  
  #ifdef CONFIG_DIR_PATH
      settings->setValue("configDirPath", CONFIG_DIR_PATH);
-@@ -434,7 +435,7 @@ void MainWindow::updateApp()
+@@ -435,7 +436,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
@@ -35,7 +35,7 @@
  
      memset(&discord_app, 0, sizeof(discord_app));
  
-@@ -1019,7 +1020,7 @@ void MainWindow::loadCoreLib()
+@@ -954,7 +955,7 @@ void MainWindow::loadCoreLib()
  #ifdef CORE_LIBRARY_PATH
      QString corePath = CORE_LIBRARY_PATH;
  #else
@@ -44,7 +44,7 @@
  #endif
      m64p_error res = osal_dynlib_open(&coreLib, QDir(corePath).filePath(OSAL_DEFAULT_DYNLIB_FILENAME).toUtf8().constData());
  
-@@ -1109,7 +1110,7 @@ void MainWindow::loadPlugins()
+@@ -1046,7 +1047,7 @@ void MainWindow::loadPlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -61,7 +61,7 @@
  
 -#include "discord/discord_game_sdk.h"
 +#include <discord_game_sdk.h>
- #include "oglwindow.h"
+ #include "vkwindow.h"
  #include "workerthread.h"
  #include "logviewer.h"
 --- a/mupen64plus-gui/settingsdialog.cpp
@@ -79,13 +79,13 @@
 +++ b/mupen64plus-gui/workerthread.h
 @@ -6,7 +6,7 @@
  #include <QString>
- #include <QSurfaceFormat>
+ #include <QVulkanInstance>
  #include "common.h"
 -#include "discord/discord_game_sdk.h"
 +#include <discord_game_sdk.h>
  
  class WorkerThread
- #ifndef SINGLE_THREAD
+  : public QThread
 --- a/mupen64plus-input-qt/main.cpp
 +++ b/mupen64plus-input-qt/main.cpp
 @@ -27,7 +27,7 @@
@@ -97,7 +97,7 @@
  #include "osal/osal_dynamiclib.h"
  #include "vruwords.h"
  #include "funcs.h"
-@@ -731,7 +731,7 @@ static int setupVosk()
+@@ -726,7 +726,7 @@ static int setupVosk()
  {
      if (voskLib)
          return 0;
