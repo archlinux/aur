@@ -87,13 +87,13 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d ${pkgname} ]]
   then
-    git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine ${pkgname}
+    git clone --depth=1 --branch=${pkgver} git@github.com:EpicGames/UnrealEngine ${pkgname}
     cd ${pkgname}
   else
     cd ${pkgname}
     rm -f .git/index.lock
-    git fetch --depth=1 origin tag ${pkgver}-release
-    git reset --hard ${pkgver}-release
+    git fetch --depth=1 origin tag ${pkgver}
+    git reset --hard ${pkgver}
   fi
 
   # Apply custom patches
