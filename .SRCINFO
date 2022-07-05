@@ -5,6 +5,7 @@ pkgbase = symview-git
 	url = https://github.com/madprops/symview
 	arch = x86_64
 	license = GPL3
+	depends = rofi
 	source = symview-git::git+https://github.com/madprops/symview.git
 	sha256sums = SKIP
 
