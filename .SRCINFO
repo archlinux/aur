@@ -1,6 +1,6 @@
 pkgbase = r-genomicdistributions
 	pkgdesc = GenomicDistributions: fast analysis of genomic intervals with Bioconductor
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicDistributions
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-genomicdistributions
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicDistributions_1.4.1.tar.gz
-	sha256sums = dc3946669e999f8904c1a3fdd34427aef296c6e260657c52abddcc1d157f32ad
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicDistributions_1.4.3.tar.gz
+	sha256sums = 7afa1ead9535bc84d7a5765b6ed97816356bfed8fea09f37c1d909aaa2c29f61
 
 pkgname = r-genomicdistributions
