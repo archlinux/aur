@@ -1,14 +1,14 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=caas
 pkgname=$_pkgname-git
-pkgver=r282.f5d3403
+pkgver=r309.7353030
 pkgrel=1
 pkgdesc="A web service for checking and visualising compliance status of XMPP servers."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://compliance.conversations.im/"
 license=('BSD')
-depends=('java-runtime>=10')
-makedepends=('git' 'java-environment>=10' 'maven')
+depends=('java-runtime=11' 'bash')
+makedepends=('git' 'java-environment=11' 'maven')
 provides=("$_pkgname-web" "$_pkgname-app")
 conflicts=("$_pkgname")
 source=('git+https://github.com/iNPUTmice/caas.git' 'caas-web' 'caas-app')
@@ -31,7 +31,7 @@ package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 caas-web/target/caas-web.jar $pkgdir/usr/share/java/$_pkgname-web/caas-web.jar
 	install -Dm644 caas-app/target/caas-app.jar $pkgdir/usr/share/java/$_pkgname-app/caas-app.jar
-	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 	cd "$srcdir"
 	install -Dm755 caas-web $pkgdir/usr/bin/caas-web
