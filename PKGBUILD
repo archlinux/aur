@@ -1,7 +1,7 @@
 # Maintainer: Jakub Jirutka <jakub@jirutka.cz>
 
 pkgname=connman-resolvconf
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="ConnMan integration with resolvconf(8)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('connman' 'dbus' 'gcc-libs' 'openresolv')
 makedepends=('cargo')
 source=("https://github.com/jirutka/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a07ea50e0e1d0c12c60b59dfcbdedabdaacc6d336ea72bbe608558ad79d687f641e4fa08e9efd74e1761b07b938fd202214b0c0770f8bfffda4f3daae7e93765')
+sha512sums=('66addbf52084ca2c46a13e57d10d9acd2a10e39e166bc910d8910cc44ddaf734aff2f8cbf393eb7e4e26c9733364ced1199384b69a69b79e3491e72f4f327ccc')
 
 prepare() {
   cd "$pkgname-$pkgver"
