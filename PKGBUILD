@@ -4,18 +4,16 @@
 
 _name=kupfer
 pkgname=$_name-git
-pkgver=v311.r4.gd8a469d4
+pkgver=v321.r9.g35759097
 pkgrel=1
 pkgdesc="An interface for quick and convenient access to applications and their documents."
 arch=(any)
 url="https://kupferlauncher.github.io/"
-license=('GPL')
+license=('GPL3')
 depends=('libkeybinder3' 'python-dbus' 'python-cairo' 'libwnck3' 'python-xdg' 'python-gobject')
-makedepends=('intltool')
-optdepends=('gnome-python-desktop: enables all plugins and gnome integration'
-            'xautomation: enables the Send Keys plugin'
-	    'gvfs: enables the Trash plugin')
-makedepends=('intltool' 'git')
+makedepends=('intltool' 'itstool' 'python-docutils' 'git')
+optdepends=('xautomation: Send Keys plugin'
+            'gvfs: Trash plugin')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/kupferlauncher/kupfer.git")
