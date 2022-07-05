@@ -1,20 +1,42 @@
-# Maintainer: Sasha Khamkov <sanusart@gmail.com>
-# Maintainer: xgdgsc <xgdgsc at gmail dot com>
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
+# Contributor: Sasha Khamkov <sanusart@gmail.com>
+# Contributor: xgdgsc <xgdgsc at gmail dot com>
+
 pkgname=gisto
-pkgver=1.12.12
-pkgrel=0
-epoch=
-pkgdesc="Cross-platform gist snippets management desktop application that allows you and your team share code snippets fast and easily. Based on GitHub Gist Infrastructure which means you can use all your existing snippets by connecting your GitHub account."
-arch=("x86_64")
-url="http://www.gistoapp.com/"
-license=("MIT")
-groups=()
-options=(!strip)
-depends=("nss" "gtk3" "libxss")
-# PKGEXT=.tar
+_pkgname_capital=Gisto
+pkgver=1.13.4
+pkgrel=1
+pkgdesc='Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.'
+arch=('x86_64')
+url="https://github.com/$pkgname/$pkgname"
+license=('MIT')
+builddepends=(npm)
+depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip nss re2 snappy libnotify)
 install=${pkgname}.install
-source=("https://github.com/Gisto/Gisto/releases/download/v$pkgver/Gisto-$pkgver-amd64.deb")
-md5sums=('c809d6d6f59b94aea335503129c14abf')
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+
+b2sums=('532c4c519eccef3f049db277c569761594a407863b0db340ca2fbe3c35f67100f932beaf60a8db062cce6ca7c6ee44b8cba73e12321f0e14fd8ed435331fe6a0')
+
+prepare() {
+	cd "$_pkgname_capital-$pkgver"
+	npm ci --no-audit --progress=false --cache "$srcdir/npm-cache"	
+
+}
+
+build() {
+	cd "$_pkgname_capital-$pkgver"
+	cross-env NODE_ENV=production npm run start:prod
+        npx electron-builder build --linux pacman --x64 --publish=always
+}
+
+
+check() {
+	cd "$_pkgname_capital-$pkgver"
+	npm run test
+}
+
+
 package() {
-    tar xf data.tar.xz -C "${pkgdir}"
+	exit 1
 }
