@@ -24,7 +24,7 @@ source=("git+${url}.git#branch=develop"
 "${_scripts}.tar.gz"
 )
 sha256sums=('SKIP'
-            '7fa8f41d580270eb337737d3aaf051de1d91ed0d30f230a019b5d6596011c6ff')
+            '1b149ef7eb5ce5ba5b7809a1ee0a4f1e1582506181812f60331e2817822cee69')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
