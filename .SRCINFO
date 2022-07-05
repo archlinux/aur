@@ -1,12 +1,11 @@
 pkgbase = clipton-git
 	pkgdesc = Clipboard manager based on rofi
-	pkgver = r79.6e14e49
+	pkgver = r80.c514f88
 	pkgrel = 1
 	url = https://github.com/madprops/clipton
 	arch = x86_64
 	license = Unlicense
 	depends = rofi
-	depends = clipnotify
 	depends = xclip
 	source = clipton-git::git+https://github.com/madprops/clipton.git
 	sha256sums = SKIP
