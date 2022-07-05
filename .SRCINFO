@@ -1,6 +1,6 @@
 pkgbase = btrbk-git
 	pkgdesc = A backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations.
-	pkgver = 0.31.3.r67.g4234fb2
+	pkgver = 0.32.2.r0.gbdc1f5c
 	pkgrel = 1
 	url = http://digint.ch/btrbk
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = btrbk-git
 	depends = btrfs-progs
 	optdepends = openssh: remote backup support,
 	optdepends = mbuffer: --progress support and add buffering to send-stream
+	optdepends = sudo: support for the btrfs-progs-sudo backend
 	provides = btrbk
 	options = !makeflags
 	source = git+https://github.com/digint/btrbk.git

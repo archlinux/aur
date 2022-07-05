@@ -1,7 +1,7 @@
 # Maintainer: Michael Duell < mail at akurei dot me >
 # Contributor: Daniel J. Campos <dcampos2015 at my dot fit dot edu>
 pkgname=btrbk-git
-pkgver=0.31.3.r67.g4234fb2
+pkgver=0.32.2.r0.gbdc1f5c
 pkgrel=1
 pkgdesc="A backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations."
 url="http://digint.ch/btrbk"
@@ -12,7 +12,8 @@ depends=('perl' 'btrfs-progs')
 makedepends=('asciidoctor' 'git')
 options=('!makeflags') # temporary fix for https://github.com/digint/btrbk/pull/341
 optdepends=('openssh: remote backup support',
-        'mbuffer: --progress support and add buffering to send-stream')
+        'mbuffer: --progress support and add buffering to send-stream'
+        'sudo: support for the btrfs-progs-sudo backend')
 source=("git+https://github.com/digint/btrbk.git")
 sha256sums=('SKIP')
 
