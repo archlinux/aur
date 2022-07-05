@@ -3,10 +3,10 @@
 
 pkgname=rot8-git
 _pkgname="rot8"
-pkgver=0.1.3.35.g8043166
-pkgrel=2
+pkgver=0.1.4.48.ge8d1bfe
+pkgrel=1
 pkgdesc="A screen rotation daemon "
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/efernau/rot8"
 license=("MIT")
 makedepends=("git" "rust" "cargo")

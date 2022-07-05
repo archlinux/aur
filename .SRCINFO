@@ -4,6 +4,7 @@ pkgbase = rot8-git
 	pkgrel = 2
 	url = https://github.com/efernau/rot8
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = rust
