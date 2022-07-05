@@ -1,12 +1,13 @@
-from distutils.core import setup
+import io, sys
+from setuptools import setup
 
 setup(
 name         = 'sofastats',
 description  = 'Statistics Open For All',
-version      = '1.5.3',
+version      = '1.5.5',
 author       = 'Grant Paton-Simpson',
 author_email = 'grant@sofastatistics.com',
-package_dir  = {'sofastats':'sofa_main'},
+package_dir  = {'sofastats':'sofastats_src'},
 packages     = ['sofastats', 
                 'sofastats.boomslang', 
                 'sofastats.dbe_plugins'], 
