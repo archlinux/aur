@@ -1,26 +1,24 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
-_pkggit=colima
-
 pkgname=colima-bin
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Container runtimes on macOS (and Linux) with minimal setup."
-arch=('x86_64')
+arch=('x86_64' 'arm64')
 url="https://github.com/abiosoft/colima"
-depends=('lima-bin')
 conflicts=('colima')
 provides=('colima')
 license=('MIT')
-source=(
-  "https://github.com/abiosoft/${_pkggit}/releases/download/v${pkgver}/${_pkggit}-Linux-x86_64"
-  "https://raw.githubusercontent.com/abiosoft/${_pkggit}/v${pkgver}/LICENSE"
-)
-sha256sums=('65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6'
-            'e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea')
+
+source=("https://raw.githubusercontent.com/abiosoft/${pkgname%-bin}/v${pkgver}/LICENSE")
+source_x86_64=("https://github.com/abiosoft/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-x86_64")
+source_aarch64=("https://github.com/abiosoft/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-aarch64")
+
+sha256sums=('e5ce0844732e29a77f349cc332fcb6ab75617393f9e565ac6509c7b681d95eea')
+sha256sums_x86_64=('65e972d13337c6505e50f60bcfbe220b92a4a8769bbcd996f9bf0e1d3e4411c6')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 ${_pkggit}-Linux-x86_64 ${pkgdir}/usr/bin/${_pkggit}
+  install -Dm755 ${pkgname%-bin}-Linux-${arch} ${pkgdir}/usr/bin/${pkgname%-bin}
   install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
