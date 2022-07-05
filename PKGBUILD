@@ -28,7 +28,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam.xpm"
     "serioussam-tfe.sh"
     "serioussam-tse.sh"
-    "gcc-11.3_Timer.patch")
+    "gcc-11.3_Timer.patch"
+    "hud_iscore.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -47,7 +48,8 @@ sha256sums=('e59880dfe320c5a97c5adc59980c66ef8bd1bbac4ddb1d02fa03221d31f8654d'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
             'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
-            '307fbebdf1b2b88122e1125a586fcbf2d19e33fee08924536220a6c91eefa997')
+            '307fbebdf1b2b88122e1125a586fcbf2d19e33fee08924536220a6c91eefa997'
+            'fef586b7fa8c9a1c9b4ff43c77b05779e1f77238d6b39089344d2a912514dc31')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
