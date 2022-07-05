@@ -16,6 +16,8 @@
 # limitations under the License.
 
 set -euo pipefail
+# Inherit set -e down to command substitutions
+shopt -s inherit_errexit
 
 extract_kernel_version() {
     local heads
@@ -35,9 +37,9 @@ install_uefi_images() {
     dracut_args=(-q -f --uefi)
 
     while read -r line; do
-        case "$line" in
+        case "${line}" in
         usr/lib/modules/*/pkgbase)
-            kernel_versions+=("$(extract_kernel_version "$line")")
+            kernel_versions+=("$(extract_kernel_version "${line}")")
             ;;
         *)
             rebuild_all=1
@@ -51,7 +53,7 @@ install_uefi_images() {
         dracut "${dracut_args[@]}" --regenerate-all --force
     else
         for version in "${kernel_versions[@]}"; do
-            echo ":: Building unified kernel image for $version"
+            echo ":: Building unified kernel image for ${version}"
             dracut "${dracut_args[@]}" --kver "${version}"
         done
     fi
@@ -77,12 +79,12 @@ remove_uefi_images() {
     . "${os_release}"
 
     while read -r line; do
-        case "$line" in
+        case "${line}" in
         usr/lib/modules/*/pkgbase)
-            version="$(extract_kernel_version "$line")"
-            image="$efi/EFI/Linux/linux-${version}-${machine_id}-${BUILD_ID}.efi"
-            echo ":: Removing unified kernel image for $version from $image"
-            rm -f "$image"
+            version="$(extract_kernel_version "${line}")"
+            image="${efi}/EFI/Linux/linux-${version}-${machine_id}-${BUILD_ID}.efi"
+            echo ":: Removing unified kernel image for ${version} from ${image}"
+            rm -f "${image}"
             ;;
         *)
             ;;
