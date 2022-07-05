@@ -2,7 +2,7 @@
 
 pkgname=snapper-tools
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly opinionated Snapper GUI and CLI"
 arch=('x86_64')
 url="https://gitlab.com/garuda-linux/applications/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'polkit')
 makedepends=('qt5-tools' 'cmake' 'git' 'polkit')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('75a63dcd85916e0131d338c8e0cb1773a2cec4e159354e028897cdb280a01c6c')
+sha256sums=('1f6cb8df515c82aed8e8b4ecb8acd910633658c7c4b3919f1501c193147c4325')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
