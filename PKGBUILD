@@ -1,5 +1,4 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
-# Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -44,9 +43,6 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Enable KBUILD_CFLAGS -O3
-_cc_harder=y
-
 ### Set performance governor as default
 _per_gov=y
 
@@ -54,14 +50,14 @@ _per_gov=y
 _tcp_bbr2=y
 
 ### Running with a 1000HZ, 750Hz, 600 Hz or 500Hz tick rate
-_HZ_ticks=750
+_HZ_ticks=1000
 
-## Choose between perodic, tickless idle or full tickless
+## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
-_tickrate=full
+_tickrate=idle
 
 ## Choose between full(low-latency), voluntary or server
-_preempt=voluntary
+_preempt=full
 
 ### Disable MQ-Deadline I/O scheduler
 _mq_deadline_disable=y
@@ -107,16 +103,6 @@ _nf_cone=y
 # "thin: uses multiple threads, faster and uses less memory, may have a lower runtime performance than Full."
 _use_llvm_lto=
 
-# KCFI is a proposed forward-edge control-flow integrity scheme for
-# Clang, which is more suitable for kernel use than the existing CFI
-# scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
-# alter function references to point to a jump table, and won't break
-# function address equality.
-# ATTENTION!: you do need a patched llvm for the usage of kcfi,
-# you can find a patched llvm-git in the cachyos-repo's.
-# The packagename is called "llvm-kcfi"
-_use_kcfi=
-
 # Build the zfs module builtin in to the kernel
 _build_zfs=
 
@@ -132,7 +118,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=5.18
-_minor=6
+_minor=9
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -163,61 +149,39 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
-    "${_patchsource}/0001-cachy.patch"
+    "auto-cpu-optimization.sh"
+    "${_patchsource}/all/0001-cachyos-base-all.patch"
 )
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/openzfs/zfs.git#commit=6c3c5fcfbe27d9193cd131753cc7e47ee2784621")
+source+=("git+https://github.com/openzfs/zfs.git#commit=6c3c5fcfbe27d9193cd131753cc7e47ee2784621")
 fi
 if [ "$_cpusched" = "bmq" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+source+=("${_patchsource}/sched/0001-prjc.patch")
 fi
 if [ "$_cpusched" = "pds" ]; then
-    source+=("${_patchsource}/sched/0001-prjc.patch")
+source+=("${_patchsource}/sched/0001-prjc.patch")
 fi
 if [ "$_cpusched" = "bore" ]; then
-    source+=("${_patchsource}/sched/0001-bore-sched.patch")
+source+=("${_patchsource}/sched/0001-bore-sched.patch")
 fi
 if [ "$_cpusched" = "cacule" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
 fi
 if [ "$_cpusched" = "cacule-rdb" ]; then
-    source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
+source+=("${_patchsource}/sched/0001-cacULE-5.18-migrate.patch")
 fi
 if [ "$_cpusched" = "tt" ]; then
-    source+=("${_patchsource}/sched/0001-tt-5.18.patch")
+source+=(
+    "${_patchsource}/sched/0001-tt-cachy-5.18.patch")
 fi
 if [ "$_cpusched" = "hardened" ]; then
-    source+=(
-        "${_patchsource}/sched/0001-bore-sched.patch"
-        "${_patchsource}/0001-hardening.patch"
-    "${_patchsource}/0001-hardened.patch")
-fi
-source+=(
-    "${_patchsource}/0001-amd-perf.patch"
-    "${_patchsource}/0001-bbr2.patch"
-    "${_patchsource}/0001-Extend-DAMOS-for-Proactive-LRU-lists-Sorting.patch"
-    "${_patchsource}/0001-fixes.patch"
-    "${_patchsource}/0001-fs-patches.patch"
-    "${_patchsource}/0001-futex-winesync.patch"
-    "${_patchsource}/0001-hwmon.patch"
-    "${_patchsource}/0001-lrng.patch"
-    "${_patchsource}/0001-lru-le9-spf.patch"
-    "${_patchsource}/0001-kbuild.patch"
-    "${_patchsource}/0001-rcu.patch"
-    "auto-cpu-optimization.sh"
-)
-if [ -n "$_use_kcfi" ]; then
-    source+=("${_patchsource}/0001-kcfi.patch")
-    depends+=(clang llvm lld python)
-    BUILD_FLAGS=(
-        CC=clang
-        LD=ld.lld
-        LLVM=1
-    )
+source+=("${_patchsource}/sched/0001-bore-sched.patch"
+         "${_patchsource}/0001-hardening.patch"
+         "${_patchsource}/0001-hardened.patch")
 fi
 
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
+source+=("${_patchsource}/0001-bcachefs-after-lru.patch")
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -233,7 +197,6 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #        [[ $src = 0001-zfs-2.1.5-staging.patch ]] && continue
     local src
     for src in "${source[@]}"; do
         src="${src%%::*}"
@@ -808,21 +771,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('4e1c2a9e79847850029571a1dd04761e5f657b52c558070a085365641f133478'
-            'eccccc58c0349dc292fc7a3dadfe97e02910b8a405db517187e3fb4bb4975d5c'
-            '0437704f362dbcd917af531824841683e16ea1a49d750a6ffc0b060b17b97057'
+sha256sums=('3882e26fcedcfe3ccfc158b9be2d95df25f26c3795ecf1ad95708ed532f5c93c'
+            '99d33d202ea55e52db74d75c1cd269362c1cfc608b02a0cd89bfaefb3119a7a4'
+            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f'
+            '4cf793dc79c93baffea45f005bd4045f3bfd80c6ff72643377b6178b24ca618d'
             '7a36fe0a53a644ade0ce85f08f9ca2ebaddd47876966b7cc9d4cae8844649271'
-            '9a845b91fb2b0a80b32c077457c66f51d48d9735fd826984254d700cbe34079d'
-            'd9b8179c6e9c5a0753906fbd72858ee9ba3ce7c5647a04e9734d9a1aed316d98'
-            '326d129f9435145add756dc967accd56ffe1d8ff1b6650f84d2578c41bd6dfd6'
-            'dc2898751118804bc3f36b5a6928a2927d04919ce41c0ce013009f5564d6d232'
-            '71c33bf75dbf84673ad26a35c20b0f9ae0fa9944d91cd93a0b128752ca2eab0e'
-            '39551bf08e6b965db7b125c81a17f60f695a686b13ddc6499463222fd6cec9b4'
-            'efa0cd8f02f1289d8775ce64dc4a2a061b225612e8f1513591c147a3925dc7bd'
-            '1d9c83de97d541f5a7ae4612a96c05aea8ce38de5471cc21fd2197dbd6644d00'
-            '16085e0bba8e1843180f82df00d6040b97531cebb2c0c4c7fe23860322d06beb'
-            'f5b02a27a6324fc5aaabbca03e76d483da9ff51c389e4fabda51fd85f77217fc'
-            '292240ee42f4e34b97528c9b2b2afcef7bc892501a3750b8825ac6ef9c87072e'
-            'f534b60c0d90ef59312ac874f0fbbcd60434ceac673148e76c503752e837126b'
-            'e3bb6ca80b9156c409fdd0ca55916f028213f7b4fc7dcf7cea7702e08822ea5f'
-            'ce8bf7807b45a27eed05a5e1de5a0bf6293a3bbc2085bacae70cd1368f368d1f')
+            'd09b35736cf6b5b9b269bfe3b8f32a68463d1ae9d591a256f94bcc6a62425c28'
+            'acf8ca58f229a487e6a3654bee4ce63e8b8679985e0a1e1f26406e3f1a092b02')
