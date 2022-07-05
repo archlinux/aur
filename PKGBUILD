@@ -3,13 +3,13 @@
 
 pkgsubn=Reddit-Enhancement-Suite
 pkgname=chromium-extension-reddit-enhancement-suite-git
-pkgver=v5.15.0.r0.g229e2787c
-pkgrel=2
+pkgver=v5.22.6.r47.g6ec112ceb
+pkgrel=1
 pkgdesc="Chrome/Chromium extension for Reddit Enhancement Suite - git/dev"
 arch=('any')
 url='https://github.com/honestbleeps/Reddit-Enhancement-Suite'
 license=('GPL3')
-makedepends=(git nodejs npm)
+makedepends=(git nodejs yarn)
 source=("git+https://github.com/honestbleeps/Reddit-Enhancement-Suite.git")
 sha512sums=('SKIP')
 
@@ -22,11 +22,11 @@ pkgver() {
 }
 build() {
 	cd "${srcdir}/${pkgsubn}"
-	npm install --cache "${srcdir}/npm-cache"
-	npm run once
+  yarn --cache-folder "${srcdir}/npm-cache"
+  yarn build --env browsers=chrome
 }
 package() {
-	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
-	 shopt -s dotglob
-	 cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/dist/chrome"/* "${pkgdir}/usr/share/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  shopt -s dotglob
+  cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/dist/chrome"/* "${pkgdir}/usr/share/${pkgname}"
 }
