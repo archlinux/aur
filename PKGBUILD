@@ -1,7 +1,7 @@
 # Maintainer: Dorian Rudolph <mail@dorianrudolph.com>
 _pkgname=jabbrv
 pkgname=$_pkgname-git
-pkgver=r37.ee76d79
+pkgver=r49.d922ed6
 pkgrel=1
 pkgdesc="Automatic Journal Title Abbreviation Package for LaTeX"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/compholio/jabbrv.git#commit=ee76d797596577c62c13491e55de7426933d8974")
+source=("$_pkgname::git+https://github.com/compholio/jabbrv.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -38,4 +38,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
