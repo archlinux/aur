@@ -4,7 +4,7 @@
 
 pkgname=python-pims
 _name="${pkgname#python-}"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Python Image Sequence: Load video and sequential images"
 url="https://github.com/soft-matter/pims"
@@ -14,9 +14,9 @@ depends=('python>=3.7' 'python-imageio' 'python-numpy' 'python-slicerator')
 # optdepends=('python-pillow: improved TIFF support'
 #             'python-tifffile: alternative TIFF support')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-# checkdepends=('python-nose')
+# checkdepends=('python-nose' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/P/${_name^^}/${_name^^}-$pkgver.tar.gz")
-sha256sums=('1102742d642c8b8acc710d35d502b5d7085ee1288c3618373ef8c472030bc683')
+sha256sums=('e2b704461d4ea9bce8b6a22ca35836fe67d6d34537736b405341ae5547194f3b')
 
 prepare() {
 	cd "${_name^^}-$pkgver"
@@ -30,7 +30,7 @@ build() {
 
 # check() {
 # 	cd "${_name^^}-$pkgver"
-# 	nosetests3
+# 	nosetests
 # }
 
 package() {
