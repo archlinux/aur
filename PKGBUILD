@@ -2,8 +2,8 @@
 # Contributor: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 _pkgname=xmrig-cuda
-_pkgver=6.15.1
-_mover=2
+_pkgver=6.17.0
+_mover=1
 pkgname="${_pkgname/xmrig/xmrig-mo}"
 pkgver="${_pkgver}mo${_mover}"
 pkgrel=1
