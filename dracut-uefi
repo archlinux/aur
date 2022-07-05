@@ -43,7 +43,7 @@ install_uefi_images() {
             ;;
         *)
             rebuild_all=1
-            break;
+            break
             ;;
         esac
     done
@@ -68,7 +68,7 @@ remove_uefi_images() {
     local image
 
     efi="$(bootctl -p)"
-    machine_id="$(< /etc/machine-id)"
+    machine_id="$(</etc/machine-id)"
 
     # We source os-release for the BUILD_ID variable we need for the full image
     # path.
@@ -86,21 +86,21 @@ remove_uefi_images() {
             echo ":: Removing unified kernel image for ${version} from ${image}"
             rm -f "${image}"
             ;;
-        *)
-            ;;
+        *) ;;
+
         esac
     done
 }
 
 case "$1" in
-    "install")
-        install_uefi_images
-        ;;
-    "remove")
-        remove_uefi_images
-        ;;
-    *)
-        echo "Unsupported argument: $1" 1>&2
-        exit 1
-        ;;
+"install")
+    install_uefi_images
+    ;;
+"remove")
+    remove_uefi_images
+    ;;
+*)
+    echo "Unsupported argument: $1" 1>&2
+    exit 1
+    ;;
 esac
