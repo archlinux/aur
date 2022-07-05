@@ -1,8 +1,8 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 pkgbase=git-credential-manager-core
 pkgname=("$pkgbase" "${pkgbase}-extras")
-pkgver=2.0.696
-pkgrel=2
+pkgver=2.0.779
+pkgrel=1
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/GitCredentialManager/git-credential-manager"
