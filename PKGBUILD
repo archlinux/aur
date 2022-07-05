@@ -4,11 +4,11 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.2.4
-pkgrel=5
-pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
+pkgrel=6
+pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
-license=("GPL2")
+license=("GPL3")
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
@@ -85,17 +85,17 @@ conflicts=("obs-studio" "obs-vst")
 options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
+  "obs-browser::git+https://github.com/obsproject/obs-browser.git"
+  "obs-vst::git+https://github.com/obsproject/obs-vst.git"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-  "obs-browser::git+https://github.com/obsproject/obs-browser.git"
-  "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
 sha256sums=(
   "SKIP"
+  "SKIP"
+  "SKIP"
   "4dc22cc6a71f879486946032debef5789b144d1d108a678379910480601937ca"
   "e0cfe383286ae1b7e9a4f88ea0e8f05e79470bf677b16ac18bd2a64826c2ae28"
-  "SKIP"
-  "SKIP"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
