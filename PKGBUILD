@@ -1,10 +1,11 @@
 # Maintainer: soloturn@gmail.com
+# Maintainer: RandomHashTags <imrandomhashtags at gmail dot com>
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin-development
-pkgver=5.6.DEVELOPMENT
-vendorver=5.6-DEVELOPMENT-SNAPSHOT-2022-03-02-a
+pkgver=5.7.DEVELOPMENT
+vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-06-26-a
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
@@ -16,7 +17,7 @@ makedepends=('patchelf')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source=("https://swift.org/builds/swift-5.6-branch/centos8/swift-${vendorver}/swift-${vendorver}-centos8.tar.gz")
+source=("https://swift.org/builds/swift-5.7-branch/centos7/swift-${vendorver}/swift-${vendorver}-centos7.tar.gz")
 sha256sums=('SKIP')
 
 package() {
@@ -43,6 +44,14 @@ package() {
     patchelf+=(--replace-needed "lib${lib}.so.6" "lib${lib}w.so")
   done
   find_elf_only -exec "${patchelf[@]}" {} \;
+
+  # Patch "error while loading shared libraries" for Manjaro (tested on Ruah 21.3.1, Linux 5.18.6-1-MANJARO)
+  LIBTINFO5=/usr/lib/libtinfo.so.5
+  LIBTINFO6=/usr/lib/libtinfo.so.6
+  LIBNCURSES5=/usr/lib/libncurses.so.5
+  LIBNCURSES6=/usr/lib/lubncursesw.so
+  [ ! -h "$LIBTINFO5" ] && [ -h "$LIBTINFO6" ] && ln -s "$LIBTINFO6" "$LIBTINFO5"
+  [ ! -h "$LIBNCURSES5" ] && [ -h "$LIBNCURSES6" ] && ln -s "$LIBNCURSES6" "$LIBNCURSES5"
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
