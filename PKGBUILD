@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=usermin
-pkgver=1.840
+pkgver=1.851
 pkgrel=1
 pkgdesc="A web-based user account administration interface"
 arch=(any)
@@ -52,15 +52,14 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         usermin-config.tar.bz2
         usermin.pam
         usermin.logrotate
-        usermin.tmpfiles
-        usermin.service)
+        usermin.tmpfiles)
 options=(!strip !zipman)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
 
     # remove modules that we do not support and stuff that is not needed
-    rm -r usermin-init usermin-daemon install-module.pl
+    rm -r usermin-init install-module.pl
 
     # remove config files for other distros, make Arch linux related additions
     find . ! -name 'config-generic-linux' ! -name 'config-ALL-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
@@ -81,7 +80,7 @@ package() {
     find "$pkgdir"/etc/usermin -type f -exec sed -i -e "s:$pkgdir::g" {} \+
 
     # install sources
-    install -D -m 644 "$srcdir"/usermin.service "$pkgdir"/usr/lib/systemd/system/usermin.service
+    install -D -m 644 "$pkgdir"/opt/usermin/usermin-systemd "$pkgdir"/usr/lib/systemd/system/usermin.service
     install -D -m 644 "$srcdir"/usermin.pam "$pkgdir"/etc/pam.d/usermin
     install -D -m 644 "$srcdir"/usermin.logrotate "$pkgdir"/etc/logrotate.d/usermin
     install -D -m 644 "$srcdir"/usermin.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/usermin.conf
@@ -93,11 +92,10 @@ package() {
 }
 
 
-sha256sums=('21db7bdefded7013cc809aac50639b1118c03be0d82e8d34255b1e423030db10'
+sha256sums=('72ffc5721d71bd27e095eb5d0f13dacb93c0d524a197429502dc21c41540975c'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
-            '17102b3583190f64fae039ca5270ae823cae90ed60fdb2dd49aba95496bff559'
+            '69c033325893aa594f975163eb723abe0907c316ac3b8999e153d07cf7f63488'
             'c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             '12def022feec3b063dbc0a247d3db1423785beea90d3f065e785c86799d31431'
-            'be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7'
-            'ade1b28a8f65512c8878ecabf6c8bc5a2d8ce3fd88dc3bffc1a9e14f3fd1ec47')
+            'be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7')
