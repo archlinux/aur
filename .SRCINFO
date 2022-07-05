@@ -1,7 +1,7 @@
 pkgbase = colima-bin
 	pkgdesc = Container runtimes on macOS (and Linux) with minimal setup.
 	pkgver = 0.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/abiosoft/colima
 	arch = x86_64
 	arch = arm64
