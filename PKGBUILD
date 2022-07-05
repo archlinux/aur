@@ -7,7 +7,7 @@ pkgname=swift-bin-development
 pkgver=5.7.DEVELOPMENT
 vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-06-26-a
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
 url="https://swift.org"
@@ -51,8 +51,8 @@ package() {
   LIBTINFO6=/usr/lib/libtinfo.so.6
   LIBNCURSES5=/usr/lib/libncurses.so.5
   LIBNCURSES6=/usr/lib/libncursesw.so
-  [ ! -h "$LIBTINFO5" ] && [ -h "$LIBTINFO6" ] && sudo ln -s "$LIBTINFO6" "$LIBTINFO5"
-  [ ! -h "$LIBNCURSES5" ] && [ -h "$LIBNCURSES6" ] && sudo ln -s "$LIBNCURSES6" "$LIBNCURSES5"
+  [ ! -h "$LIBTINFO5" ] && [ -h "$LIBTINFO6" ] && ln -s "$LIBTINFO6" "${pkgdir}/$LIBTINFO5"
+  [ ! -h "$LIBNCURSES5" ] && [ -h "$LIBNCURSES6" ] && ln -s "$LIBNCURSES6" "${pkgdir}/$LIBNCURSES5"
 
   install -dm755 "${pkgdir}/etc/ld.so.conf.d"
   echo '/usr/lib/swift/lib/swift/linux' >> "${pkgdir}/etc/ld.so.conf.d/swift.conf"
