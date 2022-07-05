@@ -7,6 +7,7 @@ pkgname=swift-bin-development
 pkgver=5.7.DEVELOPMENT
 vendorver=5.7-DEVELOPMENT-SNAPSHOT-2022-06-26-a
 pkgrel=1
+epoch=1
 pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
 url="https://swift.org"
@@ -30,7 +31,7 @@ package() {
   }
 
   mkdir -p "${pkgdir}/usr/lib/swift"
-  cp -Ppr "${srcdir}/swift-$vendorver-centos8"/usr/* "${pkgdir}/usr/lib/swift"
+  cp -Ppr "${srcdir}/swift-$vendorver-centos7"/usr/* "${pkgdir}/usr/lib/swift"
 
   # Symlink the desired binaries to /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
