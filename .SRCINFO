@@ -1,0 +1,11 @@
+pkgbase = symview-git
+	pkgdesc = Find files and create symlinks
+	pkgver = r31.761d26e
+	pkgrel = 1
+	url = https://github.com/madprops/symview
+	arch = x86_64
+	license = GPL3
+	source = symview-git::git+https://github.com/madprops/symview.git
+	sha256sums = SKIP
+
+pkgname = symview-git
