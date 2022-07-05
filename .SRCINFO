@@ -12,7 +12,7 @@ pkgbase = nordlayer
 	replaces = nordvpnteams-bin
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_2.3.1_amd64.deb
+	source_x86_64 = https://downloads.nordlayer.com/linux/latest/debian/pool/main/nordlayer_2.4.2_amd64.deb
 	sha512sums_x86_64 = b8bedf4b95d6e0870d50a313fef04bc2c42cb78aeb17db6028be8a70c749cf93e57977591e84b5cf360354484e807d09bb33237e6fa5c10c31c78a8fc4f87562
 
 pkgname = nordlayer
