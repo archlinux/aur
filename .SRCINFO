@@ -1,8 +1,8 @@
 pkgbase = filen-desktop-appimage
 	pkgdesc = Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage
 	pkgver = 1.6.2
-	pkgrel = 1
-	url = https://github.com/FilenCloudDienste/filen-desktop
+	pkgrel = 2
+	url = https://filen.io/
 	arch = x86_64
 	license = MIT
 	options = !strip
