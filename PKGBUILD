@@ -1,8 +1,9 @@
-# Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Maintainer: Alexander Zinov <sashkent3 "at" gmail "dot" com>
+# Contributor: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 
 pkgname=iscan-plugin-gt-f700
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (Perfection V350 Photo)"
 arch=('i686' 'x86_64')
 url="https://epson.com/Support/Scanners/Perfection-Series/Epson-Perfection-V350-Photo/s/SPT_B11B185011"
@@ -23,8 +24,8 @@ else
 fi
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x86/iscan-${_plugin}-bundle-${pkgver}.x86.deb.tar.gz")
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/${_plugin}/deb/x64/iscan-${_plugin}-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums_i686=('726f2be09354654de027beb48c84aa3096af2511d4a3f943f7cca6c8ba91dc11')
-sha256sums_x86_64=('2bc95e5972b83e05fef0dbc60731312941c8239509b1e251cc5a55e62c842e00')
+sha256sums_i686=('92dafd121794ca541041394b53eb99a7f500ff5e6b0746bff5ed30038ecc60e5')
+sha256sums_x86_64=('86e8223e7a77a1563913914dd9d85d4ecbae2fcd456553be3b3b2c5f9662204b')
 
 
 prepare(){
