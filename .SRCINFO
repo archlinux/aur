@@ -1,0 +1,18 @@
+pkgbase = qemu-macm68k-git
+	pkgdesc = QEMU m68k for Macintosh emulation
+	pkgver = r90498.898eade90c
+	pkgrel = 1
+	url = https://gitlab.com/mcayland/qemu/-/tree/q800.upstream
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = ninja
+	depends = sdl2
+	depends = libpulse
+	depends = vte3
+	depends = libslirp
+	source = git+https://gitlab.com/mcayland/qemu.git#branch=q800.upstream
+	sha256sums = SKIP
+
+pkgname = qemu-macm68k-git
