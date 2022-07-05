@@ -11,4 +11,3 @@ pkgbase = python-zgitignore
 	sha256sums = 2e4d085114cc2c35191f1a1defee64c2ffa791b6763338c0e10ad57a25d2f0a4
 
 pkgname = python-zgitignore
-
