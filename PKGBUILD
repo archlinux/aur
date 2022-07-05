@@ -65,6 +65,9 @@ package() {
 	mv ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/dal/latest
 
+	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
+	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
+
 	# cmake
 	mkdir -p ${pkgdir}/usr/lib/cmake
 	ln -sfT "/opt/intel/oneapi/dal/latest/lib/cmake/oneDAL" ${pkgdir}/usr/lib/cmake/oneDAL
@@ -75,7 +78,4 @@ package() {
 	for _file in $(find . -mindepth 1 -name '*.pc' -printf "%f\n"); do
 		ln -sf /opt/intel/oneapi/dal/latest/lib/pkgconfig/${_file} ${pkgdir}/usr/share/pkgconfig/${_file}
 	done
-
-	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
-	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
 }
