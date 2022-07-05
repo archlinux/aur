@@ -1,6 +1,6 @@
 pkgbase = gitsign-bin
 	pkgdesc = Keyless Git signing using Sigstore
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sigstore/gitsign
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gitsign-bin
 	provides = gitsign
 	conflicts = gitsign
 	options = !strip
-	source = gitsign-bin-0.1.1::https://github.com/sigstore/gitsign/releases/download/v0.1.1/gitsign_0.1.1_linux_amd64
-	source = https://raw.githubusercontent.com/sigstore/gitsign/v0.1.1/LICENSE
-	b2sums = b9f7ff4190870f0f935c5bd819f7dda0dfef0eba767f315cd2a296a0f9ecff1fbf1af99fa54d69280385929fcdbae36926dcf57a837fae550734b6867437d54a
+	source = gitsign-bin-0.2.0::https://github.com/sigstore/gitsign/releases/download/v0.2.0/gitsign_0.2.0_linux_amd64
+	source = https://raw.githubusercontent.com/sigstore/gitsign/v0.2.0/LICENSE
+	b2sums = 34da25fc587fd912e584beaf5b6edbd5a1180bfc3e6d9412901016b963f98147fab56e1a234f1f046c64620355110ae8f0ca8a5c957ae61af545bb316da5555c
 	b2sums = 43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85
 
 pkgname = gitsign-bin
