@@ -5,7 +5,7 @@
 
 pkgbase=qubes-linux-utils
 pkgname=(qubes-vm-utils qubes-vm-kernel-support)
-pkgver=4.0.35
+pkgver=4.1.16
 _gitname=${pkgname%-git*}
 pkgrel=1
 pkgdesc="Common Linux files for Qubes VM."
@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://github.com/QubesOS/qubes-linux-utils"
 license=('GPL')
 groups=()
-makedepends=(gcc make pkgconfig qubes-libvchan python-setuptools)
+makedepends=(gcc make pkgconfig python-setuptools qubes-vm-xen qubes-libvchan-xen)
 options=('staticlibs')
 validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
               '0064428F455451B3EBE78A7F063938BA42CFA724'  # Marek Marczykowski-Górecki
@@ -47,7 +47,7 @@ package_qubes-vm-utils() {
 }
 
 package_qubes-vm-kernel-support() {
-    depends=(qubes-libvchan mkinitcpio dkms grub)
+    depends=(mkinitcpio grub)
     install=PKGBUILD-qubes-vm-kernel-support.install
 
     mkdir -p ${pkgdir}/usr/lib/initcpio/install/
@@ -60,6 +60,4 @@ package_qubes-vm-kernel-support() {
 
     cd "${srcdir}/${_gitname}/"
     install -m 755 dracut/full-dmroot/qubes_cow_setup.sh ${pkgdir}/usr/lib/qubes/qubes_cow_setup.sh
-
-    make install-u2mfn DESTDIR="$pkgdir" -C kernel-modules
 }
