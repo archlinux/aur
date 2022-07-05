@@ -1,15 +1,15 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus-git
-pkgver=0.2.2.r9.9b1d05e
+pkgver=0.2.3.r0.ddea8fb
 pkgrel=1
 pkgdesc="Generates a status line for swaybar"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
-depends=('python' 'python-schema' 'python-toml' 'python-setuptools')
+depends=('python' 'python-schema' 'python-toml')
 optdepends=('python-systemd: systemd journal logging')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-cov')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 check() {
@@ -26,7 +26,12 @@ check() {
     PYTHONPATH=$PWD/src pytest --no-cov
 }
 
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
