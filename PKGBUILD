@@ -1,11 +1,11 @@
 pkgname=halcyon
 pkgver=0.9.45
-pkgrel=1
+pkgrel=2
 pkgdesc="Halcyon 3d virtual reality world simulator"
 arch=('any')
 url="https://github.com/HalcyonGrid/${pkgname}"
 license=('custom:BSD-3-clause')
-depends=(mariadb mono-git sqlite whip-server)
+depends=(mariadb mono sqlite whip-server)
 makedepends=(mono-msbuild nuget doxygen graphviz)
 provides=(opensimulator)
 install=$pkgname.install
