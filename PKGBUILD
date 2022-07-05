@@ -1,8 +1,8 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=puddletag
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='An audio tag editor for GNU/Linux'
 url="https://docs.${pkgname}.net/"
 license=('GPL3')
@@ -12,19 +12,23 @@ depends=('python-configobj'
          'python-pyparsing'
          'python-pyqt5'
          'qt5-svg')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
 optdepends=('chromaprint: AcoustID support'
             'python-levenshtein: faster duplicate matching'
             'python-lxml: additional tag sources' 
             'quodlibet: QuodLibet library support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puddletag/puddletag/archive/${pkgver}.tar.gz")
-sha512sums=('b05ab8a09d5ad4d21f8384fa85beebe039b8ee7e775630a23981bfe88ac389fc34a6ac6eac6660a99f38e34157e6bd841ba12237f45e290fe96ded3ab6d44d77')
+sha512sums=('92c430f54b49d2f193ffc4168f35bbadb069ca9b41b28250ee1c6dcb84853def20865d6df52940eebff8c5b812c0c8ab6b8971b66d398ff9ac94918e955322bb')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python setup.py config
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
