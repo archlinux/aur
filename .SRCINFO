@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-cube-git
 	pkgdesc = Desktop cube effect for KWin
-	pkgver = 0.1.0.r9.0fa756b
+	pkgver = 1.0.0.r0.3606d40
 	pkgrel = 1
 	url = https://github.com/zzag/kwin-effects-cube
 	arch = x86_64
