@@ -1,0 +1,13 @@
+pkgbase = all-ways-egpu-git
+	pkgdesc = Configure eGPU as primary under Linux Wayland desktops
+	pkgver = 28.7afc5b7
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ewagner12/all-ways-egpu
+	arch = x86_64
+	license = MIT
+	provides = all-ways-egpu
+	source = all-ways-egpu::git+https://github.com/ewagner12/all-ways-egpu.git
+	sha256sums = SKIP
+
+pkgname = all-ways-egpu-git
