@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pls
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Prettier `ls` for the pros'
 url='https://dhruvkb.github.io/pls'
