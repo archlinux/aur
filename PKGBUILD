@@ -5,12 +5,12 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=27.2.4
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
 epoch=2
-pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
+pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
-license=("GPL2")
+license=("GPL3")
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
@@ -89,13 +89,11 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
-  "ffmpeg_5_master_fixes.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/6423.patch
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "91a08c02b397c49e84400f36559059f03c629b4d0df5b6689ce8eb6923c805f6"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -128,11 +126,20 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
+  ## linux-capture: Don't initialize format info if init_obs_pipewire fails (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
+  sed -i '1438 a return NULL; }' plugins/linux-capture/pipewire.c
+  sed -i '1437 a {' plugins/linux-capture/pipewire.c
+
+  ## linux-pipewire: Version check call to pw_deinit (https://github.com/obsproject/obs-studio/commit/bf660b1d8dc1905527bb5919b1034c7b43c55dac)
+  sed -i '74,77d' plugins/linux-capture/linux-capture.c
+
   ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
   sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
 
   ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
-  patch -Np1 < "$srcdir/ffmpeg_5_master_fixes.patch"
+  git cherry-pick -n e66542075d5d2cb51a14a0bdf3458ac10757de64
+  git cherry-pick -n 5b6cc73c2475abe6a85647604b9ce937dec09000
+  git cherry-pick -n 12d1f1c3358f7231244db0b971a333445e346f80
 }
 
 build() {
@@ -145,7 +152,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=$_browser \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$_pkgver-$pkgrel" ..
+    -DOBS_VERSION_OVERRIDE="$_pkgver-rc-$pkgrel" ..
 
   make
 }
