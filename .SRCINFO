@@ -1,5 +1,5 @@
 pkgbase = xinux-wallpapers
-	pkgdesc = Xinux wallpapers
+	pkgdesc = Wallpapers made for @uzinfocom-org/xinux
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://oss.uzinfocom.uz
