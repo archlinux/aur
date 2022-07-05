@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KnowSeq
-_pkgver=1.10.1
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='KnowSeq R/Bioc package: The Smart Transcriptomic Pipeline'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('074d760fb09cb5148dc4ee5255aaf910e818d1340e9c5424611d67dad34bfbaf')
+sha256sums=('85ec096fe6fb2859684bdeebd7c075ce4767d66de0189a7ee4ce7b26859d7d53')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
