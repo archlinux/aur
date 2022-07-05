@@ -3,7 +3,7 @@
 
 pkgname=qubes-libvchan-xen
 _gitname=${pkgname%-git*}
-pkgver=4.0.9
+pkgver=4.1.7
 pkgrel=1
 
 pkgdesc="The Qubes core libraries for installation inside a Qubes Dom0 and VM."
@@ -25,17 +25,11 @@ sha512sums=('SKIP')
 build() {
     cd "${srcdir}/${_gitname}/"
 
-    (cd u2mfn; make)
     (cd vchan; make -f Makefile.linux)
 }
 
 package() {
     cd "${srcdir}/${_gitname}/"
-    install -D -m 0644 vchan/libvchan.h $pkgdir/usr/include/libvchan.h
-    install -D -m 0644 u2mfn/u2mfnlib.h $pkgdir/usr/include/u2mfnlib.h
-    install -D -m 0644 u2mfn/u2mfn-kernel.h $pkgdir/usr/include/u2mfn-kernel.h
-    install -D -m 0644 vchan/vchan-xen.pc $pkgdir/usr/lib/pkgconfig/vchan-xen.pc
 
-    install -D vchan/libvchan-xen.so $pkgdir/usr/lib/libvchan-xen.so
-    install -D u2mfn/libu2mfn.so $pkgdir/usr/lib/libu2mfn.so
+    make install DESTDIR="$pkgdir" LIBDIR=/usr/lib INCLUDEDIR=/usr/include
 }
