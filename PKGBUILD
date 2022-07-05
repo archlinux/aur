@@ -1,18 +1,14 @@
 # Maintainer: Randal <three-dim-sky@foxmail.com>
 pkgname=dagtoc
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A cli-tool for operating contents of pdf"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/TD-Sky/dagtoc"
 license=('GPL3')
+depends=('python-pymupdf')
 source=("$pkgname-$pkgver.tar.zst::https://github.com/TD-Sky/dagtoc/releases/download/v$pkgver/$pkgname-$pkgver.tar.zst")
-sha256sums=('31bbb8255c04d01ad172e35b401227c4101edcc107d1cd8808149e55b3291814')
-
-build() {
-	cd "${pkgname}-${pkgver}"
-	pip3 install pymupdf
-}
+sha256sums=('daac852e649ab682a1599176907d0d2020d9124409dc23c7a6ce4aa0e8030945')
 
 package() {
 	cd "${pkgname}-${pkgver}"
