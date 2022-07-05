@@ -1,0 +1,13 @@
+pkgbase = copyevent-git
+	pkgdesc = Polling-free clipboard notifier. Like clipnotify but with a selection flag
+	pkgver = r1.fc4bb49
+	pkgrel = 1
+	url = https://github.com/madprops/copyevent
+	arch = x86_64
+	license = Unlicense
+	depends = libx11
+	depends = libxfixes
+	source = copyevent-git::git+https://github.com/madprops/copyevent.git
+	sha256sums = SKIP
+
+pkgname = copyevent-git
