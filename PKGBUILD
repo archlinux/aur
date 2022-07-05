@@ -5,7 +5,7 @@
 
 pkgname=qubes-usb-proxy
 _gitname=${pkgname%-git*}
-pkgver=1.0.30
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The Qubes service for proxying USB devices"
 arch=("x86_64")
@@ -23,5 +23,5 @@ sha512sums=('SKIP')
 
 package() {
     cd "${srcdir}/${_gitname}/"
-    make install-vm DESTDIR="$pkgdir"
+    make install-vm DESTDIR="$pkgdir" LIBDIR=/usr/lib USRLIBDIR=/usr/lib SYSLIBDIR=/usr/lib
 }
