@@ -1,0 +1,20 @@
+pkgbase = aarch64-linux-gnu-fakeroot
+	pkgdesc = Tool for simulating superuser privileges
+	pkgver = 1.29
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/fakeroot
+	install = fakeroot.install
+	arch = x86_64
+	license = GPL
+	checkdepends = sharutils
+	makedepends = systemd
+	makedepends = po4a
+	depends = aarch64-linux-gnu-glibc
+	depends = filesystem
+	depends = sed
+	depends = util-linux
+	depends = sh
+	source = https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.29.orig.tar.gz
+	sha256sums = 8fbbafb780c9173e3ace4a04afbc1d900f337f3216883939f5c7db3431be7c20
+
+pkgname = aarch64-linux-gnu-fakeroot
