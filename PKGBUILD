@@ -57,7 +57,7 @@ fi
 prepare(){
   # Prepare patch
   cat gcc-11.3_Timer.patch > "$srcdir/$_srcname/gcc-11.3_Timer.patch"
-  cat hud_isore.patch > "$srcdir/$_srcname/hud_isore.patch"
+  cat hud_iscore.patch > "$srcdir/$_srcname/hud_iscore.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -92,7 +92,7 @@ prepare(){
   # gcc 11.3 patch && hud score patch
   cd "$srcdir/$_srcname"
   patch -p1 < gcc-11.3_Timer.patch || return 1
-  patch -p1 < hud_isore.patch || return 1
+  patch -p1 < hud_iscore.patch || return 1
 }
 
 build(){
