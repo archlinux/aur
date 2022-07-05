@@ -13,15 +13,17 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.95
+pkgver=4.96
 pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.exim.org/'
 license=('GPL')
-depends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite' 'libspf2' 'libidn' 'libidn2' 'opendmarc' 'libsrs_alt')
+depends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite' 'libspf2' 'libidn' 'libidn2' 'opendmarc>=1.4.0')
 makedepends=('postgresql-libs' 'libmariadbclient')
-source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
+source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.xz"{,.asc}
+        exim-typo-d05685413.patch
+        exim-opendmarc-1.4.patch
         aliases
         exim.logrotate
         exim.Makefile
@@ -32,11 +34,13 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha512sums=('2ece1bf862553c747fda765698ae0d99ce1c37b6006576661580ec7671f6e25590d21fb2862058a276d8cc1862ecb703e8d72240e5395d8f00d67babbfc3dbbc'
+sha512sums=('6b863661465a0b9897c1b71875c5196a1903cf560dd85de45b08242b9731edb2bc10eb56945d62e477e5d15cc7a8d493915bff2ca81689673a8091c66f62c89e'
             'SKIP'
+            'f98d43e42e11d05d3016b9eae2dec860c551cbf3977fff99d0813576114da9a0996facc51f91e4a05510d93115059a6da6c4f005009661c5247574ab31652523'
+            'f9fd9f857c024cb72989da9344506c4cba0cdb4c270dec048d1f85c92cf4b3423988c545e0783cda1fb6c1b3b541a829181a8ff09ea3ede0db012056b9063963'
             'a91c6a9e5b3ac9d143741dba01e11616812ba44c3a8c768c8232364026460f0b8fdeeb120a2f2b86742a6e3ebbfc9d6335b86d108b044e43108b4a6f0374c9ad'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
-            'dcb61b84f008e0de439df6be6628d0e0140d0f698af2a87c3f9c1d422b53ccd8fa9d1321c1fb4f226ef0837106b587c53fec7bcd05ca4706657f615c123db02f'
+            'db778e7ca3d41d20499fe587b4e04b869adb092f7d636d8d794f5487f626ba03ab8343824b8729fbb05cc580e30e0143fb4bc9f202b3ab0115d47585aa45a421'
             'dc28698f15e8eaa4614ae81fc8cb76d92fed1110ce02f7a6ee8feace418dbb194711eb2d4dd444cf818628c11721e21d80b7b974879ab6ddd78cc717cce17c2f'
             'b3c3b18652df435cb87d647cfd4f19e182fbf12b0b56f9c91f72b27ae5a819fb3d8c4c25445c5a3c184f70a0c181925fabda891f2057b8a917070d6c40529b8d'
             '11c8133ee15b3e5193c9b1c59aed66c81b6e045dd23310bede9fcde6c88905db5ef08afdb798b53b75a7465915ea1247e980edf95db07a7f9b7bb58ce95fbb5a'
@@ -54,6 +58,9 @@ prepare() {
   cd $_pkgname-$pkgver
 
   cp $srcdir/$_pkgname.Makefile Local/Makefile
+
+  patch -p2 < $srcdir/exim-typo-d05685413.patch
+  patch -p1 < $srcdir/exim-opendmarc-1.4.patch
 }
 
 build() {
@@ -63,7 +70,7 @@ build() {
 }
 
 package_exim-heavy() {
-  depends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre' 'sqlite')
+  depends=('gdbm' 'libldap' 'libnsl' 'openssl' 'pam' 'pcre2' 'sqlite')
   optdepends=('exim-lookup-mysql: for MariaDB/MySQL lookup support'
               'exim-lookup-passwd: for passwd lookup support'
               'exim-lookup-pgsql: for PostgreSQL lookup support')

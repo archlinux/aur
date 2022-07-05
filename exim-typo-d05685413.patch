@@ -1,0 +1,19 @@
+commit d05685413efd3262b4a5622717f90bba351f1074
+Author: Jeremy Harris <jgh146exb@wizmail.org>
+Date:   Sun Jun 26 12:29:05 2022 +0100
+
+    typo
+
+diff --git a/src/src/drtables.c b/src/src/drtables.c
+index b2f2a4b33..30eb855e3 100644
+--- a/src/src/drtables.c
++++ b/src/src/drtables.c
+@@ -736,7 +736,7 @@ else
+     {
+     char * name = ent->d_name;
+     int len = (int)strlen(name);
+-    if (regex_match(regex_islookupmod, US name, len, NUL))
++    if (regex_match(regex_islookupmod, US name, len, NULL))
+       {
+       int pathnamelen = len + (int)strlen(LOOKUP_MODULE_DIR) + 2;
+       void *dl;

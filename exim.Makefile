@@ -12,11 +12,12 @@
 # Exim distribution directory before running the "make" command.
 
 # Things that depend on the operating system have default settings in
-# OS/Makefile-Default, but these are overridden for some OS by files called
-# called OS/Makefile-<osname>. You can further override these by creating files
-# called Local/Makefile-<osname>, where "<osname>" stands for the name of your
-# operating system - look at the names in the OS directory to see which names
-# are recognized.
+# OS/Makefile-Default, but these are overridden for some OS by files
+# called OS/Makefile-<osname>. You can further override these settings by
+# creating files Local/Makefile-<osname>, and Local/Makefile-<build>.
+# The suffix "<osname>" stands for the name of your operating system - look
+# at the names in the OS directory to see which names are recognized,
+# and "<build>" is the content of the environment variable "build".
 
 # However, if you are building Exim for a single OS only, you don't need to
 # worry about setting up Local/Makefile-<osname>. Any build-time configuration
@@ -178,6 +179,108 @@ SPOOL_DIRECTORY=/var/spool/exim
 
 
 ###############################################################################
+#                            TLS                                              #
+###############################################################################
+# Exim is built by default to support the SMTP STARTTLS command, which implements
+# Transport Layer Security using SSL (Secure Sockets Layer). This requires you
+# must install the OpenSSL library package or the GnuTLS library. Exim contains
+# no cryptographic code of its own.
+
+# If you are running Exim as a (TLS) server, just building it with TLS support
+# is all you need to do, as tls_advertise_hosts is set to '*' by
+# default. But you are advised to create a suiteable certificate, and tell
+# Exim about it by means of the tls_certificate and tls_privatekey run
+# time options, otherwise Exim will create a self signed certificate on
+# the fly.  If you are running Exim only as a (TLS) client, building it with
+# TLS support is all you need to do.
+#
+# If you are using pkg-config then you should not need to worry where
+# the libraries and headers are installed, as the pkg-config .pc
+# specification should include all -L/-I information necessary.
+# Enabling the USE_*_PC options should be sufficient. If not using
+# pkg-config, then you have to specify the libraries, and you might
+# need to specify the locations too.
+
+# Uncomment the following lines if you want
+# to build Exim without any TLS support (either OpenSSL or GnuTLS):
+# DISABLE_TLS=yes
+# Unless you do this, you must define one of USE_OPENSSL or USE_GNUTLS
+# below.
+
+# If you are building with TLS, the library configuration must be done:
+
+# Uncomment this if you are using OpenSSL
+USE_OPENSSL=yes
+# Uncomment one of these settings if you are using OpenSSL; pkg-config vs not
+# and an optional location.
+USE_OPENSSL_PC=openssl
+# TLS_LIBS=-lssl -lcrypto
+# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
+
+# Uncomment this if you are using GnuTLS
+# USE_GNUTLS=yes
+# Uncomment one of these settings if you are using GnuTLS; pkg-config vs not
+# and an optional location. If you disable SUPPORT_DANE below, you
+# can remove the gnutls-dane references here.  Earlier versions of GnuTLS
+# required libtasn1 and libgrypt also; add if needed.
+# USE_GNUTLS_PC=gnutls gnutls-dane
+# TLS_LIBS=-lgnutls -lgnutls-dane
+# TLS_LIBS=-L/usr/local/gnu/lib -lgnutls -ltasn1 -lgcrypt -lgnutls-dane
+
+# If using GnuTLS older than 2.10 and using pkg-config then note that Exim's
+# build process will require libgcrypt-config to exist in your $PATH.  A
+# version that old is likely to become unsupported by Exim in 2017.
+
+# The security fix we provide with the gnutls_allow_auto_pkcs11 option
+# (4.82 PP/09) introduces a compatibility regression.  The symbol is
+# not available if GnuTLS is build without p11-kit (--without-p11-kit
+# configure option).  In this case use AVOID_GNUTLS_PKCS11=yes when
+# building Exim.
+# AVOID_GNUTLS_PKCS11=yes
+
+# If you are running Exim as a server, note that just building it with TLS
+# support is not all you need to do. You also need to set up a suitable
+# certificate, and tell Exim about it by means of the tls_certificate
+# and tls_privatekey run time options. You also need to set tls_advertise_hosts
+# to specify the hosts to which Exim advertises TLS support. On the other hand,
+# if you are running Exim only as a client, building it with TLS support
+# is all you need to do.
+
+# If you are using pkg-config then you should not need to worry where the
+# libraries and headers are installed, as the pkg-config .pc specification
+# should include all -L/-I information necessary.  If not using pkg-config
+# then you might need to specify the locations too.
+
+# Additional libraries and include files are required for both OpenSSL and
+# GnuTLS. The TLS_LIBS settings above assume that the libraries are installed
+# with all your other libraries. If they are in a special directory, you may
+# need something like
+
+# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
+
+# or
+
+# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt -lgnutls-dane
+# If not using DANE under GnuTLS we can lose one library
+# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt
+
+# TLS_LIBS is included only on the command for linking Exim itself, not on any
+# auxiliary programs. If the include files are not in a standard place, you can
+# set TLS_INCLUDE to specify where they are, for example:
+
+# TLS_INCLUDE=-I/usr/local/openssl/include/
+# or
+# TLS_INCLUDE=-I/opt/gnu/include
+
+# You don't need to set TLS_INCLUDE if the relevant directories are already
+# specified in INCLUDE.
+
+
+# Uncomment the following line to remove support for TLS Resumption
+# DISABLE_TLS_RESUME=yes
+
+
+###############################################################################
 #           THESE ARE THINGS YOU PROBABLY WANT TO SPECIFY                     #
 ###############################################################################
 
@@ -332,6 +435,9 @@ LOOKUP_SQLITE_PC=sqlite3
 # LOOKUP_NWILDLSEARCH=yes
 
 
+# Some platforms may need this for LOOKUP_NIS:
+# LIBS += -lnsl
+
 #------------------------------------------------------------------------------
 # If you have set LOOKUP_LDAP=yes, you should set LDAP_LIB_TYPE to indicate
 # which LDAP library you have. Unfortunately, though most of their functions
@@ -350,25 +456,27 @@ LDAP_LIB_TYPE=OPENLDAP2
 
 
 #------------------------------------------------------------------------------
-# The PCRE library is required for Exim.  There is no longer an embedded
+# The PCRE2 library is required for Exim.  There is no longer an embedded
 # version of the PCRE library included with the source code, instead you
-# must use a system library or build your own copy of PCRE.
+# must use a system library or build your own copy of PCRE2.
 # In either case you must specify the library link info here.  If the
-# PCRE header files are not in the standard search path you must also
+# PCRE2 header files are not in the standard search path you must also
 # modify the INCLUDE path (above)
 #
 # Use PCRE_CONFIG to query the pcre-config command (first found in $PATH)
 # to find the include files and libraries, else use PCRE_LIBS and set INCLUDE
 # too if needed.
 
-PCRE_CONFIG=yes
-# PCRE_LIBS=-lpcre
+PCRE2_CONFIG=yes
+# PCRE_LIBS=-lpcre2
 
 
 #------------------------------------------------------------------------------
-# Uncomment the following line to add DANE support
+# Comment out the following line to remove DANE support
 # Note: Enabling this unconditionally overrides DISABLE_DNSSEC
-# For DANE under GnuTLS we need an additional library.  See TLS_LIBS below.
+# forces you to have SUPPORT_TLS enabled (the default).  For DANE under
+# GnuTLS we need an additional library.  See TLS_LIBS or USE_GNUTLS_PC
+# below.
 SUPPORT_DANE=yes
 
 #------------------------------------------------------------------------------
@@ -378,23 +486,31 @@ SUPPORT_DANE=yes
 # don't need to set LOOKUP_INCLUDE if the relevant directories are already
 # specified in INCLUDE. The settings below are just examples; -lpq is for
 # PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite, -lhiredis
-# is for Redis.
+# is for Redis, -ljansson for JSON.
 #
 # You do not need to use this for any lookup information added via pkg-config.
 
 # LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
-# LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
+# LOOKUP_INCLUDE +=-I /usr/local/include
+# LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3 -llmdb
+
+#------------------------------------------------------------------------------
+# If you included LOOKUP_LMDB above you will need the library. Depending
+# on where installed you may also need an include directory
+#
+# LOOKUP_INCLUDE += -I/usr/local/include
+# LOOKUP_LIBS += -llmdb
 
 
 #------------------------------------------------------------------------------
 # Compiling the Exim monitor: If you want to compile the Exim monitor, a
 # program that requires an X11 display, then EXIM_MONITOR should be set to the
-# value "eximon.bin". Comment out this setting to disable compilation of the
+# value "eximon.bin". De-comment this setting to enable compilation of the
 # monitor. The locations of various X11 directories for libraries and include
 # files are defaulted in the OS/Makefile-Default file, but can be overridden in
 # local OS-specific make files.
 
-
+# EXIM_MONITOR=eximon.bin
 
 
 #------------------------------------------------------------------------------
@@ -456,8 +572,19 @@ DISABLE_MAL_MKS=yes
 # DISABLE_DNSSEC=yes
 
 # To disable support for Events set DISABLE_EVENT to "yes"
-
 # DISABLE_EVENT=yes
+
+# Uncomment this line to remove support for early pipelining, per
+# https://datatracker.ietf.org/doc/draft-harris-early-pipe/
+# DISABLE_PIPE_CONNECT=yes
+
+
+# Uncomment the following to remove the fast-ramp two-phase-queue-run support
+# DISABLE_QUEUE_RAMP=yes
+
+# Uncomment the following lines to add SRS (Sender Rewriting Scheme) support
+# using only native facilities.
+SUPPORT_SRS=yes
 
 
 #------------------------------------------------------------------------------
@@ -471,21 +598,16 @@ DISABLE_MAL_MKS=yes
 
 # EXPERIMENTAL_DCC=yes
 
-# Uncomment the following lines to add SRS (Sender rewriting scheme) support.
-# You need to have libsrs_alt installed on your system (srs.mirtol.com).
-# Depending on where it is installed you may have to edit the CFLAGS and
-# LDFLAGS lines.
-
-EXPERIMENTAL_SRS=yes
-# CFLAGS  += -I/usr/local/include
-LOOKUP_LIBS += -lsrs_alt
-
 # Uncomment the following line to add DMARC checking capability, implemented
 # using libopendmarc libraries. You must have SPF and DKIM support enabled also.
-EXPERIMENTAL_DMARC=yes
-# DMARC_TLD_FILE= /etc/exim/opendmarc.tlds
+# Library version libopendmarc-1.4.1-1.fc33.x86_64  (on Fedora 33) is known broken;
+# 1.3.2-3 works.  I seems that the OpenDMARC project broke their API.
+SUPPORT_DMARC=yes
 # CFLAGS += -I/usr/local/include
-LOOKUP_LIBS += -lopendmarc
+LDFLAGS += -lopendmarc
+# Uncomment the following if you need to change the default. You can
+# override it at runtime (main config option dmarc_tld_file)
+# DMARC_TLD_FILE=/etc/exim/opendmarc.tlds
 
 # Uncomment the following line to add ARC (Authenticated Received Chain)
 # support.  You must have SPF and DKIM support enabled also.
@@ -502,13 +624,6 @@ LOOKUP_LIBS += -lopendmarc
 
 # Uncomment the following to include extra information in fail DSN message (bounces)
 # EXPERIMENTAL_DSN_INFO=yes
-
-# Uncomment the following to add LMDB lookup support
-# You need to have LMDB installed on your system (https://github.com/LMDB/lmdb)
-# Depending on where it is installed you may have to edit the CFLAGS and LDFLAGS lines.
-# EXPERIMENTAL_LMDB=yes
-# CFLAGS += -I/usr/local/include
-# LDFLAGS += -llmdb
 
 # Uncomment the following line to add queuefile transport support
 # EXPERIMENTAL_QUEUEFILE=yes
@@ -664,6 +779,9 @@ AUTH_TLS=yes
 # AUTH_LIBS=-lgsasl
 # AUTH_LIBS=-lgssapi -lheimntlm -lkrb5 -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lroken -lcrypt
 
+# If using AUTH_GSASL with SCRAM methods, you should also be defining
+# SUPPORT_I18N to get standards-conformant support of utf8 normalization.
+
 
 #------------------------------------------------------------------------------
 # When Exim is decoding MIME "words" in header lines, most commonly for use
@@ -749,76 +867,6 @@ HEADERS_CHARSET="ISO-8859-1"
 # define DEFAULT_CRYPT to the name of any function that has the same interface
 # as the traditional crypt() function.
 # *** WARNING *** WARNING *** WARNING *** WARNING *** WARNING ***
-
-
-#------------------------------------------------------------------------------
-# Exim can be built to support the SMTP STARTTLS command, which implements
-# Transport Layer Security using SSL (Secure Sockets Layer). To do this, you
-# must install the OpenSSL library package or the GnuTLS library. Exim contains
-# no cryptographic code of its own. Uncomment the following lines if you want
-# to build Exim with TLS support. If you don't know what this is all about,
-# leave these settings commented out.
-
-# This setting is required for any TLS support (either OpenSSL or GnuTLS)
-SUPPORT_TLS=yes
-
-# Uncomment one of these settings if you are using OpenSSL; pkg-config vs not
-USE_OPENSSL=yes
-USE_OPENSSL_PC=openssl
-# TLS_LIBS=-lssl -lcrypto
-
-# Uncomment the first and either the second or the third of these if you
-# are using GnuTLS.  If you have pkg-config, then the second, else the third.
-# USE_GNUTLS=yes
-# USE_GNUTLS_PC=gnutls
-# TLS_LIBS=-lgnutls -ltasn1 -lgcrypt
-
-# If using GnuTLS older than 2.10 and using pkg-config then note that Exim's
-# build process will require libgcrypt-config to exist in your $PATH.  A
-# version that old is likely to become unsupported by Exim in 2017.
-
-# The security fix we provide with the gnutls_allow_auto_pkcs11 option
-# (4.82 PP/09) introduces a compatibility regression.  The symbol is
-# not available if GnuTLS is build without p11-kit (--without-p11-kit
-# configure option).  In this case use AVOID_GNUTLS_PKCS11=yes when
-# building Exim.
-# AVOID_GNUTLS_PKCS11=yes
-
-# If you are running Exim as a server, note that just building it with TLS
-# support is not all you need to do. You also need to set up a suitable
-# certificate, and tell Exim about it by means of the tls_certificate
-# and tls_privatekey run time options. You also need to set tls_advertise_hosts
-# to specify the hosts to which Exim advertises TLS support. On the other hand,
-# if you are running Exim only as a client, building it with TLS support
-# is all you need to do.
-
-# If you are using pkg-config then you should not need to worry where the
-# libraries and headers are installed, as the pkg-config .pc specification
-# should include all -L/-I information necessary.  If not using pkg-config
-# then you might need to specify the locations too.
-
-# Additional libraries and include files are required for both OpenSSL and
-# GnuTLS. The TLS_LIBS settings above assume that the libraries are installed
-# with all your other libraries. If they are in a special directory, you may
-# need something like
-
-# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
-# or
-# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt
-
-# For DANE under GnuTLS we need an additional library.
-# TLS_LIBS += -lgnutls-dane
-
-# TLS_LIBS is included only on the command for linking Exim itself, not on any
-# auxiliary programs. If the include files are not in a standard place, you can
-# set TLS_INCLUDE to specify where they are, for example:
-
-# TLS_INCLUDE=-I/usr/local/openssl/include/
-# or
-# TLS_INCLUDE=-I/opt/gnu/include
-
-# You don't need to set TLS_INCLUDE if the relevant directories are already
-# specified in INCLUDE.
 
 
 #------------------------------------------------------------------------------
@@ -1433,6 +1481,15 @@ PID_FILE_PATH=/run/exim.pid
 # WARNED.
 
 # ENABLE_DISABLE_FSYNC=yes
+
+#------------------------------------------------------------------------------
+# For development, add this to include code to time various stages and report.
+# CFLAGS += -DMEASURE_TIMING
+
+# For a very slightly smaller build, for constrained systems, uncomment this.
+# The feature involved is purely for debugging.
+
+# DISABLE_CLIENT_CMD_LOG=yes
 
 EXTRALIBS=-ldl -lpam -lldap -llber
 
