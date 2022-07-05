@@ -9,7 +9,7 @@ source=("https://github.com/uzinfocom-org/wallpapers/archive/refs/tags/v${pkgver
 md5sums=("SKIP")
 install="${pkgname}.install"
 
-maindirname="${_pkgname}-${pkgver}"
+maindirname="wallpapers-${pkgver}"
 
 package() {
     cd "${srcdir}/${maindirname}"
