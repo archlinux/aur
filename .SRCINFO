@@ -1,7 +1,7 @@
 pkgbase = r-insight
 	pkgdesc = Easy Access to Model Information for Various Model Objects
-	pkgver = 0.17.1
-	pkgrel = 3
+	pkgver = 0.18.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=insight
 	arch = any
 	license = GPL
@@ -94,7 +94,7 @@ pkgbase = r-insight
 	optdepends = r-tripack
 	optdepends = r-truncreg
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/insight_0.17.1.tar.gz
-	sha256sums = 653c5542a0c953ad4b75800e2ab52eed244e1e698aa5bc9fc64dc657a3cece35
+	source = https://cran.r-project.org/src/contrib/insight_0.18.0.tar.gz
+	sha256sums = 41adc29f73aa37b95cfa7c84df3c025352926a2bd0989909e2180a84989af725
 
 pkgname = r-insight
