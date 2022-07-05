@@ -1,6 +1,6 @@
 --- a/mupen64plus-gui/mupen64plus-gui.pro
 +++ b/mupen64plus-gui/mupen64plus-gui.pro
-@@ -104,7 +104,6 @@ FORMS    += mainwindow.ui
+@@ -96,7 +96,6 @@ FORMS    += mainwindow.ui
  
  QMAKE_INCDIR += api interface
  

@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20220630.r4.gbb8f6e6
+pkgver=20220704.r6.gd338364
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
-depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'qt5-base'
-         'qt5-websockets' 'sdl2' 'sdl2_net' 'vulkan-icd-loader' 'zlib'
+depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'qt6-base'
+         'qt6-websockets' 'sdl2' 'sdl2_net' 'vulkan-icd-loader' 'zlib'
          'discord-game-sdk' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip and VRU support'
             'vosk-api: for VRU support (voice recognition unit)')
@@ -19,15 +19,17 @@ source=('git+https://github.com/loganmc10/m64p.git'
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-change-optimizations.patch'
         '030-m64p-remove-bundled-discord-and-vosk.patch'
-        '040-m64p-fix-paths.patch'
-        '050-m64p-add-pie.patch'
+        '040-m64p-fix-qmake.patch'
+        '050-m64p-fix-paths.patch'
+        '060-m64p-add-pie.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
             '038d8f811dd4632e87d4775f050dfaf0aea836c6ed4002b8ae1390b857e4e039'
             'cc19027b19c0b516280e5e939115483ded9c7f03b1ff5f91e589e0d6bae9f735'
-            'b6fd822625dea4209d996a345a17e637c7a08e622ada99f87861bb5b5996061d'
-            '11f7a3caa150a716a12ab0d70a98089d7502d7a716f41e9bc419469fe4e1957a'
-            'bfc34f267e0ee0f4ce2f65aaf5433060c6d542afbb54e24511187a95cf6f1f73'
+            'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
+            '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
+            '1a03b73ff9b447c717d59115a33e63ad49c0256eb9992ef541b4a3c5e31765c5'
+            'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
@@ -35,8 +37,9 @@ prepare() {
     patch -d m64p -Np1 -i "${srcdir}/010-m64p-remove-build-jobs-limitation.patch"
     patch -d m64p -Np1 -i "${srcdir}/020-m64p-change-optimizations.patch"
     patch -d m64p -Np1 -i "${srcdir}/030-m64p-remove-bundled-discord-and-vosk.patch"
-    patch -d m64p -Np1 -i "${srcdir}/040-m64p-fix-paths.patch"
-    patch -d m64p -Np1 -i "${srcdir}/050-m64p-add-pie.patch"
+    patch -d m64p -Np1 -i "${srcdir}/040-m64p-fix-qmake.patch"
+    patch -d m64p -Np1 -i "${srcdir}/050-m64p-fix-paths.patch"
+    patch -d m64p -Np1 -i "${srcdir}/060-m64p-add-pie.patch"
     rm -rf m64p/mupen64plus-{gui/discord,input-qt/vosk}
 }
 
@@ -49,6 +52,8 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -Wno-unused-function  -Wno-unused-variable'
+    
     cd m64p
     ./build.sh
 }
