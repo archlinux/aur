@@ -1,12 +1,12 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='revanced-patches'
 pkgver="2.8.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Official patches maintained by ReVanced'
 arch=('any')
 url="https://github.com/revanced/revanced-patches"
 license=('GPL3')
-depends=('java-environment>=17' 'revanced-cli')
+depends=('java-environment>=17')
 source=("${url}/releases/download/v${pkgver}/revanced-patches-${pkgver}.jar"
         "${url}/raw/v${pkgver}/LICENSE")
 sha256sums=('ec3a06f895d1aaa8e9f600f79c8eefc2cc587dcd85d1a36ec48578d67c466eaf'
