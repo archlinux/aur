@@ -8,6 +8,6 @@ pkgbase = python2-incremental
 	depends = python2
 	provides = python2-incremental
 	source = https://files.pythonhosted.org/packages/source/i/incremental/incremental-21.3.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 02f5de5aff48f6b9f665d99d48bfc7ec03b6e3943210de7cfc88856d755d6f57
 
 pkgname = python2-incremental
