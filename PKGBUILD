@@ -9,12 +9,13 @@
 
 pkgname=love07
 pkgver=0.7.2
-pkgrel=8
+pkgrel=9
 pkgdesc="An open-source 2D game engine using Lua scripting language (legacy 0.7.x version)"
 arch=('i686' 'x86_64')
 url="http://love2d.org/"
 license=('zlib')
-depends=('devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'lua51' 'mpg123' 'openal' 'physfs' 'sdl' 'libgl' 'glu')
+depends=('devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'lua51' 'mpg123' 'openal' 'physfs' 'sdl' 'libgl')
+makedepends=('glu')
 source=("https://github.com/love2d/love/releases/download/0.7.2/love-0.7.2-linux-src.tar.gz"
         "https://raw.githubusercontent.com/love2d/love/0.7.2/license.txt"
         "${pkgname}.svg::https://raw.githubusercontent.com/love2d/love/0.7.2/platform/unix/app.svg"
@@ -44,8 +45,11 @@ prepare() {
   sed -i '70itypedef XID GLXContextID;' "src/modules/graphics/opengl/GLee.h"
 
   echo
-  echo "Editing 'configure.in': removing MNG dependency (not needed by 'devil')"
+  echo "Editing 'configure.in':"
+  echo "-- removing MNG dependency (not needed by 'devil')"
+  echo "-- reenabling check for GLU: needed during build so better let 'configure' verify it"
   sed -e '/mng_initialize/d' \
+      -e '/gluOrtho2D/s/^#//' \
       -i 'configure.in'
 
   echo "Regenerating autoconf scripts after changing 'configure.in'..."
