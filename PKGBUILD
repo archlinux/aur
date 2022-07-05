@@ -5,7 +5,7 @@
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 
 pkgname=linux-enable-ir-emitter
-pkgver=4.0.0
+pkgver=4.1.2
 pkgrel=1
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
@@ -16,12 +16,12 @@ arch=('x86_64')
 provides=(linux-enable-ir-emitter)
 conflicts=(linux-enable-ir-emitter-git chicony-ir-toggle)
 
-depends=(python opencv usbutils)
+depends=(python opencv fmt)
 
 install=linux-enable-ir-emitter.install
 
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c37cc4012452f58b0a6b328b41045f4cc4012c50553a12491dbec9d67bb7637b')
+sha256sums=('cb18da17a5affc9d87ccc6e3fa221f3318e632d98da5e4733b1ce03bfd115b67')
 
 build() {
     make -C "${srcdir}/${pkgname}-${pkgver}/sources/driver/"
