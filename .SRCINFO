@@ -1,6 +1,6 @@
 pkgbase = kms-jsonrpc
 	pkgdesc = JSON-RPC library for Kurento media server
-	pkgver = 6.13.0
+	pkgver = 6.17.0
 	pkgrel = 1
 	url = https://github.com/Kurento/kms-jsonrpc
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = kms-jsonrpc
 	makedepends = kms-cmake-utils
 	depends = boost
 	depends = kms-jsoncpp
-	source = git://github.com/Kurento/kms-jsonrpc.git#tag=6.13.0
+	source = git+https://github.com/Kurento/kms-jsonrpc.git#tag=6.17.0
 	sha256sums = SKIP
 
 pkgname = kms-jsonrpc
-
