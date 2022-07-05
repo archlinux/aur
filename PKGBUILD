@@ -4,7 +4,7 @@
 # Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
 
 pkgname=windscribe-bin
-pkgver=2.4.8
+pkgver=2.4.11
 pkgrel=1
 pkgdesc="Windscribe Client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('windscribe-cli')
 provides=('windscribe')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://windscribe.com/install/desktop/linux_deb_x64/beta")
+source=("https://github.com/Windscribe/Desktop-App/releases/download/v2.4.11/windscribe_2.4.11_amd64.deb")
 sha512sums=('SKIP')
 
 package(){

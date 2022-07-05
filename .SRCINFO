@@ -1,6 +1,6 @@
 pkgbase = windscribe-bin
 	pkgdesc = Windscribe Client
-	pkgver = 2.4.8
+	pkgver = 2.4.11
 	pkgrel = 1
 	url = https://windscribe.com/download
 	install = windscribe-bin.install
@@ -16,7 +16,7 @@ pkgbase = windscribe-bin
 	conflicts = windscribe-cli
 	options = !strip
 	options = !emptydirs
-	source = https://windscribe.com/install/desktop/linux_deb_x64/beta
+	source = https://github.com/Windscribe/Desktop-App/releases/download/v2.4.11/windscribe_2.4.11_amd64.deb
 	sha512sums = SKIP
 
 pkgname = windscribe-bin

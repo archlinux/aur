@@ -35,6 +35,7 @@ post_install() {
 	systemctl start windscribe-helper
 	systemctl enable systemd-resolved
 	systemctl start systemd-resolved
+	ln -s /opt/windscribe/Windscribe /usr/bin/windscribe
 }
 
 pre_upgrade() {
@@ -50,4 +51,5 @@ post_upgrade() {
 pre_remove() {
 	systemctl stop windscribe-helper
 	systemctl disable windscribe-helper
+	rm /usr/bin/windscribe
 }
