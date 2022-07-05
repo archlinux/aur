@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=TSA
-_pkgver=1.3
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Time Series Analysis'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-tseries
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab71bea72d7146c2210a0923c57f429bcae54e22926d2b6d67b9429a80c165af')
+sha256sums=('7da53604f8cff7eb2f241b71b0f337c78c758c08658dc79e0baaf2c38546e591')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

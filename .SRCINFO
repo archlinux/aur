@@ -1,6 +1,6 @@
 pkgbase = r-tsa
 	pkgdesc = Time Series Analysis
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TSA
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-tsa
 	depends = r-leaps
 	depends = r-locfit
 	depends = r-tseries
-	source = https://cran.r-project.org/src/contrib/TSA_1.3.tar.gz
-	sha256sums = ab71bea72d7146c2210a0923c57f429bcae54e22926d2b6d67b9429a80c165af
+	source = https://cran.r-project.org/src/contrib/TSA_1.3.1.tar.gz
+	sha256sums = 7da53604f8cff7eb2f241b71b0f337c78c758c08658dc79e0baaf2c38546e591
 
 pkgname = r-tsa
