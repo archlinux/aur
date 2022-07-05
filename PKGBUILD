@@ -1,7 +1,9 @@
-# Maintainer: mikl_ls  <mikl_ls at protonmail dot com>
+# Maintainer: dreieck
+# Contributor: mikl_ls  <mikl_ls at protonmail dot com>
+
 pkgname=waydroid-openrc
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Waydroid Container Manager as an OpenRC service"
 arch=('any')
 url='https://waydro.id'
