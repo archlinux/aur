@@ -3,7 +3,7 @@
 
 pkgname=openiked
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('x86_64')
 url="https://www.openiked.org"
@@ -25,7 +25,7 @@ build() {
 	cd openiked-${pkgver}
 	mkdir build
 	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release ..
+	cmake -DCMAKE_SKIP_RPATH=TRUE -DCMAKE_BUILD_TYPE=Release ..
 	make
 }
 
