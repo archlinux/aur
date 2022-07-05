@@ -3,7 +3,7 @@
 
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Rapid fuzzy string matching in Python using various string metrics'
 arch=('x86_64')
@@ -25,11 +25,12 @@ checkdepends=(
 )
 optdepends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5f24f1e50c7bf0907995b3436bdeab4bcbc033ea5d2e850be68d8da910728dd3')
+sha256sums=('4cdb7ad70770a3d9342c1e2541a8cdf07629ba53464babe20b8236ef9a7ab0fd')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build \
+  RAPIDFUZZ_BUILD_EXTENSION=1 \
+      python setup.py build \
       -G "Unix Makefiles" \
       --build-type None \
       -DCMAKE_CXX_FLAGS_INIT=-fmacro-prefix-map="${srcdir@Q}"=. # remove references to srcdir
@@ -39,12 +40,13 @@ check() {
   cd "$_pkgname-$pkgver"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
-  PYTHONPATH="$PWD/_skbuild/linux-$CARCH-$python_version/cmake-install" pytest
+  PYTHONPATH="$PWD/_skbuild/linux-$CARCH-$python_version/cmake-install/src" pytest
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py --skip-cmake install --root="$pkgdir" --optimize=1 --skip-build
+  RAPIDFUZZ_BUILD_EXTENSION=1 \
+      python setup.py --skip-cmake install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
