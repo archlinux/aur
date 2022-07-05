@@ -1,5 +1,5 @@
 pkgbase = dust-mail-client
-	pkgver = v0.1.0.r13.gb8fef31
+	pkgver = v0.1.0.r15.gcb372f5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Guusvanmeerveld/Dust-Mail
@@ -7,7 +7,7 @@ pkgbase = dust-mail-client
 	license = MIT
 	makedepends = nodejs>=16.0.0
 	makedepends = yarn
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = git
 	makedepends = appstream
 	source = dust-mail-client-git::git+https://github.com/Guusvanmeerveld/Dust-Mail.git

@@ -2,8 +2,9 @@
 pkgbase='dust-mail-client'
 pkgname=('dust-mail-client-git')
 
-pkgver=v0.1.0.r13.gb8fef31
+arch=('x86_64')
 
+pkgver=v0.1.0.r15.gcb372f5
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -11,9 +12,7 @@ pkgver() {
 pkgrel=1
 epoch=1
 
-arch=('x86_64')
-
-makedepends=('nodejs>=16.0.0' 'yarn' 'rustup' 'git' 'appstream')
+makedepends=('nodejs>=16.0.0' 'yarn' 'cargo' 'git' 'appstream')
 
 url='https://github.com/Guusvanmeerveld/Dust-Mail'
 
@@ -24,11 +23,13 @@ source=("$pkgname::git+https://github.com/Guusvanmeerveld/Dust-Mail.git")
 sha512sums=('SKIP')
 md5sums=('SKIP')
 
-_prepare_git() {
-  rustup default 1.57
+prepare() {
+  cd "$srcdir/$pkgname/packages/client/src-tauri"
+
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-_build_git() {
+build() {
   cd "$pkgname/packages/client"
 
   yarn install --frozen-lockfile
@@ -36,6 +37,8 @@ _build_git() {
   unset SOURCE_DATE_EPOCH
 
   export VITE_DEFAULT_SERVER="https://dust-mail.herokuapp.com"
+
+  export RUSTUP_TOOLCHAIN=1.57
 
   yarn run tauri build
 }
@@ -46,10 +49,5 @@ package_dust-mail-client-git() {
   conflicts=('dust-mail-client')
   provides=('dust-mail-client')
 
-
-  _prepare_git
-
-  _build_git
-
-  cp "$srcdir/$pkgname/packages/client/src-tauri/target/release/bundle/deb/dust-mail-client_0.1.0_amd64/data/usr" "$pkgdir" -r
+  cp "$srcdir/$pkgname/packages/client/src-tauri/target/release/bundle/deb/${pkgbase}_0.1.0_amd64/data/usr" "$pkgdir" -r
 }
