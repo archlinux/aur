@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=BayesFactor
-_pkgver=0.9.12-4.3
+_pkgver=0.9.12-4.4
 pkgname=r-${_pkgname,,}
-pkgver=0.9.12.4.3
+pkgver=0.9.12.4.4
 pkgrel=1
 pkgdesc='Computation of Bayes Factors for Common Designs'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dcf9f88f31e7ac0451925528b025674ce38fe0c068868821c115ed42485e309c')
+sha256sums=('eab049e2ba31f39ec64f4d8983e8f0c3355c7b03315c2622e6e9f669aba27009')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
