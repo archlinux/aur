@@ -1,14 +1,14 @@
 # Maintainer: BrainDamage
 
 pkgname=python-untangle
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Converts XML to a Python object"
 arch=('any')
 url="https://github.com/stchris/untangle"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cd3c6d544a19c1207c6213021578d6c35fac57973e9ddf1d19165d17b284c7d9')
+sha256sums=('696643dd2879c1af55c592e07bf0de48d330157d2def66993abaa0169661dadc')
 
 
 # template start; name=tarball; version=1;
