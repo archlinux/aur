@@ -11,7 +11,7 @@ makedepends=(python-setuptools)
 conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=('3254779b0199521b79b6933700355606')
 
 build() {

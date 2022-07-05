@@ -10,7 +10,7 @@ pkgbase = open-fprintd
 	depends = fprintd-clients
 	provides = open-fprintd
 	conflicts = open-fprintd
-	source = https://github.com/uunicorn/open-fprintd/archive/0.6.tar.gz
+	source = open-fprintd-0.6.tar.gz::https://github.com/uunicorn/open-fprintd/archive/0.6.tar.gz
 	md5sums = 3254779b0199521b79b6933700355606
 
 pkgname = open-fprintd
