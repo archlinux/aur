@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.2
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=1
+pkgrel=3
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -57,6 +57,7 @@ fi
 prepare(){
   # Prepare patch
   cat gcc-11.3_Timer.patch > "$srcdir/$_srcname/gcc-11.3_Timer.patch"
+  cat hud_isore.patch > "$srcdir/$_srcname/hud_isore.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -88,9 +89,10 @@ prepare(){
   chmod 755 build-linux"$_bits".sh
   chmod 755 build-linux"$_bits"xplus.sh
 
-  # gcc 11.3 patch
+  # gcc 11.3 patch && hud score patch
   cd "$srcdir/$_srcname"
   patch -p1 < gcc-11.3_Timer.patch || return 1
+  patch -p1 < hud_isore.patch || return 1
 }
 
 build(){
