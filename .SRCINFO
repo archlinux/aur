@@ -1,6 +1,6 @@
 pkgbase = pscale-cli
 	pkgdesc = PlanetScale CLI client package for Arch
-	pkgver = 0.106.0
+	pkgver = 0.107.0
 	pkgrel = 0
 	url = https://github.com/planetscale/cli
 	install = pscale.install
@@ -10,7 +10,7 @@ pkgbase = pscale-cli
 	conflicts = pscale
 	conflicts = pscale-git
 	conflicts = pscale-bin
-	source = https://github.com/planetscale/cli/releases/download/v0.106.0/pscale_0.106.0_linux_amd64.tar.gz
-	sha256sums = c7a32583461f16ff498a21e3885f127cb5851fd46627f4857325a1f160012b8a
+	source = https://github.com/planetscale/cli/releases/download/v0.107.0/pscale_0.107.0_linux_amd64.tar.gz
+	sha256sums = df02580a148ff35e600b5b7101a5baf8e9a7d12655c86b2c1abcde0bf1040140
 
 pkgname = pscale-cli
