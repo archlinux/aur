@@ -10,7 +10,7 @@ depends=('python2' 'python2-ptyprocess')
 makedepends=('python2-setuptools')
 _name="${pkgname#python2-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
