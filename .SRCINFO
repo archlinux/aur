@@ -1,6 +1,6 @@
 pkgbase = python-pymisp
 	pkgdesc = Python library to access MISP platforms via their REST API
-	pkgver = 2.4.157
+	pkgver = 2.4.159
 	pkgrel = 1
 	url = https://github.com/MISP/PyMISP
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = python-pymisp
 	optdepends = python-urllib3: python-pymisp[brotli] support
 	optdepends = python-pyfaup: python-pymisp[url] support
 	optdepends = python-chardet: python-pymisp[url] support
-	source = python-pymisp-2.4.157.tar.gz::https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-2.4.157.tar.gz
+	source = python-pymisp-2.4.159.tar.gz::https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-2.4.159.tar.gz
 	source = remove-datafiles.patch
-	sha256sums = b19d6d565972b391f90e8fe7050101b3b84f45f83214d3bf9b339a6490856cf2
+	sha256sums = b42ae4bb92ec2be92962957ed7b7c112fe0648ac0ad095900dc2d71df7f4e37e
 	sha256sums = e97b356e9e3f8af08bb19c4c2356ed7f729b6a3d652b85f9ff4fb263763bb0fc
 
 pkgname = python-pymisp

@@ -4,7 +4,7 @@
 
 pkgname=python-pymisp
 _pkg="${pkgname#python-}"
-pkgver=2.4.157
+pkgver=2.4.159
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz"
         'remove-datafiles.patch')
-sha256sums=('b19d6d565972b391f90e8fe7050101b3b84f45f83214d3bf9b339a6490856cf2'
+sha256sums=('b42ae4bb92ec2be92962957ed7b7c112fe0648ac0ad095900dc2d71df7f4e37e'
             'e97b356e9e3f8af08bb19c4c2356ed7f729b6a3d652b85f9ff4fb263763bb0fc')
 
 prepare() {
