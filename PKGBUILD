@@ -3,7 +3,7 @@
 
 pkgname=scsi2sd-v6-git
 _gitname=SCSI2SD-V6
-pkgver=r278.57d0051a
+pkgver=r279.bd80a3d2
 pkgrel=1
 pkgdesc="Utilities for SCSI2SD (v6 hardware)"
 url="http://www.codesrc.com/mediawiki/index.php?title=SCSI2SD"
