@@ -3,7 +3,7 @@
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
-pkgver=2022.2.0
+pkgver=2022.3.0
 pkgrel=1
 pkgdesc="Head tracking software"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('qt5-base' 'opencv')
 makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja' 'qt5-tools')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" "opentrack.desktop")
-sha256sums=('137977969a515de65e64c3b16ff0c705b4bad4127cd7574bbc14d20ad9fb39da'
+sha256sums=('92b4a7b4e6e0821434203eaf7e6eecc8bca3517ed75db2cc34204e284754fb09'
             '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
 
 build() {

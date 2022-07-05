@@ -1,6 +1,6 @@
 pkgbase = opentrack
 	pkgdesc = Head tracking software
-	pkgver = 2022.2.0
+	pkgver = 2022.3.0
 	pkgrel = 1
 	url = https://github.com/opentrack/opentrack/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = opentrack
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = opencv
-	source = https://github.com/opentrack/opentrack/archive/opentrack-2022.2.0.tar.gz
+	source = https://github.com/opentrack/opentrack/archive/opentrack-2022.3.0.tar.gz
 	source = opentrack.desktop
-	sha256sums = 137977969a515de65e64c3b16ff0c705b4bad4127cd7574bbc14d20ad9fb39da
+	sha256sums = 92b4a7b4e6e0821434203eaf7e6eecc8bca3517ed75db2cc34204e284754fb09
 	sha256sums = 96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f
 
 pkgname = opentrack
