@@ -1,13 +1,14 @@
 # Maintainer: Sasha Romijn <arch at mxsasha.eu>
+# Maintainer: T.J. Townsend <tj@openbsd.org>
 
 pkgname=rpki-client
-pkgver="7.8"
-pkgrel=1
+pkgver=7.8
+pkgrel=2
 pkgdesc="Implementation of RPKI for Relying Parties to facilitate ROA validation"
 arch=('x86_64' 'aarch64')
 url="https://rpki-client.org"
 license=('ISC')
-depends=('glibc' 'rsync' 'libressl')
+depends=('glibc' 'expat' 'rsync' 'libressl')
 source=("https://cdn.openbsd.org/pub/OpenBSD/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	"sysusers-rpki-client.conf"
 	"tmpfiles-rpki-client.conf")
@@ -38,7 +39,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # /var directories should not be in package,
+  # /var directories should not be in packages
   # they will be installed by systemd
   rm -rf "${pkgdir}/var"
 

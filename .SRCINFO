@@ -1,13 +1,14 @@
 pkgbase = rpki-client
 	pkgdesc = Implementation of RPKI for Relying Parties to facilitate ROA validation
 	pkgver = 7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpki-client.org
 	install = rpki-client.install
 	arch = x86_64
 	arch = aarch64
 	license = ISC
 	depends = glibc
+	depends = expat
 	depends = rsync
 	depends = libressl
 	source = https://cdn.openbsd.org/pub/OpenBSD/rpki-client/rpki-client-7.8.tar.gz
