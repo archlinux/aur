@@ -1,6 +1,6 @@
 # Maintainer: Grigory Kirillov <txgk@bk.ru>
 pkgname=newsraft
-pkgver=0.5
+pkgver=0.6
 pkgrel=0
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/grisha/newsraft'
@@ -19,7 +19,7 @@ makedepends=(
 	'scdoc'
 	)
 source=("https://codeberg.org/grisha/newsraft/archive/newsraft-$pkgver.tar.gz")
-sha256sums=('53896c63d36ef8dd50132834bd2105ee897c12b22d9c486a4e3cb0112c3ab4e4')
+sha256sums=('cc7ee3238eb4a2c7eb32249504677037b57a7c8bba93b7d7762e5e4c6808254d')
 
 build() {
 	cd "$srcdir/newsraft"
