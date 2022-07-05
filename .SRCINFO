@@ -1,55 +1,61 @@
 pkgbase = obs-studio-browser
-	pkgdesc = Free and open source software for video recording and live streaming. Built with browser, vst plugins.
+	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 27.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	makedepends = libfdk-aac
-	makedepends = x264
-	makedepends = vlc-luajit
 	makedepends = swig
 	makedepends = luajit
-	makedepends = python
-	makedepends = cef-minimal-obs
-	makedepends = wayland
-	makedepends = qt5-wayland
 	makedepends = sndio
-	depends = ffmpeg
-	depends = pciutils
-	depends = jansson
-	depends = libxinerama
-	depends = qt5-svg
-	depends = qt5-x11extras
-	depends = curl
+	makedepends = lsb-release
+	makedepends = libajantv2
+	makedepends = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
+	makedepends = python
+	depends = jack
 	depends = gtk-update-icon-cache
-	depends = mbedtls
-	depends = pipewire
+	depends = x264
+	depends = rnnoise
+	depends = pciutils
+	depends = qt5-wayland
 	depends = libxcomposite
+	depends = pipewire
+	depends = xdg-desktop-portal
+	depends = libxss
+	depends = libxrandr
+	depends = nss
+	depends = at-spi2-atk
+	depends = ffmpeg-obs>=5
+	depends = vlc-luajit
+	depends = ftl-sdk
+	depends = mbedtls
 	optdepends = libfdk-aac: FDK AAC codec support
-	optdepends = libva-intel-driver: Hardware encoding
+	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
+	optdepends = libva-intel-driver: Hardware encoding (<= Haswell)
 	optdepends = libva-mesa-driver: Hardware encoding
-	optdepends = vlc-luajit: VLC Media Source
+	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
-	optdepends = xdg-desktop-portal: Pipewire capture
-	optdepends = python: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
+	optdepends = libajantv2: AJA NTV 2 support
+	optdepends = decklink: Blackmagic Design DeckLink support
+	optdepends = python: Python scripting
 	provides = obs-studio=27.2.4
+	provides = obs-vst
+	provides = obs-browser
 	conflicts = obs-studio
+	conflicts = obs-vst
+	conflicts = obs-browser
 	conflicts = obs-linuxbrowser
-	source = obs-studio-browser::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
-	source = git+https://github.com/Mixer/ftl-sdk.git
+	options = debug
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-vst.git
-	source = fix_python_binary_loading.patch
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = obs-studio-browser
