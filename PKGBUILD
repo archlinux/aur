@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-pymanopt
 _pkgname=pymanopt
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python toolbox for optimization on manifolds with support for automatic differentiation"
 _pypiname="pymanopt"
@@ -10,10 +10,10 @@ url="https://pymanopt.github.io"
 arch=('x86_64')
 license=('MIT')
 depends=('python-numpy' 'python-scipy')
-optdepends=('python-tensorflow' 'python-autograd' 'python-theano')
+optdepends=('python-tensorflow' 'python-autograd')
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pymanopt/pymanopt/archive/$pkgver.tar.gz")
-md5sums=('4bf0c39d01d017d668ffef12a5c6a495')
+md5sums=('f2eaa1299159b5199a264275ec688108')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
