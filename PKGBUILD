@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspGraphs
-_pkgver=0.5.2.14
+_pkgver=0.5.2.15
 pkgname=r-${_pkgname,,}
-pkgver=0.5.2.14
+pkgver=0.5.2.15
 pkgrel=1
 pkgdesc="Custom Graphs for JASP"
 arch=('x86_64')
