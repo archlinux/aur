@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-qtutilities
 	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (mingw-w64)
 	pkgver = 6.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Martchus/qtutilities
 	arch = any
 	license = GPL
