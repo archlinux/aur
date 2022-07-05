@@ -1,16 +1,12 @@
-Index: main.qml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/main.qml b/main.qml
---- a/main.qml	(revision d91f8d95b1c9eab3153d0a6f32abeaeb95f87104)
-+++ b/main.qml	(date 1644342454437)
-@@ -1160,12 +1160,6 @@
- 
+diff --git a/src/main.qml b/src/main.qml
+index b9f605c..dbb017c 100644
+--- a/src/main.qml
++++ b/src/main.qml
+@@ -1143,12 +1143,6 @@ ApplicationWindow {
+
              if ("imager" in o) {
                  var imager = o["imager"]
--                if ("latest_version" in imager && "url" in imager) {
+-                if (imageWriter.getBoolSetting("check_version") && "latest_version" in imager && "url" in imager) {
 -                    if (!imageWriter.isEmbeddedMode() && imageWriter.isVersionNewer(imager["latest_version"])) {
 -                        updatepopup.url = imager["url"]
 -                        updatepopup.openPopup()
