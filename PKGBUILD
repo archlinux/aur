@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-imgpaste
-pkgver=2.36.3
+pkgver=2.36.4
 pkgrel=1
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
@@ -27,7 +27,7 @@ options=(!lto)
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
         PasteBoardGtk.patch
         EnlargeObjectSize.patch)
-sha256sums=('732fcf8c4ec644b8ed28b46ebbd7c1ebab9d9e0afea9bdf5e5d12786afc478d1'
+sha256sums=('b6bebe1f85a479d968c19e44a4704622ef8cef61636ad1b2406b77d16ae2e2a8'
             'SKIP'
             '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b'
             'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac')
