@@ -4,7 +4,7 @@
 pkgbase=qubes-meta-packages
 pkgname=(qubes-vm-dependencies qubes-vm-recommended qubes-vm-repo)
 _gitname=${pkgname%-git*}
-pkgver=4.0.12
+pkgver=4.1.21
 pkgrel=1
 pkgdesc="Meta packages for Qubes-specific components"
 arch=("x86_64")
@@ -25,19 +25,15 @@ sha512sums=(
 
 
 build() {
-  #for source in repos ; do
-  #  # shellcheck disable=SC2154
-  #  (ln -s "${srcdir}/../${source}" "${srcdir}/${source}")
-  #done
   cd "${srcdir}/${_gitname}/"
 }
 
 package_qubes-vm-dependencies() {
-    depends=(qubes-vm-xen qubes-vm-core qubes-vm-gui qubes-vm-pulseaudio)
+    depends=(qubes-vm-xen qubes-vm-core qubes-vm-qrexec qubes-vm-gui qubes-vm-pulseaudio)
 }
 
 package_qubes-vm-recommended() {
-    depends=(qubes-gpg-split qubes-usb-proxy)
+    depends=(qubes-vm-passwordless-root qubes-vm-networking qubes-gpg-split qubes-usb-proxy)
 }
 
 package_qubes-vm-repo() {
@@ -46,8 +42,8 @@ package_qubes-vm-repo() {
 
     cd "${srcdir}/${_gitname}/"
 
-    install -m 0644 -D repos/archlinux-qubes-repo-4.0-current.conf "${pkgdir}/etc/pacman.d/90-qubes-4.0-current.conf.disabled"
-    install -m 0644 -D repos/archlinux-qubes-repo-4.0-current-testing.conf "${pkgdir}/etc/pacman.d/90-qubes-4.0-current-testing.conf.disabled"
+    install -m 0644 -D repos/archlinux-qubes-repo-4.1-current.conf "${pkgdir}/etc/pacman.d/90-qubes-4.1-current.conf.disabled"
+    install -m 0644 -D repos/archlinux-qubes-repo-4.1-current-testing.conf "${pkgdir}/etc/pacman.d/90-qubes-4.1-current-testing.conf.disabled"
 
     # Install keyring (will be activated through the .install file)
     install -dm755 "${pkgdir}/usr/share/pacman/keyrings/"

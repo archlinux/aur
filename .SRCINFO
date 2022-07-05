@@ -1,11 +1,11 @@
 pkgbase = qubes-meta-packages
 	pkgdesc = Meta packages for Qubes-specific components
-	pkgver = 4.0.12
+	pkgver = 4.1.21
 	pkgrel = 1
 	url = https://github.com/QubesOS/qubes-meta-packages
 	arch = x86_64
 	license = GPL
-	source = qubes-vm-dependencies::git+https://github.com/QubesOS/qubes-meta-packages.git?signed#tag=v4.0.12
+	source = qubes-vm-dependencies::git+https://github.com/QubesOS/qubes-meta-packages.git?signed#tag=v4.1.21
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
 	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
@@ -14,10 +14,13 @@ pkgbase = qubes-meta-packages
 pkgname = qubes-vm-dependencies
 	depends = qubes-vm-xen
 	depends = qubes-vm-core
+	depends = qubes-vm-qrexec
 	depends = qubes-vm-gui
 	depends = qubes-vm-pulseaudio
 
 pkgname = qubes-vm-recommended
+	depends = qubes-vm-passwordless-root
+	depends = qubes-vm-networking
 	depends = qubes-gpg-split
 	depends = qubes-usb-proxy
 
