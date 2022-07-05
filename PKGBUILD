@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-statistics-backend
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=0
 pkgdesc='eProsima Fast DDS Statistics Backend is a C++ library that provides collection and procession the statistics measurements reported by Fast DDS Statistics Module.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"dad68fc40b74bd7d08256eb24e203629b6e1babc1f1c027b294c6f6715491322fd6f5fe46d6647f8f7d2f70e437251d4cb59fa4642ad6933f5e5f5c1311a78d9"
+	"c42894fc39bf82e5234574afd87840cf7ac2a9060bc6e35bbac1c1f1b4a5c3e4f8a478b7083f08b63110d4df002f7cab0016b5bed2482e1e26f0be18d49f39c9"
 )
 
 prepare() {
