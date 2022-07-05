@@ -1,13 +1,13 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=ceb2txt
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A small tool that can convert ceb (Conversations Encrypted Backup) files to simple plain text.'
 arch=('any')
 url="https://github.com/inputmice/ceb2txt"
 license=('Apache')
-depends=('java-runtime')
-makedepends=('git' 'java-environment' 'maven')
+depends=('java-runtime' 'bash')
+makedepends=('java-environment' 'maven')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz" 'ceb2txt')
 
