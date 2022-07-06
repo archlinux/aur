@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-integration-git
-pkgver=2020.06.r40.ga157a78
+pkgver=2020.06.r145.g012d62b
 _imgui_pkgver=1.76
 pkgrel=1
 pkgdesc="Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)"
@@ -11,7 +11,7 @@ depends=('magnum-git' 'bullet' 'eigen' 'glm')
 makedepends=('cmake' 'git' 'ninja')
 provides=('magnum-integration')
 conflicts=('magnum-integration')
-source=("git+git://github.com/mosra/magnum-integration.git"
+source=("git+https://github.com/mosra/magnum-integration.git"
         "https://github.com/ocornut/imgui/archive/v${_imgui_pkgver}.tar.gz")
 sha1sums=('SKIP'
           '6d5d7688197e8002d916da8ddee81bfdd471176d')
@@ -31,11 +31,11 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_BULLET=ON \
-        -DWITH_EIGEN=ON \
-        -DWITH_GLM=ON \
-        -DWITH_DART=OFF \
-        -DWITH_IMGUI=ON \
+        -DMAGNUM_WITH_BULLET=ON \
+        -DMAGNUM_WITH_EIGEN=ON \
+        -DMAGNUM_WITH_GLM=ON \
+        -DMAGNUM_WITH_DART=OFF \
+        -DMAGNUM_WITH_IMGUI=ON \
         -G Ninja
     ninja
 }
