@@ -8,7 +8,7 @@ _pkgname=hwloc
 _target='aarch64-linux-gnu'
 pkgname=${_target}-${_pkgname}
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures'
 url='https://www.open-mpi.org/projects/hwloc/'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
 
   CFLAGS+=" -D__aarch64__ -march=armv8.8-a -fcf-protection=none -Wno-use-after-free"
   CXXFLAGS+=" -D__aarch64__ -march=armv8.8-a -fcf-protection=none -Wno-use-after-free"
-  QEMU_LD_PREFIX="/usr/${_target}/" LD_LIBRARY_PATH="/usr/${_target}/lib64" ${srcdir}/${_pkgname}-${pkgver}/configure \
+  QEMU_LD_PREFIX="/usr/${_target}/" LD_LIBRARY_PATH="/usr/${_target}/lib64" ${srcdir}/${_pkgname}-${pkgver}/configure CC="${_target}-gcc" \
     --build="${_target}" \
     --host="${_target}" \
     --prefix=/usr/${_target} \
@@ -40,7 +40,8 @@ build() {
 
 check() {
   pushd ${_pkgname}-build
-  #make check
+  # Illegal instruction as of now, will look into it later
+  # QEMU_LD_PREFIX="/usr/${_target}/" LD_LIBRARY_PATH="/usr/${_target}/lib64" make check
   popd
 }
 

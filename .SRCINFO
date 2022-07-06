@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-hwloc
 	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-mpi.org/projects/hwloc/
 	arch = x86_64
 	license = BSD
