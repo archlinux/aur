@@ -2,14 +2,14 @@
 
 pkgname=glpi-agent
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GLPI Agent"
 arch=('any')
 url='https://www.glpi-project.org'
 source=("https://github.com/glpi-project/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 license=('GPL2')
 makedepends=('perl-module-install')
-depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uuid" "perl-file-copy-recursive" "perl-http-server-simple"
+depends=( "make" "perl-test-simple" "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uuid" "perl-file-copy-recursive" "perl-http-server-simple"
           "perl-io-socket-ssl" "perl-xml-xpath" "perl-text-template" "perl-test-deep" "perl-parallel-forkmanager" "perl-ipc-run"
           "perl-test-exception" "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-test-mockmodule" "perl-http-proxy"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-test-mockobject" "perl-xml-treepp" "perl-test-compile" "perl-universal-require")

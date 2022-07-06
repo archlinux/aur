@@ -1,11 +1,13 @@
 pkgbase = glpi-agent
 	pkgdesc = GLPI Agent
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.glpi-project.org
 	arch = any
 	license = GPL2
 	makedepends = perl-module-install
+	depends = make
+	depends = perl-test-simple
 	depends = perl-cpanel-json-xs
 	depends = perl-datetime
 	depends = perl-file-which
