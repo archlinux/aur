@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-bindings-git
-pkgver=2020.06.r24.g52f2073
+pkgver=2020.06.r116.g62a07c3
 pkgrel=1
 pkgdesc="Bindings for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('magnum-git' 'python')
 makedepends=('cmake' 'git' 'ninja' 'pybind11')
 provides=('magnum-bindings')
 conflicts=('magnum-bindings')
-source=("git+git://github.com/mosra/magnum-bindings.git")
+source=("git+https://github.com/mosra/magnum-bindings.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -25,7 +25,7 @@ build() {
     cmake "$srcdir/${pkgname%-git}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWITH_PYTHON=ON \
+        -DMAGNUM_WITH_PYTHON=ON \
         -G Ninja
     ninja
 }
