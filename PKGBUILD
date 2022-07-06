@@ -12,9 +12,9 @@ DEBUG=0
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.13.0.r38.g88d88158c
-pkgrel=2
-epoch=1
+pkgver=0.13.1.r0.g8ffc7a8a6
+pkgrel=1
+epoch=2
 
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
@@ -28,7 +28,7 @@ optdepends=('bash-completion: bash completion support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$pkgname.install"
-source=("git+$url.git"
+source=("git+$url.git#tag=v0.13.1"
         # https://github.com/ipfs/go-ipfs/pull/8213#issuecomment-881866789
         rb.patch
 	strip.patch)

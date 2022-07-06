@@ -1,8 +1,8 @@
 pkgbase = go-ipfs-git
 	pkgdesc = A peer-to-peer hypermedia distribution protocol
-	pkgver = 0.13.0.r38.g88d88158c
-	pkgrel = 2
-	epoch = 1
+	pkgver = 0.13.1.r0.g8ffc7a8a6
+	pkgrel = 1
+	epoch = 2
 	url = https://github.com/ipfs/go-ipfs
 	install = go-ipfs-git.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = go-ipfs-git
 	optdepends = bash-completion: bash completion support
 	provides = go-ipfs
 	conflicts = go-ipfs
-	source = git+https://github.com/ipfs/go-ipfs.git
+	source = git+https://github.com/ipfs/go-ipfs.git#tag=v0.13.1
 	source = rb.patch
 	source = strip.patch
 	b2sums = SKIP
