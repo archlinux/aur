@@ -1,7 +1,7 @@
 # Maintainer: Austin Keller <austin474@gmail.com>
 
 pkgname=python-jep
-pkgver=4.0.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Java Embedded Python - Embeds CPython in Java through JNI"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('python-setuptools' 'python-numpy' 'java-environment')
 makedepends=('python-setuptools')
 provides=('python-jep')
 conflicts=('python-jep')
-source=(https://files.pythonhosted.org/packages/19/6e/745f9805f5cec38e03e7fed70b8c66d4c4ec3997cd7de824d54df1dfb597/jep-$pkgver.tar.gz)
-sha256sums=('fb27b1e95c58d1080dabbbc9eba9e99e69e4295f67df017b70df20f340c150bb')
+source=(https://files.pythonhosted.org/packages/03/b2/c8b4fe4ec63005701d990a1e07d6e9e8b148dd183ebbcfd38f1001fd382a/jep-$pkgver.tar.gz)
+sha256sums=('af903b0436d24824cbb364e9dc49d5de4bf98f4e19899755efcbb1d2151406e4')
 
 build() {
   export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default}
