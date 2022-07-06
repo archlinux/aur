@@ -13,8 +13,5 @@ sha256sums=('a27e6c4a9b474342b93609921da3326cfcb934203a3b6d378714dc6064bd73d7')
 
 package() {
 	cd -- "${pkgname}-${pkgver}"
-	install -Dm644 ./*.py -t "${pkgdir}/usr/lib/${pkgname}"
-	install -Dm755 ./*.sh -t "${pkgdir}/usr/lib/${pkgname}"
-	install -d "${pkgdir}/usr/bin"
-	ln -sr "${pkgdir}/usr/lib/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	PREFIX="${pkgdir}/usr" make install
 }
