@@ -1,21 +1,21 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
  
-# Based on aur/chromium-vaapi, with ungoogled-chromium patches
+# Based on extra/chromium, with ungoogled-chromium patches
 
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
- 
+
 pkgname=ungoogled-chromium
-pkgver=103.0.5060.53
-pkgrel=2
+pkgver=103.0.5060.114
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
-url="https://github.com/Eloston/ungoogled-chromium"
+url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
@@ -27,7 +27,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(#https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+        https://vin.ovh/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         enable-GlobalMediaControlsCastStartStop.patch
@@ -35,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-make-VirtualCursor-standard-layout-type.patch
         remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('0ecbae14670506da90c8bf744f83f52a64a5fff0765c2e2e066b0e68b805b101'
+sha256sums=('00ec2f0506802132b8e97eb757365cadf44627ba2ae63509ec24a352e5a8ed76'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
@@ -45,8 +46,8 @@ sha256sums=('0ecbae14670506da90c8bf744f83f52a64a5fff0765c2e2e066b0e68b805b101'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 provides=('chromium')
 conflicts=('chromium')
-_uc_usr=Eloston
-_uc_ver=$pkgver-1
+_uc_usr=ungoogled-software
+_uc_ver=103.0.5060.53-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
