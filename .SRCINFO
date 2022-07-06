@@ -1,6 +1,6 @@
 pkgbase = beeper
 	pkgdesc = all your chats in one app
-	pkgver = 3.15.17
+	pkgver = 3.16.1
 	pkgrel = 1
 	url = https://beeper.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = beeper
 	makedepends = p7zip
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = beeper-3.15.17.AppImage
+	noextract = beeper-3.16.1.AppImage
 	options = !strip
-	source = beeper-3.15.17.AppImage::https://download.beeper.com/linux/appImage/x64
-	sha256sums = e64b38cb4740ea601bcdc1c05170951664dc82883f87c6f787fdc18893e499a7
+	source = beeper-3.16.1.AppImage::https://download.beeper.com/linux/appImage/x64
+	sha256sums = 6bd1b3c917402e145c7a77e9e02b1c277583eb4abbef332d68c8d8b57b267b30
 
 pkgname = beeper
