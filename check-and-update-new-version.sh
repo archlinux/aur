@@ -6,7 +6,7 @@ currentVersion=`curl https://www.mkgmap.org.uk/download/mkgmap.html --silent | g
 
 if [ -z "${currentVersion}" ]; then
     echo "mkgmap.org.uk is down or the version number could not be parsed"
-    exit 0
+    exit -1
 fi
 
 if [ "${lastVersion}" = "${currentVersion}" ]; then
