@@ -1,7 +1,7 @@
 pkgbase = trek
 	pkgdesc = The version of trek found in debian's bsdgames collection
 	pkgver = 2.17.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/games-team/bsdgames
 	arch = any
 	license = custom:BSD

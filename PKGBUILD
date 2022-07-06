@@ -2,7 +2,7 @@
 pkgname=trek
 _pkgver=2.17-29
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The version of trek found in debian's bsdgames collection"
 license=('custom:BSD')
 arch=('any')
@@ -22,5 +22,7 @@ package() {
     cd "bsdgames-debian-$_pkgver"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 trek/trek.6.gz "$pkgdir/usr/share/man/man6/trek.6.gz"
-    install -Dm755 trek/trek "$pkgdir/usr/bin/trek"
+    install -Dm755 trek/trek "$pkgdir/usr/games/trek"
+    install -Dm644 trek/USD.doc/trek.me \
+        "$pkgdir/usr/share/doc/bsd-games/trek.me"
 }
