@@ -1,21 +1,24 @@
+GROUP=http
+USER=http
+
+pre_install() {
+  getent group ${GROUP} > /dev/null || groupadd --system ${GROUP}
+  getent passwd ${USER} > /dev/null || useradd --system --gid ${USER} --home-dir /srv/http --shell /usr/bin/nologin --no-create-home ${USER}
+}
+
 post_install() {
-  groupadd --system glpi
-  useradd --system \
-    --home-dir /var/lib/glpi \
-    --shell /usr/bin/nologin \
-    --gid glpi \
-    glpi
-
-  chown -R glpi:glpi /var/lib/glpi /etc/glpi
+  chown -R http:http /etc/glpi
+  chown -R http:http /var/log/glpi
+  chown -R http:http /var/lib/glpi
+  chown -R http:http /usr/share/webapps/glpi
 }
 
-pre_remove() {
-  systemctl stop glpi
-  systemctl disable glpi
+pre_upgrade() {
+   pre_install
 }
 
-post_remove() {
-  userdel glpi
+post_upgrade() {
+   post_install
 }
 
 # vim:set ts=2 sw=2 et:
