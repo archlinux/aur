@@ -23,7 +23,7 @@ source=(
     "lib.patch"
 )
 sha256sums=('SKIP'
-            '776f121d9218176517f81ed02adb4075b738814009f3734d55d69867d544fb66'
+            '89d5375d600446bf3a14c19dc5ad342b63499db3b69ffa47a375f3d5ed0dba61'
             '77332e30219430f96420826c37742d2bc6f2fe9cbe0627fed24aa073daead37c')
 
 pkgver() {
