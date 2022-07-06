@@ -6,6 +6,7 @@ pkgbase = copyevent-git
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
+	makedepends = gcc
 	depends = libx11
 	depends = libxfixes
 	source = copyevent-git::git+https://github.com/madprops/copyevent.git

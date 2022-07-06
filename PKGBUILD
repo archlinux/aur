@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/madprops/copyevent"
 license=("Unlicense")
 depends=("libx11" "libxfixes")
-makedepends=("git")
+makedepends=("git" "gcc")
 sha256sums=("SKIP")
 source=("$pkgname::git+$url.git")
 
