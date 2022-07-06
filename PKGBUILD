@@ -123,7 +123,7 @@ build() {
 
   # Build libgccjit separately, to avoid building all compilers with --enable-host-shared
   # which brings a performance penalty
-  cd "${srcdir}"/libgccrsjit-build
+  cd "${srcdir}"/libgccjit-build
 
   "$srcdir/gccrs/configure" \
     --enable-languages=jit \
