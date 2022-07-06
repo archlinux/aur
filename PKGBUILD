@@ -1,41 +1,51 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 # Contributor: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
-pkgbase=gccrs-git
-pkgname=({gccrs,gccrs-libs,gccrs-fortran,gccrs-objc,gccrs-ada,gccrs-go,gccrs-d,gccrs-rust}-git)
-pkgver=12.0.0_r189195.gca0b06f86fd
-_majorver=${pkgver%%.*}
-_isl_link=https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl
-_isl=$(curl -s "$_isl_link/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/\.mirrorlist.*//')
-pkgrel=1
-pkgdesc='The GNU Compiler Collection with rust support'
-arch=($CARCH)
-license=(GPL LGPL FDL custom)
-url='https://github.com/Rust-GCC/gccrs'
-makedepends=(git binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python libxcrypt)
-checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
+# NOTE: libtool requires rebuilt with each new gcc version
 
+# You probably don't need support for all the languages, feel free to remove the ones you don't;
+# Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
+
+pkgbase=gccrs-git
+pkgname=({gccrs,gccrs-libs,lib32-gccrs-libs,gccrs-fortran,gccrs-objc,gccrs-ada,gccrs-go,gccrs-rust,libgccrsjit}-git)
+pkgver=13.0.0_r193646.g3164de6ac1b
+_majorver=${pkgver%%.*}
+pkgrel=1
+pkgdesc='The GNU Compiler Collection with rust front-end'
+arch=(x86_64)
+license=(GPL3 LGPL FDL custom)
+url='https://github.com/Rust-GCC/gccrs'
+makedepends=(
+  binutils
+  doxygen
+  gcc-ada
+  git
+  lib32-glibc
+  lib32-gcc-libs
+  libisl
+  libmpc
+  libxcrypt
+  python
+  zstd
+)
+checkdepends=(
+  dejagnu
+  expect
+  inetutils
+  python-pytest
+  tcl
+)
+options=(!emptydirs !lto !debug)
+_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=("${pkgname%-git}::git+https://github.com/Rust-GCC/gccrs.git"
-        $_isl_link/$_isl
         c89 c99
-        gdc_phobos_path.patch
-        fs64270.patch
-        ipa-fix-bit-CPP-when-combined-with-IPA-bit-CP.patch
-        ipa-fix-ICE-in-get_default_value.patch
         gcc-ada-repro.patch
-        gcc11-Wno-format-security.patch)
+)
 sha256sums=('SKIP'
-            'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
-            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee'
-            'fcb11c9bcea320afd202b031b48f8750aeaedaa4b0c5dddcd2c0a16381e927e4'
-            '42865f2af3f48140580c4ae70b6ea03b5bdca0f29654773ef0d42ce00d60ea16'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
 
 pkgver() {
   cd ${pkgbase%-git}
@@ -45,134 +55,124 @@ pkgver() {
 prepare() {
   cd gccrs
 
-  # link isl for in-tree build
-  ln -s ../${_isl%.tar.xz} isl ||:
-
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  # D hacks
-  patch -p1 -i "$srcdir/gdc_phobos_path.patch"
-
   # Reproducible gcc-ada
   patch -Np0 < "$srcdir/gcc-ada-repro.patch"
 
-  # configure.ac: When adding -Wno-format, also add -Wno-format-security
-  patch -Np0 < "$srcdir/gcc11-Wno-format-security.patch"
-
   mkdir -p "$srcdir/gccrs-build"
+  mkdir -p "$srcdir/libgccjit-build"
 }
 
 build() {
+  local _confflags=(
+    --prefix=/usr
+    --libdir=/usr/lib
+    --libexecdir=/usr/lib
+    --mandir=/usr/share/man
+    --infodir=/usr/share/info
+    --with-bugurl=https://bugs.archlinux.org/
+    --with-linker-hash-style=gnu
+    --with-system-zlib
+    --enable-__cxa_atexit
+    --enable-cet=auto
+    --enable-checking=release
+    --enable-clocale=gnu
+    --enable-default-pie
+    --enable-default-ssp
+    --enable-gnu-indirect-function
+    --enable-gnu-unique-object
+    --enable-linker-build-id
+    --enable-lto
+    --enable-multilib
+    --enable-plugin
+    --enable-shared
+    --enable-threads=posix
+    --disable-libssp
+    --disable-libstdcxx-pch
+    --disable-werror
+    --with-build-config=bootstrap-lto
+    --enable-link-serialization=1
+  )
   cd gccrs-build
 
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe}
-  CXXFLAGS=${CXXFLAGS/-pipe}
+  # Credits @allanmcrae
+  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/gcc/PKGBUILD
+  # TODO: properly deal with the build issues resulting from this
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  # See https://aur.archlinux.org/pkgbase/gcc-git/#comment-822240
-  CXXFLAGS=${CXXFLAGS/-Werror=format-security}
+  "$srcdir/gccrs/configure" \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,rust \
+    --enable-bootstrap \
+    "${_confflags[@]:?_confflags unset}"
 
-  # avoid warning _FORTIFY_SOURCE requires compiling with optimization (-O)
-  CPPFLAGS+=" -O2"
-  CPPFLAGS=${CPPFLAGS/-Werror=format-security}
-
-  "$srcdir/gccrs/configure" --prefix=/usr \
-      --libdir=/usr/lib \
-      --libexecdir=/usr/lib \
-      --mandir=/usr/share/man \
-      --infodir=/usr/share/info \
-      --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d,rust \
-      --with-isl \
-      --with-linker-hash-style=gnu \
-      --with-system-zlib \
-      --enable-__cxa_atexit \
-      --enable-cet=auto \
-      --enable-checking=release \
-      --enable-clocale=gnu \
-      --enable-default-pie \
-      --enable-default-ssp \
-      --enable-gnu-indirect-function \
-      --enable-gnu-unique-object \
-      --enable-install-libiberty \
-      --enable-linker-build-id \
-      --enable-lto \
-      --enable-multilib \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads=posix \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
-      --disable-werror \
-      --disable-bootstrap \
-      gdc_include_dir=/usr/include/dlang/gdc
-
-  make
+  # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
+  make -O STAGE1_CFLAGS="-O2" \
+    BOOT_CFLAGS="$CFLAGS" \
+    BOOT_LDFLAGS="$LDFLAGS" \
+    LDFLAGS_FOR_TARGET="$LDFLAGS" \
+    bootstrap
 
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+
+  # Build libgccjit separately, to avoid building all compilers with --enable-host-shared
+  # which brings a performance penalty
+  cd "${srcdir}"/libgccrsjit-build
+
+  "$srcdir/gccrs/configure" \
+    --enable-languages=jit \
+    --disable-bootstrap \
+    --enable-host-shared \
+    "${_confflags[@]:?_confflags unset}"
+
+  cp -a gccrs/libgccjit.so* ../gccrs-build/gcc/
 }
 
 check() {
   cd gccrs-build
 
-  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-  sed -i '/maybe-check-target-libphobos \\/d' Makefile
-
-  make check-rust || true
+  make -O -k check-rust || true
   "$srcdir/gccrs/contrib/test_summary"
 }
 
 package_gccrs-libs-git() {
-  pkgdesc='Runtime libraries shipped by GCC'
-  depends=(glibc)
-  options+=(!strip)
-  provides=("gccrs-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
-            libubsan.so libasan.so libtsan.so liblsan.so)
-  replaces=(gcc-multilib-git libgphobos-git)
+  pkgdesc='Runtime libraries shipped by GCC (git version)'
+  depends=('glibc>=2.27')
+  options=(!emptydirs !strip)
+  provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgo.so libgfortran.so
+  libubsan.so libasan.so libtsan.so liblsan.so)
+  conflicts=(gcc-libs{,-git})
+  replaces=(gcc-multilib-git)
 
-  cd gccrs-build/$CHOST
-  make -C libgcc DESTDIR="$pkgdir" install-shared
+  cd gccrs-build
+  make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
-  # beautiful hack I came up with to skip libs when they're missing :)
-  # i.e. when the respective languages were disabled
-  shopt -s nullglob
   for lib in libatomic \
-             [l]ibgfortran \
-             [l]ibgo \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub,t}san \
-             libstdc++-v3/src \
-             libvtv; do
-    make -C $lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+    libgfortran \
+    libgo \
+    libgomp \
+    libitm \
+    libquadmath \
+    libsanitizer/{a,l,ub,t}san \
+    libstdc++-v3/src \
+    libvtv; do
+    make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
-  shopt -u nullglob
 
-  # why ! and || instead of just &&, i hear you ask?
-  # so that $? is always 0 (unless make fails)
-  [[ ! -e libobjc ]] || make -C libobjc DESTDIR="$pkgdir" install-libs
-  make -C libstdc++-v3/po DESTDIR="$pkgdir" install
-
-  make -C libphobos DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/$_libdir/include/d/
-  rm -f "$pkgdir"/usr/lib/libgphobos.spec
+  make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
+  make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
   for lib in libgomp \
-             libitm \
-             libquadmath; do
-    make -C $lib DESTDIR="$pkgdir" install-info
+    libitm \
+    libquadmath; do
+    make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
   # remove files provided by lib32-gcc-libs
@@ -184,14 +184,14 @@ package_gccrs-libs-git() {
 }
 
 package_gccrs-git() {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gccrs-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
+  depends=("gccrs-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc zstd libisl.so)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc{,-multilib{,-git}})
-  conflicts=(gcc)
+  conflicts=(gcc{,-git})
   replaces=(gcc-multilib-git)
-  options+=(staticlibs)
+  options=(!emptydirs staticlibs debug)
 
   cd gccrs-build
 
@@ -239,14 +239,9 @@ package_gccrs-git() {
   make -C $CHOST/32/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
-  make -C libiberty DESTDIR="$pkgdir" install
-  install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
-
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-
-  # don't fail if can't remove the files (when certain languages were disabled)
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1 ||:
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info ||:
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -275,10 +270,10 @@ package_gccrs-git() {
 }
 
 package_gccrs-fortran-git() {
-  pkgdesc='Fortran front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Fortran front-end for GCC (git version)'
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-fortran gcc-multilib{,-git})
-  conflicts=(gcc-fortran)
+  conflicts=(gcc-fortran{,-git})
   replaces=(gcc-multilib-git)
 
   cd gccrs-build
@@ -299,10 +294,10 @@ package_gccrs-fortran-git() {
 }
 
 package_gccrs-objc-git() {
-  pkgdesc='Objective-C front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Objective-C front-end for GCC (git version)'
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-multilib{,-git})
-  conflicts=(gcc-objc)
+  conflicts=(gcc-objc{,-git})
   replaces=(gcc-multilib-git)
 
   cd gccrs-build
@@ -317,12 +312,12 @@ package_gccrs-objc-git() {
 }
 
 package_gccrs-ada-git() {
-  pkgdesc='Ada front-end for GCC (GNAT)'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Ada front-end for GCC (GNAT) (git version)'
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-ada gcc-multilib{,-git})
-  conflicts=(gcc-ada)
+  conflicts=(gcc-ada{,-git})
   replaces=(gcc-multilib-git)
-  options+=(staticlibs)
+  options=(!emptydirs staticlibs)
 
   cd gccrs-build/gcc
   make DESTDIR="$pkgdir" ada.install-{common,info}
@@ -357,10 +352,10 @@ package_gccrs-ada-git() {
 }
 
 package_gccrs-go-git() {
-  pkgdesc='Go front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
-  provides=("go=1.12.2" gcc-multilib{,-git})
-  conflicts=(gcc-go go{,-git})
+  pkgdesc='Go front-end for GCC (git version)'
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
+  provides=("go=1.18" gcc-multilib{,-git})
+  conflicts=(gcc-go{,-git} go{,-git})
   replaces=(gcc-multilib-git)
 
   cd gccrs-build
@@ -378,36 +373,9 @@ package_gccrs-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_gccrs-d-git() {
-  pkgdesc="D frontend for GCC"
-  depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gcc-d gdc{,-git})
-  conflicts=(gcc-d)
-  replaces=(gdc-git)
-  options=(staticlibs)
-
-  cd gccrs-build
-  make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
-
-  install -Dm755 gcc/gdc "$pkgdir"/usr/bin/gdc
-  install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
-
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
-  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
-
-  install -d "$pkgdir"/usr/include/dlang
-  ln -s /"${_libdir}"/include/d "$pkgdir"/usr/include/dlang/gdc
-
-  # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
 package_gccrs-rust-git() {
   pkgdesc="Rust frontend for GCC"
-  depends=("gccrs-git=$pkgver-$pkgrel")
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-rust{,-git})
   conflicts=(gcc-rust)
   replaces=(gcc-rust-git)
@@ -417,6 +385,54 @@ package_gccrs-rust-git() {
 
   install -Dm755 gcc/gccrs "$pkgdir"/usr/bin/gccrs
   install -Dm755 gcc/rust1 "$pkgdir"/"$_libdir"/rust1
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_lib32-gccrs-libs-git() {
+  pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
+  depends=('lib32-glibc>=2.27')
+  provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
+  conflicts=(lib32-gcc-libs{,-git})
+  groups=(multilib-devel-git)
+  options=(!emptydirs !strip)
+
+  cd gccrs-build
+
+  make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
+  rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
+
+  for lib in libatomic \
+    libgfortran \
+    libgo \
+    libgomp \
+    libitm \
+    libquadmath \
+    libsanitizer/{a,l,ub}san \
+    libstdc++-v3/src \
+    libvtv; do
+    make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+  done
+
+  make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
+
+  # remove files provided by gcc-libs
+  rm -rf "$pkgdir"/usr/lib
+
+  # Install Runtime Library Exception
+  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
+    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+}
+
+package_libgccrsjit-git() {
+  pkgdesc="Just-In-Time Compilation with GCC backend (git version)"
+  depends=("gccrs-git=$pkgver-$pkgrel" libisl.so)
+
+  cd gccrs-build
+  make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
