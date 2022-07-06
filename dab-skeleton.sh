@@ -19,7 +19,7 @@ cp $BASE_YML $NEW_YML
 rm -f /srv/http/data/webradios/DAB/rtsp\:\|\|$MYNAME\:8554*
 rm -f /srv/http/data/webradiosimg/rtsp\:\|\|$MYNAME\:8554*
 
-readarray -t services <<< $(dab-scanner-rtlsdr)
+readarray -t services <<< $(dab-scanner-rtlsdr -C 5A)
 for service in "${services[@]}"; do
 	if grep -q "^audioservice" <<< $service; then
 		readarray -d ';' -t field <<< $service
@@ -38,11 +38,11 @@ for service in "${services[@]}"; do
 		#    runOnDemand: dab-rtlsdr-3 -P "$service_name" -C $service_chan|ffmpeg -re -ar 48000 -ac 2 -f s16le  -i - -vn -c:a aac -b:a 160k -f rtsp rtsp://localhost:\$RTSP_PORT/\$RTSP_PATH
 
 		cat <<EOT >>$NEW_YML
-$legal_name:
-	runOnDemand: /srv/http/bash/dab/dabstart.sh $service_id $service_chan  \$RTSP_PORT \$RTSP_PATH
-	runOnDemandRestart: yes
-	runOnDemandStartTimeout: 15s
-	runOnDemandCloseAfter: 3s
+  $legal_name:
+    runOnDemand: /srv/http/bash/dab/dabstart.sh $service_id $service_chan  \$RTSP_PORT \$RTSP_PATH
+    runOnDemandRestart: yes
+    runOnDemandStartTimeout: 15s
+    runOnDemandCloseAfter: 3s
 EOT
 
 		systemctl restart rtsp-simple-server
