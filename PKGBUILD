@@ -36,6 +36,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
 replaces=('gzdoom1' 'gzdoom-legacy')
+options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
