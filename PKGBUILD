@@ -1,7 +1,7 @@
 # Maintainer: jzbor <jzbor at posteo dot net>
 pkgname=raw-to-img
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert raw files to regular image files"
 arch=('x86_64')
 url="https://github.com/jzbor/raw-to-img"
@@ -13,7 +13,7 @@ sha512sums=('a00e89efb94a8322ce0969d3e247b54fdb7bf9fa2dffd26463ef30adb8d44964c3d
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
