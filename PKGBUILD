@@ -2,7 +2,7 @@
 
 pkgname="symview-git"
 pkgdesc="Find files and create symlinks"
-pkgver=r31.761d26e
+pkgver=r32.06c6e6c
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/symview"
