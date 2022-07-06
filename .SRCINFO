@@ -9,7 +9,6 @@ pkgbase = qbittorrent-libtorrent-v1
 	makedepends = cmake
 	makedepends = boost
 	makedepends = qt6-tools
-	makedepends = qt6-svg
 	depends = libtorrent-rasterbar-1
 	depends = qt6-base
 	depends = qt6-svg

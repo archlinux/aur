@@ -18,7 +18,7 @@ arch=('x86_64')
 url='https://www.qbittorrent.org'
 license=(custom GPL)
 depends=(libtorrent-rasterbar-1 qt6-base qt6-svg hicolor-icon-theme)
-makedepends=(cmake boost qt6-tools qt6-svg)
+makedepends=(cmake boost qt6-tools)
 optdepends=('python: needed for torrent search tab')
 source=("https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-$pkgver.tar.xz"
         https://github.com/qbittorrent/qBittorrent/commit/73bce485.patch)
