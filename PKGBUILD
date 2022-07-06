@@ -11,11 +11,11 @@ license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ag4/ddev_linux-arm64.v1.19.4-ag4.tar.gz")
-sha256sums_aarch64=('4745a21e277c2edac7402a97148b7a97a8c1f1855425269b8acbf0cf5fd07fdb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ah9/ddev_linux-arm64.v1.19.4-ah9.tar.gz")
+sha256sums_aarch64=('b4f03faad1b2aae74368162cdf6071d30d11333a270ee192f62ca6e64c3f2b2a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ag4/ddev_linux-amd64.v1.19.4-ag4.tar.gz")
-sha256sums_x86_64=('fd4dbaaffcb0ea6d7c0927aceae7f705a7aeb426e0060f0021434b2de6725667')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rfay/ddev/releases/download/v1.19.4-ah9/ddev_linux-amd64.v1.19.4-ah9.tar.gz")
+sha256sums_x86_64=('693a01355c513defb6663a21b91d208b01ffcc4a261830da45e0d57c696a6558')
 
 package() {
   # bin
