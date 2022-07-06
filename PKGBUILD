@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cmake' 'git' 'ninja')
 provides=('corrade')
 conflicts=('corrade')
-source=("git+git://github.com/mosra/corrade.git")
+source=("git+https://github.com/mosra/corrade.git")
 sha1sums=('SKIP')
 
 pkgver() {

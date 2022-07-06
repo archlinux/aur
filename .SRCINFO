@@ -11,8 +11,7 @@ pkgbase = corrade-git
 	makedepends = ninja
 	provides = corrade
 	conflicts = corrade
-	source = git+git://github.com/mosra/corrade.git
+	source = git+https://github.com/mosra/corrade.git
 	sha1sums = SKIP
 
 pkgname = corrade-git
-
