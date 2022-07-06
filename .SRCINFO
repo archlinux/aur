@@ -1,0 +1,17 @@
+pkgbase = l3afpad-budlabs
+	pkgdesc = Simple plain text editor for GTK 3 (budlabs fork)
+	pkgver = 2022.07.06.1
+	pkgrel = 6
+	url = https://github.com/budRich/l3afpad
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	provides = l3afpad
+	conflicts = l3afpad
+	source = https://github.com/budRich/l3afpad/archive/2022.07.06.1/l3afpad-budlabs-2022.07.06.1.tar.gz
+	source = l3afpad.appdata.xml
+	sha256sums = 4ee3cde9fca76e46553d1032ef3bceb95d6f90ba4753066b70919ae01a143f77
+	sha256sums = 742e3d2d23e6bad8f56dccafdccc6c1b36cebdb7dd178b1f19942fcb37fe3ff8
+
+pkgname = l3afpad-budlabs
