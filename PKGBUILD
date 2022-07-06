@@ -13,7 +13,7 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
             'mesa: Hardware accelerated rendering'
             'libglvnd: Support multiple different OpenGL drivers at any given time'
-	    'libgnome-keyring: gnome keyriung support')
+            'libgnome-keyring: gnome keyring support')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=()
 source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb"
