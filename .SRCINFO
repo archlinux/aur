@@ -5,6 +5,7 @@ pkgbase = goldie-git
 	url = https://github.com/madprops/goldie
 	arch = x86_64
 	license = GPL3
+	makedepends = nim
 	makedepends = git
 	source = goldie-git::git+https://github.com/madprops/goldie.git
 	sha256sums = SKIP
