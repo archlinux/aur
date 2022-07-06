@@ -1,0 +1,24 @@
+pkgbase = aarch64-linux-gnu-openssl
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+	pkgver = 1.1.1.q
+	pkgrel = 1
+	url = https://www.openssl.org
+	arch = x86_64
+	license = custom:BSD
+	makedepends = perl
+	depends = aarch64-linux-gnu-glibc
+	optdepends = ca-certificates
+	optdepends = perl
+	replaces = aarch64-linux-gnu-openssl-perl
+	replaces = aarch64-linux-gnu-openssl-doc
+	backup = usr/aarch64-linux-gnu/etc/ssl/openssl.cnf
+	source = https://www.openssl.org/source/openssl-1.1.1q.tar.gz
+	source = https://www.openssl.org/source/openssl-1.1.1q.tar.gz.asc
+	source = ca-dir.patch
+	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
+	validpgpkeys = 7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C
+	sha256sums = d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca
+	sha256sums = SKIP
+	sha256sums = 75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2
+
+pkgname = aarch64-linux-gnu-openssl
