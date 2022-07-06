@@ -1,6 +1,6 @@
 pkgbase = arch-emerge-git
 	pkgdesc = A pacman frontend like Gentoo's emerge which manages packages based on a holistic view of the system
-	pkgver = r47.4395901
+	pkgver = r47.47477e5
 	pkgrel = 1
 	url = https://github.com/gissf1/arch-emerge
 	arch = any
