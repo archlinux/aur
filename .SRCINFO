@@ -1,13 +1,13 @@
 pkgbase = python-pymap3d
 	pkgdesc = Python coordinate conversions, following convention of several popular Matlab routines
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://pypi.org/project/pymap3d/
 	arch = any
 	license = BSD-2-Clause License
 	makedepends = python-setuptools
 	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/source/p/pymap3d/pymap3d-2.9.0.tar.gz
-	sha256sums = b70ac659086663270f85c420663216340f2fa4ea6335ccc44fb0668d7f0af198
+	source = https://files.pythonhosted.org/packages/source/p/pymap3d/pymap3d-2.9.1.tar.gz
+	sha256sums = 6286acf6b36e93ee92d6cc9c0353c258709edfeacd876dc5e87ec2b90ff7ee66
 
 pkgname = python-pymap3d
