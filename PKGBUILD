@@ -3,7 +3,7 @@
 
 pkgname=vcf-lv2
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='VCF LV2 plugins'
 arch=(x86_64 aarch64)
 url='https://github.com/linuxmao-org/vcf-lv2'
