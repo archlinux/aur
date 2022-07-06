@@ -33,10 +33,11 @@ package() {
   # shellcheck disable=SC2154
   local _dest="${pkgdir}/usr/share/${_distro}"
   local _profile="${srcdir}/${_pkgbase}/${_profile}"
+  local _build_repo="${srcdir}/${_pkgbase}/.gitlab/ci/build_repo.sh"
   cd "${_profile}" || exit
 
   mkdir -p work
-  ./build_repo.sh fakepkg
+  _build_repo "fakepkg"
   install -d -m 0755 -- "${_dest}"
   pkexec mkarchiso -v \
 	           -o "${_dest}" \
