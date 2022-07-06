@@ -1,13 +1,13 @@
 pkgbase = deck
 	pkgdesc = decK: Configuration management and drift detection for Kong and Kong Enterprise
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/Kong/deck
 	install = install.sh
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = deck-1.12.2.tar.gz::https://github.com/Kong/deck/archive/v1.12.2.tar.gz
-	sha256sums = a7e0131573954feecf962ea9748c2f51a3582ef8b263b76fcc338d11c1a3277f
+	source = deck-1.12.3.tar.gz::https://github.com/Kong/deck/archive/v1.12.3.tar.gz
+	sha256sums = 419ef7bc6c1db06cb0ac166fc2632b0eb4ea05eb40cd92745b8641b662c4303a
 
 pkgname = deck
