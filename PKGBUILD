@@ -2,7 +2,7 @@
 # Contributor: Lamelos <lamelos at gmail.com>
 
 pkgname=butane
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Human readable Butane Configs into machine readable Ignition Configs Translator"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=("git" "go" "make")
 source=("git+${url}.git#tag=v${pkgver}"
         "change-bin-dir.patch")
 sha256sums=('SKIP'
-            'b9d5854382f83d98c39e6a184da8c5015c7ab13fe5f96879f5f3458c561eb44b')
+            'bdb99494bf163a89269858f2aeb28b389837e9eb0b92b7b2c20e5a03f4941cde')
 
 prepare() {
     cd "${srcdir}"
