@@ -8,39 +8,41 @@
 
 pkgname=python-torchvision-rocm
 _pkgname='vision'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCM GPU support)'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
 license=('BSD')
 depends=(
-  python-typing_extensions
-  python-numpy
-  python-requests
-  python-pillow
-  python-scipy
-  python-pytorch-rocm
   ffmpeg4.4
+  python-numpy
+  python-pillow
+  python-pytorch-rocm
+  python-requests
+  python-scipy
+  python-typing_extensions
 )
 optdepends=(
+  'libjpeg-turbo: support for JPEG image codec'
+  'libpng: support for PNG format graphics files'
   'python-pycocotools: support for MS-COCO dataset'
 )
 makedepends=(
-  rocm-hip-sdk
   miopen
   python-setuptools
   qt5-base
+  rocm-hip-sdk
 )
 conflicts=(python-torchvision)
 provides=(python-torchvision)
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-  "5644.patch"
+  'force_disable_nvjpeg.patch'
 )
 sha512sums=(
-  'ebc48a9e9ef58cc93c1b095e565c67feb2bc1bf06551e8f891a0369c211c6732e10bf191298b0633a05664371fa6dc637aab851b01a57f6b3e0d5936e87ee8ae'
-  '113f44dac9417b2cdfcdfb48ca4097083e73419ebf0619e747cb73f440536a1fd9f720d233ccd22309fff1968fe22975f1bc183abb567e0c67ef74765d3eca29'
+  'e4ca6d3764b4114e5f485acf255021e18597715b8d7a53d700537c62a84ae1bb241c3cc561b86b236675973667a57ef8ca701657cb629a2ec9c8ae4bc023950e'
+  'SKIP'
 )
 
 get_pyver() {
@@ -49,20 +51,21 @@ get_pyver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # https://github.com/pytorch/vision/pull/5644
-  # Attempt to fix FFMPEG 5.0 compatibility 
-  patch -Np1 -i "${srcdir}/5644.patch"
+  # workaround wrong nvjpeg detection
+  patch -Np1 -i "${srcdir}/force_disable_nvjpeg.patch"
 }
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  FORCE_CUDA=1 CC=gcc CXX=g++ \
+  FORCE_CUDA=1 TORCHVISION_USE_NVJPEG=0 TORCHVISION_USE_VIDEO_CODEC=0 \
+    CC=gcc CXX=g++ \
     python setup.py build
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  FORCE_CUDA=1 CC=gcc CXX=g++ \
+  FORCE_CUDA=1 TORCHVISION_USE_NVJPEG=0 TORCHVISION_USE_VIDEO_CODEC=0 \
+    CC=gcc CXX=g++ \
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
