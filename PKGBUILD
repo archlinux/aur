@@ -10,7 +10,7 @@ pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(GPL2)
-depends=('libpng' 'libgl' 'freetype2' 'openssl' 'gpsd'
+depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd'
   'qt5-serialport' 'qt5-multimedia' 'qt5-location' 'qt5-charts' 'qt5-script')
 makedepends=('cmake' 'mesa' 'qt5-tools' 'qt5-webengine')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
