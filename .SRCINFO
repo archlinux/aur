@@ -1,7 +1,7 @@
 pkgbase = r-vgam
 	pkgdesc = Vector Generalized Linear and Additive Models
-	pkgver = 1.1.6
-	pkgrel = 3
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=VGAM
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = r-vgam
 	optdepends = r-mgcv
 	optdepends = r-vgamdata
 	optdepends = r-vgamextra
-	source = https://cran.r-project.org/src/contrib/VGAM_1.1-6.tar.gz
-	sha256sums = 446a61bac5dd4794e05d20c2f3901eec54afac52c6e23ce2787c5575170dd417
+	source = https://cran.r-project.org/src/contrib/VGAM_1.1-7.tar.gz
+	sha256sums = a4c52d392332477eac557c84b732f3c03dd48f75db3884e23c71cf99d991757e
 
 pkgname = r-vgam
