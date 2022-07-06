@@ -1,0 +1,26 @@
+pkgbase = gtest1.12
+	pkgdesc = Google Test - C++ testing utility
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = x86_64
+	license = BSD
+	makedepends = python
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = sh
+	depends = gcc-libs
+	depends = sh
+	optdepends = python: gmock generator
+	provides = gmock
+	provides = gtest
+	provides = gtest=1.12
+	conflicts = gmock
+	conflicts = gtest
+	replaces = gmock
+	source = googletest-release-1.12.1.tar.gz::https://github.com/google/googletest/archive/release-1.12.1.tar.gz
+	source = gtest-version.patch
+	sha512sums = a9104dc6c53747e36e7dd7bb93dfce51a558bd31b487a9ef08def095518e1296da140e0db263e0644d9055dbd903c0cb69380cb2322941dbfb04780ef247df9c
+	sha512sums = ad3ae6e8c503ff8391dbf9d71a3c3f65a058e7702816b614c985087c15a31d21ba59b96c881efa37106e7fc6d297c0653dea793cb99491655290a6d3fbddc90d
+
+pkgname = gtest1.12
