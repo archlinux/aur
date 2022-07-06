@@ -34,7 +34,12 @@ package() {
   local _profile="${srcdir}/${_pkgbase}/${_profile}"
   cd "${_profile}" || exit
 
+  mkdir work
   ./build_repo.sh fakepkg
   install -d -m 0755 -- "${_dest}"
-  pkexec mkarchiso -v "${_profile}" -o "${_dest}"
+
+  pkexec mkarchiso -v "${_profile}" \
+	           -o "${_dest}" \
+		   -w "${_profile}/work" \
+                      "${_profile}"
 }
