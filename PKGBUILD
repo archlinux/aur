@@ -8,24 +8,24 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=42.2
+pkgver=42.3
 pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop
+         libcanberra startup-notification zenity libsm gnome-desktop 
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
+checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 provides=(libmutter-10.so mutter)
 conflicts=(mutter)
 install=mutter-rounded.install
 
-_commit=10cece870cf25c15daa8b20130d328257ec5f132  # tags/42.2^0
+_commit=1903356b45c6c884a0451580f32494ff1288656d  # tags/42.3^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-setting"
 
