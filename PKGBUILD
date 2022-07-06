@@ -2,7 +2,7 @@
 
 pkgname=maui-settings-git
 _pkgname=${pkgname%-git}
-pkgver=r17.1ab55a3
+pkgver=r25.563c3a9
 pkgrel=1
 pkgdesc='Maui Settings Manager is a settings manager for the Maui DE'
 url='https://github.com/Nitrux/maui-settings'
