@@ -1,4 +1,4 @@
-# Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
+# Maintainer: spyophobia <76800505+spyophobia@users.noreply.github.com>
 
 pkgname=simple-tls-bin
 pkgver=0.7.0
