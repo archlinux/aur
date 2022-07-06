@@ -2,12 +2,13 @@
 
 pkgname="ezkl-git"
 pkgdesc="Remember and jump to paths in your shell"
-pkgver=r230.89c74e8
+pkgver=r232.737bac6
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/ezkl"
 license=("Boost")
 depends=("rofi")
+makedepends=("git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/ezkl.git")
 
