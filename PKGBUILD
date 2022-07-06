@@ -7,7 +7,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=19.4.1
+pkgver=19.5.0
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -144,16 +144,15 @@ _confs=(acl.conf
         voicemail.conf
         xmpp.conf)
 backup=("${_confs[@]/#/etc/$pkgname/}")
-install=$pkgname.install
 _archive="$pkgname-$pkgver"
 source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.logrotated"
         "$pkgname.tmpfiles")
-sha256sums=('6b0b985163f20fcc8f8878069b8a9ee725eef4cfbdb1c1031fe3840fb32d7abe'
+sha256sums=('f1775738fe9679d6602f83a96ec6735324fe7a50800fc09c97a70cc7c7cf00c8'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
-            '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
+            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
 
 build() {
 	cd "$_archive"
@@ -169,11 +168,12 @@ build() {
 		--sbindir=/usr/bin \
 		--with-imap=system
 
-	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR=/run/asterisk NOISY_BUILD=1
+	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$pkgname" NOISY_BUILD=1
 }
 
 package(){
 	cd "$_archive"
+
 	make DESTDIR="$pkgdir" install
 	make DESTDIR="$pkgdir" install-headers
 	make DESTDIR="$pkgdir" samples
@@ -191,8 +191,8 @@ package(){
 			<(IFS=$'\n'; echo "${_backs[*]}" | sort) &&
 		exit 1)
 
-	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*
+	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/$pkgname/asterisk.conf"
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/$pkgname/"*
 
 	mv "$pkgdir/var/run" "$pkgdir"
 
@@ -203,4 +203,6 @@ package(){
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$pkgname.logrotated" "$pkgdir/etc/logrotate.d/$pkgname"
 	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
+	chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"$pkgname"
 }
