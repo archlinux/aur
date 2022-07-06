@@ -8,7 +8,7 @@ pkgdesc="A simple Xaw-based TV program which uses the bttv driver or video4linux
 arch=(x86_64)
 url="https://git.linuxtv.org/${pkgname}3.git"
 license=(GPL)
-depends=(aalib v4l-utils libxv libxrandr libgl libdv zvbi libxinerama lirc libxft libxaw xorg-fonts-misc libxxf86vm)
+depends=(aalib v4l-utils libxv libxrandr libglvnd libdv zvbi libxinerama lirc libxft libxaw xorg-fonts-misc libxxf86vm)
 makedepends=(mesa git xorgproto)
 _commit=8e3feea862db68d3ca0886f46cd99fab45d2db7c
 source=("git+${url}#commit=${_commit}")
