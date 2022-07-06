@@ -2,7 +2,7 @@
 pkgname=munt-alsadrv
 _basepkgname=${pkgname%-alsadrv}
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I - ALSA sequencer driver'
-pkgver=2.5.3
+pkgver=2.6.3
 pkgrel=1
 arch=(x86_64)
 url=http://munt.sourceforge.net
@@ -13,7 +13,7 @@ __mt32suffix=libmt32emu
 source=("https://github.com/${pkgname}/${pkgname}/archive/${__mt32suffix}_${pkgver//./_}.zip")
 source=("https://github.com/${_basepkgname}/${_basepkgname}/archive/${__mt32suffix}_${pkgver//./_}.zip"
         "${pkgname}.service")
-sha512sums=('a8a9c3698b37e1417952801574ae1b9a2f6ca9b27c9322a2b54ba7dc42d275509e2fbc1a713a0f249f0ef39d95d98f0eb16ba62f9923ff8a6cbf10fbd239b718'
+sha512sums=('638ea1dbe5340f74642536c3fd8edd3cb5bd2947db95472b739066ecb85104dddfbb3fd0d4cd2f17962e8e2546c6abf9203b08a319dde026e4c0f3e2fa32210f'
             '178f6b478e3d88c5ccb3b60799ed398c57b75384c96c2ee91c9f95ab94b772a5b5ce7bbc87465f334e5fd3d6decf87c47d6dcea2fe22b687dc023931fa79d480')
 
 build () {
