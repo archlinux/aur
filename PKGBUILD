@@ -1,7 +1,7 @@
 # Maintainer: Danct12 <danct12@disroot.org>
 
 pkgname=libglibutil
-pkgver=1.0.62
+pkgver=1.0.65
 pkgrel=1
 pkgdesc="Library of glib utilities"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/sailfishos/libglibutil"
 license=('BSD')
 depends=('glib2')
 makedepends=('git')
-_commit="8219188c26d45f3ac17aad6d15091cf1ac608114" # tags/1.0.62
+_commit="e60bb18dcc299efa936f5a73d2073e6e04a40daf" # tags/1.0.65
 source=(${pkgname}::git+https://github.com/sailfishos/libglibutil.git#commit=${_commit})
 sha512sums=('SKIP')
 
