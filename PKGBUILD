@@ -1,15 +1,15 @@
 # Maintainer: Mike Sharov <msharov@users.sourceforge.net>
 
 pkgname=pam_autologin
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="PAM autologin module"
 arch=('x86_64')
-url="https://github.com/msharov/pam_autologin"
+url="https://sourceforge.net/projects/pam-autologin"
 license=('ISC')
 depends=('pam')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ebc3cfdc06a8319661f40e50fc7574be8be3d4d9d2d219ee1186a4bcb459805')
+source=("$pkgname-$pkgver.tar.gz::$url/files/$pkgname-$pkgver.tar.gz/download")
+sha256sums=('6d959b15e25ff5b84c4ea85f864553fbab8f6a5f0713891055fb9d058471885c')
 
 build() {
     cd $pkgname-$pkgver
