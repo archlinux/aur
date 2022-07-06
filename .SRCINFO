@@ -1,11 +1,12 @@
 pkgbase = python-untangle
 	pkgdesc = Converts XML to a Python object
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stchris/untangle
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python-defusedxml
 	depends = python
 	source = python-untangle-1.2.1.tar.gz::https://github.com/stchris/untangle/archive/1.2.1.tar.gz
 	sha256sums = 696643dd2879c1af55c592e07bf0de48d330157d2def66993abaa0169661dadc
