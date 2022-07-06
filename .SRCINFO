@@ -1,11 +1,12 @@
 pkgbase = pam_autologin
 pkgdesc = PAM autologin module
-pkgver = 1.1
+pkgver = 1.2
 pkgrel = 1
 url = https://github.com/msharov/pam_autologin
+url = https://sourceforge.net/projects/pam-autologin
 arch = x86_64
 license = ISC
 depends = pam
-source = pam_autologin-1.1.tar.gz::https://github.com/msharov/pam_autologin/archive/refs/tags/v1.1.tar.gz
-sha256sums = 5ebc3cfdc06a8319661f40e50fc7574be8be3d4d9d2d219ee1186a4bcb459805
+source = pam_autologin-1.2.tar.gz::https://sourceforge.net/projects/pam-autologin/files/pam_autologin-1.2.tar.gz
+sha256sums = 6d959b15e25ff5b84c4ea85f864553fbab8f6a5f0713891055fb9d058471885c
 pkgname = pam_autologin
