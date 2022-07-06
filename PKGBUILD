@@ -17,7 +17,7 @@ optdepends=()
 source=("git+${url}")
 sha256sums=('SKIP')
 
-package_archiso-profiles-git() {
+package() {
   # shellcheck disable=SC2154
   local _profiles_dir="${pkgdir}/usr/share/${_pkg}/configs"
 
