@@ -53,7 +53,6 @@ package() {
     install -d "$pkgdir"/usr/lib/emqx/releases
     install -d "$pkgdir"/etc/emqx
     install -d "$pkgdir"/var/lib/emqx
-    install -d "$pkgdir"/var/run/emqx
     install -d "$pkgdir"/var/log/emqx
 
     local buildDir="$srcdir"/emqx/_build/emqx/rel/emqx
