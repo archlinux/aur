@@ -6,7 +6,7 @@ pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
 _pkgver=2022-05-29
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
@@ -18,7 +18,6 @@ optdepends=('kvantum-theme-qogir-git: Matching Kvantum theme'
     'vimix-cursors: Matching cursor theme'
     'tela-icon-theme: Recommended icon theme')
 backup=(etc/qogir-gtk-theme/options.txt)
-conflicts=('qogir-gtk-theme-git')
 options=('!strip')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
