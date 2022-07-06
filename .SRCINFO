@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 10.f9b1775
+	pkgver = 15.e9fc239
 	pkgrel = 1
 	url = https://gitlab.com/shssoichiro/soifunc
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	optdepends = vapoursynth-plugin-bm3dcuda: Fast BM3D cuda/cuda_rtc/cpu support
 	provides = vapoursynth-plugin-soifunc
 	conflicts = vapoursynth-plugin-soifunc
-	source = soifunc::git+https://gitlab.com/shssoichiro/soifunc.git
+	source = soifunc::git+https://git.bluefalcon.cc/soichiro/soifunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-soifunc-git
