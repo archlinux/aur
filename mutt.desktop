@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Categories=Office;Network;Email
+Type=Application
+Icon=neomutt
+Name=Mutt
+GenericName=Mail client
+Comment=Simple text-based Mail User Agent
+Exec=mutt %U
+MimeType=x-scheme-handler/mailto
+Terminal=true

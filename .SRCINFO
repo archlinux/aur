@@ -1,0 +1,13 @@
+pkgbase = mutt-desktop
+	pkgdesc = Mutt desktop file
+	pkgver = 1
+	pkgrel = 1
+	url = http://mutt.org
+	arch = any
+	license = GPL
+	depends = mutt
+	depends = neomutt-logo
+	source = mutt.desktop
+	md5sums = SKIP
+
+pkgname = mutt-desktop
