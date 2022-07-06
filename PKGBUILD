@@ -2,17 +2,17 @@
 # Contributor : peeweep <peeweep at 0x0 dot ee>
 
 pkgname=tidal-dl
-pkgver=2022.6.23.3
+pkgver=2022.6.30.1
 pkgrel=1
 pkgdesc="Download videos and tracks from Tidal."
 arch=('any')
 url="https://github.com/yaronzz/Tidal-Media-Downloader"
 license=('Apache')
-depends=('python-aigpy' 'python-lyricsgenius' 'python-pycryptodome' 
+depends=('python-aigpy' 'python-lyricsgenius' 'python-pycryptodome'
          'python-pydub' 'python-prettytable' 'python-setuptools' 'python-psutil'
          'python-pyqt5' 'python-qt-material')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('acc34139f16afdfb5892d0287d3761d8139bd75cb10f65b78861c7325d52ac49')
+sha256sums=('41ff5351bb30d8cfcee36268aaa0a347ca98dd2f1c7ba7f32b9d65f92a00d82c')
 
 build() {
   cd "${pkgname}-${pkgver}"
