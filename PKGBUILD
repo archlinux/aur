@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
 pkgver=3.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ build() {
         -DVSP_USE_SYSTEM_CPPTEST=true \
         -DVSP_USE_SYSTEM_LIBXML2=true \
         -DVSP_USE_SYSTEM_EIGEN=true \
-        -DVSP_USE_SYSTEM_CODEELI=true \
+        -DVSP_USE_SYSTEM_CODEELI=false \
         -DVSP_USE_SYSTEM_FLTK=true \
         -DVSP_USE_SYSTEM_GLM=true \
         -DVSP_USE_SYSTEM_GLEW=true \
