@@ -11,6 +11,8 @@ pkgbase = archiso-profiles-git
 	makedepends = polkit
 	makedepends = shfmt
 	depends = archiso-persistent-git
+	provides = archiso-profiles
+	conflicts = archiso-profiles
 	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
 	sha256sums = SKIP
 
