@@ -46,7 +46,7 @@ pkgbase = emacs-pgtk-native-comp-git
 	replaces = emacs-seq
 	replaces = emacs-nox
 	options = !strip
-	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
+	source = emacs-git::emacs-git::git+https://github.com/emacs-mirror/emacs.git
 	b2sums = SKIP
 
 pkgname = emacs-pgtk-native-comp-git

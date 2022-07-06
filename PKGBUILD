@@ -87,7 +87,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-pgtk-native-comp-git"
 fi
-pkgver=29.0.50.156250
+pkgver=29.0.50.157962
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -99,7 +99,7 @@ makedepends=('git')
 provides=('emacs')
 replaces=('emacs')
 #source=("emacs-git::git://git.savannah.gnu.org/emacs.git"
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
+source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git"
         "nemacs")
 options=(!strip)
 install=emacs-git.install
