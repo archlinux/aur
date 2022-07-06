@@ -1,4 +1,0 @@
-31c31
-< 	chmod 644 ${DESTDIR}${PREFIX}/share/man/man1
----
-> 	chmod 755 ${DESTDIR}${PREFIX}/share/man/man1
