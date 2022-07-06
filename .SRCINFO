@@ -1,0 +1,13 @@
+pkgbase = obs-websocket-compat-bin
+	pkgdesc = Remote-control of OBS Studio through WebSocket (4.9.1 backwards-compatible)
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = https://github.com/obsproject/obs-websocket
+	arch = x86_64
+	license = GPL2
+	depends = obs-studio>=27.1.3
+	options = !strip
+	source = https://github.com/obsproject/obs-websocket/releases/download/5.0.0/obs-websocket-4.9.1-compat-Ubuntu64.deb
+	sha256sums = ece5f376a8d9af341e85ea517dedb4436d62f38dbce75128ab155aca47622eb3
+
+pkgname = obs-websocket-compat-bin
