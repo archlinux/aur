@@ -3,7 +3,7 @@
 pkgname=qqmusic-electron
 _pkgname=qqmusic
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQMusic, Run with system Electron."
 arch=("x86_64")
 url="https://y.qq.com/"
