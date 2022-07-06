@@ -1,0 +1,15 @@
+pkgbase = git-tools-git
+	pkgdesc = Assorted git tools, including git-restore-mtime
+	pkgver = 2020.09.r28.g12202fd
+	pkgrel = 1
+	url = https://github.com/MestreLion/git-tools
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	provides = git-tools
+	conflicts = git-tools
+	source = git-tools-git::git+https://github.com/MestreLion/git-tools.git
+	sha256sums = SKIP
+
+pkgname = git-tools-git
