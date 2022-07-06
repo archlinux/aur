@@ -1,3 +1,4 @@
+# Maintainer: Nicolas Derumigny <nderumigny@gmail.com>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Sylvain HENRY <hsyl20@yahoo.fr>
