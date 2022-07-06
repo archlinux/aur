@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://github.com/madprops/symview"
 license=("GPL3")
 depends=("rofi")
+makedepends=("git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/symview.git")
 
