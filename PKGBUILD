@@ -30,11 +30,11 @@ pkgver() {
 
 package() {
   # shellcheck disable=SC2154
+  local _dest="${pkgdir}/usr/share/${_distro}"
   local _profile="${srcdir}/${_pkgbase}/${_profile}"
   cd "${_profile}" || exit
 
   ./build_repo.sh fakepkg
-  pkexec mkarchiso -v "${_profile}"
-  install -d -m 0755 -- "${pkgdir}/usr/share/${_distro}"
-  mv "out/${_distro}-${_profile}"* "${pkgdir}/usr/share/${_distro}"
+  install -d -m 0755 -- "${_dest}"
+  pkexec mkarchiso -v "${_profile}" -o "${_dest}"
 }
