@@ -1,6 +1,6 @@
 pkgbase = archiso-persistent-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images with luks
-	pkgver = v58+214+gee08b3c
+	pkgver = v58+248+g710abd8
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/184
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = archiso-persistent-git
 	optdepends = qemu: for run_archiso
 	conflicts = archiso
 	conflicts = archiso-encryption
+	conflicts = archiso-persistent
 	replaces = archiso
 	replaces = archiso-encryption
 	replaces = archiso-persistent
