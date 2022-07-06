@@ -15,7 +15,6 @@ pkgbase = gccrs-git
 	checkdepends = tcl
 	makedepends = binutils
 	makedepends = doxygen
-	makedepends = gcc-ada
 	makedepends = git
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
@@ -30,11 +29,9 @@ pkgbase = gccrs-git
 	source = gccrs::git+https://github.com/Rust-GCC/gccrs.git
 	source = c89
 	source = c99
-	source = gcc-ada-repro.patch
 	sha256sums = SKIP
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
-	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
 
 pkgname = gccrs-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
@@ -62,7 +59,6 @@ pkgname = gccrs-libs-git
 	provides = gcc-libs
 	provides = gcc-multilib
 	provides = gcc-multilib-git
-	provides = libgo.so
 	provides = libgfortran.so
 	provides = libubsan.so
 	provides = libasan.so
@@ -79,7 +75,6 @@ pkgname = lib32-gccrs-libs-git
 	groups = multilib-devel-git
 	depends = lib32-glibc>=2.27
 	provides = lib32-gcc-libs
-	provides = libgo.so
 	provides = libgfortran.so
 	provides = libubsan.so
 	provides = libasan.so
@@ -99,42 +94,6 @@ pkgname = gccrs-fortran-git
 	conflicts = gcc-fortran-git
 	replaces = gcc-multilib-git
 
-pkgname = gccrs-objc-git
-	pkgdesc = Objective-C front-end for GCC (git version)
-	depends = gccrs-git=13.0.0_r193646.g3164de6ac1b-1
-	depends = libisl.so
-	provides = gcc-multilib
-	provides = gcc-multilib-git
-	conflicts = gcc-objc
-	conflicts = gcc-objc-git
-	replaces = gcc-multilib-git
-
-pkgname = gccrs-ada-git
-	pkgdesc = Ada front-end for GCC (GNAT) (git version)
-	depends = gccrs-git=13.0.0_r193646.g3164de6ac1b-1
-	depends = libisl.so
-	provides = gcc-ada
-	provides = gcc-multilib
-	provides = gcc-multilib-git
-	conflicts = gcc-ada
-	conflicts = gcc-ada-git
-	replaces = gcc-multilib-git
-	options = !emptydirs
-	options = staticlibs
-
-pkgname = gccrs-go-git
-	pkgdesc = Go front-end for GCC (git version)
-	depends = gccrs-git=13.0.0_r193646.g3164de6ac1b-1
-	depends = libisl.so
-	provides = go=1.18
-	provides = gcc-multilib
-	provides = gcc-multilib-git
-	conflicts = gcc-go
-	conflicts = gcc-go-git
-	conflicts = go
-	conflicts = go-git
-	replaces = gcc-multilib-git
-
 pkgname = gccrs-rust-git
 	pkgdesc = Rust frontend for GCC
 	depends = gccrs-git=13.0.0_r193646.g3164de6ac1b-1
@@ -143,8 +102,3 @@ pkgname = gccrs-rust-git
 	provides = gcc-rust-git
 	conflicts = gcc-rust
 	replaces = gcc-rust-git
-
-pkgname = libgccrsjit-git
-	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
-	depends = gccrs-git=13.0.0_r193646.g3164de6ac1b-1
-	depends = libisl.so
