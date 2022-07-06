@@ -7,9 +7,9 @@ _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver='1.0.0'
-pkgrel=7
-#pkgrel=7
-_rc='-rc7'
+pkgrel=8
+#pkgrel=8
+_rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
@@ -21,8 +21,8 @@ _scripts=${_pkgname}-scripts
 source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"
 )
-sha256sums=('5d724bd9ad3dcfafcbb1070391c0541bc80b13cab6d0b3dd290cdda7af39b4f9'
-            '1b149ef7eb5ce5ba5b7809a1ee0a4f1e1582506181812f60331e2817822cee69')
+sha256sums=('fa81cd4e7860bcb5ae49b7b6231c26ea1e4a5846323e433df0a03400129dabdf'
+            'd6f89b3363917253cf1acdff99d015468dd23a34e70fe02c3c445e455e30a16d')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
