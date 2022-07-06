@@ -104,7 +104,7 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.50.157450
+pkgver=29.0.50.157951
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -240,7 +240,7 @@ pkgver() {
 
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
+    sed -e 's/^.\+\ \[\([0-9]\+\.[0-9]\+\.[0-9]\+\?\)\].\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
