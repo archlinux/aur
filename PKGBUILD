@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clasp-cl-git
-pkgver=1.0.0_317_gfe74d9b5b
+pkgver=1.0.0_325_gda3906a15
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd clasp
-  ./koga --package-path=$pkgdir --llvm-config=/usr/lib/llvm13/bin/llvm-config --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
+  ./koga --reproducible-build --package-path=$pkgdir --llvm-config=/usr/lib/llvm13/bin/llvm-config --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ./koga --skip-sync --update-version
 }
 
