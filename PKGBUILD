@@ -1,6 +1,6 @@
 pkgname=kimchi-server-git
-pkgver=r27.770d55444e12
-pkgrel=3
+pkgver=r48.f26ac42ad5a8
+pkgrel=1
 pkgdesc='A bare-bones HTTP server'
 arch=('x86_64')
 url="https://sr.ht/~emersion/kimchi"
@@ -12,7 +12,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'dcc0ca834dafd0f0a959af57db59b54a307499402699a07f715ce102a9dd039b'
+  '60fb6d3996bb1e428338c96e3cd8ee6fa1aad90d62846cae73204f06ae5ca400'
 )
 
 pkgver() {
