@@ -5,6 +5,7 @@ pkgbase = clipton-git
 	url = https://github.com/madprops/clipton
 	arch = x86_64
 	license = Unlicense
+	makedepends = git
 	depends = rofi
 	depends = xclip
 	depends = copyevent-git

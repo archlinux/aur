@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://github.com/madprops/clipton"
 license=("Unlicense")
 depends=("rofi" "xclip" "copyevent-git")
+makedepends=("git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/clipton.git")
 
