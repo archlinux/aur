@@ -8,6 +8,7 @@ pkgbase = archiso-profiles-git
 	checkdepends = shellcheck
 	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = polkit
 	makedepends = shfmt
 	depends = archiso-persistent-git
 	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
