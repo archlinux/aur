@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termusic
-pkgver=0.6.16
+pkgver=0.6.17
 pkgrel=1
 pkgdesc="Music Player TUI written in Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('yt-dlp: download mp3'
             'ffmpeg: download mp3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('28ded1b349534b4a8790e33fd918e0806493aa861cdd9865a123f66df9ef48b593d0dc5aed2542c18d49ece3418178afc0afe0cf9453c00c537d2cba2013d85b')
+sha512sums=('b4c493d8760edf44a42174bbc6e8de64cd42b48cfa356494ed577eacec48f6ca4c99b9b956ec6254bed8a3eec8c9d4523c84d21738a1897b7c5ea499424b0cb5')
 options=('!lto')
 
 prepare() {
