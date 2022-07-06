@@ -1,7 +1,1 @@
-pkg
-src
-*.pkg.tar
-*.pkg.tar.xz
-*.jar
-
-scenic-view-*
+*
