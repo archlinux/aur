@@ -3,31 +3,27 @@
 # Contributor : lemovice <lemovice-at-ancestris-dot-org> 
 
 pkgname="ancestris"
-pkgver=11.20211017
+pkgver=12
 pkgrel=1
-pkgdesc="A genealogy program written in Java"
+pkgdesc="Unlimited family tree freeware"
 url="https://www.ancestris.org"
 license=("GPL3")
 arch=("any")
-optdepends=("java-runtime=8: to use java 8"
-            "java-runtime=10: to use java 10"
-            "java-runtime=11: to use java 11") # java 16 doesn't seem to be supported
-source=("https://www.ancestris.org/dl/pub/ancestris/releases/${pkgname}_${pkgver/\.*/}-${pkgver/*\./}.deb")
-sha256sums=('eda19606e4bf58cd8ad939461c7762184c0019ddf45423d88d8aafdfbaa3b8f5')
-backup=("etc/ancestris/ancestris.clusters" "etc/ancestris/ancestris.conf")
+optdepends=("java-runtime")
+source=("$url/compteur_dl.php?/dl/pub/ancestris/dev/ancestris-latest.zip"
+        "ancestris.desktop"
+        "ancestris.png")
+sha256sums=("SKIP"  # rolling release
+            "1f6cba5d8edf2787fd6ed74c84d18dadfcf1969598ea9fe20616da82bf81a07a"
+            "70d8af54533990c66543574aff0657383349275464dc9804b15ca94c5e50142d")
 options=("!strip")
 
-prepare(){
- tar -xf "data.tar.xz"
-}
-
 package(){
- # remove windows files
- find . -type f  \( -name "*.exe" -o -name "*.dll" \) -exec rm {} \;
+ # create missing directories
+ install -d -m 755 "$pkgdir/opt" "$pkgdir/usr/share/"{applications,pixmaps}
  # copy program files
- cp -r "usr" "$pkgdir"
- # move configuration
- install -d "$pkgdir/etc"
- mv "$pkgdir/usr/share/ancestris/etc" "$pkgdir/etc/ancestris"
- ln -s "/etc/ancestris" "$pkgdir/usr/share/ancestris/etc"
+ cp -r "ancestris" "$pkgdir/opt"
+ # copy desktop entry files
+ install -D -m 644 "ancestris.desktop" "$pkgdir/usr/share/applications/ancestris.desktop"
+ install -D -m 644 "ancestris.png" "$pkgdir/usr/share/pixmaps/ancestris.png" 
 }

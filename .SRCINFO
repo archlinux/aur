@@ -1,17 +1,17 @@
 pkgbase = ancestris
-	pkgdesc = A genealogy program written in Java
-	pkgver = 11.20211017
+	pkgdesc = Unlimited family tree freeware
+	pkgver = 12
 	pkgrel = 1
 	url = https://www.ancestris.org
 	arch = any
 	license = GPL3
-	optdepends = java-runtime=8: to use java 8
-	optdepends = java-runtime=10: to use java 10
-	optdepends = java-runtime=11: to use java 11
+	optdepends = java-runtime
 	options = !strip
-	backup = etc/ancestris/ancestris.clusters
-	backup = etc/ancestris/ancestris.conf
-	source = https://www.ancestris.org/dl/pub/ancestris/releases/ancestris_11-20211017.deb
-	sha256sums = eda19606e4bf58cd8ad939461c7762184c0019ddf45423d88d8aafdfbaa3b8f5
+	source = https://www.ancestris.org/compteur_dl.php?/dl/pub/ancestris/dev/ancestris-latest.zip
+	source = ancestris.desktop
+	source = ancestris.png
+	sha256sums = SKIP
+	sha256sums = 1f6cba5d8edf2787fd6ed74c84d18dadfcf1969598ea9fe20616da82bf81a07a
+	sha256sums = 70d8af54533990c66543574aff0657383349275464dc9804b15ca94c5e50142d
 
 pkgname = ancestris

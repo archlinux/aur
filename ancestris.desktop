@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ancestris
+Comment=Unlimited family tree freeware
+Exec=/opt/ancestris/bin/ancestris
+Icon=ancestris
+Terminal=false
+Type=Application
+Categories=Office;X-Genealogy;
