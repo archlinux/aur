@@ -70,6 +70,12 @@ elif [[ arch_auto == native ]]; then
     export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
 
+## An attempt to fix the NuGet SSL issue during the build -- didn't seem to work; users had to do this manually, so we'll rollback to an alternative
+#ln -s /etc/ssl /usr/lib/ssl
+#ln -s /etc/ssl /usr/lib64/ssl
+## ---
+export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
+
 # Default engine installation directory. Can be useful if you do not have a lot of space on the default storage drive
 # DON'T put a "/" at the start of the path
 _install_dir="opt/${pkgname}"
@@ -114,10 +120,6 @@ prepare() {
     sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies
   fi
   
-  # An attempt to fix the NuGet SSL issue during the build:
-  ln -s /etc/ssl /usr/lib/ssl
-  ln -s /etc/ssl /usr/lib64/ssl
-
   ./Setup.sh
 }
 
