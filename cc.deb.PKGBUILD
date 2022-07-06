@@ -5,19 +5,19 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='1.0.0'
-_rc='-rc7'
+_rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=7
+pkgrel=8
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
-_pkgarches=('armhf' 'arm64' 'amd64')
+_pkgarches=('amd64' 'arm64' 'armhf' 'armel')
 arch=('any')
 url="https://${_pkggopath}"
-makedepends=('dpkg') # 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
+makedepends=('dpkg')
 depends=()
-_debdeps="net-tools"
+_debdeps=""
 #_debdeps=""
 _scripts="skywire-scripts"
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
@@ -27,16 +27,19 @@ source=(
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-armhf.tar.gz"
+"${_release_url}-arm.tar.gz"
 )
 noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}armhf.tar.gz"
+"${_release_url}-arm.tar.gz"
 )
-sha256sums=('7d6bc4a657fddd0c58a710d53728e8546082dc3e2d61d2aea71716bb82b6e440'
-            '1c9a179095fee2895e12a34efc68c4bc6e5031eb6ee364ff838c0454a07dc427'
-            '93e82f3a6799e68fcbbb7f613ebf1f417fcb41456e98d68649772c7890c076e0'
-            'dc91bb6116fbd99e2260af1479e58296a53707a8e4132a247be7fd66d4407078')
+sha256sums=('f45b8eff316a16262f2b0533d244a923a92a88d6f13f9e965b3f9723942d4d3f'
+            'bc019915906df4a2be559b9bfc8b870e1a820071f799cd5608070fe242d29a6a'
+            'cf76f6a154a07501baa7208d8a99aa0ea28e5c72f8e37c45f76a1253f878faa4'
+            'f76d5e12b34ee67cf758c0df25e619ce28a9ae823497425c2bcca9f34db2c0c6'
+            'a6b97d0e0bc7f37460edcfe043f16cb28ca9dffb0930d305546e7382ba72259b')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -53,7 +56,6 @@ build() {
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
-
   done
 }
 
@@ -63,8 +65,8 @@ for i in ${_pkgarches[@]}; do
 _msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
 local _pkgarch1=${_pkgarch}
-if [[ ${_pkgarch} == "armhf" ]] ; then
-  local _pkgarch1=armhf
+if [[ ${_pkgarch} == "armel" ]] ; then
+  local _pkgarch1=arm
 fi
 
 local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
@@ -79,6 +81,7 @@ _msg2 'creating dirs'
 #set up to create a .deb package
 _debpkgdir="${pkgname}-${pkgver}-${pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
+
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
 _skyscripts="${_skydir}/scripts"
@@ -119,7 +122,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 #make sure everything is executable
 chmod +x ${_pkgdir}/usr/bin/*
 
-#install dmsghttp-config.json
+_msg2 'installing dmsghttp-config.json'
 install -Dm644 ${pkgdir}/test/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
@@ -149,21 +152,8 @@ done
 exit
 }
 
-_install2() {
-_binname="${1##*/}"
-_binname="${_binname%%.*}"
-install -Dm755 ${1} ${_pkgdir}/${2}/${_binname}
-ln -rTsf ${_pkgdir}/${2}/${_binname} ${_pkgdir}/usr/bin/${_binname}
-}
-
 _msg2() {
 	(( QUIET )) && return
 	local mesg=$1; shift
 	printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
-}
-
-_msg3() {
-(( QUIET )) && return
-local mesg=$1; shift
-printf "${BLUE}  -->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
 }

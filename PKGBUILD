@@ -5,8 +5,8 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.0.0'
-pkgrel=7
-_rc='-rc7'
+pkgrel=8
+_rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -14,32 +14,32 @@ arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'arm
 url="https://${_pkggopath}"
 provides=( 'skywire' )
 conflicts=( 'skywire' )
-depends=( 'net-tools' )
+#depends=( '' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('7d6bc4a657fddd0c58a710d53728e8546082dc3e2d61d2aea71716bb82b6e440')
-sha256sums_x86_64=('1c9a179095fee2895e12a34efc68c4bc6e5031eb6ee364ff838c0454a07dc427')
-sha256sums_aarch64=('93e82f3a6799e68fcbbb7f613ebf1f417fcb41456e98d68649772c7890c076e0')
-sha256sums_armv8=('93e82f3a6799e68fcbbb7f613ebf1f417fcb41456e98d68649772c7890c076e0')
-sha256sums_armv7=('dc91bb6116fbd99e2260af1479e58296a53707a8e4132a247be7fd66d4407078')
-sha256sums_armv7l=('dc91bb6116fbd99e2260af1479e58296a53707a8e4132a247be7fd66d4407078')
-sha256sums_armv7h=('dc91bb6116fbd99e2260af1479e58296a53707a8e4132a247be7fd66d4407078')
-sha256sums_arm=('dc91bb6116fbd99e2260af1479e58296a53707a8e4132a247be7fd66d4407078')
-#https://github.com/skycoin/skywire/releases/download/v1.0.0-rc6/skywire-v1.0.0-rc6-linux-amd64.tar.gz
+sha256sums=('f45b8eff316a16262f2b0533d244a923a92a88d6f13f9e965b3f9723942d4d3f')
+sha256sums_x86_64=('bc019915906df4a2be559b9bfc8b870e1a820071f799cd5608070fe242d29a6a')
+sha256sums_aarch64=('cf76f6a154a07501baa7208d8a99aa0ea28e5c72f8e37c45f76a1253f878faa4')
+sha256sums_armv8=('cf76f6a154a07501baa7208d8a99aa0ea28e5c72f8e37c45f76a1253f878faa4')
+sha256sums_armv7=('f76d5e12b34ee67cf758c0df25e619ce28a9ae823497425c2bcca9f34db2c0c6')
+sha256sums_arm=('a6b97d0e0bc7f37460edcfe043f16cb28ca9dffb0930d305546e7382ba72259b')
+#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-amd64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm64.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-armhf.tar.gz
+#https://github.com/skycoin/skywire/releases/download/v1.0.0/skywire-v1.0.0-linux-arm.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
 source_armv8=( ${source_aarch64[@]} )
-source_arm=("${_release_url}-armhf.tar.gz")
-source_armv7=( ${source_arm[@]} )
-source_armv7l=( ${source_arm[@]} )
-source_armv7h=( ${source_arm[@]} )
+source_arm=("${_release_url}-arm.tar.gz")
+source_armv7=("${_release_url}-armhf.tar.gz")
+source_armv7l=( ${source_armhf[@]} )
+source_armv7h=( ${source_armhf[@]} )
 
 package() {
 _msg2 'Creating dirs'
-#create directory trees or the visor might make them with weird permissions
 _pkgdir="${pkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
@@ -82,7 +82,6 @@ chmod +x ${_pkgdir}/usr/bin/*
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
-#install systemd services
 _msg2 'Installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
 
