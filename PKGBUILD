@@ -1,7 +1,7 @@
 # Maintainer: Savely Krasovsky <savely@krasovs.ky>
 pkgname=reform-tools
 pkgver=1.7
-pkgrel=0
+pkgrel=1
 pkgdesc="MNT Reform laptop tools"
 arch=('x86_64' 'aarch64')
 url="https://mntre.com/reform2/handbook/index.html"
@@ -27,7 +27,7 @@ prepare() {
 	cd reform-tools-$_commit
 
 	mkdir -p $srcdir/usr/share/fonts
-	rm -r $srcdir/usr/share/fonts/Iosevka-Term
+	rm -rf $srcdir/usr/share/fonts/Iosevka-Term
 	mv Iosevka-Term $srcdir/usr/share/fonts
 
 	mkdir -p $srcdir/usr/lib/udev/rules.d
@@ -43,7 +43,7 @@ prepare() {
 	mv bin/* $srcdir/usr/bin
 
 	mkdir -p $srcdir/etc
-	rm -r $srcdir/etc/*
+	rm -rf $srcdir/etc/*
 	mv etc/* $srcdir/etc
 
 	mkdir -p $srcdir/usr/bin
@@ -54,7 +54,7 @@ prepare() {
 	mkdir -p $srcdir/usr/lib/systemd/sleep.conf.d
 	mv systemd/reform-sleep.conf $srcdir/usr/lib/systemd/sleep.conf.d
 
-	rm -r ../reform-tools-$_commit
+	rm -rf ../reform-tools-$_commit
 }
 
 package() {
