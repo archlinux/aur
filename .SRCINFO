@@ -8,6 +8,7 @@ pkgbase = obs-websocket-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = asio
 	depends = obs-studio
 	provides = obs-websocket
 	conflicts = obs-websocket
