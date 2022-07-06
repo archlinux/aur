@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-libtorrent-v1
 	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar v1
 	pkgver = 4.4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qbittorrent.org
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = qbittorrent-libtorrent-v1
 	makedepends = boost
 	makedepends = qt6-tools
 	makedepends = qt6-svg
-	depends = libtorrent-rasterbar<2
+	depends = libtorrent-rasterbar-1
 	depends = qt6-base
 	depends = qt6-svg
 	depends = hicolor-icon-theme
