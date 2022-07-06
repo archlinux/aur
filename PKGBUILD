@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=41.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -28,16 +28,16 @@ optdepends=('system-config-printer: Printer settings'
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
 _commit=d08fac3f0be63f0a4c65d26f47d3b77f8738cfab  # tags/41.4^0
-_pop_commit=ba839eda1c673457b30fb65ccf8f19323331e692 # master_jammy
+_pop_commit=0e020896b6cb6b3c3438b6674cd4a6ee42aa5b72 # 1:41.4-1ubuntu6
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
-        "pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=$_pop_commit?signed")
+        "pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=$_pop_commit")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
+#validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
 
 pkgver() {
   cd $_pkgname
