@@ -38,7 +38,7 @@ build() {
 
   export VITE_DEFAULT_SERVER="https://dust-mail.herokuapp.com"
 
-  export RUSTUP_TOOLCHAIN=1.57
+  export RUSTUP_TOOLCHAIN=1.61
 
   yarn run tauri build
 }
