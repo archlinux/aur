@@ -2,14 +2,14 @@
 # Maintainer: Kevin Rauwolf <sweetpea-aur@tentacle.net>
 pkgname=perl-mail-rfc822-address
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 _author="P/PD/PDWARREN"
 _perlmod="Mail-RFC822-Address"
 pkgdesc="Mail::RFC822::Address - Perl extension for validating email addresses according to RFC822"
 arch=('any')
 url="http://search.cpan.org/dist/Mail-RFC822-Address/"
 license=('MIT')
-depends=()
+depends=('perl')
 makedepends=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
