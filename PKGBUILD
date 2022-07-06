@@ -2,7 +2,7 @@
 # Contributor: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 _pkgname=arc-kde
 pkgname=$_pkgname-git
-pkgver=20220603.r3.g1de56a8
+pkgver=20220706.r0.ge5f213d
 pkgrel=1
 epoch=2
 pkgdesc="Arc theme for KDE Plasma 5"
@@ -14,7 +14,7 @@ optdepends=(
 	'arc-gtk-theme: for a consistent look in GTK applications'
 	'konsole: for konsole theme'
 	'konversation: for konversation theme'
-	'kvantum-qt5: for kvantum theme (recommended)'
+	'kvantum: for kvantum theme (recommended)'
 	'papirus-icon-theme: for a more consistent and beautiful experience (recommended)'
 	'plasma-desktop: for plasma desktop theme'
 	'yakuake: for yakuake theme'

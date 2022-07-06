@@ -1,6 +1,6 @@
 pkgbase = arc-kde-git
 	pkgdesc = Arc theme for KDE Plasma 5
-	pkgver = 20220603.r3.g1de56a8
+	pkgver = 20220706.r0.ge5f213d
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
@@ -10,7 +10,7 @@ pkgbase = arc-kde-git
 	optdepends = arc-gtk-theme: for a consistent look in GTK applications
 	optdepends = konsole: for konsole theme
 	optdepends = konversation: for konversation theme
-	optdepends = kvantum-qt5: for kvantum theme (recommended)
+	optdepends = kvantum: for kvantum theme (recommended)
 	optdepends = papirus-icon-theme: for a more consistent and beautiful experience (recommended)
 	optdepends = plasma-desktop: for plasma desktop theme
 	optdepends = yakuake: for yakuake theme
