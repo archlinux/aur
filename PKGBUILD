@@ -2,7 +2,7 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 
 pkgname=cern-phone-app
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="CERNPhone Desktop Application"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}.AppImage"
 source=("https://cernphone-sw.web.cern.ch/cernphone-sw/releases/cern-phone-app-${pkgver}-x86_64-linux.AppImage.d/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('4b7558fd9f12fb5bad6a4539998b9985795d60a452e1e374e304af6d1f327766')
+sha256sums=('6a4b335e25b0461db3a97d6611770e5ca1d18f11e1e5d8b0051818d88f125081')
 
 prepare() {
     chmod +x "${_appimage}"
