@@ -2,15 +2,16 @@
 
 # shellcheck disable=SC2034
 _pkg="archiso"
+_distro="archlinux"
 _pkgbase="${_pkg}-profiles"
 _profile=desktop
-pkgname="archlinux-${_profile}"
-pkgver=v0.1+7+g3359a3e
+pkgname="${_distro}-${_profile}"
+pkgver=v0.1+10+gb5d2eef
 pkgrel=1
 pkgdesc='Builds an Archlinux desktop'
 arch=('any')
 license=('GPL3')
-url="https://gitlab.archlinux.org/tallero/${_pkgbase}"
+url="https://gitlab.${_distro}.org/tallero/${_pkgbase}"
 depends=('cryptsetup-nested-cryptkey'
 	 'dwm'
 	 'fakepkg'
@@ -29,9 +30,11 @@ pkgver() {
 
 package() {
   # shellcheck disable=SC2154
-  local _profile="${_pkgbase}/${_profile}"
+  local _profile="${srcdir}/${_pkgbase}/${_profile}"
   cd "${_profile}" || exit
 
   ./build_repo.sh fakepkg
-  # pkexec mkarchiso -v "./" # ${_profile}"
+  pkexec mkarchiso -v "${_profile}"
+  install -d -m 0755 -- "${pkgdir}/usr/share/${_distro}"
+  mv "out/${_distro}-${_profile}"* "${pkgdir}/usr/share/${_distro}"
 }
