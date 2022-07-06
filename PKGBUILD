@@ -1,7 +1,7 @@
 # vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 # Maintainer: Kevin Rauwolf <sweetpea-aur@tentacle.net>
 pkgname=perl-data-password
-pkgver=1.10
+pkgver=1.12
 pkgrel=1
 _author="R/RA/RAZINF"
 _perlmod="Data-Password"
@@ -9,7 +9,7 @@ pkgdesc="Data::Password - Perl extension for assessing password quality"
 arch=('any')
 url="http://search.cpan.org/dist/Data-Password/"
 license=('PerlArtistic')
-depends=()
+depends=('perl')
 makedepends=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
@@ -58,5 +58,4 @@ package(){
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-md5sums=('fc96097b398b9df2ec1b9b636cfebdc4')
+sha512sums=('bc7e8c31d1b9f6e986cd012a26f268f1c5924fa6743b32d2ed5770f6749390325874ce4bb01888b239cdcc8df85a714796a3adc2b2b5ffb70770435687b7cbcf')
