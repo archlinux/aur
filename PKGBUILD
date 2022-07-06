@@ -207,11 +207,10 @@ fi
 ################################################################################
 pkgver() {
   cd "$srcdir/emacs-git"
-
   printf "%s.%s" \
-    "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
-    "$(git rev-list --count HEAD)"
+    $(grep AC_INIT configure.ac | \
+    awk -F',' '{ gsub("[ \\[\\]]","",$2); print $2 }') \
+    $(git rev-list --count HEAD)
 }
 
 # There is no need to run autogen.sh after first checkout.
