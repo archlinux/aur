@@ -1,0 +1,16 @@
+pkgbase = neomutt-logo
+	pkgdesc = Neomutt logo for use with xdg-desktop-icon
+	pkgver = 20220429
+	pkgrel = 1
+	url = https://neomutt.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gnupg
+	source = neomutt-logo-20220429.tar.gz::https://github.com/neomutt/neomutt/archive/20220429.tar.gz
+	source = neomutt-logo-20220429.tar.gz.sig::https://github.com/neomutt/neomutt/releases/download/20220429/20220429.tar.gz.sig
+	validpgpkeys = 86C2397270DD7A561263CA4E5FAF0A6EE7371805
+	sha256sums = 45496542897ba8de6bc7cce3f5951d9033ed1c49e5d6f1353adaeefe795d9043
+	sha256sums = SKIP
+
+pkgname = neomutt-logo
