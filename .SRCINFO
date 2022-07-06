@@ -1,17 +1,18 @@
 pkgbase = qqmusic-bin
 	pkgdesc = tencent qq music
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://y.qq.com/
 	arch = x86_64
 	license = CC0-1.0
-	depends = nss
-	depends = libxss
-	depends = gtk3
+	makedepends = asar
+	depends = electron13
 	provides = qqmusic
-	source = qqmusic_1.1.4_amd64.deb::https://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_1.1.4_amd64.deb
+	source = qqmusic_1.1.4-2.asar::https://files.catbox.moe/a5niyr.asar
+	source = qqmusic.desktop
 	source = qqmusic.sh
-	sha512sums = 668767ef4f3a0343c3fdd01bb5e7be4a4b203b1d60af5af389afe995681d3288d0419586dbeb49eec848bd167fd994d00ff3ff5e3a5c5642f8270e6504d6dde5
-	sha512sums = bd04c44159d1cdbf1a248e919802c8459a859ac29f4e3a94c04d1b32e1677fd5c0bb068a2d69778a966936d500c9e66e76ac2c435bfadff67a96ea859f1f18c2
+	sha512sums = 1c163eb75878f3fa5188f9386f033319b8c06bda9f9d0af45e166f839d322e7e2bcdaf5a50992f3a1c0c298bc79b4b193c1c5acd3057203bd53bcb2d75af1f7a
+	sha512sums = 4420cb722670e5e1985c58326824d56ebdd030bf5f9c2e685f3cab2419672420d2c9529b374f081e52200dc85a07170f0c2a0f75ffa248ee13e49f9ec2deb97f
+	sha512sums = e15125f812c7d0b1ba0ecce090e8ac3543423f224a2b13b09e27c5ff0b9083ae13769792a962edfb0a706332cc26c4e196e63b2a14e9fe74cfdea5c3ce61c706
 
 pkgname = qqmusic-bin

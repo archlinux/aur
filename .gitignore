@@ -1,6 +1,7 @@
 src/
 pkg/
 
+*.asar
 *.deb
 
 *.pkg.tar.*

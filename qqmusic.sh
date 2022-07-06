@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec /opt/qqmusic/qqmusic --disable-gpu-sandbox "$@"
+exec /usr/bin/electron13 /usr/lib/qqmusic/app.asar "$@"
