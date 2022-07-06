@@ -1,0 +1,8 @@
+*.xz
+*.zst
+*.deb
+*.txt
+*.json
+.*/*
+/pkg
+/src
