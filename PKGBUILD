@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    'd75baf875d8bd0ccb7becf3248e5609b49ceb8e4e9ba6aa7f39c39083ea62da7'
+    'b095a6900fdc3734d7276c014c8f18092a320a19fd56fc67d2353e3bc368befd'
     '0f907649efc3dc60320ea84bfc6489996d2664523348641c9b6e7642bd062be0'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
@@ -27,7 +27,7 @@ sha256sums=(
 
 prepare() {
     cd "${srcdir}"
-    npm i --ignore-scripts=true \
+    npm i --ignore-scripts \
         "@tsconfig/node16-strictest"@"^1.0.0" \
         "@types/dompurify"@"^2.3.3" \
         "@types/marked"@"^4.0.2" \
@@ -38,7 +38,7 @@ prepare() {
         "electron"@"^19.0.1"
 
     cd "${_srcname}"
-    npm i --omit=dev --ignore-scripts=true
+    npm i --omit=dev --ignore-scripts
     rm -r "sources/code/build"
 }
 
