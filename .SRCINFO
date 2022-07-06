@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 42.3.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = gnome-shell-performance
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = cce6fbdf0ee230563c43c096c5137f79412723fc5461ae38a9cea66179440079
-	sha256sums = fae801743a3d245df9f0fe7ef9b816bab879000cc7723f40deb0794d4bfd47b2
+	sha256sums = 58795bb46aaf1885525758ae5c05263497ec5b67b48803980349cd621b259ef9
 
 pkgname = gnome-shell-performance
 	depends = accountsservice

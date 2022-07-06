@@ -20,7 +20,7 @@ _merge_requests_to_use=('1884' '1915')
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=42.3.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -46,7 +46,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
 sha256sums=('SKIP'
             'SKIP'
             'cce6fbdf0ee230563c43c096c5137f79412723fc5461ae38a9cea66179440079'
-            'fae801743a3d245df9f0fe7ef9b816bab879000cc7723f40deb0794d4bfd47b2')
+            '58795bb46aaf1885525758ae5c05263497ec5b67b48803980349cd621b259ef9')
 
 pkgver() {
   cd $_pkgname
