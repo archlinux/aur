@@ -7,6 +7,7 @@ pkgbase = direwolf-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
@@ -26,4 +27,3 @@ pkgbase = direwolf-git
 	sha256sums = 2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68
 
 pkgname = direwolf-git
-
