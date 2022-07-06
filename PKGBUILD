@@ -12,7 +12,8 @@ pkgdesc='Builds an Archlinux desktop'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.${_distro}.org/tallero/${_pkgbase}"
-depends=('cryptsetup-nested-cryptkey'
+depends=('archiso-persistent-git'
+	 'cryptsetup-nested-cryptkey'
 	 'dwm'
 	 'fakepkg'
 	 'mkinitcpio-archiso-encryption-git'

@@ -1,6 +1,6 @@
 pkgbase = archlinux-desktop
 	pkgdesc = Builds an Archlinux desktop
-	pkgver = v0.1+10+gb5d2eef
+	pkgver = v0.1+11+g1afb2fc
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso-profiles
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = archlinux-desktop
 	checkdepends = shellcheck
 	makedepends = devtools
 	makedepends = git
+	depends = archiso-persistent-git
 	depends = cryptsetup-nested-cryptkey
 	depends = dwm
 	depends = fakepkg
