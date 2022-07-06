@@ -10,7 +10,7 @@ pkgdesc="Real-time space simulation"
 arch=(x86_64)
 license=(GPL)
 url="https://celestia.space"
-depends=('gtk2' 'libtheora' 'lua53' 'gtkglext' 'glut' 'libxmu' 'glu' 'libjpeg' 'mesa')
+depends=('gtk2' 'libtheora' 'lua53' 'gtkglext' 'freeglut' 'libxmu' 'glu' 'libjpeg-turbo' 'mesa')
 options=('!makeflags')
 source=("https://github.com/CelestiaProject/Celestia/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   celestia-fix-desktop.patch::"https://github.com/CelestiaProject/Celestia/commit/6a4a0573.patch")
