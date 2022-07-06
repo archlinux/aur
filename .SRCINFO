@@ -1,0 +1,15 @@
+pkgbase = m3u8-downloader-go-git
+	pkgdesc = m3u8 video downloader written in go
+	pkgver = v2.2.r0.g975649d
+	pkgrel = 1
+	url = https://github.com/llychao/m3u8-downloader
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = m3u8-downloader
+	conflicts = m3u8-downloader
+	source = m3u8-downloader-go-git::git+https://github.com/llychao/m3u8-downloader
+	md5sums = SKIP
+
+pkgname = m3u8-downloader-go-git
