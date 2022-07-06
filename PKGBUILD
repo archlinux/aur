@@ -2,7 +2,7 @@
 # Maintainer: Claudio Netto <nettinhorama@gmail.com>
 
 pkgname=tsuru
-pkgver=1.10.0
+pkgver=1.10.4
 pkgrel=1
 arch=('armv6h' 'i686' 'x86_64')
 
@@ -13,13 +13,13 @@ license=('BSD')
 provides=("tsuru=${pkgver}")
 
 source_armv6h=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_arm64.tar.gz")
-sha256sums_armv6h=('cb915eb60aef91a1e3cab8f2c27054181e98ba8068ff06a7a0482a4b774de27c')
+sha256sums_armv6h=('c85f4a3e8ea4b44ba2c084b1dbc7a4566feb5c18b3f9a2c7e0b62e05a2dfef8e')
 
 source_i686=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('f5882c20472cdeae0de14b4f381b7ed06dd23eb650e762aa68feb1f860c6fcb6')
+sha256sums_i686=('55164666eb08f39c939bfe854b0754c00d595ba45ff81685284c2149d463a135')
 
 source_x86_64=("tsuru-client.tar.gz::${url}/releases/download/${pkgver}/tsuru_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('9740bac3fb56179dbc8f750f4a35e2782492f36f2cc5e70c118f1ebbfc841f3c')
+sha256sums_x86_64=('2b84500621ec583ef11f38b5b52a785db045791523bf21555b0c3083094b6238')
 
 prepare() {
   tar xzf tsuru-client.tar.gz
