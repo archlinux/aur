@@ -6,7 +6,7 @@ _distro="archlinux"
 _pkgbase="${_pkg}-profiles"
 _profile=desktop
 pkgname="${_distro}-${_profile}"
-pkgver=v0.1+10+gb5d2eef
+pkgver=v0.1+11+g1afb2fc
 pkgrel=1
 pkgdesc='Builds an Archlinux desktop'
 arch=('any')
@@ -34,11 +34,10 @@ package() {
   local _profile="${srcdir}/${_pkgbase}/${_profile}"
   cd "${_profile}" || exit
 
-  mkdir work
+  mkdir -p work
   ./build_repo.sh fakepkg
   install -d -m 0755 -- "${_dest}"
-
-  pkexec mkarchiso -v "${_profile}" \
+  pkexec mkarchiso -v \
 	           -o "${_dest}" \
 		   -w "${_profile}/work" \
                       "${_profile}"
