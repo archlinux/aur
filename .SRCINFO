@@ -1,6 +1,6 @@
 pkgbase = python-aws-okta-keyman
 	pkgdesc = AWS Okta Keyman
-	pkgver = 0.8.5
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/nathan-v/aws_okta_keyman
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-aws-okta-keyman
 	depends = python-future
 	depends = python-pyaml
 	depends = python-keyring
-	source = https://files.pythonhosted.org/packages/source/a/aws-okta-keyman/aws_okta_keyman-0.8.5.tar.gz
-	sha256sums = 7dc9457011242b1d47af066d3b6acc1553ca655d9147f9b0c1212ceff97b2acc
+	source = https://files.pythonhosted.org/packages/source/a/aws-okta-keyman/aws_okta_keyman-0.9.0.tar.gz
+	sha256sums = 58ba9cb40402ab8bcae2fd8bbcf9966cf9416436cfc84636cadca0e27d5f90a1
 
 pkgname = python-aws-okta-keyman
 	depends = python-colorlog
@@ -24,4 +24,3 @@ pkgname = python-aws-okta-keyman
 	depends = python-future
 	depends = python-pyaml
 	depends = python-keyring
-

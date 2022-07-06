@@ -2,7 +2,7 @@ pkgbase=python-aws-okta-keyman
 pkgname=python-aws-okta-keyman
 _project_name='aws-okta-keyman'
 _module='aws_okta_keyman'
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="AWS Okta Keyman"
 url="https://github.com/nathan-v/aws_okta_keyman"
@@ -19,7 +19,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_project_name::1}/$_project_name/$_module-$pkgver.tar.gz")
-sha256sums=('7dc9457011242b1d47af066d3b6acc1553ca655d9147f9b0c1212ceff97b2acc')
+sha256sums=('58ba9cb40402ab8bcae2fd8bbcf9966cf9416436cfc84636cadca0e27d5f90a1')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
