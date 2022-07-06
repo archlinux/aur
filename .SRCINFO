@@ -1,7 +1,7 @@
 pkgbase = ahm5050-amp-bin
 	pkgdesc = Audio Assault Dual Amp Sim
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/collections/plugins/products/ahm-5050
 	arch = x86_64
 	groups = pro-audio

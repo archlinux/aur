@@ -1,6 +1,6 @@
 pkgname=ahm5050-amp-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault Dual Amp Sim"
 arch=('x86_64')
 url="https://audioassault.mx/collections/plugins/products/ahm-5050"
@@ -25,7 +25,7 @@ package() {
     cp -rf $srcdir/AHM5050v3\ Linux/AHM5050/Presets/*.preset "$pkgdir/opt/Audio Assault/AHM5050/Presets/"
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/AHM5050v3 Linux/AHM 5050 v3 vst2.so" "$pkgdir/usr/lib/vst/AHM 5050 v3 vst2.so"
+    install -Dm755 "$srcdir/AHM5050v3 Linux/AHM 5050 v3 vst2.so" "$pkgdir/usr/lib/vst/AHM 5050 v3.so"
 
     ## Install Standalone Binary
     cp "$srcdir/AHM5050v3 Linux/AHM 5050 v3 Standalone" "$pkgdir/usr/bin/AHM 5050 v3 Standalone"
