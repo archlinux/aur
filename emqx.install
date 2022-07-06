@@ -8,7 +8,6 @@ post_install() {
     useradd -r -s /usr/bin/nologin emqx
 
     chown -R emqx:emqx /var/lib/emqx
-    chown -R emqx:emqx /var/run/emqx
     chown -R emqx:emqx /var/log/emqx
     systemctl daemon-reload
 }
@@ -23,7 +22,6 @@ post_install() {
 ## arg 2:  the old package version
 post_upgrade() {
     chown -R emqx:emqx /var/lib/emqx
-    chown -R emqx:emqx /var/run/emqx
     chown -R emqx:emqx /var/log/emqx
     systemctl daemon-reload
 }
