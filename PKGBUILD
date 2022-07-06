@@ -1,9 +1,10 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgbase=arc-kde
 pkgname=('arc-kde' 'kvantum-theme-arc')
 pkgver=20220706
-pkgrel=1
+pkgrel=2
 pkgdesc="Arc theme for KDE Plasma 5"
 arch=(any)
 url="https://github.com/PapirusDevelopmentTeam/${pkgbase}"
@@ -21,7 +22,7 @@ package_arc-kde() {
 
 package_kvantum-theme-arc() {
     pkgdesc="Arc theme for Kvantum"
-    depends=('kvantum-qt5')
+    depends=('kvantum')
 
     cd ${pkgbase}-${pkgver}
     DESTDIR=$pkgdir THEMES=Kvantum  make install
