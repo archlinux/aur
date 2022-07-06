@@ -1,5 +1,5 @@
 pkgbase = nodejs-markmap-cli
-	pkgdesc = Create markmaps from CLI
+	pkgdesc = Create markmaps (mindmaps from markdown) from CLI
 	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/gera2ld/markmap/packages/markmap-cli#readme
