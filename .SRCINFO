@@ -1,6 +1,6 @@
 pkgbase = archlinux-desktop
 	pkgdesc = Builds an Archlinux desktop
-	pkgver = v0.1+7+g3359a3e
+	pkgver = v0.1+10+gb5d2eef
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/tallero/archiso-profiles
 	arch = any
