@@ -3,13 +3,12 @@
 
 pkgname=gmusicbrowser-shimmer
 pkgver=1.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac/mpc/ape files, written in perl with Shimmer layout"
 arch=('any')
 url="http://shimmerproject.org/our-projects/shimmer-for-gmusicbrowser/"
 license=('GPL3')
 depends=('gtk2-perl' 'hicolor-icon-theme' 'perl-net-dbus')
-makedepends=('markdown')
 optdepends=('alsa-utils: enables the ALSA backend'
             'flac123: flac support for the ALSA backend'
             'mpg321: mp3 support for the ALSA backend'
@@ -28,7 +27,7 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'perl-locale-gettext: localization support'
             'perl-gtk2-trayicon: tray icon support'
             'perl-gtk2-appindicator: app indicator plugin support'
-            'perl-gtk2-mozembed: web-based plugins support'
+      #      'perl-gtk2-mozembed: web-based plugins support'
             'perl-gtk2-webkit: alternative web-based plugin support'
             'perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys'
             'perl-gtk2-notify: show notifications using libnotify'
