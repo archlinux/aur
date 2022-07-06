@@ -1,0 +1,19 @@
+pkgbase = archlinux-desktopbase-git
+	pkgdesc = Builds a base Archlinux desktop
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/tallero/archiso-profiles
+	arch = any
+	license = GPL3
+	checkdepends = shellcheck
+	makedepends = devtools
+	makedepends = git
+	depends = cryptsetup-nested-cryptkey
+	depends = dwm
+	depends = fakepkg
+	depends = plymouth-nested-cryptkey
+	depends = polkit
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
+	sha256sums = SKIP
+
+pkgname = archlinux-desktopbase-git
