@@ -3,25 +3,24 @@
 # Contributor: Max Meyer <dev@fedux.org>
 
 pkgname='python-pacparser'
-pkgver=1.3.7
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 arch=(i686 x86_64)
-url="https://github.com/pacparser/pacparser"
+url="https://github.com/manugarg/pacparser"
 license=('LGPL')
 depends=('python>=3.6')
 options=('!makeflags')
 pkgdesc="Python 3.x pacparser module"
-source=("https://github.com/pacparser/pacparser/archive/${pkgver}.tar.gz")
-sha256sums=('575c5d8096b4c842b2af852bbb8bcfde96170b28b49f33249dbe2057a8beea13')
+source=("${url}/releases/download/v${pkgver}/pacparser-v${pkgver}.tar.gz")
+sha256sums=('2e66c5fe635cd5dcb9bccca4aced925eca712632b81bada3b63682159c0f910e')
 
 build() {
-  cd pacparser-$pkgver
+  cd "pacparser-v${pkgver}"
   PYTHON=python3 make all pymod -C src
 }
 
 package() {
-
-  cd pacparser-$pkgver
+  cd "pacparser-v${pkgver}"
   PYTHON=python3 make -C src DESTDIR="$pkgdir/" install-pymod
 }
 
