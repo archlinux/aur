@@ -10,7 +10,7 @@ license=(GPL3)
 provides=('oflauncher' 'oflauncher-rei' 'oftoast')
 makedepends=("imagemagick")
 optdepends=("steam")
-source=('oftoast::https://toast-eu.openfortress.fun/toast/oftoast-0.3.1-linux.bin'
+source=('oftoast::https://web.archive.org/web/20220702020345/https://toast-eu.openfortress.fun/toast/oftoast-0.3.1-linux.bin'
 		'https://raw.githubusercontent.com/int-72h/of-jam/main/ofjam/toast.png'
 		'oftoast-bin.desktop')
 sha256sums=('a2e85a6479515ec365df6f4d9e82f722033a145e966437cbe3c29a465ccdeb8b'
