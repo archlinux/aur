@@ -36,7 +36,7 @@ source=(#https://commondatastorage.googleapis.com/chromium-browser-official/chro
         sql-make-VirtualCursor-standard-layout-type.patch
         remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('00ec2f0506802132b8e97eb757365cadf44627ba2ae63509ec24a352e5a8ed76'
+sha256sums=('13a2f8d592bec6bb986879af8e2eb6ce81423d28a238a85d9450c9e35a354cd0'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
