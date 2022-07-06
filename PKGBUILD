@@ -14,9 +14,9 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.8.0
-_pkgver=2.8.0
-pkgrel=2
+pkgver=2.9.1
+_pkgver=2.9.1
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -28,10 +28,12 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
              'cython')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
-        fix-c++17-compat.patch)
+        fix-c++17-compat.patch
+        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/9ee3b8a47ab5b5307feba0943d2f5ca46c91ceac.patch")
 
-sha512sums=('9cddb78c0392b7810e71917c3731f895e31c250822031ac7f498bf20435408c640b2fba4de439fa4a47c70dbff38b86e50fed2971df1f1916f23f9490241cfed'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
+sha512sums=('95ffbee1e50e396065c6f1802fd9668344c45c000e22da859bcd08ec217bcc0a8ff0e84661fdf511f210e8b09d7ae6d26c3fc1ddcf28b8aedf87c0fb1b8b60e4'
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
+            'SKIP')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -72,6 +74,10 @@ prepare() {
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
+  cd "${srcdir}/tensorflow-${pkgver}"
+  patch -Np1 -i "${srcdir}/rocblas-version.patch"
+  cd "${srcdir}"
+
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
 
@@ -103,9 +109,12 @@ prepare() {
   export TF_IGNORE_MAX_BAZEL_VERSION=1
   export TF_MKL_ROOT=/opt/intel/mkl
   export NCCL_INSTALL_PATH=/usr
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
-  export HOST_C_COMPILER=/usr/bin/gcc
-  export HOST_CXX_COMPILER=/usr/bin/g++
+  # Does tensorflow really need the compiler overridden in 5 places? Yes.
+  export CC=gcc-11
+  export CXX=g++-11
+  export GCC_HOST_COMPILER_PATH=/usr/bin/${CC}
+  export HOST_C_COMPILER=/usr/bin/${CC}
+  export HOST_CXX_COMPILER=/usr/bin/${CXX}
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
   export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
   export TF_CUDA_PATHS=/opt/cuda,/usr/lib,/usr
@@ -115,9 +124,6 @@ prepare() {
   # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
   # add latest PTX for future compatibility
   export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,compute_86
-
-  export CC=gcc
-  export CXX=g++
 
   export BAZEL_ARGS="--config=mkl -c opt"
 }
@@ -258,7 +264,7 @@ package_python-tensorflow-rocm() {
 
 package_python-tensorflow-opt-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
+  depends+=(tensorflow-opt-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow python-tensorflow-rocm)
 
