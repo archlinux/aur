@@ -1,7 +1,7 @@
 # Maintainer: jzbor <jzbor at posteo dot net>
 pkgname=raw-to-img
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Convert raw files to regular image files"
 arch=('x86_64')
 url="https://github.com/jzbor/raw-to-img"
@@ -9,7 +9,7 @@ license=('custom')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a00e89efb94a8322ce0969d3e247b54fdb7bf9fa2dffd26463ef30adb8d44964c3d7bae51f40137d6c9067c4957ba79e963a41e4b14775787765a1b3df5aed3c')
+sha512sums=('c2ff56e75d36ef9218783d06b54d435da32c86bd0aa8979c75500310b6302a8547240141cf2a935cf6cd23e8918336b687ab712a94f782ba6e86568796a5170f')
 
 prepare() {
     cd "$pkgname-$pkgver"

@@ -1,12 +1,12 @@
 pkgbase = raw-to-img
 	pkgdesc = Convert raw files to regular image files
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://github.com/jzbor/raw-to-img
 	arch = x86_64
 	license = custom
 	makedepends = cargo
-	source = raw-to-img-0.2.1.tar.gz::https://github.com/jzbor/raw-to-img/archive/0.2.1.tar.gz
-	sha512sums = a00e89efb94a8322ce0969d3e247b54fdb7bf9fa2dffd26463ef30adb8d44964c3d7bae51f40137d6c9067c4957ba79e963a41e4b14775787765a1b3df5aed3c
+	source = raw-to-img-0.2.2.tar.gz::https://github.com/jzbor/raw-to-img/archive/0.2.2.tar.gz
+	sha512sums = c2ff56e75d36ef9218783d06b54d435da32c86bd0aa8979c75500310b6302a8547240141cf2a935cf6cd23e8918336b687ab712a94f782ba6e86568796a5170f
 
 pkgname = raw-to-img
