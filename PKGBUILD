@@ -14,6 +14,8 @@ depends=("${_pkg}-persistent-git")
 makedepends=('docbook-xsl' 'git' 'polkit' 'shfmt')
 checkdepends=('shellcheck')
 optdepends=()
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}")
 sha256sums=('SKIP')
 
