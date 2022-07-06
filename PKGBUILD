@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://github.com/madprops/lq"
 license=("GPL2")
 makedepends=("nim" "nimble")
+makedepends=("git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/lq.git")
 
