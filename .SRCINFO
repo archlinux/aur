@@ -2,13 +2,15 @@ pkgbase = archiso-profiles-git
 	pkgdesc = Extra profiles for Archiso
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/tallero/archiso-profiles-git
+	url = https://gitlab.archlinux.org/tallero/archiso-profiles
 	arch = any
 	license = GPL3
 	checkdepends = shellcheck
+	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = shfmt
 	depends = archiso-persistent-git
-	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles-git
+	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
 	sha256sums = SKIP
 
 pkgname = archiso-profiles-git
