@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=18.2.4
-_commit=f4ba63536a3558f814a81015ecbfaf3451be5694
+pkgver=18.3.5
+_commit=6165f6afc9af6f9ab4e32f4a7a8b0818f11e766a
 _chromiumver=100.0.4896.160
 _gcc_patchset=4
 # shellcheck disable=SC2034
@@ -70,7 +70,7 @@ sha256sums=('SKIP'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
-            '880abb38ea94058ad553eaec9989cb33aa3b10c54b44afcfddacef3e975152de'
+            '76b969e1534e8c355b8b524a686cbf3b24136eaa6bd40b0c09fdd9866049f159'
             'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
             '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
