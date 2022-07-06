@@ -3,7 +3,7 @@
 # Contributor: Andrew Titmuss <andrew@coffeetocode.me>
 
 pkgname=scangearmp2
-pkgver=4.30
+pkgver=4.40
 pkgrel=1
 pkgdesc="Canon ScanGear MP v2 scanner driver."
 arch=('i686' 'x86_64')
@@ -13,26 +13,26 @@ depends=('gtk2' 'libusb')
 
 provides=('scangearmp2')
 
-source=("https://gdlp01.c-wss.com/gds/2/0100011322/01/scangearmp2-source-4.30-1.tar.gz" \
+source=("https://gdlp01.c-wss.com/gds/4/0100011384/01/scangearmp2-source-4.40-1.tar.gz" \
 	scangearmp2.desktop libusb.patch)
-sha256sums=('ae337238379541d8f99f09bf24e82d291b8141e5a7758d46c0002a9becb828b8'
+sha256sums=('bb9d8ef725ebdf43b3650b3ae72f9dfb3a97a0cab3183f0c0792054b61958bd3'
             'd9b449d6c78c92f296acef85209b30c7d80b8bac692f135d071730ef0051d64b'
             'ea64d40b4537a79a400a217a90b8fcdf9589e93df9710bb6a353bce54149879e')
 
-[[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
+[[ "$CARCH" == "x86_64" ]] && _arch="x86_64" || _arch="i686"
 
 prepare() {
-	patch -p1 < libusb.patch
 	cd "$pkgname-source-$pkgver-$pkgrel"
+	patch -p2 < ../libusb.patch
 }
 
 build() {
 	cd "$pkgname-source-$pkgver-$pkgrel"
-
+	echo $_arch
 	pushd "scangearmp2"
 	./autogen.sh --prefix=/usr \
 		     --enable-libpath=/usr/lib \
-		     LDFLAGS="-L../../com/libs_bin$_arch"
+		     LDFLAGS="-L../../com/libs_bin_$_arch"
 	make
 	popd
 }
@@ -55,8 +55,8 @@ package() {
 
 	install -m644 "com/ini/canon_mfp2_net.ini" "$pkgdir/usr/lib/bjlib"
 
-	install -sm755 com/libs_bin$_arch/*.so.* "$pkgdir/usr/lib"
-	cp -P com/libs_bin$_arch/*.so "$pkgdir/usr/lib"
+	install -sm755 com/libs_bin_$_arch/*.so.* "$pkgdir/usr/lib"
+	cp -P com/libs_bin_$_arch/*.so "$pkgdir/usr/lib"
 
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
