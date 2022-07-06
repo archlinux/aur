@@ -40,6 +40,7 @@ pkgbase = gzdoom-git
 	conflicts = gzdoom
 	replaces = gzdoom1-git
 	replaces = gzdoom-legacy-git
+	options = !lto
 	source = gzdoom::git+https://github.com/coelckers/gzdoom.git
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch

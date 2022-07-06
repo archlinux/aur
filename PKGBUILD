@@ -37,6 +37,7 @@ optdepends_x86_64=('vulkan-driver: Vulkan renderer'
 provides=('gzdoom')
 conflicts=('gzdoom')
 replaces=('gzdoom1-git' 'gzdoom-legacy-git')
+options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
