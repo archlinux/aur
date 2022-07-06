@@ -2,10 +2,10 @@ Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1884
 Editor: Sung Mingi <FiestaLake@protonmail.com>
 Commit: cac94861037a793a16e6ba2b174ff74837625406
-Last Updated: 04/02/22 (gnome-shell 42.0-1)
+Last Updated: 06/07/22 (gnome-shell 42.3.1-1)
 
 diff --git a/js/ui/appDisplay.js b/js/ui/appDisplay.js
-index 116e9931d..d89ad17e2 100644
+index dd75a09ed..e02971024 100644
 --- a/js/ui/appDisplay.js
 +++ b/js/ui/appDisplay.js
 @@ -202,6 +202,16 @@ var BaseAppView = GObject.registerClass({
@@ -51,7 +51,7 @@ index 116e9931d..d89ad17e2 100644
              new Clutter.Margin({
                  left: hOffset,
                  right: hOffset,
-@@ -2100,6 +2112,10 @@ class AppViewItem extends St.Button {
+@@ -2106,6 +2118,10 @@ class AppViewItem extends St.Button {
          this.fake_release();
      }
  
@@ -63,10 +63,10 @@ index 116e9931d..d89ad17e2 100644
          return this._id;
      }
 diff --git a/js/ui/iconGrid.js b/js/ui/iconGrid.js
-index 362cfda91..13f005d61 100644
+index 599374fa3..826fb1246 100644
 --- a/js/ui/iconGrid.js
 +++ b/js/ui/iconGrid.js
-@@ -1407,4 +1407,33 @@ var IconGrid = GObject.registerClass({
+@@ -1409,4 +1409,33 @@ var IconGrid = GObject.registerClass({
          const layoutManager = this.layout_manager;
          return layoutManager.rows_per_page * layoutManager.columns_per_page;
      }
