@@ -1,14 +1,16 @@
-pkgbase = whsniff
+pkgbase = whsniff-git
 	pkgdesc = A command line utility that interfaces TI CC2531 USB dongle with Wireshark for capturing and displaying IEEE 802.15.4 traffic at 2.4 GHz.
-	pkgver = 1.1.r10.920e107
-	pkgrel = 2
-	url = https://github.com/homewsn/whsniff.git
+	pkgver = 1.1.r38.4894032
+	pkgrel = 1
+	url = https://github.com/homewsn/whsniff
 	arch = x86_64
 	license = GPL
 	makedepends = sed
 	depends = libusb
-	source = whsniff::git+https://github.com/homewsn/whsniff.git
+	provides = whsniff=1.1.r38.4894032
+	conflicts = whsniff
+	replaces = whsniff<=1.1.r18
+	source = whsniff-git::git+https://github.com/homewsn/whsniff.git
 	sha256sums = SKIP
 
-pkgname = whsniff
-
+pkgname = whsniff-git
