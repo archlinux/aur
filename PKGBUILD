@@ -1,7 +1,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=lightdm-theme-neon-git
 pkgver=r59.b337c02
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Modern and customizable theme for web-greeter with a nostalgic neon look"
 arch=('any')
