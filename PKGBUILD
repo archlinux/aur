@@ -1,7 +1,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=lightdm-theme-neon-git
-pkgver=r59.b337c02
-pkgrel=6
+pkgver=r60.bed6b26
+pkgrel=1
 epoch=1
 pkgdesc="Modern and customizable theme for web-greeter with a nostalgic neon look"
 arch=('any')
@@ -31,6 +31,6 @@ pkgver() {
 package() {
   cd $pkgname
 	install -dm755 ${pkgdir}/usr/share/web-greeter/themes/neon
-	cp -r ./public ${pkgdir}/usr/share/web-greeter/themes/neon
+	cp -r public/. ${pkgdir}/usr/share/web-greeter/themes/neon
 }
 
