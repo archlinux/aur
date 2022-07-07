@@ -15,14 +15,17 @@ optdepends=('qt5-base: qmake build system for projects'
             'qtcreator: IDE for projects'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
-            'clion: IDE for projects')
+            'clion: IDE for projects'
+            'pacman-contrib: for the paccache cleaning hook')
 license=('custom:UnrealEngine')
 source=('com.unrealengine.UE4Editor.desktop'
         'clang_path_fix.patch'
-        'ccache_executor.patch')
+        'ccache_executor.patch'
+        'unreal-engine-4-pacman-cache.hook')
 sha256sums=('15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58'
             '960c5a100e0c3732f3c73fb645d3989d39acf4576d74615bbef38ebeee008b90'
-            '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3')
+            '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
+            'df4687c3bc54dbac3c1589e6104b41c5cba17863f447dc919677ad3a240528f3')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
 options=('!strip' 'staticlibs') # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
