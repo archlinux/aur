@@ -1,6 +1,6 @@
 pkgbase = verify-squash-root
 	pkgdesc = Build signed efi files which mount a verified squashfs image as rootfs on boot
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/brandsimon/verify-squash-root/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = verify-squash-root
 	depends = tar
 	optdepends = age: for encrypted secure boot keys
 	backup = etc/verify_squash_root/config.ini
-	source = verify-squash-root-0.0.2.tar.gz::https://github.com/brandsimon/verify-squash-root/archive/refs/tags/0.0.2.tar.gz
-	sha256sums = f3548e27e0b08d6592a6da920c8f6a0af8545120dc5780738f27607bef3853ec
+	source = verify-squash-root-0.0.3.tar.gz::https://github.com/brandsimon/verify-squash-root/archive/refs/tags/0.0.3.tar.gz
+	sha256sums = f0bf48180e5d861191d427578eeb1b25147d1c8a335b32cc3651e0e094b09a1c
 
 pkgname = verify-squash-root
