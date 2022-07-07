@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=nx-software-center-git
-pkgver=1.0.1.r27.g8427079
-pkgrel=1
+pkgver=1.0.1.r210.g95efb22
+pkgrel=2
 pkgdesc="Graphical front end to manage AppImage applications built using MauiKit"
 arch=(x86_64)
 url="https://github.com/Nitrux/nx-software-center"
 license=(LGPL2.1)
-depends=(mauikit mauikit-filebrowsing libappimage)
-makedepends=(git cmake extra-cmake-modules)
+depends=(mauikit mauikit-filebrowsing libappimage nlohmann-json)
+makedepends=(git cmake extra-cmake-modules argagg xxd wget)
 provides=(nx-software-center)
 conflicts=(nx-software-center)
 source=("git+https://github.com/Nitrux/nx-software-center.git")
