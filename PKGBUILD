@@ -2,10 +2,10 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.18.9
+gitver=v5.18.10
 patchver=20220315
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=5.18.v.9
+pkgver=5.18.v.10
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'edaa1aa4b2ad26b26b2af241e48e47f0c276637fc86b9bf8ea333ee78b0a693f'
+            '92cf7b8bf683e14189a8340b8cd3cb9d043d1ef1c4c7ecdd82e15778221ffbe2'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
