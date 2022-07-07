@@ -1,7 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=ironpython-git
 _pkgname=ironpython2
-pkgver=2.7.11.r4.gf854444e1
+pkgver=2.7.12.r1.gaa0526d4b
+_pkgver=${pkgver/%.r*}
 pkgrel=1
 pkgdesc="Python implementation for the .NET framework"
 arch=("any")
@@ -31,5 +32,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  dpkg -x Package/Release/Packages/IronPython-2.7.11/ironpython_2.7.11.deb "$pkgdir"
+  dpkg -x Package/Release/Packages/IronPython-$_pkgver/ironpython_$_pkgver.deb "$pkgdir"
 }
