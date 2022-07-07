@@ -2,7 +2,7 @@
 
 _pkgname="reggie"
 pkgname="${_pkgname}-git"
-pkgver=r21.271f836
+pkgver=r25.aa569e9
 pkgrel=1
 pkgdesc="A new regex replace CLI tool, as an alternative to sed."
 arch=('x86_64')
