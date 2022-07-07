@@ -1,6 +1,6 @@
 pkgbase = trdsql
 	pkgdesc = Tool that can execute SQL queries on CSV, LTSV and JSON
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/noborus/trdsql
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = trdsql
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = trdsql-0.9.1.tar.gz::https://github.com/noborus/trdsql/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 677bfe22c8eba6c538ff57cb9fbfe575953ec9e48d9dbb1f14d5701823b99303
+	source = trdsql-0.10.0.tar.gz::https://github.com/noborus/trdsql/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 7691e745079ff3fef0aeb8cb5aca0952d0bdf4d19262d851b488fca7ce06fe2c
 
 pkgname = trdsql
