@@ -30,10 +30,9 @@ pkgver() {
 
 build() {
   cd rust-u2f
-  env \
-    RUSTUP_TOOLCHAIN=stable \
-    CARGO_TARGET_DIR=target \
-    cargo build --frozen --locked --release --all-features
+  RUSTUP_TOOLCHAIN=stable \
+  CARGO_TARGET_DIR=target \
+  cargo build --frozen --locked --release --all-features
 }
 
 package() {
