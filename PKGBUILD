@@ -2,18 +2,17 @@
 pkgname=apriltag-trackers-git
 _name="${pkgname%-git}"
 pkgver=r538.e7cde55
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-body tracking in VR using AprilTag markers."
 arch=('x86_64')
 url="https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
 license=('MIT')
 depends=('opencv-git' 'openvr' 'apriltag' 'wxgtk3')
-makedepends=('cmake' 'git' 'wxgtk3-dev')
+makedepends=('cmake' 'git')
 provides=("${_name}")
 conflicts=("${_name}")
 install="${pkgname%-git}.install"
 source=(
-		# "${_name}::git+https://github.com/funnbot/April-Tag-VR-FullBody-Tracker#branch=pr/uncheck-close-preview"
 		"${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
 		"bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver"
 		"git+https://github.com/sgorsten/linalg"
@@ -24,7 +23,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'a9fb604adc3a757903f0be0d525227df5a8a14b6c273e29d72bf69cb4becf7e8'
+            '7e7ead4354a582ae3eeacea3ed7dfe3aee157122f825313db0442c7baa555dc8'
             '4393499c484670ce1392e73533efd49b9809055c53b3df5b92cd54b45396748a'
             '9cc3bf832456119b2f9f978eb3aad0dfd644f2a899333214268b3b9620c257e0')
 

@@ -1,14 +1,13 @@
 pkgbase = apriltag-trackers-git
 	pkgdesc = Full-body tracking in VR using AprilTag markers.
 	pkgver = r538.e7cde55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker
 	install = apriltag-trackers.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = wxgtk3-dev
 	depends = opencv-git
 	depends = openvr
 	depends = apriltag
@@ -24,7 +23,7 @@ pkgbase = apriltag-trackers-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = a9fb604adc3a757903f0be0d525227df5a8a14b6c273e29d72bf69cb4becf7e8
+	sha256sums = 7e7ead4354a582ae3eeacea3ed7dfe3aee157122f825313db0442c7baa555dc8
 	sha256sums = 4393499c484670ce1392e73533efd49b9809055c53b3df5b92cd54b45396748a
 	sha256sums = 9cc3bf832456119b2f9f978eb3aad0dfd644f2a899333214268b3b9620c257e0
 

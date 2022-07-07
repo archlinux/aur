@@ -29,6 +29,50 @@ index 0b56197..da15ab0 100644
      common::semver)
  
  # Ensure compiler with c++17 language features
+diff --git a/AprilTagTrackers/GUI/U8String.cpp b/AprilTagTrackers/GUI/U8String.cpp
+index 55d6be3..7f617da 100644
+--- a/AprilTagTrackers/GUI/U8String.cpp
++++ b/AprilTagTrackers/GUI/U8String.cpp
+@@ -4,7 +4,7 @@
+ 
+ U8String::operator wxString() const
+ {
+-    return wxString::FromUTF8Unchecked(str);
++    return wxString::FromUTF8Unchecked(str.c_str());
+ }
+ 
+ U8StringView::operator wxString() const
+diff --git a/AprilTagTrackers/GUI/wxHelpers.h b/AprilTagTrackers/GUI/wxHelpers.h
+index 937cda1..9a8ef19 100644
+--- a/AprilTagTrackers/GUI/wxHelpers.h
++++ b/AprilTagTrackers/GUI/wxHelpers.h
+@@ -145,7 +145,7 @@ inline bool FromWXString(const wxString& str, double& out_val)
+ }
+ inline bool FromWXString(const wxString& str, std::string& out_val)
+ {
+-    out_val = str.utf8_string();
++    out_val = str.utf8_str();
+     return true;
+ }
+ inline bool FromWXString(const wxString& str, wxString& out_val)
+@@ -169,7 +169,7 @@ inline bool FromWXString(const wxString& str, FS::Valid<T>& out_val)
+ /// Must be inverse of FromString.
+ inline wxString ToWXString(const std::string& val)
+ {
+-    return wxString::FromUTF8Unchecked(val);
++    return wxString::FromUTF8Unchecked(val.c_str());
+ }
+ inline wxString ToWXString(const wxString& val)
+ {
+@@ -180,7 +180,7 @@ inline wxString ToWXString(const T& val)
+ {
+     std::ostringstream ss;
+     ss << val;
+-    return wxString::FromUTF8(ss.str());
++    return wxString::FromUTF8(ss.str().c_str());
+ }
+ template <typename T>
+ inline wxString ToWXString(const FS::Valid<T>& val)
 diff --git a/AprilTagTrackers/Serializable.h b/AprilTagTrackers/Serializable.h
 index 6e143ed..98d80e9 100644
 --- a/AprilTagTrackers/Serializable.h
