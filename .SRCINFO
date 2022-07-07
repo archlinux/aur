@@ -1,7 +1,7 @@
 pkgbase = astra-launcher
         pkgdesc = Cross-platform FFXIV launcher
         pkgver = 0.4.1
-        pkgrel = 1
+        pkgrel = 2
         url = https://git.sr.ht/~redstrate/astra
         arch = x86_64
         license = GPL3
@@ -15,6 +15,6 @@ pkgbase = astra-launcher
         depends = fmt
         depends = pugixml
         source = astra-launcher-0.4.1::https://xiv.zone/distrib/astra/0.4.1/astra-source.tar.gz
-        sha256sums = 6484f57ca563514daf176a771a7374e2bf1441a3604741899e2b0a7270698a80
+        sha256sums = c25e84180485639989bb0bbd073b5a52412f45e0c36884963a1a7a3a136266f2
 
 pkgname = astra-launcher
