@@ -2,7 +2,7 @@
 # Contributor : Daniel Chesters <daniel.chesters@gmail.com>
 
 pkgname=kalker
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A calculator program that supports user-defined variables, functions, derivation, and integration."
 url="https://github.com/PaddiM8/kalker"
@@ -24,4 +24,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('955c504e58a62d4f46d82bdb91b675a22e247be57caf5364b86824d63cfed264877a3b563a3456771f15765b3a808dc1f149283c539901b89030f629cf7421c8')
+b2sums=('f970f474b6d4971f8a715ec90cea04a823741f2af74850a3d1f43169fb62ce3dc3c8daaabd703d21ffa4186665be39128cb4afe80dd8cd577766ae19d9d04717')
