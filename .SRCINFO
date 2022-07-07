@@ -1,0 +1,25 @@
+pkgbase = verify-squash-root
+	pkgdesc = Build signed efi files which mount a verified squashfs image as rootfs on boot
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/brandsimon/verify-squash-root/
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = mypy
+	checkdepends = shellcheck
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = binutils
+	depends = sbsigntools
+	depends = squashfs-tools
+	depends = tar
+	optdepends = age: for encrypted secure boot keys
+	backup = etc/verify_squash_root/config.ini
+	source = verify-squash-root-0.0.2.tar.gz::https://github.com/brandsimon/verify-squash-root/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = f3548e27e0b08d6592a6da920c8f6a0af8545120dc5780738f27607bef3853ec
+
+pkgname = verify-squash-root
