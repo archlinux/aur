@@ -12,12 +12,12 @@ source=("git+$url")
 md5sums=('SKIP')
 
 build() {
-	cd "petit"
+    cd "petit"
 
 }
 
 package() {
-	cd "petit"
-	install -Dm755 petit $pkgdir/usr/bin/petit
-	install -Dm644 petit.1 $pkgdir/usr/share/man/man1/petit.1
+    cd "petit"
+    install -Dm755 petit $pkgdir/usr/bin/petit
+    install -Dm644 petit.1 $pkgdir/usr/share/man/man1/petit.1
 }
