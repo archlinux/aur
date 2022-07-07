@@ -17,12 +17,12 @@ provides=("$_pkgbase")
 conflics=("$_pkgbase")
 source=(
   "linux.preset"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-legacy-${_target}_${_armbver}_armhf.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-legacy-${_target}_${_armbver}_armhf.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-legacy-${_target}_${_armbver}_armhf.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-legacy-${_target}_${_armbver}_armhf.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-image-legacy-${_target}_${_armbver}_armhf.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-legacy-${_target}_${_armbver}_armhf.deb"
 )
 sha512sums=(
-  'f01e7925b262d2874a8a991b1f27d057356a2a384d2012b61be5a631d4e4d7cf87461c8fb9e7f183831f5a829ad204897f1f0545a52df6288a0e04a5c2e31b96'
+  'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
   'SKIP'
   'SKIP'
   'SKIP'
