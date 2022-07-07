@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-soft-brightness-git
 	pkgdesc = Gnome-shell extension to manage your display brightness via an alpha overlay (instead of the backlight).
 	pkgver = 30.r0.g8842dfb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/F-i-f/soft-brightness
 	arch = any
 	license = GPL
