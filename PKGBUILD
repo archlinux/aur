@@ -2,7 +2,7 @@
 # Maintainer: Peter Smit <peter@smitmail.eu> 
 
 pkgname=argo-bin
-pkgver=3.2.7
+pkgver=3.3.8
 pkgrel=1
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -27,5 +27,5 @@ package() {
   install -Dm644 argo.bash "$pkgdir/usr/share/bash-completion/completions/argo"
 }
 
-sha256sums_x86_64=('fe2b43f993678d5adafb20e1f7715a6d134836f50f42166699c1bd667f2952e0')
-sha256sums_aarch64=('efa0e3b5bd389dc897de4bbf8c364a4e31f70869701c1ea5250057c7b61c1fc7')
+sha256sums_x86_64=('5086ad4b46b85d1a8ec89406c2ecd5432ca7546178cd077103f61de304c9a096')
+sha256sums_aarch64=('37f44bee7332f537875ff9c941447021095370a360436377de7da35dd3764b73')
