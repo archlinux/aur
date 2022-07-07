@@ -1,0 +1,16 @@
+pkgbase = switcheroo-git
+	pkgdesc = A cross platform, rust implementation for the Tegra X1 bootROM exploit.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/budde25/switcheroo
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	provides = switcheroo
+	conflicts = switcheroo
+	source = git+https://github.com/budde25/switcheroo.git
+	sha256sums = SKIP
+
+pkgname = switcheroo-git
