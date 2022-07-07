@@ -6,7 +6,7 @@ pkgname='ebpfsnitch-git'
 _pkgname='ebpfsnitch'
 pkgver=0.3.0.13.g1220a38
 pkgrel=1
-pkgdesc='eBPF based Application Firewall'
+pkgdesc='eBPF based Application Firewall, source from its git repository'
 arch=('x86_64')
 license=('BSD3')
 
