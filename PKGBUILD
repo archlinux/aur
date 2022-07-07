@@ -21,7 +21,7 @@ depends=('archiso-persistent-git'
          'polkit')
 makedepends=('devtools' 'git' 'archiso-profiles-git')
 checkdepends=('shellcheck')
-source=("git+${url}")
+source=()
 sha256sums=('SKIP')
 
 pkgver() {
