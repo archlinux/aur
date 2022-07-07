@@ -16,7 +16,9 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-	make build
+	# make install
+	npm install
+	npm run build
 }
 
 pkgver() {
@@ -29,6 +31,9 @@ pkgver() {
 
 package() {
   cd $pkgname
-	make install
+	# make install
+	install -dm644 /usr/share/web-greeter/themes/neon
+	cp -r ./public /usr/share/web-greeter/themes/neon
+	@echo "Please update your /etc/lightdm/web-greeter.yml manually"
 }
 
