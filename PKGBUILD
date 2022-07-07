@@ -5,7 +5,7 @@
 _name=recommonmark
 pkgname=python-$_name
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Markdown parser for docutils'
 arch=('any')
 url="https://recommonmark.readthedocs.io/"
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  pytest --deselect tests/test_sphinx.py
+  PYTHONDONTWRITEBYTECODE=1 pytest --deselect tests/test_sphinx.py
 }
 
 package() {
