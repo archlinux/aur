@@ -50,6 +50,9 @@ prepare() {
 
 	# https://svnweb.freebsd.org/ports/head/devel/kBuild/files/patch-src_kmk_make.h?view=markup&pathrev=539776
 	sed '/^struct rlimit stack_limit;$/s/^/extern /' -i source/3rdparty/qmake/make.h
+
+	# For the mirror only
+	chmod +x source/scripts/bootstrap.sh
 }
 
 build() {
