@@ -2,7 +2,7 @@
 
 pkgname="goldie-git"
 pkgdesc="Search content of text files recursively. Written in Nim."
-pkgver=r29.6b01f34
+pkgver=r32.cf9b2dc
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/goldie"
@@ -17,7 +17,9 @@ pkgver() {
 }
 
 build() {
-  nim compile -d:release -o=bin/goldie-release-linux "$pkgname/src/goldie.nim"
+  cd goldie-git
+  nimble install -d -y
+  nim compile -d:release -o=bin/goldie-release-linux "src/goldie.nim"
 }
 
 package() {
