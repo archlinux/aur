@@ -4,6 +4,7 @@ pkgname=castlequest-git
 _pkgname=castlequest
 pkgver=ca1aac9
 pkgrel=1
+provides=("$_pkgname=$pkgver")
 pkgdesc="Text-based adventure game set in a remote castle somewhere in Eastern Europe."
 depends=('asa')
 makedepends=('git' 'gcc-fortran')

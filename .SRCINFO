@@ -8,6 +8,7 @@ pkgbase = castlequest-git
 	makedepends = git
 	makedepends = gcc-fortran
 	depends = asa
+	provides = castlequest=ca1aac9
 	backup = usr/share/games/castlequest/CQUEST.SAV
 	source = castlequest.sh
 	source = castlequest::git+https://github.com/Quuxplusone/Castlequest.git#branch=patches
