@@ -4,7 +4,7 @@
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
 pkgver=2.3.9
-pkgrel=2
+pkgrel=3
 _electronversion=18
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "$_pkgbase-$pkgver"
-  electronDist="/usr/lib/electron" # $_electronversion"
+  electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   yarn install
