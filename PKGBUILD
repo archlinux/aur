@@ -2,12 +2,12 @@
 
 pkgname=anamnesis
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Clipboard manager that stores all clipboard history and offers an interface to do a full-text search."
 arch=('i686' 'x86_64')
 url=http://anamnesis.sourceforge.net/
 license=('GPL')
-depends=('pygtk' 'python2-xdg' 'sqlite3')
+depends=('pygtk' 'python2-pyxdg' 'sqlite3')
 optdepends=('xclip: for clipboard_implementation=gtk_xclip')
 backup=('usr/share/anamnesis/anamnesis.cfg')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
