@@ -25,7 +25,7 @@ package() {
   local _profiles=$(ls "${srcdir}/${_pkgname}")
   local _dest="${pkgdir}/usr/share/${_pkg}/configs"
   local pkg
-  install -dm755 "${_profiles_dir}"
+  install -dm755 "${_dest}"
   for pkg in "${_profiles[@]}"; do
     cp -r "${srcdir}/${pkg}" "${_dest}"
   done
