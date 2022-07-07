@@ -156,6 +156,9 @@ else
     install -Dm775 com.unrealengine.UE5Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
   fi
 fi
+
+  ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
+  install -Dm775 unreal-engine-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-pacman-cache.hook"
   
   cd ${pkgname}
   
