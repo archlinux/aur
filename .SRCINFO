@@ -1,0 +1,13 @@
+pkgbase = polyseed
+	pkgdesc = Mnemonic seed library for Monero and other CryptoNote-based currencies.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tevador/polyseed
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	source = polyseed-1.0.0.tar.gz::https://github.com/tevador/polyseed/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 45f1e6c08575286581079e6e26d341a3a33abe1f1ee2d026bd098cf632ea2349
+
+pkgname = polyseed
