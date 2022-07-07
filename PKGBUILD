@@ -1,20 +1,20 @@
 # Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=compiz-alone-utils-git
 pkgver=r3.8ac2684
-pkgrel=1
+pkgrel=2
 pkgdesc="A few Compiz Standalone utilities based off of some scripts that come with Openbox."
 arch=('any')
 url="https://github.com/ShadowKyogre/Compiz-Standalone-Utils"
 license=('GPL')
 depends=()
 conflicts=('compiz-alone-utils')
-optdepends=('pyxdg: for the xdg-autostart script')
+optdepends=('python2-pyxdg: for the xdg-autostart script')
 makedepends=('git')
 install=${pkgname%-git}.install
 
 _gitname="CompizSAUtils"
 source=(
-  "${_gitname}::git://github.com/ShadowKyogre/Compiz-Standalone-Utils.git"
+  "${_gitname}::git+https://github.com/ShadowKyogre/Compiz-Standalone-Utils.git"
 )
 
 
