@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=mgm
-_pkgver=1.2-12
+_pkgver=1.2-13
 pkgname=r-${_pkgname,,}
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc='Estimating Time-Varying k-Order Mixed Graphical Models'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0515b888742345d2260db2e25978a154e884dcc1e8440050ccf990ff580db45c')
+sha256sums=('6c5581116729bb5445ce4a01c78651e3813411b869f1d07dd6075eb6a2f37951')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
