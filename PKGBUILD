@@ -2,22 +2,23 @@
 
 _name=aiomanhole
 pkgname=python-$_name
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Manhole for accessing asyncio applications'
 url="https://github.com/nathan-hoad/$_name"
-arch=('any')
-license=('Apache')
-depends=('python>=3.3')
+arch=(any)
+license=(Apache)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3efc7e1655d0ad623c556297f8cca90a4c5d8bb76dc53bf6ad5f10cc4b0d571d')
+sha256sums=('bf22b6ca4190cb35c9cdc94e4be31190353fdc320e1b346c032d0d47fc3ca453')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
