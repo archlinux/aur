@@ -4,7 +4,7 @@
 _pkg="archiso"
 _distro="archlinux"
 _pkgbase="${_pkg}-profiles"
-profile=desktop
+profile="desktop"
 pkgname="${_distro}-${profile}"
 pkgver="$(date +%Y.%m.%d)"
 pkgrel=1
@@ -19,7 +19,7 @@ depends=('archiso-persistent-git'
 	 'mkinitcpio-archiso-encryption-git'
 	 'plymouth-nested-cryptkey'
          'polkit')
-makedepends=('devtools' 'git' "${_pkgbase}-git')
+makedepends=("devtools" "git" "${_pkgbase}-git")
 checkdepends=('shellcheck')
 sha256sums=('SKIP')
 
