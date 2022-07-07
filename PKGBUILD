@@ -2,7 +2,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=wxgtk-git
-pkgver=3.1.5.r1546.g1c5e66a12c
+pkgver=3.2.0.r3.gdeffbf1623
 pkgrel=1
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gtk3 gst-plugins-bad libnotify libsecret)
 makedepends=(git glu)
 provides=(wxgtk3 wxgtk-common)
 conflicts=(wxgtk3 wxgtk-common wxgtk2)
-source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git"
+source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#branch=3.2"
         "git+https://github.com/wxWidgets/Catch.git"
         "git+https://github.com/wxWidgets/pcre.git"
         "git+https://github.com/wxWidgets/nanosvg")
@@ -64,6 +64,5 @@ build() {
 package() {
   cd wxwidgets
   make DESTDIR="$pkgdir" install
-
   install -D -m644 docs/licence.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

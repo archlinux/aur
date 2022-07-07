@@ -1,6 +1,6 @@
 pkgbase = wxgtk-git
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI
-	pkgver = 3.1.5.r1546.g1c5e66a12c
+	pkgver = 3.2.0.r3.gdeffbf1623
 	pkgrel = 1
 	url = https://www.wxwidgets.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wxgtk-git
 	conflicts = wxgtk3
 	conflicts = wxgtk-common
 	conflicts = wxgtk2
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#branch=3.2
 	source = git+https://github.com/wxWidgets/Catch.git
 	source = git+https://github.com/wxWidgets/pcre.git
 	source = git+https://github.com/wxWidgets/nanosvg
