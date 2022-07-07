@@ -16,7 +16,6 @@ pkgbase = archlinux-desktop
 	depends = mkinitcpio-archiso-encryption-git
 	depends = plymouth-nested-cryptkey
 	depends = polkit
-	source = git+https://gitlab.archlinux.org/tallero/archiso-profiles
 	sha256sums = SKIP
 
 pkgname = archlinux-desktop
