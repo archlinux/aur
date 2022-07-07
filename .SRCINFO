@@ -1,14 +1,11 @@
 pkgbase = python-kgt
 	pkgdesc = Python tools for keygen.sh licensing
-	pkgver = 0.4.4
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://pypi.org/project/kgt
 	arch = any
 	license = custom:proprietary
-	makedepends = python-setuptools
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python>=3.7
 	depends = python-appdirs
 	depends = python-cryptography
@@ -18,7 +15,8 @@ pkgbase = python-kgt
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-x21
-	source = python-kgt-0.4.4.tar.gz::https://files.pythonhosted.org/packages/source/k/kgt/kgt-0.4.4.tar.gz
-	sha256sums = a3fdf8102389bfcbf97c543df7ff74c59dc11599897f72cdf31ddfe3d35466c8
+	noextract = kgt-0.4.7-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/k/kgt/kgt-0.4.7-py3-none-any.whl
+	sha256sums = 1e235b79c7e57b608726c87d9bd5197e06a1a5c8219d2bf4052550e219498af6
 
 pkgname = python-kgt

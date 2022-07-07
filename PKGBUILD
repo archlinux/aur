@@ -1,7 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-kgt
-pkgver=0.4.4
+_pkg="${pkgname#python-}"
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Python tools for keygen.sh licensing"
 arch=('any')
@@ -17,18 +18,11 @@ depends=(
 	'python-tomli'
 	'python-tomli-w'
 	'python-x21')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/k/kgt/kgt-$pkgver.tar.gz")
-sha256sums=('a3fdf8102389bfcbf97c543df7ff74c59dc11599897f72cdf31ddfe3d35466c8')
-
-build() {
-	cd "kgt-$pkgver"
-	python -m build --wheel --no-isolation
-}
+makedepends=('python-installer')
+source=("https://files.pythonhosted.org/packages/py3/${_pkg::1}/$_pkg/$_pkg-$pkgver-py3-none-any.whl")
+noextract=("$_pkg-$pkgver-py3-none-any.whl")
+sha256sums=('1e235b79c7e57b608726c87d9bd5197e06a1a5c8219d2bf4052550e219498af6')
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "kgt-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" *.whl
 }
