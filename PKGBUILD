@@ -14,7 +14,7 @@ conflicts=('rhythmbox-plugin-rhythmboxfullscreen')
 options=('!emptydirs')
 install=rhythmbox-plugin-rhythmboxfullscreen.install
 changelog=
-source=("git://github.com/benjaoming/rhythmbox-fullscreen")
+source=("git+https://github.com/benjaoming/rhythmbox-fullscreen.git")
 sha256sums=('SKIP')
 
 pkgver() {

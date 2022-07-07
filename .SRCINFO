@@ -12,7 +12,7 @@ pkgbase = rhythmbox-plugin-rhythmboxfullscreen-git
 	provides = rhythmbox-plugin-rhythmboxfullscreen
 	conflicts = rhythmbox-plugin-rhythmboxfullscreen
 	options = !emptydirs
-	source = git://github.com/benjaoming/rhythmbox-fullscreen
+	source = git+https://github.com/benjaoming/rhythmbox-fullscreen.git
 	sha256sums = SKIP
 
 pkgname = rhythmbox-plugin-rhythmboxfullscreen-git
