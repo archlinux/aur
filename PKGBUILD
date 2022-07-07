@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'quazip-qt5' 'qtkeychain-qt5' 'libxcomposite' 'unshield' 'fmt' 'pugixml') # this x11 dependency is going to be removed in a future release
 makedepends=('cmake' 'git') # git is needed for some cmake operations
 source=("$pkgname-$pkgver::https://xiv.zone/distrib/astra/$pkgver/astra-source.tar.gz") # sorry about the -beta on tags, this will be removed in the near future
-sha256sums=('6484f57ca563514daf176a771a7374e2bf1441a3604741899e2b0a7270698a80')
+sha256sums=('efcf6fcce293818b94b03d2016e5fe87afd07e5d7e6b4f7e58b26bf043af0c71')
 
 build() {
     cmake -DCMAKE_BUILD_TYPE=Release -DUSE_OWN_LIBRARIES=OFF ./
