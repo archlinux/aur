@@ -1,0 +1,17 @@
+pkgbase = wl-ime-type-git
+	pkgver = r5.9b8eef023524
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/wl-ime-type
+	arch = x86_64
+	license = BSD
+	makedepends = scdoc
+	makedepends = git
+	depends = wayland
+	provides = wl-ime-type
+	conflicts = wl-ime-type
+	options = debug
+	options = !strip
+	source = wl-ime-type::git+https://git.sr.ht/~emersion/wl-ime-type
+	sha1sums = SKIP
+
+pkgname = wl-ime-type-git
