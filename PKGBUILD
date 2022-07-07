@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-casacore
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Python bindings for casacore"
 arch=('x86_64')
 url="https://github.com/casacore/python-casacore"
@@ -11,9 +11,8 @@ depends=('casacore' 'python-numpy' 'python-argparse' 'python-future' 'python-six
 makedepends=('boost' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-pyrap')
 replaces=('python-pyrap')
-changelog=
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f654781292308de70c037981f5f7f5aeb02cf980a6f1367d1c294e7b4fca42ce')
+sha256sums=('47ac85d47051074d64415414212c8c2cfcb49a2037f5c3d78f71ab5b162d1e8b')
 
 build() {
 	cd "$pkgname-$pkgver"
