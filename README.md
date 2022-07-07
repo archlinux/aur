@@ -11,13 +11,13 @@
 - History substring search (powered by `zsh-history-substring-search`)
 - A lot of system infomation or git infomation provided (powered by `oh-my-posh`):
   - Current directory
-  - Time cost of command
+  - Time cost of commands
   - Git status
   - Git branches
   - Battery persontage
   - Local time
   - Root permission prompt
-- No theme or git plugin script written in Zsh, faster start up
+- No theme or git plugin script written in `zsh` -- faster start up
 
 ## Usage
 

@@ -1,5 +1,5 @@
 info() {
-    echo -e "\033[0;34m============================INFO==============================="
+    echo -e "\033[0;34m================================INFO==================================="
     echo -e "* To apply changes to current user, run:"
     echo -e "  > cp /etc/zsh/zshrc ~/.zshrc"
     echo -e "* To configure the theme:"
