@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = unreal-engine-4
+
+[Action]
+Description = Leaving only one Unreal Engine 4 package in cache to save storage space...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/paccache -rvk1 unreal-engine-4'
