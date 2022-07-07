@@ -1,7 +1,7 @@
 pkgbase = plasma-mobile
 	pkgdesc = Plasma Mobile shell components.
 	pkgver = 5.25.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma/plasma-mobile
 	arch = x86_64
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = plasma-mobile
 	depends = modemmanager-qt
 	depends = plasma-wayland-session
 	depends = qqc2-breeze-style
+	depends = qt5-feedback
 	optdepends = plasma-mobile-nm: Mobile networking settings modules for WiFi, etc.
 	optdepends = plasma-settings: Settings application for Plasma Mobile
 	optdepends = plasma-dialer: Phone application

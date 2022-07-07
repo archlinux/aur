@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
 pkgver=5.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -15,6 +15,7 @@ depends=(
   modemmanager-qt
   plasma-wayland-session
   qqc2-breeze-style
+  qt5-feedback
 )
 optdepends=(
   'plasma-mobile-nm: Mobile networking settings modules for WiFi, etc.'
