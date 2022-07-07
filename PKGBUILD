@@ -1,7 +1,7 @@
 # Maintainer: Janek S. <development@superyu.xyz>
 pkgname='switcheroo-git'
 _pkgname='switcheroo'
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc='A cross platform, rust implementation for the Tegra X1 bootROM exploit.'
 url='https://github.com/budde25/switcheroo'
