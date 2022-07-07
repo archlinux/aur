@@ -81,9 +81,10 @@ _CPUSUFFIXES_KBUILD=(
   GENERIC_CPU2 GENERIC_CPU3 GENERIC_CPU4)
 pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
-pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
+pkgname=('linux-pf' 'linux-pf-headers-variant'
+         'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -518,12 +519,15 @@ build() {
     if [[ "$LCPU" ]] ; then
       case $LCPU in
         *generic*) LCPU=${LCPU/generic-v/generic_cpu} ;;
+        generic) : ;;
         *) LCPU=m${LCPU} ;;
       esac
-      CPU=${LCPU^^}
-      sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
-          -e '/CONFIG_GENERIC_CPU=y/d' \
-          -i "$srcdir/linux-${_basekernel}/.config"
+      if [ ! $LCPU = "generic" ] ; then
+        CPU=${LCPU^^}
+        sed -e "s|# CONFIG_$CPU is not set|CONFIG_$CPU=y|" \
+            -e '/CONFIG_GENERIC_CPU=y/d' \
+            -i "$srcdir/linux-${_basekernel}/.config"
+      fi
       export _PKGOPT=y
     fi
 
@@ -659,6 +663,185 @@ build() {
   make all
 }
 
+
+_set_variant_appendix()
+{
+  local _pkg="$1"
+  shift
+
+  if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
+    case $CPU in
+      MK8)
+        pkgname="${_pkg}-k8"
+        pkgdesc="${pkgdesc} AMD K8 optimized."
+        ;;
+      MK10)
+        pkgname="${_pkg}-k10"
+        pkgdesc="§{pkgdesc} AMD K10 optimized"
+        ;;
+      MBARCELONA)
+        pkgname="${_pkg}-barcelona"
+        pkgdesc="${pkgdesc} AMD Barcelona optimized."
+        ;;
+      MBOBCAT)
+        pkgname="${_pkg}-bobcat"
+        pkgdesc="${pkgdesc} AMD Bobcat optimized."
+        ;;
+      MBULLDOZER)
+        pkgname="${_pkg}-bulldozer"
+        pkgdesc="${pkgdesc} AMD Bulldozer optimized."
+        ;;
+      MPILEDRIVER)
+        pkgname="${_pkg}-piledriver"
+        pkgdesc="${pkgdesc} AMD Piledriver optimized."
+        ;;
+      MSTEAMROLLER)
+        pkgname="${_pkg}-steamroller"
+        pkgdesc="${pkgdesc} AMD Steamroller optimized."
+        ;;
+      MEXCAVATOR)
+        pkgname="${_pkg}-excavator"
+        pkgdesc="${pkgdesc} AMD Excavator optimized."
+        ;;
+      MZEN)
+        pkgname="${_pkg}-zen"
+        pkgdesc="${pkgdesc} AMD Zen optimized".
+        ;;
+      MZEN2)
+        pkgname="${_pkg}-zen2"
+        pkgdesc="${pkgdesc} AMD Zen3 optimized."
+        ;;
+      MZEN3)
+        pkgname="${_pkg}-zen3"
+        pkgdesc="${pkgdesc} AMD Zen3 optimized."
+        ;;
+      MCORE2)
+        pkgname="${_pkg}-core2"
+        pkgdesc="${pkgdesc} Intel Core2 optimized."
+        ;;
+      MMPSC)
+        pkgname="${_pkg}-psc"
+        pkgdesc="${pkgdesc} Intel Pentium4/D/Xeon optimized."
+        ;;
+      MATOM)
+        pkgname="${_pkg}-atom"
+        pkgdesc="${pkgdesc} Intel Atom optimized."
+        ;;
+      MPENTIUMII)
+        pkgname="${_pkg}-p2"
+        pkgdesc="${pkgdesc} Intel Pentium2 optimized."
+        ;;
+      MPENTIUMIII)
+        pkgname="${_pkg}-p3"
+        pkgdesc="${pkgdesc} Intel Pentium3 optimized."
+        ;;
+      MPENTIUMM)
+        pkgname="${_pkg}-pm"
+        pkgdesc="${pkgdesc} Intel Pentium-M optimized."
+        ;;
+      MPENTIUM4)
+        pkgname="${_pkg}-p4"
+        pkgdesc="${pkgdesc} Intel Pentium4 optimized."
+        ;;
+      MNEHALEM)
+        pkgname="${_pkg}-nehalem"
+        pkgdesc="${pkgdesc} Intel Core Nehalem optimized."
+        ;;
+      MSANDYBRIDGE)
+        pkgname="${_pkg}-sandybridge"
+        pkgdesc="${pkgdesc} Intel Sandy Bridge optimized."
+        ;;
+      MIVYBRIDGE)
+        pkgname="${_pkg}-ivybridge"
+        pkgdesc="${pkgdesc} Intel Ivy Bridge optimized."
+        ;;
+      MHASWELL)
+        pkgname="${_pkg}-haswell"
+        pkgdesc="${pkgdesc} Intel Haswell optimized."
+        ;;
+      MBROADWELL)
+        pkgname="${_pkg}-broadwell"
+        pkgdesc="${pkgdesc} Intel Broadwell optimized."
+        ;;
+      MSILVERMONT)
+        pkgname="${_pkg}-silvermont"
+        pkgdesc="${pkgdesc} Intel Silvermont optimized."
+        ;;
+      MSKYLAKE)
+        pkgname="${_pkg}-skylake"
+        pkgdesc="${pkgdesc} Intel Skylake optimized."
+        ;;
+      MSKYLAKEX)
+        pkgname="${_pkg}-skylakex"
+        pkgdesc="${pkgdesc} Intel Skylake-X optimized."
+        ;;
+      MCASCADELAKE)
+        pkgname="${_pkg}-cascadelake"
+        pkgdesc="${pkgdesc} Intel Cascadelake optimized."
+        ;;
+      MCANNONLAKE)
+        pkgname="${_pkg}-cannonlake"
+        pkgdesc="${pkgdesc} Intel Cannonlake optimized."
+        ;;
+      MICELAKE)
+        pkgname="${_pkg}-icelake"
+        pkgdesc="${pkgdesc} Intel Icelake optimized."
+        ;;
+      MCASCADELAKE)
+        pkgname="${_pkg}-cascadelake"
+        pkgdesc="${pkgdesc} Intel optimized."
+        ;;
+      MCOOPERLAKE)
+        pkgname="${_pkg}-cooperlake"
+        pkgdesc="${pkgdesc} Intel Cooperlake optimized."
+        ;;
+      MTIGERLAKE)
+        pkgname="${_pkg}-tigerlake"
+        pkgdesc="${pkgdesc} Intel Tigerlake optimized."
+        ;;
+      MSAPPHIRERAPIDS)
+        pkgname="${_pkg}-sapphirerapids"
+        pkgdesc="${pkgdesc} Intel Sapphirerapids optimized."
+        ;;
+      MROCKETLAKE)
+        pkgname="${_pkg}-rocketlake"
+        pkgdesc="${pkgdesc} Intel Rocketlake optimized."
+        ;;
+      MALDERLAKE)
+        pkgname="${_pkg}-alderlake"
+        pkgdesc="${pkgdesc} Intel Alderlake optimized."
+        ;;
+      GENERIC_CPU2)
+        pkgname="${_pkg}-generic-v2"
+        pkgdesc="${pkgdesc} Generic-x86-64-v2 optimized."
+        ;;
+      GENERIC_CPU3)
+        pkgname="${_pkg}-generic-v3"
+        pkgdesc="${pkgdesc} Generic-x86-64-v3 optimized."
+        ;;
+      GENERIC_CPU4)
+        pkgname="${_pkg}-generic-v4"
+        pkgdesc="${pkgdesc} Generic-x86-64-v4 optimized."
+        ;;
+      *|generic)
+        pkgname="${_pkg}-generic"
+        pkgdesc="${pkgdesc}"
+        ;;
+    esac
+
+    conflicts=("$_pkg")
+    provides+=(${_pkg}=$pkgver)
+
+  fi
+
+  echo
+  echo "    ========================================"
+  msg  "The packages will be named ${pkgname}"
+  msg  "${pkgdesc}"
+  echo "    ========================================"
+  echo
+}
+
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=('coreutils' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
@@ -679,181 +862,13 @@ _package() {
 
   cd "${srcdir}/linux-${_basekernel}"
 
-  if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
-    case $CPU in
-      MK8)
-        pkgname="${pkgbase}-k8"
-        pkgdesc="${pkgdesc} AMD K8 optimized."
-	      ;;
-      MK10)
-        pkgname="${pkgbase}-k10"
-	      pkgdesc="§{pkgdesc} AMD K10 optimized"
-        ;;
-      MBARCELONA)
-        pkgname="${pkgbase}-barcelona"
-        pkgdesc="${pkgdesc} AMD Barcelona optimized."
-	      ;;
-      MBOBCAT)
-	      pkgname="${pkgbase}-bobcat"
-	      pkgdesc="${pkgdesc} AMD Bobcat optimized."
-	      ;;
-      MBULLDOZER)
-	      pkgname="${pkgbase}-bulldozer"
-	      pkgdesc="${pkgdesc} AMD Bulldozer optimized."
-	      ;;
-      MPILEDRIVER)
-	      pkgname="${pkgbase}-piledriver"
-	      pkgdesc="${pkgdesc} AMD Piledriver optimized."
-	      ;;
-      MSTEAMROLLER)
-        pkgname="${pkgbase}-steamroller"
-	      pkgdesc="${pkgdesc} AMD Steamroller optimized."
-        ;;
-      MEXCAVATOR)
-        pkgname="${pkgbase}-excavator"
-	      pkgdesc="${pkgdesc} AMD Excavator optimized."
-        ;;
-      MZEN)
-        pkgname="${pkgbase}-zen"
-	      pkgdesc="${pkgdesc} AMD Zen optimized".
-        ;;
-      MZEN2)
-        pkgname="${pkgbase}-zen2"
-	      pkgdesc="${pkgdesc} AMD Zen3 optimized."
-        ;;
-      MZEN3)
-        pkgname="${pkgbase}-zen3"
-	      pkgdesc="${pkgdesc} AMD Zen3 optimized."
-        ;;
-      MCORE2)
-        pkgname="${pkgbase}-core2"
-        pkgdesc="${pkgdesc} Intel Core2 optimized."
-        ;;
-      MMPSC)
-        pkgname="${pkgbase}-psc"
-        pkgdesc="${pkgdesc} Intel Pentium4/D/Xeon optimized."
-        ;;
-      MATOM)
-        pkgname="${pkgbase}-atom"
-        pkgdesc="${pkgdesc} Intel Atom optimized."
-        ;;
-      MPENTIUMII)
-        pkgname="${pkgbase}-p2"
-        pkgdesc="${pkgdesc} Intel Pentium2 optimized."
-        ;;
-      MPENTIUMIII)
-        pkgname="${pkgbase}-p3"
-        pkgdesc="${pkgdesc} Intel Pentium3 optimized."
-        ;;
-      MPENTIUMM)
-        pkgname="${pkgbase}-pm"
-        pkgdesc="${pkgdesc} Intel Pentium-M optimized."
-        ;;
-      MPENTIUM4)
-        pkgname="${pkgbase}-p4"
-        pkgdesc="${pkgdesc} Intel Pentium4 optimized."
-        ;;
-      MNEHALEM)
-	      pkgname="${pkgbase}-nehalem"
-        pkgdesc="${pkgdesc} Intel Core Nehalem optimized."
-	      ;;
-      MSANDYBRIDGE)
-        pkgname="${pkgbase}-sandybridge"
-        pkgdesc="${pkgdesc} Intel Sandy Bridge optimized."
-	      ;;
-      MIVYBRIDGE)
-        pkgname="${pkgbase}-ivybridge"
-        pkgdesc="${pkgdesc} Intel Ivy Bridge optimized."
-	      ;;
-      MHASWELL)
-        pkgname="${pkgbase}-haswell"
-        pkgdesc="${pkgdesc} Intel Haswell optimized."
-	      ;;
-      MBROADWELL)
-        pkgname="${pkgbase}-broadwell"
-        pkgdesc="${pkgdesc} Intel Broadwell optimized."
-	      ;;
-      MSILVERMONT)
-        pkgname="${pkgbase}-silvermont"
-        pkgdesc="${pkgdesc} Intel Silvermont optimized."
-	      ;;
-      MSKYLAKE)
-        pkgname="${pkgbase}-skylake"
-        pkgdesc="${pkgdesc} Intel Skylake optimized."
-        ;;
-      MSKYLAKEX)
-        pkgname="${pkgbase}-skylakex"
-        pkgdesc="${pkgdesc} Intel Skylake-X optimized."
-        ;;
-      MCASCADELAKE)
-        pkgname="${pkgbase}-cascadelake"
-        pkgdesc="${pkgdesc} Intel Cascadelake optimized."
-        ;;
-      MCANNONLAKE)
-        pkgname="${pkgbase}-cannonlake"
-        pkgdesc="${pkgdesc} Intel Cannonlake optimized."
-        ;;
-      MICELAKE)
-        pkgname="${pkgbase}-icelake"
-        pkgdesc="${pkgdesc} Intel Icelake optimized."
-        ;;
-      MCASCADELAKE)
-        pkgname="${pkgbase}-cascadelake"
-        pkgdesc="${pkgdesc} Intel optimized."
-        ;;
-      MCOOPERLAKE)
-        pkgname="${pkgbase}-cooperlake"
-        pkgdesc="${pkgdesc} Intel Cooperlake optimized."
-        ;;
-      MTIGERLAKE)
-        pkgname="${pkgbase}-tigerlake"
-        pkgdesc="${pkgdesc} Intel Tigerlake optimized."
-        ;;
-      MSAPPHIRERAPIDS)
-        pkgname="${pkgbase}-sapphirerapids"
-        pkgdesc="${pkgdesc} Intel Sapphirerapids optimized."
-        ;;
-      MROCKETLAKE)
-        pkgname="${pkgbase}-rocketlake"
-        pkgdesc="${pkgdesc} Intel Rocketlake optimized."
-        ;;
-      MALDERLAKE)
-        pkgname="${pkgbase}-alderlake"
-        pkgdesc="${pkgdesc} Intel Alderlake optimized."
-        ;;
-      GENERIC_CPU2)
-        pkgname="${pkgbase}-generic-v2"
-        pkgdesc="${pkgdesc} Generic-x86-64-v2 optimized."
-        ;;
-      GENERIC_CPU3)
-        pkgname="${pkgbase}-generic-v3"
-        pkgdesc="${pkgdesc} Generic-x86-64-v3 optimized."
-        ;;
-      GENERIC_CPU4)
-        pkgname="${pkgbase}-generic-v4"
-        pkgdesc="${pkgdesc} Generic-x86-64-v4 optimized."
-        ;;
-      *)
-        # Workaround against mksrcinfo getting the $pkdesc wrong
-        pkgname="${pkgbase}"
-        pkgdesc="${pkgdesc}"
-        ;;
-    esac
+  _set_variant_appendix "${pkgbase}"
 
-
-    if [[ "$pkgname" != "$pkgbase" ]]; then
-      # If optimized build, conflict with generi
-      conflicts=('linux-pf')
-      provides+=(${pkgbase}=$pkgver)
-    fi
-  fi
-
-  echo
-  echo "    ========================================"
-  msg  "The packages will be named ${pkgname}"
-  msg  "${pkgdesc}"
-  echo "    ========================================"
-  echo
+  case "$pkgname" in
+    *generic)
+      replaces=('<linux-pf=5.18.6.pf2-2')
+      ;;
+  esac
 
   ### package_linux-pf
 
@@ -884,11 +899,36 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
   # end c/p
+}
+
+_package-headers-variant() {
+  pkgname=${pkgbase}-headers-variant
+  pkgdesc="Variant specific headers and scripts for building modules for the $pkgdesc kernel"
+  _set_variant_appendix "$pkgname"
+
+  cd "${srcdir}/${_srcname}"
+  local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
 
   # Install here so each kernel optimized flavour can ship it's own System.map,
   # since bpf symbols can differ bepending on the cflags used during build.
   # Re: #5
-  install -D -m644 System.map "$modulesdir"/build/System.map
+  install -D -m644 scripts/mod/devicetable-offsets.s \
+          "$_builddir"/scripts/mod/devicetable-offsets.s
+  install -D -m644 scripts/mod/.devicetable-offsets.s.cmd \
+          "$_builddir"/scripts/mod/.devicetable-offsets.s.cmd
+  install -D -m644 scripts/mod/.empty.o.cmd \
+          "$_builddir"/scripts/mod/.empty.o.cmd
+  install -D -m644 include/config/auto.conf \
+          "$_builddir"/include/config/auto.conf
+  install -D -m644 include/generated/autoconf.h \
+          "$_builddir"/include/generated/autoconf.h
+  install -Dt "$_builddir" -m644 \
+          vmlinux \
+          .config \
+          System.map
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$_builddir"/vmlinux
 }
 
 ### package_linux-pf-headers
@@ -896,6 +936,8 @@ _package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=('pahole')
+  # Depend on variant specific tools and headers for external modules
+  depends=('linux-pf-headers-variant')
 
   cd "${srcdir}/${_srcname}"
   local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
@@ -914,8 +956,8 @@ _package-headers() {
 
   msg2 "Installing build files..."
   install -dm755 "${_builddir}"
-  install -Dt "${_builddir}" -m644 Makefile .config Module.symvers version \
-          vmlinux localversion.*
+  install -Dt "${_builddir}" -m644 Makefile Module.symvers version \
+          localversion.*
   install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
 
@@ -928,12 +970,19 @@ _package-headers() {
   # copy files necessary for later builds, like nvidia and vmware
   cp -a scripts "${_builddir}"
 
+  # Moved to main package, see earlier in _package()
+  rm "${_builddir}"/scripts/mod/devicetable-offsets.s \
+     "${_builddir}"/scripts/mod/.devicetable-offsets.s.cmd \
+     "${_builddir}"/scripts/mod/.empty.o.cmd
 
   msg2 "Installing headers..."
   cp -t "$_builddir" -a include
   # copy arch includes for external modules
   cp -t "$_builddir/arch/x86" -a arch/x86/include
 
+  # Moved to main package, see earlier in _package()
+  rm "${_builddir}"/include/config/auto.conf \
+     "${_builddir}"/include/generated/autoconf.h
 
   # fix permissions on scripts dir
   chmod og-w -R "${_builddir}/scripts"
@@ -999,9 +1048,6 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "${_builddir}" -type f -perm -u+x ! -name vmlinux -print0)
-
-  echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "${_builddir}/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
@@ -1072,6 +1118,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      _package
      }"
 
+pkgname[1]=linux-pf-headers-variant${LCPU+-}${LCPU}
+
+eval "package_linux-pf-headers-variant${LCPU+-$LCPU}() {
+     $(declare -f "_package-headers-variant")
+     _package-headers-variant
+     }"
 
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             '5770ad7cc2d34367193cfbeb2a8a37e46c73470b3f6ec7ad63a1cadab4245fbc'
