@@ -41,13 +41,13 @@ cp /etc/zsh/zshrc ~/.zshrc
 
 ### Key Usages
 
-- Up:           History substring search(backward)
-- Down:         History substring search(forward)
-- Ctrl-Up:      History beginning search(backward)
-- Ctrl-Down:    History beginning search(forward)
-- Ctrl-Left:    Skip a whole word(left)
-- Ctrl-Right:   Skip a whole word(right)
-- Tab:          Command Completion
-- Ctrl-W:       Delete a whole word(left)
-- Ctrl-U:       Delete a whole line
-- Del:          Delete a character after the cursor
+- `Up`:           History substring search(backward)
+- `Down`:         History substring search(forward)
+- `Ctrl-Up`:      History beginning search(backward)
+- `Ctrl-Down`:    History beginning search(forward)
+- `Ctrl-Left`:    Skip a whole word(left)
+- `Ctrl-Right`:   Skip a whole word(right)
+- `Tab`:          Command Completion
+- `Ctrl-W`:       Delete a whole word(left)
+- `Ctrl-U`:       Delete a whole line
+- `Del`:          Delete a character after the cursor
