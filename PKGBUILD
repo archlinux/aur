@@ -1,7 +1,7 @@
 # Maintainer: hertg <aur@her.tg>
 pkgname=lightdm-theme-neon-git
 pkgver=r59.b337c02
-pkgrel=3
+pkgrel=5
 epoch=1
 pkgdesc="Modern and customizable theme for web-greeter with a nostalgic neon look"
 arch=('any')
@@ -16,7 +16,6 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-	# make install
 	npm install
 	npm run build
 }
@@ -31,9 +30,7 @@ pkgver() {
 
 package() {
   cd $pkgname
-	# make install
 	install -dm644 ${pkgdir}/usr/share/web-greeter/themes/neon
 	cp -r ./public ${pkgdir}/usr/share/web-greeter/themes/neon
-	@echo "Please update your /etc/lightdm/web-greeter.yml manually"
 }
 
