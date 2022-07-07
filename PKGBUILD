@@ -2,9 +2,9 @@
 
 pkgname=python-sphinx-jinja
 # https://github.com/tardyp/sphinx-jinja/blob/master/ChangeLog
-pkgver=1.4.0
+pkgver=2.0.2
 # curl https://api.github.com/repos/tardyp/sphinx-jinja/git/ref/tags/$pkgver | jq -r .object.sha
-_tag=c142a2d05089a56fef4b2fd0701ee0b45c7d5f24
+_tag=7faac8c23bf523f39c5386524a733c12d8c25dfd
 pkgrel=1
 pkgdesc='A sphinx extension to include jinja based templates based documentation into a sphinx doc'
 arch=(any)
@@ -19,11 +19,6 @@ sha256sums=('SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # https://github.com/tardyp.gpg
 )
-
-prepare() {
-  cd sphinx-jinja
-  rm -v sphinxcontrib/__init__.py
-}
 
 pkgver() {
   cd sphinx-jinja
