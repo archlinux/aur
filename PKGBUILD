@@ -3,7 +3,7 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-uefi
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut unified kernel images for systemd-boot"
 url=https://codeberg.org/flausch/pkgbuilds/src/branch/main/dracut-hook-uefi
@@ -18,7 +18,7 @@ source=(
     "91-dracut-remove.hook"
 )
 sha256sums=('98fd28dce6462bed1d965235a4d3ca44e7cdd83d8349677c17d141f0624ebaf2'
-    '5d4b4713e8d98d2b764c623e7b53ac8a2bdf4efd7cee005a86c34524598c63bd'
+    '86cc4578da4ceb8b36a677594d4e260fc5e4897392ee92cfee79a178b044bdec'
     '1daaad5f60d89c5198419db7e8a8d7599e9a4e252907437a1dc8f65f2ccd61b8')
 
 package() {

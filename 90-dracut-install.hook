@@ -3,10 +3,17 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
-Target = usr/lib/dracut/*
-Target = usr/lib/systemd/systemd
-Target = usr/lib/systemd/boot/efi/*.efi.stub
-Target = boot/*-ucode.img
+Target = usr/src/*/dkms.conf
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = dracut
+Target = systemd
+Target = amd-ucode
+Target = intel-ucode
+Target = dracut-hook-uefi
 
 [Action]
 Description = Generating unified EFI kernel images...
