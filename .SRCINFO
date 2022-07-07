@@ -1,6 +1,6 @@
 pkgbase = blacktex
 	pkgdesc = LaTex code prettifier and formatter
-	pkgver = 0.8.3
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://pypi.org/project/blacktex
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = blacktex
 	depends = python-kgt
 	depends = python-x21
 	optdepends = python-importlib-metadata: required for python<3.8
-	source = https://files.pythonhosted.org/packages/py3/b/blacktex/blacktex-0.8.3-py3-none-any.whl
-	sha256sums = 6ad33fedfe13ecedb25d7df6e6db4affb74d384d22df38375bbe5e30198cc6f8
+	source = https://files.pythonhosted.org/packages/py3/b/blacktex/blacktex-0.8.6-py3-none-any.whl
+	sha256sums = 885438b798e9edaf4234cca9f7f7a652dc0a2e1daa71ab8bf7aede49dd4383d5
 
 pkgname = blacktex
