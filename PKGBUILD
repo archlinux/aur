@@ -2,12 +2,12 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_lodepng_commit=8c6a9e30576f07bf470ad6f09458a2dcd7a6a84a
+_lodepng_commit=5601b8272a6850b7c5d693dd0c0e16da50be8d8d
 _SequenceParsing_commit=103c528347ebb2dd0ff5d79b5cee24bbcf938ce0
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=openfx-arena
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
@@ -28,10 +28,10 @@ source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "lodepng-${_lodepng_commit}.tar.gz::https://github.com/lvandeve/lodepng/archive/${_lodepng_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
         "tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('5adf3719419eab776d4bde1332d5da90c720aa87bbc70b2c3e953236fc3cccb887f235bea3ded8464db56174ed2f494020908969b22f5ed912d27ed91e838025'
-            '624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa'
-            '12ba4d52f5712dee30db94bd5d382d899c58f61e68e30268d8c45baa40a9a13281ae2d88b56160547e0feaa0cc28f6f43c40f95d825cf47f082d071b6dda2535'
-            'b3d6672287824b3f61c32156618040ed4892c7748a496688369eca95a4c0d562b53e573b22a38f59445d96e4e54a34ea20164a1495d8780338c6dcc945c804c9'
+sha512sums=('10613e34476aed3c0b51db590d2da7173773ee07b545ff32228b8bab7ac29b0df8b3804135c54fa98d2bdeadfc5df8a4c626846dae9b97960cf6c60e951725e7'
+            '56fc96d0820d053940336ef3ae9fee4e4386e90c9cede6e5450de66c92220f2670f12b25dfb17aaec621001db140281ab47ee8f3fa5e5915a56cfefe2be813fe'
+            'c29af37f01850a44cc64420028ba4b9fdd0068a3f3d6464a21a06ba2eb980b469da4d0c1a80eb4201292cb525666c1f948e83e9db86db8ae4f56b5578268a8a0'
+            'b700769ffc0df0cb3f48ec68cfbdddb01e25a55a3606df5c618cd277ba86af77c58b4301678a5f2b045c13fbe8f0403afe965102e2c78dc69226e11ea8e4be53'
             'SKIP'
             'SKIP'
             'SKIP')
