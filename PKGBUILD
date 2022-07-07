@@ -12,7 +12,7 @@ checkdepends=('cargo')
 source=("https://github.com/szabodanika/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 "$pkgname.service")
 sha256sums=('04d3f002b8a1558661e0ae9b70535e28b5f75b19d29ab421f11ea79fbd57c65d'
-            '55c2b42dadf7262577283a3a0fbe79ed9c6b290fd54540209fdfc4367aa36298')
+            '83676bfb39c58acf01937a1a0ca7c92386a6cddf0529c943b680265ff4b2fe21')
 
 #prepare() {
 #    cd "$srcdir/$pkgname-$pkgver"
