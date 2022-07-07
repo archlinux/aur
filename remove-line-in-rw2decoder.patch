@@ -1,0 +1,10 @@
+--- plugins/load-rawspeed/rawspeed/RawSpeed/Rw2Decoder.cpp.orig	2022-07-07 22:20:30.000000000 +0200
++++ plugins/load-rawspeed/rawspeed/RawSpeed/Rw2Decoder.cpp	2022-07-07 22:51:06.552030001 +0200
+@@ -219,7 +219,6 @@
+     setMetaData(meta, make, model, "", iso);
+   }
+ 
+-  data = mRootIFD->getIFDsWithTag(PANASONIC_STRIPOFFSET);
+   TiffIFD* raw = data[0];
+ 
+   // Read blacklevels

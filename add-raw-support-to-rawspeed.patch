@@ -1,0 +1,10 @@
+--- plugins/load-rawspeed/rawstudio-plugin.c.orig	2022-07-07 22:47:23.000000000 +0200
++++ plugins/load-rawspeed/rawstudio-plugin.c	2022-07-07 22:49:56.225362541 +0200
+@@ -30,6 +30,7 @@
+ 	rs_filetype_register_loader(".nrw", "Nikon NRW", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
+ 	rs_filetype_register_loader(".orf", "Olympus", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
+ 	rs_filetype_register_loader(".pef", "Pentax raw", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
++        rs_filetype_register_loader(".raw", "Panasonic raw v1", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
+ 	rs_filetype_register_loader(".rw2", "Panasonic raw v2", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
+ 	rs_filetype_register_loader(".rwl", "Leica RAW", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
+ 	rs_filetype_register_loader(".srw", "Samsung SRW", load_rawspeed, 5, RS_LOADER_FLAGS_RAW);
