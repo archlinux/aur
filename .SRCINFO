@@ -1,0 +1,16 @@
+pkgbase = clipmon-git
+	pkgdesc = clipmon monitors the wayland clipboard and does two things
+	pkgver = r49.ed0d771
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/clipmon
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = clipmon
+	conflicts = clipmon
+	source = clipmon::git+https://git.sr.ht/~whynothugo/clipmon
+	sha256sums = SKIP
+
+pkgname = clipmon-git
