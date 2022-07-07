@@ -5,7 +5,7 @@ _pkg_arch=armv7a-eabi
 _android_arch=armeabi-v7a
 _android_platform_arch=arch-arm
 _pkgname=openssl
-_ver=1.1.1p
+_ver=1.1.1q
 _patchname=15-android_conf
 
 pkgname=android-$_pkg_arch-$_pkgname
@@ -22,7 +22,7 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc})
-sha256sums=('bf61b62aaa66c7c7639942a94de4c9ae8280c08f17d4eac2e44644d9fc8ace6f'
+sha256sums=('d7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
