@@ -1,7 +1,7 @@
 # Maintainer: redstrate <josh@redstrate.com>
 
 pkgname=astra-launcher
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Cross-platform FFXIV launcher"
 arch=('x86_64')
