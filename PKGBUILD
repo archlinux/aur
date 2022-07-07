@@ -11,6 +11,7 @@ source=('https://gitlab.manjaro.org/packages/community/gnome/nautilus-empty-file
         'https://gitlab.manjaro.org/packages/community/gnome/nautilus-empty-file/-/raw/master/create-template.desktop')
 sha256sums=('a9130afff6e8b244648d41d27c70fa7f6e1fa214399f364c9954b98cc63db142'
             'f57328e9739108673f538b9c47680a1e30d4fadd731ea25cb3f16580f50c0eb3')
+url="https://gitlab.manjaro.org/packages/community/gnome/nautilus-empty-file"
 
 package() {
   install -Dm755 create-template -t "$pkgdir/usr/bin/"
