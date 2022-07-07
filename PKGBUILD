@@ -1,8 +1,8 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
@@ -11,12 +11,11 @@ license=(BSD)
 depends=(
 	'python-anndata>=0.7.4'
 	'python-numpy>=1.17.0'
-	'python-matplotlib>=3.1.2'
-	'python-pandas>=0.21'
+	'python-matplotlib>=3.4'
+	'python-pandas>=1.0'
 	'python-scipy>=1.4'
 	python-seaborn
 	python-h5py
-	python-pytables
 	python-tqdm
 	'python-scikit-learn>=0.21.2'
 	'python-statsmodels>=0.10.0'
@@ -40,12 +39,13 @@ optdepends=(
 	'python-scanorama: Scanorama dataset integration algorithm'
 	'python-scrublet: Cell doublet detection'
 )
-makedepends=(python-build python-installer)
+makedepends=(python-build python-installer python-flit-core python-setuptools-scm)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0c0baa6f08cec50b89b512cef3bfc7f612b215ce02c0fb49cc01c2acfbb2e9bb')
+sha256sums=('00c9a83b649da7e0171c91e9a08cff632102faa760614fd05cd4d1dbba4eb541')
 
 build() {
 	cd "$pkgname-$pkgver"
+	# no idea why the dep check doesn’t work …
 	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
