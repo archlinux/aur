@@ -16,7 +16,7 @@ pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw-x11' 'python2-pyside')
+depends=('boost-libs' 'cairo' 'glfw-x11' 'python-pyside')
 makedepends=('boost' 'expat' 'openmp')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'
