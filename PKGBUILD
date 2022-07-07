@@ -1,7 +1,7 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 pkgname=mutt-desktop
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mutt desktop file"
 arch=('any')
 url="http://mutt.org"
