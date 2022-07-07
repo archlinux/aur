@@ -1,11 +1,11 @@
 # Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
-_pkgname=ente-desktop-appimage
+_pkgname=ente
 
-pkgname="${_pkgname}"
+pkgname="${_pkgname}-desktop-appimage"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure backups for photos and videos"
 arch=('x86_64')
 url="https://ente.io/"
