@@ -4,20 +4,20 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=stellarium
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(GPL2)
 depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd'
-  'qt5-serialport' 'qt5-multimedia' 'qt5-location' 'qt5-charts' 'qt5-script')
-makedepends=('cmake' 'mesa' 'qt5-tools' 'qt5-webengine')
+  'qt5-serialport' 'qt5-multimedia' 'qt5-location' 'qt5-charts' 'qt5-script' 'qt5-webengine')
+makedepends=('cmake' 'mesa' 'qt5-tools')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('c0f9822386d09485ea2e3e031d0cbcdb' 'SKIP')
-sha1sums=('55b5915dfb616b9748e1c2d2de6150f7159cf36c' 'SKIP')
-sha256sums=('61a595ecc345dcc7517359573d0dc772e67ecaf6d52fefab142a77c92cf3fa24'
+md5sums=('2aafc25f5736b8b5d6d2bcf6d7c2d118' 'SKIP')
+sha1sums=('3661b4e8a94e7a520873fa22ddc79f39904eb1c4' 'SKIP')
+sha256sums=('31e965d32cafc0fbad212c7ef4efbeac988f909206013554e1fe35123ebb9376'
   'SKIP')
 
 build() {
