@@ -1,14 +1,15 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
-pkgname=prusa-slicer
+pkgbase=prusa-slicer
+pkgname=(prusa-slicer slicer-udev)
 pkgver=2.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew intel-tbb mpfr nlopt wxgtk3 qhull openvdb)
-makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd)
+depends=(boost-libs curl glew mpfr nlopt tbb wxgtk3 qhull openvdb)
+makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd) # libigl not detected?
 checkdepends=(catch2)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
@@ -54,11 +55,23 @@ check() {
   ctest -v
 }
 
-package() {
+package_prusa-slicer() {
+  depends+=(slicer-udev)
+
   make -C build DESTDIR="${pkgdir}" install
 
   # Desktop icons
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
   ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer.svg
   ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer-gcodeviewer.svg
+
+  # Split udev rule
+  mv "${pkgdir}"/usr/lib/udev/ .
+}
+
+package_slicer-udev() {
+  depends=() # Reset dependencies
+
+  install -d "${pkgdir}"/usr/lib/
+  mv udev "${pkgdir}"/usr/lib/
 }
