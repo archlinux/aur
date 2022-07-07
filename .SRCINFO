@@ -3,6 +3,7 @@ pkgbase = anki-official-binary-bundle
 	pkgver = 2.1.53
 	pkgrel = 1
 	url = https://apps.ankiweb.net
+	install = anki-official-binary-bundle.install
 	arch = x86_64
 	license = GNU AGPL
 	depends = libxkbcommon-x11
@@ -13,6 +14,6 @@ pkgbase = anki-official-binary-bundle
 	source = https://github.com/ankitects/anki/releases/download/2.1.53/anki-2.1.53-linux-qt6.tar.zst
 	source = install_sh.patch
 	sha256sums = c9739271c6f2bfbe248c98fd83d5ce8952301f21ac39f2c0504219294557ddfc
-	sha256sums = b6dc61727ad2c2e10fb49cb58d1cd9900aa15eaba525117299a2143ad2745868
+	sha256sums = 991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c
 
 pkgname = anki-official-binary-bundle
