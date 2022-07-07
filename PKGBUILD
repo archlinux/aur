@@ -4,12 +4,12 @@
 
 pkgname=compiz-boxmenu
 pkgver=1.1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop menu for compiz, forked from compiz-deskmenu by crdlb. Introduces extensive icon support, pipeitems, recent documents list, and more"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/compiz/${pkgname}"
 license=('GPL')
-depends=('dbus-glib' 'libwnck' 'pygtk' 'python2-lxml' 'pyxdg')
+depends=('dbus-glib' 'libwnck' 'pygtk' 'python2-lxml' 'python2-pyxdg')
 makedepends=('intltool' 'pkgconfig' 'gettext')
 provides=('compiz-boxmenu_no-dbus' 'compiz-deskmenu')
 conflicts=('compiz-boxmenu_no-dbus')
