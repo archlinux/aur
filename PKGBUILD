@@ -1,7 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=rawstudio-git
+pkgname=rawstudio-git-add-patches
+_pkgname=rawstudio-git
 pkgver=2.0.r624.gc140a5e
 pkgrel=2
 pkgdesc='An open-source program to read and manipulate RAW images from digital cameras'
@@ -17,9 +18,9 @@ depends=(desktop-file-utils
          libgphoto2
          osm-gps-map)
 makedepends=(git)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/rawstudio/${pkgname%-git}.git"
+provides=("${_pkgname%-git}")
+conflicts=("${_pkgname%-git}")
+source=("$pkgname::git+https://github.com/rawstudio/${_pkgname%-git}.git"
          "add-raw-support-to-rawspeed.patch"
          "remove-line-in-rw2decoder.patch")
 sha256sums=('SKIP'
