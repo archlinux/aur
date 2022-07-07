@@ -1,0 +1,16 @@
+pkgbase = awesome-collision-git
+	pkgdesc = Collision window navigation module for AwesomeWM
+	pkgver = r94.f51bb54
+	pkgrel = 1
+	url = https://github.com/Elv13/collision
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = awesome
+	provides = awesome-collision
+	conflicts = awesome-collision
+	replaces = collision-git
+	source = git+https://github.com/Elv13/collision.git
+	md5sums = SKIP
+
+pkgname = awesome-collision-git
