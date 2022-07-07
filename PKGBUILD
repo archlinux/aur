@@ -1,18 +1,16 @@
-# Maintainer: Federico Barcelona <tembleking at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Federico Barcelona <tembleking at gmail dot com>
+
 pkgname=alva
 pkgver=0.9.1
-pkgrel=1
-pkgdesc="Create living prototypes with code components. "
+pkgrel=2
+pkgdesc="Create living prototypes with code components"
 arch=("any")
-url="https://meetalva.io/"
+url='https://github.com/meetalva/alva'
 license=('MIT')
-provides=(alva)
-conflicts=(alva-git)
-source=("https://github.com/meetalva/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.deb")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.deb")
+sha256sums=('6ce247e33b17cae69f475776773abe4ea139dcc27633814dbfd166b15b135223')
 
 package() {
-    cd "$srcdir"
-    tar xf data.tar.xz -C "$pkgdir"
+	tar xf data.tar.xz -C "$pkgdir"
 }
-
-md5sums=('ae11155793bb739f2321181ff928fdb7')

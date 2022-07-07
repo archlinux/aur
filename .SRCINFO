@@ -1,14 +1,11 @@
 pkgbase = alva
-	pkgdesc = Create living prototypes with code components.
+	pkgdesc = Create living prototypes with code components
 	pkgver = 0.9.1
-	pkgrel = 1
-	url = https://meetalva.io/
+	pkgrel = 2
+	url = https://github.com/meetalva/alva
 	arch = any
 	license = MIT
-	provides = alva
-	conflicts = alva-git
-	source = https://github.com/meetalva/alva/releases/download/v0.9.1/alva-0.9.1.deb
-	md5sums = ae11155793bb739f2321181ff928fdb7
+	source = alva-0.9.1.tar.gz::https://github.com/meetalva/alva/releases/download/v0.9.1/alva-0.9.1.deb
+	sha256sums = 6ce247e33b17cae69f475776773abe4ea139dcc27633814dbfd166b15b135223
 
 pkgname = alva
-
