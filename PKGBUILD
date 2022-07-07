@@ -7,7 +7,7 @@ pkgrel=1
 arch=("x86_64")
 url="https://github.com/madprops/goldie"
 license=("GPL3")
-makedepends=("nim" "git")
+makedepends=("nim" "nimble" "git")
 sha256sums=("SKIP")
 source=("$pkgname::git+https://github.com/madprops/goldie.git")
 
