@@ -10,7 +10,7 @@
 _pkg=asterisk
 pkgname=${_pkg}-lts-18
 pkgver=18.13.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A complete open source PBX toolkit - Long Term Support release 18'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
@@ -229,4 +229,5 @@ package(){
     install -Dm644 "${_pkg}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkg}.conf"
 
     chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
+    chmod 1777 "$pkgdir"/tmp
 }
