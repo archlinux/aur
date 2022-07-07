@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspTools
-_pkgver=1.5.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Helps preview and debug JASP analyses"
 arch=('x86_64')
