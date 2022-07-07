@@ -23,5 +23,6 @@ build() {
 }
 
 package() {
+  cd goldie-git
   install -D -m755 bin/goldie-release-linux "$pkgdir/usr/bin/goldie"
 }
