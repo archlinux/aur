@@ -6,7 +6,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live-git
 pkgdesc="Ledger Live - Desktop (Git version)"
 pkgver=2.44.0.r0.g2d1fcd3e2c
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -24,9 +24,9 @@ build() {
   cd $pkgname
   export GIT_REVISION=$pkgver
   export JOBS=max
-  pnpm i
+  pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
-  pnpm desktop dist
+  pnpm desktop build
 }
 
 package() {
