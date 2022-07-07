@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220701
+pkgver=20220706
 pkgrel=1
-pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
+pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
@@ -15,8 +15,8 @@ optdepends=('p7zip: for 7z/zip and VRU support'
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils' 'vosk-api')
 provides=('mupen64plus-gui')
 conflicts=('mupen64plus-gui' 'mupen64plus')
-_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})([0-9])([0-9])/\1.\2.\4/' <<< "$pkgver")"
-source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
+#_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})([0-9])([0-9])/\1.\2.\4/' <<< "$pkgver")"
+source=("git+https://github.com/loganmc10/m64p.git#tag=v2022.07.3"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-change-optimizations.patch'
         '030-m64p-remove-bundled-discord-and-vosk.patch'
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             'cc19027b19c0b516280e5e939115483ded9c7f03b1ff5f91e589e0d6bae9f735'
             'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
             '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
-            '1a03b73ff9b447c717d59115a33e63ad49c0256eb9992ef541b4a3c5e31765c5'
+            '9768f722425649d4125be53da1a9a5fe1206419fee751ba74d7a06fd04c7c57e'
             'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
@@ -44,9 +44,13 @@ prepare() {
     rm -rf m64p/mupen64plus-{gui/discord,input-qt/vosk}
 }
 
+pkgver() {
+    local _tag
+    _tag="$(git -C m64p describe --tags --abbrev='0')"
+    printf '%s' "$(git -C m64p log -1 --format='%ad' --date='format:%Y%m%d' "$_tag")"
+}
+
 build() {
-    export CFLAGS+=' -Wno-unused-function  -Wno-unused-variable'
-    
     cd m64p
     ./build.sh
 }
