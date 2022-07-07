@@ -22,7 +22,7 @@ source=("${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_scripts}.tar.gz"
 )
 sha256sums=('fa81cd4e7860bcb5ae49b7b6231c26ea1e4a5846323e433df0a03400129dabdf'
-            'c03bc1dc579cdbc6e1a3ba1f14b094a6ffd1af8883f412285184f1427239fed3')
+            'cd60c24aa3bcbbba6d2ca4d81f9aef5d7b8c77a8acc0eaef360e7e363b29f605')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
