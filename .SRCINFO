@@ -1,9 +1,10 @@
-pkgbase = linux-sunxi
+pkgbase = linux-sunxi-bin
 	pkgver = 5.15.48
 	pkgrel = 1
 	url = https://github.com/armbian/build
 	arch = armv7h
 	license = GPL2
+	provides = linux-sunxi
 	noextract = linux.preset
 	noextract = linux-dtb-current-sunxi_22.05.3_armhf.deb
 	noextract = linux-image-current-sunxi_22.05.3_armhf.deb
@@ -18,7 +19,7 @@ pkgbase = linux-sunxi
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = linux-sunxi
+pkgname = linux-sunxi-bin
 	pkgdesc = The Linux Kernel and modules - ARMv7 multi-platform sunxi
 	depends = coreutils
 	depends = linux-firmware
@@ -29,6 +30,6 @@ pkgname = linux-sunxi
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-sunxi.preset
 
-pkgname = linux-sunxi-headers
+pkgname = linux-sunxi-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - ARMv7 multi-platform sunxi
 	conflicts = linux-headers

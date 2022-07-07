@@ -1,7 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 _target=sunxi
-pkgbase="linux-$_target"
+_pkgbase="linux-$_target"
+pkgbase="$_pkgbase-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.15.48
 _armbver=22.05.3
@@ -12,6 +13,8 @@ _desc="ARMv7 multi-platform $_target"
 url="https://github.com/armbian/build"
 license=('GPL2')
 options=('!strip')
+provides=("$_pkgbase")
+conflics=("$_pkgbase")
 source=(
   "linux.preset"
   "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}_armhf.deb"
@@ -36,7 +39,7 @@ _package() {
   pkgdesc="The Linux Kernel and modules - $_desc"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
+  backup=("etc/mkinitcpio.d/$_pkgbase.preset")
   provides=('WIREGUARD-MODULE')
   conflicts=('linux')
 
@@ -50,27 +53,26 @@ _package() {
   install -dm755 "$pkgdir/boot"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
 
-  ln -s "vmlinuz-$pkgbase" "$pkgdir/boot/zImage"
-  ln -s "initramfs-$pkgbase.img" "$pkgdir/boot/Initrd"
+  ln -s "vmlinuz-$_pkgbase" "$pkgdir/boot/zImage"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
 
   # sed expression for following substitutions
   local _subst="
-    s|%PKGBASE%|$pkgbase|g
+    s|%PKGBASE%|$_pkgbase|g
     s|%KERNVER%|$_kernver|g
   "
 
   # install mkinitcpio preset file
   sed "$_subst" linux.preset |
-    install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+    install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$_pkgbase.preset"
 
   # install boot image
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/vmlinuz"
 
   # used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
+  echo "$_pkgbase" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
 }
 
 _package-headers() {
