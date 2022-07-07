@@ -3,8 +3,8 @@
 _pkgname=csv2md
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r53.20200214.897bb15
-pkgrel=3
+pkgver=1.1.2.r53.20200214.897bb15
+pkgrel=1
 pkgdesc='Command line tool for converting CSV files into Markdown tables.'
 url='https://pypi.org/project/csv2md/'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
 )
 provides=(
   "${_pkgname}"
-  "python-csv2md"
+  "python-csv2md=${pkgver}"
   "python-csv2md-git=${pkgver}"
 )
 conflicts=(
@@ -37,16 +37,16 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  # _ver="$(git describe --tags | sed 's|^[vV]||' | sed 's|-[^-]*$||' | tr '-' '+')"
+  _ver="$(python setup.py --version)"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
 
-  if [ -z "${_rev}" ]; then
-    error "Commit count could not be determined."
+  if [ -z "${_ver}" ]; then
+    error "Version count could not be determined."
     return 1
   else
-    printf '%s' "r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
