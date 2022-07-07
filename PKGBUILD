@@ -1,7 +1,7 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 pkgname=neomutt-logo
 pkgver=20220429
-pkgrel=1
+pkgrel=2
 pkgdesc='Neomutt logos for use with xdg-desktop-icon'
 url='https://neomutt.org/'
 license=('GPL')
@@ -19,9 +19,9 @@ package() {
     cd "neomutt-$pkgver"
     for size in 32 64 128 256
     do
-        install -D "contrib/logo/neomutt-$size.png" \
+        install -Dm 644 "contrib/logo/neomutt-$size.png" \
             "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/neomutt.png
     done
-    install -D "contrib/logo/neomutt.svg" \
+    install -Dm 644 "contrib/logo/neomutt.svg" \
         "$pkgdir"/usr/share/icons/hicolor/scalable/apps/neomutt.svg
 }

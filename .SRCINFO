@@ -1,7 +1,7 @@
 pkgbase = neomutt-logo
-	pkgdesc = Neomutt logo for use with xdg-desktop-icon
+	pkgdesc = Neomutt logos for use with xdg-desktop-icon
 	pkgver = 20220429
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neomutt.org/
 	arch = any
 	license = GPL
