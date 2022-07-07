@@ -29,7 +29,7 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         fix-c++17-compat.patch
-        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/9ee3b8a47ab5b5307feba0943d2f5ca46c91ceac.patch")
+        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/dc68efe693cb58e8d34ee62179cdaad7ce7487a7.patch")
 
 sha512sums=('95ffbee1e50e396065c6f1802fd9668344c45c000e22da859bcd08ec217bcc0a8ff0e84661fdf511f210e8b09d7ae6d26c3fc1ddcf28b8aedf87c0fb1b8b60e4'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
@@ -74,7 +74,7 @@ prepare() {
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
-  cd "${srcdir}/tensorflow-${pkgver}"
+  cd "${srcdir}/tensorflow-${_pkgver}"
   patch -Np1 -i "${srcdir}/rocblas-version.patch"
   cd "${srcdir}"
 
@@ -100,7 +100,10 @@ prepare() {
   export TF_NEED_NGRAPH=0
   export TF_NEED_IGNITE=0
   export TF_NEED_ROCM=1
-  export TF_ROCM_AMDGPU_TARGETS=gfx701,gfx702,gfx803,gfx900,gfx904,gfx906,gfx908
+  # Uncomment this when you want to specify specific ROCM_ARCH(s)
+  # Otherwise pytorch will automatically detect your architecture
+  # See: https://github.com/tensorflow/tensorflow/commit/c04822a49d669f2d74a566063852243d993e18b1
+  # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx904,gfx906,gfx908
   # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
   export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
   export TF_SET_ANDROID_WORKSPACE=0
