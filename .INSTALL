@@ -1,16 +1,26 @@
+
+# Compare package version numbers using pacman's version comparison logic.
+# Usage: vercmp <ver1> <ver2>
+# Output values:
+#   < 0 : if ver1 < ver2    -lt
+#     0 : if ver1 == ver2   -eq
+#   > 0 : if ver1 > ver2    -gt
+
+## post_upgrade() is called at the end of package installation
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 
 post_upgrade() {
-  if [[ $(vercmp $2 0.6.0) -lt 0 ]]
+  if [[ $(vercmp $2 0.6.2) -lt 0 ]]
   then
     cat <<EOF
 
-   Specify how to POST request parameters!
+- Made HTTP method configurable for endpoints `auth_http_method` nad
+`token_http_method` in `service.yaml`
 
-The options are 'query-string', 'request-body' or 'both'. These should be
-set in the 'services.yaml' config file both for the 'auth_postmode' and
-for the 'token_postmode' fields.
+- Changed `_postmode` to `_params_mode` in `service.yaml`
+
+- Debug mode to print HTTP traffic to stdout
 
 See details in README.md and in the config templates.
 
