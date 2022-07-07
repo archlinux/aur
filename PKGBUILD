@@ -10,7 +10,7 @@ url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
 depends=('glfw' 'mbedtls' 'libssh2'
-         'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme' 'openssl' 'xdg-desktop-portal-impl'
+         'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme' 'openssl' 'xdg-desktop-portal'
          'fmt' 'yara')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
 optdepends=(
