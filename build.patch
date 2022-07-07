@@ -1,0 +1,35 @@
+diff -crB gnome-shell-extension-soft-brightness-git/meson-gse/meson.build.m4 gnome-shell-extension-soft-brightness-git-patch/meson-gse/meson.build.m4
+*** gnome-shell-extension-soft-brightness-git-patch/meson-gse/meson.build.m4	2022-07-07 11:48:58.672678749 +0100
+--- gnome-shell-extension-soft-brightness-git/meson-gse/meson.build.m4	2022-07-07 12:01:58.993006004 +0100
+***************
+*** 97,110 ****
+  # End of extension-specific settings
+  
+  # Boilerplate
+! gse_run_command_obj = run_command('sh', '-c', 'echo $HOME', check : false)
+! if gse_run_command_obj.returncode() != 0
+!   error('HOME not found, exit=@0@'.format(gse_run_command_obj.returncode()))
+! endif
+! home     = gse_run_command_obj.stdout().strip()
+  
+  gse_uuid		 = meson.project_name() + '@$2'
+! gse_target_dir		 = home + '/.local/share/gnome-shell/extensions/' + gse_uuid
+  gse_target_dir_schemas   = join_paths(gse_target_dir, 'schemas')
+  gse_target_locale_dir    = join_paths(gse_target_dir, 'locale')
+  gse_target_dir_dbus_intf = join_paths(gse_target_dir, 'dbus-interfaces')
+--- 97,110 ----
+  # End of extension-specific settings
+  
+  # Boilerplate
+! # gse_run_command_obj = run_command('sh', '-c', 'echo $HOME', check : false)
+! # if gse_run_command_obj.returncode() != 0
+! #   error('HOME not found, exit=@0@'.format(gse_run_command_obj.returncode()))
+! # endif
+! # home     = gse_run_command_obj.stdout().strip()
+  
+  gse_uuid		 = meson.project_name() + '@$2'
+! gse_target_dir		 = '/usr/share/gnome-shell/extensions/' + gse_uuid
+  gse_target_dir_schemas   = join_paths(gse_target_dir, 'schemas')
+  gse_target_locale_dir    = join_paths(gse_target_dir, 'locale')
+  gse_target_dir_dbus_intf = join_paths(gse_target_dir, 'dbus-interfaces')
+Only in gnome-shell-extension-soft-brightness-git: .rej
