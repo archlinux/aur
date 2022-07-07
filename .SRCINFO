@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-checkuser
 	pkgdesc = An extension for MediaWiki that allows a user to check which IPs are used by a given username and which usernames are used by a given IP
-	pkgver = 1.38+r3333+g04741b9e
+	pkgver = 1.38+r3337+gbf740015
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:CheckUser
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser.git#commit=04741b9e030900a7256a3a56e80f8474942e7986
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser.git#commit=bf7400152f92a5f407183a2a813165c81e92f75f
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-checkuser
