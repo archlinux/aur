@@ -54,51 +54,40 @@ prepare() {
 }
 
 build() {
-	# cd "$srcdir/${_name}"
+	cd "$srcdir"
 
 	export WX_CONFIG="/usr/bin/wx-config-gtk3"
 
 	cmake -B build -S "$srcdir/${_name}" \
         -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_PREFIX='/' \
 		-DDEPS_SKIP_BUILD=true \
         -Wno-dev
-	DESTDIR="./fakedir" cmake --build build
-	rm -rf ./fakedir
-
-	# cd "$srcdir/bridge-driver"
-
-	# cmake -B build -S "$srcdir/bridge-driver" \
-    #     -DCMAKE_BUILD_TYPE='None' \
-    #     -DCMAKE_INSTALL_PREFIX='/usr' \
-    #     -Wno-dev
-	# cmake --build build
+	DESTDIR="$srcdir/build/" cmake --build build
+	DESTDIR="$srcdir/build/" cmake --install build
 }
 
 package() {
-	# DESTDIR="$pkgdir/cmake" cmake --install build
+	cd "$srcdir"
 
-	install -Dm644 "$srcdir/${_name}"/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "${_name}/LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	install -Dm755 "$srcdir/${_name}.sh" "$pkgdir/usr/bin/${_name}"
+	install -Dm755 "${_name}.sh" "$pkgdir/usr/bin/${_name}"
 	install -Dm755 build/AprilTagTrackers/AprilTagTrackers -t "$pkgdir/usr/lib/apriltagtrackers/"
 
 	install -d "$pkgdir/usr/share/apriltagtrackers/bindings/"
-	cp -r "$srcdir/${_name}"/bindings/** "$pkgdir/usr/share/apriltagtrackers/bindings/"
-	
 	install -d "$pkgdir/usr/share/apriltagtrackers/images-to-print/"
-	cp -r "$srcdir/${_name}"/images-to-print/** "$pkgdir/usr/share/apriltagtrackers/images-to-print/"
-	
 	install -d "$pkgdir/usr/share/apriltagtrackers/locales/"
-	cp -r "$srcdir/${_name}"/locales/** "$pkgdir/usr/share/apriltagtrackers/locales/"
 
+	cp -r build/bindings/** "$pkgdir/usr/share/apriltagtrackers/bindings/"
+	cp -r build/images-to-print/** "$pkgdir/usr/share/apriltagtrackers/images-to-print/"
+	cp -r build/locales/** "$pkgdir/usr/share/apriltagtrackers/locales/"
 
-	# cd "$srcdir/bridge-driver"
-	install -Dm644 "$srcdir/${_name}/BridgeDriver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Bridge-Driver.md"
+	install -Dm644 "${_name}/BridgeDriver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Bridge-Driver.md"
 
 	install -Dm644 build/BridgeDriver/driver_apriltagtrackers.so -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/bin/linux64/"
-    install -Dm644 "$srcdir/bridge-driver/driver_files/driver/apriltagtrackers/driver.vrdrivermanifest" -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/"
+    install -Dm644 build/driver_files/apriltagtrackers/driver.vrdrivermanifest -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/"
 	install -d "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
 
-	cp -r "$srcdir/bridge-driver/driver_files/driver/apriltagtrackers/resources"/** "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
+	cp -r build/driver_files/apriltagtrackers/resources/** "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
 }
