@@ -2,14 +2,14 @@
 # Contributor: fdiblen <fdiblen at gmail dot com>
 
 pkgname=casacore
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
 arch=('x86_64')
 url="https://github.com/casacore/casacore"
 license=('GPL')
 depends=('boost-libs' 'fftw' 'openblas' 'lapack' 'cfitsio' 'wcslib' 'python-numpy')
-makedepends=('cmake' 'gcc-fortran' 'boost')
+makedepends=('cmake' 'gcc-fortran' 'gsl' 'boost')
 optdepends=(
   'sofa: only for testing casacore measures'
   'hdf5'
@@ -31,7 +31,7 @@ provides=(
   'libcasa_scimath.so=6-64'
   'libcasa_tables.so=6-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('31f02ad2e26f29bab4a47a2a69e049d7bc511084a0b8263360e6157356f92ae1')
+sha256sums=('63f1c8eff932b0fcbd38c598a5811e6e5397b72835b637d6f426105a183b3f91')
 
 build() {
   cmake \

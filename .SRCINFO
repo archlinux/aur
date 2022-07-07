@@ -1,12 +1,13 @@
 pkgbase = casacore
 	pkgdesc = Suite of C++ libraries for radio astronomy data processing
-	pkgver = 3.4.0
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/casacore/casacore
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = gcc-fortran
+	makedepends = gsl
 	makedepends = boost
 	depends = boost-libs
 	depends = fftw
@@ -33,7 +34,7 @@ pkgbase = casacore
 	provides = libcasa_scimath_f.so=6-64
 	provides = libcasa_scimath.so=6-64
 	provides = libcasa_tables.so=6-64
-	source = casacore-3.4.0.tar.gz::https://github.com/casacore/casacore/archive/v3.4.0.tar.gz
-	sha256sums = 31f02ad2e26f29bab4a47a2a69e049d7bc511084a0b8263360e6157356f92ae1
+	source = casacore-3.5.0.tar.gz::https://github.com/casacore/casacore/archive/v3.5.0.tar.gz
+	sha256sums = 63f1c8eff932b0fcbd38c598a5811e6e5397b72835b637d6f426105a183b3f91
 
 pkgname = casacore
