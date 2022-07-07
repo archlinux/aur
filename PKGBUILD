@@ -4,10 +4,11 @@ pkgver=0.5.9
 pkgrel=2
 pkgdesc="A simple tarot reading program"
 arch=('any')
-url="http://github.com/ShadowKyogre/QTarot/"
+url="http://gitlab.com/ShadowKyogre/QTarot/"
 license=('GPL')
+makedepends=('git')
 depends=('python-pyqt4' 'python-lxml')
-source=("${pkgname}"::"git+https://github.com/ShadowKyogre/QTarot.git")
+source=("${pkgname}"::"git+https://gitlab.com/ShadowKyogre/QTarot.git")
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
