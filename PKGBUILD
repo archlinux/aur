@@ -6,6 +6,7 @@ pkgdesc="A simple planetary hours program"
 arch=('any')
 url="http://shadowkyogre.gitlab.io/ChronosLNX/"
 license=('GPL')
+makedepends=('git')
 depends=('python-pyqt4' 'python-dateutil' 'pyswisseph3')
 source=("$pkgname"::"git+https://gitlab.com/ShadowKyogre/ChronosLNX.git")
 md5sums=(SKIP) #generate with 'makepkg -g'

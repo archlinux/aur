@@ -5,6 +5,7 @@ pkgbase = chronoslnx-git
 	url = http://shadowkyogre.gitlab.io/ChronosLNX/
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python-pyqt4
 	depends = python-dateutil
 	depends = pyswisseph3
