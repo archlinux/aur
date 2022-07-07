@@ -1,9 +1,10 @@
-pkgbase = linux-sunxi64
+pkgbase = linux-sunxi64-bin
 	pkgver = 5.15.48
 	pkgrel = 1
 	url = https://github.com/armbian/build
 	arch = aarch64
 	license = GPL2
+	provides = linux-sunxi64
 	noextract = linux.preset
 	noextract = linux-dtb-current-sunxi64_22.05.3_arm64.deb
 	noextract = linux-image-current-sunxi64_22.05.3_arm64.deb
@@ -18,7 +19,7 @@ pkgbase = linux-sunxi64
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = linux-sunxi64
+pkgname = linux-sunxi64-bin
 	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform sunxi64
 	depends = coreutils
 	depends = linux-firmware
@@ -29,6 +30,6 @@ pkgname = linux-sunxi64
 	conflicts = linux
 	backup = etc/mkinitcpio.d/linux-sunxi64.preset
 
-pkgname = linux-sunxi64-headers
+pkgname = linux-sunxi64-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform sunxi64
 	conflicts = linux-headers
