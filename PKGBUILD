@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.8.0.3
-pkgrel=3
+pkgrel=4
 _ffmpeg_ver=2022_05_07
 _ffdetect_ver=2022_05_07
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -48,7 +48,8 @@ depends=('alsa-lib'
          'zlib'
          'zvbi')
 makedepends=('ffnvcodec-headers8.1'
-             'nasm')
+             'nasm'
+             'zstd')
 optdepends=('intel-media-sdk: Intel QuickSync support (requires Emby Premiere)'
             'nvidia-utils: Nvidia NVDEC/NVENC support (requires Emby Premiere)')
 provides=('emby-server')

@@ -1,13 +1,14 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
 	pkgver = 4.8.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://emby.media
 	install = emby-server.install
 	arch = x86_64
 	license = custom
 	makedepends = ffnvcodec-headers8.1
 	makedepends = nasm
+	makedepends = zstd
 	depends = alsa-lib
 	depends = aom
 	depends = aspnet-runtime
