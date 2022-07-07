@@ -3,7 +3,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
-pkgver=4.27
+pkgver=4.27.2
 pkgrel=0
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
@@ -90,7 +90,7 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d ${pkgname} ]]
   then
-    git clone --depth=1 --branch=${pkgver} git@github.com:EpicGames/UnrealEngine ${pkgname}
+    git clone --depth=1 --branch=4.27 git@github.com:EpicGames/UnrealEngine ${pkgname}
     cd ${pkgname}
   else
     cd ${pkgname}
