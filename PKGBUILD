@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20220704.r6.gd338364
+pkgver=20220706.r0.g6d24363
 pkgrel=1
-pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
+pkgdesc='Mupen64Plus with custom plugins and Qt6 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'cc19027b19c0b516280e5e939115483ded9c7f03b1ff5f91e589e0d6bae9f735'
             'e9da860ae7adcdd0a1cc0155c232f81ca8399e9e855bd71fb51269edb708b1cc'
             '4212cff6311f12ea2af5479a162a183d489dbb4107955c621a4440276a46cb76'
-            '1a03b73ff9b447c717d59115a33e63ad49c0256eb9992ef541b4a3c5e31765c5'
+            '9768f722425649d4125be53da1a9a5fe1206419fee751ba74d7a06fd04c7c57e'
             'a33a66612343035929eee5d6eb2acb342cc0c5a18a8e113aef83b28fb0f156c7'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
@@ -52,8 +52,6 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=' -Wno-unused-function  -Wno-unused-variable'
-    
     cd m64p
     ./build.sh
 }
