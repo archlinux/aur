@@ -1,170 +1,33 @@
-diff --color --unified --recursive --text --color ./eparakstitajs3.desktop.orig ./eparakstitajs3.desktop
---- src/eparakstitajs3/usr/share/applications/eparakstitajs3.desktop.orig	2022-01-10 15:11:50.060249053 +0200
-+++ src/eparakstitajs3/usr/share/applications/eparakstitajs3.desktop	2022-01-10 15:13:29.724741854 +0200
+diff --color --unified --recursive --text --color usr/share/applications/eparakstitajs3.desktop.orig usr/share/applications/eparakstitajs3.desktop
+--- usr/share/applications/eparakstitajs3.desktop.orig  2022-07-07 10:17:17.342286524 +0300
++++ usr/share/applications/eparakstitajs3.desktop       2022-07-07 10:18:26.850828336 +0300
 @@ -4,7 +4,7 @@
- Icon=eparakstitajs3
+ Icon=/usr/share/eparakstitajs3/eparakstitajs3.xpm
  Type=Application
- Categories=Application;Office;Viewer;
--Exec=/opt/eparakstitajs3/bin/eparakstitajs3 %F
-+Exec=/bin/sh -c "export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/bin/eparakstitajs3 %F"
+ Categories=Application;Viewer;
+-Exec=/usr/bin/eparakstitajs3 %F
++Exec=/bin/sh -c "export PATH=/usr/lib/eparakstitajs3/bin:$PATH; /usr/bin/eparakstitajs3 %F"
  MimeType=application/pdf;application/lv.eme.edoc;application/vnd.etsi.asic-e+zip;
  StartupWMClass=lv.euso.signanywhere.SignAnywhere
  
-diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
---- src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-13 12:00:00.000000000 +0200
-+++ src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-14 16:13:33.916358188 +0200
-@@ -4,84 +4,93 @@
- import os
- import urllib
+diff --color --unified --recursive --text --color usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py.orig usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
+--- usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py.orig        2022-07-07 10:18:32.064051467 +0300
++++ usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py     2022-07-07 10:46:57.945442317 +0300
+@@ -11,11 +11,14 @@
  
-+
- class eParakstsContextMenu(GObject.GObject, Nautilus.MenuProvider):
- 
-     def __init__(self):
-         pass
- 
-     def open_eparakstitajs(self, menu, command, files):
--        print "menu_activate_cb", command
--	bash_string=["/opt/eparakstitajs3/bin/eparakstitajs3", command]
--	for file in files:
--		bash_string.append(file.get_location().get_path())
--	
--	subprocess.Popen(bash_string)
+    def open_eparakstitajs(self, menu, command, files):
+       #print "menu_activate_cb", command
+-      bash_string=["eparakstitajs3", command]
++      bash_string = ["/usr/bin/eparakstitajs3", command]
+       for file in files:
+          bash_string.append(file.get_location().get_path())
+-      subprocess.Popen(bash_string)
 -    
-+        print("menu_activate_cb"), command
-+        bash_string = ["/opt/eparakstitajs3/bin/eparakstitajs3", command]
-+        for file in files:
-+            bash_string.append(file.get_location().get_path())
++      modified_env = os.environ.copy()
++      modified_env['PATH'] = '/usr/lib/eparakstitajs3/bin:' + \
++         modified_env['PATH']
++      subprocess.Popen(bash_string, env=modified_env)
 +
-+        subprocess.Popen(bash_string)
-+
-     def dir_count(self, files):
--	dirCount = 0
--	for file in files:
--		if (file.is_directory()):
--			dirCount += 1
--	return dirCount
-+        dirCount = 0
-+        for file in files:
-+            if (file.is_directory()):
-+                dirCount += 1
-+        return dirCount
- 
-     def enable_sign(self, files):
--	noDirs = (self.dir_count(files) == 0)
--	return noDirs
-+        noDirs = (self.dir_count(files) == 0)
-+        return noDirs
- 
-     def enable_signpdf(self, files):
--	noDirs = (self.dir_count(files) == 0)
--	multiplePDFFiles = True
--	for file in files:
--		if ((file.get_mime_type() != "application/pdf")):
--			multiplePDFFiles = False
--			break
--	return (noDirs and multiplePDFFiles)
--   
-+        noDirs = (self.dir_count(files) == 0)
-+        multiplePDFFiles = True
-+        for file in files:
-+            if ((file.get_mime_type() != "application/pdf")):
-+                multiplePDFFiles = False
-+                break
-+        return (noDirs and multiplePDFFiles)
-+
-     def enable_new(self, files):
--	singleDir = (self.dir_count(files) == 1 and len(files) == 1)
--	noDirs = (self.dir_count(files) == 0)
--	return (singleDir or noDirs)
--   
-+        singleDir = (self.dir_count(files) == 1 and len(files) == 1)
-+        noDirs = (self.dir_count(files) == 0)
-+        return (singleDir or noDirs)
-+
-     def enable_batch(self, files):
--	singleDir = (self.dir_count(files) == 1 and len(files) == 1)
--	multipleFiles = (self.dir_count(files) == 0 and  len(files) > 1)
--	return (singleDir or multipleFiles)
-+        singleDir = (self.dir_count(files) == 1 and len(files) == 1)
-+        multipleFiles = (self.dir_count(files) == 0 and len(files) > 1)
-+        return (singleDir or multipleFiles)
- 
-     def get_file_items(self, window, files):
--	if (len(files) > 0):
--		# Top menu  eParakstitajs
--        	top_menuitem = Nautilus.MenuItem(name='eParakstsContextMenuProvider::eParakstitajs', label='eParakstitajs', tip='', icon='')
--        	submenu = Nautilus.Menu()
--        	top_menuitem.set_submenu(submenu)
--
--		# Sign as eDOC
--		if (self.enable_sign(files)):
--        		sub_menuitem = Nautilus.MenuItem(name='eParakstsContextMenuProvider::SignEDOC',label='Sign as eDOC', tip='', icon='')
--			submenu.append_item(sub_menuitem)
--			sub_menuitem.connect('activate', self.open_eparakstitajs, "-sign", files)
--        
--		# Sign as PDF
--		if (self.enable_signpdf(files)):
--        		sub_menuitem = Nautilus.MenuItem(name='eParakstsContextMenuProvider::SignPDF',	label='Sign as PDF', tip='', icon='')
--       			submenu.append_item(sub_menuitem)
--			sub_menuitem.connect('activate', self.open_eparakstitajs, "-signpdf", files)
--
--		# New with eParakstitajs
--		if (self.enable_new(files)):
--        		sub_menuitem = Nautilus.MenuItem(name='eParakstsContextMenuProvider::New', 	label='New with eParakstitajs', tip='', icon='')
--        		submenu.append_item(sub_menuitem)
--			sub_menuitem.connect('activate', self.open_eparakstitajs, "-new", files)
--
--		# Batch with eParakstitajs
--		if (self.enable_batch(files)):
--        		sub_menuitem = Nautilus.MenuItem(name='eParakstsContextMenuProvider::Batch',	label='Batch with eParakstitajs', tip='', icon='')
--        		submenu.append_item(sub_menuitem)
--			sub_menuitem.connect('activate', self.open_eparakstitajs, "-batch", files)
-- 		
--		return [top_menuitem]
-+        if (len(files) > 0):
-+            # Top menu  eParakstitajs
-+            top_menuitem = Nautilus.MenuItem(
-+                name='eParakstsContextMenuProvider::eParakstitajs', label='eParakstitajs', tip='', icon='')
-+            submenu = Nautilus.Menu()
-+            top_menuitem.set_submenu(submenu)
-+
-+            # Sign as eDOC
-+            if (self.enable_sign(files)):
-+                sub_menuitem = Nautilus.MenuItem(
-+                    name='eParakstsContextMenuProvider::SignEDOC', label='Sign as eDOC', tip='', icon='')
-+                submenu.append_item(sub_menuitem)
-+                sub_menuitem.connect(
-+                    'activate', self.open_eparakstitajs, "-sign", files)
-+
-+            # Sign as PDF
-+            if (self.enable_signpdf(files)):
-+                sub_menuitem = Nautilus.MenuItem(
-+                    name='eParakstsContextMenuProvider::SignPDF',	label='Sign as PDF', tip='', icon='')
-+                submenu.append_item(sub_menuitem)
-+                sub_menuitem.connect(
-+                    'activate', self.open_eparakstitajs, "-signpdf", files)
-+
-+            # New with eParakstitajs
-+            if (self.enable_new(files)):
-+                sub_menuitem = Nautilus.MenuItem(
-+                    name='eParakstsContextMenuProvider::New', 	label='New with eParakstitajs', tip='', icon='')
-+                submenu.append_item(sub_menuitem)
-+                sub_menuitem.connect(
-+                    'activate', self.open_eparakstitajs, "-new", files)
-+
-+            # Batch with eParakstitajs
-+            if (self.enable_batch(files)):
-+                sub_menuitem = Nautilus.MenuItem(
-+                    name='eParakstsContextMenuProvider::Batch',	label='Batch with eParakstitajs', tip='', icon='')
-+                submenu.append_item(sub_menuitem)
-+                sub_menuitem.connect(
-+                    'activate', self.open_eparakstitajs, "-batch", files)
-+
-+            return [top_menuitem]
- 
-         return
- 
-     def get_background_items(self, window, file):
-         return
--
+    def dir_count(self, files):
+       dirCount = 0
+       for file in files:
