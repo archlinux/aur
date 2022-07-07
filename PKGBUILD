@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dockerfiler
-_pkgver=0.1.4
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.4
-pkgrel=3
+pkgver=0.2.0
+pkgrel=2
 pkgdesc='Easy Dockerfile Creation from R'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,19 +17,20 @@ depends=(
   r-fs
   r-glue
   r-jsonlite
+  r-pak
   r-pkgbuild
   r-r6
   r-remotes
+  r-renv
   r-usethis
 )
 optdepends=(
-  r-covr
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea2ea97938b9bc2d0f0390abc6abee330716b2eb8538a18ba855e82c7213a7bf')
+sha256sums=('ba6ee7f0cd00191e0ff0b5aaf84985b8cf63bef6956860fc810b8db7ee1ce7c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
