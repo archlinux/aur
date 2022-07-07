@@ -10,7 +10,7 @@
 _pkg=asterisk
 pkgname=${_pkg}-lts-18
 pkgver=18.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A complete open source PBX toolkit - Long Term Support release 18'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
