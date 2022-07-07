@@ -2,45 +2,40 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-xatrix
-pkgver=2.09
+pkgver=2.10
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2"
-url="http://www.yamagi.org/quake2/"
+url="https://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake' 'ninja')
 install=$pkgname.install
-source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
+source=("https://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('85e4ab8d1408efa806047f5aef059f880bed63bffb159abd58bbe1315bdf6d1e'
+sha256sums=('80b7824959e2c04e8c0289f47d49c950492ddc5da4d77da11effafb7903b2e48'
             '7c60d4bd78a528f5cf08425cfdcb87dacf574d3912c44439e623e35f37fbc972'
             'e65add2561c7dc4a14061e17a24436f768b69968fbc6fa06022acf9e17d80854')
 
 build() {
-  rm -rf build
-  cmake ${pkgname#*-}-$pkgver -Bbuild \
-    -DCMAKE_BUILD_TYPE=Release \
-    -GNinja
-  cmake --build build
+  make -C ${pkgname#*-}-$pkgver
 }
 
 package() {
-  # game library
-  install -Dm644 build/Release/game.so "$pkgdir"/usr/lib/yamagi-quake2/xatrix/game.so
-
   cd ${pkgname#*-}-$pkgver
+
+  # game library
+  install -Dm644 -t "$pkgdir"/usr/lib/yamagi-quake2/xatrix release/game.so
 
   # game launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
 
   # doc
-  install -Dm644 README "$pkgdir"/usr/share/doc/$pkgname/README
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README
 
   # desktop entry
-  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/applications ../$pkgname.desktop
 
   # license
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
