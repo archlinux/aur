@@ -4,7 +4,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.18
-_minor=6
+_minor=9
 _clr=1159
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=36560
+_clear_version=36600
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=ffaf54f583534d2abcc3806b3fd69ddc0abd275cd0078537b743f8cbc3b019b1
-_config_hash_clear_version=36540
+_config_hash=942ba4fb32456158309f730d5aa2c8bec2a87f8c3e79a4f7629a5f35e34773b3
+_config_hash_clear_version=36600
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('8e8a9401a5a00c3144afda5fbcb92d9e539e986a2480f995a9a1b389ce44d9d3fe97188d704651ed358ad1b08c2ecfd15669fc7b97f6ab6babde42c9645b1ca2'
-        '9ec5693e5a5f5227f9585febf739b3a49846bd89de2a736206ea0107b5e3d0175a35756639dab3b2280c34d55a7122a143ffd9c9c3fc2723253c3ca473a720b2'
-        'b7f8fade5f735b4badbff9568e615180a041d3449624d37f95769879b6015cff469f8cc6012e44a898cd712336c2642672a9463ac6bdf137c9ead47800f955cd')
+b2sums=('9a5890270874b0dfe4f1e595727711eedc25d7c2b2d8208b721053f9f7bf91fe8a84ac550714de7cf82eb8c2441c272ccac2b966674c88cd28604f7ed713e3e1'
+        'b303bd0d35db16cc33fb41e553ae491f5a0fe6ca1fe19c2a8cfc1384bad7db5e7baab931a6f7bfc9976cd905cfb6f669f28ae94eb26f1fbd3a7f8380a555b364'
+        'f4a3d5c696159218496cff93600bea373b6fd2a96d66281a9083885193150bcb7c1434c4191fb120c1f61a23aa53895402134824a5595400c5c4786188aea8f1')
