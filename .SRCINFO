@@ -1,7 +1,7 @@
 pkgbase = asterisk-lts-18
 	pkgdesc = A complete open source PBX toolkit - Long Term Support release 18
 	pkgver = 18.13.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.asterisk.org
 	arch = x86_64
 	arch = i686
@@ -161,6 +161,6 @@ pkgbase = asterisk-lts-18
 	sha256sums = 92681b928b75309860ebfd192ad8d1db3df3cdaebab401a2abc666ffaea096bf
 	sha256sums = 38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486
 	sha256sums = b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164
-	sha256sums = 7b1ec60ca71699b84fa6809da38358854f200fab110f9803bce79fc8522e52d1
+	sha256sums = 1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b
 
 pkgname = asterisk-lts-18
