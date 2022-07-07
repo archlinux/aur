@@ -1,5 +1,5 @@
-# Maintainer : Daniel Chesters <daniel.chesters@gmail.com>
-# Contributor : Daniel Chesters <daniel.chesters@gmail.com>
+# Maintainer : Daniel Chesters <archlinux@coin-coin.xyz>
+# Contributor : Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=kalker
 pkgver=2.0.0
