@@ -1,0 +1,17 @@
+pkgbase = castlequest-git
+	pkgdesc = Text-based adventure game set in a remote castle somewhere in Eastern Europe.
+	pkgver = ca1aac9
+	pkgrel = 1
+	url = https://github.com/Quuxplusone/Castlequest
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = gcc-fortran
+	depends = asa
+	backup = usr/share/games/castlequest/CQUEST.SAV
+	source = castlequest.sh
+	source = castlequest::git+https://github.com/Quuxplusone/Castlequest.git#branch=patches
+	sha256sums = 886ba8d515c89fde5514127dad3b5726177c0f4cb866b59575ffce8cdd1aa115
+	sha256sums = SKIP
+
+pkgname = castlequest-git
