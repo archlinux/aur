@@ -1,10 +1,11 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer:
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Lara Maia <lara@craft.net.br>
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgbase=redshift-git
 pkgname=('redshift-git' 'redshift-gtk-git')
-pkgver=1.11.r132.g91e1d30
+pkgver=1.12.r40.g490ba2a
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings (development version)'
 arch=('i686' 'x86_64')
@@ -41,8 +42,7 @@ package_redshift-git() {
 }
 
 package_redshift-gtk-git() {
-  depends=("redshift-git=$pkgver" 'gtk3' 'python-xdg' 'python-gobject' 'librsvg'
-           'hicolor-icon-theme')
+  depends=('redshift-git' 'gtk3' 'python-xdg' 'python-gobject' 'librsvg' 'hicolor-icon-theme')
 
   make -C redshift DESTDIR="$pkgdir" install
 
