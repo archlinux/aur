@@ -1,0 +1,18 @@
+pkgbase = physfs-git
+	pkgdesc = A portable, flexible file i/o abstraction (development version)
+	pkgver = 3.0.2.r10.g911e253
+	pkgrel = 1
+	url = https://icculus.org/physfs/
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = doxygen
+	provides = physfs
+	conflicts = physfs
+	source = git+https://github.com/icculus/physfs.git#branch=stable-3.0
+	md5sums = SKIP
+
+pkgname = physfs-git
