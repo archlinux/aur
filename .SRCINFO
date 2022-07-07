@@ -7,10 +7,10 @@ pkgbase = ddev-edge-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/rfay/ddev/releases/download/v1.19.4-aj2/ddev_linux-arm64.v1.19.4-aj2.tar.gz
-	sha256sums_aarch64 = ab40424b854f128537a2d497f955131c4a704539ac0398da4a35082a8cf690ef
+	source_aarch64 = https://github.com/drud/ddev/releases/download/v1.19.4-alpha2/ddev_linux-arm64.v1.19.4-alpha2.tar.gz
+	sha256sums_aarch64 = 20deec3630f99524a262319fab54618e5fec85d002c5ed374e5c17a0fe44df64
 	arch = x86_64
-	source_x86_64 = https://github.com/rfay/ddev/releases/download/v1.19.4-aj2/ddev_linux-amd64.v1.19.4-aj2.tar.gz
-	sha256sums_x86_64 = 76076e272e1fa48415eff7a36259cf5d9f7d49d693980dc4ccadb9e186586404
+	source_x86_64 = https://github.com/drud/ddev/releases/download/v1.19.4-alpha2/ddev_linux-amd64.v1.19.4-alpha2.tar.gz
+	sha256sums_x86_64 = f6f3dacf5aafaf97a63a73558a7eae4ea521bd6709d14b1fce264a0bdf8fecc2
 	
 pkgname = ddev-edge-bin
