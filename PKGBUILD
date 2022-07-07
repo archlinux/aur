@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-smart-auto-move
 _pkgname=smart-auto-move
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc="Learns the size and position of your application windows and restores them to the correct place on subsequent launches"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('zip')
 source=($url/archive/v$pkgver.tar.gz)
-b2sums=('463b2e36a48e97d52c60412fe368a7ee6b3a01cd167b78b33073af0d7ef97982900adf068742233fecc514cdea10c4d89890b0fcfed3d3f4f29f08d29bad250d')
+b2sums=('acd499cf02bb92d8e52ce0262f8a10ec1eb798c9a9c7c51315c81398db1cde6ca3d8ee2e444357eff9e84129aa49a1a4fc8da2a1aa7acf6043910a7003244562')
 
 
 build() {
