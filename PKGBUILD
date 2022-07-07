@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.20.3
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -62,19 +62,15 @@ makedepends=(
 checkdepends=(xorg-server-xvfb)
 options=(debug)
 source=(
-  "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=$pkgver"
-  "https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-$pkgver.tar.xz"{,.asc}
+  "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git"
   0001-meson-Allow-building-with-system-orc.patch
   0002-HACK-meson-Disable-broken-tests.patch
   0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 )
 sha256sums=('SKIP'
-            '73fc428a40d6a34c2ceb80e3e572b20f19f8ebe216d566f010de11573063f1bf'
-            'SKIP'
             '292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683'
             '11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70'
             '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
-validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
 
 pkgver() {
   cd gstreamer
