@@ -1,0 +1,37 @@
+From 2c6e9fc15c6467d559cc5e212bd63b02f82640bb Mon Sep 17 00:00:00 2001
+From: Mounir IDRASSI <mounir.idrassi@idrix.fr>
+Date: Sun, 26 Oct 2014 17:28:59 +0100
+Subject: [PATCH] Replace deprecated wxTextValidator::SetBellOnError whose
+ logic whose inverted by the new wxTextValidator::SuppressBellOnError. Since
+ its used in constructor only for TC_WINDOWS, we do the same in the
+ destructor.
+
+---
+ src/Main/Forms/PreferencesDialog.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/Main/Forms/PreferencesDialog.cpp b/src/Main/Forms/PreferencesDialog.cpp
+index 50c9c300c..e22e304b6 100644
+--- a/src/Main/Forms/PreferencesDialog.cpp
++++ b/src/Main/Forms/PreferencesDialog.cpp
+@@ -154,7 +154,7 @@ namespace VeraCrypt
+ 		Gui->SetListCtrlColumnWidths (HotkeyListCtrl, colPermilles);
+ 
+ 		RestoreValidatorBell = !wxTextValidator::IsSilent();
+-		wxTextValidator::SetBellOnError (true);
++		wxTextValidator::SuppressBellOnError (true);
+ 		HotkeyTextCtrl->SetValidator (wxTextValidator (wxFILTER_INCLUDE_CHAR_LIST));
+ 
+ 		UpdateHotkeyButtons();
+@@ -203,8 +203,10 @@ namespace VeraCrypt
+ 
+ 	PreferencesDialog::~PreferencesDialog ()
+ 	{
++#ifdef TC_WINDOWS
+ 		if (RestoreValidatorBell)
+-			wxTextValidator::SetBellOnError (false);
++			wxTextValidator::SuppressBellOnError (false);
++#endif
+ 	}
+ 
+ 	void PreferencesDialog::SelectPage (wxPanel *page)
