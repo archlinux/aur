@@ -14,12 +14,22 @@ depends=(netbird gtk3 libayatana-appindicator)
 makedepends=(go)
 optdepends=()
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(298c7f39b18b0dbc2874c93c0eeaac5dd0923c0d114187b422cc4019581e39ff)
+source=(
+  "0001-fix-run-paths.patch"
+  "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha256sums=(
+  51d96f5ac1ab6f7b695b557b2eb0ef66ab8b11aec9c97677f5e38eb73ed67048
+  298c7f39b18b0dbc2874c93c0eeaac5dd0923c0d114187b422cc4019581e39ff
+)
 
 prepare() {
   cd "$srcdir/netbird-$pkgver"
   mkdir -p build
+
+  for patch in "$srcdir"/*.patch; do
+    patch -p1 -i "$patch"
+  done
 
   go mod download
 }
