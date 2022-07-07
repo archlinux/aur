@@ -2,8 +2,8 @@
 
 pkgbase=mutter-vrr
 pkgname=(mutter-vrr mutter-vrr-docs)
-pkgver=42.2+r11+gcd52c57bc
-pkgrel=6
+pkgver=42.3
+pkgrel=1
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
 optdepends=('gnome-control-center-vrr: VRR settings integration')
-_commit=cd52c57bc65a25363a25ee575b0c9d1d4e471ba8  # tags/42.2^11
+_commit=1903356b45c6c884a0451580f32494ff1288656d  # tags/42.3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1154.patch')
 
