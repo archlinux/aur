@@ -1,0 +1,12 @@
+pkgbase = asa
+	pkgdesc = Convert Fortran carriage control characters
+	pkgver = 1.2
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	source = http://archive.debian.org/debian/dists/slink/main/source/text/asa_1.2.orig.tar.gz
+	source = https://src.fedoraproject.org/rpms/asa/raw/f16/f/asa-1.2-declare.patch
+	sha256sums = 3a4189cd3e3da1d702031d619a9529cb247363a41ce037f14fc9b95228dbf603
+	sha256sums = a5a51ba2374179b0da2a1f2013dd732fbd5044776baea8b5f36e265843281f7f
+
+pkgname = asa
