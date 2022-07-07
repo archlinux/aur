@@ -4,8 +4,8 @@
 _pkg="archiso"
 _distro="archlinux"
 _pkgbase="${_pkg}-profiles"
-_profile=desktop
-pkgname="${_distro}-${_profile}"
+profile=desktop
+pkgname="${_distro}-${profile}"
 pkgver=v0.1+11+g1afb2fc
 pkgrel=1
 pkgdesc='Builds an Archlinux desktop'
@@ -19,7 +19,7 @@ depends=('archiso-persistent-git'
 	 'mkinitcpio-archiso-encryption-git'
 	 'plymouth-nested-cryptkey'
          'polkit')
-makedepends=('devtools' 'git')
+makedepends=('devtools' 'git' 'archiso-profiles-git')
 checkdepends=('shellcheck')
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -32,12 +32,12 @@ pkgver() {
 package() {
   # shellcheck disable=SC2154
   local _dest="${pkgdir}/usr/share/${_distro}"
-  local _profile="${srcdir}/${_pkgbase}/${_profile}"
+  local _profile="${srcdir}/${_pkgbase}/${profile}"
   local _build_repo="${srcdir}/${_pkgbase}/.gitlab/ci/build_repo.sh"
+  cp -r "/usr/share/archiso-profiles/${profile}" "${_profile}"
   cd "${_profile}" || exit
-
   mkdir -p work
-  _build_repo "fakepkg"
+  "${_build_repo} fakepkg"
   install -d -m 0755 -- "${_dest}"
   pkexec mkarchiso -v \
 	           -o "${_dest}" \
