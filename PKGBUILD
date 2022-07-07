@@ -213,7 +213,7 @@ package_gccrs-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gfortran}.1
+  rm "$pkgdir"/usr/share/man/man1/gfortran.1
   rm "$pkgdir"/usr/share/info/{gfortran,gnat-style,gnat_rm,gnat_ugn}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
