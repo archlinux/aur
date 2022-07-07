@@ -1,6 +1,6 @@
 pkgbase = yj-rs
 	pkgdesc = Command line tool that converts YAML to JSON.
-	pkgver = 1.1.32
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/bruceadams/yj
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = yj-rs
 	license = Apache
 	makedepends = cargo
 	conflicts = yj
-	source = 1.1.32.tar.gz::https://github.com/bruceadams/yj/archive/1.1.32.tar.gz
-	sha256sums = 63d3598337589406bea5f5782313414646b1027f458ce914f63311ee0556994f
+	conflicts = yj-git
+	conflicts = yj-rs-git
+	source = 1.2.2.tar.gz::https://github.com/bruceadams/yj/archive/v1.2.2.tar.gz
+	sha256sums = 62a01f128b60fb8bcdd78dcb139a81161ad828c104609ad1c7f12d52323fe2fa
 
 pkgname = yj-rs
-
