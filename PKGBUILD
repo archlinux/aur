@@ -54,7 +54,6 @@ _package() {
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
 
   ln -s "vmlinuz-$_pkgbase" "$pkgdir/boot/zImage"
-  ln -s "initramfs-$_pkgbase.img" "$pkgdir/boot/Initrd"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
