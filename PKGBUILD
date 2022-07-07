@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=openfx-gmic
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
@@ -17,8 +17,8 @@ _url=${url%/${pkgname}}
 
 source=("${_pkgname}.tar.gz::${url}/archive/refs/tags/${_natron_ver}.tar.gz"
         "openfx-${_natron_ver}.tar.gz::${_url}/openfx/archive/refs/tags/${_natron_ver}.tar.gz")
-sha512sums=('a9135ccd3283b49085d760d4bf5772e16d108b1c5cc25181da70ad093fa4b02ffba0908cd7398c3afcef81c6bc9e6731d3da111e1e661cb4f2f4246d17c9cbe8'
-            '624530af417821d759358ccfc45ba7ba10890fd115bbfef3e3fa61f486414fe61f39bfce8593f7ab84ee3d5ed3db05149d614f1407735fd8d6529894996103fa')
+sha512sums=('3ab5d0acbdbfda003f6d465cbcd29bd287cccd536ad1d9d554d5c0422d44b8cd748174c6a9b7b9bdf297d630dbff32113715cccb1e491c1acb7f901069028f0e'
+            '56fc96d0820d053940336ef3ae9fee4e4386e90c9cede6e5450de66c92220f2670f12b25dfb17aaec621001db140281ab47ee8f3fa5e5915a56cfefe2be813fe')
 
 prepare() {
   tar -xzf "openfx-${_natron_ver}.tar.gz" --strip 1 \
