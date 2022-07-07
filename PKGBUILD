@@ -4,12 +4,12 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.19.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'mbedtls' 'libssh2' 'curl'
+depends=('glfw' 'mbedtls' 'libssh2' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
          'fmt' 'yara')
 makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python')
