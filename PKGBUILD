@@ -1,8 +1,9 @@
+# Maintainer: renyuneyun <renyuneyun at gmail dot com>
 # Maintainer: Mikołaj Chwalisz <chwalisz at tkn dot tu-berlin dot de>
 
 pkgname=jfed
 _pkgname=jFed
-pkgver=6.1.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="jFed is a Java-based framework  for testbed federation"
 arch=('x86_64')
@@ -15,7 +16,7 @@ source=(
     "http://jfed.iminds.be/downloads/stable/installers/${_pkgname}_linux_${pkgver//./_}.deb"
     "jFed-Experimenter.desktop"
     )
-md5sums=('ba3b257429040249bf8aa0251b7cfa13'
+md5sums=('f9eb3d4ae1e3072eb0b785bfbd6b01d8'
          '9e73fa7a04bf623897057e402f6ac5c6')
 
 package() {
