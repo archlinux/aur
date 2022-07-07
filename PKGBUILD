@@ -6,12 +6,12 @@
 pkgname=hamster-time-tracker_legacy
 _pkgname=hamster-time-tracker
 pkgver=1.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track (Legacy 1.04 version)"
 arch=('any')
 url="https://github.com/projecthamster/hamster"
 license=('GPL')
-depends=('python2-dbus' 'python2-gconf' 'python2-notify' 'python2-wnck' 'python2-xdg' 'desktop-file-utils')
+depends=('python2-dbus' 'python2-gconf' 'python2-notify' 'python2-wnck' 'python2-pyxdg' 'desktop-file-utils')
 makedepends=('intltool')
 conflicts=('hamster-time-tracker')
 provides=('hamster-time-tracker')
