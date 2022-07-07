@@ -6,7 +6,6 @@ pkgbase="$_pkgbase-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.15.48
 _armbver=22.05.3
-_armbrel=1
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('aarch64')
@@ -18,9 +17,9 @@ provides=("$_pkgbase")
 conflics=("$_pkgbase")
 source=(
   "linux.preset"
-  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
-  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
-  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}_arm64.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}_arm64.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}_arm64.deb"
 )
 sha512sums=(
   'a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276'
@@ -46,16 +45,15 @@ _package() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-dtb-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/boot"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
 
   ln -s "vmlinuz-$_pkgbase" "$pkgdir/boot/Image"
-  ln -s "initramfs-$_pkgbase.img" "$pkgdir/boot/Initrd"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
@@ -83,9 +81,9 @@ _package-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-headers-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
