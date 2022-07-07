@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pingo
-pkgver=1.a21
+pkgver=1.a23
 pkgrel=1
 pkgdesc='Lossless and lossy image optimizer for PNG/JPEG/WebP/APNG (uses wine)'
 arch=('any')
@@ -12,10 +12,10 @@ makedepends=('git')
 source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
 noextract=("pingo-win64-${pkgver}.zip")
-sha256sums=('434fd896379ad0334dacaa7738f000fbeef394384924924d6568be6cbd8668a3'
+sha256sums=('587e2afdda1214cae007dfb5391fb13be31ecf93fdf3692b66d00540a2b0987d'
             'SKIP')
 
-_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36"
+_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36"
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' -LC - --retry 3 --retry-delay 3 \
