@@ -2,7 +2,7 @@
 
 _pkgname=spflashtool5
 pkgname="${_pkgname}-bin"
-pkgver="5.2136"
+pkgver="5.2208"
 pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone. Version 5 variant."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 source=("https://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
         'spflashtool5.png'
         '60-spflashtool5.rules')
-sha256sums=('e2a506957ce6039b25706e56490535c185f59e463f85072fdaa13ca5403a8283'
+sha256sums=('41b51e13683cda1d757a30808a5827c9a7d65dfb2784539272e137fdd8266b83'
             'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7'
             'a0e20dea13cfc63a92444e3763c764701162cfb5a8d04092dc69169f4214fb8d')
 
