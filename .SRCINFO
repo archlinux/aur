@@ -1,0 +1,15 @@
+pkgbase = effer
+	pkgdesc = Encrypted CLI Notepad written in Rust
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/Merkoba/Effer
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = cargo
+	conflicts = effer-bin
+	conflicts = effer-git
+	source = effer-2.0.3.tar.gz::https://github.com/Merkoba/Effer/archive/v2.0.3.tar.gz
+	sha512sums = 7e4c6d57bdabb3e56296aade7ed69b552f1c4194b758e85bd6aeb966322cc96e7adc51c9e0a95baa2844b387374c0155dbd40af57cad18c4c94ae5a6473893e7
+
+pkgname = effer
