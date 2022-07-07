@@ -22,11 +22,14 @@ pkgbase = unreal-engine
 	optdepends = codelite: IDE for projects
 	optdepends = kdevelop: IDE for projects
 	optdepends = clion: IDE for projects
+	optdepends = pacman-contrib: for the paccache cleaning hook
 	options = !strip
 	options = staticlibs
 	source = com.unrealengine.UE4Editor.desktop
 	source = use_system_clang.patch
+	source = unreal-engine-pacman-cache.hook
 	sha256sums = 15e9f9d8dc8bd8513f6a5eca990e2aab21fd38724ad57d213b06a6610a951d58
 	sha256sums = b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98
+	sha256sums = 9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca
 
 pkgname = unreal-engine
