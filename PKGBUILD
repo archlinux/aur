@@ -4,7 +4,7 @@ pkgver=r3.8ac2684
 pkgrel=2
 pkgdesc="A few Compiz Standalone utilities based off of some scripts that come with Openbox."
 arch=('any')
-url="https://github.com/ShadowKyogre/Compiz-Standalone-Utils"
+url="https://gitlab.com/ShadowKyogre/Compiz-Standalone-Utils"
 license=('GPL')
 depends=()
 conflicts=('compiz-alone-utils')
@@ -14,7 +14,7 @@ install=${pkgname%-git}.install
 
 _gitname="CompizSAUtils"
 source=(
-  "${_gitname}::git+https://github.com/ShadowKyogre/Compiz-Standalone-Utils.git"
+  "${_gitname}::git+https://gitlab.com/ShadowKyogre/Compiz-Standalone-Utils.git"
 )
 
 
