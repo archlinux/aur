@@ -1,41 +1,34 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: zhs <zhao4she4@tuta.io>
+# by and large a copy of the stable version one by radioxoma with a few
+# small modifications
+
 pkgname=lsdreader-git
-pkgver=0.2.8.r14.d8256cf
+_pkgname=lsdreader
+pkgver=0.2.15.r18.g6276e75
 pkgrel=1
-epoch=
-pkgdesc="Decompile Lingvo LSD dictionary to DSL."
-arch=('i686' 'x86_64')
+pkgdesc="Decompile ABBYY Lingvo LSD dictionaries to DSL, git version"
+arch=('any')
 url="https://github.com/sv99/lsdreader"
 license=('unknown')
-groups=()
-depends=('python2')
-makedepends=('git' 'python2-setuptools')
-optdepends=()
-checkdepends=()
+depends=('python')
 provides=('lsdreader')
 conflicts=('lsdreader')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-source=("$pkgname::git+https://github.com/sv99/lsdreader.git")
-noextract=()
-md5sums=('SKIP')
+makedepends=('python-setuptools')
+source=("git+https://github.com/sv99/lsdreader")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//')" \
-                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r'$(git rev-list --count HEAD)'.g/;s/-/./g'
 }
 
-check() {
-  cd "$srcdir/$pkgname"
-  python2 setup.py test
+build() {
+    cd "$srcdir/${_pkgname}"
+    sed -i 's/\\n/ /g' setup.py  # ValueError: Newlines are not allowed
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/${_pkgname}"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
-
