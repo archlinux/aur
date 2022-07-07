@@ -1,9 +1,8 @@
 [Desktop Entry]
-Name=qqmusic
+Name=QQMusic
 Name[zh_CN]=QQ音乐
 Keywords=qqmusic
-Exec=qqmusic %U
-Terminal=false
+Exec=/usr/bin/qqmusic %U
 Type=Application
 Icon=qqmusic
 StartupWMClass=qqmusic
