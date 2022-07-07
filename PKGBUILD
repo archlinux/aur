@@ -1,4 +1,4 @@
-# Maintainer: <abishekj274@gmail.com>
+# Maintainer: <thysupremematrix at tuta dot io>
 pkgname=peer2profit
 pkgver=0.47
 pkgrel=1
