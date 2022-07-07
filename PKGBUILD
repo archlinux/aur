@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd rust-u2f
+  pushd rust-u2f
 
   install -Dm 755 target/release/softu2f-user-daemon \
                   "$pkgdir"/usr/lib/softu2f/user-daemon
@@ -55,6 +55,8 @@ package() {
 
   install -Dm 644 linux/system-daemon/softu2f-tmpfiles.conf \
                   "$pkgdir"/usr/lib/tmpfiles.d/softu2f.conf
+
+  popd
 
   install -Dm 644 softu2f_system.preset \
                   "$pkgdir"/usr/lib/systemd/system-preset/90-softu2f.preset
