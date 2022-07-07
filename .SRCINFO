@@ -1,7 +1,7 @@
 pkgbase = lightdm-theme-neon-git
 	pkgdesc = Modern and customizable theme for web-greeter with a nostalgic neon look
 	pkgver = r59.b337c02
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/hertg/lightdm-neon
 	arch = any
