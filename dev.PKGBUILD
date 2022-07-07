@@ -24,7 +24,7 @@ source=("git+${url}.git#branch=develop"
 "${_scripts}.tar.gz"
 )
 sha256sums=('SKIP'
-            'd6f89b3363917253cf1acdff99d015468dd23a34e70fe02c3c445e455e30a16d')
+            '5b3e463d50bf0eb912cac18521fec476d28e52f63ea4d441778ed48daf9073d5')
 
 pkgver() {
 _version=$(git ls-remote --tags --refs --sort="version:refname" ${url}.git | tail -n1)
