@@ -54,6 +54,10 @@ prepare() {
 	mkdir -p $srcdir/usr/lib/systemd/sleep.conf.d
 	mv systemd/reform-sleep.conf $srcdir/usr/lib/systemd/sleep.conf.d
 
+	mkdir -p $srcdir/usr/lib/systemd/system
+	cp debian/reform-tools.reform-sleep.service $srcdir/usr/lib/systemd/system/reform-sleep.service
+	cp debian/reform-tools.reform-hw-setup.service $srcdir/usr/lib/systemd/system/reform-hw-setup.service
+
 	rm -rf ../reform-tools-$_commit
 }
 
