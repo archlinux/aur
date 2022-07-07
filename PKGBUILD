@@ -11,5 +11,5 @@ source=("mutt.desktop")
 md5sums=('SKIP')
 
 package() {
-    install -D -t "$pkgdir"/usr/share/applications/ mutt.desktop
+    install -Dm 644 -t "$pkgdir"/usr/share/applications/ mutt.desktop
 }
