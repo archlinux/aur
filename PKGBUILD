@@ -1,16 +1,18 @@
 # Maintainer: Bryan Malyn <bim9262 at gmail dot com>
 
 pkgname=ttf-roboto-flex-git
-_pkgname=roboto-flex
+_pkgname=ttf-roboto-flex
 pkgver=3.100.r8.g7dd9b0b48e
-pkgrel=1
+pkgrel=2
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
 makedepends=('git')
 arch=('any')
 conflicts=('ttf-roboto-flex')
 url="https://github.com/googlefonts/roboto-flex"
 license=('custom:OFL')
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
