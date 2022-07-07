@@ -1,7 +1,7 @@
 pkgbase = r-findmyfriends
 	pkgdesc = Microbial Comparative Genomics in R
-	pkgver = 1.23.0
-	pkgrel = 3
+	pkgver = 1.24.0
+	pkgrel = 2
 	url = https://bioconductor.org/packages/FindMyFriends
 	arch = x86_64
 	license = GPL
@@ -29,6 +29,6 @@ pkgbase = r-findmyfriends
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = git+https://git.bioconductor.org/packages/FindMyFriends.git
-	sha256sums = e91305becc2fb8c276f57457eaf99c58a9f85b377b0b034a16a2ac2ea9a17075
+	sha256sums = SKIP
 
 pkgname = r-findmyfriends

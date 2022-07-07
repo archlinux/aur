@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FindMyFriends
-_pkgver=1.23.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.23.0
-pkgrel=3
+pkgver=1.24.0
+pkgrel=2
 pkgdesc='Microbial Comparative Genomics in R'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -39,7 +39,12 @@ optdepends=(
   r-testthat
 )
 source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
-sha256sums=('e91305becc2fb8c276f57457eaf99c58a9f85b377b0b034a16a2ac2ea9a17075')
+sha256sums=('SKIP')
+
+prepare(){
+  # No such file, its only in description.
+  sed -i "/'zzz.R'/d" ${_pkgname}/DESCRIPTION
+}
 
 build() {
   tar -zcvf ${_pkgname}.tar.gz  ${_pkgname}
