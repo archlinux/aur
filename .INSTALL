@@ -15,10 +15,10 @@ post_upgrade() {
   then
     cat <<EOF
 
-- Made HTTP method configurable for endpoints `auth_http_method` nad
-`token_http_method` in `service.yaml`
+- Made HTTP method configurable for endpoints 'auth_http_method' nad
+'token_http_method' in 'service.yaml'
 
-- Changed `_postmode` to `_params_mode` in `service.yaml`
+- Changed '_postmode' to '_params_mode' in 'service.yaml'
 
 - Debug mode to print HTTP traffic to stdout
 
