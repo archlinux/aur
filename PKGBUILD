@@ -1,7 +1,7 @@
 # Maintainer: Savely Krasovsky <savely@krasovs.ky>
 pkgname=reform-tools
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="MNT Reform laptop tools"
 arch=('x86_64' 'aarch64')
 url="https://mntre.com/reform2/handbook/index.html"
