@@ -3,7 +3,7 @@
 
 pkgname=hysteria-bin
 _pkgbase=hysteria
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A feature-packed network utility optimized for networks of poor quality (Binary Release)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$_pkgbase-tun-$pkgver-$pkgrel-linux-amd64::https://github.com/HyNetwork
         'hysteria@.service'
         'hysteria-server@.service'
         'sysusers.conf')
-sha256sums=('008d148d34e8754eac981742082be4e94115c2dfec7a2d806f2e8c7a33b42a26'
+sha256sums=('13b34ea8c40e78cc7553186ab91684d264de13a21d9643c76a56a6536721e2ce'
             '2a0462751a1e97b807cef1d2e0830b134ec6f211bd8d291b2de4acce4ec1db35'
             '61ef8c91f417d83411d89295495e0c926ded7ed02302e7a0efa123d564e12f7e'
             '5a0fb1185e7bff6e05ec8ecb8a45b269fd4c7fa562ab107954ab87642a71f8d0'
