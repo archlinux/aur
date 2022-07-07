@@ -1,7 +1,7 @@
 pkgbase = woice-git
 	pkgdesc = Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.
 	pkgver = 0.0.2.r5.20200302.a22db46
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/keans/woice
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = woice-git
 	makedepends = python-setuptools
 	depends = python>=3
 	depends = python<4
+	depends = python-lxml
+	depends = python-requests
 	optdepends = networkmanager: To make use of the NetworkManager integration.
 	provides = woice
 	provides = python-woice=0.0.2.r5.20200302.a22db46
