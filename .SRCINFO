@@ -1,7 +1,7 @@
 pkgbase = workbench
 	pkgdesc = Learn and prototype with GNOME technologies
 	pkgver = 42.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Workbench
 	install = workbench.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = workbench
 	optdepends = gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser
 	optdepends = highlight: syntax highlighting
 	optdepends = libadwaita-demos: Adwaita Demo
-	source = git+https://github.com/sonnyp/Workbench.git#commit=16f2ebc7cccad61ac44d219c24ffcb9f8722b232
+	source = git+https://github.com/sonnyp/Workbench.git#commit=b6c389da2f7918142106e12aa9f31f20c9d9e9f8
 	source = git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
