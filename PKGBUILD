@@ -6,8 +6,8 @@
 # with this PKGBUILD.
 
 pkgname=vmware-vmrc
-pkgver=12.0.1
-pkgrel=2
+pkgver=12.0.2
+pkgrel=1
 pkgdesc='VMware Remote Console'
 arch=('x86_64')
 url="https://www.vmware.com/go/download-vmrc"
@@ -16,12 +16,12 @@ depends=()
 optdepends=('vmware-keymaps')
 
 source=(
-    "VMware-Remote-Console-$pkgver-18113358.x86_64.bundle"
+    "VMware-Remote-Console-$pkgver-19968993.x86_64.bundle"
     'bootstrap'
     'config'
 )
 
-sha256sums=('90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
+sha256sums=('f3eaed4c8d933a608af94adf6e2812c7358cce76f84fa2a293a84ec12a548e6f'
             '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
             'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
