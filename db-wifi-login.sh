@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -e
+
 ### Programme's version:
-_VERSION=0.1_2022-07-08.01
+_VERSION=0.1_2022-07-08.03
 
 ### License: GNU General Public License version 3 (GPL3).
 #   Copyright 2022, the author.
@@ -53,7 +55,7 @@ _USAGEINFO="Usage:
 ### Worker functions:
 _get_csrftoken() {
   # Does a request to $_request_url and returns the CSRF token to stdout.
-  curl -L -s -o '/dev/null' -A "${_user_agent}" -j --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+${_CSRF_cookiename}=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||'
+  curl -L -s -S -o '/dev/null' -A "${_user_agent}" -j --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+${_CSRF_cookiename}=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||'
 }
 
 _perform_action() {
@@ -71,10 +73,10 @@ _perform_action() {
   local _csrftoken="$2"
   case "${_what}" in
     login)
-      curl -L -s -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_login_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
+      curl -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_login_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
     ;;
     logout)
-      curl -L -s -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_logout_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
+      curl -L -s -S -o '/dev/null' --referer "${_referer}" -b "${_CSRF_cookiename}=${_csrftoken}" -d "${_logout_request}&${_CSRFToken_requestname}=${_csrftoken}" "${_request_url}"
     ;;
     *)
       errmsg "$0: Error in function '${FUNCNAME[0]}': An unsupported first argument was specified. Allowed are only: 'login', 'logout'."
@@ -113,7 +115,7 @@ _do_toggle() {
 
 _get_status() {
   # Prints the login/logout state.
-  local _buttontype="$(curl -L -s -o - "${_request_url}" | sed -nE 's/^.*<input[[:space:]].*name="(logout|login)".*$/\1/p')"
+  local _buttontype="$(curl -L -s -S -o - "${_request_url}" | sed -nE 's/^.*<input[[:space:]].*name="(logout|login)".*$/\1/p')"
   case "${_buttontype}" in
     'login')
       msg 'down'
@@ -129,7 +131,7 @@ _get_status() {
 
 _get_datausage() {
   # Prints the used data volume.
-  msg "$(curl -L -s -o - --referer "${_referer}" "${_datausage_info_url}")"
+  msg "$(curl -L -s -S -o - --referer "${_referer}" "${_datausage_info_url}")"
 }
 
 
