@@ -1,12 +1,13 @@
 pkgbase = xrock-git
 	pkgdesc = The low level tools for rockchip SOC with maskrom and loader mode support.
-	pkgver = 1.0.3.r0.gefee6d0
-	pkgrel = 1
+	pkgver = 1.0.4.r0.gac2fee6
+	pkgrel = 0
 	url = https://github.com/xboot/xrock
 	arch = any
 	license = MIT
 	makedepends = gcc
 	depends = libusb
+	provides = xrock=1.0.4.r0.gac2fee6
 	conflicts = xrock
 	options = !strip
 	source = xrock::git+https://ghproxy.com/https://github.com/xboot/xrock.git

@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock-git
-pkgver=1.0.3.r0.gefee6d0
-pkgrel=1
+pkgver=1.0.4.r0.gac2fee6
+pkgrel=0
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libusb')
 makedepends=("gcc")
 checkdepends=()
 optdepends=()
-provides=()
+provides=("xrock=${pkgver}")
 conflicts=(${pkgname%-git})
 replaces=()
 backup=()
