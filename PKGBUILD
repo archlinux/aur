@@ -4,16 +4,16 @@
 
 pkgname=rstudio-desktop
 _vermajor="2022"
-_verminor="02"
-_verpatch="3"
-_versuffix="+492"
+_verminor="07"
+_verpatch="0"
+_versuffix="+548"
 _gitcommit="8acbd38"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
 _gwtver=2.8.2
 _ginver=2.1.2
-_nodever=14.17.5
+_nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
@@ -32,36 +32,23 @@ optdepends=('git: for git support'
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
-        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
-        "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "10952.patch"
         "pandoc_version.patch")
 
-sha256sums=('e0e520d992445db85dc30bdfe3fb6477f50605ce96f0b89eac19b618860032d9'
-            'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-            '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
-            'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
+sha256sums=('51061c4b92b6ec11bc07ca01b260c0b332d5b069aefd01b012182ae4086e9983'
+            '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726'
-            '71cc9986a02c209960309f0e1dd50f08a8f7e59c1bc09ec45d10058a89299939')
+            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
 noextract=("gin-${_ginver}.zip")
 
 prepare() {
     cd ${srcdir}/${_srcname}
-    # Fix for quarto/pandoc location
-    # https://github.com/rstudio/rstudio/pull/10952
-    patch -p1 < ${srcdir}/10952.patch
     # Do not use outdated version name of pandoc
     patch -p1 < ${srcdir}/pandoc_version.patch
 
     msg "Extracting dependencies..."
-    cd "${srcdir}/${_srcname}/src/gwt"
-    install -d lib/gin/${_ginver} lib/gwt/${_gwtver}
-    unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
-    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     #_pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)

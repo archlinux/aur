@@ -1,12 +1,11 @@
-diff -ur a/CMakeGlobals.txt b/CMakeGlobals.txt
---- a/CMakeGlobals.txt	2022-03-18 10:10:38.000000000 +1300
-+++ b/CMakeGlobals.txt	2022-04-28 10:46:17.695649880 +1200
-@@ -214,7 +214,7 @@
+--- rstudio-2022.07.0-548/CMakeGlobals.txt	2022-07-07 07:59:49.000000000 +1200
++++ rstudio-2022.07.0-548.patched/CMakeGlobals.txt	2022-07-08 09:24:27.069195093 +1200
+@@ -231,7 +231,7 @@
  endif()
  
  # pandoc version
--set(PANDOC_VERSION "2.16.2" CACHE INTERNAL "Pandoc version")
+-set(PANDOC_VERSION "2.18" CACHE INTERNAL "Pandoc version")
 +set(PANDOC_VERSION "current" CACHE INTERNAL "Pandoc version")
  
- # quarto support
- if(LINUX AND UNAME_M STREQUAL aarch64)
+ # detect Centos 7, because we don't support Quarto on Centos7
+ set(IS_CENTOS7 FALSE)
