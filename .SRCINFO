@@ -1,6 +1,6 @@
 pkgbase = plocate-git
 	pkgdesc = A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index
-	pkgver = 1.1.15.r2.ge16be57
+	pkgver = 1.1.16.r2.g0125004
 	pkgrel = 1
 	url = https://plocate.sesse.net/
 	arch = i686
@@ -12,14 +12,14 @@ pkgbase = plocate-git
 	depends = liburing
 	depends = systemd
 	depends = zstd
-	provides = plocate
+	provides = plocate=1.1.16.r2.g0125004
 	conflicts = plocate
 	conflicts = mlocate
 	backup = etc/updatedb.conf
 	source = git+https://git.sesse.net/plocate
-	source = plocate.sysusers::https://github.com/archlinux/svntogit-community/blob/packages/plocate/trunk/plocate.sysusers
-	source = plocate.tmpfiles::https://github.com/archlinux/svntogit-community/blob/packages/plocate/trunk/plocate.tmpfiles
-	source = updatedb.conf::https://github.com/archlinux/svntogit-community/blob/packages/plocate/trunk/updatedb.conf
+	source = plocate.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/plocate.sysusers
+	source = plocate.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/plocate.tmpfiles
+	source = updatedb.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/plocate/trunk/updatedb.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
