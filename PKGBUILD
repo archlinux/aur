@@ -7,14 +7,14 @@ downloads and sources, enabling you to easily switch between stable and
 development compilers.'
 url='https://github.com/dom96/choosenim'
 license=('BSD')
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 arch=('x86_64')
 source=(
   "${pkgname}::https://github.com/dom96/choosenim/releases/download/v${pkgver}/choosenim-${pkgver}_linux_amd64"
   "https://raw.githubusercontent.com/dom96/choosenim/v${pkgver}/LICENSE"
 )
-md5sums=('1f9c7f59393d80ce79a1c38394b39c78'
+md5sums=('c9b5caaed180c0ed816194f78d2fb0fc'
          '78123baa634a7ebc9f65c1429e18dbb6')
 provides=('nim' 'nimble' 'nimgrep' 'nimpretty' 'nimsuggest')
 conflicts=('nim' 'nimble' 'nimgrep' 'nimpretty' 'nimsuggest')
