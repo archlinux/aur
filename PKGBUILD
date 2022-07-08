@@ -1,31 +1,36 @@
 # Maintainer: KirMozor <kirmozor96@gmail.com>
 # Contributor: Archie <archie-woc@ya.ru>
+# Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
 pkgver=v54
-pkgrel=1
-epoch=1
-pkgdesc="This is a yandex music client for Linux written in C# with YandexMusicAPI"
-arch=("x86_64")
+pkgrel=2
+pkgdesc="Yandex Music Client"
+arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
 license=('GPL3')
-depends=("libbass" "dotnet-runtime>=6.0.0")
+depends=('libbass' 'dotnet-runtime>=6.0.0' 'gtk3')
 makedepends=("dotnet-sdk>=6.0.0")
-source=("https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v54/Yamux-Yamux-v54.tar.gz")
+source=("git+https://gitlab.com/KirMozor/Yamux.git#tag=Yamux-$pkgver")
 md5sums=(SKIP)
-install=post.install
 
 build() {
-    cd Yamux-Yamux-$pkgver
-    dotnet build --configuration Release
+    cd Yamux
+    dotnet build -c Release
 }
 
 package() {
-    cd Yamux-Yamux-$pkgver
+    cd "${srcdir}/Yamux"
+
+    # Copy theme
     cp -r Svg ./bin/Release/net6.0/linux-x64
-    mkdir -p $pkgdir/opt/
-    cp -r ./bin/Release/net6.0/linux-x64/. $pkgdir/opt/Yamux
-    # mkdir -p $pkgdir/usr/local/bin/Yamux
-    # ln -sf $pkgdir/usr/local/bin/Yamux/Yamux $pkgdir/usr/bin/Yamux
-    # cp ./bin/Release/net6.0/linux-x64/Yamux $pkgdir/usr/bin
-    # chmod +x "$pkgdir/usr/bin/Yamux"
+
+    # Copy binaries
+    mkdir -p "$pkgdir/opt"
+    cp -r ./bin/Release/net6.0/linux-x64/. "$pkgdir/opt/Yamux"
+
+    mkdir -p "$pkgdir/usr/bin"
+    ln -sf /opt/Yamux/Yamux "$pkgdir"/usr/bin/yamux
+
+    # License
+    cp -r LICENSE "$pkgdir/opt/Yamux"
 }
