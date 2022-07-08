@@ -20,7 +20,7 @@ license=('GPL')
 provides=('polkit-kde-kcmodules' 'kcm-polkit-kde')
 conflicts=('polkit-kde-kcmodules')
 depends=('kcmutils')
-makedepends=('cmake' 'dbus' 'git')
+makedepends=('cmake' 'dbus' 'git' 'extra-cmake-modules')
 
 source=($pkgname::"git+https://invent.kde.org/system/polkit-kde-kcmodules-1.git")
 md5sums=('SKIP')

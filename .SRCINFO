@@ -10,6 +10,7 @@ pkgbase = kcm-polkit-kde-git
 	makedepends = cmake
 	makedepends = dbus
 	makedepends = git
+	makedepends = extra-cmake-modules
 	depends = kcmutils
 	provides = polkit-kde-kcmodules
 	provides = kcm-polkit-kde
