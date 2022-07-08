@@ -4,17 +4,17 @@ pkgname=pingtcp
 pkgver=0.0.6
 pkgrel=1
 pkgdesc="Small utility to measure TCP handshake time (torify-friendly)"
-url="https://gitlab.com/post-factum/${pkgname}"
+url="https://codeberg.org/post-factum/${pkgname}"
 arch=(x86_64)
 license=(GPL3)
 depends=(libbsd)
 makedepends=(meson)
 optdepends=("torsocks: for TOR support")
-source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/post-factum/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-sha256sums=('323c63039d390f300f705c78dedcf5adfa02364b93a184e506a58fd4ddba7be9')
+source=(${pkgname}-${pkgver}.tar.gz::https://codeberg.org/post-factum/${pkgname}/archive/v${pkgver}.tar.gz)
+sha256sums=('687ce10f8dc8446d9253c3bbca9dedeae8a91f9cf81a855ae0ed41017318e3f4')
 
 build() {
-	cd ${pkgname}-v${pkgver}
+	cd ${pkgname}
 
 	arch-meson . build
 
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-	cd ${pkgname}-v${pkgver}
+	cd ${pkgname}
 
 	meson install -C build --destdir "${pkgdir}"
 }
