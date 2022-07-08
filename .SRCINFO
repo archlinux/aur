@@ -1,0 +1,18 @@
+pkgbase = pmbootstrap-custom-pmaports-git
+	pkgdesc = Sophisticated chroot/build/flash tool to develop and install postmarketOS (git)
+	pkgver = 1.42.0.r12.gfaf52391
+	pkgrel = 1
+	url = https://postmarketos.org
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python-setuptools
+	provides = pmbootstrap
+	conflicts = pmbootstrap
+	source = git+https://gitlab.com/tallero/pmbootstrap.git#branch=custom-pmaports
+	md5sums = SKIP
+
+pkgname = pmbootstrap-custom-pmaports-git
