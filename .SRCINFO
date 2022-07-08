@@ -1,6 +1,6 @@
 pkgbase = cfonts
     pkgdesc = Sexy ANSI fonts for the console
-    pkgver = 1.0.4rust
+    pkgver = 1.1.0rust
     pkgrel = 1
     url = https://github.com/dominikwilkowski/cfonts
     arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cfonts
     makedepends = rust
     makedepends = git
     provides = cfonts
-    source = https://github.com/dominikwilkowski/cfonts/archive/refs/tags/v1.0.4rust.tar.gz
-    sha256sums = c8b82256e74091dc15570ccd1447259d27923cdb2eba16d26487b497518d33cc
+    source = https://github.com/dominikwilkowski/cfonts/archive/refs/tags/v1.1.0rust.tar.gz
+    sha256sums = 45c40dfc867234efc5c5a2df687ccfc40a6702fa5a82f2380b555f9e755508e6
 
 pkgname = cfonts
