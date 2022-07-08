@@ -1,16 +1,19 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+#
+# Upwork allows to download Linux binaries only for logged-in users.
+# Download a deb package from https://www.upwork.com/ab/downloads/os/linux/
+# and place it in the same directory as this PKGBUILD file, then run makepkg.
 
 pkgname=upwork
 pkgver=5.6.10.13
-_hashver=3c485d1dd2af4f61
 _pkgname='Upwork'
-pkgrel=1
+pkgrel=2
 pkgdesc='Upwork Desktop Application'
 arch=(x86_64)
 url='https://www.upwork.com/ab/downloads/os/linux/'
 license=(custom)
 depends=(alsa-lib gtk3 libxss nss)
-source=(https://upwork-usw2-desktopapp.upwork.com/binaries/v${pkgver//./_}_${_hashver}/upwork_${pkgver}_amd64.deb
+source=(file://upwork_${pkgver}_amd64.deb
         LICENSE)
 sha256sums=('c3e1ecf14c99596f434edf93a2e08f031fbaa167025d1280cf19f68b829d6b79'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38')
