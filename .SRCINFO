@@ -1,6 +1,6 @@
 pkgbase = srbminer-multi
 	pkgdesc = CPU & AMD GPU Miner: Mine up to 4 different algorithms/coins at the same time! - auto package update(just-rerun if page updates and leave comment)
-	pkgver = 0.7.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/doktor83/SRBMiner-Multi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = srbminer-multi
 	makedepends = git
 	makedepends = curl
 	optdepends = opencl-amd: For Mining on AMD GPUs
-	source = srbminer-multi-0.7.9.tar.xz::https://github.com/doktor83/SRBMiner-Multi/releases/download/0.7.9/SRBMiner-Multi-0-7-9-Linux.tar.xz
-	md5sums = c4cbb89813ba46c7717f9f2815d770a0
+	source = srbminer-multi-1.0.0.tar.xz::https://github.com/doktor83/SRBMiner-Multi/releases/download/1.0.0/SRBMiner-Multi-1-0-0-Linux.tar.xz
+	md5sums = 246e4df7799b9e1237bce09cf0c7a2c0
 
 pkgname = srbminer-multi

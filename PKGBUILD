@@ -1,6 +1,6 @@
 # Maintainer: EndlessEden <eden@rose.place>
 pkgname=srbminer-multi
-pkgver=0.7.9
+pkgver=1.0.0
 _pkgver="$(echo $pkgver | sed 's,\.,-,g')"
 pkgrel=1
 pkgdesc="CPU & AMD GPU Miner: Mine up to 4 different algorithms/coins at the same time! - auto package update(just-rerun if page updates and leave comment)"
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.xz"::"https://github.com/doktor83/SRBMiner-Multi/r
 md5sums=($(curl --silent https://api.github.com/repos/doktor83/SRBMiner-Multi/releases | grep $_pkgver | sed 's,zip,\n,g' | grep '*SRBMiner-Multi' | grep Linux | sed 's,[\]r[\]n,\n,g; s, ,\n,g' | head -2 | tail -1))
 if [ -z $md5sums ]; then
 echo "md5sums came back null from github api, rate limit must be exceeded."
-md5sums=("c4cbb89813ba46c7717f9f2815d770a0")
+md5sums=("246e4df7799b9e1237bce09cf0c7a2c0")
 fi
 fi
 
