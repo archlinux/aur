@@ -22,7 +22,7 @@ pkgbase = stratagus-git
 	provides = stratagus-git
 	provides = stratagus
 	provides = stratagus-gameutils.h
-	source = stratagus-git::git://github.com/Wargus/stratagus.git
+	source = stratagus-git::git+https://github.com/Wargus/stratagus.git
 	md5sums = SKIP
 
 pkgname = stratagus-git

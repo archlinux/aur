@@ -13,7 +13,7 @@ license=('GPL')
 # Quick and dirty edit. fix later.
 depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'libpng' 'libmng' 'libtheora' 'libogg' 'lua51' 'tolua++' 'zlib' 'openmp')
 makedepends=('git' 'cmake')
-source=("${pkgname}::git://github.com/Wargus/stratagus.git")
+source=("${pkgname}::git+https://github.com/Wargus/stratagus.git")
 md5sums=('SKIP')
 provides=(${pkgname}
 	  'stratagus'
