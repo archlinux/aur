@@ -3,7 +3,7 @@
 
 pkgname=jalv-select
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='A small GUI to select installed LV2 plugins and run them with jalv'
 arch=(x86_64 aarch64)
 url='https://github.com/brummer10/jalv_select'
