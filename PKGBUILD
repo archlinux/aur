@@ -2,20 +2,20 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=workbench
-pkgver=42.0
-pkgrel=2
+pkgver=42.1
+pkgrel=1
 pkgdesc="Learn and prototype with GNOME technologies"
 arch=('x86_64')
 url="https://github.com/sonnyp/Workbench"
 license=('GPL3')
-depends=('gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vte4-git')
-makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson' 'npm' 'vala')
+depends=('blueprint-compiler' 'gjs' 'gtksourceview5' 'libadwaita' 'libportal-gtk4' 'vala' 'vte4-git')
+makedepends=('git' 'gobject-introspection' 'meson' 'npm')
 checkdepends=('appstream-glib')
 optdepends=('gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser'
             'highlight: syntax highlighting'
             'libadwaita-demos: Adwaita Demo')
 install="$pkgname.install"
-_commit=b86cdfb3e6440e4e034fcb6c609ff84401630faa
+_commit=16f2ebc7cccad61ac44d219c24ffcb9f8722b232
 source=("git+https://github.com/sonnyp/Workbench.git#commit=${_commit}"
         'git+https://gitlab.gnome.org/Teams/Design/icon-development-kit-www.git'
         'git+https://github.com/sonnyp/troll.git')
@@ -35,7 +35,9 @@ prepare() {
   git config submodule.src/troll.url "$srcdir/troll"
   git submodule update
 
+  # This is not a Flatpak
   sed -i 's|app/share|usr/share|g' src/re.sonny.Workbench
+  sed -i '/Flatpak/d' src/about.js
 }
 
 build() {
