@@ -1,8 +1,9 @@
 #Stratagus - https://github.com/Wargus/stratagus
 # Original Maintainer: Angelo Theodorou <encelo at users dot sourceforge dot net>
 # Maintainer: Eden Rose(endlesseden) <eenov1988 "at"  gmail.com >
+_pkgname=stratagus
 pkgname=stratagus-git
-pkgver=2.4.4.72f8ea9e7.20200921
+pkgver=3.2.0.2abfb6a66.20220709
 pkgrel=1
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
@@ -15,16 +16,14 @@ depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'libpng' 'libmng' 'libtheora' 'libogg'
 makedepends=('git' 'cmake')
 source=("${pkgname}::git+https://github.com/Wargus/stratagus.git")
 md5sums=('SKIP')
-provides=(${pkgname}
-	  'stratagus'
-	  'stratagus-gameutils.h'
-)
+provides=("$_pkgname" 'stratagus' 'stratagus-gameutils.h')
 pkgver() {
   cd "$srcdir/${pkgname}"
   
   DATE="$(date +%Y%m%d)"
   PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD`) ### get GIT version
-  echo "2.4.4$PV.$DATE" | sed -e 's/git-/./g' 
+  VER=$(git describe --tags | head -1 | grep v | sed 's/v//g;s/-/\n/g' | head -1)
+  echo "$VER$PV.$DATE" | sed -e 's/git-/./g' 
 }
 
 build() {

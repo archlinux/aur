@@ -1,6 +1,6 @@
 pkgbase = stratagus-git
 	pkgdesc = A free cross-platform real-time strategy gaming engine
-	pkgver = 2.4.4.72f8ea9e7.20200921
+	pkgver = 3.2.0.2abfb6a66.20220709
 	pkgrel = 1
 	url = https://github.com/Wargus/stratagus
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = stratagus-git
 	depends = tolua++
 	depends = zlib
 	depends = openmp
-	provides = stratagus-git
+	provides = stratagus
 	provides = stratagus
 	provides = stratagus-gameutils.h
 	source = stratagus-git::git+https://github.com/Wargus/stratagus.git
