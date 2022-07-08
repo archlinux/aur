@@ -45,8 +45,6 @@ for service in "${services[@]}"; do
     runOnDemandCloseAfter: 3s
 EOT
 
-		systemctl restart rtsp-simple-server
-
 		echo "$service_name" >/srv/http/data/webradios/DAB/rtsp\:\|\|${MYNAME}\:8554\|$legal_name
 		ln -s /srv/http/data/webradiosimg/dablogo.jpg /srv/http/data/webradiosimg/rtsp\:\|\|$MYNAME\:8554\|${legal_name}.jpg
 		ln -s /srv/http/data/webradiosimg/dablogo-thumb.jpg /srv/http/data/webradiosimg/rtsp\:\|\|$MYNAME\:8554\|${legal_name}-thumb.jpg

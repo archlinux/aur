@@ -30,6 +30,6 @@ pkgbase = dab-scanner
 	sha256sums = 6254ae37ff94526bbb63f157f481b3fcdb79c4bdfb6b7590287768a6092add7c
 
 pkgname = dab-scanner
-	depends = gcc-libs
+	depends = gcc-libs>=12.1.0
 	depends = rtl-sdr
 	depends = rtsp-simple-server
