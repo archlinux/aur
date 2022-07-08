@@ -1,7 +1,7 @@
 # Maintainer: Guilherme B. Duarte <guilhermebemberduarte@gmail.com>
 pkgname=viper-bin
 _pkgname=viper
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 epoch=3
 pkgdesc="Viper is a launcher and updater for Northstar, and not much more than that."
@@ -10,7 +10,7 @@ depends=('nss' 'alsa-lib' 'gtk3')
 url="https://github.com/0neGal/${_pkgname}"
 license=('GPL3')
 source=("https://github.com/0neGal/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b129ad50c4a3701b6d37be1886fab47b245a1a314715b2ee7b14af1487d9f617')
+sha256sums=('6f7a05cc52f547d734c4fc25ce7a4c61e48f4fa0879387ea0348a42d7463535a')
 
 package() {
 	 tar -xf data.tar.xz -C "${pkgdir}"
