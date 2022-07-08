@@ -1,6 +1,6 @@
 pkgbase = solve3-cli
 	pkgdesc = CLI for solving problems at https://solve.edu.pl/
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://github.com/kamack38/solve3-cli
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = solve3-cli
 	makedepends = sed
 	depends = nodejs
 	depends = jre-openjdk-headless
-	noextract = solve3-cli-1.7.6.tgz
-	source = https://registry.npmjs.org/solve3-cli/-/solve3-cli-1.7.6.tgz
-	sha256sums = 623ccf73f8cd07a07c751763ec6250e64bb8db380e6379b832a3cc46e4a557ca
+	noextract = solve3-cli-1.7.7.tgz
+	source = https://registry.npmjs.org/solve3-cli/-/solve3-cli-1.7.7.tgz
+	sha256sums = bd122cfa263256a9821a41effd167f2600a328a4e1571533a21faca257ac5d39
 
 pkgname = solve3-cli
