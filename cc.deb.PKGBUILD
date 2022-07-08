@@ -4,11 +4,11 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
-pkgver='1.0.0'
+pkgver='1.0.1'
 _rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=8
+pkgrel=1
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -35,11 +35,11 @@ noextract=(
 "${_binarchive}armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 )
-sha256sums=('394b3c7d5847066012d4aeaf93bf1e5fd0f8fed3ec1f761f57e17d07f2b893e1'
-            'bc019915906df4a2be559b9bfc8b870e1a820071f799cd5608070fe242d29a6a'
-            'cf76f6a154a07501baa7208d8a99aa0ea28e5c72f8e37c45f76a1253f878faa4'
-            'f76d5e12b34ee67cf758c0df25e619ce28a9ae823497425c2bcca9f34db2c0c6'
-            'a6b97d0e0bc7f37460edcfe043f16cb28ca9dffb0930d305546e7382ba72259b')
+sha256sums=('9f3fb29acf20089cabd14fe27c7c8384b4d327750b23ff4ca4621d2f7953f3dd'
+            '6cbbadb07ca6668dc04a91565b08e590e844422a28a813f1bb76a184b422432e'
+            '61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601'
+            '1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0'
+            '6182f947e66a41c6793addd08ab8cc00fa09c132001e13f05e8f11464987c7ea')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
