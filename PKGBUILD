@@ -2,17 +2,16 @@
 
 pkgname=wxgtk-audacity
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
 pkgdesc='Common libraries and headers for wxgtk3 GTK+3 implementation of wxWidgets API for GUI'
 makedepends=('gst-plugins-base' 'glu' 'webkit2gtk' 'libnotify')
-depends=('gtk4' 'gst-plugins-base-libs' 'libsm')
+depends=('gtk3' 'gst-plugins-base-libs' 'libsm')
 optdepends=('webkit2gtk: for webview support')
-conflicts=('wxgtk-common' 'wxgtk' 'wxgtk3')
-provides=('wxgtk-common' 'wxgtk' 'wxgtk3')
-options=('!emptydirs')
+conflicts=('wxgtk' 'wxgtk-dev')
+provides=('wxgtk' 'wxgtk-dev')
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2")
 md5sums=('8b2ac42364a02bb5f3df22e1b1a517e5')
 
