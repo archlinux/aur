@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=icecast-git
-pkgver=2.5.0.beta.2.r644.g2ef043de
+pkgver=2.5.0.beta.3.r1.g4628ee97
 pkgrel=1
 pkgdesc="A streaming media (audio/video) server"
 arch=('i686' 'x86_64')
@@ -9,15 +9,15 @@ url="https://www.icecast.org/"
 license=('GPL2')
 depends=('glibc' 'curl' 'libxslt' 'libtheora' 'libvorbis' 'speex' 'libkate')
 makedepends=('git')
-provides=('icecast')
+provides=("icecast=$pkgver")
 conflicts=('icecast')
 backup=('etc/icecast.xml'
         'etc/logrotate.d/icecast')
 source=("git+https://gitlab.xiph.org/xiph/icecast-server.git"
-        "icecast.logrotate::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.logrotate"
-        "icecast.service::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.service"
-        "icecast.sysusers::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.sysusers"
-        "icecast.tmpfiles::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.tmpfiles")
+        "icecast.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.logrotate"
+        "icecast.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.service"
+        "icecast.sysusers::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.sysusers"
+        "icecast.tmpfiles::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/icecast/trunk/icecast.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
