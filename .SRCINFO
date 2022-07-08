@@ -1,7 +1,7 @@
 pkgbase = yamux
 	pkgdesc = Yandex Music Client
-	pkgver = v54
-	pkgrel = 2
+	pkgver = v55
+	pkgrel = 1
 	url = https://gitlab.com/KirMozor/Yamux
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = yamux
 	depends = libbass
 	depends = dotnet-runtime>=6.0.0
 	depends = gtk3
-	source = git+https://gitlab.com/KirMozor/Yamux.git#tag=Yamux-v54
+	source = git+https://gitlab.com/KirMozor/Yamux.git#tag=Yamux-v55
 	md5sums = SKIP
 
 pkgname = yamux
