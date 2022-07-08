@@ -5,10 +5,10 @@
 pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
-pkgver=0.0.0.r31.e9b06f4
+pkgver=0.0.0.r32.8368d7e
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon (git version)"
-url="https://gitlab.com/post-factum/uksmd"
+url="https://codeberg.org/pf-kernel/uksmd"
 license=(GPL3)
 arch=(x86_64)
 depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
