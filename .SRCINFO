@@ -8,6 +8,7 @@ pkgbase = zsh-directory-history-git
 	license = BSD
 	makedepends = git
 	depends = zsh
+	depends = python2
 	provides = zsh-directory-history
 	conflicts = zsh-directory-history
 	source = git+https://github.com/tymm/zsh-directory-history
