@@ -1,7 +1,7 @@
 # Maintainer: div72 <aur@div72.xyz>
 pkgname="mjolnir"
-pkgver="1.4.2"
-pkgrel=4
+pkgver="1.5.0"
+pkgrel=1
 pkgdesc="A moderation tool for Matrix."
 arch=("any")
 url="https://github.com/matrix-org/mjolnir"
@@ -18,7 +18,7 @@ source=("https://github.com/matrix-org/${pkgname}/archive/refs/tags/v${pkgver}.t
         "mjolnir.service"
         "mjolnir.sysusers"
         "mjolnir.tmpfiles")
-sha256sums=("41e801dde7ea889901a45decdb3669e619316571c2ce2a69b438f603bac610d9"
+sha256sums=("e38da7627c4b5bcd5370774fabc168b38031c481dfed76d9dbc7247ee5bc10fe"
             "SKIP"
             "SKIP"
             "SKIP"
