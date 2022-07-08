@@ -3,7 +3,7 @@
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
 pkgver=0.3.38
-pkgrel=1
+pkgrel=2
 _openblas_ver=0.3.20
 _clapack_ver=3.2.1
 _model_small_ver=0.15
@@ -26,7 +26,7 @@ source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pk
         "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
 sha256sums=('8832e3b2abec8e3b7589217eb15f90a0258b03b2f76516be3eafea69c7467144'
             '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
-            'ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78'
+            '8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d'
             '406bef9945a07e1704c8c941c3eaa3aee5636d871907cba309dd7831fa14ea0b'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'

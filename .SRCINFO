@@ -1,7 +1,7 @@
 pkgbase = vosk-api
 	pkgdesc = Offline speech recognition toolkit
 	pkgver = 0.3.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
 	license = Apache
@@ -25,7 +25,7 @@ pkgbase = vosk-api
 	source = git+https://github.com/alphacep/openfst.git#commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
 	sha256sums = 8832e3b2abec8e3b7589217eb15f90a0258b03b2f76516be3eafea69c7467144
 	sha256sums = 8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c
-	sha256sums = ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78
+	sha256sums = 8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d
 	sha256sums = 406bef9945a07e1704c8c941c3eaa3aee5636d871907cba309dd7831fa14ea0b
 	sha256sums = 30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498
 	sha256sums = a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7
