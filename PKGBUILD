@@ -79,5 +79,4 @@ package() {
 	rm -rf ${pkgdir}/lib
 	chown -R root:root ${pkgdir}/etc
 	chown -R root:root ${pkgdir}/opt
-	chown -R root:root ${pkgdir}/usr
 }
