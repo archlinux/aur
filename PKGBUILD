@@ -2,6 +2,8 @@
 
 pkgname=bililive-recorder-bin
 _pkgname=bililive-recorder
+provides=($_pkgname)
+conflicts=($_pkgname)
 pkgver=2.1.1
 pkgrel=4
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
