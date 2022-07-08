@@ -1,6 +1,6 @@
 pkgbase = stargus-git
 	pkgdesc = Starcraft 1 plugin for Stratagus, free cross-platform real-time strategy gaming engine.
-	pkgver = 2.4.4.72f8ea9e7.20200921
+	pkgver = 2.4.1.a482208.20220709
 	pkgrel = 1
 	url = https://github.com/Wargus/stargus
 	arch = i686
@@ -21,8 +21,7 @@ pkgbase = stargus-git
 	depends = stratagus-gameutils.h
 	provides = stargus-git
 	provides = stargus
-	source = stargus-git::git://github.com/Wargus/stargus.git
+	source = stargus-git::git+https://github.com/Wargus/stargus.git
 	md5sums = SKIP
 
 pkgname = stargus-git
-
