@@ -2,15 +2,15 @@
 
 pkgname=ethash-lib-git
 _pkgname=ethash
-pkgver=0.7.0.r11.gb784418
+pkgver=0.9.0.r3.g902f37e
 pkgrel=1
 pkgdesc="C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm. - Git"
 arch=('any')
 url="https://github.com/chfast/ethash"
 license=('GPL3')
-makedepends=('cmake' 'gcc10' 'perl' 'python' 'git')
+makedepends=('cmake' 'perl' 'python' 'git')
 provides=("$_pkgname" "$_pkgname-lib" "$_pkgname-git" "$pkgname")
-conflicts=("$_pkgname" "$_pkgname-lib" "$_pkgname-git" "$pkgname")
+conflicts=("$_pkgname" "$_pkgname-lib")
 source=($_pkgname-git::"git+$url.git")
 sha256sums=('SKIP')
 options=(!ccache)
