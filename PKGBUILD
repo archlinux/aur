@@ -40,5 +40,6 @@ build() {
 
 package() {
   cd ${srcdir}/build
+  cp ../stargus.png ./
   make DESTDIR=${pkgdir} install
 }
