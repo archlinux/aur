@@ -12,7 +12,7 @@ pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.18
-pkgver=5.18.9
+pkgver=5.18.10
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -47,7 +47,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
-            '8d508fd3ae9ea8921405c3ef6d9364e633f9154d88a6da0794714a78c3a884ea'
+            'a41da15f2f0130a6822ae6d9a47196740199ddc6a35317f72a2a6b7a1997cf31'
             'f96254613e5d880aefca492cb54a3eb65aeae92f4f82f4859ce0e359b96663ef'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             '0586d4e1295264ab86104e19835d94d71c4b5f69edafc99d2d14a8f3322f58aa'
