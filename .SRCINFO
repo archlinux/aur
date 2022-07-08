@@ -1,5 +1,5 @@
 pkgbase = odr-suite
-	pkgdesc = Opendigitalradio Suite (This is a Dummy Package for installing the suite)
+	pkgdesc = Opendigitalradio Suite (This is a Meta Package for installing the suite)
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/Opendigitalradio
