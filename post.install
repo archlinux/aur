@@ -1,0 +1,3 @@
+post_install() {
+    ln -sf /opt/Yamux/Yamux /usr/bin/Yamux
+}

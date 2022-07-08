@@ -1,0 +1,16 @@
+pkgbase = yamux
+	pkgdesc = This is a yandex music client for Linux written in C# with YandexMusicAPI
+	pkgver = v54
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/KirMozor/Yamux
+	install = post.install
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk>=6.0.0
+	depends = libbass
+	depends = dotnet-runtime>=6.0.0
+	source = https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v54/Yamux-Yamux-v54.tar.gz
+	md5sums = SKIP
+
+pkgname = yamux
