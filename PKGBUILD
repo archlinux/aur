@@ -2,7 +2,7 @@
 
 _name='flit_scm'
 pkgname=python-${_name//_/-}
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit to build the package."
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 	'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('78afc9d2364e15df9d6ff7f27940e41d43d0d6b7fb659d37a7b2df1f1c97ad66')
+sha256sums=('05a267d77f6f8ca50a053786fe3c1a74f7222f2955292f2e6c03d2d064a141dc')
 
 build() {
     cd "$_name-$pkgver"
