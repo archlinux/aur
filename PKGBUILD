@@ -12,13 +12,15 @@ _opt_features=(
   #sdl2
   #openal
 
-  # Lua is automatically detected, so you don't need to enable these if you
-  # already have it installed. If you have both lua52 and luajit installed, mpv
-  # will use the former. Uncommenting luajit below will tell mpv to use that
-  # even if lua52 is also installed.
+  # mpv supports lua52 and luajit, and will automatically enable Lua support if
+  # either is installed. If both are installed, it will choose lua52. The choice
+  # is made at compile time and only one of the two can be enabled. The two
+  # options below, when uncommented, will force selection of their respective
+  # implementations even if the other is installed, as well as adding the
+  # appropriate dependency.
 
   #lua
-  #luajit
+  luajit
 
   # The rest of these are autodetected, and are just provided to set
   # dependencies the first time you build. If you have the dependencies
@@ -26,8 +28,10 @@ _opt_features=(
 
   #javascript
 
-  #x11
-  #wayland
+  x11
+  wayland
+
+  libplacebo # Vulkan and vo=gpu-next (latter sometimes needs libplacebo-git)
 
   #uchardet
   #rubberband
@@ -47,7 +51,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.34.0_351_g45ff20986d
+pkgver=0.34.0_368_g6858fc7d80
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -103,7 +107,7 @@ for feature in "${_opt_features[@]}"; do
       depends+=('wayland' 'libxkbcommon')
       _opt_extra_flags+=('-Dwayland=enabled')
       ;;
-    sdl2|openal|uchardet|rubberband)
+    sdl2|openal|libplacebo|uchardet|rubberband)
       depends+=("$feature")
       _opt_extra_flags+=("-D${feature}=enabled")
       ;;
