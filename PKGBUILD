@@ -2,28 +2,28 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.18.rc1.r34.gce8eeefa353e
+pkgver=5.19.rc5.r35.g5ee88bdb5025
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
-_kernel_rel=5.18
+_kernel_rel=5.19
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
-url=https://gitlab.com/post-factum/pf-kernel/wikis/README
+url=https://codeberg.org/pf-kernel/linux/wiki/README
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc libelf pahole cpio perl tar xz
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
 _srcname=$pkgbase
 source=(
-  "$_srcname::git+https://gitlab.com/post-factum/pf-kernel.git#branch=$_branch"
+  "$_srcname::git+https://codeberg.org/pf-kernel/linux.git#branch=$_branch"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'bcdc9836026d54dc12805a8ca287d8a37da5029b69f9d23e5e4ea2f6a5791eae')
+            'ee329485fef89bd85d885fdc5a9bb0f7b72d8fe2381d7cfe7c1484b137711c36')
 
 pkgver() {
   cd $_srcname
@@ -62,8 +62,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make htmldocs all
 }
 
 _package() {

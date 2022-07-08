@@ -1,12 +1,11 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.18.rc1.r34.gce8eeefa353e
+	pkgver = 5.19.rc5.r35.g5ee88bdb5025
 	pkgrel = 1
-	url = https://gitlab.com/post-factum/pf-kernel/wikis/README
+	url = https://codeberg.org/pf-kernel/linux/wiki/README
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -18,12 +17,13 @@ pkgbase = linux-pf-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.18
+	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-5.19
 	source = config
 	sha256sums = SKIP
-	sha256sums = bcdc9836026d54dc12805a8ca287d8a37da5029b69f9d23e5e4ea2f6a5791eae
+	sha256sums = ee329485fef89bd85d885fdc5a9bb0f7b72d8fe2381d7cfe7c1484b137711c36
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
