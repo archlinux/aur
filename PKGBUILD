@@ -11,7 +11,7 @@ makedepends=(glew glfw libxcb)
 provides=()
 conflicts=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
-sha256sums=('f2ac2d652b9843ca3870d4e747a604a3c4f40e1413658344f85f2a99e3a47c6c'
+sha256sums=('4fb7182f5ab3655c580b3c700c537ee8175990f38f29a27048e46b9dcfb84d93'
             'fbff8d4bddd4e410623eeecb5afdd8578cfe64d0e633373ab5d93170bf4d007a')
 
 build() {
