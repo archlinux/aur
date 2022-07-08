@@ -1,6 +1,5 @@
+/string-machine-Makefile.base.mk
 pkg/
 src/
-string-machine-*.tar.gz
-string-machine-*.tar.xz
-string-machine-*.src.tar.gz
-.AURINFO
+*.tar.*
+*.zip
