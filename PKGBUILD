@@ -1,8 +1,8 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2006.946252c5
-pkgrel=2
+pkgver=r2046.dee58b92
+pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -85,7 +85,8 @@ package() {
 	# resources (presets + dashboard)
 	install -d $pkgdir/usr/share/alvr/{dashboard,presets}
 
-	install -Dm644 alvr/xtask/resources/presets/* -t "$pkgdir/usr/share/alvr/presets/"
+	# install -Dm644 alvr/xtask/resources/presets/* -t "$pkgdir/usr/share/alvr/presets/"
+
 	cp -ar dashboard $pkgdir/usr/share/alvr/
 
 	# Desktop
@@ -93,7 +94,7 @@ package() {
 
 	# Icons
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
-	cp -r icons/* $pkgdir/usr/share/icons/
+	cp -ar icons/* $pkgdir/usr/share/icons/
 
 	# Firewall
 	install -Dm644 packaging/firewall/$_pkgname-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
