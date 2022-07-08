@@ -15,7 +15,6 @@ pkgbase = ethash-lib
 	arch = arm64
 	license = GPL3
 	makedepends = cmake
-	makedepends = gcc10
 	makedepends = perl
 	makedepends = python
 	makedepends = gzip
