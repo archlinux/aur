@@ -2,8 +2,8 @@
 # Contributor: Archie <archie-woc@ya.ru>
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
-pkgver=v54
-pkgrel=2
+pkgver=v55
+pkgrel=1
 pkgdesc="Yandex Music Client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
@@ -20,9 +20,14 @@ build() {
 
 package() {
     cd "${srcdir}/Yamux"
-
-    # Copy theme
-    cp -r Svg ./bin/Release/net6.0/linux-x64
+    
+    # Copy desktop file and icon
+    mkdir "$pkgdir/usr"
+    mkdir "$pkgdir/usr/share"
+    mkdir "$pkgdir/usr/share/applications"
+    mkdir "$pkgdir/usr/share/yamux"
+    cp -r ./AUR/Yamux.desktop "$pkgdir/usr/share/applications"
+    cp -r ./Svg/dark/icon.svg "$pkgdir/usr/share/yamux/icon.svg"
 
     # Copy binaries
     mkdir -p "$pkgdir/opt"
