@@ -10,7 +10,7 @@ _threema_web_ver=2.4.1 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
 license=('AGPL')
-depends=(electron17)
+depends=(electron18)
 makedepends=(npm git)
 source=(
   "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
@@ -62,7 +62,7 @@ package() {
   # Create launcher
   mkdir -p "${pkgdir}/usr/bin/"
   _launcher="${pkgdir}/usr/bin/${_binname}"
-  echo -e "#!/bin/sh\nexec electron17 '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
+  echo -e "#!/bin/sh\nexec electron18 '/usr/lib/${pkgname}/resources/app.asar' '$@'" > "$_launcher"
   chmod +x "$_launcher"
 
   # Copy desktop files
