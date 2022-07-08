@@ -36,8 +36,8 @@ check() {
 }
 
 package() {
+  install -Dm644 electrs.service -t "${pkgdir}/usr/lib/systemd/system"
   cd "$_pkgname"
   install -Dm755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 electrs.service -t "${pkgdir}/usr/lib/systemd/system"
 }
