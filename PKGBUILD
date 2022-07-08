@@ -11,11 +11,11 @@ license=('Apache 2')
 provides=('ddev')
 conflicts=('ddev')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.4-alpha2/ddev_linux-arm64.v1.19.4-alpha2.tar.gz")
-sha256sums_aarch64=('20deec3630f99524a262319fab54618e5fec85d002c5ed374e5c17a0fe44df64')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.4-alpha3/ddev_linux-arm64.v1.19.4-alpha3.tar.gz")
+sha256sums_aarch64=('7bbae4202014c57c8a03cc8239ad9aa7b2734bcd8f363230861856f15b7a6487')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.4-alpha2/ddev_linux-amd64.v1.19.4-alpha2.tar.gz")
-sha256sums_x86_64=('f6f3dacf5aafaf97a63a73558a7eae4ea521bd6709d14b1fce264a0bdf8fecc2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.19.4-alpha3/ddev_linux-amd64.v1.19.4-alpha3.tar.gz")
+sha256sums_x86_64=('589d07338a921a1b5760dedadf6ad799e65777e2dec7654e9551dddf0eda6c1f')
 
 package() {
   # bin
