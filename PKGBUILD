@@ -1,14 +1,14 @@
 # Maintainer: iTrooz_ <itrooz at protonmail dot com>
 pkgname=imhex-bin
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
 url="https://github.com/WerWolv/ImHex"
 repo=$url
 license=('GPL 2.0')
 groups=()
-depends=(glfw mbedtls python freetype2 libglvnd gtk3)
+depends=(glfw mbedtls python freetype2 libglvnd dbus xdg-desktop-portal)
 makedepends=(git)
 checkdepends=()
 optdepends=()
@@ -19,7 +19,7 @@ backup=()
 options=()
 source=($repo"/releases/download/v$pkgver/imhex-$pkgver-ArchLinux.pkg.tar.zst")
 noextract=()
-md5sums=(f702b461547ba49c33e99de9ef347fdd)
+md5sums=(3e31c69c9037f9063f70153a80e96985)
 validpgpkeys=()
 
 package() {
@@ -34,5 +34,6 @@ package() {
     done
 
 	cp -r $srcdir/usr/share/imhex/{constants,encodings,includes,magic,patterns} $pkgdir/usr/share/imhex
-    install -d $pkgdir/usr/share/imhex
+	cp -r $srcdir/usr/share/{applications,licenses} $pkgdir/usr/share
+    install -d $pkgdir/usr/share
 }
