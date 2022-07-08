@@ -4,7 +4,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
@@ -59,21 +59,23 @@ package_wxwidgets-common() {
 
   DESTDIR="$pkgdir" cmake --install build-gtk3
   rm -r "$pkgdir"/usr/{bin/wx-config,lib/{wx,libwx_gtk*}}
+  install -Dm644 wxWidgets-$pkgver/wxwin.m4 -t "$pkgdir"/usr/share/aclocal
 
-  install -D -m644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_wxwidgets-gtk3() {
   pkgdesc='GTK+3 implementation of wxWidgets API for GUI'
   depends=(gtk3 gst-plugins-base-libs libsm wxwidgets-common libnotify libmspack sdl2)
   optdepends=('webkit2gtk: for webview support')
+  conflicts=(wxgtk3)
   provides=(wxgtk3 wxwidgets)
   replaces=(wxgtk3)
 
   DESTDIR="$pkgdir" cmake --install build-gtk3
   rm -r "$pkgdir"/usr/{include,lib/cmake,lib/libwx_base*,bin/wxrc*}
   
-  install -D -m644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_wxwidgets-qt5() {
@@ -84,6 +86,6 @@ package_wxwidgets-qt5() {
   DESTDIR="$pkgdir" cmake --install build-qt5
   rm -r "$pkgdir"/usr/{include,lib/cmake,lib/libwx_base*,bin/wxrc*}
   mv "$pkgdir"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
-   
-  install -D -m644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  install -Dm644 wxWidgets-$pkgver/docs/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
