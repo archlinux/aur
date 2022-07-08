@@ -1,7 +1,7 @@
 pkgbase = mpv-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (git version)
 	pkgver = 0.34.0_368_g6858fc7d80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mpv.io
 	install = mpv.install
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = mpv-git
 	optdepends = yt-dlp: for video-sharing websites playback (preferred over youtube-dl)
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = mpv
+	provides = libmpv.so
 	conflicts = mpv
 	options = !emptydirs
 	source = git+https://github.com/mpv-player/mpv
