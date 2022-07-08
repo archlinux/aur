@@ -1,22 +1,22 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=uksmd
-_repouser=post-factum
+_repouser=pf-kernel
 _reponame=uksmd
-_rev=e9b06f4f8e982d2d0cd1830c7dd6803db56b7e72
-pkgver=0.0.0.r12.${_rev:0:10}
+_rev=8368d7e577a78c4ef7330d4d0901e82aae5c3105
+pkgver=0.0.0.r13.${_rev:0:10}
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
-url="https://gitlab.com/post-factum/uksmd"
+url="https://codeberg.org/pf-kernel/uksmd"
 license=(GPL3)
 arch=(x86_64)
 depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
 makedepends=(meson)
-source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_repouser}/${_reponame}/-/archive/${_rev}/${_reponame}-${_rev}.tar.gz)
-sha256sums=('cee4d81ae2efaa705ffda079f1892e091378bec122718df70fd754ffefb4b7e8')
+source=(${pkgname}-${pkgver}.tar.gz::https://codeberg.org/${_repouser}/${_reponame}/archive/${_rev}.tar.gz)
+sha256sums=('b40b87dc62b7017b95d77cd0fca4f4ac6c06d6da1caa6f1b0141d80f579e33da')
 
 build() {
-	cd ${_reponame}-${_rev}
+	cd ${_reponame}
 
 	arch-meson . build
 
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	cd ${_reponame}-${_rev}
+	cd ${_reponame}
 
 	meson install -C build --destdir "${pkgdir}"
 }
