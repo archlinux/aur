@@ -1,0 +1,18 @@
+pkgbase = bililive-recorder
+	pkgdesc = B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制
+	pkgver = 2.1.1
+	pkgrel = 4
+	url = https://github.com/Bililive/BililiveRecorder
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk
+	makedepends = nodejs
+	makedepends = npm
+	depends = aspnet-runtime
+	provides = bililive-recorder
+	conflicts = bililive-recorder-bin
+	source = git+https://github.com/BililiveRecorder/BililiveRecorder
+	sha256sums = SKIP
+
+pkgname = bililive-recorder
