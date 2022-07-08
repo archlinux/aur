@@ -1,0 +1,19 @@
+pkgbase = odr-mmbtools-common-git
+	pkgdesc = Opendigitalradio code test common to all ODR-mmbtools
+	pkgver = 1.0.r56.ge644365
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-mmbtools-common
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	makedepends = git
+	depends = zeromq
+	provides = odr-mmbtools-common
+	conflicts = odr-mmbtools-common
+	source = odr-mmbtools-common::git+https://github.com/Opendigitalradio/odr-mmbtools-common.git
+	md5sums = SKIP
+
+pkgname = odr-mmbtools-common-git
