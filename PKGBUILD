@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="GNU Unifont Glyphs (bold and italic versions)"
 arch=('any')
 url="http://unifoundry.com/unifont.html"
-license=('custom' 'GPL2')
+license=('GPL2' 'custom:OFL')
 makedepends=('mkbold-mkitalic')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.bdf.gz"{,.sig}
         "http://unifoundry.com/LICENSE.txt")
