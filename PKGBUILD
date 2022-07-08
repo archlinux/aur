@@ -5,7 +5,7 @@
 # Contributor: Pawel Bogur <jid:smeagol@uaznia.net>
 
 pkgname=tcllib
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="Set of pure-Tcl extensions."
 arch=('any')
@@ -13,7 +13,7 @@ url="http://core.tcl.tk/tcllib/"
 license=('bsd')
 depends=('tcl')
 source=("https://core.tcl-lang.org/tcllib/uv/tcllib-$pkgver.tar.gz")
-sha256sums=('e3b097475bcb93c4439df4a088daa59592e1937beee2a2c8495f4f0303125d71')
+sha256sums=('46b2bb5ec8049363ae01645af11bda3bdb5db10629e807d81d1ad46cd1bead50')
 
 package(){
   cd "$srcdir"/tcllib-$pkgver
