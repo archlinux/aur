@@ -1,6 +1,6 @@
 pkgbase = vue-language-server
 	pkgdesc = Fast Vue Language Support Extension
-	pkgver = 0.38.2
+	pkgver = 0.38.3
 	pkgrel = 1
 	url = https://github.com/johnsoncodehk/volar/tree/master/packages/server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vue-language-server
 	makedepends = typescript
 	depends = nodejs
 	optdepends = typescript: for use in typescript.serverPath
-	source = https://github.com/johnsoncodehk/volar/archive/v0.38.2/volar-0.38.2.tar.gz
-	b2sums = 26d0a4eba052daa0fbef8d4d1eb77656e511b2add2edc2eb24e1630f312bca9e3b50b25d4e74ec5ffb736e62183d6b8ac9a8d13695a49fad829b058b2d27b49a
+	source = https://github.com/johnsoncodehk/volar/archive/v0.38.3/volar-0.38.3.tar.gz
+	b2sums = 030673e7c36f129cd181b0e97117b504c137eddd99ed6963b9e9ca9d82e1bd754a55ab00a828fae82fe70c276d134489ed4d45ac55c47e27eafd1251510b1737
 
 pkgname = vue-language-server

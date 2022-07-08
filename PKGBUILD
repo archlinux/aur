@@ -3,7 +3,7 @@
 
 _name=volar
 pkgname=vue-language-server
-pkgver=0.38.2
+pkgver=0.38.3
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm' 'pnpm' 'typescript')
 optdepends=('typescript: for use in typescript.serverPath')
 source=("https://github.com/johnsoncodehk/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('26d0a4eba052daa0fbef8d4d1eb77656e511b2add2edc2eb24e1630f312bca9e3b50b25d4e74ec5ffb736e62183d6b8ac9a8d13695a49fad829b058b2d27b49a')
+b2sums=('030673e7c36f129cd181b0e97117b504c137eddd99ed6963b9e9ca9d82e1bd754a55ab00a828fae82fe70c276d134489ed4d45ac55c47e27eafd1251510b1737')
 
 prepare() {
   cd $_name-$pkgver
@@ -43,5 +43,3 @@ package() {
   cp -r bin node_modules out package.json "$pkgdir/$_npmdir"
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
