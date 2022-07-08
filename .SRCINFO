@@ -1,14 +1,14 @@
 pkgbase = python-macholib
 	pkgdesc = Mach-O header analysis and editing
-	pkgver = 1.15.2
+	pkgver = 1.16
 	pkgrel = 1
-	url = https://bitbucket.org/ronaldoussoren/macholib/
+	url = https://github.com/ronaldoussoren/macholib
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/c2/c1/09a06315332fc6c46539a1df57195c21ba944517181f85f728559f1d0ecb/macholib-1.15.2.tar.gz
-	sha512sums = ae0c3c3a14e15e412ff4ca3bb6a36a94ae3727494ed993fa623ebdcdfd7da2de1e4ef3484bc43aec780ae7bb95a6d32d1b26236813171bfa370029062a616d4f
+	source = https://files.pythonhosted.org/packages/16/1b/85fd523a1d5507e9a5b63e25365e0a26410d5b6ee89082426e6ffff30792/macholib-1.16.tar.gz
+	sha512sums = 5a3b93275726b02a3cc93f272940a98c4543effbcfcfad741a0a5c3d6fde267ae388eabac8b776b37d87180196ad07cfae914a48430dbbd4d71ec157cf7b9766
 
 pkgname = python-macholib
 	depends = python
