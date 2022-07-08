@@ -3,7 +3,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -44,7 +44,6 @@ build() {
     -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
     -DSLIC3R_FHS=ON \
     -DSLIC3R_PCH=OFF \
-    -DSLIC3R_WX_STABLE=ON \
     -DSLIC3R_GTK=3
   make -C build
 }
@@ -55,7 +54,7 @@ check() {
 }
 
 package_prusa-slicer() {
-  depends+=(slicer-udev)
+  optdepends=('slicer-udev: 3D printer connection rules')
 
   make -C build DESTDIR="${pkgdir}" install
 
