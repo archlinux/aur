@@ -1,0 +1,14 @@
+pkgbase = autotranscode
+	pkgdesc = A simple, fast and reliable music library transcoder
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://pypi.org/project/autotranscode/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-tqdm
+	depends = ffmpeg
+	source = https://files.pythonhosted.org/packages/source/a/autotranscode/autotranscode-0.9.8.tar.gz
+	md5sums = 84aec4c3660a36211752f167e9fc3609
+
+pkgname = autotranscode
