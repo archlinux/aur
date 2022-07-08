@@ -1,9 +1,9 @@
 pkgbase = bandwidthd
 	pkgdesc = Daemon for graphing traffic of subnet machines
 	pkgver = 2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://gitlab.com/post-factum/bandwidthd
+	url = https://codeberg.org/post-factum/bandwidthd
 	arch = x86_64
 	license = GPL
 	makedepends = meson
@@ -14,7 +14,7 @@ pkgbase = bandwidthd
 	depends = nginx
 	backup = etc/bandwidthd/bandwidthd.conf
 	backup = etc/bandwidthd/bandwidthd-webui.conf
-	source = bandwidthd-2.0.11.tar.bz2::https://gitlab.com/post-factum/bandwidthd/-/archive/v2.0.11/bandwidthd-v2.0.11.tar.bz2
-	sha256sums = 0c7ff96233a778df74b99e029c86d0e1ba2172def0777f89e74d227eb53bd5fc
+	source = bandwidthd-2.0.11.tar.gz::https://codeberg.org/post-factum/bandwidthd/archive/v2.0.11.tar.gz
+	sha256sums = e9a42e675012ab3c95e9d968a67c1c3fa53d41b1cc81205a7f3625d5a85c94ea
 
 pkgname = bandwidthd
