@@ -1,0 +1,116 @@
+diff --git a/arch.mk b/arch.mk
+index b2676f27..4b455a35 100644
+--- a/arch.mk
++++ b/arch.mk
+@@ -6,6 +6,9 @@ ifneq (,$(findstring x86_64-,$(MACHINE)))
+ else ifneq (,$(findstring i686-,$(MACHINE)))
+ 	ARCH_x86 := 1
+ 	ARCH_NAME := x86
++else ifneq (,$(findstring aarch64-,$(MACHINE)))
++	ARCH_aarch64 := 1
++	ARCH_NAME := aarch64
+ else
+ $(error Could not determine CPU architecture of $(MACHINE). Try hacking around in arch.mk)
+ endif
+diff --git a/compile.mk b/compile.mk
+index 9580533c..70c171e6 100644
+--- a/compile.mk
++++ b/compile.mk
+@@ -14,7 +14,7 @@ FLAGS += -MMD -MP
+ # Debugger symbols. These are removed with `strip`.
+ FLAGS += -g
+ # Optimization
+-FLAGS += -O3 -march=nehalem -funsafe-math-optimizations -fno-omit-frame-pointer
++FLAGS += -O3 -funsafe-math-optimizations -fno-omit-frame-pointer
+ # Warnings
+ FLAGS += -Wall -Wextra -Wno-unused-parameter
+ # C++ standard
+diff --git a/dep.mk b/dep.mk
+index 1d541269..b7963885 100644
+--- a/dep.mk
++++ b/dep.mk
+@@ -5,7 +5,7 @@ DEP_LOCAL ?= dep
+ $(shell mkdir -p $(DEP_LOCAL))
+ DEP_PATH := $(abspath $(DEP_LOCAL))
+ 
+-DEP_FLAGS += -g -O3 -march=nehalem
++DEP_FLAGS += -g -O3
+ # This is needed for Rack for DAWs.
+ # Static libs don't usually compiled with -fPIC, but since we're including them in a shared library, it's needed.
+ DEP_FLAGS += -fPIC
+diff --git a/include/simd/Vector.hpp b/include/simd/Vector.hpp
+index 9d255669..c06cb16f 100644
+--- a/include/simd/Vector.hpp
++++ b/include/simd/Vector.hpp
+@@ -1,6 +1,7 @@
+ #pragma once
+ #include <cstring>
+-#include <pmmintrin.h>
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse2.h>
+ 
+ 
+ namespace rack {
+diff --git a/include/simd/sse_mathfun.h b/include/simd/sse_mathfun.h
+index 8f703f91..f9cdecd4 100644
+--- a/include/simd/sse_mathfun.h
++++ b/include/simd/sse_mathfun.h
+@@ -43,7 +43,8 @@ This derived source file is released under the zlib license.
+   (this is the zlib license)
+ */
+ #pragma once
+-#include <pmmintrin.h>
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse2.h>
+ 
+ 
+ /** Generate 1.f without accessing memory */
+diff --git a/src/engine/Engine.cpp b/src/engine/Engine.cpp
+index 022813a6..83f0b9dc 100644
+--- a/src/engine/Engine.cpp
++++ b/src/engine/Engine.cpp
+@@ -5,7 +5,8 @@
+ #include <mutex>
+ #include <atomic>
+ #include <tuple>
+-#include <pmmintrin.h>
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse2.h>
+ 
+ #include <engine/Engine.hpp>
+ #include <settings.hpp>
+@@ -25,9 +26,8 @@ static void initMXCSR() {
+ 	// Set CPU to flush-to-zero (FTZ) and denormals-are-zero (DAZ) mode
+ 	// https://software.intel.com/en-us/node/682949
+ 	_MM_SET_FLUSH_ZERO_MODE(_MM_FLUSH_ZERO_ON);
+-	_MM_SET_DENORMALS_ZERO_MODE(_MM_DENORMALS_ZERO_ON);
+ 	// Reset other flags
+-	_MM_SET_ROUNDING_MODE(_MM_ROUND_NEAREST);
++	_MM_SET_ROUNDING_MODE(SIMDE_MM_ROUND_NEAREST);
+ }
+ 
+ 
+@@ -92,7 +92,11 @@ struct SpinBarrier {
+ 		while (true) {
+ 			if (step.load(std::memory_order_relaxed) != s)
+ 				return;
++#ifdef __aarch64__
++			asm volatile("yield" ::: "memory");
++#else
+ 			__builtin_ia32_pause();
++#endif
+ 		}
+ 	}
+ };
+@@ -139,7 +143,11 @@ struct HybridBarrier {
+ 		while (!yielded.load(std::memory_order_relaxed)) {
+ 			if (step.load(std::memory_order_relaxed) != s)
+ 				return;
++#ifdef __aarch64__
++			asm volatile("yield" ::: "memory");
++#else
+ 			__builtin_ia32_pause();
++#endif
+ 		}
+ 
+ 		// Wait on mutex CV

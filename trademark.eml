@@ -1,0 +1,227 @@
+Delivered-To: fh@cbix.de
+Received: by 2002:a05:6214:d0c:0:0:0:0 with SMTP id 12csp753296qvh;
+        Fri, 25 Mar 2022 13:45:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0oszsCgtMWKvBBFGXme/4OYMg9mbVrZD4yp/CEeruKJsbfn9d/MHlTtTXZ8ToLggmDD1w
+X-Received: by 2002:a05:6402:1148:b0:416:a4fb:3c2e with SMTP id g8-20020a056402114800b00416a4fb3c2emr667048edw.182.1648241153443;
+        Fri, 25 Mar 2022 13:45:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648241153; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ArBbWQKA3dMJ/opqgU1eLC1UCbaRzSj8hdDzURfxQkp0NnM4XtgDvQfboqewQbWdaA
+         rKSND4sqPlc0yzm8a4GHYLyQrvNaeQYQ1Ezb/IDaBrW6YEPh9LGqoIlbSuaKJlhN5z63
+         W+3GH5wyNkT8vfmGcHwsMN9Lc5i9lPXCFLoD/XLQ5TvlxUdhtyWWF22dZGj/3SWC93Q9
+         pyOeRpUJrb5Rat4sIOuQugxlCr9ls8A7dijkGp1pTctzOB2ILF3wiNl6YfYmJoJvYbuf
+         BXwBBDfQMRKNhEvGtq48zhmX91koni8EoUkhFuKd9DJg3hkFVbFkNDcc5q6A9IZ5gSKo
+         nBbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:to:reply-to:from:date:dkim-signature
+         :dkim-signature;
+        bh=WEA5UbY8mTQxHOWgmPGJIHvYPkb4Fnyau3wf1/WJYr4=;
+        b=rW68oZucVwyLYjEzaLVUYTQ9kI8G8Z+SmiE3gVFN70ivPQZf2apQ70RECakuTI2b07
+         zMCjrbL7QsV9pYSUF0eoTrFQ5/n2xv7nUjN5hVaqDlJRvJt2E0j9ZZZcIjehPCfby36+
+         l4rDIznVOVRC3FQ33j5dQd3TZLsSpKXocJqgRiuddx0D4BAX57Tlud7LjZYcIReNpwIh
+         J/AMj+kB+yFT5XRV1rDEs6EEvpWjt1VvCzbwYtgysts2TQaDfzJ7GQFfN8GGDAN/k+70
+         A8N1D5R48Dualb9rkCyRYWUyPYSXQGz3fq/4xy/1WRhh+kx9OQ3YFVjQVJStb5UjHBkz
+         HREg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@vcvrack.com header.s=fm2 header.b=KtYlPbtF;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=lYZZspnH;
+       spf=pass (google.com: domain of support@vcvrack.com designates 64.147.123.20 as permitted sender) smtp.mailfrom=support@vcvrack.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=vcvrack.com
+Return-Path: <support@vcvrack.com>
+Received: from wout4-smtp.messagingengine.com (wout4-smtp.messagingengine.com. [64.147.123.20])
+        by mx.google.com with ESMTPS id v1-20020a50d081000000b00418c2b5be90si3654506edd.370.2022.03.25.13.45.52
+        for <fh@cbix.de>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Mar 2022 13:45:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of support@vcvrack.com designates 64.147.123.20 as permitted sender) client-ip=64.147.123.20;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@vcvrack.com header.s=fm2 header.b=KtYlPbtF;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=lYZZspnH;
+       spf=pass (google.com: domain of support@vcvrack.com designates 64.147.123.20 as permitted sender) smtp.mailfrom=support@vcvrack.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=vcvrack.com
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.west.internal (Postfix) with ESMTP id 451E43200A16
+	for <fh@cbix.de>; Fri, 25 Mar 2022 16:45:51 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Fri, 25 Mar 2022 16:45:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vcvrack.com; h=
+	cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:reply-to:sender:subject:subject:to:to; s=fm2; bh=WEA5U
+	bY8mTQxHOWgmPGJIHvYPkb4Fnyau3wf1/WJYr4=; b=KtYlPbtFtWx4uwG6f6Mt1
+	zNKnPpfGxC7c/w4ZTnUPJGPW7dPnTT6S3TQMHSPlg70d4eOf88bAI9xqkhHpWFCx
+	yG9Curgr5F89awbsX33x/2qWorfIck4dEqwm0BKpPcQA+3KB166L36JnJTP7CVHo
+	/Prz3U+8XXlMpgmXEAaR2xmuflPKrpAfNfHLzB6BKaIL6nCFlgVMOPtteg/DazJW
+	nTtY/D6bBRq32Ufqxrq4yl6lc4vpEd4kWRBgysfpEXxTWPos5YQLnVf0vqmgeCT8
+	JLWTfrS4a0La0bO6VM428yWiYjrXoH5pds6bpzTeYJCLuaHqfGPKZ0ld7mLakJhn
+	Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; bh=WEA5UbY8mTQxHOWgmPGJIHvYPkb4Fnyau3wf1/WJY
+	r4=; b=lYZZspnHgJA6mlgBKehfc4l/aIPXu+iRtk41GryfBlNVTQ7a52A2i96Xy
+	kUNx2zNM3xx9w3iZ5J91alBKWEz8UuI9W2X4dI/LdAVIIolj7dLaA+z6B1o0I0zQ
+	1b7P2oiaH3WI+2w9flI4QhPhfrt1jsCaejmk44In62wsP78bFvpuBwyTsJFNw3So
+	aEwVY1G10PxMCGR+UQ8GkNU/QMe2o8o88fCFdt0rIQ51C03tZkYRj6x3RUTeqyA2
+	Gyn9OaWiQhpRtUgTVz17PTfonnkU146QEAdvlulnr5XtpTmgy92cvWhNAebGehix
+	FWmUJ3B1nMdkYtcGaJfpKrHaV7WLw==
+X-ME-Sender: <xms:_ik-YvzTnU5GVSIXWUToRF9E6Hk8ghXcFC9gDcw6lMSVsbWp-pIvEg>
+    <xme:_ik-YnTG7YFinQlFIDl3VwOP4syawcGEfsqVAO-pIWic_zZFNdKp4DUVy3yweTMAq
+    nBnlVfPcgpY_IJvbg>
+X-ME-Received: <xmr:_ik-YpUP2nSjP4QUCDunnTL46DwLj8-LH5ih4PV7qNHm1TjympboEHG5MG9XGNTxlpi1t-bfNLdmpQJiIv2QDDSq_Xpv0KIA6emhEWLWVQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudehuddgudegvdcutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhrhfvkfgjfhfugggtgfesrg
+    ejreertddtjeenucfhrhhomhepggevggcuufhuphhpohhrthcuoehsuhhpphhorhhtsehv
+    tghvrhgrtghkrdgtohhmqeenucggtffrrghtthgvrhhnpedtheekgeeviefgudehveegvd
+    eglefgvdduvddugffhjeffgedutddutdelgfffvdenucffohhmrghinhepvhgtvhhrrggt
+    khdrtghomhdpghhithhhuhgsrdgtohhmpdgtsghigidruggvnecuvehluhhsthgvrhfuih
+    iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshhuphhpohhrthesvhgtvhhrrggt
+    khdrtghomh
+X-ME-Proxy: <xmx:_ik-YpjsF4MhUXXgHgf74cU8uW0w6imjaqzj6UGds-0O9BtsN3FC7Q>
+    <xmx:_ik-YhARJHiN50D81WBX4vOjEcgumZ4B57Ipxbrf73ESHUDWditB4Q>
+    <xmx:_ik-YiJAVqqPTHDqNXGrtJIfoVFPpi0RoJU7biQnokN5_p5tacOWiw>
+    <xmx:_ik-Ys_TcJjecqc_SQOk-Us_k5zp1qZizJi8hzV8Q5dvw2bNaAy-1A>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA for <fh@cbix.de>; Fri,
+ 25 Mar 2022 16:45:50 -0400 (EDT)
+Date: Fri, 25 Mar 2022 20:45:50 +0000
+From: VCV Support <support@vcvrack.com>
+Reply-To: VCV Support <support@vcvrack.com>
+To: fh@cbix.de
+Message-ID: <899e0518-fc31-48bc-a5b2-611763e267e3.comment380386884@groovehq.com>
+In-Reply-To: <CADw+XsmBjHR5XnjTwgqLf4JtVxo2WAzrUuZcveopzrwAqTjm3A@mail.gmail.com>
+References: <CADw+XsmBjHR5XnjTwgqLf4JtVxo2WAzrUuZcveopzrwAqTjm3A@mail.gmail.com>
+Subject: Re: Trademark permission for Linux distribution packages
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_623e29fe9e0d_62acaa19f20cc3016"
+Content-Transfer-Encoding: 7bit
+X-Groove: true
+X-Groove-Account: vcv
+X-SMTPAPI: {"unique_args":{"message_id":"899e0518-fc31-48bc-a5b2-611763e267e3.comment380386884@groovehq.com","groove_message_id":"899e0518-fc31-48bc-a5b2-611763e267e3.comment380386884@groovehq.com"}}
+
+
+----==_mimepart_623e29fe9e0d_62acaa19f20cc3016
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello Florian,=0D
+=0D
+Certainly, the "VCV" trademark (USPTO registration #5518618) and=0D
+VCV logo/graphics may be used in the Arch Linux package for VCV=0D
+Rack and Rack plugins.=0D
+Let me know if you need anything else or have any other=0D
+questions.=0D
+=0D
+Andrew Belt=0D
+=0D
+VCV https://vcvrack.com/=0D
+=0D
+Florian H=C3=BClsmann on March 25, 2022 at 4:30pm wrote:=0D
+=0D
+Hello,=0D
+=0D
+For the Arch Linux distribution, we'd eventually like to include=0D
+VCV=0D
+Rack as a package in an official repository, in order to make=0D
+installation + updating easier for users and allow for better=0D
+system=0D
+integration.=0D
+Ideally your Trademark Policy would permit GPLv3-compliant=0D
+packaging=0D
+and non-commercial publishing using the official name in Linux=0D
+ditro's=0D
+package repos.=0D
+=0D
+You can find the proposed packaging script for Arch Linux here,=0D
+it's=0D
+also a good place for potential discussion about TM permission:=0D
+https://github.com/osam-cologne/archlinux-proaudio/pull/5=0D
+=0D
+Would you give Trademark permission to our repo + Arch Linux to=0D
+publish the VCV Rack package using the official name + artwork?=0D
+=0D
+Regards,=0D
+=0D
+--=0D
+Florian H=C3=BClsmann=0D
+=0D
+http://cbix.de=
+
+----==_mimepart_623e29fe9e0d_62acaa19f20cc3016
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www=
+.w3.org/TR/REC-html40/loose.dtd">=0D
+<html><body>=0D
+<div id=3D"grooveHistory:899e0518-fc31-48bc-a5b2-611763e267e3.comment3803=
+86884@groovehq.com">=0D
+<!--[if !mso]><!--><img src=3D"http://i.groovehq.com/899e0518-fc31-48bc-a=
+5b2-611763e267e3.comment380386884@groovehq.com.gif" width=3D"0" height=3D=
+"0" alt=3D"" style=3D"display: none; position: absolute; visibility: hidd=
+en; margin-bottom: -1px;"><!--<![endif]--><div class=3D"comment" id=3D"gr=
+ooveComment:380386884" style=3D"display: inline;">=0D
+<!--[if !mso]><!--><img src=3D"http://c.groovehq.com/1805240989.gif" widt=
+h=3D"0" height=3D"0" alt=3D"" style=3D"display: none; position: absolute;=
+ visibility: hidden; margin-bottom: -1px;"><!--<![endif]--><div>Hello Flo=
+rian,</div>=0D
+<div>=C2=A0</div>=0D
+<div>Certainly, the "VCV" trademark (USPTO registration #5518618) and VCV=
+ logo/graphics may be used in the Arch Linux package for VCV Rack and Rac=
+k plugins.</div>=0D
+<div>Let me know if you need anything else or have any other questions.</=
+div>=0D
+=0D
+</div>=0D
+=0D
+<br>=0D
+Andrew Belt<br>=0D
+VCV <a href=3D"https://vcvrack.com/">https://vcvrack.com/</a>=0D
+<br>=0D
+      <div style=3D"margin-top: 30px; border-left-color: #DDD; border-lef=
+t-width: 3px; border-left-style: solid; padding: 0 20px;" id=3D"grooveCom=
+ment:380385149">=0D
+<!--[if !mso]><!--><img src=3D"http://c.groovehq.com/9019244120.gif" widt=
+h=3D"0" height=3D"0" alt=3D"" style=3D"display: none; position: absolute;=
+ visibility: hidden; margin-bottom: -1px;"><!--<![endif]--><span style=3D=
+"font-weight: 300; color: #AAA;">Florian H=C3=BClsmann on March 25, 2022 =
+at 4:30pm wrote:</span><br>=0D
+        <br>=0D
+        Hello,=0D
+=0D
+For the Arch Linux distribution, we'd eventually like to include VCV=0D
+Rack as a package in an official repository, in order to make=0D
+installation + updating easier for users and allow for better system=0D
+integration.=0D
+Ideally your Trademark Policy would permit GPLv3-compliant packaging=0D
+and non-commercial publishing using the official name in Linux ditro's=0D=
+
+package repos.=0D
+=0D
+You can find the proposed packaging script for Arch Linux here, it's=0D
+also a good place for potential discussion about TM permission:=0D
+https://github.com/osam-cologne/archlinux-proaudio/pull/5=0D
+=0D
+Would you give Trademark permission to our repo + Arch Linux to=0D
+publish the VCV Rack package using the official name + artwork?=0D
+=0D
+Regards,=0D
+=0D
+-- =0D
+Florian H=C3=BClsmann=0D
+<fh>=0D
+http://cbix.de<br>=0D
+</fh>=0D
+</div>=0D
+=0D
+</div>=0D
+<br>=0D
+</body></html>=0D
+
+----==_mimepart_623e29fe9e0d_62acaa19f20cc3016--
