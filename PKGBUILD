@@ -7,8 +7,9 @@ pkgdesc="Starcraft 1 plugin for Stratagus, free cross-platform real-time strateg
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stargus"
 license=('GPL')
-depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++' 'stratagus' 'stratagus-gameutils.h' 'stormlib')
+depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++' 'stratagus' 'stratagus-gameutils.h' 'stormlib' 'casclib' 'nlohmann-json')
 makedepends=('git' 'cmake' 'glu')
+optionaldepends=('innoextract: Assists in extracting Starcraft game files')
 source=("${pkgname}::git+https://github.com/Wargus/stargus.git")
 md5sums=('SKIP')
 provides=(${pkgname}
@@ -23,15 +24,22 @@ pkgver() {
 }
 
 build() {
-  cd $srcdir
+  cd $srcdir/$pkgname
+  
+  if [ -e build ]; then
+  	rm -r build
+  fi
+    
+  arch-meson build
+  ninja -C build
 
-  cmake ${pkgname} \
+  cmake ./ \
   -DSTRATAGUS=stratagus \
   -DSTRATAGUS_INCLUDE_DIR=/usr/include/ \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DGAMEDIR=/usr/bin \
-  -DSBINDIr=/usr/bin \
+  -DBINDIR=/usr/bin \
   -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
   -Bbuild
 
@@ -39,7 +47,17 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/build
-  cp ../stargus.png ./
-  make DESTDIR=${pkgdir} install
+  cd ${srcdir}/${pkgname}/build
+  cp ${srcdir}/${pkgname}/stargus.png ./
+  cp stargus-0.xpm ./stargus.xpm
+  if [ ! -e ${srcdir}/${pkgname}/campaigns ]; then
+  	mkdir ${srcdir}/${pkgname}/campaigns
+  fi
+  if [ ! -e ${srcdir}/${pkgname}/maps ]; then
+  	mkdir ${srcdir}/${pkgname}/maps
+  fi
+  if [ ! -e ${srcdir}/${pkgname}/shaders ]; then
+        mkdir ${srcdir}/${pkgname}/shaders
+  fi
+  make DESTDIR=${pkgdir} install/local/fast
 }
