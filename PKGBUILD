@@ -3,12 +3,12 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew mpfr nlopt tbb wxgtk3 qhull openvdb)
+depends=(boost-libs curl glew mpfr nlopt tbb wxwidgets-gtk3 qhull openvdb)
 makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd) # libigl not detected?
 checkdepends=(catch2)
 replaces=(slic3r-prusa3d)
@@ -45,8 +45,7 @@ build() {
     -DSLIC3R_FHS=ON \
     -DSLIC3R_PCH=OFF \
     -DSLIC3R_WX_STABLE=ON \
-    -DSLIC3R_GTK=3 \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+    -DSLIC3R_GTK=3
   make -C build
 }
 
