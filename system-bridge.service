@@ -1,0 +1,11 @@
+[Unit]
+Description=System Bridge
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -m systembridgebackend --no-gui
+Restart=on-abort
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
