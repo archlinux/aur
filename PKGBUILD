@@ -1,6 +1,6 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=solve3-cli
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="CLI for solving problems at https://solve.edu.pl/"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs' 'jre-openjdk-headless')
 makedepends=('npm' 'jq' 'grep' 'sed')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('623ccf73f8cd07a07c751763ec6250e64bb8db380e6379b832a3cc46e4a557ca')
+sha256sums=('bd122cfa263256a9821a41effd167f2600a328a4e1571533a21faca257ac5d39')
 
 pkgver() {
 	curl --silent -L "https://registry.npmjs.org/solve3-cli/latest" |
