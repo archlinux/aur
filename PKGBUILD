@@ -1,13 +1,13 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
 license=('GPL3')
-depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'jemalloc')
-makedepends=('cmake' 'git')
+depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'jemalloc' 'systemd-libs')
+makedepends=('cmake' 'git' 'python' 'systemd')
 install='lokinet.install'
 source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.conf'
@@ -33,6 +33,13 @@ sha256sums=('084a515103f32d8dcb519837054348b04e35157dd062e87bbee38b214973b72c'
             'e37178d0edaca5b764ed2381e4c670cb4a8c3565c6ab59533f2a783155fe1efc'
             '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713')
 validpgpkeys=('2CE6F2743138825B7A7E521D025C02EE3A092F2D') # Jeff Becker (probably not evil) <jeff@lokinet.io> https://lokinet.io/jeff.asc
+
+prepare() {
+	cd "lokinet-v$pkgver"
+
+	# endless warnings because this undef won't work so just strip it out
+	sed -i 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 //' CMakeLists.txt
+}
 
 build() {
 	cd "lokinet-v$pkgver"
