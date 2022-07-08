@@ -8,8 +8,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=11.10.2
-pkgrel=3
+pkgver=11.11.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -28,15 +28,13 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/gazebo/archive/${pkgname}11_$pkgver.tar.gz"
-        "string.patch"::"https://github.com/osrf/gazebo/commit/2f0f7af4868883d1a6fea30086b3fcd703d583fc.patch")
-sha256sums=('9570454e0341e40881ed8659f8ec9aa45e24d172421e8556d0714cf7b5018511'
-            'a94a7e22696074f88ae1a8f2af3f39ef5041b91785b2b52a73dbf8b9a1c4fd52')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/gazebo/archive/${pkgname}11_$pkgver.tar.gz")
+sha256sums=('e6a1965198378a8360ab7fce465990f11951629a833e518c2163c645d015354a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
 
-  patch --strip=1 < "${srcdir}/string.patch"
+  sed -i 's/putstr/printf/g' gazebo/gui/qgv/private/QGVCore.h
 }
 
 build() {
