@@ -1,6 +1,6 @@
 pkgbase = python-taxi-zebra
 	pkgdesc = Zebra backend for Taxi
-	pkgver = 2.3.2
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/sephii/taxi-zebra
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = python-taxi-zebra
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-six
-	source = python-taxi-zebra-2.3.2.tar.gz::https://github.com/sephii/taxi-zebra/archive/2.3.2.tar.gz
+	source = python-taxi-zebra-3.0.1.tar.gz::https://github.com/sephii/taxi-zebra/archive/3.0.1.tar.gz
 	source = https://raw.githubusercontent.com/sephii/taxi/master/LICENSE
-	sha512sums = b0fd4e94ccb6dde6ef25f7002c771e8827b201e23073ebe4cd1a76b79d528deab4b6fa8d99f3a8963845cd9897bfe5737b6bdb09bc95d57dbca3a7197d873297
+	sha512sums = c3f911abe3f3eca6cdba3de2688cb5a9dfe9d67da69c43fe97288d998cd79f1c2cd8f41b3ca11a2bafe3ed42bdaf0dca8b3ad9e79769466a89047dcd76490db6
 	sha512sums = 87e4e0e9f65b92db1a3f84823427b0870ae01675fa6e631a8c2e2d89eb12ee19d6011b4f4e74f6d4ca30868010206ef0ddd0b24a814c24b84bc41a5e68864dd4
 
 pkgname = python-taxi-zebra
-
