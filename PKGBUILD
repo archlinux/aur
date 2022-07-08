@@ -42,7 +42,7 @@ source=(
 )
 b2sums=('SKIP'
         'c24813fab7a155ac0711e4c5764148d45dae8c1a57938fd8ce253368c31f7d91c2c912f5b0da48c70952f990449315489f175e0894d9f4a75efc53a3e6abd162')
-validpgpkeys=(A0C0E526E36FD2138C149D4D08AB596679D86240) # Rafael Kitover <rkitover@gmail.com>
+#validpgpkeys=(A0C0E526E36FD2138C149D4D08AB596679D86240) # Rafael Kitover <rkitover@gmail.com>
 
 prepare() {
   cd visualboyadvance-m
