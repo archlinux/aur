@@ -41,7 +41,7 @@ prepare() {
 	ar -x ${pkgname}_${pkgver}_i386.deb
 	mkdir ${pkgname}-${pkgver}
 	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
-	cp -rf ../lib "${pkgname}-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/ 
+	tar -xf ../lib.tar.xz --directory="${pkgname}-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/ 
 	cp -rf ../run.sh "${pkgname}-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/files/run.sh
 }
 
