@@ -1,6 +1,6 @@
 # Maintainer: 302606571@qq.com
 # Contributor: luosoy <249799588@qq.com>
-pkgname=com.qq.weixin.work.deepin
+pkgname=com.qq.weixin.work.deepin-x11
 pkgver=3.1.12.6001deepin8
 pkgrel=1
 epoch=
@@ -22,35 +22,35 @@ makedepends=('tar')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('deepin-wxwork')
+conflicts=('deepin-wxwork','com.qq.weixin.work.deepin')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
 # source=("./com.qq.weixin.work.deepin_3.1.12.6001deepin8_i386.deb")
 # 换为对象存储的zst文件
-# source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-# source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${pkgver}_i386.deb")
-noextract=("${pkgname}_${pkgver}_i386.deb")
+# source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
+# source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/com.qq.weixin.work.deepin_${pkgver}_i386.deb")
+noextract=("com.qq.weixin.work.deepin_${pkgver}_i386.deb")
 md5sums=('36c6c6cc6033468a3dd8f130d6f8afad')
 validpgpkeys=()
 
 prepare() {
-	ar -x ${pkgname}_${pkgver}_i386.deb
-	mkdir ${pkgname}-${pkgver}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
-	tar -xf ../lib.tar.xz --directory="${pkgname}-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/ 
-	cp -rf ../run.sh "${pkgname}-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/files/run.sh
+	ar -x com.qq.weixin.work.deepin_${pkgver}_i386.deb
+	mkdir com.qq.weixin.work.deepin-${pkgver}
+	tar -xf data.tar.xz --directory="com.qq.weixin.work.deepin-${pkgver}"
+	tar -xf ../lib.tar.xz --directory="com.qq.weixin.work.deepin-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/ 
+	cp -rf ../run.sh "com.qq.weixin.work.deepin-${pkgver}"/opt/apps/com.qq.weixin.work.deepin/files/run.sh
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "com.qq.weixin.work.deepin-${pkgver}"
 	cp -r ./ ${pkgdir}/
 	mkdir -p ${pkgdir}/usr/share/applications
-	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	cp -r ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/icons/ ${pkgdir}/usr/share/
+	install -Dm644 ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/applications/com.qq.weixin.work.deepin.desktop ${pkgdir}/usr/share/applications/com.qq.weixin.work.deepin.desktop
+	cp -r ${srcdir}/com.qq.weixin.work.deepin-${pkgver}/opt/apps/com.qq.weixin.work.deepin/entries/icons/ ${pkgdir}/usr/share/
 
 	# 更换为deepin-wine5 (6存在拖动边框 任务栏的图标闪烁异常 搜索框弹不出来）
 	# sed s#deepin-wine6#deepin-wine5#g /opt/apps/com.qq.weixin.work.deepin/files/run.sh
