@@ -4,6 +4,7 @@ Name=Altirra
 GenericName=Atari Emulator
 Comment=Altirra, an 8-bit Atari computer emulator
 Categories=Development;Game;Utility;
+MimeType=application/altirra
 Path=/opt/altirra
 Exec=altirra
 Icon=altirra

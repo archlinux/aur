@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/altirra">
+    <comment>Altirra-compatible 8-bit image files</comment>
+    <glob-deleteall/>
+    <glob pattern="*.atr"/>
+    <glob pattern="*.atx"/>
+    <glob pattern="*.atz"/>
+    <glob pattern="*.dcm"/>
+    <glob pattern="*.xfd"/>
+    <glob pattern="*.pro"/>
+    <glob pattern="*.arc"/>
+    <glob pattern="*.bas"/>
+    <glob pattern="*.rom"/>
+    <glob pattern="*.bin"/>
+    <glob pattern="*.a52"/>
+    <glob pattern="*.cas"/>
+    <glob pattern="*.sap"/>
+  </mime-type>
+</mime-info>
