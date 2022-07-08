@@ -1,16 +1,18 @@
 pkgbase = qjackcapture
 	pkgdesc = A GUI for easy recording of JACK audio sources using jack_capture
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 2
 	url = https://github.com/SpotlightKid/qjackcapture
 	arch = any
+	groups = pro-audio
 	license = GPL
 	makedepends = python-setuptools
 	depends = hicolor-icon-theme
 	depends = jack_capture
+	depends = python-natsort
 	depends = python-pyjacklib
 	depends = python-pyqt5
-	source = https://files.pythonhosted.org/packages/source/q/qjackcapture/QJackCapture-0.1.1.tar.gz
-	sha256sums = 5094c22899f7b5c0d6e745f866f4b4e952a8b4363a6ccd857a7bc4c8c5b4bca4
+	source = https://files.pythonhosted.org/packages/source/q/qjackcapture/QJackCapture-0.1.2.tar.gz
+	sha256sums = b716cee7917468a8c8589dfb3212ba09bfda43224208c96da25b8243716128bf
 
 pkgname = qjackcapture
