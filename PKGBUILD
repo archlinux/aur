@@ -5,7 +5,7 @@
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=1.19.0.934.09873c6
+pkgver=1.26.0.939.9433e6d
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+http://git.enlightenment.org/enlightenment/$_pkgname.git")
 #source=("http://www.smhouston.us/stuff/ephoto-1.5.tar.gz")
 sha256sums=('SKIP')
 
