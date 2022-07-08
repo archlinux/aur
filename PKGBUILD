@@ -1,14 +1,14 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kops
-pkgver=1.23.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('adfc507517295fa1c1289528459921abb3e8dad1c7f304f6cd2310382f37c3d0')
+sha256sums=('7240c5e3e698a31b81ca4c7c860fb542e03bb505f3fa0a6488a3a3444ba80b68')
 makedepends=('go')
 
 build() {
@@ -18,7 +18,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/$pkgname-$pkgver/.build/local/kops" "${pkgdir}/usr/bin/kops"
+  install -Dm 755 "${srcdir}/$pkgname-$pkgver/.build/dist/linux/amd64/kops" "${pkgdir}/usr/bin/kops"
 
   # Populate bash and zsh completions
   install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
