@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r3781.d9431853
+pkgver=r3908.4bf168d2
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,6 @@ makedepends=('git'
             )
 source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/ocornut/imgui.git'
-        'git+https://github.com/ocornut/imgui_club.git'
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/fmtlib/fmt.git'
@@ -73,7 +72,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '21db8ce528f3240388d55d1f309ebc6060bb1145cce50553659e73fb6f89d326')
 
 pkgver() {
@@ -85,7 +83,6 @@ prepare() {
   cd "$_pkgname"
   git submodule init
   git config submodule.third_party/imgui.url "$srcdir/imgui"
-  git config submodule.third_party/imgui_club.url "$srcdir/imgui_club"
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
   git config submodule.third_party/fmt.url "$srcdir/fmt"
@@ -109,7 +106,6 @@ prepare() {
   git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
 
   git submodule update third_party/imgui \
-                       third_party/imgui_club \
                        third_party/uC-sdk \
                        third_party/googletest \
                        third_party/fmt \
