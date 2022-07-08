@@ -6,7 +6,7 @@ _pkgname="${_pkgbase}"
 pkgbase="${_pkgbase}"
 pkgname="${_pkgname}"
 epoch=0
-pkgver=0.1_20220708.03
+pkgver=0.1_20220708.03b
 pkgrel=1
 pkgdesc='Captive portal login script for WIFIonICE/ WLAN@DB public WiFi by Deutsche Bahn.'
 url="https://aur.archlinux.org/pkgbase/${pkgbase}"
@@ -30,7 +30,7 @@ source=(
   'db-wifi-login.sh'
 )
 sha256sums=(
-  'a6258f24439f163e9bbed93527ca2b6b198fdb13d900bed0621fe9a6f0032bfd'
+  '120f8459dc93953bedccdda69d4e12033854a67b1bd940de3e5f97556c86ff3e'
 )
 
 pkgver() {

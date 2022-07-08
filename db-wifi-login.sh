@@ -3,16 +3,18 @@
 set -e
 
 ### Programme's version:
-_VERSION=0.1_2022-07-08.03
+_VERSION=0.1_2022-07-08.03b
 
 ### License: GNU General Public License version 3 (GPL3).
 #   Copyright 2022, the author.
+#
+#   Inspired on 2022-07-08 by a similar python script 'woice': https://github.com/keans/woice
 
 
 ### This script performs login, logout and status queris for the captive portal at DB Deutsche Bahn public WiFi at trains and stations.
 
 ## In short, for login simply those two things are needed
-# 1.: Do a GET a request to get the CSRF token via a cookie.
+# 1.: Do a GET a request to get the CSRF token via a cookie. (Note: CSRF token also present in the submit button.)
 # 2.: Do a POST request where the CSRF cookie is passed, and the request data contains 'login=true' and also 'CSRFToken' properly set.
 
 ## Which can be achieved by the following calls:
@@ -56,6 +58,7 @@ _USAGEINFO="Usage:
 _get_csrftoken() {
   # Does a request to $_request_url and returns the CSRF token to stdout.
   curl -L -s -S -o '/dev/null' -A "${_user_agent}" -j --dump-header - "${_request_url}" | grep -E "^Set-Cookie:[[:space:]]+${_CSRF_cookiename}=" | tail -n1 | awk '{print $2}' | awk -F= '{print $2}' | sed -E 's|;$||'
+  # Note: CSRF token also present in the submit button.
 }
 
 _perform_action() {
