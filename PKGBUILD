@@ -3,7 +3,7 @@
 
 pkgname=python-pocketsphinx-git
 pkgbase=python-pocketsphinx-git
-pkgname=('python-pocketsphinx-git' 'python2-pocketsphinx-git' 'sphinxbase-git' 'pocketsphinx-git')
+pkgname=('python-pocketsphinx-git' 'sphinxbase-git' 'pocketsphinx-git')
 pkgver=r185.769492d
 pkgrel=2
 pkgdesc='Python interface to CMU SphinxBase and PocketSphinx libraries'
@@ -35,9 +35,9 @@ prepare() {
     git config submodule.deps/sphinxbase.url ${srcdir}/sphinxbase
     git submodule update --remote
 
-    # We want a python2 package as well. Let's copy the sources.
-    cd "${srcdir}"
-    cp -rf "${_gitname}" python2-pocketsphinx-git
+    #DISABLED: Removed # We want a python2 package as well. Let's copy the sources.
+    #    cd "${srcdir}"
+    #    cp -rf "${_gitname}" python2-pocketsphinx-git
 }
 
 build() {
@@ -46,29 +46,36 @@ build() {
     make
 
     cd "${srcdir}/${_gitname}/deps/pocketsphinx"
-    ./autogen.sh --prefix=/usr
+    if [ -e build ]; then
+    	rm -r build
+    fi
+    mkdir build
+    cd build 
+    cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" 
+    #./autogen.sh --prefix=/usr #OLD, pre-cmake instructions.
     make
 
     cd "${srcdir}/${_gitname}"
     python setup.py build
 
-    export PYTHON=/usr/bin/python2
+    #Disabled: Removed from upstream. 
+    #cd "${srcdir}/python2-pocketsphinx-git/deps/sphinxbase"
+    #./autogen.sh --prefix=/usr --libdir=/garbage --bindir=/garbage --includedir=/garbage --datarootdir=/garbage
+    #make
 
-    cd "${srcdir}/python2-pocketsphinx-git/deps/sphinxbase"
-    ./autogen.sh --prefix=/usr --libdir=/garbage --bindir=/garbage --includedir=/garbage --datarootdir=/garbage
-    make
+    #cd "${srcdir}/python2-pocketsphinx-git/deps/pocketsphinx"
+    #./autogen.sh --prefix=/usr --libdir=/garbage --bindir=/garbage --includedir=/garbage --datarootdir=/garbage
+    #make
 
-    cd "${srcdir}/python2-pocketsphinx-git/deps/pocketsphinx"
-    ./autogen.sh --prefix=/usr --libdir=/garbage --bindir=/garbage --includedir=/garbage --datarootdir=/garbage
-    make
-
-    cd "${srcdir}/python2-pocketsphinx-git"
-    python2 setup.py build
+    #cd "${srcdir}/python2-pocketsphinx-git"
+    #python2 setup.py build
 }
 
 package_sphinxbase-git() {
-    provides=('sphinxbase' 'sphinxbase-git')
-    conflicts=('sphinxbase' 'sphinxbase-git')
+    provides=('sphinxbase')
+    conflicts=('sphinxbase')
 
     cd "${srcdir}/${_gitname}/deps/sphinxbase"
     export PYTHON=/usr/bin/python
@@ -81,9 +88,9 @@ package_sphinxbase-git() {
 }
 
 package_pocketsphinx-git() {
-    provides=('pocketsphinx' 'pocketsphinx-git')
-    conflicts=('pocketsphinx' 'pocketsphinx-git')
-    depends=('sphinxbase-git' 'sphinxbase')
+    provides=('pocketsphinx')
+    conflicts=('pocketsphinx')
+    depends=('sphinxbase-git')
 
     # Pocketsphinx needs libpocketsphinx which is located in the other package
     # (sphinxbase). Copy the libs temporarily just to allow linking. Then
@@ -96,7 +103,7 @@ package_pocketsphinx-git() {
         cp "$i" "${pkgdir}/usr/lib"
     done
 
-    cd "${srcdir}/${_gitname}/deps/pocketsphinx"
+    cd "${srcdir}/${_gitname}/deps/pocketsphinx/build"
     export PYTHON=/usr/bin/python
     make DESTDIR="${pkgdir}/" install
 
@@ -111,9 +118,9 @@ package_pocketsphinx-git() {
 }
 
 package_python-pocketsphinx-git() {
-    provides=('python-pocketsphinx' 'python-pocketsphinx-git' 'python3-pocketsphinx' 'python3-pocketsphinx-git')
-    conflicts=('python-pocketsphinx' 'python-pocketsphinx-git' 'python3-pocketsphinx' 'python3-pocketsphinx-git')
-    depends=('pocketsphinx')
+    provides=('python-pocketsphinx' 'python3-pocketsphinx' 'python3-pocketsphinx-git')
+    conflicts=('python-pocketsphinx' 'python3-pocketsphinx-git' 'python3-pocketsphinx')
+    depends=('pocketsphinx-git')
 
     cd "${srcdir}/${_gitname}"
 
@@ -121,21 +128,21 @@ package_python-pocketsphinx-git() {
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
-package_python2-pocketsphinx-git() {
-    provides=('python2-pocketsphinx' 'python2-pocketsphinx-git')
-    conflicts=('python2-pocketsphinx' 'python2-pocketsphinx-git')
-    depends=('pocketsphinx')    
-
-    export PYTHON=/usr/bin/python2
-
-    cd "${srcdir}/python2-pocketsphinx-git/deps/sphinxbase"
-    make DESTDIR="${pkgdir}/" install
-
-    cd "${srcdir}/python2-pocketsphinx-git/deps/pocketsphinx"
-    make DESTDIR="${pkgdir}/" install
-
-    cd "${srcdir}/python2-pocketsphinx-git"
-    python2 setup.py install --root="${pkgdir}/" --optimize=1
-
-    rm -rf "${pkgdir}/garbage"
-}
+#package_python2-pocketsphinx-git() {
+#    provides=('python2-pocketsphinx')
+#    conflicts=('python2-pocketsphinx')
+#    depends=('pocketsphinx-git')    
+#
+#    export PYTHON=/usr/bin/python2
+#
+#    cd "${srcdir}/python2-pocketsphinx-git/deps/sphinxbase"
+#    make DESTDIR="${pkgdir}/" install
+#
+#    cd "${srcdir}/python2-pocketsphinx-git/deps/pocketsphinx"
+#    make DESTDIR="${pkgdir}/" install
+#
+#    cd "${srcdir}/python2-pocketsphinx-git"
+#    python2 setup.py install --root="${pkgdir}/" --optimize=1
+#
+#    rm -rf "${pkgdir}/garbage"
+#}
