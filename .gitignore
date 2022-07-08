@@ -1,5 +1,4 @@
 pkg/
 src/
-.AURINFO
-ykchorus-*.pkg.tar.*
-ykchorus-*.tar.gz
+*.tar.*
+*.zip
