@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.18.0
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=('java-environment' 'lapack' 'openscenegraph' 'omniorb' 'libcurl-gnutls'
          'lpsolve' 'boost-libs' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-svg' 'qt5-tools'
          'expat' 'antlr4-runtime')
-makedepends=('gcc-fortran' 'cmake' 'git')
+makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -17,12 +17,11 @@ prepare() {
         cd "${pkgname}"
         git remote set-url origin ${_giturl}
         git submodule update --force --init --recursive
+        cd OMSimulator && git cherry-pick 5ef06e25
 }
 
 build() {
         cd "${pkgname}"
-        # See https://github.com/OpenModelica/OpenModelica/issues/7619
-        export CXXFLAGS=-std=c++14
         autoreconf -fi
         ./configure --prefix=/usr --without-omc
         make
