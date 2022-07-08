@@ -1,4 +1,4 @@
-# Maintainer: AtticFinder65536 <atticventilation-aur at protonmail dot com>
+# Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
 
 pkgname=('discordchatexporter-cli')
 pkgver=2.34.1
