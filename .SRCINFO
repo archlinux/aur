@@ -1,4 +1,4 @@
-pkgbase = com.qq.weixin.work.deepin
+pkgbase = com.qq.weixin.work.deepin-x11
 	pkgdesc = Deepin Wine Weixin Work on x11
 	pkgver = 3.1.12.6001deepin8
 	pkgrel = 1
