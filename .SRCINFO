@@ -1,7 +1,7 @@
 pkgbase = apk-mitm
 	pkgdesc = A CLI application that automatically prepares Android APK files for HTTPS inspection
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.npmjs.com/package/apk-mitm
 	arch = any
 	license = GPL3

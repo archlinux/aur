@@ -1,6 +1,6 @@
 pkgname=apk-mitm
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI application that automatically prepares Android APK files for HTTPS inspection "
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
