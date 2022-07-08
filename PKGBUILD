@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="rpaf is for backend Apache servers what mod_proxy_add_forward is for frontend Apache servers"
 arch=('i686' 'x86_64')
 url='https://github.com/gnif/mod_rpaf'
-source=("mod_rpaf::git://github.com/gnif/mod_rpaf#branch=stable")
+source=("mod_rpaf::git+https://github.com/gnif/mod_rpaf#branch=stable")
 arch=(i686 x86_64)
 license=('apache')
 depends=('apache>=2.2')
