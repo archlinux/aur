@@ -38,6 +38,7 @@ build() {
   ./tools/patches/patch-threema-web.sh
   npm run app:build:web
   ./tools/patches/post-patch-threema-web.sh
+  touch app/dependencies/threema-web/release/threema-web-${_threema_web_ver}/userconfig.overrides.js
 
   # Build Electron app
   npm run app:install
