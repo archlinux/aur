@@ -1,17 +1,18 @@
 pkgbase = python-randomfiletree
 	pkgdesc = Creates a random file and directory tree/structure for testing
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/klieret/randomfiletree
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = python
 	provides = randomfiletree
-	source = https://files.pythonhosted.org/packages/source/R/RandomFileTree/RandomFileTree-1.2.0.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/klieret/RandomFileTree/master/LICENSE.txt
-	sha256sums = 3a92e12ecbf093dc6b3fc1405c69030ed32db3a8a4a71f28724bd347f4c49afc
-	sha256sums = 4da4a2f04603fcd10ee2868810e9863c0a55165f42a969bd8c31b42ec7e058f7
+	source = python-randomfiletree-1.2.0.tar.gz::https://github.com/klieret/randomfiletree/archive/v1.2.0.tar.gz
+	sha256sums = a48098b75412b9ec36fc8fdc5624cb1051f424e871153e7ef190ec0b23aaa404
 
 pkgname = python-randomfiletree
-

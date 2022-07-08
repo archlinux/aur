@@ -1,33 +1,30 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=python-randomfiletree
-_name=RandomFileTree
+_pkg=RandomFileTree
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Creates a random file and directory tree/structure for testing"
 arch=('any')
 url="https://github.com/klieret/randomfiletree"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx' 'python-wheel')
 provides=('randomfiletree')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "LICENSE::https://raw.githubusercontent.com/klieret/RandomFileTree/master/LICENSE.txt")
-sha256sums=('3a92e12ecbf093dc6b3fc1405c69030ed32db3a8a4a71f28724bd347f4c49afc'
-            '4da4a2f04603fcd10ee2868810e9863c0a55165f42a969bd8c31b42ec7e058f7')
-
-prepare() {
-  ## dirty fix for incorrect permissions for egg-info in tarball
-  cd "$_name-$pkgver/${_name}.egg-info"
-  chmod 644 *
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a48098b75412b9ec36fc8fdc5624cb1051f424e871153e7ef190ec0b23aaa404')
 
 build() {
-  cd "$_name-$pkgver"
-  python setup.py build
+  cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+	make -C doc man
 }
 
 package() {
-  cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 doc/build/man/randomfiletree.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
