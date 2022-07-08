@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=spruce
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose YAML/JSON merging tool'
 arch=('x86_64')
 url='https://github.com/geofffranks/spruce'
@@ -14,6 +14,7 @@ sha256sums=('357515c5e516f70b644c8fe947105ade6bc30169981196d80305bb816df6753f')
 prepare() {
   cd "$pkgname-$pkgver"
   # bad go.mod
+  go mod tidy -go=1.18
   go mod vendor
 }
 

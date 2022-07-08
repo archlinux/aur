@@ -1,7 +1,7 @@
 pkgbase = spruce
 	pkgdesc = General purpose YAML/JSON merging tool
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geofffranks/spruce
 	arch = x86_64
 	license = Apache
