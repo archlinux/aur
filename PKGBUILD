@@ -7,7 +7,7 @@ pkgbase="${_pkgbase}"
 pkgname="${_pkgname}"
 epoch=0
 pkgver=0.1_20220708.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Captive portal login script for WIFIonICE/ WLAN@DB public WiFi by Deutsche Bahn.'
 url="https://aur.archlinux.org/pkgbase/${pkgbase}"
 arch=(any)
@@ -21,7 +21,9 @@ depends=(
   # 'sed'        # This is always assumed to be installed, no need to explicitly mention it.
 )
 makedepends=()
-optdepends=()
+optdepends=(
+  "db-wifi-login-woice-compat: To act as a drop-in replacement for 'woice'."
+)
 provides=()
 conflicts=()
 source=(
