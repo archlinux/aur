@@ -1,20 +1,14 @@
 pkgbase = python-ctypescrypto
 	pkgdesc = Python interface to some openssl function based on ctypes module
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vbwagner/ctypescrypto
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	depends = python
 	source = https://github.com/vbwagner/ctypescrypto/archive/v0.5.tar.gz
 	sha256sums = 7258fad7d025ed3dc4bbe1dc24e6cf1842481216837615e9892596e06c942602
 
 pkgname = python-ctypescrypto
-	depends = python
-
-pkgname = python2-ctypescrypto
-	depends = python2
-
