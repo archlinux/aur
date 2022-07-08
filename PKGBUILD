@@ -2,7 +2,7 @@
 
 _pkgbase=fast_float
 pkgname=$_pkgbase-git
-pkgver=v3.4.0.r17.gcfb44c2
+pkgver=3.4.0.r17.gcfb44c2
 pkgrel=1
 arch=(any)
 url="https://github.com/fastfloat/fast_float/"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
