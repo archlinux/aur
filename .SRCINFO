@@ -1,0 +1,13 @@
+pkgbase = chromeos-gsctool-git
+	pkgdesc = Chromium OS gsctool
+	pkgver = r20220616235852.f35ac20
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/platform/ec
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = libusb
+
+pkgname = chromeos-gsctool-git
