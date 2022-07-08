@@ -14,7 +14,7 @@ pkgname=(
     "${_pkgbase}-g533-qwerty-git"
     "${_pkgbase}-g533-azerty-git"
 )
-pkgver=r78.7eea152
+pkgver=r91.9086a0e
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
