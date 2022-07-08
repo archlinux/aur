@@ -7,7 +7,7 @@ pkgname=(
   vbam-wx
 )
 pkgver=2.1.4.r453.65b5affe
-pkgrel=2
+pkgrel=3
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url=https://vba-m.com
@@ -30,7 +30,7 @@ makedepends=(
   git
   libglvnd
   ninja
-  wxgtk3
+  wxwidgets-gtk3
   zip
 )
 #_tag=8f4862de88de2f95866b7e501304f1e57a4e0abb
@@ -71,8 +71,7 @@ build() {
     -DENABLE_SDL=FALSE \
     -DENABLE_WX=TRUE \
     -DENABLE_FFMPEG=TRUE \
-    -DENABLE_LINK=TRUE \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+    -DENABLE_LINK=TRUE
   cmake --build build-wx
 }
 
@@ -88,7 +87,7 @@ package_vbam-wx() {
     glib2
     gtk3
     openal
-    wxgtk3
+    wxwidgets-gtk3
     zip
   )
   conflicts=(vbam-sdl)
