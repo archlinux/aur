@@ -4,17 +4,27 @@
 _pkgname="sat-yt"
 pkgname="$_pkgname"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube viewer based on saturnon"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
 license=('GPL3')
 replaces=('sat-yt-git')
-makedepends=()
+makedepends=('git')
 depends=('bash' 'coreutils' 'ncurses' 'yt-dlp' 'mpv' 'jq' 'less' 'grep') 
 optdepends=()
 md5sums=(SKIP)
 source=("https://gitlab.com/TheDalaiAlpaca/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
+
+
+prepare() {
+	if [ ! -f /usr/bin/saturnon ]; then
+		cd /tmp
+		git clone https://aur.archlinux.org/saturnon.git
+		cd /tmp/saturnon
+		makepkg -csi
+	fi
+}
 
 
 package() {
