@@ -1,6 +1,4 @@
 pkg/
 src/
-.AURINFO
-mclk.lv2-*.tar.gz
-mclk.lv2-*.tar.xz
-mclk.lv2-*.src.tar.gz
+*.tar.*
+*.zip
