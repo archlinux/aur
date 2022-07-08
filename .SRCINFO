@@ -1,0 +1,25 @@
+pkgbase = chromeos-flashrom-git
+	pkgdesc = Flashrom Chromium OS version from git, includes libraries and programmers ec and host.
+	pkgver = r4051.90795b2cc
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/third_party/flashrom
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = cmocka
+	depends = libusb
+	depends = libftdi
+	depends = pciutils
+	optdepends = dmidecode: for SMBIOS/DMI table decoder support
+	provides = flashrom
+	conflicts = flashrom
+	replaces = flashrom-svn
+	source = git+https://chromium.googlesource.com/chromiumos/third_party/flashrom
+	sha512sums = SKIP
+
+pkgname = chromeos-flashrom-git
