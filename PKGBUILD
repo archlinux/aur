@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=4.2
+pkgver=4.4
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -30,4 +30,4 @@ package() {
     "${pkgdir}/usr/include/libndpi"
 }
 
-sha256sums=('e54ce8fe13adc5d747be7553513657fae78f796e0bd459e122c280cc06ce4daf')
+sha256sums=('5df3a7bc251e3838079c403707334c1cd93f20c17b33e31e090f30a16adb3702')
