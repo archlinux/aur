@@ -19,6 +19,7 @@ pkgbase = stargus-git
 	depends = tolua++
 	depends = stratagus
 	depends = stratagus-gameutils.h
+	depends = stormlib
 	provides = stargus-git
 	provides = stargus
 	source = stargus-git::git+https://github.com/Wargus/stargus.git
