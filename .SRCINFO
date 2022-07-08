@@ -1,6 +1,6 @@
 pkgbase = uksmd
 	pkgdesc = Userspace KSM helper daemon
-	pkgver = 0.0.0.r14.42934623c4
+	pkgver = 0.0.0.r15.f10f38e3ad
 	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/uksmd
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = uksmd
 	depends = systemd
 	depends = procps-ng
 	depends = libcap-ng
-	source = uksmd-0.0.0.r14.42934623c4.tar.gz::https://codeberg.org/pf-kernel/uksmd/archive/42934623c422ed8e63708aa6e7827bd83da5c4bb.tar.gz
-	sha256sums = 489ca12a041510259de0bdbfb9ea14c209910ad43c936b3c1578c7095ad30e5c
+	source = uksmd-0.0.0.r15.f10f38e3ad.tar.gz::https://codeberg.org/pf-kernel/uksmd/archive/f10f38e3adcaf6175e6c4c1846cad72ae9ab2cf2.tar.gz
+	sha256sums = dc5acbe4e21923e797b441680a5fa3dd8e436231ae0a55da05a8561e252842f8
 
 pkgname = uksmd

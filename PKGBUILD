@@ -3,8 +3,8 @@
 pkgname=uksmd
 _repouser=pf-kernel
 _reponame=uksmd
-_rev=42934623c422ed8e63708aa6e7827bd83da5c4bb
-pkgver=0.0.0.r14.${_rev:0:10}
+_rev=f10f38e3adcaf6175e6c4c1846cad72ae9ab2cf2
+pkgver=0.0.0.r15.${_rev:0:10}
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://codeberg.org/pf-kernel/uksmd"
@@ -13,7 +13,7 @@ arch=(x86_64)
 depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
 makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::https://codeberg.org/${_repouser}/${_reponame}/archive/${_rev}.tar.gz)
-sha256sums=('489ca12a041510259de0bdbfb9ea14c209910ad43c936b3c1578c7095ad30e5c')
+sha256sums=('dc5acbe4e21923e797b441680a5fa3dd8e436231ae0a55da05a8561e252842f8')
 
 build() {
 	cd ${_reponame}
