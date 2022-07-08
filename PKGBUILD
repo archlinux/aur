@@ -2,7 +2,7 @@
 # Original Maintainer: Ivy Foster <ivy.foster@gmail.com>
 
 pkgname='sndio-git'
-pkgver=1.8.1.r537.d7019ee
+pkgver=1.8.1.r558.a02d299
 pkgrel=1
 pkgdesc='A small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=(alsa-lib libbsd)
 replaces=('sndio')
 conflicts=('sndio' "$pkgname")
-provides=("$pkgname" 'sndio' 'libsndio.so')
-source=("$pkgname"::'git+http://caoua.org/git/sndio')
+provides=("$pkgname" "sndio=$pkgver" "libsndio.so=$pkgver")
+source=("$pkgname"::'git+https://caoua.org/git/sndio')
 md5sums=('SKIP')
 
 pkgver() {
