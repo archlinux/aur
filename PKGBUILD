@@ -1,7 +1,7 @@
 # Maintainer: Matrix <thysupremematrix at tuta dot io>
 pkgname=gnome-shell-extension-soft-brightness-git
 pkgver=30.r0.g8842dfb
-pkgrel=2
+pkgrel=3
 pkgdesc='Gnome-shell extension to manage your display brightness via an alpha overlay (instead of the backlight).'
 url='https://github.com/F-i-f/soft-brightness'
 license=('GPL')
@@ -9,7 +9,7 @@ arch=('any')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 depends=('gnome-shell>=3.33.90')
-makedepends=('git' 'meson>=0.50')
+makedepends=('git' 'meson>=0.50' 'm4')
 optdepends=()
 source=("${pkgname}::git+${url}.git" "build.patch")
 sha512sums=('SKIP'
@@ -29,6 +29,10 @@ pkgver() {
 
 build() {
 	arch-meson "${pkgname}" build
+}
+
+check(){
+	meson test -C build --print-errorlogs
 }
 
 package() {
