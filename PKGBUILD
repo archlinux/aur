@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=htmlTable
-_pkgver=2.4.0
+_pkgver=2.4.1
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.4.1
+pkgrel=1
 pkgdesc='Advanced Tables for Markdown/HTML'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -37,7 +37,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4ca2b5616d77cfeee8ae5ca74307b86407d478b12d1ce17ba9c447e233b89a9d')
+sha256sums=('3a7f3e75d886dc398fd1d3cae907b536fff6af3a3d2c18349ef12ec06d310f93')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
