@@ -1,12 +1,12 @@
 pkgbase = terraform-plugin-docs
 	pkgdesc = Generate and validate Terraform plugin/provider documentation.
-	pkgver = 0.8.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/hashicorp/terraform-plugin-docs
 	arch = aarch64
 	arch = x86_64
 	license = custom:MPL-2.0
-	source = https://github.com/hashicorp/terraform-plugin-docs/releases/download/v0.8.0/tfplugindocs_0.8.0_linux_amd64.zip
-	sha256sums = 80d5e46042e498c11569d954b8e8c14b1479037644ba5c8eb83b9d1250818ff6
+	source = https://github.com/hashicorp/terraform-plugin-docs/releases/download/v0.13.0/tfplugindocs_0.13.0_linux_amd64.zip
+	sha256sums = 4167876e830d6904340805eea8e563b66cfa4fd71f1a056cdfd2b3d55993adf7
 
 pkgname = terraform-plugin-docs
