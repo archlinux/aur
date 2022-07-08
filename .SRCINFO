@@ -1,6 +1,6 @@
 pkgbase = monaserver2-git
 	pkgdesc = MonaServer2 is a remake of Monaserver, a lightweight web and media server customizable by LUA script applications.
-	pkgver = 7.1.6.8e327be
+	pkgver = 7.4.9.524f727
 	pkgrel = 1
 	url = https://github.com/MonaSolutions/MonaServer2
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = monaserver2-git
 	md5sums = SKIP
 
 pkgname = monaserver2-git
-

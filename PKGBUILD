@@ -1,6 +1,6 @@
 # Maintainer: EndlessEden <eden@rose.place>
 pkgname=monaserver2-git
-pkgver=7.1.6.8e327be
+pkgver=7.4.9.524f727
 pkgrel=1
 pkgdesc="MonaServer2 is a remake of Monaserver, a lightweight web and media server customizable by LUA script applications."
 arch=('x86_64')
