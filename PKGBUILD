@@ -9,6 +9,7 @@ pkgdesc="YouTube viewer based on saturnon"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
 license=('GPL3')
+replaces=('sat-yt-git')
 makedepends=()
 depends=('bash' 'coreutils' 'ncurses' 'yt-dlp' 'mpv' 'jq' 'less' 'grep') 
 optdepends=()
