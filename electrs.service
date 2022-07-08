@@ -8,7 +8,7 @@ Type=simple
 User=bitcoin
 Group=bitcoin
 WorkingDirectory=/var/lib/electrs
-ExecStart=/usr/bin/electrs -vv --db-dir ./db --daemon-dir=/var/lib/bitcoind
+ExecStart=/usr/bin/electrs --log-filters INFO --db-dir ./db --daemon-dir=/var/lib/bitcoind
 KillMode=process
 TimeoutSec=60
 Restart=always

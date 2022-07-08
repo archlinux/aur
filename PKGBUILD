@@ -10,12 +10,14 @@ url="https://github.com/romanz/electrs"
 license=('MIT')
 depends=('rocksdb')
 makedepends=('git' 'clang' 'cmake' 'rust')
-source=("git+$url.git"
-	"electrs.service")
 conflicts=('electrs')
 provides=('electrs')
+source=("git+$url.git"
+	"electrs.service"
+	01-rocksdb.patch)
 sha256sums=('SKIP'
-            '339c165f2a0318ca0d0099cc79e493f0451dcdb37de7d1c35473db18bd9038c6')
+            'd1b25c98fdb497a97a78c52e33b3523002849d2a6140c99bcce5cb68afc48dd6'
+            '4e0b084892cdd9467d84920c3cc8632ddab1f94fe628b70ff99727d1e00082a3')
 validpgpkeys=('15C8C3574AE4F1E25F3F35C587CAE5FA46917CBB')
 
 pkgver() {
@@ -25,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  ROCKSDB_INCLUDE_DIR=/usr/include ROCKSDB_LIB_DIR=/usr/lib cargo build  --release --locked --no-default-features
+  cargo build  --release
 }
 
 check() {
@@ -34,8 +36,8 @@ check() {
 }
 
 package() {
-  install -Dm644 electrs.service -t "${pkgdir}/usr/lib/systemd/system"
   cd "$_pkgname"
   install -Dm755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 electrs.service -t "${pkgdir}/usr/lib/systemd/system"
 }
