@@ -3,32 +3,42 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=100.0b4
+pkgver=103.0b4
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.thunderbird.net/channel/#beta"
-depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'ttf-font' 'libpulse' 'nss')
+depends=(
+  glibc gtk3 libgdk-3.so libgtk-3.so mime-types dbus libdbus-1.so dbus-glib
+  alsa-lib nss hunspell sqlite ttf-font libvpx libvpx.so zlib bzip2 libbz2.so
+  botan libwebp libwebp.so libwebpdemux.so libevent libjpeg-turbo libffi
+  libffi.so nspr gcc-libs libx11 libxrender libxfixes libxext libxcomposite
+  libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu libicui18n.so
+  libicuuc.so freetype2 libfreetype.so fontconfig libfontconfig.so glib2
+  libglib-2.0.so pixman libpixman-1.so gnupg
+)
 makedepends=('unzip' 'zip' 'diffutils' 'python-setuptools' 'yasm' 'mesa' 'imake' 'inetutils'
-             'xorg-server-xvfb' 'autoconf2.13' 'rust' 'clang' 'llvm' 'jack' 'nodejs'
-             'python-psutil' 'cbindgen' 'nasm' 'lld' 'python-zstandard' 'dump_syms'
-             'libotr' 'hunspell'
+             'xorg-server-xvfb' 'autoconf2.13' 'rust' 'clang' 'llvm' 'jack'
+             'nodejs' 'cbindgen' 'nasm' 'lld' 'python-zstandard' 'dump_syms'
+             'libpulse' 'gawk' 'perl' 'findutils' 'libotr'
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi')
 optdepends=('libnotify: Notification integration'
             'libcanberra: sound support'
-            'libotr: OTR support for active one-to-one chats')
+            'libotr: OTR support for active one-to-one chats'
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
 options=(!emptydirs !makeflags !strip !lto !debug)
 provides=("thunderbird=$pkgver")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-        install-dir.patch
         "$pkgname".desktop
-        psutil.patch)
-sha256sums=('4875b08119b57b425e037b5862073cf3420c4e880b5da586a86abf4b7341c617'
+        install-dir.patch        
+        zstandard-0.18.0.patch)
+sha256sums=('a8b4d63db1583299b75d79a7013d072d238435ef234cbb728ff09eaae2b291f8'
             'SKIP'
-            'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
             '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3'
-            'f811e6408fa8900bed80055403dec889e0249681bba2b85911f96571595f78ce')
+            'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
+            'a6857ad2f2e2091c6c4fdcde21a59fbeb0138914c0e126df64b50a5af5ff63be')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
@@ -150,20 +160,18 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 comm/mail/branding/thunderbird/default${i}.png \
+    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
+  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
 
-  install -Dvm644 comm/mail/branding/thunderbird/content/about-logo.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dvm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
-
-  install -Dvm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # Use system-provided dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
 exec /usr/lib/$pkgname/$_pkgname "\$@"
 END
