@@ -1,6 +1,6 @@
 pkgbase = cuberite-git
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client. - Git Version.
-	pkgver = 1.13.20191009.241d97bbf
+	pkgver = 1.13.20220709.a2b19de07
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -21,7 +21,7 @@ pkgbase = cuberite-git
 	optdepends = netcat: required in order to suspend an idle server
 	provides = minecraft-server=1.12
 	provides = spigot=1.12
-	provides = cuberite=1.13.20191009.241d97bbf
+	provides = cuberite=1.13.20220709.a2b19de07
 	conflicts = cuberite
 	backup = etc/conf.d/cuberite
 	source = cuberite-backup.service
@@ -29,7 +29,7 @@ pkgbase = cuberite-git
 	source = cuberite.service
 	source = cuberite.conf
 	source = cuberite.sh
-	source = cuberite-git::git://github.com/cuberite/cuberite.git
+	source = cuberite-git::git+https://github.com/cuberite/cuberite.git
 	sha512sums = 4a84419f3a532d2c34cef0a77cd30dded10a771b9d89e7d9d2b2af18808ff037dba68f84331a24ace5cb8c47436fe781b97b5d8a600127161ca55aaca07ecbae
 	sha512sums = 2ae834c75dfc299e823308bcb500e028020f1ac47675c645c4a7832ae225f63e9f7d22c08cd1bbb754388db7cf57ab3d4c359615be70f8d234e82013c148b024
 	sha512sums = afc35227b91bc302e095c84c30ee85114e4b97220e8ee6acf8e7250306bee969e2cd4d57b4d2afd1e43298b32fc7ecaa543bdf6fead8c0f218cfc37aa51b524e
@@ -38,4 +38,3 @@ pkgbase = cuberite-git
 	sha512sums = SKIP
 
 pkgname = cuberite-git
-
