@@ -2,8 +2,8 @@
 pkgname=fbreader-bin
 _pkgname=fbreader
 pkgver=2.0beta15
-_snap_ver=10
-pkgrel=1
+_snap_ver=20
+pkgrel=2
 pkgdesc="An e-book reader for Linux"
 arch=('x86_64')
 url="http://www.fbreader.org/"
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/downl
 
 # download url
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/fbreader | jq '.download_url' -r
-sha256sums=('5d19a6dac67e9dfea3c1de621ccf8e62bf6b5fd0f281a89e03c77fb8623a6425')
+sha256sums=('0a58d595497df1b4b42a090407bf3d99ada4867211359aab2b252c4b2376fe7f')
 
 prepare() {
   cd $srcdir
@@ -30,6 +30,8 @@ prepare() {
 
 package() {
   cd "$srcdir"/squashfs-root
+  # patchelf --set-rpath '/usr/lib/fbreader/' bin/FBReader
+  # patchelf do not work
   install -Dm755 bin/FBReader ${pkgdir}/usr/bin/fbreader
   install -Dm644 meta/gui/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
   install -Dm644 meta/gui/icon.png  \
