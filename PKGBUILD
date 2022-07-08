@@ -1,10 +1,10 @@
 # -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
-# Maintainer: Lukas1818 aur at lukas1818 dot de
+# Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 # Contributor: Dominic Meiser [git at msrd0 dot de]
 
 # Package Information
 pkgname="mstickereditor"
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix'
 license=('Apache')
@@ -13,11 +13,11 @@ license=('Apache')
 arch=('aarch64' 'i686' 'x86_64')
 
 # Generic Stuff for cargo packages
-url='https://github.com/Lukas1818/mstickereditor'
+url='https://github.com/LuckyTurtleDev/mstickereditor'
 depends=('gcc-libs' 'rlottie' 'libwebp')
 makedepends=('cargo' 'clang' 'lld')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('8d59a2e04fd18fee7c9791d3b94401408ecc0a3bfd189835f1629f41c3a2c9f99328189b8c99cfa3f8ca12427f5e0357ed9234b5b186d7b8c310ee8271164fa4')
+sha512sums=('6b057c617a6f9ae45fe60d737b38f085c18c38efa361af44b1f88799b00167b9d2d0cecf182e768dea463c3e848860b4f94a69ab58fd1f73be5dc20a132c3054')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
