@@ -1,6 +1,6 @@
-pkgbase = wiwos20
+pkgbase = wiwos20-git
 	pkgdesc = S20 socket manager
-	pkgver = 0.1
+	pkgver = 0.1.3ba16be
 	pkgrel = 1
 	url = https://git.stikonas.eu/andrius/s20
 	arch = i686
@@ -11,4 +11,4 @@ pkgbase = wiwos20
 	source = wiwos20::git+https://git.stikonas.eu/andrius/s20.git
 	md5sums = SKIP
 
-pkgname = wiwos20
+pkgname = wiwos20-git
