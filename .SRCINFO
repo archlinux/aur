@@ -1,0 +1,27 @@
+pkgbase = smplayer-git
+	pkgdesc = Media player with built-in codecs that can play virtually all video and audio formats
+	pkgver = 21.10.0.rc34af9e16
+	pkgrel = 1
+	url = https://www.smplayer.info/
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-script
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = zlib
+	depends = gcc-libs
+	optdepends = smplayer-themes-svn: icon themes collection
+	optdepends = smplayer-skins-svn: skin themes collection
+	optdepends = smtube-svn: browse and play YouTube videos
+	optdepends = youtube-dl: YouTube videos and streaming
+	optdepends = yt-dlp: YouTube videos and streaming, Alternative to youtube-dl
+	optdepends = mplayer: backend for video playback
+	optdepends = mpv: alternative modern backend
+	provides = smplayer
+	conflicts = smplayer
+	source = smplayer-git::git+https://github.com/smplayer-dev/smplayer.git
+	sha256sums = SKIP
+
+pkgname = smplayer-git
