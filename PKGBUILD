@@ -4,12 +4,12 @@ _base=openfoam
 pkgname=${_base}-com-precice
 _gitcommit=e88aca117eb180b3f55ba07ea4d4623cd6fd621e
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="preCICE adapter for OpenFOAM"
 arch=(x86_64)
 url="https://github.com/precice/${_base}-adapter"
 license=(GPL3)
-_openfoam_version=v2112
+_openfoam_version=v2206
 depends=("${_base}-com=${_openfoam_version}" "precice")
 makedepends=(git)
 source=("git+${url}.git?signed#commit=${_gitcommit}")
