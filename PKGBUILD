@@ -1,7 +1,7 @@
 # Maintainer: ShadowKyogre <shadowkyogre.public@gmail. com>
 
 pkgname=zsh-directory-history-git
-pkgver=1.1.0.r7.g4029b87
+pkgver=1.1.0.r9.g7abeca2
 pkgrel=1
 pkgdesc="Per directory history plugin for zsh"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('zsh-directory-history')
 conflicts=('zsh-directory-history')
 install="${pkgname}.install"
 source=(
-  'git://github.com/tymm/zsh-directory-history'
+  'git+https://github.com/tymm/zsh-directory-history'
 )
 
 pkgver() {
