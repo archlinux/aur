@@ -1,13 +1,14 @@
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _projectname=Mamba
 pkgname="${_projectname,,}"
 pkgver=2.3
-pkgrel=1
+pkgrel=3
 pkgdesc='A virtual MIDI keyboard and file player/recorder for ALSA/JACK'
 arch=(i686 x86_64 aarch64)
 url="https://github.com/brummer10/$_projectname"
-license=('custom:0BSD')
+license=(BSD)
 depends=(cairo)
 makedepends=(alsa-lib fluidsynth jack liblo libsigc++ libsmf xxd)
 optdepends=('new-session-manager: for NSM support')

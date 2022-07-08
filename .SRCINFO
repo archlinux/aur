@@ -1,13 +1,13 @@
 pkgbase = mamba
 	pkgdesc = A virtual MIDI keyboard and file player/recorder for ALSA/JACK
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/brummer10/Mamba
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	groups = pro-audio
-	license = custom:0BSD
+	license = BSD
 	makedepends = alsa-lib
 	makedepends = fluidsynth
 	makedepends = jack
