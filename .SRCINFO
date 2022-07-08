@@ -1,0 +1,14 @@
+pkgbase = tochd
+	pkgdesc = Convert game ISO and archives to CD CHD for emulation.
+	pkgver = 0.9
+	pkgrel = 3
+	url = https://github.com/thingsiplay/tochd
+	arch = any
+	license = MIT
+	depends = python3
+	depends = p7zip
+	depends = mame-tools
+	source = tochd-0.9.tar.gz::https://github.com/thingsiplay/tochd/archive/refs/tags/v0.9.tar.gz
+	sha256sums = ddb3912f24544ddda315a45b8b9cec8d7f24481861e557a7e87252fdbd29108a
+
+pkgname = tochd
