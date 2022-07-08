@@ -11,7 +11,7 @@ license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=("${_target}-newlib" "${_target}-binutils" "${_target}-gcc>=11.0.0" "${_target}-gcc<12.0.0" "libmpc" "elfutils" "zlib")
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
+source=(https://ftpmirror.gnu.org/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b')
 
 
