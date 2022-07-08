@@ -1,6 +1,6 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=scarab-bin
-pkgver=1.14.0.0
+pkgver=1.15.0.0
 pkgrel=1
 pkgdesc='Mod installer for Hollow Knight 1.5'
 arch=(x86_64)
@@ -10,7 +10,7 @@ provides=(scarab)
 conflicts=(scarab)
 depends=(gcc-libs zlib fontconfig)
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/linux.zip")
-sha256sums=('99d1bfef9fed2231d86714e5fbc68cefbca389eb28a49d2d125affd0f82857a5')
+sha256sums=('eba1c0608db96dec985d72e9618ae301913a0720b61d83c1d874185dcddb83e7')
 options=(!strip) # necessary for Scarab to run
 
 package() {
