@@ -3,11 +3,11 @@
 pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
 pkgver=1a0b52a
-pkgrel=2
+pkgrel=4
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPLv2')
-provides=()
+provides=('sunxi-livesuite-dkms')
 conflicts=(${pkgbase} ${pkgbase%-git})
 #replaces=(${pkgname})
 makedepends=('git')
@@ -28,7 +28,7 @@ pkgver() {
 
 package_sunxi-livesuite-git() {
     pkgdesc="LiveSuit is a tool to flash Images to the NAND of Allwinner devices."
-    depends=('sunxi-livesuite-dkms-git')
+    depends=('sunxi-livesuite-dkms-git' 'libpng12')
 
     install -dm0755 "${pkgdir}/opt/sunxi/${pkgbase%-git}"
     cp -r "${srcdir}/${pkgbase%-git}/x86" "${pkgdir}/opt/sunxi/${pkgbase%-git}"
