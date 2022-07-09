@@ -5,7 +5,7 @@
 
 pkgname='libervia-backend-hg'
 _realname='libervia-backend'
-pkgver=0.8.0.r3734.643622ff1492
+pkgver=0.8.0.r3827.23b53ac87e0f
 _version=0.8.0
 pkgrel=1
 url="http://salut-a-toi.org/"
@@ -13,8 +13,8 @@ pkgdesc="Libervia, multi-frontends multi-purposes XMPP client (core)"
 arch=('any')
 conflicts=('sat-xmpp-hg')
 provides=('libervia-backend')
-depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel-git' 'python-xdg' 'python-zope-interface' 'python-mutagen' 'python-markdown' 'python-shortuuid-git' 'python-html2text' 'python-netifaces' 'python-service-identity' 'sat-tmp-hg' 'python-dateutil' 'python-regex' 'python-gobject' 'python-pyinotify' 'python-babel' 'python-urwid' 'python-urwid-satext-hg' 'python-xlib' 'python-treq' 'python-miniupnpc' 'python-langid' 'python-miniupnpc' 'python-omemo-backend-signal' 'python-omemo-syndace-git' 'python-pyaml' 'python-progressbar' 'python-pycrypto' 'python-xeddsa-git' 'python-x3dh-git' 'python-omemo-backend-signal-git' 'python-potr' 'python-sqlalchemy' 'python-alembic' 'python-txdbus')
-makedepends=('python-setuptools' 'mercurial' 'python-pip')
+depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel' 'python-pyxdg' 'python-mutagen' 'python-markdown' 'python-shortuuid' 'python-html2text' 'python-netifaces' 'sat-tmp-hg' 'python-dateutil'  'python-gobject' 'python-babel' 'python-urwid' 'python-urwid-satext' 'python-treq' 'python-miniupnpc' 'python-langid' 'python-miniupnpc' 'python-omemo' 'python-yaml' 'python-progressbar' 'python-pycryptodome' 'python-omemo-backend-signal' 'python-sqlalchemy' 'python-alembic' 'python-txdbus' 'python-aiosqlite' 'python-jinja' 'python-pygments' 'python-cairosvg')
+makedepends=('python-setuptools' 'mercurial' 'python-setuptools-scm')
 license=('AGPL3')
 source=("hg+https://repos.goffi.org/libervia-backend")
 md5sums=('SKIP')
