@@ -15,11 +15,11 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=tageditor
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
-depends=('qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
+depends=('libqtutilities.so' 'libtagparser.so' 'libc++utilities.so' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
