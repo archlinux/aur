@@ -8,7 +8,6 @@ pkgbase = gvm-libs
 	groups = greenbone-vulnerability-manager
 	license = GPL
 	makedepends = cmake
-	makedepends = doxygen
 	depends = gnutls
 	depends = libpcap
 	depends = gpgme
@@ -18,6 +17,11 @@ pkgbase = gvm-libs
 	depends = hiredis
 	depends = libnet
 	depends = libxml2
+	provides = libgvm_util.so=21-64
+	provides = libgvm_osp.so=21-64
+	provides = libgvm_gmp.so=21-64
+	provides = libgvm_boreas.so=21-64
+	provides = libgvm_base.so=21-64
 	replaces = openvas-libraries
 	source = gvm-libs-21.4.4.tar.gz::https://github.com/greenbone/gvm-libs/archive/v21.4.4.tar.gz
 	source = gvm-libs-21.4.4.tar.gz.asc::https://github.com/greenbone/gvm-libs/releases/download/v21.4.4/gvm-libs-21.4.4.tar.gz.asc
