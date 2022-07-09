@@ -21,6 +21,7 @@ makedepends=(
 depends=(
 	'gtk3'
 	'sdl2'
+	'unzip'
 )
 provides=('vita3k')
 conflicts=('vita3k')
@@ -55,7 +56,7 @@ build() {
 	export BUILDPRESET=linux-ninja-clang
 
 	# Configure
-	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF 
+	cmake --preset ${BUILDPRESET} -DCI=ON -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
 	# Build
 	cmake --build build/${BUILDPRESET} --config Release
 }

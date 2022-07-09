@@ -14,6 +14,7 @@ pkgbase = vita3k-git
 	makedepends = python
 	depends = gtk3
 	depends = sdl2
+	depends = unzip
 	provides = vita3k
 	conflicts = vita3k
 	source = vita3k-git::git+https://github.com/Vita3K/Vita3K.git
