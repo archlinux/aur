@@ -34,7 +34,7 @@ sha512sums_armv7h=('12099b1a2d2e6d7db3bcea9e8b6d60f4e81e2173bb639fb20c088a0346ed
 source_aarch64=("$_src_base_url/stt-1.3.0-cp37-cp37m-linux_aarch64.whl"
                )
 sha512sums_aarch64=('6513a1a35cd74a14c4bd49ea5c47c619237bb4c463159d83d773439f7b0cdf83a9c115e7bcf2e96f0cb75238ee9f8df9011b6f52c80f75d20f5777e7e0a04054'
-                    ")
+                    )
 
 prepare()
 {
@@ -60,7 +60,7 @@ package() {
     local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
     if [ ${stt_sum_checkv} != "$stt_sum" ]; then
       # Bail!
-      echo "Verifying STT's checksum failed!" 1>&2
+      echo "Verifying STT\'s checksum failed!" 1>&2
       exit 1
     fi
 
@@ -71,7 +71,7 @@ package() {
     local ctc_sum_check=$(sha512sum "$ctc_fname" | awk '{print $1}')
     if [ ${ctc_sum_check} != "$ctc_sum" ]; then
       # Bail!
-      echo "Verifying CTC Decoder's checksum failed!" 1>&2
+      echo "Verifying CTC Decoder\'s checksum failed!" 1>&2
       exit 1
     fi
   elif [ ${MACHINE_TYPE} == 'aarch64' ]; then
@@ -82,7 +82,7 @@ package() {
     local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
     if [ ${stt_sum_checkv} != "$stt_sum" ]; then
       # Bail!
-      echo "Verifying STT's checksum failed!" 1>&2
+      echo "Verifying STT\'s checksum failed!" 1>&2
       exit 1
     fi
   fi
