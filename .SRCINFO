@@ -1,7 +1,7 @@
 pkgbase = getip
 	pkgdesc = Get Private/Public IP & IP's Geolocation.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.mahdi.pw/getip
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = getip
 	depends = grep
 	depends = jq
 	source = getip::git+git://mahdi.pw/getip.git
-	sha256sums = 207167246fa45854878e4b548da1acd7c84984f760383e701d8847811b725385
+	sha256sums = SKIP
 
 pkgname = getip
