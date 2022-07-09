@@ -23,6 +23,8 @@ Run in tranfer_more git repository and set the output on `pkgver`:
 
     printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
+Update the source to set the right tag tar gz, and compute the checksum.
+
 Run `makepkg -si` to test the package (build & install).
 
 Run `makepkg --printsrcinfo > .SRCINFO` to refresh srcinfo file.

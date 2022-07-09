@@ -3,4 +3,4 @@ src
 transfer_more
 transfer-more-*.pkg.tar
 transfer-more-*.pkg.tar.*
-
+*.tar*
