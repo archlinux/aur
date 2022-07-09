@@ -1,0 +1,12 @@
+pkgbase = vdr-transcode
+	pkgdesc = Swiss knife for VDR transcoding.
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://github.com/jsffm/vdr-transcode
+	arch = any
+	license = none
+	depends = ffmpeg
+	source = vdr-transcode::git+https://github.com/jsffm/vdr-transcode#commit=cc3d802752081d534124b87aa297f29c2b9ebe73
+	md5sums = SKIP
+
+pkgname = vdr-transcode
