@@ -1,7 +1,7 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=cmoc
-pkgver=0.1.77
+pkgver=0.1.78
 pkgrel=1
 pkgdesc="6809-generating cross-compiler for a subset of the C language."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('perl' 'lwtools')
 makedepends=('discount')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('b114e2e5b01858a802e988185a15d04d257d781d3a2bc4504363035392ea3d67')
+sha256sums=('942d36991c83dea533ee99cb08948352c5a556b6204af88a5ff4bdccafe93f23')
 
 build() {
   cd "$pkgname-$pkgver"
