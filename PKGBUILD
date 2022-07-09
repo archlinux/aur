@@ -18,7 +18,7 @@ build() {
   cd "$srcdir"
   local _type
   for _type in bold italic bolditalic; do
-    "mk$_type" "unifont-$pkgver.bdf" | bdftopcf >"unifont-$_type-$pkgver.bdf"
+    "mk$_type" "unifont-$pkgver.bdf" | bdftopcf >"unifont-$_type-$pkgver.pcf"
   done
 }
 
