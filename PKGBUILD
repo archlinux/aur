@@ -2,7 +2,7 @@
 
 pkgname=lvm-auto
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='lvm开机自动创建备份'
 url="https://aur.archlinux.org/packages/${pkgname}/"
 arch=('any')
