@@ -2,14 +2,14 @@
 
 pkgname=python2-lxml
 pkgver=4.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python2 binding for the libxml2 and libxslt libraries'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://lxml.de/'
 license=('BSD' 'custom')
 depends=('python2' 'libxslt')
 checkdepends=('python2-beautifulsoup4' 'python2-cssselect' 'python2-html5lib')
-makedepends=('python2-setuptools' 'cython2')
+makedepends=('python2-setuptools')
 optdepends=(
 	'python2-beautifulsoup4: malformed HTML parsing support'
 	'python2-cssselect: CSS parsing support'
@@ -21,14 +21,15 @@ _dir="lxml-lxml-${pkgver}"
 
 build() {
 	cd "${_dir}"
-	#python2 setup.py build
-	make PYTHON=python2
+	python2 setup.py build build_ext -i
+	#make PYTHON=python2
 }
 
 check() {
 	cd "${_dir}"
 	# need to use UTF-8 based locale; tests fail with e.g. LC_ALL=C
-	make LC_ALL=C.UTF-8 PYTHON=python2 test
+	#make LC_ALL=C.UTF-8 PYTHON=python2 test_build
+	LC_ALL=C.UTF-8 python2 test.py -p -v
 }
 
 package() {
