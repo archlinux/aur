@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=btdex
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Decentralized cryptocurrency exchange system running on the Burstcoin blockchain'
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-v${pkgv
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.desktop"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/LICENSE"
         "btdex.sh")
-sha256sums=('bac49fc51ca865ab95a818373e13d058c431178be13a60190bef26d3a1d941b1'
+sha256sums=('9882a8a0c7747a97342bb710611e4f479c7d0d519846f39fdb1aa81986629c0b'
             '568d8a08b942868ab9aa67458ad9bfcee4d56ef079d2467dd259613bb37d0bff'
             'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
