@@ -1,7 +1,7 @@
 pkgbase = mpv-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (git version)
-	pkgver = 0.34.0_368_g6858fc7d80
-	pkgrel = 2
+	pkgver = 0.34.0_373_g0044c19f0d
+	pkgrel = 1
 	url = https://mpv.io
 	install = mpv.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = mpv-git
 	makedepends = python-docutils
 	makedepends = pacman-contrib
 	makedepends = vulkan-headers
+	makedepends = wayland-protocols
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = luajit

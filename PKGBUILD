@@ -51,8 +51,8 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.34.0_368_g6858fc7d80
-pkgrel=2
+pkgver=0.34.0_373_g0044c19f0d
+pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
@@ -105,6 +105,7 @@ for feature in "${_opt_features[@]}"; do
       ;;
     wayland)
       depends+=('wayland' 'libxkbcommon')
+      makedepends+=('wayland-protocols')
       _opt_extra_flags+=('-Dwayland=enabled')
       ;;
     sdl2|openal|libplacebo|uchardet|rubberband)
