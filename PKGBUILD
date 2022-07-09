@@ -105,6 +105,7 @@ build() {
         -DSYSTEMD_SUPPORT=OFF \
         -DNO_FILE_ITEM_ACTION_PLUGIN=ON \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DVERSIONED_MINGW_LIBRARIES:BOOL=ON \
         -DNO_LIBSYNCTHING:BOOL="${_disable_libsyncthing}" \
         -DUSE_LIBSYNCTHING:BOOL="${_enable_libsyncthing}" \
         ${_config_flags[$_cfg]} \
