@@ -4,10 +4,10 @@
 _gemname=xz
 pkgname=ruby-$_gemname
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby bindings for liblzma using fiddle"
 arch=('any')
-depends=('ruby' 'ruby-ffi' 'ruby-io-like')
+depends=('ruby' 'xz')
 url="https://rubygems.org/gems/$pkgname"
 noextract=($pkgname-$pkgver.gem)
 license=('MIT')
