@@ -3,17 +3,18 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rccl
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
-url="https://github.com/ROCmSoftwarePlatform/rccl"
+url="https://docs.amd.com/bundle/rccl-release-rocm-rel-5.2/page/library.html"
 license=('custom')
 depends=('hip' 'rocm-smi-lib')
 makedepends=('cmake' 'python' 'gtest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('56491257f27b48bf85f4b91434a2a6e49a448337c889db181b02c8a4a260a4bc')
-_dirname="$(basename $url)-$(basename ${source[0]} .tar.gz)"
+_git='https://github.com/ROCmSoftwarePlatform/rccl'
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
+sha256sums=('6ee3a04da0d16eb53f768a088633a7d8ecc4416a2d0c07f7ba8426ab7892b060')
+_dirname="$(basename $_git)-$(basename ${source[0]} .tar.gz)"
 
 build() {
   local cmake_args=(-DCMAKE_INSTALL_PREFIX=/opt/rocm
@@ -22,7 +23,7 @@ build() {
       cmake_args+=(-DAMDGPU_TARGETS="$AMDGPU_TARGETS")
   fi
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
 
   CXX=/opt/rocm/hip/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
