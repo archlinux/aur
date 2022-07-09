@@ -4,15 +4,17 @@ _pkgname=STT
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Coqui-STT for inference"
-arch=('x86_64')
+arch=('x86_64', 'aarch64', 'armv7', 'amd64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('bazel' 'python38-pip' 'python38-numpy' 'python38-wheel' 'git' 'sox' 'wget' 'gcc')
+makedepends=('bazel' 'python38' 'git' 'sox' 'wget')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare()
 {
+  python -m ensurepip --upgrade --default-pip
+  pip install -U wheel numpy
   cd "$srcdir/${_pkgname}-${pkgver}"
   git submodule sync tensorflow/
   git submodule update --init tensorflow/
@@ -22,7 +24,7 @@ prepare()
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}/tensorflow"
-  export PYTHON_BIN_PATH=/usr/bin/python3.8
+  export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export TF_NEED_OPENCL_SYCL=0
   export TF_ENABLE_XLA=1
@@ -31,7 +33,7 @@ build() {
   export TF_NEED_ROCM=0
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
-  export CC_OPT_FLAGS="-march=x86-64"
+  export CC_OPT_FLAGS="-march=${arch[]}"
   #rm .bazelversion
   ./configure
 
@@ -59,10 +61,10 @@ package_stt() {
 
 package_python-stt() {
   pkgdesc="Coqui STT Python bindings"
-  depends=('stt' 'python38-numpy')
+  depends=('stt' 'python-numpy')
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/stt-*.whl
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
-  mv "$pkgdir/usr/bin/stt" "$pkgdir/usr/bin/stt_python"
+  #mv "$pkgdir/usr/bin/stt" "$pkgdir/usr/bin/stt_python"
   cp -rv "${srcdir}/${_pkgname}-${pkgver}/training/coqui_stt_training" "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 }
