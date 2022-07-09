@@ -2,7 +2,7 @@
 pkgname=osdlyrics-git
 provides=(osdlyrics)
 conflicts=(osdlyrics osdlyrics-pedrohlc)
-pkgver=0.5.10.r0.g987e99d
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Standalone lyrics fetcher/displayer (windowed and OSD mode). Supports MPRIS1/2 players, and MPD."
 arch=(i686 x86_64 arm64)
@@ -21,7 +21,7 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$provides"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    ./check-version.sh
 }
 
 build()
@@ -29,8 +29,8 @@ build()
     cd "$srcdir/$provides"
     ./autogen.sh
     ./configure \
-		--prefix=/usr PYTHON=/usr/bin/python \
-		--enable-appindicator=yes
+        --prefix=/usr PYTHON=/usr/bin/python \
+        --enable-appindicator=yes
     make
 }
 
