@@ -61,6 +61,7 @@ build() {
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DVERSIONED_MINGW_LIBRARIES:BOOL=ON \
         -DFORK_AWESOME_FONT_FILE="$srcdir/${_reponame_forkawesome}/fonts/forkawesome-webfont.ttf" \
         -DFORK_AWESOME_ICON_DEFINITIONS="$srcdir/${_reponame_forkawesome}/src/icons/icons.yml" \
         ${_config_flags[$_cfg]} \
