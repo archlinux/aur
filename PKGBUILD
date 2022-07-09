@@ -25,7 +25,7 @@ _pc_tflite_sum='34bbee9149d2a7545e797c8a5858b267c9c7aed00762e88c6098c9cbb7d6a7eb
 source_x86_64=("$_src_base_url/native_client.tflite.Linux.tar.xz"
                "stt.pc"
                "stt-tflite.pc")
-sha512sums_x86_64=('866c54d48ce260f62aeade4d0776f536245e5405b405f1e75f3d82cce286771ac2cab2dc8c0bdddbdb9fe1f092dc08007390d72f58c54b239b43f3b3084e6177'
+sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9f28aa9d879c21a428a4d74baaaa1d027b19d46e2abb15982e5262068a14a1d57e824'
                    "$_header_sum"
                    "$_pc_sum"
                    "$_pc_tflite_sum")
@@ -33,14 +33,14 @@ sha512sums_x86_64=('866c54d48ce260f62aeade4d0776f536245e5405b405f1e75f3d82cce286
 # armv7h
 source_armv7h=("$_src_base_url/native_client.tflite.linux.armv7.tar.xz"
                "stt.pc")
-sha512sums_armv7h=('d820ffde8493f8bfa560da79ad4362dce2777f82e8d519a16529b2c6c2bb824071772e3071e8d4d0ee93ab76e32c2e5755ca473e5a8ff10491d7da5d294b1d77'
+sha512sums_armv7h=('687fd924716ebcd53cf1f5ddf1efb44b4005f9a83f4af70756a1146c78b76d09c90add978dba40a4a7ba935a91704defbdbea3360426a09d4ac4c7f6f58248d2'
                    "$_header_sum"
                    "$_pc_sum")
 
 # aarch64
 source_aarch64=("$_src_base_url/native_client.tflite.linux.aarch64.tar.xz"
                 "stt.pc")
-sha512sums_aarch64=('32261e9bda72c53a345acf4541d73e86dd68be587cf2f7e90e1705a68f4e501907c5f144539d7644db72f9784ba035dad9de184db4880f10f0d676a5935d85d3'
+sha512sums_aarch64=('041400ee01bf0b863db60001972938aa1add4208df8e61a068bd4f872fe16fe9fccb23aa84c703e1181590ce19ded5453ace61670a57dfddbc18e5ef4b86c106'
                     "$_header_sum"
                     "$_pc_sum")
 
@@ -62,7 +62,7 @@ package() {
     # Make a directory and extract the library.
     local tf_dir="$srcdir/tflite"
     local tf_lib_path="$tf_dir/libstt.so"
-    local tf_lib_sum="7010cf23eb16da1edcd059ff599296a614171fca94f21dbd6de27935a2e72da557333b5560dacc4869a8fe4989a85608b685c2e20dbc8301d7b5f0ad20e06c98"
+    local tf_lib_sum="7887aac4dd8a1e11af8ecaaf03d4d697916fba801db0fb96a3dfee4d3d183979c836b80af05a4cf770ba854cd9d7ee4353fd6dbb68fe707daa3846b0772d94e1"
     mkdir -p "$tf_dir"
     tar -xvf "$srcdir/$nc_tflite_fname" -C "$tf_dir" --wildcards 'libstt.so'
 
