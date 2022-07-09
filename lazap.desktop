@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Lazap
+StartupWMClass=lazap
+Comment=Lazap, All your games at one library with a modernish look and experience.
+GenericName=Game Launcher
+Exec=/usr/bin/lazap %U
+Icon=lazap
+Type=Application
