@@ -1,28 +1,38 @@
-# Maintainer: bitwave <aur [at] oomlu [d0t] de>
+# Contributor: bitwave <aur [at] oomlu [d0t] de>
 
 pkgname=lemon-lang-git
-pkgver=13.9a0b3db
+pkgver=35.b1bb8a6
 pkgrel=1
 pkgdesc="An embeddable, lightweight programming language in ANSI C"
 arch=(i686 x86_64)
-url="http://www.lemon-lang.org/"
-license=('mit')
-depends=()
-source=('git://github.com/lemon-lang/lemon/')
+url="https://github.com/lemon-lang/lemon"
+license=('MIT')
+depends=('glibc')
+makedepends=('git')
+source=("git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/lemon"
+    cd lemon
     echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
+prepare() {
+    cd lemon
+    # remove insecure rpath
+    sed -i '/-rpath=\.\//d' Makefile
+}
+
 build() {
-    cd "$srcdir/lemon"
-    make STATIC=1
+    make -C lemon STATIC=1
+}
+
+check() {
+    make -C lemon STATIC=1 test
 }
 
 package() {
-    cd "$srcdir/lemon"
-    install -Dm 755 $srcdir/lemon/lemon $pkgdir/usr/bin/lemon
+    cd lemon
+    install -Dm755 lemon -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
