@@ -1,0 +1,9 @@
+pkgbase = arch-is-the-best
+	pkgdesc = Arch is the best
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/Arch_is_the_best
+	arch = any
+	license = FDL1.3
+
+pkgname = arch-is-the-best
