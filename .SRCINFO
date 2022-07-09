@@ -1,7 +1,7 @@
 pkgbase = transfer-more
 	pkgdesc = Fast and lite file upload server (transfer.sh clone), git build.
 	pkgver = v0.5.6
-	pkgrel = 3
+	pkgrel = 7
 	url = https://git.sceptique.eu/Sceptique/transfer_more
 	arch = any
 	license = GPLv3

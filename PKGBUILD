@@ -1,7 +1,7 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
 pkgver=v0.5.6
-pkgrel=3
+pkgrel=7
 pkgdesc="Fast and lite file upload server (transfer.sh clone), git build."
 arch=('any')
 url="https://git.sceptique.eu/Sceptique/transfer_more"
