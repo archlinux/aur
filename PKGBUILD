@@ -1,28 +1,33 @@
 pkgname=rsgain-git
-pkgver=2.0.1
+_pkgname=rsgain
+pkgver=20220709.g1c63a566d60cbf8d1614b3f8aa5c5a00e680ea30
 pkgrel=1
-epoch=
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
 license=('BSD')
 groups=()
 depends=('libebur128' 'taglib' 'libavformat.so' 'libavcodec.so' 'libswresample.so' 'libavutil.so' 'libinih')
-makedepends=('cmake')
+makedepends=('git' 'cmake')
 provides=('rsgain')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/complexlogic/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+conflicts=('rsgain')
+source=("git+https://github.com/complexlogic/rsgain.git")
 md5sums=('SKIP')
-validpgpkeys=()
+
+pkgver() {
+  cd $_pkgname
+  date +"%Y%m%d"."g$(git rev-parse HEAD)"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname"
 	mkdir build && cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver/build"
+	cd "$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
 }
  
