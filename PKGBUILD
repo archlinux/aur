@@ -11,7 +11,7 @@ license=('custom:OFL')
 source=("$url/releases/download/$pkgver/roboto-flex-fonts.zip"
         "$url/raw/main/OFL.txt")
 sha256sums=('02e0f5db84e69f254958434269d83aa6057b06f3c2a21042bb81b1afe1a0c8c6'
-            'b023c5d35f13b14327b1db316eb8660f9924edb1819906b97e2c7dfef1b683f0')
+            'SKIP')
 
 package() {
   cd roboto-flex-fonts/
