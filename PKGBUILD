@@ -26,7 +26,6 @@ source_x86_64=("$_src_base_url/native_client.tflite.Linux.tar.xz"
                "stt.pc"
                "stt-tflite.pc")
 sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9f28aa9d879c21a428a4d74baaaa1d027b19d46e2abb15982e5262068a14a1d57e824'
-                   "$_header_sum"
                    "$_pc_sum"
                    "$_pc_tflite_sum")
 
@@ -34,14 +33,12 @@ sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9
 source_armv7h=("$_src_base_url/native_client.tflite.linux.armv7.tar.xz"
                "stt.pc")
 sha512sums_armv7h=('687fd924716ebcd53cf1f5ddf1efb44b4005f9a83f4af70756a1146c78b76d09c90add978dba40a4a7ba935a91704defbdbea3360426a09d4ac4c7f6f58248d2'
-                   "$_header_sum"
                    "$_pc_sum")
 
 # aarch64
 source_aarch64=("$_src_base_url/native_client.tflite.linux.aarch64.tar.xz"
                 "stt.pc")
 sha512sums_aarch64=('041400ee01bf0b863db60001972938aa1add4208df8e61a068bd4f872fe16fe9fccb23aa84c703e1181590ce19ded5453ace61670a57dfddbc18e5ef4b86c106'
-                    "$_header_sum"
                     "$_pc_sum")
 
 package() {
