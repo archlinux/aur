@@ -22,14 +22,12 @@ _pc_sum='30139b795537a9a21187889daac8f24fb0ab542363a8c59c6bd53ccf5883cdf49f300d8
 _pc_tflite_sum='431f552a22e2a2030a99a47f00b2c2d56cbb7adc5e2d3e78431536ae209bcc76f2324f055889d3e7e371f0e7123b845050b4bfeb242bc766fc060a32354329f5'
 
 # amd64
-source_x86_64=("$_src_base_url/native_client.tflite.Linux.tar.xz"
-               "$_raw_base_url/native_client/coqui-stt.h"
-               "stt.pc"
-               "stt-tflite.pc")
+source_x86_64=("$_src_base_url/stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
+               "$_src_base_url/coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
+                )
 sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9f28aa9d879c21a428a4d74baaaa1d027b19d46e2abb15982e5262068a14a1d57e824'
-                   "$_header_sum"
-                   "$_pc_sum"
-                   "$_pc_tflite_sum")
+                   '020bc4556b7ca47fa5ffdf62028a82498c46b73edd18b5c577288b7f8ed8960becc72dc94d9b018c366ee4802a37abcf7b3eadebb06fa73633f808f90365839d'
+                    )
 
 # armv7h
 source_armv7h=("$_src_base_url/native_client.tflite.linux.armv7.tar.xz"
@@ -47,54 +45,47 @@ sha512sums_aarch64=('041400ee01bf0b863db60001972938aa1add4208df8e61a068bd4f872fe
                     "$_header_sum"
                     "$_pc_sum")
 
+prepare()
+{
+  python -m ensurepip --upgrade --default-pip
+  pip install -U wheel numpy
+}
+
 package() {
   # Create installation directories.
-	mkdir -p "$pkgdir/usr/lib"
-	mkdir -p "$pkgdir/usr/include"
-	mkdir -p "$pkgdir/usr/lib/pkgconfig"
+	#mkdir -p "$pkgdir/usr/lib"
+	#mkdir -p "$pkgdir/usr/include"
+	#mkdir -p "$pkgdir/usr/lib/pkgconfig"
 
   # Separately get a copy of the TFLite library.
   # Unfortunately, due to files having the same name, this cannot be done with the sources section.
   # Note: At this time, only x86_64 Linux has a prebuilt TFLite library.
   MACHINE_TYPE=`uname -m`
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
-    # Download the TFLite version of STT.
-    local nc_tflite_fname="native_client.tflite.Linux.tar.xz"
-    wget "$_src_base_url/$nc_tflite_fname" -q -O "$srcdir/$nc_tflite_fname"
-
-    # Make a directory and extract the library.
-    local tf_dir="$srcdir/tflite"
-    local tf_lib_path="$tf_dir/libstt.so"
-    local tf_lib_sum="7887aac4dd8a1e11af8ecaaf03d4d697916fba801db0fb96a3dfee4d3d183979c836b80af05a4cf770ba854cd9d7ee4353fd6dbb68fe707daa3846b0772d94e1"
-    mkdir -p "$tf_dir"
-    tar -xvf "$srcdir/$nc_tflite_fname" -C "$tf_dir" --wildcards 'libstt.so'
-
-    # Ensure the library's checksum is correct.
-    local lib_sum_check=$(sha512sum "$tf_lib_path" | awk '{print $1}')
-    if [ ${lib_sum_check} != "$tf_lib_sum" ]; then
+    # Download the STT Wheel.
+    local stt_fname="stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
+    local stt_sum="bad4e9fbf79996cec808d06e77f8a385669351e8ee8c91dcc13f1cfb04c2dc3731d058bab3c36595df35c75a3dcc4bf50f7c4e36b9d3a40a2ddab9ca16ac273b"
+    wget "$_src_base_url/$stt_fname" -q -O "$srcdir/$stt_fname"
+    local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
+    if [ ${stt_sum_checkv} != "$stt_sum" ]; then
       # Bail!
-      echo "Verifying the TFLite library's checksum failed!" 1>&2
+      echo "Verifying STT's checksum failed!" 1>&2
       exit 1
     fi
 
-    # Copy and rename the TFLite library.
-    install -Dm755 "$tf_lib_path" "$pkgdir/usr/lib/libstt-tflite.so.$pkgver"
-    ln -s "/usr/lib/libstt-tflite.so.$pkgver" "$pkgdir/usr/lib/libstt-tflite.so"
-
-    # Install the pkgconf file.
-    install -Dm644 stt-tflite.pc "$pkgdir/usr/lib/pkgconfig/stt-tflite.pc"
+    # Download the CTC Decoder Wheel.
+    local ctc_fname="coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
+    local ctc_sum="020bc4556b7ca47fa5ffdf62028a82498c46b73edd18b5c577288b7f8ed8960becc72dc94d9b018c366ee4802a37abcf7b3eadebb06fa73633f808f90365839d"
+    wget "$_src_base_url/$ctc_fname" -q -O "$srcdir/$ctc_fname"
+    local ctc_sum_check=$(sha512sum "$ctc_fname" | awk '{print $1}')
+    if [ ${ctc_sum_check} != "$ctc_sum" ]; then
+      # Bail!
+      echo "Verifying CTC Decoder's checksum failed!" 1>&2
+      exit 1
+    fi
   fi
 
-  # Install files.
-  install -Dm755 libstt.so "$pkgdir/usr/lib/libstt.so.$pkgver"
-  ln -s "/usr/lib/libstt.so.$pkgver" "$pkgdir/usr/lib/libstt.so"
-  install -Dm644 coqui-stt.h "$pkgdir/usr/include"
-  install -Dm644 stt.pc "$pkgdir/usr/lib/pkgconfig/stt.pc"
-  
   # Python bindings
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/stt-*.whl
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
-  #mv "$pkgdir/usr/bin/stt" "$pkgdir/usr/bin/stt_python"
-  cp -rv "${srcdir}/${_pkgname}-${pkgver}/training/coqui_stt_training" "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
-
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps stt-*.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps coqui_stt_ctcdecoder-*.whl
 }
