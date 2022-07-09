@@ -12,7 +12,7 @@ pkgbase = bililive-recorder
 	depends = aspnet-runtime
 	provides = bililive-recorder
 	conflicts = bililive-recorder-bin
-	source = git+https://github.com/BililiveRecorder/BililiveRecorder
+	source = git+https://github.com/BililiveRecorder/BililiveRecorder#tag=v2.1.1
 	sha256sums = SKIP
 
 pkgname = bililive-recorder
