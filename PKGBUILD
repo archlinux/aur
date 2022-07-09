@@ -4,7 +4,7 @@ pkgname='eruption'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
 pkgver='0.1.23'
-pkgrel='2'
+pkgrel='4'
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
 license=('GPL3+')
@@ -16,7 +16,7 @@ replaces=('eruption-roccat-vulcan')
 backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/audio-proxy.conf)
 install='eruption.install'
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('c4ace48ae9b7fbbc7e85ba47f2c969983594cab09ebc069bc39caa27a4e7833042e50a6d523aec18b5dedd1005be0de0aa4719bc3c9e6acafd04cd8a6f514c8a')
+sha512sum=('6bb2e8167ed5d7cc9c8d583022981e0b8ffd55310b443cd05fb64eb65505e90e481b08cba0de2c2a86377503d29e00f7191a420a8842c46ed1e58a859ba166cd')
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -358,3 +358,4 @@ package() {
     install -m 644 "support/profiles/swirl-voronoi.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
 }
+sha256sums=('2bf37da444d6e424f3f130bf661b779559e661c644cb4358aac3abfd7ad12ba5')
