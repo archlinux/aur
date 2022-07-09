@@ -8,6 +8,7 @@ pkgbase = renderman
 	license = custom
 	depends = libidn
 	depends = libicu50
+	optdepends = renderman-pro-server: Provides the actual renderer
 	source = manual://RenderMan-InstallerNCR-24.4.0_2226589-linuxRHEL7_gcc63icc190.x86_64.rpm
 	sha256sums = 47f20247493ddc61ea33edf86d60d1414b249ffcf024d4741dbc571bbf705500
 
