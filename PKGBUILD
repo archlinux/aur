@@ -4,7 +4,7 @@ pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Realtime RGB LED Driver for Linux'
 pkgver='0.1.23'
-pkgrel='5'
+pkgrel='6'
 arch=('i686' 'x86_64')
 url='https://eruption-project.org/'
 license=('GPL3+')
@@ -16,7 +16,7 @@ replaces=('eruption-roccat-vulcan-git')
 backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/audio-proxy.conf)
 install='eruption.install'
 source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git')
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
