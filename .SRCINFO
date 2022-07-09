@@ -1,0 +1,25 @@
+pkgbase = endeavour
+	pkgdesc = Task manager for GNOME
+	pkgver = 41.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Endeavour
+	arch = x86_64
+	arch = aarch64
+	groups = gnome-extra
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = evolution-data-server
+	depends = libpeas
+	depends = python
+	depends = libportal-gtk4
+	depends = libadwaita
+	conflicts = gnome-todo
+	replaces = gnome-todo
+	source = git+https://gitlab.gnome.org/GNOME/gnome-todo.git#commit=ebc683746c705faa7c080aa96eecb83e523a8c15
+	b2sums = SKIP
+
+pkgname = endeavour
