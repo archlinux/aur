@@ -4,8 +4,8 @@
 _pkgname=ente
 
 pkgname="${_pkgname}-desktop-appimage"
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Secure backups for photos and videos"
 arch=('x86_64')
 url="https://ente.io/"
