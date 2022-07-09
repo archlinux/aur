@@ -4,7 +4,7 @@
 pkgname=libnvidia-container-tools-bin
 _pkgname=libnvidia-container-tools
 
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 
 pkgdesc='NVIDIA container runtime library (command-line tools)'
@@ -17,7 +17,7 @@ provides=('libnvidia-container-tools=$pkgver')
 conflicts=('libnvidia-container-tools')
 
 source=("${_pkgname}-${pkgver}-1-${pkgrel}.${CARCH}.rpm::https://nvidia.github.io/libnvidia-container/centos7/${CARCH}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('9edf45e92759b90d77502c612caa1b0202919f376b8d685b38f99fc8fd9e6b16')
+sha256sums=('af428937350f02ed081eb6b6b0d2a9836d8e9da3c6dffd02449cf304d8fecc02')
 
 package() {
   cd "$srcdir"
