@@ -9,12 +9,13 @@ _quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
 _reponame=passwordmanager
 pkgname=passwordmanager-git
 _name=${pkgname%-git}
-pkgver=281.c12f63d
+pkgver=300.3a01f2d
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
-depends=('qt5-base' 'qtutilities-git' 'passwordfile-git' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
+depends=('qt5-base' 'libqtutilities-git.so' 'libpasswordfile-git.so' 'libc++utilities-git.so' 'openssl'
+         'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa' 'kirigami2')
 optdepends=('kirigami2: Qt Quick GUI')
 provides=("${_name}")
