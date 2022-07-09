@@ -1,14 +1,14 @@
 pkgbase = pocha-dir-list
 	pkgdesc = Terminal application to list files in a directory in a tree
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://gitlab.com/ICanOnlySuffer/pocha-dir-list
 	arch = x86_64
 	arch = armv7a
 	groups = pocha
 	license = GPLv3
 	makedepends = libpocha
-	source = https://gitlab.com/ICanOnlySuffer/pocha-dir-list/-/archive/v1.7.0/pocha-dir-list-v1.7.0.tar.gz
-	sha256sums = a1ba86ad4977dedc0cfc08040a1bb50ccd1a02df11c9434a2c567cbbfa3d8943
+	source = https://gitlab.com/ICanOnlySuffer/pocha-dir-list/-/archive/v1.7.1/pocha-dir-list-v1.7.1.tar.gz
+	sha256sums = c60d8c35c9804ca64c5af4ac7054e23d387a5cf21c643bf0e97c577d9e956722
 
 pkgname = pocha-dir-list
