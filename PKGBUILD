@@ -1,6 +1,6 @@
 pkgname=csvs-to-sqlite
 _pkgname=csvs_to_sqlite
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Convert CSV files into a SQLite database"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("python-click" "python-dateparser" "python-pandas" "python-py-lru-cache
 makedepends=("python-setuptools")
 conflicts=("csvs-to-sqlite")
 source=("https://pypi.io/packages/source/c/${pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=("0d47d2a006ad58204bcb40ea511e59b62f1aacb6546bcd4f9096253910e053cd")
+sha256sums=("638623ff5462e60123da07860a096f9cff0d7aa8f036e68cc98001e006adea59")
 
 build() {
     cd "${_pkgname}-${pkgver}"
