@@ -8,7 +8,6 @@ pkgrel=1
 pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('xorg-xrandr')
 provides=('chwp')
 conflicts=('chwp')
 source=("${_pkgname}::${url}/releases/download/v$pkgver/${_pkgname}-linux-x86_64")
