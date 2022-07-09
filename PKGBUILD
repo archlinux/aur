@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.0.dev.r3898.ge66a7f8ec
+pkgver=v1.7.0.dev.r3901.g1ba2a9fbd
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -37,13 +37,14 @@ depends=(
   portaudio
   libsamplerate
   sdl2
+  rapidyaml
   qt6-base
   qt6-wayland
   qt6-tools
   qt6-svg
   soundtouch
   wayland
-  zstd
+  zstd-cmake
 )
 makedepends=(
   cmake

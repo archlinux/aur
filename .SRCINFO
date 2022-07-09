@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.0.dev.r3898.ge66a7f8ec
+	pkgver = v1.7.0.dev.r3901.g1ba2a9fbd
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = dev9.install
@@ -28,13 +28,14 @@ pkgbase = pcsx2-git
 	depends = portaudio
 	depends = libsamplerate
 	depends = sdl2
+	depends = rapidyaml
 	depends = qt6-base
 	depends = qt6-wayland
 	depends = qt6-tools
 	depends = qt6-svg
 	depends = soundtouch
 	depends = wayland
-	depends = zstd
+	depends = zstd-cmake
 	provides = pcsx2-qt
 	conflicts = pcsx2
 	source = git+https://github.com/kenshen112/pcsx2.git#branch=packages
