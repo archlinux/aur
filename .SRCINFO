@@ -1,0 +1,25 @@
+pkgbase = endeavour-git
+	pkgdesc = Task manager for GNOME
+	pkgver = 41.0.r126.g7d1da12f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Endeavour
+	arch = x86_64
+	arch = aarch64
+	groups = gnome-extra
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = evolution-data-server
+	depends = libpeas
+	depends = python
+	depends = libportal-gtk4
+	depends = libadwaita
+	provides = endeavour
+	conflicts = endeavour
+	source = git+https://gitlab.gnome.org/World/Endeavour.git
+	b2sums = SKIP
+
+pkgname = endeavour-git
