@@ -3,13 +3,13 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Realtime RGB LED Driver for Linux'
-pkgver=0.1.23.r70.g339bfa2
-pkgrel=1
+pkgver='0.1.23'
+pkgrel='5'
 arch=('i686' 'x86_64')
 url='https://eruption-project.org/'
 license=('GPL3+')
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'lua' 'lua-socket' 'gtksourceview4')
-makedepends=('git' 'rust' 'pkgconf' 'xorg-server-devel' 'libxrandr' 'gtk3')
+makedepends=('git' 'rust' 'pkgconf' 'protobuf' 'xorg-server-devel' 'libxrandr' 'gtk3')
 provides=('eruption')
 conflicts=('eruption' 'eruption-roccat-vulcan')
 replaces=('eruption-roccat-vulcan-git')
@@ -37,6 +37,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/doc/eruption"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/macros"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/themes"
+    mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/keymaps"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/misc"
@@ -76,6 +77,7 @@ package() {
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-hwutil" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-keymap" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-netfx" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-cmd" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-util" "$pkgdir/usr/bin/"
@@ -127,6 +129,7 @@ package() {
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-cmd"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-hwutil"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-debug-tool"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-netfx"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-netfx"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-audio-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-process-monitor"
@@ -135,6 +138,7 @@ package() {
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-cmd.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-hwutil.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-debug-tool.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-netfx.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-netfx.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-audio-proxy.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-process-monitor.fish"
@@ -143,6 +147,7 @@ package() {
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-cmd"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-hwutil"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-debug-tool"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-netfx"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-netfx"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-audio-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-process-monitor"
