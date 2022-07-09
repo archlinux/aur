@@ -1,0 +1,11 @@
+pkgbase = chromeos-acpi-dkms-git
+	pkgdesc = Chromium OS version of the chromeos_acpi module (DKMS), for use with the crossystem tool.
+	pkgver = r5.15.20220709092431.652c8a3
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromiumos/third_party/kernel
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+
+pkgname = chromeos-acpi-dkms-git
