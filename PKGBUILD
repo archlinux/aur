@@ -64,12 +64,17 @@ prepare() {
 		"${srcdir}/opentelemetry-java-contrib"
 	git submodule update
 	git apply "${srcdir}/0001-apps-hostmetrics.patch"
+
+	rm -rf ${srcdir}/google-cloud-ops-agent-git/submodules/opentelemetry-java-contrib/META-INF
 }
 
 build() {
+	_destdir="$srcdir/../staging"
+	mkdir -p "$_destdir"
+	echo "destdir: $_destdir"
+
 	cd "${pkgname}"
-	echo "build in $PWD"
-	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" \
+	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" DESTDIR="$_destdir" \
 		./build.sh
 }
 
