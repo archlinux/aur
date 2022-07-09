@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.20.2
+pkgver=1.20.0+r1244+g3385ea3481
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -69,7 +69,7 @@ source=(
 )
 sha256sums=('SKIP'
             '292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683'
-            '11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70'
+            'cdb0b056d8a1d31394fb3cf23dcfa8e7345cac6671dacdee8029b380ef30640d'
             '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
 
 pkgver() {
@@ -96,6 +96,7 @@ build() {
     -D devtools=disabled
     -D doc=disabled
     -D examples=disabled
+    -D ges=disabled
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
@@ -142,6 +143,7 @@ build() {
     -D gst-plugins-bad:wasapi=disabled
     -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
     -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
+    -D gst-plugins-bad:qsv=disabled # due to no x86 support
     -D gst-plugins-bad:ldac=disabled # due to no lib32-libdac support
     -D gst-plugins-bad:microdns=disabled # due to no lib32-microdns support
     -D gst-plugins-bad:openaptx=disabled # due to no lib32-Xaptx support
@@ -151,6 +153,8 @@ build() {
     -D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
     -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
     -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
+    -D gst-plugins-bad:amfcodec=disabled # only support windows
+    -D gst-plugins-bad:directshow=disabled # only support windows
     -D gst-plugins-ugly:gobject-cast-checks=disabled
     -D gst-plugins-ugly:package-name="Arch Linux gst-plugins-ugly $pkgver-$pkgrel"
     -D gst-plugins-ugly:package-origin="https://www.archlinux.org/"
@@ -159,7 +163,6 @@ build() {
     -D gst-rtsp-server:gobject-cast-checks=disabled
     -D gst-rtsp-server:package-name="Arch Linux gst-rtsp-server $pkgver-$pkgrel"
     -D gst-rtsp-server:package-origin="https://www.archlinux.org/"
-    -D gst-editing-services:validate=disabled
     -D gstreamer-vaapi:package-origin="https://www.archlinux.org/"
   )
 
@@ -219,7 +222,6 @@ package_lib32-gstreamer-git() {
   cd root
   local files=(
     usr/include/gstreamer-1.0/gst/{base,check,controller,net,*.h}
-    usr/lib*/python*/site-packages/gi/overrides/GES.py
 
     usr/share/locale/*/LC_MESSAGES/gstreamer-1.0.mo
     usr/share/man/man1/gst-{inspect,launch,stats,typefind}-1.0.1
@@ -251,7 +253,7 @@ package_lib32-gst-plugins-bad-libs-git() {
   conflicts=("lib32-gst-plugins-bad-libs")
 
   cd root; local files=(
-    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland,webrtc}-1.0.so*
+    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,cuda,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland,webrtc}-1.0.so*
     usr/lib32/pkgconfig/gstreamer-{bad-audio,codecparsers,insertbin,mpegts,photography,play,player,sctp,transcoder,vulkan{,-wayland,-xcb},wayland,webrtc}-1.0.pc
 
     usr/lib32/pkgconfig/gstreamer-plugins-bad-1.0.pc
@@ -367,9 +369,8 @@ package_lib32-gst-plugins-base-libs-git() {
     usr/lib32/gstreamer-1.0/libgstsubparse.so
     usr/lib32/gstreamer-1.0/libgsttcp.so
     usr/lib32/gstreamer-1.0/libgsttypefindfunctions.so
-    usr/lib32/gstreamer-1.0/libgstvideoconvert.so
+    usr/lib32/gstreamer-1.0/libgstvideoconvertscale.so
     usr/lib32/gstreamer-1.0/libgstvideorate.so
-    usr/lib32/gstreamer-1.0/libgstvideoscale.so
     usr/lib32/gstreamer-1.0/libgstvideotestsrc.so
     usr/lib32/gstreamer-1.0/libgstvolume.so
     usr/lib32/gstreamer-1.0/libgstximagesink.so
@@ -502,6 +503,7 @@ package_lib32-gst-plugins-bad-git() {
   conflicts=("lib32-gst-plugins-bad")
 
   cd root; local files=(
+    usr/lib32/gstreamer-1.0/libgstadaptivedemux2.so # new
     usr/lib32/gstreamer-1.0/libgstaes.so
     usr/lib32/gstreamer-1.0/libgstaom.so
     usr/lib32/gstreamer-1.0/libgstassrender.so
