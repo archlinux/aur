@@ -6,13 +6,14 @@
 _reponame=qtutilities
 pkgname=qtutilities
 pkgver=6.6.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
 license=('GPL')
-depends=('c++utilities' 'qt5-base')
+depends=('libc++utilities.so' 'qt5-base')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
 optdepends=("$pkgname-doc: API documentation")
+provides=(libqtutilities.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('6be07b06d7319b907bbd6b88b55b5367ce935443a92c1953116f9dbad8363000')
