@@ -1,6 +1,6 @@
 pkgbase = libpocha
 	pkgdesc = Static utilities library for C and FASM
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://gitlab.com/ICanOnlySuffer/libpocha
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libpocha
 	groups = pocha
 	license = GPLv3
 	makedepends = fasm
-	source = https://gitlab.com/ICanOnlySuffer/libpocha/-/archive/v0.7.1/libpocha-v0.7.1.tar.gz
-	sha256sums = 3db1cfdb59aabba624675cf850fe257dcd8aa41a513859ac5d9cb64e64784532
+	source = https://gitlab.com/ICanOnlySuffer/libpocha/-/archive/v0.8.0/libpocha-v0.8.0.tar.gz
+	sha256sums = aae86215c50c8e25365a2afae0fd01d29a278a1ce26cf3cb46d888fbb95e5fed
 
 pkgname = libpocha
