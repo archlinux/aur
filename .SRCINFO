@@ -17,6 +17,7 @@ pkgbase = mapillary_tools-git
 	depends = python-requests
 	depends = python-pymp4
 	depends = python-construct
+	provides = mapillary_tools
 	source = mapillary_tools-git::git+https://github.com/mapillary/mapillary_tools.git
 	md5sums = SKIP
 
