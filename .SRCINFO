@@ -1,8 +1,11 @@
 pkgbase = annotator
 	pkgdesc = Image annotation for Elementary OS
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phase1geo/Annotator
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0

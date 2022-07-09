@@ -1,12 +1,13 @@
-# Maintainer: Martin Minka <martin.minka@gmail.com>
+# Maintainer: Archisman Panigrahi <apandada1@gmail.com>
+# Contributor: Martin Minka <martin.minka@gmail.com>
 
 pkgname="annotator"
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Image annotation for Elementary OS"
 url="https://github.com/phase1geo/Annotator"
 license=(" GPL-3.0")
-arch=("i686" "x86_64")
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('gtk3' 'libxml2' 'libhandy' 'libgee' 'granite')
 makedepends=('git' 'meson' 'vala')
 provides=("Annotator")
