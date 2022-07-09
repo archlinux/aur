@@ -54,7 +54,7 @@ build() {
 }
 
 package_stt() {
-  depends=('sox')
+  depends=('sox' 'python-libclang' 'tensorflow-io-gcs-filesystem' 'protobuf')
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
   PREFIX="${pkgdir}"/usr make install
 }
