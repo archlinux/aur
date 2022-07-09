@@ -5,7 +5,7 @@ _pkgname=ente
 
 pkgname="${_pkgname}-desktop-appimage"
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure backups for photos and videos"
 arch=('x86_64')
 url="https://ente.io/"
@@ -14,7 +14,7 @@ depends=('libnotify' 'libappindicator-gtk3' 'fuse2' 'fuse3' 'fuse-common' 'libse
 _appimage="ente-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/ente-io/bhari-frame/releases/download/v${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('a0bf1a8cade88c083be12f0239eb006765f21d30449bafac6fef857076e15aaa')
+sha256sums_x86_64=('30369be5415612e7947b76e4eddacab1fcccce0032edc5a209e920c086d91782')
 options+=('!strip')
 
 prepare() {
