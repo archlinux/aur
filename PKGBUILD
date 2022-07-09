@@ -3,11 +3,11 @@
 
 pkgname=mapillary_tools-git
 _pkgname=mapillary_tools
-pkgver=r1316.496deac
+pkgver=r1442.92624cc
 pkgrel=1
 pkgdesc="Library for processing and uploading geotagged images to Mapillary"
 url="https://github.com/mapillary/mapillary_tools"
-depends=('python-exifread' 'python-gpxpy' 'python-pillow' 'python-piexif' 'python-pytz' 'python-yaml' 'python-tqdm' 'python-pynmea2' 'python-dateutil' 'python-requests' 'python-pymp4' 'python-construct')
+depends=('python-exifread' 'python-gpxpy' 'python-pillow' 'python-piexif' 'python-pytz' 'python-yaml' 'python-tqdm' 'python-pynmea2' 'python-dateutil' 'python-requests' 'python-construct')
 provides=(mapillary_tools)
 license=('BSD')
 arch=('any')
