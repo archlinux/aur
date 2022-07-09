@@ -25,7 +25,7 @@ _pc_tflite_sum='34bbee9149d2a7545e797c8a5858b267c9c7aed00762e88c6098c9cbb7d6a7eb
 source_x86_64=("$_src_base_url/native_client.tflite.Linux.tar.xz"
                "stt.pc"
                "stt-tflite.pc")
-sha512sums_x86_64=('dab43719421ce35979527e95f7d49f7583aba9e200ca8b72eb67694dde3715a230b0a24ae5aa24db1e79218e71c95e00040124878d258b76286d76691261255c'
+sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9f28aa9d879c21a428a4d74baaaa1d027b19d46e2abb15982e5262068a14a1d57e824'
                    "$_header_sum"
                    "$_pc_sum"
                    "$_pc_tflite_sum")
