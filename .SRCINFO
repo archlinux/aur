@@ -14,7 +14,7 @@ pkgbase = altair
 	provides = altair
 	source_x86_64 = altair-4.4.1.AppImage::https://github.com/imolorhe/altair/releases/download/v4.4.1/altair_4.4.1_x86_64_linux.AppImage
 	source_x86_64 = altair
-	sha256sums_x86_64 = 6cc13b16fc81b3b7f8f53dde6b367899c1ff86afbfbec361a867b90472eea7ca
+	sha256sums_x86_64 = 52fab3ea8b03bf7e015f4cb04a9ce5440926ce415798068b66e399707fc70d61
 	sha256sums_x86_64 = b2a068cbaca2bc6f20cd84bc2e8d5b5edcddb8ef2e280402b3c008be984d7070
 
 pkgname = altair
