@@ -18,7 +18,7 @@ build() {
   cd "$srcdir"
   local _type
   for _type in bold italic bolditalic; do
-    "mk$_type" "unifont-$pkgver.bdf" >"unifont-$_type-$pkgver.bdf"
+    "mk$_type" "unifont-$pkgver.bdf" | gzip -c >"unifont-$_type-$pkgver.bdf.gz"
   done
 }
 
@@ -26,8 +26,8 @@ package() {
   cd "$srcdir"
   local _type
   for _type in bold italic bolditalic; do
-    install -Dm644 "unifont-$_type-$pkgver.bdf" \
-      "$pkgdir/usr/share/fonts/misc/unifont-$_type.bdf"
+    install -Dm644 "unifont-$_type-$pkgver.bdf.gz" \
+      "$pkgdir/usr/share/fonts/misc/unifont-$_type.bdf.gz"
   done
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
