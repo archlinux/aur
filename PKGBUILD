@@ -3,14 +3,14 @@
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='monero-feather'
-pkgver=1.0.1
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://featherwallet.org"
-depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'zeromq' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'libgcrypt'
-    'qrencode' 'libsodium' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'zbar')
+depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'libgcrypt'
+         'qrencode' 'libsodium' 'expat' 'qt6-base' 'qt6-websockets' 'qt6-svg' 'tor' 'zbar' 'unbound')
 makedepends=('git' 'cmake' 'boost')
 provides=('monero-feather')
 conflicts=('monero-feather' 'monero-feather-git')
@@ -21,7 +21,6 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git submodule set-url monero https://github.com/feather-wallet/monero.git
   git submodule update --init --recursive
 }
 
