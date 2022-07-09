@@ -1,6 +1,6 @@
 pkgbase = zeek
 	pkgdesc = A network analysis framework
-	pkgver = 4.2.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://zeek.org
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = zeek
 	depends = bash
 	depends = libmaxminddb
 	depends = python
-	source = https://download.zeek.org/zeek-4.2.2.tar.gz
-	source = https://download.zeek.org/zeek-4.2.2.tar.gz.asc
+	source = https://download.zeek.org/zeek-5.0.0.tar.gz
+	source = https://download.zeek.org/zeek-5.0.0.tar.gz.asc
+	source = 0001-Fix-default-build-with-disable-cpp-tests.patch
 	source = zeek.tmpfiles.conf
-	source = 0001-Make-ZKG-state-dir-configurable.patch
 	validpgpkeys = 962FD2187ED5A1DD82FC478A33F15EAEF8CB8019
-	sha256sums = f50dd7db8b809a74a72d402494afa00b432ef1e87cd5913687feee21573c700c
+	sha256sums = d0d300fd8d9a1a485a0198c52e9773db7c532820faaea797e4c63aafac63fd7e
 	sha256sums = SKIP
+	sha256sums = 3f5f0820480ecb2b160d948cfd3957ac26d4c48ecab95410eebbbfb6ac5380b4
 	sha256sums = af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91
-	sha256sums = 572eb29f448fb851e51b6c45c4c904b34be649363f302c00d4dbf8ac8221e046
 
 pkgname = zeek

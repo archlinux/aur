@@ -2,7 +2,7 @@
 # Contributor: Nick Skelsey <nskelsey@gmail.com>
 
 pkgname=zeek
-pkgver=4.2.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('BSD')
 depends=(zlib libpcap bash libmaxminddb python)
 makedepends=(cmake swig bison flex openssl geoip gperftools shadow)
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
-        zeek.tmpfiles.conf
-        0001-Make-ZKG-state-dir-configurable.patch)
-sha256sums=('f50dd7db8b809a74a72d402494afa00b432ef1e87cd5913687feee21573c700c'
+        0001-Fix-default-build-with-disable-cpp-tests.patch
+        zeek.tmpfiles.conf)
+sha256sums=('d0d300fd8d9a1a485a0198c52e9773db7c532820faaea797e4c63aafac63fd7e'
             'SKIP'
-            'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91'
-            '572eb29f448fb851e51b6c45c4c904b34be649363f302c00d4dbf8ac8221e046')
+            '3f5f0820480ecb2b160d948cfd3957ac26d4c48ecab95410eebbbfb6ac5380b4'
+            'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91')
 validpgpkeys=(
   962FD2187ED5A1DD82FC478A33F15EAEF8CB8019 # The Zeek Team <info@zeek.org>
 )
@@ -24,7 +24,7 @@ validpgpkeys=(
 prepare() {
   cd "zeek-$pkgver"
 
-  patch -Np1 -i "$srcdir/0001-Make-ZKG-state-dir-configurable.patch"
+  patch -Np1 -i "$srcdir/0001-Fix-default-build-with-disable-cpp-tests.patch"
 }
 
 build() {
@@ -32,7 +32,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D ZEEK_PYTHON_PREFIX:PATH=/usr \
     -D ZEEK_ETC_INSTALL_DIR:PATH=/etc \
-    -D ZEEK_ZKG_STATE_DIR:PATH=/var/lib/zkg \
+    -D ZEEK_STATE_DIR:PATH=/var/lib \
     -D BINARY_PACKAGING_MODE=ON \
     -D BUILD_SHARED_LIBS=ON \
     -D BUILD_STATIC_BINPAC=ON \
@@ -47,8 +47,6 @@ build() {
 
 package() {
   make -C build install DESTDIR="$pkgdir"
-
-  rm -rf "$pkgdir/usr/var"
 
   for exename in bro bro-config bro-cut; do
     ln -sf zeek-wrapper "$pkgdir/usr/bin/$exename"
