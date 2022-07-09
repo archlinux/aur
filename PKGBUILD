@@ -81,6 +81,6 @@ package() {
   # Install files.
   install -Dm755 libstt.so "$pkgdir/usr/lib/libstt.so.$pkgver"
   ln -s "/usr/lib/libstt.so.$pkgver" "$pkgdir/usr/lib/libstt.so"
-  install -Dm644 stt.h "$pkgdir/usr/include"
+  #install -Dm644 stt.h "$pkgdir/usr/include"
   install -Dm644 stt.pc "$pkgdir/usr/lib/pkgconfig/stt.pc"
 }
