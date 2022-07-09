@@ -1,7 +1,7 @@
 # Maintainer: Timo Wilken <aur@twilken.net>
 pkgname=alidistlint
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='A code linter for ALICE build recipes at CERN'
 arch=(any)
 url='https://github.com/TimoWilken/alidistlint'
@@ -10,7 +10,7 @@ depends=(shellcheck yamllint python-yaml python-cerberus)
 makedepends=(python-build python-installer python-wheel)
 optdepends=()
 source=("https://github.com/TimoWilken/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f1939ff0542020e2a3e26fc3750ffc209cd374f5b90aaed77b6d2aec83b1f22')
+sha256sums=('22ce4f0730068e25018f8d0ed905784d57ae8dafdb4a577f96853de4645f8aff')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
