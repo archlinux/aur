@@ -20,7 +20,7 @@ _raw_base_url="https://raw.githubusercontent.com/coqui-ai/STT/v$pkgver"
 source_x86_64=("$_src_base_url/stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
                "$_src_base_url/coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
                 )
-sha512sums_x86_64=('c7903de984f6af069c07a735c1fa0cda2f9f703313a663e18317e1d422a9f28aa9d879c21a428a4d74baaaa1d027b19d46e2abb15982e5262068a14a1d57e824'
+sha512sums_x86_64=('bad4e9fbf79996cec808d06e77f8a385669351e8ee8c91dcc13f1cfb04c2dc3731d058bab3c36595df35c75a3dcc4bf50f7c4e36b9d3a40a2ddab9ca16ac273b'
                    '020bc4556b7ca47fa5ffdf62028a82498c46b73edd18b5c577288b7f8ed8960becc72dc94d9b018c366ee4802a37abcf7b3eadebb06fa73633f808f90365839d'
                     )
 
