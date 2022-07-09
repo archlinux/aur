@@ -62,11 +62,12 @@ _minor=18
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=9
+_unpatched_sublevel=10
 _pfrel=3
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
-_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
+_pfpatchname="v$_major.$_minor...c68ab8d1beb301a8934c27210f21a2751628b0cb.diff"
+#_pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
 _projectcpatchname=prjc_v5.15-r1.patch
 _CPUSUFFIXES_KBUILD=(
   # AMD
@@ -844,7 +845,7 @@ sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
             '93ebf63c9e95a9b8a7ae325ce11508334ca83fd00db9677c483216a6bdef3c68'
             '30566498a4f549e972fcd430d2fc44b2bd643c55bae20096f083f8837d8c43e4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'a0689ab40a12161ea5ebd57dfe905e599c4073c0e450cf55e89e25cd2f54d7c2'
+            '6abad8da0c89385d60703938d348c8e0e0b90b4c98306bbfb0a74c2b02c1e647'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '7ef319249df009695b5477e30536e3edb07bcc93a58a76a63e58b012bb7debb1'
