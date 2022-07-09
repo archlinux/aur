@@ -19,6 +19,7 @@ makedepends=(
 	'git'
 	'java-environment'
 	'pkg-config'
+	'rsync'
 	'unzip'
 	'zip'
 )
@@ -79,10 +80,10 @@ build() {
 }
 
 package() {
+	_destdir="$srcdir/../staging"
+
 	cd "${pkgname}"
-	tar -xf /tmp/google-cloud-ops-agent.tgz -C ${pkgdir}/
+	rsync -ar "${_destdir}/" "${pkgdir}/"
 	rm -rf ${pkgdir}/lib
-	chown -R root:root ${pkgdir}/etc
-	chown -R root:root ${pkgdir}/opt
-	chown -R root:root ${pkgdir}/usr
+	chown -R root:root ${pkgdir}/
 }
