@@ -4,10 +4,10 @@
 pkgname='python-jetforce'
 _pkgname=${pkgname##python-}
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An experimental Gemini server written in Python'
 arch=('any')
-license=('MIT')
+license=('custom:Floodgap')
 url='https://github.com/michael-lazar/jetforce'
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"

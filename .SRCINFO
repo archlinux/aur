@@ -1,10 +1,10 @@
 pkgbase = python-jetforce
 	pkgdesc = An experimental Gemini server written in Python
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/michael-lazar/jetforce
 	arch = any
-	license = MIT
+	license = custom:Floodgap
 	makedepends = python-setuptools
 	depends = python-twisted
 	provides = jetforce
