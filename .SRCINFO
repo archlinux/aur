@@ -1,6 +1,6 @@
 pkgbase = c++utilities-git
 	pkgdesc = Common C++ classes and routines such as argument parser, IO and conversion utilities
-	pkgver = 917.e6e7a63
+	pkgver = 989.6390182
 	pkgrel = 2
 	url = https://github.com/Martchus/cpp-utilities
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = c++utilities-git
 	makedepends = ninja
 	depends = gcc-libs
 	optdepends = c++utilities-doc: API documentation
+	provides = libc++utilities-git.so
 	source = cpp-utilities::git+https://github.com/Martchus/cpp-utilities.git
 	sha256sums = SKIP
 
