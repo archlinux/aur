@@ -4,7 +4,7 @@ _pkgname=STT
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Coqui-STT for inference"
-arch=('x86_64', 'aarch64', 'armv7', 'amd64')
+arch=('x86_64' 'aarch64' 'armv7' 'amd64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
 makedepends=('bazel' 'python38' 'git' 'sox' 'wget')
@@ -33,7 +33,7 @@ build() {
   export TF_NEED_ROCM=0
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
-  export CC_OPT_FLAGS="-march=${arch[]}"
+  export CC_OPT_FLAGS="-march=${arch}"
   #rm .bazelversion
   ./configure
 
