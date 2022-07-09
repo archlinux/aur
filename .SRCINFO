@@ -25,4 +25,3 @@ pkgbase = mingw-w64-reflective-rapidjson
 	sha256sums = 1e253ca0c63c6432ede1b1d7ad6c828b93eeb47eb1843d7bdc09445be7c1bba6
 
 pkgname = mingw-w64-reflective-rapidjson
-

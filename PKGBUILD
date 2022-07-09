@@ -53,6 +53,7 @@ build() {
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
         -DNO_GENERATOR:BOOL=ON \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DVERSIONED_MINGW_LIBRARIES:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
       ninja
