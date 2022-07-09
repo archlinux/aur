@@ -4,7 +4,7 @@
 pkgname='python-jetforce'
 _pkgname=${pkgname##python-}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental Gemini server written in Python'
 arch=('any')
 license=('MIT')
@@ -14,6 +14,8 @@ source=(
 )
 depends=('python-twisted')
 makedepends=('python-setuptools')
+provides=('jetforce')
+conflicts=('jetforce')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
