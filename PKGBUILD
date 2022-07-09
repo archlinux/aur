@@ -1,14 +1,14 @@
 # Maintainer: Arthur Poulet (arthur.poulet@sceptique.eu)
 pkgname=transfer-more
-pkgver=v0.5.2.r0.c184931
+pkgver=v0.5.5.r0.069309c
 pkgrel=1
-pkgdesc="Fast and lite file upload server (transfer.sh clone)"
+pkgdesc="Fast and lite file upload server (transfer.sh clone), git build."
 arch=('any')
 url="https://git.sceptique.eu/Sceptique/transfer_more"
 license=('GPLv3')
 groups=()
 depends=()
-makedepends=('crystal' 'shards')
+makedepends=('crystal' 'shards' 'git')
 provides=()
 conflicts=()
 replaces=()
@@ -30,7 +30,9 @@ build() {
   make NAME="transfer-more" deps release
 }
 
+# Note: the package files are supposed to be installed in /usr/bin/share/transfer-more
 package() {
   cd "$srcdir/transfer_more"
-  make PREFIX="$pkgdir/usr/local" NAME="transfer-more" install
+  mkdir "$pkgdir/usr/share/transfer-more" -p
+  make PREFIX="$pkgdir/usr/share/transfer-more" NAME="transfer-more" install
 }
