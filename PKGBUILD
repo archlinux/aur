@@ -11,11 +11,12 @@ _cfg=qt6
 pkgname=passwordmanager-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
-depends=('qt6-base' 'qtutilities-qt6' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
+depends=('qt6-base' 'libqtutilities-qt6.so' 'libpasswordfile.so' 'libc++utilities.so' 'openssl'
+         'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
@@ -26,6 +27,8 @@ if [[ $_quick_gui == ON ]]; then
     depends+=('qt6-declarative')
     makedepends+=('kirigami2')
     optdepends+=('kirigami2: Qt Quick GUI')
+else
+    makedepends+=('qt6-declarative')
 fi
 
 build() {
