@@ -6,15 +6,15 @@
 
 _pkgname=wavpack
 pkgname=lib32-wavpack
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Audio compression format with lossless, lossy, and hybrid compression modes (32 bit)"
 arch=('x86_64')
 url="http://www.wavpack.com/"
 license=('BSD')
 depends=('lib32-glibc' 'wavpack')
-source=("http://www.wavpack.com/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('6575c63c9309023ad4bd1711e2d7684ac6a5b61879514342b79f04453d7495e59592dc08d3de4d4cc6c64d6bdf56e361587d425f21fac084cb441fb70d83b6d8')
+source=(https://github.com/dbry/WavPack/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz)
+sha512sums=('9758e8079618e45e585330cd472f8ddae6e0ffd9a79032e7ec60251fff331390a619855dcdcf92942f5192d6ae12e05b6feca36394d30f0fe7e65222ee2696fc')
 
 build() {
   cd ${_pkgname}-${pkgver}
