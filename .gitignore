@@ -1,4 +1,6 @@
+*.log
 *.zst
+/_build
 /collectd
 /fluent-bit
 /google-cloud-ops-agent-git
