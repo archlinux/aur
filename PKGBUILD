@@ -1,18 +1,18 @@
 # Maintainer: Amy <amy at fluff dot tech>
 
 pkgname=bitwarden-chromium
-pkgver=1.58.0
+pkgver=2022.6.1
 pkgrel=1
 pkgdesc='Bitwarden Chromium extension'
 arch=('any')
-url='https://github.com/bitwarden/browser'
+url='https://github.com/bitwarden/clients'
 license=('GPL3')
 makedepends=('git' 'unzip')
 optdepends=('chromium' 'google-chrome')
 install="${pkgname}.install"
-source=("https://github.com/bitwarden/browser/releases/download/v${pkgver}/dist-chrome-${pkgver}.zip")
+source=("${url}/releases/download/browser-v${pkgver}/dist-chrome-${pkgver}.zip")
 noextract=("dist-chrome-${pkgver}.zip")
-sha512sums=('70d1bc0e5a0ede782ee1d7e08304f66c74f0149bc81f6a437fec8307d2553f75b1fdd78a643f6684d049024e1912006bd2c3b67caec5d1580c15148d5d3a2b5b')
+sha512sums=('79f845c952494db7c1fdf4c99a7804bc88d60a4a01b2ef7f541505d2eb51eec3c55bfa5dbfd041a1ad2c5480999e1a52e4aeada57d5fce18f58df1cbe02f08ee')
 
 package() {
 	# Extract files - bsdtar doesn't seem to handle it well
