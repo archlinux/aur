@@ -1,6 +1,6 @@
 pkgbase = qtutilities-git
 	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models
-	pkgver = 325.6874917
+	pkgver = 421.b5af7fe
 	pkgrel = 2
 	url = https://github.com/Martchus/qtutilities
 	arch = i686
@@ -13,10 +13,11 @@ pkgbase = qtutilities-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = qt5-tools
-	depends = c++utilities-git
+	depends = libc++utilities-git.so
 	depends = qt5-base
 	depends = mesa
 	optdepends = qtutilities-doc: API documentation
+	provides = libqtutilities-git.so
 	source = qtutilities::git+https://github.com/Martchus/qtutilities.git
 	sha256sums = SKIP
 
