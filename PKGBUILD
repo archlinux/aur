@@ -8,7 +8,6 @@ pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
 url="https://github.com/RouHim/chwp"
 license=('GPL-3.0-or-later')
-depends=('xorg-xrandr')
 makedepends=('cargo')
 provides=('chwp')
 conflicts=('chwp')
@@ -17,7 +16,6 @@ sha1sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$_pkgname-$pkgver"
-
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -31,7 +29,5 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
-
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-    install -D -m755 ${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
 }
