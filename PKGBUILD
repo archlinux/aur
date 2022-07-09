@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
@@ -10,9 +10,16 @@ license=('MIT')
 depends=('hip' 'rocsparse' 'rocblas' 'rocprim' 'rocrand' 'openmp')
 makedepends=('cmake' 'rocm-cmake' 'git')
 _git='https://github.com/ROCmSoftwarePlatform/rocALUTION'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('7febe8179f120cbe58ea255bc233ad5d1b4c106f3934eb8e670135a8b7bd09c7')
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        "rocblas-rocsparse-include-path.patch::$_git/commit/8264818ab790c48f12df45e6dc90d504be72d690.patch")
+sha256sums=('a5aac471bbec87d019ad7c6db779c73327ad40ecdea09dc5ab2106e62cd6b7eb'
+            'SKIP')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
+
+prepare() {
+    cd "$_dirname"
+    patch -Np1 -i "$srcdir/rocblas-rocsparse-include-path.patch"
+}
 
 build() {
   local cmake_args=(-DROCM_PATH=/opt/rocm)
@@ -20,7 +27,7 @@ build() {
     cmake_args+=(-DAMDGPU_TARGETS="$AMDGPU_TARGETS")
   fi
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.2/page/Appendix_A.html
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -B build \
         -S "$_dirname" \
