@@ -1,7 +1,7 @@
 pkgbase = r-pracma
 	pkgdesc = Provides a large number of functions.
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pracma
 	arch = any
 	license = GPL-2
