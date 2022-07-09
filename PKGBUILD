@@ -2,9 +2,9 @@
 
 pkgname="ultimmc-bin"
 pkgver=nightly
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source launcher and instance manager for Minecraft"
-url="https://github.com/AfoninZ/MultiMC5-Cracked"
+url="https://github.com/UltimMC/Launcher"
 license=("custom")
 arch=("x86_64")
 provides=("ultimmc")
