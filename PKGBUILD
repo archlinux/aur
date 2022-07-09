@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://renderman.pixar.com"
 license=('custom')
 depends=('libidn' 'libicu50')
-optdepends=('renderman-pro-server: Provides the actual renderer')
 install="${pkgname}.install"
 
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website")
