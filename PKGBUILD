@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname='virtualbox-host-modules-pf'
-pkgver=6.1.30
-pkgrel=2
+pkgver=6.1.34
+pkgrel=1
 pkgdesc='Virtualbox host kernel modules for Arch Kernel'
 arch=('x86_64')
 url='https://virtualbox.org/'
