@@ -4,7 +4,7 @@ _cranname=pracma
 _cranver=2.3.8
 pkgname=r-pracma
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a large number of functions."
 url="https://cran.r-project.org/package=pracma"
 arch=("any")
@@ -21,6 +21,6 @@ build() {
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
 
