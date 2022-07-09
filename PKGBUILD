@@ -2,7 +2,7 @@
 # Contributor: Pedro Montes Alcalde <pedro.montes.alcalde@gmail.com>
 _pkgname="vita3k"
 pkgname="${_pkgname}-bin"
-pkgver=r2687.418594e0
+pkgver=r2731.d1fc0db
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL2')
 depends=(
 	'gtk3'
 	'sdl2'
+	'unzip'
 )
 provides=('vita3k')
 conflicts=('vita3k')
