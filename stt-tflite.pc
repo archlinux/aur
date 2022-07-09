@@ -1,0 +1,5 @@
+Name: libstt-tflite
+Description: A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files (for TFLite models).
+Version: 1.3.0
+Libs: /usr/lib/libstt-tflite.so.1.3.0
+Cflags: -I/usr/include

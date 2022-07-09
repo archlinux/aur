@@ -1,0 +1,5 @@
+Name: libstt
+Description: A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files.
+Version: 1.3.0
+Libs: /usr/lib/libstt.so.1.3.0
+Cflags: -I/usr/include

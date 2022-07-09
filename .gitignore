@@ -1,0 +1,5 @@
+stt.h
+stt-*.tar.*z
+native_client.*.tar.*z
+pkg/
+src/
