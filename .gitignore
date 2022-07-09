@@ -1,0 +1,8 @@
+!.gitignore
+
+/flashrom
+/src
+/pkg
+*.pkg*
+*.orig
+zfs-*.tar.gz
