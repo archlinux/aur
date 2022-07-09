@@ -6,13 +6,13 @@
 _pkgname=telepathy-qt
 _pkgbase=telepathy-qt5
 pkgname=$_pkgname-git
-pkgver=0.9.7.r34.gf81ae2d3
-pkgrel=2
+pkgver=0.9.8.r15.g188dece4
+pkgrel=1
 arch=(i686 x86_64)
 url="http://telepathy.freedesktop.org/wiki/"
 license=(LGPL)
 provides=($_pkgbase $_pkgname)
-makedepends=(telepathy-farstream libxslt python2 cmake doxygen qt5-base)
+makedepends=(telepathy-farstream libxslt python cmake doxygen qt5-base git)
 source=(git+https://github.com/TelepathyQt/telepathy-qt.git)
 md5sums=('SKIP')
 validpgpkeys=('AA33B0D27868E36C151780F0FE0B6D736B1195ED') # Alexandr Akulich
@@ -21,7 +21,6 @@ pkgver()
 {
   cd $_pkgname
   git describe --always --long | sed -E 's/telepathy-qt.//;s/([^-]*-g)/r\1/;s/-/./g;'
-
 }
 
 
@@ -34,7 +33,7 @@ build() {
   cmake ../telepathy-qt \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DDESIRED_QT_VERSION=5 \
     -DENABLE_EXAMPLES=OFF \
     -DENABLE_TESTS=OFF
