@@ -1,0 +1,13 @@
+pkgbase = discreet-bin
+	pkgdesc = Discreet Cryptocurrency Wallet. discreet.net
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/DiscreetNetwork/discreet
+	arch = x86_64
+	depends = dotnet-sdk
+	provides = discreet
+	conflicts = discreet
+	source = https://github.com/DiscreetNetwork/discreet/releases/download/assets/linux-x64.tar.bz2
+	sha256sums = be503d33f1e875a65cbb1b06727b3b0229bff75fc35b799bd1dcfeae750d07d7
+
+pkgname = discreet-bin
