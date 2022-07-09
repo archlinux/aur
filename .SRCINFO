@@ -1,0 +1,13 @@
+pkgbase = maneki-fetch
+	pkgdesc = A lightweight system information tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/ICanOnlySuffer/maneki-fetch
+	arch = x86_64
+	groups = maneki
+	license = GPLv3
+	makedepends = ruby
+	source = https://gitlab.com/ICanOnlySuffer/maneki-fetch/-/archive/v0.2.0/maneki-fetch-v0.2.0.tar.gz
+	sha256sums = afc9937399a75354b8600184e21c6f1425b63824378a5a3c3a7be8bc538b668f
+
+pkgname = maneki-fetch
