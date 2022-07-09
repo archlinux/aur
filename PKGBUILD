@@ -14,7 +14,7 @@ conflicts=('stt')
 
 # Set all sources.
 _src_base_url="https://github.com/coqui-ai/STT/releases/download/v$pkgver"
-_raw_base_url="https://raw.githubusercontent.com/coqui-ai/STT/v$pkgver/"
+_raw_base_url="https://raw.githubusercontent.com/coqui-ai/STT/v$pkgver"
 
 # Reused checksums.
 _header_sum='16563959019ce823249b1c8772528936f4aa61d89daa5a9a9544b37b95348f0c6fefa5836b7eb7d3b41eb90c1998fb94ccb9e9b02dec4f0df8f693efd706ec4f'
