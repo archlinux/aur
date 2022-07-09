@@ -1,6 +1,6 @@
 pkgbase = jove-git
 	pkgdesc = Emacs-like editor without Lisp from github
-	pkgver = 4.17.4.4
+	pkgver = 4.17.4.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jonmacs/jove/
@@ -11,6 +11,7 @@ pkgbase = jove-git
 	depends = glibc
 	provides = jove
 	conflicts = jove
+	options = !buildflags
 	source = git+https://github.com/jonmacs/jove/
 	sha256sums = SKIP
 

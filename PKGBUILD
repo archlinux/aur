@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jove-git
-pkgver=4.17.4.4
+pkgver=4.17.4.6
 pkgrel=1
 epoch=1
 pkgdesc=" Emacs-like editor without Lisp from github"
@@ -15,6 +15,7 @@ provides=('jove')
 conflicts=('jove')
 source=("git+$url")
 sha256sums=('SKIP')
+options=('!buildflags')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -23,21 +24,11 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  make SYSDEFS="-DSYSVR4 -D_XOPEN_SOURCE=500" \
-  JOVEHOME=/usr SHARDIR=/usr/share/jove TMPDIR=/var/tmp \
-  RECDIR=/var/tmp/jove.preserve DFLTSHELL=/bin/bash
+  ./jmake.sh 
 }
 
 package() {
   cd ${pkgname%-git}
-  install -d "$pkgdir"/usr/{bin,lib/jove,share/{jove,man/man1}}
-  install -d "$pkgdir"/etc
-  install -d "$pkgdir"/var/lib/jove
-  make JOVEHOME="$pkgdir"/usr install
-  for _f in "$pkgdir"/usr/man/man1/jove.1  "$pkgdir"/usr/man/man1/teachjove.1
-  do
-    install -Dm644 ${_f} "$pkgdir"/usr/share/man/man1/${_f}
-  done
-  rm -rf "$pkgdir"/usr/man/
+  ./jmake.sh DESTDIR="$pkgdir"/usr install
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
