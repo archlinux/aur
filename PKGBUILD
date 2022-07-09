@@ -14,17 +14,19 @@ license=('GPL3')
 provides=("$_pkgname")
 depends=(aspnet-runtime)
 makedepends=(git dotnet-sdk nodejs npm)
-source=(git+https://github.com/BililiveRecorder/BililiveRecorder)
+source=(git+https://github.com/BililiveRecorder/BililiveRecorder#tag=v${pkgver})
 sha256sums=('SKIP')
 
 prepare() {
-	cd BililiveRecorder
-
-	git checkout v${pkgver}
+	cd ${srcdir}/BililiveRecorder
 
 	git submodule update --init --recursive
-	./webui/build.sh
+}
 
+build() {
+	cd ${srcdir}/BililiveRecorder
+
+	./webui/build.sh
 	dotnet publish -c Release BililiveRecorder.Cli/BililiveRecorder.Cli.csproj
 }
 
