@@ -17,11 +17,11 @@ _cfg=qt6
 pkgname=tageditor-$_cfg
 _name=${pkgname%-$_cfg}
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (using Qt 6)'
 license=('GPL')
-depends=('qtutilities-qt6' 'tagparser' 'desktop-file-utils' 'xdg-utils')
+depends=('libqtutilities-qt6.so' 'libtagparser.so' 'libc++utilities.so' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
