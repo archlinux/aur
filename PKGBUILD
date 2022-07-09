@@ -10,8 +10,8 @@ _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 _bazaarurl=https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/download/head:/debian/patches
 
 pkgname=firefox-kde
-pkgver=101.0.1
-pkgrel=2
+pkgver=102.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE and Ubuntu patches"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -31,6 +31,8 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 provides=('firefox')
 conflicts=('firefox')
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
+        cbindgen-0.24.0.diff
+        zstandard-0.18.0.diff
         $_pkgname.desktop
         identity-icons-brand.svg
         # https://github.com/openSUSE/firefox-maintenance
@@ -39,8 +41,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch
         # https://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head/files/head:/debian/patches
         unity-menubar.patch::$_bazaarurl/unity-menubar.patch)
-sha256sums=('b4c76e8bdf81f473f3e56b2f69dbe5119bba5cab38e36ab0f3f38cf0cdc4a9c2'
+sha256sums=('7bba6ffd6e8e42d5c38aa2a453f5fa30dfc9ef150f2175aa0625edb68fddae70'
             'SKIP'
+            'd3ea2503dff0a602bb058153533ebccd8232e8aac1dc82437a55d724b8d22bc2'
+            '61701fbc965aee8c186ed05cc2750cfa13b6639b8c5fcd54d5d62f8e2dd2c295'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'f73b885106dbec9305f87c3716b7288fea1626ba29965a29fd5f5e8567fedd07'
@@ -64,6 +68,12 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-${pkgver%b*}
+
+  # Unbreak build with cbindgen 0.24.0
+  patch -Np1 -i ../cbindgen-0.24.0.diff
+
+  # Unbreak build with python-zstandard 0.18.0
+  patch -Np1 -i ../zstandard-0.18.0.diff
 
   # https://github.com/openSUSE/firefox-maintenance/blob/master/firefox/MozillaFirefox.spec
   # Gecko/Toolkit
