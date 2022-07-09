@@ -16,11 +16,11 @@ _reponame=tageditor
 pkgname=tageditor-git
 _name=${pkgname%-git}
 pkgver=719.9599560
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
-depends=('qtutilities-git' 'tagparser-git' 'desktop-file-utils' 'xdg-utils')
+depends=('libqtutilities-git.so' 'libtagparser-git.so' 'libc++utilities-git.so' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
