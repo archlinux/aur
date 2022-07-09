@@ -1,7 +1,7 @@
 pkgbase = python-omemo
 	pkgdesc = An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol
 	pkgver = 0.14.0beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Syndace/python-omemo
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-omemo
 	depends = python-doubleratchet
 	depends = python-x3dh
 	depends = python-protobuf
+	provides = python-omemo-syndace=0.14.0beta
 	conflicts = python-omemo-syndace
 	source = python-omemo::git+https://github.com/Syndace/python-omemo.git#tag=v0.14.0-beta
 	sha256sums = SKIP

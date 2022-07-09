@@ -5,7 +5,7 @@
 pkgname=python-omemo
 _tag=v0.14.0-beta
 pkgver=0.14.0beta
-pkgrel=1
+pkgrel=2
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${pkgname}"
 license=('MIT')
@@ -17,6 +17,7 @@ depends=('python-pynacl'
          'python-x3dh'
          'python-protobuf')
 makedepends=('git' 'python-setuptools')
+provides=("python-omemo-syndace=${pkgver}")       # legacy AUR package name
 conflicts=('python-omemo-syndace')
 source=("${pkgname}::git+https://github.com/Syndace/${pkgname}.git#tag=${_tag}")
 sha256sums=('SKIP')
