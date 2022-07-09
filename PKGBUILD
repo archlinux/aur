@@ -27,8 +27,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
-source=(#https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://vin.ovh/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         enable-GlobalMediaControlsCastStartStop.patch
@@ -36,7 +35,7 @@ source=(#https://commondatastorage.googleapis.com/chromium-browser-official/chro
         sql-make-VirtualCursor-standard-layout-type.patch
         remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('13a2f8d592bec6bb986879af8e2eb6ce81423d28a238a85d9450c9e35a354cd0'
+sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
@@ -46,14 +45,15 @@ sha256sums=('13a2f8d592bec6bb986879af8e2eb6ce81423d28a238a85d9450c9e35a354cd0'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 provides=('chromium')
 conflicts=('chromium')
-_uc_usr=ungoogled-software
-_uc_ver=103.0.5060.53-1
+_uc_usr=Ahrotahn
+_uc_ver=update
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         ozone-add-va-api-support-to-wayland.patch)
 sha256sums=(${sha256sums[@]}
-            '96c7adbe1d9ec6fe77bb3d299a4bbcc63bcdbec04f736a73f218949a0ea5a83e'
+            'SKIP'
+            #'96c7adbe1d9ec6fe77bb3d299a4bbcc63bcdbec04f736a73f218949a0ea5a83e'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'af20fc58aef22dd0b1fb560a1fab68d0d27187ff18fad7eb1670feab9bc4a8d8')
  
