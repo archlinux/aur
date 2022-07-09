@@ -1,5 +1,5 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
-# Contributor: Daniel Nagy <danielnagy at gmx de>
+#Maintainer: jnanar <info@agayon.be>
+
 
 pkgname=python-txdbus
 _pkgname=txdbus
