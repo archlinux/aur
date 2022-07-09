@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python /opt/lvm-auto/main.py
-WorkingDirectory=/data/code/lvm-auto/
+WorkingDirectory=/opt/lvm-auto/
 StandardOutput=inherit
 StandardError=inherit
 #Restart=always
