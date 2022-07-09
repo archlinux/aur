@@ -1,0 +1,5 @@
+pre_install() {
+  if hash systemd-sysusers &> /dev/null; then
+    systemd-sysusers snebu.conf
+  fi
+}
