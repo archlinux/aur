@@ -1,11 +1,9 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
-_assets_commit='1f2f63338613bcbefa2c1edbc1da91128e9e0451'
-
 pkgname=makehuman
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Parametrical modeling program for creating human bodies"
 arch=('any')
 url="http://www.makehumancommunity.org/"
@@ -18,13 +16,13 @@ depends=('python-numpy'
 optdepends=('python-pygments: IPython Qt Console plugin'
             'python-distro: distro detection for debug output')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/makehumancommunity/makehuman/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname-assets-$_assets_commit.tar.gz::https://github.com/makehumancommunity/makehuman-assets/archive/$_assets_commit.tar.gz"
+        "$pkgname-assets-$pkgver.tar.gz::https://github.com/makehumancommunity/makehuman-assets/archive/v$pkgver.tar.gz"
         "$pkgname-188.patch::https://github.com/makehumancommunity/makehuman/pull/188.patch"
         "$pkgname-197.patch::https://github.com/makehumancommunity/makehuman/pull/197.patch"
         "$pkgname-multisampling.patch::https://github.com/makehumancommunity/makehuman/commit/c47b884028a24eb190d097e7523a3059e439cb6f.patch"
         "$pkgname-fix_77-2.patch::https://github.com/makehumancommunity/makehuman/commit/02c4269a2d4c57f68159fe8f437a8b1978b99099.patch")
 sha512sums=('e15acf536c99f2258abd317e3ff88e908d7447bea07be2c9b2319bd4b1847e76ad3035479e1d71ec5b086aa2442e7530436a6844a11e4c9bfd74abc26c3bd9f5'
-            '4f4548d51c7eef528e4e6c79568810a13ad24d89a4fee49e9340462e634ac9118e62e0ea89fe86efa81ca9508d37d20ce21f6b0a559dbc9137302d9c88a381a4'
+            '79fc694b68dcfb8e17d7162b9225e9ddc23d5c011eff39f5a6268c3b3b72c26414ed0441194e3e25312a9f2b30e08dedaef16753b64d0300c5cf43830411caea'
             '989810a56138db858bedce341b099986a5fb5f64a7ce1d275d71c0409c8027d868c5b5a165ee119ead25bfdcf556492ca5856abe274d3428723b5312582b1f0c'
             'c1be08b522c372c04836f37afd8e0245efada6dda3a20e8c2c5ebd75f196cc911270adb21dcf40b4eba754ba0c28045121eb7fe71fcf5cf0fdff4b72e3a8250d'
             '4b1c6c1e00cd95c38323699299b66829f9809bbf658359f08ec37f05dbf5da84d77502237665fad83dc2ad7fa73ec1ea20af1dedc99d155b8e40195192a1da0c'
@@ -32,7 +30,7 @@ sha512sums=('e15acf536c99f2258abd317e3ff88e908d7447bea07be2c9b2319bd4b1847e76ad3
 
 prepare() {
   # copy files from assets repo to makehuman data directory
-  cp -r "$pkgname-assets-$_assets_commit"/base/* "$pkgname-$pkgver/$pkgname/data/"
+  cp -r "$pkgname-assets-$pkgver"/base/* "$pkgname-$pkgver/$pkgname/data/"
 
   # make build_prepare.py happy
   cd "$srcdir/$pkgname-$pkgver"
