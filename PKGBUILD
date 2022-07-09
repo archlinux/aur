@@ -2,7 +2,7 @@
 
 _pkgname=gaphor
 pkgname="${_pkgname}-bin"
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=(!strip)
 _appimage=("${pkgname}-${pkgver}-${CARCH}.AppImage")
 source=("${_appimage}::https://github.com/gaphor/${_pkgname}/releases/download/${pkgver}/Gaphor-${pkgver}-${CARCH}.AppImage")
 noextract=(${_appimage})
-sha256sums=('44922f3cd9c2ec22173f887140fdc756d68b9bc32b683acfff00634853e25c4f')
+sha256sums=('453e152fa9d7347a1a3c2339d23bcae8e607262c5a918dfe1e8a2e641228d542')
 
 prepare() {
 	cd "$srcdir"
