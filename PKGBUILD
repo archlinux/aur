@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=c++utilities
 pkgver=5.17.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities'
 license=('GPL')
@@ -14,6 +14,7 @@ depends=('gcc-libs')
 optdepends=("$pkgname-doc: API documentation")
 makedepends=('cmake' 'ninja')
 checkdepends=('cppunit')
+provides=(libc++utilities.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('05663fa9ca188cd7be44dc06f1257cfb39b0721443b158a5bbfdaf6400e66505')
