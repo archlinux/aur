@@ -1,24 +1,35 @@
-pkgbase='python-omemo'
-pkgname=('python-omemo')
-_module='OMEMO'
-pkgver='0.10.5'
+# Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Riccardo Berto <riccardobrt@gmail.com>
+
+pkgname=python-omemo
+_tag=v0.14.0-beta
+pkgver=0.14.0beta
 pkgrel=1
-pkgdesc="A Python implementation of the OMEMO Multi-End Message and Object Encryption protocol."
-url="https://github.com/Syndace/python-omemo"
-depends=('python')
-makedepends=('python-setuptools')
-license=('GPL')
+pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
+url="https://github.com/Syndace/${pkgname}"
+license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a6e091d9e5300725cf91cbe787b1f23e6b5b72be46e4ac749491bba8f91c6746')
+depends=('python-pynacl'
+         'python-cryptography'
+         'python-xeddsa'
+         'python-doubleratchet'
+         'python-x3dh'
+         'python-protobuf')
+makedepends=('git' 'python-setuptools')
+conflicts=('python-omemo-syndace')
+source=("${pkgname}::git+https://github.com/Syndace/${pkgname}.git#tag=${_tag}")
+sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    cd ${pkgname}
+    python3 setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd ${pkgname}
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+    install --verbose -Dm 644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install --verbose -Dm 644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
