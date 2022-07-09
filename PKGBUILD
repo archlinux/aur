@@ -16,11 +16,6 @@ conflicts=('stt')
 _src_base_url="https://github.com/coqui-ai/STT/releases/download/v$pkgver"
 _raw_base_url="https://raw.githubusercontent.com/coqui-ai/STT/v$pkgver"
 
-# Reused checksums.
-_header_sum='1e4238c018d8c1092eb23c34650cd73e1a1940740054c9674e3f8a2f091c1e6665207c2b8ff8da3ca75c06a2fc7129668798e392f57c69a7b0ff095c90e179bc'
-_pc_sum='30139b795537a9a21187889daac8f24fb0ab542363a8c59c6bd53ccf5883cdf49f300d8532e1c9ed9610f75237a22948da1ec6c5247855c62871a7484b2e34da'
-_pc_tflite_sum='431f552a22e2a2030a99a47f00b2c2d56cbb7adc5e2d3e78431536ae209bcc76f2324f055889d3e7e371f0e7123b845050b4bfeb242bc766fc060a32354329f5'
-
 # amd64
 source_x86_64=("$_src_base_url/stt-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
                "$_src_base_url/coqui_stt_ctcdecoder-1.3.0-cp310-cp310-manylinux_2_24_x86_64.whl"
