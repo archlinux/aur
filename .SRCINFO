@@ -1,4 +1,4 @@
-pkgbase = stt-bin
+pkgbase = python-stt-bin
 	pkgdesc = A TensorFlow implementation of Baidu's stt architecture - Python native client + CTC decoder.
 	pkgver = 1.3.0
 	pkgrel = 2

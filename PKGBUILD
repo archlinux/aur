@@ -1,5 +1,5 @@
 pkgbase=stt
-pkgname=stt-bin 
+pkgname=python-stt-bin 
 _pkgname=STT
 pkgver=1.3.0
 pkgrel=1
@@ -9,8 +9,8 @@ url="https://github.com/coqui-ai/STT"
 license=('MPL2')
 depends=('gcc-libs')
 makedepends=('wget' 'tar')
-provides=('stt')
-conflicts=('stt')
+provides=('stt' 'python-stt')
+conflicts=('stt' 'python-stt')
 
 # Set all sources.
 _src_base_url="https://github.com/coqui-ai/STT/releases/download/v$pkgver"
