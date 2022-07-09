@@ -1,6 +1,6 @@
 pkgbase = indicator-sound-switcher
 	pkgdesc = Sound input/output selector indicator for Linux.
-	pkgver = 2.3.8
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://github.com/yktoo/indicator-sound-switcher
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = indicator-sound-switcher
 	depends = libappindicator-gtk3
 	depends = pulseaudio
 	options = !emptydirs
-	source = https://github.com/yktoo/indicator-sound-switcher/archive/v2.3.8.tar.gz
-	sha256sums = 844a8ab2b674ebf62ab4933ed8d9a38756592ca912c3935488bb22468ed888f6
+	source = indicator-sound-switcher-2.3.9.tar.gz::https://github.com/yktoo/indicator-sound-switcher/archive/v2.3.9.tar.gz
+	sha256sums = d76e535ee13727c2651939cf5ea92eb0d8e1dec444785f9d0e0f6b56886b6e57
 
 pkgname = indicator-sound-switcher
