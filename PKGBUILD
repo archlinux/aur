@@ -4,7 +4,7 @@
 pkgname=python-pytelegrambotapi
 _pkgname=pyTelegramBotAPI
 pkgver=4.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python Telegram bot api"
 arch=('any')
 url="https://github.com/eternnoir/pyTelegramBotAPI"
