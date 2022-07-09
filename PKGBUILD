@@ -7,7 +7,7 @@
 _pkgname=wavpack
 pkgname=lib32-wavpack
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio compression format with lossless, lossy, and hybrid compression modes (32 bit)"
 arch=('x86_64')
 url="http://www.wavpack.com/"
@@ -35,5 +35,5 @@ package() {
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
   cd "$pkgdir/usr"
-  rm -rf {bin,include,share/man}/
+  rm -rf {bin,include,share/man,share/doc}/
 }
