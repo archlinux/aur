@@ -4,7 +4,7 @@ url='https://wiki.ros.org/mavlink'
 pkgname='ros-noetic-mavlink'
 pkgver=2022.6.27
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('LGPLv3')
 
 ros_makedepends=()
@@ -36,6 +36,7 @@ build() {
     [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
     # Build project
+    export ROS_PYTHON_VERSION=3
     cmake -Wno-dev -B build -S ${_dir} \
           -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic
     make -sC build
