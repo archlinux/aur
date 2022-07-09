@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jove
-pkgver=4.17.4.4
+pkgver=4.17.4.6
 pkgrel=1
 pkgdesc="Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp."
 url="https://github.com/jonmacs/jove"
@@ -13,14 +13,14 @@ depends=('ncurses')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-md5sums=('4ff4721b9b8e36c900ec5d41fc2c2f68')
-sha1sums=('e99c497d0b5a36631ed2a9b408943fa4db85eadb')
-sha256sums=('81712312a9ed2ff76efc337a6e08ed90801ed383bb25c2c75dc500a828ecf195')
+md5sums=('bdce07c7aeb3e78c6a2c8a5bc51d45ef')
+sha1sums=('aa337cabf4a4885175f24948148b52fa452537e3')
+sha256sums=('17cabdc45f87053fbd43a1af5c3ff99cdda2ad67bf7a972d85c6947aa4aaf5eb')
 
 
 build() {
   cd $pkgname-$pkgver
-  make SYSDEFS="-DSYSVR4 -D_XOPEN_SOURCE=500" TERMCAPLIB=-lncurses \
+  ./jmake.sh SYSDEFS="-DSYSVR4 -D_XOPEN_SOURCE=500" TERMCAPLIB=-lncurses \
   JOVEHOME=/usr SHARDIR=/usr/share/jove TMPDIR=/var/tmp \
   RECDIR=/var/tmp/jove.preserve DFLTSHELL=/bin/bash
 }
@@ -28,7 +28,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   install -d "$pkgdir"/usr/{bin,lib/jove,share/{jove,man/man1}}
-  make JOVEHOME="$pkgdir"/usr MANDIR="$pkgdir"/usr/share/man/man1 install
+  ./jmake.sh DESTDIR="$pkgdir"/usr install
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/jove/LICENSE
 }
 
