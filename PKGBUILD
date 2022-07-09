@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn-server-manager
-pkgver=v4.34_9745
-_realpkgver=${pkgver//_/-}-rtm-2020.04.05
+pkgver=v4.38_9760
+_realpkgver=${pkgver//_/-}-rtm-2021.08.17
 pkgrel=1
 pkgdesc="SoftEther VPN Server Manager"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=("https://www.softether-download.com/files/softether/${_realpkgver}-tree/
         'vpnsmgr.desktop'
         'vpnsmgr.png'
         'vpnsmgr.sh')
-md5sums=('6e1f5a642f8eef04e07ef61aaf251aa8'
+md5sums=('393192a0cb04a4b6b09eefd832940bb6'
          'e3b4b8905f18330728afc17ad90570b3'
          '43aa41b68db7ec99b461f17cb6834396'
          '4fbbe5c79abb498a4ec71f8715c5a7db')

@@ -1,6 +1,6 @@
 pkgbase = softethervpn-server-manager
 	pkgdesc = SoftEther VPN Server Manager
-	pkgver = v4.34_9745
+	pkgver = v4.38_9760
 	pkgrel = 1
 	url = https://www.softether.org/
 	arch = i686
@@ -8,14 +8,13 @@ pkgbase = softethervpn-server-manager
 	license = Apache
 	depends = desktop-file-utils
 	depends = wine
-	source = https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Windows/Admin_Tools/VPN_Server_Manager_and_Command-line_Utility_Package/softether-vpn_admin_tools-v4.34-9745-rtm-2020.04.05-win32.zip
+	source = https://www.softether-download.com/files/softether/v4.38-9760-rtm-2021.08.17-tree/Windows/Admin_Tools/VPN_Server_Manager_and_Command-line_Utility_Package/softether-vpn_admin_tools-v4.38-9760-rtm-2021.08.17-win32.zip
 	source = vpnsmgr.desktop
 	source = vpnsmgr.png
 	source = vpnsmgr.sh
-	md5sums = 6e1f5a642f8eef04e07ef61aaf251aa8
+	md5sums = 393192a0cb04a4b6b09eefd832940bb6
 	md5sums = e3b4b8905f18330728afc17ad90570b3
 	md5sums = 43aa41b68db7ec99b461f17cb6834396
 	md5sums = 4fbbe5c79abb498a4ec71f8715c5a7db
 
 pkgname = softethervpn-server-manager
-
