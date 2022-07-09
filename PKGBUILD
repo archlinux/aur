@@ -25,11 +25,12 @@ _enable_plasmoid=${SYNCTHING_TRAY_ENABLE_PLASMOID:-1}
 _reponame=syncthingtray
 pkgname=syncthingtray
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
 license=('GPL')
-depends=('qtutilities' 'qtforkawesome' 'libboost_filesystem.so' 'qt5-svg' 'boost-libs' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboost_filesystem.so' 'qt5-svg' 'openssl'
+         'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
