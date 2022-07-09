@@ -1,8 +1,8 @@
 # Maintainer: Martin Minka <martin.minka@gmail.com>
 
 pkgname="annotator"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url="https://github.com/phase1geo/Annotator"
 license=(" GPL-3.0")
@@ -11,7 +11,7 @@ depends=('gtk3' 'libxml2' 'libhandy' 'libgee' 'granite')
 makedepends=('git' 'meson' 'vala')
 provides=("Annotator")
 source=("https://github.com/phase1geo/Annotator/archive/refs/tags/${pkgver}.tar.gz")
-sha1sums=('cafc3e6235b10321154e8537f14092ff9835dadb')
+sha1sums=('4b3ca487838eca1be543a73ef3ffa244c84a8b6c')
 
 build() {
 	cd "${srcdir}/Annotator-${pkgver}"

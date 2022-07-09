@@ -1,7 +1,7 @@
 pkgbase = annotator
 	pkgdesc = Image annotation for Elementary OS
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/phase1geo/Annotator
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = annotator
 	depends = libgee
 	depends = granite
 	provides = Annotator
-	source = https://github.com/phase1geo/Annotator/archive/refs/tags/1.0.0.tar.gz
-	sha1sums = cafc3e6235b10321154e8537f14092ff9835dadb
+	source = https://github.com/phase1geo/Annotator/archive/refs/tags/1.1.1.tar.gz
+	sha1sums = 4b3ca487838eca1be543a73ef3ffa244c84a8b6c
 
 pkgname = annotator
