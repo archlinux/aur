@@ -22,7 +22,7 @@ _pc_sum='caf2820f4d6a4fe7a9b9b035eee76700a5b90eb4c25242da6265934024a7bb669d541b0
 _pc_tflite_sum='34bbee9149d2a7545e797c8a5858b267c9c7aed00762e88c6098c9cbb7d6a7eb346a930b6c64a34e191ced1e1bf76f1ea91b357169101058bab0f0adb057f44d'
 
 # amd64
-source_x86_64=("$_src_base_url/native_client.amd64.cpu.linux.tar.xz"
+source_x86_64=("$_src_base_url/native_client.tflite.Windows.tar.xz"
                "$_raw_base_url/native_client/stt.h"
                "stt.pc"
                "stt-tflite.pc")
@@ -32,7 +32,7 @@ sha512sums_x86_64=('866c54d48ce260f62aeade4d0776f536245e5405b405f1e75f3d82cce286
                    "$_pc_tflite_sum")
 
 # armv7h
-source_armv7h=("$_src_base_url/native_client.rpi3.cpu.linux.tar.xz"
+source_armv7h=("$_src_base_url/native_client.tflite.linux.armv7.tar.xz"
                "$_raw_base_url/native_client/stt.h"
                "stt.pc")
 sha512sums_armv7h=('d820ffde8493f8bfa560da79ad4362dce2777f82e8d519a16529b2c6c2bb824071772e3071e8d4d0ee93ab76e32c2e5755ca473e5a8ff10491d7da5d294b1d77'
@@ -40,7 +40,7 @@ sha512sums_armv7h=('d820ffde8493f8bfa560da79ad4362dce2777f82e8d519a16529b2c6c2bb
                    "$_pc_sum")
 
 # aarch64
-source_aarch64=("$_src_base_url/native_client.arm64.cpu.linux.tar.xz"
+source_aarch64=("$_src_base_url/native_client.tflite.linux.aarch64.tar.xz"
                 "$_raw_base_url/native_client/stt.h"
                 "stt.pc")
 sha512sums_aarch64=('32261e9bda72c53a345acf4541d73e86dd68be587cf2f7e90e1705a68f4e501907c5f144539d7644db72f9784ba035dad9de184db4880f10f0d676a5935d85d3'
@@ -59,7 +59,7 @@ package() {
   MACHINE_TYPE=`uname -m`
   if [ ${MACHINE_TYPE} == 'x86_64' ]; then
     # Download the TFLite version of DS.
-    local nc_tflite_fname="native_client.amd64.tflite.linux.tar.xz"
+    local nc_tflite_fname="native_client.tflite.Windows.tar.xz"
     wget "$_src_base_url/$nc_tflite_fname" -q -O "$srcdir/$nc_tflite_fname"
 
     # Make a directory and extract the library.
