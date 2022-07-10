@@ -1,0 +1,18 @@
+pkgbase = simple-reaction-daemon
+	pkgdesc = Simple Reaction Daemon
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/dbernhard-0x7CD/simple-reaction-daemon/commits/v0.0.2
+	arch = any
+	license = GPL2
+	depends = libsystemd
+	depends = libconfig
+	depends = glibc
+	options = strip
+	backup = etc/srd/srd.conf
+	source = simple-reaction-daemon::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon?signed=tag=v0.0.2
+	source = srd.conf
+	sha256sums = SKIP
+	sha256sums = b96840484ced981d203de18da82e2710e21335799aa3f5e910f5d749b4252245
+
+pkgname = simple-reaction-daemon
