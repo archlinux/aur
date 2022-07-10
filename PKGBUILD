@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="nwg-shell meta-package, installer and updater"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-shell"
@@ -14,15 +14,17 @@ depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
          'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'autotiling' 
          'azote' 'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-drawer-bin' 
          'nwg-menu-bin' 'nwg-look-bin' 'nwg-panel' 'nwg-shell-config' 
-         'nwg-wrapper' 'nwg-displays' 'python-dasbus' 'swaync')
+         'nwg-shell-wallpapers' 'nwg-wrapper' 'nwg-displays' 'python-dasbus' 
+         'swaync')
 optdepends=('chromium: suggested web browser' 
             'mousepad: suggested text editor' 
             'thunar: suggested file manager'
-            'nano: in case you hate vi')
+            'nano: in case you hate vi'
+            'gtklock: gtk-based alternative to swaylock')
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v"$pkgver".tar.gz")
 
-md5sums=('ee1475b192f6bd2a8d8cd5ce0ec48a27')
+md5sums=('8cf30ecb7f48817d5f810480322a4188')
 
 package() {
   cd "${pkgname}-${pkgver}"
