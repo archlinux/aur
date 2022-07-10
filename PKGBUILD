@@ -1,28 +1,33 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=python2-sip
-pkgver=4.19.24
+_name="${pkgname#python2-}"
+pkgver=4.19.25
 pkgrel=1
+pkgdesc='Legacy Python 2 bindings for C and C++ libraries'
 arch=('x86_64')
-url='https://www.riverbankcomputing.com/software/sip/intro'
-license=('custom:"sip"')
-makedepends=('python2')
-source=("https://www.riverbankcomputing.com/static/Downloads/sip/$pkgver/sip-$pkgver.tar.gz")
-sha256sums=('edcd3790bb01938191eef0f6117de0bf56d1136626c0ddb678f3a558d62e41e5')
-
-prepare() {
-  mkdir -p build-py2
-}
+url="https://riverbankcomputing.com/software/${_name}/download"
+license=('custom' 'GPL2' 'GPL3')
+depends=(
+  'glibc'
+  'python2'
+)
+_tarname="${_name}-${pkgver}"
+source=("https://www.riverbankcomputing.com/static/Downloads/${_name}/${pkgver}/${_tarname}.tar.gz")
+b2sums=('f92e105e6b30e871aea2883dc9cd459e4032fb139a9eaff153a3412a66b39df4d7ac985711a2693aee83195ff3850ae648bee4102f7fc3cc30d09885799f2b98')
 
 build() {
-  cd "$srcdir"/build-py2
-  python2 ../sip-$pkgver/configure.py CFLAGS="$CFLAGS" LFLAGS="$LDFLAGS"
+  cd "${_tarname}"
+  python2 configure.py \
+    CFLAGS="${CFLAGS}" \
+    LFLAGS="${LDFLAGS}" \
+    --no-tools
   make
 }
 
 package() {
-  cd build-py2
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../sip-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  rm -r "$pkgdir"/usr/{bin,include} # conflicts with sip
+  cd "${_tarname}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

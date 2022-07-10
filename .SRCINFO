@@ -1,12 +1,15 @@
 pkgbase = python2-sip
-	pkgver = 4.19.24
+	pkgdesc = Legacy Python 2 bindings for C and C++ libraries
+	pkgver = 4.19.25
 	pkgrel = 1
-	url = https://www.riverbankcomputing.com/software/sip/intro
+	url = https://riverbankcomputing.com/software/sip/download
 	arch = x86_64
-	license = custom:"sip"
-	makedepends = python2
-	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.24/sip-4.19.24.tar.gz
-	sha256sums = edcd3790bb01938191eef0f6117de0bf56d1136626c0ddb678f3a558d62e41e5
+	license = custom
+	license = GPL2
+	license = GPL3
+	depends = glibc
+	depends = python2
+	source = https://www.riverbankcomputing.com/static/Downloads/sip/4.19.25/sip-4.19.25.tar.gz
+	b2sums = f92e105e6b30e871aea2883dc9cd459e4032fb139a9eaff153a3412a66b39df4d7ac985711a2693aee83195ff3850ae648bee4102f7fc3cc30d09885799f2b98
 
 pkgname = python2-sip
-
