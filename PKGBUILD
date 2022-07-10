@@ -1,7 +1,7 @@
 # Maintainer: Jakub Jirutka <jakub@jirutka.cz>
 
 pkgname=zzz
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple program to suspend or hibernate your computer"
 arch=(any)
