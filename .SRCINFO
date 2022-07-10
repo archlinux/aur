@@ -1,0 +1,22 @@
+pkgbase = dooit-git
+	pkgdesc = A todo manager that you didn't ask for, but needed!
+	pkgver = 0.1.1.r43.g20830aa
+	pkgrel = 1
+	url = https://github.com/kraanzu/dooit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = flake8
+	makedepends = python-black
+	makedepends = python-pre-commit
+	depends = python
+	depends = python-pyperclip
+	depends = python-pyaml
+	depends = python-poetry
+	depends = python-textual
+	source = dooit::git+https://github.com/kraanzu/dooit.git
+	sha256sums = SKIP
+
+pkgname = dooit-git
