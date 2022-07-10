@@ -1,0 +1,13 @@
+pkgbase = ttf-astacid-mono
+	pkgdesc = A DejaVu Sans Mono-based font for programming, patched with Nerd Fonts
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/avionix-g/astacid
+	arch = any
+	license = custom:MIT
+	source = AstacidMono-1.ttf::https://github.com/avionix-g/astacid/raw/a0b612b9b58690463484f48c57dc83ef0c7e1aa1/AstacidMono.ttf
+	source = ttf-astacid-mono-1-MIT.txt::https://github.com/avionix-g/astacid/raw/a0b612b9b58690463484f48c57dc83ef0c7e1aa1/LICENSE
+	sha256sums = e4b60e69be01f1ba1675a1905b8cb80465e711456bcc55d599f26a03813ac354
+	sha256sums = 71fa24f9a7f342f5c3e81ec33f943f87c633b3533f3c0a3b1218b0fb5e142475
+
+pkgname = ttf-astacid-mono
