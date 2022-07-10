@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=("gconf" "libxkbfile")
 optdepends=("wine")
-source=("io.github.msojocs.wechat-devtools-no-wine__amd64.deb::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${_pkgver}/io.github.msojocs.wechat-devtools-no-wine_${_pkgver}_amd64.deb")
+source=("io.github.msojocs.wechat-devtools-no-wine_${pkgver}_amd64.deb::https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${_pkgver}/io.github.msojocs.wechat-devtools-no-wine_${_pkgver}_amd64.deb")
 md5sums=('b5da7353a9589a85ae11fd6ed6dc123e')
 
 package() {
