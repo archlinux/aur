@@ -5,9 +5,8 @@
 
 pkgname='libervia-backend-hg'
 _realname='libervia-backend'
-pkgver=0.8.0.r3827.23b53ac87e0f
-_version=0.8.0
-pkgrel=2
+pkgver=0.8.0.rev114.g23b53ac87e0f
+pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Libervia, multi-frontends multi-purposes XMPP client (core)"
 arch=('any')
@@ -22,8 +21,9 @@ options=('!strip')
 
 pkgver() {
     cd "$_realname"
-    printf "$_version.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    hg log -r . --template '{latesttag}.rev{latesttagdistance}.g{node|short}\n' | sed 's/^v//;s/_/./g'
 }
+
 
 prepare() {
   cd "$srcdir/$_realname"

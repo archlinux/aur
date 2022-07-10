@@ -1,7 +1,7 @@
 pkgbase = libervia-backend-hg
 	pkgdesc = Libervia, multi-frontends multi-purposes XMPP client (core)
-	pkgver = 0.8.0.r3827.23b53ac87e0f
-	pkgrel = 2
+	pkgver = 0.8.0.rev114.g23b53ac87e0f
+	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
 	license = AGPL3
