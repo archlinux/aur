@@ -1,6 +1,6 @@
 pkgbase = pistol-git
 	pkgdesc = General purpose file previewer
-	pkgver = 0.1.1.r2.gca4dcbb
+	pkgver = 0.3.2.r7.g4b834a9
 	pkgrel = 1
 	url = https://github.com/doronbehar/pistol
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = pistol-git
 	makedepends = go
 	makedepends = git
 	makedepends = asciidoctor
+	makedepends = make
 	depends = file
 	optdepends = ranger: file browser to preview files in
 	optdepends = lf: file browser to preview files in
@@ -15,4 +16,3 @@ pkgbase = pistol-git
 	sha256sums = SKIP
 
 pkgname = pistol-git
-

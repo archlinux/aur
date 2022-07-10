@@ -1,13 +1,13 @@
 # Maintainer: Bart De Roy <de dot roy dot bart at gmail dot com>
 pkgname=pistol-git
-pkgver=0.1.1.r2.gca4dcbb
+pkgver=0.3.2.r7.g4b834a9
 pkgrel=1
 pkgdesc='General purpose file previewer'
 arch=('x86_64')
 _gourl="github.com/doronbehar/pistol"
 url="https://$_gourl"
 license=('MIT')
-makedepends=('go' 'git' 'asciidoctor')
+makedepends=('go' 'git' 'asciidoctor' 'make')
 depends=('file')
 optdepends=('ranger: file browser to preview files in' 'lf: file browser to preview files in')
 source=("$pkgname::git+$url#branch=master")
@@ -24,15 +24,14 @@ build() {
   cd "$srcdir/$pkgname"
   # -fix flag is a no-op when using modules
   GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
-  strip -x "$srcdir/bin/pistol"
-  chmod -R u+wX "$srcdir"
-  asciidoctor -b manpage -d manpage README.adoc
+  make build manpage
 }
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname/LICENSE"
-  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir/$pkgname/pistol.1"
-  install -Dm755 "$srcdir/bin/pistol" "$pkgdir/usr/bin/pistol"
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" pistol.1
 }
 
 post_upgrade() {
