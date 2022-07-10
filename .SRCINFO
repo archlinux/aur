@@ -1,0 +1,12 @@
+pkgbase = vidplayvst
+	pkgdesc = VidPlayVST is a plug-in for producers composing music synchronised to video.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://vidplayvst.com/
+	arch = x86_64
+	license = 
+	provides = vidplayvst
+	source = VidPlayVST-2.3.1-Setup.run::https://docs.google.com/uc?id=18_dOOqxYpdYlUIhZDWsYwEJH8QPkDP28&export=download&confirm=t
+	sha256sums = c7955aed03e442d1222269c1d3444b5ac59b107eab55dcbe1f1427a4241ceb9c
+
+pkgname = vidplayvst
