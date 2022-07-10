@@ -2,13 +2,14 @@ pkgdesc="ROS - PlotJuggler: juggle with data"
 url='https://www.plotjuggler.io'
 
 pkgname='ros-noetic-plotjuggler'
-pkgver='3.4.1'
+pkgver='3.4.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('LGPLv3')
 
 ros_makedepends=(
     ros-noetic-catkin
+    ros-noetic-roscpp
 )
 
 makedepends=(
@@ -34,7 +35,7 @@ depends=(
 
 _dir="PlotJuggler-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
-sha256sums=('1ff8cc8591b838cad671120b4d5aada7450c22e058d92610b149d0444063ff8b')
+sha256sums=('95b8ac03637f3bbc98c179c07b8e3b2a3c6a3cd9028f1d0878e70b159b63ba18')
 
 build() {
     # Use ROS environment variables.
