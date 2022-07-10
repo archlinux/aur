@@ -1,43 +1,38 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: a821
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=sshesame-git
-pkgver=r23.b74f93f
-pkgrel=2
+pkgver=0.0.25.r0.gb3fe49a
+pkgrel=1
 pkgdesc="A fake SSH server that lets everyone in and logs their activity"
 arch=('x86_64')
 url='https://github.com/jaksi/sshesame'
 license=('Apache')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("sshesame::git+https://github.com/jaksi/sshesame")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/sshesame"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "sshesame"
+  git describe --long --tags | sed -e 's/^v//;s/-/.r/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/sshesame"
-  mkdir -p build/
+  mkdir -p "sshesame/build"
 }
 
 build() {
-  cd "${srcdir}/sshesame"
+  cd "sshesame"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go get -d -v ./...
-  go build -o build ./...
-  go clean -modcache # Clean go cache
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 package() {
-  cd "${srcdir}/sshesame"
+  cd "sshesame"
   install -Dm755 build/sshesame "${pkgdir}/usr/bin/sshesame"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
