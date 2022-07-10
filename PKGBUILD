@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.72.2
+pkgver=2.72.3
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -21,7 +21,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'gvfs: most gio functionality')
 options=('!docs')
 license=(LGPL)
-_commit=a2e950a0210012bd5aa29a6617dfb9d3c8b7a867  # tags/2.72.2^0
+_commit=dce30492f6087a8e1e288f1706d41142b74ca1ff  # tags/2.72.3^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
         glib-thumbnailer.patch
