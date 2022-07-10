@@ -1,6 +1,6 @@
 pkgbase = pyinstaller-git
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 5.0.dev0.r8072.gea5376201
+	pkgver = 5.2.r8410.gc7040cb65
 	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = x86_64
@@ -10,14 +10,17 @@ pkgbase = pyinstaller-git
 	arch = s390x
 	license = custom:PyInstaller
 	makedepends = cmocka
-	makedepends = python>=3.6
-	makedepends = python-setuptools
 	makedepends = git
+	makedepends = python-installer
+	makedepends = python-build
 	makedepends = python-wheel
 	depends = python-altgraph
-	depends = pyinstaller-hooks-contrib
-	optdepends = python-pycrypto: bytecode encryption support
-	optdepends = upx: executable compression support
+	depends = pyinstaller-hooks-contrib>=2021.4
+	depends = python>=3.7
+	depends = python<3.11
+	depends = python-setuptools
+	optdepends = python-tinyaes>=1.0.0: bytecode encryption support
+	optdepends = python-importlib-metadata: support for python 3.8 and lower
 	provides = pyinstaller
 	conflicts = pyinstaller
 	source = git+https://github.com/pyinstaller/pyinstaller

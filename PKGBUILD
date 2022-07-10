@@ -6,17 +6,31 @@
 
 pkgname=pyinstaller-git
 _pkgname=pyinstaller
-pkgver=5.0.dev0.r8072.gea5376201
+pkgver=5.2.r8410.gc7040cb65
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64' 'i686' 'aarch64' 'ppc64le' 's390x')
 url="http://www.pyinstaller.org"
 license=('custom:PyInstaller')
-depends=('python-altgraph' 'pyinstaller-hooks-contrib')
+depends=(
+  "python-altgraph"
+  "pyinstaller-hooks-contrib>=2021.4"
+  "python>=3.7"
+  "python<3.11"
+  "python-setuptools"
+)
 depends_i686=('lib32-zlib')
-makedepends=('cmocka' 'python>=3.6' 'python-setuptools' 'git' 'python-wheel')
-optdepends=('python-pycrypto: bytecode encryption support'
-  'upx: executable compression support')
+makedepends=(
+  "cmocka"
+  "git"
+  "python-installer"
+  "python-build"
+  "python-wheel"
+)
+optdepends=(
+  "python-tinyaes>=1.0.0: bytecode encryption support"
+  "python-importlib-metadata: support for python 3.8 and lower"
+)
 provides=('pyinstaller')
 conflicts=('pyinstaller')
 source=("git+https://github.com/$_pkgname/$_pkgname")
@@ -34,17 +48,16 @@ build() {
   rm -rvf PyInstaller/bootloader/Darwin*
   rm -rvf PyInstaller/bootloader/Windows*
   [ "$CARCH" != "i686" ] && rm -rvf PyInstaller/bootloader/Linux-32bit*
-  export PYTHONHASHSEED=0
   (
     cd bootloader || exit
     python ./waf all
   )
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname" || exit
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 COPYING.txt "$pkgdir/usr/share/licenses/$_pkgname/COPYING.txt"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 "COPYING.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 "README.rst" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
