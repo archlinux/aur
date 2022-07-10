@@ -5,7 +5,7 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.17.1'
+pkgver='0.17.2'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -14,19 +14,18 @@ license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
-         'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+         'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
+         'zlib')
 makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
              'python')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
-            'libgabe: for Attribute-Based Encryption'
+            'jose: for re:claimID OpenID Connect plugin'
 	    'libogg: for conversation service'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
 	    'libpulse: for conversation service'
-            'miniupnpc: for NAT uPnP support'
             'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
-            'pbc: for Attribute-Based Encryption'
             'postgresql: for an alternative to sqlite in the database plugin'
             'python: for test suite'
             'texi2mdoc: for automatic mdoc generation'
@@ -43,7 +42,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('75de0a715e3e969286483ec6ae4b25a87365664d42cdfb606df8e746a15f1265'
+sha256sums=('38b13b578e2490a99222757c64727deb97939fdf797107f986287c2944ee7541'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
