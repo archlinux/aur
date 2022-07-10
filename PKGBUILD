@@ -2,7 +2,7 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=tnt-gui
-pkgver=2022.05.02
+pkgver=2022.07.10
 pkgrel=1
 pkgdesc="Tree analysis using New Technology. https://doi.org/10.1111/cla.12160"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 	'wine-mono'
 )
 source=("http://www.lillo.org.ar/phylogeny/tnt/tnt-win-no-tax-limit.zip" "tnt-gui.desktop" "tnt.png")
-sha256sums=('1133a02ac46b18701e5fd6ece29cbe1827ebf7fd18a35227608b26bb712cccce'
+sha256sums=('bd231ffaf268db8f049d4d23e8a17e94b9bf3b73cf708869195354b48943c594'
             '52bb9fbbedafd5456a7ad6515ca79caabd5b5a39edc79234107899da55ddedfc'
             '292f95bbcb47bea8eae753123df282e19bc1461a0d0f7c0312e3864656b77da3')
 
