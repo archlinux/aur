@@ -1,7 +1,7 @@
 pkgbase = kubo-git
 	pkgdesc = A client for the ipfs peer-to-peer hypermedia distribution protocol
 	pkgver = 0.13.0rc1.r18.ga72753bad
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/ipfs/kubo
 	install = kubo-git.install
@@ -15,6 +15,7 @@ pkgbase = kubo-git
 	depends = glibc
 	optdepends = bash-completion: bash completion support
 	provides = kubo
+	provides = ipfs
 	conflicts = kubo
 	conflicts = go-ipfs
 	conflicts = go-ipfs-git

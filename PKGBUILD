@@ -14,7 +14,7 @@ _pkgname=kubo
 _old_pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.13.0rc1.r18.ga72753bad
-pkgrel=1
+pkgrel=2
 epoch=0
 
 pkgdesc='A client for the ipfs peer-to-peer hypermedia distribution protocol'
@@ -26,7 +26,7 @@ depends=(glibc)
 makedepends=(go git)
 optdepends=('bash-completion: bash completion support')
 
-provides=("$_pkgname")
+provides=("$_pkgname" "ipfs")
 conflicts=("$_pkgname" "$_old_pkgname" "${_old_pkgname}-git")
 replaces=("${_old_pkgname}-git")
 install="$pkgname.install"
