@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang krasjet
 pkgname=fontbase
-pkgver=2.16.9
+pkgver=2.17.5
 pkgrel=1
 pkgdesc="FontBase is the font manager of the new generation, built by designers, for designers."
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('custom:FontBase')
 depends=('electron')
 makedepends=('p7zip')
 source=("$pkgname-$pkgver.AppImage::https://releases.fontba.se/linux/FontBase-$pkgver.AppImage")
-md5sums=('0e3866b2d011b47cf56217db9af6f2ba')
+sha256sums=('8f431083190cf0576514ad05ec4bdab7bfb26e20a5af200cb314cd209a54be76')
 
 prepare() {
 	mkdir -p "$pkgname"
@@ -34,6 +34,7 @@ exec electron /usr/share/fontbase/app/ \$@
 	install -Dm755 "$srcdir/fontbase.sh" "$pkgdir/usr/bin/fontbase"
 
 	# Install desktop file
+  sed -i 's/Exec=AppRun/Exec=fontbase/' "$srcdir/$pkgname/fontbase-app.desktop"
 	install -Dm644 "$srcdir/$pkgname/fontbase-app.desktop" "$pkgdir/usr/share/applications/fontbase.desktop"
 
 	# Install license
