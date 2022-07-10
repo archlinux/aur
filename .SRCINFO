@@ -1,13 +1,15 @@
 pkgbase = python-wakeonlan
-	pkgdesc = A small python module for wake on lan
+	pkgdesc = Wake on LAN Python module
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/remcohaszing/pywakeonlan
 	arch = any
-	license = WTFPL
-	makedepends = python-setuptools
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python
-	source = https://pypi.io/packages/source/w/wakeonlan/wakeonlan-2.1.0.tar.gz
+	source = python-wakeonlan-2.1.0.tar.gz::https://files.pythonhosted.org/packages/source/w/wakeonlan/wakeonlan-2.1.0.tar.gz
 	sha256sums = c9deddcdf72256dd31f884b1c971c6d6af97730df2d33782cca8a9d3c28f2080
 
 pkgname = python-wakeonlan
