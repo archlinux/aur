@@ -1,15 +1,16 @@
 pkgname=httm
-pkgver=0.12.10
+pkgver=0.12.11
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
 groups=('utility')
+conflicts=('httm-bin')
 options=('!strip' '!emptydirs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('58eb1a5607045b63a21f6c343583ca9fc299a37038d9fe962a45f78ef7308e23b7c63bee04c911a8dc98bcf17617588c0dc2b25ed7aeed515ae5b9072bc9447e')
+sha512sums=('528d20209b35488c584d1252c3b183a83e204e8c0d274309b864620625bfe76b83894aa0a9684e006f96a62386e878dce78d56e1bb7ff4a34ed3f4d42450272c')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
