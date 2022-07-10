@@ -1,7 +1,7 @@
 pkgbase = torrent7z
 	pkgdesc = A derivative of 7zip that produces invariant .7z archives for torrenting
-	pkgver = 1.3
-	pkgrel = 2
+	pkgver = 1.3+6+gcb2c3ab
+	pkgrel = 1
 	url = https://github.com/BubblesInTheTub/torrent7z
 	arch = aarch64
 	arch = armv7h
@@ -10,10 +10,9 @@ pkgbase = torrent7z
 	arch = pentium4
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = gcc-libs
-	source = torrent7z-1.3.tar.gz::https://github.com/BubblesInTheTub/torrent7z/archive/refs/tags/1.3.tar.gz
-	source = fix-gcc-error.patch
-	b2sums = 61fae6f2938ef4eebd4c7718e152c3b220dcf7446c479014a5f788b70bdb63c6f0cbf81d4467f18ef9db3ef84abe066865b03a50429435ace95003a44d19cbae
-	b2sums = 8bfb5314e5c6055d7d9611c0f73f0d3fc42b0e8f5843eed8c841ec6919587ef193ff44c0a50f12170881e3f4542124c0d20a56fbdc75c148f84a44e2dcced376
+	source = torrent7z::git+https://github.com/BubblesInTheTub/torrent7z.git#commit=cb2c3ab9c94b9f9f2b77ddd889d99273ea203269
+	b2sums = SKIP
 
 pkgname = torrent7z
