@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=svd
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
-pkgver=0.5.1
-pkgrel=3
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='Interfaces to Various State-of-Art SVD and Eigensolvers'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d4dcb650757bfbf8ae388622686be20e8d55cca68096146a30aee8ced96aa113')
+sha256sums=('0f586e7fd00487ef4a8408e4dc907f6fcb3a8b4624b1cd6c3beaab203755e067')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
