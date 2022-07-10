@@ -1,13 +1,15 @@
 pkgbase = python-pycrypto
 	pkgdesc = [DEPRECATED since 2013] Cryptographic primitives and algorithms for Python
 	pkgver = 2.7a1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pycrypto/pycrypto/blob/master/README.md
 	arch = x86_64
 	license = custom:Unlicense
 	license = PSF
 	makedepends = gmp
 	makedepends = python-setuptools
+	depends = python>=3.3
+	depends = python<3.9
 	conflicts = python-pycryptodome
 	source = pycrypto-2.7a1.tar.gz::https://github.com/pycrypto/pycrypto/archive/refs/tags/v2.7a1.tar.gz
 	source = 0001-replaced-time.clock-with-time.process_time-time-cloc.patch
@@ -21,4 +23,3 @@ pkgname = python-pycrypto
 
 pkgname = python-crypto
 	depends = gmp
-	depends = python
