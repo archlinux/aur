@@ -1,0 +1,33 @@
+post_upgrade() {
+
+  ## search for old location of kubo data and move data
+
+  if [ -f '/var/lib/ipfs/config' ]; then
+    echo ":: ipfs upgrade: stopping ipfs.service if running..."
+    systemctl stop ipfs >/dev/null 2>&1 || true
+    echo ":: go-ipfs to kubo upgrade: moving existing ipfs data from '/var/lib/ipfs/' to '/var/lib/kubo/'..."
+    mkdir -p /var/lib/kubo
+    mv /var/lib/ipfs/* /var/lib/kubo/ >/dev/null 2>&1 || true
+    rmdir /var/lib/ipfs >/dev/null 2>&1 || true
+  fi
+
+  # in case the daemon was never started, generate a configuration
+
+  if [ ! -f /var/lib/kubo/config ]; then
+    systemctl restart systemd-sysusers.service
+
+    mkdir -p /var/lib/kubo/
+
+    chown kubo: -R /var/lib/kubo/
+
+    su kubo -s /bin/bash -c "export KUBO_PATH='/var/lib/kubo/'; kubo init"
+
+  fi
+}
+
+post_install() {
+
+  # do every check an upgrade would do
+
+  post_upgrade
+}

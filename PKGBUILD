@@ -1,4 +1,4 @@
-# Maintainer: @RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Anatol Pomozov
 # Contributor: kpcyrd <git@rxv.cc>
@@ -10,13 +10,14 @@
 
 DEBUG=0
 
-_pkgname=go-ipfs
+_pkgname=kubo
+_old_pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.13.0rc1.r18.ga72753bad
-pkgrel=2
-epoch=1
+pkgrel=1
+epoch=0
 
-pkgdesc='A peer-to-peer hypermedia distribution protocol'
+pkgdesc='A client for the ipfs peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=(MIT)
@@ -26,16 +27,17 @@ makedepends=(go git)
 optdepends=('bash-completion: bash completion support')
 
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_old_pkgname" "${_old_pkgname}-git")
+replaces=("${_old_pkgname}-git")
 install="$pkgname.install"
 source=("git+$url.git"
-        # https://github.com/ipfs/go-ipfs/pull/8213#issuecomment-881866789
+        # https://github.com/ipfs/kubo/pull/8213#issuecomment-881866789
         rb.patch
 	strip.patch)
 
 b2sums=('SKIP'
         'e806cac9fbfa396bdfad6e236bbfe4141b41b81da0a4c92b045b82c5c7237af7048bc16db4d9078c7351dbc4d82e658bb78f07bbc48b603c0589bca59c63f02d'
-        '5146f8e5ee5bc5894e4200ea6a5074f569e71b353f6f8235e0577c09564587b97d1d4af9077b465e04e504f5ce1573a8e52c02359a6cb0e4d2b20736930d6400')
+        'f1cffb528e6481aa67de09779ed141dd3aa41f5190de55d60e0fe5db14bddc092a1e90bb235fe8db607f2f0c6ffc04e73416e8923a601d4b8e8b1bc8c9560c4e')
 
 
 prepare() {
@@ -122,29 +124,29 @@ build() {
   echo "using x86_64 optimization level: $GOAMD64"
   
   make nofuse
-  cmd/ipfs/ipfs commands completion bash > "$srcdir"/ipfs-completion.bash
+  cmd/kubo/kubo commands completion bash > "$srcdir"/kubo-completion.bash
 
   ### Patch service file ###
 
-  # set IPFS_PATH if not set by upstream already
-  sed -i  '/StateDirectory=ipfs/,/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/c StateDirectory=ipfs\nEnvironment=IPFS_PATH=\~\nExecStart=\/usr\/bin\/ipfs daemon --init --migrate' "misc/systemd/ipfs-hardened.service"
+  # set KUBO_PATH if not set by upstream already
+  sed -i  '/StateDirectory=kubo/,/ExecStart=\/usr\/bin\/kubo daemon --init --migrate/c StateDirectory=kubo\nEnvironment=KUBO_PATH=\~\nExecStart=\/usr\/bin\/kubo daemon --init --migrate' "misc/systemd/kubo-hardened.service"
   # remove --init (handled by install file)
-  sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon --migrate/g' "misc/systemd/ipfs-hardened.service"
+  sed -i 's/ExecStart=\/usr\/bin\/kubo daemon --init --migrate/ExecStart=\/usr\/bin\/kubo daemon --migrate/g' "misc/systemd/kubo-hardened.service"
   # enable gc and pubsub by default (sane defaults)
-  sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon/ExecStart=\/usr\/bin\/ipfs daemon --enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "misc/systemd/ipfs-hardened.service"
+  sed -i 's/ExecStart=\/usr\/bin\/kubo daemon/ExecStart=\/usr\/bin\/kubo daemon --enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "misc/systemd/kubo-hardened.service"
   # increase timeouts (see #7283)
-  sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' "misc/systemd/ipfs-hardened.service"
+  sed -i 's/MemorySwapMax=0/MemorySwapMax=0\n\nTimeoutStartSec=15min\nTimeoutStopSec=15min\nTimeoutAbortSec=15min/' "misc/systemd/kubo-hardened.service"
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm 755 cmd/ipfs/ipfs "$pkgdir/usr/bin/ipfs"
-  install -Dm 644 misc/systemd/ipfs-api.socket "$pkgdir/usr/lib/systemd/system/ipfs-api.socket"
-  install -Dm 644 misc/systemd/ipfs-gateway.socket "$pkgdir/usr/lib/systemd/system/ipfs-gateway.socket"
+  install -Dm 755 cmd/kubo/kubo "$pkgdir/usr/bin/kubo"
+  install -Dm 644 misc/systemd/kubo-api.socket "$pkgdir/usr/lib/systemd/system/kubo-api.socket"
+  install -Dm 644 misc/systemd/kubo-gateway.socket "$pkgdir/usr/lib/systemd/system/kubo-gateway.socket"
   # use the hardened service file
-  install -Dm 644 misc/systemd/ipfs-hardened.service "$pkgdir/usr/lib/systemd/system/ipfs.service"
+  install -Dm 644 misc/systemd/kubo-hardened.service "$pkgdir/usr/lib/systemd/system/kubo.service"
 
-  install -Dm 644 "$srcdir"/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
+  install -Dm 644 "$srcdir"/kubo-completion.bash "$pkgdir/usr/share/bash-completion/completions/kubo"
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
