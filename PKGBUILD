@@ -2,7 +2,7 @@
 _pkgname=dynarmic
 pkgname=$_pkgname-git
 pkgver=6.1.0.r4.g6243e5a9
-pkgrel=1
+pkgrel=2
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
@@ -29,6 +29,9 @@ pkgver() {
 }
 
 build() {
+	if [[ $CXX != clang* ]]; then
+		CXXFLAGS+=" -Wno-array-bounds"
+	fi
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
