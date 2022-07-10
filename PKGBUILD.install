@@ -35,7 +35,7 @@ pre_install() {
     # Add qubes core related fstab entries
     echo "xen	/proc/xen	xenfs	defaults	0 0" >> /etc/fstab
 
-    usermod -p '' root
+    usermod -L root
     usermod -L user
 }
 
@@ -135,6 +135,7 @@ EOF
 ############################
 ## Service Management Functions ##
 ############################
+# FIXME: add user units support to is_static()/is_masked()/mask()/unmask() functions
 is_static() {
     [ -f "/usr/lib/systemd/system/$1" ] && ! grep -q '^[[].nstall]' "/usr/lib/systemd/system/$1"
 }
@@ -166,6 +167,8 @@ unmask() {
 
 preset_units() {
     local represet=
+    # shellcheck disable=SC2206
+    local extra_opts=( $3 )
     while read -r action unit_name
     do
         if [ "$action" = "#" ] && [ "$unit_name" = "Units below this line will be re-preset on package upgrade" ]
@@ -191,15 +194,17 @@ preset_units() {
                     # We masked this static unit before, now we unmask it.
                     unmask "$unit_name"
                 fi
-                systemctl --no-reload preset "$unit_name" >/dev/null 2>&1 || :
+                systemctl --no-reload "${extra_opts[@]}" preset "$unit_name" >/dev/null 2>&1 || :
             else
-                systemctl --no-reload preset "$unit_name" >/dev/null 2>&1 || :
+                systemctl --no-reload "${extra_opts[@]}" preset "$unit_name" >/dev/null 2>&1 || :
             fi
         fi
     done < "$1"
 }
 
 restore_units() {
+    # shellcheck disable=SC2206
+    local extra_opts=( $2 )
     grep '^[[:space:]]*[^#;]' "$1" | while read -r action unit_name
     do
         if is_static "$unit_name" && is_masked "$unit_name"
@@ -208,7 +213,7 @@ restore_units() {
             # Otherwise systemctl preset will fail badly.
             unmask "$unit_name"
         fi
-        systemctl --no-reload preset "$unit_name" >/dev/null 2>&1 || :
+        systemctl --no-reload "${extra_opts[@]}" preset "$unit_name" >/dev/null 2>&1 || :
     done
 }
 
@@ -216,9 +221,11 @@ configure_systemd() {
     if [ "$1" -eq 1 ]
     then
         preset_units /usr/lib/systemd/system-preset/$qubes_preset_file initial
+        preset_units /usr/lib/systemd/user-preset/$qubes_preset_file initial --global
         changed=true
     else
         preset_units /usr/lib/systemd/system-preset/$qubes_preset_file upgrade
+        preset_units /usr/lib/systemd/user-preset/$qubes_preset_file upgrade --global
         changed=true
         # Upgrade path - now qubes-iptables is used instead
         for svc in iptables ip6tables
@@ -254,6 +261,9 @@ configure_systemd() {
         rm -f /etc/systemd/system/multi-user.target.wants/qubes-mount-home.service
         changed=true
     fi
+
+    # fix / ro mounted
+    ln -sf /usr/lib/systemd/system/systemd-remount-fs.service /etc/systemd/system/sysinit.target.wants/
 
     if [ "x$changed" != "x" ]
     then
@@ -315,17 +325,6 @@ update_finalize() {
 
     /usr/lib/qubes/update-proxy-configs
 
-    # Archlinux specific: Update pam.d configuration for su to enable systemd-login wrapper
-    # This is required as qubes-gui agent calls xinit with su -l user without initializing properly
-    # the user session.
-    # pam_unix.so can also be removed from su configuration
-    # as system-login (which include system-auth) already gives pam_unix.so
-    # with more appropriate parameters (fix the missing nullok parameter)
-    if grep -q pam_unix.so /etc/pam.d/su; then
-        echo "Fixing pam.d"
-	cp /etc/pam.d/qrexec /etc/pam.d/su-l
-    fi
-
     # Archlinux specific: ensure tty1 is enabled
     rm -f /etc/systemd/system/getty.target.wants/getty@tty*.service
     systemctl enable getty\@tty1.service
@@ -352,10 +351,6 @@ post_install() {
     for f in /etc/udev/rules.d/*
     do
         if [ "$(basename "$f")" == "xen-backend.rules" ] ; then
-            continue
-        fi
-
-        if [ "$(basename "$f")" == "50-qubes-misc.rules" ] ; then
             continue
         fi
 
@@ -411,7 +406,8 @@ pre_remove() {
         # once the Qubes OS preset file is removed.
         mkdir -p /run/qubes-uninstall
         cp -f /usr/lib/systemd/system-preset/$qubes_preset_file /run/qubes-uninstall/
-        cp -f /usr/lib/systemd/system-preset/$qubes_preset_file /run/qubes-uninstall/
+        cp -f /usr/lib/systemd/user-preset/$qubes_preset_file \
+            /run/qubes-uninstall/user-$qubes_preset_file
     fi
 }
 
@@ -424,6 +420,7 @@ post_remove() {
         # We have a saved preset file (or more).
         # Re-preset the units mentioned there.
         restore_units /run/qubes-uninstall/$qubes_preset_file
+        restore_units /run/qubes-uninstall/user-$qubes_preset_file --global
         rm -rf /run/qubes-uninstall
         changed=true
     fi
