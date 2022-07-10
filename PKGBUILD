@@ -1,15 +1,16 @@
-# Maintainer: Joe Bashe <joe@bashe.joe>
+# Contributor: Joe Bashe <joe@bashe.joe>
 
 _name=incremental
 pkgname=python2-incremental-git
 pkgver=21.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A small library that versions your Python projects.'
 arch=('any')
 url='https://github.com/twisted/incremental'
 license=('GPL2')
 depends=('python2')
 makedepends=('python2-setuptools')
+conflicts=('python2-incremental')
 source=("https://github.com/twisted/incremental/archive/refs/tags/incremental-$pkgver.tar.gz")
 sha256sums=('57b6a0785f265ffe59a454276efac1062943bb5b7bff7b5505bf054a563c22c4')
 
