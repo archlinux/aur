@@ -1,5 +1,5 @@
 # Maintainer: Romain Grégoire <romgrk.cc@gmail.com>
-pkgname=interception-vimproved
+pkgname=interception-vimproved-git
 pkgver=f4aa0fa
 pkgrel=1
 pkgdesc='vimproved: unofficial plugin for Interception Tools combining features of caps2esc and space cadet for making held space work as a special fn key.'
