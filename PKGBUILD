@@ -1,7 +1,7 @@
 # Maintainer: Ragnar Groot Koerkamp <ragnar.grootkoerkamp@gmail.com>
 pkgname=bapctools-git
 _pkgname=bapctools
-pkgver=r944.5832b17
+pkgver=r1242.73bfd16
 pkgrel=1
 pkgdesc="Tools for developing ICPC-style programming contest problems."
 arch=('any')
@@ -37,7 +37,7 @@ package() {
 
 	# Strip large directories to halve the size of the install.
 	mkdir -p "${pkgdir}/usr/share/${_pkgname}"
-	rsync -aC --exclude "/test" --exclude "/doc/images" -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/${_pkgname}"
+	rsync -aC --exclude "/test" --exclude "/doc/images" -r "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/"
 
 	# Symlink executable
 	mkdir -p "${pkgdir}/usr/bin"
