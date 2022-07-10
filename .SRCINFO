@@ -1,22 +1,29 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pyinstaller.org
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = custom:PyInstaller
-	makedepends = python-pip
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-altgraph
-	depends = pyinstaller-hooks-contrib
-	optdepends = python-pycrypto: bytecode encryption support
-	optdepends = upx: executable compression support
+	depends = pyinstaller-hooks-contrib>=2021.4
+	depends = python>=3.7
+	depends = python<3.11
+	depends = python-setuptools
+	optdepends = python-tinyaes>=1.0.0: bytecode encryption support
+	optdepends = python-importlib-metadata: support for python 3.8 and lower
 	source_x86_64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_x86_64.whl
 	sha512sums_x86_64 = 1f5658e98f51b8f1badf8882467e9dc6ede666d95c18cf2e5ca0b5fa33e291bce65848d422e6bc76fa93d6ae03d01325213d5f2921c38209b3c1ac8c6f32735a
+	b2sums_x86_64 = 1eefb625a7040cff1ff6b429ffb09d7c6f64ccabe67f65aea4e613d45b37b0a0e9a74e344291f0ad51ee33047a39fcbe936db52aafa64ce4fa9f8ecda7eb476b
 	source_i686 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_i686.whl
 	sha512sums_i686 = 0c539c8958e9d7376c4acff284f42dc8737d6e2fc4ef3a7f68213a219701985943ff067b66e8cc9e910256dc3435c42fb9066b665861b27a1650b30e0f1637a6
+	b2sums_i686 = 0baabef5e7ac8a67ca186750f9e30eaea0a6bb8bdfe53e73f83ff6f0b4e59dce09dfa1ba2779336a30f31e34b8dc974b36f6f229034897ac54c6409972d1fb3f
 	source_aarch64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-5.2-py3-none-manylinux2014_aarch64.whl
 	sha512sums_aarch64 = eb1cf0ae5635eaf0bf1f588cdcfe55dd6344dc68d2466b429aa6944c89788ac410248218c9cdfcf329e0b2716869b4a4a9f397dfbeb2b9372450d73bb2cf672f
+	b2sums_aarch64 = f2f6ab9b812b0d61e6cbb72b640a97b52b5a652ff376cd0687f0e29caad7b1ab3a12879709e03006a2402ce907eb52843e1f6a7476b83900e7a78c822340ca0d
 
 pkgname = pyinstaller
