@@ -45,8 +45,8 @@ sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 provides=('chromium')
 conflicts=('chromium')
-_uc_usr=Ahrotahn
-_uc_ver=update
+_uc_usr=ungoogled-software
+_uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
