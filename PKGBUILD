@@ -2,17 +2,17 @@
 # Contributor: Jon Ribeiro <contact@jonathas.com>
 pkgname=perl-text-findindent
 _dist=Text-FindIndent
-pkgver=0.10
-pkgrel=3
+pkgver=0.11
+pkgrel=1
 pkgdesc="Heuristically determine the indent style"
 arch=(i686 x86_64)
 license=('perl')
-url="http://search.cpan.org/~smueller/Text-FindIndent"
+url="https://metacpan.org/dist/Text-FindIndent"
 options=(!emptydirs)
 depends=('perl>=5.10.1')
 makedepends=('perl')
-source=("http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Text-FindIndent-$pkgver.tar.gz")
-sha256sums=('492c37e7bb5a4fca665e03728c0affe39c1235f65d85f27136f487af29797a30')
+source=("https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Text-FindIndent-$pkgver.tar.gz")
+sha256sums=('d80d4b660c6b0676a9e0cb710c4397fa8c988f18ddb93fb99ae76f75a3af0bcd')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
