@@ -2,6 +2,11 @@
 # Contributor: okhsunrog <me@gornushko.com>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
 
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Thomas Bächler <thomas.archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
+
 pkgname=ntfsprogs-ntfs3
 pkgver=2022.5.17
 pkgrel=2
