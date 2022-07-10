@@ -1,7 +1,7 @@
 pkgbase = python-pycrypto
 	pkgdesc = [DEPRECATED since 2013] Cryptographic primitives and algorithms for Python
 	pkgver = 2.7a1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pycrypto/pycrypto/blob/master/README.md
 	arch = x86_64
 	license = custom:Unlicense
@@ -19,7 +19,11 @@ pkgbase = python-pycrypto
 pkgname = python-pycrypto
 	arch = any
 	license = Unlicense
+	depends = python>=3.3
+	depends = python<3.9
 	depends = python-crypto=2.7a1
 
 pkgname = python-crypto
+	depends = python>=3.3
+	depends = python<3.9
 	depends = gmp
