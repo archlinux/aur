@@ -23,7 +23,7 @@ build() {
   done
 
   cp -a $_pkgname $_pkgname-$pkgver-54
-  make -C $_pkgname-$pkgver-5.4 LUA_DIR=/usr LUA_INCDIR=/usr/include LUA_LIBDIR=/usr/lib LUA_VER=5.4
+  make -C $_pkgname-$pkgver-54 LUA_DIR=/usr LUA_INCDIR=/usr/include LUA_LIBDIR=/usr/lib LUA_VER=5.4
 }
 
 _package_for_lua_ver() {
