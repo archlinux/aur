@@ -1,6 +1,6 @@
 pkgbase = python-vici
 	pkgdesc = vici python egg to talk to strongSwan via VICI socket
-	pkgver = 5.9.3
+	pkgver = 5.9.6
 	pkgrel = 1
 	url = https://strongswan.org
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = python-vici
 	makedepends = autoconf
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/strongswan/strongswan/releases/download/5.9.3/strongswan-5.9.3.tar.bz2
+	source = https://github.com/strongswan/strongswan/releases/download/5.9.6/strongswan-5.9.6.tar.bz2
 	source = use-sitepackages.patch
-	sha256sums = 9325ab56a0a4e97e379401e1d942ce3e0d8b6372291350ab2caae0755862c6f7
+	sha256sums = 91d0978ac448912759b85452d8ff0d578aafd4507aaf4f1c1719f9d0c7318ab7
 	sha256sums = 658817b0d3c1fd221521176c188b0b499c91f28c6a50a3cdbb3efd181868b960
 
 pkgname = python-vici
