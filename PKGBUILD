@@ -2,17 +2,19 @@
 
 pkgname=spacectl-bin
 pkgver=v0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Spacelift client and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/spacelift-io/spacectl"
 license=('MIT')
-source_x86_64=(spacectl-x86_64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_amd64.zip)
-source_aarch64=(spacectl-aarch64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_arm64.zip)
-md5sums_x86_64=('d1383b91435aa0d5b8c3da4a5a320804')
-md5sums_aarch64=('ecb596965711b7e088b9bc8ea8d24d1d')
+
+source_x86_64=(spacectl-${pkgver}-x86_64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_amd64.zip)
+source_aarch64=(spacectl-${pkgver}-aarch64::https://github.com/spacelift-io/spacectl/releases/download/${pkgver}/spacectl_${pkgver//v}_linux_arm64.zip)
+
+sha256sums_x86_64=('763957c32415035883cb185b0e0a5f77c75dc73c1ad5f0ed8bcea5697b2419c8')
+sha256sums_aarch64=('ea48e4291f25213fd6459bdcfa7e6a943dc583c95fbcd5acfac4b057870debd0')
 
 package() {
-  unzip -o spacectl-${arch} spacectl
+  unzip -o spacectl-${pkgver}-${arch} spacectl
   install -Dm755 spacectl "$pkgdir/usr/bin/spacectl"
 }
