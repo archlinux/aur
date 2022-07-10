@@ -3,8 +3,8 @@
 
 pkgname=mingw-w64-wxmsw
 epoch=1
-pkgver=3.0.5.1
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Win32 implementation of wxWidgets API for GUI (mingw-w64)"
 arch=(any)
 url="https://wxwidgets.org"
@@ -14,40 +14,28 @@ depends=(mingw-w64-crt mingw-w64-expat mingw-w64-libpng mingw-w64-libjpeg-turbo 
 options=(staticlibs !strip !buildflags)
 conflicts=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
-source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2"
-        "fix-narrowing.patch"
-        "cpp17-minmax.patch")
-sha1sums=('406ac736f61d88a3a866aa501e01e408a642c6e7'
-          '8657efb04e2c7befb83c3c9e5981f99b8484babf'
-          'a427db2f11b4f69d6aaca5c840e7a9b43883f782')
+source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
+sha1sums=('412e6aad037417527fa79fda028c89df685aacbd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-# linking 64-bit shared libraries fails for me for an unknown reason, and I'm not sure if the problem is with compiler or my environment
-# uncomment the following line to skip building it, if needed
-# _skip_shared_64bit=aye
-
-prepare() {
-  cd "${srcdir}/wxWidgets-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/fix-narrowing.patch"
-  patch --forward --strip=1 --input="${srcdir}/cpp17-minmax.patch"
-}
 
 build() {
+  # --disable-option-checking -- prevents errors about `--enable-static` flag from `${arch}-configure`
   local _build_flags="\
-    	--with-msw \
-    	--with-opengl \
-    	--disable-mslu \
-    	--enable-unicode \
-    	--with-regex=builtin \
-    	--disable-precomp-headers \
-    	--enable-graphics_ctx \
-    	--enable-webview \
-    	--enable-mediactrl \
-    	--with-libpng=sys \
-    	--with-libxpm=builtin \
-    	--with-libjpeg=sys \
-    	--with-libtiff=sys"
+      --disable-option-checking \
+      --with-msw \
+      --with-opengl \
+      --enable-unicode \
+      --with-regex=builtin \
+      --disable-precomp-headers \
+      --enable-graphics_ctx \
+      --enable-webview \
+      --enable-mediactrl \
+      --with-libpng=sys \
+      --with-libxpm=builtin \
+      --with-libjpeg=sys \
+      --with-libtiff=sys"
 
   # Fix for current libuuid.a issues
   # see: https://github.com/Alexpux/MINGW-packages/issues/1761
@@ -57,12 +45,10 @@ build() {
   cd "${srcdir}/wxWidgets-${pkgver}"
   for _arch in ${_architectures}; do
     # shared build
-    if [[ -z "$_skip_shared_64bit" || ! ( $_arch =~ "x86_64" ) ]]; then
-      mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
-      ${_arch}-configure ${_build_flags} --enable-monolithic ..
-      make
-      popd
-    fi
+    mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
+    ${_arch}-configure ${_build_flags} --enable-monolithic ..
+    make
+    popd
 
     # static build
     mkdir -p build-static-${_arch} && pushd build-static-${_arch}
@@ -76,16 +62,11 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   for _arch in ${_architectures}; do
     for _build in shared static; do
-      if [[ -z "$_skip_shared_64bit" || $_build == "static" || ! ( $_arch =~ "x86_64" ) ]]; then
-        cd "${srcdir}/wxWidgets-${pkgver}/build-${_build}-${_arch}"
-        make DESTDIR="${pkgdir}" install
-      fi
+      cd "${srcdir}/wxWidgets-${pkgver}/build-${_build}-${_arch}"
+      make DESTDIR="${pkgdir}" install
     done
 
-    if [[ -z "$_skip_shared_64bit" || ! ( $_arch =~ "x86_64" ) ]]; then
-      mv "${pkgdir}/usr/${_arch}/lib/"*.dll "${pkgdir}/usr/${_arch}/bin/"
-      ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    fi
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 
     ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" \
