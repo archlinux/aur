@@ -1,8 +1,8 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
-pkgver=1.7.r111.g82bdbe4
-pkgrel=2
+pkgver=1.7.r128.g6f6c83d
+pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
@@ -16,9 +16,9 @@ sha256sums=("SKIP")
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	sed -i "45s/build//" Makefile
-	sed -i "46s/\$(ETC_DIR)/\$(DESTDIR)\/..\$(ETC_DIR)/" Makefile
-	sed -i "49s/\$(ETC_DIR)/\$(DESTDIR)\/..\$(ETC_DIR)/" Makefile
+	sed -i "52s/build//" Makefile
+	sed -i "53s/\$(ETC_DIR)/\$(DESTDIR)\/..\$(ETC_DIR)/" Makefile
+	sed -i "56s/\$(ETC_DIR)/\$(DESTDIR)\/..\$(ETC_DIR)/" Makefile
 }
 
 build() {
