@@ -6,13 +6,8 @@
 pkgname=qubes-vm-xen
 _gitname=${pkgname%-git*}
 
-# Qubes v4.0
-pkgver='4.8.5'
-pkgrel=41
-
-# Qubes v4.1
-#pkgver='4.14.3'
-#pkgrel=5
+pkgver='4.14.5'
+pkgrel=5
 
 epoch=
 pkgdesc="QubesOS component"
@@ -22,14 +17,13 @@ license=('GPL')
 groups=()
 depends=('python'
          'bridge-utils'
+         'python-lxml'
          'libutil-linux'
          'lzo'
          'libsystemd'
          'yajl'
 )
 
-# FIXME: The 'python2' is *not* needed for newer Xen (>=4.14 tested).
-#        Remove it in the future
 makedepends=('wget'
              'make'
              'gcc'
@@ -42,8 +36,6 @@ makedepends=('wget'
              'pkg-config'
              'openssl'
              'pixman'
-
-             'python2'
 )
 checkdepends=()
 optdepends=()
@@ -65,15 +57,18 @@ sha512sums=('SKIP')
 
 
 build() {
-    # FIXME: Change this to "python" when moving to newer Xen
-    export PYTHON=/usr/bin/python2
+    export PYTHON=/usr/bin/python
+    local _fetch_cmd='curl --proto '=https' --proto-redir '=https' --tlsv1.2 --http1.1 -sSfL -o'
 
     cd "${srcdir}/${_gitname}/"
-    make get-sources
-    make verify-sources
+
+    # Ref.: https://github.com/QubesOS/qubes-builder/blob/master/Makefile#L41=
+    make get-sources FETCH_CMD="${_fetch_cmd}"
+    make verify-sources FETCH_CMD="${_fetch_cmd}"
     tar -xvzf "xen-${pkgver}.tar.gz"
 
     cd xen-$pkgver
+
     for p in ../patch-*; do ln -f -s $p; done
 
     ../apply-patches ../series-vm.conf .
@@ -86,10 +81,11 @@ build() {
     ./configure --prefix=/usr \
                 --sbindir=/usr/bin \
                 --disable-ocamltools \
+                --disable-pvshim \
                 --disable-blktap2
 
     #make prefix=/usr dist-xen
-    make prefix=/usr dist-tools
+    make prefix=/usr dist-tools FETCH_CMD="${_fetch_cmd}"
     #make prefix=/usr dist-docs
 }
 
