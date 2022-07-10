@@ -7,7 +7,8 @@ pkgdesc="A program that simulates the retro DVD screensaver"
 arch=(x86_64)
 url="https://github.com/George-lewis/DVDBounce"
 license=('GPL3')
-makedepends=(cmake sfml cxxopts)
+depends=(sfml)
+makedepends=(cmake cxxopts)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/George-lewis/DVDBounce/archive/v${pkgver}.tar.gz"
 		"0001-Don-t-use-conan.patch"
 		"0001-Fix-path.patch")
