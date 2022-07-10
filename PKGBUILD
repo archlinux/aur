@@ -4,7 +4,7 @@ export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=nbviewer-gui
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=00
 pkgdesc='A Utility for previewing *.ipynb files in linux machines'
 arch=(any)
@@ -16,8 +16,8 @@ checkdepends=()
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/10/7b/3c9d82ce7c907a0939efe329ede62051b3c76fd64772da8a212b5a0595a8/nbviewer_gui-1.0.3.tar.gz)
-md5sums+=(21fd9e27beac7193055f8a0d3ca51168)
+source+=(https://files.pythonhosted.org/packages/ba/10/334ca62f0ba583d99843a512e0135bb35035e369ba5e08c7af5858337a0e/nbviewer_gui-1.0.4.tar.gz)
+md5sums+=(8ec4a32c9879bd352304d49320b5f319)
 source+=(LICENSE)
 md5sums+=(c9f2d93db9b68e8b27f9f99080d177f5)
 
@@ -79,6 +79,7 @@ _build() {
         _tmpenv/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
         "./$(_dist_name)" || true
     xdg-desktop-menu install --novendor "$srcdir/$(_dist_name)/nbviewergui/notebook.desktop"
+    xdg-icon-resource install --novendor --size 128 "$srcdir/$(_dist_name)/nbviewergui/notebook.png"
 }
 
 build() { _build; }
@@ -91,7 +92,6 @@ _check() {
 
 _package() {
     cd "$srcdir"
-    # pypa/pip#3063: pip always checks for a globally installed version.
     python -mvenv --clear --system-site-packages _tmpenv
     _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
         --no-deps --ignore-installed --no-warn-script-location \
