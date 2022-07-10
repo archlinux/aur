@@ -3,11 +3,12 @@
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 # Contributor: Federico Zappone <federico dot zappone at unimol dot it>
 
-pkgname=python-pytorch-rocm
 _pkgname="pytorch"
+pkgbase="python-${_pkgname}-rocm"
+pkgname=("${pkgbase}" "python-pytorch-opt-rocm")
 pkgver=1.12.0
 _pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
