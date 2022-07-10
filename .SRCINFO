@@ -1,10 +1,11 @@
 pkgbase = iserterm-git
 	pkgdesc = Serial terminal for embedded software developers.
 	pkgver = 20201224
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/ivanovp/iserterm
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = make
 	makedepends = git

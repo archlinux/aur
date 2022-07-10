@@ -2,9 +2,9 @@
 
 pkgname=iserterm-git
 pkgver=20201224
-pkgrel=1
+pkgrel=2
 pkgdesc="Serial terminal for embedded software developers."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://github.com/ivanovp/iserterm"
 license=('GPL')
 depends=('qt5-base' 'qt5-serialport')
