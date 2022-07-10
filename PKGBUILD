@@ -6,15 +6,12 @@ pkgbase='python-pycrypto'
 pkgname=('python-pycrypto' 'python-crypto')
 _name="${pkgbase#python-}"
 pkgver=2.7a1
-pkgrel=4
+pkgrel=5
 pkgdesc='[DEPRECATED since 2013] Cryptographic primitives and algorithms for Python'
 arch=('x86_64')
 _repourl="https://github.com/${_name}/${_name}"
 url="${_repourl}/blob/master/README.md"
 license=('custom:Unlicense' 'PSF')
-depends=(
-  'python>=3.3'
-  'python<3.9')
 makedepends=(
   'gmp'
   'python-setuptools'
@@ -39,11 +36,14 @@ build() {
 package_python-pycrypto() {
   arch=('any')
   license=('Unlicense')
-  depends+=("python-crypto=${pkgver}")
+  depends=("python-crypto=${pkgver}")
 }
 
 package_python-crypto() {
-  depends+=('gmp')
+  depends=(
+    'gmp'
+    'python'
+  )
 
   cd "${_tarname}"
   python setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
