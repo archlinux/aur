@@ -1,4 +1,4 @@
-stt.h
+*.whl
 stt-*.tar.*z
 native_client.*.tar.*z
 pkg/

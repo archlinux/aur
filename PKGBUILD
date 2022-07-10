@@ -74,6 +74,17 @@ package() {
       echo "Verifying CTC Decoder\'s checksum failed!" 1>&2
       exit 1
     fi
+  elif [ ${MACHINE_TYPE} == 'armv7h' ]; then
+    # Download the STT Wheel.
+    local stt_fname="stt-1.3.0-cp37-cp37m-linux_armv7l.whl"
+    local stt_sum="12099b1a2d2e6d7db3bcea9e8b6d60f4e81e2173bb639fb20c088a0346edb3fe059f184fc514b1b77e305f7b82ae14975f7c4cd10acc2bafe9a0dbe7d7170742"
+    wget "$_src_base_url/$stt_fname" -q -O "$srcdir/$stt_fname"
+    local stt_sum_check=$(sha512sum "$stt_fname" | awk '{print $1}')
+    if [ ${stt_sum_checkv} != "$stt_sum" ]; then
+      # Bail!
+      echo "Verifying STT\'s checksum failed!" 1>&2
+      exit 1
+    fi
   elif [ ${MACHINE_TYPE} == 'aarch64' ]; then
     # Download the STT Wheel.
     local stt_fname="stt-1.3.0-cp37-cp37m-linux_aarch64.whl"
