@@ -1,0 +1,36 @@
+## arg 1:  the new package version
+#pre_install() {
+# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+    useradd -r -s /usr/bin/nologin jsreport
+
+    chown -R jsreport:jsreport /opt/jsreport
+    systemctl daemon-reload
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    chown -R jsreport:jsreport /opt/jsreport
+    systemctl daemon-reload
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    systemctl stop jsreport
+}
+
+## arg 1:  the old package version
+post_remove() {
+    systemctl disable jsreport
+    userdel jsreport
+}

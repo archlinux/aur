@@ -1,0 +1,22 @@
+[Unit]
+Description=jsreport server
+After=network.target
+
+[Service]
+User=jsreport
+Group=jsreport
+
+Type=simple
+Environment="HOME=/opt/jsreport"
+ExecStart=/opt/jsreport/jsreport start
+WorkingDirectory=/opt/jsreport
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/jsreport
+
+[Install]
+WantedBy=multi-user.target

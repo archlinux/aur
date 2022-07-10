@@ -1,0 +1,27 @@
+pkgbase = jsreport-bin
+	pkgdesc = An open-source platform for designing and rendering various reports.
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = https://github.com/jsreport/jsreport
+	install = jsreport.install
+	arch = any
+	license = GNU
+	makedepends = yarn
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	depends = nodejs
+	optdepends = phantomjs
+	provides = jsreport
+	provides = jsreport-bin
+	conflicts = jsreport
+	conflicts = jsreport-git
+	options = !strip
+	source = https://github.com/jsreport/jsreport/releases/download/3.6.2/jsreport-linux.tar.gz
+	source = jsreport.service
+	source = jsreport.config.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jsreport-bin
