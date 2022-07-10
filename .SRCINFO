@@ -1,4 +1,4 @@
-pkgbase = interception-vimproved
+pkgbase = interception-vimproved-git
 	pkgdesc = vimproved: unofficial plugin for Interception Tools combining features of caps2esc and space cadet for making held space work as a special fn key.
 	pkgver = f4aa0fa
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = interception-vimproved
 	makedepends = gcc
 	makedepends = git
 	depends = interception-tools
-	source = interception-vimproved::git+https://github.com/maricn/interception-vimproved/
+	source = interception-vimproved-git::git+https://github.com/maricn/interception-vimproved/
 	md5sums = SKIP
 
-pkgname = interception-vimproved
+pkgname = interception-vimproved-git
