@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.7.5
+pkgver=3.7.6
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
@@ -13,11 +13,12 @@ depends=('mingw-w64-crt' 'mingw-w64-libtasn1' 'mingw-w64-readline' 'mingw-w64-zl
 options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
-        'gnutls-fix-external-libtasn1-detection.patch')
-sha256sums=('1f85028475b4f255cc5b480af0c37e61eab43024c1507c8b75d6be506c0553ad'
+        gnutls-fix-external-libtasn1-detection.patch)
+sha256sums=('77065719a345bfb18faa250134be4c53bef70c1bd61f6c0c23ceb8b44f0262ff'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+#validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -59,7 +60,9 @@ check() {
     cd "${srcdir}/gnutls-${pkgver}/build-${_arch}"
     export WINEPATH=/usr/${_arch}/bin
     msg2 'Skipping check due to undefined reference errors'
-    #WINEDEBUG=all make -C tests check
+    # disable parallel tests:
+    # FAIL: serv-udp.sh
+    #WINEDEBUG=all make -C tests -j1 check
   done
 }
 
