@@ -1,7 +1,7 @@
 # Maintainer: Rishabh Das <rdas@tutanota.com>
 pkgname='uair'
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible pomodoro timer"
 arch=('x86_64')
 url="https://github.com/metent/uair"
