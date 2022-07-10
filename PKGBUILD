@@ -1,0 +1,30 @@
+# Maintainer: zaps166 <spaz16 at wp dot pl>
+
+pkgname=xfce4-mate-applet-loader-plugin-git
+pkgver=r1.g39ae2bb
+pkgrel=1
+pkgdesc='Load MATE applets into Xfce4 panel'
+arch=('x86_64')
+url='https://github.com/zaps166/xfce4-mate-applet-loader-plugin'
+license=('MIT')
+depends=('xfce4-panel' 'libxfce4util')
+optdepends=('mate-applets')
+makedepends=('cmake')
+source=("git+https://github.com/zaps166/xfce4-mate-applet-loader-plugin.git")
+sha1sums=(SKIP)
+
+pkgver() {
+    cd ${pkgname}
+    echo r$(git rev-list --all --count).g$(git rev-parse --short HEAD)
+}
+
+build() {
+    cd ${pkgname}
+    cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    make
+}
+
+package() {
+    cd ${pkgname}
+    make DESTDIR="${pkgdir}" install
+}

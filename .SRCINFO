@@ -1,0 +1,15 @@
+pkgbase = xfce4-mate-applet-loader-plugin-git
+	pkgdesc = Load MATE applets into Xfce4 panel
+	pkgver = r1.g39ae2bb
+	pkgrel = 1
+	url = https://github.com/zaps166/xfce4-mate-applet-loader-plugin
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = xfce4-panel
+	depends = libxfce4util
+	optdepends = mate-applets
+	source = git+https://github.com/zaps166/xfce4-mate-applet-loader-plugin.git
+	sha1sums = SKIP
+
+pkgname = xfce4-mate-applet-loader-plugin-git
