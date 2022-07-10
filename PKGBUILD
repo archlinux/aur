@@ -1,4 +1,3 @@
-pkgbase=stt
 pkgname=python-stt-bin 
 _pkgname=STT
 pkgver=1.3.0
