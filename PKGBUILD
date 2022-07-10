@@ -1,7 +1,7 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=slang-verilog
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SystemVerilog Language Services"
 arch=('x86_64')

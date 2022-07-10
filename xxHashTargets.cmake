@@ -55,14 +55,14 @@ add_executable(xxHash::xxhsum IMPORTED)
 # Import target "xxHash::xxhash" for configuration "Release"
 set_property(TARGET xxHash::xxhash APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(xxHash::xxhash PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/usr/lib/libxxhash.so.0.8.0"
+  IMPORTED_LOCATION_RELEASE "/usr/lib/libxxhash.so.0.8.1"
   IMPORTED_SONAME_RELEASE "libxxhash.so.0"
   )
 
 # Import target "xxHash::xxhsum" for configuration "Release"
 set_property(TARGET xxHash::xxhsum APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(xxHash::xxhsum PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/usr/lib/libxxhsum.so.0.8.0"
+  IMPORTED_LOCATION_RELEASE "/usr/lib/libxxhsum.so.0.8.1"
   )
 
 # This file does not depend on other imported targets which have
