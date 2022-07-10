@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.4.2.r4.af15a68
+pkgver=1.4.3.1.r0.f1f0be8
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -55,7 +55,5 @@ package() {
   DESTDIR="${pkgdir}" meson install -C builddir
 }
 
-sha256sums=(
-  'SKIP'
-  'ef81e439b12aa2ff309b353399c033bd62b027e7bd4cbf649c025226f1de5287'
-)
+sha256sums=('SKIP'
+            'ef81e439b12aa2ff309b353399c033bd62b027e7bd4cbf649c025226f1de5287')
