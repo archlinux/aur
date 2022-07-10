@@ -1,15 +1,18 @@
 pkgbase = python-simple-crypt
-	pkgdesc = [Deprecated] Simple encryption and decryption for Python
+	pkgdesc = Simple encryption and decryption for Python
 	pkgver = 5.0.0.r7.gae19ce5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KyleKing/simple-crypt
 	arch = any
-	license = custom:Unlicense
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = simple-crypt-ae19ce570b285474cacf0acaaea514b08111501d.tar.gz::https://github.com/KyleKing/simple-crypt/archive/ae19ce570b285474cacf0acaaea514b08111501d.tar.gz
+	makedepends = python-wheel
+	depends = python-pycryptodome
+	source = python-simple-crypt-5.0.0.r7.gae19ce5.tar.gz::https://github.com/KyleKing/simple-crypt/archive/ae19ce570b285474cacf0acaaea514b08111501d.tar.gz
 	source = LICENSE
-	b2sums = 38baab8302223902e7118af63b422f679583bfcc6ffd5ad19323947352f7501c2542ad6c8e0016134ba650ccae27cf2937964e252418fea5540fdcd94843ee75
-	b2sums = 63f2d1930ce3975256b45aceef15f7c5693007873fe5419b8cf8e61b1c3975cc1be8cda038d8fc2ed80e9f4445956a47b8e9ea2b1d06e0c260cfacab6b7e2abc
+	sha256sums = 6312c536c5fdb29e8e0dade089158922429dbf6a5c88b6a3dd54d3fcf975dd91
+	sha256sums = 64462022dadbceb9425f25cfaeaeb64d24f3e5a50c8dbc85492e1c77c9c3bb43
 
 pkgname = python-simple-crypt
-	depends = python-pycryptodome
