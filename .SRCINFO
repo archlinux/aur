@@ -1,5 +1,4 @@
 pkgbase = chromeos-vboot-reference-git
-	pkgdesc = ChromeOS vbutil tools: futility (vbutil_kernel) cgpt and experimental crossystem from git.
 	pkgver = r20220709115837.78a0e6c
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
@@ -11,12 +10,18 @@ pkgbase = chromeos-vboot-reference-git
 	license = GPL
 	makedepends = git
 	makedepends = libyaml
+	makedepends = flashrom
+
+pkgname = chromeos-vboot-reference-git
+	pkgdesc = ChromeOS vbutil tools: futility (vbutil_kernel) cgpt from git.
+	depends = libutil-linux
+	depends = openssl
+	provides = vboot-utils
+	conflicts = vboot-utils
+
+pkgname = chromeos-vboot-reference-crossystem-git
+	pkgdesc = ChromeOS vbutil tools: crossystem from git, in experimental phase.
 	depends = libutil-linux
 	depends = openssl
 	depends = chromeos-flashrom-git
 	depends = chromeos-acpi-dkms-git
-	optdepends = dmidecode: for SMBIOS/DMI table decoder support
-	provides = vboot-utils
-	conflicts = vboot-utils
-
-pkgname = chromeos-vboot-reference-git

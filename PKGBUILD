@@ -3,15 +3,10 @@
 _gitname=vboot_reference
 _gitroot="https://chromium.googlesource.com/chromiumos/platform/${_gitname}"
 _gitbranch="main"
-pkgname="chromeos-${_gitname/_/-}-git"
-pkgdesc="ChromeOS vbutil tools: futility (vbutil_kernel) cgpt and experimental crossystem from git."
+pkgname=("chromeos-vboot-reference-git" "chromeos-vboot-reference-crossystem-git") 
 url="https://chromium.googlesource.com/chromiumos/platform/${_gitname}"
 license=('GPL')
-depends=('libutil-linux' 'openssl' 'chromeos-flashrom-git' 'chromeos-acpi-dkms-git')
-makedepends=('git' 'libyaml')
-optdepends=("dmidecode: for SMBIOS/DMI table decoder support")
-conflicts=("vboot-utils")
-provides=("vboot-utils")
+makedepends=('git' 'libyaml' 'flashrom')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 pkgver=r20220709115837.78a0e6c
 pkgrel=1
@@ -46,11 +41,25 @@ build() {
   make TEST_INSTALL_DIR=../build install_for_test
 }
 
-package() {
+package_chromeos-vboot-reference-git() {
+  pkgdesc="ChromeOS vbutil tools: futility (vbutil_kernel) cgpt from git."
+  depends=('libutil-linux' 'openssl')
+  conflicts=("vboot-utils")
+  provides=("vboot-utils")
+
   cd "${srcdir}/build"
-  find usr -type f -exec install -vDm 755 "{}" "${pkgdir}/{}" \;
+  install -m755 -vDt $pkgdir/usr/bin usr/bin/cgpt
+  install -m755 -vDt $pkgdir/usr/bin usr/bin/futility
   find etc -type f -exec install -vDm 755 "{}" "${pkgdir}/{}" \;
   cd "${srcdir}/${_gitname}/tests/"
   find devkeys -maxdepth 1 -type f -exec install -vDm 755 "{}" "${pkgdir}/usr/share/vboot/{}" \;
+}
+
+package_chromeos-vboot-reference-crossystem-git() {
+  pkgdesc="ChromeOS vbutil tools: crossystem from git, in experimental phase."
+  depends=('libutil-linux' 'openssl' 'chromeos-flashrom-git' 'chromeos-acpi-dkms-git')
+
+  cd "${srcdir}/build"
+  install -m755 -vDt $pkgdir/usr/bin usr/bin/crossystem
 }
 
