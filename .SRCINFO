@@ -9,6 +9,7 @@ pkgbase = minirc-ng-git
 	depends = busybox
 	depends = bash
 	depends = jq
+	depends = util-linux
 	optdepends = systemd: udev implementation
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
