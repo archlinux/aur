@@ -2,7 +2,7 @@
 # Contributor: Archie <archie-woc@ya.ru>
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
-pkgver=v55
+pkgver=v56
 pkgrel=1
 pkgdesc="Yandex Music Client"
 arch=('x86_64')
@@ -22,12 +22,9 @@ package() {
     cd "${srcdir}/Yamux"
     
     # Copy desktop file and icon
-    mkdir "$pkgdir/usr"
-    mkdir "$pkgdir/usr/share"
-    mkdir "$pkgdir/usr/share/applications"
-    mkdir "$pkgdir/usr/share/yamux"
+    mkdir -p "$pkgdir/usr/share/applications"
     cp -r ./AUR/Yamux.desktop "$pkgdir/usr/share/applications"
-    cp -r ./Svg/dark/icon.svg "$pkgdir/usr/share/yamux/icon.svg"
+    cp -r ./Svg/dark/icon.svg "$pkgdir/usr/share/pixmaps/yamux.svg"
 
     # Copy binaries
     mkdir -p "$pkgdir/opt"
