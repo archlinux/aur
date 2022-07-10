@@ -1,7 +1,7 @@
 # Maintainer: Thang Pham <phamducthang1234 at gmail dot com>
 
 pkgname=spotify-player
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A command driven spotify player."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('alsa-lib' 'openssl')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
-sha512sums=('b2c5d883dbceb90cdeea1fa594be4fdcc92a7036c1569a7c832c32736ee6748845ce0477f9bd11bb8b482bc41345c3896c415cd06589d23c693e340667a69c99')
+sha512sums=('774a244d09b9bc9d785837eb5bb2d16040c105536246984a357c5faaf0740cef38477fe6c36cdd652f32bd4c53edf2c524bffc730d49b3b1027dfbf5efe65396')
 
 build() {
     cd "${pkgname}-${pkgver}"
