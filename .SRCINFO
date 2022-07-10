@@ -1,0 +1,19 @@
+pkgbase = sempiternum-git
+	pkgdesc = Software to analyze Holomorphic Maps and their dynamics
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ManelCG/sempiternum
+	arch = x86_64
+	depends = libclc
+	depends = opencl-headers
+	depends = ocl-icd
+	depends = gtk3
+	depends = cairo
+	depends = pango
+	depends = pixman
+	depends = ffmpeg
+	optdepends = opencl-amd: For AMD GPUs
+	optdepends = opencl-nvidia: For Nvidia GPUS
+	conflicts = sempiternum
+
+pkgname = sempiternum-git
