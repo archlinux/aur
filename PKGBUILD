@@ -7,7 +7,7 @@
 #
 
 pkgname=cppcheck-premium
-pkgver=22.5.0
+pkgver=22.7.0
 pkgrel=1
 pkgdesc='Premium (nonfree) version of cppcheck'
 conflicts=('cppcheck')
@@ -17,7 +17,7 @@ license=('custom' 'GPL')
 depends=('python-pygments')
 source=("file:///cppcheckpremium-${pkgver}.tar.gz"
 	'cppcheck')
-sha1sums=('9cce0bb9afc5afed369645e8f5db6c75cb5f0fb0'
+sha1sums=('dcb8b986dc3cc948db94e9fed63a6f52bbc31476'
           'a1c60e8820d66096961c7666faeeefe6a04fc44b')
 
 package() {
