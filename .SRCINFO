@@ -1,0 +1,13 @@
+pkgbase = java-strata
+	pkgdesc = Open source analytics and market risk library from OpenGamma
+	pkgver = 2.12.5
+	pkgrel = 1
+	url = http://strata.opengamma.io
+	arch = any
+	license = Apache
+	makedepends = maven
+	depends = jdk8-openjdk
+	source = java-strata-2.12.5.tar.gz::https://github.com/OpenGamma/Strata/archive/refs/tags/v2.12.5.tar.gz
+	sha256sums = ac9e9826a2a83a54b54071307223f50323fb74435666944b82869a1129e2a9d2
+
+pkgname = java-strata
