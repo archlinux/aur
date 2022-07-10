@@ -2,7 +2,7 @@
 
 _pkgname='synct'
 pkgname="${_pkgname}-git"
-pkgver=r6.21e6e8b
+pkgver=r14.2269103
 pkgrel=1
 pkgdesc='A POSIX shell client for the Syncthing REST API with personal idiosyncracies'
 arch=('any')
@@ -17,10 +17,9 @@ sha512sums=('SKIP')
 
 package() {
   cd "${srcdir}/${_pkgname}/"
-  bin="$pkgdir/usr/bin/"
-  mkdir -p "$bin"
-  cp synct* "$bin"
-  sed -i "s/Usage/synct version ${pkgver}\n\0/" "$bin/synct"
+  local bin="${pkgdir}/usr/bin"
+  install -D --target-directory "$bin" ${_pkgname}*
+  sed -i "s/Usage/${_pkgname} version ${pkgver}\n\0/" "$bin/${_pkgname}"
 }
 
 pkgver() {
