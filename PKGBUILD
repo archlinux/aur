@@ -1,6 +1,6 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=slang-verilog
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog Language Services"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/MikePopoloski/slang/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('7e0c77908d0345618efb9f86672105a5283cc81d4d5581301814e0c5da6ec183')
+sha256sums=('8ea89d2727901717d3d5e81d97e6309e6d9a3af31c70d96bd50b26406edf5e48')
 validpgpkeys=()
 
 prepare() {
