@@ -1,0 +1,24 @@
+pkgbase = qubes-vm-qrexec
+	pkgdesc = The Qubes qrexec files (qube side)
+	pkgver = 4.1.18
+	pkgrel = 1
+	url = http://qubes-os.org/
+	install = PKGBUILD.install
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = qubes-libvchan
+	makedepends = pandoc
+	makedepends = python-setuptools
+	makedepends = lsb-release
+	depends = qubes-libvchan
+	provides = qubes-vm-qrexec
+	source = qubes-vm-qrexec::git+https://github.com/QubesOS/qubes-core-qrexec.git?signed#tag=v4.1.18
+	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
+	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
+	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
+	sha512sums = SKIP
+
+pkgname = qubes-vm-qrexec
