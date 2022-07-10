@@ -1,0 +1,74 @@
+From 7488750eb014527219a566c020205ff21ada80d0 Mon Sep 17 00:00:00 2001
+From: Aozora <REDACTED>
+Date: Sun, 10 Jul 2022 14:04:29 +0800
+Subject: [PATCH] Fix path
+
+---
+ src/config.cpp | 2 +-
+ src/config.h   | 2 +-
+ src/logo.cpp   | 5 +++--
+ src/main.cpp   | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/config.cpp b/src/config.cpp
+index 0ce04c5..a017a45 100755
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -36,7 +36,7 @@ std::unordered_map<std::string, std::string> Config::_default = {
+ 
+ }, Config::read{};
+ 
+-std::string Config::config_file = CONFIG_FILE, Config::arg0;
++std::string Config::config_file = std::string(std::getenv("HOME")) + "/.config/" + CONFIG_FILE, Config::arg0;
+ 
+ bool Config::parseCommandLine(int argc, char** argv) {
+ 
+diff --git a/src/config.h b/src/config.h
+index ccaf2f9..2b51aa6 100755
+--- a/src/config.h
++++ b/src/config.h
+@@ -1,7 +1,7 @@
+ #ifndef CONFIG_H_GUARD
+ #define CONFIG_H_GUARD
+ 
+-#define CONFIG_FILE "config.conf"
++#define CONFIG_FILE "dvdbounce.conf"
+ 
+ #include <fstream>
+ #include <unordered_map>
+diff --git a/src/logo.cpp b/src/logo.cpp
+index 810a47e..3f4ef9c 100755
+--- a/src/logo.cpp
++++ b/src/logo.cpp
+@@ -36,12 +36,13 @@ void Logo::load_images() {
+ 	for (int i = 0; i < 8; i++) {
+ 
+ 		std::stringstream filename;
++        std::string res_path = "/usr/share/dvdbounce/";
+ 
+ 		filename << "resources" << DVD::Config::PATHSEP << "dvdlogo-0" << i << ".png";
+ 
+-		std::cout << "Load file: \"" << Config::getRelative(filename.str()) << '"' << std::endl;
++		std::cout << "Load file: \"" << res_path << filename.str() << '"' << std::endl;
+ 
+-		imgs[i].loadFromFile(Config::getRelative(filename.str()));
++        imgs[i].loadFromFile(res_path + filename.str());
+ 
+         texs[i].loadFromImage(imgs[i]);
+ 
+diff --git a/src/main.cpp b/src/main.cpp
+index eed7b93..d513947 100755
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
+ 
+ 	std::cout << "argv[0] = " << argv[0] << std::endl;
+ 
+-	DVD::Config::setArg0(argv[0]);
++	//DVD::Config::setArg0(argv[0]);
+ 
+ 	std::cout << "Welcome to DVD Bounce v" << VERSION << ", enjoy the retro" << std::endl;
+ 
+-- 
+2.37.0
+

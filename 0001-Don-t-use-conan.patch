@@ -1,0 +1,33 @@
+From 43b6cac4c4599df99c52422fcdaad96fe1acd3ee Mon Sep 17 00:00:00 2001
+From: AozoraDev <REDACTED>
+Date: Sun, 10 Jul 2022 09:43:40 +0800
+Subject: [PATCH] Don't use conan
+
+---
+ CMakeLists.txt | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ff281e6..7d3f840 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,11 +9,10 @@ project(dvdbounce)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED True)
+-
+-include(conan/conanbuildinfo.cmake)
+-conan_basic_setup()
++set(SFML_DIR "/usr/lib/cmake/SFML")
+ 
+ add_executable(dvdbounce src/config.cpp src/config.h src/main.cpp src/main.h src/logo.cpp src/logo.h src/util.cpp src/util.h)
+ 
+-target_link_libraries(dvdbounce ${CONAN_LIBS})
+-
++find_package(SFML 2.5 COMPONENTS graphics window REQUIRED)
++target_link_libraries(dvdbounce sfml-graphics sfml-window)
++include_directories(/usr/include)
+\ No newline at end of file
+-- 
+2.37.0
+

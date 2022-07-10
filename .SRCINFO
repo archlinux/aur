@@ -1,0 +1,18 @@
+pkgbase = dvdbounce
+	pkgdesc = A program that simulates the retro DVD screensaver
+	pkgver = 1.31
+	pkgrel = 1
+	url = https://github.com/George-lewis/DVDBounce
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = sfml
+	makedepends = cxxopts
+	source = dvdbounce-1.31.tar.gz::https://github.com/George-lewis/DVDBounce/archive/v1.31.tar.gz
+	source = 0001-Don-t-use-conan.patch
+	source = 0001-Fix-path.patch
+	sha256sums = 3a4347687d2bf1fe732f8723434af67e67a256db982af147bda3cb61128693c0
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dvdbounce
