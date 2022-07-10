@@ -3,12 +3,12 @@ pkgname=obs-websocket
 pkgver=5.0.0
 _commit=a25427c7cc4b4f0f6ac96ebe2723fc3db8906f22
 _obsver=27.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='WebSockets API for obs-studio'
 arch=('x86_64')
 url="https://github.com/obsproject/$pkgname"
 license=('GPL2')
-depends=("obs-studio>=$_obsver" 'obs-studio<28.0.0')
+depends=("obs-studio>=$_obsver")
 makedepends=('asio' 'cmake' 'git' 'nlohmann-json' 'websocketpp')
 source=("git+https://github.com/obsproject/obs-websocket.git#commit=$_commit"
         "git+https://github.com/nayuki/QR-Code-generator.git")
