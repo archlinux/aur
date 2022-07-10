@@ -3,36 +3,32 @@
 _pkgname=netease-cloud-music-gtk
 
 pkgname=netease-cloud-music-gtk-bin
-pkgver=1.2.2
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
 license=('GPL')
-depends=('gstreamer' 'gtk3' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'openssl')
-optdepends=(
-  'osdlyrics: Show lyrics'
-)
+depends=('gstreamer' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav' 'libadwaita' 'openssl')
 conflicts=('netease-cloud-music-gtk')
 source=(
-  "https://gitee.com/gmg137/netease-cloud-music-gtk/attach_files/689011/download/${_pkgname}-${pkgver}-1.x86_64.rpm"
+  "https://download.opensuse.org/repositories/openSUSE:/Factory/standard/x86_64/${_pkgname}-${pkgver}-2.1.x86_64.rpm"
+  "${url}/releases/download/${pkgver}/${_pkgname}-lang-${pkgver}-26.1.noarch.rpm"
   "README-${pkgver}.md::${url}/raw/${pkgver}/README.md"
-  "LICENSE-${pkgver}::${url}/raw/${pkgver}/LICENSE"
 )
 noextract=(
-  "${_pkgname}-${pkgver}-1.x86_64.rpm"
+  "${_pkgname}-${pkgver}-2.1.x86_64.rpm"
+  "${_pkgname}-lang-${pkgver}-26.1.noarch.rpm"
 )
 sha256sums=(
-  'f78fe4105b00a1bdea2364f158cfee05e0fd0c2e04e03626d1215d3ecc40eda7'
-  'f0bfaab428267a65ad2ec11971a04acd1cb508dffa3dd2c899b19e11d55816ac'
-  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+  '844734eada20a5f336d2cdc56c1cbe882c15f561663a9ad65ccce8740a4d8f83'
+  'b92cad7140a22e6ba792d8d796ad57b0154146f55fe9f09de09ba25ba4411fcb'
+  'c9b60b78cebbc05945f226b5e58b2f6586bf532d836233a8bbc3e17fac90db4a'
 )
 
 package() {
   cd "${srcdir}"
-  bsdtar -xf "${_pkgname}-${pkgver}-1.x86_64.rpm" -C "${pkgdir}/"
+  bsdtar -xf "${_pkgname}-${pkgver}-2.1.x86_64.rpm" -C "${pkgdir}/"
+  bsdtar -xf "${_pkgname}-lang-${pkgver}-26.1.noarch.rpm" -C "${pkgdir}/"
   install -D -m644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -D -m644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  ln -s /usr/share/pixmaps/netease-cloud-music-gtk.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/netease-cloud-music-gtk.svg"
 }
