@@ -1,7 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-devel-findperl'
-pkgver=0.015
+pkgver=0.016
 pkgrel=1
 pkgdesc='Find the path to your perl'
 _dist='Devel-FindPerl'
@@ -11,7 +12,7 @@ license=('PerlArtistic')
 depends=('perl')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/L/LE/LEONT/$_dist-$pkgver.tar.gz")
-sha256sums=('5275b7dc226fe7f16cb69fc6f99f5e29a852c6a4d3b786ab1886a31386743dfc')
+sha256sums=('43a2bf2f787a3f1b881179063162b2aa3e7cb044f6e5e76ec6466ae90a861138')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
