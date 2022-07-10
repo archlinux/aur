@@ -1,7 +1,9 @@
+# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+
 _pkgbase=serve
 pkgname=nodejs-$_pkgbase
 pkgdesc='Quick HTTP server'
-pkgver=13.0.2
+pkgver=13.0.4
 pkgrel=1
 arch=('any')
 url='https://github.com/zeit/serve'
@@ -19,4 +21,4 @@ package() {
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
 
-sha512sums=('ef547a7cabcd80aaea01101a83a95824d9f10f3a47ec308daccbaf3d8e4f2d5682d8f0e126c1938ffdf8a38a38b4f5a14ee2e0117aaf8270166c04d0f731994d')
+sha512sums=('2e3f2b8579a9849091415bf9ab0bb435067687ed0cad1c912710d9bb9cb7a8b1f68bf5d8e9ad053e3fd59a331476425bebbd8c05f13c849dbbe0f53a27305dd1')
