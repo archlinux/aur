@@ -48,7 +48,7 @@ optdepends=(
 checkdepends=(
     "python-behave"
     "phpunit"
-    "phpcs"
+    "php-codesniffer"
     "python-pylint"
     "python-pytest"
 )
