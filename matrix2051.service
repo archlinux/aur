@@ -1,0 +1,51 @@
+[Unit]
+Description=A Matrix gateway for IRC, join from your favorite IRC client
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=matrix2051
+Group=matrix2051
+DynamicUser=true
+SyslogIdentifier=matrix2051
+StateDirectory=matrix2051
+RuntimeDirectory=matrix2051
+ExecStart=/usr/lib/matrix2051/bin/matrix2051 start
+ExecStop=/usr/lib/matrix2051/bin/matrix2051 stop
+Environment=LC_ALL=en_US.UTF-8
+Environment=HOME=/var/lib/matrix2051
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+Restart=always
+RestartSec=10
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+#SecureBits=
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=false
+PrivateUsers=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+
+[Install]
+WantedBy=multi-user.target

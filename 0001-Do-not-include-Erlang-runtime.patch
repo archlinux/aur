@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@thaodan.de>
+Date: Sun, 10 Jul 2022 18:18:38 +0300
+Subject: [PATCH] Do not include Erlang runtime
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We want to use the Erlang runtime provided by the Erlang package and
+not bundled or own.
+
+Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
+---
+ mix.exs | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/mix.exs b/mix.exs
+index 42a049ca5dea4e03f0b1156865bb82c64fa51fa2..eafbafbfdb5e23ef761b3b2a93fe9842f6f6d819 100644
+--- a/mix.exs
++++ b/mix.exs
+@@ -27,7 +27,8 @@ defmodule M51.MixProject do
+       releases: [
+         matrix2051: [
+           version: version(),
+-          applications: [matrix2051: :permanent]
++          applications: [matrix2051: :permanent],
++          include_erts: false
+         ]
+       ]
+     ]
