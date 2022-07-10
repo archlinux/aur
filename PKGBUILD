@@ -1,21 +1,19 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=remnote
-pkgver=1.7.6
-pkgrel=2
+pkgver=1.8.5
+pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64')
 url="https://www.remnote.com"
 license=('custom:Commercial')
-depends=('electron17')
 options=(!strip)
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download.remnote.io/${_appimage}"
 	"${pkgname}.sh")
 noextract=("${_appimage}")
-sha256sums=('c915292debff16bde639a9a41607af02bbf65285e05787bace5cafec5690e113'
-            '0563c942b12e1e174ef2a7732f62809b84b709078d814449432b6ee76706b907')
+sha256sums=('502912eeed29cd4422a2025ff08779aa086ab4f3d37fb02b8834045430bc86e0'
+            '25f625c75af753260ed530a759f7adb09fe8cc164ec2f566923a1d229e6a2485')
 prepare() {
-	cd "$srcdir"
 	chmod a+x $_appimage
 	./$_appimage --appimage-extract
 	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
@@ -24,6 +22,7 @@ prepare() {
 }
 
 package() {
+	depends=('electron')
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
 	install -Dm644 "${srcdir}/squashfs-root/remnote.png" -t "${pkgdir}/usr/share/pixmaps"
