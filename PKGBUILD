@@ -1,8 +1,8 @@
 ## Maintainer: Thermi <noel[ at ] familie-kuntze.de>
 # Submitter: nullie
 pkgname=lsyncd
-pkgver=2.2.3
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Live Syncing (Mirror) Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/axkibe/lsyncd"
@@ -11,16 +11,14 @@ depends=('lua' 'rsync')
 makedepends=('asciidoc' 'lua' 'cmake')
 source=("https://github.com/axkibe/lsyncd/archive/release-$pkgver.tar.gz"
         "lsyncd.service"
-        "FindLua.cmake.patch"
-        "lua-compat-fix.patch"
         "0001-cmake-remove-fixed-setting-of-LUA_COMPILER-to-luac5..patch"
+        "0002-lsyncd.h-define-_BSD_SOURCE-1-define-LUA_COMPAT_5_3.patch"
         )
 
-sha256sums=('7bcd0f4ae126040bb078c482ff856c87e61c22472c23fa3071798dcb1dc388dd'
+sha256sums=('08a1bcab041fa5d4c777ae272c72ad9917442b6e654b14ffd1a82ba0cd45e4ef'
             '538072a4505abbdf8c4d16c9200810d4a2253f892a71fc16b5cd7f35ebe1ae57'
-            '12fb0d853c9b1fe743e0de5c77b9df037a9026afffb8584ef36f8009ae6dc450'
-            'dfe8e359e28a28ee38fa76c3fea4378a5946305f08d1a25efe0e2f1448bdfc90'
-            '08ba3aa767057e2b2ddf1fdb42e3452f8f1531e429e5d1a53ed60b61f7fe49da')
+            'e5e6731559c7a290323f5b4e1d74c7ebbfaae700509a760ed43080f7eda31c71'
+            '2b383276d158337d2e81ea188e767888ffdc78c20e3fc6932621481075015524')
 
 prepare() {
     cd "${pkgname}-release-${pkgver}"
@@ -42,7 +40,7 @@ package() {
     cd "${srcdir}/${pkgname}-release-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
     # fix the path of the man page. Urgh.
-    install -D "${pkgdir}/usr/man/lsyncd.1" "${pkgdir}/usr/share/man/man1/lsyncd.1"
-    rm -rf "${pkgdir}/usr/man"
+    install -D "${pkgdir}/man1/lsyncd.1" "${pkgdir}/usr/share/man/man1/lsyncd.1"
+    rm -rf "${pkgdir}/man1"
     install -m 644 -D "${srcdir}/lsyncd.service" "${pkgdir}/usr/lib/systemd/system/lsyncd.service"
 }
