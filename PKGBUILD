@@ -1,25 +1,33 @@
-# Maintainer: Yardena Cohen <yardenack@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Yardena Cohen <yardenack@gmail.com>
 
 pkgname=python-simple-crypt
-pkgver=4.1.7
+_name="${pkgname#python-}"
+_commit='ae19ce570b285474cacf0acaaea514b08111501d'
+pkgver=5.0.0.r7.gae19ce5
 pkgrel=1
+pkgdesc='[Deprecated] Simple encryption and decryption for Python'
 arch=('any')
-license=('custom')
-pkgdesc="Simple, secure encryption and decryption for Python 3"
-url="https://pypi.python.org/pypi/simple-crypt"
-makedepends=('python-distribute')
-depends=('python-crypto')
-source=("https://pypi.python.org/packages/source/s/simple-crypt/simple-crypt-$pkgver.tar.gz")
-md5sums=('dc2b13ce6be9c9da08fb1e7d83498882')
-sha256sums=("49462ab7ea4b080a8c10e362abfe35ecfa6dbe1e1c454ea36de7d2a71dce992f")
-sha512sums=("31d71f4b346dca8d0680d0684e88a6b97803723fac7326383a94b16dee21f791dfcfcb22e1f8f7b655dd8edbb759893da66cf24ea0bdc2fdc95e5af2cc4b453b")
+url="https://github.com/KyleKing/${_name}"
+license=('custom:Unlicense')
+makedepends=('python-setuptools')
+_tarname="${_name}-${_commit}"
+source=("${_tarname}.tar.gz::${url}/archive/${_commit}.tar.gz"
+        'LICENSE')
+b2sums=('38baab8302223902e7118af63b422f679583bfcc6ffd5ad19323947352f7501c2542ad6c8e0016134ba650ccae27cf2937964e252418fea5540fdcd94843ee75'
+        '63f2d1930ce3975256b45aceef15f7c5693007873fe5419b8cf8e61b1c3975cc1be8cda038d8fc2ed80e9f4445956a47b8e9ea2b1d06e0c260cfacab6b7e2abc')
 
 build() {
-  cd "$srcdir/simple-crypt-$pkgver"
+  cd "${_tarname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/simple-crypt-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  depends=('python-pycryptodome')
+
+  cd "${_tarname}"
+  python setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+
+  install --verbose -Dm 644 '../LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install --verbose -Dm 644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

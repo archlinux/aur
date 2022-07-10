@@ -1,3 +1,16 @@
-python-simple-crypt-*-build.log
-python-simple-crypt-*-package.log
-simple-crypt-*.tar.gz
+# from https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
+*.tar
+*.tar.*
+*.rpm
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+
+*/
+*.orig
+*.bak
+*.backup
