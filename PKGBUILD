@@ -1,5 +1,5 @@
 pkgname=papirus-icon-theme-stripped
-pkgver=20220606
+pkgver=20220710
 pkgrel=1
 pkgdesc="Papirus icon theme, stripped to only base (default + dark) variations."
 _name="${pkgname%-stripped}"
@@ -13,9 +13,9 @@ options=('!strip' '!emptydirs')
 _snapshot="${_name}-${pkgver}"
 _archive="${_snapshot}.tar.gz"
 
-source=("${_archive}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_archive}::${url}/archive/${pkgver}.tar.gz")
 noextract=("${_archive}")
-sha256sums=('139d18bada63d72779f2b604dbe893987d74000de728165ef1cb8baa4624b9c6')
+sha256sums=('9aa81b51b73bfafeae7dbf7ef411db7c74fcff983e4b13c0e05e481dc65971b2')
 
 package() {
     cd "${srcdir}"
