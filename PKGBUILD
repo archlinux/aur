@@ -3,13 +3,13 @@ pkgname=python-stt-bin
 _pkgname=STT
 pkgver=1.3.0
 pkgrel=3
-pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - Python native client + CTC decoder."
+pkgdesc="Coqui-STT - Python native client + CTC decoder."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
 makedepends=('wget' 'tar')
-provides=('stt' 'python-stt')
-conflicts=('stt' 'python-stt')
+provides=('python-stt')
+conflicts=('python-stt')
 
 # Set all sources.
 _src_base_url="https://github.com/coqui-ai/STT/releases/download/v$pkgver"
