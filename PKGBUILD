@@ -26,9 +26,9 @@ package() {
 	install -Dm755 target/release/uair "${pkgdir}/usr/bin/uair"
 	install -Dm755 target/release/uairctl "${pkgdir}/usr/bin/uairctl"
 
-	install -Dm755 docs/uair.1 "${pkgdir}/usr/share/man/man1/uair.1"
-	install -Dm755 docs/uairctl.1 "${pkgdir}/usr/share/man/man1/uairctl.1"
-	install -Dm755 docs/uair.5 "${pkgdir}/usr/share/man/man5/uair.5"
+	install -Dm644 docs/uair.1 "${pkgdir}/usr/share/man/man1/uair.1"
+	install -Dm644 docs/uairctl.1 "${pkgdir}/usr/share/man/man1/uairctl.1"
+	install -Dm644 docs/uair.5 "${pkgdir}/usr/share/man/man5/uair.5"
 
 	install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
