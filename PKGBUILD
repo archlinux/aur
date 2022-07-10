@@ -4,10 +4,11 @@
 # Contributor: Michael Healy <horsemanoffaith@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: SoftwareRat <chenxiaolong@cxl.epac.to>
+# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname='ubuntu-wallpapers'
 pkgver=22.04.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
 url='https://launchpad.net/ubuntu-wallpapers'
@@ -17,15 +18,23 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 
 # https://packages.ubuntu.com/source/ubuntu-wallpapers
 # http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/
-source=("${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
-        "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz")
+source=(
+  "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
+  "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz"
+  'setuptools-bugfix.patch'
+)
 sha256sums=('83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e'
-            '430a61aa87de2fc12ba3a7ba583df16643839c3b14c7d9138d67e43d43767a6b')
+            '430a61aa87de2fc12ba3a7ba583df16643839c3b14c7d9138d67e43d43767a6b'
+            'fee8ef60ea8ecfbf847fd45b30db7efc7bf233d9d6e5f67b14f2f29e585fc4ac')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   # The setup.py script reads the package version from debian/*
   ln -sfv ../debian .
+  # Patch setuptools to work around new behavior in setuptools
+  # Eventually this can be removed, whenever Ubuntu/Debian package maintainers
+  # Stumble on this and fix it upstream.
+  patch --forward --strip=1 --input="${srcdir}/setuptools-bugfix.patch"
 }
 
 package() {

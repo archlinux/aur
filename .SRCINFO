@@ -1,7 +1,7 @@
 pkgbase = ubuntu-wallpapers
 	pkgdesc = The default Wallpapers for Ubuntu
 	pkgver = 22.04.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu-wallpapers
 	arch = any
 	license = custom
@@ -9,7 +9,9 @@ pkgbase = ubuntu-wallpapers
 	makedepends = python-setuptools
 	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.04.4.orig.tar.gz
 	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.04.4-0ubuntu1.debian.tar.xz
+	source = setuptools-bugfix.patch
 	sha256sums = 83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e
 	sha256sums = 430a61aa87de2fc12ba3a7ba583df16643839c3b14c7d9138d67e43d43767a6b
+	sha256sums = fee8ef60ea8ecfbf847fd45b30db7efc7bf233d9d6e5f67b14f2f29e585fc4ac
 
 pkgname = ubuntu-wallpapers
