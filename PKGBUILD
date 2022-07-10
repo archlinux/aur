@@ -38,7 +38,7 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
 makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel' 'python-six')
 source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/38/38569/mozcdic-ut-${_utdicdate}.tar.bz2" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/protocolbuffers/protobuf" "git+https://github.com/abseil/abseil-cpp.git")
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then

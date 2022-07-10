@@ -35,8 +35,6 @@ pkgbase = mozc-ut-united
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
 
 pkgname = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
