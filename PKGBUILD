@@ -1,18 +1,18 @@
 # Maintainer: Justin Dray <justin@dray.be>
 pkgname=lsiutil
-pkgver=1.63
-pkgrel=3
+pkgver=1.72
+pkgrel=1
 pkgdesc="Configuration utility for LSI MPT adapters (FC, SCSI, and SAS/SATA)"
 url="http://http://karlsbakk.net/LSIUtil%20Kit%201.63/Source/"
 arch=('x86_64' 'i686')
 license=('none')
 depends=(glibc)
-source=("https://karlsbakk.net/LSIUtil%20Kit%20$pkgver/Source/lsiutil.tar.gz")
+source=("https://ftp.icm.edu.pl/packages/LSI/sw/lsiutil-$pkgver.tar.gz")
 
 build() {
 	cd "${srcdir}/${pkgname}"
 	rm lsiutil
-	gcc -Wall -O lsiutil.c -o lsiutil
+	gcc $CFLAGS -Wall -O lsiutil.c -o lsiutil
 }
 
 package() {
@@ -20,4 +20,4 @@ package() {
 	install -Dm755 lsiutil $pkgdir/usr/bin/lsiutil
 }
 
-sha512sums=('a6df71d7de8d5df3fa9632f52477e6f7790b6173e00aee090c590d95b5042e04bd3d85c567157b1d2f1da85035f6873ef35ce5601d78ac7c2a6e2ba195e6560a')
+sha512sums=('bd89b0f4d91a867c7433d948fb6311af4933994e9bda5d688c32c9b8342138557c278e8f7b8b7c595f683a4da5495d4791f0f10ed95ef741647039d9b5b6665b')
