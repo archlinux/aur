@@ -14,13 +14,13 @@ pkgname=(
     "${_pkgbase}-g533-qwerty-git"
     "${_pkgbase}-g533-azerty-git"
 )
-pkgver=r100.6b40efc
+pkgver=r102.f5a78ac
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
 url="https://github.com/asus-linux-drivers/asus-touchpad-numpad-driver"
 license=('GPL3')
-depends=('libevdev' 'python-libevdev' 'i2c-tools' 'python-numpy')
+depends=('libevdev' 'python-libevdev' 'i2c-tools' 'python-numpy' 'python-evdev')
 makedepends=('git')
 provides=("${_pkgbase}")
 source=("git+${url}.git")
