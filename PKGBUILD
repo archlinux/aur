@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.17.1.r0.g64c1086df
+pkgver=0.17.1.r21.g6a60c7d43
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -16,19 +16,18 @@ conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
 depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
-         'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
+         'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl' 'sqlite' 'which'
+         'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'postgresql' 'python' 'recutils')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
-            'libgabe: for Attribute-Based Encryption'
+            'jose: for re:claimID OpenID Connect plugin'
 	    'libogg: for conversation service'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
 	    'libpulse: for conversation service'
-            'miniupnpc: for NAT uPnP support'
             'mysql: for an alternative to sqlite in the database plugin'
 	    'opus: for conversation service'
-            'pbc: for Attribute-Based Encryption'
             'postgresql: for an alternative to sqlite in the database plugin'
             'python: for test suite'
             'texi2mdoc: for automatic mdoc generation'
