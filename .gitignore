@@ -1,8 +1,7 @@
 /*
 !.gitignore
 !gdl.profile
-!gdl-mallinfo2.patch
-!gdl-tiff.patch
+!gdl_pr_1337.patch
 !PKGBUILD
 !.SRCINFO
 !.gitlab-ci.yml
