@@ -24,8 +24,8 @@ optdepends=('gcc: for compiling c++ sources',
 )
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/RagnarGrootKoerkamp/BAPCtools")
-install=bapctools.install
 md5sums=('SKIP')
+install=bapctools.install
 
 pkgver() {
 	cd "${_pkgname}"
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 package() {
-	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/shared/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
 	# Strip large directories to halve the size of the install.
 	mkdir -p "${pkgdir}/usr/share/${_pkgname}"
