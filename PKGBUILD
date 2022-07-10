@@ -1,15 +1,15 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.0.0.r4.g7f848707
+pkgver=6.1.0.r4.g6243e5a9
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
 license=('BSD')
 makedepends=(
 	'boost>=1.57'
-	'cmake>=3.8'
+	'cmake>=3.12'
 	'fmt>=8.1.1'
 	'git'
 	'robin-map>=0.6.2'
@@ -29,9 +29,6 @@ pkgver() {
 }
 
 build() {
-	if [[ $CXX != clang* ]]; then
-		CXXFLAGS+=" -ffat-lto-objects -Wno-array-bounds"
-	fi
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
