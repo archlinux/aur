@@ -1,6 +1,6 @@
 --- a/mupen64plus-gui/mainwindow.cpp
 +++ b/mupen64plus-gui/mainwindow.cpp
-@@ -4,6 +4,7 @@
+@@ -3,6 +3,7 @@
  #include <QCloseEvent>
  #include <QActionGroup>
  #include <QDesktopServices>
@@ -8,7 +8,7 @@
  #include "settingsdialog.h"
  #include "plugindialog.h"
  #include "mainwindow.h"
-@@ -46,7 +47,7 @@ void MainWindow::updatePlugins()
+@@ -45,7 +46,7 @@ void MainWindow::updatePlugins()
  #ifdef PLUGIN_DIR_PATH
      QString pluginPath = PLUGIN_DIR_PATH;
  #else
@@ -17,7 +17,7 @@
  #endif
      QDir PluginDir(pluginPath);
      PluginDir.setFilter(QDir::Files);
-@@ -372,7 +373,7 @@ MainWindow::MainWindow(QWidget *parent) :
+@@ -371,7 +372,7 @@ MainWindow::MainWindow(QWidget *parent) :
      updatePIF(ui);
  
      if (!settings->contains("configDirPath"))
@@ -26,7 +26,7 @@
  
  #ifdef CONFIG_DIR_PATH
      settings->setValue("configDirPath", CONFIG_DIR_PATH);
-@@ -432,7 +433,7 @@ void MainWindow::updateApp()
+@@ -431,7 +432,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
