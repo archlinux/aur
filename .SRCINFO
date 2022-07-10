@@ -1,0 +1,12 @@
+pkgbase = instalee-git
+	pkgdesc = TODO
+	pkgver = r30.7c6fa3f
+	pkgrel = 1
+	url = https://github.com/xeruf/instalee
+	arch = any
+	license = GPL
+	provides = instalee
+	source = git+https://github.com/xeruf/instalee
+	sha512sums = SKIP
+
+pkgname = instalee-git
