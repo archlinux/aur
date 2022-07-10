@@ -1,13 +1,13 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phpstan
-pkgver=1.7.15
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool"
 url="https://phpstan.org/"
 arch=("any")
 license=("MIT")
-depends=("php>=7.1.0")
+depends=("php>=7.2.0")
 optdepends=()
 
 source=(
