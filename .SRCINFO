@@ -9,7 +9,6 @@ pkgbase = python-stt-bin
 	license = MPL2
 	makedepends = wget
 	makedepends = tar
-	provides = stt
 	provides = python-stt
 	conflicts = stt
 	conflicts = python-stt
