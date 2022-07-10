@@ -1,0 +1,23 @@
+pkgbase = lua-luagcrypt-git
+	pkgdesc = A Lua interface to the libgcrypt library, written in C
+	pkgver = r46.5763e94
+	pkgrel = 1
+	url = https://github.com/Lekensteyn/luagcrypt
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = libgcrypt
+	depends = libgcrypt
+	source = luagcrypt::git+https://github.com/Lekensteyn/luagcrypt.git
+	sha256sums = SKIP
+
+pkgname = lua-luagcrypt-git
+
+pkgname = lua51-luagcrypt-git
+
+pkgname = lua52-luagcrypt-git
+
+pkgname = lua53-luagcrypt-git
