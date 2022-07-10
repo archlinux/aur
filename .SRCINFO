@@ -1,0 +1,18 @@
+pkgbase = wifi-qr
+	pkgdesc = WiFi Share and Connect with QR
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://www.github.com/kokoye2007/wifi-qr
+	arch = x86_64
+	license = GPL3
+	depends = zenity
+	depends = xdg-utils
+	depends = zbar
+	depends = qrencode
+	depends = networkmanager
+	options = !emptydirs
+	options = !strip
+	source = wifi-qr_0.2-{pkgrel}_all.deb::https://github.com/kokoye2007/wifi-qr/releases/download/0.2/wifi-qr_0.2-1_all.deb
+	sha256sums = cc38985fe9cd4c44a550a2a6bc314bfc79b6b8d76e27b8da8e5de7beb403b08c
+
+pkgname = wifi-qr
