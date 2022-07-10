@@ -1,7 +1,7 @@
 pkgbase = python2-lxml
 	pkgdesc = Python2 binding for the libxml2 and libxslt libraries
 	pkgver = 4.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lxml.de/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = python2-lxml
 	checkdepends = python2-cssselect
 	checkdepends = python2-html5lib
 	makedepends = python2-setuptools
+	makedepends = cython2
 	depends = python2
 	depends = libxslt
 	optdepends = python2-beautifulsoup4: malformed HTML parsing support

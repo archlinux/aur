@@ -2,14 +2,14 @@
 
 pkgname=python2-lxml
 pkgver=4.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python2 binding for the libxml2 and libxslt libraries'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://lxml.de/'
 license=('BSD' 'custom')
 depends=('python2' 'libxslt')
 checkdepends=('python2-beautifulsoup4' 'python2-cssselect' 'python2-html5lib')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'cython2')
 optdepends=(
 	'python2-beautifulsoup4: malformed HTML parsing support'
 	'python2-cssselect: CSS parsing support'
