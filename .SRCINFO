@@ -10,6 +10,7 @@ pkgbase = cider-git
 	makedepends = git
 	makedepends = npm
 	makedepends = yarn
+	makedepends = rust
 	depends = gtk3
 	depends = nss
 	optdepends = libnotify: Playback notifications
