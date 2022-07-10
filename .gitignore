@@ -1,0 +1,5 @@
+minify-js
+src/
+pkg/
+*-linux-x86_64
+*.tar.zst
