@@ -1,7 +1,7 @@
 _pkgname=luagcrypt
 pkgname=(lua-$_pkgname-git lua51-$_pkgname-git lua52-$_pkgname-git lua53-$_pkgname-git)
 pkgver=r46.5763e94
-pkgrel=1
+pkgrel=2
 pkgdesc='A Lua interface to the libgcrypt library, written in C'
 arch=(any)
 url='https://github.com/Lekensteyn/luagcrypt'

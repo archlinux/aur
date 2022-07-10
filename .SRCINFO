@@ -1,7 +1,7 @@
 pkgbase = lua-luagcrypt-git
 	pkgdesc = A Lua interface to the libgcrypt library, written in C
 	pkgver = r46.5763e94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lekensteyn/luagcrypt
 	arch = any
 	license = MIT
