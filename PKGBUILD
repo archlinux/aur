@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.7.beta2.r0.ga6e696e91d2
+pkgver=9.7.beta5.r0.g625ac58151d
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -58,16 +58,14 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-linbox-1.7.patch
         sagemath-bliss-0.77.patch
-        sagemath-tachyon-0.99.patch
-        sage_docbuild.patch)
+        sagemath-tachyon-0.99.patch)
 sha256sums=('SKIP'
             'eee5fa15d8c7be7e009166dbde3ea24bb10d7793dc12880516f278f86b1a6694'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
             '9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
             '3d461a21b9e66cf1884b7cfa20205709ce90f761b7bb2909b6520ad9677494bd'
-            '4ee8071efd7b9ad66ac5bbfe081fe670cc58cfcac8fb783d5a40b6da3593cbf4'
-            '7e1b9caa70e882356cd1c5e7fa69b68e5c60550b6bc8b3c9753441b1ad63da3d')
+            '1c5029a4abef9edd23b7b8197dafd1066420f3323485786c31b4e66cdf7906bd')
 
 pkgver() {
   cd sage
@@ -84,8 +82,6 @@ prepare(){
   patch -p1 -i ../sagemath-bliss-0.77.patch
 # Fix tests with tachyon 0.99 https://trac.sagemath.org/ticket/23712
   patch -p1 -i ../sagemath-tachyon-0.99.patch
-# Remove sage_docbuild runtime dependency
-  patch -p1 -i ../sage_docbuild.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
