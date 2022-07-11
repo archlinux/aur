@@ -10,25 +10,25 @@ url="https://unifoundry.com/unifont.html"
 license=('GPL2' 'custom:OFL')
 provides=('unifont')
 conflicts=('pcf-unifont' 'psf-unifont' 'hex-unifont')
-source=("http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.bdf.gz"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.otf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.pcf.gz"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.ttf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_csur-${pkgver}.otf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_csur-${pkgver}.ttf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.bdf.gz"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.otf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.ttf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp_sample-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_sample-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_sample-${pkgver}.ttf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.otf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.ttf"{,.sig}
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper_sample-${pkgver}.hex.gz"
-        "http://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/Unifont-APL8x16-${pkgver}.psf.gz"{,.sig}
+source=("https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.bdf.gz"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.otf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.pcf.gz"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}-${pkgver}.ttf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_csur-${pkgver}.otf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_csur-${pkgver}.ttf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.bdf.gz"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.otf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp-${pkgver}.ttf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_jp_sample-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_sample-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_sample-${pkgver}.ttf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.otf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper-${pkgver}.ttf"{,.sig}
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/${_pkgname}_upper_sample-${pkgver}.hex.gz"
+        "https://unifoundry.com/pub/${_pkgname}/${_pkgname}-${pkgver}/font-builds/Unifont-APL8x16-${pkgver}.psf.gz"{,.sig}
         "https://unifoundry.com/LICENSE.txt")
 noextract=("${_pkgname}-${pkgver}.pcf.gz"
            "Unifont-APL8x16-${pkgver}.psf.gz")
