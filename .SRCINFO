@@ -11,6 +11,7 @@ pkgbase = openmodelica-omc
 	makedepends = git
 	makedepends = boost
 	depends = lapack
+	depends = lapack-static
 	depends = expat
 	depends = lpsolve
 	depends = java-environment

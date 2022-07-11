@@ -7,7 +7,7 @@ url="https://openmodelica.org"
 license=('OSMC-PL')
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
-depends=('lapack' 'expat' 'lpsolve' 'java-environment')
+depends=('lapack' 'lapack-static' 'expat' 'lpsolve' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('SKIP')
@@ -23,17 +23,10 @@ build() {
   autoreconf -vfi
   ./configure --prefix=/usr/
   make
-
-  # bundle a static version of lapack required to build fmus
-  curl -fsSL https://github.com/Reference-LAPACK/lapack/archive/v3.10.1.tar.gz | tar xz
-  cd lapack-3.10.1 && mkdir -p build && cd build
-  cmake -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF ..
-  make
 }
 
 package() {
   cd "$srcdir/OpenModelica/OMCompiler"
   make install DESTDIR="${pkgdir}"
   chmod go+rx "${pkgdir}"/usr/share/omc/runtime/c/fmi/buildproject/config.*
-  install -m644 lapack-3.10.1/build/lib/lib*.a "${pkgdir}"/usr/lib/x86_64-linux-gnu/omc
 }
