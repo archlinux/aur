@@ -8,7 +8,7 @@ pkgver=103.0.5060.114
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
-_manual_clone=1
+_manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-make-VirtualCursor-standard-layout-type.patch
         remove-no-opaque-pointers-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('d359a415eca7beceddd1b06bb5b5b6a09da9c778ca37cfa4efeaeaa8691bfd52'
+sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
