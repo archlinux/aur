@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='udev-notify-git'
-pkgver=0.2.r0.ga9a89a2
+pkgver=0.2.r1.gc41cb15
 pkgrel=1
 pkgdesc='Show notifications when any USB device is plugged/unplugged'
 arch=('any')
