@@ -1,0 +1,8 @@
+/.vscode/
+/src
+/pkg
+.trane_history
+*.log
+*.pkg.*
+*.tar.*
+*.zip

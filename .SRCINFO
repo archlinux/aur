@@ -1,0 +1,13 @@
+pkgbase = trane
+	pkgdesc = Automated system for learning complex skills
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/trane-project/trane-cli
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	conflicts = trane-git
+	source = trane-0.2.2.tar.gz::https://github.com/trane-project/trane-cli/archive/v0.2.2.tar.gz
+	sha512sums = 85af830c2b2ad03102a589bac127c754d690883feb3debac7f59006fac4f50a7b6786d848a896d17d4212bb7442ae9a88d4fbf5618c4e447b0c60958a72e8ee3
+
+pkgname = trane

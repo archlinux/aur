@@ -1,0 +1,9 @@
+shell=bash
+
+# Allow implicitly exported variables, e.g. pkgrel
+# See also: https://github.com/koalaman/shellcheck/issues/2356
+disable=SC2034
+
+# Allow implicitly sourced variables, e.g. pkgdir
+# See also: https://github.com/koalaman/shellcheck/issues/356
+disable=SC2154
