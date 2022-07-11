@@ -1,0 +1,8 @@
+pkg/
+src/
+*.txt
+*.gz
+*.sig
+*.ttf
+*.otf
+*.tar.zst
