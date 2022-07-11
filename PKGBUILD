@@ -1,5 +1,5 @@
 pkgname=capnproto-java
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Cap'n Proto for Java"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/capnproto/capnproto-java"
 license=('MIT')
 depends=('capnproto')
 source=("https://github.com/capnproto/capnproto-java/archive/v${pkgver}.tar.gz")
-sha256sums=('a9f1e453df358ee18e67d96193ce2a30db694b9d743b563f5c8546d3c8406a14')
+sha256sums=('505288a9b141e76f8c03abd014aaeaaba2f0c17ab4aa1a7f62bc185907da31ec')
 
 build() {
     cd "$pkgname-$pkgver"
