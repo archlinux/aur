@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.6.2beta"
+pkgver="0.6.3beta"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
@@ -48,13 +48,13 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vaxerski/hyprland/archive/v${pkgver}.tar.gz")
-sha256sums=('f5c3969171d579ac33237e71b94bfbdd110c5169c988c6f5ef10a3f4408b5750')
+sha256sums=('ed383c48e7864cbffb4c1f413f02c42c1e927b4f00a0a00f30de64fb2a71ca23')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$srcdir/Hyprland-$pkgver"
 	git submodule update --init
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
