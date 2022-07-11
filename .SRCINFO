@@ -1,6 +1,6 @@
 pkgbase = python-drms
 	pkgdesc = The drms module provides an easy-to-use interface for accessing HMI, AIA and MDI data with Python.
-	pkgver = 0.5.6
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = http://sunpy.org
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-drms
 	depends = python-numpy
 	depends = python-six
 	depends = python-pandas
-	source = https://pypi.io/packages/source/d/drms/drms-0.5.6.tar.gz
-	sha256sums = 95cac0e14532893a44eeab8e329ddb76150e6848153d8cb1e4e08ba55569e6af
+	source = https://pypi.io/packages/source/d/drms/drms-0.6.2.tar.gz
+	sha256sums = 21df2b3caf2aabbd601e7e432a7122ecba74f351856dc16d194faff3d565b7da
 
 pkgname = python-drms
-
