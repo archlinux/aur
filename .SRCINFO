@@ -1,0 +1,13 @@
+pkgbase = qdre-compositor-autostart
+	pkgdesc = Autostart for QDRE Compositor
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/zaps166/qdre
+	arch = x86_64
+	groups = qdre
+	license = MIT
+	depends = qdre-compositor-git
+	source = qdre-compositor.desktop
+	sha1sums = c2287a74c0e97543db5353312090189b07d8c439
+
+pkgname = qdre-compositor-autostart
