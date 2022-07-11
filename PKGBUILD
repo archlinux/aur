@@ -6,7 +6,7 @@
 
 _pkgname=audacious
 pkgname=$_pkgname-gtk3
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
-_commit=b4833695dc0b4d8e710ef0bfb65365ea72b7c587
+_commit=a68beaf3768765968c560be074a59b450aa1b69c
 source=("git+https://github.com/audacious-media-player/$_pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
