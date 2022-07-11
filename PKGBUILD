@@ -4,24 +4,20 @@
 
 pkgname=vvvvvv
 _pkgname=VVVVVV
-pkgver=2.3.4
-pkgrel=2
+pkgver=2.3.6
+pkgrel=1
 pkgdesc='A retro-styled 2D platformer'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
 groups=('humblebundle3' 'humblebundle4' 'humblebundles')
 license=('custom')
-depends=('sh' 'sdl2_mixer')
+depends=('sdl2_mixer')
 makedepends=('cmake')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/TerryCavanagh/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "https://thelettervsixtim.es/makeandplay/data.zip"
         "${pkgname}.desktop"
         "rm-srcdir-in-bin.patch")
-md5sums=('e6ee8b4f7f143104a495d91bad057807'
-         '224e0c88627e529bc0dc885aa6df94db'
-         'f3f06f16bf7f3280279e2d3da425a5d2'
-         '9e0cf26cc72b5d409321895c36a6ade6')
-sha256sums=('514b85ee21a3a8d9bfb9af00bc0cd56766d69f84c817799781da93506f30dd9c'
+sha256sums=('a3366aab9e8462d330044ab1ec63927e9f5c3801c0ed96b24f08c553dcb911e9'
             '6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0'
             '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
             '1707013fe1bc924d1f9a1443d504e7cbef6eb5595fe2a5c6586945fb908f778a')
