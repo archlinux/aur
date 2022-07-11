@@ -1,7 +1,7 @@
 pkgbase = glpi-agent
 	pkgdesc = GLPI Agent
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.glpi-project.org
 	arch = any
 	license = GPL2
@@ -26,6 +26,7 @@ pkgbase = glpi-agent
 	depends = perl-lwp-protocol-https
 	depends = perl-test-mockmodule
 	depends = perl-http-proxy
+	depends = perl-yaml-tiny
 	depends = perl-http-server-simple-authen
 	depends = perl-io-capture
 	depends = perl-test-mockobject

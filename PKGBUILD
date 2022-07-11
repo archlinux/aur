@@ -2,7 +2,7 @@
 
 pkgname=glpi-agent
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="GLPI Agent"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=("make" "perl-module-install")
 depends=( "perl-test-simple" "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uuid" "perl-file-copy-recursive" "perl-http-server-simple"
           "perl-io-socket-ssl" "perl-xml-xpath" "perl-text-template" "perl-test-deep" "perl-parallel-forkmanager" "perl-ipc-run"
-          "perl-test-exception" "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-test-mockmodule" "perl-http-proxy"
+          "perl-test-exception" "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-test-mockmodule" "perl-http-proxy" "perl-yaml-tiny"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-test-mockobject" "perl-xml-treepp" "perl-test-compile" "perl-universal-require")
 sha256sums=('d1ea1230c06ae4a410487e33ae6a85dcf4278af87de831f8a602e4bf0a0c0663')
 
