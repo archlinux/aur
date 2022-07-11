@@ -3,7 +3,7 @@
 # Contributor: Omri Bornstein <omribor@gmail.com>
 
 pkgname='cocainate-bin'
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc='Cross-platform caffeinate alternative.'
 url='https://github.com/AppleGamer22/cocainate'
@@ -14,11 +14,11 @@ conflicts=('cocainate')
 depends=('dbus')
 optdepends=('bash' 'fish' 'zsh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AppleGamer22/cocainate/releases/download/v1.0.16/cocainate_1.0.16_linux_arm64.tar.gz")
-sha256sums_aarch64=('c88e6411de1b85392c7079934a729f4a9ed84d580ee54575f5207c0dc13ae77d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AppleGamer22/cocainate/releases/download/v1.0.17/cocainate_1.0.17_linux_arm64.tar.gz")
+sha256sums_aarch64=('5e4bfb1dc5651485067dbd9c065a60770c4110bd1123b946256b058f3ca36ef0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AppleGamer22/cocainate/releases/download/v1.0.16/cocainate_1.0.16_linux_amd64.tar.gz")
-sha256sums_x86_64=('fdebdc229f55aac4157bda54fcd3d71f7b53d6503affec327415280267d14c88')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AppleGamer22/cocainate/releases/download/v1.0.17/cocainate_1.0.17_linux_amd64.tar.gz")
+sha256sums_x86_64=('17702bde0f8f2e5eb149c6d36d9034d76422d633ab98e6029cbe4a718233175b')
 
 package() {
   install -Dm755 cocainate "${pkgdir}/usr/bin/cocainate"
