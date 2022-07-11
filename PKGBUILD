@@ -6,7 +6,7 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.3.1.r295.gac8ee9f9
+pkgver=1.3.1.r299.gc5625d8d
 pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme')
 provides=('polymc')
 conflicts=('polymc')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
