@@ -2,3 +2,4 @@
 libnftnl/
 pkg/
 src/
+*.log
