@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527[AT]gmail.com>
 
 pkgname=bark-server
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Backend of Bark"
 arch=("any")
@@ -13,29 +13,29 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finb/bark-server/archiv
 )
 backup=("etc/nginx/conf.d/${pkgname}.conf")
 
-sha512sums=('2b5fee0dd230470081bf3aec3664d742d38577f444ea5ae06ba18fef9bface5d2b6c659bbd92dd74c1d8292f524a3ddf45b92801876a7fed85d3754d6fef3458'
+sha512sums=('d9eee902bb93c27d2eddd3ba9726684c84edd767cf063c73869a76ccb4262b6f5820c30eeb294f365104fe573e11453c860395e90699ad7e9d6baf11ee4ba2ca'
             '977ea6e0a6d4052181353f015beb72ea448e365c886e49b898865bae2cd70f53ed20a610b2ce637b78da3767bdbb9cacb0d64cdad4d3034bd1895617d8592e2e')
 
-prepare(){    
+prepare(){
     cd $srcdir/${pkgname}-${pkgver}
-    sed -i "8c PLATFORMS=linux/" .cross_compile.sh
-    sed -i '16c export TARGET=${TARGET_DIR}/${DIST_PREFIX}' .cross_compile.sh
     sed -i "7c ExecStart=/usr/bin/bark-server -addr 0.0.0.0:18080 -data /var/${pkgname}/data"\
             deploy/${pkgname}.service
 }
 
 build(){
     cd $srcdir/${pkgname}-${pkgver}
-    make 
-    
+    export HOME=$srcdir
+    go install
+    go build
+
 }
 
 
 package(){
     install -Dm644 ${pkgname}.conf ${pkgdir}/etc/nginx/conf.d/${pkgname}.conf
-    
+
     cd ${srcdir}/${pkgname}-${pkgver}
-    install -Dm755 dist/bark-server ${pkgdir}/usr/bin/${pkgname}
+    install -Dm755 bark-server ${pkgdir}/usr/bin/${pkgname}
     install -Dm644 deploy/bark-server.service  \
             ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
 }
