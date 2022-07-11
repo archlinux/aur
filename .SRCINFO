@@ -1,6 +1,6 @@
 pkgbase = lab-bin
 	pkgdesc = A hub-like tool for GitLab (pre-built binary release)
-	pkgver = 0.24.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://zaquestion.github.io/lab
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lab-bin
 	optdepends = hub
 	provides = lab
 	conflicts = lab
-	source = https://github.com/zaquestion/lab/releases/download/v0.24.0/lab_0.24.0_linux_amd64.tar.gz
-	sha256sums = 8d5baa6bc309df42d76147021e811e0a17f5134865f9d969796d074b5464adda
+	source = https://github.com/zaquestion/lab/releases/download/v0.25.1/lab_0.25.1_linux_amd64.tar.gz
+	sha256sums = 0476a5b5406cdb1c0e224463702225588a2ca74bf236d0b93f7985d304efea91
 
 pkgname = lab-bin
