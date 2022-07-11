@@ -1,56 +1,50 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Masanori Ogino <masanori.ogino@gmail.com>
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=nuweb
-pkgver=1.58
+pkgver=1.61
 pkgrel=1
 epoch=
 pkgdesc="A Simple Literate Programming Tool"
-arch=(any)
+arch=('x86_64' 'i686')
 url="http://nuweb.sourceforge.net/"
-license=('unknown')
-groups=()
+license=('custom:BSD-3-Clause')
 depends=('texlive-core')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 install=nuweb.install
-changelog=
-source=("http://downloads.sourceforge.net/project/nuweb/$pkgname-$pkgver.tar.gz" "nuweb.install")
-noextract=()
-md5sums=('85ce11cfdf5d6ebc82309bcd3e26fd6f'
-         'aa285f8379d9d62b469591e0a2dd0bd7') #generate with 'makepkg -g'
+source=("http://downloads.sourceforge.net/project/nuweb/$pkgname-$pkgver.tar.gz" "nuweb.install" "nuweb.LICENSE")
+sha256sums=('fbf4ff8f27690027bceac799262b43cc27cad51261799111d512d2faf1044c9b'
+            '93b550ff61543e6628a858cb28d70c7a850da8aa4fbfc7172830eae70fc78014'
+            '86d9ee75add7cee2e21c0423182523e9525b2f5824dbf802fea3e337d0a49e77')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   latex nuwebdoc
   bibtex nuwebdoc
   latex nuwebdoc
   latex nuwebdoc
 
-	make nuweb
+  make nuweb
   ./nuweb nuweb.w
   ./nuweb nuwebsty.w
   pdflatex nuweb.tex
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make -k check
+  cd "$srcdir/$pkgname-$pkgver"
+  make -k check
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/share/{emacs/site-lisp,texmf/tex/latex,/doc/$pkgname,man/man1}
+  cp nuweb.LICENSE "$srcdir/$pkgname-$pkgver/LICENSE"
+  cd "$srcdir/$pkgname-$pkgver"
+  mkdir -p $pkgdir/usr/share/{emacs/site-lisp,texmf/tex/latex,doc/$pkgname,licenses/$pkgname,man/man1}
 
   install -D -m755 $srcdir/$pkgname-$pkgver/nuweb        $pkgdir/usr/bin/nuweb
   install -D -m644 $srcdir/$pkgname-$pkgver/nuweb.1      $pkgdir/usr/share/man/man1/nuweb.1
   install -D -m644 $srcdir/$pkgname-$pkgver/nuweb.el     $pkgdir/usr/share/emacs/site-lisp/nuweb.el
   install -D -m644 $srcdir/$pkgname-$pkgver/README       $pkgdir/usr/share/doc/$pkgname/README
+  install -D -m644 $srcdir/$pkgname-$pkgver/LICENSE      $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   install -D -m644 $srcdir/$pkgname-$pkgver/bibnames.sty $pkgdir/usr/share/texmf/tex/latex/$pkgname/bibnames.sty
   install -D -m644 $srcdir/$pkgname-$pkgver/html.sty     $pkgdir/usr/share/texmf/tex/latex/$pkgname/html.sty
