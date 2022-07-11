@@ -1,17 +1,17 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara
-pkgver=2.0.1
+pkgver=2.2.1
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
 arch=('x86_64')
 url="https://github.com/reckel-jm/cantara"
-license=('GPL')
+license=('GPL3')
 groups=()
-depends=('gtk2')
-makedepends=('fpc' 'lazarus')
+depends=('qt5pas')
+makedepends=('lazarus-qt5' 'qt5pas')
 provides=("cantara")
-source=("https://github.com/reckel-jm/cantara/archive/refs/tags/$pkgver.zip")
+source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
 md5sums=('SKIP')
 #noextract=("master.zip")
 #md5sums=()
@@ -19,15 +19,18 @@ md5sums=('SKIP')
 
 prepare() {
     cd "$pkgname-$pkgver"
+    #cd "release2"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+	#make
+	lazbuild -B Cantara.lpi --ws=qt5
 }
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
+	#cd "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	install cantara $pkgdir/usr/bin/cantara
 	mkdir -p $pkgdir/usr/share/locale/en/
