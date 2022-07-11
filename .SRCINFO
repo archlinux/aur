@@ -1,18 +1,19 @@
 pkgbase = android2po
 	pkgdesc = Convert Android string resources to gettext, and back
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/android2po/1.6.0
 	arch = any
 	license = BSD
+	checkdepends = python-nose
 	makedepends = python-setuptools
-	source = jaragunde-android2po-5571b63.tar.gz::https://api.github.com/repos/jaragunde/android2po/tarball/5571b63c0bbc04743b3963e739a19a42c947b25d
-	b2sums = 48047fdd11c024a8a0442ff6d364afaafb52c3ae54079d5dbc48e96ff0d8dbd7c9e7c6869eb1426b8211d6426d53d29b60c5bf4f9cf2122e8d8211c270b83869
-
-pkgname = android2po
 	depends = python
 	depends = python-argparse
 	depends = python-babel
 	depends = python-colorama
 	depends = python-lxml
 	depends = python-termcolor
+	source = jaragunde-android2po-5571b63.tar.gz::https://api.github.com/repos/jaragunde/android2po/tarball/5571b63c0bbc04743b3963e739a19a42c947b25d
+	b2sums = 48047fdd11c024a8a0442ff6d364afaafb52c3ae54079d5dbc48e96ff0d8dbd7c9e7c6869eb1426b8211d6426d53d29b60c5bf4f9cf2122e8d8211c270b83869
+
+pkgname = android2po
