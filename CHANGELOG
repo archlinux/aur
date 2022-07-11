@@ -1,6 +1,5 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.4.0 (May 15, 2022)
-    Added command to show and watch subscribed online streamers via fzf from yazgoo (PR#7)
-      wtwitch o
+2.5.0 (July 11, 2022)
+    Added zsh completion file from michaeldxyz (PR#9)

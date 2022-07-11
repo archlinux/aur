@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://github.com/krathalan/wtwitch"
@@ -20,7 +20,7 @@ optdepends=('fzf: for browsing and watching streams with fzf'
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz" "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
-sha256sums=("3316677ee78f1f9fbb389d14f7106c9c355731390f13dae8816e4be131b996ff" "56d52917c2dc0370304b87a4c8c0edb23b513c626cee77f99b51493f046c8424")
+sha256sums=("fa134443fc69125b5f485419abbe974faa41a71f845cfaff3077eac2e79ba94a" "5dabc812f64017ab8d50b142042cb5f6a9b590b1c6a71437dcbcd71498e93b65")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
@@ -37,6 +37,9 @@ package() {
 
   # Bash completion file
   install -D -m644 wtwitch-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  
+  # ZSH completion file
+  install -D -m644 _wtwitch "${pkgdir}/usr/share/zsh/site-functions/_wtwitch"
 
   # man page
   install -D -m644 wtwitch.1 "${pkgdir}/usr/share/man/man1/wtwitch.1"
