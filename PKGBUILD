@@ -2,7 +2,7 @@
 
 pkgname=pyobd
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An OBD-II compliant car diagnostic tool"
 arch=('any')
 url="http://www.obdtester.com/pyobd"
@@ -23,6 +23,7 @@ prepare() {
 	sed -i -e "s#/usr/share/pyobd/pyobd.gif#$pkgname#" \
 		-e "s#python /usr/bin/pyobd#$pkgname#" \
 		-e "s#Name=pyOBD: OBD2 Diagnostics#Name=pyOBD\nGenericName=OBD2 Diagnostics#" \
+                -e "s#UTF8#UTF-8#" \
 		"pyobd.desktop"
 
     #Fix configure dialog
