@@ -8,7 +8,7 @@ pkgver='1.0.1'
 _rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
-pkgrel=1
+pkgrel=2
 _pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
@@ -19,15 +19,23 @@ makedepends=('dpkg')
 depends=()
 _debdeps=""
 #_debdeps=""
-_scripts="skywire-scripts"
+#_scripts="skywire-scripts"
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=(
-"${_scripts}.tar.gz"
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
+"skywire-autoconfig"
+"com.skywire.Skywire.desktop"
+"com.skywirevpn.SkywireVPN.desktop"
+"skywirevpn.png"
+"skywire.png"
+"skywire.service"
+"skywire-autoconfig.service"
+"postinst.sh"
+"prerm.sh"
 )
 noextract=(
 "${_binarchive}-amd64.tar.gz"
@@ -35,11 +43,19 @@ noextract=(
 "${_binarchive}armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 )
-sha256sums=('9f3fb29acf20089cabd14fe27c7c8384b4d327750b23ff4ca4621d2f7953f3dd'
-            '6cbbadb07ca6668dc04a91565b08e590e844422a28a813f1bb76a184b422432e'
+sha256sums=('6cbbadb07ca6668dc04a91565b08e590e844422a28a813f1bb76a184b422432e'
             '61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601'
             '1633c917e1468de0295d7d3b30059156f194e18722578cb90fd49cd683a7f5d0'
-            '6182f947e66a41c6793addd08ab8cc00fa09c132001e13f05e8f11464987c7ea')
+            '6182f947e66a41c6793addd08ab8cc00fa09c132001e13f05e8f11464987c7ea'
+            'ac16dfee9ed4870ef4afc977211d1c47c36ee182c8511d41a940cdd98c483f4d'
+            'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
+            'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
+            'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
+            'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
+            'ecb8c206ff44dbc3d06d26398551fb5d52bff1dd98eb069dd0b8673807025aed'
+            '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c'
+            '7b17a55e64d1371fecd24edc3da7c6a762cf2b3d058f6fc4a5dc7c5f9b4cff09'
+            '233ccf0e87b37e782828f53960e05e478cf381f61bbfdb16a0cc0254ee8be7c2')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -111,10 +127,8 @@ for _i in ${_pkgdir}/${_skyapps}/* ; do
 done
 
 _msg2 'Installing scripts'
-install -Dm755 ${srcdir}/${_scripts}/${_pkgname}/* ${_pkgdir}/${_skyscripts}/
-for _i in ${_pkgdir}/${_skyscripts}/* ; do
-	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
-done
+install -Dm755 ${srcdir}/skywire-autoconfig ${_pkgdir}/${_skyscripts}/
+ln -rTsf ${_pkgdir}/${_skyscripts}/skywire-autoconfig ${_pkgdir}/usr/bin/skywire-autoconfig
 
 _msg2 'Correcting symlink names'
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
@@ -126,20 +140,18 @@ _msg2 'installing dmsghttp-config.json'
 install -Dm644 ${pkgdir}/test/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
-install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
+install -Dm644 ${srcdir}/*.service ${_pkgdir}/${_systemddir}/
 
 _msg2 'installing desktop files and icons'
 mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
+install -Dm644 ${srcdir}/*.desktop ${_pkgdir}/usr/share/applications/
+install -Dm644 ${srcdir}/*.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 
 _msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
 #install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
-install -Dm755 ${srcdir}/${_scripts}/postinst.sh ${_pkgdir}/DEBIAN/postinst
-install -Dm755 ${srcdir}/${_scripts}/prerm.sh ${_pkgdir}/DEBIAN/prerm
+install -Dm755 ${srcdir}/postinst.sh ${_pkgdir}/DEBIAN/postinst
+install -Dm755 ${srcdir}/prerm.sh ${_pkgdir}/DEBIAN/prerm
 #install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 
 _msg2 'creating the debian package'

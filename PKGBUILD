@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 _rc=''
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
@@ -16,9 +16,22 @@ provides=( 'skywire' )
 conflicts=( 'skywire' )
 #depends=( '' )
 install=skywire.install
-_scripts=${_pkgname}-scripts
-source=("${_scripts}.tar.gz" )
-sha256sums=('9f3fb29acf20089cabd14fe27c7c8384b4d327750b23ff4ca4621d2f7953f3dd')
+#_scripts=${_pkgname}-scripts
+source=("skywire-autoconfig"
+"com.skywire.Skywire.desktop"
+"com.skywirevpn.SkywireVPN.desktop"
+"skywirevpn.png"
+"skywire.png"
+"skywire.service"
+"skywire-autoconfig.service"
+)
+sha256sums=('ac16dfee9ed4870ef4afc977211d1c47c36ee182c8511d41a940cdd98c483f4d'
+            'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
+            'e6ea2c7471bcf5bc83e8fd831c047ba61b98eab58ca7c055475714dcf6066539'
+            'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
+            'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
+            'ecb8c206ff44dbc3d06d26398551fb5d52bff1dd98eb069dd0b8673807025aed'
+            '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c')
 sha256sums_x86_64=('6cbbadb07ca6668dc04a91565b08e590e844422a28a813f1bb76a184b422432e')
 sha256sums_aarch64=('61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601')
 sha256sums_armv8=('61dc18d71d766e707ccbdc9c0f5b0bbf0a992e6acdc0c53c1c9cba6ecc85f601')
@@ -68,7 +81,7 @@ for _i in ${_pkgdir}/${_skyapps}/* ; do
 done
 
 _msg2 'Installing scripts'
-install -Dm755 ${srcdir}/${_scripts}/${_pkgname}/* ${_pkgdir}/${_skyscripts}/
+install -Dm755 ${srcdir}/skywire-autoconfig ${_pkgdir}/${_skyscripts}/
 for _i in ${_pkgdir}/${_skyscripts}/* ; do
 	ln -rTsf ${_i} ${_pkgdir}/usr/bin/${_i##*/}
 done
@@ -83,14 +96,12 @@ _msg2 'installing dmsghttp-config.json'
 install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'Installing systemd services'
-install -Dm644 ${srcdir}/${_scripts}/systemd/* ${_pkgdir}/${_systemddir}/
+install -Dm644 ${srcdir}/*service ${_pkgdir}/${_systemddir}/
 
 _msg2 'installing desktop files and icons'
 mkdir -p ${_pkgdir}/usr/share/applications/ ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
-install -Dm644 ${srcdir}/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
+install -Dm644 ${srcdir}/*.desktop ${_pkgdir}/usr/share/applications/
+install -Dm644 ${srcdir}/*.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 }
 
 _msg2() {
