@@ -1,5 +1,5 @@
 pkgbase = dust-mail-client
-	pkgver = v0.1.0.r15.gcb372f5
+	pkgver = 0.1.3.r1.g445a19b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Guusvanmeerveld/Dust-Mail

@@ -4,7 +4,7 @@ pkgname=('dust-mail-client-git')
 
 arch=('x86_64')
 
-pkgver=v0.1.0.r15.gcb372f5
+pkgver=0.1.3.r1.g445a19b
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -35,8 +35,6 @@ build() {
   yarn install --frozen-lockfile
 
   unset SOURCE_DATE_EPOCH
-
-  export VITE_DEFAULT_SERVER="https://dust-mail.herokuapp.com"
 
   export RUSTUP_TOOLCHAIN=1.61
 
