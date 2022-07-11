@@ -2,16 +2,16 @@
 
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="A Python package for executing tests in documentation strings"
+pkgdesc='A Python package for executing tests in documentation strings'
 arch=('any')
-url="https://github.com/Erotemic/xdoctest"
+url='https://github.com/Erotemic/xdoctest'
 license=('MIT')
-depends=('python')
+depends=('python' 'python-six' 'python-pygments')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest' 'python-pygments')
-_commit='9d1842358bb9b5c9e81983e602a7c9fcddab01b0'
+checkdepends=('python-pytest')
+_commit='58e573d27a091e2d1adf723e2bd1fb56a2617762'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 

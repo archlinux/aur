@@ -1,16 +1,17 @@
 pkgbase = python-xdoctest
 	pkgdesc = A Python package for executing tests in documentation strings
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Erotemic/xdoctest
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pygments
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
-	source = python-xdoctest::git+https://github.com/Erotemic/xdoctest.git#commit=9d1842358bb9b5c9e81983e602a7c9fcddab01b0
+	depends = python-six
+	depends = python-pygments
+	source = python-xdoctest::git+https://github.com/Erotemic/xdoctest.git#commit=58e573d27a091e2d1adf723e2bd1fb56a2617762
 	b2sums = SKIP
 
 pkgname = python-xdoctest
