@@ -2,7 +2,7 @@
 
 pkgname=boosteroid
 pkgver=1.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
 url="https://boosteroid.com/downloads"
@@ -10,14 +10,14 @@ license=('custom')
 depends=("libva" "libvdpau" "libxcb" "traceroute" "ocl-icd" "pcre2" "libxi" "xcb-util-wm" "xcb-util-image" "xcb-util-renderutil" "xcb-util-keysyms" "xcb-util-keysyms" "fontconfig" "alsa-lib")
 makedepends=("binutils" "tar" "coreutils" "wget")
 
-source=("boosteroid-install-x64.md5")
-md5sums=("2d8cacfcdb43bdf4eef3c5e2a24639cd")
+# Set Mozilla as curl useragent to circumvent 403 using curl
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
+source=("https://boosteroid.com/linux/installer/boosteroid-install-x64.deb")
+md5sums=("2c6edb7441e8eb2cce3eda9f85d745e0")
 
 prepare() {
   cd "$srcdir"
-  # Boosteroid blocks some user agents, for now wget seems to work while curl doesn't
-  wget "https://boosteroid.com/linux/installer/boosteroid-install-x64.deb" -O boosteroid-install-x64.deb
-  md5sum -c boosteroid-install-x64.md5 > /dev/null
   msg2 "Decompressing Debian package..."
   ar xv "boosteroid-install-x64.deb" > /dev/null
   tar -xf data.tar.bz2 > /dev/null
