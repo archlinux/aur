@@ -1,25 +1,38 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
-pkgname=android2po
+pkgname='android2po'
 pkgver=1.6.0
-pkgrel=1
-pkgdesc="Convert Android string resources to gettext, and back."
+pkgrel=2
+pkgdesc='Convert Android string resources to gettext, and back'
 arch=('any')
-url="https://github.com/miracle2k/$pkgname"
+url="https://pypi.org/project/${pkgname}/${pkgver}"
 license=('BSD')
-_pkgver_or_commit=69b36b484ae9d1281787de67cbaef37bde788cc5
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver_or_commit.tar.gz")
-sha256sums=('aee4db8a20a59001bb648a25e35f92dae3ecd6e690663af37a7e046ccb8f2963')
-depends=('python' 'python-babel' 'python-colorama' 'python-lxml' 'python-termcolor')
 makedepends=('python-setuptools')
+_repo_owner='jaragunde'                                   # created patch for Python 3.10 fix
+_repo_commit='5571b63c0bbc04743b3963e739a19a42c947b25d'   # patch for Python 3.10 fix
+_repo_url_api="https://api.github.com/repos/${_repo_owner}/${pkgname}"
+_tarname="${_repo_owner}-${pkgname}-${_repo_commit::7}"
+source=("${_tarname}.tar.gz::${_repo_url_api}/tarball/${_repo_commit}")
+b2sums=('48047fdd11c024a8a0442ff6d364afaafb52c3ae54079d5dbc48e96ff0d8dbd7c9e7c6869eb1426b8211d6426d53d29b60c5bf4f9cf2122e8d8211c270b83869')
 
 build() {
-  cd "$pkgname-$_pkgver_or_commit"
+  cd "${_tarname}"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$_pkgver_or_commit"
-  python setup.py install --prefix=/usr --root="$pkgdir"
-  install -D -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  depends=(
+    'python'
+    'python-argparse'
+    'python-babel'
+    'python-colorama'
+    'python-lxml'
+    'python-termcolor'
+  )
+
+  cd "${_tarname}"
+  python setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+
+  install --verbose -Dm 644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install --verbose -Dm 644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
