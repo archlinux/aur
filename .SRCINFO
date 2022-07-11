@@ -1,14 +1,13 @@
 pkgbase = python2-first
 	pkgdesc = Provides a Python function to get the first element of an iterator.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/hynek/first/
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/f/first/first-2.0.1.tar.gz
-	md5sums = eb62baf10657717238f9dc674b8b681f
+	source = https://pypi.python.org/packages/source/f/first/first-2.0.2.tar.gz
+	sha256sums = ff285b08c55f8c97ce4ea7012743af2495c9f1291785f163722bd36f6af6d3bf
 
 pkgname = python2-first
-

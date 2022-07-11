@@ -1,9 +1,9 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgname=first
 pkgname="python2-${_pkgname}"
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Provides a Python function to get the first element of an iterator."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('eb62baf10657717238f9dc674b8b681f')
+sha256sums=('ff285b08c55f8c97ce4ea7012743af2495c9f1291785f163722bd36f6af6d3bf')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
