@@ -2,13 +2,13 @@
 # Contributor: Archie <archie-woc@ya.ru>
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
-pkgver=v56
+pkgver=v5
 pkgrel=1
-pkgdesc="Yandex Music Client"
+pkgdesc="Yandex Music client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
 license=('GPL3')
-depends=('libbass' 'dotnet-runtime>=6.0.0' 'gtk3')
+depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3')
 makedepends=("dotnet-sdk>=6.0.0")
 source=("git+https://gitlab.com/KirMozor/Yamux.git#tag=Yamux-$pkgver")
 md5sums=(SKIP)
