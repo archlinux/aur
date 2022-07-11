@@ -1,0 +1,19 @@
+pkgbase = noveldown-git
+	pkgdesc = Webnovel downloader and converter to EPUB as a Python library and command line application.
+	pkgver = r27.6dd094e
+	pkgrel = 1
+	url = https://github.com/potatoeggy/noveldown
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-requests
+	depends = python-typer
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-ebooklib
+	source = git+https://github.com/potatoeggy/noveldown.git
+	sha256sums = SKIP
+
+pkgname = noveldown-git
