@@ -11,8 +11,8 @@ depends=()
 license=('Apache-2.0')
 url='https://github.com/kingToolbox/WindTerm/'
 provides=('windterm')
-source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://proxy.sakunia.tk/https://github.com/${_author}/${_pkgname}/releases/download/${_pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${arch}.tar.gz"
-	"windterm.png::https://proxy.sakunia.tk/https://raw.githubusercontent.com/${_author}/${_pkgname}/master/images/${_pkgname}_icon_1024x1024.png"
+source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/${_author}/${_pkgname}/releases/download/${_pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${arch}.tar.gz"
+	"windterm.png::https://raw.githubusercontent.com/${_author}/${_pkgname}/master/images/${_pkgname}_icon_1024x1024.png"
 	"windterm"
 	"windterm.desktop")
 sha512sums=('d0665811063e11b774ef2b89c2b41e15835ba4c04010fa89bad1f53a018e26da7e7f0844572485b74a3f1d09dcbd3b88dbd59f28ae4921f94244ec9405e34cce'
