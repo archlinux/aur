@@ -1,6 +1,6 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=python-catkin-tools-git
-pkgver=r677.05acb14
+pkgver=r820.69964db
 pkgrel=1
 _gitname=catkin_tools
 _gitbranch=main
@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/catkin/catkin_tools"
 license=("Apache")
 makedepends=("git")
-depends=("python" "python-catkin_pkg" "python-pyaml" "python-setuptools" "python-osrf_pycommon" "python-sphinxcontrib-programoutput")
+depends=("python" "python-catkin_pkg" "python-yaml" "python-setuptools" "python-osrf_pycommon")
 conflicts=("python2-catkin-tools")
 source=("${_gitname}::git+https://github.com/catkin/${_gitname}.git#branch=${_gitbranch}")
 sha256sums=("SKIP")

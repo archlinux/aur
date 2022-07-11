@@ -1,6 +1,6 @@
 pkgbase = python-catkin-tools-git
 	pkgdesc = Command line tools for working with catkin
-	pkgver = r677.05acb14
+	pkgver = r820.69964db
 	pkgrel = 1
 	url = https://github.com/catkin/catkin_tools
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = python-catkin-tools-git
 	makedepends = git
 	depends = python
 	depends = python-catkin_pkg
-	depends = python-pyaml
+	depends = python-yaml
 	depends = python-setuptools
 	depends = python-osrf_pycommon
-	depends = python-sphinxcontrib-programoutput
 	conflicts = python2-catkin-tools
 	source = catkin_tools::git+https://github.com/catkin/catkin_tools.git#branch=main
 	sha256sums = SKIP
