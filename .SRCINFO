@@ -13,8 +13,7 @@ pkgbase = python-catkin-tools-git
 	depends = python-osrf_pycommon
 	depends = python-sphinxcontrib-programoutput
 	conflicts = python2-catkin-tools
-	source = catkin_tools::git+https://github.com/catkin/catkin_tools.git#branch=master
+	source = catkin_tools::git+https://github.com/catkin/catkin_tools.git#branch=main
 	sha256sums = SKIP
 
 pkgname = python-catkin-tools-git
-
