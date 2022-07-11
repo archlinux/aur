@@ -2,7 +2,7 @@
 
 _pkgname=Ghidra-Switch-Loader
 pkgname=ghidra-extension-switch-loader-git
-pkgver=1.4.0.r4.g7ffbbf5
+pkgver=1.5.0.r2.g5afeb1d
 pkgrel=1
 pkgdesc="A Nintendo Switch binary loader for Ghidra"
 arch=('any')
