@@ -1,0 +1,21 @@
+pkgbase = oauth2-proxy-bin-latest
+	pkgdesc = A reverse proxy and static file server that provides authentication using Providers (Google, GitHub, and others) to validate accounts by email, domain or group.
+	pkgver = 7.3.0
+	pkgrel = 1
+	url = https://github.com/oauth2-proxy/oauth2-proxy
+	install = oauth2-proxy.install
+	arch = any
+	license = GNU
+	provides = oauth2-proxy
+	provides = oauth2-proxy-bin-latest
+	conflicts = oauth2-proxy
+	conflicts = oauth2-proxy-git
+	conflicts = oauth2-proxy-bin
+	source = https://github.com/oauth2-proxy/oauth2-proxy/releases/download/v7.3.0/oauth2-proxy-v7.3.0.linux-amd64.tar.gz
+	source = oauth2-proxy@.service
+	source = oauth2-proxy.cfg.example
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oauth2-proxy-bin-latest

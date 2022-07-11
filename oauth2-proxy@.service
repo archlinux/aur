@@ -1,0 +1,25 @@
+[Unit]
+Description=oauth2-proxy server
+After=network.target
+
+[Service]
+User=oauth2-proxy
+Group=oauth2-proxy
+
+Type=simple
+Environment="HOME=/opt/oauth2-proxy"
+ExecStart=/opt/oauth2-proxy/oauth2-proxy --config=/etc/oauth2-proxy/%i.cfg
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+WorkingDirectory=/opt/oauth2-proxy
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/oauth2-proxy
+
+[Install]
+WantedBy=multi-user.target

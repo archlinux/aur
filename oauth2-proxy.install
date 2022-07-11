@@ -1,0 +1,36 @@
+## arg 1:  the new package version
+#pre_install() {
+# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+    useradd -r -s /usr/bin/nologin oauth2-proxy
+
+    chown -R oauth2-proxy:oauth2-proxy /opt/oauth2-proxy
+    systemctl daemon-reload
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    chown -R oauth2-proxy:oauth2-proxy /opt/oauth2-proxy
+    systemctl daemon-reload
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    systemctl stop oauth2-proxy
+}
+
+## arg 1:  the old package version
+post_remove() {
+    systemctl disable oauth2-proxy
+    userdel oauth2-proxy
+}
