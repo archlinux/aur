@@ -1,0 +1,7 @@
+post_install() {
+    systemctl enable mic-mute-led-reverse.service
+}
+
+post_remove() {
+    systemctl disable mic-mute-led-reverse.service
+}

@@ -1,0 +1,10 @@
+pkgbase = mic-mute-led-reverse
+	pkgdesc = Reverse microphone mute led
+	pkgver = 1
+	pkgrel = 1
+	install = mic-mute-led-reverse.install
+	arch = any
+	source = mic-mute-led-reverse.service
+	sha1sums = 6a7c47f32370aad3daaec8fda0451b3f7cd74a28
+
+pkgname = mic-mute-led-reverse

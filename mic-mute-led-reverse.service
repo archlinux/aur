@@ -1,0 +1,10 @@
+[Unit]
+Description=Reverse microphone mute led
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=bash -c 'sleep 2; echo route > /sys/devices/virtual/sound/ctl-led/mic/mode'
+
+[Install]
+WantedBy=graphical.target
