@@ -1,7 +1,7 @@
 # Maintainer: myon <myon@myon98.net>
 pkgname=qemu-screamer-git
 pkgver=r96011.c108debd27
-pkgrel=1
+pkgrel=2
 pkgdesc="QEMU PowerPC with sound support for Macintosh emulation"
 arch=('x86_64')
 url='https://github.com/mcayland/qemu/tree/screamer'
@@ -42,4 +42,5 @@ package() {
     install -d "${pkgdir}/usr/share/qemuscreamer"
     install -m644 pc-bios/openbios-ppc "${pkgdir}/usr/share/qemuscreamer/"
     install -m644 pc-bios/vgabios-stdvga.bin "${pkgdir}/usr/share/qemuscreamer/"
+    install -m644 pc-bios/qemu_vga.ndrv "${pkgdir}/usr/share/qemuscreamer/"
 }

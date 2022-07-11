@@ -1,7 +1,7 @@
 pkgbase = qemu-screamer-git
 	pkgdesc = QEMU PowerPC with sound support for Macintosh emulation
 	pkgver = r96011.c108debd27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcayland/qemu/tree/screamer
 	arch = x86_64
 	license = GPL2
