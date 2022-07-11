@@ -8,6 +8,6 @@ pkgbase = bun-bin
 	provides = bun=0.1.3
 	provides = bun
 	source = https://github.com/Jarred-Sumner/bun/releases/download/bun-v0.1.3/bun-linux-x64.zip
-	sha512sums = 011e53b16232138d73489ece61573b6f9077854ae421a21fda2f93edf2530e41978205af16638aa067711bfbcf1854ce5179095e781ac1ba03045987018226a1
+	sha512sums = SKIP
 
 pkgname = bun-bin
