@@ -1,6 +1,6 @@
 pkgbase = spidy-git
 	pkgdesc = Expired Domain Name Scraper - scrap the web and find expired domains
-	pkgver = 2.0.0
+	pkgver = r10.f31f292
 	pkgrel = 1
 	url = https://github.com/twiny/spidy.git
 	arch = x86_64

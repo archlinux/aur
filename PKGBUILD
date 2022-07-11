@@ -2,7 +2,7 @@
 
 _pkgname=spidy
 pkgname="${_pkgname}-git"
-pkgver=2.0.0
+pkgver=r10.f31f292
 pkgrel=1
 pkgdesc='Expired Domain Name Scraper - scrap the web and find expired domains'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,11 @@ source=("git+${url}")
 conflicts=("${_pkgname}-bin" ${_pkgname})
 provides=('spidy')
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+ 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare(){
   cd "${_pkgname}"
