@@ -1,15 +1,15 @@
 # Maintainer: Filipe Fernandes <fernandes.fd at gmail dot com>
 
 pkgname=xssproxy
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Forward freedesktop.org idle inhibition service calls to Xss."
 arch=('x86_64')
 url="https://github.com/timakro/xssproxy"
 license=('GPL3')
 depends=('libxss' 'glib2' 'dbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timakro/xssproxy/archive/v${pkgver}.tar.gz")
-sha512sums=('baf238aacaab37728075391f00d5da334fbe6162b57c848e8f218cba28c2f1ddbd558231657ddbfc3cd7ef70015a993dad31c943464efbc925d0954e204af6a9')
+sha512sums=('22e5e48fbf21f08f42f0a171a8a06c097efadd63ade5639f8d9f074ccf48549a60b1a8312a2f0891f9401e2e72081af26220ff1f10ba5395f37178a4bf1688de')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
