@@ -1,0 +1,22 @@
+pkgbase = python-py-pol
+	pkgdesc = Python library for Jones and Stokes-Mueller polarization optics
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/optbrea/py_pol
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest-runner
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-plotly
+	depends = python-sympy
+	source = python-py-pol-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/py-pol/py_pol-1.1.0.tar.gz
+	sha256sums = b8dae0c47156dd0ad58cf996ba728b0c82492495bfa14fb523bd02fa576c4ca9
+
+pkgname = python-py-pol
