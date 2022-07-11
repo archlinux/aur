@@ -2,7 +2,7 @@
 
 _pkgname=cheat
 pkgname=$_pkgname-bash-git
-pkgver=20180918.r41.51a68c4
+pkgver=20220709.r43.73f133d
 pkgrel=1
 pkgdesc='A Bash reimplementation of a command line tool to create and view interactive cheatsheets'
 url='https://github.com/jahendrie/cheat'
