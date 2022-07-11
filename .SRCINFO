@@ -1,0 +1,20 @@
+pkgbase = python-sphinx-github-role
+	pkgdesc = A github role for Sphinx
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sphinx-github-role.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-sphinx
+	makedepends = python-flit-core
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-github-role/sphinx-github-role-0.1.0.tar.gz
+	source = https://raw.githubusercontent.com/astrojuanlu/sphinx-github-role/main/LICENSE
+	md5sums = 7449e06b9c00bcf9c2d76e571bff1217
+	md5sums = SKIP
+
+pkgname = python-sphinx-github-role
+	depends = python-sphinx
