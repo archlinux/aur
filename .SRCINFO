@@ -14,5 +14,6 @@ pkgbase = sempiternum
 	depends = ffmpeg
 	optdepends = opencl-amd: For AMD GPUs
 	optdepends = opencl-nvidia: For Nvidia GPUS
+	conflicts = sempiternum-git
 
 pkgname = sempiternum
