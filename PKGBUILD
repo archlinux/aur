@@ -3,7 +3,7 @@
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=yamux
 pkgver=v57
-pkgrel=1
+pkgrel=2
 pkgdesc="Yandex Music client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
@@ -23,6 +23,7 @@ package() {
     
     # Copy desktop file and icon
     mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/share/pixmaps"
     cp -r ./AUR/Yamux.desktop "$pkgdir/usr/share/applications"
     cp -r ./Svg/dark/icon.svg "$pkgdir/usr/share/pixmaps/yamux.svg"
 

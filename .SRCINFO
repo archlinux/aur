@@ -1,7 +1,7 @@
 pkgbase = yamux
 	pkgdesc = Yandex Music client
 	pkgver = v57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/KirMozor/Yamux
 	arch = x86_64
 	license = GPL3
