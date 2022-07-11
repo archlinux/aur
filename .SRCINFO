@@ -1,14 +1,14 @@
 pkgbase = wazo-desktop-appimage
 	pkgdesc = Wazo desktop client for wazo VOIP server
-	pkgver = 1.13.3
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://wazo.io/download/
 	arch = x86_64
 	license = unknown
 	provides = wazo-desktop
-	noextract = Wazo-Desktop-1.13.3.AppImage
+	noextract = Wazo-Desktop-1.13.5.AppImage
 	options = !strip
-	source = Wazo-Desktop-1.13.3.AppImage::https://mirror.wazo.io/songbird/1.13.3/Wazo-Desktop-1.13.3.AppImage
-	sha256sums = 2e9c94a02b5d3c7083356bc5751ff44dd3f9b1ff48fa88e1cb9265ffe49a84c1
+	source = Wazo-Desktop-1.13.5.AppImage::https://mirror.wazo.io/songbird/1.13.5/Wazo-Desktop-1.13.5.AppImage
+	sha256sums = c3c8b40d5ce6aac610f2f4945de5aae20d1d733120d529f8233bf6877d0a1387
 
 pkgname = wazo-desktop-appimage
