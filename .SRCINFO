@@ -1,19 +1,19 @@
 pkgbase = udev-notify
-	pkgdesc = Notify about connected usb devices.
+	pkgdesc = Visual hardware notifications for Linux. (Bazaar version)
 	pkgver = 40
 	pkgrel = 1
 	url = https://launchpad.net/udev-notify
+	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
-	makedepends = libnotify python-notify2 python-pyudev
+	makedepends = bzr
+	depends = libnotify
 	depends = udev
+	depends = python-notify2
+	depends = python-pyudev
 	provides = udev-notify
 	conflicts = udev-notify
-	options = !strip
-	options = !emptydirs
-	source = bzr+lp:~i026e/udev-notify/python3
-	sha256sums = SKIP
+	source = udev-notify::bzr+lp:~i026e/udev-notify/python3
+	sha1sums = SKIP
 
 pkgname = udev-notify
-
