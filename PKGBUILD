@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=16.2.5
-_commit=32f91f19e08ddf96ac114ae6b0f0c7483241ec1e
+pkgver=16.2.8
+_commit=10ce3725c280131d7b7ad5b1440680b76d25a4d5
 _chromiumver=96.0.4664.174
 _gcc_patchset=4
 # shellcheck disable=SC2034
@@ -23,8 +23,7 @@ url='https://electronjs.org/'
 # shellcheck disable=SC2034
 license=('MIT' 'custom')
 # shellcheck disable=SC2034
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
-         'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libxslt' 'minizip' 'nss' 're2' 'snappy')
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
@@ -56,6 +55,8 @@ source=('git+https://github.com/electron/electron.git'
         'sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch'
         'std-vector-non-const.patch'
         'use-system-libraries-in-node.patch'
+        'cppgc-fix-include.patch'
+        'iwyu-add-utility-for-std-exchange.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'wayland-fix-binding-to-wrong-version.patch'
         'unbundle-fix-visibility-of-build-config-freetype.patch'
@@ -73,6 +74,8 @@ sha256sums=('SKIP'
             'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
             '4fbef42aaa7bf60d059f1a6b0a92dc997d475256110bd4df32c12de7f4f175a7'
             'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
+            '7987b106dbb35b74d6ff28dc8cf2c897647d5ce59d5d6dbe36b2f72542e713b6'
+            '6f666ef0acb08704ca58cc0d5e97e7ce64d8fea51042e593adae1ce15a61231c'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             'fc2be146412d117869368f8559afef76ad39a3442ace16e5c7000bd45aa56b27'
             'd0b17162211dd49e3a58c16d1697e7d8c322dcfd3b7890f0c2f920b711f52293'
@@ -176,6 +179,8 @@ prepare() {
   patch -Np1 -i ../patches/chromium-96-DrmRenderNodePathFinder-include.patch
   patch -Np1 -i ../patches/chromium-96-CouponDB-include.patch
 
+  patch -Np1 -d v8 < ../cppgc-fix-include.patch
+  patch -Np1 -i ../iwyu-add-utility-for-std-exchange.patch
   patch -Np1 -d third_party/breakpad/breakpad < ../breakpad-fix-for-non-constant-SIGSTKSZ.patch
   patch -Np1 -i ../unbundle-fix-visibility-of-build-config-freetype.patch
   patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
