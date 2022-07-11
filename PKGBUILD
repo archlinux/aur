@@ -29,9 +29,10 @@ package(){
     git clone ${_gitroot} ${srcdir}/${_gitname}
   fi
 
-  echo "Git checkout done"
-
   cd ${srcdir}/${_gitname}
+  git checkout develop
+
+  echo "Git checkout done"
 
   echo "Starting configure"
 
