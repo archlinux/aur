@@ -1,3 +1,4 @@
 catkin_tools
-*.pkg.tar.xz
+pkg
+*.pkg.tar.zst
 
