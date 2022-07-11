@@ -3,7 +3,7 @@
 
 pkgbase=linux-pf-git
 pkgver=5.19rc6.r35.g51adf8a3d449
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=5.19
 _branch=pf-${_kernel_rel}
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_srcname
-  git describe --long --tags | sed 's/^v//;s/-pf//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-pf/pf/;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux
