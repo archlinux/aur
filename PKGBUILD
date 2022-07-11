@@ -1,4 +1,5 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Richard Quirk < richard.quirk@AUR >
 
 pkgname='android2po'
 pkgver=1.6.0
