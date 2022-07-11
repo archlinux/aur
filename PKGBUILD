@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('qtscrcpy' 'qtscrcpy-docs')
 pkgbase=qtscrcpy
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('sndcpy: audio mirroring for Android >=10')
 conflicts=('qt-scrcpy')
 replaces=('qt-scrcpy')
 backup=("etc/$pkgbase/config.ini")
-_commit=5d62f85ff659a80a23c932f2db0ae907e66025ab
+_commit=97975ee3cb7c5e59969f90eb65b1599177aa42c4
 source=("git+https://github.com/barry-ran/QtScrcpy.git#commit=${_commit}"
         'git+https://github.com/barry-ran/QtScrcpyCore.git'
         'path-fix.patch'
