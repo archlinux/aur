@@ -1,0 +1,12 @@
+pkgbase = ungit-electron
+	pkgdesc = The easiest way to use git. On any platform. Anywhere. (Electron version)
+	pkgver = 1.5.21
+	pkgrel = 0
+	url = https://github.com/FredrikNoren/ungit
+	arch = x86_64
+	license = MIT
+	conflicts = ungit
+	source = https://github.com/FredrikNoren/ungit/releases/download/v1.5.21/ungit-1.5.21-linux-x64.zip
+	md5sums = SKIP
+
+pkgname = ungit-electron
