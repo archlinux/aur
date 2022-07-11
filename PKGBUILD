@@ -3,7 +3,7 @@
 
 pkgname=wcstools-all
 _pkgname=wcstools
-pkgver=3.9.6
+pkgver=3.9.7
 pkgrel=1
 pkgdesc="A package of programs for setting and using the world coordinate systems (including libs and headers)"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ conflicts=('wcstools')
 provides=('wcstools')
 source=("http://tdc-www.harvard.edu/software/wcstools/${_pkgname}-${pkgver}.tar.gz"
         'wcstools-rename-shlib.patch')
-md5sums=('352518660cb0f9708b281aef015670eb'
-         '9f99b2d2f532ebbca73e95249534fbc7')
+md5sums=('8739d9fb28698aff3e5168182cd3a66c'
+         'dbb6a84dbf818e6a35a71d798d3e7e36')
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
