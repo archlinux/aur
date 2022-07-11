@@ -1,0 +1,4 @@
+kicad-library-utils/
+src/
+pkg/
+*.pkg*
