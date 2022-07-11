@@ -11,6 +11,7 @@ pkgbase = udev-notify
 	depends = udev
 	depends = python-notify2
 	depends = python-pyudev
+	depends = python-dulwich
 	provides = udev-notify
 	conflicts = udev-notify
 	source = udev-notify::bzr+lp:~i026e/udev-notify/python3
