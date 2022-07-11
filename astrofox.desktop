@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Astrofox
+Exec=astrofox %U
+Terminal=false
+Type=Application
+Icon=astrofox
+StartupWMClass=Astrofox
+Comment=Audio reactive motion graphics program
+Categories=AudioVideo;

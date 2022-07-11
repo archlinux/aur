@@ -2,7 +2,7 @@
 
 pkgname=astrofox
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A motion graphics program that lets turn audio into amazing videos"
 arch=('any')
 url="https://astrofox.io"
@@ -10,8 +10,12 @@ license=('MIT')
 depends=(electron ffmpeg)
 makedepends=(yarn asar sed)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v${pkgver}.tar.gz"
+${pkgname}.sh 
+${pkgname}.desktop
 )
-sha512sums=('bf0adc3ea6f8a388c3e08b93ba70fdb950ec36cf847a9382e516e735506a8f0c0ebf1ae03315d13a29382aa70f684b4742443891d5c661ac839b9a8300b7a195')
+sha512sums=('bf0adc3ea6f8a388c3e08b93ba70fdb950ec36cf847a9382e516e735506a8f0c0ebf1ae03315d13a29382aa70f684b4742443891d5c661ac839b9a8300b7a195'
+            'b3ca71fb20dbb8582e697e9cdf55f20a4a9307eb46b672172fdd35bd7dde0be2778b7beabc6b43bf4af9c8afd3a0d86f8b7e6ba1b93136aa70c8e6c72e2e4107'
+            'b4b3828b1216adf3cf1105074b64bfbd6fd440fb61da7a389a3e6b172e6607c90de3218e6762997344d861dc10fbc2b3ecbccf02d01a292918b89eed3903bcf2')
 
 prepare() {
      # patch for system ffmpeg
@@ -21,7 +25,7 @@ prepare() {
         src/main/environment.js
     
     cd $srcdir/${pkgname}-${pkgver}
-    
+    export HOME=$srcdir
     # delete electron & electron-builder to install deps fast
     sed -i '/"electron"/d' package.json
     sed -i '/"electron-builder"/d' package.json
@@ -38,32 +42,16 @@ prepare() {
     cp package.json app/
     
     rm app/*.map
+    mv app/dev-app-update.yml app/app-update.yml
     asar pack app/ ${pkgname}.asar
-    
-    # desktop file
-    echo """[Desktop Entry]
-Name=Astrofox
-Exec=${pkgname} %U
-Terminal=false
-Type=Application
-Icon=astrofox
-StartupWMClass=Astrofox
-Comment=Audio reactive motion graphics program
-Categories=AudioVideo;
-""" > ${pkgname}.desktop
-    
-    # executable
-    echo """#! /usr/bin/bash
-electron /usr/share/${pkgname}/${pkgname}.asar --no-sandbox
-" > ${pkgname}
 
 }
 
 package() {
     cd $srcdir/${pkgname}-${pkgver}
-    install -Dm755 ${pkgname}           ${pkgdir}/usr/bin/${pkgname}
+    install -Dm755 $srcdir/${pkgname}.sh           ${pkgdir}/usr/bin/${pkgname}
     install -Dm644 ${pkgname}.asar      ${pkgdir}/usr/share/${pkgname}/${pkgname}.asar
     install -Dm644 build/icons/512x512.png  ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
-    install -Dm644 ${pkgname}.desktop       ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -Dm644 $srcdir/${pkgname}.desktop       ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 # vim: ts=2 sw=2 et:
