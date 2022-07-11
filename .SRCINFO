@@ -1,6 +1,6 @@
 pkgbase = range-v3-git
-	pkgdesc = Eric Niebler' C++ ranges library.
-	pkgver = 0.4.0.r34.ga50fa8c5
+	pkgdesc = Experimental range library for C++11/14/17
+	pkgver = 0.12.0.r11.g3d6e6f56e
 	pkgrel = 1
 	url = https://github.com/ericniebler/range-v3
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = range-v3-git
 	md5sums = SKIP
 
 pkgname = range-v3-git
-
