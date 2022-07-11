@@ -1,0 +1,15 @@
+pkgbase = perl-edid
+	pkgdesc = Parse::EDID - Extended display identification data (EDID) parser
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://metacpan.org/pod/Parse::EDID
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = make
+	makedepends = perl-test-warn
+	depends = perl
+	source = https://cpan.metacpan.org/authors/id/G/GR/GROUSSE/Parse-EDID-1.0.7.tar.gz
+	sha512sums = a66a53e1ed9e09e3e5dd25c10eb58a6e568338c1c67333937fa1b17185dbde7c5ea4ff6859b7fd32649047733e93eb6095cc4ac326c1035cf491f983a6be7019
+
+pkgname = perl-edid
