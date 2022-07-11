@@ -1,7 +1,7 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=voicevox-appimage
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=6
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=(
     'voicevox.sh'
 )
 sha512sums=(
-    345beb922cd18c35fa2cabc63802a68cd763b18ac89d6501e08b51bb203641791455131c2b27d26be5c7b6c60b4500254f5f65131e66d555a3d29c99f1b669e3
-    d30191164abedd5e8315d4e0c19007e28328578d30a7136c4aedd7e9ef7a371f9355b0187faffd980f6c9f40eb876088383c74dbad59da638d92aa0cca355d98
+    adf699ada6b36c7ee0d351890018032f9073f2cddbbdbeaacd293c28471d433beaebc1e68e664cc5f24f6f5707641ca4ef970c77042899c0602e64bb89513ad0
+    8e0de08e9eb4c00e8019e3a6f878471fc089ee19d88aacbae963a539754ab8f9c9cd3c8174d3f2fa77e86d9d7771233c621278dcd425e09e19b8cc6e2819996b
     SKIP
 )
 depends=( # according to the official install script
