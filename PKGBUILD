@@ -11,23 +11,25 @@ pkgver=8.5.0
 _pkgver=8
 _majorver=${pkgver:0:1}
 _islver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (8.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
-        https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.bz2)
+options=(!emptydirs !lto)
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
+        https://sourceware.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
+        c89 c99)
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
             'SKIP'
-            'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95')
-
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+            'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
+            'aa3fe5cd3259bc74ed464b4dcccbabe0933628e6f2997d7e9abbfb4fd558dd1f6db79dec55970b9173e49c479e0b87e9d743d8087f3912b256fa78e38e17430d'
+            'b3962925604937d49527bf790d15aad2966cca86e419b7f79bff15f971931924af6a57883d8529a72630caac59be1598374793cf152056cda8278f6f6e674834')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
@@ -175,7 +177,11 @@ package_gcc8() {
   make -C libcpp DESTDIR="$pkgdir" install
 
   # many packages expect this symlink
-  ln -s gcc-8 "$pkgdir"/usr/bin/cc-8
+  ln -s gcc-${_majorver} "$pkgdir"/usr/bin/cc-${_majorver}
+
+  # POSIX conformance launcher scripts for c89 and c99
+  install -Dm755 "$srcdir/c89" "$pkgdir/usr/bin/c89-${_majorver}"
+  install -Dm755 "$srcdir/c99" "$pkgdir/usr/bin/c99-${_majorver}"
 
   # byte-compile python libraries
   python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
@@ -187,7 +193,7 @@ package_gcc8() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 
   # Remove conflicting files
-  rm -r "$pkgdir"/usr/share/locale
+  rm -rf "$pkgdir"/usr/share/locale
 }
 
 package_gcc8-fortran() {
@@ -201,7 +207,7 @@ package_gcc8-fortran() {
   make -C gcc DESTDIR="$pkgdir" fortran.install-common
   install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
 
-  ln -s gfortran-8 "$pkgdir/usr/bin/f95-8"
+  ln -s gfortran-${_majorver} "$pkgdir/usr/bin/f95-${_majorver}"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
