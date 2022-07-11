@@ -4,23 +4,24 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=diakonos
-pkgver=0.9.7
-pkgrel=2
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="A Linux editor for the masses."
 arch=('any')
 depends=('ruby-curses')
+makedepends=('git')
 license=('MIT')
-url="http://github.com/Pistos/diakonos"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Pistos/diakonos/archive/v$pkgver.tar.gz")
-sha256sums=('77b7f2d2ba29c3a72fff85c91038e19c40eef8a162945105bad203c065c554f9')
+url="https://git.sr.ht/~pistos/diakonos"
+source=("git+$url#commit=5f064a5d439b545d7eea360caef2b40114dd294b")
+sha256sums=('SKIP')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   sed -i 's+sitelibdir+vendorlibdir+' install.rb
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ruby install.rb --dest-dir $pkgdir --prefix /usr --conf-dir /etc
   install -D -m644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/MIT
 }

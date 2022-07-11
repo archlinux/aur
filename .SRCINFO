@@ -1,13 +1,13 @@
 pkgbase = diakonos
 	pkgdesc = A Linux editor for the masses.
-	pkgver = 0.9.7
-	pkgrel = 2
-	url = http://github.com/Pistos/diakonos
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://git.sr.ht/~pistos/diakonos
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = ruby-curses
-	source = diakonos-0.9.7.tar.gz::https://github.com/Pistos/diakonos/archive/v0.9.7.tar.gz
-	sha256sums = 77b7f2d2ba29c3a72fff85c91038e19c40eef8a162945105bad203c065c554f9
+	source = git+https://git.sr.ht/~pistos/diakonos#commit=5f064a5d439b545d7eea360caef2b40114dd294b
+	sha256sums = SKIP
 
 pkgname = diakonos
-
