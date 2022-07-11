@@ -5,7 +5,7 @@ pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('GPLv3')
 provides=('ardupilot-sitl')
 makedepends=('waf' 'python-setuptools')
@@ -84,23 +84,23 @@ source=("${pkgname}-${pkgver}::https://github.com/ArduPilot/ardupilot/archive/Co
         "uavcan::https://github.com/ArduPilot/uavcan/archive/3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0.tar.gz"
        )
 sha256sums=('26defe4a6d73da802ec152ff9ab9ad4e2673a16ff86f053e59e5369b6f67c355'
-            '8237044e8dc5ef8e3159a01c765831a3b5a8d7c3fab7941f0ce8d403ebfe403b'
-            'c09b0342a77ecd9ea99331d54f51edd74b0050bd7575d4abee3a484bdcdee0b1'
+            '236508cb3d3dc57930cec4b40911df43e6d7c69a077f0ffe14e7d67b940f21b3'
+            'dfea517b8009d3c3a85f561ca8372b5464499c0875d6b57d1e4d5cd2975122d3'
             '1d93d928503561f2ccb307245f6789c3437ad469d0efba637e97a90fb49e5aa8'
-            'f9638099720152f332b33bd26de24bde9c14d8afae24aa19e4e8da485145c84e'
+            '02b86cd97b6a626e64240fe83de4e725ee6f59cac2a459dc9349c794dbb2eb6e'
            )
 
 _pkgname=ardupilot-Copter
 
 prepare() {
     cd "$srcdir"
-    mv -n libcanard-99163fc2369e5e5f75f8473f0b950b3418830d3f/* \
+    mv -n archived-libcanard-99163fc2369e5e5f75f8473f0b950b3418830d3f/* \
           "${_pkgname}-${pkgver}/modules/libcanard"
     mv -n mavlink-6e08c0757a1e90c461a8caf1a8d5b724abf3ca57/* \
           "${_pkgname}-${pkgver}/modules/mavlink"
-    mv -n uavcan-3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0/* \
+    mv -n archived-uavcan-3ef4b88d96466bbcf886f74d0ae169a4c8c1bdb0/* \
           "${_pkgname}-${pkgver}/modules/uavcan"
-          
+
     cd "ardupilot-Copter-$pkgver"
     patch --forward --strip=1 --input="${srcdir}/13921.patch"
 }
