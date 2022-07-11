@@ -21,9 +21,14 @@ sha1sums=(
 )
 
 backup=(
+	'etc/rescached/block.d/.pgl.yoyo.org'
+	'etc/rescached/block.d/.someonewhocares.org'
+	'etc/rescached/block.d/.winhelp2002.mvps.org'
 	'etc/rescached/rescached.cfg'
 	'etc/rescached/localhost.cert.pem'
 	'etc/rescached/localhost.key.pem'
+	'etc/rescached/localhost.pem'
+	'etc/rescached/localhost.pem.key'
 )
 
 install=rescached.install

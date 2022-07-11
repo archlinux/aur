@@ -12,9 +12,14 @@ pkgbase = rescached-git
 	makedepends = go>=1.16
 	depends = bash
 	provides = rescached
+	backup = etc/rescached/block.d/.pgl.yoyo.org
+	backup = etc/rescached/block.d/.someonewhocares.org
+	backup = etc/rescached/block.d/.winhelp2002.mvps.org
 	backup = etc/rescached/rescached.cfg
 	backup = etc/rescached/localhost.cert.pem
 	backup = etc/rescached/localhost.key.pem
+	backup = etc/rescached/localhost.pem
+	backup = etc/rescached/localhost.pem.key
 	source = rescached-git::git+https://github.com/shuLhan/rescached-go.git
 	sha1sums = SKIP
 
