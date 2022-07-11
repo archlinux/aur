@@ -2,7 +2,7 @@
 
 _pkgname=Ghidra-GameCube-Loader
 pkgname=ghidra-extension-gamecube-loader-git
-pkgver=1.1.3_1.r4.gaf9091a
+pkgver=1.1.4_1.r3.gf8c20a7
 pkgrel=1
 pkgdesc="A Nintendo GameCube binary loader for Ghidra"
 arch=('any')
