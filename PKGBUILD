@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527[AT]gmail.com>
 
 pkgname=bark-server
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Backend of Bark"
 arch=("any")
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finb/bark-server/archiv
 )
 backup=("etc/nginx/conf.d/${pkgname}.conf")
 
-sha512sums=('3da6ab7e1368a9e49bbdb4841b4b20e0238e228bcef95cce4f0de655340eb8f6f2017acb127809fd0479c7b947439c8f1a1bca87a8c3f9c90c322e6c337cbcc7'
+sha512sums=('2b5fee0dd230470081bf3aec3664d742d38577f444ea5ae06ba18fef9bface5d2b6c659bbd92dd74c1d8292f524a3ddf45b92801876a7fed85d3754d6fef3458'
             '977ea6e0a6d4052181353f015beb72ea448e365c886e49b898865bae2cd70f53ed20a610b2ce637b78da3767bdbb9cacb0d64cdad4d3034bd1895617d8592e2e')
 
 prepare(){    
