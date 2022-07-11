@@ -1,6 +1,6 @@
 pkgbase = reason
 	pkgdesc = A shell for research papers
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/jaywonchung/reason
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = reason
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = reason-0.3.4.tar.gz::https://github.com/jaywonchung/reason/archive/v0.3.4.tar.gz
-	source = https://raw.githubusercontent.com/jaywonchung/reason/1410304549f0b924707822ad7ea33e5b9980b406/Cargo.lock
-	sha512sums = 89c7ce01cb85bb800779ab9fc1844764bc28a24527808df52610ce94920ce567b5de76572695d2f19bcca2a34cac9ab7fd5cbea4c444b22b27e49fb013950fc6
-	sha512sums = 78bab8b03f0e1afcf9c95236af859dccd0e18f664cbcacae2c4a404bcf3163fc2a34c04a247a9c6626cdcd995c65d611ece901482aa0708a43839e07af5a7ef7
-	b2sums = 5312dfb3d52a9b852e63de8e2fb410b21a54e5dd32592bfe7e88941a909f71c097c7131cc689c4da895a2f5c9985a57ed13a8178ea6b03ad09ff2ffd21f7635f
-	b2sums = 9dfcb46de3d8af80025fc7255a20efbb171be0dfbd51811d7a922f9c40e87433b7826c03ce5471e481652d22ffc4bd24fde832d87c0ef96cd49e3e3b530758e0
+	source = reason-0.3.5.tar.gz::https://github.com/jaywonchung/reason/archive/v0.3.5.tar.gz
+	source = reason-0.3.5-Cargo.lock::https://raw.githubusercontent.com/jaywonchung/reason/3ab7b662510a52ea9ed1e65450c914d7ef65ae62/Cargo.lock
+	sha512sums = 0281d8837cdde7dcffe70c413f6acb6878f33c6325321fa5a489b9fb181f9de090963c60b2e69dca93ee981f07170becd061a03ce46ab838cd7b041352f84c1c
+	sha512sums = 1de5d4a6b18f8c81b375cb4ef6dad734b228514e192d7c40af02cfc2adc6e09019f0f9d42ec94313a7fa359f39776137341cb754418ac2614ff1613c5a097462
+	b2sums = ea643a239959ebdd760bd1cbc4a70c3a7dbe59e674e56c41e0a0a5de45fc03249b39ecb9317a1c7b672b75d025be58421b1394261b242a44000f4efc45d6722e
+	b2sums = 9048fbb26915557c359835dfdd8d0c6da5faaf6e10bb99410882ba4ce8fd48799c78f7c8f0bbd3159f6d2cc12cf769ed55b1035ae8f9975fd89f728b591222e1
 
 pkgname = reason
