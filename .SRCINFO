@@ -11,7 +11,7 @@ pkgbase = python-catkin-tools-git
 	depends = python-yaml
 	depends = python-setuptools
 	depends = python-osrf_pycommon
-	conflicts = python2-catkin-tools
+	conflicts = python-catkin-tools
 	source = catkin_tools::git+https://github.com/catkin/catkin_tools.git#branch=main
 	sha256sums = SKIP
 

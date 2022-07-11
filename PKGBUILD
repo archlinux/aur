@@ -10,7 +10,7 @@ url="https://github.com/catkin/catkin_tools"
 license=("Apache")
 makedepends=("git")
 depends=("python" "python-catkin_pkg" "python-yaml" "python-setuptools" "python-osrf_pycommon")
-conflicts=("python2-catkin-tools")
+conflicts=("python-catkin-tools")
 source=("${_gitname}::git+https://github.com/catkin/${_gitname}.git#branch=${_gitbranch}")
 sha256sums=("SKIP")
 
