@@ -2,10 +2,10 @@
 pkgname=simple-reaction-daemon
 pkgver=0.0.2
 pkgrel=1
-pkgdesc="Simple Reaction Daemon"
+pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they are unreachable"
 arch=('any')
 _srctag=v${pkgver}
-url="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/commits/$_srctag"
+url="https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/$_srctag"
 license=('GPL2')
 groups=()
 depends=(libsystemd libconfig glibc)
@@ -20,7 +20,7 @@ options=('strip')
 install=
 changelog=
 source=(
-    "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon?signed=tag=$_srctag"
+    "$pkgname::git+https://github.com/dbernhard-0x7CD/simple-reaction-daemon"
     'srd.conf')
 noextract=()
 sha256sums=('SKIP'
@@ -33,7 +33,9 @@ prepare() {
 }
 
 build() {
-    cd $pkgname
+    cd "${pkgname}"
+    git checkout ${_srctag}
+
     git submodule init
     git submodule update
     make
@@ -41,11 +43,11 @@ build() {
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}/srd" "${pkgdir}/usr/bin/srd"
-
-    install -Dm644 ./srd.conf "${pkgdir}/etc/srd/srd.conf"
     install -Dm644 "${srcdir}/${pkgname}/srd.service" "${pkgdir}/usr/lib/systemd/system/srd.service"
-
     install -Dm644 "${srcdir}/${pkgname}/ThirdPartyLicenses.txt" "${pkgdir}/usr/share/srd/ThirdPartyLicenses.txt"
 
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/srd/LICENSE"
+
+    # default configuration
+    install -Dm644 ./srd.conf "${pkgdir}/etc/srd/srd.conf"
 }
