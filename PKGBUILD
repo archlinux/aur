@@ -30,8 +30,7 @@ package(){
   fi
 
   cd ${srcdir}/${_gitname}
-
-  git reset --hard bb7c9abcbf3d0328751c63a6ca1f35e327e2a74b
+  git checkout main
 
   echo "Git checkout done"
 
