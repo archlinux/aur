@@ -1,6 +1,6 @@
 pkgbase = k0s
 	pkgdesc = Aggregate your personal infrastructure
-	pkgver = 0.0.15
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/btwiuse/k0s
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = k0s
 	license = Apache
 	makedepends = make
 	makedepends = go
-	source = https://github.com/btwiuse/k0s/archive/refs/tags/v0.0.15.tar.gz
-	sha256sums = b570120776319ca37e0e5fbf79461f9d079aed3255298ebb68695ddb691d008f
+	source = https://github.com/btwiuse/k0s/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = fd4c632fb7b5d5f550ae6152080bfb4328c746a29f4b1ada5d6e3fead385daaf
 
 pkgname = k0s

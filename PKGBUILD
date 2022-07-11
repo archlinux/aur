@@ -1,6 +1,6 @@
 # Maintainer: navigaid <navigaid@gmail.com>
 pkgname=k0s
-pkgver=0.0.15
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Aggregate your personal infrastructure'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/btwiuse/k0s'
 license=('Apache')
 makedepends=('make' 'go')
 source=("https://github.com/btwiuse/k0s/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b570120776319ca37e0e5fbf79461f9d079aed3255298ebb68695ddb691d008f')
+sha256sums=('fd4c632fb7b5d5f550ae6152080bfb4328c746a29f4b1ada5d6e3fead385daaf')
 
 prepare() {
   true
