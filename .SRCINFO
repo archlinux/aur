@@ -1,7 +1,7 @@
 pkgbase = python-exceptiongroup
 	pkgdesc = Backport of PEP 654 (exception groups)
 	pkgver = 1.0.0rc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agronholm/exceptiongroup
 	arch = any
 	license = MIT
