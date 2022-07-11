@@ -4,10 +4,10 @@ pkgname=bark-server
 pkgver=2.1.3
 pkgrel=1
 pkgdesc="Backend of Bark"
-arch=("any")
+arch=("x86_64" "aarch64")
 url="https://github.com/Finb/bark-server"
 license=("MIT")
-makedepends=("go" "make")
+makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finb/bark-server/archive/refs/tags/v${pkgver}.tar.gz"
 "$pkgname.conf"
 )
