@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.18.7
+pkgver=5.18.10
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,7 +80,7 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=65b8d97deef9185ec16a39f5391c36f3364761e9
+_arch_config_commit=68ef9da3f5dc9961e5263b6b2e6545772bb6ede8
 _prjc_version=5.18-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
@@ -89,20 +89,20 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/8b4c7ea3b44aa9d918b6bf0cfd0cf931355681a5.patch"
-  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/04ec00b2149847aea7ed584bf0e8642fdaeab3e5.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/2adedb768fdfa031a6a45a95cf37736bd65f0e6c.patch"
+  "0002-${pkgbase}-${pkgver}-HID-apple-Properly-handle-function-keys-on-Keychron-.patch::https://github.com/archlinux/linux/commit/836dfa299b84e82f8d7117e6b4d740348ed47de5.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('e5ae6756eac544d1813cfb386c212cfe9b0d3f6ce9df3e72c4f4e8755d99393ea7fa4c95d6a7b747b0ca8dfbfceb2b48ec958587789e83ddd5af06762d542e67'
+b2sums=('71e1d666f2238bdf4c6a10d83c234b02b46dfa67ffbf73eea904254ddd7ded9ad5d520ec4713933388956d2e538e32911f4c99e16c5e3d0c19cbff0fbe38012e'
         'SKIP'
-        'eab78c88e45d9c8c365b12369f0e787fd70554c4e7efb8ce5d3360eaf5ef6036bed484b673ecc1ad58c7d120c261b0bcc71f443dcbd96665d06ae545f119d608'
+        'aeffb500a9cf0f1265fc62fa9260bdddac8ba47bf01e3b2732d961ea7d58ae4886563bc7076fe920d4fca3ad19588bfe8f9368e77fdc61336c894488bab41638'
         '81000dd93c038389ab1bbe04e1e9706062244e70571da03388c2ab0d382bd817d86d8b12adfe607b49adf7bbab3624640a70ba6df2e97bd7f55f9d2def73e88f'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '7836b83928db2f3ffb9267d3a0e3fd86768b120406e30dbe7487ed611dddf36d193814e144e077326a50bd2bb8c680a3932bb49ed03454507630773551130553'
-        'ed92c1e4cfee9d75d2a57a10921f8629fce0099e6417899e9dc9d411a4746cef989adb9498e8f6e55ca22662ba236e5c1bc038aea0a527364314fc70a77c4707')
+        '77b83734aa62dbc78ca6769861d49dc8cfb56e07b42ff2fc95290bbc805e217fa6eba8e09cab7509207de1511e1988557a28f8bd1dec6b25c1aba408c4fedac4'
+        '6b5401f54fafedc3ac1e8a4450b231d1ea6b8e94c805fceaef180edb3664b2b51b663915ef9a82be95d22be8f947594323c6c4acb9c575309f5305f20d46659f')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
