@@ -7,7 +7,7 @@
 _pkgname=polymc
 pkgname=${_pkgname}-qt5-git
 pkgver=1.3.1.r295.gac8ee9f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -30,12 +30,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd PolyMC
+  cd "PolyMC"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/PolyMC"
+  cd "PolyMC"
   git submodule init
   git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.quazip.url "${srcdir}/quazip"
@@ -43,24 +43,22 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/PolyMC"
-  mkdir -p build
 
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
-    ..
-  cmake --build .
+    -DLauncher_QT_VERSION_MAJOR=5 \
+    -Bbuild -SPolyMC
+  cmake --build build
 }
 
 check() {
-  cd "${srcdir}/PolyMC/build"
+  cd "build"
   ctest .
 }
 
 package() {
-  cd "${srcdir}/PolyMC/build"
+  cd "build"
   DESTDIR="$pkgdir" cmake --install .
 }
 
