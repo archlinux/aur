@@ -1,0 +1,22 @@
+pkgbase = qdre-viewer-git
+	pkgdesc = Lightweight Qt image viewer
+	pkgver = 0.0.0.r59.g332d59b
+	pkgrel = 1
+	url = https://gitlab.com/zaps166/qdre
+	arch = x86_64
+	groups = qdre
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = glib2
+	depends = libxcb
+	depends = gnome-menus
+	depends = exiv2
+	depends = kwindowsystem
+	conflicts = qdre-git
+	source = git+https://gitlab.com/zaps166/qdre.git#branch=master
+	sha1sums = SKIP
+
+pkgname = qdre-viewer-git
