@@ -1,16 +1,15 @@
 pkgbase = python-bytecode-git
 	pkgdesc = Python module to modify bytecode
-	pkgver = 0.12.0.r26.g532b0ab
+	pkgver = 0.13.0.r45.g3a25441
 	pkgrel = 1
-	url = https://github.com/vstinner/bytecode
+	url = https://github.com/MatthieuDartiailh/bytecode
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = git
+	makedepends = python-setuptools
 	provides = python-bytecode
 	conflicts = python-bytecode
-	source = python-bytecode::git+https://github.com/vstinner/bytecode
+	source = python-bytecode::git+https://github.com/MatthieuDartiailh/bytecode
 	md5sums = SKIP
 
 pkgname = python-bytecode-git
-

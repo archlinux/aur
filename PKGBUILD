@@ -1,15 +1,14 @@
 # Maintainer: Leon <aur@adigitoleo.dissimulo.com>
 pkgname=python-bytecode-git
 _shortname="${pkgname%-git}"
-pkgver=0.12.0.r26.g532b0ab
+pkgver=0.13.0.r45.g3a25441
 pkgrel=1
 pkgdesc="Python module to modify bytecode"
 arch=(x86_64)
-url="https://github.com/vstinner/bytecode"
+url="https://github.com/MatthieuDartiailh/bytecode"
 license=('MIT')
 depends=()
-makedepends=('git')
-checkdepends=('python-pytest')
+makedepends=('git' 'python-setuptools')
 provides=("$_shortname")
 conflicts=("$_shortname")
 source=("$_shortname::git+$url")
@@ -24,11 +23,6 @@ pkgver() {
 build() {
     cd "$srcdir/$_shortname"
     python3 setup.py build
-}
-
-check() {
-    cd "$srcdir/$_shortname/${_shortname#python-}"
-    pytest tests
 }
 
 package() {
