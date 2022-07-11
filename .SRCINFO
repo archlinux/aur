@@ -1,7 +1,7 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts
 	pkgver = 2.26.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
 	license = GPL3
@@ -17,7 +17,6 @@ pkgbase = cyberdropdownloader
 	depends = python-gofile-client
 	depends = python-tqdm
 	depends = python-yarl
-	conflicts = cyberdropdownloader-bin
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
 	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-2.26.9.tar.gz
