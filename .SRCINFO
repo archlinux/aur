@@ -1,12 +1,12 @@
 pkgbase = minised
-	pkgdesc = A smaller, cheaper, faster SED implementation.
+	pkgdesc = Smaller, faster sed implementation
 	pkgver = 1.16
-	pkgrel = 1
-	url = http://www.exactcode.com/site/open_source/minised/
-	arch = i686
+	pkgrel = 2
+	url = https://exactcode.com/site/open_source/minised/
 	arch = x86_64
 	license = custom:BSD-like
-	source = http://dl.exactcode.de/oss/minised/minised-1.16.tar.gz
+	depends = glibc
+	source = minised-1.16.tar.gz::https://dl.exactcode.de/oss/minised/minised-1.16.tar.gz
 	sha256sums = 46e072d5d45c9fd3d5b268523501bbea0ad016232b2d3f366a7aad0b1e7b3f71
 
 pkgname = minised
