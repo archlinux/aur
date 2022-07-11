@@ -1,0 +1,20 @@
+pkgbase = iceoryx-git
+	pkgdesc = True zero-copy inter-process-communication
+	pkgver = 2.90.0.r7412.d5be6d829
+	pkgrel = 1
+	url = https://github.com/eclipse-iceoryx/iceoryx
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = acl
+	depends = ncurses
+	provides = iceoryx
+	conflicts = iceoryx
+	options = !strip
+	source = iceoryx-git::git+https://github.com/eclipse-iceoryx/iceoryx.git
+	sha512sums = SKIP
+
+pkgname = iceoryx-git
