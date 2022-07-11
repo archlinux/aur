@@ -13,12 +13,11 @@ pkgdesc='The GNU Compiler Collection (version 11.1.0) for remote debugging compa
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-#makedepends=(binutils doxygen git libmpc python)
-makedepends=(binutils git libmpc python)
-checkdepends=(dejagnu inetutils)
-#options=(!emptydirs !lto)
-source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=("4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf")
+makedepends=(binutils libmpc python)
+source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig})
+# import GNU Keyrings from "https://ftp.gnu.org/gnu/gnu-keyring.gpg" first!!!
+validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+sha256sums=("4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf" "30ddb74a7dc144917ece0053e8cd0a18d6d0390941257925e0c70eb88a52e629")
 _ins_path=/opt/gcc-11
 
 build() {
@@ -47,7 +46,11 @@ build() {
 	--disable-build-format-warnings \
 	--disable-werror
 
-	make -j$(nproc)
+	make 
+	# if you want to speed up your makepkg please go to /etc/makepkg.conf and add line of:
+	# MAKEFLAGS="-j$(nproc)"
+	
+	# make -j$(nproc) 
 	# make -j$(nproc) all-target-libgcc
 }
 
