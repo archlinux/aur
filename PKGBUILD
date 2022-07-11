@@ -2,8 +2,8 @@
 
 pkgname=prometheus-json-exporter
 _pkgname=json_exporter
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Prometheus exporter which scrapes remote JSON by JSONPath"
 arch=('x86_64')
 url="https://github.com/prometheus-community/json_exporter"
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   'systemd.service'
 )
-sha512sums=('43d4a141fc0771ca4105502b7e5c37acd599287145e958206b1e5c853df87b22a828a4bb63c9056350da3e06c448a05f136896ae536239d6715325c54426d71d'
+sha512sums=('b679c772075a54ae36f30d84942f4f00a9f73653456a80204bc97c4cecb7b02deaab096974e7b727d5cafb9e2f9bf592c05bd118912a1a42d514195cd3afdbc9'
             'fec356ad3b683e80cd3c8932f40278b49e475a048cec17978f102f0b5b191e1e6f84970bc99c205d1f0319d65999a00b6acdfac139127619f3cbe24ebdd74b9d')
 
 prepare() {
