@@ -19,7 +19,7 @@ function update_to(){
 
 function sync_git(){
     local version=$1
-    git commit PKGBUILD -m "Update SDK to $version"
+    git commit PKGBUILD .SRCINFO -m "Update SDK to $version"
     git push
 }
 
