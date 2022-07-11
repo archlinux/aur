@@ -2,7 +2,7 @@
 
 
 pkgname=gnome-voice
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Record Audio with GNOME Voice"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
 makedepends=('intltool' 'itstool' 'python')
 source=(https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('2c92a4acf3474c76758cead7469ed73b42f9352b9c949dd9febea36b05f39014')
+sha256sums=('4d672ccdaffc5d6b272851b51cb1aa98c5078b191c2b6770a28c175b0c5ae79e')
 
 build() {
   cd $pkgname-$pkgver
