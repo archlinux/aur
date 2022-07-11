@@ -10,6 +10,6 @@ pkgbase = cantara
 	depends = qt5pas
 	provides = cantara
 	source = https://github.com/reckel-jm/cantara/archive/refs/tags/v2.2.1.zip
-	md5sums = SKIP
+	md5sums = 0442b757786487798eaec4de756e3acc
 
 pkgname = cantara
