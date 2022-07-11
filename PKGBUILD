@@ -4,10 +4,10 @@
 pkgname=scratch3
 conflicts=("scratch3-bin")
 
-pkgver=3.28.0
-pkgrel=2
-_electronDist=electron15
-_electronVersion=15.3.6
+pkgver=3.29.1
+pkgrel=1
+_electronDist=electron13
+_electronVersion=13.6.9
 
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
@@ -21,11 +21,11 @@ source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar
         "${pkgname}.xml"
         "$pkgname-icons.tar.gz"
         "$pkgname-patches.tar.gz")
-sha256sums=('26bbdaac2c1c0bb1b3b7a59a8f18196a01cd6380ad73cf22bac62aa095f0d5c0'
+sha256sums=('1daab6d39dc94deca057fbe90642b96ea0c143149ee04ee74dd9648b051e6a14'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
             '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-            '0b88c9ff8c967f3d99dada10ac9fb789a34e61945d1c8b9d1483671e637da61c')
+            'c4e442841e8c248cecf782155460f4cb36c41eedc3d60b61a704af0cff3af437')
 
 appOutputDir="linux-unpacked"
 
@@ -49,7 +49,7 @@ esac
 
 prepare() {
    cd "$srcdir/"
-   
+
 #  Adjust electron version targeted in (generic) patch files
    sed -i "s|13.x.y|$_electronVersion|" package-json.patch
    sed -i "s|/usr/lib/electronXX|/usr/lib/$_electronDist|" electron-builder-yaml.patch
@@ -58,14 +58,19 @@ prepare() {
 #  Copy patch files to be able to compile on Linux platform
    cp package-json.patch scratch-desktop-${pkgver}/
    cp electron-builder-yaml.patch scratch-desktop-${pkgver}/
-   cp index-js.patch scratch-desktop-${pkgver}/src/main/
+   cp index-js-1.patch scratch-desktop-${pkgver}/src/main/
+   cp index-js-2.patch scratch-desktop-${pkgver}/src/main/
 
    cd "scratch-desktop-${pkgver}/"
    patch < package-json.patch
    patch < electron-builder-yaml.patch
 
    cd "src/main/"
-   patch < index-js.patch
+   patch < index-js-1.patch
+#  With patch #2, ShowSaveDialog will remember last used dir like on Windows
+#  Feel free to comment it out if you prefer the buggy version
+   patch < index-js-2.patch
+#  If someone could write something similar for the ShowOpenDialog...
 }
 
 build(){
@@ -85,7 +90,7 @@ build(){
    cd "$srcdir/scratch-desktop-${pkgver}/dist/main/"
    rmString="/\*! ${srcdir}/scratch-desktop-${pkgver}/src/main/index.js \*/"
    sed -i "s|${rmString}||" main.js
-   
+
    cd "$srcdir/scratch-desktop-${pkgver}/"
 
 #  File generation
