@@ -1,20 +1,19 @@
 pkgbase = code-server
 	pkgdesc = VS Code in the browser
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/cdr/code-server
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source = code-server-4.4.0-user.service::https://raw.githubusercontent.com/cdr/code-server/v4.4.0/ci/build/code-server-user.service
-	source = code-server-4.4.0@.service::https://raw.githubusercontent.com/cdr/code-server/v4.4.0/ci/build/code-server@.service
+	source = code-server-4.5.0-user.service::https://raw.githubusercontent.com/cdr/code-server/v4.5.0/ci/build/code-server-user.service
+	source = code-server-4.5.0@.service::https://raw.githubusercontent.com/cdr/code-server/v4.5.0/ci/build/code-server@.service
 	sha512sums = 7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280
 	sha512sums = ab8e679c05f6184f163dccf0651e8c1fac22a29ae583148f8c93b6930ece27cdff45a48b425e8b15b8c8ce749015680a3ae8225b7e8037979ff3d228f396f629
-	source_x86_64 = https://github.com/cdr/code-server/releases/download/v4.4.0/code-server-4.4.0-linux-amd64.tar.gz
-	sha512sums_x86_64 = b48dcd0cf524ec4ed8813259c43e84295740081d35e5033ac4d0d730fc182d63d98e55d18d00b8c08e85a76a0839bd3a8f1b273b33cc12abbec35848cc6c4b63
-	source_aarch64 = https://github.com/cdr/code-server/releases/download/v4.4.0/code-server-4.4.0-linux-arm64.tar.gz
-	sha512sums_aarch64 = f158af77b20febc0e5be7f951e95e7a8d0e65649e6a9f9ebb07909ae97d8e3369b350fb6c3c8580de7c37ae62c099c7ade6fb8841d3c5d2d4b23c6e94deffacd
+	source_x86_64 = https://github.com/cdr/code-server/releases/download/v4.5.0/code-server-4.5.0-linux-amd64.tar.gz
+	sha512sums_x86_64 = 35c976e7af93059f69dc41138b74b2c20f9444f0f089926c3791f0652d87cf3939d825912e08583e4015c2d16e7f818152b4cb1c5110c1164a13202fef9bfaf0
+	source_aarch64 = https://github.com/cdr/code-server/releases/download/v4.5.0/code-server-4.5.0-linux-arm64.tar.gz
+	sha512sums_aarch64 = 82ff906bf40fe56bee7e0d886dbc88f570c3b79141c1d2c820bf99742508d358d95dbe420b5a43c08291fe3e9acfa48db985ab7b5155fe02690b6f8ab5db7662
 
 pkgname = code-server
-

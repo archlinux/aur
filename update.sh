@@ -24,7 +24,7 @@ main() {
   fi
 
   ls
-  echo $(grep "pkgver=" PKGBUILD)
+  grep "pkgver=" PKGBUILD
   CODE_SERVER_CURRENT_VERSION=$(grep "pkgver=" PKGBUILD | cut -d "=" -f2-)
   # Ask which version we should update to
   # In the future, we'll automate this and determine the latest version automatically
