@@ -10,12 +10,12 @@ url="https://launchpad.net/udev-notify"
 license=('GPL3')
 depends=('libnotify' 'udev' 'python-notify2' 'python-pyudev')
 makedepends=('bzr')
-source=('udev-notify::bzr+lp:~i026e/udev-notify/python3')
+source=('python3::bzr+lp:~i026e/udev-notify/python3')
 sha1sums=('SKIP')
 conflicts=('udev-notify')
 provides=('udev-notify')
 
-_bzrmod="udev-notify"
+_bzrmod="python3"
 
 pkgver() {
   cd "${_bzrmod}"
