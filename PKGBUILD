@@ -7,19 +7,25 @@
 _base=simplejson
 pkgname=python2-${_base}
 pkgver=3.17.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple, fast, extensible JSON encoder/decoder for python2"
 license=('MIT')
 arch=('any')
 url="https://github.com/${_base}/${_base}"
-depends=(python2)
-makedepends=(python2-setuptools)
+depends=('python2')
+makedepends=('python2-setuptools')
+checkdepends=('python2-pytest-runner')
 source=(${url}/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('5522f3113924325499f15cd8a3fe47a42dfa127a6b76c1921b51cf3c3f2a6aa6')
 
 build() {
   cd "${_base}-${pkgver}"
   python2 setup.py build
+}
+
+check() {
+    cd "${_base}-${pkgver}"
+    python2 setup.py pytest
 }
 
 package() {
