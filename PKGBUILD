@@ -1,3 +1,5 @@
+# Maintainer: David Hummel <david dot hummel at gmail point com>
+
 _gitname=atom
 _pkgname=${_gitname}-community
 
