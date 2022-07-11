@@ -4,7 +4,7 @@
 # Original Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Original Maintainer: dront78 <dront78@gmail.com>
 pkgname=systemtap
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 pkgdesc="Infrastructure to simplify the gathering of information about the running Linux system"
 url="http://sourceware.org/systemtap/"
@@ -14,14 +14,10 @@ depends=('elfutils' 'nss' 'python' 'cpio')
 makedepends=('python-setuptools' 'python2-setuptools' 'xmlto')
 optdepends=('sqlite3: for storing results in a database')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.asc"
-        "0001-Fix-Werror-for-wrong-type-of-printf-width.patch"
-        "0002-configury-let-python3-be-python3.patch"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.sig"
         )
-sha512sums=('835b45597e9de0ea17857b47d542c87d155cb5c772f8595f41845a25ff06b862cb9c4b635292c3a6c66cb5255a07eee3af7cb7861110a4a05f545a4b35f11402'
-            'SKIP'
-            'da1b3d2319bfd711ba7e2e436cd476cbc7a63d442d8ad26fc010c219b9ca2343054a061767f0acc624620dc1eb3ca5a70ab130895181ed8e00c05b51ac651568'
-            '26dc15751040ac444a74046cdb2f5cad456752f06d0916ef3f97e5faf98e1f382b638adb850ed98b287b72dea63c7a16c5ad98b9ad452da4042a1ae36260a54e')
+sha512sums=('7d7c213dc4f7c5430f81763668da21403fbc351d1701b1096eb1ad233e3f0325e35f01dfd0a33e75f277b26fdde88c46d42dd32e32e4d4f27a45d53e2dd0f831'
+            'SKIP')
 install='systemtap.install'
 # Note, you need to run:
 # gpg --recv-keys  --keyserver hkps://keys.openpgp.org/ 0xD7C256443CC637CA
@@ -32,9 +28,6 @@ validpgpkeys=('F75E6545B9F8AA15AA932A444DE16D68FDBFFFB8'   # "Serhei Makarov (fo
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  for i in  "${srcdir}"/*.patch; do
-      patch -Np1 -i "$i"
-  done
 }
 
 build() {
