@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pipgrip
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-anytree' 'python-click' 'python-pip' 'python-packaging' 'python
          'python-setuptools' 'python-wheel')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ed0f7854a9df677a713d74024c9fe50b91dba57543af6d51ca032f1e36b40e12')
+sha256sums=('1c6ee78705f60a01934cb03fdd0146c899209c2f08e03e4e75afb31cd5c309e7')
 
 prepare() {
   cd "$pkgname-$pkgver"
