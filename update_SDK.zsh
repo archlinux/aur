@@ -6,12 +6,15 @@ function get_last_version(){
     echo $version
 }
 
-function update_to(){
+function patch_pkgbuild(){
     local version=$1
     sed -i "s/pkgver=.*/pkgver=$version/" PKGBUILD
-    updpkgsums
-    makepkg
-    makepkg --printsrcinfo > .SRCINFO
+}
+
+function update_to(){
+    local version=$1
+    patch_pkgbuild $version
+    updpkgsums && makepkg && makepkg --printsrcinfo > .SRCINFO
 }
 
 function sync_git(){
@@ -21,12 +24,12 @@ function sync_git(){
 }
 
 function main(){
-    local version=$(get_last_version)
-    if grep -q "pkgver=$version" PKGBUILD; then
-        echo "Already up-to-date: v$version"
+    local ver=$(get_last_version)
+    local old_ver=$(awk -F= '/pkgver=/{print $2}' PKGBUILD)
+    if [[ $ver == $old_ver ]]; then
+        echo "Already up-to-date: version $ver"
     else
-        update_to $version
-        sync_git $version
+        update_to $ver && sync_git $ver || patch_pkgbuild $old_ver
     fi
 }
 
