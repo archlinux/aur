@@ -1,12 +1,15 @@
 pkgbase = untldr
 	pkgdesc = Minimalist tldr command line client
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/unInstance/untldr
 	install = untldr.install
 	changelog = untldr.changelog
 	arch = any
 	license = Apache
+	makedepends = gcc
+	makedepends = ccache
+	makedepends = make
 	depends = curl
 	depends = libarchive
 	conflicts = tldr
