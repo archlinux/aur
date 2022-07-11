@@ -1,0 +1,20 @@
+pkgbase = mueller-dict
+	pkgdesc = English -> Russian dictionary for dictd et al.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://mueller-dict.sourceforge.net
+	arch = any
+	license = GPL2
+	optdepends = dictd: dict client and server
+	source = http://downloads.sourceforge.net/mueller-dict/mueller-dict-3.1.1.tar.gz
+	source = mueller-dict-install
+	source = mueller-dict-install.hook
+	source = mueller-dict-remove
+	source = mueller-dict-remove.hook
+	sha1sums = 6aebd3fdbe8f921e0011630d35137caf523fd40a
+	sha1sums = e4464f3d3d39f50dda1320b61dabf3b175383dda
+	sha1sums = 11df4a93d604553edb1136317391af519ef8837c
+	sha1sums = 742adff8597df5372ca130ad6665841f94fb97a7
+	sha1sums = 10a018ad44990a5ca7fd4fb56ec639866d248d23
+
+pkgname = mueller-dict

@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = mueller-dict
+
+[Action]
+Description = Configuration Update Reminder
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/mueller-dict-remove

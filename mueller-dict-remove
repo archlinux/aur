@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+echo
+echo "Don't forget to remove the database entries from /etc/dict/dictd.conf"
+echo "and restart dictd.service for the changes to take effect."
+echo

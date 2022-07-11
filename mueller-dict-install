@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+dictd_conf=/etc/dict/dictd.conf
+datadir=/usr/share/dictd
+dicts=(
+	mueller-abbrev
+	mueller-base
+	mueller-dict
+	mueller-geo
+	mueller-names
+)
+
+echo
+echo "Add the following database entries to $dictd_conf and"
+echo "restart dictd.service for the changes to take effect:"
+echo
+for dict in "${dicts[@]}"; do
+	echo "database ${dict} {"
+	echo "  data  ${datadir}/${dict}.dict.dz"
+	echo "  index ${datadir}/${dict}.index"
+	echo "}"
+done
+echo

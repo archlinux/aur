@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Target = mueller-dict
+
+[Action]
+Description = Setup Instructions
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mueller-dict-install
