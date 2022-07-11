@@ -1,8 +1,8 @@
 # Maintainer: Klimenko Maxim <klimenkomaximsergievich@gmail.com>
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
-pkgname=udev-notify
-pkgver=40
+pkgname=udev-notify-bzr
+pkgver=r40
 pkgrel=1
 pkgdesc="Visual hardware notifications for Linux. (Bazaar version)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ _bzrmod="python3"
 
 pkgver() {
   cd "${_bzrmod}"
-  echo "$(bzr revno)"
+  printf "r%s" "$(bzr revno)"
 }
 
 prepare() {
