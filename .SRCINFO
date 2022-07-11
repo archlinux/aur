@@ -1,8 +1,8 @@
 pkgbase = qemu-guest-kernel
 	pkgdesc = Linux kernels for QEMU/KVM guests (direct kernel boot)
-	pkgver = 5.15.31
+	pkgver = 5.15.53
 	pkgrel = 1
-	url = https://github.com/guest-kernel/qemu
+	url = https://github.com/cyano-linux/qemu-guest-kernel
 	install = archpkg.install
 	arch = any
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = qemu-guest-kernel
 	makedepends = lld
 	makedepends = llvm
 	options = !strip
-	source = stable-linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v5.15.31
+	source = stable-linux::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git?signed#tag=v5.15.53
 	source = filesystem.config
 	source = systemd.config
 	source = arch_x86.config
@@ -30,6 +30,6 @@ pkgbase = qemu-guest-kernel
 	sha256sums = SKIP
 	sha256sums = 9a917bb710be091e5b1d05185f009b6eb67b4b668389da185e56909da2b10d06
 	sha256sums = 0ccbd0d29149c3752303aea276eea713cd1cb0687ea0239bdbaa20732b31e868
-	sha256sums = ea4fec562448292a233148e1685d731c5e1811d4c6a1826ebdc4a29feb69028d
+	sha256sums = 45cf6ec7c89fd3649c495cd011ebc58a58f76df08950044475cf2c96cde9aac8
 
 pkgname = qemu-guest-kernel
