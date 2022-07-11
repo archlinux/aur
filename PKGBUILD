@@ -1,25 +1,32 @@
-# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
-pkgname='python-crossplane'
-_name="${pkgname#python-}"
+pkgname=python-crossplane
+_pkg="${pkgname#python-}"
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Reliable and fast NGINX configuration file parser and builder'
 arch=('any')
-url='https://pypi.org/project/crossplane/'
+url='https://github.com/nginxinc/crossplane'
 license=('Apache')
 depends=('python')
-makedepends=('python-setuptools')
-_tarname="${_name}-${pkgver}"
-source=("${_tarname}.tar.gz::https://pypi.python.org/packages/source/${_name::1}/${_name}/${_tarname}.tar.gz")
-b2sums=('0c661df50baee833f18a627075ed3fb2650263b8cde1a5b2e097dfce5d9fb51e37bb1b4bf7b6fc9b3b248b96034a69f8945f32fb99e932ba280606c8eb7c066b')
+optdepends=('python-simplejson')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('a3d3ee1776bcccebf7a58cefeb365775374ab38bd544408117717ccd9f264f60')
 
 build() {
-  cd "${_tarname}"
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkg-$pkgver"
+	pytest -x
 }
 
 package() {
-  cd "${_tarname}"
-  python setup.py install --prefix='/usr' --root="${pkgdir}" --optimize 1
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
 }
