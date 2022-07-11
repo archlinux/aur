@@ -3,10 +3,10 @@
 
 pkgname=nuweb
 pkgver=1.61
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Simple Literate Programming Tool"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url="http://nuweb.sourceforge.net/"
 license=('custom:BSD-3-Clause')
 depends=('texlive-core')
@@ -19,15 +19,14 @@ sha256sums=('fbf4ff8f27690027bceac799262b43cc27cad51261799111d512d2faf1044c9b'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  latex nuwebdoc
-  bibtex nuwebdoc
-  latex nuwebdoc
-  latex nuwebdoc
+  latexmk -pdf nuwebdoc
 
   make nuweb
+
   ./nuweb nuweb.w
   ./nuweb nuwebsty.w
-  pdflatex nuweb.tex
+
+  latexmk -pdf nuweb
 }
 
 check() {
@@ -52,6 +51,6 @@ package() {
   install -D -m644 $srcdir/$pkgname-$pkgver/nwhres.sty   $pkgdir/usr/share/texmf/tex/latex/$pkgname/nwhres.sty
 
   install -D -m644 $srcdir/$pkgname-$pkgver/nuweb.pdf    $pkgdir/usr/share/doc/$pkgname/nuweb.pdf
-  install -D -m644 $srcdir/$pkgname-$pkgver/nuwebdoc.dvi $pkgdir/usr/share/doc/$pkgname/nuwebdoc.dvi
+  install -D -m644 $srcdir/$pkgname-$pkgver/nuwebdoc.pdf $pkgdir/usr/share/doc/$pkgname/nuwebdoc.pdf
 }
 

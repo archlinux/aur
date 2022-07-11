@@ -1,11 +1,11 @@
 pkgbase = nuweb
 	pkgdesc = A Simple Literate Programming Tool
 	pkgver = 1.61
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nuweb.sourceforge.net/
 	install = nuweb.install
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = custom:BSD-3-Clause
 	depends = texlive-core
 	source = http://downloads.sourceforge.net/project/nuweb/nuweb-1.61.tar.gz
