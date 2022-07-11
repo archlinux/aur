@@ -1,28 +1,37 @@
-# Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
+# Maintainer: Aaron Coach <aur at ezpz dot cz>
+# Contributor: Nikolay Bryskin <devel.niks at gmail dot com>
+# Contributor: Carlos Galindo <carlos.s.galindo (at) gmail.com>
+
 _npmname=meshcentral
-_npmver=0.9.16
+_npmver=1.0.50
 pkgname=meshcentral
-pkgver=0.9.16
+pkgver=1.0.50
 pkgrel=1
 pkgdesc="Web based remote computer management and file server"
 arch=(any)
 url="http://meshcommander.com"
 license=(Apache)
-depends=('nodejs')
 makedepends=('npm')
+depends=('nodejs<18.1.0')
+optdepends=('nodejs-modern-syslog: syslog support'
+            'nodejs-nodemailer: SMTP support'
+            'nodejs-passport-saml: SAML authentication support')
 backup=('etc/meshcentral/config.json' 'var/lib/meshcentral')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
         "$_npmname.service"
         "$_npmname.sysusers"
         "$_npmname.tmpfiles")
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=(09cdd24de09b284476650a693c9427990630e00c SKIP SKIP SKIP)
+noextract=("$_npmname-$_npmver.tgz")
+sha256sums=('3f4a1939bd603c410a5952c260d2d9d5bbcc02012a85e4061ecaafcb9a70d82c'
+            'd53889dc58f968fa63cdbd8b245f154fc8170262908a832de674962ff2fa8b85'
+            'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
+            '9968e59627f098fc5e2cbf0a0f1e11054e01ccd793d9098b5ff101c4e14f278b')
 
 package() {
-  cd $srcdir
+  cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
+  mkdir -p "$_npmdir"
+  cd "$_npmdir"
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver archiver@4.0.2 otplib@10.2.3
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
@@ -45,8 +54,7 @@ package() {
   install -D "${pkgdir}/usr/lib/node_modules/$_npmname/sample-config-advanced.json" "${pkgdir}/etc/$_npmname/config.json"
 
   # Data directories
-  install -d ${pkgdir}/var/lib/${_npmname}/data
-  install -d ${pkgdir}/var/lib/${_npmname}/files
+  install -m 750 -d "${pkgdir}/var/lib/${_npmname}/{,data,files}"
 }
 
 # vim:set ts=2 sw=2 et:
