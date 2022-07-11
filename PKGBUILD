@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.19.rc5.r35.g5ee88bdb5025
+pkgver=5.19rc6.r35.g51adf8a3d449
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=5.19
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $_srcname
-  git describe --long --tags | sed 's/^v//;s/pf//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/-pf//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux

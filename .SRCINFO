@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.19.rc5.r35.g5ee88bdb5025
+	pkgver = 5.19rc6.r35.g51adf8a3d449
 	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/linux/wiki/README
 	arch = x86_64
