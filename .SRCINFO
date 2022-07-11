@@ -11,6 +11,7 @@ pkgbase = openmodelica
 	makedepends = boost
 	depends = java-environment
 	depends = lapack
+	depends = lapack-static
 	depends = openscenegraph
 	depends = omniorb
 	depends = libcurl-gnutls
