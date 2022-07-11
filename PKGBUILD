@@ -1,4 +1,4 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Klimenko Maxim <klimenkomaximsergievich@gmail.com>
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=udev-notify
