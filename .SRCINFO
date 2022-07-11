@@ -1,0 +1,15 @@
+pkgbase = wl-clip-persist-git
+	pkgdesc = Keep Wayland clipboard even after programs close
+	pkgver = r2.aea59e7
+	pkgrel = 1
+	url = https://github.com/Linus789/wl-clip-persist
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = wayland
+	provides = wl-clip-persist
+	conflicts = wl-clip-persist
+	source = wl-clip-persist-git::git+https://github.com/Linus789/wl-clip-persist.git
+	sha256sums = SKIP
+
+pkgname = wl-clip-persist-git
