@@ -1,0 +1,16 @@
+pkgbase = spidy
+	pkgdesc = Expired Domain Name Scraper - scrap the web and find expired domains
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/twiny/spidy/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	provides = spidy
+	conflicts = spidy-bin
+	conflicts = spidy-git
+	source = spidy-2.0.0.tar.gz::https://github.com/twiny/spidy/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 39e9ccc39b82de3db06d427e08eb91866aff67c8807c94a4bac0273e38117f28
+
+pkgname = spidy
