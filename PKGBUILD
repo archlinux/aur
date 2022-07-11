@@ -8,7 +8,7 @@ pkgdesc="A hackable text editor for the 21st century, built on Electron, and bas
 url="https://github.com/atom-community/atom"
 arch=("x86_64")
 
-conflicts=("${_gitname}")
+conflicts=("${_gitname}" "apm")
 
 depends=("libsecret" "libx11" "libxkbfile")
 
