@@ -1,0 +1,19 @@
+pkgbase = udev-notify
+	pkgdesc = Notify about connected usb devices.
+	pkgver = 40
+	pkgrel = 1
+	url = https://launchpad.net/udev-notify
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go-pie
+	depends = openvpn
+	provides = udev-notify
+	conflicts = udev-notify
+	options = !strip
+	options = !emptydirs
+	source = bzr+lp:~i026e/udev-notify/python3
+	sha256sums = SKIP
+
+pkgname = udev-notify
+
