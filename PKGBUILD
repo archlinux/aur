@@ -47,7 +47,7 @@ build() {
 	--disable-build-format-warnings \
 	--disable-werror
 
-	make -j$(nroc)
+	make -j$(nproc)
 	# make -j$(nproc) all-target-libgcc
 }
 
