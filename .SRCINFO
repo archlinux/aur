@@ -1,13 +1,13 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
-	pkgver = 4.1
-	pkgrel = 4
+	pkgver = 4.2
+	pkgrel = 1
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-gtk3>=4.1
+	makedepends = audacious-gtk3>=4.2
 	makedepends = glib2
 	makedepends = python
 	makedepends = git
@@ -38,7 +38,7 @@ pkgbase = audacious-plugins-gtk3
 	depends = libopenmpt
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = git+https://github.com/audacious-media-player/audacious-plugins.git#commit=111a7c92c5771a8072901700515858e5500b66b0
+	source = git+https://github.com/audacious-media-player/audacious-plugins.git#commit=c71ee93826eecdec855e6c37fcf12c51c76b596c
 	sha256sums = SKIP
 
 pkgname = audacious-plugins-gtk3

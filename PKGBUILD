@@ -6,8 +6,8 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=4.1
-pkgrel=4
+pkgver=4.2
+pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
@@ -19,16 +19,12 @@ depends=('alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
 makedepends=("audacious-gtk3>=$pkgver" 'glib2' 'python' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-_commit=111a7c92c5771a8072901700515858e5500b66b0
+_commit=c71ee93826eecdec855e6c37fcf12c51c76b596c
 source=("git+https://github.com/audacious-media-player/$_pkgname.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
-
-  # Fix build with FFmpeg 5.0
-  git cherry-pick -n f60beb400eeb1e4778bbfd738bc4a4ccef3de539
-
   autoreconf -I m4
 }
 
