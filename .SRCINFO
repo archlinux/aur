@@ -1,6 +1,6 @@
 pkgbase = boosteroid
 	pkgdesc = Boosteroid client desktop
-	pkgver = 1.4.11
+	pkgver = 1.4.14
 	pkgrel = 1
 	url = https://boosteroid.com/downloads
 	arch = x86_64
@@ -24,6 +24,6 @@ pkgbase = boosteroid
 	depends = fontconfig
 	depends = alsa-lib
 	source = boosteroid-install-x64.md5
-	md5sums = 7e879e4ad96fd1c5b50e85d547cc4469
+	md5sums = 2d8cacfcdb43bdf4eef3c5e2a24639cd
 
 pkgname = boosteroid

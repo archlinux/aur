@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.4.11
+pkgver=1.4.14
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("libva" "libvdpau" "libxcb" "traceroute" "ocl-icd" "pcre2" "libxi" "xcb
 makedepends=("binutils" "tar" "coreutils" "wget")
 
 source=("boosteroid-install-x64.md5")
-md5sums=("7e879e4ad96fd1c5b50e85d547cc4469")
+md5sums=("2d8cacfcdb43bdf4eef3c5e2a24639cd")
 
 prepare() {
   cd "$srcdir"
