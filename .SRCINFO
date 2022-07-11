@@ -12,7 +12,6 @@ pkgbase = atom-community-git
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
-	provides = apm
 	conflicts = atom
 	source = git+https://github.com/atom-community/atom.git
 	sha256sums = SKIP

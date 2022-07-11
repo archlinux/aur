@@ -14,8 +14,6 @@ depends=("libsecret" "libx11" "libxkbfile")
 
 makedepends=("git" "node-gyp" "nodejs-lts-gallium" "npm" "python")
 
-provides=("apm")
-
 source=("git+https://github.com/${_pkgname}/${_gitname}.git")
 
 sha256sums=("SKIP")
