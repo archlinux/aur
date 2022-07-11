@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=available
-_pkgver=1.0.5
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.5
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Check if the Title of a Package is Available, Appropriate and Interesting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -32,7 +32,7 @@ optdepends=(
   r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c59f6c1c92bb846ed7eedbfae02da4854129626716966c2b68a3aaa95dfd9ed6')
+sha256sums=('84b7546aab53b3a9de202526a0fd992f756807968e9cc98d3453f6d3f807dfc8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
