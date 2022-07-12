@@ -3,8 +3,10 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
-_pkgname=archiso
-pkgname=$_pkgname-encryption-git
+_pkgbase=archiso
+_variant="${_pkgname}"
+_pkgname="${_pkgbase}-${_variant}"
+pkgname="${_pkgname}-git"
 pkgver=v58+214+gee08b3c
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
@@ -15,28 +17,30 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
-replaces=('archiso' 'archiso-encryption')
-conflicts=('archiso' 'archiso-encryption')
+provides=("${_pkgbase}")
+provides+=("${_pkgbase}-${_variant}")
+conflicts=("${_pkgbase}")
+conflicts+=("${_pkgbase}-${_variant}")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#branch=crypto")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgname}#branch=crypto")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd $_pkgbase
   git describe --tags | sed 's/-/+/g'
 }
 
 check() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   make -k check
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
