@@ -1,30 +1,34 @@
 # Maintainer: BrainDamage <braindamage springlobby.info>
 
 pkgname=ntp-refclock
-pkgver=0.2
-pkgrel=3
-ntpver=4.2.8p11 #ntp-refclock 0.2 doesn't build with ntp versions later than this one
+pkgver=0.5
+pkgrel=1
+ntpver=4.2.8p15
 pkgdesc='Wrapper for ntpd reference clock drivers'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('BSD')
 url='https://github.com/mlichvar/ntp-refclock'
 source=("https://github.com/mlichvar/ntp-refclock/archive/v${pkgver}.tar.gz"
-  "https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-${ntpver}.tar.gz")
-sha1sums=('8bd9dd471d92c53e2d020a5569e30f8afb8c9958'
-  'b20352bb76963a0ef5ec07ba99c2bb97ec6b6aeb')
+	"https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${ntpver%.*p*}/ntp-${ntpver}.tar.gz")
+sha1sums=('491c7a2916ad0f7bf74a958c0f09138975a644da'
+          'e34e5b6f48c3ed1bbcfb03080dec1b8f91e19381')
 
+prepare() {
+	cd "${srcdir}/ntp-${ntpver}"
+	sed -i 's/#ifndef __sun/#if !defined(__sun) \&\& !defined(__GLIBC__)/' libntp/work_thread.c
+}
 
 build() {
-  #first build the NTP code
-  cd "${srcdir}/ntp-${ntpver}"
-  #disable building NTP components that rely on external libs, we don't use them anyway
-  ./configure --enable-all-clocks --enable-parse-clocks --without-crypto
-  make
-  cd "${srcdir}/ntp-refclock-${pkgver}"
-  make NTP_SRC="${srcdir}/ntp-${ntpver}"
+	#first build the NTP code
+	cd "${srcdir}/ntp-${ntpver}"
+	#disable building NTP components that rely on external libs, we don't use them anyway
+	./configure --enable-all-clocks --enable-parse-clocks
+	make
+	cd "${srcdir}/ntp-refclock-${pkgver}"
+	make NTP_SRC="${srcdir}/ntp-${ntpver}"
 }
 
 package() {
-  cd "${srcdir}/ntp-refclock-${pkgver}"
-  make prefix="$pkgdir/usr" sbindir="$pkgdir/usr/bin" install
+	cd "${srcdir}/ntp-refclock-${pkgver}"
+	make prefix="$pkgdir/usr" sbindir="$pkgdir/usr/bin" install
 }
