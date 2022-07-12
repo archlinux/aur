@@ -1,4 +1,5 @@
 # Maintainer: Caleb Fontenot <foley2431 at gmail dot com>
+# Co-Maintainer: Lance G. <gero3977 at gmail dot com>
 pkgname=mmsd-tng-git
 pkgver=1.5.r0.g2bbeaa2
 pkgrel=1
@@ -21,10 +22,12 @@ pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'  
 }
+
 prepare() {
 	cd "$srcdir/$pkgname"
 	meson _build
 }
+
 build() {
 	cd "$srcdir/$pkgname"
 	arch-meson $srcdir/$pkgname build
@@ -34,10 +37,10 @@ check() {
 	cd "$srcdir/$pkgname"
 	meson test -C _build
 }
+
 package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" meson install -C build
-	# Not sure if this is the "right way" to do this but whatever
-    mkdir -p $pkgdir/usr/lib/systemd/user
-    cp $srcdir/mmsd-tng.user.service $pkgdir/usr/lib/systemd/user/
+        mkdir -p $pkgdir/usr/lib/systemd/user
+        install -Dm644 "mmsd-tng.user.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
 }
