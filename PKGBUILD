@@ -15,7 +15,6 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
-replaces=("${_pkgname}")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 optdepends=(
