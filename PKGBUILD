@@ -2,7 +2,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-maps-git
-pkgver=r1405.g0cb6a2e4
+pkgver=r1595.g396e95db
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
@@ -14,9 +14,6 @@ backup=('usr/share/ddnet/data/autoexec_server_maps.cfg'
         'usr/share/ddnet/data/storage.cfg')
 source=("git+https://github.com/ddnet/${pkgname%%-git}.git")
 md5sums=('SKIP')
-
-# Override compression, because default xz takes too much time to compress
-PKGEXT='.pkg.tar'
 
 pkgver() {
   cd ${pkgname%%-git}
