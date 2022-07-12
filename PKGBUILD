@@ -39,6 +39,5 @@ check() {
 package() {
 	cd "$srcdir/$pkgname"
 	DESTDIR="$pkgdir" meson install -C build
-        mkdir -p $pkgdir/usr/lib/systemd/user
         install -Dm644 "$srcdir/mmsd-tng.user.service" "$pkgdir/usr/lib/systemd/user/mmsd-tng.service"
 }
