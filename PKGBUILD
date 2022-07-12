@@ -23,14 +23,13 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${pkgname}::git+${_gitlab}/tallero/${_pkgbase}.git#tag=${pkgver}")
+source=("${_pkgbase}::git+${_gitlab}/tallero/${_pkgbase}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
-# shellcheck disable=SC2154
 check() {
-  make -k check -C $pkgname
+  make -k check -C "${_pkgbase}"
 }
 
 package() {
-  make DESTDIR="$pkgdir/" PREFIX=/usr install -C $pkgname
+  make DESTDIR="$pkgdir/" PREFIX=/usr install -C "${_pkgbase}"
 }
