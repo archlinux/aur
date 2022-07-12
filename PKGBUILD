@@ -1,15 +1,16 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: jtts <jussaar@mbnet.fi>
 # Contributor: GordonGR <gordongr@freemail.gr>
 
 pkgname=lib32-polkit
-pkgver=0.120
-pkgrel=5
-pkgdesc='Application development toolkit for controlling system-wide privileges'
+pkgver=121
+pkgrel=1
+pkgdesc="Application development toolkit for controlling system-wide privileges"
+url="https://gitlab.freedesktop.org/polkit/polkit"
 arch=(x86_64)
 license=(LGPL)
-url=https://www.freedesktop.org/wiki/Software/polkit/
 depends=(
   lib32-expat
   lib32-glib2
@@ -21,51 +22,42 @@ makedepends=(
   meson
   git
 )
-_tag=92b910ce2273daf6a76038f6bd764fa6958d4e8e
+provides=(libpolkit-{agent,gobject}-1.so)
+options=(debug)
+_commit=827b0ddac5b1ef00a47fca4526fcf057bee5f1db  # tags/121
 source=(
-  git+https://gitlab.freedesktop.org/polkit/polkit.git#tag=${_tag}
-  meson-0.61.diff
+  "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=${_commit}"
   multilib.diff
 )
-sha256sums=(
-  SKIP
-  45d08bbb76e1e22ca8e698df04652b7aceaded34f9b76ce6b68152fb26b0de8d
-  7271f97282d22b58b74cf9089fa3a83c799cde184eb6e06a83164692362e50fe
-)
+b2sums=('SKIP'
+        '2ee4018b0429e637429abcecb4855436e072a5d562060bde51d47d7db447a200bfe08ac3d247a0b662e5c345b5641169203c00f3bbe63187b5025c9e8337ef44')
 
 pkgver() {
   cd polkit
-
-  git describe --tags
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd polkit
-
-  # CVE-2021-4034
-  git cherry-pick -n a2bf5c9c83b6ae46cbd5c779d3055bff81ded683
-
-  # CVE-2021-4115
-  git cherry-pick -n 41cb093f554da8772362654a128a84dd8a5542a7
-
-  # Fix build with Meson 0.61.0
-  git apply -3 ../meson-0.61.diff
 
   # Don't build the backend
   git apply -3 ../multilib.diff
 }
 
 build() {
+  local meson_options=(
+    --libdir=/usr/lib32
+    -D introspection=false
+    -D os_type=redhat
+    -D session_tracking=libsystemd-login
+    -D tests=true
+  )
+
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
 
-  arch-meson polkit build \
-    --libdir=/usr/lib32 \
-    -D session_tracking=libsystemd-login \
-    -D os_type=redhat \
-    -D tests=true \
-    -D introspection=false
+  arch-meson polkit build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -74,8 +66,9 @@ check() {
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C build --destdir "$pkgdir"
+
   rm -r "$pkgdir"/{etc,usr/{bin,include,lib,share}}
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:

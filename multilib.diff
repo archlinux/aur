@@ -1,15 +1,13 @@
-diff --git i/meson.build w/meson.build
-index 858078d..50ae1ac 100644
---- i/meson.build
-+++ w/meson.build
-@@ -133,7 +133,6 @@ expat_dep = dependency('expat')
- assert(cc.has_header('expat.h', dependencies: expat_dep), 'Can\'t find expat.h. Please install expat.')
- assert(cc.has_function('XML_ParserCreate', dependencies: expat_dep), 'Can\'t find expat library. Please install expat.')
+diff --git i/meson_options.txt w/meson_options.txt
+index 76aa311..174a45e 100644
+--- i/meson_options.txt
++++ w/meson_options.txt
+@@ -16,4 +16,4 @@ option('introspection', type: 'boolean', value: true, description: 'Enable intro
  
--mozjs_dep = dependency('mozjs-78')
- 
- dbus_dep = dependency('dbus-1', required: false)
- dbus_policydir = pk_prefix / pk_datadir / 'dbus-1/system.d'
+ option('gtk_doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('man', type: 'boolean', value: false, description: 'build manual pages')
+-option('js_engine', type: 'combo', choices: ['mozjs', 'duktape'], value: 'duktape', description: 'javascript engine')
++option('js_engine', type: 'combo', choices: ['none'], value: 'none', description: 'javascript engine')
 diff --git i/src/meson.build w/src/meson.build
 index 4073333..c7038f1 100644
 --- i/src/meson.build
