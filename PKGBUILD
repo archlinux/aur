@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-mistralclient
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='Mistral Client Library'
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-openstackclient' 'python-mock' 'python-oslotest'
               'python-requests-mock' 'python-tempest' 'python-osprofiler'
               'python-stestr')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('c426143adb2b9d8885504ccaf9fe90ee1e6a837061fa93a1fb395d8a8e87ea27bd409d5057c56c3faf0fa53629c6d185f646021c92d38778b1e6c326287500f6')
+sha512sums=('c9644048b903d440895b138e486495c5bf01cb1ab22b6dcbaf610e13768b6d237b6a261b65b7237e8a46280418a1d0a287dfca38dc335235261464a11503d178')
 
 export PBR_VERSION=$pkgver
 
