@@ -17,9 +17,12 @@ depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
 makedepends=('git')
 checkdepends=('shellcheck')
-replaces=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
-provides=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
-conflicts=("${_pkgname}" "${_pkgname}-encryption" "${_pkgname}-${variant}")
+provides=("${_pkgname}")
+provides+=("${_pkgname}-${variant}")
+provides+=("${_pkgname}-encryption")
+conflicts=("${_pkgname}")
+conflicts+=("${_pkgname}-${variant}")
+conflicts+=("${_pkgname}-encryption")
 optdepends=(
   'archiso-profiles: extra profiles for archiso'
   'edk2-ovmf: for emulating UEFI with run_archiso'
@@ -30,17 +33,17 @@ source=("git+https://gitlab.archlinux.org/tallero/${_pkgname}#branch=${variant}"
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}" || exit
   git describe --tags | sed 's/-/+/g'
 }
 
 check() {
-  cd "${_pkgname}"
+  cd "${_pkgname}" || exit
   make -k check
 }
 
+# shellcheck disable=SC2154
 package() {
-  # shellcheck disable=SC2154
-  cd "${_pkgname}"
+  cd "${_pkgname}" || exit
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }

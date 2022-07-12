@@ -22,14 +22,11 @@ pkgbase = archiso-persistent-git
 	optdepends = openssl: for codesigning support when building netboot artifacts
 	optdepends = qemu: for run_archiso
 	provides = archiso
-	provides = archiso-encryption
 	provides = archiso-persistent
+	provides = archiso-encryption
 	conflicts = archiso
-	conflicts = archiso-encryption
 	conflicts = archiso-persistent
-	replaces = archiso
-	replaces = archiso-encryption
-	replaces = archiso-persistent
+	conflicts = archiso-encryption
 	source = git+https://gitlab.archlinux.org/tallero/archiso#branch=persistent
 	sha256sums = SKIP
 
