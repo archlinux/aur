@@ -1,3 +1,4 @@
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Sébastien Luttringer
@@ -5,7 +6,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 _name=docutils
-pkgname=python-docutils
+pkgname=python-docutils1
 pkgver=0.18.1
 pkgrel=1
 epoch=1

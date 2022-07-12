@@ -1,4 +1,4 @@
-pkgbase = python-docutils
+pkgbase = python-docutils1
 	pkgdesc = Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX
 	pkgver = 0.18.1
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = python-docutils
 	source = https://downloads.sourceforge.net/docutils/docutils-0.18.1.tar.gz
 	sha512sums = 44404a6cc9d4c1e79c73a6ffee2898e459c9925ab9661e5d41394e13b3d861334cf0c5efcd18e87eb03041374e326cfd00539a6b2ec5979678889e8a536c9542
 
-pkgname = python-docutils
+pkgname = python-docutils1
