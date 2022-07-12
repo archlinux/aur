@@ -1,6 +1,6 @@
 # Maintainer: Christoph Ruegge <mail@cxcs.de>
 pkgname=pam-gnupg-git
-pkgver=r39.caeeec7
+pkgver=r52.a7a34e6
 pkgrel=1
 pkgdesc="Unlock GnuPG keys on login"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   ./autogen.sh
-  ./configure --prefix=/usr --with-moduledir=/usr/lib/security
+  ./configure --prefix=/usr --with-moduledir=/usr/lib/security --libexecdir="/usr/lib/$pkgname"
   make
 }
 
