@@ -1,0 +1,25 @@
+pkgbase = hyprpaper-git
+	pkgdesc = A blazing fast wayland wallpaper utility with IPC controls.
+	pkgver = r24.gfe739ed
+	pkgrel = 1
+	url = https://github.com/hyprwm/hyppaper
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = gdb
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = xorgproto
+	depends = wayland
+	provides = hyprland
+	conflicts = hyprpaper
+	options = !makeflags
+	options = !buildflags
+	options = !strip
+	source = hyprpaper::git+https://github.com/hyprwm/hyprpaper.git
+	sha256sums = SKIP
+
+pkgname = hyprpaper-git
