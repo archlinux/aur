@@ -2,7 +2,7 @@
 
 pkgname=ntp-refclock
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 ntpver=4.2.8p15
 pkgdesc='Wrapper for ntpd reference clock drivers'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ build() {
 	#first build the NTP code
 	cd "${srcdir}/ntp-${ntpver}"
 	#disable building NTP components that rely on external libs, we don't use them anyway
-	./configure --enable-all-clocks --enable-parse-clocks
+	./configure --enable-all-clocks --enable-parse-clocks --without-crypto
 	make
 	cd "${srcdir}/ntp-refclock-${pkgver}"
 	make NTP_SRC="${srcdir}/ntp-${ntpver}"
