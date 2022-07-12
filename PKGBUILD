@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.6.3beta"
-pkgrel=2
+pkgver="0.7.1beta"
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -48,14 +48,21 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/hyprland/archive/v${pkgver}.tar.gz")
-sha256sums=('ed383c48e7864cbffb4c1f413f02c42c1e927b4f00a0a00f30de64fb2a71ca23')
+sha256sums=('93d46fc6751459f81f97bc1ceca1111169b4561880d706d00d4e6c6df261ad16')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
 
 build() {
-	cd "$srcdir/Hyprland-$pkgver"
-	git submodule update --init
+	cd "$srcdir/Hyprland-${pkgver}"
+	# Start hacky code
+	git rm -r -f subprojects/wlroots/
+	rm .gitmodules
+	git submodule add -f https://gitlab.freedesktop.org/wlroots/wlroots.git subprojects/wlroots
+	cd subprojects/wlroots/
+	git reset --hard 5dc1d46
+	cd ../../
+	# End hacky code
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
 	make protocols
