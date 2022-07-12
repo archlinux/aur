@@ -2,7 +2,7 @@
 
 pkgname=swaystatus-git
 pkgver=0.2.3.r0.ddea8fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates a status line for swaybar"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
@@ -33,5 +33,5 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --compile-bytecode=1 --destdir="$pkgdir" dist/*.whl
 }
