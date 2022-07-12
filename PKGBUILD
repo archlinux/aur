@@ -20,11 +20,6 @@ provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
-#pkgver() {
-#  cd gwenview
-#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
-
 pkgver() {
   cd ${pkgname%-git}
   _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
