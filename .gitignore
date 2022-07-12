@@ -2,3 +2,6 @@ src/
 pkg/
 *.tar.gz
 *.tar.zst
+
+# wg-corplink
+wireguard-go/

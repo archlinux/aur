@@ -10,6 +10,8 @@ pkgbase = corplink-rs
 	makedepends = go
 	backup = etc/corplink/config.json
 	source = corplink-rs.2.1.tar.gz::https://github.com/PinkD/corplink-rs/archive/2.1.tar.gz
+	source = wireguard-go::git+https://github.com/PinkD/wireguard-go
 	sha256sums = 1eb62c1bac926088f9a8306b85dfb26d3db02e5ccb64ff137e5fa4e14ba90f5d
+	sha256sums = SKIP
 
 pkgname = corplink-rs
