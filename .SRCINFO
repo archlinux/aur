@@ -1,0 +1,20 @@
+pkgbase = bergamont-marian-git
+	pkgdesc = Bergamont project (browser.mt) fork of the marian translator with language models used by Mozilla Firefox Translations
+	pkgver = 20220710
+	pkgrel = 1
+	url = https://browser.mt
+	arch = x86_64
+	license = MIT
+	makedepends = openblas
+	makedepends = cblas
+	makedepends = lapack
+	makedepends = cmake
+	makedepends = pandoc
+	source = https://github.com/mozilla/firefox-translations-models/archive/refs/tags/0.3.1.tar.gz
+	source = marian-decoder.md
+	source = openmp.patch
+	sha256sums = 1ccec40d879f5bb38d8edbb953bb282cc861a2c3b1dcdc7ce59145e8b5a3c88b
+	sha256sums = 679b7512f712f054ffd74eda44fe679b8082385ad5525d19a065d6b255e8dd0e
+	sha256sums = 571c8e8efeb873e8415ad32dbcf330c96aa19b110e86767a24dfcc4b30dd9159
+
+pkgname = bergamont-marian-git
