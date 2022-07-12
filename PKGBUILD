@@ -3,12 +3,12 @@
 _pkgver=2.1.6-beta
 pkgname=espanso-wayland
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("libnotify" "wxgtk2" "libxkbcommon" "wl-clipboard")
+depends=("libnotify" "wxgtk3" "libxkbcommon" "wl-clipboard")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=("${pkgname%-wayland}")
 conflicts=("${pkgname%-wayland}")
