@@ -1,6 +1,6 @@
 pkgbase = manafiles-git
 	pkgdesc = Config file and package tracking utility
-	pkgver = r147.5960549
+	pkgver = r241.4ea1242
 	pkgrel = 1
 	url = https://github.com/riyyi/manafiles
 	install = manafiles.install
@@ -11,7 +11,6 @@ pkgbase = manafiles-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = gzip
-	makedepends = nlohmann-json
 	depends = gcc-libs
 	optdepends = grep: package functionality
 	optdepends = pacman-contrib: package functionality
