@@ -1,4 +1,4 @@
-# Maintainer: franzrogar <franzrogar gmail com>
+# Maintainer: Fijxu <fijxu[at]zzls[dot]xyz>
 # Contributor: delta48 <dark.magician.48+aur[at]gmail[dot]com>
 
 pkgname=libreoffice-extension-dictionaries-es
