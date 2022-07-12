@@ -24,9 +24,12 @@ sha256sums=('SKIP')
 package() {
   local _profiles="${srcdir}/${_pkgname}"
   local _dest="${pkgdir}/usr/share/${_pkg}/configs"
+  local _bin_dest="${pkgdir}/usr/lib/${_pkg}"
   local pkg
   install -dm755 "${_dest}"
+  install -dm755 "${_bin_dest}"
   for pkg in "${_profiles}"/*; do
     cp -r "${pkg}" "${_dest}"
   done
+  cp -r "${_profiles}/.gitlab/ci"/* "${_bin_dest}"
 }
