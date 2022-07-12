@@ -23,22 +23,11 @@ source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/a
 sha256sums=('f71cacae90ca6f1e5748619208dd277eaba81cf401cd4542dfce5f364b505b3a')
 
 prepare() {
-  #####
-  #thanks to @dreieck
-  _flutter_dir="${srcdir}/flutter"
-  PATH="${_flutter_dir}/bin:${PATH}"
-  export PATH
-
-  msg2 "Copying '/opt/flutter' to '${_flutter_dir}' ..."
-  cp -af /opt/flutter "${_flutter_dir}"
-  #####
-
-  flutter config --no-analytics
-  flutter config --enable-linux-desktop
+  flutter --no-version-check --suppress-analytics config --enable-linux-desktop
   
   cd ${pkgname}-v$pkgver
-  flutter clean
-  flutter pub get
+  flutter --no-version-check --suppress-analytics clean
+  flutter --no-version-check --suppress-analytics pub get
 }
 
 build() {
@@ -47,7 +36,7 @@ build() {
   export PATH  
 
   cd ${pkgname}-v$pkgver
-  flutter build linux --release --verbose
+  flutter --no-version-check --suppress-analytics build linux --release --verbose
 }
 
 package() {  
