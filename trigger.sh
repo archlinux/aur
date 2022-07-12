@@ -13,7 +13,7 @@ rm -rf debian
 curl "$(curl https://packages.ubuntu.com/bionic/firefox | grep debian | cut -f2 -d \" | tail -n1)" |
  unxz |
  tar xf -
-cp `ls debian/patches/ | grep -v 'armh\|s390\|ppc\|386\|ubuntu'` .
+cp `find debian/patches/ | grep -v 'armh\|s390\|ppc\|386\|ubuntu'` .
 rm -rf debian
 
 makepkg --printsrcinfo > .SRCINFO
