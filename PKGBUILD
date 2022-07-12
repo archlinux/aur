@@ -2,34 +2,33 @@
 
 pkgname=scid
 _pkgname=Scid
-pkgver=4.7.0
+pkgver=4.7.4
 _pkgver=4.7
-pkgrel=2
+pkgrel=1
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL')
-# namcap says 'tk' is not needed. tlc is needed but tk has it as a dependency.
 depends=('python' 'tk' 'desktop-file-utils')
 optdepends=('snack: for sound support'
             'tkimg: for using some alternate sets of pieces')
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("https://sourceforge.net/projects/${pkgname}/files/${_pkgname}/${_pkgname}%20${_pkgver}/${pkgname}-code-${pkgver}.zip")
-sha256sums=('2ed25781ec3c82d60fcee85259c19fd8934feae2547f9464304cdb01960f86da')
+sha256sums=('a257d3910bf70b6de277b1cf32b6f3438569b995dc45152c00f205dcb6613f33')
 
 build() {
-  cd $srcdir/$pkgname
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure BINDIR=/usr/bin SHAREDIR=/usr/share/$pkgname SCIDFLAGS="$LDFLAGS"
   sed -i "/LDFLAGS =$/d" engines/phalanx-scid/makefile
   make || return 1
 }
 
 package () {
-  cd $srcdir/$pkgname
+  cd $srcdir/$pkgname-${pkgver}
   make DESTDIR=$pkgdir install
   msg "Creating Desktop file"
-  install -Dm644 $srcdir/$pkgname/resources/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
+  install -Dm644 $srcdir/$pkgname-${pkgver}/resources/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
   cat > $srcdir/$pkgname.desktop <<EOF
 [Desktop Entry]
 Version=1.0
@@ -48,7 +47,7 @@ EOF
 
   msg "Copying sound files"
   install -d $pkgdir/usr/share/sounds
-  install -Dm644 $srcdir/$pkgname/sounds/*.wav $pkgdir/usr/share/sounds
+  install -Dm644 $srcdir/$pkgname-${pkgver}/sounds/*.wav $pkgdir/usr/share/sounds
 
   msg "Fix world writtable bit in books folder"
   find $pkgdir/usr/share/scid/books -type f -exec chmod 644 {} \;
