@@ -1,6 +1,6 @@
 pkgbase = python-poliastro
 	pkgdesc = Astrodynamics and Orbital Mechanics computations
-	pkgver = 0.16.3
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = http://docs.poliastro.space
 	arch = any
@@ -10,13 +10,14 @@ pkgbase = python-poliastro
 	checkdepends = python-scipy
 	checkdepends = python-plotly
 	checkdepends = python-czml3
-	checkdepends = python-numba>0.55.1
+	checkdepends = python-numba>0.55.2
+	checkdepends = python-llvmlite>=0.39.0
 	makedepends = python-flit-core
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/poliastro/poliastro-0.16.3.tar.gz
-	md5sums = 67ae7d2c7deb100038b0eee65fcebd91
+	source = https://files.pythonhosted.org/packages/source/p/poliastro/poliastro-0.17.0.tar.gz
+	md5sums = 2b65a26daf429e50ba9613999b592644
 
 pkgname = python-poliastro
 	depends = python-scipy>=1.4.0

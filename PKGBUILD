@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-poliastro
 _pyname=${pkgname#python-}
-pkgver=0.16.3
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Astrodynamics and Orbital Mechanics computations"
 arch=('any')
@@ -20,9 +20,10 @@ checkdepends=('python-pytest-doctestplus'
               'python-plotly'
 #             'python-jplephem'
               'python-czml3'
-              'python-numba>0.55.1')
+              'python-numba>0.55.2'
+              'python-llvmlite>=0.39.0')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('67ae7d2c7deb100038b0eee65fcebd91')
+md5sums=('2b65a26daf429e50ba9613999b592644')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -38,7 +39,7 @@ build() {
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
-
+    # needs numba-git (>0.55.2) and llvmlite-git (>=0.39.0)
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
     PYTHONPATH="dist/lib" pytest "dist/lib" || warning "Tests failed"
