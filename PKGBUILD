@@ -1,22 +1,22 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 #             adapted from package python2-scikit-rf
 pkgname="python-scikit-rf"
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
 url="http://scikit-rf-web.readthedocs.org"
 license=("BSD")
-depends=("python" "python-numpy" "python-scipy" "python-matplotlib")
+depends=("python" "python-numpy" "python-scipy"
+	"python-matplotlib" "python-pandas" "python-xlwt"
+	"python-openpyxl" "python-networkx")
 optdepends=(
 	"python-pyvisa: for instrument control"
-	"python-pandas: for xls export"
+	"python-vxi11: for instrument control over ethernet"
 	"python-xlrd: for xls reading"
-	"python-xlwt: for xls writing"
-	"ipython: for interactive shell"
 )
-sha256sums=('f2c5881344b9b27bf1f89b3f66e653cd8ddbc33dbc144950c9748948bf7ebcff')
-source=("https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('df1631e14bf45f90293b163ee2e42f4d8cc509d34cc01bade51b9e863519ecd1')
+source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v$pkgver.tar.gz")
 
 
 package() {
