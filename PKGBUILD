@@ -6,8 +6,8 @@ _binname=vanta
 _svcname=vanta-agent
 
 pkgname=vanta-agent
-pkgver=2.0.8
-pkgrel=6
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
@@ -44,12 +44,14 @@ package() {
 
         # instructions
         echo -e "\n\nWhen it's installed, you have to perform those actions to make it work:"
-        echo "1. Enable and start service: sudo systemctl enable $_svcname.service && sudo systemctl start $_svcname.service"
-        echo "2. Check everything is running as expected: /var/vanta/vanta-cli status"
-        echo "3. Perform a clean: sudo /var/vanta/vanta-cli reset"
-        echo "4. Check your setup: sudo /var/vanta/vanta-cli doctor"
+        echo "1. Move config file to the right folder: sudo mv /tmp/$_binname.conf /etc"
+        echo "2. Enable and start service: sudo systemctl enable $_svcname.service && sudo systemctl start $_svcname.service"
+        echo "3. Check everything is running as expected: /var/vanta/vanta-cli status"
+        echo "4. Perform a clean: sudo /var/vanta/vanta-cli reset"
+        echo "5. Check your setup: sudo /var/vanta/vanta-cli doctor"
 
         echo -e "More info: https://help.vanta.com/hc/en-us/articles/360060472372-Troubleshooting-the-Vanta-Agent-on-Linux-Machines\n\n"
     fi
 }
-sha256sums=('4fae1b93708d7a6ff1df0b716211ee6a79f8f1e6b25566fb02b6dcdfdaada882')
+
+sha256sums=('851708d66f889c82fe5dcc806147ec0b626988192bd557ae2f55e2e90ed21f85')
