@@ -1,8 +1,9 @@
-# Maintainer: Philip <philip1731 protonmail ch>
+# Maintainer: Zes4Null <rjw1248[at]hotmail[dot]com>
+# Contributor: Philip <philip1731 protonmail ch>
 
 pkgname=qucs-s
-pkgver=0.0.23
-pkgrel=2
+pkgver=0.0.24
+pkgrel=1
 pkgdesc="A spin-off of Qucs that supports other free SPICE circuit simulators like ngspice with the same Qucs GUI"
 arch=('x86_64' 'i686')
 url="https://ra3xdh.github.io"
@@ -16,7 +17,7 @@ optdepends=('ngspice: recommended simulation backend'
             'asco: to enable circuit optimization'
             )
 source=(https://github.com/ra3xdh/qucs_s/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('ad2bccdf61a3df7fdfdcc233022d2d30c19bd5c73f54ac60ed6335f731af2f7c')
+sha256sums=('ba7cf6fb06babbddcbb7d4eae0437df4e36346b7cc39a84af62f1643d7e8f296')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
