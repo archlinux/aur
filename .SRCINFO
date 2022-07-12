@@ -1,13 +1,13 @@
 pkgbase = cargo-flash
 	pkgdesc = A cargo extension for programming microcontrollers
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://probe.rs/
 	arch = x86_64
 	license = MIT
 	license = Apache
 	depends = cargo
-	source = 0.12.1.tar.gz::https://crates.io/api/v1/crates/cargo-flash/0.12.1/download
-	sha256sums = c0087b54357d7a052e420e876b00a2000bfcd1a5ce320ebc452762e96511edc3
+	source = 0.13.0.tar.gz::https://crates.io/api/v1/crates/cargo-flash/0.13.0/download
+	sha256sums = 43949520e65576c80825308c6854029f12d9b96cb47030a57d6df2636dbac01f
 
 pkgname = cargo-flash
