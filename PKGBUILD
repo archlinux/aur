@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=leetcode
 pkgname=$_pkgname-cli
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="A command line tool to manage LeetCode challenges"
 url="https://crates.io/crates/$pkgname"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('8968000cd24f132e973f183ec8de0f8062b86a373868ad3c8b32695f1079b4fdf05b2a3096252a451a46e5c9b792f483990c351f36deddf31b0f0e86193d6406')
+sha512sums=('548497d3a1c96afb65f9b5c3a1d38f4bc6f13008647a10dd1686c48d66c8940bf5685da917d1985743f7e819e03794968a9ece29a08e51c72b2f1f2f80d60684')
 
 prepare() {
   cd "$pkgname-$pkgver"
