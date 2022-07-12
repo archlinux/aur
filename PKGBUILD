@@ -21,6 +21,7 @@ optdepends=('sqlite')
 makedepends=(${optdepends[@]} 'cmake' 'boost' 'python-setuptools')
 source=("$url/files/${_pkgname}-${pkgver}.tar.bz2")
 sha256sums=('28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4')
+##options=(!lto)
 
 prepare() {
 	cd "$srcdir/"
