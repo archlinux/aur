@@ -7,8 +7,7 @@ pkgbase = siod
 	arch = x86_64
 	license = LGPL
 	depends = gcc
-	source = http://ftp.muni.cz/pub/linux/ftp.ibiblio.org/devel/lang/lisp/siod-3.2.tar.gz
-	md5sums = ba909ed12ae8b0c8bbad09845053e35b
+	source = https://ibiblio.org/pub/linux/devel/lang/lisp/siod-3.2.tar.gz
+	sha256sums = f6849069cdfe4bd0a9cddcd0f7457c1ea4ade17ac9a95d82d41cddeee617bfd4
 
 pkgname = siod
-

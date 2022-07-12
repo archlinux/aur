@@ -1,5 +1,6 @@
+# Maintainer: Masanori Ogino <masanori.ogino@gmail.com>
 # Contributor: perlawk
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=siod
 pkgver=3.6
@@ -9,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://people.delphiforums.com/gjc/siod.html"
 license=('LGPL')
 depends=('gcc')
-source=("http://ftp.muni.cz/pub/linux/ftp.ibiblio.org/devel/lang/lisp/siod-3.2.tar.gz")
-md5sums=('ba909ed12ae8b0c8bbad09845053e35b')
+source=("https://ibiblio.org/pub/linux/devel/lang/lisp/siod-3.2.tar.gz")
+sha256sums=('f6849069cdfe4bd0a9cddcd0f7457c1ea4ade17ac9a95d82d41cddeee617bfd4')
 
 prepare() {
   sed -i 's/lchmod/lpchmod/g;' slibu.c
