@@ -1,4 +1,4 @@
-# Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
+# Maintainer: İrem Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 pkgname=evcxr_repl
 pkgver=0.13.0
 pkgrel=1
