@@ -1,4 +1,4 @@
-# Maintainer: Maxr1998 <max.rumpf1998@gmail.com>
+# Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgbase=simple-shutdown-dialog
 pkgname=simple-shutdown-dialog-git
 pkgver=20.d5c6eb0
