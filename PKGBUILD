@@ -1,3 +1,6 @@
+# Maintainer: Gerry
+# Co-Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
+
 pkgname=chromium-bypass-paywalls
 pkgver=1.8.0
 pkgrel=1
