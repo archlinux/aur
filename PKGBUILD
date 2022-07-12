@@ -22,11 +22,11 @@ sha256sums=('SKIP')
 
 # shellcheck disable=SC2154
 package() {
-  local _profiles=$(ls "${srcdir}/${_pkgname}")
+  local _profiles="${srcdir}/${_pkgname}"
   local _dest="${pkgdir}/usr/share/${_pkg}/configs"
   local pkg
   install -dm755 "${_dest}"
-  for pkg in "${_profiles[@]}"; do
-    cp -r "${srcdir}/${pkg}" "${_dest}"
+  for pkg in "${_profiles}"/*; do
+    cp -r "${pkg}" "${_dest}"
   done
 }
