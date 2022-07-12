@@ -3,7 +3,7 @@
 _pkgname="hyprpaper"
 pkgname="${_pkgname}-git"
 pkgver=r24.gfe739ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast wayland wallpaper utility with IPC controls. "
 arch=(any)
 url="https://github.com/hyprwm/hyppaper"
@@ -20,7 +20,7 @@ makedepends=(
 	xorgproto)
 source=("${_pkgname}::git+https://github.com/hyprwm/hyprpaper.git")
 conflicts=("${_pkgname}")
-provides=(hyprland)
+provides=(hyprpaper)
 sha256sums=('SKIP')
 options=(!makeflags !buildflags !strip)
 
