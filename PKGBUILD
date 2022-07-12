@@ -29,8 +29,9 @@ optdepends=(
 source=("${_pkgbase}::git+${_gitlab}/tallero/${_pkgbase}.git#branch=crypto")
 sha256sums=('SKIP')
 
+# shellcheck disable=SC2154
 pkgver() {
-  cd "${_pkgbase}"
+  cd "${srcdir}/${_pkgbase}" || exit
   git describe --tags | sed 's/-/+/g'
 }
 
