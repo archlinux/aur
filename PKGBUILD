@@ -2,7 +2,7 @@
 
 pkgname=python-mocket
 pkgver=3.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support"
 url="https://github.com/mindflayer/python-mocket"
 license=('BSD')
@@ -17,8 +17,6 @@ sha512sums=('d2f5acb1e57bd708b7c1be72a873f8bfb57ed0ab38e24b9fcb2651bb20fd96de16f
 prepare() {
   cd python-mocket-$pkgver
   pipenv_to_requirements
-
-  sed -i 's/^python-magic.*/file_magic/' requirements.txt
 }
 
 build() {
