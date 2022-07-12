@@ -6,12 +6,12 @@ _pkgname=nyxt-browser
 pkgname=$_pkgname-git
 pkgver=latest
 pkgrel=1
-pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
+pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
-url="https://nyxt.atlas.engineer"
+url='https://nyxt.atlas.engineer'
 license=('custom:BSD')
-conflicts=('nyxt-browser')
-provides=('nyxt-browser' 'next-browser')
+conflicts=('nyxt')
+provides=('nyxt')
 source=($_pkgname::git+https://github.com/atlas-engineer/nyxt.git)
 sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
@@ -35,6 +35,12 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git submodule init
+  git submodule update
+}
+
 build() {
   cd "$srcdir/$_pkgname"
   make all
@@ -42,7 +48,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make install PREFIX=/usr DESTDIR=${pkgdir}
+  make install PREFIX=/usr DESTDIR="${pkgdir}"
   install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
   install -m644 licenses/* "$pkgdir"/usr/share/licenses/$pkgname/
 }
