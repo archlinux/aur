@@ -2,8 +2,9 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 # shellcheck disable=SC2034
-_pkgname=mkinitcpio-archiso
-pkgname=$_pkgname-encryption
+_pkgbase="mkinitcpio-archiso"
+variant="encryption"
+pkgname="${_pkgbase}-${variant}"
 pkgver=v65
 pkgrel=1
 pkgdesc="Initcpio scripts used by archiso (encrypt hook support)"
@@ -12,8 +13,8 @@ _gitlab="https://gitlab.archlinux.org"
 url="${_gitlab}/mkinitcpio/mkinitcpio-archiso/-/merge_requests/25"
 license=(GPL3)
 depends=(bash device-mapper mkinitcpio cryptsetup)
-conflicts=('mkinitcpio-archiso')
-provides=('mkinitcpio-archiso')
+conflicts=("${_pkgbase}")
+provides=("${_pkgbase}")
 makedepends=(git)
 checkdepends=(shellcheck shfmt)
 optdepends=(
@@ -22,7 +23,7 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#tag=${pkgver}")
+source=("${pkgname}::git+${_gitlab}/tallero/${_pkgbase}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 # shellcheck disable=SC2154
