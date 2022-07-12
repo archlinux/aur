@@ -31,6 +31,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "buildbot-autobahn-22.4.patch::https://github.com/buildbot/buildbot/commit/7d0cd447cd302d8f97e7ee13aa15721b7a3b6d8c.patch"
+        "buildbot-python-sphinx-jinja-2.0.patch::https://github.com/buildbot/buildbot/commit/58dad89ad5dfaabcb0d60cedc245d47f42641b1b.patch"
         "python310.diff"
         "graphql-core.diff")
 sha256sums=('53b58e056d7da5c83b669ce1bf213147beedba6fa6a60dadba3e80d385239ced'
@@ -38,6 +39,7 @@ sha256sums=('53b58e056d7da5c83b669ce1bf213147beedba6fa6a60dadba3e80d385239ced'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
             'e4902bca5d0098ed048d5a46edcc496c6260c5bd02394961bd6f8c47fbedda21'
+            '05664cf8edd2a1787e833d94209cdf2bb1833d0c2e5d24ccd02d67910413c82b'
             '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
             '9ed4f9f18f71558afc876c92206e4de213fa6a94305ad9d4d9115a041dd41b22')
 validpgpkeys=(
@@ -77,6 +79,10 @@ prepare() {
   # Backported from master branch "wamp: Remove unused config attribute to fix compat with new autobahn"
   # https://github.com/buildbot/buildbot/pull/6509
   patch -Np1 -i ../buildbot-autobahn-22.4.patch
+
+  # Backported from master branch "Fix error in documentation build"
+  # https://github.com/buildbot/buildbot/pull/6505
+  patch -Np1 -i ../buildbot-python-sphinx-jinja-2.0.patch
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
