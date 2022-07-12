@@ -5,7 +5,7 @@ _pkg="archiso"
 _distro="archlinux"
 _pkgbase="${_pkg}-profiles"
 profile=baseline
-pkgname="${_distro}-${_profile}"
+pkgname="${_distro}-${profile}"
 pkgver="$(date +%Y.%m.%d)"
 pkgrel=1
 pkgdesc="Builds an Archlinux install drive."
@@ -24,8 +24,9 @@ package() {
   local _pkg_path="/usr/share/${_pkg}"
   local _dest="${pkgdir}/usr/share/${_distro}"
   local _iso="${pkgname}-${pkgver}-x86_64.iso"
+  local _profile_src="${_pkg_path}/configs/${profile}"
   local _profile="${srcdir}/${profile}"
-  cp -r "${_pkg_path}/configs/${profile}" "${_profile}"
+  cp -r "${_profile_src}" "${_profile}"
   cd "${_profile}" || exit
   mkdir -p work
   install -d -m 0755 -- "${_dest}"
