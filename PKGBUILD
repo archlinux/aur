@@ -1,10 +1,11 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: randomnobody <nobody "at" 420blaze "dot" it>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: peeweep <peeweep at 0x0 dot ee>
 
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
-pkgver=r1480.9d824d1
-pkgrel=2
+pkgver=r1745.a4c0fb0
+pkgrel=1
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
@@ -14,6 +15,7 @@ depends=('python'
         'python-certifi'
         'python-colorama'
         'python-lxml'
+        'python-pandas'
         'python-pysocks'
         'python-requests'
         'python-requests-futures'
@@ -21,8 +23,6 @@ depends=('python'
         'python-stem'
         'python-torrequest')
 makedepends=('git' 'python-setuptools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

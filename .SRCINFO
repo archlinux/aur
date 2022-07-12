@@ -12,16 +12,14 @@ pkgbase = sherlock-git
 	depends = python-certifi
 	depends = python-colorama
 	depends = python-lxml
+	depends = python-pandas
 	depends = python-pysocks
 	depends = python-requests
 	depends = python-requests-futures
 	depends = python-soupsieve
 	depends = python-stem
 	depends = python-torrequest
-	provides = sherlock
-	conflicts = sherlock
 	source = git+https://github.com/sherlock-project/sherlock.git
 	sha256sums = SKIP
 
 pkgname = sherlock-git
-
