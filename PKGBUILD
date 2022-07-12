@@ -4,7 +4,7 @@ _pkgname=woice
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=0.0.2.r5.20200302.a22db46
-pkgrel=2
+pkgrel=3
 pkgdesc='Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.'
 url='https://github.com/keans/woice'
 arch=(any)
@@ -61,7 +61,7 @@ pkgver() {
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
 
-  if [ -z "${_rev}" ]; then
+  if [ -z "${_ver}" ]; then
     error "Could not determine version."
     return 1
   else

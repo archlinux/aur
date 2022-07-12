@@ -1,7 +1,7 @@
 pkgbase = woice-git
 	pkgdesc = Automatic login script for WIFIonICE public WiFi by Deutsche Bahn captive portals.
 	pkgver = 0.0.2.r5.20200302.a22db46
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/keans/woice
 	arch = any
