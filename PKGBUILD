@@ -5,7 +5,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=google-cloud-sdk-datastore-emulator
-pkgver=392.0.0
+pkgver=393.0.0
 pkgrel=1
 pkgdesc="A google-cloud-sdk component that provides local emulation of a Datastore environment."
 url="https://cloud.google.com/sdk/"
@@ -19,7 +19,7 @@ depends=(
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('e21edd0c2250604ecadae482b26aec1125a6666e1ffc1965166c897da6ac7b5b')
+sha256sums=('588696f521ef0d6f575b51784aaaec774202a872275ade757e5198747b553229')
 
 package() {
   mkdir "${pkgdir}/opt"
