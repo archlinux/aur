@@ -8,7 +8,7 @@ _pkgbase=archiso
 _variant="persistent"
 _pkgname="${_pkgbase}-${_variant}"
 pkgname="${_pkgname}-git"
-pkgver=v58+287+gb435a72
+pkgver=v67.r0.g2864fac
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images (persistent drive support).'
 arch=('any')
@@ -30,12 +30,12 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#branch=${variant}")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#branch=${_variant}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgbase}" || exit
-  git describe --tags | sed 's/-/+/g'
+  cd "${_pkgbase}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
