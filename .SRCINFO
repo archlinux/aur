@@ -1,6 +1,6 @@
-pkgbase = sway-git
-	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
-	pkgver = r6934.251a648e
+pkgbase = sway-force-ssd-git
+	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager, with force-enabled server side decorations
+	pkgver = r6948.8d8a21c9
 	pkgrel = 1
 	url = https://swaywm.org
 	install = sway.install
@@ -37,7 +37,9 @@ pkgbase = sway-git
 	backup = etc/sway/config
 	source = sway::git+https://github.com/swaywm/sway.git
 	source = 50-systemd-user.conf
+	source = 0001-comment-out-csd-check-code.patch
 	sha512sums = SKIP
 	sha512sums = 57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e
+	sha512sums = c92020c064740b2605c9de7e36c93e429374429acf551900f8532059ee9c29b2ac4c728d17fec80d4c4c5a38147ae6550eff3bbef11bb01b9cada7ff56c6d705
 
-pkgname = sway-git
+pkgname = sway-force-ssd-git

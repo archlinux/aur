@@ -1,0 +1,98 @@
+From 15d81d1b844051259eb5a26f32f7fde1ae03f85c Mon Sep 17 00:00:00 2001
+From: Jake Stanger <mail@jstanger.dev>
+Date: Tue, 12 Jul 2022 23:06:54 +0100
+Subject: [PATCH 1/1] comment out csd check code
+
+---
+ sway/desktop/xdg_shell.c | 25 +++++++++++++++----------
+ sway/tree/container.c    | 18 +++++++++---------
+ sway/xdg_decoration.c    |  8 ++++----
+ 3 files changed, 28 insertions(+), 23 deletions(-)
+
+diff --git a/sway/desktop/xdg_shell.c b/sway/desktop/xdg_shell.c
+index 8da922d5..07a39a6c 100644
+--- a/sway/desktop/xdg_shell.c
++++ b/sway/desktop/xdg_shell.c
+@@ -428,16 +428,21 @@ static void handle_map(struct wl_listener *listener, void *data) {
+ 
+ 	bool csd = false;
+ 
+-	if (view->xdg_decoration) {
+-		enum wlr_xdg_toplevel_decoration_v1_mode mode =
+-			view->xdg_decoration->wlr_xdg_decoration->requested_mode;
+-		csd = mode == WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE;
+-	} else {
+-		struct sway_server_decoration *deco =
+-				decoration_from_surface(toplevel->base->surface);
+-		csd = !deco || deco->wlr_server_decoration->mode ==
+-			WLR_SERVER_DECORATION_MANAGER_MODE_CLIENT;
+-	}
++//    struct sway_server_decoration *deco =
++//            decoration_from_surface(toplevel->base->surface);
++//    csd = !deco || deco->wlr_server_decoration->mode ==
++//                   WLR_SERVER_DECORATION_MANAGER_MODE_CLIENT;
++
++//	if (view->xdg_decoration) {
++//		enum wlr_xdg_toplevel_decoration_v1_mode mode =
++//			view->xdg_decoration->wlr_xdg_decoration->requested_mode;
++//		csd = mode == WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE;
++//	} else {
++//		struct sway_server_decoration *deco =
++//				decoration_from_surface(toplevel->base->surface);
++//		csd = !deco || deco->wlr_server_decoration->mode ==
++//			WLR_SERVER_DECORATION_MANAGER_MODE_CLIENT;
++//	}
+ 
+ 	view_map(view, toplevel->base->surface,
+ 		toplevel->requested.fullscreen,
+diff --git a/sway/tree/container.c b/sway/tree/container.c
+index 04ef965f..f8bd7134 100644
+--- a/sway/tree/container.c
++++ b/sway/tree/container.c
+@@ -842,15 +842,15 @@ void container_set_floating(struct sway_container *container, bool enable) {
+ 		workspace_add_floating(workspace, container);
+ 		if (container->view) {
+ 			view_set_tiled(container->view, false);
+-			if (container->view->using_csd) {
+-				container->saved_border = container->pending.border;
+-				container->pending.border = B_CSD;
+-				if (container->view->xdg_decoration) {
+-					struct sway_xdg_decoration *deco = container->view->xdg_decoration;
+-					wlr_xdg_toplevel_decoration_v1_set_mode(deco->wlr_xdg_decoration,
+-							WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE);
+-				}
+-			}
++//			if (container->view->using_csd) {
++//				container->saved_border = container->pending.border;
++//				container->pending.border = B_CSD;
++//				if (container->view->xdg_decoration) {
++//					struct sway_xdg_decoration *deco = container->view->xdg_decoration;
++//					wlr_xdg_toplevel_decoration_v1_set_mode(deco->wlr_xdg_decoration,
++//							WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE);
++//				}
++//			}
+ 		}
+ 		container_floating_set_default_size(container);
+ 		container_floating_resize_and_center(container);
+diff --git a/sway/xdg_decoration.c b/sway/xdg_decoration.c
+index ec9e8d68..89e3ca65 100644
+--- a/sway/xdg_decoration.c
++++ b/sway/xdg_decoration.c
+@@ -32,10 +32,10 @@ static void xdg_decoration_handle_request_mode(struct wl_listener *listener,
+ 	bool floating;
+ 	if (view->container) {
+ 		floating = container_is_floating(view->container);
+-		bool csd = false;
+-		csd = client_mode ==
+-			WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE;
+-		view_update_csd_from_client(view, csd);
++//		bool csd = false;
++//		csd = client_mode ==
++//			WLR_XDG_TOPLEVEL_DECORATION_V1_MODE_CLIENT_SIDE;
++//		view_update_csd_from_client(view, csd);
+ 		arrange_container(view->container);
+ 		transaction_commit_dirty();
+ 	} else {
+-- 
+2.37.0
+
