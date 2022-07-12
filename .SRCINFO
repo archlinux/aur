@@ -1,14 +1,15 @@
 pkgbase = python2-pytest-mock
-	pkgdesc = Thin-wrapper around the mock package for easier use with py.test
+	pkgdesc = Pytest wrapper for the mock module (legacy Python 2 version)
 	pkgver = 2.0.0
-	pkgrel = 5
-	url = https://github.com/pytest-dev/pytest-mock/
+	pkgrel = 6
+	url = https://pypi.org/project/pytest-mock/2.0.0
 	arch = any
-	license = LGPL3
+	license = MIT
 	makedepends = python2-setuptools-scm
+	depends = python2
 	depends = python2-mock
 	depends = python2-pytest
-	source = https://github.com/pytest-dev/pytest-mock/archive/v2.0.0/python2-pytest-mock-2.0.0.tar.gz
-	sha512sums = 0bd15bf07e28fcea72f0269f09fe340bc1f01dd4e5f20215894c59e244ebad6ba15c8ef67c1547be0a750cff3e50536e0c1ca2d783a895eecbc492ece6c6fc55
+	source = pytest-mock-2.0.0.tar.gz::https://github.com/pytest-dev/pytest-mock/archive/refs/tags/v2.0.0.tar.gz
+	b2sums = 38f34850ee0303617470c52f83ce0ce0e2b9d4b53ff504a065a1eebca169a85e3d53b989d8193a37eae3ac0b352591bc435c1a3da2fd6e608af7d6b04adf04dc
 
 pkgname = python2-pytest-mock
