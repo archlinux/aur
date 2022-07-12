@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-tivtc-git
+	pkgdesc = Plugin for Vapoursynth: tivtc (GIT version)
+	pkgver = v2.1.g1713095
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-tivtc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-tivtc
+	conflicts = vapoursynth-plugin-tivtc
+	source = tivtc::git+https://github.com/dubhater/vapoursynth-tivtc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-tivtc-git
