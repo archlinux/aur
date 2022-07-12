@@ -1,12 +1,12 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=2.6.r10.2cbe68f
+pkgver=2.6.r11.8798acd
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
-makedepends=(git make gcc)
+makedepends=(git make gcc bash)
 source=("git+$url")
 md5sums=('SKIP')
 
