@@ -1,8 +1,14 @@
+# 1.1.8 (github, pypi and conda 2022.07.12)
+* Adapted setup.py to work with conda forge libraries on windows
+
+# 1.1.8 (github, pypi 2022.07.11)
+* Changed windows compilation to use MSVC 2019. Static compilation for windows, no
+  longer need for dll files.
+
 # 1.1.7 (github, pypi and conda 2022.06.03)
 * Updated Readstat code to Release 1.1.8
 * Solved issue with duplicated columns, #188
 * Solved issue with no truncation of written files on windows #191
-
 
 # 1.1.6 (github, pypi and conda 2022.05.09)
 * Solved #183
