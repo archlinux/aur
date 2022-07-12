@@ -8,7 +8,7 @@ profile=baseline
 pkgname="${_distro}-${profile}"
 pkgver="$(date +%Y.%m.%d)"
 pkgrel=1
-pkgdesc="Builds an Archlinux install drive."
+pkgdesc="Builds Archiso baseline ISO."
 arch=('i686'
       'pentium4'
       'x86_64')
