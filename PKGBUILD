@@ -1,8 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python2-pytest-mock
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Thin-wrapper around the mock package for easier use with py.test"
 arch=('any')
 license=('LGPL3')
@@ -22,7 +23,7 @@ build() {
 check() {
   cd pytest-mock-$pkgver
   python2 setup.py egg_info
-  PYTHONPATH="$PWD:$PWD/src" pytest2
+  PYTHONPATH="$PWD:$PWD/src" pytest2 tests --assert=plain -r a --verbose
 }
 
 package() {
