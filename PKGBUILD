@@ -1,8 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
+## GPG keys:
+## https://github.com/conni2461.gpg
+## https://github.com/web-flow.gpg
+
 pkgname=neovim-telescope-git
 pkgver=0.1.0.r0.gb79cd6c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible fuzzy finder for lists"
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
@@ -18,9 +22,12 @@ optdepends=(
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url?signed")
 sha256sums=('SKIP')
-validpgpkeys=()
+validpgpkeys=(
+	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## GitHub
+	'9CA54B35171429C416D631D6092CC34920FFEB96' ## Simon Hauser
+)
 
 pkgver() {
 	git -C "$pkgname" describe --long --tags | sed 's/-/.r/;s/-/./'
