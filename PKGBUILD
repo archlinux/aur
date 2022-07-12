@@ -1,58 +1,79 @@
-# Maintainer: Ray Powell <ray+archlinux@xphoniexx.net>
+# Maintainer: Yuri Pieters <magejohnyjtp+archlinux@gmail.com>
+# Contributor: Ray Powell <ray+archlinux@xphoniexx.net>
 # Contributor: Joe Davison <joedavison.davison@gmail.com>
 
-pkgname=wxlauncher
-_pkgtar=wxLauncher
-pkgver=0.11.0
+# shellcheck disable=SC2034,SC2154
+# shellcheck shell=bash
+
+pkgname=wxlauncher-git
+
+pkgver=0.12.0.rc3.r13.gd72c97c
 pkgrel=1
 
-source=("https://github.com/scp-fs2open/wxLauncher/archive/release-${pkgver}.zip"
-	"wxlauncher.png"
-	"wxlauncher.desktop")
-
-sha256sums=('720385b6e0a77afa4ad746ae271a200afcecc74fce173f81c6a4f4aed98f7000'
-            'e3bf9cbe7c61378026331a21313fccd891b051e949448715625d1cfd3ae72576'
-            '8de688171c12fdf273ece4f33177fd773395204c81cf212f8c4293f0ddd16582')
-
-pkgdesc="wxLauncher is a cross-platform launcher for the FreeSpace 2 Open engine"
+pkgdesc="A cross-platform launcher for the FreeSpace 2 Open engine - Git version"
+# NOTE: architectures other than x86_64 have not been tested. However, all the hard dependencies
+# are available for all the listed architectures, so they should work.
+arch=('x86_64' 'i486' 'i686' 'pentium4' 'aarch64' 'armv7h')
 url="https://github.com/scp-fs2open/wxLauncher"
-#url="http://www.hard-light.net/forums/index.php?topic=67950.0"
-arch=(i686 x86_64)
 license=(GPL2)
-# change below if you want to modify the resources intall directory.  The default installs it along side fs2_open resources.
-resourcesdir=/opt/fs2_open/wxlauncher
 
-depends=('wxpython' 'python' 'python-markdown' 'openal' 'sdl2' 'wxgtk2')
-optdepends=('fs2_open')
-makedepends=('cmake' 'python-setuptools')
+depends=(
+  'sdl2' 
+  'wxgtk3'
+)
+makedepends=(
+  'cmake' 
+  'git'
+  'openal'
+  'python'
+  'python-markdown'
+)
+optdepends=(
+  'fs2_open: FreeSpace 2 Open engine executable' 
+  'openal: audio device configuration support'
+)
 
-#prepare() {
-#}
+provides=('wxlauncher')
+conflicts=('wxlauncher')
 
+source=(
+  "git+https://github.com/scp-fs2open/wxLauncher.git"
+  "wxwidgets-version.patch"
+  "desktop-file-icon.patch"
+)
+
+sha256sums=(
+  'SKIP'
+  '32fa8bb01a8d41f8ca55bf31b229fd579ca0a895f97b4fa0257a1ac96887a670'
+  '1e3e8426b4b5866488cb28c05de96746a770a77e3c8132ea31aeac5b966acad4'
+)
+
+pkgver() {
+  cd wxLauncher || exit
+  git describe --long --tags | sed -E 's/[^-]*-g/r\0/; s/rc\.(\d*)/rc\1/; s/-/./g'
+}
+
+prepare() {
+  cd wxLauncher || exit
+  patch --forward --strip=1 --input="../wxwidgets-version.patch"
+  patch --forward --strip=1 --input="../desktop-file-icon.patch"
+}
 
 build() {
-	cd "$srcdir/${_pkgtar}-release-$pkgver"
-
-		if [ ! -d build ]; then
-			mkdir build
-		fi
-
-	cd build/
-	
-	# commence build		
-
-	#cmake -DPYTHON_EXECUTABLE=python2 -DUSE_OPENAL=1 -DRESOURCES_PATH=$resourcesdir -DCMAKE_INSTALL_PREFIX=/usr ../
-	cmake -DPYTHON_EXECUTABLE=python -DUSE_OPENAL=1 -DRESOURCES_PATH=$resourcesdir -DCMAKE_INSTALL_PREFIX=/usr ../ -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc'
-	make
-		
-
+  cmake -B build \
+        -S wxLauncher \
+        -DUSE_OPENAL=1 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-gtk3' \
+        -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \
+        -Wno-dev
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/${_pkgtar}-release-$pkgver/build"
-	make DESTDIR="$pkgdir/" install
-	# need to install the .desktop file and icon
-	cd "$srcdir"
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  DESTDIR="$pkgdir" cmake --install build
+
+  # install the icon
+  install -Dm644 wxLauncher/resources/wxlauncher.png \
+          "$pkgdir/usr/share/icons/hicolor/256x256/apps/wxlauncher.png"
 }

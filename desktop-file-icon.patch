@@ -1,0 +1,15 @@
+diff --git a/platform/freedesktop/wxLauncher.desktop.in b/platform/freedesktop/wxLauncher.desktop.in
+index f26981a..b3e506b 100644
+--- a/platform/freedesktop/wxLauncher.desktop.in
++++ b/platform/freedesktop/wxLauncher.desktop.in
+@@ -3,7 +3,7 @@ Version=1.0
+ Name=wxLauncher
+ Comment=A wxWidgets based launcher for FreeSpace Open
+ Exec=@WXLAUNCHER_FILE@
+-Icon=@RESOURCES_PATH@wxlauncher.png
++Icon=wxlauncher
+ Terminal=false
+ Type=Application
+-Categories=Utility;Application;
+\ No newline at end of file
++Categories=Utility;Application;
