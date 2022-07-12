@@ -1,16 +1,15 @@
 # Maintainer: Dhruva Sambrani <dhruvasambrani19@gmail.com>
 pkgname=sioyek-appimage
 pkgver=1.4.0
-pkgrel=1
-pkgdesc="The latest stable AppImage of Sioyek - a PDF viewer designed for reading research papers and technical books"
+pkgrel=2
+pkgdesc="A PDF viewer designed for reading research papers and technical books"
 arch=('x86_64')
 url="https://github.com/ahrm/sioyek"
-license=('GPL3')
 depends=('fuse2')
 # makedepends=()
 # optdepends=()
 provides=('sioyek')
-conflicts=('sioyek' 'sioyek-git')
+conflicts=('sioyek')
 # replaces=()
 # backup=()
 options=(!strip)
@@ -18,15 +17,13 @@ options=(!strip)
 # changelog=
 _sourcezipname='sioyek-release-linux.zip'
 source=(
-  ${url}/releases/download/v${pkgver}/${_sourcezipname}
-  ${url}/raw/v${pkgver}/LICENSE
+  ${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_sourcezipname}
 )
 # noextract=()
 _filename='Sioyek-x86_64.AppImage'
 _install_path='/opt/appimages/Sioyek.AppImage'
 md5sums=(
   c0e3d0d18cd36ebf6cb065c5fd1189cf
-  SKIP
 ) #autofill using updpkgsums
 
 package() {
@@ -49,8 +46,4 @@ package() {
   install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
   mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
   ln -s "${_install_path}" "${pkgdir}/usr/bin/sioyek"
-
-  # install license file
-  echo Installing LICENSE
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/sioyek-appimage/LICENSE"
 }
