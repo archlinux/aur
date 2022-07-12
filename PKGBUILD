@@ -54,5 +54,6 @@ package() {
   rm -f "$_datadir/maps/Gold Mine.map" \
         "$_datadir/maps/LearnToPlay.map" \
         "$_datadir/maps/Sunny Side Up.map" \
-        "$_datadir/maps/Tsunami.map"
+        "$_datadir/maps/Tsunami.map" \
+        "$_datadir/maps/Tutorial.map"
 }
