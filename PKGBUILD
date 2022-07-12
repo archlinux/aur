@@ -2,7 +2,7 @@
 
 _pipname=nbclassic
 pkgname=jupyter-$_pipname
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Jupyter Notebook as a Jupyter Server Extension'
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-pytest-tornasync)
 conflicts=(jupyter-notebook)
 provides=(jupyter-notebook)
 source=(https://pypi.io/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz)
-sha256sums=('b00694d33e844e0f6d02bb6aa4b32e7342d03e27d21b73003ac200978e1bd61a')
+sha256sums=('f03111b2cebaa69b88370a7b23b19b2b37c9bb71767f1828cdfd7a047eae8edd')
 
 build() {
   cd $_pipname-$pkgver
@@ -29,6 +29,7 @@ check() {
 package() {
   cd $_pipname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
+  mv "$pkgdir"/{usr/,}etc
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
