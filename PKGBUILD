@@ -20,6 +20,11 @@ conflicts=("${_pkgname}")
 source=("git+${url}")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
 # shellcheck disable=SC2154
 package() {
   local _profiles="${srcdir}/${_pkgname}"
