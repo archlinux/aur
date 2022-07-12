@@ -31,9 +31,9 @@ pkgver() {
 }
 
 check() {
-  make -k check -C $pkgname
+  make -k check -C "${_pkgname}"
 }
 
 package() {
-  make DESTDIR="$pkgdir/" PREFIX=/usr install -C $pkgname
+  make DESTDIR="$pkgdir/" PREFIX=/usr install -C "${_pkgname}"
 }
