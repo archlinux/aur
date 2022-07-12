@@ -3,7 +3,7 @@
 
 pkgname=neoleo-git
 pkgver=12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('i686' 'x86_64')
 url="https://github.com/blippy/neoleo"
@@ -11,9 +11,8 @@ conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 license=('GPL')
 depends=('ncurses')
-makedepends=('git')
+makedepends=('git' 'clang')
 source=("git+$url.git")
-options=('!makeflags')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,7 +23,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   autoreconf -iv
-  LIBS+="-lstdc++fs" ./configure --prefix=/usr
+  LIBS+=" -lstdc++fs" CXX=clang++ ./configure --prefix=/usr
   make
 }
 
