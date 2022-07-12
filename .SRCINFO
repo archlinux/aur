@@ -1,6 +1,6 @@
 pkgbase = cargo-binutils
 	pkgdesc = Cargo subcommands to invoke the LLVM tools shipped with the Rust toolchain
-	pkgver = 0.3.3
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/rust-embedded/cargo-binutils
 	install = cargo-binutils.install
@@ -9,8 +9,7 @@ pkgbase = cargo-binutils
 	license = MIT
 	depends = rust
 	depends = cargo
-	source = https://github.com/rust-embedded/cargo-binutils/archive/v0.3.3.tar.gz
-	sha256sums = 91b37bc56ac50fdd5e96a37de39b42cc01351b1e3e775bfc5b875f0e51eaf9fe
+	source = https://github.com/rust-embedded/cargo-binutils/archive/v0.3.6.tar.gz
+	sha256sums = 431fb12a47fafcb7047d41bdf4a4c9b77bea56856e0ef65c12c40f5fcb15f98f
 
 pkgname = cargo-binutils
-
