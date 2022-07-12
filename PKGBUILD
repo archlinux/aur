@@ -3,13 +3,14 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
+# shellcheck disable=SC2034
 _pkgbase=archiso
 _variant="encryption"
 _pkgname="${_pkgbase}-${_variant}"
 pkgname="${_pkgname}-git"
-pkgver=v58+214+gee08b3c
+pkgver=v66.r28.ga4b34d2
 pkgrel=1
-pkgdesc='Tools for creating Arch Linux live and install iso images with luks'
+pkgdesc='Tools for creating Arch Linux live and install ISO images (LUKS image type support).'
 arch=('any')
 license=('GPL3')
 url="https://gitlab.archlinux.org/archlinux/archiso/-/issues/156"
@@ -27,20 +28,21 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgname}#branch=crypto")
+source=("${_pkgbase}::git+https://gitlab.archlinux.org/tallero/${_pkgbase}#branch=crypto")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/-/+/g'
+  cd "${_pkgbase}" || exit
+  echo "v$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 check() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make -k check
 }
 
+# shellcheck disable=SC2154
 package() {
-  cd "${_pkgbase}"
+  cd "${_pkgbase}" || exit
   make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
