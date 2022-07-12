@@ -9,14 +9,12 @@ arch=('x86_64' 'armv7h' 'aarch64')
 license=("GPL2")
 provides=("mmsd" "mmsd-tng")
 conflicts=("mmsd" "mmsd-tng")
-depends=("c-ares")
+depends=("c-ares" "mobile-broadband-provider-info" "libmm-glib" "libsoup" "libphonenumber")
 makedepends=("git" "meson")
 source=("$pkgname::git+https://gitlab.com/kop316/mmsd.git"
-        "https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service"
-)
+        "https://salsa.debian.org/DebianOnMobile-team/mmsd-tng/-/raw/debian/latest/debian/mmsd-tng.user.service")
 sha256sums=("SKIP"
-            "SKIP"
-)
+            "SKIP")
 
 pkgver() {
   cd "$srcdir/$pkgname"
