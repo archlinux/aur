@@ -1,6 +1,6 @@
 pkgbase = tagainijisho
 	pkgdesc = A Free Japanese dictionary and study assistant
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://www.tagaini.net/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = tagainijisho
 	makedepends = desktop-file-utils
 	makedepends = qt5-tools
 	depends = qt5-base>=5.15
-	source = https://github.com/Gnurou/tagainijisho/releases/download/1.2.0/tagainijisho-1.2.0.tar.gz
-	md5sums = b25749b3e96a64d4865061b7562f4dc3
+	source = https://github.com/Gnurou/tagainijisho/releases/download/1.2.1/tagainijisho-1.2.1.tar.gz
+	md5sums = fe677eb174c67c05ab39853c0eafe6e5
 
 pkgname = tagainijisho
