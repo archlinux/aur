@@ -1,7 +1,7 @@
 pkgbase = discord-game-sdk
-	pkgdesc = Discord Game SDK
+	pkgdesc = Discord game SDK
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discord.com/developers/docs/game-sdk/sdk-starter-guide
 	arch = x86_64
 	license = custom

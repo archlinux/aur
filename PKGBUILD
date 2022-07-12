@@ -2,8 +2,8 @@
 
 pkgname=discord-game-sdk
 pkgver=2.5.6
-pkgrel=1
-pkgdesc='Discord Game SDK'
+pkgrel=2
+pkgdesc='Discord game SDK'
 arch=('x86_64')
 url='https://discord.com/developers/docs/game-sdk/sdk-starter-guide'
 license=('custom')
@@ -26,7 +26,7 @@ prepare() {
 
 package() {
     install -d -m755 "${pkgdir}/usr/src"
-    install -D -m755 "${pkgname}-${pkgver}/lib/${CARCH}/${pkgname//-/_}.so" "${pkgdir}/usr/lib/lib${pkgname//-/_}.so"
+    install -D -m644 "${pkgname}-${pkgver}/lib/${CARCH}/${pkgname//-/_}.so" -t "${pkgdir}/usr/lib"
     install -D -m644 "${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -D -m644 {POLICY,STORE-DISTRIBUTION-AGREEMENT,TERMS-OF-SERVICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     cp -dr --no-preserve='ownership' "${pkgname}-${pkgver}/c" "${pkgdir}/usr/include"
