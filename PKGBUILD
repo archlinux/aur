@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034
 _pkgname=mkinitcpio-archiso
 pkgname=$_pkgname-encryption-git
-pkgver=65
+pkgver=v65
 pkgrel=1
 pkgdesc="Initcpio scripts used by archiso (encrypt hook support)"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#branch=crypto")
+source=("${_pkgname}::git+${_gitlab}/tallero/${_pkgname}.git#branch=crypto")
 sha256sums=('SKIP')
 
 pkgver() {

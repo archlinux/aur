@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-archiso-encryption-git
 	pkgdesc = Initcpio scripts used by archiso (encrypt hook support)
-	pkgver = 65
+	pkgver = v65
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/mkinitcpio/mkinitcpio-archiso/-/merge_requests/25
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mkinitcpio-archiso-encryption-git
 	provides = mkinitcpio-archiso-encryption
 	conflicts = mkinitcpio-archiso
 	conflicts = mkinitcpio-archiso-encryption
-	source = mkinitcpio-archiso-encryption-git::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#branch=crypto
+	source = mkinitcpio-archiso::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#branch=crypto
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-archiso-encryption-git
